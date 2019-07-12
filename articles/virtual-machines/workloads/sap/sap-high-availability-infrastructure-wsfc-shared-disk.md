@@ -4,7 +4,7 @@ description: Ismerje meg, hogyan készíti elő az Azure-infrastruktúra a SAP m
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
 author: goraco
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 keywords: ''
@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 05/05/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ae3d1b36b89bb1bce1ff384bfa12a1bf643614fd
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b4e107da9d8e5019ba51769d283f3faa34839380
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65408774"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67709254"
 ---
 # <a name="prepare-the-azure-infrastructure-for-sap-ha-by-using-a-windows-failover-cluster-and-shared-disk-for-sap-ascsscs"></a>Készítse elő az Azure-infrastruktúra az SAP magas rendelkezésre ÁLLÁS segítségével egy Windows feladatátvevő fürt és megosztott lemez esetében az SAP ASCS/SCS
 
@@ -224,7 +224,7 @@ _**1. ábra:** Magas rendelkezésre állás az SAP az Azure Resource Manager par
 >
 
 ## <a name="c87a8d3f-b1dc-4d2f-b23c-da4b72977489"></a> A vállalati hálózati kapcsolattal (létesítmények közötti) az éles környezetben használt virtuális gépek üzembe helyezése
-Az SAP-rendszereit, üzembe helyezése az Azure-beli virtuális gépek [vállalati hálózati kapcsolat (létesítmények közötti)] [ planning-guide-2.2] Azure VPN Gateway vagy az Azure ExpressRoute használatával.
+Az SAP-rendszereit, üzembe helyezése az Azure-beli virtuális gépek [vállalati hálózati kapcsolat (létesítmények közötti)][planning-guide-2.2] Azure VPN Gateway vagy az Azure ExpressRoute használatával.
 
 > [!NOTE]
 > Az Azure Virtual Network-példányt is használhat. A virtuális hálózat és alhálózat már létrehozott és előkészített.
@@ -295,7 +295,7 @@ Az alábbi szakaszok a sablonok és a paraméterek, amelyeket meg kell adnia a s
 
 Az ASCS/SCS-sablon üzembe helyezi a két virtuális gépet, amelyek segítségével több ASCS/SCS-példányt üzemeltető Windows Server feladatátvevő fürt létrehozása.
 
-Az ASCS/SCS több biztonsági AZONOSÍTÓVAL sablon, a beállítása a [ASCS/SCS több biztonsági AZONOSÍTÓVAL sablon] [ sap-templates-3-tier-multisid-xscs-marketplace-image] vagy [ASCS/SCS több biztonsági AZONOSÍTÓVAL sablon Managed Disks használatával] [ sap-templates-3-tier-multisid-xscs-marketplace-image-md], adja meg az értékeket az alábbi paraméterekkel:
+Az ASCS/SCS több biztonsági AZONOSÍTÓVAL sablon, a beállításához a [ASCS/SCS több biztonsági AZONOSÍTÓVAL sablon][sap-templates-3-tier-multisid-xscs-marketplace-image] or [ASCS/SCS multi-SID template by using Managed Disks][sap-templates-3-tier-multisid-xscs-marketplace-image-md], adja meg az értékeket a következő paramétereket:
 
 - **Erőforrás-előtag**:  Állítsa be az erőforrás-előtagja, amelynek az üzembe helyezés során létrehozott összes erőforrást előtagot használja. Az erőforrások csak egy SAP-rendszerhez tartozik, mert az előtag, az erőforrás nem áll a SID-egy SAP-rendszerhez.  Az előtag a 3-6 karakter közöttinek kell lennie.
 - **Írja be a verem**: Válassza ki a verem az SAP-rendszerhez. Depending on the stack type, Azure Load Balancer has one (ABAP or Java only) or two (ABAP+Java) private IP addresses per SAP system.
@@ -333,7 +333,7 @@ A terheléselosztó a következő mintavételi portokon (Ha x az a szám az SAP-
 
 Az adatbázis-sablon üzembe helyez egy vagy két virtuális gépek, amelyek egy SAP-rendszer relációsadatbázis-kezelő rendszerének (RDBMS) telepítéséhez használhatja. Például ha telepít egy ASCS/SCS-sablon az öt SAP-rendszereit, szüksége ötször a sablon üzembe helyezésére.
 
-A beállítása az adatbázis több biztonsági AZONOSÍTÓVAL sablon, a [adatbázis több biztonsági AZONOSÍTÓVAL sablon] [ sap-templates-3-tier-multisid-db-marketplace-image] vagy [adatbázis több biztonsági AZONOSÍTÓVAL sablon Managed Disks használatával] [ sap-templates-3-tier-multisid-db-marketplace-image-md], adja meg az értékeket az alábbi paraméterekkel:
+A beállítása az adatbázis több biztonsági AZONOSÍTÓVAL sablon, a [adatbázis több biztonsági AZONOSÍTÓVAL sablon][sap-templates-3-tier-multisid-db-marketplace-image] or [database multi-SID template by using Managed Disks][sap-templates-3-tier-multisid-db-marketplace-image-md], adja meg az értékeket az alábbi paraméterekkel:
 
 - **Rendszer-azonosító SAP**: Adja meg az SAP az SAP-rendszerhez, amelyet át szeretne telepíteni, rendszer-azonosító. Az azonosító az üzembe helyezett erőforrások előtagjaként is szolgál.
 - **Operációs rendszer típusa**: Válassza ki a virtuális gépek operációs rendszerének.
@@ -350,7 +350,7 @@ A beállítása az adatbázis több biztonsági AZONOSÍTÓVAL sablon, a [adatb�
 
 Az alkalmazássablon kiszolgálók SAP-alkalmazáskiszolgáló-példányok egy SAP-rendszerhez használható két vagy több virtuális gépeket helyez üzembe. Például ha telepít egy ASCS/SCS-sablon az öt SAP-rendszereit, szüksége ötször a sablon üzembe helyezésére.
 
-A beállítása az kiszolgálók több biztonsági AZONOSÍTÓVAL sablon, a [alkalmazássablon kiszolgálók több biztonsági AZONOSÍTÓVAL] [ sap-templates-3-tier-multisid-apps-marketplace-image] vagy [kiszolgálók több biztonsági AZONOSÍTÓVAL alkalmazássablon Managed Diskshasználatával] [ sap-templates-3-tier-multisid-apps-marketplace-image-md], adja meg az értékeket az alábbi paraméterekkel:
+A beállítása az kiszolgálók több biztonsági AZONOSÍTÓVAL sablon, a [alkalmazássablon kiszolgálók több biztonsági AZONOSÍTÓVAL][sap-templates-3-tier-multisid-apps-marketplace-image] or [application servers multi-SID template  by using Managed Disks][sap-templates-3-tier-multisid-apps-marketplace-image-md], adja meg az értékeket a következő paramétereket:
 
   -  **Rendszer-azonosító SAP**: Adja meg az SAP az SAP-rendszerhez, amelyet át szeretne telepíteni, rendszer-azonosító. Az azonosító az üzembe helyezett erőforrások előtagjaként is szolgál.
   -  **Operációs rendszer típusa**: Válassza ki a virtuális gépek operációs rendszerének.
@@ -551,7 +551,7 @@ Az Azure Load Balancer belső terheléselosztót, hogy bezárul kapcsolatok, ha 
 
 Az SAP ASCS/SCS-példányának mindkét fürtcsomóponton beállításjegyzék-bejegyzések hozzáadásához először adja hozzá a Windows beállításjegyzék-bejegyzések mindkét Windows fürtcsomópontokon az SAP ASCS/SCS:
 
-| Útvonal | HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters |
+| Path | HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters |
 | --- | --- |
 | Változó neve |`KeepAliveTime` |
 | A változó típusa |REG_DWORD (Decimal) |
@@ -562,7 +562,7 @@ Az SAP ASCS/SCS-példányának mindkét fürtcsomóponton beállításjegyzék-b
 
 Ezután adja hozzá a Windows-beállításjegyzékbeli bejegyzést mindkét Windows fürtcsomópontokon az SAP ASCS/SCS:
 
-| Útvonal | HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters |
+| Path | HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters |
 | --- | --- |
 | Változó neve |`KeepAliveInterval` |
 | A változó típusa |REG_DWORD (Decimal) |
@@ -597,17 +597,17 @@ Az SAP ASCS/SCS példányhoz egy Windows Server feladatátvevő fürt beállít�
 
 4. Miután létrehozta a fürthöz, futtassa a fürtellenőrzési tesztet.
 
-   ![10\. ábra: A fürt-ellenőrzés futtatása][sap-ha-guide-figure-3009]
+   ![10. ábra: A fürt-ellenőrzés futtatása][sap-ha-guide-figure-3009]
 
    _**10. ábra:** A fürt-ellenőrzés futtatása_
 
    A folyamat ezen a ponton lemezekkel kapcsolatos figyelmeztetéseket figyelmen kívül hagyhatja. Egy tanúsító fájlmegosztást és az SIOS megosztott lemezeket később fogja hozzáadni. Ebben a szakaszban nem kell foglalkoznia a kvóruma.
 
-   ![11\. ábra: Nincs kvórum lemez található][sap-ha-guide-figure-3010]
+   ![11. ábra: Nincs kvórum lemez található][sap-ha-guide-figure-3010]
 
    _**11. ábra:** Nincs kvórum lemez található_
 
-   ![12\. ábra: A fürt alapvető erőforrásai kell új IP-cím][sap-ha-guide-figure-3011]
+   ![12. ábra: A fürt alapvető erőforrásai kell új IP-cím][sap-ha-guide-figure-3011]
 
    _**12. ábra:** A fürt alapvető erőforrásai kell új IP-cím_
 
@@ -615,17 +615,17 @@ Az SAP ASCS/SCS példányhoz egy Windows Server feladatátvevő fürt beállít�
 
    Például azt kell rendelnie egy IP-címet (a példánkban 10.0.0.42) számára a fürt virtuális állomás neve pr1 – ascs-vir.
 
-   ![13\. ábra: A Tulajdonságok párbeszédpanelen módosítsa az IP-cím][sap-ha-guide-figure-3012]
+   ![13. ábra: A Tulajdonságok párbeszédpanelen módosítsa az IP-cím][sap-ha-guide-figure-3012]
 
    _**13. ábra:** Az a **tulajdonságok** párbeszédpanelen módosítsa az IP-cím_
 
-   ![14\. ábra: A fürt számára fenntartott IP-cím hozzárendelése][sap-ha-guide-figure-3013]
+   ![14. ábra: A fürt számára fenntartott IP-cím hozzárendelése][sap-ha-guide-figure-3013]
 
    _**14. ábra:** A fürt számára fenntartott IP-cím hozzárendelése_
 
 6. A fürt virtuális állomás neve online állapotba.
 
-   ![15\. ábra: A fürt alapvető szolgáltatás működik, a megfelelő IP-címmel][sap-ha-guide-figure-3014]
+   ![15. ábra: A fürt alapvető szolgáltatás működik, a megfelelő IP-címmel][sap-ha-guide-figure-3014]
 
    _**15. ábra:** A fürt alapvető szolgáltatás működik, a megfelelő IP-címmel_
 
@@ -633,13 +633,13 @@ Az SAP ASCS/SCS példányhoz egy Windows Server feladatátvevő fürt beállít�
 
    Most, hogy a core fürtszolgáltatás helyezheti üzembe, a második fürtcsomópontra is hozzáadhat.
 
-   ![16\. ábra hozzáadása a második fürtcsomópontra][sap-ha-guide-figure-3015]
+   ![16. ábra hozzáadása a második fürtcsomópontra][sap-ha-guide-figure-3015]
 
    _**16. ábra:** Adja hozzá a második fürtcsomópontra_
 
 8. Adja meg a második fürt csomópont állomás nevét.
 
-   ![17\. ábra: Adja meg a második fürt állomásneve][sap-ha-guide-figure-3016]
+   ![17. ábra: Adja meg a második fürt állomásneve][sap-ha-guide-figure-3016]
 
    _**17. ábra:** Adja meg a második fürt állomásneve_
 
@@ -648,13 +648,13 @@ Az SAP ASCS/SCS példányhoz egy Windows Server feladatátvevő fürt beállít�
    >
    >
 
-   ![18\. ábra: Jelölje be a jelölőnégyzetet][sap-ha-guide-figure-3017]
+   ![18. ábra: Jelölje be a jelölőnégyzetet][sap-ha-guide-figure-3017]
 
    _**18. ábra:** Tegye *nem* jelölje be a jelölőnégyzetet_
 
    Kvórum és a lemezek kapcsolatos figyelmeztetést figyelmen kívül hagyhatja. Fog a kvórum beállítása és a lemezt később, megoszthatja a leírtak szerint [telepítse az SIOS DataKeeper Cluster Edition esetében az SAP ASCS/SCS fürtlemez-megosztás][sap-high-availability-infrastructure-wsfc-shared-disk-install-sios].
 
-   ![19\. ábra: A lemez kvórumával kapcsolatos figyelmeztetések mellőzése][sap-ha-guide-figure-3018]
+   ![19. ábra: A lemez kvórumával kapcsolatos figyelmeztetések mellőzése][sap-ha-guide-figure-3018]
 
    _**19. ábra:** A lemez kvórumával kapcsolatos figyelmeztetések mellőzése_
 
@@ -681,7 +681,7 @@ Ezeket a feladatokat a fürt tanúsító fájlmegosztás konfigurálása foglalj
 
 2. Adja hozzá a fürtnévobjektum.
 
-   ![20\. ábra: Rendelje hozzá a megosztást a fürtnévobjektum engedélyei][sap-ha-guide-figure-3019]
+   ![20. ábra: Rendelje hozzá a megosztást a fürtnévobjektum engedélyei][sap-ha-guide-figure-3019]
 
    _**20. ábra:** Rendelje hozzá a megosztást a fürtnévobjektum engedélyei_
 
@@ -689,11 +689,11 @@ Ezeket a feladatokat a fürt tanúsító fájlmegosztás konfigurálása foglalj
 
 3. Válassza ki a fürtnévobjektum hozzáadása a listához, **Hozzáadás**. Módosítsa a szűrőt, hogy ellenőrizze a számítógép-objektumok 22. ábra szereplő termékektől mellett.
 
-   ![21\. ábra: Gyorsítótárazandó objektumtípusok közé tartoznak a számítógépek módosítása][sap-ha-guide-figure-3020]
+   ![21. ábra: Gyorsítótárazandó objektumtípusok közé tartoznak a számítógépek módosítása][sap-ha-guide-figure-3020]
 
    _**21. ábra:** Változás **objektumtípusok** közé tartoznak a számítógépek,_
 
-   ![22\. ábra: Válassza ki a számítógép négyzet jelölését.][sap-ha-guide-figure-3021]
+   ![22. ábra: Válassza ki a számítógép négyzet jelölését.][sap-ha-guide-figure-3021]
 
    _**22. ábra:** Válassza ki a **számítógépek** jelölőnégyzetet_
 
@@ -701,7 +701,7 @@ Ezeket a feladatokat a fürt tanúsító fájlmegosztás konfigurálása foglalj
 
 5. Válassza ki a **biztonsági** lapján a megosztást, és állítsunk be részletesebb a fürtnévobjektum engedélyeit.
 
-   ![23\. ábra: A fájl megosztási kvórum a fürt neve objektum biztonsági attribútumainak beállítása][sap-ha-guide-figure-3022]
+   ![23. ábra: A fájl megosztási kvórum a fürt neve objektum biztonsági attribútumainak beállítása][sap-ha-guide-figure-3022]
 
    _**23. ábra:** A fájl megosztási kvórum a fürt neve objektum biztonsági attribútumainak beállítása_
 
@@ -709,31 +709,31 @@ Ezeket a feladatokat a fürt tanúsító fájlmegosztás konfigurálása foglalj
 
 1. Nyissa meg a fürtkvórum beállítása varázsló konfigurálja.
 
-   ![24\. ábra: A konfigurálás fürtkvórum beállítása varázsló indítása][sap-ha-guide-figure-3023]
+   ![24. ábra: A konfigurálás fürtkvórum beállítása varázsló indítása][sap-ha-guide-figure-3023]
 
    _**24. ábra:** A konfigurálás fürtkvórum beállítása varázsló indítása_
 
 2. Az a **kvórumbeállítások kijelölése** lapra, jelölje be **a kvórum tanúsítójának kijelölése**.
 
-   ![25\. ábra: A kvórumkonfiguráció közül választhat][sap-ha-guide-figure-3024]
+   ![25. ábra: A kvórumkonfiguráció közül választhat][sap-ha-guide-figure-3024]
 
    _**25. ábra:** A kvórumkonfiguráció közül választhat_
 
 3. Az a **kvórum Tanúsítójának kijelölése** lapra, jelölje be **konfigurálja egy tanúsító fájlmegosztást**.
 
-   ![26\. ábra: Válassza ki a tanúsító fájlmegosztás][sap-ha-guide-figure-3025]
+   ![26. ábra: Válassza ki a tanúsító fájlmegosztás][sap-ha-guide-figure-3025]
 
    _**26. ábra:** Válassza ki a tanúsító fájlmegosztás_
 
 4. Adja meg a fájlmegosztás UNC elérési útját (a példánkban a \\domcontr-0\FSW). A módosításokat végezhet listájának megtekintéséhez válasszon **tovább**.
 
-   ![27\. ábra: Adja meg a fájlmegosztás helyét a tanúsító fájlmegosztás][sap-ha-guide-figure-3026]
+   ![27. ábra: Adja meg a fájlmegosztás helyét a tanúsító fájlmegosztás][sap-ha-guide-figure-3026]
 
    _**27. ábra:** Adja meg a fájlmegosztás helyét a tanúsító fájlmegosztás_
 
 5. Válassza ki a módosításokat, majd válassza ki **tovább**. Sikeresen konfigurálja újra a fürt konfigurációját a 28. ábrán látható módon kell megadnia:  
 
-   ![28\. ábra: Jóváhagyás, hogy a fürt már újra konfigurálni][sap-ha-guide-figure-3027]
+   ![28. ábra: Jóváhagyás, hogy a fürt már újra konfigurálni][sap-ha-guide-figure-3027]
 
    _**28. ábra:** Jóváhagyás, hogy a fürt már újra konfigurálni_
 
@@ -762,11 +762,11 @@ Ezek a feladatok telepítése az SIOS DataKeeper Cluster Edition a SAP ASCS/SCS 
 
 - A szerepkörök hozzáadása és szolgáltatások varázsló használata a Windows, 29. ábrán látható módon:
 
-  ![29\. ábra: .NET-keretrendszer 3.5 telepítése a szerepkörök hozzáadása és a szolgáltatások varázsló használatával][sap-ha-guide-figure-3028]
+  ![29. ábra: .NET-keretrendszer 3.5 telepítése a szerepkörök hozzáadása és a szolgáltatások varázsló használatával][sap-ha-guide-figure-3028]
 
   _**29. ábra:** .NET-keretrendszer 3.5 telepítése a szerepkörök hozzáadása és a szolgáltatások varázsló használatával_
 
-  ![30\. ábra: Telepítési folyamatjelző, .NET-keretrendszer 3.5 telepítése a szerepkörök hozzáadása és a szolgáltatások varázsló használatával][sap-ha-guide-figure-3029]
+  ![30. ábra: Telepítési folyamatjelző, .NET-keretrendszer 3.5 telepítése a szerepkörök hozzáadása és a szolgáltatások varázsló használatával][sap-ha-guide-figure-3029]
 
   _**30. ábra:** Telepítési folyamatjelző, .NET-keretrendszer 3.5 telepítése a szerepkörök hozzáadása és a szolgáltatások varázsló használatával_
 
@@ -793,31 +793,31 @@ Az SIOS DataKeeper telepítése:
 
    ![Az SIOS telepítő][sap-ha-guide-figure-3030]
 
-   ![31\. ábra: Az SIOS DataKeeper telepítés első oldal][sap-ha-guide-figure-3031]
+   ![31. ábra: Az SIOS DataKeeper telepítés első oldal][sap-ha-guide-figure-3031]
 
    _**31. ábra:** Az SIOS DataKeeper telepítés első oldal_
 
 2. A párbeszédpanelen válassza ki a **Igen**.
 
-   ![32\. ábra: DataKeeper tájékoztatja, hogy a szolgáltatás le lesz tiltva][sap-ha-guide-figure-3032]
+   ![32. ábra: DataKeeper tájékoztatja, hogy a szolgáltatás le lesz tiltva][sap-ha-guide-figure-3032]
 
    _**32. ábra:** DataKeeper tájékoztatja, hogy a szolgáltatás le lesz tiltva_
 
 3. A párbeszédpanelen, azt javasoljuk, hogy bejelölte **tartomány vagy a kiszolgáló fiók**.
 
-   ![33\. ábra: Az SIOS DataKeeper felhasználó kiválasztása][sap-ha-guide-figure-3033]
+   ![33. ábra: Az SIOS DataKeeper felhasználó kiválasztása][sap-ha-guide-figure-3033]
 
    _**33. ábra:** Az SIOS DataKeeper felhasználó kiválasztása_
 
 4. Adja meg a tartományi fiók felhasználói nevét és jelszavát, amelyet az SIOS DataKeeper létrehozott.
 
-   ![34\. ábra: Adja meg a tartományi felhasználónevet és jelszót az SIOS DataKeeper telepítése][sap-ha-guide-figure-3034]
+   ![34. ábra: Adja meg a tartományi felhasználónevet és jelszót az SIOS DataKeeper telepítése][sap-ha-guide-figure-3034]
 
    _**34. ábra:** Adja meg a tartományi felhasználónevet és jelszót az SIOS DataKeeper telepítése_
 
 5. Telepítse az SIOS DataKeeper példány a licenckulcs, 35. ábrán látható módon.
 
-   ![35\. ábra: Adja meg az SIOS DataKeeper licenckulcs][sap-ha-guide-figure-3035]
+   ![35. ábra: Adja meg az SIOS DataKeeper licenckulcs][sap-ha-guide-figure-3035]
 
    _**35. ábra:** Adja meg az SIOS DataKeeper licenckulcs_
 
@@ -829,19 +829,19 @@ Miután telepítette az SIOS DataKeeper mindkét csomóponton, indítsa el a kon
 
 1. Indítsa el a DataKeeper felügyeleti és a konfigurációs eszközt, és válassza ki **Kapcsolódás kiszolgálóhoz**.
 
-   ![36\. ábra: Az SIOS DataKeeper felügyeleti és a konfigurációs eszköz][sap-ha-guide-figure-3036]
+   ![36. ábra: Az SIOS DataKeeper felügyeleti és a konfigurációs eszköz][sap-ha-guide-figure-3036]
 
    _**36. ábra:** Az SIOS DataKeeper felügyeleti és a konfigurációs eszköz_
 
 2. Adja meg a nevét vagy a felügyeleti és a konfigurációs eszközt, és a egy második lépésben, a második csomópont csatlakozni az első fürtcsomópont TCP/IP-címét.
 
-   ![37\. ábra: A nevét, vagy a TCP/IP-címét az első csomópontjára a felügyeleti és a konfigurációs eszközt, és a egy második lépésben, a második csomópont kell csatlakozniuk.][sap-ha-guide-figure-3037]
+   ![37. ábra: A nevét, vagy a TCP/IP-címét az első csomópontjára a felügyeleti és a konfigurációs eszközt, és a egy második lépésben, a második csomópont kell csatlakozniuk.][sap-ha-guide-figure-3037]
 
    _**37. ábra:** A nevét, vagy a TCP/IP-címét az első csomópontjára a felügyeleti és a konfigurációs eszközt, és a egy második lépésben, a második csomópont kell csatlakozniuk._
 
 3. Hozzon létre a a két csomópont közötti replikálás feladatot.
 
-   ![38\. ábra: Replikációs feladat létrehozása][sap-ha-guide-figure-3038]
+   ![38. ábra: Replikációs feladat létrehozása][sap-ha-guide-figure-3038]
 
    _**38. ábra:** Replikációs feladat létrehozása_
 
@@ -849,17 +849,17 @@ Miután telepítette az SIOS DataKeeper mindkét csomóponton, indítsa el a kon
 
 4. Határozza meg a replikációs feladat nevét.
 
-   ![39\. ábra: Határozza meg a replikációs feladat nevét][sap-ha-guide-figure-3039]
+   ![39. ábra: Határozza meg a replikációs feladat nevét][sap-ha-guide-figure-3039]
 
    _**39. ábra:** Határozza meg a replikációs feladat nevét_
 
-   ![40\. ábra: A csomópont, amely lehet a jelenlegi forráscsomópont alapadatok megadása][sap-ha-guide-figure-3040]
+   ![40. ábra: A csomópont, amely lehet a jelenlegi forráscsomópont alapadatok megadása][sap-ha-guide-figure-3040]
 
    _**40. ábra:** A csomópont, amely lehet a jelenlegi forráscsomópont alapadatok megadása_
 
 5. Adja meg a nevét, a TCP/IP-cím és a cél uzlu lemezkötetet.
 
-   ![41\. ábra: A név, TCP/IP-cím és az aktuális cél csomópont lemezkötetet megadása][sap-ha-guide-figure-3041]
+   ![41. ábra: A név, TCP/IP-cím és az aktuális cél csomópont lemezkötetet megadása][sap-ha-guide-figure-3041]
 
    _**41. ábra:** A név, TCP/IP-cím és az aktuális cél csomópont lemezkötetet megadása_
 
@@ -867,25 +867,25 @@ Miután telepítette az SIOS DataKeeper mindkét csomóponton, indítsa el a kon
 
 7. Egy másik beállítást kell ellenőrizni az e a replikáció aszinkron vagy szinkron módon történik-e. Ha az SAP ASCS/SCS-konfigurációk, a szinkron replikáció kell használnia.  
 
-   ![42\. ábra: Replikálás részletei][sap-ha-guide-figure-3042]
+   ![42. ábra: Replikálás részletei][sap-ha-guide-figure-3042]
 
    _**42. ábra:** Replikálás részletei_
 
 8. Adja meg e kell-e a kötetet, amelyet a rendszer replikálja a replikálási feladat által jelölt a Windows Server feladatátvevő fürt konfigurációjába megosztott lemez. Válassza ki az SAP ASCS/SCS konfiguráció **Igen** úgy, hogy a Windows-fürt látja a replikált kötet megosztott fürtkötet, ezáltal az lemez.
 
-   ![43\. ábra: Válassza az Igen lehetőséget a replikált kötetet állítja be a fürt kötet][sap-ha-guide-figure-3043]
+   ![43. ábra: Válassza az Igen lehetőséget a replikált kötetet állítja be a fürt kötet][sap-ha-guide-figure-3043]
 
    _**43. ábra:** Válassza ki **Igen** a replikált kötet beállítása a fürt kötetként_
 
    A kötet létrehozása után a DataKeeper felügyeleti és a konfigurációs eszköz azt mutatja, hogy a replikációs feladat aktív.
 
-   ![44\. ábra: DataKeeper szinkron tükrözés az SAP ASCS/SCS-megosztás lemez jelenleg aktív][sap-ha-guide-figure-3044]
+   ![44. ábra: DataKeeper szinkron tükrözés az SAP ASCS/SCS-megosztás lemez jelenleg aktív][sap-ha-guide-figure-3044]
 
    _**44. ábra:** DataKeeper szinkron tükrözés az SAP ASCS/SCS-megosztás lemez jelenleg aktív_
 
    Feladatátvevőfürt-kezelő most már látható DataKeeper lemezként, a lemez, 45. ábrán látható módon:
 
-   ![45\. ábra: A Feladatátvevőfürt-kezelő jeleníti meg a lemezt, hogy DataKeeper replikált][sap-ha-guide-figure-3045]
+   ![45. ábra: A Feladatátvevőfürt-kezelő jeleníti meg a lemezt, hogy DataKeeper replikált][sap-ha-guide-figure-3045]
 
    _**45. ábra:** A Feladatátvevőfürt-kezelő jeleníti meg a lemezt, hogy DataKeeper replikált_
 

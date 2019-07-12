@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/04/2019
 ms.author: cynthn;kareni
 ms.custom: include file
-ms.openlocfilehash: 46ade0ecb0e2e081585803a0b1bc7eab989e21e6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 169e25aeb8503a11f768a2a3062022eef51a76b8
+ms.sourcegitcommit: c0419208061b2b5579f6e16f78d9d45513bb7bbc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66735214"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67659820"
 ---
 **Utolsó dokumentum-frissítés**: 4. június 2019 3:00 PM PST.
 
@@ -21,7 +21,7 @@ Közzétételét egy [új osztályt a CPU biztonsági rések](https://portal.msr
 
 A Microsoft minden felhőszolgáltatásában megoldások telepítve van. Az infrastruktúra, amely Azure fut, és elkülöníti egymástól ügyfél munkaterheléseinek védelme alatt áll. Ez azt jelenti, hogy a lehetséges támadóknak ugyanazon az infrastruktúrán használatával nem támadásokkal szemben az alkalmazás a biztonsági rések használatával.
 
-Az Azure által használt [karbantartás megőrzése memória](https://docs.microsoft.com/azure/virtual-machines/windows/maintenance-and-updates#maintenance-not-requiring-a-reboot) , amikor csak lehetséges, az ügyfél gyakorolt hatás minimalizálása érdekében, és szükségtelenné teszi az újraindítások. Azure továbbra is élvezhetik ezen módszerek előnyeit, amikor telepítenek frissítéseket a gazdagépre, és a elkövettünk ügyfeleink védelme.
+Az Azure által használt [karbantartás megőrzése memória](https://docs.microsoft.com/azure/virtual-machines/windows/maintenance-and-updates#maintenance-that-doesnt-require-a-reboot) , amikor csak lehetséges, az ügyfél gyakorolt hatás minimalizálása érdekében, és szükségtelenné teszi az újraindítások. Azure továbbra is élvezhetik ezen módszerek előnyeit, amikor telepítenek frissítéseket a gazdagépre, és a elkövettünk ügyfeleink védelme.
 
 További információ a security hogyan integrált az Azure platformba érhető el a [Azure Security dokumentációja](https://docs.microsoft.com/azure/security/) hely. 
 

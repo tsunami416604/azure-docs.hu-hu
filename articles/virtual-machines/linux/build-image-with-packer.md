@@ -4,7 +4,7 @@ description: Ismerje meg, hogyan Packer használatával Linux virtuálisgép-ren
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: cynthn
-manager: jeconnoc
+manager: gwallace
 editor: tysonn
 tags: azure-resource-manager
 ms.assetid: ''
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 05/07/2019
 ms.author: cynthn
-ms.openlocfilehash: c0ec2616d8bdcf3cfd6d649f12e9bfceea33690a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4dcf6f2e26a2cc589e350ee2b40c10b85786d4be
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65467748"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67671768"
 ---
 # <a name="how-to-use-packer-to-create-linux-virtual-machine-images-in-azure"></a>Linux virtuálisgép-rendszerképek létrehozása az Azure-ban a Packer használatával
 Az Azure-ban minden virtuális gép (VM) jön létre egy rendszerképből, amely meghatározza a Linux-disztribúció és operációsrendszer-verzió. Rendszerképek előre telepített alkalmazások és konfigurációk tartalmazhatnak. Az Azure piactér sok első és a külső képek biztosít rendszerek leggyakoribb disztribúciói és alkalmazás-környezetekhez, vagy létrehozhat saját igényeire szabott lemezképek. Ez a cikk részletesen bemutatja a nyílt forráskódú eszköz [Packer](https://www.packer.io/) definiálására és egyéni lemezképeket az Azure-ban.

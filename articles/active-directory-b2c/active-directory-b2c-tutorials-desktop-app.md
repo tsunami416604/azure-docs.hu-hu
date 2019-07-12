@@ -10,12 +10,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: 474aad3b4b2019c9f79f8f1316dd88769e0fabbd
-ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
+ms.openlocfilehash: c84f336d11a512435e6d8eea814b41e9213eeb13
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66508206"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67835698"
 ---
 # <a name="tutorial-enable-authentication-in-a-native-client-application-using-azure-active-directory-b2c"></a>Oktatóanyag: Az Azure Active Directory B2C használatával natív ügyfélalkalmazás-hitelesítés engedélyezése
 
@@ -32,7 +32,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- [Felhasználói folyamatok létrehozása](tutorial-create-user-flows.md) ahhoz, hogy az alkalmazás felhasználói élményt. 
+- [Felhasználói folyamatok létrehozása](tutorial-create-user-flows.md) ahhoz, hogy az alkalmazás felhasználói élményt.
 - Telepítse [Visual Studio 2019](https://www.visualstudio.com/downloads/) a **.NET asztali fejlesztés** és **ASP.NET és webfejlesztési** számítási feladatokhoz.
 
 ## <a name="add-the-native-client-application"></a>A natív ügyfélalkalmazás hozzáadása
@@ -83,12 +83,12 @@ Nyomja meg **F5** hozhat létre és futtassa a mintát.
 ### <a name="sign-up-using-an-email-address"></a>Regisztrálás e-mail-címmel
 
 1. Kattintson a **bejelentkezés** felhasználói regisztráció. Ez a **B2C_1_signupsignin1** felhasználói folyamatot.
-2. Az Azure AD B2C megjelenít egy bejelentkezési oldalt egy regisztrációs hivatkozással. Mivel még nincs fiókja, kattintson a **Regisztráció** hivatkozásra. 
+2. Az Azure AD B2C megjelenít egy bejelentkezési oldalt egy regisztrációs hivatkozással. Mivel még nincs fiókja, kattintson a **Regisztráció** hivatkozásra.
 3. A regisztrációs munkafolyamat megjelenít egy lapot, amely a felhasználó azonosító adatait gyűjti be és ellenőrzi az e-mail-cím alapján. A munkafolyamat az a felhasználó jelszavát, és a felhasználói folyamat meghatározott attribútumokat is gyűjti.
 
-    Érvényes e-mail-címet használjon, és ellenőrizze az ellenőrző kód használatával. Állítson be egy jelszót. Adja meg a kért attribútumokhoz tartozó értékeket. 
+    Érvényes e-mail-címet használjon, és ellenőrizze az ellenőrző kód használatával. Állítson be egy jelszót. Adja meg a kért attribútumokhoz tartozó értékeket.
 
-    ![Regisztrációs munkafolyamat](media/active-directory-b2c-tutorials-desktop-app/sign-up-workflow.png)
+    ![Bejelentkezés – a vagy a regisztráláshoz munkafolyamat részeként jelenik meg a regisztrációs oldalra](media/active-directory-b2c-tutorials-desktop-app/sign-up-workflow.PNG)
 
 4. Kattintson a **Létrehozás** gombra egy helyi fiók létrehozására az Azure AD B2C-bérlőben.
 

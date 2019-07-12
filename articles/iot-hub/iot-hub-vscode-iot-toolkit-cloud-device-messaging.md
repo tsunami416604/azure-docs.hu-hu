@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 01/18/2019
 ms.author: junhan
-ms.openlocfilehash: f8799fcb06235474bb33cdaf0406300065208024
-ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
+ms.openlocfilehash: 1289e9c8f8cfc9360c9b2325507b43bab3a69028
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67543822"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67838510"
 ---
 # <a name="use-azure-iot-tools-for-visual-studio-code-to-send-and-receive-messages-between-your-device-and-iot-hub"></a>Az eszközön, és az IoT Hub közötti üzenetek küldése és fogadása az Azure IoT-eszközök a Visual Studio Code használatával
 
@@ -56,7 +56,7 @@ Megismerheti, hogyan használható az Azure IoT-eszközök a Visual Studio Code-
 5. Az eszközlistában megjelenő **Azure IoT Hub-eszközök** lapon pár másodpercen belül.
 
    > [!Note]
-   > A telepítést elvégezheti a **Set IoT Hub Connection String** (IoT Hub kapcsolati sztring beállítása) elemre kattintva is. Az IoT hub, amely az IoT-eszköz csatlakozik az előugró ablakban adja meg a kapcsolati karakterláncot.
+   > A telepítést elvégezheti a **Set IoT Hub Connection String** (IoT Hub kapcsolati sztring beállítása) elemre kattintva is. Adja meg a **iothubowner** az IoT hub, amely a felugró ablakban csatlakozik az IoT-eszköz házirend-kapcsolati karakterláncára.
 
 ## <a name="monitor-device-to-cloud-messages"></a>Eszköz a felhőbe irányuló üzenetek figyeléséhez
 

@@ -10,12 +10,12 @@ ms.subservice: design
 ms.date: 11/14/2018
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: 62213ca1910ff26287bcd398d89fe7f8caf3cfac
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a8f4412861eeaf2cbec360b13c0fe75e99d4fc1d
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66514677"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67839648"
 ---
 # <a name="sql-data-warehouse-capacity-limits"></a>Az SQL Data Warehouse kapacitáskorlátait
 Azure SQL Data Warehouse különböző összetevői számára engedélyezett maximális értékeket.
@@ -25,12 +25,12 @@ Azure SQL Data Warehouse különböző összetevői számára engedélyezett max
 |:--- |:--- |:--- |
 | [Az Adattárházegységek (DWU)](what-is-a-data-warehouse-unit-dwu-cdwu.md) |Maximális DWU egy egyetlen SQL Data warehouse-hoz | Gen1: DW6000<br></br>Gen2: DW30000c |
 | [Az Adattárházegységek (DWU)](what-is-a-data-warehouse-unit-dwu-cdwu.md) |Dtu-k alapértelmezett kiszolgálónként |54,000<br></br>Alapértelmezés szerint minden SQL-kiszolgáló (például a myserver.database.windows.net) rendelkezik a DTU-kvótát 54 000, amely lehetővé teszi, hogy legfeljebb DW6000c. Ez a kvóta egyszerűen egy biztonsági korlát. Növelheti a kvóta által [támogatási jegy létrehozása](sql-data-warehouse-get-started-create-support-ticket.md) és kiválasztásával *kvóta* a kérelem típusaként.  A DTU kiszámításához kell, DWU szükséges az összes szorozzuk meg a 7,5-öt vagy 9.0 szorzása a teljes cDWU szükséges. Példa:<br></br>DW6000 x 7.5 = 45 000 egységnyi dtu-k<br></br>9\.0 = 54 000 x DW6000c dtu-k.<br></br>Az aktuális DTU-felhasználást az SQL server lehetőség a portálon is megtekintheti. A DTU-kvótába a szüneteltetett és a nem szüneteltetett adatbázisok is beleszámítanak. |
-| Adatbázis-kapcsolat |Maximális párhuzamosan futó munkamenetek megnyitása |1024<br/><br/>Egyidejű nyitott munkamenetek száma a kiválasztott DWU alapján változhat. DWU600c, és legfeljebb 1024 támogatja a fenti nyissa meg a munkamenetek. DWU500c és támogatják az 512 maximális párhuzamos nyissa meg a munkamenet időkorlátjának. Vegye figyelembe, hogy a lekérdezések, amelyekkel végrehajtható egy időben száma korlátozva van. Az egyidejűségi korlát túllépésekor a kérelem hiányzóra egy belső várólista ahol vár feldolgozásra. |
+| Adatbázis-kapcsolat |Maximális párhuzamosan futó munkamenetek megnyitása |1024<br/><br/>Egyidejű nyitott munkamenetek száma a kiválasztott DWU alapján változhat. DWU600c, és legfeljebb 1024 támogatja a fenti nyissa meg a munkamenetek. DWU500c és alább, a maximális párhuzamos munkamenetekkel legfeljebb 512 támogatja. Vegye figyelembe, hogy a lekérdezések, amelyekkel végrehajtható egy időben száma korlátozva van. Az egyidejűségi korlát túllépésekor a kérelem hiányzóra egy belső várólista ahol vár feldolgozásra. |
 | Adatbázis-kapcsolat |Maximális memória előkészített utasításokat |20 MB |
 | [Számítási feladatok kezelése](resource-classes-for-workload-management.md) |Maximális párhuzamos lekérdezések |128<br/><br/> Az SQL Data Warehouse legfeljebb 128 lekérdezést és üzenetsorok fennmaradó lekérdezéseket hajthat végre.<br/><br/>A párhuzamos lekérdezések számát csökkentheti, amikor a felhasználók vannak hozzárendelve, magasabb erőforrásosztályokat, vagy ha az SQL Data Warehouse rendelkezik egy alacsonyabb [adattárházegység](memory-and-concurrency-limits.md) beállítás. Néhány lekérdezésnél, például a DMV-lekérdezés, mindig engedélyezett futtassa, és nincs hatással a párhuzamos lekérdezés-korlátot. A párhuzamos lekérdezés-végrehajtás további részletekért tekintse meg a [párhuzamosság maximális értékeket](memory-and-concurrency-limits.md#concurrency-maximums) cikk. |
 | [tempdb](sql-data-warehouse-tables-temporary.md) |Maximális GB |DW100, 399 Gigabájtonként. Ezért DWU1000, a tempdb van méretezve, hogy 3.99 TB. |
 
-## <a name="database-objects"></a>Adatbázis-objektumok
+## <a name="database-objects"></a>adatbázis-objektumok
 | Category | Leírás | Maximum |
 |:--- |:--- |:--- |
 | Adatbázis |Max. mérete | Gen1: A lemezen tömörített 240 TB. Ez a terület független terület a tempdb vagy a naplóhoz, és ezért ez a terület dedikált állandó táblák.  Fürtözött oszlopcentrikus tömörítés becsült 5 X.  Ez a fajta tömörítés lehetővé teszi, hogy az adatbázisnak, hogy megközelítőleg 1 PB, ha minden tábla fürtözött oszlopcentrikus (az alapértelmezett táblatípus). <br/><br/> Gen2: 240TB sortárindex és korlátlan tárolási oszlopcentrikus táblák |

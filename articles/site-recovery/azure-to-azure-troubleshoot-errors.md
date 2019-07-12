@@ -2,18 +2,18 @@
 title: Az Azure Site Recovery hibaelhárítása az Azure – Azure replikációval kapcsolatos problémákat és hibákat |} A Microsoft Docs
 description: Vész-helyreállítási Azure-beli virtuális gépek replikálása hibáinak és problémáinak elhárítása
 services: site-recovery
-author: sujayt
+author: asgang
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
 ms.date: 04/08/2019
-ms.author: sujayt
-ms.openlocfilehash: 3c87e159022b6dcf13daf2a2659c88c0529a8f48
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: asgang
+ms.openlocfilehash: 1e0450554597d99aa99d6df51f22bfc90c0d92ad
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65796432"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67798562"
 ---
 # <a name="troubleshoot-azure-to-azure-vm-replication-issues"></a>Azure – Azure virtuális gép replikálási problémák elhárítása
 
@@ -156,7 +156,7 @@ A Site Recovery replikációja, a kimenő kapcsolat az adott URL-címek vagy IP-
 
 ### <a name="issue-1-failed-to-register-azure-virtual-machine-with-site-recovery-151195-br"></a>1. hiba: Nem sikerült regisztrálni az Azure virtuális gépet a Site Recovery (151195) </br>
 - **Lehetséges ok** </br>
-  - A site recovery végpontok DNS-feloldási hiba miatt nem létesíthető kapcsolat.
+  - A Site Recovery-végpontok DNS-feloldási hiba miatt nem létesíthető kapcsolat.
   - Ez gyakran látható ismételt védelem során a virtuális gép feladatátadása, de a DNS-kiszolgáló nem érhető el a DR régióban.
 
 - **Felbontás**
@@ -175,7 +175,7 @@ A Site Recovery replikációja, a kimenő kapcsolat az adott URL-címek vagy IP-
       - Hozzáadja az új címeket az Azure Active Directory (AAD) a jövőben, ha szeretne létrehozni új NSG-szabályokat.
 
 > [!NOTE]
-> Ha a virtuális gépek mögött **Standard** belső load balancer, akkor azt nem kell a hozzáférést, azaz O365 IP-címek Alapértelmezés szerint login.micorsoftonline.com. Változtassa meg, hogy **alapszintű** belső terheléselosztó típusa, vagy hozzon létre ki kötött access, említetteknek megfelelően az [cikk](https://aka.ms/lboutboundrulescli).
+> Ha a virtuális gépek mögött **Standard** belső load balancer, akkor azt nem kell a hozzáférést, azaz O365 IP-címek Alapértelmezés szerint login.microsoftonline.com. Változtassa meg, hogy **alapszintű** belső terheléselosztó típusa, vagy hozzon létre ki kötött access, említetteknek megfelelően az [cikk](https://aka.ms/lboutboundrulescli).
 
 ### <a name="issue-3-site-recovery-configuration-failed-151197"></a>3\. hiba: Konfigurálni a Site Recovery nem tudta (151197)
 - **Lehetséges ok** </br>
@@ -187,23 +187,23 @@ A Site Recovery replikációja, a kimenő kapcsolat az adott URL-címek vagy IP-
 
 ### <a name="issue-4-a2a-replication-failed-when-the-network-traffic-goes-through-on-premises-proxy-server-151072"></a>4\. hiba: A2A-replikáció sikertelen volt, amikor a hálózati forgalom halad át a helyszíni proxykiszolgáló (151072)
 - **Lehetséges ok** </br>
-  - Érvénytelenek az egyéni proxy beállításait, és az ASR a mobilitási szolgáltatás ügynökének fejeződött nincs automatikus észlelés a proxybeállításokat az Internet Explorer
+  - Érvénytelenek az egyéni proxy beállításait, és az Azure Site Recovery mobilitási szolgáltatás az ügynök fejeződött nincs automatikus észlelés a proxybeállításokat az Internet Explorer
 
 
 - **Felbontás**
   1. A mobilitási szolgáltatás ügynökének a proxybeállításokat az Internet Explorer a Windows és Linux rendszeren /etc/environment észleli.
-  2. Ha inkább a állítsa be a proxy csak az automatikus rendszer-Helyreállítás a mobilitási szolgáltatást, majd megadhatja a proxy adatait a ProxyInfo.conf helyen található:</br>
+  2. Ha szeretné beállítani a proxy csak az Azure Site Recovery mobilitási szolgáltatást, majd megadhat a proxy adatait a ProxyInfo.conf helyen található:</br>
      - ``/usr/local/InMage/config/`` a ***Linux***
      - ``C:\ProgramData\Microsoft Azure Site Recovery\Config`` a ***Windows***
   3. A ProxyInfo.conf kell a proxybeállításokat a következő INI-formátumban.</br>
                 *[proxy]*</br>
                 *Cím =http://1.2.3.4*</br>
                 *Port = 567*</br>
-  4. Csak támogatja az automatikus rendszer-Helyreállítás a mobilitási szolgáltatás ügynökének ***nem hitelesített proxyk***.
+  4. Az Azure Site Recovery mobilitási szolgáltatás az ügynök csak támogatja ***nem hitelesített proxyk***.
 
 
 ### <a name="fix-the-problem"></a>A probléma megoldása
-Az engedélyezési listára [a szükséges URL-címek](azure-to-azure-about-networking.md#outbound-connectivity-for-urls) vagy a [szükséges IP-címtartományok](azure-to-azure-about-networking.md#outbound-connectivity-for-ip-address-ranges), kövesse a [hálózati dokumentum](site-recovery-azure-to-azure-networking-guidance.md).
+Hogy [a szükséges URL-címek](azure-to-azure-about-networking.md#outbound-connectivity-for-urls) vagy a [szükséges IP-címtartományok](azure-to-azure-about-networking.md#outbound-connectivity-for-ip-address-ranges), kövesse a [hálózati dokumentum](site-recovery-azure-to-azure-networking-guidance.md).
 
 ## <a name="disk-not-found-in-the-machine-error-code-150039"></a>A lemez nem található a gépen (hibakód: 150039)
 
@@ -232,17 +232,42 @@ Választhat a lemezek védelméhez, vagy figyelmen kívül hagyhatja a figyelmez
  ![add_disks](./media/azure-to-azure-troubleshoot-errors/add-disk.png)
 2. A figyelmeztető üzenet elvetéséhez. Lépjen a replikált elemek > virtuális gép > kattintson az Áttekintés szakaszban Elvetés riasztásához.
 ![dismiss_warning](./media/azure-to-azure-troubleshoot-errors/dismiss-warning.png)
-## <a name="unable-to-see-the-azure-vm-or-resource-group--for-selection-in-enable-replication"></a>Nem látja az Azure virtuális Gépen vagy az erőforrás csoport kiválasztása a "replikáció engedélyezése"
 
- **1. ok:  Erőforráscsoport és a forrás virtuális gép máshol helyezkedik el** <br>
-Az Azure Site Recovery jelenleg, amely forrás régió erőforráscsoportot és a virtuális gépek megbízások kell ugyanazon a helyen. Ha ez nem így majd akkor nem tudná az védelem alatt a virtuális gép található. Áthidaló megoldásként engedélyezheti a replikációt a virtuális gépről a Recovery services-tároló helyett. Lépjen a Sourece virtuális gépek > Tulajdonságok > vészhelyreállítás és a replikáció engedélyezése.
 
-**2. ok: Erőforráscsoport nem része a kiválasztott előfizetéshez** <br>
-Meg nem találja az erőforráscsoport a védelem idején, ha nem az adott előfizetés részeként. Győződjön meg arról, hogy az erőforráscsoport tartozik-e az előfizetés, amely használatban van.
+## <a name="remove-the-virtual-machine-from-the-vault-completed-with-information--error-code-150225"></a>A virtuális gép eltávolítása a tárolóból (hibakód: 150225) információkkal fejeződött be
+A virtuális gép védelmének időpontjában Azure Site Recovery egyes hivatkozások a forrás virtuális gépen hoz létre. Amikor eltávolítja a védelmet, vagy tiltsa le a replikációt, az Azure Site Recovery karbantartási feladat részeként eltávolítja ezeket a hivatkozásokat. Abban az esetben, ha a virtuális gép olyan erőforrás-zárolással rendelkezik majd a feladat beolvasása befejeződött, az adatokat. Azt jelzi, hogy a virtuális gép el lett távolítva a Recovery services-tároló, de néhány elavult csatolása nem sikerült tisztítani a forrásgép.
 
- **3. ok: Elavult konfiguráció** <br>
-Ha nem látja a virtuális gép replikációs engedélyezni szeretné, akkor előfordulhat, hogy egy elavult a Site Recovery-konfiguráció miatt maradhat az Azure virtuális gépen. Az elavult konfiguráció maradhat egy Azure virtuális gépen a következő esetekben:
+Figyelmen kívül hagyhatja ezt a figyelmeztetést, ha soha nem kíván a virtuális gép védelme újra a jövőben. Azonban ha később védelme érdekében a virtuális gép rendelkezik majd meg kell törölni a hivatkozások említetteknek megfelelően az alábbi lépéseket. 
 
+**Ha ezt nem teszi meg a tiszta majd:**
+
+1.  Az alatt a Recovery services-tároló keresztül replikálást a virtuális gép nem jelennek meg. 
+2.  Ha azelőtt próbál védelmet a virtuális gép keresztül **virtuális gép > Beállítások > vész-helyreállítási** hajtja végre a következő hibával meghiúsult "*replikáció nem engedélyezhető a meglévő elavult erőforrás-hivatkozások a virtuális gépmiatt*".
+
+
+### <a name="fix-the-problem"></a>A probléma megoldása
+
+>[!NOTE]
+>
+>Az Azure Site Recovery nem törli a forrás virtuális gép vagy hatással bármilyen módon lépések végrehajtása közben.
+>
+
+1. Távolítsa el a zárolást a virtuális gép vagy a virtuális gép erőforráscsoportot. Példa: Alább a virtuális gép neve "MoveDemo" az erőforrás zárolással rendelkezik, amely törölni kell.
+
+   ![Network_Selection_greyed_out](./media/site-recovery-azure-to-azure-troubleshoot/vm-locks.png)
+2. Töltse le a parancsfájl [elavult Azure Site Recovery konfiguráció](https://github.com/AsrOneSdk/published-scripts/blob/master/Cleanup-Stale-ASR-Config-Azure-VM.ps1).
+3. A szkript végrehajtása *Cleanup-stale-asr-config-Azure-VM.ps1*.
+4. Paraméterként adja meg az előfizetés-azonosító, virtuális gép erőforráscsoportja és a virtuális gép nevét.
+5. Ha Azure hitelesítő adatait kéri, adja meg, amely, és ellenőrizze, hogy a parancsfájl passzívra lekérdezi végrehajtja. 
+
+
+## <a name="replication-cannot-be-enabled-because-of-the-existing-stale-resource-links-on-the-vm-error-code-150226"></a>Replikáció nem engedélyezhető a meglévő elavult erőforrás-hivatkozások a virtuális gépen (hibakód: 150226) miatt
+
+**OK: Virtuális gép rendelkezik a korábbi Site Recovery általi védelmet a elavult konfiguráció**
+
+Az elavult konfiguráció maradhat egy Azure virtuális gépen a következő esetekben:
+
+- Engedélyezve van a replikáció az Azure virtuális gép Site Recovery használatával, és tiltsa le a replikációt, de a **forrásoldali virtuális gép volt egy erőforrás-zárolás**.
 - Engedélyezve van a replikáció az Azure virtuális gép Site Recovery használatával és anélkül, hogy explicit módon letiltja a virtuális gép replikációs törli a Site Recovery-tárból.
 - Engedélyezve van a replikáció az Azure virtuális gép Site Recovery használatával, és törölt anélkül, hogy explicit módon a replikáció a virtuális gép letiltása a Site Recovery-tároló tartalmazó erőforráscsoportot.
 
@@ -250,9 +275,52 @@ Ha nem látja a virtuális gép replikációs engedélyezni szeretné, akkor el�
 
 >[!NOTE]
 >
->Ne feledje frissíteni a "" AzureRM.Resources"" modul használata előtt az alábbi szkriptet.
+>Az Azure Site Recovery nem törli a forrás virtuális gép vagy hatással bármilyen módon lépések végrehajtása közben.
 
-Használhat [távolítsa el az elavult automatikus konfigurációs szkript](https://github.com/AsrOneSdk/published-scripts/blob/master/Cleanup-Stale-ASR-Config-Azure-VM.ps1) , és távolítsa el az elavult a Site Recovery konfigurálása az Azure virtuális gépen. A virtuális gép láthatja a elavult konfiguráció eltávolítása után kell lennie.
+
+1. Távolítsa el a zárolást a virtuális gép vagy a virtuális gép erőforráscsoportot, ha vannak ilyenek. *Példa:* Alább a virtuális gép neve "MoveDemo" az erőforrás zárolással rendelkezik, amely törölni kell.
+   
+   ![Network_Selection_greyed_out](./media/site-recovery-azure-to-azure-troubleshoot/vm-locks.png)
+2. Töltse le a parancsfájl [elavult Azure Site Recovery konfiguráció](https://github.com/AsrOneSdk/published-scripts/blob/master/Cleanup-Stale-ASR-Config-Azure-VM.ps1).
+3. A szkript végrehajtása *Cleanup-stale-asr-config-Azure-VM.ps1*.
+4. Paraméterként adja meg az előfizetés-azonosító, virtuális gép erőforráscsoportja és a virtuális gép nevét.
+5. Ha Azure hitelesítő adatait kéri, adja meg, amely, és ellenőrizze, hogy a parancsfájl passzívra lekérdezi végrehajtja.  
+
+## <a name="unable-to-see-the-azure-vm-or-resource-group--for-selection-in-enable-replication"></a>Nem látja az Azure virtuális Gépen vagy az erőforrás csoport kiválasztása a "replikáció engedélyezése"
+
+ **1. ok:  Erőforráscsoport és a forrás virtuális gép máshol helyezkedik el**
+ 
+Az Azure Site Recovery jelenleg, amely forrás régió erőforráscsoportot és a virtuális gépek megbízások kell ugyanazon a helyen. Ha ez nem így majd akkor nem tudná az védelem alatt a virtuális gép vagy az erőforráscsoportban található. 
+
+**Áthidaló megoldásként**, engedélyezheti a replikációt a virtuális gépről a Recovery services-tároló helyett. Lépjen a forrás virtuális gép > Tulajdonságok > vész-helyreállítási, és engedélyezze a replikációt.
+
+**2. ok: Erőforráscsoport nem része a kiválasztott előfizetéshez**
+
+Meg nem találja az erőforráscsoport a védelem idején, ha nem az adott előfizetés részeként. Győződjön meg arról, hogy az erőforráscsoport tartozik-e az előfizetés, amely használatban van.
+
+ **3. ok: Elavult konfiguráció**
+ 
+Ha nem látja a virtuális gép replikációs engedélyezni szeretné, akkor előfordulhat, hogy egy elavult a Site Recovery-konfiguráció miatt maradhat az Azure virtuális gépen. Az elavult konfiguráció maradhat egy Azure virtuális gépen a következő esetekben:
+
+- Engedélyezve van a replikáció az Azure virtuális gép Site Recovery használatával és anélkül, hogy explicit módon letiltja a virtuális gép replikációs törli a Site Recovery-tárból.
+- Engedélyezve van a replikáció az Azure virtuális gép Site Recovery használatával, és törölt anélkül, hogy explicit módon a replikáció a virtuális gép letiltása a Site Recovery-tároló tartalmazó erőforráscsoportot.
+
+- Engedélyezve van a replikáció az Azure virtuális gép Site Recovery használatával, és tiltsa le a replikációt, de a forrásoldali virtuális gép volt egy erőforrás-zárolás.
+
+### <a name="fix-the-problem"></a>A probléma megoldása
+
+> [!NOTE]
+>
+> Ne feledje frissíteni a "" AzureRM.Resources"" modul használata előtt az alábbi szkriptet. Az Azure Site Recovery nem törli a forrás virtuális gép vagy hatással bármilyen módon lépések végrehajtása közben.
+>
+
+1. Távolítsa el a zárolást a virtuális gép vagy a virtuális gép erőforráscsoportot, ha vannak ilyenek. *Példa:* Alább a virtuális gép neve "MoveDemo" az erőforrás zárolással rendelkezik, amely törölni kell.
+
+   ![Network_Selection_greyed_out](./media/site-recovery-azure-to-azure-troubleshoot/vm-locks.png)
+2. Töltse le a parancsfájl [elavult konfiguráció](https://github.com/AsrOneSdk/published-scripts/blob/master/Cleanup-Stale-ASR-Config-Azure-VM.ps1).
+3. A szkript végrehajtása *Cleanup-stale-asr-config-Azure-VM.ps1*.
+4. Paraméterként adja meg az előfizetés-azonosító, virtuális gép erőforráscsoportja és a virtuális gép nevét.
+5. Ha Azure hitelesítő adatait kéri, adja meg, amely, és ellenőrizze, hogy a parancsfájl passzívra lekérdezi végrehajtja.
 
 ## <a name="unable-to-select-virtual-machine-for-protection"></a>Válassza ki a virtuális gép védelemre nem sikerült
  **1. ok:  Virtuális gép rendelkezik néhány bővítmény telepítve állapota sikertelen, vagy nem válaszol** <br>
@@ -294,7 +362,7 @@ Ahhoz, hogy a gép replikációját, a kiépítési állapotot kell **sikeres**.
 
 **Hibakód:** | **Lehetséges okok** | **Javaslatok**
 --- | --- | ---
-151025<br></br>**Üzenet**: Nem sikerült telepíteni a Site recovery-bővítmény | – "A COM + System Application" szolgáltatás le van tiltva.</br></br>– "A kötet árnyékmásolata" szolgáltatás le van tiltva.| Állítsa a "COM + System Application" és "Kötet árnyékmásolata" szolgáltatásokat, automatikus vagy kézi indításúra.
+151025<br></br>**Üzenet**: Nem sikerült telepíteni a Site Recovery-bővítmény | – "A COM + System Application" szolgáltatás le van tiltva.</br></br>– "A kötet árnyékmásolata" szolgáltatás le van tiltva.| Állítsa a "COM + System Application" és "Kötet árnyékmásolata" szolgáltatásokat, automatikus vagy kézi indításúra.
 
 ### <a name="fix-the-problem"></a>A probléma megoldása
 
@@ -362,8 +430,8 @@ Few examples: </br>
 
 If the LVM device doesn't exist, fix either by creating it or remove the parameter for the same from the GRUB configuration files and then retry the enable protection. </br>
 
-## Site recovery mobility service update completed with warnings ( error code 151083)
-Site Recovery mobility service has many components, one of which is called filter driver. Filter driver gets loaded into system memory only at a time of system reboot. Whenever there are  site recovery mobility service updates that has filter driver changes, we update the machine but still gives you warning that some fixes require a reboot. It means that the filter driver fixes can only be realized when a new filter driver is loaded which can happen only at the time of system reboot.<br>
+## Site Recovery mobility service update completed with warnings ( error code 151083)
+Site Recovery mobility service has many components, one of which is called filter driver. Filter driver gets loaded into system memory only at a time of system reboot. Whenever there are  Site Recovery mobility service updates that has filter driver changes, we update the machine but still gives you warning that some fixes require a reboot. It means that the filter driver fixes can only be realized when a new filter driver is loaded which can happen only at the time of system reboot.<br>
 **Please note** that this is just a warning and existing replication keeps on working even after the new agent update. You can choose to reboot anytime you want to get the benefits of new filter driver but if you don't reboot than also old filter driver keeps on working. Apart from filter driver, **benefits of  any other enhancements and fixes in mobility service get realized without any reboot when the agent gets updated.**  
 
 

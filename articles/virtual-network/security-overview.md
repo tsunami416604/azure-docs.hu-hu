@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/26/2018
 ms.author: malop;kumud
-ms.openlocfilehash: a81232266749c14ce421ccf774e0cbd843b8b4eb
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 99a55d0cd06e6f1a92a70b20447d300dbc05eee1
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67436612"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67709538"
 ---
 # <a name="security-groups"></a>Biztonsági csoportok
 <a name="network-security-groups"></a>
@@ -38,7 +38,7 @@ A hálózati biztonsági csoportok nulla vagy tetszőleges számú szabályt tar
 |Protocol     | TCP, UDP vagy bármely, amely tartalmazza a (de nem kizárólag) a TCP, UDP és ICMP. Az ICMP önmagában nem adható meg, ezért ha erre van szüksége, használja a Bármely lehetőséget. |
 |Direction| Megadja, hogy a szabály a bejövő vagy a kimenő adatforgalomra vonatkozik.|
 |Porttartomány     |Megadhat egy egyéni portot vagy egy porttartományt is. Megadhatja például a 80-as portot vagy a 10000–10005 tartományt. Tartományok megadásával kevesebb biztonsági szabályt kell majd létrehoznia. Kibővített biztonsági szabályok kizárólag a Resource Manager-alapú üzemi modellben létrehozott hálózati biztonsági csoportokban hozhatóak létre. A klasszikus üzemi modellben létrehozott hálózati biztonsági csoportokban egyazon szabályban nem adhat meg több portot vagy porttartományt.   |
-|Műveletek     | Engedélyezés vagy letiltás        |
+|Action     | Engedélyezés vagy letiltás        |
 
 A hálózati biztonsági csoportok biztonsági szabályait a rendszer prioritásuk szerint, a rekordokkal kapcsolatos 5 információ (forrás, forrásport, cél, célport és protokoll) alapján értékeli ki, hogy a forgalom engedélyezve vagy tiltva legyen. Egy folyamatrekord jön létre a meglévő kapcsolatokhoz. A kommunikáció a folyamatrekordok kapcsolati állapota alapján lesz engedélyezve vagy tiltva. A folyamatrekord teszi lehetővé a hálózati biztonsági csoport állapotalapú működését. Ha bármely címre meghatároz egy kimenő biztonsági szabályt a 80-as porton keresztül, nem szükséges biztonsági szabályt megadnia a bejövő forgalomra a válaszhoz. Ha a kommunikáció kívülről indul, csak egy bejövő biztonsági szabályt kell meghatároznia. Ennek az ellenkezője is igaz. Ha egy porton engedélyezett a bejövő forgalom, nem szükséges egy kimenő biztonsági szabályt is megadni ugyanazon a porton történő válaszadáshoz.
 Előfordulhat, hogy a meglévő kapcsolatok nem szakadnak meg az adatfolyamot engedélyező biztonsági szabály eltávolításakor. Az adatfolyam megszakad, ha a kapcsolatokat leállítják, és legalább néhány percig nincs forgalom egyik irányban sem.
@@ -82,6 +82,11 @@ A következő szolgáltatáscímkék érhetőek el használatra [hálózati bizt
 * **AzureBackup*** (csak Resource Manager): Ez a címke az AzureBackup szolgáltatás címelőtagjait. Ha megad *AzureBackup* értékénél, engedélyezett vagy tiltott forgalmat az AzureBackup. Ez a címke függőségi rendelkezik a **tárolási** és **AzureActiveDirectory** címke. Ez a címke ajánlott kimenő biztonsági szabályt. 
 * **AzureActiveDirectoryDomainServices*** (csak Resource Manager): Ez a címke az Azure Active Directory Domain Services dedikált központi telepítéséhez a felügyeleti forgalom címelőtagjait. Ha megad *AzureActiveDirectoryDomainServices* értékénél, engedélyezett vagy tiltott forgalmat a AzureActiveDirectoryDomainServices. Ez a címke bejövő/kimenő biztonsági szabály használata ajánlott.  
 * **SqlManagement*** (csak Resource Manager): Ez a címke azt jelzi, hogy a címelőtagokat a felügyeleti forgalom az SQL-dedikált központi telepítések. Ha megad *SqlManagement* értékénél, engedélyezett vagy tiltott forgalmat a SqlManagement. Ez a címke bejövő/kimenő biztonsági szabály használata ajánlott. 
+* **CognitiveServicesManagement** (csak Resource Manager): Ez a címke azt jelzi, hogy a forgalom a címelőtagokat a Cognitive Services számára. Ha megad *CognitiveServicesManagement* értékénél, engedélyezett vagy tiltott forgalmat a CognitiveServicesManagement. Ez a címke ajánlott kimenő biztonsági szabályt.  
+* **Dynamics365ForMarketingEmail** (csak Resource Manager): Ez a címke a Dynamics 365 marketing e-mail szolgáltatás címelőtagjait. Ha megad *Dynamics365ForMarketingEmail* értékénél, engedélyezett vagy tiltott forgalmat a Dynamics365ForMarketingEmail. Ha szeretné egy adott Dynamics365ForMarketingEmail való hozzáférés engedélyezése [régió](https://azure.microsoft.com/regions), megadhatja a régiót az alábbi formátumban Dynamics365ForMarketingEmail. [ régió neve].
+* **AzurePlatformDNS** (csak Resource Manager): Ez a címke azt jelzi, hogy a DNS, amely olyan alapvető infrastruktúra-szolgáltatás. Ha megad *AzurePlatformDNS* értékénél, tiltsa le az alapértelmezett [az Azure platform figyelembe](https://docs.microsoft.com/azure/virtual-network/security-overview#azure-platform-considerations) DNS-hez. Kérjük, szánjon járjon el, ez a címke használatával. Ez a címke használata előtt ajánlott a tesztelés. 
+* **AzurePlatformIMDS** (csak Resource Manager): Ez a címke azt jelzi, hogy IMDS, amely olyan alapvető infrastruktúra-szolgáltatás. Ha megad *AzurePlatformIMDS* értékénél, tiltsa le az alapértelmezett [az Azure platform figyelembe](https://docs.microsoft.com/azure/virtual-network/security-overview#azure-platform-considerations) IMDS számára. Kérjük, szánjon járjon el, ez a címke használatával. Ez a címke használata előtt ajánlott a tesztelés. 
+* **AzurePlatformLKM** (csak Resource Manager): Ez a címke azt jelzi, hogy Windows engedélyezési vagy a kulcskezelő szolgáltatás. Ha megad *AzurePlatformLKM* értékénél, tiltsa le az alapértelmezett [az Azure platform figyelembe](https://docs.microsoft.com/azure/virtual-network/security-overview#azure-platform-considerations) licenckezeléshez. Kérjük, szánjon járjon el, ez a címke használatával. Ez a címke használata előtt ajánlott a tesztelés. 
 
 > [!NOTE]
 > Az Azure-szolgáltatások szolgáltatáscímkék címelőtagjait használja a megadott felhőből. 
@@ -105,19 +110,19 @@ Az Azure a következő alapértelmezett szabályokat hozza létre a létrehozott
 
 #### <a name="allowvnetinbound"></a>AllowVNetInBound
 
-|Prioritás|source|Forrásportok|Cél|Célportok|Protocol|Access|
+|Prioritás|Source|Forrásportok|Cél|Célportok|Protocol|Access|
 |---|---|---|---|---|---|---|
-|65000|VirtualNetwork|0-65535|VirtualNetwork|0-65535|Összes|Engedélyezés|
+|65000|VirtualNetwork|0-65535|VirtualNetwork|0-65535|Összes|Allow|
 
 #### <a name="allowazureloadbalancerinbound"></a>AllowAzureLoadBalancerInBound
 
-|Prioritás|source|Forrásportok|Cél|Célportok|Protocol|Access|
+|Prioritás|Source|Forrásportok|Cél|Célportok|Protocol|Access|
 |---|---|---|---|---|---|---|
-|65001|AzureLoadBalancer|0-65535|0.0.0.0/0|0-65535|Összes|Engedélyezés|
+|65001|AzureLoadBalancer|0-65535|0.0.0.0/0|0-65535|Összes|Allow|
 
 #### <a name="denyallinbound"></a>DenyAllInbound
 
-|Prioritás|source|Forrásportok|Cél|Célportok|Protocol|Access|
+|Prioritás|Source|Forrásportok|Cél|Célportok|Protocol|Access|
 |---|---|---|---|---|---|---|
 |65500|0.0.0.0/0|0-65535|0.0.0.0/0|0-65535|Összes|Megtagadás|
 
@@ -125,19 +130,19 @@ Az Azure a következő alapértelmezett szabályokat hozza létre a létrehozott
 
 #### <a name="allowvnetoutbound"></a>AllowVnetOutBound
 
-|Prioritás|source|Forrásportok| Cél | Célportok | Protocol | Access |
+|Prioritás|Source|Forrásportok| Cél | Célportok | Protocol | Access |
 |---|---|---|---|---|---|---|
-| 65000 | VirtualNetwork | 0-65535 | VirtualNetwork | 0-65535 | Összes | Engedélyezés |
+| 65000 | VirtualNetwork | 0-65535 | VirtualNetwork | 0-65535 | Összes | Allow |
 
 #### <a name="allowinternetoutbound"></a>AllowInternetOutBound
 
-|Prioritás|source|Forrásportok| Cél | Célportok | Protocol | Access |
+|Prioritás|Source|Forrásportok| Cél | Célportok | Protocol | Access |
 |---|---|---|---|---|---|---|
-| 65001 | 0.0.0.0/0 | 0-65535 | Internet | 0-65535 | Összes | Engedélyezés |
+| 65001 | 0.0.0.0/0 | 0-65535 | Internet | 0-65535 | Összes | Allow |
 
 #### <a name="denyalloutbound"></a>DenyAllOutBound
 
-|Prioritás|source|Forrásportok| Cél | Célportok | Protocol | Access |
+|Prioritás|Source|Forrásportok| Cél | Célportok | Protocol | Access |
 |---|---|---|---|---|---|---|
 | 65500 | 0.0.0.0/0 | 0-65535 | 0.0.0.0/0 | 0-65535 | Összes | Megtagadás |
 
@@ -157,15 +162,15 @@ Az előző képen az *NIC1* és az *NIC2* az *AsgWeb* alkalmazásbiztonsági cso
 
 Ez a szabály az internetről a webkiszolgálókra irányuló forgalom engedélyezéséhez szükséges. Mivel az internetről bejövő forgalmat az alapértelmezett [DenyAllInbound](#denyallinbound) biztonsági szabály tiltja, az *AsgLogic* és az *AsgDb* alkalmazásbiztonsági csoportok esetében nincs szükség további szabályokra.
 
-|Prioritás|source|Forrásportok| Cél | Célportok | Protocol | Access |
+|Prioritás|Source|Forrásportok| Cél | Célportok | Protocol | Access |
 |---|---|---|---|---|---|---|
-| 100 | Internet | * | AsgWeb | 80 | TCP | Engedélyezés |
+| 100 | Internet | * | AsgWeb | 80 | TCP | Allow |
 
 ### <a name="deny-database-all"></a>Deny-Database-All
 
 Mivel az alapértelmezett [AllowVNetInBound](#allowvnetinbound) biztonsági szabály az azonos virtuális hálózaton lévő erőforrások között minden kommunikációt engedélyez, ez a szabály az összes erőforrástól érkező forgalom tiltásához szükséges.
 
-|Prioritás|source|Forrásportok| Cél | Célportok | Protocol | Access |
+|Prioritás|Source|Forrásportok| Cél | Célportok | Protocol | Access |
 |---|---|---|---|---|---|---|
 | 120 | * | * | AsgDb | 1433 | Összes | Megtagadás |
 
@@ -173,9 +178,9 @@ Mivel az alapértelmezett [AllowVNetInBound](#allowvnetinbound) biztonsági szab
 
 Ez a szabály engedélyezi az *AsgLogic* alkalmazásbiztonsági csoportról az *AsgDb* alkalmazásbiztonsági csoportra irányuló forgalmat. A szabály prioritása magasabb a *Deny-Database-All* szabály prioritásánál. Ennek eredményeként ez a szabály a *Deny-Database-All* szabály előtt lesz kiértékelve, ezért az *AsgLogic* alkalmazásbiztonsági csoporttól érkező forgalom engedélyezve lesz, az összes többi forgalom pedig le lesz tiltva.
 
-|Prioritás|source|Forrásportok| Cél | Célportok | Protocol | Access |
+|Prioritás|Source|Forrásportok| Cél | Célportok | Protocol | Access |
 |---|---|---|---|---|---|---|
-| 110 | AsgLogic | * | AsgDb | 1433 | TCP | Engedélyezés |
+| 110 | AsgLogic | * | AsgDb | 1433 | TCP | Allow |
 
 Az alkalmazásbiztonsági csoportokat forrásként vagy célként megadó szabályok csak az adott alkalmazásbiztonsági csoport tagságába tartozó hálózati adapterekre lesznek alkalmazva. Ha a hálózati adapter nem tagja az alkalmazásbiztonsági csoportnak, a szabály nem lesz az adapterre alkalmazva, még akkor sem, ha a hálózati biztonsági csoport az alhálózathoz van rendelve.
 

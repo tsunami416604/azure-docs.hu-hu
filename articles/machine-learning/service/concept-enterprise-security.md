@@ -9,13 +9,13 @@ ms.topic: conceptual
 ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
-ms.date: 03/10/2019
-ms.openlocfilehash: e9002b96467d6fa3a5c4fb03fb20bde4e1bf87a1
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.date: 07/10/2019
+ms.openlocfilehash: 8682baa961ca3270e76614702b51ac50f197e847
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67059336"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67795491"
 ---
 # <a name="enterprise-security-for-azure-machine-learning-service"></a>Az Azure Machine Learning szolgáltatás nagyvállalati szintű biztonság
 
@@ -23,7 +23,7 @@ Ebben a cikkben ismertetik elérhető biztonsági funkciók és az Azure Machine
 
 Ha a használt felhő alapú szolgáltatás, korlátozhatja a hozzáférést a felhasználók, akiknek szükség van, ajánlott eljárás. Ekkor elindul a hitelesítési és engedélyezési modellje a szolgáltatás által használt megismerése. Előfordulhat, hogy a is szeretné korlátozni a hálózati hozzáférés, vagy biztonságosan csatlakozzon a helyszíni hálózat szervezhet marketingkampányokat, felhőalapú erőforrásokat. Adattitkosítás létfontosságú is, inaktív és az adatok szolgáltatások közötti áthelyezése közben. Végül, képeseknek kell lenniük a szolgáltatás figyelésére, és minden tevékenység egy naplók.
 
-## <a name="authentication"></a>Hitelesítés
+## <a name="authentication"></a>Authentication
 Ha az Azure Active Directory (Azure AD) van konfigurálva a többtényezős hitelesítés támogatott.
 * Ügyfél bejelentkezik az Azure ad-ben, és Azure Resource Manager-token beolvasása.  Felhasználók és az egyszerű szolgáltatások teljes mértékben támogatottak.
 * Ügyfél bemutatja az Azure Resource Manager-token & az összes Azure Machine Learning-szolgáltatások
@@ -51,7 +51,7 @@ print(primary)
 > Ha a kulcs újragenerálása van szüksége, használja a [`service.regen_key`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py)
 
 
-## <a name="authorization"></a>Engedélyezés
+## <a name="authorization"></a>Authorization
 
 Több munkaterületet is létrehozhat, és minden munkaterülethez több személy közösen használhat. Ha megoszt egy munkaterületet, szabályozhatja a hozzáférést a következő szerepkörök hozzárendelésével a felhasználók számára:
 * Tulajdonos

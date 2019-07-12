@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 6b16b6c4de8c8d2d7a821dd476f07c8ab1135408
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: f88d83a851ad878ac9ee9b0195816d2ca35e4c13
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60487256"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67839377"
 ---
 # <a name="datasets-in-azure-data-factory"></a>Adatkészleteket az Azure Data Factoryban
 > [!div class="op_single_selector" title1="Válassza ki a Data Factory szolgáltatás használ:"]
@@ -81,12 +81,12 @@ A következő táblázat ismerteti a fenti JSON-tulajdonságok:
 
 | Tulajdonság | Leírás | Szükséges | Alapértelmezett |
 | --- | --- | --- | --- |
-| name |Az adatkészlet nevét. Lásd: [Azure Data Factory – elnevezési szabályok](data-factory-naming-rules.md) elnevezési szabályait. |Igen |n/a |
+| name |Az adatkészlet nevét. Lásd: [Azure Data Factory – elnevezési szabályok](data-factory-naming-rules.md) elnevezési szabályait. |Igen |NA |
 | type |Az adatkészlet típusa. Adja meg a Data Factory által támogatott típusú (például: AzureBlob, AzureSqlTable). <br/><br/>További információkért lásd: [adatkészlettípus](#Type). |Igen |NA |
-| structure |Az adatkészlet sémája.<br/><br/>További információkért lásd: [adatkészlet-szerkezetekben](#Structure). |Nem |n/a |
-| typeProperties | A típus tulajdonságokat különböznek az egyes (például: Az Azure Blob, az Azure SQL-tábla). További információ a támogatott típusok és a hozzájuk tartozó tulajdonságok: [adatkészlettípus](#Type). |Igen |n/a |
+| structure |Az adatkészlet sémája.<br/><br/>További információkért lásd: [adatkészlet-szerkezetekben](#Structure). |Nem |NA |
+| typeProperties | A típus tulajdonságokat különböznek az egyes (például: Az Azure Blob, az Azure SQL-tábla). További információ a támogatott típusok és a hozzájuk tartozó tulajdonságok: [adatkészlettípus](#Type). |Igen |NA |
 | external | Adja meg, hogy data factory-folyamatok explicit módon előállított adatkészlet vagy nem a logikai jelzőt. Ha a tevékenység bemeneti adatkészlete nem a jelenlegi folyamat által előállított, ezt a jelzőt true értékre. Ezt a jelzőt igaz értékre a folyamat az első tevékenység bemeneti adatkészlete esetében.  |Nem |false |
-| availability | Határozza meg (például óránként vagy naponta) feldolgozási időszakának vagy a slicing az adatkészlet üzemi modellt. Egy tevékenység futtatása által felhasznált és előállított adatok minden egysége adatszelet nevezzük. Kimeneti adatkészlet rendelkezésre állásának napi (gyakorisága –, időköz – 1 nap) értékre van állítva, ha a szelet előállítása naponta. <br/><br/>További információkért lásd: az adatkészlet rendelkezésre. <br/><br/>Felosztási modelljét a adatkészlet részletes ismertetéséért tekintse meg a [ütemezés és végrehajtás](data-factory-scheduling-and-execution.md) cikk. |Igen |n/a |
+| availability | Határozza meg (például óránként vagy naponta) feldolgozási időszakának vagy a slicing az adatkészlet üzemi modellt. Egy tevékenység futtatása által felhasznált és előállított adatok minden egysége adatszelet nevezzük. Kimeneti adatkészlet rendelkezésre állásának napi (gyakorisága –, időköz – 1 nap) értékre van állítva, ha a szelet előállítása naponta. <br/><br/>További információkért lásd: az adatkészlet rendelkezésre. <br/><br/>Felosztási modelljét a adatkészlet részletes ismertetéséért tekintse meg a [ütemezés és végrehajtás](data-factory-scheduling-and-execution.md) cikk. |Igen |NA |
 | policy |Határozza meg a feltételeket és a feltétellel, hogy az adatkészlet szeleteit meg kell felelniük. <br/><br/>További információkért lásd: a [adatkészlet házirend](#Policy) szakaszban. |Nem |NA |
 
 ## <a name="dataset-example"></a>Példa adatkészlet
@@ -235,8 +235,8 @@ A következő táblázat ismerteti a rendelkezésre állási szakaszban használ
 
 | Tulajdonság | Leírás | Szükséges | Alapértelmezett |
 | --- | --- | --- | --- |
-| frequency |Megadja az adatkészlet szelet éles üzemi környezetek részei.<br/><br/><b>Támogatott gyakoriság</b>: Perc, óra, nap, hét, hónap |Igen |n/a |
-| interval |Megadja egy szorzóval gyakoriság esetén.<br/><br/>"X időköz" határozza meg, hogy milyen gyakran a szelet előállítása. Például ha az adatkészlet óradíjat kell szeletelt van szüksége, akkor be <b>gyakorisága</b> való <b>óra</b>, és <b>időköz</b> való <b>1</b>.<br/><br/>Vegye figyelembe, hogy ha megad **gyakorisága** , **perc**, az intervallum nem lehet kisebb, mint 15-re kell beállítani. |Igen |n/a |
+| frequency |Megadja az adatkészlet szelet éles üzemi környezetek részei.<br/><br/><b>Támogatott gyakoriság</b>: Perc, óra, nap, hét, hónap |Igen |NA |
+| interval |Megadja egy szorzóval gyakoriság esetén.<br/><br/>"X időköz" határozza meg, hogy milyen gyakran a szelet előállítása. Például ha az adatkészlet óradíjat kell szeletelt van szüksége, akkor be <b>gyakorisága</b> való <b>óra</b>, és <b>időköz</b> való <b>1</b>.<br/><br/>Vegye figyelembe, hogy ha megad **gyakorisága** , **perc**, az intervallum nem lehet kisebb, mint 15-re kell beállítani. |Igen |NA |
 | style |Itt adhatja meg, hogy a szeletet, vagy az időszak végén kell mutatni.<ul><li>StartOfInterval</li><li>EndOfInterval</li></ul>Ha **gyakorisága** értékre van állítva **hónap**, és **stílus** értékre van állítva **EndOfInterval**, a szelet előállítása a hónap utolsó napján. Ha **stílus** értékre van állítva **StartOfInterval**, a szelet előállítása a hónap első napján.<br/><br/>Ha **gyakorisága** értékre van állítva **nap**, és **stílus** értékre van állítva **EndOfInterval**, a szelet előállítása a nap az elmúlt órában.<br/><br/>Ha **gyakorisága** értékre van állítva **óra**, és **stílus** értékre van állítva **EndOfInterval**, a szelet előállítása a óra végén. Például egy szelet az du. 1-2 PM időszakban, a rendszer óránként létrehoz egy 2-kor. |Nem |EndOfInterval |
 | anchorDateTime |Az ütemező által használt adatkészlet szelet határok számítási idő abszolút pozícióját határozza meg. <br/><br/>Vegye figyelembe, hogy ha ez a tulajdonság a dátum részei, amelyek részletesebben, mint a megadott gyakorisággal rendelkezik, a részletesebb részek figyelmen kívül hagyja. Például ha a **időköz** van **óránként** (frequency: hour és interval: 1.), és a **anchorDateTime** tartalmaz **perceket és másodperceket**, akkor a perceket és másodperceket részeit **anchorDateTime** figyelmen kívül hagyja. |Nem |01/01/0001 |
 | offset |Időtartam, amely szerint a kezdő és befejező az összes adatkészlet szeleteit áttért. <br/><br/>Ne feledje, ha mindkét **anchorDateTime** és **eltolás** meg van adva, a kombinált shift eredménye. |Nem |NA |
@@ -282,7 +282,7 @@ A **házirend** az adatkészlet-definícióban szakasz definiálja a feltételek
 ### <a name="validation-policies"></a>Érvényesítési házirendek
 | Házirend neve | Leírás | A alkalmazni | Szükséges | Alapértelmezett |
 | --- | --- | --- | --- | --- |
-| minimumSizeMB |Azt ellenőrzi, hogy az adatok **Azure Blob storage** megfelel a minimális méret (megabájtban). |Azure Blob Storage |Nem |n/a |
+| minimumSizeMB |Azt ellenőrzi, hogy az adatok **Azure Blob storage** megfelel a minimális méret (megabájtban). |Azure Blob Storage |Nem |NA |
 | minimumRows |Azt ellenőrzi, hogy az adatok egy **Azure SQL database** vagy egy **Azure-tábla** sorok legkisebb számát tartalmazza. |<ul><li>Azure SQL-adatbázis</li><li>Azure-tábla</li></ul> |Nem |NA |
 
 #### <a name="examples"></a>Példák
@@ -328,7 +328,6 @@ Adat-előállítók által adatkészlet előállítása, hacsak azt kell megjel�
 Az adatkészletek a következő eszközök és SDK-k használatával hozhat létre:
 
 - Másolás varázsló
-- Azure Portal
 - Visual Studio
 - PowerShell
 - Azure Resource Manager-sablon

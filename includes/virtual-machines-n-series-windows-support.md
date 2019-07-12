@@ -8,33 +8,33 @@ ms.topic: include
 ms.date: 02/11/2019
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 12f053d7255c21441d78dab8c7937bcf45ec48c2
-ms.sourcegitcommit: 6e6813f8e5fa1f6f4661a640a49dc4c864f8a6cb
+ms.openlocfilehash: 0f87b122f81fbd04767354e623dcb808466ee1be
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67151817"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67673373"
 ---
 ## <a name="supported-operating-systems-and-drivers"></a>Támogatott operációs rendszerek és illesztőprogramok
 
 ### <a name="nvidia-tesla-cuda-drivers"></a>NVIDIA Tesla (CUDA) drivers
 
-Az NVIDIA Tesla (CUDA) illesztőprogramjait NC, NCv2, az NCv3, ND és NDv2-sorozat virtuális gépei (NV-sorozat nem kötelező) csak az alábbi táblázatban felsorolt operációs rendszerek támogatottak. Illesztőprogram letöltési hivatkozásai a rendszer az aktuális időpontjában aktuálisak. A legújabb illesztőprogramokért látogasson el az [NVIDIA](http://www.nvidia.com/) webhelyére.
+Az NVIDIA Tesla (CUDA) illesztőprogramjait NC, NCv2, az NCv3, ND és NDv2-sorozat virtuális gépei (NV-sorozat nem kötelező) csak az alábbi táblázatban felsorolt operációs rendszerek támogatottak. Illesztőprogram letöltési hivatkozásai a rendszer az aktuális időpontjában aktuálisak. A legújabb illesztőprogramokért látogasson el az [NVIDIA](https://www.nvidia.com/) webhelyére.
 
 > [!TIP]
 > A Windows Server virtuális gép manuális CUDA illesztőprogram telepítése helyett, üzembe helyezése Azure-beli [adatelemző virtuális gép](../articles/machine-learning/data-science-virtual-machine/overview.md) kép. A DSVM-kiadások, a Windows Server 2016-hoz a telepítés előtti NVIDIA CUDA illesztőprogramokat, a CUDA részletes Neurális hálózati könyvtár és egyéb eszközökkel.
 
 
-| Operációs rendszer | Illesztőprogram |
+| OS | Illesztőprogram |
 | -------- |------------- |
-| Windows Server 2016 | [398.75](http://us.download.nvidia.com/Windows/Quadro_Certified/398.75/398.75-tesla-desktop-winserver2016-international.exe) (.exe) |
-| Windows Server 2012 R2 | [398.75](http://us.download.nvidia.com/Windows/Quadro_Certified/398.75/398.75-tesla-desktop-winserver2008-2012r2-64bit-international.exe) (.exe) |
+| Windows Server 2016 | [398.75](https://us.download.nvidia.com/Windows/Quadro_Certified/398.75/398.75-tesla-desktop-winserver2016-international.exe) (.exe) |
+| Windows Server 2012 R2 | [398.75](https://us.download.nvidia.com/Windows/Quadro_Certified/398.75/398.75-tesla-desktop-winserver2008-2012r2-64bit-international.exe) (.exe) |
 
 ### <a name="nvidia-grid-drivers"></a>Az NVIDIA GRID illesztőprogramok
 
 A Microsoft újraterjeszti az NVIDIA GRID illesztőprogramok telepítők NV és virtuális munkaállomásait használt NVv2 sorozatú virtuális gépek vagy a virtuális alkalmazásokhoz. Csak GRID illesztőprogramok telepítése Azure virtuális gépeken NV, csak az alábbi táblázatban felsorolt operációs rendszerek a. Ezeket az illesztőprogramokat tartalmazza a licencelési rács virtuális GPU szoftverek az Azure-ban. Nem kell NVIDIA vGPU software license kiszolgáló beállítása.
 
-| Operációs rendszer | Illesztőprogram |
+| OS | Illesztőprogram |
 | -------- |------------- |
 | A Windows Server 2019<br/><br/>Windows Server 2016<br/><br/>Windows 10 rendszerű (akár 1809-verzió. Nem tartalmazó, illetve javítási szintjét 0 1809 nem támogatott.) | [RÁCS (425.31) 8.0](https://go.microsoft.com/fwlink/?linkid=874181) (.exe) |
 | Windows Server 2012 R2 | [RÁCS (425.31) 8.0](https://go.microsoft.com/fwlink/?linkid=874184) (.exe)  |

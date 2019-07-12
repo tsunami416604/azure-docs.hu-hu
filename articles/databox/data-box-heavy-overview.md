@@ -5,28 +5,27 @@ services: databox
 documentationcenter: NA
 author: alkohli
 ms.service: databox
-ms.subservice: pod
+ms.subservice: heavy
 ms.topic: overview
-ms.date: 06/19/2019
+ms.date: 07/03/2019
 ms.author: alkohli
-ms.openlocfilehash: 94ba0040b1de7e1f03825f1cd2ef2a6536343d96
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: 0f4657cdd71a104ca111f62a6e9757b5a33b46e8
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67271743"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67592301"
 ---
-# <a name="what-is-azure-data-box-heavy-preview"></a>Mi az az Azure Data Box Heavy? (előzetes verzió)
+# <a name="what-is-azure-data-box-heavy"></a>Mi az az Azure Data Box Heavy?
 
 Az Azure Data Box (nagy erőforrásigényű) lehetővé teszi, hogy több száz terabájt adat gyors, költségkímélő és az Azure és megbízható módon küldhet. Az adatok az Azure-bA kerüljenek elküldünk Önnek az 1-PB tárolási kapacitás, amely adja meg az adatait, és a Microsoftnak egy Data Box nehéz eszközt. Az eszköz rendelkezik egy rugged kis-és védelemmel való ellátásához és az adatok védelme az átvitel során.
 
-Data Box nehéz jelenleg előzetes verzióban érhető el. Iratkozzon fel, kérhet egy eszközhöz, az Azure Portalon keresztül. Miután az eszköz megkapta a helyi adatközpontban, állítsa be a helyi webes felhasználói felületen. Másolja át a kiszolgálóin található adatokat az eszközre, és küldje vissza az eszközt az Azure-nak. Az Azure-adatközpontban az adatok Azure Storage-fiókjában tároltuk van feltöltve. A teljes körű folyamat az Azure Portalon követheti.
+Miután az eszköz megkapta a helyi adatközpontban, állítsa be a helyi webes felhasználói felületen. Másolja át a kiszolgálóin található adatokat az eszközre, és küldje vissza az eszközt az Azure-nak. Az Azure-adatközpontban az adatok Azure Storage-fiókjában tároltuk van feltöltve. A teljes körű folyamat az Azure Portalon követheti.
 
 
 > [!IMPORTANT]
-> - A Data Box Heavy előzetes verzióban érhető el. A megoldás üzembe helyezése előtt tekintse át [az Azure az előzetes verziókra vonatkozó szolgáltatási feltételeit](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
-> - Eszköz igényléséhez regisztráljon a [Betekintő portálon](https://aka.ms/azuredatabox).
-> - Az előzetes verzió ideje alatt a Data Box Heavy az USA és az Európai Unió területén lévő ügyfelek számára szállítható ki. További információt a [Regionális elérhetőség](#region-availability) témakörben talál.
+> - Kérelem egy eszköz, jelentkezzen a [az Azure portal](https://portal.azure.com).
+
 
 ## <a name="use-cases"></a>Használati esetek
 
@@ -115,25 +114,14 @@ Régiónkénti elérhetőség a legfrissebb információk a Data Box nehéz, Ugr
 
 ## <a name="sign-up"></a>Regisztráció
 
-A Data Box Heavy előzetes verzióban érhető el, és a használatához regisztráció szükséges. A következő lépésekkel regisztrálhat Data Box (nagy erőforrásigényű):
+A következő lépésekkel regisztrálhat Data Box (nagy erőforrásigényű):
 
-1. Jelentkezzen be az Azure Portalra a https://aka.ms/azuredatabox címen.
+1. Jelentkezzen be az Azure Portalra a https://portal.azure.com címen.
 2. Kattintson a **+ erőforrás létrehozása** új erőforrás létrehozásához. Keressen az **Azure Data Box** kifejezésre. Válassza az **Azure Data Box** szolgáltatást.
-
-    <!--![The Data Box Heavy sign up 1]()-->
-
 3. Kattintson a **Create** (Létrehozás) gombra.
-
-    <!--![The Data Box Heavy sign up 2]()-->
-
-4. Válassza ki a Data Box Heavy előzetes verziójához használni kívánt előfizetést. Válassza ki a régiót, ahol üzembe szeretné helyezni a Data Box Heavy-erőforrást. A **Data Box Heavy** lehetőségnél kattintson a **Regisztráció** elemre.
-
-   <!--![The Data Box Heavy sign up 3]()-->
-
+4. Válassza ki a Data Box nehéz használni kívánt előfizetést. Válassza ki a régiót, ahol üzembe szeretné helyezni a Data Box Heavy-erőforrást. A **Data Box Heavy** lehetőségnél kattintson a **Regisztráció** elemre.
 5. Válaszoljon a kérdésekre vonatkozó adatok tartózkodási ország/régió, időkeretet, cél Azure-szolgáltatás adatátvitel, a hálózati sávszélességet, valamint az adatok átvitele gyakorisága. Tekintse át az adatvédelmi és felhasználási feltételeket, és a négyzet bejelölésével járuljon hozzá, hogy a Microsoft használhassa az e-mail-címét az Önnel való kapcsolatfelvételhez.
 
-    <!--![The Data Box Heavy sign up 4]()-->
-
-Ha Ön regisztrálva és engedélyezve van az előzetes verzió, a Data Box nehéz rendezheti.
+Miután jelentkezett, egy Data Box nehéz rendezheti.
 
     

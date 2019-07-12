@@ -18,12 +18,12 @@ ms.author: ryanwi
 ms.reviewer: andret
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0b820068f7bd59941346c8d2a3e8ede15252d58b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: cc42ab8a8cfb0d182c69bd0940e23cffdb2be0af
+ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65540266"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67807233"
 ---
 # <a name="how-to-get-appsource-certified-for-azure-active-directory"></a>AppSource Certified beszerzése az Azure Active Directory
 
@@ -56,19 +56,19 @@ Egybérlős alkalmazások engedélyezheti a *kapcsolatfelvételi* tapasztal, de 
 
 ## <a name="appsource-trial-experiences"></a>Próbaverziós élményt appsource-ban
 
-### <a name="free-trial-customer-led-trial-experience"></a>Ingyenes próbaverzió (ügyfél által vezetett kipróbálására nyújt lehetőséget) 
+### <a name="free-trial-customer-led-trial-experience"></a>Ingyenes próbaverzió (ügyfél által vezetett kipróbálására nyújt lehetőséget)
 
-Az ügyfél által irányított próbaverzió, amely az appsource-ban javasol, mert az egy kattintással az alkalmazáshoz való hozzáférést biztosít a számítógép jelenik meg. Az ábra bemutatja, hogyan alatt ez a tapasztalat hasonlóan néz ki:<br/><br/>
+Az ügyfél által irányított próbaverzió, amely az appsource-ban javasol, mert az egy kattintással az alkalmazáshoz való hozzáférést biztosít a számítógép jelenik meg. Az alábbi példa bemutatja, hogy ez a tapasztalat néz ki:
 
 <table >
 <tr>
-    <td valign="top" width="33%">1.<br/><img src="media/active-directory-devhowto-appsource-certified/customer-led-trial-step1.png" width="85%"/><ul><li>Felhasználói megkeresi az alkalmazást az AppSource webhelyen</li><li>"Ingyenes" lehetőség kiválasztása</li></ul></td>
-    <td valign="top" width="33%">2.<br/><img src="media/active-directory-devhowto-appsource-certified/customer-led-trial-step2.png" width="85%" /><ul><li>Appsource-ban átirányítja a felhasználót, hogy a webhely URL-címet</li><li>A webhely elindul a <i>single-sign-on</i> folyamatát automatikusan (betöltés)</li></ul></td>
-    <td valign="top" width="33%">3.<br/><img src="media/active-directory-devhowto-appsource-certified/customer-led-trial-step3.png" width="85%"/><ul><li>A Microsoft bejelentkezési oldala a rendszer átirányítja a felhasználót</li><li>A felhasználó megadja hitelesítő adatait, jelentkezzen be</li></ul></td>
+    <td valign="top" width="33%">1.<br/><img src="media/active-directory-devhowto-appsource-certified/customer-led-trial-step1.png" width="85%" alt-text="Shows Free trial for customer-led trial experience"/><ul><li>Felhasználói megkeresi az alkalmazást az AppSource webhelyen</li><li>"Ingyenes" lehetőség kiválasztása</li></ul></td>
+    <td valign="top" width="33%">2.<br/><img src="media/active-directory-devhowto-appsource-certified/customer-led-trial-step2.png" width="85%" alt-text="Shows how user is redirected to a URL in your web site"/><ul><li>Appsource-ban átirányítja a felhasználót, hogy a webhely URL-címet</li><li>A webhely elindul a <i>single-sign-on</i> folyamatát automatikusan (betöltés)</li></ul></td>
+    <td valign="top" width="33%">3.<br/><img src="media/active-directory-devhowto-appsource-certified/customer-led-trial-step3.png" width="85%" alt-text="Shows the Microsoft sign-in page"/><ul><li>A Microsoft bejelentkezési oldala a rendszer átirányítja a felhasználót</li><li>A felhasználó megadja hitelesítő adatait, jelentkezzen be</li></ul></td>
 </tr>
 <tr>
-    <td valign="top" width="33%">4.<br/><img src="media/active-directory-devhowto-appsource-certified/customer-led-trial-step4.png" width="85%"/><ul><li>Felhasználó beleegyezésével az alkalmazáshoz</li></ul></td>
-    <td valign="top" width="33%">5.<br/><img src="media/active-directory-devhowto-appsource-certified/customer-led-trial-step5.png" width="85%"/><ul><li>Jelentkezzen be befejeződött, és vissza a webhelyet a rendszer átirányítja a felhasználót</li><li>Felhasználó elindítja az ingyenes próbaverzióra</li></ul></td>
+    <td valign="top" width="33%">4.<br/><img src="media/active-directory-devhowto-appsource-certified/customer-led-trial-step4.png" width="85%" alt-text="Example: Consent page for an application"/><ul><li>Felhasználó beleegyezésével az alkalmazáshoz</li></ul></td>
+    <td valign="top" width="33%">5.<br/><img src="media/active-directory-devhowto-appsource-certified/customer-led-trial-step5.png" width="85%" alt-text="Shows the experience the user sees when redirected back to your site"/><ul><li>Jelentkezzen be befejeződött, és vissza a webhelyet a rendszer átirányítja a felhasználót</li><li>Felhasználó elindítja az ingyenes próbaverzióra</li></ul></td>
     <td></td>
 </tr>
 </table>
@@ -79,20 +79,20 @@ A partner kipróbálására nyújt lehetőséget is használhatja, amikor egy ma
 
 <table valign="top">
 <tr>
-    <td valign="top" width="33%">1.<br/><img src="media/active-directory-devhowto-appsource-certified/partner-led-trial-step1.png" width="85%"/><ul><li>Felhasználó az alkalmazás az AppSource webhelyen talál.</li><li>"Me Contact" lehetőség kiválasztása</li></ul></td>
-    <td valign="top" width="33%">2.<br/><img src="media/active-directory-devhowto-appsource-certified/partner-led-trial-step2.png" width="85%"/><ul><li>Kitölt egy űrlapot, a kapcsolattartási adatok</li></ul></td>
+    <td valign="top" width="33%">1.<br/><img src="media/active-directory-devhowto-appsource-certified/partner-led-trial-step1.png" width="85%" alt-text="Shows Contact me for partner-led trial experience"/><ul><li>Felhasználó az alkalmazás az AppSource webhelyen talál.</li><li>"Me Contact" lehetőség kiválasztása</li></ul></td>
+    <td valign="top" width="33%">2.<br/><img src="media/active-directory-devhowto-appsource-certified/partner-led-trial-step2.png" width="85%" alt-text="Shows an example form with contact info"/><ul><li>Kitölt egy űrlapot, a kapcsolattartási adatok</li></ul></td>
      <td valign="top" width="33%">3.<br/><br/>
         <table bgcolor="#f7f7f7">
         <tr>
-            <td><img src="media/active-directory-devhowto-appsource-certified/UserContact.png" width="55%"/></td>
+            <td><img src="media/active-directory-devhowto-appsource-certified/UserContact.png" width="55%" alt-text="Shows placeholder for user information"/></td>
             <td>Felhasználói adatok kap</td>
         </tr>
         <tr>
-            <td><img src="media/active-directory-devhowto-appsource-certified/SetupEnv.png" width="55%"/></td>
+            <td><img src="media/active-directory-devhowto-appsource-certified/SetupEnv.png" width="55%" alt-text="Shows placeholder for setup environment info"/></td>
             <td>Környezet beállítása</td>
         </tr>
         <tr>
-            <td><img src="media/active-directory-devhowto-appsource-certified/ContactCustomer.png" width="55%"/></td>
+            <td><img src="media/active-directory-devhowto-appsource-certified/ContactCustomer.png" width="55%" alt-text="Shows placeholder for trial info"/></td>
             <td>Ügyfél felhasználói próbaverziós információval</td>
         </tr>
         </table><br/><br/>
@@ -100,9 +100,9 @@ A partner kipróbálására nyújt lehetőséget is használhatja, amikor egy ma
     </td>
 </tr>
 <tr>
-    <td valign="top" width="33%">4.<br/><img src="media/active-directory-devhowto-appsource-certified/partner-led-trial-step3.png" width="85%"/><ul><li>Felhasználó hozzáfér az alkalmazáshoz, és a single-sign-on befejezéséhez</li></ul></td>
-    <td valign="top" width="33%">5.<br/><img src="media/active-directory-devhowto-appsource-certified/partner-led-trial-step4.png" width="85%"/><ul><li>Felhasználó beleegyezésével az alkalmazáshoz</li></ul></td>
-    <td valign="top" width="33%">6.<br/><img src="media/active-directory-devhowto-appsource-certified/customer-led-trial-step5.png" width="85%"/><ul><li>Jelentkezzen be befejeződött, és vissza a webhelyet a rendszer átirányítja a felhasználót</li><li>Felhasználó elindítja az ingyenes próbaverzióra</li></ul></td>
+    <td valign="top" width="33%">4.<br/><img src="media/active-directory-devhowto-appsource-certified/partner-led-trial-step3.png" width="85%" alt-text="Shows the application sign-in screen"/><ul><li>Felhasználó hozzáfér az alkalmazáshoz, és a single-sign-on befejezéséhez</li></ul></td>
+    <td valign="top" width="33%">5.<br/><img src="media/active-directory-devhowto-appsource-certified/partner-led-trial-step4.png" width="85%" alt-text="Shows an example consent page for an application"/><ul><li>Felhasználó beleegyezésével az alkalmazáshoz</li></ul></td>
+    <td valign="top" width="33%">6.<br/><img src="media/active-directory-devhowto-appsource-certified/customer-led-trial-step5.png" width="85%" alt-text="Shows the experience the user sees when redirected back to your site"/><ul><li>Jelentkezzen be befejeződött, és vissza a webhelyet a rendszer átirányítja a felhasználót</li><li>Felhasználó elindítja az ingyenes próbaverzióra</li></ul></td>
    
 </tr>
 </table>
@@ -110,16 +110,15 @@ A partner kipróbálására nyújt lehetőséget is használhatja, amikor egy ma
 ### <a name="more-information"></a>További információ
 
 Az appsource-ban próbaverziója kapcsolatos további információkért lásd: [ebben a videóban](https://aka.ms/trialexperienceforwebapps). 
- 
+
 ## <a name="next-steps"></a>További lépések
 
 - Az alkalmazásokat, amelyek támogatják az Azure AD bejelentkezési további információkért lásd: [hitelesítési forgatókönyvek az Azure ad-ben](https://docs.microsoft.com/azure/active-directory/develop/authentication-scenarios).
 - Az SaaS-alkalmazását az appsource-ban való információkért látogasson el lásd: [partneradatok appsource-ban](https://appsource.microsoft.com/partners)
 
-
 ## <a name="get-support"></a>Támogatás kérése
 
-Az Azure AD-integrációhoz használjuk [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-active-directory+appsource) támogatásához a Közösséggel. 
+Az Azure AD-integrációhoz használjuk [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-active-directory+appsource) támogatásához a Közösséggel.
 
 Először a Stack overflow-ra tesz fel kérdéseket, és keresse meg a meglévő problémák megtekintéséhez, ha valaki kérte a kérdés előtt erősen ajánlott. Győződjön meg arról, hogy a kérdéseit vagy megjegyzéseit címkével ellátott [ `[azure-active-directory]` és `[appsource]` ](https://stackoverflow.com/questions/tagged/azure-active-directory+appsource).
 
@@ -131,6 +130,5 @@ Használja a következő megjegyzéseket visszajelzést, és segítsen finomíth
 [AAD-Dev-Guide]: v1-overview.md
 [AAD-Howto-Multitenant-Overview]: howto-convert-app-to-be-multi-tenant.md
 [AAD-QuickStart-Web-Apps]: v1-overview.md#get-started
-
 
 <!--Image references-->

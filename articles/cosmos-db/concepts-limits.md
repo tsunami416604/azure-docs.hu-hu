@@ -1,21 +1,21 @@
 ---
-title: Az Azure Cosmos DB korlátai
-description: Ez a cikk ismerteti az Azure Cosmos DB korlátok.
+title: Az Azure Cosmos DB szolgáltatás kvótái
+description: Az Azure Cosmos DB szolgáltatás kvótái és az alapértelmezett korlátok a különböző erőforrástípusok.
 author: arramac
 ms.author: arramac
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/19/2019
-ms.openlocfilehash: 28eb7c6a11f71fa87835bcfe78e635753965bac3
-ms.sourcegitcommit: d3b1f89edceb9bff1870f562bc2c2fd52636fc21
+ms.date: 07/10/2019
+ms.openlocfilehash: 74df0038676e8459028084890da569ed3b75a682
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/04/2019
-ms.locfileid: "67561235"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67797288"
 ---
-# <a name="limits-in-azure-cosmos-db"></a>Az Azure Cosmos DB korlátai
+# <a name="azure-cosmos-db-service-quotas"></a>Az Azure Cosmos DB szolgáltatás kvótái
 
-Ez a cikk az Azure Cosmos DB szolgáltatásban a korlátok áttekintést nyújt.
+Ez a cikk áttekintést az alapértelmezett kvótákat a különböző erőforrások az Azure Cosmos DB-ben érhető el.
 
 ## <a name="storage-and-throughput"></a>Tárolási és átviteli sebesség
 

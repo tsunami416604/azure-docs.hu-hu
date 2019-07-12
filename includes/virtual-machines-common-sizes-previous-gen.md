@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/16/2019
 ms.author: cynthn;azcspmt;jonbeck
 ms.custom: include file
-ms.openlocfilehash: 464c7bcb510a2f6ab80fb11d722c241ec51a1b16
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: bb945695e0525876e044117e26c239e21d66473f
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66391322"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67673363"
 ---
 Ez a szakasz előző generációs szoftvereknél jobban virtuálisgép-méretek információkat biztosít. Ezeket a méreteket továbbra is használható, de nincsenek elérhető újabb generáció esetében. 
 
@@ -29,7 +29,7 @@ Prémium szintű Storage:  Nem támogatott
 
 Prémium szintű Storage gyorsítótárazást:  Nem támogatott
 
-| Méret         | vCPU | Memória: GiB | Ideiglenes tárterület (SSD) GiB | Ideiglenes tárterület maximális teljesítménye: IOPS / olvasási MBps / írási MBps | Adatlemezek max. száma / átviteli sebesség: IO | Hálózati adapterek max. száma / várt hálózati sávszélesség (Mbps) |
+| Méret         | vCPU | Memória: GiB | Ideiglenes tárterület (SSD) GiB | Ideiglenes tárterület maximális teljesítménye: IOPS / olvasási MBps / írási MBps | Adatlemezek max. száma / átviteli sebesség: IOPS | Hálózati adapterek max. száma / várt hálózati sávszélesség (Mbps) |
 |--------------|-----------|-------------|----------------|----------------------------------------------------------|-----------------------------------|------------------------------|
 | Standard_F1  | 1         | 2           | 16             | 3000 / 46 / 23                                           | 4 / 4x500                         | 2 / 750                 |
 | Standard_F2  | 2         | 4           | 32             | 6000 / 93 / 46                                           | 8 / 8x500                         | 2 / 1500                     |
@@ -47,7 +47,7 @@ Prémium szintű Storage:  Támogatott
 
 Prémium szintű Storage gyorsítótárazást:  Támogatott
 
-| Méret | vCPU | Memória: GiB | Ideiglenes tárterület (SSD) GiB | Adatlemezek max. száma | Gyorsítótárazott és ideiglenes tárolás max. átviteli sebessége IOPS / MBps (gyorsítótár mérete GiB-ban) | Max. gyorsítótárazás nélküli lemezteljesítmény: IOPS / MBps | Hálózati adapterek max. száma / várt hálózati sávszélesség (Mbps) |
+| Size | vCPU | Memória: GiB | Ideiglenes tárterület (SSD) GiB | Adatlemezek max. száma | Gyorsítótárazott és ideiglenes tárolás max. átviteli sebessége IOPS / MBps (gyorsítótár mérete GiB-ban) | Max. gyorsítótárazás nélküli lemezteljesítmény: IOPS / MBps | Hálózati adapterek max. száma / várt hálózati sávszélesség (Mbps) |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | Standard_F1s |1 |2 |4 |4 |4000 / 32 (12) |3200 / 48 |2 / 750 |
 | Standard_F2s |2 |4 |8 |8 |8000 / 64 (24) |6400 / 96 |2 / 1500 |
@@ -61,7 +61,7 @@ MBps = 10^6 bájt/másodperc és GiB = 1024^3 bájt.
 
 ## <a name="ls-series"></a>Ls-sorozat
 
-Az Ls-sorozat akár 32 virtuális processzort (vCPU) is biztosíthat az [Intel® Xeon® E5 v3 processzorcsalád](http://www.intel.com/content/www/us/en/processors/xeon/xeon-e5-solutions.html) használatával. Az Ls-sorozat ugyanakkora teljesítményt kínál, mint a G/GS-sorozat esetében, és vCPU-nként 8 GiB memóriát biztosít.
+Az Ls-sorozat akár 32 virtuális processzort (vCPU) is biztosíthat az [Intel® Xeon® E5 v3 processzorcsalád](https://www.intel.com/content/www/us/en/processors/xeon/xeon-e5-solutions.html) használatával. Az Ls-sorozat ugyanakkora teljesítményt kínál, mint a G/GS-sorozat esetében, és vCPU-nként 8 GiB memóriát biztosít.
 
 Az Ls-sorozat nem támogatja a helyi gyorsítótárral a növeli az iops-érték elérhető tartós adatlemezek létrehozását. A magas teljesítmény és a helyi lemez IOPS teszi NoSQL-tárolókat, mint például az Apache Cassandra- és MongoDB replikálhatja adatait, így több virtuális gép folyamataik megőrzésére a meghiúsulása esetén egyetlen virtuális Gépet, amely ideális Ls-sorozat virtuális gépei.
 
@@ -84,13 +84,13 @@ Az Ls-sorozat virtuális gépei lehetséges maximális lemezteljesítményét le
 
 ## <a name="nvv2-series-preview"></a>NVv2 sorozat (előzetes verzió)
 
-**Újabb mérete javaslat**: [NVv3 sorozat (előzetes verzió)](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-gpu#nvv2-series-preview)
+**Újabb mérete javaslat**: [NVv3 sorozat (előzetes verzió)](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-gpu#nvv3-series-preview-1)
 
-A NVv2-sorozat virtuális gépei által kezelt [NVIDIA Tesla M60](http://images.nvidia.com/content/tesla/pdf/188417-Tesla-M60-DS-A4-fnl-Web.pdf) gpu-k és az NVIDIA GRID technológia és az Intel Broadwell processzorokat. Ezek a virtuális gépek célozzák meg GPU gyorsított grafikai alkalmazásnál, és virtuális asztalok, ahol az ügyfelek szeretnék megjelenítheti az adatokat, szimulálása eredmények megtekintése érdekében CAD, vagy a renderelési és a stream tartalmát. Ezenkívül egyszeres pontosságú számítási feladatok is futtathatók az ilyen gépeken, például kódolás és renderelés. NVv2 virtuális gépek Premium Storage támogatja, és kapható kétszer a rendszer memória (RAM), az NV-sorozat elődjéhez képest.  
+A NVv2-sorozat virtuális gépei által kezelt [NVIDIA Tesla M60](https://images.nvidia.com/content/tesla/pdf/188417-Tesla-M60-DS-A4-fnl-Web.pdf) gpu-k és az NVIDIA GRID technológia és az Intel Broadwell processzorokat. Ezek a virtuális gépek célozzák meg GPU gyorsított grafikai alkalmazásnál, és virtuális asztalok, ahol az ügyfelek szeretnék megjelenítheti az adatokat, szimulálása eredmények megtekintése érdekében CAD, vagy a renderelési és a stream tartalmát. Ezenkívül egyszeres pontosságú számítási feladatok is futtathatók az ilyen gépeken, például kódolás és renderelés. NVv2 virtuális gépek Premium Storage támogatja, és kapható kétszer a rendszer memória (RAM), az NV-sorozat elődjéhez képest.  
 
 Minden egyes GPU NVv2 esetekben rács licencet tartalmaz. Ez a licenc rugalmasságot biztosít az NV-példány használata virtuális munkaállomás, egy-egy felhasználóhoz, vagy 25 párhuzamos felhasználó csatlakozhat a virtuális gép virtuális alkalmazás esetén.
 
-| Méret | vCPU | Memória: GiB | Ideiglenes tárterület (SSD) GiB | GPU | GPU-memóriával: GiB | Adatlemezek max. száma | Hálózati adapterek maximális száma | Virtuális munkaállomásait | A virtuális alkalmazások | 
+| Size | vCPU | Memória: GiB | Ideiglenes tárterület (SSD) GiB | GPU | GPU-memóriával: GiB | Adatlemezek max. száma | Hálózati adapterek maximális száma | Virtuális munkaállomásait | A virtuális alkalmazások | 
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | Standard_NV6s_v2 |6 |112 |320 | 1 | 8 | 12 | 4 | 1 | 25 |
 | Standard_NV12s_v2 |12 |224 |640 | 2 | 16 | 24 | 8 | 2 | 50 |

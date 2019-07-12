@@ -9,12 +9,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: cfb7dc8ef41c8829caebed6fff2d881093dbbe4d
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: c45c42077d6f07ef847d2b95d4c24310f51abca4
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67076241"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67621826"
 ---
 # <a name="get-started-using-azure-stream-analytics-real-time-fraud-detection"></a>Első lépések az Azure Stream Analytics használatával: Csalások valós idejű észlelése
 
@@ -188,7 +188,7 @@ Most, hogy a hívási események streamjével, állíthat egy Stream Analytics-f
    |**Beállítás**  |**Ajánlott érték**  |**Leírás**  |
    |---------|---------|---------|
    |Bemeneti alias  |  CallStream   |  Adja meg a feladat bemenetének azonosító nevét.   |
-   |Előfizetés   |  \<Az Ön előfizetése\> |  Válassza ki az Azure-előfizetést, amely rendelkezik az Event Hubs hozott létre.   |
+   |Subscription   |  \<Az Ön előfizetése\> |  Válassza ki az Azure-előfizetést, amely rendelkezik az Event Hubs hozott létre.   |
    |Event Hubs-névtér  |  asa-eh-ns-demo |  Adja meg az Eseményközpont névterének nevét.   |
    |Eseményközpont neve  | asa-eh-frauddetection-demo | Válassza ki az Event Hub nevét.   |
    |Eseményközpont szabályzatának neve  | asa-policy-manage-demo | Válassza ki a korábban létrehozott hozzáférési szabályzat.   |
@@ -207,7 +207,7 @@ Előfordulhat, hogy egy egyszerű lekérdezést csak olvassa el a bejövő adato
 
 Az itt létrehozott lekérdezések csak megjeleníti az átalakított adatok a képernyőre. Egy későbbi szakaszban konfigurálja egy kimeneti fogadó és a egy lekérdezést, amely az átalakított adatokat ír ugyanebbe az, hogy a fogadó.
 
-A nyelv kapcsolatos további információkért tekintse meg a [Azure Stream Analytics lekérdezési nyelv leírása](https://msdn.microsoft.com/library/dn834998.aspx).
+A nyelv kapcsolatos további információkért tekintse meg a [Azure Stream Analytics lekérdezési nyelv leírása](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference).
 
 ### <a name="get-sample-data-for-testing-queries"></a>Minta adatbeolvasás a lekérdezések tesztelése
 
@@ -289,11 +289,11 @@ Az átalakítás keresi, amelyek nincsenek átfedésben a historikus windows sor
         GROUP BY TUMBLINGWINDOW(s, 5), SwitchNum
         ```
 
-    Ez a lekérdezés használ a `Timestamp By` kulcsszót a a `FROM` adja meg, melyik időbélyegmezőt a bemeneti Stream használata a Átfedésmentes ablak záradékot. Ebben az esetben az ablak osztja fel az adatokat a szegmensek a `CallRecTime` rekordokban levő mezőt. (Ha nincs mező van megadva, a leképezési művelet az időpontot használja, amely minden egyes esemény szolgáltatáshoz érkezik, az event hubs. "Érkezési ideje Vs alkalmazás idő" című [Stream Analytics lekérdezési nyelv leírása](https://msdn.microsoft.com/library/azure/dn834998.aspx). 
+    Ez a lekérdezés használ a `Timestamp By` kulcsszót a a `FROM` adja meg, melyik időbélyegmezőt a bemeneti Stream használata a Átfedésmentes ablak záradékot. Ebben az esetben az ablak osztja fel az adatokat a szegmensek a `CallRecTime` rekordokban levő mezőt. (Ha nincs mező van megadva, a leképezési művelet az időpontot használja, amely minden egyes esemény szolgáltatáshoz érkezik, az event hubs. "Érkezési ideje Vs alkalmazás idő" című [Stream Analytics lekérdezési nyelv leírása](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference). 
 
     A leképezés tartalmaz `System.Timestamp`, minden időszak végén időbélyeggel ad vissza. 
 
-    Adja meg, hogy egy Átfedésmentes ablak használatához, használja a [TUMBLINGWINDOW](https://msdn.microsoft.com/library/dn835055.aspx) működni a `GROUP BY` záradékban. A függvény időegységet (bárhol az egy napra mikromásodperces) és a egy ablakméret (hány egység) kell megadni. Ebben a példában az Átfedésmentes ablak áll 5 másodperces időközökkel, így kap egy ország/régió szerint a hívásokat minden 5 másodperc alatt érkezett.
+    Adja meg, hogy egy Átfedésmentes ablak használatához, használja a [TUMBLINGWINDOW](https://docs.microsoft.com/stream-analytics-query/tumbling-window-azure-stream-analytics) működni a `GROUP BY` záradékban. A függvény időegységet (bárhol az egy napra mikromásodperces) és a egy ablakméret (hány egység) kell megadni. Ebben a példában az Átfedésmentes ablak áll 5 másodperces időközökkel, így kap egy ország/régió szerint a hívásokat minden 5 másodperc alatt érkezett.
 
 2. Kattintson a **teszt** újra. Figyelje meg, hogy az eredmények között, az időbélyegek alapján **WindowEnd** 5 másodperces növekményekben vannak.
 
@@ -358,7 +358,7 @@ Ha rendelkezik meglévő blob storage-fiókot, használhatja azt. Ebben az oktat
    |**Beállítás**  |**Ajánlott érték**  |**Leírás**  |
    |---------|---------|---------|
    |Kimeneti alias  |  CallStream-FraudulentCalls   |  Adja meg a feladat kimenetének azonosító nevét.   |
-   |Előfizetés   |  \<Az Ön előfizetése\> |  Válassza ki azt az Azure-előfizetést, amelyhez a létrehozott tárfiók tartozik. A tárfiók tartozhat ugyanahhoz az előfizetéshez, de akár egy másik előfizetéshez is. A példa azt feltételezi, hogy a tárfiók ugyanahhoz az előfizetéshez tartozik. |
+   |Subscription   |  \<Az Ön előfizetése\> |  Válassza ki azt az Azure-előfizetést, amelyhez a létrehozott tárfiók tartozik. A tárfiók tartozhat ugyanahhoz az előfizetéshez, de akár egy másik előfizetéshez is. A példa azt feltételezi, hogy a tárfiók ugyanahhoz az előfizetéshez tartozik. |
    |Tárfiók  |  asaehstorage |  Adja meg a létrehozott tárfiók nevére. |
    |Tároló  | asa-fraudulentcalls-demo | Válassza ki az új létrehozása, és adja meg a tároló nevét. |
 
@@ -418,5 +418,5 @@ További információ a Stream Analytics általában tanulmányozza a következ�
 
 * [Az Azure Stream Analytics bemutatása](stream-analytics-introduction.md)
 * [Scale Azure Stream Analytics jobs](stream-analytics-scale-jobs.md) (Azure Stream Analytics-feladatok méretezése)
-* [Azure Stream Analytics Query Language Reference](https://msdn.microsoft.com/library/azure/dn834998.aspx) (Referencia az Azure Stream Analytics lekérdezési nyelvhez)
+* [Azure Stream Analytics Query Language Reference](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference) (Referencia az Azure Stream Analytics lekérdezési nyelvhez)
 * [Az Azure Stream Analytics felügyeleti REST API referenciája](https://msdn.microsoft.com/library/azure/dn835031.aspx)

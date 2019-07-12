@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/05/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 81b7bf7c230c66087bf286ebd9369d992e93be90
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5b84e49bac35ef8fc9a6c8c7ca90bfd6048dc1c4
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61250573"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67839596"
 ---
 # <a name="move-data-from-a-web-table-source-using-azure-data-factory"></a>Adatok áthelyezése egy webes táblázat a forrás Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Válassza ki a Data Factory szolgáltatás használ:"]
@@ -56,7 +56,7 @@ A webes táblázat összekötő használatához kell egy helyi Integration Runti
 Egy folyamatot egy másolási tevékenységgel az adatok áthelyezéséhez a helyszíni Cassandra adattárolókból más eszközök/API-k használatával is létrehozhat. 
 
 - A folyamat létrehozásának legegyszerűbb módja az, hogy használja a **másolása varázsló**. Lásd: [oktatóanyag: Hozzon létre egy folyamatot a másolás varázsló használatával](data-factory-copy-data-wizard-tutorial.md) gyors bemutató létrehozása egy folyamatot az adatok másolása varázsló használatával. 
-- A következő eszközök használatával hozzon létre egy folyamatot: **Az Azure portal**, **Visual Studio**, **Azure PowerShell-lel**, **Azure Resource Manager-sablon**, **.NET API**, és  **REST API-val**. Lásd: [másolási tevékenység oktatóanyagát](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) egy másolási tevékenységgel ellátott adatcsatorna létrehozása a részletes útmutatóját. 
+- A következő eszközök használatával hozzon létre egy folyamatot: **A Visual Studio**, **Azure PowerShell-lel**, **Azure Resource Manager-sablon**, **.NET API**, és **REST API-val**. Lásd: [másolási tevékenység oktatóanyagát](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) egy másolási tevékenységgel ellátott adatcsatorna létrehozása a részletes útmutatóját. 
 
 Az eszközök vagy az API-kat használja, hogy létrehoz egy folyamatot, amely a helyez át adatokat egy forrásadattárból egy fogadó adattárba a következő lépéseket fogja végrehajtani:
 
@@ -74,7 +74,7 @@ A következő táblázat a JSON-elemeket társított webszolgáltatás leírás�
 | Tulajdonság | Leírás | Szükséges |
 | --- | --- | --- |
 | type |A type tulajdonságot kell beállítani: **Web** |Igen |
-| URL |A webes forrás URL-címe |Igen |
+| url |A webes forrás URL-címe |Igen |
 | authenticationType |Névtelen. |Igen |
 
 ### <a name="using-anonymous-authentication"></a>A névtelen hitelesítés használatával
@@ -105,7 +105,7 @@ A **typeProperties** szakasz eltérő az egyes adatkészlet, és az adattárban 
 | path |Az erőforrás, amely tartalmazza a tábla relatív URL-CÍMÉT. |Nem. Ha nincs megadva elérési út, csak az URL-címet a társított szolgáltatás definíciójában megadott szolgál. |
 | index |Az erőforrás a tábla indexe. Lásd: [egy tábla egy HTML-oldalt a Get-index](#get-index-of-a-table-in-an-html-page) szakasz lépéseit egy tábla indexének első HTML-lapon. |Igen |
 
-**Példa**
+**Példa:**
 
 ```json
 {

@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.topic: conceptual
 ms.date: 07/01/2019
 ms.custom: seodec18
-ms.openlocfilehash: 17b9d11b75e2677e22fa2e38c21a69f018a4bee8
-ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
+ms.openlocfilehash: 8e3b6d0fbefb8e3d3437fd5e24f929e453c573df
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67508345"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67621012"
 ---
 # <a name="azure-stream-analytics-on-iot-edge"></a>Azure Stream Analytics az IoT Edge segítségével
  
@@ -81,7 +81,7 @@ Egy storage-tárolóba szükség ahhoz, hogy exportálja az ASA összeállított
 4. Állítsa be a storage-tároló információkat a **IoT Edge-beállítások** menü.
 
 5. Nem kötelező beállítások megadása
-    1. **Események rendezése**. A portálon konfigurálhatja a soron kívüli out házirend. Dokumentáció áll rendelkezésre [Itt](https://msdn.microsoft.com/library/azure/mt674682.aspx?f=255&MSPPError=-2147217396).
+    1. **Események rendezése**. A portálon konfigurálhatja a soron kívüli out házirend. Dokumentáció áll rendelkezésre [Itt](https://docs.microsoft.com/stream-analytics-query/time-skew-policies-azure-stream-analytics).
     2. **Területi beállítás**. Állítsa be a internalization formátumban.
 
 

@@ -4,7 +4,7 @@ description: Ismerje meg, hogyan engedélyezze az SR-IOV InfiniBand.
 services: virtual-machines
 documentationcenter: ''
 author: vermagit
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 ms.service: virtual-machines
@@ -12,27 +12,26 @@ ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 05/15/2019
 ms.author: amverma
-ms.openlocfilehash: 879b1eed7bf4778d4d49f6f991d6d74214d33823
-ms.sourcegitcommit: 084630bb22ae4cf037794923a1ef602d84831c57
+ms.openlocfilehash: 2e28627359f339a3bf818a15d6a5c8e456fb554a
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67537657"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67797525"
 ---
 # <a name="enable-infiniband-with-sr-iov"></a>Engedélyezze az SR-IOV InfiniBand
-
 
 A legegyszerűbb és az ajánlott módszer az egyéni Virtuálisgép-rendszerképet konfigurálhatja az InfiniBand (IB) a InfiniBandDriverLinux vagy InfiniBandDriverWindows VM-bővítmény hozzáadása az üzemelő példány.
 Ezek a Virtuálisgép-bővítmények használata [Linux](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-hpc#rdma-capable-instances) és [Windows](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-hpc#rdma-capable-instances)
 
-Manuálisan konfigurálnia a InfiniBand az SR-IOV engedélyezve van a virtuális gépek (jelenleg HB és a hibrid kapcsolat sorozat), kövesse az alábbi lépéseket. Ezeket a lépéseket csak az RHEL/CentOS vannak. Az Ubuntu (16.04 és 18.04), és a SLES (12 SP4 és 15) a beépített illesztőprogramokat megfelelően működjön. Az Ubuntu rendszeren 
-
+Manuálisan konfigurálnia a InfiniBand az SR-IOV engedélyezve van a virtuális gépek (jelenleg HB és a hibrid kapcsolat sorozat), kövesse az alábbi lépéseket. Ezeket a lépéseket csak az RHEL/CentOS vannak. Az Ubuntu (16.04 és 18.04), és a SLES (12 SP4 és 15) a beépített illesztőprogramokat megfelelően működjön.
 
 ## <a name="manually-install-ofed"></a>Telepítse manuálisan a OFED
 
 Telepítse a legújabb MLNX_OFED illesztőprogramokat ConnectX-5. a [Mellanox](https://www.mellanox.com/page/products_dyn?product_family=26).
 
 Az RHEL/CentOS (az alábbi példában a 7.6):
+
 ```bash
 sudo yum install -y kernel-devel python-devel
 sudo yum install -y redhat-rpm-config rpm-build gcc-gfortran gcc-c++

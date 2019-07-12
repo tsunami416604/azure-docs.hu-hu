@@ -4,7 +4,7 @@ description: Rendszergazda felhasználók kezelése és a Linux rendszerű virtu
 services: virtual-machines-linux
 documentationcenter: ''
 author: roiyz-msft
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 ms.assetid: 261a9646-1f93-407e-951e-0be7226b3064
@@ -15,12 +15,12 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 05/10/2018
 ms.author: roiyz
-ms.openlocfilehash: 71aecc1748e70e2119b1f54c21a0f705afc5d5d0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2841aedc1a4fe69e2604d3c6b95cc12dab4c7716
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60800056"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67706607"
 ---
 # <a name="manage-administrative-users-ssh-and-check-or-repair-disks-on-linux-vms-using-the-vmaccess-extension-with-the-azure-cli"></a>Kezelheti a rendszergazda felhasználókat, az SSH és az ellenőrzés, vagy javítsa ki a VMAccess bővítmény használata az Azure CLI-vel Linux rendszerű virtuális gépek lemezeinek
 ## <a name="overview"></a>Áttekintés
@@ -42,7 +42,7 @@ A Virtuálisgép-hozzáférési bővítmény ezen Linux-disztribúció futtathat
 | Debian | Debian 7.9 +, 8.2 + |
 | Red Hat | RHEL 6.7 + 7.1 + |
 | Oracle Linux | 6.4+, 7.0+ |
-| SUSE | 11 – 12 |
+| SUSE | 11 és 12 |
 | OpenSuse | openSUSE azt 42.2 + |
 | CentOS | A centOS 6.3 + 7.0 + |
 | CoreOS | 494.4.0+ |

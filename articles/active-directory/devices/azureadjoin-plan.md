@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 36429feed99c421984ed55d4e506954aa30f0040
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: 4332c921af770cb47e9a9a779d0bd148153fcd31
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67482131"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67666146"
 ---
 # <a name="how-to-plan-your-azure-ad-join-implementation"></a>Útmutató: Az Azure AD-csatlakozás implementálásának megtervezése
 
@@ -70,7 +70,7 @@ Egy összevont környezetben, amely támogatja a WS-Trust, mind a WS-Fed protoko
 - **WS-Fed:** Eszköz csatlakoztatása az Azure ad-ben Ez a protokoll szükséges.
 - **WS-Trust:** Ez a protokoll megadása kötelező bejelentkezni egy az Azure AD-csatlakoztatott eszközön. 
 
-Ha az identitásszolgáltató nem támogatja ezeket a protokollokat, az Azure AD-csatlakozás nem natív módon működik. A Windows 10-es 1809 verziótól kezdve a felhasználók bejelentkezhet egy Azure AD-csatlakoztatott eszközre a SAML-alapú identitásszolgáltatóval keresztül [jelentkezzen be a Windows 10-es webalkalmazás](https://docs.microsoft.com/windows/whats-new/whats-new-windows-10-version-1809#web-sign-in-to-windows-10). Webes bejelentkezés jelenleg csak előzetes funkció.
+Ha az identitásszolgáltató nem támogatja ezeket a protokollokat, az Azure AD-csatlakozás nem natív módon működik. A Windows 10-es 1809 verziótól kezdve a felhasználók bejelentkezhet egy Azure AD-csatlakoztatott eszközre a SAML-alapú identitásszolgáltatóval keresztül [jelentkezzen be a Windows 10-es webalkalmazás](https://docs.microsoft.com/windows/whats-new/whats-new-windows-10-version-1809#web-sign-in-to-windows-10). Webes bejelentkezés jelenleg előzetes verziójú funkció, és nem javasolt éles környezetekben üzemelő példányok.
 
 ### <a name="smartcards-and-certificate-based-authentication"></a>Intelligens kártyák és a Tanúsítványalapú hitelesítés
 

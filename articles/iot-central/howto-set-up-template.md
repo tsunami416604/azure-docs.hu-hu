@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 7fb0fba519a7833ac318c713dc9eb3c6ac7f8b5b
-ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
+ms.openlocfilehash: d27fd9460685c08a2b13936415935f5aaf893797
+ms.sourcegitcommit: dda9fc615db84e6849963b20e1dce74c9fe51821
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67509553"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67622415"
 ---
 # <a name="set-up-a-device-template"></a>Eszközsablon beállítása
 
@@ -65,7 +65,7 @@ Egy új telemetriai mérési hozzáadásához válassza **+ új mérték**, vál
 > Az eszköz sablon egyeznie kell a megfelelő eszköz kódot ahhoz, hogy a telemetria mérés esetén valós eszköz csatlakoztatva van, az alkalmazás megjelenítendő tulajdonságnevek. Végezze el ugyanezt konfigurálásakor beállításait, az eszköztulajdonságok és a parancsok, továbbra is az alábbi szakaszok az eszköz sablon megadására.
 .png például hozzáadhat egy új hőmérsékleti telemetria mérték:
 
-| Megjelenített név        | Mezőnév    |  Egység    | Min   |Max|
+| Megjelenítendő név        | Mezőnév    |  Egység    | Min   |Max|
 | --------------------| ------------- |-----------|-------|---|
 | Hőmérséklet         | TEMP          |  degC     |  0    |100|
 
@@ -86,7 +86,7 @@ Adja meg a **megjelenítendő név**, **mezőnév**, és **súlyossági** az ese
 
 Például hozzáadhat egy új **ventilátor Motor hiba** esemény.
 
-| Megjelenített név        | Mezőnév    |  Alapértelmezett súlyosság |
+| Megjelenítendő név        | Mezőnév    |  Alapértelmezett súlyosság |
 | --------------------| ------------- |-----------|
 | Ventilátormotor-hiba     | fanmotorerror |  Hiba    |
 
@@ -109,7 +109,7 @@ Adja meg az adatait **megjelenített név**, **mezőnév**, és **értékek** az
 
 Például hozzáadhat egy új **ventilátor mód** állapota, az eszköz küldhet, két lehetséges értékekkel rendelkező **operációs** és **leállítva**.
 
-| Megjelenített név | Mezőnév    |  1 érték   | Megjelenített név | Az érték 2    |Megjelenített név  | 
+| Megjelenítendő név | Mezőnév    |  1 érték   | Megjelenítendő név | Az érték 2    |Megjelenítendő név  | 
 | -------------| ------------- |----------- | -------------| -----------| -------------|
 | Ventilátor mód     | fanmode       |  1         | Üzemel    |     0      | Leállítva      |
 
@@ -128,7 +128,7 @@ Egy új helyet mérési hozzáadásához válassza **+ új mérték**, válassza
 
 Például egy új helyet telemetriai mérték is hozzáadhat:
 
-| Megjelenített név        | Mezőnév    |
+| Megjelenítendő név        | Mezőnév    |
 | --------------------| ------------- |
 | Eszköz helye      |  assetloc     |
 
@@ -150,7 +150,7 @@ assetloc: {
 
 ## <a name="settings"></a>Beállítások
 
-Beállítások egy eszköz vezérlésére. Adja meg a bemeneti adatok az eszköz operátorokat lehetővé teszik. Csempék formájában jelenik meg az eszköz-sablon több beállítást is hozzáadhat a **beállítások** fülre az operátorok használatához. Számos különböző típusú beállításokat is hozzáadhat: szám, szöveg, dátum, be-vagy kikapcsolása, választéklista és szakaszcímke.
+Beállítások egy eszköz vezérlésére. Adja meg a bemeneti adatok az eszköz operátorokat lehetővé teszik. Csempék formájában jelenik meg az eszköz-sablon több beállítást is hozzáadhat a **beállítások** fülre az operátorok használatához. Számos különböző típusú beállításokat is hozzáadhat: szám, szöveg, dátum, be-vagy kikapcsolása és szakaszcímke.
 
 Három állapota lehet. Az eszköz ezeket az állapotokat az jelenti.
 
@@ -162,7 +162,7 @@ Három állapota lehet. Az eszköz ezeket az állapotokat az jelenti.
 
 Például hozzáadhat egy új ventilátor sebesség beállítás kiválasztásával **beállítások** , és adjon meg az új **szám** beállítást:
 
-| Megjelenített név  | Mezőnév    |  Egység  | Tizedesjegyek |Kezdeti|
+| Megjelenítendő név  | Mezőnév    |  Egység  | Tizedesjegyek |Kezdeti|
 | --------------| ------------- |---------| ---------|---- |
 | Sebesség ventilátor     | fanSpeed      | RPM     | 2        | 0   |
 
@@ -170,7 +170,7 @@ Például hozzáadhat egy új ventilátor sebesség beállítás kiválasztásá
 
 Kiválasztása után **mentése**, a **ventilátor sebesség** beállítás egy csempe jelenik meg. Az operátornak használhatja a beállítás a **Device Explorer** lapot, és módosítsa az eszköz Ventilátor sebessége.
 
-## <a name="properties"></a>Tulajdonságok
+## <a name="properties"></a>properties
 
 A tulajdonságok akkor az eszközön, például a rögzített eszköz helye és sorozatszám társított metaadatokat. Több tulajdonságok hozzáadása a sablonhoz, eszköz, amely a csempék formájában jelenik meg a **tulajdonságok** fülre. A tulajdonságnak egy típus, például a szám, szöveg, dátum, be-vagy kikapcsolása, eszköztulajdonság, címkét vagy helyhez kötött. Az operátor megadja a tulajdonságok értékeit, ha során létrehoznak egy eszközt, és ezeket az értékeket bármikor szerkesztheti azokat. Eszköztulajdonságok csak olvashatók, és az eszköz az alkalmazásba küldi. Az operátornak eszköz tulajdonságai nem módosíthatók. Amikor egy valós eszköz csatlakozik, az tulajdonság csempére frissíti, az alkalmazásban.
 
@@ -181,7 +181,7 @@ Két tulajdonságkategória érhető el:
 
 Például az eszköz utolsó szervizelt dátumának hozzáadhat egy új **dátum** (egy alkalmazás-tulajdonság) tulajdonsága a **tulajdonságok** lapon:
 
-| Megjelenített név  | Mezőnév | Kezdeti érték   |
+| Megjelenítendő név  | Mezőnév | Kezdeti érték   |
 | --------------| -----------|-----------------|
 | Utolsó szervizelés      | lastServiced        | 01/29/2019     |
 
@@ -213,7 +213,7 @@ Egy alkalmazás tulajdonságként a location tulajdonsághoz hozhat létre az Io
 
 3. Konfigurálása **megjelenítendő név**, **mezőnév**, és (opcionálisan) **kezdeti érték** helyéhez.
 
-    | Megjelenített név  | Mezőnév | Kezdeti érték |
+    | Megjelenítendő név  | Mezőnév | Kezdeti érték |
     | --------------| -----------|---------|
     | Telepítési címe | installAddress | Microsoft, 1 Microsoft Way, Redmond, WA 98052   |
 
@@ -235,7 +235,7 @@ A location tulajdonság által jelentett tulajdonságként eszköz hozhat létre
 
 3. Konfigurálja a megjelenített nevet és mező nevét, és válassza ki **hely** , adattípus:
 
-    | Megjelenített név  | Mezőnév | Adattípus |
+    | Megjelenítendő név  | Mezőnév | Adattípus |
     | --------------| -----------|-----------|
     | Eszközhely | deviceLocation | location  |
 
@@ -258,9 +258,9 @@ Miben különbözik egy parancs egy beállítást?
 
 Például hozzáadhat egy új **Echo** parancsot választva a **parancsok** fülre, majd válassza **+ új parancs**, és írja be az új parancs részletei:
 
-| Megjelenített név  | Mezőnév | Alapértelmezett időtúllépés | Adattípus |
+| Megjelenítendő név  | Mezőnév | Alapértelmezett időtúllépés | Adattípus |
 | --------------| -----------|---------------- | --------- |
-| Echo parancs  | echo       |  30             | szöveg      |
+| Echo parancs  | echo       |  30             | text      |
 
 ![Echo részleteit tartalmazó "Parancs konfigurálása" képernyő](./media/howto-set-up-template/commandsecho1.png)
 

@@ -7,12 +7,12 @@ ms.author: v-qiwe
 ms.service: marketplace
 ms.topic: conceptual
 ms.date: 05/30/2019
-ms.openlocfilehash: 904058c2c98c8ded2ea9c91e8aa7ec595aa49b05
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: eb824eb67e84ec4bdb93bc355ac6a6afa844ceb9
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66481444"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67701154"
 ---
 # <a name="offer-creation-checklist"></a>Ajánlat-létrehozási ellenőrzőlista
 
@@ -38,12 +38,12 @@ Adja meg, vagy adjon meg kell elemek alatti jeleztük. Néhány területe nem k�
 
 ## <a name="new-offer-modal"></a>Új ajánlat modális 
 
-Az első adatok megadását kéri egy nevet és a egy Azonosítót az ajánlatot. 
+Az első adatok megadását kéri egy azonosító és az alias az ajánlatban. 
 
 | **Mező neve**    | **Megjegyzések**   |  
 | :---------------- | :-----------| 
 | Ajánlat azonosítója  | Szükséges, a létrehozás után nem módosítható. Legfeljebb 50 karakter hosszú lehet, és kell állnia csak kisbetűket, alfanumerikus karaktereket, kötőjeleket és aláhúzást tartalmazhatnak. |
-| Ajánlat neve  | Kötelező. |
+| Az ajánlat alias  | Kötelező. |
 
 ## <a name="offer-setup-page"></a>Az ajánlat beállítása lapon
 
@@ -79,11 +79,11 @@ A rendszer a ajánlatuk információs oldalán kell megadni a szöveg és képek
 | **Mező neve**    | **Megjegyzések**   |
 | :---------------- | :-----------| 
 | Name (Név)  | Szükséges, legfeljebb 50 karakter hosszúságú. |
-| Összefoglalás  | Szükséges, legfeljebb 100 karakter. | 
+| Összegzés  | Szükséges, legfeljebb 100 karakter. | 
 | Leírás  | Kötelező, maximum 3000 karakter. |
 | Első lépések útmutató  | Kötelező, maximum 3000 karakter. |
 | Első lépések útmutató  | Kötelező, maximum 3000 karakter. |
-| A keresési kulcsszavak  | Ajánlott, legfeljebb 3 kulcsszavak nem kötelező. |
+| Kulcsszavak keresése  | Ajánlott, legfeljebb 3 kulcsszavak nem kötelező. |
 | Adatvédelmi szabályzat URL-címe  | Kötelező. |
 | CSP Program Marketing anyagok URL-címe  | Választható. |
 | Hasznos oldalak címének + URL-címe  | Választható. |

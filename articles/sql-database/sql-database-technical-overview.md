@@ -13,39 +13,27 @@ ms.author: sstein
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 04/08/2019
-ms.openlocfilehash: ed05748a450d8d2082476aaba0831383e5fb60a0
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 20fdd63939c91f8421048e4904b8a694849570ab
+ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67441564"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67808059"
 ---
 # <a name="what-is-azure-sql-database-service"></a>Mi az Azure SQL Database szolgáltatás
 
-Az SQL Database általános célú, felügyelt relációsadatbázis-szolgáltatás a Microsoft Azure-ban, amely egyebek mellett relációs, JSON-, térbeli és XML-struktúrákat is támogat. Az SQL Database két különböző vásárlási modell belül dinamikusan méretezhető teljesítményt nyújt: a Virtuálismag-alapú vásárlási modell és a egy DTU-alapú vásárlási modell. Az SQL Database emellett olyan lehetőségeket kínál, mint az [oszlopcentrikus indexelés](https://docs.microsoft.com/sql/relational-databases/indexes/columnstore-indexes-overview) a kivételes mélységű elemzéshez és jelentéskészítéshez, illetve a [memóriabeli OLTP](sql-database-in-memory.md) a rendkívül nagy teljesítményű tranzakciófeldolgozáshoz. A Microsoft zökkenőmentesen kezeli az SQL kódbázis karbantartását és frissítését, és teljesen átveszi az alapul szolgáló infrastruktúra kezelését.
+Az Azure SQL Database egy általános célú, felügyelt relációsadatbázis-szolgáltatás, amely lehetővé teszi, hogy hozzon létre magas rendelkezésre állású és nagy teljesítményű adatok tárolási réteget az alkalmazások és megoldások a Microsoft Azure-felhőben. Az SQL Database a különböző modern felhőalapú alkalmazások esetében megfelelő választás lehet, mivel lehetővé teszi a hatékony funkcióit használja mindkét relációs adatokat feldolgozó és [nem relációs struktúrák](sql-database-multi-model-features.md) diagramok, JSON-, térbeli, például és XML. A legújabb stabil verziója alapján a [Microsoft SQL Server adatbázismotor](https://docs.microsoft.com/sql/sql-server/sql-server-technical-documentation?toc=/azure/sql-database/toc.json) , és lehetővé teszi, hogy speciális lekérdezés, például a feldolgozási szolgáltatások széles skáláját [nagy teljesítményű, memóriabeli technológiákat](sql-database-in-memory.md)és [intelligens lekérdezés-feldolgozás](https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing?toc=/azure/sql-database/toc.json). A Microsoft felhőt előnyben részesítő stratégiájának jegyében az SQL Server új lehetőségei először az SQL Database-ben jelentek meg, és csak aztán magában az SQL Serverben. Ennek a hozzáállásnak köszönhetően az SQL Server legújabb lehetőségei a karbantartás és frissítés terhei nélkül állnak az Ön rendelkezésére úgy, hogy az új funkciókat már több millió adatbázison tesztelték. Az SQL Database lehetővé teszi, hogy könnyen és skálázhatja a teljesítményt két különböző vásárlási modell belül: egy [Virtuálismag-alapú vásárlási modell](sql-database-service-tiers-vcore.md) és a egy [DTU-alapú vásárlási modell](sql-database-service-tiers-dtu.md). SQL Database egy teljes körűen felügyelt szolgáltatás, amely rendelkezik a beépített magas-szolgáltatáson a rendelkezésre állás, biztonsági másolatok és egyéb gyakori karbantartási műveleteket. A Microsoft és frissítését az SQL és az operációs rendszer szabályzat zökkenőmentesen kezeli, és azonnal kivonatolja az alapul szolgáló infrastruktúra kezelését.
 
 > [!NOTE]
 > Egy Azure SQL Database-ben szószedet, lásd: [SQL-adatbázis használati szószedet](sql-database-glossary-terms.md)
 
 Az Azure SQL Database az alábbi lehetőségeket kínálja az Azure SQL-adatbázisok üzembe helyezésére:
 
-- Mint egy [önálló adatbázis](sql-database-single-database.md) saját erőforráskészlettel felügyelt SQL Database-kiszolgálón keresztül. Önálló adatbázis hasonlít egy [tartalmazott adatbázisok](https://docs.microsoft.com/sql/relational-databases/databases/contained-databases) az SQL Server.
-- Egy [rugalmas készlet](sql-database-elastic-pool.md), azaz egy SQL Database-kiszolgálón keresztül felügyelt közös erőforráskészlettel az adatbázis-gyűjtemény. Önálló adatbázisok áthelyezhetők, és a egy rugalmas készletből.
-- [Felügyelt példány](sql-database-managed-instance.md), amely gyűjteménye, rendszer- és felhasználói adatbázisok közös erőforráskészlettel az. Felügyelt példány hasonlít egy példányát a [Microsoft SQL Server adatbázismotor](https://docs.microsoft.com/sql/sql-server/sql-server-technical-documentation).
-
-Az alábbi ábra ezt a három üzembehelyezési modellt mutatja be:
-
 ![deployment-options](./media/sql-database-technical-overview/deployment-options.png)
 
-Az SQL Database kódbázisa közös a [Microsoft SQL Server adatbázismotorjáéval](https://docs.microsoft.com/sql/sql-server/sql-server-technical-documentation). A Microsoft felhőt előnyben részesítő stratégiájának jegyében az SQL Server új lehetőségei először az SQL Database-ben jelentek meg, és csak aztán magában az SQL Serverben. Ennek a hozzáállásnak köszönhetően az SQL Server legújabb lehetőségei a karbantartás és frissítés terhei nélkül állnak az Ön rendelkezésére úgy, hogy az új funkciókat már több millió adatbázison tesztelték. A bejelentett új funkciókról az alábbi helyeken kaphat tájékoztatást:
-
-- **[Az SQL Database az Azure ütemterve](https://azure.microsoft.com/roadmap/?category=databases)** :
-
-  Ismerje meg, mi az új és újdonságokat helye.
-
-- **[Az Azure SQL Database blog](https://azure.microsoft.com/blog/topics/database)** :
-
-  Az a hely, ahol az SQL Server csapatának tagjai kapcsolatos SQL Database újdonságairól és funkcióiról.
+- [Önálló adatbázis](sql-database-single-database.md) teljes körűen felügyelt elkülönített adatbázis, amely tökéletes választás a modern felhőalapú alkalmazások és mikroszolgáltatások megbízható adatforrásonkénti igénylő jelöli. Önálló adatbázis hasonlít egy [tartalmazott adatbázisok](https://docs.microsoft.com/sql/relational-databases/databases/contained-databases?toc=/azure/sql-database/toc.json) a [Microsoft SQL Server adatbázismotor](https://docs.microsoft.com/sql/sql-server/sql-server-technical-documentation?toc=/azure/sql-database/toc.json).
+- [Felügyelt példány](sql-database-managed-instance.md) egy teljes körűen felügyelt példánya a [Microsoft SQL Server adatbázismotor](https://docs.microsoft.com/sql/sql-server/sql-server-technical-documentation?toc=/azure/sql-database/toc.json) tartalmazó adatbázisok, amelyek együtt is használható. Célszerű a tökéletes választás a helyszíni SQL Server-adatbázisok Azure-felhőbe való migrálásának könnyen és az SQL Server adatbázismotor biztosít hatékony adatbázis-jellemzőket kihasználva igénylő alkalmazásokhoz.
+- [Rugalmas készlet](sql-database-elastic-pool.md) gyűjteménye [önálló adatbázisok](sql-database-single-database.md) megosztott erőforrások, például CPU és memória vannak beállítva. Önálló adatbázisok áthelyezhetők, és a egy rugalmas készletből.
 
 > [!IMPORTANT]
 > Az SQL Database és SQL Server közötti különbségek, valamint a különböző Azure SQL Database változatokhoz közötti különbségek ismertetése: [SQL-szolgáltatások](sql-database-features.md).
@@ -54,6 +42,7 @@ SQL Database kiszámítható teljesítményt több erőforrástípusok, a szolg�
 
 ## <a name="scalable-performance-and-pools"></a>Méretezhető teljesítmény és készletek
 
+Minden változatban érhetők el az SQL Database segítségével határozzák meg a hozzárendelt erőforrásokat. 
 - A önálló adatbázisokhoz minden egyes adatbázis elkülönül önálló, hordozható, és a saját számítási, memória és tárolási erőforrások garantált mennyiségét. Az SQL Database nyújt a különféle igényekre szabva - különböző számítási, memória és tárolási erőforrások és a rendszer képes dinamikusan [egyetlen adatbázis-erőforrások skálázása](sql-database-single-database-scale.md) felfelé és lefelé. A [nagy kapacitású szolgáltatásszint](sql-database-service-tier-hyperscale.md) tartozó önálló adatbázis lehetővé teszi, hogy a skálázás 100 TB-ig, a gyors biztonsági mentési és visszaállítási képességeket.
 - A rugalmas készletekkel létrehozhat új adatbázisokat vagy önálló adatbázisok helyezhetik át maximalizálhatja az erőforrások használatát és pénzt - és képes dinamikusan mentése erőforráskészlet [méretezhető rugalmas adatbáziskészlet erőforrásainak](sql-database-elastic-pool-scale.md) felfelé és lefelé.
 - A felügyelt példányok esetén minden egyes felügyelt példány el vannak különítve más példányok garantált erőforrásokkal. Belül a felügyelt példány, a példány adatbázisok osztoznak a erőforrások –, és képes dinamikusan [méretezni az erőforrásokat a felügyelt példány](sql-database-managed-instance-resource-limits.md) felfelé és lefelé.
@@ -65,11 +54,8 @@ A dinamikus méretezhetőség különbözik az automatikus skálázástól. Auto
 ### <a name="purchasing-models-service-tiers-compute-sizes-and-storage-amounts"></a>Vásárlási modellek, a szolgáltatási szintek, a számítási méretek és a storage összegek
 
 SQL Database két vásárlási modellt kínál:
-
-- A [DTU-alapú vásárlási modell](sql-database-service-tiers-dtu.md) számítási, memória, IO-erőforrások kis és nagy terhelést jelentő adatbázisokhoz database három szolgáltatásszintet kínálja. A számítási biztosít különböző többféle, ezeket az erőforrásokat, amelyhez további tárterület-erőforrások adhat hozzá az egyes szinteken belül.
 - A [Virtuálismag-alapú vásárlási modell](sql-database-service-tiers-vcore.md) válassza ki a virtuális magok, a vagy a memória, és a számát és a storage sebességétől teszi lehetővé. A Virtuálismag-alapú vásárlási modell azt is lehetővé teszi, hogy [SQL Serverhez készült Azure Hybrid Benefit](https://azure.microsoft.com/pricing/hybrid-benefit/) költségmegtakarítást biztosítanak. Az Azure Hybrid Benefittel kapcsolatos további információkért lásd: [– gyakori kérdések](#sql-database-frequently-asked-questions-faq).
-
-  
+- A [DTU-alapú vásárlási modell](sql-database-service-tiers-dtu.md) számítási, memória, IO-erőforrások kis és nagy terhelést jelentő adatbázisokhoz database három szolgáltatásszintet kínálja. A számítási biztosít különböző többféle, ezeket az erőforrásokat, amelyhez további tárterület-erőforrások adhat hozzá az egyes szinteken belül.
 
 ### <a name="elastic-pools-to-maximize-resource-utilization"></a>Rugalmas készletek az erőforrások kihasználtságának maximalizálásához
 
@@ -88,7 +74,7 @@ A szkriptek segítik a rugalmas készletek megfigyelését és méretezését. E
 
 Önálló adatbázisokat rugalmas készletekkel kombinálhatja, és gyorsan és egyszerűen módosíthatja az önálló adatbázisok és rugalmas készletek szolgáltatásszintjét alkalmazkodni az adott helyzethez. Az Azure sokoldalúságának és széles körű alkalmazhatóságának köszönhetően tetszés szerint kombinálhatja az Azure-szolgáltatásokat SQL Database-adatbázisokkal, így kielégíthetők az egyedi, modern alkalmazástervezési igények, növelhető a költség- és erőforrás-hatékonyság, és új üzleti lehetőségek tárhatók fel.
 
-### <a name="extensive-monitoring-and-alerting-capabilities"></a>Széles körű figyelési és riasztási funkciók
+## <a name="extensive-monitoring-and-alerting-capabilities"></a>Széles körű figyelési és riasztási funkciók
 
 Használja a [beépített teljesítménymonitorozási](sql-database-performance.md) és [riasztási](sql-database-insights-alerts-portal.md) eszközöket a teljesítmény-értékelésekkel kombinálva. Ezek lehetővé teszik az aktuális vagy a projekthez kapcsolódó teljesítményigényeken alapuló fel- vagy leskálázás hatásainak gyors kiértékelését. Az SQL Database emellett [metrikák és diagnosztikai naplók kibocsátásával](sql-database-metrics-diag-logging.md) is képes megkönnyíteni a felügyeletet. Az SQL Database beállítható az erőforrás-használatra, feldolgozókra és munkamenetekre, valamint kapcsolatokra vonatkozó adatok tárolására a következő Azure-erőforrások valamelyikén:
 
@@ -260,3 +246,8 @@ Az SQL Database ügyfelei az Azure Hybrid benefittel az SQL Server társított a
 - Több Azure CLI és PowerShell-mintát talál itt:
   - [Azure CLI-minták az SQL Database-hez](sql-database-cli-samples.md)
   - [Azure PowerShell-minták az SQL Database-hez](sql-database-powershell-samples.md)
+
+ - Új képességekre vonatkozó információk bejelentett, lásd: 
+   - **[Az SQL Database az Azure ütemterve](https://azure.microsoft.com/roadmap/?category=databases)**  -hely, ismerje meg, mi az új és újdonságokat.
+  - **[Az Azure SQL Database blog](https://azure.microsoft.com/blog/topics/database)**  – olyan hely, ahol az SQL Server csapatának tagjai kapcsolatos SQL Database újdonságairól és funkcióiról.
+

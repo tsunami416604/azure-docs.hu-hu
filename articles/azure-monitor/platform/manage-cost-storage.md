@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 06/06/2019
 ms.author: magoedte
 ms.subservice: ''
-ms.openlocfilehash: b7fa59f4086608a8bacabde21f0c02c108f1f5e8
-ms.sourcegitcommit: c63e5031aed4992d5adf45639addcef07c166224
+ms.openlocfilehash: bcfefc9698f7f251e99531750e19e7c06395e064
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67466729"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67655705"
 ---
 # <a name="manage-usage-and-costs-with-azure-monitor-logs"></a>Használat és költségek az Azure Monitor naplóira kezelése
 
@@ -413,7 +413,7 @@ Riasztás fogadásakor kövesse a következő szakaszban leírt lépéseket a v�
 
 ## <a name="limits-summary"></a>Korlátozások összegzése
 
-Van néhány további Log Analytics-korlátok, a, amelyek a Log Analytics tarifacsomagot függenek. Ezek vannak dokumentálva [Itt](https://docs.microsoft.com/azure/azure-subscription-service-limits#log-analytics-limits).
+Van néhány további Log Analytics-korlátok, a, amelyek a Log Analytics tarifacsomagot függenek. Ezek vannak dokumentálva [Itt](https://docs.microsoft.com/azure/azure-subscription-service-limits#log-analytics-workspaces).
 
 
 ## <a name="next-steps"></a>További lépések

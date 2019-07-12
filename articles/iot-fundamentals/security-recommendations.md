@@ -8,18 +8,19 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 06/26/2019
 ms.author: dkshir
-ms.openlocfilehash: d079e082fb8ac90f398e46f283bd1e33e2b4ab40
-ms.sourcegitcommit: aa66898338a8f8c2eb7c952a8629e6d5c99d1468
+ms.custom: security-recommendations
+ms.openlocfilehash: 4416f3149c33a0c9a437b2fbd6a48729a5a7f044
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67463083"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67722870"
 ---
 # <a name="security-recommendations-for-azure-internet-of-things-iot-deployment"></a>Biztonsági javaslatok az Azure Internet of Things (IoT) központi telepítés
 
 Ez a cikk az Azure IoT-szolgáltatások biztonsági javaslatokat tartalmaz. Ezek az ajánlások megvalósítása súgó Microsoft Azure IoT, és a rendszer a biztonsági kötelezettségeit, teljesítése javítja az IoT-megoldások általános biztonságát. Az Azure IoT által biztosított belső biztonsági funkcióiról további információért olvassa el [IoT-biztonság létrehozása az alapoktól](iot-security-ground-up.md).
 
-## <a name="general"></a>Általános kérdések
+## <a name="general"></a>Általános
 
 | Ajánlás | Megjegyzések |
 |-|-|

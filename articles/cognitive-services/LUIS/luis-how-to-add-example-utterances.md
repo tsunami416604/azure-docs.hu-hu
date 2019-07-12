@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 04/01/2019
 ms.author: diberry
-ms.openlocfilehash: dd8ed146c507d8d39ba99c6573321ee80bc891c9
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: af43697dc864019c6fd86b041e231a54d8aa8b40
+ms.sourcegitcommit: 441e59b8657a1eb1538c848b9b78c2e9e1b6cfd5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67442565"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67827492"
 ---
 # <a name="add-an-entity-to-example-utterances"></a>Entitás hozzáadása a példa kimondott szöveg 
 
@@ -45,7 +45,7 @@ Are there any SQL server jobs?
     > [!NOTE]
     > Amikor kiválasztja a címke a keresett szavakat entitásokként:
     > * Egyetlen szó csak adja meg azt. 
-    > * Két vagy több szóból készletének válassza ki a elején és végén található a készletet.
+    > * Két vagy több szóból készletének válassza ki az első és utolsó szót.
 
 1. Az a **milyen típusú entitást szeretne létrehozni?** egy előugró, ellenőrizze az entitás nevét, és válassza ki a **egyszerű** entitástípus, és válassza ki **kész**.
 

@@ -2,21 +2,21 @@
 title: Az Azure Kubernetes Service (AKS) fürt Windows Server-csomópontok RDP
 description: Ismerje meg, egy RDP-kapcsolat létrehozása az Azure Kubernetes Service (AKS)-fürt Windows Server-csomópontok hibaelhárítási és karbantartási feladatokhoz.
 services: container-service
-author: tylermsft
+author: mlearned
 ms.service: container-service
 ms.topic: article
 ms.date: 06/04/2019
-ms.author: twhitney
-ms.openlocfilehash: 11f6869d4d5a2ee0ef2e986ee8268c7a001ea015
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: mlearned
+ms.openlocfilehash: 0238278b81255d735f8a950ca307d0e05100cfec
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66688632"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67614564"
 ---
 # <a name="connect-with-rdp-to-azure-kubernetes-service-aks-cluster-windows-server-nodes-for-maintenance-or-troubleshooting"></a>Kapcsolódás RDP-vel az Azure Kubernetes Service (AKS) karbantartási és hibaelhárítási fürtcsomópontok a Windows Server
 
-Az Azure Kubernetes Service (AKS)-fürt életciklusa során szükség lehet egy AKS Windows Server-csomópont eléréséhez. Ez a hozzáférés karbantartási, a naplógyűjtés vagy egyéb hibaelhárítási művelet lehet. Az AKS a Windows Server-csomópontok RDP-vel is elérheti. Azt is megteheti, ha hozzáfér az ugyanazon kulcspár, amelyet a fürt létrehozásakor használt SSH az AKS a Windows Server-csomópontok eléréséhez használandó, követheti a lépések [SSH-t az Azure Kubernetes Service (AKS) fürtcsomópontok] [ssh-steps]. Biztonsági okokból az AKS-csomópontok nem jelennek meg a az interneten.
+Az Azure Kubernetes Service (AKS)-fürt életciklusa során szükség lehet egy AKS Windows Server-csomópont eléréséhez. Ez a hozzáférés karbantartási, a naplógyűjtés vagy egyéb hibaelhárítási művelet lehet. Az AKS a Windows Server-csomópontok RDP-vel is elérheti. Azt is megteheti, ha hozzáfér az ugyanazon kulcspár, amelyet a fürt létrehozásakor használt SSH az AKS a Windows Server-csomópontok eléréséhez használandó, követheti a lépések [SSH-t az Azure Kubernetes Service (AKS) fürtcsomópontok][ssh-steps]. Biztonsági okokból az AKS-csomópontok nem jelennek meg a az interneten.
 
 Windows Server-csomópont támogatása jelenleg az aks-ben előzetes verzióban érhető el.
 
@@ -24,7 +24,7 @@ Ez a cikk bemutatja, hogyan hozzon létre RDP-kapcsolatot egy AKS-csomópont pri
 
 ## <a name="before-you-begin"></a>Előkészületek
 
-Ez a cikk azt feltételezi, hogy egy meglévő AKS-fürtöt egy Windows Server-csomópont. Ha egy AKS-fürtre van szüksége, tekintse meg a cikket a [egy Windows-tárolót az Azure CLI használatával az AKS-fürt létrehozása][aks-windows-cli]. A Windows rendszergazdai felhasználónevet és jelszót kell a Windows Server-csomópont hibaelhárítása szeretné. Is szükség van egy RDP-ügyfelet például [Microsoft távoli asztal][rdp-mac].
+Ez a cikk azt feltételezi, hogy egy meglévő AKS-fürtöt egy Windows Server-csomópont. Ha egy AKS-fürtre van szüksége, tekintse meg a cikket a [egy Windows-tárolót az Azure CLI használatával az AKS-fürt létrehozása][aks-windows-cli]. You need the Windows administrator username and password for the Windows Server node you want to troubleshoot. You also need an RDP client such as [Microsoft Remote Desktop][rdp-mac].
 
 Emellett az Azure CLI 2.0.61 verziójára van szükség, vagy később telepített és konfigurált. Futtatás `az --version` a verzió megkereséséhez. Ha telepíteni vagy frissíteni, tekintse meg kell [Azure CLI telepítése][install-azure-cli].
 
@@ -66,19 +66,19 @@ Jegyezze fel a virtuális gép nyilvános IP-címét. Ez a cím egy későbbi l�
 
 ## <a name="get-the-node-address"></a>Csomópont-címének lekéréséhez
 
-Kubernetes-fürtök kezeléséhez használja [kubectl][kubectl], a Kubernetes parancssori ügyfelét. Ha az Azure Cloud Shellben használja `kubectl` már telepítve van. A telepítendő `kubectl` helyileg, használja a [az aks install-cli] [ az-aks-install-cli] parancsot:
+Kubernetes-fürtök kezeléséhez használja [kubectl][kubectl], a Kubernetes parancssori ügyfelét. Ha az Azure Cloud Shellben használja `kubectl` már telepítve van. A telepítendő `kubectl` helyileg, használja a [az aks install-cli][az-aks-install-cli] parancsot:
     
 ```azurecli-interactive
 az aks install-cli
 ```
 
-Az [aks get-credentials][az-aks-get-credentials] paranccsal konfigurálható`kubectl` a Kubernetes-fürthöz való csatlakozásra. Ez a parancs letölti a hitelesítő adatokat, és konfigurálja a Kubernetes parancssori Felületét azok használatára.
+Konfigurálása `kubectl` a Kubernetes-fürt csatlakozni, használja a [az aks get-credentials][az-aks-get-credentials] parancsot. Ez a parancs letölti a hitelesítő adatokat, és konfigurálja a Kubernetes parancssori Felületét azok használatára.
 
 ```azurecli-interactive
 az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
 ```
 
-A belső IP-cím használatával a Windows Server-csomópontok listázása a [kubectl get] [ kubectl-get] parancsot:
+A belső IP-cím használatával a Windows Server-csomópontok listázása a [kubectl get][kubectl-get] parancsot:
 
 ```console
 kubectl get nodes -o wide
@@ -113,7 +113,7 @@ Hibaelhárítási parancsok mostantól futtathatja a *cmd* ablak. Mivel a Window
 
 ## <a name="remove-rdp-access"></a>RDP-hozzáférés eltávolítása
 
-Ha elkészült, lépjen ki az RDP-kapcsolat a Windows Server-csomópontra, majd lépjen ki az RDP-munkamenetből a virtuális géphez. Miután kilépett mindkét RDP-munkamenetet, törölje a virtuális gép a [az virtuális gép törlése] [ az-vm-delete] parancsot:
+Ha elkészült, lépjen ki az RDP-kapcsolat a Windows Server-csomópontra, majd lépjen ki az RDP-munkamenetből a virtuális géphez. Miután kilépett mindkét RDP-munkamenetet, törölje a virtuális gép a [az virtuális gép törlése][az-vm-delete] parancsot:
 
 ```azurecli-interactive
 az vm delete --resource-group myResourceGroup --name myVM
@@ -121,7 +121,7 @@ az vm delete --resource-group myResourceGroup --name myVM
 
 ## <a name="next-steps"></a>További lépések
 
-Ha további hibaelhárítási adatokat van szüksége, akkor az [a fő Kubernetes csomópontnaplók megtekintése] [ view-master-logs] vagy [Azure Monitor][azure-monitor-containers].
+Ha további hibaelhárítási adatokat van szüksége, akkor az [tekintse át a Kubernetes főcsomópont naplókat][view-master-logs] or [Azure Monitor][azure-monitor-containers].
 
 <!-- EXTERNAL LINKS -->
 [kubectl]: https://kubernetes.io/docs/user-guide/kubectl/

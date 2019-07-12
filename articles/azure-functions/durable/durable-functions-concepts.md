@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 95ec6a863f951a8c26abd865041c68df333a4e38
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a244883f470f4906879725daf0d37bd1759e65c4
+ms.sourcegitcommit: af31deded9b5836057e29b688b994b6c2890aa79
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65071343"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67812898"
 ---
 # <a name="durable-functions-patterns-and-technical-concepts-azure-functions"></a>Durable Functions-minták és technikai kulcsfogalmak (az Azure Functions)
 
@@ -374,7 +374,7 @@ module.exports = async function (context) {
 };
 ```
 
-## <a name="pattern-6-aggregator-preview"></a>#6. minta: Naplózási gyűjtő (előzetes verzió)
+### <a name="aggregator"></a>#6. minta: Naplózási gyűjtő (előzetes verzió)
 
 A hatodik minta tárgya esemény adatok összevonása egy időszakon belül egyetlen címezhető *entitás*. Ebben a mintában az összesített adatok több forrásból származhatnak, kötegekben kézbesíteni lehet vagy előfordulhat, hogy hosszú – e-mail-címen lehet elszórtan. Előfordulhat, hogy a gyűjtő kell eseményadatok reagálhat megérkeznek, és a külső ügyfelek előfordulhat, hogy le kell kérdeznie az összesített adatokat.
 
@@ -385,27 +385,46 @@ A bonyolult kapcsolatban a normál a minta megvalósítása próbál, állapot n
 Használatával egy [tartós entitás függvény](durable-functions-preview.md#entity-functions), egy valósítható meg ez a minta könnyedén, egyetlen függvény.
 
 ```csharp
-public static async Task Counter(
-    [EntityTrigger(EntityClassName = "Counter")] IDurableEntityContext ctx)
+[FunctionName("Counter")]
+public static void Counter([EntityTrigger] IDurableEntityContext ctx)
 {
     int currentValue = ctx.GetState<int>();
-    int operand = ctx.GetInput<int>();
 
-    switch (ctx.OperationName)
+    switch (ctx.OperationName.ToLowerInvariant())
     {
         case "add":
+            int amount = ctx.GetInput<int>();
             currentValue += operand;
             break;
-        case "subtract":
-            currentValue -= operand;
-            break;
         case "reset":
-            await SendResetNotificationAsync();
             currentValue = 0;
+            break;
+        case "get":
+            ctx.Return(currentValue);
             break;
     }
 
     ctx.SetState(currentValue);
+}
+```
+
+Tartós entitásokat is, a .NET-osztályok modellezhető. Ez akkor lehet hasznos, ha műveletek listájának nagyra nő, és azt csak a statikus. Az alábbi példában egy azzal egyenértékű megvalósítását a `Counter` entitás .NET-osztályok és módszerek használata.
+
+```csharp
+public class Counter
+{
+    [JsonProperty("value")]
+    public int CurrentValue { get; set; }
+
+    public void Add(int amount) => this.CurrentValue += amount;
+    
+    public void Reset() => this.CurrentValue = 0;
+    
+    public int Get() => this.CurrentValue;
+
+    [FunctionName(nameof(Counter))]
+    public static Task Run([EntityTrigger] IDurableEntityContext ctx)
+        => ctx.DispatchAsync<Counter>();
 }
 ```
 
@@ -426,7 +445,7 @@ public static async Task Run(
 }
 ```
 
-Hasonlóképpen, egy entitás függvény segítségével módszert állapotát ügyfelek lekérhetnek a `orchestrationClient` kötést.
+Dinamikusan generált proxyk számára jelzés entitások típus környezetben is biztonságos módon is érhetők el. Jelzés, valamint az ügyfelek is lekérdezheti az állapot egy entitás függvény segítségével módszert, és a `orchestrationClient` kötést.
 
 > [!NOTE]
 > Entitás funkciók jelenleg csak az érhetőek el a [Durable Functions 2.0 – előzetes verzió](durable-functions-preview.md).

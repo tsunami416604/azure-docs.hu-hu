@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: d22318f4d9e233a57d521fe36f0827b9fc3af3e0
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 8e7fcff6fa4dcea1af15efa2cb4ed3a743c9c402
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60610741"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67836116"
 ---
 # <a name="move-data-from-teradata-using-azure-data-factory"></a>Adatok áthelyezése az Azure Data Factory használatával Teradata
 > [!div class="op_single_selector" title1="Válassza ki a Data Factory szolgáltatás használ:"]
@@ -47,7 +47,7 @@ Az adatkezelési átjárót a Teradata-adatbázishoz csatlakozni, telepítenie k
 Egy folyamatot egy másolási tevékenységgel az adatok áthelyezéséhez a helyszíni Cassandra adattárolókból más eszközök/API-k használatával is létrehozhat.
 
 - A folyamat létrehozásának legegyszerűbb módja az, hogy használja a **másolása varázsló**. Lásd: [oktatóanyag: Hozzon létre egy folyamatot a másolás varázsló használatával](data-factory-copy-data-wizard-tutorial.md) gyors bemutató létrehozása egy folyamatot az adatok másolása varázsló használatával.
-- A következő eszközök használatával hozzon létre egy folyamatot: **Az Azure portal**, **Visual Studio**, **Azure PowerShell-lel**, **Azure Resource Manager-sablon**, **.NET API**, és  **REST API-val**. Lásd: [másolási tevékenység oktatóanyagát](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) egy másolási tevékenységgel ellátott adatcsatorna létrehozása a részletes útmutatóját.
+- A következő eszközök használatával hozzon létre egy folyamatot: **A Visual Studio**, **Azure PowerShell-lel**, **Azure Resource Manager-sablon**, **.NET API**, és **REST API-val**. Lásd: [másolási tevékenység oktatóanyagát](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) egy másolási tevékenységgel ellátott adatcsatorna létrehozása a részletes útmutatóját.
 
 Az eszközök vagy az API-kat használja, hogy létrehoz egy folyamatot, amely a helyez át adatokat egy forrásadattárból egy fogadó adattárba a következő lépéseket fogja végrehajtani:
 
@@ -66,7 +66,7 @@ Az alábbi táblázatban a JSON-elemeket Teradata-beli társított szolgáltatá
 | --- | --- | --- |
 | type |A type tulajdonságot kell beállítani: **OnPremisesTeradata** |Igen |
 | server |A Teradata-kiszolgáló neve. |Igen |
-| authenticationType |A Teradata-adatbázishoz való kapcsolódáshoz használt hitelesítés típusa. Lehetséges értékek: Névtelen, alapszintű és a Windows. |Igen |
+| authenticationType |A Teradata-adatbázishoz való kapcsolódáshoz használt hitelesítés típusa. Lehetséges értékek a következők: Névtelen, alapszintű és a Windows. |Igen |
 | username |Ha alapszintű vagy Windows-hitelesítést használ, adja meg a felhasználónevet. |Nem |
 | password |Adja meg a felhasználónévhez megadott felhasználói fiók jelszavát. |Nem |
 | gatewayName |Az átjáró által a Data Factory szolgáltatás a helyszíni Teradata-adatbázishoz való kapcsolódáshoz használandó neve. |Igen |
@@ -88,7 +88,7 @@ Ha a forrása típusa **RelationalSource** (amely tartalmazza a Teradata), a kö
 | query |Az egyéni lekérdezés segítségével olvassa el az adatokat. |SQL-lekérdezési karakterláncot. Például: válassza ki * from tábla. |Igen |
 
 ### <a name="json-example-copy-data-from-teradata-to-azure-blob"></a>JSON-példa: Adatok másolása az Teradata az Azure Blob
-Az alábbi példa mintául szolgáló JSON-definíciók, amelyek segítségével létrehoz egy folyamatot használatával tartalmaz [az Azure portal](data-factory-copy-activity-tutorial-using-azure-portal.md) vagy [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) vagy [Azure PowerShell-lel](data-factory-copy-activity-tutorial-using-powershell.md). Ezek bemutatják, hogyan Teradata adatokat másol az Azure Blob Storage. Azonban adatok átmásolhatók a conditions stated above fogadóként valamelyik [Itt](data-factory-data-movement-activities.md#supported-data-stores-and-formats) a másolási tevékenységgel az Azure Data Factoryban.
+Az alábbi példa mintául szolgáló JSON-definíciók, amelyek segítségével létrehoz egy folyamatot használatával tartalmaz [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) vagy [Azure PowerShell-lel](data-factory-copy-activity-tutorial-using-powershell.md). Ezek bemutatják, hogyan Teradata adatokat másol az Azure Blob Storage. Azonban adatok átmásolhatók a conditions stated above fogadóként valamelyik [Itt](data-factory-data-movement-activities.md#supported-data-stores-and-formats) a másolási tevékenységgel az Azure Data Factoryban.
 
 A minta az alábbi data factory-entitások rendelkezik:
 
@@ -285,11 +285,11 @@ Adatok áthelyezése a Teradata, amikor a következő hozzárendeléseket haszn�
 
 | Teradata-adatbázis típusa | .NET-keretrendszer típusa |
 | --- | --- |
-| char |String |
-| Clob |String |
-| Graphic |String |
-| VarChar |String |
-| VarGraphic |String |
+| Char |Karakterlánc |
+| Clob |Sztring |
+| Graphic |Karakterlánc |
+| VarChar |Karakterlánc |
+| VarGraphic |Karakterlánc |
 | Blob |Byte[] |
 | Byte |Byte[] |
 | VarByte |Byte[] |
@@ -298,12 +298,12 @@ Adatok áthelyezése a Teradata, amikor a következő hozzárendeléseket haszn�
 | Decimal |Decimal |
 | Double |Double |
 | Egész szám |Int32 |
-| Szám |Double |
+| Number |Double |
 | SmallInt |Int16 |
-| Dátum |DateTime |
+| Date |Datetime |
 | Time |TimeSpan |
-| Time With Time Zone |String |
-| Időbélyeg |DateTime |
+| Time With Time Zone |Sztring |
+| Timestamp |Datetime |
 | Timestamp With Time Zone |DateTimeOffset |
 | Interval Day |TimeSpan |
 | Interval Day To Hour |TimeSpan |
@@ -315,15 +315,15 @@ Adatok áthelyezése a Teradata, amikor a következő hozzárendeléseket haszn�
 | Interval Minute |TimeSpan |
 | Interval Minute To Second |TimeSpan |
 | Interval Second |TimeSpan |
-| Interval Year |String |
-| Interval Year To Month |String |
-| Interval Month |String |
-| Period(Date) |String |
-| Period(Time) |String |
-| Period(Time With Time Zone) |String |
-| Period(Timestamp) |String |
-| Period(Timestamp With Time Zone) |String |
-| Xml |String |
+| Interval Year |Karakterlánc |
+| Interval Year To Month |Sztring |
+| Interval Month |Sztring |
+| Period(Date) |Karakterlánc |
+| Period(Time) |Sztring |
+| Period(Time With Time Zone) |Sztring |
+| Period(Timestamp) |Karakterlánc |
+| Period(Timestamp With Time Zone) |Karakterlánc |
+| Xml |Sztring |
 
 ## <a name="map-source-to-sink-columns"></a>A fogadó-oszlopok térkép forrása
 Fogadó-adatkészlet oszlopaihoz forrásadatkészlet leképezés oszlopai kapcsolatos további információkért lásd: [az Azure Data Factoryban adatkészletoszlopok leképezése](data-factory-map-columns.md).

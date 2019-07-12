@@ -6,14 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
-ms.date: 8/21/2018
+ms.date: 07/08/2019
 ms.author: raynew
-ms.openlocfilehash: f7d97866bb3ae895f83fff248ceec2e83dd60bf9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b447290a6910d144703bb796290908d0fc21b924
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66688909"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67705140"
 ---
 # <a name="monitor-and-manage-recovery-services-vaults"></a>Recovery Services-tárolók figyelése és kezelése
 
@@ -101,7 +101,7 @@ Alapértelmezésben a részletekről kivételével **legutóbbi előfordulás id
 * Biztonsági másolati elem
 * Védett kiszolgáló
 * Severity
-* Időtartam
+* Duration
 * Létrehozás ideje
 * Állapot
 * Legutóbbi előfordulás időpontja
@@ -260,21 +260,6 @@ A biztonsági mentési tár irányítópult-csempét jeleníti meg az Azure-ban 
 * A felhő a tárolóhoz rendelt LRS storage használata
 * Georedundáns tárolás felhőhasználat a tárolóhoz rendelt
 
-
-## <a name="frequently-asked-questions"></a>Gyakori kérdések
-
-### <a name="how-long-does-it-take-for-the-azure-backup-agent-job-status-to-reflect-in-the-portal"></a>Mennyi időt vesz igénybe az Azure backup-ügynök feladatot állapot tükrözik a portálon?
-Az Azure Portalon az Azure Backup szolgáltatás ügynöke feladat állapotát tükröző legfeljebb 15 perc is eltarthat.
-
-### <a name="when-a-backup-job-fails-how-long-does-it-take-to-raise-an-alert"></a>Amikor egy biztonsági mentési feladat sikertelen volt, mennyi ideig tart kell riasztást küldenie?
-Riasztást hoz létre az Azure biztonsági mentési hiba 20 perc belül.
-
-### <a name="is-there-a-case-where-an-email-wont-be-sent-if-notifications-are-configured"></a>Van egy esetet, ahol egy e-mailt nem küldhetők, ha értesítések be vannak állítva?
-Igen. Az alábbi esetekben nem kap értesítést.
-
-* Ha az értesítések óránkénti vannak konfigurálva, és a egy riasztás kiadása és feloldása egy órán belül
-* Amikor egy feladat meg lett szakítva
-* Ha egy második biztonsági mentési feladat sikertelen lesz, mert folyamatban van az eredeti biztonsági mentési feladat
 
 ## <a name="troubleshooting-monitoring-issues"></a>Figyelési kapcsolatos hibák elhárítása
 

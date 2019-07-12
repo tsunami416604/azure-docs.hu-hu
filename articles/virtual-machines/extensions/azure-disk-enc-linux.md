@@ -4,7 +4,7 @@ description: Az Azure Disk Encryption egy virtuális gép, virtuálisgép-bőví
 services: virtual-machines-linux
 documentationcenter: ''
 author: ejarvi
-manager: jeconnoc
+manager: gwallace
 editor: ''
 ms.assetid: ''
 ms.service: virtual-machines-linux
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 06/10/2019
 ms.author: ejarvi
-ms.openlocfilehash: 05d20e75cf8f0c84936ff4e5dfa42d60678f6ffc
-ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
+ms.openlocfilehash: d544aae33faf60be00a2b4ea0a45f405efcedb39
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67295333"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67706148"
 ---
 # <a name="azure-disk-encryption-for-linux-microsoftazuresecurityazurediskencryptionforlinux"></a>Azure Disk Encryption for Linux (Microsoft.Azure.Security.AzureDiskEncryptionForLinux)
 
@@ -141,20 +141,20 @@ Használatával `AADClientCertificate`:
 | Name (Név) | Érték és példa | Adattípus |
 | ---- | ---- | ---- |
 | apiVersion | 2015-06-15 | date |
-| publisher | Microsoft.Azure.Security | string |
-| type | AzureDiskEncryptionForLinux | string |
+| publisher | Microsoft.Azure.Security | Karakterlánc |
+| type | AzureDiskEncryptionForLinux | Karakterlánc |
 | typeHandlerVersion | 0.1, 1.1 | int |
 | (0,1 Technologie ASP.NET) AADClientID | xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx | GUID azonosítója | 
-| (0,1 Technologie ASP.NET) AADClientSecret | password | string |
-| (0,1 Technologie ASP.NET) AADClientCertificate | thumbprint | string |
+| (0,1 Technologie ASP.NET) AADClientSecret | password | sztring |
+| (0,1 Technologie ASP.NET) AADClientCertificate | thumbprint | sztring |
 | DiskFormatQuery | {"dev_path":"","name":"","file_system":""} | JSON-szótárt |
-| EncryptionOperation | EnableEncryption, EnableEncryptionFormatAll | string | 
-| KeyEncryptionAlgorithm | 'RSA-OAEP', 'RSA-OAEP-256', 'RSA1_5' | string |
-| KeyEncryptionKeyURL | url | string |
-| (nem kötelező) KeyVaultURL | url | string |
-| Passphrase | password | string | 
-| SequenceVersion | uniqueidentifier | string |
-| VolumeType | Az operációs rendszer, az adatok, az összes | string |
+| EncryptionOperation | EnableEncryption, EnableEncryptionFormatAll | Karakterlánc | 
+| KeyEncryptionAlgorithm | 'RSA-OAEP', 'RSA-OAEP-256', 'RSA1_5' | Karakterlánc |
+| KeyEncryptionKeyURL | url | Karakterlánc |
+| (nem kötelező) KeyVaultURL | url | Karakterlánc |
+| Passphrase | password | Karakterlánc | 
+| SequenceVersion | uniqueidentifier | Karakterlánc |
+| VolumeType | Az operációs rendszer, az adatok, az összes | sztring |
 
 ## <a name="template-deployment"></a>Sablonalapú telepítés
 

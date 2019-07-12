@@ -4,7 +4,7 @@ description: Az SAP magas rendelkezésre állás az SAP ASCS/SCS példányhoz eg
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
 author: goraco
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 keywords: ''
@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 05/05/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e1c6b1d55a4fbc673980908a981a9a96c869bee9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b3577128e66112bda5a5e3e08097d14604043cbd
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65409615"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67708996"
 ---
 # <a name="prepare-azure-infrastructure-for-sap-high-availability-by-using-a-windows-failover-cluster-and-file-share-for-sap-ascsscs-instances"></a>SAP magas rendelkezésre állás egy Windows feladatátvevő fürt és -fájlmegosztást az SAP ASCS/SCS-példányok Azure-infrastruktúra előkészítése
 
@@ -253,7 +253,7 @@ Az Azure-infrastruktúra előkészítése, hajtsa végre a következőket:
 
 * [Az infrastruktúra előkészítése architekturális sablonok 1, 2 és 3][sap-high-availability-infrastructure-wsfc-shared-disk].
 
-* [Hozzon létre egy Azure virtuális hálózat][sap-high-availability-infrastructure-wsfc-shared-disk-azure-network].
+* [Hozzon létre egy Azure virtual network][sap-high-availability-infrastructure-wsfc-shared-disk-azure-network].
 
 * [Állítsa be a szükséges DNS-IP-címek][sap-high-availability-infrastructure-wsfc-shared-disk-dns-ip].
 

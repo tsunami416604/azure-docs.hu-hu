@@ -16,12 +16,12 @@ ms.author: celested
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7c43498a7829a43fad331841aca045f52ae680be
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: 54a99d001f8cb59af3042ce8b6849a2cd9480e99
+ms.sourcegitcommit: 0ebc62257be0ab52f524235f8d8ef3353fdaf89e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67481466"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67723990"
 ---
 # <a name="header-based-authentication-for-single-sign-on-with-application-proxy-and-pingaccess"></a>Fejlécalapú hitelesítéskor az egyszeri bejelentkezést az alkalmazásproxy és a PingAccess
 
@@ -53,10 +53,11 @@ Ha engedélyezve van a Proxy engedélyezve van, és a egy összekötő már tele
 Az Application Proxy connector egy Windows Server-szolgáltatás, amely arra utasítja a közzétett alkalmazások a távoli alkalmazottak érkező forgalom. További részletes telepítési utasításokat: [oktatóanyag: A távoli hozzáféréshez alkalmazásproxyn keresztül a helyszíni alkalmazás hozzáadása az Azure Active Directoryban](application-proxy-add-on-premises-application.md).
 
 1. Jelentkezzen be a [Azure Active Directory portálon](https://aad.portal.azure.com/) alkalmazást rendszergazdaként. A **Azure Active Directory felügyeleti központ** lap jelenik meg.
-2. Válassza ki **Azure Active Directory** > **alkalmazásproxy** > **összekötőszolgáltatás letöltése**. A **Application Proxy Connector letöltése** lap jelenik meg.
+1. Válassza ki **Azure Active Directory** > **alkalmazásproxy** > **összekötőszolgáltatás letöltése**. A **Application Proxy Connector letöltése** lap jelenik meg.
 
    ![Application proxy connector letöltése](./media/application-proxy-configure-single-sign-on-with-ping-access/application-proxy-connector-download.png)
-3. Kövesse a telepítési utasításokat.
+
+1. Kövesse a telepítési utasításokat.
 
 Az összekötő letöltésével kell automatikusan alkalmazásproxy engedélyezése a címtárban, de ha nem, akkor választhat **alkalmazásproxy engedélyezése**.
 
@@ -205,7 +206,7 @@ E-mail cím venni az a, amely felhasználja a PingAccess access_token. példa:
 
 ### <a name="use-of-claims-mapping-policy-optional"></a>Jogcímek társítása a házirend alól (választható) használata
 
-[Jogcím-szabályzat hozzárendelése (előzetes verzió)](https://docs.microsoft.com/azure/active-directory/develop/active-directory-claims-mapping#claims-mapping-policy-properties/) attribútumok, amelyek nem léteznek az Azure ad számára. Jogcímtársítások lehetővé teszi, hogy a régi helyszíni alkalmazások migrálása a felhőbe, amely az AD FS vagy a felhasználói objektumok élvezik további egyéni jogcímek hozzáadásával
+[Jogcím-szabályzat hozzárendelése (előzetes verzió)](https://docs.microsoft.com/azure/active-directory/develop/active-directory-claims-mapping#claims-mapping-policy-properties) attribútumok, amelyek nem léteznek az Azure ad számára. Jogcímtársítások lehetővé teszi, hogy a régi helyszíni alkalmazások migrálása a felhőbe, amely az AD FS vagy a felhasználói objektumok élvezik további egyéni jogcímek hozzáadásával
 
 Ahhoz, hogy az alkalmazás egy egyéni jogcímszabályok használja, és további mezőket tartalmaznak, lehet, hogy megismerte is [egy egyéni jogcímek társítása a házirend létrehozása és hozzárendelése, az alkalmazás](../develop/active-directory-claims-mapping.md#claims-mapping-policy-assignment).
 

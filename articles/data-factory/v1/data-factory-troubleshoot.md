@@ -14,12 +14,12 @@ ms.author: gamal
 ms.reviewer: maghan
 manager: craigg
 robots: noindex
-ms.openlocfilehash: 5f2627932eb2fd427d934eba322230222b5e6958
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: cc880885777cbca67d6fb39b90feadc889339f76
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66002934"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67836179"
 ---
 # <a name="troubleshoot-data-factory-issues"></a>Data Factory-hibák elhárítása
 > [!NOTE]
@@ -119,14 +119,14 @@ Lásd: [egyéni tevékenységet a folyamat hibakereséshez](data-factory-use-cus
 
 ## <a name="use-azure-portal-to-troubleshoot"></a>Hibaelhárítás az Azure portal használatával
 ### <a name="using-portal-blades"></a>Portal paneljeinek használatával
-Lásd: [folyamat figyelése](data-factory-build-your-first-pipeline-using-editor.md#monitor-a-pipeline) lépéseit.
+Lásd: [folyamat figyelése](data-factory-monitor-manage-pipelines.md) lépéseit.
 
 ### <a name="using-monitor-and-manage-app"></a>A Megfigyelés és kezelés alkalmazás használata
 Lásd: [figyelése és adat-előállító folyamatok Monitor and Manage Appot használata kezelheti](data-factory-monitor-manage-app.md) részleteiről.
 
 ## <a name="use-azure-powershell-to-troubleshoot"></a>Hibaelhárítás az Azure PowerShell használatával
 ### <a name="use-azure-powershell-to-troubleshoot-an-error"></a>Egy hiba elhárítása az Azure PowerShell használatával
-Lásd: [figyelő Data Factory-folyamatok az Azure PowerShell-lel](data-factory-build-your-first-pipeline-using-powershell.md#monitor-pipeline) részleteiről.
+Lásd: [figyelő Data Factory-folyamatok az Azure PowerShell-lel](data-factory-monitor-manage-pipelines.md) részleteiről.
 
 [adfgetstarted]: data-factory-copy-data-from-azure-blob-storage-to-sql-database.md
 [use-custom-activities]: data-factory-use-custom-activities.md

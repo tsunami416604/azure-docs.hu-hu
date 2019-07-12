@@ -10,12 +10,12 @@ ms.topic: article
 ms.custom: seodec18
 ms.date: 05/15/2019
 ms.author: shvija
-ms.openlocfilehash: c5e58f7bc89fbe2d93f6610465abf4a92fd31406
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e1ec6987f1a142e9bf9cd4413cfb4444bde1b7dd
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66476114"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67797000"
 ---
 # <a name="event-hubs-frequently-asked-questions"></a>Az Event Hubs – gyakori kérdések
 
@@ -83,7 +83,7 @@ A kapcsolat a megfelelő IP-címek engedélyezési lista megkereséséhez köves
     ```
     nslookup <YourNamespaceName>.servicebus.windows.net
     ```
-2. Jegyezze fel a visszaadott IP-címet `Non-authoritative answer`. Az IP-címet a statikus. A csak időben megváltozna azt, hogy ha egy másik fürtön be a névtér visszaállítását.
+2. Jegyezze fel a visszaadott IP-címet `Non-authoritative answer`. A csak időben megváltozna azt, hogy ha egy másik fürtön be a névtér visszaállítását.
 
 A zone redudancy a névteret használja, ha néhány további lépések végrehajtásához szüksége: 
 

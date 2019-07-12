@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4dbe3039845b1c9160e4f4fa3007cad1f588f71e
-ms.sourcegitcommit: d3b1f89edceb9bff1870f562bc2c2fd52636fc21
+ms.openlocfilehash: ca6f79b5febdbf12c80ab85d07117bf937babef0
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/04/2019
-ms.locfileid: "67560758"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67798210"
 ---
 # <a name="integrate-your-existing-nps-infrastructure-with-azure-multi-factor-authentication"></a>A meglévő hálózati házirend-kiszolgáló infrastruktúra integrálása az Azure multi-factor Authentication
 
@@ -76,14 +76,14 @@ Amikor telepíti a bővítményt, az Azure AD-bérlő szükség van a címtár a
 
 A hálózati házirend-kiszolgálónak képesnek kell lennie kommunikálni a következő URL-címek a 80-as és 443-as portokon keresztül.
 
-- [https://adnotifications.windowsazure.com](https://adnotifications.windowsazure.com)
-- [https://login.microsoftonline.com](https://login.microsoftonline.com)
+- https:\//adnotifications.windowsazure.com
+- https:\//login.microsoftonline.com
 
 Ezenkívül a következő URL-kapcsolat végrehajtásához szükséges a [beállítása a PowerShell parancsfájl használatával adapter](#run-the-powershell-script)
 
-- [https://login.microsoftonline.com](https://login.microsoftonline.com)
-- [https://provisioningapi.microsoftonline.com](https://provisioningapi.microsoftonline.com)
-- [https://aadcdn.msauth.net](https://aadcdn.msauth.net)
+- https:\//login.microsoftonline.com
+- https:\//provisioningapi.microsoftonline.com
+- https:\//aadcdn.msauth.net
 
 ## <a name="prepare-your-environment"></a>A környezet előkészítése
 
@@ -230,6 +230,14 @@ Ez a beállítás célja határozza meg, mi a teendő, ha a felhasználó nincs 
 Ha szeretné létrehozni ezt a kulcsot, és állítsa be hamis értékre Bár a felhasználók bevezetése, és nem az összes lehet regisztrálni az Azure MFA-kiszolgáló még. Azonban mivel a kulcs beállítása lehetővé teszi a felhasználóknak, a multi-factor Authentication jelentkezzen be a nem regisztrált, távolítsa el ezt a kulcsot az éles környezetben történő előtt.
 
 ## <a name="troubleshooting"></a>Hibaelhárítás
+
+### <a name="nps-extension-health-check-script"></a>Hálózati házirend-kiszolgáló bővítmény állapotának ellenőrzése parancsfájl
+
+A következő szkriptet a alapszintű állapot-ellenőrzés lépések végrehajtásához, az NPS-bővítményének hibaelhárítása során a TechNet gyűjteményében érhető el.
+
+[MFA_NPS_Troubleshooter.ps1](https://gallery.technet.microsoft.com/Azure-MFA-NPS-Extension-648de6bb)
+
+---
 
 ### <a name="how-do-i-verify-that-the-client-cert-is-installed-as-expected"></a>Hogyan ellenőrizhetem, hogy az ügyféltanúsítvány a várt módon van-e telepítve?
 

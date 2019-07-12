@@ -9,12 +9,12 @@ ms.author: johndeu
 ms.date: 06/12/2019
 ms.topic: article
 ms.service: media-services
-ms.openlocfilehash: 1bede8ff7c33988a4e11a84d3a51ca098a608f33
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: e31ad51121b1b198e2d444e70c3f482b208ef105
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67055277"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67840139"
 ---
 # <a name="recommended-live-streaming-encoders"></a>Ajánlott élő streamelési kódolók
 
@@ -97,7 +97,7 @@ Egy Azure Media Services a helyszíni kódolót partnerként a Media Services a 
 10. Az URL-címet a 8. lépés kombinálva a számítógép neve a teljes URL-címére a 9. lépés.
 11. Futtassa az élő kódoló körülbelül 10 percre.
 12. Leállítja az élő eseményt. 
-13. Például egy lejátszóval [Azure Media Player](https://ampdemo.azureedge.net/azuremediaplayer.html) tekintse meg az adott lejátszási nem látható hipervizorgazdákat ne legyen minden minőségi szinten archivált objektumot. Vagy nézze meg, és ellenőrizze az előnézeti URL-CÍMEN keresztül az élő munkamenet során.
+13. Például egy lejátszóval [Azure Media Player](http://aka.ms/azuremediaplayer) tekintse meg az adott lejátszási nem látható hipervizorgazdákat ne legyen minden minőségi szinten archivált objektumot. Vagy nézze meg, és ellenőrizze az előnézeti URL-CÍMEN keresztül az élő munkamenet során.
 14. Jegyezze fel az eszköz azonosítója, közzétett streamelési URL-CÍMÉT az élő archívumot, és a beállítások és az élő kódoló a használt verzió.
 15. Élő esemény állapot alaphelyzetbe állítása az összes minta létrehozása után.
 16. A kódoló (rendelkező és anélküli ad jelzés, feliratokat vagy különböző kódolási sebességű) által támogatott konfigurációk ismételje meg az 5 – 15.
@@ -116,14 +116,14 @@ Egy Azure Media Services a helyszíni kódolót partnerként a Media Services a 
 10. Az URL-címet a 8. lépés kombinálva a számítógép neve a teljes URL-címére a 9. lépés.
 11. Futtassa az élő kódoló körülbelül 10 percre.
 12. Leállítja az élő eseményt.
-13. Például egy lejátszóval [Azure Media Player](https://ampdemo.azureedge.net/azuremediaplayer.html) tekintse meg az adott lejátszási ne legyen az összes minőségi szinthez nem látható hipervizorgazdákat archivált objektumot. Vagy nézze meg, és ellenőrizze az előnézeti URL-CÍMEN keresztül az élő munkamenet során.
+13. Például egy lejátszóval [Azure Media Player](http://aka.ms/azuremediaplayer) tekintse meg az adott lejátszási ne legyen az összes minőségi szinthez nem látható hipervizorgazdákat archivált objektumot. Vagy nézze meg, és ellenőrizze az előnézeti URL-CÍMEN keresztül az élő munkamenet során.
 14. Jegyezze fel az eszköz azonosítója, közzétett streamelési URL-CÍMÉT az élő archívumot, és a beállítások és az élő kódoló a használt verzió.
 15. Élő esemény állapot alaphelyzetbe állítása az összes minta létrehozása után.
 16. A kódoló (rendelkező és anélküli ad jelzés, feliratokat vagy különböző kódolási sebességű) által támogatott konfigurációk ismételje meg az 5 – 15.
 
 ### <a name="longevity-verification"></a>Az érvényességi ideje ellenőrzése
 
-Kövesse a lépéseket, mint a [átmenő élő esemény ellenőrzési](#pass-through-live-event-verification) kivételével 11. lépés. <br/>10 perc helyett futtassa az élő kódoló egy hét vagy hosszabb ideig. Például egy lejátszóval [Azure Media Player](https://ampdemo.azureedge.net/azuremediaplayer.html) tekintse meg az élő streamelés időpontból lejátszás ne legyen semmilyen látható hipervizorgazdákat idő (vagy egy archivált objektumot).
+Kövesse a lépéseket, mint a [átmenő élő esemény ellenőrzési](#pass-through-live-event-verification) kivételével 11. lépés. <br/>10 perc helyett futtassa az élő kódoló egy hét vagy hosszabb ideig. Például egy lejátszóval [Azure Media Player](http://aka.ms/azuremediaplayer) tekintse meg az élő streamelés időpontból lejátszás ne legyen semmilyen látható hipervizorgazdákat idő (vagy egy archivált objektumot).
 
 ### <a name="email-your-recorded-settings"></a>Az e-mail a rögzített beállítások
 

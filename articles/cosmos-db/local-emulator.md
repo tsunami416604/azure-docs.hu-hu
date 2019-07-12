@@ -3,15 +3,15 @@ title: Helyi fejlesztés az Azure Cosmos emulátorral
 description: Az Azure Cosmos Emulatort használja, akkor fejlesztheti és tesztelheti alkalmazását helyileg ingyenes, Azure-előfizetés létrehozása nélkül.
 ms.service: cosmos-db
 ms.topic: tutorial
-author: deborahc
-ms.author: dech
-ms.date: 06/21/2019
-ms.openlocfilehash: d7d9d62525161e6871cafd65cf5cd2c403cf0579
-ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
+author: markjbrown
+ms.author: mjbrown
+ms.date: 07/09/2019
+ms.openlocfilehash: 9649c53f9fc11795449afd78b12fda691239bb18
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/22/2019
-ms.locfileid: "67331778"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67797329"
 ---
 # <a name="use-the-azure-cosmos-emulator-for-local-development-and-testing"></a>Az Azure Cosmos Emulatort használja a helyi fejlesztési és tesztelési célra
 
@@ -232,7 +232,7 @@ A telepítési helyről segítségével a parancssorból indítása és leállí
 
 ### <a name="command-line-syntax"></a>Parancssori szintaxis
 
-    CosmosDB.Emulator.exe [/Shutdown] [/DataPath] [/Port] [/MongoPort] [/DirectPorts] [/Key] [/EnableRateLimiting] [/DisableRateLimiting] [/NoUI] [/NoExplorer] [/?]
+    CosmosDB.Emulator.exe [/Shutdown] [/DataPath] [/Port] [/MongoPort] [/DirectPorts] [/Key] [/EnableRateLimiting] [/DisableRateLimiting] [/NoUI] [/NoExplorer] [/EnableMongoDbEndpoint] [/?]
 
 A beállítások listájának megtekintéséhez írja be a `CosmosDB.Emulator.exe /?` parancsot a parancssorba.
 
@@ -244,18 +244,19 @@ A beállítások listájának megtekintéséhez írja be a `CosmosDB.Emulator.ex
 | Leállítás| Az Azure Cosmos Emulator leáll.| CosmosDB.Emulator.exe /Shutdown | |
 |DataPath | Meghatározza az adatfájlok tárolására szolgáló elérési utat. Alapértelmezett érték: % LocalAppdata%\CosmosDBEmulator. | CosmosDB.Emulator.exe /DataPath=\<datapath\> | \<DataPath\>: Egy elérhető elérési útja |
 |Port | Az emulátorhoz használni kívánt portszámot határozza meg. Alapértelmezett értéke 8081-es. |CosmosDB.Emulator.exe /Port=\<port\> | \<Port\>: Egyetlen port száma |
-| MongoPort | A MongoDB kompatibilitási API-hoz használni kívánt portszámot határozza meg. Alapértelmezett érték: 10255. |CosmosDB.Emulator.exe /MongoPort = \<mongoport\>|\<mongoport\>: Egyetlen port száma|
-| CassandraPort | A Cassandra-végpontjához használandó portszám meghatározására. Alapértelmezett érték: 10350. | CosmosDB.Emulator.exe /CassandraPort = \<cassandraport\> | \<cassandraport\>: Egyetlen port száma |
 | ComputePort | A megadott a port számát, a számítási Interop-átjáró szolgáltatás használatára. Az átjáró HTTP-végpont mintavételi port ComputePort + 79 számítása. Ezért ComputePort és ComputePort + 79 nyílt és elérhetőnek kell lenniük. Az alapértelmezett értékek a következők 8900, 8979. | CosmosDB.Emulator.exe /ComputePort = \<computeport\> | \<computeport\>: Egyetlen port száma |
+| EnableMongoDbEndpoint | Lehetővé teszi a MongoDB API-ban | CosmosDB.Emulator.exe /EnableMongoDbEndpoint | |
+| MongoPort | A MongoDB kompatibilitási API-hoz használni kívánt portszámot határozza meg. Alapértelmezett érték: 10255. |CosmosDB.Emulator.exe /MongoPort = \<mongoport\>|\<mongoport\>: Egyetlen port száma|
 | EnableCassandraEndpoint | Enables Cassandra API | CosmosDB.Emulator.exe /EnableCassandraEndpoint | |
+| CassandraPort | A Cassandra-végpontjához használandó portszám meghatározására. Alapértelmezett érték: 10350. | CosmosDB.Emulator.exe /CassandraPort = \<cassandraport\> | \<cassandraport\>: Egyetlen port száma |
 | EnableGremlinEndpoint | Lehetővé teszi, hogy a Gremlin API | CosmosDB.Emulator.exe /EnableGremlinEndpoint | |
 | GremlinPort | A Gremlin-végpont használni kívánt portszámot. Alapértelmezett érték: 8901. | CosmosDB.Emulator.exe /GremlinPort=\<port\> | \<Port\>: Egyetlen port száma |
+|EnableTableEndpoint | Lehetővé teszi, hogy az Azure Table API | CosmosDB.Emulator.exe /EnableTableEndpoint | |
 |TablePort | Az Azure Table-végpont esetében használni kívánt portszámot. Alapértelmezett érték: 8902. | CosmosDB.Emulator.exe /TablePort=\<port\> | \<Port\>: Egyetlen port száma|
 | KeyFile | Engedélyezési kulcsot a megadott fájl olvasásakor. Hozzon létre egy keyfile /GenKeyFile lehetőség használatával | CosmosDB.Emulator.exe /KeyFile=\<file_name\> | \<Fájlnév\>: A fájl elérési útja |
 | ResetDataPath | Rekurzív módon eltávolítja a megadott elérési út összes fájlt. Ha nem ad meg elérési utat, alapértelmezés szerint az %LOCALAPPDATA%\CosmosDbEmulator | CosmosDB.Emulator.exe /ResetDataPath[=\<path>] | \<Elérési út\>: Fájl elérési útja  |
 | StartTraces  |  A kezdő hibakeresési nyomkövetési naplók gyűjtésére. | CosmosDB.Emulator.exe /StartTraces | |
 | StopTraces     | Állítsa le a hibakeresési nyomkövetési naplók gyűjtésére. | CosmosDB.Emulator.exe /StopTraces  | |
-|EnableTableEndpoint | Lehetővé teszi, hogy az Azure Table API | CosmosDB.Emulator.exe /EnableTableEndpoint | |
 |FailOnSslCertificateNameMismatch | Alapértelmezés szerint az Emulátorban az önaláírt SSL-tanúsítvány újragenerálása, ha a tanúsítvány SAN nem tartalmazza az emulátor állomás tartománynév, helyi IPv4 cím, "localhost" és "127.0.0.1". Ezzel a beállítással az emulátorban sikertelen lesz a indításakor helyette. Majd használjon a /GenCert beállítást hozhat létre, és a egy új önaláírt SSL-tanúsítvány telepítése. | CosmosDB.Emulator.exe /FailOnSslCertificateNameMismatch  | |
 | GenCert | Hozzon létre, és a egy új önaláírt SSL-tanúsítvány telepítése. igény szerint, beleértve az Emulátorban eléréséhez a hálózaton keresztül további DNS-nevek vesszővel tagolt listája. | CosmosDB.Emulator.exe /GenCert [ \<további dns-neveket vesszővel elválasztott listája\>] | |
 | DirectPorts |A közvetlen kapcsolódáshoz használni kívánt portokat határozza meg. Az alapértelmezett értékek: 10251,10252,10253,10254. | CosmosDB.Emulator.exe /DirectPorts:\<közvetlen portok\> | \<directports\>: 4 portok vesszővel tagolt listája |
@@ -276,11 +277,11 @@ A beállítások listájának megtekintéséhez írja be a `CosmosDB.Emulator.ex
 
 Alapértelmezés szerint legfeljebb 25 rögzített méretű tárolók (csak a támogatott Azure Cosmos DB SDK-k használatával) vagy 5 korlátlan tárolók az Azure Cosmos Emulator használatával hozhat létre. Módosításával a **PartitionCount** érték, hozhat létre legfeljebb 250 rögzített méretű tárolók vagy 50 korlátlan tárolók vagy tetszőleges kombinációjának a két, legfeljebb 250 rögzített méretű tárolók (ahol egy korlátlan számú tárolót = 5 rögzített méretű tárolók). Azonban nem ajánlott az emulátor beállításához, több mint 200 rögzített méretű tárolók futtatásához. Miatt a terhelést a lemez i/o-műveletek hozzáadása, amely eredményez időtúllépések előre nem látható a végpont API-k használata esetén.
 
-
 Ha a tároló létrehozása után az aktuális partíciók száma túl lett lépve próbál a emulátor ServiceUnavailable kivételt, a következő üzenetet okoz.
 
 "Sajnáljuk, hogy nagy kereslet ebben a régióban jelenleg tapasztal, és jelenleg a kérés nem teljesíthető. A Microsoft folyamatosan több és több kapacitás online állapotba és és, és javasoljuk, hogy próbálja meg újra.
-Várjuk e-mailek askcosmosdb@microsoft.com bármikor és bármilyen okból. Tevékenységazonosító: 12345678-1234-1234-1234-123456789abc"
+Várjuk e-mailek askcosmosdb@microsoft.com bármikor és bármilyen okból.
+Tevékenységazonosító: 12345678-1234-1234-1234-123456789abc"
 
 Elérhető az Azure Cosmos-emulátorban tárolók száma módosításához futtassa az alábbi lépéseket:
 

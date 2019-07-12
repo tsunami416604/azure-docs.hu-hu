@@ -6,12 +6,12 @@ ms.service: managed-applications
 ms.topic: conceptual
 ms.date: 06/19/2019
 ms.author: jobreen
-ms.openlocfilehash: f418cd6c5470740ce123448ddbbe54cb6e89dabe
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: d25ef00adc307bae57da2c04d4472874f8d67bcd
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67475945"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67796087"
 ---
 # <a name="azure-custom-resource-providers-overview"></a>Az Azure egyéni erőforrás-szolgáltatók áttekintése
 
@@ -125,6 +125,7 @@ Ha kérdései vannak az Azure egyéni erőforrás-szolgáltató fejlesztéshez, 
 
 Ebből a cikkből megismerhette egyéni szolgáltatókat. Nyissa meg a következő cikk az egyéni szolgáltató létrehozásához.
 
-- [Oktatóanyag: Az Azure egyéni erőforrás-szolgáltató létrehozása és telepítése az egyéni erőforrások](./create-custom-provider.md)
+- [Rövid útmutató: Az Azure egyéni erőforrás-szolgáltató létrehozása és telepítése az egyéni erőforrások](./create-custom-provider.md)
+- [Oktatóanyag: Egyéni műveletek és az erőforrások létrehozása az Azure-ban](./tutorial-custom-providers-101.md)
 - [Útmutató: Az egyéni műveletek hozzáadása az Azure REST API-val](./custom-providers-action-endpoint-how-to.md)
 - [Útmutató: Egyéni erőforrások hozzáadása az Azure REST API-val](./custom-providers-resources-endpoint-how-to.md)

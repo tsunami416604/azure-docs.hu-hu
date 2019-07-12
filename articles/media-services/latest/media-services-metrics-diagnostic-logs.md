@@ -1,6 +1,6 @@
 ---
-title: Media Services-metrikák és diagnosztikai naplók Azure monitoron keresztül figyelése |} A Microsoft Docs
-description: Ez a cikk áttekintést nyújt a Media Services-metrikák és diagnosztikai naplók az Azure monitoron keresztül figyelése.
+title: Azure Media Services-metrikák és diagnosztikai naplók Azure monitoron keresztül figyelése |} A Microsoft Docs
+description: Ez a cikk áttekintést nyújt az Azure Media Services-metrikák és diagnosztikai naplók az Azure monitoron keresztül figyelése.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/05/2019
+ms.date: 07/08/2019
 ms.author: juliako
-ms.openlocfilehash: bbf43ecb07947fad8cc1ee064d2038e4a21d4444
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6d26cd809d78bf05f66c9fa03be5063ca4d2d5e4
+ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65964767"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67805999"
 ---
 # <a name="monitor-media-services-metrics-and-diagnostic-logs"></a>A Media Services-metrikák és diagnosztikai naplók figyelése
 
@@ -26,66 +26,91 @@ ms.locfileid: "65964767"
 
 Részletes ismertetőt talál [Azure Monitor-metrikák](../../azure-monitor/platform/data-platform.md) és [Azure Monitor-diagnosztikai naplók](../../azure-monitor/platform/diagnostic-logs-overview.md).
 
-Ebben a témakörben ismertetett jelenleg elérhető [Media Services-metrikák](#media-services-metrics) és [Media Services diagnosztikai naplók](#media-services-diagnostic-logs).
+Ebben a témakörben ismertetett támogatott [Media Services-metrikák](#media-services-metrics) és [Media Services diagnosztikai naplók](#media-services-diagnostic-logs).
 
 ## <a name="media-services-metrics"></a>A Media Services-metrikák
 
-Rendszeres időközönként metrikákat gyűjt az érték-e. Hasznos, mert azok gyakran kell mintát, és riasztást gyorsan is fired viszonylag egyszerű logikával riasztási zajlik.
+Rendszeres időközönként metrikákat gyűjt az érték-e. Hasznos, mert azok gyakran kell mintát, és riasztást gyorsan is fired viszonylag egyszerű logikával riasztási zajlik. Metrikákhoz kapcsolódó riasztások létrehozásával kapcsolatos információkért lásd: [létrehozása, megtekintése és kezelése az Azure Monitor használatával metrikákhoz kapcsolódó riasztások](../../azure-monitor/platform/alerts-metric.md).
 
-Jelenleg a következő Media Services [adatfolyam-továbbítási végpontok](https://docs.microsoft.com/rest/api/media/streamingendpoints) metrikák vannak kibocsátva az Azure-ban:
+A Media Services támogatja a figyelési metrikákat a következő erőforrásokhoz:
 
-|Metrika|Display name|Leírás|
+* Fiók
+* Streamvégpont
+ 
+### <a name="account"></a>Fiók
+
+A következő mérőszámai követheti nyomon. 
+
+|Metrika neve|Display name|Leírás|
 |---|---|---|
-|Kérelmek|Kérelmek|A folyamatos átviteli végponton által feldolgozott kérelmek teljes száma körül részleteket nyújt.|
+|AssetCount|Eszközök száma|Eszközök a fiókban.|
+|AssetQuota|Az eszközintelligencia-kvóta|Az eszközintelligencia kvóta-fiókjában található.|
+|AssetQuotaUsedPercentage|Az eszközintelligencia felhasznált kvóta százalékos aránya|A százalékos aránya az Eszközintelligencia kvóta már használatban van.|
+|ContentKeyPolicyCount|Tartalmi kulcs szabályzatok száma|Tartalmi kulcs házirendjei-fiókjában található.|
+|ContentKeyPolicyQuota|Tartalmi kulcs házirend kvóta|Tartalmi kulcs házirendjei kvóta-fiókjában található.|
+|ContentKeyPolicyQuotaUsedPercentage|Tartalmi kulcs házirend kvóta használt százalékos aránya|A százalékos aránya a tartalom kulcs házirend kvóta már használatban van.|
+|StreamingPolicyCount|Streamelési szabályzatok száma|Streamelési házirendek a fiókjában.|
+|StreamingPolicyQuota|Adatfolyam-továbbítási szabályzat kvóta|Streamelési házirendek kvóta-fiókjában található.|
+|StreamingPolicyQuotaUsedPercentage|Adatfolyam-továbbítási szabályzat kvóta használt százalékos aránya|A százalékos aránya a házirend folyamatos átviteli kvóta már használatban van.|
+ 
+Olvassa el a [kvóták és korlátozások fiók](limits-quotas-constraints.md).
+
+### <a name="streaming-endpoint"></a>Streamvégpont
+
+A következő Media Services [adatfolyam-továbbítási végpontok](https://docs.microsoft.com/rest/api/media/streamingendpoints) metrikák támogatottak:
+
+|Metrika neve|Display name|Leírás|
+|---|---|---|
+|Kérelmek|Kérelmek|Biztosítja a folyamatos átviteli végponton, melyet a HTTP-kérések száma.|
 |Kimenő forgalom|Kimenő forgalom|Kimenő bájtok teljes száma. Ha például bájt streameli a folyamatos átviteli végponton.|
-|SuccessE2ELatency|Sikeres végpontok közötti késése| Sikeres kérések végpontok közötti késés kapcsolatos információkat biztosít.|
+|SuccessE2ELatency|Sikeres végpontok közötti késése|A folyamatos átviteli végponton, ha a kérés érkezésekor az időtartam a válasz utolsó bájtját lett elküldve.|
 
-Például a CLI-vel "Kimenő" metrikáinak beolvasása, futtatná a következő `az monitor metrics` parancssori felületi parancsot:
+### <a name="why-would-i-want-to-use-metrics"></a>Miért érdemes a mérőszámok használatát? 
 
-```cli
-az monitor metrics list --resource \
-   "/subscriptions/<subscription id>/resourcegroups/<resource group name>/providers/Microsoft.Media/mediaservices/<Media Services account name>/streamingendpoints/<streaming endpoint name>" \
-   --metric "Egress"
-```
+Az alábbiakban példát, hogyan Media Services-metrikák figyelése segíthet megérteni, hogyan az alkalmazások hajt végre. A Media Services-metrikák lehet megoldani a következő kérdések a következők:
 
-Metrikákhoz kapcsolódó riasztások létrehozásával kapcsolatos információkért lásd: [létrehozása, megtekintése és kezelése az Azure Monitor használatával metrikákhoz kapcsolódó riasztások](../../azure-monitor/platform/alerts-metric.md).
+* Hogyan figyelhetem a Standard folyamatos átviteli végponton, ha szeretnék túllépte a korlátok?
+* Honnan tudhatom meg, ha van elegendő prémium szintű Streamvégpont skálázási egység? 
+* Hogyan állíthatok be egy riasztást, hogy mikor vertikális felskálázása az adatfolyam-továbbítási végpontok?
+* Hogyan állíthatok be egy riasztást tudni, hogy a fiók konfigurálva a maximális kimenő elérésekor?
+* Hogyan tekinthetem meg a sikertelen kérelmek áttekintését, és mi okozza a hibát?
+* Hogyan tekintheti meg, hogy hány HLS, DASH vagy kérelmek a csomagoló lekért van folyamatban?
+* Hogyan állíthatok be egy riasztást, ha a sikertelen kérelmek száma a küszöbérték észlelte? 
+
+### <a name="example"></a>Példa
+
+Lásd: [Media Services-metrikák figyelése](media-services-metrics-howto.md)
 
 ## <a name="media-services-diagnostic-logs"></a>A Media Services diagnosztikai naplók
 
-Jelenleg a következő diagnosztikai naplók kaphat:
+Diagnosztikai naplók nyújtanak részletes, gyakori adatokat egy Azure-erőforrás a művelet. További információkért lásd: [gyűjtése és felhasználása a naplófájlok adatait az Azure-erőforrások](../../azure-monitor/platform/diagnostic-logs-overview.md).
+
+Media Services támogatja a következő diagnosztikai naplók kapcsolódnak:
+
+* Kulcskézbesítési
+
+### <a name="key-delivery"></a>Kulcskézbesítési
 
 |Name (Név)|Leírás|
 |---|---|
 |Kulcskézbesítési szolgáltatáskérés|Naplók megjelenítése a kulcstovábbítást adatok kérése. További részletekért lásd: [sémák](media-services-diagnostic-logs-schema.md).|
 
-Ahhoz, hogy a diagnosztikai naplókat egy tárfiókban, a következőt futtatná `az monitor diagnostic-settings` parancssori felületi parancsot: 
+### <a name="why-would-i-want-to-use-diagnostics-logs"></a>Miért érdemes használni a diagnosztikai naplók? 
 
-```cli
-az monitor diagnostic-settings create --name <diagnostic name> \
-    --storage-account <name or ID of storage account> \
-    --resource <target resource object ID> \
-    --resource-group <storage account resource group> \
-    --logs '[
-    {
-        "category": <category name>,
-        "enabled": true,
-        "retentionPolicy": {
-            "days": <# days to retain>,
-            "enabled": true
-        }
-    }]'
-```
+Néhány dolgot, hogy a kulcs kézbesítési diagnosztikai naplókkal tekintse meg a következők:
 
-Példa:
+* DRM-típus által kínált licencek számának megtekintéséhez
+* Tekintse meg a szabályzat által kínált licencek számát 
+* Hibába ütközik, DRM-mel vagy a házirend típusa szerint
+* Tekintse meg a jogosulatlan licenc ügyfelektől érkező kérelmek száma
 
-```cli
-az monitor diagnostic-settings create --name amsv3diagnostic \
-    --storage-account storageaccountforamsv3  \
-    --resource "/subscriptions/00000000-0000-0000-0000-0000000000/resourceGroups/amsv3ResourceGroup/providers/Microsoft.Media/mediaservices/amsv3account" \
-    --resource-group "amsv3ResourceGroup" \
-    --logs '[{"category": "KeyDeliveryRequests",  "enabled": true, "retentionPolicy": {"days": 3, "enabled": true }}]'
-```
+### <a name="example"></a>Példa
+
+Lásd: [figyelése a Media Services diagnosztikai naplók](media-services-diagnostic-logs-howto.md)
 
 ## <a name="next-steps"></a>További lépések 
 
-[Gyűjtése és felhasználása a naplófájlok adatait az Azure-erőforrások](../../azure-monitor/platform/diagnostic-logs-overview.md).
+* [Gyűjtése és felhasználása a naplófájlok adatait az Azure-erőforrások](../../azure-monitor/platform/diagnostic-logs-overview.md)
+* [Létrehozása, megtekintése és kezelése az Azure Monitor használatával metrikákhoz kapcsolódó riasztások](../../azure-monitor/platform/alerts-metric.md)
+* [A Media Services-metrikák figyelése](media-services-metrics-howto.md)
+* [Media Services diagnosztikai naplók figyelése](media-services-diagnostic-logs-howto.md)

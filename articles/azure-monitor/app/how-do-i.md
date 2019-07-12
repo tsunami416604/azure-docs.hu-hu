@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 04/04/2017
 ms.author: mbullwin
-ms.openlocfilehash: 5e22a3f3b362811fd87460ec41b61a990f4d83fb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9f80edf18a531d6c2850658ddef9c7007edb350f
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60902059"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67795515"
 ---
 # <a name="how-do-i--in-application-insights"></a>Hogyan tegyem... az Application Insights szolgáltatásban?
 ## <a name="get-an-email-when-"></a>E-mail küldése Ha...
@@ -137,16 +137,25 @@ Tudjon meg többet [árai és kvótái](../../azure-monitor/app/pricing.md).
 ## <a name="disable-telemetry"></a>Telemetria letiltása
 A **dinamikusan leállítására és elindítására** a gyűjtemény és továbbítását a telemetriai adatokat a kiszolgálóról:
 
-```
+### <a name="aspnet-classic-applications"></a>Klasszikus ASP.NET-alkalmazások
 
+```csharp
     using  Microsoft.ApplicationInsights.Extensibility;
 
     TelemetryConfiguration.Active.DisableTelemetry = true;
 ```
 
+### <a name="other-applications"></a>Más alkalmazások
+Nem javasoljuk, hogy használjon `TelemetryConfiguration.Active` konzolon vagy ASP.NET Core-alkalmazások egyszeres.
+Ha létrehozott `TelemetryConfiguration` saját kezűleg - példány beállítása `DisableTelemetry` való `true`.
 
+ASP.NET Core-alkalmazások esetén előfordulhat, hogy hozzáférési `TelemetryConfiguration` példány használatával [ASP.NET Core függőségi beszúrást](/aspnet/core/fundamentals/dependency-injection/). További részleteket megtalálja [applicationinsights – ASP.NET Core-alkalmazások](../../azure-monitor/app/asp-net-core.md) cikk.
 
-A **tiltsa le a kiválasztott standard naplógyűjtők** – például teljesítményszámlálók, HTTP-kérések vagy - függőségeket törölni, vagy tegye megjegyzésbe a megfelelő a [ApplicationInsights.config](../../azure-monitor/app/api-custom-events-metrics.md). Sikerült ezt megteheti, például, ha azt szeretné, a saját TrackRequest adatküldéshez.
+## <a name="disable-selected-standard-collectors"></a>Tiltsa le a kiválasztott standard naplógyűjtők
+Letilthatja a standard szintű naplógyűjtők (például teljesítményszámlálók, HTTP-kérések vagy függőségek)
+
+* **Az ASP.NET-alkalmazások** – törlés vagy tegye megjegyzésbe a megfelelő a [ApplicationInsights.config](../../azure-monitor/app/configuration-with-applicationinsights-config.md)
+* **Az ASP.NET Core-alkalmazások** – hajtsa végre a telemetriai adatok modulok konfigurációs beállítások [applicationinsights – ASP.NET Core](../../azure-monitor/app/asp-net-core.md#configuring-or-removing-default-telemetrymodules)
 
 ## <a name="view-system-performance-counters"></a>Rendszerteljesítmény-számlálók megtekintése
 A metrikák, megjelenítheti a metrikaböngészőben többek között olyan rendszer teljesítményszámlálók. Van egy előre meghatározott panel címe **kiszolgálók** , amely megjeleníti a többre.

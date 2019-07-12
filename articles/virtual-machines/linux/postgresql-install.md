@@ -4,7 +4,7 @@ description: Ismerje meg, hogyan PostgreSQL telepítése és konfigurálása az 
 services: virtual-machines-linux
 documentationcenter: ''
 author: cynthn
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager,azure-service-management
 ms.assetid: 1a747363-0cc5-4ba3-9be7-084dfeb04651
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/01/2016
 ms.author: cynthn
-ms.openlocfilehash: 5fe5e819c4f1079b6eb1fa8bb19d337ecfed600d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 086b36b347f214e1e9cdf44e4fb5a29fe501fa8b
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65955145"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67667105"
 ---
 # <a name="install-and-configure-postgresql-on-azure"></a>A PostgreSQL telepítése és konfigurálása Azure-ban
 PostgreSQL az Oracle- és DB2 hasonlít egy speciális nyílt forráskódú adatbázis. Teljes ACID megfelelőségi, megbízható tranzakciós feldolgozást, és többverziós egyidejűségi vezérlésre nagyvállalati szintű funkciókat tartalmaz. Támogatja a szabványok – például az ANSI SQL és az SQL/MED (beleértve a külső adatok burkolókat az Oracle, MySQL, mongodb-hez és sok más) is. Fontos a nagy mértékben bővíthetők, a JSON és a kulcs-érték-alapú alkalmazások több mint 12 eljárási nyelvet, a GIN és GiST indexek, a térbeli adatok támogatása és a több NoSQL-hez hasonló funkciók támogatása.

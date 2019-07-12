@@ -4,15 +4,15 @@ description: Ebből a cikkből megismerheti, hogyan telepítheti és konfigurál
 services: firewall
 author: vhorne
 ms.service: firewall
-ms.date: 06/11/2019
+ms.date: 7/10/2019
 ms.author: victorh
 ms.topic: article
-ms.openlocfilehash: b40ac789fbc331e779e85462724e5c8a8e9bce47
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 24954eecde58c978fa3e14bb3a2d411d708687a3
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67083352"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67707164"
 ---
 # <a name="deploy-and-configure-azure-firewall-using-azure-cli"></a>Telepítse és konfigurálja az Azure CLI használatával Azure-tűzfal
 
@@ -20,7 +20,7 @@ A kimenő hálózati hozzáférés ellenőrzése az általános hálózati bizto
 
 Az Azure-alhálózatok kimenő hálózati hozzáférése többek között az Azure Firewall használatával vezérelhető. Az Azure Firewall segítségével a következőket konfigurálhatja:
 
-* Alkalmazásszabályokat, amelyek egy alhálózatról elérhető teljes tartományneveket (FQDN) határoznak meg.
+* Alkalmazásszabályokat, amelyek egy alhálózatról elérhető teljes tartományneveket (FQDN) határoznak meg. A teljes Tartománynevet is [közé tartozik az SQL Server-példányok](sql-fqdn-filtering.md).
 * Hálózatszabályokat, amelyek forráscímet, protokollt, valamint célportot és célcímet határoznak meg.
 
 A hálózati forgalmat a konfigurált tűzfalszabályok irányítják, ha alapértelmezett alhálózati átjáróként irányítja a tűzfalhoz a forgalmat.
@@ -54,6 +54,13 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 ### <a name="azure-cli"></a>Azure CLI
 
 Ha helyi telepítése és használata a parancssori Felületet, futtassa az Azure CLI 2.0.4-es vagy újabb. A verzió megkereséséhez futtassa **az--verzió**. Telepítésekor vagy verziófrissítésekor kapcsolatos információkért lásd: [Azure CLI telepítése]( /cli/azure/install-azure-cli).
+
+Az Azure tűzfal-bővítményének telepítése:
+
+```azurecli-interactive
+az extension add -n azure-firewall
+```
+
 
 ## <a name="set-up-the-network"></a>A hálózat beállítása
 

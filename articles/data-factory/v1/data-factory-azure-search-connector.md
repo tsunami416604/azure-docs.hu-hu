@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 7ad328eec7e16b5368b78a0dfccbf5c09adb5c13
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 30a5bc9c5f0b7d1443e7ca2a16d9f0e0d1120dd8
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60567231"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67836630"
 ---
 # <a name="push-data-to-an-azure-search-index-by-using-azure-data-factory"></a>Adatok leküldése az Azure Search-index az Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Válassza ki a Data Factory szolgáltatás használ:"]
@@ -40,7 +40,7 @@ Létrehozhat egy folyamatot egy másolási tevékenységgel az, hogy az adatokat
 
 A folyamat létrehozásának legegyszerűbb módja az, hogy használja a **másolása varázsló**. Lásd: [oktatóanyag: Hozzon létre egy folyamatot a másolás varázsló használatával](data-factory-copy-data-wizard-tutorial.md) gyors bemutató létrehozása egy folyamatot az adatok másolása varázsló használatával.
 
-A következő eszközök használatával hozzon létre egy folyamatot: **Az Azure portal**, **Visual Studio**, **Azure PowerShell-lel**, **Azure Resource Manager-sablon**, **.NET API**, és  **REST API-val**. Lásd: [másolási tevékenység oktatóanyagát](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) egy másolási tevékenységgel ellátott adatcsatorna létrehozása a részletes útmutatóját.
+A következő eszközök használatával hozzon létre egy folyamatot: **A Visual Studio**, **Azure PowerShell-lel**, **Azure Resource Manager-sablon**, **.NET API**, és **REST API-val**. Lásd: [másolási tevékenység oktatóanyagát](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) egy másolási tevékenységgel ellátott adatcsatorna létrehozása a részletes útmutatóját.
 
 Az eszközök vagy az API-kat használja, hogy létrehoz egy folyamatot, amely a helyez át adatokat egy forrásadattárból egy fogadó adattárba a következő lépéseket fogja végrehajtani:
 
@@ -79,7 +79,7 @@ A másolási tevékenység, ha a fogadó típusa nem **AzureSearchIndexSink**, t
 
 | Tulajdonság | Leírás | Megengedett értékek | Szükséges |
 | -------- | ----------- | -------------- | -------- |
-| WriteBehavior | Megadja, hogy egyesítéséhez, vagy cserélje le, amikor a dokumentum az indexben már létezik. Tekintse meg a [WriteBehavior tulajdonság](#writebehavior-property).| Egyesítés (alapértelmezett)<br/>Töltsön fel| Nem |
+| WriteBehavior | Megadja, hogy egyesítéséhez, vagy cserélje le, amikor a dokumentum az indexben már létezik. Tekintse meg a [WriteBehavior tulajdonság](#writebehavior-property).| Egyesítés (alapértelmezett)<br/>Feltöltés| Nem |
 | WriteBatchSize | Amikor a puffer mérete eléri a writeBatchSize feltölti az adatokat az Azure Search-indexbe. Tekintse meg a [WriteBatchSize tulajdonság](#writebatchsize-property) részleteiről. | az 1000 1. Alapértelmezett értéke 1000. | Nem |
 
 ### <a name="writebehavior-property"></a>WriteBehavior tulajdonság
@@ -100,7 +100,7 @@ Az alábbi tábla meghatározza, hogy egy Azure Search adattípus támogatott-e,
 
 | Az Azure Search-adattípus | Az Azure Search fogadó támogatott |
 | ---------------------- | ------------------------------ |
-| String | I |
+| Karakterlánc | I |
 | Int32 | I |
 | Int64 | I |
 | Double | I |

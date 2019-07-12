@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 06/05/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: e57291292d8957fd323f9be03bb7df0492484ea8
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.openlocfilehash: da10b70b85e284173abbd1779fb1d39f477ca0cd
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67341618"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67723200"
 ---
 # <a name="authenticate-with-azure-active-directory-from-an-application-for-access-to-blobs-and-queues"></a>Hozzáférés egy alkalmazás hitelesítése az Azure Active Directoryval, blobok és üzenetsorok
 
@@ -49,16 +49,16 @@ Egy alkalmazás regisztrálása az Azure ad-vel kapcsolatos további informáci�
 Ezután adja meg az alkalmazás engedélyeit az Azure Storage API-k meghívására. Ebben a lépésben lehetővé teszi, hogy az alkalmazás az Azure Storage az Azure AD-kérések hitelesítéséhez.
 
 1. Az a **áttekintése** regisztrált egy alkalmazást, válassza a lap **API-engedélyek megtekintése**.
-1. Az a **API-engedélyek** szakaszban jelölje be **adjon hozzá egy engedélyt** válassza **API-k saját szervezete**.
-1. Alatt a **API-k saját szervezete** szakaszt, keresse meg az "Azure Storage", és válassza ki **Azure Storage** megjelenítendő eredmények listájában a **kérelem API-engedélyek** panel.
+1. Az a **API-engedélyek** szakaszban jelölje be **adjon hozzá egy engedélyt** válassza **Microsoft APIs**.
+1. Válassza ki **Azure Storage** megjelenítendő eredmények listájában a **kérelem API-engedélyek** ablaktáblán.
+1. A **milyen engedélyeket igényel az alkalmazás?** , ellenőrizze, hogy a rendelkezésre álló engedély típusa **delegált engedélyek**. Ez a beállítás alapértelmezés szerint meg van jelölve.
+1. Az a **engedélyek kiválasztása** szakaszában a **kérelem API-engedélyek** ablaktáblán jelölje be a jelölőnégyzetet a **user_impersonation**, majd kattintson a **hozzáadása engedélyek**.
 
     ![Tároló ábrázoló engedélyeinek képernyőképe](media/storage-auth-aad-app/registered-app-permissions-1.png)
 
-1. A **milyen engedélyeket igényel az alkalmazás?** , ellenőrizze, hogy a rendelkezésre álló engedély típusa **delegált engedélyek**. Ez a beállítás alapértelmezés szerint meg van jelölve.
-1. Az a **engedélyek kiválasztása** szakaszában a **kérelem API-engedélyek** ablaktáblán jelölje be a jelölőnégyzetet a **user_impersonation**, majd kattintson a **hozzáadása engedélyek**.
-1. A **API-engedélyek** panelen most már látható, hogy az Azure AD-alkalmazást a Microsoft Graph és az Azure Storage is hozzáfér. Engedélyek a Microsoft Graph automatikusan, ha az alkalmazás regisztrálása az Azure ad-ben.
+A **API-engedélyek** panelen most már látható, hogy a regisztrált Azure AD-alkalmazásokhoz férhet hozzá a Microsoft Graph és az Azure Storage. Engedélyek a Microsoft Graph automatikusan, ha az alkalmazás regisztrálása az Azure ad-ben.
 
-    ![Képernyőfelvétel: regisztrálja Alkalmazásengedélyek](media/storage-auth-aad-app/registered-app-permissions-2.png)
+![Képernyőfelvétel: regisztrálja Alkalmazásengedélyek](media/storage-auth-aad-app/registered-app-permissions-2.png)
 
 ## <a name="create-a-client-secret"></a>Ügyfél titkos kulcs létrehozása
 

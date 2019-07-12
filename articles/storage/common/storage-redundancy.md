@@ -5,16 +5,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 01/18/2019
+ms.date: 07/10/2019
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 078c62913b903eafe9e0fcfcef4189f5ca735d0f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b4b9e913363938f98999c6a769ba83efbd625b69
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66002818"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67798327"
 ---
 # <a name="azure-storage-redundancy"></a>Az Azure Storage-redundancia
 
@@ -46,12 +46,14 @@ Az alábbi táblázat a tartóssággal és rendelkezésre állással, amely mind
 | Rendelkezésre állási SLA olvasási kérelmek esetén | Legalább 99,9 %-os (a ritka elérésű hozzáférési szint esetében 99 %-os) | Legalább 99,9 %-os (a ritka elérésű hozzáférési szint esetében 99 %-os) | Legalább 99,9 %-os (a ritka elérésű hozzáférési szint esetében 99 %-os) | Legalább 99,99 %-át (a lassú elérési szint esetében 99,9 %) |
 | Rendelkezésre állási SLA-kérésekre vonatkozó | Legalább 99,9 %-os (a ritka elérésű hozzáférési szint esetében 99 %-os) | Legalább 99,9 %-os (a ritka elérésű hozzáférési szint esetében 99 %-os) | Legalább 99,9 %-os (a ritka elérésű hozzáférési szint esetében 99 %-os) | Legalább 99,9 %-os (a ritka elérésű hozzáférési szint esetében 99 %-os) |
 
+A tárfiókban lévő összes adat replikálódik, beleértve a blokkblobok és hozzáfűző blobok, a lapblobok, üzenetsorok, táblák és fájlok. Tárfiókok minden típusát a rendszer replikálja, bár a zrs-t egy általános célú v2-tárfiók szükséges.
+
 Minden egyes adatredundáns tárolási mód díjszabásról lásd: [Azure Storage szolgáltatás díjszabása](https://azure.microsoft.com/pricing/details/storage/). 
 
 Információkat szeretne megtudni az Azure Storage tartóssági és rendelkezésre állási garanciák, lásd: a [Azure Storage SLA](https://azure.microsoft.com/support/legal/sla/storage/).
 
 > [!NOTE]
-> A Premium Storage támogatja a csak a helyileg redundáns tárolás (LRS).
+> Az Azure Premium Storage támogatja a csak a helyileg redundáns tárolás (LRS).
 
 ## <a name="changing-replication-strategy"></a>Replikációs stratégia módosítása
 A tárfiók replikációs stratégia használatával módosíthatja a [az Azure portal](https://portal.azure.com/), [Azure PowerShell-lel](storage-powershell-guide-full.md), [Azure CLI-vel](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest), vagy az egyik a [Azure-ügyfél szalagtárak](https://docs.microsoft.com/azure/index#pivot=sdkstools). A storage-fiók replikációs típusának módosítása eredményez leállás.

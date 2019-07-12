@@ -4,7 +4,7 @@ description: Az egyéni szkriptek futtatására szolgáló bővítmény v2 haszn
 services: virtual-machines-linux
 documentationcenter: ''
 author: roiyz-msft
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 ms.assetid: cf17ab2b-8d7e-4078-b6df-955c6d5071c2
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 04/25/2018
 ms.author: roiyz
-ms.openlocfilehash: b9bc3ef0cf5dd54802d32058afb904800c364c19
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8b16d7b20c4d49398790d207065da946d98ef658
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64725245"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67839166"
 ---
 # <a name="use-the-azure-custom-script-extension-version-2-with-linux-virtual-machines"></a>Az Azure Custom Script bővítmény 2-es verzió használata Linux rendszerű virtuális gépek
 A Custom Script bővítmény 2-es verzió letölti és futtatja a parancsfájlokat, Azure-beli virtuális gépeken. A bővítmény az üzembe helyezés utáni konfigurációs, a szoftver telepítése vagy bármely egyéb konfigurációs/felügyeleti feladat hasznos. Parancsfájlokat tölthet le az Azure Storage vagy egy másik elérhető-e internet-helyre, vagy megadhatja azokat a bővítmény-futtatókörnyezet. 
@@ -76,7 +76,7 @@ Ezeket az elemeket kell kezelni, mint a bizalmas adatok és a bővítmények vé
 ```json
 {
   "name": "config-app",
-  "type": "Microsoft.Compute/virtualMachines/extensions",
+  "type": "Extensions",
   "location": "[resourceGroup().location]",
   "apiVersion": "2015-06-15",
   "dependsOn": [
@@ -110,16 +110,16 @@ Ezeket az elemeket kell kezelni, mint a bizalmas adatok és a bővítmények vé
 | Name (Név) | Érték és példa | Adattípus | 
 | ---- | ---- | ---- |
 | apiVersion | 2015-06-15 | date |
-| publisher | Microsoft.Compute.Extensions | string |
-| type | CustomScript | string |
+| publisher | Microsoft.Compute.Extensions | sztring |
+| type | CustomScript | Karakterlánc |
 | typeHandlerVersion | 2.0 | int |
 | fileUris (például:) | https://github.com/MyProject/Archive/MyPythonScript.py | array |
-| commandToExecute (például:) | python MyPythonScript.py \<my-param1> | string |
-| script | IyEvYmluL3NoCmVjaG8gIlVwZGF0aW5nIHBhY2thZ2VzIC4uLiIKYXB0IHVwZGF0ZQphcHQgdXBncmFkZSAteQo= | string |
+| commandToExecute (például:) | python MyPythonScript.py \<my-param1> | Karakterlánc |
+| script | IyEvYmluL3NoCmVjaG8gIlVwZGF0aW5nIHBhY2thZ2VzIC4uLiIKYXB0IHVwZGF0ZQphcHQgdXBncmFkZSAteQo= | Karakterlánc |
 | skipDos2Unix (például:) | false | boolean |
 | timestamp (például:) | 123456789 | 32 bites egész szám |
-| storageAccountName (például:) | examplestorageacct | string |
-| storageAccountKey (például:) | TmJK/1N3AbAZ3q/+hOXoi/l73zOqsaxXDhqa9Y83/v5UpXQp2DQIBuv2Tifp60cE/OaHsJZmQZ7teQfczQj8hg== | string |
+| storageAccountName (például:) | examplestorageacct | Karakterlánc |
+| storageAccountKey (például:) | TmJK/1N3AbAZ3q/+hOXoi/l73zOqsaxXDhqa9Y83/v5UpXQp2DQIBuv2Tifp60cE/OaHsJZmQZ7teQfczQj8hg== | Karakterlánc |
 
 ### <a name="property-value-details"></a>A tulajdonság értéke részletei
 * `skipDos2Unix`: (nem kötelező, boolean) dos2unix átalakítás parancsfájlalapú fájl URL-címek vagy parancsfájl kihagyja.

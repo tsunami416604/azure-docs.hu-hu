@@ -10,12 +10,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: 6824cc84c24b41fd82afd39ead3029a212173948
-ms.sourcegitcommit: c0419208061b2b5579f6e16f78d9d45513bb7bbc
+ms.openlocfilehash: 496cf801a44638af61306b43791abce9466e2cb2
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67624797"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67835683"
 ---
 # <a name="tutorial-enable-authentication-in-a-single-page-application-using-azure-active-directory-b2c"></a>Oktatóanyag: Az Azure Active Directory B2C egy egyoldalas alkalmazásban hitelesítés engedélyezése
 
@@ -121,7 +121,7 @@ A minta regisztrációs, bejelentkezési, Profilszerkesztési támogatja, és ú
 
     Érvényes e-mail-címet használjon, és ellenőrizze az ellenőrző kód használatával. Állítson be egy jelszót. Adja meg a kért attribútumokhoz tartozó értékeket.
 
-    ![Regisztrációs munkafolyamat](media/active-directory-b2c-tutorials-desktop-app/sign-up-workflow.png)
+    ![A bejelentkezési-a vagy a regisztráláshoz felhasználói folyamat által a regisztrációs oldalra](./media/active-directory-b2c-tutorials-desktop-app/sign-up-workflow.PNG)
 
 1. Kattintson a **Létrehozás** gombra egy helyi fiók létrehozására az Azure AD B2C-címtárban.
 

@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.date: 10/24/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: dff1716e8886d1ef72f4d2ad4fbca4bcab86a348
-ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
+ms.openlocfilehash: 47df2cbdf0b083cf672353471d1ef51e03507475
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66509778"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67835338"
 ---
 # <a name="quickstart-set-up-sign-in-for-a-single-page-app-using-azure-active-directory-b2c"></a>Gyors útmutató: Jelentkezzen be az Azure Active Directory B2C egyoldalas alkalmazás beállítása
 
@@ -36,7 +36,7 @@ Az Azure Active Directory (Azure AD) B2C felhőalapú identitáskezelést nyújt
 
 ## <a name="run-the-application"></a>Az alkalmazás futtatása
 
-1. Indítsa el a kiszolgálót úgy, hogy futtatja a következő parancsokat a Node.js-parancssorban: 
+1. Indítsa el a kiszolgálót úgy, hogy futtatja a következő parancsokat a Node.js-parancssorban:
 
     ```
     cd active-directory-b2c-javascript-msal-singlepageapp
@@ -56,23 +56,23 @@ Az Azure Active Directory (Azure AD) B2C felhőalapú identitáskezelést nyújt
 
 1. A munkafolyamat indításához kattintson a **bejelentkezési** gombra.
 
-    ![Mintaalkalmazás a böngészőben](media/active-directory-b2c-quickstarts-spa/sample-app-spa.png)
+    ![Egyoldalas alkalmazás minta alkalmazása böngészőben megjelenítve](media/active-directory-b2c-quickstarts-spa/sample-app-spa.png)
 
-    A minta több regisztrációs beállítást is támogat, beleértve a közösségi identitásszolgáltató használatát vagy helyi fiók e-mail-címmel való létrehozását. Ehhez a gyors útmutatóhoz Facebook, Google vagy Twitter közösségi identitásszolgáltatótól származó fiókot használjon. 
+    A minta több regisztrációs beállítást is támogat, beleértve a közösségi identitásszolgáltató használatát vagy helyi fiók e-mail-címmel való létrehozását. Ehhez a gyors útmutatóhoz Facebook, Google vagy Twitter közösségi identitásszolgáltatótól származó fiókot használjon.
 
 2. Az Azure AD B2C a minta-webalkalmazáshoz egy Wingtip Toys nevű fiktív márka egyéni bejelentkezési lapját jeleníti meg. Ha közösségi identitásszolgáltatóval szeretne regisztrálni, kattintson a használni kívánt identitásszolgáltató gombjára.
 
-    ![Bejelentkezési vagy regisztrációs szolgáltató](media/active-directory-b2c-quickstarts-spa/sign-in-or-sign-up-spa.png)
+    ![Bejelentkezési vagy regisztrációs oldal identity provider gombok megjelenítése](media/active-directory-b2c-quickstarts-spa/sign-in-or-sign-up-spa.png)
 
-    Hitelesítést (bejelentkezés) használatával a közösségi fiók hitelesítő adatait, és engedélyezze az alkalmazás a közösségi fiók származó információk olvasásához. A hozzáférés biztosításával az alkalmazás profiladatokat kérhet le a közösségi fiókból, például a nevét és a települését. 
+    Hitelesítést (bejelentkezés) használatával a közösségi fiók hitelesítő adatait, és engedélyezze az alkalmazás a közösségi fiók származó információk olvasásához. A hozzáférés biztosításával az alkalmazás profiladatokat kérhet le a közösségi fiókból, például a nevét és a települését.
 
 3. Fejezze be az identitásszolgáltató bejelentkezési folyamatát.
 
 ## <a name="access-a-protected-api-resource"></a>Védett API-erőforrás elérése
 
-Kattintson a **webes API-t meghívó** gombra a megjelenítendő név JSON-objektumként való visszaadásához a webes API meghívásából. 
+Kattintson a **webes API-t meghívó** gombra a megjelenítendő név JSON-objektumként való visszaadásához a webes API meghívásából.
 
-![Webes API válasza](media/active-directory-b2c-quickstarts-spa/call-api-spa.png)
+![Mintaalkalmazás a böngészőben a webes API-válasz megjelenítése](media/active-directory-b2c-quickstarts-spa/call-api-spa.png)
 
 Az egyoldalas mintaalkalmazás a védett webes API-erőforrás felé küldött kérésbe belefoglal egy hozzáférési jogkivonatot.
 

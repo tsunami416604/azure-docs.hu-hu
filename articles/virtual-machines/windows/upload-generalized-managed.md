@@ -4,7 +4,7 @@ description: Általános VHD feltöltése az Azure-ba, és ezzel hozzon létre �
 services: virtual-machines-windows
 documentationcenter: ''
 author: cynthn
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/25/2018
 ms.author: cynthn
-ms.openlocfilehash: ee2fe91d915faf7e09dee004891edfc6bef38d6f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9846bf7b28f1205f98eb59671553d309fe754d30
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64685401"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67707938"
 ---
 # <a name="upload-a-generalized-vhd-and-use-it-to-create-new-vms-in-azure"></a>Általános VHD feltöltése és ezzel hozzon létre új virtuális gépeket az Azure-ban
 
@@ -109,7 +109,7 @@ Emellett feltölthet egy virtuális Merevlemezt a tárfiókhoz, használja az al
     Importálási/exportálási átmásolása a standard szintű tárfiók is használható. Standard szintű storage-ból másolása a premium storage-fiók egy eszköz, például az AzCopy használatával kell.
 
 > [!IMPORTANT]
-> Ha a VHD feltöltése az Azure-bA az AzCopy használ, ellenőrizze, hogy meg van [ **/BlobType:page** ](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy#blobtypeblock--page--append) a feltöltési parancsfájl futtatása előtt. Ha a cél egy blobot, és ez a beállítás nincs megadva, a AzCopy alapértelmezés szerint a blokkblobok hoz létre.
+> Ha a VHD feltöltése az Azure-bA az AzCopy használ, ellenőrizze, hogy meg van [ **/BlobType:page** ](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-blobs#upload-a-file) a feltöltési parancsfájl futtatása előtt. Ha a cél egy blobot, és ez a beállítás nincs megadva, a AzCopy alapértelmezés szerint a blokkblobok hoz létre.
 > 
 > 
 

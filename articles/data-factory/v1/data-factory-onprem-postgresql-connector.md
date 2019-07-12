@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: bd39b0aae5b76f37e2153f8e4c4502be994fa5b5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a652e157ec0e7e33c8dce7be2f4af2c240edac9e
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61462003"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67839915"
 ---
 # <a name="move-data-from-postgresql-using-azure-data-factory"></a>Adatok áthelyezése a postgresql-hez az Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Válassza ki a Data Factory szolgáltatás használ:"]
@@ -50,7 +50,6 @@ Egy folyamatot egy másolási tevékenységgel az adatok áthelyezéséhez a hel
 
 - A folyamat létrehozásának legegyszerűbb módja az, hogy használja a **másolása varázsló**. Lásd: [oktatóanyag: Hozzon létre egy folyamatot a másolás varázsló használatával](data-factory-copy-data-wizard-tutorial.md) gyors bemutató létrehozása egy folyamatot az adatok másolása varázsló használatával.
 - A következő eszközök használatával hozzon létre egy folyamatot:
-  - Azure Portal
   - Visual Studio
   - Azure PowerShell
   - Azure Resource Manager-sablon
@@ -78,7 +77,7 @@ A következő táblázat a JSON-elemeket társított PostgreSQL szolgáltatás l
 | server |A PostgreSQL-kiszolgáló neve. |Igen |
 | database |A PostgreSQL-adatbázis neve. |Igen |
 | schema |A séma az adatbázis neve. A séma neve a kis-és nagybetűket. |Nem |
-| authenticationType |A PostgreSQL-adatbázishoz való kapcsolódáshoz használt hitelesítés típusa. Lehetséges értékek: Névtelen, alapszintű és a Windows. |Igen |
+| authenticationType |A PostgreSQL-adatbázishoz való kapcsolódáshoz használt hitelesítés típusa. Lehetséges értékek a következők: Névtelen, alapszintű és a Windows. |Igen |
 | username |Ha alapszintű vagy Windows-hitelesítést használ, adja meg a felhasználónevet. |Nem |
 | password |Adja meg a felhasználónévhez megadott felhasználói fiók jelszavát. |Nem |
 | gatewayName |Az átjáró által a Data Factory szolgáltatás a helyi PostgreSQL-adatbázishoz való kapcsolódáshoz használandó neve. |Igen |
@@ -106,12 +105,12 @@ Ha a forrás típusa van **RelationalSource** (amely tartalmazza a PostgreSQL), 
 > [!NOTE]
 > Séma-és tábla-és nagybetűk. Tegye őket a `""` (dupla idézőjel) a lekérdezésben.
 
-**Példa**
+**Példa:**
 
  `"query": "select * from \"MySchema\".\"MyTable\""`
 
 ## <a name="json-example-copy-data-from-postgresql-to-azure-blob"></a>JSON-példa: Adatok másolása az Azure Blob PostgreSQL
-Ebben a példában biztosít, amellyel létrehoz egy folyamatot használatával példa JSON-definíciók [az Azure portal](data-factory-copy-activity-tutorial-using-azure-portal.md) vagy [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) vagy [Azure PowerShell-lel](data-factory-copy-activity-tutorial-using-powershell.md). Adatok másolása a PostgreSQL-adatbázisból az Azure Blob Storage mutatnak. Azonban adatok átmásolhatók a conditions stated above fogadóként valamelyik [Itt](data-factory-data-movement-activities.md#supported-data-stores-and-formats) a másolási tevékenységgel az Azure Data Factoryban.
+Ebben a példában biztosít, amellyel létrehoz egy folyamatot használatával példa JSON-definíciók [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) vagy [Azure PowerShell-lel](data-factory-copy-activity-tutorial-using-powershell.md). Adatok másolása a PostgreSQL-adatbázisból az Azure Blob Storage mutatnak. Azonban adatok átmásolhatók a conditions stated above fogadóként valamelyik [Itt](data-factory-data-movement-activities.md#supported-data-stores-and-formats) a másolási tevékenységgel az Azure Data Factoryban.
 
 > [!IMPORTANT]
 > Ez a példa JSON-kódrészletek biztosít. Nem tartalmaz részletes útmutató az adat-előállító létrehozásához. Lásd: [adatok áthelyezése a helyszíni és a felhő között](data-factory-move-data-between-onprem-and-cloud.md) részletesen ismertető cikket.
@@ -306,46 +305,46 @@ Adatok áthelyezése a postgresql-hez, amikor a következő hozzárendeléseket 
 
 | PostgreSQL-adatbázis típusa | PostgresSQL aliasok | .NET-keretrendszer típusa |
 | --- | --- | --- |
-| abstime | |DateTime |
+| abstime | |Datetime |
 | bigint |int8 |Int64 |
 | bigserial |serial8 |Int64 |
 | bit [(n)] | |Byte [], karakterlánc |
 | bit különböző [(n)] |varbit |Byte [], karakterlánc |
-| logikai |logikai |Boolean |
+| boolean |bool |Logikai |
 | Box | |Byte [], karakterlánc |
 | bytea | |Byte [], karakterlánc |
-| [(n)] karakter |char [(n)] |String |
-| [(n)] eltérő karaktert |varchar [(n)] |String |
-| CID | |String |
-| CIDR | |String |
+| [(n)] karakter |char [(n)] |Karakterlánc |
+| [(n)] eltérő karaktert |varchar [(n)] |Sztring |
+| CID | |Sztring |
+| CIDR | |Sztring |
 | Kör | |Byte [], karakterlánc |
-| date | |DateTime |
-| DateRange | |String |
+| date | |Datetime |
+| DateRange | |Karakterlánc |
 | a kétszeres pontosság |FLOAT8 |Double |
 | inet | |Byte [], karakterlánc |
-| intarry | |String |
-| int4range | |String |
-| int8range | |String |
-| egész szám |int, int4 |Int32 |
-| intervallum [mezők] [(p)] | |Időtartomány |
-| JSON | |String |
+| intarry | |Sztring |
+| int4range | |Sztring |
+| int8range | |Karakterlánc |
+| integer |int, int4 |Int32 |
+| intervallum [mezők] [(p)] | |Timespan |
+| json | |Sztring |
 | jsonb | |Byte[] |
-| vonal | |Byte [], karakterlánc |
+| Vonal | |Byte [], karakterlánc |
 | lseg | |Byte [], karakterlánc |
 | macaddr | |Byte [], karakterlánc |
 | money | |Decimal |
 | numerikus [(p, s)] |tizedes tört [(p, s)] |Decimal |
-| numrange | |String |
+| numrange | |Sztring |
 | oid | |Int32 |
-| elérési út | |Byte [], karakterlánc |
+| path | |Byte [], karakterlánc |
 | pg_lsn | |Int64 |
-| pont | |Byte [], karakterlánc |
+| Pont | |Byte [], karakterlánc |
 | Sokszög | |Byte [], karakterlánc |
 | real |float4 |Single |
 | smallint |int2 |Int16 |
 | smallserial |serial2 |Int16 |
-| gyártási |serial4 |Int32 |
-| szöveg | |String |
+| soros |serial4 |Int32 |
+| text | |Sztring |
 
 ## <a name="map-source-to-sink-columns"></a>A fogadó-oszlopok térkép forrása
 Fogadó-adatkészlet oszlopaihoz forrásadatkészlet leképezés oszlopai kapcsolatos további információkért lásd: [az Azure Data Factoryban adatkészletoszlopok leképezése](data-factory-map-columns.md).

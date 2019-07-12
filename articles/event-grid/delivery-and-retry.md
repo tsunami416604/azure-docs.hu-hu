@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 05/15/2019
 ms.author: spelluru
-ms.openlocfilehash: b4bfdd3e9cdf99314dc55907ba163adc6cd39423
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0945b06f78ac34500f0b16a4a419cff12d1a4734
+ms.sourcegitcommit: af31deded9b5836057e29b688b994b6c2890aa79
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65952883"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67812924"
 ---
 # <a name="event-grid-message-delivery-and-retry"></a>Event Grid az üzenetek kézbesítését, és próbálkozzon újra
 
@@ -43,6 +43,12 @@ Determinisztikus viselkedését, állítsa az élő esemény időpontját és a 
 
 Alapértelmezés szerint az Event Grid összes eseményt, amely nem biztosított 24 órán belül lejár. Is [testre szabhatja az újrapróbálkozási szabályzat](manage-event-delivery.md) egy esemény-előfizetés létrehozásakor. Biztosítanak a maximális számát (alapértelmezés: 30) a kézbesítési kísérletek és az esemény élő idő (1440 perc az alapértelmezett érték).
 
+## <a name="delayed-delivery"></a>Késleltetett kézbesítés
+
+A végpont során kézbesítési hiba lép fel, mert Event Grid megkezdik a szállítási és az eseményeket, hogy a végpont újrapróbálkozási késleltetés. Például, ha meghibásodik egy végpontnak közzétett első tíz események, Event Grid feltételezi, hogy a végpont problémák, és minden későbbi próbálkozások késleltetni fogja *és az új* egy kis ideig – bizonyos esetekben akár néhány órát kézbesítések .
+
+Késleltetett kézbesítési működési célja, hogy nem megfelelő állapotú végpontok, valamint az Event Grid rendszer védelmét. Visszatartás, és nem megfelelő állapotú végpontok szállítási késedelem nélkül Event Grid újrapróbálkozási szabályzat és a kötet képességeket is könnyen túlterhelheti a rendszer.
+
 ## <a name="dead-letter-events"></a>Kézbesítetlen üzenetek esemény
 
 Event Grid nem lehet kézbesíteni az egy eseményt, amikor azokat küldeni tudná, a kézbesítetlen esemény egy tárfiókba. Ez a folyamat az úgynevezett kézbesítetlen levelek kezelése. Alapértelmezés szerint a nem az Event Grid kapcsolja be a kézbesítetlen levelek kezelése. Az engedélyezéshez, egy storage-fiókot, amely tárolja a kézbesítetlen események az esemény-előfizetés létrehozásakor adjon meg. Ezt a tárfiókot, a szállítások megoldásához események lekéri.
@@ -63,25 +69,29 @@ Event Grid igazolhatom az események HTTP-válaszkódot használ.
 
 ### <a name="success-codes"></a>Sikeres kód
 
-A következő HTTP-válaszkódot adja meg, hogy az esemény rendelkezik lett sikeresen kézbesítve, a webhook. Event Grid úgy ítéli meg kézbesítési befejeződött.
+Event Grid tekinti **csak** a következő HTTP-válaszkódot, a sikeres kézbesítések. Minden más kódok sikertelen kézbesítések minősülnek, és megpróbálja állapota vagy deadlettered szükség szerint. Sikeres állapotkódot fogadásakor Event Grid tekinti kézbesítési befejeződött.
 
 - 200 OK
+- 201 Created
 - 202-es elfogadva
+- 203 nem mérvadó információ
+- 204 Nincs tartalom
 
 ### <a name="failure-codes"></a>Sikertelen kód
 
-A következő HTTP-válaszkódot adja meg, hogy az esemény kézbesítési kísérlet meghiúsult.
+A fenti halmazon (200-204) minden más kód tekinti a hibákat, és újból próbálkozunk. Néhány-e őket az alábbi kötött adott újrapróbálkozási szabályzatok, minden más hajtsa végre a szabványos exponenciális visszatartási modell. Fontos figyelembe kell venni, hogy Event Grid-architektúra nagymértékben párhuzamos jellege miatt az újrapróbálkozási viselkedés nem determinisztikus. 
 
-- 400 Hibás kérés
-- 401-es nem engedélyezett
-- 404 – Nem található
-- 408 kérés időtúllépése
-- 413 kérelem az entitás túl nagy
-- 414 URI túl hosszú
-- 429 túl sok kérelem
-- 500 Belső kiszolgálóhiba
-- 503 A szolgáltatás nem érhető el
-- 504 Időtúllépés az átjárón
+| Állapotkód | Újrapróbálkozási viselkedés |
+| ------------|----------------|
+| 400 Hibás kérés | Akár 5 percet újrapróbálkozás (kézbesítetlen Ha azonnal kézbesítetlen beállítása) |
+| 401-es nem engedélyezett | 5 perc múlva próbálkozzon újra, vagy több |
+| 403 Tiltott | 5 perc múlva próbálkozzon újra, vagy több |
+| 404 – Nem található | 5 perc múlva próbálkozzon újra, vagy több |
+| 408 Kérés időtúllépése | 2 perc múlva próbálkozzon újra, vagy több |
+| 413 kérelem az entitás túl nagy | Újrapróbálkozás 10 másodperc vagy annál (kézbesítetlen Ha azonnal kézbesítetlen beállítása) |
+| 503 A szolgáltatás nem érhető el | 30 másodperc múlva újra, vagy több |
+| Minden más | 10 másodperc után próbálja meg újból, vagy több |
+
 
 ## <a name="next-steps"></a>További lépések
 

@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 05/28/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 140e6c338d12732d1e41ccd9dabef1de7d5cf8d8
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: ee65aa5753d9967022ca91a66433b11761b73a32
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67068843"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67835796"
 ---
 # <a name="content-protection-with-dynamic-encryption"></a>A Content protection, a dinamikus titkosítás segítségével
 
@@ -73,7 +73,7 @@ Fejezze be a "content protection" rendszer vagy alkalmazás-tervezés, teljes is
   
      A player használatával hozhat létre a [az Azure Media Player API](https://amp.azure.net/libs/amp/latest/docs/). Használja a [az Azure Media Player ProtectionInfo API](https://amp.azure.net/libs/amp/latest/docs/) , adja meg, melyik DRM-technológiával használandó DRM különböző platformokon.
 
-     A tesztelési AES vagy CENC (Widevine és/vagy a PlayReady) titkosított tartalmat használhatja [Azure Media Player](https://ampdemo.azureedge.net/azuremediaplayer.html). Győződjön meg arról, kattintson a "Speciális beállítások", és ellenőrizze a titkosítási beállításokat.
+     A tesztelési AES vagy CENC (Widevine és/vagy a PlayReady) titkosított tartalmat használhatja [Azure Media Player](http://aka.ms/azuremediaplayer). Győződjön meg arról, kattintson a "Speciális beállítások", és ellenőrizze a titkosítási beállításokat.
 
      Ha titkosított FairPlay teszttartalmat szeretne, használja a [ezen teszt player](https://aka.ms/amtest). A Windows Media player támogatja, a PlayReady, Widevine és FairPlay DRMs, valamint az AES-128 titkosítatlan kulcs titkosítás. 
     
@@ -136,7 +136,7 @@ A Smooth Streaming protokoll támogatja a következő tároló formátumok és a
 
 Közös böngésző támogatja a következő DRM-ügyfelek:
 
-|Böngésző|Encryption|
+|Browser|Encryption|
 |---|---|
 |Chrome|Widevine|
 |Edge, IE 11|PlayReady|

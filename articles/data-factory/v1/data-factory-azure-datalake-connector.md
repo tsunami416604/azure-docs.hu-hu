@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 3bb372c4c3ddb79429df20c24c691c847e927e2a
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: d8637a2711c0301d9e9f409e169ed04fb3d65783
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60567350"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67839550"
 ---
 # <a name="copy-data-to-and-from-data-lake-storage-gen1-by-using-data-factory"></a>Adatok másolása és a Data Lake Storage Gen1 Data Factory használatával
 > [!div class="op_single_selector" title1="Válassza ki a Data Factory szolgáltatás használ:"]
@@ -54,7 +54,7 @@ Létrehozhat egy folyamatot egy másolási tevékenységgel az adatok áthelyez�
 
 Az adatok másolása folyamat létrehozásának legegyszerűbb módja az, hogy használja a **másolása varázsló**. A folyamat létrehozása a másolás varázsló használatával, olvassa el [oktatóanyag: Hozzon létre egy folyamatot a másolás varázsló használatával](data-factory-copy-data-wizard-tutorial.md).
 
-A következő eszközök használatával hozzon létre egy folyamatot: **Az Azure portal**, **Visual Studio**, **Azure PowerShell-lel**, **Azure Resource Manager-sablon**, **.NET API**, és  **REST API-val**. Lásd: [másolási tevékenység oktatóanyagát](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) egy másolási tevékenységgel ellátott adatcsatorna létrehozása a részletes útmutatóját.
+A következő eszközök használatával hozzon létre egy folyamatot: **A Visual Studio**, **Azure PowerShell-lel**, **Azure Resource Manager-sablon**, **.NET API**, és **REST API-val**. Lásd: [másolási tevékenység oktatóanyagát](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) egy másolási tevékenységgel ellátott adatcsatorna létrehozása a részletes útmutatóját.
 
 Az eszközök vagy az API-kat használja, hogy létrehoz egy folyamatot, amely a helyez át adatokat egy forrásadattárból egy fogadó adattárba a következő lépéseket fogja végrehajtani:
 
@@ -70,7 +70,7 @@ A következő szakaszok a Data Lake Store adott Data Factory-entitások definiá
 ## <a name="linked-service-properties"></a>Társított szolgáltatás tulajdonságai
 A társított szolgáltatás egy adattárba hivatkozik, adat-előállító. Létrehoz egy társított szolgáltatást típusú **AzureDataLakeStore** a Data Lake Store-adatok összekapcsolása a data factoryhoz. A következő táblázat ismerteti a Data Lake Store társított szolgáltatás JSON elemeket. Egyszerű szolgáltatás és a felhasználói hitelesítő adatok hitelesítési közül választhat.
 
-| Tulajdonság | Leírás | Kötelező |
+| Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | **type** | A type tulajdonságot állítsa **AzureDataLakeStore**. | Igen |
 | **dataLakeStoreUri** | Az Azure Data Lake Store-fiókkal kapcsolatos információk. Ezt az információt a következő formátumok egyikét veheti fel: `https://[accountname].azuredatalakestore.net/webhdfs/v1` vagy `adl://[accountname].azuredatalakestore.net/`. | Igen |
@@ -91,7 +91,7 @@ Egyszerű szolgáltatásnév hitelesítése alkalmazás entitás regisztrálása
 
 Egyszerű szolgáltatásnév hitelesítése használja a következő tulajdonságok megadásával:
 
-| Tulajdonság | Leírás | Kötelező |
+| Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | **servicePrincipalId** | Adja meg az alkalmazás ügyfél-azonosítót. | Igen |
 | **servicePrincipalKey** | Adja meg az alkalmazáskulcsot. | Igen |
@@ -208,12 +208,12 @@ A Data Factory-osztályokat használja a kód kapcsolatos részletekért lásd: 
 
 2. Ellenőrizze, hogy Ön legalább biztosít **olvasó** szerepkör a felhasználó vagy szolgáltatásnév az a data lake-fiók. Itt látható, hogy hogyan:
 
-    1. Válassza az Azure Portal -> a Data Lake Store-fiók
+    1. Az Azure Portalon válassza a Data Lake Store-fiók ->
     2. Kattintson a **hozzáférés-vezérlés (IAM)** a Data Lake Store az panel
     3. Kattintson a **szerepkör-hozzárendelés hozzáadása**
     4. Állítsa be **szerepkör** , **olvasó**, és válassza ki a felhasználó vagy az egyszerű szolgáltatás hozzáférést példányáért használja
 
-3. Ha nem szeretné megadni **olvasó** szerepe a felhasználó vagy szolgáltatásnév, alternatív [kifejezetten megad egy végrehajtási helyéhez](data-factory-data-movement-activities.md#global) másolási activitywith helyét, a Data Lake Store a. Példa:
+3. Ha nem szeretné megadni **olvasó** szerepe a felhasználó vagy szolgáltatásnév, alternatív [kifejezetten megad egy végrehajtási helyéhez](data-factory-data-movement-activities.md#global) a másolási tevékenység a Data Lake Store az helyét. Példa:
 
     ```json
     {
@@ -237,7 +237,7 @@ Adjon meg egy Data Lake Store bemeneti adatokat képviselő adatkészlet, akkor 
 
 A **typeProperties** szakasz egy adatkészlet típusú **AzureDataLakeStore** a következő tulajdonságokat tartalmazza:
 
-| Tulajdonság | Leírás | Kötelező |
+| Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | **folderPath** |A tároló és a Data Lake Store-mappában elérési útja. |Igen |
 | **fileName** |Az Azure Data Lake Store a fájl nevét. A **fileName** tulajdonság nem kötelező, és a kis-és nagybetűket. <br/><br/>Ha megad **fileName**, a (beleértve a Másolás) tevékenységet az adott fájlon működik.<br/><br/>Amikor **fileName** nincs megadva, másolási tartalmazza az összes fájl **folderPath** a bemeneti adatkészletben.<br/><br/>Amikor **fileName** nincs megadva a kimeneti adatkészlet és **preserveHierarchy** nincs megadva a tevékenység fogadó, a létrehozott fájl neve a következő formátumban van `Data._Guid_.txt`. Példa: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt. |Nem |
@@ -281,7 +281,7 @@ A rendelkezésre álló tulajdonságok a **typeProperties** a tevékenységek sz
 
 **AzureDataLakeStoreSource** támogatja a következő tulajdonságot a **typeProperties** szakaszban:
 
-| Tulajdonság | Leírás | Megengedett értékek | Kötelező |
+| Tulajdonság | Leírás | Megengedett értékek | Szükséges |
 | --- | --- | --- | --- |
 | **recursive** |Azt jelzi, hogy az adatok olvasható rekurzív módon az almappák vagy csak a megadott mappába. |(Alapértelmezett érték), true a False |Nem |
 
@@ -307,7 +307,7 @@ Ez a szakasz ismerteti az eredményül kapott viselkedéstől a másolási műve
 További információkért lásd: a [fájl- és tömörítési formátumok az Azure Data Factoryban](data-factory-supported-file-and-compression-formats.md) cikk.
 
 ## <a name="json-examples-for-copying-data-to-and-from-data-lake-store"></a>Az adatok másolása, és a Data Lake Store JSON-példák
-Az alábbi példák megadják példa JSON-definíciói. Ezeknek a definícióknak minta segítségével hozzon létre egy folyamatot a [az Azure portal](data-factory-copy-activity-tutorial-using-azure-portal.md), [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md), vagy [Azure PowerShell-lel](data-factory-copy-activity-tutorial-using-powershell.md). A példák bemutatják, hogyan másolhat adatokat a Data Lake Store és az Azure Blob storage szolgáltatásba vagy onnan. Azonban az adatok átmásolhatók _közvetlenül_ bármely, bármelyik támogatott forrás fogadók. További információkért lásd: a "támogatott adattárak és formátumok" szakasz a a [adatok áthelyezése másolási tevékenységgel](data-factory-data-movement-activities.md) cikk.
+Az alábbi példák megadják példa JSON-definíciói. Ezeknek a definícióknak minta segítségével hozzon létre egy folyamatot [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) vagy [Azure PowerShell-lel](data-factory-copy-activity-tutorial-using-powershell.md). A példák bemutatják, hogyan másolhat adatokat a Data Lake Store és az Azure Blob storage szolgáltatásba vagy onnan. Azonban az adatok átmásolhatók _közvetlenül_ bármely, bármelyik támogatott forrás fogadók. További információkért lásd: a "támogatott adattárak és formátumok" szakasz a a [adatok áthelyezése másolási tevékenységgel](data-factory-data-movement-activities.md) cikk.
 
 ### <a name="example-copy-data-from-azure-blob-storage-to-azure-data-lake-store"></a>Példa: Adatok másolása az Azure Blob Storage-ból az Azure Data Lake Store
 Ebben a szakaszban található példakód mutatja:

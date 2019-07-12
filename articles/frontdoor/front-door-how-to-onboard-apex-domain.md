@@ -3,16 +3,16 @@ title: Előkészítheti egy legfelső szintű vagy rekordnevet tartomány egy m�
 description: Ismerje meg, hogyan vezethető egy legfelső szintű vagy rekordnevet tartomány egy már létező bejárati ajtajának, az Azure portal használatával.
 services: front-door
 author: sharad4u
-ms.service: front-door
+ms.service: frontdoor
 ms.topic: article
 ms.date: 5/21/2019
 ms.author: sharadag
-ms.openlocfilehash: 464c38b0ece274d2ea7df89ab9fd7c0a60dc4b58
-ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
+ms.openlocfilehash: 8fe8da95a61d2f2bb35095236131670cb6ef0e70
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/22/2019
-ms.locfileid: "67332459"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67605793"
 ---
 # <a name="onboard-a-root-or-apex-domain-on-your-front-door"></a>Előkészítheti a bejárati ajtó a legfelső szintű vagy rekordnevet tartományhoz
 Azure bejárati ajtajának CNAME-rekordokat az egyéni tartományok bevezetése a tartomány tulajdonjogának ellenőrzéséhez használ. Ezenkívül bejárati ajtajának nem teszi közzé a bejárati ajtajának profilhoz társított előtérbeli IP-cím, és így, nem képezhető le a apex-tartomány IP-címet, ha az a célja a munkába, az Azure bejárati ajtajának.

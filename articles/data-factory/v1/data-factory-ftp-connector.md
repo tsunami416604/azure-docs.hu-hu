@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 05/02/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 4aba7aadbe92b6c4f0ab417785e230bb6a6823df
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 5d043072244ede5b1d7bd28d4628ffe3cf4961d8
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60486583"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67836329"
 ---
 # <a name="move-data-from-an-ftp-server-by-using-azure-data-factory"></a>Adatok áthelyezése egy FTP-kiszolgálóról az Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Válassza ki a Data Factory szolgáltatás használ:"]
@@ -45,7 +45,7 @@ Létrehozhat egy folyamatot egy másolási tevékenységgel az adatok áthelyez�
 
 A folyamat létrehozásának legegyszerűbb módja az, hogy használja a **Data Factory másolás varázslójával**. Lásd: [oktatóanyag: Hozzon létre egy folyamatot a másolás varázsló használatával](data-factory-copy-data-wizard-tutorial.md) gyors bemutató.
 
-A következő eszközök használatával hozzon létre egy folyamatot: **Az Azure portal**, **Visual Studio**, **PowerShell**, **Azure Resource Manager-sablon**, **.NET API**, és **REST API-val**. Lásd: [másolási tevékenység oktatóanyagát](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) egy másolási tevékenységgel ellátott adatcsatorna létrehozása a részletes útmutatóját.
+A következő eszközök használatával hozzon létre egy folyamatot: **A Visual Studio**, **PowerShell**, **Azure Resource Manager-sablon**, **.NET API**, és **REST API-val**. Lásd: [másolási tevékenység oktatóanyagát](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) egy másolási tevékenységgel ellátott adatcsatorna létrehozása a részletes útmutatóját.
 
 Az eszközök vagy az API-kat használja, hogy a következő lépésekkel hozzon létre egy folyamatot, amely helyez át adatokat egy forrásadattárból egy fogadó adattárba:
 
@@ -153,7 +153,7 @@ Szakaszok és adatkészletek definiálását tulajdonságainak teljes listáját
 
 A **typeProperties** szakasz eltér az egyes adatkészlet. Az adatkészlet-típusra vonatkozó adatokat biztosít. A **typeProperties** szakasz egy adatkészlet típusú **FileShare** tulajdonságai a következők:
 
-| Tulajdonság | Leírás | Kötelező |
+| Tulajdonság | Leírás | Szükséges |
 | --- | --- | --- |
 | folderPath |Adatútvonalának a mappához. Használja az escape-karaktert "\" a karakterláncban szereplő speciális karakterek. Tekintse meg a minta a társított szolgáltatás és adatkészlet-definíciók példákat.<br/><br/>Ennek a tulajdonságnak kombinálhatja **partitionBy** rendelkezik a mappa elérési utak alapján szelet kezdő és záró dátum-idő. |Igen |
 | fileName |Adja meg a fájl nevét a **folderPath** Ha azt szeretné, hogy a tábla egy adott fájlra a mappában. Ha nem ad meg semmilyen értéket ehhez a tulajdonsághoz, a tábla a mappában lévő összes fájlt mutat.<br/><br/>Amikor **fileName** nincs megadva a kimeneti adatkészlet esetén a létrehozott fájl neve a következő formátumban van: <br/><br/>`Data.<Guid>.txt` (Példa: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt) |Nem |
@@ -204,14 +204,14 @@ A rendelkezésre álló tulajdonságok a **typeProperties** a tevékenység szak
 
 A másolási tevékenység, ha a forrás típusa **FileSystemSource**, a következő tulajdonság megtalálható **typeProperties** szakaszban:
 
-| Tulajdonság | Leírás | Megengedett értékek | Kötelező |
+| Tulajdonság | Leírás | Megengedett értékek | Szükséges |
 | --- | --- | --- | --- |
 | recursive |Azt jelzi, hogy az adatok olvasható rekurzív módon az almappákat, vagy csak a megadott mappába. |TRUE, False (alapértelmezett) |Nem |
 
 ## <a name="json-example-copy-data-from-ftp-server-to-azure-blob"></a>JSON-példa: Adatok másolása az FTP-kiszolgálóhoz az Azure Blob
 Ez a példa bemutatja, hogyan másolhat adatokat egy FTP-kiszolgálóról az Azure Blob storage. Azonban az adatok közvetlenül a megadott fogadóként bármelyikét a átmásolhatók a [támogatott adattárak és formátumok](data-factory-data-movement-activities.md#supported-data-stores-and-formats), a másolási tevékenység használatával a Data Factoryban.
 
-Az alábbi példák megadják példa JSON-definíciók, amelyek segítségével létrehoz egy folyamatot használatával [az Azure portal](data-factory-copy-activity-tutorial-using-azure-portal.md), [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md), vagy [PowerShell](data-factory-copy-activity-tutorial-using-powershell.md):
+Az alábbi példák megadják példa JSON-definíciók, amelyek segítségével létrehoz egy folyamatot használatával [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md), vagy [PowerShell](data-factory-copy-activity-tutorial-using-powershell.md):
 
 * A társított szolgáltatás típusa [FTP-kiszolgáló](#linked-service-properties)
 * A társított szolgáltatás típusa [AzureStorage](data-factory-azure-blob-connector.md#linked-service-properties)

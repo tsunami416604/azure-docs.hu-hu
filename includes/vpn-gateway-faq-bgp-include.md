@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/12/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 192a6f4841e9dc3a478da5e4b53594362955ca71
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 7c1f3fc7861f5e1b895423d502218b9b07302c1c
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67178937"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67659822"
 ---
 ### <a name="is-bgp-supported-on-all-azure-vpn-gateway-skus"></a>Minden Azure VPN Gateway SKU-n támogatott a BGP?
 Nem, a BGP-t az Azure **VpnGw1**, **VpnGw2**, **VpnGw3**, **Standard** és **Nagy teljesítményű** VPN-átjárók támogatják. Az **alapszintű** SKU NEM támogatott.
@@ -85,7 +85,7 @@ Igen, de a virtuális hálózati átjárók legalább egyikének aktív-aktív k
 Igen. 
 
 ### <a name="what-address-does-azure-vpn-gateway-use-for-bgp-peer-ip"></a>Milyen címet használ az Azure VPN Gateway a BGP-társgép IP-címéhez?
-Az Azure VPN Gateway egyetlen IP-címet foglal le a virtuális hálózathoz definiált GatewaySubnet-tartományból. Alapértelmezés szerint ez a tartomány utolsó előtti címe. Ha például az alhálózati átjárója 10.12.255.0/27, és a tartománya 10.12.255.0-tól 10.12.255.31-ig terjed, a BGP társ IP-címe 10.12.255.30 lesz az Azure VPN Gatewayen. Ezeket az információkat az Azure VPN Gatewayinformációinak listázásakor találhatja meg.
+Az Azure VPN gateway egyetlen IP-címet a VPN-átjárók aktív-készenléti az GatewaySubnet-tartományból vagy aktív-aktív VPN-átjárók két IP-címet foglal le. A tényleges BGP IP-cím (Get-AzVirtualNetworkGateway, keressen a "bgppeeringaddress értéknek" tulajdonságot) PowerShell-lel vagy az Azure Portalon (alatt az "A BGP ASN konfigurálása" tulajdonság, az átjáró konfigurációs lapján) lefoglalt kérheti le.
 
 ### <a name="what-are-the-requirements-for-the-bgp-peer-ip-addresses-on-my-vpn-device"></a>Mik a BGP-társ IP-címének követelményei a VPN-eszközön?
 A helyszíni BGP-társgép címe **NEM LEHET** ugyanaz, mint a VPN-eszköze nyilvános IP-címe. Használjon egy más IP-címet a BGP-társgép IP-címeként a VPN-eszközön. Ez lehet egy olyan cím is, amely az eszköz visszacsatolási hálózatához van rendelve, de vegye figyelembe, hogy APIPA-cím (169.254.x.x) nem lehet. Ezt a címet a helyet jelölő megfelelő Helyi hálózati átjáróban kell megadni.

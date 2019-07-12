@@ -6,12 +6,12 @@ ms.service: fxt-edge-filer
 ms.topic: conceptual
 ms.date: 06/20/2019
 ms.author: v-erkell
-ms.openlocfilehash: e7395c69d99884a5c662e545a69778ed195aec55
-ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
+ms.openlocfilehash: e6afd90c4e5a1b0759b3de7789ec37db4c04f2c7
+ms.sourcegitcommit: 441e59b8657a1eb1538c848b9b78c2e9e1b6cfd5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67543162"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67827447"
 ---
 # <a name="monitor-azure-fxt-edge-filer-hardware-status"></a>Azure FXT Edge Filer hardver állapotának figyelése
 
@@ -58,7 +58,7 @@ A bal oldali első Vezérlőpult különböző LED Állapotjelzők (1) és nagy 
 
 A bal oldalon az Állapotjelzők megjelenítése egy szilárd sárga világos van-e hiba a rendszerben. Az alábbi táblázat ismerteti a lehetséges okait és megoldásait a hibákat. 
 
-Ha ezek a megoldások próbálkozás után a hiba továbbra is rendelkezik, segítségért forduljon az ügyfélszolgálathoz. 
+Ha ezek a megoldások próbálkozás után továbbra is fennáll a hiba [forduljon az ügyfélszolgálathoz](fxt-support-ticket.md) segítséget. 
 
 | Ikon | Leírás | Hibafeltétel | A lehetséges megoldásokról |
 |----------------|---------------|--------------------|----------------------|
@@ -79,7 +79,7 @@ Nyomja le a rendszerállapot és a rendszer azonosítója és a rendszer állapo
 |-------------------------------------------|-----------------------------------------------|
 | Szilárd kék | Normál működés: a rendszer be van kapcsolva, normál, működő, és a rendszer azonosító mód nem aktív. <br/>Nyomja le a rendszer állapotának és azonosító gombra, ha azt szeretné, rendszer-azonosító módra való váltáshoz. |
 | Villogó kék | Rendszer-azonosító mód nem aktív. Nyomja le a rendszerállapot és a rendszer azonosító gombra, ha azt szeretné, a system health módra való váltáshoz. |
-| Szilárd sárga | A rendszer a hibamentes módban van. Ha a probléma tartósan fennáll, forduljon a Microsoft ügyfélszolgálata és. |
+| Szilárd sárga | A rendszer a hibamentes módban van. Ha a probléma tartósan fennáll, [forduljon a Microsoft ügyfélszolgálata és](fxt-support-ticket.md). |
 | Sárga villogó | Rendszer hibája. Ellenőrizze a rendszer eseménynaplójába hibaüzeneteket. Az események és hibaüzenetek, a rendszer belső vezérlőprogram és az ügynökök, amelyek a rendszer-összetevők által létrehozott kapcsolatos információkért lásd a hiba kikereshető kód qrl.dell.com címen. |
 
 

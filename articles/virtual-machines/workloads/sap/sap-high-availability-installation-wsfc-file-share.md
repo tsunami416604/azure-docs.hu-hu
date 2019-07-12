@@ -4,7 +4,7 @@ description: SAP NetWeaver magas rendelkezésre állású Windows feladatátvev�
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
 author: goraco
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 keywords: ''
@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 05/05/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 95cde28bc4789346aabd58b5f7b543e1bbc989c1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0efb1ec30430a69563c61de667ad2568f2679a1b
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66357697"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67708980"
 ---
 # <a name="install-sap-netweaver-high-availability-on-a-windows-failover-cluster-and-file-share-for-sap-ascsscs-instances-on-azure"></a>SAP NetWeaver magas rendelkezésre állású telepítése a Windows feladatátvevő fürt és a fájlkiszolgáló-megosztáson található SAP ASCS/SCS-példányok az Azure-ban
 
@@ -291,7 +291,7 @@ Set-Acl $UsrSAPFolder $Acl -Verbose
 
 ## <a name="create-a-virtual-host-name-for-the-clustered-sap-ascsscs-instance"></a>Hozzon létre egy virtuális nevet a fürtözött SAP ASCS/SCS példányhoz
 
-Hozzon létre egy SAP ASCS/SCS fürthálózat nevének (például **pr1 – ascs [10.0.6.7]** ) leírtak szerint [hozzon létre egy virtuális nevet a fürtözött SAP ASCS/SCS példányhoz] [ sap-high-availability-installation-wsfc-shared-disk-create-ascs-virt-host] .
+Hozzon létre egy SAP ASCS/SCS fürthálózat nevének (például **pr1 – ascs [10.0.6.7]** ) leírtak szerint [hozzon létre egy virtuális nevet a fürtözött SAP ASCS/SCS példányhoz][sap-high-availability-installation-wsfc-shared-disk-create-ascs-virt-host].
 
 
 ## <a name="install-an-ascsscs-and-ers-instances-in-the-cluster"></a>A fürt egy ASCS/SCS és SSZON példányok telepítése

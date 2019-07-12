@@ -8,12 +8,12 @@ ms.date: 04/25/2019
 ms.topic: conceptual
 ms.service: iot-central
 manager: hegate
-ms.openlocfilehash: c50271e28db104522c0e8811508fa882dc316eab
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e8bc8b8d4e3585ea4c0505f2e36abc6d1da7f8eb
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66235808"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67797709"
 ---
 # <a name="build-workflows-with-the-iot-central-connector-in-microsoft-flow"></a>Hozzon létre munkafolyamatokat az IoT Central-összekötő a Microsoft Flow
 
@@ -31,7 +31,8 @@ Tekintse meg [a Microsoft Flow sablonok](https://aka.ms/iotcentralflowtemplates)
 ## <a name="prerequisites"></a>Előfeltételek
 
 - A Pay-As-You-Go application
-- Egy Microsoft személyes és munkahelyi vagy iskolai fiókot, Flow-ba való bejelentkezéshez ([tudjon meg többet a Microsoft Flow-tervek](https://aka.ms/microsoftflowplans))
+- Egy Microsoft személyes és munkahelyi vagy iskolai fiókot használata a Microsoft Flow ([tudjon meg többet a Microsoft Flow-tervek](https://aka.ms/microsoftflowplans))
+- A munkahelyi vagy iskolai fiókkal az Azure IoT Central-összekötő használatára
 
 ## <a name="trigger-a-workflow"></a>Egy munkafolyamat-trigger
 
@@ -45,7 +46,12 @@ Ez a szakasz bemutatja, hogy miként indítható el a Flow mobilalkalmazásnak, 
 
     ![Elérhető a Microsoft Flow sablonok](media/howto-add-microsoft-flow/flowtemplates1.png)
 
-1. Jelentkezzen be a a kiválasztott sablonban fog kérni. Miután az összekötők be van jelentkezve, ekkor megnyílik hozhat létre a munkafolyamat-tervezőben. A munkafolyamat, amely rendelkezik az alkalmazás és a szabály már kitöltött IoT-központ eseményindító tartozik.
+1. Jelentkezzen be a a kiválasztott sablonban fog kérni. 
+
+    > [!NOTE]
+    > Az Azure IoT Central-összekötő használatához jelentkezzen be egy Azure Active Directory-fiókkal (munkahelyi vagy iskolai fiók). Egy személyes fiók, mint például abc@outlook.com vagy abc@live.com az Azure IoT Central-összekötő által nem támogatott.
+
+    Miután bejelentkezett az összekötők, ekkor megnyílik az hozhat létre a munkafolyamat-tervezőben. A munkafolyamat, amely rendelkezik az alkalmazás és a szabály már kitöltött IoT-központ eseményindító tartozik.
 
 1. Az adatokat, a művelet és az új műveletek hozzáadásával testre szabásával testre szabhatja a munkafolyamatot. Ebben a példában a művelet akkor **értesítések - mobil értesítés küldése**. Megadhat *dinamikus tartalom* az IoT-központ szabályból, mentén fontos információkat, például az eszköz és az időbélyegző-értesítések való átadásához.
 

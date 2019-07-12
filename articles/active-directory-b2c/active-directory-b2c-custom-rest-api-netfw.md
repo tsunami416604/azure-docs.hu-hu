@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 09/30/2017
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: b3b896b2c423f2f9155ddb7803e59e719bd027cf
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 466d5eff27d9a8105fb840ce4ba79571b6207092
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66510722"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67835517"
 ---
 # <a name="integrate-rest-api-claims-exchanges-in-your-azure-ad-b2c-user-journey-as-validation-of-user-input"></a>A felhasználói adatbevitel auditáló REST API-val jogcím cseréje az Azure AD B2C felhasználói interakciósorozatban szereplő integrálása
 
@@ -64,17 +64,17 @@ A lépések elvégzéséhez a [Ismerkedés az egyéni szabályzatok](active-dire
 
 3. Az a **neve** mezőbe írja be az alkalmazás nevét (például *Contoso.AADB2C.API*), majd válassza ki **OK**.
 
-    ![Új visual studio-projekt létrehozása](media/aadb2c-ief-rest-api-netfw/aadb2c-ief-rest-api-netfw-create-project.png)
+    ![Új Visual Studio-projekt létrehozása a Visual Studióban](media/aadb2c-ief-rest-api-netfw/aadb2c-ief-rest-api-netfw-create-project.png)
 
 4. Az a **új ASP.NET-webalkalmazás** ablakban válassza ki a **webes API** vagy **Azure API-alkalmazás** sablon.
 
-    ![Webes API-sablon kiválasztása](media/aadb2c-ief-rest-api-netfw/aadb2c-ief-rest-api-netfw-select-web-api.png)
+    ![A Visual Studióban egy webes API-sablon kiválasztása](media/aadb2c-ief-rest-api-netfw/aadb2c-ief-rest-api-netfw-select-web-api.png)
 
 5. Győződjön meg arról, hogy a hitelesítés értéke **nincs hitelesítés**.
 
 6. A projekt létrehozásához válassza az **OK** lehetőséget.
 
-## <a name="step-2-prepare-the-rest-api-endpoint"></a>2\. lépés: Készítse elő a REST API-végpont
+## <a name="step-2-prepare-the-rest-api-endpoint"></a>2\. lépés: Készítse elő a REST API-végpont
 
 ### <a name="step-21-add-data-models"></a>2\.1. lépés: Adatmodell hozzáadása
 A modellek felel meg a bemeneti jogcímek között, és a kimeneti jogcím-adatok a REST-alapú service-ben. A kód beolvassa a bemeneti adatok deszerializálása során a bemeneti jogcímek között modell egy JSON-karakterlánc egy C#-objektumot (a modell) által. Az ASP.NET web API automatikusan deserializes a kimeneti jogcímek modell vissza a JSON és a szerializált adatok ezután ír a HTTP-válaszüzenet törzsében.
@@ -138,15 +138,15 @@ A webes API-hoz egy _vezérlő_ olyan objektum, amely HTTP-kéréseket. A vezér
 
 1. A Solution Explorer (Megoldáskezelő) ablakában kattintson a jobb gombbal a **Controllers** (Vezérlők) mappára, kattintson az **Add** (Hozzáadás) parancsra, majd kattintson a **Controller** (Vezérlő) gombra.
 
-    ![Új vezérlő felvétele](media/aadb2c-ief-rest-api-netfw/aadb2c-ief-rest-api-netfw-add-controller-1.png)
+    ![Egy új vezérlőt hozzáadása a Visual Studióban](media/aadb2c-ief-rest-api-netfw/aadb2c-ief-rest-api-netfw-add-controller-1.png)
 
 2. Az a **hozzáadása Scaffold** ablakban válassza **webes API-vezérlő - üres**, majd válassza ki **Hozzáadás**.
 
-    ![Válassza ki webes API 2 vezérlő – üres](media/aadb2c-ief-rest-api-netfw/aadb2c-ief-rest-api-netfw-add-controller-2.png)
+    ![Válassza a webes API 2 vezérlő – üres, a Visual Studióban](media/aadb2c-ief-rest-api-netfw/aadb2c-ief-rest-api-netfw-add-controller-2.png)
 
 3. Az a **vezérlő hozzáadása** ablakban, a vezérlő neve **IdentityController**, majd válassza ki **Hozzáadás**.
 
-    ![Írja be a vezérlő neve](media/aadb2c-ief-rest-api-netfw/aadb2c-ief-rest-api-netfw-add-controller-3.png)
+    ![Írja be a Visual studióban a vezérlő neve](media/aadb2c-ief-rest-api-netfw/aadb2c-ief-rest-api-netfw-add-controller-3.png)
 
     A keret létrehozásához létrehoz egy fájlt *IdentityController.cs* a a *tartományvezérlők* mappát.
 
@@ -206,11 +206,11 @@ A webes API-hoz egy _vezérlő_ olyan objektum, amely HTTP-kéréseket. A vezér
 ## <a name="step-3-publish-the-project-to-azure"></a>3\. lépés: A projekt közzététele az Azure-ban
 1. A Megoldáskezelőben kattintson a jobb gombbal a **Contoso.AADB2C.API** projektre, és válassza ki **közzététel**.
 
-    ![A Microsoft Azure App Service-ben való közzététele](media/aadb2c-ief-rest-api-netfw/aadb2c-ief-rest-api-netfw-publish-to-azure-1.png)
+    ![A Microsoft Azure App Service-ben a Visual Studióval közzététele](media/aadb2c-ief-rest-api-netfw/aadb2c-ief-rest-api-netfw-publish-to-azure-1.png)
 
 2. Az a **közzététel** ablakban válassza **Microsoft Azure App Service**, majd válassza ki **közzététel**.
 
-    ![Hozzon létre új Microsoft Azure App Service](media/aadb2c-ief-rest-api-netfw/aadb2c-ief-rest-api-netfw-publish-to-azure-2.png)
+    ![Új Microsoft Azure App Service létrehozása a Visual Studióban](media/aadb2c-ief-rest-api-netfw/aadb2c-ief-rest-api-netfw-publish-to-azure-2.png)
 
     A **létrehozása App Service** ablak nyílik meg. Az összes szükséges Azure-erőforrást az ASP.NET-webalkalmazás futtatása az Azure-ban létrehoz.
 
@@ -219,9 +219,9 @@ A webes API-hoz egy _vezérlő_ olyan objektum, amely HTTP-kéréseket. A vezér
 
 3. Az a **webalkalmazás neve** mezőbe írja be egy egyedi névre (érvényes karakterek: a – z, 0 – 9 és kötőjelet (-). A webalkalmazás URL-je http://<app_name>.azurewebsites.NET, ahol *app_name* a webalkalmazás neve. Elfogadhatja az automatikusan létrehozott nevet is, amely már egyedi.
 
-    ![Adja meg a tulajdonságokat App Service-ben](media/aadb2c-ief-rest-api-netfw/aadb2c-ief-rest-api-netfw-publish-to-azure-3.png)
+    ![Az App Service-ben tulajdonságainak konfigurálása](media/aadb2c-ief-rest-api-netfw/aadb2c-ief-rest-api-netfw-publish-to-azure-3.png)
 
-4. Azure-erőforrások létrehozását, jelölje **létrehozás**.  
+4. Azure-erőforrások létrehozását, jelölje **létrehozás**.
     Az ASP.NET-webalkalmazás létrehozása után a varázsló közzéteszi az Azure-ba, és elindítja az alkalmazást az alapértelmezett böngészőben.
 
 6. Másolja a web app URL-címet.
@@ -262,7 +262,7 @@ Keresse meg a `<ClaimsProviders>` csomópontot, majd adja hozzá a következő X
 <ClaimsProvider>
   <DisplayName>REST APIs</DisplayName>
   <TechnicalProfiles>
-    
+
     <!-- Custom Restful service -->
     <TechnicalProfile Id="REST-API-SignUp">
       <DisplayName>Validate user's input data and return loyaltyNumber claim</DisplayName>
@@ -347,14 +347,14 @@ Miután az új jogcímet ad hozzá, a függő entitás kód a következőhöz ha
 
 2. Nyissa meg **B2C_1A_signup_signin**, a függő entitásonkénti (RP) egyéni-szabályzattal, feltöltött, és válassza ki **Futtatás most**.
 
-    ![A B2C_1A_signup_signin ablak](media/aadb2c-ief-rest-api-netfw/aadb2c-ief-rest-api-netfw-run.png)
+    ![A B2C_1A_signup_signin egyéni szabályzat lapján az Azure Portalon](media/aadb2c-ief-rest-api-netfw/aadb2c-ief-rest-api-netfw-run.png)
 
-3. Írja be a folyamat teszteléséhez **teszt** a a **Utónév** mezőbe.  
+3. Írja be a folyamat teszteléséhez **teszt** a a **Utónév** mezőbe.
     Az Azure AD B2C hibaüzenetet jelenít meg az ablak tetején.
 
-    ![A házirend tesztelése](media/aadb2c-ief-rest-api-netfw/aadb2c-ief-rest-api-netfw-test.png)
+    ![A megadott nevű bemenet-ellenőrzés regisztrációs bejelentkezési oldalon található tesztelése](media/aadb2c-ief-rest-api-netfw/aadb2c-ief-rest-api-netfw-test.png)
 
-4. Az a **Utónév** mezőbe írjon be egy nevet (nem a "Test").  
+4. Az a **Utónév** mezőbe írjon be egy nevet (nem a "Test").
     Az Azure AD B2C a felhasználó regisztrál, és a egy loyaltyNumber és az alkalmazás továbbítja. Vegye figyelembe a JWT szereplő számot.
 
 ```

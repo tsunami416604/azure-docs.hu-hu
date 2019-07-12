@@ -11,14 +11,14 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 02/21/2019
+ms.date: 07/11/2019
 ms.author: magoedte
-ms.openlocfilehash: 39dbb504603544a468907d87d236338cb95e39a3
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: a55a4b2f3045aac8dfe9e46a50074585ab3ef491
+ms.sourcegitcommit: 441e59b8657a1eb1538c848b9b78c2e9e1b6cfd5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67441636"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67827795"
 ---
 # <a name="manage-log-analytics-workspace-using-azure-resource-manager-templates"></a>Azure Resource Manager-sablonok használatával a Log Analytics-munkaterület kezelése
 
@@ -40,6 +40,7 @@ Használhat [Azure Resource Manager-sablonok](../../azure-resource-manager/resou
 Ez a cikk a sablon a minták azt mutatják be az egyes konfigurációs sablonok hajthat végre.
 
 ## <a name="api-versions"></a>API-verziók
+
 Az alábbi táblázat az ebben a példában használt erőforrások API-verzió.
 
 | Resource | Erőforrás típusa | API-verzió |
@@ -50,16 +51,8 @@ Az alábbi táblázat az ebben a példában használt erőforrások API-verzió.
 | Megoldás    | megoldások     | 2015. 11. 01-előzetes verzió |
 
 ## <a name="create-a-log-analytics-workspace"></a>Log Analytics-munkaterület létrehozása
-A következő példában létrehozunk egy munkaterületet, a helyi gépen sablon használatával. A JSON-sablon csak kéri a munkaterület nevére van beállítva, és valószínűleg használni kívánt szabványos konfigurációt a környezetében, a többi paraméter alapértelmezett értéket határoz meg.  
 
-A következő paraméterekkel állítsa be az alapértelmezett érték:
-
-* hely – USA keleti RÉGIÓJA, az alapértelmezett érték
-* Termékváltozat - alapértelmezés szerint az új GB-onkénti tarifacsomag, amely a 2018 áprilisi díjszabási modell
-
-> [!NOTE]
->Ha létrehozása vagy konfigurálása a Log Analytics-munkaterület egy előfizetésben, amely rendelkezik az új 2018 áprilisi díjszabási modell jelentkezett, van-e a csak érvényes tarifacsomagban a Log Analytics **PerGB2018**.  
->Ha lehetséges, hogy bizonyos előfizetéseket a [2018 előtti-áprilisi díjszabási modell](https://docs.microsoft.com/azure/azure-monitor/platform/usage-estimated-costs#new-pricing-model), megadhatja a **önálló** tarifacsomag, és ez lesz sikeres, mindkét előfizetéshez 2018 előtti-áprilisi díjszabási modell és az új előfizetések díjszabása. Az új proicing modell alkalmazó előfizetésekben munkaterületek, a tarifacsomag értékre lesz beállítva **PerGB2018**. 
+A következő példában létrehozunk egy munkaterületet, a helyi gépen sablon használatával. A JSON-sablon úgy van beállítva, csak a nevét és helyét az új munkaterület (tarifacsomag és megőrzési például a többi munkaterületet paraméter alapértelmezett értékeinek használata).  
 
 ### <a name="create-and-deploy-template"></a>Hozzon létre, és a sablon üzembe helyezése
 
@@ -79,26 +72,35 @@ A következő paraméterekkel állítsa be az alapértelmezett érték:
         "location": {
             "type": "String",
             "allowedValues": [
-              "eastus",
-              "westus"
+              "australiacentral", 
+              "australiaeast", 
+              "australiasoutheast", 
+              "brazilsouth",
+              "canadacentral", 
+              "centralindia", 
+              "centralus", 
+              "eastasia", 
+              "eastus", 
+              "eastus2", 
+              "francecentral", 
+              "japaneast", 
+              "koreacentral", 
+              "northcentralus", 
+              "northeurope", 
+              "southafricanorth", 
+              "southcentralus", 
+              "southeastasia", 
+              "uksouth", 
+              "ukwest", 
+              "westcentralus", 
+              "westeurope", 
+              "westus", 
+              "westus2" 
             ],
-            "defaultValue": "eastus",
             "metadata": {
               "description": "Specifies the location in which to create the workspace."
             }
-        },
-        "sku": {
-            "type": "String",
-            "allowedValues": [
-              "Standalone",
-              "PerNode",
-              "PerGB2018"
-            ],
-            "defaultValue": "PerGB2018",
-            "metadata": {
-            "description": "Specifies the service tier of the workspace: Standalone, PerNode, Per-GB"
         }
-          }
     },
     "resources": [
         {
@@ -107,9 +109,6 @@ A következő paraméterekkel állítsa be az alapértelmezett érték:
             "apiVersion": "2015-11-01-preview",
             "location": "[parameters('location')]",
             "properties": {
-                "sku": {
-                    "Name": "[parameters('sku')]"
-                },
                 "features": {
                     "searchVersion": 1
                 }
@@ -118,26 +117,28 @@ A következő paraméterekkel állítsa be az alapértelmezett érték:
        ]
     }
     ```
-2. Szerkessze a sablont az igényeknek.  Felülvizsgálat [Microsoft.OperationalInsights/workspaces sablon](https://docs.microsoft.com/azure/templates/microsoft.operationalinsights/workspaces) referencia megtudhatja, milyen tulajdonságok és értékek támogatottak. 
+
+2. Szerkessze a sablont az igényeknek. Felülvizsgálat [Microsoft.OperationalInsights/workspaces sablon](https://docs.microsoft.com/azure/templates/microsoft.operationalinsights/workspaces) referencia megtudhatja, milyen tulajdonságok és értékek támogatottak. 
 3. Mentse a fájlt **deploylaworkspacetemplate.json** egy helyi mappába.
-4. Készen áll a sablon üzembe helyezésére. A munkaterület létrehozása a PowerShell vagy az parancssor használhatja.
+4. Készen áll a sablon üzembe helyezésére. A munkaterület nevének és helyének megadása a parancs részeként a munkaterület létrehozása a PowerShell vagy az parancssor használhatja.
 
    * PowerShell használja az alábbi parancsokat a sablont tartalmazó könyvtárban:
    
         ```powershell
-        New-AzResourceGroupDeployment -Name <deployment-name> -ResourceGroupName <resource-group-name> -TemplateFile deploylaworkspacetemplate.json
+        New-AzResourceGroupDeployment -ResourceGroupName <resource-group-name> -TemplateFile deploylaworkspacetemplate.json -workspaceName <workspace-name> -location <location>
         ```
 
    * Parancssor használja az alábbi parancsokat a sablont tartalmazó könyvtárban:
 
         ```cmd
         azure config mode arm
-        azure group deployment create <my-resource-group> <my-deployment-name> --TemplateFile deploylaworkspacetemplate.json
+        azure group deployment create <my-resource-group> <my-deployment-name> --TemplateFile deploylaworkspacetemplate.json --workspaceName <workspace-name> --location <location>
         ```
 
 Az üzembe helyezés eltarthat néhány percig. Amikor befejeződik, megjelenik egy üzenet, amely tartalmazza az eredmény az alábbihoz hasonló:<br><br> ![Ha üzembe helyezés kész eredményének](./media/template-workspace-configuration/template-output-01.png)
 
 ## <a name="configure-a-log-analytics-workspace"></a>Log Analytics-munkaterület konfigurálása
+
 Az alábbi sablont a példa bemutatja, hogyan lehet:
 
 1. Megoldások hozzáadása a munkaterülethez
@@ -161,19 +162,21 @@ Az alábbi sablont a példa bemutatja, hogyan lehet:
         "description": "Workspace name"
       }
     },
-    "serviceTier": {
+    "pricingTier": {
       "type": "string",
       "allowedValues": [
+        "PerGB2018",
         "Free",
         "Standalone",
         "PerNode",
-        "PerGB2018"
+        "Standard",
+        "Premium"
       ],
       "defaultValue": "PerGB2018",
       "metadata": {
-        "description": "Pricing tier: PerGB2018 or legacy tiers (Free, Standalone or PerNode) which are not available to all customers"
-    }
-      },
+        "description": "Pricing tier: PerGB2018 or legacy tiers (Free, Standalone, PerNode, Standard or Premium) which are not available to all customers."
+      }
+    },
     "dataRetention": {
       "type": "int",
       "defaultValue": 30,
@@ -187,17 +190,40 @@ Az alábbi sablont a példa bemutatja, hogyan lehet:
     "immediatePurgeDataOn30Days": {
       "type": "bool",
       "metadata": {
-        "description": "If set to true when changing retention to 30 days, older data will be immediately deleted. This only applies when retention is being set to 30 days."
+        "description": "If set to true when changing retention to 30 days, older data will be immediately deleted. Use this with extreme caution. This only applies when retention is being set to 30 days."
       }
     },
     "location": {
       "type": "string",
       "allowedValues": [
-        "East US",
-        "West Europe",
-        "Southeast Asia",
-        "Australia Southeast"
-      ]
+        "australiacentral", 
+        "australiaeast", 
+        "australiasoutheast", 
+        "brazilsouth",
+        "canadacentral", 
+        "centralindia", 
+        "centralus", 
+        "eastasia", 
+        "eastus", 
+        "eastus2", 
+        "francecentral", 
+        "japaneast", 
+        "koreacentral", 
+        "northcentralus", 
+        "northeurope", 
+        "southafricanorth", 
+        "southcentralus", 
+        "southeastasia", 
+        "uksouth", 
+        "ukwest", 
+        "westcentralus", 
+        "westeurope", 
+        "westus", 
+        "westus2"
+      ],
+      "metadata": {
+        "description": "Specifies the location in which to create the workspace."
+      }
     },
     "applicationDiagnosticsStorageAccountName": {
         "type": "string",
@@ -235,7 +261,10 @@ Az alábbi sablont a példa bemutatja, hogyan lehet:
       "location": "[parameters('location')]",
       "properties": {
         "sku": {
-          "Name": "[parameters('serviceTier')]"
+          "name": "[parameters('pricingTier')]"
+          "features": {
+            "immediatePurgeDataOn30Days": "[parameters('immediatePurgeDataOn30Days')]"
+          }
         },
     "retentionInDays": "[parameters('dataRetention')]"
       },
@@ -494,6 +523,10 @@ Az alábbi sablont a példa bemutatja, hogyan lehet:
       "type": "int",
       "value": "[reference(resourceId('Microsoft.OperationalInsights/workspaces', parameters('workspaceName')), '2015-11-01-preview').retentionInDays]"
     },
+    "immediatePurgeDataOn30Days": {  
+      "type": "bool",
+      "value": "[reference(resourceId('Microsoft.OperationalInsights/workspaces', parameters('workspaceName')), '2015-11-01-preview').features.immediatePurgeDataOn30Days]"
+    },
     "portalUrl": {
       "type": "string",
       "value": "[reference(resourceId('Microsoft.OperationalInsights/workspaces', parameters('workspaceName')), '2015-11-01-preview').portalUrl]"
@@ -503,6 +536,7 @@ Az alábbi sablont a példa bemutatja, hogyan lehet:
 
 ```
 ### <a name="deploying-the-sample-template"></a>A mintasablon üzembe helyezése
+
 A mintasablon üzembe helyezéséhez:
 
 1. A csatolt minta például egy fájlba mentése `azuredeploy.json` 
@@ -510,17 +544,20 @@ A mintasablon üzembe helyezéséhez:
 3. A sablon üzembe helyezése a PowerShell vagy az parancssor használatával
 
 #### <a name="powershell"></a>PowerShell
+
 ```powershell
 New-AzResourceGroupDeployment -Name <deployment-name> -ResourceGroupName <resource-group-name> -TemplateFile azuredeploy.json
 ```
 
 #### <a name="command-line"></a>Parancssor
+
 ```cmd
 azure config mode arm
 azure group deployment create <my-resource-group> <my-deployment-name> --TemplateFile azuredeploy.json
 ```
 
 ## <a name="example-resource-manager-templates"></a>Példa Resource Manager-sablonok
+
 Azure rövid útmutató sablonkatalógusban Log Analytics, beleértve a több sablont is tartalmaz:
 
 * [A Log Analytics Virtuálisgép-bővítménnyel Windows rendszerű virtuális gép üzembe helyezése](https://azure.microsoft.com/documentation/templates/201-oms-extension-windows-vm/)
@@ -530,5 +567,7 @@ Azure rövid útmutató sablonkatalógusban Log Analytics, beleértve a több sa
 * [Adjon hozzá egy meglévő tárfiókot a Log Analyticsbe](https://azure.microsoft.com/resources/templates/oms-existing-storage-account/)
 
 ## <a name="next-steps"></a>További lépések
+
 * [Windows-ügynök telepítése az Azure virtuális gépek a Resource Manager-sablon használatával](../../virtual-machines/extensions/oms-windows.md).
+
 * [Linux-ügynök telepítése Azure virtuális gépek a Resource Manager-sablon használatával](../../virtual-machines/extensions/oms-linux.md).

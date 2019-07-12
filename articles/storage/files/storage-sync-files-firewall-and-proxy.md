@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 06/24/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: fdbbea2d32762d2d4030ec3a10826595dadd371c
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: c828f616d0be1611770c8673f9884e0ee50dba19
+ms.sourcegitcommit: c0419208061b2b5579f6e16f78d9d45513bb7bbc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67449831"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67625596"
 ---
 # <a name="azure-file-sync-proxy-and-firewall-settings"></a>Az Azure File Sync proxy- és tűzfalbeállításai
 Az Azure File Sync kapcsolódik a helyszíni kiszolgálók az Azure Files többhelyes szinkronizálás és a felhőbeli rétegezés szolgáltatások engedélyezése. Ezért egy helyszíni kiszolgálón kapcsolódnia kell az internethez. Egy rendszergazdának kell döntenie, hogy a legjobb útvonalat a közvetítőn keresztül az Azure cloud services-kiszolgáló.
@@ -111,43 +111,43 @@ Az üzletmenet-folytonossági és vészhelyreállítási (BCDR) helyreállítás
 
 | Felhő  | Régió | Elsődleges végpont URL-címe | Párosított régió | Felderítési URL-cím |
 |--------|--------|----------------------|---------------|---------------|
-| Nyilvános |Kelet-Ausztrália | https://kailani-aue.one.microsoft.com | Délkelet-Ausztrália | https://tm-kailani-aue.one.microsoft.com |
-| Nyilvános |Délkelet-Ausztrália | https://kailani-aus.one.microsoft.com | Kelet-Ausztrália | https://tm-kailani-aus.one.microsoft.com |
-| Nyilvános | Dél-Brazília | https://brazilsouth01.afs.azure.net | USA déli középső régiója | https://tm-brazilsouth01.afs.azure.net |
-| Nyilvános | Közép-Kanada | https://kailani-cac.one.microsoft.com | Kelet-Kanada | https://tm-kailani-cac.one.microsoft.com |
-| Nyilvános | Kelet-Kanada | https://kailani-cae.one.microsoft.com | Közép-Kanada | https://tm-kailani.cae.one.microsoft.com |
-| Nyilvános | Közép-India | https://kailani-cin.one.microsoft.com | Dél-India | https://tm-kailani-cin.one.microsoft.com |
-| Nyilvános | USA középső régiója | https://kailani-cus.one.microsoft.com | USA 2. keleti régiója | https://tm-kailani-cus.one.microsoft.com |
-| Nyilvános | Kelet-Ázsia | https://kailani11.one.microsoft.com | Délkelet-Ázsia | https://tm-kailani11.one.microsoft.com |
-| Nyilvános | East US | https://kailani1.one.microsoft.com | USA nyugati régiója | https://tm-kailani1.one.microsoft.com |
-| Nyilvános | USA 2. keleti régiója | https://kailani-ess.one.microsoft.com | USA középső régiója | https://tm-kailani-ess.one.microsoft.com |
-| Nyilvános | Kelet-Japán | https://japaneast01.afs.azure.net | Nyugat-Japán | https://tm-japaneast01.afs.azure.net |
-| Nyilvános | Nyugat-Japán | https://japanwest01.afs.azure.net | Kelet-Japán | https://tm-japanwest01.afs.azure.net |
-| Nyilvános | Korea középső régiója | https://koreacentral01.afs.azure.net/ | Korea déli régiója | https://tm-koreacentral01.afs.azure.net/ |
-| Nyilvános | Korea déli régiója | https://koreasouth01.afs.azure.net/ | Korea középső régiója | https://tm-koreasouth01.afs.azure.net/ |
-| Nyilvános | USA északi középső régiója | https://northcentralus01.afs.azure.net | USA déli középső régiója | https://tm-northcentralus01.afs.azure.net |
-| Nyilvános | Észak-Európa | https://kailani7.one.microsoft.com | Nyugat-Európa | https://tm-kailani7.one.microsoft.com |
-| Nyilvános | USA déli középső régiója | https://southcentralus01.afs.azure.net | USA északi középső régiója | https://tm-southcentralus01.afs.azure.net |
-| Nyilvános | Dél-India | https://kailani-sin.one.microsoft.com | Közép-India | https://tm-kailani-sin.one.microsoft.com |
-| Nyilvános | Délkelet-Ázsia | https://kailani10.one.microsoft.com | Kelet-Ázsia | https://tm-kailani10.one.microsoft.com |
-| Nyilvános | Az Egyesült Királyság déli régiója | https://kailani-uks.one.microsoft.com | Az Egyesült Királyság nyugati régiója | https://tm-kailani-uks.one.microsoft.com |
-| Nyilvános | Az Egyesült Királyság nyugati régiója | https://kailani-ukw.one.microsoft.com | Az Egyesült Királyság déli régiója | https://tm-kailani-ukw.one.microsoft.com |
-| Nyilvános | USA nyugati középső régiója | https://westcentralus01.afs.azure.net | USA nyugati régiója, 2. | https://tm-westcentralus01.afs.azure.net |
-| Nyilvános | Nyugat-Európa | https://kailani6.one.microsoft.com | Észak-Európa | https://tm-kailani6.one.microsoft.com |
-| Nyilvános | USA nyugati régiója | https://kailani.one.microsoft.com | East US | https://tm-kailani.one.microsoft.com |
-| Nyilvános | USA nyugati régiója, 2. | https://westus201.afs.azure.net | USA nyugati középső régiója | https://tm-westus201.afs.azure.net |
-| Government | USA-beli államigazgatás – Arizona | https://usgovarizona01.afs.azure.us | USA-beli államigazgatás – Texas | https://tm-usgovarizona01.afs.azure.us |
-| Government | USA-beli államigazgatás – Texas | https://usgovtexas01.afs.azure.us | USA-beli államigazgatás – Arizona | https://tm-usgovtexas01.afs.azure.us |
+| Nyilvános |Kelet-Ausztrália | https:\//kailani-aue.one.microsoft.com | Délkelet-Ausztrália | https:\//tm-kailani-aue.one.microsoft.com |
+| Nyilvános |Délkelet-Ausztrália | https:\//kailani-aus.one.microsoft.com | Kelet-Ausztrália | https:\//tm-kailani-aus.one.microsoft.com |
+| Nyilvános | Dél-Brazília | https:\//brazilsouth01.afs.azure.net | USA déli középső régiója | https:\//tm-brazilsouth01.afs.azure.net |
+| Nyilvános | Közép-Kanada | https:\//kailani-cac.one.microsoft.com | Kelet-Kanada | https:\//tm-kailani-cac.one.microsoft.com |
+| Nyilvános | Kelet-Kanada | https:\//kailani-cae.one.microsoft.com | Közép-Kanada | https:\//tm-kailani.cae.one.microsoft.com |
+| Nyilvános | Közép-India | https:\//kailani-cin.one.microsoft.com | Dél-India | https:\//tm-kailani-cin.one.microsoft.com |
+| Nyilvános | USA középső régiója | https:\//kailani-cus.one.microsoft.com | USA 2. keleti régiója | https:\//tm-kailani-cus.one.microsoft.com |
+| Nyilvános | Kelet-Ázsia | https:\//kailani11.one.microsoft.com | Délkelet-Ázsia | https:\//tm-kailani11.one.microsoft.com |
+| Nyilvános | East US | https:\//kailani1.one.microsoft.com | USA nyugati régiója | https:\//tm-kailani1.one.microsoft.com |
+| Nyilvános | USA 2. keleti régiója | https:\//kailani-ess.one.microsoft.com | USA középső régiója | https:\//tm-kailani-ess.one.microsoft.com |
+| Nyilvános | Kelet-Japán | https:\//japaneast01.afs.azure.net | Nyugat-Japán | https:\//tm-japaneast01.afs.azure.net |
+| Nyilvános | Nyugat-Japán | https:\//japanwest01.afs.azure.net | Kelet-Japán | https:\//tm-japanwest01.afs.azure.net |
+| Nyilvános | Korea középső régiója | https:\//koreacentral01.afs.azure.net/ | Korea déli régiója | https:\//tm-koreacentral01.afs.azure.net/ |
+| Nyilvános | Korea déli régiója | https:\//koreasouth01.afs.azure.net/ | Korea középső régiója | https:\//tm-koreasouth01.afs.azure.net/ |
+| Nyilvános | USA északi középső régiója | https:\//northcentralus01.afs.azure.net | USA déli középső régiója | https:\//tm-northcentralus01.afs.azure.net |
+| Nyilvános | Észak-Európa | https:\//kailani7.one.microsoft.com | Nyugat-Európa | https:\//tm-kailani7.one.microsoft.com |
+| Nyilvános | USA déli középső régiója | https:\//southcentralus01.afs.azure.net | USA északi középső régiója | https:\//tm-southcentralus01.afs.azure.net |
+| Nyilvános | Dél-India | https:\//kailani-sin.one.microsoft.com | Közép-India | https:\//tm-kailani-sin.one.microsoft.com |
+| Nyilvános | Délkelet-Ázsia | https:\//kailani10.one.microsoft.com | Kelet-Ázsia | https:\//tm-kailani10.one.microsoft.com |
+| Nyilvános | Az Egyesült Királyság déli régiója | https:\//kailani-uks.one.microsoft.com | Az Egyesült Királyság nyugati régiója | https:\//tm-kailani-uks.one.microsoft.com |
+| Nyilvános | Az Egyesült Királyság nyugati régiója | https:\//kailani-ukw.one.microsoft.com | Az Egyesült Királyság déli régiója | https:\//tm-kailani-ukw.one.microsoft.com |
+| Nyilvános | USA nyugati középső régiója | https:\//westcentralus01.afs.azure.net | USA nyugati régiója, 2. | https:\//tm-westcentralus01.afs.azure.net |
+| Nyilvános | Nyugat-Európa | https:\//kailani6.one.microsoft.com | Észak-Európa | https:\//tm-kailani6.one.microsoft.com |
+| Nyilvános | USA nyugati régiója | https:\//kailani.one.microsoft.com | East US | https:\//tm-kailani.one.microsoft.com |
+| Nyilvános | USA nyugati régiója, 2. | https:\//westus201.afs.azure.net | USA nyugati középső régiója | https:\//tm-westus201.afs.azure.net |
+| Government | USA-beli államigazgatás – Arizona | https:\//usgovarizona01.afs.azure.us | USA-beli államigazgatás – Texas | https:\//tm-usgovarizona01.afs.azure.us |
+| Government | USA-beli államigazgatás – Texas | https:\//usgovtexas01.afs.azure.us | USA-beli államigazgatás – Arizona | https:\//tm-usgovtexas01.afs.azure.us |
 
 - Ha helyileg redundáns (LRS) vagy zóna redundáns (ZRS) storage-fiókokat használ, csak az "elsődleges végpont URL-címe" alatt felsorolt URL-cím engedélyeznie kell.
 
 - Globálisan redundáns (GRS) tárfiókok használatakor engedélyezéséhez a három URL-címét.
 
-**Példa** A társzinkronizálási szolgáltatás központi telepítése `"West US"` és regisztrálja azt a kiszolgálót. Az URL-címeket, hogy a kiszolgáló felé történő ebben az esetben a következők:
+**Példa:** A társzinkronizálási szolgáltatás központi telepítése `"West US"` és regisztrálja azt a kiszolgálót. Az URL-címeket, hogy a kiszolgáló felé történő ebben az esetben a következők:
 
-> - https://kailani.one.microsoft.com (elsődleges végpont: USA nyugati RÉGIÓJA)
-> - https://kailani1.one.microsoft.com (feladatátvételi párosított régió: USA keleti RÉGIÓJA)
-> - https://tm-kailani.one.microsoft.com (felderítési URL-címét az elsődleges régió)
+> - https:\//kailani.one.microsoft.com (elsődleges végpont: USA nyugati RÉGIÓJA)
+> - https:\//kailani1.one.microsoft.com (feladatátvételi párosított régió: USA keleti RÉGIÓJA)
+> - https:\//tm-kailani.one.microsoft.com (felderítési URL-címét az elsődleges régió)
 
 ## <a name="summary-and-risk-limitation"></a>Összegzés és kockázati korlátozás
 A listák a jelen dokumentum korábbi tartalmazza az URL-címeket az Azure File Sync jelenleg kommunikál. Tűzfalak ezekből a tartományokból kimenő forgalmat engedélyező képesnek kell lennie. A Microsoft nagy hangsúlyt fektet a, hogy ez a lista frissítése.

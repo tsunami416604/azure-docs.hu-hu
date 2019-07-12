@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 96d16552cfadca9b345d0f0cd0a344249897f571
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 159e10354726e86ff04cb12bff33b6a83bd1fa70
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61258436"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67836106"
 ---
 # <a name="move-data-from-sap-hana-using-azure-data-factory"></a>Adatok áthelyezése az SAP HANA az Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Válassza ki a Data Factory szolgáltatás használ:"]
@@ -43,7 +43,7 @@ Ahhoz, hogy a kapcsolat az SAP HANA-példányra, az alábbi összetevők telepí
 Egy folyamatot egy másolási tevékenységgel, amely helyez át adatokat egy helyszíni SAP HANA adatokat az adattárból más eszközök/API-k használatával is létrehozhat. 
 
 - A folyamat létrehozásának legegyszerűbb módja az, hogy használja a **másolása varázsló**. Lásd: [oktatóanyag: Hozzon létre egy folyamatot a másolás varázsló használatával](data-factory-copy-data-wizard-tutorial.md) gyors bemutató létrehozása egy folyamatot az adatok másolása varázsló használatával. 
-- A következő eszközök használatával hozzon létre egy folyamatot: **Az Azure portal**, **Visual Studio**, **Azure PowerShell-lel**, **Azure Resource Manager-sablon**, **.NET API**, és  **REST API-val**. Lásd: [másolási tevékenység oktatóanyagát](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) egy másolási tevékenységgel ellátott adatcsatorna létrehozása a részletes útmutatóját. 
+- A következő eszközök használatával hozzon létre egy folyamatot: **A Visual Studio**, **Azure PowerShell-lel**, **Azure Resource Manager-sablon**, **.NET API**, és **REST API-val**. Lásd: [másolási tevékenység oktatóanyagát](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) egy másolási tevékenységgel ellátott adatcsatorna létrehozása a részletes útmutatóját. 
 
 Az eszközök vagy az API-kat használja, hogy létrehoz egy folyamatot, amely a helyez át adatokat egy forrásadattárból egy fogadó adattárba a következő lépéseket fogja végrehajtani:
 
@@ -60,12 +60,12 @@ A következő táblázat a JSON-elemeket az SAP HANA-beli társított szolgálta
 
 Tulajdonság | Leírás | Megengedett értékek | Szükséges
 -------- | ----------- | -------------- | --------
-server | A kiszolgálóra, amelyen az SAP HANA-példány neve. Ha a kiszolgáló egy egyéni portot használ, adja meg a `server:port`. | string | Igen
+server | A kiszolgálóra, amelyen az SAP HANA-példány neve. Ha a kiszolgáló egy egyéni portot használ, adja meg a `server:port`. | Karakterlánc | Igen
 authenticationType | Hitelesítés típusa. | karakterlánc. "Alapszintű" vagy "Windows" | Igen 
-username | Az SAP-kiszolgálóhoz hozzáféréssel rendelkező felhasználó neve | string | Igen
-password | A felhasználó jelszava. | string | Igen
-gatewayName | Az átjáró által a Data Factory szolgáltatás a helyszíni SAP HANA-példányhoz való csatlakozáshoz használandó neve. | string | Igen
-encryptedCredential | A titkosított hitelesítő adatok karakterlánca. | string | Nem
+username | Az SAP-kiszolgálóhoz hozzáféréssel rendelkező felhasználó neve | Karakterlánc | Igen
+password | A felhasználó jelszava. | Karakterlánc | Igen
+gatewayName | Az átjáró által a Data Factory szolgáltatás a helyszíni SAP HANA-példányhoz való csatlakozáshoz használandó neve. | sztring | Igen
+encryptedCredential | A titkosított hitelesítő adatok karakterlánca. | Karakterlánc | Nem
 
 ## <a name="dataset-properties"></a>Adatkészlet tulajdonságai
 Szakaszok & adatkészletek definiálását tulajdonságainak teljes listáját lásd: a [adatkészletek létrehozása](data-factory-create-datasets.md) cikk. Például a szerkezetet, rendelkezésre állást és szabályzatát adatkészlet JSON szakaszok hasonlóak az összes adatkészlet esetében (az Azure SQL, az Azure blob-, az Azure table-, stb.).
@@ -82,10 +82,10 @@ Ha a másolási tevékenység forrása típusa **RelationalSource** (amely tarta
 
 | Tulajdonság | Leírás | Megengedett értékek | Szükséges |
 | --- | --- | --- | --- |
-| lekérdezés | Adja meg az SQL-lekérdezést az SAP HANA-példány adatokat olvasni. | SQL-lekérdezést. | Igen |
+| query | Adja meg az SQL-lekérdezést az SAP HANA-példány adatokat olvasni. | SQL-lekérdezést. | Igen |
 
 ## <a name="json-example-copy-data-from-sap-hana-to-azure-blob"></a>JSON-példa: Adatok másolása az SAP HANA az Azure Blob
-Az alábbi mintában példa JSON-definíciók, amelyek segítségével hozzon létre egy folyamatot biztosít [az Azure portal](data-factory-copy-activity-tutorial-using-azure-portal.md) vagy [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) vagy [Azure PowerShell-lel](data-factory-copy-activity-tutorial-using-powershell.md). Ez a példa bemutatja, hogyan másolhat adatokat egy helyszíni SAP HANA-ból egy Azure Blob Storage. Azonban az adatok átmásolhatók **közvetlenül** a fogadóként valamelyik felsorolt [Itt](data-factory-data-movement-activities.md#supported-data-stores-and-formats) a másolási tevékenységgel az Azure Data Factoryban.  
+Az alábbi mintában példa JSON-definíciók, amelyek segítségével hozzon létre egy folyamatot biztosít [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) vagy [Azure PowerShell-lel](data-factory-copy-activity-tutorial-using-powershell.md). Ez a példa bemutatja, hogyan másolhat adatokat egy helyszíni SAP HANA-ból egy Azure Blob Storage. Azonban az adatok átmásolhatók **közvetlenül** a fogadóként valamelyik felsorolt [Itt](data-factory-data-movement-activities.md#supported-data-stores-and-formats) a másolási tevékenységgel az Azure Data Factoryban.  
 
 > [!IMPORTANT]
 > Ez a példa JSON-kódrészletek biztosít. Nem tartalmaz részletes útmutató az adat-előállító létrehozásához. Lásd: [adatok áthelyezése a helyszíni és a felhő között](data-factory-move-data-between-onprem-and-cloud.md) részletesen ismertető cikket.
@@ -292,15 +292,15 @@ REAL | Single
 DOUBLE | Single
 DECIMAL | Decimal
 BOOLEAN | Byte
-VARCHAR | String
-NVARCHAR | String
+VARCHAR | Sztring
+NVARCHAR | Sztring
 CLOB | Byte[]
-ALPHANUM | String
+ALPHANUM | Sztring
 BLOB | Byte[]
-DATE | DateTime
+DATE | Datetime
 TIME | TimeSpan
-TIMESTAMP | DateTime
-SECONDDATE | DateTime
+TIMESTAMP | Datetime
+SECONDDATE | Datetime
 
 ## <a name="known-limitations"></a>Ismert korlátozások
 Ha az adatok másolása az SAP HANA, van néhány ismert korlátozásai:

@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: article
-ms.date: 03/22/2019
+ms.date: 07/10/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5919eebccad8d7f9e048ae07be296eaaaf8428eb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 535842989ef49ee13a5ddee7c4349a3b819f741c
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67112109"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67797845"
 ---
 # <a name="azure-active-directory-conditional-access-settings-reference"></a>Az Azure Active Directory feltételes hozzáférés beállításainak ismertetése
 
@@ -101,7 +101,7 @@ A feltételes hozzáférési szabályzatot konfigurálhatja a eszköz-platform f
 
 A feltételes hozzáférési szabályzatot konfigurálhat a [ügyfélalkalmazás](conditions.md#client-apps) elősegítsék a házirendet, az ügyfélalkalmazás, amely egy hozzáférési kísérlet kezdeményezte az állapotot. Állítsa be az ügyfél megadásáról vagy letiltja a hozzáférést, ha a hozzáférési kísérlet történik az ügyfélalkalmazások a következő típusú alkalmazások feltétel:
 
-- Böngésző
+- Browser
 - A mobilalkalmazások és asztali alkalmazások
 
 ![Hozzáférés vezérlése az ügyfélalkalmazások](./media/technical-reference/03.png)
@@ -114,7 +114,7 @@ A feltételes hozzáférési szabályzat kiválaszthatja **böngészők** ügyf�
 
 Ez a beállítás minden böngésző együttműködik. Azonban teljesítéséhez egy szabályzatot, például a szabályzatnak megfelelő eszköz követelmény, a következő operációs rendszerek és böngészők támogatottak:
 
-| Operációs rendszer                     | Böngészők                                      |
+| OS                     | Böngészők                                      |
 | :--                    | :--                                           |
 | Windows 10             | Az Internet Explorer, a Microsoft Edge, Chrome-ban     |
 | Windows 8 / 8.1        | Internet Explorer, Chrome                     |
@@ -134,7 +134,7 @@ A Windows 7, iOS, Android és macOS Azure ad-ben azonosítja az eszközt, amikor
 
 #### <a name="chrome-support"></a>Chrome-támogatás
 
-Támogatja a Chrome **Windows 10 alkotói frissítésével (1703-as)** vagy újabb telepítése [Ez a bővítmény](https://chrome.google.com/webstore/detail/windows-10-accounts/ppnbnpeolgkicgegkbkbjmhlideopiji).
+Támogatja a Chrome **Windows 10 alkotói frissítésével (1703-as)** vagy újabb, telepítse a [Windows 10-es fiókok bővítmény](https://chrome.google.com/webstore/detail/windows-10-accounts/ppnbnpeolgkicgegkbkbjmhlideopiji). Ez a bővítmény akkor szükséges, ha a feltételes hozzáférési szabályzat megköveteli az eszköz részletes.
 
 A bővítmény telepítéséről automatikusan Chrome böngészők, hozzon létre a következő beállításkulcsot:
 

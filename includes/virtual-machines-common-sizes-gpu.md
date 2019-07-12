@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/11/2019
 ms.author: cynthn;azcspmt;jonbeck
 ms.custom: include file
-ms.openlocfilehash: 26a5baf07ee31bdf155629139e12ef1977ddca1d
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: b7bc040ae799aec98454fb227bbeeb6027f9615a
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67457376"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67673364"
 ---
 GPU-optimalizált virtuális gépek méretek a következők specializált virtuális gépek egy vagy több NVIDIA gpu-k használatával érhető el. Ezeket a méreteket képi megjelenítés, nagy számítási igényű és magas grafikai igényű számítási feladatokhoz tervezték. Ez a cikk ismerteti a száma, és a GPU-k, vcpu-k, az adatlemezeket és a hálózati adapter típusa. Tároló átviteli sebesség és a hálózati sávszélesség is szerepelnek az ennél a csoportosításnál méreteire vonatkoztatva.
 
@@ -113,7 +113,7 @@ Prémium szintű Storage:  Támogatott
 
 Prémium szintű Storage gyorsítótárazást:  Támogatott
 
-Az ND sorozatú virtuális gépek, és a mesterséges Intelligencia, Deep Learning számítási feladatokhoz készült a GPU-termékcsalád új mellett. Kiváló teljesítmény tanuláshoz és következtetésekhez kínálnak. ND példányok működteti [NVIDIA Tesla P40](http://images.nvidia.com/content/pdf/tesla/184427-Tesla-P40-Datasheet-NV-Final-Letter-Web.pdf) gpu-k és az Intel Xeon E5-2690 v4 (Broadwell) processzor. Ezek a példányok remek teljesítményt egyszeres pontosságú lebegőpontos műveletekhez, AI a Microsoft Cognitive Toolkit, TensorFlow, Caffe és más keretrendszerekhez biztosítanak. Az ND sorozat jóval nagyobb GPU-memóriával rendelkezik (24 GB), így jelentősen nagyobb neurálishálózat-modellekhez is alkalmazható. Az NC sorozathoz hasonlóan az ND sorozat távoli közvetlen memória, egy másodlagos alacsony késleltetésű, nagy átviteli sebességű hálózati konfigurációval kínál és InfiniBand-kapcsolattal nagy méretű betanítási feladatokat futtathatnak több gpu-k futtatásához.
+Az ND sorozatú virtuális gépek, és a mesterséges Intelligencia, Deep Learning számítási feladatokhoz készült a GPU-termékcsalád új mellett. Kiváló teljesítmény tanuláshoz és következtetésekhez kínálnak. ND példányok működteti [NVIDIA Tesla P40](https://images.nvidia.com/content/pdf/tesla/184427-Tesla-P40-Datasheet-NV-Final-Letter-Web.pdf) gpu-k és az Intel Xeon E5-2690 v4 (Broadwell) processzor. Ezek a példányok remek teljesítményt egyszeres pontosságú lebegőpontos műveletekhez, AI a Microsoft Cognitive Toolkit, TensorFlow, Caffe és más keretrendszerekhez biztosítanak. Az ND sorozat jóval nagyobb GPU-memóriával rendelkezik (24 GB), így jelentősen nagyobb neurálishálózat-modellekhez is alkalmazható. Az NC sorozathoz hasonlóan az ND sorozat távoli közvetlen memória, egy másodlagos alacsony késleltetésű, nagy átviteli sebességű hálózati konfigurációval kínál és InfiniBand-kapcsolattal nagy méretű betanítási feladatokat futtathatnak több gpu-k futtatásához.
 
 > [!IMPORTANT]
 > Ez virtuálisgépméret-családhoz tartozó vCPU-(mag-) kvóta az előfizetésben régiónként kezdetben értéke 0. [Egy vCPU-kvóta növelésére](../articles/azure-supportability/resource-manager-core-quotas-request.md) a termékcsalád az az [elérhető régióban](https://azure.microsoft.com/regions/services/).
@@ -136,7 +136,7 @@ Prémium szintű Storage:  Nem támogatott
 
 Prémium szintű Storage gyorsítótárazást:  Nem támogatott
 
-Működteti az NV-sorozat virtuális gépei [NVIDIA Tesla M60](http://images.nvidia.com/content/tesla/pdf/188417-Tesla-M60-DS-A4-fnl-Web.pdf) gpu-k és az NVIDIA GRID technológiát kínál a desktopban gyorsított alkalmazások és virtuális asztalok ügyfelek amelyeknél jeleníthetik meg adataikat vagy szimulációikat. Jeleníthetik meg a grafikus kiemelkedő grafikai képesség, és emellett a különálló precíziós számítási feladatokat, például a kódolás és megjelenítési szoftverek futtatása az NV-példányokat a számításigényes munkafolyamatokat, a felhasználók. NV-sorozat virtuális gépei is működteti az Intel Xeon E5-2690 v3 (Haswell) processzorok.
+Működteti az NV-sorozat virtuális gépei [NVIDIA Tesla M60](https://images.nvidia.com/content/tesla/pdf/188417-Tesla-M60-DS-A4-fnl-Web.pdf) gpu-k és az NVIDIA GRID technológiát kínál a desktopban gyorsított alkalmazások és virtuális asztalok ügyfelek amelyeknél jeleníthetik meg adataikat vagy szimulációikat. Jeleníthetik meg a grafikus kiemelkedő grafikai képesség, és emellett a különálló precíziós számítási feladatokat, például a kódolás és megjelenítési szoftverek futtatása az NV-példányokat a számításigényes munkafolyamatokat, a felhasználók. NV-sorozat virtuális gépei is működteti az Intel Xeon E5-2690 v3 (Haswell) processzorok.
 
 NV-példányokat az egyes GPU rács licenccel rendelkezik. Ez a licenc rugalmasságot biztosít az NV-példány használata virtuális munkaállomás, egy-egy felhasználóhoz, vagy 25 párhuzamos felhasználó csatlakozhat a virtuális gép virtuális alkalmazás esetén.
 
@@ -154,7 +154,7 @@ Prémium szintű Storage:  Támogatott
 
 Prémium szintű Storage gyorsítótárazást:  Támogatott
 
-A NVv3-sorozat virtuális gépei által kezelt [NVIDIA Tesla M60](http://images.nvidia.com/content/tesla/pdf/188417-Tesla-M60-DS-A4-fnl-Web.pdf) gpu-k és az NVIDIA GRID technológia és az Intel E5-2690 v4 (Broadwell) processzor. Ezek a virtuális gépek célozzák meg GPU gyorsított grafikai alkalmazásnál, és virtuális asztalok, ahol az ügyfelek szeretnék megjelenítheti az adatokat, szimulálása eredmények megtekintése érdekében CAD, vagy a renderelési és a stream tartalmát. Ezenkívül egyszeres pontosságú számítási feladatok is futtathatók az ilyen gépeken, például kódolás és renderelés. NVv3 virtuális gépek Premium Storage támogatja, és kapható kétszer a rendszer memória (RAM), az NV-sorozat elődjéhez képest.  
+A NVv3-sorozat virtuális gépei által kezelt [NVIDIA Tesla M60](https://images.nvidia.com/content/tesla/pdf/188417-Tesla-M60-DS-A4-fnl-Web.pdf) gpu-k és az NVIDIA GRID technológia és az Intel E5-2690 v4 (Broadwell) processzor. Ezek a virtuális gépek célozzák meg GPU gyorsított grafikai alkalmazásnál, és virtuális asztalok, ahol az ügyfelek szeretnék megjelenítheti az adatokat, szimulálása eredmények megtekintése érdekében CAD, vagy a renderelési és a stream tartalmát. Ezenkívül egyszeres pontosságú számítási feladatok is futtathatók az ilyen gépeken, például kódolás és renderelés. NVv3 virtuális gépek Premium Storage támogatja, és kapható kétszer a rendszer memória (RAM), az NV-sorozat elődjéhez képest.  
 
 Minden egyes GPU NVv3 esetekben rács licencet tartalmaz. Ez a licenc rugalmasságot biztosít az NV-példány használata virtuális munkaállomás, egy-egy felhasználóhoz, vagy 25 párhuzamos felhasználó csatlakozhat a virtuális gép virtuális alkalmazás esetén.
 

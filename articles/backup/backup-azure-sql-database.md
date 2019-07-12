@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: tutorial
 ms.date: 06/18/2019
 ms.author: raynew
-ms.openlocfilehash: 5dbdeeba68ae75069b61bd6dc069279ec3c5e5de
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 8e7e5d871fa1bb557de4e6fce22658115bf0fe94
+ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67443014"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67806978"
 ---
 # <a name="about-sql-server-backup-in-azure-vms"></a>Információk az Azure-beli virtuális gépeken futó SQL Server Backupról
 
@@ -48,7 +48,7 @@ A Kezdés előtt ellenőrizze az alábbi:
 **Támogatott központi telepítések** | SQL piactér Azure-beli és nem Marketplace (manuálisan telepített SQL Server) virtuális gépek támogatottak.
 **Támogatott helyeken** | Délkelet-Ausztrália (ASE), Kelet-Ausztrália (AE) <br> Dél-Brazília (BRS)<br> Közép-Kanada (CNC), kelet-Kanada (CE)<br> Délkelet-Ázsia (SEA), Kelet-Ázsia (EA) <br> USA keleti RÉGIÓJA (EUS), USA keleti RÉGIÓJA (EUS2), USA nyugati középső RÉGIÓJA (WCUS), USA nyugati RÉGIÓJA (WUS); 2 USA nyugati RÉGIÓJA (WUS 2) 2 USA északi középső RÉGIÓJA (NCUS) USA középső RÉGIÓJA (CUS) déli középső RÉGIÓJA (SCUS) <br> Közép-India (INC), Dél-India (INS) <br> Kelet-japán (JPE), Nyugat-japán (JPW) <br> Korea középső régiója (KRC), Korea déli régiója (KRS) <br> Észak-Európa (NE), Nyugat-Európa <br> Egyesült Királyság déli régiója (UKS), az Egyesült Királyság nyugati régiója (UKW)
 **Támogatott operációs rendszerek** | Windows Server 2016, Windows Server 2012 R2, Windows Server 2012<br/><br/> Linux jelenleg nem támogatott.
-**Támogatott SQL Server-verziók** | Az SQL Server 2017; SQL Server 2016-ban, SQL Server 2014, SQL Server 2012-ben.<br/><br/> Enterprise, Standard, Web, Developer, Express.
+**Támogatott SQL Server-verziók** | SQL Server 2017 leírtaknak megfelelően [Itt](https://support.microsoft.com/lifecycle/search?alpha=SQL%20server%202017), SQL Server 2016 és a szervizcsomagok leírtaknak megfelelően [Itt](https://support.microsoft.com/lifecycle/search?alpha=SQL%20server%202016%20service%20pack), az SQL Server 2014, SQL Server 2012.<br/><br/> Enterprise, Standard, Web, Developer, Express.
 **Támogatott .NET-verziók** | .NET-keretrendszer 4.5.2-es verziója és az újabb verzióját a virtuális gépen
 
 ### <a name="support-for-sql-server-2008-and-sql-server-2008-r2"></a>Az SQL Server 2008 és az SQL Server 2008 R2 támogatása
@@ -95,7 +95,7 @@ Attól függően, a biztonsági mentési preferenciáját és a biztonsági ment
     --- | ---
     Korlátlan | Elsődleges
     Különbségi | Elsődleges
-    Napló |  Elsődleges
+    napló |  Elsődleges
     Csak másolatot teljes |  Elsődleges
 
 - **Biztonsági mentési preferenciáját: Csak másodlagos**
@@ -104,7 +104,7 @@ Attól függően, a biztonsági mentési preferenciáját és a biztonsági ment
 --- | ---
 Korlátlan | Elsődleges
 Különbségi | Elsődleges
-Napló |  Másodlagos
+napló |  Másodlagos
 Csak másolatot teljes |  Másodlagos
 
 - **Biztonsági mentési preferenciáját: Másodlagos**
@@ -113,7 +113,7 @@ Csak másolatot teljes |  Másodlagos
 --- | ---
 Korlátlan | Elsődleges
 Különbségi | Elsődleges
-Napló |  Másodlagos
+napló |  Másodlagos
 Csak másolatot teljes |  Másodlagos
 
 - **Nincs biztonsági mentés preferencia**
@@ -122,7 +122,7 @@ Csak másolatot teljes |  Másodlagos
 --- | ---
 Korlátlan | Elsődleges
 Különbségi | Elsődleges
-Napló |  Másodlagos
+napló |  Másodlagos
 Csak másolatot teljes |  Másodlagos
 
 ## <a name="set-vm-permissions"></a>Virtuális gép engedélyeinek beállítása

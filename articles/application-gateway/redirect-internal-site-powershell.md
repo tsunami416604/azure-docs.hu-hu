@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 7/13/2018
 ms.author: victorh
-ms.openlocfilehash: c887c5ea72a64828749bfc62756e59a8a22ea9df
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e29966473a467ddf9d7e683a9d198ca692eab338
+ms.sourcegitcommit: 1572b615c8f863be4986c23ea2ff7642b02bc605
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66729642"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67785749"
 ---
 # <a name="create-an-application-gateway-with-internal-redirection-using-azure-powershell"></a>Egy application gateway létrehozása belső átirányítás Azure PowerShell-lel
 
@@ -296,11 +296,11 @@ Get-AzPublicIPAddress -ResourceGroupName myResourceGroupAG -Name myAGPublicIPAdd
 
 ## <a name="test-the-application-gateway"></a>Az alkalmazásátjáró tesztelése
 
-Adja meg a tartománya nevét a böngésző címsorában. Például: http://www.contoso.com.
+Adja meg a tartománya nevét a böngésző címsorában. Például http\:/ / www.contoso.com.
 
 ![Contoso webhely tesztelése az alkalmazásátjáróban](./media/redirect-internal-site-powershell/application-gateway-iistest.png)
 
-Módosítsa a címet a tartomány, például http://www.contoso.org és megtekintheti, hogy a forgalom átirányította a térjen vissza a figyelő a www\. contoso.com.
+Módosítsa a címet a többi tartományát, például http\:/ / www.contoso.org, és meg kell megjelennie, hogy a forgalom átirányította a térjen vissza a figyelő a www\.contoso.com.
 
 ## <a name="next-steps"></a>További lépések
 

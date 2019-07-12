@@ -1,7 +1,7 @@
 ---
 title: 'PowerShell a rövid útmutató: Létrehozása, betöltése és lekérdezése az indexek az Azure Search REST API-k – Azure Search használatával'
 description: Azt ismerteti, hogyan-index létrehozása, adatok betöltése és lekérdezések futtatása a PowerShell használatával Invoke-RestMethod és az Azure Search REST API.
-ms.date: 06/10/2019
+ms.date: 07/11/2019
 author: heidisteen
 manager: cgronlun
 ms.author: heidist
@@ -10,12 +10,12 @@ ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.custom: seodec2018
-ms.openlocfilehash: afd73ee3461fff11019be887dbf3078963644c5b
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: c8a49fe5d334b5752b9272e480fb2502a980b0a4
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67485483"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67840171"
 ---
 # <a name="quickstart-create-an-azure-search-index-in-powershell-using-rest-apis"></a>Gyors útmutató: Az Azure Search-index létrehozása a PowerShell, REST API-k használatával
 > [!div class="op_single_selector"]
@@ -26,9 +26,9 @@ ms.locfileid: "67485483"
 > * [Portál](search-create-index-portal.md)
 > 
 
-Ez a cikk végigvezeti a folyamat létrehozása, betöltése és lekérdezése az Azure Search-index PowerShell-lel és a [Azure Search REST API-k](https://docs.microsoft.com/rest/api/searchservice/). Ez a cikk bemutatja, hogyan futtathat interaktív módon a PowerShell-parancsok. Azt is megteheti futtathat egy befejezett parancsfájlt. Ha szeretné letölteni, nyissa meg a [azure-search-powershell-minták](https://github.com/Azure-Samples/azure-search-powershell-samples/tree/master/Quickstart) tárház.
+Ez a cikk végigvezeti a folyamat létrehozása, betöltése és lekérdezése az Azure Search-index PowerShell-lel és a [Azure Search REST API-k](https://docs.microsoft.com/rest/api/searchservice/). Ez a cikk bemutatja, hogyan futtathat interaktív módon a PowerShell-parancsok. Lehetőségként [töltse le és a egy Powershell-parancsprogrammal](https://github.com/Azure-Samples/azure-search-powershell-samples/tree/master/Quickstart) , amely ugyanazokat a műveleteket végez.
 
-Ha nem rendelkezik Azure-előfizetéssel, létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a munka megkezdése előtt, majd [regisztrálhat az Azure Searchre](search-create-service-portal.md).
+Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -64,7 +64,7 @@ Minden kérelemhez szükséges halasztása minden kérelemnél a szolgáltatásn
 2. Hozzon létre egy **$url** objektum, amely meghatározza a szolgáltatás indexeli a gyűjteményben. Cserélje le egy érvényes keresési szolgáltatás a szolgáltatás neve (a SEARCH-szolgáltatás neve).
 
     ```powershell
-    $url = "https://<YOUR-SEARCH-SERVICE-NAME>.search.windows.net/indexes?api-version=2019-05-06"
+    $url = "https://<YOUR-SEARCH-SERVICE-NAME>.search.windows.net/indexes?api-version=2019-05-06&$select=name"
     ```
 
 3. Futtatás **Invoke-RestMethod** egy GET kérelmet küld a szolgáltatást, és ellenőrizze a kapcsolatot. Adjon hozzá **ConvertTo-Json** így megtekintheti a válaszokat küldi vissza a szolgáltatásból.
@@ -394,15 +394,11 @@ $url = 'https://<YOUR-SEARCH-SERVICE>.search.windows.net/indexes/hotels-quicksta
 ```
 ## <a name="clean-up"></a>A fölöslegessé vált elemek eltávolítása 
 
-Ha már nincs szüksége lesz rá az index törölni kell. Egy ingyenes szolgáltatás három indexre korlátozódik. Előfordulhat, hogy törölni kívánja azt nem használja aktívan, hogy a többi elolvasásával indexekkel.
+Dolgozik, a saját előfizetése, esetén célszerű egy projektet a végén, hogy azonosítani, hogy az erőforrások továbbra is kell-e létrehozott. Erőforrások bal oldali futó is költséget takaríthat meg költséget. Külön-külön törölje az erőforrást, vagy törölje az erőforráscsoportot törli az erőforrások teljes készletében.
 
-```powershell
-# Set the URI to the hotel index
-$url = 'https://mydemo.search.windows.net/indexes/hotels-quickstart?api-version=2019-05-06'
+Megkeresheti és kezelheti az erőforrásokat a portál használatával a **összes erőforrás** vagy **erőforráscsoportok** hivatkozásra a bal oldali navigációs ablaktáblán.
 
-# Delete the index
-Invoke-RestMethod -Uri $url -Headers $headers -Method Delete
-```
+Ha használ egy ingyenes szolgáltatás, ne feledje, hogy korlátozódnak három indexek, indexelők és adatforrások. A korlátja alatt maradjunk a portál egyes elemeire törölheti. 
 
 ## <a name="next-steps"></a>További lépések
 

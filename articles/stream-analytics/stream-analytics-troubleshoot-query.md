@@ -9,12 +9,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: 7a1e440a8dc8f518e272df9e126771df54390ed5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 586ddb237144daddf0cbfd19785fcba7658469a0
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60762388"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67621476"
 ---
 # <a name="troubleshoot-azure-stream-analytics-queries"></a>Az Azure Stream Analytics-lekérdezések hibaelhárítása
 
@@ -25,11 +25,11 @@ Ez a cikk ismerteti a gyakori problémák a Stream Analytics-lekérdezések és 
     - Az a **lekérdezés** lapon jelölje be **teszt**. A letöltött mintaadatok használatával [a lekérdezés teszteléséhez](stream-analytics-test-query.md). Vizsgáljon meg minden hibát, és próbálja meg kijavítani a őket.   
     - Emellett [tesztelje a lekérdezést közvetlenül a élő bemeneti](stream-analytics-live-data-local-testing.md) Stream Analytics tools for Visual Studio használatával.
 
-2.  Ha [ **Timestamp By**](https://msdn.microsoft.com/library/azure/mt573293.aspx), győződjön meg arról, hogy az események időbélyege későbbi, mint a [feladat kezdési ideje](stream-analytics-out-of-order-and-late-events.md).
+2.  Ha [ **Timestamp By**](https://docs.microsoft.com/stream-analytics-query/timestamp-by-azure-stream-analytics), győződjön meg arról, hogy az események időbélyege későbbi, mint a [feladat kezdési ideje](stream-analytics-out-of-order-and-late-events.md).
 
 3.  Megszüntetheti a közös buktatókat, például:
-    - A [ **ahol** ](https://msdn.microsoft.com/library/azure/dn835048.aspx) a lekérdezésben záradék kiszűrte az összes esemény meggátolja, hogy a kimenetet generált.
-    - A [ **CAST** ](https://msdn.microsoft.com/azure/stream-analytics/reference/cast-azure-stream-analytics) függvény futása, a feladat sikertelenségét okozó. Írja be a cast hibák elkerülése érdekében használja [ **TRY_CAST** ](https://msdn.microsoft.com/azure/stream-analytics/reference/try-cast-azure-stream-analytics) helyette.
+    - A [ **ahol** ](https://docs.microsoft.com/stream-analytics-query/where-azure-stream-analytics) a lekérdezésben záradék kiszűrte az összes esemény meggátolja, hogy a kimenetet generált.
+    - A [ **CAST** ](https://docs.microsoft.com/stream-analytics-query/cast-azure-stream-analytics) függvény futása, a feladat sikertelenségét okozó. Írja be a cast hibák elkerülése érdekében használja [ **TRY_CAST** ](https://docs.microsoft.com/stream-analytics-query/try-cast-azure-stream-analytics) helyette.
     - Ablakfüggvények használatakor, várjon, amíg a teljes ablak időtartamot a lekérdezés kimenetének megtekintéséhez.
     - Az események időbélyege megelőzi a feladat megkezdési ideje, és ezért azokat a rendszer eldobja.
 
@@ -99,5 +99,5 @@ További segítségre van szüksége, próbálja meg [Azure Stream Analytics-fó
 * [Az Azure Stream Analytics bemutatása](stream-analytics-introduction.md)
 * [Get started using Azure Stream Analytics](stream-analytics-real-time-fraud-detection.md) (Bevezetés az Azure Stream Analytics használatába)
 * [Scale Azure Stream Analytics jobs](stream-analytics-scale-jobs.md) (Azure Stream Analytics-feladatok méretezése)
-* [Azure Stream Analytics Query Language Reference](https://msdn.microsoft.com/library/azure/dn834998.aspx) (Referencia az Azure Stream Analytics lekérdezési nyelvhez)
+* [Azure Stream Analytics Query Language Reference](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference) (Referencia az Azure Stream Analytics lekérdezési nyelvhez)
 * [Az Azure Stream Analytics felügyeleti REST API referenciája](https://msdn.microsoft.com/library/azure/dn835031.aspx)

@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 06/24/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1dc537a631cd083da0f902fb4fcd44d47756eeba
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: 9bf8b4d696a3784988a92fc24de1ae6964786e07
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67471770"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67836436"
 ---
 # <a name="tutorial-integrate-cisco-webex-with-azure-active-directory"></a>Oktatóanyag: Cisco Webex integrálása az Azure Active Directoryval
 
@@ -133,13 +133,13 @@ Kövesse az alábbi lépéseket az Azure AD egyszeri bejelentkezés engedélyez�
 
 2. Válassza ki **beállítások** és a **hitelesítési** területén kattintson **módosítás**.
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/cisco-spark-tutorial/tutorial_cisco_spark_10.png)
+    ![Egyszeri bejelentkezés konfigurálása](./media/cisco-spark-tutorial/tutorial-cisco-spark-10.png)
   
 3. Válassza ki **integrálása egy 3. fél identitásszolgáltatót. (Speciális)**  , és folytassa a következő képernyőn.
 
 4. Az a **Idp-metaadatok importálása** oldalon, vagy húzza át, és dobja el az Azure ad-ben metaadatait tartalmazó fájl a lapra, vagy a fájl a böngésző lehetőséget használva keresse meg és az Azure AD-metaadatfájl feltöltésére. Ezután válassza ki **szükséges metaadatokat (biztonságosabb) a hitelesítésszolgáltató által aláírt tanúsítvány** kattintson **tovább**.
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/cisco-spark-tutorial/tutorial_cisco_spark_11.png)
+    ![Egyszeri bejelentkezés konfigurálása](./media/cisco-spark-tutorial/tutorial-cisco-spark-11.png)
 
 5. Válassza ki **SSO-kapcsolat tesztelése**, és a egy új böngészőlapon nyílik meg, amikor hitelesítéshez az Azure AD-bejelentkezés.
 
@@ -182,13 +182,13 @@ Ebben a szakaszban egy Cisco Webex Britta Simon nevű felhasználói hoz létre.
 
 2. Kattintson a **felhasználók** , majd **felhasználók kezelése**.
    
-    ![Egyszeri bejelentkezés konfigurálása](./media/cisco-spark-tutorial/tutorial_cisco_spark_12.png) 
+    ![Egyszeri bejelentkezés konfigurálása](./media/cisco-spark-tutorial/tutorial-cisco-spark-12.png) 
 
 3. Az a **kezelése felhasználó** ablakban válassza **manuális hozzáadása, vagy módosítsa a felhasználók** kattintson **tovább**.
 
 4. Válassza ki **nevek és E-mail-cím**. Ezután adja meg a szövegmezőben, hogy a következő:
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/cisco-spark-tutorial/tutorial_cisco_spark_13.png) 
+    ![Egyszeri bejelentkezés konfigurálása](./media/cisco-spark-tutorial/tutorial-cisco-spark-13.png) 
 
     a. Az a **Utónév** szövegmező, például a felhasználó utóneve típus **B**.
 

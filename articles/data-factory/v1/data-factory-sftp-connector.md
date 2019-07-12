@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 02/12/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: fe253feca6a22ee0177082e178f897c5b634bb3a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d35c4f410c29bba7848dde53d206cdd2ccd980ca
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61257196"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67836153"
 ---
 # <a name="move-data-from-an-sftp-server-using-azure-data-factory"></a>Adatok áthelyezése az Azure Data Factory használatával az SFTP-kiszolgálóról
 > [!div class="op_single_selector" title1="Válassza ki a Data Factory szolgáltatás használ:"]
@@ -44,7 +44,7 @@ Létrehozhat egy folyamatot egy másolási tevékenységgel az adatok áthelyez�
 
 - A folyamat létrehozásának legegyszerűbb módja az, hogy használja a **másolása varázsló**. Lásd: [oktatóanyag: Hozzon létre egy folyamatot a másolás varázsló használatával](data-factory-copy-data-wizard-tutorial.md) gyors bemutató létrehozása egy folyamatot az adatok másolása varázsló használatával.
 
-- A következő eszközök használatával hozzon létre egy folyamatot: **Az Azure portal**, **Visual Studio**, **Azure PowerShell-lel**, **Azure Resource Manager-sablon**, **.NET API**, és  **REST API-val**. Lásd: [másolási tevékenység oktatóanyagát](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) egy másolási tevékenységgel ellátott adatcsatorna létrehozása a részletes útmutatóját. Az SFTP-kiszolgáló az Azure Blob Storage-adatok másolása JSON-minták, lásd: [JSON-példa: Adatok másolása az SFTP-kiszolgáló az Azure blob](#json-example-copy-data-from-sftp-server-to-azure-blob) című szakaszát.
+- A következő eszközök használatával hozzon létre egy folyamatot: **A Visual Studio**, **Azure PowerShell-lel**, **Azure Resource Manager-sablon**, **.NET API**, és **REST API-val**. Lásd: [másolási tevékenység oktatóanyagát](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) egy másolási tevékenységgel ellátott adatcsatorna létrehozása a részletes útmutatóját. Az SFTP-kiszolgáló az Azure Blob Storage-adatok másolása JSON-minták, lásd: [JSON-példa: Adatok másolása az SFTP-kiszolgáló az Azure blob](#json-example-copy-data-from-sftp-server-to-azure-blob) című szakaszát.
 
 ## <a name="linked-service-properties"></a>Társított szolgáltatás tulajdonságai
 Az alábbi táblázatban a JSON-elemeket FTP-társított szolgáltatás leírását.
@@ -64,7 +64,7 @@ Az alábbi táblázatban a JSON-elemeket FTP-társított szolgáltatás leírás
 
 Alapszintű hitelesítés használatához állítsa `authenticationType` , `Basic`, és adja meg az SFTP-összekötővel az előző szakaszban bemutatott általános eszközök mellett a következő tulajdonságokkal:
 
-| Tulajdonság | Leírás | Kötelező |
+| Tulajdonság | Leírás | Szükséges |
 | --- | --- | --- |
 | username | SFTP-kiszolgálóhoz hozzáféréssel rendelkező felhasználó. |Igen |
 | password | A felhasználó (felhasználónév) jelszavát. | Igen |
@@ -114,7 +114,7 @@ Alapszintű hitelesítés használatához állítsa `authenticationType` , `Basi
 
 SSH nyilvános kulcsos hitelesítés használatához állítsa `authenticationType` , `SshPublicKey`, és adja meg az SFTP-összekötővel az előző szakaszban bemutatott általános eszközök mellett a következő tulajdonságokkal:
 
-| Tulajdonság | Leírás | Kötelező |
+| Tulajdonság | Leírás | Szükséges |
 | --- | --- | --- |
 | username |SFTP-kiszolgálóhoz hozzáféréssel rendelkező felhasználó |Igen |
 | privateKeyPath | Adja meg, hogy az átjáró hozzáférhet a titkos kulcs fájlját abszolút elérési útját. | Adja meg a `privateKeyPath` vagy `privateKeyContent`. <br><br> Csak akkor, ha az adatok másolása helyszíni SFTP-kiszolgálóra vonatkoznak. |
@@ -170,7 +170,7 @@ Szakaszok & adatkészletek definiálását tulajdonságainak teljes listáját l
 
 A **typeProperties** szakasz eltér az egyes adatkészlet. Az adatkészlet-típusra vonatkozó adatokat biztosít. A typeProperties szakasz egy adatkészlet típusú **FileShare** adatkészlet a következő tulajdonságokkal rendelkezik:
 
-| Tulajdonság | Leírás | Kötelező |
+| Tulajdonság | Leírás | Szükséges |
 | --- | --- | --- |
 | folderPath |Sub mappa elérési útját. Használja az escape-karaktert "\" a karakterláncban szereplő speciális karakterek. Tekintse meg a minta a társított szolgáltatás és adatkészlet-definíciók példákat.<br/><br/>Ennek a tulajdonságnak kombinálhatja **partitionBy** szeretné, hogy a mappa elérési utak alapján szelet kezdő és záró dátum-idő. |Igen |
 | fileName |Adja meg a fájl nevét a **folderPath** Ha azt szeretné, hogy a tábla egy adott fájlra a mappában. Ha nem ad meg semmilyen értéket ehhez a tulajdonsághoz, a tábla a mappában lévő összes fájlt mutat.<br/><br/>Ha a fájlnév nincs megadva a kimeneti adatkészletek, a létrehozott fájl neve a következő lenne ebben a formátumban: <br/><br/>`Data.<Guid>.txt` (Példa: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt |Nem |
@@ -225,7 +225,7 @@ Mivel a rendelkezésre álló tulajdonságok a typeProperties szakasz a tevéken
 Lásd: [fájl- és tömörítési formátumok az Azure Data Factoryban](data-factory-supported-file-and-compression-formats.md) cikkben talál.
 
 ## <a name="json-example-copy-data-from-sftp-server-to-azure-blob"></a>JSON-példa: Adatok másolása az SFTP-kiszolgáló az Azure-blobba
-Az alábbi példa mintául szolgáló JSON-definíciók, amelyek segítségével létrehoz egy folyamatot használatával tartalmaz [az Azure portal](data-factory-copy-activity-tutorial-using-azure-portal.md) vagy [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) vagy [Azure PowerShell-lel](data-factory-copy-activity-tutorial-using-powershell.md). Ezek bemutatják, hogyan SFTP forrásból származó adatok másolása az Azure Blob Storage. Azonban az adatok átmásolhatók **közvetlenül** bármelyik források a conditions stated above fogadóként valamelyik [Itt](data-factory-data-movement-activities.md#supported-data-stores-and-formats) a másolási tevékenységgel az Azure Data Factoryban.
+Az alábbi példa mintául szolgáló JSON-definíciók, amelyek segítségével létrehoz egy folyamatot használatával tartalmaz [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) vagy [Azure PowerShell-lel](data-factory-copy-activity-tutorial-using-powershell.md). Ezek bemutatják, hogyan SFTP forrásból származó adatok másolása az Azure Blob Storage. Azonban az adatok átmásolhatók **közvetlenül** bármelyik források a conditions stated above fogadóként valamelyik [Itt](data-factory-data-movement-activities.md#supported-data-stores-and-formats) a másolási tevékenységgel az Azure Data Factoryban.
 
 > [!IMPORTANT]
 > Ez a példa JSON-kódrészletek biztosít. Nem tartalmaz részletes útmutató az adat-előállító létrehozásához. Lásd: [adatok áthelyezése a helyszíni és a felhő között](data-factory-move-data-between-onprem-and-cloud.md) részletesen ismertető cikket.
