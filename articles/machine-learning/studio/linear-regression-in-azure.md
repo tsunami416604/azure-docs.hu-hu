@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/20/2017
-ms.openlocfilehash: f6b2f4ef9a4f3f1615081a422a16ea9f2e156571
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7db66f6f4efa5e48f2af9380115de8bcfb75cb86
+ms.sourcegitcommit: 1572b615c8f863be4986c23ea2ff7642b02bc605
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60861114"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67786675"
 ---
 # <a name="migrate-analytics-from-excel-to-azure-machine-learning-studio"></a>Az Excel analytics áttelepíteni az Azure Machine Learning Studióban
 
@@ -44,9 +44,9 @@ Azt a számított *átlagos abszolút % hiba* és a teljesítményadatok részek
 Hogy követni ezeket a lépéseket a kísérlet létrehozása a Studióban: 
 
 1. Az adatkészlet feltöltött csv-fájlként studióba (igen kis méretű fájl)
-2. Új kísérlet hoztunk létre, és a [Select Columns in Dataset] [ select-columns] modult, válassza ki a ugyanazon adatok szolgáltatásokat használt az Excelben 
-3. Használja a [Split Data] [ split] modul (az *relatív kifejezés* módban), az adatok ossza az azonos képzési adathalmazok alapján, mivel az Excelben 
-4. Végzett a kísérletezést a [lineáris regressziós] [ linear-regression] modul (alapértelmezett beállításai csak), dokumentált, és az eredményeket az Excelben regressziós modellt a képest
+2. Új kísérlet hoztunk létre, és a [Select Columns in Dataset][select-columns] modult, válassza ki a ugyanazon adatok szolgáltatásokat használt az Excelben 
+3. Használja a [Split Data][split] modul (az *relatív kifejezés* módban), az adatok ossza az azonos képzési adathalmazok alapján, mivel az Excelben 
+4. Végzett a kísérletezést a [lineáris regressziós][linear-regression] modul (alapértelmezett beállításai csak), dokumentált, és az eredményeket az Excelben regressziós modellt a képest
 
 ### <a name="review-initial-results"></a>Tekintse át a kezdeti eredményei
 Először az Excel-modell egyértelműen outperformed a Studio-modellek: 
@@ -61,7 +61,7 @@ Először az Excel-modell egyértelműen outperformed a Studio-modellek:
 
 Problémába ütköztünk a folyamat és az eredmények és az adatelemzők által a Machine Learning-csapat, amikor azok gyorsan megadott néhány hasznos tippeket. 
 
-* Használatakor a [lineáris regressziós] [ linear-regression] modul a Studióban, a két módszer találhatók:
+* Használatakor a [lineáris regressziós][linear-regression] modul a Studióban, a két módszer találhatók:
   * Online gradiens módszeres: A nagyobb méretű problémákat megfelelőbb lehet
   * Szokásos legkisebb négyzetek: Ez a legtöbb ember úgy, ha azok hall, lineáris regresszió módszer. A kis adatkészletekhez a szokásos legkisebb négyzetek több optimális választás lehet.
 * Vegye figyelembe, hogy a teljesítmény javítása érdekében L2 Regularizációs súly paraméter finomhangolása. Alapértelmezés szerint 0,001 van beállítva, de a kisméretű adatkészlet esetében azt állítsa 0,005 teljesítmény javítása érdekében. 
@@ -109,9 +109,9 @@ Nyissa meg a munkafüzetet, és másolja az előre meghatározott paraméterek a
 ![Sablon Excel-munkafüzethez csatlakozik az üzembe helyezett webszolgáltatáshoz](./media/linear-regression-in-azure/machine-learning-linear-regression-in-azure-2.png)
 
 ### <a name="optimization-and-further-experiments"></a>Optimalizálás és további kísérletek
-Most, hogy az alapterv kellett az Excel-modell, költöztünk előre a Machine Learning lineáris regressziós modell optimalizálása. A modul használtuk [szűrő-alapú szolgáltatás kiválasztása] [ filter-based-feature-selection] javítása a kezdeti adatok a kijelölt elemeket, és azt kommunikációnkhoz érhet el a teljesítmény fokozása 4.6 %-os Mean Absolute Error. A későbbi projektek használjuk ezt a szolgáltatást, amely menthető USA hét iterálás adatattribútumokat található a megfelelő bizonyos használandó modellezési funkcióit a. 
+Most, hogy az alapterv kellett az Excel-modell, költöztünk előre a Machine Learning lineáris regressziós modell optimalizálása. A modul használtuk [szűrő-alapú szolgáltatás kiválasztása][filter-based-feature-selection] javítása a kezdeti adatok a kijelölt elemeket, és azt kommunikációnkhoz érhet el a teljesítmény fokozása 4.6 %-os Mean Absolute Error. A későbbi projektek használjuk ezt a szolgáltatást, amely menthető USA hét iterálás adatattribútumokat található a megfelelő bizonyos használandó modellezési funkcióit a. 
 
-Ezután tervezzük további algoritmusok például belefoglalása [Bayes] [ bayesian-linear-regression] vagy [súlyozott döntési fák] [ boosted-decision-tree-regression] a kísérletben összehasonlítása teljesítmény. 
+Ezután tervezzük további algoritmusok például belefoglalása [Bayes][bayesian-linear-regression] or [Boosted Decision Trees][boosted-decision-tree-regression] teljesítményének összehasonlítását a kísérletben. 
 
 Ha azt szeretné, regressziós kísérletezhet, és próbálkozzon jó adathalmaz olyan numerikus attribútumok rengeteg energiát hatékonyság regressziós mintaadatkészlettel. Az adatkészlet a Studio mintaadatkészleteinek részeként van megadva. Tanulási modulok segítségével fűtés betöltése vagy hűtéssel terhelés előrejelzése. Az alábbi táblázatban a különböző regressziós teljesítményének összehasonlítását megtanulja az energiahatékonyságot adatkészlet előrejelzésére a cél változó Cooling terhelés alapján: 
 
@@ -123,9 +123,9 @@ Ha azt szeretné, regressziós kísérletezhet, és próbálkozzon jó adathalma
 | Lineáris regresszió (szokványos legkisebb négyzetek) |1.428273 |1.984461 |0.163767 |0.042074 |0.957926 |
 
 ## <a name="key-takeaways"></a>Kulcs Takeaways
-Hogy sokat által futó Excel regressziós és Studio kísérletek párhuzamosan. A modell létrehozása az Excel programban, és hasonlítsa össze a Machine Learning használatával [lineáris regressziós] [ linear-regression] USA megtudhatja, hogy a Studio, és hogy felderített fejlesztése érdekében a kijelölt adatok és a modell segítségével teljesítmény. 
+Hogy sokat által futó Excel regressziós és Studio kísérletek párhuzamosan. A modell létrehozása az Excel programban, és hasonlítsa össze a Machine Learning használatával [lineáris regressziós][linear-regression] segített USA megtudhatja, hogy Studio, és hogy felderített fejlesztése érdekében adatokat kiválasztása és a modell teljesítményét. 
 
-Is találhatók, hogy tanácsos használandó [szűrő-alapú szolgáltatás kiválasztása] [ filter-based-feature-selection] jövőbeli előrejelzési projektek felgyorsításához. Szolgáltatás kiválasztása alkalmaz az adatok, létrehozhat egy továbbfejlesztett modell Studio jobb általános teljesítményt. 
+Is találhatók, hogy tanácsos használandó [szűrő-alapú szolgáltatás kiválasztása][filter-based-feature-selection] jövőbeli előrejelzési projektek felgyorsításához. Szolgáltatás kiválasztása alkalmaz az adatok, létrehozhat egy továbbfejlesztett modell Studio jobb általános teljesítményt. 
 
 Lehetővé teszi a prediktív elemzési előrejelzés studióból Excel elviselhető transfer jelentősen növelheti sikeresen biztosítani az eredményeket egy széles körű üzleti felhasználó közönség számára lehetővé teszi. 
 
@@ -133,7 +133,7 @@ Lehetővé teszi a prediktív elemzési előrejelzés studióból Excel elviselh
 Íme néhány forrás, hogy használatával a regressziós: 
 
 * Regresszió az Excelben. Ha soha nem próbálta regressziós az Excelben, ez az oktatóanyag segítségével egyszerűen: [https://www.excel-easy.com/examples/regression.html](https://www.excel-easy.com/examples/regression.html)
-* Előrejelzés regressziós vs. Tyler Chessman írtam egy blog a cikk elmagyarázza, hogyan time series előrejelzési az Excelben, amely lineáris regressziós modell futtatása egy jó kezdőknek leírását tartalmazza. [http://sqlmag.com/sql-server-analysis-services/understanding-time-series-forecasting-concepts](http://sqlmag.com/sql-server-analysis-services/understanding-time-series-forecasting-concepts) 
+* Előrejelzés regressziós vs. Tyler Chessman írtam egy blog a cikk elmagyarázza, hogyan time series előrejelzési az Excelben, amely lineáris regressziós modell futtatása egy jó kezdőknek leírását tartalmazza. [https://www.itprotoday.com/sql-server/understanding-time-series-forecasting-concepts](https://www.itprotoday.com/sql-server/understanding-time-series-forecasting-concepts) 
 * Szokásos legalább Squares lineáris regressziós modell futtatása: Hibái, problémák és Alkalmazásmegoldásokra. A bevezetés és regressziós veszik górcső alá: [https://www.clockbackward.com/2009/06/18/ordinary-least-squares-linear-regression-flaws-problems-and-pitfalls/ ](https://www.clockbackward.com/2009/06/18/ordinary-least-squares-linear-regression-flaws-problems-and-pitfalls/)
 
 <!-- Module References -->

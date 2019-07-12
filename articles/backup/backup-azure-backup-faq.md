@@ -6,14 +6,14 @@ author: dcurwin
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
-ms.date: 01/08/2019
+ms.date: 07/07/2019
 ms.author: dacurwin
-ms.openlocfilehash: c4e79d166d92a88934e5c5330ca852da8900c6f3
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: aecad4273493cd573935c78cae51bd0f59461e2e
+ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67275550"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67806974"
 ---
 # <a name="azure-backup---frequently-asked-questions"></a>Az Azure Backup – gyakori kérdések
 Ez a cikk az Azure Backup szolgáltatással kapcsolatos gyakori kérdésekre ad választ.
@@ -51,37 +51,6 @@ Nem. Recovery Services-tárolót is csak tárolási beállításainak módosít�
 - Az ügynök használt Azure-beli mappák biztonsági mentése, olvassa el ezt [– gyakori kérdések](backup-azure-file-folder-backup-faq.md).
 
 
-## <a name="vmware-and-hyper-v-backup"></a>A VMware és Hyper-V biztonsági mentés
-
-### <a name="can-i-back-up-vmware-vcenter-servers-to-azure"></a>Tudok biztonsági mentést készíteni VMware vCenter-kiszolgálókról az Azure-ban?
-Igen. Az Azure Backup Server használatával biztonsági másolatot készíteni VMware vCenter-kiszolgáló és az ESXi-gazdagépek Azure-bA.
-
-- [További](backup-mabs-protection-matrix.md) kapcsolatos támogatott verziója.
-- [Az alábbi lépésekkel](backup-azure-backup-server-vmware.md) egy VMware-kiszolgálók biztonsági mentéséhez.
-
-### <a name="do-i-need-a-separate-license-to-recover-an-full-on-premises-vmwarehyper-v-cluster"></a>Kell helyreállítani egy teljes helyi VMware vagy Hyper-V fürt különálló licenc?
-Nem különálló van szüksége a licencelés VMware vagy Hyper-V-védelem.
-
-- Ha egy System Center-előfizető, VMware virtuális gépek védelme a System Center Data Protection Manager (DPM) használatával.
-- Ha egy System Center-ügyfél nem, az Azure Backup Server (használatalapú fizetés) használhatja a VMware virtuális gépek védelméhez.
-
-## <a name="dpm-and-azure-backup-server-backup"></a>A DPM és az Azure Backup Server biztonsági másolat
-
-### <a name="which-dpm-versions-are-supported"></a>Melyik DPM-verziók támogatottak?
-Támogatott DPM-verziók foglalja össze a [támogatási mátrix](backup-azure-dpm-introduction.md#prerequisites-and-limitations). Javasoljuk, hogy a DPM legújabb frissítéseinek a telepítéséhez, és futtassa a [legújabb verzió](https://aka.ms/azurebackup_agent) , az Azure Backup ügynököt a DPM-kiszolgálón.
-
-### <a name="can-i-register-the-server-to-multiple-vaults"></a>Regisztrálhatom a kiszolgálómat több tárolóhoz?
-Nem. A DPM vagy az Azure Backup server csak egy tárolóhoz regisztrálhatók.
-
-### <a name="can-i-use-azure-backup-server-to-create-a-bare-metal-recovery-bmr-backup-for-a-physical-server-br"></a>Használhatom az Azure Backup kiszolgálót egy operációs rendszer nélküli helyreállítás (BMR) biztonsági másolatának létrehozásához egy fizikai kiszolgálón? <br/>
-Igen.
-
-### <a name="can-i-use-dpm-to-back-up-apps-in-azure-stack"></a>A DPM használatával biztonsági másolatot készíteni az alkalmazásokat az Azure Stack?
-Nem. Az Azure Backup segítségével megvédheti az Azure Stack, az Azure Backup nem támogatja a DPM biztonsági mentése az Azure Stackben alkalmazások használatával.
-
-### <a name="if-ive-installed-azure-backup-agent-to-protect-my-files-and-folders-can-i-install-system-center-dpm-to-back-up-on-premises-workloads-to-azure"></a>Telepítettem az Azure Backup ügynököt a fájljaim és Mappáim védelme, ha telepíthető System Center DPM biztonsági mentése a helyszíni számítási feladatokat az Azure-bA?
-Igen. De kell először állítsa be a DPM, és ezután telepítheti az Azure Backup ügynököt.  Ebben a sorrendben összetevők telepítése biztosítja, hogy az Azure Backup ügynök működik a dpm-mel. Az ügynök telepítése a DPM telepítése előtt nem javasolt vagy támogatott.
-
 ## <a name="general-backup"></a>Általános biztonsági mentés
 
 ### <a name="are-there-limits-on-backup-scheduling"></a>Korlátozva van, a biztonsági mentés ütemezését?
@@ -118,7 +87,7 @@ Linux-alapú Azure virtuális gép biztonsági mentése, az Azure Backup támoga
 Méretek korlátok a következők:
 
 Az operációs rendszer/gép | Adatforrás maximális mérete
---- | --- 
+--- | ---
 Windows 8 vagy újabb | 54 400 GB
 Windows 7 |1700 GB
 Windows Server 2012 vagy újabb | 54 400 GB
@@ -185,7 +154,7 @@ Védett példányonként 9999 helyreállítási pontot hozhat létre. A védett 
 - Tudjon meg többet [biztonsági mentés és megőrzés](./backup-overview.md#backup-and-retention).
 
 
-### <a name="how-many-times-can-i-recovery-data-thats-backed-up-to-azure"></a>Hány alkalommal lehetőségeket az adatok helyreállítását az Azure-bA biztonsági mentésének?
+### <a name="how-many-times-can-i-recover-data-thats-backed-up-to-azure"></a>Hány alkalommal helyre tudom állítani az Azure-bA biztonsági mentésének adatait?
 Az Azure Backupból történő helyreállítások száma korlátlan.
 
 ### <a name="when-restoring-data-do-i-pay-for-the-egress-traffic-from-azure"></a>Az adatok visszaállításakor fizetnem kell az Azure-ból kimenő forgalomért?

@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 06/06/2019
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 2b0892fb107827cd9060a36855e9b8bf4416463c
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: d3c547fbc09aeb034df5b7ed579639e1ff4bc0b4
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67069436"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67705802"
 ---
 # <a name="azure-app-service-access-restrictions"></a>Az Azure App Service-ben korlátozza a hozzáférést #
 
@@ -98,7 +98,7 @@ Amellett, hogy az alkalmazás elérése, korlátozhatja is hozzáférést az scm
 
 ## <a name="programmatic-manipulation-of-access-restriction-rules"></a>Hozzáférési korlátozás szabályok szoftveres kezelése ##
 
-Jelenleg nem áll fenn parancssori felület vagy PowerShell esetében az új hozzáférési korlátozások funkciót, de az értékek állítható be manuálisan az alkalmazáskonfigurációt az erőforrás-kezelőben PUT művelet. Tegyük fel resources.azure.com használja, és szerkessze a ipSecurityRestrictions blokk hozzáadásához szükséges JSON.
+Jelenleg nem áll fenn parancssori felület vagy PowerShell esetében az új hozzáférési korlátozások funkciót, de a beállítások adhatók meg manuálisan az egy [Azure REST API](https://docs.microsoft.com/rest/api/azure/) PUT művelet az alkalmazáskonfigurációt az erőforrás-kezelőben. Tegyük fel resources.azure.com használja, és szerkessze a ipSecurityRestrictions blokk hozzáadásához szükséges JSON.
 
 További információ a Resource Managerben a hely a következő:
 
@@ -106,15 +106,19 @@ Management.Azure.com/subscriptions/**előfizetés-azonosító**/resourceGroups/*
 
 A korábbi példa JSON szintaxisa:
 
-    "ipSecurityRestrictions": [
-      {
-        "ipAddress": "131.107.159.0/24",
-        "action": "Allow",
-        "tag": "Default",
-        "priority": 100,
-        "name": "allowed access"
+    {
+      "properties": {
+        "ipSecurityRestrictions": [
+          {
+            "ipAddress": "122.133.144.0/24",
+            "action": "Allow",
+            "tag": "Default",
+            "priority": 100,
+            "name": "IP example rule"
+          }
+        ]
       }
-    ],
+    }
 
 ## <a name="function-app-ip-restrictions"></a>Függvény alkalmazás IP-korlátozások
 

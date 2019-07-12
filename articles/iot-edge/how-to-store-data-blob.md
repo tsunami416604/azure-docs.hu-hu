@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: dabaa06e224c6498c0080c4546c04f40e3919bb6
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: bb6cd43c77c31874115250d13f8d4067b3db7b36
+ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67448531"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67804977"
 ---
 # <a name="store-data-at-the-edge-with-azure-blob-storage-on-iot-edge-preview"></a>Az Azure Blob Storage a peremhálózaton data Store az IoT Edge-ben (előzetes verzió)
 
@@ -62,13 +62,14 @@ Egy Azure IoT Edge-eszköz:
 
 - Az Azure Blob Storage, az IoT Edge-modul a következő eszköz konfigurációkat támogatja:
 
-  | Operációs rendszer | Architektúra |
-  | ---------------- | ----- | ----- |
-  | Ubuntu Server 16.04 | AMD64 |
-  | Ubuntu Server 18.04 | AMD64 |
-  | Windows 10 IoT Enterprise | AMD64 |
-  | A Windows Server 2019 | AMD64 |
-  | A stretch Raspbian | ARM32 |
+  | Operációs rendszer | AMD64 | ARM32v7 | ARM64 |
+  | ---------------- | ----- | ----- | ---- |
+  | A stretch Raspbian | Nem | Igen | Nem |  
+  | Ubuntu Server 16.04 | Igen | Nem | Igen |
+  | Ubuntu Server 18.04 | Igen | Nem | Igen |
+  | A Windows 10 IoT Enterprise, a build 17763 | Igen | Nem | Nem |
+  | A Windows Server 2019, build 17763 | Igen | Nem | Nem |
+  
 
 Felhőerőforrások:
 

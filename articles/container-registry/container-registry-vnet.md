@@ -7,12 +7,12 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 07/01/2019
 ms.author: danlep
-ms.openlocfilehash: 06e45127f940e01de5f3ceeefc354014a88014db
-ms.sourcegitcommit: 6cb4dd784dd5a6c72edaff56cf6bcdcd8c579ee7
+ms.openlocfilehash: e6e0cdd73a5a2999f78599a06cc7ee397ecc3b4b
+ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67514396"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67806596"
 ---
 # <a name="restrict-access-to-an-azure-container-registry-using-an-azure-virtual-network-or-firewall-rules"></a>Azure-beli virtuális hálózathoz vagy a tűzfal-szabályok használata Azure container registry való hozzáférés korlátozása
 
@@ -39,6 +39,14 @@ Ez a cikk bemutatja a hálózati hozzáférési szabályok az férjenek hozzá a
 * Használata az Azure CLI lépéseket ebben a cikkben az Azure CLI 2.0.58 verzió vagy újabb verzió szükséges. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése][azure-cli].
 
 * Ha még nem rendelkezik egy tároló-beállításjegyzéket, hozzon létre egyet (prémium szintű Termékváltozat szükséges), és a egy képet például ügyfélleküldéses `hello-world` a Docker Hubból. Például a [az Azure portal][quickstart-portal] or the [Azure CLI][quickstart-cli] hozhat létre egy beállításjegyzéket. 
+
+* Ha azt szeretné, a virtuális hálózatok használatának másik Azure-előfizetést a beállításjegyzék-hozzáférés korlátozása, szeretne regisztrálni az erőforrás-szolgáltató az Azure Container Registry, az adott előfizetésben. Példa:
+
+  ```azurecli
+  az account set --subscription <Name or ID of subscription of virtual network>
+
+  az provider register --namespace Microsoft.ContainerRegistry
+  ``` 
 
 ## <a name="about-network-rules-for-a-container-registry"></a>Egy tároló-beállításjegyzék hálózati szabályokkal kapcsolatos
 

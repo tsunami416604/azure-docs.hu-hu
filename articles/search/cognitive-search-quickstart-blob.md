@@ -6,15 +6,15 @@ author: HeidiSteen
 services: search
 ms.service: search
 ms.topic: quickstart
-ms.date: 05/02/2019
+ms.date: 07/09/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: cb029530d2c6cdac82fd0d257e10717386eebf0e
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 8f3a1dadaddb423a83f4c3691a4b5747a5196d2a
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65022100"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67795337"
 ---
 # <a name="quickstart-create-an-ai-indexing-pipeline-using-cognitive-skills-in-azure-search"></a>Gyors útmutató: Kognitív képességek segítségével az Azure Search-AI indexelési folyamat létrehozása
 
@@ -63,7 +63,7 @@ Térjen vissza az Azure Search szolgáltatás irányítópult-oldalon, és katti
 
   ![Adatok importálása parancs](media/cognitive-search-quickstart-blob/import-data-cmd2.png)
 
-### <a name="step-1-create-a-data-source"></a>1. lépés: Adatforrás létrehozása
+### <a name="step-1-create-a-data-source"></a>1\. lépés: Adatforrás létrehozása
 
 A **csatlakozás az adatokhoz**, válassza a **Azure Blob storage**, válassza ki a fiókot és a létrehozott tárolóba. Adjon nevet az adatforrásnak, a többi beállításnál pedig használja az alapértelmezett értékeket. 
 
@@ -73,7 +73,7 @@ Folytassa a következő lapra.
 
   ![Cognitive Search következő oldal gomb](media/cognitive-search-quickstart-blob/next-button-add-cog-search.png)
 
-### <a name="step-2-add-cognitive-skills"></a>2. lépés: Kognitív képességek hozzáadása
+### <a name="step-2-add-cognitive-skills"></a>2\. lépés: Kognitív képességek hozzáadása
 
 Ezután adja hozzá a bővítési lépéseket az indexelési folyamathoz. Ha nem rendelkezik a Cognitive Services-erőforrás, akkor regisztráljon olyan díjmentes verziója, amely felkínálja 20 tranzakció naponta. A mintaadatok 14 fájlok áll, így a napi lefoglalt feladatpercek többnyire használható a varázsló futtatása után.
 
@@ -94,7 +94,7 @@ Ezután adja hozzá a bővítési lépéseket az indexelési folyamathoz. Ha nem
 > [!NOTE]
 > A természetes nyelvi feldolgozási képességek a mintaadatkészletbeli szöveges tartalmakon végeznek műveleteket. Mivel nem kiválasztjuk a OCR-beállítást, a minta adatkészletben JPEG, PNG és fájlok ebben a rövid útmutatóban nem dolgozható fel. 
 
-### <a name="step-3-configure-the-index"></a>3. lépés: Az index konfigurálása
+### <a name="step-3-configure-the-index"></a>3\. lépés: Az index konfigurálása
 
 A varázsló általában tudja kikövetkeztetni egy alapértelmezett indexet. Ebben a lépésben megtekintheti a létrehozott indexet sémát és potenciálisan a beállítások módosításához. Alább az alapértelmezett index létrejön a bemutató Blob adatkészletében.
 
@@ -118,7 +118,7 @@ Folytassa a következő lapra.
 
   ![Következő oldal indexelő létrehozása](media/cognitive-search-quickstart-blob/next-button-create-indexer.png)
 
-### <a name="step-4-configure-the-indexer"></a>4. lépés: Az indexelő konfigurálása
+### <a name="step-4-configure-the-indexer"></a>4\. lépés: Az indexelő konfigurálása
 
 Az indexelő az indexelési folyamatot irányító magas szintű erőforrás. Meghatározza az adatforrás nevét, egy célindex és a végrehajtás gyakoriságát. Az **Adatok importálása** varázsló mindig egy indexelőt eredményez, amely ismétlődő jelleggel futtatható.
 
@@ -166,11 +166,13 @@ Egy másik fontos alapelv szerint a képességek a bemeneti mezőkön végeznek 
 
 Végezetül megtanulta, hogy az eredmények az index lekérdezésével tekinthetők meg. Végeredményben az Azure Search egy kereshető indexet biztosít, amelynek lekérdezését az [egyszerű](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search) vagy a [teljes lekérdezési szintaxis](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search) használatával végezheti el. A bővített mezőket tartalmazó index ugyanúgy működik, akár az összes többi. Ha standard vagy [egyéni elemzőket](search-analyzers.md), [pontozási profilokat](https://docs.microsoft.com/rest/api/searchservice/add-scoring-profiles-to-a-search-index), [szinonimákat](search-synonyms.md), [jellemzőalapú szűrőket](search-filters-facets.md), földrajzihely-alapú keresést vagy egyéb Azure Search-szolgáltatásokat szeretne használni, természetesen azt is megteheti.
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up"></a>A fölöslegessé vált elemek eltávolítása
 
-Ha befejezte a szolgáltatással való ismerkedést, a fölöslegessé vált elemek eltávolítása leggyorsabban az Azure Search és az Azure Blob szolgáltatást tartalmazó erőforráscsoport törlésével végezhető el.  
+Dolgozik, a saját előfizetése, esetén célszerű egy projektet a végén, hogy azonosítani, hogy az erőforrások továbbra is kell-e létrehozott. Erőforrások bal oldali futó is költséget takaríthat meg költséget. Külön-külön törölje az erőforrást, vagy törölje az erőforráscsoportot törli az erőforrások teljes készletében.
 
-Feltéve, hogy mindkét szolgáltatást ugyanabban a csoportban helyezte üzembe, törölje az erőforráscsoportot, amellyel véglegesen eltávolíthatja annak teljes tartalmát, a gyakorlat során létrehozott összes szolgáltatást és tárolt tartalmat is beleértve. A portálon az erőforráscsoport neve az egyes szolgáltatások Áttekintés lapján szerepel.
+Megkeresheti és kezelheti az erőforrásokat a portál használatával a **összes erőforrás** vagy **erőforráscsoportok** hivatkozásra a bal oldali navigációs ablaktáblán.
+
+Ha használ egy ingyenes szolgáltatás, ne feledje, hogy korlátozódnak három indexek, indexelők és adatforrások. A korlátja alatt maradjunk a portál egyes elemeire törölheti. 
 
 ## <a name="next-steps"></a>További lépések
 

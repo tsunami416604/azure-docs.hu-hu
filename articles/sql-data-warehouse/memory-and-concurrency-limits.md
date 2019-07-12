@@ -6,16 +6,16 @@ author: ronortloff
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.subservice: workload management
+ms.subservice: workload-management
 ms.date: 03/15/2019
 ms.author: rortloff
 ms.reviewer: igorstan
-ms.openlocfilehash: 3bc1fef1842911e9b2cfb65b3c8cc72e4b615010
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0a92c032027e772020eda0b626a6dc6db024bf57
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66241265"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67595563"
 ---
 # <a name="memory-and-concurrency-limits-for-azure-sql-data-warehouse"></a>Az Azure SQL Data Warehouse a memória- és egyidejűségi korlátok
 Tekintse meg a különböző teljesítményszintek és az Azure SQL Data Warehouse erőforrásosztályok számára lefoglalt memória- és egyidejűségi korlátok. További információt, és a alkalmazni ezeket a képességeket a számítási feladat felügyeleti csomag: [erőforrásosztályok számítási feladatok kezeléséhez](resource-classes-for-workload-management.md). 

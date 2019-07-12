@@ -4,7 +4,7 @@ description: Hogyan használható a Visual Studio-előfizetés előnyeit üzembe
 services: virtual-machines-windows
 documentationcenter: ''
 author: cynthn
-manager: jeconnoc
+manager: gwallace
 editor: ''
 ms.assetid: 91c3880a-cede-44f1-ae25-f8f9f5b6eaa4
 ms.service: virtual-machines-windows
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 12/15/2017
 ms.author: cynthn
-ms.openlocfilehash: f791b17f2729af3efd2dff5d7884a168f8377154
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: fcd97b07416526d71d5bee9bc198eb0d912e1c55
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61403096"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67719155"
 ---
 # <a name="use-windows-client-in-azure-for-devtest-scenarios"></a>Windows-ügyfél használata az Azure-ban fejlesztési/tesztelési célra
 Használhatja a Windows 7, Windows 8, Windows 10 Enterprise (x64) az Azure-ban fejlesztési/tesztelési célra Ön által vagy egy megfelelő (korábbi nevén MSDN) a Visual Studio-előfizetéssel rendelkezik. Ez a cikk ismerteti a megfelelőségi feltételek Windows 7, Windows 8.1, Windows 10 Enterprise futtatásához az Azure és a következő Azure-katalógus-rendszerképek használata.

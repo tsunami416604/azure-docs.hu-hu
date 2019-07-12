@@ -7,17 +7,17 @@ ms.service: marketplace
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pabutler
-ms.openlocfilehash: 221f559dde2017c9b5d13dd4e06a140a6bcb5e2e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 91db369f9a2a0439bdbaf8600d1b329f0da00aa0
+ms.sourcegitcommit: 1572b615c8f863be4986c23ea2ff7642b02bc605
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64935424"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67786473"
 ---
 <a name="cloud-partner-portal-gdpr-compliance"></a>Cloud Partner Portal GDPR-megfelelőség
 ====================================
 
-[Általános adatvédelmi rendelet (GDPR)](https://ec.europa.eu/justice/data-protection/reform/index_en.htm)egy Európai Unión (EU) adatok védelme és az adatvédelmi törvény. Az általános adatvédelmi rendelet a vállalatokat szabályokat ír elő, a kormányzati szerveknek, non-profit és más szervezetek, termékek és szolgáltatások által személyeknek az EU, illetve, hogy adatokat gyűjthet és elemezhet EU-polgárokkal kapcsolatos vannak kötve.
+[Általános adatvédelmi rendelet (GDPR)](https://ec.europa.eu/info/law/law-topic/data-protection/reform_en/) egy Európai Unión (EU) adatok védelme és az adatvédelmi törvény. Az általános adatvédelmi rendelet a vállalatokat szabályokat ír elő, a kormányzati szerveknek, non-profit és más szervezetek, termékek és szolgáltatások által személyeknek az EU, illetve, hogy adatokat gyűjthet és elemezhet EU-polgárokkal kapcsolatos vannak kötve.
 
 Cloud Partner portálra az ügyfél a feldolgozást kapcsolatos részletes információkat tartalmaz, adatok és az adatok védelmére szolgáló védelmi intézkedéseket. Ez az információ a terméken belüli környezeteket keresztül érhető el.
 

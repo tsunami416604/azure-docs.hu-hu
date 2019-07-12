@@ -1,20 +1,20 @@
 ---
-title: 'Gyors útmutató: Az Azure Data Explorer adatok lekérdezése'
-description: Ennek a rövid útmutatónak a segítségével megtanulhatja, hogyan kérdezhet le és oszthat meg adatokat az Azure Data Explorerből.
+title: 'Gyors útmutató: Az Azure Data Explorer webes felhasználói felületén adatok lekérdezése'
+description: Ez a rövid útmutatóban megismerheti, hogyan lekérdezése, és megoszthatja az adatokat az Azure Data Explorer webes felhasználói felületén.
 author: orspod
 ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: quickstart
-ms.date: 09/24/2018
-ms.openlocfilehash: 6b371cf9aeb55a92fc72357ad7dc6b2cbddcc058
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 07/04/2019
+ms.openlocfilehash: 145e452a3a914e1026d6da11f2ce38e85fa724f0
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60775582"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67797193"
 ---
-# <a name="quickstart-query-data-in-azure-data-explorer"></a>Gyors útmutató: Az Azure Data Explorer adatok lekérdezése
+# <a name="quickstart-query-data-in-azure-data-explorer-web-ui"></a>Gyors útmutató: Az Azure Data Explorer webes felhasználói felületén adatok lekérdezése
 
 Az Azure Adatkezelő egy gyors és hatékonyan skálázható adatáttekintési szolgáltatás napló- és telemetriaadatokhoz. Az Azure Data Explorer biztosít egy webalkalmazást, amely lehetővé teszi lekérdezések futtatását és megosztását. Az alkalmazás elérhető az Azure Portalon és különálló webalkalmazásként is. Ebben az oktatóanyagban a különálló verziót használjuk, ami lehetővé teszi a csatlakozást egyszerre több fürthöz, illetve a lekérdezésekre mutató mélyhivatkozások megosztását.
 
@@ -191,5 +191,4 @@ Ebben a rövid útmutatóban nem hozott létre erőforrásokat, de ha el szeretn
 
 ## <a name="next-steps"></a>További lépések
 
-> [!div class="nextstepaction"]
-> [Lekérdezések írása az Azure Data Explorerhez](write-queries.md)
+[Lekérdezések írása az Azure Data Explorerhez](write-queries.md)

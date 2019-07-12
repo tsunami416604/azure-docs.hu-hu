@@ -10,102 +10,103 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 05/31/2019
+ms.date: 07/01/2019
 ms.author: mbullwin
-ms.openlocfilehash: 6567d7f2ebaab5bd7b5bc8fb7b5a62970f169161
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e3ec202ba6126b150fb78c76591682f163018661
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66476172"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67604546"
 ---
 # <a name="annotations-on-metric-charts-in-application-insights"></a>Jegyzetek a mérőszám-diagramok, az Application insights szolgáltatásban
 
-A jegyzetek [Metrikaböngésző](../../azure-monitor/app/metrics-explorer.md) diagramok megjelenítése, amelybe telepítette egy új létrehozást, vagy egyéb jelentős esemény történt. Vállalnak könnyen látható-e a módosítások volt-e az alkalmazás teljesítményére gyakorolt hatását. Ezek automatikusan létrehozhatók a [Azure fejlesztési és üzemeltetési szolgáltatásokat hozhat létre a rendszer](https://docs.microsoft.com/azure/devops/pipelines/tasks/). Hogy ez a jelző azt minden olyan esemény, például a powershellből létrehozásával is létrehozhat.
+A jegyzetek [Metrikaböngésző](../../azure-monitor/app/metrics-explorer.md) diagramok megjelenítése, amelybe telepítette egy új létrehozást, vagy egyéb jelentős események. Jegyzetek megkönnyítik a talál-e a módosítások volt-e az alkalmazás teljesítményére gyakorolt hatását. Ezek automatikusan létrehozhatók a [Azure folyamatok](https://docs.microsoft.com/azure/devops/pipelines/tasks/) rendszert hozhat létre. Hogy ez a jelző azt minden olyan esemény, például a powershellből létrehozásával is létrehozhat.
 
 > [!NOTE]
-> Ez a cikk tükrözi az elavult **klasszikus metrikák élmény**. Jegyzetek rendszer csak a klasszikus tapasztalatok és a jelenleg elérhető  **[munkafüzetek](../../azure-monitor/app/usage-workbooks.md)** . További információ az aktuális metrikák tapasztal, olvassuk [Ez a cikk](../../azure-monitor/platform/metrics-charts.md).
+> Ez a cikk tükrözi az elavult **klasszikus metrikák élmény**. Jegyzetek rendszer csak a klasszikus tapasztalatok és a jelenleg elérhető  **[munkafüzetek](../../azure-monitor/app/usage-workbooks.md)** . Aktuális metrikák funkciókkal kapcsolatos további tudnivalókért lásd: [speciális szolgáltatások az Azure Metrikaböngésző](../../azure-monitor/platform/metrics-charts.md).
 
 ![Jegyzetek – példa](./media/annotations/0-example.png)
 
-## <a name="release-annotations-with-azure-devops-services-build"></a>Kiadási jegyzetek az Azure DevOps-Services-build
+## <a name="release-annotations-with-azure-pipelines-build"></a>Kiadási jegyzetek az Azure-folyamatokat hozhat létre
 
-Kiadási jegyzetek érhetők el a felhőalapú Azure folyamatok szolgáltatás az Azure DevOps-szolgáltatásokkal.
+Kiadási jegyzetek érhetők el a felhőalapú Azure folyamatok szolgáltatás az Azure DevOps.
 
 ### <a name="install-the-annotations-extension-one-time"></a>A jegyzetek bővítmény (egyszer) telepítése
-Kiadási jegyzetek lehessen kell telepíteni a Visual Studio-piactéren elérhető számos Azure DevOps-szolgáltatásokkal bővítmény.
+Kiadási jegyzetek lehessen kell telepíteni a Visual Studio-piactéren elérhető számos Azure DevOps-bővítmény.
 
-1. Jelentkezzen be a [Azure DevOps-szolgáltatásokkal](https://azure.microsoft.com/services/devops/) projekt.
-2. A Visual Studio-piactéren [a kiadási jegyzetek bővítmény beszerzése](https://marketplace.visualstudio.com/items/ms-appinsights.appinsightsreleaseannotations), és adja hozzá az Azure DevOps-szolgáltatásokkal szervezet.
-
-![Válassza ki az Azure DevOps-szervezetekben, majd telepítse.](./media/annotations/1-install.png)
-
-Csak akkor kell elvégeznie egyszer Azure DevOps-szolgáltatásokkal szervezete számára. Kiadási jegyzetek is lehet konfigurálni a szervezet minden projekt.
+1. Jelentkezzen be a [Azure DevOps](https://azure.microsoft.com/services/devops/) projekt.
+   
+1. A Visual Studio-piactéren a [kiadási jegyzetek bővítmény](https://marketplace.visualstudio.com/items/ms-appinsights.appinsightsreleaseannotations) lapon, majd válassza ki és válassza ki az Azure DevOps-szervezet **telepítése** a bővítmény hozzáadása az Azure DevOps-szervezethez.
+   
+   ![Válassza ki az Azure DevOps-szervezetekben, és válassza ki a telepítés.](./media/annotations/1-install.png)
+   
+Csak ki kell telepíteni a bővítményt, az Azure DevOps-szervezetben. Kiadási jegyzetek minden projekt most konfigurálhatja a szervezetben.
 
 ### <a name="configure-release-annotations"></a>Kiadási jegyzetek konfigurálása
 
-Kell külön API-kulcs az egyes Azure DevOps-szolgáltatásokkal a kiadásban sablonok beszerzése.
+Hozzon létre egy külön API-kulcs Azure folyamatok a kiadásban sablonok.
 
-1. Jelentkezzen be a [Microsoft Azure-portálon](https://portal.azure.com) , és nyissa meg az Application Insights-erőforrást, amely az alkalmazás figyelésére. (Vagy [hozzon létre egyet most](../../azure-monitor/app/app-insights-overview.md), ha még nem tette,.)
-2. Nyissa meg a **API-hozzáférés** fülre, és másolja a **Application Insights azonosító**.
+1. Jelentkezzen be a [az Azure portal](https://portal.azure.com) , és nyissa meg az Application Insights-erőforrást, amely az alkalmazás figyelésére. Ha még nincs fiókja, vagy [hozzon létre egy új Application Insights-erőforrást](../../azure-monitor/app/app-insights-overview.md).
    
-    ![A Portal.Azure.com címen nyissa meg az Application Insights-erőforrást, és kattintson a beállítások. Nyissa meg az API-hozzáférés. Az Alkalmazásazonosító másolása](./media/annotations/2-app-id.png)
-
-4. Egy külön böngészőablakot nyissa meg a (vagy hozzon létre) a kiadási sablon, amely felügyeli az üzemelő példányok az Azure DevOps-szolgáltatásokkal.
+1. Nyissa meg a **API-hozzáférés** fülre, és másolja a **Application Insights azonosító**.
    
-    Adjon hozzá egy feladatot, és válassza ki az Application Insights kiadási jegyzet feladat a menüből.
+   ![API-hozzáférés alatt másolja az alkalmazás azonosítóját.](./media/annotations/2-app-id.png)
 
-   ![Kattintson a pluszjelre kattintva adja hozzá a feladat, és válassza ki az Application Insights kiadási jegyzet. Illessze be az Application Insights-azonosítót.](./media/annotations/3-add-task.png)
-
-    Illessze be a **Alkalmazásazonosító** , az API-hozzáférés lapon fájlból kimásolt.
+1. Nyissa meg egy külön böngészőablakot, vagy a kiadási sablon, amely kezeli az Azure-folyamatok üzemelő példányok létrehozása.
    
-    ![Illessze be az Application Insights-Azonosítót](./media/annotations/4-paste-app-id.png)
-
-5. Az Azure ablakban hozzon létre egy új API-kulcsot, és igénybe vehet egy példányát.
+1. Válassza ki **feladat hozzáadása**, majd válassza ki a **Application Insights kiadási jegyzet** feladat a menüből.
    
-    ![Az API-hozzáférés az Azure ablakban lapon kattintson az API-kulcs létrehozása.](./media/annotations/5-create-api-key.png)
-
-    ![A create API key lapon adja meg a megjegyzést, ellenőrizze az írási jegyzetek, majd kattintson a kulcs létrehozása. Másolja ki az új kulccsal.](./media/annotations/6-create-api-key.png)
-
-6. Kiadási sablon a konfigurációs lap megnyitásához.
+   ![Válassza ki a feladat hozzáadása, és válassza ki az Application Insights kiadási jegyzet.](./media/annotations/3-add-task.png)
    
-    Hozzon létre a változó definícióját `ApiKey`.
+1. A **Alkalmazásazonosító**, illessze be az Application Insights Azonosítót, amelyet másolt a **API-hozzáférés** fülre.
    
-    Illessze be a apikey tulajdonsággal végzett tesztelése változó definícióját az API-kulcsát.
+   ![Illessze be az Application Insights-Azonosítót](./media/annotations/4-paste-app-id.png)
    
-    ![Az Azure DevOps-szolgáltatásokkal ablakban válassza ki a változó lapot, és kattintson a Hozzáadás elemre. Állítsa be a nevét, apikey tulajdonsággal végzett tesztelése, és az érték illessze be az Ön hozza létre a kulcsot, és kattintson a lakat ikonra.](./media/annotations/7-paste-api-key.png)
-1. Végül **mentése** a kiadási folyamathoz.
+1. Vissza az Application Insights **API-hozzáférés** ablakban válassza **API-kulcs létrehozása**. 
+   
+   ![Az API-hozzáférés lapon válassza ki az API-kulcs létrehozása.](./media/annotations/5-create-api-key.png)
+   
+1. Az a **API-kulcs létrehozása** kiválasztása ablakban írja be egy leírást, **jegyzetek írása**, majd válassza ki **kulcs létrehozása**. Másolja ki az új kulccsal.
+   
+   ![A fő API létrehozása ablakban adjon meg egy leírást, írási jegyzetek, majd válassza ki és kulcs létrehozása.](./media/annotations/6-create-api-key.png)
+   
+1. Kiadási sablon ablakában a a **változók** lapon jelölje be **Hozzáadás** a változó definícióját az új API-kulcs létrehozása.
 
+1. Alatt **neve**, adja meg `ApiKey`, majd a **érték**, illessze be a kimásolt API-kulcsot a **API-hozzáférés** fülre.
+   
+   ![Az Azure DevOps változók lapon válassza a Hozzáadás, apikey tulajdonsággal végzett tesztelése, változó neve, és illessze be az API-kulcs értéke alapján.](./media/annotations/7-paste-api-key.png)
+   
+1. Válassza ki **mentése** a fő kiadási sablon ablak a sablon mentéséhez.
 
 ## <a name="view-annotations"></a>Megjegyzések megjelenítése
-Most, amikor a kiadási sablon használatával telepít egy új kiadás, jegyzet küld az Application Insightsba. A jegyzetek a Metrikaböngésző diagram fog megjelenni.
+Ezután, amikor a kiadási sablon használatával telepít egy új kiadás, jegyzet küld az Application Insights. A jegyzetek jelenik meg a diagramok **Metrikaböngésző**.
 
-Kattintson a bármely jelölőt (világos szürke nyíl), nyissa meg a részleteket a kiadást, beleértve a kérelmező, forráságat vezérlő, kiadási folyamatot, a környezet és más.
+Válassza ki bármelyik jelölőt (világos szürke nyíl), nyissa meg a kiadás kérelmező, a vezérlő forráságat, a kibocsátási folyamatok és a környezet adatait.
 
-![Kattintson bármely kiadási jelölőt.](./media/annotations/8-release.png)
+![Válassza ki a kiadási jelölőt.](./media/annotations/8-release.png)
 
 ## <a name="create-custom-annotations-from-powershell"></a>Egyéni jegyzetek létrehozása PowerShellben
-Jegyzetek bármely (nélkül az Azure DevOps Services) folyamat során is létrehozhat. 
+Használhatja a [CreateReleaseAnnotation](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/API/CreateReleaseAnnotation.ps1) GitHub jegyzetek valamilyen folyamat használata az Azure DevOps nélkül, például a PowerShell-parancsprogramot. 
 
+1. Egy helyi példányának [CreateReleaseAnnotation.ps1](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/API/CreateReleaseAnnotation.ps1).
+   
+1. Az előző eljárás a lépéseket követve az Application Insights Azonosítójának lekéréséhez és a egy API-kulcs létrehozása az Application insights **API-hozzáférés** fülre.
+   
+1. Hívja meg a PowerShell-parancsfájlt a következő kódra, a szög zárójeles helyőrzőket cserélje le az értékeket. A `-releaseProperties` megadása nem kötelező. 
+   
+   ```powershell
+   
+        .\CreateReleaseAnnotation.ps1 `
+         -applicationId "<applicationId>" `
+         -apiKey "<apiKey>" `
+         -releaseName "<releaseName>" `
+         -releaseProperties @{
+             "ReleaseDescription"="<a description>";
+             "TriggerBy"="<Your name>" }
+   ```
 
-1. Helyi másolatot készít a [Powershell-parancsfájlt a Githubról](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/API/CreateReleaseAnnotation.ps1).
-
-2. Az alkalmazás Azonosítójának lekéréséhez és API-kulcs létrehozása az API-hozzáférés lapról.
-
-3. Hívja a parancsfájl ehhez hasonló:
-
-```PS
-
-     .\CreateReleaseAnnotation.ps1 `
-      -applicationId "<applicationId>" `
-      -apiKey "<apiKey>" `
-      -releaseName "<myReleaseName>" `
-      -releaseProperties @{
-          "ReleaseDescription"="a description";
-          "TriggerBy"="My Name" }
-```
-
-Módosítsa a parancsfájlt, például az elmúlt jegyzetek könnyebbé vált a.
+A szkript, például az elmúlt jegyzetek módosíthatja.
 
 ## <a name="next-steps"></a>További lépések
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/11/2019
 ms.author: v-mohabe
-ms.openlocfilehash: 04cfe489e9eea53bf58dd64e0eac3e5a95033bcc
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ca96ba4c6b0de8ad39866a0783e7091fb4755164
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65966838"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67706235"
 ---
 # <a name="azure-security-center-planning-and-operations-guide"></a>Útmutató az Azure Security Center tervezéséhez és működtetéséhez
 Ez az útmutató olyan informatikusok, megoldástervezők, adatbiztonsági elemzők és felhőszolgáltatás-rendszergazdák számára készült, akik az Azure Security Center egész vállalatra kiterjedő bevezetését tervezik.
@@ -87,21 +87,21 @@ Az előző ábrán felsorolt személyek esetében a következő szerepköralapú
 
 **Bálint (számítási feladatok felelőse)**
 
-* Erőforráscsoport: tulajdonos/közreműködő
+* Erőforráscsoport tulajdonosa vagy Közreműködője
 
 **András (számítástechnikai biztonsági felelős)**
 
-* Előfizetés: tulajdonos/közreműködő vagy biztonsági rendszergazda
+* Előfizetés tulajdonosa vagy Közreműködője vagy biztonsági rendszergazda
 
 **Judit (biztonsági műveletek felelőse)**
 
 * Előfizetés: olvasó vagy biztonsági rendszergazda a riasztások megtekintéséhez
-* Előfizetés: tulajdonos/közreműködő vagy biztonsági rendszergazda a riasztások elvetése érdekében
+* Előfizetés tulajdonosa vagy Közreműködője vagy biztonsági rendszergazda riasztások elvetése érdekében
 
 **Sándor (biztonsági elemző)**
 
 * Előfizetés: olvasó a riasztások megtekintéséhez
-* Előfizetés: tulajdonos/közreműködő a riasztások elvetése érdekében
+* Előfizetés tulajdonosa vagy Közreműködője riasztások elvetése érdekében
 * Előfordulhat, hogy hozzáférés szükséges a munkaterülethez
 
 Egyéb megfontolandó szempontok:
@@ -134,7 +134,7 @@ A Security Center automatikusan létrehoz egy alapértelmezett biztonsági szab�
 A biztonsági szabályzatok konfigurálása előtt mindig olvassa el a [biztonsági javaslatokat](https://docs.microsoft.com/azure/security-center/security-center-recommendations), és döntse el, hogy ezek a szabályzatok megfelelőek-e az Ön által használt előfizetésekhez és erőforráscsoportokhoz. Ezenkívül fontos, hogy tisztában legyen azzal, milyen lépéseket kell tennie a biztonsági javaslatok kezelése érdekében, és a szervezeténél ki az új javaslatok monitorozásának és a szükséges lépések megtételének a felelőse.
 
 ## <a name="data-collection-and-storage"></a>Adatgyűjtés és -tárolás
-Az Azure Security Center a Microsoft Monitoring Agentet használja – ez ugyanaz az ügynök a biztonsági adatok gyűjtésére a virtuális gépek az Azure Monitor szolgáltatás – által használt. Az ebből az ügynökből [gyűjtött adatokat](https://docs.microsoft.com/azure/security-center/security-center-enable-data-collection) a rendszer a Log Analytics munkaterület(ek)en tárolja.
+Az Azure Security Center a Microsoft Monitoring Agentet használja – ez ugyanaz az ügynök a biztonsági adatok gyűjtésére a virtuális gépek az Azure Monitor szolgáltatás – által használt. Az ebből az ügynökből [gyűjtött adatokat](https://docs.microsoft.com/azure/security-center/security-center-enable-data-collection) a rendszer a Log Analytics-munkaterület(ek)en tárolja.
 
 ### <a name="agent"></a>Ügynök
 

@@ -7,19 +7,19 @@ author: mdgattuso
 manager: danielgi
 editor: ''
 ms.assetid: af1cddff-78d8-476b-a9d0-8c2164e4de5d
-ms.service: cdn
+ms.service: azure-cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 02/28/2018
 ms.author: magattus
-ms.openlocfilehash: afe959e80b339db5112fa97fd79d0528390e3954
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 9f185f58e1d33a3985777cb22bc7578f9f2c4541
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60637005"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67593804"
 ---
 # <a name="improve-performance-by-compressing-files-in-azure-cdn"></a>Teljesítmény javítása a fájlok tömörítésével az Azure CDN-ben
 Fájlok tömörítési a egyszerű és hatékony módszer fájl átviteli sebességének növelése és a egy fájl méretének csökkentésével, a kiszolgálóról továbbítás előtt oldal betöltési teljesítmény érdekében. Fájlok tömörítési adatforgalmi költségek csökkentése és a egy rugalmasabb ügyfélkapcsolatok kialakítását élményt biztosíthat a felhasználóknak.

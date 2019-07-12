@@ -13,18 +13,17 @@ ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 49d6a06c2cd13c240a0843ef29fd6cc832c30384
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: e2f4f214523d9d42761323ec02ca6dae4c20bba6
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66122579"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67839429"
 ---
 # <a name="tutorial-create-a-pipeline-with-copy-activity-using-net-api"></a>Oktatóanyag: .NET API használatával másolási tevékenységgel rendelkező folyamat létrehozása
 > [!div class="op_single_selector"]
 > * [Áttekintés és előfeltételek](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
 > * [Másolás varázsló](data-factory-copy-data-wizard-tutorial.md)
-> * [Azure Portal](data-factory-copy-activity-tutorial-using-azure-portal.md)
 > * [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)
 > * [PowerShell](data-factory-copy-activity-tutorial-using-powershell.md)
 > * [Azure Resource Manager-sablon](data-factory-copy-activity-tutorial-using-azure-resource-manager-template.md)
@@ -136,7 +135,7 @@ A fenti lépések elvégzésével beszereztük az alábbi négy értéket:
    2. Futtassa a következő parancsot az Azure Active Directory-csomag telepítéséhez (használja az Active Directory API-t a kódban): `Install-Package Microsoft.IdentityModel.Clients.ActiveDirectory -Version 2.19.208020213`
 4. Adja hozzá az alábbi **appSetttings** részt az **App.config** fájlhoz. Ezek a beállítások segédmetódus használhatók: **GetAuthorizationHeader**.
 
-    Az **&lt;Application ID&gt;**, **&lt;Password&gt;**, **&lt;Subscription ID&gt;** és **&lt;tenant ID&gt;** értékek helyére írja be saját értékeit.
+    Az **&lt;Application ID&gt;** , **&lt;Password&gt;** , **&lt;Subscription ID&gt;** és **&lt;tenant ID&gt;** értékek helyére írja be saját értékeit.
 
     ```xml
     <?xml version="1.0" encoding="utf-8" ?>

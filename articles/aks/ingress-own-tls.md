@@ -2,34 +2,34 @@
 title: A saját TLS-tanúsítványokat használnak a bejövő forgalom az Azure Kubernetes Service (AKS)-fürt
 description: Ismerje meg, hogyan telepítse és konfigurálja az NGINX bejövőforgalom-vezérlőt, amely a saját tanúsítványokat használ az Azure Kubernetes Service (AKS)-fürtben.
 services: container-service
-author: iainfoulds
+author: mlearned
 ms.service: container-service
 ms.topic: article
 ms.date: 05/24/2019
-ms.author: iainfou
-ms.openlocfilehash: eebc484351714c7a30f65e61434076fcde175a8d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: mlearned
+ms.openlocfilehash: 2b30ade9971ede6f9544b618504033553392e9bd
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66430940"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67615439"
 ---
 # <a name="create-an-https-ingress-controller-and-use-your-own-tls-certificates-on-azure-kubernetes-service-aks"></a>Hozzon létre egy HTTPS bejövőforgalom-vezérlőt, és a saját TLS-tanúsítványok használata az Azure Kubernetes Service (AKS)
 
 Bejövőforgalom-vezérlőjéhez olyan szoftver, amely biztosítja a fordított proxy, konfigurálható forgalom-útválasztást és a TLS-lezárást biztosít Kubernetes-szolgáltatás. Kubernetes bejövő erőforrások segítségével konfigurálhatja a bejövő szabályok és útvonalak a Kubernetes-szolgáltatás. A bejövőforgalom-vezérlőt, és a bejövő szabályok használatával az egyetlen IP-cím irányíthatja a forgalmat több szolgáltatást a Kubernetes-fürtben használható.
 
-Ez a cikk bemutatja, hogyan helyezhet üzembe a [NGINX bejövőforgalom-vezérlőjéhez] [ nginx-ingress] Azure Kubernetes Service (AKS)-fürtben. A saját tanúsítványok előállításához, és hozzon létre egy Kubernetes titkos használatra a bejövő forgalom irányítása. Végül a két alkalmazás az AKS-fürtöt, amelyek mindegyike érhető el egyetlen IP-címen keresztül a futnak.
+Ez a cikk bemutatja, hogyan helyezhet üzembe a [NGINX bejövőforgalom-vezérlőjéhez][nginx-ingress] Azure Kubernetes Service (AKS)-fürtben. A saját tanúsítványok előállításához, és hozzon létre egy Kubernetes titkos használatra a bejövő forgalom irányítása. Végül a két alkalmazás az AKS-fürtöt, amelyek mindegyike érhető el egyetlen IP-címen keresztül a futnak.
 
 További lehetőségek:
 
 - [Hozzon létre egy alapszintű bejövőforgalom-vezérlőjéhez külső hálózatok közötti kapcsolatokkal][aks-ingress-basic]
 - [A HTTP-kérelem útválasztási bővítmény engedélyezése][aks-http-app-routing]
 - [Hozzon létre egy bejövőforgalom-vezérlőt, amely egy belső, saját hálózat és IP-cím][aks-ingress-internal]
-- Hozzon létre egy bejövőforgalom-vezérlőt használó hozzunk titkosítása automatikusan létrehozni a TLS-tanúsítványok [dinamikus nyilvános IP-címmel rendelkező] [ aks-ingress-tls] vagy [egy statikus nyilvános IP-címmel][aks-ingress-static-tls]
+- Hozzon létre egy bejövőforgalom-vezérlőt használó hozzunk titkosítása automatikusan létrehozni a TLS-tanúsítványok [dinamikus nyilvános IP-címmel][aks-ingress-tls] or [with a static public IP address][aks-ingress-static-tls]
 
 ## <a name="before-you-begin"></a>Előkészületek
 
-Ez a cikk az NGINX bejövőforgalom-vezérlőt, és a egy mintául szolgáló webalkalmazás telepítése Helm használ. Szüksége lesz a Helm belül az AKS-fürt inicializálva, és a tiller valóban szolgáltatásfiók használatával. Győződjön meg arról, hogy a Helm legújabb kiadását használja. Frissítési utasításokért lásd: a [Helm telepítése docs][helm-install]. Konfigurálása és a Helm használatával további információkért lásd: [telepíthet alkalmazásokat a Helm használatával az Azure Kubernetes Service (AKS)][use-helm].
+Ez a cikk az NGINX bejövőforgalom-vezérlőt, és a egy mintául szolgáló webalkalmazás telepítése Helm használ. Szüksége lesz a Helm belül az AKS-fürt inicializálva, és a tiller valóban szolgáltatásfiók használatával. Győződjön meg arról, hogy a Helm legújabb kiadását használja. Frissítési utasításokért lásd: a [Helm telepítése docs][helm-install]. For more information on configuring and using Helm, see [Install applications with Helm in Azure Kubernetes Service (AKS)][use-helm].
 
 Ez a cikk is szükséges, hogy futnak-e az Azure CLI 2.0.64 verzió vagy újabb. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése][azure-cli-install].
 
@@ -43,7 +43,7 @@ A bejövőforgalom-vezérlőt is kell ütemezni egy Linux-csomóponton. A Window
 > Az alábbi példa létrehoz egy Kubernetes-névtér nevű bejövő erőforrások *bejövő – alapszintű*. Adjon meg egy névteret a saját környezetben, igény szerint. Ha az AKS-fürt nem RBAC engedélyezve, vegye fel `--set rbac.create=false` a Helm parancsokhoz.
 
 > [!TIP]
-> Ha engedélyezni szeretné [ügyfél forrás IP-megőrzését] [ client-source-ip] a fürtben lévő tárolók kérelmeket, vegye fel az `--set controller.service.externalTrafficPolicy=Local` parancs a Helm telepítse. Az ügyfél forrásának IP tárolja a kérelem fejléce alatt *X – továbbított – a*. Az ügyfél forrás IP megőrzését engedélyezve bejövőforgalom-vezérlőjéhez használatakor SSL átmenő nem fog működni.
+> Ha engedélyezni szeretné [ügyfél forrás IP-megőrzését][client-source-ip] a fürtben lévő tárolók kérelmeket, vegye fel az `--set controller.service.externalTrafficPolicy=Local` parancs a Helm telepítse. Az ügyfél forrásának IP tárolja a kérelem fejléce alatt *X – továbbított – a*. Az ügyfél forrás IP megőrzését engedélyezve bejövőforgalom-vezérlőjéhez használatakor SSL átmenő nem fog működni.
 
 ```console
 # Create a namespace for your ingress resources
@@ -301,7 +301,7 @@ További lehetőségek:
 - [Hozzon létre egy alapszintű bejövőforgalom-vezérlőjéhez külső hálózatok közötti kapcsolatokkal][aks-ingress-basic]
 - [A HTTP-kérelem útválasztási bővítmény engedélyezése][aks-http-app-routing]
 - [Hozzon létre egy bejövőforgalom-vezérlőt, amely egy belső, saját hálózat és IP-cím][aks-ingress-internal]
-- Hozzon létre egy bejövőforgalom-vezérlőt használó hozzunk titkosítása automatikusan létrehozni a TLS-tanúsítványok [dinamikus nyilvános IP-címmel rendelkező] [ aks-ingress-tls] vagy [egy statikus nyilvános IP-címmel][aks-ingress-static-tls]
+- Hozzon létre egy bejövőforgalom-vezérlőt használó hozzunk titkosítása automatikusan létrehozni a TLS-tanúsítványok [dinamikus nyilvános IP-címmel][aks-ingress-tls] or [with a static public IP address][aks-ingress-static-tls]
 
 <!-- LINKS - external -->
 [helm-cli]: https://docs.microsoft.com/azure/aks/kubernetes-helm

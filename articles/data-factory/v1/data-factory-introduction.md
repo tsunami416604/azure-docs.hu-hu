@@ -13,15 +13,15 @@ ms.topic: overview
 ms.date: 01/22/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 9bf8c51fda6985f88ecffa60b32c1c62e364a511
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: aed073e7d65f193c4123106ba1ae3f4f442965e1
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60825057"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67836315"
 ---
 # <a name="introduction-to-azure-data-factory"></a>Az Azure Data Factory bemutatása 
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="Válassza ki a Data Factory szolgáltatás használ:"]
 > * [1-es verzió](data-factory-introduction.md)
 > * [2-es verzió (aktuális verzió)](../introduction.md)
 
@@ -133,7 +133,6 @@ Tegyük fel például, hogy számítási környezetei, például az Azure HDInsi
 ## <a name="get-started-with-creating-a-pipeline"></a>Bevezetés a folyamatok létrehozásába
 Az Azure Data Factoryben a következő eszközök és API-k használhatók adatfolyamatok létrehozására: 
 
-- Azure Portal
 - Visual Studio
 - PowerShell
 - .NET API

@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
 ms.date: 12/19/2018
-ms.author: martincoetzer
+ms.author: martinco
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ff59b93603af61fd8ea571966a3c43a06929ae04
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 831ba47ea4e999219a6d8cf34cb5fb0fdcd1ead8
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67113474"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67594959"
 ---
 # <a name="create-a-resilient-access-control-management-strategy-with-azure-active-directory"></a>Hozzon létre egy rugalmas hozzáférés-vezérlési felügyeleti stratégia az Azure Active Directoryval
 
@@ -143,7 +143,7 @@ Az alábbi példában: **A példában A - hozzáférés alapvető fontosságú c
   * Név: EM001 - VÉSZHELYZET ENGEDÉLYEZÉSE: MFA megszakítás [1/4] – Exchange, SharePoint – hibrid Azure AD-csatlakozás megkövetelése
   * Felhasználók és csoportok: ContingencyAccess tartalmazza. CoreAdmins és EmergencyAccess kizárása
   * Felhőalapú alkalmazások: Az Exchange Online és SharePoint Online
-  * Feltételek: Bármely
+  * Feltételek: Any
   * Hozzáférés megadása: Tartományhoz csatlakoztatott megkövetelése
   * Állapot: Letiltva
 * 2\. szabályzat: A platformokat tiltsa le a nem Windows
@@ -185,7 +185,7 @@ A következő példában **példa B - Contingency feltételes hozzáférési sza
   * Név: EM001 - VÉSZHELYZET ENGEDÉLYEZÉSE: Eszköz megfelelőségi megszakítás [1/2] – a Salesforce - kivételével SalesforceContingency letiltása minden felhasználó
   * Felhasználók és csoportok: Minden felhasználónak bele. SalesAdmins és SalesforceContingency kizárása
   * Felhőalapú alkalmazások: Salesforce-ban.
-  * Feltételek: None
+  * Feltételek: Nincsenek
   * Hozzáférés megadása: Letiltás
   * Állapot: Letiltva
 * 2\. szabályzat: Az értékesítési csoportnak bármilyen platformon kívül (a támadási felületének csökkentése érdekében) mobile letiltása

@@ -6,12 +6,12 @@ ms.service: data-share
 ms.topic: tutorial
 ms.date: 07/10/2019
 ms.author: joanpo
-ms.openlocfilehash: 2dc4994d88fc03c23a6d5722d6018c926e7d6b8c
-ms.sourcegitcommit: 1572b615c8f863be4986c23ea2ff7642b02bc605
+ms.openlocfilehash: fc63c1a0b3b496de8e5ecea58f79f1db9d872e80
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67788163"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67838442"
 ---
 # <a name="tutorial-accept-and-receive-data-using-azure-data-share-preview"></a>Oktatóanyag: Fogadja el, és az Azure Data megosztás előzetes verzió használata az adatok fogadása
 
@@ -31,6 +31,8 @@ Győződjön meg arról, hogy teljesüljenek teljes egy adatok megosztási megh�
 * Azure-előfizetés: Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/) a virtuális gép létrehozásának megkezdése előtt.
 * Azure Storage-fiók: Ha még nem rendelkezik egy, létrehozhat egy [Azure Storage-fiók](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account). 
 * Egy Data megosztási meghívót: Egy című témát a Microsoft Azure meghívót "az Azure az adatok megosztása meghívó **<yourdataprovider@domain.com>** ".
+* Szerepkör-hozzárendelés hozzáadása a storage-fiókhoz, amely szerepel az engedélyt a *Microsoft.Authorization/role hozzárendelések írható* engedéllyel. A tulajdonosi szerepkör létezik ezzel az engedéllyel. 
+* Erőforrás-szolgáltatói regisztráció Microsoft.DataShare Tekintse meg a [Azure erőforrás-szolgáltatók](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-supported-services) dokumentációjában, hogyan teheti ezt meg. 
 
 > [!IMPORTANT]
 > Fogadja el, és a egy Azure-adatok megosztása fogadására, először regisztrálnia kell az Microsoft.DataShare erőforrás-szolgáltató, és fogadja el az adatokat tároló tárfiók tulajdonosának kell lennie. Kövesse az utasításokat, dokumentált [hibaelhárítása Azure-adatok megosztása – előzetes](data-share-troubleshoot.md) az adatok megosztása erőforrás-szolgáltató regisztrálása, valamint a storage-fiók tulajdonosai adja hozzá saját magát. 

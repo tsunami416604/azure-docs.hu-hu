@@ -7,12 +7,12 @@ ms.service: bastion
 ms.topic: conceptual
 ms.date: 06/25/2019
 ms.author: cherylmc
-ms.openlocfilehash: 4a52383e6ab24c6ae1e2be0b67293d65dfa04466
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: 65116ebbd6a66241a5b35a39f3dfb8f826a3745f
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67477880"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67594274"
 ---
 # <a name="create-an-azure-bastion-host-preview"></a>Hozzon létre egy Azure bástyagazdagép (előzetes verzió)
 
@@ -57,7 +57,7 @@ Ez a szakasz segítséget nyújt a hozzon létre egy új megerősített Azure-er
     * **Alhálózat**: Az alhálózat, amelyhez az új megerősített gazdagép erőforrást szeretné telepíteni a virtuális hálózaton. Létre kell hoznia egy alhálózatot a név-érték használatával **AzureBastionSubnet**. Ez az érték lehetővé teszi, hogy az Azure tudja, hogy melyik alhálózatot a megerősített erőforrások üzembe helyezéséhez. Ez eltér egy átjáró-alhálózatot. Erősen ajánlott legalább/27 vagy nagyobb alhálózat használata (/ 27, / 26 stb). Hozzon létre a **AzureBastionSubnet** minden olyan hálózati biztonsági csoportok nélkül irányíthatja a táblák vagy delegálásokat.
     * **Nyilvános IP-cím**: A nyilvános IP-címét a megerősített erőforrás, amelyen az RDP/SSH (a 443-as porton) keresztül kell elérnie. Hozzon létre egy új nyilvános IP-címet, vagy használjon egy meglévőt. A nyilvános IP-címet a megerősített erőforrást hoz létre ugyanabban a régióban kell lennie.
     * **Nyilvános IP-cím neve**: A nyilvános IP-cím erőforrás neve.
-    * **Nyilvános IP-cím Termékváltozat**: Alapértelmezés szerint a előre feltöltve **Standard**.
+    * **Nyilvános IP-cím Termékváltozat**: Alapértelmezés szerint a előre feltöltve **Standard**. Azure megerősített használ és támogatja a csak a Standard nyilvános IP Termékváltozat.
     * **Hozzárendelés**: Alapértelmezés szerint a előre feltöltve **statikus**.
 
 1. Kattintson a beállítások megadása után, amikor **felülvizsgálat + létrehozás**. Ez igazolja, hogy az értékeket. Ellenőrzés elvégzése után megkezdheti a létrehozását.

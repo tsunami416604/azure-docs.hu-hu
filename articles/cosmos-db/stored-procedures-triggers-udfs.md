@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/14/2019
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: 529c536d9ea3b898745f03c80b63702b2af485da
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 53ff318dcc034fb11e2d554f9ad8e8814eb32879
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67165582"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67672592"
 ---
 # <a name="stored-procedures-triggers-and-user-defined-functions"></a>Tárolt eljárások, eseményindítók és felhasználó által definiált függvények
 
@@ -37,7 +37,7 @@ Javascriptben tárolt eljárások, eseményindítók és felhasználó által de
 * **Beágyazás:** Tárolt eljárások segítségével egy helyen logikai csoportosítása. Beágyazás hozzáad egy olyan absztrakciós réteget az adatokat, ami lehetővé teszi a való összpontosításnak köszönhetően az alkalmazások egymástól függetlenül az adatok felett. Absztrakciós réteg akkor hasznos, ha az adatok séma nélküli, és nem kell további logikát hozzáadása közvetlenül az alkalmazásba való kezeléséhez. Az absztrakciós lehetővé teszi, hogy az adatok biztonságos egyszerűsítheti a parancsfájlokat a hozzáférést a megtartása.
 
 > [!TIP]
-> Tárolt eljárások leginkább alkalmasak arra, hogy vannak (nagy erőforrásigényű) írási műveleteket. Elhelyezésekor tárolt eljárások, optimalizálhatja körül fejlécbe foglalja az írások lehetséges maximális számát. Általánosan fogalmazva a tárolt eljárások nem állnak a lehető leghatékonyabb módon a batch nagy mennyiségű olvasási tárolt eljárások használatával térjen vissza az ügyfél nem eredményez, a kívánt juttatás nagy számú olvasási műveleteket végezni.
+> Tárolt eljárások a legalkalmasabbak írási műveltekből és olyan tranzakciót igényelnek, partíciókulcs-értékkel különböző műveletekhez. Amikor eldönti, hogy a tárolt eljárások, optimalizálhatja körül fejlécbe foglalja az írások lehetséges maximális számát. Általánosan fogalmazva tárolt eljárások nem a lehető leghatékonyabb módon, nagy számú olvasási vagy lekérdezési műveletek adatelemzésre, így tárolt eljárások kötegelt olvasási és térjen vissza az ügyfél nagy számú nem eredményez, a kívánt juttatásra. A legjobb teljesítmény érdekében az ügyféloldali, Cosmos SDK-val az olvasási műveletek kell elvégezni. 
 
 ## <a name="transactions"></a>Tranzakciók
 

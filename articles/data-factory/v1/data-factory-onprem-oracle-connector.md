@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 05/15/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 4ff7f92d1d13966be5d17f37210bef961f64faf2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 51fae63b6db99f28a5b3bed056dadc0c2513ff0f
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61462411"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67839934"
 ---
 # <a name="copy-data-to-or-from-oracle-on-premises-by-using-azure-data-factory"></a>Adatok másolása, vagy a helyszíni Oracle az Azure Data Factory használatával
 
@@ -83,7 +83,7 @@ Egy másolási tevékenységgel rendelkező folyamatot hozhat létre. A folyamat
 
 A folyamat létrehozásának legegyszerűbb módja, hogy a Másolás varázslóval. Lásd: [oktatóanyag: Hozzon létre egy folyamatot a másolás varázsló használatával](data-factory-copy-data-wizard-tutorial.md) gyors bemutató folyamat létrehozása adatok másolása varázsló használatával.
 
-Használhatja a következő eszközök egyikét egy folyamat létrehozásához: a **az Azure portal**, **Visual Studio**, **Azure PowerShell-lel**, egy **Azure Resource Manager sablon**, a **.NET API**, vagy a **REST API-val**. Tekintse meg a [másolási tevékenység oktatóanyagát](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) kapcsolatos lépésenkénti útmutatót egy másolási tevékenységgel rendelkező folyamat létrehozása.
+Emellett használhatja a következő eszközök egyikét egy folyamat létrehozásához: **A Visual Studio**, **Azure PowerShell-lel**, egy **Azure Resource Manager-sablon**, a **.NET API**, vagy a **REST API-val**. Tekintse meg a [másolási tevékenység oktatóanyagát](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) kapcsolatos lépésenkénti útmutatót egy másolási tevékenységgel rendelkező folyamat létrehozása.
 
 Az eszközök vagy az API-kat használja, hogy a következő lépéseket egy folyamatot helyez át adatokat egy forrásadattárból egy fogadó adattárba hozunk létre:
 
@@ -187,7 +187,7 @@ A másolási tevékenység, ha a forrás a **OracleSource** típusa, a következ
 
 ## <a name="json-examples-for-copying-data-to-and-from-the-oracle-database"></a>JSON-példák az adatok másolása, és az Oracle-adatbázisból
 
-Az alábbi példák megadják példa JSON-definíciók, amelyek segítségével hozzon létre egy folyamatot a [az Azure portal](data-factory-copy-activity-tutorial-using-azure-portal.md), [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md), vagy [Azure PowerShell-lel](data-factory-copy-activity-tutorial-using-powershell.md). A példák bemutatják, hogyan másolhat adatokat a vagy Oracle-adatbázishoz, és az Azure Blob storage-ból. Azonban adatok átmásolhatók a felsorolt fogadóként valamelyik [támogatott adattárak és formátumok](data-factory-data-movement-activities.md#supported-data-stores-and-formats) másolási tevékenységgel az Azure Data Factory használatával.
+Az alábbi példák megadják példa JSON-definíciók, amelyek segítségével létrehoz egy folyamatot használatával [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) vagy [Azure PowerShell-lel](data-factory-copy-activity-tutorial-using-powershell.md). A példák bemutatják, hogyan másolhat adatokat a vagy Oracle-adatbázishoz, és az Azure Blob storage-ból. Azonban adatok átmásolhatók a felsorolt fogadóként valamelyik [támogatott adattárak és formátumok](data-factory-data-movement-activities.md#supported-data-stores-and-formats) másolási tevékenységgel az Azure Data Factory használatával.
 
 **Példa: Oracle az Azure Blob storage-adatok másolása**
 
@@ -599,27 +599,27 @@ Ha áthelyezi adatait az Oracle, a következő hozzárendeléseket használatosa
 | --- | --- |
 | BFILE |Byte[] |
 | BLOB |Byte[]<br/>(csak a támogatott Oracle 10g és későbbi verziók és a egy Microsoft-illesztőprogram) |
-| CHAR |String |
-| CLOB |String |
-| DATE |DateTime |
+| CHAR |Karakterlánc |
+| CLOB |Sztring |
+| DATE |Datetime |
 | FLOAT |Decimal, String (Ha a pontosság > 28) |
 | INTEGER |Decimal, String (Ha a pontosság > 28) |
 | INTERVALLUM ÉV, HÓNAP |Int32 |
 | INTERVALLUM NAP – MÁSODPERC |TimeSpan |
-| LONG |String |
+| LONG |Karakterlánc |
 | LONG RAW |Byte[] |
-| NCHAR |String |
-| NCLOB |String |
+| NCHAR |Karakterlánc |
+| NCLOB |Karakterlánc |
 | NUMBER |Decimal, String (Ha a pontosság > 28) |
-| NVARCHAR2 |String |
+| NVARCHAR2 |Sztring |
 | RAW |Byte[] |
-| ROWID |String |
-| TIMESTAMP |DateTime |
-| TIMESTAMP WITH LOCAL TIME ZONE |DateTime |
-| TIMESTAMP WITH TIME ZONE |DateTime |
+| ROWID |Karakterlánc |
+| TIMESTAMP |Datetime |
+| TIMESTAMP WITH LOCAL TIME ZONE |Datetime |
+| TIMESTAMP WITH TIME ZONE |Datetime |
 | UNSIGNED INTEGER |Number |
-| VARCHAR2 |String |
-| XML |String |
+| VARCHAR2 |Sztring |
+| XML |Sztring |
 
 > [!NOTE]
 > Az adattípusok **IDŐKÖZ YEAR TO hónap** és **IDŐKÖZ nap TO második** egy Microsoft-illesztőprogram használata esetén nem támogatottak.

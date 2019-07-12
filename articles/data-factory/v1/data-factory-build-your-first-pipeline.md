@@ -14,17 +14,16 @@ ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: d9d9e68b7e74ba7725e97162d01e1a35314fdd0f
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 552c89cd3294567e8203b69f81c1ac24716a8b1b
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60564586"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67839439"
 ---
 # <a name="tutorial-build-your-first-pipeline-to-transform-data-using-hadoop-cluster"></a>Oktatóanyag: Az adatok Hadoop-fürt segítségével történő átalakítására szolgáló első folyamat létrehozása
 > [!div class="op_single_selector"]
 > * [Áttekintés és előfeltételek](data-factory-build-your-first-pipeline.md)
-> * [Azure Portal](data-factory-build-your-first-pipeline-using-editor.md)
 > * [Visual Studio](data-factory-build-your-first-pipeline-using-vs.md)
 > * [PowerShell](data-factory-build-your-first-pipeline-using-powershell.md)
 > * [Resource Manager-sablon](data-factory-build-your-first-pipeline-using-arm.md)
@@ -36,7 +35,7 @@ ms.locfileid: "60564586"
 
 Ebben az oktatóanyagban az első Azure data factoryját adatfolyamat hozhat létre. A folyamat bemeneti adatokat átalakítja a kimeneti adatok előállításához egy Azure HDInsight (Hadoop) fürtön Hive-szkript futtatásával.  
 
-Ez a cikk áttekintése és az oktatóanyag előfeltételei. Miután végzett az előfeltételekkel, az oktatóanyag a következő eszközök/SDK-k egyikével teheti meg: Az Azure portal, a Visual Studio, a PowerShell, a Resource Manager-sablon, a REST API-t. Válassza ki a beállítások a legördülő lista elején (vagy) hajtsa végre az oktatóanyag ezen beállítások valamelyikét használja, ez a cikk végén található hivatkozásokat.    
+Ez a cikk áttekintése és az oktatóanyag előfeltételei. Miután végzett az előfeltételekkel, az oktatóanyag a következő eszközök/SDK-k egyikével teheti meg: Visual Studio, PowerShell, Resource Manager template, REST API. Válassza ki a beállítások a legördülő lista elején (vagy) hajtsa végre az oktatóanyag ezen beállítások valamelyikét használja, ez a cikk végén található hivatkozásokat.    
 
 ## <a name="tutorial-overview"></a>Az oktatóanyag áttekintése
 Az oktatóanyagban az alábbi lépéseket fogja végrehajtani:
@@ -93,13 +92,12 @@ Ez az oktatóanyag elkezdéséhez az alábbi előfeltételekkel kell rendelkezni
 
 Miután végzett az előfeltételekkel, válassza ki az alábbi eszközök/SDK-k az oktatóanyag elvégzéséhez: 
 
-- [Azure Portal](data-factory-build-your-first-pipeline-using-editor.md)
 - [Visual Studio](data-factory-build-your-first-pipeline-using-vs.md)
 - [PowerShell](data-factory-build-your-first-pipeline-using-powershell.md)
 - [Resource Manager-sablon](data-factory-build-your-first-pipeline-using-arm.md)
 - [REST API](data-factory-build-your-first-pipeline-using-rest-api.md)
 
-Az Azure portal és a Visual Studio adja meg a grafikus lehetőség az adat-előállítók. Mivel a PowerShell, a Resource Manager-sablon és a REST API-t az adat-előállítók létrehozásának parancsfájlok és programozás-megoldást kínál.
+A Visual Studio lehetővé teszi a grafikus felhasználói Felülettel, az adat-előállítók létrehozását. Mivel a PowerShell, a Resource Manager-sablon és a REST API-t az adat-előállítók létrehozásának parancsfájlok és programozás-megoldást kínál.
 
 > [!NOTE]
 > Az oktatóanyagban található adatfolyamat átalakítja a bemeneti adatokat, hogy ezzel kimeneti adatokat hozzon létre. A forrásadattár adatait nem másolja egy céladattárba. Az Azure Data Factory használata adatok másolása oktatóanyagért lásd: [oktatóanyag: Adatok másolása Blob Storage-ból az SQL Database](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md).

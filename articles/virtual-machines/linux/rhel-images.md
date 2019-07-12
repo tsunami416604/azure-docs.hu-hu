@@ -4,7 +4,7 @@ description: További tudnivalók a Red Hat Enterprise Linux-rendszerképeket a 
 services: virtual-machines-linux
 documentationcenter: ''
 author: BorisB2015
-manager: jeconnoc
+manager: gwallace
 editor: ''
 ms.service: virtual-machines-linux
 ms.devlang: na
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 6/6/2019
 ms.author: borisb
-ms.openlocfilehash: b40f62a90dbe7c822b95476abe6ec25cf3fb21d6
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: f7ae82b0376489e21b35e4e94dce32805bea69c6
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67070032"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67708383"
 ---
 # <a name="red-hat-enterprise-linux-images-in-azure"></a>Red Hat Enterprise Linux-rendszerképeket az Azure-ban
 Ez a cikk ismerteti az elérhető Red Hat Enterprise Linux (RHEL) rendszerképek mellett saját elnevezési és adatmegőrzési szabályzatok az Azure piactéren.

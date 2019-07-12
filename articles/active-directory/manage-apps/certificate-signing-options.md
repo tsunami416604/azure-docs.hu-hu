@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: jeedes
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1baf4af41fd5dcb6723b6ee2827ae91b43b072d9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a084ceb841ea35bc62d9851f2b6c4821f4acb6fd
+ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65780963"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67807718"
 ---
 # <a name="advanced-certificate-signing-options-in-the-saml-token-for-gallery-apps-in-azure-active-directory"></a>Speciális tanúsítvány-aláírási beállítások katalógusbeli alkalmazásokat az Azure Active Directory a SAML-jogkivonat
 
@@ -57,27 +57,21 @@ A tanúsítvány-aláírási algoritmus és a egy alkalmazás SAML-tanúsítván
 1. A bal oldali panelen válassza ki a **Vállalati alkalmazások** elemet. A fiók a vállalati alkalmazások listája jelenik meg.
 1. Válasszon ki egy alkalmazást. Az alkalmazás áttekintő oldala jelenik meg.
 
-   ![Alkalmazások – Áttekintés lap](./media/certificate-signing-options/application-overview-page.png)
+   ![Példa: Alkalmazások – Áttekintés lap](./media/certificate-signing-options/application-overview-page.png)
 
 Ezután módosítsa a tanúsítvány-aláírási beállítások az adott alkalmazáshoz SAML-jogkivonat:
 
 1. Az alkalmazás áttekintés oldal bal oldali panelen válassza ki a **egyszeri bejelentkezési**.
+1. Ha a **állítsa be egyszeri bejelentkezést az SAML - előzetes verzió** lap jelenik meg, folytassa az 5. lépés.
+1. Ha a **egyszeri bejelentkezési módszer** lap nem jelenik meg, jelölje be **egyszeri bejelentkezési mód módosítása** adott oldalának megnyitásához.
+1. Az a **egyszeri bejelentkezési módszer** lapra, jelölje be **SAML** ha rendelkezésre áll. (Ha **SAML** nem érhető el, az alkalmazás nem támogatja az SAML, és hagyja ki az eljárás, és a cikk többi.)
+1. Az a **állítsa be egyszeri bejelentkezést az SAML - előzetes verzió** lapon, keresse meg a **SAML-aláíró tanúsítvány** címsor, és válassza ki a **szerkesztése** ikon (a Ceruza). A **SAML-aláíró tanúsítvány** lap jelenik meg.
 
-2. Ha a **állítsa be egyszeri bejelentkezést az SAML - előzetes verzió** lap jelenik meg, folytassa az 5. lépés.
+   ![Példa: SAML-aláíró tanúsítvány lap](./media/certificate-signing-options/saml-signing-page.png)
 
-3. Ha a **egyszeri bejelentkezési módszer** lap nem jelenik meg, jelölje be **egyszeri bejelentkezési mód módosítása** adott oldalának megnyitásához.
-
-4. Az a **egyszeri bejelentkezési módszer** lapra, jelölje be **SAML** ha rendelkezésre áll. (Ha **SAML** nem érhető el, az alkalmazás nem támogatja az SAML, és hagyja ki az eljárás, és a cikk többi.)
-
-5. Az a **állítsa be egyszeri bejelentkezést az SAML - előzetes verzió** lapon, keresse meg a **SAML-aláíró tanúsítvány** címsor, és válassza ki a **szerkesztése** ikon (a Ceruza). A **SAML-aláíró tanúsítvány** lap jelenik meg.
-
-   ![SAML-aláíró lap](./media/certificate-signing-options/saml-signing-page.png)
-
-6. Az a **aláírási beállítás** legördülő menüben válassza ki **bejelentkezési SAML-válasz**, **bejelentkezési SAML helyességi feltétel**, vagy **bejelentkezési SAML-válasz és -előfeltétel**. Ezek a beállítások leírását a jelen cikk korábbi jelennek meg a [tanúsítvány-aláírási beállítások](#certificate-signing-options).
-
-7. Az a **aláírási algoritmus** legördülő menüben válassza ki **SHA-1** vagy **SHA-256**. Ezek a beállítások leírását a jelen cikk korábbi jelennek meg a [tanúsítvány-aláírási algoritmusokat](#certificate-signing-algorithms) szakaszban.
-
-8. Ha már elégedett a kiválasztott beállításokat, jelölje be **mentése** a alkalmazni az új SAML-aláíró tanúsítvány beállításait. Ellenkező esetben válassza a **X** elveti a módosításokat.
+1. Az a **aláírási beállítás** legördülő menüben válassza ki **bejelentkezési SAML-válasz**, **bejelentkezési SAML helyességi feltétel**, vagy **bejelentkezési SAML-válasz és -előfeltétel**. Ezek a beállítások leírását a jelen cikk korábbi jelennek meg a [tanúsítvány-aláírási beállítások](#certificate-signing-options).
+1. Az a **aláírási algoritmus** legördülő menüben válassza ki **SHA-1** vagy **SHA-256**. Ezek a beállítások leírását a jelen cikk korábbi jelennek meg a [tanúsítvány-aláírási algoritmusokat](#certificate-signing-algorithms) szakaszban.
+1. Ha már elégedett a kiválasztott beállításokat, jelölje be **mentése** a alkalmazni az új SAML-aláíró tanúsítvány beállításait. Ellenkező esetben válassza a **X** elveti a módosításokat.
 
 ## <a name="next-steps"></a>További lépések
 

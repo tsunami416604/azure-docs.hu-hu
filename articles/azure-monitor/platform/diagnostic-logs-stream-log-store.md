@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/18/2019
 ms.author: johnkem
 ms.subservice: logs
-ms.openlocfilehash: 13eb1a8fcea2f74cda5921a51b8c2e8816be975f
-ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
+ms.openlocfilehash: e8e6276a38f06b5c6ebb24c89f3733b9fd7220f7
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67303710"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67612829"
 ---
 # <a name="stream-azure-diagnostic-logs-to-log-analytics-workspace-in-azure-monitor"></a>Stream Azure diagnosztikai naplók a Log Analytics-munkaterületet az Azure monitorban
 
@@ -98,6 +98,30 @@ A `--resource-group` argumentum csak akkor kötelező, ha `--workspace` nem egy 
 ## <a name="how-do-i-query-the-data-from-a-log-analytics-workspace"></a>Hogyan kérdezhet le a az adatokat a Log Analytics-munkaterület?
 
 A naplók panel az Azure Monitor-portálon, a diagnosztikai naplók lekérdezheti a AzureDiagnostics táblában a naplókezelési megoldás részeként. Vannak még [több figyelési megoldások az Azure-erőforrások](../../azure-monitor/insights/solutions.md) telepítheti a azonnali információkhoz juthat a naplózási adatokat küld az Azure Monitor szolgáltatásba.
+
+### <a name="examples"></a>Példák
+
+```Kusto
+// Resources that collect diagnostic logs into this Log Analytics workspace, using Diagnostic Settings
+AzureDiagnostics
+| distinct _ResourceId
+```
+```Kusto
+// Resource providers collecting diagnostic logs into this Log Analytics worksapce, with log volume per category
+AzureDiagnostics
+| summarize count() by ResourceProvider, Category
+```
+```Kusto
+// Resource types collecting diagnostic logs into this Log Analytics workspace, with number of resources onboarded
+AzureDiagnostics
+| summarize ResourcesOnboarded=dcount(_ResourceId) by ResourceType
+```
+```Kusto
+// Operations logged by specific resource provider, in this example - KeyVault
+AzureDiagnostics
+| where ResourceProvider == "MICROSOFT.KEYVAULT"
+| distinct OperationName
+```
 
 ## <a name="azure-diagnostics-vs-resource-specific"></a>Azure Diagnostics és az erőforrás-specifikus  
 Az Azure Diagnostics konfigurálása a Log Analytics cél engedélyezését követően vannak, amely adatokat fog megjelenni a munkaterület két különböző módon:  

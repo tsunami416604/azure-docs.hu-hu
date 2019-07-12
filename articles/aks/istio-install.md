@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 04/19/2019
 ms.author: pabouwer
-ms.openlocfilehash: c7c234e181e10499e532436bfde05ed89bdc7d28
-ms.sourcegitcommit: c63e5031aed4992d5adf45639addcef07c166224
+ms.openlocfilehash: 9d973cb2ac210e912d93941a2f81889557379f43
+ms.sourcegitcommit: c0419208061b2b5579f6e16f78d9d45513bb7bbc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67465688"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67625976"
 ---
 # <a name="install-and-use-istio-in-azure-kubernetes-service-aks"></a>Telepítheti és használhatja Istio Azure Kubernetes Service (AKS)
 
@@ -152,14 +152,19 @@ Most már továbbléphet a következő szakaszban [telepítse a Istio renderelé
 
 ### <a name="windows"></a>Windows
 
-A Istio telepítéséhez `istioctl` bináris az ügyfél egy **Powershell**-alapú rendszerhéj a Windows, használja a következő parancsokat. Ezek a parancsok másolása a `istioctl` ügyfél bináris Istio mappába, és lehetővé teszi tartósan keresztül a `PATH`. Nincs szükség emelt szintű (rendszergazdai) engedélyekkel, futtassa a következő parancsokat.
+A Istio telepítéséhez `istioctl` bináris az ügyfél egy **Powershell**-alapú rendszerhéj a Windows, használja a következő parancsokat. Ezek a parancsok másolása a `istioctl` ügyfél bináris Istio mappába, és ezt követően testre is elérhető mind azonnal (az aktuális felületen) és a végleges (shell újraindítása) keresztül a `PATH`. Nem kell emelt szintű (rendszergazdai) engedélyekkel, futtassa a következő parancsokat, és nem kell újra a felületet.
 
 ```powershell
+# Copy istioctl.exe to C:\Istio
 cd istio-$ISTIO_VERSION
 New-Item -ItemType Directory -Force -Path "C:\Istio"
 Copy-Item -Path .\bin\istioctl.exe -Destination "C:\Istio\"
-$PATH = [environment]::GetEnvironmentVariable("PATH", "User")
-[environment]::SetEnvironmentVariable("PATH", $PATH + "; C:\Istio\", "User")
+
+# Add C:\Istio to PATH. 
+# Make the new PATH permanently available for the current User, and also immediately available in the current shell.
+$PATH = [environment]::GetEnvironmentVariable("PATH", "User") + "; C:\Istio\"
+[environment]::SetEnvironmentVariable("PATH", $PATH, "User") 
+[environment]::SetEnvironmentVariable("PATH", $PATH)
 ```
 
 Most már továbbléphet a következő szakaszban [telepítse a Istio renderelési szótárak AKS](#install-the-istio-crds-on-aks).

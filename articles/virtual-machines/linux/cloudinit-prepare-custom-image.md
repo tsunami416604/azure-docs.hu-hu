@@ -4,7 +4,7 @@ description: Egy már meglévő Azure-beli Virtuálisgép-lemezkép előkészít
 services: virtual-machines-linux
 documentationcenter: ''
 author: danis
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 ms.service: virtual-machines-linux
@@ -14,12 +14,12 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 06/24/2019
 ms.author: danis
-ms.openlocfilehash: a64fb40c905fbe98dc594ab3626666723d1628d0
-ms.sourcegitcommit: a7ea412ca4411fc28431cbe7d2cc399900267585
+ms.openlocfilehash: 1f9f6042b52c722280a8227754960ffb270e94b8
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/25/2019
-ms.locfileid: "67357262"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67668253"
 ---
 # <a name="prepare-an-existing-linux-azure-vm-image-for-use-with-cloud-init"></a>Meglévő Azure-beli Linux rendszerű Virtuálisgép-rendszerképet használja a cloud-Init használatával előkészítése
 Ez a cikk bemutatja, hogyan egy meglévő Azure virtuális gépen és készítse elő a újratelepített, a cloud-init használatra kész lesz. Az eredményül kapott kép egy új virtuális gépet vagy virtuális gép méretezési csoportok – amely bármelyike sikerült majd további testre a cloud-init üzembe helyezéskor üzembe helyezéséhez használható.  Ezen a cloud-init parancsfájlok futtatása az első rendszerindításkor az Azure-ban kiépített erőforrások után. A cloud-init működése natív módon az Azure és a támogatott Linux-disztribúciók kapcsolatos további információkért lásd: [cloud-init áttekintése](using-cloud-init.md)

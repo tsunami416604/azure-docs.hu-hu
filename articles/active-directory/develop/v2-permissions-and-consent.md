@@ -18,12 +18,12 @@ ms.author: ryanwi
 ms.reviewer: hirsin, jesakowi, jmprieur
 ms.custom: fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 73b832002d1c15505e8ae845ac2585548c8e080f
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: 032cc0edaa140d82124a7369232cb82bf6c00c10
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67482143"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67702707"
 ---
 # <a name="permissions-and-consent-in-the-microsoft-identity-platform-endpoint"></a>Engedélyek és jóváhagyás az a Microsoft identity platform végpont
 
@@ -53,7 +53,7 @@ Ugyanez érvényes, amely integrálva van a Microsoft identity platform külső 
 
 Az ilyen típusú engedélyek megadásával az erőforrás rendelkezik részletesen szabályozhatja az adatok, valamint hogyan API funkció érhető el. Egy harmadik féltől származó alkalmazások ezeket az engedélyeket kérhet a felhasználók és rendszergazdák férhetnek hozzá az adatokat, vagy ki kell hagynia a kérelmet, mielőtt az alkalmazás egy felhasználó nevében cselekedhet. Darabolás kisebb engedélycsoportok az erőforrás funkciókat, a harmadik féltől származó alkalmazások csak a függvény végrehajtásához szükséges konkrét engedélyeket kérhet építhetők fel. A felhasználók és rendszergazdák is ismeri, pontosan milyen adatokat az alkalmazás rendelkezik hozzáféréssel, és biztos lehet, hogy nincs-e viselkedik rosszindulatú is lehet. A fejlesztők kell mindig betartja a legalacsonyabb jogosultsági fogalma csak azok az alkalmazások működéséhez szükséges engedélyeket kér.
 
-OAuth 2.0, az engedélyeket az ilyen típusú nevezzük *hatókörök*. Akkor is gyakran nevezik *engedélyek*. Engedély a Microsoft identity platform jelenik meg egy karakterláncértéket. A Microsoft Graph példa folytatása, karakterlánc minden egyes engedély értéke:
+OAuth 2.0, az engedélyeket az ilyen típusú nevezzük *hatókörök*. Ezek gyakran nevezik *engedélyek*. Engedély a Microsoft identity platform jelenik meg egy karakterláncértéket. A Microsoft Graph példa folytatása, karakterlánc minden egyes engedély értéke:
 
 * Olvassa el a felhasználó naptár használatával `Calendars.Read`
 * A felhasználó naptár írni használatával `Calendars.ReadWrite`
@@ -167,7 +167,8 @@ A rendszergazdai jóváhagyás nem fogadja el a hatókör-paramétert, ezért a 
 #### <a name="to-configure-the-list-of-statically-requested-permissions-for-an-application"></a>A lista az alkalmazás statikusan kért engedélyeket konfigurálása
 
 1. Nyissa meg az alkalmazását a [az Azure-portál – alkalmazásregisztrációk](https://go.microsoft.com/fwlink/?linkid=2083908) észlel, vagy [hozzon létre egy alkalmazást](quickstart-register-app.md) Ha még nem tette.
-2. Keresse meg a **Microsoft Graph-engedélyek** szakaszt, és adja hozzá az adott alkalmazáshoz szükséges engedélyeket.
+2. Keresse meg a **API-engedélyek** szakaszt, és az API-engedélyek belül kattintson a Hozzáadás engedélyt.
+3. Válassza ki **Microsoft Graph** elérhető API-k listájából, és hozzáadhatja az adott alkalmazáshoz szükséges engedélyeket.
 3. **Mentés** az alkalmazás regisztrációját.
 
 ### <a name="recommended-sign-the-user-into-your-app"></a>Ajánlott: A felhasználó bejelentkeznie az alkalmazásba
@@ -199,9 +200,9 @@ https://login.microsoftonline.com/common/adminconsent?client_id=6731de76-14a6-49
 
 | Paraméter | Állapot | Leírás |
 | --- | --- | --- |
-| `tenant` | Kötelező | A directory-bérlőhöz, amelyet szeretne az engedélyt. A megadott GUID vagy rövid név formátumban, vagy az általános hivatkozott `common` a példában látható módon. |
-| `client_id` | Kötelező | A **Alkalmazásazonosítót (ügyfél)** , amely a [az Azure-portál – alkalmazásregisztrációk](https://go.microsoft.com/fwlink/?linkid=2083908) az alkalmazáshoz rendelt felhasználói élményt. |
-| `redirect_uri` | Kötelező |Az átirányítási URI-t a válasz az alkalmazás kezelni kell elküldeni kívánt helyre. Ez pontosan egyeznie kell az átirányítási URI-k, amelyek az alkalmazás regisztrációs portál regisztrált. |
+| `tenant` | Szükséges | A directory-bérlőhöz, amelyet szeretne az engedélyt. A megadott GUID vagy rövid név formátumban, vagy az általános hivatkozott `common` a példában látható módon. |
+| `client_id` | Szükséges | A **Alkalmazásazonosítót (ügyfél)** , amely a [az Azure-portál – alkalmazásregisztrációk](https://go.microsoft.com/fwlink/?linkid=2083908) az alkalmazáshoz rendelt felhasználói élményt. |
+| `redirect_uri` | Szükséges |Az átirányítási URI-t a válasz az alkalmazás kezelni kell elküldeni kívánt helyre. Ez pontosan egyeznie kell az átirányítási URI-k, amelyek az alkalmazás regisztrációs portál regisztrált. |
 | `state` | Ajánlott | A kérésben is a token válaszban visszaadott érték. Bármilyen tartalmat karakterlánc lehet. Az állapot használatával kódolása a felhasználói állapot az alkalmazás információ előtt a hitelesítési kérelmet, például az oldal vagy voltak a nézetet. |
 
 Ezen a ponton a az Azure AD bérlői rendszergazdával, jelentkezzen be a kérés teljesítéséhez szükséges. A rendszergazda hagyja jóvá a kért az alkalmazás regisztrációs portál az alkalmazáshoz tartozó összes engedélyt kell adnia.

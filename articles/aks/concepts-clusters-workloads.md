@@ -2,17 +2,17 @@
 title: Alapelvei – a Kubernetes alapjai az Azure Kubernetes-szolgáltatások (AKS)
 description: Ismerje meg, az alapszintű fürt és a Kubernetes, és hogyan kapcsolódnak az Azure Kubernetes Service (AKS) funkciókat a számítási feladatok összetevői
 services: container-service
-author: iainfoulds
+author: mlearned
 ms.service: container-service
 ms.topic: conceptual
 ms.date: 06/03/2019
-ms.author: iainfou
-ms.openlocfilehash: ab818c0bded71b4566173f4a6a720fce9bc539c3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: mlearned
+ms.openlocfilehash: 5f387310e737982b824d0ac9662822d9a74f39e9
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66514525"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67616019"
 ---
 # <a name="kubernetes-core-concepts-for-azure-kubernetes-service-aks"></a>A Kubernetes alapvető fogalmainak Azure Kubernetes Service (AKS)
 
@@ -95,7 +95,7 @@ Példa:
     
 Az alapul szolgáló OS csomópont is igényli néhány saját alapvető funkcióinak végrehajtásához a CPU és memória-erőforrások mennyiségét.
 
-További kapcsolódó ajánlott eljárások: [ajánlott eljárásai az aks-ben alapszintű ütemezési funkciókat][operator-best-practices-scheduler].
+További kapcsolódó ajánlott eljárások: [ajánlott eljárásai alapszintű ütemezési funkciókat az aks-ben][operator-best-practices-scheduler].
 
 ### <a name="node-pools"></a>Csomópontkészletek
 
@@ -132,7 +132,7 @@ Használja a Kubernetes *podok* egy példányt az alkalmazás futtatásához. A 
 
 A pod létrehozásakor definiálhat *erőforráskorlátok* CPU és memória-erőforrások egy bizonyos mennyiségű kéréséhez. A Kubernetes-ütemező próbál ütemezése a podok futni a csomóponton a rendelkezésre álló erőforrások a kérelem teljesítéséhez. Adja meg a maximális erőforráskorlátok, amely megakadályozza, hogy egy adott pod felhasználása túl sok számítási erőforrás az alapul szolgáló csomópontból is. Ajánlott eljárás az erőforráskorlátok a segítségével a Kubernetes a Scheduler ismertetése, mely erőforrásokat engedélyezett és szükséges összes podok tartalmazza.
 
-További információkért lásd: [Kubernetes-podok] [ kubernetes-pods] és [Kubernetes-podok életciklus][kubernetes-pod-lifecycle].
+További információkért lásd: [Kubernetes-podok][kubernetes-pods] and [Kubernetes pod lifecycle][kubernetes-pod-lifecycle].
 
 A pod logikai erőforrás, de a tároló(k) bérletét, amelyben az alkalmazás számítási feladatok futnak. Podok általában rövid élettartamú, rendelkezésre álló erőforrásokat, és külön-külön ütemezett podok konferenciát Kubernetes biztosít magas rendelkezésre állás és redundancia funkcióit. Ehelyett podok általában üzembe és Kubernetes által kezelt *tartományvezérlők*, például a központi telepítési vezérlő.
 

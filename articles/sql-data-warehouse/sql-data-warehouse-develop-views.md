@@ -10,12 +10,12 @@ ms.subservice: development
 ms.date: 04/17/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: d4321f8aef6e754d8a1c5b16ac82b4fa62c40949
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e8d516cfd764f947bd2fe7fc25f6394c313c0d9a
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65873611"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67595498"
 ---
 # <a name="views-in-azure-sql-data-warehouse"></a>Az Azure SQL Data Warehouse nézetek
 Tippek a T-SQL-nézetek használata az Azure SQL Data Warehouse használható megoldások fejlesztéséhez. 
@@ -23,12 +23,18 @@ Tippek a T-SQL-nézetek használata az Azure SQL Data Warehouse használható me
 ## <a name="why-use-views"></a>Nézetek miért érdemes használni?
 Nézetek használható számos különböző módon, hogy a megoldás minőségének javítása érdekében.  Ez a cikk bemutatja, hogyan bővítheti megoldását-nézetek, valamint a korlátozásokat, amelyek figyelembe kell venni néhány példa emeli ki.
 
+
+> [!IMPORTANT]
+> A materializált nézet új szintaxisának [létrehozása tényleges táblán alapuló NÉZET AS SELECT](/sql/t-sql/statements/create-materialized-view-as-select-transact-sql?view=azure-sqldw-latest).  További információkért lásd: a [kibocsátási megjegyzések](/azure/sql-data-warehouse/release-notes-10-0-10106-0).
+>
+
+
 > [!NOTE]
 > A CREATE VIEW szintaxisa nem a cikkben leírtak szerint. További információkért lásd: a [NÉZET létrehozása](/sql/t-sql/statements/create-view-transact-sql) dokumentációját.
 > 
-> 
 
 ## <a name="architectural-abstraction"></a>Architekturális absztrakciós
+
 Gyakori alkalmazásminta az táblák használatával hozzon létre TABLE AS SELECT (CTAS) egy objektum minta átnevezése, miközben az adatok betöltése után hozza létre újból.
 
 A következő példa új dátumrekord hozzáadja a dátum dimenzió. Vegye figyelembe, hogyan DimDate_New, új tábla létrehozásakor és majd lecseréli az eredeti verzió a tábla neve.

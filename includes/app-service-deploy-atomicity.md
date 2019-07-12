@@ -5,20 +5,20 @@ services: app-service
 author: cephalin
 ms.service: app-service
 ms.topic: include
-ms.date: 06/08/2018
+ms.date: 06/12/2019
 ms.author: cephalin
 ms.custom: include file
-ms.openlocfilehash: 8709956adee06e4e783ac5a7b317b2c4dec43e73
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 93332002cd2ac513d125e0f9eb75dff4a2d8760c
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67179591"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67836832"
 ---
 ## <a name="what-happens-to-my-app-during-deployment"></a>Mi történik az alkalmazás üzembe helyezése során?
 
-Összes hivatalosan támogatott üzembe helyezési módszer van egy dolog közös:, módosítja a fájlokat a `/home/site/wwwroot` az alkalmazás mappájában. Ezek a ugyanazokat a fájlokat, amelyek az éles környezetben futnak. Ezért a központi telepítés zárolt fájlok miatt meghiúsulhat, vagy az alkalmazás éles környezetben előfordulhat, hogy az előre nem látható viselkedéshez üzembe helyezés során rendelkezik, mivel nem az összes fájl egyszerre frissülnek. Ezek a problémák elkerülése érdekében néhány különböző módja van:
+Az összes hivatalosan támogatott üzembe helyezési módokat módosítania kell a fájlt a a `/home/site/wwwroot` az alkalmazás mappájában. Ezek a fájlok megegyeznek azokon, éles környezetben futnak. Ezért a központi telepítés zárolt fájlok miatt meghiúsulhat. Az alkalmazás éles környezetben előfordulhat, hogy is kiszámíthatatlan központi telepítése során, mivel nem minden fájlja frissítve egy időben. Ezek a problémák elkerülése érdekében néhány különböző módja van:
 
-- Állítsa le az alkalmazást, vagy engedélyezze az alkalmazás kapcsolat nélküli módban üzembe helyezés során. További információkért lásd: [zárolt fájlok üzembe helyezése során alkalmazott](https://github.com/projectkudu/kudu/wiki/Dealing-with-locked-files-during-deployment).
+- Állítsa le az alkalmazást, vagy engedélyezze az alkalmazás kapcsolat nélküli módban üzembe helyezés során. További információkért lásd: [zárolt fájlokat foglalkozik az üzembe helyezés során](https://github.com/projectkudu/kudu/wiki/Dealing-with-locked-files-during-deployment).
 - Helyezze üzembe a [átmeneti tárhely](../articles/app-service/deploy-staging-slots.md) a [automatikus felcserélés](../articles/app-service/deploy-staging-slots.md#configure-auto-swap) engedélyezve van. 
-- Használat [futtassa a csomag](https://github.com/Azure/app-service-announcements/issues/84) helyette.
+- Használat [futtassa a csomag](https://github.com/Azure/app-service-announcements/issues/84) folyamatos üzembe helyezés helyett.

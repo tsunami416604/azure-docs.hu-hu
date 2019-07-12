@@ -8,18 +8,19 @@ ms.service: app-service
 ms.topic: conceptual
 ms.date: 06/17/2019
 ms.author: barclayn
-ms.openlocfilehash: f50532a21d11d2f7142fa3ee7ed08f759df36d52
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.custom: security-recommendations
+ms.openlocfilehash: 53cd2b1dde1158a1c46f798e57911dad110dc87e
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67207540"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67718262"
 ---
 # <a name="security-recommendations-for-app-service"></a>Biztonsági javaslatok az App Service-ben
 
 Ez a cikk tartalmazza a biztonsági javaslatok az Azure App Service-ben. Ezek az ajánlások megvalósítása biztonsági kötelezettségeinek teljesítéséhez, a közös felelősség modell és a fogja leírtak szerint súgó javulni fog a webalkalmazás-megoldások általános biztonságát. A service provider feladatok teljesítése nem a Microsoft milyen további információk, olvassa el a [Azure-infrastruktúra biztonsági](../security/azure-security-infrastructure.md).
 
-## <a name="general"></a>Általános kérdések
+## <a name="general"></a>Általános
 
 | Ajánlás | Megjegyzések |
 |-|-|----|

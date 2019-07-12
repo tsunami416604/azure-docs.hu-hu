@@ -4,15 +4,15 @@ description: Hibaelhárításához és megoldásához bérlő és a gazdagépcso
 services: virtual-desktop
 author: ChJenk
 ms.service: virtual-desktop
-ms.topic: troubleshoot
-ms.date: 04/08/2019
+ms.topic: troubleshooting
+ms.date: 07/10/2019
 ms.author: v-chjenk
-ms.openlocfilehash: 88e843c410a750387ecf58497dec79586e2a59d8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7ec4e0ffd87c0ef73a551416d8a8cc672f095483
+ms.sourcegitcommit: 1572b615c8f863be4986c23ea2ff7642b02bc605
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65523334"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67786737"
 ---
 # <a name="tenant-and-host-pool-creation"></a>Bérlői és gazdagépcsoport létrehozása
 
@@ -118,6 +118,17 @@ Példa a nyers hiba:
 **2. ok:** Tartomány neve nem oldható fel.
 
 **2 Javítás:** A "tartománynév nem oldja meg" hiba jelenik meg, a virtuális gépek a tartományhoz nem csatlakozó [munkamenetgazda virtuális gép konfigurálása](troubleshoot-vm-configuration.md).
+
+
+### <a name="error-your-deployment-failedunauthorized"></a>Hiba: Az üzembe helyezési failed...\Unauthorized
+
+```Error
+{"code":"DeploymentFailed","message":"At least one resource deployment operation failed. Please list deployment operations for details. Please see https://aka.ms/arm-debug for usage details.","details":[{"code":"Unauthorized","message":"{\r\n \"Code\": \"Unauthorized\",\r\n \"Message\": \"The scale operation is not allowed for this subscription in this region. Try selecting different region or scale option.\",\r\n \"Target\": null,\r\n \"Details\": [\r\n {\r\n \"Message\": \"The scale operation is not allowed for this subscription in this region. Try selecting different region or scale option.\"\r\n },\r\n {\r\n \"Code\": \"Unauthorized\"\r\n },\r\n {\r\n \"ErrorEntity\": {\r\n \"ExtendedCode\": \"52020\",\r\n \"MessageTemplate\": \"The scale operation is not allowed for this subscription in this region. Try selecting different region or scale option.\",\r\n \"Parameters\": [\r\n \"default\"\r\n ],\r\n \"Code\": \"Unauthorized\",\r\n \"Message\": \"The scale operation is not allowed for this subscription in this region. Try selecting different region or scale option.\"\r\n }\r\n }\r\n ],\r\n \"Innererror\": null\r\n}"}]}
+```
+
+**OK:** Az előfizetés használata olyan, amely nem érhető el a régióban, ahol az ügyfél megpróbálja telepíteni a szükséges funkciókat. Például az MSDN, ingyenes vagy oktatási előfizetések ezt a hibát jeleníti meg.
+
+**Javítás:** Módosítsa az előfizetés-típus vagy a régiót, a szükséges szolgáltatások eléréséhez.
 
 ### <a name="error-vmextensionprovisioningerror"></a>Hiba: VMExtensionProvisioningError
 

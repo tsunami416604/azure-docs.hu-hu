@@ -6,19 +6,19 @@ author: HeidiSteen
 services: search
 ms.service: search
 ms.topic: quickstart
-ms.date: 05/29/2019
+ms.date: 07/09/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: fd81115f4e811366b6b115d1c73a9be7ca26698b
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: d0d1dbb81f00f500f3eb95c605ed0c15c634f624
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67485625"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67706835"
 ---
 # <a name="create-an-azure-search-service-in-the-portal"></a>Azure Search szolgáltatás létrehozása a portálon
 
-Az Azure Search egy olyan önálló erőforrás, az egyéni alkalmazások keresési funkciókat beépülő modul segítségével. Azure Search egyszerűen integrálható más Azure-szolgáltatásokat, bár használhatja önmagában, alkalmazások hálózati kiszolgálókon, vagy más felhőplatformon futó szoftvert.
+Az Azure Search egy olyan önálló erőforrás, az egyéni alkalmazások keresési funkciókat beépülő modul segítségével. Bár az Azure Search egyszerűen integrálható más Azure-szolgáltatásokkal, is egy önálló összetevő szeretné használni, vagy hálózati kiszolgálók alkalmazásainak, vagy más felhőplatformon futó szoftverrel integrálva.
 
 Ebből a cikkből megtudhatja, hogyan hozhat létre egy Azure Search-erőforrást a [az Azure portal](https://portal.azure.com/).
 
@@ -73,10 +73,10 @@ Az Azure Search mint Azure-szolgáltatás világszerte sok adatközpontban üzem
 
 Ha egy másik Azure által biztosított adatok meg vannak indexelő szolgáltatás (Azure storage, Azure Cosmos DB, Azure SQL Database), javasoljuk, hogy az Azure Search szolgáltatás létrehozása a sávszélesség-díjak elkerülése érdekében ugyanabban a régióban. Nem számítunk fel díjat a kimenő ugyanabban a régióban szolgáltatások esetén.
 
-A kognitív keresés AI végrehajtott információbeolvasás használja, ha a szolgáltatás létrehozása és a Cognitive Services-erőforrás ugyanabban a régióban. A szolgáltatások bérelt az AI-felderítési bővítést működik.
+A kognitív keresés AI végrehajtott információbeolvasás használja, ha a szolgáltatás létrehozása és a Cognitive Services-erőforrás ugyanabban a régióban. *Az Azure Search és a Cognitive Services ugyanabban a régióban bérelt annak AI Adatbővítés*.
 
 > [!Note]
-> Közép-India új szolgáltatások jelenleg nem érhetők el. A szolgáltatás már a közép-India korlátozás nélkül vertikálisan felskálázhatja, és a szolgáltatás teljes körűen támogatott az adott régióban. A korlátozás az ebben a régióban, ideiglenes, és eltávolítjuk ezt a megjegyzést, ha hosszabb vonatkozik.
+> Közép-India új szolgáltatások jelenleg nem érhetők el. A szolgáltatás már a közép-India korlátozás nélkül vertikálisan felskálázhatja, és a szolgáltatás teljes körűen támogatott az adott régióban. A korlátozás az ebben a régióban, ideiglenes, és csak az új szolgáltatások korlátozódik. Ez a Megjegyzés megszüntetjük, ha a korlátozás már nem érvényes.
 
 ## <a name="select-a-pricing-tier-sku"></a>Tarifacsomag (SKU) kiválasztása
 
@@ -88,27 +88,29 @@ A szolgáltatás létrehozása után már nem lehet tarifacsomagot váltani. Ha 
 
 ## <a name="create-your-service"></a>A szolgáltatás létrehozása
 
-Ne felejtse el rögzíteni a szolgáltatást az irányítópulton, így a bejelentkezés után könnyen elérheti.
+Adja meg a szükséges bemeneti adatokat a szolgáltatás létrehozásához. 
 
-![Rögzítés az irányítópulton az](./media/search-create-service-portal/new-service3.png "rögzítése az irányítópulton a kényelmes hozzáférésre az erőforrás")
+![Tekintse át, és hozza létre a szolgáltatást](./media/search-create-service-portal/new-service3.png "tekintse át és a szolgáltatás létrehozása")
+
+A szolgáltatás üzembe helyezése percek alatt, amely Azure értesítések használatával figyelheti. Vegye figyelembe, hogy a jövőben rögzítés az irányítópulton a szolgáltatás egyszerűen hozzáférhetnek.
+
+![Figyelheti, és a szolgáltatás rögzítse](./media/search-create-service-portal/monitor-notifications.png "képernyő és PIN-kód a szolgáltatás")
 
 ## <a name="get-a-key-and-url-endpoint"></a>Egy kulcsot és -végpont URL-cím beszerzése
 
-Néhány kivételtől eltekintve az új szolgáltatás használatához, hogy megadta az URL-végpontot és a egy engedélyezési api-kulcsát. Rövid útmutatók, oktatóanyagok, mint például [Ismerkedés az Azure Search REST API-k (Postman)](search-get-started-postman.md) és [a .NET használatával az Azure Search használata](search-howto-dotnet-sdk.md), minták és egyéni kód minden olyan végpont szükséges, és futtathatók az adott erőforrás kulcsát.
+A portál használata, eléréséhez az új szolgáltatást kell rendelkeznie, hogy megadta az URL-végpontot és a egy hitelesítési api-kulcs.
 
 1. Áttekintés oldalát keresse meg és másolja az URL-végpontot, az oldal jobb oldalán.
 
-   ![Áttekintés oldalát az URL-végpontjának](./media/search-create-service-portal/url-endpoint.png "URL-végpontot, és más szolgáltatás részletei")
-
 2. A bal oldali navigációs panelen válassza ki **kulcsok** , majd másolja az adminisztrációs kulcsok (azok egyenértékű) egyikét. Felügyeleti api-kulcsok létrehozása, frissítéséről és törléséről a szolgáltatás objektumok szükségesek.
 
-   ![Kulcsok megjelenítése az elsődleges és másodlagos kulcsok lapon](./media/search-create-service-portal/admin-api-keys.png "adminisztrációs api-kulcsok használ a hitelesítéshez")
+   ![Áttekintés oldalát az URL-végpontjának](./media/search-create-service-portal/get-url-key.png "URL-végpontot, és más szolgáltatás részletei")
 
-Egy végpont és a kulcs nem szükségesek a feladat portálalapú. A portál már csatolva az Azure Search-erőforráshoz rendszergazdai jogosultságokkal. Portál oktatóanyagot, kezdje [oktatóanyag: Importálás index és az Azure Search lekérdezési](search-get-started-portal.md).
+Egy végpont és a kulcs nem szükségesek a feladat portálalapú. A portál már csatolva az Azure Search-erőforráshoz rendszergazdai jogosultságokkal. Portál bemutató, kezdje [a rövid útmutató: Az Azure Search-index létrehozása a portálon](search-get-started-portal.md).
 
 ## <a name="scale-your-service"></a>A szolgáltatás méretezése
 
-Egy szolgáltatás létrehozása több percet is igénybe vehet (a csomagtól függően 15 percet vagy többet is). A szolgáltatást annak üzembe helyezése után igényei szerint méretezheti. Mivel az Azure Search szolgáltatáshoz a Standard csomagot választotta, a szolgáltatás kétféleképpen, replikák és partíciók szintjén méretezhető. Ha az alapszintű csomagot választotta volna, akkor csak replikákat adhatna hozzá. Ingyenes szolgáltatás üzembe helyezése esetén a méretezés nem elérhető.
+A szolgáltatást annak üzembe helyezése után igényei szerint méretezheti. A standard szintű csomag választásakor az Azure Search szolgáltatás méretezheti a szolgáltatást két dimenzió: replikák és partíciók. Ha az alapszintű csomagot választotta volna, akkor csak replikákat adhatna hozzá. Ingyenes szolgáltatás üzembe helyezése esetén a méretezés nem elérhető.
 
 A ***partíciókkal*** a szolgáltatás több dokumentum tárolására és keresésére alkalmas.
 
@@ -126,7 +128,7 @@ Az erőforrások hozzáadása növeli a havi költségeket. A [díjkalkulátor](
 ![Adja hozzá a kapacitás](./media/search-create-service-portal/settings-scale.png "növelhetjük a Kapacitásunkat replikák és partíciók")
 
 > [!Note]
-> Minden csomagban más [korlátozások](search-limits-quotas-capacity.md) érvényesek az egy szolgáltatásban megengedett keresési egységekre (replikák × partíciók = összes keresési egység).
+> Partíciónkénti, a magasabb szintű tárolás és sebesség növekedése. További információkért lásd: [kapacitás és korlátozások](search-limits-quotas-capacity.md).
 
 ## <a name="when-to-add-a-second-service"></a>Mikor érdemes hozzáadni egy második szolgáltatást?
 
@@ -148,4 +150,4 @@ A magas rendelkezésre álláshoz nincs szükség második szolgáltatásra. A l
 Üzembe helyezés az Azure Search szolgáltatást, után továbbra is az első index létrehozása a portálon.
 
 > [!div class="nextstepaction"]
-> [Oktatóanyag: Adatok importálása, Tárgymutató és lekérdezések futtatását a portálon](search-get-started-portal.md)
+> [Rövid útmutató: Az Azure Search-index létrehozása a portálon](search-get-started-portal.md)

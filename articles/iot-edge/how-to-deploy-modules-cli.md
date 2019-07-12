@@ -10,12 +10,12 @@ ms.reviewer: menchi
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 766b51f208e7e8f4a49109e32864f2726b8ccd63
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: edcde083934bb454f62ce3dd55c026138ad8fcca
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62126392"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67797679"
 ---
 # <a name="deploy-azure-iot-edge-modules-with-azure-cli"></a>Az Azure CLI-vel az Azure IoT Edge-modulok telepítése
 
@@ -29,7 +29,7 @@ Ez a cikk bemutatja, hogyan hozzon létre egy JSON-manifest nasazení, majd kül
 
 * Egy [az IoT hub](../iot-hub/iot-hub-create-using-cli.md) az Azure-előfizetésében.
 * Egy [IoT Edge-eszköz](how-to-register-device-cli.md) az telepítve van az IoT Edge-futtatókörnyezet.
-* [Az Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) a környezetben. Legalább az Azure CLI 2.0.24-es verzióját kell vagy újabb. A verziószámot az `az –-version` paranccsal ellenőrizheti. Ez a verzió támogatja az „az” bővítményparancsokat, és ebben a verzióban került bevezetésre a Knack parancskeretrendszer.
+* [Az Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) a környezetben. Legalább az Azure CLI 2.0.24-es verzióját kell vagy újabb. A verziószámot az `az --version` paranccsal ellenőrizheti. Ez a verzió támogatja az „az” bővítményparancsokat, és ebben a verzióban került bevezetésre a Knack parancskeretrendszer.
 * A [IoT-bővítmény az Azure CLI-vel](https://github.com/Azure/azure-iot-cli-extension).
 
 ## <a name="configure-a-deployment-manifest"></a>A manifest nasazení konfigurálása

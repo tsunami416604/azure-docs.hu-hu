@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 04/13/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 433a8b2f9fb1f4c4599afbb807e9270992a98a52
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e7a84d74e1bda6de8549c79dab1bec8c2515e213
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60824184"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67839067"
 ---
 # <a name="move-data-from-mongodb-using-azure-data-factory"></a>Adatok áthelyezése a mongodb-hez az Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Válassza ki a Data Factory szolgáltatás használ:"]
@@ -49,7 +49,7 @@ Létrehozhat egy folyamatot egy másolási tevékenységgel az adatok áthelyez�
 
 A folyamat létrehozásának legegyszerűbb módja az, hogy használja a **másolása varázsló**. Lásd: [oktatóanyag: Hozzon létre egy folyamatot a másolás varázsló használatával](data-factory-copy-data-wizard-tutorial.md) gyors bemutató létrehozása egy folyamatot az adatok másolása varázsló használatával.
 
-A következő eszközök használatával hozzon létre egy folyamatot: **Az Azure portal**, **Visual Studio**, **Azure PowerShell-lel**, **Azure Resource Manager-sablon**, **.NET API**, és  **REST API-val**. Lásd: [másolási tevékenység oktatóanyagát](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) egy másolási tevékenységgel ellátott adatcsatorna létrehozása a részletes útmutatóját.
+A következő eszközök használatával hozzon létre egy folyamatot: **A Visual Studio**, **Azure PowerShell-lel**, **Azure Resource Manager-sablon**, **.NET API**, és **REST API-val**. Lásd: [másolási tevékenység oktatóanyagát](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) egy másolási tevékenységgel ellátott adatcsatorna létrehozása a részletes útmutatóját.
 
 Az eszközök vagy az API-kat használja, hogy létrehoz egy folyamatot, amely a helyez át adatokat egy forrásadattárból egy fogadó adattárba a következő lépéseket fogja végrehajtani:
 
@@ -82,7 +82,7 @@ Szakaszok & adatkészletek definiálását tulajdonságainak teljes listáját l
 
 A **typeProperties** szakasz eltérő az egyes adatkészlet, és az adattárban lévő adatok helyét ismerteti. A typeProperties szakasz típusú adatkészlet **MongoDbCollection** tulajdonságai a következők:
 
-| Tulajdonság | Leírás | Kötelező |
+| Tulajdonság | Leírás | Szükséges |
 | --- | --- | --- |
 | collectionName |MongoDB-adatbázisban szereplő gyűjtemény neve. |Igen |
 
@@ -100,7 +100,7 @@ Ha a forrása típusa **MongoDbSource** typeProperties szakasz érhető el az al
 
 
 ## <a name="json-example-copy-data-from-mongodb-to-azure-blob"></a>JSON-példa: Adatok másolása a MongoDB-ből az Azure Blobba
-Ebben a példában biztosít, amellyel létrehoz egy folyamatot használatával példa JSON-definíciók [az Azure portal](data-factory-copy-activity-tutorial-using-azure-portal.md) vagy [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) vagy [Azure PowerShell-lel](data-factory-copy-activity-tutorial-using-powershell.md). Ez bemutatja, hogyan másolhat adatokat egy helyi MongoDB-ből az Azure Blob Storage. Azonban adatok átmásolhatók a conditions stated above fogadóként valamelyik [Itt](data-factory-data-movement-activities.md#supported-data-stores-and-formats) a másolási tevékenységgel az Azure Data Factoryban.
+Ebben a példában biztosít, amellyel létrehoz egy folyamatot használatával példa JSON-definíciók [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) vagy [Azure PowerShell-lel](data-factory-copy-activity-tutorial-using-powershell.md). Ez bemutatja, hogyan másolhat adatokat egy helyi MongoDB-ből az Azure Blob Storage. Azonban adatok átmásolhatók a conditions stated above fogadóként valamelyik [Itt](data-factory-data-movement-activities.md#supported-data-stores-and-formats) a másolási tevékenységgel az Azure Data Factoryban.
 
 A minta az alábbi data factory-entitások rendelkezik:
 
@@ -295,14 +295,14 @@ Ha adatok áthelyezése a mongodb-hez a következő hozzárendeléseket a rendsz
 
 | MongoDB-típus | .NET-keretrendszer típusa |
 | --- | --- |
-| binary |Byte[] |
-| Boolean |Boolean |
-| Dátum |DateTime |
+| Binary |Byte[] |
+| Logikai |Logikai |
+| Date |Datetime |
 | NumberDouble |Double |
 | NumberInt |Int32 |
 | NumberLong |Int64 |
-| ObjectID |String |
-| Karakterlánc |String |
+| ObjectID |Sztring |
+| String |Sztring |
 | UUID |Guid |
 | Object |Renormalized be simítja egybe az oszlopok, "_" beágyazott elválasztóként |
 
@@ -326,14 +326,14 @@ Például "ExampleTable" alatt egy MongoDB-tábla, amely rendelkezik egy oszlopo
 
 | _id | Ügyfél neve | Számlák | Szolgáltatásszint | Minősítések |
 | --- | --- | --- | --- | --- |
-| 1111 |ABC |[{invoice_id: "123" elem: "a toaster", ár: "456" kedvezményt: "0.2-es"}, {invoice_id: "124"-elem: "helyezzük", ár: "1235", kedvezmény: "0.2-es"}] |Silver |[5,6] |
+| 1111 |ABC |[{invoice_id: "123" elem: "a toaster", ár: "456" kedvezményt: "0.2-es"}, {invoice_id: "124"-elem: "helyezzük", ár: "1235", kedvezmény: "0.2-es"}] |Ezüst |[5,6] |
 | 2222 |XYZ |[{invoice_id: "135", cikk: "fridge", ár: "12543" kedvezményt: "0.0"}] |Arany |[1,2] |
 
 Az illesztőprogram hoz létre több virtuális táblákat, amelyek ebben a táblázatban szerepelnek. Az első virtuális tábla az alaptábla nevű, "ExampleTable" alább látható. Az alaptábla tartalmaz az eredeti tábla összes adatot, de a rendszer kihagyta a tömbök származó adatokat, és ki van bontva, a virtuális táblák.
 
 | _id | Ügyfél neve | Szolgáltatásszint |
 | --- | --- | --- |
-| 1111 |ABC |Silver |
+| 1111 |ABC |Ezüst |
 | 2222 |XYZ |Arany |
 
 Az alábbi táblázatok bemutatják a virtuális táblákat, amelyek a példában az eredeti tömböket. Ezek a táblázatok a következőket tartalmazzák:
@@ -344,7 +344,7 @@ Az alábbi táblázatok bemutatják a virtuális táblákat, amelyek a példába
 
 "ExampleTable_Invoices". tábla:
 
-| _id | ExampleTable_Invoices_dim1_idx | invoice_id | Elem | price | Kedvezmény |
+| _id | ExampleTable_Invoices_dim1_idx | invoice_id | item | price | Kedvezmény |
 | --- | --- | --- | --- | --- | --- |
 | 1111 |0 |123 |a toaster |456 |0.2 |
 | 1111 |1 |124 |Helyezzük |1235 |0.2 |

@@ -7,13 +7,14 @@ manager: jeconnoc
 ms.service: azure-functions
 ms.topic: article
 ms.date: 5/03/2019
-ms.author: alkarche, glenga
-ms.openlocfilehash: 55cce60ab3d1cda3cb870afd2f6214f917a04189
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: alkarche
+ms.reviewer: glenga
+ms.openlocfilehash: 0a31b58a3c843a2add0c84dc1a3ad4ab6417815e
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67063276"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67612889"
 ---
 # <a name="tutorial-integrate-functions-with-an-azure-virtual-network"></a>Oktatóanyag: függvények integrálása az Azure-beli virtuális hálózathoz
 
@@ -70,7 +71,7 @@ Ezután hozzon létre egy előre konfigurált virtuális Gépet, amely a WordPre
     | **A virtuális gép neve** | VNET-Wordpress | A virtuális gép nevének egyedinek kell lennie az erőforráscsoportban |
     | **[Régió](https://azure.microsoft.com/regions/)** | (Európa) Nyugat-Európa | Válasszon egy Önhöz közeli régiót, vagy az funkciók mellett, amely eléri a virtuális Gépet. |
     | **Méret** | B1s | Válasszon **méretének módosítása** majd válassza ki a B1s standard lemezképet, 1 vCPU- és 1 GB memóriával rendelkező. |
-    | **Hitelesítés típusa** | Jelszó | Jelszó-hitelesítés használatához meg kell adnia egy **felhasználónév**, biztonságos **jelszó**, majd **jelszó megerősítése**. A jelen oktatóanyag esetében nem kell bejelentkezni a virtuális Gépet, ha hibaelhárításkor. |
+    | **Hitelesítés típusa** | Windows 10 | Jelszó-hitelesítés használatához meg kell adnia egy **felhasználónév**, biztonságos **jelszó**, majd **jelszó megerősítése**. A jelen oktatóanyag esetében nem kell bejelentkezni a virtuális Gépet, ha hibaelhárításkor. |
 
 1. Válassza ki a **hálózatkezelés** lapra, és válassza a virtuális hálózatok konfigurálása **új létrehozása**.
 
@@ -80,7 +81,7 @@ Ezután hozzon létre egy előre konfigurált virtuális Gépet, amely a WordPre
 
     | Beállítás      | Ajánlott érték  | Leírás      |
     | ------------ | ---------------- | ---------------- |
-    | **Name (Név)** | myResourceGroup-vnet | Használhatja az alapértelmezett nevet, a virtuális hálózat jön létre. |
+    | **Name** | myResourceGroup-vnet | Használhatja az alapértelmezett nevet, a virtuális hálózat jön létre. |
     | **Címtartomány** | 10.10.0.0/16 | A virtuális hálózatához használni egy egyetlen címtartomány. |
     | **Alhálózat neve** | Az oktatóanyag-Net | Az alhálózat neve. |
     | **Címtartomány** (alhálózat) | 10.10.1.0/24   | Az alhálózat méretét határozza meg, hány felületek vehetők az alhálózathoz. A WordPress-webhelyet használja ezt az alhálózatot.  A `/24` alhálózati 254 gazdagép-címet biztosít. |
@@ -143,7 +144,7 @@ A VNet-integráció engedélyezve van hozzon létre egy proxyt a függvényalkal
 
     | Beállítás  | Ajánlott érték  | Leírás      |
     | -------- | ---------------- | ---------------- |
-    | **Name (Név)** | Üzem | A név bármilyen érték lehet. A proxy azonosítására szolgál. |
+    | **Name** | Üzem | A név bármilyen érték lehet. A proxy azonosítására szolgál. |
     | **Útvonalsablon** | /Plant | Olyan útvonalat, amely egy VM-erőforrás van leképezve. |
     | **Háttérkiszolgáló URL-címe** | http://<YOUR_VM_IP>/wp-content/themes/twentyseventeen/assets/images/header.jpg | Cserélje le `<YOUR_VM_IP>` a korábban létrehozott WordPress virtuális gép IP-címmel. Ez a leképezés egyetlen fájl a helyet adja vissza. |
 

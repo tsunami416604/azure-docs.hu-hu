@@ -10,12 +10,12 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 05/14/2019
 ms.custom: seodec18
-ms.openlocfilehash: d43bef902b66976c32735b6d45029f41bb5e3264
-ms.sourcegitcommit: 6cb4dd784dd5a6c72edaff56cf6bcdcd8c579ee7
+ms.openlocfilehash: 7aedb0804626d1204121568904763bec5e83e858
+ms.sourcegitcommit: 1572b615c8f863be4986c23ea2ff7642b02bc605
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67514043"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67786272"
 ---
 # <a name="azure-machine-learning-service-release-notes"></a>Az Azure Machine Learning szolgáltatás kibocsátási megjegyzései
 
@@ -25,7 +25,70 @@ Ebben a cikkben megismerheti az Azure Machine Learning szolgáltatás kiadások.
 
 Lásd: [kapcsolatos ismert problémák listája](resource-known-issues.md) ismert hibák és a lehetséges megoldások megismeréséhez.
 
+## <a name="2019-07-09"></a>2019-07-09
 
+### <a name="visual-interface"></a>Vizuális felhasználói felületet
++ **Előzetes verziójú funkciók**
+  + A hozzáadott "Execute R-parancsfájl" modul vizuális felületen.
+
+### <a name="azure-machine-learning-sdk-for-python-v1048"></a>Az Azure Machine Learning SDK for Python v1.0.48
+
++ **Új funkciók**
+  + **azureml-opendatasets**
+    + **az azureml-contrib-opendatasets** elérhetővé **azureml-opendatasets**. A régi csomagot továbbra is működik, de javasoljuk, hogy használatával **azureml-opendatasets** előrefelé gazdagabb képességekkel és fejlesztéseket.
+    + Ez a csomag új adatkészletként AML munkaterületen nyissa meg az adatkészletek regisztrálása, valamint az adatkészlet kínál tetszőleges elavuló lehetővé teszi.
+    + Például a Pandas/SPARK dataframes, nyissa meg adatkészleteket használó meglévő funkciót is tartalmaz, és a hely időjárási például egyes adatkészlethez csatlakozik.
+
++ **Előzetes verziójú funkciók**
+    + HyperDriveConfig most elfogadhatja folyamat objektum támogatásához a hiperparaméter finomhangolása a folyamat használata paraméterként.
+
++ **Hibajavítások és kapcsolatos fejlesztések**
+  + **azureml-train-automl**
+    + Kijavítva a hiba oszlopok típusok elveszíti az átalakítás után.
+    + Kijavítva a hiba, hogy egy objektumtípust, None (s) elején tartalmazó kell y_query. 
+    + Rögzített, a probléma a Ensemble kijelölés eljárás, amely a rendszer feleslegesen növekvő az eredményül kapott ensemble akkor is, ha a pontszámok állandó maradt.
+    + Kijavítva a hiba AutoMLStep whitelist_models és blacklist_models beállításokkal.
+    + A alkalmazásával feldolgozza azokat, ha AutoML használt volna az Azure gépi Tanulási folyamatok keretében használatát megakadályozó hiba kijavítva.
+  + **azureml-opendatasets**
+    + Áthelyezett azureml-contrib-opendatasets az azureml-opendatasets.
+    + Nyissa meg az adatkészlet osztályok AML-munkaterülethez regisztrálni és AML adatkészlet képességek zökkenőmentesen engedélyezett.
+    + Továbbfejlesztett NoaaIsdWeather jelentősen a SPARK verziójú teljesítményének bővítését.
+  + **azureml-explain-model**
+    + E objektumok frissített online dokumentációja.
+    + Hozzáadott ismertető referenciaszámítógépnek batch_size amikor include_local = False kötegelt végrehajtási ideje DecisionTreeExplainableModel javítása globális magyarázatok streameléshez.
+    + Javítva lett a probléma hol `explanation.expected_values` adna időnként vissza egy lebegőpontos listáját, hanem egy lebegőpontos benne.
+    + A hozzáadott várt értékeket automl mimic ismertető a kimeneti modell könyvtár ismertetik.
+    + Rögzített permutációkban kiválasztott funkció fontos, amikor átalakítások argumentumként megadott nyers funkció fontosság beolvasása.
+    + Hozzáadott ismertető referenciaszámítógépnek batch_size amikor include_local = False kötegelt végrehajtási ideje DecisionTreeExplainableModel modell explainability szalagtár javítása globális magyarázatok streameléshez.
+  + **azureml-core**
+    + Az AzureML CLI DBFS adattárainak csatolhat hozzá.
+    + Amikor létrejön egy üres mappát, ha az adattár feltöltése a probléma kijavítva `target_path` lépések `/`.
+    + Két adatkészletet engedélyezett összehasonlítása.
+    + Modell és a lemezkép törlése most további információt a beolvasása függ őket, ha egy fölérendelt függőség miatt hiúsul meg delete felsőbb rétegbeli objektumokat tartalmaz.
+    + A fel nem használt RunConfiguration beállításával auto_prepare_environment elavult.
+  + **azureml-mlflow**
+    + Továbbfejlesztett erőforrás-felhasználásával azureml.mlflow használó távoli Futtatás.
+    + Javult a dokumentáció az azureml-mlflow csomag.
+    + Javítva lett a probléma, ahol mlflow.log_artifacts("my_dir") szeretné menteni a összetevők a "my_dir/összetevő-útvonalak" helyett "összetevő-útvonalak".
+  + **azureml-dataprep**
+    + Adatfolyam objektumok is most kell többször is végrehajtódik a rekordok egy feladatütemezési előállító.
+    + Javítva lett a probléma hol `Dataflow.read_pandas_dataframe` sikertelen lesz, ha a `in_memory` argumentum IGAZ értékre van beállítva.
+    + Jobb kezelése pandas nem karakterlánc típusú oszlop indexekkel rendelkező adatkerettípusokat jelölhet.
+    + Közzétett `set_diagnostics_collection()` a programozott engedélyezése vagy letiltása a telemetriai adatok gyűjtésének engedélyezéséhez.
+    + A hozzáadott csúcsérték és bottomValues foglalják össze.
+  + **azureml-pipeline-core**
+    + Összes folyamat lépéseit paraméter hash_paths elavult, és a jövőbeli törlődnek. A forráskönyvtár tartalmát alapértelmezés szerint kivonatolt (kivéve a .amlignore vagy .gitignore felsorolt fájlokat)
+    + Folyamatos javítása modul és ModuleStep számítási típus modulokról, támogatásához előkészítésekor RunConfiguration integráció és a további módosításokat a folyamatokban felhasználási feloldásához.
+  + **azureml-pipeline-steps**
+    + AzureBatchStep: Továbbfejlesztett dokumentáció tartományállapot bemenetekben/kimenetekben.
+    + AzureBatchStep: Changed delete_batch_job_after_finish default value to true.
+  + **azureml-train-core**
+    + Karakterláncok mostantól fogadja a cél számítási a Hiperparaméter finomhangolása automatizált módon.
+    + A fel nem használt RunConfiguration beállításával auto_prepare_environment elavult.
+    + Elavult paraméterek `conda_dependencies_file_path` és `pip_requirements_file_path` érvénytelenítve `conda_dependencies_file` és `pip_requirements_file` jelölik.
+  + **azureml-opendatasets**
+    + NoaaIsdWeather javíthatja a SPARK verziójú teljesítménye jelentősen bővítését.
+    
 ## <a name="2019-07-01"></a>2019-07-01
 
 ### <a name="azure-machine-learning-data-prep-sdk-v117"></a>Az Azure Machine Learning adat-előkészítési SDK v1.1.7

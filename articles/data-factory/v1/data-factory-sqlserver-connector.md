@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: be36f9ab881f2375b14ba0ea36038f9e840d199f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1e70611d438678ded1260dd00a04960c798fdde5
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66156502"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67836227"
 ---
 # <a name="move-data-to-and-from-sql-server-on-premises-or-on-iaas-azure-vm-using-azure-data-factory"></a>Helyezze át az adatokat, és a helyszíni SQL Server vagy az IaaS (Azure VM) az Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Válassza ki a Data Factory szolgáltatás használ:"]
@@ -56,7 +56,7 @@ Létrehozhat egy folyamatot egy másolási tevékenységgel az adatok egy helysz
 
 A folyamat létrehozásának legegyszerűbb módja az, hogy használja a **másolása varázsló**. Lásd: [oktatóanyag: Hozzon létre egy folyamatot a másolás varázsló használatával](data-factory-copy-data-wizard-tutorial.md) gyors bemutató létrehozása egy folyamatot az adatok másolása varázsló használatával.
 
-A következő eszközök használatával hozzon létre egy folyamatot: **Az Azure portal**, **Visual Studio**, **Azure PowerShell-lel**, **Azure Resource Manager-sablon**, **.NET API**, és  **REST API-val**. Lásd: [másolási tevékenység oktatóanyagát](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) egy másolási tevékenységgel ellátott adatcsatorna létrehozása a részletes útmutatóját.
+A következő eszközök használatával hozzon létre egy folyamatot: **A Visual Studio**, **Azure PowerShell-lel**, **Azure Resource Manager-sablon**, **.NET API**, és **REST API-val**. Lásd: [másolási tevékenység oktatóanyagát](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) egy másolási tevékenységgel ellátott adatcsatorna létrehozása a részletes útmutatóját.
 
 Az eszközök vagy az API-kat használja, hogy létrehoz egy folyamatot, amely a helyez át adatokat egy forrásadattárból egy fogadó adattárba a következő lépéseket fogja végrehajtani:
 
@@ -79,7 +79,7 @@ Az alábbi táblázatban az adott SQL Server-alapú társított szolgáltatás J
 | type |A type tulajdonságot kell beállítani: **OnPremisesSqlServer**. |Igen |
 | connectionString |Adja meg a connectionString adatokat a helyszíni SQL Server-adatbázis SQL-hitelesítés vagy a Windows-hitelesítés használatával való kapcsolódáshoz szükséges. |Igen |
 | gatewayName |Az átjáró által a Data Factory szolgáltatás a helyszíni SQL Server adatbázishoz való csatlakozáshoz használandó neve. |Igen |
-| username |Ha Windows-hitelesítést használ, adja meg a felhasználónevet. Példa: **domainname\\username**. |Nem |
+| username |Ha Windows-hitelesítést használ, adja meg a felhasználónevet. Példa: **domainname\\felhasználónév**. |Nem |
 | password |Adja meg a felhasználónévhez megadott felhasználói fiók jelszavát. |Nem |
 
 A hitelesítő adatok titkosíthatók a **New-AzDataFactoryEncryptValue** parancsmag és a kapcsolati karakterláncot használja őket az alábbi példában látható módon (**EncryptedCredential** tulajdonság):
@@ -88,7 +88,7 @@ A hitelesítő adatok titkosíthatók a **New-AzDataFactoryEncryptValue** paranc
 "connectionString": "Data Source=<servername>;Initial Catalog=<databasename>;Integrated Security=True;EncryptedCredential=<encrypted credential>",
 ```
 
-### <a name="samples"></a>Minták
+### <a name="samples"></a>Példák
 **JSON-t az SQL-hitelesítés használata**
 
 ```json
@@ -178,7 +178,7 @@ Ha sqlReaderQuery vagy sqlReaderStoredProcedureName nincs megadva, a struktúra 
 
 
 ## <a name="json-examples-for-copying-data-from-and-to-sql-server"></a>JSON-példák az adatok másolása a kezdő és a SQL Server
-Az alábbi példák megadják példa JSON-definíciók, amelyek segítségével létrehoz egy folyamatot használatával [az Azure portal](data-factory-copy-activity-tutorial-using-azure-portal.md) vagy [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) vagy [Azure PowerShell-lel](data-factory-copy-activity-tutorial-using-powershell.md). A következő példák bemutatják, hogyan másolhat adatokat az SQL Server és az Azure Blob Storage. Azonban az adatok átmásolhatók **közvetlenül** bármelyik források a conditions stated above fogadóként valamelyik [Itt](data-factory-data-movement-activities.md#supported-data-stores-and-formats) a másolási tevékenységgel az Azure Data Factoryban.
+Az alábbi példák megadják példa JSON-definíciók, amelyek segítségével létrehoz egy folyamatot használatával [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) vagy [Azure PowerShell-lel](data-factory-copy-activity-tutorial-using-powershell.md). A következő példák bemutatják, hogyan másolhat adatokat az SQL Server és az Azure Blob Storage. Azonban az adatok átmásolhatók **közvetlenül** bármelyik források a conditions stated above fogadóként valamelyik [Itt](data-factory-data-movement-activities.md#supported-data-stores-and-formats) a másolási tevékenységgel az Azure Data Factoryban.
 
 ## <a name="example-copy-data-from-sql-server-to-azure-blob"></a>Példa: Adatok másolása az SQL Server az Azure Blob
 Az alábbi mintában látható:

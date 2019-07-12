@@ -2,17 +2,17 @@
 title: Ajánlott eljárások operátor - fürt elkülönítés az Azure Kubernetes-szolgáltatások (AKS)
 description: A fürt operátor ajánlott eljárások az elkülönítés az Azure Kubernetes Service (AKS)
 services: container-service
-author: iainfoulds
+author: mlearned
 ms.service: container-service
 ms.topic: conceptual
 ms.date: 11/26/2018
-ms.author: iainfou
-ms.openlocfilehash: 94aaa72497a8a5f171d6b42f59a3c5b507c71492
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: mlearned
+ms.openlocfilehash: 8150e184f0c7533d5a6e7e4847bf126206f5e6c6
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60465306"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67614930"
 ---
 # <a name="best-practices-for-cluster-isolation-in-azure-kubernetes-service-aks"></a>Ajánlott eljárások a fürt elkülönítés az Azure Kubernetes Service (AKS)
 
@@ -26,9 +26,9 @@ Ajánlott eljárások a cikkben a fürt operátorok elkülönítési összpontos
 
 ## <a name="design-clusters-for-multi-tenancy"></a>Több-bérlős tervezési-fürtök
 
-Kubernetes biztosít funkciókat, amelyekkel logikailag elkülönítheti a különböző csapatok és a számítási feladatokat ugyanazon fürt. A cél legyen, adja meg a legalacsonyabb jogosultságok, a hatókörön belüli egyes csapat által igényelt erőforrások száma. A [Namespace] [ k8s-namespaces] a Kubernetes létrehoz egy logikai elkülönítési határt. További kubernetes funkciók és az elkülönítési és több-bérlős kapcsolatos szempontok közé tartozik a következő területeken:
+Kubernetes biztosít funkciókat, amelyekkel logikailag elkülönítheti a különböző csapatok és a számítási feladatokat ugyanazon fürt. A cél legyen, adja meg a legalacsonyabb jogosultságok, a hatókörön belüli egyes csapat által igényelt erőforrások száma. A [Namespace][k8s-namespaces] a Kubernetes létrehoz egy logikai elkülönítési határt. További kubernetes funkciók és az elkülönítési és több-bérlős kapcsolatos szempontok közé tartozik a következő területeken:
 
-* **Ütemezés** beletartozik a erőforráskvóták és pod megszakítás költségvetése alapszintű funkciókat. Ezek a funkciók kapcsolatos további információkért lásd: [ajánlott eljárásai az aks-ben alapszintű ütemezési funkciókat][aks-best-practices-scheduler].
+* **Ütemezés** beletartozik a erőforráskvóták és pod megszakítás költségvetése alapszintű funkciókat. Ezek a funkciók kapcsolatos további információkért lásd: [ajánlott eljárásai alapszintű ütemezési funkciókat az aks-ben][aks-best-practices-scheduler].
   * Speciális ütemezési szolgáltatásai a elkerülésére és a tolerations, a csomópont választók, és a csomópont- és pod kapcsolat vagy a affinitást. Ezek a funkciók kapcsolatos további információkért lásd: [ajánlott eljárások az aks-ben a scheduler speciális funkciók][aks-best-practices-advanced-scheduler].
 * **Hálózatkezelés** is magában foglalja a hálózati házirendeket a podok és a forgalom szabályozásához.
 * **Hitelesítés és engedélyezés** tartalmazzák a felhasználót a szerepköralapú hozzáférés-vezérlés (RBAC) és a Azure Active Directory (AD) integrációt, a pod identitások és a titkos kulcsok Azure Key vaultban. Ezek a funkciók kapcsolatos további információkért lásd: [gyakorlati tanácsok a hitelesítés és engedélyezés az aks-ben][aks-best-practices-identity].
@@ -38,7 +38,7 @@ Kubernetes biztosít funkciókat, amelyekkel logikailag elkülönítheti a kül�
 
 **Ajánlott eljárásokkal kapcsolatos útmutatás** -csapatok és projektek külön logikai elkülönítés használatával. Próbálja meg minimálisra csökkenteni a fizikai üzembe AKS-fürtök számát csapatok vagy alkalmazások elkülönítése.
 
-Logikai elkülönítés egy AKS-fürt több számítási feladatokhoz, csapatok és környezetek esetében használható. Kubernetes [névterek] [ k8s-namespaces] számítási feladatok és erőforrások a logikai elkülönítési határt alkotnak.
+Logikai elkülönítés egy AKS-fürt több számítási feladatokhoz, csapatok és környezetek esetében használható. Kubernetes [névterek][k8s-namespaces] számítási feladatok és erőforrások a logikai elkülönítési határt alkotnak.
 
 ![Logikai elkülönítéssel egy Kubernetes-fürt az aks-ben](media/operator-best-practices-cluster-isolation/logical-isolation.png)
 

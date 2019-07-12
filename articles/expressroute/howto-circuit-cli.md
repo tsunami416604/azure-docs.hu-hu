@@ -6,13 +6,14 @@ author: cherylmc
 ms.service: expressroute
 ms.topic: conceptual
 ms.date: 12/07/2018
-ms.author: anzaman;cherylmc
-ms.openlocfilehash: 556589aa7a0a577b9b1a010cf4811922ebc6de52
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: cherylmc
+ms.reviewer: anzaman
+ms.openlocfilehash: e42190814b9365c7db054eb2b5f1842581b64009
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60837810"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67657072"
 ---
 # <a name="create-and-modify-an-expressroute-circuit-using-cli"></a>Létrehozása és módosítása egy ExpressRoute-kapcsolatcsoport parancssori felület használatával
 
@@ -23,9 +24,10 @@ Ez a cikk ismerteti az Azure ExpressRoute-kapcsolatcsoport létrehozása a paran
 > * [Azure Portal](expressroute-howto-circuit-portal-resource-manager.md)
 > * [PowerShell](expressroute-howto-circuit-arm.md)
 > * [Azure CLI](howto-circuit-cli.md)
+> * [Azure Resource Manager-sablon](expressroute-howto-circuit-resource-manager-template.md)
 > * [Videó – Azure portal](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-an-expressroute-circuit)
 > * [PowerShell (klasszikus)](expressroute-howto-circuit-classic.md)
-> 
+>
 
 ## <a name="before-you-begin"></a>Előkészületek
 
@@ -127,8 +129,8 @@ Most már készen áll az ExpressRoute-kapcsolatcsoport létrehozása.
 
 > [!IMPORTANT]
 > Az ExpressRoute-kapcsolatcsoport számlázása a szolgáltatáskulcs pillanatától kezdve. Hajtsa végre ezt a műveletet, amikor üzembe helyezi a kapcsolatcsoportot készen áll-e a kapcsolat szolgáltatóját.
-> 
-> 
+>
+>
 
 Ha még nem rendelkezik egy erőforráscsoport, egy az ExpressRoute-kapcsolatcsoport létrehozása előtt kell létrehoznia. Létrehozhat egy erőforráscsoportot a következő parancs futtatásával:
 
@@ -136,7 +138,7 @@ Ha még nem rendelkezik egy erőforráscsoport, egy az ExpressRoute-kapcsolatcso
 az group create -n ExpressRouteResourceGroup -l "West US"
 ```
 
-Az alábbi példa bemutatja, hogyan hozhat létre egy 200 Mbps ExpressRoute-kapcsolatcsoporton keresztül Equinix szilícium-völgy. Másik szolgáltatóhoz, és különböző beállításokat használja, ha helyettesítse be ezt az információt, amikor a kérést. 
+Az alábbi példa bemutatja, hogyan hozhat létre egy 200 Mbps ExpressRoute-kapcsolatcsoporton keresztül Equinix szilícium-völgy. Másik szolgáltatóhoz, és különböző beállításokat használja, ha helyettesítse be ezt az információt, amikor a kérést.
 
 Ügyeljen arra, hogy megadja a helyes Termékváltozat-szint és a Termékváltozat-család:
 
@@ -267,8 +269,8 @@ Részletes útmutatásért tekintse meg a [ExpressRoute-Kapcsolatcsoportok útv�
 
 > [!IMPORTANT]
 > Ezek az utasítások csak 2 réteg szolgáltatás kínáló szolgáltatóknál létrehozott Kapcsolatcsoportok vonatkoznak. Ha használja a szolgáltató által kínált felügyelt réteg (általában egy IP VPN, mint az MPLS) 3 szolgáltatások, a kapcsolatszolgáltató konfigurálja és kezeli az útválasztást Ön helyett.
-> 
-> 
+>
+>
 
 ### <a name="8-link-a-virtual-network-to-an-expressroute-circuit"></a>8. Virtuális hálózat összekapcsolása egy ExpressRoute-kapcsolatcsoporttal
 
@@ -279,7 +281,7 @@ Ezután egy virtuális hálózat összekapcsolása az ExpressRoute-kapcsolatcsop
 Egyes ExpressRoute-kapcsolatcsoport tulajdonságainak kapcsolat befolyásolása nélkül módosíthatja. A következő módosításokat üzemkimaradás nélkül végezheti el:
 
 * Engedélyezheti vagy az ExpressRoute prémium bővítmény letiltása az ExpressRoute-kapcsolatcsoport esetében.
-* Az ExpressRoute-kapcsolatcsoport sávszélességét, növelheti, feltéve, hogy kapacitás érhető el a porton. Alacsonyabb verziójúra változtatása a kapcsolatcsoport sávszélességétől azonban nem támogatott. 
+* Az ExpressRoute-kapcsolatcsoport sávszélességét, növelheti, feltéve, hogy kapacitás érhető el a porton. Alacsonyabb verziójúra változtatása a kapcsolatcsoport sávszélességétől azonban nem támogatott.
 * A mérési terv a korlátlan díjas módosítható. Mérési csomag módosítása a korlátlan, a forgalmi díjas adatokhoz azonban nem támogatott.
 * Engedélyezheti és letilthatja az *klasszikus működés engedélyezése*.
 
@@ -299,8 +301,8 @@ A kapcsolatcsoport most már engedélyezve van az ExpressRoute prémium bővítm
 
 > [!IMPORTANT]
 > Ez a művelet sikertelen lehet, ha erőforrást, amely nagyobb, mint a megengedett a standard szintű kapcsolatcsoportot használ.
-> 
-> 
+>
+>
 
 Mielőtt letiltaná az ExpressRoute prémium bővítmény, ismerje meg a következő feltételeknek:
 

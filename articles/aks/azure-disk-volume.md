@@ -2,17 +2,17 @@
 title: Podok statikus kötetet létrehozni az Azure Kubernetes Service (AKS)
 description: Ismerje meg, hogyan hozhat létre manuálisan egy kötet a podot Azure Kubernetes Service (AKS) segítségével Azure-lemezek
 services: container-service
-author: iainfoulds
+author: mlearned
 ms.service: container-service
 ms.topic: article
 ms.date: 03/01/2019
-ms.author: iainfou
-ms.openlocfilehash: b166f70186b063782fb2c2245e351d6dfca6f978
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: mlearned
+ms.openlocfilehash: 9017c8cf721fbb9c493dc18da769b9d6e83ddf05
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65072161"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67616138"
 ---
 # <a name="manually-create-and-use-a-volume-with-azure-disks-in-azure-kubernetes-service-aks"></a>Manuális létrehozásához és a egy kötet használata Azure-lemezek az Azure Kubernetes Service (AKS)
 
@@ -25,7 +25,7 @@ A Kubernetes-köteteken további információkért lásd: [tárolási lehetősé
 
 ## <a name="before-you-begin"></a>Előkészületek
 
-Ez a cikk azt feltételezi, hogy egy meglévő AKS-fürtöt. Ha egy AKS-fürtre van szüksége, tekintse meg az AKS gyors [az Azure CLI-vel] [ aks-quickstart-cli] vagy [az Azure portal használatával][aks-quickstart-portal].
+Ez a cikk azt feltételezi, hogy egy meglévő AKS-fürtöt. Ha egy AKS-fürtre van szüksége, tekintse meg az AKS gyors [az Azure CLI-vel][aks-quickstart-cli] or [using the Azure portal][aks-quickstart-portal].
 
 Emellett az Azure CLI 2.0.59 verziójára van szükség, vagy később telepített és konfigurált. Futtatás `az --version` a verzió megkereséséhez. Ha telepíteni vagy frissíteni, tekintse meg kell [Azure CLI telepítése][install-azure-cli].
 
@@ -33,7 +33,7 @@ Emellett az Azure CLI 2.0.59 verziójára van szükség, vagy később telepíte
 
 Ha egy Azure-lemez használatra hoz létre az aks-sel, hozhat létre a lemezerőforrást a a **csomópont** erőforráscsoportot. Ez a megközelítés lehetővé teszi, hogy az AKS-fürt eléréséhez és kezeléséhez a lemezerőforrást. Hozzon létre a lemezt egy külön erőforráscsoportban, ha a fürt számára kell biztosítania az Azure Kubernetes Service (AKS) egyszerű szolgáltatás a `Contributor` szerepkör a lemez erőforrás-csoportba.
 
-Ebben a cikkben a lemez létrehozása a csomópont erőforráscsoportban. Először kérje le az erőforráscsoport neve az a [az aks show] [ az-aks-show] parancsot, majd adja hozzá a `--query nodeResourceGroup` lekérdezési paraméter. Az alábbi példa lekéri az AKS-fürt nevét a csomópont erőforráscsoport *myAKSCluster* az erőforráscsoport nevét a *myResourceGroup*:
+Ebben a cikkben a lemez létrehozása a csomópont erőforráscsoportban. Először kérje le az erőforráscsoport neve az a [az aks show][az-aks-show] parancsot, majd adja hozzá a `--query nodeResourceGroup` lekérdezési paraméter. Az alábbi példa lekéri az AKS-fürt nevét a csomópont erőforráscsoport *myAKSCluster* az erőforráscsoport nevét a *myResourceGroup*:
 
 ```azurecli-interactive
 $ az aks show --resource-group myResourceGroup --name myAKSCluster --query nodeResourceGroup -o tsv
@@ -41,7 +41,7 @@ $ az aks show --resource-group myResourceGroup --name myAKSCluster --query nodeR
 MC_myResourceGroup_myAKSCluster_eastus
 ```
 
-Most hozzon létre egy lemez a [az lemez létrehozása] [ az-disk-create] parancsot. Adja meg az előző parancs, és a lemez-erőforrás neve például előállított csomópont erőforráscsoportnevet *myAKSDisk*. A következő példában létrehozunk egy *20*GiB lemez, és ezután a lemez Azonosítóját kimenetére. Ha a lemez létrehozása a Windows Server-tárolók (jelenleg előzetes verzióban érhető el az aks-ben) van szüksége, vegye fel a `--os-type windows` paraméter helyesen formázni a lemezt.
+Most hozzon létre egy lemez a [az lemez létrehozása][az-disk-create] parancsot. Adja meg az előző parancs, és a lemez-erőforrás neve például előállított csomópont erőforráscsoportnevet *myAKSDisk*. A következő példában létrehozunk egy *20*GiB lemez, és ezután a lemez Azonosítóját kimenetére. Ha a lemez létrehozása a Windows Server-tárolók (jelenleg előzetes verzióban érhető el az aks-ben) van szüksége, vegye fel a `--os-type windows` paraméter helyesen formázni a lemezt.
 
 ```azurecli-interactive
 az disk create \
@@ -126,7 +126,7 @@ Events:
 
 ## <a name="next-steps"></a>További lépések
 
-További kapcsolódó ajánlott eljárások: [ajánlott eljárások a storage és az aks-ben biztonsági mentések][operator-best-practices-storage].
+További kapcsolódó ajánlott eljárások: [ajánlott eljárások a tárolási és biztonsági másolatokat az aks-ben][operator-best-practices-storage].
 
 További információ az AKS fürtök kezelése az Azure-lemezek, lásd: a [Kubernetes beépülő modul az Azure Disks][kubernetes-disks].
 

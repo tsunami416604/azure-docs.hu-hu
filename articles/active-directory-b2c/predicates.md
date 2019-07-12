@@ -10,24 +10,24 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 06879164c6f72891b734da077c667c6f90448fe4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6163f1cbf878f4d4678b2b66829522b0dd16ae22
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66512969"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67835633"
 ---
 # <a name="predicates-and-predicatevalidations"></a>Predikátumok és PredicateValidations
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-A **predikátumokat** és **PredicateValidations** elemek lehetővé teszik annak érdekében, hogy csak a megfelelően formázott adatok írja be a rendszer az Azure Active Directory (Azure AD) B2C-bérlő egy érvényesítési folyamat végrehajtásához .  
+A **predikátumokat** és **PredicateValidations** elemek lehetővé teszik annak érdekében, hogy csak a megfelelően formázott adatok írja be a rendszer az Azure Active Directory (Azure AD) B2C-bérlő egy érvényesítési folyamat végrehajtásához .
 
-Az alábbi ábrán az elemek közötti kapcsolat látható:  
+Az alábbi ábrán az elemek közötti kapcsolat látható:
 
-![Predikátumok](./media/predicates/predicates.png)
+![Predikátumok és predikátum érvényesítést kapcsolatot megjelenítő diagram](./media/predicates/predicates.png)
 
-## <a name="predicates"></a>Predikátumok  
+## <a name="predicates"></a>Predikátumok
 
 A **predikátum** elem egy alapvető érvényesítési ellenőrzéséhez egy jogcímtípust értékét határozza meg, és adja vissza `true` vagy `false`. Az érvényesítés egy meghatározott történik **metódus** elem és a egy **paraméter** módszer vonatkozó elemek. Egy predikátum például ellenőrizheti, hogy egy karakterlánc jogcím értékének hossza megadott minimális és maximális paraméterek tartományán belül, vagy e tartalmazza-e egy karakterláncértéket jogcím egy karakterkészlet. A **UserHelpText** elem a felhasználók számára biztosít egy hibaüzenet, ha az ellenőrzés sikertelen. Az érték **UserHelpText** elem honosítható használatával [nyelvi testreszabás](localization.md).
 
@@ -35,13 +35,13 @@ A **predikátumokat** elem tartalmazza a következő elemet:
 
 | Elem | Előfordulás | Leírás |
 | ------- | ----------- | ----------- |
-| Predikátum | 1:n | Predikátumok listája. | 
+| Predikátum | 1:n | Predikátumok listája. |
 
 A **predikátum** elem tartalmazza a következő attribútumokat:
 
-| Attribútum | Kötelező | Leírás |
+| Attribútum | Szükséges | Leírás |
 | --------- | -------- | ----------- |
-| Azonosító | Igen | A predikátum használt azonosító. Más elemek használhatja ezt az azonosítót a házirendben. |
+| Id | Igen | A predikátum használt azonosító. Más elemek használhatja ezt az azonosítót a házirendben. |
 | Módszer | Igen | Az érvényesítéshez használandó módszer típusa. Lehetséges értékek: **IsLengthRange**, **MatchesRegex**, **IncludesCharacters**, vagy **IsDateRange**. A **IsLengthRange** érték ellenőrzi, hogy a megadott minimális és maximális paraméter tartományán belül van-e egy karakterlánc jogcím értékének hossza. A **MatchesRegex** értékét ellenőrzi, hogy egy karakterlánc jogcím értéke megegyezik-e egy reguláris kifejezést. A **IncludesCharacters** értékét ellenőrzi, hogy jogcím egy karakterláncértéket tartalmaz egy karakterkészlet. A **IsDateRange** értékét ellenőrzi, hogy egy olyan dátumértéket jogcím megadott minimális és maximális paraméterek számos között. |
 
 A **predikátum** elem a következő elemeket tartalmazza:
@@ -49,19 +49,19 @@ A **predikátum** elem a következő elemeket tartalmazza:
 | Elem | Előfordulás | Leírás |
 | ------- | ----------- | ----------- |
 | UserHelpText | 1:1 | A felhasználók számára, ha az ellenőrzés sikertelen, egy hibaüzenet. Ez a karakterlánc honosítható használatával a [nyelvi testreszabás](localization.md) |
-| Paraméterek | 1:1 | A karakterlánc érvényesítési metódus típusú paramétereit. | 
+| Paraméterek | 1:1 | A karakterlánc érvényesítési metódus típusú paramétereit. |
 
 A **paraméterek** elem a következő elemeket tartalmazza:
 
 | Elem | Előfordulás | Leírás |
 | ------- | ----------- | ----------- |
-| Paraméter | 1:n | A karakterlánc érvényesítési metódus típusú paramétereit. | 
+| Paraméter | 1:n | A karakterlánc érvényesítési metódus típusú paramétereit. |
 
 A **paraméter** elem tartalmazza a következő attribútumokat:
 
 | Elem | Előfordulás | Leírás |
 | ------- | ----------- | ----------- |
-| Azonosító | 1:1 | A paraméter-azonosítója. |
+| Id | 1:1 | A paraméter-azonosítója. |
 
 A következő példa bemutatja egy `IsLengthRange` a paraméterekkel rendelkező metódus `Minimum` és `Maximum` , amelyek meghatározzák, hogy a karakterlánc hosszának tartományán:
 
@@ -108,7 +108,7 @@ A következő példa bemutatja egy `IsDateRange` a paraméterekkel rendelkező m
 </Predicate>
 ```
 
-## <a name="predicatevalidations"></a>PredicateValidations 
+## <a name="predicatevalidations"></a>PredicateValidations
 
 A predikátum meghatározása egy jogcímtípust összevetni az érvényesítés közben a **PredicateValidations** csoport predikátumok kialakításához arra az egy felhasználó bemenetellenőrzésből alkalmazható a jogcím típusa egy készletét. Minden egyes **PredicateValidation** elem tartalmaz egy **PredicateGroup** készletét tartalmazó elemek **PredicateReference** elemeket, amelyeket egy mutat**Predikátum**. Az érvényesítés át, a jogcím értékét kell átadnia mindegyik bármely predikátum összes teszt a **PredicateGroup** azok készletével együtt **PredicateReference** elemeket.
 
@@ -134,42 +134,42 @@ A **PredicateValidations** elem tartalmazza a következő elemet:
 
 | Elem | Előfordulás | Leírás |
 | ------- | ----------- | ----------- |
-| PredicateValidation | 1:n | A predikátum érvényesítési listája. | 
+| PredicateValidation | 1:n | A predikátum érvényesítési listája. |
 
 A **PredicateValidation** elem tartalmazza a következő attribútumot:
 
-| Attribútum | Kötelező | Leírás |
+| Attribútum | Szükséges | Leírás |
 | --------- | -------- | ----------- |
-| Azonosító | Igen | A predikátum érvényesítési használt azonosító. A **takar** elem használhatja ezt az azonosítót a házirendben. |
+| Id | Igen | A predikátum érvényesítési használt azonosító. A **takar** elem használhatja ezt az azonosítót a házirendben. |
 
 A **PredicateValidation** elem tartalmazza a következő elemet:
 
 | Elem | Előfordulás | Leírás |
 | ------- | ----------- | ----------- |
-| PredicateGroups | 1:n | Predikátum csoportok listája. | 
+| PredicateGroups | 1:n | Predikátum csoportok listája. |
 
 A **PredicateGroups** elem tartalmazza a következő elemet:
 
 | Elem | Előfordulás | Leírás |
 | ------- | ----------- | ----------- |
-| PredicateGroup | 1:n | Predikátumok listája. | 
+| PredicateGroup | 1:n | Predikátumok listája. |
 
 A **PredicateGroup** elem tartalmazza a következő attribútumot:
 
 | Attribútum | Szükséges | Leírás |
 | --------- | -------- | ----------- |
-| Azonosító | Igen | A predikátum csoport használt azonosító.  |
+| Id | Igen | A predikátum csoport használt azonosító.  |
 
 A **PredicateGroup** elem a következő elemeket tartalmazza:
 
 | Elem | Előfordulás | Leírás |
 | ------- | ----------- | ----------- |
-| UserHelpText | 1:1 |  A predikátum, hogy a felhasználók tudni, hogy milyen előnyöket leírását, adjon meg. | 
-| PredicateReferences | 1:n | Predikátumhivatkozások listáját. | 
+| UserHelpText | 1:1 |  A predikátum, hogy a felhasználók tudni, hogy milyen előnyöket leírását, adjon meg. |
+| PredicateReferences | 1:n | Predikátumhivatkozások listáját. |
 
 A **PredicateReferences** elem tartalmazza a következő attribútumokat:
 
-| Attribútum | Kötelező | Leírás |
+| Attribútum | Szükséges | Leírás |
 | --------- | -------- | ----------- |
 | MatchAtLeast | Nem | Itt adhatja meg, hogy az értéknek meg kell felelnie legalább, hogy számos predikátum el kell fogadni a bemenet-definíciói. |
 
@@ -177,18 +177,18 @@ A **PredicateReferences** elem a következő elemeket tartalmazza:
 
 | Elem | Előfordulás | Leírás |
 | ------- | ----------- | ----------- |
-| PredicateReference | 1:n | A predikátum hivatkozik. | 
+| PredicateReference | 1:n | A predikátum hivatkozik. |
 
 A **PredicateReference** elem tartalmazza a következő attribútumokat:
 
 | Attribútum | Szükséges | Leírás |
 | --------- | -------- | ----------- |
-| Azonosító | Igen | A predikátum érvényesítési használt azonosító.  |
+| Id | Igen | A predikátum érvényesítési használt azonosító.  |
 
 
 ## <a name="configure-password-complexity"></a>Jelszó bonyolultsága konfigurálása
 
-A **predikátumokat** és **PredicateValidationsInput** szabályozhatja, hogy a bonyolultsági feltételeknek-fiók létrehozása során a felhasználó által megadott jelszót. Alapértelmezés szerint az Azure AD B2C-t használja az erős jelszavak. Az Azure AD B2C-t is támogatja a konfigurációs beállítások vezérléséhez, amellyel az ügyfelek jelszavak bonyolultságát. Jelszó bonyolultsága ezen predikátum elemek használatával adhatja meg: 
+A **predikátumokat** és **PredicateValidationsInput** szabályozhatja, hogy a bonyolultsági feltételeknek-fiók létrehozása során a felhasználó által megadott jelszót. Alapértelmezés szerint az Azure AD B2C-t használja az erős jelszavak. Az Azure AD B2C-t is támogatja a konfigurációs beállítások vezérléséhez, amellyel az ügyfelek jelszavak bonyolultságát. Jelszó bonyolultsága ezen predikátum elemek használatával adhatja meg:
 
 - **IsLengthBetween8And64** használatával a `IsLengthRange` metódus, ellenőrzi, hogy a jelszónak 8 – 64 karakter hosszúságúnak kell lennie.
 - **Kis** használatával a `IncludesCharacters` metódus, ellenőrzi, hogy a jelszó tartalmazza-e egy kisbetű.
@@ -348,7 +348,7 @@ A jogcímtípus, adja hozzá a **PredicateValidationReference** elemet, és adja
 
 A következő bemutatja, hogyan vannak rendszerezve a elemeket az Azure AD B2C-vel a hibaüzenetet jeleníti meg:
 
-![Predikátum folyamat](./media/predicates/predicates-pass.png)
+![Predikátum és PredicateGroup jelszó összetettségi példa ábrája](./media/predicates/predicates-pass.png)
 
 ## <a name="configure-a-date-range"></a>Egy adott időtartományban konfigurálása
 
@@ -382,8 +382,8 @@ Adjon hozzá egy **PredicateValidation** való hivatkozással a `DateRange` pred
 </PredicateValidations>
 ```
 
-Adja hozzá a jogcímtípus **PredicateValidationReference** elemet, és adja meg az azonosítója, mint `CustomDateRange`. 
-    
+Adja hozzá a jogcímtípus **PredicateValidationReference** elemet, és adja meg az azonosítója, mint `CustomDateRange`.
+
 ```XML
 <ClaimType Id="dateOfBirth">
   <DisplayName>Date of Birth</DisplayName>

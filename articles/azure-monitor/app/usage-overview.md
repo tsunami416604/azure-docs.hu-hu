@@ -13,12 +13,12 @@ ms.date: 10/10/2017
 ms.pm_owner: daviste;NumberByColors
 ms.reviewer: mbullwin
 ms.author: daviste
-ms.openlocfilehash: f2539d5250ff436a720fe10f748f40db29b0ee25
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ba29688958ee11aa9906a820f7a3d2bf41223743
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60783426"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67798166"
 ---
 # <a name="usage-analysis-with-application-insights"></a>Használatelemzés az Application Insights szolgáltatással
 
@@ -132,11 +132,11 @@ Ezzel a technikával a csatlakoztat különböző tulajdonságértékek minden e
 
 Az Application Insights portálon szűrése, és az adatok a tulajdonság értékekhez, úgy, hogy a különböző verziók összehasonlítása felosztása.
 
-Ehhez [beállítása egy telemetriainicializáló](../../azure-monitor/app/api-filtering-sampling.md##add-properties-itelemetryinitializer):
+Ehhez [beállítása egy telemetriainicializáló](../../azure-monitor/app/api-filtering-sampling.md#add-properties-itelemetryinitializer):
+
+**ASP.NET-alkalmazások**
 
 ```csharp
-
-
     // Telemetry initializer class
     public class MyTelemetryInitializer : ITelemetryInitializer
     {
@@ -155,8 +155,24 @@ A webes alkalmazást inicializáló Global.asax.cs például:
     {
         // ...
         TelemetryConfiguration.Active.TelemetryInitializers
-        .Add(new MyTelemetryInitializer());
+         .Add(new MyTelemetryInitializer());
     }
+```
+
+**Az ASP.NET Core-alkalmazások**
+
+> [!NOTE]
+> Használatával hozzáadása inicializáló `ApplicationInsights.config` vagy `TelemetryConfiguration.Active` használata az ASP.NET Core-alkalmazások esetén nem érvényes. 
+
+A [ASP.NET Core](asp-net-core.md#adding-telemetryinitializers) alkalmazásokat, egy `TelemetryInitializer` alább látható módon történik a függőségi beszúrást tárolóban való hozzáadásával. Ezt `ConfigureServices` módszere a `Startup.cs` osztály.
+
+```csharp
+ using Microsoft.ApplicationInsights.Extensibility;
+ using CustomInitializer.Telemetry;
+ public void ConfigureServices(IServiceCollection services)
+{
+    services.AddSingleton<ITelemetryInitializer, MyTelemetryInitializer>();
+}
 ```
 
 Minden új TelemetryClients automatikusan hozzáadja a megadott tulajdonság értéke. Egyéni telemetriaeseményeknek felülbírálhatja az alapértelmezett értékeket.

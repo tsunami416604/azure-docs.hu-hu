@@ -4,26 +4,25 @@ titleSuffix: Azure Dev Spaces
 author: zr-msft
 services: azure-dev-spaces
 ms.service: azure-dev-spaces
-ms.subservice: azds-kubernetes
 ms.author: zarhoads
-ms.date: 03/22/2019
+ms.date: 07/08/2019
 ms.topic: quickstart
 description: Gyors Kubernetes-fejlesztés tárolókkal és mikroszolgáltatásokkal az Azure-ban
 keywords: Docker, Kubernetes, Azure, az AKS, az Azure Kubernetes Service, tárolók, Helm, a szolgáltatás háló, a szolgáltatás háló útválasztás, a kubectl, a k8s
-manager: jeconnoc
-ms.openlocfilehash: bab7b4daf8b03115c73b6fbaefe352cecc761b6f
-ms.sourcegitcommit: 837dfd2c84a810c75b009d5813ecb67237aaf6b8
+manager: gwallace
+ms.openlocfilehash: cc41e268678872910113c8e198bdaaac34232458
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67503001"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67706322"
 ---
 # <a name="quickstart-develop-with-net-core-on-kubernetes-using-azure-dev-spaces-visual-studio-code"></a>Gyors útmutató: Fejlesztés a Kubernetes Azure fejlesztési szóközöket (Visual Studio Code) használatával a .NET Core használatával
 
 Ebből az útmutatóból a következőket tudhatja meg:
 
 - Az Azure Dev Spaces beállítása Managed Kubernetes-fürttel az Azure-ban.
-- Iteratív fejlesztés kód a Visual Studio Code és a parancssor használatával.
+- Iteratív fejlesztés kód a Visual Studio Code-tárolókban.
 - A Visual Studio Code-ból a fejlesztési tárhely kódok hibakeresése.
 
 ## <a name="prerequisites"></a>Előfeltételek
@@ -68,95 +67,27 @@ Managed Kubernetes cluster 'MyAKS' in resource group 'MyResourceGroup' is ready 
 
 Ebben a cikkben fogja használni a [Azure fejlesztési tárolóhelyek mintaalkalmazás](https://github.com/Azure/dev-spaces) bemutatása, Azure-fejlesztési szóközzel.
 
-Klónozza az alkalmazást a Githubról, és keresse meg a *fejlesztési-tárolóhelyek/samples/dotnetcore/első-lépések/webfrontend* könyvtár:
+Klónozza az alkalmazást a Githubról.
 
 ```cmd
 git clone https://github.com/Azure/dev-spaces
-cd dev-spaces/samples/dotnetcore/getting-started/webfrontend
 ```
 
-## <a name="prepare-the-application"></a>Az alkalmazás előkészítése
-
-Az alkalmazás futtatása a Kubernetes használatával hozza létre a Docker és a Helm-diagram eszközök a `azds prep` parancsot:
-
-```cmd
-azds prep --public
-```
-
-Futtatnia kell a `prep` parancsot a *fejlesztési-tárolóhelyek/samples/dotnetcore/első-lépések/webfrontend* directory átjáróadatok megfelelő létrehozása a Docker és a Helm-diagram eszközök.
-
-## <a name="build-and-run-code-in-kubernetes"></a>Kód létrehozása és futtatása Kubernetesben
-
-Hozhat létre, és futtathatja a kódot az AKS-a `azds up` parancsot:
-
-```cmd
-$ azds up
-Synchronizing files...4s
-Using dev space 'default' with target 'MyAKS'
-Installing Helm chart...2s
-Waiting for container image build...1m 43s
-Building container image...
-Step 1/12 : FROM microsoft/dotnet:2.2-sdk
-Step 2/12 : ARG BUILD_CONFIGURATION=Debug
-Step 3/12 : ENV ASPNETCORE_ENVIRONMENT=Development
-Step 4/12 : ENV DOTNET_USE_POLLING_FILE_WATCHER=true
-Step 5/12 : EXPOSE 80
-Step 6/12 : WORKDIR /src
-Step 7/12 : COPY ["webfrontend.csproj", "./"]
-Step 8/12 : RUN dotnet restore "webfrontend.csproj"
-Step 9/12 : COPY . .
-Step 10/12 : RUN dotnet build --no-restore -c $BUILD_CONFIGURATION
-Step 11/12 : RUN echo "exec dotnet run --no-build --no-launch-profile -c $BUILD_CONFIGURATION -- \"\$@\"" > /entrypoint.sh
-Step 12/12 : ENTRYPOINT ["/bin/bash", "/entrypoint.sh"]
-Built container image in 3m 44s
-Waiting for container...13s
-Service 'webfrontend' port 'http' is available at http://webfrontend.1234567890abcdef1234.eus.azds.io/
-Service 'webfrontend' port 80 (http) is available at http://localhost:54256
-...
-```
-
-Láthatja, hogy a szolgáltatás fut, nyissa meg a nyilvános URL-CÍMÉT, amely kimenetében megjelennek a `azds up` parancsot. Ebben a példában a nyilvános URL-je *http://webfrontend.1234567890abcdef1234.eus.azds.io/* .
-
-Ha leállítja a `azds up` parancsának használatával *Ctrl + c*, a szolgáltatás továbbra is futtassa az aks-ben és a nyilvános URL-cím használható marad.
-
-## <a name="update-code"></a>Kód frissítése
-
-A szolgáltatás frissített verziójának üzembe helyezéséhez bármilyen fájl frissítése a projekt és futtassa újra a `azds up` parancsot. Példa:
-
-1. Ha `azds up` továbbra is fut, nyomja le az *Ctrl + c*.
-1. Frissítés [a 20. sor `Controllers/HomeController.cs` ](https://github.com/Azure/dev-spaces/blob/master/samples/dotnetcore/getting-started/webfrontend/Controllers/HomeController.cs#L20) való:
-    
-    ```csharp
-    ViewData["Message"] = "Your application description page in Azure.";
-    ```
-
-1. Mentse a módosításokat.
-1. Futtassa újra a `azds up` parancsot:
-
-    ```cmd
-    $ azds up
-    Using dev space 'default' with target 'MyAKS'
-    Synchronizing files...1s
-    Installing Helm chart...3s
-    Waiting for container image build...
-    ...    
-    ```
-
-1. Lépjen a futó szolgáltatás, és kattintson *kapcsolatos*.
-1. Figyelje meg a módosításokat.
-1. Nyomja meg *Ctrl + c* leállítani a `azds up` parancsot.
-
-## <a name="enable-visual-studio-code-to-debug-in-kubernetes"></a>A Kubernetes hibakeresése a Visual Studio Code engedélyezése
+## <a name="prepare-the-sample-application-in-visual-studio-code"></a>A mintaalkalmazás a Visual Studio Code előkészítése
 
 Nyissa meg a Visual Studio Code, kattintson a *fájl* majd *megnyitása...* , keresse meg a *fejlesztési-tárolóhelyek/samples/dotnetcore/első-lépések/webfrontend* könyvtárra, és kattintson *nyílt*.
 
-Most már a *webfrontend* projektben nyissa meg a Visual Studio Code, amely ugyanazt a szolgáltatást használó futtatta a `azds up` parancsot. Az aks-ben a Visual Studio Code, használatával ellentétben ez a szolgáltatás hibakeresése `azds up` közvetlenül, elő kell készíteni a projektet a Visual Studio Code használatával kommunikálnak a fejlesztési tárhely.
+Most már a *webfrontend* projektben nyissa meg a Visual Studio Code-ban. Az alkalmazás futtatásához a fejlesztési tárhelyre, hozzon létre a Docker és a Helm diagram eszközök, az Azure fejlesztési tárolóhelyek bővítmény használatával a parancs kívánt színére.
 
 A Visual Studio Code-ban a Parancskatalógus megnyitásához kattintson a *nézet* majd *Parancskatalógus*. Kezdje el beírni `Azure Dev Spaces` , majd kattintson a `Azure Dev Spaces: Prepare configuration files for Azure Dev Spaces`.
 
-![](./media/common/command-palette.png)
+![Konfigurációs fájlok előkészítése Azure-fejlesztési tárolóhelyek](./media/common/command-palette.png)
 
-Ez a parancs előkészíti a projekthez, hogy közvetlenül a Visual Studio Code az Azure fejlesztési tárolóhelyek futtatni. Is előállít egy *.vscode* könyvtárat, amely a projekt gyökerében konfigurációs hibakeresés.
+Ha a Visual Studio Code-ot is megkéri, hogy konfigurálja a nyilvános végponthoz, válassza `Yes` engedélyezése egy nyilvános végpontot.
+
+![Select public endpoint](media/common/select-public-endpoint.png)
+
+Ez a parancs előkészíti a projekthez, hogy egy docker-fájl és a Helm-diagram létrehozása az Azure fejlesztési tárolóhelyek futtatásához. Is előállít egy *.vscode* könyvtárat, amely a projekt gyökerében konfigurációs hibakeresés.
 
 ## <a name="build-and-run-code-in-kubernetes-from-visual-studio"></a>Létrehozása és kód futtatása a Kubernetesben a Visual Studióból
 
@@ -169,21 +100,42 @@ A parancs épít, és a szolgáltatás fut az Azure fejlesztési tárolóhelyek 
 > [!Note]
 > Ha nem látja az Azure fejlesztési tárolóhelyek parancsok a *Parancskatalógus*, győződjön meg arról, hogy telepítette a [Visual Studio Code-bővítmény az Azure fejlesztési tárolóhelyek](https://marketplace.visualstudio.com/items?itemName=azuredevspaces.azds). Ellenőrizze azt is nyitotta meg a *fejlesztési-tárolóhelyek/samples/dotnetcore/első-lépések/webfrontend* könyvtárat a Visual Studio Code-ot.
 
+A nyilvános URL-cím megnyitásával fut a szolgáltatás megjelenik.
+
+Kattintson a *Debug* majd *hibakeresés leállításához* a hibakereső leállítása.
+
+## <a name="update-code"></a>Kód frissítése
+
+A szolgáltatás frissített verziójának üzembe helyezéséhez bármilyen fájl frissítése a projekt és futtassa újra a *.NET Core indítása (AZDS)* . Példa:
+
+1. Ha az alkalmazás továbbra is fut, kattintson a *Debug* majd *hibakeresés leállításához* leállításához.
+1. Frissítés [a 22-es üzletági `Controllers/HomeController.cs` ](https://github.com/Azure/dev-spaces/blob/master/samples/dotnetcore/getting-started/webfrontend/Controllers/HomeController.cs#L22) való:
+    
+    ```csharp
+    ViewData["Message"] = "Your application description page in Azure.";
+    ```
+
+1. Mentse a módosításokat.
+1. Ismétlés *.NET Core indítása (AZDS)* .
+1. Lépjen a futó szolgáltatás, és kattintson *kapcsolatos*.
+1. Figyelje meg a módosításokat.
+1. Kattintson a *Debug* majd *hibakeresés leállításához* az alkalmazás leállításához.
+
 ## <a name="setting-and-using-breakpoints-for-debugging"></a>Beállítás és hibakeresési töréspontok használatával
 
 Indítsa el a szolgáltatást a hibakeresés módban a *.NET Core indítása (AZDS)* .
 
-Lépjen vissza a *Explorer* nézet kattintva *nézet* majd *Explorer*. Nyissa meg `Controllers/HomeController.cs` valahol kattintson a sor létezik helyezze a kurzort a 20. Állítson be egy töréspontot, nyomja le az *F9* , vagy kattintson *Debug* majd *töréspont*.
+Lépjen vissza a *Explorer* nézet kattintva *nézet* majd *Explorer*. Nyissa meg `Controllers/HomeController.cs` majd valahol a 22-es hiba helyezze a kurzort a sor. Állítson be egy töréspontot, nyomja le az *F9* , vagy kattintson *Debug* majd *töréspont*.
 
 Egy böngészőben nyissa meg a szolgáltatást, és figyelje meg, hogy nem jelenik meg. Térjen vissza a Visual Studio Code-ot, és vizsgálja meg, 20 sor van kijelölve. A töréspont beállított sor 20 a szolgáltatás szünetel. A szolgáltatás folytatásához nyomja le az *F5* , vagy kattintson *Debug* majd *Folytatás*. Térjen vissza a böngészőben, és figyelje meg, hogy az üzenet jelenik meg.
 
 Miközben fut a szolgáltatás a Kubernetes egy hibakeresővel, akkor a hibakeresési információkat, például a hívási verem, a helyi változókat és a kivétel adatai teljes hozzáféréssel rendelkezik.
 
-A töréspont eltávolítása ehhez vigye a kurzort a 20 sor `Controllers/HomeController.cs` és lenyomásával *F9*.
+A töréspont eltávolítása ehhez vigye a kurzort a 22-es sor `Controllers/HomeController.cs` és lenyomásával *F9*.
 
 ## <a name="update-code-from-visual-studio-code"></a>A Visual Studio Code-ból kódjának frissítése
 
-A szolgáltatás futása hibakeresési módban, frissítse a 20 sort a `Controllers/HomeController.cs`. Példa:
+A szolgáltatás futása hibakeresési módban, a 22-es sor frissítése `Controllers/HomeController.cs`. Példa:
 
 ```csharp
 ViewData["Message"] = "Your application description page in Azure while debugging!";

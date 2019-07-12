@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 134ab2a5f0b1b1569cdf4747f5bbe3f895ba4e8f
-ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
+ms.openlocfilehash: 8487f82b123b42f9d6a6f0fbd6d6cbb240bf9fdc
+ms.sourcegitcommit: 1572b615c8f863be4986c23ea2ff7642b02bc605
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67293019"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67785528"
 ---
 # <a name="deploy-azure-ad-password-protection"></a>Azure AD jelszóvédelem üzembe helyezése
 
@@ -44,7 +44,7 @@ Után a szolgáltatás ésszerű rendszervizsgálati módban futott, válthat a 
    > Szolgáltatás annak ellenére, hogy a tartományvezérlő esetleg rendelkezik kimenő közvetlen internetkapcsolattal, üzembe helyezéséhez az Azure AD jelszóvédelem kötelezők. 
    >
 * Minden olyan gép, amelyen telepíteni szeretné az Azure AD-jelszó védelme Proxy szolgáltatás telepítve van a .NET 4.7 kell rendelkeznie.
-  .NET 4.7 egy teljesen új Windows Server már telepíthető. Ha nem ez a helyzet, töltse le és futtassa a telepítőt címen található [a .NET-keretrendszer 4.7 offline Windows installer](https://support.microsoft.com/en-us/help/3186497/the-net-framework-4-7-offline-installer-for-windows).
+  .NET 4.7 egy teljesen új Windows Server már telepíthető. Ha nem ez a helyzet, töltse le és futtassa a telepítőt címen található [a .NET-keretrendszer 4.7 offline Windows installer](https://support.microsoft.com/help/3186497/the-net-framework-4-7-offline-installer-for-windows).
 * Összes gép, a Universal C futásidejű telepített többek között a tartományvezérlők, amely az Azure AD jelszó-védelem összetevői telepítve kell rendelkeznie. A futtatókörnyezet azáltal, hogy meg kell, hogy a Windows Update frissítéseit kérheti le. Vagy egy operációsrendszer-specifikus frissítési csomag beszerezheti azt. További információkért lásd: [frissítése a Windows Universal C futásidejű](https://support.microsoft.com/help/2999226/update-for-uniersal-c-runtime-in-windows).
 * Hálózati kapcsolat között léteznie kell legalább egy tartományvezérlő minden olyan tartományban, és legalább egy kiszolgálót üzemeltető a proxy szolgáltatás jelszavas védelmet. A kapcsolat lehetővé teszi a tartományvezérlő hozzáférés RPC végpont végpontleképező 135-ös port és a proxy szolgáltatást az RPC-kiszolgáló portja. Alapértelmezés szerint az RPC-kiszolgáló portjának egy dinamikus RPC-portot, de konfigurálható, hogy [statikus port használatára](#static).
 * A proxy szolgáltatást üzemeltető összes gép a következő végpontok hálózati hozzáféréssel kell rendelkeznie:

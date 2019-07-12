@@ -7,7 +7,7 @@ author: mdgattuso
 manager: danielgi
 editor: ''
 ms.assetid: 866e0c30-1f33-43a5-91f0-d22f033b16c6
-ms.service: cdn
+ms.service: azure-cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +15,12 @@ ms.topic: overview
 ms.date: 05/09/2018
 ms.author: magattus
 ms.custom: mvc
-ms.openlocfilehash: 9692d495ada8a311fd5037a4f17f24ed6da9243a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 6aaa98bea5e6cf1bdffc3dbe28e42e9545a626ea
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60627445"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67593613"
 ---
 # <a name="what-is-a-content-delivery-network-on-azure"></a>Mit takar a tartalomkézbesítési hálózat az Azure-on?
 Egy tartalomkézbesítési hálózat (CDN) kiszolgálók olyan elosztott hálózata, amely hatékonyan kézbesíti a webes tartalmakat a felhasználóknak. A CDN-ek a késés minimalizálása érdekében gyorsítótárazott tartalmat tárolnak a végfelhasználók közelében lévő jelenléti pontok (POP) peremhálózati kiszolgálóin. 
@@ -38,7 +38,7 @@ A jelenlegi CDN-csomópontok helyének listájáért tekintse meg az [Azure CDN 
 ## <a name="how-it-works"></a>Működés
 ![A CDN áttekintése](./media/cdn-overview/cdn-overview.png)
 
-1. A felhasználó (Anna) fájlt (más néven objektumot) kérelmez egy speciális tartománynevet tartalmazó URL-cím (pl. _&lt;végpont neve&gt;_.azureedge.net) használatával. Ez a név lehet egy végpont gazdaneve vagy egy egyéni tartomány. A DNS a kérelmet a legjobb teljesítményt nyújtó jelenléti pontra (POP) irányítja. Ez általában a felhasználóhoz földrajzilag legközelebb elhelyezkedő jelenléti pont.
+1. A felhasználó (Anna) fájlt (más néven objektumot) kérelmez egy speciális tartománynevet tartalmazó URL-cím (pl. _&lt;végpont neve&gt;_ .azureedge.net) használatával. Ez a név lehet egy végpont gazdaneve vagy egy egyéni tartomány. A DNS a kérelmet a legjobb teljesítményt nyújtó jelenléti pontra (POP) irányítja. Ez általában a felhasználóhoz földrajzilag legközelebb elhelyezkedő jelenléti pont.
     
 2. Ha a jelenléti pont peremhálózati kiszolgálóinak gyorsítótárában nem található meg a fájl, akkor a jelenléti pont lekéri a fájlt a forráskiszolgálóról. A forráskiszolgáló lehet egy Azure-webalkalmazás, az Azure Cloud Service, egy Azure Storage-fiók vagy bármilyen nyilvánosan elérhető webkiszolgáló.
    

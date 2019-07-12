@@ -15,12 +15,12 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 82e6cbcd01c87ddffb7eac8d0ea0faef85f41a13
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b7484b627d3bc3f26fa01d4c38ee96047c70d007
+ms.sourcegitcommit: 1572b615c8f863be4986c23ea2ff7642b02bc605
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66254004"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67785479"
 ---
 # <a name="web-app-that-signs-in-users---code-configuration"></a>Webes alkalmazás, hogy jelentkezik be felhasználókat - kód-konfiguráció
 
@@ -36,6 +36,8 @@ A Web App (és a egy webes API-t) védelmére használt kódtárak a következő
 | ![.NET](media/sample-v2-code/logo_net.png) | [Identitás modellbővítményeket a .NET-hez](https://github.com/AzureAD/azure-activedirectory-identitymodel-extensions-for-dotnet/wiki) | Közvetlenül az ASP.NET és az ASP.NET Core, .NET-hez készült Microsoft identitás-bővítmények javaslatot tesz fut, mind a .NET-keretrendszer és a .NET Core dll-fájlok készlete. Egy ASP.NET/ASP.NET Core-webalkalmazást, a szabályozhatja jogkivonat érvényesítésére használatával a **TokenValidationParameters** osztály (különösen egyes Szoftverszállítói forgatókönyvekben) |
 
 ## <a name="aspnet-core-configuration"></a>ASP.NET Core-konfiguráció
+
+Ez a cikk és az alábbi kódrészletek kinyert a [ASP.NET Core webes alkalmazás növekményes útmutató, 1. fejezet](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/1-WebApp-OIDC/1-1-MyOrg). Érdemes lehet hivatkozni az oktatóanyag a teljes megvalósítás részleteit.
 
 ### <a name="application-configuration-files"></a>Alkalmazás-konfigurációs fájlok
 

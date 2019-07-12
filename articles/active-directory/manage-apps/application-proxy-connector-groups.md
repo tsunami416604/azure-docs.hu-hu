@@ -14,47 +14,50 @@ ms.date: 11/08/2018
 ms.author: mimart
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d896a45931512b925491e05ff6e5eef8a856d83d
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: 574ce6def407f302439f6c53356fe69259240b2e
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67481327"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67702476"
 ---
 # <a name="publish-applications-on-separate-networks-and-locations-using-connector-groups"></a>Külön hálózatok és helyek összekötőcsoportok használatával az alkalmazások közzététele
 
-Ügyfeleink további és további forgatókönyvek az Azure AD-alkalmazásproxy és az alkalmazások használatára. Így végeztünk alkalmazásproxyval még több rugalmas további topológiák engedélyezésével. Application Proxy connector csoportokat hozhat létre, így hozzárendelhet adott összekötők adott alkalmazások kiszolgálására. Ez a funkció lehetővé teszi további ellenőrzési és a Proxy telepítésének optimalizálása. 
+Ügyfeleink további és további forgatókönyvek az Azure AD-alkalmazásproxy és az alkalmazások használatára. Így végeztünk alkalmazásproxyval még több rugalmas további topológiák engedélyezésével. Application Proxy connector csoportokat hozhat létre, így hozzárendelhet adott összekötők adott alkalmazások kiszolgálására. Ez a funkció lehetővé teszi további ellenőrzési és a Proxy telepítésének optimalizálása.
 
-Minden Application Proxy connector hozzá van rendelve egy összekötőcsoporthoz. Összekötő ugyanabba a csoportba tartozó összes összekötő jár el a magas rendelkezésre állású külön egységként, és a terheléselosztás. Összekötő csoporthoz tartozó összes összekötőt. Ha nem hoz létre csoportokat, minden összekötőt egy alapértelmezett csoport vannak. A rendszergazda létrehozhat új csoportokat és összekötők hozzájuk rendelhet az Azure Portalon. 
+Minden Application Proxy connector hozzá van rendelve egy összekötőcsoporthoz. Összekötő ugyanabba a csoportba tartozó összes összekötő jár el a magas rendelkezésre állású külön egységként, és a terheléselosztás. Összekötő csoporthoz tartozó összes összekötőt. Ha nem hoz létre csoportokat, minden összekötőt egy alapértelmezett csoport vannak. A rendszergazda létrehozhat új csoportokat és összekötők hozzájuk rendelhet az Azure Portalon.
 
 Összes alkalmazás hozzá van rendelve egy összekötőcsoporthoz. Ha nem hoz létre csoportokat, majd az alkalmazások vannak hozzárendelve egy alapértelmezett csoport. De ha csoportokba rendezheti a az összekötőkhöz, állíthatja be minden egyes a szolgáltatásalkalmazás alkalmassá tétele egy adott összekötőcsoporthoz. Ebben az esetben csak az adott csoport összekötők szolgálja ki az alkalmazás kérésre. Ez a funkció akkor hasznos, ha az alkalmazások különböző helyeken üzemelnek. Összekötőcsoportok helye, hozhat létre, így az alkalmazások mindig szolgálja ki, amelyek fizikailag közel őket az összekötők által.
 
->[!TIP] 
->Ha egy nagy Proxy telepítésének, minden alkalmazást az alapértelmezett összekötő csoporthoz sem rendelhet. Ezzel a módszerrel új összekötő nem kapja meg az élő adatforgalom mindaddig, amíg egy aktív összekötőcsoport hozzárendelhetők. Ez a konfiguráció lehetővé teszi put összekötők egy tétlen üzemmódban vissza az alapértelmezett csoport helyezi őket, hogy a felhasználók anélkül is elvégezheti a karbantartás.
+> [!TIP]
+> Ha egy nagy Proxy telepítésének, minden alkalmazást az alapértelmezett összekötő csoporthoz sem rendelhet. Ezzel a módszerrel új összekötő nem kapja meg az élő adatforgalom mindaddig, amíg egy aktív összekötőcsoport hozzárendelhetők. Ez a konfiguráció lehetővé teszi put összekötők egy tétlen üzemmódban vissza az alapértelmezett csoport helyezi őket, hogy a felhasználók anélkül is elvégezheti a karbantartás.
 
 ## <a name="prerequisites"></a>Előfeltételek
+
 Az összekötők csoport, győződjön meg arról, hogy rendelkezik [több összekötő telepítve](application-proxy-add-on-premises-application.md). Egy új összekötő a telepítéskor automatikusan bekerül a **alapértelmezett** összekötőcsoport.
 
 ## <a name="create-connector-groups"></a>Összekötő-csoportok létrehozása
-Ezen lépések összekötő csoportok létrehozásához. 
+
+Ezen lépések összekötő csoportok létrehozásához.
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 1. Válassza ki **Azure Active Directory** > **vállalati alkalmazások** > **alkalmazásproxy**.
-2. Válassza ki **új összekötőcsoport**. Az új Összekötőcsoport panel jelenik meg.
+1. Válassza ki **új összekötőcsoport**. Az új Összekötőcsoport panel jelenik meg.
 
    ![Megjeleníti a képernyőt egy új összekötőcsoport](./media/application-proxy-connector-groups/new-group.png)
 
-3. Adja meg az új összekötő csoport nevét, majd használja a legördülő menüből válassza ki, mely összekötők az ebbe a csoportba tartoznak.
-4. Kattintson a **Mentés** gombra.
+1. Adja meg az új összekötő csoport nevét, majd használja a legördülő menüből válassza ki, mely összekötők az ebbe a csoportba tartoznak.
+1. Kattintson a **Mentés** gombra.
 
 ## <a name="assign-applications-to-your-connector-groups"></a>Az összekötőcsoportok alkalmazások hozzárendelése
-Használja ezeket a lépéseket, már közzétett minden alkalmazáshoz az alkalmazásproxy használatával. Először tegye közzé azt, vagy használhatja ezeket a lépéseket, ha azt szeretné, a-hozzárendelés módosítása egy összekötőcsoporthoz alkalmazás rendelhet hozzá.   
+
+Használja ezeket a lépéseket, már közzétett minden alkalmazáshoz az alkalmazásproxy használatával. Először tegye közzé azt, vagy használhatja ezeket a lépéseket, ha azt szeretné, a-hozzárendelés módosítása egy összekötőcsoporthoz alkalmazás rendelhet hozzá.
 
 1. Válassza ki a kezelési irányítópult a címtáron, **vállalati alkalmazások** > **minden alkalmazás** > az alkalmazás egy összekötőcsoporthoz hozzárendelni kívánt > **Alkalmazásproxy**.
-2. Használja a **Összekötőcsoport** legördülő menüre, és válassza ki a csoportot, a használni kívánt alkalmazást.
-3. Válassza ki **mentése** a módosítás alkalmazására.
+1. Használja a **Összekötőcsoport** legördülő menüre, és válassza ki a csoportot, a használni kívánt alkalmazást.
+1. Válassza ki **mentése** a módosítás alkalmazására.
 
-## <a name="use-cases-for-connector-groups"></a>Összekötőcsoportok alkalmazási helyzetei 
+## <a name="use-cases-for-connector-groups"></a>Összekötőcsoportok alkalmazási helyzetei
 
 Összekötőcsoportok hasznosak lehetnek a különböző forgatókönyvekben, például:
 
@@ -64,11 +67,11 @@ Számos szervezet rendelkezik összekapcsolt adatközpontok számos. Ebben az es
 
 ### <a name="applications-installed-on-isolated-networks"></a>Elkülönített hálózatok a telepített alkalmazások
 
-Alkalmazások hálózatokban, amelyek nem részei a fő vállalati hálózat lehet üzemeltetni. Összekötőcsoportok segítségével dedikált összekötők telepítése elkülönített hálózatok is elkülönítse az alkalmazásokat a hálózathoz. Ez általában akkor fordul elő, ha egy harmadik fél fenntart egy adott alkalmazást a szervezete számára. 
+Alkalmazások hálózatokban, amelyek nem részei a fő vállalati hálózat lehet üzemeltetni. Összekötőcsoportok segítségével dedikált összekötők telepítése elkülönített hálózatok is elkülönítse az alkalmazásokat a hálózathoz. Ez általában akkor fordul elő, ha egy harmadik fél fenntart egy adott alkalmazást a szervezete számára.
 
 Összekötőcsoportok lehetővé teszi, hogy telepítse dedikált összekötőket az olyan meglévő hálózatait, amely csak bizonyos alkalmazások közzététele így egyszerűbb és biztonságosabb kiszervezik a külső gyártók alkalmazáskezelésével.
 
-### <a name="applications-installed-on-iaas"></a>Az IaaS telepített alkalmazások 
+### <a name="applications-installed-on-iaas"></a>Az IaaS telepített alkalmazások
 
 Összekötőcsoportok felhőhozzáférést az IaaS-on telepített alkalmazásokat, egy közös szolgáltatás az összes alkalmazáshoz való hozzáférés biztonsága érdekében adja meg. Összekötőcsoportok ne hozzon létre további függőség a vállalati hálózaton, vagy töredékben a felhasználói élményt. Összekötők minden felhőbeli adatközpontot is telepíthető, és csak a hálózaton található alkalmazások kiszolgálására. Magas rendelkezésre állás eléréséhez több összekötő is telepítheti.
 
@@ -95,7 +98,7 @@ Attól függően, hogyan vannak megvalósítva a helyek egy vész-helyreállít�
 
 ### <a name="serve-multiple-companies-from-a-single-tenant"></a>Több vállalatot továbbítása az egyetlen új bérlő
 
-Nincsenek a számos különböző módon, amelyben egyetlen szolgáltató üzembe helyezi és kezeli az Azure AD egy modell megvalósításához kapcsolódó szolgáltatások több vállalatok számára. Összekötőcsoportok segítségként a rendszergazdának a elkülönítse az összekötők és az alkalmazások különböző csoportokba. Egyik lehetőség, amelyhez a kisvállalatok számára ideális, hogy egyetlen Azure AD bérlői, míg a különböző vállalatok a saját tartománynév és a hálózatok. Ez a is M & A-forgatókönyveinek és olyan helyzetekben, egy egyetlen IT-részleg szolgál a szabályozási és üzleti okokból több vállalat. 
+Nincsenek a számos különböző módon, amelyben egyetlen szolgáltató üzembe helyezi és kezeli az Azure AD egy modell megvalósításához kapcsolódó szolgáltatások több vállalatok számára. Összekötőcsoportok segítségként a rendszergazdának a elkülönítse az összekötők és az alkalmazások különböző csoportokba. Egyik lehetőség, amelyhez a kisvállalatok számára ideális, hogy egyetlen Azure AD bérlői, míg a különböző vállalatok a saját tartománynév és a hálózatok. Ez a is M & A-forgatókönyveinek és olyan helyzetekben, egy egyetlen IT-részleg szolgál a szabályozási és üzleti okokból több vállalat.
 
 ## <a name="sample-configurations"></a>Minta-konfigurációk
 
@@ -113,7 +116,7 @@ Ebben a konfigurációban is használhatók a kisebb telepítésekhez és a tesz
 
 Ez a konfiguráció az alapértelmezett értéktől, amelyben van egy adott alkalmazás, például az IaaS virtuális hálózat egy elkülönített hálózaton futó továbbfejlesztett változata:
 
-![Példa az Azure AD nem Összekötőcsoportok](./media/application-proxy-connector-groups/application-proxy-sample-config-2.png)
+![Példa az Azure AD nem Összekötőcsoportok és a egy elkülönített hálózat](./media/application-proxy-connector-groups/application-proxy-sample-config-2.png)
 
 ### <a name="recommended-configuration--several-specific-groups-and-a-default-group-for-idle"></a>Ajánlott konfiguráció – több adott csoportok és a egy alapértelmezett csoport üresjárati
 

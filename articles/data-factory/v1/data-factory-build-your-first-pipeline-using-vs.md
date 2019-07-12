@@ -14,17 +14,16 @@ ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 2d816ab2f14be8574f77491807d4dbd071487f42
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: f3c4fc379ac932e66c5d02e08e72ef4d16db638b
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66164003"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67836701"
 ---
 # <a name="tutorial-create-a-data-factory-by-using-visual-studio"></a>Oktatóanyag: Adat-előállító létrehozása a Visual Studio használatával
 > [!div class="op_single_selector" title="Tools/SDKs"]
 > * [Áttekintés és előfeltételek](data-factory-build-your-first-pipeline.md)
-> * [Azure Portal](data-factory-build-your-first-pipeline-using-editor.md)
 > * [Visual Studio](data-factory-build-your-first-pipeline-using-vs.md)
 > * [PowerShell](data-factory-build-your-first-pipeline-using-powershell.md)
 > * [Resource Manager-sablon](data-factory-build-your-first-pipeline-using-arm.md)
@@ -124,8 +123,8 @@ Az igény szerinti HDInsight társított szolgáltatással a HDInsight-fürt aut
 
     Tulajdonság | Leírás
     -------- | ----------- 
-    ClusterSize | Megadja a HDInsight Hadoop-fürt méretét.
-    TimeToLive | Megadja, hogy a HDInsight-fürt mennyi ideig lehet tétlen, mielőtt törölné a rendszer.
+    clusterSize | Megadja a HDInsight Hadoop-fürt méretét.
+    timeToLive | Megadja, hogy a HDInsight-fürt mennyi ideig lehet tétlen, mielőtt törölné a rendszer.
     linkedServiceName | Megadja a HDInsight Hadoop-fürt által előállított naplók tárolására szolgáló tárfiókot. 
 
     > [!IMPORTANT]
@@ -173,7 +172,7 @@ Ebben a lépésben adatkészleteket hoz létre, amelyek a Hive-feldolgozás beme
 
     Tulajdonság | Leírás |
     -------- | ----------- |
-    típus |A tulajdonság beállítása **AzureBlob**, mert az adatok az Azure Blob Storage-tárban találhatók.
+    type |A tulajdonság beállítása **AzureBlob**, mert az adatok az Azure Blob Storage-tárban találhatók.
     linkedServiceName | A korábban létrehozott AzureStorageLinkedService1 szolgáltatásra hivatkozik.
     fileName |Ez a tulajdonság nem kötelező. Ha kihagyja, az összes fájl ki lesz választva a folderPath útvonalról. Ebben az esetben csak az input.log fájl lesz feldolgozva.
     type | A naplófájlok szövegformátumúak, ezért a TextFormat típust használjuk. |

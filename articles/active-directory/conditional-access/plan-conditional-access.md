@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: martincoetzer
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 56ddc2738305600c611cab1e09d654164f78b3d6
-ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
+ms.openlocfilehash: 3fca84a71e1ede572e3889f973248db158115bec
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67509429"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67655505"
 ---
 # <a name="how-to-plan-your-conditional-access-deployment-in-azure-active-directory"></a>kézikönyv: Az Azure Active Directoryban a feltételes hozzáférés üzembe helyezésének megtervezése
 
@@ -162,7 +162,7 @@ A tesztelési terv esetében lényeges, hogy a várt eredményt és a tényleges
 |---|---|---|---|
 |[Többtényezős hitelesítés munkahelyen kívül](https://docs.microsoft.com/azure/active-directory/conditional-access/untrusted-networks)|Engedélyezett a felhasználók bejelentkeznek *alkalmazás* során megbízható helyen lévő / működik|A többtényezős hitelesítés nem kéri a felhasználót| |
 |[Többtényezős hitelesítés munkahelyen kívül](https://docs.microsoft.com/azure/active-directory/conditional-access/untrusted-networks)|Engedélyezett a felhasználók bejelentkeznek *alkalmazás* során nem megbízható helyen lévő / működik|Felhasználói MFA a rendszer kéri, és sikeresen bejelentkezhet| |
-|[Többtényezős hitelesítés (a rendszergazda)](https://docs.microsoft.com/azure/active-directory/conditional-access/baseline-protection#require-mfa-for-admins)|Globális rendszergazdaként jelentkezik be *alkalmazás*|Rendszergazdai kéri, hogy a többtényezős hitelesítés| |
+|[Többtényezős hitelesítés (a rendszergazda)](https://docs.microsoft.com/azure/active-directory/conditional-access/howto-baseline-protect-administrators)|Globális rendszergazdaként jelentkezik be *alkalmazás*|Rendszergazdai kéri, hogy a többtényezős hitelesítés| |
 |[Kockázatos bejelentkezések](https://docs.microsoft.com/azure/active-directory/identity-protection/howto-sign-in-risk-policy)|Felhasználó jelentkezik be *alkalmazás* használatával egy [Tor-böngésző](https://docs.microsoft.com/azure/active-directory/active-directory-identityprotection-playbook)|Rendszergazdai kéri, hogy a többtényezős hitelesítés| |
 |[Eszközkezelés](https://docs.microsoft.com/azure/active-directory/conditional-access/require-managed-devices)|Jogosulatlan felhasználó megpróbál bejelentkezni egy hitelesített eszközről|Megadja a hozzáférést| |
 |[Eszközkezelés](https://docs.microsoft.com/azure/active-directory/conditional-access/require-managed-devices)|Jogosult felhasználói kísérlet, illetéktelen eszközre való bejelentkezéshez|Hozzáférés letiltása| |

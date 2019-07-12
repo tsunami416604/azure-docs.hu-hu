@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 07/19/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 0913e1877c63ed1a8e960676be02a12b45a34a7d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 12fd1b03e58d1c62157c6652ce96d8f0172dadb2
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66240095"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67606109"
 ---
 # <a name="deploy-azure-file-sync"></a>Az Azure File Sync üzembe helyezése
 Az Azure File Sync használatával fájlmegosztásainak a szervezet az Azure Files között, miközben gondoskodik a rugalmasságát, teljesítményét és kompatibilitását a helyszíni fájlkiszolgálók. Az Azure File Sync Windows Server az Azure-fájlmegosztás gyors gyorsítótáraivá alakítja át. Helyileg, az adatok eléréséhez a Windows Serveren elérhető bármely protokollt használhatja, beleértve az SMB, NFS és FTPS. Tetszőleges számú gyorsítótárak világszerte igény szerint is rendelkezhet.
@@ -25,7 +25,7 @@ Javasoljuk, hogy olvasási [Azure Files üzembe helyezésének megtervezése](st
     - [Régiónkénti elérhetőség](storage-sync-files-planning.md#region-availability) Azure File Sync.
     - [Fájlmegosztás létrehozása](storage-how-to-create-file-share.md) részletes leírása a fájlmegosztás létrehozása.
 * Legalább egy támogatott példány szinkronizálása az Azure File Sync használatával Windows Server vagy Windows Server-fürt. A Windows Server támogatott verzióival kapcsolatos további információkért lásd: [együttműködés a Windows Server](storage-sync-files-planning.md#azure-file-sync-system-requirements-and-interoperability).
-* Az Az PowerShell-modul vagy a PowerShell 5.1-es, vagy a PowerShell 6 + is használhatók. Előfordulhat, hogy használhatja a Az PowerShell-modult az Azure File Sync bármely támogatott rendszerben, beleértve a nem Windows rendszerek, azonban mindig a kiszolgáló regisztrációs parancsmagot kell futtatnia, közvetlenül a regisztrál a Windows Server-példányon. A Windows Server 2012 R2, ellenőrizheti, hogy futtatja vagy újabb PowerShell 5.1. \* megnézzük az értékét a **PSVersion** tulajdonságát a **$PSVersionTable** objektum:
+* Az Az PowerShell-modul vagy a PowerShell 5.1-es, vagy a PowerShell 6 + is használhatók. Előfordulhat, hogy az Az PowerShell modul használata az Azure File Sync bármely támogatott rendszerben, beleértve a nem Windows rendszerek, azonban a kiszolgáló regisztrációs parancsmagot kell mindig futtatni a Windows Server-példányon, is (ezt megteheti közvetlenül vagy a Powershellen keresztül regisztrálása a táveléréssel). A Windows Server 2012 R2, ellenőrizheti, hogy futtatja vagy újabb PowerShell 5.1. \* megnézzük az értékét a **PSVersion** tulajdonságát a **$PSVersionTable** objektum:
 
     ```powershell
     $PSVersionTable.PSVersion
@@ -39,17 +39,25 @@ Javasoljuk, hogy olvasási [Azure Files üzembe helyezésének megtervezése](st
     > Ha azt tervezi, hogy a kiszolgáló regisztrációs felhasználói felületén ahelyett, hogy regisztrálja közvetlenül a PowerShell, PowerShell 5.1 kell használnia.
 
 * Ha Ön úgy döntött, hogy a PowerShell 5.1 használni, győződjön meg arról, hogy legalább .NET 4.7.2 telepítve van. Tudjon meg többet [.NET-keretrendszer-verziókat és a függőségek](https://docs.microsoft.com/dotnet/framework/migration-guide/versions-and-dependencies) a rendszeren.
-* Az Az PowerShell modult, amely az itt leírt utasításokat követve telepíthető: [Azure PowerShell telepítése és konfigurálása](https://docs.microsoft.com/powershell/azure/install-Az-ps). 
-* A Az.StorageSync modult, amely független a Az modul jelenleg telepítve van:
 
-    ```PowerShell
-    Install-Module Az.StorageSync -AllowClobber
-    ```
+    > [!Important]  
+    > Ha .NET 4.7.2+ telepíti a Windows Server Core-on, telepíteni kell a `quiet` és `norestart` jelzők vagy a telepítés sikertelen lesz. Például ha telepíti a .NET 4.8, a parancs lenne a következőhöz hasonló:
+    > ```PowerShell
+    > Start-Process -FilePath "ndp48-x86-x64-allos-enu.exe" -ArgumentList "/q /norestart" -Wait
+    > ```
+
+* Az Az PowerShell modult, amely az itt leírt utasításokat követve telepíthető: [Azure PowerShell telepítése és konfigurálása](https://docs.microsoft.com/powershell/azure/install-Az-ps).
+     
+    > [!Note]  
+    > A Az.StorageSync modul most már automatikusan települ a Az PowerShell-modul telepítésekor.
 
 ## <a name="prepare-windows-server-to-use-with-azure-file-sync"></a>A Windows Server előkészítése az Azure File Sync használatára
 Tiltsa le minden olyan kiszolgálón, az Azure File Sync, többek között az egyes kiszolgáló-csomópont egy feladatátvevő fürtben használni kívánt **az Internet Explorer fokozott biztonsági beállításai**. Ez azért szükséges, csak a kezdeti kiszolgálói regisztrációhoz. A kiszolgáló regisztrációja után újra engedélyezheti.
 
 # <a name="portaltabazure-portal"></a>[Portál](#tab/azure-portal)
+> [!Note]  
+> Ezt a lépést kihagyhatja, ha a Windows Server Core-on Azure File Sync telepíti.
+
 1. Nyissa meg a Kiszolgálókezelőt.
 2. Kattintson a **helyi kiszolgáló**:  
     ![A Server Manager felhasználói felületén bal oldalán a "helyi kiszolgáló"](media/storage-sync-files-deployment-guide/prepare-server-disable-IEESC-1.PNG)
@@ -62,18 +70,23 @@ Tiltsa le minden olyan kiszolgálón, az Azure File Sync, többek között az eg
 Az Internet Explorer fokozott biztonsági beállítások letiltása, egy rendszergazda jogú PowerShell-munkamenetben hajtsa végre az alábbiakat:
 
 ```powershell
-# Disable Internet Explorer Enhanced Security Configuration 
-# for Administrators
-Set-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Active Setup\Installed Components\{A509B1A7-37EF-4b3f-8CFC-4F3A74704073}" -Name "IsInstalled" -Value 0 -Force
+$installType = (Get-ItemProperty "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\").InstallationType
 
-# Disable Internet Explorer Enhanced Security Configuration 
-# for Users
-Set-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Active Setup\Installed Components\{A509B1A8-37EF-4b3f-8CFC-4F3A74704073}" -Name "IsInstalled" -Value 0 -Force
-
-# Force Internet Explorer closed, if open. This is required to fully apply the setting.
-# Save any work you have open in the IE browser. This will not affect other browsers,
-# including Microsoft Edge.
-Stop-Process -Name iexplore -ErrorAction SilentlyContinue
+# This step is not required for Server Core
+if ($installType -ne "Server Core") {
+    # Disable Internet Explorer Enhanced Security Configuration 
+    # for Administrators
+    Set-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Active Setup\Installed Components\{A509B1A7-37EF-4b3f-8CFC-4F3A74704073}" -Name "IsInstalled" -Value 0 -Force
+    
+    # Disable Internet Explorer Enhanced Security Configuration 
+    # for Users
+    Set-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Active Setup\Installed Components\{A509B1A8-37EF-4b3f-8CFC-4F3A74704073}" -Name "IsInstalled" -Value 0 -Force
+    
+    # Force Internet Explorer closed, if open. This is required to fully apply the setting.
+    # Save any work you have open in the IE browser. This will not affect other browsers,
+    # including Microsoft Edge.
+    Stop-Process -Name iexplore -ErrorAction SilentlyContinue
+}
 ``` 
 
 ---
@@ -100,7 +113,14 @@ Ha elkészült, válassza ki a **létrehozás** a Storage Sync Service telepít�
 Cserélje le **< Az_Region >** , **< RG_Name >** , és **< my_storage_sync_service >** a saját értékeire, majd használja az alábbi parancsok létrehozása és üzembe helyezése egy Társzinkronizálási szolgáltatás:
 
 ```powershell
-Connect-AzAccount
+$hostType = (Get-Host).Name
+
+if ($installType -eq "Server Core" -or $hostType -eq "ServerRemoteHost") {
+    Connect-AzAccount -UseDeviceAuthentication
+}
+else {
+    Connect-AzAccount
+}
 
 # this variable holds the Azure region you want to deploy 
 # Azure File Sync into

@@ -17,12 +17,12 @@ ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: aragra, lenalepa, sureshja
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9ec1d5fb13d7fb191bfee6194e69a217bcaddbb9
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: 541253cf3a8f2628ea0e76f1115ddc4a290daf62
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67482573"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67655480"
 ---
 # <a name="quickstart-register-an-application-with-the-microsoft-identity-platform"></a>Gyors útmutató: Alkalmazás regisztrálása a Microsoft identity platform használatával
 
@@ -50,7 +50,7 @@ Ez a rövid útmutató bemutatja, hogyan adhat hozzá, és regisztrálni egy alk
        - Webalkalmazás esetében adja meg alkalmazás alap URL-címét. A `http://localhost:31544` például a helyi gépen futó webalkalmazás URL-címe lehet. A felhasználók ezzel az URL-címmel jelentkeznek be egy webes ügyfélalkalmazásba.
        - Nyilvános ügyfélalkalmazások esetében adja meg az URI-t, amelyet az Azure AD a jogkivonatválaszok visszaadására használ. Adjon meg az alkalmazáshoz tartozó értéket, például: `myapp://auth`.
 
-     Webalkalmazásokra és natív alkalmazásokra konkrét példákat [rövid útmutatóinkban](https://docs.microsoft.com/azure/active-directory/develop/#quickstarts) talál.
+     Webalkalmazásokra és natív alkalmazásokra konkrét példákat [rövid útmutatóinkban](https://docs.microsoft.com/azure/active-directory/develop) talál.
 
 1. Miután végzett, válassza a **Regisztrálás** lehetőséget.
 
@@ -67,6 +67,6 @@ Az Azure AD egyedi alkalmazásazonosítót (ügyfélazonosítót) rendel az alka
     - [Ügyfélalkalmazás konfigurálása a webes API-k elérésére](quickstart-configure-app-access-web-apis.md)
     - [Alkalmazás konfigurálása webes API-k közzétételére](quickstart-configure-app-expose-web-apis.md)
     - [Alkalmazás által támogatott fiókok módosítása](quickstart-modify-supported-accounts.md)
-- A megfelelő [rövid útmutatót](https://docs.microsoft.com/azure/active-directory/develop/#quickstarts) választva gyorsan készíthet alkalmazást, és olyan funkciókat adhat hozzá, mint a jogkivonatok beszerzése, a jogkivonatok frissítése, a felhasználók bejelentkeztetése és egyes felhasználóadatok megjelenítése.
+- A megfelelő [rövid útmutatót](https://docs.microsoft.com/azure/active-directory/develop) választva gyorsan készíthet alkalmazást, és olyan funkciókat adhat hozzá, mint a jogkivonatok beszerzése, a jogkivonatok frissítése, a felhasználók bejelentkeztetése és egyes felhasználóadatok megjelenítése.
 - Ha szeretne többet megtudni a regisztrált alkalmazásokat jelölő két Azure AD-objektumról és azok kapcsolatáról, tekintse meg az [alkalmazás- és szolgáltatásnév-objektumokat](app-objects-and-service-principals.md) ismertető szakaszt.
 - Ha szeretne többet megtudni az alkalmazások fejlesztése során alkalmazandó védjegyzési irányelvekről, olvassa el az [Védjegyzési útmutató az alkalmazásokhoz](howto-add-branding-in-azure-ad-apps.md) című cikket.

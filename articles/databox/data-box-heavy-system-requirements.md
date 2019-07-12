@@ -6,16 +6,16 @@ author: alkohli
 ms.service: databox
 ms.subservice: heavy
 ms.topic: article
-ms.date: 05/22/2019
+ms.date: 07/03/2019
 ms.author: alkohli
-ms.openlocfilehash: b9e249885bd0e930773d4b374f85d72e60abdbdc
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6097dba9193fce4c8158137b488080107881994a
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66427740"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67839782"
 ---
-# <a name="azure-data-box-heavy-system-requirements-preview"></a>Az Azure Data Box nehéz rendszerkövetelmények (előzetes verzió)
+# <a name="azure-data-box-heavy-system-requirements"></a>Az Azure Data Box (nagy erőforrásigényű) rendszerre vonatkozó követelmények
 
 Ez a cikk ismerteti a fontos követelmények az Azure Data Box nehéz eszköz és a kapcsolódó ügyfelek számára az eszközre. Azt javasoljuk, hogy tekintse át az információkat gondosan előtt üzembe helyezése a Data Box (nagy erőforrásigényű), majd tekintse át biztonsági, szükség szerint a telepítési és az ezt követő művelet során.
 
@@ -51,6 +51,12 @@ A szoftverkövetelményeknek tartalmazza a támogatott operációs rendszerek, a
 ## <a name="networking-requirements"></a>Hálózati követelmények
 
 Az adatközpontnak nagy sebességű hálózattal kell rendelkeznie. A leggyorsabb másolási megbízhatóbbak két 40-GbE kapcsolatot, amellyel párhuzamos (a csomópontonként egy). Ha nem rendelkezik elérhető 40-GbE, azt javasoljuk, hogy legalább két 10-GbE kapcsolatot (egy csomópontonkénti).
+
+### <a name="port-requirements"></a>Port követelményei
+
+Az alábbi táblázat felsorolja a portot, amelyet meg kell nyitni a tűzfalon az SMB vagy NFS-forgalom engedélyezése. Ebben a táblázatban *a* vagy *bejövő* irányát hivatkozik, mely a bejövő kérések ügyfélelérési az eszközre. *Ki* vagy *kimenő* hivatkozik, amelyben a Data Box nehéz eszköz kívülről, adatokat küld a központi telepítés meghaladja a irány: például kimenő internetkapcsolattal.
+
+[!INCLUDE [data-box-port-requirements](../../includes/data-box-port-requirements.md)]
 
 ## <a name="next-steps"></a>További lépések
 

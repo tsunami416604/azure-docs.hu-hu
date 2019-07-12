@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 01/03/2018
+ms.date: 07/10/2018
 ms.author: juliako
-ms.openlocfilehash: fd5bf9f7bca9c667191d0d3f83be6e29a96c8dbe
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c599bc2bba27a3b3603d8d67e2c6049dc2a8b08b
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64926516"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67840162"
 ---
 # <a name="azure-media-player-overview"></a>Az Azure Media Player áttekintése
 
@@ -30,7 +30,7 @@ A Microsoft Azure Media Services lehetővé teszi, hogy a tartalom kiszolgálás
 
 ### <a name="start-using"></a>Használatának megkezdése
 
-Használhatja a [Azure Media Player demó lap](https://aka.ms/amp) lejátszása az Azure Media Services-minták vagy a saját stream.  
+Használhatja a [Azure Media Player demó lap](http://aka.ms/azuremediaplayer) lejátszása az Azure Media Services-minták vagy a saját stream.  
 
 Új videó lejátszása, illessze be egy másik URL-CÍMÉT, és nyomja meg **frissítés**.
 
@@ -40,7 +40,7 @@ Különböző lejátszási beállítások (például technológia, nyelv vagy a 
 
 ### <a name="monitor-diagnostics-of-a-video-stream"></a>A video-adatfolyamot diagnosztika figyelése
 
-Használhatja a [Azure Media Player demó lap](https://aka.ms/amp) , video-adatfolyamot diagnosztika figyelése. 
+Használhatja a [Azure Media Player demó lap](http://aka.ms/azuremediaplayer) , video-adatfolyamot diagnosztika figyelése. 
 
 ![Az Azure Media Player diagnostics](./media/azure-media-player/diagnostics.png)
 

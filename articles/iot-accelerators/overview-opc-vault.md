@@ -5,21 +5,21 @@ author: dominicbetts
 ms.author: dobett
 ms.date: 11/26/2018
 ms.topic: overview
-ms.service: iot-industrialiot
+ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: 99dfcaeb1ef5b52e6827f1b3ac65d6201557a8fb
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 40a9016ac7a10175b51f0fb6f072dd089bde3a51
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60887768"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67606283"
 ---
 # <a name="what-is-opc-vault"></a>Mi az OPC-tároló?
 
 Az OPC-tároló, konfigurálása, regisztrálja, és az OPC UA-kiszolgáló és az ügyfélalkalmazások számára a felhőben a tanúsítvány életciklusának kezelése mikroszolgáltatások. Ez a cikk ismerteti az OPC-tároló egyszerű használati eseteket.
 
-## <a name="certificate-management"></a>Tanúsítványkezelés
+## <a name="certificate-management"></a>Tanúsítványok kezelése
 
 Például egy gyártóvállalat cég az újonnan létrehozott ügyfélalkalmazás saját OPC UA-kiszolgáló gép csatlakozni kell. Ha a gyártó hajt végre a kezdeti hozzáférés a kiszolgáló gép, egy hibaüzenet azonnal jelenik meg a OPC UA kiszolgálói alkalmazás azt jelzi, hogy az ügyfélalkalmazás nem biztonságos. Ez a mechanizmus jön létre az OPC UA kiszolgáló gép minden nem engedélyezett alkalmazás-hozzáférés, amely megakadályozza az üzemi képzett ismétlem elkerülése érdekében.
 

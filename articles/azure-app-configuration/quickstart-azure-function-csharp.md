@@ -14,12 +14,12 @@ ms.tgt_pltfrm: Azure Functions
 ms.workload: tbd
 ms.date: 02/24/2019
 ms.author: yegu
-ms.openlocfilehash: c09cb0f93f05a9574543ebabb398148638092c73
-ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
+ms.openlocfilehash: a4900964fb6feeb4c7cb0f147d3681031cac6a7b
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65864787"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67798431"
 ---
 # <a name="quickstart-create-an-azure-function-with-app-configuration"></a>Gyors útmutató: Alkalmazások konfigurálása az Azure-függvény létrehozása
 
@@ -39,9 +39,9 @@ Ez a rövid útmutató elvégzéséhez telepítse [Visual Studio 2019](https://v
 
 [!INCLUDE [azure-app-configuration-create](../../includes/azure-app-configuration-create.md)]
 
-6. Válassza ki **konfigurációs Explorer** > **+ létrehozás** a következő kulcs-érték párok hozzáadásához:
+6. Válassza ki **konfigurációs Explorer** >  **+ létrehozás** a következő kulcs-érték párok hozzáadásához:
 
-    | Kulcs | Érték |
+    | Kulcs | Value |
     |---|---|
     | TestApp:Settings:Message | Azure-alkalmazás-konfigurációs adatait |
 
@@ -56,7 +56,7 @@ Ez a rövid útmutató elvégzéséhez telepítse [Visual Studio 2019](https://v
 1. Kattintson jobb gombbal a projektre, és válassza ki **NuGet-csomagok kezelése**. Az a **Tallózás** lapon, keresése és a következő NuGet-csomagok hozzáadása a projekthez. Ha nem látja őket, válassza ki a **előzetes verzió** jelölőnégyzetet.
 
     ```
-    Microsoft.Extensions.Configuration.AzureAppConfiguration 1.0.0 preview or later
+    Microsoft.Extensions.Configuration.AzureAppConfiguration 2.0.0-preview-009200001-1437 or later
     ```
 
 2. Nyissa meg *Function1.cs*, és vegyen fel egy hivatkozást a .NET Core alkalmazás konfigurációszolgáltatót.

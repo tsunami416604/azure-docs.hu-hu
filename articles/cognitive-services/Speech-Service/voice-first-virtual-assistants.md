@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: travisw
-ms.openlocfilehash: 4055b474938e38f653021b46f18200f8e39dd69d
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: c9b85895e701ff74e025d6f7895bc32513bc29a1
+ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67604746"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67806900"
 ---
 # <a name="about-custom-voice-first-virtual-assistants-preview"></a>Egyéni hang-és felhőközpontú virtuális asszisztensek előzetes tudnivalók
 
@@ -43,6 +43,7 @@ Mintakód egy hang-és felhőközpontú virtuális asszisztensek létrehozása a
 * [Hang-és felhőközpontú virtuális asszisztensek minták (SDK)](https://aka.ms/csspeech/samples)
 * [Gyors útmutató: hang-és felhőközpontú virtuális asszisztensek (C#)](quickstart-virtual-assistant-csharp-uwp.md)
 * [Gyors útmutató: hang-és felhőközpontú virtuális asszisztensek (Java)](quickstart-virtual-assistant-java-jre.md)
+* [A közvetlen vonal Speech ügyfél (C#, WPF)](https://github.com/Azure-Samples/Cognitive-Services-Direct-Line-Speech-Client)
 
 ## <a name="customization"></a>Testreszabás
 
@@ -60,5 +61,5 @@ Hang-és felhőközpontú Azure Speech Services használatával létrehozott vir
 
 * [Ingyenes beszédszolgáltatások előfizetési kulcs lekérése](get-started.md)
 * [A beszédfelismerés SDK beszerzése](speech-sdk.md)
-* [Létrehozni és üzembe helyezni egy alapszintű robot](https://docs.microsoft.com/azure/bot-service/bot-builder-tutorial-basic-deploy?view=azure-bot-service-4.0)
+* [Alapszintű robot létrehozása és üzembe helyezése](https://docs.microsoft.com/azure/bot-service/bot-builder-tutorial-basic-deploy?view=azure-bot-service-4.0)
 * [A virtuális Segéd megoldás és a vállalati sablon](https://github.com/Microsoft/AI)

@@ -7,12 +7,12 @@ ms.service: bastion
 ms.topic: conceptual
 ms.date: 06/03/2019
 ms.author: cherylmc
-ms.openlocfilehash: e7210b2b1be072f5326070d768d5fe12c386ee0b
-ms.sourcegitcommit: 156b313eec59ad1b5a820fabb4d0f16b602737fc
+ms.openlocfilehash: 5312ad2593e732f4c84eb67ed263bc9e4666a67a
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67191602"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67594192"
 ---
 # <a name="working-with-nsg-access-and-azure-bastion-preview"></a>Az NSG-hozzáférés és az Azure megerősített (előzetes verzió)
 
@@ -44,9 +44,9 @@ Az alábbi ábrán látható:
 
 Ha NSG-ket alkalmaz az **AzureBastionSubnet**, Azure vezérlősík és az infrastruktúra a következő két szolgáltatáscímkék engedélyezése:
 
-* **(Csak Resource Manager) GatewayManager**: Ez a címke az Azure-átjáró Manager szolgáltatás címelőtagjait. Ha GatewayManager értéket ad meg, engedélyezett vagy tiltott forgalmat GatewayManager való.
+* **(Csak Resource Manager) GatewayManager**: Ez a címke az Azure-átjáró Manager szolgáltatás címelőtagjait. Ha GatewayManager értéket ad meg, engedélyezett vagy tiltott forgalmat GatewayManager való.  Az NSG-ket a AzureBastionSubnet létrehozásakor, engedélyezze a bejövő forgalom GatewayManager címke.
 
-* **(Csak Resource Manager) AzureCloud**: Ez a címke azt jelzi, hogy az IP-címtér az Azure-ban minden adatközpont nyilvános IP-címek többek között. Az érték az AzureCloud ad meg, ha engedélyezett vagy tiltott forgalmat az Azure nyilvános IP-címeket. Csak szeretné egy adott régióban AzureCloud való hozzáférés engedélyezése, ha a régió is megadhat. Ha például csak az USA keleti régiójában Azure AzureCloud hozzáférést szeretne, megadhatja AzureCloud.EastUS szolgáltatáscímkét.
+* **(Csak Resource Manager) AzureCloud**: Ez a címke azt jelzi, hogy az IP-címtér az Azure-ban minden adatközpont nyilvános IP-címek többek között. Az érték az AzureCloud ad meg, ha engedélyezett vagy tiltott forgalmat az Azure nyilvános IP-címeket. Ha csak egy adott régióban AzureCloud hozzáférést, a régió is megadhat. Ha például csak az USA keleti régiójában Azure AzureCloud hozzáférést szeretne, megadhatja AzureCloud.EastUS szolgáltatáscímkét. Az NSG-ket a AzureBastionSubnet létrehozásakor, engedélyezze a kimenő forgalom AzureCloud címke.
 
 ## <a name="next-steps"></a>További lépések
 

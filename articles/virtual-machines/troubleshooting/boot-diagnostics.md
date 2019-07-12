@@ -3,19 +3,19 @@ title: Rendszerindítási diagnosztika az Azure-beli virtuális gépek |} A Micr
 description: Az Azure-beli virtuális gépek két hibakereső szolgáltatás áttekintése
 services: virtual-machines
 author: Deland-Han
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 ms.service: virtual-machines
 ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: delhan
-ms.openlocfilehash: 59602977c1b7f6dd0524c6535d8458d3eb1a3f26
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 7796d24b88ccc531b8042bfadf9d87f0072a2994
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60505874"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67709867"
 ---
 # <a name="how-to-use-boot-diagnostics-to-troubleshoot-virtual-machines-in-azure"></a>A rendszerindítási diagnosztika használata az Azure-beli virtuális gépek hibaelhárítása
 

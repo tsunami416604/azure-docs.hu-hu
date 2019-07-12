@@ -4,7 +4,7 @@ description: Ez a cikk végigvezeti az IaaS-erőforrások, például a virtuáli
 services: virtual-machines-windows
 documentationcenter: ''
 author: singhkays
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 ms.assetid: 2b3dff9b-2e99-4556-acc5-d75ef234af9c
@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/30/2017
 ms.author: kasing
-ms.openlocfilehash: 7cc8970e739d2e762fb08e563ef0498948ac8251
-ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
+ms.openlocfilehash: dc88a7936c4ab4994bd9de168a682b1253c34e1f
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "64692877"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67720231"
 ---
 # <a name="migrate-iaas-resources-from-classic-to-azure-resource-manager-by-using-azure-powershell"></a>Át IaaS-erőforrások klasszikusból Azure Resource Manager Azure PowerShell-lel
 Ezek a lépések bemutatják, hogyan áttelepítése infrastruktúra-szolgáltatás (IaaS) erőforrások a klasszikus üzemi modellben az Azure Resource Manager-alapú üzemi modellbe, az Azure PowerShell-parancsok használatával.
@@ -49,7 +49,7 @@ Az alábbiakban néhány ajánlott eljárást, amely azt javasoljuk, áttelepít
 >
 >ExpressRoute-átjáró csatlakoztatása ExpressRoute-Kapcsolatcsoportok egy másik előfizetésben nem telepíthetők át automatikusan. Ezekben az esetekben távolítsa el az ExpressRoute-átjárót, a virtuális hálózat migrálása, és hozza létre újra az átjárót. Lásd: [áttelepítése ExpressRoute-Kapcsolatcsoportok és kapcsolódó virtuális hálózatok a klasszikusból a Resource Manager-alapú üzemi modellbe](../../expressroute/expressroute-migration-classic-resource-manager.md) további információt.
 
-## <a name="step-2-install-the-latest-version-of-azure-powershell"></a>2\. lépés: Azure PowerShell legújabb verziójának telepítése
+## <a name="step-2-install-the-latest-version-of-azure-powershell"></a>2\. lépés: Azure PowerShell legújabb verziójának telepítése
 Azure PowerShell telepítése két fő lehetőség van: [PowerShell-galériából](https://www.powershellgallery.com/profiles/azure-sdk/) vagy [Webplatform-telepítő (WebPI) webes](https://aka.ms/webpi-azps). WebPI kapja a havi frissítéseit. PowerShell-galériából rendszeresen frissítéseket kapja. Ez a cikk az Azure PowerShell-lel 2.1.0-ás alapul.
 
 A telepítési utasításokért lásd: [telepítése és konfigurálása az Azure PowerShell-lel](/powershell/azure/overview).

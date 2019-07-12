@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 05/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: f7e070788d2fc11addcafc30d9f232f194f44782
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 22d6999b2a69aceb4421cea070d784f693bdf9c4
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60318478"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67839281"
 ---
 # <a name="move-data-from-an-http-source-by-using-azure-data-factory"></a>Egy HTTP-forrásból származó adatok áthelyezése az Azure Data Factory használatával
 
@@ -45,7 +45,7 @@ Adatok áthelyezése a különböző eszközök vagy API-k használatával egy H
 
 - A folyamat létrehozásának legegyszerűbb módja, hogy az adatok másolása varázslóval. Gyors bemutató folyamat létrehozása adatok másolása varázsló használatával, lásd: [oktatóanyag: Hozzon létre egy folyamatot a másolás varázsló használatával](data-factory-copy-data-wizard-tutorial.md).
 
-- Folyamatok létrehozására is használhatja a következő eszközök: a **az Azure portal**, **Visual Studio**, **Azure PowerShell-lel**, egy **Azure Resource Manager sablon**, a **.NET API**, vagy a **REST API-val**. Egy másolási tevékenységgel rendelkező folyamat létrehozása a részletes útmutatót lásd: a [másolási tevékenység oktatóanyagát](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md). JSON-adott adatok másolása a HTTP-forrás az Azure Blob storage-minták, lásd: [JSON példák](#json-examples).
+- Folyamatok létrehozására is használhatja a következő eszközök: a **Visual Studio**, **Azure PowerShell-lel**, egy **Azure Resource Manager-sablon**, a **.NET API** , vagy a **REST API-val**. Egy másolási tevékenységgel rendelkező folyamat létrehozása a részletes útmutatót lásd: a [másolási tevékenység oktatóanyagát](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md). JSON-adott adatok másolása a HTTP-forrás az Azure Blob storage-minták, lásd: [JSON példák](#json-examples).
 
 ## <a name="linked-service-properties"></a>Társított szolgáltatás tulajdonságai
 
@@ -66,7 +66,7 @@ HTTP összekötőt a helyszíni adatforrások hitelesítő adatok beállításá
 
 Állítsa be **authenticationType** való **alapszintű**, **kivonatoló**, vagy **Windows**. Általános HTTP összekötő tulajdonságaihoz az előző szakaszokban ismertetett állítsa be a következő tulajdonságokat:
 
-| Tulajdonság | Leírás | Kötelező |
+| Tulajdonság | Leírás | Szükséges |
 | --- | --- | --- |
 | userName | A felhasználónév, a HTTP-végpont elérésére használhat. | Igen |
 | password | A felhasználó jelszava (**felhasználónév**). | Igen |
@@ -94,7 +94,7 @@ HTTP összekötőt a helyszíni adatforrások hitelesítő adatok beállításá
 
 Alapszintű hitelesítés használatához állítsa **authenticationType** való **ClientCertificate**. Általános HTTP összekötő tulajdonságaihoz az előző szakaszokban ismertetett állítsa be a következő tulajdonságokat:
 
-| Tulajdonság | Leírás | Kötelező |
+| Tulajdonság | Leírás | Szükséges |
 | --- | --- | --- |
 | embeddedCertData | Bináris adatok a PFX-fájl Base-64 kódolású tartalmát. | Adja meg **embeddedCertData** vagy **certThumbprint** |
 | certThumbprint | Az átjáró számítógépre tanúsítványtár telepített tanúsítvány ujjlenyomatával. Csak akkor, amikor adatokat másol egy helyszíni HTTP-forrás vonatkoznak. | Adja meg **embeddedCertData** vagy **certThumbprint** |
@@ -231,7 +231,7 @@ Lásd: [fájl- és tömörítési formátumok az Azure Data Factoryban](data-fac
 
 ## <a name="json-examples"></a>JSON-példák
 
-Az alábbi példák megadják példa JSON-definíciók, amelyek segítségével hozzon létre egy folyamatot a [az Azure portal](data-factory-copy-activity-tutorial-using-azure-portal.md), [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md), vagy [Azure PowerShell-lel](data-factory-copy-activity-tutorial-using-powershell.md). A példák bemutatják, hogyan másolhat adatokat egy HTTP-forrásból, az Azure Blob storage. Azonban az adatok átmásolhatók *közvetlenül* egyetlen forrás sem a fogadóként [támogatott](data-factory-data-movement-activities.md#supported-data-stores-and-formats) másolási tevékenységgel az Azure Data Factory használatával.
+Az alábbi példák megadják példa JSON-definíciók, amelyek segítségével létrehoz egy folyamatot használatával [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) vagy [Azure PowerShell-lel](data-factory-copy-activity-tutorial-using-powershell.md). A példák bemutatják, hogyan másolhat adatokat egy HTTP-forrásból, az Azure Blob storage. Azonban az adatok átmásolhatók *közvetlenül* egyetlen forrás sem a fogadóként [támogatott](data-factory-data-movement-activities.md#supported-data-stores-and-formats) másolási tevékenységgel az Azure Data Factory használatával.
 
 **Példa: Egy HTTP-forrás az Azure Blob storage-adatok másolása**
 

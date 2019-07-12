@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 01/04/2019
 ms.author: junhan
-ms.openlocfilehash: 03df2ceb2df4d857e48f1790703a1d87647e43d0
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: f5697e0b51e8349de62e71be1471beb76aa48765
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60401170"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67838723"
 ---
 # <a name="use-azure-iot-tools-for-visual-studio-code-for-azure-iot-hub-device-management"></a>Az Azure IoT-eszközök a Visual Studio Code használata az Azure IoT Hub-Eszközfelügyelet
 
@@ -63,7 +63,7 @@ Futtassa az Azure IoT-eszközök a Visual Studio Code különböző felügyeleti
 5. Az eszközlistában megjelenő **Azure IoT Hub-eszközök** lapon pár másodpercen belül.
 
    > [!Note]
-   > A telepítést elvégezheti a **Set IoT Hub Connection String** (IoT Hub kapcsolati sztring beállítása) elemre kattintva is. Az IoT hub, amely az IoT-eszköz csatlakozik az előugró ablakban adja meg a kapcsolati karakterláncot.
+   > A telepítést elvégezheti a **Set IoT Hub Connection String** (IoT Hub kapcsolati sztring beállítása) elemre kattintva is. Adja meg a **iothubowner** az IoT hub, amely a felugró ablakban csatlakozik az IoT-eszköz házirend-kapcsolati karakterláncára.
 
 ## <a name="direct-methods"></a>Közvetlen metódusok
 

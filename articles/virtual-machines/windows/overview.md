@@ -4,7 +4,7 @@ description: Tudnivalók Windows rendszerű virtuális gépek létrehozásáról
 services: virtual-machines-windows
 documentationcenter: ''
 author: cynthn
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager,azure-service-management
 ms.assetid: fbae9c8e-2341-4ed0-bb20-fd4debb2f9ca
@@ -16,12 +16,12 @@ ms.topic: conceptual
 ms.date: 10/04/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 604a47ef73d50a2d127d1569b0b6a240a7a27d73
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7bb87713f1f7d1f41f68f3743b2504784b37bb23
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65506840"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67723052"
 ---
 # <a name="overview-of-windows-virtual-machines-in-azure"></a>Windows rendszerű virtuális gépek áttekintése az Azure-ban
 
@@ -101,7 +101,7 @@ A bővítményekkel a következő gyakori feladatok végezhetők el:
 ### <a name="related-resources"></a>Kapcsolódó források (lehet, hogy a cikkek angol nyelvűek)
 Az alábbi táblázat a virtuális gép által használt erőforrásokat tartalmazza, amelyeknek létezniük kell a virtuális gép létrehozásakor, vagy akkor kell őket létrehozni.
 
-| Erőforrás | Kötelező | Leírás |
+| Erőforrás | Szükséges | Leírás |
 | --- | --- | --- |
 | [Erőforráscsoport](../../azure-resource-manager/resource-group-overview.md) |Igen |A virtuális gépnek egy erőforráscsoport tagjának kell lennie. |
 | [Storage-fiók](../../storage/common/storage-create-storage-account.md) |Igen |A virtuális gépnek szüksége van egy tárfiókra a virtuális merevlemezek tárolásához. |

@@ -4,26 +4,25 @@ titleSuffix: Azure Dev Spaces
 author: zr-msft
 services: azure-dev-spaces
 ms.service: azure-dev-spaces
-ms.subservice: azds-kubernetes
 ms.author: zarhoads
-ms.date: 03/22/2019
+ms.date: 07/08/2019
 ms.topic: quickstart
 description: Gyors fejlesztés a tárolók, mikroszolgáltatások és Node.js az Azure-ban
 keywords: Docker, Kubernetes, Azure, az AKS, az Azure Kubernetes Service, tárolók, Helm, a szolgáltatás háló, a szolgáltatás háló útválasztás, a kubectl, a k8s
-manager: jeconnoc
-ms.openlocfilehash: 5efacc38ab6b30a1a4ae45772f2b81030e76eb83
-ms.sourcegitcommit: 51a7669c2d12609f54509dbd78a30eeb852009ae
+manager: gwallace
+ms.openlocfilehash: 3da6c015d46d2c83dd74c625e1e8eeaee81da2ae
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66393930"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67707129"
 ---
 # <a name="quickstart-develop-with-nodejs-on-kubernetes-using-azure-dev-spaces"></a>Gyors útmutató: Fejlesztés node.js nyelven, a Kubernetes Azure fejlesztési tárolóhelyek használatával
 
 Ebből az útmutatóból a következőket tudhatja meg:
 
 - Az Azure Dev Spaces beállítása Managed Kubernetes-fürttel az Azure-ban.
-- Iteratív fejlesztés kód a Visual Studio Code és a parancssor használatával.
+- Iteratív fejlesztés kód a Visual Studio Code-tárolókban.
 - A Visual Studio Code-ból a fejlesztési tárhely kódok hibakeresése.
 
 ## <a name="prerequisites"></a>Előfeltételek
@@ -68,115 +67,70 @@ Managed Kubernetes cluster 'MyAKS' in resource group 'MyResourceGroup' is ready 
 
 Ebben a cikkben fogja használni a [Azure fejlesztési tárolóhelyek mintaalkalmazás](https://github.com/Azure/dev-spaces) bemutatása, Azure-fejlesztési szóközzel.
 
-Klónozza az alkalmazást a Githubról, és keresse meg a *fejlesztési-tárolóhelyek/samples/nodejs/első-lépések/webfrontend* könyvtár:
+Klónozza az alkalmazást a Githubról.
 
 ```cmd
 git clone https://github.com/Azure/dev-spaces
-cd dev-spaces/samples/nodejs/getting-started/webfrontend
 ```
 
-## <a name="prepare-the-application"></a>Az alkalmazás előkészítése
+## <a name="prepare-the-sample-application-in-visual-studio-code"></a>A mintaalkalmazás a Visual Studio Code előkészítése
 
-Az alkalmazás futtatása a Kubernetes használatával hozza létre a Docker és a Helm-diagram eszközök a `azds prep` parancsot:
+Nyissa meg a Visual Studio Code, kattintson a *fájl* majd *megnyitása...* , keresse meg a *fejlesztési-tárolóhelyek/samples/nodejs/első-lépések/webfrontend* könyvtárra, és kattintson *nyílt*.
 
-```cmd
-azds prep --public
-```
+Most már a *webfrontend* projektben nyissa meg a Visual Studio Code-ban. Az alkalmazás futtatásához a fejlesztési tárhelyre, hozzon létre a Docker és a Helm diagram eszközök, az Azure fejlesztési tárolóhelyek bővítmény használatával a parancs kívánt színére.
 
-Futtatnia kell a `prep` parancsot a *fejlesztési-tárolóhelyek/samples/nodejs/első-lépések/webfrontend* directory átjáróadatok megfelelő létrehozása a Docker és a Helm-diagram eszközök.
+A Visual Studio Code-ban a Parancskatalógus megnyitásához kattintson a *nézet* majd *Parancskatalógus*. Kezdje el beírni `Azure Dev Spaces` , majd kattintson a `Azure Dev Spaces: Prepare configuration files for Azure Dev Spaces`.
 
-## <a name="build-and-run-code-in-kubernetes"></a>Kód létrehozása és futtatása Kubernetesben
+![Konfigurációs fájlok előkészítése Azure-fejlesztési tárolóhelyek](./media/common/command-palette.png)
 
-Hozhat létre, és futtathatja a kódot az AKS-a `azds up` parancsot:
+Ha a Visual Studio Code-ot is megkéri, hogy konfigurálja a nyilvános végponthoz, válassza `Yes` engedélyezése egy nyilvános végpontot.
 
-```cmd
-$ azds up
-Using dev space 'default' with target 'MyAKS'
-Synchronizing files...2s
-Installing Helm chart...2s
-Waiting for container image build...2m 25s
-Building container image...
-Step 1/8 : FROM node
-Step 2/8 : ENV PORT 80
-Step 3/8 : EXPOSE 80
-Step 4/8 : WORKDIR /app
-Step 5/8 : COPY package.json .
-Step 6/8 : RUN npm install
-Step 7/8 : COPY . .
-Step 8/8 : CMD ["npm", "start"]
-Built container image in 6m 17s
-Waiting for container...13s
-Service 'webfrontend' port 'http' is available at http://webfrontend.1234567890abcdef1234.eus.azds.io/
-Service 'webfrontend' port 80 (http) is available at http://localhost:54256
-...
-```
+![Select public endpoint](media/common/select-public-endpoint.png)
 
-Láthatja, hogy a szolgáltatás fut, nyissa meg a nyilvános URL-CÍMÉT, amely kimenetében megjelennek a `azds up` parancsot. Ebben a példában a nyilvános URL-je *http://webfrontend.1234567890abcdef1234.eus.azds.io/* .
+Ez a parancs előkészíti a projekthez, hogy egy docker-fájl és a Helm-diagram létrehozása az Azure fejlesztési tárolóhelyek futtatásához. Is előállít egy *.vscode* könyvtárat, amely a projekt gyökerében konfigurációs hibakeresés.
 
-Ha leállítja a `azds up` parancsának használatával *Ctrl + c*, a szolgáltatás továbbra is futtassa az aks-ben és a nyilvános URL-cím használható marad.
+## <a name="build-and-run-code-in-kubernetes-from-visual-studio-code"></a>Létrehozása és kód futtatása a Kubernetesben Visual Studio Code-ból
+
+Kattintson a *Debug* ikonra a bal oldalon, majd a *indítsa el a kiszolgáló (AZDS)* tetején.
+
+![Indítsa el a kiszolgáló](media/get-started-node/debug-configuration-nodejs.png)
+
+A parancs épít, és a szolgáltatás fut az Azure fejlesztési szóközöket. A *terminálon* ablak alján látható a felépítési művelet kimenetében és URL-címek az Azure fejlesztési tárolóhelyek futó szolgáltatás. A *hibakeresési konzolt* napló kimenetét mutatja be.
+
+> [!Note]
+> Ha nem látja az Azure fejlesztési tárolóhelyek parancsok a *Parancskatalógus*, győződjön meg arról, hogy telepítette a [Visual Studio Code-bővítmény az Azure fejlesztési tárolóhelyek](https://marketplace.visualstudio.com/items?itemName=azuredevspaces.azds). Ellenőrizze azt is nyitotta meg a *fejlesztési-tárolóhelyek/samples/nodejs/első-lépések/webfrontend* könyvtárat a Visual Studio Code-ot.
+
+A nyilvános URL-cím megnyitásával fut a szolgáltatás megjelenik.
+
+Kattintson a *Debug* majd *hibakeresés leállításához* a hibakereső leállítása.
 
 ## <a name="update-code"></a>Kód frissítése
 
-A szolgáltatás frissített verziójának üzembe helyezéséhez bármilyen fájl frissítése a projekt és futtassa újra a `azds up` parancsot. Példa:
+A szolgáltatás frissített verziójának üzembe helyezéséhez bármilyen fájl frissítése a projekt és futtassa újra a *indítsa el a kiszolgáló*. Példa:
 
-1. Ha `azds up` továbbra is fut, nyomja le az *Ctrl + c*.
-1. Frissítés [a 10. sor `server.js` ](https://github.com/Azure/dev-spaces/blob/master/samples/nodejs/getting-started/webfrontend/server.js#L10) való:
+1. Ha az alkalmazás továbbra is fut, kattintson a *Debug* majd *hibakeresés leállításához* leállításához.
+1. Frissítés [a 13. sor `server.js` ](https://github.com/Azure/dev-spaces/blob/master/samples/nodejs/getting-started/webfrontend/server.js#L13) való:
     
     ```javascript
         res.send('Hello from webfrontend in Azure');
     ```
 
 1. Mentse a módosításokat.
-1. Futtassa újra a `azds up` parancsot:
-
-    ```cmd
-    $ azds up
-    Using dev space 'default' with target 'MyAKS'
-    Synchronizing files...1s
-    Installing Helm chart...3s
-    Waiting for container image build...
-    ...    
-    ```
-
+1. Ismétlés *indítsa el a kiszolgáló*.
 1. Keresse meg a futó szolgáltatás, és vizsgálja meg a módosításokat.
-1. Nyomja meg *Ctrl + c* leállítani a `azds up` parancsot.
-
-## <a name="initialize-code-for-debugging-in-kubernetes-with-visual-studio-code"></a>Hibakeresés a Visual Studio Code-dal Kubernetes kódját inicializálása
-
-Nyissa meg a Visual Studio Code, kattintson a *fájl* majd *megnyitása...* , keresse meg a *fejlesztési-tárolóhelyek/samples/nodejs/első-lépések/webfrontend* könyvtárra, és kattintson *nyílt*.
-
-Most már a *webfrontend* projektben nyissa meg a Visual Studio Code, amely ugyanazt a szolgáltatást használó futtatta a `azds up` parancsot. Az aks-ben a Visual Studio Code, használatával ellentétben ez a szolgáltatás hibakeresése `azds up` közvetlenül, elő kell készíteni a projektet a Visual Studio Code használatával kommunikálnak a fejlesztési tárhely.
-
-A Visual Studio Code-ban a Parancskatalógus megnyitásához kattintson a *nézet* majd *Parancskatalógus*. Kezdje el beírni `Azure Dev Spaces` , majd kattintson a `Azure Dev Spaces: Prepare configuration files for Azure Dev Spaces`.
-
-![](./media/common/command-palette.png)
-
-Ez a parancs előkészíti a projekthez, hogy közvetlenül a Visual Studio Code az Azure fejlesztési tárolóhelyek futtatni. Is előállít egy *.vscode* könyvtárat, amely a projekt gyökerében konfigurációs hibakeresés.
-
-## <a name="build-and-run-code-in-kubernetes-from-visual-studio-code"></a>Létrehozása és kód futtatása a Kubernetesben Visual Studio Code-ból
-
-Kattintson a *Debug* ikonra a bal oldalon, majd a *indítsa el a kiszolgáló (AZDS)* tetején.
-
-![](media/get-started-node/debug-configuration-nodejs.png)
-
-A parancs épít, és a szolgáltatás fut az Azure fejlesztési tárolóhelyek hibakeresési módban. A *terminálon* ablak alján látható a felépítési művelet kimenetében és URL-címek az Azure fejlesztési tárolóhelyek futó szolgáltatás. A *hibakeresési konzolt* napló kimenetét mutatja be.
-
-> [!Note]
-> Ha nem látja az Azure fejlesztési tárolóhelyek parancsok a *Parancskatalógus*, győződjön meg arról, hogy telepítette a [Visual Studio Code-bővítmény az Azure fejlesztési tárolóhelyek](https://marketplace.visualstudio.com/items?itemName=azuredevspaces.azds). Ellenőrizze azt is nyitotta meg a *fejlesztési-tárolóhelyek/samples/nodejs/első-lépések/webfrontend* könyvtárat a Visual Studio Code-ot.
-
-Kattintson a *Debug* majd *hibakeresés leállításához* a hibakereső leállítása.
+1. Kattintson a *Debug* majd *hibakeresés leállításához* az alkalmazás leállításához.
 
 ## <a name="setting-and-using-breakpoints-for-debugging"></a>Beállítás és hibakeresési töréspontok használatával
 
 A szolgáltatás használatának megkezdéséhez *indítsa el a kiszolgáló (AZDS)* .
 
-Lépjen vissza a *Explorer* nézet kattintva *nézet* majd *Explorer*. Nyissa meg `server.js` valahol kattintson a sor létezik helyezze a kurzort a 10. Állítson be egy töréspontot, nyomja le az *F9* , vagy kattintson *Debug* majd *töréspont*.
+Lépjen vissza a *Explorer* nézet kattintva *nézet* majd *Explorer*. Nyissa meg `server.js` kattintson valahol van helyezze a kurzort a 13. sorban. Állítson be egy töréspontot, nyomja le az *F9* , vagy kattintson *Debug* majd *töréspont*.
 
-Egy böngészőben nyissa meg a szolgáltatást, és figyelje meg, hogy nem jelenik meg. Térjen vissza a Visual Studio Code-ot, és vizsgálja meg, a 10. sornak ki van jelölve. A töréspont be 10-es sor a szolgáltatás szünetel. A szolgáltatás folytatásához nyomja le az *F5* , vagy kattintson *Debug* majd *Folytatás*. Térjen vissza a böngészőben, és figyelje meg, hogy az üzenet jelenik meg.
+Egy böngészőben nyissa meg a szolgáltatást, és figyelje meg, hogy nem jelenik meg. Térjen vissza a Visual Studio Code, és figyelje meg a 13. sor van kijelölve. A töréspont beállított 13. sor a szolgáltatás szünetel. A szolgáltatás folytatásához nyomja le az *F5* , vagy kattintson *Debug* majd *Folytatás*. Térjen vissza a böngészőben, és figyelje meg, hogy az üzenet jelenik meg.
 
 Miközben fut a szolgáltatás a Kubernetes egy hibakeresővel, akkor a hibakeresési információkat, például a hívási verem, a helyi változókat és a kivétel adatai teljes hozzáféréssel rendelkezik.
 
-A töréspont eltávolítása ehhez vigye a kurzort 10. sorban a `server.js` és lenyomásával *F9*.
+A töréspont eltávolítása ehhez vigye a kurzort a 13. sort a `server.js` és lenyomásával *F9*.
 
 Kattintson a *Debug* majd *hibakeresés leállításához* a hibakereső leállítása.
 
@@ -190,7 +144,7 @@ A parancs épít, és a szolgáltatás fut az Azure fejlesztési szóközöket. 
 
 A szolgáltatás elindulása után a böngésző használatával keresse meg és kezelheti azt.
 
-A szolgáltatás futása térjen vissza a VS Code és a frissítés sor 10 `server.js`. Példa:
+A szolgáltatás futása térjen vissza a VS Code és a frissítés sor 13 `server.js`. Példa:
 ```javascript
     res.send('Hello from webfrontend in Azure while debugging!');
 ```
