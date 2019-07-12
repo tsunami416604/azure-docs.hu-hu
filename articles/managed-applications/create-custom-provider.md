@@ -7,20 +7,20 @@ ms.service: managed-applications
 ms.topic: tutorial
 ms.date: 05/01/2019
 ms.author: evanhi
-ms.openlocfilehash: e4196cf59537be5194ceb510a1b7b066c97de19a
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.openlocfilehash: 41200139ef55fa1ae441192e2d81b5228cf29bad
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65410223"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67795320"
 ---
-# <a name="tutorial-create-custom-provider-and-deploy-custom-resources"></a>Oktatóanyag: Hozzon létre egyéni szolgáltatót és az egyéni erőforrások üzembe helyezése
+# <a name="quickstart-create-custom-provider-and-deploy-custom-resources"></a>Gyors útmutató: Hozzon létre egyéni szolgáltatót és az egyéni erőforrások üzembe helyezése
 
-Ebben az oktatóanyagban a saját erőforrás-szolgáltató létrehozása, és egyéni erőforrás-típus adott erőforrás-szolgáltató telepítése. Egyéni szolgáltatók kapcsolatos további információkért lásd: [Azure egyéni szolgáltatók előzetes áttekintése](custom-providers-overview.md).
+Ebben a rövid útmutatóban a saját erőforrás-szolgáltató létrehozása, és az adott erőforrás-szolgáltató üzembe helyezése a egyéni erőforrás-típus. Egyéni szolgáltatók kapcsolatos további információkért lásd: [Azure egyéni szolgáltatók előzetes áttekintése](custom-providers-overview.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ebben az oktatóanyagban szereplő lépések végrehajtásához szüksége REST-műveleteinek meghívására. Nincsenek [REST-kérelmeket küldő különböző módokon](/rest/api/azure/). Ha egy eszköz a REST-műveleteket még nem rendelkezik, telepítse a [ARMClient](https://github.com/projectkudu/ARMClient). Egy nyílt forráskódú parancssori eszköz, amely leegyszerűsíti az Azure Resource Manager API meghívása.
+Ebben a rövid útmutatóban a lépések elvégzéséhez szüksége REST-műveleteinek meghívására. Nincsenek [REST-kérelmeket küldő különböző módokon](/rest/api/azure/). Ha egy eszköz a REST-műveleteket még nem rendelkezik, telepítse a [ARMClient](https://github.com/projectkudu/ARMClient). Egy nyílt forráskódú parancssori eszköz, amely leegyszerűsíti az Azure Resource Manager API meghívása.
 
 ## <a name="deploy-custom-provider"></a>Egyéni szolgáltató üzembe helyezése
 
@@ -122,7 +122,7 @@ A válasz jelenik meg:
 
 ## <a name="create-resource-type"></a>Erőforrás-típus létrehozása
 
-Szeretne létrehozni az egyéni erőforrás típusa, az erőforrás-sablonban is telepítheti. Ez a megközelítés akkor jelenik meg a sablon ebben az oktatóanyagban telepítette. Egy PUT kérelmet az erőforrástípusok is küldhet.
+Szeretne létrehozni az egyéni erőforrás típusa, az erőforrás-sablonban is telepítheti. Ez a megközelítés akkor jelenik meg a sablont, akkor ebben a rövid útmutatóban üzembe helyezett. Egy PUT kérelmet az erőforrástípusok is küldhet.
 
 ```
 PUT https://management.azure.com/subscriptions/<sub-id>/resourceGroups/<rg-name>/providers/Microsoft.CustomProviders/resourceProviders/<provider-name>/users/<resource-name>?api-version=2018-09-01-preview

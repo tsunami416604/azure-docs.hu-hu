@@ -8,14 +8,14 @@ keywords: ''
 ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: conceptual
-ms.date: 03/14/2019
+ms.date: 07/08/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 2f0b01601dfb28b2b6b8ee8ca53398ec3dccb803
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7aef7eb2e3d88bef7d2700d9945b9ff343c17536
+ms.sourcegitcommit: af31deded9b5836057e29b688b994b6c2890aa79
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65787286"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67812816"
 ---
 # <a name="http-apis-in-durable-functions-azure-functions"></a>Durable Functions (az Azure Functions) HTTP API-k
 
@@ -45,12 +45,13 @@ A [DurableOrchestrationClient](https://azure.github.io/azure-functions-durable-e
 Ezek a függvények példa elő a következő JSON-adatokat. Az összes mező adattípusa `string`.
 
 | Mező                   |Leírás                           |
-|-------------------------|--------------------------------------|
-| **`id`**                |Az orchestration-példány azonosítója. |
-| **`statusQueryGetUri`** |Az orchestration-példány állapota URL-címe |
-| **`sendEventPostUri`**  |A vezénylési példány "raise esemény" URL-címe |
-| **`terminatePostUri`**  |A "le" példány URL-címét a vezénylési. |
-| **`rewindPostUri`**     |A vezénylési példány "visszatekerés" URL-címe |
+|-----------------------------|--------------------------------------|
+| **`id`**                    |Az orchestration-példány azonosítója. |
+| **`statusQueryGetUri`**     |Az orchestration-példány állapota URL-címe |
+| **`sendEventPostUri`**      |A vezénylési példány "raise esemény" URL-címe |
+| **`terminatePostUri`**      |A "le" példány URL-címét a vezénylési. |
+| **`purgeHistoryDeleteUri`** |A "Előzmények törlése" példány URL-címét a vezénylési. |
+| **`rewindPostUri`**         |(előzetes verzió) A vezénylési példány "visszatekerés" URL-címe |
 
 Íme egy példa választ:
 
@@ -65,6 +66,7 @@ Location: https://{host}/runtime/webhooks/durabletask/instances/34ce9a28a6834d84
     "statusQueryGetUri":"https://{host}/runtime/webhooks/durabletask/instances/34ce9a28a6834d8492ce6a295f1a80e2?taskHub=DurableFunctionsHub&connection=Storage&code=XXX",
     "sendEventPostUri":"https://{host}/runtime/webhooks/durabletask/instances/34ce9a28a6834d8492ce6a295f1a80e2/raiseEvent/{eventName}?taskHub=DurableFunctionsHub&connection=Storage&code=XXX",
     "terminatePostUri":"https://{host}/runtime/webhooks/durabletask/instances/34ce9a28a6834d8492ce6a295f1a80e2/terminate?reason={text}&taskHub=DurableFunctionsHub&connection=Storage&code=XXX",
+    "purgeHistoryDeleteUri":"https://{host}/runtime/webhooks/durabletask/instances/34ce9a28a6834d8492ce6a295f1a80e2?taskHub=DurableFunctionsHub&connection=Storage&code=XXX"
     "rewindPostUri":"https://{host}/runtime/webhooks/durabletask/instances/34ce9a28a6834d8492ce6a295f1a80e2/rewind?reason={text}&taskHub=DurableFunctionsHub&connection=Storage&code=XXX"
 }
 ```
@@ -134,7 +136,7 @@ A kérelem paraméterekkel az API az alapértelmezett készlet korábban már em
 
 | Mező                   | Paraméter típusa  | Leírás |
 |-------------------------|-----------------|-------------|
-| **`instanceId`**        | URL-cím             | Az orchestration-példány azonosítója. |
+| **`instanceId`**        | URL             | Az orchestration-példány azonosítója. |
 | **`showInput`**         | Lekérdezési karakterlánc    | Nem kötelező paraméter. Ha beállítása `false`, a függvény bemeneti nem fog szerepelni a válasz hasznos adatban.|
 | **`showHistory`**       | Lekérdezési karakterlánc    | Nem kötelező paraméter. Ha beállítása `true`, a vezénylési futtatási előzményei fog szerepelni a válasz hasznos adatban.|
 | **`showHistoryOutput`** | Lekérdezési karakterlánc    | Nem kötelező paraméter. Ha beállítása `true`, a függvény kimenete fog szerepelni a vezénylési futtatási előzményei.|
@@ -156,12 +158,12 @@ A válasz-adattartalomra vonatkozó a **HTTP 200** és **HTTP 202** esetben egy 
 
 | Mező                 | Adattípus | Leírás |
 |-----------------------|-----------|-------------|
-| **`runtimeStatus`**   | string    | A példány futásidejű állapotát. Értékek: *futó*, *függőben lévő*, *sikertelen*, *megszakított*, *kilépett*, *Befejeződött*. |
+| **`runtimeStatus`**   | Karakterlánc    | A példány futásidejű állapotát. Értékek: *futó*, *függőben lévő*, *sikertelen*, *megszakított*, *kilépett*, *Befejeződött*. |
 | **`input`**           | JSON      | A példány inicializálásához használt JSON-adatokat. Ez a mező `null` Ha a `showInput` lekérdezési karakterlánc paraméterének értéke `false`.|
 | **`customStatus`**    | JSON      | Egyéni vezénylési állapot használt JSON-adatokat. Ez a mező `null` Ha nincs beállítva. |
 | **`output`**          | JSON      | A példány JSON-kimenetét. Ez a mező `null` , ha a példány nem egy befejezett állapotban van. |
-| **`createdTime`**     | string    | Az az idő, amikor a példány létrehozása. ISO 8601 jelöléssel kiterjesztett használ. |
-| **`lastUpdatedTime`** | string    | Az az időpont, amikor a példány utolsó megőrzött. ISO 8601 jelöléssel kiterjesztett használ. |
+| **`createdTime`**     | Karakterlánc    | Az az idő, amikor a példány létrehozása. ISO 8601 jelöléssel kiterjesztett használ. |
+| **`lastUpdatedTime`** | Karakterlánc    | Az az időpont, amikor a példány utolsó megőrzött. ISO 8601 jelöléssel kiterjesztett használ. |
 | **`historyEvents`**   | JSON      | A vezénylési végrehajtási előzményeket tartalmazó JSON-tömböt. Ez a mező `null` , kivéve, ha a `showHistory` lekérdezési karakterlánc paraméterének értéke `true`. |
 
 Íme egy példa válasz a tartalmat, beleértve a vezénylési futtatási előzmények és tevékenység kimenetek (az olvashatóság érdekében formázva):
@@ -262,7 +264,7 @@ A kérelem paraméterekkel az API az alapértelmezett készlet korábban már em
 
 | Mező                   | Paraméter típusa  | Leírás |
 |-------------------------|-----------------|-------------|
-| **`instanceId`**        | URL-cím             | Az orchestration-példány azonosítója. |
+| **`instanceId`**        | URL             | Az orchestration-példány azonosítója. |
 | **`showInput`**         | Lekérdezési karakterlánc    | Nem kötelező paraméter. Ha beállítása `false`, a függvény bemeneti nem fog szerepelni a válasz hasznos adatban.|
 | **`showHistory`**       | Lekérdezési karakterlánc    | Nem kötelező paraméter. Ha beállítása `true`, a vezénylési futtatási előzményei fog szerepelni a válasz hasznos adatban.|
 | **`showHistoryOutput`** | Lekérdezési karakterlánc    | Nem kötelező paraméter. Ha beállítása `true`, a függvény kimenete fog szerepelni a vezénylési futtatási előzményei.|
@@ -360,7 +362,7 @@ A kérelem paraméterekkel az API az alapértelmezett készlet korábban már em
 
 | Mező             | Paraméter típusa  | Leírás |
 |-------------------|-----------------|-------------|
-| **`instanceId`**  | URL-cím             | Az orchestration-példány azonosítója. |
+| **`instanceId`**  | URL             | Az orchestration-példány azonosítója. |
 
 #### <a name="response"></a>Válasz
 
@@ -373,7 +375,7 @@ A válasz-adattartalomra vonatkozó a **HTTP 200** esetben egy JSON-objektum a k
 
 | Mező                  | Adattípus | Leírás |
 |------------------------|-----------|-------------|
-| **`instancesDeleted`** | egész szám   | A törölt példányok száma. Az Egypéldányos esetben ez az érték mindig kell `1`. |
+| **`instancesDeleted`** | integer   | A törölt példányok száma. Az Egypéldányos esetben ez az érték mindig kell `1`. |
 
 Íme egy példa válasz-adattartalomra (az olvashatóság érdekében formázva):
 
@@ -435,7 +437,7 @@ A válasz-adattartalomra vonatkozó a **HTTP 200** esetben egy JSON-objektum a k
 
 | Mező                   | Adattípus | Leírás |
 |-------------------------|-----------|-------------|
-| **`instancesDeleted`**  | egész szám   | A törölt példányok száma. |
+| **`instancesDeleted`**  | integer   | A törölt példányok száma. |
 
 Íme egy példa válasz-adattartalomra (az olvashatóság érdekében formázva):
 
@@ -473,8 +475,8 @@ A kérelem paraméterekkel az API az alapértelmezett készlet korábban már em
 
 | Mező             | Paraméter típusa  | Leírás |
 |-------------------|-----------------|-------------|
-| **`instanceId`**  | URL-cím             | Az orchestration-példány azonosítója. |
-| **`eventName`**   | URL-cím             | Az eseményt, amely a célpéldány vezénylési vár a neve. |
+| **`instanceId`**  | URL             | Az orchestration-példány azonosítója. |
+| **`eventName`**   | URL             | Az eseményt, amely a célpéldány vezénylési vár a neve. |
 | **`{content}`**   | Tartalomkérelem | A JSON-formátumú eseménytartalom. |
 
 #### <a name="response"></a>Válasz
@@ -528,7 +530,7 @@ Kérelem, az API paraméternek számít a korábban már említettük, valamint 
 
 | Mező             | Paraméter típusa  | Leírás |
 |-------------------|-----------------|-------------|
-| **`instanceId`**  | URL-cím             | Az orchestration-példány azonosítója. |
+| **`instanceId`**  | URL             | Az orchestration-példány azonosítója. |
 | **`reason`**      | Lekérdezési karakterlánc    | Választható. Az orchestration-példány leállításához okát. |
 
 #### <a name="response"></a>Válasz
@@ -547,11 +549,11 @@ POST /admin/extensions/DurableTaskExtension/instances/bcf6fb5067b046fbb021b52ba7
 
 Az API-hoz a válaszok nem tartalmaznak minden tartalom.
 
-## <a name="rewind-instance-preview"></a>Visszatekerés példány (előzetes verzió)
+### <a name="rewind-instance-preview"></a>Visszatekerés példány (előzetes verzió)
 
 A futtatási állapot egy sikertelen vezénylési példány visszaállítja a legutóbbi sikertelen műveletek visszajátszása alapján.
 
-### <a name="request"></a>Kérés
+#### <a name="request"></a>Kérés
 
 A verzió a Functions-futtatókörnyezet, a kérelem 1.x-es (több sorok jelennek meg az átláthatóság érdekében) a következők szerint van formázva:
 
@@ -577,10 +579,10 @@ Kérelem, az API paraméternek számít a korábban már említettük, valamint 
 
 | Mező             | Paraméter típusa  | Leírás |
 |-------------------|-----------------|-------------|
-| **`instanceId`**  | URL-cím             | Az orchestration-példány azonosítója. |
+| **`instanceId`**  | URL             | Az orchestration-példány azonosítója. |
 | **`reason`**      | Lekérdezési karakterlánc    | Választható. A vezénylési példány visszatekerése okát. |
 
-### <a name="response"></a>Válasz
+#### <a name="response"></a>Válasz
 
 Számos lehetséges állapota kódértékek adhatók vissza.
 
@@ -595,6 +597,89 @@ POST /admin/extensions/DurableTaskExtension/instances/bcf6fb5067b046fbb021b52ba7
 ```
 
 Az API-hoz a válaszok nem tartalmaznak minden tartalom.
+
+### <a name="signal-entity-preview"></a>Jel entitás (előzetes verzió)
+
+Az egyirányú művelet üzenetet küld egy [tartós entitás](durable-functions-types-features-overview.md#entity-functions). Ha az entitás nem létezik, akkor automatikusan létrejön.
+
+#### <a name="request"></a>Kérés
+
+A HTTP-kérés (több sorok jelennek meg az átláthatóság érdekében) a következők szerint van formázva:
+
+```http
+POST /runtime/webhooks/durabletask/entities/{entityType}/{entityKey}
+    ?taskHub={taskHub}
+    &connection={connectionName}
+    &code={systemKey}
+    &op={operationName}
+```
+
+A kérelem paraméterekkel az API az alapértelmezett készlet korábban már említettük, valamint az alábbi egyedi paramétereket tartalmazza:
+
+| Mező             | Paraméter típusa  | Leírás |
+|-------------------|-----------------|-------------|
+| **`entityType`**  | URL             | Az entitás típusa. |
+| **`entityKey`**   | URL             | Az entitás egyedi neve. |
+| **`op`**          | Lekérdezési karakterlánc    | Választható. A felhasználó által definiált művelet meghívásához neve. |
+| **`{content}`**   | Tartalomkérelem | A JSON-formátumú eseménytartalom. |
+
+Íme egy példa kérelmet, amely a felhasználó által definiált "Hozzáadás" üzenetet küld egy `Counter` nevű entitás `steps`. Az üzenet tartalma az az érték `5`. Ha még nem létezik az entitás, azt fogja létrehozni ezt a kérelmet:
+
+```http
+POST /runtime/webhooks/durabletask/entities/Counter/steps?op=Add
+Content-Type: application/json
+
+5
+```
+
+#### <a name="response"></a>Válasz
+
+Ez a művelet több lehetséges válaszok rendelkezik:
+
+* **202 (elfogadva) HTTP**: A jel művelet aszinkron feldolgozásra elfogadva.
+* **HTTP 400 (hibás kérés)** : A kérelem tartalma nem volt típusú `application/json`, nem volt érvényes JSON vagy érvénytelen volt `entityKey` értéket.
+* **A HTTP 404 (nem található)** : A megadott `entityType` nem található.
+
+Egy sikeres HTTP-kérés nem tartalmaz a válaszba bármilyen tartalmat. A sikertelen HTTP-kérés a válasz tartalma a hiba JSON-formátumú adatokat tartalmazhat.
+
+### <a name="query-entity-preview"></a>Lekérdezés entitás (előzetes verzió)
+
+Lekérdezi a megadott entitás állapotát.
+
+#### <a name="request"></a>Kérés
+
+A HTTP-kérés (több sorok jelennek meg az átláthatóság érdekében) a következők szerint van formázva:
+
+```http
+GET /runtime/webhooks/durabletask/entities/{entityType}/{entityKey}
+    ?taskHub={taskHub}
+    &connection={connectionName}
+    &code={systemKey}
+```
+
+#### <a name="response"></a>Válasz
+
+Ez a művelet két lehetséges válaszok rendelkezik:
+
+* **HTTP 200 (OK)** : A megadott entitás létezik.
+* **A HTTP 404 (nem található)** : A megadott entitás nem található.
+
+Sikeres válasz tartalmazza a JSON-szerializált állapota annak tartalmát.
+
+#### <a name="example"></a>Példa
+Az alábbiakban a HTTP-kérést, amely egy meglévő állapotát egy példát `Counter` nevű entitás `steps`:
+
+```http
+GET /runtime/webhooks/durabletask/entities/Counter/steps
+```
+
+Ha a `Counter` entitás egyszerűen tartalmazott számos lépés mentett egy `currentValue` mező, a válasz tartalma a következőhöz hasonló lehet (az olvashatóság érdekében formázva) a következőket:
+
+```json
+{
+    "currentValue": 5
+}
+```
 
 ## <a name="next-steps"></a>További lépések
 

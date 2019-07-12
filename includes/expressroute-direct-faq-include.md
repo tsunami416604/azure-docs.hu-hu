@@ -5,19 +5,19 @@ services: expressroute
 author: jaredr80
 ms.service: expressroute
 ms.topic: include
-ms.date: 02/25/2019
+ms.date: 07/09/2019
 ms.author: jaredro
 ms.custom: include file
-ms.openlocfilehash: ab74c331bdc8b72612aa848688e1de080314337a
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 2e6eb449f4e7a8dcd6c4547162a575d21f303f83
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67133702"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67712526"
 ---
 ### <a name="what-is-expressroute-direct"></a>Mi az az ExpressRoute közvetlen?
 
-Az ExpressRoute Direct közvetlen csatlakozást tesz lehetővé az ügyfelek számára a Microsoft globális hálózatához a világszerte stratégiai pontokon elhelyezett társviszony-létesítési helyszíneken át. Az ExpressRoute közvetlen biztosít kettős 100 GB/s sebességű kapcsolatot, amely támogatja az aktív/aktív kapcsolat ipari méretekben. 
+Az ExpressRoute Direct közvetlen csatlakozást tesz lehetővé az ügyfelek számára a Microsoft globális hálózatához a világszerte stratégiai pontokon elhelyezett társviszony-létesítési helyszíneken át. Az ExpressRoute közvetlen kettős 100 és 10 GB/s sebességű kapcsolatot, amely támogatja az aktív/aktív kapcsolat ipari méretekben biztosít. 
 
 ### <a name="how-do-customers-connect-to-expressroute-direct"></a>Hogyan kapcsolatot az ExpressRoute közvetlen ügyfelek? 
 
@@ -28,22 +28,28 @@ Az ExpressRoute Direct közvetlen csatlakozást tesz lehetővé az ügyfelek sz�
 A rendelkezésre álló portok dinamikus lesz, és a kapacitás megtekintéséhez PowerShell elérhető lesz. Helyek tartalmazzák és *rendelkezésre állása alapján változhatnak*:
 
 * Amszterdam
+* Amszterdam2
+* Aucklandi 
 * Chicago
-* Washington, D.C.
-* Dallas 
+* Dallas
+* Dublin
 * Hongkong (KKT)
 * London
 * Los Angeles
+* Melbourne
 * New York City
-* Párizs
 * Perth
-* Toronto
 * A San Antonio
 * Seattle
 * Szöul
 * Szilícium-völgy
-* Szingapúr 
+* Szingapúr2 
 * Sydney
+* Tajpej
+* Tokió
+* Toronto
+* Washington, D.C.
+* Washington DC2
 
 ### <a name="what-is-the-sla-for-expressroute-direct"></a>Mi az a szolgáltatói szerződés tartalmazza az ExpressRoute közvetlen?
 
@@ -51,7 +57,7 @@ Az ExpressRoute közvetlen felhasznál azonos [ExpressRoute nagyvállalati szint
 
 ### <a name="what-scenarios-should-customers-consider-with-expressroute-direct"></a>Milyen esetekben érdemes vevők az ExpressRoute közvetlen?  
 
-Az ExpressRoute közvetlen nyújt a felhasználók számára a közvetlen 100 GB/s portból álló párok be a Microsoft globális gerinchálózatán keresztül. A forgatókönyvek, amelyek a legnagyobb előnye nyújt az ügyfeleknek a következők: Nagyméretű adatfeldolgozás, szabályozott piacok fizikai elkülönítését, valamint a hirtelen forgatókönyvhöz dedikált kapacitáshoz, például renderelési. 
+Az ExpressRoute közvetlen nyújt a felhasználók számára a közvetlen 100 és 10 GB/s portból álló párok be a Microsoft globális gerinchálózatán keresztül. A forgatókönyvek, amelyek a legnagyobb előnye nyújt az ügyfeleknek a következők: Nagyméretű adatfeldolgozás, szabályozott piacok fizikai elkülönítését, valamint a hirtelen forgatókönyvhöz dedikált kapacitáshoz, például renderelési. 
 
 ### <a name="what-is-the-billing-model-for-expressroute-direct"></a>Mi az az ExpressRoute közvetlen számlázási modellje? 
 

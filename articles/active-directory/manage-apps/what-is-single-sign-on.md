@@ -12,12 +12,12 @@ ms.date: 05/15/2019
 ms.author: mimart
 ms.reviewer: arvindh, japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2576a33e62b370bc2fd91c5d155e9f8d6e52c0f8
-ms.sourcegitcommit: 156b313eec59ad1b5a820fabb4d0f16b602737fc
+ms.openlocfilehash: 01477ad3a5a0c4643721815fa2b0943512c0c520
+ms.sourcegitcommit: 0ebc62257be0ab52f524235f8d8ef3353fdaf89e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67190275"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67723984"
 ---
 # <a name="single-sign-on-to-applications-in-azure-active-directory"></a>Egyszeri bejelentkezés az Azure Active Directory-alkalmazások
 
@@ -36,7 +36,7 @@ Többféleképpen is lehet az alkalmazás egyszeri bejelentkezés konfigurálás
 
 Ez a folyamatábra segít eldönteni, ajánlott az adott helyzetben melyik egyszeri bejelentkezésének módját.
 
-![Egyszeri bejelentkezés módszer kiválasztása](./media/what-is-single-sign-on/choose-single-sign-on-method-040419.png)
+![Egyszeri bejelentkezési módszer vonatkozó döntési folyamatábra](./media/what-is-single-sign-on/choose-single-sign-on-method-040419.png)
 
 Az alábbi táblázat foglalja össze az egyszeri bejelentkezési módszereket, és hivatkozásokat tartalmaz további részleteket.
 
@@ -47,23 +47,24 @@ Az alábbi táblázat foglalja össze az egyszeri bejelentkezési módszereket, 
 | [Jelszóalapú](#password-based-sso) | felhőbeli és helyszíni | Válassza a jelszóalapú, amikor az alkalmazás hitelesíti a felhasználónevet és jelszót. Jelszavas egyszeri bejelentkezés lehetővé teszi a biztonságos tárolását és ismétlését egy webböngésző-bővítmény vagy mobilalkalmazás segítségével. Ezt a módszert használja a meglévő bejelentkezési folyamat az alkalmazás által biztosított, de lehetővé teszi, hogy egy rendszergazda kezelje a jelszavakat. |
 | [A csatolt](#linked-sign-on) | felhőbeli és helyszíni | Válassza ki csatolt bejelentkezés, ha az alkalmazás az egyszeri bejelentkezés egy másik identitás szolgáltató szolgáltatásban van konfigurálva. Ez a beállítás nem adja hozzá egyszeri bejelentkezés az alkalmazáshoz. Az alkalmazás azonban már előfordulhat, hogy rendelkezik az egyszeri bejelentkezés egy másik szolgáltatás, például az Active Directory összevonási szolgáltatások használatával implementált.|
 | [Letiltva](#disabled-sso) | felhőbeli és helyszíni | Válassza a letiltott egyszeri bejelentkezés, ha az alkalmazás nem áll készen az egyszeri bejelentkezéshez konfigurálandó. Adja meg a felhasználónevüket és jelszavukat minden alkalommal, amikor az alkalmazás indításakor kell felhasználók.|
-| [Integrált Windows-hitelesítés (IWA)](#integrated-windows-authentication-iwa-sso) | csak helyszíni | IWA egyszeri bejelentkezést használó alkalmazások esetében válassza [integrált Windows-hitelesítés (IWA)](/aspnet/web-api/overview/security/integrated-windows-authentication), vagy jogcímeket használó alkalmazásokat. IWA az alkalmazásproxy-összekötők használatával a Kerberos által korlátozott delegálás (KCD) hitelesítheti a felhasználókat az alkalmazáshoz. | 
-| [Fejlécalapú](#header-based-sso) | csak helyszíni | Használja fejléc-alapú egyszeri bejelentkezés, ha az alkalmazás fejléceket használja a hitelesítéshez. Fejléc-alapú egyszeri bejelentkezés szükséges a PingAccess Azure AD-hez. Az alkalmazásproxy az Azure AD segítségével hitelesíti a felhasználót, és ezután továbbítja a forgalmat az összekötő szolgáltatást.  | 
+| [Integrált Windows-hitelesítés (IWA)](#integrated-windows-authentication-iwa-sso) | csak helyszíni | IWA egyszeri bejelentkezést használó alkalmazások esetében válassza [integrált Windows-hitelesítés (IWA)](/aspnet/web-api/overview/security/integrated-windows-authentication), vagy jogcímeket használó alkalmazásokat. IWA az alkalmazásproxy-összekötők használatával a Kerberos által korlátozott delegálás (KCD) hitelesítheti a felhasználókat az alkalmazáshoz. |
+| [Fejlécalapú](#header-based-sso) | csak helyszíni | Használja fejléc-alapú egyszeri bejelentkezés, ha az alkalmazás fejléceket használja a hitelesítéshez. Fejléc-alapú egyszeri bejelentkezés szükséges a PingAccess Azure AD-hez. Az alkalmazásproxy az Azure AD segítségével hitelesíti a felhasználót, és ezután továbbítja a forgalmat az összekötő szolgáltatást.  |
 
 ## <a name="openid-connect-and-oauth"></a>OpenID Connect és az OAuth révén
-Új alkalmazások fejlesztésekor a modern protokollok, mint például az OpenID Connect és az OAuth használatával érhet el a legjobb egyszeri bejelentkezést az alkalmazáshoz több eszköz platformon. OAuth lehetővé teszi a felhasználók vagy rendszergazdák [hozzájárulását](configure-user-consent.md) a védett erőforrások, például a [az MS Graph](/graph/overview). Kínálunk egyszerű bevezetéséhez [SDK-k](../develop/reference-v2-libraries.md) az alkalmazáshoz, és emellett az alkalmazás használatra kész lesz [az MS Graph](/graph/overview).
+
+Új alkalmazások fejlesztésekor a modern protokollok, mint például az OpenID Connect és az OAuth használatával érhet el a legjobb egyszeri bejelentkezést az alkalmazáshoz több eszköz platformon. OAuth lehetővé teszi a felhasználók vagy rendszergazdák [hozzájárulását](configure-user-consent.md) a védett erőforrások, például a [Microsoft Graph](/graph/overview). Kínálunk egyszerű bevezetéséhez [SDK-k](../develop/reference-v2-libraries.md) az alkalmazáshoz, és emellett az alkalmazás használatra kész lesz [Microsoft Graph](/graph/overview).
 
 További információkért lásd:
 
 - [OAuth 2.0](../develop/v2-oauth2-auth-code-flow.md)
 - [OpenID Connect 1.0](../develop/v2-protocols-oidc.md)
-- [Az Azure Active Directory fejlesztői útmutatója](https://docs.microsoft.com/azure/active-directory/develop/active-directory-developers-guide).
+- [A Microsoft identity platform – fejlesztői útmutató](https://docs.microsoft.com/azure/active-directory/develop/active-directory-developers-guide).
 
 ## <a name="saml-sso"></a>SAML EGYSZERI BEJELENTKEZÉS
+
 A **SAML egyszeri bejelentkezés**, az Azure AD akkor hitelesíti az alkalmazásnak a felhasználó Azure AD-fiók használatával. Azure ad-ben a bejelentkezési adatait az alkalmazás egy kapcsolat protokollon keresztül kommunikál. SAML-alapú egyszeri bejelentkezés, a felhasználók leképezheti a SAML-jogcímek az meghatározott szabályok alapján adott alkalmazás-szerepkörökhöz.
 
 Válassza az SAML-alapú egyszeri bejelentkezés, ha az alkalmazás ezt támogatja.
-
 
 SAML-alapú egyszeri bejelentkezés bármely ezeket a protokollokat használó alkalmazások esetében támogatott:
 
@@ -79,9 +80,10 @@ SAML-alapú egyszeri bejelentkezést a helyszíni alkalmazás beállítása: [SA
 Az SAML-protokoll kapcsolatos további információkért lásd: [egyszeri bejelentkezéses SAML-protokoll](../develop/single-sign-on-saml-protocol.md).
 
 ## <a name="password-based-sso"></a>Jelszóalapú egyszeri bejelentkezés
-Jelszóalapú bejelentkezés, a felhasználók jelentkezzen be az alkalmazást az első használatakor a felhasználónevet és jelszót. Miután az első bejelentkezés Azure ad-ben a felhasználónevet és jelszót, hogy az alkalmazás választékát kínálja. 
 
-Jelszavas egyszeri bejelentkezést használ a meglévő hitelesítési folyamatot, az alkalmazás által biztosított. Ha engedélyezi a jelszó egyszeri bejelentkezést az alkalmazáshoz, az Azure ad-ben gyűjt, és biztonságosan tárolja a felhasználói neveket és jelszavakat az alkalmazás. Felhasználói hitelesítő adatok titkosítására a könyvtárban vannak tárolva. 
+Jelszóalapú bejelentkezés, a felhasználók jelentkezzen be az alkalmazást az első használatakor a felhasználónevet és jelszót. Miután az első bejelentkezés Azure ad-ben a felhasználónevet és jelszót, hogy az alkalmazás választékát kínálja.
+
+Jelszavas egyszeri bejelentkezést használ a meglévő hitelesítési folyamatot, az alkalmazás által biztosított. Ha engedélyezi a jelszó egyszeri bejelentkezést az alkalmazáshoz, az Azure ad-ben gyűjt, és biztonságosan tárolja a felhasználói neveket és jelszavakat az alkalmazás. Felhasználói hitelesítő adatok titkosítására a könyvtárban vannak tárolva.
 
 Válassza ki a jelszóalapú egyszeri bejelentkezés mikor:
 
@@ -118,12 +120,12 @@ Ha az Azure AD-rendszergazda kezeli a hitelesítő adatokat:
 
 Amikor a felhasználó kezeli a hitelesítő adatokat:
 
-- Felhasználók kezelhetik a jelszavukat a frissítése vagy törlése őket igény szerint. 
+- Felhasználók kezelhetik a jelszavukat a frissítése vagy törlése őket igény szerint.
 - A rendszergazdák továbbra is képesek az alkalmazás új hitelesítő adatok beállítása.
 
-
 ## <a name="linked-sign-on"></a>Csatolt bejelentkezés
-Csatolt bejelentkezés lehetővé teszi az Azure AD egyszeri bejelentkezés egy alkalmazás, amely már konfigurálva van az egyszeri bejelentkezés egy másik szolgáltatás biztosít. A társított alkalmazást a végfelhasználók számára az Office 365 portálon vagy az Azure AD MyApps portálról is megjelenhetnek. Például egy felhasználó indíthatja el olyan alkalmazás, amely konfigurálva van egyszeri bejelentkezés az Active Directory összevonási szolgáltatások 2.0 (AD FS) az Office 365-portálról. További jelentési érhető el az Office 365 portálon vagy az Azure AD MyApps portálról indítja társított alkalmazások esetében. 
+
+Csatolt bejelentkezés lehetővé teszi az Azure AD egyszeri bejelentkezés egy alkalmazás, amely már konfigurálva van az egyszeri bejelentkezés egy másik szolgáltatás biztosít. A társított alkalmazást a végfelhasználók számára az Office 365 portálon vagy az Azure AD MyApps portálról is megjelenhetnek. Például egy felhasználó indíthatja el olyan alkalmazás, amely konfigurálva van egyszeri bejelentkezés az Active Directory összevonási szolgáltatások 2.0 (AD FS) az Office 365-portálról. További jelentési érhető el az Office 365 portálon vagy az Azure AD MyApps portálról indítja társított alkalmazások esetében.
 
 ### <a name="linked-sign-on-for-application-migration"></a>Csatolt bejelentkezés alkalmazás az áttelepítéshez
 
@@ -133,47 +135,43 @@ Miután egy felhasználó hitelesítette az társított alkalmazást, egy ügyf�
 
 ## <a name="disabled-sso"></a>Letiltott egyszeri bejelentkezés
 
-Letiltott mód azt jelenti, hogy egyszeri bejelentkezés az alkalmazás nem használ. Ha az egyszeri bejelentkezés le van tiltva, a felhasználóknak kell előfordulhat, hogy kétszer hitelesíteni. Először a felhasználók hitelesítéséhez az Azure AD, és majd bejelentkeznek az alkalmazásba. 
+Letiltott mód azt jelenti, hogy egyszeri bejelentkezés az alkalmazás nem használ. Ha az egyszeri bejelentkezés le van tiltva, a felhasználóknak kell előfordulhat, hogy kétszer hitelesíteni. Először a felhasználók hitelesítéséhez az Azure AD, és majd bejelentkeznek az alkalmazásba.
 
 Használata le van tiltva az egyszeri bejelentkezési mód:
 
 - Ha még nem készen áll az alkalmazás integrálása az Azure AD egyszeri bejelentkezés, vagy
 - Ha a tesztelést az alkalmazás más aspektusait, vagy
-- Egy helyszíni alkalmazásba biztonsági réteget, a felhasználóknak a hitelesítést nem igénylő. Le van tiltva a felhasználónak hitelesítenie kell. 
+- Egy helyszíni alkalmazásba biztonsági réteget, a felhasználóknak a hitelesítést nem igénylő. Le van tiltva a felhasználónak hitelesítenie kell.
 
 ## <a name="integrated-windows-authentication-iwa-sso"></a>Integrált Windows-hitelesítés (IWA) egyszeri bejelentkezés
 
 [Az alkalmazásproxy](application-proxy.md) biztosít egyszeri bejelentkezés (SSO) használó alkalmazások [integrált Windows-hitelesítés (IWA)](/aspnet/web-api/overview/security/integrated-windows-authentication), vagy jogcímeket használó alkalmazásokat. Ha az alkalmazás IWA, alkalmazásproxy hitelesíti magát az alkalmazás a Kerberos által korlátozott delegálás (KCD) használatával. Jogcímbarát alkalmazáshoz, amely megbízik az Azure Active Directory egyszeri bejelentkezés működik, mert az Azure AD-vel már hitelesíti a felhasználót.
 
-Válassza ki az integrált Windows-hitelesítés egyszeri bejelentkezési mód:
+Válassza ki az integrált Windows-hitelesítés egyszeri bejelentkezési mód IWA egyszeri bejelentkezés egy helyszíni alkalmazásba, amely hitelesíti a biztosít.
 
-- Egyszeri bejelentkezés egy helyszíni alkalmazásba, amely hitelesíti a biztosít IWA. 
-
-A helyszíni alkalmazás beállítása a IWA: [egyszeri bejelentkezést az alkalmazásproxy használatával az alkalmazások a Kerberos által korlátozott delegálás](application-proxy-configure-single-sign-on-with-kcd.md). 
+A helyszíni alkalmazás beállítása a IWA: [egyszeri bejelentkezést az alkalmazásproxy használatával az alkalmazások a Kerberos által korlátozott delegálás](application-proxy-configure-single-sign-on-with-kcd.md).
 
 ### <a name="how-single-sign-on-with-kcd-works"></a>Az egyszeri bejelentkezés KCD Works
 Ez az ábra ismerteti a folyamatot, amikor egy felhasználó hozzáfér IWA használó helyszíni alkalmazások.
 
-![A Microsoft AAD-hitelesítés folyamatábrája](./media/application-proxy-configure-single-sign-on-with-kcd/AuthDiagram.png)
+![A Microsoft Azure AD hitelesítési folyamatábrája](./media/application-proxy-configure-single-sign-on-with-kcd/AuthDiagram.png)
 
 1. A felhasználó megadja az alkalmazáshoz való hozzáférés a helyszíni proxyn keresztül történő alkalmazás URL-CÍMÉT.
-2. Az alkalmazásproxy átirányítja a kérést az Azure AD authentication szolgáltatások tudnak preauthenticate. Ezen a ponton az Azure AD bármilyen megfelelő hitelesítési és engedélyezési házirendeket, mint a többtényezős hitelesítés vonatkozik. Ha a felhasználó érvényesítését, Azure ad-ben létrehoz egy jogkivonatot, és elküldi azokat a felhasználó.
-3. A felhasználó az alkalmazásproxy továbbítja a jogkivonatot.
-4. Az alkalmazásproxy érvényesíti a jogkivonatot, és beolvassa az egyszerű felhasználónév (UPN) a jogkivonatot. Ez ezután elküldi a kérést, az egyszerű Felhasználónevet és az egyszerű szolgáltatásnév (SPN) az összekötő dually hitelesített biztonságos csatornán keresztül történik.
-5. Az összekötő a helyszíni Active Directory, az alkalmazásnak a Kerberos jogkivonat beszerzéséhez a felhasználó megszemélyesítésekor, a Kerberos által korlátozott delegálás (KCD) egyeztetési használ.
-6. Az Active Directory elküldi az alkalmazás az összekötő Kerberos-jogkivonat.
-7. Az összekötő az eredeti kérést küld a kiszolgáló, az AD-ből kapott Kerberos-jogkivonat használatával.
-8. Az alkalmazás visszaküldi a választ, az összekötőre, amelyet ezután visszaküld az alkalmazásproxy-szolgáltatás, és végül a felhasználó számára.
+1. Az alkalmazásproxy átirányítja a kérést az Azure AD authentication szolgáltatások tudnak preauthenticate. Ezen a ponton az Azure AD bármilyen megfelelő hitelesítési és engedélyezési házirendeket, mint a többtényezős hitelesítés vonatkozik. Ha a felhasználó érvényesítését, Azure ad-ben létrehoz egy jogkivonatot, és elküldi azokat a felhasználó.
+1. A felhasználó az alkalmazásproxy továbbítja a jogkivonatot.
+1. Az alkalmazásproxy érvényesíti a jogkivonatot, és beolvassa az egyszerű felhasználónév (UPN) a jogkivonatot. Ez ezután elküldi a kérést, az egyszerű Felhasználónevet és az egyszerű szolgáltatásnév (SPN) az összekötő dually hitelesített biztonságos csatornán keresztül történik.
+1. Az összekötő a helyszíni Active Directory, az alkalmazásnak a Kerberos jogkivonat beszerzéséhez a felhasználó megszemélyesítésekor, a Kerberos által korlátozott delegálás (KCD) egyeztetési használ.
+1. Az Active Directory elküldi az alkalmazás az összekötő Kerberos-jogkivonat.
+1. Az összekötő az eredeti kérést küld a kiszolgáló, az AD-ből kapott Kerberos-jogkivonat használatával.
+1. Az alkalmazás visszaküldi a választ, az összekötőre, amelyet ezután visszaküld az alkalmazásproxy-szolgáltatás, és végül a felhasználó számára.
 
 ## <a name="header-based-sso"></a>Fejléc-alapú egyszeri bejelentkezés
 
-Fejléc-alapú egyszeri bejelentkezés a hitelesítéshez a HTTP-fejlécek használó alkalmazások esetében működik. A bejelentkezési módszer PingAccess nevű harmadik fél hitelesítési szolgáltatást használ. A felhasználó csak az Azure AD hitelesítenie kell. 
+Fejléc-alapú egyszeri bejelentkezés a hitelesítéshez a HTTP-fejlécek használó alkalmazások esetében működik. A bejelentkezési módszer PingAccess nevű harmadik fél hitelesítési szolgáltatást használ. A felhasználó csak az Azure AD hitelesítenie kell.
 
-Válassza ki a fejléc-alapú egyszeri bejelentkezés mikor:
+Válasszon fejléc-alapú egyszeri bejelentkezés, ha Application Proxy és a PingAccess vannak konfigurálva, az alkalmazás.
 
-- Application Proxy és a PingAccess vannak konfigurálva, az alkalmazás
-
-Fejléc-alapú hitelesítés beállítása: [fejlécalapú hitelesítéskor az egyszeri bejelentkezés alkalmazásproxyval való](application-proxy-configure-single-sign-on-with-ping-access.md). 
+Fejléc-alapú hitelesítés beállítása: [fejlécalapú hitelesítéskor az egyszeri bejelentkezés alkalmazásproxyval való](application-proxy-configure-single-sign-on-with-ping-access.md).
 
 ### <a name="what-is-pingaccess-for-azure-ad"></a>Mi az az Azure AD-alapú PingAccess?
 
@@ -183,15 +181,13 @@ A felhasználók nem figyelje meg, hogy bármi más, amikor bejelentkeznek a vá
 
 ### <a name="how-do-i-get-a-license-for-pingaccess"></a>Hogyan szerezhetek licencet a PingAccess?
 
-Mivel az Azure AD közötti partneri keretében érhető el ebben a forgatókönyvben, és a PingAccess,-licenc szükséges mindkét szolgáltatás esetében. Azonban a prémium szintű Azure AD-előfizetésekben megtalálható egy alapszintű PingAccess licenc, amely lefedi a akár 20 alkalmazáshoz. Ha több mint 20 fejléc-alapú alkalmazások közzétételét van szüksége, további licencre a PingAccess szerezheti be. 
+Mivel az Azure AD közötti partneri keretében érhető el ebben a forgatókönyvben, és a PingAccess,-licenc szükséges mindkét szolgáltatás esetében. Azonban a prémium szintű Azure AD-előfizetésekben megtalálható egy alapszintű PingAccess licenc, amely lefedi a akár 20 alkalmazáshoz. Ha több mint 20 fejléc-alapú alkalmazások közzétételét van szüksége, további licencre a PingAccess szerezheti be.
 
 További információk: [Azure Active Directory editions](../fundamentals/active-directory-whatis.md) (Azure Active Directory-kiadások).
 
-
 ## <a name="related-articles"></a>Kapcsolódó cikkek
-* [SaaS-alkalmazások integrálása az Azure Active Directory számára oktatóanyagokkal](../saas-apps/tutorial-list.md)
-* [Oktatóanyag az egyszeri bejelentkezés konfigurálása](configure-single-sign-on-portal.md)
-* [Alkalmazásokhoz való hozzáférés kezelése bemutatása](what-is-access-management.md)
-* Letöltési hivatkozás: [Egyszeri bejelentkezés telepítési tervének](https://aka.ms/SSODeploymentPlan).
 
-
+- [SaaS-alkalmazások integrálása az Azure Active Directory számára oktatóanyagokkal](../saas-apps/tutorial-list.md)
+- [Oktatóanyag az egyszeri bejelentkezés konfigurálása](configure-single-sign-on-portal.md)
+- [Alkalmazásokhoz való hozzáférés kezelése bemutatása](what-is-access-management.md)
+- Letöltési hivatkozás: [Egyszeri bejelentkezés üzembe helyezési terv](https://aka.ms/SSODeploymentPlan)

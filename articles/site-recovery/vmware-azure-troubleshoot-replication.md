@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 06/27/2019
 ms.author: mayg
-ms.openlocfilehash: c005dcee78e2a9338dc7a816e06d9a78a2f355b6
-ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
+ms.openlocfilehash: ed04c21fc5f3aecb91483dbd1eb7ca5fbf47c3e9
+ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67491673"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67805962"
 ---
 # <a name="troubleshoot-replication-issues-for-vmware-vms-and-physical-servers"></a>VMware virtuális gépek és fizikai kiszolgálók replikációjával kapcsolatos problémák elhárítása
 
@@ -28,7 +28,7 @@ Azt javasoljuk, hogy a portálon, győződjön meg arról, hogy kapcsolódnak a 
 - [Az ajánlott eljárások áttekintése](vmware-physical-azure-troubleshoot-process-server.md#best-practices-for-process-server-deployment)
 - [Hibaelhárítás](vmware-physical-azure-troubleshoot-process-server.md#check-process-server-health) folyamatkiszolgáló állapota.
 
-## <a name="step-2-troubleshoot-connectivity-and-replication-issues"></a>2\. lépés: Csatlakozási és replikációs problémák elhárítása
+## <a name="step-2-troubleshoot-connectivity-and-replication-issues"></a>2\. lépés: Csatlakozási és replikációs problémák elhárítása
 
 Kezdeti és folyamatos replikálási hibák gyakran okozza a forráskiszolgáló és a folyamatkiszolgáló között, vagy a folyamatkiszolgáló és az Azure közötti kapcsolódási problémák. 
 
@@ -133,7 +133,63 @@ A probléma megoldásához használja a szolgáltatás állapotának ellenőrzé
         
           C:\Program Files (X86)\Microsoft Azure Site Recovery\agent\svagents*log
 
+## <a name="error-id-78144---no-app-consistent-recovery-point-available-for-the-vm-in-the-last-xxx-minutes"></a>Hiba azonosítója 78144 - nem az elmúlt percben: XXX"a virtuális Géphez elérhető alkalmazáskonzisztens helyreállítási pont
 
+Alább láthatók a leggyakoribb problémák
+
+#### <a name="cause-1-known-issue-in-sql-server-20082008-r2"></a>1\. ok: Ismert hiba az SQL server 2008 és 2008 R2 
+**Hogyan háríthatja el a** : Egy ismert probléma van az SQL server 2008 és 2008 R2. Olvassa el az ebben a Tudásbáziscikkben találja [Azure Site Recovery-ügynök vagy egyéb nem összetevő VSS biztonsági mentése meghiúsul, az SQL Server 2008 R2 üzemeltető kiszolgálót](https://support.microsoft.com/help/4504103/non-component-vss-backup-fails-for-server-hosting-sql-server-2008-r2)
+
+#### <a name="cause-2-azure-site-recovery-jobs-fail-on-servers-hosting-any-version-of-sql-server-instances-with-autoclose-dbs"></a>2\. ok: Az Azure Site Recovery-feladatok sikertelenek AUTO_CLOSE adatbázisainak az SQL Server-példányokat bármely verzióját futtató kiszolgálókon 
+**Hogyan háríthatja el a** : Tekintse meg a KB-os [cikk](https://support.microsoft.com/help/4504104/non-component-vss-backups-such-as-azure-site-recovery-jobs-fail-on-ser) 
+
+
+#### <a name="cause-3-known-issue-in-sql-server-2016-and-2017"></a>3\. ok: Ismert probléma az SQL Server 2016 és 2017.
+**Hogyan háríthatja el a** : Tekintse meg a KB-os [cikk](https://support.microsoft.com/help/4493364/fix-error-occurs-when-you-back-up-a-virtual-machine-with-non-component) 
+
+
+### <a name="more-causes-due-to-vss-related-issues"></a>További okok miatt VSS kapcsolatos problémákat:
+
+További hibaelhárítást, tekintse meg a fájlokat a forrásgépen a pontos hibakódot lekérése sikertelen:
+    
+    C:\Program Files (x86)\Microsoft Azure Site Recovery\agent\Application Data\ApplicationPolicyLogs\vacp.log
+
+Hogyan lehet a fájlban keresse meg a hibákat?
+Vacp.log fájl egy szövegszerkesztőben való megnyitásával "vacpError" karakterlánc keresése
+        
+    Ex: vacpError:220#Following disks are in FilteringStopped state [\\.\PHYSICALDRIVE1=5, ]#220|^|224#FAILED: CheckWriterStatus().#2147754994|^|226#FAILED to revoke tags.FAILED: CheckWriterStatus().#2147754994|^|
+
+A fenti példában **2147754994** , mely szerint a hibával kapcsolatos, ahogy az alábbi hiba kódja
+
+#### <a name="vss-writer-is-not-installed---error-2147221164"></a>Nincs telepítve a VSS-író - hiba 2147221164 
+
+*Hogyan háríthatja el a*: Konzisztenciacímke application készítése, az Azure Site Recovery Microsoft Kötet árnyékmásolata szolgáltatás (VSS) használja. Az alkalmazás konzisztenciájának pillanatképek ehhez a művelethez VSS-szolgáltatót telepíti. A VSS-szolgáltató szolgáltatás telepítve van. Abban az esetben a VSS-szolgáltató szolgáltatás nincs telepítve, a konzisztencia pillanatkép létrehozásának nem sikerül a hiba azonosítója: 0x80040154 "Osztály nem regisztrált". </br>
+Tekintse meg [VSS-író telepítési hibaelhárítási cikk](https://docs.microsoft.com/azure/site-recovery/vmware-azure-troubleshoot-push-install#vss-installation-failures) 
+
+#### <a name="vss-writer-is-disabled---error-2147943458"></a>VSS-író le van tiltva – hiba 2147943458
+
+**Hogyan háríthatja el a**: Konzisztenciacímke application készítése, az Azure Site Recovery Microsoft Kötet árnyékmásolata szolgáltatás (VSS) használja. Az alkalmazás konzisztenciájának pillanatképek ehhez a művelethez VSS-szolgáltatót telepíti. A VSS-szolgáltató szolgáltatás telepítve van. Abban az esetben a VSS-szolgáltató szolgáltatás le van tiltva, az alkalmazás konzisztenciájának pillanatkép létrehozása sikertelen lesz a hiba azonosítója "a megadott szolgáltatás le van tiltva, és nem lehet started(0x80070422)". </br>
+
+- Ha a VSS le van tiltva,
+    - Ellenőrizze, hogy a VSS-szolgáltató szolgáltatás indítási típusát **automatikus**.
+    - Indítsa újra a következő szolgáltatásokat:
+        - VSS-szolgáltatás
+        - Az Azure Site Recovery VSS Provider
+        - A VDS szolgáltatás
+
+####  <a name="vss-provider-notregistered---error-2147754756"></a>VSS-SZOLGÁLTATÓ NOT_REGISTERED - 2147754756 hiba
+
+**Hogyan háríthatja el a**: Konzisztenciacímke application készítése, az Azure Site Recovery Microsoft Kötet árnyékmásolata szolgáltatás (VSS) használja. Ellenőrizze, hogy ha az Azure Site Recovery VSS Provider szolgáltatás telepítve van-e, vagy sem. </br>
+
+- Ismételje meg a szolgáltató telepítőprogramját a következő parancsokkal:
+- Meglévő-szolgáltató eltávolítása: C:\Program Files (x86)\Microsoft Azure Site Recovery\agent\InMageVSSProvider_Uninstall.cmd
+- Újra kell telepítenie: C:\Program Files (x86)\Microsoft Azure Site Recovery\agent\InMageVSSProvider_Install.cmd
+ 
+Ellenőrizze, hogy a VSS-szolgáltató szolgáltatás indítási típusát **automatikus**.
+    - Indítsa újra a következő szolgáltatásokat:
+        - VSS-szolgáltatás
+        - Az Azure Site Recovery VSS Provider
+        - A VDS szolgáltatás
 
 ## <a name="next-steps"></a>További lépések
 

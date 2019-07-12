@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/28/2017
-ms.openlocfilehash: b7e6201d75556908cc16d97734d1c074efd0a587
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: cdc09973a192924c5b9a81cd4ed49b9f36fc0eb1
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66148420"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67612302"
 ---
 # <a name="monitor-and-manage-stream-analytics-jobs-with-azure-powershell-cmdlets"></a>Figyelheti és kezelheti a Stream Analytics-feladatok az Azure PowerShell-parancsmagok
 Ismerje meg, hogyan figyelheti és a Stream Analytics-erőforrások kezelése a az Azure PowerShell-parancsmagok és a powershell-parancsprogramok, amelyek az alapszintű Stream Analytics-feladatok végrehajtásához.
@@ -228,7 +228,7 @@ Ha egy már létező bemeneti adja meg, és ne adja meg a – Force paraméterek
 
 Ha megad a – Force paramétert, és adjon meg egy meglévő adjon meg nevet, a bemeneti váltja megerősítés nélkül.
 
-A JSON-fájl szerkezete és annak tartalmát a részletes információkért tekintse meg a [bemeneti létrehozása (Azure Stream Analytics)] [ msdn-rest-api-create-stream-analytics-input] szakaszában a [Stream Analytics felügyeleti REST API-referencia Szalagtár][stream.analytics.rest.api.reference].
+A JSON-fájl szerkezete és annak tartalmát a részletes információkért tekintse meg a [bemeneti létrehozása (Azure Stream Analytics)][msdn-rest-api-create-stream-analytics-input] section of the [Stream Analytics Management REST API Reference Library][stream.analytics.rest.api.reference].
 
 **1. példa**
 
@@ -287,7 +287,7 @@ Ha egy már létező feladat nevét adja meg, és ne adja meg a – Force param�
 
 Ha megad a – Force paramétert, és adja meg egy meglévő feladat nevét, a feladat definíciója váltja megerősítés nélküli.
 
-A JSON-fájl szerkezete és annak tartalmát a részletes információkért tekintse meg a [Stream Analytics-feladat létrehozása] [ msdn-rest-api-create-stream-analytics-job] szakaszában a [Stream Analytics felügyeleti REST API-referencia függvénytár] [stream.analytics.rest.api.reference].
+A JSON-fájl szerkezete és annak tartalmát a részletes információkért tekintse meg a [Stream Analytics-feladat létrehozása][msdn-rest-api-create-stream-analytics-job] section of the [Stream Analytics Management REST API Reference Library][stream.analytics.rest.api.reference].
 
 **1. példa**
 
@@ -330,7 +330,7 @@ Ha egy már létező kimenetet adja meg, és ne adja meg a – Force paramétere
 
 Ha megad a – Force paramétert, és adjon meg egy meglévő kimeneti név, a kimeneti váltja megerősítés nélkül.
 
-A JSON-fájl szerkezete és annak tartalmát a részletes információkért tekintse meg a [kimeneti létrehozása (Azure Stream Analytics)] [ msdn-rest-api-create-stream-analytics-output] szakaszában a [Stream Analytics felügyeleti REST API-referencia Szalagtár][stream.analytics.rest.api.reference].
+A JSON-fájl szerkezete és annak tartalmát a részletes információkért tekintse meg a [kimeneti létrehozása (Azure Stream Analytics)][msdn-rest-api-create-stream-analytics-output] section of the [Stream Analytics Management REST API Reference Library][stream.analytics.rest.api.reference].
 
 **1. példa**
 
@@ -373,7 +373,7 @@ Ha egy már létező átalakítás adja meg, és ne adja meg a – Force paramé
 
 Ha megad a – Force paramétert, és adjon meg egy meglévő transzformációjának a neve, az átalakítás váltja megerősítés nélkül.
 
-A JSON-fájl szerkezete és annak tartalmát a részletes információkért tekintse meg a [átalakítási létrehozása (Azure Stream Analytics)] [ msdn-rest-api-create-stream-analytics-transformation] szakaszában a [Stream Analytics felügyeleti REST API Referenciatárában][stream.analytics.rest.api.reference].
+A JSON-fájl szerkezete és annak tartalmát a részletes információkért tekintse meg a [átalakítási létrehozása (Azure Stream Analytics)][msdn-rest-api-create-stream-analytics-transformation] section of the [Stream Analytics Management REST API Reference Library][stream.analytics.rest.api.reference].
 
 **1. példa**
 
@@ -550,7 +550,7 @@ További segítségre van szüksége, próbálja meg [Azure Stream Analytics-fó
 * [Az Azure Stream Analytics bemutatása](stream-analytics-introduction.md)
 * [Get started using Azure Stream Analytics](stream-analytics-real-time-fraud-detection.md) (Bevezetés az Azure Stream Analytics használatába)
 * [Scale Azure Stream Analytics jobs](stream-analytics-scale-jobs.md) (Azure Stream Analytics-feladatok méretezése)
-* [Azure Stream Analytics Query Language Reference](https://msdn.microsoft.com/library/azure/dn834998.aspx) (Referencia az Azure Stream Analytics lekérdezési nyelvhez)
+* [Azure Stream Analytics Query Language Reference](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference) (Referencia az Azure Stream Analytics lekérdezési nyelvhez)
 * [Az Azure Stream Analytics felügyeleti REST API referenciája](https://msdn.microsoft.com/library/azure/dn835031.aspx)
 
 [msdn-switch-azuremode]: https://msdn.microsoft.com/library/dn722470.aspx

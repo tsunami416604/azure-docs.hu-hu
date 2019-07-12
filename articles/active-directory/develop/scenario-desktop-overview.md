@@ -15,12 +15,12 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 204e230f7ff0897d2ba97213ebc836aff9d0324b
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: 476703b52813e6b3081dcfb3ab5a2fb4f3a7bfc5
+ms.sourcegitcommit: 1572b615c8f863be4986c23ea2ff7642b02bc605
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67204650"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67785635"
 ---
 # <a name="scenario-desktop-app-that-calls-web-apis"></a>Forgatókönyv: Webes API-kat hívó asztali alkalmazás
 
@@ -45,7 +45,11 @@ Ha még nem tette, az első alkalmazás létrehozása a .NET asztali rövid vagy
 
 Asztali alkalmazások írása, és a felhasználók az alkalmazáshoz, és a webes API-k, például a Microsoft Graph, más Microsoft APIs vagy saját webes API hívása. Több lehetőség közül választhat:
 
-- Ha az asztali alkalmazás támogatja a grafikus szabályozását, például ha egy Windows.Form alkalmazást vagy aplikaci WPF, használhatja az interaktív token beszerzéséhez.
+- Használhatja az interaktív token beszerzéséhez:
+
+  - Ha az asztali alkalmazás támogatja a grafikus szabályozását, például ha egy Windows.Form alkalmazást vagy aplikaci WPF.
+  - Ha egy .NET Core-alkalmazást, és Ön vállalja, hogy a hitelesítési interakció az Azure ad-vel fordulhat elő, a rendszer böngészőben
+
 - Üzemeltetett Windows-alkalmazások a Windows-tartományhoz csatlakoztatott számítógépeken futó alkalmazások számára lehetőség arra is, vagy AAD csatlakoztatott jogkivonat-beszerzési csendes integrált Windows-hitelesítés használatával.
 - Végül és noha nem ajánlott, de használhatja a nyilvános ügyfélalkalmazások felhasználónév/jelszó. Bizonyos esetekben (például DevOps) továbbra is szükséges, de ügyeljen arra, hogy használja azt fogja kivetett korlátozásokat az alkalmazás. Például, nem tud bejelentkezni a felhasználó, aki kell végrehajtania a multi-factor authentication (feltételes hozzáférés). Emellett az alkalmazás nem kihasználhatják egyszeri bejelentkezés (SSO).
 
@@ -53,7 +57,7 @@ Asztali alkalmazások írása, és a felhasználók az alkalmazáshoz, és a web
 
   ![Asztali alkalmazás](media/scenarios/desktop-app.svg)
 
-- Ha szeretne írni egy hordozható parancssori eszköz – valószínűleg egy Linux vagy Mac rendszeren futó .NET Core-alkalmazást – nem tudja használni valamelyik az interaktív hitelesítés (mert nem biztosít a .NET Core egy [webböngésző](https://aka.ms/msal-net-uses-web-browser)), vagy integrált Windows-hitelesítés. A legjobb lehetőség ebben az esetben az eszköz kódfolyamat használja. Ez a folyamat egy böngészőbe, például az IoT-alkalmazások anélkül alkalmazásokhoz is használható
+- Ha szeretne írni egy hordozható parancssori eszköz – valószínűleg egy .NET Core-alkalmazást futtató, Linux vagy Mac -, és ha elfogadja, hogy a hitelesítést a rendszer böngészőre delegálható, tudják, az interaktív hitelesítéshez használandó. (Nem biztosít a .NET core még egy [webböngésző](https://aka.ms/msal-net-uses-web-browser) , és ezért a hitelesítés történik, a rendszer böngészőben), ellenkező esetben a legjobb lehetőség ebben az esetben, eszköz kód flow-val. Ez a folyamat egy böngészőbe, például az IoT-alkalmazások anélkül alkalmazásokhoz is használható
 
   ![Browserless alkalmazás](media/scenarios/device-code-flow-app.svg)
 

@@ -10,12 +10,12 @@ ms.subservice: acoustics
 ms.topic: conceptual
 ms.date: 03/20/2019
 ms.author: kegodin
-ms.openlocfilehash: 6e979db29f4a223b61580c48101c0d242fdbebbf
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: a18f6b57e203c40c0f667f07e8371348cb738c9b
+ms.sourcegitcommit: 441e59b8657a1eb1538c848b9b78c2e9e1b6cfd5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67616335"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67827573"
 ---
 # <a name="project-acoustics-frequently-asked-questions"></a>Projekt Akusztika – gyakori kérdések
 
@@ -29,7 +29,7 @@ Letöltheti a [Akusztika Unity Project beépülő modul](https://www.microsoft.c
 
 ## <a name="does-project-acoustics-support-ltxgt-platform"></a>Nem támogatja a projekt Akusztika &lt;x&gt; platform?
 
-A projekt Akusztika haladásával eszközplatform-támogatás a vásárlók igényei alapján. Forduljon hozzánk bizalommal a [projekt Akusztika fórumok](https://social.msdn.microsoft.com/Forums/en-US/home?forum=projectacoustics) további platformok a támogatással kapcsolatos események beküldéséhez.
+A projekt Akusztika haladásával eszközplatform-támogatás a vásárlók igényei alapján. Forduljon hozzánk bizalommal a [projekt Akusztika probléma fórum](https://github.com/microsoft/ProjectAcoustics/issues) további platformok a támogatással kapcsolatos események beküldéséhez.
 
 ## <a name="is-azure-used-at-runtime"></a>Azure futásidőben használatos?
 

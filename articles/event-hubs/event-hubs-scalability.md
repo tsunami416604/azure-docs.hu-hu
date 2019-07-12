@@ -14,12 +14,12 @@ ms.workload: na
 ms.custom: seodec18
 ms.date: 06/18/2019
 ms.author: shvija
-ms.openlocfilehash: 3eb20013a6b3afaddce10f2e4652add0edf22a9a
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: c46b333f2cc304cc12ddf78670b60940c7bc0db3
+ms.sourcegitcommit: 441e59b8657a1eb1538c848b9b78c2e9e1b6cfd5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67276781"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67827683"
 ---
 # <a name="scaling-with-event-hubs"></a>Az Event Hubs méretezése
 
@@ -48,14 +48,14 @@ Az Event Hubs szolgáltatás növeli az átviteli sebességet, ha a terhelés n�
 További információ az automatikus feltöltési funkció, lásd: [átviteli egységek automatikus skálázása](event-hubs-auto-inflate.md).
 
 ## <a name="partitions"></a>Partíciók
+[!INCLUDE [event-hubs-partitions](../../includes/event-hubs-partitions.md)]
 
-Partíciók tegye lehetővé, hogy nagy számú az alsóbb feldolgozási. A particionált felhasználói modell, amely az Event Hubs kínál partíciókat, mert meg is horizontális felskálázás az esemény egyidejű feldolgozása közben. Az Event Hub legfeljebb 32 partícióval rendelkezhet.
+### <a name="partition-key"></a>Partíciókulcs
 
-Azt javasoljuk, hogy optimális méretezhetőség 1:1 átviteli egységek és partíciók kiegyenlítése. Egy partíció rendelkezik egy garantált bejövő és kimenő, legfeljebb egy átviteli egységgel rendelkezhet. Előfordulhat, hogy a partíció nagyobb átviteli sebességet érhet el, amíg a teljesítmény nem garantált. Ezért erősen ajánlott, hogy az eseményközpontokban található partíciók számának nagyobbnak vagy azzal egyenlőnek átviteli egységek számát kell-e.
+A [partíciókulccsal](event-hubs-programming-guide.md#partition-key) a beérkező eseményadatok képezhetők le adott partíciókra az adatok elrendezése céljából. A partíciókulcs az eseményközpontnak átadott, a küldő által megadott érték. A feldolgozása egy statikus kivonatoló függvénnyel történik, amely létrehozza a partíció-hozzárendelést. Ha nem ad meg partíciókulcsot az események közzétételekor, a rendszer ciklikus időszeleteléses hozzárendelést használ.
 
-Adja meg a teljes átviteli sebesség a kellene tervezi, hogy a szükséges átviteli egységek számát és a partíciók minimális száma, de a hány partíciók kell, hogy? Válassza ki az alsóbb rétegbeli párhuzamosság használatával kíván elérni, valamint a jövőbeli átviteli igényei alapján a partíciók számát. Nem jár költségekkel rendelkezik egy eseményközpontban partíciók számát.
+Az esemény-közzétevő csak a partíciókulcsot ismeri, azt a partíciót nem, amelyre az esemény közzé lesz téve. A kulcs és a partíció szétválasztása révén a küldőnek nem szükséges behatóan ismernie az alárendelt feldolgozási folyamatokat. Az eszközszintű vagy egyedi felhasználói identitás remek partíciókulcs lehet, de más tulajdonságok, például a földrajzi hely alapján szintén lehetséges az események csoportosítása egyetlen partícióra.
 
-Részletes információk az Event Hubs díjszabásáról: [Event Hubs-díjszabás](https://azure.microsoft.com/pricing/details/event-hubs/).
 
 ## <a name="next-steps"></a>További lépések
 Az alábbi webhelyeken további információt talál az Event Hubsról:

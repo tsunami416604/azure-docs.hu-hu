@@ -15,12 +15,12 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ecf5b874345a94e8fd3d3a0783f8e48c7484377d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d84801d6368bcc29f08145f190c2a07c64050ced
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67111256"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67795088"
 ---
 # <a name="desktop-app-that-calls-web-apis---acquire-a-token"></a>Asztali alkalmazás, amely meghívja a webes API - jogkivonat beszerzése
 
@@ -293,8 +293,9 @@ A felhasználónév és jelszó megadásával is lekérheti a jogkivonatot. Ez a
 
 Ez a folyamat **nem ajánlott** , mert az alkalmazás a felhasználó megkérése a jelszavát nem biztonságos. A problémáról további információk: [Ez a cikk](https://news.microsoft.com/features/whats-solution-growing-problem-passwords-says-microsoft/). Előnyben részesített tokenbeolvasás csendes módban a Windows-tartományhoz csatlakoztatott gépeket folyamatábrája [integrált Windows-hitelesítés](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/Integrated-Windows-Authentication). Ellenkező esetben használhatja [eszköz kódfolyamat](https://aka.ms/msal-net-device-code-flow)
 
+> [!NOTE] 
 > Bár ez hasznos, ha bizonyos esetekben (DevOps-forgatókönyvekre), ha azt szeretné, felhasználónév/jelszó használata az interaktív forgatókönyvek, ahol a felhasználói felület onw meg kell, valóban gondolja dobozból áthelyezése. Felhasználónév/jelszó használatával, vannak megadva felfelé több minden:
-
+>
 > - Alapszintű bérlők modern identitás: jelszó fogott lekérdezi, játssza vissza. Mert a fogalom, amely megszerezhetik megosztás titkos kód.
 > Ez az beállításának kompatibilis.
 > - Ehhez az MFA kívánó felhasználók nem tudják jelentkezik be (mivel nem lett a beavatkozás nélküli)
@@ -651,7 +652,7 @@ Osztályok és a kapcsolódási tokengyorsítótárral szerializálási részt a
 > [!IMPORTANT]
 > MSAL.NET token gyorsítótárak hoz létre, és biztosítja a `IToken` gyorsítótárazza, ha egy alkalmazás hívása `GetUserTokenCache` és `GetAppTokenCache` módszereket. Nem lehet a saját maga a felület megvalósítása. A felelősség, egy egyéni tokengyorsítótárral szerializálási megvalósításának, hogy:
 >
-> - Reagálás `BeforeAccess` és `AfterAccess` "események". A`BeforeAccess` delegált feladata deszerializálni a gyorsítótárat, mivel a `AfterAccess` egyik feladata a gyorsítótár szerializálásához.
+> - Reagálás `BeforeAccess` és `AfterAccess` "események" (vagy ezek *aszinkron* megfelelője). A`BeforeAccess` delegált feladata deszerializálni a gyorsítótárat, mivel a `AfterAccess` egyik feladata a gyorsítótár szerializálásához.
 > - Ezek az események egy része tárolni vagy betölteni a blobok, amely bármilyen kívánt tárolóra az esemény argumentumot átadni.
 
 A stratégiák eltérnek attól függően, ha szeretne írni egy tokengyorsítótárral szerializálási nyilvános ügyfélalkalmazás (asztalon), vagy egy bizalmas ügyfélalkalmazás (webalkalmazás vagy webes API-alkalmazás démon).
@@ -724,6 +725,7 @@ static class TokenCacheHelper
 
 Előzetes verziója egy termék minőségének tokengyorsítótárral fájlalapú szerializáló nyilvános ügyfélalkalmazások (a Windows, Mac és Linux rendszereken futó asztali alkalmazások) esetében érhető el a [Microsoft.Identity.Client.Extensions.Msal](https://github.com/AzureAD/microsoft-authentication-extensions-for-dotnet/tree/master/src/Microsoft.Identity.Client.Extensions.Msal) nyílt forráskódú kódtár. Az alkalmazások a következő nuget-csomagot a tartalmazhatnak: [Microsoft.Identity.Client.Extensions.Msal](https://www.nuget.org/packages/Microsoft.Identity.Client.Extensions.Msal/).
 
+> [!NOTE]
 > Jogi nyilatkozat. A Microsoft.Identity.Client.Extensions.Msal erőforrástár egy bővítmény MSAL.NET felett. Ezek a kódtárak található osztályok előfordulhat, hogy eljutnak az MSAL.NET a jövőben van, vagy a használhatatlanná tévő változásai.
 
 ### <a name="dual-token-cache-serialization-msal-unified-cache--adal-v3"></a>Kettős tokengyorsítótárral szerializálási (MSAL egyesített cache + ADAL V3)

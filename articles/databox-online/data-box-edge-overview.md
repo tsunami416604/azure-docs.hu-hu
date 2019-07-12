@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: overview
-ms.date: 06/28/2019
+ms.date: 07/09/2019
 ms.author: alkohli
-ms.openlocfilehash: 3972f9f93cc6323601102f1a54bb067a8995d9e4
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: bc6b9662a5d67f6ed315c33444bcb061115fe6d4
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67484762"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67701479"
 ---
 # <a name="what-is-azure-data-box-edge"></a>Mi az Azure Data Box Edge? 
 
@@ -34,7 +34,7 @@ Az Azure Data Box Edge egy mesterséges intelligenciára épülő peremhálózat
     - A szükséges adatok csoportosítása és átvitele a felhőbe mélyebb elemzésre.
     - Az IoT-események elemzése és reagálás rájuk 
 
-- **Azure Machine Learning-következtetés** – A Data Box Edge használatával Machine Learning- (ML-) modelleket futtathat a gyors eredmények elérése érdekében, amelyeket még azelőtt használhat fel, hogy az adatok a felhőbe kerülnének. A teljes adatkészlet is átkerül a újratanítás, és javíthatja a gépi Tanulási modelleket továbbra is. További információ az Azure ML hardver használatával gyorsított modellek az Databox Edge-eszközön: [hardver üzembe helyezése az Azure gépi Tanulási modellek gyorsított Databox Edge](https://docs.microsoft.com/azure/machine-learning/service/how-to-deploy-fpga-web-service#deploy-to-a-local-edge-server).
+- **Azure Machine Learning-következtetés** – A Data Box Edge használatával Machine Learning- (ML-) modelleket futtathat a gyors eredmények elérése érdekében, amelyeket még azelőtt használhat fel, hogy az adatok a felhőbe kerülnének. A teljes adatkészlet is átkerül a újratanítás, és javíthatja a gépi Tanulási modelleket továbbra is. További információ az Azure ML hardver használatával a Data Box Edge-eszközön gyorsított modellek: [hardver üzembe helyezése az Azure gépi Tanulási modellek gyorsított Data Box Edge](https://docs.microsoft.com/azure/machine-learning/service/how-to-deploy-fpga-web-service#deploy-to-a-local-edge-server).
 
 - **Adatátvitel az Azure-ba hálózaton keresztül** – A Data Box Edge használatával könnyedén és gyorsan vihet át adatot az Azure-ba további számítási feladatok vagy elemzések elvégzéséhez, illetve archiválás céljából. 
 
@@ -88,16 +88,9 @@ A Data Box Edge megoldás a Data Box Edge-erőforrásból, a Data Box Edge fizik
 
 A Data Box Edge fizikai eszköznek, az Azure-erőforrásnak és a céloldali tárfióknak, amelybe átviszi az adatokat, nem kell egyazon régióban lenniük.
 
-- **Az erőforrás elérhetősége** – Ebben a kiadásban a Data Box Edge-erőforrás a következő régiókban érhető el:
-    - **Egyesült Államok** – USA keleti RÉGIÓJA
-    - **Európai Unió** – Nyugat-Európa
-    - **Ázsia és a Csendes-óceáni térség** – Délkelet-Ázsia
+- **Erőforrás rendelkezésre állási** – minden a régióban, ahol a Data Box Edge erőforrás érhető el, és listáját [elérhető Azure-termékek régiók szerint](https://azure.microsoft.com/global-infrastructure/services/?products=databox&regions=all). Az Azure Government cloud Data Box Edge is telepíthető. További információkért lásd: [Mi az Azure Government?](https://docs.microsoft.com/azure/azure-government/documentation-government-welcome).
     
-    Az Azure Government cloud Data Box Edge is telepíthető. További információkért lásd: [Mi az Azure Government?](https://docs.microsoft.com/azure/azure-government/documentation-government-welcome).
-    
-- **Céloldali tárfiókok** – Az adatokat tároló tárfiókok minden Azure-régióban elérhetők. 
-
-    A Data Box adatait tároló tárfiókok régióinaknak az eszköz közelében kell lennie az optimális teljesítmény elérése érdekében. Az eszköztől távol található tárfiók esetében hosszú késések és lassabb teljesítmény várható. 
+- **Céloldali tárfiókok** – Az adatokat tároló tárfiókok minden Azure-régióban elérhetők. A régiók, ahol a storage-fiókok Data Box Edge adatok tárolása közel, ahol az eszköz megtalálható az optimális teljesítmény érdekében érdemes telepíteni. Az eszköztől távol található tárfiók esetében hosszú késések és lassabb teljesítmény várható. 
 
 
 ## <a name="next-steps"></a>További lépések

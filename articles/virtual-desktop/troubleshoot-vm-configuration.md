@@ -4,15 +4,15 @@ description: Kapcsolatos problémák megoldását, amikor egy bérlő és a munk
 services: virtual-desktop
 author: ChJenk
 ms.service: virtual-desktop
-ms.topic: troubleshoot
-ms.date: 04/08/2019
+ms.topic: troubleshooting
+ms.date: 07/10/2019
 ms.author: v-chjenk
-ms.openlocfilehash: 38d59fb20776470cb683f2a2146838bb217addf7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 96a9d8fc7495ea473b0a3250b34251afc5f30c13
+ms.sourcegitcommit: 1572b615c8f863be4986c23ea2ff7642b02bc605
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64928122"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67786704"
 ---
 # <a name="tenant-and-host-pool-creation"></a>Bérlői és gazdagépcsoport létrehozása
 
@@ -284,6 +284,18 @@ Ha az operációs rendszer a Microsoft Windows 10-es, folytassa az alábbi utas�
     ```
 
 16. A parancsmagok végrehajtása után fut, indítsa újra a virtuális Gépet, a hibás egymás mellett hibával.
+
+## <a name="remote-licensing-model-is-not-configured"></a>Nincs konfigurálva távoli licencelési modell
+
+Ha Windows 10 Enterprise több munkamenet egy rendszergazdai fiókkal jelentkezik be, előfordulhat, hogy kap egy értesítést, amely arról tájékoztat, "nincs konfigurálva a távoli asztali licencelési módot, a távoli asztali szolgáltatások nem fognak működni az X nap. A kapcsolat-átvitelszervező kiszolgálón, a Kiszolgálókezelő használatával adja meg a távoli asztali licencelési módot." Ha ezt az üzenetet látja, ez azt jelenti, akkor manuálisan kell konfigurálnia a licencelési módot **felhasználónként**.
+
+Manuálisan konfigurálnia a licencelési módja:  
+
+1. Nyissa meg a **Start menü** keresőmezőbe, majd a Keresés és a nyílt **gpedit.msc** eléréséhez a helyi csoportházirend-szerkesztőt. 
+2. Lépjen a **számítógép konfigurációja** > **felügyeleti sablonok** > **Windows-összetevők**  >   **A távoli asztali szolgáltatások** > **távoli asztali munkamenetgazda** > **licencelési**. 
+3. Válassza ki **állítsa be a távoli asztali licencelési módot** , és módosítsa a következőre **felhasználónként**.
+
+A Microsoft jelenleg keres az értesítési és a türelmi időszak időtúllépés problémákat, és tervezze meg és azok leküzdési egy következő frissítés. 
 
 ## <a name="next-steps"></a>További lépések
 

@@ -4,7 +4,7 @@ description: Virtuális gép használatának részletes ismertetése
 services: virtual-machines
 documentationcenter: ''
 author: mmccrory
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-virtual-machine
 ms.assetid: ''
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm
 ms.workload: infrastructure-services
 ms.date: 12/04/2017
 ms.author: memccror
-ms.openlocfilehash: b515a0b226723989b1cc73356f1377da421dc9aa
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4cd0f27ebfeb25724bab50069344b417f62d5f50
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61485648"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67707892"
 ---
 # <a name="understanding-azure-virtual-machine-usage"></a>Az Azure virtuális gép használatának megismerése
 Az Azure-használati adatok elemzésével hatékony használati adatokba kaphatunk – insights, ami lehetővé teszi a jobban költségek kezelése és a szervezeten belül foglalási. Ez a dokumentum tartalmaz egy részletes ismertetése az Azure Compute használati adatait. Általános Azure használatáról a további részletekért lépjen [a számla értelmezéséhez](../../billing/billing-understand-your-bill.md).
@@ -82,7 +82,7 @@ A régió neve, töltse be a használat részleteiről az erőforrás helyének 
 |    chinaeast             |    Kelet-Kína                            |
 |    chinanorth            |    Észak-Kína                           |
 |    eastasia              |    Kelet-Ázsia                             |
-|    eastus                |    USA keleti régiója                               |
+|    eastus                |    East US                               |
 |    eastus2               |    USA 2. keleti régiója                             |
 |    GermanyCentral        |    Közép-Németország                            |
 |    GermanyNortheast      |    Északkelet-Németország                          |

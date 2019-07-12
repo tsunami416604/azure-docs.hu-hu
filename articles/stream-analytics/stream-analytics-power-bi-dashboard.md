@@ -8,12 +8,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/11/2019
-ms.openlocfilehash: 0e67a56e3d723874ed93fc8dcad91e3063d923ed
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: c415bdecdaf55f3068dcd804ab34de402fe7a31f
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67076186"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67612291"
 ---
 # <a name="stream-analytics-and-power-bi-a-real-time-analytics-dashboard-for-streaming-data"></a>Stream Analytics és a Power bi-ban: A valós idejű elemzési irányítópultok, a streamelési adatok
 
@@ -158,7 +158,7 @@ A Streaming Analytics-feladat elindul, a bejövő streamet a csaló hívások ke
 
     ![Új csempe képi megjelenítés részletei](./media/stream-analytics-power-bi-dashboard/add-fraudulent-calls-tile.png)
 
-7. Kattintson a **tovább**.
+7. Kattintson a **Tovább** gombra.
 
 8. Adja meg például a cím és alcím csempe részletei.
 
@@ -242,5 +242,5 @@ További segítségre van szüksége, próbálja meg [Azure Stream Analytics-fó
 * [Az Azure Stream Analytics bemutatása](stream-analytics-introduction.md)
 * [Get started using Azure Stream Analytics](stream-analytics-real-time-fraud-detection.md) (Bevezetés az Azure Stream Analytics használatába)
 * [Scale Azure Stream Analytics jobs](stream-analytics-scale-jobs.md) (Azure Stream Analytics-feladatok méretezése)
-* [Az Azure Stream Analytics lekérdezési nyelv leírása](https://msdn.microsoft.com/library/azure/dn834998.aspx)
+* [Az Azure Stream Analytics lekérdezési nyelv leírása](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
 * [Az Azure Stream Analytics felügyeleti REST API-referencia](https://msdn.microsoft.com/library/azure/dn835031.aspx)

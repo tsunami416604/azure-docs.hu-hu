@@ -4,7 +4,7 @@ description: A telepítő a Rendszerfelügyeleti webszolgáltatások hozzáfér�
 services: virtual-machines-windows
 documentationcenter: ''
 author: singhkays
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 ms.assetid: 9718e85b-d360-4621-90b8-0b0b84a21208
@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/16/2016
 ms.author: kasing
-ms.openlocfilehash: c4df3d6a55021cafa04bb6bcba643be41dc0e612
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: 2a106c639eb72d3793b0df8f4ddf36a4724f7418
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67273773"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67707867"
 ---
 # <a name="setting-up-winrm-access-for-virtual-machines-in-azure-resource-manager"></a>A WinRM-elérés beállítása a virtuális gépek az Azure Resource Manager
 
@@ -41,7 +41,7 @@ Használhatja az alábbi parancsot a Key Vault létrehozása
 New-AzKeyVault -VaultName "<vault-name>" -ResourceGroupName "<rg-name>" -Location "<vault-location>" -EnabledForDeployment -EnabledForTemplateDeployment
 ```
 
-## <a name="step-2-create-a-self-signed-certificate"></a>2\. lépés: Önaláírt tanúsítvány létrehozása
+## <a name="step-2-create-a-self-signed-certificate"></a>2\. lépés: Önaláírt tanúsítvány létrehozása
 Létrehozhat egy önaláírt tanúsítványt, a PowerShell-parancsfájl használatával
 
 ```
@@ -76,7 +76,7 @@ $jsonObjectBytes = [System.Text.Encoding]::UTF8.GetBytes($jsonObject)
 $jsonEncoded = [System.Convert]::ToBase64String($jsonObjectBytes)
 
 $secret = ConvertTo-SecureString -String $jsonEncoded -AsPlainText –Force
-Set-AzureKeyVaultSecret -VaultName "<vault name>" -Name "<secret name>" -SecretValue $secret
+Set-AzKeyVaultSecret -VaultName "<vault name>" -Name "<secret name>" -SecretValue $secret
 ```
 
 ## <a name="step-4-get-the-url-for-your-self-signed-certificate-in-the-key-vault"></a>4\. lépés: Az URL-cím lekérése az önaláírt tanúsítvány a Key vaultban

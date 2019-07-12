@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 02/12/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 5efbe874bbf3c1c4081eb7a2c76c1be5a3358ec8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b5015f00d3c6dfe0e1e5c2466af777cc0f1bc509
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65518979"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67607152"
 ---
 # <a name="use-azure-sql-vm-cli-to-configure-always-on-availability-group-for-sql-server-on-an-azure-vm"></a>Azure SQL virtuális gép CLI használatával az Azure virtuális Gépeken futó SQL Server AlwaysOn rendelkezésre állási csoport konfigurálása
 Ez a cikk ismerteti, hogyan használható [Azure SQL virtuális gép CLI](/cli/azure/sql/vm?view=azure-cli-latest/) való üzembe helyezése a Windows feladatátvevő fürt (WSFC), és az SQL Server virtuális gépek hozzáadása a fürthöz, valamint a belső Load Balancer és a egy Always On rendelkezésre állási csoport figyelőjének létrehozásához.  Az Always On rendelkezésre állási csoport a tényleges telepítési továbbra is végezhető el manuálisan az SQL Server Management Studio (SSMS) keresztül. 
@@ -28,7 +28,7 @@ Ez a cikk ismerteti, hogyan használható [Azure SQL virtuális gép CLI](/cli/a
 A telepítő egy Always On rendelkezésre állási csoport Azure SQL virtuális gép CLI-vel automatizálhatja, már rendelkeznie kell a következő előfeltételek vonatkoznak: 
 - Egy [Azure-előfizetés](https://azure.microsoft.com/free/).
 - Egy erőforráscsoport, egy tartományvezérlővel. 
-- Legalább egy tartományhoz csatlakoztatott [virtuális gépek Azure futó SQL Server 2016 (vagy nagyobb) Enterprise verzióban](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-server-provision) a a *ugyanazon rendelkezésre állási csoportban, vagy másik rendelkezésre állási zónák* amelyeket [regisztrálva az SQL virtuális gép erőforrás-szolgáltatónál](virtual-machines-windows-sql-ahb.md#register-sql-server-vm-with-sql-resource-provider).  
+- Legalább egy tartományhoz csatlakoztatott [virtuális gépek Azure futó SQL Server 2016 (vagy nagyobb) Enterprise verzióban](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-server-provision) a a *ugyanazon rendelkezésre állási csoportban, vagy másik rendelkezésre állási zónák* amelyeket [regisztrálva az SQL virtuális gép erőforrás-szolgáltatónál](virtual-machines-windows-sql-register-with-resource-provider.md).  
 - [Azure parancssori felület (CLI)](/cli/azure/install-azure-cli). 
 - (Minden entitás által nem használt) elérhető két IP-címek, egy belső terheléselosztó, és a rendelkezésre állási csoport figyelőjének ugyanabban az alhálózatban, mint a rendelkezésre állási csoport esetében. Ha használatban van egy meglévő a terheléselosztóhoz, majd csak egy elérhető IP-cím van szükség a rendelkezésre állási csoport figyelője. 
 

@@ -5,14 +5,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 06/27/2019
+ms.date: 07/07/2019
 ms.author: raynew
-ms.openlocfilehash: 55275144746dbc1a3ead7c7c12a6901ab6f9269e
-ms.sourcegitcommit: 6cb4dd784dd5a6c72edaff56cf6bcdcd8c579ee7
+ms.openlocfilehash: 5b1d5b2b22fac35b2c963d7557c36b8b586d93ea
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67514125"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67706777"
 ---
 # <a name="support-matrix-for-replicating-azure-vms-from-one-region-to-another"></a>Támogatási mátrix az Azure virtuális gépek egyik régióból a másikba való replikálásához
 
@@ -29,7 +29,7 @@ Ez a cikk összegzi támogatási és előfeltételek beállításakor az Azure v
 **Parancssori felület** | Jelenleg nem támogatott
 
 
-## <a name="resource-support"></a>Erőforrások támogatása
+## <a name="resource-support"></a>Erőforrás-támogatás
 
 **Erőforrás-művelet** | **Részletek**
 --- | --- | ---
@@ -112,33 +112,33 @@ Oracle Linux | 6.4, 6.5, 6.6, 6.7, 6.8, 6.9, 6.10, 7.0, 7.1, 7.2, 7.3, 7.4, 7.5 
 
 **Kiadás** | **Mobilitási szolgáltatás verziójának** | **Kernel verziója** |
 --- | --- | --- |
+14.04 LTS | 9.26 | a 3.13.0-170-generic, 3.13.0-24-Generic<br/>a 3.16.0-77-generic, 3.16.0-25-Generic<br/>a 3.19.0-80-generic, 3.19.0-18-Generic<br/>a 4.2.0-42-generic, 4.2.0-18-Generic<br/>a 4.4.0-148-generic, 4.4.0-21-Generic<br/>4.15.0-1023-azure to 4.15.0-1045-azure |
 14.04 LTS | 9.25 | a 3.13.0-169-generic, 3.13.0-24-Generic<br/>a 3.16.0-77-generic, 3.16.0-25-Generic<br/>a 3.19.0-80-generic, 3.19.0-18-Generic<br/>a 4.2.0-42-generic, 4.2.0-18-Generic<br/>a 4.4.0-146-generic, 4.4.0-21-Generic<br/>a 4.15.0-1042-azure 4.15.0-1023-Azure |
 14.04 LTS | 9.24 | a 3.13.0-167-generic, 3.13.0-24-Generic<br/>a 3.16.0-77-generic, 3.16.0-25-Generic<br/>a 3.19.0-80-generic, 3.19.0-18-Generic<br/>a 4.2.0-42-generic, 4.2.0-18-Generic<br/>a 4.4.0-143-generic, 4.4.0-21-Generic<br/>a 4.15.0-1040-azure 4.15.0-1023-Azure |
 14.04 LTS | 9.23 | a 3.13.0-165-generic, 3.13.0-24-Generic<br/>a 3.16.0-77-generic, 3.16.0-25-Generic<br/>a 3.19.0-80-generic, 3.19.0-18-Generic<br/>a 4.2.0-42-generic, 4.2.0-18-Generic<br/>a 4.4.0-142-generic, 4.4.0-21-Generic<br/>a 4.15.0-1037-azure 4.15.0-1023-Azure |
-14.04 LTS | 9.22 | a 3.13.0-164-generic, 3.13.0-24-Generic<br/>a 3.16.0-77-generic, 3.16.0-25-Generic<br/>a 3.19.0-80-generic, 3.19.0-18-Generic<br/>a 4.2.0-42-generic, 4.2.0-18-Generic<br/>a 4.4.0-140-generic, 4.4.0-21-Generic<br/>4.15.0-1023-azure to 4.15.0-1036-azure |
 |||
+16.04 LTS | 9.26 | a 4.4.0-148-generic, 4.4.0-21-Generic<br/>a 4.8.0-58-generic, 4.8.0-34-Generic<br/>a 4.10.0-42-generic, 4.10.0-14-Generic<br/>a 4.11.0-14-generic, 4.11.0-13-Generic<br/>a 4.13.0-45-generic, 4.13.0-16-Generic<br/>a 4.15.0-50-generic 4.15.0-13-Generic<br/>a 4.11.0-1016-azure, 4.11.0-1009-Azure<br/>4.13.0-1005-azure to 4.13.0-1018-azure <br/>4.15.0-1012-azure to 4.15.0-1045-azure|
 16.04 LTS | 9.25 | a 4.4.0-146-generic, 4.4.0-21-Generic<br/>a 4.8.0-58-generic, 4.8.0-34-Generic<br/>a 4.10.0-42-generic, 4.10.0-14-Generic<br/>a 4.11.0-14-generic, 4.11.0-13-Generic<br/>a 4.13.0-45-generic, 4.13.0-16-Generic<br/>a 4.15.0-48-generic 4.15.0-13-Generic<br/>a 4.11.0-1016-azure, 4.11.0-1009-Azure<br/>4.13.0-1005-azure to 4.13.0-1018-azure <br/>a 4.15.0-1042-azure 4.15.0-1012-Azure|
 16.04 LTS | 9.24 | a 4.4.0-143-generic, 4.4.0-21-Generic<br/>a 4.8.0-58-generic, 4.8.0-34-Generic<br/>a 4.10.0-42-generic, 4.10.0-14-Generic<br/>a 4.11.0-14-generic, 4.11.0-13-Generic<br/>a 4.13.0-45-generic, 4.13.0-16-Generic<br/>a 4.15.0-46-generic 4.15.0-13-Generic<br/>a 4.11.0-1016-azure, 4.11.0-1009-Azure<br/>4.13.0-1005-azure to 4.13.0-1018-azure <br/>a 4.15.0-1040-azure 4.15.0-1012-Azure|
 16.04 LTS | 9.23 | a 4.4.0-142-generic, 4.4.0-21-Generic<br/>a 4.8.0-58-generic, 4.8.0-34-Generic<br/>a 4.10.0-42-generic, 4.10.0-14-Generic<br/>a 4.11.0-14-generic, 4.11.0-13-Generic<br/>a 4.13.0-45-generic, 4.13.0-16-Generic<br/>a 4.15.0-45-generic 4.15.0-13-Generic<br/>a 4.11.0-1016-azure, 4.11.0-1009-Azure<br/>4.13.0-1005-azure to 4.13.0-1018-azure <br/>a 4.15.0-1037-azure 4.15.0-1012-Azure|
-16.04 LTS | 9.22 | a 4.4.0-140-generic, 4.4.0-21-Generic<br/>a 4.8.0-58-generic, 4.8.0-34-Generic<br/>a 4.10.0-42-generic, 4.10.0-14-Generic<br/>a 4.11.0-14-generic, 4.11.0-13-Generic<br/>a 4.13.0-45-generic, 4.13.0-16-Generic<br/>a 4.15.0-43-generic 4.15.0-13-Generic<br/>a 4.11.0-1016-azure, 4.11.0-1009-Azure<br/>4.13.0-1005-azure to 4.13.0-1018-azure <br/>a 4.15.0-1036-azure 4.15.0-1012-Azure|
 
 #### <a name="supported-debian-kernel-versions-for-azure-virtual-machines"></a>Debian kernel verziója támogatott Azure-beli virtuális gépek
 
 **Kiadás** | **Mobilitási szolgáltatás verziójának** | **Kernel verziója** |
 --- | --- | --- |
-Debian 7 | 9.22,9.23,9.24,9.25 | 3.2.0-4-amd64 to 3.2.0-6-amd64, 3.16.0-0.bpo.4-amd64 |
+Debian 7 | 9.23,9.24,9.25,9.26 | 3.2.0-4-amd64 to 3.2.0-6-amd64, 3.16.0-0.bpo.4-amd64 |
 |||
-Debian 8 | 9.25 | 3.16.0-4-amd64 to 3.16.0-8-amd64, 4.9.0-0.bpo.4-amd64 to 4.9.0-0.bpo.8-amd64 |
-Debian 8 | 9.22, 9.23, 9.24 | 3.16.0-4-amd64 to 3.16.0-7-amd64, 4.9.0-0.bpo.4-amd64 to 4.9.0-0.bpo.8-amd64 |
+Debian 8 | 9.25, 9.26 | 3.16.0-4-amd64 to 3.16.0-8-amd64, 4.9.0-0.bpo.4-amd64 to 4.9.0-0.bpo.8-amd64 |
+Debian 8 | 9.23, 9.24 | 3.16.0-4-amd64 to 3.16.0-7-amd64, 4.9.0-0.bpo.4-amd64 to 4.9.0-0.bpo.8-amd64 |
 
 #### <a name="supported-suse-linux-enterprise-server-12-kernel-versions-for-azure-virtual-machines"></a>Azure-beli virtuális gépek támogatott SUSE Linux Enterprise Server 12 kernel verziója
 
 **Kiadás** | **Mobilitási szolgáltatás verziójának** | **Kernel verziója** |
 --- | --- | --- |
+SUSE Linux Enterprise Server (SP1, SP2, SP3, SP4) 12 | 9.26 | SP1 3.12.49-11-default 3.12.74-60.64.40-default</br></br> SP1(LTSS) 3.12.74-60.64.45-default to 3.12.74-60.64.110-default</br></br> SP2 4.4.21-69-default 4.4.120-92.70-default</br></br>A 4.4.121-92.109-default SP2(LTSS) 4.4.121-92.73-default</br></br>A 4.4.178-94.91-default SP3 4.4.73-5-default</br></br>A 4.4.178-4.28-azure SP3 4.4.138-4.7-azure</br></br>SP4 4.12.14-94.41-default 4.12.14-95.16-default</br>SP4 4.12.14-6.3-azure 4.12.14-6.9-azure |
 SUSE Linux Enterprise Server (SP1, SP2, SP3, SP4) 12 | 9.25 | SP1 3.12.49-11-default 3.12.74-60.64.40-default</br></br> SP1(LTSS) 3.12.74-60.64.45-default to 3.12.74-60.64.107-default</br></br> SP2 4.4.21-69-default 4.4.120-92.70-default</br></br>A 4.4.121-92.104-default SP2(LTSS) 4.4.121-92.73-default</br></br>A 4.4.176-94.88-default SP3 4.4.73-5-default</br></br>SP3 4.4.138-4.7-azure to 4.4.176-4.25-azure</br></br>SP4 4.12.14-94.41-default 4.12.14-95.13-default</br>SP4 4.12.14-6.3-azure 4.12.14-6.9-azure |
 SUSE Linux Enterprise Server (SP1, SP2, SP3, SP4) 12 | 9.24 | SP1 3.12.49-11-default 3.12.74-60.64.40-default</br></br> SP1(LTSS) 3.12.74-60.64.45-default to 3.12.74-60.64.107-default</br></br> SP2 4.4.21-69-default 4.4.120-92.70-default</br></br>A 4.4.121-92.104-default SP2(LTSS) 4.4.121-92.73-default</br></br>A 4.4.176-94.88-default SP3 4.4.73-5-default</br></br>SP4 4.12.14-94.41-default 4.12.14-95.13-default |
 SUSE Linux Enterprise Server (SP1, SP2, SP3, SP4) 12 | 9.23 | SP1 3.12.49-11-default 3.12.74-60.64.40-default</br></br> SP1(LTSS) 3.12.74-60.64.45-default to 3.12.74-60.64.107-default</br></br> SP2 4.4.21-69-default 4.4.120-92.70-default</br></br>A 4.4.121-92.101-default SP2(LTSS) 4.4.121-92.73-default</br></br>A 4.4.162-94.69-default SP3 4.4.73-5-default</br></br>SP4 4.12.14-94.41-default 4.12.14-95.6-default |
-SUSE Linux Enterprise Server 12 (SP3 SP1, SP2) | 9.22 | SP1 3.12.49-11-default 3.12.74-60.64.40-default</br></br> SP1(LTSS) 3.12.74-60.64.45-default to 3.12.74-60.64.107-default</br></br> SP2 4.4.21-69-default 4.4.120-92.70-default</br></br>A 4.4.121-92.98-default SP2(LTSS) 4.4.121-92.73-default</br></br>A 4.4.162-94.72-default SP3 4.4.73-5-default |
 
 ## <a name="replicated-machines---linux-file-systemguest-storage"></a>Replikált gépek – Linux rendszer/Vendég fájltárolás
 

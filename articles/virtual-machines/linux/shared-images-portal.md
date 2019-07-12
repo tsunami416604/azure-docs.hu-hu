@@ -4,7 +4,7 @@ description: Ismerje meg, hogyan hozhat létre és oszthat meg virtuálisgép-le
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: cynthn
-manager: jeconnoc
+manager: gwallace
 editor: tysonn
 tags: azure-resource-manager
 ms.assetid: ''
@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 06/27/2019
 ms.author: cynthn
 ms.custom: ''
-ms.openlocfilehash: e5518d019800d2d194369225a060b9b728e21520
-ms.sourcegitcommit: c63e5031aed4992d5adf45639addcef07c166224
+ms.openlocfilehash: ea0a5961aff5935efea3eb98fd53904ce864ec2c
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67465451"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67708915"
 ---
 # <a name="create-a-shared-image-gallery-using-the-azure-portal"></a>Hozzon létre egy megosztott lemezkép-katalógus az Azure portal használatával
 

@@ -9,12 +9,12 @@ ms.service: service-bus-messaging
 ms.topic: article
 ms.date: 01/23/2019
 ms.author: aschhab
-ms.openlocfilehash: 8461764a3f1f682ffb97420a4efdf2803f518872
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 26609e7b21af8804a4b43039c84c04597035721c
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64707139"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67706211"
 ---
 # <a name="service-bus-faq"></a>Service Bus – GYIK
 
@@ -86,7 +86,7 @@ A zone redudancy a névteret használja, ha néhány további lépések végreha
 
 ## <a name="best-practices"></a>Ajánlott eljárások
 ### <a name="what-are-some-azure-service-bus-best-practices"></a>Mik az Azure Service Bus ajánlott eljárásokat?
-Lásd: [ajánlott eljárások a teljesítmény Service Bus használatával] [ Best practices for performance improvements using Service Bus] – Ez a cikk bemutatja, hogyan lehet optimalizálni a teljesítményt üzenetváltásokban.
+Lásd: [ajánlott eljárások a teljesítmény Service Bus használatával][Best practices for performance improvements using Service Bus] – Ez a cikk bemutatja, hogyan lehet optimalizálni a teljesítményt üzenetváltásokban.
 
 ### <a name="what-should-i-know-before-creating-entities"></a>Mit kell tudni entitások létrehozása előtt?
 Egy üzenetsor és a témakör következő tulajdonságai nem módosíthatók. Fontolja meg ezt a korlátozást az entitások üzembe helyezésekor, ezek a Tulajdonságok helyettesítő új entitások létrehozása nélkül nem módosítható.
@@ -104,7 +104,7 @@ A [a Service Bus díjszabása és számlázási](https://azure.microsoft.com/pri
 Emellett letöltheti a [Azure támogatás – gyakori kérdések](https://azure.microsoft.com/support/faq/) általános Azure díjszabási információk. 
 
 ### <a name="how-do-you-charge-for-service-bus"></a>Hogyan tegye meg díja szerint számítjuk fel a Service Bus?
-Teljes információ a Service Bus díjszabásáról: [díjszabása a Service Bus][Pricing overview]. A feltüntetett árak mellett díjkötelesek kapcsolódó adatforgalmi kimenő kívül az adatközpontot, amelyben az alkalmazás ki van építve.
+Teljes információ a Service Bus díjszabásáról: [a Service Bus díjszabásáról][Pricing overview]. A feltüntetett árak mellett díjkötelesek kapcsolódó adatforgalmi kimenő kívül az adatközpontot, amelyben az alkalmazás ki van építve.
 
 ### <a name="what-usage-of-service-bus-is-subject-to-data-transfer-what-is-not"></a>Milyen a Service Bus használata, az adatátviteli vonatkoznak? Nincs mit jelent?
 Egy adott Azure-régión belül minden olyan adatforgalom díjmentes, valamint bejövő adatforgalom biztosítunk. Adatátvitel a régión kívül van alkalmaz a kimenő forgalom költségeit, amely találhatók rajtuk [Itt](https://azure.microsoft.com/pricing/details/bandwidth/).
@@ -134,7 +134,7 @@ Ha egy névtér töröl egy előfizetést, várjon, amíg 4 óra, mielőtt újra
 Lehetséges a Service Bus-kivételek listáját lásd: [kivételek áttekintése][Exceptions overview].
 
 ### <a name="what-is-a-shared-access-signature-and-which-languages-support-generating-a-signature"></a>Mi az a közös hozzáférésű Jogosultságkód és nyelveket támogatja az aláírás létrehozásához?
-Közös hozzáférésű Jogosultságkódok olyan hitelesítési mechanizmust, SHA-256 biztonságos kivonatok vagy URI-k alapján. További információ a saját aláírásokat létrehozni a Node.js, PHP, Java vagy C\#, tekintse meg a [közös hozzáférési aláírások] [ Shared Access Signatures] cikk.
+Közös hozzáférésű Jogosultságkódok olyan hitelesítési mechanizmust, SHA-256 biztonságos kivonatok vagy URI-k alapján. További információ a saját aláírásokat létrehozni a Node.js, PHP, Java vagy C\#, tekintse meg a [közös hozzáférési aláírások][Shared Access Signatures] cikk.
 
 ## <a name="subscription-and-namespace-management"></a>Előfizetés és a névtér-kezelés
 ### <a name="how-do-i-migrate-a-namespace-to-another-azure-subscription"></a>Hogyan migrálhatom a névtér egy másik Azure-előfizetésre?
@@ -143,7 +143,7 @@ Közös hozzáférésű Jogosultságkódok olyan hitelesítési mechanizmust, SH
 
 #### <a name="portal"></a>Portál
 
-Az Azure portal használatával a Service Bus-névterek áttelepítése másik előfizetésre, kövesse az utasításokat [Itt](../azure-resource-manager/resource-group-move-resources.md#use-portal). 
+Az Azure portal használatával a Service Bus-névterek áttelepítése másik előfizetésre, kövesse az utasításokat [Itt](../azure-resource-manager/resource-group-move-resources.md#use-the-portal). 
 
 #### <a name="powershell"></a>PowerShell
 

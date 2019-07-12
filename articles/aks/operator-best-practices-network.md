@@ -2,17 +2,17 @@
 title: Operátor ajánlott eljárások – hálózati kapcsolatot az Azure Kubernetes-szolgáltatások (AKS)
 description: Ismerje meg a fürt operátor gyakorlati tanácsok a virtuális hálózati erőforrások és a kapcsolatot az Azure Kubernetes Service (AKS)
 services: container-service
-author: iainfoulds
+author: mlearned
 ms.service: container-service
 ms.topic: conceptual
 ms.date: 12/10/2018
-ms.author: iainfou
-ms.openlocfilehash: 2bdc18ba4dc77178d5fcc5d2ba6d89aa109d923c
-ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
-ms.translationtype: HT
+ms.author: mlearned
+ms.openlocfilehash: d1bc865b38b52c8a7c3ac6ec4dab6408a1d0430c
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "65192237"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67614747"
 ---
 # <a name="best-practices-for-network-connectivity-and-security-in-azure-kubernetes-service-aks"></a>Hálózati kapcsolat és az Azure Kubernetes Service (AKS) biztonsági védelmének bevált gyakorlata
 
@@ -108,7 +108,7 @@ Nincsenek számos forgatókönyvek a bejövő forgalom, többek között a köve
 * [Hozzon létre egy alapszintű bejövőforgalom-vezérlőjéhez külső hálózatok közötti kapcsolatokkal][aks-ingress-basic]
 * [Hozzon létre egy bejövőforgalom-vezérlőt, amely egy belső, saját hálózat és IP-cím][aks-ingress-internal]
 * [Hozzon létre egy saját TLS-tanúsítványokat használ a bejövőforgalom-vezérlőt][aks-ingress-own-tls]
-* Hozzon létre egy bejövőforgalom-vezérlőt használó hozzunk titkosítása automatikusan létrehozni a TLS-tanúsítványok [dinamikus nyilvános IP-címmel rendelkező][aks-ingress-tls] vagy [egy statikus nyilvános IP-címmel][aks-ingress-static-tls]
+* Hozzon létre egy bejövőforgalom-vezérlőt használó hozzunk titkosítása automatikusan létrehozni a TLS-tanúsítványok [dinamikus nyilvános IP-címmel][aks-ingress-tls] or [with a static public IP address][aks-ingress-static-tls]
 
 ## <a name="secure-traffic-with-a-web-application-firewall-waf"></a>A webalkalmazási tűzfal (WAF) forgalmának biztonságossá tétele
 
@@ -158,7 +158,7 @@ Az aks-ben a legtöbb művelet elvégezhető az Azure felügyeleti eszközeivel 
 
 ![AKS-csomópontok bástyagazdagép használatával csatlakozni, vagy a jump-box](media/operator-best-practices-network/connect-using-bastion-host-simplified.png)
 
-A felügyeleti hálózat a megerősített gazdagép védelméhez, túl. Használata egy [Azure ExpressRoute][expressroute] vagy [VPN-átjáró][vpn-gateway] a helyszíni hálózat csatlakoztatása, és hálózati biztonság hozzáférés csoportok.
+A felügyeleti hálózat a megerősített gazdagép védelméhez, túl. Használja az [Azure ExpressRoute][expressroute] or [VPN gateway][vpn-gateway] a helyszíni hálózat csatlakoztatása, és hozzáférést hálózati biztonsági csoportok használatával.
 
 ## <a name="next-steps"></a>További lépések
 

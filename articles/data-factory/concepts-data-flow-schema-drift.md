@@ -3,16 +3,15 @@ title: Az Azure Data Factory adatokat folyamat séma eltéréseket leképezése
 description: Rugalmas adatáramlás a séma eltéréseket az Azure Data Factory létrehozása
 author: kromerm
 ms.author: makromer
-ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 10/04/2018
-ms.openlocfilehash: aadab68185347dc0a12e0802f675efe13ecea545
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6fd610afc0a21a97a8544b9e4b173f207f5fb50f
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61262115"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67722889"
 ---
 # <a name="mapping-data-flow-schema-drift"></a>Data Flow séma eltéréseket leképezése
 
@@ -34,7 +33,7 @@ Annak érdekében, hogy a séma eltéréseket ellen védelmet biztosító, fonto
 
 * Ezt a beállítást választotta, amikor az összes bejövő mezők lévő minden adat a folyamat végrehajtását a forrásból kell olvasni, és a fogadó révén a teljes folyamatot lesznek átadva.
 
-* Ügyeljen arra, hogy a fogadó átalakításában szerepel a minden új mezők leképezése, így minden új mező első kivételezett felfelé és a cél érkezett az "Auto-térkép" használatával:
+* Ellenőrizze, hogy a fogadó átalakításában szerepel a minden új mezők leképezése, így minden új mező első kivételezett felfelé és a cél érkezett az "Auto-térkép" használatával.
 
 <img src="media/data-flow/automap.png" width="400">
 
