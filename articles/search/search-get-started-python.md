@@ -1,7 +1,7 @@
 ---
 title: 'Python rövid útmutató: Létrehozása, betöltése és lekérdezése az indexek az Azure Search REST API-k – Azure Search használatával'
 description: Azt ismerteti, hogyan-index létrehozása, adatok betöltése és a Python, a Jupyter notebookok és az Azure Search REST API-lekérdezések futtatásához.
-ms.date: 06/20/2019
+ms.date: 07/11/2019
 author: heidisteen
 manager: cgronlun
 ms.author: heidist
@@ -10,12 +10,12 @@ ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.custom: seodec2018
-ms.openlocfilehash: 613879abd4c5c09450b690b793500a99428cff29
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: 123afa2452c3e492b85292514e64f84d3baec390
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67485475"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67840289"
 ---
 # <a name="quickstart-create-an-azure-search-index-in-python-using-jupyter-notebooks"></a>Gyors útmutató: Az Azure Search-index létrehozása a Python, a Jupyter notebookok használatával
 > [!div class="op_single_selector"]
@@ -26,7 +26,7 @@ ms.locfileid: "67485475"
 > * [Portál](search-create-index-portal.md)
 > 
 
-Létrehozó, betöltődik, és Python használatával Azure Search-index lekérdezése Jupyter notebook létrehozása és a [Azure Search REST API-k](https://docs.microsoft.com/rest/api/searchservice/). Ez a cikk azt ismerteti, hogyan hozhat létre egy notebookot lépésről lépésre, vág bele. Másik lehetőségként egy befejezett notebook futtatható. Ha szeretné letölteni, nyissa meg a[azure-search-python-samples-tárház](https://github.com/Azure-Samples/azure-search-python-samples).
+Létrehozó, betöltődik, és Python használatával Azure Search-index lekérdezése Jupyter notebook létrehozása és a [Azure Search REST API-k](https://docs.microsoft.com/rest/api/searchservice/). Ez a cikk azt ismerteti, hogyan hozhat létre egy notebookot lépésről lépésre. Lehetőségként [letöltése és futtatása egy befejezett Jupyter Python-jegyzetfüzetet](https://github.com/Azure-Samples/azure-search-python-samples).
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
@@ -295,26 +295,13 @@ Ez a lépés bemutatja, hogyan kérdezhet le egy index használatával a [Search
    searchstring = '&search=pool&$orderby=Address/City&$select=HotelId, HotelName, Address/City, Address/StateProvince, Tags'
    ```
 
-## <a name="clean-up"></a>A fölöslegessé vált elemek eltávolítása 
+## <a name="clean-up"></a>A fölöslegessé vált elemek eltávolítása
 
-Ha már nincs szüksége lesz rá az index törölni kell. Egy ingyenes szolgáltatás három indexre korlátozódik. Ön nem használja aktívan, hogy helyet biztosítson a többi indexek törölni kell.
+Dolgozik, a saját előfizetése, esetén célszerű egy projektet a végén, hogy azonosítani, hogy az erőforrások továbbra is kell-e létrehozott. Erőforrások bal oldali futó is költséget takaríthat meg költséget. Külön-külön törölje az erőforrást, vagy törölje az erőforráscsoportot törli az erőforrások teljes készletében.
 
-Objektumok törlése a legegyszerűbben a portálon keresztül, de mivel Python gyors üzembe helyezés, a következő szintaxist poskytne ugyanaz az eredmény:
+Megkeresheti és kezelheti az erőforrásokat a portál használatával a **összes erőforrás** vagy **erőforráscsoportok** hivatkozásra a bal oldali navigációs ablaktáblán.
 
-   ```python
-  url = endpoint + "indexes/hotels-quickstart" + api_version
-  response  = requests.delete(url, headers=headers)
-   ```
-
-Index törlése ellenőrizheti a létező indexek listájának lekérésekor. Ha a "Hotels" – rövid útmutató eltűnt, majd ismeri a kérelem sikeres volt.
-
-```python
-url = endpoint + "indexes" + api_version + "&$select=name"
-
-response  = requests.get(url, headers=headers)
-index_list = response.json()
-pprint(index_list)
-```
+Ha használ egy ingyenes szolgáltatás, ne feledje, hogy korlátozódnak három indexek, indexelők és adatforrások. A korlátja alatt maradjunk a portál egyes elemeire törölheti. 
 
 ## <a name="next-steps"></a>További lépések
 

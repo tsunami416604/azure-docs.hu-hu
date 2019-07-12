@@ -7,12 +7,12 @@ ms.service: virtual-machines
 ms.topic: troubleshooting
 ms.date: 06/15/2018
 ms.author: delhan
-ms.openlocfilehash: 03cb3f2339dda1bf1dbb510b686882e924a98d74
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: fd34ab7cd899549962663e8cee8ee2121c39c49e
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67118703"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67840389"
 ---
 # <a name="azure-storage-explorer-troubleshooting-guide"></a>Az Azure Storage Explorer hibaelhárítási útmutatója
 
@@ -59,7 +59,7 @@ Ha nem rendelkezik a szerepkör minden olyan felügyeleti réteg engedélyek meg
 
 ### <a name="what-if-i-cant-get-the-management-layer-permissions-i-need-from-my-administrator"></a>Mi történik, ha nem jelenik meg a felügyeleti réteg engedélyeket kell a saját rendszergazdai?
 
-Még nem egy RBAC kapcsolatos megoldást most. Áthidaló megoldásként kérheti egy SAS URI-t [az erőforrás csatolása](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer?tabs=linux#attach-a-service-by-using-a-shared-access-signature-sas).
+Még nem egy RBAC kapcsolatos megoldást most. Áthidaló megoldásként kérheti egy SAS URI-t [az erőforrás csatolása](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer?tabs=linux#use-a-sas-uri).
 
 ## <a name="error-self-signed-certificate-in-certificate-chain-and-similar-errors"></a>Hiba: Önaláírt tanúsítványt a tanúsítványlánc (és ehhez hasonló hibaüzenetek)
 
@@ -233,46 +233,76 @@ Ha véletlenül egy érvénytelen SAS URL-címet használó kapcsolt, és nem le
 
 ## <a name="linux-dependencies"></a>Linux-függőségek
 
-Általában a következő csomagok szükségesek Storage Explorer linuxon fut:
+<!-- Storage Explorer 1.9.0 and later is available as a snap from the Snap Store. The Storage Explorer snap installs all of its dependencies with no extra hassle.
 
-* [A .NET core 2.0 futtatókörnyezet](https://docs.microsoft.com/dotnet/core/linux-prerequisites?tabs=netcore2x) Megjegyzés: Storage Explorer 1.7.0-ás verzió és a korábban a .NET Core 2.0 szükséges. Ha rendelkezik egy újabb verziója telepítve van a .NET Core kell javítása a Storage Explorer (lásd alább). Ha a Storage Explorer 1.8.0-as vagy nagyobb, majd futtatja .NET Core 2.2 használatával kell lennie. Nem ellenőrzött túli 2.2-es verziója jelenleg működik.
-* `libgnome-keyring-common` és `libgnome-keyring-dev`
+Storage Explorer requires the use of a password manager, which may need to be connected manually before Storage Explorer will work correctly. You can connect Storage Explorer to your system's password manager with the following command:
+
+```bash
+snap connect storage-explorer:password-manager-service :password-manager-service
+```
+
+You can also download the application .tar.gz file, but you'll have to install dependencies manually. -->
+
+> [!IMPORTANT]
+> A Storage Explorerben a. tar.gz letöltési csak Ubuntu disztribúciók esetében támogatott. Más disztribúciók nem ellenőrzött és igényelhetnek alternatív vagy kiegészítő csomagok.
+
+Ezek a csomagok a Linux rendszeren a Storage Explorer leggyakoribb követelmények vonatkoznak:
+
+* [.NET core 2.0 futtatókörnyezet](https://docs.microsoft.com/dotnet/core/linux-prerequisites?tabs=netcore2x)
 * `libgconf-2-4`
+* `libgnome-keyring0` vagy `libgnome-keyring-dev`
+* `libgnome-keyring-common`
 
-A terjesztési attól függően, lehet különböző, vagy további csomagokat telepíteni kell.
+> [!NOTE]
+> Storage Explorer 1.7.0-ás verzió és a korábban a .NET Core 2.0 szükséges. Ha van egy újabb verziója telepítve van a .NET Core, akkor kell [javítani a Storage Explorer](#patching-storage-explorer-for-newer-versions-of-net-core). Ha a Storage Explorer 1.8.0-as vagy nagyobb, majd futtatja .NET Core 2.2 használatával kell lennie. Nem ellenőrzött túli 2.2-es verziója jelenleg működik.
 
-Storage Explorer Ubuntu 18.04, 16.04 és 14.04 hivatalosan támogatott. Egy tiszta gépek telepítésének lépései a következők:
+# <a name="ubuntu-1904tab1904"></a>[Ubuntu 19.04](#tab/1904)
+
+1. A Storage Explorer letöltése.
+2. Telepítse a [.NET Core Runtime](https://dotnet.microsoft.com/download/linux-package-manager/ubuntu19-04/runtime-current).
+3. Futtassa a következő parancsot:
+   ```bash
+   sudo apt-get install libgconf-2-4 libgnome-keyring0
+   ```
 
 # <a name="ubuntu-1804tab1804"></a>[Ubuntu 18.04](#tab/1804)
 
-1. A Storage Explorer letöltése
-2. Telepítse a .NET Core Runtime, ellenőrzött legújabb verziója van: [2.0.8](https://dotnet.microsoft.com/download/linux-package-manager/ubuntu18-04/runtime-2.0.8) (Ha már telepített egy újabb verzióra, szükség lehet javítani a Storage Explorer, lásd lent)
-3. Futtassa a `sudo apt-get install libgconf-2-4` parancsot.
-4. Futtassa a `sudo apt install libgnome-keyring-common libgnome-keyring-dev` parancsot.
+1. A Storage Explorer letöltése.
+2. Telepítse a [.NET Core Runtime](https://dotnet.microsoft.com/download/linux-package-manager/ubuntu18-04/runtime-current).
+3. Futtassa a következő parancsot:
+   ```bash
+   sudo apt-get install libgconf-2-4 libgnome-keyring-common libgnome-keyring0
+   ```
 
 # <a name="ubuntu-1604tab1604"></a>[Ubuntu 16.04](#tab/1604)
 
 1. A Storage Explorer letöltése
-2. Telepítse a .NET Core Runtime, ellenőrzött legújabb verziója van: [2.0.8](https://dotnet.microsoft.com/download/linux-package-manager/ubuntu16-04/runtime-2.0.8) (Ha már telepített egy újabb verzióra, szükség lehet javítani a Storage Explorer, lásd lent)
-3. Futtassa a `sudo apt install libgnome-keyring-dev` parancsot.
+2. Telepítse a [.NET Core Runtime](https://dotnet.microsoft.com/download/linux-package-manager/ubuntu16-04/runtime-current).
+3. Futtassa a következő parancsot:
+   ```bash
+   sudo apt install libgnome-keyring-dev
+   ```
 
 # <a name="ubuntu-1404tab1404"></a>[Ubuntu 14.04](#tab/1404)
 
 1. A Storage Explorer letöltése
-2. Telepítse a .NET Core Runtime, ellenőrzött legújabb verziója van: [2.0.8](https://dotnet.microsoft.com/download/linux-package-manager/ubuntu14-04/runtime-2.0.8) (Ha már telepített egy újabb verzióra, szükség lehet javítani a Storage Explorer, lásd lent)
-3. Futtassa a `sudo apt install libgnome-keyring-dev` parancsot.
+2. Telepítse a [.NET Core Runtime](https://dotnet.microsoft.com/download/linux-package-manager/ubuntu14-04/runtime-current).
+3. Futtassa a következő parancsot:
+   ```bash
+   sudo apt install libgnome-keyring-dev
+   ```
 
----
+### <a name="patching-storage-explorer-for-newer-versions-of-net-core"></a>Javítás a Storage Explorer újabb verzióiban a .NET Core
 
-### <a name="patching-storage-explorer-for-newer-versions-of-net-core"></a>Javítás a Storage Explorer újabb verzióiban a .NET Core 
-Ha egy .NET Core nagyobb, mint a 2.0-s telepítették, és futtatják a Storage Explorer 1.7.0-ás verzió vagy annál régebbi verzióját, nagy valószínűséggel kell javítása a Storage Explorer; Ehhez hajtsa végre az alábbi lépéseket:
-1. Töltse le a StreamJsonRpc 1.5.43 verziója [nugetről](https://www.nuget.org/packages/StreamJsonRpc/1.5.43). Keresse meg a jobb oldalon az oldal a "Csomag letöltése" hivatkozásra.
-2. A csomag a letöltés után módosíthatja a fájl kiterjesztése a `.nupkg` , `.zip`
-3. Tömörítse ki a csomagot
-4. Nyissa meg a következőt: `streamjsonrpc.1.5.43/lib/netstandard1.1/`
+A Storage Explorer 1.7.0-ás vagy régebbi kiadást használja, szükség lehet javítani a .NET Core Storage Explorer által használt verzióját.
+
+1. Töltse le a StreamJsonRpc 1.5.43 verziója [nugetről](https://www.nuget.org/packages/StreamJsonRpc/1.5.43). Keresse meg a "Csomag letöltése" hivatkozásra az oldal jobb oldalán.
+2. A csomag a letöltés után módosíthatja a fájl kiterjesztése a `.nupkg` való `.zip`.
+3. A csomag kibontásához.
+4. Nyissa meg a `streamjsonrpc.1.5.43/lib/netstandard1.1/` mappát.
 5. Másolás `StreamJsonRpc.dll` a Storage Explorer mappán belül a következő helyekre:
-    1. `StorageExplorer/resources/app/ServiceHub/Services/Microsoft.Developer.IdentityService/`
-    2. `StorageExplorer/resources/app/ServiceHub/Hosts/ServiceHub.Host.Core.CLR.x64/`
+   * `StorageExplorer/resources/app/ServiceHub/Services/Microsoft.Developer.IdentityService/`
+   * `StorageExplorer/resources/app/ServiceHub/Hosts/ServiceHub.Host.Core.CLR.x64/`
 
 ## <a name="open-in-explorer-from-azure-portal-doesnt-work"></a>Nyissa meg a Explorer, az Azure portal nem működik
 

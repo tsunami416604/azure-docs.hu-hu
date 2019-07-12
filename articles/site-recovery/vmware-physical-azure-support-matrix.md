@@ -5,14 +5,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 06/27/2019
+ms.date: 07/07/2019
 ms.author: raynew
-ms.openlocfilehash: 5dc98048099264942552862498b5137b4954c200
-ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
+ms.openlocfilehash: 1d54f2847f7c37631374653bf291aadf091f3328
+ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67491649"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67805946"
 ---
 # <a name="support-matrix-for-disaster-recovery--of-vmware-vms-and-physical-servers-to-azure"></a>Vész-helyreállítási VMware virtuális gépek és fizikai kiszolgálók Azure-támogatási mátrixa
 
@@ -83,15 +83,15 @@ Oracle Linux | 6.4, 6.5, 6.6, 6.7, 6.8, 6.9, 6.10, 7.0, 7.1, 7.2, 7.3, 7.4, 7.5,
 
 **Támogatott kiadás** | **Mobilitási szolgáltatás verziójának** | **Kernel verziója** |
 --- | --- | --- |
-14.04 LTS | [9.24][9.25 UR]  | a 3.13.0-169-generic, 3.13.0-24-Generic<br/>a 3.16.0-77-generic, 3.16.0-25-Generic<br/>a 3.19.0-80-generic, 3.19.0-18-Generic<br/>a 4.2.0-42-generic, 4.2.0-18-Generic<br/>a 4.4.0-146-generic, 4.4.0-21-Generic<br/>a 4.15.0-1042-azure 4.15.0-1023-Azure |
+14.04 LTS | [9.26][9.26 UR]| a 3.13.0-170-generic, 3.13.0-24-Generic<br/>a 3.16.0-77-generic, 3.16.0-25-Generic<br/>a 3.19.0-80-generic, 3.19.0-18-Generic<br/>a 4.2.0-42-generic, 4.2.0-18-Generic<br/>a 4.4.0-148-generic, 4.4.0-21-Generic<br/>4.15.0-1023-azure to 4.15.0-1045-azure |
+14.04 LTS | [9.25][9.25 UR]  | a 3.13.0-169-generic, 3.13.0-24-Generic<br/>a 3.16.0-77-generic, 3.16.0-25-Generic<br/>a 3.19.0-80-generic, 3.19.0-18-Generic<br/>a 4.2.0-42-generic, 4.2.0-18-Generic<br/>a 4.4.0-146-generic, 4.4.0-21-Generic<br/>a 4.15.0-1042-azure 4.15.0-1023-Azure |
 14.04 LTS | [9.24][9.24 UR] | a 3.13.0-167-generic, 3.13.0-24-Generic<br/>a 3.16.0-77-generic, 3.16.0-25-Generic<br/>a 3.19.0-80-generic, 3.19.0-18-Generic<br/>a 4.2.0-42-generic, 4.2.0-18-Generic<br/>a 4.4.0-143-generic, 4.4.0-21-Generic<br/>a 4.15.0-1040-azure 4.15.0-1023-Azure |
 14.04 LTS | [9.23][9.23 UR] | a 3.13.0-165-generic, 3.13.0-24-Generic<br/>a 3.16.0-77-generic, 3.16.0-25-Generic<br/>a 3.19.0-80-generic, 3.19.0-18-Generic<br/>a 4.2.0-42-generic, 4.2.0-18-Generic<br/>a 4.4.0-142-generic, 4.4.0-21-Generic<br/>a 4.15.0-1037-azure 4.15.0-1023-Azure |
-14.04 LTS | [9.22][9.22 UR] | a 3.13.0-164-generic, 3.13.0-24-Generic<br/>a 3.16.0-77-generic, 3.16.0-25-Generic<br/>a 3.19.0-80-generic, 3.19.0-18-Generic<br/>a 4.2.0-42-generic, 4.2.0-18-Generic<br/>a 4.4.0-140-generic, 4.4.0-21-Generic<br/>4.15.0-1023-azure to 4.15.0-1036-azure |
 |||
+16.04 LTS | [9.26][9.26 UR] | a 4.4.0-148-generic, 4.4.0-21-Generic<br/>a 4.8.0-58-generic, 4.8.0-34-Generic<br/>a 4.10.0-42-generic, 4.10.0-14-Generic<br/>a 4.11.0-14-generic, 4.11.0-13-Generic<br/>a 4.13.0-45-generic, 4.13.0-16-Generic<br/>a 4.15.0-50-generic 4.15.0-13-Generic<br/>a 4.11.0-1016-azure, 4.11.0-1009-Azure<br/>4.13.0-1005-azure to 4.13.0-1018-azure <br/>4.15.0-1012-azure to 4.15.0-1045-azure|
 16.04 LTS | [9.25][9.25 UR] | a 4.4.0-146-generic, 4.4.0-21-Generic<br/>a 4.8.0-58-generic, 4.8.0-34-Generic<br/>a 4.10.0-42-generic, 4.10.0-14-Generic<br/>a 4.11.0-14-generic, 4.11.0-13-Generic<br/>a 4.13.0-45-generic, 4.13.0-16-Generic<br/>a 4.15.0-48-generic 4.15.0-13-Generic<br/>a 4.11.0-1016-azure, 4.11.0-1009-Azure<br/>4.13.0-1005-azure to 4.13.0-1018-azure <br/>a 4.15.0-1042-azure 4.15.0-1012-Azure|
 16.04 LTS | [9.24][9.24 UR] | a 4.4.0-143-generic, 4.4.0-21-Generic<br/>a 4.8.0-58-generic, 4.8.0-34-Generic<br/>a 4.10.0-42-generic, 4.10.0-14-Generic<br/>a 4.11.0-14-generic, 4.11.0-13-Generic<br/>a 4.13.0-45-generic, 4.13.0-16-Generic<br/>a 4.15.0-46-generic 4.15.0-13-Generic<br/>a 4.11.0-1016-azure, 4.11.0-1009-Azure<br/>4.13.0-1005-azure to 4.13.0-1018-azure <br/>a 4.15.0-1040-azure 4.15.0-1012-Azure|
 16.04 LTS | [9.23][9.23 UR] | a 4.4.0-142-generic, 4.4.0-21-Generic<br/>a 4.8.0-58-generic, 4.8.0-34-Generic<br/>a 4.10.0-42-generic, 4.10.0-14-Generic<br/>a 4.11.0-14-generic, 4.11.0-13-Generic<br/>a 4.13.0-45-generic, 4.13.0-16-Generic<br/>a 4.15.0-45-generic 4.15.0-13-Generic<br/>a 4.11.0-1016-azure, 4.11.0-1009-Azure<br/>4.13.0-1005-azure to 4.13.0-1018-azure <br/>a 4.15.0-1037-azure 4.15.0-1012-Azure|
-16.04 LTS | [9.22][9.22 UR] | a 4.4.0-140-generic, 4.4.0-21-Generic<br/>a 4.8.0-58-generic, 4.8.0-34-Generic<br/>a 4.10.0-42-generic, 4.10.0-14-Generic<br/>a 4.11.0-14-generic, 4.11.0-13-Generic<br/>a 4.13.0-45-generic, 4.13.0-16-Generic<br/>a 4.15.0-43-generic 4.15.0-13-Generic<br/>a 4.11.0-1016-azure, 4.11.0-1009-Azure<br/>4.13.0-1005-azure to 4.13.0-1018-azure <br/>a 4.15.0-1036-azure 4.15.0-1012-Azure|
 
 ### <a name="debian-kernel-versions"></a>Debian kernel-verzióknál
 
@@ -108,10 +108,10 @@ Debian 8 | [9.22][9.22 UR],[9.23][9.23 UR], [9,24][9.24 UR] | 3.16.0-4-amd64 to 
 
 **Kiadás** | **Mobilitási szolgáltatás verziójának** | **Kernel verziója** |
 --- | --- | --- |
+SUSE Linux Enterprise Server (SP1, SP2, SP3, SP4) 12 | [9.26][9.26 UR] | SP1 3.12.49-11-default 3.12.74-60.64.40-default</br></br> SP1(LTSS) 3.12.74-60.64.45-default to 3.12.74-60.64.110-default</br></br> SP2 4.4.21-69-default 4.4.120-92.70-default</br></br>A 4.4.121-92.109-default SP2(LTSS) 4.4.121-92.73-default</br></br>A 4.4.178-94.91-default SP3 4.4.73-5-default</br></br>A 4.4.178-4.28-azure SP3 4.4.138-4.7-azure</br></br>SP4 4.12.14-94.41-default 4.12.14-95.16-default</br>SP4 4.12.14-6.3-azure 4.12.14-6.9-azure |
 SUSE Linux Enterprise Server (SP1, SP2, SP3, SP4) 12 | [9.25][9.25 UR] | SP1 3.12.49-11-default 3.12.74-60.64.40-default</br></br> SP1(LTSS) 3.12.74-60.64.45-default to 3.12.74-60.64.107-default</br></br> SP2 4.4.21-69-default 4.4.120-92.70-default</br></br>A 4.4.121-92.104-default SP2(LTSS) 4.4.121-92.73-default</br></br>A 4.4.176-94.88-default SP3 4.4.73-5-default</br></br>SP3 4.4.138-4.7-azure to 4.4.176-4.25-azure</br></br>SP4 4.12.14-94.41-default 4.12.14-95.13-default</br>SP4 4.12.14-6.3-azure 4.12.14-6.9-azure |
 SUSE Linux Enterprise Server (SP1, SP2, SP3, SP4) 12 | [9.24][9.24 UR] | SP1 3.12.49-11-default 3.12.74-60.64.40-default</br></br> SP1(LTSS) 3.12.74-60.64.45-default to 3.12.74-60.64.107-default</br></br> SP2 4.4.21-69-default 4.4.120-92.70-default</br></br>A 4.4.121-92.101-default SP2(LTSS) 4.4.121-92.73-default</br></br>A 4.4.175-94.79-default SP3 4.4.73-5-default</br></br>SP4 4.12.14-94.41-default 4.12.14-95.6-default |
 SUSE Linux Enterprise Server (SP1, SP2, SP3, SP4) 12 | [9.23][9.23 UR] | SP1 3.12.49-11-default 3.12.74-60.64.40-default</br></br> SP1(LTSS) 3.12.74-60.64.45-default to 3.12.74-60.64.107-default</br></br> SP2 4.4.21-69-default 4.4.120-92.70-default</br></br>A 4.4.121-92.101-default SP2(LTSS) 4.4.121-92.73-default</br></br>A 4.4.162-94.69-default SP3 4.4.73-5-default</br></br>SP4 4.12.14-94.41-default 4.12.14-95.6-default |
-SUSE Linux Enterprise Server 12 (SP3 SP1, SP2) | [9.22][9.22 UR] | SP1 3.12.49-11-default 3.12.74-60.64.40-default</br></br> SP1(LTSS) 3.12.74-60.64.45-default to 3.12.74-60.64.107-default</br></br> SP2 4.4.21-69-default 4.4.120-92.70-default</br></br>A 4.4.121-92.98-default SP2(LTSS) 4.4.121-92.73-default</br></br>A 4.4.162-94.72-default SP3 4.4.73-5-default |
 
 
 ## <a name="linux-file-systemsguest-storage"></a>Linux rendszerek/Vendég fájltárolás
@@ -193,8 +193,8 @@ Vendég-kiszolgáló – tárolóhelyek | Nem
 Vendég/server gyakran használt adatok hozzáadása/eltávolítása lemez | Nem
 Vendég-kiszolgáló – zárható ki lemez | Igen
 Vendég-kiszolgáló többutas (MPIO) | Nem
-Vendég-kiszolgáló GPT partíció | Öt-partíciókat támogat a [frissítési kumulatív 37](https://support.microsoft.com/help/4508614/) (9,25 a mobilitási szolgáltatás verziója) és újabb verziók esetében. Korábban négy támogatta.
-Vendég/server EFI/UEFI-rendszerindítás | – Támogatott, ha a mobilitási szolgáltatás verziójának 9.13 vagy újabb verzióját futtatja.<br/> – VMware virtuális gépek vagy a Windows Server 2012 rendszert futtató fizikai kiszolgálók áttelepítéséhez vagy újabb rendszeren támogatott Azure-bA.<br/> – Csak virtuális gépeket replikálhatja az áttelepítéshez. A helyszíni feladat-visszavétel nem támogatott.<br/> – Csak az NTFS fájlrendszer támogatott & UEFI biztonságos rendszerindítás-típus nem támogatott. <br/> – Lemez szektormérete 512 bájt / szektor fizikai kell lennie.
+Vendég-kiszolgáló GPT partíció | Öt-partíciókat támogat a [frissítési kumulatív 37](https://support.microsoft.com/help/4508614/) (9,25 a mobilitási szolgáltatás verziója) és újabb verziók esetében. Korábban csak négyet támogatott.
+Vendég/server EFI/UEFI-rendszerindítás | – Támogatott, ha a mobilitási szolgáltatás verziójának 9.13 vagy újabb verzióját futtatja.<br/> – VMware virtuális gépek vagy a Windows Server 2012 rendszert futtató fizikai kiszolgálók áttelepítéséhez vagy újabb rendszeren támogatott Azure-bA.<br/> – Csak virtuális gépeket replikálhatja az áttelepítéshez. A helyszíni feladat-visszavétel nem támogatott.<br/> – Csak az NTFS fájlrendszer támogatott. <br/> – A biztonságos rendszerindítás UEFI-típus nem támogatott. <br/> – Lemez szektormérete 512 bájt / szektor fizikai kell lennie.
 
 ## <a name="replication-channels"></a>Replikációs csatornák
 
@@ -297,6 +297,7 @@ A mobilitási szolgáltatás | A VMware virtuális gépek vagy fizikai kiszolgá
 ## <a name="next-steps"></a>További lépések
 [Ismerje meg, hogyan](tutorial-prepare-azure.md) VMware virtuális gépek vészhelyreállítása az Azure előkészítése.
 
+[9.26 UR]: https://support.microsoft.com/en-in/help/4508614/update-rollup-37-for-azure-site-recovery
 [9.25 UR]: https://support.microsoft.com/en-in/help/4508614/update-rollup-37-for-azure-site-recovery
 [9.24 UR]: https://support.microsoft.com/en-in/help/4503156
 [9.23 UR]: https://support.microsoft.com/en-in/help/4494485/update-rollup-35-for-azure-site-recovery

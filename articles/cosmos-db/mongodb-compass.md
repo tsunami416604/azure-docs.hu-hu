@@ -7,14 +7,14 @@ ms.topic: overview
 ms.date: 06/24/2019
 author: roaror
 ms.author: roaror
-ms.openlocfilehash: ad302df3144787fd231166c7052ecfde268f4086
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 102d3fdc2e36f812e9a86286383a06f9930a1947
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67451037"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67665915"
 ---
-# <a name="use-compass-to-connect-to-your-cosmos-db-account"></a>A Cosmos DB-fiókhoz való csatlakozáshoz használja a Compass nevű listáján
+# <a name="use-mongodb-compass-to-connect-to-azure-cosmos-dbs-api-for-mongodb"></a>Kapcsolódás az Azure Cosmos DB API a mongodb-hez a MongoDB Compass használatával 
 
 Ez az oktatóanyag bemutatja, hogyan használható [MongoDB Compass](https://www.mongodb.com/products/compass) tárolására és/vagy a Cosmos DB-ben használt adatok kezelése során. Az Azure Cosmos DB API a mongodb-hez, ebben az útmutatóban a használjuk. Azok számára, ha nem ismerné iránytű grafikus felhasználói Felülettel a mongodb-hez. Az adatok megjelenítése, ad hoc lekérdezéseket futtatnia, és az adatok kezeléséhez gyakran szolgál. 
 

@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/11/2018
 ms.author: mikeray
-ms.openlocfilehash: a758cce85645e72bfd9434a69393133d3da6b57d
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 39f38af601888f847cd1a82da9e2e03e6893c28e
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60591504"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67607284"
 ---
 # <a name="configure-sql-server-failover-cluster-instance-on-azure-virtual-machines"></a>Azure virtuális gépeken futó SQL Server feladatátvevő Fürtpéldányának konfigurálása
 
@@ -54,7 +54,7 @@ Az Azure Virtual machines szolgáltatásban használatalapú fizetés (Használa
 
 A Használatalapú licencelés, a Feladatátvevőfürt-példány (FCI) az SQL Server Azure virtuális gépeken terhel az FCI-t, beleértve a passzív csomópontokat az összes csomópont. További információkért lásd: [SQL Server Enterprise Virtual Machines díjszabása](https://azure.microsoft.com/pricing/details/virtual-machines/sql-server-enterprise/). 
 
-Frissítési garanciával rendelkező nagyvállalati szerződéssel rendelkező ügyfelek minden aktív csomópont egy ingyenes passzív FCI csomópont használandó áll. Kihasználhatja az értékelem az Azure-ban, BYOL VM-rendszerképek használatához, majd a azonos licenc mindkét csomópontján az aktív és passzív az FCI-t. További információkért lásd: [nagyvállalati szerződés](https://www.microsoft.com/en-us/Licensing/licensing-programs/enterprise.aspx).
+Frissítési garanciával rendelkező nagyvállalati szerződéssel rendelkező ügyfelek minden aktív csomópont egy ingyenes passzív FCI csomópont használandó áll. Kihasználhatja az értékelem az Azure-ban, BYOL VM-rendszerképek használatához, majd a azonos licenc mindkét csomópontján az aktív és passzív az FCI-t. További információkért lásd: [nagyvállalati szerződés](https://www.microsoft.com/Licensing/licensing-programs/enterprise.aspx).
 
 Hasonlítsa össze a Használatalapú és BYOL Azure virtuális gépeken futó SQL Server-példányok licencelésének lásd [SQL virtuális gépek – első lépések](virtual-machines-windows-sql-server-iaas-overview.md#get-started-with-sql-vms).
 
@@ -198,7 +198,7 @@ Ezek az előfeltételek teljesülnek folytathatja a feladatátvevő fürt létre
 
 Miután a virtuális gépek létrehozása és konfigurálása, konfigurálhatja a feladatátvevő fürt.
 
-## <a name="step-2-configure-the-windows-failover-cluster-with-s2d"></a>2\. lépés: Az S2D a Windows feladatátvevő fürt konfigurálása
+## <a name="step-2-configure-the-windows-failover-cluster-with-s2d"></a>2\. lépés: Az S2D a Windows feladatátvevő fürt konfigurálása
 
 A következő lépés, hogy a feladatátvevő fürt konfigurálása az S2D-t. Ebben a lépésben a következő részlépések fogja végrehajtani:
 
@@ -239,14 +239,14 @@ A felhasználói felületen keresztül a fürt érvényesítésének, kövesse a
 
 1. A **Kiszolgálókezelő**, kattintson a **eszközök**, majd kattintson a **Feladatátvevőfürt-kezelőben**.
 1. A **Feladatátvevőfürt-kezelőben**, kattintson a **művelet**, majd kattintson a **konfiguráció ellenőrzése...** .
-1. Kattintson a **tovább**.
+1. Kattintson a **Tovább** gombra.
 1. A **kiszolgálók kiválasztása vagy a fürt**, mindkét virtuális gép nevét írja.
-1. A **tesztelési beállítások**, válassza a **csak a kijelölt tesztek futtatása**. Kattintson a **tovább**.
+1. A **tesztelési beállítások**, válassza a **csak a kijelölt tesztek futtatása**. Kattintson a **Tovább** gombra.
 1. A **kijelölés tesztelése**, például kivételével az összes teszt **tárolási**. Tekintse meg a következő képen látható:
 
    ![Vizsgálat ellenőrzése](./media/virtual-machines-windows-portal-sql-create-failover-cluster/10-validate-cluster-test.png)
 
-1. Kattintson a **tovább**.
+1. Kattintson a **Tovább** gombra.
 1. A **megerősítő**, kattintson a **tovább**.
 
 A **konfiguráció ellenőrzése varázsló** az ellenőrző teszteket futtat.

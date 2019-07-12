@@ -2,31 +2,31 @@
 title: Nézet kubelet-naplók az Azure Kubernetes Service (AKS)
 description: Ismerje meg, hogyan hibaelhárítási információk megjelenítése az Azure Kubernetes Service (AKS) csomópontjáról kubelet-naplók
 services: container-service
-author: iainfoulds
+author: mlearned
 ms.service: container-service
 ms.topic: article
 ms.date: 03/05/2019
-ms.author: iainfou
-ms.openlocfilehash: b381145fef7e6fb399fac3387ab01fdc9a51b154
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: mlearned
+ms.openlocfilehash: 65b16b3ddc209ef5d2f6287a04cfe402c3b205c6
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60465019"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67615182"
 ---
 # <a name="get-kubelet-logs-from-azure-kubernetes-service-aks-cluster-nodes"></a>Az Azure Kubernetes Service (AKS)-fürt csomópontjának kubelet-naplók beszerzése
 
-AKS-fürt operációs részeként szükség lehet tekintse át a naplókat a probléma elhárításához. Az Azure portal beépített rendszer azon képessége, a naplók megtekintéséhez a [AKS fő összetevőinek] [ aks-master-logs] vagy [tárolókat az AKS-fürt][azure-container-logs]. Bizonyos esetekben szükség lehet első *kubelet* naplók hibaelhárítási célból egy AKS-csomópontból.
+AKS-fürt operációs részeként szükség lehet tekintse át a naplókat a probléma elhárításához. Az Azure portal beépített rendszer azon képessége, a naplók megtekintéséhez a [AKS fő összetevőinek][aks-master-logs] or [containers in an AKS cluster][azure-container-logs]. Bizonyos esetekben szükség lehet első *kubelet* naplók hibaelhárítási célból egy AKS-csomópontból.
 
 Ez a cikk bemutatja, hogyan használhatja `journalctl` megtekintéséhez a *kubelet* jelentkezik be egy AKS-csomópont.
 
 ## <a name="before-you-begin"></a>Előkészületek
 
-Ez a cikk azt feltételezi, hogy egy meglévő AKS-fürtöt. Ha egy AKS-fürtre van szüksége, tekintse meg az AKS gyors [az Azure CLI-vel] [ aks-quickstart-cli] vagy [az Azure portal használatával][aks-quickstart-portal].
+Ez a cikk azt feltételezi, hogy egy meglévő AKS-fürtöt. Ha egy AKS-fürtre van szüksége, tekintse meg az AKS gyors [az Azure CLI-vel][aks-quickstart-cli] or [using the Azure portal][aks-quickstart-portal].
 
 ## <a name="create-an-ssh-connection"></a>Hozzon létre egy SSH-kapcsolatot
 
-Először hozzon létre egy SSH-kapcsolatot a csomóponton, amelyen meg kell *kubelet* naplókat. Ez a művelet részleteit a a [SSH-t az Azure Kubernetes Service (AKS) fürtcsomópontok] [ aks-ssh] dokumentumot.
+Először hozzon létre egy SSH-kapcsolatot a csomóponton, amelyen meg kell *kubelet* naplókat. Ez a művelet részleteit a a [SSH-t az Azure Kubernetes Service (AKS) fürtcsomópontok][aks-ssh] dokumentumot.
 
 ## <a name="get-kubelet-logs"></a>Kubelet-naplók beszerzése
 

@@ -5,18 +5,18 @@ documentationcenter: ''
 author: bwren
 manager: carmonm
 editor: tysonn
-ms.service: monitoring
+ms.service: azure-monitor
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/26/2019
 ms.author: bwren
-ms.openlocfilehash: 8883c1e7f2874e1e2e61b8eca122f2ec294c7849
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 00c0fea9d8ca7ee299a9a19473917eba90edd675
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60808951"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67606974"
 ---
 # <a name="azure-monitor-data-platform"></a>Az Azure Monitor-adatplatform
 
@@ -42,7 +42,7 @@ Metrikák érhetők el az Azure Portalon, az interaktív elemzés céljából [M
 
 További információt az Azure Monitor metrikák többek között azok az adatok forrásai [metrikák az Azure monitorban](data-platform-metrics.md).
 
-### <a name="logs"></a>Naplók
+### <a name="logs"></a>Logs
 [Naplók](data-platform-logs.md) olyan események, amelyek a rendszeren belül történt. Ezeket tartalmazhat különböző típusú adatokkal, és előfordulhat, hogy strukturálni vagy szabad formátumú szöveges időbélyegzővel ellátott. Esemény a környezetben hoz létre a naplóbejegyzéseket, és a rendszer nagy terhelés alatt általában generál további naplózási kötet azok csak időnként lehet létrehozni.
 
 Az Azure Monitor-naplók vannak tárolva a Log Analytics-munkaterület alapján [Azure adatkezelő](/azure/data-explorer/) biztosítja a hatékony elemzési motor és [részletes lekérdezési nyelvet](/azure/kusto/query/). Naplók általában teljes kontextusba azonosítják a probléma elegendő információt tartalmaznak, és értékes legfelső szintű kis-és a problémák azonosításához.
@@ -67,12 +67,12 @@ Tudjon meg többet a nyomkövetés elosztott [elosztott nyomkövetést mi?](../a
 
 Az alábbi táblázat összehasonlítja a metrikák és naplók az Azure monitorban.
 
-| Attribútum  | Mérőszámok | Naplók |
+| Attribútum  | Mérőszámok | Logs |
 |:---|:---|:---|
 | Előnyök | Könnyen használható, és közel valós idejű forgatókönyveket, például a riasztás képes. Ideális megoldás a problémák gyors felismerése. | Elemezheti a gazdag lekérdezési nyelv. Ideális megoldás a részletes elemzés és gyökerének azonosítása. |
-| Adatok | Csak a numerikus értékek | Szöveg- vagy numerikus adatok |
+| Data | Csak a numerikus értékek | Szöveg- vagy numerikus adatok |
 | struktúra | Mintavételi időköz, a figyelt erőforrások, a numerikus érték például tulajdonságok szabványos készletét. Bizonyos metrikák további definíciós több dimenziókat tartalmaznak. | A napló típusától függően tulajdonságai egyedi készletét. |
-| Gyűjtemény | Gyűjtött rendszeres időközönként. | Előfordulhat, hogy gyűjtendő szórványosan események értékhez létrejön egy rekord. |
+| Collection | Gyűjtött rendszeres időközönként. | Előfordulhat, hogy gyűjtendő szórványosan események értékhez létrejön egy rekord. |
 | Az Azure Portalon megtekintése | Metrikaböngésző | Log Analytics |
 | Adatforrások | Azure-erőforrások gyűjtött metrikák platform.<br>Az Application Insights által figyelt alkalmazások.<br>Alkalmazás- vagy API által definiált egyéni. | Alkalmazás- és diagnosztikai naplókat.<br>Figyelési megoldások.<br>Ügynökök és a Virtuálisgép-bővítmények.<br>Alkalmazás kérelmeket és kivételeket.<br>Az Azure Security Center.<br>Adatgyűjtő API. |
 

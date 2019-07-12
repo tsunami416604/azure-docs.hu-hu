@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 03/15/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=fboylu, previous-ms.author=fboylu
-ms.openlocfilehash: feccaea0451ae36d841aae95ed0baf54f90c2700
-ms.sourcegitcommit: 3107874d7559ea975e4d55ae33cdf45f4b5485e4
+ms.openlocfilehash: 37acd88dbfe8ed1790f1bfa68d5e9762a861ddc7
+ms.sourcegitcommit: c0419208061b2b5579f6e16f78d9d45513bb7bbc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/04/2019
-ms.locfileid: "67568263"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67626408"
 ---
 # <a name="technical-guide-to-the-cortana-intelligence-solution-template-for-predictive-maintenance-in-aerospace"></a>Technikai útmutató a Cortana Intelligence Megoldássablon prediktív karbantartás a légi közlekedésben
 
@@ -103,7 +103,7 @@ Az Azure Stream Analytics-lekérdezés találhatók:
   * ***LEKÉRDEZÉS*** magát a lekérdezés megtekintése
   * ***OUTPUTS*** a különböző kimenetek megtekintése
 
-Az Azure Stream Analytics lekérdezési konstrukció információ található a [Stream Analytics lekérdezési leírása](https://msdn.microsoft.com/library/azure/dn834998.aspx) az MSDN Webhelyén.
+Az Azure Stream Analytics lekérdezési konstrukció információ található a [Stream Analytics lekérdezési leírása](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference) az MSDN Webhelyén.
 
 Ebben a megoldásban a lekérdezések kimeneti három adatkészletek a közel valós idejű elemzési információkat a bejövő adatfolyam, ez a megoldássablon részeként a Power BI-irányítópultra. Mivel a bejövő adatok formátumának beállításszolgáltató jellegéből fakadóan ismeri, ezeket a lekérdezéseket módosítani kell az adatok formátum alapján.
 

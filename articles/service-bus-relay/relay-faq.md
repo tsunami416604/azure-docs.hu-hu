@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/21/2018
 ms.author: spelluru
-ms.openlocfilehash: 2433f4b3563cc8b301d1815cccf5ab24406e8662
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c6ea5e72f70620004b4b00be0c779893a3b2ad90
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66111472"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67706188"
 ---
 # <a name="azure-relay-faqs"></a>Az Azure Relay – gyakori kérdések
 
@@ -39,15 +39,15 @@ A [névtér](relay-create-namespace-portal.md) egy hatókörkezelési tároló, 
 A korábban elnevezett Service Bus Relay szolgáltatás új neve [WCF-továbbító](relay-wcf-dotnet-get-started.md). A szolgáltatás használatához a megszokott módon folytathatja. A hibrid kapcsolatok szolgáltatása egy olyan szolgáltatás, amely az Azure BizTalk Services rendszer lett visszaültetett frissített verzióját. A WCF-továbbító és a hibrid kapcsolatok egyaránt továbbra is támogatottak.
 
 ## <a name="pricing"></a>Díjszabás
-Ez a szakasz néhány gyakori kérdés a díjszabási struktúrája Relayjel kapcsolatos ad választ. Azt is láthatja a [Azure támogatás – gyakori kérdések](https://azure.microsoft.com/support/faq/) általános Azure díjszabási információk. A Relay díjszabással kapcsolatos részletes információkért lásd: [díjszabása a Service Bus][Pricing overview].
+Ez a szakasz néhány gyakori kérdés a díjszabási struktúrája Relayjel kapcsolatos ad választ. Azt is láthatja a [Azure támogatás – gyakori kérdések](https://azure.microsoft.com/support/faq/) általános Azure díjszabási információk. A Relay díjszabással kapcsolatos részletes információkért lásd: [a Service Bus díjszabásáról][Pricing overview].
 
 ### <a name="how-do-you-charge-for-hybrid-connections-and-wcf-relay"></a>Hogyan tegye meg díja szerint számítjuk fel a hibrid kapcsolatok és WCF-továbbító?
-A Relay díjszabással kapcsolatos részletes információkért lásd: a [hibrid kapcsolatok és WCF-továbbítók] [ Pricing overview] a Service Bus díjszabási részleteit ismertető oldal a táblában. Amellett, hogy az oldalon feltüntetett árak díjkötelesek, amelyben az alkalmazás ki van építve az adatközponton kívül kimenő tartozó adatforgalom.
+A Relay díjszabással kapcsolatos részletes információkért lásd: a [hibrid kapcsolatok és WCF-továbbítók][Pricing overview] a Service Bus díjszabási részleteit ismertető oldal a táblában. Amellett, hogy az oldalon feltüntetett árak díjkötelesek, amelyben az alkalmazás ki van építve az adatközponton kívül kimenő tartozó adatforgalom.
 
 ### <a name="how-am-i-billed-for-hybrid-connections"></a>Hogyan kell fizetnem a hibrid kapcsolatokhoz?
 Az alábbiakban három számlázási példaforgatókönyvek hibrid kapcsolatok:
 
-*   1\. forgatókönyv:
+*   forgatókönyv 1:
     *   Rendelkezik egy egyetlen figyelője működik, például a Hibridkapcsolat-kezelő telepítve van és fut folyamatosan az egész hónapon egy példánya.
     *   A kapcsolat a hónap során 3 GB adatot továbbít. 
     *   A teljes díj összege az 5 USD.
@@ -106,7 +106,7 @@ A névtér egy Azure-előfizetésből áthelyezése egy másik előfizetésben, 
 
 #### <a name="azure-portal"></a>Azure Portal
 
-Az Azure portal segítségével Azure Relay-névterek áttelepítése másik előfizetésre egy előfizetésből, lásd: [erőforrások áthelyezése új erőforráscsoportba vagy előfizetésbe](../azure-resource-manager/resource-group-move-resources.md#use-portal). 
+Az Azure portal segítségével Azure Relay-névterek áttelepítése másik előfizetésre egy előfizetésből, lásd: [erőforrások áthelyezése új erőforráscsoportba vagy előfizetésbe](../azure-resource-manager/resource-group-move-resources.md#use-the-portal). 
 
 #### <a name="powershell"></a>PowerShell
 
@@ -128,7 +128,7 @@ Move-AzResource -DestinationResourceGroupName 'targetRG' -DestinationSubscriptio
 Gyakori kivételek és javasolt műveletek végezhetők el, olvassa el [kivételek továbbítási][Relay exceptions].
 
 ### <a name="what-is-a-shared-access-signature-and-which-languages-can-i-use-to-generate-a-signature"></a>Mi az a közös hozzáférésű jogosultságkódot, és milyen nyelveket használhatok aláírást létrehozni?
-A közös hozzáférésű Jogosultságkódok (SAS) olyan hitelesítési mechanizmust, SHA-256 biztonságos kivonatok vagy URI-k alapján. A saját aláírások létrehozását a Node, PHP, Java, C és C# kapcsolatos információkért lásd: [közös hozzáférésű jogosultságkódok használata a Service Bus-hitelesítés][Shared Access Signatures].
+A közös hozzáférésű Jogosultságkódok (SAS) olyan hitelesítési mechanizmust, SHA-256 biztonságos kivonatok vagy URI-k alapján. További információ a saját aláírásokat létrehozni az Node, PHP, Java, C és C#, lásd: [közös hozzáférésű jogosultságkódok használata a Service Bus-hitelesítés][Shared Access Signatures].
 
 ### <a name="is-it-possible-to-whitelist-relay-endpoints"></a>Az engedélyezési lista továbbítási végpontok is?
 Igen. A relay-ügyfél létesít kapcsolatot az Azure Relay szolgáltatás a teljes tartománynevek használatával. Ügyfelek adhat hozzá egy bejegyzés `*.servicebus.windows.net` a DNS-engedélyezési támogató tűzfalak.

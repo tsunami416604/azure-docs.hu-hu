@@ -10,12 +10,12 @@ ms.author: robreed
 ms.date: 11/06/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: b486c30827ee67b58cbdc0027c8221cceed02e51
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a5d4657f87b0a6cbae0699c5a2f95773ff55f633
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66235944"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67798452"
 ---
 # <a name="azure-automation-state-configuration-overview"></a>Azure Automation konfiguráló áttekintése
 
@@ -81,6 +81,10 @@ Ha a csomópontok egy magánhálózaton belül található, a következő portot
 * Global URL: *.azure-automation.net
 * USA-beli államigazgatás – Virginia, globális URL: *.azure-automation.us
 * Az ügynök szolgáltatás: https://\<munkaterület azonosítója\>.agentsvc.azure-automation.net
+
+Ez biztosítja, hogy a hálózati kapcsolattal a kezelt csomópontok kommunikálni az Azure Automationben.
+Ha használja a DSC-erőforrások, például a csomópontok közötti kommunikációt a [WaitFor * erőforrások](https://docs.microsoft.com/powershell/dsc/reference/resources/windows/waitForAllResource), engedélyezze a csomópontok közötti forgalmat is kell.
+Az egyes DSC-erőforrások ezek a rendszerkövetelmények megismeréséhez dokumentációjában talál.
 
 #### <a name="proxy-support"></a>Proxy-támogatás
 

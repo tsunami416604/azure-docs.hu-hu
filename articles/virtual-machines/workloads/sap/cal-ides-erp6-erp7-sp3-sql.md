@@ -4,7 +4,7 @@ description: SAP IDES EHP7 SP3 telepítése a SAP ERP 6.0 az Azure-ban
 services: virtual-machines-windows
 documentationcenter: ''
 author: hermanndms
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 keywords: ''
@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 09/16/2016
 ms.author: hermannd
-ms.openlocfilehash: 413e449f005d288f66da0257f5b800733e58eb94
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1b2b3d46d0352f72b1ffb513a96c1ab5dc25ad54
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60836499"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67707493"
 ---
 # <a name="deploy-sap-ides-ehp7-sp3-for-sap-erp-60-on-azure"></a>SAP IDES EHP7 SP3 telepítése a SAP ERP 6.0 az Azure-ban
 Ez a cikk ismerteti, hogyan helyezhet üzembe egy Azure-ban az SAP Cloud Appliance Library (SAP CAL) 3.0-n keresztül futtatja az SQL Server és a Windows operációs rendszer SAP IDES rendszer. A képernyőfelvételek bemutatják a részletes folyamat. Egy másik megoldás telepítéséhez kövesse a lépéseket.
@@ -29,7 +29,7 @@ Ez a cikk ismerteti, hogyan helyezhet üzembe egy Azure-ban az SAP Cloud Applian
 Az SAP CAL indításához nyissa meg a [SAP Cloud Appliance Library](https://cal.sap.com/) webhelyén. SAP is rendelkezik az új blog [SAP Cloud Appliance könyvtár 3.0](https://scn.sap.com/community/cloud-appliance-library/blog/2016/05/27/sap-cloud-appliance-library-30-came-with-a-new-user-experience). 
 
 > [!NOTE]
-> 2017\. május 29. a mellett a kevesebb az előnyben részesített klasszikus üzemi modellben az Azure Resource Manager üzemi modell segítségével az SAP CAL telepítheti. Azt javasoljuk, hogy használja az új Resource Manager-alapú üzemi modellt, és figyelmen kívül hagyja a klasszikus üzemi modellben.
+> 2017. május 29. a mellett a kevesebb az előnyben részesített klasszikus üzemi modellben az Azure Resource Manager üzemi modell segítségével az SAP CAL telepítheti. Azt javasoljuk, hogy használja az új Resource Manager-alapú üzemi modellt, és figyelmen kívül hagyja a klasszikus üzemi modellben.
 
 Ha már létrehozott egy SAP CAL-fiókot a klasszikus modellt használó *egy másik SAP CAL-fiók létrehozásához szükséges*. Ezt a fiókot kizárólag telepítse az Azure-bA a Resource Manager-modell segítségével kell.
 

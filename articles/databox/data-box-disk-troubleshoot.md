@@ -8,12 +8,12 @@ ms.subservice: disk
 ms.topic: article
 ms.date: 06/14/2019
 ms.author: alkohli
-ms.openlocfilehash: f725f38a335972ae8e0a8b8402a99202caa54a70
-ms.sourcegitcommit: 72f1d1210980d2f75e490f879521bc73d76a17e1
+ms.openlocfilehash: f8116ec0836623adf803991017950ddc7f960923
+ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/14/2019
-ms.locfileid: "67147086"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67805709"
 ---
 # <a name="use-logs-to-troubleshoot-validation-issues-in-azure-data-box-disk"></a>Naplók használata az Azure Data Box-lemezek érvényesítési problémák elhárítása
 
@@ -90,8 +90,8 @@ A hibák található a *error.xml* az alábbi táblázat foglalja össze a megfe
 | `InvalidBlobNameFormat` | Fájl elérési útja nem egy érvényes blob elérési utat a felhőbeli az elnevezési konvenciók Azure Blob képezze le.|Nevezze át a fájlt, így megfelel [elnevezési konvenciók Azure](data-box-disk-limits.md#azure-block-blob-page-blob-and-file-naming-conventions). Ismételje meg az ellenőrzést. |
 | `InvalidFileNameFormat` | Fájl elérési útja nem egy érvényes fájlelérési utat a felhőbeli az elnevezési konvenciók Azure File képezze le. |Nevezze át a fájlt, így megfelel [elnevezési konvenciók Azure](data-box-disk-limits.md#azure-block-blob-page-blob-and-file-naming-conventions). Ismételje meg az ellenőrzést. |
 | `InvalidDiskNameFormat` | Fájl elérési útja nem leképezése a felhőben az Azure Managed Disk elnevezési konvencióinak megfelelően érvényes lemez nevét. |Nevezze át a fájlt, így megfelel [elnevezési konvenciók Azure](data-box-disk-limits.md#azure-block-blob-page-blob-and-file-naming-conventions). Ismételje meg az ellenőrzést.       |
-| `NotPartOfFileShare` | Nem sikerült feltölteni a fájlokat, a feltöltési elérési út nem érvényes. A fájlok feltöltése az Azure Files mappába.   | Távolítsa el a fájlokat a hiba, és töltse fel azokat a fájlokat egy precreated mappába. Ismételje meg az ellenőrzést. |
-| `NonVhdFileNotSupportedForManagedDisk` | Felügyelt lemez nem VHD-fájl nem tölthető fel. |Távolítsa el a nem VHD-fájlok, mivel ezek nem támogatottak. Ismételje meg az ellenőrzést. |
+| `NotPartOfFileShare` | Fájlok feltöltése útvonala nem érvényes. A fájlok feltöltése az Azure Files mappába.   | Távolítsa el a fájlokat a hiba, és töltse fel azokat a fájlokat egy precreated mappába. Ismételje meg az ellenőrzést. |
+| `NonVhdFileNotSupportedForManagedDisk` | Felügyelt lemez nem VHD-fájl nem tölthető fel. |Távolítsa el a nem VHD-fájlok `ManagedDisk` mappába ezek használata nem támogatott, vagy helyezze át ezeket a fájlokat egy `PageBlob` mappát. Ismételje meg az ellenőrzést. |
 
 
 ## <a name="next-steps"></a>További lépések

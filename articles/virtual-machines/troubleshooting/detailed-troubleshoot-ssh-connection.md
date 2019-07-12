@@ -5,7 +5,7 @@ keywords: ssh kapcsolat elutasítva, ssh hiba, az azure ssh, SSH-kapcsolatot nem
 services: virtual-machines-linux
 documentationcenter: ''
 author: genlin
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: top-support-issue,azure-service-management,azure-resource-manager
 ms.assetid: b8e8be5f-e8a6-489d-9922-9df8de32e839
@@ -16,12 +16,12 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: aedf06c5a5e225f0cafb81b17923d6c742da69eb
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 153117488cf94eb304eeb63ba6dca92a6c6ff27d
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60506243"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67696230"
 ---
 # <a name="detailed-ssh-troubleshooting-steps-for-issues-connecting-to-a-linux-vm-in-azure"></a>Az SSH részletes hibaelhárítási lépései Linux rendszerű virtuális gép az Azure-ban való csatlakozással kapcsolatos problémákat
 Nincsenek számos oka lehet, hogy az SSH-ügyfél nem képes elérni a virtuális gép SSH-szolgáltatást. Ha követte, minél több keresztül [hibaelhárítási lépések általános SSH](troubleshoot-ssh-connection.md), a csatlakozási probléma további hibaelhárításához kell. Ez a cikk végigvezeti a felhasználót az részletes hibaelhárítási lépések meghatározásához, ahol az SSH-kapcsolat nem működik, és a megoldásának módjával.

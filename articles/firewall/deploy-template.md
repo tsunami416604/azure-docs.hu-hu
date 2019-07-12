@@ -3,21 +3,20 @@ title: Üzembe helyezése Azure tűzfal-sablon használatával
 description: Üzembe helyezése Azure tűzfal-sablon használatával
 services: firewall
 author: vhorne
-manager: jpconnock
 ms.service: firewall
 ms.topic: article
-ms.date: 12/01/2018
+ms.date: 7/9/2018
 ms.author: victorh
-ms.openlocfilehash: e0fbec8b22993345114d8d6642e42095191d0b37
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b39174152e427e408e7dfbbc353baf5f96ec7c01
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66115688"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67657092"
 ---
 # <a name="deploy-azure-firewall-using-a-template"></a>Üzembe helyezése Azure tűzfal-sablon használatával
 
-A [létrehozása AzureFirewall védőfal telepítő sablon](https://github.com/Azure/azure-quickstart-templates/tree/master/101-azurefirewall-sandbox) a tesztelési hálózati környezet hoz létre tűzfalat. A hálózat egy virtuális hálózat (VNet) három alhálózattal rendelkezik: *AzureFirewallSubnet*, *ServersSubnet*, és *JumpboxSubnet*. A *ServersSubnet* és *JumpboxSubnet* minden egyes alhálózatnak rendelkeznie egy egyetlen, két mag a Windows Server virtuális gépet.
+A [létrehozása AzureFirewall védőfal telepítő sablon](https://github.com/Azure/azure-quickstart-templates/tree/master/101-azurefirewall-with-zones-sandbox) a tesztelési hálózati környezet hoz létre tűzfalat. A hálózat egy virtuális hálózat (VNet) három alhálózattal rendelkezik: *AzureFirewallSubnet*, *ServersSubnet*, és *JumpboxSubnet*. A *ServersSubnet* és *JumpboxSubnet* minden egyes alhálózatnak rendelkeznie egy egyetlen, két mag a Windows Server virtuális gépet.
 
 A tűzfal van a *AzureFirewallSubnet* alhálózathoz, és rendelkezik az alkalmazás-szabálygyűjtemény egy szabályt, amely lehetővé teszi a hozzáférést a *www.microsoft.com*.
 
@@ -34,7 +33,7 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 **Telepítése és üzembe helyezése az Azure-tűzfal a sablon használatával:**
 
-1. A sablon eléréséhez [ https://github.com/Azure/azure-quickstart-templates/tree/master/101-azurefirewall-sandbox ](https://github.com/Azure/azure-quickstart-templates/tree/master/101-azurefirewall-sandbox).
+1. A sablon eléréséhez [ https://github.com/Azure/azure-quickstart-templates/tree/master/101-azurefirewall-with-zones-sandbox ](https://github.com/Azure/azure-quickstart-templates/tree/master/101-azurefirewall-with-zones-sandbox).
    
 1. Olvassa el a bevezető, és ha készen áll a központi telepítése, válassza ki **üzembe helyezés az Azure**.
    

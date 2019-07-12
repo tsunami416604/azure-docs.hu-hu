@@ -10,12 +10,12 @@ ms.workload: identity
 ms.date: 01/24/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: d2440b638a9c8eb27505b747d26917de8032e6cd
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5cc6c8b4947f8c5ebeb27be2dc82f323f84a6902
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66510126"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67835424"
 ---
 # <a name="link-an-azure-subscription-to-an-azure-active-directory-b2c-tenant"></a>Azure-előfizetés összekapcsolása az Azure Active Directory B2C-bérlő
 
@@ -45,9 +45,9 @@ Keresse meg az Azure AD-bérlővel, amely bemutatja az Azure-előfizetésében. 
 
 ## <a name="find-azure-ad-b2c-in-the-azure-marketplace"></a>Keresse meg az Azure AD B2C az Azure Marketplace-en
 
-Kattintson a **erőforrás létrehozása** gombra. A **Keresés a piactéren** mezőbe írja be a következőt: `B2C`.
+Kattintson a **erőforrás létrehozása** gombra. Az a **keresés a piactéren** írja be a következőt `Active Directory B2C`.
 
-![Kiemelt Hozzáadás gomb és az Azure AD B2C szöveg a Keresés a piactéren mezőben](../../includes/media/active-directory-b2c-create-tenant/find-azure-ad-b2c.png)
+![A Keresés a piactéren az "Active Directory B2C: portál képernyőképe](../../includes/media/active-directory-b2c-create-tenant/find-azure-ad-b2c.png)
 
 Az eredmények listájában válassza ki a **Azure AD B2C-vel**.
 
@@ -67,7 +67,7 @@ Az előfizetéshez válassza ki az aktív Azure-előfizetésre, amelynek Ön a r
 
 Válasszon egy erőforráscsoportot és az erőforráscsoport helyét. A kijelölt itt nem befolyásolja az Azure AD B2C-bérlő földrajzi, a teljesítmény vagy a számlázási állapota.
 
-![B2C-erőforrás létrehozása](./media/active-directory-b2c-how-to-enable-billing/createresourceb2c.png)
+![Az Azure portal Azure AD B2C-erőforrás-létrehozási oldalon](./media/active-directory-b2c-how-to-enable-billing/createresourceb2c.png)
 
 ## <a name="manage-your-azure-ad-b2c-tenant-resources"></a>Az Azure AD B2C-bérlői erőforrások kezelése
 
@@ -80,7 +80,15 @@ Ehhez az erőforráshoz is használhatja:
 - Támogatási kérés küldése
 - Helyezze át az Azure AD B2C-bérlő erőforrás, egy másik Azure-előfizetésre, vagy egy másik erőforráscsoportba.
 
-![B2C-erőforrás beállítások](./media/active-directory-b2c-how-to-enable-billing/b2cresourcesettings.png)
+![Az Azure Portalon a B2C-erőforrás beállítások lap](./media/active-directory-b2c-how-to-enable-billing/b2cresourcesettings.PNG)
+
+## <a name="change-the-azure-ad-b2c-tenant-billing-subscription"></a>Számlázási előfizetés Azure AD B2C-bérlő módosítása
+
+Az Azure AD B2C-bérlők is áthelyezhető másik előfizetésre, arra az esetre, ha a forrás- és az előfizetések ugyanahhoz az Azure Active Directory-bérlőhöz belül.
+
+Például az Azure AD B2C-bérlő Azure-erőforrások áthelyezése egy másik előfizetés kapcsolatban lásd: [erőforrások áthelyezése új erőforráscsoportba vagy előfizetésbe](../azure-resource-manager/resource-group-move-resources.md).
+
+Az áthelyezés kezdeményez, előtt mindenképpen olvassa el a teljes cikk teljes mértékben megérteni a korlátozások és a egy ilyen áthelyezési vonatkozó követelményeket. Erőforrások áthelyezése ismertetését mellett fontos információkat, például egy áthelyezése előtti ellenőrzőlistát, és hogyan érvényesítheti az áthelyezési művelet tartalmazza.
 
 ## <a name="known-issues"></a>Ismert problémák
 

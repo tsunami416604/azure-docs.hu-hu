@@ -4,7 +4,7 @@ description: Ez a cikk végigvezeti az erőforrások a platform által támogato
 services: virtual-machines-linux
 documentationcenter: ''
 author: singhkays
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 ms.assetid: d6f5a877-05b6-4127-a545-3f5bede4e479
@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/30/2017
 ms.author: kasing
-ms.openlocfilehash: 34dad39e3784dd0bc73e3be108d6b31d4f479a1e
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 0e21a962fb03a42af4cb32fcdf60cd59746a591d
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60543146"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67667363"
 ---
 # <a name="migrate-iaas-resources-from-classic-to-azure-resource-manager-by-using-azure-cli"></a>Áttelepítése IaaS-erőforrások klasszikusból Azure Resource Manager-Azure CLI-vel
 Ezek a lépések bemutatják, hogyan áttelepítése infrastruktúra-szolgáltatás (IaaS) erőforrások a klasszikus üzemi modellben az Azure Resource Manager-alapú üzemi modellbe, az Azure parancssori felület (CLI) parancsok használatával. A cikkben foglaltak végrehajtásához a [Azure klasszikus parancssori felület](../../cli-install-nodejs.md). Mivel az Azure CLI csak akkor érvényes, az Azure Resource Manager-erőforrásokat, akkor az áttelepítés nem használható.
@@ -48,7 +48,7 @@ Az alábbiakban néhány ajánlott eljárást, amely azt javasoljuk, áttelepít
 > 
 > 
 
-## <a name="step-2-set-your-subscription-and-register-the-provider"></a>2\. lépés: Állítsa be az előfizetést, és regisztrálja a szolgáltatót
+## <a name="step-2-set-your-subscription-and-register-the-provider"></a>2\. lépés: Állítsa be az előfizetést, és regisztrálja a szolgáltatót
 Áttelepítési forgatókönyvek esetén szükséges, állítsa be a környezetet, mind a klasszikus és Resource Manager. [Azure CLI telepítése](../../cli-install-nodejs.md) és [válassza ki az előfizetését](/cli/azure/authenticate-azure-cli).
 
 Jelentkezzen be a fiókjába.

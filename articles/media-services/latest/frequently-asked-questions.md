@@ -9,20 +9,20 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 04/24/2019
+ms.date: 06/21/2019
 ms.author: juliako
-ms.openlocfilehash: 98e8c0ccd150776341e644f7565696e8fbd63e99
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b060e2c8a7353dd8145ced8c6e89d9b666a4212c
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65556271"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67703899"
 ---
-# <a name="azure-media-services-v3-frequently-asked-questions"></a>Az Azure Media Services v3 – gyakori kérdések
+# <a name="media-services-v3-frequently-asked-questions"></a>A Media Services v3 – gyakori kérdések
 
 Ez a cikk – gyakori kérdések az Azure Media Services (AMS) v3-as választ ad.
 
-## <a name="v3-apis"></a>V3 API-k
+## <a name="general"></a>Általános
 
 ### <a name="what-azure-roles-can-perform-actions-on-azure-media-services-resources"></a>Milyen Azure-szerepkörök művelet elvégezhető az Azure Media Services-erőforrások? 
 
@@ -45,6 +45,10 @@ Tördelés használatakor mindig használjon a következő hivatkozás enumerál
 ### <a name="what-features-are-not-yet-available-in-azure-media-services-v3"></a>Milyen funkciók még nem érhető el az Azure Media Services v3?
 
 További információkért lásd: [megállapodást v2 API-k hézagok funkció](migrate-from-v2-to-v3.md#feature-gaps-with-respect-to-v2-apis).
+
+### <a name="what-is-the-process-of-moving-a-media-services-account-between-subscriptions"></a>Mi az a folyamat a Media Services-fiók áthelyezése előfizetések között?  
+
+További információkért lásd: [Media Services-fiókba az előfizetések közötti áthelyezése](media-services-account-concept.md).
 
 ## <a name="live-streaming"></a>Live streaming (Élő adatfolyam) 
 

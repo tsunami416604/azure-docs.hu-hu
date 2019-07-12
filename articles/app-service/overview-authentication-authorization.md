@@ -13,14 +13,15 @@ ms.tgt_pltfrm: na
 ms.devlang: multiple
 ms.topic: article
 ms.date: 08/24/2018
-ms.author: mahender,cephalin
+ms.author: cephalin
+ms.reviewer: mahender
 ms.custom: seodec18
-ms.openlocfilehash: d914e3ad3043b2671e154d1616c6800f34415c11
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 42d925a77de20392459081e6669706da330ba7fa
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60835600"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67836719"
 ---
 # <a name="authentication-and-authorization-in-azure-app-service"></a>Hitelesítés és engedélyezés az Azure App Service-ben
 
@@ -55,7 +56,7 @@ A modul külön-külön futtatja az alkalmazás kódjában, és Alkalmazásbeál
 
 ### <a name="user-claims"></a>Felhasználói jogcímek
 
-Az összes nyelvi keretrendszert App Service-ben elérhetővé a felhasználói jogcímek a kód által a kérelem fejlécében való injektálása őket. ASP.NET 4.6-alkalmazások esetén az App Service tölti fel [ClaimsPrincipal.Current](/dotnet/api/system.security.claims.claimsprincipal.current) a hitelesített felhasználói jogcímeket, az így követheti a standard szintű .NET-kódmintát, beleértve a `[Authorize]` attribútum. Hasonlóképpen, a PHP-alkalmazások esetén az App Service tölti fel a `_SERVER['REMOTE_USER']` változó.
+Az összes nyelvi keretrendszert App Service-ben elérhetővé a felhasználói jogcímek a kód által a kérelem fejlécében való injektálása őket. ASP.NET 4.6-alkalmazások esetén az App Service tölti fel [ClaimsPrincipal.Current](/dotnet/api/system.security.claims.claimsprincipal.current) a hitelesített felhasználói jogcímeket, az így követheti a standard szintű .NET-kódmintát, beleértve a `[Authorize]` attribútum. Hasonlóképpen, a PHP-alkalmazások esetén az App Service tölti fel a `_SERVER['REMOTE_USER']` változó. Java-alkalmazások esetén a jogcímek olyan [elérhető a Tomcat servlet](containers/configure-language-java.md#authenticate-users).
 
 A [Azure Functions](../azure-functions/functions-overview.md), `ClaimsPrincipal.Current` van a .NET-kód, nem hidratált, de továbbra is találhatja meg a felhasználói jogcímek a kérelem fejlécében.
 
@@ -150,11 +151,11 @@ Ez a beállítás a névtelen kérelmek kezelése nagyobb rugalmasságot nyújt.
 
 Szolgáltatóspecifikus útmutatókat:
 
-* [Azure Active Directory-bejelentkezés használatához az alkalmazás konfigurálása][AAD]
-* [Az alkalmazások a Facebook-bejelentkezés konfigurálása][Facebook]
-* [Az alkalmazások a Google-bejelentkezés konfigurálása][Google]
-* [Az alkalmazások a Microsoft Account login konfigurálása][MSA]
-* [Az alkalmazások a Twitter-bejelentkezés konfigurálása][Twitter]
+* [Az alkalmazás konfigurálása az Azure Active Directory-bejelentkezés használatára][AAD]
+* [Az alkalmazás konfigurálása a Facebook-bejelentkezés használatára][Facebook]
+* [Az alkalmazás konfigurálása a Google-bejelentkezés használatára][Google]
+* [Az alkalmazás konfigurálása a Microsoft-fiókbejelentkezés használatára][MSA]
+* [Az alkalmazás konfigurálása a Twitter-bejelentkezés használatára][Twitter]
 * [Útmutató: Az alkalmazás egyéni hitelesítés használata][custom-auth]
 
 [AAD]: configure-authentication-provider-aad.md

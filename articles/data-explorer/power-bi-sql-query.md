@@ -6,15 +6,15 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
-ms.date: 05/30/2019
-ms.openlocfilehash: 13cec67a690239204bfc52d04b7cf03fd571148a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 07/10/2019
+ms.openlocfilehash: 5378a49ba5a4f3770ec9d9b3f723c063b4ef1a61
+ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66399269"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67806418"
 ---
-# <a name="visualize-data-using-the-azure-data-explorer-connector-for-power-bi"></a>Adatok megjelenítése a Power bi-hoz az Azure Data Explorer-összekötő használatával
+# <a name="visualize-data-from-azure-data-explorer-using-a-sql-query-in-power-bi"></a>SQL-lekérdezést használja a Power bi-ban Azure adatkezelő adatainak megjelenítése
 
 Az Azure Adatkezelő egy gyors és hatékonyan skálázható adatáttekintési szolgáltatás napló- és telemetriaadatokhoz. A Power BI egy üzleti elemzési megoldás, amellyel megjelenítheti adatait, és a teljes szervezettel megoszthatja az eredményeket.
 
@@ -84,4 +84,4 @@ Ha már nincs szüksége a létrehozott jelentés ebben a cikkben, törölje a P
 
 ## <a name="next-steps"></a>További lépések
 
-[Adatok megjelenítése Power BI-ban az importált lekérdezés használatával](power-bi-connector.md)
+[Adatok megjelenítése a Power bi-hoz az Azure Data Explorer-összekötő használatával](power-bi-connector.md)

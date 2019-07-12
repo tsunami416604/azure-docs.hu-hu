@@ -11,27 +11,31 @@ author: bonova
 ms.author: bonova
 ms.reviewer: douglas, carlrab
 manager: craigg
-ms.date: 02/11/2019
-ms.openlocfilehash: 9fe6ab797eaa325ad802702e95f5a0e5b8e4fef4
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.date: 11/07/2019
+ms.openlocfilehash: 7cf54b79fac87905117e321574571890c59315e6
+ms.sourcegitcommit: 441e59b8657a1eb1538c848b9b78c2e9e1b6cfd5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67070424"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67827082"
 ---
 # <a name="sql-server-instance-migration-to-azure-sql-database-managed-instance"></a>Az SQL Server-példány migrálása az Azure SQL Database felügyelt példánya
 
 Ebben a cikkben megismerkedhet az áttelepítés egy SQL Server 2005 vagy újabb verzió-példány módszerek [Azure SQL Database felügyelt példány](sql-database-managed-instance.md). Egy önálló adatbázist vagy a rugalmas készletben való áttelepítéssel kapcsolatos információkért lásd: [egy önálló vagy készletezett adatbázis áttelepítése](sql-database-cloud-migrate.md). Áttelepítési más platformokon az áttelepítéssel kapcsolatos információkért lásd: [Azure adatbázis-Migrálási útmutató](https://datamigration.microsoft.com/).
 
+> [!NOTE]
+> Ha szeretne gyorsan indíthatók és kipróbálhatja a felügyelt példányt, előfordulhat, hogy szeretne belépni [gyors üzembe helyezési útmutató](/sql-database-managed-instance-quickstart-guide.md) helyett ezen a lapon. 
+
 Magas szintű az adatbázis-áttelepítési folyamat hasonlóan néz ki:
 
 ![Áttelepítési folyamat](./media/sql-database-managed-instance-migration/migration-process.png)
 
-- [Felügyelt példány kompatibilitási felmérése](#assess-managed-instance-compatibility)
-- [Válassza ki a kapcsolat lehetőséget](sql-database-managed-instance-connect-app.md)
-- [Az optimálisan méretezett felügyelt példány üzembe helyezése](#deploy-to-an-optimally-sized-managed-instance)
-- [Áttelepítési módszer kiválasztása és áttelepítése](#select-migration-method-and-migrate)
-- [Alkalmazások figyelése](#monitor-applications)
+- [Mérje fel a felügyelt példány kompatibilitási](#assess-managed-instance-compatibility) , győződjön meg arról, hogy nincsenek-e, amely megakadályozhatja, hogy az áttelepítések blokkoló problémák.
+  - Ezt a lépést is tartalmaz létrehozása [meghatározása](#create-performance-baseline) meghatározni az erőforrás-használata az SQL Server-példányhoz. Ez a lépés akkor szükséges, ha azt szeretné, hogy o megfelelő méretű felügyelt példány üzembe helyezéséhez, és győződjön meg arról, hogy a teljesítmény növeléséhez áttérés után nem érinti.
+- [Válassza ki az alkalmazás kapcsolati lehetőségek](sql-database-managed-instance-connect-app.md)
+- [Az optimálisan méretezett felügyelt példány üzembe helyezése](#deploy-to-an-optimally-sized-managed-instance) ahol fog választani, műszaki jellemzők (virtuális magok száma, memória) és a teljesítményszint (üzletileg kritikus fontosságú, általános célú) a felügyelt példány.
+- [Áttelepítési módszer kiválasztása és áttelepíteni](#select-migration-method-and-migrate) ahol telepít át, hogy az adatbázisok offline migrálás (natív biztonsági mentési és visszaállítási, adatbázis importe exportálási) vagy online migrálás (a Data Migration Service, a tranzakciós replikáció) használatával.
+- [Alkalmazások figyelése a](#monitor-applications) , hogy Ön rendelkezik várt teljesítmény biztosítása érdekében.
 
 > [!NOTE]
 > Egy önálló adatbázis egy önálló adatbázis vagy a rugalmas készlet áttelepítéséhez lásd: [SQL Server-adatbázis áttelepítése az Azure SQL Database](sql-database-single-database-migrate.md).
@@ -58,7 +62,11 @@ A felügyelt példány garantált 99,99 %-os rendelkezésre állást a kritikus 
 
 ### <a name="create-performance-baseline"></a>Teljesítmény alapterv létrehozása
 
-Ha az eredeti SQL Server-kiszolgálón futó számítási feladat felügyelt példányon a számítási feladatok teljesítményének összehasonlítására van szüksége, az összehasonlításhoz használandó teljesítmény alapkonfigurációjának kell. Egyes kell mérni az SQL Server-példányon paraméterek a következők: 
+Ha az eredeti SQL Server-kiszolgálón futó számítási feladat felügyelt példányon a számítási feladatok teljesítményének összehasonlítására van szüksége, az összehasonlításhoz használandó teljesítmény alapkonfigurációjának kell. 
+
+Meghatározása egy olyan paraméterek, például átlagos és maximális CPU-használat, átlagos és maximális lemez IO-késés, átviteli sebesség, IOPS, az átlagos és maximális lap várható élettartam, átlagos tempdb maximális méretét. Azt szeretné, hogy hasonló vagy még jobb paraméterek a az áttelepítés után, ezért fontos mérni, és jegyezze fel az eredeti értékeket a paraméterekhez. Rendszer paraméterek, mellett kell egy készletének kiválasztása, reprezentatív lekérdezések, illetve a legfontosabb lekérdezéseket a a számítási feladatok és az mértékcsoport minimális és átlagos és maximális időtartam, a kiválasztott lekérdezések CPU-használat. Ezek az értékek lehetővé tenné összehasonlítását rendszert futtató felügyelt példányon az eredeti értékeket a forrás SQL Server számítási feladatok teljesítményére.
+
+Egyes kell mérni az SQL Server-példányon paraméterek a következők: 
 - [Az SQL Server-példányon CPU-használat figyeléséhez](https://techcommunity.microsoft.com/t5/Azure-SQL-Database/Monitor-CPU-usage-on-SQL-Server/ba-p/680777#M131) és jegyezze fel az átlagos és kiugró CPU-használat.
 - [Az SQL Server-példány figyelése](https://docs.microsoft.com/sql/relational-databases/performance-monitor/monitor-memory-usage) és döntse el, például a pufferkészletben, különböző összetevői által használt memória mennyisége csomag gyorsítótárát, oszloptár készlet, [In-memory OLTP](https://docs.microsoft.com/sql/relational-databases/in-memory-oltp/monitor-and-troubleshoot-memory-usage?view=sql-server-2017)stb. Emellett keresse meg lap várható élettartama közötti memória teljesítményszámláló átlagos és kiugró kihasználtsággal értékét.
 - Lemez I/O figyelheti a forrás SQL Server példány használatával [sys.dm_io_virtual_file_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-io-virtual-file-stats-transact-sql) nézet vagy [teljesítményszámlálók](https://docs.microsoft.com/sql/relational-databases/performance-monitor/monitor-disk-usage).
@@ -72,9 +80,10 @@ Pénznembeli díjváltozása ezt a tevékenységet, meg kell rendelkeznie dokume
 ## <a name="deploy-to-an-optimally-sized-managed-instance"></a>Az optimálisan méretezett felügyelt példány üzembe helyezése
 
 Felügyelt példány személyre szabott tervezi, hogy a felhőbe helyezheti át a helyszíni számítási feladatokhoz. Azt mutatja be egy [új vásárlási modell](sql-database-service-tiers-vcore.md) , amely nagyobb rugalmasságot biztosít a számítási feladatokat az erőforrások a megfelelő szint kiválasztásával. A helyszíni világ Ön szokták méretezési ezeket a feladatokat a fizikai Processzormagok és i/o-sávszélességet. A felügyelt példány vásárlási modell típusán alapuló virtuális maggal, vagy a "virtuális maggal," további tárterületet és i/o elérhető külön-külön. A Virtuálismag-modell egy egyszerűbb módszert és a használt felhőalapú számítási követelmények megértésére helyszíni még ma. Az új modell lehetővé teszi méretezése a cél-környezetet a felhőben. Néhány általános irányelveket, amelyek segíthetnek a megfelelő szolgáltatási szint és a jellemzők kiválasztása ebben a témakörben találhatók:
-- [Az SQL Server-példányon CPU-használat figyeléséhez](https://techcommunity.microsoft.com/t5/Azure-SQL-Database/Monitor-CPU-usage-on-SQL-Server/ba-p/680777#M131) és ellenőrzés mennyi számítási teljesítményt jelenleg használja (a dinamikus felügyeleti nézetekkel, az SQL Server Management Studio vagy más monitorozási eszközök használatával). Telepíthet egy felügyelt példányt, amely megegyezik a magok száma, amelyek használ SQL Serveren, vegye figyelembe, hogy processzorjellemzői igényelhet, megfelelő skálázását kellene [Virtuálisgép-jellemző, ahol a felügyelt példány telepítve van-e](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-resource-limits#hardware-generation-characteristics).
-- Ellenőrizze a rendelkezésre álló memória mennyiségét, az SQL Server-példányon, és válassza a [a szolgáltatási rétegben, amely rendelkezik a megfelelő memória](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-resource-limits#hardware-generation-characteristics). Oldal élettartamára meghatározni az SQL Server-példányon mérésére hasznos lenne [szükség van további memória](https://techcommunity.microsoft.com/t5/Azure-SQL-Database/Do-you-need-more-memory-on-Azure-SQL-Managed-Instance/ba-p/563444).
-- A fájl alrendszer választhatnak az általános célú és az üzletileg kritikus szolgáltatási csomagok között az IO-késés mérjük.
+- Az alapkonfiguráció helyezheti üzembe a felügyelt példány, amely megfelel az SQL Server-kiszolgálón használt magok száma CPU-használat alapján, szem előtt tartva a processzorjellemzői előfordulhat, hogy kell, megfelelő skálázását [Virtuálisgép-jellemző, ahol a felügyelt példány az telepített](sql-database-managed-instance-resource-limits.md#hardware-generation-characteristics).
+- Az alapkonfiguráció memória kihasználtsága alapján válassza [a szolgáltatási rétegben, amely rendelkezik a megfelelő memória](sql-database-managed-instance-resource-limits.md#hardware-generation-characteristics). Memória mennyisége nem kell közvetlenül kiválasztani, akkor ki kell választania a felügyelt példányhoz az egyező memória (például 5.1 GB/virtuális mag Gen5) rendelkező virtuális magok mennyiségét. 
+- Alapú általános célú (nagyobb, mint 5 ezredmásodperces késés) és az üzletileg kritikus szolgáltatási szintet között válassza a fájl alrendszer késését az alapkonfiguráció i/o (késés kevesebb mint 3 ms).
+- Alapkonfiguráció átviteli sebesség alapján előre lefoglalni az adatok méretétől vagy beolvasni a naplófájlok IO-teljesítmény várható.
 
 Választhat a számítási és tárolási erőforrások üzembe helyezéskor idő, majd az alkalmazást a állásidejét, anélkül ezt követően módosítsa azt a [az Azure portal](sql-database-scale-resources.md):
 
@@ -169,6 +178,13 @@ A teljesítmény összehasonlítás eredménye a következő lehet:
 Módosítsa a paraméterek közül, vagy frissítse a szolgáltatási szintek csoportba történő átszervezését az optimális konfigurációhoz, amíg meg nem jelenik a számítási feladatok teljesítményére, amely a legjobban az igényeinek.
 
 ### <a name="monitor-performance"></a>Teljesítmény figyelése
+
+Felügyelt példány számos speciális eszközök figyeléséhez és hibaelhárításához, és azokat a teljesítmény figyeléséhez a példányán kell használni. Egyes paraméterek, amelyek a figyelni kell vannak:
+- CPU-használat meghatározni a példányon hajtja végre a virtuális magok kiépített az a számítási feladatok számára a megfelelő egyezést.
+- Oldal élettartamára meghatározni a felügyelt példányon [szükség van további memória](https://techcommunity.microsoft.com/t5/Azure-SQL-Database/Do-you-need-more-memory-on-Azure-SQL-Managed-Instance/ba-p/563444).
+- Várjon, például statisztikai `INSTANCE_LOG_GOVERNOR` vagy `PAGEIOLATCH` , amely közli, rendelkezik tárolási i/o-problémák, különösen az általános célú csomagban lehet szükség előre foglal le a fájlokat a jobb i/o-teljesítmény eléréséhez.
+
+## <a name="leverage-advanced-paas-features"></a>Kihasználhatja a speciális PaaS-szolgáltatások
 
 Miután egy teljes körűen felügyelt platformon, és ellenőrizte, hogy számítási feladat teljesítményét megfelelő, az SQL Server számítási feladatok teljesítményére, igénybe előnyei az SQL Database szolgáltatás részeként automatikusan biztosított. 
 

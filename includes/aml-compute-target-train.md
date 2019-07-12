@@ -9,13 +9,15 @@ manager: cgronlund
 ms.custom: include file
 ms.topic: include
 ms.date: 05/30/2019
-ms.openlocfilehash: 50905eb987defac612f1055b450b682726f0a56f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1b62d4b2ac1bb69e2270c3202d29eb595df7aac4
+ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66752953"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67806029"
 ---
+**Tárolók is felhasználható egy betanítási feladat a következő számítási**. Például ha csatlakoztat egy távoli virtuális Gépen a munkaterülethez, felhasználhatja azt több feladat esetében.
+
 |Képzési &nbsp;célok| GPU-támogatással |[Automatizált gépi tanulás](../articles/machine-learning/service/concept-automated-ml.md) | [Gépi Tanulási folyamatok](../articles/machine-learning/service/concept-ml-pipelines.md) | [Vizuális felhasználói felületet](../articles/machine-learning/service/ui-concept-visual-interface.md)
 |----|:----:|:----:|:----:|:----:|
 |[Helyi számítógép](../articles/machine-learning/service/how-to-set-up-training-targets.md#local)| Talán | igen | &nbsp; | &nbsp; |
@@ -25,5 +27,3 @@ ms.locfileid: "66752953"
 |[Az Azure Data Lake Analytics](../articles/machine-learning/service/how-to-create-your-first-pipeline.md#adla)| &nbsp; | &nbsp; | igen | &nbsp; |
 |[Az Azure HDInsight](../articles/machine-learning/service/how-to-set-up-training-targets.md#hdinsight)| &nbsp; | &nbsp; | igen | &nbsp; |
 |[Azure Batch](../articles/machine-learning/service/how-to-set-up-training-targets.md#azbatch)| &nbsp; | &nbsp; | igen | &nbsp; |
-
-**Célok több betanítási feladatokhoz felhasználható számítási**. Például ha csatlakoztat egy távoli virtuális Gépen a munkaterülethez, felhasználhatja azt több feladat esetében.

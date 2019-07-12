@@ -9,12 +9,12 @@ ms.subservice: text-analytics
 ms.topic: sample
 ms.date: 02/26/2019
 ms.author: aahi
-ms.openlocfilehash: f98f16e9996d90b0380f05885e4c2d74e1413f23
-ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
+ms.openlocfilehash: e17b68dfd63952d0c8c81415b090b047c5808e2e
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67657670"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67797804"
 ---
 # <a name="example-how-to-detect-sentiment-with-text-analytics"></a>Példa: Hangulat felismerése a Text Analytics használatával
 
@@ -88,7 +88,7 @@ A kérés definícióval kapcsolatos részletek megtalálhatók a [Text Analytic
 > [!Tip]
 > Használható a [Postman](text-analytics-how-to-call-api.md) vagy nyissa meg az **API teszt konzolt** a [dokumentációban](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c9) a kérés felépítéséhez és a szolgáltatásnak történő POST elküldéséhez.
 
-## <a name="step-2-post-the-request"></a>2\. lépés: A kérelem küldése
+## <a name="step-2-post-the-request"></a>2\. lépés: A kérelem küldése
 
 Az elemzés a kérelem megkapásakor történik meg. Tekintse meg a [data korlátai](../overview.md#data-limits) szakasz az áttekintésben a méret és a kérelmek percenkénti küldhet és a második kapcsolatos információkat.
 
@@ -139,7 +139,7 @@ A [Hangulatelemzés következő verziójára](https://westcentralus.dev.cognitiv
 > * A vélemények elemzése v3-as kérés formátumát és [data korlátai](../overview.md#data-limits) ugyanazok, mint a korábbi verzióra.
 > * Jelenleg hangulatelemzés V3: 
 >    * Jelenleg csak a az angol nyelvet támogatja.  
->    * Az alábbi régiókban érhető el: `Central US`, `Central Canada`, ` East Asia` 
+>    * Az alábbi régiókban érhető el: `Central US`, `Central Canada`, `East Asia` 
 
 |Funkció |Leírás  |
 |---------|---------|
@@ -258,7 +258,7 @@ Bár a kérés formátuma megegyezik az előző verzió, a válasz formátuma me
 
 Egy példa annak C# alkalmazás, amely meghívja a hangulatelemzés jelen verziója a [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/tree/master/dotnet/Language/SentimentV3.cs).
 
-## <a name="summary"></a>Összefoglalás
+## <a name="summary"></a>Összegzés
 
 Ebben a cikkben a hangulatelemzés elveivel és folyamatával ismerkedett meg a Cognitive Services Text Analytics használatával. Összegezve:
 

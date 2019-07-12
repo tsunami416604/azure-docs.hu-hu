@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/01/2019
 ms.author: banders
-ms.openlocfilehash: 37d43dbdd8de66a10a94827e313679dc6ffd220d
-ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
+ms.openlocfilehash: b0c7c38ebabfdd142394152f735d40320a98dced
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67490385"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67798161"
 ---
 # <a name="get-enterprise-agreement-reservation-costs-and-usage"></a>Nagyvállalati Szerződés fenntartási költségeket és használat beszerzése
 
@@ -40,7 +40,7 @@ Adatok két külön adatkészletek oszlik: _Tényleges költség_ és _amortizá
 
 Két adatkészletet összehasonlítása:
 
-| Adatok | Tényleges költség-adatkészlet | Amortizált költség-adatkészlet |
+| Data | Tényleges költség-adatkészlet | Amortizált költség-adatkészlet |
 | --- | --- | --- |
 | Foglalás beszerzések | Ebben a nézetben érhető el.<br><br>  Úgy szerezheti be az adatok szűrése ChargeType = &quot;beszerzési&quot;. <br><br> Tekintse meg reservationid értékhez vagy ReservationName tudni, hogy melyik foglalás a díjat.  | Ez a nézet nem alkalmazható. <br><br> Beszerzési költségek amortizált adatok nincsenek megadva. |
 | effectivePrice | A tulajdonság értéke nulla, amely lekérdezi a foglalási kedvezményt használatra. | Óraalapú elszámolással költsége a foglalást, amely rendelkezik a foglalási kedvezményt használat értéke. |
@@ -119,9 +119,9 @@ Amortizált költség adatok és a egy foglalás rendelési használatára vonat
 Jóváírási foglalás használatával más szervezetek így előfizetés, erőforráscsoport vagy címkéket. Amortizált költség adatokat egy foglalást kihasználtságát, a következő adattípusokat részének pénzügyi értékét tartalmazza:
 
 - Erőforrások (például a virtuális Géphez)
-- Erőforráscsoport
+- Resource group
 - Tags
-- Előfizetés
+- Subscription
 
 ### <a name="get-the-blended-rate-for-chargeback"></a>A kevert arány beolvasása a jóváírások használatára
 
@@ -139,13 +139,13 @@ A Amortized költségek adatokat, és szűrje az adatokat a fenntartott példán
 2. A fenntartási költségeket beolvasása. Sum a _költség_ értékét a fenntartott példány fizetett pénzügyi értékét. Ez magában foglalja a Foglalás felhasznált és költségeit.
 3. Kivonás becsült használatalapú fizetéses költségekhez képest beolvasni a becsült megtakarítások fenntartási költségeket.
 
-## <a name="reservation-purchases-and-amortization-in-azure-cost-analysis"></a>Foglalás beszerzések és az Azure cost analysis amortizációs
+## <a name="reservation-purchases-and-amortization-in-cost-analysis"></a>Foglalás vásárlásokat és a törlesztési a költségek elemzése
 
-A fenntartott példányok költségei érhető [előnézeti módot az Azure cost analysis](https://preview.portal.azure.com/?feature.canmodifystamps=true&amp;microsoft_azure_costmanagement=stage2&amp;Microsoft_Azure_CostManagement_arm_canary=true&amp;Microsoft_Azure_CostManagement_apiversion=2019-04-01-preview&amp;Microsoft_Azure_CostManagement_amortizedCost=true#blade/Microsoft_Azure_CostManagement/Menu/costanalysis). Alapértelmezés szerint a költségek adatnézet a tényleges költségek mellett. Az amortizált költségek válthat. Íme egy példa.
+Foglalási költség érhetők el a [költségelemzés](https://aka.ms/costanalysis). Alapértelmezés szerint cost analysis látható **tényleges költség**, azaz, hogy hogyan költségek jelenik meg a számlán. Foglalás vásárlások lebontva, és az erőforrások a juttatás használt társított megtekintéséhez váltson **amortizált költségek**:
 
 ![Példa: hol kell válassza ki a amortizált költség költségelemzés](./media/billing-understand-reserved-instance-usage-ea/portal-cost-analysis-amortized-view.png)
 
-A alkalmazni annak érdekében, hogy a díjakkal egy foglalás vagy költséghelyi típus szerint. Csoportosítás foglalás nevére kattintva megtekintheti a foglalások bontásban költségeket.
+Szünet megtekintéséhez vonatkozó, használat, a beszerzés, a visszatérítések; díj típus szerint vagy a Foglalás foglalás és igény szerinti költségek részletezése. Ne feledje, látni fogja a tényleges költségek megtekintve csak fenntartási költségeket vásárlások, de ha megnézzük az amortizált költségek a benfit használt egyes erőforrások számára lefoglalt költségek. Ezenkívül megjelenik egy új **UnusedReservation** típus megterheli megnézzük az amortizált költségek.
 
 ## <a name="need-help-contact-us"></a>Segítség Kapcsolatfelvétel.
 

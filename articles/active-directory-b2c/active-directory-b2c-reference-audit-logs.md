@@ -11,12 +11,12 @@ ms.date: 08/04/2017
 ms.author: marsma
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 2c1bfd9e2659127ab77e9db661b54fde18a8d25c
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: 216f5413ce3dae1f2d040643a30a4d7db4a879b8
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67205366"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67835417"
 ---
 # <a name="accessing-azure-ad-b2c-audit-logs"></a>Auditnaplók eléréséhez az Azure AD B2C-vel
 
@@ -33,18 +33,18 @@ A **B2C** kategória-naplók az alábbi típusú tevékenységeket tartalmazza:
 
 |Tevékenység típusa |Leírás  |
 |---------|---------|
-|Engedélyezés |Az erőforrások eléréséhez B2C felhasználói engedély vonatkozó (például egy rendszergazda fér hozzá a B2C-szabályzatok listája) tevékenységek         |
-|Címtár |Directory-attribútumok kérhető le, ha rendszergazdaként jelentkezik be az Azure Portallal kapcsolatos tevékenységek |
+|Authorization |Az erőforrások eléréséhez B2C felhasználói engedély vonatkozó (például egy rendszergazda fér hozzá a B2C-szabályzatok listája) tevékenységek         |
+|Címtár |Ha rendszergazdaként jelentkezik be az Azure portal használatával lekért directory-attribútumok kapcsolódó tevékenységek |
 |Alkalmazás | A B2C-alkalmazások CRUD-műveletek |
 |Kulcs |A B2C-kulcstároló tárolt kulcsok CRUD-műveletek |
 |Resource |B2C-erőforrásokat (például a szabályzatok és az identitás-szolgáltatóktól) CRUD-műveletek
-|Hitelesítés |Felhasználói hitelesítő adatok és a kiállítási érvényesítése|
+|Authentication |Felhasználói hitelesítő adatok és a kiállítási érvényesítése|
 
 > [!NOTE]
 > A felhasználói objektum CRUD tevékenységhez, tekintse meg a **alapvető könyvtár** kategória.
 
 ## <a name="example-activity"></a>Példa tevékenység
-Az alábbi példában látható, amikor egy felhasználó jelentkezik be egy külső identitásszolgáltatónak rögzített adatokat: ![Auditnaplók – példa](./media/active-directory-b2c-reference-audit-logs/audit-logs-example.png)
+Az alábbi példában látható, amikor egy felhasználó jelentkezik be egy külső identitásszolgáltatónak rögzített adatokat: ![Auditnapló tevékenység adatainak lap az Azure Portalon – példa](./media/active-directory-b2c-reference-audit-logs/audit-logs-example.png)
 
 A tevékenység részletei panelen a következő vonatkozó információkat tartalmazza:
 
@@ -56,22 +56,22 @@ A tevékenység részletei panelen a következő vonatkozó információkat tart
 | Cél(ok) | ObjectId | A **Objektumazonosító** felhasználó jelentkezik be. |
 | További részletek | TenantId | A **Bérlőazonosító** az Azure AD B2C-bérlő. |
 | További részletek | `PolicyId` | A **házirend-azonosító** használt beléptetni a felhasználót a felhasználói folyamat (házirend). |
-| További részletek | Alkalmazásazonosító | A **Alkalmazásazonosító** , a B2C-alkalmazást, amely a felhasználó jelentkezik be. |
+| További részletek | ApplicationId | A **Alkalmazásazonosító** , a B2C-alkalmazást, amely a felhasználó jelentkezik be. |
 
 ## <a name="accessing-audit-logs-through-the-azure-portal"></a>Az Azure Portalon keresztül éri el a vizsgálati naplók
 1. Nyissa meg az [Azure Portal](https://portal.azure.com). Győződjön meg róla, hogy a B2C-címtárban.
 2. Kattintson a **Azure Active Directory** a Kedvencek sávra a bal oldalon található
-    
-    ![Auditnaplók – AAD gomb](./media/active-directory-b2c-reference-audit-logs/audit-logs-portal-aad.png)
+
+    ![A bal oldali menü a portálon az Azure Active Directory gomb](./media/active-directory-b2c-reference-audit-logs/audit-logs-portal-aad.png)
 
 1. A **tevékenység**, kattintson a **Auditnaplók**
 
-    ![Auditnaplók – naplók szakasz](./media/active-directory-b2c-reference-audit-logs/audit-logs-portal-section.png)
+    ![Audit naplók tevékenység szakaszában menü gomb](./media/active-directory-b2c-reference-audit-logs/audit-logs-portal-section.png)
 
 2. Az a **kategória** dropbox válassza **B2C-vel**
 3. Kattintson a **alkalmazása**
 
-    ![Auditnaplók – kategória](./media/active-directory-b2c-reference-audit-logs/audit-logs-portal-category.png)
+    ![Kategória és a naplózási szűrő alkalmazása gomb](./media/active-directory-b2c-reference-audit-logs/audit-logs-portal-category.png)
 
 Látni fogja az elmúlt hét napban naplózott tevékenységek listája.
 - Használja a **tevékenység erőforrástípusa** legördülő menüben szűrhet a fent vázolt tevékenységtípusok
