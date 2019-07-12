@@ -137,6 +137,8 @@
           href: infrastructure-example.md
         - name: vCPU-kvóták
           href: quotas.md
+    - name: Biztonsági attribútumok
+      href: virtual-machines-linux-security-attributes.md
 - name: Útmutatók
   items:
     - name: Virtuális gépek létrehozása

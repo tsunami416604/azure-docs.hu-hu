@@ -13,7 +13,7 @@
     - name: SAP
       href: workloads/sap/get-started.md
     - name: Nagy teljesítményű feldolgozás
-      href: workloads/hpc/configure.md
+      href: workloads/hpc/overview.md
     - name: Nagyszámítógépes áthelyezés
       href: workloads/mainframe-rehosting/overview.md
 - name: Klasszikus üzembe helyezések

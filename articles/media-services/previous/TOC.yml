@@ -254,7 +254,7 @@
         - name: A hosszú ideig futó műveletek kezelése
           href: media-services-dotnet-long-operations.md
         - name: 'Specifikáció: darabolt MP4 élő feldolgozása'
-          href: media-services-fmp4-live-ingest-overview.md
+          href: ../media-services-fmp4-live-ingest-overview.md
         - name: Első lépések
           href: media-services-azure-media-clipper-getting-started.md
         - name: Videók betöltése
@@ -458,11 +458,11 @@
     - name: Specifikációk
       items:
         - name: 'Élő betöltés – Specifikáció: darabolt MP4 élő betöltése'
-          href: media-services-fmp4-live-ingest-overview.md
+          href: ../media-services-fmp4-live-ingest-overview.md
         - name: Élő betöltés – Időzített metaadatok jelzése az élő streamekben
-          href: media-services-specifications-live-timed-metadata.md
+          href: ../media-services-specifications-live-timed-metadata.md
         - name: Smooth Streaming HEVC
-          href: media-services-specifications-ms-sstr-amendment-hevc.md
+          href: ../media-services-specifications-ms-sstr-amendment-hevc.md
 - name: További források
   items:
     - name: Azure Media Services-közösség

@@ -58,6 +58,8 @@
       href: host-pool-load-balancing.md
     - name: FSLogix-profiltárolók és Azure Files
       href: fslogix-containers-azure-files.md
+    - name: Partnerintegrációk
+      href: partners.md
 - name: Hibaelhárítás
   items:
     - name: 'Hibaelhárítási áttekintés, visszajelzés és támogatás'
