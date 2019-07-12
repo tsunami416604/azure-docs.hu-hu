@@ -10,14 +10,14 @@ ms.subservice: ''
 ms.date: 07/23/2018
 ms.author: anjangsh
 ms.reviewer: jrasnick
-ms.openlocfilehash: 95c59d3e5504058e27cdb4eda311c3917d6c834a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4348a634fd5b2b33f36d8e79f28caf659b82ccf4
+ms.sourcegitcommit: c0419208061b2b5579f6e16f78d9d45513bb7bbc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65912229"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67626152"
 ---
-# <a name="whats-new-in-azure-sql-data-warehouse-june-2018"></a>Mi az új Azure SQL Data warehouse? 2018\. június
+# <a name="whats-new-in-azure-sql-data-warehouse-june-2018"></a>Mi az új Azure SQL Data warehouse? 2018. június
 Az Azure SQL Data Warehouse fejlesztései folyamatosan kap. Ez a cikk ismerteti az új szolgáltatásokat és változásokat tartalmazza, amelyek a 2018 június. 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
@@ -91,7 +91,7 @@ Central Standard Time             -05:00               1
 
 ## <a name="auto-stats-operations-appear-in-sysdmpdwexecrequests-behavior-change"></a>Az automatikus statisztikák műveletek jelennek meg sys.dm_pdw_exec_requests (viselkedésének módosítása)
 
-Bevezetésével [automatikus Create Statistics](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-tables-statistics#automatic-creation-of-statistics), Azure SQL Data Warehouse optimalizálhatja a lekérdezés-végrehajtás statisztikai hoz létre. A 2018 június kiadás fájltulajdonságainak figyelheti, hogy mikor statisztikái is automatikusan létrehozott, egy rekord hozzáadásával a [sys.dm_pdw_exec_requests](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql) megtekintése, amikor bármelyik [CREATE STATISTICS](https://docs.microsoft.com/sql/t-sql/statements/create-statistics-transact-sql) művelet végrehajtása.
+Bevezetésével [automatikus Create Statistics](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-tables-statistics#automatic-creation-of-statistic), Azure SQL Data Warehouse optimalizálhatja a lekérdezés-végrehajtás statisztikai hoz létre. A 2018 június kiadás fájltulajdonságainak figyelheti, hogy mikor statisztikái is automatikusan létrehozott, egy rekord hozzáadásával a [sys.dm_pdw_exec_requests](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql) megtekintése, amikor bármelyik [CREATE STATISTICS](https://docs.microsoft.com/sql/t-sql/statements/create-statistics-transact-sql) művelet végrehajtása.
 
 ```sql
 SELECT
@@ -111,7 +111,7 @@ start_time                | end_time                | command
 ```
 
 ## <a name="next-steps"></a>További lépések
-Most, hogy jobban megismerte az SQL Data warehouse, megtudhatja, hogyan lehet gyorsan [hozzon létre egy SQL Data Warehouse][create a SQL Data Warehouse]. Ha az Azure új felhasználója, hasznosnak találhatja az [Azure szószedetét][Azure glossary], amikor az új fogalmakkal ismerkedik. Vagy tekintsen meg néhányat a többi SQL Data Warehouse-erőforrás közül.  
+Most, hogy jobban megismerte az SQL Data warehouse, ismerje meg, hogyan lehet gyorsan [hozzon létre egy SQL Data Warehouse][create a SQL Data Warehouse] . If you are new to Azure, you may find the [Azure glossary][Azure glossary] , amikor új fogalmakkal ismerkedik. Vagy tekintsen meg néhányat a többi SQL Data Warehouse-erőforrás közül.  
 
 * [Ügyfelek sikertörténetei]
 * [Blogok]

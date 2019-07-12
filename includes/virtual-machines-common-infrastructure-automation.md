@@ -4,12 +4,12 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 04/11/2019
 ms.author: cynthn
-ms.openlocfilehash: 81bde837cd78646f1fc59d921246c72978ecb840
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 15724adfc6eb875f3d2d5b6d3ecbbb54135a7265
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67179100"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67671435"
 ---
 # <a name="use-infrastructure-automation-tools-with-virtual-machines-in-azure"></a>Az Azure-beli virtuális gépek infrastruktúra automatizálási eszközök használata
 Hozzon létre, és kezeli az Azure-beli virtuális gépek (VM) egységes módon végrehajtott, ipari méretekben, valamilyen automatizált általában van szükség. Nincsenek számos eszközöket és megoldásokat, amelyek lehetővé teszik a teljes Azure-infrastruktúra üzembe helyezés és felügyelet életciklusának automatizálásához. Ez a cikk egy részét az infrastruktúra automatizálási eszközöket, amelyek is használhatja az Azure-ban mutatja be. Ezek az eszközök általában pontosan a következő módszerek egyikét:
@@ -45,7 +45,7 @@ Az alábbiak végrehajtásának módját ismerheti meg:
 
 
 ## <a name="puppet"></a>Puppet
-[Puppet](https://www.puppet.com) nagyvállalati használatra kész automatizálási platform, amely a szállítási és üzembe helyezési folyamatának kezeli. Ügynök telepítve van a célszámítógépen futtatni, amelyek meghatározzák a kívánt konfigurációk az Azure-infrastruktúra jegyzékek Puppet Master és a virtuális gépek. Puppet integrálható más megoldásokkal, például a Jenkins és a GitHub nagyobb fejlesztési és üzemeltetési munkafolyamathoz. További információkért lásd: [hogyan Puppet működik](https://puppet.com/product/how-puppet-works).
+[Puppet](https://www.puppet.com) nagyvállalati használatra kész automatizálási platform, amely a szállítási és üzembe helyezési folyamatának kezeli. Ügynök telepítve van a célszámítógépen futtatni, amelyek meghatározzák a kívánt konfigurációk az Azure-infrastruktúra jegyzékek Puppet Master és a virtuális gépek. Puppet integrálható más megoldásokkal, például a Jenkins és a GitHub nagyobb fejlesztési és üzemeltetési munkafolyamathoz. További információkért lásd: [hogyan Puppet működik](https://puppet.com/products/how-puppet-works).
 
 Az alábbiak végrehajtásának módját ismerheti meg:
 
@@ -53,7 +53,7 @@ Az alábbiak végrehajtásának módját ismerheti meg:
 
 
 ## <a name="cloud-init"></a>Cloud-init
-A [cloud-init](https://cloudinit.readthedocs.io) egy széles körben használt módszer a Linux rendszerű virtuális gépek első indításkor való testreszabásához. A cloud-init használatával csomagokat telepíthet és fájlokat írhat, vagy beállíthatja a felhasználókat és a biztonságot. A cloud-init nevezzük az első rendszerindítás során, mert nincsenek további lépéseket vagy szükséges ügynökök a alkalmazni a konfigurációt.  További információt a megfelelő formázása a `#cloud-config` fájlokat, tekintse meg a [a cloud-init dokumentációs oldalának](http://cloudinit.readthedocs.io/en/latest/topics/format.html#cloud-config-data).  `#cloud-config` fájlok Base64 kódolású szöveges fájlok.
+A [cloud-init](https://cloudinit.readthedocs.io) egy széles körben használt módszer a Linux rendszerű virtuális gépek első indításkor való testreszabásához. A cloud-init használatával csomagokat telepíthet és fájlokat írhat, vagy beállíthatja a felhasználókat és a biztonságot. A cloud-init nevezzük az első rendszerindítás során, mert nincsenek további lépéseket vagy szükséges ügynökök a alkalmazni a konfigurációt.  További információt a megfelelő formázása a `#cloud-config` fájlokat, tekintse meg a [a cloud-init dokumentációs oldalának](https://cloudinit.readthedocs.io/en/latest/topics/format.html#cloud-config-data).  `#cloud-config` fájlok Base64 kódolású szöveges fájlok.
 
 A cloud-init különböző disztribúciókon is működik. Például nem kell az **apt-get install** vagy a **yum install** használatával telepítenie a csomagokat. Ehelyett megadhatja a telepítendő csomagok listáját. A cloud-init automatikusan a natív csomagkezelő eszközt használja a kiválasztott disztribúcióhoz.
 

@@ -15,12 +15,12 @@ ms.date: 04/01/2019
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6bf265f51f2fea16f90dd0bcf2891bd9bed5cef8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b994078350aec5657659f8835d228eb907606bb8
+ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65963574"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67807634"
 ---
 # <a name="managing-user-account-provisioning-for-enterprise-apps-in-the-azure-portal"></a>Felhasználói fiók kiépítése az Azure Portalon a vállalati alkalmazások kezelése
 
@@ -31,14 +31,11 @@ Ez a cikk ismerteti, hogyan használható a [az Azure portal](https://portal.azu
 Az Azure Active Directory portál segítségével megtekintheti és kezelheti az egyszeri bejelentkezés egy címtárban beállított összes alkalmazás. Vállalati alkalmazások olyan alkalmazások, telepített és a szervezetén belül. Kövesse az alábbi lépéseket, megtekintése és kezelése a vállalati alkalmazások:
 
 1. Nyissa meg a [Azure Active Directory portálon](https://aad.portal.azure.com).
-
 1. Válassza ki **vállalati alkalmazások** a bal oldali ablaktáblán. Az összes konfigurált alkalmazások listája látható, beleértve az alkalmazásokat, amelyek a katalógusból lettek hozzáadva.
-
 1. Válassza ki az erőforrás panel, ahol jelentések megtekintése és kezelése az alkalmazásbeállítások betölteni bármely alkalmazást.
-
 1. Válassza ki **kiépítési** kezelheti a felhasználói fiók kiépítése a kiválasztott alkalmazás beállításait.
 
-   ![Alkalmazás erőforrás panelen](./media/configure-automatic-user-provisioning-portal/enterprise-apps-provisioning.png)
+   ![Kiépítése képernyő felhasználói fiók üzembe helyezési beállítások kezelése](./media/configure-automatic-user-provisioning-portal/enterprise-apps-provisioning.png)
 
 ## <a name="provisioning-modes"></a>Kiépítési mód
 
@@ -68,17 +65,17 @@ Bontsa ki a **leképezések** megtekintéséhez és szerkesztéséhez a felhaszn
 
 Van egy egy előre konfigurált Azure AD-felhasználói objektumok és az egyes SaaS-alkalmazás felhasználói objektumok közötti leképezéseket. Néhány alkalmazás más típusú objektumok, például a csoportok vagy névjegyek kezelése. Válassza ki a leképezést a táblázatban, nyissa meg a hozzárendelési szerkesztőt, a jobb oldalon, melyen megtekintheti és testre is szabhatja őket.
 
-![Alkalmazás erőforrás panelen](./media/configure-automatic-user-provisioning-portal/enterprise-apps-provisioning-mapping.png)
+![Megjeleníti az attribútum hozzárendelése képernyő](./media/configure-automatic-user-provisioning-portal/enterprise-apps-provisioning-mapping.png)
 
 Támogatott testreszabások a következők:
 
 * Engedélyezése és letiltása adott objektumok, például az SaaS-alkalmazás felhasználói objektum az Azure AD felhasználói objektum leképezések.
 * Szerkesztés az attribútumokat, amelyek az alkalmazás felhasználói objektumhoz az Azure AD-felhasználói objektum áramlani. Attribútumleképzés további információkért lásd: [attribútum typy mapování ismertetése](customize-application-attributes.md#understanding-attribute-mapping-types).
-* Szűrés a célzott alkalmazás fut az Azure AD létesítési műveleteket. Az Azure AD-objektumok teljes szinkronizálása nem, korlátozhatja a műveletek futtatása. 
+* Szűrés a célzott alkalmazás fut az Azure AD létesítési műveleteket. Az Azure AD-objektumok teljes szinkronizálása nem, korlátozhatja a műveletek futtatása.
 
   Csak válassza ki például **frissítés** és az Azure ad-ben csak frissítések meglévő felhasználói fiókok egy alkalmazásban, de nem hozzon létre újakat. Csak válassza **létrehozás** és az Azure csak új felhasználói fiókokat hoz létre, de nem frissíti a már meglévőket. Ez a funkció lehetővé teszi, hogy a rendszergazdák a fióklétrehozás különböző leképezéseit létrehozása és frissítése a munkafolyamatokat.
 
-* Egy új attribútum megfeleltetés hozzáadása. Válassza ki **új hozzárendelés hozzáadása** alján a **attribútumleképzés** ablaktáblán. Töltse ki a **attribútum szerkesztése** alkotnak, és válassza ki **Ok** az új megfeleltetés hozzáadása a listához. 
+* Egy új attribútum megfeleltetés hozzáadása. Válassza ki **új hozzárendelés hozzáadása** alján a **attribútumleképzés** ablaktáblán. Töltse ki a **attribútum szerkesztése** alkotnak, és válassza ki **Ok** az új megfeleltetés hozzáadása a listához.
 
 ### <a name="settings"></a>Beállítások
 

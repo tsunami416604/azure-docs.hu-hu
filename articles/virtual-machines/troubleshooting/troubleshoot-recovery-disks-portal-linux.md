@@ -4,7 +4,7 @@ description: Ismerje meg az operációsrendszer-lemez egy helyreállítási virt
 services: virtual-machines-linux
 documentationCenter: ''
 author: genlin
-manager: jeconnoc
+manager: gwallace
 editor: ''
 ms.service: virtual-machines-linux
 ms.devlang: na
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 11/14/2016
 ms.author: genli
-ms.openlocfilehash: 65187c3ef6debfa27c8c4fea62bcd31b857b4171
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 160e45ad5bf83f44bed2314ee5103825e265467c
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60319903"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67709386"
 ---
 # <a name="troubleshoot-a-linux-vm-by-attaching-the-os-disk-to-a-recovery-vm-using-the-azure-portal"></a>Az operációsrendszer-lemez egy helyreállítási virtuális Géphez az Azure portal használatával történő csatlakoztatásával Linuxos virtuális gépek hibaelhárítása
 Ha a Linux rendszerű virtuális gép (VM) indítási vagy hiba fordul, szükség lehet a hibaelhárítási lépések végrehajtásához a virtuális merevlemezen magát. Ilyenek például a bejegyzés érvénytelen lenne `/etc/fstab` , amely megakadályozza, hogy a virtuális gép képes arra, hogy sikeresen. Ez a cikk részletesen bemutatja a virtuális merevlemez csatlakoztatása egy másik Linux rendszerű virtuális géphez, javítsa ki a hibákat, majd hozza létre újból az eredeti virtuális gép az Azure portal használatával.

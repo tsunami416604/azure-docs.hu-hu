@@ -9,12 +9,12 @@ ms.date: 04/19/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 41ca1c5f413e5e15691f336d203edb918f21dc1a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3fe142439dc80af660d286e5913fee13d4de8e86
+ms.sourcegitcommit: c0419208061b2b5579f6e16f78d9d45513bb7bbc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65147291"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67625656"
 ---
 # <a name="run-azure-cli-or-powershell-commands-with-azure-ad-credentials-to-access-blob-or-queue-data"></a>Az Azure parancssori felület vagy PowerShell-parancsokat futtatni a blob- vagy várólista adatok eléréséhez az Azure AD-beli hitelesítő
 
@@ -26,7 +26,7 @@ Blob és üzenetsor adatokat egy Azure AD rendszerbiztonsági tag szerepköralap
 
 A bővítmények a tárolók és a várólisták műveletek támogatottak. Hívja előfordulhat, hogy mely műveletek az Azure AD biztonsági egyszerű, amellyel bejelentkezik az Azure parancssori felület vagy PowerShell jogosultságaitól függ. Az Azure Storage-tárolók, vagy várólisták engedélyeket szerepköralapú hozzáférés-vezérlés (RBAC) keresztül. Például, ha hozzá van rendelve a **Blobadatok olvasója** szerepkörhöz, akkor futtathat parancsokat, amelyek egy tároló vagy egy üzenetsor adatokat olvasni. Ha hozzá van rendelve a **Blobadatok Közreműködője** szerepkörhöz, akkor futtathat parancsokat, amelyek olvasási, írási, vagy egy tároló vagy üzenetsor vagy a rajtuk tárolt adatok törlése. 
 
-Minden Azure Storage-művelet egy tároló vagy a várólista szükséges jogosultságokat kapcsolatos részletekért lásd: [REST-műveleteinek meghívására szolgáló engedélyek](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-rest-operations).  
+Minden Azure Storage-művelet egy tároló vagy a várólista szükséges jogosultságokat kapcsolatos részletekért lásd: [hívja a storage-műveletek elvégzése az OAuth-jogkivonatok](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#call-storage-operations-with-oauth-tokens).  
 
 ## <a name="call-cli-commands-using-azure-ad-credentials"></a>Hívás CLI-parancsok az Azure AD hitelesítő adatok használatával
 

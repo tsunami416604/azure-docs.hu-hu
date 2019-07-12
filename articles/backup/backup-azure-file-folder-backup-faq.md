@@ -5,20 +5,20 @@ author: dcurwin
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
-ms.date: 07/02/2019
+ms.date: 07/09/2019
 ms.author: dacurwin
-ms.openlocfilehash: d4d1044a30d4ebc551cf1305993aba2a201c4c94
-ms.sourcegitcommit: 6cb4dd784dd5a6c72edaff56cf6bcdcd8c579ee7
+ms.openlocfilehash: dd800c0eeb18fe45b44a72aeb58b500623b2b366
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67514451"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67705082"
 ---
 # <a name="common-questions-about-backing-up-files-and-folders"></a>Fájlok és mappák biztonsági mentésével kapcsolatos gyakori kérdések
 
 Ez a cikk gyakori kérdésekre adott válaszok abound biztonsági mentése a fájlok és mappák, a Microsoft Azure Recovery Services-(MARS) ügynökkel az rendelkezik a [Azure Backup](backup-overview.md) szolgáltatás.
 
-## <a name="general"></a>Általános kérdések
+## <a name="general"></a>Általános
 
 ## <a name="configure-backups"></a>Biztonsági mentések konfigurálása
 
@@ -88,9 +88,19 @@ Ez a figyelmeztetés annak ellenére, hogy konfigurálta a biztonsági mentési 
 A gyorsítótármappa mérete határozza meg azt az adatmennyiséget, amelyről biztonsági másolatot készít.
 - A gyorsítótár-mappa kötetek kell rendelkeznie, amely egyenlő a biztonsági mentési adatok teljes mérete legalább 5 – 10 % szabad terület.
 - Ha a kötet kisebb, mint 5 % szabad terület, növelje a kötet méretét, vagy helyezze át a gyorsítótármappa egy elegendő lemezterülettel rendelkező kötetre.
-- Ha Windows rendszerállapotának biztonsági mentését, kell egy további 30 – 35 GB szabad hely a kötet a gyorsítótár mappáját tartalmazó
-### <a name="how-do-i-change-the-cache-location-for-the-mars-agent"></a>Hogyan változtatható meg a MARS-ügynök a gyorsítótár helyét?
+- Ha a Windows rendszerállapotának biztonsági mentését, kell egy további 30 – 35 GB szabad hely a kötet a gyorsítótár mappáját tartalmazó.
 
+### <a name="how-to-check-if-scratch-folder-is-valid-and-accessible"></a>Ellenőrizze, hogy ideiglenes mappa-e érvényes és elérhető hogyan?
+
+1. Alapértelmezés szerint ideiglenes mappa a következő helyen található: `\Program Files\Microsoft Azure Recovery Services Agent\Scratch`
+2. Ellenőrizze, hogy az elérési útját az ideiglenes mappa helye megegyezik a beállításjegyzékbeli bejegyzéseket alább látható értékeket:
+
+  | Beállításjegyzékbeli elérési út | Beállításjegyzék kulcsa | Value |
+  | --- | --- | --- |
+  | `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Config` |ScratchLocation |*Új gyorsítótár-mappa helye* |
+  | `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Config\CloudBackupProvider` |ScratchLocation |*Új gyorsítótár-mappa helye* |
+
+### <a name="how-do-i-change-the-cache-location-for-the-mars-agent"></a>Hogyan változtatható meg a MARS-ügynök a gyorsítótár helyét?
 
 1. Egy rendszergazda jogú parancssort a Backup motort leállítani a következő parancs futtatásával:
 

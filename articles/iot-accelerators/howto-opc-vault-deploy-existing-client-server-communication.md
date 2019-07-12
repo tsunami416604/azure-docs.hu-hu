@@ -5,15 +5,15 @@ author: dominicbetts
 ms.author: dobett
 ms.date: 11/26/2018
 ms.topic: conceptual
-ms.service: iot-industrialiot
+ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: 5ba2dba02585598b3797dd1b490976ebe34b489e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f170d05c513e7f0cc638c5a35e2264f9e043cbcd
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61450664"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67603676"
 ---
 # <a name="secure-opc-ua-client-and-opc-ua-server-application"></a>Az OPC UA biztonságos, ügyfél és az OPC UA-kiszolgáló alkalmazás 
 Az OPC-tároló, konfigurálása, regisztrálja, és az OPC UA-kiszolgáló és az ügyfélalkalmazások számára a felhőben a tanúsítvány életciklusának kezelése mikroszolgáltatások. Ez a cikk bemutatja, hogyan OPC UA-ügyféllel és a egy OPC UA egy új kulcspárt és az OPC-tároló használatával új tanúsítványt a kiszolgáló-alkalmazások biztonságossá tételéhez.

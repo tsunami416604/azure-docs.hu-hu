@@ -2,17 +2,17 @@
 title: Az Azure Kubernetes Service (AKS) terheléselosztót statikus IP-cím használata
 description: Ismerje meg, hogyan hozhat létre, és a egy statikus IP-cím használata az Azure Kubernetes Service (AKS) terheléselosztót.
 services: container-service
-author: iainfoulds
+author: mlearned
 ms.service: container-service
 ms.topic: article
 ms.date: 03/04/2019
-ms.author: iainfou
-ms.openlocfilehash: d2e4314948eeda0c82c004414f894dafc4d4cff6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: mlearned
+ms.openlocfilehash: 9e32715766734bcbb150d70aeed2dc5b06a4bcbb
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61031647"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67614470"
 ---
 # <a name="use-a-static-public-ip-address-with-the-azure-kubernetes-service-aks-load-balancer"></a>Az Azure Kubernetes Service (AKS) terheléselosztót statikus nyilvános IP-cím használata
 
@@ -22,7 +22,7 @@ Ez a cikk bemutatja, hogyan hozhat létre egy statikus nyilvános IP-címet, és
 
 ## <a name="before-you-begin"></a>Előkészületek
 
-Ez a cikk azt feltételezi, hogy egy meglévő AKS-fürtöt. Ha egy AKS-fürtre van szüksége, tekintse meg az AKS gyors [az Azure CLI-vel] [ aks-quickstart-cli] vagy [az Azure portal használatával][aks-quickstart-portal].
+Ez a cikk azt feltételezi, hogy egy meglévő AKS-fürtöt. Ha egy AKS-fürtre van szüksége, tekintse meg az AKS gyors [az Azure CLI-vel][aks-quickstart-cli] or [using the Azure portal][aks-quickstart-portal].
 
 Emellett az Azure CLI 2.0.59 verziójára van szükség, vagy később telepített és konfigurált. Futtatás `az --version` a verzió megkereséséhez. Ha telepíteni vagy frissíteni, tekintse meg kell [Azure CLI telepítése][install-azure-cli].
 
@@ -32,7 +32,7 @@ Jelenleg csak *IP alapszintű Termékváltozat*használata támogatott. Támogat
 
 Amikor az aks-sel használható statikus nyilvános IP-címet hoz létre, az IP-cím erőforrás létre kell hozni a **csomópont** erőforráscsoportot. Ha azt szeretné, az erőforrások szétválasztásához, tekintse meg az alábbi szakaszt [kívül a csomópont erőforráscsoportba tartozó statikus IP-cím](#use-a-static-ip-address-outside-of-the-node-resource-group).
 
-Először kérje le a csomópont erőforráscsoport nevéből és a [az aks show] [ az-aks-show] parancsot, majd adja hozzá a `--query nodeResourceGroup` lekérdezési paraméter. Az alábbi példa lekéri az AKS-fürt nevét a csomópont erőforráscsoport *myAKSCluster* az erőforráscsoport nevét a *myResourceGroup*:
+Először kérje le a csomópont erőforráscsoport nevéből és a [az aks show][az-aks-show] parancsot, majd adja hozzá a `--query nodeResourceGroup` lekérdezési paraméter. Az alábbi példa lekéri az AKS-fürt nevét a csomópont erőforráscsoport *myAKSCluster* az erőforráscsoport nevét a *myResourceGroup*:
 
 ```azurecli-interactive
 $ az aks show --resource-group myResourceGroup --name myAKSCluster --query nodeResourceGroup -o tsv
@@ -40,7 +40,7 @@ $ az aks show --resource-group myResourceGroup --name myAKSCluster --query nodeR
 MC_myResourceGroup_myAKSCluster_eastus
 ```
 
-Most hozzon létre egy statikus nyilvános IP-címet a [az hálózati nyilvános IP-cím létrehozása] [ az-network-public-ip-create] parancsot. Adja meg az előző paranccsal beszerzett a csomópont erőforráscsoport-név, és ezután a egy nevet az IP-cím erőforrás, például *myAKSPublicIP*:
+Most hozzon létre egy statikus nyilvános IP-címet a [az hálózati nyilvános IP-cím létrehozása][az-network-public-ip-create] parancsot. Adja meg az előző paranccsal beszerzett a csomópont erőforráscsoport-név, és ezután a egy nevet az IP-cím erőforrás, például *myAKSPublicIP*:
 
 ```azurecli-interactive
 az network public-ip create \
@@ -64,7 +64,7 @@ Az IP-cím jelenik meg, ahogyan az a következő sűrített példához kimenet:
 }
 ```
 
-Később a nyilvános IP cím használatával lekérheti a [az network public-ip list] [ az-network-public-ip-list] parancsot. Adja meg a csomópont erőforráscsoportot és a létrehozott nyilvános IP-cím és a lekérdezés nevét a *IP-cím* az alábbi példában látható módon:
+Később a nyilvános IP cím használatával lekérheti a [az network public-ip list][az-network-public-ip-list] parancsot. Adja meg a csomópont erőforráscsoportot és a létrehozott nyilvános IP-cím és a lekérdezés nevét a *IP-cím* az alábbi példában látható módon:
 
 ```azurecli-interactive
 $ az network public-ip show --resource-group MC_myResourceGroup_myAKSCluster_eastus --name myAKSPublicIP --query ipAddress --output tsv
@@ -127,7 +127,7 @@ spec:
 
 ## <a name="troubleshoot"></a>Hibaelhárítás
 
-Ha a statikus IP-címet megadva a *loadBalancerIP* Kubernetes Szolgáltatásjegyzék tulajdonság nem létezik, vagy a csomópont erőforráscsoport és nincs további delegálásokat konfigurálni, a terheléselosztó szolgáltatás nem lett létrehozva létrehozása meghiúsul. A hibaelhárításhoz tekintse át a szolgáltatás-létrehozási események és a [írja le a kubectl] [ kubectl-describe] parancsot. Adja meg a szolgáltatás a YAML-jegyzékfájlban megadott nevét, az alábbi példában látható módon:
+Ha a statikus IP-címet megadva a *loadBalancerIP* Kubernetes Szolgáltatásjegyzék tulajdonság nem létezik, vagy a csomópont erőforráscsoport és nincs további delegálásokat konfigurálni, a terheléselosztó szolgáltatás nem lett létrehozva létrehozása meghiúsul. A hibaelhárításhoz tekintse át a szolgáltatás-létrehozási események és a [írja le a kubectl][kubectl-describe] parancsot. Adja meg a szolgáltatás a YAML-jegyzékfájlban megadott nevét, az alábbi példában látható módon:
 
 ```console
 kubectl describe service azure-load-balancer
@@ -159,7 +159,7 @@ Events:
 
 ## <a name="next-steps"></a>További lépések
 
-A hálózati forgalom az alkalmazások további szabályozásához érdemes inkább [hozzon létre egy bejövőforgalom-vezérlőjéhez][aks-ingress-basic]. Emellett [hozzon létre egy statikus nyilvános IP-cím bejövőforgalom-vezérlőjéhez][aks-static-ingress].
+A hálózati forgalom az alkalmazások további szabályozásához érdemes inkább [hozzon létre egy bejövőforgalom-vezérlőjéhez][aks-ingress-basic]. You can also [create an ingress controller with a static public IP address][aks-static-ingress].
 
 <!-- LINKS - External -->
 [kubectl-describe]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#describe

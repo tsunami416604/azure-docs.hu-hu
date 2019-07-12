@@ -9,12 +9,12 @@ ms.author: grhuynh
 ms.service: genomics
 ms.topic: conceptual
 ms.date: 03/02/2018
-ms.openlocfilehash: 7c51a0934457a2fcc03f9be1535712e97ac91a1e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 833067f53f53f347ce091a64702d44a78cde836f
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60781186"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67657096"
 ---
 # <a name="submit-a-workflow-to-microsoft-genomics-using-a-sas-instead-of-a-storage-account-key"></a>Munkafolyamat elküldése Microsoft Genomics számára tárfiókkulcs helyett SAS használatával 
 
@@ -58,7 +58,7 @@ A bemeneti fájlokhoz tartozó SAS-kód hatókörének az adott bemeneti fájlra
 
 ### <a name="set-up-create-a-sas-programmatically"></a>Állítsa be: SAS létrehozása programozással
 
-A SAS Azure Storage SDK használatával történő létrehozásáról számos nyelven elérhető dokumentáció, így a [.NET](https://docs.microsoft.com/azure/storage/blobs/storage-dotnet-shared-access-signature-part-2#generate-a-shared-access-signature-uri-for-a-blob), a [Python](https://docs.microsoft.com/azure/storage/blobs/storage-python-how-to-use-blob-storage) és a [Node.js](https://docs.microsoft.com/azure/storage/blobs/storage-nodejs-how-to-use-blob-storage) nyelveken is. 
+A SAS Azure Storage SDK használatával történő létrehozásáról számos nyelven elérhető dokumentáció, így a [.NET](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1), a [Python](https://docs.microsoft.com/azure/storage/blobs/storage-python-how-to-use-blob-storage) és a [Node.js](https://docs.microsoft.com/azure/storage/blobs/storage-nodejs-how-to-use-blob-storage) nyelveken is. 
 
 Az SAS SDK nélküli létrehozása esetén az SAS lekérdezési sztringjét közvetlenül is össze lehet állítani, beleértve az SAS hitelesítéshez szükséges összes információt is. Ezek az [utasítások](https://docs.microsoft.com/rest/api/storageservices/constructing-a-service-sas) részletesen leírják az SAS lekérdezési sztring összetevőit és az összeállítás módját. A szükséges SAS-aláírás létrehozásához a rendszer ezeknek az [utasításoknak](https://docs.microsoft.com/rest/api/storageservices/service-sas-examples) megfelelően létrehoz egy HMAC-t a blob/tároló hitelesítési információi alapján.
 

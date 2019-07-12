@@ -7,12 +7,12 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 06/03/2019
-ms.openlocfilehash: cafceb0c7ee6b165ee03727e1dff76db00d2863b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: f38f1c313be17457c28c5b30fa743f7a0eae2cc0
+ms.sourcegitcommit: 0ebc62257be0ab52f524235f8d8ef3353fdaf89e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67077336"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67621983"
 ---
 # <a name="ingest-data-from-event-hub-into-azure-data-explorer"></a>Betölteni az adatokat az Event Hubs az Azure Data Explorer
 
@@ -56,9 +56,9 @@ Ez a cikk készítése a mintaadatokat, és küldje el az eseményközpontok fel
 
     **Beállítás** | **Ajánlott érték** | **Mező leírása**
     |---|---|---|
-    | Előfizetés | Az Ön előfizetése | Válassza ki az eseményközponthoz használni kívánt Azure-előfizetést.|
-    | Erőforráscsoport | *test-hub-rg* | Hozzon létre egy új erőforráscsoportot. |
-    | Location egység | *USA nyugati régiója* | Válassza ki *USA nyugati RÉGIÓJA* ebben a cikkben. Éles üzemben az igényeinek leginkább megfelelő régiót válassza. Az eseményközpont-névtér létrehozása a legjobb teljesítmény érdekében a Kusto-fürt ugyanazon a helyen (leginkább fontos a nagy átviteli sebességgel eseményközpont-névtér).
+    | Subscription | Az Ön előfizetése | Válassza ki az eseményközponthoz használni kívánt Azure-előfizetést.|
+    | Resource group | *test-hub-rg* | Hozzon létre egy új erőforráscsoportot. |
+    | Location | *USA nyugati régiója* | Válassza ki *USA nyugati RÉGIÓJA* ebben a cikkben. Éles üzemben az igényeinek leginkább megfelelő régiót válassza. Az eseményközpont-névtér létrehozása a legjobb teljesítmény érdekében a Kusto-fürt ugyanazon a helyen (leginkább fontos a nagy átviteli sebességgel eseményközpont-névtér).
     | Névtér neve | A névtér egyedi neve | Válasszon egy egyedi nevet a névtér azonosításához. Például: *mytestnamespace*. A rendszer hozzáfűzi a *servicebus.windows.net* tartománynevet a megadott névhez. A név csak betűket, számokat és kötőjelet tartalmazhat. A névnek betűvel kell kezdődnie, és betűvel vagy számmal kell végződnie. Az érték 6 és 50 karakter közötti hosszúságú lehet.
     | Event Hubs neve | *test-hub* | Az eseményközpont a névtéren belül helyezkedik el, ami egy egyedi hatókörkezelési tárolóként szolgál. Az eseményközpont nevének egyedinek kell lennie a névtéren belül. |
     | Fogyasztói csoport neve | *test-group* | A fogyasztói csoportokkal több fogyasztói alkalmazás is rendelkezhet az eseménystream külön nézetével. |
@@ -187,7 +187,7 @@ Most, hogy az alkalmazás adatokat állít elő, láthatja, ahogy ezek az adatok
     ![Üzenetek eredményhalmaza](media/ingest-data-event-hub/message-result-set.png)
 
     > [!NOTE]
-    > Az adatkezelő az Azure-összesítési (kötegelés) szabályzat adatbetöltés, optimalizálja a betöltési folyamat rendelkezik. A házirendet 5 perc van konfigurálva, a késés tapasztalható.
+    > Az adatkezelő az Azure-összesítési (kötegelés) szabályzat adatbetöltés, optimalizálja a betöltési folyamat rendelkezik. A szabályzat van konfigurálva 5 perc, alapértelmezés szerint, a késés tapasztalható. Lásd: [házirend kötegelés](/azure/kusto/concepts/batchingpolicy) összesítési lehetőségek. Lásd: [házirend streamelési](/azure/kusto/concepts/streamingingestionpolicy) nincs összesítéssel támogatunk.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 

@@ -3,16 +3,16 @@ title: Az Azure CDN a Verizon prémium szintű szabálymotorral használatával 
 description: A rules engine teszi lehetővé testre szabhatja, milyen HTTP-kérések kezelésének a Verizon prémium szintű Azure CDN által például blokkolja a bizonyos tartalomtípusok kézbesítését, gyorsítótárazási szabályzat definiálása és módosíthatja a HTTP-fejléceket.
 services: cdn
 author: mdgattuso
-ms.service: cdn
+ms.service: azure-cdn
 ms.topic: article
 ms.date: 05/31/2019
 ms.author: magattus
-ms.openlocfilehash: 81af3073d64e4379972568a57907a7fb2f82356d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: fa08f59f3b69395d548649bb131e04c5071c053d
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66481729"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67593190"
 ---
 # <a name="override-http-behavior-using-the-azure-cdn-from-verizon-premium-rules-engine"></a>Az Azure CDN a Verizon prémium szintű szabálymotorral használatával HTTP a működés felülbírálása
 

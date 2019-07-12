@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 09/20/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 212243f38b153f75c08a9b4c58622d0444f0ac62
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 498fe63964e44de8f9e1bc06c1740f1a9ef9b392
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66510373"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67654171"
 ---
 # <a name="set-up-sign-in-with-a-google-account-using-custom-policies-in-azure-active-directory-b2c"></a>Állítsa be a bejelentkezést egy Google-fiókot az Azure Active Directory B2C-vel egyéni szabályzatok használatával
 
@@ -30,7 +30,7 @@ Ez a cikk bemutatja, hogyan bejelentkezés engedélyezése a felhasználók szá
 
 ## <a name="register-the-application"></a>Az alkalmazás regisztrálása
 
-Jelentkezzen be a felhasználók számára a Google-fiók engedélyezéséhez szeretne létrehozni egy Google-projekt. 
+Jelentkezzen be a felhasználók számára a Google-fiók engedélyezéséhez szeretne létrehozni egy Google-projekt.
 
 1. Jelentkezzen be a [Google fejlesztői konzolon](https://console.developers.google.com/) fiókja hitelesítő adataival.
 2. Adjon meg egy **projektnév**, kattintson a **létrehozás**, majd győződjön meg arról, hogy az új projekt használ, és.
@@ -50,7 +50,7 @@ Az ügyfél titkos kulcsát, az Azure AD B2C-bérlő korábban rögzített táro
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 2. Győződjön meg arról, hogy használja az Azure AD B2C-bérlő tartalmazó könyvtárba. Válassza ki a **címtár és előfizetés-szűrő** a felső menüben, és válassza ki a bérlő tartalmazó könyvtárra.
 3. Válasszon **minden szolgáltatás** az Azure Portalon, és majd keresse meg és válassza a bal felső sarkában lévő **Azure AD B2C-vel**.
-4. Az Áttekintés oldalon válassza ki a **identitás-kezelőfelületi keretrendszer – előzetes verzió**.
+4. Az Áttekintés oldalon válassza ki a **identitás-kezelőfelületi keretrendszer**.
 5. Válassza ki **Szabályzatbejegyzések** majd **Hozzáadás**.
 6. A **beállítások**, válassza a `Manual`.
 7. Adjon meg egy **neve** a házirend-kulcs. Például: `GoogleSecret`. Az előtag `B2C_1A_` automatikusan hozzáadódik a kulcs neve.
@@ -60,7 +60,7 @@ Az ügyfél titkos kulcsát, az Azure AD B2C-bérlő korábban rögzített táro
 
 ## <a name="add-a-claims-provider"></a>A jogcímeket szolgáltató hozzáadása
 
-Ha azt szeretné, hogy a felhasználók számára, hogy jelentkezzen be Google-fiók használatával, definiálhatja a fiók, amely az Azure AD B2C-végponton keresztül kommunikálhat egy jogcímszolgáltatótól szeretne. A végpont ellenőrzése, hogy egy adott felhasználó rendelkezik hitelesítése Azure AD B2C által használt jogcímeket biztosít. 
+Ha azt szeretné, hogy a felhasználók számára, hogy jelentkezzen be Google-fiók használatával, definiálhatja a fiók, amely az Azure AD B2C-végponton keresztül kommunikálhat egy jogcímszolgáltatótól szeretne. A végpont ellenőrzése, hogy egy adott felhasználó rendelkezik hitelesítése Azure AD B2C által használt jogcímeket biztosít.
 
 Definiálhat egy Google-fiókot, egy jogcímszolgáltatótól hozzáadásával, hogy a **ClaimsProviders** elem a bővítmény fájlban a szabályzat.
 
@@ -152,7 +152,7 @@ Most, hogy egyetlen helyen, amelyekkel hozzákapcsolhatja egy műveletet kell. A
     ```XML
     <ClaimsExchange Id="GoogleExchange" TechnicalProfileReferenceId="Google-OAuth" />
     ```
-    
+
     Frissítse az értéket a **TechnicalProfileReferenceId** , a korábban létrehozott technikai profil azonosítója. Például: `Google-OAuth`.
 
 3. Mentse a *TrustFrameworkExtensions.xml* fájlt, és töltse fel újra az ellenőrzéshez.

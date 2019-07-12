@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 2/7/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: a745fefa5ceb0f81cf8d66e7af9e308c0ecb40b9
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: e9e790ac8ac67478a0e7b5143a5b2f1fdd9c790c
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67449855"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67798662"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>Az Azure File Sync üzembe helyezésének megtervezése
 Az Azure File Sync használatával fájlmegosztásainak a szervezet az Azure Files között, miközben gondoskodik a rugalmasságát, teljesítményét és kompatibilitását a helyszíni fájlkiszolgálók. Az Azure File Sync Windows Server az Azure-fájlmegosztás gyors gyorsítótáraivá alakítja át. Helyileg, az adatok eléréséhez a Windows Serveren elérhető bármely protokollt használhatja, beleértve az SMB, NFS és FTPS. Tetszőleges számú gyorsítótárak világszerte igény szerint is rendelkezhet.
@@ -69,23 +69,10 @@ Felhőbeli rétegezés egy olyan opcionális szolgáltatás, az Azure File Sync,
 ## <a name="azure-file-sync-system-requirements-and-interoperability"></a>Az Azure File Sync Rendszerkövetelmények és együttműködés 
 Ez a szakasz ismerteti az Azure File Sync ügynök Rendszerkövetelmények és a Windows Server szolgáltatásaival és a szerepkörök és a külső felek megoldásaival való együttműködés.
 
-### <a name="evaluation-tool"></a>Kiértékelési eszközével
-Az Azure File Sync üzembe helyezése előtt, ki kell értékelni a rendszer az Azure File Sync értékelési eszközzel kompatibilis-e. Ezt az eszközt az Azure PowerShell-parancsmagot, amely ellenőrzi a potenciális problémákat, a fájlrendszert és adatkészlethez, például a nem támogatott karaktereket vagy nem támogatott operációsrendszer-verzió. Vegye figyelembe, hogy ellenőrizze az legtöbb terjed ki, de nem az összes alábbi; szolgáltatás azt javasoljuk, hogy olvassa el ezt a szakaszt körültekintően ellenőrizze az üzemelő példány kerül zökkenőmentesen, a rest-en keresztül. 
+### <a name="evaluation-cmdlet"></a>Értékelés parancsmag
+Az Azure File Sync üzembe helyezése előtt, ki kell értékelni a rendszer az Azure File Sync értékelési parancsmaggal kompatibilis-e. Ez a parancsmag ellenőrzi a potenciális problémákat, a fájlrendszert és adatkészlethez, például a nem támogatott karaktereket vagy nem támogatott operációsrendszer-verzió. Vegye figyelembe, hogy ellenőrizze az legtöbb terjed ki, de nem az összes alábbi; szolgáltatás azt javasoljuk, hogy olvassa el ezt a szakaszt körültekintően ellenőrizze az üzemelő példány kerül zökkenőmentesen, a rest-en keresztül. 
 
-#### <a name="download-instructions"></a>Útmutató letöltése
-1. Győződjön meg arról, hogy a PackageManagement legújabb verzióját, és a PowerShellGet telepítése (Ez lehetővé teszi, hogy az előzetes verziójú modulok telepítése)
-    
-    ```powershell
-        Install-Module -Name PackageManagement -Repository PSGallery -Force
-        Install-Module -Name PowerShellGet -Repository PSGallery -Force
-    ```
- 
-2. Indítsa újra a PowerShell
-3. A modulok telepítése
-    
-    ```powershell
-        Install-Module -Name Az.StorageSync -AllowPrerelease -AllowClobber -Force
-    ```
+A kiértékelés parancsmag a Az PowerShell-modult, amely az itt leírt utasításokat követve telepíthető telepítésével telepíthető: [Azure PowerShell telepítése és konfigurálása](https://docs.microsoft.com/powershell/azure/install-Az-ps).
 
 #### <a name="usage"></a>Használat  
 A kiértékelési eszközével hívhat meg több különböző módon is: a rendszer ellenőrzi, az adatkészlet-ellenőrzéseket vagy mindkettő hajthat végre. A rendszer és az adatkészletet ellenőrzések elvégzéséhez: 
@@ -115,11 +102,11 @@ Az eredmények megjelenítése a fürt megosztott kötetei szolgáltatás:
 
     | Version | Támogatott termékváltozatok | Támogatott központi telepítési beállítások |
     |---------|----------------|------------------------------|
-    | A Windows Server 2019 | Datacenter és Standard | Teljes (a felhasználói felületen keresztül kiszolgáló) |
-    | Windows Server 2016 | Datacenter és Standard | Teljes (a felhasználói felületen keresztül kiszolgáló) |
-    | Windows Server 2012 R2 | Datacenter és Standard | Teljes (a felhasználói felületen keresztül kiszolgáló) |
+    | A Windows Server 2019 | Datacenter és Standard | Teljes és Core |
+    | Windows Server 2016 | Datacenter és Standard | Teljes és Core |
+    | Windows Server 2012 R2 | Datacenter és Standard | Teljes és Core |
 
-    A Windows Server későbbi verzióiban bekerül vannak. Windows korábbi verzióiban előfordulhat, hogy a felhasználói visszajelzések alapján adható hozzá.
+    A Windows Server későbbi verzióiban bekerül vannak.
 
     > [!Important]  
     > Azt javasoljuk, hogy minden kiszolgáló, amelyet az Azure File Sync mindig naprakészek lehetnek az a legújabb frissítéseket a Windows Update gondoskodik. 
@@ -169,8 +156,12 @@ A Windows Server feladatátvételi fürtszolgáltatás támogatott az Azure File
 > Az Azure File Sync ügynök megfelelő működéséhez szinkronizálási egy feladatátvevő fürt minden csomópontján telepítve kell lennie.
 
 ### <a name="data-deduplication"></a>Az Adatdeduplikáció
-**Ügynök verziója 5.0.2.0**   
-Az Adatdeduplikáció a felhőbeli rétegezés engedélyezve van a Windows Server 2016 és Windows Server 2019 kötetek esetében támogatott. Egy köteten, a deduplikáció engedélyezése a felhőbeli rétegezés engedélyezett lehetővé teszi további fájlok a helyi gyorsítótár több tároló üzembe helyezése nélkül. Vegye figyelembe, hogy ezek kötet megtakarítás csak vonatkoznak-e a helyszíni; Azure Files szolgáltatásban az adatok nem lesznek deduplikált. 
+**Ügynök verziója 5.0.2.0 vagy újabb**   
+Az Adatdeduplikáció a felhőbeli rétegezés engedélyezve van a Windows Server 2016 és Windows Server 2019 kötetek esetében támogatott. Adatdeduplikáció engedélyezése a köteten a felhőbeli rétegezés engedélyezett lehetővé teszi további fájlok a helyi gyorsítótár több tároló üzembe helyezése nélkül. 
+
+Engedélyezésekor az Adatdeduplikáció egy köteten a felhőbeli rétegezés engedélyezve van a Deduplikáció optimalizált fájlokat a kiszolgálói végpont helye belül rétegezettek lesznek hasonló a normál fájlt a felhőrétegzés házirend-beállításai alapján. Egyszer a Deduplikáció rendelkezik lett rétegzett optimalizált fájlokat, az Adatdeduplikáció szemétgyűjtési feladat automatikusan futtatja, amely már nem hivatkozott felesleges adattömbök eltávolításával a lemezterületet felszabadítása érdekében szerint más a köteten lévő fájlokkal.
+
+Megjegyzés: a kötet megtakarítások csak vonatkoznak a kiszolgáló; az Azure-fájlmegosztást az adatok nem lesznek deduplikált.
 
 **A Windows Server 2012 R2 vagy az ügynök korábbi verzióival**  
 Olyan kötetek, amelyek nem rendelkeznek a felhőbeli rétegezés engedélyezve van, az Azure File Sync támogatja a Windows Server Adatdeduplikáció engedélyezése a köteten.
@@ -220,7 +211,7 @@ Víruskereső ismert kártevő kódja fájlok vizsgálata úgy működik, mert e
 A Microsoft belső fejlesztésű vírusvédelmi megoldások, a Windows Defender és System Center Endpoint Protection (SCEP), mindkettő automatikusan hagyja ki ezt az attribútumot állítsa rendelkező fájlok olvasásához. Tudjuk tesztelni őket, és egy kisebb hibát azonosított: a kiszolgáló egy meglévő szinkronizálási csoporthoz való hozzáadásakor fájlok kisebb, mint 800 bájt vannak idézni (Letöltés) az új kiszolgálón. Ezek a fájlok továbbra is az új kiszolgálón, és nem lesz rétegzett, mivel azok nem felelnek meg a rétegzési méretkövetelményt (> 64 KB-os).
 
 > [!Note]  
-> Víruskereső ellenőrizheti a kompatibilitást a termék- és az Azure File Sync használatával az [Azure fájl szinkronizálása víruskereső kompatibilitási teszt] között (https://www.microsoft.com/download/details.aspx?id=58322), amely letölthető a Microsoft Download Center érhető el.
+> Víruskereső ellenőrizheti a termék- és az Azure File Sync használatával közötti kompatibilitást a [Azure File Sync víruskereső kompatibilitási tesztcsomag](https://www.microsoft.com/download/details.aspx?id=58322), amely letölthető a Microsoft Download Center érhető el.
 
 ### <a name="backup-solutions"></a>Biztonsági mentési megoldások
 Például a víruskereső megoldások biztonsági mentési megoldások okozhat a rétegzett fájlok visszahívása. Azt javasoljuk, hogy biztonsági mentése az Azure-fájlmegosztás helyett egy a helyszíni biztonsági mentési termék egy felhőalapú biztonsági mentési megoldás használatával.
@@ -263,6 +254,7 @@ Az Azure File Sync csak az alábbi régiókban érhető el:
 | Kelet-Ázsia | Hongkong (KKT) |
 | East US | Virginia |
 | USA 2. keleti régiója | Virginia |
+| Közép-Franciaország | Párizs |
 | Korea középső régiója| Szöul |
 | Korea déli régiója| Busan |
 | Kelet-Japán | Tokió, Szaitama |
@@ -304,6 +296,7 @@ Georedundáns tárolás és az Azure File Sync feladatátvételi integrációjá
 | Kelet-Ázsia           | Délkelet-Ázsia     |
 | East US             | USA nyugati régiója            |
 | USA 2. keleti régiója           | USA középső régiója         |
+| Közép-Franciaország      | Dél-Franciaország       |
 | Kelet-Japán          | Nyugat-Japán         |
 | Nyugat-Japán          | Kelet-Japán         |
 | Korea középső régiója       | Korea déli régiója        |

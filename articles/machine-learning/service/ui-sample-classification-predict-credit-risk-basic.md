@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: zhanxia
 ms.reviewer: sgilley
 ms.date: 05/10/2019
-ms.openlocfilehash: f37c945758cfbd03889d79acf764e7f67022267a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6ec91ca83d7aa1bc5e6c290d35b573a60cc0ed19
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65789405"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67605773"
 ---
 # <a name="sample-3---classification-predict-credit-risk"></a>Mintául szolgáló 3 - besorolás: Hitelkockázat előrejelzése
 
@@ -39,7 +39,7 @@ A befejezett graph ehhez a kísérlethez itt látható:
 
 [4 – besorolási. példa: Hitelkockázat-becslés (költség-és nagybetűket)](ui-sample-classification-predict-credit-risk-cost-sensitive.md) speciális kísérletet, amelyek ezzel a kísérlettel azonos problémával megoldja biztosít. Azt mutatja, hogyan hajthat végre _költség-és nagybetűket_ besorolási használatával egy **Python-szkript végrehajtására** modul, és hasonlítsa össze a két bináris osztályozási algoritmusok teljesítményének. Tekintse meg, ha többet szeretne megtudni a besorolási kísérletek létrehozását.
 
-## <a name="data"></a>Adatok
+## <a name="data"></a>Data
 
 A Németországi hitelkártya adatkészlet a UC Irvine adattárból használjuk.
 Az adatkészlet 20 funkciók és 1 címkével 1000 mintákat tartalmazza. Minden minta egy személyt jelöl. Szolgáltatásai közé tartozik a numerikus és a kategorikus funkciókat. Tekintse meg a [UCI webhely](https://archive.ics.uci.edu/ml/datasets/Statlog+%28German+Credit+Data%29) kategorikus funkcióinak jelentését. Az utolsó oszlop, a címke, amely azt jelzi, hogy a hitelkockázat kiszámításához, és csak két lehetséges értékek: magas hitelkockázat = 2, és alacsony hitelkockázat = 1.
@@ -78,3 +78,4 @@ Ismerje meg a vizuális felületen érhető el a más minták:
 - [2 – regressziós. példa: Hasonlítsa össze az autó árának előrejelzése algoritmusok](ui-sample-regression-predict-automobile-price-compare-algorithms.md)
 - [4 – besorolási. példa: Hitelkockázatot (költség-és nagybetűket)](ui-sample-classification-predict-credit-risk-cost-sensitive.md)
 - [5 – besorolási. példa: Forgalom előrejelzése](ui-sample-classification-predict-churn.md)
+- [6 – besorolási. példa: A járatok késésének előrejelzése](ui-sample-classification-predict-flight-delay.md)

@@ -9,13 +9,13 @@ ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
 ms.date: 06/18/2018
-ms.author: martincoetzer
-ms.openlocfilehash: f63ceb6a80f253ea1661d215939705f8e39f3e58
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: martinco
+ms.openlocfilehash: a3a1542279077ffb949fbfd9c8cb7236827803d9
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67119295"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67588906"
 ---
 # <a name="five-steps-to-securing-your-identity-infrastructure"></a>Öt lépést a személyazonosság-infrastruktúra védelme
 
@@ -184,7 +184,7 @@ Az Azure AD lehetővé teszi a biztonsági és Office 365-csoportok használatá
 
 A [az Azure AD hozzáférési felülvizsgálatok](https://docs.microsoft.com/azure/active-directory/active-directory-azure-ad-controls-access-reviews-overview), akkor is kezelhetik a csoporttagságokat, hozzáférés a vállalati alkalmazásokhoz, és ellenőrizze, hogy egy biztonsági szabvány, amely a hozzáférést a felhasználóknak a megmaradjanak a kiemelt szerepkörök hozzárendeléseit kiterjesztett időszakok idő, amikor nincs szükségük van rá.
 
-## <a name="summary"></a>Összefoglalás
+## <a name="summary"></a>Összegzés
 
 Sok szempontot, biztonságos identitás-infrastruktúrát, de az 5. lépés – ellenőrzőlista segít gyorsan elvégezni egy biztonságosabb és biztonságos identitás-infrastruktúrát:
 

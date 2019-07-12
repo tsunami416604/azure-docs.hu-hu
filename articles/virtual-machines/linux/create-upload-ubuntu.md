@@ -4,7 +4,7 @@ description: Ismerje meg, hozhat létre és töltse fel az Azure virtuális mere
 services: virtual-machines-linux
 documentationcenter: ''
 author: szarkos
-manager: jeconnoc
+manager: gwallace
 editor: tysonn
 tags: azure-resource-manager,azure-service-management
 ms.assetid: 3e097959-84fc-4f6a-8cc8-35e087fd1542
@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/24/2019
 ms.author: szark
-ms.openlocfilehash: c90b6b3292b7ced75c1a01e64133533ffa5970df
-ms.sourcegitcommit: a7ea412ca4411fc28431cbe7d2cc399900267585
+ms.openlocfilehash: 50651a31cd407da3ce32be3c2ddbbd24e6ca6b69
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/25/2019
-ms.locfileid: "67357287"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67671573"
 ---
 # <a name="prepare-an-ubuntu-virtual-machine-for-azure"></a>Ubuntus virtuális gép előkészítése Azure-beli használatra
 [!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]

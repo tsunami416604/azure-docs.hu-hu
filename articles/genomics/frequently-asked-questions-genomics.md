@@ -9,33 +9,20 @@ ms.author: grhuynh
 ms.service: genomics
 ms.topic: article
 ms.date: 12/07/2017
-ms.openlocfilehash: 2bcbf9d145d9b8b5a3c42893235906d24516405c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d36a2c6379a95cc67a55c2cc266ced94b4a0179a
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65792619"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67672230"
 ---
 # <a name="microsoft-genomics-common-questions"></a>A Microsoft Genomics: Gyakori kérdések
 
 Ez a cikk a leggyakoribb lekérdezések, előfordulhat, hogy rendelkezik a Microsoft Genomics kapcsolódó sorolja fel. A Microsoft Genomics szolgáltatásba további információkért lásd: [Mi a Microsoft Genomics?](overview-what-is-genomics.md). Hibaelhárítással kapcsolatos további információkért lásd: a [hibaelhárítási útmutatója](troubleshooting-guide-genomics.md). 
 
-## <a name="what-is-the-microsoft-genomics-service-gatk-4-promotion"></a>Mi a Microsoft Genomics szolgáltatás GATK 4 előléptetés?
-2019\. június 30-ig a Microsoft Genomics szolgáltatásba 20 WGS fut GATK4 költségek nélkül kínál. Ez az ajánlat register részt [Itt](https://aka.ms/msgatk4). 
 
-### <a name="what-are-the-common-issues-i-might-encounter-while-running-the-microsoft-genomics-service-gatk4-promotion"></a>Mik azok a gyakori problémák jutok előfordulhat, hogy a futtatásakor a Microsoft Genomics szolgáltatás GATK4 támogatása
-Itt látható az esetleg felmerülő gyakori hibák és a megoldást ajánlott alkalmazni:
-
-| **üzenet**                                                                                                                                                                                    | **OK**                                                                                                    | **Felbontás**                                                                                                                                                                                                       |
-|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `gatk4-promo` a fiók nincs engedélyezve. További információkért lásd: https://docs.microsoft.com/azure/genomics/frequently-asked-questions-genomics                               | Próbált GATK4 a munkafolyamatok futtatásához a Microsoft Genomics szolgáltatással aktiválás nélkül.       | Látogasson el [Itt](https://aka.ms/msgatk4) a fiók aktiválásához. Vegye figyelembe, hogy a próbaidőszak 2019. június 30. Nem tudja aktiválni a saját fiókját a promóciós fut ezen időpont utáni. |
-| Köszönjük, hogy közben `gatk4-promo`. A próbaidőszak véget ért. További információ https://docs.microsoft.com/azure/genomics/frequently-asked-questions-genomics                  | Az év végén a GATK4 próbaverzió lejárt, és szeretne meghívni a `gatk4-promo` folyamat_neve.  | Váltson a folyamat_neve paraméter, `gatk4`, hanem `gatk4-promo`. Ez a hivatalos gatk4 verziót, és a munkafolyamat számítjuk fel, ha ezt a paramétert használja.                                         |
-| Köszönjük, hogy közben `gatk4-promo` minden, a lefoglalt futtatások használja. További információkért lásd: https://docs.microsoft.com/azure/genomics/frequently-asked-questions-genomics | Sikeresen elküldte az összes a promóciós 20 GATK4 futtat.                               | Küldje el minden olyan új gatk4 fut, folyamat_neve argumentum értéke `gatk4` helyett `gatk4-promo`. Ez a paraméter használata esetén a munkafolyamat lesznek számlázva.                                                          |        
-
-
-## <a name="can-i-run-gatk4-workflows-on-microsoft-genomics-without-signing-up-for-the-gatk4-promotion"></a>Futtathatók GATK4 munkafolyamatokat a Microsoft Genomics GATK4 elősegítő regisztráció nélkül?
-Igen, a Microsoft Genomics szolgáltatás a config.txt fájlban adja meg, a folyamat_neve `gatk4`. Vegye figyelembe, hogy számlázása normál díjszabása nem módosul, és az ingyenes 20 fut. nem vonatkozik a Microsoft Genomics-fiók.
-
+## <a name="how-do-i-run-gatk4-workflows-on-microsoft-genomics"></a>Hogyan futtathatok GATK4 munkafolyamatokat a Microsoft Genomics?
+A Microsoft Genomics szolgáltatás a config.txt fájlban adja meg, a folyamat_neve `gatk4`. Vegye figyelembe, hogy meg fog számlázása a normál díjszabása nem módosul.
 
 
 ## <a name="what-is-the-sla-for-microsoft-genomics"></a>Mit jelent az SLA-t a Microsoft Genomics?
@@ -74,7 +61,7 @@ A tárfiók kulcsát a Microsoft Genomics szolgáltatás a bemeneti fájlok olva
 
 Ezek a hivatkozások támogatottak:
 
- |Leírások              | Az érték `-pa/--process-args` |
+ |Hivatkozás              | Az érték `-pa/--process-args` |
  |:-------------         |:-------------                 |
  |b37                    | `R=b37m1`                     |
  |hg38                   | `R=hg38m1`                    |      

@@ -2,17 +2,17 @@
 title: Statikus IP-címet a kimenő forgalmat az Azure Kubernetes Service (AKS)
 description: Ismerje meg, hogyan hozhat létre és használhat egy statikus nyilvános IP-címet a kimenő forgalmat az Azure Kubernetes Service (AKS)-fürt
 services: container-service
-author: iainfoulds
+author: mlearned
 ms.service: container-service
 ms.topic: article
 ms.date: 03/04/2019
-ms.author: iainfou
-ms.openlocfilehash: 6612d801804cdd1e092b50977230f24b378e64ba
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: mlearned
+ms.openlocfilehash: 094a696a12025dcfd575ce3f035b12b4a04aba10
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60466426"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67615567"
 ---
 # <a name="use-a-static-public-ip-address-for-egress-traffic-in-azure-kubernetes-service-aks"></a>A kimenő forgalmat az Azure Kubernetes Service (AKS) egy statikus nyilvános IP-cím használata
 
@@ -22,7 +22,7 @@ Ez a cikk bemutatja, hogyan hozhat létre és használhat egy statikus nyilváno
 
 ## <a name="before-you-begin"></a>Előkészületek
 
-Ez a cikk azt feltételezi, hogy egy meglévő AKS-fürtöt. Ha egy AKS-fürtre van szüksége, tekintse meg az AKS gyors [az Azure CLI-vel] [ aks-quickstart-cli] vagy [az Azure portal használatával][aks-quickstart-portal].
+Ez a cikk azt feltételezi, hogy egy meglévő AKS-fürtöt. Ha egy AKS-fürtre van szüksége, tekintse meg az AKS gyors [az Azure CLI-vel][aks-quickstart-cli] or [using the Azure portal][aks-quickstart-portal].
 
 Emellett az Azure CLI 2.0.59 verziójára van szükség, vagy később telepített és konfigurált. Futtatás `az --version` a verzió megkereséséhez. Ha telepíteni vagy frissíteni, tekintse meg kell [Azure CLI telepítése][install-azure-cli].
 
@@ -34,7 +34,7 @@ Egyszer típusú Kubernetes szolgáltatás `LoadBalancer` létrejött, az ügyn�
 
 ## <a name="create-a-static-public-ip"></a>Statikus nyilvános IP-cím létrehozása
 
-Amikor az aks-sel használható statikus nyilvános IP-címet hoz létre, az IP-cím erőforrás kell létrehozni a **csomópont** erőforráscsoportot. Az erőforráscsoport nevét az első a [az aks show] [ az-aks-show] parancsot, majd adja hozzá a `--query nodeResourceGroup` lekérdezési paraméter. Az alábbi példa lekéri az AKS-fürt nevét a csomópont erőforráscsoport *myAKSCluster* az erőforráscsoport nevét a *myResourceGroup*:
+Amikor az aks-sel használható statikus nyilvános IP-címet hoz létre, az IP-cím erőforrás kell létrehozni a **csomópont** erőforráscsoportot. Az erőforráscsoport nevét az első a [az aks show][az-aks-show] parancsot, majd adja hozzá a `--query nodeResourceGroup` lekérdezési paraméter. Az alábbi példa lekéri az AKS-fürt nevét a csomópont erőforráscsoport *myAKSCluster* az erőforráscsoport nevét a *myResourceGroup*:
 
 ```azurecli-interactive
 $ az aks show --resource-group myResourceGroup --name myAKSCluster --query nodeResourceGroup -o tsv
@@ -42,7 +42,7 @@ $ az aks show --resource-group myResourceGroup --name myAKSCluster --query nodeR
 MC_myResourceGroup_myAKSCluster_eastus
 ```
 
-Most hozzon létre egy statikus nyilvános IP-címet a [az hálózati nyilvános IP-cím létrehozása] [ az-network-public-ip-create] parancsot. Adja meg az előző paranccsal beszerzett a csomópont erőforráscsoport-név, és ezután a egy nevet az IP-cím erőforrás, például *myAKSPublicIP*:
+Most hozzon létre egy statikus nyilvános IP-címet a [az hálózati nyilvános IP-cím létrehozása][az-network-public-ip-create] parancsot. Adja meg az előző paranccsal beszerzett a csomópont erőforráscsoport-név, és ezután a egy nevet az IP-cím erőforrás, például *myAKSPublicIP*:
 
 ```azurecli-interactive
 az network public-ip create \
@@ -65,7 +65,7 @@ Az IP-cím jelenik meg, ahogyan az a következő sűrített példához kimenet:
   }
 ```
 
-Később a nyilvános IP cím használatával lekérheti a [az network public-ip list] [ az-network-public-ip-list] parancsot. Adja meg a csomópont erőforráscsoport nevét, és ezután lekérdezi a *IP-cím* az alábbi példában látható módon:
+Később a nyilvános IP cím használatával lekérheti a [az network public-ip list][az-network-public-ip-list] parancsot. Adja meg a csomópont erőforráscsoport nevét, és ezután lekérdezi a *IP-cím* az alábbi példában látható módon:
 
 ```azurecli-interactive
 $ az network public-ip list --resource-group MC_myResourceGroup_myAKSCluster_eastus --query [0].ipAddress --output tsv

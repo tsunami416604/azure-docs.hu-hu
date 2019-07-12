@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 10/20/2018
 ms.author: cherylmc;ganesr
 ms.custom: seodec18
-ms.openlocfilehash: 16f3ad1aa037dca2e7b8c3e68ae952c27b952711
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: ce6d64f1df7a91f68e4621189553c36b36709039
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60366480"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67657226"
 ---
 # <a name="create-and-modify-an-expressroute-circuit"></a>Létrehozása és módosítása egy ExpressRoute-kapcsolatcsoporttal
 
@@ -21,6 +21,7 @@ ms.locfileid: "60366480"
 > * [Azure Portal](expressroute-howto-circuit-portal-resource-manager.md)
 > * [PowerShell](expressroute-howto-circuit-arm.md)
 > * [Azure CLI](howto-circuit-cli.md)
+> * [Azure Resource Manager-sablon](expressroute-howto-circuit-resource-manager-template.md)
 > * [Videó – Azure portal](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-an-expressroute-circuit)
 > * [PowerShell (klasszikus)](expressroute-howto-circuit-classic.md)
 >
@@ -121,7 +122,7 @@ Megtekintheti a kapcsolatcsoport állapotát, jelölje ki, és az Áttekintés o
 
 ## <a name="modify"></a>Az ExpressRoute-Kapcsolatcsoportok módosítása
 
-Egyes ExpressRoute-kapcsolatcsoport tulajdonságainak kapcsolat befolyásolása nélkül módosíthatja. A sávszélesség, Termékváltozat, számlázási modellt módosíthatja, és a klasszikus működés engedélyezése a **konfigurációs** lapot. A korlátok és korlátozások további információkért lásd: a [ExpressRoute – gyakori kérdések](expressroute-faqs.md). 
+Egyes ExpressRoute-kapcsolatcsoport tulajdonságainak kapcsolat befolyásolása nélkül módosíthatja. A sávszélesség, Termékváltozat, számlázási modellt módosíthatja, és a klasszikus működés engedélyezése a **konfigurációs** lapot. A korlátok és korlátozások további információkért lásd: a [ExpressRoute – gyakori kérdések](expressroute-faqs.md).
 
 Leállás nélkül a következő feladatokat hajthatja végre:
 
@@ -139,9 +140,9 @@ Leállás nélkül a következő feladatokat hajthatja végre:
 * Engedélyezheti és letilthatja az *klasszikus működés engedélyezése*.
   > [!IMPORTANT]
   > Az ExpressRoute-kapcsolatcsoport hozza létre újra, ha nincs elegendő kapacitás a meglévő porton is. A kapcsolatcsoport nem frissíthető, ha nincsenek további kapacitás érhető el az adott helyhez.
-  > 
+  >
   > Bár a zökkenőmentes frissítés a sávszélesség, megszakítás nélküli ExpressRoute-kapcsolatcsoport sávszélességét nem csökkenthető. Alacsonyabb verziójúra változtatása sávszélesség megköveteli, hogy az ExpressRoute-kapcsolatcsoport megszüntetése, és ezután építse ki újra a egy új ExpressRoute-kapcsolatcsoportot.
-  > 
+  >
   > A Premium bővítmény művelet letiltása meghiúsulhat, ha az erőforrást, amely nagyobb, mint a megengedett a standard szintű kapcsolatcsoportot használ.
 
 ExpressRoute-kapcsolatcsoport módosításához kattintson **konfigurációs**.

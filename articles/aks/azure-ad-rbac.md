@@ -2,17 +2,17 @@
 title: Vezérlő fürterőforrások az rbac-RÓL és az Azure ad-ben az Azure Kubernetes Service-ben
 description: Ismerje meg, hogyan használja az Azure Active Directory-csoporttagság fürterőforrások szerepköralapú hozzáférés-vezérlés (RBAC) az Azure Kubernetes Service (AKS) használatával való hozzáférés korlátozása
 services: container-service
-author: iainfoulds
+author: mlearned
 ms.service: container-service
 ms.topic: article
 ms.date: 04/16/2019
-ms.author: iainfou
-ms.openlocfilehash: e974c47d1dfb04f66b622c64a7143d00de87c4cb
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: mlearned
+ms.openlocfilehash: fba54fd23fefbe0029b9a809b23568490f05b23e
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60467544"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67616161"
 ---
 # <a name="control-access-to-cluster-resources-using-role-based-access-control-and-azure-active-directory-identities-in-azure-kubernetes-service"></a>Szerepköralapú hozzáférés-vezérlés és az Azure Active Directory-identitásokkal használatával az Azure Kubernetes Service-fürt erőforrásokhoz való hozzáférés vezérlése
 
@@ -37,7 +37,7 @@ Ebben a cikkben hozzunk létre két felhasználói szerepkörök, amelyek bemuta
 
 Éles környezetben használhat meglévő felhasználók és csoportok Azure AD-bérlő belül.
 
-Először kérje le az AKS fürt használata az erőforrás-Azonosítóját a [az aks show] [ az-aks-show] parancsot. Az erőforrás-azonosító hozzárendelése nevű változó *AKS_ID* úgy, hogy a további parancsok is lehet hivatkozni.
+Először kérje le az AKS fürt használata az erőforrás-Azonosítóját a [az aks show][az-aks-show] parancsot. Az erőforrás-azonosító hozzárendelése nevű változó *AKS_ID* úgy, hogy a további parancsok is lehet hivatkozni.
 
 ```azurecli-interactive
 AKS_ID=$(az aks show \
@@ -46,13 +46,13 @@ AKS_ID=$(az aks show \
     --query id -o tsv)
 ```
 
-Az első példa csoport létrehozása az Azure ad-ben a segítségével az alkalmazásfejlesztők a [az ad-csoport létrehozása] [ az-ad-group-create] parancsot. A következő példában létrehozunk egy nevű csoport *appdev*:
+Az első példa csoport létrehozása az Azure ad-ben a segítségével az alkalmazásfejlesztők a [az ad-csoport létrehozása][az-ad-group-create] parancsot. A következő példában létrehozunk egy nevű csoport *appdev*:
 
 ```azurecli-interactive
 APPDEV_ID=$(az ad group create --display-name appdev --mail-nickname appdev --query objectId -o tsv)
 ```
 
-Most hozzon létre egy Azure szerepkör-hozzárendelést a *appdev* használó csoport a [az szerepkör-hozzárendelés létrehozása] [ az-role-assignment-create] parancsot. Ez a hozzárendelés lehetővé teszi, hogy bármely tagja a csoport használata `kubectl` azáltal, hogy biztosítja azokat az AKS-fürt interakcióba a *Azure Kubernetes Service fürt felhasználói szerepkör*.
+Most hozzon létre egy Azure szerepkör-hozzárendelést a *appdev* használó csoport a [az szerepkör-hozzárendelés létrehozása][az-role-assignment-create] parancsot. Ez a hozzárendelés lehetővé teszi, hogy bármely tagja a csoport használata `kubectl` azáltal, hogy biztosítja azokat az AKS-fürt interakcióba a *Azure Kubernetes Service fürt felhasználói szerepkör*.
 
 ```azurecli-interactive
 az role assignment create \
@@ -83,7 +83,7 @@ az role assignment create \
 
 Két példa csoportokkal, az alkalmazásfejlesztők és SREs az Azure AD-ben létrehozott most hozzuk létre a két példa felhasználót. A cikk végén található az RBAC-integráció teszteléséhez, jelentkezzen be az AKS-fürtöt ezeket a fiókokat.
 
-Az első felhasználói fiók létrehozása az Azure AD-t a [az ad-felhasználó létrehozása] [ az-ad-user-create] parancsot.
+Az első felhasználói fiók létrehozása az Azure AD-t a [az ad-felhasználó létrehozása][az-ad-user-create] parancsot.
 
 A következő példában létrehozunk egy felhasználó megjelenítési nevű *AKS fejlesztési* és az egyszerű felhasználónév (UPN) az `aksdev@contoso.com`. Frissítése az Azure AD-bérlő ellenőrzött tartományt tartalmazza az egyszerű felhasználónév (cserélje le *contoso.com* saját tartomány), és adja meg a saját biztonságos `--password` hitelesítő adat:
 
@@ -95,7 +95,7 @@ AKSDEV_ID=$(az ad user create \
   --query objectId -o tsv)
 ```
 
-Most adja hozzá a felhasználót a *appdev* az előző szakaszban használatával létrehozott csoport a [az ad a csoporttag felvétele] [ az-ad-group-member-add] parancsot:
+Most adja hozzá a felhasználót a *appdev* az előző szakaszban használatával létrehozott csoport a [az ad a csoporttag felvétele][az-ad-group-member-add] parancsot:
 
 ```azurecli-interactive
 az ad group member add --group appdev --member-id $AKSDEV_ID
@@ -119,13 +119,13 @@ az ad group member add --group opssre --member-id $AKSSRE_ID
 
 Az Azure AD-csoportok és felhasználók most jönnek létre. Azure szerepkör-hozzárendelések létrehozott AKS-fürt normál felhasználóként csatlakozik a csoport tagjai. Most konfiguráljuk az AKS-fürtöt a különböző csoportok adott erőforrásokhoz való hozzáférés engedélyezéséhez.
 
-Először kérje le a fürt rendszergazdai hitelesítő adatok használatával a [az aks get-credentials] [ az-aks-get-credentials] parancsot. A következő szakaszok egyikét, a normál kap *felhasználói* fürt hitelesítő adatait, tekintse meg az Azure AD-hitelesítés folyamat.
+Először kérje le a fürt rendszergazdai hitelesítő adatok használatával a [az aks get-credentials][az-aks-get-credentials] parancsot. A következő szakaszok egyikét, a normál kap *felhasználói* fürt hitelesítő adatait, tekintse meg az Azure AD-hitelesítés folyamat.
 
 ```azurecli-interactive
 az aks get-credentials --resource-group myResourceGroup --name myAKSCluster --admin
 ```
 
-Hozzon létre egy névteret a használatával az AKS-fürt a [kubectl névtér létrehozása] [ kubectl-create] parancsot. A következő példában létrehozunk egy névtér neve *fejlesztési*:
+Hozzon létre egy névteret a használatával az AKS-fürt a [kubectl névtér létrehozása][kubectl-create] parancsot. A következő példában létrehozunk egy névtér neve *fejlesztési*:
 
 ```console
 kubectl create namespace dev
@@ -154,13 +154,13 @@ rules:
   verbs: ["*"]
 ```
 
-Létrehozhatja a szerepkör a [a kubectl a alkalmazni] [ kubectl-apply] parancsot, majd adja meg a YAML-jegyzékfájl:
+Létrehozhatja a szerepkör a [a kubectl a alkalmazni][kubectl-apply] parancsot, majd adja meg a YAML-jegyzékfájl:
 
 ```console
 kubectl apply -f role-dev-namespace.yaml
 ```
 
-Ezután kérdezze le az erőforrás-azonosító a *appdev* használó csoport a [az ad-csoport megjelenítése] [ az-ad-group-show] parancsot. Ez a csoport a következő lépésben egy RoleBinding tárgya van beállítva.
+Ezután kérdezze le az erőforrás-azonosító a *appdev* használó csoport a [az ad-csoport megjelenítése][az-ad-group-show] parancsot. Ez a csoport a következő lépésben egy RoleBinding tárgya van beállítva.
 
 ```azurecli-interactive
 az ad group show --group appdev --query objectId -o tsv
@@ -184,7 +184,7 @@ subjects:
   name: groupObjectId
 ```
 
-Létrehozhatja a RoleBinding a [a kubectl a alkalmazni] [ kubectl-apply] parancsot, majd adja meg a YAML-jegyzékfájl:
+Létrehozhatja a RoleBinding a [a kubectl a alkalmazni][kubectl-apply] parancsot, majd adja meg a YAML-jegyzékfájl:
 
 ```console
 kubectl apply -f rolebinding-dev-namespace.yaml
@@ -194,7 +194,7 @@ kubectl apply -f rolebinding-dev-namespace.yaml
 
 Most ismételje az előző lépést a SREs egy névtér, szerepkörhöz és RoleBinding létrehozása.
 
-Először is hozzon létre egy névteret *sre* használatával a [kubectl névtér létrehozása] [ kubectl-create] parancsot:
+Először is hozzon létre egy névteret *sre* használatával a [kubectl névtér létrehozása][kubectl-create] parancsot:
 
 ```console
 kubectl create namespace sre
@@ -219,13 +219,13 @@ rules:
   verbs: ["*"]
 ```
 
-Létrehozhatja a szerepkör a [a kubectl a alkalmazni] [ kubectl-apply] parancsot, majd adja meg a YAML-jegyzékfájl:
+Létrehozhatja a szerepkör a [a kubectl a alkalmazni][kubectl-apply] parancsot, majd adja meg a YAML-jegyzékfájl:
 
 ```console
 kubectl apply -f role-sre-namespace.yaml
 ```
 
-Az erőforrás-azonosító beszerzése a *opssre* használó csoport a [az ad-csoport megjelenítése] [ az-ad-group-show] parancsot:
+Az erőforrás-azonosító beszerzése a *opssre* használó csoport a [az ad-csoport megjelenítése][az-ad-group-show] parancsot:
 
 ```azurecli-interactive
 az ad group show --group opssre --query objectId -o tsv
@@ -249,7 +249,7 @@ subjects:
   name: groupObjectId
 ```
 
-Létrehozhatja a RoleBinding a [a kubectl a alkalmazni] [ kubectl-apply] parancsot, majd adja meg a YAML-jegyzékfájl:
+Létrehozhatja a RoleBinding a [a kubectl a alkalmazni][kubectl-apply] parancsot, majd adja meg a YAML-jegyzékfájl:
 
 ```console
 kubectl apply -f rolebinding-sre-namespace.yaml
@@ -259,13 +259,13 @@ kubectl apply -f rolebinding-sre-namespace.yaml
 
 Most pedig a várt engedélyek munkahelyi tesztelése, létrehozásakor és -erőforrásait kezelheti az AKS-fürt. Ezekben a példákban ütemezhet, és megtekintheti a felhasználó hozzárendelt névtér podok. Ezt követően próbálja ütemezés és a nézet podok kívül a hozzárendelt névtér.
 
-Először is alaphelyzetbe állítása a *kubeconfig* környezet használatával a [az aks get-credentials] [ az-aks-get-credentials] parancsot. Az egyik előző szakaszban állítsa be a környezetet, a fürt rendszergazdai hitelesítő adataival. A rendszergazdai felhasználó nincs hatással lévő utasításokat az Azure AD-be. Nélkül a `--admin` paramétert, a felhasználói környezet alkalmazott összes kérelmek hitelesítése az Azure AD szükséges.
+Először is alaphelyzetbe állítása a *kubeconfig* környezet használatával a [az aks get-credentials][az-aks-get-credentials] parancsot. Az egyik előző szakaszban állítsa be a környezetet, a fürt rendszergazdai hitelesítő adataival. A rendszergazdai felhasználó nincs hatással lévő utasításokat az Azure AD-be. Nélkül a `--admin` paramétert, a felhasználói környezet alkalmazott összes kérelmek hitelesítése az Azure AD szükséges.
 
 ```azurecli-interactive
 az aks get-credentials --resource-group myResourceGroup --name myAKSCluster --overwrite-existing
 ```
 
-Egy alapszintű nginx-et pod az ütemezés a [futtatása kubectl] [ kubectl-run] parancsot a *fejlesztési* névtér:
+Egy alapszintű nginx-et pod az ütemezés a [futtatása kubectl][kubectl-run] parancsot a *fejlesztési* névtér:
 
 ```console
 kubectl run --generator=run-pod/v1 nginx-dev --image=nginx --namespace dev
@@ -281,7 +281,7 @@ To sign in, use a web browser to open the page https://microsoft.com/devicelogin
 pod/nginx-dev created
 ```
 
-Mostantól használhatja a [kubectl get pods] [ kubectl-get] parancsot podok megtekintéséhez a *fejlesztési* névtér.
+Mostantól használhatja a [kubectl get pods][kubectl-get] parancsot podok megtekintéséhez a *fejlesztési* névtér.
 
 ```console
 kubectl get pods --namespace dev
@@ -298,7 +298,7 @@ nginx-dev   1/1     Running   0          4m
 
 ### <a name="create-and-view-cluster-resources-outside-of-the-assigned-namespace"></a>Létrehozhat és megjeleníthet a hozzárendelt névtér kívül a fürt erőforrásai
 
-Most megpróbálja kívüli podok megtekintése a *fejlesztési* névtér. Használja a [kubectl get pods] [ kubectl-get] parancs újbóli, hogy `--all-namespaces` módon:
+Most megpróbálja kívüli podok megtekintése a *fejlesztési* névtér. Használja a [kubectl get pods][kubectl-get] parancs újbóli, hogy `--all-namespaces` módon:
 
 ```console
 kubectl get pods --all-namespaces
@@ -324,7 +324,7 @@ Error from server (Forbidden): pods is forbidden: User "aksdev@contoso.com" cann
 
 Győződjön meg arról, hogy az Azure AD biztonságicsoport-tagság és a Kubernetes RBAC megfelelő működéséhez különböző felhasználók és csoportok között, próbálja ki az előző parancsok jelentkezett be, amikor a *opssre* felhasználói.
 
-Alaphelyzetbe állítása a *kubeconfig* környezet használatával a [az aks get-credentials] [ az-aks-get-credentials] parancsot, amely törli a korábban gyorsítótárazott hitelesítési tokenje a *aksdev*  felhasználói:
+Alaphelyzetbe állítása a *kubeconfig* környezet használatával a [az aks get-credentials][az-aks-get-credentials] parancsot, amely törli a korábban gyorsítótárazott hitelesítési tokenje a *aksdev* felhasználói:
 
 ```azurecli-interactive
 az aks get-credentials --resource-group myResourceGroup --name myAKSCluster --overwrite-existing

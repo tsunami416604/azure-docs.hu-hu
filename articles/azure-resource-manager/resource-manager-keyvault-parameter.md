@@ -6,12 +6,12 @@ ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 05/09/2019
 ms.author: tomfitz
-ms.openlocfilehash: e47a087e27b6a8ade947e36ded762ce2e518ca25
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: de52dbb10d515a2255b5886df5bf0a0faa454f6b
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65507994"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67672763"
 ---
 # <a name="use-azure-key-vault-to-pass-secure-parameter-value-during-deployment"></a>Az Azure Key Vault segítségével biztonságos paraméter értéke továbbítása üzembe helyezés során
 
@@ -94,7 +94,7 @@ A következő eljárás azt mutatja be, a minimális hozzáférésű szerepkör 
       ]
     }
     ```
-    Cserélje le a "00000000-0000-0000-0000-000000000000" az előfizetés-azonosító, a felhasználó, aki a sablonok üzembe helyezése.
+    "00000000-0000-0000-0000-000000000000" cserélje le az előfizetés azonosítóját.
 
 2. Az új szerepkör JSON-fájl létrehozása:
 

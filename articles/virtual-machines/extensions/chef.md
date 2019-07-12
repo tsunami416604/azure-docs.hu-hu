@@ -4,7 +4,7 @@ description: A Chef ügyfél központi telepítése egy virtuális gépet, a Che
 services: virtual-machines-linux
 documentationcenter: ''
 author: roiyz-msft
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 ms.service: virtual-machines-linux
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/21/2018
 ms.author: roiyz
-ms.openlocfilehash: 6bd3ea4e664523fe8014be40c51d573ed5158ecf
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e72536cc6f9ec3b94016d16de8502e70bc7107aa
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60800271"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67706091"
 ---
 # <a name="chef-vm-extension-for-linux-and-windows"></a>A Linux és Windows Chef Virtuálisgép-bővítmény
 
@@ -69,10 +69,10 @@ A következő JSON-ra a sémát a Chef Virtuálisgép-bővítmény mutatja be. A
 ### <a name="core-property-values"></a>Core tulajdonságértékek
 
 | Name (Név) | Érték és példa | Adattípus
-| ---- | ---- | ---- 
+| ---- | ---- | ----
 | apiVersion | `2017-12-01` | string (date) |
-| publisher | `Chef.Bootstrap.WindowsAzure` | string |
-| type | `LinuxChefClient` (Linux), `ChefClient` (Windows) | string |
+| publisher | `Chef.Bootstrap.WindowsAzure` | sztring |
+| type | `LinuxChefClient` (Linux), `ChefClient` (Windows) | Karakterlánc |
 | typeHandlerVersion | `1210.12` | string (double) |
 
 ### <a name="settings"></a>Beállítások
@@ -80,14 +80,14 @@ A következő JSON-ra a sémát a Chef Virtuálisgép-bővítmény mutatja be. A
 | Name (Név) | Érték és példa | Adattípus | Kötelező?
 | ---- | ---- | ---- | ----
 | settings/bootstrap_options/chef_server_url | `https://api.chef.io/organizations/myorg` | string (url) | I |
-| settings/bootstrap_options/validation_client_name | `myorg-validator` | string | I |
-| settings/runlist | `recipe[mycookbook::default]` | string | I |
+| settings/bootstrap_options/validation_client_name | `myorg-validator` | sztring | I |
+| settings/runlist | `recipe[mycookbook::default]` | Karakterlánc | I |
 
 ### <a name="protected-settings"></a>Védett beállításai
 
 | Name (Név) | Példa | Adattípus | Kötelező?
 | ---- | ---- | ---- | ---- |
-| protectedSettings/validation_key | `-----BEGIN RSA PRIVATE KEY-----\nKEYDATA\n-----END RSA PRIVATE KEY-----` | string | I |
+| protectedSettings/validation_key | `-----BEGIN RSA PRIVATE KEY-----\nKEYDATA\n-----END RSA PRIVATE KEY-----` | Karakterlánc | I |
 
 <!--
 ### Linux-specific settings
@@ -105,7 +105,7 @@ A következő JSON-ra a sémát a Chef Virtuálisgép-bővítmény mutatja be. A
 
 Az Azure Virtuálisgép-bővítmények is üzembe helyezhetők az Azure Resource Manager-sablonok. Sablonok segítségével helyezhet üzembe egy vagy több virtuális gépeket, a Chef-ügyfél telepítése, csatlakozhat a Chef és a hajtsa végre a kiszolgálón a kezdeti konfiguráció által meghatározott a [Run-list](https://docs.chef.io/run_lists.html)
 
-Egy mintául szolgáló Resource Manager-sablon, amely tartalmazza a Chef Virtuálisgép-bővítmény találhatók a [Azure gyors üzembe helyezési katalógus](https://github.com/Azure/azure-quickstart-templates/tree/master/chef-json-parameters-linux-vm).
+Egy mintául szolgáló Resource Manager-sablon, amely tartalmazza a Chef Virtuálisgép-bővítmény megtalálható a [Azure gyorsindítási galéria](https://github.com/Azure/azure-quickstart-templates/tree/master/chef-json-parameters-linux-vm).
 
 Virtuálisgép-bővítmények JSON konfigurációjának a virtuális gép típusú erőforrást belülre, vagy elhelyezve, a legfelső szintű vagy a legfelső szintű Resource Managerből származó JSON-sablon. A JSON konfigurációs elhelyezését hatással van az erőforrás nevét, és írja be az értékét. További információkért lásd: [állítsa be a nevét és típusát gyermekerőforrásait](../../azure-resource-manager/resource-manager-template-child-resource.md).
 

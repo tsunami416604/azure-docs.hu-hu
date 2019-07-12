@@ -9,13 +9,14 @@ ms.service: azure-functions
 ms.devlang: powershell
 ms.topic: conceptual
 ms.date: 04/22/2019
-ms.author: tyleonha, glenga
-ms.openlocfilehash: 489c94f37b6c88db001dee437cc6ed89383e6053
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.author: tyleonha
+ms.reviewer: glenga
+ms.openlocfilehash: a75bdaf0e26193a5b2792b52923c085eff89b83f
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67442175"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67706404"
 ---
 # <a name="azure-functions-powershell-developer-guide"></a>Az Azure Functions PowerShell fejlesztői útmutatója
 
@@ -81,11 +82,11 @@ A `TriggerMetadata` paraméter használható az eseményindító további inform
 $TriggerMetadata.sys
 ```
 
-| Tulajdonság   | Description                                     | Típus     |
+| Tulajdonság   | Description                                     | Type     |
 |------------|-------------------------------------------------|----------|
-| utcNow     | Amikor UTC formátumban, a függvény lett elindítva        | DateTime |
-| MethodName | A függvény, amely aktiválva neve     | string   |
-| RandGuid   | Ez a függvény végrehajtása egy egyedi GUID azonosítót | string   |
+| utcNow     | Amikor UTC formátumban, a függvény lett elindítva        | Datetime |
+| MethodName | A függvény, amely aktiválva neve     | Karakterlánc   |
+| RandGuid   | Ez a függvény végrehajtása egy egyedi GUID azonosítót | Karakterlánc   |
 
 A metaadatok különböző minden típusú trigger rendelkezik. Ha például a `$TriggerMetadata` a `QueueTrigger` tartalmazza a `InsertionTime`, `Id`, `DequeueCount`, többek között. Az üzenetsor eseményindító metaadatok további információért látogasson el a [eseményindítók hivatalos dokumentációját](functions-bindings-storage-queue.md#trigger---message-metadata). Ellenőrizze a dokumentációban található a [eseményindítók](functions-triggers-bindings.md) megtekintéséhez, mi a lépés a trigger metaadatok belül dolgozik.
 
@@ -133,9 +134,9 @@ Produce-MyOutputValue | Push-OutputBinding -Name myQueue
 
 Az alábbiakban érvényes paramétereket a hívó `Push-OutputBinding`:
 
-| Name (Név) | Típus | Beosztás | Leírás |
+| Name (Név) | Type | Beosztás | Leírás |
 | ---- | ---- |  -------- | ----------- |
-| **`-Name`** | String | 1 | A kimeneti kötés neve szeretné beállítani. |
+| **`-Name`** | Sztring | 1 | A kimeneti kötés neve szeretné beállítani. |
 | **`-Value`** | Object | 2 | A kimeneti kötés értékét szeretné beállítani, amely láncból a ByValue. |
 | **`-Clobber`** | SwitchParameter | nevű | (Nem kötelező) Megadása esetén kényszeríti az értéket a megadott kimeneti kötés állítható be. | 
 
@@ -283,7 +284,7 @@ Nincsenek eseményindítók és kötések számos, a függvényalkalmazás haszn
 Az összes eseményindítók és kötések-kiszolgálókként vannak a kódban néhány valódi adattípusok:
 
 * Kivonattábla
-* string
+* Karakterlánc
 * byte[]
 * int
 * double
@@ -302,14 +303,14 @@ HTTP és a webhook eseményindítók és a HTTP-kimeneti kötések használata k
 
 A parancsprogramhoz átadott támogatásikérelem-objektum típusa nem `HttpRequestContext`, amely a következő tulajdonságokkal rendelkezik:
 
-| Tulajdonság  | Description                                                    | Típus                      |
+| Tulajdonság  | Description                                                    | Type                      |
 |-----------|----------------------------------------------------------------|---------------------------|
 | **`Body`**    | Egy objektum, amely tartalmazza a kérelem törzsében. `Body` az adatok alapján a legjobb típus szerializált. Például ha az adatok JSON, azt át egy kivonattáblát. Ha az adatok egy karakterlánc, azt átadott karakterlánc formájában. | object |
 | **`Headers`** | Egy szótár, amely tartalmazza a kérelem fejlécében.                | Dictionary < karakterlánc, karakterlánc ><sup>*</sup> |
-| **`Method`** | A kérelem HTTP-metódus.                                | string                    |
+| **`Method`** | A kérelem HTTP-metódus.                                | Karakterlánc                    |
 | **`Params`**  | Egy objektum, amely tartalmazza a kérés útválasztási paramétereit. | Dictionary < karakterlánc, karakterlánc ><sup>*</sup> |
 | **`Query`** | Egy objektum, amely tartalmazza a lekérdezési paramétereket.                  | Dictionary < karakterlánc, karakterlánc ><sup>*</sup> |
-| **`Url`** | A kérelem URL-címe                                        | string                    |
+| **`Url`** | A kérelem URL-címe                                        | Karakterlánc                    |
 
 <sup>*</sup> Az összes `Dictionary<string,string>` kulcsok és nagybetűk nincsenek megkülönböztetve.
 
@@ -317,10 +318,10 @@ A parancsprogramhoz átadott támogatásikérelem-objektum típusa nem `HttpRequ
 
 Vissza kell küldeni a választ objektum típusa nem `HttpResponseContext`, amely a következő tulajdonságokkal rendelkezik:
 
-| Tulajdonság      | Description                                                 | Típus                      |
+| Tulajdonság      | Description                                                 | Type                      |
 |---------------|-------------------------------------------------------------|---------------------------|
 | **`Body`**  | Egy objektum, amely a válasz törzse tartalmazza.           | object                    |
-| **`ContentType`** | Egy rövid aktuális állítja a tartalomtípus a válaszhoz. | string                    |
+| **`ContentType`** | Egy rövid aktuális állítja a tartalomtípus a válaszhoz. | Karakterlánc                    |
 | **`Headers`** | A válaszfejlécek tartalmazó objektum.               | Dictionary, vagy a kivonattábla kulcsa   |
 | **`StatusCode`**  | A válasz HTTP-állapotkódot.                       | karakterlánc- vagy int             |
 

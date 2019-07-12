@@ -2,17 +2,17 @@
 title: Azure Kubernetes Service-fürt a webes irányítópult kezelése
 description: Ismerje meg, hogyan használhatja a beépített Kubernetes webes felhasználói felületének irányítópultja az Azure Kubernetes Service (AKS)-fürt kezelése
 services: container-service
-author: tylermsft
+author: mlearned
 ms.service: container-service
 ms.topic: article
 ms.date: 10/08/2018
-ms.author: twhitney
-ms.openlocfilehash: 80c0bd630ba2263696b72b003e27c53f1e457704
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: mlearned
+ms.openlocfilehash: 0de2f285b5eca88a098a2d7cfe1608ad2f0db71b
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66304529"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67615243"
 ---
 # <a name="access-the-kubernetes-web-dashboard-in-azure-kubernetes-service-aks"></a>Hozzáférés a Kubernetes webes irányítópultot az Azure Kubernetes Service (AKS)
 
@@ -28,7 +28,7 @@ Emellett az Azure CLI 2.0.46-os vagy újabb, telepített és konfigurált verzi�
 
 ## <a name="start-the-kubernetes-dashboard"></a>Indítsa el a Kubernetes-irányítópult
 
-A Kubernetes-irányítópult indításához használja a [az aks browse] [ az-aks-browse] parancsot. Az alábbi példa megnyitja az irányítópultot, a fürt nevű *myAKSCluster* az erőforráscsoport neve *myResourceGroup*:
+A Kubernetes-irányítópult indításához használja a [az aks browse][az-aks-browse] parancsot. Az alábbi példa megnyitja az irányítópultot, a fürt nevű *myAKSCluster* az erőforráscsoport neve *myResourceGroup*:
 
 ```azurecli
 az aks browse --resource-group myResourceGroup --name myAKSCluster
@@ -42,7 +42,7 @@ Ez a parancs létrehoz egy proxy között a fejlesztői rendszerhez, és a Kuber
 
 Ha az AKS-fürtöt használ, az RBAC- *ClusterRoleBinding* megfelelően az irányítópult elérése előtt kell létrehozni. Alapértelmezés szerint a Kubernetes-irányítópult minimális olvasási hozzáféréssel rendelkező telepíti, és megjeleníti az RBAC-hozzáférési hibák. A Kubernetes-irányítópult jelenleg nem támogatja a felhasználó által megadott hitelesítő adatokat határozza meg a hozzáférési szintet, inkább használja a szerepkörök a szolgáltatásfiók számára. A fürt rendszergazdája választhat további hozzáférés adható a *kubernetes-irányítópult* szolgáltatásfiók, azonban ez lehet egy vektoros a jogosultságok eszkalációját. A részletesebb szintű hozzáférés az Azure Active Directory-hitelesítést is integrálhatja.
 
-A kötés létrehozásához használja a [kubectl létrehozása clusterrolebinding] [ kubectl-create-clusterrolebinding] parancsot az alábbi példában látható módon. 
+A kötés létrehozásához használja a [kubectl létrehozása clusterrolebinding][kubectl-create-clusterrolebinding] parancsot az alábbi példában látható módon. 
 
 > [!WARNING]
 > Ez a minta kötés nem vonatkozik minden további hitelesítés összetevői, és nem biztonságos használat vezethet. A Kubernetes-irányítópult meg nyitva, bárki hozzáférhet az URL-cím hozzáférést. Nem teszik elérhetővé a Kubernetes-irányítópult nyilvánosan.
@@ -53,7 +53,7 @@ A kötés létrehozásához használja a [kubectl létrehozása clusterrolebindi
 kubectl create clusterrolebinding kubernetes-dashboard --clusterrole=cluster-admin --serviceaccount=kube-system:kubernetes-dashboard
 ```
 
-Most már elérheti a Kubernetes-irányítópultot az RBAC-t fürtben. A Kubernetes-irányítópult indításához használja a [az aks browse] [ az-aks-browse] parancsot az előző lépésben leírt módon.
+Most már elérheti a Kubernetes-irányítópultot az RBAC-t fürtben. A Kubernetes-irányítópult indításához használja a [az aks browse][az-aks-browse] parancsot az előző lépésben leírt módon.
 
 ## <a name="create-an-application"></a>Alkalmazás létrehozása
 

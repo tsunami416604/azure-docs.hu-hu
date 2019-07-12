@@ -11,12 +11,12 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 09/12/2018
 ms.author: glenga
-ms.openlocfilehash: 2a6d670ba9f2f496cc94d2790eb6f66d46305746
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 30c97eed5f28631bd2583cbda75df5755ffe2e34
+ms.sourcegitcommit: c0419208061b2b5579f6e16f78d9d45513bb7bbc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65872786"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67626099"
 ---
 # <a name="azure-functions-c-developer-reference"></a>Az Azure Functions C# – fejlesztői referencia
 
@@ -50,7 +50,7 @@ A projekt buildjének elkészítéséhez, ha a mappastruktúrát, amely úgy tű
  | - host.json
 ```
 
-Ebben a könyvtárban, mire megtörténik a függvényalkalmazáshoz az Azure-ban. A kötési bővítményeket szükséges [verzió 2.x](functions-versions.md) , a Functions runtime a [hozzáadott a projekt NuGet-csomagok](./functions-bindings-register.md#c-class-library-with-visual-studio-2019).
+Ebben a könyvtárban, mire megtörténik a függvényalkalmazáshoz az Azure-ban. A kötési bővítményeket szükséges [verzió 2.x](functions-versions.md) , a Functions runtime a [hozzáadott a projekt NuGet-csomagok](./functions-bindings-register.md#vs).
 
 > [!IMPORTANT]
 > A létrehozási folyamat létrehoz egy *function.json* fájlban találhatók. Ez *function.json* fájl nem célja, hogy közvetlenül szerkeszthetők. Nem kötelező konfigurációjának módosítása, vagy tiltsa le a függvény a fájl szerkesztésével. Ismerje meg, hogyan tilthatja le a függvény, lásd: [funkciók letiltása](disable-function.md#functions-2x---c-class-libraries).

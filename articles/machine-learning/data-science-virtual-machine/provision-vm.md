@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/22/2019
 ms.author: gokuma
-ms.openlocfilehash: 64642da88850e9a0a17173bc50ae9e750cab55a2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 57768fc463f5ea1d2f1ec386f3f0975758220013
+ms.sourcegitcommit: c0419208061b2b5579f6e16f78d9d45513bb7bbc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66235102"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67626387"
 ---
 # <a name="provision-a-windows-data-science-virtual-machine-on-azure"></a>A Windows adatelemző virtuális gép Azure-beli üzembe helyezése
 
@@ -61,13 +61,13 @@ Az adatszakértők a feladatokhoz számos eszközt használja. Kereshet a szoftv
 
 A dsvm-hez az elemzési projekt jump-starts. A feladatok különféle nyelveken, köztük a R, Python, SQL és C# dolgozhat. A Visual Studio fejlesztése és tesztelése a kód egyszerűen használható integrált fejlesztési környezetben (IDE) biztosít. Az Azure SDK-t a virtuális gép szerepel, így Ön könnyedén létrehozhatja az alkalmazások a Microsoft felhőalapú platformja különböző szolgáltatások használatával.
 
-Nincsenek szoftvereket díjmentesen használható a data science Virtuálisgép-rendszerképet. Csak az Azure-használati díjat kell fizetnie. A virtuális gép üzembe helyezésekor méretétől függnek. További részleteket a számítási díjak a **díjszabás** szakaszában a [adatelemző virtuális gép](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-ads.windows-data-science-vm?tab=PlansAndPrice) lapot.
+Nincsenek szoftvereket díjmentesen használható a data science Virtuálisgép-rendszerképet. Csak az Azure-használati díjat kell fizetnie. A virtuális gép üzembe helyezésekor méretétől függnek. További részleteket a számítási díjak a **díjszabás** szakaszában a [adatelemző virtuális gép](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.dsvm-windows) lapot.
 
 ### <a name="other-dsvm-versions"></a>Más DSVM-verziók
 
 * Egy [Ubuntu](dsvm-ubuntu-intro.md) kép. A dsvm-hez hasonló számos eszközt, valamint néhány további mélytanulási keretrendszerekkel rendelkezik.
 * A [Linux CentOS](linux-dsvm-intro.md) kép.
-* A [Windows Server 2012 edition](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-ads.standard-data-science-vm) , az adatelemzési virtuális gépet. Néhány eszközök csak a Windows Server 2016 rendszeren érhetők el. Ez a cikk ellenkező esetben is érvényes a Windows Server 2012 verzióra.
+* A [Windows Server 2012 edition](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.dsvm-windows) , az adatelemzési virtuális gépet. Néhány eszközök csak a Windows Server 2016 rendszeren érhetők el. Ez a cikk ellenkező esetben is érvényes a Windows Server 2012 verzióra.
 
 ## <a name="prerequisite"></a>Előfeltétel
 

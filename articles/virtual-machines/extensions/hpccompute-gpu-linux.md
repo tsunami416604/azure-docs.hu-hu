@@ -4,7 +4,7 @@ description: A Microsoft Azure-bővítmény telepítse az NVIDIA GPU-illesztőpr
 services: virtual-machines-linux
 documentationcenter: ''
 author: vermagit
-manager: jeconnoc
+manager: gwallace
 editor: ''
 ms.assetid: ''
 ms.service: virtual-machines-linux
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/11/2019
 ms.author: roiyz
-ms.openlocfilehash: 5a184c72da8af0d451902a164c8b71a94a01883f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c15948fd9e9acc1e1efeb536939002f179402d5a
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64683171"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67706703"
 ---
 # <a name="nvidia-gpu-driver-extension-for-linux"></a>NVIDIA GPU illesztőprogramjának-bővítmény linuxhoz
 
@@ -27,6 +27,8 @@ ms.locfileid: "64683171"
 
 Ez a bővítmény Linux N-sorozat virtuális gépei NVIDIA GPU-illesztők telepítése. A Virtuálisgép-család függően a bővítmény telepítését CUDA vagy GRID illesztőprogramok. NVIDIA telepítésekor illesztőprogramokat a bővítmény használatával Ön elfogadja, és elfogadja a használati a [NVIDIA végfelhasználói licencszerződés](https://go.microsoft.com/fwlink/?linkid=874330). A telepítés során a virtuális gép újraindulhat az illesztőprogramot a telepítés végrehajtásához.
 
+Utasítások a manuális telepítés, az illesztőprogramok és aktuális verziók [Itt](
+https://docs.microsoft.com/azure/virtual-machines/linux/n-series-driver-setup).
 Egy bővítmény is érhető el az NVIDIA GPU-illesztők telepítése [Windows N-sorozat virtuális gépei](hpccompute-gpu-windows.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
@@ -69,13 +71,13 @@ A következő JSON a bővítmény sémáját jeleníti meg.
 }
 ```
 
-### <a name="properties"></a>Tulajdonságok
+### <a name="properties"></a>properties
 
 | Name (Név) | Érték és példa | Adattípus |
 | ---- | ---- | ---- |
 | apiVersion | 2015-06-15 | date |
-| publisher | Microsoft.HpcCompute | string |
-| type | NvidiaGpuDriverLinux | string |
+| publisher | Microsoft.HpcCompute | sztring |
+| type | NvidiaGpuDriverLinux | Karakterlánc |
 | typeHandlerVersion | 1.2 | int |
 
 ### <a name="settings"></a>Beállítások
@@ -85,7 +87,7 @@ Minden beállítás nem kötelező. Az alapértelmezett viselkedést, hogy a ker
 | Name (Név) | Leírás | Alapértelmezett érték | Érvényes értékek | Adattípus |
 | ---- | ---- | ---- | ---- | ---- |
 | updateOS | Frissítse a kernel akkor is, ha az illesztőprogram telepítéséhez nem szükséges | false | true, false | boolean |
-| driverVersion | NV: RÁCS illesztőprogram verziója<br> NC/ND: CUDA-eszközkészlet verzió. A legújabb illesztőprogramokat a kiválasztott CUDA automatikusan települnek. | legújabb | GRID: "418.70", "410.92", "410.71", "390.75", "390.57", "390.42"<br> CUDA: "10.0.130", "9.2.88", "9.1.85" | string |
+| driverVersion | NV: RÁCS illesztőprogram verziója<br> NC/ND: CUDA-eszközkészlet verzió. A legújabb illesztőprogramokat a kiválasztott CUDA automatikusan települnek. | legújabb | GRID: "430.30", "418.70", "410.92", "410.71", "390.75", "390.57", "390.42"<br> CUDA: "10.0.130", "9.2.88", "9.1.85" | sztring |
 | installCUDA | Telepítse a CUDA eszközkészlet. Csak akkor érvényes, a hálózati vezérlő/ND sorozatú virtuális gépek. | true | true, false | boolean |
 
 

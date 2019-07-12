@@ -2,18 +2,18 @@
 title: Az Azure Kubernetes Service (AKS) hálózat kubenet konfigurálása
 description: Ismerje meg, hogyan kubenet (alapszintű) hálózat konfigurálása az Azure Kubernetes Service (AKS) helyezheti üzembe egy AKS-fürtöt egy meglévő virtuális hálózatot és alhálózatot.
 services: container-service
-author: iainfoulds
+author: mlearned
 ms.service: container-service
 ms.topic: article
 ms.date: 06/26/2019
-ms.author: iainfou
+ms.author: mlearned
 ms.reviewer: nieberts, jomore
-ms.openlocfilehash: 269dd670ed82234b77e06c389ae1c9a5c294010c
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: e1279261de8e26b9e11f55100ce01277650e251b
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67441956"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67615756"
 ---
 # <a name="use-kubenet-networking-with-your-own-ip-address-ranges-in-azure-kubernetes-service-aks"></a>Hálózatkezelés a saját IP-címtartományok Azure Kubernetes Service (AKS) kubenet használata
 

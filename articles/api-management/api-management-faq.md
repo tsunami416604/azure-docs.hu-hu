@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/19/2017
 ms.author: apimpm
-ms.openlocfilehash: f7e93dc12b9932fed90c7f9fa3145e56a3488b32
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: f4140754afa8de994b227dc187cd73c9ccfa86f9
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67448024"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67666030"
 ---
 # <a name="azure-api-management-faqs"></a>Az Azure API Management – gyakori kérdések
 Válaszok a gyakori kérdésekre, minták és ajánlott eljárások az Azure API Management.
@@ -87,7 +87,7 @@ Itt látható, hogyan adhat hozzá egy felhasználót a Rendszergazdák csoport:
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 2. Nyissa meg az erőforráscsoport, amely rendelkezik az API Management-példány frissíteni szeretné.
-3. Az API Management, rendelje hozzá a **Api Management közreműködői** szerepkört a felhasználóhoz.
+3. Az API Management, rendelje hozzá a **Api Management szolgáltatás Közreműködője** szerepkört a felhasználóhoz.
 
 Az újonnan hozzáadott közreműködői használható Azure PowerShell most [parancsmagok](https://docs.microsoft.com/powershell/azure/overview). A következő rendszergazdai bejelentkezés:
 

@@ -7,12 +7,12 @@ ms.author: mattwoj
 ms.service: marketplace
 ms.topic: conceptual
 ms.date: 06/27/2019
-ms.openlocfilehash: dc086bc1252c084b717807213b5ba4c7f9d7bb97
-ms.sourcegitcommit: 6cb4dd784dd5a6c72edaff56cf6bcdcd8c579ee7
+ms.openlocfilehash: db1074046adc52ad859a325c2b875da84dbdb0cd
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67514057"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67701401"
 ---
 # <a name="create-a-new-saas-offer"></a>Hozzon létre egy új SaaS-ajánlat
 
@@ -20,7 +20,7 @@ Szoftver létrehozása, mint a szoftverszolgáltatások (SaaS) kínál első lé
 
 ![A Partner Center kereskedelmi Marketplace irányítópultjának](./media/new-offer-overview.png)
 
-Válassza ki a + **hozzon létre egy új...** gombra, majd válassza a **szolgáltatott szoftver** menüpontot. 
+Válassza ki a + **új ajánlat...** gombra, majd válassza a **szolgáltatott szoftver** menüpontot. 
 
 Ha más ajánlat típusok egyikét választja, átirányítjuk a korábbi [Cloud Partner Portalon](https://cloudpartner.azure.com/).  Csak SaaS-ajánlatok érhetők el a kereskedelmi Marketplace portálon, a Partner Center most. 
 
@@ -31,13 +31,14 @@ A **új ajánlat** párbeszédpanel jelenik meg.
 ![Új ajánlat párbeszédpanel](./media/new-offer-popup.png)
 
 
-## <a name="offer-id-and-name"></a>Ajánlat azonosítója és neve
+## <a name="offer-id-and-alias"></a>Ajánlat azonosítója és az alias
 
-- **Ajánlat azonosítója**: Hozzon létre egy egyedi azonosítója – az egyes ajánlatok a fiókjában. Ez az azonosító az URL-címét, a Piactéri ajánlat és az Azure Resource Manager-sablonok (ha van) az ügyfelek számára látható lesz. Ajánlat azonosítója kisbetűket, alfanumerikus (beleértve a kötőjeleket és aláhúzásjeleket tartalmazhat, de nincs szóköz) kell lennie. Ez legfeljebb 50 karakter hosszúságú lehet, és nem lehet frissíteni, miután kiválasztotta létrehozása.  
+- **Ajánlat azonosítója**: A fiók az egyes ajánlatok egyedi azonosítója. Ez az azonosító az URL-címét, a Piactéri ajánlat és az Azure Resource Manager-sablonok (ha van) az ügyfelek számára látható lesz. Ajánlat azonosítója kisbetűket, alfanumerikus (beleértve a kötőjeleket és aláhúzásjeleket tartalmazhat, de nincs szóköz) kell lennie. Ez legfeljebb 50 karakter hosszúságú lehet, és nem módosítható, miután kiválasztotta *létrehozás*.  
 Példa: test-ajánlat – 1.
 <br>Az URL-cím eredményez: `https://azuremarketplace.microsoft.com/marketplace/../test-offer-1`
 
-- **Ajánlat neve**: Az SaaS alkalmazás ajánlatot, konzisztens kiadványok, hirdetések és a webhelyek hivatalos neve.  Ez a név lehet, hogy lehet trademarked.  Ajánlat neve nem tartalmazhat szóközt, hangulatjelek (kivéve, ha azok a védjegy vagy a szerzői jog szimbólum), és legfeljebb 50 karakter lehet.
+- **Ajánlat alias**: A neve, az ajánlat a Partner Center portálon utal. Ez a név nem használható a Marketplace-en, és eltér a *ajánlat neve* és egyéb értékek, amely megjelenik az ügyfelek számára. Ez az érték nem módosítható, miután kiválasztotta *létrehozás*.
+
 <br>Példa: 1. teszt ajánlat&#8482;
 
 Kattintson a **Létrehozás** gombra.  Egy **ajánlat áttekintése** lap jön létre ezt az ajánlatot.  
@@ -115,8 +116,8 @@ Léptesse elő a Microsoft üzleti hozzon létre egy marketplace piactéren. Kiv
 ##### <a name="get-it-now-free"></a>Letöltés most (ingyenes)
 Listázza az ügyfeleknek az ajánlat ingyenes azáltal, hogy egy érvényes URL-CÍMÉT (http vagy https előtaggal kezdődő) ahol elérhetik az alkalmazást.  Például:`https://contoso.com/saas-app`
 
-##### <a name="free-trial"></a>Ingyenes próbaidőszak
-Az ajánlat az ingyenes próbaverziós alapon ügyfelek listázása azáltal, hogy egy érvényes URL-CÍMÉT (http vagy https előtaggal kezdődő) ahol elérhetik az alkalmazást.  Például:`https://contoso.com/trial/saas-app`
+##### <a name="free-trial-listing"></a>Ingyenes próbaverzió (listázása)
+Az ügyfeleknek az ajánlat ingyenes próbaverzióra mutató hivatkozást tartalmazó lista azáltal, hogy egy érvényes URL-CÍMÉT (http vagy https előtaggal kezdődő) ahol elérhetik az alkalmazást.  Például: `https://contoso.com/trial/saas-app`. Az ajánlat termékismertető az ingyenes próbaverziókat is létrehozott, felügyelt és a szolgáltatás által konfigurált, és tegye nem rendelkezik előfizetések a Microsoft felügyeli.
 
 ##### <a name="contact-me"></a>Megkeresést kérek
 Csatlakozás a felhasználói kapcsolat felügyeleti (CRM) rendszer összegyűjtéséhez megszerzett elérhetőségi adatait. Az ügyfél az információk megosztása engedélyt kell adnia. Ezen ügyfél adatok az ajánlat neve, azonosító és az ajánlatot, találhatók marketplace forrás küld a CRM-rendszerrel, hogy megfelelően konfigurálta. A CRM konfigurálásával kapcsolatos további információkért lásd: [Connect lead felügyelet](#connect-lead-management). 
@@ -169,7 +170,7 @@ Partnerközpont lead felügyelet a következő CRM rendszereket támogatja. Vál
 
 Ne felejtse el **mentése** mielőtt a következő szakaszban!
 
-## <a name="properties"></a>Tulajdonságok
+## <a name="properties"></a>properties
 A **tulajdonságok** lapon kéri, hogy meghatározza a kategóriák és csoportosíthatók az ajánlat a piactér, a jogi szerződések, az ajánlat és az alkalmazás verziójának támogatása az iparágban. 
 
 Válassza ki **mentése** ezek a mezők befejezése után. 
@@ -204,6 +205,9 @@ Ne felejtse el **mentése** mielőtt a következő szakaszban!
 ## <a name="offer-listing"></a>Az ajánlat listázása
 
 Az ajánlati információs lap megjeleníti a nyelv (és piacok) hol érhető el az ajánlatot, angol (Egyesült Államok) jelenleg az egyetlen rendelkezésre álló hely. Ezen a lapon emellett a nyelvspecifikus listázása és a dátum/idő adták állapotát jeleníti meg. Szüksége lesz a piactér-beli részleteit (ajánlat nevét, leírását, keresési kifejezéseket, stb.) meghatározására az egyes nyelvekhez / a piacra jutási időt.
+
+> [!NOTE]
+> Az ajánlat termékismertető tartalom (például ajánlat leírása, dokumentumok, képernyőfelvételek, használati feltételei és adatvédelmi szabályzat) nem kell lennie, angol nyelven, amennyiben az elérhető ajánlat leírása kezdő része, "az alkalmazás csak a [nem angol nyelvű]." Elfogadható biztosít egy *hasznos hivatkozás URL-címe* tartalom nem található az ajánlati információs tartalmak használt nyelvű nyújtani.
 
 ### <a name="offer-listings"></a>Ajánlati információk
 
@@ -268,9 +272,9 @@ A **műszaki konfigurációs** lapon határozza meg a technikai részleteket (UR
 
 - **Kapcsolat webhook** (kötelező): Az összes aszinkron esemény, amelyet a Microsoft küld Önnek a vásárló nevében (például: SaaS-előfizetés felment érvénytelen), kérjük, adjon meg egy kapcsolati webhook. Ha még nem rendelkezik egy webhook rendszer helyben, a legegyszerűbb konfiguráció kell egy HTTP végpont logikai alkalmazást, amely minden, az csökkentheti a közzétett események figyelésére és majd kezelni őket megfelelően-e (pl. https:\//prod-1westus.logic.azure.com:443/work). További információkért lásd: [hívása, eseményindító, vagy HTTP-végpontokat, a logic apps-munkafolyamatok beágyazása](https://docs.microsoft.com/azure/logic-apps/logic-apps-http-endpoint).
 
-- **Azure AD-bérlő azonosítója** (kötelező): Az Azure-portálon belül kérjük, [hozzon létre egy Azure Active Directory (AD) alkalmazást](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal) egy hitelesített kommunikáció mögött van, hogy a Microsoft ellenőrizheti a kapcsolatot a két szolgáltatás között. Található a [bérlőazonosító](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-tenant-id), nyissa meg az Azure Active Directoryban, és válassza **tulajdonságok**, majd keresse meg a **címtár-azonosító** száma szerepel (például) 50c464d3-4930-494c-963c-1e951d15360e).
+- **Azure AD-bérlő azonosítója** (kötelező): Az Azure-portálon belül kérjük, [hozzon létre egy Azure Active Directory (AD) alkalmazást](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal) egy hitelesített kommunikáció mögött van, hogy a Microsoft ellenőrizheti a kapcsolatot a két szolgáltatás között. Található a [bérlőazonosító](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in), nyissa meg az Azure Active Directoryban, és válassza **tulajdonságok**, majd keresse meg a **címtár-azonosító** száma szerepel (például) 50c464d3-4930-494c-963c-1e951d15360e).
 
-- **Azure AD-alkalmazás azonosítója** (kötelező): Emellett a [Alkalmazásazonosító](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-application-id-and-authentication-key) és egy hitelesítési kulcsra. Az értékek beszerzéséhez nyissa meg az Azure Active Directoryban, és válassza **alkalmazásregisztrációk**, majd keresse meg a **Alkalmazásazonosító** szám (pl. 50c464d3-4930-494c-963c-1e951d15360e) szerepel. A hitelesítési kulcs találja, **beállítások** válassza **kulcsok**. Adjon meg egy leírást és időtartama és lesz majd meg kell adni egy számértéket kell.
+- **Azure AD-alkalmazás azonosítója** (kötelező): Emellett a [Alkalmazásazonosító](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in) és egy hitelesítési kulcsra. Az értékek beszerzéséhez nyissa meg az Azure Active Directoryban, és válassza **alkalmazásregisztrációk**, majd keresse meg a **Alkalmazásazonosító** szám (pl. 50c464d3-4930-494c-963c-1e951d15360e) szerepel. A hitelesítési kulcs találja, **beállítások** válassza **kulcsok**. Adjon meg egy leírást és időtartama és lesz majd meg kell adni egy számértéket kell.
 
  Vegye figyelembe, hogy az Azure application ID a Gyártóazonosítóval társítva, ezért ügyeljen arra, hogy ugyanazon Alkalmazásazonosítóval minden ajánlat szerepel-e.
 
@@ -306,6 +310,22 @@ Válassza ki **mentése** ezek a mezők befejezése után.
 #### <a name="plan-pricing-and-availability"></a>Díjszabás és a rendelkezésre állás tervezése
 
 A **díjszabás és a rendelkezésre állási** lap lehetővé teszi a piacon, amely a csomag lesz elérhető, konfigurálja a kívánt bevételszerzési modell, ár és számlázási időszak. Emellett jelezheti, hogy a terv láthatóvá tétele mindenki számára, vagy csak egy adott ügyfélnek (egy privát közönség számára).
+
+##### <a name="enabling-free-trials"></a>Ingyenes próbaverzió engedélyezése
+
+SaaS-ajánlatok a kereskedelmi Marketplace-en keresztül lehetővé teszi egy hónapos ingyenes próbaverzióra szolgáltatni a Microsoft értékesítési. Az összes számlázási modellek és feltételeket, kivéve a forgalmi díjas csomag az ingyenes próbaverziókat is támogatottak. Ez a beállítás lehetővé teszi a felhasználóknak alacsony-akadályt bejegyzést keresztül egy hónapnyi ingyenes hozzáférést, hogy.  Ha a csomagok belül az ajánlat ingyenes próbaverzió engedélyezését választja, az ügyfél nem lesz képes a kezdeti egy hónapos próbaidőszak lejárta előtt fizetős előfizetéssé alakítani.  Ebben az időszakban az ajánlat megvásároló próbálja ki a támogatott sémák, amelyeken engedélyezve van az ingyenes próbaverzióra, és közöttük konvertálni.  Az előfizetési időszak végén automatikusan történik az átalakítás a fizetős verzióra.
+
+>[!Note]
+>Ha az ügyfél úgy dönt, hogy az ingyenes próbaverzió nélkül csomag átalakítása, az átalakítás történik, de az ingyenes próbaverzióra elvesznek azonnal.  Is Miután az ügyfél elindul, és a egy csomagot, már nem hozzáférhetnek a ingyenes próbaverzió az ugyanahhoz az előfizetéshez, akkor is, ha egy, az ingyenes próbaverziókat is támogató termékváltozatra váltás.
+
+Ingyenes próbaverzió beállításával minden a terv az ajánlatban érhető el. Egyszerűen, a díjszabással és a rendelkezésre állási ajánlatok keresse meg, és jelölje be, hogy az egy hónapos próbaverzió.
+
+![Egy hónapos ingyenes próba jelölőnégyzet](./media/free-trial-enable.png)
+
+Információk az ügyfél jelenleg részt vesz egy ingyenes próbaverzióra előfizetések beszerzéséhez használja az új API-tulajdonság `isFreeTrial`, amely lesz megjelölve, például true vagy FALSE (hamis). Tekintse meg a [SaaS-előfizetés API első](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-fulfillment-api-v2#get-subscription) további információt.
+
+>[!Note]
+>Ingyenes próbaverzió, melyek a Marketplace-en mérési service-csomagok nem támogatottak.
 
 #### <a name="markets"></a>Piacok
 
@@ -434,13 +454,13 @@ Az Ön nevében a Test Drive üzembe helyezéséhez, hozza létre, majd adjon me
 
 - **Azure-előfizetés azonosítója** (Azure Resource Manager és a Logic apps esetén szükséges): Adja meg az előfizetés-azonosító, az erőforrás-használat, jelentéskészítési és számlázás az Azure-fiók szolgáltatásokhoz való hozzáférés megadását. Azt javasoljuk, hogy érdemes [egy külön Azure-előfizetés létrehozása](https://docs.microsoft.com/azure/billing/billing-create-subscription) tesztverziók használandó, ha még nincs ilyen. Annak az Azure-előfizetés azonosítója jelentkezik be a [az Azure portal](https://portal.azure.com/) ellenőrizheti, hogy a **előfizetések** lapján a bal oldali menüben. Válassza a lap jelenik meg az előfizetés-azonosító (pl. "a83645ac-1234-5ab6-6789-1h234g764ghty").
 
-- **Azure AD-bérlő azonosítója** (kötelező): Adja meg az Azure Active Directory (AD) [bérlőazonosító](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-tenant-id). Ez Azonosítójának megkereséséhez jelentkezzen be a [az Azure portal](https://portal.azure.com/), az Active Directory lapon válassza a bal oldali menüben válassza ki **tulajdonságai** , majd keresse meg a **címtár-azonosító** száma szerepel (például) 50c464d3-4930-494c-963c-1e951d15360e). A tartomány URL-CÍMÉT, használja a szervezet Bérlőazonosító is kereshet: [ https://www.whatismytenantid.com ](https://www.whatismytenantid.com).
+- **Azure AD-bérlő azonosítója** (kötelező): Adja meg az Azure Active Directory (AD) [bérlőazonosító](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in). Ez Azonosítójának megkereséséhez jelentkezzen be a [az Azure portal](https://portal.azure.com/), az Active Directory lapon válassza a bal oldali menüben válassza ki **tulajdonságai** , majd keresse meg a **címtár-azonosító** száma szerepel (például) 50c464d3-4930-494c-963c-1e951d15360e). A tartomány URL-CÍMÉT, használja a szervezet Bérlőazonosító is kereshet: [ https://www.whatismytenantid.com ](https://www.whatismytenantid.com).
 
 - **Az Azure AD-bérlő neve** (szükséges Dynamic 365): Adja meg az Azure Active Directory (AD) nevét. Ez a név megkereséséhez jelentkezzen be a [az Azure portal](https://portal.azure.com/), a jobb felső sarokban a bérlő neve fog szerepelni a fiók neve alatt.
 
-- **Azure AD-alkalmazás azonosítója** (kötelező): Adja meg az Azure Active Directory (AD) [Alkalmazásazonosító](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-application-id-and-authentication-key). Ez Azonosítójának megkereséséhez jelentkezzen be a [az Azure portal](https://portal.azure.com/), az Active Directory lapon válassza a bal oldali menüben válassza ki **alkalmazásregisztrációk**, majd keresse meg a **Alkalmazásazonosító** száma a felsorolt (pl. 50c464d3-4930-494c-963c-1e951d15360e).
+- **Azure AD-alkalmazás azonosítója** (kötelező): Adja meg az Azure Active Directory (AD) [Alkalmazásazonosító](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in). Ez Azonosítójának megkereséséhez jelentkezzen be a [az Azure portal](https://portal.azure.com/), az Active Directory lapon válassza a bal oldali menüben válassza ki **alkalmazásregisztrációk**, majd keresse meg a **Alkalmazásazonosító** száma a felsorolt (pl. 50c464d3-4930-494c-963c-1e951d15360e).
 
-- **Az Azure AD alkalmazás titkos** (kötelező): Adja meg az Azure AD-alkalmazás [titkos Ügyfélkód](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-application-id-and-authentication-key). Ez az érték megkereséséhez jelentkezzen be a [az Azure portal](https://portal.azure.com/). Válassza ki a **Azure Active Directory** lapra a bal oldali menüben válassza a **alkalmazásregisztrációk**, majd válassza ki a test drive alkalmazását. Majd **tanúsítványok és titkos kulcsok**válassza **új titkos ügyfélkulcsot**, adjon meg egy leírást, válassza ki **soha** alatt **lejárat**, majd Válasszon **Hozzáadás**. Ellenőrizze, hogy másolja le az értéket. (Nem elhagyni a lapot előtt ezt megteheti, vagy pedig nem kell az értéket a hozzáférést.)
+- **Az Azure AD alkalmazás titkos** (kötelező): Adja meg az Azure AD-alkalmazás [titkos Ügyfélkód](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#certificates-and-secrets). Ez az érték megkereséséhez jelentkezzen be a [az Azure portal](https://portal.azure.com/). Válassza ki a **Azure Active Directory** lapra a bal oldali menüben válassza a **alkalmazásregisztrációk**, majd válassza ki a test drive alkalmazását. Majd **tanúsítványok és titkos kulcsok**válassza **új titkos ügyfélkulcsot**, adjon meg egy leírást, válassza ki **soha** alatt **lejárat**, majd Válasszon **Hozzáadás**. Ellenőrizze, hogy másolja le az értéket. (Nem elhagyni a lapot előtt ezt megteheti, vagy pedig nem kell az értéket a hozzáférést.)
 
 Ne felejtse el **mentése** mielőtt a következő szakaszban!
 

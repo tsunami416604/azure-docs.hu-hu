@@ -4,15 +4,15 @@ description: A VPN-átjáró diagnosztikai napló események riasztások konfigu
 services: vpn-gateway
 author: anzaman
 ms.service: vpn-gateway
-ms.topic: conceptional
+ms.topic: conceptual
 ms.date: 06/12/2019
 ms.author: alzam
-ms.openlocfilehash: 6c85f47a2e3691306d59c5c44856fd08c07f2d36
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: 4f18581b9ca5770b89be8ca37529c09d635dfb25
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67202894"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67607113"
 ---
 # <a name="set-up-alerts-on-diagnostic-log-events-from-vpn-gateway"></a>Riasztásokat állíthat be az esemény-diagnosztikai naplót a VPN-átjáró
 
@@ -20,7 +20,7 @@ Ez a cikk segít az Azure Log Analytics használatával az Azure VPN Gateway dia
 
 A következő naplók kapcsolódnak az Azure-ban érhetők el:
 
-|***Name (Név)*** | ***Leírás*** |
+|***Name*** | ***Leírás*** |
 |---        | ---               |
 |GatewayDiagnosticLog | Tartalmazza az átjáró-konfigurációs események, a módosítások elsődleges és a karbantartási események diagnosztikai naplók |
 |TunnelDiagnosticLog | Állapotváltozási események alagút tartalmazza. Alagút csatlakoztatása vagy leválasztása események rendelkezik az állapotváltozás körülményeiről összesített okát, ha van ilyen |

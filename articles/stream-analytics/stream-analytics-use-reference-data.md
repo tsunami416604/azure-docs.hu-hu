@@ -8,16 +8,16 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/21/2019
-ms.openlocfilehash: e4a6d169b50eff1b0e166bea098e28e65bad8cab
-ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
+ms.openlocfilehash: ed50dfd7e3c423c1c26a7dc19ae60dcb319f1850
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/22/2019
-ms.locfileid: "67329308"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67621617"
 ---
 # <a name="using-reference-data-for-lookups-in-stream-analytics"></a>A Stream Analytics keresések referenciaadatok használata
 
-Referenciaadatok (más néven egy keresési táblázat) egy véges adatkészlet, amely statikus vagy lassan változó természetű, használják, hajtsa végre egy keresést vagy a data-adatfolyamok bővítésével. Például egy IoT-forgatókönyvet, sikerült (amelyek nem változnak gyakran) vonatkozó metaadatokat tárolnak a referenciaadatok és csatlakozik azt a valós idejű IoT-adatfolyamaiból. Az Azure Stream Analytics közel valós idejű adatfolyam-feldolgozás eléréséhez a memóriában referenciaadatok tölti be. Győződjön meg arról, hogy az Azure Stream Analytics-feladat a referenciaadatok, az általában használhat egy [referencia-adatok csatlakozzon](https://msdn.microsoft.com/library/azure/dn949258.aspx) a lekérdezésben. 
+Referenciaadatok (más néven egy keresési táblázat) egy véges adatkészlet, amely statikus vagy lassan változó természetű, használják, hajtsa végre egy keresést vagy a data-adatfolyamok bővítésével. Például egy IoT-forgatókönyvet, sikerült (amelyek nem változnak gyakran) vonatkozó metaadatokat tárolnak a referenciaadatok és csatlakozik azt a valós idejű IoT-adatfolyamaiból. Az Azure Stream Analytics közel valós idejű adatfolyam-feldolgozás eléréséhez a memóriában referenciaadatok tölti be. Győződjön meg arról, hogy az Azure Stream Analytics-feladat a referenciaadatok, az általában használhat egy [referencia-adatok csatlakozzon](https://docs.microsoft.com/stream-analytics-query/reference-data-join-azure-stream-analytics) a lekérdezésben. 
 
 Stream Analytics támogatja az Azure Blob storage és Azure SQL Database, a tárolási réteget a Referenciaadatoknál. Akkor is átalakítása, illetve hivatkozás adatokat másol az Azure Data Factory használata a Blob storage [bármely számos felhőalapú és helyszíni adattárak](../data-factory/copy-activity-overview.md).
 
@@ -89,10 +89,10 @@ Az SQL Database referenciaadatok konfigurálásához először létrehozásához
 |**Tulajdonság neve**|**Leírás**  |
 |---------|---------|
 |Bemeneti alias|A bemeneti hivatkozhat a feladat lekérdezésben használt rövid név.|
-|Előfizetés|Válassza ki az előfizetését|
+|Subscription|Válassza ki az előfizetését|
 |Adatbázis|Az Azure SQL-adatbázis, amely a referencia-adatokat tartalmaz.|
 |Felhasználónév|Az Azure SQL Database társított felhasználónév.|
-|Jelszó|Az Azure SQL Database társított jelszót.|
+|Windows 10|Az Azure SQL Database társított jelszót.|
 |Rendszeres időközönként frissítése|Ezzel a beállítással kiválaszthat egy frissítési gyakoriság. "A" kiválasztása lehetővé teszi, hogy adja meg a frissítési gyakoriság DD:HH:MM.|
 |Pillanatkép-lekérdezés|Ez a beállítás az alapértelmezett lekérdezés, amely a referenciaadatok lekéri az SQL Database-ből.|
 |Különbözeti lekérdezés|Frissítési időköz speciális forgatókönyvek a nagy méretű adatkészleteket és a egy rövid, felvehet egy különbözeti lekérdezés.|

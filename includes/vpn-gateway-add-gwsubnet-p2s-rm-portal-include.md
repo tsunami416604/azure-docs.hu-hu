@@ -8,14 +8,14 @@ ms.topic: include
 ms.date: 10/21/2018
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 5642533fe1015e88c3b27e83139bfd26cb0b1a53
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: b044912fd8f52f3f4fdbe1b3a74b64f9b565ddf0
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67178987"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67673379"
 ---
-1. Keresse meg a [portálon](http://portal.azure.com) azt a Resource Manager-alapú virtuális hálózatot, amelyhez létre kíván hozni egy virtuális hálózati átjárót.
+1. Keresse meg a [portálon](https://portal.azure.com) azt a Resource Manager-alapú virtuális hálózatot, amelyhez létre kíván hozni egy virtuális hálózati átjárót.
 2. A VNet lap **Beállítások** részén az **Alhálózatok** elemre kattintva bontsa ki az **Alhálózatok** oldalt.
 3. Az **Alhálózatok** lap **+Átjáróalhálózat** elemére kattintva nyissa meg az **Alhálózat hozzáadása** lapot. 
 

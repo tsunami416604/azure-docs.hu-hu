@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 4e11b1bc16f874f892288f9677a71023f483de7c
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 8e10151cd117a3400893f94559b2c9892de9f3c7
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60458130"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67666217"
 ---
 # <a name="integrate-azure-vpn-gateway-radius-authentication-with-nps-server-for-multi-factor-authentication"></a>Azure VPN gateway RADIUS-hitelesítés integrálása az NPS-kiszolgálóval a multi-factor Authentication 
 
@@ -52,18 +52,18 @@ Többtényezős hitelesítés engedélyezése a felhasználók az Azure Active D
 ### <a name="step-2-configure-the-nps-for-azure-mfa"></a>2\. lépés a hálózati házirend-kiszolgáló konfigurálása az Azure MFA-hoz
 
 1. A hálózati házirend-kiszolgálón [az NPS-bővítményének telepítése az Azure MFA-kiszolgáló](../active-directory/authentication/howto-mfa-nps-extension.md#install-the-nps-extension).
-2. Nyissa meg a NSP-konzolon kattintson a jobb gombbal **RADUIS ügyfelek**, majd válassza ki **új**. Hozza létre a RADUIS ügyfél a következő beállítások megadásával:
+2. Nyissa meg a hálózati házirend-kiszolgáló konzolját, kattintson a jobb gombbal **RADIUS-ügyfelek**, majd válassza ki **új**. Hozza létre a RADIUS-ügyfél a következő beállítások megadásával:
 
     - **Rövid név**: Adjon neki tetszőleges nevet.
     - **(IP- vagy DNS-) cím**: Írja be az 1. lépésben létrehozott átjáró-alhálózatot.
     - **Közös titkos kulcsot**: írja be a bármely titkos kulcsot, és ne felejtse el későbbi használatra.
 
-      ![A kép RADUIS ügyfélbeállítások konfigurálása](./media/vpn-gateway-radiuis-mfa-nsp/create-radius-client1.png)
+      ![RADIUS-ügyfélbeállításokat bemutató kép](./media/vpn-gateway-radiuis-mfa-nsp/create-radius-client1.png)
 
  
 3.  Az a **speciális** lapon, a szállító nevét állítsa **RADIUS Standard** , és ellenőrizze, hogy a **további beállítások** jelölőnégyzet nincs bejelölve.
 
-    ![RADUIS speciális ügyfélbeállítások bemutató kép](./media/vpn-gateway-radiuis-mfa-nsp/create-radius-client2.png)
+    ![RADIUS-ügyfél speciális beállításai bemutató kép](./media/vpn-gateway-radiuis-mfa-nsp/create-radius-client2.png)
 
 4. Lépjen a **házirendek** > **hálózati házirendek**, kattintson duplán a **Microsoft Routing és távelérési kiszolgáló felé irányuló kapcsolatot** szabályzatot, jelölje be  **Hozzáférés biztosítása**, és kattintson a **OK**.
 

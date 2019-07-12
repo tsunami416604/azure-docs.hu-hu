@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 4658de97bc8b8a175934286a5be3f074968ff7bd
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: 6b7451371fe1562a6763643cd90e5646bd255018
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67485366"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67653529"
 ---
 # <a name="query-examples-using-the-simple-search-syntax-in-azure-search"></a>Az "egyszerű" szintaxis használatával az Azure Search lekérdezési példák
 
@@ -119,7 +119,7 @@ https://azs-playground.search.windows.net/indexes/nycjobs/docs/9E1E3AF9-0660-4E0
 
 ## <a name="example-3-filter-queries"></a>3\. példa: Szűrő lekérdezések
 
-[Szintaxis szűrése](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search#filter-examples) van egy is használhatja az OData-kifejezésnek **keresési** vagy önállóan. Egy önálló szűrőt a keresési paramétert, akkor célszerű, ha a szűrőkifejezés nem tudja a lényeges dokumentumok teljes minősítéséhez. A lekérdezési karakterlánc nélkül nem nincs lexikális vagy nyelvi elemzés, nincs (az összes pontszámok 1), és nincs ennek a területnek. Figyelje meg a keresési karakterlánc üres.
+[Szintaxis szűrése](https://docs.microsoft.com/azure/search/search-query-odata-filter) van egy is használhatja az OData-kifejezésnek **keresési** vagy önállóan. Egy önálló szűrőt a keresési paramétert, akkor célszerű, ha a szűrőkifejezés nem tudja a lényeges dokumentumok teljes minősítéséhez. A lekérdezési karakterlánc nélkül nem nincs lexikális vagy nyelvi elemzés, nincs (az összes pontszámok 1), és nincs ennek a területnek. Figyelje meg a keresési karakterlánc üres.
 
 ```http
 POST /indexes/nycjobs/docs/search?api-version=2019-05-06
@@ -147,7 +147,7 @@ Keresztül történik egy másik hatékonyan egyesítheti a szűrőt, és keress
 https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-05-06&$count=true&$select=job_id,business_title,agency&search=&$filter=search.ismatch('plan*', 'business_title', 'full', 'any')
 ```
 
-A függvénnyel kapcsolatos további információkért lásd: ["Szűrő példákban" search.ismatch](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search#filter-examples).
+A függvénnyel kapcsolatos további információkért lásd: ["Szűrő példákban" search.ismatch](https://docs.microsoft.com/azure/search/search-query-odata-full-text-search-functions#examples).
 
 ## <a name="example-4-range-filters"></a>4\. példa: Tartományszűrő
 
@@ -198,7 +198,7 @@ https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-
 
 ## <a name="example-5-geo-search"></a>5\. példa: Földrajzi keresés
 
-A mintaindex szélességi és hosszúsági koordinátákkal megadott geo_location mezőt tartalmaz. Ez a példa a [geo.distance függvény](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search#filter-examples) , amely szűri a dokumentumokon belül a kiindulási pont, kerület ki egy tetszőleges távolságot (adja meg kilométerben) egészíti ki a. Módosíthatja a lekérdezés a lekérdezés felületének méretét (4) utolsó értékét.
+A mintaindex szélességi és hosszúsági koordinátákkal megadott geo_location mezőt tartalmaz. Ez a példa a [geo.distance függvény](https://docs.microsoft.com/azure/search/search-query-odata-geo-spatial-functions#examples) , amely szűri a dokumentumokon belül a kiindulási pont, kerület ki egy tetszőleges távolságot (adja meg kilométerben) egészíti ki a. Módosíthatja a lekérdezés a lekérdezés felületének méretét (4) utolsó értékét.
 
 Az alábbi példa az olvashatóság érdekében POST-formátumban van:
 

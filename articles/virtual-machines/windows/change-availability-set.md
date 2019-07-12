@@ -5,7 +5,7 @@ keywords: ''
 services: virtual-machines-windows
 documentationcenter: ''
 author: cynthn
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 ms.service: virtual-machines-windows
@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/12/2019
 ms.author: cynthn
-ms.openlocfilehash: 59e28591bda0bada24929fe95fba248d333833e6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9e3aa213b2ba58e2a09e0364ab6cd9bc42d131d8
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64723375"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67719265"
 ---
 # <a name="change-the-availability-set-for-a-windows-vm"></a>A Windows virtuális gép rendelkezésre állási módosítása
 A következő lépések bemutatják, hogyan módosíthatja a rendelkezésre állási csoport a virtuális gépek Azure PowerShell-lel. Virtuális gép csak egy rendelkezésre állási csoport létrehozásakor lehet hozzáadni. Módosíthatja a rendelkezésre állási beállítása, törölje és hozza létre a virtuális gép szükséges. 

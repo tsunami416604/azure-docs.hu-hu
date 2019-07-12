@@ -4,7 +4,7 @@ description: További információ a Linux az Azure által támogatott disztrib�
 services: virtual-machines-linux
 documentationcenter: ''
 author: szarkos
-manager: jeconnoc
+manager: gwallace
 editor: tysonn
 tags: azure-service-management,azure-resource-manager
 ms.assetid: 2777a526-c260-4cb9-a31a-bdfe1a55fffc
@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/16/2019
 ms.author: szark
-ms.openlocfilehash: a1be0b6870882d3c7b0281dec7933e87c50e49de
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 172267af394885d0c5ac0a0717de87e968182d37
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65834558"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67667862"
 ---
 # <a name="endorsed-linux-distributions-on-azure"></a>Által támogatott Linux-disztribúciók az Azure-ban
 Partnerek az Azure Marketplace-en elérhető Linux-lemezképekhez adja meg. Jelenleg is dolgozunk, a különböző Linux közösségekkel, hogy még tovább bővíthesse a támogatott terjesztési listára. Addig is, amelyek nem érhetők el a piactérről disztribúciók, akkor is mindig saját Linux használata az alábbi az irányelveket, [létrehozása és feltöltése a Linux operációs rendszert tartalmazó virtuális merevlemez](https://docs.microsoft.com/azure/virtual-machines/linux/create-upload-generic).
