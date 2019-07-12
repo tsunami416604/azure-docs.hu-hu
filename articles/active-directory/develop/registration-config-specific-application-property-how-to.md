@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 06/28/2019
 ms.author: ryanwi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9bccaa28d34ebff47c7de73a4d9b3d8296ae9fef
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: b01ff1e2d0c9bc926d54bd54716e0579ef395ec0
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67476126"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67655995"
 ---
 # <a name="how-to-fill-out-specific-fields-for-a-custom-developed-application"></a>Hogyan kell kitölteni egy egyénileg fejlesztett alkalmazásba az adott mezők
 
@@ -43,7 +43,7 @@ Ez a cikk röviden a az alkalmazás regisztrációs űrlapot az összes elérhet
 |------------------|------------------------------------------------------------------------------------------|
 | Name (Név)             | Az alkalmazás neve. Ennek tartalmaznia kell legalább 4 karakterből kell állnia.                |
 | Támogatott fióktípusok| Válassza ki, hogy mely fiókok szeretné az alkalmazás támogatja: csak a szervezeti könyvtárban található fiókok, bármely szervezeti directory fiókok vagy bármely szervezeti könyvtárban fiókok és a személyes Microsoft-fiókok.  |
-| Átirányítási URI-t (nem kötelező) | Válassza ki az alkalmazást is fejleszt, típusát **webes** vagy **(mobil és asztali) nyilvános ügyfél**, majd adja meg az alkalmazás az átirányítási URI-t (vagy a válasz URL-cím). Webalkalmazás esetében adja meg alkalmazás alap URL-címét. A http://localhost:31544 például a helyi gépen futó webalkalmazás URL-címe lehet. A felhasználók ezzel az URL-címmel jelentkeznek be egy webes ügyfélalkalmazásba. Nyilvános ügyfélalkalmazások esetében adja meg az URI-t, amelyet az Azure AD a jogkivonatválaszok visszaadására használ. Adjon meg egy adott értéket az alkalmazáshoz, például a myapp://auth. Webalkalmazásokra és natív alkalmazásokra konkrét példákat [rövid útmutatóinkban](https://docs.microsoft.com/azure/active-directory/develop/#quickstarts) talál.|
+| Átirányítási URI-t (nem kötelező) | Válassza ki az alkalmazást is fejleszt, típusát **webes** vagy **(mobil és asztali) nyilvános ügyfél**, majd adja meg az alkalmazás az átirányítási URI-t (vagy a válasz URL-cím). Webalkalmazás esetében adja meg alkalmazás alap URL-címét. A http://localhost:31544 például a helyi gépen futó webalkalmazás URL-címe lehet. A felhasználók ezzel az URL-címmel jelentkeznek be egy webes ügyfélalkalmazásba. Nyilvános ügyfélalkalmazások esetében adja meg az URI-t, amelyet az Azure AD a jogkivonatválaszok visszaadására használ. Adjon meg egy adott értéket az alkalmazáshoz, például a myapp://auth. Webalkalmazásokra és natív alkalmazásokra konkrét példákat [rövid útmutatóinkban](https://docs.microsoft.com/azure/active-directory/develop) talál.|
 
 Miután megadta a fenti mezőket, az alkalmazás regisztrálva van az Azure Portalon, és a rendszer átirányítja az alkalmazás – áttekintés oldalra. A bal oldali ablaktábla, a beállításlapok **kezelés** testre szabhatja az alkalmazás további mezőket rendelkezik. Az alábbi táblázatok bemutatják az összes mezőt. Csak jelennének meg ezeket a mezőket, attól függően, hogy létrehozott egy webalkalmazás vagy egy nyilvános ügyfélalkalmazás egy részét.
 
@@ -60,7 +60,7 @@ Miután megadta a fenti mezőket, az alkalmazás regisztrálva van az Azure Port
 | Új embléma feltöltése | Ezzel az alkalmazás emblémát tölthet fel. Az embléma .bmp, .jpg vagy .png formátumúnak kell lennie, és a fájl mérete kisebb, mint 100 KB lehet. A kép 215 x 215 képpont, a középső kép mérete 94 x 94 képpont kell lennie.|
 | Kezdőlap URL-címe   | Ez az alkalmazás regisztrációja során megadott bejelentkezési URL.|
 
-### <a name="authentication"></a>Hitelesítés
+### <a name="authentication"></a>Authentication
 
 | Mező           | Leírás        |
 |-----------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|

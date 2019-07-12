@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: magottei
 ms.custom: seodec2018
-ms.openlocfilehash: 4ed18b5f83bdb052f2db6847a320c26a8e49f83e
-ms.sourcegitcommit: 72f1d1210980d2f75e490f879521bc73d76a17e1
+ms.openlocfilehash: 1cb3260fa11354de963318a023fec912d082eae4
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/14/2019
-ms.locfileid: "67147547"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67653403"
 ---
 # <a name="troubleshooting-common-indexer-issues-in-azure-search"></a>Az Azure Search gyakori indexelő hibáinak elhárítása
 
@@ -45,7 +45,7 @@ A teljes Tartományneve pingelésével talál meg a keresési szolgáltatás IP-
 
 #### <a name="indexing-isnt-enabled"></a>Indexelő nincs engedélyezve
 
-Az Azure Search rendelkezik a Cosmos DB-indexelő az implicit függ. Ha kikapcsolja az Automatikus indexelés Cosmos DB-ben, az Azure Search adja vissza egy sikeres állapot, de nem index tároló tartalmának el. Ellenőrizze a beállításokat, és kapcsolja be az indexelő vonatkozó utasításokért lásd: [kezelése az Azure Cosmos DB indexelése](https://docs.microsoft.com/azure/cosmos-db/how-to-manage-indexing-policy#manage-indexing-using-azure-portal).
+Az Azure Search rendelkezik a Cosmos DB-indexelő az implicit függ. Ha kikapcsolja az Automatikus indexelés Cosmos DB-ben, az Azure Search adja vissza egy sikeres állapot, de nem index tároló tartalmának el. Ellenőrizze a beállításokat, és kapcsolja be az indexelő vonatkozó utasításokért lásd: [kezelése az Azure Cosmos DB indexelése](https://docs.microsoft.com/azure/cosmos-db/how-to-manage-indexing-policy#use-the-azure-portal).
 
 ## <a name="document-processing-errors"></a>A dokumentum feldolgozási hibákkal
 

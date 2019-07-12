@@ -9,12 +9,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.custom: seodec18
-ms.openlocfilehash: 5b2c153646021aeb8ee0dbb787cfce41af19568d
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 4b250a5e14ab37553d93453d05f8ff388bf1ba84
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67443674"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67620522"
 ---
 # <a name="build-an-iot-solution-by-using-stream-analytics"></a>IoT-megoldás készítése a Stream Analytics használatával
 
@@ -164,7 +164,7 @@ Számos forrásanyag is könnyen üzembe helyezhető egy erőforráscsoportba ta
 
    A lekérdezés szándéka ismétlő, tegyük fel, hogy szeretne-e, adjon meg egy nem ingyenes érzékelőadatainak járművek számát. Mivel a highway díjmentesen érzékelőadatainak megadása járművek folyama, most már az bejárata események pedig hasonló olyan adatfolyamra, amely soha nem áll le. A stream számszerűsítése, meg kell adnia egy "idő" keresztül méréséhez. Nézzük finomíthatja a kérdést, "hány járművek adjon meg egy nem ingyenes érzékelőadatainak percen át 3 percenként?" Ezt gyakran nevezik átfedésmentes száma.
 
-   Ahogy látható, az Azure Stream Analytics használ olyan lekérdezési nyelvet, például az SQL és kiegészíti néhány kiterjesztést adja meg a lekérdezés idővel kapcsolatos szempontokat.  További részletekért olvassa el [Időkezelést](https://msdn.microsoft.com/library/azure/mt582045.aspx) és [Ablakkezelési](https://msdn.microsoft.com/library/azure/dn835019.aspx) a lekérdezésben használt szerkezeteket.
+   Ahogy látható, az Azure Stream Analytics használ olyan lekérdezési nyelvet, például az SQL és kiegészíti néhány kiterjesztést adja meg a lekérdezés idővel kapcsolatos szempontokat.  További részletekért olvassa el [Időkezelést](https://docs.microsoft.com/stream-analytics-query/time-management-azure-stream-analytics) és [Ablakkezelési](https://docs.microsoft.com/stream-analytics-query/windowing-azure-stream-analytics) a lekérdezésben használt szerkezeteket.
 
 3. Vizsgálja meg a TollApp mintafeladat bemenetei. Csak a EntryStream bemeneti szerepel az aktuális lekérdezés.
    - **EntryStream** bemeneti egy Event Hub-kapcsolat, amely várólistára helyezi, amely minden alkalommal, amikor egy autó egy őrbódét ír a főutat ábrázoló. Az eseményeket hoz létre, amely része a mintául szolgáló webalkalmazás és az adatokat az eseményközpont várólistában van. Vegye figyelembe, hogy a bemeneti lekérik a streamelési lekérdezés a FROM záradékban.

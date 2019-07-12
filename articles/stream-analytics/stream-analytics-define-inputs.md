@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/30/2019
-ms.openlocfilehash: bfdebacb4de205fa42fe96ceb9970d2d109536e8
-ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
+ms.openlocfilehash: 1f03f9e68640edd73d2f6bb55cf205a609450658
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67296150"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67620496"
 ---
 # <a name="stream-data-as-input-into-stream-analytics"></a>Stream data bemeneti Stream analyticsbe
 
@@ -79,7 +79,7 @@ FROM Input
 ```
 
 > [!NOTE]
-> Ha az Event Hub használata az IoT Hub útvonalakhoz végpontként, érheti el az IoT Hub metaadatok használatával a [GetMetadataPropertyValue függvény](https://msdn.microsoft.com/library/azure/mt793845.aspx).
+> Ha az Event Hub használata az IoT Hub útvonalakhoz végpontként, érheti el az IoT Hub metaadatok használatával a [GetMetadataPropertyValue függvény](https://docs.microsoft.com/stream-analytics-query/getmetadatapropertyvalue).
 > 
 
 ## <a name="stream-data-from-iot-hub"></a>Stream-adatokat az IoT hubról
@@ -129,7 +129,7 @@ Az Azure Blob storage költséghatékony és méretezhető megoldást kínál a 
 
 Naplófájl feldolgozása a Blob storage bemenetei között a Stream Analytics egy gyakran használt forgatókönyv. Ebben a forgatókönyvben a telemetriai adatok fájlok rendszerből rögzített, és elemzése és feldolgozása történhet az jelentéssel bíró adatokat nyerhet ki kell.
 
-A Blob storage-események a Stream Analytics alapértelmezett időbélyegzője, hogy a blob utolsó módosításának, az időbélyeget, amely `BlobLastModifiedUtcTime`. Az adatok feldolgozása adatfolyamként időbélyeg használatával, abban az esetben, ha adattartalom kell használnia a [TIMESTAMP BY](https://msdn.microsoft.com/library/azure/dn834998.aspx) kulcsszót. Stream Analytics-feladat kér le adatokat az Azure Blob storage bemeneti másodpercenként blob fájl esetén érhető el. A blob-fájl nem érhető el, ha van egy exponenciális visszatartással 90 másodperc késéssel maximális ideje.
+A Blob storage-események a Stream Analytics alapértelmezett időbélyegzője, hogy a blob utolsó módosításának, az időbélyeget, amely `BlobLastModifiedUtcTime`. Az adatok feldolgozása adatfolyamként időbélyeg használatával, abban az esetben, ha adattartalom kell használnia a [TIMESTAMP BY](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference) kulcsszót. Stream Analytics-feladat kér le adatokat az Azure Blob storage bemeneti másodpercenként blob fájl esetén érhető el. A blob-fájl nem érhető el, ha van egy exponenciális visszatartással 90 másodperc késéssel maximális ideje.
 
 CSV-formátumú bemeneti adatkészlet mezőinek definiálásához, ha egy fejléc sorra igényelnek, és az összes sor fejlécmezők egyedinek kell lennie.
 

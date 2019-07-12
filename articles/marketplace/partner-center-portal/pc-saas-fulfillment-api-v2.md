@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.topic: reference
 ms.date: 05/23/2019
 ms.author: evansma
-ms.openlocfilehash: ecee1669c29d7b298741f9e5521de03da6dd7e3b
-ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
+ms.openlocfilehash: 476aaacbe6f1bf6d1920df0f12599976bfcc27b7
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/22/2019
-ms.locfileid: "67331632"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67701143"
 ---
 # <a name="saas-fulfillment-apis-version-2"></a>SaaS-teljesítési API-k, 2-es verzió 
 
@@ -87,7 +87,7 @@ Az alábbi táblázat a gyakori paramétereket és teljesítése API-k által ha
 | `offerId`                | Minden ajánlat esetében egy egyedi karakterlánc-azonosító (például: "offer1").  |
 | `planId`                 | Az egyes csomagot/SKU egy egyedi karakterlánc-azonosító (például: "silver"). |
 | `operationId`            | Egy adott művelet GUID azonosítója.  |
-|  `action`                | A művelet végrehajtása egy erőforrást, vagy `subscribe`, `unsubscribe`, `suspend`, `reinstate`, vagy `changePlan`, `changeQuantity`, `transfer`.  |
+|  `action`                | A művelet végrehajtása egy erőforrást, vagy `unsubscribe`, `suspend`, `reinstate`, vagy `changePlan`, `changeQuantity`, `transfer`.  |
 |   |   |
 
 Globálisan egyedi azonosítóra ([GUID](https://en.wikipedia.org/wiki/Universally_unique_identifier)) 128 bites (32 hexadecimális) szám, amely általában automatikusan jönnek létre. 
@@ -199,10 +199,16 @@ Válasz tartalma:<br>
           "purchaser": { // Tenant that purchased the SaaS subscription. These could be different for reseller scenario
               "tenantId": "<guid>"
           },
+            "term": {
+                "startDate": "2019-05-31",
+                "endDate": "2019-06-29",
+                "termUnit": "P1M"
+          },
           "allowedCustomerOperations": [
               "Read" // Possible Values: Read, Update, Delete.
           ], // Indicates operations allowed on the SaaS subscription. For CSP-initiated purchases, this will always be Read.
           "sessionMode": "None", // Possible Values: None, DryRun (Dry Run indicates all transactions run as Test-Mode in the commerce stack)
+          "isFreeTrial": "true", // true – the customer subscription is currently in free trial, false – the customer subscription is not currently in free trial.
           "saasSubscriptionStatus": "Subscribed" // Indicates the status of the operation: [NotStarted, PendingFulfillmentStart, Subscribed, Suspended, Unsubscribed]
       }
   ],
@@ -271,7 +277,13 @@ Response Body:
           },
         "allowedCustomerOperations": ["Read"], // Indicates operations allowed on the SaaS subscription. For CSP-initiated purchases, this will always be Read.
         "sessionMode": "None", // Dry Run indicates all transactions run as Test-Mode in the commerce stack
+        "isFreeTrial": "true", // true – customer subscription is currently in free trial, false – customer subscription is not currently in free trial.
         "status": "Subscribed", // Indicates the status of the operation.
+          "term": { //This gives the free trial term start and end date
+            "startDate": "2019-05-31",
+            "endDate": "2019-06-29",
+            "termUnit": "P1M"
+        },
 }
 ```
 
@@ -794,7 +806,6 @@ A közzétevő meg kell valósítania egy webhook proaktívan értesíti a felha
 }
 ```
 Ha a művelet lehet a következők egyikét: 
-- `subscribe` (ha az erőforrás aktiválva van)
 - `unsubscribe` (ha az erőforrás törlése)
 - `changePlan` (Ha befejeződött a terv műveletet)
 - `changeQuantity` (Ha befejeződött a mennyiség műveletet)

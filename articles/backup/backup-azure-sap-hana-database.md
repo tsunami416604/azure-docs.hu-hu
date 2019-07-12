@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 05/06/2019
 ms.author: raynew
-ms.openlocfilehash: a16ed7134fc9f3c159715f58f116de3fb30e8aca
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: 1c5c38e9af58aa9468fb0e22491327d3a35f0dda
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67481108"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67656663"
 ---
 # <a name="back-up-an-sap-hana-database"></a>Az SAP HANA-adatbázis biztonsági mentése
 
@@ -26,7 +26,7 @@ ms.locfileid: "67481108"
 
 **Támogatás** | **Részletek**
 --- | ---
-**Támogatott helyeken** | Délkelet-Ausztrália, Kelet-Ausztrália <br> Dél-Brazília <br> Kanada közép-India, kelet-Kanada <br> Délkelet-Ázsia, Kelet-Ázsia <br> USA keleti RÉGIÓJA, USA keleti RÉGIÓJA 2, USA nyugati középső RÉGIÓJA, USA nyugati RÉGIÓJA, USA nyugati RÉGIÓJA 2, USA északi középső RÉGIÓJA, USA középső RÉGIÓJA, USA déli középső RÉGIÓJA<br> India középső régiója, Dél-India <br> Kelet-Japán, Nyugat-Japán<br> Korea középső régiója, Korea déli régiója <br> Észak-Európa, Nyugat-Európa <br> Egyesült Királyság déli régiója, Egyesült Királyság nyugati régiója
+**Támogatott helyeken** | Délkelet-Ausztrália, Kelet-Ausztrália <br> Dél-Brazília <br> Kanada közép-India, kelet-Kanada <br> Délkelet-Ázsia, Kelet-Ázsia <br> USA keleti RÉGIÓJA, USA keleti RÉGIÓJA 2, USA nyugati középső RÉGIÓJA, USA nyugati RÉGIÓJA, USA nyugati RÉGIÓJA 2, USA északi középső RÉGIÓJA, USA középső RÉGIÓJA, USA déli középső RÉGIÓJA<br> India középső régiója, Dél-India <br> Kelet-Japán, Nyugat-Japán<br> Korea középső régiója, Korea déli régiója <br> Észak-Európa, Nyugat-Európa <br> Egyesült Királyság déli régiója, Egyesült Királyság nyugati régiója
 **Virtuális gépek támogatott operációs rendszerek** | SLES 12 SP2 és SP3 verziót kell használnia.
 **HANA támogatott verziói** | A HANA SDC 1.x, on HANA MDC 2.x < = SPS03
 

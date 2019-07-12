@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: reference
 ms.date: 09/03/2018
 ms.author: cshoe
-ms.openlocfilehash: 002ea00364056f0780146b79936a6bc04e289973
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: b815ce95da24b20ff18ea03d637ad85bfe72cb00
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67480081"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67654238"
 ---
 # <a name="azure-table-storage-bindings-for-azure-functions"></a>Az Azure storage táblakötések az Azure Functions szolgáltatáshoz
 
@@ -537,7 +537,7 @@ A Table storage bemeneti kötésnek a következő eseteket támogatja:
 Használja az Azure Table-tároló kimeneti kötését entitások írni az Azure Storage-fiók egyik táblájában.
 
 > [!NOTE]
-> A kimeneti kötés nem támogatja a meglévő entitások frissítése. Használja a `TableOperation.Replace` művelet [Azure Storage SDK](https://docs.microsoft.com/azure/cosmos-db/table-storage-how-to-use-dotnet#replace-an-entity) frissíteni egy létező entitásba.   
+> A kimeneti kötés nem támogatja a meglévő entitások frissítése. Használja a `TableOperation.Replace` művelet [Azure Storage SDK](https://docs.microsoft.com/azure/cosmos-db/tutorial-develop-table-dotnet#delete-an-entity) frissíteni egy létező entitásba.   
 
 ## <a name="output---example"></a>Kimenete – példa
 
@@ -791,7 +791,7 @@ A Table storage kimeneti kötés támogatja a következő esetekben:
 
 ## <a name="exceptions-and-return-codes"></a>Kivételek és a visszatérési kódok
 
-| Kötés | Leírások |
+| Kötés | Hivatkozás |
 |---|---|
 | Tábla | [Tábla hibakódok](https://docs.microsoft.com/rest/api/storageservices/fileservices/table-service-error-codes) |
 | Blob, Table, Queue | [Storage-hibakódok](https://docs.microsoft.com/rest/api/storageservices/fileservices/common-rest-api-error-codes) |

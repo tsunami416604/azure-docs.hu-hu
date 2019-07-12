@@ -1,5 +1,5 @@
 ---
-title: Jelentkezzen be egy Azure Active Directory-szervezet – Azure Active Directory B2C beállítása |} A Microsoft Docs
+title: Jelentkezzen be egy Azure Active Directory-szervezet – Azure Active Directory B2C beállítása
 description: Állítsa be jelentkezzen be az Azure Active Directory B2C egy adott Azure Active Directory szervezet számára.
 services: active-directory-b2c
 author: mmacy
@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 05/14/2018
+ms.date: 07/08/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 28dbf0382ac151857e72d4bb59e207f07c8ad3f3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b867a7f9ffeab3d243c8c094830aa0984cffd04a
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66508419"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67654198"
 ---
 # <a name="set-up-sign-in-for-a-specific-azure-active-directory-organization-in-azure-active-directory-b2c"></a>Jelentkezzen be egy adott Azure Active Directory-szervezet az Azure Active Directory B2C beállítása
 
@@ -37,7 +37,7 @@ Ahhoz, hogy jelentkezzen be egy meghatározott felhasználók számára az Azure
 7. A a **átirányítási URI-t**, fogadja el a **webes**, és adja meg a következő URL-cím csupa kisbetűvel, ahol `your-B2C-tenant-name` váltja fel az Azure AD B2C-bérlő nevét. Ha például `https://fabrikam.b2clogin.com/fabrikam.onmicrosoft.com/oauth2/authresp`:
 
     ```
-    https://your--B2C-tenant-name.b2clogin.com/your-B2C-tenant-name.onmicrosoft.com/oauth2/authresp
+    https://your-B2C-tenant-name.b2clogin.com/your-B2C-tenant-name.onmicrosoft.com/oauth2/authresp
     ```
 
     Most kell használnia az összes URL-címek [b2clogin.com](b2clogin.md).
@@ -63,10 +63,10 @@ Ahhoz, hogy jelentkezzen be egy meghatározott felhasználók számára az Azure
     ```
 
 8. A **ügyfél-azonosító**, adja meg a korábban feljegyzett Alkalmazásazonosító és a **titkos Ügyfélkód**, adja meg a korábban feljegyzett titkos ügyfélkulcsot.
-9. Szükség esetén adjon meg egy értéket **Domain_hint**. Például: `ContosoAD`. Ez az érték az identitásszolgáltató használatával való megnevezésekor használandó *domain_hint* a kérésben. 
+9. Szükség esetén adjon meg egy értéket **Domain_hint**. Például: `ContosoAD`. Ez az érték az identitásszolgáltató használatával való megnevezésekor használandó *domain_hint* a kérésben.
 10. Kattintson az **OK** gombra.
 11. Válassza ki **ezen identitásszolgáltató jogcímeinek hozzárendelése** és állítsa be a következő jogcímek:
-    
+
     - A **Felhasználóazonosító**, adja meg `oid`.
     - A **megjelenítendő név**, adja meg `name`.
     - A **Utónév**, adja meg `given_name`.

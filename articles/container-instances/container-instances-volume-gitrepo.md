@@ -7,19 +7,19 @@ ms.service: container-instances
 ms.topic: article
 ms.date: 06/15/2018
 ms.author: danlep
-ms.openlocfilehash: 70593bffbf30b3a0c0978e56c2af1a856a22f2ec
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 86f8c099061cd3b75b77330c567f34dea2b34928
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60563019"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67657603"
 ---
 # <a name="mount-a-gitrepo-volume-in-azure-container-instances"></a>Az Azure Container Instances szolgáltatásban gitRepo kötet csatlakoztatása
 
 Ismerje meg, hogyan csatlakoztathat egy *gitRepo* kötet egy Git-tárház klónozásához a tárolópéldányok be.
 
 > [!NOTE]
-> Csatlakoztatási egy *gitRepo* kötet Linux-tárolók jelenleg korlátozva. Arra törekszünk, hogy idővel az összes funkció elérhető legyen a Windows-tárolókon is. Az egyes platformok közötti aktuális eltérésekről a [Azure Container Instances-kvóták és -régiók rendelkezésre állása](container-instances-quotas.md) részben tájékozódhat.
+> Csatlakoztatási egy *gitRepo* kötet Linux-tárolók jelenleg korlátozva. Amíg folyamatban van a Windows-tárolók idővel az összes funkció, annak aktuális platform különbségek a [áttekintése](container-instances-overview.md#linux-and-windows-containers).
 
 ## <a name="gitrepo-volume"></a>a gitRepo kötet
 
@@ -35,9 +35,9 @@ Ha csatlakoztatja egy *gitRepo* kötet, megadhatja a kötet konfigurálása hár
 
 ## <a name="mount-gitrepo-volume-azure-cli"></a>Kötet csatlakoztatási gitRepo: Azure CLI
 
-A gitRepo kötet csatlakoztatása, container Instances szolgáltatásban való központi telepítésekor a [Azure CLI-vel](/cli/azure), szállítási a `--gitrepo-url` és `--gitrepo-mount-path` paramétereket a [az tároló létrehozása] [ az-container-create] parancsot. Megadhatja a klónozza a köteten lévő könyvtár (`--gitrepo-dir`) és a változat klónozásának véglegesítési kivonatát (`--gitrepo-revision`).
+A gitRepo kötet csatlakoztatása, container Instances szolgáltatásban való központi telepítésekor a [Azure CLI](/cli/azure), szállítási a `--gitrepo-url` és `--gitrepo-mount-path` paramétereket a [az tároló létrehozása][az-container-create] parancsot. Megadhatja a klónozza a köteten lévő könyvtár (`--gitrepo-dir`) és a változat klónozásának véglegesítési kivonatát (`--gitrepo-revision`).
 
-A példában a parancs klónozza a Microsoft [aci-helloworld] [ aci-helloworld] mintaalkalmazás be `/mnt/aci-helloworld` a tároló-példányban:
+A példában a parancs klónozza a Microsoft [aci-helloworld][aci-helloworld] mintaalkalmazás be `/mnt/aci-helloworld` a tároló-példányban:
 
 ```azurecli-interactive
 az container create \
@@ -50,7 +50,7 @@ az container create \
     --gitrepo-mount-path /mnt/aci-helloworld
 ```
 
-Annak ellenőrzéséhez, hogy a gitRepo kötet csatlakoztatása, indítsa el a tárolóban található rendszerhéj [az tároló exec] [ az-container-exec] és a könyvtár listázása:
+Annak ellenőrzéséhez, hogy a gitRepo kötet csatlakoztatása, indítsa el a tárolóban található rendszerhéj [az tároló exec][az-container-exec] és a könyvtár listázása:
 
 ```console
 $ az container exec --resource-group myResourceGroup --name hellogitrepo --exec-command /bin/sh

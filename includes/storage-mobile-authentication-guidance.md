@@ -4,12 +4,12 @@ ms.service: storage
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: tamram
-ms.openlocfilehash: 6911e06dc023027ab32b99387b9f7d3f5e708f86
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: fe4ecc237b56575f99844d3ec074225fadb69d3c
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67178798"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67673368"
 ---
 ## <a name="configure-your-application-to-access-azure-storage"></a>Hozzáférés az Azure Storage-alkalmazás konfigurálása
 Két módon hitelesítheti az alkalmazását a tárolási szolgáltatásokhoz való hozzáférést:
@@ -38,11 +38,11 @@ Megosztott kulcsos hitelesítés használatakor létrehozhat egy [kapcsolati kar
 
 ### <a name="shared-access-signatures-sas"></a>Közös hozzáférésű jogosultságkódok (SAS)
 Egy mobilalkalmazás az ajánlott módszer az ügyfelek számára az Azure Storage szolgáltatás kérelem hitelesítéséhez van egy közös hozzáférésű Jogosultságkód (SAS) használatával. SAS lehetővé teszi, hozzáférést kell adni egy ügyfél egy erőforrást egy megadott időtartam elteltéig, az engedélyek bizonyos készletét.
-A tárolási fiók tulajdonosának kell felhasználni a mobilügyfelek részére SAS létrehozása. SAS létrehozása, valószínűleg érdemes egy külön szolgáltatás, amely létrehozza az SAS elosztani az ügyfelek írni. Tesztelési célokra használhatja a [Microsoft Azure Storage Explorer](http://storageexplorer.com) vagy a [az Azure Portal](https://portal.azure.com) SAS létrehozásához. A SAS létrehozásakor megadhatja a keresztül, amely a SAS érvényes az időtartam alatt, és az engedélyeket, az ügyfél számára biztosít hozzáférést az SAS.
+A tárolási fiók tulajdonosának kell felhasználni a mobilügyfelek részére SAS létrehozása. SAS létrehozása, valószínűleg érdemes egy külön szolgáltatás, amely létrehozza az SAS elosztani az ügyfelek írni. Tesztelési célokra használhatja a [Microsoft Azure Storage Explorer](https://storageexplorer.com) vagy a [az Azure Portal](https://portal.azure.com) SAS létrehozásához. A SAS létrehozásakor megadhatja a keresztül, amely a SAS érvényes az időtartam alatt, és az engedélyeket, az ügyfél számára biztosít hozzáférést az SAS.
 
 Az alábbi példa bemutatja, hogyan hozható létre SAS a Microsoft Azure Storage Explorer használatával.
 
-1. Ha még nem tette, [a Microsoft Azure Storage Explorer telepítése](http://storageexplorer.com)
+1. Ha még nem tette, [a Microsoft Azure Storage Explorer telepítése](https://storageexplorer.com)
 2. Csatlakozzon az előfizetéséhez.
 3. Kattintson a Storage-fiókjába, és kattintson a bal alsó "Műveletek" fülre. Kattintson a "Get közös hozzáférésű Jogosultságkód" egy "kapcsolati karakterlánc" létrehozni az SAS.
 4. Íme egy példa egy SAS-kapcsolati karakterlánc, hogy olvasási és írási engedélyeket a szolgáltatás, a tároló és a tárfiók a blob szolgáltatás objektum szintjén.

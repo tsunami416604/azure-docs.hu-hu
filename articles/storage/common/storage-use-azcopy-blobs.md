@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 05/14/2019
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: f95af348eb11abee5a46a89e08da5bf4eb873c42
-ms.sourcegitcommit: d2785f020e134c3680ca1c8500aa2c0211aa1e24
+ms.openlocfilehash: 83e32a1e8f77604330a9f3aba0e011a0a0851e2f
+ms.sourcegitcommit: c0419208061b2b5579f6e16f78d9d45513bb7bbc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/04/2019
-ms.locfileid: "67566136"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67625613"
 ---
 # <a name="transfer-data-with-azcopy-and-blob-storage"></a>Adatok áthelyezése az AzCopy és a Blob storage
 
@@ -162,7 +162,7 @@ Ez a szakasz tartalmazza az alábbi példák:
 > * Az összes olyan tárolók, könyvtárak és fájlok másolása egy másik tárfiókba
 
 > [!NOTE]
-> A jelenlegi kiadásban akkor fűzze hozzá a SAS-token minden forrás URL-címre. Ha engedélyezési hitelesítő adatok az Azure Active Directory (AD) használatával adja meg, akkor kihagyhatja a a SAS-jogkivonat csak a cél URL-címről. 
+> A jelenlegi kiadásban akkor fűzze hozzá a SAS-token minden forrás URL-címre. Az Azure Active Directory (AD) engedélyezési hitelesítő adatok megadása, kihagyhatja a SAS-jogkivonat csak a cél URL-címről. 
 
 ### <a name="copy-a-blob-to-another-storage-account"></a>Blob másolása egy másik tárfiókba
 

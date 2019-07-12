@@ -16,12 +16,12 @@ ms.date: 05/23/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fafd853250ed76b49b66b86ffda9c91240c8ce48
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b13b23e59595acf8c637a2ef58c8098256920bea
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67109160"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67654047"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect: Verziókiadások előzményei
 Az Azure Active Directory (Azure AD) csapat rendszeresen frissíti az Azure AD Connect új szolgáltatásait és funkcióit. Nem minden hozzárendelések nem gyarapítsa alkalmazható.
@@ -408,18 +408,18 @@ Az AD DS-fiókot a következő engedélyeinek módosítása a helyszíni alkalma
 *   Távolítsa el az adott objektumra, kivéve az adott ÖNKISZOLGÁLÓ hozzáférés-vezérlési bejegyzés vonatkozó összes ACE. Szeretnénk az alapértelmezett engedélyek ép esetén, a saját MAGA.
 *   Ezek az engedélyek hozzárendelése:
 
-Típus     | Name (Név)                          | Access               | Vonatkozik
+Type     | Name (Név)                          | Access               | Vonatkozik
 ---------|-------------------------------|----------------------|--------------|
-Engedélyezés    | RENDSZER                        | Teljes hozzáférés         | Ez az objektum  |
-Engedélyezés    | Vállalati rendszergazdák             | Teljes hozzáférés         | Ez az objektum  |
-Engedélyezés    | Domain Admins                 | Teljes hozzáférés         | Ez az objektum  |
-Engedélyezés    | A rendszergazdák                | Teljes hozzáférés         | Ez az objektum  |
-Engedélyezés    | Vállalati tartományvezérlők | Tartalom listázása        | Ez az objektum  |
-Engedélyezés    | Vállalati tartományvezérlők | Az összes tulajdonság olvasása  | Ez az objektum  |
-Engedélyezés    | Vállalati tartományvezérlők | Olvasási engedélyek     | Ez az objektum  |
-Engedélyezés    | A hitelesített felhasználók           | Tartalom listázása        | Ez az objektum  |
-Engedélyezés    | A hitelesített felhasználók           | Az összes tulajdonság olvasása  | Ez az objektum  |
-Engedélyezés    | A hitelesített felhasználók           | Olvasási engedélyek     | Ez az objektum  |
+Allow    | RENDSZER                        | Teljes hozzáférés         | Ez az objektum  |
+Allow    | Vállalati rendszergazdák             | Teljes hozzáférés         | Ez az objektum  |
+Allow    | Domain Admins                 | Teljes hozzáférés         | Ez az objektum  |
+Allow    | A rendszergazdák                | Teljes hozzáférés         | Ez az objektum  |
+Allow    | Vállalati tartományvezérlők | Tartalom listázása        | Ez az objektum  |
+Allow    | Vállalati tartományvezérlők | Az összes tulajdonság olvasása  | Ez az objektum  |
+Allow    | Vállalati tartományvezérlők | Olvasási engedélyek     | Ez az objektum  |
+Allow    | A hitelesített felhasználók           | Tartalom listázása        | Ez az objektum  |
+Allow    | A hitelesített felhasználók           | Az összes tulajdonság olvasása  | Ez az objektum  |
+Allow    | A hitelesített felhasználók           | Olvasási engedélyek     | Ez az objektum  |
 
 A beállítások a az AD DS-fiók megerősítéséhez futtathatja [a PowerShell-szkript](https://gallery.technet.microsoft.com/Prepare-Active-Directory-ef20d978). A PowerShell-szkriptet fogja hozzárendelni az engedélyeket, az AD DS-fiókot a fent említett.
 
@@ -889,7 +889,7 @@ Az Azure AD Connect szinkronizálása
 * Az Azure AD-bérlőhöz, a rendszer egy szolgáltatás konfigurációja, amely azt jelzi, hogy a jelszó-szinkronizálás funkció engedélyezve van-e a bérlő számára, vagy nem. Korábban könnyebbé vált a szolgáltatási konfiguráció nem megfelelően van konfigurálva az Azure AD Connect, ha az aktív és a egy átmeneti kiszolgálón. Most, az Azure AD Connect megkísérli, hogy a szolgáltatás konfigurációját az aktív adatok konzisztensek legyenek csak az Azure AD Connect-kiszolgáló.
 * Az Azure AD Connect varázsló mostantól észleli, és figyelmeztetést ad vissza, ha a helyszíni AD nem tudja az AD Lomtár engedélyezve van.
 * Ha az objektumok a Batch együttes mérete meghaladja a meghatározott küszöbérték korábban exportálása az Azure AD-időtúllépés történik, és meghiúsul. Most a szinkronizálási szolgáltatás újra megkísérli a újraküldeni az objektumok különböző, kisebb kötegekben, ha a probléma akkor fordul elő.
-* A szinkronizálási szolgáltatás Key Management alkalmazás a Windows Start menü el lett távolítva. Titkosítási kulcs felügyeleti továbbra is a parancssori felület használatával miiskmu.exe keresztül. Titkosítási kulcs kezelésével kapcsolatos információkért tekintse meg a cikk [az Azure AD Connect szinkronizálási szolgáltatás titkosítási kulcs megszakítása](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnectsync-change-serviceacct-pass#abandoning-the-azure-ad-connect-sync-encryption-key).
+* A szinkronizálási szolgáltatás Key Management alkalmazás a Windows Start menü el lett távolítva. Titkosítási kulcs felügyeleti továbbra is a parancssori felület használatával miiskmu.exe keresztül. Titkosítási kulcs kezelésével kapcsolatos információkért tekintse meg a cikk [az Azure AD Connect szinkronizálási szolgáltatás titkosítási kulcs megszakítása](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnectsync-change-serviceacct-pass#abandoning-the-adsync-service-account-encryption-key).
 * Korábban az Azure AD Connect szinkronizálási szolgáltatásfiók jelszavának módosítása esetén a szinkronizálási szolgáltatás nem lesz képes kezdő megfelelően mindaddig, amíg a titkosítási kulcs hagyva, és az Azure AD Connect szinkronizálási szolgáltatásfiók jelszavának újrainicializálva. Most ez a folyamat már nem szükséges.
 
 Asztali egyszeri bejelentkezés

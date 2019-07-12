@@ -5,14 +5,14 @@ services: Azure, Marketplace, Compute, Storage, Networking
 author: qianw211
 ms.service: marketplace
 ms.topic: article
-ms.date: 02/27/2019
+ms.date: 07/05/2019
 ms.author: ellacroi
-ms.openlocfilehash: 13f1fb79babf98673c49c417576f16d6d106f2d2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 80c157423572d356026f257e81d52650ce01d3e8
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64937771"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67620395"
 ---
 # <a name="standard-contract"></a>Standard szerződés
 
@@ -24,5 +24,35 @@ A használati feltételeket az ajánlatot a piactéren lapon megadott a Cloud Pa
 
 >[!Note] 
 >A standard szintű szerződés használatát választja, külön feltételek és kikötések-e továbbra is szükséges a [Cloud Solution Provider](./cloud-solution-providers.md) csatorna.
+
+## <a name="standard-contract-amendments"></a>Általános szerződési módosításai
+
+Szabványos szerződéses módosítások lehetővé teszik a kiadók számára, válassza ki a standard szintű szerződést az egyszerűség és termék-vagy business testre szabott adatokkal.  Ügyfelek tekintse át a szerződés, a módosításokat, ha rendelkezik már ellenőrizte és elfogadta a Microsoft szabványos szerződéses csak kell.
+
+Nincsenek elérhető az Azure piactér kiadói kétféle módosításokat:
+
+* Univerzális módosításokat: Ezek a módosítások minden ügyfelünk esetében a standard szintű szerződés általánosan érvényesek. Univerzális módosítások jelennek meg a termék a vásárlási folyamat minden ügyfél számára.
+
+![Univerzális módosításai](media/marketplace-publishers-guide/universal-amendaments.png)
+
+* Egyéni módosításokat: Az Azure Marketplace-en is rendelkezik egy egyéni módosítására irányuló bérlők kiépítése. A standard szintű szerződést, amely csak bizonyos ügyfeleket célozza speciális módosításai. A kiadók a bérlői szeretnének, amelyekre választhat. A bérlőt az ügyfelek lenne beszerzési a termék általános szerződési és a célként megadott módosításait.
+
+![Egyéni módosításait](media/marketplace-publishers-guide/custom-amendaments.png)
+
+>[!Note] 
+>Egyéni módosításait a megcélzott felhasználók is fog kapni a vásárlás során, a standard szintű használati univerzális módosítás.
+
+>[!Note]
+>A következő típusú támogatja a standard szintű szerződés módosításokat: Az Azure-alkalmazások (Megoldássablonok és a felügyelt alkalmazások), virtuális gépek, tárolók, Tárolóalkalmazások.
+
+### <a name="customer-experience"></a>Felhasználói élmény
+
+A vásárlás során az Azure Portalon ügyfelek tudják a feltételek mellett a termék a Microsoft szabványos szerződéses és a módosítások megtekintéséhez.
+
+![Az Azure portal felhasználói élmény.](media/marketplace-publishers-guide/ibiza-customer-experience.png)
+
+### <a name="api"></a>API
+
+Vállalt `Get-AzureRmMarketplaceTerms` beolvasásához ajánlat feltételeit, és fogadja el. A standard szintű szerződés és a kapcsolódó módosítások a parancsmag kimenetében visszaad.
 
 ---

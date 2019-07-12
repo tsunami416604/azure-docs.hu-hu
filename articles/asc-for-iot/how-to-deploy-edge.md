@@ -2,24 +2,25 @@
 title: IoT Edge-modul üzembe helyezése az Azure Security Center |} A Microsoft Docs
 description: Ismerje meg az Azure Security Center az IoT biztonsági IoT Edge-ügynök telepítése.
 services: asc-for-iot
-ms.service: ascforiot
+ms.service: asc-for-iot
 documentationcenter: na
 author: mlottner
 manager: rkarlin
 editor: ''
 ms.assetid: 32a9564d-16fd-4b0d-9618-7d78d614ce76
+ms.subservice: asc-for-iot
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/1/2019
 ms.author: mlottner
-ms.openlocfilehash: 85e342f08e5402e50e5b0dfd1fe2df90337f29ca
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 49ed4c6515f8fb63c3331b05e1bb29b13985e6b3
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66254292"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67618326"
 ---
 # <a name="deploy-a-security-module-on-your-iot-edge-device"></a>Az IoT Edge-eszközön a biztonsági modul üzembe helyezése
 
@@ -132,9 +133,9 @@ Hozzon létre egy IoT Edge üzembe helyezése az Azure Security Center az IoT h�
       
 1. Kattintson a **Save** (Mentés) gombra.
    
-1. Kattintson a **tovább**.
+1. Kattintson a **Tovább** gombra.
 
-#### <a name="step-2-specify-routes"></a>2\. lépés: Útvonalak megadása 
+#### <a name="step-2-specify-routes"></a>2\. lépés: Útvonalak megadása 
 
 1. Az a **útvonalak megadása** lapra, és állítsa a **ASCForIoTToIoTHub** átirányítása **"származó/üzenetek/modulok/azureiotsecurity/\* be felső $"** , kattintson **Tovább**.
 

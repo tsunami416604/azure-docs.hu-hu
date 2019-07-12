@@ -10,12 +10,12 @@ ms.subservice: face-api
 ms.topic: sample
 ms.date: 04/10/2019
 ms.author: sbowles
-ms.openlocfilehash: f02f6ebb83f7fbc274797e944d59a5f1e973075c
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 5806c17b0532f4d18b7ac57fbf70c92ed9d47daa
+ms.sourcegitcommit: 441e59b8657a1eb1538c848b9b78c2e9e1b6cfd5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67438474"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67827501"
 ---
 # <a name="example-identify-faces-in-images"></a>Példa: Arcazonosítás képeken
 
@@ -52,7 +52,7 @@ private readonly IFaceClient faceClient = new FaceClient(
  
 Az előfizetési kulcsot, keresse fel az Azure Marketplace-en az Azure Portalról. További információkért lásd: [előfizetések](https://azure.microsoft.com/try/cognitive-services/).
 
-## <a name="step-2-create-the-persongroup"></a>2\. lépés: Az is lehet PersonGroup létrehozása
+## <a name="step-2-create-the-persongroup"></a>2\. lépés: Az is lehet PersonGroup létrehozása
 
 Ebben a lépésben egy "MyFriends" nevű is lehet PersonGroup Anna, számlázási és Clare tartalmazza. Mindegyikükhöz több arcot jegyeztünk be. Az arcok fel kell deríteni a lemezképek alapján. Minden lépés elvégzése után, a kapott PersonGroup az alábbi ábrához hasonló:
 
@@ -120,7 +120,7 @@ while(true)
 {
     trainingStatus = await faceClient.PersonGroup.GetTrainingStatusAsync(personGroupId);
  
-    if (trainingStatus.Status != Status.Running)
+    if (trainingStatus.Status != TrainingStatusType.Running)
     {
         break;
     }
@@ -173,7 +173,7 @@ Miután elvégezte a lépéseket, próbálja meg más arcokat azonosíthat. Teki
 Egy is lehet PersonGroup az előző tervezési korlát alapján legfeljebb 10 000 személyek képes tárolni.
 További információ az akár milliós esetekről: [A nagy méretű szolgáltatás használata](how-to-use-large-scale.md).
 
-## <a name="summary"></a>Összefoglalás
+## <a name="summary"></a>Összegzés
 
 Ebben az útmutatóban megismerhette a folyamat egy is lehet PersonGroup létrehozása és a egy személy azonosítására. Az alábbi szolgáltatások ismertetése és mutatja be:
 

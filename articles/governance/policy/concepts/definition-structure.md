@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 398efd36e6c8d82a5090b7446c95abb2d1bfbca1
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 03c7be9112ed22bb43e259fa72581d382a276163
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67428762"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67718184"
 ---
 # <a name="azure-policy-definition-structure"></a>Azure szabályzatdefiníciók struktúrája
 
@@ -105,7 +105,7 @@ Paraméterek ugyanúgy működnek, szabályzatok készítése során. Paraméter
 A paraméter a következő tulajdonságokat a szabályzat-definícióban használt rendelkezik:
 
 - **Név**: A paraméter neve. Használja a `parameters` üzembe helyezési funkció a szabály belül. További információkért lásd: [paraméter értéke](#using-a-parameter-value).
-- `type`: Meghatározza, hogy a paraméter egy **karakterlánc** vagy egy **tömb**.
+- `type`: Meghatározza, hogy a paraméter egy **karakterlánc**, **tömb**, **objektum**, **logikai**, **egész**, **lebegőpontos**, vagy **datetime**.
 - `metadata`: Elsősorban az Azure Portalon felhasználóbarát információk megjelenítéséhez altulajdonságok határozza meg:
   - `description`: A paraméter mire való a leírását. Példák az elfogadható értékek használható.
   - `displayName`: A rövid név jelenik meg a paraméter a portálon.
@@ -304,7 +304,7 @@ A következő példában `concat` a címkék a mező keresési értékét nevű 
 }
 ```
 
-### <a name="value"></a>Érték
+### <a name="value"></a>Value
 
 Feltételek is alakítható használatával **érték**. **érték** feltételek alapján ellenőrzi [paraméterek](#parameters), [sablonfüggvények támogatott](#policy-functions), vagy literálok lehetnek.
 **érték** van párosítva bármely támogatott [feltétel](#conditions).

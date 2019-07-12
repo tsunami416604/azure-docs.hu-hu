@@ -4,7 +4,7 @@ description: Készítsen lemezképet arról az olyan tömeges telepítésekhez a
 services: virtual-machines-linux
 documentationcenter: ''
 author: cynthn
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 ms.assetid: e608116f-f478-41be-b787-c2ad91b5a802
@@ -15,12 +15,12 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 10/08/2018
 ms.author: cynthn
-ms.openlocfilehash: 461df93400380ac74fa87eebc81fa06f77d7bf76
-ms.sourcegitcommit: 978e1b8cac3da254f9d6309e0195c45b38c24eb5
+ms.openlocfilehash: 96169f8f52ea9d45d8804a7d4fc08827a4f1ea03
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67551654"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67668397"
 ---
 # <a name="how-to-create-an-image-of-a-virtual-machine-or-vhd"></a>Hogyan hozhat létre virtuális gépet vagy virtuális merevlemez képe
 
@@ -60,7 +60,7 @@ A virtuális gép első számítógép-specifikus fájlok és adatok törlése a
 3. Adja meg **y** folytatásához. Hozzáadhat a `-force` paraméter a megerősítési lépés elkerülése érdekében.
 4. A parancs befejeződése után adja meg a **kilépéshez** gombra kattintva zárja be az SSH-ügyfél.
 
-## <a name="step-2-create-vm-image"></a>2\. lépés: Virtuális gép rendszerképének létrehozása
+## <a name="step-2-create-vm-image"></a>2\. lépés: Virtuális gép rendszerképének létrehozása
 Az Azure CLI segítségével jelölje meg a virtuális gép általánosként és a lemezképének rögzítése. A következő példákban cserélje le a példa a paraméter nevét a saját értékeire. Példa a paraméter nevek a következők *myResourceGroup*, *myVnet*, és *myVM*.
 
 1. Szabadítsa fel a virtuális Gépet, amely a – figyelmeztetés megszüntetésről [az vm deallocate](/cli/azure/vm). Az alábbi példa felszabadítja a virtuális gép nevű *myVM* az erőforráscsoport neve *myResourceGroup*.

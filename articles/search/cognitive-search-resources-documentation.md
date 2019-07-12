@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 225ac86efba8a32b085a5fb7fc41bed48c499eab
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 41637fae5592ac292da22303071d51b43116c78b
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65022167"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67671911"
 ---
 # <a name="documentation-resources-for-cognitive-search-workloads"></a>Dokumentációs forrásanyagot cognitive search számítási feladatokhoz
 
@@ -27,7 +27,7 @@ A következő cikkekben talál olyan cognitive search teljes dokumentációját.
 + [Mi a cognitive search?](cognitive-search-concept-intro.md)
 + [Rövid útmutató: A portálon a kognitív keresés kipróbálása](cognitive-search-quickstart-blob.md)
 + [Oktatóanyag: Ismerje meg, a cognitive search API-k](cognitive-search-tutorial-blob.md)
-+ [Példa: egyéni képesség létrehozása](cognitive-search-create-custom-skill-example.md)
++ [Példa: Cognitive Search egyéni műveleteket létrehozása](cognitive-search-create-custom-skill-example.md)
 
 ## <a name="how-to-guidance"></a>Útmutatók
 + [Hogyan képességcsoport megadása](cognitive-search-defining-skillset.md)
@@ -38,7 +38,7 @@ A következő cikkekben talál olyan cognitive search teljes dokumentációját.
 + [Egy egyéni képesség felületet definiálása](cognitive-search-custom-skill-interface.md)
 + [Hibaelhárítási tippek](cognitive-search-concept-troubleshooting.md)
 
-## <a name="reference"></a>Leírások
+## <a name="reference"></a>Hivatkozás
 
 + [Előre megadott képesség](cognitive-search-predefined-skills.md)
   + [Microsoft.Skills.Text.KeyPhraseSkill](cognitive-search-skill-keyphrases.md)

@@ -8,18 +8,18 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/31/2019
-ms.openlocfilehash: 17214bb4904cc540de0a7d6f753b7e70abfa564c
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: ef2a55b377c2ca48b9417310926a014a82f679d7
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67443648"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67621883"
 ---
 # <a name="understand-outputs-from-azure-stream-analytics"></a>Kimenő adatait az Azure Stream Analytics ismertetése
 
 Ez a cikk ismerteti az elérhető az Azure Stream Analytics-feladat kimeneti típusait. Kimenetek segítségével tárolhatja, és a Stream Analytics-feladat eredményének mentése. A kimeneti adatok használatával teheti további üzleti elemzés és az adattárház az adatokat.
 
-Amikor a Stream Analytics-lekérdezés, tekintse meg a kimeneti neve használatával a [be záradék](https://msdn.microsoft.com/azure/stream-analytics/reference/into-azure-stream-analytics). Feladatonként egy egyetlen kimeneti vagy streamelési feladat (Ha szüksége van rá) több INTO záradék a lekérdezés megadásával több kimenetek is használhatja.
+Amikor a Stream Analytics-lekérdezés, tekintse meg a kimeneti neve használatával a [be záradék](https://docs.microsoft.com/stream-analytics-query/into-azure-stream-analytics). Feladatonként egy egyetlen kimeneti vagy streamelési feladat (Ha szüksége van rá) több INTO záradék a lekérdezés megadásával több kimenetek is használhatja.
 
 Létrehozása, módosítása és tesztelése a Stream Analytics-feladat kimenete, használhatja a [az Azure portal](stream-analytics-quick-create-portal.md#configure-job-output), [Azure PowerShell-lel](stream-analytics-quick-create-powershell.md#configure-output-to-the-job), [.NET API](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.streamanalytics.ioutputsoperations?view=azure-dotnet), [REST API-val](https://docs.microsoft.com/rest/api/streamanalytics/stream-analytics-output), és [a Visual Studio](stream-analytics-quick-create-vs.md).
 
@@ -37,7 +37,7 @@ A következő táblázat felsorolja a tulajdonságnevek és a hozzájuk tartozó
 | Tulajdonság neve | Leírás |
 | --- | --- |
 | Kimeneti alias | A Data Lake Store lekérdezés kimenete a lekérdezésekben használt rövid név. |
-| Előfizetés | Az előfizetés, amely tartalmazza az Azure Data Lake tárfiókot. |
+| Subscription | Az előfizetés, amely tartalmazza az Azure Data Lake tárfiókot. |
 | Fióknév | A Data Lake Store-fiókot, ahol küldése folyamatban van a kimenetben neve. Megjelenik egy legördülő listából válassza ki az előfizetésében elérhető Data Lake Store-fiókok. |
 | Elérési út előtagmintája | A fájl elérési útja, amely a fájlok a megadott Data Lake Store-fiókon belül írására szolgál. A {date} egy vagy több példányát adhatja meg, és {time} változókat:<br /><ul><li>1\. példa: mappa1/naplók / {dátum} / {idő}</li><li>2\. példa: mappa1/naplók / {dátum}</li></ul><br />A létrehozott mappaszerkezetet időbélyegzőjét nem helyi idő és követi.<br /><br />Ha a fájl elérési út mintája nem tartalmaz egy záró perjellel (/), a legutóbbi minta a fájl elérési útját a fájl neve előtag számít. <br /><br />Új fájlok jönnek létre ilyen körülmények között:<ul><li>A kimeneti séma módosítása</li><li>Külső vagy belső indítsa újra a feladat</li></ul> |
 | Dátumformátum | Választható. Ha a dátum jogkivonat azon előtag elérési útja, kiválaszthatja a dátumformátum, amelyben a fájlok vannak rendszerezve. Példa: ÉÉÉÉ/HH/NN |
@@ -60,7 +60,7 @@ A következő táblázat felsorolja a tulajdonságnevek és a egy SQL Database-k
 | Adatbázis | Ahol a kimeneti küld az adatbázis neve. |
 | Kiszolgálónév | Az SQL Database-kiszolgáló neve. |
 | Felhasználónév | A felhasználónév, amely írási hozzáféréssel rendelkezik az adatbázishoz. Stream Analytics csak az SQL-hitelesítést támogatja. |
-| Jelszó | A jelszó az adatbázishoz való csatlakozáshoz. |
+| Windows 10 | A jelszó az adatbázishoz való csatlakozáshoz. |
 | Tábla | A tábla neve, ahol a kimeneti íródik. A tábla neve a kis-és nagybetűket. Ez a tábla sémája pontosan egyeznie kell a mezőket és azok típusát, amely létrehozza a feladat kimenetének számát. |
 |Partícióséma öröklése| Örökli az előző lekérdezési lépésre, a particionálási séma az a tábla több írók teljes párhuzamos topológia engedélyezése beállítást. További információkért lásd: [az Azure SQL Database az Azure Stream Analytics-kimenetet](stream-analytics-sql-output-perf.md).|
 |Maximális kötegszám| A javasolt felső határ küldi el minden tömeges rekordok száma a tranzakciós beszúrása.|
@@ -149,7 +149,7 @@ A Power BI az első, érkezési idősorrendben történő (FIFO) megőrzési sza
 ### <a name="convert-a-data-type-from-stream-analytics-to-power-bi"></a>Konvertálja az adattípust a Stream Analytics a Power bi-bA
 Az Azure Stream Analytics frissíti az adatmodell dinamikusan, futásidőben, ha a kimeneti sémával megváltozik. Oszlop neve megváltozik, oszlopok adattípus-módosítások, és hozzáadását és eltávolítását, az oszlopok összes nyomon követett.
 
-Ez a táblázat ismerteti az adatok típuskonverziók a [Stream Analytics adattípusok](https://msdn.microsoft.com/library/azure/dn835065.aspx) a Power bi-bA [Entity Data Model (EDM) típusok](https://docs.microsoft.com/dotnet/framework/data/adonet/entity-data-model), ha egy Power BI-adatkészlet és a tábla nem létezik.
+Ez a táblázat ismerteti az adatok típuskonverziók a [Stream Analytics adattípusok](https://docs.microsoft.com/stream-analytics-query/data-types-azure-stream-analytics) a Power bi-bA [Entity Data Model (EDM) típusok](https://docs.microsoft.com/dotnet/framework/data/adonet/entity-data-model), ha egy Power BI-adatkészlet és a tábla nem létezik.
 
 A Stream Analytics | A Power bi-bA
 -----|-----
@@ -169,8 +169,8 @@ Előző és aktuális | Int64 | Karakterlánc | Dátum és idő | Dupla
 -----------------|-------|--------|----------|-------
 Int64 | Int64 | Karakterlánc | Karakterlánc | Dupla
 Dupla | Dupla | Karakterlánc | Karakterlánc | Dupla
-Karakterlánc | Karakterlánc | Karakterlánc | Karakterlánc | Karakterlánc 
-Dátum és idő | Karakterlánc | Karakterlánc |  Dátum és idő | String
+Karakterlánc | String | String | String | Karakterlánc 
+Dátum és idő | Karakterlánc | Karakterlánc |  Dátum és idő | Sztring
 
 ## <a name="table-storage"></a>Table Storage
 

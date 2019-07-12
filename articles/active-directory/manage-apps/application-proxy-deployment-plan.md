@@ -7,7 +7,7 @@ author: barbaraselden
 manager: CelesteDG
 ms.assetid: ''
 ms.service: active-directory
-ms.component: app-mgmt
+ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 04/04/2019
 ms.author: baselden
 ms.reviewer: ''
-ms.openlocfilehash: 24429c5596494082b526b9648a1405bc397b9d2f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7d40c0604f0947abe8d536eafe87545790476a98
+ms.sourcegitcommit: c0419208061b2b5579f6e16f78d9d45513bb7bbc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67108489"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67625534"
 ---
 # <a name="plan-an-azure-ad-application-proxy-deployment"></a>Az Azure AD-alkalmazásproxy központi telepítésének megtervezése
 
@@ -70,7 +70,8 @@ Az alábbi alapvető követelményeknek teljesülniük kell ahhoz, hogy konfigur
 
 * **Nyilvános tanúsítvány**: Egyéni tartománynevek használatakor meg kell szerzik be a nyilvános tanúsítvány nem a Microsofttól megbízható hitelesítésszolgáltató által kibocsátott. Szervezeti követelményektől függően egy tanúsítvány eltarthat egy ideig, és azt javasoljuk, hogy a lehető leghamarabb folyamat. Az Azure Application Proxy támogatja a standard, [helyettesítő](application-proxy-wildcard.md), vagy SAN-alapú tanúsítványokat.
 
-* **Tartományra vonatkozó követelmények**: Egyszeri bejelentkezéshez a Kerberos által korlátozott delegálás (KCD) használatával közzétett alkalmazásokban kell lennie, hogy egy összekötő gazdagép a tartományhoz a azonos AD-tartományhoz, mint az alkalmazások közzététele folyamatban van. A témakör részletes információkért lásd: [az egyszeri bejelentkezés KCD](application-proxy-configure-single-sign-on-with-kcd.md) az alkalmazásproxy használatával. Az összekötő-szolgáltatás a helyi rendszer környezetében fut, és nem az egyéni identitás használatára kell beállítani.
+* **Tartományra vonatkozó követelmények**: Egyszeri bejelentkezéshez a Kerberos által korlátozott delegálás (KCD) használatával közzétett alkalmazásokban, hogy az összekötő szolgáltatást futtató kiszolgáló és az alkalmazást futtató kiszolgálón is tartományhoz csatlakoztatott és a ugyanabban a tartományban vagy megbízható tartomány része kell.
+A témakör részletes információkért lásd: [az egyszeri bejelentkezés KCD](application-proxy-configure-single-sign-on-with-kcd.md) az alkalmazásproxy használatával. Az összekötő-szolgáltatás a helyi rendszer környezetében fut, és nem az egyéni identitás használatára kell beállítani.
 
 * **DNS-rekordok URL-címek**
 

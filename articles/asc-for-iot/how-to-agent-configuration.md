@@ -2,24 +2,25 @@
 title: Az Azure Security Center konfigurálása az IoT-ügynök előzetes verzió |} A Microsoft Docs
 description: Megtudhatja, hogyan használható az ügynökök konfigurálására az Azure Security Center az IoT.
 services: asc-for-iot
-ms.service: ascforiot
+ms.service: asc-for-iot
 documentationcenter: na
 author: mlottner
 manager: rkarlin
 editor: ''
 ms.assetid: f95c445a-4f0d-4198-9c6c-d01446473bd0
+ms.subservice: asc-for-iot
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/26/2019
 ms.author: mlottner
-ms.openlocfilehash: 311a867c863cbd72292d8e34b4f7abdb949b12c6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 39539bb14877208e5f6af957e735a136b077f16a
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65198445"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67618276"
 ---
 # <a name="tutorial-configure-security-agents"></a>Oktatóanyag: Biztonsági ügynökök konfigurálása
 
@@ -122,18 +123,18 @@ Alapértelmezett értékek érhetők el a megfelelő sémát [Github](https://ak
 |----------|------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------|---------------|
 |Diagnosztikai esemény|eventPriorityDiagnostic| Ki| False (Hamis)| Az ügynök kapcsolódó diagnosztikai események. Használja ezt az eseményt a részletes naplózás.| 
 |Konfigurációs hiba |eventPriorityConfigurationError |Alacsony |False (Hamis) |Az ügynök nem tudta elemezni a konfigurációt. Ellenőrizze a konfigurációt a sémának.| 
-|Az eldobott események statisztika |eventPriorityDroppedEventsStatistics |Alacsony |True (Igaz)|Az ügynök eseménystatisztika kapcsolatos. |
-|Üzenet statisztika|eventPriorityMessageStatistics |Alacsony |True (Igaz) |Az ügynök kapcsolatos üzenet statisztikákat. |
-|Csatlakoztatott hardver|eventPriorityConnectedHardware |Alacsony |True (Igaz) |Az eszközhöz csatlakoztatott minden hardveres pillanatképet.|
-|Figyelőportjait|eventPriorityListeningPorts |Magas |True (Igaz) |Az eszközön lévő összes nyitott figyelőportjait pillanatképét.|
+|Az eldobott események statisztika |eventPriorityDroppedEventsStatistics |Alacsony |True|Az ügynök eseménystatisztika kapcsolatos. |
+|Üzenet statisztika|eventPriorityMessageStatistics |Alacsony |True |Az ügynök kapcsolatos üzenet statisztikákat. |
+|Csatlakoztatott hardver|eventPriorityConnectedHardware |Alacsony |True |Az eszközhöz csatlakoztatott minden hardveres pillanatképet.|
+|Figyelőportjait|eventPriorityListeningPorts |Magas |True |Az eszközön lévő összes nyitott figyelőportjait pillanatképét.|
 |Folyamat létrehozása |eventPriorityProcessCreate |Alacsony |False (Hamis) |Naplózás folyamat-létrehozás az eszközön.|
 |Folyamat leállítása|eventPriorityProcessTerminate |Alacsony |False (Hamis) |Naplózás megszüntetése az eszközön feldolgozni.| 
-|Rendszerinformáció |eventPrioritySystemInformation |Alacsony |True (Igaz) |Rendszer-információkat pillanatképet (például: Az operációs rendszer vagy a CPU).| 
-|A helyi felhasználók| eventPriorityLocalUsers |Magas |True (Igaz)|A regisztrált helyi felhasználók belül a rendszer pillanatképet. |
+|Rendszerinformáció |eventPrioritySystemInformation |Alacsony |True |Rendszer-információkat pillanatképet (például: Az operációs rendszer vagy a CPU).| 
+|A helyi felhasználók| eventPriorityLocalUsers |Magas |True|A regisztrált helyi felhasználók belül a rendszer pillanatképet. |
 |Bejelentkezés|  eventPriorityLogin |Magas|False (Hamis)|Az eszközön (helyi és távoli bejelentkezések) a bejelentkezési események naplózása.|
 |Kapcsolat létrehozása |eventPriorityConnectionCreate|Alacsony|False (Hamis)|Naplózza a TCP-kapcsolatok létrehozása, és az eszközről. |
-|Tűzfal-konfiguráció| eventPriorityFirewallConfiguration|Alacsony|True (Igaz)|Eszköz tűzfal-konfiguráció (tűzfalszabályok) pillanatképét. |
-|Operációs rendszer| eventPriorityOSBaseline| Alacsony|True (Igaz)|Ellenőrizze a rendelkezésre álló eszköz OS pillanatkép.|
+|Tűzfal-konfiguráció| eventPriorityFirewallConfiguration|Alacsony|True|Eszköz tűzfal-konfiguráció (tűzfalszabályok) pillanatképét. |
+|Operációs rendszer| eventPriorityOSBaseline| Alacsony|True|Ellenőrizze a rendelkezésre álló eszköz OS pillanatkép.|
  
 
 ## <a name="next-steps"></a>További lépések

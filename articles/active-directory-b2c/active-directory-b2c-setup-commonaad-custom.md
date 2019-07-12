@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 09/20/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 72d01d6927ee421d01a831244acf65c44a084354
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1938164e957daa84b22fa83e9cb9fa8d51ffeb15
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66508662"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67654080"
 ---
 # <a name="set-up-sign-in-for-multi-tenant-azure-active-directory-using-custom-policies-in-azure-active-directory-b2c"></a>Állítsa be a bejelentkezési több-bérlős Azure Active Directory az Azure Active Directory B2C-vel egyéni szabályzatok használatával
 
@@ -45,7 +45,7 @@ Ahhoz, hogy jelentkezzen be egy meghatározott felhasználók számára az Azure
     ```
     https://yourtenant.b2clogin.com/your-tenant.onmicrosoft.com/oauth2/authresp
     ```
-    
+
 8. Kattintson a **Create** (Létrehozás) gombra. Másolás a **Alkalmazásazonosító** későbbi felhasználás céljából.
 9. Válassza ki az alkalmazást, és válassza **beállítások**.
 10. Válassza ki **kulcsok**, adja meg a kulcs leírása, és válassza ki az időtartamot, majd kattintson a **mentése**. Másolja későbbi felhasználás jelenik meg a kulcs értékét.
@@ -57,7 +57,7 @@ Kell tárolni, amelyet az Azure AD B2C-bérlő az alkalmazáskulcsot.
 
 1. Győződjön meg arról, hogy használja az Azure AD B2C-bérlő kattintva tartalmazó könyvtárba a **címtár és előfizetés-szűrő** a felső menüben, és a könyvtár, amely tartalmazza a bérlő kiválasztása.
 2. Válasszon **minden szolgáltatás** az Azure Portalon, és majd keresse meg és válassza a bal felső sarkában lévő **Azure AD B2C-vel**.
-3. Az Áttekintés oldalon válassza ki a **identitás-kezelőfelületi keretrendszer – előzetes verzió**.
+3. Az Áttekintés oldalon válassza ki a **identitás-kezelőfelületi keretrendszer**.
 4. Válassza ki **Szabályzatbejegyzések** majd **Hozzáadás**.
 5. A **beállítások**, válassza a `Manual`.
 6. Adjon meg egy **neve** a házirend-kulcs. Például: `ContosoAppSecret`.  Az előtag `B2C_1A_` automatikusan hozzáadódik a kulcs neve.
@@ -67,7 +67,7 @@ Kell tárolni, amelyet az Azure AD B2C-bérlő az alkalmazáskulcsot.
 
 ## <a name="add-a-claims-provider"></a>A jogcímeket szolgáltató hozzáadása
 
-Ha azt szeretné, hogy a felhasználók számára, hogy jelentkezzen be az Azure AD használatával, definiálhatja egy jogcímszolgáltatótól, amely az Azure AD B2C-végponton keresztül képes kommunikálni az Azure AD szeretne. A végpont ellenőrzése, hogy egy adott felhasználó rendelkezik hitelesítése Azure AD B2C által használt jogcímeket biztosít. 
+Ha azt szeretné, hogy a felhasználók számára, hogy jelentkezzen be az Azure AD használatával, definiálhatja egy jogcímszolgáltatótól, amely az Azure AD B2C-végponton keresztül képes kommunikálni az Azure AD szeretne. A végpont ellenőrzése, hogy egy adott felhasználó rendelkezik hitelesítése Azure AD B2C által használt jogcímeket biztosít.
 
 Meghatározhatja az Azure AD egy jogcímszolgáltatótól, az Azure AD-hozzáadásával a **ClaimsProvider** elem a bővítmény fájlban a szabályzat.
 
@@ -93,7 +93,7 @@ Meghatározhatja az Azure AD egy jogcímszolgáltatótól, az Azure AD-hozzáad�
             <Item Key="response_mode">form_post</Item>
             <Item Key="HttpBinding">POST</Item>
             <Item Key="DiscoverMetadataByTokenIssuer">true</Item>
-        
+
             <!-- The key below allows you to specify each of the Azure AD tenants that can be used to sign in. Update the GUIDs below for each tenant. -->
             <Item Key="ValidTokenIssuerPrefixes">https://sts.windows.net/00000000-0000-0000-0000-000000000000,https://sts.windows.net/11111111-1111-1111-1111-111111111111</Item>
 
@@ -178,7 +178,7 @@ Most, hogy egyetlen helyen, amelyekkel hozzákapcsolhatja egy műveletet kell. A
     ```XML
     <ClaimsExchange Id="AzureADExchange" TechnicalProfileReferenceId="Common-AAD" />
     ```
-    
+
     Frissítse az értéket a **TechnicalProfileReferenceId** , a **azonosító** a korábban létrehozott technikai profil. Például: `Common-AAD`.
 
 3. Mentse a *TrustFrameworkExtensions.xml* fájlt, és töltse fel újra az ellenőrzéshez.

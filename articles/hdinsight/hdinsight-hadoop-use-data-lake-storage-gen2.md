@@ -7,12 +7,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/30/2019
 ms.author: hrasheed
-ms.openlocfilehash: f381090e663923ec9f45fba03d0688c9879ab173
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: dd639ae7e05309ab4528eb460ce38550db4cffe1
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66427379"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67670764"
 ---
 # <a name="use-azure-data-lake-storage-gen2-with-azure-hdinsight-clusters"></a>Az Azure Data Lake Storage Gen2 használata Azure HDInsight-fürtök
 
@@ -72,31 +72,40 @@ A felügyelt identitás hozzárendelése a **Storage Blob adatok tulajdonosa** s
 
 ## <a name="create-a-cluster-with-data-lake-storage-gen2-through-the-azure-cli"></a>A fürt létrehozása a Data Lake Storage Gen2 az Azure CLI-n keresztül
 
-Is [sablon mintafájl letöltése](https://github.com/Azure-Samples/hdinsight-data-lake-storage-gen2-templates/blob/master/hdinsight-adls-gen2-template.json) és [paraméterek mintafájl letöltése](https://github.com/Azure-Samples/hdinsight-data-lake-storage-gen2-templates/blob/master/parameters.json). A sablon használatához cserélje le a karakterlánc `<SUBSCRIPTION_ID>` tényleges Azure-előfizetés ID azonosítójával. Továbbá cserélje le a karakterlánc `<PASSWORD>` mind a jelszó beállításához, hogy jelentkezzen be a fürthöz használni kívánt és az SSH-jelszó a választott jelszó.
+Is [sablon mintafájl letöltése](https://github.com/Azure-Samples/hdinsight-data-lake-storage-gen2-templates/blob/master/hdinsight-adls-gen2-template.json) és [paraméterek mintafájl letöltése](https://github.com/Azure-Samples/hdinsight-data-lake-storage-gen2-templates/blob/master/parameters.json). Mielőtt a sablon és az alábbi Azure CLI-vel kódrészlet használatával, cserélje le a helyőrzőket megfelelő értékekre:
+
+| Helyőrző | Leírás |
+|---|---|
+| `<SUBSCRIPTION_ID>` | Az Azure-előfizetés azonosítója |
+| `<RESOURCEGROUPNAME>` | Az erőforráscsoport, ahol azt szeretné, hogy az új fürthöz és a tárolási fiók létrehozva. |
+| `<MANAGEDIDENTITYNAME>` | A felügyelt identitás, amely engedélyeket kap az Azure Data Lake Storage Gen2-fiókja nevére. |
+| `<STORAGEACCOUNTNAME>` | Az új Azure Data Lake Storage Gen2-fiókot létrehozni. |
+| `<CLUSTERNAME>` | A HDInsight-fürt nevére. |
+| `<PASSWORD>` | A választott jelszó a fürthöz az SSH, valamint az Ambari irányítópulton való bejelentkezéshez. |
 
 Az alábbi kódrészlet hajtja végre a következő lépések:
 
 1. Naplók az Azure-fiókjába.
 1. Állítja be az aktív előfizetést, ahol a létrehozás műveletek történik.
-1. Létrehoz egy új erőforráscsoportot nevű új üzembe helyezési tevékenységek `hdinsight-deployment-rg`.
-1. Létrehoz egy nevű felügyelt felhasználó által hozzárendelt identitások `test-hdinsight-msi`.
+1. Az új központi telepítési tevékenységek egy új erőforráscsoport jön létre. 
+1. Egy felhasználó által hozzárendelt felügyelt eszközidentitást hoz létre.
 1. Az Azure CLI-funkciók használata a Data Lake Storage Gen2 hozzáad egy bővítményt.
-1. Létrehoz egy új Data Lake Storage Gen2 fiókot nevű `hdinsightadlsgen2`, használatával a `--hierarchical-namespace true` jelzőt.
+1. Létrehoz egy új Data Lake Storage Gen2-fiók használatával a `--hierarchical-namespace true` jelzőt. 
 
 ```azurecli
 az login
-az account set --subscription <subscription_id>
+az account set --subscription <SUBSCRIPTION_ID>
 
 # Create resource group
-az group create --name hdinsight-deployment-rg --location eastus
+az group create --name <RESOURCEGROUPNAME> --location eastus
 
 # Create managed identity
-az identity create -g hdinsight-deployment-rg -n test-hdinsight-msi
+az identity create -g <RESOURCEGROUPNAME> -n <MANAGEDIDENTITYNAME>
 
 az extension add --name storage-preview
 
-az storage account create --name hdinsightadlsgen2 \
-    --resource-group hdinsight-deployment-rg \
+az storage account create --name <STORAGEACCOUNTNAME> \
+    --resource-group <RESOURCEGROUPNAME> \
     --location eastus --sku Standard_LRS \
     --kind StorageV2 --hierarchical-namespace true
 ```
@@ -107,7 +116,7 @@ Miután hozzárendelte a szerepkört a felhasználó által hozzárendelt felüg
 
 ```azurecli
 az group deployment create --name HDInsightADLSGen2Deployment \
-    --resource-group hdinsight-deployment-rg \
+    --resource-group <RESOURCEGROUPNAME> \
     --template-file hdinsight-adls-gen2-template.json \
     --parameters parameters.json
 ```

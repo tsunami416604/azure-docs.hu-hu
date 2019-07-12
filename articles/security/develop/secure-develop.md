@@ -12,12 +12,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: f68f6c366571b8f0f04f8507606c1a4008ab0405
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: f4add4bf07178aa616e86f8a64b313630466824f
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67443248"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67653265"
 ---
 # <a name="develop-secure-applications-on-azure"></a>Az Azure-ban a biztonságos alkalmazások fejlesztése
 Ebben a cikkben azt jelenthet biztonsági tevékenységeket és a vezérlőket, fontolja meg a felhőalapú alkalmazások fejlesztése során. Biztonsági kérdések és megfontolandó ajánlásoktól végrehajtására és ellenőrzés fázisai a Microsoft a fogalmak [biztonságos fejlesztési Életciklussal (SDL)](https://msdn.microsoft.com/library/windows/desktop/84aed186-1d75-4366-8e61-8d258746bopq.aspx) terjed ki. A célja, hogy a tevékenységek és az Azure-szolgáltatások, amelyek segítségével egy biztonságosabb alkalmazások fejlesztése a meghatározásához.
@@ -88,7 +88,7 @@ Ez azt jelenti, hogy kevesebb felhasználók is hozzáférhetnek a valós adatok
 
 Találgatásos és a szótár-alapú találgatás elleni védelemre, meg kell valósítani annak érdekében, hogy a felhasználók (például 12 karakter minimális hosszát, és alfanumerikus karaktereket, illetve speciális karakterek megkövetelése) egy összetett jelszót hozzon létre egy erős jelszót szabályzatot.
 
-Identitás-keretrendszer használatával hozzon létre és érvényesítsen jelszóházirendeket. Az Azure AD B2C segítségével a jelszókezelés használatának azáltal, hogy [beépített szabályzatok](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-reference-policies#create-a-password-reset-policy), [önkiszolgáló jelszó-visszaállítási](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-reference-sspr), stb.
+Identitás-keretrendszer használatával hozzon létre és érvényesítsen jelszóházirendeket. Az Azure AD B2C segítségével a jelszókezelés használatának azáltal, hogy [beépített szabályzatok](https://docs.microsoft.com/azure/active-directory-b2c/tutorial-create-user-flows#create-a-password-reset-user-flow), [önkiszolgáló jelszó-visszaállítási](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-reference-sspr), stb.
 
 Az alapértelmezett fiókok ellen indított támadások elleni védelemre, ellenőrizze az összes kulcsot és a jelszavak cserélhető, hogy, hogy már létrehozott vagy helyett az erőforrások telepítése után.
 
