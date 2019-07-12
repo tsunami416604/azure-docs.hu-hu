@@ -8,25 +8,25 @@ ms.service: marketplace
 ms.topic: article
 ms.date: 06/05/2018
 ms.author: ellacroi
-ms.openlocfilehash: 5e691dde92ac05b653cdafb22db9276c7a566008
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: dd9aa28703003d2e286197d57e9f00361e2b460d
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66258954"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67654000"
 ---
 # <a name="become-a-cloud-marketplace-publisher"></a>Felhőbeli piactér kiadói válik
 
 Ez a cikk ismerteti a felhőbeli piactér kiadói regisztrálása. A kiválasztott közzétételi lehetőség, és az aktuális tagság a Microsoft Partner Network függően a következő lépések nem lehet szükség. Miután regisztrált is elérheti a marketplace-ajánlat létrehozása az Azure Marketplace piactéren vagy az appsource-ban.
 
 
-|  | Regisztrációs lépés | Időtartam | Részletek |  
+|  | Regisztrációs lépés | Duration | Részletek |  
 |:--- |:--- |:--- |:--- |  
-| 1 | A Microsoft Partner Network regisztrálása | 15 perc | [A Microsoft Partner Network regisztrálása](https://docs.microsoft.com/azure/marketplace/become-publisher#1-register-in-microsoft-partner-network) |  
-| 2 | Microsoft-fiók létrehozása <ul>(az Azure Marketplace-en transact ajánlatok szükséges; mások számára ajánlott)</ul> | 15 perc | [A Microsoft azonosító létrehozása](https://docs.microsoft.com/azure/marketplace/become-publisher#2-create-a-microsoft-account) |  
+| 1 | A Microsoft Partner Network regisztrálása | 15 perc | [A Microsoft Partner Network regisztrálása](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account#register-for-an-account-using-the-enrollment-page) |  
+| 2 | Microsoft-fiók létrehozása <ul>(az Azure Marketplace-en transact ajánlatok szükséges; mások számára ajánlott)</ul> | 15 perc | [A Microsoft azonosító létrehozása](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account) |  
 | 3 | Hozzon létre a Partnerközpont-fiókkal | 15 perc | [Partnerközpontfiók létrehozása](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/azureisv) |  
-| 4 |  Jelentkezzen be a Cloud Partner portálra | 1 – 3 nap | [Jelentkezzen be a Cloud Partner portálra](https://docs.microsoft.com/azure/marketplace/become-publisher#4-sign-into-cloud-partner-portal) |  
-| 5 | Regisztráljon a Microsoft Developer Centerben (Dev Center) (az Azure Marketplace-en ajánlatok transact) | 5 – 10 nap | [Regisztrálás a fejlesztői központban](https://docs.microsoft.com/azure/marketplace/become-publisher#5-register-in-dev-center-for-transact-publishing-option-only) |  
+| 4 |  Jelentkezzen be a Cloud Partner portálra | 1 – 3 nap | [Jelentkezzen be a Cloud Partner portálra](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account#sign-in-with-a-work-account) |  
+| 5 | Regisztráljon a Microsoft Developer Centerben (Dev Center) (az Azure Marketplace-en ajánlatok transact) | 5 – 10 nap | [Regisztrálás a fejlesztői központban](/azure/marketplace/deprecated/register-dev-center) |  
 
 
 ## <a name="1-register-in-microsoft-partner-network"></a>1. A Microsoft Partner Network regisztrálása  
@@ -50,9 +50,9 @@ A Microsoft-fiók, pl.  *\@Outlook.com-os vagy \@live.com*, használható számo
 [! [Fontos a] megjegyezni, hogy a munkahelyi e-mail-címmel társított Microsoft-fiók nem teszi lehetővé, hogy a portál eléréséhez.
 
 > [!Note]
-> Ha már rendelkezik Microsoft-fiókkal, tekintse át a [irányelvek létrehozásához a marketplace-fiók kezelése a Microsoft ID](https://docs.microsoft.com/azure/marketplace/guidelines#guidelines-for-creating-a-microsoft-id-to-manage-a-marketplace-account) meghatározni, ha akkor is használható a piactér közzétételre. 
+> Ha már rendelkezik Microsoft-fiókkal, tekintse át a [irányelvek létrehozásához a marketplace-fiók kezelése a Microsoft ID](https://docs.microsoft.com/azure/marketplace/partner-center-portal/manage-account#manage-tenants) meghatározni, ha akkor is használható a piactér közzétételre. 
 > 
-> Olvassa el az Azure Active Directory összevont céges fiókkal rendelkező felhasználók [Ez a cikk](https://docs.microsoft.com/azure/marketplace/guidelines#issue-microsoft-id-in-an-azure-ad-federated-domain) létrehozása vagy meglévő Microsoft-Account megkísérlése előtt.
+> Olvassa el az Azure Active Directory összevont céges fiókkal rendelkező felhasználók [Ez a cikk](https://docs.microsoft.com/azure/marketplace/partner-center-portal/manage-account#manage-users) létrehozása vagy meglévő Microsoft-Account megkísérlése előtt.
 
 *   Segítségre van szüksége vagy kezeléséről a Microsoft-fiókját, látogasson el a [Microsoft fiók támogatási súgóoldalak](https://support.microsoft.com/products/microsoft-account?category=manage-account).
 

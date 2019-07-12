@@ -2,17 +2,17 @@
 title: Kvóták, SKU-k és régiók rendelkezésre állása az Azure Kubernetes Service (AKS)
 description: Ismerje meg az alapértelmezett kvótákat, korlátozott csomópont Virtuálisgép-Termékváltozat-méretek és régiók rendelkezésre állása az Azure Kubernetes Service (AKS).
 services: container-service
-author: iainfoulds
+author: mlearned
 ms.service: container-service
 ms.topic: conceptual
 ms.date: 04/09/2019
-ms.author: iainfou
-ms.openlocfilehash: 8d4ed8f791858747814972bcf16a9672a7f12610
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: mlearned
+ms.openlocfilehash: 318846cddecdf020e2e751d3a0b9e05fc83bba73
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65901461"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67614546"
 ---
 # <a name="quotas-virtual-machine-size-restrictions-and-region-availability-in-azure-kubernetes-service-aks"></a>Kvóták, korlátozások a virtuális gép mérete és régiók rendelkezésre állása az Azure Kubernetes Service (AKS)
 
@@ -51,7 +51,7 @@ A teljes lista arról, hova üzembe helyezése és futtatása a fürtök, lásd:
 
 ## <a name="next-steps"></a>További lépések
 
-Egyes alapértelmezett korlátok és kvóták növelhetők. Ha az erőforrás támogatja-e növelését, növelésére keresztül egy [Azure-támogatási kérést] [ azure-support] (a **Problématípus**, jelölje be **kvóta** ).
+Egyes alapértelmezett korlátok és kvóták növelhetők. Ha az erőforrás támogatja-e növelését, növelésére keresztül egy [Azure-támogatási kérést][azure-support] (a **Problématípus**, jelölje be **kvóta**).
 
 <!-- LINKS - External -->
 [azure-support]: https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest

@@ -6,14 +6,14 @@ author: alkohli
 ms.service: storage
 ms.topic: article
 ms.date: 03/29/2018
-ms.author: alkohli;
+ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: 42c8c9c89a69224b222aabe8e929d800d22162ce
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8361c32860d48b78c778ea5106ba04715fcc5f3c
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65604222"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67621042"
 ---
 # <a name="open-a-support-ticket-for-an-importexport-job"></a>Nyisson egy támogatási jegyet az importálási/exportálási feladat
 
@@ -40,7 +40,7 @@ A következő lépésekkel hozzon létre egy támogatási kérést:
         - Ha úgy dönt, **Blob**válassza **erőforrás**, **a tároló nevének** (nem kötelező), és **támogatási csomag**.
             ![Válasszon blobot](./media/storage-import-export-contact-microsoft-support/import-export-support2.png)
         - Ha úgy dönt, **fájl**válassza **erőforrás**, **fájlmegosztásnevek** (nem kötelező), és **támogatási csomag** ![fájl kiválasztása](./media/storage-import-export-contact-microsoft-support/import-export-support4.png)
-    4. Kattintson a **tovább**.
+    4. Kattintson a **Tovább** gombra.
 
 3. A **új támogatási kérelem**válassza **. lépés 2 probléma**. A **probléma**, tegye a következőket:
     
@@ -51,7 +51,7 @@ A következő lépésekkel hozzon létre egy támogatási kérést:
     5. Adja meg a kezdő dátum és idő a probléma.
     6. Az a **fájlfeltöltés**, kattintson a mappa ikonra, keresse meg az egyéb fájlokat szeretne feltölteni.
     7. Ellenőrizze **diagnosztika adatok megosztása**.
-    8. Kattintson a **tovább**.
+    8. Kattintson a **Tovább** gombra.
 
        ![Probléma](./media/storage-import-export-contact-microsoft-support/import-export-support5.png)
 

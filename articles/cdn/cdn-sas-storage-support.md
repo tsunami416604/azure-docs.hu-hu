@@ -7,19 +7,19 @@ author: mdgattuso
 manager: danielgi
 editor: ''
 ms.assetid: ''
-ms.service: cdn
+ms.service: azure-cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 06/21/2018
 ms.author: magattus
-ms.openlocfilehash: 7edf0a9f8d4eb4c01b6d80fd82a1061b6cbb1e35
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 999bffe9650f3d2f2a04dba728a9aa41fa46a6b0
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60324152"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67593405"
 ---
 # <a name="using-azure-cdn-with-sas"></a>SAS használatával Azure CDN szolgáltatás használata
 
@@ -135,7 +135,7 @@ SAS-paraméterek az Azure CDN nem láthatók el, mert az Azure CDN azokon kézbe
 
 | SAS-paraméter neve | Leírás |
 | --- | --- |
-| Indítás | Az az idő, amely az Azure CDN megkezdheti a blob fájl elérésére. Óra miatt tevékenységdiagramon (érkezésekor óra jel különböző időpontokban különböző összetevők), válassza a 15 perccel korábbi, ha azt szeretné, hogy az eszköz azonnal elérhető legyen. |
+| Start | Az az idő, amely az Azure CDN megkezdheti a blob fájl elérésére. Óra miatt tevékenységdiagramon (érkezésekor óra jel különböző időpontokban különböző összetevők), válassza a 15 perccel korábbi, ha azt szeretné, hogy az eszköz azonnal elérhető legyen. |
 | vége | Az idő, amely után az Azure CDN már nem tud hozzáférni a blobfájlba. Előzőleg gyorsítótárazott Azure CDN-en fájlok továbbra is elérhető. Szabályozhatja a lejárati időpont, vagy a megfelelő lejárati idő beállítása az Azure CDN biztonsági jogkivonat, vagy az eszköz törlése. |
 | Engedélyezett IP-címek | Választható. Ha használ **verizon Azure CDN**, és a meghatározott tartományok ezzel a paraméterrel megadható [Azure CDN a Verizon peremhálózati kiszolgáló IP-címtartományok](/azure/cdn/cdn-pop-list-api). Ha használ **Akamai Azure CDN**, az IP-címtartományok paraméter nem állítható be, mert nem statikus IP-címeket.|
 | Engedélyezett protokollok | Az a fiók SAS kódjával végzett kérelemhez engedélyezett protokoll(ok). A HTTPS beállítás ajánlott.|

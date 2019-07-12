@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 06/26/2019
 ms.author: brendm
 ms.custom: seodec18
-ms.openlocfilehash: 51ca597208b582e95fd305886dcf163744825eee
-ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
+ms.openlocfilehash: af6fd7b99147396a70fccc7b2b11dfef3def15a8
+ms.sourcegitcommit: 1572b615c8f863be4986c23ea2ff7642b02bc605
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67509643"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67786296"
 ---
 # <a name="configure-a-linux-java-app-for-azure-app-service"></a>A Linuxos Java-alkalmazás konfigurálása az Azure App Service-ben
 
@@ -133,7 +133,7 @@ Az egyetlen alkalmazást futtató és egy üzembe helyezési pont az App Service
 
 Amikor alkalmazás halommemória finomhangolásának beállításai, tekintse át az App Service-csomag részletei, és több alkalmazás és üzembe helyezési pont figyelembe kell keresnie a optimális lefoglalt memória.
 
-Ha helyez üzembe egy JAR-alkalmazást, azt kell elnevezni *app.jar* , hogy a beépített rendszerképpel helyesen azonosítani tudja az alkalmazás. (A Maven bővítménnyel nem, automatikusan az Átnevezés.) Ha nem szeretné, a JAR átnevezése *app.jar*, feltöltheti azt a héjparancsfájlt, a parancs futtatása a JAR. Illessze be a parancsfájl teljes elérési útja a [indítási fájl](https://docs.microsoft.com/azure/app-service/containers/app-service-linux-faq#startup-file) szövegmezőben, hogy a portál konfigurációs szakaszban.
+Ha helyez üzembe egy JAR-alkalmazást, azt kell elnevezni *app.jar* , hogy a beépített rendszerképpel helyesen azonosítani tudja az alkalmazás. (A Maven bővítménnyel nem, automatikusan az Átnevezés.) Ha nem szeretné, a JAR átnevezése *app.jar*, feltöltheti azt a héjparancsfájlt, a parancs futtatása a JAR. Illessze be a parancsfájl teljes elérési útja a [indítási fájl](app-service-linux-faq.md#built-in-images) szövegmezőben, hogy a portál konfigurációs szakaszban.
 
 ### <a name="turn-on-web-sockets"></a>Kapcsolja be a web sockets
 
@@ -170,6 +170,10 @@ Másik lehetőségként konfigurálnia az alkalmazásbeállítást, az App Servi
 ### <a name="adjust-startup-timeout"></a>Állítsa be indítási időkorlát
 
 Ha a Java-alkalmazás különösen nagy, növelje az indítási időkorlátot. Ehhez hozzon létre egy Alkalmazásbeállítás `WEBSITES_CONTAINER_START_TIME_LIMIT` , és állítsa be az App Service-ben várnia kell, hogy másodpercek számát. A maximális érték pedig `1800` másodperc.
+
+### <a name="pre-compile-jsp-files"></a>Előre a JSP-fájlok összeállítása
+
+Tomcat alkalmazások teljesítményének javítása érdekében fordítsa le a JSP-fájl App Service-ben való üzembe helyezés előtt. Használhatja a [Maven bővítménnyel](https://sling.apache.org/components/jspc-maven-plugin/plugin-info.html) Apache hevederek, vagy az ez által megadott [Ant fájl build](https://tomcat.apache.org/tomcat-9.0-doc/jasper-howto.html#Web_Application_Compilation).
 
 ## <a name="secure-applications"></a>Biztonságos alkalmazások
 

@@ -13,14 +13,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 10/16/2018
-ms.author: apurvajo;cephalin
+ms.author: cephalin
+ms.reviewer: apurvajo
 ms.custom: seodec18
-ms.openlocfilehash: 0febb8fadd973b67ed232d6094d85894fb383d14
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e7768eb29caf66fd8f666a9475ac0787826a47e0
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65955709"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67618899"
 ---
 # <a name="buy-and-configure-an-ssl-certificate-for-azure-app-service"></a>Vásárlása és konfigurálása az Azure App Service SSL-tanúsítvány
 
@@ -51,8 +52,8 @@ Használja az alábbi táblázat segítségével konfigurálja a tanúsítványt
 |-|-|
 | Name (Név) | Az App Service-tanúsítvány rövid nevét. |
 | Naked Domain Host Name | Ha megadja a gyökértartomány, kap egy tanúsítványt, amely biztonságossá teszi a *mindkét* a legfelső szintű tartomány és a `www` altartomány. Biztonságos bármely altartomány csak, adja meg itt az altartomány teljesen minősített tartományneve (például `mysubdomain.contoso.com`). |
-| Előfizetés | Az adatközpont, ahol a webalkalmazást üzemeltetik. |
-| Erőforráscsoport | Az erőforráscsoport, amely tartalmazza a tanúsítványt. Egy új erőforráscsoport használata, vagy válassza ki ugyanazt az erőforráscsoportot, az App Service-alkalmazást. |
+| Subscription | Az adatközpont, ahol a webalkalmazást üzemeltetik. |
+| Resource group | Az erőforráscsoport, amely tartalmazza a tanúsítványt. Egy új erőforráscsoport használata, vagy válassza ki ugyanazt az erőforráscsoportot, az App Service-alkalmazást. |
 | Tanúsítványváltozat | Határozza meg a tanúsítványt szeretne létrehozni, hogy egy normál tanúsítványt, vagy [helyettesítő tanúsítvány](https://wikipedia.org/wiki/Wildcard_certificate). |
 | Jogi feltételek | Ide kattintva erősítse meg, hogy elfogadja a jogi feltételeket. A tanúsítványokat a rendszer a godaddytől tölti le. |
 
@@ -71,8 +72,8 @@ Az a **Key Vault-állapot** kattintson **Key Vault-tárház** hozzon létre egy 
 | Beállítás | Leírás |
 |-|-|
 | Name (Név) | Egy egyedi nevet, amely alfanumerikus karaktereket és kötőjeleket tartalmazhat. |
-| Erőforráscsoport | Egy javaslat, válassza ki ugyanazt az erőforráscsoportot, az App Service-tanúsítvány. |
-| Location egység | Válassza ki ugyanazt a helyet, az App Service-alkalmazást. |
+| Resource group | Egy javaslat, válassza ki ugyanazt az erőforráscsoportot, az App Service-tanúsítvány. |
+| Location | Válassza ki ugyanazt a helyet, az App Service-alkalmazást. |
 | Tarifacsomag | További információ: [Azure Key Vault díjszabását](https://azure.microsoft.com/pricing/details/key-vault/). |
 | Hozzáférési szabályzatok| Határozza meg az alkalmazások és az engedélyezett hozzáférést a tároló-erőforrások. Beállíthatja, később ismertető [több alkalmazások hozzáférést key vault](../key-vault/key-vault-group-permissions-for-apps.md). |
 | Virtual Network Access | Tároló hozzáférés korlátozása az egyes Azure virtuális hálózatokhoz. Beállíthatja, később ismertető [konfigurálása az Azure Key Vault tűzfalak és virtuális hálózatok](../key-vault/key-vault-network-security.md) |

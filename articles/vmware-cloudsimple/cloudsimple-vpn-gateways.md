@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: vmware
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: a91d0f75b7e27065bd2ee0ea430a859d265afacb
-ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
+ms.openlocfilehash: 2eae81f357904bd5034d7409ef42b681d1085930
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/22/2019
-ms.locfileid: "67332038"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67695225"
 ---
 # <a name="vpn-gateways-overview"></a>VPN-átjárók áttekintése
 
@@ -44,8 +44,6 @@ Site-to-site VPN használati esetek a következők:
 
 ### <a name="cryptographic-parameters"></a>Titkosítási paraméterek
 
-Site-to-site VPN-kapcsolat biztonságos kapcsolatot létesíteni a következő alapértelmezett titkosítási paramétereket használja.  Ha a helyszíni VPN-eszköz kapcsolatot hoz létre, a paraméterek meg kell egyeznie.
-
 Site-to-site VPN-kapcsolat biztonságos kapcsolatot létesíteni a következő alapértelmezett titkosítási paramétereket használja.  Ha a helyszíni VPN-eszköz kapcsolatot hoz létre, az alábbi paramétereket a helyszíni VPN-átjáró által támogatott bármelyikét használhatja.
 
 #### <a name="phase-1-proposals"></a>1\. fázis javaslatok
@@ -66,7 +64,7 @@ Site-to-site VPN-kapcsolat biztonságos kapcsolatot létesíteni a következő a
 |-----------|------------|------------|------------|
 | Encryption | AES 128 | AES 256 | AES 256 |
 | Kivonatoló algoritmus| SHA 256 | SHA 256 | SHA 1 |
-| Tökéletes előre csoport-sérülés utáni Titkosságvédelmi (PFS-csoport) | None | Nincsenek | None |
+| Tökéletes előre csoport-sérülés utáni Titkosságvédelmi (PFS-csoport) | Nincsenek | Nincsenek | None |
 | Élettartam | 1,800 másodperc | 1,800 másodperc | 1,800 másodperc |
 | Adatok mérete | 4 GB | 4 GB | 4 GB |
 

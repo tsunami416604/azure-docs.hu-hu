@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/07/2019
 ms.author: magoedte
-ms.openlocfilehash: fda79a7ea361a6b44798d18b79ffd763055087a7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: cf06004c70609dbea59a47b207e3568299260a82
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67122626"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67594451"
 ---
 # <a name="enable-azure-monitor-for-vms-preview-by-using-azure-policy"></a>Azure Monitor engedélyezése a virtuális gépek (előzetes verzió) az Azure Policy használatával
 
@@ -82,35 +82,35 @@ Azure Policy hozzárendelésével kapcsolatos további információkért lásd: 
 
 A szabályzatdefiníciók egy Azure virtuális gép az alábbi táblázatban láthatók.
 
-|Name (Név) |Leírás |Típus |
+|Name (Név) |Leírás |Type |
 |-----|------------|-----|
-|[Előzetes verzió]: Az Azure Monitor-beli virtuális gépek engedélyezése |Az Azure Monitor engedélyezése a virtuális gépek (felügyeleti csoport, előfizetéshez vagy erőforráscsoporthoz) a megadott hatókörben. Log Analytics-munkaterületet használja paraméterként. |Kezdeményezés |
-|[Előzetes verzió]: Függőségi ügynök telepítése – Virtuálisgép-rendszerképet (OS) listán nem szereplő naplózása |Jelentések virtuális gépek akkor nem megfelelő, ha a Virtuálisgép-lemezkép (OS) nincs definiálva a listában, és az ügynök nincs telepítve. |Szabályzat |
-|[Előzetes verzió]: A Log Analytics-ügynök telepítése – Virtuálisgép-rendszerképet (OS) listán nem szereplő naplózása |Jelentések virtuális gépek akkor nem megfelelő, ha a Virtuálisgép-lemezkép (OS) nincs definiálva a listában, és az ügynök nincs telepítve. |Szabályzat |
-|[Előzetes verzió]: Függőségi ügynök Linux rendszerű virtuális gépek üzembe helyezése |Ha a Virtuálisgép-lemezkép (OS) van definiálva, a listában, és az ügynök nincs telepítve, telepítse a függőségi ügynök Linux rendszerű virtuális gépekhez. |Szabályzat |
-|[Előzetes verzió]: Függőségi ügynök Windows-beli virtuális gépek üzembe helyezése |Függőségi ügynök Windows-beli virtuális gépek üzembe helyezése, ha a Virtuálisgép-lemezkép (OS) van definiálva, a listában, és az ügynök nincs telepítve. |Szabályzat |
-|[Előzetes verzió]: Linux rendszerű virtuális gépekhez a Log Analytics-ügynök telepítése |Ha a Virtuálisgép-lemezkép (OS) van definiálva, a listában, és az ügynök nincs telepítve, üzembe helyezése Linux rendszerű virtuális gépekhez a Log Analytics-ügynököket. |Szabályzat |
-|[Előzetes verzió]: Log Analytics-ügynököket Windows virtuális gépek üzembe helyezése |Log Analytics-ügynököket Windows virtuális gépek üzembe helyezése, ha a Virtuálisgép-lemezkép (OS) van definiálva, a listában, és az ügynök nincs telepítve. |Szabályzat |
+|\[Előzetes verzió\]: Az Azure Monitor-beli virtuális gépek engedélyezése |Az Azure Monitor engedélyezése a virtuális gépek (felügyeleti csoport, előfizetéshez vagy erőforráscsoporthoz) a megadott hatókörben. Log Analytics-munkaterületet használja paraméterként. |Kezdeményezés |
+|\[Előzetes verzió\]: Függőségi ügynök telepítése – Virtuálisgép-rendszerképet (OS) listán nem szereplő naplózása |Jelentések virtuális gépek akkor nem megfelelő, ha a Virtuálisgép-lemezkép (OS) nincs definiálva a listában, és az ügynök nincs telepítve. |Szabályzat |
+|\[Előzetes verzió\]: A Log Analytics-ügynök telepítése – Virtuálisgép-rendszerképet (OS) listán nem szereplő naplózása |Jelentések virtuális gépek akkor nem megfelelő, ha a Virtuálisgép-lemezkép (OS) nincs definiálva a listában, és az ügynök nincs telepítve. |Szabályzat |
+|\[Előzetes verzió\]: Függőségi ügynök Linux rendszerű virtuális gépek üzembe helyezése |Ha a Virtuálisgép-lemezkép (OS) van definiálva, a listában, és az ügynök nincs telepítve, telepítse a függőségi ügynök Linux rendszerű virtuális gépekhez. |Szabályzat |
+|\[Előzetes verzió\]: Függőségi ügynök Windows-beli virtuális gépek üzembe helyezése |Függőségi ügynök Windows-beli virtuális gépek üzembe helyezése, ha a Virtuálisgép-lemezkép (OS) van definiálva, a listában, és az ügynök nincs telepítve. |Szabályzat |
+|\[Előzetes verzió\]: Linux rendszerű virtuális gépekhez a Log Analytics-ügynök telepítése |Ha a Virtuálisgép-lemezkép (OS) van definiálva, a listában, és az ügynök nincs telepítve, üzembe helyezése Linux rendszerű virtuális gépekhez a Log Analytics-ügynököket. |Szabályzat |
+|\[Előzetes verzió\]: Log Analytics-ügynököket Windows virtuális gépek üzembe helyezése |Log Analytics-ügynököket Windows virtuális gépek üzembe helyezése, ha a Virtuálisgép-lemezkép (OS) van definiálva, a listában, és az ügynök nincs telepítve. |Szabályzat |
 
 ### <a name="policies-for-azure-virtual-machine-scale-sets"></a>Házirendek az Azure-beli virtuálisgép-méretezési csoportokban
 
 A szabályzatdefiníciók számára egy Azure-beli virtuálisgép-méretezési csoportot az alábbi táblázatban láthatók.
 
-|Name (Név) |Leírás |Típus |
+|Name (Név) |Leírás |Type |
 |-----|------------|-----|
-|[Előzetes verzió]: Virtuálisgép-méretezési csoportokhoz az Azure Monitor engedélyezése |Az Azure Monitor engedélyezése a virtuális gép méretezési csoportjai (felügyeleti csoport, előfizetéshez vagy erőforráscsoporthoz) a megadott hatókörben. Log Analytics-munkaterületet használja paraméterként. Megjegyzés: Ha a méretezési csoport házirend értéke Manual, alkalmazni a bővítményt a készletben lévő összes virtuális gép frissítés meghívásával rajtuk. A parancssori felületen Ez az az vmss update-instances. |Kezdeményezés |
-|[Előzetes verzió]: Függőségi ügynök telepítése a virtuális gép méretezési csoportjai – Virtuálisgép-rendszerképet (OS) listán nem szereplő naplózása |A jelentés a virtuálisgép-méretezési csoportba, nem megfelelő, ha a Virtuálisgép-lemezkép (OS) nincs definiálva a listában, és az ügynök nincs telepítve. |Szabályzat |
-|[Előzetes verzió]: A Log Analytics ügynök központi telepítése virtuálisgép-méretezési csoportok – a Virtuálisgép-rendszerképet (OS) listán nem szereplő naplózása |A jelentés a virtuálisgép-méretezési csoportba, nem megfelelő, ha a Virtuálisgép-lemezkép (OS) nincs definiálva a listában, és az ügynök nincs telepítve. |Szabályzat |
-|[Előzetes verzió]: Függőségi ügynök Linux virtuális gép méretezési csoportok üzembe helyezése |Telepítse a függőségi ügynök Linux virtuálisgép-méretezési csoport állítja be, ha a Virtuálisgép-lemezkép (OS) van definiálva, a listában, és az ügynök nincs telepítve. |Szabályzat |
-|[Előzetes verzió]: Függőségi ügynök a Windows virtuális gép méretezési csoportok üzembe helyezése |Windows virtuálisgép-méretezési csoport állítja be, ha a Virtuálisgép-lemezkép (OS) van definiálva, a listában, és az ügynök nincs telepítve a függőségi ügynök telepítése. |Szabályzat |
-|[Előzetes verzió]: Log Analytics-ügynököket a Linux rendszerű virtuálisgép-méretezési csoportok üzembe helyezése |Linuxos virtuálisgép-méretezési csoport állítja be, ha a virtuális gép rendszerkép (OS) van definiálva, a listában, és az ügynök nincs telepítve a Log Analytics-ügynök telepítése. |Szabályzat |
-|[Előzetes verzió]: Log Analytics-ügynököket Windows virtuális gép méretezési csoportok üzembe helyezése |Windows virtuálisgép-méretezési csoport állítja be, ha a Virtuálisgép-lemezkép (OS) van definiálva, a listában, és az ügynök nincs telepítve a Log Analytics-ügynök telepítése. |Szabályzat |
+|\[Előzetes verzió\]: Virtuálisgép-méretezési csoportokhoz az Azure Monitor engedélyezése |Az Azure Monitor engedélyezése a virtuális gép méretezési csoportjai (felügyeleti csoport, előfizetéshez vagy erőforráscsoporthoz) a megadott hatókörben. Log Analytics-munkaterületet használja paraméterként. Megjegyzés: Ha a méretezési csoport házirend értéke Manual, alkalmazni a bővítményt a készletben lévő összes virtuális gép frissítés meghívásával rajtuk. A parancssori felületen Ez az az vmss update-instances. |Kezdeményezés |
+|\[Előzetes verzió\]: Függőségi ügynök telepítése a virtuális gép méretezési csoportjai – Virtuálisgép-rendszerképet (OS) listán nem szereplő naplózása |A jelentés a virtuálisgép-méretezési csoportba, nem megfelelő, ha a Virtuálisgép-lemezkép (OS) nincs definiálva a listában, és az ügynök nincs telepítve. |Szabályzat |
+|\[Előzetes verzió\]: A Log Analytics ügynök központi telepítése virtuálisgép-méretezési csoportok – a Virtuálisgép-rendszerképet (OS) listán nem szereplő naplózása |A jelentés a virtuálisgép-méretezési csoportba, nem megfelelő, ha a Virtuálisgép-lemezkép (OS) nincs definiálva a listában, és az ügynök nincs telepítve. |Szabályzat |
+|\[Előzetes verzió\]: Függőségi ügynök Linux virtuális gép méretezési csoportok üzembe helyezése |Telepítse a függőségi ügynök Linux virtuálisgép-méretezési csoport állítja be, ha a Virtuálisgép-lemezkép (OS) van definiálva, a listában, és az ügynök nincs telepítve. |Szabályzat |
+|\[Előzetes verzió\]: Függőségi ügynök a Windows virtuális gép méretezési csoportok üzembe helyezése |Windows virtuálisgép-méretezési csoport állítja be, ha a Virtuálisgép-lemezkép (OS) van definiálva, a listában, és az ügynök nincs telepítve a függőségi ügynök telepítése. |Szabályzat |
+|\[Előzetes verzió\]: Log Analytics-ügynököket a Linux rendszerű virtuálisgép-méretezési csoportok üzembe helyezése |Linuxos virtuálisgép-méretezési csoport állítja be, ha a virtuális gép rendszerkép (OS) van definiálva, a listában, és az ügynök nincs telepítve a Log Analytics-ügynök telepítése. |Szabályzat |
+|\[Előzetes verzió\]: Log Analytics-ügynököket Windows virtuális gép méretezési csoportok üzembe helyezése |Windows virtuálisgép-méretezési csoport állítja be, ha a Virtuálisgép-lemezkép (OS) van definiálva, a listában, és az ügynök nincs telepítve a Log Analytics-ügynök telepítése. |Szabályzat |
 
 (Nem tartalmazza a kezdeményezés-) önálló házirend az alábbiakban ismertetjük:
 
-|Name (Név) |Leírás |Típus |
+|Name (Név) |Leírás |Type |
 |-----|------------|-----|
-|[Előzetes verzió]: Virtuális gép – jelentés eltérés naplózása a Log Analytics-munkaterület |A jelentés azokról a nem megfelelő, ha azok nem jelentkezik a Log Analytics-munkaterületet a szabályzatot vagy kezdeményezést-hozzárendelésben megadott virtuális gépek. |Szabályzat |
+|\[Előzetes verzió\]: Virtuális gép – jelentés eltérés naplózása a Log Analytics-munkaterület |A jelentés azokról a nem megfelelő, ha azok nem jelentkezik a Log Analytics-munkaterületet a szabályzatot vagy kezdeményezést-hozzárendelésben megadott virtuális gépek. |Szabályzat |
 
 ### <a name="assign-the-azure-monitor-initiative"></a>Az Azure Monitor kezdeményezés hozzárendelése
 A szabályzat-hozzárendelés létrehozása a **szabályzati lefedettség virtuális gépek az Azure Monitor** lapon, kövesse az alábbi lépéseket. Megtudhatja, hogyan hajtsa végre ezeket a lépéseket, tekintse meg [szabályzat-hozzárendelés létrehozása az Azure Portalról](../../governance/policy/assign-policy-portal.md).
@@ -180,19 +180,19 @@ A kezdeményezés található házirendek eredményei alapján a virtuális gép
 
 * Log Analytics-ügynököket vagy függőségi ügynök nincs telepítve.  
     Ebben a forgatókönyvben jellemző, a meglévő virtuális gépek hatókör. Csökkentése érdekében, hogy, üzembe helyezése a szükséges ügynökök által [szervizelési feladatokat hozhat létre](../../governance/policy/how-to/remediate-resources.md) lévő nem megfelelő házirendhez.  
-    - [Előzetes verzió]: Deploy Dependency agent for Linux VMs
-    - [Előzetes verzió]: Deploy Dependency agent for Windows VMs
-    - [Előzetes verzió]: Deploy Log Analytics agent for Linux VMs
-    - [Előzetes verzió]: Deploy Log Analytics agent for Windows VMs
+    - \[Előzetes verzió\]: Függőségi ügynök Linux rendszerű virtuális gépek üzembe helyezése
+    - \[Előzetes verzió\]: Függőségi ügynök Windows-beli virtuális gépek üzembe helyezése
+    - \[Előzetes verzió\]: Linux rendszerű virtuális gépekhez a Log Analytics-ügynök telepítése
+    - \[Előzetes verzió\]: Log Analytics-ügynököket Windows virtuális gépek üzembe helyezése
 
 * Virtuálisgép-rendszerképet (OS) nem azonosítja a szabályzat-definícióban.  
     A feltételek a központi telepítésre vonatkozó házirendet, például csak jól ismert Azure Virtuálisgép-rendszerképekből telepített virtuális gépekkel. Ellenőrizze a dokumentációban, megtekintéséhez, hogy támogatott-e a virtuális gép operációs rendszerének. Nem támogatott, ha a központi telepítésre vonatkozó házirendet és a frissítés ismétlődő, vagy módosítsa azt, hogy a rendszerkép megfelelő legyen.  
-    - [Előzetes verzió]: Függőségi ügynök telepítése – Virtuálisgép-rendszerképet (OS) listán nem szereplő naplózása
-    - [Előzetes verzió]: A Log Analytics-ügynök telepítése – Virtuálisgép-rendszerképet (OS) listán nem szereplő naplózása
+    - \[Előzetes verzió\]: Függőségi ügynök telepítése – Virtuálisgép-rendszerképet (OS) listán nem szereplő naplózása
+    - \[Előzetes verzió\]: A Log Analytics-ügynök telepítése – Virtuálisgép-rendszerképet (OS) listán nem szereplő naplózása
 
 * Virtuális gépek nem jelentkezik be a megadott Log Analytics-munkaterületet.  
     Akkor lehet, hogy néhány virtuális gépet a kezdeményezési hatókörében jelentkeznek be a másik a szabályzat-hozzárendelés megadott Log Analytics-munkaterületet. Ez a szabályzat egy olyan eszköz azonosításához, amely a virtuális gépek egy nem megfelelő munkaterületnek jelentenek.  
-    - [Előzetes verzió]: Audit Log Analytics workspace for VM – Report mismatch
+    - \[Előzetes verzió\]: Virtuális gép – jelentés eltérés naplózása a Log Analytics-munkaterület
 
 ## <a name="edit-an-initiative-assignment"></a>Kezdeményezés-hozzárendelés szerkesztése
 

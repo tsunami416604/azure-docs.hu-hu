@@ -6,12 +6,12 @@ ms.service: fxt-edge-filer
 ms.topic: tutorial
 ms.date: 06/20/2019
 ms.author: v-erkell
-ms.openlocfilehash: b48d8d74843947c3e40dc80234560b0147be6eea
-ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
+ms.openlocfilehash: 5471bf4041275d5988414def99dd2130f51fbb80
+ms.sourcegitcommit: 441e59b8657a1eb1538c848b9b78c2e9e1b6cfd5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67542962"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67828036"
 ---
 # <a name="tutorial-mount-the-cluster"></a>Oktatóanyag: A fürt csatlakoztatása
 
@@ -43,7 +43,7 @@ Ciklikus időszeletelési DNS terheléselosztási a fürt kapcsolatos további i
 
 Egy egyszerűbb módszert a kis méretű telepítések, hogy a parancsfájl a tartomány teljes IP-címek hozzárendelése ügyfél csatlakoztatási időpontban. 
 
-Más terheléselosztási módszerek nagy vagy összetett rendszereket megfelelő lehet. Nézze át a Microsoft helyi képviselőjéhez, vagy nyisson egy támogatási kérést segítséget. (Az azure Load Balancer jelenleg *nem támogatott* az Azure FXT Edge Filer.)
+Más terheléselosztási módszerek nagy vagy összetett rendszereket megfelelő lehet. Tekintse meg a Microsoft-képviselőjével, vagy nyissa meg a [támogatási kérelem](fxt-support-ticket.md) segítséget. (Az azure Load Balancer jelenleg *nem támogatott* az Azure FXT Edge Filer.)
 
 ## <a name="create-the-mount-command"></a>A mount parancs létrehozása 
 

@@ -3,15 +3,15 @@ title: Az Azure Database for postgresql-hez kapcsolati architektúra
 description: A témakör ismerteti a kapcsolati architektúra az Azure Database for PostgreSQL-kiszolgálóhoz.
 author: kummanish
 ms.author: manishku
-ms.service: PostgreSQL
+ms.service: postgresql
 ms.topic: conceptual
 ms.date: 05/23/2019
-ms.openlocfilehash: 73c23c471cb12ca3a3a7df4380779b464b8d86d4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0d91458c555c819c4bcf97215a712719ebc5eb71
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66735736"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67588958"
 ---
 # <a name="connectivity-architecture-in-azure-database-for-postgresql"></a>Az Azure Database for postgresql-hez kapcsolati architektúra
 Ez a cikk ismerteti az Azure Database for PostgreSQL csatlakozási architektúra, valamint, hogy hogyan a átirányítja a forgalmat az Azure Database for PostgreSQL-adatbázispéldány belül és kívül az Azure-ügyfelekről.

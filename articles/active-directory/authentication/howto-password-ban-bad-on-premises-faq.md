@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3bd117b79c2d103225e8f1f29b63eb6ae341031d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3b4879093ed80a554219b053cc5a2bc895126725
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64917664"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67702897"
 ---
 # <a name="azure-ad-password-protection-on-premises---frequently-asked-questions"></a>Az Azure AD jelszóvédelem helyszíni – gyakori kérdések
 
@@ -26,7 +26,7 @@ ms.locfileid: "64917664"
 
 A Microsoft jelenlegi útmutatást ebben a témakörben tekinthet meg a következő hivatkozásra:
 
-[Tájékoztató a jelszavakról Microsoft](https://www.microsoft.com/en-us/research/publication/password-guidance)
+[Tájékoztató a jelszavakról Microsoft](https://www.microsoft.com/research/publication/password-guidance)
 
 **K: Az a helyszíni Azure AD-jelszó védelmet támogatja a nem nyilvános felhők?**
 
@@ -43,6 +43,10 @@ A jelszó módosítása esetén a felhasználó általi új jelszó után igazol
 A jelszóbeállítási (más néven a jelszó alaphelyzetbe állítása) esetén, hogy egy rendszergazda cseréli a jelszót a fiókhoz egy új jelszót, például az Active Directory – felhasználók és számítógépek felügyeleti eszköz használatával. Ehhez a művelethez szükséges egy magas szintű jogosultságokra (általában a tartományi rendszergazda), és a művelet általában végző személy nem rendelkezik a régi jelszó ismerete. Ügyfélszolgálati forgatókönyvekhez gyakran ehhez, például amikor egy felhasználó elfelejtette a jelszavát, akinek támogatást nyújtanak. Jelszó beállítása eseményeket, amikor egy új felhasználói fiók létrehozása folyamatban van egy jelszóval először is megjelenik.
 
 A jelszóházirend-ellenőrzés ugyanúgy működik, függetlenül attól, hogy a jelszó módosítása vagy a set történik-e. Az Azure AD-jelszó DC védelmi ügynök szolgáltatás különböző eseménynaplózás tájékoztatja, hogy a jelszó módosítása vagy a set művelet volt.  Lásd: [Azure AD jelszó-védelmi figyelés és naplózás](https://docs.microsoft.com/azure/active-directory/authentication/howto-password-ban-bad-on-premises-monitor).
+
+**K: Miért használja az Active Directory – felhasználók és számítógépek felügyeleti beépülő modul ismétlődő jelszó elutasító eseményeket naplóz, amikor gyenge jelszóval próbál?**
+
+Az Active Directory – felhasználók és számítógépek felügyeleti beépülő modul először megpróbálja a Kerberos protokoll használatával az új jelszót állíthat be. Hiba esetén a beépülő modul fogja elérhetővé tenni egy második megpróbál beállítani a jelszót (a használt adott protokollok nem számítanak fontos) örökölt (SAM RPC) protokoll használatával. Az új jelszó az Azure AD jelszóvédelem gyenge számít, ha a jelszó alaphelyzetbe állítása elutasító eseményeket a naplózott két készletnyi eredményez.
 
 **K: Támogatja az Azure AD-jelszó Protection tartalomcsomagjai egyéb jelszó-szűrő-alapú termékek telepítése?**
 

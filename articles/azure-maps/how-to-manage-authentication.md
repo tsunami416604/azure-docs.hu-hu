@@ -3,17 +3,17 @@ title: Azure Maps-hitelesítés kezelése |} A Microsoft Docs
 description: Az Azure portal segítségével Azure Maps-hitelesítés kezelésére szolgál.
 author: walsehgal
 ms.author: v-musehg
-ms.date: 02/14/2019
+ms.date: 07/11/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 617adbcda70799aa07248945bbc27f9d95aa77a3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1dc63a2c2350ad4f1d02d0c1b22050293d7b866c
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65952565"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67837818"
 ---
 # <a name="manage-authentication-in-azure-maps"></a>Azure Maps-hitelesítés kezelése
 
@@ -59,7 +59,7 @@ Miután létrehozott egy Azure Maps-fiók, kell létesítenie az Azure AD-bérl�
 
 ## <a name="grant-rbac-to-azure-maps"></a>Az Azure Maps GRANT rbac-t
 
-Az Azure Maps-fiók társítása az Azure AD-bérlővel, miután egy felhasználó vagy alkalmazás egy vagy több Azure Maps hozzáférés-vezérlés szerepköreinek való hozzárendelésével hozzáférés-vezérlés megadásához.
+Után az Azure Maps-fiók társítása az Azure AD-bérlőhöz, a felhasználó, csoport vagy alkalmazás egy vagy több Azure Maps hozzáférés-vezérlés szerepköreinek hozzárendelésével biztosíthat hozzáférés-vezérlés.
 
 1. Lépjen a **hozzáférés-vezérlés (IAM)** válassza **szerepkör-hozzárendelések**, majd válassza ki **szerepkör-hozzárendelés hozzáadása**.
 

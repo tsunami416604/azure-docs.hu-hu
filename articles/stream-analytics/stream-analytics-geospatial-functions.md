@@ -8,12 +8,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/06/2018
-ms.openlocfilehash: ad789a597da759b9a2d58138c7ed441389a12adb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: aed716b01fe748be40ee22e3eba5742983c2a523
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61479983"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67620930"
 ---
 # <a name="introduction-to-stream-analytics-geospatial-functions"></a>Bevezetés a Stream Analytics a térinformatikai függvények
 
@@ -54,7 +54,7 @@ FROM input
 
  {"type": "LineString", "koordináták": [[20.2321,-87.33], [10.0, 10.0-s verzióját], [10,5, 10,5]]}
 
-További tudnivalókért látogasson el a [CreateLineString](https://msdn.microsoft.com/azure/stream-analytics/reference/createlinestring) hivatkozást.
+További tudnivalókért látogasson el a [CreateLineString](https://docs.microsoft.com/stream-analytics-query/createlinestring) hivatkozást.
 
 ## <a name="createpoint"></a>CreatePoint
 
@@ -81,7 +81,7 @@ FROM input
   
  {"type": "Pont", "koordináták": [20.2321,-87.33]}  
 
-További tudnivalókért látogasson el a [CreatePoint](https://msdn.microsoft.com/azure/stream-analytics/reference/createpoint) hivatkozást.
+További tudnivalókért látogasson el a [CreatePoint](https://docs.microsoft.com/stream-analytics-query/createpoint) hivatkozást.
 
 ## <a name="createpolygon"></a>CreatePolygon
 
@@ -108,7 +108,7 @@ FROM input
  
  {"type": "Sokszög", "koordináták": [[[20.2321,-87.33], [10.0, 10.0-s verzióját], [10,5, 10,5], [20.2321,-87.33]]]}
 
-További tudnivalókért látogasson el a [CreatePolygon](https://msdn.microsoft.com/azure/stream-analytics/reference/createpolygon) hivatkozást.
+További tudnivalókért látogasson el a [CreatePolygon](https://docs.microsoft.com/stream-analytics-query/createpolygon) hivatkozást.
 
 
 ## <a name="stdistance"></a>ST_DISTANCE
@@ -122,7 +122,7 @@ FROM Cars c
 JOIN Station s ON ST_DISTANCE(c.Location, s.Location) < 10 * 1000
 ```
 
-További tudnivalókért látogasson el a [ST_DISTANCE](https://msdn.microsoft.com/azure/stream-analytics/reference/st-distance) hivatkozást.
+További tudnivalókért látogasson el a [ST_DISTANCE](https://docs.microsoft.com/stream-analytics-query/st-distance) hivatkozást.
 
 ## <a name="stoverlaps"></a>ST_OVERLAPS
 A `ST_OVERLAPS` függvény két poligonok hasonlítja össze. Ha a sokszög átfedésben vannak, a függvény egy 1 adja vissza. A függvény 0 adja vissza, ha a poligonok nem lehetnek átfedésben. 
@@ -143,7 +143,7 @@ FROM Cars c, Storm s
 JOIN Storm s ON ST_OVERLAPS(c.Location, s.Course)
 ```
 
-További tudnivalókért látogasson el a [ST_OVERLAPS](https://msdn.microsoft.com/azure/stream-analytics/reference/st-overlaps) hivatkozást.
+További tudnivalókért látogasson el a [ST_OVERLAPS](https://docs.microsoft.com/stream-analytics-query/st-overlaps) hivatkozást.
 
 ## <a name="stintersects"></a>ST_INTERSECTS
 A `ST_INTERSECTS` függvény két LineString hasonlítja össze. Ha a LineString metszetoszlop, a függvény 1 adja vissza. A függvény 0 adja vissza, ha a LineString nem átfedésben.
@@ -169,7 +169,7 @@ FROM input
   
  0  
 
-További tudnivalókért látogasson el a [ST_INTERSECTS](https://msdn.microsoft.com/azure/stream-analytics/reference/st-intersects) hivatkozást.
+További tudnivalókért látogasson el a [ST_INTERSECTS](https://docs.microsoft.com/stream-analytics-query/st-intersects) hivatkozást.
 
 ## <a name="stwithin"></a>ST_WITHIN
 A `ST_WITHIN` függvény meghatározza, hogy egy pontot vagy a sokszög egy sokszög belül. Ha a sokszög pont vagy sokszög tartalmazza, a függvény 1 adja vissza. A függvény 0 vissza, ha a pont és a sokszög nem a deklarált sokszög belül található.
@@ -195,12 +195,12 @@ FROM input
   
  1  
 
-További tudnivalókért látogasson el a [ST_WITHIN](https://msdn.microsoft.com/azure/stream-analytics/reference/st-within) hivatkozást.
+További tudnivalókért látogasson el a [ST_WITHIN](https://docs.microsoft.com/stream-analytics-query/st-within) hivatkozást.
 
 ## <a name="next-steps"></a>További lépések
 
 * [Az Azure Stream Analytics bemutatása](stream-analytics-introduction.md)
 * [Get started using Azure Stream Analytics](stream-analytics-real-time-fraud-detection.md) (Bevezetés az Azure Stream Analytics használatába)
 * [Scale Azure Stream Analytics jobs](stream-analytics-scale-jobs.md) (Azure Stream Analytics-feladatok méretezése)
-* [Azure Stream Analytics Query Language Reference](https://msdn.microsoft.com/library/azure/dn834998.aspx) (Referencia az Azure Stream Analytics lekérdezési nyelvhez)
+* [Azure Stream Analytics Query Language Reference](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference) (Referencia az Azure Stream Analytics lekérdezési nyelvhez)
 * [Az Azure Stream Analytics felügyeleti REST API referenciája](https://msdn.microsoft.com/library/azure/dn835031.aspx)

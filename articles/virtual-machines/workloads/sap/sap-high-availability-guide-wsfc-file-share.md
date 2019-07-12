@@ -4,7 +4,7 @@ description: Útmutató az SAP ASCS/SCS példányhoz Windows feladatátvevő fü
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
 author: goraco
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 keywords: ''
@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 05/05/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 28b3851a52ec5fe69eaa531e2e08f66fb73cb1e0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1d26df6aeb09934408b9081ac077af52ffc24d66
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60936309"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67709060"
 ---
 [1928533]:https://launchpad.support.sap.com/#/notes/1928533
 [1999351]:https://launchpad.support.sap.com/#/notes/1999351
@@ -310,11 +310,11 @@ Egy kibővített fájlmegosztást használ, a rendszer a következő követelmé
 * Prémium szintű lemezeket kell használnia.
 * Azt javasoljuk, hogy az Azure Managed Disks szolgáltatást.
 * Azt javasoljuk, hogy a kötetek Resilient File System (ReFS) használatával formázhatja.
-    * További információkért lásd: [SAP Megjegyzés 1869038 – az SAP támogatása az ReFs fájlrendszer] [ 1869038] és a [kiválasztása a fájlrendszer] [ planning-volumes-s2d-choosing-filesystem] fejezete az a cikk tervezési kötetek a közvetlen tárolóhelyek.
+    * További információkért lásd: [SAP Megjegyzés 1869038 – az SAP támogatása az ReFs fájlrendszer][1869038] and the [Choosing the file system][planning-volumes-s2d-choosing-filesystem] fejezet a közvetlen tárolóhelyek a cikk tervezési kötetek.
     * Győződjön meg, hogy telepítse [összegző frissítés a Microsoft KB4025334][kb4025334].
 * DS vagy DSv2 sorozatú Azure-beli Virtuálisgép-méretek is használhatja.
 * A közvetlen tárolóhelyek lemez szinkronizálási van szüksége, virtuális gépek közötti megfelelő minőségű hálózati teljesítmény használja egy VM-típus, amely rendelkezik legalább egy "nagy" hálózati sávszélesség.
-    További információkért lásd: a [DSv2-sorozat] [ dv2-series] és [DS sorozatú] [ ds-series] előírásoknak.
+    További információkért lásd: a [DSv2-sorozat][dv2-series] and [DS-Series][ds-series] előírásoknak.
 * Azt javasoljuk, hogy a néhány a tárolókészletben lefoglalt kapacitás foglalása. Néhány nem lefoglalt kapacitás és a tárolókészlet lehetővé teszi a kötetek hely a "helyi javításnak" Ha egy meghajtó meghibásodik. Ez javítja az adatok biztonságát és teljesítményét.  További információkért lásd: [kötet méretének kiválasztása][choosing-the-size-of-volumes-s2d].
 * Azure virtuális gépek kibővített fájlkiszolgáló megosztást a saját Azure rendelkezésre állási csoportban kell telepíteni.
 * Nem kell a kibővített fájlkiszolgáló megosztást hálózat nevét, az Azure belső terheléselosztó konfigurálása például az \<SAP globális gazdagép\>. Ebben az esetben a \<ASCS/SCS virtuális állomás neve\> SAP ASCS/SCS-példány, vagy az adatbázis-kezelő számára. Egy kibővített fájlmegosztást elvégzi a horizontális felskálázást a terhelés több fürt összes csomópontján. \<SAP globális gazdagép\> helyi IP-címet használja, az összes fürtcsomópont.

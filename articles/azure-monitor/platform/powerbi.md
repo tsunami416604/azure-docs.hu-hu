@@ -11,14 +11,14 @@ ms.service: log-analytics
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 05/01/219
+ms.date: 05/01/2019
 ms.author: bwren
-ms.openlocfilehash: 2db6ddf57802f6fcf38cfc3ad7094ed94eaca3d8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0b1627306f1a8e9d9285c72118bfebdcb53d369b
+ms.sourcegitcommit: c0419208061b2b5579f6e16f78d9d45513bb7bbc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65234200"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67626121"
 ---
 # <a name="import-azure-monitor-log-data-into-power-bi"></a>Az Azure Monitor log-adatok importálása a Power BI-bA
 
@@ -28,12 +28,12 @@ ms.locfileid: "65234200"
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 ## <a name="overview"></a>Áttekintés
-Importálja az adatokat egy [Log Analytics-munkaterület](manage-access.md) az Azure monitorban Power BI-ba, a alapján a Power BI-ban egy adatkészletet hoz létre egy [naplólekérdezés](../log-query/log-query-overview.md) az Azure monitorban.  Az adatkészlet frissítésekor minden alkalommal, amikor futtatni a lekérdezést.  Ezután az adatkészlet adatait használó Power BI-jelentéseket hozhat létre.  Az adatkészlet létrehozása a Power bi-ban, a lekérdezés exportálhat a Log Analytics [Power Query (M) nyelvi](https://msdn.microsoft.com/library/mt807488.aspx).  Ezután használja ezt a lekérdezés létrehozása a Power BI Desktopban, és majd közzé kell tennie az adatkészletként a Power bi-ban.  Ez a folyamat részletei az alábbiakban tekintheti át.
+Importálja az adatokat egy [Log Analytics-munkaterület](manage-access.md) az Azure monitorban Power BI-ba, a alapján a Power BI-ban egy adatkészletet hoz létre egy [naplólekérdezés](../log-query/log-query-overview.md) az Azure monitorban.  Az adatkészlet frissítésekor minden alkalommal, amikor futtatni a lekérdezést.  Ezután az adatkészlet adatait használó Power BI-jelentéseket hozhat létre.  Az adatkészlet létrehozása a Power bi-ban, a lekérdezés exportálhat a Log Analytics [Power Query (M) nyelvi](https://docs.microsoft.com/powerquery-m/power-query-m-language-specification).  Ezután használja ezt a lekérdezés létrehozása a Power BI Desktopban, és majd közzé kell tennie az adatkészletként a Power bi-ban.  Ez a folyamat részletei az alábbiakban tekintheti át.
 
 ![A log Analytics, a Power bi-bA](media/powerbi/overview.png)
 
 ## <a name="export-query"></a>Lekérdezés exportálása
-Először hozzon létre egy [naplólekérdezés](../log-query/log-query-overview.md) , amely feltölti a Power BI-adatkészletekbe kívánt adatot adja vissza.  Ez a lekérdezés, majd exportálja [Power Query (M) nyelvi](https://msdn.microsoft.com/library/mt807488.aspx) Power BI Desktop által használható.
+Először hozzon létre egy [naplólekérdezés](../log-query/log-query-overview.md) , amely feltölti a Power BI-adatkészletekbe kívánt adatot adja vissza.  Ez a lekérdezés, majd exportálja [Power Query (M) nyelvi](https://docs.microsoft.com/powerquery-m/power-query-m-language-specification) Power BI Desktop által használható.
 
 1. [A napló-lekérdezés létrehozása a Log Analytics](../log-query/get-started-portal.md) el az adatkészletet az adatok kinyerése érdekében.
 2. Válassza ki **exportálása** > **Power BI-lekérdezések (millió)** .  Ez a lekérdezés nevű szöveges fájlba exportálja **PowerBIQuery.txt**. 

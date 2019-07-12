@@ -2,18 +2,18 @@
 title: Sorszintű biztonság a Power BI munkaterületi gyűjteményekkel
 description: Sorszintű biztonság a Power BI-Munkaterületcsoportok részleteit
 services: power-bi-workspace-collections
-ms.service: power-bi-workspace-collections
+ms.service: power-bi-embedded
 author: rkarlin
 ms.author: rkarlin
 ms.topic: article
 ms.workload: powerbi
 ms.date: 09/20/2017
-ms.openlocfilehash: 2d0c8629e4abf9e27cd204b9a13b79808b177501
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2a26cc7573abb970dc58c6f7c327dfbc659cb646
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64715198"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67672485"
 ---
 # <a name="row-level-security-with-power-bi-workspace-collections"></a>Sorszintű biztonság a Power BI munkaterületi gyűjteményekkel
 

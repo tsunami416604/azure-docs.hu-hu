@@ -4,7 +4,7 @@ description: Méretezés az SAP Hana az Azure-ban (nagyméretű példányok).
 services: virtual-machines-linux
 documentationcenter: ''
 author: RicksterCDN
-manager: jeconnoc
+manager: gwallace
 editor: ''
 ms.service: virtual-machines-linux
 ms.devlang: NA
@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 09/04/2018
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 7d403c284eefc1351aabb632977832f2bf11757a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c7a81468fd19d3bd5d6eee79bb8a75396e3021f1
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64715828"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67707279"
 ---
 # <a name="sizing"></a>Méretezés
 

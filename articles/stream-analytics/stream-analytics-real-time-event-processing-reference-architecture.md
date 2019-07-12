@@ -8,17 +8,17 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 01/24/2017
-ms.openlocfilehash: 7f9748a4e4f1c86362781aa80d8958237c97106a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ab1ca89427f332151120420c3c087902584706f4
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60816955"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67621786"
 ---
 # <a name="reference-architecture-real-time-event-processing-with-microsoft-azure-stream-analytics"></a>Referenciaarchitektúra: Valós idejű eseményfeldolgozás a Microsoft Azure Stream Analytics
 A referenciaarchitektúra az Azure Stream Analytics valós idejű eseményfeldolgozás a funkcionalitást biztosít egy általános tervezet üzembe helyezéséhez egy valós idejű platformjával a Microsoft Azure platformszolgáltatás (PaaS) streamfeldolgozó megoldás.
 
-## <a name="summary"></a>Összefoglalás
+## <a name="summary"></a>Összegzés
 Hagyományosan elemzési megoldásokat rendelkezik alapul szolgáló képességeket beépítettük, és az adattárházak, ETL (extract, transform, load) adatok tárolására elemzés előtt. Követelményeknek megfelelően, több gyorsan beérkező adatot, beleértve a már meglévő modell küld a korlátot. Adatok áthelyezése a storage előtt Streamek elemzése lehetővé teszi egy megoldást, és nem érhető el egy olyan új képesség, míg a módszer nem széles körben fogadott összes iparági referenciaegyenesen között. 
 
 A Microsoft Azure biztosít egy kiterjedt katalógus, amely támogathatja a másik megoldás-forgatókönyveket és a követelmények tömbjét elemzési technológiák. Melyik Azure-szolgáltatások üzembe helyezése egy teljes körű megoldás kiválasztása az ajánlatok bővítheti a megadott kihívást jelenthet. Ez a tanulmány szolgáltatásait és üzemeltetést, a különböző Azure-szolgáltatások, amelyek támogatják az esemény-adatfolyam-megoldás célja. Ismerteti azokat a forgatókönyveket, amelyben ügyfeleink az ilyen megközelítés is kihasználhatják a.
@@ -51,6 +51,6 @@ További segítségre van szüksége, próbálja meg a [Azure Stream Analytics-f
 * [Az Azure Stream Analytics bemutatása](stream-analytics-introduction.md)
 * [Get started using Azure Stream Analytics](stream-analytics-real-time-fraud-detection.md) (Bevezetés az Azure Stream Analytics használatába)
 * [Scale Azure Stream Analytics jobs](stream-analytics-scale-jobs.md) (Azure Stream Analytics-feladatok méretezése)
-* [Azure Stream Analytics Query Language Reference](https://msdn.microsoft.com/library/azure/dn834998.aspx) (Referencia az Azure Stream Analytics lekérdezési nyelvhez)
+* [Azure Stream Analytics Query Language Reference](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference) (Referencia az Azure Stream Analytics lekérdezési nyelvhez)
 * [Az Azure Stream Analytics felügyeleti REST API referenciája](https://msdn.microsoft.com/library/azure/dn835031.aspx)
 

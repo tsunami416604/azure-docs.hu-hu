@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 04/19/2019
 ms.author: yegu
 ms.custom: mvc
-ms.openlocfilehash: 1ce4e9c47bf6f885417b6c06c6036d3cadcaef7b
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 99559c0c77c3e4b29badec1c0be2d741df1f0621
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67706452"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67798381"
 ---
 # <a name="tutorial-use-feature-flags-in-an-aspnet-core-app"></a>Oktatóanyag: A szolgáltatás jelzők használata az ASP.NET Core-alkalmazás
 
@@ -86,30 +86,42 @@ public class Startup
 
 Azt javasoljuk, hogy funkció jelzők az alkalmazáson kívül tartani, és külön-külön kezelhető. Ha így tesz, bármikor módosíthatja a jelző állapotok, és ezek a módosítások érvénybe léptetéséhez azonnal az alkalmazásban. Alkalmazáskonfiguráció biztosít egy központi helyen rendszerezéséhez és a egy dedikált portál felhasználói felületén keresztül az összes funkció jelző szabályozása. Alkalmazáskonfiguráció is kézbesíti a jelzők az alkalmazást közvetlenül a .NET Core-ügyfél kódtárakat.
 
-Az alkalmazások konfigurálása az ASP.NET Core-alkalmazás csatlakoztatása a legegyszerűbben a konfigurációszolgáltató `Microsoft.Extensions.Configuration.AzureAppConfiguration`. A NuGet-csomagot használ, adja hozzá a következő kódot a *Program.cs* fájlt:
+Az alkalmazások konfigurálása az ASP.NET Core-alkalmazás csatlakoztatása a legegyszerűbben a konfigurációszolgáltató `Microsoft.Azure.AppConfiguration.AspNetCore`. Kövesse az alábbi lépéseket a NuGet csomagot használni.
 
-```csharp
-using Microsoft.Extensions.Configuration.AzureAppConfiguration;
+1. Nyissa meg *Program.cs* fájlt, és adja hozzá a következő kódot.
 
-public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
-    WebHost.CreateDefaultBuilder(args)
-           .ConfigureAppConfiguration((hostingContext, config) => {
-               var settings = config.Build();
-               config.AddAzureAppConfiguration(options => {
-                   options.Connect(settings["ConnectionStrings:AppConfig"])
-                          .UseFeatureFlags();
-                });
-           })
-           .UseStartup<Startup>();
-```
+   ```csharp
+   using Microsoft.Extensions.Configuration.AzureAppConfiguration;
 
-A szolgáltatás jelző értéket vár az idő előrehaladtával változik. Alapértelmezés szerint a szolgáltatás-kezelő 30 másodpercenként frissíti a szolgáltatás jelző értékét. A következő kód bemutatja, hogyan módosíthatja a lekérdezési időköz 5 perc az a `options.UseFeatureFlags()` hívása:
+   public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
+       WebHost.CreateDefaultBuilder(args)
+              .ConfigureAppConfiguration((hostingContext, config) => {
+                  var settings = config.Build();
+                  config.AddAzureAppConfiguration(options => {
+                      options.Connect(settings["ConnectionStrings:AppConfig"])
+                             .UseFeatureFlags();
+                   });
+              })
+              .UseStartup<Startup>();
+   ```
+
+2. Nyissa meg *Startup.cs* és frissítheti a `Configure` metódus hozzáadása egy közbenső szoftverek, a szolgáltatás jelző értékek frissíteni kell az ASP.NET Core közben rendszeres időközönként webes alkalmazás továbbra is fennáll, kérelmek fogadására.
+
+   ```csharp
+   public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+   {
+       app.UseAzureAppConfiguration();
+       app.UseMvc();
+   }
+   ```
+
+A szolgáltatás jelző értéket vár az idő előrehaladtával változik. Alapértelmezés szerint a szolgáltatás jelző értékek gyorsítótárazza a rendszer egy ideig 30 másodperc, így egy frissítési művelet aktiválódik, amikor kérelem érkezik a közbenső szoftver nem lenne frissítse az értéket, amíg le nem jár a gyorsítótárazott értéket. A következő kód bemutatja, hogyan módosíthatja a gyorsítótár lejárati idő vagy a lekérdezési időköz 5 perc az a `options.UseFeatureFlags()` hívja.
 
 ```csharp
 config.AddAzureAppConfiguration(options => {
     options.Connect(settings["ConnectionStrings:AppConfig"])
            .UseFeatureFlags(featureFlagOptions => {
-                featureFlagOptions.PollInterval = TimeSpan.FromSeconds(300);
+                featureFlagOptions.CacheExpirationTime = TimeSpan.FromMinutes(5);
            });
 });
 ```

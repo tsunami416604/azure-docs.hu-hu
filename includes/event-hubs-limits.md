@@ -8,18 +8,18 @@ ms.topic: include
 ms.date: 05/22/2019
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: fa6b4d6d0db09f8c4955430d6dc227356416d915
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b105fb14608d53c5c2ef469ab44e211ccdf4d3c8
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66735945"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67812511"
 ---
 A következő táblázat felsorolja a kvóták, és korlátozza az adott [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/). További információ az Event Hubs-díjszabás: [Event Hubs-díjszabás](https://azure.microsoft.com/pricing/details/event-hubs/).
 
-| Korlát | Scope | Megjegyzések | Érték |
+| Korlát | Scope | Megjegyzések | Value |
 | --- | --- | --- | --- |
-| Előfizetésenként az Event Hubs-névterek száma |Előfizetés |- |100 |
+| Előfizetésenként az Event Hubs-névterek száma |Subscription |- |100 |
 | Az event hubs-névterenként száma |Névtér |A rendszer elutasítja a további kérések, egy új eseményközpont létrehozásához. |10 |
 | A partíciók száma az eseményközpont száma |Entitás |- |32 |
 | Egy eseményközpont fogyasztói csoportok száma |Entitás |- |20 |
@@ -31,11 +31,12 @@ A következő táblázat felsorolja a kvóták, és korlátozza az adott [Azure 
 | Kapacitásegységek maximális száma |Névtér |Az átviteli egység túllépő esetén az szabályozottan az adatok, és létrehoz egy [kiszolgáló foglalt kivétel](/dotnet/api/microsoft.servicebus.messaging.serverbusyexception). Kérhető az átviteli egységek a Standard szintű, hogy a fájl egy [támogatási kérelem](/azure/azure-supportability/how-to-create-azure-support-request). [További átviteli egységek](../articles/event-hubs/event-hubs-auto-inflate.md) blokkok 20 vállalt vásárlási alapon érhetők el. |20 |
 | Az engedélyezési szabályok névterenként száma |Névtér|Engedélyezési szabály létrehozása a későbbi kérelmeket a rendszer elutasítja.|12 |
 | A GetRuntimeInformation metódus hívások száma | Entitás | - | 50 / másodperc | 
+| Virtuális hálózat (VNet) és IP-konfigurációs szabályok száma | Entitás | - | 128 | 
 
 ### <a name="event-hubs-dedicated---quotas-and-limits"></a>Event Hubs dedikált - kvóták és korlátozások
 Az Event Hubs dedikált ajánlat fix havi díja, legalább 4 óra számoljuk fel. A dedikált szintet kínál összes funkciót, a standard szintű csomag, de a vállalati méretezés és korlátait az erőforrás-igényű számítási feladatok rendelkező ügyfelek számára. 
 
-| Funkció | Limits |
+| Funkció | Korlátok |
 | --- | ---|
 | A sávszélesség |  20 kapacitásegység használható |
 | Névterek | 50 / Kapacitásegység |

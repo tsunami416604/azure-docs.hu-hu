@@ -3,18 +3,18 @@ title: Az Azure SQL Database Azure Stream Analytics-kimenet
 description: Ismerje meg az Azure Stream Analytics ad ki adatokat az SQL Azure és a nagyobb írási teljesítmény arányt érhet el.
 services: stream-analytics
 author: chetanmsft
-ms.author: chetanmsft
+ms.author: chetang
 manager: katiiceva
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 3/18/2019
-ms.openlocfilehash: ac58bbbc252d66620ad410bffa805b75ec3042d4
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.openlocfilehash: e0775bff1e7bdeeaf2c544fd815c2ce3bf129eae
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67341756"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67620857"
 ---
 # <a name="azure-stream-analytics-output-to-azure-sql-database"></a>Az Azure SQL Database Azure Stream Analytics-kimenet
 
@@ -54,6 +54,6 @@ Ha a bejövő események aránya alacsony, könnyedén létrehozható köteg mé
 
 Egy másik ilyen forgatókönyv esetén a írása (NCCI), nem fürtözött oszlopcentrikus indexbe, kisebb tömeges Beszúrások hozható létre, amelyek az index lefagyhat túl sok szegmensek. Ebben az esetben a javaslatot, hogy a fürtözött Oszlopcentrikus index használja helyette.
 
-## <a name="summary"></a>Összefoglalás
+## <a name="summary"></a>Összegzés
 
 Összefoglalva, az SQL-kimenet, az Azure Stream Analytics a particionált kimeneti szolgáltatásával a feladat egy particionált tábla az SQL Azure igazított ezerszer kell lehetővé teszik, jelentős átviteli fejlesztései. Azure Data Factory felhasználásával a lemezalapú táblák be egy memórián belüli táblából adatáthelyezés vezénylésre biztosíthat nagyságrendű átvitelisebesség-növekedések. Ha lehetséges, üzenet sűrűségű javítására is tényező teljes átviteli sebesség növelése.

@@ -2,17 +2,17 @@
 title: Hozzon létre a portálról az Azure Kubernetes-szolgáltatások (AKS) virtuális csomópontok
 description: Ismerje meg, hogyan hozható létre egy Azure Kubernetes Services-(AKS-) fürt által használt virtuális csomópontok podok futtatásához az Azure portal használatával.
 services: container-service
-author: iainfoulds
+author: mlearned
 ms.topic: conceptual
 ms.service: container-service
 ms.date: 05/06/2019
-ms.author: iainfou
-ms.openlocfilehash: a82d9e6e1d5ffa9b97bb0c1a4272375d4a71863c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: mlearned
+ms.openlocfilehash: 8752d888e24e7135d488be6d1b377070a30fe4eb
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66742798"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67613843"
 ---
 # <a name="create-and-configure-an-azure-kubernetes-services-aks-cluster-to-use-virtual-nodes-in-the-azure-portal"></a>Létrehozhat és konfigurálhat egy Azure Kubernetes-szolgáltatások (AKS)-fürtön az Azure Portalon a virtuális csomópontok használata
 
@@ -24,7 +24,7 @@ Ez a cikk bemutatja, hogyan hozhat létre és konfigurálja a virtuális hálóz
 
 Virtuális csomópontok ACI futtató podok és az AKS-fürt közötti hálózati kommunikáció engedélyezéséhez. Ahhoz, hogy ez a kommunikáció, egy virtuális hálózat alhálózatának létrehozása és delegált engedélyek vannak rendelve. Virtuális csomópontok csak dolgozhat használatával létrehozott AKS-fürtök *speciális* hálózati. Alapértelmezés szerint az AKS-fürtök létrehozása a *alapszintű* hálózati. Ez a cikk bemutatja, hogyan hozzon létre egy virtuális hálózatot és alhálózatot, majd a speciális hálózati használó egy AKS-fürt üzembe helyezése.
 
-Ha korábban nem használta az ACI, regisztrálja a szolgáltatót az előfizetés. Az ACI szolgáltató regisztrációs használatával állapotát ellenőrizheti a [az identitásszolgáltató-listája] [ az-provider-list] parancsot, az alábbi példában látható módon:
+Ha korábban nem használta az ACI, regisztrálja a szolgáltatót az előfizetés. Az ACI szolgáltató regisztrációs használatával állapotát ellenőrizheti a [az identitásszolgáltató-listája][az-provider-list] parancsot, az alábbi példában látható módon:
 
 ```azurecli-interactive
 az provider list --query "[?contains(namespace,'Microsoft.ContainerInstance')]" -o table
@@ -106,7 +106,7 @@ Az Azure Cloud Shell egy olyan ingyenes interaktív kezelőfelület, amelyet a j
 
 A Cloud Shell megnyitásához válassza **kipróbálás** a kódblokk jobb felső sarkában. A Cloud Shellt egy külön böngészőlapon is elindíthatja a [https://shell.azure.com/bash](https://shell.azure.com/bash) cím megnyitásával. A **Másolás** kiválasztásával másolja és illessze be a kódrészleteket a Cloud Shellbe, majd nyomja le az Enter billentyűt a futtatáshoz.
 
-Az [az aks get-credentials][az-aks-get-credentials] paranccsal konfigurálhatja a `kubectl` ügyfelet a Kubernetes-fürthöz való csatlakozásra. A következő példa lekéri a *myResourceGroup* erőforrásban lévő *myAKSCluster* fürtnév hitelesítő adatait:
+Használja a [az aks get-credentials][az-aks-get-credentials] parancsot konfigurálásához `kubectl` a Kubernetes-fürthöz való csatlakozáshoz. A következő példa lekéri a *myResourceGroup* erőforrásban lévő *myAKSCluster* fürtnév hitelesítő adatait:
 
 ```azurecli-interactive
 az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
@@ -130,7 +130,7 @@ aks-agentpool-14693408-0       Ready     agent     32m       v1.11.2
 
 ## <a name="deploy-a-sample-app"></a>Egy mintaalkalmazás üzembe helyezése
 
-Az Azure Cloud shellben hozzon létre egy fájlt `virtual-node.yaml` másolja be a következő yaml-kódot. A tároló a csomóponton, ütemezni egy [nodeSelector] [ node-selector] és [toleration] [ toleration] vannak definiálva. Ezek a beállítások engedélyezése a virtuális csomópont ütemezhető, és győződjön meg arról, hogy a szolgáltatás sikeresen engedélyezve van a pod.
+Az Azure Cloud shellben hozzon létre egy fájlt `virtual-node.yaml` másolja be a következő yaml-kódot. A tároló a csomóponton, ütemezni egy [nodeSelector][node-selector] and [toleration][toleration] vannak definiálva. Ezek a beállítások engedélyezése a virtuális csomópont ütemezhető, és győződjön meg arról, hogy a szolgáltatás sikeresen engedélyezve van a pod.
 
 ```yaml
 apiVersion: apps/v1
@@ -163,13 +163,13 @@ spec:
         effect: NoSchedule
 ```
 
-Futtassa az alkalmazást a [a kubectl a alkalmazni] [ kubectl-apply] parancsot.
+Futtassa az alkalmazást a [a kubectl a alkalmazni][kubectl-apply] parancsot.
 
 ```azurecli-interactive
 kubectl apply -f virtual-node.yaml
 ```
 
-Használja a [kubectl get pods] [ kubectl-get] parancsot a `-o wide` argumentum a kimenetben podok és az ütemezett csomópont listáját. Figyelje meg, hogy a `virtual-node-helloworld` pod van ütemezve: a `virtual-node-linux` csomópont.
+Használja a [kubectl get pods][kubectl-get] parancsot a `-o wide` argumentum a kimenetben podok és az ütemezett csomópont listáját. Figyelje meg, hogy a `virtual-node-helloworld` pod van ütemezve: a `virtual-node-linux` csomópont.
 
 ```
 $ kubectl get pods -o wide

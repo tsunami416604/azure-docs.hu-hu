@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 06/13/2017
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: eef13c5a4e3757b0eafd77c0915717175c2dbd8c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e04dfa4148213e88aa46e464a31cdd9b6125e0bf
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60769033"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67705765"
 ---
 # <a name="create-an-external-app-service-environment"></a>Külső App Service environment létrehozása
 
@@ -33,15 +33,15 @@ Az App Service Environment (ASE) üzembe helyezésének két módja van:
 - Egy virtuális IP-cím vagy külső IP-cím, azaz külső ASE használatával.
 - A VIP-nek a belső IP-cím, az gyakran nevezik ILB ASE mert a belső végpont egy belső Load Balancer (ILB).
 
-Ez a cikk bemutatja, hogyan hozhat létre a külső ASE környezetben. Az ASE áttekintését lásd: [az App Service Environment bemutatása][Intro]. Az ILB ASE létrehozásával kapcsolatos információkért lásd: [létrehozása és használata az ILB ASE][MakeILBASE].
+Ez a cikk bemutatja, hogyan hozhat létre a külső ASE környezetben. Az ASE áttekintését lásd: [az App Service Environment bemutatása][Intro]. For information on how to create an ILB ASE, see [Create and use an ILB ASE][MakeILBASE].
 
 ## <a name="before-you-create-your-ase"></a>Az ASE létrehozása előtt
 
 Az ASE létrehozását követően nem módosítható a következő:
 
-- Location egység
-- Előfizetés
-- Erőforráscsoport
+- Location
+- Subscription
+- Resource group
 - Használt virtuális hálózat
 - Alhálózat használata
 - Alhálózat mérete
@@ -72,7 +72,7 @@ ASE létrehozása egy App Service-csomag létrehozása közben:
 
 2. Válassza ki előfizetését. Az alkalmazás és az ASE jönnek létre az ugyanazon előfizetésben található.
 
-3. Válasszon ki vagy hozzon létre egy erőforráscsoportot. Az erőforráscsoportok egységként kezelheti a kapcsolódó Azure-erőforrásokat. Erőforráscsoportok is hasznosak, ha az alkalmazások szerepköralapú hozzáférés-vezérlés szabályok létrehozása. További információkért lásd: a [Azure Resource Manager áttekintése][ARMOverview].
+3. Válasszon ki vagy hozzon létre egy erőforráscsoportot. Az erőforráscsoportok egységként kezelheti a kapcsolódó Azure-erőforrásokat. Erőforráscsoportok is hasznosak, ha az alkalmazások szerepköralapú hozzáférés-vezérlés szabályok létrehozása. További információért lásd [az Azure Resource Manager áttekintését][ARMOverview].
 
 4. Válassza ki az operációs rendszer (Windows, Linux vagy a Docker). 
 
@@ -96,7 +96,7 @@ ASE létrehozása egy App Service-csomag létrehozása közben:
 
     b. Adja meg az új alhálózat nevét.
 
-    c. Válassza ki az alhálózat méretét. *Fontos, hogy válassza ki a méretét elég nagy az ASE jövőbeli növekedésének megfelelően.* Javasoljuk, hogy `/25`, amely 128 címet tartalmaz, és képes kezelni egy maximális méretű ASE Környezetet. Nem ajánlott `/28`, például mert csak 16 címek érhetők el. Infrastruktúra legalább hét címeket használ, és a egy másik 5 az Azure-hálózatot használ. Az egy `/28` alhálózat, hogy hagyta App Service-csomag az ILB ASE-példányok legfeljebb 4 App Service-csomag példányok külső ASE méretezés és csak 3.
+    c. Válassza ki az alhálózat méretét. *Fontos, hogy válassza ki a méretét elég nagy az ASE jövőbeli növekedésének megfelelően.* Javasoljuk, hogy `/24`, amely 128 címet tartalmaz, és képes kezelni egy maximális méretű ASE Környezetet. Nem ajánlott `/28`, például mert csak 16 címek érhetők el. Infrastruktúra legalább hét címeket használ, és a egy másik 5 az Azure-hálózatot használ. Az egy `/28` alhálózat, hogy hagyta App Service-csomag az ILB ASE-példányok legfeljebb 4 App Service-csomag példányok külső ASE méretezés és csak 3.
 
     d. Válassza ki az alhálózati IP-címtartományt.
 
@@ -110,7 +110,7 @@ ASE létrehozása egy App Service-csomag létrehozása közben:
 
 1. Válassza ki előfizetését. Az alkalmazás és az ASE jönnek létre az ugyanazon előfizetésben található.
 
-1. Válasszon ki vagy hozzon létre egy erőforráscsoportot. Az erőforráscsoportok egységként kezelheti a kapcsolódó Azure-erőforrásokat. Erőforráscsoportok is hasznosak, ha az alkalmazások szerepköralapú hozzáférés-vezérlés szabályok létrehozása. További információkért lásd: a [Azure Resource Manager áttekintése][ARMOverview].
+1. Válasszon ki vagy hozzon létre egy erőforráscsoportot. Az erőforráscsoportok egységként kezelheti a kapcsolódó Azure-erőforrásokat. Erőforráscsoportok is hasznosak, ha az alkalmazások szerepköralapú hozzáférés-vezérlés szabályok létrehozása. További információért lásd [az Azure Resource Manager áttekintését][ARMOverview].
 
 1. Az App Service-csomagot, majd válassza ki és **hozzon létre új**. Linuxos web apps és a Windows web Apps alkalmazások azonos App Service-csomagot nem lehet, de az azonos App Service-környezet is lehet. 
 
@@ -132,7 +132,7 @@ ASE létrehozása egy App Service-csomag létrehozása közben:
 
     b. Adja meg az új alhálózat nevét.
 
-    c. Válassza ki az alhálózat méretét. *Fontos, hogy válassza ki a méretét elég nagy az ASE jövőbeli növekedésének megfelelően.* Javasoljuk, hogy `/25`, amely 128 címet tartalmaz, és képes kezelni egy maximális méretű ASE Környezetet. Nem ajánlott `/28`, például mert csak 16 címek érhetők el. Infrastruktúra legalább hét címeket használ, és a egy másik 5 az Azure-hálózatot használ. Az egy `/28` alhálózat, hogy hagyta App Service-csomag az ILB ASE-példányok legfeljebb 4 App Service-csomag példányok külső ASE méretezés és csak 3.
+    c. Válassza ki az alhálózat méretét. *Fontos, hogy válassza ki a méretét elég nagy az ASE jövőbeli növekedésének megfelelően.* Javasoljuk, hogy `/24`, amely 128 címet tartalmaz, és képes kezelni egy maximális méretű ASE Környezetet. Nem ajánlott `/28`, például mert csak 16 címek érhetők el. Infrastruktúra legalább hét címeket használ, és a egy másik 5 az Azure-hálózatot használ. Az egy `/28` alhálózat, hogy hagyta App Service-csomag az ILB ASE-példányok legfeljebb 4 App Service-csomag példányok külső ASE méretezés és csak 3.
 
     d. Válassza ki az alhálózati IP-címtartományt.
 
@@ -176,7 +176,7 @@ Ha egy ASE önálló hoz létre, azt nem szerepel. Az üres ASE továbbra is hav
 
 Az App Service Environment (az ASEv1) első verziója példánya továbbra is létrehozhat. A folyamat elindításához, keressen a piactéren **App Service Environment-környezet v1**. Az ASE-t ugyanúgy, ahogy a különálló ASE létrehozása hoz létre. Amikor elkészült, az asev1-ben van két előtérrendszerekből és két. Az asev1-ben a előtérrendszerekből és kell kezelni. A rendszer automatikusan hozzáadja az App Service-csomagok létrehozásakor. Az előtérrendszerek a HTTP/HTTPS-végpontként viselkednek, és küldeni a forgalmat a feldolgozók. A munkavállalók a szerepköröket, amelyek az alkalmazások üzemeltetéséhez. Az ASE létrehozását követően módosíthatja a előtérrendszerekből és mennyisége. 
 
-Az ASEv1 kapcsolatos további információkért lásd: [az App Service Environment v1 bemutatása][ASEv1Intro]. További információkat a skálázásról, kezelése és figyelése az asev1-ben, lásd: [App Service Environment konfigurálása][ConfigureASEv1].
+Az ASEv1 kapcsolatos további információkért lásd: [az App Service Environment v1 bemutatása][ASEv1Intro]. For more information on scaling, managing, and monitoring ASEv1, see [How to configure an App Service Environment][ConfigureASEv1].
 
 <!--Image references-->
 [1]: ./media/how_to_create_an_external_app_service_environment/createexternalase-create.png

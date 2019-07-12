@@ -11,16 +11,16 @@ ms.reviewer: nibaccam
 ms.topic: conceptual
 ms.date: 06/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: d0bc4620d0c55d6e94a3d99c39ab405dab2743e5
-ms.sourcegitcommit: aa66898338a8f8c2eb7c952a8629e6d5c99d1468
+ms.openlocfilehash: 2f3ec9792a7af0398da770286b805be4d1f25589
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67461650"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67657967"
 ---
 # <a name="use-mlflow-with-azure-machine-learning-service-preview"></a>MLflow használata az Azure Machine Learning szolgáltatás (előzetes verzió)
 
-Ez a cikk bemutatja, hogyan MLflow a URI nyomon követése és naplózása API-t, együttesen néven is ismert MLflow követése, nyomon követése és naplózása a kísérlet metrikák és összetevők az Azure Machine Learning szolgáltatás a [Azure Machine Learning szolgáltatás munkaterületén](https://docs.microsoft.com/azure/machine-learning/service/concept-azure-machine-learning-architecture#workspace). Ha már használ MLflow nyomon követése a kísérletek, a munkaterület itt központosított, biztonságos és skálázható a betanítási metrikák és a modellek tárolására.
+Ez a cikk bemutatja, hogyan MLflow a URI nyomon követése és naplózása API-t, együttesen néven is ismert MLflow követése, nyomon követése és naplózása a kísérlet metrikák és összetevők az Azure Machine Learning szolgáltatás a [Azure Machine Learning szolgáltatás munkaterületén](https://docs.microsoft.com/azure/machine-learning/service/concept-azure-machine-learning-architecture#workspaces). Ha már használ MLflow nyomon követése a kísérletek, a munkaterület itt központosított, biztonságos és skálázható a betanítási metrikák és a modellek tárolására.
 
 [MLflow](https://www.mlflow.org) egy nyílt forráskódú kódtár, a machine learning-példakísérleteket életciklusának kezelésére. [MLFlow követési](https://mlflow.org/docs/latest/quickstart.html#using-the-tracking-api) MLflow, naplózza, és nyomon követi a metrikák futtatása képzési részét képező és modell összetevők, a kísérletek helyileg, futnak-e a virtuális gépen, vagy egy távoli számítási fürt.
 ![az azure machine learning diagram mlflow](media/how-to-use-mlflow/mlflow-diagram.png)

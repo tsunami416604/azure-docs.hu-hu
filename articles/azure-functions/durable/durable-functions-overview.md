@@ -9,13 +9,14 @@ ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: overview
 ms.date: 12/22/2018
-ms.author: azfuncdf, glenga
-ms.openlocfilehash: 2228f3fe05e1021d0f87ce0b0d33a8287f048a8c
-ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
+ms.author: glenga
+ms.reviewer: azfuncdf
+ms.openlocfilehash: 6e1acf5f605d7f6fb42d24e6e7ec624a317b0e31
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65872812"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67612860"
 ---
 # <a name="what-are-durable-functions"></a>Mik a Durable Functions?
 
@@ -43,8 +44,8 @@ Durable Functions elsődleges használati eset van egyszerűsítse összetett, �
 
 Durable Functions jelenleg a következő nyelveket támogatja:
 
-* **C#**: mindkét [előre lefordított osztálykódtárakat](../functions-dotnet-class-library.md) és [ C# parancsfájl](../functions-reference-csharp.md).
-* **F#**: előre lefordított osztálykódtárakat és F# parancsfájlt. F#parancsfájl csak a támogatott verziója az Azure Functions futtatókörnyezet 1.x.
+* **C#** : mindkét [előre lefordított osztálykódtárakat](../functions-dotnet-class-library.md) és [ C# parancsfájl](../functions-reference-csharp.md).
+* **F#** : előre lefordított osztálykódtárakat és F# parancsfájlt. F#parancsfájl csak a támogatott verziója az Azure Functions futtatókörnyezet 1.x.
 * **A JavaScript**: csak az verzió támogatott 2.x verzióját az Azure Functions futtatókörnyezettel. Durable Functions bővítmény 1.7.0-ás verzió vagy újabb verzió szükséges. 
 
 Durable Functions rendelkezik az összes igazoló cél [Azure Functions nyelvek](../supported-languages.md). Tekintse meg a [Durable Functions problémák listája](https://github.com/Azure/azure-functions-durable-extension/issues) munkák további nyelveket támogatja a legújabb állapot.
@@ -64,7 +65,7 @@ Akkor is Functions használatának első lépései tartós 10 percen belül ezek
 
 Mindkét gyors útmutatók és helyileg létrehozhat, és egy "hello world" tartós függvény teszteléséhez. Ezután közzéteheti a függvénykódot az Azure-ban. A függvény létrehozása hangolja össze, és kapcsolódik egymáshoz hívások egyéb funkciók.
 
-## <a name="learn-more"></a>Tudnivalók a modellalapú alkalmazások létrehozásáról
+## <a name="learn-more"></a>Részletek
 
 Az alábbi videó kiemeli Durable Functions előnyei:
 

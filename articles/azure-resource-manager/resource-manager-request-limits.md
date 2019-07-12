@@ -4,19 +4,19 @@ description: Ismerteti, hogyan használható az Azure Resource Manager által sz
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 05/14/2019
+ms.date: 07/09/2019
 ms.author: tomfitz
 ms.custom: seodec18
-ms.openlocfilehash: b382b9ae35d492b4c779b8f7ee360fb378d54e08
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 36e881fb9ba3ab81611b94a36ef0beed8748d5b1
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66399717"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67705122"
 ---
 # <a name="throttling-resource-manager-requests"></a>Resource Manager-kérelmek szabályozása
 
-Minden Azure-előfizetés és bérlő erőforrás-kezelő lehetővé teszi, hogy legfeljebb 12 000 olvasási kérelmek száma óránként és 1200 írási kérelmek száma óránként. Ezek a korlátok a kérelmet benyújtó résztvevő-Azonosítót és az előfizetés-azonosító hatóköre, vagy a bérlői azonosító. Ha a kérések érkeznek, az egynél több résztvevő-azonosító, a korlátot, az előfizetés vagy a bérlő között nagyobb, mint 12 000 és 1200 óránként.
+Minden Azure-előfizetés és bérlő erőforrás-kezelő lehetővé teszi, hogy legfeljebb 12 000 olvasási kérelmek száma óránként és 1200 írási kérelmek száma óránként. Ezek a korlátok a rendszerbiztonsági tag (felhasználó vagy alkalmazás) hatóköre lehetővé téve a kéréseket és az előfizetés-azonosító vagy bérlői azonosító. Ha a kérelmek több, mint a rendszerbiztonsági tag származnak, a korlátot, az előfizetés vagy a bérlő között nagyobb, mint 12 000 és 1200 óránként.
 
 Az előfizetés vagy a bérlő kérelmek lépnek. Feliratkozási kérelmeket, amelyekről magában foglalja az előfizetés-Azonosítóját, például lekér az erőforráscsoportok az előfizetés átadása. Bérlő kérelmek nem tartalmaznak, például lekér érvényes Azure-helyen az előfizetés-Azonosítóját.
 

@@ -7,15 +7,15 @@ services: search
 ms.service: search
 ms.devlang: rest-api
 ms.topic: quickstart
-ms.date: 05/16/2019
+ms.date: 07/11/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: b3c5c08e9862d59481573b501045466d6d691a77
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: 015dd3631322978d6416041a3eea8390a72b0c17
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67485508"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67840199"
 ---
 # <a name="quickstart-create-an-azure-search-index-in-postman-using-rest-apis"></a>Gyors útmutató: Azure Search-index létrehozása REST API-k használatával postmanben
 > [!div class="op_single_selector"]
@@ -28,15 +28,17 @@ ms.locfileid: "67485508"
 
 Az egyik legegyszerűbb Fedezze fel a [Azure Search REST API-k](https://docs.microsoft.com/rest/api/searchservice) állítson össze a HTTP-kérelmekre, és vizsgálja meg a válaszok Postman vagy egy másik webes tesztelési eszköz használatával. A megfelelő eszközökkel, ezeket az útmutatásokat követve már azelőtt küldhet kéréseket, és megtekintheti a válaszokat, hogy akár egyetlen sornyi kódot is írna.
 
-Ha nem rendelkezik Azure-előfizetéssel, létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a munka megkezdése előtt, majd [regisztrálhat az Azure Searchre](search-create-service-portal.md).
+Ez a cikk bemutatja, hogyan határozhatja meg interaktív módon kérelmeket. Lehetőségként [töltse le és importálja a Postman-gyűjtemény](https://github.com/Azure-Samples/azure-search-postman-samples/tree/master/Quickstart) előre meghatározott kérelmek használatához.
+
+Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 Ez a rövid útmutató a következő szolgáltatásokat és eszközöket használatosak. 
 
-+ [Az Azure Search szolgáltatás létrehozása](search-create-service-portal.md) vagy [keresse meg a meglévő service](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) az aktuális előfizetésben. Ebben a rövid útmutatóban egy ingyenes szolgáltatás használhatja. 
++ [Postman asztali alkalmazás](https://www.getpostman.com/) az Azure Search kérelmek küldésére szolgál.
 
-+ [Postman asztali alkalmazás](https://www.getpostman.com/) vagy [Telerik Fiddler](https://www.telerik.com/fiddler) az Azure Search kérelmek küldésére szolgál.
++ [Az Azure Search szolgáltatás létrehozása](search-create-service-portal.md) vagy [keresse meg a meglévő service](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) az aktuális előfizetésben. Ebben a rövid útmutatóban egy ingyenes szolgáltatás használhatja. 
 
 ## <a name="get-a-key-and-url"></a>Egy kulcsot és egy URL-cím beszerzése
 
@@ -54,20 +56,20 @@ Minden kérelemhez szükséges halasztása minden kérelemnél a szolgáltatásn
 
 Ebben a szakaszban a webes tetszőleges eszköz használatával állítsa be a kapcsolatot az Azure Search. Mindegyik eszköz megőrzi a munkamenet, ami azt jelenti, csak meg kell adnia az api-kulcs és a Content-Type egyszer fejlécadatait.
 
-Vagy az eszköz, kell választani egy parancsot (GET, POST, PUT és így tovább), adjon meg egy URL-végpontot, és néhány feladatot, adja meg a kérelem törzsében található JSON. Érvényes értéket cserélje le a keresési szolgáltatás neve (a SEARCH-szolgáltatás neve). 
+Vagy az eszköz, kell választani egy parancsot (GET, POST, PUT és így tovább), adjon meg egy URL-végpontot, és néhány feladatot, adja meg a kérelem törzsében található JSON. Érvényes értéket cserélje le a keresési szolgáltatás neve (a SEARCH-szolgáltatás neve). Adjon hozzá `$select=name` visszaadandó csak egyes index nevét. 
 
-    https://<YOUR-SEARCH-SERVICE-NAME>.search.windows.net/indexes?api-version=2019-05-06
+    https://<YOUR-SEARCH-SERVICE-NAME>.search.windows.net/indexes?api-version=2019-05-06&$select=name
 
 Figyelje meg, hogy a HTTPS-előtagot, a szolgáltatás nevét, a-objektum nevét (ebben az esetben az indexek gyűjtemény), és a [api-version](search-api-versions.md). Az api-verzió egy szükséges, a kisbetűs a karakterlánc `?api-version=2019-05-06` az aktuális verzió esetében. API-verziók a rendszeresen frissülnek. Az API-verziót minden kérelemnél adja meg, hogy teljes mértékben szabályozhassa, a rendszer mikor melyik verziót használja.  
 
-Kérelem fejléce tartalomtípusból két elemet, a tartalom típusa, valamint az api-kulcsot az Azure Search hitelesítéséhez használt. Cserélje le a felügyeleti API-kulcs (a-ADMIN-API-kulcsot) egy érvényes értéket. 
+Kérelem fejléce tartalomtípusból két elemet, a tartalom típusa, valamint az api-kulcsot az Azure Search hitelesítéséhez használt. Cserélje le a felügyeleti API-kulcs (YOUR-AZURE-SEARCH-ADMIN-API-KEY) egy érvényes értéket. 
 
-    api-key: <YOUR-ADMIN-API-KEY>
+    api-key: <YOUR-AZURE-SEARCH-ADMIN-API-KEY>
     Content-Type: application/json
 
 A Postman állítson össze egy kérelmet, amely a következő képernyőképhez hasonlóan néz ki. Válasszon **első** parancsot, adja meg az URL-címet, és kattintson a **küldése**. Ezzel a paranccsal összekapcsolja az Azure Search, olvassa az indexek gyűjteményt, és visszaadja a 200-as HTTP-állapotkód: a sikeres kapcsolat. Ha a szolgáltatás már rendelkezik indexekkel, a válasz is index definíciókat tartalmazza.
 
-![Postman-kérelem fejléce][6]
+![Postman-kérelem URL-cím és fejléc](media/search-get-started-postman/postman-url.png "Postman-kérelem URL-CÍMÉT és a fejléc")
 
 ## <a name="1---create-an-index"></a>1 – Index létrehozása
 
@@ -81,11 +83,11 @@ Ehhez a Postman:
 
 2. Másolja be az URL-cím `https://<YOUR-SEARCH-SERVICE-NAME>.search.windows.net/indexes/hotels?api-version=2019-05-06`.
 
-3. Adja meg az index definícióját (lásd alább) a kérés törzsében.
+3. Adja meg az index definícióját (másolási használatra kész kód lejjebb), a kérelem törzsében.
 
 4. Kattintson a **küldése**.
 
-![Postman-kérelem törzse][8]
+![A kérelem törzsében index JSON-dokumentum](media/search-get-started-postman/postman-request.png "kérelem törzsében szereplő Index JSON-dokumentum")
 
 ### <a name="index-definition"></a>Index definíciója
 
@@ -93,23 +95,30 @@ A mezők gyűjteménye határozza meg a dokumentum szerkezete. Mindegyik dokumen
 
 Az egyes mezők attribútumai határozzák meg az engedélyezett műveleteket. A REST API-k alapértelmezés szerint számos műveletet lehetővé tesznek. Például alapértelmezés szerint minden sztring kereshető, lekérdezhető, szűrhető és kategorizálható. Gyakran csak akkor attribútumainak beállítása, amikor szüksége van egy viselkedés kikapcsolásához.
 
-          {
-         "name": "hotels",  
-         "fields": [
-           {"name": "hotelId", "type": "Edm.String", "key":true, "searchable": false},
-           {"name": "baseRate", "type": "Edm.Double"},
-           {"name": "description", "type": "Edm.String", "filterable": false, "sortable": false, "facetable": false},
-           {"name": "description_fr", "type": "Edm.String", "filterable": false, "sortable": false, "facetable": false, "analyzer": "fr.lucene"},
-           {"name": "hotelName", "type": "Edm.String"},
-           {"name": "category", "type": "Edm.String"},
-           {"name": "tags", "type": "Collection(Edm.String)"},
-           {"name": "parkingIncluded", "type": "Edm.Boolean"},
-           {"name": "smokingAllowed", "type": "Edm.Boolean"},
-           {"name": "lastRenovationDate", "type": "Edm.DateTimeOffset"},
-           {"name": "rating", "type": "Edm.Int32"},
-           {"name": "location", "type": "Edm.GeographyPoint"}
-          ]
-         }
+```json
+{
+    "name": "hotels-quickstart",  
+    "fields": [
+        {"name": "HotelId", "type": "Edm.String", "key": true, "filterable": true},
+        {"name": "HotelName", "type": "Edm.String", "searchable": true, "filterable": false, "sortable": true, "facetable": false},
+        {"name": "Description", "type": "Edm.String", "searchable": true, "filterable": false, "sortable": false, "facetable": false, "analyzer": "en.lucene"},
+        {"name": "Category", "type": "Edm.String", "searchable": true, "filterable": true, "sortable": true, "facetable": true},
+        {"name": "Tags", "type": "Collection(Edm.String)", "searchable": true, "filterable": true, "sortable": false, "facetable": true},
+        {"name": "ParkingIncluded", "type": "Edm.Boolean", "filterable": true, "sortable": true, "facetable": true},
+        {"name": "LastRenovationDate", "type": "Edm.DateTimeOffset", "filterable": true, "sortable": true, "facetable": true},
+        {"name": "Rating", "type": "Edm.Double", "filterable": true, "sortable": true, "facetable": true},
+        {"name": "Address", "type": "Edm.ComplexType", 
+        "fields": [
+        {"name": "StreetAddress", "type": "Edm.String", "filterable": false, "sortable": false, "facetable": false, "searchable": true},
+        {"name": "City", "type": "Edm.String", "searchable": true, "filterable": true, "sortable": true, "facetable": true},
+        {"name": "StateProvince", "type": "Edm.String", "searchable": true, "filterable": true, "sortable": true, "facetable": true},
+        {"name": "PostalCode", "type": "Edm.String", "searchable": true, "filterable": true, "sortable": true, "facetable": true},
+        {"name": "Country", "type": "Edm.String", "searchable": true, "filterable": true, "sortable": true, "facetable": true}
+        ]
+     }
+  ]
+}
+```
 
 A kérelem elküldését követően megjelenik a 201-es HTTP-válasz, amely azt jelzi, hogy az index sikeresen létrejött. A műveletet ellenőrizheti a portálon, azonban vegye figyelembe, hogy a portáloldal frissítési időköze miatt esetleg egy-két percet várakoznia kell.
 
@@ -126,82 +135,102 @@ Ehhez a Postman:
 
 1. Cserélje a parancsot a **POST** parancsra.
 
-2. Másolja be az URL-cím `https://<YOUR-SEARCH-SERVICE-NAME>.search.windows.net/indexes/hotels/docs/index?api-version=2019-05-06`.
+2. Másolja be az URL-cím `https://<YOUR-SEARCH-SERVICE-NAME>.search.windows.net/indexes/hotels-quickstart/docs/index?api-version=2019-05-06`.
 
-3. Adja meg a JSON-dokumentumok (lásd alább) a kérés törzsében.
+3. Adja meg a JSON-dokumentumok (a másolási használatra kész kódot alább található) a kérés törzsében.
 
 4. Kattintson a **küldése**.
 
-![Postman-kérelem hasznos adatai][10]
+![A kéréstörzs JSON-dokumentumok](media/search-get-started-postman/postman-docs.png "kéréstörzs JSON-dokumentumok")
 
 ### <a name="json-documents-to-load-into-the-index"></a>JSON-dokumentumok betöltése az indexbe
 
 A kérelem törzse négy, a szállodák indexéhez hozzáadandó dokumentumot tartalmaz.
 
-         {
-         "value": [
-         {
-             "@search.action": "upload",
-             "hotelId": "1",
-             "baseRate": 199.0,
-             "description": "Best hotel in town",
-             "description_fr": "Meilleur hôtel en ville",
-             "hotelName": "Fancy Stay",
-             "category": "Luxury",
-             "tags": ["pool", "view", "wifi", "concierge"],
-             "parkingIncluded": false,
-             "smokingAllowed": false,
-             "lastRenovationDate": "2010-06-27T00:00:00Z",
-             "rating": 5,
-             "location": { "type": "Point", "coordinates": [-122.131577, 47.678581] }
-           },
-           {
-             "@search.action": "upload",
-             "hotelId": "2",
-             "baseRate": 79.99,
-             "description": "Cheapest hotel in town",
-             "description_fr": "Hôtel le moins cher en ville",
-             "hotelName": "Roach Motel",
-             "category": "Budget",
-             "tags": ["motel", "budget"],
-             "parkingIncluded": true,
-             "smokingAllowed": true,
-             "lastRenovationDate": "1982-04-28T00:00:00Z",
-             "rating": 1,
-             "location": { "type": "Point", "coordinates": [-122.131577, 49.678581] }
-           },
-           {
-             "@search.action": "upload",
-             "hotelId": "3",
-             "baseRate": 279.99,
-             "description": "Surprisingly expensive",
-             "hotelName": "Dew Drop Inn",
-             "category": "Bed and Breakfast",
-             "tags": ["charming", "quaint"],
-             "parkingIncluded": true,
-             "smokingAllowed": false,
-             "lastRenovationDate": null,
-             "rating": 4,
-             "location": { "type": "Point", "coordinates": [-122.33207, 47.60621] }
-           },
-           {
-             "@search.action": "upload",
-             "hotelId": "4",
-             "baseRate": 220.00,
-             "description": "This could be the one",
-             "hotelName": "A Hotel for Everyone",
-             "category": "Basic hotel",
-             "tags": ["pool", "wifi"],
-             "parkingIncluded": true,
-             "smokingAllowed": false,
-             "lastRenovationDate": null,
-             "rating": 4,
-             "location": { "type": "Point", "coordinates": [-122.12151, 47.67399] }
-           }
-          ]
-         }
+```json
+{
+    "value": [
+    {
+    "@search.action": "upload",
+    "HotelId": "1",
+    "HotelName": "Secret Point Motel",
+    "Description": "The hotel is ideally located on the main commercial artery of the city in the heart of New York. A few minutes away is Time's Square and the historic centre of the city, as well as other places of interest that make New York one of America's most attractive and cosmopolitan cities.",
+    "Category": "Boutique",
+    "Tags": [ "pool", "air conditioning", "concierge" ],
+    "ParkingIncluded": false,
+    "LastRenovationDate": "1970-01-18T00:00:00Z",
+    "Rating": 3.60,
+    "Address": 
+        {
+        "StreetAddress": "677 5th Ave",
+        "City": "New York",
+        "StateProvince": "NY",
+        "PostalCode": "10022",
+        "Country": "USA"
+        } 
+    },
+    {
+    "@search.action": "upload",
+    "HotelId": "2",
+    "HotelName": "Twin Dome Motel",
+    "Description": "The hotel is situated in a  nineteenth century plaza, which has been expanded and renovated to the highest architectural standards to create a modern, functional and first-class hotel in which art and unique historical elements coexist with the most modern comforts.",
+    "Category": "Boutique",
+    "Tags": [ "pool", "free wifi", "concierge" ],
+    "ParkingIncluded": false,
+    "LastRenovationDate": "1979-02-18T00:00:00Z",
+    "Rating": 3.60,
+    "Address": 
+        {
+        "StreetAddress": "140 University Town Center Dr",
+        "City": "Sarasota",
+        "StateProvince": "FL",
+        "PostalCode": "34243",
+        "Country": "USA"
+        } 
+    },
+    {
+    "@search.action": "upload",
+    "HotelId": "3",
+    "HotelName": "Triple Landscape Hotel",
+    "Description": "The Hotel stands out for its gastronomic excellence under the management of William Dough, who advises on and oversees all of the Hotel’s restaurant services.",
+    "Category": "Resort and Spa",
+    "Tags": [ "air conditioning", "bar", "continental breakfast" ],
+    "ParkingIncluded": true,
+    "LastRenovationDate": "2015-09-20T00:00:00Z",
+    "Rating": 4.80,
+    "Address": 
+        {
+        "StreetAddress": "3393 Peachtree Rd",
+        "City": "Atlanta",
+        "StateProvince": "GA",
+        "PostalCode": "30326",
+        "Country": "USA"
+        } 
+    },
+    {
+    "@search.action": "upload",
+    "HotelId": "4",
+    "HotelName": "Sublime Cliff Hotel",
+    "Description": "Sublime Cliff Hotel is located in the heart of the historic center of Sublime in an extremely vibrant and lively area within short walking distance to the sites and landmarks of the city and is surrounded by the extraordinary beauty of churches, buildings, shops and monuments. Sublime Cliff is part of a lovingly restored 1800 palace.",
+    "Category": "Boutique",
+    "Tags": [ "concierge", "view", "24-hour front desk service" ],
+    "ParkingIncluded": true,
+    "LastRenovationDate": "1960-02-06T00:00:00Z",
+    "Rating": 4.60,
+    "Address": 
+        {
+        "StreetAddress": "7400 San Pedro Ave",
+        "City": "San Antonio",
+        "StateProvince": "TX",
+        "PostalCode": "78216",
+        "Country": "USA"
+        }
+    }
+  ]
+}
+```
 
-Néhány másodperc múlva megjelenik a 200-as HTTP-válasz a munkamenetlistában. Ez azt jelenti, hogy a dokumentumok sikeresen létrejöttek. 
+Néhány másodpercen belül megtekintheti az egy 201-es HTTP-válasz a munkamenetlistában. Ez azt jelenti, hogy a dokumentumok sikeresen létrejöttek. 
 
 Ha a 207-es HTTP-válasz jelenik meg, legalább egy dokumentumot nem sikerült feltölteni. Ha a 404-es válasz jelenik meg, akkor a kérelem fejlécében vagy törzsében szintaktikai hiba van: ellenőrizze, hogy valóban módosította-e a végpontot, hogy tartalmazza a `/docs/index` útvonalat.
 
@@ -213,52 +242,63 @@ Ha a 207-es HTTP-válasz jelenik meg, legalább egy dokumentumot nem sikerült f
 
 Most, hogy az index és a dokumentumok is betöltődtek, számára küldhet lekérdezéseket az őket használó [Search dokumentumok REST API](https://docs.microsoft.com/rest/api/searchservice/search-documents).
 
-Az URL-cím lekérdezési karakterláncot, megadva a következő keresési operátor használatával terjeszteni.
+Az URL-cím eloszlásának, megadva a következő keresési operátor használatával terjeszteni.
 
 Ehhez a Postman:
 
 1. Módosítsa a kívánt műveleteket **első**.
 
-2. Másolja be az URL-cím `https://<YOUR-SEARCH-SERVICE-NAME>.search.windows.net/indexes/hotels/docs?search=motel&$count=true&api-version=2019-05-06`.
+2. Másolja be az URL-cím `https://<YOUR-SEARCH-SERVICE-NAME>.search.windows.net/indexes/hotels-quickstart/docs?search=*&$count=true&api-version=2019-05-06`.
 
 3. Kattintson a **küldése**.
 
-Ez a lekérdezés a „motel” kifejezést keresi, és a találatokban szereplő dokumentumok számát adja vissza. A kérések és válaszok hasonlóan kell kinéznie az alábbi képernyőképen a Postman számára kattintás után **küldése**. Az állapotkódnak 200-nak kell lennie.
+Ez a lekérdezés egy üres, és a dokumentumok számát adja vissza a keresési eredmények között. A kérések és válaszok hasonlóan kell kinéznie az alábbi képernyőképen a Postman számára kattintás után **küldése**. Az állapotkódnak 200-nak kell lennie.
 
- ![Postman-lekérdezés válasza][11]
+ ![A keresési karakterláncot az URL-cím LEKÉRÉSE](media/search-get-started-postman/postman-query.png "a keresési karakterláncot az URL-cím beszerzése")
+
+Próbálja meg néhány további lekérdezést példák betekintést nyerhet a szintaxis. Egy karakterlánc-keresés, szó $filter lekérdezések, az eredménykészletet, az adott mezők, és egyéb a keresés hatóköre korlátozza.
+
+Lapozófájl-kapacitás ki az aktuális URL-cím olyanokra cserélni az alábbi gombra kattintva **küldése** minden alkalommal, amikor az eredmények megtekintéséhez.
+
+```
+# Query example 1 - Search on restaurant and wifi
+# Return only the HotelName, Description, and Tags fields
+https://<YOUR-SEARCH-SERVICE>.search.windows.net/indexes/hotels-quickstart/docs?search=restaurant wifi&$count=true&$select=HotelName,Description,Tags&api-version=2019-05-06
+
+# Query example 2 - Apply a filter to the index to find hotels rated 4 or highter
+# Returns the HotelName and Rating. Two documents match
+https://<YOUR-SEARCH-SERVICE>.search.windows.net/indexes/hotels-quickstart/docs?search=*&$filter=Rating gt 4&$select=HotelName,Rating&api-version=2019-05-06
+
+# Query example 3 - Take the top two results, and show only HotelName and Category in the results
+https://<YOUR-SEARCH-SERVICE>.search.windows.net/indexes/hotels-quickstart/docs?search=boutique&$top=2&$select=HotelName,Category&api-version=2019-05-06
+
+# Query example 4 - Sort by a specific field (Address/City) in ascending order
+https://<YOUR-SEARCH-SERVICE>.search.windows.net/indexes/hotels-quickstart/docs?search=pool&$orderby=Address/City asc&$select=HotelName, Address/City, Tags, Rating&api-version=2019-05-06
+```
 
 ## <a name="get-index-properties"></a>Index tulajdonságainak lekérése
-A rendszer-információk lekérdezésével a dokumentumok számát és a tárhelyhasználatot is lekérheti: `https://<YOUR-SEARCH-SERVICE-NAME>.search.windows.net/indexes/hotels/stats?api-version=2019-05-06`
+Is [statisztika lekérése](https://docs.microsoft.com/rest/api/searchservice/get-index-statistics) , a dokumentumok számát és az indexfrissítési mérete: 
 
-A Postmanben a kérelem az alábbihoz fog hasonlítani, a válaszban pedig szerepleni fog a dokumentumok száma és a felhasznált lemezterület mérete bájtban megadva.
+```
+https://<YOUR-SEARCH-SERVICE-NAME>.search.windows.net/indexes/hotels-quickstart/stats?api-version=2019-05-06`
+```
 
- ![Postman-rendszerlekérdezés][12]
+Hozzáadás `/stats` index tárolt információt adhatja vissza az URL-címre. A Postmanben a kérelem az alábbihoz fog hasonlítani, a válaszban pedig szerepleni fog a dokumentumok száma és a felhasznált lemezterület mérete bájtban megadva.
+
+ ![Index információk](media/search-get-started-postman/postman-system-query.png "index információk lekérése")
 
 Figyelje meg, hogy az api-version szintaxisa eltér. Ebben a kérelemben a `?` karakterrel fűzheti hozzá az api-version paramétert. A `?` elkülöníti a lekérdezési karakterláncot az URL-címet, az & elválasztja az egyes "név = érték" párt a lekérdezési karakterláncban. Ebben a lekérdezésben az api-version az első és egyetlen lekérdezési sztring.
 
-Az API-val kapcsolatos további információkért lásd: [első Index statisztika REST API](https://docs.microsoft.com/rest/api/searchservice/get-index-statistics).
-
 ## <a name="clean-up"></a>A fölöslegessé vált elemek eltávolítása
 
-Ha már nincs szüksége a keresési szolgáltatás, a leggyorsabb kiadási szolgáltatások módja az erőforráscsoport, amely tartalmazza az Azure Search szolgáltatás törlésével. Az erőforráscsoport törlésével véglegesen töröl Mindent, többek között a szolgáltatások és a tárolt tartalmat. A portálon az erőforráscsoport neve az egyes szolgáltatások Áttekintés lapján szerepel.
+Dolgozik, a saját előfizetése, esetén célszerű egy projektet a végén, hogy azonosítani, hogy az erőforrások továbbra is kell-e létrehozott. Erőforrások bal oldali futó is költséget takaríthat meg költséget. Külön-külön törölje az erőforrást, vagy törölje az erőforráscsoportot törli az erőforrások teljes készletében.
+
+Megkeresheti és kezelheti az erőforrásokat a portál használatával a **összes erőforrás** vagy **erőforráscsoportok** hivatkozásra a bal oldali navigációs ablaktáblán.
+
+Ha használ egy ingyenes szolgáltatás, ne feledje, hogy korlátozódnak három indexek, indexelők és adatforrások. A korlátja alatt maradjunk a portál egyes elemeire törölheti. 
 
 ## <a name="next-steps"></a>További lépések
 
-A REST-ügyfelek rendkívül hasznosak a rögtönzött vizsgálatokhoz, most azonban, hogy már ismeri a REST API-k működését, folytathatja a kódolást. A következő lépésekért lásd az alábbi hivatkozásokat:
+A REST-ügyfelek rendkívül hasznosak a rögtönzött vizsgálatokhoz, most azonban, hogy már ismeri a REST API-k működését, folytathatja a kódolást. A következő lépés tekintse meg a következő hivatkozásra:
 
-+ [Rövid útmutató: -Index létrehozása .NET SDK használatával](search-create-index-dotnet.md)
-+ [Rövid útmutató: Hozzon létre az indexekben (REST) PowerShell-lel](search-create-index-rest-api.md)
-
-<!--Image References-->
-[1]: ./media/search-get-started-postman/fiddler-url.png
-[2]: ./media/search-get-started-postman/AzureSearch_Fiddler2_PostDocs.png
-[3]: ./media/search-get-started-postman/AzureSearch_Fiddler3_Query.png
-[4]: ./media/search-get-started-postman/AzureSearch_Fiddler4_QueryResults.png
-[5]: ./media/search-get-started-postman/AzureSearch_Fiddler5_QueryStats.png
-[6]: ./media/search-get-started-postman/postman-url.png
-[7]: ./media/search-get-started-postman/fiddler-request.png
-[8]: ./media/search-get-started-postman/postman-request.png
-[9]: ./media/search-get-started-postman/fiddler-docs.png
-[10]: ./media/search-get-started-postman/postman-docs.png
-[11]: ./media/search-get-started-postman/postman-query.png
-[12]: ./media/search-get-started-postman/postman-system-query.png
++ [Rövid útmutató: -Index létrehozása .NET SDK használatával](search-get-started-dotnet.md)

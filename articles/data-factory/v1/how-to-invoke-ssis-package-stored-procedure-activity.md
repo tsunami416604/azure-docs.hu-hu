@@ -13,12 +13,12 @@ ms.devlang: powershell
 ms.topic: conceptual
 ms.date: 01/19/2018
 ms.author: jingwang
-ms.openlocfilehash: d61874a57801a6c02af885cab6a97ed38da1deb1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 030617d3afd73c68793ca0a1d6185264c92b791f
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66156628"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67839896"
 ---
 # <a name="invoke-an-ssis-package-using-stored-procedure-activity-in-azure-data-factory"></a>Egy tárolt eljárási tevékenység használatával az Azure Data Factory SSIS-csomagok meghívásához
 Ez a cikk bemutatja, hogyan kell elindítani az SSIS-csomag az Azure Data Factory-folyamatot egy tárolt eljárási tevékenység használatával. 
@@ -33,134 +33,6 @@ Ebben a cikkben található útmutatások követéséhez használja az Azure SQL
 
 ### <a name="create-an-azure-ssis-integration-runtime"></a>Azure SSIS integrációs modul létrehozása
 Hozzon létre egy Azure-SSIS integrációs modult, ha még nincs fiókja, a részletes utasításokat a következő a [oktatóanyag: SSIS csomagok üzembe helyezése](../tutorial-create-azure-ssis-runtime-portal.md). Az Azure-SSIS integrációs modul létrehozása a Data Factory 1. verzió nem használható. 
-
-## <a name="azure-portal"></a>Azure Portal
-Ebben a szakaszban, az Azure portal használatával hozzon létre egy Data Factory-folyamatot egy tárolt eljárási tevékenység, amely SSIS-csomag hív meg.
-
-### <a name="create-a-data-factory"></a>Data factory létrehozása
-Első lépés az adat-előállító létrehozása az Azure portal használatával. 
-
-1. Lépjen az [Azure Portalra](https://portal.azure.com). 
-2. Kattintson az **Új** elemre, majd az **Adatok + analitika**, végül a **Data Factory** elemre. 
-   
-   ![New (Új)->DataFactory](./media/how-to-invoke-ssis-package-stored-procedure-activity/new-azure-data-factory-menu.png)
-2. Az **Új adat-előállító** lapon, a **Név** mezőben adja meg a következőt: **ADFTutorialDataFactory**. 
-      
-     ![Új adat-előállító lap](./media/how-to-invoke-ssis-package-stored-procedure-activity/new-azure-data-factory.png)
- 
-   Az Azure data factory nevének **globálisan egyedinek** kell lennie. Ha a Név mezőnél az alábbi hiba jelenik meg, módosítsa az adat-előállító nevét (például a következőre: sajátneveADFTutorialDataFactory). A Data Factory-összetevők elnevezésére vonatkozó részleteket a [Data Factory elnevezési szabályait](data-factory-naming-rules.md) ismertető cikkben találja.
-
-    `Data factory name ADFTutorialDataFactory is not available`
-3. Válassza ki azt az **Azure-előfizetést**, amelyben az adat-előállítót létre szeretné hozni. 
-4. Az **erőforráscsoportban** hajtsa végre a következő lépések egyikét:
-     
-   - Kattintson a **Meglévő használata** elemre, majd a legördülő listából válasszon egy meglévő erőforráscsoportot. 
-   - Kattintson az **Új létrehozása** elemre, és adja meg az erőforráscsoport nevét.   
-         
-     Az erőforráscsoportokkal kapcsolatos információkért tekintse meg a [Using resource groups to manage your Azure resources](../../azure-resource-manager/resource-group-overview.md) (Erőforráscsoportok használata az Azure-erőforrások kezeléséhez) című cikket.  
-4. Válassza ki **V1** számára a **verzió**.
-5. Válassza ki a Data Factory **helyét**. A legördülő listában csak a Data Factory által támogatott helyek jelennek meg. Az adat-előállítók által használt adattárak (Azure Storage, Azure SQL Database stb.) és számítási erőforrások (HDInsight stb.) más helyeken is lehetnek.
-6. Válassza a **Rögzítés az irányítópulton** lehetőséget.     
-7. Kattintson a **Create** (Létrehozás) gombra.
-8. Az irányítópulton a következő állapotleírás látható: **Data factory üzembe helyezése**. 
-
-     ![adat-előállító üzembe helyezése csempe](media//how-to-invoke-ssis-package-stored-procedure-activity/deploying-data-factory.png)
-9. A létrehozás befejezése után a **Data Factory** lap a képen látható módon jelenik meg.
-   
-     ![Data factory kezdőlap](./media/how-to-invoke-ssis-package-stored-procedure-activity/data-factory-home-page.png)
-10. Kattintson a **készítése és üzembe helyezése** csempére kattintva indítsa el a Data Factory Editor.
-
-    ![A Data Factory szerkesztője](./media/how-to-invoke-ssis-package-stored-procedure-activity/data-factory-editor.png)
-
-### <a name="create-an-azure-sql-database-linked-service"></a>Azure SQL Database-beli társított szolgáltatás létrehozása
-Hozzon létre egy társított szolgáltatást, az Azure SQL-adatbázis üzemeltető az SSIS-katalógus a data factoryjához. A Data Factory információkat használja ezt a társított szolgáltatást az SSISDB-adatbázishoz való csatlakozáshoz, és végrehajt egy tárolt eljárást az SSIS-csomag futtatásához. 
-
-1. A Data Factory Editorban kattintson **új adattároló** a menüben, majd kattintson a **Azure SQL Database**. 
-
-    ![Új adattároló -> Azure SQL Database](./media/how-to-invoke-ssis-package-stored-procedure-activity/new-azure-sql-database-linked-service-menu.png)
-2. A jobb oldali ablaktáblán tegye a következőket:
-
-    1. Cserélje le `<servername>` az Azure SQL server nevével. 
-    2. Cserélje le `<databasename>` a **SSISDB** (az SSIS katalógus-adatbázis neve). 
-    3. Cserélje le `<username@servername>` a felhasználó, aki hozzáfér az Azure SQL server nevével. 
-    4. Cserélje le `<password>` az a felhasználó jelszava. 
-    5. A társított szolgáltatás üzembe helyezéséhez kattintson a **telepítés** gombra az eszköztáron. 
-
-        ![Azure SQL Database társított szolgáltatás](./media/how-to-invoke-ssis-package-stored-procedure-activity/azure-sql-database-linked-service-definition.png)
-
-### <a name="create-a-dummy-dataset-for-output"></a>Helyőrző kimeneti adatkészlet létrehozása
-A kimeneti adatkészlet egy helyőrző adatkészletet, amely a folyamat ütemezését. Figyelje meg, hogy a frequency értéke Hour és interval értéke 1. Ezért a folyamat fut, miután egy órán belül a folyamat kezdési és befejezési időpontja. 
-
-1. Kattintson a bal oldali panelen, a Data Factory Editor **... További** -> **új adatkészlet** -> **Azure SQL**.
-
-    ![Több -> Új adatkészlet](./media/how-to-invoke-ssis-package-stored-procedure-activity/new-dataset-menu.png)
-2. Másolja a következő JSON-kódrészletre a JSON-szerkesztőt, a jobb oldali ablaktáblán. 
-    
-    ```json
-    {
-        "name": "sprocsampleout",
-        "properties": {
-            "type": "AzureSqlTable",
-            "linkedServiceName": "AzureSqlLinkedService",
-            "typeProperties": { },
-            "availability": {
-                "frequency": "Hour",
-                "interval": 1
-            }
-        }
-    }
-    ```
-3. Kattintson az eszköztár **Üzembe helyezés** gombjára. Ez a művelet telepíti az adatkészlet az Azure Data Factory szolgáltatásban. 
-
-### <a name="create-a-pipeline-with-stored-procedure-activity"></a>Tárolt eljárási tevékenység rendelkező folyamat létrehozása 
-Ebben a lépésben létrehoz egy folyamatot egy tárolt eljárási tevékenység a. A tevékenység futtatása az SSIS-csomag sp_executesql tárolt eljárást hív meg. 
-
-1. A bal oldali ablaktáblán kattintson a **... Továbbiak**, majd az **Új adatcsatorna** elemre.
-2. Másolja a következő JSON-kódrészletre a JSON-szerkesztőbe: 
-
-    > [!IMPORTANT]
-    > Cserélje le &lt;mappanevet&gt;, &lt;projektnév&gt;, &lt;csomagnév&gt; nevű mappa, projektek és az SSIS-katalógus a fájl mentése előtt a csomagot.
-
-    ```json
-    {
-        "name": "MyPipeline",
-        "properties": {
-            "activities": [{
-                "name": "SprocActivitySample",
-                "type": "SqlServerStoredProcedure",
-                "typeProperties": {
-                    "storedProcedureName": "sp_executesql",
-                    "storedProcedureParameters": {
-                        "stmt": "DECLARE @return_value INT, @exe_id BIGINT, @err_msg NVARCHAR(150)    EXEC @return_value=[SSISDB].[catalog].[create_execution] @folder_name=N'<folder name>', @project_name=N'<project name>', @package_name=N'<package name>', @use32bitruntime=0, @runinscaleout=1, @useanyworker=1, @execution_id=@exe_id OUTPUT    EXEC [SSISDB].[catalog].[set_execution_parameter_value] @exe_id, @object_type=50, @parameter_name=N'SYNCHRONIZED', @parameter_value=1    EXEC [SSISDB].[catalog].[start_execution] @execution_id=@exe_id, @retry_count=0    IF(SELECT [status] FROM [SSISDB].[catalog].[executions] WHERE execution_id=@exe_id)<>7 BEGIN SET @err_msg=N'Your package execution did not succeed for execution ID: ' + CAST(@exe_id AS NVARCHAR(20)) RAISERROR(@err_msg,15,1) END"
-                    }
-                },
-                "outputs": [{
-                    "name": "sprocsampleout"
-                }],
-                "scheduler": {
-                    "frequency": "Hour",
-                    "interval": 1
-                }
-            }],
-            "start": "2018-01-19T00:00:00Z",
-            "end": "2018-01-19T05:00:00Z",
-            "isPaused": false
-        }
-    }    
-    ```
-3. Kattintson az eszköztár **Üzembe helyezés** gombjára. Ez a művelet telepíti a folyamat az Azure Data Factory szolgáltatásban. 
-
-### <a name="monitor-the-pipeline-run"></a>A folyamat futásának monitorozása
-A kimeneti adatkészlet az ütemezés szerint óránként van meghatározva. A folyamat befejezési idő a kezdési időpontból öt órát jelent. Ezért öt folyamatfuttatást láthatja. 
-
-1. Zárja be a szerkesztő windows, úgy, hogy az adat-előállító kezdőlapjának megnyitásához. Kattintson a **Monitor & Manage** csempére. 
-
-    ![Diagram csempe](./media/how-to-invoke-ssis-package-stored-procedure-activity/monitor-manage-tile.png)
-2. Frissítés a **kezdési idő** és **befejezési idő** , **2018-01-18-ra 08:30-kor** és **2018-01-20 08:30-kor**, és kattintson a **Alkalmaz**. Megtekintheti a **tevékenységablakok** a folyamat futásához társított. 
-
-    ![Tevékenységablakok](./media/how-to-invoke-ssis-package-stored-procedure-activity/activity-windows.png)
-
-Folyamatok figyelésével kapcsolatos további információkért lásd: [figyelése és kezelése az Azure Data Factory-folyamatok a megfigyelési és felügyeleti alkalmazás használatával](data-factory-monitor-manage-app.md).
 
 ## <a name="azure-powershell"></a>Azure PowerShell
 Ebben a szakaszban az Azure PowerShell használatával hozzon létre egy Data Factory-folyamatot egy tárolt eljárási tevékenység, amely SSIS-csomag hív meg.

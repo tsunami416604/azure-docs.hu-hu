@@ -7,12 +7,12 @@ ms.date: 04/01/2019
 ms.topic: conceptual
 ms.service: resource-graph
 manager: carmonm
-ms.openlocfilehash: 9accdc19062cba7bb313afac3da056798c325a4c
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: d04f46dbc60a7242e44d76915e15281cc6248d20
+ms.sourcegitcommit: 1572b615c8f863be4986c23ea2ff7642b02bc605
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67274414"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67786534"
 ---
 # <a name="working-with-large-azure-resource-data-sets"></a>Azure-erőforrások nagy adatkészletek használata
 
@@ -82,7 +82,7 @@ Search-AzGraph -Query "project id, name | order by id asc" -First 1000 -Skip 300
 > [!IMPORTANT]
 > A lekérdezés kell **projekt** a **azonosító** ahhoz, hogy működjön tördelés mezőt. Hiányzik a lekérdezésből, ha a válasz nem tartalmazza a **$skipToken**.
 
-Egy vonatkozó példáért lásd: [következő lap lekérdezés](/rest/api/azureresourcegraph/resources/resources#next_page_query) a REST API-dokumentumokhoz.
+Egy vonatkozó példáért lásd: [következő lap lekérdezés](/rest/api/azureresourcegraph/resources/resources#next-page-query) a REST API-dokumentumokhoz.
 
 ## <a name="next-steps"></a>További lépések
 

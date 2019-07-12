@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 00147002317f15345f01c88e81973837d16e6669
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8eedea2e867dd2a5e2d9cf7e92f47c007bc48af1
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65797612"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67707090"
 ---
 # <a name="common-issues-and-resolutions-for-azure-iot-edge"></a>Az Azure IoT Edge gyakori problémái és azok megoldásai
 
@@ -343,6 +343,8 @@ Error: Time:Thu Jun  4 19:44:58 2018 File:/usr/sdk/src/c/provisioning_client/ada
 Az IoT Edge-démon érvényesíti a folyamat azonosítóját összes modult a biztonsági okokból edgeHub csatlakozik. Ellenőrzi, hogy egy modul által küldött összes üzenet származik-e a fő a modul Folyamatazonosítója. Egy üzenet egy másik folyamat azonosítója, mint az eredetileg létrehozott a modul által küldött, ha azt az üzenetet a 404-es hibaüzenettel elutasítja.
 
 ### <a name="resolution"></a>Megoldás:
+Kezdődően 1.0.7 verzió a modul az összes folyamat jogosult csatlakozni. Ha 1.0.7 frissítése nem lehetséges, kövesse az alábbi lépéseket. További információkért lásd: a [1.0.7 kiadási változásnaplójában](https://github.com/Azure/iotedge/blob/master/CHANGELOG.md#iotedged-1).
+
 Győződjön meg arról, hogy az azonos Folyamatazonosító mindig használják az egyéni IoT Edge-modul üzeneteket küldeni a edgeHub. Például, ügyeljen arra, hogy `ENTRYPOINT` helyett `CMD` parancsot a Docker-fájlban, mivel `CMD` eredményezi egy folyamat. a modul és a bash-parancs a fő program fut, mivel egy másik folyamat azonosító `ENTRYPOINT` lesz egy egyetlen folyamat azonosítója.
 
 
@@ -380,7 +382,7 @@ A fenti példában a DNS-kiszolgáló egy nyilvánosan elérhető-e DNS-szolgál
 
 Hely `daemon.json` a platformnak megfelelő helyen: 
 
-| Platform | Location egység |
+| Platform | Location |
 | --------- | -------- |
 | Linux | `/etc/docker` |
 | Windows-gazdagépen a Windows-tárolókkal | `C:\ProgramData\iotedge-moby\config` |

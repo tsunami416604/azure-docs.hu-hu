@@ -9,12 +9,12 @@ manager: kfile
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/29/2017
-ms.openlocfilehash: abb2a89f41340e8e2e26fa36cc20b790341618d0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f24ad348c681609392f83af894bf774dbee226bc
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60763228"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67620839"
 ---
 # <a name="real-time-twitter-sentiment-analysis-in-azure-stream-analytics"></a>Valós idejű Twitter-vélemények elemzése az Azure Stream Analytics szolgáltatásban
 
@@ -232,9 +232,9 @@ Most, hogy a tweet események vannak twitteren valós idejű streamelési, áll�
 
 ## <a name="specify-the-job-query"></a>Adja meg a feladat-lekérdezés
 
-Stream Analytics egy egyszerű, deklaratív lekérdezési modellel, átalakítások leíró támogatja. A nyelv kapcsolatos további információkért tekintse meg a [Azure Stream Analytics lekérdezési nyelv leírása](https://msdn.microsoft.com/library/azure/dn834998.aspx).  Ez az oktatóanyag segítséget nyújt a hozhat létre, és a Twitter-adatok felett több lekérdezés teszteléséhez.
+Stream Analytics egy egyszerű, deklaratív lekérdezési modellel, átalakítások leíró támogatja. A nyelv kapcsolatos további információkért tekintse meg a [Azure Stream Analytics lekérdezési nyelv leírása](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference).  Ez az oktatóanyag segítséget nyújt a hozhat létre, és a Twitter-adatok felett több lekérdezés teszteléséhez.
 
-Hasonlítsa össze a témakörök közötti említései számát, használhatja a [Átfedésmentes ablak](https://msdn.microsoft.com/library/azure/dn835055.aspx) említései száma beszerezni a témakör öt másodpercenként.
+Hasonlítsa össze a témakörök közötti említései számát, használhatja a [Átfedésmentes ablak](https://docs.microsoft.com/stream-analytics-query/tumbling-window-azure-stream-analytics) említései száma beszerezni a témakör öt másodpercenként.
 
 1. Zárja be a **bemenetek** panelen, ha még nem tette.
 
@@ -266,7 +266,7 @@ Hasonlítsa össze a témakörök közötti említései számát, használhatja 
 
     Ha nem a `TwitterStream` a bemeneti alias, helyettesítse be az aliast a `TwitterStream` a lekérdezésben.  
 
-    Ez a lekérdezés használ a **TIMESTAMP BY** kulcsszó használatával adjon meg egy időbélyegmezőt a hasznos adatok használhatók a historikus számítás. Ha ez a mező nincs megadva, akkor a leképezési művelet az eseményközpontból érkező minden esemény ideje szerint történik. További információ a "Érkezési ideje és kérelem ideje" szakaszában [Stream Analytics lekérdezési leírása](https://msdn.microsoft.com/library/azure/dn834998.aspx).
+    Ez a lekérdezés használ a **TIMESTAMP BY** kulcsszó használatával adjon meg egy időbélyegmezőt a hasznos adatok használhatók a historikus számítás. Ha ez a mező nincs megadva, akkor a leképezési művelet az eseményközpontból érkező minden esemény ideje szerint történik. További információ a "Érkezési ideje és kérelem ideje" szakaszában [Stream Analytics lekérdezési leírása](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference).
 
     Ez a lekérdezés is hozzáfér minden időszak végén az időbélyeg használatával a **System.Timestamp** tulajdonság.
 
@@ -348,7 +348,7 @@ Egy hasonló eszközzel [Azure Storage Explorer](https://storageexplorer.com/) v
 
 ## <a name="create-another-query-to-identify-trending-topics"></a>Hozzon létre egy másik lekérdezést Népszerű-témakörök azonosításához
 
-Egy másik lekérdezés segítségével megismerheti a Twitter-vélemények alapján egy [késleltetett ablak](https://msdn.microsoft.com/library/azure/dn835051.aspx). Népszerű-témakörök azonosításához, akkor tekintse meg az témakörök, amelyek egy küszöbértéket egy adott időn belül említései adatbázisközi.
+Egy másik lekérdezés segítségével megismerheti a Twitter-vélemények alapján egy [késleltetett ablak](https://docs.microsoft.com/stream-analytics-query/sliding-window-azure-stream-analytics). Népszerű-témakörök azonosításához, akkor tekintse meg az témakörök, amelyek egy küszöbértéket egy adott időn belül említései adatbázisközi.
 
 Ez az oktatóanyag az alkalmazásában akkor ellenőrizze témakörök, amelyek az elmúlt 5 másodperc alatt több mint 20 alkalommal szerepelnek.
 
@@ -379,5 +379,5 @@ További segítségre van szüksége, próbálja meg [Azure Stream Analytics-fó
 * [Az Azure Stream Analytics bemutatása](stream-analytics-introduction.md)
 * [Get started using Azure Stream Analytics](stream-analytics-real-time-fraud-detection.md) (Bevezetés az Azure Stream Analytics használatába)
 * [Scale Azure Stream Analytics jobs](stream-analytics-scale-jobs.md) (Azure Stream Analytics-feladatok méretezése)
-* [Azure Stream Analytics Query Language Reference](https://msdn.microsoft.com/library/azure/dn834998.aspx) (Referencia az Azure Stream Analytics lekérdezési nyelvhez)
+* [Azure Stream Analytics Query Language Reference](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference) (Referencia az Azure Stream Analytics lekérdezési nyelvhez)
 * [Az Azure Stream Analytics felügyeleti REST API referenciája](https://msdn.microsoft.com/library/azure/dn835031.aspx)

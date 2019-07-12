@@ -5,7 +5,7 @@ keywords: Távoli asztali hiba, a távoli asztali kapcsolat hiba, nem lehet csat
 services: virtual-machines-windows
 documentationcenter: ''
 author: genlin
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: top-support-issue,azure-service-management,azure-resource-manager
 ms.assetid: 5feb1d64-ee6f-4907-949a-a7cffcbc6153
@@ -16,12 +16,12 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: f4d733e29d2ba8213e1832f2c604b726283ab3e1
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: ea8a2fa3a37815f3a7a48078e408e6607dc37eb4
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60318697"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67709282"
 ---
 # <a name="troubleshooting-specific-rdp-error-messages-to-a-windows-vm-in-azure"></a>Adott Azure-beli Windows virtuális gép RDP-hibaüzenetek elhárítása
 Egy adott hibaüzenet jelenhet meg az Azure-beli Windows virtuális gépek (VM) a távoli asztali kapcsolat használata esetén. Ez a cikk a Gyakori hibaüzenetek észlelt, és a hibaelhárítási lépéseket a problémák megoldásához némelyike részletezi. Ha problémái vannak a virtuális Géphez csatlakozni RDP-vel de ne nem egy adott hibaüzenetet kapja, lásd: a [hibaelhárítási útmutató a távoli asztal](troubleshoot-rdp-connection.md).
@@ -37,7 +37,7 @@ Információ a konkrét hibaüzeneteket tekintse meg a következőket:
 <a id="rdplicense"></a>
 
 ## <a name="the-remote-session-was-disconnected-because-there-are-no-remote-desktop-license-servers-available-to-provide-a-license"></a>A távoli munkamenet meg lett szakítva, mert nem találhatók távoli asztali licenckiszolgáló kiszolgálók, amely licencet biztosíthatna érhető el.
-OK: Lejárt a 120 napos türelmi időszak a távoli asztal kiszolgálói szerepkör és a licencek telepítenie kell.
+Ok: Lejárt a 120 napos türelmi időszak a távoli asztal kiszolgálói szerepkör és a licencek telepítenie kell.
 
 Áthidaló megoldásként mentse az RDP-fájl helyi másolatát a portálról, és futtassa a következő parancsot a PowerShell-parancssorba való csatlakozáshoz. Ebben a lépésben letiltja, hogy a kapcsolat csak licencelési:
 
@@ -50,7 +50,7 @@ További információkért tekintse meg a következő blogbejegyzésben: [Azure 
 <a id="rdpname"></a>
 
 ## <a name="remote-desktop-cant-find-the-computer-name"></a>Távoli asztal nem találja a "name" számítógépen.
-OK: A számítógép a távoli asztali ügyfél beállításait, az RDP-fájlt a számítógép neve nem oldható fel.
+Ok: A számítógép a távoli asztali ügyfél beállításait, az RDP-fájlt a számítógép neve nem oldható fel.
 
 Lehetséges megoldások:
 
@@ -68,7 +68,7 @@ A cím része az RDP-fájl tartalmaz:
 <a id="rdpauth"></a>
 
 ## <a name="an-authentication-error-has-occurred-the-local-security-authority-cannot-be-contacted"></a>Hitelesítési hiba történt. Nem lehet kapcsolódni a helyi biztonsági szervezet.
-OK: A cél virtuális gép nem található a biztonsági szervezettől a felhasználó hitelesítő adatait részét.
+Ok: A cél virtuális gép nem található a biztonsági szervezettől a felhasználó hitelesítő adatait részét.
 
 Ha a felhasználónév neve a *SecurityAuthority*\\*felhasználónév* (Példa: A corp\felhasználó1), a *SecurityAuthority* rész nem a virtuális gép számítógép nevét (a helyi biztonsági szervezettől) vagy egy Active Directory-tartomány nevét.
 
@@ -81,7 +81,7 @@ Lehetséges megoldások:
 <a id="wincred"></a>
 
 ## <a name="windows-security-error-your-credentials-did-not-work"></a>Windows biztonsági hiba: Nem működött a hitelesítő adatait.
-OK: A céloldali virtuális Gépet nem lehet érvényesíteni a fiók nevét és jelszavát.
+Ok: A céloldali virtuális Gépet nem lehet érvényesíteni a fiók nevét és jelszavát.
 
 A Windows-alapú számítógépek ellenőrizheti a helyi vagy tartományi fiók hitelesítő adatait.
 
@@ -99,7 +99,7 @@ Ha a helyi rendszergazdai fiók jelszavát módosítani szeretné, tekintse meg 
 <a id="rdpconnect"></a>
 
 ## <a name="this-computer-cant-connect-to-the-remote-computer"></a>Ez a számítógép nem tud kapcsolódni a távoli számítógépen.
-OK: Való csatlakozáshoz használt fiók nem rendelkezik távoli asztali bejelentkezési jogokkal.
+Ok: Való csatlakozáshoz használt fiók nem rendelkezik távoli asztali bejelentkezési jogokkal.
 
 Minden Windows-számítógép, távoli asztali felhasználók helyi csoport, amely tartalmazza a fiókokat és csoportokat, hogy be tud jelentkezni, távolról. A helyi Rendszergazdák csoport tagjai is rendelkezik hozzáféréssel, annak ellenére, hogy azok a fiókok nem jelennek meg a felhasználók a távoli asztal helyi csoport. A tartományhoz csatlakoztatott gépek esetében a helyi Rendszergazdák csoport a tartomány a tartományi rendszergazdák is tartalmaz.
 

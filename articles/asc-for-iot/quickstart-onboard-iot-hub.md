@@ -2,24 +2,25 @@
 title: IoT-szolgáltatás IoT Hub előzetes verzióban érhető el az Azure Security Center |} A Microsoft Docs
 description: Ismerje meg, hogyan engedélyezhető az Azure Security Center az IoT hub IoT-szolgáltatás.
 services: asc-for-iot
-ms.service: ascforiot
+ms.service: asc-for-iot
 documentationcenter: na
 author: mlottner
 manager: rkarlin
 editor: ''
 ms.assetid: 670e6d2b-e168-4b14-a9bf-51a33c2a9aad
+ms.subservice: asc-for-iot
 ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/16/2019
 ms.author: mlottner
-ms.openlocfilehash: 7030ae1c3a28cdd74671dc95dce59cf86cacf4c9
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: f81fb7aeed1b704ebdd82c1f5b83c33a4b05e9ca
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65786157"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67618008"
 ---
 # <a name="quickstart-enable-service-in-iot-hub"></a>Gyors útmutató: Az IoT Hub szolgáltatás engedélyezése
 

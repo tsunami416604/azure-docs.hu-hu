@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 03/14/2018
 ms.author: raynew
-ms.openlocfilehash: d850cb222b0028f862cdba302140ce12af8576db
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 913140a51603429e003f04f860bca9b4ddb1c214
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66492746"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67704885"
 ---
 # <a name="manage-and-monitor-backed-up-sql-server-databases"></a>Kezelése és figyelése biztonsági mentés az SQL Server-adatbázisok
 
@@ -145,7 +145,7 @@ SQL Server-példány regisztrációját a védelem letiltása után, de a tárol
 
 Egyes esetekben a számítási feladatok futtatására szolgáló bővítmény a virtuális gép több okból, vagy a másik előfordulhat, hogy első negatív. Ezekben az esetekben a virtuális gép által aktivált összes művelet megkezdődik, sikertelen lesz. Ezután szükség lehet újraregisztrálni a bővítményt a virtuális gépen. **Regisztrálja újra az** művelet újratelepíti a számítási feladatok biztonsági mentési bővítményt a virtuális gép számára is megfelelően működjön.  <br>
 
-Használja ezt a beállítást körültekintéssel; javasolt létrehozzon egy virtuális gépen már megfelelő kiterjesztéssel együtt, ez a művelet hatására a bővítmény beszerzése indítani. Emiatt előfordulhat, hogy az összes folyamatban lévő feladat sikertelen. Egy vagy több, jelölje a [tünetek](backup-sql-server-azure-troubleshoot.md#symptoms) a regisztrálja újra a művelet elindítása előtt.
+Használja ezt a beállítást körültekintéssel; javasolt létrehozzon egy virtuális gépen már megfelelő kiterjesztéssel együtt, ez a művelet hatására a bővítmény beszerzése indítani. Emiatt előfordulhat, hogy az összes folyamatban lévő feladat sikertelen. Egy vagy több, jelölje a [tünetek](backup-sql-server-azure-troubleshoot.md#re-registration-failures) a regisztrálja újra a művelet elindítása előtt.
 
 ## <a name="next-steps"></a>További lépések
 

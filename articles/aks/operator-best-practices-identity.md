@@ -2,17 +2,17 @@
 title: Ajánlott eljárások operátor - identitás az Azure Kubernetes-szolgáltatások (AKS)
 description: Ismerje meg a fürt operátor gyakorlati tanácsok a hogyan kezelheti a hitelesítési és engedélyezési fürtök az Azure Kubernetes Service (AKS)
 services: container-service
-author: iainfoulds
+author: mlearned
 ms.service: container-service
 ms.topic: conceptual
 ms.date: 04/24/2019
-ms.author: iainfou
-ms.openlocfilehash: f98e38556458b8d8a675d1e3f985aacfca022082
-ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
+ms.author: mlearned
+ms.openlocfilehash: 82bf59dddeecab0addf00a935f55be8d1d7952d3
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "65074160"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67614782"
 ---
 # <a name="best-practices-for-authentication-and-authorization-in-azure-kubernetes-service-aks"></a>Hitelesítés és engedélyezés az Azure Kubernetes Service (AKS) ajánlott eljárásai
 
@@ -48,7 +48,7 @@ Az Azure AD használó egy AKS-fürt létrehozása: [integrálása az Azure Acti
 
 **Ajánlott eljárásokkal kapcsolatos útmutatás** -használata Kubernetes rbac-t a fürt erőforrásaihoz, felhasználók vagy csoportok engedélyeinek megadásához. Hozzon létre a szerepkörök és a kötéseket, hogy a lehető legkevesebb szükséges engedélyek hozzárendelése. Az Azure AD integrálása a felhasználói állapot vagy a csoporttagság bármilyen módosítása automatikusan frissül, és fürt-erőforrásokhoz való hozzáférés jelenlegi.
 
-A Kubernetes szabályozhatja a hozzáférést a fürtben lévő erőforrásokat biztosíthat. Engedélyek a fürt szintjén, vagy az alkalmazásspecifikus névtereket lehet definiálni. Megadhatja, milyen erőforrások is kezelhetők, és milyen engedélyekkel. Ezek a szerepkörök felelnek a alkalmazott felhasználókhoz vagy csoportokhoz a kötés. További információ *szerepkörök*, *ClusterRoles*, és *kötések*, lásd: [hozzáférési és azonosító beállításai az Azure Kubernetes Service (AKS)] [aks-concepts-identity].
+A Kubernetes szabályozhatja a hozzáférést a fürtben lévő erőforrásokat biztosíthat. Engedélyek a fürt szintjén, vagy az alkalmazásspecifikus névtereket lehet definiálni. Megadhatja, milyen erőforrások is kezelhetők, és milyen engedélyekkel. Ezek a szerepkörök felelnek a alkalmazott felhasználókhoz vagy csoportokhoz a kötés. További információ *szerepkörök*, *ClusterRoles*, és *kötések*, lásd: [hozzáférési és azonosító beállításai az Azure Kubernetes Service (AKS)][aks-concepts-identity].
 
 Például, létrehozhat egy szerepkör, amely teljes hozzáférést biztosít az erőforrásokhoz nevű névtér *pénzügyi alkalmazások*, ahogyan az a következő példa YAML jegyzékfájl:
 
@@ -84,7 +84,7 @@ roleRef:
 
 Amikor *developer1\@contoso.com* hitelesítése szemben az AKS-fürtöt, az erőforrásokhoz való teljes körű engedélyekkel rendelkeznek a *pénzügyi alkalmazások* névtér. Ez egyébként logikailag elkülönítve, és a vezérlő elérhető erőforrások. Kubernetes RBAC az Azure-ral összefüggésben használandó AD-integráció, az előző szakaszban leírt módon.
 
-RBAC segítségével Kubernetes-erőforrásokhoz való hozzáférés szabályozása Azure AD-csoportok használatával, olvassa el [szerepköralapú hozzáférés-vezérlés és az Azure Active Directory-identitásokkal használata az aks-ben fürt erőforrásokhoz való hozzáférésének] [ azure-ad-rbac].
+RBAC segítségével Kubernetes-erőforrásokhoz való hozzáférés szabályozása Azure AD-csoportok használatával, olvassa el [szerepköralapú hozzáférés-vezérlés és az Azure Active Directory-identitásokkal használata az aks-ben fürt erőforrásokhoz való hozzáférésének][azure-ad-rbac].
 
 ## <a name="use-pod-identities"></a>Használja a pod-identitások
 

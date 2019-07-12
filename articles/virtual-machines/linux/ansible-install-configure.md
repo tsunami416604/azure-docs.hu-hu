@@ -5,15 +5,15 @@ keywords: ansible, azure, devops, bash, cloudshell, forgatókönyv, bash
 ms.topic: quickstart
 ms.service: ansible
 author: tomarchermsft
-manager: jeconnoc
+manager: gwallace
 ms.author: tarcher
 ms.date: 04/30/2019
-ms.openlocfilehash: 60cefe24feab9de4262e81eb1bc313aeadc7eb05
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.openlocfilehash: d3302d999dd70a83be18ce610b9c3d44992c865c
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65409252"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67671831"
 ---
 # <a name="quickstart-install-ansible-on-linux-virtual-machines-in-azure"></a>Gyors útmutató: Az Azure-beli Linuxos virtuális gépeken az Ansible telepítése
 
@@ -155,7 +155,7 @@ Ebben a szakaszban exportálja a szolgáltatás hitelesítő adatait az Ansible 
     export AZURE_TENANT=<security-principal-tenant>
     ```
 
-## <a name="verify-the-configuration"></a>Ellenőrizze
+## <a name="verify-the-configuration"></a>A konfiguráció ellenőrzése
 
 A sikeres konfigurációjának ellenőrzéséhez az Ansible használatával hozzon létre egy Azure-erőforráscsoportot.
 

@@ -13,12 +13,12 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 06/19/2019
 ms.author: juliako
-ms.openlocfilehash: f26467a250314fa8a6fe401f4ec1d6a999b6bb4d
-ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
+ms.openlocfilehash: a951ebd46335ad4639b8499283ddd30f13edd64e
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67296212"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67605654"
 ---
 # <a name="live-events-and-live-outputs"></a>Élő események és élő kimenetek
 
@@ -142,7 +142,7 @@ Kreatív vagy nem kreatív URL-címeket is használhat.
 
 ## <a name="live-event-preview-url"></a>Élő esemény előnézeti URL-címe
 
-Miután a **élő esemény** fogadása a csatorna közreműködői elindul, használhatja az előzetes verziójú végpont és ellenőrzéséhez, hogy azért küldtük Önnek, az élő stream további közzététele előtt. Miután ellenőrizte, hogy az előzetes verzió adatfolyam jó, használhatja, hogy az élő stream kézbesítési egy vagy több (előre létrehozott) keresztül érhető el az élő esemény **adatfolyam-továbbítási végpontok**. Ennek érdekében a, hozzon létre egy új [élő kimeneti](https://docs.microsoft.com/rest/api/media/liveoutputs) a a **élő esemény**. 
+Után az élő esemény elkezdi fogadni a hírcsatorna a hozzájárulást, használhatja az előzetes verziójú végpont és ellenőrzéséhez, hogy azért küldtük Önnek, az élő stream további közzététele előtt. Miután ellenőrizte, hogy az előzetes verzió adatfolyam jó, az élő esemény segítségével elérhetővé tenni az élő stream a kézbesítési egy vagy több (előre létrehozott) Streaming-végpontokon keresztül. Ennek érdekében a, hozzon létre egy új [élő kimeneti](https://docs.microsoft.com/rest/api/media/liveoutputs) az élő esemény. 
 
 > [!IMPORTANT]
 > Győződjön meg arról, hogy a videó áramlik az előnézeti URL-címet a folytatás előtt!
@@ -158,11 +158,11 @@ Miután a stream az élő esemény beérkeznek, megkezdése a streamelési esem�
 > [!NOTE]
 > Létrehozás kimenetek start Live, és állítsa le a törlésekor. Az élő kimeneti törlésekor nem törlünk az alapul szolgáló eszköz és az eszköz tartalmát. 
 
-Közötti kapcsolat egy **élő esemény** és a hozzá tartozó **élő kimenetek** van hagyományos televíziós adás, amellyel egy csatornát (**élő esemény**) állandó jelöli Stream-videó és a egy felvételt (**élő kimeneti**) egy adott időpont szegmens (például esténként hírek a 18:30:00, 7:00 és 18) hatókörét. A televíziós adások egy digitális videórögzítővel (DVR) rögzíthetők – az élő eseményekben az ezzel egyenértékű funkciót az **ArchiveWindowLength** tulajdonság szabályozza. Egy ISO-8601 timespan időtartam (például PTHH:MM:SS), amely meghatározza a DVR kapacitását, és legfeljebb 25 óra legalább 3 percig állítható be.
+Közötti kapcsolat egy **élő esemény** és a hozzá tartozó **élő kimenetek** hasonlít a hagyományos televíziós szórás számára, amellyel egy csatornát (élő esemény) jelöli egy állandó videó és a egy felvételt (élő adatfolyam Kimeneti) egy adott időpont szegmens (például esténként hírek a 18:30:00, 7:00 és 18) hatókörét. Rögzítheti a televízió digitális videót rögzítő (DVR) használatával – az ennek megfelelő szolgáltatást, az élő események keresztül kezeli a **archiveWindowLength** tulajdonság. Egy ISO-8601 timespan időtartam (például PTHH:MM:SS), amely meghatározza a DVR kapacitását, és legfeljebb 25 óra legalább 3 percig állítható be.
 
-A **élő kimeneti** objektum olyan, mintha egy felvevő, amely a tényleges és jegyezze fel az élő stream a Media Services-fiók egy adategységbe. A fiók csatlakozik a tárolóba, az eszköz erőforrás által meghatározott Azure Storage-fiókba felvett tartalmát maradnak. A **élő kimeneti** is lehetővé teszi, hogy szabályozza a kimenő élő streamet, például az archív felvétel (például a felhőalapú DVR-Funkciókkal kapacitásának) mennyi az adatfolyam maradjanak, és e megkezdheti a megtekintők néhány tulajdonságát az élő stream megtekintését. Az archívum a lemezen egy kör alakú archive "időszak", amely csak a megadott tartalom mennyisége tárolja a **archiveWindowLength** tulajdonságát a **élő kimeneti**. Ebben az ablakban kívülre eső tartalom automatikusan törlődik a storage-tárolóból, és nem állítható helyre. Létrehozhat több **élő kimenetek** (legfeljebb három maximális) a egy **élő esemény** másik archiválási hosszúságok és beállításokkal.  
+Az élő kimeneti objektum van például, hogy a rendszer a tényleges felvevő és -rekord az élő stream a Media Services-fiók egy adategységbe. A fiók csatlakozik a tárolóba, az eszköz erőforrás által meghatározott Azure Storage-fiókba felvett tartalmát maradnak. Az élő kimeneti is lehetővé teszi, hogy szabályozza a kimenő élő streamet, például az archív felvétel (például a felhőalapú DVR-Funkciókkal kapacitásának) mennyi az adatfolyam maradjanak és -e a nézők megkezdheti a élő streamet néhány tulajdonságát. Az archívum a lemezen egy kör alakú archive "időszak", amely csak az élő kimeneti archiveWindowLength tulajdonságában megadott tartalom mennyisége tárolja. Ebben az ablakban kívülre eső tartalom automatikusan törlődik a storage-tárolóból, és nem állítható helyre. Több élő kimenetek (legfeljebb három maximális) egy élő eseményt másik archiválási hosszúságok és beállításokkal is létrehozhat.  
 
-Miután közzétette a **élő kimeneti**a **eszköz** használatával egy **Streamelési lokátor**, a **élő esemény** lesz (akár a DVR időszak hossza) továbbra is megtekinthető a Streamelési lokátor lejárati vagy törlését, amelyiket hamarabb.
+Miután közzétette az élő kimeneti **eszköz** használatával egy **Streamelési lokátor**, az élő esemény (akár a DVR időszak hossza) továbbra is csak megtekinthető a Streamelési lokátor lejárati vagy törlés hamarabb.
 
 További információkért lásd: [használatával egy felhőalapú DVR-Funkciókkal](live-event-cloud-dvr.md).
 

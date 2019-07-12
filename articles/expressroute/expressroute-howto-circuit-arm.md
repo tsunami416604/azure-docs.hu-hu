@@ -8,18 +8,19 @@ ms.topic: article
 ms.date: 02/20/2019
 ms.author: ganesr;cherylmc
 ms.custom: seodec18
-ms.openlocfilehash: 7594261fc8af4e7b392e2f229b28cfee36a52115
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 06f49dc00b83ee2190f6361ebb8e6f052384402a
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60366317"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67657305"
 ---
 # <a name="create-and-modify-an-expressroute-circuit-using-powershell"></a>Létrehozása és módosítása a PowerShell használatával egy ExpressRoute-kapcsolatcsoporttal
 > [!div class="op_single_selector"]
 > * [Azure Portal](expressroute-howto-circuit-portal-resource-manager.md)
 > * [PowerShell](expressroute-howto-circuit-arm.md)
 > * [Azure CLI](howto-circuit-cli.md)
+> * [Azure Resource Manager-sablon](expressroute-howto-circuit-resource-manager-template.md)
 > * [Videó – Azure portal](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-an-expressroute-circuit)
 > * [PowerShell (klasszikus)](expressroute-howto-circuit-classic.md)
 >
@@ -78,8 +79,8 @@ New-AzExpressRouteCircuit -Name "ExpressRouteARMCircuit" -ResourceGroupName "Exp
 
 > [!IMPORTANT]
 > Az ExpressRoute-kapcsolatcsoport számlázása a szolgáltatáskulcs pillanatától kezdve. Győződjön meg arról, hogy ha a kapcsolatszolgáltató üzembe helyezi a kapcsolatcsoportot készen áll a művelet végrehajtása.
-> 
-> 
+>
+>
 
 A válasz tartalmazza a kulcsot. A paraméterek a részletes leírását a következő parancs futtatásával kaphat:
 
@@ -208,8 +209,8 @@ Részletes útmutatásért tekintse meg a [ExpressRoute-Kapcsolatcsoportok útv�
 
 > [!IMPORTANT]
 > Ezek az utasítások csak 2 réteg szolgáltatás kínáló szolgáltatóknál létrehozott Kapcsolatcsoportok vonatkoznak. Ha használja a szolgáltató által kínált felügyelt réteg (általában egy IP VPN, mint az MPLS) 3 szolgáltatások, a kapcsolatszolgáltató konfigurálja és kezeli az útválasztást Ön helyett.
-> 
-> 
+>
+>
 
 ### <a name="8-link-a-virtual-network-to-an-expressroute-circuit"></a>8. Virtuális hálózat összekapcsolása egy ExpressRoute-kapcsolatcsoporttal
 Ezután egy virtuális hálózat összekapcsolása az ExpressRoute-kapcsolatcsoportot. Használja a [virtuális hálózatok összekapcsolása az ExpressRoute-Kapcsolatcsoportok](expressroute-howto-linkvnet-arm.md) című cikket, amikor a Resource Manager üzemi modellel dolgozik.
@@ -291,7 +292,7 @@ Egyes ExpressRoute-kapcsolatcsoport tulajdonságainak kapcsolat befolyásolása 
 A következő feladatok leállás nélkül teheti meg:
 
 * Engedélyezi vagy letiltja az ExpressRoute prémium bővítmény az ExpressRoute-kapcsolatcsoport esetében.
-* Növelje az ExpressRoute-kapcsolatcsoport sávszélességét, feltéve, hogy kapacitás érhető el a porton. A sávszélesség csökkentése azonban a kapcsolat nem támogatott. 
+* Növelje az ExpressRoute-kapcsolatcsoport sávszélességét, feltéve, hogy kapacitás érhető el a porton. A sávszélesség csökkentése azonban a kapcsolat nem támogatott.
 * Módosítsa a mérési terv díjas a korlátlan. Mérési csomag módosítása a korlátlan, a forgalmi díjas adatok nem támogatott.
 * Engedélyezheti és letilthatja az *klasszikus működés engedélyezése*.
 
@@ -314,8 +315,8 @@ A kapcsolatcsoport most már engedélyezve van az ExpressRoute prémium bővítm
 ### <a name="to-disable-the-expressroute-premium-add-on"></a>Az ExpressRoute prémium bővítmény letiltása
 > [!IMPORTANT]
 > Ha az erőforrást, amely nagyobb, mint a megengedett a standard szintű kapcsolatcsoportot használ, ez a művelet sikertelen lehet.
-> 
-> 
+>
+>
 
 Tekintse meg az alábbi információkat:
 
@@ -341,7 +342,7 @@ Támogatott sávszélesség-lehetőségek a szolgáltató, ellenőrizze a [Expre
 > Az ExpressRoute-kapcsolatcsoport hozza létre újra, ha nincs elegendő kapacitás a meglévő porton is. A kapcsolatcsoport nem frissíthető, ha nincsenek további kapacitás érhető el az adott helyhez.
 >
 > Megszakítás nélküli ExpressRoute-kapcsolatcsoport sávszélességét nem csökkenthető. Alacsonyabb verziójúra változtatása sávszélesség megköveteli, hogy az ExpressRoute-kapcsolatcsoport megszüntetése, és ezután építse ki újra a egy új ExpressRoute-kapcsolatcsoportot.
-> 
+>
 
 Miután eldöntötte, milyen méretű van szüksége, a következő paranccsal méretezheti át a kapcsolatcsoport:
 
@@ -369,7 +370,7 @@ Set-AzExpressRouteCircuit -ExpressRouteCircuit $ckt
 ```
 
 ### <a name="to-control-access-to-the-classic-and-resource-manager-environments"></a>A klasszikus és Resource Manager-környezetben való hozzáférés szabályozásához
-Tekintse át a következő témakör utasításait [helyezze át az ExpressRoute-Kapcsolatcsoportok a klasszikusból a Resource Manager-alapú üzemi modellbe](expressroute-howto-move-arm.md).  
+Tekintse át a következő témakör utasításait [helyezze át az ExpressRoute-Kapcsolatcsoportok a klasszikusból a Resource Manager-alapú üzemi modellbe](expressroute-howto-move-arm.md).
 
 ## <a name="delete"></a>A megszüntetés és a egy ExpressRoute-kapcsolatcsoport törlése
 Tekintse meg az alábbi információkat:

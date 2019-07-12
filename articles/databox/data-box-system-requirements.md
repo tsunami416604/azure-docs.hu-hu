@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: article
-ms.date: 05/22/2019
+ms.date: 07/11/2019
 ms.author: alkohli
-ms.openlocfilehash: 3bce5dd1dd34c53276c5486cc255c4cd93bb6080
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e232ad131b1c0930afcf5e7e78b386aba2c9490b
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66242164"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67839749"
 ---
 # <a name="azure-data-box-system-requirements"></a>Az Azure Data Box rendszerre vonatkozó követelmények
 
@@ -52,6 +52,13 @@ A szoftverkövetelményeknek tartalmazza a támogatott operációs rendszerek, a
 ## <a name="networking-requirements"></a>Hálózati követelmények
 
 Az adatközpontnak nagy sebességű hálózattal kell rendelkeznie. Határozottan javasoljuk, hogy legalább 10 GbE sebességű kapcsolattal rendelkezzen. 10-GbE kapcsolatot nem érhető el, ha egy 1-GbE adatkapcsolat másolja az adatokat, de a sebesség érintett példány használható.
+
+### <a name="port-requirements"></a>Port követelményei
+
+Az alábbi táblázat felsorolja a portot, amelyet meg kell nyitni a tűzfalon az SMB vagy NFS-forgalom engedélyezése. Ebben a táblázatban *a* vagy *bejövő* irányát hivatkozik, mely a bejövő kérések ügyfélelérési az eszközre. *Ki* vagy *kimenő* hivatkozik, amelyben a Data Box-eszköz kívülről, adatokat küld a központi telepítés meghaladja a irány: például kimenő internetkapcsolattal.
+
+[!INCLUDE [data-box-port-requirements](../../includes/data-box-port-requirements.md)]
+
 
 ## <a name="next-steps"></a>További lépések
 

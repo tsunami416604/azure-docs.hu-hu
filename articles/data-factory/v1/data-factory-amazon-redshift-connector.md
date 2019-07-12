@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: dc72ec9bf2e7e7c5c77685368167357a0108f2d3
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 3a1497211cc42c702537cbbdfea32ff71a400c7c
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60335427"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67836689"
 ---
 # <a name="move-data-from-amazon-redshift-using-azure-data-factory"></a>Adatok áthelyezése az Amazon Redshift Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Válassza ki a Data Factory szolgáltatás használ:"]
@@ -44,7 +44,7 @@ Adatok áthelyezése a különböző eszközök és API-k segítségével az Ama
 
 A folyamat létrehozásának legegyszerűbb módja, hogy az Azure Data Factory Copy varázslót használja. A folyamatot a másolás varázsló használatával történő létrehozásának egy gyors bemutatóért lásd: a [oktatóanyag: Hozzon létre egy folyamatot a másolás varázsló használatával](data-factory-copy-data-wizard-tutorial.md).
 
-Az Azure Portalon, a Visual Studio, az Azure PowerShell vagy más eszközök használatával is létrehozhat egy folyamatot. Az Azure Resource Manager-sablonok, a .NET API-t vagy a REST API is használható a folyamat létrehozásához. Egy másolási tevékenységgel ellátott adatcsatorna létrehozása a lépésenkénti útmutatójáért lásd: a [másolási tevékenység oktatóanyagát](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md).
+A Visual Studio, az Azure PowerShell vagy más eszközök használatával is létrehozhat egy folyamatot. Az Azure Resource Manager-sablonok, a .NET API-t vagy a REST API is használható a folyamat létrehozásához. Egy másolási tevékenységgel ellátott adatcsatorna létrehozása a lépésenkénti útmutatójáért lásd: a [másolási tevékenység oktatóanyagát](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md).
 
 Az eszközök vagy az API-kat használja, hogy létrehoz egy folyamatot, amely a helyez át adatokat egy forrásadattárból egy fogadó adattárba a következő lépéseket fogja végrehajtani:
 
@@ -60,7 +60,7 @@ A következő szakaszok ismertetik az Amazon Redshift a Data Factory-entitások 
 
 Az alábbi táblázat ismerteti a JSON-elemek, amelyek egy Amazon Redshift-beli társított szolgáltatásra.
 
-| Tulajdonság | Leírás | Kötelező |
+| Tulajdonság | Leírás | Szükséges |
 | --- | --- | --- |
 | **type** |Ezt a tulajdonságot állítsa **AmazonRedshift**. |Igen |
 | **server** |The IP address or host name of the Amazon Redshift server. |Igen |
@@ -75,7 +75,7 @@ A szakaszok és definiálása az adatkészletek rendelkezésre álló tulajdons�
 
 A **typeProperties** szakasz eltérő az egyes adatkészlet, és a tárolóban lévő adatok helyét ismerteti. **A typeProperties** szakasz egy adatkészlet típusú **RelationalTable**, amely tartalmazza az Amazon Redshift-adatkészletek, a következő tulajdonságokkal rendelkezik:
 
-| Tulajdonság | Leírás | Kötelező |
+| Tulajdonság | Leírás | Szükséges |
 | --- | --- | --- |
 | **Táblanév** |Az Amazon Redshift-adatbázisban, amelyre a társított szolgáltatás hivatkozik a tábla neve. |Nem (Ha a **lekérdezés** egy másolási tevékenységgel típusú tulajdonsága **RelationalSource** van megadva) |
 
@@ -85,7 +85,7 @@ Szakaszok és a tevékenységek meghatározása rendelkezésre álló tulajdons�
 
 A másolási tevékenység, ha a forrás típusa **AmazonRedshiftSource**, a következő tulajdonságok érhetők el a **typeProperties** szakaszban:
 
-| Tulajdonság | Leírás | Kötelező |
+| Tulajdonság | Leírás | Szükséges |
 | --- | --- | --- |
 | **query** | Az egyéni lekérdezés használata az adatok olvasásához. |Nem (Ha a **tableName** adatkészlet tulajdonság meg van adva) |
 | **redshiftUnloadSettings** | A tulajdonságcsoport tartalmazza a Redshift használatakor **UNLOAD** parancsot. | Nem |
@@ -94,7 +94,7 @@ A másolási tevékenység, ha a forrás típusa **AmazonRedshiftSource**, a kö
 
 Másik lehetőségként használhatja a **RelationalSource** típus, amely tartalmazza az Amazon Redshift, a következő tulajdonság a **typeProperties** szakaszban. Megjegyzés: az adatforrás típusa nem támogatja a Redshift **UNLOAD** parancsot.
 
-| Tulajdonság | Leírás | Kötelező |
+| Tulajdonság | Leírás | Szükséges |
 | --- | --- | --- |
 | **query** |Az egyéni lekérdezés használata az adatok olvasásához. | Nem (Ha a **tableName** adatkészlet tulajdonság meg van adva) |
 
@@ -336,12 +336,12 @@ A következő hozzárendeléseket használják, amikor a másolási tevékenysé
 | DECIMAL |Decimal |
 | REAL |Single |
 | DOUBLE PRECISION |Double |
-| BOOLEAN |String |
-| CHAR |String |
-| VARCHAR |String |
-| DATE |DateTime |
-| TIMESTAMP |DateTime |
-| TEXT |String |
+| BOOLEAN |Sztring |
+| CHAR |Karakterlánc |
+| VARCHAR |Sztring |
+| DATE |Datetime |
+| TIMESTAMP |Datetime |
+| TEXT |Karakterlánc |
 
 ## <a name="map-source-to-sink-columns"></a>A fogadó-oszlopok térkép forrása
 A forrásadatkészlet oszlopok leképezése a fogadó-adatkészlet az oszlopok kapcsolatban lásd: [az Azure Data Factoryban adatkészletoszlopok leképezése](data-factory-map-columns.md).

@@ -7,19 +7,20 @@ author: rkarlin
 manager: rkarlin
 editor: ''
 ms.assetid: 62029b5c-29d3-4336-8a22-a9db8214eb7e
-ms.service: sentinel
+ms.service: azure-sentinel
+ms.subservice: azure-sentinel
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/19/2019
 ms.author: rkarlin
-ms.openlocfilehash: fd04e380b0b5732db1e39ffc9b5aa6047c7ef777
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: bf8ed709af76e1c7270aca93b721d82e1da65109
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66382983"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67620539"
 ---
 # <a name="connect-your-cisco-asa-appliance"></a>Csatlakozás a Cisco ASA-berendezés 
 
@@ -97,7 +98,7 @@ Ha nem használja az Azure, ügynököt manuálisan telepíti az Azure-Sentinel 
       1. Indítsa újra a Syslog-ügynök a következő paranccsal: `sudo /opt/microsoft/omsagent/bin/service_control restart [{workspace GUID}]`
       1. Győződjön meg arról, hogy nincsenek hibák az ügynöknaplóban Ez a parancs futtatásával: `tail /var/opt/microsoft/omsagent/log/omsagent.log`
  
-## <a name="step-2-forward-cisco-asa-logs-to-the-syslog-agent"></a>2\. lépés: A Syslog-ügynök továbbítja a Cisco ASA-naplók
+## <a name="step-2-forward-cisco-asa-logs-to-the-syslog-agent"></a>2\. lépés: A Syslog-ügynök továbbítja a Cisco ASA-naplók
 
 Cisco ASA nem támogatja a CEF, ezért a naplók küldése történik, a Syslog- és az Azure Sentinel-ügynök tudja, hogyan kell értelmezni őket, mintha azok a CEF-naplók. Syslog-üzeneteket az Azure-munkaterülethez a Syslog-ügynökön keresztül továbbítsa a Cisco ASA konfigurálása:
 

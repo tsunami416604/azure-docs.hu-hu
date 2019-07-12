@@ -10,16 +10,16 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: luisca
 ms.custom: seodec2018
-ms.openlocfilehash: 010880304c5011bd5a767650aa0ae6b6103bdde2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e5d473cffeefe29febc4f0dfb2a620d917bf238d
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65540863"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67672114"
 ---
 # <a name="how-to-create-a-skillset-in-an-enrichment-pipeline"></a>Egy képességcsoport létrehozása Adatbővítés folyamatban
 
-Cognitive search ad eredményül, és bővíti, hogy az Azure Search a kereshető adatok. Kibontási-felderítési bővítést lépéseket nevezzük *kognitív képességeket*, kombinált be egy *indexmezők* hivatkozott az indexelés során. A képességek alkalmazási lehetőségét használható [beépített képességek](cognitive-search-predefined-skills.md) vagy egyéni képesség (lásd: [példa: hozzon létre egy egyéni ismeretek](cognitive-search-create-custom-skill-example.md) további információt).
+Cognitive search ad eredményül, és bővíti, hogy az Azure Search a kereshető adatok. Kibontási-felderítési bővítést lépéseket nevezzük *kognitív képességeket*, kombinált be egy *indexmezők* hivatkozott az indexelés során. A képességek alkalmazási lehetőségét használható [beépített képességek](cognitive-search-predefined-skills.md) vagy egyéni képesség (lásd: [példa: Cognitive Search egyéni műveleteket létrehozása](cognitive-search-create-custom-skill-example.md) további információt).
 
 Ebből a cikkből elsajátíthatja, hogyan hozhat létre a használni kívánt képességek Adatbővítés folyamatot. A képességek alkalmazási lehetőségét csatolva van egy Azure Search [indexelő](search-indexer-overview.md). Folyamat tervezése, a cikkben szereplő egyik összetevője van hozhat létre, a képességek alkalmazási lehetőségét magát. 
 

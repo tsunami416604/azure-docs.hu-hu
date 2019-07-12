@@ -4,7 +4,7 @@ description: A stackify értelmezi végig Linux-ügynök Linux rendszerű virtu�
 services: virtual-machines-linux
 documentationcenter: ''
 author: darinhoward
-manager: jeconnoc
+manager: gwallace
 editor: ''
 ms.assetid: ''
 ms.service: virtual-machines-linux
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 04/12/2018
 ms.author: roiyz
-ms.openlocfilehash: b9c035c1c9088957f59550bf6564cc02bc7972f4
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: ca3232dc3862cffb67d396b3ec2333fdc28dbb65
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60620600"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67706642"
 ---
 # <a name="stackify-retrace-linux-agent-extension"></a>Stackify értelmezi a Visszalépés Linux-ügynök bővítmény
 

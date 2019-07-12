@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 01/08/2019
 ms.author: mbullwin
-ms.openlocfilehash: b791d74c2b3e94465a1903299d5db0b281ec9355
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: d4a4196aa601fc8da79da3962faec026eff5ec87
+ms.sourcegitcommit: c0419208061b2b5579f6e16f78d9d45513bb7bbc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67053309"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67625062"
 ---
 # <a name="use-stream-analytics-to-process-exported-data-from-application-insights"></a>Application insights exportált adatok feldolgozása a Stream Analytics használatával
 [Az Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/) az ideális eszköz a adatfeldolgozás [Application Insights exportált](export-telemetry.md). Stream Analytics különböző forrásokból származó adatok is lekérése. Átalakíthatja és szűrheti az adatokat, és átirányítása fogadóként különböző.
@@ -148,7 +148,7 @@ Illessze be ezt a lekérdezést:
 
 * Exportálás – bemeneti adatok az aliast, hogy megadta a bemeneti Stream
 * pbi-kimenet a meghatározott kimeneti alias
-* Használjuk a [külső a alkalmazni GetElements](https://msdn.microsoft.com/library/azure/dn706229.aspx) mert beágyazott JSON-tömb szerepel az esemény nevét. Majd válassza a választja ki az esemény nevét, és az adott időszakban az ilyen nevű-példányok számát. A [Group By](https://msdn.microsoft.com/library/azure/dn835023.aspx) záradék csoportosítja az elemek egy perces időszakokra.
+* Használjuk a [külső a alkalmazni GetElements](https://docs.microsoft.com/stream-analytics-query/apply-azure-stream-analytics) mert beágyazott JSON-tömb szerepel az esemény nevét. Majd válassza a választja ki az esemény nevét, és az adott időszakban az ilyen nevű-példányok számát. A [Group By](https://docs.microsoft.com/stream-analytics-query/group-by-azure-stream-analytics) záradék csoportosítja az elemek egy perces időszakokra.
 
 ### <a name="query-to-display-metric-values"></a>Lekérdezés metrikaértékek megjelenítése
 ```SQL

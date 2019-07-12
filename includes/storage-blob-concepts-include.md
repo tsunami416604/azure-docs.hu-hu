@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 11/18/2018
 ms.author: tamram
 ms.custom: include file
-ms.openlocfilehash: 8a85a21d47733bb031ea8ca16f776ea8c2df6da2
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 8d1f9ca5a964787f0ee68e6d99fe870cd7b5994b
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67178800"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67673369"
 ---
 Az Azure Blob Storage a Microsoft felhőalapú objektumtárolási megoldása. A BLOB storage nagy mennyiségű strukturálatlan adat tárolására van optimalizálva. Strukturálatlan adatok olyan adat, amelyet nem követi a egy adott adatmodellhez vagy egy definíciót, például szöveg vagy bináris adatok.
 
@@ -28,7 +28,7 @@ A BLOB storage készült:
 * Adattárolás biztonsági mentésekhez és helyreállításhoz, vészhelyreállításhoz és archiváláshoz.
 * Adattárolás helyszíni vagy az Azure-ban üzemeltetett szolgáltatásban való elemzéshez.
 
-Felhasználók vagy ügyfélalkalmazások érhető objektumok Blob Storage-via HTTP/HTTPS, bárhol a világon. Blob Storage-objektumok keresztül érhető el a [Azure Storage REST API](https://docs.microsoft.com/rest/api/storageservices/blob-service-rest-api), [Azure PowerShell-lel](https://docs.microsoft.com/powershell/module/azure.storage), [Azure CLI-vel](https://docs.microsoft.com/cli/azure/storage), vagy egy Azure Storage ügyféloldali kódtára. Ügyfélkódtárak érhetők el a különböző nyelveken, köztük [.NET](https://docs.microsoft.com/dotnet/api/overview/azure/storage/client), [Java](https://docs.microsoft.com/java/api/overview/azure/storage/client), [Node.js](http://azure.github.io/azure-storage-node), [Python](https://docs.microsoft.com/python/azure/), [Go ](https://github.com/azure/azure-storage-blob-go/), [PHP](http://azure.github.io/azure-storage-php/), és [Ruby](http://azure.github.io/azure-storage-ruby).
+Felhasználók vagy ügyfélalkalmazások érhető objektumok Blob Storage-via HTTP/HTTPS, bárhol a világon. Blob Storage-objektumok keresztül érhető el a [Azure Storage REST API](https://docs.microsoft.com/rest/api/storageservices/blob-service-rest-api), [Azure PowerShell-lel](https://docs.microsoft.com/powershell/module/azure.storage), [Azure CLI-vel](https://docs.microsoft.com/cli/azure/storage), vagy egy Azure Storage ügyféloldali kódtára. Ügyfélkódtárak érhetők el a különböző nyelveken, köztük [.NET](https://docs.microsoft.com/dotnet/api/overview/azure/storage/client), [Java](https://docs.microsoft.com/java/api/overview/azure/storage/client), [Node.js](https://azure.github.io/azure-storage-node), [Python](https://docs.microsoft.com/python/azure/), [Go ](https://github.com/azure/azure-storage-blob-go/), [PHP](https://azure.github.io/azure-storage-php/), és [Ruby](https://azure.github.io/azure-storage-ruby).
 
 ## <a name="about-azure-data-lake-storage-gen2"></a>Tudnivalók az Azure Data Lake Storage Gen2
 

@@ -9,21 +9,21 @@ ms.topic: article
 ms.date: 01/02/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 7bc7f3631748f4ac74a76e9e67aa2aef2c8f9a71
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1241a6ee5a49504619c377fa3f7006320def14ec
+ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66480321"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67805909"
 ---
 # <a name="troubleshoot-azure-files-problems-in-windows"></a>A Windows Azure Files-problémák hibaelhárítása
 
 Ez a cikk a gyakori problémák a Microsoft Azure Files kapcsolódó Windows-ügyfelek csatlakozáskor sorolja fel. Is biztosít a lehetséges okokért és megoldásokért ezeket a problémákat. A hibaelhárítási lépéseket ebben a cikkben mellett is használhatja [AzFileDiagnostics](https://gallery.technet.microsoft.com/Troubleshooting-tool-for-a9fa1fe5) , hogy a Windows ügyfél környezet legyen-e a megfelelő előfeltételek. AzFileDiagnostics automatizálja a jelenség a jelen cikkben említett, és a segítségével állítsa be a környezetet az optimális teljesítmény eléréséhez a legtöbb felismerése. Ezt az információt is megtalálhatja a [Azure-fájlmegosztási hibaelhárító](https://support.microsoft.com/help/4022301/troubleshooter-for-azure-files-shares) , amelyek segítenek a problémák az Azure Files csatlakozás és leképezés/csatlakoztatási fájlmegosztások lépéseit ismerteti.
 
-<a id="error5"></a>
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
+<a id="error5"></a>
 ## <a name="error-5-when-you-mount-an-azure-file-share"></a>Ha csatlakoztatja az Azure-fájlmegosztások 5 hiba
 
 Fájlmegosztást megkísérlésekor a következő hiba jelenhet meg:
@@ -108,7 +108,6 @@ Az IT-részleg vagy megnyitni a 445-ös kimenő Internetszolgáltató [Azure IP-
 #### <a name="solution-4---use-rest-api-based-tools-like-storage-explorerpowershell"></a>4 – megoldás-alapú eszközök például a Storage Explorer/Powershell REST API használata
 Az Azure Files SMB mellett REST is támogatja. REST-alapú elérését a 443-as (szabványos tcp-)-en keresztül működik. Nincsenek különböző eszközöket REST API használatával írt, amelyek lehetővé teszik a felhasználói felület gazdag. [Storage Explorer](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer?tabs=windows) az egyik közülük. [Letöltés és a Storage Explorer telepítése](https://azure.microsoft.com/features/storage-explorer/) és csatlakozni a fájlmegosztáshoz, az Azure Files alapját. Is [PowerShell](https://docs.microsoft.com/azure/storage/files/storage-how-to-use-files-powershell) amely is felhasználó REST API-t.
 
-
 ### <a name="cause-2-ntlmv1-is-enabled"></a>2\. ok: NTLMv1 engedélyezve van
 
 Rendszerhiba: 53-as vagy rendszerhiba: 87 akkor fordulhat elő, ha NTLMv1 kommunikáció engedélyezve van az ügyfélen. Az Azure Files csak NTLMv2-alapú hitelesítést támogatja. A kevésbé biztonságos ügyfél engedélyezett NTLMv1 kellene hoz létre. Ezért kommunikációja blokkolva van az Azure Files számára. 
@@ -136,6 +135,13 @@ Visszaállítás a **LmCompatibilityLevel** érték 3 az alábbi beállításjeg
 
 Egyidejű megnyitott leírók számának csökkentése zárja be az egyes kezeli, és próbálkozzon újra. További információkért lásd: [a Microsoft Azure Storage teljesítmény és méretezhetőség – ellenőrzőlista](../common/storage-performance-checklist.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json).
 
+A fájlmegosztás, fájlok vagy könyvtárak megnyitott leíróinak megtekintéséhez használja a [Get-AzStorageFileHandle](https://docs.microsoft.com/powershell/module/az.storage/get-azstoragefilehandle) PowerShell-parancsmagot.  
+
+Zárja be a megnyitott leíróinak fájlmegosztást, könyvtárat vagy fájlt, használja a [Bezárás-AzStorageFileHandle](https://docs.microsoft.com/powershell/module/az.storage/close-azstoragefilehandle) PowerShell-parancsmagot.
+
+> [!Note]  
+> A Get-AzStorageFileHandle és lezárása – AzStorageFileHandle parancsmagok megtalálhatók Az PowerShell modul 2.4-es vagy újabb verziójára. Telepítse a legújabb Az PowerShell-modult, tekintse meg [Azure PowerShell-modul telepítéséhez](https://docs.microsoft.com/powershell/azure/install-az-ps).
+
 <a id="authorizationfailureportal"></a>
 ## <a name="error-authorization-failure-when-browsing-to-an-azure-file-share-in-the-portal"></a>"Engedélyezési hiba" hiba történik az Azure-fájlmegosztások a portálon
 
@@ -155,6 +161,23 @@ Tallózással keresse meg a tárfiókot, ahol az Azure-fájlmegosztás, kattints
 ### <a name="solution-for-cause-2"></a>Megoldás ok 2
 
 Ellenőrizze a virtuális hálózat és tűzfal-szabályok megfelelően van-e beállítva a tárfiókban. Tesztelése Amennyiben virtuális hálózat vagy a tűzfal-szabályok okozza a problémát, ideiglenesen módosíthatja a beállítás a tárfiók **engedélyezze a hozzáférést minden hálózatból elérhető**. További tudnivalókért lásd: [konfigurálása az Azure Storage-tűzfalak és virtuális hálózatok](https://docs.microsoft.com/azure/storage/common/storage-network-security).
+
+<a id="open-handles"></a>
+## <a name="unable-to-delete-a-file-or-directory-in-an-azure-file-share"></a>Nem sikerült törölni a fájl vagy könyvtár az Azure-fájlmegosztások
+
+### <a name="cause"></a>Ok
+A probléma általában akkor fordul elő, ha a fájl vagy könyvtár tartalmaz egy megnyitott leírót. 
+
+### <a name="solution"></a>Megoldás
+
+Ha az SMB-ügyfelek zárult be minden megnyitott kezeli, és a probléma továbbra is fennáll, tegye az alábbiakat:
+
+- Használja a [Get-AzStorageFileHandle](https://docs.microsoft.com/powershell/module/az.storage/get-azstoragefilehandle) PowerShell-parancsmag használatával megtekintheti a megnyitott leíróinak.
+
+- Használja a [Bezárás-AzStorageFileHandle](https://docs.microsoft.com/powershell/module/az.storage/close-azstoragefilehandle) gombra kattintva zárja be a megnyitott leíróinak PowerShell-parancsmagot. 
+
+> [!Note]  
+> A Get-AzStorageFileHandle és lezárása – AzStorageFileHandle parancsmagok megtalálhatók Az PowerShell modul 2.4-es vagy újabb verziójára. Telepítse a legújabb Az PowerShell-modult, tekintse meg [Azure PowerShell-modul telepítéséhez](https://docs.microsoft.com/powershell/azure/install-az-ps).
 
 <a id="slowfilecopying"></a>
 ## <a name="slow-file-copying-to-and-from-azure-files-in-windows"></a>Lassú fájl másolása és a Windows Azure-fájlokból
@@ -183,7 +206,7 @@ Ha a gyorsjavítás telepítve van, a következő kimenet jelenik meg:
 > Azure Marketplace-ről Windows Server 2012 R2-rendszerképeket gyorsjavítás KB3114025 alapértelmezés szerint telepítve van a 2015 decemberében indítása rendelkezik.
 
 <a id="shareismissing"></a>
-## <a name="no-folder-with-a-drive-letter-in-my-computer"></a>Nincs mappát a meghajtó betűjelére **Sajátgép**
+## <a name="no-folder-with-a-drive-letter-in-my-computer-or-this-pc"></a>Nincs mappát a meghajtó betűjelével "Sajátgép" vagy "This PC"
 
 Ha az Azure-fájlmegosztások rendszergazdaként hálózathasználati használatával, a megosztás úgy tűnik, hogy nem érhető el.
 

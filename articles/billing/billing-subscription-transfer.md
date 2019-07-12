@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 07/01/2019
 ms.author: banders
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: cff3c57c31526119ab81225a1c70b163173be937
-ms.sourcegitcommit: 6cb4dd784dd5a6c72edaff56cf6bcdcd8c579ee7
+ms.openlocfilehash: 7d41e32065e3de37eb8f01ab1b836040e7f57b12
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67514436"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67657855"
 ---
 # <a name="transfer-billing-ownership-of-an-azure-subscription-to-another-account"></a>Azure-előfizetések számlázási tulajdonjogának átruházása másik fiókra
 
@@ -38,7 +38,7 @@ Ha Ön egy vállalati Agreement(EA) ügyfél, a vállalati rendszergazdák átad
 
 1. Válassza ki **előfizetések** a bal oldali panelen. A hozzáférést, attól függően szükség lehet egy számlázási hatókör majd válassza ki és **előfizetések** vagy **Azure-előfizetések**.
 
-1. Válassza ki **más fiókhoz átviteli** , amelyet át szeretne az előfizetés. 
+1. Válassza ki **a számlázási tulajdonosi** , amelyet át szeretne az előfizetés. 
 
    ![Válassza ki az előfizetés átvitele](./media/billing-subscription-transfer/billing-select-subscription-to-transfer.png)
 

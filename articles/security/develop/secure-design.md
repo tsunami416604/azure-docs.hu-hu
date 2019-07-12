@@ -12,12 +12,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: b637f547de06d9347a1c74ad7da560be97f16881
-ms.sourcegitcommit: 22c97298aa0e8bd848ff949f2886c8ad538c1473
+ms.openlocfilehash: 12b9793cabb261368c437bd2ae2dbb39cf078bef
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/14/2019
-ms.locfileid: "67144437"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67653281"
 ---
 # <a name="design-secure-applications-on-azure"></a>Biztonságos alkalmazások tervezése az Azure-ban
 Ebben a cikkben azt jelenthet biztonsági tevékenységeket és a vezérlőket felhőalkalmazások kialakításakor vegye figyelembe. Képzési lehetőségekkel, valamint a biztonsági kérdéseket és a követelmények során fontolja meg, és a Microsoft fázisai tervezési fogalmak [biztonságos fejlesztési Életciklussal (SDL)](https://msdn.microsoft.com/library/windows/desktop/84aed186-1d75-4366-8e61-8d258746bopq.aspx) terjed ki. A célja, hogy a segítségével meghatározhatja a tevékenységeket és a egy biztonságosabb alkalmazások tervezéséhez használható Azure-szolgáltatásokhoz.
@@ -39,7 +39,7 @@ A képzési szakasz során a következő források segítségével Ismerkedjen m
 
   - [SDK-k és eszközök](https://docs.microsoft.com/azure/index#pivot=sdkstools) az Azure-ban elérhető eszközöket írja le.
 
-  - [Az Azure DevOps-szolgáltatásokkal](https://docs.microsoft.com/azure/devops/?view=vsts#pivot=index&panel=indexA) fejlesztési eszközöket biztosít. Az eszközök között található nagy teljesítményű folyamatok, ingyenes Git-tárházakat, konfigurálható kanbantáblák és alapos, automatizált, felhőalapú terheléses tesztelés.
+  - [Az Azure DevOps-szolgáltatásokkal](https://docs.microsoft.com/azure/devops/) fejlesztési eszközöket biztosít. Az eszközök között található nagy teljesítményű folyamatok, ingyenes Git-tárházakat, konfigurálható kanbantáblák és alapos, automatizált, felhőalapú terheléses tesztelés.
     A [fejlesztési és üzemeltetési Erőforrásközpont](https://docs.microsoft.com/azure/devops/learn/) egyesíti a források fejlesztési és üzemeltetési eljárások, Git verziókövetés, pedig Agilis módszerekkel, hogyan Együttműködünk a Microsoft DevOps és hogyan saját DevOps-előmenetel értékelhet.
 
   - [Az 5 biztonsági legfontosabb kell figyelembe venni, mielőtt leküldené éles](https://docs.microsoft.com/learn/modules/top-5-security-items-to-consider/index?WT.mc_id=Learn-Blog-tajanca) bemutatja, hogyan biztonságossá tétele Azure-beli webalkalmazásait, és az alkalmazások a gyakori és a veszélyes webes alkalmazás támadások elleni védelme érdekében.
@@ -152,12 +152,12 @@ Az alkalmazás-tervezés modellezési és számbavétele [STRIDE](https://docs.g
 
 | Fenyegetés | Biztonsági tulajdonság | Az Azure platform lehetséges megoldás |
 | ---------------------- | --------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| Címek hamisítása               | Hitelesítés        | [HTTPS-kapcsolatokat](https://docs.microsoft.com/aspnet/core/security/enforcing-ssl?view=aspnetcore-2.1&tabs=visual-studio). |
+| Címek hamisítása               | Authentication        | [HTTPS-kapcsolatokat](https://docs.microsoft.com/aspnet/core/security/enforcing-ssl?view=aspnetcore-2.1&tabs=visual-studio). |
 | Módosítás              | Integritás             | Ellenőrizze az SSL/TLS-tanúsítványokkal. SSL/TLS használó alkalmazások teljes ellenőriznie kell az X.509-tanúsítványokat, az entitásokat, amelyekhez csatlakoznak. Az Azure Key Vault-tanúsítványok használata [kezelése a x509 tanúsítványok](https://docs.microsoft.com/azure/key-vault/about-keys-secrets-and-certificates#key-vault-certificates). |
 | Letagadhatóság            | Letagadhatatlanság       | Engedélyezze az Azure [monitorozási és diagnosztikai](https://docs.microsoft.com/azure/architecture/best-practices/monitoring).|
 | Információfelfedés | Bizalmas       | Bizalmas adatok titkosítását [inaktív](https://docs.microsoft.com/azure/security/azure-security-encryption-atrest) és [átvitel](https://docs.microsoft.com/azure/security/azure-security-data-encryption-best-practices#protect-data-in-transit). |
 | Szolgáltatásmegtagadás      | Rendelkezésre állás          | Teljesítmény-mérőszámok lehetséges szolgáltatásmegtagadás szolgáltatási feltételek figyelése Kapcsolat szűrők megvalósításához. [Az Azure DDoS protection](https://docs.microsoft.com/azure/virtual-network/ddos-protection-overview#next-steps), alkalmazás-tervezés – ajánlott eljárások kombinálva, DDoS-támadásokkal szembeni védelmet biztosít.|
-| Jogok kiterjesztése | Engedélyezés         | Az Azure Active Directory használatával <span class="underline"> </span> [Privileged Identity Management](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-configure).|
+| Jogok kiterjesztése | Authorization         | Az Azure Active Directory használatával <span class="underline"> </span> [Privileged Identity Management](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-configure).|
 
 ### <a name="reduce-your-attack-surface"></a>A támadási felület csökkentése
 

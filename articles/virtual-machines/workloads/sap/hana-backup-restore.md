@@ -4,7 +4,7 @@ description: HANA biztonsági mentéshez, és az SAP HANA az Azure-ban (nagymér
 services: virtual-machines-linux
 documentationcenter: ''
 author: saghorpa
-manager: jeconnoc
+manager: gwallace
 editor: ''
 ms.service: virtual-machines-linux
 ms.devlang: NA
@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 04/22/2019
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 21232e5a678d6deed920e57cd0433a3b85ca4fdc
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4e64c243e38c43c5eb543c3e2ec96d7cf8413cb9
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64987899"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67709777"
 ---
 # <a name="backup-and-restore"></a>Biztonsági mentés és visszaállítás
 
@@ -132,7 +132,7 @@ A Linux operációs rendszer telepítve van, az SAP HANA az Azure-ban (nagymére
 
 A feladata az SAP HANA HDB ügyfél telepítéséhez a nagyméretű HANA-példány egységekben lévő, az SAP HANA telepítése közben.
 
-### <a name="step-2-change-the-etcsshsshconfig"></a>2\. lépés: Módosítsa az/etc/ssh/ssh\_config
+### <a name="step-2-change-the-etcsshsshconfig"></a>2\. lépés: Módosítsa az/etc/ssh/ssh\_config
 
 Ebben a lépésben ismertetett az "Enable tárolóeszközökkel való kommunikációhoz" [a Microsoft Azure-beli SAP HANA eszközök pillanatfelvétel](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/snapshot_tools_v4.0/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20v4.0.pdf).
 

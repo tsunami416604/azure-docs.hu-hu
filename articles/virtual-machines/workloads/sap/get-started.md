@@ -14,15 +14,15 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 06/10/2019
+ms.date: 07/10/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8b4ed11b5a0f463afee0dae149820bb546db0c53
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 27e12b5f33f2e3c0024d5caa6a9bee5e9576a45a
+ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67058713"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67805832"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>Az Azure-üzemeltetése és futtatása SAP munkaterhelés-forgatókönyvek
 
@@ -36,10 +36,12 @@ SAP munkaterhelés-forgatókönyvek az Azure-beli futtató hozhat létre identit
 
 ## <a name="latest-changes"></a>Legutóbbi módosítások
 
+- Az új útmutató kiadási [IBM Db2 HADR a Red Hat Enterprise Server](high-availability-guide-rhel-ibm-db2-luw.md)
+- Kiadása [magas rendelkezésre állás az SAP NetWeaver a Red Hat Enterprise Linux for SAP-alkalmazások Azure NetApp fájlokkal](high-availability-guide-rhel-netapp-files.md)
 - Bevezetés az ExpressRoute gyors elérési út és a globális elérhetőségű HANA nagyméretű példányok [SAP HANA (nagyméretű példányok) hálózati architektúra](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-network-architecture) és a kapcsolódó dokumentumok
 - Kiadása [Azure HANA nagyméretű példányok szabályozhatja az Azure Portalon keresztül](hana-li-portal.md)
 - Kiadása [magas rendelkezésre állás az SAP NetWeaver SUSE Linux Enterprise Server az Azure NetApp Files SAP alkalmazások az Azure virtuális gépeken](high-availability-guide-suse-netapp-files.md)
-- A pontosítása **Linux operációs rendszer paraméter net.ipv4.tcp_timestamps** beállítások együtt egy Azure-terheléselosztó
+
 
 
 

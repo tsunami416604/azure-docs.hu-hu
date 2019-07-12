@@ -2,17 +2,17 @@
 title: Az Azure Kubernetes Service (AKS) vezérlő naplók megtekintése
 description: Ismerje meg, hogyan engedélyezése és megtekintése a naplókban talál a fő Kubernetes-csomópontot az Azure Kubernetes Service (AKS)
 services: container-service
-author: iainfoulds
+author: mlearned
 ms.service: container-service
 ms.topic: article
 ms.date: 01/03/2019
-ms.author: iainfou
-ms.openlocfilehash: 256101cce5588f56a8094a7a9a98e5fe69e6ec73
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: mlearned
+ms.openlocfilehash: ef77b991461c5d9640cbab9d53f8393540f47c9b
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66497254"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67613927"
 ---
 # <a name="enable-and-review-kubernetes-master-node-logs-in-azure-kubernetes-service-aks"></a>Engedélyezze, és tekintse át a Kubernetes Azure Kubernetes Service (AKS) naplózza a fő csomópont
 
@@ -20,11 +20,11 @@ Az Azure Kubernetes Service (AKS), mint például a fő összetevőket a *kube-a
 
 ## <a name="before-you-begin"></a>Előkészületek
 
-Ez a cikk egy meglévő AKS-fürtöt az Azure-fiókban futó igényel. Ha Ön még nem rendelkezik egy AKS-fürtöt, hozzon létre egyet a [Azure CLI-vel] [ cli-quickstart] vagy [az Azure portal][portal-quickstart]. Az Azure Monitor works naplózza mindkét RBAC használata, és nem RBAC engedélyezve van az AKS-fürt.
+Ez a cikk egy meglévő AKS-fürtöt az Azure-fiókban futó igényel. Ha Ön még nem rendelkezik egy AKS-fürtöt, hozzon létre egyet a [Azure CLI-vel][cli-quickstart] or [Azure portal][portal-quickstart]. Az Azure Monitor works naplózza mindkét RBAC használata, és nem RBAC engedélyezve van az AKS-fürt.
 
 ## <a name="enable-diagnostics-logs"></a>Diagnosztikai naplók engedélyezése
 
-Könnyebben gyűjteni, és tekintse át a több forrásból származó adatokat, az Azure Monitor naplóira biztosít egy lekérdezési nyelvet és elemzési motor, amely a környezet elemzéseket biztosít. A munkaterület szerinti rendezés és elemezheti az adatokat, és más Azure-szolgáltatások például az Application Insights és a Security Center integrálható. A különböző platform segítségével a naplók elemzéséhez, választhatja a diagnosztikai naplók küldése egy Azure storage-fiók vagy eseményközpont. További információkért lásd: [Mi az Azure Monitor naplóira?] [log-analytics-overview].
+Könnyebben gyűjteni, és tekintse át a több forrásból származó adatokat, az Azure Monitor naplóira biztosít egy lekérdezési nyelvet és elemzési motor, amely a környezet elemzéseket biztosít. A munkaterület szerinti rendezés és elemezheti az adatokat, és más Azure-szolgáltatások például az Application Insights és a Security Center integrálható. A különböző platform segítségével a naplók elemzéséhez, választhatja a diagnosztikai naplók küldése egy Azure storage-fiók vagy eseményközpont. További információkért lásd: [Mi az Azure Monitor naplóira?][log-analytics-overview].
 
 Az Azure Monitor naplóira engedélyezve van, és a felügyelt az Azure Portalon. Ahhoz, hogy a Kubernetes az AKS-fürt fő összetevőinek naplógyűjtés, egy webböngészőben nyissa meg az Azure Portalon, és kövesse az alábbi lépéseket:
 
@@ -37,15 +37,15 @@ Az Azure Monitor naplóira engedélyezve van, és a felügyelt az Azure Portalon
 1. Ha elkészült, válassza ki a **mentése** a kiválasztott naplók gyűjtésének engedélyezéséhez.
 
 > [!NOTE]
-> Az AKS csak rögzíti a vizsgálati naplók létrehozása vagy frissítése után a szolgáltatás jelző engedélyezve van az előfizetés fürtök esetében. Regisztrálja a *AKSAuditLog* jelző funkciót, használja a [az a funkció regisztrálása] [ az-feature-register] parancsot az alábbi példában látható módon:
+> Az AKS csak rögzíti a vizsgálati naplók létrehozása vagy frissítése után a szolgáltatás jelző engedélyezve van az előfizetés fürtök esetében. Regisztrálja a *AKSAuditLog* jelző funkciót, használja a [az a funkció regisztrálása][az-feature-register] parancsot az alábbi példában látható módon:
 >
 > `az feature register --name AKSAuditLog --namespace Microsoft.ContainerService`
 >
-> Várjon, amíg az állapot megjeleníthető *regisztrált*. A regisztrációs állapot használatával ellenőrizheti a [az szolgáltatáslistát] [ az-feature-list] parancsot:
+> Várjon, amíg az állapot megjeleníthető *regisztrált*. A regisztrációs állapot használatával ellenőrizheti a [az szolgáltatáslistát][az-feature-list] parancsot:
 >
 > `az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/AKSAuditLog')].{Name:name,State:properties.state}"`
 >
-> Ha elkészült, frissítse az AKS erőforrás-szolgáltató használatával a regisztrációját a [az provider register] [ az-provider-register] parancsot:
+> Ha elkészült, frissítse az AKS erőforrás-szolgáltató használatával a regisztrációját a [az provider register][az-provider-register] parancsot:
 >
 > `az provider register --namespace Microsoft.ContainerService`
 
@@ -77,7 +77,7 @@ spec:
     - containerPort: 80
 ```
 
-A pod-létrehozása a [kubectl létrehozása] [ kubectl-create] parancsot, majd adja meg a YAML-fájlt az alábbi példában látható módon:
+A pod-létrehozása a [kubectl létrehozása][kubectl-create] parancsot, majd adja meg a YAML-fájlt az alábbi példában látható módon:
 
 ```
 $ kubectl create -f nginx.yaml
@@ -133,7 +133,7 @@ Annak érdekében, hogy a naplóadatok elemzéséhez, az alábbi táblázat isme
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben a cikkben megtanulta, hogyan engedélyezheti és a naplók a Kubernetes az AKS-fürt fő összetevőinek áttekintése. Figyelheti, és további hibaelhárítást is [Kubelet-naplók megtekintése] [ kubelet-logs] és [engedélyezi az SSH-csomópont elérése][aks-ssh].
+Ebben a cikkben megtanulta, hogyan engedélyezheti és a naplók a Kubernetes az AKS-fürt fő összetevőinek áttekintése. Figyelheti, és további hibaelhárítást is [Kubelet-naplók megtekintése][kubelet-logs] and [enable SSH node access][aks-ssh].
 
 <!-- LINKS - external -->
 [kubectl-create]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#create

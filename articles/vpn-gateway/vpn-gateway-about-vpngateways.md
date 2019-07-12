@@ -8,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: overview
 ms.date: 05/22/2019
 ms.author: cherylmc
-ms.openlocfilehash: 0d4bba41170408b640b4e8d3809c77b7a6443c6a
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: b4ad8697997a8c90a6548c66819bfe790c8235e3
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66480036"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67798991"
 ---
 # <a name="what-is-vpn-gateway"></a>Mi az a VPN-átjáró?
 
@@ -51,7 +51,7 @@ Az alábbi táblázat segíthet eldönteni, melyik az Ön megoldásához legmegf
 
 ## <a name="gwsku"></a>Átjáró-termékváltozatok
 
-Egy virtuális hálózati átjáró létrehozásakor meg kell adnia a használni kívánt termékváltozatot. Válassza ki a számítási feladatok, az átviteli sebesség, a funkciók és a szolgáltatói szerződés igényeinek megfelelő termékváltozatot. További információ az átjáró-termékváltozatokról: [Átjáró-termékváltozatok](vpn-gateway-about-vpn-gateway-settings.md#gwsku).
+Egy virtuális hálózati átjáró létrehozásakor meg kell adnia a használni kívánt termékváltozatot. Válassza ki a számítási feladatok, az átviteli sebesség, a funkciók és a szolgáltatói szerződés igényeinek megfelelő termékváltozatot. További információ átjáró-Termékváltozatokkal, beleértve a támogatott szolgáltatások, éles és a fejlesztési-tesztelési és konfigurációs lépéseket, tekintse meg a [a VPN Gateway beállításairól - átjáró-termékváltozatok](vpn-gateway-about-vpn-gateway-settings.md#gwsku) cikk. Örökölt Termékváltozat információkért lásd: [örökölt termékváltozatok használata](vpn-gateway-about-skus-legacy.md).
 
 ### <a name="benchmark"></a>Átjáró-termékváltozatok alagút, kapcsolat és átviteli sebesség szerint
 

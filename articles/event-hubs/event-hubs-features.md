@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 5b2618807a39f20de041a78204dcc40793b22843
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: e0505960a413308283c4e67e33ec495eedd3b092
+ms.sourcegitcommit: 441e59b8657a1eb1538c848b9b78c2e9e1b6cfd5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67275441"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67827721"
 ---
 # <a name="features-and-terminology-in-azure-event-hubs"></a>Funkciók és az Azure Event Hubs terminológiája
 
@@ -66,30 +66,8 @@ Nem kell előre létrehoznia a közzétevők neveit, azoknak azonban egyezniük 
 [Az Event Hubs Capture](event-hubs-capture-overview.md) lehetővé teszi, hogy automatikusan a streamelt adatokat az Event Hubs capture, és mentse a Blob storage-fiók vagy egy Azure Data Lake Service fiókot választott. Rögzítés funkció engedélyezése az Azure Portalról, és adjon meg egy minimális méret és időtartomány hajtsa végre a rögzítést. Az Event Hubs Capture révén, adja meg a saját Azure Blob Storage-fiók és a tároló vagy az Azure Data Lake szolgáltatás-fiókot, ilyen például a rögzített adatok tárolására szolgál. A rögzített adatok az Apache Avro formátum nyelven van megírva.
 
 ## <a name="partitions"></a>Partíciók
+[!INCLUDE [event-hubs-partitions](../../includes/event-hubs-partitions.md)]
 
-Az Event Hubs üzenetstreamelést biztosít egy particionált felhasználói mintán keresztül, amelyben mindegyik felhasználó az üzenetstream csak egy adott részét, vagyis partícióját olvassa. Ez a minta biztosítja a horizontális skálázhatóságot az eseményfeldolgozáshoz, és egyéb, streamközpontú szolgáltatásokat is nyújt, amelyek az üzenetsorokban vagy témakörökben nem érhetők el.
-
-A partíció események egy rendezett sorozata az eseményközpontban. Ha új esemény érkezik, az a sorozat végére kerül. A partíció elképzelhető egy „véglegesítési naplóként”.
-
-![Event Hubs](./media/event-hubs-features/partition.png)
-
-Eseményközpont összes partíciójára érvényes az eseményközpont konfigurált megőrzési időtartamig őrzi meg az adatokat. Az események időalapon évülnek el – nem törölhetők külön. Mivel a partíciók függetlenek egymástól, és saját adatsorozataikat tartalmazzák, gyakran különböző ütemben nőnek.
-
-![Event Hubs](./media/event-hubs-features/multiple_partitions.png)
-
-A partíciók száma az eseményközpont létrehozásakor határozható meg, és 2 és 32 közé eshet. A partíciószám nem módosítható, a megadásakor tehát hosszú távú szempontokat érdemes mérlegelni. A partíció egy adatrendezési mechanizmus, és a felhasználó alkalmazásokban szükséges alárendeltségi párhuzamossághoz köthető. Az egyes eseményközpontokban található partíciók számának kiválasztása közvetlenül kapcsolódik az egyidejű olvasók várt számához. A partíciószám 32 fölé növeléséhez vegye fel a kapcsolatot az Event Hubs-csapattal.
-
-Jóllehet a partíciók azonosíthatók, és közvetlenül lehet küldeni, nem ajánlott közvetlenül egy partíció küld. Ehelyett használhatja a bemutatott magasabb szintű szerkezeteket a [esemény-közzétevő](#event-publishers) és kapacitás szakaszokat. 
-
-A partíciók eseményadatok az esemény, a felhasználó által definiált tulajdonságcsomagot és a metaadatokat, például eltolását a partícióban vagy a száma a streamsorozatban törzse tartalmazó sorozatát ki vannak töltve.
-
-További információt a partíciókról és a rendelkezésre állás és a megbízhatóság közötti kellő egyensúly kialakításáról az [Event Hubs programozási útmutatójában](event-hubs-programming-guide.md#partition-key) és az [Event Hubs rendelkezésre állásával és következetességével](event-hubs-availability-and-consistency.md) foglalkozó cikkben talál.
-
-### <a name="partition-key"></a>Partíciókulcs
-
-A [partíciókulccsal](event-hubs-programming-guide.md#partition-key) a beérkező eseményadatok képezhetők le adott partíciókra az adatok elrendezése céljából. A partíciókulcs az eseményközpontnak átadott, a küldő által megadott érték. A feldolgozása egy statikus kivonatoló függvénnyel történik, amely létrehozza a partíció-hozzárendelést. Ha nem ad meg partíciókulcsot az események közzétételekor, a rendszer ciklikus időszeleteléses hozzárendelést használ.
-
-Az esemény-közzétevő csak a partíciókulcsot ismeri, azt a partíciót nem, amelyre az esemény közzé lesz téve. A kulcs és a partíció szétválasztása révén a küldőnek nem szükséges behatóan ismernie az alárendelt feldolgozási folyamatokat. Az eszközszintű vagy egyedi felhasználói identitás remek partíciókulcs lehet, de más tulajdonságok, például a földrajzi hely alapján szintén lehetséges az események csoportosítása egyetlen partícióra.
 
 ## <a name="sas-tokens"></a>SAS-tokenek
 

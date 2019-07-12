@@ -8,17 +8,22 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 07/05/2019
+ms.date: 07/10/2019
 ms.author: wellsi
-ms.openlocfilehash: 93272520434ea43a94af9441a947239e983c216f
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: 1ca6b5265cf97ef551ec0b13b46ac934a372d2c7
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67606687"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67797910"
 ---
 # <a name="release-notes-of-cognitive-services-speech-devices-sdk"></a>A Cognitive Services beszédfelismerő eszközök SDK kibocsátási megjegyzései
 A következő szakaszok lista módosul a legfrissebb verziókban.
+
+## <a name="speech-devices-sdk-160"></a>Speech Devices SDK 1.6.0:
+
+*   Támogatási [Azure Kinect DK](https://azure.microsoft.com/services/kinect-dk/) Windows és Linux rendszereken, a közös [mintaalkalmazás](https://aka.ms/sdsdk-download)
+*   Frissítve a [beszéd SDK](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference) összetevőt a 1.6.0-s verziójának. További információkért lásd: a [kibocsátási megjegyzések](https://aka.ms/csspeech/whatsnew).
 
 ## <a name="speech-devices-sdk-151"></a>Beszéd eszközök SDK 1.5.1:
 

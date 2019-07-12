@@ -7,20 +7,21 @@ author: rkarlin
 manager: rkarlin
 editor: ''
 ms.assetid: a3b63cfa-b5fe-4aff-b105-b22b424c418a
-ms.service: sentinel
+ms.service: azure-sentinel
+ms.subservice: azure-sentinel
 ms.devlang: na
 ms.topic: overview
 ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/07/2019
+ms.date: 07/04/2019
 ms.author: rkarlin
-ms.openlocfilehash: 5d8d97aefa2efadae70c976b8a1876b2c7d8f1c1
-ms.sourcegitcommit: d73c46af1465c7fd879b5a97ddc45c38ec3f5c0d
+ms.openlocfilehash: 9f64497cdf27729cebc243deca1def9ff1e5c680
+ms.sourcegitcommit: 80aaf27e3ad2cc4a6599a3b6af0196c6239e6918
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65921936"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67673875"
 ---
 # <a name="connect-data-sources"></a>Adatforrások csatlakoztatása
 
@@ -32,7 +33,18 @@ ms.locfileid: "65921936"
 
 A fedélzeti Azure Sentinel először az adatforrásokhoz való kapcsolódáshoz. Az Azure-Sentinel együttműködik a Microsoft-megoldások, a box és a valós idejű integráció, beleértve a Microsoft veszélyforrások elleni védelmi megoldások és a Microsoft 365 forrásból, például az Office 365, Azure AD-ben az Azure ATP, azonnal összekötőket és A Microsoft Cloud App Security, és többet. Emellett számos beépített összekötőkről, a szélesebb körű biztonsági ökoszisztéma nem Microsoft-megoldások. Az adatforrások csatlakoztatása az Azure-Sentinel, valamint a Syslog vagy a REST-API formátum. esemény közös is használhatja.  
 
-![Adatgyűjtők](./media/collect-data/collect-data-page.png)
+1. Válassza a menü **adatösszekötők**. Ez az oldal lehetővé teszi biztosító Azure Sentinel-összekötők és azok állapotát teljes listájának megtekintéséhez. Válassza ki a csatlakozhat, és válassza ki a kívánt összekötőt **nyílt összekötő lap**. 
+
+   ![Adatgyűjtők](./media/collect-data/collect-data-page.png)
+
+1. Az adott összekötő lapon ellenőrizze, rendelkezik minden előfeltétel teljesül, és kövesse az utasításokat az adatok Azure Sentinel-csatlakozni. A naplók az Azure-Sentinel a szinkronizálás egy kis ideig is eltarthat. A csatlakozás után megjelenik az adatok összegzését a **által fogadott adatok** graph és az adattípusok kapcsolat állapotát.
+
+   ![Csatlakozás a naplógyűjtők](./media/collect-data/opened-connector-page.png)
+  
+1. Kattintson a **további lépések** fülre, és az adott típusú biztosít az Azure-Sentinel-a-beépített tartalmak listáját.
+
+   ![Adatgyűjtők](./media/collect-data/data-insights.png)
+ 
 
 ## <a name="data-connection-methods"></a>Kapcsolat metody dat
 

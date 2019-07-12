@@ -2,17 +2,17 @@
 title: Az Azure Kubernetes Service (AKS)-fürt hitelesítő adatainak alaphelyzetbe állítása
 description: Ismerje meg, hogyan frissítés vagy visszaállítása az egyszerű szolgáltatás hitelesítő adatait egy fürtöt az Azure Kubernetes Service (AKS)
 services: container-service
-author: iainfoulds
+author: mlearned
 ms.service: container-service
 ms.topic: article
 ms.date: 05/31/2019
-ms.author: iainfou
-ms.openlocfilehash: 189bcf2ddc7d301c8100f74e51374abd217a144f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: mlearned
+ms.openlocfilehash: 5aac941133296d2040d5dd670155b80f5807e1e9
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66475485"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67614126"
 ---
 # <a name="update-or-rotate-the-credentials-for-a-service-principal-in-azure-kubernetes-service-aks"></a>Frissítés vagy a hitelesítő adatok forgatása egyszerű szolgáltatások Azure Kubernetes Service (AKS)
 
@@ -33,7 +33,7 @@ Ha azt szeretné, hozzon létre egy egyszerű szolgáltatást az AKS-fürt friss
 
 ### <a name="get-the-service-principal-id"></a>A résztvevő-azonosító beszerzése
 
-A létező egyszerű szolgáltatás hitelesítő adatainak frissítéséhez, kérje le a szolgáltatásnév-Azonosítót, a fürt használata a [az aks show] [ az-aks-show] parancsot. Az alábbi példa lekéri a fürt nevű azonosítója *myAKSCluster* a a *myResourceGroup* erőforráscsoportot. A résztvevő-azonosító értéke nevű változóként *SP_ID* további parancs használható.
+A létező egyszerű szolgáltatás hitelesítő adatainak frissítéséhez, kérje le a szolgáltatásnév-Azonosítót, a fürt használata a [az aks show][az-aks-show] parancsot. Az alábbi példa lekéri a fürt nevű azonosítója *myAKSCluster* a a *myResourceGroup* erőforráscsoportot. A résztvevő-azonosító értéke nevű változóként *SP_ID* további parancs használható.
 
 ```azurecli-interactive
 SP_ID=$(az aks show --resource-group myResourceGroup --name myAKSCluster \
@@ -54,7 +54,7 @@ Most már továbbléphet a következőre [AKS-fürt frissítése új hitelesít�
 
 Ha úgy döntött, hogy frissítse a meglévő egyszerű szolgáltatás hitelesítő adatai az előző szakaszban, kihagyhatja ezt a lépést. Továbbra is [AKS-fürt frissítése új hitelesítő adatokkal](#update-aks-cluster-with-new-credentials).
 
-Hozzon létre egy egyszerű szolgáltatást, és frissítse az AKS-fürt új ezekkel a hitelesítő adatokkal, használja a [az ad sp create-for-rbac] [ az-ad-sp-create] parancsot. A következő példában a `--skip-assignment` paraméter megakadályozza bármilyen további alapértelmezett hozzárendelés használatát:
+Hozzon létre egy egyszerű szolgáltatást, és frissítse az AKS-fürt új ezekkel a hitelesítő adatokkal, használja a [az ad sp create-for-rbac][az-ad-sp-create] parancsot. A következő példában a `--skip-assignment` paraméter megakadályozza bármilyen további alapértelmezett hozzárendelés használatát:
 
 ```azurecli-interactive
 az ad sp create-for-rbac --skip-assignment
@@ -71,7 +71,7 @@ A kimenet a következő példához hasonló. Jegyezze fel a saját `appId` és `
 }
 ```
 
-Ezután határozza meg a szolgáltatás egyszerű azonosító és a titkos ügyfélkódra kimenetét a saját használatával változóival [az ad sp create-for-rbac] [ az-ad-sp-create] parancsot, az alábbi példában látható módon. A *SP_ID* van a *appId*, és a *SP_SECRET* van a *jelszó*:
+Ezután határozza meg a szolgáltatás egyszerű azonosító és a titkos ügyfélkódra kimenetét a saját használatával változóival [az ad sp create-for-rbac][az-ad-sp-create] parancsot, az alábbi példában látható módon. A *SP_ID* van a *appId*, és a *SP_SECRET* van a *jelszó*:
 
 ```azurecli-interactive
 SP_ID=7d837646-b1f3-443d-874c-fd83c7c739c5
@@ -80,7 +80,7 @@ SP_SECRET=a5ce83c9-9186-426d-9183-614597c7f2f7
 
 ## <a name="update-aks-cluster-with-new-credentials"></a>AKS-fürt frissítése új hitelesítő adatokkal
 
-Függetlenül attól, hogy úgy döntött, hogy a létező egyszerű szolgáltatás hitelesítő adatainak frissítéséhez, vagy hozzon létre egy egyszerű szolgáltatást, most frissítenie az AKS-fürtöt az új hitelesítő adatok használatával a [az aks-hitelesítő adatok frissítése] [ az-aks-update-credentials] parancsot. Változói a *– egyszerű szolgáltatás* és *--client-secret* használhatók:
+Függetlenül attól, hogy úgy döntött, hogy a létező egyszerű szolgáltatás hitelesítő adatainak frissítéséhez, vagy hozzon létre egy egyszerű szolgáltatást, most frissítenie az AKS-fürtöt az új hitelesítő adatok használatával a [az aks-hitelesítő adatok frissítése][az-aks-update-credentials] parancsot. Változói a *– egyszerű szolgáltatás* és *--client-secret* használhatók:
 
 ```azurecli-interactive
 az aks update-credentials \

@@ -12,12 +12,12 @@ ms.topic: article
 ms.date: 11/20/2018
 ms.author: mahender
 ms.custom: seodec18
-ms.openlocfilehash: 9b7bc043c748000f03a98a28f856299527015388
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e7a049c8def0a5014aeb8a0e7a16aaa8def28009
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66397822"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67705701"
 ---
 # <a name="use-key-vault-references-for-app-service-and-azure-functions-preview"></a>A Key Vault hivatkozások használata az App Service és az Azure Functions (előzetes verzió)
 
@@ -38,6 +38,8 @@ Olvassa el a titkos kulcsok a Key Vaultból, kell rendelkeznie egy létrehozott 
    > A Key Vault jelenleg csak a támogatási rendszer hozzárendelt felügyelt identitások hivatkozik. Felhasználó által hozzárendelt identitások nem használható.
 
 1. Hozzon létre egy [hozzáférési szabályzatot a Key Vaultban](../key-vault/key-vault-secure-your-key-vault.md#key-vault-access-policies) a korábban létrehozott identita aplikace. Engedélyezze ezt a házirendet a "Get" titkos engedélyt. Ne konfigurálja a "engedélyezett alkalmazás" vagy `applicationId` beállításai, mivel ezt, nem kompatibilis egy felügyelt identitás.
+
+    Hozzáférés biztosítása alkalmazásokhoz való identitás a key vaultban egy egyszeri művelet, és ugyanazt az összes Azure-előfizetésekre vonatkozó marad. Használhatja a kívánt számú tanúsítványok telepítéséhez. 
 
 ## <a name="reference-syntax"></a>Hivatkozási szintaxisa
 

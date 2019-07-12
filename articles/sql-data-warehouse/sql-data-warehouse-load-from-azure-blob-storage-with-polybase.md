@@ -6,16 +6,16 @@ author: kevinvngo
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.subservice: load data
+ms.subservice: load-data
 ms.date: 04/17/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: eb52169fc522ba323f82c42d9505571b18f49f1b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b96b65b7dd38900fccb8d5d3a9133f37ee93949f
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66244483"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67595518"
 ---
 # <a name="load-contoso-retail-data-to-azure-sql-data-warehouse"></a>Contoso kereskedelmi adatok betöltése az Azure SQL Data warehouse-bA
 
@@ -72,7 +72,7 @@ WITH (
 ```
 
 ### <a name="12-create-the-external-data-source"></a>1.2. A külső adatforrás létrehozása
-Ezzel [CREATE EXTERNAL DATA SOURCE] [ CREATE EXTERNAL DATA SOURCE] parancs használatával tárolja az adatokat és az adatok típusát. 
+Ezzel [CREATE EXTERNAL DATA SOURCE][CREATE EXTERNAL DATA SOURCE] parancs használatával tárolja az adatokat és az adatok típusát. 
 
 ```sql
 CREATE EXTERNAL DATA SOURCE AzureStorage_west_public
@@ -89,7 +89,7 @@ WITH
 > 
 
 ## <a name="2-configure-data-format"></a>2. Adatformátum konfigurálása
-Az adatok Azure blob storage-ban szöveges fájlok tárolják, és minden mező egyes egy elválasztó karaktert. Az ssms-ben, futtassa a következő [CREATE EXTERNAL FILE FORMAT] [ CREATE EXTERNAL FILE FORMAT] parancs használatával adhatja meg az adatok formátumát a szöveges fájlok. A Contoso adatok tömörítetlen és cső tagolt.
+Az adatok Azure blob storage-ban szöveges fájlok tárolják, és minden mező egyes egy elválasztó karaktert. Az ssms-ben, futtassa a következő [CREATE EXTERNAL FILE FORMAT][CREATE EXTERNAL FILE FORMAT] parancs használatával adhatja meg az adatok formátumát a szöveges fájlok. A Contoso adatok tömörítetlen és cső tagolt.
 
 ```sql
 CREATE EXTERNAL FILE FORMAT TextFileFormat 
@@ -213,7 +213,7 @@ GO
 ```
 
 ### <a name="42-load-the-data-into-new-tables"></a>4.2. Az adatok betöltése az új táblák
-Adatok betöltése az Azure blob storage-bA az a data warehouse-tábla, használja a [CREATE TABLE AS SELECT (Transact-SQL)] [ CREATE TABLE AS SELECT (Transact-SQL)] utasítást. A CTAS betöltése létrehozott külső táblák típusos használja. Adatok betöltése az új táblákat, használja az egyik [CTAS] [ CTAS] táblánként utasítást. 
+Adatok betöltése az Azure blob storage-bA az a data warehouse-tábla, használja a [CREATE TABLE AS SELECT (Transact-SQL)][CREATE TABLE AS SELECT (Transact-SQL)] statement. Loading with CTAS leverages the strongly typed external tables you've created. To load the data into new tables, use one [CTAS][CTAS] táblánként utasítást. 
  
 A CTAS egy új táblát hoz létre, és feltölti azt egy kiválasztási utasítás eredményeivel. A CTAS határozza meg az új tábla, ugyanazokat az oszlopokat és adattípusokkal rendelkezik, mint a kiválasztási utasítás eredményei. Ha minden oszlop egy külső táblából választ, az új tábla lesz a külső tábla adattípusok és az oszlopok egy replikát.
 
@@ -276,12 +276,12 @@ ALTER INDEX ALL ON [cso].[DimProduct]               REBUILD;
 ALTER INDEX ALL ON [cso].[FactOnlineSales]          REBUILD;
 ```
 
-Az oszlopcentrikus indexek fenntartásával kapcsolatos további információkért lásd: a [oszlopcentrikus Indexek kezelése] [ manage columnstore indexes] cikk.
+Az oszlopcentrikus indexek fenntartásával kapcsolatos további információkért lásd: a [oszlopcentrikus Indexek kezelése][manage columnstore indexes] cikk.
 
 ## <a name="6-optimize-statistics"></a>6. Statisztika optimalizálása
 Célszerű a betöltés után azonnal létrehozza a egyoszlopos statisztikát. Ha ismeri az egyes oszlopok nem fogja az olyan predikátumokban lekérdezést kell, kihagyhatja a statisztikák létrehozása az oszlopokat. Minden oszlop egyoszlopos statisztikát hoz létre, ha a statisztikai adatok újraépítése egy hosszú időbe telhet. 
 
-Ha úgy dönt, hogy egy oszlop statisztikákat létrehozni minden tábla minden oszlopához, használhatja a tárolt eljárás kódminta `prc_sqldw_create_stats` a a [statisztika] [ statistics] cikk.
+Ha úgy dönt, hogy egy oszlop statisztikákat létrehozni minden tábla minden oszlopához, használhatja a tárolt eljárás kódminta `prc_sqldw_create_stats` a a [statisztika][statistics] cikk.
 
 Az alábbi példa a statisztikák létrehozása az jó kiindulási pont. A dimenzió tábla minden oszlopához, és az egyes csatlakozó oszlopa a ténytáblák hozza egyoszlopos statisztikát. Mindig hozzáadhat egy vagy több oszlop statisztikai más (tény) tábla oszlopait később.
 

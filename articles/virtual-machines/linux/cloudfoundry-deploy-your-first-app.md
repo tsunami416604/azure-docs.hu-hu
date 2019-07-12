@@ -4,7 +4,7 @@ description: Cloud Foundry az Azure-alkalmazás üzembe helyezése
 services: virtual-machines-linux
 documentationcenter: ''
 author: seanmck
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: ''
 keywords: ''
@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 06/14/2017
 ms.author: seanmck
-ms.openlocfilehash: 5a43ce3f09ce9695fa5add58b52271a46e2a271a
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: fe510865e687b6a44538627e4ef9025b41416841
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60388505"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67668347"
 ---
 # <a name="deploy-your-first-app-to-cloud-foundry-on-microsoft-azure"></a>Az első alkalmazás üzembe helyezése a Cloud Foundry-hoz a Microsoft Azure
 
@@ -31,16 +31,16 @@ ms.locfileid: "60388505"
 
 A Cloud Foundry környezet létrehozásához az Azure-ban számos lehetőség áll rendelkezésre:
 
-- Használja a [Pivotal Cloud Foundry ajánlat] [ pcf-azuremarketplace] hozhat létre egy standard szintű környezet, amely tartalmazza a PCF az Ops Manager és az Azure Service Broker az Azure piactéren. Annak [utasításokkal] [ pcf-azuremarketplace-pivotaldocs] üzembe helyezéséhez a Marketplace-en kínálnak a Pivotal dokumentációjában.
+- Használja a [Pivotal Cloud Foundry ajánlat][pcf-azuremarketplace] in the Azure Marketplace to create a standard environment that includes PCF Ops Manager and the Azure Service Broker. You can find [complete instructions][pcf-azuremarketplace-pivotaldocs] üzembe helyezéséhez a Marketplace-en kínálnak a Pivotal dokumentációjában.
 - Hozzon létre egy testre szabott környezetet által [Pivotal Cloud Foundry Feladatütemezőből][pcf-custom].
-- [Közvetlenül a nyílt forráskódú Cloud Foundry-csomagok üzembe helyezése] [ oss-cf-bosh] beállításával egy [BOSH](https://bosh.io) igazgató, egy virtuális Gépet, amely a központi telepítés, a Cloud Foundry környezet koordinálja.
+- [Közvetlenül a nyílt forráskódú Cloud Foundry-csomagok üzembe helyezése][oss-cf-bosh] beállításával egy [BOSH](https://bosh.io) igazgató, egy virtuális Gépet, amely a központi telepítés, a Cloud Foundry környezet koordinálja.
 
 > [!IMPORTANT] 
 > Ha az Azure Marketplace-ről a PCF helyez üzembe, jegyezze fel a SYSTEMDOMAINURL és a rendszergazdai hitelesítő adatait a Pivotal kezelő alkalmazások eléréséhez szükséges, amelyek a Marketplace-en üzembe helyezési útmutatóban ismertetett. Ezek az oktatóanyag elvégzéséhez szükségesek. Marketplace-en történő telepítés esetén a SYSTEMDOMAINURL szerepel az űrlap https://system. *IP-cím*. cf.pcfazure.com.
 
 ## <a name="connect-to-the-cloud-controller"></a>Csatlakozás a felhőalapú vezérlő
 
-A felhő vezérlő a Cloud Foundry környezet üzembe helyezéséhez és felügyeletéhez alkalmazásokat az elsődleges belépési pontjához. Az alapvető felhőalapú adatkezelő API (CCAPI) REST API-t, de különböző eszközöket keresztül érhető el. Ebben az esetben kezelése során dinamikusabb keresztül a [Cloud Foundry parancssori felület][cf-cli]. Telepítheti a parancssori felület Linux, MacOS vagy Windows rendszeren, de ha inkább nem szeretne minden telepítheti, elérhető előre telepítve van az a [Azure Cloud Shell][cloudshell-docs].
+A felhő vezérlő a Cloud Foundry környezet üzembe helyezéséhez és felügyeletéhez alkalmazásokat az elsődleges belépési pontjához. Az alapvető felhőalapú adatkezelő API (CCAPI) REST API-t, de különböző eszközöket keresztül érhető el. Ebben az esetben kezelése során dinamikusabb keresztül a [Cloud Foundry parancssori felület][cf-cli]. You can install the CLI on Linux, MacOS, or Windows, but if you'd prefer not to install it at all, it is available pre-installed in the [Azure Cloud Shell][cloudshell-docs].
 
 A bejelentkezéshez illesztenie `api` , a SYSTEMDOMAINURL a Marketplace-en telepítési beszerzett. Mivel az alapértelmezett üzembe helyezés egy önaláírt tanúsítványt használ, akkor is tartalmaznia kell a `skip-ssl-validation` váltani.
 
@@ -113,7 +113,7 @@ A hello spring felhőbe alkalmazás megtekintéséhez nyissa meg a megadott URL-
 ![Alapértelmezett felhasználói felület a Hello Spring Cloud][hello-spring-cloud-basic]
 
 > [!NOTE] 
-> További információ arról, mi történik, során `cf push`, lásd: [hogyan alkalmazásokat elő van készítve] [ cf-push-docs] a Cloud Foundry-dokumentáció.
+> További információ arról, mi történik, során `cf push`, lásd: [hogyan alkalmazásokat elő van készítve][cf-push-docs] a Cloud Foundry-dokumentáció.
 
 ## <a name="view-application-logs"></a>Alkalmazás-naplók megtekintése
 

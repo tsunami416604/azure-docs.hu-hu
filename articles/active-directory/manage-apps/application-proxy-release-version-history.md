@@ -13,15 +13,15 @@ ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/05/2019
-ms.subservice: manage-apps
+ms.subservice: app-mgmt
 ms.author: mimart
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7af05769861f98ec192789d90f8a61f5b6638d1d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 97b54d57a13f0f2b47633a25f1a44efdfa17d11a
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65783293"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67595062"
 ---
 # <a name="azure-ad-application-proxy-version-release-history"></a>Azure AD Application Proxy: Verziókiadások előzményei
 Ez a cikk felsorolja és funkciókról az Azure Active Directory (Azure AD) Application Proxy kiadott. Az Azure AD csapata rendszeresen frissíti Application Proxy új szolgáltatásait és funkcióit. Alkalmazásproxy-összekötők automatikusan frissülnek, amikor egy új verziója.
@@ -38,7 +38,7 @@ Az Azure AD Application Proxy Connector letöltése |  [Töltse le a legújabb �
 
 ### <a name="release-status"></a>Kiadási állapot
 
-2018\. szeptember 20.: Kiadás dátuma: letöltés
+2018. szeptember 20.: Kiadás dátuma: letöltés
 
 ### <a name="new-features-and-improvements"></a>Új funkciók és fejlesztések
 
@@ -56,7 +56,7 @@ Az Azure AD Application Proxy Connector letöltése |  [Töltse le a legújabb �
 
 ### <a name="release-status"></a>Kiadási állapot
 
-2018\. január 19. óta: Kiadás dátuma: letöltés
+2018. január 19. óta: Kiadás dátuma: letöltés
 
 ### <a name="fixed-issues"></a>Hibák kijavítva:
 
@@ -66,7 +66,7 @@ Az Azure AD Application Proxy Connector letöltése |  [Töltse le a legújabb �
 
 ### <a name="release-status"></a>Kiadási állapot 
 
-2017\. május 25.: Kiadás dátuma: letöltés 
+2017. május 25.: Kiadás dátuma: letöltés 
 
 ### <a name="new-features-and-improvements"></a>Új funkciók és fejlesztések 
 
@@ -76,7 +76,7 @@ Az Azure AD Application Proxy Connector letöltése |  [Töltse le a legújabb �
 
 ### <a name="release-status"></a>Kiadási állapot
 
-2017\. április 15.: Kiadás dátuma: letöltés
+2017. április 15.: Kiadás dátuma: letöltés
 
 ### <a name="new-features-and-improvements"></a>Új funkciók és fejlesztések
 

@@ -12,14 +12,14 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/27/2018
+ms.date: 07/09/2019
 ms.author: chackdan
-ms.openlocfilehash: bd76658c939496f27bf3751060c18d17968acd15
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 6b11a3ba4fbffe1d35b590f2e5c47f19b6fb028c
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60386796"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67718132"
 ---
 # <a name="service-fabric-cluster-capacity-planning-considerations"></a>Tervezési megfontolások a Service Fabric-fürt kapacitása
 Éles rendszerek üzembe a kapacitástervezés egy fontos lépés. Íme néhány, az elem, meg kell figyelembe venni, hogy a folyamat részeként.
@@ -77,8 +77,8 @@ A tartóssági szint, amelyek jelzik, hogy a rendszer a jogosultságokat, amely 
 | Tartóssági szint  | Virtuális gépek szükséges minimális száma | Támogatott VM-termékváltozatok                                                                  | Győződjön meg a virtuálisgép-méretezési csoporton, frissítések                               | Frissítések és az Azure által kezdeményezett karbantartás                                                              | 
 | ---------------- |  ----------------------------  | ---------------------------------------------------------------------------------- | ----------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- |
 | Arany             | 5                              | (Például L32s, GS5, G5, DS15_v2, D15_v2) egyetlen ügyfél számára dedikált csomópontot teljes termékváltozatok | Mindaddig, amíg a Service Fabric-fürt által jóváhagyott késhet | 2 óra / UD replikák helyreállításához a korábbi hibák további időt szüneteltethetők |
-| Silver           | 5                              | Egymagos, vagy az újabb virtuális gépek                                                        | Mindaddig, amíg a Service Fabric-fürt által jóváhagyott késhet | Nem minden jelentős ideig késleltethetők                                                    |
-| Bronz           | 1                              | Összes                                                                                | Nem időszakú késleltetéssel kerül a Service Fabric-fürt           | Nem minden jelentős ideig késleltethetők                                                    |
+| Ezüst           | 5                              | Virtuális gépek egymagos, vagy újabb legalább 50 GB-os helyi SSD                      | Mindaddig, amíg a Service Fabric-fürt által jóváhagyott késhet | Nem minden jelentős ideig késleltethetők                                                    |
+| Bronz           | 1                              | Virtuális gépek legalább 50 GB-os helyi SSD                                              | Nem időszakú késleltetéssel kerül a Service Fabric-fürt           | Nem minden jelentős ideig késleltethetők                                                    |
 
 > [!WARNING]
 > A csomóponttípusok a bronz tartóssági futó beszerzése _jogosultság nélküli_. Ez azt jelenti, hogy infrastruktúra feladatok, amelyek hatással az állapot nélküli munkaterhelés nem kell leállt vagy késleltetett, ami hatással lehet a számítási feladatokat. Csak az állapot nélküli számítási feladatokat futtató csomóponttípusok csak bronz használja. Az éles számítási feladatokhoz Silver vagy javasolt felett. 
@@ -108,10 +108,10 @@ Silver vagy Gold tartóssági használja minden csomópont esetében, amelyek v�
 ### <a name="operational-recommendations-for-the-node-type-that-you-have-set-to-silver-or-gold-durability-level"></a>A csomópont működési javaslatok írja be a beállított a silver vagy gold tartóssági szint.
 
 - Hagyja meg a fürt és az alkalmazások megfelelő mindenkor, és győződjön meg arról, hogy válaszol-e alkalmazásokat az összes [replika életciklusesemények szolgáltatás](service-fabric-reliable-services-lifecycle.md) (ilyen például a replika a build beragad) időben elkészüljön.
-- Elfogadja, hogy a Virtuálisgép-Termékváltozat (felfelé és lefelé méretezési) módosítása biztonságosabb módon: Egy virtuálisgép-méretezési csoportot a virtuális gép Termékváltozata módosítása természetüknél fogva egy nem biztonságos művelet, ezért el kell kerülni, ha lehetséges. Itt az a folyamat, követheti a gyakori problémák elkerülése érdekében.
+- Elfogadja, hogy a Virtuálisgép-Termékváltozat (felfelé és lefelé méretezési) módosítása biztonságosabb módon: Egy virtuálisgép-méretezési csoportot a virtuális gép Termékváltozata módosítása szükséges lépéseit és szempontjait számos. Itt az a folyamat, követheti a gyakori problémák elkerülése érdekében.
     - **A nem elsődleges csomóponttípusok:** Javasoljuk, hogy új virtuálisgép-méretezési csoport létrehozása, a szolgáltatás-elhelyezési korlátozás közé tartozik az új virtuális gép méretezési készlet vagy csomópont típusa és a régi virtuális gép méretezési készlet példányszám (azt, hogy egyszerre egy csomópont nullára csökkentse módosítása arról, hogy a csomópontok eltávolítása nincs hatással a fürt megbízhatóságát).
-    - **Az elsődleges csomóponttípus:** Azt javasoljuk, nem módosíthatja, hogy az elsődleges csomóponttípushoz VM Termékváltozata. -Termékváltozat nem támogatott az elsődleges csomóponttípushoz módosítását. Ha az új Termékváltozat oka kapacitás, javasoljuk, további példányok hozzáadása. Ha nem lehetséges, hozzon létre egy új fürtöt, és [alkalmazásállapot visszaállítása](service-fabric-reliable-services-backup-restore.md) (ha van ilyen) a régi fürtről. Nem kell minden olyan szolgáltatás rendszerállapot visszaállítása, akkor létrejönnek az új fürthöz az alkalmazások központi telepítésekor. Ha a fürtön futtatja az állapot nélküli alkalmazások, üzembe az új fürtre.  Nincs semmi visszaállításához. Ha úgy dönt, nyissa meg a nem támogatott útvonal és a VM-Termékváltozat módosítani kívánja, majd végezni a módosításokat a virtuálisgép-méretezési csoport beállítása modell definícióját, hogy tükrözzék az új Termékváltozat. Ha a fürt egyetlen csomópont típusa, majd ellenőrizze, hogy, hogy válaszol-e az állapotalapú alkalmazások az összes [replika életciklusesemények szolgáltatás](service-fabric-reliable-services-lifecycle.md) (ilyen például a replika a build beragad) időben feldolgozza, és hogy a szolgáltatás replika újraépítése időtartam (a Silver szintű tartóssági szint) kisebb, mint öt perc alatt. 
-    
+    - **Az elsődleges csomóponttípus:** Ha a kiválasztott VM-Termékváltozat kapacitással, és nagyobb Virtuálisgép-Termékváltozat módosítani szeretné, végezze el az útmutatót [vertikális skálázás elsődleges csomóponttípus](https://docs.microsoft.com/azure/service-fabric/service-fabric-scale-up-node-type). 
+
 - Karbantartása öt csomópont minden olyan virtuálisgép-méretezési tartóssági szintű arany és ezüst engedélyezve van a minimális számát.
 - Minden egyes virtuálisgép-méretezési csoport Silver vagy Gold tartóssági szint beállítása a Service Fabric-fürtöt a saját csomóponttípusa kell rendelni. Több virtuálisgép-méretezési csoportok hozzárendelése egyetlen csomóponttípus; megakadályozza, hogy a Service Fabric-fürt és az Azure-infrastruktúra közötti koordinációt megfelelően működik.
 - Nem véletlen Virtuálisgép-példányok törlése, mindig a virtuális gép méretezési készlet vertikális leskálázási funkciót használja. A törlés véletlenszerű Virtuálisgép-példányok potenciálisan egyensúlyhiány létrehozhat UD és FD elosztva a Virtuálisgép-példány. Ez egyenetlenségének negatívan megfelelően igazítva a szolgáltatás példányai vagy szolgáltatás replikák terheléselosztása rendszerek lehetővé teszi.
@@ -143,7 +143,7 @@ Ez a javaslat a megbízhatósági szint választásával.  A kezdőérték csom�
 | --- | --- |
 | 1 |Adja meg a megbízhatósági szint paramétert, a rendszer kiszámítja, |
 | 3 |Bronz |
-| 5 vagy 6|Silver |
+| 5 vagy 6|Ezüst |
 | 7 vagy 8 |Arany |
 | 9 és újabb |Platinum |
 
@@ -160,11 +160,11 @@ Számítási feladatot tervez futtatni a fürt a fürt szükséges kapacitást h
 A termelési számítási feladatokhoz: 
 
 - Azt javasoljuk, hogy a fürtök dedikált elsődleges NodeType csomóponttípus rendszerszolgáltatások és elhelyezési korlátozások használata a másodlagos NodeType azokat üzembe helyezni.
-- Az ajánlott Virtuálisgép-Termékváltozat a Standard D3, a standard szintű D3_V2 vagy a megfelelő legalább 14 GB helyi SSD-.
-- A minimális támogatott VM-Termékváltozatok használata Standard D1 vagy Standard D1_V2 vagy ezzel egyenértékű legalább 14 GB helyi SSD. 
-- 14 GB-os helyi SSD a minimális követelmények része. Azt javasoljuk, legalább 50 GB. A számítási feladatok, különösen ha fut a Windows-tárolók nagyobb méretű lemezeket szükség. 
+- Az ajánlott Virtuálisgép-Termékváltozat a Standard D2_V2 vagy ezzel egyenértékű legalább 50 GB helyi SSD-.
+- A minimális támogatott VM-Termékváltozatok használata standard D2 v3 vagy Standard D1_V2 vagy ezzel egyenértékű legalább 50 GB helyi SSD. 
+- Azt javasoljuk, legalább 50 GB. A számítási feladatok, különösen ha fut a Windows-tárolók nagyobb méretű lemezeket szükség. 
 - Részleges core például Standard A0 VM Termékváltozatokban nem támogatottak a termelési számítási feladatokhoz.
-- Standard A1-Termékváltozat nem támogatott a termelési számítási feladatokhoz megfelelő teljesítmény biztosítása érdekében.
+- A sorozatú virtuális gépek Termékváltozatait nem támogatottak a termelési számítási feladatokhoz megfelelő teljesítmény biztosítása érdekében.
 - Alacsony prioritású virtuális gépek nem támogatottak.
 
 > [!WARNING]
@@ -182,10 +182,10 @@ Ezért az éles számítási feladatokhoz a minimális ajánlott nem elsődleges
 
 A termelési számítási feladatokhoz 
 
-- Az ajánlott Virtuálisgép-Termékváltozat a Standard D3, a standard szintű D3_V2 vagy a megfelelő legalább 14 GB helyi SSD-.
-- A minimális támogatott VM-Termékváltozatok használata Standard D1 vagy Standard D1_V2 vagy ezzel egyenértékű legalább 14 GB helyi SSD. 
+- Az ajánlott Virtuálisgép-Termékváltozat a Standard D2_V2 vagy ezzel egyenértékű legalább 50 GB helyi SSD-.
+- A minimális támogatott VM-Termékváltozatok használata standard D2 v3 vagy Standard D1_V2 vagy ezzel egyenértékű legalább 50 GB helyi SSD. 
 - Részleges core például Standard A0 VM Termékváltozatokban nem támogatottak a termelési számítási feladatokhoz.
-- Standard A1-Termékváltozat nem támogatott a termelési számítási feladatokhoz megfelelő teljesítmény biztosítása érdekében.
+- A sorozatú virtuális gépek Termékváltozatait nem támogatottak a termelési számítási feladatokhoz megfelelő teljesítmény biztosítása érdekében.
 
 ## <a name="non-primary-node-type---capacity-guidance-for-stateless-workloads"></a>A nem elsődleges csomóponttípus - kapacitás útmutatást állapot nélküli számítási feladatokhoz
 
@@ -197,10 +197,10 @@ Ez az útmutató az állapot nélküli számítási feladatokat, amelyek a nem e
 
 A termelési számítási feladatokhoz 
 
-- Az ajánlott Virtuálisgép-Termékváltozat a Standard D3 vagy a standard szintű D3_V2 vagy ezzel egyenértékű. 
+- Az ajánlott Virtuálisgép-Termékváltozat a Standard D2_V2 vagy ezzel egyenértékű. 
 - A minimális támogatott VM-Termékváltozatok használata Standard D1 vagy standard szintű D1_V2 vagy ezzel egyenértékű. 
 - Részleges core például Standard A0 VM Termékváltozatokban nem támogatottak a termelési számítási feladatokhoz.
-- Standard A1-Termékváltozat nem támogatott a termelési számítási feladatokhoz megfelelő teljesítmény biztosítása érdekében.
+- A sorozatú virtuális gépek Termékváltozatait nem támogatottak a termelési számítási feladatokhoz megfelelő teljesítmény biztosítása érdekében.
 
 <!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
 

@@ -3,15 +3,15 @@ title: Kapcsolati architektúra MariaDB-hez készült Azure Database-ben
 description: A témakör ismerteti a kapcsolati architektúra az Azure Database for MariaDB-kiszolgáló.
 author: kummanish
 ms.author: manishku
-ms.service: mariaDB
+ms.service: mariadb
 ms.topic: conceptual
 ms.date: 05/23/2019
-ms.openlocfilehash: 126e7ce4d9784a2f6a59f39562dff9a0b9d60ea0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d49e4dff1664d6630c966583a722f8e136061de5
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66735391"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67595258"
 ---
 # <a name="connectivity-architecture-in-azure-database-for-mariadb"></a>Kapcsolati architektúra MariaDB-hez készült Azure Database-ben
 Ez a cikk ismerteti az Azure Database for MariaDB kapcsolati architektúra, valamint, hogy hogyan a átirányítja a forgalmat az Azure Database for MariaDB-példány belül és kívül az Azure-ügyfelekről.

@@ -4,7 +4,7 @@ description: Hogyan háríthatók el a probléma az Azure virtuális gép haszn�
 services: virtual-machines-windows
 documentationcenter: ''
 author: glimoli
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 ms.service: virtual-machines-windows
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/01/2018
 ms.author: genli
-ms.openlocfilehash: c84d015da907c8792f09d1d60e6bc8eddb7e2957
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 135368fd9b838573ae8aa65e16d5df2cd3df3e6d
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60444375"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67709233"
 ---
 # <a name="troubleshoot-a-problem-azure-vm-by-using-nested-virtualization-in-azure"></a>A beágyazott virtualizálás az Azure-ban az Azure virtuális gép hiba elhárítása
 
@@ -71,7 +71,7 @@ Csatlakoztatja a hibás virtuális Gépnek, a mentési virtuális Gépet a köve
 
 13. Lehetővé teszi a Hyper-V szerepkör telepítése a kiszolgálón. Ez eltarthat néhány percig, és a kiszolgáló automatikusan újraindul.
 
-## <a name="step-2-create-the-problem-vm-on-the-rescue-vms-hyper-v-server"></a>2\. lépés: A mentési virtuális gép Hyper-V kiszolgálón a problémát a virtuális gép létrehozása
+## <a name="step-2-create-the-problem-vm-on-the-rescue-vms-hyper-v-server"></a>2\. lépés: A mentési virtuális gép Hyper-V kiszolgálón a problémát a virtuális gép létrehozása
 
 1.  Rögzítse a hibás virtuális Gépnek a lemez nevét, és ezután törölje a hibás virtuális Gépnek. Győződjön meg arról, hogy őrizze meg az összes csatlakoztatott lemezek. 
 

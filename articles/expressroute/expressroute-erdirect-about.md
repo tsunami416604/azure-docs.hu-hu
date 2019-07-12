@@ -5,19 +5,19 @@ services: expressroute
 author: jaredr80
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 02/25/2019
+ms.date: 07/10/2019
 ms.author: jaredro
 ms.custom: seodec18
-ms.openlocfilehash: fb9dc5116ba23d57c7f2fe543e734759e8bbcc7b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: e598cc03a1b7b4999719152540866c7168130e03
+ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60367633"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67807482"
 ---
 # <a name="about-expressroute-direct"></a>Az ExpressRoute Direct ismertetése
 
-Az ExpressRoute közvetlen lehetőséget nyújt a közvetlenül a Microsoft társviszony-létesítési helyszínek stratégiai a világ különböző pontjain található globális hálózatának csatlakoztathatnak. Az ExpressRoute közvetlen kettős 100-GB/s kapcsolat, amely támogatja az aktív/aktív kapcsolat ipari méretekben biztosít.
+Az ExpressRoute közvetlen lehetőséget nyújt a közvetlenül a Microsoft társviszony-létesítési helyszínek stratégiai a világ különböző pontjain található globális hálózatának csatlakoztathatnak. Az ExpressRoute közvetlen kettős 100 GB/s és 10 GB/s sebességű kapcsolatot, amely támogatja az aktív/aktív kapcsolat ipari méretekben biztosít.
 
 Az ExpressRoute közvetlen biztosít fő funkcióját tartalmazza, de nem korlátozódik:
 
@@ -38,9 +38,9 @@ Mielőtt használná az ExpressRoute közvetlen, először regisztrálnia kell a
 
 | **Az ExpressRoute-szolgáltató használatával** | **Az ExpressRoute közvetlen** | 
 | --- | --- |
-| Már használja a szolgáltatók számára a gyors bevezetése és a meglévő infrastruktúra kapcsolat engedélyezése | 100-GB/s-infrastruktúra és az összes réteg teljes felügyeleti igényel
+| Már használja a szolgáltatók számára a gyors bevezetése és a meglévő infrastruktúra kapcsolat engedélyezése | 100 GB/s/10 GB/s-infrastruktúra és az összes réteg teljes felügyeleti igényel
 | Integrálható a több száz, többek között mpls virtuális Magánhálózat és az Ethernet-szolgáltatók | A szabályozott iparágakban és nagyméretű adatfeldolgozás közvetlen/dedikált kapacitás |
-| Kapcsolatcsoportok termékváltozatot 50 MB/s a 10 GB/s | Ügyfél lehet, hogy válassza ki a következő kapcsolatcsoport SKU-k együttes: 5 GB/s sebességű, 10 GB/s, 40 GB/s, 100 GB/s - legfeljebb 200 GB/s összesen
+| Kapcsolatcsoportok termékváltozatot 50 MB/s a 10 GB/s | Ügyfél lehet, hogy a következő termékváltozatok 100 GB/s expressroute kapcsolatcsoport kombinációját közvetlen kiválasztása: <ul><li>5 Gbps</li><li>10 Gbps</li><li>40 GB/s</li><li>100 GB/s</li></ul> Ügyfél lehet, hogy a következő termékváltozatok a 10 GB/s az ExpressRoute kapcsolatcsoport kombinációját közvetlen kiválasztása:<ul><li>1 Gbps</li><li>2 Gbps</li><li>5 Gbps</li><li>10 Gbps</li></ul>
 | Egyetlen bérlő optimalizálva | Egyetlen bérlő/Felhőbeli szolgáltatók optimalizált / több üzleti egység
 
 ## <a name="expressroute-direct-circuits"></a>Közvetlen ExpressRoute-Kapcsolatcsoportok
@@ -53,7 +53,28 @@ A legtöbb esetben a funkció megegyezik, amelyek használatához az ExpressRout
 
 ## <a name="circuit-skus"></a>Kapcsolatcsoport SKU-k
 
-Az ExpressRoute közvetlen támogatja az adatmennyiség nagymértékű Adatbetöltési forgatókönyveket az Azure storage és más big Data típusú adatok szolgáltatásokba. Az ExpressRoute Kapcsolatcsoportok az ExpressRoute közvetlen most is támogatási **40 GB/s** és **100 GB/s** kapcsolatcsoport SKU-k. A fizikai port pár **100 GB/s** csak és rendelkezhet több virtuális kapcsolatok az 5 GB/s sebességű, 10 GB/s, 40 GB/s, 100 GB/s - sávszélesség legfeljebb 200 GB/s bármilyen kombinációban történő. 
+Az ExpressRoute közvetlen támogatja az adatmennyiség nagymértékű Adatbetöltési forgatókönyveket az Azure storage és más big Data típusú adatok szolgáltatásokba. Az ExpressRoute-Kapcsolatcsoportok a 100 GB/s az ExpressRoute közvetlen most is támogatja a **40 GB/s** és **100 GB/s** kapcsolatcsoport SKU-k. A fizikai port pár **100 és 10 GB/s** csak és több virtuális kapcsolatok is rendelkezhet. Kapcsolatcsoport méretek:
+
+| **Az ExpressRoute közvetlen 100 GB/s** | **Az ExpressRoute közvetlen 10 GB/s** | 
+| --- | --- |
+| **Az előfizetett sávszélesség**: 200 Gbps | **Az előfizetett sávszélesség**: 20 GB/s |
+| <ul><li>5 Gbps</li><li>10 Gbps</li><li>40 GB/s</li><li>100 GB/s</li></ul> | <ul><li>1 Gbps</li><li>2 Gbps</li><li>5 Gbps</li><li>10 Gbps</li></ul>
+
+## <a name="technical-requirements"></a>Technikai követelmények
+
+* A Microsoft Enterprise peremhálózati útválasztóhoz (MSEE) felületek:
+    * Kettős 10 vagy 100 Gigabit Ethernet portok csak pár útválasztó között
+    * Egyetlen mód LR Fiber-kapcsolat
+    * IPv4 és IPv6
+    * IP MTU 1500 bytes
+
+* Kapcsoló-vagy útválasztó rétegbeli 2/Layer 3 kapcsolatot:
+    * Támogatnia kell a 1 802.1Q (Dot1Q) vagy két kód (QinQ) 802.1Q címkét beágyazás
+    * Ethertype = 0x8100
+    * Fel kell vennie a külső VLAN-címke (STAG) – a Microsoft által megadott VLAN-azonosító alapján *QinQ csak a alkalmazni*
+    * Támogatnia kell több BGP-munkamenetek (VLAN) port- és eszköz
+    * IPv4 és IPv6-kapcsolatok. *Az IPv6 nincs további alárendelt felület jön létre. IPv6-címet fogja hozzáadni meglévő alárendelt felület*. 
+    * Nem kötelező: [Kétirányú továbbítás észlelése (BFD)](https://docs.microsoft.com/azure/expressroute/expressroute-bfd) támogatja, amelyen konfigurálva van az összes privát társviszony létesítése az ExpressRoute-Kapcsolatcsoportok alapértelmezés szerint
 
 ## <a name="vlan-tagging"></a>VLAN-címkézés
 

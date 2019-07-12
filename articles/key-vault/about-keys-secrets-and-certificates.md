@@ -9,12 +9,12 @@ ms.service: key-vault
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: mbaldwin
-ms.openlocfilehash: b50f98c4abaeda3ac1805b73aa18fe6c29596426
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 52a0bc1b07ebf1aed55551e37ecc122ff393c0f7
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64708688"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67703916"
 ---
 # <a name="about-keys-secrets-and-certificates"></a>Tudnivalók a kulcsok, titkos kódok és tanúsítványok
 
@@ -198,10 +198,10 @@ További alkalmazások – is szolgáltatásspecifikus metaadatokat címkék for
 
 Hozzáférés-vezérlés a Key Vault által kezelt kulcsok egy Key Vaultot, amely a kulcsok a tároló szintjén van megadva. A kulcsokhoz, a hozzáférés-vezérlési szabályzat az azonos Key Vault titkos hozzáférés-vezérlési házirend különbözik. Felhasználók előfordulhat, hogy hozzon létre egy vagy több tárolók, kulcsok tárolására, és a forgatókönyv megfelelő szegmentálását és a kulcsok kezelését fenntartásához szükséges. Hozzáférés-vezérlés a kulcsok nem függ a hozzáférés-vezérlés a titkos kulcsok.  
 
-A következő is adhatók engedélyek, az egy / felhasználó / service egy tároló kulcsainak hozzáférés-vezérlési bejegyzés egyszerű rendszeresen. Ezek az engedélyek szorosan tükrözik a kulcs-objektum engedélyezett műveletek:  
+A következő is adhatók engedélyek, az egy / felhasználó / service egy tároló kulcsainak hozzáférés-vezérlési bejegyzés egyszerű rendszeresen. Ezek az engedélyek szorosan tükrözik a kulcs-objektum engedélyezett műveletek.  A key vaultban szolgáltatásnévvel való hozzáférést egy egyszeri művelet, és minden Azure-előfizetés azonos marad. Használhatja a kívánt számú tanúsítványok telepítéséhez. 
 
 - Kulcskezelési műveletek engedélyeket
-  - *első*: A nyilvános részét egy kulcsot, valamint a hozzá tartozó attribútumok olvasása
+  - *Első*: A nyilvános részét egy kulcsot, valamint a hozzá tartozó attribútumok olvasása
   - *Lista*: A kulcsok vagy a key vaultban tárolt kulcs verzióinak listázása
   - *Frissítés*: Frissítse az attribútumot a kulcshoz
   - *Hozzon létre*: Új kulcsok létrehozása
@@ -260,7 +260,7 @@ Hozzáférés-vezérlés a Key vaultban felügyelt titkos kulcsok, szintjén, am
 A következő engedélyeket is használható, egyszerű alapon, az egy tároló titkos kódok hozzáférés-vezérlési bejegyzés, és szorosan tükrözik a titkos objektum engedélyezett műveletek:  
 
 - Titkoskód-kezelési műveletek vonatkozó engedélyek
-  - *első*: Olvassa el a titkos kulcs  
+  - *Első*: Olvassa el a titkos kulcs  
   - *Lista*: A titkos kulcsok vagy a Key Vaultban tárolt titkos kulcs verzióinak listázása  
   - *Állítsa be*: Titkos kulcs létrehozása  
   - *Törlés*: Titkos kulcs törlése  
@@ -417,7 +417,7 @@ Ha egy tanúsítási szabályzat automatikus megújítás értékre van állítv
  Egyszerű – ellenében, a titkos kulcsok a key vault, és szorosan tükör titkos objektum engedélyezett műveletek hozzáférési szabály használható a következő engedélyekkel:  
 
 - Tanúsítványkezelési műveletek vonatkozó engedélyek
-  - *első*: A tanúsítvány bármely verzióját, illetve a jelenlegi verziójának lekérése 
+  - *Első*: A tanúsítvány bármely verzióját, illetve a jelenlegi verziójának lekérése 
   - *Lista*: Az aktuális tanúsítványokat vagy tanúsítvány verzióinak listázása  
   - *Frissítés*: A tanúsítvány frissítése
   - *Hozzon létre*: Hozzon létre egy Key Vault-tanúsítvánnyal
@@ -476,5 +476,4 @@ További információkért lásd: a [a Key Vault REST API-referencia a tárolás
 ## <a name="see-also"></a>Lásd még:
 
 - [Hitelesítési kérelmek és válaszok](authentication-requests-and-responses.md)
-- [A Key Vault-verziók](key-vault-versions.md)
 - [Key Vault fejlesztői útmutató](/azure/key-vault/key-vault-developers-guide)

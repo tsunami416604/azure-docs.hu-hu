@@ -8,12 +8,12 @@ ms.devlang: java
 ms.topic: quickstart
 ms.date: 12/26/2018
 ms.author: rimman
-ms.openlocfilehash: 2a5cfc417f75e5bb08e416b3243903badcf572e1
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: 1e1cfe7f0e3af72de819ed09dcd0a6d190f239ab
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66480486"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67839814"
 ---
 # <a name="quickstart-build-a-web-app-using-azure-cosmos-dbs-api-for-mongodb-and-java-sdk"></a>Gyors útmutató: Azure Cosmos DB API használatával a MongoDB-hez és a Java SDK webes alkalmazás készítése
 
@@ -33,7 +33,7 @@ Ez a rövid útmutató azt ismerteti, hogyan hozzon létre egy Cosmos-fiókot [A
 ## <a name="prerequisites"></a>Előfeltételek
 
 Mielőtt futtathatná ezt a mintát, rendelkeznie kell a következő előfeltételekkel:
-* [A JDK telepítéséhez az Azure és az Azure Stack JDK 8-as verzió] (https://aka.ms/azure-jdks)
+* [Telepítse a JDK Azure és az Azure Stack JDK 8-as verzió](https://aka.ms/azure-jdks)
 * Maven (ha nem rendelkezik Maven-nel, futtassa az `apt-get install maven` parancsot)
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]

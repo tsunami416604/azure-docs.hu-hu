@@ -2,18 +2,18 @@
 title: A Power BI-Munkaterületcsoportok egy adatforráshoz való kapcsolódáshoz |} A Microsoft Docs
 description: Ismerje meg, hogyan csatlakozhat a Power BI-Munkaterületcsoportok adatforrások.
 services: power-bi-workspace-collections
-ms.service: power-bi-workspace-collections
+ms.service: power-bi-embedded
 author: rkarlin
 ms.author: rkarlin
 ms.topic: article
 ms.workload: powerbi
 ms.date: 09/20/2017
-ms.openlocfilehash: 721458c5725e912d801b307ac05f3fde0776580e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1ce666a017c1e5ac25b11fe1c22cdb37746f75df
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64708756"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67669158"
 ---
 # <a name="connect-to-a-data-source"></a>Kapcsolódás adatforráshoz
 

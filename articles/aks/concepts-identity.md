@@ -2,17 +2,17 @@
 title: Alapelvei – hozzáférési és azonosító az Azure Kubernetes-szolgáltatások (AKS)
 description: Ismerje meg a hozzáférési és azonosító az Azure Kubernetes Service (AKS), beleértve az Azure Active Directory-integráció, a Kubernetes szerepköralapú hozzáférés-vezérlést (RBAC), és a szerepkörök és a kötéseket.
 services: container-service
-author: iainfoulds
+author: mlearned
 ms.service: container-service
 ms.topic: conceptual
 ms.date: 02/28/2019
-ms.author: iainfou
-ms.openlocfilehash: 3432ba671431c25b7cd9ee58decc638861e884c3
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: mlearned
+ms.openlocfilehash: a1ed1eccd7a10d78cd503559469654e5562cde0c
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60467046"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67615862"
 ---
 # <a name="access-and-identity-options-for-azure-kubernetes-service-aks"></a>Hozzáférési és azonosító beállításai az Azure Kubernetes Service (AKS)
 
@@ -40,9 +40,9 @@ Az AKS-fürtök biztonsági fokozni lehet az Azure Active Directory (AD) integr�
 
 ![Az AKS-fürtök az Azure Active Directory-integráció](media/concepts-identity/aad-integration.png)
 
-Az Azure Active Directoryba integrált AKS-fürtökkel biztosíthat a felhasználók vagy csoportok hozzáférést egy adott névtéren belül, vagy a fürtben Kubernetes-erőforrást. Beszerzése egy `kubectl` konfigurációs környezet, a felhasználó futtathatja a [az aks get-credentials] [ az-aks-get-credentials] parancsot. Amikor egy felhasználó majd kommunikál az AKS-fürtöt `kubectl`, bekapcsolják jelentkezzen be az Azure AD hitelesítő adatait. Ez a megközelítés egy egyetlen forrásból felhasználóifiók-kezelés és a jelszavas hitelesítő adatokat biztosít. A felhasználó csak akkor tudja elérni az erőforrásokat, a fürt rendszergazdája által meghatározott módon.
+Az Azure Active Directoryba integrált AKS-fürtökkel biztosíthat a felhasználók vagy csoportok hozzáférést egy adott névtéren belül, vagy a fürtben Kubernetes-erőforrást. Beszerzése egy `kubectl` konfigurációs környezet, a felhasználó futtathatja a [az aks get-credentials][az-aks-get-credentials] parancsot. Amikor egy felhasználó majd kommunikál az AKS-fürtöt `kubectl`, bekapcsolják jelentkezzen be az Azure AD hitelesítő adatait. Ez a megközelítés egy egyetlen forrásból felhasználóifiók-kezelés és a jelszavas hitelesítő adatokat biztosít. A felhasználó csak akkor tudja elérni az erőforrásokat, a fürt rendszergazdája által meghatározott módon.
 
-Az AKS-fürtök az Azure AD-hitelesítést használ, OpenID Connect, az identitási rétegben épülő az OAuth 2.0 protokollt. OAuth 2.0 mechanizmusok beszerzése és a védett erőforrások eléréséhez hozzáférési jogkivonatok használatával határozza meg, és OpenID Connect hitelesítést valósít meg az OAuth 2.0 engedélyezési folyamat bővítményeként. Az OpenID Connect további információkért lásd: a [Open ID Connect dokumentáció][openid-connect]. AKS-fürtök révén OpenID Connect Azure AD-ből kapott a hitelesítési tokenek ellenőrzéséhez használja a Kubernetes Webhook Eszközjogkivonattal történő hitelesítés. További információkért lásd: a [Webhook tokent használó hitelesítés biztosítását dokumentáció][webhook-token-docs].
+Az AKS-fürtök az Azure AD-hitelesítést használ, OpenID Connect, az identitási rétegben épülő az OAuth 2.0 protokollt. OAuth 2.0 mechanizmusok beszerzése és a védett erőforrások eléréséhez hozzáférési jogkivonatok használatával határozza meg, és OpenID Connect hitelesítést valósít meg az OAuth 2.0 engedélyezési folyamat bővítményeként. Az OpenID Connect további információkért lásd: a [Open ID Connect dokumentáció][openid-connect]. To verify the authentication tokens obtained from Azure AD through OpenID Connect, AKS clusters use Kubernetes Webhook Token Authentication. For more information, see the [Webhook Token Authentication documentation][webhook-token-docs].
 
 ## <a name="role-based-access-controls-rbac"></a>Szerepköralapú hozzáférés-vezérlést (RBAC)
 

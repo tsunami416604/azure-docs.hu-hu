@@ -13,17 +13,16 @@ ms.topic: tutorial
 ms.date: 11/01/2017
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 5dcf31adc5e8bdf810d484f07ebeb6f23acbf452
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: ab36d475052aa71427427e1362c74abd031fa414
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66146845"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67839458"
 ---
 # <a name="tutorial-build-your-first-azure-data-factory-using-data-factory-rest-api"></a>Oktatóanyag: Az első adat-előállító létrehozása a Data Factory REST API használatával
 > [!div class="op_single_selector"]
 > * [Áttekintés és előfeltételek](data-factory-build-your-first-pipeline.md)
-> * [Azure Portal](data-factory-build-your-first-pipeline-using-editor.md)
 > * [Visual Studio](data-factory-build-your-first-pipeline-using-vs.md)
 > * [PowerShell](data-factory-build-your-first-pipeline-using-powershell.md)
 > * [Resource Manager-sablon](data-factory-build-your-first-pipeline-using-arm.md)
@@ -171,7 +170,7 @@ Az alábbi táblázat ismerteti a kódrészletben használt JSON-tulajdonságoka
 
 | Tulajdonság | Leírás |
 |:--- |:--- |
-| típus |A tulajdonság beállítása AzureBlob, mert az adatok az Azure Blob Storage-tárban találhatók. |
+| type |A tulajdonság beállítása AzureBlob, mert az adatok az Azure Blob Storage-tárban találhatók. |
 | linkedServiceName |A korábban létrehozott StorageLinkedService szolgáltatásra hivatkozik. |
 | fileName |Ez a tulajdonság nem kötelező. Ha kihagyja, az összes fájl ki lesz választva a folderPath útvonalról. Ebben az esetben csak az input.log fájl lesz feldolgozva. |
 | type |A naplófájlok szövegformátumúak, ezért a TextFormat típust használjuk. |
@@ -474,7 +473,7 @@ Futtassa addig az Invoke-Command parancsot, illetve a következő parancsot, am�
 >
 >
 
-A szeletek figyelésére és a felmerülő problémák megoldására az Azure Portalt is használhatja. További információk: [Monitor pipelines using Azure portal](data-factory-build-your-first-pipeline-using-editor.md#monitor-a-pipeline) (Adatcsatornák figyelése az Azure Portal használatával).
+A szeletek figyelésére és a felmerülő problémák megoldására az Azure Portalt is használhatja. További információk: [Monitor pipelines using Azure portal](data-factory-monitor-manage-pipelines.md) (Adatcsatornák figyelése az Azure Portal használatával).
 
 ## <a name="summary"></a>Összefoglalás
 Az oktatóanyag során létrehozott egy Azure data factoryt, amely egy HDInsight Hadoop-fürtön futtatott Hive-parancsfájllal dolgozza fel az adatokat. Az Azure Portal Data Factory Editor eszközét használta a következő lépések végrehajtásához:

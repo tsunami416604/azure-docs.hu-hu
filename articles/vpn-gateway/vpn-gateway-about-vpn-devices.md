@@ -5,14 +5,14 @@ services: vpn-gateway
 author: yushwang
 ms.service: vpn-gateway
 ms.topic: article
-ms.date: 05/29/2019
+ms.date: 07/05/2019
 ms.author: yushwang
-ms.openlocfilehash: 6535949767999e04b11106ff8a294e912a6d0fb8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8301594f63efaa5c6484a4dfd640aafa96cf15a0
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66388853"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67666262"
 ---
 # <a name="about-vpn-devices-and-ipsecike-parameters-for-site-to-site-vpn-gateway-connections"></a>Információk a helyek közötti VPN Gateway-kapcsolatok VPN-eszközeinek IPsec/IKE-paramétereiről
 
@@ -31,10 +31,6 @@ Létesítmények közötti, VPN-átjárót használó S2S VPN-kapcsolat konfigur
 
 ## <a name="devicetable"></a>Ellenőrzött VPN-eszközök és eszközkonfigurációs útmutatók
 
-> [!NOTE]
-> Helyek közötti kapcsolat konfigurálásakor a VPN-eszköz számára egy nyilvános IPv4 IP-címre van szükség.
->
-
 Eszközszállítói partnereinkkel különböző standard VPN-eszközöket ellenőriztünk. Az alábbi listában szereplő eszközcsaládokban megtalálható összes eszköz kompatibilis a VPN-átjárókkal. A konfigurálni kívánt VPN Gateway-megoldáshoz használt VPN-típusok (házirendalapú vagy útvonalalapú) megismeréséhez lásd: [Tudnivalók a VPN Gateway beállításairól](vpn-gateway-about-vpn-gateway-settings.md#vpntype).
 
 A VPN-eszköz konfigurálásához tekintse meg a megfelelő eszközcsaládhoz tartozó hivatkozásokat. A konfigurációs utasításokra mutató hivatkozásokat képességeinkhez mérten biztosítjuk. A VPN-eszközök támogatásával kapcsolatban lépjen kapcsolatba az eszköze gyártójával.
@@ -48,6 +44,7 @@ A VPN-eszköz konfigurálásához tekintse meg a megfelelő eszközcsaládhoz ta
 | Ellenőrzőpont |Biztonsági átjáró |R80.10 |[Konfigurációs útmutató](https://supportcenter.checkpoint.com/supportcenter/portal?eventSubmit_doGoviewsolutiondetails=&solutionid=sk101275) |[Konfigurációs útmutató](https://supportcenter.checkpoint.com/supportcenter/portal?eventSubmit_doGoviewsolutiondetails=&solutionid=sk101275) |
 | Cisco              |ASA       |8.3<br>8.4+ (IKEv2*) |Támogatott |[Konfigurációs útmutató*](https://www.cisco.com/c/en/us/support/docs/security/adaptive-security-appliance-asa-software/214109-configure-asa-ipsec-vti-connection-to-az.html) |
 | Cisco |ASR |Házirendalapú: IOS 15.1<br>Útvonalalapú: IOS 15.2 |Támogatott |Támogatott |
+| Cisco | CSR | Útvonalalapú: IOS-XE 16.10 | | [Konfigurációs parancsfájl](vpn-gateway-download-vpndevicescript.md) |
 | Cisco |ISR |Házirendalapú: IOS 15.0<br>Útvonalalapú *: IOS 15.1 |Támogatott |Támogatott |
 | Cisco |Meraki |– |Nem kompatibilis |Nem kompatibilis |
 | Citrix |NetScaler MPX, SDX, VPX |10.1-es vagy újabb verzió |[Konfigurációs útmutató](https://docs.citrix.com/en-us/netscaler/11-1/system/cloudbridge-connector-introduction/cloudbridge-connector-azure.html) |Nem kompatibilis |
@@ -74,11 +71,11 @@ A VPN-eszköz konfigurálásához tekintse meg a megfelelő eszközcsaládhoz ta
 >
 > (*) A CISCO ASA 8.4 és újabb verziói biztosítják az IKEv2-támogatást, valamint képesek csatlakozni egy Azure VPN-átjáróhoz egyéni IPsec/Internetes kulcscsere-házirend és a „UsePolicyBasedTrafficSelectors” beállítás használatával. További információkat [ebben a részletes útmutatóban](vpn-gateway-connect-multiple-policybased-rm-ps.md) olvashat.
 >
-> (\*\*) Az ISR 7200 sorozatba tartozó útválasztók csak a házirendalapú VPN-eket támogatják.
+> (**) Az ISR 7200 sorozatba tartozó útválasztók csak a házirendalapú VPN-eket támogatják.
 
 ## <a name="configscripts"></a>Az Azure VPN-eszközök konfigurációs szkriptjeinek letöltése
 
-Az egyes eszközök, letöltheti parancsfájlokat közvetlenül az Azure-ból. További információkat és a letöltési útmutatás: [letöltése VPN-eszközök konfigurációs szkriptjeinek](vpn-gateway-download-vpndevicescript.md).
+Az egyes eszközöket, akkor is konfigurációs szkriptjeinek letöltése közvetlenül az Azure-ból. További információkat és a letöltési útmutatás: [letöltése VPN-eszközök konfigurációs szkriptjeinek](vpn-gateway-download-vpndevicescript.md).
 
 ### <a name="devices-with-available-configuration-scripts"></a>Parancsfájlok elérhető konfigurációs eszközök
 
@@ -155,22 +152,22 @@ Az alábbi táblázat felsorolja az IPsec SA (IKE – gyors mód) ajánlatait. A
 
 |-  |**Titkosítás**|**Hitelesítés**|**PFS-csoport**|
 |---| ---          |---               |---          |
-| 1 |GCM AES256    |GCM (AES256)      |None         |
+| 1 |GCM AES256    |GCM (AES256)      |Nincsenek         |
 | 2 |AES256        |SHA1              |None         |
-| 3 |3DES          |SHA1              |None         |
+| 3 |3DES          |SHA1              |Nincsenek         |
 | 4 |AES256        |SHA256            |None         |
-| 5 |AES128        |SHA1              |None         |
-| 6 |3DES          |SHA256            |None         |
+| 5 |AES128        |SHA1              |Nincsenek         |
+| 6 |3DES          |SHA256            |Nincsenek         |
 
 #### <a name="azure-gateway-as-responder"></a>Azure-átjáró, mint válaszadó
 
 |-  |**Titkosítás**|**Hitelesítés**|**PFS-csoport**|
 |---| ---          | ---              |---          |
-| 1 |GCM AES256    |GCM (AES256)      |None         |
+| 1 |GCM AES256    |GCM (AES256)      |Nincsenek         |
 | 2 |AES256        |SHA1              |None         |
-| 3 |3DES          |SHA1              |None         |
-| 4 |AES256        |SHA256            |None         |
-| 5 |AES128        |SHA1              |None         |
+| 3 |3DES          |SHA1              |Nincsenek         |
+| 4 |AES256        |SHA256            |Nincsenek         |
+| 5 |AES128        |SHA1              |Nincsenek         |
 | 6 |3DES          |SHA256            |None         |
 | 7 |DES           |SHA1              |None         |
 | 8 |AES256        |SHA1              |1            |
@@ -187,7 +184,7 @@ Az alábbi táblázat felsorolja az IPsec SA (IKE – gyors mód) ajánlatait. A
 | 19|AES256        |SHA256            |14           |
 | 20|AES256        |SHA1              |24           |
 | 21|AES256        |SHA256            |24           |
-| 22|AES128        |SHA256            |None         |
+| 22|AES128        |SHA256            |Nincsenek         |
 | 23|AES128        |SHA256            |1            |
 | 24|AES128        |SHA256            |2            |
 | 25|AES128        |SHA256            |14           |
@@ -203,7 +200,7 @@ Az alábbi táblázat felsorolja az IPsec SA (IKE – gyors mód) ajánlatait. A
 >
 >
 
-### <a name="feb-16-2017"></a>2017\. február 16.
+### <a name="feb-16-2017"></a>2017. február 16.
 
 **Palo Alto Networks-eszközök verziója a 7.1.4-esnél** Azure útvonalalapú VPN-hez: Ha a PAN-OS verziója a 7.1.4-esnél Palo Alto Networks származó VPN-eszközöket használ, és az Azure útvonalalapú VPN-átjárókhoz kapcsolódási problémákat tapasztal, hajtsa végre az alábbi lépéseket:
 

@@ -4,7 +4,7 @@ description: Ebből a rövid útmutatóból elsajátíthatja, hogyan használhat
 services: virtual-machines-windows
 documentationcenter: virtual-machines
 author: cynthn
-manager: jeconnoc
+manager: gwallace
 editor: tysonn
 tags: azure-resource-manager
 ms.assetid: ''
@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 07/02/2019
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 9361425422f2c846341a106540cfbe62f78781f3
-ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
+ms.openlocfilehash: 2c176ec9b7a2216eeb61e3f8fd4ef4b182b255a1
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67544025"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67722919"
 ---
 # <a name="quickstart-create-a-windows-virtual-machine-in-azure-with-powershell"></a>Gyors útmutató: Windows virtuális gép létrehozása az Azure-ban a PowerShell-lel
 

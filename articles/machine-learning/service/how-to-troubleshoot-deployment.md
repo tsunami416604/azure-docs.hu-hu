@@ -1,7 +1,7 @@
 ---
 title: Üzembehelyezési hibaelhárítási útmutató
 titleSuffix: Azure Machine Learning service
-description: Ismerje meg, hogyan kerülő megoldása és a Docker telepítési kapcsolatos gyakori hibák elhárítása AKS és Azure Machine Learning szolgáltatás használatával ACI.
+description: Ismerje meg, hogyan kerülő megoldása és a Docker telepítési kapcsolatos gyakori hibák elhárítása Azure Kubernetes Service-ben és az Azure Container Instances szolgáltatásban az Azure Machine Learning szolgáltatás használatával.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,16 +9,16 @@ ms.topic: conceptual
 author: chris-lauren
 ms.author: clauren
 ms.reviewer: jmartens
-ms.date: 05/02/2018
+ms.date: 07/09/2018
 ms.custom: seodec18
-ms.openlocfilehash: 0fba7c2f5a46e0c5d0e3c5fdd65a03bb77f148d9
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: e0f4b024d717c08df3514df057abf89d55be1dc9
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67074999"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67707043"
 ---
-# <a name="troubleshooting-azure-machine-learning-service-aks-and-aci-deployments"></a>Az Azure Machine Learning szolgáltatás AKS és az aci Szolgáltatásban üzemelő példányainak hibaelhárítása
+# <a name="troubleshooting-azure-machine-learning-service-azure-kubernetes-service-and-azure-container-instances-deployment"></a>Az Azure Machine Learning szolgáltatás Azure Kubernetes Service-ben és az Azure Container Instances üzembe helyezés hibaelhárítása
 
 Ismerje meg, hogyan megkerüléséhez, vagy a Docker Azure Container Instances (ACI) és az Azure Machine Learning szolgáltatás használatával az Azure Kubernetes Service (AKS) gyakori üzembehelyezési hibák megoldásához.
 
@@ -314,6 +314,214 @@ Két dolog segít megakadályozni, hogy 503-as állapotkód esetében:
 
 További információ a beállításra `autoscale_target_utilization`, `autoscale_max_replicas`, és `autoscale_min_replicas` , lásd: a [AksWebservice](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.akswebservice?view=azure-ml-py) modul-hivatkozás.
 
+
+## <a name="advanced-debugging"></a>Fejlett hibakeresés
+
+Bizonyos esetekben szükség lehet a modell-üzembehelyezés található Python-kód interaktív módon hibakeresése. Például ha a bejegyzés parancsprogram futtatása sikertelen, és azért nem határozza meg további naplózás. A Visual Studio Code és a Python Tools for Visual Studio (PTVSD) használ, a kód a Docker-tárolóban futó is csatlakoztatható.
+
+> [!IMPORTANT]
+> Ez a módszer a hibakeresés használata esetén nem működik `Model.deploy()` és `LocalWebservice.deploy_configuration` modell üzembe helyezése helyi. Ehelyett, létre kell hoznia egy lemezkép használatával a [ContainerImage](https://docs.microsoft.com/python/api/azureml-core/azureml.core.image.containerimage?view=azure-ml-py) osztály. 
+>
+> Helyi webszolgáltatások üzembe helyezéséhez egy működő, a helyi rendszeren Docker-telepítés szükséges. Docker futnia kell egy helyi webszolgáltatás üzembe helyezése előtt. Telepítése és a Docker használatával kapcsolatos tudnivalókat lásd: [ https://www.docker.com/ ](https://www.docker.com/).
+
+### <a name="configure-development-environment"></a>A fejlesztési környezet konfigurálása
+
+1. Telepíti a Python Tools for Visual Studio (PTVSD) a VS Code helyi fejlesztőkörnyezetet, használja a következő parancsot:
+
+    ```
+    python -m pip install --upgrade ptvsd
+    ```
+
+    A VS Code való használatához készült PTVSD további információkért lásd: [távoli hibakeresés](https://code.visualstudio.com/docs/python/debugging#_remote-debugging).
+
+1. A Docker-rendszerkép kommunikálni a VS Code konfigurálása, hozzon létre egy új hibakeresési konfigurációt:
+
+    1. A VS Code, válassza ki a __Debug__ menüben, majd __nyissa meg a konfigurációk__. Nevű fájl __launch.json__ nyílik meg.
+
+    1. Az a __launch.json__ fájlt és keresse meg a tartalmazó sort `"configurations": [`, és helyezze be a következő szöveg után azt:
+
+        ```json
+        {
+            "name": "Azure Machine Learning service: Docker Debug",
+            "type": "python",
+            "request": "attach",
+            "port": 5678,
+            "host": "localhost",
+            "pathMappings": [
+                {
+                    "localRoot": "${workspaceFolder}",
+                    "remoteRoot": "/var/azureml-app"
+                }
+            ]
+        }
+        ```
+
+        > [!IMPORTANT]
+        > Ha már más bejegyzéseket a konfigurációk szakaszban, adjon hozzá egy vessző (,) beszúrt kód után.
+
+        Ez a szakasz csatolja a Docker-tároló port 5678 használatával.
+
+    1. Mentse a __launch.json__ fájlt.
+
+### <a name="create-an-image-that-includes-ptvsd"></a>Hozzon létre egy rendszerképet, amely tartalmazza az PTVSD
+
+1. Módosítsa a conda-környezet az üzembe helyezéshez, hogy a PTVSD tartalmazza. A következő példa bemutatja, hogy hozzáadná a használatával a `pip_packages` paramétert:
+
+    ```python
+    from azureml.core.conda_dependencies import CondaDependencies 
+    
+    # Usually a good idea to choose specific version numbers
+    # so training is made on same packages as scoring
+    myenv = CondaDependencies.create(conda_packages=['numpy==1.15.4',            
+                                'scikit-learn==0.19.1', 'pandas==0.23.4'],
+                                 pip_packages = ['azureml-defaults==1.0.17', 'ptvsd'])
+    
+    with open("myenv.yml","w") as f:
+        f.write(myenv.serialize_to_string())
+    ```
+
+1. PTVSD elindításához, és várjon, amíg a kapcsolat a szolgáltatás indulásakor, adja hozzá a következő felső részén a `score.py` fájlt:
+
+    ```python
+    import ptvsd
+    # Allows other computers to attach to ptvsd on this IP address and port.
+    ptvsd.enable_attach(address=('0.0.0.0', 5678), redirect_output = True)
+    # Wait 30 seconds for a debugger to attach. If none attaches, the script continues as normal.
+    ptvsd.wait_for_attach(timeout = 30)
+    print("Debugger attached...")
+    ```
+
+1. Hibakeresés során érdemes módosítania kell a fájlt a képen nélkül hozza létre újból. Egy szövegszerkesztőben (vim) telepítése a Docker-rendszerképet, hozzon létre egy új szöveges fájlt `Dockerfile.steps` és a fájl tartalmát a következő használja:
+
+    ```text
+    RUN apt-get update && apt-get -y install vim
+    ```
+
+    Egy szövegszerkesztőben lehetővé teszi, hogy a fájlokat egy új lemezkép létrehozása nélkül tesztelheti a módosításokat a docker-rendszerkép belül módosíthatja.
+
+1. Hozzon létre egy rendszerképet, amely használja, a `Dockerfile.steps` fájlt, használja a `docker_file` paraméter egy kép létrehozásakor. A következő példa ezt mutatja be:
+
+    > [!NOTE]
+    > Ez a példa feltételezi, hogy `ws` mutat, az Azure Machine Learning-munkaterületet, és hogy `model` a modell üzembe helyezéséhez. A `myenv.yml` fájl tartalmazza a 1. lépésben létrehozott conda-függőségeket.
+
+    ```python
+    from azureml.core.image import Image, ContainerImage
+    image_config = ContainerImage.image_configuration(runtime= "python",
+                                 execution_script="score.py",
+                                 conda_file="myenv.yml",
+                                 docker_file="Dockerfile.steps")
+
+    image = Image.create(name = "myimage",
+                     models = [model],
+                     image_config = image_config, 
+                     workspace = ws)
+    # Print the location of the image in the repository
+    print(image.image_location)
+    ```
+
+A lemezkép létrehozása után megjelenik a kép helyen a beállításjegyzékben. A hely az alábbi szöveghez hasonlít:
+
+```text
+myregistry.azurecr.io/myimage:1
+```
+
+Szöveg ebben a példában a beállításjegyzék neve a következő `myregistry` , és a lemezkép neve `myimage`. A rendszerkép verziószáma `1`.
+
+### <a name="download-the-image"></a>A kép letöltése
+
+1. Nyisson meg egy parancssort, a terminált vagy más rendszerhéj, és használja a következő [Azure CLI-vel](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) paranccsal próbál hitelesítést az Azure-előfizetéshez, amely tartalmazza az Azure Machine Learning-munkaterület:
+
+    ```azurecli
+    az login
+    ```
+
+1. Hitelesítést végezni, az Azure Container Registry (ACR), amely tartalmazza a rendszerkép, használja a következő parancsot. Cserélje le `myregistry` egy adott vissza, ha a kép regisztrálva:
+
+    ```azurecli
+    az acr login --name myregistry
+    ```
+
+1. Töltse le a rendszerképet a helyi Docker, használja a következő parancsot. Cserélje le `myimagepath` helyét adja vissza, ha a kép regisztrálva:
+
+    ```bash
+    docker pull myimagepath
+    ```
+
+    A lemezkép-elérési útnak kell lennie hasonló `myregistry.azurecr.io/myimage:1`. Ahol `myregistry` a regisztrációs adatbázis `myimage` a lemezkép és `1` a lemezkép-verzió.
+
+    > [!TIP]
+    > Az előző lépésben a hitelesítés nem tartja az utolsó. Ha elég hosszú az hitelesítést és a lekéréses parancsot között várni, kapni fog egy hitelesítési hiba. Ha ez történik, hitelesítse magát újra.
+
+    A letöltés befejezéséhez szükséges idő az internetkapcsolat sebességétől függ. A letöltés állapota megjelenik a folyamat során. A letöltés befejezése után is használhatja a `docker images` paranccsal ellenőrizheti, hogy azt töltött le.
+
+1. Egyszerűbb legyen a lemezképpel működik, használja a következő parancsot egy címke hozzáadása. Cserélje le `myimagepath` 2. lépés a hely értékkel.
+
+    ```bash
+    docker tag myimagepath debug:1
+    ```
+
+    A helyi rendszerképet, olvassa el a lépéseket a többi `debug:1` helyett a teljes lemezkép elérési útja értéket.
+
+### <a name="debug-the-service"></a>A szolgáltatás hibakeresése
+
+> [!TIP]
+> Ha be van-e a PTVSD kapcsolat időtúllépés a `score.py` fájl, csatlakoznia kell a VS Code a hibakeresési munkamenet az időkorlát lejárta előtt. Indítsa el a VS Code, nyissa meg a helyi példányának `score.py`, állítson be egy töréspontot, és ebben a szakaszban ismertetett lépések előtt fel kell azt.
+>
+> A Hibakeresés és töréspontok beállításával további információkért lásd: [Debugging](https://code.visualstudio.com/Docs/editor/debugging).
+
+1. Indítsa el a Docker-tároló lemezképet használja, használja a következő parancsot:
+
+    ```bash
+    docker run --rm --name debug -p 8000:5001 -p 5678:5678 debug:1
+    ```
+
+1. A VS Code PTVSD csatolni a tárolóban, nyissa meg a VS Code és használatához a kulcs, vagy válassza ki az F5 __Debug__. Amikor a rendszer kéri, válassza ki a __Azure Machine Learning szolgáltatás: Docker-hibakeresési__ konfigurációja. Az oldalsó sáv közül is választhat a hibakeresés ikon a __Azure Machine Learning szolgáltatás: Docker-hibakeresési__ a hibakeresési legördülő menüre, majd társítsa a hibakeresőt, a zöld nyíl bejegyzés.
+
+    ![A hibakeresés ikon, a kezdő hibakeresési gomb, valamint a konfiguráció-választó](media/how-to-troubleshoot-deployment/start-debugging.png)
+
+Ezen a ponton a VS Code PTVSD csatlakozik a Docker-tárolóban, és a korábban megadott töréspont megáll. Most már elolvasásával a kódot futtatja, megtekintheti a változókat, és így tovább.
+
+A Python hibakeresése a VS Code használatával további információkért lásd: [a Python-kód hibaelhárítása](https://docs.microsoft.com/visualstudio/python/debugging-python-in-visual-studio?view=vs-2019).
+
+<a id="editfiles"></a>
+### <a name="modify-the-container-files"></a>A tároló fájl módosítása
+
+A kép fájlok módosítja, csatlakoztatni a futó tárolót, és hajtsa végre a bash felületet. Itt vim fájlok szerkesztésére használhatja:
+
+1. Csatlakozás a futó tárolót, és indítsa el a bash felületet, a tárolóban, a következő paranccsal:
+
+    ```bash
+    docker exec -it debug /bin/bash
+    ```
+
+1. A szolgáltatás által használt fájlokat megkereséséhez használja a következő parancs a bash felületet, a tárolóban:
+
+    ```bash
+    cd /var/azureml-app
+    ```
+
+    Itt az vim segítségével módosíthatja a `score.py` fájlt. Vim használatával kapcsolatos további információkért lásd: [a Vim szerkesztővel](https://www.tldp.org/LDP/intro-linux/html/sect_06_02.html).
+
+1. Egy tároló módosításai általában nem megőrzött. A fenti lépésben lépések menteni a módosításokat, használja a következő parancsot a rendszerhéj Kilépés előtt (azt jelenti, egy másik rendszerhéj):
+
+    ```bash
+    docker commit debug debug:2
+    ```
+
+    Ez a parancs létrehoz egy új rendszerképet nevű `debug:2` , amely tartalmazza a módosításokat.
+
+    > [!TIP]
+    > Szüksége lesz az aktuális tárolóban leállítására és elindítására a módosítások érvénybe lépéséhez az új verziót használja.
+
+1. Győződjön meg arról, hogy a végzett módosítások a tárolóban lévő fájlok szinkronizálása a VS Code használó a helyi fájlok. Ellenkező esetben a hibakeresőt élmény fog nem működnek megfelelően.
+
+### <a name="stop-the-container"></a>Állítsa le a tároló
+
+A tároló leállításához használja a következő parancsot:
+
+```bash
+docker stop debug
+```
 
 ## <a name="next-steps"></a>További lépések
 

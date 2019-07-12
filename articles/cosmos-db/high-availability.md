@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/28/2019
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: 928c943e21e7d00b87ac1e506b98d47107ac4348
-ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
+ms.openlocfilehash: 904994134db28a8244f15ff42e0104e8565c68dd
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67508556"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67839805"
 ---
 # <a name="high-availability-with-azure-cosmos-db"></a>Az Azure Cosmos DB magas rendelkezésre állás
 
@@ -42,7 +42,7 @@ Egy globálisan elosztott adatbázis a Cosmos DB biztosítja a átfogó SLA-k, a
 
 ## <a name="high-availability-with-cosmos-db-in-the-event-of-regional-outages"></a>Regionális üzemkimaradások utáni helyreállításon esetén a Cosmos DB magas rendelkezésre állás
 
-Regionális üzemkimaradások utáni helyreállításon nem ritkák, és az Azure Cosmos DB lehetővé teszi, hogy az adatbázis mindig magas rendelkezésre állású. Az alábbi részletek Cosmos DB-viselkedés szolgáltatáskiesés esetén, attól függően, a Cosmos-fiók konfigurációjának rögzítése:
+A regionális kimaradások nem ritkák, az Azure Cosmos DB azonban gondoskodik arról, hogy az adatbázisa mindig magas rendelkezésre állású maradjon. Az alábbi részletek Cosmos DB-viselkedés szolgáltatáskiesés esetén, attól függően, a Cosmos-fiók konfigurációjának rögzítése:
 
 - A Cosmos DB használatával mielőtt írási művelet arra vonatkozik, az ügyfélnek, az adatok van tartósan véglegesítve lettek szerint a kvórum replikával, amely az írási műveletek a régión belül.
 
@@ -93,7 +93,8 @@ Az alábbi táblázat foglalja össze különböző fiókkonfigurációt magas r
 |Teljesítmény    |  X RU/s kiosztott átviteli sebesség      |  X RU/s kiosztott átviteli sebesség       |  2 x RU/s kiosztott átviteli sebesség <br/><br/> A konfigurációs mód szükséges kétszer átviteli sebesség, mert két régióban van a rendelkezésre állási zónákban egyetlen régióban történő képest mennyisége.   |
 
 > [!NOTE] 
-> Ahhoz, hogy a rendelkezésre állási zóna támogatása, az Azure Cosmos DB-fiók több-főkulcs/több-region írások engedélyezve kell rendelkeznie. 
+> Ahhoz, hogy a rendelkezésre állási zóna támogatása az Azure Cosmos-fiók több régió, a fiók engedélyezve van több főkiszolgálós írások kell rendelkeznie.
+
 
 A zone redudancy engedélyezheti egy régió új vagy meglévő Azure-Cosmos-fiókok való hozzáadásakor. Jelenleg csak engedélyezheti a zone redudancy az Azure portal, PowerShell és Azure Resource Manager-sablonok. Ahhoz, hogy a zone redudancy a Azure Cosmos-fiókjában, állítsa be a `isZoneRedundant` jelzőt `true` egy konkrét hely. Ez a jelző a helyek tulajdonságok állíthatja be. Például a következő powershell-kódrészlettel lehetővé teszi a zone redudancy a "Délkelet-Ázsia" régió:
 

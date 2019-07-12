@@ -3,7 +3,7 @@ title: Az Azure Lsv2 sorozatú virtual machines - tárolási teljesítmény opti
 description: Ismerje meg, hogy a megoldás a Lsv2 sorozatú virtuális gépek teljesítményének optimalizálása.
 services: virtual-machines-windows
 author: laurenhughes
-manager: jeconnoc
+manager: gwallace
 ms.service: virtual-machines-windows
 ms.devlang: na
 ms.topic: article
@@ -11,12 +11,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 04/17/2019
 ms.author: joelpell
-ms.openlocfilehash: ec6a6ea5d00d43f6dffa3aabc367d94ebb8db198
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 7e96fb6fc7b3e581d058ef0f96124959189d0f4e
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67075611"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67709812"
 ---
 # <a name="optimize-performance-on-the-lsv2-series-virtual-machines"></a>A Lsv2 sorozatú virtuális gépek teljesítményének optimalizálása
 

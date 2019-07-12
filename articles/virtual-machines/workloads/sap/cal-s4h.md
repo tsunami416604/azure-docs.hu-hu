@@ -4,7 +4,7 @@ description: SAP S/4HANA vagy BW/4hana-t egy Azure virtuális gép üzembe helye
 services: virtual-machines-linux
 documentationcenter: ''
 author: hermanndms
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 keywords: ''
@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 09/15/2016
 ms.author: hermannd
-ms.openlocfilehash: c59fcf43cb4767f1d95d769dfce4d5c8755e45ee
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 65643352a269796fc5353ff4cd0cb15d5f1502ec
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60836865"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67707478"
 ---
 # <a name="deploy-sap-s4hana-or-bw4hana-on-azure"></a>SAP S/4HANA vagy BW/4hana-t az Azure-ban üzembe helyezése
 Ez a cikk ismerteti, hogyan helyezhet üzembe az S/4hana-t az Azure-ban az SAP Cloud Appliance Library (SAP CAL) 3.0 használatával. Egyéb SAP HANA-alapú megoldások, például a BW/4HANA, üzembe helyezéséhez kövesse a lépéseket.
@@ -30,7 +30,7 @@ Ez a cikk ismerteti, hogyan helyezhet üzembe az S/4hana-t az Azure-ban az SAP C
 > Az SAP CAL kapcsolatos további információkért látogasson el a [SAP Cloud Appliance Library](https://cal.sap.com/) webhelyén. SAP is rendelkezik egy blog kapcsolatban a [SAP Cloud Appliance könyvtár 3.0](https://scn.sap.com/community/cloud-appliance-library/blog/2016/05/27/sap-cloud-appliance-library-30-came-with-a-new-user-experience).
 > 
 > [!NOTE]
-> 2017\. május 29. a mellett a kevesebb az előnyben részesített klasszikus üzemi modellben az Azure Resource Manager üzemi modell segítségével az SAP CAL telepítheti. Azt javasoljuk, hogy használja az új Resource Manager-alapú üzemi modellt, és figyelmen kívül hagyja a klasszikus üzemi modellben.
+> 2017. május 29. a mellett a kevesebb az előnyben részesített klasszikus üzemi modellben az Azure Resource Manager üzemi modell segítségével az SAP CAL telepítheti. Azt javasoljuk, hogy használja az új Resource Manager-alapú üzemi modellt, és figyelmen kívül hagyja a klasszikus üzemi modellben.
 
 ## <a name="step-by-step-process-to-deploy-the-solution"></a>A megoldás részletes folyamata
 

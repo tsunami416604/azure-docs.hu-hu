@@ -4,7 +4,7 @@ description: Több SID-vel magas rendelkezésre állás az SAP ASCS/SCS példán
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
 author: goraco
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 keywords: ''
@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 02/03/2019
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a840deb2349d952b1ef4faeab4ee860e6b0b99df
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 32905f6d505f83ead805550205df0daf6be501e5
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60651720"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67710112"
 ---
 [1928533]:https://launchpad.support.sap.com/#/notes/1928533
 [1999351]:https://launchpad.support.sap.com/#/notes/1999351
@@ -422,7 +422,7 @@ _**9. ábra:** Állítsa be a "sapmnt" fájlmegosztás neve_
 
 <br>
 
-![10\. ábra: Tiltsa le az összes beállítás][sap-ha-guide-figure-8021]
+![10. ábra: Tiltsa le az összes beállítás][sap-ha-guide-figure-8021]
 
 _**10. ábra:** Tiltsa le az összes beállítás_
 
@@ -432,19 +432,19 @@ Rendelje hozzá *teljes hozzáférés* megoszthatja a fájlok és sapmnt:
 * A **SAP_\<SID > _GlobalAdmin** tartományi felhasználói csoport
 * Számítógép-objektum ASCS/SCS fürtcsomópontok **ascs-1$** és **ascs-2$**
 
-![11\. ábra: Teljes hozzáférési engedélyek hozzárendelése a felhasználói csoport és számítógépes fiókok][sap-ha-guide-figure-8022]
+![11. ábra: Teljes hozzáférési engedélyek hozzárendelése a felhasználói csoport és számítógépes fiókok][sap-ha-guide-figure-8022]
 
 _**11. ábra:** "" Teljes körű "control" hozzárendelése a felhasználói csoport és számítógépes fiókok_
 
 <br>
 
-![12\. ábra: Válassza a "Create"][sap-ha-guide-figure-8023]
+![12. ábra: Válassza a "Create"][sap-ha-guide-figure-8023]
 
 _**12. ábra:** Válassza a "Create"_
 
 <br>
 
-![13\. ábra: A második sapmnt sapglobal2 gazdagépen kötve, és kötet2 jön létre][sap-ha-guide-figure-8024]
+![13. ábra: A második sapmnt sapglobal2 gazdagépen kötve, és kötet2 jön létre][sap-ha-guide-figure-8024]
 
 _**13. ábra:** A második sapmnt sapglobal2 gazdagépen kötve, és kötet2 jön létre_
 

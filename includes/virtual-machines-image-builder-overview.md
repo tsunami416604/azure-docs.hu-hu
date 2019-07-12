@@ -5,12 +5,12 @@ ms.date: 04/30/2019
 ms.topic: include
 ms.service: virtual-machines-linux
 manager: jeconnoc
-ms.openlocfilehash: 6eedc095f155a77cddf48211dbc4a677bf188112
-ms.sourcegitcommit: 837dfd2c84a810c75b009d5813ecb67237aaf6b8
+ms.openlocfilehash: 55d73b2602a9a862375ca3e72dee4597c1d6f1d6
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67509857"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67659823"
 ---
 Szabványos virtuális gép (VM) rendszerképek lehetővé teszik a szervezetek migrálása a felhőbe, és győződjön meg, hogy a központi telepítések egységességét. Képek rendszerint előre definiált biztonsági és a konfigurációs beállításokat és a szükséges szoftvereket. A saját lemezkép-készítési folyamat beállítása szükséges idő, az infrastruktúra és a telepítés, de az Azure virtuális gép az Image Builder, csak adja meg a lemezkép leíró egy egyszerű konfigurálás küldheti el a szolgáltatás és a kép gyártja és forgalmazza.
  
@@ -55,7 +55,7 @@ AIB támogatni fogja az RHEL ISO's, forrásaként:
 - 7\.4 RHEL
 - RHEL 7.5
 
-RHEL 7.6 nem támogatott, de a tesztelt.
+RHEL 7.6 ISO nem támogatottak, de a tesztelt.
 
 ## <a name="how-it-works"></a>Működés
 

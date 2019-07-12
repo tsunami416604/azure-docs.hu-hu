@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/01/2019
 ms.author: genli
 ms.custom: seodec18
-ms.openlocfilehash: c0584a69349c2785b5b6bce1d17c023c95b36151
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0b6bdc884107a522c81d100c0a05018cbc9d0a70
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66136174"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67718284"
 ---
 # <a name="troubleshoot-domain-and-ssl-certificate-problems-in-azure-app-service"></a>Tartomány és az Azure App Service SSL tanúsítvánnyal kapcsolatos problémák elhárítása
 
@@ -301,7 +301,7 @@ Esetén nem kötelező az Azure DNS-ben tároló áttelepítése. Ha szeretné, 
 
 **Szeretném, ha saját tartományt az App Service-tartomány, de üzemeltethet szeretnék a GoDaddy helyett az Azure DNS saját tartomány?**
 
-2017\. július 24-én kezdve a portálon megvásárolt App Service-tartományok Azure DNS-kiszolgálón üzemelnek. Ha szeretné használni egy másik szolgáltatóhoz, meg kell lépnie a webhely-üzemeltetési megoldás tartomány beszerzése.
+2017. július 24-én kezdve a portálon megvásárolt App Service-tartományok Azure DNS-kiszolgálón üzemelnek. Ha szeretné használni egy másik szolgáltatóhoz, meg kell lépnie a webhely-üzemeltetési megoldás tartomány beszerzése.
 
 **Kell fizetnie, a tartomány számára az adatvédelem?**
 
@@ -325,7 +325,6 @@ Kezelheti a tartomány még akkor is, ha nem rendelkezik egy App Service Webappb
 
 **Áthelyezhető egyéni tartományt használó webalkalmazás egy másik előfizetésbe, vagy az App Service Environment-környezet v1, V2?**
 
-Igen, továbbléphet a webalkalmazás, előfizetések között. Kövesse az útmutató [erőforrások áthelyezése az Azure-ban](../azure-resource-manager/resource-group-move-resources.md). Van néhány korlátozás a webalkalmazás áthelyezésekor. További információkért lásd: [App Service-erőforrások áthelyezésére korlátozások](../azure-resource-manager/resource-group-move-resources.md#app-service-limitations
-).
+Igen, továbbléphet a webalkalmazás, előfizetések között. Kövesse az útmutató [erőforrások áthelyezése az Azure-ban](../azure-resource-manager/resource-group-move-resources.md). Van néhány korlátozás a webalkalmazás áthelyezésekor. További információkért lásd: [App Service-erőforrások áthelyezésére korlátozások](../azure-resource-manager/move-limitations/app-service-move-limitations.md).
 
 Helyezze át a web app, ugyanaz a gazdagép neve kötéseket a tartományok beállítása az egyéni tartományok belül kell maradnia. Állítsa be a gazdagép neve kötéseket további lépések nem szükségesek.

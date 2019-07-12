@@ -8,14 +8,14 @@ keywords: ''
 ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: conceptual
-ms.date: 12/07/2018
+ms.date: 07/04/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 76b6f013333113d5a24b744bc962d36b1c0e21b3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: de5019e0f91c92829082aed962bb9633da52b4a9
+ms.sourcegitcommit: af31deded9b5836057e29b688b994b6c2890aa79
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60731115"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67812850"
 ---
 # <a name="durable-functions-types-and-features-azure-functions"></a>Durable Functions-típusok és a szolgáltatások (az Azure Functions)
 
@@ -27,7 +27,7 @@ Ez a cikk áttekintést, a functions-Durable Functions vezénylési használhat�
 
 ## <a name="types-of-durable-functions"></a>Durable functions típusai
 
-Háromféle tartós függvényt is használhatja az Azure Functions: tevékenység, az orchestrator és az ügyfél.
+Négyféle tartós függvényt is használhatja az Azure Functions: tevékenység, az orchestrator, entitás és ügyfél.
 
 ### <a name="activity-functions"></a>Tevékenységfüggvényeket
 
@@ -43,7 +43,7 @@ További információ és példák: [tevékenységfüggvényeket](durable-functi
 
 ### <a name="orchestrator-functions"></a>Az orchestrator-funkciók
 
-Az orchestrator-funkciók a műveletek végrehajtásának módját és a sorrend, amelyben végrehajtás ismertetik. Az orchestrator-funkciók leírása a kódban a vezénylési (C# vagy JavaScript), ahogyan [Durable Functions-minták és technikai kulcsfogalmak](durable-functions-concepts.md). Egy vezénylési műveleteket, beleértve számos különböző típusú rendelkezhet [tevékenységfüggvényeket](#activity-functions), [alárendelt vezénylések](#sub-orchestrations), [külső események Várakozás](#external-events), és [időzítők](#durable-timers). 
+Az orchestrator-funkciók a műveletek végrehajtásának módját és a sorrend, amelyben végrehajtás ismertetik. Az orchestrator-funkciók leírása a kódban a vezénylési (C# vagy JavaScript), ahogyan [Durable Functions-minták és technikai kulcsfogalmak](durable-functions-concepts.md). Egy vezénylési műveleteket, beleértve számos különböző típusú rendelkezhet [tevékenységfüggvényeket](#activity-functions), [alárendelt vezénylések](#sub-orchestrations), [külső események Várakozás](#external-events), és [időzítők](#durable-timers). Az orchestrator-funkciók is kommunikálhatnak [entitás funkciók](#entity-functions).
 
 Az orchestrator függvényének kell elindítható a egy [vezénylési eseményindító](durable-functions-bindings.md#orchestration-triggers).
 
@@ -51,11 +51,18 @@ Az orchestrator indítja el egy [orchestrator ügyfél](#client-functions). Az o
 
 További információ és példák: [Vezénylési eseményindítók](durable-functions-bindings.md#orchestration-triggers).
 
+###  <a name="entity-functions"></a>Entitás funkciók (előzetes verzió)
+
+Entitás függvények határozzák meg a műveletek olvasása és frissítése kisebb kódrészletek, más néven az állapotban *tartós entitások*. Az orchestrator-funkciók, például entitás funkciók a functions és a egy speciális trigger típusa *entitás eseményindító*. Az orchestrator-funkciók, ellentétben entitás függvények nem rendelkezik konkrét kódot korlátozások. Entitás funkciók is állapot kezelése helyett explicit módon implicit módon jelző állapot átvitelvezérlés keresztül.
+
+> [!NOTE]
+> Entitás függvények és a kapcsolódó funkciókat csak akkor használható, az Durable Functions 2.0-s vagy újabb.
+
+Entitás funkciók kapcsolatos további információkért lásd: a [entitás funkciók](durable-functions-preview.md#entity-functions) előzetes verziójú funkciók dokumentációja ismerteti.
+
 ### <a name="client-functions"></a>Ügyfél-funkciók
 
-Ügyfél függvények találhatók aktivált, amely egy vezénylési új példányokat hoz létre. Ügyfél funkciók a belépési pont egy Durable Functions vezénylési példányának létrehozásához. Bármilyen forrásból (HTTP, várólista, esemény-adatfolyam) függvény ügyfél is indíthat. Bármilyen nyelven, az alkalmazás által támogatott ügyfél függvény írhat. 
-
-Ügyfél-funkciók is rendelkezik egy [vezénylési ügyfél](durable-functions-bindings.md#orchestration-client) kötést. Egy ügyfél függvényt használhatja a kötés létrehozásához és kezeléséhez a tartós vezénylések vezénylési ügyfél. 
+Ügyfél függvények olyan aktivált függvényeket vezénylések és entitások példányainak létrehozása és kezelése. Akkor lényegében a belépési pont Durable Functions való interakcióhoz. Bármilyen forrásból (HTTP, várólista, esemény-adatfolyam, stb.) egy ügyfélnek függvényt is indíthat. Egy ügyfél függvényt használja a [kötés vezénylési ügyfél](durable-functions-bindings.md#orchestration-client) való tartós vezénylések és entitások létrehozására és kezelésére.
 
 A legalapvetőbb például egy ügyfél függvényt, egy HTTP-eseményindítóval aktivált függvényt, amely elindítja egy orchestrator-függvényt, és majd a jelölőnégyzet állapotának választ adja vissza. Egy vonatkozó példáért lásd: [HTTP API URL-cím-felderítési](durable-functions-http-api.md#http-api-url-discovery).
 

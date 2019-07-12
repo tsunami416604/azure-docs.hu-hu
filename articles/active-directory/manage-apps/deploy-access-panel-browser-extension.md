@@ -15,12 +15,12 @@ ms.date: 11/08/2018
 ms.author: mimart
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cf665362e2d20f26c17e8a4ae9da29fc30cb47ce
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: 71c342ede77349b3f6c22093e5877ad5f5ce6549
+ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67481292"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67807686"
 ---
 # <a name="how-to-deploy-the-access-panel-extension-for-internet-explorer-using-group-policy"></a>Útmutató: A hozzáférési Panel bővítmény telepítése csoportházirend használatával az Internet Explorer
 
@@ -43,9 +43,11 @@ Először be kell jelölnie a a telepítőcsomag a gépek távolról telepíteni
 1. Az a **Kiszolgálókezelő** ablakban lépjen az **fájl- és tárolási szolgáltatások**.
 
     ![Nyissa meg a fájl- és tárolási szolgáltatások](./media/deploy-access-panel-browser-extension/files-services.png)
+
 1. Nyissa meg a **megosztások** fülre. Kattintson a **feladatok** > **új megosztás...**
 
-    ![Nyissa meg a fájl- és tárolási szolgáltatások](./media/deploy-access-panel-browser-extension/shares.png)
+    ![Képernyőképen látható, hogy hol található az új megosztást, a feladatok képernyő](./media/deploy-access-panel-browser-extension/shares.png)
+
 1. Végezze el a **új megosztás varázsló** , és győződjön meg arról, hogy azt is gépekről érhető el a felhasználók az engedélyekkel. [További információ a megosztásokat.](https://technet.microsoft.com/library/cc753175.aspx)
 1. Töltse le a következő Microsoft Windows Installer-csomag (.msi fájl): [Access Panel Extension.msi](https://account.activedirectory.windowsazure.com/Applications/Installers/x64/Access%20Panel%20Extension.msi)
 1. Másolja a telepítőcsomag a kívánt helyre a megosztáson.
@@ -54,7 +56,7 @@ Először be kell jelölnie a a telepítőcsomag a gépek távolról telepíteni
 
 1. Ellenőrizze, hogy a szerverek, a megosztást a telepítőcsomag elérhetik.
 
-## <a name="step-2-create-the-group-policy-object"></a>2\. lépés: A csoportházirend-objektum létrehozása
+## <a name="step-2-create-the-group-policy-object"></a>2\. lépés: A csoportházirend-objektum létrehozása
 
 1. Jelentkezzen be a kiszolgáló, amely az Active Directory Domain Services (AD DS) telepítése.
 1. Nyissa meg a Server Manager **eszközök** > **csoportházirend-kezelő**.
@@ -80,13 +82,14 @@ Először be kell jelölnie a a telepítőcsomag a gépek távolról telepíteni
 
    * `Computer Configuration/Policies/Software Settings/`
    * `User Configuration/Policies/Software Settings/`
+
 1. Kattintson a jobb gombbal **Szoftvertelepítés**, majd **új** > **csomag...**
 1. Nyissa meg a megosztott mappához, amely tartalmazza a telepítőcsomag a [1. lépés: A terjesztési pont létrehozásának](#step-1-create-the-distribution-point), válassza ki az .msi fájlt, és kattintson a **nyílt**.
 
    > [!IMPORTANT]
    > Ha a megosztáshoz a ugyanazon a kiszolgálón található, győződjön meg arról, hogy Ön keresztül érik el az .msi fájl hálózati elérési útját, nem pedig a helyi fájl elérési útját.
 
-    ![A megosztott mappát a telepítési csomag kiválasztása](./media/deploy-access-panel-browser-extension/select-package.png)
+    ![A megosztott mappából a telepítési csomag kiválasztása](./media/deploy-access-panel-browser-extension/select-package.png)
 
 1. Az a **szoftver központi telepítése** kérdés, jelölje be **hozzárendelt** a központi telepítési módszer. Ezután kattintson az **OK** gombra.
 
@@ -100,6 +103,7 @@ A telepítő futtatása mellett minden az Internet Explorer-bővítmény explici
 
    * `Computer Configuration/Policies/Administrative Templates/Windows Components/Internet Explorer/Security Features/Add-on Management`
    * `User Configuration/Policies/Administrative Templates/Windows Components/Internet Explorer/Security Features/Add-on Management`
+
 1. Kattintson a jobb gombbal **Bővítménylista**, és válassza ki **szerkesztése**.
 
     ![Kattintson a jobb gombbal a "Bővítménylista", és válassza a "Szerkesztés"](./media/deploy-access-panel-browser-extension/edit-add-on-list.png)
@@ -111,8 +115,8 @@ A telepítő futtatása mellett minden az Internet Explorer-bővítmény explici
 1. Az a **tartalom megjelenítése** ablakban hajtsa végre az alábbi lépéseket:
 
    1. Az első oszlop (a **Azonosítónév** mező), másolja és illessze be a következő osztály azonosítója: `{030E9A3F-7B18-4122-9A60-B87235E4F59E}`
-   2. A második oszlop (a **érték** mező), a következő értéket írja be: `1`
-   3. Kattintson a **OK** gombra kattintva zárja be a **tartalom megjelenítése** ablak.
+   1. A második oszlop (a **érték** mező), a következő értéket írja be: `1`
+   1. Kattintson a **OK** gombra kattintva zárja be a **tartalom megjelenítése** ablak.
 
       ![Töltse ki az értékeket az előző lépésben megadott](./media/deploy-access-panel-browser-extension/show-contents.png)
 
@@ -160,7 +164,7 @@ Győződjön meg arról, ha a bővítmény telepítése sikeres volt-e az alább
 1. Nyissa meg az újraindítás után **az Internet Explorer**. Az ablak jobb felső sarkában kattintson **eszközök** (a fogaskerék ikonra), majd válassza ki **bővítmények kezelése**.
 1. Az a **bővítmények kezelése** ablakban ellenőrizze, hogy a **hozzáférési Panel bővítmény** telepítve van, és hogy annak **állapota** értékre lett állítva **engedélyezve**.
 
-   ![Győződjön meg arról, hogy a hozzáférési Panel bővítmény telepítve és engedélyezve van.](./media/deploy-access-panel-browser-extension/verify-install.png)
+   ![Győződjön meg arról, hogy a hozzáférési Panel bővítmény telepítve és engedélyezve van](./media/deploy-access-panel-browser-extension/verify-install.png)
 
 ## <a name="learn-more"></a>Részletek
 

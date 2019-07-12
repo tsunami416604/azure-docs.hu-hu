@@ -5,38 +5,38 @@ services: functions
 author: cgillum
 manager: jeconnoc
 keywords: ''
-ms.service: functions
+ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: article
-ms.date: 04/23/2019
+ms.date: 07/08/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 8ceb84ab9e9c41ff6a9cbde62571fb12ae67d790
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7101519aa4a87995dac3a7f11046eed84a2c09b6
+ms.sourcegitcommit: af31deded9b5836057e29b688b994b6c2890aa79
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65596078"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67812764"
 ---
 # <a name="durable-functions-20-preview-azure-functions"></a>Durable Functions 2.0 – előzetes verzió (az Azure Functions)
 
 *Durable Functions* kiterjesztése [Azure Functions](../functions-overview.md) és [Azure webjobs-feladatok](../../app-service/web-sites-create-web-jobs.md) , amellyel írási állapot-nyilvántartó functions egy kiszolgáló nélküli környezetben. A bővítmény automatikusan kezeli az állapotokat, az ellenőrzőpontokat és az újraindításokat. Ha még nem ismeri a Durable Functions, tekintse meg a [áttekintése dokumentáció](durable-functions-overview.md).
 
-Durable Functions az Azure Functions szolgáltatása általánosan elérhető (az általánosan elérhető), de több alfunkció, amely jelenleg nyilvános előzetes verzióban is tartalmaz. Ez a cikk ismerteti az újonnan kiadott előzetes verziójú funkciók és lépnek részletek hogyan működnek és hogyan megkezdheti őket.
+Durable Functions 1.x funkció az Azure Functions általánosan elérhető (az általánosan elérhető), de számos alfunkció, amely jelenleg nyilvános előzetes verzióban is tartalmaz. Ez a cikk ismerteti az újonnan kiadott előzetes verziójú funkciók és lépnek részletek hogyan működnek és hogyan megkezdheti őket.
 
 > [!NOTE]
-> Durable Functions 2.0 kiadás, amely jelenleg ezen előzetes verziójú funkciók tartoznak egy **kiadás az alfa minőségi** a több kompatibilitástörő változásokat. Az Azure Functions tartós kiterjesztési csomagot hoz létre található formájában verzióival nuget.org webhelyen **2.0.0-alpha**. Ezek a buildek nem megfelelő az éles számítási feladatokat, és későbbi kiadásokban további kompatibilitástörő változásokat tartalmazhat.
+> Durable Functions 2.0 kiadás, amely jelenleg ezen előzetes verziójú funkciók tartoznak egy **előzetes verziójának minőségét** a több kompatibilitástörő változásokat. Az Azure Functions tartós kiterjesztési csomagot hoz létre található formájában verzióival nuget.org webhelyen **2.0.0-betaX**. Ezek a buildek éles üzemi használatra nem alkalmasak, és a későbbi kiadásokban további kompatibilitástörő változásokat tartalmazhat.
 
 ## <a name="breaking-changes"></a>Kompatibilitástörő változások
 
 Durable Functions 2.0 számos kompatibilitástörő változásokat jelennek meg. Meglévő alkalmazások kódmódosítás nélkül Durable Functions 2.0-val kompatibilis nem várt. Ez a szakasz néhány változását ismerteti:
 
-### <a name="dropping-net-framework-support"></a>.NET-keretrendszer támogatási eldobása
-
-Durable Functions 2.0 támogatása, .NET-keretrendszer (és így függvények 1.0) el lett dobva. Az elsődleges oka nem Windows közreműködők hozhat létre és tesztelheti a módosításokat a macOS és Linux platformokon vállalnak Durable Functions engedélyezéséhez. A másodlagos okból azt javasoljuk a fejlesztők számára, hogy helyezze át az Azure Functions futtatókörnyezet legújabb verziójára.
-
 ### <a name="hostjson-schema"></a>Host.json schema
 
-Az alábbi kódrészlet bemutatja az új host.json sémája. Érdemes figyelembe vennie a fő módosítás az új `"storageProvider"` szakaszt, és a `"azureStorage"` szakasz alatta. Ez a módosítás azért volt szükség, támogatja a [az eredetitől eltérő tárolási szolgáltatók](durable-functions-preview.md#alternate-storage-providers).
+Az alábbi kódrészlet bemutatja az új host.json sémája. A fő módosítások érdemes figyelembe vennie az új struktúrát:
+
+* `"storageProvider"` (és a `"azureStorage"` vonatkozó szakaszt) a storage-specifikus konfigurációs
+* `"tracking"` a nyomon követés és a naplózási konfiguráció
+* `"notifications"` (és a `"eventGrid"` alszakasz) az event grid értesítési konfiguráció
 
 ```json
 {
@@ -56,19 +56,25 @@ Az alábbi kódrészlet bemutatja az új host.json sémája. Érdemes figyelembe
           "maxQueuePollingInterval": <hh:mm:ss?>
         }
       },
+      "tracking": {
+        "traceInputsAndOutputs": <bool?>,
+        "traceReplayEvents": <bool?>,
+      },
+      "notifications": {
+        "eventGrid": {
+          "topicEndpoint": <string?>,
+          "keySettingName": <string?>,
+          "publishRetryCount": <string?>,
+          "publishRetryInterval": <hh:mm:ss?>,
+          "publishRetryHttpStatus": <int[]?>,
+          "publishEventTypes": <string[]?>,
+        }
+      },
       "maxConcurrentActivityFunctions": <int?>,
       "maxConcurrentOrchestratorFunctions": <int?>,
-      "traceInputAndOutputs": <bool?>,
-      "eventGridTopicEndpoint": <string?>,
-      "eventGridKeySettingName": <string?>,
-      "eventGridPublishRetryCount": <string?>,
-      "eventGridPublishRetryInterval": <hh:mm:ss?>,
-      "eventGridPublishRetryHttpStatus": <int[]?>,
-      "eventgridPublishEventTypes": <string[]?>,
-      "customLifeCycleNotificationHelperType"
       "extendedSessionsEnabled": <bool?>,
       "extendedSessionIdleTimeoutInSeconds": <int?>,
-      "logReplayEvents": <bool?>
+      "customLifeCycleNotificationHelperType": <string?>
   }
 }
 ```
@@ -93,27 +99,27 @@ Abban az esetben, ha az egy absztrakt alaposztálya tartalmazott virtuální met
 
 Entitás függvények határozzák meg a műveletek olvasása és frissítése kisebb kódrészletek, más néven az állapotban *tartós entitások*. Az orchestrator-funkciók, például entitás funkciók a functions és a egy speciális trigger típusa *entitás eseményindító*. Az orchestrator-funkciók, ellentétben entitás függvények nem rendelkezik konkrét kódot korlátozások. Entitás funkciók is állapot kezelése helyett explicit módon implicit módon jelző állapot átvitelvezérlés keresztül.
 
-Az alábbi kód egy egyszerű entitás függvény, amely meghatározza a példája egy *számláló* entitás. A függvény meghatározza a három műveleti `add`, `subtract`, és `reset`, minden, ami frissíteni egy egész számot `currentValue`.
+### <a name="net-programing-models"></a>.NET olyan programozási modellek
+
+Nincsenek két választható programozási modellek készítése tartós entitásokat. Az alábbi kód egy egyszerű példája *számláló* entitás standard függvény implementálva. Ez a függvény meghatározza a három *műveletek*, `add`, `reset`, és `get`, minden egyes művelethez állapot egész szám, amely a `currentValue`.
 
 ```csharp
 [FunctionName("Counter")]
-public static async Task Counter(
-    [EntityTrigger] IDurableEntityContext ctx)
+public static void Counter([EntityTrigger] IDurableEntityContext ctx)
 {
     int currentValue = ctx.GetState<int>();
-    int operand = ctx.GetInput<int>();
 
-    switch (ctx.OperationName)
+    switch (ctx.OperationName.ToLowerInvariant())
     {
         case "add":
+            int amount = ctx.GetInput<int>();
             currentValue += operand;
             break;
-        case "subtract":
-            currentValue -= operand;
-            break;
         case "reset":
-            await SendResetNotificationAsync();
             currentValue = 0;
+            break;
+        case "get":
+            ctx.Return(currentValue);
             break;
     }
 
@@ -121,16 +127,38 @@ public static async Task Counter(
 }
 ```
 
+Ez a modell felel meg leginkább az egyszerű entitás megvalósításokhoz, vagy megvalósításokhoz, amelyeken dinamikus számos műveletet. Azonban van egy osztály-alapú programozási modellt, amely statikus, de összetett megvalósításokhoz rendelkező entitások esetén hasznos. Az alábbi példában egy azzal egyenértékű megvalósítását a `Counter` entitás .NET-osztályok és módszerek használata.
+
+```csharp
+public class Counter
+{
+    [JsonProperty("value")]
+    public int CurrentValue { get; set; }
+
+    public void Add(int amount) => this.CurrentValue += amount;
+    
+    public void Reset() => this.CurrentValue = 0;
+    
+    public int Get() => this.CurrentValue;
+
+    [FunctionName(nameof(Counter))]
+    public static Task Run([EntityTrigger] IDurableEntityContext ctx)
+        => ctx.DispatchAsync<Counter>();
+}
+```
+
+Az osztály-alapú modell hasonlít a programozási modell szerint popularized [Orleans](https://www.microsoft.com/research/project/orleans-virtual-actors/). Ebben a modellben az entitástípusokra számít, ha egy .NET-osztály. Az osztály minden egyes módszer egy művelet egy külső ügyfél által meghívható műveletkészletet jelölnek. Orleans eltérően azonban .NET felületek megadása nem kötelező. Az előző *számláló* példa nem használja egy felületet, de továbbra is elindítható a HTTP API-hívások vagy egyéb funkciók keresztül.
+
 Entitás *példányok* érhetők el egy egyedi azonosítót a *Entitásazonosító*. Egy entitás csomagazonosítója egyszerűen két karakterláncot, amely egyértelműen azonosít egy entitáspéldányt. Ez a következőkből áll:
 
-1. egy **entitásnév**: egy nevet, amely azonosítja az entitást típusa (például, "Számláló")
-2. egy **entitáskulcs**: egy karakterlánc, amely egyedileg azonosítja az entitást, minden más entitásét az azonos nevű (például egy GUID-azonosítója) között
+* Egy **entitásnév**: egy nevet, amely azonosítja az entitást típusa (például, "Számláló").
+* Egy **entitáskulcs**: egy karakterlánc, amely egyedileg azonosítja az entitást, minden más entitásét az azonos nevű (például egy GUID-azonosítója) között.
 
 Ha például egy *számláló* entitás függvény használhatók például egy online játéka pontszám tartja. A játék minden példánya lesz egy egyedi entitás azonosítója például `@Counter@Game1`, `@Counter@Game2`, és így tovább.
 
 ### <a name="comparison-with-virtual-actors"></a>A virtuális actors összehasonlítása
 
-Tartós entitások kialakítása jelentősen befolyásolja a [actor modell](https://en.wikipedia.org/wiki/Actor_model). Ha már ismeri a actors, tartós entitások fogalmakat ismerős lehet. Különösen tartós entitások hasonlóak a [virtuális actors](https://research.microsoft.com/en-us/projects/orleans/) számos módon:
+Tartós entitások kialakítása jelentősen befolyásolja a [actor modell](https://en.wikipedia.org/wiki/Actor_model). Ha már ismeri a actors, tartós entitások fogalmakat ismerős lehet. Különösen tartós entitások hasonlóak a [virtuális actors](https://research.microsoft.com/projects/orleans/) számos módon:
 
 * Tartós entitások címezhető keresztül legyenek egy *Entitásazonosító*.
 * Tartós entitás műveletek végrehajtása tárolókonfigurációhoz, egyenként, olyan versenyhelyzetekben elkerülése érdekében.
@@ -139,23 +167,22 @@ Tartós entitások kialakítása jelentősen befolyásolja a [actor modell](http
 
 Van néhány fontos eltérés azonban, amelyek megjegyezni:
 
-* Tartós entitások tiszta funkciók vannak modellezve. Ez a kialakítás különbözik a legtöbb actors osztályok, tulajdonságok és metódusok használatával a nyelvspecifikus támogatási képviselő objektum-orientált keretrendszereket.
 * Tartós entitások rangsorolhatja *tartóssági* keresztül *késés*, és így nem lehet szigorú késési követelményekkel rendelkező alkalmazások esetében.
 * Entitások között küldött üzenetek megbízható és sorrendben érkeznek.
 * Tartós entitások tartós vezénylések együtt is használható, és elosztott zárolásokat, ez a cikk egy későbbi része ismerteti, amely alapul szolgálhat.
 * Az entitások kérés/válasz minták vezénylések korlátozódnak. Entitás kommunikációhoz (a más néven "jelzés") csak egyirányú üzenetek engedélyezve vannak, mint az eredeti actor modell. Ez a viselkedés megakadályozza, hogy elosztott holtpontok.
 
-### <a name="durable-entity-apis"></a>Tartós entitás API-k
+### <a name="durable-entity-net-apis"></a>Tartós entitás .NET API-k
 
 Entitás-támogatás magában foglalja a több API-t. Egy van egy új API definiálása entitások funkciók, jelennek meg, amely adja meg, hogy mi történjen, ha a művelet meghívása egy entitására. Emellett a meglévő API-k, az ügyfelek és a vezénylések frissítve lett-e az új funkciókkal entitások való együttműködéshez szükséges.
 
-### <a name="implementing-entity-operations"></a>Entitás műveletek végrehajtása
+#### <a name="implementing-entity-operations"></a>Entitás műveletek végrehajtása
 
 Egy entitás egy művelet végrehajtását ezekről a tagokról meghívhatja a környezeti objektumon (`IDurableEntityContext` a .NET-ben):
 
 * **OperationName**: a művelet nevét olvassa be.
-* **GetInput\<T >** : a bemeneti adatok beolvasása a művelethez.
-* **GetState\<T >** : az entitás aktuális állapotát.
+* **GetInput\<TInput >** : a bemeneti adatok beolvasása a művelethez.
+* **GetState\<TState >** : az entitás aktuális állapotát.
 * **SetState**: frissíti az entitás állapotát.
 * **SignalEntity**: egyirányú üzenetet küld az entitáshoz.
 * **Önkiszolgáló**: lekérdezi az entitás azonosítója.
@@ -168,24 +195,90 @@ Kevesebb korlátozott, mint a vezénylések műveletek a következők:
 * Műveletek segítségével meghívhatja a külső I/O (azt javasoljuk, hogy csak az aszinkron azokat) szinkron vagy aszinkron API-k használatával.
 * Lehet, hogy a műveletek nem determinisztikus. Ha például biztonságosan meg lehet hívni `DateTime.UtcNow`, `Guid.NewGuid()` vagy `new Random()`.
 
-### <a name="accessing-entities-from-clients"></a>Az ügyfelek a entitások elérése
+#### <a name="accessing-entities-from-clients"></a>Az ügyfelek a entitások elérése
 
 Tartós entitásokat is elindítható a normál funkciók segítségével a `orchestrationClient` kötés (`IDurableOrchestrationClient` a .NET-ben). A következő módszereket támogatja:
 
 * **ReadEntityStateAsync\<T >** : beolvassa egy entitás állapotát.
 * **SignalEntityAsync**: egyirányú üzenetet küld egy entitás, és megvárja, hogy a várólistán lévő el.
+* **SignalEntityAsync\<T >** : ugyanaz, mint a `SignalEntityAsync` egy létrehozott proxytípus típusú objektumot használ, de `T`.
 
-Ezek a metódusok teljesítmény rangsorolhatja konzisztencia keresztül: `ReadEntityStateAsync` térhet vissza a régi értéket, és `SignalEntityAsync` adhatnak vissza, mielőtt befejezte a műveletet. Ezzel szemben a vezénylések megismernie entitások (következő) módon erősen konzisztens.
+Az előző `SignalEntityAsync` meghívásához szükséges, hogy az a entitás műveletet, mert a név megadása egy `string` és a hasznos a műveletet, mert egy `object`. Az alábbi mintakód Ez a minta egy példát:
 
-### <a name="accessing-entities-from-orchestrations"></a>A vezénylések entitások elérése
+```csharp
+EntityId id = // ...
+object amount = 5;
+context.SignalEntityAsync(id, "Add", amount);
+```
 
-Vezénylések férhetnek hozzá a context objektumot használatával. Ezek egyirányú kommunikációs választhat (indul el, és felejtse el) és a kétirányú kommunikáció (kérések és válaszok). A megfelelő módszerek
+Akkor is egy proxy típusa – biztonságos hozzáférést objektumot létrehozni. Típus környezetben is biztonságos proxy létrehozni, az entitástípus musí implementovat rozhraní. Tegyük fel például, hogy a `Counter` megvalósítva a korábban említett entitás egy `ICounter` felületen, a következők:
+
+```csharp
+public interface ICounter
+{
+    void Add(int amount);
+    void Reset();
+    int Get();
+}
+
+public class Counter : ICounter
+{
+    // ...
+}
+```
+
+Ügyfélkód aztán használhatja `SignalEntityAsync<T>` , és adja meg a `ICounter` felület típus környezetben is biztonságos proxy létrehozása típusát paraméterként. Ezen típusa környezetben is biztonságos proxyk használatát mutatják be a következő mintakód:
+
+```csharp
+[FunctionName("UserDeleteAvailable")]
+public static async Task AddValueClient(
+    [QueueTrigger("my-queue")] string message,
+    [OrchestrationClient] IDurableOrchestrationClient client)
+{
+    int amount = int.Parse(message);
+    var target = new EntityId(nameof(Counter), "MyCounter");
+    await client.SignalEntityAsync<ICounter>(target, proxy => proxy.Add(amount));
+}
+```
+
+Az előző példában a `proxy` paraméter egy dinamikusan előállított példányát `ICounter`, amelyek belsőleg lefordítja a hívást `Add` irányuló hívás a megfelelő (a típus nélküli) `SignalEntityAsync`.
+
+> [!NOTE]
+> Fontos megjegyezni, hogy a `ReadEntityStateAsync` és `SignalEntityAsync` módszerek `IDurableOrchestrationClient` rangsorolhatja a teljesítmény felett konzisztencia. `ReadEntityStateAsync` Lépjen vissza a régi értéket és `SignalEntityAsync` adhatnak vissza, mielőtt befejezte a műveletet.
+
+#### <a name="accessing-entities-from-orchestrations"></a>A vezénylések entitások elérése
+
+Vezénylések hozzáférhet az entitásoknak a `IDurableOrchestrationContext` objektum. Ezek egyirányú kommunikációs választhat (indul el, és felejtse el) és a kétirányú kommunikáció (kérések és válaszok). A megfelelő módszerek a következők:
 
 * **SignalEntity**: egyirányú üzenetet küld az entitáshoz.
 * **CallEntityAsync**: egy üzenetet küld egy entitás, és megvárja, amíg egy választ, amely jelzi, hogy a művelet befejeződött.
 * **CallEntityAsync\<T >** : egy üzenetet küld egy entitás, és megvárja, amíg egy választ, amely tartalmazza a T. típusú eredményt
 
 Kétirányú kommunikáció használatakor az olyan kivételek, a művelet végrehajtása közben lépett fel is továbbítják a hívó vezénylési és rethrown. Ezzel szemben a fire és elfelejt használatakor az kivételek nem érvényesek.
+
+A típus környezetben is biztonságos eléréséhez orchestration funkciók proxyk illesztőfelületet alapján hozhatja létre. A `CreateEntityProxy` metódust erre a célra használható:
+
+```csharp
+public interface IAsyncCounter
+{
+    Task AddAsync(int amount);
+    Task ResetAsync();
+    Task<int> GetAsync();
+}
+
+[FunctionName("CounterOrchestration)]
+public static async Task Run(
+    [OrchestrationTrigger] IDurableOrchestrationContext context)
+{
+    // ...
+    IAsyncCounter proxy = context.CreateEntityProxy<IAsyncCounter>("MyCounter");
+    await proxy.AddAsync(5);
+    int newValue = await proxy.GetAsync();
+    // ...
+}
+```
+
+Az előző példában egy "számláló" entitás lett feltételezi, hogy létezik, amely megvalósítja a `IAsyncCounter` felületet. A vezénylési innentől használhatja a `IAsyncCounter` típusdefiníció szinkron módon való interakcióhoz az entitás proxytípusa létrehozásához.
 
 ### <a name="locking-entities-from-orchestrations"></a>A vezénylések zárolási entitások
 
@@ -282,4 +375,4 @@ A [DurableTask.Redis](https://www.nuget.org/packages/Microsoft.Azure.DurableTask
 A `connectionStringName` hivatkoznia kell egy alkalmazás beállítás vagy a környezeti változó neve. Adott alkalmazás beállítás vagy a környezeti változó tartalmaznia kell egy Redis kapcsolati karakterlánc értékét formájában *server: port*. Ha például `localhost:6379` helyi Redis-fürttel való kapcsolódáshoz.
 
 > [!NOTE]
-> A Redis-szolgáltató jelenleg kísérleti, és csak az egyetlen csomóponton futó függvény alkalmazásokat támogatja.
+> A Redis-szolgáltató jelenleg kísérleti, és csak az egyetlen csomóponton futó függvény alkalmazásokat támogatja. Nem garantált, hogy a Redis-szolgáltató minden eddiginél lesz általánosan elérhető, és a egy későbbi kiadásban eltávolítható.

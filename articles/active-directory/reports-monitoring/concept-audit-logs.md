@@ -17,12 +17,12 @@ ms.date: 11/13/2018
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3da96c09026baff3965e0a90d1f461fd948a3a50
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 59f716ccd7b2e02c9064f13cf1ffd6e8180858c9
+ms.sourcegitcommit: 441e59b8657a1eb1538c848b9b78c2e9e1b6cfd5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60441016"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67827911"
 ---
 # <a name="audit-activity-reports-in-the-azure-active-directory-portal"></a>Naplózott tevékenységekre vonatkozó jelentések az Azure Active Directory portálon 
 
@@ -41,7 +41,7 @@ Ez a cikk áttekintést, a naplózási jelentésben.
  
 ## <a name="who-can-access-the-data"></a>Ki férhet hozzá az adatokhoz?
 
-* A felhasználók a **biztonsági rendszergazdai**, **biztonsági olvasó**, **jelentés olvasó** vagy **globális rendszergazdai** szerepkörök
+* A felhasználók a **biztonsági rendszergazda**, **biztonsági olvasó**, **jelentés olvasó** vagy **globális rendszergazdai** szerepkörök
 * Emellett minden felhasználója (nem rendszergazda) láthatja-e a saját naplózási tevékenységek
 
 ## <a name="audit-logs"></a>Naplók
@@ -111,8 +111,8 @@ A **kategória** szűrővel az alábbi szűrők egyikét választhatja ki:
 - Összes
 - AdministrativeUnit
 - ApplicationManagement
-- Hitelesítés
-- Engedélyezés
+- Authentication
+- Authorization
 - Kapcsolattartó
 - Eszköz
 - DeviceConfiguration
@@ -140,7 +140,7 @@ A **cél** szűrő lehetővé teszi, hogy egy adott célhoz keresése név vagy 
 A **által kezdeményezett** szűrő lehetővé teszi egy szereplő nevének vagy egy univerzális egyszerű felhasználónév (UPN). A nevét és az egyszerű felhasználónév-és nagybetűk.
 
 A **dátumtartomány** szűrővel időkeretet lehet a visszaadott adatokhoz.  
-Lehetséges értékek:
+Lehetséges értékek a következők:
 
 - 1 hónap
 - 7 nap

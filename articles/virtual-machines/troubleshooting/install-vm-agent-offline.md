@@ -4,7 +4,7 @@ description: Útmutató az Azure Virtuálisgép-ügynök telepítése kapcsolat 
 services: virtual-machines-windows
 documentationcenter: ''
 author: genlin
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 ms.service: virtual-machines-windows
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: e9fc8351b5e9a4f2274f0906d4071f86dcbcff26
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: c282a739ad55d6f2c5fcbe3b3a1a69541a7350cd
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60640633"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67705787"
 ---
 # <a name="install-the-azure-virtual-machine-agent-in-offline-mode"></a>Az Azure virtuálisgép-ügynök telepítése kapcsolat nélküli módban 
 
@@ -52,7 +52,7 @@ Az alábbi lépések segítségével Virtuálisgép-ügynök telepítése kapcso
 
 3.  Csatlakozzon a hibaelhárító virtuális Géphez. Nyissa meg **számítógép-kezelés** > **lemez kezelése**. Győződjön meg arról, hogy online állapotban-e az operációsrendszer-lemez és, hogy a meghajtóbetűjelek lemezpartícióinak legyenek-e rendelve.
 
-### <a name="step-2-modify-the-os-disk-to-install-the-azure-vm-agent"></a>2\. lépés: Az Azure Virtuálisgép-ügynök telepítése az operációsrendszer-lemez módosítása
+### <a name="step-2-modify-the-os-disk-to-install-the-azure-vm-agent"></a>2\. lépés: Az Azure Virtuálisgép-ügynök telepítése az operációsrendszer-lemez módosítása
 
 1.  Végezzen egy távoli asztali kapcsolatot a hibaelhárító virtuális Géphez.
 

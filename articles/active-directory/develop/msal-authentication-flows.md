@@ -17,12 +17,12 @@ ms.author: ryanwi
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 821143d39f8a4c06501ee38ef598a9d06d267d72
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: b7ba6ae188c098e85573503a1518ba65480d713a
+ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67273114"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67807214"
 ---
 # <a name="authentication-flows"></a>Hitelesítési folyamatok
 
@@ -166,7 +166,7 @@ IWA olyan .NET-keretrendszer, a .NET Core és az univerzális Windows Platform-p
 
 IWA nem a multi-factor authentication kihagyásához. Ha a multi-factor authentication szolgáltatás van konfigurálva, IWA meghiúsulhat, ha a multi-factor authentication kihívást megadása kötelező. A multi-factor authentication felhasználói beavatkozást igényel.
 
-Nem szabályozhatja, amikor az identitásszolgáltató igényel a kéttényezős hitelesítést kell elvégezni. A bérlői rendszergazda hajtja végre. Általában kétfaktoros hitelesítés kötelező, ha bejelentkezik a más országban, amikor nincs csatlakozva VPN-en keresztül a vállalati hálózathoz és néha még ha csatlakozott VPN-en keresztül. Az Azure AD mesterséges Intelligencia használatával folyamatosan ismerje meg, ha a kétfaktoros hitelesítés szükség. IWA meghiúsul, ha meg kell térhet vissza a felhasználói kérés (https://aka.ms/msal-net-interactive).
+Nem szabályozhatja, amikor az identitásszolgáltató igényel a kéttényezős hitelesítést kell elvégezni. A bérlői rendszergazda hajtja végre. Általában kétfaktoros hitelesítés kötelező, ha bejelentkezik a más országban, amikor nincs csatlakozva VPN-en keresztül a vállalati hálózathoz és néha még ha csatlakozott VPN-en keresztül. Az Azure AD mesterséges Intelligencia használatával folyamatosan ismerje meg, ha a kétfaktoros hitelesítés szükség. Ha IWA nem sikerül, akkor kell térhet vissza egy [interaktív felhasználói kérés] (#interactive).
 
 A szolgáltató átadott amikor hozhat létre, amely a nyilvános ügyfélalkalmazás kell lennie a következők egyikét:
 - Bérlős (a képernyő `https://login.microsoftonline.com/{tenant}/` ahol `tenant` vagy a bérlői azonosító vagy egy tartományhoz a tenanthoz társított képviselő GUID).

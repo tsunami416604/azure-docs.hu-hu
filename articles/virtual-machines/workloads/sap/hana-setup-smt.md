@@ -4,7 +4,7 @@ description: Hogyan állítható be SMT server, SAP Hana az Azure-ban (nagymére
 services: virtual-machines-linux
 documentationcenter: ''
 author: hermanndms
-manager: jeconnoc
+manager: gwallace
 editor: ''
 ms.service: virtual-machines-linux
 ms.devlang: NA
@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 09/10/2018
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 690f41e941f2d1db8fc92d225a54d07570299222
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 879bea079a5de6558b20edfc05ba432c98254c9b
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60478011"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67707375"
 ---
 # <a name="set-up-smt-server-for-suse-linux"></a>SUSE Linux SMT kiszolgáló beállítása
 Nagy példányok, SAP HANA nincs közvetlen kapcsolódás az internethez. Nem egy ilyen egység regisztrálja az operációs rendszer szolgáltatót, és a letöltés és frissítések alkalmazása egy egyszerű folyamatot. SUSE Linux-megoldás, hogy egy Azure virtuális gépen SMT kiszolgáló beállítása. Az Azure virtuális hálózat, amely kapcsolódik a HANA nagyméretű példányok az a virtuális gép működtetéséhez. Az ilyen az SMT kiszolgálóval a nagyméretű HANA-példány egység sikerült regisztrálása és a frissítések letöltése. 

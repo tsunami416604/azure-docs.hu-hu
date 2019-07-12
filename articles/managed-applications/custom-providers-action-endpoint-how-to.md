@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.author: jobreen
 author: jjbfour
 ms.date: 06/20/2019
-ms.openlocfilehash: 1bfc0be81d42e922c47755543fb65aa413ec73a9
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: 6fbd20c201e1b141b7276e3283599b00cdefd118
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67478757"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67795301"
 ---
 # <a name="adding-custom-actions-to-azure-rest-api"></a>Az egyéni műveletek hozzáadása az Azure REST API-val
 
@@ -132,9 +132,9 @@ az resource invoke-action --action {actionName} \
                             }'
 ```
 
-Paraméter | Kötelező | Leírás
+Paraméter | Szükséges | Leírás
 ---|---|---
-action | *igen* | A művelet a megadott nevét, a **ResourceProvider**.
+a művelet | *igen* | A művelet a megadott nevét, a **ResourceProvider**.
 azonosítók | *igen* | Az erőforrás-Azonosítóját a **ResourceProvider**.
 kérelem – törzs | *no* | A kérés törzse, amely küld a **végpont**.
 
@@ -186,7 +186,7 @@ Példa az Azure Resource Manager-sablon:
 }
 ```
 
-Paraméter | Kötelező | Leírás
+Paraméter | Szükséges | Leírás
 ---|---|---
 resourceIdentifier | *igen* | Az erőforrás-Azonosítóját a **ResourceProvider**.
 apiVersion | *igen* | Az erőforrás-futtatókörnyezet API verziója. Ez mindig legyen "2018-09-01-preview".
@@ -195,5 +195,6 @@ functionValues | *no* | A kérés törzse, amely küld a **végpont**.
 ## <a name="next-steps"></a>További lépések
 
 - [Az Azure egyéni erőforrás-szolgáltatók áttekintése](./custom-providers-overview.md)
-- [Oktatóanyag: Az Azure egyéni erőforrás-szolgáltató létrehozása és telepítése az egyéni erőforrások](./create-custom-provider.md)
+- [Rövid útmutató: Az Azure egyéni erőforrás-szolgáltató létrehozása és telepítése az egyéni erőforrások](./create-custom-provider.md)
+- [Oktatóanyag: Egyéni műveletek és az erőforrások létrehozása az Azure-ban](./tutorial-custom-providers-101.md)
 - [Útmutató: Egyéni erőforrások hozzáadása az Azure REST API-val](./custom-providers-resources-endpoint-how-to.md)

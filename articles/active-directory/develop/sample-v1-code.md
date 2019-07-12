@@ -18,12 +18,12 @@ ms.author: ryanwi
 ms.reviewer: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 302e8edcf6cad16644a454fd9b56b42ffd1fab61
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: ca03c8d52de1580b755833dd990d1d7671f372ca
+ms.sourcegitcommit: 1572b615c8f863be4986c23ea2ff7642b02bc605
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67482555"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67785703"
 ---
 # <a name="azure-active-directory-code-samples-v10-endpoint"></a>Az Azure Active Directory-Kódminták (1.0-s verziójú végpont)
 
@@ -58,7 +58,7 @@ A következő példák bemutatják, felhasználók aláírási webes alkalmazás
  Platform | Csak a felhasználó bejelentkezik | Hívások a Microsoft Graph vagy az AAD Graph| Egy másik ASP.NET- vagy ASP.NET Core 2.0-s webes API-hívások
  -------- | ------------------- | --------------------- | -------------------------
 ![Az ábra az ASP.NET-embléma](media/sample-v2-code/logo_NETcore.png)</p>ASP.NET Core 2.0 | [dotnet-webapp-openidconnect-aspnetcore](https://github.com/Azure-Samples/active-directory-dotnet-webapp-openidconnect-aspnetcore) | [webapp-webapi-multitenant-openidconnect-aspnetcore](https://github.com/Azure-Samples/active-directory-webapp-webapi-multitenant-openidconnect-aspnetcore/) </p>(Az AAD Graph) | [dotnet-webapp-webapi-openidconnect-aspnetcore](https://github.com/Azure-Samples/active-directory-dotnet-webapp-webapi-openidconnect-aspnetcore)
-![Az ábra az ASP.NET-embléma](media/sample-v2-code/logo_NETframework.png)</p> ASP.NET 4.5 | [webApp-openidconnect-dotnet](https://docs.microsoft.com/azure/active-directory/develo/pguidedsetups/active-directory-aspnetwebapp-v1) </p> [webapp-WSFederation-dotNet](https://github.com/Azure-Samples/active-directory-dotnet-webapp-wsfederation) </p> [dotnet-webapp-webapi-oauth2-useridentity](https://github.com/Azure-Samples/active-directory-dotnet-webapp-webapi-oauth2-useridentity) | [dotnet-webapp-multitenant-openidconnect](https://github.com/Azure-Samples/active-directory-dotnet-webapp-multitenant-openidconnect)</p> (Az AAD Graph) |
+![Az ábra az ASP.NET-embléma](media/sample-v2-code/logo_NETframework.png)</p> ASP.NET 4.5 | [webApp-openidconnect-dotnet](quickstart-v1-aspnet-webapp.md) </p> [webapp-WSFederation-dotNet](https://github.com/Azure-Samples/active-directory-dotnet-webapp-wsfederation) </p> [dotnet-webapp-webapi-oauth2-useridentity](https://github.com/Azure-Samples/active-directory-dotnet-webapp-webapi-oauth2-useridentity) | [dotnet-webapp-multitenant-openidconnect](https://github.com/Azure-Samples/active-directory-dotnet-webapp-multitenant-openidconnect)</p> (Az AAD Graph) |
 ![Az ábra a Python-embléma](media/sample-v2-code/logo_python.png) | | [python-webapp-graphapi](https://github.com/Azure-Samples/active-directory-python-webapp-graphapi)  |
 ![Az ábra a Java-napló](media/sample-v2-code/logo_java.png)  | | [java-webapp-openidconnect](https://github.com/azure-samples/active-directory-java-webapp-openidconnect)  |
 ![Az ábra a PHP-embléma](media/sample-v2-code/logo_php.png) | | [php-graphapi-web](https://github.com/Azure-Samples/active-directory-php-graphapi-web)  |
@@ -82,7 +82,7 @@ A következő példák bemutatják, nyilvános ügyfél alkalmazást (deskto/pmo
 Ügyfélalkalmazás | Platform | A folyamat/engedélyezés | A Microsoft Graph hívások | Az ASP.NET- vagy ASP.NET Core 2.x-es webes API-hívások
 ------------------ | -------- | ---------- | -------------------- | -------------------------
 (WPF) asztali           | ![Az ábra a .NET /C# embléma](media/sample-v2-code/logo_NET.png)  | Interaktív | Része [dotnet-natív-multitarget](https://github.com/azure-samples/active-directory-dotnet-native-multitarget) | [Dotnet-native-desktop](https://github.com/Azure-Samples/active-directory-dotnet-native-desktop) </p> [dotnet-native-aspnetcore](https://azure.microsoft.com/resources/samples/active-directory-dotnet-native-aspnetcore/)</p> [dotnet-webapi-manual-jwt-validation](https://github.com/azure-samples/active-directory-dotnet-webapi-manual-jwt-validation)
-Mobile (UWP)            | .![Az ábra a .NET /C#/UWP](media/sample-v2-code/logo_Windows.png)   | Interaktív | [dotnet-native-uwp-wam](https://github.com/azure-samples/active-directory-dotnet-native-uwp-wam) </p> Ebben a példában [WAM](https://docs.microsoft.com/windows/uw/psecurity/web-account-manager), nem [ADAL.NET](https://aka.ms/adalnet)|  [DotNet-windows-áruház](https://github.com/Azure-Samples/active-directory-dotnet-windows-store) (UWP-alkalmazás használatával ADAL.NET egyetlen új bérlő webes API meghívásához) </p> [DotNet-webapi-több-bérlős – windows-áruház](https://github.com/Azure-Samples/active-directory-dotnet-webapi-multitenant-windows-store) (UWP-alkalmazás ADAL.NET használatával egy több-bérlős webes API hívása)|
+Mobile (UWP)            | .![Az ábra a .NET /C#/UWP](media/sample-v2-code/logo_Windows.png)   | Interaktív | [dotnet-native-uwp-wam](https://github.com/azure-samples/active-directory-dotnet-native-uwp-wam) </p> Ebben a példában [WAM](/windows/uwp/security/web-account-manager), nem [ADAL.NET](https://aka.ms/adalnet)|  [DotNet-windows-áruház](https://github.com/Azure-Samples/active-directory-dotnet-windows-store) (UWP-alkalmazás használatával ADAL.NET egyetlen új bérlő webes API meghívásához) </p> [DotNet-webapi-több-bérlős – windows-áruház](https://github.com/Azure-Samples/active-directory-dotnet-webapi-multitenant-windows-store) (UWP-alkalmazás ADAL.NET használatával egy több-bérlős webes API hívása)|
 Mobilalkalmazás (Android, iOS, az UWP)   | ![Az ábra a .NET /C# (Xamarin)](media/sample-v2-code/logo_xamarin.png) | Interaktív | [dotnet-native-multitarget](https://github.com/azure-samples/active-directory-dotnet-native-multitarget) |
 Mobile (Android)           | ![Az ábra az Android embléma](media/sample-v2-code/logo_Android.png) | Interaktív |   [android](https://github.com/Azure-Samples/active-directory-android) |
 Mobile (iOS)           | ![Az ábra iOS / Objective-C vagy SWIFT nyelven](media/sample-v2-code/logo_iOS.png) | Interaktív |   [nativeClient-iOS](https://github.com/azureadquickstarts/nativeclient-ios) |

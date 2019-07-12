@@ -4,7 +4,7 @@ description: Útmutató a magas rendelkezésre állású SAP NetWeaver több biz
 services: virtual-machines-windows, virtual-network, storage
 documentationcenter: saponazure
 author: goraco
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 keywords: ''
@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 12/09/2016
 ms.author: goraco
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 1b27ea761d19eb494895daceff699b2b604eccea
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: dadbfb138fb9e3e77cee265c008524b9c424a5dd
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66153869"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67709619"
 ---
 # <a name="create-an-sap-netweaver-multi-sid-configuration"></a>Az SAP NetWeaver több biztonsági AZONOSÍTÓVAL konfigurációjának létrehozása
 
@@ -447,7 +447,7 @@ ms.locfileid: "66153869"
 
 2016 szeptemberétől a Microsoft, amely egy szolgáltatás, ahol kezelheti a több virtuális IP-cím használatával egy [Azure belső terheléselosztó][load-balancer-multivip-overview]. Ez a funkció már szerepel az Azure külső load balancert.
 
-Ha rendelkezik egy SAP üzemelő példányt, segítségével belső terheléselosztó létrehozása a Windows-fürt konfigurációját az SAP ASCS/SCS, leírtak szerint a [útmutató a magas rendelkezésre állású SAP NetWeaver Windows virtuális gépeken] [ sap-ha-guide].
+Ha rendelkezik egy SAP üzemelő példányt, segítségével belső terheléselosztó létrehozása a Windows-fürt konfigurációját az SAP ASCS/SCS, leírtak szerint a [útmutató a magas rendelkezésre állású SAP NetWeaver Windows virtuális gépeken][sap-ha-guide].
 
 Ez a cikk foglalkozik, az SAP több biztonsági AZONOSÍTÓVAL konfigurációjához további SAP ASCS/SCS fürtözött példányok telepít egy meglévő Windows Server feladatátvételi fürtszolgáltatási (WSFC) fürthöz való áthelyezéséhez egy egyetlen ASCS/SCS-telepítésből. Ez a folyamat befejezése után fog egy SAP több biztonsági AZONOSÍTÓVAL fürthöz konfigurált.
 
@@ -457,7 +457,7 @@ Ez a cikk foglalkozik, az SAP több biztonsági AZONOSÍTÓVAL konfigurációjá
 [!INCLUDE [updated-for-az](../../../../includes/updated-for-az.md)]
 
 ## <a name="prerequisites"></a>Előfeltételek
-Már konfigurált egy WSFC-fürt, amely egy SAP ASCS/SCS példányhoz, szolgál az a [útmutató a magas rendelkezésre állású SAP NetWeaver Windows virtuális gépeken] [ sap-ha-guide] és ezen az ábrán látható módon.
+Már konfigurált egy WSFC-fürt, amely egy SAP ASCS/SCS példányhoz, szolgál az a [útmutató a magas rendelkezésre állású SAP NetWeaver Windows virtuális gépeken][sap-ha-guide] és ezen az ábrán látható módon.
 
 ![Magas rendelkezésre állású SAP ASCS/SCS példányhoz][sap-ha-guide-figure-6001]
 
@@ -489,7 +489,7 @@ A teljes fekvő két magas rendelkezésre állású SAP-rendszerek a következő
 ## <a name="prepare-the-infrastructure"></a>Az infrastruktúra előkészítése
 Az infrastruktúra előkészítése, egy további SAP ASCS/SCS-példányt is telepíthet a következő paraméterekkel:
 
-| Paraméter neve | Érték |
+| Paraméter neve | Value |
 | --- | --- |
 | SAP ASCS/SCS SID |PR1-lb-ascs |
 | Az SAP DBMS belső load balancer | PR5 |
@@ -662,14 +662,14 @@ A magas szintű eljárás a következőképpen történik:
 
 7. [Módosíthatja a az SAP on felhasználók Windows-példányok][sap-ha-guide-9.4].
 
-8. [Az SAP elsődleges alkalmazáskiszolgáló telepítése] [ sap-ha-guide-9.5] az új dedikált virtuális Gépet.
+8. [Az SAP elsődleges alkalmazáskiszolgáló telepítése][sap-ha-guide-9.5] az új dedikált virtuális Gépet.
 
-9. [További SAP alkalmazáskiszolgáló telepítése] [ sap-ha-guide-9.6] az új dedikált virtuális Gépet.
+9. [További SAP alkalmazáskiszolgáló telepítése][sap-ha-guide-9.6] az új dedikált virtuális Gépet.
 
 10. [Tesztelje az SAP ASCS/SCS-példány feladatátvevő és SIOS replikációs][sap-ha-guide-10].
 
 ## <a name="next-steps"></a>További lépések
 
-- [Hálózatkezelési korlátok: Az Azure Resource Manager][networking-limits-azure-resource-manager]
+- [Hálózatkezelési korlátok: Azure Resource Manager][networking-limits-azure-resource-manager]
 - [Több virtuális IP-címek az Azure Load Balancer][load-balancer-multivip-overview]
 - [Útmutató a magas rendelkezésre állású SAP NetWeaver Windows virtuális gépeken][sap-ha-guide]

@@ -17,12 +17,12 @@ ms.author: ryanwi
 ms.reviewer: agirling, saeeda, benv
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 58136aba278097e9778cc1361ed77a4512e3d51b
-ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
+ms.openlocfilehash: 0dc4c29d3a12902b3ce01f9505cba5ac02e921eb
+ms.sourcegitcommit: c0419208061b2b5579f6e16f78d9d45513bb7bbc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/07/2019
-ms.locfileid: "66751917"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67625347"
 ---
 # <a name="evolution-of-microsoft-identity-platform"></a>A Microsoft identitásplatformjának fejlődése
 
@@ -50,7 +50,7 @@ Az alábbi ábra a Microsoft-identitásplatform környezetének áttekintését 
 
 ### <a name="app-registration-experience"></a>Az alkalmazás regisztrációs felhasználói felülete
 
-Az Azure Portalon **[alkalmazásregisztrációk](https://go.microsoft.com/fwlink/?linkid=2083908)** élmény az egyik portáljának felületén az kezelése minden alkalmazást, a Microsoft identity platform már integrálva. Ha már használja az alkalmazásregisztrációs portálon, kezdési használja helyette az Azure-portál alkalmazás regisztrációs felhasználói élményt.
+Az Azure Portalon **[alkalmazásregisztrációk](https://go.microsoft.com/fwlink/?linkid=2083908)** élmény az egyik portáljának felületén az kezelése minden alkalmazást, a Microsoft identity platform már integrálva. Ha már használja az alkalmazásregisztrációs portálon, indítsa el, használja helyette az Azure-portál alkalmazás regisztrációs felhasználói élményt.
 
 Integráció az Azure AD B2C (Ha a közösségi vagy a helyi identitások hitelesítését) kell regisztrálja az alkalmazást a B2C-bérlőben. Ez a tapasztalat része is az Azure Portalon.
 

@@ -12,12 +12,12 @@ ms.topic: article
 ms.date: 05/02/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: ca4e343ea4774bbe4ff992ad671575b150b3c045
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a8dac6f38052f176c7a3741a664e174d0a66cbc5
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65890963"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67612699"
 ---
 # <a name="developing-with-media-services-v3-apis"></a>Fejlesztés a Media Services v3 API-k
 
@@ -59,7 +59,7 @@ Az alábbi ábrán a számok jelölik a folyamatot a kérelmek időrendi sorrend
 4. A középső réteg kérést küld az Azure Media REST API az Azure AD-jogkivonattal.
 5. A középső réteg vissza az adatok lekérése a Media Services.
 
-### <a name="samples"></a>Minták
+### <a name="samples"></a>Példák
 
 Tekintse meg a következő példák azt mutatják be, hogyan csatlakozhat az Azure AD-szolgáltatásnév:
 
@@ -100,13 +100,12 @@ A Media Services a következő hosszú ideig futó műveleteket tartalmazza:
 * Streamvégpontok leállítása
 * Méretezési csoport Streamvégpontok
 
-
 ## <a name="sdks"></a>SDK-k
 
 > [!NOTE]
 > Az Azure Media Services v3 SDK-k nem szálbiztos garantáltan. Ha több szálon futó alkalmazás fejlesztése, hozzá kell adnia a saját szál szinkronizálási logika az ügyfél védelméről, vagy használjon egy új AzureMediaServicesClient objektum szálanként. Is kell óvatos, ha az ügyfél (például egy HttpClient-példányt .NET) kódját által biztosított választható objektumok által bevezetett többszálas problémákat.
 
-|SDK|Leírások|
+|SDK|Hivatkozás|
 |---|---|
 |[.NET SDK](https://aka.ms/ams-v3-dotnet-sdk)|[.NET-referencia](https://aka.ms/ams-v3-dotnet-ref)|
 |[Java SDK](https://aka.ms/ams-v3-java-sdk)|[Java-referencia](https://aka.ms/ams-v3-java-ref)|

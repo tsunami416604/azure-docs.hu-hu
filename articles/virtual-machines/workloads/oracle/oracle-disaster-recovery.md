@@ -4,7 +4,7 @@ description: Az Oracle Database 12c adatbázis az Azure-környezetben a vész-he
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: romitgirdhar
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/02/2018
 ms.author: rogirdh
-ms.openlocfilehash: 09df1421d6deae6db305cef2a46d6c40d0c12ba3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: db0b9887b80f13938045a5d11fb09ed0a43efc19
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60835882"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67706963"
 ---
 # <a name="disaster-recovery-for-an-oracle-database-12c-database-in-an-azure-environment"></a>Az Azure-környezet egy Oracle Database 12c adatbázis vészhelyreállítása
 
@@ -32,7 +32,7 @@ ms.locfileid: "60835882"
 ## <a name="goals"></a>Célok
 - Tervezze meg a topológia és a vész-helyreállítási követelményeknek megfelelő konfiguráció.
 
-## <a name="scenario-1-primary-and-dr-sites-on-azure"></a>1\. forgatókönyv: Elsődleges és a DR webhelyek az Azure-ban
+## <a name="scenario-1-primary-and-dr-sites-on-azure"></a>forgatókönyv 1: Elsődleges és a DR webhelyek az Azure-ban
 
 Egy ügyfél rendelkezik egy Oracle adatbázis-készlet mentése az elsődleges helyen. A DR-hely van egy másik régióban. Az ügyfél Oracle Data Guard használja a helyek közötti gyors helyreállítás. Az elsődleges hely is rendelkezik egy másodlagos adatbázist, jelentéskészítési és egyéb felhasználásra. 
 

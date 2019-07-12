@@ -9,24 +9,23 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 06/04/2019
+ms.date: 07/08/2019
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 73ca740a4dcca3bdbb1951e55df4061364a5c646
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 623950131769f95b9b8442b2316b1c4fd1c3b831
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67083923"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67656458"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Az Azure Active Directory rendszergazdája szerepkör engedélyei
 
 Az Azure Active Directory (Azure AD), kisebb szintű jogosultsággal rendelkező szerepkörök az identitás a feladatokat a korlátozott rendszergazdák is kijelölhet. Rendszergazdák hozzáadása vagy módosítása a felhasználók, rendszergazdai szerepkörök hozzárendelése, felhasználói jelszó alaphelyzetbe állítása, a felhasználói licencek kezelése és tartománynevek kezelése, az ilyen célokra is hozzárendelhető. Az alapértelmezett felhasználói engedélyek csak a felhasználói beállítások módosítható az Azure ad-ben.
 
 A globális rendszergazda az összes rendszergazdai funkciójához hozzáfér. Alapértelmezés szerint az Azure-előfizetésre feliratkozó személy van rendelve a címtár globális rendszergazdai szerepkörrel. Csak a globális rendszergazdák és a kiemelt szerepkörű rendszergazdák delegálhatja a rendszergazdai szerepköröket. Az Ön számára azt javasoljuk, hogy ehhez a szerepkörhöz való hozzárendelése csak néhány személy a vállalat kockázatának csökkentése érdekében.
-
 
 ## <a name="assign-or-remove-administrator-roles"></a>Vagy vonja meg a rendszergazdai szerepkörökről
 
@@ -853,7 +852,7 @@ Az Intune termékben minden aspektusát felügyelheti.
 A Microsoft Kaizala beállításait kezelheti.  
 
   > [!NOTE]
-  > Ez a szerepkör jogosult további Azure Active Directory-en kívül. További információkért lásd a fenti szerepkör leírása.
+  > Ez a szerepkör az Azure Active Directoryn kívül további engedélyekkel rendelkezik. További információkért lásd a fenti szerepkör leírása.
   >
   >  
   
@@ -895,7 +894,7 @@ A Skype for Business termék minden aspektusát felügyelheti.
 Olvashatja az üzenetközpont bejegyzések, adatvédelmi adatüzenetek, csoportok, tartományok és az előfizetések.
 
   > [!NOTE]
-  > Ez a szerepkör jogosult további Azure Active Directory-en kívül. További információkért lásd a fenti szerepkör leírása.
+  > Ez a szerepkör az Azure Active Directoryn kívül további engedélyekkel rendelkezik. További információkért lásd a fenti szerepkör leírása.
   >
   >
 
@@ -1044,14 +1043,13 @@ Jelentkezzen elolvashatja és naplózási jelentések.
 | microsoft.aad.directory/auditLogs/allProperties/read | Az Azure Active Directoryban Adatmodelltáblához (beleértve a rendszerjogosultságú tulajdonságai) az összes tulajdonság olvasása. |
 | microsoft.aad.directory/signInReports/allProperties/read | Az Azure Active Directoryban signInReports (beleértve a rendszerjogosultságú tulajdonságai) az összes tulajdonság olvasása. |
 | microsoft.azure.serviceHealth/allEntities/allTasks | Olvassa el, és konfigurálja az Azure Service Health. |
-| microsoft.office365.serviceHealth/allEntities/allTasks | Olvassa el, és konfigurálja az Office 365 Service Healthben. |
 | microsoft.office365.usageReports/allEntities/read | Olvassa el az Office 365-használati jelentéseket. |
 
 ### <a name="search-administrator"></a>Keresés rendszergazda
 Létrehozhat és a Microsoft Search beállítások minden szempontjának kezeléséhez.
 
   > [!NOTE]
-  > Ez a szerepkör jogosult további Azure Active Directory-en kívül. További információkért lásd a fenti szerepkör leírása.
+  > Ez a szerepkör az Azure Active Directoryn kívül további engedélyekkel rendelkezik. További információkért lásd a fenti szerepkör leírása.
   >
   >
 
@@ -1068,7 +1066,7 @@ Létrehozhat és a Microsoft Search beállítások minden szempontjának kezelé
 Hozhat létre, és a Szerkesztői olyan tartalmakat, például a könyvjelzők, Q és, helyek, floorplan kezelhet.
 
   > [!NOTE]
-  > Ez a szerepkör jogosult további Azure Active Directory-en kívül. További információkért lásd a fenti szerepkör leírása.
+  > Ez a szerepkör az Azure Active Directoryn kívül további engedélyekkel rendelkezik. További információkért lásd a fenti szerepkör leírása.
   >
   >
 
@@ -1111,7 +1109,7 @@ Olvassa el a biztonsági adatokat és jelentéseket, és beállíthatja az Azure
 Létrehozza és kezeli a biztonsági események.
 
   > [!NOTE]
-  > Ez a szerepkör jogosult további Azure Active Directory-en kívül. További információkért lásd a fenti szerepkör leírása.
+  > Ez a szerepkör az Azure Active Directoryn kívül további engedélyekkel rendelkezik. További információkért lásd a fenti szerepkör leírása.
   >
   >
 

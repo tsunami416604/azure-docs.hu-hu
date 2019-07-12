@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/09/2018
-ms.author: alkohli;
-ms.openlocfilehash: 77050ad37862394785cf348a242f585cc089ba26
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: alkohli
+ms.openlocfilehash: 5394feff80c1df8b7a6cf7f6e6ea56678f575823
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65606860"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67612508"
 ---
 # <a name="contact-microsoft-support"></a>Forduljon a Microsoft ügyfélszolgálatához
 
@@ -45,7 +45,7 @@ Attól függően, hogy a [támogatási csomag](https://azure.microsoft.com/suppo
    1. Az a **Problématípus** legördülő listában válassza **technikai**.
    2. Az aktuális **előfizetés**, **szolgáltatás** típusát, és a **erőforrás** (StorSimple-Eszközkezelő szolgáltatás) a rendszer automatikusan kiválasztja. 
    3. Válassza ki a **támogatási csomag** a legördülő listából, ha több csomagok az Ön előfizetéséhez rendelve van. Szüksége lesz egy fizetős támogatási csomag ahhoz, hogy technikai támogatást.
-   4. Kattintson a **tovább**.
+   4. Kattintson a **Tovább** gombra.
 
        ![Forduljon az MS támogatás az új portálon keresztül](./media/storsimple-8000-contact-microsoft-support/contactsupport2.png)
 
@@ -57,7 +57,7 @@ Attól függően, hogy a [támogatási csomag](https://azure.microsoft.com/suppo
     4. Adja meg a kezdő dátum és idő a probléma.
     5. Az a **fájlfeltöltés**, kattintson a mappa ikonra, tallózással keresse meg a támogatási csomagot.
     6. Ellenőrizze **diagnosztika adatok megosztása**.
-    7. Kattintson a **tovább**.
+    7. Kattintson a **Tovább** gombra.
 
        ![Forduljon az MS támogatás az új portálon keresztül](./media/storsimple-8000-contact-microsoft-support/contactsupport3.png) 
 

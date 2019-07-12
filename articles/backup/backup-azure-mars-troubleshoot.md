@@ -3,17 +3,17 @@ title: Az Azure Backup agent hibaelhárítása
 description: Telepítési és regisztrációs az Azure Backup-ügynök hibaelhárítása
 services: backup
 author: saurabhsensharma
-manager: shivamg
+manager: sivan
 ms.service: backup
 ms.topic: conceptual
-ms.date: 05/21/2019
+ms.date: 07/05/2019
 ms.author: saurse
-ms.openlocfilehash: 1c4c2ed6265bdb3c29986fb0b90c3d85d32aadca
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 437b175efad081b8382d80be8427aa074920fd3e
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67434011"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67705058"
 ---
 # <a name="troubleshoot-the-microsoft-azure-recovery-services-mars-agent"></a>A Microsoft Azure Recovery Services-(MARS) ügynök hibaelhárítása
 
@@ -46,7 +46,7 @@ Javasoljuk, hogy megkezdése előtt hibáinak elhárítása a Microsoft az Azure
 | Ok | Ajánlott műveletek |
 | ---     | ---    |
 | **A tároló hitelesítő adatai érvénytelenek.** <br/> <br/> Tároló hitelesítő adatfájljait esetleg sérült, vagy esetleg elévült. (Például, akkor előfordulhat, hogy le vannak töltve a regisztráció előtt 48 óránál hosszabb.)| Töltse le az új hitelesítő adatokat a Recovery Services-tárolót az Azure Portalon. (Lásd a 6. lépés: a [töltse le a MARS-ügynök](https://docs.microsoft.com/azure/backup/backup-configure-vault#download-the-mars-agent) szakaszban.) Ezután hajtsa végre a megfelelő lépéseket: <ul><li> Ha korábban már telepítette és MARS regisztrált, nyissa meg a Microsoft Azure Backup ügynök MMC konzolt, majd **kiszolgáló regisztrálása** a a **műveletek** panelen az új a regisztráció befejezéséhez hitelesítő adatok. <br/> <li> Ha az új telepítése nem sikerül, telepítse újra az új hitelesítő adatokkal.</ul> **Megjegyzés**: Ha több tároló hitelesítő adatfájljait le lett töltve, csak a legújabb fájl érvényes lesz a következő 48 órán át. Azt javasoljuk, hogy le kell tölteni a tároló új hitelesítőadat-fájlja.
-| **Proxy server/tűzfal blokkolja a regisztráció** <br/>vagy <br/>**Nincs internetkapcsolat** <br/><br/> Ha a gép vagy a proxy-kiszolgálót csak korlátozott internetkapcsolat, és nem biztosítása érdekében a hozzáférést a szükséges URL-címek, a regisztráció sikertelen lesz.| Hajtsa végre az alábbi lépéseket:<br/> <ul><li> Működik az informatikai csapat a rendszer ne legyen internetkapcsolat.<li> Ha nem rendelkezik egy proxykiszolgáló, győződjön meg arról, a proxy lehetőség nincs kiválasztva, ha regisztrálja az ügynököt. [Ellenőrizze a proxybeállításokat](#verifying-proxy-settings-for-windows).<li> Ha a tűzfal /-proxy kiszolgáló rendelkezik, annak biztosítása érdekében az alábbi URL-címek a hálózatkezelésért felelős csapat dolgozhat, és IP-címek hozzáférése:<br/> <br> **URLs**<br> www.msftncsi.com <br> .Microsoft.com <br> .WindowsAzure.com <br> .microsoftonline.com <br> .windows.net <br>**IP-címek**<br>  20.190.128.0/18 <br>  40.126.0.0/18 <br/></ul></ul>Próbálja meg ismét regisztrálni a fenti hibaelhárítási lépések végrehajtása után.
+| **Proxy server/tűzfal blokkolja a regisztráció** <br/>vagy <br/>**Nincs internetkapcsolat** <br/><br/> Ha a gép vagy a proxy-kiszolgálót csak korlátozott internetkapcsolat, és nem biztosítása érdekében a hozzáférést a szükséges URL-címek, a regisztráció sikertelen lesz.| Hajtsa végre az alábbi lépéseket:<br/> <ul><li> Működik az informatikai csapat a rendszer ne legyen internetkapcsolat.<li> Ha nem rendelkezik egy proxykiszolgáló, győződjön meg arról, a proxy lehetőség nincs kiválasztva, ha regisztrálja az ügynököt. [Ellenőrizze a proxybeállításokat](#verifying-proxy-settings-for-windows).<li> Ha a tűzfal /-proxy kiszolgáló rendelkezik, annak biztosítása érdekében az alábbi URL-címek a hálózatkezelésért felelős csapat dolgozhat, és IP-címek hozzáférése:<br/> <br> **URLs**<br> `www.msftncsi.com` <br> .Microsoft.com <br> .WindowsAzure.com <br> .microsoftonline.com <br> .windows.net <br>**IP-címek**<br>  20.190.128.0/18 <br>  40.126.0.0/18 <br/></ul></ul>Próbálja meg ismét regisztrálni a fenti hibaelhárítási lépések végrehajtása után.
 | **Víruskereső szoftver blokkolja a regisztráció** | Ha a kiszolgálón telepített víruskereső szoftver, hozzáadása a víruskeresés ezeket a fájlokat és mappákat a szükséges kizárási szabályokat: <br/><ui> <li> CBengine.exe <li> CSC.exe<li> Az ideiglenes mappát. Az alapértelmezett hely a C:\Program Files\Microsoft Azure Recovery Services Agent\Scratch. <li> A bin mappa: C:\Program Files\Microsoft Azure Recovery Services Agent\Bin.
 
 ### <a name="additional-recommendations"></a>További javaslatok
@@ -89,13 +89,13 @@ Javasoljuk, hogy megkezdése előtt hibáinak elhárítása a Microsoft az Azure
 
 | Hiba  | Lehetséges okok | Ajánlott műveletek |
 |---------|---------|---------|
-|<br />Az aktiválás nem sikerült. Az aktuális művelet belső szolgáltatáshiba [0x1FC07] miatt nem sikerült. Némi várakozás után próbálja megismételni a műveletet. Ha a probléma továbbra is fennáll, forduljon a Microsoft támogatási szolgálatához.     | <li> Az ideiglenes mappát, amely nem rendelkezik elegendő lemezterület a köteten található. <li> Az ideiglenes mappát helytelenül át lett helyezve. <li> A OnlineBackup.KEK fájl hiányzik.         | <li>Frissítés a [legújabb verzió](https://aka.ms/azurebackup_agent) a MARS-ügynök.<li>Helyezze át az ideiglenes mappát vagy a gyorsítótár-hely közötti 5 %-os és a biztonsági mentési adatok méretének 10 % szabad lemezterülettel rendelkező kötetre. A gyorsítótár helyének megfelelően áthelyezéséhez tekintse meg a lépéseket a [fájlok és mappák biztonsági mentésével kapcsolatos gyakori kérdésekre](https://docs.microsoft.com/azure/backup/backup-azure-file-folder-backup-faq#backup).<li> Győződjön meg arról, hogy a OnlineBackup.KEK fájl jelen-e. <br>*Az ideiglenes mappát vagy a gyorsítótár elérési útját az alapértelmezett hely a C:\Program Files\Microsoft Azure Recovery Services Agent\Scratch*.        |
+|<br />Az aktiválás nem sikerült. Az aktuális művelet belső szolgáltatáshiba [0x1FC07] miatt nem sikerült. Némi várakozás után próbálja megismételni a műveletet. Ha a probléma továbbra is fennáll, forduljon a Microsoft támogatási szolgálatához.     | <li> Az ideiglenes mappát, amely nem rendelkezik elegendő lemezterület a köteten található. <li> Az ideiglenes mappát helytelenül át lett helyezve. <li> A OnlineBackup.KEK fájl hiányzik.         | <li>Frissítés a [legújabb verzió](https://aka.ms/azurebackup_agent) a MARS-ügynök.<li>Helyezze át az ideiglenes mappát vagy a gyorsítótár-hely közötti 5 %-os és a biztonsági mentési adatok méretének 10 % szabad lemezterülettel rendelkező kötetre. A gyorsítótár helyének megfelelően áthelyezéséhez tekintse meg a lépéseket a [fájlok és mappák biztonsági mentésével kapcsolatos gyakori kérdésekre](https://docs.microsoft.com/azure/backup/backup-azure-file-folder-backup-faq#manage-the-backup-cache-folder).<li> Győződjön meg arról, hogy a OnlineBackup.KEK fájl jelen-e. <br>*Az ideiglenes mappát vagy a gyorsítótár elérési útját az alapértelmezett hely a C:\Program Files\Microsoft Azure Recovery Services Agent\Scratch*.        |
 
 ## <a name="encryption-passphrase-not-correctly-configured"></a>Titkosítási jelszó nincs megfelelően konfigurálva
 
 | Hiba  | Lehetséges okok | Ajánlott műveletek |
 |---------|---------|---------|
-| <br />Hiba történt a 34506. Ezen a számítógépen tárolt titkosítási jelszava nem megfelelően történik meg.    | <li> Az ideiglenes mappát, amely nem rendelkezik elegendő lemezterület a köteten található. <li> Az ideiglenes mappát helytelenül át lett helyezve. <li> A OnlineBackup.KEK fájl hiányzik.        | <li>Frissítés a [legújabb verzió](https://aka.ms/azurebackup_agent) a MARS-ügynök.<li>Helyezze át az ideiglenes mappát vagy a gyorsítótár-hely közötti 5 %-os és a biztonsági mentési adatok méretének 10 % szabad lemezterülettel rendelkező kötetre. A gyorsítótár helyének megfelelően áthelyezéséhez tekintse meg a lépéseket a [fájlok és mappák biztonsági mentésével kapcsolatos gyakori kérdésekre](https://docs.microsoft.com/azure/backup/backup-azure-file-folder-backup-faq#backup).<li> Győződjön meg arról, hogy a OnlineBackup.KEK fájl jelen-e. <br>*Az ideiglenes mappát vagy a gyorsítótár elérési útját az alapértelmezett hely a C:\Program Files\Microsoft Azure Recovery Services Agent\Scratch*.         |
+| <br />Hiba történt a 34506. Ezen a számítógépen tárolt titkosítási jelszava nem megfelelően történik meg.    | <li> Az ideiglenes mappát, amely nem rendelkezik elegendő lemezterület a köteten található. <li> Az ideiglenes mappát helytelenül át lett helyezve. <li> A OnlineBackup.KEK fájl hiányzik.        | <li>Frissítés a [legújabb verzió](https://aka.ms/azurebackup_agent) a MARS-ügynök.<li>Helyezze át az ideiglenes mappát vagy a gyorsítótár-hely közötti 5 %-os és a biztonsági mentési adatok méretének 10 % szabad lemezterülettel rendelkező kötetre. A gyorsítótár helyének megfelelően áthelyezéséhez tekintse meg a lépéseket a [fájlok és mappák biztonsági mentésével kapcsolatos gyakori kérdésekre](https://docs.microsoft.com/azure/backup/backup-azure-file-folder-backup-faq#manage-the-backup-cache-folder).<li> Győződjön meg arról, hogy a OnlineBackup.KEK fájl jelen-e. <br>*Az ideiglenes mappát vagy a gyorsítótár elérési útját az alapértelmezett hely a C:\Program Files\Microsoft Azure Recovery Services Agent\Scratch*.         |
 
 
 ## <a name="backups-dont-run-according-to-schedule"></a>Biztonsági mentések nem futtatása ütemezés szerint

@@ -4,7 +4,7 @@ description: Azure virtuális gépek PowerShell-minták
 services: virtual-machines-windows
 documentationcenter: virtual-machines
 author: cynthn
-manager: jeconnoc
+manager: gwallace
 editor: tysonn
 tags: azure-service-management
 ms.assetid: ''
@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 03/01/2019
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 576fe268bec12c16c7c2e2076dfa066c908693d5
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 9aea63b8366bf974fd89c32105bea707ad72c8a5
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60583689"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67719980"
 ---
 # <a name="azure-virtual-machine-powershell-samples"></a>Azure virtuális gépek PowerShell-minták
 
@@ -50,4 +50,5 @@ A következő táblázat, létrehozása és kezelése Windows virtuális gépek 
 | [Virtuális gép és az adatlemezek titkosítása](./../scripts/virtual-machines-windows-powershell-sample-encrypt-vm.md?toc=%2fpowershell%2fazure%2ftoc.json) | Létrehoz egy Azure key vault, a titkosítási kulcsot és a egy egyszerű szolgáltatást, és ezután titkosítja a virtuális gép. |
 |**Virtuális gépek figyelése**||
 | [Virtuális gép monitorozása az Azure monitorral](./../scripts/virtual-machines-windows-powershell-sample-create-vm-oms.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) | Létrehoz egy virtuális gépet, telepíti az Azure Log Analytics-ügynököt, és regisztrálja a virtuális gép a Log Analytics-munkaterületen.  |
+| [A PowerShell használatával egy adott előfizetés összes virtuális gép adatainak gyűjtése](../scripts/virtual-machines-powershell-sample-collect-vm-details.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) | CSV-fájl, amely tartalmazza a virtuális gép nevét, erőforráscsoport-nevet, régió, virtuális hálózat, alhálózat, magánhálózati IP-cím, operációs rendszer típusa és a megadott előfizetésben virtuális gép nyilvános IP-cím létrehozása.
 | | |

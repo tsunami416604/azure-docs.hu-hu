@@ -4,7 +4,7 @@ description: Ismerje meg, hogyan biztonsági mentése és helyreállítása, az 
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: romitgirdhar
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/02/2018
 ms.author: rogirdh
-ms.openlocfilehash: c41f13a6437f69121d3bbb387c96d8e13f2be0b3
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 461f6127111e745fe4a81958aaa225ed1dc4392a
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60567087"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67707724"
 ---
 # <a name="back-up-and-recover-an-oracle-database-12c-database-on-an-azure-linux-virtual-machine"></a>Biztonsági mentése és helyreállítása, az Oracle Database 12c adatbázis egy Azure-beli Linuxos virtuális gépen
 
@@ -37,7 +37,7 @@ Mielőtt elkezdené, győződjön meg arról, hogy az Azure CLI telepítve van-e
     Megtudhatja, hogyan hozhat létre egy Oracle database, tekintse meg a [Oracle database gyors üzembe helyezése létrehozása](https://docs.microsoft.com/azure/virtual-machines/workloads/oracle/oracle-database-quick-create).
 
 
-### <a name="step-2-connect-to-the-vm"></a>2\. lépés: Kapcsolódás a virtuális géphez
+### <a name="step-2-connect-to-the-vm"></a>2\. lépés: Kapcsolódás a virtuális géphez
 
 *   Secure Shell (SSH)-munkamenetet létrehozni a virtuális géppel, a következő paranccsal. Cserélje le az IP-cím és a gazdagép neve együtt a `publicIpAddress` értéket a virtuális géphez.
 
@@ -458,7 +458,7 @@ Ahelyett, hogy a törölt fájlok visszaállítása a Recovery Services-tároló
 
     ![Tároló törlése paranccsal](./media/oracle-backup-recovery/recover_vm_01.png)
 
-### <a name="step-2-recover-the-vm"></a>2\. lépés: A virtuális gép helyreállítása
+### <a name="step-2-recover-the-vm"></a>2\. lépés: A virtuális gép helyreállítása
 
 1.  Lépjen a **Recovery Services-tárolók**, majd válassza ki **myVault**.
 

@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.author: makromer
 ms.service: data-factory
 ms.date: 05/16/2019
-ms.openlocfilehash: bbbc2bc5c47821469ecf15a27195b1bf0c12e6e5
-ms.sourcegitcommit: 156b313eec59ad1b5a820fabb4d0f16b602737fc
+ms.openlocfilehash: 1ee266d7d9846a357dce613817affdb0cde5bfdc
+ms.sourcegitcommit: e6cb7ca206a125c05acfd431b5a64391a8dcc6b3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67190631"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67569026"
 ---
 # <a name="mapping-data-flows-performance-and-tuning-guide"></a>Leképezési adatok folyamatok teljesítmény és finomhangolás – útmutató
 
@@ -127,7 +127,18 @@ Kattintson erre az ikonra a végrehajtási terv és a későbbi teljesítménypr
 * Ne feledje, ha a népszerű ezt a lehetőséget választja. Ha sok nagy forrásfájlok összefűzhet vannak egy kimeneti fájl partíció csomópont fürterőforrások kívül futtathatja.
 * Elkerülése érdekében számítási csomópont erőforrásokat, ne az alapértelmezett vagy explicit particionálási sémát ADF, amely optimalizálja a teljesítmény, és vegye fel a kimeneti mappa fájljainak egy későbbi másolási tevékenység, amely egyesíti az összes, a rész a folyamat új egyetlen a fájl. Ezzel a technikával alapvetően elkülöníti a művelet a fájl egyesítése átalakítás, és csak "kimenet egyetlen fájl a" ugyanazt az eredményt éri el.
 
+### <a name="looping-through-file-lists"></a>Fájl listák ismétlése
+
+A legtöbb esetben az ADF-ben adatfolyamok fogja végrehajtani egy folyamatot, amely lehetővé teszi, hogy a Flow adatforrás-átalakítás újrafuttathatja több fájlra a jobb. Más szóval helyettesítő karakterek használata előnyben, vagy fájl listák belül az adatok a forrás folyamatot, amely nagy azon fájlok listáját a folyamat-végrehajtás adatfolyam hívása minden egyes ismétléskor foreach ciklus használatával ciklustevékenység. Az adatfolyam folyamat azáltal, hogy az adatfolyam belül előforduló hurkolás gyorsabban hajtja végre.
+
+Például ha egy Blob Storage-mappát a feldolgozni kívánt adatok július 2019 fájlok listája, lenne több nagy teljesítményű, a folyamat csak egyszer hívja meg adatok folyamat végrehajtása tevékenység, és a egy helyettesítő karakter használata az ehhez hasonló a forrás :
+
+```DateFiles/*_201907*.txt```
+
+Ez javítja a teljesítményt, mint a Keresés a Blob Store, az egy folyamatot, amely majd között egy foreach ciklus használatával belül hajtsa végre a adatfolyam tevékenység megfeleltetett fájlokon végiglépkedve ellen.
+
 ## <a name="next-steps"></a>További lépések
+
 Tekintse meg a többi adatfolyam cikkeket a teljesítménnyel kapcsolatos:
 
 - [Adatfolyamok optimalizálása lap](concepts-data-flow-optimize-tab.md)

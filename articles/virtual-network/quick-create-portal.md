@@ -1,29 +1,30 @@
 ---
 title: – Rövid útmutató – Azure portal virtuális hálózat létrehozása
 titlesuffix: Azure Virtual Network
-description: Ebben a rövid útmutatóban megismerheti, hogyan hozhat létre virtuális hálózatot az Azure Portal használatával. Virtuális hálózat lehetővé teszi, hogy az Azure-erőforrások, például virtuális gépeket, privát módon kommunikáljanak egymással, és az interneten.
+description: Ebben a rövid útmutatóban megismerheti, hogyan hozhat létre virtuális hálózatot az Azure Portal használatával. Virtuális hálózat lehetővé teszi, hogy az Azure-erőforrások, például virtuális gépeket, biztonságosan kommunikáljanak egymással és az interneten
 services: virtual-network
 documentationcenter: virtual-network
 author: KumudD
 tags: azure-resource-manager
-Customer intent: I want to create a virtual network so that virtual machines can communicate with privately with each other and with the internet.
+Customer intent: I want to create a virtual network so that virtual machines can securely communicate with each other and with the internet.
 ms.service: virtual-network
 ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
-ms.date: 11/30/2018
+ms.date: 07/08/2019
 ms.author: kumud
-ms.openlocfilehash: 995bc8e7b2eb4e9160b2b625067f20324df2cbfd
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: bbc40ae358a6ac7f58e01de997728db21c7eb3bc
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64717020"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67839713"
 ---
 # <a name="quickstart-create-a-virtual-network-using-the-azure-portal"></a>Gyors útmutató: Virtuális hálózat létrehozása az Azure Portallal
 
-Virtuális hálózat lehetővé teszi, hogy az Azure-erőforrások, például virtuális gépeket (VM), hogy privát módon kommunikáljanak egymással, és az internettel. Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre virtuális hálózatokat. A létrehozott virtuális hálózatban két virtuális gépet fog üzembe helyezni. Ezután csatlakozhat a virtuális gépekhez az internetről, és privát módon kommunikáljanak a két virtuális gép között.
+Egy virtuális hálózat az alapvető építőeleme a magánhálózaton az Azure-ban. Lehetővé teszi az Azure-erőforrások, például virtuális gépeket (VM), hogy biztonságosan kommunikálhassanak egymással és az internettel. Ebben a rövid, megtudhatja, hogyan hozhat létre virtuális hálózatot az Azure portal használatával. Ezután, is két virtuális gépet üzembe a virtuális hálózaton, biztonságosan a két virtuális gép közötti kommunikációt, és csatlakozhat a virtuális gépekhez az internetről.
+
 
 Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
@@ -41,13 +42,13 @@ Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
     | ------- | ----- |
     | Name (Név) | Adja meg *myVirtualNetwork*. |
     | Címtér | Adja meg *10.1.0.0/16*. |
-    | Előfizetés | Válassza ki előfizetését.|
-    | Erőforráscsoport | Válassza ki **új létrehozása**, adja meg *myResourceGroup*, majd **OK**. |
-    | Location egység | Válassza az **USA keleti régiója** lehetőséget.|
+    | Subscription | Válassza ki előfizetését.|
+    | Resource group | Válassza ki **új létrehozása**, adja meg *myResourceGroup*, majd **OK**. |
+    | Location | Válassza az **USA keleti régiója** lehetőséget.|
     | Alhálózat - név | Adja meg *myVirtualSubnet*. |
     | Alhálózat – címtartomány | Adja meg *10.1.0.0/24*. |
 
-1. Hagyja meg az alapértelmezett beállításokat, és válassza ki a többi **létrehozás**.
+1. Alapértelmezett, és válassza ki, a többit bízza **létrehozás**.
 
 ## <a name="create-virtual-machines"></a>Virtuális gépek létrehozása
 
@@ -55,24 +56,24 @@ Hozzon létre két virtuális gépet a virtuális hálózaton:
 
 ### <a name="create-the-first-vm"></a>Az első virtuális gép létrehozása
 
-1. A képernyő bal felső oldalán válassza **erőforrás létrehozása** > **számítási** > **Windows Server 2016 Datacenter**.
+1. A képernyő bal felső oldalán válassza **erőforrás létrehozása** > **számítási** > **Windows Server 2019 Datacenter**.
 
 1. A **hozzon létre egy virtuális gép – alapvető**, adja meg vagy válassza ki ezt az információt:
 
     | Beállítás | Érték |
     | ------- | ----- |
     | **PROJEKT RÉSZLETEI** | |
-    | Előfizetés | Válassza ki előfizetését. |
-    | Erőforráscsoport | Válassza ki **MyResourceGroup**. Az előző szakaszban létrehozott. |
+    | Subscription | Válassza ki előfizetését. |
+    | Resource group | Válassza ki **myResourceGroup**. Ez az előző szakaszban létrehozott. |
     | **PÉLDÁNY ADATAI** |  |
     | Virtuális gép neve | Adja meg *myVm1*. |
     | Régió | Válassza az **USA keleti régiója** lehetőséget. |
     | Rendelkezésre állási beállításai | Hagyja meg az alapértelmezett **szükséges infrastruktúra redundancia**. |
-    | Image | Hagyja meg az alapértelmezett **Windows Server 2016 Datacenter**. |
-    | Méret | Hagyja meg az alapértelmezett **Standard DS1 v2**. |
+    | Image | Hagyja meg az alapértelmezett **Windows Server 2019 Datacenter**. |
+    | Size | Hagyja meg az alapértelmezett **Standard DS1 v2**. |
     | **RENDSZERGAZDAI FIÓK** |  |
     | Felhasználónév | Adjon meg egy tetszőleges felhasználónevet. |
-    | Jelszó | Adjon meg egy tetszőleges jelszót. A jelszónak legalább 12 karakter hosszúságúnak kell lennie, [az összetettségre vonatkozó követelmények teljesülése mellett](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm).|
+    | Windows 10 | Adjon meg egy tetszőleges jelszót. A jelszónak legalább 12 karakter hosszúságúnak kell lennie, [az összetettségre vonatkozó követelmények teljesülése mellett](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm).|
     | Jelszó megerősítése | Írja be újból a jelszót. |
     | **BEJÖVŐPORT-SZABÁLYOK** |  |
     | Nyilvános bejövő portok | Hagyja meg az alapértelmezett **None**. |
@@ -88,9 +89,9 @@ Hozzon létre két virtuális gépet a virtuális hálózaton:
     | Beállítás | Érték |
     | ------- | ----- |
     | Virtuális hálózat | Hagyja meg az alapértelmezett **myVirtualNetwork**. |
-    | Alhálózat | Hagyja meg az alapértelmezett **myVirtualSubnet (10.1.0.0/24)**. |
+    | Subnet | Hagyja meg az alapértelmezett **myVirtualSubnet (10.1.0.0/24)** . |
     | Nyilvános IP-cím | Hagyja meg az alapértelmezett **(új) ip-myVm**. |
-    | Hálózati biztonsági portok | Válassza ki **lehetővé teszi a kiválasztott portok**. |
+    | Nyilvános bejövő portok | Válassza ki **lehetővé teszi a kiválasztott portok**. |
     | Bejövő portok kiválasztása | Válassza ki **HTTP** és **RDP**.
 
 1. Válassza ki **tovább: Felügyeleti**.
@@ -101,33 +102,33 @@ Hozzon létre két virtuális gépet a virtuális hálózaton:
 
     | Beállítás | Érték |
     | ------- | ----- |
-    | Name (Név) | Adja meg *myvmstorageaccount*. |
-    | Fióktípus | Hagyja meg az alapértelmezett **Storage (általános célú v1)**. |
+    | Name (Név) | Adja meg *myvmstorageaccount*. Ha ez a név használatban van, hozzon létre egy egyedi nevet.|
+    | Fióktípus | Hagyja meg az alapértelmezett **Storage (általános célú v1)** . |
     | Teljesítmény | Hagyja meg az alapértelmezett **Standard**. |
-    | Replikáció | Hagyja meg az alapértelmezett **helyileg redundáns tárolás (LRS)**. |
+    | Replikáció | Hagyja meg az alapértelmezett **helyileg redundáns tárolás (LRS)** . |
 
 1. Kattintson az **OK** gombra.
 
-1. Válassza az **Áttekintés + létrehozás** lehetőséget. Ekkor átkerül a **felülvizsgálat + létrehozása** oldal és az Azure ellenőrzi a konfigurációt.
+1. Válassza az **Áttekintés + létrehozás** lehetőséget. Ekkor átkerül a **felülvizsgálat + létrehozása** oldal, ahol az Azure ellenőrzi a konfigurációt.
 
-1. Ha azt láthatja, hogy **ellenőrzésen**válassza **létrehozás**.
+1. Amikor megjelenik a **ellenőrzésen** üzenetben válassza **létrehozás**.
 
 ### <a name="create-the-second-vm"></a>A második virtuális gép létrehozása
 
-1. 1. és 9 a fenti lépéseket.
+1. 1\. és 9 a fenti lépéseket.
 
     > [!NOTE]
-    > 2. lépésében, az a **virtuális gép neve**, adja meg *myVm2*.
+    > 2\. lépésében, az a **virtuális gép neve**, adja meg *myVm2*.
     >
     > A 7. lépés, a **diagnosztikai tárfiók**, győződjön meg arról, hogy ki **myvmstorageaccount**.
 
 1. Válassza az **Áttekintés + létrehozás** lehetőséget. Ekkor átkerül a **felülvizsgálat + létrehozása** oldal és az Azure ellenőrzi a konfigurációt.
 
-1. Ha azt láthatja, hogy **ellenőrzésen**válassza **létrehozás**.
+1. Amikor megjelenik a **ellenőrzésen** üzenetben válassza **létrehozás**.
 
 ## <a name="connect-to-a-vm-from-the-internet"></a>Kapcsolódás virtuális géphez az internetről
 
-Miután létrehozott *myVm1*, az interneten keresztül csatlakozzanak hozzá.
+Miután létrehozott *myVm1*, csatlakozzon az internethez.
 
 1. Adja meg a portál keresősávjában *myVm1*.
 
@@ -137,13 +138,13 @@ Miután létrehozott *myVm1*, az interneten keresztül csatlakozzanak hozzá.
 
     Kiválasztása után a **Connect** gomb **csatlakozhat a virtuális gép** nyílik meg.
 
-1. Válassza ki **RDP-fájl letöltése**. Az Azure létrehoz egy Remote Desktop Protocol (*.rdp*) fájlt, és letölti azt a számítógépet.
+1. Válassza ki **RDP-fájl letöltése**. Az Azure létrehoz egy Remote Desktop Protocol ( *.rdp*) fájlt, és letölti azt a számítógépet.
 
 1. Nyissa meg a letöltött *.rdp* fájlt.
 
     1. Ha a rendszer kéri, válassza a **Csatlakozás** lehetőséget.
 
-    1. Írja be a virtuális gép létrehozásakor megadott felhasználónevet és jelszót.
+    1. Adja meg a felhasználónevet és a virtuális gép létrehozásakor megadott jelszót.
 
         > [!NOTE]
         > Előfordulhat, hogy ki kell választania **további lehetőségek** > **másik fiók használata**, a virtuális gép létrehozásakor beírt hitelesítő adatok megadásához.
@@ -160,7 +161,7 @@ Miután létrehozott *myVm1*, az interneten keresztül csatlakozzanak hozzá.
 
 1. Írja be a `ping myVm2` (igen) kifejezést.
 
-    Kap vissza ezt az üzenetet hasonló:
+    Egy ehhez hasonló üzenetet fog kapni:
 
     ```powershell
     Pinging myVm2.0v0zze1s0uiedpvtxz5z0r0cxg.bx.internal.clouda
@@ -181,7 +182,7 @@ Miután létrehozott *myVm1*, az interneten keresztül csatlakozzanak hozzá.
     New-NetFirewallRule –DisplayName “Allow ICMPv4-In” –Protocol ICMPv4
     ```
 
-    Hogy a parancs engedélyezi az ICMP bejövő, a Windows tűzfalon keresztül:
+    Ez a parancs az ICMP lehetővé teszi a bejövő, a Windows tűzfalon keresztül:
 
 1. Zárja be a *myVm1* virtuális géppel létesített távoli asztali kapcsolatot.
 
@@ -204,17 +205,15 @@ Miután létrehozott *myVm1*, az interneten keresztül csatlakozzanak hozzá.
         Minimum = 0ms, Maximum = 1ms, Average = 0ms
     ```
 
-    Mivel az előző lépésben átengedte az ICMP-t a Windows tűzfalon a *myVm1* virtuális gép esetében, válaszokat fog kapni a *myVm1* virtuális géptől.
+    Kapni *myVm1*, mert az a Windows tűzfalon keresztül a ICMP engedélyezett. a *myVm1* a 3. lépésben a virtuális gép.
 
 1. Zárja be a *myVm2* virtuális géppel létesített távoli asztali kapcsolatot.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha elkészült, a virtuális hálózat és a virtuális gépek, törölje az erőforráscsoportot és az összes benne található erőforrást:
+Ha befejezte a virtuális hálózat és a virtuális gépek használatával törölje az erőforráscsoportot és az összes benne található erőforrást:
 
-1. Írja be a *myResourceGroup* nevet a portál tetején lévő **keresőmezőbe**.
-
-1. Amikor a **myResourceGroup** megjelenik a keresési eredmények között, válassza ki.
+1. Adja meg *myResourceGroup* a a **keresési** a portálon, válassza a felső mezőbe **myResourceGroup** a keresési eredmények közül.
 
 1. Válassza az **Erőforráscsoport törlése** elemet.
 
@@ -222,6 +221,6 @@ Ha elkészült, a virtuális hálózat és a virtuális gépek, törölje az er�
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben a rövid útmutatóban létrehozott egy alapértelmezett virtuális hálózatot és két virtuális gépet. Egy virtuális géphez az internetről csatlakozik, és privát kommunikációt a két virtuális gépet. További információ a virtuális hálózatok beállításairól: [Virtuális hálózat kezelése](manage-virtual-network.md).
+Ebben a rövid útmutatóban létrehozott egy alapértelmezett virtuális hálózatot és két virtuális gépet. Egy virtuális géphez az internetről csatlakozik, és biztonságosan továbbítani a két virtuális gép között. További információ a virtuális hálózatok beállításairól: [Virtuális hálózat kezelése](manage-virtual-network.md).
 
-Alapértelmezés szerint az Azure virtuális gépek korlátlan privát kommunikációját lehetővé teszi. Ezzel szemben csak lehetővé teszi a bejövő távoli asztali kapcsolatok Windows virtuális gépekhez az internetről. Virtuális gép hálózati kommunikációt a különböző típusú konfigurálásával kapcsolatos további tudnivalókért keresse fel a [hálózati forgalom szűrése](tutorial-filter-network-traffic.md) oktatóanyag.
+Alapértelmezés szerint az Azure lehetővé teszi a virtuális gépek közötti kommunikáció biztonságossá nem korlátozott. Ezzel szemben csak lehetővé teszi a bejövő távoli asztali kapcsolatok Windows virtuális gépekhez az internetről. Virtuális gép hálózati kommunikációt a különböző típusú konfigurálásával kapcsolatos további tudnivalókért keresse fel a [hálózati forgalom szűrése](tutorial-filter-network-traffic.md) oktatóanyag.

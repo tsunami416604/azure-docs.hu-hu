@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 12/05/2017
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: c188c23f87715b6ba5b90f6015b59f2a347ec0cf
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: bfb15e717e3cb726aba782d9a9506330d7ea39fe
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60486947"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67839319"
 ---
 # <a name="move-data-by-using-copy-activity"></a>Adatok áthelyezése másolási tevékenység használatával
 > [!div class="op_single_selector" title1="Válassza ki a Data Factory szolgáltatás használ:"]
@@ -95,7 +95,7 @@ Ha a forrás- és fogadó adattárak a felhőben, a Data Factory szolgáltatást
 
 | Földrajzi hely, a cél-adattárak | A célként megadott adattárba régiója | Adatáthelyezés használt régió |
 |:--- |:--- |:--- |
-| Egyesült Államok | USA keleti régiója | USA keleti régiója |
+| Egyesült Államok | East US | East US |
 | &nbsp; | USA 2. keleti régiója | USA 2. keleti régiója |
 | &nbsp; | USA középső régiója | USA középső régiója |
 | &nbsp; | USA északi középső régiója | USA északi középső régiója |
@@ -138,7 +138,7 @@ Többféle módon másolási tevékenységgel rendelkező folyamatot hozhat lét
 A Data Factory másolás varázslójával segít másolási tevékenységgel rendelkező folyamat létrehozása. Ez a folyamat lehetővé teszi, hogy az adatok másolása támogatott forrásokból a célhelyekre *JSON írása nélkül* társított szolgáltatások, adatkészletek és folyamatok definíciói. Lásd: [Data Factory másolás varázslójával](data-factory-copy-wizard.md) további információ a varázsló.  
 
 ### <a name="by-using-json-scripts"></a>JSON-parancsfájlok használatával
-Az Azure portal, a Visual Studio vagy az Azure PowerShell-lel a Data Factory Editor használatával hozzon létre egy folyamatot egy JSON-definíciót (a másolási tevékenység használatával). Ezt követően telepítheti a Data Factoryban a folyamat létrehozásához. Lásd: [oktatóanyag: Az Azure Data Factory-folyamatot használja a másolási tevékenység](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) részletes utasításokat tartalmazó oktatóanyagért.    
+Data Factory Editor eszközét a Visual Studióban, vagy az Azure PowerShell segítségével hozzon létre egy folyamatot egy JSON-definíciót (a másolási tevékenység használatával). Ezt követően telepítheti a Data Factoryban a folyamat létrehozásához. Lásd: [oktatóanyag: Az Azure Data Factory-folyamatot használja a másolási tevékenység](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) részletes utasításokat tartalmazó oktatóanyagért.    
 
 Az összes típusú tevékenységet (például név, leírás, bemeneti és kimeneti táblák és szabályzatok) JSON-tulajdonságokkal érhetők el. Az elérhető tulajdonságok köre az `typeProperties` a tevékenység szakaszban tevékenységek minden típusának számától függ.
 

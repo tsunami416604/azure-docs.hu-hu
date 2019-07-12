@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/17/2019
 ms.author: hrasheed
-ms.openlocfilehash: 3e1f64aa00ea0d78eca8a994814a91600b91239f
-ms.sourcegitcommit: 156b313eec59ad1b5a820fabb4d0f16b602737fc
+ms.openlocfilehash: 9d25996db9c13a12781d369327f2b43a41fb4115
+ms.sourcegitcommit: 1572b615c8f863be4986c23ea2ff7642b02bc605
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67190696"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67786518"
 ---
 # <a name="install-third-party-apache-hadoop-applications-on-azure-hdinsight"></a>Az Azure HDInsight külső Apache Hadoop-alkalmazások telepítése
 
@@ -38,7 +38,7 @@ Az alábbi listában a közzétett alkalmazást mutatja be:
 |[Presto for Azure HDInsight buborék](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/starburst.starburst-presto) |Hadoop |Presto van egy gyors, skálázható elosztott SQL lekérdezési motorja. Tárolási és számítási szétválasztása lett tervezve, Presto tökéletes megoldás az adatok az Azure Data Lake Storage, Azure Blob Storage, SQL és NoSQL-adatbázisok és más adatforrásokhoz. |
 |[StreamSets Data Collector for HDInsight felhőalapú](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/streamsets.streamsets-data-collector-hdinsight) |Hadoop, HBase, Spark, Kafka |StreamSets Data Collector egy könnyen használható, nagy teljesítményű motor, amely valós időben streameli. Útvonal és az adatok feldolgozása a data-adatfolyamok a gyűjtő használatával. Ez tartalmaz egy 30 napos próbaverziós licencre. |
 |[Trifacta Wrangler Enterprise](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/trifacta.tr01) |Hadoop, Spark, HBase |Trifacta Wrangler Enterprise HDInsight a vállalati adatok rugalmasan méretezhető, az adatok konvertálását támogatja. Azure-on futó Trifacta költsége Trifacta előfizetés költségek és az Azure infrastrukturális költségeit a virtuális gépek kombinációját. |
-|[Unifi Adatplatform](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/unifi-software.unifi-data-platform) |Hadoop,HBase,Storm,Spark |Lehetővé teheti az üzleti felhasználónak, amelynek célja a adatkezelési kihívást a meghajtó növekményes bevétel, csökkentheti a költségeket és az üzemeltetés bonyolult önkiszolgáló olyan eszközöket, zökkenőmentesen integrált Unifi Adatplatformon olyan. |
+|[Unifi Adatplatform](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/unifi-software.unifi-data-catalog) |Hadoop,HBase,Storm,Spark |Lehetővé teheti az üzleti felhasználónak, amelynek célja a adatkezelési kihívást a meghajtó növekményes bevétel, csökkentheti a költségeket és az üzemeltetés bonyolult önkiszolgáló olyan eszközöket, zökkenőmentesen integrált Unifi Adatplatformon olyan. |
 |[Unraveldata APM](https://azuremarketplace.microsoft.com/marketplace/apps/unravel-data.unravel-app) |Spark |HDInsight Spark-fürt adatok alkalmazás unravel. |
 |[Vízvonallal AI-központú adatkatalógus](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/waterline_data.waterline_data) |Spark |Vízvonallal katalógusokban, rendezi és mesterséges Intelligencia használatával automatikus címkeadatok üzleti feltételeket adatok szabályozza. Üzleti literate katalógus vízvonallal a része a kritikus fontosságú, sikeres önkiszolgáló elemzési, megfelelőségi és szabályozási és informatikai kezdeményezések előrehaladását. |
 

@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 518e3fa842c5283dc20a6111773bd55451f026b6
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: f33a59105d1be94ccd4fb24ae3d962b36c2efbdd
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60486850"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67839361"
 ---
 # <a name="azure-data-factory---frequently-asked-questions"></a>Az Azure Data Factory – gyakori kérdések
 > [!NOTE]
@@ -35,7 +35,7 @@ Adat-előállító mind a helyszíni és felhőalapú adattárak, valamint szám
 További információkért lásd: [áttekintés és alapfogalmak](data-factory-introduction.md).
 
 ### <a name="where-can-i-find-pricing-details-for-azure-data-factory"></a>Hol találom az Azure Data Factory díjszabása?
-Lásd: [Data Factory szolgáltatás díjszabása oldalon] [ adf-pricing-details] díjszabási információkat az Azure Data Factory számára.  
+Lásd: [Data Factory szolgáltatás díjszabása oldalon][adf-pricing-details] díjszabási információkat az Azure Data Factory számára.  
 
 ### <a name="how-do-i-get-started-with-azure-data-factory"></a>Hogyan kezdhetem az Azure Data Factory?
 * Azure Data Factory áttekintése, lásd: [az Azure Data Factory bemutatását](data-factory-introduction.md).
@@ -51,11 +51,10 @@ Lásd: **Azure Data Factory korlátai** szakaszában a [Azure-előfizetés és a
 ### <a name="what-is-the-authoringdeveloper-experience-with-azure-data-factory-service"></a>Mi a szerzői műveletek/fejlesztői felületet biztosít az Azure Data Factory szolgáltatásban?
 Szerző/létrehozhat adat-előállítók az alábbi eszközök/SDK-k egyikével:
 
-* **Az Azure portal** a Data Factory paneleket az Azure Portalon hozhat létre data factoryk ad társított szolgáltatások gazdag felhasználói felületet kínálnak. A **Data Factory Editor**, amely tartalmaz-e a portál lehetővé teszi, hogy könnyedén hozhatja létre a társított szolgáltatások, táblák, adatkészletek és folyamatok JSON-definíciók összetevőkért megadásával. Lásd: [adatok első folyamatát az Azure portal használatával](data-factory-build-your-first-pipeline-using-editor.md) a portál /-szerkesztő használatával hozhat létre és telepíthet egy adat-előállítót egy példát.
 * **A Visual Studio** Visual Studio használatával hozzon létre egy Azure data factoryt. Lásd: [hozhat létre az első folyamatot a Visual Studio használatával](data-factory-build-your-first-pipeline-using-vs.md) részleteiről.
-* **Az Azure PowerShell** lásd [létrehozása és a figyelő Azure PowerShell-lel az Azure Data Factory](data-factory-build-your-first-pipeline-using-powershell.md) oktatóanyag/forgatókönyv egy PowerShell-lel adat-előállító létrehozásához. Lásd: [Data Factory parancsmagjainak leírása] [ adf-powershell-reference] a Data Factory-parancsmagok átfogó dokumentáció tartalmát az MSDN könyvtárában.
-* **.NET-osztálytár** Data Factory .NET SDK-val programozott módon hozhat létre data factoryt. Lásd: [létrehozása, figyelése és kezelése a .NET SDK-t az adat-előállítók](data-factory-create-data-factories-programmatically.md) használható a .NET SDK használatával egy adat-előállító létrehozásához. Lásd: [Data Factory osztálytár-referenciát] [ msdn-class-library-reference] egy átfogó Data Factory .NET SDK dokumentációját.
-* **REST API-val** is használhatja az Azure Data Factory szolgáltatás által elérhetővé tett REST API létrehozása és üzembe helyezése az adat-előállítók. Lásd: [Data Factory REST API-referencia] [ msdn-rest-api-reference] átfogó dokumentáció, amely a Data Factory REST API számára.
+* **Az Azure PowerShell** lásd [létrehozása és a figyelő Azure PowerShell-lel az Azure Data Factory](data-factory-build-your-first-pipeline-using-powershell.md) oktatóanyag/forgatókönyv egy PowerShell-lel adat-előállító létrehozásához. Lásd: [Data Factory parancsmagjainak leírása][adf-powershell-reference] a Data Factory-parancsmagok átfogó dokumentáció tartalmát az MSDN könyvtárában.
+* **.NET-osztálytár** Data Factory .NET SDK-val programozott módon hozhat létre data factoryt. Lásd: [létrehozása, figyelése és kezelése a .NET SDK-t az adat-előállítók](data-factory-create-data-factories-programmatically.md) használható a .NET SDK használatával egy adat-előállító létrehozásához. Lásd: [Data Factory osztálytár-referenciát][msdn-class-library-reference] egy átfogó Data Factory .NET SDK dokumentációját.
+* **REST API-val** is használhatja az Azure Data Factory szolgáltatás által elérhetővé tett REST API létrehozása és üzembe helyezése az adat-előállítók. Lásd: [Data Factory REST API-referencia][msdn-rest-api-reference] átfogó dokumentáció, amely a Data Factory REST API számára.
 * **Az Azure Resource Manager-sablon** lásd [oktatóanyag: Az első Azure data factory használatával az Azure Resource Manager-sablon létrehozása](data-factory-build-your-first-pipeline-using-arm.md) fo részleteit.
 
 ### <a name="can-i-rename-a-data-factory"></a>Átnevezheti a data factory?
@@ -178,7 +177,7 @@ A szelet futtathatja a következő módszerek valamelyikével:
     ```powershell
     Set-AzDataFactorySliceStatus -Status Waiting -ResourceGroupName $ResourceGroup -DataFactoryName $df -TableName $table -StartDateTime "02/26/2015 19:00:00" -EndDateTime "02/26/2015 20:00:00"
     ```
-  Lásd: [Set-AzDataFactorySliceStatus] [ set-azure-datafactory-slice-status] a parancsmag részleteit.
+  Lásd: [Set-AzDataFactorySliceStatus][set-azure-datafactory-slice-status] a parancsmag részleteit.
 
 ### <a name="how-long-did-it-take-to-process-a-slice"></a>Mennyi volt időt vesz igénybe egy szelet feldolgozása?
 A Monitor & Manage alkalmazással Activity Window Explorer használatával tudja, hogy mennyi ideig tartott adatszelet feldolgozni. Lásd: [Activity Window Explorer](data-factory-monitor-manage-app.md#activity-window-explorer) részleteiről.

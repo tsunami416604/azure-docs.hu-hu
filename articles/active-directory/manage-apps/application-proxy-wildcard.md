@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8cd29fc00a1c25a7c092393591060ca7e2938155
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: 5d3b8176566593c5c9e9ff63a6ccbafcb2a35cd5
+ms.sourcegitcommit: 441e59b8657a1eb1538c848b9b78c2e9e1b6cfd5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67481264"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67827993"
 ---
 # <a name="wildcard-applications-in-the-azure-active-directory-application-proxy"></a>Az Azure Active Directory application proxy a helyettesítő karaktereket tartalmazó alkalmazások
 
@@ -45,7 +45,9 @@ Helyettesítő karaktereket is tartalmazó alkalmazások teheti közzé, ha mind
 
 > http(s)://*.\<domain\>
 
-Például: `http(s)://*.adventure-works.com`. A belső és külső URL-címeket használhatja a különböző tartományokban, ajánlott eljárásként, amíg azok azonosnak kell lennie. Ha az alkalmazás közzététele hibaüzenet jelenik meg, ha egy helyettesítő karaktert tartalmazó URL-címek egyike nem rendelkezik.
+Például: `http(s)://*.adventure-works.com`.
+
+A belső és külső URL-címeket használhatja a különböző tartományokban, ajánlott eljárásként, amíg azok azonosnak kell lennie. Ha az alkalmazás közzététele hibaüzenet jelenik meg, ha egy helyettesítő karaktert tartalmazó URL-címek egyike nem rendelkezik.
 
 Ha további alkalmazásokat különböző konfigurációs beállításokkal rendelkezik, közzé kell tennie az ilyen kivételek külön alkalmazásokként felülírja az alapértelmezett értékeket beállítani a helyettesítő karaktert. Helyettesítő karakter nélküli alkalmazások mindig elsőbbséget élveznek helyettesítő karaktereket tartalmazó alkalmazások. Konfigurációs szempontjából ezek a "csak" a szokásos alkalmazások.
 
@@ -60,7 +62,7 @@ Első lépésként győződjön meg arról, hogy megfelel-e ezeket a követelmé
 Miközben [egyéni tartományok](application-proxy-configure-custom-domain.md) vannak helyettesítő karaktereket tartalmazó alkalmazások előfeltétel azok minden más alkalmazás nem kötelező. Egyéni tartományok létrehozása szükséges, hogy:
 
 1. Hozzon létre egy ellenőrzött tartomány Azure-ban.
-2. Töltse fel az application proxy SSL-tanúsítvány PFX formátumban.
+1. Töltse fel az application proxy SSL-tanúsítvány PFX formátumban.
 
 Érdemes lehet egy helyettesítő tanúsítványt használja az alkalmazás azt tervezi, hogy hozzon létre megfelelő. Másik lehetőségként használhatja egy tanúsítványt, amely csak megjeleníti az adott alkalmazásokat. Csak azokat az alkalmazásokat, a tanúsítvány szerepel ebben az esetben a helyettesítő karaktereket tartalmazó alkalmazásokká keresztül elérhető lesz.
 
@@ -82,11 +84,11 @@ Az alábbiakban meg helyettesítő karaktereket tartalmazó alkalmazások eseté
 
 Helyettesítő karaktereket tartalmazó alkalmazások esetében a **belső URL-cím** formátumban kell lenniük `http(s)://*.<domain>`.
 
-![Belső URL-cím, használja a formátum http (s) :/ / *. < tartomány >](./media/application-proxy-wildcard/22.png)
+![Belső URL-cím, használja a formátum http (s) :/ / *. \<tartomány >](./media/application-proxy-wildcard/22.png)
 
 Konfigurálása során egy **külső URL-cím**, a következő formátumot kell használnia: `https://*.<custom domain>`
 
-![A külső URL-cím formátuma https://*.<custom tartományt használja >](./media/application-proxy-wildcard/21.png)
+![Külső URL-CÍMÉT használja a formátum https://*. \<egyéni tartomány >](./media/application-proxy-wildcard/21.png)
 
 Más esetekben a helyettesítő karaktert, több helyettesítő karaktereket vagy más regex karakterláncok nem támogatottak, és hibák okozzák.
 
@@ -95,11 +97,11 @@ Más esetekben a helyettesítő karaktert, több helyettesítő karaktereket vag
 Egy alkalmazás kizárása a helyettesítő karaktereket tartalmazó alkalmazásokká szerint
 
 - Az alkalmazás rendszeres kivétel alkalmazás közzététele
-- A helyettesítő karakter, csak az adott alkalmazások a DNS-beállítások engedélyezése  
+- A helyettesítő karakter, csak az adott alkalmazások a DNS-beállítások engedélyezése
 
 Rendszeres alkalmazásként alkalmazás közzététele a kizárandó egy alkalmazás egy helyettesítő karaktert tartalmazó előnyben részesített módszer. Tegyen közzé a kizárt alkalmazást, mielőtt a helyettesítő karaktereket tartalmazó alkalmazások annak érdekében, hogy a kivételek az elejétől is érvényben vannak. A legtöbb adott alkalmazás mindig elsőbbséget – közzétett alkalmazás `budgets.finance.adventure-works.com` elsőbbséget élvez az alkalmazás `*.finance.adventure-works.com`, ami viszont elsőbbséget élvez az alkalmazás `*.adventure-works.com`.
 
-A helyettesítő karaktert csak a megfelelő alkalmazások a DNS-management szolgáltatáson keresztül működik is korlátozhatja. Ajánlott eljárásként hozzon létre egy CNAME-bejegyzést, amely egy helyettesítő karaktert tartalmaz, és megfelel a konfigurált külső URL-cím formátuma. Adott alkalmazás URL-címek azonban a helyettesítő karakterek inkább mutat. Például, nem pedig `*.adventure-works.com`, pont `hr.adventure-works.com`, `expenses.adventure-works.com` és `travel.adventure-works.com individually` való `000aa000-11b1-2ccc-d333-4444eee4444e.tenant.runtime.msappproxy.net`. 
+A helyettesítő karaktert csak a megfelelő alkalmazások a DNS-management szolgáltatáson keresztül működik is korlátozhatja. Ajánlott eljárásként hozzon létre egy CNAME-bejegyzést, amely egy helyettesítő karaktert tartalmaz, és megfelel a konfigurált külső URL-cím formátuma. Adott alkalmazás URL-címek azonban a helyettesítő karakterek inkább mutat. Például, nem pedig `*.adventure-works.com`, pont `hr.adventure-works.com`, `expenses.adventure-works.com` és `travel.adventure-works.com individually` való `000aa000-11b1-2ccc-d333-4444eee4444e.tenant.runtime.msappproxy.net`.
 
 Ha ezt a beállítást használja, is szüksége lesz egy másik CNAME bejegyzés értéke `AppId.domain`, például `00000000-1a11-22b2-c333-444d4d4dd444.adventure-works.com`, ugyanarra a helyre is mutat. Annak a **AppId** az alkalmazás Tulajdonságok lapján a helyettesítő karaktereket tartalmazó alkalmazásokká:
 
@@ -110,7 +112,7 @@ Ha ezt a beállítást használja, is szüksége lesz egy másik CNAME bejegyzé
 A helyettesítő karaktereket tartalmazó alkalmazásokká jelölt a csak egy csempe az [MyApps panel](https://myapps.microsoft.com). Alapértelmezés szerint ez a csempe eltűnik. A csempe megjelenítése, és rendelkezik az adott oldalon található felhasználók föld:
 
 1. Útmutatás [kezdőlap URL-cím beállítása](application-proxy-configure-custom-home-page.md).
-2. Állítsa be **alkalmazás megjelenítése** való **igaz** az alkalmazás Tulajdonságok oldalán található.
+1. Állítsa be **alkalmazás megjelenítése** való **igaz** az alkalmazás Tulajdonságok oldalán található.
 
 ### <a name="kerberos-constrained-delegation"></a>Kerberos által korlátozott delegálás
 

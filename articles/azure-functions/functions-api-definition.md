@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 03/23/2017
 ms.author: alkarche
-ms.openlocfilehash: 6d11961f06a75341e633c7a8963e6b83ed37cf13
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1bc53fadfb622794703deaff560c9083ca6a1a10
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61341701"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67656821"
 ---
 # <a name="openapi-20-metadata-support-in-azure-functions-preview"></a>OpenAPI 2.0 metaadatok támogatása az Azure Functions (előzetes verzió)
 OpenAPI 2.0 (korábbi nevén Swagger) metaadatok támogatása az Azure Functions egy előzetes verziójú funkció, amely segítségével írhat egy OpenAPI 2.0-definíció függvényalkalmazás belül. Ezt a fájlt majd a függvényalkalmazás használatával is üzemeltethet.
@@ -75,7 +75,7 @@ A generált Swagger vázat van leképezve, az alábbi táblázat a Azure-portál
    1. Állítsa be **API-definíció forrása** való **függvény**.
    1. Kattintson a **létrehozása API-definíciósablon** , majd **mentése** később módosítása a Sablondefiníció létrehozásához.
    1. Megjegyzés: az API-definíció URL-címe és a kulcs.
-1. [Folyamatos integráció/folyamatos üzembe helyezés (CI/CD) beállítása](https://docs.microsoft.com/azure/azure-functions/functions-continuous-deployment#continuous-deployment-requirements).
+1. [Folyamatos integráció/folyamatos üzembe helyezés (CI/CD) beállítása](https://docs.microsoft.com/azure/azure-functions/functions-continuous-deployment#requirements-for-continuous-deployment).
 2. \Site\wwwroot, verziókövetési rendszerben swagger.json módosítása\.azurefunctions\swagger\swagger.json.
 
 Most a tárházban swagger.json módosításai az API-t, a függvényalkalmazás által üzemeltetett definíció URL-címe és a kulcs részben megadott lépés 1.c.

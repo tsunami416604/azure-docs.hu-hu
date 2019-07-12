@@ -4,7 +4,7 @@ description: Ismerje meg, az Azure-beli Linuxos virtuális gép az Azure Linux-�
 services: virtual-machines-linux
 documentationcenter: ''
 author: roiyz-msft
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager,azure-service-management
 ms.assetid: f1f19300-987d-4f29-9393-9aba866f049c
@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/02/2017
 ms.author: roiyz
-ms.openlocfilehash: 5d53f34ea6b0983d0687cdaf6ec6271c703bb055
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: fd02e414aeff26510981661f49cc914a5ea6592b
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60799765"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67705868"
 ---
 # <a name="how-to-update-the-azure-linux-agent-on-a-vm"></a>A virtuális gép az Azure Linux-ügynök frissítése
 

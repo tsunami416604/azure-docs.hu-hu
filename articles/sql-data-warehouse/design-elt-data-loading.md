@@ -6,16 +6,16 @@ author: kevinvngo
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.subservice: load data
+ms.subservice: load-data
 ms.date: 05/10/2019
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: de5649498dddcec8c65f2cfca6dcb39fa20a9267
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: fa688f40f8eb968f2c388601b387e4f584951a91
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66242245"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67595603"
 ---
 # <a name="designing-a-polybase-data-loading-strategy-for-azure-sql-data-warehouse"></a>Az Azure SQL Data Warehouse PolyBase-adatbetöltés stratégia tervezése
 
@@ -57,15 +57,15 @@ A PolyBase adatokat tölt be az UTF-8 és UTF-16 kódolású, elválasztójellel
 |       smallint        |                           smallint                           |
 |          int          |                             int                              |
 |        bigint         |                            bigint                            |
-|        logikai        |                             bit                              |
+|        boolean        |                             bit                              |
 |        double         |                            float                             |
 |         float         |                             real                             |
 |        double         |                            money                             |
 |        double         |                          smallmoney                          |
-|        string         |                            nchar                             |
-|        string         |                           nvarchar                           |
-|        string         |                             char                             |
-|        string         |                           varchar                            |
+|        Karakterlánc         |                            nchar                             |
+|        Karakterlánc         |                           nvarchar                           |
+|        Karakterlánc         |                             char                             |
+|        sztring         |                           varchar                            |
 |        binary         |                            binary                            |
 |        binary         |                          varbinary                           |
 |       timestamp       |                             date                             |

@@ -7,12 +7,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 03/15/2019
 ms.custom: seodec18
-ms.openlocfilehash: 70cb7f53032dca2b0fedbf4581b88aea07960515
-ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
+ms.openlocfilehash: 5fa8e54a6a665b1bad91a87ca8e58f873df1ae8a
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67294887"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67672318"
 ---
 # <a name="azure-disk-encryption-prerequisites-previous-release"></a>Az Azure Disk Encryption előfeltétel (előző kiadás)
 
@@ -32,10 +32,13 @@ A támogatott forgatókönyveket, amelyek a aktorcsoportot tárgyalt számára a
 
 ### <a name="windows"></a>Windows
 
-- A Windows Server következő verziói: A Windows Server 2008 R2, Windows Server 2012, Windows Server 2012 R2, Windows Server 2016, Windows Server 2012 R2 Server Core és a Windows Server 2016 Server core.
-A Windows Server 2008 R2, a .NET-keretrendszer 4.5 telepítve van az Azure-ban titkosítás engedélyezése előtt kell rendelkeznie. Telepítse a Windows Update a választható frissítés a Microsoft .NET-keretrendszer 4.5.2-es verziója a Windows Server 2008 R2 x64 alapú rendszerekhez (KB2901983).
-- A Windows Server 2012 R2 Core és a Windows Server 2016 Core által támogatott az Azure Disk Encryption után a bdehdcfg összetevő telepítve van a virtuális gépen.
-- Windows-ügyfélverziókat: Windows 8-ügyfél és a Windows 10-ügyfeleknek.
+- Windows-ügyfél: A Windows 8 és újabb verziók.
+- Windows Server: A Windows Server 2008 R2 és újabb verziók.  
+ 
+> [!NOTE] 
+> A Windows Server 2008 R2 szükséges a titkosításhoz; kell telepíteni .NET-keretrendszer 4.5 Telepítse a Windows Update a választható frissítés a Microsoft .NET-keretrendszer 4.5.2-es verziója a Windows Server 2008 R2 x64 alapú rendszerekhez ([KB2901983](https://www.catalog.update.microsoft.com/Search.aspx?q=KB2901983)).  
+>  
+> A Windows Server 2012 R2 Core és a Windows Server 2016 Core igényel a bdehdcfg összetevőt telepíteni kell a virtuális gépen a titkosításhoz.
 
 ### <a name="linux"></a>Linux 
 
@@ -106,7 +109,7 @@ Parancsok, amelyek segítségével csatlakoztathatja az adatlemezeket és a szü
 
 
 **Csoportházirend:**
- - Az Azure Disk Encryption megoldás a BitLocker külső kulcsvédő Windows IaaS virtuális gépekhez használja. Tartományhoz csatlakozó virtuális gépek esetén nem leküldéses bármely csoportházirendek, amelyeket a TPM-védőt. "A BitLocker engedélyezése a kompatibilis TPM nélküli" a csoportházirenddel kapcsolatos információkért lásd: [a BitLocker csoportházirend-hivatkozás](https://docs.microsoft.com/windows/security/information-protection/bitlocker/bitlocker-group-policy-settings#a-href-idbkmk-unlockpol1arequire-additional-authentication-at-startup).
+ - Az Azure Disk Encryption megoldás a BitLocker külső kulcsvédő Windows IaaS virtuális gépekhez használja. Tartományhoz csatlakozó virtuális gépek esetén nem leküldéses bármely csoportházirendek, amelyeket a TPM-védőt. "A BitLocker engedélyezése a kompatibilis TPM nélküli" a csoportházirenddel kapcsolatos információkért lásd: [a BitLocker csoportházirend-hivatkozás](https://docs.microsoft.com/windows/security/information-protection/bitlocker/bitlocker-group-policy-settings#bkmk-unlockpol1).
 
 -  Egyéni csoportházirend-tartományhoz csatlakoztatott virtuális gépeken a BitLocker-házirendnek tartalmaznia kell a következő beállítást: [Felhasználói tárolás konfigurálása a BitLocker helyreállítási adatainak engedélyezése 256 bites helyreállítási kulcs ->](https://docs.microsoft.com/windows/security/information-protection/bitlocker/bitlocker-group-policy-settings). Az Azure Disk Encryption sikertelen lesz, ha egyéni csoportházirend-beállítások a BitLocker nem kompatibilis. Gépeken, amelyek nem rendelkeznek a megfelelő házirend-beállítást, az új szabályzat alkalmazásának frissítése (a gpupdate.exe/Force) az új szabályzat kényszerítése és indítsa újra lehet szükség.  
 

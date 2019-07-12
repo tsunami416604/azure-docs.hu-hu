@@ -4,15 +4,15 @@ description: Ismerteti, hogyan állíthatja be az automatikus skálázási paran
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
-ms.topic: how-to
+ms.topic: conceptual
 ms.date: 03/21/2019
 ms.author: helohr
-ms.openlocfilehash: e9f500e3ab965b9dbfc5e395a6572497c85f6f8f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3b98db361a8ec888eb8bf9e1bf3658a7e38111c6
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66755131"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67620417"
 ---
 # <a name="automatically-scale-session-hosts"></a>Munkamenetgazdák automatikus méretezése
 
@@ -75,7 +75,7 @@ Következő lépésként hozza létre a biztonságosan tárolt hitelesítő adat
     Például **változó beállítása – Name KeyPath-globális hatókör-érték "c:\\skálázás HostPool1"**
 5. Futtassa a **New-StoredCredential - KeyPath \$KeyPath** parancsmagot. Amikor a rendszer kéri, adja meg a gazdagép készlet lekérdezése engedélyek Windows virtuális asztal hitelesítő adatait (a gazdagép készlet van megadva a **soubor Config.XML v**).
     - Ha különböző szolgáltatásnevek vagy standard szintű fiókot használ, futtassa a **New-StoredCredential - KeyPath \$KeyPath** parancsmag után minden hozza létre a helyi fiók tárolt hitelesítő adatokat.
-6. Futtatás **Get-StoredCredentials-lista** ellenőrizze a hitelesítő adatok sikeresen létrejöttek.
+6. Futtatás **Get-StoredCredential-lista** ellenőrizze a hitelesítő adatok sikeresen létrejöttek.
 
 ### <a name="configure-the-configxml-file"></a>Soubor Config.XML v fájl konfigurálása
 

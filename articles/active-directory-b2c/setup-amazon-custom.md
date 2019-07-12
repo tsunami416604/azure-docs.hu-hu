@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 10/05/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 1fcac4bcfb5cd37ddf8b351514c8f4f1622367c6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 46b58aad8a5cb71744aca9baaa3a27d4d1efe8e2
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66512576"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67655255"
 ---
 # <a name="set-up-sign-in-with-an-amazon-account-using-custom-policies-in-azure-active-directory-b2c"></a>Állítsa be a bejelentkezést egy Amazon-fiókkal, az Azure Active Directory B2C-vel egyéni szabályzatok használatával
 
@@ -47,7 +47,7 @@ Az ügyfél titkos kulcsát, az Azure AD B2C-bérlő korábban rögzített táro
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 2. Győződjön meg arról, hogy használja az Azure AD B2C-bérlő kattintva tartalmazó könyvtárba a **címtár és előfizetés-szűrő** a felső menüben, és a könyvtár, amely tartalmazza a bérlő kiválasztása.
 3. Válasszon **minden szolgáltatás** az Azure Portalon, és majd keresse meg és válassza a bal felső sarkában lévő **Azure AD B2C-vel**.
-4. Az Áttekintés oldalon válassza ki a **identitás-kezelőfelületi keretrendszer – előzetes verzió**.
+4. Az Áttekintés oldalon válassza ki a **identitás-kezelőfelületi keretrendszer**.
 5. Válassza ki **Szabályzatbejegyzések** majd **Hozzáadás**.
 6. A **beállítások**, válassza a `Manual`.
 7. Adjon meg egy **neve** a házirend-kulcs. Például: `AmazonSecret`. Az előtag `B2C_1A_` automatikusan hozzáadódik a kulcs neve.
@@ -57,14 +57,14 @@ Az ügyfél titkos kulcsát, az Azure AD B2C-bérlő korábban rögzített táro
 
 ## <a name="add-a-claims-provider"></a>A jogcímeket szolgáltató hozzáadása
 
-Ha azt szeretné, hogy a felhasználók egy Amazon-fiókkal bejelentkezni, határozza meg a fiók, amely az Azure AD B2C-végponton keresztül kommunikálhat egy jogcímszolgáltatótól szeretne. A végpont ellenőrzése, hogy egy adott felhasználó rendelkezik hitelesítése Azure AD B2C által használt jogcímeket biztosít. 
+Ha azt szeretné, hogy a felhasználók egy Amazon-fiókkal bejelentkezni, határozza meg a fiók, amely az Azure AD B2C-végponton keresztül kommunikálhat egy jogcímszolgáltatótól szeretne. A végpont ellenőrzése, hogy egy adott felhasználó rendelkezik hitelesítése Azure AD B2C által használt jogcímeket biztosít.
 
 Definiálhat egy Amazon-fiókkal, egy jogcímszolgáltatótól hozzáadásával, hogy a **ClaimsProviders** elem a bővítmény fájlban a szabályzat.
 
 
 1. Nyissa meg a *TrustFrameworkExtensions.xml*.
 2. Keresse meg a **ClaimsProviders** elemet. Ha nem létezik, adja hozzá a legfelső szintű elem alatt.
-3. Vegyen fel egy új **ClaimsProvider** módon:  
+3. Vegyen fel egy új **ClaimsProvider** módon:
 
     ```xml
     <ClaimsProvider>
@@ -147,7 +147,7 @@ Most, hogy egyetlen helyen, amelyekkel hozzákapcsolhatja egy műveletet kell. A
     ```XML
     <ClaimsExchange Id="AmazonExchange" TechnicalProfileReferenceId="Amazon-OAuth" />
     ```
-    
+
     Frissítse az értéket a **TechnicalProfileReferenceId** , a korábban létrehozott technikai profil azonosítója. Például: `Amazon-OAuth`.
 
 3. Mentse a *TrustFrameworkExtensions.xml* fájlt, és töltse fel újra az ellenőrzéshez.

@@ -10,18 +10,18 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: luisca
 ms.custom: seodec2018
-ms.openlocfilehash: 1bf42e5f418f99f5e5327d790c1adffe2357b84e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e181aab3d92d8111a0a7d1d41bbddac20687a547
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65021940"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67668858"
 ---
 # <a name="how-to-add-a-custom-skill-to-a-cognitive-search-pipeline"></a>Egy egyéni ismeretek hozzáadása a cognitive search folyamat
 
 A [kognitív Keresés indexelése folyamat](cognitive-search-concept-intro.md) az Azure Search szolgáltatásban is összeállítani a [képességek az előre meghatározott](cognitive-search-predefined-skills.md) , valamint [egyéni képesség](cognitive-search-custom-skill-web-api.md) , amelyek személyes létrehozása és hozzáadása a folyamat. Ebből a cikkből megtudhatja, hogyan hozhat létre egy egyéni ismeretek által elérhetővé tett egy felületet, így lehetővé teszi a kognitív keresés folyamat szerepelnek. 
 
-Egy egyéni ismeretek létrehozása lehetőséget nyújt a átalakítások egyedi legyen a tartalom beszúrása. Egyéni műveleteket hajt végre egymástól függetlenül, bármilyen szükséges Adatbővítés lépés alkalmazása. Például, sikerült határozza meg az egyéni entitások mezőt-specifikus, üzleti és a pénzügyi szerződések és a dokumentumok megkülönböztetéséhez egyéni képbesorolási modellek létrehozása vagy hangfájlokat, a kapcsolódó tartalom mélyebb közvetítőn speech recognition szakértelem hozzáadása. Egy részletes példa: [példa: egyéni műveleteket létrehozása](cognitive-search-create-custom-skill-example.md).
+Egy egyéni ismeretek létrehozása lehetőséget nyújt a átalakítások egyedi legyen a tartalom beszúrása. Egyéni műveleteket hajt végre egymástól függetlenül, bármilyen szükséges Adatbővítés lépés alkalmazása. Például, sikerült határozza meg az egyéni entitások mezőt-specifikus, üzleti és a pénzügyi szerződések és a dokumentumok megkülönböztetéséhez egyéni képbesorolási modellek létrehozása vagy hangfájlokat, a kapcsolódó tartalom mélyebb közvetítőn speech recognition szakértelem hozzáadása. Egy részletes példa: [példa: Cognitive Search egyéni műveleteket létrehozása](cognitive-search-create-custom-skill-example.md).
 
  Bármilyen egyéni képesség van szüksége, van egy egyéni ismeretek csatlakozik a többi felderítési bővítést folyamat egy egyszerű és egyértelműen felületet. Egyetlen követelménye, hogy egy [indexmezők](cognitive-search-defining-skillset.md) képessége, fogadja el a bemenetek és kimenetek, amelyek teljes készségeitől belül értelmezhető módon küldik. Ez a cikk célja a bemeneti és kimeneti formátumok a Adatbővítés folyamat szükséges a.
 
@@ -156,7 +156,7 @@ Amikor létrehoz egy webes API-t enricher, a kérelem részeként HTTP-fejlécek
 
 ## <a name="next-steps"></a>További lépések
 
-+ [Példa: A fordítás API hoz létre egy egyéni szakértelem](cognitive-search-create-custom-skill-example.md)
++ [Példa: Cognitive Search egyéni műveleteket létrehozása](cognitive-search-create-custom-skill-example.md)
 + [Hogyan képességcsoport megadása](cognitive-search-defining-skillset.md)
 + [Képességcsoport (REST) létrehozása](https://docs.microsoft.com/rest/api/searchservice/create-skillset)
 + [Hogyan hidaljuk mezők leképezése](cognitive-search-output-field-mapping.md)

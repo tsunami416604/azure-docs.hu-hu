@@ -6,18 +6,18 @@ documentationcenter: ''
 author: bwren
 manager: carmonm
 editor: ''
-ms.service: operations-management-suite
+ms.service: azure-monitor
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 07/01/2019
 ms.author: bwren
-ms.openlocfilehash: 34c7ecbf235bed838af9ed2f848ca492916583f6
-ms.sourcegitcommit: 6cb4dd784dd5a6c72edaff56cf6bcdcd8c579ee7
+ms.openlocfilehash: 3f4b0ad8b7aad01472a76db67f2c07e03e978e41
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67514216"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67673044"
 ---
 # <a name="office-365-management-solution-in-azure-preview"></a>Az Office 365 felügyeleti megoldás az Azure-ban (előzetes verzió)
 
@@ -541,14 +541,14 @@ A következő tulajdonságok megegyeznek az összes Office 365-rekord.
 
 | Tulajdonság | Description |
 |:--- |:--- |
-| Típus | *OfficeActivity* |
+| Type | *OfficeActivity* |
 | ClientIP | A tevékenység naplózásakor használt eszköz IP-címét. Az IP-cím IPv4 vagy IPv6 cím formátumban jelenik meg. |
 | OfficeWorkload | Az Office 365 szolgáltatás, amely a rekord hivatkozik.<br><br>AzureActiveDirectory<br>Exchange<br>SharePoint|
 | Művelet | A felhasználói vagy rendszergazdai tevékenység neve.  |
 | A szervezeti | A szervezet Office 365-bérlőhöz tartozó GUID azonosítója. Ez az érték mindig lesz azonos, a szervezete számára, függetlenül az Office 365 szolgáltatás, amelyben történik. |
 | RecordType | Végrehajtott művelet típusát. |
 | ResultStatus | Azt jelzi, hogy a (művelet tulajdonságban megadott) művelet sikeres volt-e vagy sem. Lehetséges értékek: Succeeded, részben vagy sikertelen. Az Exchange-rendszergazdai tevékenységhez, értéke pedig IGAZ vagy hamis. |
-| Felhasználói azonosító | A rekordnaplózást eredményező naplózott; műveletet végrehajtó felhasználó egyszerű Felhasználóneve (egyszerű felhasználónév) Ha például my_name@my_domain_name. Vegye figyelembe, hogy a Rendszerfiókok (például a SHAREPOINT\system vagy NTAUTHORITY\SYSTEM) által végrehajtott tevékenységek rekordjai is szerepelnek. | 
+| UserId | A rekordnaplózást eredményező naplózott; műveletet végrehajtó felhasználó egyszerű Felhasználóneve (egyszerű felhasználónév) Ha például my_name@my_domain_name. Vegye figyelembe, hogy a Rendszerfiókok (például a SHAREPOINT\system vagy NTAUTHORITY\SYSTEM) által végrehajtott tevékenységek rekordjai is szerepelnek. | 
 | UserKey | Egy alternatív Azonosítót a felhasználó a UserId tulajdonság azonosítja.  Például ez a tulajdonság megjelenik a passport egyedi azonosító (PUID), és az Exchange a SharePoint, a onedrive-on a felhasználók által végrehajtott eseményeket. Ez a tulajdonság is megadható ugyanazt az értéket a UserID tulajdonság számára a más szolgáltatások és a rendszer fiókok által végrehajtott eseményeket bekövetkező események|
 | UserType | A műveletet végrehajtó felhasználó típusa.<br><br>rendszergazda<br>Alkalmazás<br>DcAdmin<br>Rendszeres<br>Fenntartva<br>ServicePrincipal<br>Rendszer |
 

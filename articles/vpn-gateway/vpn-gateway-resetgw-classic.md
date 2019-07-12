@@ -5,14 +5,14 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: article
-ms.date: 02/14/2019
+ms.date: 07/05/2019
 ms.author: cherylmc
-ms.openlocfilehash: 54b89b74017b8d5d6e4bd1b52c6b3986d2802702
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 9744a4b7bc5d2e9ce22bfa14ea33a2b11dacda85
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60457193"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67612467"
 ---
 # <a name="reset-a-vpn-gateway"></a>VPN Gateway alaphelyzetbe állítása
 
@@ -24,7 +24,7 @@ Egy VPN-átjárót egy aktív-készenléti konfigurációban futó két Virtuál
 
 Amikor a parancsot az átjáró alaphelyzetbe állítása, az Azure VPN gateway jelenleg aktív példánya azonnal újraindul. Lesz olyan rövid szünet készenléti példány (újraindítása), az aktív példányról a feladatátvétel során. Ez a szünet nem tart tovább egy percnél.
 
-Ha a kapcsolat nem áll vissza az első újraindítás után, adja ki ugyanezt a parancsot újra a második virtuálisgép-példány (az új aktív átjáró) újraindításához. Ha a két, újraindításra vonatkozó kérelem egymás után van kiadva, hosszabb szünet következhet be, amíg az aktív és a készenléti virtuálisgép-példány is újraindul. Ebben az esetben hosszabb szünet következik be a VPN-kapcsolatban – akár 2–4 perc –, amíg a virtuális gépek újraindulnak.
+Ha a kapcsolat nem áll vissza az első újraindítás után, adja ki ugyanezt a parancsot újra a második virtuálisgép-példány (az új aktív átjáró) újraindításához. Ha a két, újraindításra vonatkozó kérelem egymás után van kiadva, hosszabb szünet következhet be, amíg az aktív és a készenléti virtuálisgép-példány is újraindul. Ez lesz hosszabb szünet következik be a VPN-kapcsolatban – akár 30-45 percre a virtuális gépek újraindulnak.
 
 Után két újraindításra Ha továbbra is létesítmények közötti csatlakozási problémákat tapasztal, nyisson egy támogatási kérést az Azure Portalról.
 

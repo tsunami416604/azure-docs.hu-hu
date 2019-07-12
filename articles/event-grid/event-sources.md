@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: spelluru
-ms.openlocfilehash: 3611072759c62f42294730405f1dc402c496acce
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ad9bb5c135684c4573195298fb8e55a08208f6b6
+ms.sourcegitcommit: 1572b615c8f863be4986c23ea2ff7642b02bc605
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66735002"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67785821"
 ---
 # <a name="event-sources-in-azure-event-grid"></a>Az Azure Event Grid zdroje událostí
 
@@ -149,6 +149,16 @@ Fizessen elő az Azure App-konfigurációs események válaszadására kulcs-ér
 | [Reagálhat rájuk alkalmazások konfigurálása az Azure Event Grid használatával](../azure-app-configuration/concept-app-configuration-event.md?toc=%2fazure%2fevent-grid%2ftoc.json) | Az Azure-alkalmazások konfigurálása integrálása az Event Grid áttekintése. |
 | [Gyors útmutató: alkalmazások konfigurálása az Azure-események átirányítása egyéni webes végpontra az Azure CLI-vel](../azure-app-configuration/howto-app-configuration-event.md?toc=%2fazure%2fevent-grid%2ftoc.json) | Azure CLI használatával az Azure-alkalmazások konfigurálása eseményeket küld egy WebHook ismerteti. |
 | [Eseményséma](event-schema-app-configuration.md) | Az Azure App-konfigurációs események mezőket jeleníti meg. |
+
+## <a name="azure-signalr"></a>Azure SignalR
+Fizessen elő az Azure SignalR Service események ügyfél kapcsolat válaszadására.
+
+|Beosztás | Leírás |
+|---------|---------|
+| [Event Grid használatával az Azure SignalR Service eseményekre reagálni](../azure-signalr/signalr-concept-event-grid-integration.md) | Áttekintés az Azure SignalR Service integrálása az Event GRID használatával. |
+| [Az Azure SignalR Service események küldése az Event Gridbe](../azure-signalr/signalr-howto-event-grid-integration.md) | Bemutatja, hogyan küldhet eseményeket az Azure SignalR Service egy alkalmazás az Event Griden keresztül. |
+| [Eseményséma](event-schema-azure-signalr.md) | Az Azure SignalR Service események mezőket jeleníti meg. |
+
 
 
 ## <a name="next-steps"></a>További lépések

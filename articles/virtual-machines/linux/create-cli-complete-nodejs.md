@@ -4,7 +4,7 @@ description: Hozzon létre a storage, Linux rendszerű virtuális gép, virtuál
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: cynthn
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 ms.assetid: 4ba4060b-ce95-4747-a735-1d7c68597a1a
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 02/09/2017
 ms.author: cynthn
-ms.openlocfilehash: 04c1d69fc46b9a918038e93c4fc56681f225d365
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 5fbcbc63b3038151a7d45a70ce88eb7ca9829fe5
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60328714"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67668010"
 ---
 # <a name="create-a-complete-linux-environment-with-the-azure-classic-cli"></a>Teljes Linux-környezet létrehozása a klasszikus Azure CLI-vel
 Ebben a cikkben egy egyszerű hálózati terheléselosztó és a virtuális gépek, amelyek hasznosak a fejlesztési és egyszerű számítástechnika párjai készítünk. A folyamat által parancs parancsot, amíg nincs két működő, biztonságos Linux virtuális gépet, amelyhez csatlakozhat bárhol az interneten azt bemutatására. Majd továbbléphet összetettebb hálózatokhoz és környezeteket.

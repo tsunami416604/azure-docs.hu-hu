@@ -9,12 +9,12 @@ ms.author: robreed
 ms.date: 05/24/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 6fceee819762e10809a94f72d944e7625cb7e67c
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: 49b8554f6064f036d4305cf7a5c1450c2f18c48d
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67478561"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67798484"
 ---
 # <a name="manage-azure-automation-run-as-accounts"></a>Azure Automation futtató fiókok kezelése
 
@@ -45,7 +45,7 @@ Futtató fiókok két típusa van:
 
 Hozzon létre, vagy frissíteni egy futtató fiókot, jogosultságokkal és engedélyekkel kell rendelkeznie. Az Azure Active Directory globális rendszergazdája és a egy adott előfizetés tulajdonosa összes feladatot elvégezheti. A feladatkörök esetében olyan helyzet az alábbi táblázat mutatja a feladatok, a varázsló használatával egyenértékű parancsmagot és a szükséges engedélyek listája:
 
-|Tevékenység|Parancsmag  |Minimális engedélyek  |Ha az engedélyek beállítása|
+|Tevékenység|A parancsmag  |Minimális engedélyek  |Ha az engedélyek beállítása|
 |---|---------|---------|---|
 |Az Azure AD-alkalmazás létrehozása|[New-AzureRmADApplication](/powershell/module/azurerm.resources/new-azurermadapplication)     | Alkalmazás-fejlesztői szerepkör<sup>1</sup>        |[Azure Active Directory](../active-directory/develop/howto-create-service-principal-portal.md#required-permissions)</br>Kezdőlap > az Azure Active Directory > Alkalmazásregisztrációk |
 |A hitelesítő adatok hozzáadása az alkalmazáshoz.|[New-AzureRmADAppCredential](/powershell/module/AzureRM.Resources/New-AzureRmADAppCredential)     | Alkalmazás-rendszergazda vagy globális RENDSZERGAZDAKÉNT<sup>1</sup>         |[Azure Active Directory](../active-directory/develop/howto-create-service-principal-portal.md#required-permissions)</br>Kezdőlap > az Azure Active Directory > Alkalmazásregisztrációk|
@@ -104,7 +104,7 @@ Ez a PowerShell-szkript a következő konfigurációk támogatását tartalmazza
 
 1. Mentse el a következő parancsprogramot a számítógépén. Ebben a példában mentse a következő fájlnéven: *New-RunAsAccount.ps1*.
 
-   A szkript több Azure Resource Manager parancsmagjainak erőforrások létrehozásához. Az alábbi táblázat a parancsmagokat és a szükséges engedélyekkel.
+   A szkript több Azure Resource Manager parancsmagjainak erőforrások létrehozásához. Az előző [engedélyek](#permissions) táblázat a parancsmagok és a szükséges engedélyekkel.
 
     ```powershell
     #Requires -RunAsAdministrator
@@ -370,13 +370,35 @@ A tanúsítvány megújításához tegye a következőket:
 
 ## <a name="limiting-run-as-account-permissions"></a>Futtató fiók vonatkozó engedélyek korlátozása
 
-Szabályozhatja, hogy az automation-erőforrásokon, az Azure Automationben célzó, a Futtatás mint fiók alapértelmezés szerint az előfizetés közreműködői jogokat kapnak. Mi a Futtatás mint szolgáltatásnév mindent korlátozni kell, ha távolítsa el a fiókot a közreműködő szerepkört az előfizetés, és közreműködője hozzáadása az erőforráscsoportok szeretne megadni.
+Szabályozhatja, hogy az automation-erőforrásokon, az Azure-ban célzó, futtathatja a [Update-AutomationRunAsAccountRoleAssignments.ps1](https://aka.ms/AA5hug8) szkriptet a PowerShell-galériából, módosíthatja a meglévő futtató fiók egyszerű szolgáltatás létrehozhat és használhat egy egyéni szerepkör-definíció. Ez a szerepkör kivételével az összes erőforrás engedéllyel rendelkezik majd [Key Vault](https://docs.microsoft.com/azure/key-vault/). 
 
-Az Azure Portalon válassza ki a **előfizetések** , és válassza ki az előfizetést, az Automation-fiók. Válassza ki **hozzáférés-vezérlés (IAM)** majd válassza ki a **szerepkör-hozzárendelések** fülre. Keresse meg az Automation-fiókhoz tartozó egyszerű szolgáltatásról (tűnik \<AutomationAccountName\>_unique azonosítója). Válassza ki a fiókot, és kattintson a **eltávolítása** eltávolítja az előfizetésből.
+> [!IMPORTANT]
+> Futtatás után a `Update-AutomationRunAsAccountRoleAssignments.ps1` parancsfájl, runbookok, amelyek a kulcstartó eléréséhez a futtató fiókok használatával nem fognak működni. Runbookok tekintse át az Azure KeyVault-hívások a fiókban.
+>
+> A KeyVault-hozzáférés engedélyezése az Azure Automation-runbookok kell [a futtató fiók hozzáadása a KeyVault engedélyek](#add-permissions-to-key-vault).
 
-![Előfizetés közreműködő](media/manage-runas-account/automation-account-remove-subscription.png)
+A RunAs szolgáltatásnév mire képes tovább korlátozni kell, ha a más típusú erőforrásokat is hozzáadhat a `NotActions` az egyéni szerepkör-definíció. Az alábbi példa korlátozza a hozzáférést `Microsoft.Compute`. Ha ezt a adja hozzá a **NotActions** , a szerepkör-definíció ezt a szerepkört nem fogja tudni bármilyen számítási erőforrás eléréséhez. Szerepkör-definíciók kapcsolatos további információkért lásd: [megismerheti az Azure-erőforrások szerepkör-definíciók](../role-based-access-control/role-definitions.md).
 
-Az egyszerű szolgáltatás hozzáadása egy erőforráscsoportot, válassza ki az erőforráscsoportot az Azure Portalon, és válassza a **hozzáférés-vezérlés (IAM)** . Válassza ki **szerepkör-hozzárendelés hozzáadása**, ekkor megnyílik a **szerepkör-hozzárendelés hozzáadása** lapot. A **szerepkör**válassza **közreműködői**. Az a **kiválasztása** szöveg mezőbe írja be az egyszerű szolgáltatás a Futtatás mint fiók nevét, majd válassza ki a listából. Kattintson a **Mentés** gombra a módosítások mentéséhez. Hajtsa végre ezeket a lépéseket az erőforráscsoportoknál, szeretne adni az Azure Automation futtató szolgáltatásnév hozzáférhessen a.
+```powershell
+$roleDefinition = Get-AzureRmRoleDefinition -Name 'Automation RunAs Contributor'
+$roleDefinition.NotActions.Add("Microsoft.Compute/*")
+$roleDefinition | Set-AzureRMRoleDefinition
+```
+
+Annak megállapításához, ha az egyszerű szolgáltatás egy futtató fiókot használja a **közreműködői** vagy egy egyéni szerepkör-definíció nyissa meg az Automation-fiók és a **Fiókbeállítások**válassza **futtató fiókok** > **Azure futtató fiók**. A **szerepkör** megtalálhatja a szerepkör-definíció, amely használatban van. 
+
+[![](media/manage-runas-account/verify-role.png "A futtató fiók szerepkör ellenőrzése")](media/manage-runas-account/verify-role-expanded.png#lightbox)
+
+Annak megállapításához, a szerepkör-definíció több előfizetések vagy az Automation-fiókok az Automation futtató fiókok által használt, használhatja a [ellenőrzése – AutomationRunAsAccountRoleAssignments.ps1](https://aka.ms/AA5hug5) szkriptet a PowerShell-galériában.
+
+### <a name="add-permissions-to-key-vault"></a>Engedélyek hozzáadása a Key Vault
+
+Ha szeretné engedélyezni az Azure Automation és a Key Vault kezeléséhez, és a futtató fiók egyszerű szolgáltatás használja, hogy ezt a viselkedést a további lépéseket kell egy egyéni szerepkör-definíció:
+
+* Engedélyek biztosítása a Key Vault számára
+* A hozzáférési házirend beállítása
+
+Használhatja a [kiterjesztése – AutomationRunAsAccountRoleAssignmentToKeyVault.ps1](https://aka.ms/AA5hugb) szkriptet a PowerShell-galériából, a futtató fiók engedélyt KeyVault, vagy keresse fel a [alkalmazások hozzáférést biztosít a key vault ](../key-vault/key-vault-group-permissions-for-apps.md) kulcstartó engedélyeinek beállítások további részleteiért.
 
 ## <a name="misconfiguration"></a>Hibás konfiguráció
 

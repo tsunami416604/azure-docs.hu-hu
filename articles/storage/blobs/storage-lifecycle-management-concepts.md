@@ -9,12 +9,12 @@ ms.date: 05/21/2019
 ms.author: mhopkins
 ms.reviewer: yzheng
 ms.subservice: common
-ms.openlocfilehash: 50eb62b20be66337c819372fa3d97eae4d7214b8
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 43a673621aa3c114f99479a6da97153dae44990d
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67435745"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67696092"
 ---
 # <a name="manage-the-azure-blob-storage-lifecycle"></a>Az Azure Blob storage életciklus kezelése
 
@@ -31,7 +31,7 @@ Példaként vegyünk egy forgatókönyvet, ahol adatok a gyakori hozzáférést 
 
 ## <a name="storage-account-support"></a>Storage-fiókok támogatása
 
-Az életciklus-kezelési szabályzat érhető el mindkét General Purpose v2 (GPv2-) fiókok és a Blob storage-fiókok. Az Azure Portalon egy meglévő általános célú (GPv1-) fiók válthat GPv2-fiókra. További információ a tárfiókokról: [Az Azure-tárfiókok áttekintése](../common/storage-account-overview.md).  
+Az életciklus-kezelési szabályzat érhető el az általános célú v2 (GPv2-) fiókok, a Blob storage-fiókok és a prémium szintű Block Blob storage-fiókok. Az Azure Portalon egy meglévő általános célú (GPv1-) fiók válthat GPv2-fiókra. További információ a tárfiókokról: [Az Azure-tárfiókok áttekintése](../common/storage-account-overview.md).  
 
 ## <a name="pricing"></a>Díjszabás
 
@@ -39,7 +39,7 @@ Az életciklus felügyeleti funkció ingyenesen elérhető. A normál művelet k
 
 ## <a name="regional-availability"></a>Régiónkénti rendelkezésre állás
 
-Az életciklus-felügyeleti szolgáltatás az összes globális Azure-régióban érhető el.
+Az életciklus-felügyeleti szolgáltatás az összes globális Azure és az Azure Government régióban érhető el.
 
 ## <a name="add-or-remove-a-policy"></a>Adja hozzá, vagy távolítsa el a szabályzat
 
@@ -197,10 +197,10 @@ A házirend szabályok gyűjteménye:
 
 A házirend minden egyes szabály több paraméterekkel rendelkezik:
 
-| Paraméter neve | Paraméter típusa | Megjegyzések | Kötelező |
+| Paraméter neve | Paraméter típusa | Megjegyzések | Szükséges |
 |----------------|----------------|-------|----------|
-| `name`         | String |A szabály neve legfeljebb 256 alfanumerikus karaktereket tartalmazhat. Szabály neve a kis-és nagybetűket.  Egy házirend egyedinek kell lennie. | True |
-| `enabled`      | Boolean | Egy nem kötelező logikai érték beolvasása, hogy ideiglenes szabály le van tiltva. Alapértelmezett érték: igaz, ha nincs beállítva. | False (Hamis) | 
+| `name`         | Karakterlánc |A szabály neve legfeljebb 256 alfanumerikus karaktereket tartalmazhat. Szabály neve a kis-és nagybetűket.  Egy házirend egyedinek kell lennie. | True |
+| `enabled`      | Logikai | Egy nem kötelező logikai érték beolvasása, hogy ideiglenes szabály le van tiltva. Alapértelmezett érték: igaz, ha nincs beállítva. | False (Hamis) | 
 | `type`         | Enum érték | Az aktuális érvényes típus `Lifecycle`. | True |
 | `definition`   | Egy objektum, amely meghatározza az életciklus-szabály | Minden egyes definíció épül fel egy szűrő és egy műveletet. | True |
 
@@ -262,7 +262,7 @@ A futtatási feltétel teljesülése esetén a szűrt blobok műveletek lépnek.
 
 Életciklus-felügyelet rétegezést, és a blobok törlését és a blob pillanatképeinek törlését is támogatja. Adja meg legalább egy műveletet az egyes szabályokhoz blobokat vagy pillanatképeket.
 
-| Műveletek        | Alap Blob                                   | Pillanatkép      |
+| Action        | Alap Blob                                   | Pillanatkép      |
 |---------------|---------------------------------------------|---------------|
 | tierToCool    | Támogatja a gyakori elérésű szint jelenleg a blobokhoz         | Nem támogatott |
 | tierToArchive | Támogatja a gyors vagy lassú elérésű szint jelenleg a blobokhoz | Nem támogatott |

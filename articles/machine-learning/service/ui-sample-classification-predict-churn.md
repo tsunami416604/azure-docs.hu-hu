@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: zhanxia
 ms.reviewer: sgilley
 ms.date: 05/10/2019
-ms.openlocfilehash: 42724f5fcb3101015cef0d218a3d548f349646be
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7d10d996febd0e31c9085bf5cb82324cce101c80
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65785818"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67606139"
 ---
 # <a name="sample-5---classification-predict-churn-appetency-and-up-selling"></a>5 – besorolási. példa: Előrejelezheti a forgalom szolgáltatóváltást és felfelé értékesítése 
 
@@ -37,7 +37,7 @@ A befejezett graph ehhez a kísérlethez itt látható:
 
     ![Nyissa meg a kísérlet](media/ui-sample-classification-predict-churn/open-sample5.png)
 
-## <a name="data"></a>Adatok
+## <a name="data"></a>Data
 
 Az adatok, ehhez a kísérlethez használjuk a évi Versenysorozatából Cup 2009. Az adatkészlet 50 000 sort és oszlopot. a szolgáltatás 230. rendelkezik. A feladat, hogy előrejelzése lemorzsolódási szolgáltatóváltást és fel értékesítési ezeket a funkciókat használó ügyfelek számára. Az adatok és a feladat kapcsolatos további információkért lásd: a [évi Versenysorozatából webhely](https://www.kdd.org/kdd-cup/view/kdd-cup-2009).
 
@@ -79,3 +79,4 @@ Ismerje meg a vizuális felületen érhető el a más minták:
 - [2 – regressziós. példa: Hasonlítsa össze az autó árának előrejelzése algoritmusok](ui-sample-regression-predict-automobile-price-compare-algorithms.md)
 - [Mintául szolgáló 3 - besorolás: Hitelkockázat előrejelzése](ui-sample-classification-predict-credit-risk-basic.md)
 - [4 – besorolási. példa: Hitelkockázatot (költség-és nagybetűket)](ui-sample-classification-predict-credit-risk-cost-sensitive.md)
+- [6 – besorolási. példa: A járatok késésének előrejelzése](ui-sample-classification-predict-flight-delay.md)

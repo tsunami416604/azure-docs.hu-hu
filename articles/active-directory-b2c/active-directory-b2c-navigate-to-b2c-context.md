@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 4/13/2017
+ms.date: 04/13/2017
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: d1580931a94b58e772f9f11cb7b9948216e9063a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: cbf0e928ae05e723902d41a340aebf4f5781fde5
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66509894"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67654111"
 ---
 # <a name="switching-to-your-azure-ad-b2c-tenant"></a>Átváltás az Azure AD B2C-bérlőre
 
@@ -36,7 +36,7 @@ Az Azure Portal frissül.  Sikeresen bejelentkezett az Azure Portalra az Azure A
 1. Kattintson a képernyő bal oldalán található **Tallózás** navigációs elemre.
 1. Kattintson a **Minden szolgáltatás** elemre, majd keresse meg az `Azure AD B2C` elemet a bal oldali navigációs ablaktáblán.  (A bal oldali kezdőpulthoz való rögzítéshez kattintson az Azure AD B2C-től balra található csillagra.)
 1. A B2C-funkciók ablaktábla eléréséhez kattintson az **Azure AD B2C** elemre.
-   
+
     ![Képernyőkép, keresse meg a B2C funkciók ablaktáblára](./media/active-directory-b2c-get-started/b2c-browse.png)
 
 > [!IMPORTANT]

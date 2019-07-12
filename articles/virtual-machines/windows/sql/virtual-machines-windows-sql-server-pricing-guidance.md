@@ -16,12 +16,12 @@ ms.workload: iaas-sql-server
 ms.date: 08/09/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: ce07c6c19c19f134cc322309bb338b94ef11ea85
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d53c1de9678db497a20788d0cab7ee4f0e6f0c9c
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66393861"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67607064"
 ---
 # <a name="pricing-guidance-for-sql-server-azure-vms"></a>Az SQL Server Azure virtuális gépek díjszabási útmutatóját
 
@@ -110,7 +110,7 @@ A saját SQL és licencelés keretében ajánlott:
 
 - **Számítási feladatokkal és ismert élettartama, és a méretezési csoport**. Ha például egy alkalmazást, amely az egész évre, és mely igény szerint rendelkezik lett előrejelzett van szükség.
 
-BYOL használata egy SQL Server virtuális Gépet, az SQL Server Standard vagy Enterprise-licenccel kell rendelkeznie, és [frissítési garancia](https://www.microsoft.com/en-us/licensing/licensing-programs/software-assurance-default.aspx#tab=1), amely beállítás szükséges bizonyos mennyiségi licencelési programok és a egy nem kötelező beszerzési másokkal. A mennyiségi licencelési programok keretében biztosított árképzési szint változik, a szerződés és a mennyiség és/vagy az SQL Server-ra vonatkozó típusa alapján. De célravezető, mint saját licence folyamatos éles számítási feladatokra van a következő előnyökkel jár:
+BYOL használata egy SQL Server virtuális Gépet, az SQL Server Standard vagy Enterprise-licenccel kell rendelkeznie, és [frissítési garancia](https://www.microsoft.com/licensing/licensing-programs/software-assurance-default.aspx#tab=1), amely beállítás szükséges bizonyos mennyiségi licencelési programok és a egy nem kötelező beszerzési másokkal. A mennyiségi licencelési programok keretében biztosított árképzési szint változik, a szerződés és a mennyiség és/vagy az SQL Server-ra vonatkozó típusa alapján. De célravezető, mint saját licence folyamatos éles számítási feladatokra van a következő előnyökkel jár:
 
 | BYOL juttatás | Leírás |
 |-----|-----|

@@ -7,12 +7,12 @@ ms.author: shthota
 ms.service: marketplace
 ms.topic: conceptual
 ms.date: 05/31/2019
-ms.openlocfilehash: 0da95dbdca52232b4b24ad921bf2d9c78dc76d56
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e467def33eb2980e58611d50c314a1206877e3b0
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66247724"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67619689"
 ---
 # <a name="analytics-for-the-commercial-marketplace-in-partner-center"></a>A Partner Center kereskedelmi Marketplace-en Analytics
 
@@ -138,7 +138,7 @@ A **marketplace licenc típusa szerint rendelések** diagram megjeleníti a lice
 
 - **Azure-on keresztül számlázzuk**: A Microsoft bankkártyáján ügyfeleknek az Ön nevében, ha úgy dönt, hogy [értékesíthetik az ajánlat keretében a Microsoft](./create-new-saas-offer.md#sell-through-microsoft) és a licenc típusa. Fizetési típusok: hitelkártya vagy vállalati számlázás használatalapú fizetés.
 - **A saját licenc használata**: A Microsoft nem számláz ügyfelek számára az ilyen típusú marketplace-ajánlat, felhasználási. Állapottal **[Letöltés most (ingyenes)](./create-new-saas-offer.md#get-it-now-free)** a Marketplace-en.
-- **Ingyenes**: A Microsoft nem számláz ügyfelek számára az ilyen típusú marketplace-ajánlat, felhasználási. Állapottal **[az ingyenes próbaidőszak](./create-new-saas-offer.md#free-trial)** a Marketplace-en.
+- **Ingyenes**: A Microsoft nem számláz ügyfelek számára az ilyen típusú marketplace-ajánlat, felhasználási. Állapottal **[az ingyenes próbaidőszak](./create-new-saas-offer.md##free-trial-listing)** a Marketplace-en.
 - **A Microsoft a viszonteladóként**: Egy Microsoft-viszonteladók által értékesített ajánlatok jelöli a  **[Cloud Solution Provider (CSP) program](./create-new-saas-offer.md#csp-program-opt-in)** .
 
 ![Írja be a Partnerközpontba elemzés rendelések licenc](./media/analyze-license-type.png)
@@ -259,7 +259,7 @@ Egy előugró értesítések és mutató hivatkozást tartalmazó e-mailt fog ka
 | Marketplace-en licenc típusa| Rendelés| A Marketplace-ajánlat a számlázási mód.||
 | Marketplace License Type: Számlázás az Azure-on keresztül| Rendelés| A Microsoft az ügynök ezt az ajánlatot a piactéren, és keresztül számláz az adott felhasználók az Ön nevében. (Használatalapú hitelkártya vagy vállalati számla)||
 | Marketplace License Type: A saját licenc használata | Rendelés| A virtuális gép üzembe helyezéséhez az ügyfél által biztosított licenc kulcs szükséges. A Microsoft nem számláz ügyfelek ily módon a piactéren ajánlataik listázásához.||
-| Marketplace License Type: Ingyenes| Rendelés| Az ajánlat ingyenes minden felhasználóra van konfigurálva. A Microsoft nem számláz ügyfelek azok Ez az ajánlat használatáért.||
+| Marketplace License Type: Free| Rendelés| Az ajánlat ingyenes minden felhasználóra van konfigurálva. A Microsoft nem számláz ügyfelek azok Ez az ajánlat használatáért.||
 | Marketplace License Type: A Microsoft a viszonteladóként  | Rendelés| A Microsoft a viszonteladójával, ezt az ajánlatot a piactéren.|  |
 | Marketplace-en előfizetés-azonosító | Ügyfél, Order | Az Azure-előfizetés az ügyfél a piactéren az ajánlat kifizetni társított egyedi azonosítója. Az Azure-előfizetés GUID azonosító korábban volt.||
 | Csomag neve  | Rendelés| A Marketplace kínálatának neve.|| |
@@ -276,7 +276,7 @@ Egy előugró értesítések és mutató hivatkozást tartalmazó e-mailt fog ka
 | Csomag típusa: Virtuális gép | Rendelés| Virtuális berendezés az előfizetéshez társított az ügyfelek központi telepítéséhez használja a virtuális gép ajánlat típusát.||
 | Csomag típusa: Visual Studio Marketplace Extension  | Rendelés| Csomag típusa korábban elérhető az Azure DevOps bővítmény fejlesztői számára. Továbbítás az Azure DevOps fog bővítmény fejlesztők is értékesítheti a bővítmény közvetlenül az ügyfelek számára. Bővítmény ajánlatok konfigurálható, fizetős vagy egy próbaverzióra beleértve. |
 | Rendelés megszakítás dátuma| Rendelés| A dátum a Marketplace-en rendelés törölve lett.||
-| Order ID (Rendelésazonosító)| Rendelés| Az ügyfél ahhoz a Piactéri szolgáltatás egyedi azonosítója. Virtuális gép használatalapú ajánlatok, amelyek nem tartoznak egy megrendelés.| |
+| Rendelésazonosító| Rendelés| Az ügyfél ahhoz a Piactéri szolgáltatás egyedi azonosítója. Virtuális gép használatalapú ajánlatok, amelyek nem tartoznak egy megrendelés.| |
 | Rendelés vásárlás ideje| Rendelés| A piactér sorrendben létrehozásának dátuma.|||
 | Rendelés állapota| Rendelés| Az adatok utolsó frissítésének időpontjában a Marketplace-en rendelés állapota.|     |
 | Rendelés állapota: Aktív  | Rendelés| Az ügyfél egy megrendelés vásárolt, és nem visszavonta a rendelési.|         |

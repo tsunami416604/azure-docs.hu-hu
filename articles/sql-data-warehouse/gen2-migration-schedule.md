@@ -3,19 +3,19 @@ title: Áttelepíteni a meglévő Azure SQL Data Warehouse Gen2-re |} A Microsof
 description: Útmutató az áttelepítés egy meglévő data warehouse Gen2 és régió szerint áttelepítés ütemezését.
 services: sql-data-warehouse
 author: mlee3gsd
-ms.author: anumjs
+ms.author: anjangsh
 ms.reviewer: jrasnick
 manager: craigg
 ms.assetid: 04b05dea-c066-44a0-9751-0774eb84c689
 ms.service: sql-data-warehouse
 ms.topic: article
 ms.date: 04/03/2019
-ms.openlocfilehash: 3141f3a1d6a9f09261dee4113276af72168e35e8
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: cef3036b01709847016d9523a5770febb8ff1134
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67444693"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67839656"
 ---
 # <a name="upgrade-your-data-warehouse-to-gen2"></a>Frissítse az adattárház Gen2-re
 
@@ -39,13 +39,13 @@ A következő táblázat összefoglalja régió szerint, amikor a alacsonyabb Ge
 | Kelet-Kanada |\* |\* |
 | USA középső régiója |Elérhető |2019. június 1. |
 | Kelet-Kína |\* |\* |
-| Kelet-Kína 2 |\* |Csak Gen2 |
+| Kelet-Kína 2 |Elérhető |Csak Gen2 |
 | Észak-Kína |\* |\* |
 | Észak-Kína 2 |Elérhető |Csak Gen2 |
 | Kelet-Ázsia |Elérhető |2019. június 1. |
 | East US |Elérhető |2019. június 1. |
 | USA 2. keleti régiója |Elérhető |2019. június 1. |
-| Közép-Franciaország |\* |2019. június 1. |
+| Közép-Franciaország |Elérhető |2019. június 1. |
 | Közép-Németország |\* |\* |
 | Németország nyugati középső régiója |2019. szeptember 1.|2020. január 2. |
 | Közép-India |Elérhető |2019. június 1. |
@@ -56,10 +56,12 @@ A következő táblázat összefoglalja régió szerint, amikor a alacsonyabb Ge
 | Korea déli régiója |Elérhető |2019. május 1. |
 | USA északi középső régiója |Elérhető |2019. május 1. |
 | Észak-Európa |Elérhető |2019. június 1. |
+| Dél-Afrika északi régiója |2019. július 12. |Csak Gen2 |
 | USA déli középső régiója |Elérhető |2019. június 1. |
 | Délkelet-Ázsia |Elérhető |2019. június 1. |
-| Az Egyesült Királyság déli régiója |Elérhető, a 2019 |2019. június 1. |
-| Az Egyesült Királyság nyugati régiója |\*|\* |
+| Az Egyesült Arab Emírségek északi régiója |2019. július 20. |Csak Gen2 |
+| Az Egyesült Királyság déli régiója |Elérhető |2019. június 1. |
+| Az Egyesült Királyság nyugati régiója |Elérhető |Csak Gen2 |
 | USA nyugati középső régiója |2019. szeptember 2. |2020. január 2.|
 | Nyugat-Európa |Elérhető |2019. június 1. |
 | USA nyugati régiója |Elérhető |2019. június 1. |
@@ -86,7 +88,7 @@ Két lehetőség van során egy helyi frissítése.  Az aktuális data warehouse
 - [Frissítés a visszaállítási pont](sql-data-warehouse-restore.md) – egy felhasználói visszaállítási pont létrehozása az aktuális Gen1 adattárházra, és állítsa vissza a közvetlenül egy Gen2-példányt. A meglévő Gen1 adatraktár érvényben marad. A visszaállítás befejezését követően az Gen2-adattárház teljes mértékben elérhető lesz.  A visszaállított Gen2-példányon összes tesztelés és ellenőrzés folyamat futtatása után az eredeti Gen1 példány lehet törölni.
 
    - 1\. lépés: Az Azure Portalról [egy felhasználói visszaállítási pont létrehozása a](sql-data-warehouse-restore.md#create-a-user-defined-restore-point-using-the-azure-portal).
-   - 2\. lépés: Visszaállításakor a felhasználó által megadott visszaállítási pont, a "teljesítmény szint" értékre az előnyben részesített Gen2 réteghez.
+   - 2\. lépés: Visszaállításakor a felhasználó által megadott visszaállítási pont, a "teljesítmény szint" értékre az előnyben részesített Gen2 réteghez.
 
 A frissítési folyamat továbbra is a háttérben lévő adatfájlok frissítése akár teljesítménycsökkenés bizonyos tapasztalhat. Változnak, hogy a teljesítményromlást fordított időt az adatfájlokat méretétől függ.
 

@@ -9,12 +9,12 @@ ms.devlang: csharp
 ms.topic: conceptual
 ms.date: 07/04/2017
 ms.author: robinsh
-ms.openlocfilehash: cdc0f189daebcda592338b463954efab4fc2db96
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 79288f2204030790b2308905d90ff8e035fe2dd9
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65864435"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67621869"
 ---
 # <a name="upload-files-from-your-device-to-the-cloud-with-iot-hub-using-net"></a>Töltse fel a fájlokat az eszközről a felhőbe az IoT hubhoz .NET használatával
 
@@ -22,11 +22,11 @@ ms.locfileid: "65864435"
 
 Ebben az oktatóanyagban található kódot használja fel a [küldése a felhőből az eszközre irányuló üzenetek IoT hubbal való](iot-hub-csharp-csharp-c2d.md) oktatóanyag megmutatjuk, hogyan használhatja az IoT Hub fájl feltöltése képességeit. Azt mutatja, hogy:
 
-- Biztonságosan adja meg az eszköz egy Azure blob-URI-fájl feltöltése.
+* Biztonságosan adja meg az eszköz egy Azure blob-URI-fájl feltöltése.
 
-- Az IoT Hub fájl feltöltése értesítések használatával elindíthatja a feldolgozása a fájlt az alkalmazás háttérrendszere.
+* Az IoT Hub fájl feltöltése értesítések használatával elindíthatja a feldolgozása a fájlt az alkalmazás háttérrendszere.
 
-A [telemetriát küldjön az eszközről az IoT hub](quickstart-send-telemetry-dotnet.md) és [küldése a felhőből az eszközre irányuló üzenetek IoT hubbal való](iot-hub-csharp-csharp-c2d.md) cikkek bemutatják az eszközről a felhőbe és a felhőből az eszközre irányuló üzenetküldési alapvető funkciót, az IoT Hub. A [üzenet útválasztás konfigurálása az IoT Hub](tutorial-routing.md) az oktatóanyag leírja, úgy az eszközt a felhőbe irányuló üzenetek meghízható tárolására az Azure blob storage-ban. Bizonyos esetekben azonban leképezése nem tudja az eszközöket az IoT Hub elfogad viszonylag kis eszköz – felhő üzenetek küldése az adatok egyszerűen. Példa:
+A [telemetriát küldjön az eszközről az IoT hub](quickstart-send-telemetry-dotnet.md) rövid és [küldése a felhőből az eszközre irányuló üzenetek IoT hubbal való](iot-hub-csharp-csharp-c2d.md) oktatóanyag bemutatja az alapvető eszközről a felhőbe és a felhőből az eszközre irányuló üzenetküldési funkciói IoT Központ. A [üzenet útválasztás konfigurálása az IoT Hub](tutorial-routing.md) az oktatóanyag leírja, úgy az eszközt a felhőbe irányuló üzenetek meghízható tárolására az Azure blob storage-ban. Bizonyos esetekben azonban leképezése nem tudja az eszközöket az IoT Hub elfogad viszonylag kis eszköz – felhő üzenetek küldése az adatok egyszerűen. Példa:
 
 * Nagy méretű képeket tartalmazó fájlok
 * Videók
@@ -47,6 +47,7 @@ Ez az oktatóanyag végén két .NET-konzolalkalmazással futtassa:
 Az oktatóanyag teljesítéséhez a következőkre lesz szüksége:
 
 * Visual Studio
+
 * Aktív Azure-fiók. (Ha nincs fiókja, létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/pricing/free-trial/) mindössze néhány perc alatt.)
 
 [!INCLUDE [iot-hub-associate-storage](../../includes/iot-hub-associate-storage.md)]
@@ -144,7 +145,7 @@ Ebben a szakaszban egy .NET-konzolalkalmazást, amely a fájl feltöltése érte
 
             await notificationReceiver.CompleteAsync(fileUploadNotification);
         }
-    }   
+    }
     ```
 
     Vegye figyelembe a receive minta a felhőből az eszközre irányuló üzenetek fogadása az eszközalkalmazástól érkező ugyanaz.
@@ -174,10 +175,11 @@ Készen áll arra, hogy futtassa az alkalmazásokat.
 Ebben az oktatóanyagban megtudhatta, hogyan egyszerűsítheti a fájlok feltöltése eszközökről a fájl feltöltése képességeit az IoT Hub használatával. Folytathatja az IoT hub szolgáltatásainak, és az ezekben a cikkekben forgatókönyvek megismerése:
 
 * [IoT hub létrehozása programozott módon](iot-hub-rm-template-powershell.md)
+
 * [Bevezetés a C SDK-t](iot-hub-device-sdk-c-intro.md)
+
 * [Azure IoT SDK-k](iot-hub-devguide-sdks.md)
 
 Részletesebb megismerése az IoT Hub képességeit, tekintse meg:
 
 * [Edge-eszközök mesterséges Intelligencia telepítése az Azure IoT Edge szolgáltatással](../iot-edge/tutorial-simulate-device-linux.md)
-

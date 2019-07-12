@@ -4,7 +4,7 @@ description: Töltse le a virtuális gép a Resource Manager-alapú üzemi model
 services: virtual-machines-windows
 documentationcenter: ''
 author: cynthn
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 ms.assetid: 51ef4f51-0942-4249-afea-4a3f87ce1ff8
@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/17/2017
 ms.author: cynthn
-ms.openlocfilehash: 4ef0c09d2d2ea2ed06708342ab45abcaf149c23e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b001f8b3fd9c7be19431304b4106d0912181c07e
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61075880"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67718649"
 ---
 # <a name="download-the-template-for-a-vm"></a>Virtuálisgép-sablon letöltése
 Az Azure-ban a portál vagy a PowerShell használatával egy virtuális Gépet hoz létre, amikor egy Resource Manager-sablon automatikusan létrejön az Ön számára. Ez a sablon használatával gyorsan ismétlődő egy központi telepítést. A sablon egy erőforráscsoportba tartozó összes információt tartalmazza. Virtuális gép esetén ez azt jelenti, a sablon tartalmaz mindent, ami jön létre a virtuális Gépet, az erőforráscsoport, beleértve a hálózati erőforrások támogatásához.

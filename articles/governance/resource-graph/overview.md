@@ -7,12 +7,12 @@ ms.date: 05/06/2019
 ms.topic: overview
 ms.service: resource-graph
 manager: carmonm
-ms.openlocfilehash: 4724789dd1a0893c5ef4ab112306c185f0e87da7
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: d78c640f4269c799d3d371e6dd9db477faf96694
+ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67274380"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67807414"
 ---
 # <a name="overview-of-the-azure-resource-graph-service"></a>Az Azure-erőforrás Graph szolgáltatás áttekintése
 
@@ -28,6 +28,8 @@ Ez a dokumentáció mindegyik funkciót részletesen tárgyalja.
 > [!NOTE]
 > Az Azure Erőforrás-grafikon működteti az Azure portál keresősávjában, az új tallózási "Minden erőforrás" élményt és az Azure Policy [módosítási előzmények](../policy/how-to/determine-non-compliance.md#change-history-preview)
 > _diff vizuális_. Úgy van kialakítva, hogy az ügyfelek kezelése nagyméretű környezetekben.
+
+[!INCLUDE [service-provider-management-toolkit](../../../includes/azure-lighthouse-supported-service.md)]
 
 ## <a name="how-does-resource-graph-complement-azure-resource-manager"></a>Hogyan egészíti ki a Resource Graph az Azure Resource Managert
 

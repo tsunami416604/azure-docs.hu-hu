@@ -6,13 +6,13 @@ ms.author: hrasheed
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 06/17/2019
-ms.openlocfilehash: 61a208f3e84125acc2a3cb22d3abccf16587e581
-ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
+ms.date: 07/10/2019
+ms.openlocfilehash: dab4262e5412c8ef3cd1e0d2ef8203d7f289693f
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67543675"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67839192"
 ---
 # <a name="extend-azure-hdinsight-using-an-azure-virtual-network"></a>Az Azure Virtual Network használata Azure HDInsight kiterjesztése
 
@@ -25,7 +25,9 @@ Ismerje meg, hogyan használható a HDInsight- [Azure Virtual Network](../virtua
 * Közvetlen hozzáférés [Apache Hadoop](https://hadoop.apache.org/) szolgáltatásokat, amelyek nem érhető el nyilvánosan az interneten keresztül. Ha például [Apache Kafka](https://kafka.apache.org/) API-k vagy a [Apache HBase](https://hbase.apache.org/) Java API-t.
 
 > [!IMPORTANT]  
-> 2019. február 28., miután a hálózati erőforrások (például a hálózati adapterek, LBs stb.) egy virtuális hálózaton létrehozott új fürtök esetében a HDInsight fürt azonos erőforráscsoportban jön létre. Korábban ezeket az erőforrásokat kiépített virtuális hálózat az erőforráscsoportban. Nem történik változás az aktuális futó fürtök és ezeket a virtuális hálózat nélkül létrehozott fürtök.
+> Egy HDInsight-fürt létrehozása a virtuális hálózat létrehozása több hálózati erőforrások, például hálózati adapterek és terheléselosztókat. Tegye **nem** törli az alábbi hálózati erőforrásokat, szükség esetén a fürt megfelelően kompatibilis a virtuális hálózat számára.
+>
+> 2019. február 28., miután egy virtuális hálózaton létrehozott új fürtök esetében ezek hálózati erőforrások (például a hálózati adapterek, LBs stb.) a HDInsight fürt azonos erőforráscsoportban jön létre. Korábban ezeket az erőforrásokat kiépített virtuális hálózat az erőforráscsoportban. Nem történik változás az aktuális futó fürtök és ezeket a virtuális hálózat nélkül létrehozott fürtök.
 
 ## <a name="prerequisites-for-code-samples-and-examples"></a>Kódminták és példák előfeltételei
 
@@ -270,8 +272,7 @@ Ha hálózati biztonsági csoportok vagy felhasználó által megadott útvonala
     | ---- | ---- | ---- | ---- | ----- |
     | Ázsia | Kelet-Ázsia | 23.102.235.122</br>52.175.38.134 | \*:443 | Bejövő |
     | &nbsp; | Délkelet-Ázsia | 13.76.245.160</br>13.76.136.249 | \*:443 | Bejövő |
-    | Ausztrália | Ausztrália középső régiója | 20.36.36.33</br>20.36.36.196 | \*:443 | Bejövő |
-    | &nbsp; | Kelet-Ausztrália | 104.210.84.115</br>13.75.152.195 | \*:443 | Bejövő |
+    | Ausztrália | Kelet-Ausztrália | 104.210.84.115</br>13.75.152.195 | \*:443 | Bejövő |
     | &nbsp; | Délkelet-Ausztrália | 13.77.2.56</br>13.77.2.94 | \*:443 | Bejövő |
     | Brazília | Dél-Brazília | 191.235.84.104</br>191.235.87.113 | \*:443 | Bejövő |
     | Kanada | Kelet-Kanada | 52.229.127.96</br>52.229.123.172 | \*:443 | Bejövő |

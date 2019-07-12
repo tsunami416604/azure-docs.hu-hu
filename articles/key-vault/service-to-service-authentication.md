@@ -9,12 +9,12 @@ ms.author: mbaldwin
 ms.date: 07/06/2019
 ms.topic: conceptual
 ms.service: key-vault
-ms.openlocfilehash: 79d4254de40ef787b30eb4f483c86383a928ee1f
-ms.sourcegitcommit: d2785f020e134c3680ca1c8500aa2c0211aa1e24
+ms.openlocfilehash: 6a748031f9d35e26eeb544f154477ea3449903f5
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/04/2019
-ms.locfileid: "67566225"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67796094"
 ---
 # <a name="service-to-service-authentication-to-azure-key-vault-using-net"></a>Szolgáltatások közötti hitelesítés az Azure Key Vaultba .NET használatával
 
@@ -209,11 +209,16 @@ A szolgáltatás egyszerű hitelesítéshez használandó ügyféltanúsítvány
 
 1. Cserélje le `{KeyVaultCertificateSecretIdentifier}` a kapcsolati karakterláncban a tanúsítvány-azonosítóval:
 
-```
-RunAs=App;AppId={TestAppId};KeyVaultCertificateSecretIdentifier={KeyVaultCertificateSecretIdentifier}
-```
+    ```
+    RunAs=App;AppId={TestAppId};KeyVaultCertificateSecretIdentifier={KeyVaultCertificateSecretIdentifier}
+    ```
 
-Ha például a key vault "myKeyVault" hívása történt, és létrehozott egy "myCert" nevű tanúsítványt a tanúsítvány azonosítóját lenne `https://myKeyVault.vault.azure.net/secrets/myCert`, és a kapcsolati karakterlánc lenne `RunAs=App;AppId={TestAppId};TenantId={TenantId};KeyVaultCertificateSecretIdentifier=https://myKeyVault.vault.azure.net/secrets/myCert`.
+    Ha például a key vault "myKeyVault" hívása történt, és létrehozott egy "myCert" nevű tanúsítványt a tanúsítvány azonosítóját a következő lesz:
+
+    ```
+    RunAs=App;AppId={TestAppId};KeyVaultCertificateSecretIdentifier=https://myKeyVault.vault.azure.net/secrets/myCert
+    ```
+
 
 ## <a name="connection-string-support"></a>Kapcsolati karakterlánc-támogatás
 
@@ -235,7 +240,7 @@ A következő beállítások támogatottak:
 | `RunAs=App;AppId={AppId};TenantId={TenantId};CertificateSubjectName={Subject};CertificateStoreLocation={LocalMachine or CurrentUser}` | Egyszerű szolgáltatás | `AzureServiceTokenProvider` tanúsítványt használ, szerezze be a tokent az Azure ad-ből|
 | `RunAs=App;AppId={AppId};TenantId={TenantId};AppKey={ClientSecret}` | Egyszerű szolgáltatás |`AzureServiceTokenProvider` titkos kulcs használatával szerezze be a tokent az Azure ad-ből. |
 
-## <a name="samples"></a>Minták
+## <a name="samples"></a>Példák
 
 Megtekintheti a `Microsoft.Azure.Services.AppAuthentication` könyvtár működés közben, olvassa el a következő Kódminták.
 

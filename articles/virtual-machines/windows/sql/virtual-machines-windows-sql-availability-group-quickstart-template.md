@@ -15,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 01/04/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: fb09d91bb3204a1ab3dc4f9df71eabd2ee7d2bd1
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 406bd11765e4b580849e8719939c3e11c19d99a8
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60591316"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67604568"
 ---
 # <a name="use-azure-quickstart-templates-to-configure-always-on-availability-group-for-sql-server-on-an-azure-vm"></a>Egy Azure virtuális Gépen futó SQL Server AlwaysOn rendelkezésre állási csoport konfigurálása Azure gyorsindítási sablonok használatával
 Ez a cikk ismerteti, hogyan használhatja az Azure gyorsindítási sablonok részlegesen automatizálni az üzembe helyezést egy Always On rendelkezésre állási csoport konfigurációjának az SQL Server Virtual Machines az Azure-ban. Nincsenek az a folyamat által használt két Azure gyorsindítási sablonok. 
@@ -38,7 +38,7 @@ A rendelkezésre állási csoport konfigurációjának más részein kell elvég
 A telepítő egy Always On rendelkezésre állási csoport gyorsindítási sablonok használatával automatizálhatja, már rendelkeznie kell a következő előfeltételek vonatkoznak: 
 - Egy [Azure-előfizetés](https://azure.microsoft.com/free/).
 - Egy erőforráscsoport, egy tartományvezérlővel. 
-- Legalább egy tartományhoz csatlakoztatott [virtuális gépek Azure futó SQL Server 2016 (vagy nagyobb) Enterprise verzióban](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-server-provision) azonos rendelkezésre állási csoport vagy a rendelkezésre állási zónában, amely már a [regisztrálni az SQL virtuális gép erőforrás-szolgáltató](virtual-machines-windows-sql-ahb.md#register-sql-server-vm-with-sql-resource-provider).  
+- Legalább egy tartományhoz csatlakoztatott [virtuális gépek Azure futó SQL Server 2016 (vagy nagyobb) Enterprise verzióban](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-server-provision) azonos rendelkezésre állási csoport vagy a rendelkezésre állási zónában, amely már a [regisztrálni az SQL virtuális gép erőforrás-szolgáltató](virtual-machines-windows-sql-register-with-resource-provider.md).  
 - (Minden entitás által nem használt) elérhető két IP-címek, egy belső terheléselosztó, és a rendelkezésre állási csoport figyelőjének ugyanabban az alhálózatban, mint a rendelkezésre állási csoport esetében. Ha egy meglévő terheléselosztóhoz használatban van, csak egy elérhető IP-cím van szükség.  
 
 ## <a name="permissions"></a>Engedélyek
@@ -56,7 +56,7 @@ Miután az SQL virtuális gép új erőforrás-szolgáltató az SQL Server virtu
 
     Az alábbi táblázat az értékeket a sablonhoz szükséges: 
 
-   | **Mező** | Érték |
+   | **Mező** | Value |
    | --- | --- |
    | **Előfizetés** |  Az előfizetés, ha az SQL Server virtuális gépek léteznek. |
    |**Erőforráscsoport** | Az erőforráscsoport, ahol az SQL Server virtuális gépek találhatók. | 
@@ -95,9 +95,9 @@ Az Always On rendelkezésre állási csoport (rendelkezésre állási csoport) f
 4. Az a **terheléselosztó** panelen kattintson a **létrehozás**.
 5. Az a **terheléselosztó létrehozása** párbeszédpanelen adja meg a terheléselosztó a következő:
 
-   | Beállítás | Érték |
+   | Beállítás | Value |
    | --- | --- |
-   | **Name (Név)** |A load balancer jelölő szöveges nevét. Ha például **sqlLB**. |
+   | **Name** |A load balancer jelölő szöveges nevét. Ha például **sqlLB**. |
    | **Típus** |**Belső**: A legtöbb megvalósításokban belső terheléselosztó, amely lehetővé teszi az alkalmazások az adott virtuális hálózaton belül kapcsolódni a rendelkezésre állási csoporthoz.  </br> **Külső**: Lehetővé teszi az alkalmazások szeretne csatlakozni a nyilvános internetkapcsolaton keresztül a rendelkezésre állási csoportot. |
    | **Virtuális hálózat** | Válassza ki a virtuális hálózathoz, amelyek az SQL Server-példányokat. |
    | **Alhálózat** | Válassza ki az alhálózatot, amelyet az SQL Server-példányok szerepelnek. |
@@ -105,7 +105,7 @@ Az Always On rendelkezésre állási csoport (rendelkezésre állási csoport) f
    | **Magánhálózati IP-cím** | Adjon meg egy elérhető IP-címet az alhálózatról. |
    | **Előfizetés** |Ha több előfizetéssel rendelkezik, ez a mező jelenhet meg. Válassza ki az ehhez az erőforráshoz társítani kívánt előfizetést. Fontos általában ugyanazt az előfizetést a rendelkezésre állási csoport összes erőforrását. |
    | **Erőforráscsoport** |Válassza ki az erőforráscsoportot, amely az SQL Server-példányok szerepelnek. |
-   | **Hely** |Válassza ki az Azure-beli hely, amely az SQL Server-példányok szerepelnek. |
+   | **Location** |Válassza ki az Azure-beli hely, amely az SQL Server-példányok szerepelnek. |
    | &nbsp; | &nbsp; |
 
 6. Kattintson a **Létrehozás** gombra. 
@@ -133,7 +133,7 @@ Konfigurálja az ILB, és a rendelkezésre állási csoport figyelőjének létr
 
     Az alábbi táblázat az értékeket a sablonhoz szükséges: 
 
-   | **Mező** | Érték |
+   | **Mező** | Value |
    | --- | --- |
    |**Erőforráscsoport** | Az erőforráscsoport, amelyben az SQL Server virtuális gépek és a rendelkezésre állási csoport létezik. | 
    |**Meglévő feladatátvevő fürt neve** | Az SQL Server virtuális gépek tartományhoz csatlakoztatott a fürt nevére. |
@@ -190,7 +190,7 @@ Ez a hiba két okok valamelyike okozhatja. A megadott tartományi fiók valóban
 
     ![Üres felhasználói fiók azt jelzi, hogy hiányzó egyszerű felhasználónév](media/virtual-machines-windows-sql-availability-group-quickstart-template/account-missing-upn.png)
 
-5. Töltse ki a **felhasználói bejelentkezési név** megfelelően annak a felhasználónak a nevére, majd a megfelelő tartományt a legördülő listából válassza a lefelé. 
+5. Töltse ki a **felhasználói bejelentkezési név** megfelelően annak a felhasználónak a nevére, majd válassza ki a megfelelő tartományt a legördülő listából. 
 6. Válassza ki **alkalmaz** mentse a módosításokat, és zárja be a párbeszédpanelt kiválasztásával **OK**. 
 
    Ha ezeket a módosításokat, próbálja meg még egyszer üzembe helyezése az Azure gyorsindítási sablon. 
