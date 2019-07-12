@@ -3,17 +3,17 @@ title: Az operátori nézetek testreszabása az Azure IoT Centralban | Microsoft
 description: Szerkesztőként testreszabhatja az operátori nézeteket az Azure IoT Central-alkalmazásban.
 author: sandeeppujar
 ms.author: sandeepu
-ms.date: 03/26/2019
+ms.date: 07/09/2019
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
-ms.openlocfilehash: 7fc42b24090b5fc68176fea2c7b993643ea24200
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: ced771002ca9f542f89dbf74ba4a4745ad2a0339
+ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60747159"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67850176"
 ---
 # <a name="tutorial-customize-the-azure-iot-central-operators-view"></a>Oktatóanyag: Az Azure IoT Central operátor nézet testreszabása
 
@@ -58,7 +58,7 @@ Szerkesztőként meghatározhatja, milyen információk jelenjenek meg egy eszk�
     | ----------- | ----- |
     | Name (Név)        | Maximális hőmérséklet |
     | Időtartomány  | Előző 1 hét |
-    | Mérés típusa | Telemetria |
+    | Mérték típusa | Telemetria |
     | Mérés | hőmérséklet |
     | Összesítés | Maximum |
     | Láthatóság  | Enabled |

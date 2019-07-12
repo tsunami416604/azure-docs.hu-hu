@@ -12,13 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/21/2019
-ms.author: kumud;tyao
-ms.openlocfilehash: f2b5a2bc3248c9f2ee0eb49e993fd55c7714367a
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.author: kumud
+ms.reviewer: tyao
+ms.openlocfilehash: 97a3d63f94ca7e60f57177703a98b60e3f6c42ec
+ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66389154"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67849191"
 ---
 # <a name="how-to-set-up-a-geo-filtering-waf-policy-for-your-front-door"></a>Számára a bejárati ajtó a földrajzi szűrés WAF szabályzat beállítása
 Ebben az oktatóanyagban megtudhatja, hogyan hozhat létre egy egyszerű geoszűrési szabályzatot, és társíthatja azt a meglévő előtérbeli Front Door-gazdagéphez az Azure PowerShell-lel. A minta a földrajzi szűrés házirend letiltja a minden más országokban és régiókban Egyesült Államok kivételével érkező kérelmeket.

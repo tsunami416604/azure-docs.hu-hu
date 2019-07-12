@@ -9,12 +9,12 @@ ms.date: 06/25/2019
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 12b141f9aa75231adae9f64c57709f290883b420
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 629b484d27d863727d180bb3e2d01b605ca539a6
+ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67433940"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67850122"
 ---
 # <a name="tutorial-perform-image-classification-at-the-edge-with-custom-vision-service"></a>Oktatóanyag: Képosztályozás végrehajtása a peremhálózaton a Custom Vision Service használatával
 
@@ -141,17 +141,9 @@ Egy megoldás logikus módját jelenti több modul fejlesztésének és megszerv
 
 1. A Visual Studio Code-ban válassza a **View** (Nézet)  > **Terminal** (Terminál) elemet a VS Code integrált terminál megnyitásához.
 
-2. Az integrált terminálban írja be a következő parancsot a **cookiecutter** telepítéséhez (vagy frissítéséhez), amellyel létrehozhatja az IoT Edge-hez elérhető Python-modulsablont a VS Code-ban:
+1. A VS Code parancskatalógusának megnyitásához válassza a **View (Nézet)**  > **Command Palette (Parancskatalógus)** elemet. 
 
-    ```cmd/sh
-    pip install --upgrade --user cookiecutter
-    ```
-   >[!Note]
-   >Győződjön meg, hogy a cookiecutter telepítési könyvtára a környezet `Path` útvonalán legyen, hogy egy parancssorból meg lehessen hívni.
-
-3. A VS Code parancskatalógusának megnyitásához válassza a **View (Nézet)**  > **Command Palette (Parancskatalógus)** elemet. 
-
-4. A parancskatalógus, adja meg, és futtassa a parancsot **Azure IoT Edge: Új IoT Edge-megoldás**. A parancskatalógusban adja meg az alábbi információkat a megoldás létrehozásához: 
+1. A parancskatalógus, adja meg, és futtassa a parancsot **Azure IoT Edge: Új IoT Edge-megoldás**. A parancskatalógusban adja meg az alábbi információkat a megoldás létrehozásához: 
 
    | Mező | Érték |
    | ----- | ----- |

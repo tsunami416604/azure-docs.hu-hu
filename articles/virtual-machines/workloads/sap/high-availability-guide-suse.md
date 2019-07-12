@@ -4,7 +4,7 @@ description: Magas rendelkezésre állású útmutató az SAP NetWeaver SUSE Lin
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
 author: mssedusch
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 keywords: ''
@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 04/30/2019
 ms.author: sedusch
-ms.openlocfilehash: 44f99ed1af65eb1e487295c11077fd558ce4285c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 16f88790d96a1e46f60db368f69155b3ad7afbef
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65142954"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67797492"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms-on-suse-linux-enterprise-server-for-sap-applications"></a>Magas rendelkezésre állás az SAP NetWeaver SUSE Linux Enterprise Server az Azure virtuális gépeken SAP-alkalmazások
 
@@ -54,7 +54,7 @@ ms.locfileid: "65142954"
 [nfs-ha]:high-availability-guide-suse-nfs.md
 
 Ez a cikk ismerteti a virtuális gépek üzembe helyezése, konfigurálja a virtuális gépek, telepítse a fürt keretrendszert és egy magas rendelkezésre állású SAP NetWeaver 7.50 rendszer telepítéséhez.
-A példa konfigurációk esetén a telepítési parancsokat stb. ASCS példányszámának 00, SSZON példányok száma 02, és az SAP-rendszer azonosító NW1 szolgál. Az erőforrások (például virtuális gépek, virtuális hálózatok) a példában nevei azt feltételezik, hogy használja a [sablon összevont] [ template-converged] SAP-rendszerrel azonosító NW1 erőforrások létrehozásához.
+A példa konfigurációk esetén a telepítési parancsokat stb. ASCS példányszámának 00, SSZON példányok száma 02, és az SAP-rendszer azonosító NW1 szolgál. Az erőforrások (például virtuális gépek, virtuális hálózatok) a példában nevei azt feltételezik, hogy használja a [sablon összevont][template-converged] SAP-rendszerrel azonosító NW1 erőforrások létrehozásához.
 
 Olvassa el először a következő SAP-megjegyzések és tanulmányok
 
@@ -76,7 +76,7 @@ Olvassa el először a következő SAP-megjegyzések és tanulmányok
 * [Az Azure virtuális gépek tervezése és megvalósítása az SAP, Linux rendszeren][planning-guide]
 * [Az Azure virtuális gépek üzembe helyezése, az SAP, Linux rendszeren][deployment-guide]
 * [Az Azure Virtual Machines DBMS üzembe helyezése, az SAP, Linux rendszeren][dbms-guide]
-* [SUSE SAP magas rendelkezésre ÁLLÁS ajánlott eljárások gyűjteménye] [ suse-ha-guide] a útmutatókat tartalmaz minden szükséges információt a beállítása Netweaver magas rendelkezésre ÁLLÁS és a helyszíni SAP HANA-Rendszerreplikálást. Ezek az útmutatók használja általános kiindulópontként. Sokkal részletesebb információkat biztosítanak.
+* [SUSE SAP magas rendelkezésre ÁLLÁS ajánlott eljárások gyűjteménye][suse-ha-guide] a útmutatókat tartalmaz minden szükséges információt a beállítása Netweaver magas rendelkezésre ÁLLÁS és a helyszíni SAP HANA-Rendszerreplikálást. Ezek az útmutatók használja általános kiindulópontként. Sokkal részletesebb információkat biztosítanak.
 * [SUSE magas rendelkezésre állású bővítmény 12 SP3 kibocsátási megjegyzései][suse-ha-12sp3-relnotes]
 
 ## <a name="overview"></a>Áttekintés
@@ -125,7 +125,7 @@ The NFS server, SAP NetWeaver ASCS, SAP NetWeaver SCS, SAP NetWeaver ERS, and th
 
 ## <a name="setting-up-a-highly-available-nfs-server"></a>Egy magas rendelkezésre állású NFS-kiszolgáló beállítása
 
-SAP NetWeaver az átvitel és a profil Directory megosztott tároló szükséges hozzá. Olvasási [magas rendelkezésre állás NFS, a SUSE Linux Enterprise Server Azure virtuális gépeken] [ nfs-ha] az NFS-kiszolgáló beállítása az SAP NetWeaver számára.
+SAP NetWeaver az átvitel és a profil Directory megosztott tároló szükséges hozzá. Olvasási [magas rendelkezésre állás NFS, a SUSE Linux Enterprise Server Azure virtuális gépeken][nfs-ha] az NFS-kiszolgáló beállítása az SAP NetWeaver számára.
 
 ## <a name="setting-up-ascs"></a>(A) SCS beállítása
 
@@ -137,8 +137,8 @@ Az Azure Marketplace-en SUSE Linux Enterprise Server SAP alkalmazások 12, amely
 
 Használhatja a gyorsindítási sablonok egyikét a Githubon üzembe helyezéséhez szükséges összes erőforrást. A sablon üzembe helyezi a virtuális gépek, a terheléselosztó, a rendelkezésre állási csoport stb. Kövesse az alábbi lépéseket a sablon üzembe helyezéséhez:
 
-1. Nyissa meg a [ASCS/SCS több SID sablon] [ template-multisid-xscs] vagy a [sablon összevont] [ template-converged] az Azure Portalon. 
-   Az ASCS/SCS-sablon a terheléselosztási szabályok csak az SAP NetWeaver ASCS/SCS és SSZON (csak Linux) hoz létre, mivel a konvergens sablon is létrehoz a terheléselosztási szabályok (például a Microsoft SQL Server vagy az SAP HANA) adatbázishoz. Ha azt tervezi, hogy az SAP NetWeaver-alapú rendszert telepíti, és az adatbázis telepítésével az azonos gépeken is érdemes a [sablon összevont][template-converged].
+1. Nyissa meg a [ASCS/SCS több SID sablon][template-multisid-xscs] or the [converged template][template-converged] on the Azure portal. 
+   The ASCS/SCS template only creates the load-balancing rules for the SAP NetWeaver ASCS/SCS and ERS (Linux only) instances whereas the converged template also creates the load-balancing rules for a database (for example Microsoft SQL Server or SAP HANA). If you plan to install an SAP NetWeaver based system and you also want to install the database on the same machines, use the [converged template][template-converged].
 1. Adja meg a következő paraméterek
    1. Erőforrás-előtag (csak a sablon ASCS/SCS több SID)  
       Adja meg a használni kívánt előtagot. Az érték előtagjaként is szolgál az üzembe helyezett erőforrásokat.
@@ -512,7 +512,7 @@ A következő elemek van fűzve előtagként vagy **[A]** – az összes csomóp
 
 1. **[A]**  Életben tartási konfigurálása
 
-   A SAP NetWeaver-kiszolgáló és az ASC/SCS közötti kommunikáció áthalad egy szoftveres terheléselosztót. A load balancer inaktív kapcsolatok leválasztása után konfigurálható időkorlát. Ennek megelőzéséhez szüksége egy paraméter az SAP NetWeaver ASCS/SCS-profilban és a Linux rendszer beállításait módosíthatja. Olvasási [SAP Megjegyzés 1410736] [ 1410736] további információt.
+   A SAP NetWeaver-kiszolgáló és az ASC/SCS közötti kommunikáció áthalad egy szoftveres terheléselosztót. A load balancer inaktív kapcsolatok leválasztása után konfigurálható időkorlát. Ennek megelőzéséhez szüksége egy paraméter az SAP NetWeaver ASCS/SCS-profilban és a Linux rendszer beállításait módosíthatja. Olvasási [SAP Megjegyzés 1410736][1410736] további információt.
 
    Az ASCS/SCS profil paraméter célzó/encni/set_so_keepalive már lett adva az előző lépésben.
 
@@ -710,7 +710,7 @@ A lépések Csengő azt feltételezik, hogy a kiszolgáló egy kiszolgálón tel
 
 ## <a name="install-database"></a>Adatbázis telepítése
 
-Ebben a példában SAP Netweavertől az SAP HANA telepítve van. Minden támogatott adatbázis használhatja a telepítéshez. Az Azure-beli SAP HANA telepítése További információkért lásd: [magas rendelkezésre állás az SAP HANA Azure-beli virtuális gépeken (VM)][sap-hana-ha]. Támogatott adatbázisok listájának megtekintéséhez lásd: [SAP Megjegyzés 1928533][1928533].
+Ebben a példában SAP Netweavertől az SAP HANA telepítve van. Minden támogatott adatbázis használhatja a telepítéshez. Az Azure-beli SAP HANA telepítése További információkért lásd: [magas rendelkezésre állás az SAP HANA Azure-beli virtuális gépeken (VM)][sap-hana-ha]. For a list of supported databases, see [SAP Note 1928533][1928533].
 
 1. Futtassa az SAP adatbázis-példány telepítése
 
@@ -887,6 +887,9 @@ A következő tesztek elvégzése a SUSE, az ajánlott eljárások útmutatók e
    # run as root
    # Remove failed actions for the ERS that occurred as part of the migration
    nw1-cl-0:~ # crm resource cleanup rsc_sap_NW1_ERS02
+   # Remove migration constraints
+   nw1-cl-0:~ # crm resource clear rsc_sap_NW1_ASCS00
+   #INFO: Removed migration constraints for rsc_sap_NW1_ASCS00
    </code></pre>
 
    Erőforrás állapotának a vizsgálat után:

@@ -245,7 +245,7 @@
         - name: Köteg-előrejelzések futtatása
           displayName: score scoring asynchronous consume pipeline
           href: how-to-run-batch-predictions.md
-    - name: Webszolgáltatások monitorozása
+    - name: Modellek monitorozása
       items:
         - name: Modelladatok gyűjtése és kiértékelése
           displayName: track production
@@ -273,9 +273,6 @@
     - name: Machine learning SDK
       displayName: api core package python data prep
       href: 'https://aka.ms/aml-sdk'
-    - name: Monitorozási SDK
-      displayName: api package python monitor
-      href: 'https://aka.ms/aml-monitoring-sdk'
     - name: Machine Learning CLI
       displayName: 'cli, extension, command line, command-line, az, ci/cd, automate, automated'
       href: reference-azure-machine-learning-cli.md

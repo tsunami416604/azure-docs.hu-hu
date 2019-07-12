@@ -10,12 +10,12 @@ ms.date: 03/24/2019
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 6ec429bc7c1598e947b798c30e7992e3d357d00c
-ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
+ms.openlocfilehash: d75e4c3e2b6f28dfbde670406854ac87790dd090
+ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66303817"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67850114"
 ---
 # <a name="tutorial-develop-and-deploy-a-python-iot-edge-module-for-linux-devices"></a>Oktatóanyag: Fejleszthet és helyezhet üzembe egy Linux rendszerű eszközök Python IoT Edge-modul
 
@@ -69,25 +69,15 @@ Az alábbi lépéseket egy IoT Edge Python-modul létrehozása a Visual Studio C
 
 ### <a name="create-a-new-project"></a>Új projekt létrehozása
 
-A **cookiecutter** Python-csomag használatával létrehozhat egy Python-megoldássablont, amelyre majd építkezhet. 
+A VS Code használatával úgy, hogy a Python megoldássablon létrehozásához. 
 
 1. A Visual Studio Code-ban válassza a **View** (Nézet)  > **Terminal** (Terminál) elemet a VS Code integrált terminál megnyitásához.
 
-2. A terminalba írja be a telepítéséhez (vagy frissítéséhez) a következő parancsot **cookiecutteru**, amelyet az IoT Edge-megoldássablon létrehozásához használhat:
+1. A VS Code parancskatalógusának megnyitásához válassza a **View (Nézet)**  > **Command Palette (Parancskatalógus)** elemet. 
 
-    ```cmd/sh
-    pip install --upgrade --user cookiecutter
-    ```
-   >[!Note]
-   >Győződjön meg, hogy a könyvtár cookiecutteru helyéül annak érdekében, hogy indítsa el a parancssorból lehetővé teszik, hogy a környezet elérési út szerepel. A könyvtár része a telepítési parancsfájl kimenete például `C:\Users\{user}\AppData\Roaming\Python\Python{version}\Scripts`.
-   >
-   >Indítsa újra a Visual Studio Code-útvonalra a módosítások átvételéhez. 
+1. A parancskatalógus, adja meg, és futtassa a parancsot **Azure: Jelentkezzen be a** , és kövesse az utasításokat követve jelentkezzen be az Azure-fiókjával. Ha már be van jelentkezve, ezt a lépést kihagyhatja.
 
-3. A VS Code parancskatalógusának megnyitásához válassza a **View (Nézet)**  > **Command Palette (Parancskatalógus)** elemet. 
-
-4. A parancskatalógus, adja meg, és futtassa a parancsot **Azure: Jelentkezzen be a** , és kövesse az utasításokat követve jelentkezzen be az Azure-fiókjával. Ha már be van jelentkezve, ezt a lépést kihagyhatja.
-
-5. A parancskatalógus, adja meg, és futtassa a parancsot **Azure IoT Edge: Új IoT Edge-megoldás**. Kövesse az utasításokat, és adja meg a megoldás létrehozásához a következő információkat:
+1. A parancskatalógus, adja meg, és futtassa a parancsot **Azure IoT Edge: Új IoT Edge-megoldás**. Kövesse az utasításokat, és adja meg a megoldás létrehozásához a következő információkat:
 
    | Mező | Érték |
    | ----- | ----- |

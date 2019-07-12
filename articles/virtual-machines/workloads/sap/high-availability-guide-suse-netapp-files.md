@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 04/30/2019
 ms.author: radeltch
-ms.openlocfilehash: b3b5a89b43eaa5c0851962aef414ec9c9b7440da
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c8fcf4afa5a363d355f627be95dd7fe8131203ac
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66357733"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67797970"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms-on-suse-linux-enterprise-server-with-azure-netapp-files-for-sap-applications"></a>Magas rendelkezésre állás az SAP NetWeaver SUSE Linux Enterprise Server az Azure NetApp Files SAP alkalmazások az Azure virtuális gépeken
 
@@ -83,7 +83,7 @@ Először olvassa el az alábbi SAP-megjegyzések és tanulmányok:
 * [Az Azure virtuális gépek tervezése és megvalósítása az SAP, Linux rendszeren][planning-guide]
 * [Az Azure virtuális gépek üzembe helyezése, az SAP, Linux rendszeren][deployment-guide]
 * [Az Azure Virtual Machines DBMS üzembe helyezése, az SAP, Linux rendszeren][dbms-guide]
-* [SUSE SAP magas rendelkezésre ÁLLÁS ajánlott eljárások gyűjteménye] [ suse-ha-guide] a útmutatókat tartalmaz minden szükséges információt a beállítása Netweaver magas rendelkezésre ÁLLÁS és a helyszíni SAP HANA-Rendszerreplikálást. Ezek az útmutatók használja általános kiindulópontként. Sokkal részletesebb információkat biztosítanak.
+* [SUSE SAP magas rendelkezésre ÁLLÁS ajánlott eljárások gyűjteménye][suse-ha-guide] a útmutatókat tartalmaz minden szükséges információt a beállítása Netweaver magas rendelkezésre ÁLLÁS és a helyszíni SAP HANA-Rendszerreplikálást. Ezek az útmutatók használja általános kiindulópontként. Sokkal részletesebb információkat biztosítanak.
 * [SUSE magas rendelkezésre állású bővítmény 12 SP3 kibocsátási megjegyzései][suse-ha-12sp3-relnotes]
 * [NetApp SAP alkalmazások az Azure Files-NetApp használatával a Microsoft Azure][anf-sap-applications-azure]
 
@@ -426,7 +426,6 @@ A következő elemek van fűzve előtagként vagy **[A]** – az összes csomóp
    #     fs_QAS_ASCS        (ocf::heartbeat:Filesystem):    <b>Started anftstsapcl1</b>
    #     nc_QAS_ASCS        (ocf::heartbeat:anything):      <b>Started anftstsapcl1</b>
    #     vip_QAS_ASCS       (ocf::heartbeat:IPaddr2):       <b>Started anftstsapcl1</b>
-   #     rsc_sap_QAS_ASCS00 (ocf::heartbeat:SAPInstance):   <b>Started anftstsapcl1</b>
    # stonith-sbd     (stonith:external/sbd): <b>Started anftstsapcl2</b>
    </code></pre>
   
@@ -549,7 +548,7 @@ A következő elemek van fűzve előtagként vagy **[A]** – az összes csomóp
 
 6. **[A]**  Életben tartási konfigurálása
 
-   A SAP NetWeaver-kiszolgáló és az ASC/SCS közötti kommunikáció áthalad egy szoftveres terheléselosztót. A load balancer inaktív kapcsolatok leválasztása után konfigurálható időkorlát. Ennek megelőzéséhez szüksége egy paraméter az SAP NetWeaver ASCS/SCS-profilban és a Linux rendszer beállításait módosíthatja. Olvasási [SAP Megjegyzés 1410736] [ 1410736] további információt.
+   A SAP NetWeaver-kiszolgáló és az ASC/SCS közötti kommunikáció áthalad egy szoftveres terheléselosztót. A load balancer inaktív kapcsolatok leválasztása után konfigurálható időkorlát. Ennek megelőzéséhez szüksége egy paraméter az SAP NetWeaver ASCS/SCS-profilban és a Linux rendszer beállításait módosíthatja. Olvasási [SAP Megjegyzés 1410736][1410736] további információt.
 
    Az ASCS/SCS profil paraméter célzó/encni/set_so_keepalive már lett adva az előző lépésben.
 
@@ -788,7 +787,7 @@ A következő elemek van fűzve előtagként vagy **[A]** – szolgáltatói CÍ
 
 ## <a name="install-database"></a>Adatbázis telepítése
 
-Ebben a példában SAP Netweavertől az SAP HANA telepítve van. Minden támogatott adatbázis használhatja a telepítéshez. Az Azure-beli SAP HANA telepítése További információkért lásd: [magas rendelkezésre állás az SAP HANA Azure-beli virtuális gépeken (VM)][sap-hana-ha]. Támogatott adatbázisok listájának megtekintéséhez lásd: [SAP Megjegyzés 1928533][1928533].
+Ebben a példában SAP Netweavertől az SAP HANA telepítve van. Minden támogatott adatbázis használhatja a telepítéshez. Az Azure-beli SAP HANA telepítése További információkért lásd: [magas rendelkezésre állás az SAP HANA Azure-beli virtuális gépeken (VM)][sap-hana-ha]. For a list of supported databases, see [SAP Note 1928533][1928533].
 
 * Futtassa az SAP adatbázis-példány telepítése
 
@@ -967,6 +966,9 @@ A következő tesztek elvégzése a vizsgálati esetek másolatát a [ajánlott 
    # run as root
    # Remove failed actions for the ERS that occurred as part of the migration
    anftstsapcl1:~ # crm resource cleanup rsc_sap_QAS_ERS01
+   # Remove migration constraints
+   anftstsapcl1:~ # crm resource clear rsc_sap_QAS_ASCS00
+   #INFO: Removed migration constraints for rsc_sap_QAS_ASCS00
    </code></pre>
 
    Erőforrás állapotának a vizsgálat után:

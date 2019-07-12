@@ -4,7 +4,7 @@ description: Magas rendelkezésre állás NFS, a SUSE Linux Enterprise Server Az
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
 author: mssedusch
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 keywords: ''
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 03/15/2019
 ms.author: sedusch
-ms.openlocfilehash: ed92be0c1968d8f8a931d59d2dadefbbb12f2100
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 93644b9a3487906a27db70bfe82cceccdc7ab45c
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64925741"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67707228"
 ---
 # <a name="high-availability-for-nfs-on-azure-vms-on-suse-linux-enterprise-server"></a>Magas rendelkezésre állás NFS, a SUSE Linux Enterprise Server Azure virtuális gépeken
 
@@ -52,7 +52,7 @@ ms.locfileid: "64925741"
 [sap-hana-ha]:sap-hana-high-availability.md
 
 Ez a cikk ismerteti a virtuális gépek üzembe helyezése, konfigurálja a virtuális gépek, a fürt keretrendszer telepítése és a magas rendelkezésre állású SAP-rendszer a megosztott adatok tárolására szolgáló magas rendelkezésre állású NFS-kiszolgáló telepítése.
-Ez az útmutató azt ismerteti, hogyan állítható be a magas rendelkezésre állású NFS-kiszolgáló két SAP-rendszereit, NW1 és NW2 által használt. Az erőforrások (például virtuális gépek, virtuális hálózatok) a példában nevei azt feltételezik, hogy használja a [SAP fájl kiszolgálói sablon] [ template-file-server] erőforrás előtaggal **prod**.
+Ez az útmutató azt ismerteti, hogyan állítható be a magas rendelkezésre állású NFS-kiszolgáló két SAP-rendszereit, NW1 és NW2 által használt. Az erőforrások (például virtuális gépek, virtuális hálózatok) a példában nevei azt feltételezik, hogy használja a [SAP fájl kiszolgálói sablon][template-file-server] erőforrás előtaggal **prod**.
 
 Olvassa el először a következő SAP-megjegyzések és tanulmányok
 
@@ -110,7 +110,7 @@ Minden szükséges Azure-erőforrások, például a virtuális gépek üzembe he
 Az Azure Marketplace-en SUSE Linux Enterprise Server SAP alkalmazások 12, amelyek új virtuális gépek telepítéséhez használhatja a kép tartalmazza.
 Használhatja a gyorsindítási sablonok egyikét a Githubon üzembe helyezéséhez szükséges összes erőforrást. A sablon üzembe helyezi a virtuális gépek, a terheléselosztó, a rendelkezésre állási csoport stb. Kövesse az alábbi lépéseket a sablon üzembe helyezéséhez:
 
-1. Nyissa meg a [SAP file server sablon] [ template-file-server] az Azure Portalon   
+1. Nyissa meg a [SAP file server sablon][template-file-server] az Azure Portalon   
 1. Adja meg a következő paraméterek
    1. Resource Prefix  
       Adja meg a használni kívánt előtagot. Az érték előtagjaként is szolgál az üzembe helyezett erőforrásokat.

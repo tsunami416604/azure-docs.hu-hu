@@ -4,7 +4,7 @@ description: Az Azure virtuális gépek tervezése és megvalósítása SAP NetW
 services: virtual-machines-linux,virtual-machines-windows
 documentationcenter: ''
 author: MSSedusch
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 keywords: ''
@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 05/07/2019
 ms.author: sedusch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c6a119fe777c443c777781aca4ae46e0ca171e52
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 11a54dee653bcfa6c94a861e483183ac39f465bf
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67442132"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67710182"
 ---
 # <a name="azure-virtual-machines-planning-and-implementation-for-sap-netweaver"></a>Az Azure virtuális gépek tervezése és megvalósítása SAP NetWeaver
 
@@ -320,7 +320,7 @@ A tanulmány az SAP-telepítési dokumentációt és SAP-megjegyzések, amelyek 
 
 [!INCLUDE [updated-for-az](../../../../includes/updated-for-az.md)]
 
-## <a name="summary"></a>Összefoglalás
+## <a name="summary"></a>Összegzés
 Felhő-számítástechnika széles körben használt fogalom, amely egyre több fontosságát az informatikai iparágban, belül van hozd a kisvállalatok nagy, nemzetközi vállalatok.
 
 Microsoft Azure a Microsoft új lehetőségek széles skáláját nyújtó Felhőszolgáltatás-platformja. Most már ügyfelek képesek gyors kiépítés és megszüntetni hozzárendeléseket alkalmazásokat a felhőben, szolgáltatásként, akkor nem érvényesülnek a technikai vagy költségvetési korlátozások. Ahelyett idő és a költségvetés beruházó hardver-infrastruktúra, vállalatok koncentrálhat az alkalmazás, üzleti folyamatokat, és az ügyfeleknek és felhasználóknak.
@@ -2053,7 +2053,7 @@ Mid 2014 óta különféle összetevőket Hyper-V, a System Center és az Azure-
 
 Ez a megoldás üzembe helyezése a részletező blog itt dokumentált: <https://blogs.msdn.com/b/saponsqlserver/archive/2014/11/19/protecting-sap-solutions-with-azure-site-recovery.aspx>.
 
-## <a name="summary"></a>Összefoglalás
+## <a name="summary"></a>Összegzés
 
 A magas rendelkezésre állású legfontosabb pontjait az Azure-beli SAP-rendszerek a következők:
 

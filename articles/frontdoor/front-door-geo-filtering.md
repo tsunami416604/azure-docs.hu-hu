@@ -11,13 +11,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/21/2019
-ms.author: kumud;tyao
-ms.openlocfilehash: da56c9664ce533709676ded677add4a2391dce03
-ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
+ms.author: kumud
+ms.reviewer: tyao
+ms.openlocfilehash: 7ad2d181b6343644205c58ab1d5fe83dc25542d4
+ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2019
-ms.locfileid: "64865865"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67846414"
 ---
 # <a name="what-is-geo-filtering-on-a-domain-for-azure-front-door"></a>Mi az a földrajzi szűrés Azure bejárati ajtajának tartomány?
 
@@ -102,7 +103,7 @@ Konfigurálhatja a földrajzi szűrés házirend számára a bejárati ajtajána
 | HR | Horvátország|
 | HT | Haiti|
 | HU | Magyarország|
-| ID (Azonosító) | Indonézia|
+| id | Indonézia|
 | IE | Írország|
 | IL | Izrael|
 | IN | India|

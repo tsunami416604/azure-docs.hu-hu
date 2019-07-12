@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dabe0ad1a556ee43f3e6cae0e1cd421db5cde0fd
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 1efb67df6c31a3b03fdc45fffc0564fb09e39faf
+ms.sourcegitcommit: 470041c681719df2d4ee9b81c9be6104befffcea
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60413955"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67853039"
 ---
 # <a name="tutorial-enabling-password-writeback"></a>Oktatóanyag: A jelszóvisszaírás engedélyezése
 
@@ -54,11 +54,11 @@ A jelszóvisszaíró engedélyezése az Azure AD Connectben azonban csak a felad
 2. Lépjen az **Azure Active Directoryra**, kattintson a **Jelszó alaphelyzetbe állítása** gombra, majd válassza a **Helyszíni integráció** lehetőséget.
 3. Állítsa a **Jelszavak visszaírása helyszíni címtárba** beállítást **Igen** értékre.
 4. Állítsa a **Felhasználói fiókok feloldásának engedélyezése új jelszó kérése nélkül** beállítást **Igen** értékre.
-5. Kattintson a **Mentés** gombra.
+5. Kattintson a **Save** (Mentés) gombra
 
 ## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban engedélyeztük a jelszóvisszaírót az új jelszó önkiszolgáló kérési szolgáltatásában. Hagyja megnyitva az Azure Portal ablakát, és lépjen tovább a következő oktatóanyagra, amelyben további beállításokat konfigurálhat az új jelszó önkiszolgáló kéréséhez, mielőtt bevezetné a megoldás próbaverzióját.
 
 > [!div class="nextstepaction"]
-> [Az SSPR engedélyezése a Windows bejelentkezési képernyőjén](tutorial-sspr-windows.md)
+> [Kockázat értékelése bejelentkezéskor](tutorial-risk-based-sspr-mfa.md)
