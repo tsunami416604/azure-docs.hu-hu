@@ -8,12 +8,12 @@ ms.date: 02/17/2019
 ms.topic: conceptual
 ms.author: raynew
 manager: carmonm
-ms.openlocfilehash: 0f99042d91738c88a8b673444bb3d4a40602b012
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: 85e65c36a0d636d94a9ef9070c21ab047542d8f4
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67204167"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67594262"
 ---
 # <a name="support-matrix-for-backup-with-microsoft-azure-backup-server-or-system-center-dpm"></a>A Microsoft Azure Backup Server vagy a System Center DPM biztonsági mentés támogatási mátrixa
 
@@ -55,7 +55,7 @@ További információk:
 
 **Forgatókönyv** | **Ügynök** | **Location**
 --- | --- | ---
-**A helyszíni gépeket és számítási feladatainak biztonsági mentése** | A DPM/MABS védelmi ügynököt a készíteni kívánt gépeket futtat.<br/><br/> A MARS-ügynököt a DPM vagy MABS-kiszolgálón. | A DPM/MABS helyszíni kell futnia.
+**A helyszíni gépeket és számítási feladatainak biztonsági mentése** | A DPM/MABS védelmi ügynököt a készíteni kívánt gépeket futtat.<br/><br/> A MARS-ügynököt a DPM vagy MABS-kiszolgálón.<br/> A Microsoft Azure Recovery Services Agent ügynököt, vagy az Azure Backup-ügynök, ez a funkció engedélyezéséhez szükséges minimális verziója 2.0.8719.0.  | A DPM/MABS helyszíni kell futnia.
 **Az Azure virtuális gépeket és számítási feladatok biztonsági mentése** | A DPM/MABS védelmi ügynököt a védett számítógépen.<br/><br/> A MARS-ügynököt a DPM vagy MABS-kiszolgálón. | A DPM vagy MABS-beli virtuális gépen kell futnia.
 
 ## <a name="supported-deployments"></a>Támogatott központi telepítések
@@ -152,7 +152,7 @@ A DPM 2016/MABS v2 (Windows Server 2016 fut) és újabb, igénybe veheti a moder
 - MB másolatoknak Resilient File System (ReFS) lemezre vonatkozóan.
 - MB használja, a refs fájlrendszer blokk-klónozást gyorsabb biztonsági mentést és a tárolóhely hatékonyabb kihasználását.
 - Amikor a helyi DPM-vagy MABS-tárolókészlet hozzá köteteket, konfigurálja őket a meghajtóbetűjelet. Konfigurálhatja a tárolási számítási feladatok különböző köteteken.
-- Ha az adatok biztonsági másolatát a DPM/MABS védelmi csoportokat hoz létre, kiválaszthatja a használni kívánt meghajtót. Például, előfordulhat, hogy az SQL- vagy egyéb magas iops-t egy nagy teljesítményű számítási feladatok meghajtó biztonsági másolatok tárolására, és munkaterhelések, amelyekről ritkábban alacsonyabb teljesítményt meghajtón tárolja.
+- Ha az adatok biztonsági másolatát a DPM/MABS védelmi csoportokat hoz létre, kiválaszthatja a használni kívánt meghajtót. Például, előfordulhat, hogy az SQL- vagy egyéb magas iops-t egy nagy teljesítményű meghajtón számítási feladatok biztonsági másolatok tárolására, és a munkaterhelések, amelyekről ritkábban alacsonyabb teljesítményt meghajtón tárolja.
 
 
 ## <a name="supported-backups-to-mabs"></a>MABS támogatott biztonsági mentések
@@ -206,7 +206,7 @@ A következő táblázat összefoglalja, milyen biztonsági másolat készíthet
 **VMware virtuális gépek: vCenter/vSphere ESXi-5.5/6.0/6.5** | MABS v3, v2 <br/><br/> DPM 2012 R2 needs System Center Update Rollup 1) <br/><br/>A helyszíni. | VMware virtuális gépek biztonsági mentése CSV-k, az NFS és a SAN-tárolón.<br/><br/> Teljes virtuális gép helyreállításához.<br/><br/> Windows/Linux biztonsági mentés.<br/><br/> Elemszintű helyreállítás mappa és fájlok Windows virtuális gépek csak.<br/><br/> A VMware vapp alkalmazásokra nem támogatottak.<br/><br/> Linux rendszerű virtuális gépek helyreállítási van a teljes gépre.
 
 
-- Vegye figyelembe, hogy a fürtözött számítási feladatok biztonsági mentése a DPM/MABS DPM/MABS megegyező tartományban vagy gyermek vagy megbízható tartományban kell lennie.
+- Fürtözött számítási feladatok biztonsági mentése a DPM/MABS DPM/MABS megegyező tartományban vagy gyermek vagy megbízható tartományban kell lennie.
 - Az NTLM/Tanúsítványalapú hitelesítés használatával nem megbízható tartományokban vagy munkacsoportokban található adatok biztonsági mentéséhez.
 
 

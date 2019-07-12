@@ -6,13 +6,13 @@ author: vhorne
 ms.service: application-gateway
 ms.topic: article
 ms.date: 3/28/2019
-ms.author: amitsriva
-ms.openlocfilehash: a8b0ee159b1c4a4072ce5a86f9fb925744a415b3
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: victorh
+ms.openlocfilehash: 39317c0448168bc2ed8fdd0455a210254887d496
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67048715"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67655391"
 ---
 # <a name="back-end-health-diagnostic-logs-and-metrics-for-application-gateway"></a>Háttérrendszer állapota, diagnosztikai naplók és mérőszámok az Application Gateway számára
 
@@ -237,7 +237,7 @@ A hozzáférési napló jön létre, csak akkor, ha engedélyezte az egyes Appli
         "receivedBytes": 65,
         "sentBytes": 553,
         "timeTaken": 205,
-        "sslEnabled": "off"
+        "sslEnabled": "off",
         "sslCipher": "",
         "sslProtocol": "",
         "serverRouted": "104.41.114.59:80",
@@ -290,7 +290,7 @@ A teljesítmény napló jön létre, csak akkor, ha engedélyezte, az összes Ap
 A tűzfal napló jön létre, csak akkor, ha engedélyezte az összes application gateway az előző lépésekben leírtaknak megfelelően. Ez a napló azt is megköveteli, hogy a webalkalmazási tűzfallal egy alkalmazásátjárón van konfigurálva. Az adatok a storage-fiók, ha engedélyezte a naplózást a megadott tárolódik. A következő adatokat naplózza:
 
 
-|Érték  |Leírás  |
+|Value  |Leírás  |
 |---------|---------|
 |instanceId     | Alkalmazásátjárókhoz melyik tűzfal adatokat generált. A többpéldányos application Gateway egy példány egy sor van.         |
 |clientIp     |   A kérés eredeti IP-cím.      |
@@ -300,9 +300,9 @@ A tűzfal napló jön létre, csak akkor, ha engedélyezte az összes applicatio
 |ruleSetVersion     | A szabálykészlet használt verziója. Elérhető értékek a következők: 2.2.9-es és 3.0 verziót.     |
 |ruleId     | A riasztást kiváltó esemény szabály azonosítója.        |
 |message     | A riasztást kiváltó esemény felhasználóbarát üzenet. További részletek találhatók a Részletek területen.        |
-|action     |  A kérésre végrehajtott műveletet. Elérhető értékek a következők: letiltott és engedélyezett.      |
+|a művelet     |  A kérésre végrehajtott műveletet. Elérhető értékek a következők: letiltott és engedélyezett.      |
 |Hely     | A hely, amelyhez a napló jött létre. Jelenleg csak globális szabályokat mivel globális szerepel.|
-|Részletek     | A riasztást kiváltó esemény részletei.        |
+|details     | A riasztást kiváltó esemény részletei.        |
 |details.message     | A szabály leírását.        |
 |details.data     | Adott adatok találhatók. kérés, amely megfelel a szabálynak.         |
 |details.file     | A szabályt tartalmazó konfigurációs fájlt.        |

@@ -10,12 +10,12 @@ ms.subservice: design
 ms.date: 03/13/2019
 ms.author: anvang
 ms.reviewer: jrasnick
-ms.openlocfilehash: b97e27b86ecad1f7f87a6de4d43b09d69c167c6f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ab6efb858cc86495c687055ce3049cfc0cca7433
+ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61075328"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67807898"
 ---
 # <a name="use-maintenance-schedules-to-manage-service-updates-and-maintenance"></a>Szolgáltatási hírek és karbantartási kezelése a karbantartási ütemezések használatával
 
@@ -34,6 +34,9 @@ A funkció használatához szüksége lesz egy elsődleges és másodlagos ablak
 Integráció a Service Health-értesítések és a Resource Health ellenőrzése figyelő értesüljön a közelgő karbantartási tevékenység lehetővé teszi. Az új automation kihasználja az Azure Monitor. Eldöntheti, hogyan szeretne értesítést kapni a közelgő karbantartási események. Is döntse el, melyik automatizált folyamatok segítségével kezelheti az állásidő, és minimalizálja a műveletek.
 
 Egy 24 órás előzetes értesítés megelőzi az összes karbantartási események, az aktuális kivételt DW400c és alacsonyabb szinten. Példány állásidő minimalizálása érdekében győződjön meg arról, hogy az adattárház nincs hosszú ideig futó tranzakció a kiválasztott karbantartási időszak előtt. Amikor elindul a karbantartási, minden aktív munkamenet meg lesz szakítva. A nem véglegesített tranzakció vissza lesz állítva, és az adatraktár fog tapasztalni a kapcsolat rövid adatvesztést. Értesítést is küld az adattárházra karbantartás befejezése után azonnal.
+
+> [!NOTE]
+> Abban az esetben, ha a idő kritikus frissítés telepítéséről kötelesek vagyunk, speciális értesítési időpontokat jelentősen csökkenthető.
 
 Ha karbantartási kerül sor, de az SQL Data Warehouse nem tudja végrehajtani a karbantartási idő alatt előzetes értesítést kapott, kap egy lemondási értesítés. Karbantartási futása ezután úgy folytatódik a következő ütemezett karbantartási időszak során.
 

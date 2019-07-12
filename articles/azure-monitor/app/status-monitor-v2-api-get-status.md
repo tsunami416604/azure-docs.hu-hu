@@ -12,14 +12,14 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: tilee
-ms.openlocfilehash: 860226320fe1a546798cc462e4e5c06d4b9228cf
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e579db587d5f56aecd60f584ea4805dd4ac1bf98
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66514306"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67718358"
 ---
-# <a name="status-monitor-v2-api-get-applicationinsightsmonitoringstatus-v022-alpha"></a>A figyelő v2 API állapota: Get-ApplicationInsightsMonitoringStatus (v0.2.2-alpha)
+# <a name="status-monitor-v2-api-get-applicationinsightsmonitoringstatus-v040-alpha"></a>A figyelő v2 API állapota: Get-ApplicationInsightsMonitoringStatus (v0.4.0-alpha)
 
 Ez a cikk ismerteti, amely tagja a parancsmag a [Az.ApplicationMonitor PowerShell-modul](https://www.powershellgallery.com/packages/Az.ApplicationMonitor/).
 
@@ -30,25 +30,71 @@ Ez a cikk ismerteti, amely tagja a parancsmag a [Az.ApplicationMonitor PowerShel
 
 ## <a name="description"></a>Leírás
 
-Lehetővé teszi, hogy a használt PowerShell-moduljának hibaelhárítása.
+Ez a parancsmag az Állapotfigyelőt hibaelhárítási információkat biztosít.
+Ezt a parancsmagot használhatja a monitorozási állapot, a PowerShell-modul verziószámát vizsgálatához és a futó folyamat vizsgálata.
 Ez a parancsmag jelentést fájlverzió-információkat és figyeléséhez szükséges kulcs fájlokkal kapcsolatos információk.
-További paraméterek nyújtanak további jelentések figyelési állapotát.
 
 > [!IMPORTANT] 
 > Ez a parancsmag megköveteli egy PowerShell-munkamenetet rendszergazdai jogosultságokkal rendelkezik.
 
 ## <a name="examples"></a>Példák
 
+### <a name="example-application-status"></a>Példa: Az alkalmazás állapota
 
-### <a name="example-basic-information"></a>Példa: Alapvető adatok
-
-Futtatás `Get-ApplicationInsightsMonitoringStatus` az aktuális modult információit jeleníti meg:
+Futtassa a parancsot `Get-ApplicationInsightsMonitoringStatus` webhelyek figyelési állapot megjelenítéséhez.
 
 ```
-PS C:\> Get-ApplicationInsightsMonitoringStatus
+Machine Identifier:
+PS C:\Windows\system32> Get-ApplicationInsightsMonitoringStatus
+Machine Identifier:
+811D43F7EC807E389FEA2E732381288ACCD70AFFF9F569559AC3A75F023FA639
+
+IIS Websites:
+
+SiteName               : Default Web Site
+ApplicationPoolName    : DefaultAppPool
+SiteId                 : 1
+SiteState              : Stopped
+
+SiteName               : DemoWebApp111
+ApplicationPoolName    : DemoWebApp111
+SiteId                 : 2
+SiteState              : Started
+ProcessId              : not found
+
+SiteName               : DemoWebApp222
+ApplicationPoolName    : DemoWebApp222
+SiteId                 : 3
+SiteState              : Started
+ProcessId              : 2024
+Instrumented           : true
+InstrumentationKey     : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxx123
+
+SiteName               : DemoWebApp333
+ApplicationPoolName    : DemoWebApp333
+SiteId                 : 4
+SiteState              : Started
+ProcessId              : 5184
+AppAlreadyInstrumented : true
+```
+
+Ebben a példában;
+- **A gép azonosítója** a célkiszolgáló egyedi azonosításához használt névtelen azonosító. Ha támogatási kérelmet hoz létre, a naplók keresése a kiszolgáló ezt az Azonosítót kell.
+- **Alapértelmezett webhely** le van állítva, az IIS-ben
+- **DemoWebApp111** az IIS-ben elindult, de nem kapott, bármilyen kérelmeket. Ez a jelentés azt mutatja, hogy egyetlen futó folyamat (folyamatazonosító: nem található).
+- **DemoWebApp222** fut, és a megfigyelés alatt áll (Instrumented: igaz). A felhasználói konfiguráció alapján a kialakítási kulcsot xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxx123 megfelelést ehhez a helyhez.
+- **DemoWebApp333** rendelkezik lett manuálisan kialakítva az Application Insights SDK használatával. Az állapotfigyelő észlelt az SDK-t, és nem figyeli a webhelyhez.
+
+
+### <a name="example-powershell-module-information"></a>Példa: PowerShell modul információ
+
+Futtassa a parancsot `Get-ApplicationInsightsMonitoringStatus -PowerShellModule` az aktuális modult információit jeleníti meg:
+
+```
+PS C:\> Get-ApplicationInsightsMonitoringStatus -PowerShellModule
 
 PowerShell Module version:
-0.2.2-alpha
+0.4.0-alpha
 
 Application Insights SDK version:
 2.9.0.3872
@@ -60,21 +106,38 @@ PowerShell Module Directory:
 C:\Program Files\WindowsPowerShell\Modules\Az.ApplicationMonitor\0.2.2\content\PowerShell
 
 Runtime Paths:
-ParentDirectory: C:\Program Files\WindowsPowerShell\Modules\Az.ApplicationMonitor\0.2.2\content Exists: False
-ConfigurationPath: C:\Program Files\WindowsPowerShell\Modules\Az.ApplicationMonitor\0.2.2\content\applicationInsights.ikey.config Exists: True
-ManagedHttpModuleHelperPath: C:\Program Files\WindowsPowerShell\Modules\Az.ApplicationMonitor\0.2.2\content\Runtime\Microsoft.AppInsights.IIS.ManagedHttpModuleHelper.dll Exists: True
-RedfieldIISModulePath: C:\Program Files\WindowsPowerShell\Modules\Az.ApplicationMonitor\0.2.2\content\Runtime\Microsoft.ApplicationInsights.RedfieldIISModule.dll Exists: True
-InstrumentationEngine86Path: C:\Program Files\WindowsPowerShell\Modules\Az.ApplicationMonitor\0.2.2\content\Instrumentation32\MicrosoftInstrumentationEngine_x86.dll Exists: True
-InstrumentationEngine64Path: C:\Program Files\WindowsPowerShell\Modules\Az.ApplicationMonitor\0.2.2\content\Instrumentation64\MicrosoftInstrumentationEngine_x64.dll Exists: True
-InstrumentationEngineExtensionHost86Path: C:\Program Files\WindowsPowerShell\Modules\Az.ApplicationMonitor\0.2.2\content\Instrumentation32\Microsoft.ApplicationInsights.ExtensionsHost_x86.dll Exists: True
-InstrumentationEngineExtensionHost64Path: C:\Program Files\WindowsPowerShell\Modules\Az.ApplicationMonitor\0.2.2\content\Instrumentation64\Microsoft.ApplicationInsights.ExtensionsHost_x64.dll Exists: True
-InstrumentationEngineExtensionConfig86Path: C:\Program Files\WindowsPowerShell\Modules\Az.ApplicationMonitor\0.2.2\content\Instrumentation32\Microsoft.InstrumentationEngine.Extensions.config Exists: True
-InstrumentationEngineExtensionConfig64Path: C:\Program Files\WindowsPowerShell\Modules\Az.ApplicationMonitor\0.2.2\content\Instrumentation64\Microsoft.InstrumentationEngine.Extensions.config Exists: True
-ApplicationInsightsSdkPath: C:\Program Files\WindowsPowerShell\Modules\Az.ApplicationMonitor\0.2.2\content\Runtime\Microsoft.ApplicationInsights.dll Exists: True
+ParentDirectory (Exists: True)
+C:\Program Files\WindowsPowerShell\Modules\Az.ApplicationMonitor\content
 
+ConfigurationPath (Exists: True)
+C:\Program Files\WindowsPowerShell\Modules\Az.ApplicationMonitor\content\applicationInsights.ikey.config
 
-Machine Identifier:
-0123456789ABCDEF0123456789ABCDEF0123456789ABCDEF0123456789ABCDEF
+ManagedHttpModuleHelperPath (Exists: True)
+C:\Program Files\WindowsPowerShell\Modules\Az.ApplicationMonitor\content\Runtime\Microsoft.AppInsights.IIS.ManagedHttpModuleHelper.dll
+
+RedfieldIISModulePath (Exists: True)
+C:\Program Files\WindowsPowerShell\Modules\Az.ApplicationMonitor\content\Runtime\Microsoft.ApplicationInsights.RedfieldIISModule.dll
+
+InstrumentationEngine86Path (Exists: True)
+C:\Program Files\WindowsPowerShell\Modules\Az.ApplicationMonitor\content\Instrumentation32\MicrosoftInstrumentationEngine_x86.dll
+
+InstrumentationEngine64Path (Exists: True)
+C:\Program Files\WindowsPowerShell\Modules\Az.ApplicationMonitor\content\Instrumentation64\MicrosoftInstrumentationEngine_x64.dll
+
+InstrumentationEngineExtensionHost86Path (Exists: True)
+C:\Program Files\WindowsPowerShell\Modules\Az.ApplicationMonitor\content\Instrumentation32\Microsoft.ApplicationInsights.ExtensionsHost_x86.dll
+
+InstrumentationEngineExtensionHost64Path (Exists: True)
+C:\Program Files\WindowsPowerShell\Modules\Az.ApplicationMonitor\content\Instrumentation64\Microsoft.ApplicationInsights.ExtensionsHost_x64.dll
+
+InstrumentationEngineExtensionConfig86Path (Exists: True)
+C:\Program Files\WindowsPowerShell\Modules\Az.ApplicationMonitor\content\Instrumentation32\Microsoft.InstrumentationEngine.Extensions.config
+
+InstrumentationEngineExtensionConfig64Path (Exists: True)
+C:\Program Files\WindowsPowerShell\Modules\Az.ApplicationMonitor\content\Instrumentation64\Microsoft.InstrumentationEngine.Extensions.config
+
+ApplicationInsightsSdkPath (Exists: True)
+C:\Program Files\WindowsPowerShell\Modules\Az.ApplicationMonitor\content\Runtime\Microsoft.ApplicationInsights.dll
 ```
 
 ### <a name="example-runtime-status"></a>Példa: Futtatókörnyezetbeli állapot
@@ -119,14 +182,18 @@ listdlls64.exe -accepteula w3wp
 
 ### <a name="no-parameters"></a>(Nincsenek paraméterei)
 
-Alapértelmezés szerint ez a parancsmag a verziószámok és -figyeléshez szükséges DLL-elérési utak jelentést.
+Alapértelmezés szerint ez a parancsmag jelentést küld a webes alkalmazások figyelési állapotát.
+Ez a beállítás használatával tekintse át, ha az alkalmazás tagolása sikeresen.
+Emellett áttekintheti az eszközkulcsot való megfelelést, amely a hely.
 
+
+### <a name="-powershellmodule"></a>-PowerShellModule
+**Választható**. Használja ezt a kapcsolót jelenti a verziószámok és -figyeléshez szükséges DLL-elérési utak.
 Használja ezt a beállítást, ha szeretné azonosítani minden olyan DLL, beleértve az Application Insights SDK-verzióját.
-
 
 ### <a name="-inspectprocess"></a>-InspectProcess
 
-**Választható**. Ez a paraméter használatával jelentést, hogy az IIS fut-e.
+**Választható**. Használja ezt a kapcsolót jelenti, hogy fut-e az IIS.
 Annak megállapítása, hogy a szükséges DLL-ek betöltődik az IIS-modul a külső eszközöket is le fogja tölteni.
 
 

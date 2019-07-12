@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: sample
 ms.date: 05/23/2019
 ms.author: mjbrown
-ms.openlocfilehash: b5eb57562dac498c0e5bf2960007f52ad1117ac2
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 618e7e19b20f361aa0a8c668e9621a29db43772d
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66244773"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67797756"
 ---
 # <a name="configure-time-to-live-in-azure-cosmos-db"></a>Az Azure Cosmos DB élettartam konfigurálása
 
@@ -35,6 +35,11 @@ Használja az alábbi lépéseket egy tárolón lejárat nélkül élettartam en
    * Kattintson a **Mentés** gombra a módosítások mentéséhez.
 
    ![Az Azure Portalon élettartam konfigurálása](./media/how-to-time-to-live/how-to-time-to-live-portal.png)
+
+
+- Amikor DefaultTimeToLive null értékű majd az élő idő ki van kapcsolva
+- Ha DefaultTimeToLive-e a -1, majd az idő élő beállítás be van kapcsolva (alapértelmezett)
+- Ha DefaultTimeToLive bármely más Int érték (0) kivételével az élő beállítás van
 
 ## <a name="enable-time-to-live-on-a-container-using-sdk"></a>Egy tároló, SDK-val élettartam engedélyezése
 

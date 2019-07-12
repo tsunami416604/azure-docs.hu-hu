@@ -3,15 +3,15 @@ title: Hogyan lehet leállítani a Microsoft Azure FXT Edge Filer egység
 description: Indítási és a egy Azure FXT Edge Filer csomópont biztonságos leállítás eljárásai
 author: ekpgh
 ms.service: fxt-edge-filer
-ms.topic: how-to
+ms.topic: conceptual
 ms.date: 07/01/2019
 ms.author: v-erkell
-ms.openlocfilehash: 8d779547040da9855409d3408827af2e4acd17a7
-ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
+ms.openlocfilehash: 6921e7a52e43a63055b59242c02cc6ca3b8c5313
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67542863"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67620101"
 ---
 # <a name="how-to-safely-power-off-azure-fxt-edge-filer-hardware"></a>Hogyan lehet Azure FXT Edge Filer hardver biztonságosan kikapcsolása
 

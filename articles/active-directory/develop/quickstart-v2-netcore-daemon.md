@@ -17,12 +17,12 @@ ms.date: 04/10/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d64c13a43d1e74e4372e57cf6d5c3054f5effea4
-ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
+ms.openlocfilehash: a42cfe1374f3defdf6ed8acc828e6c7e446588bc
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67540705"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67595146"
 ---
 # <a name="quickstart-acquire-a-token-and-call-microsoft-graph-api-from-a-console-app-using-apps-identity"></a>Gyors útmutató: Egy token beszerzéséhez és a Microsoft Graph API hívása egy konzolalkalmazás használatával az alkalmazás-identitást
 
@@ -78,7 +78,7 @@ Ez a rövid útmutatóhoz [.NET Core 2.2](https://www.microsoft.com/net/download
 > > [!div id="appconfigured" class="alert alert-info"]
 > > ![Már konfigurált](media/quickstart-v2-windows-desktop/green-check.png) Az alkalmazása már konfigurálva van ezekkel az attribútumokkal.
 
-#### <a name="step-2-download-your-visual-studio-project"></a>2\. lépés: A Visual Studio-projekt letöltése
+#### <a name="step-2-download-your-visual-studio-project"></a>2\. lépés: A Visual Studio-projekt letöltése
 
 [A Visual Studio-projekt letöltése](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2/archive/msal3x.zip)
 
@@ -96,7 +96,7 @@ Ez a rövid útmutatóhoz [.NET Core 2.2](https://www.microsoft.com/net/download
     > > [!div renderon="portal" id="certandsecretspage" class="sxs-lookup"]
     > > [Hozzon létre egy új titkos ügyfélkulcsot]()
     
-    > [!div renderon="portal"]
+    > [!div class="sxs-lookup" renderon="portal"]
     > > [!NOTE]
     > > Ez a rövid útmutató Enter_the_Supported_Account_Info_Here támogatja.
     

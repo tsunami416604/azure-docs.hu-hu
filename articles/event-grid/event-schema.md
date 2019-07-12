@@ -8,12 +8,12 @@ ms.service: event-grid
 ms.topic: reference
 ms.date: 01/20/2019
 ms.author: babanisa
-ms.openlocfilehash: 4a795221790a9d56bcbfe30a50b0c838fb8d9e56
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8a8193d21bbc1d0af933657705e605ce31589cbf
+ms.sourcegitcommit: 1572b615c8f863be4986c23ea2ff7642b02bc605
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66304252"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67785851"
 ---
 # <a name="azure-event-grid-event-schema"></a>Az Azure Event Grid-esemény séma
 
@@ -85,14 +85,14 @@ Az összes esemény rendelkezik ugyanazokat az alábbi felső szintű adatokat:
 
 | Tulajdonság | Típus | Leírás |
 | -------- | ---- | ----------- |
-| topic | string | A forrás teljes erőforrás elérési útja. Ez a mező nem írható. Event Grid biztosítja ezt az értéket. |
-| subject | string | Az esemény tárgya közzétevő által megadott elérési útja. |
-| eventType | string | Ehhez eseményre adatforráshoz regisztrált esemény típusok egyikét. |
-| eventTime | string | Az esemény akkor jön létre az idő alapján a szolgáltató UTC idő. |
-| id | string | Az esemény egyedi azonosítója. |
-| data | objektum | Eseményadatok adott erőforrás-szolgáltatónál. |
-| dataVersion | string | Az adatobjektum sémaverziója. A közzétevő a sémaverziót határozza meg. |
-| metadataVersion | string | Az esemény-metaadatok sémaverziója. Event Grid sémáját, a legfelső szintű tulajdonságait határozza meg. Event Grid biztosítja ezt az értéket. |
+| topic | Karakterlánc | A forrás teljes erőforrás elérési útja. Ez a mező nem írható. Event Grid biztosítja ezt az értéket. |
+| subject | sztring | Az esemény tárgya közzétevő által megadott elérési útja. |
+| eventType | Karakterlánc | Ehhez eseményre adatforráshoz regisztrált esemény típusok egyikét. |
+| eventTime | sztring | Az esemény akkor jön létre az idő alapján a szolgáltató UTC idő. |
+| id | sztring | Az esemény egyedi azonosítója. |
+| data | object | Eseményadatok adott erőforrás-szolgáltatónál. |
+| dataVersion | Karakterlánc | Az adatobjektum sémaverziója. A közzétevő a sémaverziót határozza meg. |
+| metadataVersion | sztring | Az esemény-metaadatok sémaverziója. Event Grid sémáját, a legfelső szintű tulajdonságait határozza meg. Event Grid biztosítja ezt az értéket. |
 
 Az az objektum tulajdonságainak kapcsolatos további információkért tekintse meg az eseményforrás:
 
@@ -104,6 +104,7 @@ Az az objektum tulajdonságainak kapcsolatos további információkért tekintse
 * [Médiaszolgáltatások](../media-services/latest/media-services-event-schemas.md?toc=%2fazure%2fevent-grid%2ftoc.json)
 * [Erőforráscsoportok (műveletek)](event-schema-resource-groups.md)
 * [Szolgáltatásbusz](event-schema-service-bus.md)
+* [Azure SignalR](event-schema-azure-signalr.md)
 
 Egyéni témakörök az esemény-közzétevő határozza meg az objektum. A legfelső szintű adatokat standard erőforrás által definiált események, ugyanazokat a mezőket kell rendelkeznie.
 

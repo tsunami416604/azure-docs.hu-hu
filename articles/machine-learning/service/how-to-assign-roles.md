@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.reviewer: jmartens
 ms.author: larryfr
 author: Blackmist
-ms.date: 02/20/2019
+ms.date: 07/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: e062fd73f2baeb4948430b13e0caa1f5c0b3f066
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.openlocfilehash: 4a5723b2ffbd34fd7cf022bf747b4504b3bdac53
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67341118"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67797655"
 ---
 # <a name="manage-access-to-an-azure-machine-learning-workspace"></a>Az Azure Machine Learning-munkaterület-hozzáférés kezelése
 
@@ -26,7 +26,7 @@ Ebből a cikkből megismerheti, hogyan kezelheti az Azure Machine Learning-munka
 
 Az Azure Machine Learning-munkaterület egy Azure-erőforrás. Egyéb Azure-erőforrások, például egy új Azure Machine Learning-munkaterület létrehozásakor azt együttműködik a három alapértelmezett szerepkör. Felhasználók hozzáadása a munkaterületet, és hozzárendelheti azokat a beépített szerepkörök egyike.
 
-| Szerepkör | Hozzáférési szint |
+| Role | Hozzáférési szint |
 | --- | --- |
 | **Olvasó** | A munkaterület csak olvasási műveleteket. Olvasói is listázása és megtekintése eszközök a munkaterületen, de nem létrehozása vagy frissítése ezeknek az eszközöknek. |
 | **Közreműködő** | Megtekintése, létrehozása, szerkesztése vagy törlése (ha vannak ilyenek) eszközök a munkaterületen. Például közreműködők is kísérlet létrehozása, létrehozása vagy csatolása egy számítási fürt, küldje el a futtató és egy webszolgáltatás üzembe helyezése. |

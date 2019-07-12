@@ -8,14 +8,14 @@ manager: gwallace
 ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: reference
-ms.date: 02/25/2019
+ms.date: 07/08/2019
 ms.author: cshoe
-ms.openlocfilehash: 88ffd6ec24ed19dd3b1e57277884c8759cdac1f9
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: 5969c3e0d270b45347f8132b2d655ba2e56cb2c0
+ms.sourcegitcommit: c0419208061b2b5579f6e16f78d9d45513bb7bbc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67480329"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67625895"
 ---
 # <a name="register-azure-functions-binding-extensions"></a>Az Azure Functions kötési bővítményeket regisztrálása
 
@@ -33,8 +33,8 @@ Az alábbi táblázat azt jelzi, hogy mikor és hogyan regisztrálhatja a köté
 |-------------------------|------------------------------------|------------------------------------|
 |Azure Portal|Automatikus|Automatikus|
 |Nem – .NET-nyelveket vagy a helyi Azure Core Tools-fejlesztés|Automatikus|[Azure Functions Core Tools és bővítmény csomagok használata](#extension-bundles)|
-|C#használatával a Visual Studio 2019 osztálytár|[NuGet-eszközök](#c-class-library-with-visual-studio-2019)|[NuGet-eszközök](#c-class-library-with-visual-studio-2019)|
-|A Visual Studio Code C# osztálytár|–|[A .NET Core parancssori felület használata](#c-class-library-with-visual-studio-code)|
+|C#a Visual Studio használatával osztálytár|[NuGet-eszközök](#vs)|[NuGet-eszközök](#vs)|
+|A Visual Studio Code C# osztálytár|–|[A .NET Core parancssori felület használata](#vs-code)|
 
 ## <a name="extension-bundles"></a>A helyi fejlesztési bővítmény kötegek
 
@@ -69,9 +69,9 @@ Az aktuális készletét a alapértelmezett csomagazonosító alapján telepíte
 
 <a name="local-csharp"></a>
 
-## <a name="c-class-library-with-visual-studio-2019"></a>C\# a Visual Studio 2019 osztálytár
+## <a name="vs"></a> C\# osztálytár a Visual Studióval
 
-A **Visual Studio 2019**, csomagokat a Package Manager konzol használatával lehet telepíteni a [Install-Package](https://docs.microsoft.com/nuget/tools/ps-ref-install-package) parancsot, az alábbi példában látható módon:
+A **Visual Studio**, csomagokat a Package Manager konzol használatával lehet telepíteni a [Install-Package](https://docs.microsoft.com/nuget/tools/ps-ref-install-package) parancsot, az alábbi példában látható módon:
 
 ```powershell
 Install-Package Microsoft.Azure.WebJobs.Extensions.ServiceBus -Version <TARGET_VERSION>
@@ -81,24 +81,25 @@ Egy adott kötéshez használt csomag nevét a áttekintésével foglalkozó cik
 
 Cserélje le `<TARGET_VERSION>` a példában a csomaghoz, egy adott verzióját a például `3.0.0-beta5`. Érvényes verzió szerepel az egyes csomagot oldalakon [NuGet.org](https://nuget.org). A főbb verziók, hogy a Functions futtatókörnyezete megfelelnek a referenciacikk a kötési 1.x vagy 2.x vannak megadva.
 
-## <a name="c-class-library-with-visual-studio-code"></a>C# osztálytár Visual Studio Code használatával
+Ha `Install-Package` való hivatkozáshoz egy kötést, nincs szüksége [bővítmény csomagjaiból](#extension-bundles). Ezt a megközelítést a Visual studióban fejlesztett osztálykódtárakat jellemző.
+
+## <a name="vs-code"></a> C# osztálytár Visual Studio Code használatával
 
 > [!NOTE]
 > Azt javasoljuk, [bővítmény csomagjaiból](#extension-bundles) szeretné, hogy automatikusan telepítse kompatibilis bővítménycsomagok kötelező funkciók.
 
-A **Visual Studio Code**, a csomagok telepítése egy C# hordozhatóosztálytár-projektjének a parancssor használatával a [dotnet-csomag hozzáadása](https://docs.microsoft.com/dotnet/core/tools/dotnet-add-package) parancsot a .NET Core parancssori felületen, a következő példában látható módon:
+A **Visual Studio Code**, a csomagok telepítése egy C# hordozhatóosztálytár-projektjének a parancssor használatával a [dotnet-csomag hozzáadása](https://docs.microsoft.com/dotnet/core/tools/dotnet-add-package) a .NET Core parancssori parancsot. A következő példa bemutatja, hogyan adhat hozzá kötéseket:
 
 ```terminal
-dotnet add package Microsoft.Azure.WebJobs.Extensions.ServiceBus --version <TARGET_VERSION>
+dotnet add package Microsoft.Azure.WebJobs.Extensions.<BINDING_TYPE_NAME> --version <TARGET_VERSION>
 ```
 
 A .NET Core CLI csak akkor használható, az Azure Functions 2.x fejlesztéséhez.
 
-A csomag használatára egy adott kötéshez neve a áttekintésével foglalkozó cikkben megtalálható a kötéshez. Egy vonatkozó példáért tekintse meg a [csomagok a Service Bus kötés áttekintésével foglalkozó cikkben szakaszában](functions-bindings-service-bus.md#packages---functions-1x).
+Cserélje le `<BINDING_TYPE_NAME>` a csomagot a kívánt kötés a áttekintésével foglalkozó cikkben megadott nevével. A kívánt kötés áttekintésével foglalkozó cikkben talál a [támogatott kötések listája](./functions-triggers-bindings.md#supported-bindings).
 
 Cserélje le `<TARGET_VERSION>` a példában a csomaghoz, egy adott verzióját a például `3.0.0-beta5`. Érvényes verzió szerepel az egyes csomagot oldalakon [NuGet.org](https://nuget.org). A főbb verziók, hogy a Functions futtatókörnyezete megfelelnek a referenciacikk a kötési 1.x vagy 2.x vannak megadva.
 
 ## <a name="next-steps"></a>További lépések
 > [!div class="nextstepaction"]
 > [Azure függvény eseményindítót és a kötési – példa](./functions-bindings-example.md)
-

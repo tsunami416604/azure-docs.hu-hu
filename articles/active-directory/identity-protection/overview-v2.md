@@ -17,12 +17,12 @@ ms.date: 10/03/2018
 ms.author: joflore
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2b4f8caf03aad339cea3c3fcc732fc1af6086ea7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0f6c2f36e1061243851b37da47659aaf7a18e8d6
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67108888"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67673004"
 ---
 # <a name="what-is-azure-active-directory-identity-protection-refreshed"></a>Mi az Azure Active Directory Identity Protection (frissíthetők)?
 
@@ -119,7 +119,7 @@ A felhasználói kockázat figyelembe véve a felhasználóhoz társított össz
 
 ## <a name="how-identity-protection-detects-risk"></a>Hogyan észleli az Identity Protection a kockázat  
 
-Azure ad-ben a gépi tanulási észlelheti a rendellenességeket és gyanús tevékenységek, mindkét észlelhető a jelek használata valós idejű bejelentkezések, valamint során nem valós idejű jeleket, kapcsolódó felhasználókat, és jelentkezzen be tevékenységeik. Ezen adatok alapján Identity Protection kiszámítja egy valós idejű bejelentkezési kockázat minden alkalommal, amikor egy felhasználó hitelesíti magát, és a egy általános felhasználói kockázati szint reach felhasználó meghatározásához. Identity Protection automatikusan reagálhat az kockázati észlelések konfigurálása Identity Protection felhasználói kockázat és bejelentkezési kockázati házirend teszi lehetővé.  
+Azure ad-ben a gépi tanulási észlelheti a rendellenességeket és gyanús tevékenységek, mindkét észlelhető a jelek használata valós idejű bejelentkezések, valamint során nem valós idejű jeleket, kapcsolódó felhasználókat, és jelentkezzen be tevékenységeik. Ezen adatok alapján Identity Protection kiszámítja egy valós idejű bejelentkezési kockázat minden alkalommal, amikor egy felhasználó hitelesíti magát, valamint minden felhasználó egy általános felhasználói kockázati szint meghatározása. Identity Protection automatikusan reagálhat az kockázati észlelések konfigurálása Identity Protection felhasználói kockázat és bejelentkezési kockázati házirend teszi lehetővé.  
 
  
 
@@ -194,7 +194,7 @@ Az Identity Protection használatának megkezdéséhez először konfigurálja e
 
 Identity Protection 3 szerepkört a felügyeleti tevékenységek, az üzemelő példány körüli elosztása érdekében az Azure AD-ben támogatja: 
 
-| Szerepkör | Teheti meg | Nem hajtható végre |
+| Role | Teheti meg | Nem hajtható végre |
 | --- | --- | --- |
 | Globális rendszergazda | Teljes hozzáférés az Identity Protection előkészítése Identity Protection | |
 | Biztonsági rendszergazda | Teljes hozzáférés az Identity Protection | Identity Protection előkészítése, a felhasználó a jelszavak alaphelyzetbe állítása |

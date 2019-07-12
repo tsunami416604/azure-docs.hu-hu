@@ -6,13 +6,13 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
-ms.date: 12/19/2018
-ms.openlocfilehash: 896a5d13279c15f0035f214da3d5a7d7e6f1861f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 07/10/2019
+ms.openlocfilehash: a894052e54bd1ca9f8316342f714074c92753448
+ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60758415"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67806340"
 ---
 # <a name="use-a-jupyter-notebook-and-kqlmagic-extension-to-analyze-data-in-azure-data-explorer"></a>Adatok elemzése az Azure Data Explorer egy Jupyter Notebookot, és Kqlmagic bővítmény használatával
 
@@ -164,6 +164,9 @@ Számos elemzési forgatókönyvek érdemes létrehozni, amely számos lekérdez
     ```python
     %kql --help "help"
     ```
+
+> [!TIP]
+> Az összes elérhető konfigurációk használata szeretne információt kapni `%config KQLmagic`. Kusto-hibák, például kapcsolati problémák és helytelen lekérdezéseket, rögzítése és hibáinak elhárítása használja `%config Kqlmagic.short_errors=False`
 
 ## <a name="next-steps"></a>További lépések
 

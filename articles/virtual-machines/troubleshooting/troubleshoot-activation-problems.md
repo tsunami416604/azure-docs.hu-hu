@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 11/15/2018
 ms.author: genli
-ms.openlocfilehash: bc058cb3f27545b9e4ad8ef1062ca4d2fa4c9fa8
-ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
+ms.openlocfilehash: 46f52cb0478b47f8f6b45356815bc4c74e7cc800
+ms.sourcegitcommit: 0ebc62257be0ab52f524235f8d8ef3353fdaf89e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67155154"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67724123"
 ---
 # <a name="troubleshoot-azure-windows-virtual-machine-activation-problems"></a>Azure Windows virtuális gép aktiválással kapcsolatos problémák elhárítása
 
@@ -84,7 +84,6 @@ A virtuális Gépet, amely egy egyéni lemezkép alapján jön létre konfigurá
 
 3. Győződjön meg arról, hogy a virtuális gép úgy van konfigurálva, hogy a megfelelő Azure KMS-kiszolgálót használja. Ehhez futtassa a következő parancsot:
   
-
     ```powershell
     Invoke-Expression "$env:windir\system32\cscript.exe $env:windir\system32\slmgr.vbs /skms kms.core.windows.net:1688"
     ```
@@ -93,29 +92,26 @@ A virtuális Gépet, amely egy egyéni lemezkép alapján jön létre konfigurá
 
 4. Győződjön meg arról, hogy a KMS-kiszolgálóval való kapcsolat Psping használatával. Lépjen abba a mappába, amelybe kibontotta a letöltött Pstools.zip fájlt, majd futtassa a következőt:
   
-
     ```
     \psping.exe kms.core.windows.net:1688
     ```
-
-  
    Győződjön meg arról, hogy a kimenet utolsó előtti sorában a következők láthatók: Elküldött = 4, a fogadott = 4, elveszett = 0 (0 %-os adatveszteség).
 
    Ha elveszett nagyobb, mint 0 (nulla), a virtuális gép nem rendelkezik kapcsolattal a KMS-kiszolgálóra. Ebben a helyzetben a virtuális gép egy virtuális hálózaton van, és rendelkezik egy egyéni DNS-kiszolgáló, meg kell győződnie arról, hogy a DNS-kiszolgáló el tudja kms.core.windows.net megoldásához. Vagy a DNS-kiszolgáló módosítsa, hogy kms.core.windows.net megoldásához.
 
    Figyelje meg, hogy ha eltávolítja az összes DNS-kiszolgáló egy virtuális hálózatot, virtuális gépek az Azure belső DNS-szolgáltatás használhat. Ez a szolgáltatás fel tudja oldani kms.core.windows.net.
   
-Emellett győződjön meg arról, hogy a Vendég tűzfala nincs konfigurálva, hogy megakadályozza a aktiválási kísérletek.
+    Győződjön meg arról, hogy a KMS-végpontra az 1688-as portot a kimenő hálózati forgalom nem blokkolja a tűzfal a virtuális gépen is.
 
-1. Miután kms.core.windows.net sikeres kapcsolat ellenőrzéséhez futtassa a következő parancsot, hogy emelt szintű Windows PowerShell-parancssorba. Ez a parancs több alkalommal megpróbálja elvégezni az aktiválást.
+5. Miután kms.core.windows.net sikeres kapcsolat ellenőrzéséhez futtassa a következő parancsot, hogy emelt szintű Windows PowerShell-parancssorba. Ez a parancs több alkalommal megpróbálja elvégezni az aktiválást.
 
     ```powershell
-    1..12 | ForEach-Object { Invoke-Expression “$env:windir\system32\cscript.exe $env:windir\system32\slmgr.vbs /ato” ; start-sleep 5 }
+    1..12 | ForEach-Object { Invoke-Expression "$env:windir\system32\cscript.exe $env:windir\system32\slmgr.vbs /ato" ; start-sleep 5 }
     ```
 
-A sikeres aktiválás az alábbihoz hasonló információkat ad vissza:
-
-**Windows(R), ServerDatacenter edition (12345678-1234-1234-1234-12345678) aktiválása... A termék aktiválása sikeres.**
+    A sikeres aktiválás az alábbihoz hasonló információkat ad vissza:
+    
+    **Windows(R), ServerDatacenter edition (12345678-1234-1234-1234-12345678) aktiválása...  A termék aktiválása sikeres.**
 
 ## <a name="faq"></a>GYIK 
 

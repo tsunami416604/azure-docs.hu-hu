@@ -9,12 +9,12 @@ services: iot-hub
 ms.devlang: nodejs
 ms.topic: conceptual
 ms.date: 06/28/2017
-ms.openlocfilehash: f60236163cd88822c384bd356a1770d616639174
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d52e0e1093668a65e76bd6600329619240aee182
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65596623"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67612593"
 ---
 # <a name="upload-files-from-your-device-to-the-cloud-with-iot-hub"></a>Töltse fel a fájlokat az eszközről a felhőbe, az IoT hubbal
 
@@ -22,16 +22,16 @@ ms.locfileid: "65596623"
 
 Ebben az oktatóanyagban található kódot használja fel a [küldése a felhőből az eszközre irányuló üzenetek IoT hubbal való](iot-hub-node-node-c2d.md) megmutatjuk, hogyan használható az oktatóanyagban a [fájl feltöltése IoT Hub képességeiről](iot-hub-devguide-file-upload.md) feltölteni egy fájlt [az Azure blob tárolási](../storage/index.yml). Ez az oktatóanyag a következőket mutatja be:
 
-- Biztonságosan adja meg az eszköz egy Azure blob-URI-fájl feltöltése.
-- 
-- Az IoT Hub fájl feltöltése értesítések használatával elindíthatja a feldolgozása a fájlt az alkalmazás háttérrendszere.
+* Biztonságosan adja meg az eszköz egy Azure blob-URI-fájl feltöltése.
 
-A [IoT Hub használatának első lépései](quickstart-send-telemetry-node.md) az oktatóanyag bemutatja az IoT Hub alapvető eszköz-felhő üzenetkezelési funkcióit. Bizonyos esetekben azonban leképezése nem tudja az eszközöket az IoT Hub elfogad viszonylag kis eszköz – felhő üzenetek küldése az adatok egyszerűen. Példa:
+* Az IoT Hub fájl feltöltése értesítések használatával elindíthatja a feldolgozása a fájlt az alkalmazás háttérrendszere.
 
-*  Nagy méretű képeket tartalmazó fájlok
-*  Videók
-*  Rezgés adatok mintavételezése, nagyon gyakori
-*  Valamilyen előre feldolgozott adatokat.
+A [telemetriát küldjön az eszközről az IoT hub](quickstart-send-telemetry-node.md) a rövid útmutató ismerteti az IoT Hub alapvető eszköz-felhő üzenetkezelési funkcióit. Bizonyos esetekben azonban leképezése nem tudja az eszközöket az IoT Hub elfogad viszonylag kis eszköz – felhő üzenetek küldése az adatok egyszerűen. Példa:
+
+* Nagy méretű képeket tartalmazó fájlok
+* Videók
+* Rezgés adatok mintavételezése, nagyon gyakori
+* Valamilyen előre feldolgozott adatokat.
 
 Ezek a fájlok jellemzően a felhőben, mint például az eszközök használatával feldolgozott kötegelt [Azure Data Factory](../data-factory/introduction.md) vagy a [Hadoop](../hdinsight/index.yml) stack. Ha egy eszközről kell felvidéki fájlok, biztonságának és megbízhatóságának IoT-központ továbbra is használhatja.
 
@@ -216,6 +216,8 @@ A portál használatával beállított storage-tárolót a feltöltött fájl me
 
 Ebben az oktatóanyagban megtudhatta, hogyan egyszerűsítheti a fájlok feltöltése eszközökről a fájl feltöltése képességeit az IoT Hub használatával. Folytathatja az IoT hub szolgáltatásainak, és az ezekben a cikkekben forgatókönyvek megismerése:
 
-*  [IoT hub létrehozása programozott módon](iot-hub-rm-template-powershell.md)
-*  [Bevezetés a C SDK-t](iot-hub-device-sdk-c-intro.md)
-*  [Azure IoT SDK-k](iot-hub-devguide-sdks.md)
+* [IoT hub létrehozása programozott módon](iot-hub-rm-template-powershell.md)
+
+* [Bevezetés a C SDK-t](iot-hub-device-sdk-c-intro.md)
+
+* [Azure IoT SDK-k](iot-hub-devguide-sdks.md)

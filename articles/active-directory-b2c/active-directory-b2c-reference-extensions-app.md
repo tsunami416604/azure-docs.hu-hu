@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 9/06/2017
+ms.date: 09/06/2017
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: d9fbceee8fb0e565df668406f09df27272318dd0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e5d38d8d791c6b932d8a28a898f2e2b80caff7ac
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66509483"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67654075"
 ---
 # <a name="azure-ad-b2c-extensions-app"></a>Azure AD B2C: Bővítményalkalmazás
 
@@ -40,7 +40,7 @@ Ha véletlenül törölte a b2c-kiterjesztések alkalmazását, hogy 30 napig, a
 1. Jelentkezzen be globális rendszergazdaként az Azure AD B2C-címtár, amely szeretné visszaállítani a törölt alkalmazás esetében a hely. A globális rendszergazdának rendelkeznie kell egy e-mail-címet a következőhöz hasonló: `username@{yourTenant}.onmicrosoft.com`.
 1. Adja ki az URL-cím alapján egy HTTP GET `https://graph.windows.net/myorganization/deletedApplications` az api-version = 1.6-os. Ez a művelet listázza az összes alkalmazást, ami az elmúlt 30 napon belül törölve lett.
 1. Keresse meg az alkalmazást a listában, ahol "b2c-bővítmény-app" és a példány kezdődik-e a neve annak `objectid` tulajdonság értéke.
-1. Adja ki az URL-cím alapján egy HTTP POST `https://graph.windows.net/myorganization/deletedApplications/{OBJECTID}/restore`. Cserélje le a `{OBJECTID}` az URL-címrészt az `objectid` az előző lépésben. 
+1. Adja ki az URL-cím alapján egy HTTP POST `https://graph.windows.net/myorganization/deletedApplications/{OBJECTID}/restore`. Cserélje le a `{OBJECTID}` az URL-címrészt az `objectid` az előző lépésben.
 
 Most meg kell tudni [tekintse meg a visszaállított app](#verifying-that-the-extensions-app-is-present) az Azure Portalon.
 

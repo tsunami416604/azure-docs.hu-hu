@@ -15,12 +15,12 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dd44dda06b2f6fc48538f2fb74c0bf8e04d0362b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3624f4e859081e53ee27b6f8415eb3f9b5a2a5fa
+ms.sourcegitcommit: 1572b615c8f863be4986c23ea2ff7642b02bc605
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65074635"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67785464"
 ---
 # <a name="web-app-that-calls-web-apis---call-a-web-api"></a>Webes API-hívás, amely meghívja a webes API - webalkalmazás
 
@@ -28,7 +28,18 @@ Most, hogy megkapta a jogkivonatot, meghívhatja egy védett webes API-t.
 
 ## <a name="aspnet-core"></a>ASP.NET-mag
 
-A művelet az egy egyszerűsített kódja a `HomeController`. Ez a kód beolvassa egy tokent a Microsoft Graph meghívásához. Ez alkalommal a kód lett hozzáadva, a REST API-ként Microsoft Graph meghívásához bemutató.
+A művelet az egy egyszerűsített kódja a `HomeController`. Ez a kód beolvassa egy tokent a Microsoft Graph meghívásához. Ez alkalommal a kód lett hozzáadva, a REST API-ként Microsoft Graph meghívásához bemutató. A graph API URL-címe megtalálható a `appsettings.json` fájlt, és olvassa el a nevű változóban `webOptions`:
+
+```JSon
+{
+  "AzureAd": {
+    "Instance": "https://login.microsoftonline.com/",
+    ...
+  },
+  ...
+  "GraphApiUrl": "https://graph.microsoft.com"
+}
+```
 
 ```CSharp
 public async Task<IActionResult> Profile()

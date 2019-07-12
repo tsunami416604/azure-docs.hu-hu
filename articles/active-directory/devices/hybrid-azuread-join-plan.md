@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c476c2b326045db37c54a358d68f4b5f8bbaed9a
-ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
+ms.openlocfilehash: abb050eb527e65b4fd31f3251d37fef7d51e867e
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67509591"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67655975"
 ---
 # <a name="how-to-plan-your-hybrid-azure-active-directory-join-implementation"></a>kézikönyv: A hibrid Azure Active Directory join megvalósítás megtervezése
 
@@ -87,7 +87,7 @@ Ha a rendszer-előkészítő eszköz (Sysprep) hagyatkoznia, és használja a **
 
 Ha további virtuális gépek létrehozása egy virtuális gép (VM) pillanatképre, ellenőrizze, a pillanatkép nem, amely már regisztrálva van az Azure ad-hez mint hibrid Azure AD-csatlakozás a virtuális gép.
 
-Ha a Windows 10-tartományhoz csatlakozó eszközök még [Azure ad-ben regisztrált](https://docs.microsoft.com/azure/active-directory/devices/overview#azure-ad-registered-devices) a bérlőjéhez, erősen ajánlott, hogy az állapot eltávolítása a hibrid Azure AD-csatlakozás engedélyezése előtt. A Windows 10-es 1809 a kiadásban a következő módosításokat végzett változtatások elkerülése érdekében ebben a kettős állapota:
+Ha a Windows 10-tartományhoz csatlakozó eszközök még [Azure ad-ben regisztrált](https://docs.microsoft.com/azure/active-directory/devices/overview#getting-devices-in-azure-ad) a bérlőjéhez, erősen ajánlott, hogy az állapot eltávolítása a hibrid Azure AD-csatlakozás engedélyezése előtt. A Windows 10-es 1809 a kiadásban a következő módosításokat végzett változtatások elkerülése érdekében ebben a kettős állapota:
 
 - Minden meglévő Azure ad-ben regisztrált állapot automatikusan megszűnik, miután az eszköz a hibrid Azure AD-hez.
 - Folyamatban van az Azure AD-ban regisztrálva a beállításkulcs - HKLM\SOFTWARE\Policies\Microsoft\Windows\WorkplaceJoin, "BlockAADWorkplaceJoin" hozzáadásával megakadályozhatja a tartományba léptetett eszköz = dword: 00000001.

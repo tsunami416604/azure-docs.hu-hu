@@ -12,12 +12,12 @@ ms.author: mathoma
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 02/08/2019
-ms.openlocfilehash: bcbdd5fd8395cb0a47038595127e9b20118bdf1b
-ms.sourcegitcommit: 72f1d1210980d2f75e490f879521bc73d76a17e1
+ms.openlocfilehash: 1c62fb466774a3599972d6a9cc340cca300eee59
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/14/2019
-ms.locfileid: "67147710"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67696188"
 ---
 # <a name="transactional-replication-with-single-pooled-and-instance-databases-in-azure-sql-database"></a>Egyetlen, a tranzakciós replikáció készletezett és adatbázisokat az Azure SQL Database-példány
 
@@ -50,7 +50,7 @@ A **terjesztő** példány vagy-kiszolgálót, amely a cikkekben módosítások 
 
 A **előfizető** egy olyan példányt, vagy a módosítások a közzétevő a fogadó kiszolgálón. Előfizetők lehetnek önálló, készletezett, és a példány-adatbázisok Azure SQL Database vagy SQL Server-adatbázisokban. Az önálló vagy készletezett adatbázisok előfizető leküldéses előfizetőként kell konfigurálni. 
 
-| Szerepkör | Egyetlen vagy készletezett adatbázisok | Példányok adatbázisai |
+| Role | Egyetlen vagy készletezett adatbázisok | Példányok adatbázisai |
 | :----| :------------- | :--------------- |
 | **Publisher** | Nem | Igen | 
 | **Terjesztő** | Nem | Igen|
@@ -92,7 +92,7 @@ Különböző [replikációtípusok](https://docs.microsoft.com/sql/relational-d
 
 ## <a name="requirements"></a>Követelmények
 
-- Kapcsolat SQL-hitelesítést használ a replikációs résztvevők között. 
+- A kapcsolat SQL-hitelesítést használ a replikációs résztvevők között. 
 - Egy Azure Storage-fiókot a munkakönyvtárban replikáció által használt megosztást. 
 - 445-ös (TCP, kimenő) porton keresztül kell megnyitni a biztonsági szabályok az Azure-fájlmegosztás eléréséhez a felügyelt példány alhálózatára kell. 
 - 1433 (TCP, kimenő) porton kell nyitható meg, ha az előfizető a helyszíni, és a közzétevő forgalmazó egy felügyelt példányon.
@@ -139,7 +139,7 @@ Ebben a konfigurációban az Azure SQL Database (egyetlen, készletezett és ada
 
 ## <a name="next-steps"></a>További lépések
 
-1. [Konfigurálja a felügyelt példány tranzakciós replikáció](replication-with-sql-database-managed-instance.md). 
+1. [Két felügyelt példányok közötti replikáció konfigurálása](replication-with-sql-database-managed-instance.md). 
 1. [Kiadvány létrehozása](https://docs.microsoft.com/sql/relational-databases/replication/publish/create-a-publication).
 1. [Hozzon létre egy leküldéses előfizetés](https://docs.microsoft.com/sql/relational-databases/replication/create-a-push-subscription) az előfizetők az Azure SQL Database-kiszolgáló neve használatával (például `N'azuresqldbdns.database.windows.net` és a cél adatbázis az Azure SQL Database nevére (például **Adventureworks**. )
 

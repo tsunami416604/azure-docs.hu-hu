@@ -4,7 +4,7 @@ description: Ismerje meg, hozhat létre és töltse fel az Azure virtuális mere
 services: virtual-machines-linux
 documentationcenter: ''
 author: szarkos
-manager: jeconnoc
+manager: gwallace
 editor: tysonn
 tags: azure-resource-manager,azure-service-management
 ms.assetid: 6c6b8f72-32d3-47fa-be94-6cb54537c69f
@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/17/2019
 ms.author: szark
-ms.openlocfilehash: 9d5e9c6c8a104c16d1ff4e96929ff47ed6fd5ff6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f7f9baec5421a63e46536480cde8d60d3877d4d7
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65966109"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67670973"
 ---
 # <a name="prepare-a-red-hat-based-virtual-machine-for-azure"></a>Red Hat-alapú virtuális gép előkészítése Azure-beli használatra
 Ebből a cikkből megtudhatja, Red Hat Enterprise Linux (RHEL) virtuális gép előkészítése Azure-beli használatra. Ebben a cikkben ismertetett RHEL-verziók a következők: 6.7 + és 7.1 +. Előkészítésekor a hipervizorok, amelyekre ez a cikk a Hyper-V, a kernel-alapú virtuális gép (KVM), és a VMware rendszer. Red Hat Cloud Access programban való részvételre vonatkozó jogosultság követelményeivel kapcsolatos további információkért lásd: [Red Hat Cloud Access webhely](https://www.redhat.com/en/technologies/cloud-computing/cloud-access) és [az Azure-ban futó RHEL](https://access.redhat.com/ecosystem/ccsp/microsoft-azure). RHEL létrehozásához automatizálni szeretné a lemezképek lásd a [Azure Image Builder](https://docs.microsoft.com/azure/virtual-machines/linux/image-builder-overview).

@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 05/13/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: e2a807bbd6baeb2f14a6d36f5d98a28d48725449
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 59a85e855c9fab9f2a3437c83c867b8076f55049
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67082715"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67607210"
 ---
 # <a name="manage-sql-server-vms-in-azure-using-the-azure-portal"></a>Az Azure portal segítségével Azure-beli SQL Server virtuális gépek kezelése
 
@@ -33,7 +33,7 @@ A **SQL virtuális gépek** erőforrás már egy független szolgáltatást, ame
 ## <a name="remarks"></a>Megjegyzések
 
 - A **SQL virtuális gépek** erőforrás megtekintése és kezelése az SQL Server virtuális gépek javasolt módja. Azonban, jelenleg a **SQL virtuális gépek** erőforrás nem támogatja az [támogatásuk (EOS)](virtual-machines-windows-sql-server-2008-eos-extend-support.md) SQL Server rendszerű virtuális gépekhez. Az EOS SQL Server rendszerű virtuális gépek beállításainak kezeléséhez használja az elavult [SQL Server-konfiguráció lapon](#access-sql-server-configuration-tab) helyette. 
-- A **SQL virtuális gépek** erőforrás csak érhető el az SQL Server virtuális gépek, amelyeken [az SQL virtuális gép erőforrás-szolgáltató regisztrálva](virtual-machines-windows-sql-ahb.md#register-sql-server-vm-with-the-sql-vm-resource-provider). 
+- A **SQL virtuális gépek** erőforrás csak érhető el az SQL Server virtuális gépek, amelyeken [az SQL virtuális gép erőforrás-szolgáltató regisztrálva](virtual-machines-windows-sql-register-with-resource-provider.md). 
 
 
 ## <a name="access-sql-virtual-machine-resource"></a>Hozzáférés az SQL virtuális gép típusú erőforrást
@@ -60,7 +60,7 @@ Az SQL Server virtuális gép kiválasztásával megnyílik az **SQL virtuális 
   > A **SQL virtuális gépek** erőforrás van a dedikált SQL Server-beállítások. Válassza ki a virtuális gép nevét a **virtuális gép** mezőt, navigáljon a beállítások, amelyek az adott virtuális géphez, de nem kizárólagos, az SQL Serverhez. 
 
 ## <a name="access-sql-server-configuration-tab"></a>Hozzáférés az SQL Server konfigurálása lap
-Az SQL Server-konfiguráció lapon elavult. Jelenleg az egyetlen módszer kezelésére [támogatásuk (EOS)](virtual-machines-windows-sql-server-2008-eos-extend-support.md) SQL Server virtuális gépek és az SQL Server virtuális gépek, amelyek nincsenek [az SQL virtuális gép erőforrás-szolgáltató regisztrálva](virtual-machines-windows-sql-ahb.md#register-sql-server-vm-with-the-sql-vm-resource-provider).
+Az SQL Server-konfiguráció lapon elavult. Jelenleg az egyetlen módszer kezelésére [támogatásuk (EOS)](virtual-machines-windows-sql-server-2008-eos-extend-support.md) SQL Server virtuális gépek és az SQL Server virtuális gépek, amelyek nincsenek [az SQL virtuális gép erőforrás-szolgáltató regisztrálva](virtual-machines-windows-sql-register-with-resource-provider.md).
 
 Keresse meg a kell elérni az SQL-kiszolgáló elavult konfiguráció lapon, a **virtuális gépek** erőforrás. Ehhez tegye a következőket:
 

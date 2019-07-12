@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 07/03/2019
+ms.date: 07/10/2019
 ms.author: jaredr80
-ms.openlocfilehash: bda5fb8a267fae3309c73678465693e1fef9b838
-ms.sourcegitcommit: d2785f020e134c3680ca1c8500aa2c0211aa1e24
+ms.openlocfilehash: 21d06dfaecb0448194355f13978483779a2ff6be
+ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/04/2019
-ms.locfileid: "67565955"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67805696"
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>ExpressRoute-partnerek és társviszony-létesítési helyszínek.
 
@@ -79,7 +79,7 @@ Az alábbi táblázatban a kapcsolati helyek és az egyes helyekhez tartozó szo
 | **Amszterdam** | Equinix | Nyugat-Európa | Aryaka Networks, AT&T NetBond, British Telecom, Colt, Equinix, euNetworks, GÉANT, InterCloud, Interxion, KPN, IX Reach, Level 3 Communications, Megaport, NTT Communications, Orange, Tata Communications, TeleCity Group, Telefonica, Telenor, Telia Carrier, Verizon, Zayo |
 | **Amszterdam2** | Interxion | Nyugat-Európa | CenturyLink Cloud Connect, DE-CIX, Interxion, Vodafone |
 | **Atlanta** | Equinix | n/a | Equinix, Megaport |
-| **Aucklandi** | Vocus | n/a | Devoli, Megaport |
+| **Aucklandi** | Vocus | n/a | Devoli, Kordia, Megaport |
 | **Busan** |LG CNS | Korea déli régiója | LG CNS |
 | **Canberra** | CDC | Ausztrália középső régiója | CDC |
 | **Canberra2** | CDC | Ausztrália 2. középső régiója| CDC |
@@ -93,7 +93,7 @@ Az alábbi táblázatban a kapcsolati helyek és az egyes helyekhez tartozó szo
 | **Dubai2** | du datamena | Az Egyesült Arab Emírségek északi régiója | du datamena, Orixcom |
 | **Dublin** | Equinix | Észak-Európa | Colt, eir, Equinix, Interxion, Megaport |
 | **Frankfurt** | Interxion | n/a | DE-CIX, Interxion |
-| **Hongkong (KKT)** | Equinix | Kelet-Ázsia | Aryaka Networks, British Telecom, CenturyLink Cloud Connect, Chief Telecom, China Telecom Global, Equinix, Megaport, NTT Communications, Orange, PCCW Global Limited, Tata Communications, Verizon |
+| **Hongkong (KKT)** | Equinix | Kelet-Ázsia | Aryaka Networks, British Telecom, CenturyLink Cloud Connect, vezető távközlési, Kína Telecom globális, Equinix, Megaport, NTT Communications, Orange, globális PCCW korlátozott, Tata Communications, Telia szolgáltatója, Verizon |
 | **Johannesburg** | Teraco | Dél-Afrika északi régiója | British Telecom, Internet Solutions – Cloud Connect, folyékony Telecom Teraco |
 | **Kuala Lumpur** | TIME dotCom | n/a | TIME dotCom |
 | **Las Vegas** | Kapcsoló | n/a | CenturyLink Cloud Connect, Megaport |
@@ -108,7 +108,7 @@ Az alábbi táblázatban a kapcsolati helyek és az egyes helyekhez tartozó szo
 | **Mumbai2** | Airtel | Nyugat-India | Airtel, Sify, Vodafone Idea |
 | **New York** | Equinix | n/a | CenturyLink Cloud Connect, Coresite, Equinix, InterCloud, Megaport, Packet, Zayo |
 | **Newport (Wales)** | Következő generációs adatok | Az Egyesült Királyság nyugati régiója | British Telecom, Colt, Level 3 Communications, következő generációs adatok |
-| **Oszaka** | Equinix | Nyugat-Japán | Equinix, Internet Initiative Japan Inc. – IIJ, NTT Communications, NTT SmartConnect, Softbank |
+| **Oszaka** | Equinix | Nyugat-Japán | Colt, Equinix, Internet Initiative Japan Inc. - IIJ, NTT Communications, NTT SmartConnect, Softbank |
 | **Párizs** | Interxion | Közép-Franciaország | CenturyLink Cloud Connect, Colt, Equinix, Intercloud, Interxion, Orange, Telia Carrier, Zayo |
 | **Perth** | NextDC | n/a | Megaport, NextDC |
 | **Quebec város** | 4Degrees | Kelet-Kanada | Bell Canada, Megaport |
@@ -126,7 +126,7 @@ Az alábbi táblázatban a kapcsolati helyek és az egyes helyekhez tartozó szo
 | **Toronto** | Cologix | Közép-Kanada | AT&T NetBond, Bell Canada, CenturyLink Cloud Connect, Cologix, Equinix, IX Reach Megaport, Telus, Verizon, Zayo |
 | **Washington DC** | Equinix | USA keleti RÉGIÓJA, USA keleti RÉGIÓJA 2 | Aryaka Networks, AT & T NetBond, British Telecom, CenturyLink Cloud Connect, Cologix, Comcast, Coresite, Equinix, Internet2, InterCloud, Level 3 Communications, Megaport, Neutrona hálózatok, NTT Communications, Orange, PacketFabric, Sprint, Tata Kommunikáció, Telia szolgáltatója, Verizon, Zayo |
 | **Washington DC2** | Coresite | USA keleti RÉGIÓJA, USA keleti RÉGIÓJA 2 |Coresite | 
-| **Zurich** | Interxion | n/a | Interxion |
+| **Zurich** | Interxion | n/a | Intercloud, Interxion |
 
  **+** = hamarosan elérhető
 
@@ -142,7 +142,7 @@ Az alábbi táblázatban a kapcsolati helyek és az egyes helyekhez tartozó szo
 | **San Antonio** | CenturyLink Cloud Connect, Megaport |
 | **Szilícium-völgy** | Equinix, Level 3 Communications, Verizon |
 | **Seattle** | Equinix, Megaport |
-| **Washington DC** |AT&T NetBond, Equinix, Level 3 Communications, Megaport, Verizon |
+| **Washington DC** |AT&T NetBond, CenturyLink Cloud Connect, Equinix, Level 3 Communications, Megaport, Verizon |
 
 ### <a name="china"></a>Kína
 | **Location** | **Szolgáltatók** |

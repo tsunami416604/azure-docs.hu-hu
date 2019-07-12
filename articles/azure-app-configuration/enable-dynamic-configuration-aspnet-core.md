@@ -14,18 +14,20 @@ ms.topic: tutorial
 ms.date: 02/24/2019
 ms.author: yegu
 ms.custom: mvc
-ms.openlocfilehash: 9cbdfe957587977b01bc46b46818856f789f46d8
-ms.sourcegitcommit: 51a7669c2d12609f54509dbd78a30eeb852009ae
+ms.openlocfilehash: 78c64786f523aa424e8a9816e42db70e2a2997c2
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66393618"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67798455"
 ---
 # <a name="tutorial-use-dynamic-configuration-in-an-aspnet-core-app"></a>Oktatóanyag: A dinamikus konfiguráció használata az ASP.NET Core-alkalmazás
 
-ASP.NET Core, amely képes olvasni a konfigurációs adatok különböző forrásokból származó moduláris konfigurációs rendszerrel rendelkezik. Működés közbeni változások anélkül, hogy ez az alkalmazás újraindítása tud kezelni. ASP.NET Core támogatja a kötés .NET erősen típusos osztály konfigurációs beállításokat. Ez kódtárba őket elhelyezni a kódban a különböző használatával `IOptions<T>` mintákat. Ezek egyikét mintáit, kifejezetten `IOptionsSnapshot<T>`, automatikusan újra betölti az alkalmazást, az alapul szolgáló adatok változásakor.
+ASP.NET Core, amely képes olvasni a konfigurációs adatok különböző forrásokból származó moduláris konfigurációs rendszerrel rendelkezik. Működés közbeni változások anélkül, hogy ez az alkalmazás újraindítása tud kezelni. ASP.NET Core támogatja a kötés .NET erősen típusos osztály konfigurációs beállításokat. Ez kódtárba őket elhelyezni a kódban a különböző használatával `IOptions<T>` mintákat. Ezek egyikét mintáit, kifejezetten `IOptionsSnapshot<T>`, automatikusan újra betölti az alkalmazást, az alapul szolgáló adatok változásakor. Is beszúrása `IOptionsSnapshot<T>` be tartományvezérlői eléréséhez a legfrissebb konfigurálási tárolva az Azure-alkalmazások konfigurálása az alkalmazásban.
 
-Is beszúrása `IOptionsSnapshot<T>` be tartományvezérlői eléréséhez a legfrissebb konfigurálási tárolva az Azure-alkalmazások konfigurálása az alkalmazásban. Is állíthat be az alkalmazás konfigurációs ASP.NET Core ügyféloldali kódtár, folyamatos figyelése és beolvasni egy alkalmazás a konfigurációs adattároló bármilyen változás. A lekérdezés rendszeres időközönként megadhat.
+Is állíthat be az alkalmazás konfigurációs ASP.NET Core-ügyfélkódtár frissíteni a konfigurációs beállítások segítségével dinamikusan egy közbenső készletét. Mindaddig, amíg a webalkalmazás küldött fogadási kérelmekre küld továbbra is fennáll, a konfigurációs beállítások továbbra is a konfigurációs adattárolónál a várakozott.
+
+Annak érdekében, hogy a beállítások frissítve, és ezáltal a konfigurációs tár túl sok hívás, gyorsítótár minden egyes beállítás szolgál. Mindaddig, amíg a gyorsítótárazott értéket adják lejárt, a frissítési művelet nem frissíti az értéket, akkor is, ha az értéke megváltozott a konfigurációs tárban. Az alapértelmezett lejárati időt, az egyes kérések 30 másodperc, de szükség esetén felülbírálható lesz.
 
 Ez az oktatóanyag bemutatja, hogyan valósíthat meg dinamikus konfiguráció frissítéseit a kódban. A web app, a rövid útmutatók rendszerben bevezetett épül. A folytatás előtt Befejezés [ASP.NET Core-alkalmazás létrehozása az alkalmazás konfigurációs](./quickstart-aspnet-core-app.md) első.
 
@@ -45,7 +47,7 @@ Ehhez az oktatóanyaghoz, telepítse a [.NET Core SDK](https://dotnet.microsoft.
 
 ## <a name="reload-data-from-app-configuration"></a>Töltse be újra az alkalmazás konfigurációs adatait
 
-1. Nyissa meg *Program.cs*, és frissítse a `CreateWebHostBuilder` metódus hozzáadásával a `config.AddAzureAppConfiguration()` metódust.
+1. Nyissa meg *Program.cs*, és frissítse a `CreateWebHostBuilder` metódus hozzáadása a `config.AddAzureAppConfiguration()` metódust.
 
     ```csharp
     public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
@@ -53,19 +55,22 @@ Ehhez az oktatóanyaghoz, telepítse a [.NET Core SDK](https://dotnet.microsoft.
             .ConfigureAppConfiguration((hostingContext, config) =>
             {
                 var settings = config.Build();
+
                 config.AddAzureAppConfiguration(options =>
+                {
                     options.Connect(settings["ConnectionStrings:AppConfig"])
-                           .Watch("TestApp:Settings:BackgroundColor")
-                           .Watch("TestApp:Settings:FontColor")
-                           .Watch("TestApp:Settings:Message"));
+                           .ConfigureRefresh(refresh =>
+                           {
+                               refresh.Register("TestApp:Settings:BackgroundColor")
+                                      .Register("TestApp:Settings:FontColor")
+                                      .Register("TestApp:Settings:Message")
+                           });
+                }
             })
             .UseStartup<Startup>();
     ```
 
-    A második paramétert a `.Watch` módszer a lekérdezési időköz az ASP.NET ügyféloldali kódtár egy alkalmazás a konfigurációs adattároló kérdezi le. Az ügyféloldali kódtár ellenőrzi a meghatározott konfigurációs beállítás megtekintéséhez, ha minden olyan módosítás történt.
-    
-    > [!NOTE]
-    > Az alapértelmezett lekérdezési időköze a `Watch` metódust érték 30 másodperc, ha nincs megadva.
+    A `ConfigureRefresh` a beállításait, frissítse a konfigurációs adatokat az alkalmazás a konfigurációs adattárolónál a frissítési művelet akkor aktiválódik, amikor segítségével módszert. Annak érdekében, hogy ténylegesen vált a frissítési műveletet, a frissítés közbenső kell konfigurálni az alkalmazás a konfigurációs adatok frissítése, ha bármilyen változás történik.
 
 2. Adjon hozzá egy *kinyerhetők* határozza meg, és implementál egy új fájlt `Settings` osztály.
 
@@ -98,6 +103,21 @@ Ehhez az oktatóanyaghoz, telepítse a [.NET Core SDK](https://dotnet.microsoft.
         services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
     }
     ```
+
+4. Frissítés a `Configure` adható hozzá, hogy a konfigurációs beállításokat egy közbenső frissítéshez frissíteni kell az ASP.NET Core-webalkalmazás küldött fogadási kérelmekre küld továbbra is regisztrálva.
+
+    ```csharp
+    public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+    {
+        app.UseAzureAppConfiguration();
+        app.UseMvc();
+    }
+    ```
+    
+    A megadott frissítés a konfigurációt használja, a közbenső szoftver az `AddAzureAppConfiguration` metódus az `Program.cs` az ASP.NET Core webes alkalmazás által fogadott összes kérelemhez frissítésének aktiválásához. Az egyes kérések egy frissítési művelet akkor aktiválódik, és az ügyféloldali kódtár ellenőrzi, hogy ha a regisztrált a konfigurációs beállításokat a gyorsítótárazott érték lejárt. A gyorsítótárban lévő értékek a lejárt a beállítások értékeit a rendszer frissíti az alkalmazás a konfigurációs adattároló, és a megmaradó értékek nem változnak.
+    
+    > [!NOTE]
+    > Egy konfigurációs beállítás alapértelmezett gyorsítótár lejárati idő pedig 30 másodperc, de meghívásával bírálható felül a `SetCacheExpiration` argumentumaként átadott a beállítások inicializáló metódust a `ConfigureRefresh` metódust.
 
 ## <a name="use-the-latest-configuration-data"></a>A legfrissebb konfigurációs adatok használata
 
@@ -171,15 +191,18 @@ Ehhez az oktatóanyaghoz, telepítse a [.NET Core SDK](https://dotnet.microsoft.
 
 5. Válassza ki **konfigurációs Explorer**, és frissítse az értékeket a következő kulcsokat:
 
-    | Kulcs | Érték |
+    | Kulcs | Value |
     |---|---|
     | TestAppSettings:BackgroundColor | zöld |
     | TestAppSettings:FontColor | lightGray |
     | TestAppSettings:Message | Élő frissítés-alkalmazás konfigurálása Azure - adatokat! |
 
-6. Az új konfigurációs beállítások megtekintéséhez a böngészőlap frissítéséhez.
+6. Az új konfigurációs beállítások megtekintéséhez a böngészőlap frissítéséhez. A böngészőlap frissítése több is megkövetelhető a módosítások érvénybe lépnek.
 
     ![A rövid útmutató app frissítése helyi](./media/quickstarts/aspnet-core-app-launch-local-after.png)
+    
+    > [!NOTE]
+    > A konfigurációs beállítások lettek gyorsítótárazva, egy alapértelmezett lejárati idő pedig 30 másodperc, mivel az alkalmazás a konfigurációs adattárolónál a beállítások módosításai volna csak megjelennek a web app Ha a gyorsítótár érvényessége lejárt.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 

@@ -16,12 +16,12 @@ ms.date: 07/11/2017
 ms.author: mimart
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d41ec1f510b028a2ffe2554bfcbd77bc439c4e79
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: 23e6a3d0b533dccc3c3111382b014907d5c026ab
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67272947"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67612665"
 ---
 # <a name="an-app-page-shows-an-error-message-after-the-user-signs-in"></a>Alkalmazáslap egy hibaüzenetet jelenít meg, a felhasználó bejelentkezése után az
 
@@ -99,7 +99,7 @@ A felhasználói azonosító értékének módosításához kövesse az alábbi 
 
 ## <a name="change-the-nameid-format"></a>Módosítsa a NameID-formátum
 
-Ha az alkalmazás egy másik formátumú vár a **NameID** (felhasználói azonosító) attribútummal, lásd: [szerkesztési nameID](https://docs.microsoft.com/azure/active-directory/develop/active-directory-saml-claims-customization.md#editing-nameid) nameid-formátumához módosításához.
+Ha az alkalmazás egy másik formátumú vár a **NameID** (felhasználói azonosító) attribútummal, lásd: [szerkesztési nameID](https://docs.microsoft.com/azure/active-directory/develop/active-directory-saml-claims-customization#editing-nameid) nameid-formátumához módosításához.
 
 Az Azure AD kiválasztása formátumát a **NameID** (felhasználóazonosító) attribútum alapján a kiválasztott érték, vagy a SAML AuthRequest az alkalmazás által kért formátumban. További információkért lásd: a "NameIDPolicy" szakaszában [egyszeri bejelentkezéses SAML-protokoll](https://docs.microsoft.com/azure/active-directory/develop/single-sign-on-saml-protocol#nameidpolicy).
 

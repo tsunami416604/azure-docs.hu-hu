@@ -4,7 +4,7 @@ description: A nagy teljesítményű Linux rendszerű virtuális gépek az Azure
 services: virtual-machines-linux
 documentationcenter: ''
 author: jonbeck7
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager,azure-service-management
 ms.assetid: ''
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 10/12/2018
 ms.author: jonbeck
-ms.openlocfilehash: 003a14174ff65bab253f27a458d4f3e2c0a1a6db
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 847f25d9be1a8654bbc0435d7874acb0ff793304
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67070003"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67695600"
 ---
 # <a name="high-performance-compute-virtual-machine-sizes"></a>Nagy teljesítményű számítási virtuálisgép-méretek
 
@@ -56,7 +56,15 @@ Az Azure Marketplace-en számos Linux-disztribúció, amelyek támogatják az RD
   "typeHandlerVersion": "1.0",
   } 
   ```
- 
+  
+  A következő parancsot a legújabb 1.0-s verzió InfiniBandDriverLinux bővítmény telepítését pedig egy meglévő Virtuálisgép-méretezési csoportban nevű RDMA-kompatibilis virtuális gépek *myVMSS* nevű erőforráscsoportban üzembe helyezett *myResourceGroup*:
+  ```powershell
+  $VMSS = Get-AzVmss -ResourceGroupName "myResourceGroup" -VMScaleSetName "myVMSS"
+  Add-AzVmssExtension -VirtualMachineScaleSet $VMSS -Name "InfiniBandDriverLinux" -Publisher "Microsoft.HpcCompute" -Type "InfiniBandDriverLinux" -TypeHandlerVersion "1.0"
+  Update-AzVmss -ResourceGroupName "myResourceGroup" -VMScaleSetName "MyVMSS" -VirtualMachineScaleSet $VMSS
+  Update-AzVmssInstance -ResourceGroupName "myResourceGroup" -VMScaleSetName "myVMSS" -InstanceId "*"
+  ```
+  
   > [!NOTE]
   > A CentOS-alapú HPC-képekhez kernelfrissítés le vannak tiltva a **yum** konfigurációs fájlt. Ez azért, mert az RPM-csomag Linux RDMA-illesztőprogramok terjesztett, és illesztőprogramok frissítéseit nem lehet, hogy működik, ha a kernel frissül.
   >
@@ -82,6 +90,8 @@ Az Azure Linuxos HPC virtuális gépeken, amely az RDMA hálózati használatáv
 * **Virtuális gépek** – az RDMA-kompatibilis HPC virtuális gépek ugyanazon rendelkezésre állási csoportjának (Ha használja az Azure Resource Manager üzemi modell) üzembe helyezése. Ha a klasszikus üzemi modellt használja, az ugyanazon a felhőszolgáltatáson virtuális gépek üzembe helyezése. 
 
 * **A Virtual machine scale sets** – a virtuálisgép-méretezési csoportot beállítani, győződjön meg arról, hogy korlátozza az üzembe helyezés az elhelyezési csoportból. Például egy Resource Manager-sablon beállítása az `singlePlacementGroup` tulajdonságot `true`. 
+
+* **Virtuális gépek között MPI** – Ha MPI-kommunikáció a virtuális gépek (VM-EK) között szükség esetén győződjön meg arról, hogy a virtuális gépeket egyazon rendelkezésre állási vagy vannak beállítva a virtuális gépet azonos méretezési csoportot.
 
 * **Az Azure CycleCloud** – a HPC-fürt létrehozása [Azure CycleCloud](/azure/cyclecloud/) MPI-feladatok futtatása a Linux-csomópontokat.
 

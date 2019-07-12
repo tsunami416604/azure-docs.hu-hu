@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: zhanxia
 ms.reviewer: sgilley
 ms.date: 05/10/2019
-ms.openlocfilehash: d714756c19b94eafc40cc0dbeffbc07704e8f94e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: efed981b500ff14a66c2355a1d14bd762000622f
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65787813"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67606165"
 ---
 # <a name="sample-4---classification-predict-credit-risk-cost-sensitive"></a>4 – besorolási. példa: Hitelkockázatot (költség-és nagybetűket)
 
@@ -37,7 +37,7 @@ A befejezett graph ehhez a kísérlethez itt látható:
 
     ![Nyissa meg a kísérlet](media/ui-sample-classification-predict-credit-risk-cost-sensitive/open-sample4.png)
 
-## <a name="data"></a>Adatok
+## <a name="data"></a>Data
 
 A Németországi hitelkártya adatkészlet a UC Irvine adattárból használjuk. Ez az adatkészlet 20 funkciók és 1 címkével 1000 mintákat tartalmazza. Minden minta egy személyt jelöl. 20 szolgáltatásai közé tartozik a numerikus és a kategorikus funkciókat. Tekintse meg a [UCI webhely](https://archive.ics.uci.edu/ml/datasets/Statlog+%28German+Credit+Data%29) az adatkészlet további információt. Az utolsó oszlop, a címke, amely azt jelzi, hogy a hitelkockázat kiszámításához, és csak két lehetséges értékek: magas hitelkockázat = 2, és alacsony hitelkockázat = 1.
 
@@ -164,3 +164,4 @@ Ismerje meg a vizuális felületen érhető el a más minták:
 - [2 – regressziós. példa: Hasonlítsa össze az autó árának előrejelzése algoritmusok](ui-sample-regression-predict-automobile-price-compare-algorithms.md)
 - [Mintául szolgáló 3 - besorolás: Hitelkockázat előrejelzése](ui-sample-classification-predict-credit-risk-basic.md)
 - [5 – besorolási. példa: Forgalom előrejelzése](ui-sample-classification-predict-churn.md)
+- [6 – besorolási. példa: A járatok késésének előrejelzése](ui-sample-classification-predict-flight-delay.md)

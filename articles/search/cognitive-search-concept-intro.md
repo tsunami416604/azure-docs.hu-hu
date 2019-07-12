@@ -10,12 +10,12 @@ ms.topic: overview
 ms.date: 05/28/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 8af927bee11d66c473707b603951fa693f6840e3
-ms.sourcegitcommit: 8c49df11910a8ed8259f377217a9ffcd892ae0ae
+ms.openlocfilehash: 60a7a141cfcec3beced9e57baddebbc26e753141
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66299027"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67672160"
 ---
 # <a name="what-is-cognitive-search-in-azure-search"></a>Mi az Azure Search "cognitive search"?
 
@@ -39,7 +39,7 @@ Természetes nyelvi és képfeldolgozás alkalmazni az adatok betöltési fázis
 
 A kognitív keresés folyamat alapján [Azure Search *indexelők* ](search-indexer-overview.md) , feltérképezi az adatforrásokat, és teljes körű index feldolgozási biztosítják. Képességek már csatlakoztatott elfogja, az indexelők és bővítését készségeitől dokumentumokat határoz meg. Miután indexelt, elérheti végig az összes keresési kéréseket a tartalomhoz [lekérdezése az Azure Search által támogatott típusok](search-query-overview.md).  Ha most ismerkedik az indexelők, ez a szakasz részletesen ismerteti a lépéseket.
 
-### <a name="step-1-connection-and-document-cracking-phase"></a>1. lépés: Kapcsolat és a dokumentumleképezési fázis
+### <a name="step-1-connection-and-document-cracking-phase"></a>1\. lépés: Kapcsolat és a dokumentumleképezési fázis
 
 A folyamat elején rendelkezik strukturálatlan szöveges vagy nem szöveges tartalmak (például a lemezkép és a beolvasott dokumentum JPEG-fájlok). Adatok léteznie kell egy Azure storage szolgáltatás, amely az indexelő által hozzáférhető. Az indexelők is "feltörhetők" szöveg kinyerésére forrásadatok forrás dokumentumokat.
 
@@ -47,7 +47,7 @@ A folyamat elején rendelkezik strukturálatlan szöveges vagy nem szöveges tar
 
  Támogatott az adatforrásokba tartoznak az Azure blob storage-ba, az Azure table storage, Azure SQL Database és Azure Cosmos DB-hez. A következő típusú szöveges tartalom kinyerésének: PDF-, Word, PowerPoint-és CSV-fájlok. A teljes listát lásd: [támogatott formátumok](search-howto-indexing-azure-blob-storage.md#supported-document-formats).
 
-### <a name="step-2-cognitive-skills-and-enrichment-phase"></a>2. lépés: Kognitív képességeket és Adatbővítés fázis
+### <a name="step-2-cognitive-skills-and-enrichment-phase"></a>2\. lépés: Kognitív képességeket és Adatbővítés fázis
 
 Keresztül történik Adatbővítés *kognitív képességeket* atomi műveletek végrehajtása. Például ha már rendelkezik a szöveges tartalom a PDF-, alkalmazhatja entitások felismerése nyelvfelismerés, vagy a kulcsfontosságú kifejezések kinyerése új mezőt az indexben, amelyek nem érhető el natív módon a forrás előállításához. Érvényesítette, a képességek a folyamatban használt a gyűjtemény neve egy *indexmezők*.  
 
@@ -63,7 +63,7 @@ Belsőleg a folyamat állít elő, képi elemekben gazdag dokumentumok gyűjtem�
 
 Tudásbázis áruházbeli ad hozzá egy indexmezők teszi lehetővé a teljes szöveges keresés nem forgatókönyvekhez végrehajtott információbeolvasás reprezentációját projekthez. További információkért lásd: [mi Tudásbázis áruház](knowledge-store-concept-intro.md).
 
-### <a name="step-3-search-index-and-query-based-access"></a>3. lépés: Search-index és lekérdezés-alapú hozzáférés
+### <a name="step-3-search-index-and-query-based-access"></a>3\. lépés: Search-index és lekérdezés-alapú hozzáférés
 
 A feldolgozás végeztével rendelkezésére álló képi elemekben gazdag dokumentumok, teljes szöveges átböngészhető az Azure Search keresési indexet. [Az index lekérdezése](search-query-overview.md) hogyan fejlesztők és a felhasználók érhetik el a képi elemekben gazdag tartalmat, a folyamat által generált. 
 
@@ -101,7 +101,7 @@ Indexek jönnek létre az index sémájából, amely meghatározza a mezők és 
 
 + [Rövid útmutató (portál)](cognitive-search-quickstart-blob.md)
 + [Az oktatóanyag (HTTP-kérések)](cognitive-search-tutorial-blob.md)
-+ [A példában egyéni képesség (C#)](cognitive-search-create-custom-skill-example.md)
++ [Példa: Cognitive Search egyéni műveleteket létrehozása (C#)](cognitive-search-create-custom-skill-example.md)
 
 Javasolt az ingyenes szolgáltatás tanulási célokra, de vegye figyelembe, hogy ingyenes tranzakciók száma korlátozott a naponta 20 dokumentumokhoz. A rövid útmutató és oktatóanyag futtatásához a napon, használhat egy kisebb fájlt megadva (10 dokumentumok), így mindkét gyakorlatokban is elférjen.
 

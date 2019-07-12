@@ -9,12 +9,12 @@ services: iot-hub
 ms.devlang: java
 ms.topic: conceptual
 ms.date: 06/28/2017
-ms.openlocfilehash: 3658b57d003ddc5429c6857f88044376fe1aaa93
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 27cdada0bfbb4236e16d17c263aaba0f4f5c511f
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60399110"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67620134"
 ---
 # <a name="upload-files-from-your-device-to-the-cloud-with-iot-hub"></a>Töltse fel a fájlokat az eszközről a felhőbe, az IoT hubbal
 
@@ -26,7 +26,7 @@ Ebben az oktatóanyagban található kódot használja fel a [küldése a felhő
 
 * Az IoT Hub fájl feltöltése értesítések használatával elindíthatja a feldolgozása a fájlt az alkalmazás háttérrendszere.
 
-A [telemetriát küldjön az IoT Hub (Java)](quickstart-send-telemetry-java.md) és [üzenetküldés felhőből az eszközre az IoT Hub (Java) szolgáltatással](iot-hub-java-java-c2d.md) oktatóanyagokból alapvető eszközről a felhőbe és a felhőből az eszközre irányuló üzenetküldési funkciói az IoT Hub. A [konfigurálása az IoT Hub üzenet-útválasztása](tutorial-routing.md) az oktatóanyag leírja, úgy az eszközt a felhőbe irányuló üzenetek meghízható tárolására az Azure blob storage-ban. Bizonyos esetekben azonban leképezése nem tudja az eszközöket az IoT Hub elfogad viszonylag kis eszköz – felhő üzenetek küldése az adatok egyszerűen. Példa:
+A [telemetriát küldjön az eszközről az IoT hub](quickstart-send-telemetry-java.md) rövid és [küldése a felhőből az eszközre irányuló üzenetek IoT hubbal való](iot-hub-java-java-c2d.md) oktatóanyag bemutatja az alapvető eszközről a felhőbe és a felhőből az eszközre irányuló üzenetküldési funkciói IoT Központ. A [konfigurálása az IoT Hub üzenet-útválasztása](tutorial-routing.md) az oktatóanyag leírja, úgy az eszközt a felhőbe irányuló üzenetek meghízható tárolására az Azure blob storage-ban. Bizonyos esetekben azonban leképezése nem tudja az eszközöket az IoT Hub elfogad viszonylag kis eszköz – felhő üzenetek küldése az adatok egyszerűen. Példa:
 
 * Nagy méretű képeket tartalmazó fájlok
 * Videók
@@ -37,7 +37,7 @@ Ezek a fájlok jellemzően a felhőben, mint például az eszközök használat�
 
 Ez az oktatóanyag végén két Java-konzolalkalmazással futtassa:
 
-* **a szimulált eszköz**, az alkalmazás az [küldési felhőből az eszközre irányuló üzenetek IoT hubbal való] oktatóanyag során létrehozott egy módosított verziója. Ez az alkalmazás feltölt egy fájlt az IoT hub által biztosított SAS URI használatával.
+* **a szimulált eszköz**, az alkalmazás az [felhőből az eszközre irányuló üzenetek küldése az IoT Hub] oktatóanyag során létrehozott egy módosított verziója. Ez az alkalmazás feltölt egy fájlt az IoT hub által biztosított SAS URI használatával.
 
 * **olvasási-fájl – feltöltés – értesítés**, amely a fájl feltöltése értesítéseket fogad az IoT hubról.
 
@@ -265,7 +265,9 @@ A portál használatával beállított storage-tárolót a feltöltött fájl me
 Ebben az oktatóanyagban megtudhatta, hogyan egyszerűsítheti a fájlok feltöltése eszközökről a fájl feltöltése képességeit az IoT Hub használatával. Folytathatja az IoT hub szolgáltatásainak, és az ezekben a cikkekben forgatókönyvek megismerése:
 
 * [IoT hub létrehozása programozott módon](iot-hub-rm-template-powershell.md)
+
 * [Bevezetés a C SDK-t](iot-hub-device-sdk-c-intro.md)
+
 * [Azure IoT SDK-k](iot-hub-devguide-sdks.md)
 
 Részletesebb megismerése az IoT Hub képességeit, tekintse meg:

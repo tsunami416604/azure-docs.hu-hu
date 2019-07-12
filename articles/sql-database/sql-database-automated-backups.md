@@ -12,12 +12,12 @@ ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
 ms.date: 06/27/2019
-ms.openlocfilehash: 1eeb37ce74b3e2f57588197d6bb88f59944c61cf
-ms.sourcegitcommit: aa66898338a8f8c2eb7c952a8629e6d5c99d1468
+ms.openlocfilehash: ce16450f7f25e5703cf283c4babb2a935aad21de
+ms.sourcegitcommit: af31deded9b5836057e29b688b994b6c2890aa79
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67460665"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67813052"
 ---
 # <a name="automated-backups"></a>Automatikus biztonsági mentések
 
@@ -109,7 +109,11 @@ Ha az adatbázis a TDE van titkosítva, a biztonsági másolatok titkosítása a
 
 ## <a name="how-does-microsoft-ensure-backup-integrity"></a>Hogyan biztosítja a Microsoft biztonsági mentési integritását
 
-Töltheti az Azure SQL Database mérnöki csapat automatikusan teszteli, automatikus biztonsági adatbázismentés az adatbázisok visszaállítása a szolgáltatás között. Változónevét adatbázisokat is kapnak a sértetlenségi ellenőrzések DBCC CHECKDB utasítás segítségével. Az integritás-ellenőrzése során talált problémákat a mérnöki csapathoz egy riasztást eredményez. Az Azure SQL Database adatintegritásának kapcsolatos további információkért lásd: [adatok integritásának megőrzése, az Azure SQL Database](https://azure.microsoft.com/blog/data-integrity-in-azure-sql-database/).
+Folyamatosan az Azure SQL Database automatikusan mérnöki csapata tesztek a visszaállítást, automatikus biztonsági adatbázismentés az adatbázisok eszközcsoportba helyezik logikai kiszolgálók és a rugalmas készletek (ez nem áll rendelkezésre a felügyelt példány). Időponthoz változónevét adatbázisok is kapnak a sértetlenségi ellenőrzések DBCC CHECKDB utasítás segítségével.
+
+Felügyelt példány tart a kezdeti biztonsági mentés automatikus `CHECKSUM` az adatbázisok visszaállítása használatával natív `RESTORE` parancsot vagy a Data Migration Service az áttelepítés befejeződése után.
+
+Az integritás-ellenőrzése során talált problémákat a mérnöki csapathoz egy riasztást eredményez. Az Azure SQL Database adatintegritásának kapcsolatos további információkért lásd: [adatok integritásának megőrzése, az Azure SQL Database](https://azure.microsoft.com/blog/data-integrity-in-azure-sql-database/).
 
 ## <a name="how-do-automated-backups-impact-compliance"></a>Hogyan tegye hatással megfelelőségi automatikus biztonsági másolatokat
 

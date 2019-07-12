@@ -4,7 +4,7 @@ description: Magas rendelkezésre állású architektúra és forgatókönyvek e
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
 author: goraco
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 keywords: ''
@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 01/21/2019
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 37f5040585681a53743fb3426b7f7ffac36de51c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f6c329a2b50c946e873391db431c1cd5ff30ab4f
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60936279"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67709074"
 ---
 # <a name="high-availability-architecture-and-scenarios-for-sap-netweaver"></a>Magas rendelkezésre állású architektúra és forgatókönyvek az SAP NetWeaver számára
 
@@ -254,7 +254,7 @@ Az SAP az Azure-ban magas rendelkezésre állású három tartalmaznak:
     * Redundáns SAP-alkalmazáskiszolgálók.
     * Egyedi összetevők. Például lehet a hiba (SPOF) összetevő, például az SAP ASCS/SCS példányhoz vagy egy adatbázis-kezelő rendszer (DBMS) hibaérzékeny pont.
 
-Az SAP az Azure-ban magas rendelkezésre állású SAP magas rendelkezésre állású helyszíni fizikai vagy virtuális környezetben eltér. A következő tanulmány [SAP NetWeaver magas rendelkezésre állás és a VMware és a Microsoft Windows Hyper-V virtuális környezetek üzletmenet-folytonossági] [ sap-ha-bc-virtual-env-hyperv-vmware-white-paper] standard SAP magas rendelkezésre állású ismerteti konfigurációk a Windows virtualizált környezetekben.
+Az SAP az Azure-ban magas rendelkezésre állású SAP magas rendelkezésre állású helyszíni fizikai vagy virtuális környezetben eltér. A következő tanulmány [SAP NetWeaver magas rendelkezésre állás és a VMware és a Microsoft Windows Hyper-V virtuális környezetek üzletmenet-folytonossági][sap-ha-bc-virtual-env-hyperv-vmware-white-paper] standard magas rendelkezésre állású SAP-konfigurációkat ismerteti a virtualizált a Windows környezetekben.
 
 Nem tartozik sapinst integrált SAP magas rendelkezésre állású konfiguráció Linux, a Windows van. Linux SAP magas rendelkezésre állású helyszíni kapcsolatos információkért lásd: [magas rendelkezésre állású partneradatok][sap-ha-partner-information].
 
@@ -359,7 +359,7 @@ Gazdagép SAP alkalmazáskiszolgáló-példányok Azure egyazon rendelkezésre �
 * Az összes virtuális gép az azonos frissítési tartományhoz tartoznak.  
     Frissítési tartomány biztosítja, hogy a virtuális gépek tervezett karbantartás leállások során egy időben nem frissítenek.
 
-    Az alapszintű funkcióval rendelkezik, amely a különböző frissítési és tartalék tartományok az Azure skálázási egység épül, a már jelent meg a [frissítési tartományok] [ planning-guide-3.2.2] szakaszban.
+    Az alapszintű funkcióval rendelkezik, amely a különböző frissítési és tartalék tartományok az Azure skálázási egység épül, a már jelent meg a [frissítési tartományok][planning-guide-3.2.2] szakaszban.
 
 * Az összes virtuális gép az azonos tartalék tartomány részét képezik.  
     Tartalék tartomány biztosítja, hogy a virtuális gépek, hogy nem rendszerkritikus meghibásodási pontot hatással van az összes virtuális gépek rendelkezésre állásának vannak-e telepítve.
@@ -373,7 +373,7 @@ Ha telepít néhány SAP alkalmazáskiszolgáló-példányok saját dedikált vi
 
 További információkért lásd: [Azure-beli Windows virtuális gépek rendelkezésre állásának kezelése][azure-virtual-machines-manage-availability].
 
-További információkért lásd: a [Azure rendelkezésre állási csoportok] [ planning-guide-3.2.3] a tervezése az Azure virtual machines és a megvalósítási SAP NetWeaver dokumentumra vonatkozó szakaszában.
+További információkért lásd: a [Azure rendelkezésre állási csoportok][planning-guide-3.2.3] a tervezése az Azure virtual machines és a megvalósítási SAP NetWeaver dokumentumra vonatkozó szakaszában.
 
 **Csak a nem felügyelt lemezek:** Mivel az Azure storage-fiók egy potenciálisan hibaérzékeny pont, fontos legalább két Azure storage-fiókok, amelyben oszlanak meg legalább két virtuális gép rendelkezik. Egy ideális beállítás minden SAP párbeszédpanel példányát futtató virtuális gép lemezei a egy másik tárfiók üzembe kívánja helyezni.
 
@@ -396,7 +396,7 @@ A WSFC-megoldás segítségével megvédheti az SAP ASCS/SCS példányhoz. A meg
 
 > ![Linux][Logo_Linux] Linux
 > 
-> A SLES fürt keretrendszer használatával az SAP ASCS/SCS példányhoz fürtszolgáltatással kapcsolatos további információkért lásd: [magas rendelkezésre állás az SAP NetWeaver SUSE Linux Enterprise Server az Azure virtuális gépeken SAP alkalmazások] [ sap-suse-ascs-ha]. Magas rendelkezésre ÁLLÁSÚ architektúra helyettesítő SLES rendszeren, amely nem igényel magas rendelkezésre álló NFS lásd [magas rendelkezésre állású útmutató az SAP NetWeaver SUSE Linux Enterprise Server, SAP-alkalmazások Azure NetApp fájlokkal futó] [ sap-suse-ascs-ha-anf].
+> A SLES fürt keretrendszer használatával az SAP ASCS/SCS példányhoz fürtszolgáltatással kapcsolatos további információkért lásd: [magas rendelkezésre állás az SAP NetWeaver SUSE Linux Enterprise Server az Azure virtuális gépeken SAP alkalmazások][sap-suse-ascs-ha]. For alternative HA architecture on SLES, which doesn't require highly available NFS see [High-availability guide for SAP NetWeaver on SUSE Linux Enterprise Server with Azure NetApp Files for SAP applications][sap-suse-ascs-ha-anf].
 
 A Red Hat-fürt keretrendszer használatával az SAP ASCS/SCS példányhoz fürtszolgáltatással kapcsolatos további információkért lásd: [Azure virtuális gépek magas rendelkezésre állás az SAP NetWeaver a Red Hat Enterprise Linux](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel)
 

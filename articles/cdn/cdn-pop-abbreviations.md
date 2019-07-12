@@ -7,19 +7,19 @@ author: mdgattuso
 manager: danielgi
 editor: ''
 ms.assetid: ''
-ms.service: cdn
+ms.service: azure-cdn
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2018
 ms.author: magattus
-ms.openlocfilehash: 3de7f36228bba4cfc84e17dd056683a1a76df684
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 488f7bc4cb715e9cdb99b7a7c79407b9bbc0d29c
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64869609"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67593600"
 ---
 # <a name="azure-cdn-pop-locations-by-abbreviation"></a>Az Azure CDN POP-helyek rövidítés alapján
 > [!div class="op_single_selector"]
@@ -30,7 +30,7 @@ ms.locfileid: "64869609"
 
 Ez a cikk felsorolja a POP-helyek, a jelenléti pontra Irányíthatja rövidítése, rendezve **verizon Azure CDN**.
 
-Rövidítés | Location egység | Régió
+Rövidítés | Location | Régió
 | --- | --- | --- |
 AGA | Atlanta, Grúzia, USA | Észak-Amerika esetén: USA keleti parti
 AGB | Atlanta, Grúzia, USA | Észak-Amerika esetén: USA keleti parti

@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 09/04/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 31c6c1258b6d20eb2d2802cf23244cb59df682c0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8ad5c4cb4d17443144febd716391803064ccdad1
+ms.sourcegitcommit: c0419208061b2b5579f6e16f78d9d45513bb7bbc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61428734"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67626377"
 ---
 # <a name="platforms-and-tools-for-data-science-projects"></a>Platformok és eszközök a adatelemzési projektek
 
@@ -48,7 +48,7 @@ Ezenkívül **gépi Tanulási és AI-eszközök** xgboost, mxnet és Vowpal Wabb
 
 Dsvm-hez jelenleg elérhető **Windows** és **Linux CentOS** operációs rendszereket. Válassza ki a dsvm-hez (a Processzormagok száma) és a memória mennyiségét, amelyre hajthat végre, az adatelemzési projektek igényeinek megfelelően méretét. 
 
-A DSVM Windows-kiadását további információkért lásd: [Microsoft Data Science virtuális gép](https://azure.microsoft.com/marketplace/partners/microsoft-ads/standard-data-science-vm/) az Azure marketplace-en. A DSVM Linux-kiadását, lásd: [Linux rendszerű adatelemző virtuális gép](https://azure.microsoft.com/marketplace/partners/microsoft-ads/linux-data-science-vm/).
+A DSVM Windows-kiadását további információkért lásd: [Microsoft Data Science virtuális gép](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.dsvm-windows) az Azure marketplace-en. A DSVM Linux-kiadását, lásd: [Linux rendszerű adatelemző virtuális gép](https://azure.microsoft.com/marketplace/partners/microsoft-ads/linux-data-science-vm/).
 
 Megtudhatja, hogyan hajthat végre a gyakori adatelemzési feladatok némelyikét a DSVM hatékonyan, lásd: [tíz dolog, amire alkalmas az adatelemző virtuális gép](../data-science-virtual-machine/vm-do-ten-things.md)
 

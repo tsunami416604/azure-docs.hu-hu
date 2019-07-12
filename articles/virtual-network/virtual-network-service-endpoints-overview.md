@@ -11,14 +11,14 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/15/2018
-ms.author: sumeet.mittal
+ms.author: sumi
 ms.custom: ''
-ms.openlocfilehash: 54178ae8988266c751ae0e23ae8c5e6ef7a16f20
-ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
+ms.openlocfilehash: e36e1ca17b5106c79076d1c62e737ba60907ab19
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67544160"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67666473"
 ---
 # <a name="virtual-network-service-endpoints"></a>Virtuális hálózati szolgáltatásvégpontok
 
@@ -39,11 +39,12 @@ Ez a szolgáltatás a következő Azure-szolgáltatásokhoz és -régiókhoz ér
 - **[Az Azure Service Bus](../service-bus-messaging/service-bus-service-endpoints.md?toc=%2fazure%2fvirtual-network%2ftoc.json)** : Az összes Azure-régióban általánosan elérhető.
 - **[Azure Event Hubs](../event-hubs/event-hubs-service-endpoints.md?toc=%2fazure%2fvirtual-network%2ftoc.json)** : Az összes Azure-régióban általánosan elérhető.
 - **[Az Azure Data Lake Store 1. generációs gyűjtések](../data-lake-store/data-lake-store-network-security.md?toc=%2fazure%2fvirtual-network%2ftoc.json)** : Hol érhető el az ADLS Gen1 minden Azure-régióban általánosan elérhető.
+- **[Azure App Service](https://docs.microsoft.com/azure/app-service/app-service-ip-restrictions)** : Hol érhető el az App service összes Azure-régióban általánosan elérhető
 
 **Nyilvános előzetes verzió**
 
 - **[Az Azure Container Registry](../container-registry/container-registry-vnet.md)** : Hol érhető el az Azure Container Registry az összes Azure-régióban elérhető előzetes.
-- **[Azure App Service](https://docs.microsoft.com/en-us/azure/app-service/app-service-ip-restrictions)** : Hol érhető el az App service összes Azure-régióban elérhető előzetes.
+.
 
 A legfrissebb értesítésekért tekintse meg az [Azure-beli virtuális hálózatok frissítéseinek](https://azure.microsoft.com/updates/?product=virtual-network) oldalát.
 

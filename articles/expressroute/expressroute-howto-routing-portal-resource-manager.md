@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 06/28/2019
 ms.author: mialdrid
 ms.custom: seodec18
-ms.openlocfilehash: 40ecdb3f83dba741d1430a912a3f17500a36da6e
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: 08d8103c4b35148a87d347e31b11c7c8c968598b
+ms.sourcegitcommit: dda9fc615db84e6849963b20e1dce74c9fe51821
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67484325"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67622344"
 ---
 # <a name="create-and-modify-peering-for-an-expressroute-circuit"></a>ExpressRoute-kapcsolatcsoport társviszony létesítése és módosítása
 
@@ -132,6 +132,7 @@ Ez a szakasz segítséget nyújt a létrehozása, beolvasása, frissíteni és t
    * Egy /30 alhálózat a másodlagos kapcsolat számára. Az alhálózat nem kell minden olyan virtuális hálózatok számára lefoglalt címtér részét. Ez az alhálózat a rendel az első gyakorlatot IP-címet az útválasztó, a Microsoft használ a második gyakorlatot IP-címet az útválasztó.
    * Egy érvényes VLAN-azonosító a tárviszony-létesítés létrehozásához. Győződjön meg róla, hogy a kapcsolatcsoporton egy másik társviszony-létesítés sem használja ugyanezt a VLAN-azonosítót. Az elsődleges és a másodlagos hivatkozásokat kell használnia az ugyanazon VLAN-azonosítót.
    * Egy AS-szám a társviszony-létesítéshez. 2 és 4 bájtos AS-számokat is használhat. Használhat privát AS-szám a társviszony a 65515 – 65520, szám kivételével szélsőértékeket is beleértve.
+   * Meg kell a haladó útvonalak meghirdetéséhez a helyszíni peremhálózati útválasztó az Azure BGP-n keresztül a magánhálózati társviszony-létesítés beállításakor.
    * **Nem kötelező –** egy MD5-kivonat, ha használni kívánja.
 3. Válassza ki az Azure privát társviszony-létesítés sort, az alábbi példában látható módon:
 

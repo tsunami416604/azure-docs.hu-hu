@@ -4,7 +4,7 @@ description: A cloud-init használata Linux rendszerű virtuális gép létrehoz
 services: virtual-machines-linux
 documentationcenter: ''
 author: rickstercdn
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 ms.service: virtual-machines-linux
@@ -14,12 +14,12 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 11/29/2017
 ms.author: rclaus
-ms.openlocfilehash: 51de92eb64e9879b769baf7e574ee1dca9355040
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: bcea130652789a84d332247445d8e25b2f7ac42e
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60650352"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67671792"
 ---
 # <a name="use-cloud-init-to-add-a-user-to-a-linux-vm-in-azure"></a>Felhasználók hozzáadása az Azure-beli Linuxos virtuális gép a cloud-init használatával
 Ez a cikk bemutatja, hogyan használható [a cloud-init](https://cloudinit.readthedocs.io) felhasználó hozzáadása egy virtuális gép (VM) vagy virtuálisgép-méretezési csoportok (VMSS): kiépítés az Azure-ban ideje. Ez a szkript a cloud-init egyszer az erőforrásokat az Azure-ban kiépített fut az első rendszerindításkor. A cloud-init működése natív módon az Azure és a támogatott Linux-disztribúciók kapcsolatos további információkért lásd: [cloud-init áttekintése](using-cloud-init.md).

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/07/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 9d8482fdf8e914801fb77e2ab1712145fa3ccea0
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 9cad403e39239ea92aa432ef3234c5388bfa95c7
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67077486"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67673362"
 ---
 ### <a name="what-is-the-difference-between-an-azure-virtual-network-gateway-vpn-gateway-and-an-azure-virtual-wan-vpngateway"></a>Mi a különbség egy Azure-beli virtuális hálózati átjáró (VPN Gateway) és egy Azure Virtual WAN-beli VPNGateway között?
 
@@ -109,7 +109,7 @@ Igen.
 
 ### <a name="how-is-virtual-wan-different-from-the-existing-azure-virtual-network-gateway"></a>Miben különbözik a Virtual WAN szolgáltatás a már létező Azure virtuális hálózati átjárótól?
 
-A virtuális hálózati (VPN-) átjáró legfeljebb 30 alagutat támogat. Kapcsolatokhoz nagy mennyiségű VPN-forgalmat bonyolító Virtual WAN használata javasolt. 2 GB/s, kivéve az USA nyugati középső régiójában minden régió esetében az agyban legfeljebb 1000 fiókirodai kapcsolatok csatlakozni tudjon. A nyugati középső régióban 20 Gb/s sebesség érhető el. A többi régióban a jövőben tervezzük bevezetni a 20 Gb/s-ot. A kapcsolatok aktív-aktív alagútnak minősülnek a helyszíni VPN-eszköz és a virtuális központ között. Egy eseményközpont régiónként, ami azt jelenti, hogy a kapcsolódás több mint 1000 ágak hubok között lehet.
+A virtuális hálózati (VPN-) átjáró legfeljebb 30 alagutat támogat. Kapcsolatokhoz nagy mennyiségű VPN-forgalmat bonyolító Virtual WAN használata javasolt. Minden régió esetében az agyban 20 GB/s legfeljebb 1000 fiókirodai kapcsolatok csatlakozni tudjon. A kapcsolatok aktív-aktív alagútnak minősülnek a helyszíni VPN-eszköz és a virtuális központ között. Egy eseményközpont régiónként, ami azt jelenti, hogy a kapcsolódás több mint 1000 ágak hubok között lehet.
 
 ### <a name="how-is-virtual-wan-supporting-sd-wan-devices"></a>Hogyan van virtuális WAN SD-WAN eszközök támogatására?
 

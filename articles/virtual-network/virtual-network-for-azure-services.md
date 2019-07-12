@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: malop;kumud
-ms.openlocfilehash: e5481b0e262021e28a398b72b5ad022673947609
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 357122abba483a96dd9f2d602a793ee06e80b245
+ms.sourcegitcommit: 1572b615c8f863be4986c23ea2ff7642b02bc605
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65409508"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67785550"
 ---
 # <a name="virtual-network-integration-for-azure-services"></a>Virtuális hálózat integrációja Azure-szolgáltatások
 
@@ -43,7 +43,7 @@ Egy virtuális hálózaton belüli szolgáltatások telepítése az alábbi kép
 - Szolgáltatás-példányok üzembe helyezése egy virtuális hálózat egy alhálózatában. Bejövő és kimenő hálózati hozzáférés az alhálózat keresztül kell megnyitni [hálózati biztonsági csoportok](security-overview.md#network-security-groups), a szolgáltatás által biztosított útmutatásának.
 - Bizonyos is kivetett korlátozásokat az alhálózaton, melyekre telepítve vannak, korlátozza az alkalmazás házirendjeit, útvonalak és kombinálása a virtuális gépek és a szolgáltatási erőforrások ugyanabban az alhálózatban. Ellenőrizze és minden szolgáltatás az adott korlátozásokkal, idővel változhat. Az ilyen szolgáltatások például a Azure NetApp fájlok, a dedikált HSM-be, az Azure Container Instances, App Service-ben. 
 - Szükség esetén szükség lehet a szolgáltatások egy [alhálózati delegált](virtual-network-manage-subnet.md#add-a-subnet) explicit azonosítóként, hogy egy alhálózat üzemeltethető egy adott szolgáltatáshoz. Szolgáltatások delegálása, csatlakozva a kifejezett engedélyek szolgáltatásspecifikus-erőforrások létrehozása a delegált alhálózatban.
-- Tekintse meg példaként a REST API-válasz egy [virtuális alhálózattal rendelkező hálózatot, a meghatalmazott](https://docs.microsoft.com/rest/api/virtualnetwork/virtualnetworks/get#get_virtual_network_with_a_delegated_subnet). A delegált alhálózati modell által használt szolgáltatások átfogó listáját keresztül szerezhetők be a [elérhető delegálásokat](https://docs.microsoft.com/rest/api/virtualnetwork/availabledelegations/list) API-t.
+- Tekintse meg példaként a REST API-válasz egy [virtuális alhálózattal rendelkező hálózatot, a meghatalmazott](https://docs.microsoft.com/rest/api/virtualnetwork/virtualnetworks/get#get-virtual-network-with-a-delegated-subnet). A delegált alhálózati modell által használt szolgáltatások átfogó listáját keresztül szerezhetők be a [elérhető delegálásokat](https://docs.microsoft.com/rest/api/virtualnetwork/availabledelegations/list) API-t.
 
 ### <a name="services-that-can-be-deployed-into-a-virtual-network"></a>Egy virtuális hálózatban a telepített szolgáltatások
 
@@ -51,7 +51,7 @@ Egy virtuális hálózaton belüli szolgáltatások telepítése az alábbi kép
 |-|-|-|
 | Compute | Virtuális gépek: [Linux](../virtual-machines/linux/infrastructure-networking-guidelines.md?toc=%2fazure%2fvirtual-network%2ftoc.json) vagy [Windows](../virtual-machines/windows/infrastructure-networking-guidelines.md?toc=%2fazure%2fvirtual-network%2ftoc.json) <br/>[A Virtual machine scale sets](../virtual-machine-scale-sets/virtual-machine-scale-sets-mvss-existing-vnet.md?toc=%2fazure%2fvirtual-network%2ftoc.json)<br/>[Cloud Service](https://msdn.microsoft.com/library/azure/jj156091): Virtuális hálózat (klasszikus) csak<br/> [Azure Batch](../batch/batch-api-basics.md?toc=%2fazure%2fvirtual-network%2ftoc.json#virtual-network-vnet-and-firewall-configuration)| Nem <br/> Nem <br/> Nem <br/> No²
 | Network (Hálózat) | [Application Gateway - WAF](../application-gateway/application-gateway-ilb-arm.md?toc=%2fazure%2fvirtual-network%2ftoc.json)<br/>[VPN Gateway](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%2ftoc.json)<br/>[Az Azure-tűzfal](../firewall/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) <br/>[Hálózati virtuális berendezések](/windows-server/networking/sdn/manage/use-network-virtual-appliances-on-a-vn) | Igen <br/> Igen <br/> Igen <br/> Nem
-|Adatok|[RedisCache](../azure-cache-for-redis/cache-how-to-premium-vnet.md?toc=%2fazure%2fvirtual-network%2ftoc.json)<br/>[Az Azure SQL Database felügyelt példány](../sql-database/sql-database-managed-instance-connectivity-architecture.md?toc=%2fazure%2fvirtual-network%2ftoc.json)| Igen <br/> Igen <br/> 
+|Data|[RedisCache](../azure-cache-for-redis/cache-how-to-premium-vnet.md?toc=%2fazure%2fvirtual-network%2ftoc.json)<br/>[Az Azure SQL Database felügyelt példány](../sql-database/sql-database-managed-instance-connectivity-architecture.md?toc=%2fazure%2fvirtual-network%2ftoc.json)| Igen <br/> Igen <br/> 
 |Elemzés | [Az Azure HDInsight](../hdinsight/hdinsight-extend-hadoop-virtual-network.md?toc=%2fazure%2fvirtual-network%2ftoc.json)<br/>[Azure Databricks](../azure-databricks/what-is-azure-databricks.md?toc=%2fazure%2fvirtual-network%2ftoc.json) |No² <br/> No² <br/> 
 | Identitás | [Azure Active Directory Domain Services](../active-directory-domain-services/active-directory-ds-getting-started-vnet.md?toc=%2fazure%2fvirtual-network%2ftoc.json) |Nem <br/>
 | Containers | [Az Azure Kubernetes Service (AKS)](../aks/concepts-network.md?toc=%2fazure%2fvirtual-network%2ftoc.json)<br/>[Az Azure Container instance-példány (aci Szolgáltatásban)](https://www.aka.ms/acivnet)<br/>[Az Azure Container Service-motor](https://github.com/Azure/acs-engine) az Azure virtuális hálózat CNI [beépülő modul](https://github.com/Azure/acs-engine/tree/master/examples/vnet)|No²<br/> Igen <br/><br/> Nem

@@ -4,7 +4,7 @@ description: A cikk az Azure Compute, Storage és Networking szolgáltatások Li
 services: virtual-machines-linux
 documentationcenter: virtual-machines-linux
 author: rickstercdn
-manager: jeconnoc
+manager: gwallace
 editor: ''
 ms.assetid: 7965a80f-ea24-4cc2-bc43-60b574101902
 ms.service: virtual-machines-linux
@@ -15,19 +15,19 @@ ms.workload: infrastructure
 ms.date: 11/29/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017, mvc
-ms.openlocfilehash: a5203d75e673a7b8206446553414ff933e00b0b6
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 9d33b478cb848724d0b3747761a99a1269d58b6e
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "60542526"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67671060"
 ---
 # <a name="azure-and-linux"></a>Az Azure és a Linux
 A Microsoft Azure integrált nyilvános felhőszolgáltatások (például elemzési, virtuálisgép-, adatbázis-, mobil-, hálózati, tárolási és webes szolgáltatások) egyre bővülő gyűjteménye&mdash;ideális a megoldások üzemeltetéséhez.  A Microsoft Azure egy skálázható számítási platformot kínál, amely lehetővé teszi, hogy csak a valóban használt funkciókért fizessen, és csak akkor, amikor használja azokat, mindezt helyszíni hardverberuházások nélkül.  Az Azure készen áll a megoldások vertikális és horizontális skálázásakor, bármilyen méretre is lenne szüksége az ügyfelek igényeinek kiszolgálásához.
 
 Ha már ismeri az Amazon AWS különböző funkcióit, tekintse meg az Azure-t és az AWS-t összehasonlító [definícióleképezési dokumentumot](https://azure.microsoft.com/campaigns/azure-vs-aws/mapping/).
 
-## <a name="regions"></a>Régiók
+## <a name="regions"></a>Regions
 A Microsoft Azure-erőforrások világszerte több földrajzi régió között oszlanak meg.  Egy „régió” több adatközpontot jelöl ugyanazon a földrajzi területen. Az Azure jelenleg (2018. augusztus) 42 általánosan elérhető régióval rendelkezik világszerte, és további 12 már be van jelentve – ez több globális régió, mint bármely más felhőszolgáltatónál. A meglévő és az újonnan bejelentett régiók naprakész listája a következő oldalon található:
 
 * [Azure-régiók](https://azure.microsoft.com/regions/)

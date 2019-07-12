@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 06/29/2019
 ms.author: v-adgera
 ms.custom: seodec18
-ms.openlocfilehash: 0b8c2b50e00c8e9727b09a454504d214a3060fe4
-ms.sourcegitcommit: 837dfd2c84a810c75b009d5813ecb67237aaf6b8
+ms.openlocfilehash: 9d4fd798309398dff38081cc66b4071c5dd1f5bf
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67502694"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67670784"
 ---
 # <a name="azure-digital-twins-swagger-reference-documentation"></a>Az Azure digitális Twins Swagger dokumentációja
 
@@ -42,15 +42,15 @@ Az automatikusan generált Swagger-referenciaanyag választékát kínálja a fo
 
 Rövid összefoglaló ismerteti az API-t.
 
-[![Swagger felső](media/how-to-use-swagger/swagger_management_top.PNG)](media/how-to-use-swagger/swagger_management_top.PNG#lightbox)
+[![Swagger felső](media/how-to-use-swagger/swagger-management-top-img.png)](media/how-to-use-swagger/swagger-management-top-img.png#lightbox)
 
 Felügyeleti API-objektum modellek is megtalálható.
 
-[![Swagger-modellek](media/how-to-use-swagger/swagger_management_models.PNG)](media/how-to-use-swagger/swagger_management_models.PNG#lightbox)
+[![Swagger-modellek](media/how-to-use-swagger/swagger-management-models-img.png)](media/how-to-use-swagger/swagger-management-models-img.png#lightbox)
 
 Kiválaszthatja, hogy minden egyes listázott hálózatiobjektum-modellt fő jellemzőinek részletesebb összegzését.
 
-[![Swagger-modell](media/how-to-use-swagger/swagger_management_model.PNG)](media/how-to-use-swagger/swagger_management_model.PNG#lightbox)
+[![Swagger-modell](media/how-to-use-swagger/swagger-management-model-img.png)](media/how-to-use-swagger/swagger-management-model-img.png#lightbox)
 
 A generált Swagger objektummodellt kényelmesek, tekintse meg az összes elérhető az Azure digitális Twins [objektumok és az API-k](./concepts-objectmodel-spatialgraph.md). A fejlesztők használhatják ehhez az erőforráshoz, amikor ezek a megoldások létrehozását az Azure digitális Twins.
 
@@ -64,7 +64,7 @@ Minden felsorolt végpont adatokat is tartalmaz a szükséges kérelem, mint pé
 * Kötelező paraméter adattípusokat.
 * HTTP-metódus az erőforrás eléréséhez.
 
-[![Swagger-végpont](media/how-to-use-swagger/swagger_management_endpoints.PNG)](media/how-to-use-swagger/swagger_management_endpoints.PNG#lightbox)
+[![Swagger-végpont](media/how-to-use-swagger/swagger-management-endpoints-img.png)](media/how-to-use-swagger/swagger-management-endpoints-img.png#lightbox)
 
 Részletesebb ismertetőt, jelölje ki az egyes erőforrások.
 
@@ -74,11 +74,11 @@ A Swagger biztosít hatékony funkciók egyik lehetővé teszi a dokumentáció 
 
 Miután egy adott végpontnak választja, megjelenik **kipróbálás**.
 
-[![Próbálja meg swagger](media/how-to-use-swagger/swagger_management_try.PNG)](media/how-to-use-swagger/swagger_management_try.PNG#lightbox)
+[![Próbálja meg swagger](media/how-to-use-swagger/swagger-management-try-img.png)](media/how-to-use-swagger/swagger-management-try-img.png#lightbox)
 
 Bontsa ki a szakaszt viszi, megjelenik minden szükséges és választható paraméter beviteli mezőket. Adja meg a megfelelő értékeket, és válassza ki **Execute**.
 
-[![Kísérlet történt a swagger](media/how-to-use-swagger/swagger_management_tried.PNG)](media/how-to-use-swagger/swagger_management_tried.PNG#lightbox)
+[![Kísérlet történt a swagger](media/how-to-use-swagger/swagger-management-tried-img.png)](media/how-to-use-swagger/swagger-management-tried-img.png#lightbox)
 
 A teszt végrehajtása, után ellenőrizheti a érkezett válasz adatait.
 
@@ -86,7 +86,7 @@ A teszt végrehajtása, után ellenőrizheti a érkezett válasz adatait.
 
 Minden felsorolt végpont válasz törzsében adatok ellenőrzése a fejlesztési és tesztek is tartalmaz. Ezek közé tartoznak az állapot- és JSON meg szeretné tekinteni a sikeres HTTP-kéréseket.
 
-[![Swagger-válasz](media/how-to-use-swagger/swagger_management_response.PNG)](media/how-to-use-swagger/swagger_management_response.PNG#lightbox)
+[![Swagger-válasz](media/how-to-use-swagger/swagger-management-response-img.png)](media/how-to-use-swagger/swagger-management-response-img.png#lightbox)
 
 A példák is hibakódok javításához vagy javítása sikertelen tesztek segítségével.
 
@@ -120,7 +120,7 @@ Elvégezte az Azure Active Directory eszközregisztrációs:
 
 1. Ezután a következő modális sikeres irányítja.
 
-    [![Swagger-átirányítási modális paneljére](media/how-to-use-swagger/swagger_auth_redirect.png)](media/how-to-use-swagger/swagger_auth_redirect.png#lightbox)
+    [![Swagger-átirányítási modális paneljére](media/how-to-use-swagger/swagger-auth-redirect-img.png)](media/how-to-use-swagger/swagger-auth-redirect-img.png#lightbox)
 
 Interaktív módon az OAuth 2.0 által védett kérelmek tesztelésével kapcsolatos további tudnivalókért tekintse meg a [dokumentációs](https://swagger.io/docs/specification/authentication/oauth2/).
 

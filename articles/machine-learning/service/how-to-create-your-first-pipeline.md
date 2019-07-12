@@ -11,12 +11,12 @@ ms.author: sanpil
 author: sanpil
 ms.date: 05/02/2019
 ms.custom: seodec18
-ms.openlocfilehash: 948594a43cec92aa62386b041ce8c96a0558995e
-ms.sourcegitcommit: c63e5031aed4992d5adf45639addcef07c166224
+ms.openlocfilehash: 564f71c9d90a0fa2721389c09388445149d49787
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67466915"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67795501"
 ---
 # <a name="create-and-run-a-machine-learning-pipeline-by-using-azure-machine-learning-sdk"></a>Hozzon létre, és a egy machine learning-folyamat futtatása az Azure Machine Learning-SDK használatával
 
@@ -188,6 +188,9 @@ except ComputeTargetException:
     
     databricks_compute.wait_for_completion(True)
 ```
+
+Egy részletes példa: egy [példa notebook](https://aka.ms/pl-databricks) a Githubon.
+
 ### <a id="adla"></a>Az Azure Data Lake Analytics
 
 Az Azure Data Lake Analytics egy big data-elemzési platform az Azure-felhőben. Az Azure Machine Learning-folyamat számítási célként használható.
@@ -232,6 +235,8 @@ except ComputeTargetException:
     
     adla_compute.wait_for_completion(True)
 ```
+
+Egy részletes példa: egy [példa notebook](https://aka.ms/pl-adla) a Githubon.
 
 > [!TIP]
 > Az Azure Machine Learning-folyamatokat a Data Lake Analytics-fiók az alapértelmezett data store-ban tárolt adatokkal folytatott csak működik. Ha adatokat kell a munkahelyi egy nem alapértelmezett tároló, használhat egy [ `DataTransferStep` ](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.data_transfer_step.datatransferstep?view=azure-ml-py) képzési előtt az adatok másolásához.

@@ -10,18 +10,18 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: panosper
-ms.openlocfilehash: 73e53e47576b0697c0d09b386bb3e830d976dd04
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: a437927f6ad43f4c3a90433faa5b9fa6f964aa5c
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67606662"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67839231"
 ---
 # <a name="speech-to-text-frequently-asked-questions"></a>Beszédfelismerés – gyakori kérdések
 
 Ha nem találja a kérdésekre adott válaszok a gyakori kérdések, tekintse meg az [más támogatási lehetőségeket](support.md).
 
-## <a name="general"></a>Általános kérdések
+## <a name="general"></a>Általános
 
 **K: Mi a különbség egy alapkonfiguráció modell és a egy egyéni beszéd szöveges modellre?**
 
@@ -83,7 +83,12 @@ Kapcsolattartó [Speech támogatási](mailto:speechsupport@microsoft.com?subject
 
 **A**: A REST API-25, 5 másodpercenként kérelmek korlátozza. Részletek tekintheti meg az oldalak [beszédfelismerés](speech-to-text.md).
 
-Ha további adatvédelmi megfontolások, amelyek nem engedik a custom Speech service használatával, lépjen kapcsolatba a támogatási csatornáit egyikét.
+**K: Hogyan fizetni kettős channel hangot?**
+
+**A**: Ha külön-külön küldje el az egyes csatornák (minden csatorna a saját fájlban), akkor az egyes fájlok időtartama szerint lesznek kiszámlázva. Egyetlen fájl elküldése az egyes csatornák multiplexed együtt, majd meg kell fizetni az egyetlen fájl időtartamán.
+
+> [!IMPORTANT]
+> Ha további adatvédelmi megfontolások, amelyek nem engedik a custom Speech service használatával, lépjen kapcsolatba a támogatási csatornáit egyikét.
 
 ## <a name="importing-data"></a>Adatok importálása
 

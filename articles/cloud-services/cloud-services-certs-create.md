@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/19/2017
 ms.author: jeconnoc
-ms.openlocfilehash: 4ca26c7b8fbfebbce8cfcb9915a7db12e5ad2352
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 82d1114451b677880b0b02234546d9cdb2e743e2
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60337408"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67593047"
 ---
 # <a name="certificates-overview-for-azure-cloud-services"></a>Azure Cloud Services – tanúsítványok áttekintése
 Tanúsítványokat használ az Azure cloud Services ([szolgáltatási tanúsítványok](#what-are-service-certificates)) és a felügyeleti API-hoz való hitelesítéshez használt ([felügyeleti tanúsítványok](#what-are-management-certificates)). Ez a témakör hogyan mindkét tanúsítványtípusok általános áttekintést nyújt a [létrehozása](#create) és üzembe helyezheti őket az Azure-bA.
@@ -39,7 +39,7 @@ Szolgáltatási tanúsítványok tölthet fel az Azure-bA vagy az Azure portal h
 Szolgáltatási tanúsítványok az szolgáltatásokból származó külön-külön kezelhetők, és különböző osztályai felügyelheti. Például egy fejlesztői szolgáltatáscsomagot, amelyre hivatkozik egy tanúsítványt, amely az IT-menedzser korábban már fel van töltve az Azure-bA tölthet fel. Az IT-menedzser kezelheti és megújítása a tanúsítvány (a szolgáltatás konfigurációjának módosítása) anélkül, hogy az új szolgáltatási csomag feltöltése. Anélkül, hogy egy új service-csomag frissítése akkor lehetséges, mert a logikai név, tároló neve és a tanúsítvány helyét a szolgáltatásdefiníciós fájlban, és amíg a tanúsítvány ujjlenyomatát a konfigurációs fájlban megadott. Ha frissíteni szeretné a tanúsítványt, csak akkor kell töltsön fel egy új tanúsítványt, és módosítsa az ujjlenyomat értéket a konfigurációs fájlban.
 
 >[!Note]
->A [Cloud Services – gyakori kérdések](cloud-services-faq.md) cikk tartalmaz néhány hasznos információ a tanúsítványokról.
+>A [Cloud Services – gyakori kérdések – konfigurációs és felügyeleti](cloud-services-configuration-and-management-faq.md) cikk tartalmaz néhány hasznos információ a tanúsítványokról.
 
 ## <a name="what-are-management-certificates"></a>Mik azok a felügyeleti tanúsítványok?
 Felügyeleti tanúsítványok lehetővé teszik a klasszikus üzemi modellben a hitelesítéshez. Számos programok telepítése és eszközök (például a Visual Studio vagy az Azure SDK-t) konfigurálása és a különböző Azure-szolgáltatások üzembe helyezésének automatizálása ezek a tanúsítványok használatával. Ezek nem igazán kapcsolódnak felhőszolgáltatásokhoz. 

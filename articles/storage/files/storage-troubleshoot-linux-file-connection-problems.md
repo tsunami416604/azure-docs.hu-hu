@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 10/16/2018
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 97f737c8d1228bd03baf59f2ebe830f715241299
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 232b4ca2ee4f3137069ed155cc82a5c5e3251420
+ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67449842"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67807278"
 ---
 # <a name="troubleshoot-azure-files-problems-in-linux"></a>A Linux Azure Files-problémák hibaelhárítása
 
@@ -94,19 +94,30 @@ Nincs egyetlen fájl 2000 megnyitott kezelőkkel-kvótát. Ha 2000 megnyitott le
 
 Egyidejű megnyitott leírók számának csökkentése zárja be az egyes kezeli, és próbálkozzon újra a művelettel.
 
+A fájlmegosztás, fájlok vagy könyvtárak megnyitott leíróinak megtekintéséhez használja a [Get-AzStorageFileHandle](https://docs.microsoft.com/powershell/module/az.storage/get-azstoragefilehandle) PowerShell-parancsmagot.  
+
+Zárja be a megnyitott leíróinak fájlmegosztást, könyvtárat vagy fájlt, használja a [Bezárás-AzStorageFileHandle](https://docs.microsoft.com/powershell/module/az.storage/close-azstoragefilehandle) PowerShell-parancsmagot.
+
+> [!Note]  
+> A Get-AzStorageFileHandle és lezárása – AzStorageFileHandle parancsmagok megtalálhatók Az PowerShell modul 2.4-es vagy újabb verziójára. Telepítse a legújabb Az PowerShell-modult, tekintse meg [Azure PowerShell-modul telepítéséhez](https://docs.microsoft.com/powershell/azure/install-az-ps).
+
 <a id="slowfilecopying"></a>
 ## <a name="slow-file-copying-to-and-from-azure-files-in-linux"></a>Lassú fájl másolása és a Linux Azure-fájlokból
 
 - Ha nem rendelkezik egy adott minimális i/o vonatkozó méretbeli követelményt, ajánlott, hogy 1 MiB, az i/o-mérete az optimális teljesítmény érdekében.
-- Ha tudja, éppen kiterjesztése az írási műveletek használatával egy fájl a végleges mérethez, és a szoftver nem kompatibilitási problémák jelentkezhetnek, ha a fájl egy íratlan tail nullák tartalmazza, majd állítsa be a fájl mérete előzetesen már nem kell minden írási egy kiterjesztésének írási.
 - A jobb oldali másolási módszert használják:
     - Használat [AzCopy](../common/storage-use-azcopy.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json) bármely két fájlmegosztások közötti átvitel céljából.
-    - Cp használata a párhuzamos sikerült másolási sebességének növelése, a szálak száma attól függ, a használati esetekhez és a számítási feladatok. Ebben a példában a hat: `find * -type f | parallel --will-cite -j 6 cp {} /mntpremium/ &`.
+    - Cp vagy nn használata a párhuzamos sikerült másolási sebességének növelése, a szálak száma attól függ, a használati esetekhez és a számítási feladatok. A következő példákban hat: 
+    - (cp fogja használni az alapértelmezett blokkméret a fájlrendszer az adatrészlet méretének) CP-példa: `find * -type f | parallel --will-cite -j 6 cp {} /mntpremium/ &`.
+    - (Ez a parancs explicit módon állítja adatrészlet méretének 1 MiB) nn. példa: `find * -type f | parallel --will-cite-j 6 dd if={} of=/mnt/share/{} bs=1M`
     - Például a nyílt forráskódú külső gyártótól származó eszközök:
         - [GNU a párhuzamos](https://www.gnu.org/software/parallel/).
         - [Fpart](https://github.com/martymac/fpart) - fájlok rendezi és partíciókra csomagok őket.
         - [Fpsync](https://github.com/martymac/fpart/blob/master/tools/fpsync) -Fpart használja és a egy fájlmásoló eszközt spustit novou kopii több példány telepítheti át adatait src_dir dst_url.
         - [Többszörös](https://github.com/pkolano/mutil) – több szálon futó cp és md5sum GNU coreutils alapján.
+- Állítsa a fájl méretét előre, már nem kell minden írási egy kiterjesztésének írási segít javítani a forgatókönyvekben, ahol a fájlméret ismert másolás sebessége. Kiterjesztése írások kell kerülni kell, ha állíthatja be az a cél méretét `truncate - size <size><file>` parancsot. Ezt követően `dd if=<source> of=<target> bs=1M conv=notrunc`parancs másol a forrásfájl nem kell ismételten frissítse a célként megadott fájl méretét. Például beállíthatja a cél mérete az összes fájlt szeretné másolni (feltételezik, hogy a megosztás/mnt/megosztás meghajtóhoz lett csatlakoztatva):
+    - `$ for i in `` find * -type f``; do truncate --size ``stat -c%s $i`` /mnt/share/$i; done`
+    - és ezután - írási műveletek párhuzamosan bővítése nélkül másolja a fájlokat: `$find * -type f | parallel -j6 dd if={} of =/mnt/share/{} bs=1M conv=notrunc`
 
 <a id="error115"></a>
 ## <a name="mount-error115-operation-now-in-progress-when-you-mount-azure-files-by-using-smb-30"></a>"Error(115) csatlakoztatása: A művelet folyamatban van"Amikor csatlakoztatja az Azure Files SMB 3.0-ás
@@ -140,6 +151,23 @@ Tallózással keresse meg a tárfiókot, ahol az Azure-fájlmegosztás, kattints
 ### <a name="solution-for-cause-2"></a>Megoldás ok 2
 
 Ellenőrizze a virtuális hálózat és tűzfal-szabályok megfelelően van-e beállítva a tárfiókban. Tesztelése Amennyiben virtuális hálózat vagy a tűzfal-szabályok okozza a problémát, ideiglenesen módosíthatja a beállítás a tárfiók **engedélyezze a hozzáférést minden hálózatból elérhető**. További tudnivalókért lásd: [konfigurálása az Azure Storage-tűzfalak és virtuális hálózatok](https://docs.microsoft.com/azure/storage/common/storage-network-security).
+
+<a id="open-handles"></a>
+## <a name="unable-to-delete-a-file-or-directory-in-an-azure-file-share"></a>Nem sikerült törölni a fájl vagy könyvtár az Azure-fájlmegosztások
+
+### <a name="cause"></a>Ok
+A probléma általában akkor fordul elő, ha a fájl vagy könyvtár tartalmaz egy megnyitott leírót. 
+
+### <a name="solution"></a>Megoldás
+
+Ha az SMB-ügyfelek zárult be minden megnyitott kezeli, és a probléma továbbra is fennáll, tegye az alábbiakat:
+
+- Használja a [Get-AzStorageFileHandle](https://docs.microsoft.com/powershell/module/az.storage/get-azstoragefilehandle) PowerShell-parancsmag használatával megtekintheti a megnyitott leíróinak.
+
+- Használja a [Bezárás-AzStorageFileHandle](https://docs.microsoft.com/powershell/module/az.storage/close-azstoragefilehandle) gombra kattintva zárja be a megnyitott leíróinak PowerShell-parancsmagot. 
+
+> [!Note]  
+> A Get-AzStorageFileHandle és lezárása – AzStorageFileHandle parancsmagok megtalálhatók Az PowerShell modul 2.4-es vagy újabb verziójára. Telepítse a legújabb Az PowerShell-modult, tekintse meg [Azure PowerShell-modul telepítéséhez](https://docs.microsoft.com/powershell/azure/install-az-ps).
 
 <a id="slowperformance"></a>
 ## <a name="slow-performance-on-an-azure-file-share-mounted-on-a-linux-vm"></a>Lassú teljesítmény az Azure-fájlmegosztás csatlakoztatása egy Linux rendszerű virtuális gépen
@@ -191,40 +219,6 @@ A storage-fiók felhasználó használja a fájlok másolása:
 - `Passwd [storage account name]`
 - `Su [storage account name]`
 - `Cp -p filename.txt /share`
-
-## <a name="cannot-connect-to-or-mount-an-azure-file-share"></a>Nem lehet kapcsolódni, illetve egy Azure-fájlmegosztás csatlakoztatása
-
-### <a name="cause"></a>Ok
-
-Ez a probléma gyakori okai a következők:
-
-- Egy Linux-terjesztési nem kompatibilis ügyfél használ. Javasoljuk, hogy a következő Linux-disztribúció használatával kapcsolódhat az Azure-fájlmegosztások:
-
-    |   | SMB 2.1 <br>(Csatlakoztatása a virtuális gépek ugyanazon Azure-régióban) | SMB 3.0 <br>(Csatlakoztatása a helyszíni és a régiók közötti) |
-    | --- | :---: | :---: |
-    | Ubuntu Server | 14.04+ | 16.04+ |
-    | RHEL | 7+ | 7.5+ |
-    | CentOS | 7+ |  7.5+ |
-    | Debian | 8+ |   |
-    | openSUSE | 13.2+ | 42.3+ |
-    | SUSE Linux Enterprise Server | 12 | 12 SP3 + |
-
-- CIFS segédprogramok (cifs-utils) nincsenek telepítve az ügyfélre.
-- A minimális SMB/CIFS, 2.1-es verzió, az ügyfél nincs telepítve.
-- Az SMB 3.0 titkosítás nem támogatott az ügyfélen. Az SMB 3.0 titkosítás Ubuntu 16.4 vagy újabb, valamint SUSE 12.3 és az újabb verzió érhető el. Más disztribúciók kernel 4.11 és újabb verzió szükséges.
-- TCP-porton keresztül 445-ös, ami nem támogatott egy storage-fiókot kíván csatlakozni.
-- Próbál csatlakozni egy Azure-fájlmegosztás, az Azure virtuális, és a virtuális gép nem a storage-fiók ugyanabban a régióban.
-- Ha a [biztonságos átvitelre van szükség]( https://docs.microsoft.com/azure/storage/common/storage-require-secure-transfer) beállítás engedélyezve van a tárfiókon, az Azure Files lehetővé teszi a csak az SMB 3.0-s titkosítással használó kapcsolatok.
-
-### <a name="solution"></a>Megoldás
-
-A probléma megoldásához használja a [eszköz hibaelhárítása az Azure Filesban hibák linuxon](https://gallery.technet.microsoft.com/Troubleshooting-tool-for-02184089). Ezzel az eszközzel:
-
-* Megismerheti, hogyan ellenőrzése a környezetben futtató ügyfélen.
-* Észleli a nem kompatibilis ügyfél-konfiguráció hozzáférési hibát okoz az Azure Files számára.
-* Helyi rögzítés részletes útmutatást biztosít.
-* A diagnosztikai nyomkövetéseket gyűjt.
-
 
 ## <a name="ls-cannot-access-ltpathgt-inputoutput-error"></a>ls: nem érhető el "&lt;elérési út&gt;": Bemeneti/kimeneti hiba
 

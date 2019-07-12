@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 07/18/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: aac1ed82a01477b081f4bc146f199eba87d97859
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: d33172727d4c654614463f69b83f7802cf7fb905
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60309177"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67839609"
 ---
 # <a name="move-data-from-salesforce-by-using-azure-data-factory"></a>Adatok áthelyezése a Salesforce-ból az Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Válassza ki a Data Factory szolgáltatás használ:"]
@@ -52,7 +52,7 @@ Létrehozhat egy folyamatot egy másolási tevékenységgel az adatok áthelyez�
 
 A folyamat létrehozásának legegyszerűbb módja az, hogy használja a **másolása varázsló**. Lásd: [oktatóanyag: Hozzon létre egy folyamatot a másolás varázsló használatával](data-factory-copy-data-wizard-tutorial.md) gyors bemutató létrehozása egy folyamatot az adatok másolása varázsló használatával.
 
-A következő eszközök használatával hozzon létre egy folyamatot: **Az Azure portal**, **Visual Studio**, **Azure PowerShell-lel**, **Azure Resource Manager-sablon**, **.NET API**, és  **REST API-val**. Lásd: [másolási tevékenység oktatóanyagát](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) egy másolási tevékenységgel ellátott adatcsatorna létrehozása a részletes útmutatóját.
+A következő eszközök használatával hozzon létre egy folyamatot: **A Visual Studio**, **Azure PowerShell-lel**, **Azure Resource Manager-sablon**, **.NET API**, és **REST API-val**. Lásd: [másolási tevékenység oktatóanyagát](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) egy másolási tevékenységgel ellátott adatcsatorna létrehozása a részletes útmutatóját.
 
 Az eszközök vagy az API-kat használja, hogy létrehoz egy folyamatot, amely a helyez át adatokat egy forrásadattárból egy fogadó adattárba a következő lépéseket fogja végrehajtani:
 
@@ -124,7 +124,7 @@ Lekérdezés a helyreállíthatóan törölt rekordok a Salesforce Lomtárból, 
 * Lekérdezés az összes többek között a meglévő és a törölt a rekordokat, adja meg a "válassza * MyTable__c a **ahol IsDeleted = 0 vagy IsDeleted = 1**"
 
 ## <a name="json-example-copy-data-from-salesforce-to-azure-blob"></a>JSON-példa: Adatok másolása a Salesforce-ból az Azure Blobba
-Az alábbi példa mintául szolgáló JSON-definíciók, amelyek segítségével létrehoz egy folyamatot használatával tartalmaz a [az Azure portal](data-factory-copy-activity-tutorial-using-azure-portal.md), [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md), vagy [Azure PowerShell-lel](data-factory-copy-activity-tutorial-using-powershell.md). Adatok másolása a Salesforce-ból az Azure Blob Storage mutatnak. Azonban adatok átmásolhatók a conditions stated above fogadóként valamelyik [Itt](data-factory-data-movement-activities.md#supported-data-stores-and-formats) a másolási tevékenységgel az Azure Data Factoryban.
+Az alábbi példa mintául szolgáló JSON-definíciók, amelyek segítségével létrehoz egy folyamatot használatával tartalmaz a [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) vagy [Azure PowerShell-lel](data-factory-copy-activity-tutorial-using-powershell.md). Adatok másolása a Salesforce-ból az Azure Blob Storage mutatnak. Azonban adatok átmásolhatók a conditions stated above fogadóként valamelyik [Itt](data-factory-data-movement-activities.md#supported-data-stores-and-formats) a másolási tevékenységgel az Azure Data Factoryban.
 
 Az alábbiakban a Data Factory-összetevők, amelyek kell létrehozni a forgatókönyv megvalósításához. A listán a következő szakaszok ezeket a lépéseket részleteket nyújtanak.
 
@@ -286,25 +286,25 @@ Lásd: [RelationalSource tulajdonságait](#copy-activity-properties) a Relationa
 
 | Salesforce-típus | . NET-alapú típusa |
 | --- | --- |
-| Auto Number |String |
-| Checkbox |Boolean |
-| Currency (Pénznem) |Decimal |
-| Dátum |DateTime |
-| Dátum/idő |DateTime |
-| E-mail |String |
-| Azonosító |String |
-| Lookup Relationship |String |
-| Multi-Select Picklist |String |
-| Szám |Decimal |
-| Százalék |Decimal |
-| Telefonszám |String |
-| Picklist |String |
-| Text |String |
-| Text Area |String |
-| Text Area (Long) |String |
-| Text Area (Rich) |String |
-| Text (Encrypted) |String |
-| URL-cím |String |
+| Auto Number |Sztring |
+| Checkbox |Logikai |
+| Currency |Decimal |
+| Date |Datetime |
+| Date/Time |Datetime |
+| Email |Karakterlánc |
+| Id |Karakterlánc |
+| Lookup Relationship |Karakterlánc |
+| Multi-Select Picklist |Sztring |
+| Number |Decimal |
+| Percent |Decimal |
+| Phone |Karakterlánc |
+| Picklist |Sztring |
+| Text |Sztring |
+| Text Area |Karakterlánc |
+| Text Area (Long) |Karakterlánc |
+| Text Area (Rich) |Sztring |
+| Text (Encrypted) |Karakterlánc |
+| URL |Karakterlánc |
 
 > [!NOTE]
 > Fogadó-adatkészlet az oszlopok a forrásadatkészlet oszlopok leképezésére, lásd: [az Azure Data Factoryban adatkészletoszlopok leképezése](data-factory-map-columns.md).

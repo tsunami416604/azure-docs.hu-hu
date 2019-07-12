@@ -11,19 +11,19 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 09/29/2017
 ms.author: bwren
-ms.openlocfilehash: c3732dd2fa87b00eec38f88ab828605b33567235
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 46a4544b86648ee99a751d4793013f6104d1d9df
+ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60396605"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67807038"
 ---
 # <a name="automate-azure-monitor-log-processes-with-the-connector-for-microsoft-flow"></a>Az összekötő az Azure Monitor log-folyamatok automatizálása a Microsoft Flow
 [Microsoft Flow](https://ms.flow.microsoft.com) lehetővé teszi, hogy több száz műveletek használatával a különböző szolgáltatások, automatizált munkafolyamatokat hozhat létre. Egy művelet kimenete egy másik lehetővé teszi, hogy hozzon létre a különböző szolgáltatások közötti integráció bemeneteként használható.  Az Azure Log Analytics-összekötő a Microsoft Flow lehetővé teszi a Log Analytics-munkaterületet az Azure Monitor log-lekérdezések által beolvasott adatokat tartalmazó munkafolyamatokat építhet rájuk.
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
 
-Használhatja például a Microsoft Flow LAzure figyelő naplóadatok használja az Office 365 e-mailben értesítést, hibajelentés létrehozása az Azure DevOps, vagy egy Slack-üzenet küldése.  Egy munkafolyamat olyan egyszerű ütemezés szerint vagy néhány művelet, például a levelezés, vagy a tweet érkezésekor egy csatlakoztatott szolgáltatásban is indíthat.  
+Használhatja például a Microsoft Flow e-mail-értesítést, az Office 365-ből az Azure Monitor log adatok felhasználásához, hibajelentés létrehozása az Azure DevOps, vagy egy Slack-üzenet küldése.  Egy munkafolyamat olyan egyszerű ütemezés szerint vagy néhány művelet, például a levelezés, vagy a tweet érkezésekor egy csatlakoztatott szolgáltatásban is indíthat.  
 
 Ebben a cikkben az oktatóanyag bemutatja, hogyan hozhat létre egy folyamatot, amely automatikusan elküldi az e-mailhez, csupán egy példa, hogyan használhatja a Log Analytics-összekötő a Microsoft Flow az Azure Monitor log-lekérdezés eredményeit. 
 
@@ -32,7 +32,7 @@ Ebben a cikkben az oktatóanyag bemutatja, hogyan hozhat létre egy folyamatot, 
 1. Jelentkezzen be a [Microsoft Flow](https://flow.microsoft.com), és válassza ki **saját folyamatok**.
 2. Kattintson a **+ üres folyamat létrehozása**.
 
-## <a name="step-2-create-a-trigger-for-your-flow"></a>2\. lépés: A folyamat eseményindító létrehozása
+## <a name="step-2-create-a-trigger-for-your-flow"></a>2\. lépés: A folyamat eseményindító létrehozása
 1. Kattintson a **keresés több száz összekötő és trigger között**.
 2. Típus **ütemezés** kifejezést a keresőmezőbe.
 3. Válassza ki **ütemezés**, majd válassza ki **ütemezés – ismétlődés**.

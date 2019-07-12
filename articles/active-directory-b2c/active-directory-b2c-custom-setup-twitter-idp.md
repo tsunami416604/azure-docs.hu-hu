@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 09/20/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: cc657e079949b8217031906efeb84049217d6493
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1bf90ec8987ec419131ba21137972a0905e33f19
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66510250"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67654140"
 ---
 # <a name="set-up-sign-in-with-a-twitter-account-by-using-custom-policies-in-azure-active-directory-b2c"></a>Jelentkezzen be Twitter-fiók által létrehozott egyéni szabályzatok az Azure Active Directory B2C használatával
 
@@ -48,7 +48,7 @@ A titkos kulcsot az Azure AD B2C-bérlő korábban rögzített tárolni kívánt
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 2. Győződjön meg arról, hogy használja az Azure AD B2C-bérlő tartalmazó könyvtárba. Válassza ki a **címtár és előfizetés-szűrő** a felső menüben, és válassza ki a bérlő tartalmazó könyvtárra.
 3. Válasszon **minden szolgáltatás** az Azure Portalon, és majd keresse meg és válassza a bal felső sarkában lévő **Azure AD B2C-vel**.
-4. Az Áttekintés oldalon válassza ki a **identitás-kezelőfelületi keretrendszer – előzetes verzió**.
+4. Az Áttekintés oldalon válassza ki a **identitás-kezelőfelületi keretrendszer**.
 5. Válassza ki **Szabályzatbejegyzések** majd **Hozzáadás**.
 6. A **beállítások**, válassza a `Manual`.
 7. Adjon meg egy **neve** a házirend-kulcs. Például: `TwitterSecret`. Az előtag `B2C_1A_` automatikusan hozzáadódik a kulcs neve.
@@ -58,7 +58,7 @@ A titkos kulcsot az Azure AD B2C-bérlő korábban rögzített tárolni kívánt
 
 ## <a name="add-a-claims-provider"></a>A jogcímeket szolgáltató hozzáadása
 
-Ha azt szeretné, hogy a felhasználók számára, hogy jelentkezzen be a Twitter-fiókja, szüksége a fiók, amely az Azure AD B2C-végponton keresztül kommunikálhat egy jogcímszolgáltatótól kell definiálni. A végpont ellenőrzése, hogy egy adott felhasználó rendelkezik hitelesítése Azure AD B2C által használt jogcímeket biztosít. 
+Ha azt szeretné, hogy a felhasználók számára, hogy jelentkezzen be a Twitter-fiókja, szüksége a fiók, amely az Azure AD B2C-végponton keresztül kommunikálhat egy jogcímszolgáltatótól kell definiálni. A végpont ellenőrzése, hogy egy adott felhasználó rendelkezik hitelesítése Azure AD B2C által használt jogcímeket biztosít.
 
 Definiálhat egy Twitter-fiók egy jogcímszolgáltatótól, hozzáadásával, hogy a **ClaimsProviders** elem a bővítmény fájlban a szabályzat.
 
@@ -147,7 +147,7 @@ Most, hogy egyetlen helyen, amelyekkel hozzákapcsolhatja egy műveletet kell. A
     ```XML
     <ClaimsExchange Id="TwitterExchange" TechnicalProfileReferenceId="Twitter-OAUTH1" />
     ```
-    
+
     Frissítse az értéket a **TechnicalProfileReferenceId** , a korábban létrehozott technikai profil azonosítója. Például: `Twitter-OAUTH1`.
 
 3. Mentse a *TrustFrameworkExtensions.xml* fájlt, és töltse fel újra az ellenőrzéshez.

@@ -8,12 +8,12 @@ ms.reviewer: omidm
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/24/2019
-ms.openlocfilehash: c227abce5adcefd16a41c5590e3ff490d138c424
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 8b8c200979b70e145fca64746547b37dee558848
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67441435"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67720429"
 ---
 # <a name="use-enterprise-security-package-in-hdinsight"></a>A HDInsight vállalati biztonsági csomag használata
 
@@ -37,7 +37,7 @@ Automatikusan jönnek létre a következő műveleteket:
 
 Összefoglalva, szüksége a környezet beállításához:
 
-- Active Directory-tartomány (az Azure Active Directory tartományi szolgáltatások által kezelt).
+- Active Directory-tartomány (az Azure Active Directory tartományi szolgáltatások által kezelt). **A tartománynévnek kell lennie a 39 karaktert vagy kevesebb, az Azure HDInsight használata.**
 - Biztonságos LDAP (LDAPS) engedélyezve van az Azure Active Directory tartományi szolgáltatásokban.
 - Megfelelő hálózati kapcsolat a HDInsight virtuális hálózat és az Azure Active Directory tartományi szolgáltatások virtuális hálózat, ha úgy dönt, különálló virtuális hálózatok az őket. A HDInsight virtuális hálózaton belüli virtuális gépek rendelkeznie kell egy virtuális hálózati társviszony-létesítésen keresztül az Azure Active Directory tartományi szolgáltatásokban üzemel. Ha a HDInsight és az Azure Active Directory tartományi szolgáltatások vannak telepítve az azonos virtuális hálózatba, a rendszer automatikusan létrehozza a kapcsolatot, és további semmit nem kell tennie.
 

@@ -14,15 +14,15 @@ ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/26/2019
-ms.author: dadobali
+ms.author: ryanwi
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 45252cc4d45e96c2bde4a4600630ea578a8d3009
-ms.sourcegitcommit: ed66a704d8e2990df8aa160921b9b69d65c1d887
+ms.openlocfilehash: 547eafac8cc1acf2b60416f93804e819a1c549b0
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64946729"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67702764"
 ---
 # <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-android-app"></a>Gyors útmutató: A felhasználók és a Microsoft Graph API hívása Androidos alkalmazásokból
 
@@ -45,7 +45,7 @@ A jelen rövid útmutatóban található kódmintán azt mutatjuk be, hogyan tud
 > * [Manuális] [2. lehetőség: Regisztráljon, és manuális konfigurálása az alkalmazás és a kód a minta](#option-2-register-and-manually-configure-your-application-and-code-sample)
 >
 > ### <a name="option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample"></a>Option 1: Regisztráció és az automatikus állítsa be alkalmazását, és töltse le a kódminta
-> #### <a name="step-1-register-your-application"></a>1. lépés: Alkalmazás regisztrálása
+> #### <a name="step-1-register-your-application"></a>1\. lépés: Alkalmazás regisztrálása
 > Az alkalmazás regisztrálása
 > 1. Nyissa meg az új [az Azure portal - alkalmazásregisztrációk](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/AndroidQuickstartPage/sourceType/docs) ablaktáblán.
 > 1. Adja meg az alkalmazás nevét, majd kattintson a **Regisztráció** elemre.
@@ -53,7 +53,7 @@ A jelen rövid útmutatóban található kódmintán azt mutatjuk be, hogyan tud
 >
 > ### <a name="option-2-register-and-manually-configure-your-application-and-code-sample"></a>Option 2: Regisztráljon, és manuális konfigurálása az alkalmazás és a kód a minta
 >
-> #### <a name="step-1-register-your-application"></a>1. lépés: Alkalmazás regisztrálása
+> #### <a name="step-1-register-your-application"></a>1\. lépés: Alkalmazás regisztrálása
 > Az alkalmazás regisztrálásához és az alkalmazás regisztrációs információinak a megoldáshoz való kézi hozzáadásához kövesse az alábbi lépéseket:
 >
 > 1. Keresse meg a fejlesztők a Microsoft identity platform [alkalmazásregisztrációk](https://aka.ms/MobileAppReg) lapot.
@@ -68,7 +68,7 @@ A jelen rövid útmutatóban található kódmintán azt mutatjuk be, hogyan tud
 > 1. Válassza ki `Configure` , és mentse a ***MSAL konfigurációs*** JSON későbbi használatra. 
 
 > [!div renderon="portal" class="sxs-lookup"]
-> #### <a name="step-1-configure-your-application"></a>1. lépés: Az alkalmazás konfigurálása
+> #### <a name="step-1-configure-your-application"></a>1\. lépés: Az alkalmazás konfigurálása
 > Az ebben a rövid működéséhez kódmintájához hozzá kell átirányítási URI-t a hitelesítési ügynök kompatibilis. 
 > > [!div renderon="portal" id="makechanges" class="nextstepaction"]
 > > [A módosítás alkalmazása]()
@@ -76,11 +76,11 @@ A jelen rövid útmutatóban található kódmintán azt mutatjuk be, hogyan tud
 > > [!div id="appconfigured" class="alert alert-info"]
 > > ![Már konfigurált](media/quickstart-v2-android/green-check.png) Az alkalmazás már konfigurálva van ezekkel az attribútumokkal
 
-#### <a name="step-2-download-the-project"></a>2. lépés: Töltse le a projekt
+#### <a name="step-2-download-the-project"></a>2\. lépés: Töltse le a projekt
 
 * [A mintakód letöltése](https://github.com/Azure-Samples/active-directory-android-native-v2/archive/master.zip)
 
-#### <a name="step-3-configure-your-project"></a>3. lépés: A projekt konfigurálása
+#### <a name="step-3-configure-your-project"></a>3\. lépés: A projekt konfigurálása
 
 > [!div renderon="docs"]
 > Ha a fenti beállítás 1, akkor kihagyhatja ezeket a lépéseket. 

@@ -12,12 +12,12 @@ author: wenjiefu
 ms.author: wenjiefu
 ms.reviewer: sawinark
 manager: craigg
-ms.openlocfilehash: 68a5d5278e1181695695647cff187d4b95624b40
-ms.sourcegitcommit: 084630bb22ae4cf037794923a1ef602d84831c57
+ms.openlocfilehash: 05723a90725992e6b955524a2d35c82d3378ee3d
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67537634"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67621851"
 ---
 # <a name="troubleshoot-package-execution-in-the-ssis-integration-runtime"></a>Csomagok végrehajtása az SSIS integrációs modul az hibaelhárítása
 
@@ -57,11 +57,33 @@ A lehetséges oka, hogy a csomagban használt ADO.NET-szolgáltató nincs telep�
 
 Egy ismert probléma az SQL Server Management Studio (SSMS) régebbi verziójú ezt a hibát okozhat. Ha a csomag tartalmaz egy egyéni összetevő (például SSIS Azure Feature Pack vagy -partnerétől összetevők), amely nincs telepítve a számítógépen, ahol az ssms-ben az üzembe helyezés szolgál, SSMS távolítsa el az összetevőt, és okozza a problémát. Frissítés [SSMS](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) a legújabb verzióra, amely rendelkezik a probléma kijavítva.
 
+### <a name="error-messagessis-executor-exit-code--1073741819"></a>Hibaüzenet: "SSIS-végrehajtó kilépési kód: 1073741819 -es."
+
+* Lehetséges ok és a javasolt művelet:
+  * Ez a hiba lehet az Excel-forrás és cél korlátozás miatt, ha több Excel források vagy célok állnak végrehajtás alatt párhuzamosan több szálon. Kerülő megoldás ezt a korlátozást úgy módosítsa a sorrendben hajtsa végre, vagy válassza el őket az eseményindító "Feladat végrehajtása a csomag" keresztül és a különböző csomagokban megtalál mindent ExecuteOutOfProcess tulajdonság értéke igaz, az Excel-összetevők is.
+
 ### <a name="error-message-there-is-not-enough-space-on-the-disk"></a>Hibaüzenet jelenik meg: "Nem áll elég hely a lemezen"
 
 Ez a hiba azt jelenti, hogy a helyi lemez szerepel az SSIS integrációs modul csomópontját. Ellenőrizze-e a csomag vagy egyéni telepítés fogyassza sok lemezterület:
 * A lemez a csomagot használja fel, ha akkor szabadul fel a csomag végrehajtása befejeződése után.
 * Ha a lemezt az egyéni telepítés használja fel, fog kell leállítani az SSIS integrációs modul, módosítsa a parancsfájlt, és indítsa újra az integration runtime. A teljes Azure blob-tároló megadott egyéni telepítés lesznek másolva az SSIS integrációs modul csomópontját, így ellenőrzi, hogy van-e a tárolóban található minden felesleges tartalmat.
+
+### <a name="error-message-failed-to-retrieve-resource-from-master-microsoftsqlserverintegrationservicesscalescaleoutcontractcommonmasterresponsefailedexception-code300004-descriptionload-file--failed"></a>Hibaüzenet jelenik meg: "Nem sikerült lekérdezni a fő erőforrás. Microsoft.SqlServer.IntegrationServices.Scale.ScaleoutContract.Common.MasterResponseFailedException: Code:300004. Fájl leírása: betöltése "x" nem sikerült. "
+
+* Lehetséges ok és a javasolt művelet:
+  * Az SSIS-tevékenység végrehajtása csomag fájlrendszer (alkalmazáscsomag-fájl vagy soubor projektu), ha ez a hibaüzenet akkor, ha a projektet, a csomagot vagy a konfigurációs fájl nem érhető el az SSIS-tevékenység található a megadott csomag hozzáférési hitelesítő adataival
+    * Ha az Azure File használja:
+      * A fájl elérési útját a következővel kell kezdődnie \\ \\ \<tárfióknevet\>. file.core.windows.net\\\<fájlmegosztás elérési útja\>
+      * A tartományban kell lennie az "Azure"
+      * A felhasználónév legyen \<tárfiók neve\>
+      * A jelszónak kell lennie \<tárelérési kulcs\>
+    * Ha a következők használatával a helyszíni fájlkiszolgálók, ellenőrizze, ha a virtuális hálózat, a csomag eléréséhez szükséges hitelesítő adatokat és az engedély megfelelően van beállítva, hogy az Azure-SSIS integrációs modul elérjék a helyszíni fájlmegosztás
+
+### <a name="error-message-the-file-name--specified-in-the-connection-was-not-valid"></a>Hibaüzenet jelenik meg: "A fájl nevét a"..." a megadott a kapcsolat nem volt érvényes "
+
+* Lehetséges ok és a javasolt művelet:
+  * Érvénytelen fájlnév van megadva.
+  * Ellenőrizze, hogy használ helyett rövid időn (teljes tartománynév) teljes Tartománynevét a Csatlakozáskezelő
 
 ### <a name="error-message-cannot-open-file-"></a>Hibaüzenet jelenik meg: "Fájl nem nyitható meg a"...""
 

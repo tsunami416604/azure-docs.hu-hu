@@ -7,19 +7,20 @@ author: rkarlin
 manager: rkarlin
 editor: ''
 ms.assetid: cbf5003b-76cf-446f-adb6-6d816beca70f
-ms.service: sentinel
+ms.service: azure-sentinel
+ms.subservice: azure-sentinel
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/02/2019
 ms.author: rkarlin
-ms.openlocfilehash: 8e711c0586ce63d4293e2fb0914bbe884b55971f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f9435c4b7649e9b97c209fb554f62228cde95034
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66389963"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67612391"
 ---
 # <a name="connect-your-external-solution-using-common-event-format"></a>A Common Event formattal külső megoldás csatlakoztatása
 
@@ -120,7 +121,7 @@ Ha nem használja az Azure, ügynököt manuálisan telepíti az Azure-Sentinel 
   
  A megfelelő sémát használ a Log Analytics a CEF-események, keresse meg `CommonSecurityLog`.
 
-## <a name="step-2-forward-common-event-format-cef-logs-to-syslog-agent"></a>2\. lépés: Common Event Format (CEF) naplókat továbbítani a Syslog-ügynök
+## <a name="step-2-forward-common-event-format-cef-logs-to-syslog-agent"></a>2\. lépés: Common Event Format (CEF) naplókat továbbítani a Syslog-ügynök
 
 Állítsa be a Syslog-üzeneteket küldjön a CEF formátumot a Syslog-ügynök biztonsági megoldását. Ellenőrizze, hogy az ügynök konfigurációs használja ugyanazokat a paramétereket, amelyek jelennek meg. Általában az alábbiak:
 

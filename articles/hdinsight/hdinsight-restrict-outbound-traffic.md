@@ -6,14 +6,14 @@ ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
-ms.topic: howto
+ms.topic: conceptual
 ms.date: 05/30/2019
-ms.openlocfilehash: af5ddd50556b493cddf27d1ebb766d9bf6105107
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 8bb077242c0a989e100c81d4dfefeb53f4bc90c4
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67433436"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67620696"
 ---
 # <a name="configure-outbound-network-traffic-for-azure-hdinsight-clusters-using-firewall-preview"></a>Kimenő hálózati adatforgalmat tűzfal (előzetes verzió) használata Azure HDInsight-fürtök konfigurálása
 
@@ -81,7 +81,7 @@ A hálózati szabályok megfelelően konfigurálja a HDInsight-fürt létrehozá
    | **Name** | **Protocol (Protokoll)** | **Forrás címe** | **Célcím** | **Célport** | **Megjegyzések** |
    | --- | --- | --- | --- | --- | --- |
    | Rule_1 | UDP | * | * | `123` | Időszolgáltatás |
-   | Rule_2 | Bármely | * | DC_IP_Address_1, DC_IP_Address_2 | `*` | Vállalati biztonsági csomag (ESP) használ, majd vegyen fel egy hálózati IP-címek szakaszában, amely lehetővé teszi a kommunikációt az AAD-DS ESP fürtök esetén. Az IP-címeit az AAD-DS szakaszban lévő tartományvezérlőkre találhatja meg a portálon | 
+   | Rule_2 | Any | * | DC_IP_Address_1, DC_IP_Address_2 | `*` | Vállalati biztonsági csomag (ESP) használ, majd vegyen fel egy hálózati IP-címek szakaszában, amely lehetővé teszi a kommunikációt az AAD-DS ESP fürtök esetén. Az IP-címeit az AAD-DS szakaszban lévő tartományvezérlőkre találhatja meg a portálon | 
    | Rule_3 | TCP | * | A Data Lake Storage-fiók IP-cím | `*` | Ha az Azure Data Lake Storage használ, majd hozzá hálózati szabályt az IP-címek szakaszban ADLS Gen1 és Gen2 SNI probléma megoldása érdekében. Ez a beállítás irányítja a forgalmat tűzfal, amelyek nagy mennyiségű adat terhelés magasabb költségeket eredményezhet, de a forgalom naplózza, és a tűzfalnaplók naplózható. A Data Lake-tárfiókra IP-címét határozza meg. Egy powershell-parancsot használhatja például `[System.Net.DNS]::GetHostAddresses("STORAGEACCOUNTNAME.blob.core.windows.net")` feloldani az FQDN IP-címet.|
    | Rule_4 | TCP | * | * | `12000` | (Nem kötelező) Ha a Log Analytics használ, hozzon létre hálózati szabályt az IP-cím szakasz a Log Analytics-munkaterülethez való kommunikáció engedélyezése. |
 

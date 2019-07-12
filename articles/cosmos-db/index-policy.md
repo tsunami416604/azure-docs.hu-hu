@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 06/14/2019
 ms.author: thweiss
-ms.openlocfilehash: 3f19668cc4fb4f4f4a900c157aa79de83ad1b79b
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 791779bfc2262bb13dc2c3a192d9c74ae69cb30e
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67163729"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67722535"
 ---
 # <a name="indexing-policies-in-azure-cosmos-db"></a>Az Azure Cosmos DB indexelési szabályzatok
 
@@ -73,6 +73,8 @@ A gyökér elérési útját tartalmazza rendelkezik minden olyan indexelési h�
 - Zárja ki a gyökér elérési úthoz szelektív elérési utakat indexelni kell felvenni.
 
 - Normál karakterek, amelyek tartalmazzák az elérési utakra: alfanumerikus karaktereket és _ (aláhúzás), nem kell az elérési útvonal karakterláncának körüli idézőjeleket (például "/ path /?") karaktert. Az elérési utakat speciális karaktereket, escape-körüli dupla idézőjelek között az elérési útvonal karakterláncának kell (például "/\"elérési út – abc\"/?"). Ha különleges karaktereket az elérési úthoz, akkor is escape-minden biztonsági elérési útját. Funkcionálisan nem létrehozni, akkor eltérést Ha escape-e minden elérési út csak az azokat, amelyeket speciális karakterek Vs.
+
+- A rendszer tulajdonság "etag" ki van zárva a alapértelmezés szerint az indexelés, kivéve, ha az etag indexelő foglalt elérési útja bekerül.
 
 Lásd: [ebben a szakaszban](how-to-manage-indexing-policy.md#indexing-policy-examples) házirend példák az indexelés.
 

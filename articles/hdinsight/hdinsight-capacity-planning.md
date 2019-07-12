@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: hrasheed
-ms.openlocfilehash: c910ed9f1160d30e1d4bda2e85b029eb2ad85b02
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: bd2284211c2fdc5a346c6ffb113f89fe311a358c
+ms.sourcegitcommit: 1572b615c8f863be4986c23ea2ff7642b02bc605
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66237154"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67786502"
 ---
 # <a name="capacity-planning-for-hdinsight-clusters"></a>HDInsight-fürtök kapacitástervezése
 
@@ -82,7 +82,7 @@ Egy fürthöz méretezés a virtuális gép csomópontjainak mennyiségét hatá
 
 A fürt típusától függően a munkavégző csomópontok számának növelése ad hozzá a számítási kapacitás (például a több mag), de előfordulhat, hogy a feldolgozott adatok tárolása a memóriában támogatásához az egész fürt számára szükséges memória teljes mennyiségétől is hozzáadhat. Csakúgy, mint a kiválasztott virtuális gép méretét és típusát, a fürt megfelelő méretezés kiválasztása általában elérte tapasztalati, szimulált számítási feladatokat vagy a tesztcsoportos lekérdezések használatával.
 
-Ki lehet terjeszteni a terhelés megnövekedett igényeket kell kielégíteni, majd horizontális le, amikor már nincs szükség további csomópontokat a fürthöz. További információkért lásd: [méretezési HDInsight-fürtök](hdinsight-scaling-best-practices.md).
+Ki lehet terjeszteni a terhelés megnövekedett igényeket kell kielégíteni, majd horizontális le, amikor már nincs szükség további csomópontokat a fürthöz. A [automatikus méretezési funkciója](hdinsight-autoscale-clusters.md) lehetővé teszi, automatikus méretezés, a fürt alapján előre meghatározott, mérőszámok és az időzítésüket. A fürtök manuális méretezéssel kapcsolatos további információkért lásd: [méretezési HDInsight-fürtök](hdinsight-scaling-best-practices.md).
 
 ### <a name="cluster-lifecycle"></a>Fürt életciklusa
 

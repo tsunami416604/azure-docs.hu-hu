@@ -7,12 +7,12 @@ ms.service: container-instances
 ms.topic: article
 ms.date: 07/19/2018
 ms.author: danlep
-ms.openlocfilehash: 3c1c83bb0c3e46a7eaab519050d9c556e2cc1a7a
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 2be640c8c7773ebd1fb5c83e67e3f0762d011e85
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60563086"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67657580"
 ---
 # <a name="mount-a-secret-volume-in-azure-container-instances"></a>Az Azure Container Instances szolgáltatásban titkos kötet csatlakoztatása
 
@@ -21,11 +21,11 @@ Használja a *titkos* kötetet adjon meg bizalmas adatokat egy tárolócsoport t
 Minden *titkos kulcs* kötetek élvezik [tmpfs][tmpfs], a RAM-alapú fájlrendszer; állandó tárolóba soha nem írt azok tartalmát.
 
 > [!NOTE]
-> *Titkos kulcs* kötetek Linux-tárolók jelenleg korlátozva. Ismerje meg, hogyan adhatók át a biztonságos környezeti változókat a Windows- és Linux-tárolókhoz [környezeti változókat](container-instances-environment-variables.md). Idővel az összes funkció a Windows-tárolók dolgozunk, miközben Ön aktuális eltérésekről platform a [kvóták és régiók rendelkezésre állása az Azure Container Instances](container-instances-quotas.md).
+> *Titkos kulcs* kötetek Linux-tárolók jelenleg korlátozva. Ismerje meg, hogyan adhatók át a biztonságos környezeti változókat a Windows- és Linux-tárolókhoz [környezeti változókat](container-instances-environment-variables.md). Idővel az összes funkció a Windows-tárolók dolgozunk, amíg annak aktuális platform különbségek a [áttekintése](container-instances-overview.md#linux-and-windows-containers).
 
 ## <a name="mount-secret-volume---azure-cli"></a>Csatlakoztassa a titkos kötet – Azure CLI-vel
 
-Egy vagy több titkokkal-tárolók üzembe helyezését az Azure CLI-vel, például a `--secrets` és `--secrets-mount-path` paramétereket a [az tároló létrehozása] [ az-container-create] parancsot. Ebben a példában csatlakoztatja egy *titkos* két titkos kulcsokat, a "mysecret1" és "mysecret2," a kötet `/mnt/secrets`:
+Egy vagy több titkokkal-tárolók üzembe helyezését az Azure CLI-vel, például a `--secrets` és `--secrets-mount-path` paramétereket a [az tároló létrehozása][az-container-create] parancsot. Ebben a példában csatlakoztatja egy *titkos* két titkos kulcsokat, a "mysecret1" és "mysecret2," a kötet `/mnt/secrets`:
 
 ```azurecli-interactive
 az container create \
@@ -36,7 +36,7 @@ az container create \
     --secrets-mount-path /mnt/secrets
 ```
 
-A következő [az tároló exec] [ az-container-exec] a kimenet mutatja, nyissa meg egy rendszerhéjat a futó tárolót, a titkos köteten lévő fájlok listázása, majd azok tartalmát megjelenítése:
+A következő [az tároló exec][az-container-exec] a kimenet mutatja, nyissa meg egy rendszerhéjat a futó tárolót, a titkos köteten lévő fájlok listázása, majd azok tartalmát megjelenítése:
 
 ```console
 $ az container exec --resource-group myResourceGroup --name secret-volume-demo --exec-command "/bin/sh"
@@ -60,7 +60,7 @@ Amikor egy YAML-sablonból telepít, a titkos értékkel kell **Base64-kódolás
 A következő YAML-sablon meghatározása egy tárolócsoportot egy tároló, amely csatlakoztatja a *titkos* kötet `/mnt/secrets`. A titkos kötet rendelkezik két titkos kulcsokat, a "mysecret1" és "mysecret2."
 
 ```yaml
-apiVersion: '2018-06-01'
+apiVersion: '2018-10-01'
 location: eastus
 name: secret-volume-demo
 properties:
@@ -88,7 +88,7 @@ tags: {}
 type: Microsoft.ContainerInstance/containerGroups
 ```
 
-A YAML-sablon üzembe helyezéséhez mentse az előző YAML-nevű `deploy-aci.yaml`, majd hajtsa végre a [az tároló létrehozása] [ az-container-create] parancsot a `--file` paramétert:
+A YAML-sablon üzembe helyezéséhez mentse az előző YAML-nevű `deploy-aci.yaml`, majd hajtsa végre a [az tároló létrehozása][az-container-create] parancsot a `--file` paramétert:
 
 ```azurecli-interactive
 # Deploy with YAML template
@@ -108,7 +108,7 @@ A következő Resource Manager-sablon meghatározása egy tárolócsoportot egy 
 <!-- https://github.com/Azure/azure-docs-json-samples/blob/master/container-instances/aci-deploy-volume-secret.json -->
 [!code-json[volume-secret](~/azure-docs-json-samples/container-instances/aci-deploy-volume-secret.json)]
 
-A Resource Manager-sablon üzembe helyezéséhez mentse a fenti JSON-nevű `deploy-aci.json`, majd hajtsa végre a [az csoport központi telepítésének létrehozása] [ az-group-deployment-create] parancsot a `--template-file` paramétert:
+A Resource Manager-sablon üzembe helyezéséhez mentse a fenti JSON-nevű `deploy-aci.json`, majd hajtsa végre a [az csoport központi telepítésének létrehozása][az-group-deployment-create] parancsot a `--template-file` paramétert:
 
 ```azurecli-interactive
 # Deploy with Resource Manager template

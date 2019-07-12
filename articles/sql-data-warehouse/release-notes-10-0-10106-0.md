@@ -5,17 +5,17 @@ services: sql-data-warehouse
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: ''
-ms.date: 05/13/2019
+ms.date: 07/03/2019
 author: anumjs
 ms.author: anjangsh
 ms.reviewer: jrasnick
 manager: craigg
-ms.openlocfilehash: 9e5f10c2b4c2108626db79ad9821a8b07e57a2e3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ee01ebad9e03aaa34911db49ce344d51b6a756d8
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66417713"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67798702"
 ---
 # <a name="azure-sql-data-warehouse-release-notes"></a>Az Azure SQL Data Warehouse kibocsátási megjegyzései
 
@@ -25,22 +25,33 @@ Ez a cikk összefoglalja a új funkciókat és fejlesztéseket a legutóbbi kiad
 
 Új funkciók alatt jelennek meg, minden régióban, ellenőrizze a példány és a legújabb Azure SQL DW kibocsátási megjegyzések a szolgáltatás rendelkezésre állási a telepített verzió. Az Azure SQL DW verziójának ellenőrzéséhez az adatraktár SQL Server Management Studio (SSMS) használatával csatlakozhat, és futtathat `SELECT @@VERSION AS 'SQL Data Warehouse';` adhatja vissza az Azure SQL DW aktuális verzióját.
 
-Példa a kimenetre: ![Az SQL Data Warehouse-verzió](./media/release-notes/sql_data_warehouse_version.png)
+Példa a kimenetre:
+
+![Az SQL Data Warehouse-verzió](./media/release-notes/sql_data_warehouse_version.png)
 
 Az Azure SQL DW használata az azonosított, erősítse meg, amely a kiadási dátum alkalmazták.
 
-## <a name="may-2019"></a>2019\. május
+## <a name="july-2019"></a>2019. július
 
 | Szolgáltatás fejlesztései | Részletek |
 | --- | --- |
-|**Dinamikus adatmaszkolás (előzetes verzió)**|Dinamikus adatok maszkolása (DDM) megakadályozza a jogosulatlan elérését, a bizalmas adatok az adattárház által obfuscating, a működés közbeni a lekérdezési eredményekben, megadhat maszkolási szabályok alapján. További információkért lásd: [SQL Database dinamikus adatmaszkolása](/azure/sql-database/sql-database-dynamic-data-masking-get-started).|
-|**Számítási feladatok fontossági már általánosan elérhető**|Számítási feladat felügyeleti besorolást és a fontosság teszi lehetővé a lekérdezések futtatása sorrendje befolyásolja. A számítási feladatok fontossági további információkért lásd: a [besorolási](sql-data-warehouse-workload-classification.md) és [fontosság](sql-data-warehouse-workload-importance.md) című áttekintő cikkeket a dokumentációban. Tekintse meg a [MUNKATERHELÉS-OSZTÁLYOZÓ létrehozása](/sql/t-sql/statements/create-workload-classifier-transact-sql?view=azure-sqldw-latest) doc is.<br/><br/>Tekintse meg a számítási feladatok fontossági in action rendezvényen a videók alatt:<br/> -[Számítási feladatok tartománykezelési fogalmaival](https://www.youtube.com/embed/QcCRBAhoXpM)<br/> -[Munkaterhelés-felügyeleti forgatókönyvek](https://www.youtube.com/embed/_2rLMljOjw8)|
+|**A materializált nézet (előzetes verzió)**|A Materialized View továbbra is fennáll a nézet definícióját lekérdezés által visszaadott adatok, és az alapjául szolgáló táblák az adatok változásának megfelelően automatikusan frissül. Ez növeli a teljesítményt az összetett lekérdezések (általában az összekapcsolásokhoz és az aggregációhoz lekérdezések) egyszerű karbantartási műveleteket garantál. További információkért lásd: </br> - [Hozzon létre MATERIALIZED VIEW AS SELECT &#40;Transact-SQL&#41;](/sql/t-sql/statements/create-materialized-view-as-select-transact-sql?view=azure-sqldw-latest)</br> - [ALTER MATERIALIZED VIEW &#40;Transact-SQL&#41;](/sql/t-sql/statements/alter-materialized-view-transact-sql?view=azure-sqldw-latest) </br> - [Az Azure SQL Data Warehouse támogatott T-SQL-utasítások](/azure/sql-data-warehouse/sql-data-warehouse-reference-tsql-statements)|
+|**A bővítés T-SQL**|A T-SQL nyelv támadási SQL Data warehouse-hoz kibővített közé tartozik a támogatása: </br> - [IDŐZÓNA:](/sql/t-sql/queries/at-time-zone-transact-sql?view=azure-sqldw-latest)</br> - [STRING_AGG](/sql/t-sql/functions/string-agg-transact-sql?view=azure-sqldw-latest)|
+|**Gyorsítótár-(előzetes verzió) eredménye**|DBCC-parancsok hozzáadva a korábban közzétett eredmény kezeléséhez állítsa be a gyorsítótár. További információkért lásd: </br> - [DBCC DROPRESULTSETCACHE &#40;Transact-SQL&#41;](/sql/t-sql/database-console-commands/dbcc-dropresultsetcache-transact-sql?view=azure-sqldw-latest)  </br> - [DBCC SHOWRESULTCACHESPACEUSED &#40;Transact-SQL&#41;](/sql/t-sql/database-console-commands/dbcc-showresultcachespaceused-transact-sql?view=azure-sqldw-latest) </br></br> Is megtekintheti az új result_set_cache oszlopa [sys.dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?view=azure-sqldw-latest) , hogy mutat be egy végrehajtott lekérdezés használatakor az eredményt állítsa be a gyorsítótár.|
+|**Rendezett fürtözött oszlopcentrikus index (előzetes verzió)**|Új oszlop, column_store_order_ordinal, hozzáadott [sys.index_columns](/sql/relational-databases/system-catalog-views/sys-index-columns-transact-sql?view=azure-sqldw-latest) rendezett fürtözött oszlopcentrikus indexet az oszlopok sorrendje azonosításához.|
+
+## <a name="may-2019"></a>2019. május
+
+| Szolgáltatás fejlesztései | Részletek |
+| --- | --- |
+|**Dinamikus adatmaszkolás (előzetes verzió)**|A dinamikus adatmaszkolás (DDM) megakadályozza az illetéktelen hozzáférést az adattárházban található bizalmas adatokhoz úgy, hogy azokat menet közben titkosítja a lekérdezés eredményeiben, a megadott maszkolási szabályok szerint. További információkért lásd: [SQL Database dinamikus adatmaszkolása](/azure/sql-database/sql-database-dynamic-data-masking-get-started).|
+|**Számítási feladatok fontossági már általánosan elérhető**|A számítási feladatok felügyeleti osztályozása és fontossága által szabályozható a lekérdezések futási sorrendje. A számítási feladatok fontossági további információkért lásd: a [besorolási](sql-data-warehouse-workload-classification.md) és [fontosság](sql-data-warehouse-workload-importance.md) című áttekintő cikkeket a dokumentációban. Tekintse meg a [MUNKATERHELÉS-OSZTÁLYOZÓ létrehozása](/sql/t-sql/statements/create-workload-classifier-transact-sql?view=azure-sqldw-latest) doc is.<br/><br/>Tekintse meg a számítási feladatok fontossági in action rendezvényen a videók alatt:<br/> -[Számítási feladatok tartománykezelési fogalmaival](https://www.youtube.com/embed/QcCRBAhoXpM)<br/> -[Munkaterhelés-felügyeleti forgatókönyvek](https://www.youtube.com/embed/_2rLMljOjw8)|
 |**A bővítés T-SQL**|A T-SQL nyelv támadási SQL Data warehouse-hoz kibővített közé tartozik a támogatása: </br> - [TRIM](/sql/t-sql/functions/trim-transact-sql?view=azure-sqldw-latest)|
 |**JSON-függvények**|Üzleti elemzők használhatják a jól ismert T-SQL nyelv lekérdezése és kezelik a JSON-adatok a következő új JSON-funkciók használata az Azure Data Warehouse-ként formázott dokumentumok:</br> - [ISJSON](/sql/t-sql/functions/isjson-transact-sql?view=azure-sqldw-latest)</br> - [JSON_VALUE](/sql/t-sql/functions/json-value-transact-sql?view=azure-sqldw-latest)</br> -  [JSON_QUERY](/sql/t-sql/functions/json-query-transact-sql?view=azure-sqldw-latest)</br> -  [JSON_MODIFY](/sql/t-sql/functions/json-modify-transact-sql?view=azure-sqldw-latest)</br> - [OPENJSON](/sql/t-sql/functions/openjson-transact-sql?view=azure-sqldw-latest)|
 |**Gyorsítótár-(előzetes verzió) eredménye**|Eredményhalmaz gyorsítótárazás lehetővé teszi, hogy miközben idő-elemzés az üzleti adatelemzők és jelentéskészítő felhasználók azonnali lekérdezések válaszidejét. További információkért lásd:</br> - [ALTER DATABASE (Transact-SQL)](/sql/t-sql/statements/alter-database-transact-sql?view=azure-sqldw-latest)</br> - [Az ALTER DATABASE SET beállításai (Transact-SQL)](/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azure-sqldw-latest)</br> - [SET RESULT SET CACHING (Transact-SQL)](/sql/t-sql/statements/set-result-set-caching-transact-sql?view=azure-sqldw-latest)</br> - [SET Statement (Transact-SQL)](/sql/t-sql/statements/set-statements-transact-sql)</br> - [sys.databases (Transact-SQL)](/sql/relational-databases/system-catalog-views/sys-databases-transact-sql?view=azure-sqldw-latest)|
-|**Rendezett fürtözött oszlopcentrikus index (előzetes verzió)**|Oszlopcentrikus kulcsfontosságú, és a hatékony lekérdezése a nagy mennyiségű adat tárolásához. Minden táblához, osztja fel a bejövő adatok sorcsoportok és a egy sorcsoport űrlapok minden oszlop egy szegmens lemezre vonatkozóan.  Rendezett fürtözött oszlopcentrikus indexek további optimalizálhatja a lekérdezés végrehajtása hatékony szegmens eltávolítási engedélyezésével.   További információkért lásd:</br> -  [(Az Azure SQL Data Warehouse) tábla létrehozása](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?view=azure-sqldw-latest)</br> -  [CREATE COLUMNSTORE INDEX (Transact-SQL)](/sql/t-sql/statements/create-columnstore-index-transact-sql?view=azure-sqldw-latest).|
+|**Rendezett fürtözött oszlopcentrikus index (előzetes verzió)**|Az oszlopcentrikus index fontos eszköze a nagy mennyiségű adatok tárolásának és hatékony lekérdezésének. Az index minden táblában sorcsoportokba osztja a bejövő adatokat, a lemezen pedig a sorcsoportok mindegyik oszlopa egy szegmenst alkot.  A rendezett fürtözött oszlopcentrikus indexek a szegmensek hatékony kiiktatásával tovább optimalizálják a lekérdezések végrehajtását.   További információkért lásd:</br> -  [(Az Azure SQL Data Warehouse) tábla létrehozása](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?view=azure-sqldw-latest)</br> -  [CREATE COLUMNSTORE INDEX (Transact-SQL)](/sql/t-sql/statements/create-columnstore-index-transact-sql?view=azure-sqldw-latest).|
 
-## <a name="march-2019"></a>2019\. március
+## <a name="march-2019"></a>2019. március
 
 | Szolgáltatás fejlesztései | Részletek |
 | --- | --- |
@@ -58,7 +69,7 @@ Az Azure SQL DW használata az azonosított, erősítse meg, amely a kiadási d�
 | --- | --- |
 | | |
 
-## <a name="january-2019"></a>2019\. január
+## <a name="january-2019"></a>2019. január
 
 ### <a name="service-improvements"></a>Szolgáltatás fejlesztései
 
@@ -76,7 +87,7 @@ Az Azure SQL DW használata az azonosított, erősítse meg, amely a kiadási d�
 |Egyik sem | |
 | | |
 
-## <a name="december-2018"></a>2018\. december
+## <a name="december-2018"></a>2018. december
 
 ### <a name="service-improvements"></a>Szolgáltatás fejlesztései
 
@@ -88,7 +99,7 @@ Az Azure SQL DW használata az azonosított, erősítse meg, amely a kiadási d�
 |**Oszlopcentrikus háttér egyesítése**|Alapértelmezés szerint az Azure SQL Data Warehouse (Azure SQL DW) adatokat tárol Oszlopalapú formátum nevű micro partícióval rendelkező [naplóbájtot](sql-data-warehouse-memory-optimizations-for-columnstore-compression.md). Egyes esetekben memória miatt indexnél korlátozza a build vagy az adatok betöltési idő, előfordulhat, hogy tömöríti a naplóbájtot kevesebb mint 1 millió sor optimális mérete. Törlések miatt is válnak Naplóbájtot töredezett. Kis- és töredezett naplóbájtot a nagyobb memóriát, valamint a nem elég hatékony lekérdezés-végrehajtás eredményez. Ezzel a kiadással az Azure SQL DW a oszlopcentrikus háttér-karbantartási feladat egyesíti a kis tömörített naplóbájtot jobban memória, és a lekérdezés végrehajtása gyorsabb, nagyobb naplóbájtot létrehozásához.
 | | |
 
-## <a name="october-2018"></a>2018\. október
+## <a name="october-2018"></a>2018. október
 
 ### <a name="service-improvements"></a>Szolgáltatás fejlesztései
 

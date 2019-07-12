@@ -9,13 +9,13 @@ services: search
 ms.service: search
 ms.devlang: dotnet
 ms.topic: quickstart
-ms.date: 06/20/2019
-ms.openlocfilehash: a5cbd2036f92c27709d92d0cf415cc9837645fb8
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.date: 07/11/2019
+ms.openlocfilehash: ddbe517510a3f7d1295c8970c13020baa3efacf0
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67485599"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67840315"
 ---
 # <a name="quickstart-create-an-azure-search-index-in-c-using-the-net-sdk"></a>Gyors útmutató: Az Azure Search-index létrehozása C# a .NET SDK használatával
 > [!div class="op_single_selector"]
@@ -39,7 +39,7 @@ Ez a rövid útmutató az alábbi szolgáltatások, eszközök és adatok haszn�
 
 + [A Visual Studio](https://visualstudio.microsoft.com/downloads/), bármely kiadás esetén. Mintakód és útmutató az ingyenes közösségi kiadása lettek tesztelve.
 
-+ Mintakód-index és a dokumentumok szerepelnek ebben a cikkben, valamint részeként a [Visual Studio-megoldás](https://github.com/Azure-Samples/azure-search-dotnet-samples/quickstart) ebben a rövid útmutatóban.
++ Mintakód-index és a dokumentumok szerepelnek ebben a cikkben, valamint részeként a [Visual Studio-megoldás](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/quickstart) ebben a rövid útmutatóban.
 
 + [Az Azure Search szolgáltatás létrehozása](search-create-service-portal.md) vagy [keresse meg a meglévő service](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) az aktuális előfizetésben. Ebben a rövid útmutatóban egy ingyenes szolgáltatás használhatja.
 
@@ -195,11 +195,14 @@ A "Hotels" index egyszerű és összetett mezőket, ahol egy egyszerű mező ér
     }
     ```
 
-    A Mezőtulajdonságok határozzák meg, hogyan használható az alkalmazások. Ha például a `IsSearchable` attribútumot hozzá van rendelve minden mezőnek szerepelnie kell a teljes szöveges keresés. A .NET SDK-ban alapértelmezés szerint a rendszer explicit módon nem engedélyezett viselkedés mező letiltása.
+    A Mezőtulajdonságok határozzák meg, hogyan használható az alkalmazások. Ha például a `IsSearchable` attribútumot hozzá kell rendelni minden mezőnek szerepelnie kell a teljes szöveges keresés. 
+    
+    > [!NOTE]
+    > A .NET SDK-t, a mezők kell lennie explicit módon megjelölve [ `IsSearchable` ](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.field.issearchable?view=azure-dotnet), [ `IsFilterable` ](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.field.isfilterable?view=azure-dotnet), [ `IsSortable` ](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.field.issortable?view=azure-dotnet), és [ `IsFacetable` ](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.field.isfacetable?view=azure-dotnet). Ez a viselkedés ellentétben a REST API, amely implicit módon lehetővé teszi, hogy tesznek elérhetővé; ilyenek alapuló adattípus (Ha például egyszerű karakterláncmező kereshető automatikusan).
 
     Pontosan egy mezőt az indexben típusú `string` kell lennie a *kulcs* mező, amely egyedileg azonosítja az egyes dokumentumok. Ebben a sémában a lényeg `HotelId`.
 
-    Az index a leírás mezők a választható analyzer tulajdonságot használja, meg, ha szeretné felülbírálni az alapértelmezett standard Lucene-elemzőt használja. A `description_fr` mező a francia Lucene-elemzőt használja ([FrLucene](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.analyzername.frlucene?view=azure-dotnet)), mert a francia szöveg tárolja. A `description` a nem kötelező Microsoft nyelvi elemzőt használ ([EnMicrosoft](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.analyzername.enmicrosoft?view=azure-dotnet)).
+    Az index, a leírás mezők használja az opcionális [ `analyzer` ](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.field.analyzer?view=azure-dotnet) tulajdonság, a megadott való felülbírálják az alapértelmezett standard Lucene-elemzőt. A `description_fr` mező a francia Lucene-elemzőt használja ([FrLucene](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.analyzername.frlucene?view=azure-dotnet)), mert a francia szöveg tárolja. A `description` a nem kötelező Microsoft nyelvi elemzőt használ ([EnMicrosoft](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.analyzername.enmicrosoft?view=azure-dotnet)).
 
 1. A program.cs fájlban, hozzon létre egy példányt a [ `SearchServiceClient` ](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchserviceclient?view=azure-dotnet) osztály kapcsolódni a szolgáltatáshoz, az alkalmazás konfigurációs fájljában (appsettings.json) tárolt értékének a felhasználásával. 
 
@@ -550,13 +553,11 @@ A [ `DocumentsSearchResult` ](https://docs.microsoft.com/dotnet/api/microsoft.az
 
 ## <a name="clean-up"></a>A fölöslegessé vált elemek eltávolítása
 
-Ha végzett az index, és törölni szeretné, hívja a `Indexes.Delete` metódust a `SearchServiceClient`.
+Dolgozik, a saját előfizetése, esetén célszerű egy projektet a végén, hogy azonosítani, hogy az erőforrások továbbra is kell-e létrehozott. Erőforrások bal oldali futó is költséget takaríthat meg költséget. Külön-külön törölje az erőforrást, vagy törölje az erőforráscsoportot törli az erőforrások teljes készletében.
 
-```csharp
-serviceClient.Indexes.Delete("hotels");
-```
+Megkeresheti és kezelheti az erőforrásokat a portál használatával a **összes erőforrás** vagy **erőforráscsoportok** hivatkozásra a bal oldali navigációs ablaktáblán.
 
-Ha is befejezte a keresési szolgáltatás, erőforrásokat törölheti az Azure Portalról.
+Ha használ egy ingyenes szolgáltatás, ne feledje, hogy korlátozódnak három indexek, indexelők és adatforrások. A korlátja alatt maradjunk a portál egyes elemeire törölheti. 
 
 ## <a name="next-steps"></a>További lépések
 

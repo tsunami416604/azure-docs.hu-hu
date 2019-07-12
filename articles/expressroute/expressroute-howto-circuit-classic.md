@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: ganesr;cherylmc
 ms.custom: seodec18
-ms.openlocfilehash: 1d6fc4a54ca600bd094a68e5eaab1306e7e831ac
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: e7c3368408b06f13139b9126dfecad0a82857134
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60370266"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67657292"
 ---
 # <a name="modify-an-expressroute-circuit-using-powershell-classic"></a>PowerShell (klasszikus) használatával egy ExpressRoute-kapcsolatcsoport módosítása
 
@@ -21,6 +21,7 @@ ms.locfileid: "60370266"
 > * [Azure Portal](expressroute-howto-circuit-portal-resource-manager.md)
 > * [PowerShell](expressroute-howto-circuit-arm.md)
 > * [Azure CLI](howto-circuit-cli.md)
+> * [Azure Resource Manager-sablon](expressroute-howto-circuit-resource-manager-template.md)
 > * [Videó – Azure portal](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-an-expressroute-circuit)
 > * [PowerShell (klasszikus)](expressroute-howto-circuit-classic.md)
 >
@@ -125,7 +126,7 @@ Egyes ExpressRoute-kapcsolatcsoport tulajdonságainak kapcsolat befolyásolása 
 A következő feladatok leállás nélkül teheti meg:
 
 * Engedélyezi vagy letiltja az ExpressRoute prémium bővítmény az ExpressRoute-kapcsolatcsoport esetében.
-* Növelje az ExpressRoute-kapcsolatcsoport sávszélességét, feltéve, hogy kapacitás érhető el a porton. A sávszélesség csökkentése azonban a kapcsolat nem támogatott. 
+* Növelje az ExpressRoute-kapcsolatcsoport sávszélességét, feltéve, hogy kapacitás érhető el a porton. A sávszélesség csökkentése azonban a kapcsolat nem támogatott.
 * Módosítsa a mérési terv díjas a korlátlan. Mérési csomag módosítása a korlátlan, a forgalmi díjas adatok nem támogatott.
 * Engedélyezheti és letilthatja az *klasszikus működés engedélyezése*.
 
@@ -154,8 +155,8 @@ A kapcsolatcsoport most már rendelkezik az ExpressRoute prémium bővítmény f
 
 > [!IMPORTANT]
 > Ez a művelet sikertelen lehet, ha erőforrást, amely nagyobb, mint a megengedett a standard szintű kapcsolatcsoportot használ.
-> 
-> 
+>
+>
 
 #### <a name="considerations"></a>Megfontolandó szempontok
 
@@ -189,8 +190,8 @@ Ellenőrizze a [ExpressRoute – gyakori kérdések](expressroute-faqs.md) támo
 > Az ExpressRoute-kapcsolatcsoport hozza létre újra, ha nincs elegendő kapacitás a meglévő porton is. A kapcsolatcsoport nem frissíthető, ha nincsenek további kapacitás érhető el az adott helyhez.
 >
 > Megszakítás nélküli ExpressRoute-kapcsolatcsoport sávszélességét nem csökkenthető. Alacsonyabb verziójúra változtatása sávszélesség megköveteli, hogy az ExpressRoute-kapcsolatcsoport megszüntetése, és ezután építse ki újra a egy új ExpressRoute-kapcsolatcsoportot.
-> 
-> 
+>
+>
 
 #### <a name="resize-a-circuit"></a>Méretezze át a kapcsolatcsoport
 

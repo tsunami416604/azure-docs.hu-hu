@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.author: jobreen
 author: jjbfour
 ms.date: 06/20/2019
-ms.openlocfilehash: bbb907a7d73036352d4f5b8f36ccefacd89681ae
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: fe470165d11b24ffb1df704ecaa9804663fc9e5c
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67478861"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67796032"
 ---
 # <a name="custom-resource-proxy-reference"></a>Egyéni erőforrás-Proxy – referencia
 
@@ -323,6 +323,7 @@ Content-Type: application/json; charset=utf-8
 ## <a name="next-steps"></a>További lépések
 
 - [Az Azure egyéni erőforrás-szolgáltatók áttekintése](./custom-providers-overview.md)
-- [Oktatóanyag: Az Azure egyéni erőforrás-szolgáltató létrehozása és telepítése az egyéni erőforrások](./create-custom-provider.md)
+- [Rövid útmutató: Az Azure egyéni erőforrás-szolgáltató létrehozása és telepítése az egyéni erőforrások](./create-custom-provider.md)
+- [Oktatóanyag: Egyéni műveletek és az erőforrások létrehozása az Azure-ban](./tutorial-custom-providers-101.md)
 - [Útmutató: Az egyéni műveletek hozzáadása az Azure REST API-val](./custom-providers-action-endpoint-how-to.md)
 - [Hivatkozás: Egyéni erőforrás-gyorsítótár – referencia](./custom-providers-proxy-cache-resource-endpoint-reference.md)

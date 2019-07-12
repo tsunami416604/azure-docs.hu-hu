@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 2/23/2018
-ms.author: aljo, subramar
-ms.openlocfilehash: ecb7ac4d3359142d3aef247e4b918f517e10c3bb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: subramar
+ms.openlocfilehash: 2dcb678e8350ae0de3317db3682f0e51e27ab6f5
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64926132"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67621936"
 ---
 # <a name="service-fabric-container-networking-modes"></a>A Service Fabric tárolóalapú hálózatkezelés módjai
 
@@ -204,10 +204,10 @@ Ha egy tárolószolgáltatás újraindítja vagy áthelyezi egy másik csomópon
    | --- | --- | --- |
    |Prioritás |2000 | |
    |Name (Név) |Custom_Dns  | |
-   |source |VirtualNetwork | |
+   |Source |VirtualNetwork | |
    |Cél | VirtualNetwork | |
    |Szolgáltatás | DNS (UDP/53) | |
-   |Műveletek | Engedélyezés  | |
+   |Action | Allow  | |
    | | |
 
 4. Adja meg a hálózati módját az egyes szolgáltatások az alkalmazásjegyzékben: `<NetworkConfig NetworkType="Open">`. **Nyissa meg** hálózatkezelés mód eredményez a szolgáltatás egy dedikált IP-cím beolvasása. Ha egy mód nincs megadva, a szolgáltatás alapértelmezett **nat** mód. A következő jegyzékfájl példában a `NodeContainerServicePackage1` és `NodeContainerServicePackage2` szolgáltatások is minden egyes figyelő ugyanazt a portot (mindkét szolgáltatás által figyelt `Endpoint1`). Ha hálózati módban nyissa meg van adva, `PortBinding` konfigurációk nem adható meg.

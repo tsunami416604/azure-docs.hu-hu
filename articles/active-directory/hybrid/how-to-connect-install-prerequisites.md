@@ -16,12 +16,12 @@ ms.date: 05/08/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f2916c9aba7d404ff4ad380d249bd507fadf71ea
-ms.sourcegitcommit: 5cb0b6645bd5dff9c1a4324793df3fdd776225e4
+ms.openlocfilehash: b0392a40ef948d96e613da9127629f52b02deb97
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/21/2019
-ms.locfileid: "67310078"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67655816"
 ---
 # <a name="prerequisites-for-azure-ad-connect"></a>Az Azure AD Connect előfeltételei
 Ez a témakör ismerteti az előfeltételeket és az Azure AD Connect hardverkövetelményeit.
@@ -49,7 +49,7 @@ Előtt az Azure AD Connectet telepíti, akkor kell néhány dolgot.
 
 ### <a name="azure-ad-connect-server"></a>Az Azure AD Connect-kiszolgáló
 >[!IMPORTANT]
->Az Azure AD Connect-kiszolgáló kritikus identitási adatokat tartalmaz, és leírtak szerint a 0. rétegbeli összetevő kezelendők [az Active Directory felügyeleti réteg modellje](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material#ADATM_BM)
+>Az Azure AD Connect-kiszolgáló kritikus identitási adatokat tartalmaz, és leírtak szerint a 0. rétegbeli összetevő kezelendők [az Active Directory felügyeleti réteg modellje](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material)
 
 * Az Azure AD Connect nem telepíthető Small Business Server vagy Windows Server Essentials 2019 előtt (a Windows Server Essentials 2019 támogatott). A kiszolgáló Windows Server standard vagy jobb kell használnia.
 * Az Azure AD Connect telepítése tartományvezérlőn nem ajánlott, mert ajánlott biztonsági eljárások és megakadályozhatja, hogy az Azure AD Connect telepítése megfelelően szigorúbb beállításokat.

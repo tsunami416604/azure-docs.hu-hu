@@ -7,16 +7,16 @@ ms.topic: conceptual
 ms.date: 06/11/2019
 ms.author: tvoellm
 ms.reviewer: sngun
-ms.openlocfilehash: eb8c98df0f015244adf06a9b57f2223509f1f081
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: cc39cc09259c1ae681e1fee070777575e2788323
+ms.sourcegitcommit: 441e59b8657a1eb1538c848b9b78c2e9e1b6cfd5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67082962"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67827846"
 ---
-# <a name="certificate-based-authentication-for-an-azure-ad-identity-to-access-keys-from-an-azure-cosmos-account"></a>Az Azure AD identitás kulcsokhoz történő hozzáféréshez egy Azure Cosmos-fiókból a Tanúsítványalapú hitelesítés
+# <a name="certificate-based-authentication-for-an-azure-ad-identity-to-access-keys-from-an-azure-cosmos-db-account"></a>Tanúsítvány alapú hitelesítést egy Azure AD identitás, a tárelérési kulcsok az Azure Cosmos DB-fiók
 
-Ügyféltanúsítvány-alapú hitelesítés lehetővé teszi, hogy az ügyfélalkalmazás az Azure Active Directory (Azure AD) használatával hitelesíteni ügyféltanúsítvánnyal. Tanúsítvány alapú hitelesítést végezhet egy gépen, ahol meg kell identitást, például egy helyszíni gépre vagy virtuális gép az Azure-ban. Az alkalmazás ezután olvashatja az Azure Cosmo DB kulcsok közvetlenül az alkalmazás a kulcsok nélkül. Ez a cikk bemutatja, hogyan hozzon létre egy minta Azure AD-alkalmazást, konfigurálja a tanúsítványalapú hitelesítéshez, jelentkezzen be Azure-ban az új alkalmazásazonosító, és ezután lekéri a kulcsok az Azure Cosmos-fiókjából. Ez a cikk az identitás beállítása az Azure Powershellt, és biztosít egy C# mintaalkalmazást, amely hitelesíti, és az Azure Cosmos-fiók kulcsok keresztül fér hozzá.  
+Ügyféltanúsítvány-alapú hitelesítés lehetővé teszi, hogy az ügyfélalkalmazás az Azure Active Directory (Azure AD) használatával hitelesíteni ügyféltanúsítvánnyal. Tanúsítvány alapú hitelesítést végezhet egy gépen, ahol meg kell identitást, például egy helyszíni gépre vagy virtuális gép az Azure-ban. Az alkalmazás ezután olvashatja az Azure Cosmos DB-kulcsok közvetlenül az alkalmazás a kulcsok nélkül. Ez a cikk bemutatja, hogyan hozzon létre egy minta Azure AD-alkalmazást, konfigurálja a tanúsítványalapú hitelesítéshez, jelentkezzen be Azure-ban az új alkalmazásazonosító, és ezután lekéri a kulcsok az Azure Cosmos-fiókjából. Ez a cikk az identitás beállítása az Azure Powershellt, és biztosít egy C# mintaalkalmazást, amely hitelesíti, és az Azure Cosmos-fiók kulcsok keresztül fér hozzá.  
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -26,7 +26,7 @@ ms.locfileid: "67082962"
 
 ## <a name="register-an-app-in-azure-ad"></a>Alkalmazás regisztrálása az Azure ad-ben
 
-Ebben a lépésben a minta-webalkalmazáshoz regisztrálni fogja az Azure AD-fiókjával. Ez az alkalmazás újabb segítségével olvassa el a kulcsokat az Azure Cosmos-fiókjából. Használja az alábbi lépéseket kell regisztrálni egy alkalmazást: 
+Ebben a lépésben a minta-webalkalmazáshoz regisztrálni fogja az Azure AD-fiókjával. Ez az alkalmazás újabb segítségével olvassa el a kulcsokat az Azure Cosmos DB-fiókból. Használja az alábbi lépéseket kell regisztrálni egy alkalmazást: 
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 
@@ -280,4 +280,4 @@ Az előző szakaszban hasonlóan megtekintheti a tevékenységnapló ellenőrzé
 
 * [Biztonságos Azure Key Vault használatával az Azure Cosmos-kulcsok](access-secrets-from-keyvault.md)
 
-* [Az Azure Cosmos DB biztonsági attribútumok](cosmos-db-security-attributes.md)
+* [Biztonsági attribútumok az Azure Cosmos DB-hez](cosmos-db-security-attributes.md)

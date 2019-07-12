@@ -7,19 +7,20 @@ author: rkarlin
 manager: rkarlin
 editor: ''
 ms.assetid: d51d2e09-a073-41c8-b396-91d60b057e6a
-ms.service: sentinel
+ms.service: azure-sentinel
+ms.subservice: azure-sentinel
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/17/2019
 ms.author: rkarlin
-ms.openlocfilehash: 36d38aa82b4f0ec8d7d9ef6ebb1145b1fcc334df
-ms.sourcegitcommit: 156b313eec59ad1b5a820fabb4d0f16b602737fc
+ms.openlocfilehash: 188febf090ddb3f685f9d3c3b94d822f15bbcfcb
+ms.sourcegitcommit: 80aaf27e3ad2cc4a6599a3b6af0196c6239e6918
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67190575"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67673767"
 ---
 # <a name="connect-windows-security-events"></a>A Windows biztonsági eseményeinek csatlakoztatása 
 
@@ -30,10 +31,10 @@ ms.locfileid: "67190575"
 A Windows-kiszolgálók az Azure Sentinel-munkaterülethez kapcsolódó összes biztonsági eseményt streamelheti. Ez a kapcsolat lehetővé teszi megjelenítheti az irányítópultokat, egyéni riasztásokat is létrehozhat és vizsgálat javítása. Ez nagyobb betekintést kaphat a szervezet hálózati biztosít, és javítja a biztonsági művelet képességeket.  Események streamelése választhatja ki:
 
 - **Az összes esemény** – az összes Windows biztonsági és AppLocker-eseményeket.
-- **Közös** -eseményeinek naplózási célokra szabványos készletét. Ez egy teljes felhasználói auditnapló tartalmazza. A készlet például felhasználói bejelentkezéseket és a felhasználói kijelentkezésre (event ID 4634) tartalmazza. Például a biztonsági csoportok változásait, legfontosabb tartomány tartományvezérlő Kerberos műveleti és az eseményeket, amelyek a szervezetek által ajánlott műveletek naplózási tartalmazza.
+- **Közös** -eseményeinek naplózási célokra szabványos készletét. Ez egy teljes felhasználói auditnapló tartalmazza. A készlet például felhasználói bejelentkezési és felhasználói kijelentkezési események (event ID 4634) is tartalmaz. Például a biztonsági csoportok változásait, legfontosabb tartomány tartományvezérlő Kerberos műveleti és az eseményeket, amelyek a szervezetek által ajánlott műveletek naplózási tartalmazza.
 
 Eseményeket, amelyek nagyon kevés a Rendszeríró a közös állítja be a fő motiváció kiválasztása az összes esemény keresztül csökkentése és a meghatározott események kiszűrésére.
-- **Minimális** -eseményeket, amelyek esetleg jelzik a potenciális fenyegetések egy kis készletét. Ha engedélyezi ezt a beállítást, akkor tudja a teljes auditnaplót.  Ez csak olyan eseményeket, amelyek esetleg jelzik a sikeres biztonsági incidenseinek és a fontos eseményekről, amelyek nagyon kevés üzenettel rendelkező vonatkozik. Például a felhasználó sikeres és sikertelen bejelentkezés (esemény azonosítók 4624, 4625-ös számú) tartalmazza, de jelentkezzen ki, amely a naplózás fontos, de nem értelmezhető az észlelést, és viszonylag nagy mennyiségű nem tartalmaz. Ezen adatok mennyisége a legtöbb, a bejelentkezési események és folyamat létrehozása event (esemény azonosítója 4688).
+- **Minimális** -eseményeket, amelyek esetleg jelzik a potenciális fenyegetések egy kis készletét. Ha engedélyezi ezt a beállítást, akkor tudja a teljes auditnaplót.  Ez csak olyan eseményeket, amelyek esetleg jelzik a sikeres biztonsági incidenseinek és a fontos eseményekről, amelyek nagyon kevés üzenettel rendelkező vonatkozik. Például a felhasználó sikeres és sikertelen bejelentkezés (esemény azonosítók 4624, 4625-ös számú) tartalmazza, de nem tartalmaz információt, amely a naplózás fontos, de nem értelmezhető az észlelést, és viszonylag nagy mennyiségű kijelentkezést. Ezen adatok mennyisége a legtöbb a bejelentkezési események és folyamat létrehozása event (esemény azonosítója 4688).
 - **Nincs** – nincs biztonsági és AppLocker-eseményeket.
 
 > [!NOTE]

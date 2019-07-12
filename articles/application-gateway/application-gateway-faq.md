@@ -8,12 +8,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 6/1/2019
 ms.author: victorh
-ms.openlocfilehash: 25779cd62f70df41a7734d2f8097504923dcb3a3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 71f1beb68171613fe926ba4d87a13ef58cac1edf
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66430881"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67655274"
 ---
 # <a name="frequently-asked-questions-about-application-gateway"></a>Az Application Gateway kapcsolatos gyakori kérdések
 
@@ -21,7 +21,7 @@ ms.locfileid: "66430881"
 
 Az alábbiakban gyakori kérdések az Azure Application Gateway-ről.
 
-## <a name="general"></a>Általános kérdések
+## <a name="general"></a>Általános
 
 ### <a name="what-is-application-gateway"></a>Mi az Application Gateway?
 
@@ -45,7 +45,7 @@ Lásd: [HTTP/2-támogatás](https://docs.microsoft.com/azure/application-gateway
 
 ### <a name="what-resources-are-supported-as-part-of-a-backend-pool"></a>Milyen erőforrások háttérkészlet részeként támogatottak?
 
-Lásd: [háttérerőforrásokhoz támogatott](https://docs.microsoft.com/azure/application-gateway/application-gateway-components#backend-pool).
+Lásd: [háttérerőforrásokhoz támogatott](https://docs.microsoft.com/azure/application-gateway/application-gateway-components#backend-pools).
 
 ### <a name="in-what-regions-is-application-gateway-available"></a>Mely régiókban érhető el az Application Gateway?
 

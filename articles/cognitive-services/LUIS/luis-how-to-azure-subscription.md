@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 06/18/2019
+ms.date: 07/10/2019
 ms.author: diberry
-ms.openlocfilehash: 7f82bf5a40df0554d4f98b2d835fcbd69279be43
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: dedc498ebc910b448b1684136c288b2045780e00
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67204161"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67797954"
 ---
 # <a name="using-subscription-keys-with-your-luis-app"></a>Előfizetési kulcsok használata a LUIS-appal
 
@@ -32,6 +32,8 @@ Teszteléshez és prototípus csak az ingyenes (F0) csomagot használja. Éles r
 
 Hoz létre a [előrejelzési végponti erőforrás](get-started-portal-deploy-app.md#create-the-endpoint-resource) az Azure Portalon. Ehhez az erőforráshoz csak használandó végpont előrejelzési lekérdezések. Ne használja ezt az erőforrást módosítások az alkalmazás szerzői műveletekhez részben.
 
+A Language Understanding erőforrás vagy a Cognitive Services-erőforrás is létrehozhat. Language Understanding erőforrás létrehozásakor, a bevált gyakorlat az postpend az erőforrástípust az erőforrás neve. 
+
 <a name="programmatic-key" ></a>
 <a name="authoring-key" ></a>
 <a name="endpoint-key" ></a>
@@ -45,6 +47,15 @@ Hoz létre a [előrejelzési végponti erőforrás](get-started-portal-deploy-ap
 <a name="assign-endpoint-key"></a>
 <a name="assign-resource"></a>
 
+### <a name="using-resource-from-luis-portal"></a>A LUIS-portál használata
+
+Ha a LUIS-portálról az erőforrás használja, nem kell tudni, hogy a kulcs és a hely. Ehelyett, ismernie kell az erőforrás-bérlő, előfizetés és erőforrás neve.
+
+Egyszer, [hozzárendelése](#assign-resource-key-to-luis-app-in-luis-portal) az erőforrást a LUIS-alkalmazás a LUIS-portálon, a kulcs és a helyen az lekérdezés előrejelzési végpont URL-cím a kezelés szakaszhoz részeként biztosított **kulcsokat és a végpont beállításait** lap.
+ 
+### <a name="using-resource-from-rest-api-or-sdk"></a>A REST API vagy SDK használata
+
+Ha az erőforrás a REST-API(s) vagy az SDK-t használ, akkor a kulcs és a hely ismernie kell. Ez az információ áll rendelkezésre a kezelés szakaszhoz lekérdezés előrejelzési végpont URL-címbe **kulcsokat és a végpont beállításait** oldal, valamint az Azure Portalon, az erőforrás áttekintése és a kulcsok oldalon látható módon.
 
 ## <a name="assign-resource-key-to-luis-app-in-luis-portal"></a>Az erőforráskulcs hozzárendelése a LUIS-portál a LUIS-alkalmazás
 

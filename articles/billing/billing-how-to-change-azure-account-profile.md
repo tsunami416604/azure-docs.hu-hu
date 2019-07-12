@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 04/29/2019
 ms.author: banders
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f61396d8fb0f02fe77f5ee35560f45a0c4698a10
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 87de721f596eb4148939c00bc4b4db270a87c24e
+ms.sourcegitcommit: 0ebc62257be0ab52f524235f8d8ef3353fdaf89e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65850768"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67724108"
 ---
 # <a name="change-the-profile-information-for-your-azure-account"></a>Az Azure-fiókjával profilinformációinak módosítása
 
@@ -87,10 +87,16 @@ Marketing e-mailek forgalmat fogadó kikapcsolásához:
 1. Nyissa meg a [űrlapot](https://account.microsoft.com/profile/permissions-link-request) kérelmet küldeni a profil e-mail-címen. Módosítsa a beállításokat az e-mailben kap egy hivatkozást.
 2. A hivatkozásra kattintva nyissa meg a **kommunikációs engedélyek kezelése** lapot. Ezen a lapon látható, amely az e-mail-cím van kérte, hogy marketingcélú üzeneteire típusú. Törölje minden olyan témakörök, amelyek közül választhatnak, és válassza ki a kívánt **mentése**.
 
-
 ![Példa a kommunikáció engedélyek kezelésére szolgáló lap](./media/billing-how-to-change-azure-account-profile/manage-communication-permissions.png)
 
 Ha kikapcsolja a marketinganyagot, továbbra is kaphat szolgáltatási értesítések, a fiók alapján.
+
+## <a name="change-the-subscription-name"></a>Az előfizetés nevének módosítása
+
+1. Jelentkezzen be a [az Azure portal](https://portal.azure.com)válassza **előfizetés** a bal oldali panelen, majd válassza ki az előfizetést, amelyhez szeretné nevezni.
+1. Válassza ki **áttekintése**, majd válassza ki **átnevezése** a parancssávon.
+    ![Azure-előfizetés átnevezése – példa](./media/billing-how-to-change-azure-account-profile/rename-sub.png)
+1. Miután módosította a nevét, válassza ki a **mentése**.
 
 ## <a name="need-help-contact-us"></a>Segítség Kapcsolatfelvétel.
 

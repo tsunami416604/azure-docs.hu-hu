@@ -4,7 +4,7 @@ description: Megtanulhatja, hogyan hozhat létre és kezelhet egy Windows virtu�
 services: virtual-machines-windows
 documentationcenter: ''
 author: cynthn
-manager: jeconnoc
+manager: gwallace
 editor: tysonn
 tags: azure-resource-manager
 ms.assetid: ''
@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/22/2017
 ms.author: cynthn
-ms.openlocfilehash: 748bc08e003d398e96ef55493e4f3b0bf6b7da28
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 21b423aa900d4d47c1ae1239b6197280be8cada2
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61034756"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67719892"
 ---
 # <a name="create-and-manage-windows-vms-in-azure-using-python"></a>Létrehozása és kezelése Windows virtuális gépek az Azure-ban a Python használatával
 

@@ -11,18 +11,18 @@ ms.topic: article
 ms.date: 10/27/2016
 ms.author: sumuth
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: 1838dbb627a6dec46f817101fc1d0cca0961ef77
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7b6d38f7755ebd97791959a5a414b09fe4ac769b
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64574177"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67718012"
 ---
 # <a name="faq-for-cleardb-mysql-databases-with-azure-app-service"></a>ClearDB MySQL-adatbázisok használata az Azure App Service szolgáltatásban – gyakori kérdések
 Ez a GYIK használatával, és az Azure Web Appshez az adatbázisok a ClearDB MySQL vásárlásával kapcsolatos gyakori kérdésekre ad választ.
 
 > [!IMPORTANT]
-> 2018\. június 13. a ClearDB továbbítjuk jelenleg a számlázás alapját a Microsoft a ClearDB közvetlen számlázási modellt az Azure-alapú ügyfelek. Ebben a cikkben található információk már elavult. Már nem sikerült létrehozni vagy frissíteni a ClearDB-adatbázis, amely az Azure-ban lett létrehozva.
+> 2018. június 13. a ClearDB továbbítjuk jelenleg a számlázás alapját a Microsoft a ClearDB közvetlen számlázási modellt az Azure-alapú ügyfelek. Ebben a cikkben található információk már elavult. Már nem sikerült létrehozni vagy frissíteni a ClearDB-adatbázis, amely az Azure-ban lett létrehozva.
 >
 > További részletek és a következő lépések: [átvált a ClearDB-service-csomagok](https://w2.cleardb.net/important-change-of-billing-notice-for-all-azure-cleardb-service-plans/).
 
@@ -80,7 +80,7 @@ Nem. További felhasználók nem hozható létre, de további adatbázist a Clea
 Igen, alapszintű sorozat adatbázisok is lehet frissíteni a helyben (alapszintű 60 alapszintű 500 keresztül). Haladó sorozat lehet helyben (és Pro 1000 Pro 125) kivételével Pro 60 frissítve. Pro 60 adatbázis frissítése jelenleg nem támogatott. 
 
 ## <a name="when-i-migrate-my-resources-from-one-subscription-to-another-does-my-cleardb-mysql-database-get-migrated-as-well"></a>Át tudom telepíteni az erőforrások egy előfizetésből egy másikba, ha nem a ClearDB MySQL-adatbázis települnek át is?
-Végrehajtásakor erőforrás-migrálás, előfizetések között bizonyos [korlátozások](azure-resource-manager/resource-group-move-resources.md#app-service-limitations) vonatkoznak. A ClearDB MySQL-adatbázis egy külső szolgáltatás, és ezért nem települnek át az Azure-előfizetés áttelepítése során. Ha nem kezeli az Azure-erőforrások áttelepítése előtt a MySQL-adatbázis áttelepítése, a ClearDB MySQL-adatbázisok letiltható. Manuálisan át először adatbázisait, és hajtsa végre az Azure-előfizetés áttelepítése a webalkalmazás. 
+Végrehajtásakor erőforrás-migrálás, előfizetések között bizonyos [korlátozások](azure-resource-manager/move-support-resources.md) vonatkoznak. A ClearDB MySQL-adatbázis egy külső szolgáltatás, és ezért nem települnek át az Azure-előfizetés áttelepítése során. Ha nem kezeli az Azure-erőforrások áttelepítése előtt a MySQL-adatbázis áttelepítése, a ClearDB MySQL-adatbázisok letiltható. Manuálisan át először adatbázisait, és hajtsa végre az Azure-előfizetés áttelepítése a webalkalmazás. 
 
 ## <a name="i-hit-the-spending-limit-on-my-subscription-i-removed-the-limit-and-my-app-service-is-online-however-the-database-is-not-accessible-how-do-i-re-enable-the-cleardb-database"></a>A költségkeret kattintsunk az előfizetéshez. Ha eltávolítottam a korlát, és az App Service-ben online állapotban, de az adatbázis nem érhető el. Hogyan engedélyezhetem újból a ClearDB-adatbázis?
 Kapcsolattartó [ClearDB támogatási](https://www.cleardb.com/developers/help/support) engedélyezheti újra az adatbázist. Adja meg azokat a saját Azure-előfizetés információkat és az adatbázis nevével.

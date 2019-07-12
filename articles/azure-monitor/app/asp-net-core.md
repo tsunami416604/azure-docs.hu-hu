@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 05/22/2019
 ms.author: mbullwin
-ms.openlocfilehash: 7fe5a4f5a5d1d254918f1b4f997acfb9cf67a75b
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: 5ea7ec41ccc721e8eafda56aa7463505ba089845
+ms.sourcegitcommit: 441e59b8657a1eb1538c848b9b78c2e9e1b6cfd5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67272440"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67827811"
 ---
 # <a name="application-insights-for-aspnet-core-applications"></a>Application Insights az ASP.NET Core-alkalmazások
 
@@ -177,7 +177,7 @@ Ha nem adja meg a projekt `_Layout.cshtml`, továbbra is felvehetőek [az ügyf�
 Testre szabhatja az Application Insights SDK for ASP.NET Core, az alapértelmezett konfiguráció módosítása. Lehet, hogy ismeri a konfiguráció módosításának használatával az Application Insights SDK-t az ASP.NET felhasználói `ApplicationInsights.config` vagy módosításával `TelemetryConfiguration.Active`. Eltérően az ASP.NET Core konfigurációjának módosítása Az ASP.NET Core SDK hozzáadása az alkalmazáshoz, és konfigurálja az ASP.NET Core beépített [függőségi beszúrást](https://docs.microsoft.com/aspnet/core/fundamentals/dependency-injection). A szinte az összes konfigurációs módosítások a `ConfigureServices()` módszere a `Startup.cs` osztályhoz, kivéve, ha más módon irányítja. Az alábbi szakaszok nyújtanak további információt.
 
 > [!NOTE]
-> Az ASP.NET Core-alkalmazások, módosítja a konfigurációt módosításával `TelemetryConfiguration.Active` nem ajánlott.
+> Az ASP.NET Core-alkalmazások, módosítja a konfigurációt módosításával `TelemetryConfiguration.Active` nem támogatott.
 
 ### <a name="using-applicationinsightsserviceoptions"></a>ApplicationInsightsServiceOptions használatával
 
@@ -314,6 +314,23 @@ using Microsoft.ApplicationInsights.Channel;
     }
 ```
 
+### <a name="disable-telemetry-dynamically"></a>Telemetria dinamikusan letiltása
+
+Ha le kívánja tiltani telemetriai feltételesen és dinamikusan, esetleg elhárítható `TelemetryConfiguration` példányon, amelyen az ASP.NET Core függőségi injektálási tároló bárhol a kódba, és állítsa be `DisableTelemetry` azt a jelzőt.
+
+```csharp
+    public void ConfigureServices(IServiceCollection services)
+    {
+        services.AddApplicationInsightsTelemetry();
+    }
+
+    public void Configure(IApplicationBuilder app, IHostingEnvironment env, TelemetryConfiguration configuration)
+    {
+        configuration.DisableTelemetry = true;
+        ...
+    }
+```
+
 ## <a name="frequently-asked-questions"></a>Gyakori kérdések
 
 ### <a name="how-can-i-track-telemetry-thats-not-automatically-collected"></a>Hogyan követheti nyomon, automatikusan nem gyűjtött telemetria?
@@ -408,3 +425,4 @@ using Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel;
 * [Konfiguráljon egy pillanatkép gyűjteményt](https://docs.microsoft.com/azure/application-insights/app-insights-snapshot-debugger) forráskód és a változók állapotának megtekintéséhez jelenleg a függvény kivételt vált ki.
 * [Az API-val](../../azure-monitor/app/api-custom-events-metrics.md) küldése a saját események és metrikák, az alkalmazás teljesítményének és használatának részletes nézetének megtekintéséhez.
 * Használat [rendelkezésre állási tesztek](../../azure-monitor/app/monitor-web-app-availability.md) ellenőrizheti az alkalmazás folyamatosan az egész világon.
+* [Függőségi beszúrást az ASP.NET Core](https://docs.microsoft.com/aspnet/fundamentals/dependency-injection)

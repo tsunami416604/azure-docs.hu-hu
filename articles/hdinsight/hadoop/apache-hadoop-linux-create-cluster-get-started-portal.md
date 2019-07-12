@@ -7,14 +7,14 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017,mvc,seodec18
 ms.topic: quickstart
-ms.date: 06/12/2019
+ms.date: 07/02/2019
 ms.author: hrasheed
-ms.openlocfilehash: e178326c4a165a9bebbef6b0162cc79c1f9a0727
-ms.sourcegitcommit: aa66898338a8f8c2eb7c952a8629e6d5c99d1468
+ms.openlocfilehash: f92cb247afb25562a96373c28534549a2f16d8c9
+ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67459514"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67805599"
 ---
 # <a name="quickstart-create-apache-hadoop-cluster-in-azure-hdinsight-using-azure-portal"></a>Gyors útmutató: Az Apache Hadoop-fürt létrehozása az Azure HDInsight az Azure portal használatával
 
@@ -41,12 +41,12 @@ Ebben a szakaszban egy Hadoop-fürtöt hozhat létre a HDInsightban az Azure Por
     |Tulajdonság  |Leírás  |
     |---------|---------|
     |Fürt neve   | Adja meg a Hadoop-fürt nevét. Mivel a HDInsightban az összes fürt ugyanazt a DNS-névteret használja, a névnek egyedinek kell lennie. A név betűket, számokat és kötőjeleket tartalmazhat például legfeljebb 59 karakterből állhat. A név első és utolsó karaktere nem lehet kötőjel. |
-    |Előfizetés    |  Válassza ki az Azure-előfizetését. |
+    |Subscription    |  Válassza ki az Azure-előfizetését. |
     |Fürttípus     | Ezt egyelőre hagyja ki. Ezt a bemenetet az eljárást következő lépésében adja meg.|
     |Fürt bejelentkezési felhasználóneve és jelszava    | Az alapértelmezett bejelentkezési név az **admin**. A jelszónak legalább 10 karakterből kell állnia, és tartalmaznia kell legalább egy számot, egy nagybetűs és egy kisbetűs, illetve egy nem alfanumerikus karaktert (ami nem lehet ' " ` \)). Győződjön meg róla, hogy **ne adjon meg** gyakori jelszót, mint például a következő: Pass@word1.|
     |Secure Shell- (SSH-) felhasználónév | Az alapértelmezett felhasználónév az **sshuser**.  SSH-felhasználónévként más nevet is megadhat. |
     |Fürt bejelentkezési jelszavának használata az SSH-hoz| Jelölje be ezt a jelölőnégyzetet, ha ugyanazt a jelszót kívánja használni az SSH-felhasználóhoz, mint amelyet a fürt bejelentkezési fiókjához adott meg.|
-    |Erőforráscsoport     | Hozzon létre egy erőforráscsoportot, vagy válasszon ki egy már meglévőt.  Az erőforráscsoport az Azure összetevőit tartalmazó tároló.  Ebben az esetben az erőforráscsoport a HDInsight-fürtöt és a függő Azure Storage-fiókot tartalmazza. |
+    |Resource group     | Hozzon létre egy erőforráscsoportot, vagy válasszon ki egy már meglévőt.  Az erőforráscsoport az Azure összetevőit tartalmazó tároló.  Ebben az esetben az erőforráscsoport a HDInsight-fürtöt és a függő Azure Storage-fiókot tartalmazza. |
     |Location    | Válassza ki, melyik Azure-helyen kívánja létrehozni a fürtöt.  A legjobb teljesítmény érdekében válassza az Önhöz legközelebb eső helyet. |
 
     ![HDInsight – Linux – első lépések – fürt alapvető beállításainak megadása](./media/apache-hadoop-linux-create-cluster-get-started-portal/quick-create-basics.png "Alapvető beállítások megadása HDInsight-fürt létrehozásához")
@@ -68,7 +68,7 @@ Ebben a szakaszban egy Hadoop-fürtöt hozhat létre a HDInsightban az Azure Por
     |---------|---------|
     |Elsődleges tárolási típusok    | Ebben a cikkben az Azure storage használata az Azure Storage-Blobból az alapértelmezett tárfiók kiválasztása. Az Azure Data Lake Storage-ot is használhatja alapértelmezett tárolóként. |
     |Kiválasztási módszer     |  Ehhez a cikkhez válassza a **Saját előfizetések** lehetőséget az Azure-előfizetésében lévő egyik tárfiók használatához. Ha más előfizetések tárfiókját szeretné használni, válassza a **Hozzáférési kulcs** lehetőséget, majd adja meg a fiók hozzáférési kulcsát. |
-    |Tárfiók kiválasztása   | Válassza ki **válassza ki a tárfiókot** válasszon ki egy meglévő tárfiókot, vagy válasszon **új létrehozása**.|
+    |Tárfiók kiválasztása   | Válassza ki **válassza ki a tárfiókot** válasszon ki egy meglévő tárfiókot, vagy válasszon **új létrehozása**. Hoz létre egy új fiókot, ha a név 3 – 24 karakter hosszúságúnak kell lennie, és számok és csak kisbetűket tartalmazhatnak.|
 
     Fogadja el az összes többi alapértelmezett értéket, majd **tovább** kattintva az Összegzés lapon lépjen.
 

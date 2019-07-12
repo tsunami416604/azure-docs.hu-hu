@@ -6,12 +6,12 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/20/2019
-ms.openlocfilehash: dcd51756a9c5a5a24a082862bb911cc2d2605d61
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f9de37c04e5e791445659de0ab667b51f44a4024
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65954373"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67839827"
 ---
 # <a name="consistency-levels-in-azure-cosmos-db"></a>Az Azure Cosmos DB-ben konzisztenciaszintek
 
@@ -48,7 +48,7 @@ Az öt konzisztenciaszintek szemantikáját ebben a témakörben találhatók:
 
   Korlátozott frissesség ajánlatok teljes globális rendelési kivételével a "frissesség időszakban." A monoton olvasási garancia egy adott régión belül és a frissesség időszakon kívül is belül léteznek. Erős konzisztencia rendelkezik azzal, korlátozott frissesség által kínált azonos szemantikáját. A frissesség időszak nem lehet negatív érték. Korlátozott frissesség is idő – késleltetett linearizálhatósági nevezik. Amikor egy ügyfél ugyanabban a régióban, amely írási olvasási műveleteket végez, korlátozott frissesség konzisztencia által nyújtott garanciák megegyeznek biztosítékok által az erős konzisztencia.
 
-- **Munkamenet**: Tartsa tiszteletben a konzisztens előtag (feltéve, hogy egyetlen "író" munkamenet), monoton olvasások, monoton írások, olvassa el az írásokat, és írási-követi-olvasások garantálja az olvasások garantáltan. Egy ügyfél-munkamenet munkamenet-konzisztencia hatókörét.
+- **Munkamenet**:  Egyetlen ügyfél-munkameneten belül olvasási garantáltan a konzisztens előtag (feltéve, hogy egyetlen "író" munkamenet), monoton olvasások, monoton írások, olvassa el az írásokat, és írási-követi-olvasási garancia az irányadó. A munkamenet-írások végrehajtása kívül az ügyfelek végleges konzisztencia jelenik meg.
 
 - **Konzisztens előtag**: Visszaadott frissítések nincsenek szünetek és az összes frissítés néhány előtagja tartalmaznak. Konzisztens előtag konzisztenciaszint garantálja, hogy olvasási out soron kívüli írások soha nem jelenik meg.
 

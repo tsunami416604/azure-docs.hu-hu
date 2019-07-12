@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/20/2019
 ms.subservice: hybrid
-ms.author: martincoetzer
+ms.author: martinco
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 96b5e8ab63c1784ff073c7ba38cd4a6319db43c5
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: a20a1a1009949aa2e6de8586040e918ae15c8d39
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67452734"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67655948"
 ---
 # <a name="four-steps-to-a-strong-identity-foundation-with-azure-active-directory"></a>Négy lépést az Azure Active Directory egy erős identity Foundation
 
@@ -147,7 +147,7 @@ Hasonlóképpen a [önkiszolgáló jelszókezelés jelentés](https://docs.micro
 
 ### <a name="self-service-app-management"></a>Önkiszolgáló kezelés
 
-Mielőtt a felhasználók saját felderítheti alkalmazásokat a hozzáférési paneljükön, engedélyeznie kell a [önkiszolgáló alkalmazás-hozzáférés](https://docs.microsoft.com/azure/active-directory/manage-apps/access-panel-manage-self-service-access) bármely olyan alkalmazások, amelyek szeretné engedélyezni a felhasználók számára helyi felderítését, és kérjen hozzáférést. Az önkiszolgáló alkalmazás-hozzáférés kiválóan alkalmas, hogy a felhasználók saját felderítése az alkalmazásokat, és szükség esetén engedélyezze a jóváhagyásra váró ezeknek az alkalmazásoknak hozzáférést az üzleti csoport. Engedélyezheti a felhasználókhoz rendelt hitelesítő adatok kezelésére az üzleti csoport [alkalmazásokat az egyszeri bejelentkezés jelszó](https://docs.microsoft.com/azure/active-directory/manage-apps/application-sign-in-problem-password-sso-gallery#configure-the-application-for-password-single-sign-on) közvetlenül a hozzáférési paneljükön.
+Mielőtt a felhasználók saját felderítheti alkalmazásokat a hozzáférési paneljükön, engedélyeznie kell a [önkiszolgáló alkalmazás-hozzáférés](https://docs.microsoft.com/azure/active-directory/manage-apps/access-panel-manage-self-service-access) bármely olyan alkalmazások, amelyek szeretné engedélyezni a felhasználók számára helyi felderítését, és kérjen hozzáférést. Az önkiszolgáló alkalmazás-hozzáférés kiválóan alkalmas, hogy a felhasználók saját felderítése az alkalmazásokat, és szükség esetén engedélyezze a jóváhagyásra váró ezeknek az alkalmazásoknak hozzáférést az üzleti csoport. Engedélyezheti a felhasználókhoz rendelt hitelesítő adatok kezelésére az üzleti csoport [alkalmazásokat az egyszeri bejelentkezés jelszó](https://docs.microsoft.com/azure/active-directory/manage-apps/application-sign-in-problem-password-sso-gallery#configure-password-sso-for-an-azure-ad-gallery-app) közvetlenül a hozzáférési paneljükön.
 
 ### <a name="self-service-group-management"></a>Önkiszolgáló csoportkezelés
 
@@ -212,7 +212,7 @@ Mellett az informatikai árnyék-infrastruktúrára, az alkalmazások használat
 
 *"A Cloud App Securityvel, hogy gyorsan rendellenességeket és művelet végrehajtása."* --- [Eric LePenske, vezető Manager, információ-biztonság Accenture](https://customers.microsoft.com/story/accenture-professional-services-cloud-app-security)
 
-## <a name="summary"></a>Összefoglalás
+## <a name="summary"></a>Összegzés
 
 Hibrid identitáskezelési megoldás megvalósításának számos szempontból, de a 4. lépés – ellenőrzőlista segít gyorsan elvégezni az identitás-infrastruktúrát, a felhasználók termelékenységének és biztonságos.
 

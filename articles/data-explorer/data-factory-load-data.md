@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 04/15/2019
-ms.openlocfilehash: 64856d53168a7676cf279da2d8675ce81e1985f7
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 2142fbf03daa6667b20db43f9212a2b5e6d7dd44
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60447874"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67657531"
 ---
 # <a name="copy-data-to-azure-data-explorer-using-azure-data-factory"></a>Adatok másolása az Azure az adatkezelőt az Azure Data Factory használatával 
 
@@ -46,11 +46,11 @@ Ez a cikk bemutatja, hogyan adatok betöltése az Amazon S3 az Adatkezelőben az
 
     **Beállítás**  | **Mező leírása**
     |---|---|
-    | **Name (Név)** | Adja meg a data Factory egy globálisan egyedi nevet. Ha a hibaüzenet *"adat-előállító nevét \"LoadADXDemo\" nem érhető el"* , adja meg a data Factory egy másik nevet. A Data Factory-összetevők elnevezési szabályait, lásd: [Data Factory elnevezési szabályait](/azure/data-factory/naming-rules).|
+    | **Name** | Adja meg a data Factory egy globálisan egyedi nevet. Ha a hibaüzenet *"adat-előállító nevét \"LoadADXDemo\" nem érhető el"* , adja meg a data Factory egy másik nevet. A Data Factory-összetevők elnevezési szabályait, lásd: [Data Factory elnevezési szabályait](/azure/data-factory/naming-rules).|
     | **Előfizetés** | Válassza ki az Azure-előfizetés, amelyben az adat-előállító létrehozásához. |
     | **Erőforráscsoport** | Válassza ki **új létrehozása** , és adja meg egy új erőforráscsoport nevét. Válassza ki **meglévő**, ha rendelkezik egy meglévő erőforráscsoportot. |
     | **Verzió** | Válassza ki **V2** |
-    | **Hely** | Válassza ki az adat-előállító helyét. A legördülő listán csak a támogatott helyek jelennek meg. Az adat-előállítók által használt adattárak lehetnek más helyével vagy régiójával. |
+    | **Location** | Válassza ki az adat-előállító helyét. A legördülő listán csak a támogatott helyek jelennek meg. Az adat-előállítók által használt adattárak lehetnek más helyével vagy régiójával. |
     | | |
 
 1. Válassza ki az értesítéseket az eszköztáron a létrehozási folyamat megfigyeléséhez. Létrehozás befejezése után nyissa meg a létrehozott adat-előállítót. A **adat-előállító** kezdőlapjának megnyitása.
@@ -141,7 +141,7 @@ Az Azure Data Explorer új társított szolgáltatás másolja az adatokat az Az
     * Válassza ki **Befejezés** társított szolgáltatás létrehozásához.
 
     > [!NOTE]
-    > Egyszerű szolgáltatás Azure Data Factory használják az Azure Data Explorer szolgáltatás eléréséhez. Az egyszerű szolgáltatásnév [egyszerű szolgáltatás létrehozása az Azure Active Directory (Azure AD)](/azure/azure-stack/azure-stack-create-service-principals#manage-service-principal-for-azure-ad). Ne használja a **Azure Key Vault** metódust.
+    > Egyszerű szolgáltatás Azure Data Factory használják az Azure Data Explorer szolgáltatás eléréséhez. Az egyszerű szolgáltatásnév [egyszerű szolgáltatás létrehozása az Azure Active Directory (Azure AD)](/azure-stack/operator/azure-stack-create-service-principals#manage-an-azure-ad-service-principal). Ne használja a **Azure Key Vault** metódust.
 
 1. A **célként megadott adattárba** nyílik meg. Az Azure Data Explorer létrehozott kapcsolat érhető el használatra. Válassza ki **tovább** a kapcsolat konfigurálásához.
 

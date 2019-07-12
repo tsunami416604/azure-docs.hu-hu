@@ -10,12 +10,12 @@ ms.subservice: acoustics
 ms.topic: quickstart
 ms.date: 03/20/2019
 ms.author: kegodin
-ms.openlocfilehash: e4b9f31425c5029cdeb991fbdcdb7ae4a5c749c9
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: a78df2d4d84487399da10ca722550639a92e71bf
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67704751"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67798140"
 ---
 # <a name="project-acoustics-unrealwwise-quickstart"></a>Projekt Akusztika Unreal/Wwise rövid útmutató
 Ebben a rövid útmutatóban fog kísérletezhet projekt Akusztika az Unreal Engine és Wwise megadott minta tartalom-Tervező szabályozza.
@@ -57,7 +57,9 @@ A projekt Akusztika Unreal beépülő modul további viselkedés szükséges leh
 ### <a name="open-the-unreal-project"></a>Nyissa meg az Unreal projektet. 
 Rendszer rákérdez, hogy újraépíthesse modulok; Kattintson az Igen gombra.
 
-Ha a projekt megnyitása sikertelen, az Összeállítási hibák, ellenőrizze, hogy telepítette a projekt Akusztika mintaprojektet a használt Wwise ugyanazt a verzióját, a projekt Akusztika Wwise beépülő modul.
+>Ha a projekt megnyitása sikertelen, az Összeállítási hibák, ellenőrizze, hogy telepítette a projekt Akusztika mintaprojektet a használt Wwise ugyanazt a verzióját, a projekt Akusztika Wwise beépülő modul.
+
+>Ha nem használ [AudioKinetic Wwise](https://www.audiokinetic.com/products/wwise/) 2018.1.6, akkor újra létre kell sound bankok hang fog játszani a mintaprojektet a előtt.
 
 ## <a name="experiment-with-project-acoustics-design-controls"></a>Kísérletezzen a projekt Akusztika tervezési vezérlők
 Figyeljen, hogy a jelenet úgy érzi, az Unreal szerkesztőben a lejátszás gombra kattintva. A számítógépen, használjon W, A, S, D, és az egérrel való mozgáshoz. További billentyűparancsok megtekintéséhez nyomja le az **F1** billentyűt. Az alábbiakban néhány tervezési tevékenység próbálkozhat:

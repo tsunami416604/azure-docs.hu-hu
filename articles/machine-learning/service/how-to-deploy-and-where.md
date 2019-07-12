@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
-ms.date: 05/31/2019
+ms.date: 07/08/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: dcb90eb8ee25b8b0c780006f3555a5a9b815ffdd
-ms.sourcegitcommit: 6cb4dd784dd5a6c72edaff56cf6bcdcd8c579ee7
+ms.openlocfilehash: fb23e61142a639420d74c08e5a9a41324acab18b
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67514283"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67706285"
 ---
 # <a name="deploy-models-with-the-azure-machine-learning-service"></a>Az Azure Machine Learning szolgáltatással modellek üzembe helyezése
 
@@ -332,12 +332,9 @@ Az alábbi táblázat mutatja be, az egyes számítási célnak üzembe helyezé
 A következő szakaszok bemutatják, hogyan hozhat létre a telepítési konfigurációt, és, amellyel a webszolgáltatás üzembe helyezése.
 
 ### <a name="optional-profile-your-model"></a>Nem kötelező: A modell kiértékelése
-A modell szolgáltatás a telepítés előtt érdemes profilt, hogy optimális CPU és memória-követelmények meghatározása. Ön a modell az SDK-t vagy a parancssori felület használatával teheti profil.
+A modell szolgáltatás a telepítés előtt is készíthet profilt, azt határozza meg optimális CPU és memória-követelmények az SDK-t vagy a parancssori felület használatával.  Modell profilkészítési eredmények többszöröseként vannak egy `Run` objektum. A teljes körű információkat [a modell profil séma megtalálhatók az API-dokumentáció](https://docs.microsoft.com/python/api/azureml-core/azureml.core.profile.modelprofile?view=azure-ml-py)
 
-További információ az SDK-dokumentáció itt megtekinthet: https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#profile-workspace--profile-name--models--inference-config--input-data-
-
-A modellekre profilkészítés eredményei egy Futtatás objektum vannak rendelkezésre.
-A modell profil séma a részletekről itt található: https://docs.microsoft.com/python/api/azureml-core/azureml.core.profile.modelprofile?view=azure-ml-py
+További információ a [hogyan profil a modell az SDK-val](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#profile-workspace--profile-name--models--inference-config--input-data-)
 
 ## <a name="deploy-to-target"></a>Tároló üzembe helyezése
 
@@ -356,9 +353,27 @@ Helyi üzembe helyezéséhez rendelkeznie kell **telepített Docker** a helyi g�
 
 + **A parancssori felületről**
 
+    A parancssori felület használatával történő központi telepítéséhez használja a következő parancsot. Cserélje le `mymodel:1` nevére, illetve a regisztrált modell verziója:
+
   ```azurecli-interactive
-  az ml model deploy -m sklearn_mnist:1 -ic inferenceconfig.json -dc deploymentconfig.json
+  az ml model deploy -m mymodel:1 -ic inferenceconfig.json -dc deploymentconfig.json
   ```
+
+    A bejegyzések a `deploymentconfig.json` paramétereit a dokumentumtérkép [LocalWebservice.deploy_configuration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.local.localwebservicedeploymentconfiguration?view=azure-ml-py). A következő táblázat ismerteti az entitások a JSON-dokumentum és a metódus paramétereinek közötti:
+
+    | JSON-entitás | Parametr Metody | Leírás |
+    | ----- | ----- | ----- |
+    | `computeType` | NA | A számítási cél. Helyi, az értéknek kell lennie `local`. |
+    | `port` | `port` | A helyi port, amelyen a HTTP-végpontot a szolgáltatás elérhetővé. |
+
+    A következő JSON-ja üzembe helyezési konfiguráció például a CLI-vel használható:
+
+    ```json
+    {
+        "computeType": "local",
+        "port": 32267
+    }
+    ```
 
 ### <a id="aci"></a> Az Azure Container Instances (DEVTEST)
 
@@ -379,10 +394,44 @@ Kvóta és régióban rendelkezésre állás az ACI, olvassa el a [kvóták és 
 
 + **A parancssori felületről**
 
-  ```azurecli-interactive
-  az ml model deploy -m sklearn_mnist:1 -n aciservice -ic inferenceconfig.json -dc deploymentconfig.json
-  ```
+    A parancssori felület használatával történő központi telepítéséhez használja a következő parancsot. Cserélje le `mymodel:1` nevére, illetve a regisztrált modell verziója. Cserélje le `myservice` biztosíthat a szolgáltatás nevét:
 
+    ```azurecli-interactive
+    az ml model deploy -m mymodel:1 -n myservice -ic inferenceconfig.json -dc deploymentconfig.json
+    ```
+
+    A bejegyzések a `deploymentconfig.json` paramétereit a dokumentumtérkép [AciWebservice.deploy_configuration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.aci.aciservicedeploymentconfiguration?view=azure-ml-py). A következő táblázat ismerteti az entitások a JSON-dokumentum és a metódus paramétereinek közötti:
+
+    | JSON-entitás | Parametr Metody | Leírás |
+    | ----- | ----- | ----- |
+    | `computeType` | NA | A számítási cél. Az aci Szolgáltatásban, az értéknek kell lennie `ACI`. |
+    | `containerResourceRequirements` | NA | A Processzor és a tároló számára kiosztott memória konfigurációs elemeket tartalmaz. |
+    | &emsp;&emsp;`cpu` | `cpu_cores` | A webszolgáltatás lefoglalni a Processzormagok száma. Alapértelmezés szerint, `0.1` |
+    | &emsp;&emsp;`memoryInGB` | `memory_gb` | Memória (GB-ban) a webszolgáltatás lefoglalni. Alapértelmezés szerint `0.5` |
+    | `location` | `location` | Az Azure-régió, a webszolgáltatás üzembe helyezéséhez. Ha nincs megadva a munkaterületen, a helyet használja. További információt az elérhető régiók itt található: [ACI-régiók](https://azure.microsoft.com/global-infrastructure/services/?regions=all&products=container-instances) |
+    | `authEnabled` | `auth_enabled` | E hitelesítés engedélyezése erre a webszolgáltatásra. Alapértelmezett érték: False |
+    | `sslEnabled` | `ssl_enabled` | Kell-e a webszolgáltatás SSL engedélyezése. Alapértelmezett érték: False. |
+    | `appInsightsEnabled` | `enable_app_insights` | E AppInsights engedélyezése erre a webszolgáltatásra. Alapértelmezett érték: False |
+    | `sslCertificate` | `ssl_cert_pem_file` | A tanúsítványfájl szükséges, ha SSL engedélyezve van |
+    | `sslKey` | `ssl_key_pem_file` | A kulcs fájlját, ha SSL engedélyezve van szükség |
+    | `cname` | `ssl_cname` | A CNAME rekordot, ha SSL engedélyezve van |
+    | `dnsNameLabel` | `dns_name_label` | A dns-névcímke a pontozási végpontjához. Ha nem ad meg egy egyedi dns-névcímke generál a pontozási végpontjához. |
+
+    A következő JSON-ja üzembe helyezési konfiguráció például a CLI-vel használható:
+
+    ```json
+    {
+        "computeType": "aci",
+        "containerResourceRequirements":
+        {
+            "cpu": 0.5,
+            "memoryInGB": 1.0
+        },
+        "authEnabled": true,
+        "sslEnabled": false,
+        "appInsightsEnabled": false
+    }
+    ```
 
 + **A VS Code használatával**
 
@@ -414,9 +463,71 @@ Ha már rendelkezik egy AKS-fürt csatolt, telepítheti azt. Ha még nem létreh
 
 + **A parancssori felületről**
 
+    A parancssori felület használatával történő központi telepítéséhez használja a következő parancsot. Cserélje le `myaks` az AKS nevű számítási célt. Cserélje le `mymodel:1` nevére, illetve a regisztrált modell verziója. Cserélje le `myservice` biztosíthat a szolgáltatás nevét:
+
   ```azurecli-interactive
-  az ml model deploy -ct myaks -m mymodel:1 -n aksservice -ic inferenceconfig.json -dc deploymentconfig.json
+  az ml model deploy -ct myaks -m mymodel:1 -n myservice -ic inferenceconfig.json -dc deploymentconfig.json
   ```
+
+    A bejegyzések a `deploymentconfig.json` paramétereit a dokumentumtérkép [AksWebservice.deploy_configuration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.aks.aksservicedeploymentconfiguration?view=azure-ml-py). A következő táblázat ismerteti az entitások a JSON-dokumentum és a metódus paramétereinek közötti:
+
+    | JSON-entitás | Parametr Metody | Leírás |
+    | ----- | ----- | ----- |
+    | `computeType` | NA | A számítási cél. Az aks-hez, az értéknek kell lennie `aks`. |
+    | `autoScaler` | NA | Az automatikus skálázás konfigurációs elemeket tartalmazza. A méretező táblázatban találja. |
+    | &emsp;&emsp;`autoscaleEnabled` | `autoscale_enabled` | Kell-e a webszolgáltatás automatikus skálázás engedélyezéséhez. Ha `numReplicas`  =  `0`, `True`; ellenkező esetben `False`. |
+    | &emsp;&emsp;`minReplicas` | `autoscale_min_replicas` | A lehető legkevesebb tárolót szeretne használni, amikor az automatikus skálázás a webszolgáltatás. Alapértelmezett, `1`. |
+    | &emsp;&emsp;`maxReplicas` | `autoscale_max_replicas` | Szeretne használni, amikor tárolók maximális számának automatikus skálázást a webszolgáltatás. Alapértelmezett, `10`. |
+    | &emsp;&emsp;`refreshPeriodInSeconds` | `autoscale_refresh_seconds` | Milyen gyakran automatikus méretező megkísérli a webszolgáltatás méretezése. Alapértelmezett, `1`. |
+    | &emsp;&emsp;`targetUtilization` | `autoscale_target_utilization` | A cél kihasználtságát (%-os / 100), amelyek az automatikus méretező megpróbáljon-e webszolgáltatás kezelése. Alapértelmezett, `70`. |
+    | `dataCollection` | NA | Az adatgyűjtés konfigurációs elemeket tartalmazza. |
+    | &emsp;&emsp;`storageEnabled` | `collect_model_data` | Kell-e a webszolgáltatás a modelladatok gyűjtésének engedélyezése. Alapértelmezett, `False`. |
+    | `authEnabled` | `auth_enabled` | -E a web service-hitelesítés engedélyezéséhez. Alapértelmezett, `True`. |
+    | `containerResourceRequirements` | NA | A Processzor és a tároló számára kiosztott memória konfigurációs elemeket tartalmaz. |
+    | &emsp;&emsp;`cpu` | `cpu_cores` | A webszolgáltatás lefoglalni a Processzormagok száma. Alapértelmezés szerint, `0.1` |
+    | &emsp;&emsp;`memoryInGB` | `memory_gb` | Memória (GB-ban) a webszolgáltatás lefoglalni. Alapértelmezés szerint `0.5` |
+    | `appInsightsEnabled` | `enable_app_insights` | Kell-e a web service az Application Insights naplózásának engedélyezése. Alapértelmezett, `False`. |
+    | `scoringTimeoutMs` | `scoring_timeout_ms` | Szeretné kényszeríteni a kiértékelési hívások a web Service időtúllépés. Alapértelmezett, `60000`. |
+    | `maxConcurrentRequestsPerContainer` | `replica_max_concurrent_requests` | Az egyidejű kérések maximális száma a webszolgáltatás csomópont. Alapértelmezett, `1`. |
+    | `maxQueueWaitMs` | `max_request_wait_time` | A maximális időt, egy kérelem marad ezekkel a várólista (ezredmásodpercben) előtt egy 503-as hibát adott vissza. Alapértelmezett, `500`. |
+    | `numReplicas` | `num_replicas` | A webszolgáltatás lefoglalni tárolók száma. Nincs alapértelmezett érték. Ha ez a paraméter nincs megadva, a méretező alapértelmezés szerint engedélyezve van. |
+    | `keys` | NA | Kulcsok konfigurációs elemeket tartalmazza. |
+    | &emsp;&emsp;`primaryKey` | `primary_key` | A webszolgáltatás használt elsődleges hitelesítési kulcs |
+    | &emsp;&emsp;`secondaryKey` | `secondary_key` | Erre a webszolgáltatásra használandó másodlagos hitelesítési kulcs |
+    | `gpuCores` | `gpu_cores` | A webszolgáltatás lefoglalni GPU-magok számát. Alapértelmezett érték 1. |
+    | `livenessProbeRequirements` | NA | Konfigurációs elemek liveness mintavételi követelményeket tartalmazza. |
+    | &emsp;&emsp;`periodSeconds` | `period_seconds` | Milyen gyakran (másodpercben) a működőképesség végrehajtásához. Alapértelmezés szerint 10 másodperc. Minimális értéke 1. |
+    | &emsp;&emsp;`initialDelaySeconds` | `initial_delay_seconds` | Miután a tároló elindult, mielőtt liveness mintavételek kezdeményezett másodpercek száma. Alapértelmezett érték: 310 |
+    | &emsp;&emsp;`timeoutSeconds` | `timeout_seconds` | Utána a működőképesség túllépi az időkorlátot másodpercek száma. Az alapértelmezett 2 másodperc. Minimális értéke 1 |
+    | &emsp;&emsp;`successThreshold` | `success_threshold` | Minimális egymást követő sikeres, a végrehajtandó működőképességi figyelembe kell venni a sikeres után kellene nem sikerült. Alapértelmezett értéke 1. Minimális értéke 1. |
+    | &emsp;&emsp;`failureThreshold` | `failure_threshold` | A Pod indításakor, és a végrehajtandó működőképességi meghiúsul, Kubernetes megpróbálja failureThreshold többször központosítását. Az alapértelmezett érték 3. Minimális értéke 1. |
+    | `namespace` | `namespace` | A Kubernetes-névtér, amely a webszolgáltatás üzembe van helyezve. Akár 63 alfanumerikus kisbetűt ("a" – "z", "0"-"9") és kötőjel ("-") karaktert. Az első és utolsó karaktere nem lehet kötőjel. |
+
+    A következő JSON-ja üzembe helyezési konfiguráció például a CLI-vel használható:
+
+    ```json
+    {
+        "computeType": "aks",
+        "autoScaler":
+        {
+            "autoscaleEnabled": true,
+            "minReplicas": 1,
+            "maxReplicas": 3,
+            "refreshPeriodInSeconds": 1,
+            "targetUtilization": 70
+        },
+        "dataCollection":
+        {
+            "storageEnabled": true
+        },
+        "authEnabled": true,
+        "containerResourceRequirements":
+        {
+            "cpu": 0.5,
+            "memoryInGB": 1.0
+        }
+    }
+    ```
 
 + **A VS Code használatával**
 

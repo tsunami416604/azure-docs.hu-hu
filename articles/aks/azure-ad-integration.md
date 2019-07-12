@@ -2,17 +2,17 @@
 title: Az Azure Active Directory integrálása az Azure Kubernetes Service
 description: Azure Active Directory-kompatibilis Azure Kubernetes Service (AKS)-fürtök létrehozása
 services: container-service
-author: iainfoulds
+author: mlearned
 ms.service: container-service
 ms.topic: article
 ms.date: 04/26/2019
-ms.author: iainfou
-ms.openlocfilehash: db166c82e39e9184528fde67ff868229cf9b1d57
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: mlearned
+ms.openlocfilehash: 80137023643630e8472a70fcca6cb656aeba7123
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67061107"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67616389"
 ---
 # <a name="integrate-azure-active-directory-with-azure-kubernetes-service"></a>Az Azure Active Directory integrálása az Azure Kubernetes Service
 
@@ -39,7 +39,7 @@ OpenID Connect kapcsolatos további információkért lásd: [OpenID Connect és
 
 Webhook eszközjogkivonattal történő hitelesítés egy Kubernetes-fürtben hitelesítési tokenek szolgál. Webhook tokent használó hitelesítés biztosítását konfigurálja és kezeli az AKS-fürt részeként.
 
-Webhook tokent használó hitelesítés biztosítását kapcsolatos további információkért lásd: a [Webhook tokent használó hitelesítés biztosítását] [ kubernetes-webhook] Kubernetes dokumentációját szakaszát.
+Webhook tokent használó hitelesítés biztosítását kapcsolatos további információkért lásd: a [Webhook tokent használó hitelesítés biztosítását][kubernetes-webhook] Kubernetes dokumentációját szakaszát.
 
 Adjon meg egy AKS-fürtöt az Azure AD-hitelesítés, a két Azure AD-alkalmazások jönnek létre. Az első alkalmazás egy összetevő, amely felhasználói hitelesítést nyújt. A második alkalmazás része a ügyfél kéri a parancssori felület a hitelesítéshez használt. Az ügyfélalkalmazás, a tényleges, az ügyfél által megadott hitelesítő adatok a kiszolgálói alkalmazás használ.
 
@@ -152,13 +152,13 @@ Az Azure Portalon, válassza ki a **Azure Active Directory** > **tulajdonságok*
 
 ## <a name="deploy-the-aks-cluster"></a>Az AKS-fürt üzembe helyezése
 
-Használja a [az csoport létrehozása] [ az-group-create] paranccsal hozzon létre egy erőforráscsoportot az AKS-fürtöt.
+Használja a [az csoport létrehozása][az-group-create] paranccsal hozzon létre egy erőforráscsoportot az AKS-fürtöt.
 
 ```azurecli
 az group create --name myResourceGroup --location eastus
 ```
 
-Használja a [az aks létrehozása] [ az-aks-create] parancsot az AKS-fürt üzembe helyezéséhez. Ezután cserélje le a következő mintaparancs értékeit. A server app-ID, a titkos Alkalmazáskulcs, az ügyfélalkalmazás-azonosító és a bérlő azonosítója. az Azure AD-alkalmazások létrehozása során gyűjtött értékek használata
+Használja a [az aks létrehozása][az-aks-create] parancsot az AKS-fürt üzembe helyezéséhez. Ezután cserélje le a következő mintaparancs értékeit. A server app-ID, a titkos Alkalmazáskulcs, az ügyfélalkalmazás-azonosító és a bérlő azonosítója. az Azure AD-alkalmazások létrehozása során gyűjtött értékek használata
 
 ```azurecli
 az aks create \
@@ -177,7 +177,7 @@ AKS-fürt létrehozása néhány percet vesz igénybe.
 
 Az AKS-fürt használata az Azure Active Directory-fiókkal, előtt létre kell hoznia a kötési szerepkör vagy a fürt szerepkör-kötést. A szerepkörök határozzák meg az engedélyeket, és kötések alkalmazza őket a kívánt felhasználók számára. Ezeket a hozzárendeléseket is alkalmazható, egy adott névtérhez vagy az egész fürt között. További információkért lásd: [használatával RBAC-hitelesítés][rbac-authorization].
 
-Először a [az aks get-credentials] [ az-aks-get-credentials] parancsot a `--admin` jelentkezzen be a fürt rendszergazdai hozzáféréssel rendelkező argumentumában.
+Először a [az aks get-credentials][az-aks-get-credentials] parancsot a `--admin` jelentkezzen be a fürt rendszergazdai hozzáféréssel rendelkező argumentumában.
 
 ```azurecli
 az aks get-credentials --resource-group myResourceGroup --name myAKSCluster --admin
@@ -187,7 +187,7 @@ Ezután hozzon létre egy olyan, hogy szeretné-e hozzáférést az AKS-fürtöt
 
 - Ha a felhasználó biztosít az RBAC kötése van az Azure AD-bérlőhöz, engedélyeket az egyszerű felhasználónév (UPN) alapján. Folytassa a lépés a YAML ClusterRoleBinding jegyzékfájl létrehozásához.
 
-- Ha a felhasználó egy másik Azure ad-bérlővel, lekérdezheti, és használja a **objectId** tulajdonság helyett. Ha szükséges, első objectid azonosítóját, a szükséges felhasználói fiók használatával a [az ad felhasználó show] [ az-ad-user-show] parancsot. Adja meg az egyszerű felhasználónév (UPN) a szükséges fiók:
+- Ha a felhasználó egy másik Azure ad-bérlővel, lekérdezheti, és használja a **objectId** tulajdonság helyett. Ha szükséges, első objectid azonosítóját, a szükséges felhasználói fiók használatával a [az ad felhasználó show][az-ad-user-show] parancsot. Adja meg az egyszerű felhasználónév (UPN) a szükséges fiók:
 
     ```azurecli-interactive
     az ad user show --upn-or-object-id user@contoso.com --query objectId -o tsv
@@ -210,7 +210,7 @@ subjects:
   name: userPrincipalName_or_objectId
 ```
 
-A kötés alkalmazása használatával a [a kubectl a alkalmazni] [ kubectl-apply] parancsot az alábbi példában látható módon:
+A kötés alkalmazása használatával a [a kubectl a alkalmazni][kubectl-apply] parancsot az alábbi példában látható módon:
 
 ```console
 kubectl apply -f rbac-aad-user.yaml
@@ -235,7 +235,7 @@ subjects:
    name: "894656e1-39f8-4bfe-b16a-510f61af6f41"
 ```
 
-A kötés alkalmazása használatával a [a kubectl a alkalmazni] [ kubectl-apply] parancsot az alábbi példában látható módon:
+A kötés alkalmazása használatával a [a kubectl a alkalmazni][kubectl-apply] parancsot az alábbi példában látható módon:
 
 ```console
 kubectl apply -f rbac-aad-group.yaml
@@ -245,7 +245,7 @@ Az RBAC a Kubernetes-fürt biztonságossá tétele a további információkért 
 
 ## <a name="access-the-cluster-with-azure-ad"></a>Hozzáférés a fürt az Azure ad-vel
 
-Kérje le a nem rendszergazdai felhasználó számára a környezet használatával a [az aks get-credentials] [ az-aks-get-credentials] parancsot.
+Kérje le a nem rendszergazdai felhasználó számára a környezet használatával a [az aks get-credentials][az-aks-get-credentials] parancsot.
 
 ```azurecli
 az aks get-credentials --resource-group myResourceGroup --name myAKSCluster

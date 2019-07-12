@@ -8,12 +8,12 @@ manager: edprice
 editor: edprice
 tags: ''
 keywords: ''
-ms.openlocfilehash: c6fcb345b49ce6354a24408ebe163fb928990252
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d527b08f3610531bef8e98a11998942411651d27
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64925694"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67621352"
 ---
 # <a name="set-up-an-application-developers-controlled-distribution-adcd-in-ibm-zdt-v1"></a>Állítsa be az alkalmazás fejlesztők szabályozott terjesztési (ADCD) IBM zD & T v1
 
@@ -21,13 +21,13 @@ Futtathatja egy IBM Z fejlesztési és tesztelési környezet (zD & T) környeze
 
 Ez a cikk bemutatja, hogyan állítható be egy ADCD-példányt egy zD & T környezetet az Azure-ban. ADCDs fejlesztési és tesztelési környezetek zD & t futtató teljes Z sorozat operációs rendszer megvalósításait létrehozása
 
-ZD & T, például ADCDs csak az IBM-ügyfelek és partnerek számára érhető el, és kizárólag fejlesztési és tesztelési célokra szolgálnak. Azok a nem éles környezetben használható. Számos IBM-telepítési csomagokat is letölthető keresztül [Passport Advantage](https://www.ibm.com/support/knowledgecenter/en/SSTQBD_12.0.0/com.ibm.zsys.rdt.guide.adcd.doc/topics/installation_ps.html) vagy [IBM PartnerWorld](https://www-356.ibm.com/partnerworld/wps/servlet/ContentHandler/isv_com_sys_zos_adcd).
+ZD & T, például ADCDs csak az IBM-ügyfelek és partnerek számára érhető el, és kizárólag fejlesztési és tesztelési célokra szolgálnak. Azok a nem éles környezetben használható. Számos IBM-telepítési csomagokat is letölthető keresztül [Passport Advantage](https://www.ibm.com/support/knowledgecenter/en/SSTQBD_12.0.0/com.ibm.zsys.rdt.guide.adcd.doc/topics/installation_ps.html) vagy [IBM PartnerWorld](https://www.ibm.com/partnerworld/public).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 - Azure-előfizetés. Ha még nincs előfizetése, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd.
 
-- A [zD & T környezet] [ ibm-install-z] az Azure-ban korábban már beállított. Ez a cikk azt feltételezi, hogy használja az ugyanazon Ubuntu 16.04 Virtuálisgép-rendszerképet, korábban létrehozott.
+- A [zD & T környezet][ibm-install-z] az Azure-ban korábban már beállított. Ez a cikk azt feltételezi, hogy használja az ugyanazon Ubuntu 16.04 Virtuálisgép-rendszerképet, korábban létrehozott.
 
 - Az IBM PartnerWorld vagy a Passport Advantage ADCD adathordozó való hozzáférést.
 
@@ -39,7 +39,7 @@ ZD & T, például ADCDs csak az IBM-ügyfelek és partnerek számára érhető e
 
 ## <a name="download-the-installation-packages-from-passport-advantage"></a>A telepítési csomagok letöltését Passport előny
 
-Hozzáférés ADCD adathordozóra szükség. Az alábbi lépések azt feltételezik, az IBM-ügyfelek, és használja ki a Passport használhatja. IBM partnerek használható [IBM PartnerWorld](https://www-356.ibm.com/partnerworld/wps/servlet/ContentHandler/isv_com_sys_zos_adcd).
+Hozzáférés ADCD adathordozóra szükség. Az alábbi lépések azt feltételezik, az IBM-ügyfelek, és használja ki a Passport használhatja. IBM partnerek használható [IBM PartnerWorld](https://www.ibm.com/partnerworld/public).
 
 > [!NOTE]
 > Ez a cikk azt feltételezi, hogy az Azure portal eléréséhez és letöltéséhez az IBM adathordozó használja-e a Windows rendszerű számítógépek. Ha Mac gépet használ, vagy asztali Ubuntu, a parancsokat és folyamata az IBM adathordozó beszerzése némileg eltérhet.

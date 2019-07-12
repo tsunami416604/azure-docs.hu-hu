@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 02/07/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: c15d315d186af5622d9fa988945750d93e8eb11f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ae6d55180785c9407662776a95fcba31f8ba5275
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66507557"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67835206"
 ---
 #  <a name="add-claims-and-customize-user-input-using-custom-policies-in-azure-active-directory-b2c"></a>Adja hozzá a jogcímeket, és testre szabhatja a felhasználói bevitel, az Azure Active Directory B2C-vel egyéni szabályzatok használatával
 
@@ -79,7 +79,7 @@ A következő elemeket a jogcím meghatározásához használják:
 
 #### <a name="dropdownsingleselect"></a>DropdownSingleSelect
 
-![Képernyőkép a lehetőségéről](./media/active-directory-b2c-configure-signup-self-asserted-custom/dropdown-menu-example.png)
+![Egyszeres kijelöléses legördülő vezérlőt, több lehetőség megjelenítése](./media/active-directory-b2c-configure-signup-self-asserted-custom/dropdown-menu-example.png)
 
 ```xml
 <ClaimType Id="city">
@@ -96,7 +96,7 @@ A következő elemeket a jogcím meghatározásához használják:
 
 #### <a name="checkboxmultiselect"></a>CheckboxMultiSelect
 
-![Képernyőkép a többszörös kiválasztási lehetőséget](./media/active-directory-b2c-configure-signup-self-asserted-custom/multiselect-menu-example.png)
+![Többszörös kijelöléses jelölőnégyzet vezérlőelem több beállításairól](./media/active-directory-b2c-configure-signup-self-asserted-custom/multiselect-menu-example.png)
 
 ```xml
 <ClaimType Id="city">
@@ -235,7 +235,7 @@ A következő elemeket a jogcím meghatározásához használják:
       <IncludeTechnicalProfile ReferenceId="AAD-Common" />
     </TechnicalProfile>
     ```
-   
+
 4. Adja hozzá a `<OutputClaim ClaimTypeReferenceId="city" />` jogcímet a SignUporSignIn.xml fájlt úgy, hogy ezt az igényt a sikeres felhasználói út után a jogkivonat az alkalmazás érkezik.
 
     ```xml

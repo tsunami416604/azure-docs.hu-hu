@@ -18,12 +18,12 @@ ms.author: ryanwi
 ms.reviewer: jmprieur, andret
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5e2eca253bc5d1495d26506e0e6f8a83762e8bc5
-ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
+ms.openlocfilehash: 83f5b08e5fee17c0ea5577d4d56d4d3208a818e3
+ms.sourcegitcommit: c0419208061b2b5579f6e16f78d9d45513bb7bbc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/22/2019
-ms.locfileid: "66001109"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67625309"
 ---
 # <a name="quickstart-build-a-net-web-api-that-integrates-with-azure-ad-for-authentication-and-authorization"></a>Gyors útmutató: .NET webes API-t, amely az Azure AD-hitelesítési és engedélyezési szolgáltatásainak készítése
 
@@ -49,7 +49,7 @@ Első lépésként végre kell hajtania az alábbi lépéseket:
 * [Töltse le az alkalmazás vázát](https://github.com/AzureADQuickStarts/WebAPI-Bearer-DotNet/archive/skeleton.zip) vagy [a kész mintát](https://github.com/AzureADQuickStarts/WebAPI-Bearer-DotNet/archive/complete.zip). Mindkettő Visual Studio 2013-megoldás.
 * Rendelkeznie kell egy Azure AD-bérlővel, amelyben regisztrálhatja az alkalmazását. Ha még nem rendelkezik ilyennel, [így tehet szert rá](quickstart-create-new-tenant.md).
 
-## <a name="step-1-register-an-application-with-azure-ad"></a>1. lépés: Alkalmazás regisztrálása az Azure ad-ben
+## <a name="step-1-register-an-application-with-azure-ad"></a>1\. lépés: Alkalmazás regisztrálása az Azure ad-ben
 
 Hogy biztonságossá tegye alkalmazását, először létre kell hoznia egy alkalmazást a bérlőjében, és meg kell adnia az Azure AD-nek néhány kulcsfontosságú információt.
 
@@ -66,7 +66,7 @@ A **támogatott fióktípusok**válassza **fiókok minden olyan szervezeti direc
 6. Válassza ki **közzé API-k**, majd frissítse az Alkalmazásazonosító URI-ja kattintva **beállítása**. Adjon meg egy bérlőspecifikus azonosítót. Adja meg például a következőt: `https://contoso.onmicrosoft.com/TodoListService`.
 7. Mentse a konfigurációt. Hagyja megnyitva a portált, mert rövidesen az ügyfélalkalmazást is regisztrálnia kell.
 
-## <a name="step-2-set-up-the-app-to-use-the-owin-authentication-pipeline"></a>2. lépés: Az OWIN-hitelesítési folyamat használata az alkalmazás beállítása
+## <a name="step-2-set-up-the-app-to-use-the-owin-authentication-pipeline"></a>2\. lépés: Az OWIN-hitelesítési folyamat használata az alkalmazás beállítása
 
 A bejövő kérések és jogkivonatok ellenőrzése érdekében be kell állítania alkalmazását az Azure AD-vel való kommunikációhoz.
 
@@ -79,7 +79,7 @@ A bejövő kérések és jogkivonatok ellenőrzése érdekében be kell állíta
 
 2. Adjon hozzá egy `Startup.cs` nevű OWIN indítási osztályt a TeendolistaSzolgaltatas projekthez.  Kattintson a jobb gombbal a projektre, válassza a **Hozzáadás > Új elem** lehetőséget, majd keresse meg az **OWIN** elemet. Az OWIN közbenső szoftver meghívja a `Configuration(…)` metódust az alkalmazás indulásakor.
 
-3. Módosítsa az osztálydeklarációt a következőre: `public partial class Startup`. Egy másik fájlban már implementáltuk Önnek az osztály egy részét. A `Configuration(…)` metódusban hívja meg a `ConfgureAuth(…)` elemet a hitelesítés beállításához webes alkalmazása számára.
+3. Módosítsa az osztálydeklarációt a következőre: `public partial class Startup`. Egy másik fájlban már implementáltuk Önnek az osztály egy részét. A `Configuration(…)` metódusban hívja meg a `ConfigureAuth(…)` elemet a hitelesítés beállításához webes alkalmazása számára.
 
     ```csharp
     public partial class Startup
@@ -143,7 +143,7 @@ A bejövő kérések és jogkivonatok ellenőrzése érdekében be kell állíta
     * Az `ida:Tenant` az Azure AD-bérlő neve, például contoso.onmicrosoft.com.
     * Az `ida:Audience` az Azure Portalon megadott alkalmazásazonosító URI.
 
-## <a name="step-3-configure-a-client-application-and-run-the-service"></a>3. lépés: Ügyfélalkalmazás konfigurálása és a szolgáltatás futtatásához
+## <a name="step-3-configure-a-client-application-and-run-the-service"></a>3\. lépés: Ügyfélalkalmazás konfigurálása és a szolgáltatás futtatásához
 
 Mielőtt működésbe hozná a Teendőlista szolgáltatást, konfigurálnia kell a Teendőlista ügyfelet, hogy az jogkivonatokat kaphasson az Azure AD-ből, és hívásokat kezdeményezhessen a szolgáltatás felé.
 

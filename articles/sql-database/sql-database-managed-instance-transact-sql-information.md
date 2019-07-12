@@ -10,14 +10,14 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, carlrab, bonova
 manager: craigg
-ms.date: 03/13/2019
+ms.date: 07/07/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: 2ca2e4e98f56f7df5e81217bcda00179f05ff69e
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 6b0e10ce48088853090958dca9d8c1fad20780e7
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67070356"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67723258"
 ---
 # <a name="azure-sql-database-managed-instance-t-sql-differences-from-sql-server"></a>Az SQL Serverről Azure SQL Database felügyelt példány T-SQL különbségek
 
@@ -33,7 +33,7 @@ Ez a cikk összefoglalja, és ismerteti a különbségeket a szintaxist és a vi
 
 A felügyelt példány üzembe helyezési lehetőséget biztosít nagy mértékben kompatibilis a helyszíni SQL Server Database Engine. Felügyelt példány az SQL Server adatbázismotor-funkciók a legtöbb támogatottak.
 
-![Migrálás](./media/sql-database-managed-instance/migration.png)
+![Áttelepítés](./media/sql-database-managed-instance/migration.png)
 
 ## <a name="availability"></a>Rendelkezésre állás
 
@@ -293,13 +293,13 @@ További információkért lásd: [ALTER DATABASE](https://docs.microsoft.com/sq
   - SQL Server Analysis Services nem támogatottak.
 - Értesítések részlegesen támogatott.
 - E-mail-értesítés támogatott, de ehhez szükséges, hogy az adatbázisbeli levelezés profil konfigurálása. Az SQL Server Agent használhatja az adatbázisbeli levelezés csak egy profil, és kell meghívni `AzureManagedInstance_dbmail_profile`. 
-  - Személyi hívó nem támogatott. 
+  - Személyi hívó nem támogatott.
   - NetSend nem támogatott.
   - Riasztások még nem támogatottak.
-  - Proxyk nem támogatottak. 
+  - Proxyk nem támogatottak.
 - Eseménynapló nem támogatott.
 
-A következő funkciók jelenleg nem támogatottak, de engedélyezve lesz a jövőben:
+A következő SQL-ügynök funkciók jelenleg nem támogatottak:
 
 - Proxyk
 - Feladatütemezés egy tétlen processzor
@@ -398,7 +398,13 @@ Külső táblák a HDFS- vagy Azure Blob storage-ban a fájlok nem támogatottak
 
 ### <a name="replication"></a>Replikáció
 
-Replikáció a felügyelt példány nyilvános előzetes verziója érhető el. A replikációval kapcsolatos további információkért lásd: [SQL Server-replikáció](https://docs.microsoft.com/sql/relational-databases/replication/replication-with-sql-database-managed-instance).
+[Tranzakciós replikáció](sql-database-managed-instance-transactional-replication.md) bizonyos korlátozások felügyelt példány nyilvános előzetes verzióban érhető el:
+- Al típusát (közzétevő, forgalmazó, lekéréses előfizető és Push előfizetői) replikációs résztvevők felügyelt példányon helyezhető, de a közzétevő és a terjesztő nem helyezhető el a különböző példányokon.
+- Tranzakciós, a pillanatkép és a kétirányú replikációt típusok támogatottak. Egyesítéses replikációra, a társ-társ replikáció és a frissíthető előfizetéseket nem támogatottak.
+- Felügyelt példány az SQL Server legújabb verzióihoz kommunikálhat. Tekintse meg a támogatott verziók [Itt](sql-database-managed-instance-transactional-replication.md#supportability-matrix-for-instance-databases-and-on-premises-systems).
+- Tranzakciós replikáció rendelkezik néhány [további hálózati követelményei](sql-database-managed-instance-transactional-replication.md#requirements).
+
+Replikáció konfigurálásával kapcsolatos további információkért lásd: [replikációs oktatóanyag](replication-with-sql-database-managed-instance.md).
 
 ### <a name="restore-statement"></a>Utasítás VISSZAÁLLÍTÁSA 
 
@@ -459,7 +465,7 @@ Kereszt-példány service broker nem támogatott:
 
 ## <a name="Environment"></a>Környezet megkötései
 
-### <a name="subnet"></a>Alhálózat
+### <a name="subnet"></a>Subnet
 - Az alhálózat, a felügyelt példány számára lefoglalt erőforrásokat (például virtuális gépek) nem helyezhető el. Helyezze el ezeket az erőforrásokat más alhálózatokat.
 - Alhálózatot kell rendelkeznie a rendelkezésre álló elegendő számú [IP-címek](sql-database-managed-instance-connectivity-architecture.md#network-requirements). Minimális érték 16, bár javasoljuk, hogy az alhálózat legalább 32 IP-címekkel rendelkeznek.
 - [A Szolgáltatásvégpontok nem rendelhető hozzá a felügyelt példány alhálózatára](sql-database-managed-instance-connectivity-architecture.md#network-requirements). Győződjön meg arról, hogy a szolgáltatás-végpontok lehetőség le van tiltva a virtuális hálózat létrehozásakor.
@@ -486,7 +492,7 @@ A következő változók, functions és a nézetek különböző eredményeket a
 
 ### <a name="tempdb-size"></a>A TEMPDB mérete
 
-A fájl maximális mérete `tempdb` egy általános célú szintjén magonként 24 GB-nál nagyobb lehet. A maximális `tempdb` üzletileg kritikus szintet mérete korlátozott, a példány tárolási mérettel. A `tempdb` adatbázis mindig van felosztva, amelyek 12 adatfájlokat. A maximális méret fájlonként nem módosítható, és új fájlokat nem vehető fel `tempdb`. Néhány lekérdezés előfordulhat, hogy vissza hibát, ha szükségük van a magonként 24 GB-nál több `tempdb`. `tempdb` mindig újra létrejön egy üres adatbázis változásakor példány elindítása vagy a feladatátvételt, és bármely kezdeményezni a `tempdb` nem őrződnek meg. 
+A fájl maximális mérete `tempdb` egy általános célú szintjén magonként 24 GB-nál nagyobb lehet. A maximális `tempdb` üzletileg kritikus szintet mérete korlátozott, a példány tárolási mérettel. `tempdb` naplófájl méretének 120 GB, mind az általános célú és a kritikus fontosságú üzleti szint korlátozódik. A `tempdb` adatbázis mindig van felosztva, amelyek 12 adatfájlokat. A maximális méret fájlonként nem módosítható, és új fájlokat nem vehető fel `tempdb`. Néhány lekérdezés előfordulhat, hogy vissza hibát, ha szükségük van a magonként 24 GB-nál több `tempdb` , vagy ha azok a több mint 120 GB napló. `tempdb` nem minden esetben hozza létre újra, az elkészített egy üres adatbázist, a példány indításakor vagy a feladatátvételt, és bármilyen módosítása esetén `tempdb` nem őrződnek meg. 
 
 ### <a name="cant-restore-contained-database"></a>Tartalmazott adatbázis nem állítható vissza.
 
@@ -585,6 +591,11 @@ Felügyelt példány és a csatolt kiszolgálók vagy az elosztott lekérdezése
 Nem hajtható végre `BACKUP DATABASE ... WITH COPY_ONLY` olyan adatbázisban, amely a szolgáltatás által kezelt transzparens adattitkosítási (TDE) van titkosítva. TDE szolgáltatás által kezelt biztonsági másolatának titkosítását egy belső kulccsal TDE kényszeríti. A kulcs nem exportálható, így a biztonsági mentés nem állítható vissza.
 
 **Megkerülő megoldás:** Használja az automatikus biztonsági mentések és időponthoz visszaállítási vagy [ügyfél által felügyelt (BYOK) TDE](https://docs.microsoft.com/azure/sql-database/transparent-data-encryption-azure-sql#customer-managed-transparent-data-encryption---bring-your-own-key) helyette. Az adatbázis titkosítási is letilthatja.
+
+### <a name="point-in-time-restore-follows-time-by-the-time-zone-set-on-the-source-instance"></a>A következő idő időponthoz visszaállítás által az adott időzóna beállítása a forráspéldányra
+
+Pont – történő visszaállítás jelenleg helyreállításához szükséges időt a forrás-példány következő időzónája szerint inkább következő (UTC) szerint értelmezi.
+Ellenőrizze [ismert problémák felügyelt példány időzóna](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-timezone#known-issues) további részletekért.
 
 ## <a name="next-steps"></a>További lépések
 

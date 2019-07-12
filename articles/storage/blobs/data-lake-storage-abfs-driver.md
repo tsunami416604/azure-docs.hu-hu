@@ -9,12 +9,12 @@ ms.reviewer: jamesbak
 ms.date: 12/06/2018
 ms.service: storage
 ms.subservice: data-lake-storage-gen2
-ms.openlocfilehash: 57cda4d07315c6c37c2ce51f530fb081949b628c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: abe3f67141011c765f9de93bcf51998ddae002cb
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64939504"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67696142"
 ---
 # <a name="the-azure-blob-filesystem-driver-abfs-a-dedicated-azure-storage-driver-for-hadoop"></a>Az Azure Blob fájlrendszer illesztőprogram (ABFS): Egy dedikált Azure Storage-illesztőprogram a Hadoophoz
 
@@ -43,7 +43,7 @@ hdfs dfs -put flight_delays.csv abfs://fileanalysis@myanalytics.dfs.core.windows
 
 Belsőleg az ABFS illesztőprogram fordítja le a fájlokat és könyvtárakat az URI Azonosítóban megadott erőforrás(ok), és az Azure Data Lake Storage REST API ezeket a hivatkozásokat-hívást hajt végre.
 
-### <a name="authentication"></a>Hitelesítés
+### <a name="authentication"></a>Authentication
 
 A ABFS illesztőprogram hitelesítési két formáját támogatja, így a Hadoop-alkalmazásokat lehet, hogy biztonságosan elérheti egy Data Lake Storage Gen2 képes a fiókban tárolt erőforrásoktól. A használható hitelesítési rendszerek összes részletét szerepelnek a [Azure Storage biztonsági útmutatóját](../common/storage-security-guide.md). Ezek a következők:
 
@@ -59,7 +59,7 @@ Az összes támogatott konfigurációs részletek vannak megadva a [hivatalos Ha
 
 ### <a name="hadoop-documentation"></a>Hadoop-dokumentáció
 
-A ABFS illesztőprogram teljes leírása itt található a [hivatalos Hadoop-dokumentáció](https://hadoop.apache.org/docs/current/hadoop-azure/index.html)
+A ABFS illesztőprogram teljes leírása itt található a [hivatalos Hadoop-dokumentáció](https://github.com/apache/hadoop/blob/trunk/hadoop-tools/hadoop-azure/src/site/markdown/abfs.md)
 
 ## <a name="next-steps"></a>További lépések
 

@@ -3,22 +3,22 @@ title: 'Oktatóanyag: Machine learning-modell vizuális felhasználói felülett
 titleSuffix: Azure Machine Learning service
 description: Ismerje meg, hogyan hozhat létre prediktív elemzési megoldások az Azure Machine Learning szolgáltatás vizuális felületen. Betanításához, pontszám, és üzembe helyezése egy gépi tanulási modell használatával húzza, és dobja el a modulok. Ez az oktatóanyag második része egy kétrészes sorozat harmadik része a lineáris regressziós autó árának előrejelzése.
 author: peterclu
-ms.author: peterclu
+ms.author: peterlu
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
-ms.date: 04/06/2019
-ms.openlocfilehash: 8512ca2fe01c772d7e4c21a5cb09303b9804899c
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.date: 07/11/2019
+ms.openlocfilehash: dd28fb51a4fc3fbf3dfc893f2f5f159ccafdb4b3
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66389206"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67839307"
 ---
 # <a name="tutorial-deploy-a-machine-learning-model-with-the-visual-interface"></a>Oktatóanyag: Machine learning-modell vizuális felhasználói felülettel üzembe helyezése
 
-Ebben az oktatóanyagban azt tekintjük át az Azure Machine Learning szolgáltatás vizuális felületen prediktív megoldás fejlesztése igénybe vehet. Ez az oktatóanyag **egy kétrészes oktatóanyag-sorozat második része**. A [az oktatóanyag részében](ui-tutorial-automobile-price-train-score.md), betanított, pontozott, és az autó árának előrejelzése modell kiértékelése. Az oktatóanyag ezen részében meg:
+Biztosíthat mások és a prediktív modellel fejlesztett [az oktatóanyag részében](ui-tutorial-automobile-price-train-score.md), telepíthet egy Azure-webszolgáltatásként. Az eddigi, hogy már kísérleteztek az a modell tanítása. Most, ideje létrehozni a felhasználói bemenet alapján új előrejelzéseket. Az oktatóanyag ezen részében meg:
 
 > [!div class="checklist"]
 > * A modell telepítésének előkészítése
@@ -29,56 +29,40 @@ Ebben az oktatóanyagban azt tekintjük át az Azure Machine Learning szolgálta
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Teljes [az oktatóanyag részében](ui-tutorial-automobile-price-train-score.md).
+Teljes [az oktatóanyag részében](ui-tutorial-automobile-price-train-score.md) hogyan betanítása és a egy machine learning-modellek pontozása a vizuális felületen.
 
 ## <a name="prepare-for-deployment"></a>Üzembe helyezés előkészítése
 
-Biztosíthat mások a fejlett ebben az oktatóanyagban a prediktív modellben használandó alkalma, telepítheti az Azure-webszolgáltatásként.
+A kísérlethez webszolgáltatásként, üzembe helyezése előtt először azt kell konvertálni a *betanítási kísérlet* be egy *prediktív kísérletté*.
 
-Az eddigi, hogy már kísérleteztek az a modell tanítása. Most, ideje létrehozni a felhasználói bemenet alapján új előrejelzéseket.
+1. Válassza ki **prediktív kísérletezhet létrehozása*** a kísérlet vászon alján.
 
-Felkészülés az üzembe helyezés két lépésből áll:  
+    ![Animált gif egy prediktív kísérletet, automatikus betanítási kísérlet átalakítása megjelenítése](./media/ui-tutorial-automobile-price-deploy/deploy-web-service.gif)
 
-1. Konvertálja a *betanítási kísérlet* létrehozott egy *prediktív kísérletté*
-1. A prediktív kísérletté üzembe webszolgáltatásként
+    Ha bejelöli **létrehozása prediktív Kísérletté**, több dolog történik:
+    
+    * A betanított modell tárolódik, egy **betanított modell** a modulpaletta modul. Annak a **betanított modellek**.
+    * A betanításhoz használt modulok törlődnek; pontosabban:
+      * Modell betanítása
+      * Adatok felosztása
+      * Modell értékelése
+    * A mentett betanított modell adnak vissza a kísérletbe.
+    * **Webalkalmazás-bemenet** és **webes szolgáltatás kimeneti** modulok hozzáadásakor. Ezeket a modulokat azonosítása, ahol adja meg a felhasználói adatokat a modell, és ahol adatokat adja vissza.
 
-Érdemes először készítsen róla egy másolatot a kísérlet kiválasztásával **Mentés másként** a kísérlet vászon alján.
+    A **betanítási kísérlet** van továbbra is menti az új lap felső részén a kísérletvászonra.
 
-### <a name="convert-the-training-experiment-to-a-predictive-experiment"></a>A betanítási kísérlet átalakítása prediktív kísérletté
+1. **Futtassa** a kísérletet.
 
-Felkészülés a Ez a modell a központi telepítés, a betanítási kísérlet átalakítása egy prediktív kísérletet. Ez általában három lépésből áll:
-
-1. Mentse a módosítást az adataink, és cserélje le a képzési modulok
-1. Trim a kísérletet, amely csak volt szükség a betanításhoz modulok eltávolítása
-1. Ahol a webszolgáltatás bemeneti adatokat fogad, és ahol állít elő a kimeneti megadása
-
-Ezeket a lépéseket megteheti manuálisan, vagy bejelölheti **webszolgáltatás beállítása** ezek automatikusan végbemennek a kísérlet vászon alján.
-
-![Animált gif egy prediktív kísérletet, automatikus betanítási kísérlet átalakítása megjelenítése](./media/ui-tutorial-automobile-price-deploy/deploy-web-service.gif)
-
-Ha bejelöli **webszolgáltatás beállítása**, több dolog történik:
-
-* Egyetlen alakítja át a betanított modell **betanított modell** modul. A modulpaletta a kísérlet vászon bal oldalán találhatók. Annak a **betanított modellek**.
-* A betanításhoz használt modulok törlődnek; pontosabban:
-  * Modell betanítása
-  * Adatok felosztása
-  * Modell értékelése
-* A mentett betanított modell adnak vissza a kísérletbe
-* **Webalkalmazás-bemenet** és **webes szolgáltatás kimeneti** modulok hozzáadásakor. Ezek a modulok azonosítása, adja meg a felhasználói adatokat a modell, és ahol adatokat adja vissza.
-
-Láthatja, hogy a kísérletben menti az új lap felső részén a kísérleti vászonra a két részből áll. A lap alatt áll az eredeti betanítási kísérlet **betanítási kísérlet**, és alatt áll az újonnan létrehozott prediktív kísérletté **prediktív kísérletté**. A prediktív kísérletté lesz webszolgáltatásként fogja központilag telepíteni.
+1. Válassza ki a kimenetét a **Score Model** modul, és válassza ki **eredmények megtekintése** , ellenőrizze, hogy a modell továbbra is működik. Láthatja, hogy az eredeti adatok jelenik meg, valamint a becsült ár ("pontozott címkék").
 
 Is futtathatja a kísérletet most így kell kinéznie:  
 
 ![Üzembe helyezés előkészítése után a kísérlet várható konfigurációját ábrázoló képernyőfelvétel](./media/ui-tutorial-automobile-price-deploy/predictive-graph.png)
 
-Futtassa a kísérletet, egyszer utoljára (válasszon **futtatása**). Válassza ki a számítási célnak azt szeretné, hogy a kísérlet futtatásához előugró párbeszédpanelen. Ellenőrizze, hogy a modell továbbra is működik, válassza ki a kimenet a Score Model-modul, és válassza ki **eredmények megtekintése**. Láthatja, hogy az eredeti adatok jelenik meg, valamint a becsült ár ("pontozott címkék").
-
 ## <a name="deploy-the-web-service"></a>A webszolgáltatás üzembe helyezése
 
-Egy új webszolgáltatás üzembe helyezéséhez származó a kísérlet során:
-
 1. Válassza ki **webszolgáltatás üzembe helyezése** a vászon alatti.
+
 1. Válassza ki a **cél számítási** , hogy szeretné-e a webszolgáltatások futtatásához.
 
     Jelenleg a vizuális felhasználói felületet csak az üzembe helyezés az Azure Kubernetes Service (AKS) számítási célnak támogatja. A machine learning-munkaterület szolgáltatási a rendelkezésre álló AKS számítási célnak közül választhat, vagy egy új AKS-környezet a lépéseket a megjelenő párbeszédpanelen konfigurálja.
@@ -91,9 +75,7 @@ Egy új webszolgáltatás üzembe helyezéséhez származó a kísérlet során:
 
 ## <a name="test-the-web-service"></a>A webszolgáltatás teszteléséhez
 
-Felhasználó által bevitt adatok kerül, az üzembe helyezett modellt a **bemenet webes** modul. A bemeneti majd számlálása az a **Score Model** modul. Beállította a prediktív kísérletté módja, a modellt vár adatok ugyanazt a formátumot az eredeti adatkészletként autó árát. Végül, mely visszaadja az eredményeket a felhasználó leállította a **webes szolgáltatás kimeneti** modul.
-
-Webszolgáltatás tesztelheti a vizuális felhasználói felületet a web service lapján.
+Tesztelheti, és nyissa meg a vizuális felhasználói felületet webszolgáltatások kezelése a **webszolgáltatások** fülre.
 
 1. Nyissa meg a web Service szolgáltatásról szóló szakasz. Látni fogja a webszolgáltatás üzembe helyezett nevű **oktatóanyag – Automobile Price előrejelzése [prediktív Exp]** .
 
@@ -107,19 +89,13 @@ Webszolgáltatás tesztelheti a vizuális felhasználói felületet a web servic
 
     ![A web service a tesztelési lapot ábrázoló képernyőfelvétel](./media/ui-tutorial-automobile-price-deploy/web-service-test.png)
 
-1. Bemeneti adatok tesztelés vagy autofilled mintaadatok használatával, és válassza a **teszt** alján. A tesztelési kérelem elküldésekor a web Service, és az eredmények lapon látható. Bár az ár értékét a bemeneti adatok jön létre, nem használatos az előrejelzési érték létrehozásához.
+1. Bemeneti adatok tesztelés vagy autofilled mintaadatok használatával, és válassza a **teszt**.
 
-## <a name="manage-the-web-service"></a>A webszolgáltatás kezelése
-
-A web service telepítése után, és kezelhető a **webszolgáltatások** lapján a vizuális felhasználói felületet.
-
-Webszolgáltatás kiválasztásával törölheti **törlése** a webes szolgáltatás részletei lapon.
-
-   ![A törlés webes szolgáltatás gombra az ablak alján helyét ábrázoló képernyőfelvétel](./media/ui-tutorial-automobile-price-deploy/web-service-delete.png)
+    A tesztelési kérelem elküldésekor a web Service, és az eredmények lapon látható. Bár az ár értékét a bemeneti adatok jön létre, nem használatos az előrejelzési érték létrehozásához.
 
 ## <a name="consume-the-web-service"></a>A webszolgáltatás használata
 
-Ez az oktatóanyag előző lépésben üzembe helyezett egy autó előrejelzési modell egy Azure-webszolgáltatásként. Felhasználók mostantól adatokat küldeni, és a REST API-n keresztül eredményeket kapni.
+Felhasználók most már API-kérések küldése az Azure web Service és eredményeket előre, hogy új autók árát.
 
 **Kérés/válasz** – a felhasználó egy vagy több sor az autókat tartalmazó adatok küld a szolgáltatás egy HTTP-protokoll használatával. A szolgáltatás egy vagy több csoportot, az eredmények válaszként.
 
@@ -131,9 +107,9 @@ Keresse meg a **API Doc** lap az API további részleteket talál.
 
   ![Képernyőfelvétel: az API további részletek, hogy az API Doc lapon találhatja meg a felhasználók](./media/ui-tutorial-automobile-price-deploy/web-service-api.png)
 
-## <a name="manage-models-and-deployments-in-azure-machine-learning-service-workspace"></a>Modellek és az Azure Machine Learning szolgáltatás munkaterület központi telepítések kezelése
+## <a name="manage-models-and-deployments"></a>Modellek és központi telepítések kezelése
 
-A modellek és a webszolgáltatások üzembe helyezéséhez a vizuális felületen hoz létre az Azure Machine Learning szolgáltatás munkaterületről kezelhetők.
+A modellek és a webszolgáltatások üzembe helyezéséhez hoz létre a vizuális felületen is kezelhetők az Azure Machine Learning szolgáltatás munkaterületről.
 
 1. Nyissa meg a munkaterület a [az Azure portal](https://portal.azure.com/).  
 
@@ -155,7 +131,7 @@ A modellek és a webszolgáltatások üzembe helyezéséhez a vizuális felület
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben az oktatóanyagban megtudhatta, a kulcs létrehozásához, üzembe helyezéséhez, és a egy gépi tanulási modellt a vizuális felületen felhasználása lépéseit. Hogyan használhatja a vizuális felhasználói felületet más típusú kapcsolatos problémák megoldásához kapcsolatos további információkért tekintse meg a mintakísérleteket.
+Ebben az oktatóanyagban megtudhatta, a kulcs létrehozásához, üzembe helyezéséhez, és a egy gépi tanulási modellt a vizuális felületen felhasználása lépéseit. Hogyan használhatja a vizuális felhasználói felületet más típusú kapcsolatos problémák megoldásához kapcsolatos további információkért lásd: meg, hogy más nyelven íródott mintakísérleteket.
 
 > [!div class="nextstepaction"]
 > [Kredit kockázati besorolást minta](ui-sample-classification-predict-credit-risk-cost-sensitive.md)

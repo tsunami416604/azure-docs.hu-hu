@@ -2,18 +2,18 @@
 title: Gyakori kérdések az Azure Kubernetes Service (AKS)
 description: Válaszok az Azure Kubernetes Service (AKS) kapcsolatos gyakori kérdésekre.
 services: container-service
-author: iainfoulds
+author: mlearned
 manager: jeconnoc
 ms.service: container-service
 ms.topic: article
-ms.date: 07/03/2019
-ms.author: iainfou
-ms.openlocfilehash: d4fa365e1ed055fa8ddeb8fd475e152af84a3b71
-ms.sourcegitcommit: d3b1f89edceb9bff1870f562bc2c2fd52636fc21
+ms.date: 07/08/2019
+ms.author: mlearned
+ms.openlocfilehash: 495f182ed450d0fac69b31ea2996bacc60863fea
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/04/2019
-ms.locfileid: "67560453"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67672780"
 ---
 # <a name="frequently-asked-questions-about-azure-kubernetes-service-aks"></a>– Azure Kubernetes Service (AKS) kapcsolatos gyakori kérdések
 
@@ -62,30 +62,28 @@ A Windows Server-csomópontok (jelenleg előzetes verzióban érhető el az aks-
 Minden egyes az AKS üzembe helyezési kiterjedő két erőforráscsoport:
 
 1. Az első erőforráscsoport létrehozásához. Csak a Kubernetes szolgáltatás-erőforrást tartalmazó csoport. Az AKS erőforrás-szolgáltató üzembe helyezése során automatikusan hoz létre a második erőforráscsoport. A második erőforráscsoport például *MC_myResourceGroup_myAKSCluster_eastus*. Az erőforráscsoport nevét, a második megadására vonatkozó további információkért lásd: a következő szakaszban.
-1. A második erőforráscsoportja, mint például *MC_myResourceGroup_myAKSCluster_eastus*, a fürthöz társított infrastruktúrát erőforrásokat tartalmaz. Ilyen erőforrások többek között a Kubernetes csomópont virtuális gépek, virtuális hálózati és storage. Ez az erőforráscsoport célja erőforrás karbantartása leegyszerűsítése érdekében.
+1. A második erőforráscsoportot, más néven a *csomópont erőforráscsoport*, a fürthöz társított infrastruktúrát erőforrásokat tartalmaz. Ilyen erőforrások többek között a Kubernetes csomópont virtuális gépek, virtuális hálózati és storage. Alapértelmezés szerint a csomópont-erőforráscsoporthoz vagy hasonló néven *MC_myResourceGroup_myAKSCluster_eastus*. Az AKS automatikusan törli a csomópont-erőforrás, amikor a fürt törlődik, így csak erőforrások, amelyeket a fürt életciklussal kell használni.
 
-Ha hoz létre az AKS-fürt a használni kívánt erőforrások, például a storage-fiókok vagy fenntartott nyilvános IP-címeket elhelyezése egy az automatikusan létrehozott erőforráscsoportot.
+## <a name="can-i-provide-my-own-name-for-the-aks-node-resource-group"></a>Biztosíthat a saját nevét az AKS-csomópont erőforráscsoport?
 
-## <a name="can-i-provide-my-own-name-for-the-aks-infrastructure-resource-group"></a>Biztosíthat a saját nevét az AKS-infrastruktúra erőforráscsoport?
-
-Igen. Alapértelmezés szerint az AKS erőforrás-szolgáltató automatikusan létrehoz egy másodlagos erőforráscsoportot (például *MC_myResourceGroup_myAKSCluster_eastus*) üzembe helyezése során. Ahhoz, hogy megfeleljenek a vállalati házirenddel, adja meg a saját felügyelt fürt nevét (*MC_* ) erőforráscsoportot.
+Igen. Alapértelmezés szerint az AKS a csomópont erőforráscsoport nevet *MC_clustername_resourcegroupname_location*, de a saját nevét is megadhatja.
 
 Adja meg a saját erőforráscsoport neve, telepítse a [aks előzetes][aks-preview-cli] Azure CLI-bővítmény verziója *0.3.2-es verzióra* vagy újabb. Az AKS-fürt létrehozásakor a [az aks létrehozása][az-aks-create] parancsot, használja a *– csomópont-resource-group* paramétert, és adja meg az erőforráscsoport nevét. Ha Ön [egy Azure Resource Manager-sablonnal][aks-rm-template] AKS-fürt üzembe helyezéséhez használatával adhatja meg az erőforráscsoport neve a *nodeResourceGroup* tulajdonság.
 
 * A másodlagos erőforráscsoport automatikusan létrejön a Azure-erőforrás-szolgáltató saját előfizetésében.
 * Egy egyéni erőforráscsoport-nevet is megadhat, csak a fürt létrehozásakor.
 
-Végzett munka során a *MC_* erőforráscsoportot, ne feledje, hogy nem lehet:
+A csomópont erőforráscsoport használata során vegye figyelembe, hogy nem lehet:
 
-* Adjon meg egy meglévő erőforráscsoportot a *MC_* csoport.
-* Adjon meg egy másik előfizetéshez tartozó a *MC_* erőforráscsoportot.
-* Módosítsa a *MC_* erőforráscsoport-nevet a fürt létrehozása után.
-* Belül a felügyelt erőforrások nevét adja meg a *MC_* erőforráscsoportot.
-* Módosítja vagy törli a felügyelt erőforrások címkék a *MC_* erőforráscsoportot. (Lásd a következő szakaszban további információt.)
+* Adjon meg egy meglévő erőforráscsoportot, a csomópont erőforráscsoport.
+* Adjon meg egy másik előfizetésben, a csomópont erőforráscsoport.
+* Módosítsa a csomópont erőforráscsoport-név, a fürt létrehozása után.
+* Adja meg a csomópont-erőforráscsoporton belül a felügyelt erőforrások nevét.
+* Módosíthatják vagy törölhetik a csomópont-erőforráscsoporton belül a felügyelt erőforrások címkék. (Lásd a következő szakaszban további információt.)
 
-## <a name="can-i-modify-tags-and-other-properties-of-the-aks-resources-in-the-mc-resource-group"></a>Címkék és egyéb tulajdonságok MC_ erőforráscsoporthoz tartozik, az AKS-erőforrások is módosíthatja?
+## <a name="can-i-modify-tags-and-other-properties-of-the-aks-resources-in-the-node-resource-group"></a>Címkék és egyéb csomópont az erőforráscsoportban az AKS erőforrások tulajdonságait is módosíthatja?
 
-Ha módosítja vagy törli az Azure által létrehozott címkék és egyéb erőforrás-tulajdonságok a *MC_* erőforráscsoport, a, például a méretezés és a hibák frissítése nem várt eredmények kérhetők. Az AKS létrehozásához és módosításához az egyéni címkéket teszi lehetővé. Érdemes létrehozni vagy módosítani a egyéni címkéket, például, egy üzleti egységet vagy költség center hozzárendelni. Az erőforrások alapján módosításával a *MC_* az AKS-fürtöt, az megszakítja a szolgáltatásiszint-célkitűzés (SLO). További információkért lásd: [Does AKS kínál egy szolgáltatásiszint-szerződést?](#does-aks-offer-a-service-level-agreement)
+Ha módosítja vagy törli az Azure által létrehozott címkék és egyéb erőforrás-tulajdonságok csomópont az erőforráscsoporthoz tartozik, például a méretezés és a hibák frissítése nem várt eredmények sikerült kap. Az AKS létrehozásához és módosításához az egyéni címkéket teszi lehetővé. Érdemes létrehozni vagy módosítani a egyéni címkéket, például, egy üzleti egységet vagy költség center hozzárendelni. Az AKS-fürt, a csomópont erőforráscsoportba tartozó erőforrások módosításával szünet a szolgáltatásiszint-célkitűzés (SLO). További információkért lásd: [Does AKS kínál egy szolgáltatásiszint-szerződést?](#does-aks-offer-a-service-level-agreement)
 
 ## <a name="what-kubernetes-admission-controllers-does-aks-support-can-admission-controllers-be-added-or-removed"></a>Milyen Kubernetes már a betegfelvétel tartományvezérlők támogatja az AKS? Is már a betegfelvétel vezérlők hozzáadásának vagy eltávolításának?
 

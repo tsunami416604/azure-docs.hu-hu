@@ -11,16 +11,16 @@ ms.author: mathoma
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: 77bc33747964a5f4ee1a67aba777dc3ed76b9a51
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1d556c82f47868f4ee06694e23092f10029d619d
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65073466"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67839847"
 ---
 # <a name="accelerated-database-recovery"></a>Gyorsított adatbázis-helyreállítás
 
-**A gyorsított adatbázis-helyreállítás (ADR)** egy új SQL database engine szolgáltatás, amely jelentősen csökkenti az adatbázis-elérhetőségi, különösen hosszú folytonosságát fut-e, tranzakciók, az SQL database engine helyreállítást újratervezése. Automatikus központi telepítési szabály már érhető el az önálló adatbázisok és a készletezett adatbázisok Azure SQL Database-ben, és az Azure SQL Data Warehouse-adatbázisok. Az automatikus központi telepítési szabály elsődleges előnyei a következők:
+**A gyorsított adatbázis-helyreállítás (ADR)** egy új SQL database engine szolgáltatás, amely jelentősen csökkenti az adatbázis-elérhetőségi, különösen hosszú folytonosságát fut-e, tranzakciók, az SQL database engine helyreállítást újratervezése. Automatikus központi telepítési szabály érhető el jelenleg az önálló adatbázisok és a készletezett adatbázisok Azure SQL Database-ben, és az Azure SQL Data Warehouse-adatbázisok (jelenleg nyilvános előzetes verzióban). Az automatikus központi telepítési szabály elsődleges előnyei a következők:
 
 - **Gyors és következetes adatbázis-helyreállítás**
 

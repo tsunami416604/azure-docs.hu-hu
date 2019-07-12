@@ -15,12 +15,12 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bd7f393f889facf147cf25625d5c3b20f886ddf5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6c78a951258e3c279f96f44ceac469e4c38cf22c
+ms.sourcegitcommit: 1572b615c8f863be4986c23ea2ff7642b02bc605
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65784945"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67785559"
 ---
 # <a name="web-app-that-calls-web-apis---code-configuration"></a>Webalkalmazás, hogy a hívások webes API-k – helykódot
 
@@ -44,7 +44,7 @@ A Web Apps a hitelesítési kódfolyamat támogató könyvtárak a következők:
 
 Az ASP.NET Core, dolog történik, az a `Startup.cs` fájlt. Fizessen elő szeretné a `OnAuthorizationCodeReceived` nyithatja meg: connect-esemény, és ebben az esetben az MSAL hívja. A NET metódus `AcquireTokenFromAuthorizationCode` amelyek tárolása a jogkivonat a gyorsítótárban, a hozzáférési jogkivonatot a kért hatókörök és a egy frissítési jogkivonat lejárati közelében van a hozzáférési jogkivonat frissítéséhez, vagy ugyanaz a felhasználó nevében egy token beszerzéséhez használt hatása , de egy másik erőforrás számára.
 
-Az alábbi kódot a megjegyzéseket segít megérteni az egyes megkülönböztetni funkcióit Szövödei MSAL.NET és az ASP.NET Core
+A megjegyzések, az alábbi kódot a segítségével megismerheti az egyes megkülönböztetni funkcióit Szövödei MSAL.NET és az ASP.NET Core. Részletes információk találhatók a [ASP.NET Core webes alkalmazás növekményes oktatóanyag, fejezet 2](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/2-WebApp-graph-user/2-1-Call-MSGraph)
 
 ```CSharp
   services.Configure<OpenIdConnectOptions>(AzureADDefaults.OpenIdScheme, options =>
@@ -151,9 +151,7 @@ private void ConfigureAuth(IAppBuilder app)
   Scope = Globals.BasicSignInScopes, // a basic set of permissions for user sign in & profile access
   TokenValidationParameters = new TokenValidationParameters
   {
-  // We'll inject our own issuer validation logic below.
-  ValidateIssuer = false,
-  NameClaimType = "name",
+   NameClaimType = "name",
   },
   Notifications = new OpenIdConnectAuthenticationNotifications()
   {

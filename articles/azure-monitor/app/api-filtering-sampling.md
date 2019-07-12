@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 11/23/2016
 ms.author: mbullwin
-ms.openlocfilehash: 062b565369c3b6e877d36f883a152ca6c013e0cf
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: d1c4005651518eb27eebde0005bd70b4adad6432
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67479662"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67798368"
 ---
 # <a name="filtering-and-preprocessing-telemetry-in-the-application-insights-sdk"></a>Az Application Insights SDK-t a telemetria szűrése és előfeldolgozása
 
@@ -96,7 +96,10 @@ public class SuccessfulDependencyFilter : ITelemetryProcessor
     }
 }
 ```
-3. Illessze be az applicationinsights.config fájlban:
+
+3. Adja hozzá a processzor
+
+**ASP.NET-alkalmazások** illessze be az applicationinsights.config fájlban:
 
 ```xml
 <TelemetryProcessors>
@@ -129,6 +132,26 @@ builder.Build();
 ```
 
 Ezt követően létrehozott TelemetryClients fogja használni a processzorok.
+
+**Az ASP.NET Core-alkalmazások**
+
+> [!NOTE]
+> Használatával hozzáadása inicializáló `ApplicationInsights.config` vagy `TelemetryConfiguration.Active` használata az ASP.NET Core-alkalmazások esetén nem érvényes. 
+
+
+A [ASP.NET Core](asp-net-core.md#adding-telemetry-processors) alkalmazásokat, egy `TelemetryInitializer` alább látható módon történik a függőségi beszúrást tárolóban való hozzáadásával. Ezt `ConfigureServices` módszere a `Startup.cs` osztály.
+
+```csharp
+    public void ConfigureServices(IServiceCollection services)
+    {
+        // ...
+        services.AddApplicationInsightsTelemetry();
+        services.AddApplicationInsightsTelemetryProcessor<SuccessfulDependencyFilter>();
+
+        // If you have more processors:
+        services.AddApplicationInsightsTelemetryProcessor<AnotherProcessor>();
+    }
+```
 
 ### <a name="example-filters"></a>Példa szűrők
 #### <a name="synthetic-requests"></a>Szintetikus kéréseket
@@ -237,7 +260,7 @@ namespace MvcWebRole.Telemetry
 }
 ```
 
-**Az inicializáló betöltése**
+**ASP.NET-alkalmazások: Az inicializáló betöltése**
 
 Az applicationinsights.config fájlban:
 
@@ -257,15 +280,27 @@ Az applicationinsights.config fájlban:
 protected void Application_Start()
 {
     // ...
-    TelemetryConfiguration.Active.TelemetryInitializers
-    .Add(new MyTelemetryInitializer());
+    TelemetryConfiguration.Active.TelemetryInitializers.Add(new MyTelemetryInitializer());
 }
 ```
 
-
 [Továbbiak ehhez a mintához.](https://github.com/Microsoft/ApplicationInsights-Home/tree/master/Samples/AzureEmailService/MvcWebRole)
 
-<a name="js-initializer"></a>
+**Az ASP.NET Core-alkalmazásokat: Az inicializáló betöltése**
+
+> [!NOTE]
+> Használatával hozzáadása inicializáló `ApplicationInsights.config` vagy `TelemetryConfiguration.Active` használata az ASP.NET Core-alkalmazások esetén nem érvényes. 
+
+A [ASP.NET Core](asp-net-core.md#adding-telemetryinitializers) alkalmazásokat, egy `TelemetryInitializer` alább látható módon történik a függőségi beszúrást tárolóban való hozzáadásával. Ezt `ConfigureServices` módszere a `Startup.cs` osztály.
+
+```csharp
+ using Microsoft.ApplicationInsights.Extensibility;
+ using CustomInitializer.Telemetry;
+ public void ConfigureServices(IServiceCollection services)
+{
+    services.AddSingleton<ITelemetryInitializer, MyTelemetryInitializer>();
+}
+```
 
 ### <a name="java-telemetry-initializers"></a>Java-telemetria inicializálók
 

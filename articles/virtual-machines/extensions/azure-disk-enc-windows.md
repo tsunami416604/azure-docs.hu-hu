@@ -4,7 +4,7 @@ description: Az Azure Disk Encryption telepíti egy Windows virtuális gép, vir
 services: virtual-machines-windows
 documentationcenter: ''
 author: ejarvi
-manager: jeconnoc
+manager: gwallace
 editor: ''
 ms.assetid: ''
 ms.service: virtual-machines-windows
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 06/12/2018
 ms.author: ejarvi
-ms.openlocfilehash: ff77f9fc017627143b14544af03d0d5e80813db9
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 9a3e135172f0744c053da816b3c77762dbe783c3
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67051694"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67706103"
 ---
 # <a name="azure-disk-encryption-for-windows-microsoftazuresecurityazurediskencryption"></a>Azure Disk Encryption for Windows (Microsoft.Azure.Security.AzureDiskEncryption)
 
@@ -144,20 +144,20 @@ Használatával `AADClientCertificate`:
 | Name (Név) | Érték és példa | Adattípus |
 | ---- | ---- | ---- |
 | apiVersion | 2015-06-15 | date |
-| publisher | Microsoft.Azure.Security | string |
-| type | AzureDiskEncryptionForLinux | string |
+| publisher | Microsoft.Azure.Security | sztring |
+| type | AzureDiskEncryptionForLinux | Karakterlánc |
 | typeHandlerVersion | 0.1, 1.1 | int |
 | (0,1 Technologie ASP.NET) AADClientID | xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx | GUID azonosítója | 
-| (0,1 Technologie ASP.NET) AADClientSecret | password | string |
-| (0,1 Technologie ASP.NET) AADClientCertificate | thumbprint | string |
+| (0,1 Technologie ASP.NET) AADClientSecret | password | Karakterlánc |
+| (0,1 Technologie ASP.NET) AADClientCertificate | thumbprint | Karakterlánc |
 | DiskFormatQuery | {"dev_path":"","name":"","file_system":""} | JSON-szótárt |
-| EncryptionOperation | EnableEncryption, EnableEncryptionFormatAll | string | 
-| KeyEncryptionAlgorithm | 'RSA-OAEP', 'RSA-OAEP-256', 'RSA1_5' | string |
-| KeyEncryptionKeyURL | url | string |
-| KeyVaultURL | url | string |
-| (nem kötelező) Hozzáférési kód | password | string | 
-| SequenceVersion | uniqueidentifier | string |
-| VolumeType | Az operációs rendszer, az adatok, az összes | string |
+| EncryptionOperation | EnableEncryption, EnableEncryptionFormatAll | Karakterlánc | 
+| KeyEncryptionAlgorithm | 'RSA-OAEP', 'RSA-OAEP-256', 'RSA1_5' | sztring |
+| KeyEncryptionKeyURL | url | Karakterlánc |
+| KeyVaultURL | url | sztring |
+| (nem kötelező) Hozzáférési kód | password | sztring | 
+| SequenceVersion | uniqueidentifier | Karakterlánc |
+| VolumeType | Az operációs rendszer, az adatok, az összes | Karakterlánc |
 
 ## <a name="template-deployment"></a>Sablonalapú telepítés
 Sablon telepítése egy példa: [ új titkosított Windows virtuális gép létrehozása katalógus-lemezkép](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-create-new-vm-gallery-image).

@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 6/6/2019
+ms.date: 7/8/2019
 ms.author: raiye
-ms.openlocfilehash: bdb3d0af93a69c1d15bd34a4badef5915ec0f01f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 88c3cd0e07e207a8b5ae1c07d39c8829a531c743
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66743033"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67721125"
 ---
 # <a name="azure-guest-os-releases-and-sdk-compatibility-matrix"></a>Az Azure vendég operációs rendszerek kiadásai és SDK-kompatibilitási mátrixot
 Itt, a legújabb Azure vendég operációs rendszer naprakész információkat és a Cloud Services-kiadások. Ez az információ segít a frissítési útvonal megtervezéséhez, mielőtt egy vendég operációs rendszer le van tiltva. Ha a szerepkörök használatára konfigurálja *automatikus* vendég operációs rendszer frissítése leírtak szerint [Azure vendég operációs rendszer frissítési beállítások][Azure Guest OS Update Settings], már nem létfontosságú, hogy elolvasta-e ezen a lapon.
@@ -39,9 +39,12 @@ Itt, a legújabb Azure vendég operációs rendszer naprakész információkat �
 >
 >
 
-A vendég operációs rendszer frissítése tesztadatkészletén? Ellenőrizze [ez] [ cloud updates] ki.
+A vendég operációs rendszer frissítése tesztadatkészletén? Ellenőrizze [ez][cloud updates] ki.
 
 ## <a name="news-updates"></a>Hírek
+
+###### <a name="july-8-2019"></a>**2019. július 8.**
+A június vendég operációs rendszer jelent meg.
 
 ###### <a name="june-6-2019"></a>**2019. június 6.**
 A lehetséges, hogy a vendég operációs rendszer jelent meg.
@@ -78,7 +81,7 @@ A szeptember vendég operációs rendszer jelent meg.
 ## <a name="family-6-releases"></a>Család 6-kiadások
 **Windows Server 2019**
 
-.NET-keretrendszer: 3.5, 4.7.2
+.NET-keretrendszer: 3.5, 4.7.2, 4.8
 
 > [!NOTE]
 > A Windows Azure SDK for .NET - 3.0 letölthető [Itt][Windows Azure SDK].
@@ -95,18 +98,19 @@ A szeptember vendég operációs rendszer jelent meg.
 
 | Konfigurációs karakterlánc | Kiadási dátum | Tiltsa le a dátum |
 | --- | --- | --- |
-| WA-GUEST-OS-6.7_201905-01 |2019\. június 6. |POST 6.9. |
-| WA-GUEST-OS-6.6_201904-01 |2019\. május 7. |POST 6.8 |
-|~~WA-GUEST-OS-6.5_201903-01~~ |2019\. március 26. |2019\. június 6. |
-|~~WA-GUEST-OS-6.4_201902-01~~ |2019\. március 12. |2019\. május 7. |
-|~~WA-GUEST-OS-6.3_201901-01~~ |2019\. február 5. |2019\. március 26. |
-|~~WA-GUEST-OS-6.2_201812-01~~ |2019\. január 24. |2019\. március 12. |
-|~~WA-GUEST-OS-6.1_201811-01~~ |2019\. január 24. |2019\. február 5. |
+| WA-GUEST-OS-6.8_201906-01 |2019. július 8. |POST 6.10 |
+| WA-GUEST-OS-6.7_201905-01 |2019. június 6. |POST 6.9. |
+|~~WA-GUEST-OS-6.6_201904-01~~ |2019. május 7. |2019. július 8. |
+|~~WA-GUEST-OS-6.5_201903-01~~ |2019. március 26. |2019. június 6. |
+|~~WA-GUEST-OS-6.4_201902-01~~ |2019. március 12. |2019. május 7. |
+|~~WA-GUEST-OS-6.3_201901-01~~ |2019. február 5. |2019. március 26. |
+|~~WA-GUEST-OS-6.2_201812-01~~ |2019. január 24. |2019. március 12. |
+|~~WA-GUEST-OS-6.1_201811-01~~ |2019. január 24. |2019. február 5. |
 
 ## <a name="family-5-releases"></a>5\. családba tartozó kiadások
 **Windows Server 2016**
 
-.NET-keretrendszer: 3.5, 4.6.2
+.NET-keretrendszer: 3.5, 4.6.2, 4.7.2, 4.8
 
 > [!NOTE]
 > Az operációsrendszer-család 5 RDP-jelszónak legalább 10 karakterből kell lennie.
@@ -115,32 +119,34 @@ A szeptember vendég operációs rendszer jelent meg.
 
 | Konfigurációs karakterlánc | Kiadási dátum | Tiltsa le a dátum |
 | --- | --- | --- |
-| WA-GUEST-OS-5.31_201905-01 |2019\. június 6. |POST 5.33 |
-| WA-GUEST-OS-5.30_201904-01 |2019\. május 7. |POST 5.32 |
-|~~WA-GUEST-OS-5.29_201903-01~~ |2019\. március 26. |2019\. június 6. |
-|~~WA-GUEST-OS-5.28_201902-01~~ |2019\. március 12. |2019\. május 7. |
-|~~WA-GUEST-OS-5.27_201901-01~~ |2019\. február 5. |2019\. március 26. |
-|~~WA-GUEST-OS-5.26_201812-01~~ |2019\. január 7. |2019\. március 12. |
-|~~WA-GUEST-OS-5.25_201811-01~~ |2018\. december 14. |2019\. február 5. |
-|~~WA-GUEST-OS-5.24_201810-01~~ |2018\. november 8. |2019\. január 7. |
-|~~WA-GUEST-OS-5.23_201809-01~~ |2018\. október 12. |2018\. december 14. |
+| WA-GUEST-OS-5.32_201906-01 |2019. július 8. |POST 5.34 |
+| WA-GUEST-OS-5.31_201905-01 |2019. június 6. |POST 5.33 |
+|~~WA-GUEST-OS-5.30_201904-01~~ |2019. május 7. |2019. július 8. |
+|~~WA-GUEST-OS-5.29_201903-01~~ |2019. március 26. |2019. június 6. |
+|~~WA-GUEST-OS-5.28_201902-01~~ |2019. március 12. |2019. május 7. |
+|~~WA-GUEST-OS-5.27_201901-01~~ |2019. február 5. |2019. március 26. |
+|~~WA-GUEST-OS-5.26_201812-01~~ |2019. január 7. |2019. március 12. |
+|~~WA-GUEST-OS-5.25_201811-01~~ |2018. december 14. |2019. február 5. |
+|~~WA-GUEST-OS-5.24_201810-01~~ |2018. november 8. |2019. január 7. |
+|~~WA-GUEST-OS-5.23_201809-01~~ |2018. október 12. |2018. december 14. |
 
 ## <a name="family-4-releases"></a>Család 4-kiadások
 **Windows Server 2012 R2**
 
-.NET-keretrendszer: 3.5, 4.5.1
+.NET-keretrendszer: 3.5, 4.5.1, 4.5.2
 
 | Konfigurációs karakterlánc | Kiadási dátum | Tiltsa le a dátum |
 | --- | --- | --- |
-| WA-GUEST-OS-4.66_201905-01 |2019\. június 6. |POST 4.68 |
-| WA-GUEST-OS-4.65_201904-01 |2019\. május 7. |POST 4.67 |
-|~~WA-GUEST-OS-4.64_201903-01~~ |2019\. március 26. |2019\. június 6. |
-|~~WA-GUEST-OS-4.63_201902-01~~ |2019\. március 12. |2019\. május 7. |
-|~~WA-GUEST-OS-4.62_201901-01~~ |2019\. február 5. |2019\. március 26. |
-|~~WA-GUEST-OS-4.61_201812-01~~ |2019\. január 7. |2019\. március 12. |
-|~~WA-GUEST-OS-4.60_201811-01~~ |2018\. december 14. |2019\. február 5. |
-|~~WA-GUEST-OS-4.59_201810-01~~ |2018\. november 8. |2019\. január 7. |
-|~~WA-GUEST-OS-4.58_201809-01~~ |2018\. október 12. |2018\. december 14. |
+| WA-GUEST-OS-4.67_201906-01 |2019. július 8. |POST 4.69 |
+| WA-GUEST-OS-4.66_201905-01 |2019. június 6. |POST 4.68 |
+|~~WA-GUEST-OS-4.65_201904-01~~ |2019. május 7. |2019. július 8. |
+|~~WA-GUEST-OS-4.64_201903-01~~ |2019. március 26. |2019. június 6. |
+|~~WA-GUEST-OS-4.63_201902-01~~ |2019. március 12. |2019. május 7. |
+|~~WA-GUEST-OS-4.62_201901-01~~ |2019. február 5. |2019. március 26. |
+|~~WA-GUEST-OS-4.61_201812-01~~ |2019. január 7. |2019. március 12. |
+|~~WA-GUEST-OS-4.60_201811-01~~ |2018. december 14. |2019. február 5. |
+|~~WA-GUEST-OS-4.59_201810-01~~ |2018. november 8. |2019. január 7. |
+|~~WA-GUEST-OS-4.58_201809-01~~ |2018. október 12. |2018. december 14. |
 
 ## <a name="family-3-releases"></a>3-as család kiadások
 **Windows Server 2012**
@@ -149,38 +155,40 @@ A szeptember vendég operációs rendszer jelent meg.
 
 | Konfigurációs karakterlánc | Kiadási dátum | Tiltsa le a dátum |
 | --- | --- | --- |
-| WA-GUEST-OS-3.73_201905-01 |Június 67-es, a 2019 |POST 3,75 |
-| WA-GUEST-OS-3.72_201904-01 |2019\. május 7. |POST 3.74 |
-|~~WA-GUEST-OS-3.71_201903-01~~ |2019\. március 26. |2019\. június 6. |
-|~~WA-GUEST-OS-3.70_201902-01~~ |2019\. március 12. |2019\. május 7. |
-|~~WA-GUEST-OS-3.69_201901-01~~ |2019\. február 5. |2019\. március 26. |
-|~~WA-GUEST-OS-3.68_201812-01~~ |2019\. január 7. |2019\. március 12. |
-|~~WA-GUEST-OS-3.67_201811-01~~ |2018\. december 14. |2019\. február 5. |
-|~~WA-GUEST-OS-3.66_201810-01~~ |2018\. november 8. |2019\. január 7. |
-|~~WA-GUEST-OS-3.65_201809-01~~ |2018\. október 12. |2018\. december 14. |
+| WA-GUEST-OS-3.74_201906-01 |2019. július 8. |POST 3.76 |
+| WA-GUEST-OS-3.73_201905-01 |2019. június 6. |POST 3,75 |
+|~~WA-GUEST-OS-3.72_201904-01~~ |2019. május 7. |2019. július 8. |
+|~~WA-GUEST-OS-3.71_201903-01~~ |2019. március 26. |2019. június 6. |
+|~~WA-GUEST-OS-3.70_201902-01~~ |2019. március 12. |2019. május 7. |
+|~~WA-GUEST-OS-3.69_201901-01~~ |2019. február 5. |2019. március 26. |
+|~~WA-GUEST-OS-3.68_201812-01~~ |2019. január 7. |2019. március 12. |
+|~~WA-GUEST-OS-3.67_201811-01~~ |2018. december 14. |2019. február 5. |
+|~~WA-GUEST-OS-3.66_201810-01~~ |2018. november 8. |2019. január 7. |
+|~~WA-GUEST-OS-3.65_201809-01~~ |2018. október 12. |2018. december 14. |
 
 ## <a name="family-2-releases"></a>2 család kiadások
 **Windows Server 2008 R2 SP1**
 
-.NET-keretrendszer: 3.5 (tartalmazza a 2.0 és 3.0 verziót)
+.NET-keretrendszer: 3.5 (tartalmazza a 2.0-s és 3.0 verziót), 4.5-ös verziója
 
 | Konfigurációs karakterlánc | Kiadási dátum | Tiltsa le a dátum |
 | --- | --- | --- |
-| WA-GUEST-OS-2.86_201905-01 |2019\. június 6. |POST 2,88 |
-| WA-GUEST-OS-2.85_201904-01 |2019\. május 7. |POST 2.87 |
-|~~WA-GUEST-OS-2.84_201903-01~~ |2019\. március 26. |2019\. június 6. |
-|~~WA-GUEST-OS-2.83_201902-01~~ |2019\. március 12. |2019\. május 7. |
-|~~WA-GUEST-OS-2.82_201901-01~~ |2019\. február 5. |2019\. március 26. |
-|~~WA-GUEST-OS-2.81_201812-01~~ |2019\. január 7. |2019\. március 12. |
-|~~WA-GUEST-OS-2.80_201811-01~~ |2018\. december 14. |2019\. február 5. |
-|~~WA-GUEST-OS-2.79_201810-01~~ |2018\. november 8. |2019\. január 7. |
-|~~WA-GUEST-OS-2.78_201809-01~~ |2018\. október 12. |2018\. december 14. |
+| WA-GUEST-OS-2.87_201906-01 |2019. július 8. |POST 2.89 |
+| WA-GUEST-OS-2.86_201905-01 |2019. június 6. |POST 2,88 |
+|~~WA-GUEST-OS-2.85_201904-01~~ |2019. május 7. |2019. július 8. |
+|~~WA-GUEST-OS-2.84_201903-01~~ |2019. március 26. |2019. június 6. |
+|~~WA-GUEST-OS-2.83_201902-01~~ |2019. március 12. |2019. május 7. |
+|~~WA-GUEST-OS-2.82_201901-01~~ |2019. február 5. |2019. március 26. |
+|~~WA-GUEST-OS-2.81_201812-01~~ |2019. január 7. |2019. március 12. |
+|~~WA-GUEST-OS-2.80_201811-01~~ |2018. december 14. |2019. február 5. |
+|~~WA-GUEST-OS-2.79_201810-01~~ |2018. november 8. |2019. január 7. |
+|~~WA-GUEST-OS-2.78_201809-01~~ |2018. október 12. |2018. december 14. |
 
 ## <a name="msrc-patch-updates"></a>MSRC-javítás frissítések
 A lista minden egyes havi vendég operációs rendszer kiadása a javítások [Itt][patches].
 
 ## <a name="sdk-support"></a>SDK-támogatás
-Annak ellenére, hogy a [kivezetési szabályzata, az Azure SDK] [ retire policy sdk] azt jelzi, hogy csak a fenti 2.2-es verzió támogatott, a megadott Vendég operációsrendszer-családok lehetővé teszik, hogy korábbi verzióit. Mindig a legújabb támogatott SDK-t használja.
+Annak ellenére, hogy a [kivezetési szabályzata, az Azure SDK][retire policy sdk] azt jelzi, hogy csak a fenti 2.2-es verzió támogatott, a megadott Vendég operációsrendszer-családok lehetővé teszik, hogy korábbi verzióit. Mindig a legújabb támogatott SDK-t használja.
 
 | Vendég operációsrendszer-család | Kompatibilis SDK-verziókra |
 | --- | --- |
@@ -204,7 +212,7 @@ A Vendég operációsrendszer-családok Microsoft Windows Server kiadott verzió
 * **Vendég operációsrendszer-család**  
   A Windows Server operációs rendszer kiadás, amely egy vendég operációs rendszeren alapul. Ha például *3-as család* Windows Server 2012 rendszeren alapul.
 * **A vendég operációs rendszer verziója**  
-  Adott családba tartozó Vendég operációsrendszer-lemezképhez, valamint a megfelelő [Microsoft Security Response Center (MSRC)] [ msrc] javítást, a dátumot, a vendég operációs rendszer új verzió jön létre. Lehet, hogy nem minden javításokat tartalmaz.
+  Adott családba tartozó Vendég operációsrendszer-lemezképhez, valamint a megfelelő [Microsoft Security Response Center (MSRC)][msrc] javítást, a dátumot, a vendég operációs rendszer új verzió jön létre. Lehet, hogy nem minden javításokat tartalmaz.
 
     Számok számozása 0 és 1 növekmény minden alkalommal, amikor bekerül a frissítések új készletét. Záró nullák csak láthatók. Ha a fontos. Hogy a verzió 2.10 egy másik, sokkal újabb verziójú, mint a 2.1-es verzió.
 * **Vendég operációsrendszer-kiadás**  
@@ -225,9 +233,9 @@ A Microsoft Azure folyamatosan frissítéseket ad ki. A vendég operációs rend
 
 Ha a vendég operációs rendszer új kiadása közzé van téve, teljes mértékben Azure-ban propagálása időbe telhet. Szolgáltatás frissítve lett, hogy az új vendég operációs rendszer, mivel azok újraindulásakor érvényesítenie frissítési tartománnyal. Szolgáltatások "Automatikus" frissítések használatához állítsa a kiadási első fog kapni. A frissítés után látni fogja az új vendég operációs rendszer verzió a szolgáltatás az Azure Portalon ezeket tájékoztatási céllal felsorolja. Ebben az időszakban újból kiadott biztonsági frissítések fordulhat elő. Egyes verziói hosszabb idő alatt is üzembe helyezhetők, és az automatikus frissítési újraindítások nem fordulhat elő, a hivatalos kiadás dátumot követően számos hétig. A vendég operációs rendszer nem érhető el, ha explicit módon kiválaszthatja azt a verziót a portálon vagy a konfigurációs fájlban.
 
-Ezután újraindul, és további információkat technikai részletek Vendég és gazdagép operációs rendszerének frissítések mutatók értékes információk nagy fokú, lásd az MSDN blogbejegyzésében [szerepkör példány újraindítása miatt operációs rendszer Verziófrissítései] [ restarts].
+Ezután újraindul, és további információkat technikai részletek Vendég és gazdagép operációs rendszerének frissítések mutatók értékes információk nagy fokú, lásd az MSDN blogbejegyzésében [szerepkör példány újraindítása miatt operációs rendszer Verziófrissítései][restarts].
 
-Ha manuálisan frissíti a vendég operációs rendszer, tekintse meg a [vendég operációs rendszer kivezetési szabályzata] [ retirepolicy] további információt.
+Ha manuálisan frissíti a vendég operációs rendszer, tekintse meg a [vendég operációs rendszer kivezetési szabályzata][retirepolicy] további információt.
 
 ## <a name="guest-os-supportability-and-retirement-policy"></a>A vendég operációs rendszer támogatási és kivezetési szabályzat
 A vendég operációs rendszer támogatási és kivezetési szabályzat kifejtett [Itt][retirepolicy].

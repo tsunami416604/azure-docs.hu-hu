@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.topic: overview
 ms.date: 04/09/2018
 ms.author: makromer
-ms.openlocfilehash: 976724a40b604bcdc3c83ef1b3d2e95268f75304
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 4d31a134ae15e4ddbda0cc60a741f8780fec8d12
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60613845"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67838115"
 ---
 # <a name="compare-azure-data-factory-with-data-factory-version-1"></a>Az Azure Data Factory és a Data Factory 1. verziójának összehasonlítása
 Ez a cikk a Data Factoryt hasonlítja össze a Data Factory 1. verziójával. A Data Factory megismeréséhez tekintse meg a [Data Factoryt bemutató](introduction.md) cikket. A Data Factory 1. verziójának megismeréséhez olvassa el az [Azure Data Factory használatának első lépéseit](v1/data-factory-introduction.md) ismertető cikket. 
@@ -24,7 +24,7 @@ Ez a cikk a Data Factoryt hasonlítja össze a Data Factory 1. verziójával. A 
 ## <a name="feature-comparison"></a>Szolgáltatások összehasonlítása
 Az alábbi táblázat Data Factory funkcióit hasonlítja össze a Data Factory 1. verziójának funkcióival. 
 
-| Szolgáltatás | 1-es verzió | Aktuális verzió | 
+| Funkció | 1-es verzió | Aktuális verzió | 
 | ------- | --------- | --------- | 
 | Adathalmazok | Azon adatok elnevezett nézete, amelyek azokra az adatokra hivatkoznak, amelyeket a tevékenységekben használni szeretne be- vagy kimenetként. Az adatkészletek adatokat határoznak meg a különböző adattárakban, például táblákban, fájlokban, mappákban és dokumentumokban. Az Azure Blob-adatkészlet például meghatározza a blobtárolót és azt az Azure Blob Storage-mappát, amelyből a tevékenység beolvassa az adatokat.<br/><br/>A **rendelkezésre állás** megadja az adatkészlet feldolgozási időszakának felosztási modelljét (például óránként, naponta stb.). | Az adatkészletek változatlanok az aktuális verzióban. Az adatkészletek **rendelkezésre állásának** ütemezését azonban nem kell megadnia. Megadhat egy eseményindító erőforrást, amely folyamatokat ütemezhet egy óraütemező paradigmából. További információkért lásd: [Eseményindítók](concepts-pipeline-execution-triggers.md#triggers) és [Adatkészletek](concepts-datasets-linked-services.md). | 
 | Társított szolgáltatások | A társított szolgáltatások nagyon hasonlóak a kapcsolati sztringekhoz, amelyek meghatározzák azokat a kapcsolati információkat, amelyeket a Data Factory a külső erőforrásokhoz történő csatlakozáshoz igényel. | A társított szolgáltatások ugyanazok, mint a Data Factory V1 esetében, de egy új **connectVia** tulajdonsággal az aktuális Data Factory verzió integrációs modul számítási környezetének használatához. További információkért lásd: [Integrációs modul az Azure Data Factoryban](concepts-integration-runtime.md) és [Társított szolgáltatások tulajdonságai az Azure Blob Storage-hoz](connector-azure-blob-storage.md#linked-service-properties). |
@@ -128,9 +128,9 @@ Az aktuális verzióban frissített SDK-k visszamenőlegesen nem kompatibilisek 
 
 ## <a name="authoring-experience"></a>Létrehozási feladatok
 
-| &nbsp; | 2. verzió | 1. verzió |
+| &nbsp; | 2\. verzió | 1\. verzió |
 | ------ | -- | -- | 
-| Azure Portal | [Igen](quickstart-create-data-factory-portal.md) | [Igen](data-factory-build-your-first-pipeline-using-editor.md) |
+| Azure Portal | [Igen](quickstart-create-data-factory-portal.md) | Nem |
 | Azure PowerShell | [Igen](quickstart-create-data-factory-powershell.md) | [Igen](data-factory-build-your-first-pipeline-using-powershell.md) |
 | .NET SDK | [Igen](quickstart-create-data-factory-dot-net.md) | [Igen](data-factory-build-your-first-pipeline-using-vs.md) |
 | REST API | [Igen](quickstart-create-data-factory-rest-api.md) | [Igen](data-factory-build-your-first-pipeline-using-rest-api.md) |

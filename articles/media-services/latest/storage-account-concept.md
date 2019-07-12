@@ -1,6 +1,6 @@
 ---
-title: Feltöltés és tárolás az Azure Media Services felhőbeli |} A Microsoft Docs
-description: Ez a cikk felhőalapú fel- és fájltárolóval kapcsolatos fogalmak.
+title: Az Azure Media Services-fiókokat az Azure Storage-fiókok |} A Microsoft Docs
+description: A Media Services-fiók létrehozásakor meg kell adnia egy Azure Storage-fiókhoz tartozó erőforrás nevét. A rendszer a Media Services-fiókhoz csatolja a megadott Storage-fiókot.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -9,16 +9,16 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 06/25/2019
+ms.date: 07/01/2019
 ms.author: juliako
-ms.openlocfilehash: fc5bf052a7677d76c7128404a420f8c886cf3fe1
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 5c5bfa224b87040f5142663e6adab01072c6e6ba
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67439111"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67619298"
 ---
-# <a name="cloud-upload-and-storage"></a>Felhőbe történő feltöltés és tárolás
+# <a name="azure-storage-accounts"></a>Azure Storage-tárfiókok
 
 Indítsa el a kezelése, titkosítására, kódolás, elemzése és médiafolyam az Azure-ban, szüksége a Media Services-fiók létrehozása. A Media Services-fiók létrehozásakor meg kell adnia egy Azure Storage-fiókhoz tartozó erőforrás nevét. A rendszer a Media Services-fiókhoz csatolja a megadott Storage-fiókot. 
 

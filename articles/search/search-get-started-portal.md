@@ -10,19 +10,20 @@ ms.topic: tutorial
 ms.date: 07/01/2019
 ms.author: laobri
 ms.custom: seodec2018
-ms.openlocfilehash: 98ca455fd92b0c9ed276082413734c6bc063f310
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: 2a4d7435383f740dc386a740062e66cd2d3585b0
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67671929"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67798895"
 ---
 # <a name="quickstart-create-an-azure-search-index-using-the-azure-portal"></a>Gyors útmutató: Az Azure portal használatával egy Azure Search-index létrehozása
 > [!div class="op_single_selector"]
 > * [Portál](search-get-started-portal.md)
-> * [PowerShell](search-howto-dotnet-sdk.md)
+> * [PowerShell](search-get-started-powershell.md)
 > * [Postman](search-get-started-postman.md)
-> * [C#](search-create-index-dotnet.md)
+> * [Python](search-get-started-python.md)
+> * [C#](search-get-started-dotnet.md)
 
 Egy gyors felkészülési Azure Search-fogalmakról próbálja meg a beépített eszközök az Azure Portalon. Varázslók és a szerkesztők nem kínál a .NET és REST API-k teljes paritás, de Ön is gyorsan használatba a kódmentes bevezető érdekes-lekérdezéseket futtassanak a mintaadatok írása percen belül.
 
@@ -33,9 +34,9 @@ Egy gyors felkészülési Azure Search-fogalmakról próbálja meg a beépített
 > * Meglévő index, és azt módosítására szolgáló beállítások megtekintése
 > * Ismerje meg a teljes szöveges keresés, szűrőket, értékkorlátozással, intelligens keresés és a geosearch **keresési ablak**
 
-Ha az eszközök túl vannak korlátozza, érdemes lehet egy [kódalapú bevezetését programozási Azure search .NET-keretrendszerben](search-howto-dotnet-sdk.md) vagy [Postman vagy a REST API-hívások Fiddler](search-get-started-postman.md).
+Ha az eszközök túl vannak korlátozza, érdemes lehet egy [kódalapú bevezetését programozási Azure search .NET-keretrendszerben](search-howto-dotnet-sdk.md) vagy [REST API-hívások a Postman](search-get-started-postman.md). Vagy megtekinthet egy 6 perces bemutatót az oktatóanyag lépéseiről. A bemutató nagyjából az [Azure Search áttekintővideójának](https://channel9.msdn.com/Events/Connect/2016/138) harmadik percénél kezdődik.
 
-Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt. Vagy megtekinthet egy 6 perces bemutatót az oktatóanyag lépéseiről. A bemutató nagyjából az [Azure Search áttekintővideójának](https://channel9.msdn.com/Events/Connect/2016/138) harmadik percénél kezdődik.
+Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt. 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -210,7 +211,7 @@ Az értékkorlátozó szűrők megjelennek a keresési kérésekben. A facet par
 
 * Csak a szűrhető mezők értéke korlátozható. Csak a lekérdezhető mezők adhatók vissza az eredményekben.
 
-* A *minősítés* mező kétszeres pontosságú lebegőpontos és a csoportosítási pontos érték lesz. További információ a csoportosítási időköze (például "3 csillagokkal," "4 csillagosig," stb.), lásd: [jellemzőalapú navigáció megvalósítása az Azure Search](https://docs.microsoft.com/en-us/azure/search/search-faceted-navigation#filter-based-on-a-range).
+* A *minősítés* mező kétszeres pontosságú lebegőpontos és a csoportosítási pontos érték lesz. További információ a csoportosítási időköze (például "3 csillagokkal," "4 csillagosig," stb.), lásd: [jellemzőalapú navigáció megvalósítása az Azure Search](https://docs.microsoft.com/azure/search/search-faceted-navigation#filter-based-on-a-range).
 
 
 ### <a name="highlight-query"></a> Keresési eredmények kiemelése
@@ -267,7 +268,11 @@ Azt is megtanulta, hogyan találhatja meg az indexek, indexelők és adatforrás
 
 ## <a name="clean-up"></a>A fölöslegessé vált elemek eltávolítása
 
-Ha ez az oktatóanyag az Azure Search szolgáltatás első használatát, törölje az erőforráscsoportot, amely tartalmazza az Azure Search szolgáltatás. Ha nem, keresse ki a megfelelő erőforráscsoport nevét a szolgáltatások listájában, és törölje.
+Dolgozik, a saját előfizetése, esetén célszerű egy projektet a végén, hogy azonosítani, hogy az erőforrások továbbra is kell-e létrehozott. Erőforrások bal oldali futó is költséget takaríthat meg költséget. Külön-külön törölje az erőforrást, vagy törölje az erőforráscsoportot törli az erőforrások teljes készletében.
+
+Megkeresheti és kezelheti az erőforrásokat a portál használatával a **összes erőforrás** vagy **erőforráscsoportok** hivatkozásra a bal oldali navigációs ablaktáblán.
+
+Ha használ egy ingyenes szolgáltatás, ne feledje, hogy korlátozódnak három indexek, indexelők és adatforrások. A korlátja alatt maradjunk a portál egyes elemeire törölheti. 
 
 ## <a name="next-steps"></a>További lépések
 

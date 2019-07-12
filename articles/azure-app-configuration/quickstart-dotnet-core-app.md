@@ -14,12 +14,12 @@ ms.tgt_pltfrm: .NET Core
 ms.workload: tbd
 ms.date: 02/24/2019
 ms.author: yegu
-ms.openlocfilehash: 0bf4aff8e0bae3e84e6383ec560dbfe67e30b994
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.openlocfilehash: c42066b3ac02264ee357bac7ed3fdd360e9d5d4a
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65408721"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67798415"
 ---
 # <a name="quickstart-create-a-net-core-app-with-app-configuration"></a>Gyors útmutató: Hozzon létre egy .NET Core-alkalmazást az alkalmazások konfigurálása
 
@@ -39,7 +39,7 @@ Ez a rövid útmutató elvégzéséhez telepítse a [.NET Core SDK](https://dotn
 
 [!INCLUDE [azure-app-configuration-create](../../includes/azure-app-configuration-create.md)]
 
-6. Válassza ki **konfigurációs Explorer** > **+ létrehozás** a következő kulcs-érték párok hozzáadásához:
+6. Válassza ki **konfigurációs Explorer** >  **+ létrehozás** a következő kulcs-érték párok hozzáadásához:
 
     | Kulcs | Érték |
     |---|---|
@@ -53,15 +53,15 @@ Használja a [.NET Core parancssori felület (CLI)](https://docs.microsoft.com/d
 
 1. Hozzon létre egy új mappát a projekthez.
 
-2. Az új mappára futtassa a következő parancsot egy új ASP.NET Core MVC webalkalmazás-projektet létrehozása:
+2. Az új mappára futtassa a következő parancsot egy új ASP.NET Core console app-projekt létrehozása:
 
         dotnet new console
 
 ## <a name="connect-to-an-app-configuration-store"></a>Egy alkalmazás a konfigurációs adattároló csatlakozni
 
-1. Vegyen fel egy hivatkozást a `Microsoft.Extensions.Configuration.AzureAppConfiguration` NuGet-csomagot a következő parancs futtatásával:
+1. Vegyen fel egy hivatkozást a `Microsoft.Azure.AppConfiguration.AspNetCore` NuGet-csomagot a következő parancs futtatásával:
 
-        dotnet add package Microsoft.Extensions.Configuration.AzureAppConfiguration --version 1.0.0-preview-008520001
+        dotnet add package Microsoft.Azure.AppConfiguration.AspNetCore --version 2.0.0-preview-009200001-7
 
 2. Futtassa a következő parancsot a projekt-csomagok visszaállítására szolgáló:
 

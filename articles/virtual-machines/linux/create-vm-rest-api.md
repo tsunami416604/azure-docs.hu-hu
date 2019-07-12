@@ -4,7 +4,7 @@ description: Megtudhatja, hogyan hozhat létre Linux rendszerű virtuális gép 
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: cynthn
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 06/05/2018
 ms.author: cynthn
-ms.openlocfilehash: 2b078cd769a9b4e5e66fe132fd4ef73ec4621efc
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: a7f624bc85d35048a8f9afa0f527ae592a24fbf1
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60391361"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67667945"
 ---
 # <a name="create-a-linux-virtual-machine-that-uses-ssh-authentication-with-the-rest-api"></a>Hozzon létre egy Linux virtuális gép SSH-hitelesítést használó REST API-val
 
@@ -63,10 +63,10 @@ REST API-kérelmek használatával kapcsolatos általános információkért lá
 
 A következő gyakori definíciókat hozhat létre a kéréstörzs használhatók:
 
-| Name (Név)                       | Kötelező | Típus                                                                                | Leírás  |
+| Name (Név)                       | Szükséges | Típus                                                                                | Leírás  |
 |----------------------------|----------|-------------------------------------------------------------------------------------|--------------|
-| location                   | True (Igaz)     | string                                                                              | Erőforrás helye. |
-| name                       |          | string                                                                              | A virtuális gép nevét. |
+| location                   | True     | sztring                                                                              | Erőforrás helye. |
+| name                       |          | Karakterlánc                                                                              | A virtuális gép nevét. |
 | properties.hardwareProfile |          | [HardwareProfile](/rest/api/compute/virtualmachines/createorupdate#hardwareprofile) | Itt adhatja meg a hardverbeállításokat, a virtuális gép. |
 | properties.storageProfile  |          | [StorageProfile](/rest/api/compute/virtualmachines/createorupdate#storageprofile)   | Itt adhatja meg a virtuális gépek lemezeinek tárolási beállításait. |
 | properties.osProfile       |          | [OSProfile](/rest/api/compute/virtualmachines/createorupdate#osprofile)             | Meghatározza a virtuális gép operációs rendszer beállításait. |

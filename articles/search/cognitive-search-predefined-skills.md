@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: luisca
 ms.custom: seodec2018
-ms.openlocfilehash: 7925f3aef4123fddd3a96c6e62971b881ae4cbc3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c9dfa6af4fb13018051c06783e5ae2bc3f49c0da
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65021859"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67672095"
 ---
 # <a name="predefined-skills-for-content-enrichment-azure-search"></a>A tartalom Adatbővítés (Azure Search) előre megadott képesség
 
@@ -45,7 +45,7 @@ Több ismeretek olyan rugalmas, mire azok felhasználását vagy előállítás�
 | [Microsoft.Skills.Custom.WebApiSkill](cognitive-search-custom-skill-web-api.md) | Lehetővé teszi, hogy a cognitive search folyamat bővíthetőség azáltal, hogy az egyéni Web API egy HTTP-hívással |
 
 
-Létrehozásával kapcsolatos útmutatásért egy [egyéni ismeretek](cognitive-search-custom-skill-web-api.md), lásd: [egy egyéni felületen definiálása](cognitive-search-custom-skill-interface.md) és [példa: egyéni műveleteket létrehozása](cognitive-search-create-custom-skill-example.md).
+Létrehozásával kapcsolatos útmutató a [egyéni ismeretek](cognitive-search-custom-skill-web-api.md), lásd: [egy egyéni felületen definiálása](cognitive-search-custom-skill-interface.md) és [példa: Cognitive Search egyéni műveleteket létrehozása](cognitive-search-create-custom-skill-example.md).
 
 ## <a name="see-also"></a>Lásd még
 

@@ -4,7 +4,7 @@ description: Útmutató a ellenőrzése és a egy összetett SAP HANA kibővíte
 services: virtual-machines-linux
 documentationcenter: ''
 author: hermannd
-manager: jeconnoc
+manager: gwallace
 editor: ''
 ms.service: virtual-machines-linux
 ms.devlang: NA
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/24/2018
 ms.author: hermannd
-ms.openlocfilehash: 4483a7f53e084be5f245840829f4c9c95648b1af
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: b794b045efa4be20a63e9996425d69f0212ae0d7
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60477046"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67707242"
 ---
 # <a name="verify-and-troubleshoot-sap-hana-scale-out-high-availability-setup-on-sles-12-sp3"></a>Győződjön meg arról, és az SAP HANA kibővített magas rendelkezésre állású telepítés SLES 12 SP3 hibaelhárítása 
 
@@ -94,7 +94,7 @@ SAP HANA-hálózatokra vonatkozó javaslatok, az alábbi három alhálózatot l�
 
 Több hálózat használatát az SAP HANA-konfigurációval kapcsolatos további információkért lásd: [SAP HANA global.ini](#sap-hana-globalini).
 
-A fürt minden virtuális gép rendelkezik három Vnic, amelyek megfelelnek az alhálózatok számát. [Hogyan hozhat létre Linux rendszerű virtuális gép az Azure-ban több hálózati kártyák] [ azure-linux-multiple-nics] ismerteti az Azure útválasztási problémát észlelt potenciális, Linux rendszerű virtuális gép üzembe helyezésekor. A megadott útválasztási cikk vonatkozik, csak a több virtuális hálózati adapter használatát. A probléma az SLES 12 SP3 alapértelmezés szerint SUSE kiküszöbölni. További információkért lásd: [a felhő-netconfig EC2 és az Azure a több hálózati][suse-cloud-netconfig].
+A fürt minden virtuális gép rendelkezik három Vnic, amelyek megfelelnek az alhálózatok számát. [Hogyan hozhat létre Linux rendszerű virtuális gép az Azure-ban több hálózati kártyák][azure-linux-multiple-nics] describes a potential routing issue on Azure when deploying a Linux VM. This specific routing article applies only for use of multiple vNICs. The problem is solved by SUSE per default in SLES 12 SP3. For more information, see [Multi-NIC with cloud-netconfig in EC2 and Azure][suse-cloud-netconfig].
 
 
 Győződjön meg arról, hogy az SAP HANA megfelelően van konfigurálva több hálózat használatához, futtassa a következő parancsokat. Először ellenőrizze, hogy az összes három belső IP-címek mindhárom alhálózat aktívak az operációs rendszer szintjén. Ha másik IP-címtartományok az alhálózat definiált, a parancsok alkalmazkodni rendelkezik:
@@ -726,7 +726,7 @@ Transition Summary:
 ## <a name="planned-maintenance"></a>Tervezett karbantartás 
 
 Esetén, a tervezett karbantartás, nincsenek különböző használati helyzetekhez. Egy kérdésre, hogy csak az infrastruktúra-karbantartási például a módosítások az operációs rendszer szintjén és a lemezkonfiguráció vagy egy HANA frissítés.
-Például a SUSE-dokumentumokban további információt is megtalálhatja [felé üzemszünet] [ sles-zero-downtime-paper] vagy [SAP HANA SR teljesítmény optimalizált forgatókönyv] [ sles-12-for-sap]. Ezeket a dokumentumokat a minták azt mutatják be egy elsődleges manuális áttelepítésével is tartalmazhatnak.
+Például a SUSE-dokumentumokban további információt is megtalálhatja [felé üzemszünet][sles-zero-downtime-paper] or [SAP HANA SR Performance Optimized Scenario][sles-12-for-sap]. Ezeket a dokumentumokat a minták azt mutatják be egy elsődleges manuális áttelepítésével is tartalmazhatnak.
 
 Az erős belső tesztjei azért volt szükség, ellenőrizze az infrastruktúra-karbantartási használati eset. Bármely az elsődleges áttelepítésével kapcsolatos problémák elkerülése érdekében azt úgy döntött, hogy mindig egy elsődleges előtt egy fürt karbantartási módba. Ezzel a módszerrel nem elengedhetetlen, hogy a fürt elfelejtette kapcsolatos korábbi helyzet: mely side nem elsődleges és másodlagos lett.
 

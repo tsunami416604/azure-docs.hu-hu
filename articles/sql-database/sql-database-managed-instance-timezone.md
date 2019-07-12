@@ -10,13 +10,13 @@ author: MladjoA
 ms.author: mlandzic
 ms.reviewer: ''
 manager: craigg
-ms.date: 05/22/2019
-ms.openlocfilehash: 8499d99ab82fa89062d74c7dc5db5d7dd11e770c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 07/05/2019
+ms.openlocfilehash: 05ec49c98c5bcfe40346550f5570c03a8fb3f881
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66016392"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67657995"
 ---
 # <a name="time-zones-in-azure-sql-database-managed-instance"></a>Az Azure SQL Database felügyelt példányába időzónák
 
@@ -30,7 +30,9 @@ Használat [AT TIME ZONE](https://docs.microsoft.com/sql/t-sql/queries/at-time-z
 
 ## <a name="supported-time-zones"></a>Támogatott időzónák
 
-Támogatott időzónákban egy készletét az alapul szolgáló operációs rendszer a felügyelt példány öröklődik. Új definíciókat, és változásainak és a meglévő rendszeresen frissítjük. 
+Támogatott időzónákban egy készletét az alapul szolgáló operációs rendszer a felügyelt példány öröklődik. Új definíciókat, és változásainak és a meglévő rendszeresen frissítjük.
+
+[Nyári időszámítás/időzóna módosítása a házirend](https://aka.ms/time) előre a 2010-ről előzményadatok pontossága garantálja.
 
 A támogatott időzónák neveinek listáját keresztül közzétett a [sys.time_zone_info](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-time-zone-info-transact-sql) rendszernézet.
 
@@ -43,7 +45,7 @@ A felügyelt példány időzónát beállítható csak a példány létrehozása
 
 ### <a name="set-the-time-zone-through-the-azure-portal"></a>Állítsa be az időzónát, az Azure Portalon keresztül
 
-Paraméterek egy új példányt ad meg, amikor támogatott időzónák listájából válassza ki az időzónát. 
+Paraméterek egy új példányt ad meg, amikor támogatott időzónák listájából válassza ki az időzónát.
   
 ![Időzóna beállítása során példány létrehozása](media/sql-database-managed-instance-timezone/01-setting_timezone-during-instance-creation.png)
 
@@ -82,7 +84,10 @@ Visszaállítás biztonsági másolatból, vagy adatokat importálhat egy felüg
 
 ### <a name="point-in-time-restore"></a>Adott időpontnak megfelelő helyreállítás
 
-Egy időponthoz visszaállítást hajt végre, amikor a helyreállításához szükséges időt UTC idő kerül értelmezésre. Ezzel a beállítással elkerülheti a kétértelműséget, nyári időszámítás és a hozzá tartozó esetleges módosítások miatt.
+<del>Egy időponthoz visszaállítást hajt végre, amikor a helyreállításához szükséges időt UTC idő kerül értelmezésre. Ezzel a beállítással elkerülheti a kétértelműséget, nyári időszámítás és a hozzá tartozó esetleges módosítások miatt.<del>
+
+ >[!WARNING]
+  > Jelenlegi működése nem megfelelően a fenti nyilatkozat, és a felügyelt példány forrás, ahol az adatbázis automatikus biztonsági mentések megnyílik az időzónájának megfelelően értelmezi a helyreállításához szükséges időt. Ez a viselkedés értelmezése pont a megadott idő, UTC-idő javítása dolgozunk. Lásd: [ismert problémák](sql-database-managed-instance-timezone.md#known-issues) további részletekért.
 
 ### <a name="auto-failover-groups"></a>Automatikus feladatátvételi csoportok
 
@@ -95,6 +100,21 @@ Ugyanabban az időzónában használatával között egy elsődleges és másodl
 
 - A meglévő felügyelt példány az adott időzóna nem lehet módosítani.
 - Külső folyamatok, az SQL Server Agent-feladatok elindítása nem veszik figyelembe az adott időzóna-példány.
+
+## <a name="known-issues"></a>Ismert problémák
+
+Amikor időponthoz visszaállítás (PITR) művelet végrehajtása, időzóna beállítása a következő felügyelt példányt, megnyílik az adatbázis automatikus biztonsági mentések, annak ellenére, hogy PITR portáloldalán javasolja, hogy az idő (UTC) kerül értelmezésre megfelelően értelmezi a történő helyreállításához szükséges időt.
+
+Példa:
+
+Tegyük fel azt a példányt, megnyílik az automatikus biztonsági mentést rendelkezik keleti téli idő (UTC-5) időzónában.
+Időponthoz visszaállítási portál oldalán arra utalnak, hogy vissza választ az idő UTC-idő:
+
+![PITR a portál használatával helyi idő](media/sql-database-managed-instance-timezone/02-pitr-with-nonutc-timezone.png)
+
+Azonban keleti téli idő ténylegesen értelmezi a helyreállításához szükséges időt, és ebben a példában adatbázis lesz visszaállítva, 9 Órakor keleti téli idő, és nem az UTC-idő állapothoz.
+
+Ha szeretne időponthoz visszaállítása adott időpontra való UTC időben, először a forrás-példány időzónájában egyenértékű idő kiszámítása, és az időpont a portálon vagy a PowerShell és CLI-példaszkript használja.
 
 ## <a name="list-of-supported-time-zones"></a>Támogatott időzónákat
 
@@ -228,7 +248,7 @@ Ugyanabban az időzónában használatával között egy elsődleges és másodl
 | Norfolk téli idő | (UTC+11:00) Norfolk-sziget |
 | Szahalini téli idő | (UTC+11:00) Szahalin |
 | Közép-csendes-óceáni téli idő | (UTC+11:00) Salamon-szigetek, Új-Kaledónia |
-| 11\. orosz időzóna | (UTC+12:00) Anadir, Petropavlovszk-Kamcsatszkij |
+| 11. orosz időzóna | (UTC+12:00) Anadir, Petropavlovszk-Kamcsatszkij |
 | Új-zélandi téli idő | (UTC+12:00) Auckland, Wellington |
 | UTC+12 | (UTC+12:00) Egyezményes világidő+12 |
 | Fidzsi-szigeteki téli idő | (UTC+12:00) Fidzsi |

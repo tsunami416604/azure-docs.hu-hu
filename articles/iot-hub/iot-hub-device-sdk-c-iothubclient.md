@@ -8,12 +8,12 @@ ms.devlang: c
 ms.topic: conceptual
 ms.date: 08/29/2017
 ms.author: yizhon
-ms.openlocfilehash: dd3b693271326c85688a275a65b67ad6257220e3
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: ff766375dd9ad7cb3bbdf1ef686abb77d1206099
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60400694"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67797870"
 ---
 # <a name="azure-iot-device-sdk-for-c--more-about-iothubclient"></a>Az Azure IoT eszközoldali SDK-t a C – további információ az Iothubclientről
 
@@ -264,7 +264,7 @@ IoTHubClient_LL_SetOption(iotHubClientHandle, "timeout", &timeout);
 
 Van néhány gyakran használt műveletek közül:
 
-* **SetBatching** (logikai) – Ha **igaz**, majd kötegek küldése az IoT hubnak küldött adatokat. Ha **hamis**, majd külön-külön üzeneteket küld. Az alapértelmezett érték **hamis**. Vegye figyelembe, hogy a **SetBatching** lehetőség csak akkor érvényes, a HTTPS protokollt és nem az MQTT vagy AMQP protokollt.
+* **SetBatching** (logikai) – Ha **igaz**, majd kötegek küldése az IoT hubnak küldött adatokat. Ha **hamis**, majd külön-külön üzeneteket küld. Az alapértelmezett érték **hamis**. Amqp-n keresztül kötegelési / AMQP-WS, valamint D2C-messages, a rendszer tulajdonságok hozzáadását támogatja.
 
 * **Időtúllépés** (előjel nélküli int) – Ez az érték jelenik meg az ezredmásodperc. Ha egy HTTPS-kérelem vagy válasz fogadása hosszabb időt vesz igénybe, mint az ideje, majd a kapcsolat időtúllépés miatt küldi.
 

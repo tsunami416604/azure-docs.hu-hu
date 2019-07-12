@@ -10,12 +10,12 @@ ms.subservice: development
 ms.date: 03/15/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: 06bdd21363aee8202ce7178f157f01a5c26e3a52
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c22caa4b3da69d46241dfbaa7556d0209130415c
+ms.sourcegitcommit: c0419208061b2b5579f6e16f78d9d45513bb7bbc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65851588"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67626131"
 ---
 # <a name="designing-tables-in-azure-sql-data-warehouse"></a>Az Azure SQL Data Warehouse táblák tervezése
 
@@ -42,7 +42,7 @@ Az SQL Data Warehouse, a szervezet a táblák megjelenítése (tény), a (dimenz
 
 | WideWorldImportersDW tábla  | Tábla típusa | SQL Data Warehouse |
 |:-----|:-----|:------|:-----|
-| Város | Dimenzió | wwi.DimCity |
+| City | Dimenzió | wwi.DimCity |
 | Rendelés | (Tény) | wwi.FactOrder |
 
 
@@ -107,7 +107,7 @@ Alapértelmezés szerint az SQL Data Warehouse tárolja egy tábla egy fürtöz�
 Oszlopcentrikus szolgáltatások listáját lásd: [Újdonságok az oszlopcentrikus indexek](/sql/relational-databases/indexes/columnstore-indexes-what-s-new). Tekintse meg az oszlopcentrikus indexet a teljesítmény javítása érdekében [sorcsoport minőségi az oszlopcentrikus indexek maximalizálása](sql-data-warehouse-memory-optimizations-for-columnstore-compression.md).
 
 ## <a name="statistics"></a>Statisztika
-A lekérdezésoptimalizáló oszlopszintű statisztikai használja, amikor létrehozza a lekérdezést végrehajtó tervezése. A lekérdezési teljesítmény javításához fontos rendelkezzenek statisztikákkal egyes oszlopain, különösen a lekérdezés alkalmazásban használt oszlopokat. [Statisztikák létrehozása](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-tables-statistics#automatic-creation-of-statistics) automatikusan megtörténik.  Azonban frissítse a statisztikai adatokat nem történik meg automatikusan. Statisztika frissítése után jelentős számú sort is vehetők fel vagy módosíthatók. Ha például a betöltés után statisztika frissítése. További információkért lásd: [statisztika útmutatást](sql-data-warehouse-tables-statistics.md).
+A lekérdezésoptimalizáló oszlopszintű statisztikai használja, amikor létrehozza a lekérdezést végrehajtó tervezése. A lekérdezési teljesítmény javításához fontos rendelkezzenek statisztikákkal egyes oszlopain, különösen a lekérdezés alkalmazásban használt oszlopokat. [Statisztikák létrehozása](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-tables-statistics#automatic-creation-of-statistic) automatikusan megtörténik.  Azonban frissítse a statisztikai adatokat nem történik meg automatikusan. Statisztika frissítése után jelentős számú sort is vehetők fel vagy módosíthatók. Ha például a betöltés után statisztika frissítése. További információkért lásd: [statisztika útmutatást](sql-data-warehouse-tables-statistics.md).
 
 ## <a name="commands-for-creating-tables"></a>Parancsok a táblázatok létrehozásával
 Létrehozhat egy táblát, egy új üres táblát. Hozhat létre, és töltse fel egy táblát egy kiválasztási utasítás eredményeivel. Az alábbiakban a tábla létrehozása a T-SQL parancsokkal.

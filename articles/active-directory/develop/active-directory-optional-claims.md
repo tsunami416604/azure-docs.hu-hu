@@ -17,12 +17,12 @@ ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 60eeb420c723e22b771b4b86b55c2ce7d6a23659
-ms.sourcegitcommit: 084630bb22ae4cf037794923a1ef602d84831c57
+ms.openlocfilehash: 98b0ec2e1defc4701bff798b2fa93900ec8a9a64
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67536834"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67595161"
 ---
 # <a name="how-to-provide-optional-claims-to-your-azure-ad-app"></a>Útmutató: Adja meg a választható jogcímeket, az Azure AD-alkalmazás
 
@@ -193,7 +193,7 @@ A standard szintű választható jogcímek készletébe mellett tartalmazza a di
 
 > [!Note]
 > - Directory sémakiterjesztései az Azure AD csak szolgáltatásai, így ha az alkalmazás jegyzékfájlja kérelmek egyedi bővítmény és a egy MSA felhasználó bejelentkezik az alkalmazás, ezek a bővítmények nem állítható vissza.
-> - Az Azure AD nem kötelező jogcímek csak működnek az Azure AD-bővítmény és a munkahelyi Microsoft Graph címtár kiterjesztése nem működik. Mindkét API-k megkövetelése a `Directory.ReadWriteAll` engedéllyel, amely a rendszergazdák csak is beleegyezés.
+> - Az Azure AD nem kötelező jogcímek csak működnek az Azure AD-bővítmény és a Microsoft Graph címtár kiterjesztése nem működik. Mindkét API-k megkövetelése a `Directory.ReadWriteAll` engedéllyel, amely a rendszergazdák csak is beleegyezés.
 
 ### <a name="directory-extension-formatting"></a>Címtárkiterjesztés formázása
 
@@ -254,7 +254,7 @@ Ez a szakasz ismerteti a konfigurációs beállítások módosítása a csoport 
    }
    ```
 
-   | Nem kötelező jogcímek séma | Érték |
+   | Nem kötelező jogcímek séma | Value |
    |----------|-------------|
    | **név:** | "Csoportok" kell lennie. |
    | **Forrás:** | Nincs használatban. Nincs megadva vagy null értéket adjon meg |
@@ -303,7 +303,7 @@ Több lehetőség van egy alkalmazás identitás konfiguráció engedélyezése 
 -   Az alkalmazásjegyzékben módosíthatja. Az alábbi példában ez a módszer használatával a konfiguráció beállítása. Olvassa el a [ismertetése az Azure AD application manifest dokumentum](https://docs.microsoft.com/azure/active-directory/develop/active-directory-application-manifest) első bevezetést a jegyzékfájlban.
 -   Akkor is használó alkalmazások írása a [Graph API](https://docs.microsoft.com/azure/active-directory/develop/active-directory-graph-api) frissíteni az alkalmazást. A [entitások és összetett típusok segédletben](https://msdn.microsoft.com/library/azure/ad/graph/api/entity-and-complex-type-reference#optionalclaims-type) az a Graph API-referencia útmutató segítségére lehet a nem kötelező jogcímek konfigurálása.
 
-**Példa** Az alábbi példában egy alkalmazásjegyzékben jogcímalapú hozzáférés, az ID és a SAML hozzáadandó módosítják a tokenek számára az alkalmazás.
+**Példa:** Az alábbi példában egy alkalmazásjegyzékben jogcímalapú hozzáférés, az ID és a SAML hozzáadandó módosítják a tokenek számára az alkalmazás.
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 1. A hitelesítése után után válassza ki azt az oldal jobb felső sarokban válassza ki az Azure AD-bérlő.

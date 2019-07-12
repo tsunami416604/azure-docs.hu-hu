@@ -5,45 +5,23 @@ services: virtual-machines
 author: roygara
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 09/24/2018
+ms.date: 07/08/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 7a37c9d51541c279a6b820641b6eb46175aa8413
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 6cbda7d9be1617617e173c68c3d2a4a95c255ae0
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67179090"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67673365"
 ---
-# <a name="azure-premium-storage-design-for-high-performance"></a>Az Azure premium storage: nagy teljesítményű rendszer tervezése
-
-Ez a cikk az Azure Premium Storage nagy teljesítményű alkalmazások létrehozásához nyújt útmutatást. Ez a dokumentum az alkalmazása által használt technológiák alkalmazandó ajánlott eljárások teljesítményének kombinálva szereplő utasítások is használhatja. Az irányelvek mutatja be, ebben a dokumentumban példaként a Premium Storage futó SQL Server rendelkezik használtuk.
-
-Azt a ebben a cikkben a tárolási réteg teljesítmény-forgatókönyveket érintenek, miközben kell optimalizálni az alkalmazásrétegre. Például ha a SharePoint-farmok Azure Premium Storage üzemelteti, használhatja az SQL Server példákat, ez a cikk a optimalizálhatja az adatbázis-kiszolgáló. Ezenkívül optimalizálhatja a SharePoint-Farm webkiszolgáló és a legtöbb teljesítmény alkalmazáskiszolgáló.
-
-Ez a cikk segít a válasz a következő gyakori kérdésekre az Azure Premium Storage, az alkalmazás teljesítményének optimalizálása
-
-* Hogyan lehet az alkalmazás teljesítményének méréséhez?  
-* Miért nem lát várt nagy teljesítményű?  
-* Milyen tényezők befolyásolják az alkalmazás teljesítményét a Premium Storage?  
-* Hogyan hajtsa végre ezeket a tényezők befolyásolják a Premium Storage az alkalmazás teljesítményét?  
-* Hogyan, optimalizálhatja az IOPS, sávszélesség és késés?  
-
-Adtunk ezeket az irányelveket kifejezetten a Premium Storage számára, mert a prémium szintű Storage futó számítási feladatok magas teljesítmény-és nagybetűket. Példák adtunk meg, ahol szükséges. Is alkalmazhat az egyes ezeket az irányelveket, Standard szintű Storage-lemezekkel IaaS virtuális gépeken futó alkalmazások.
-
-> [!NOTE]
-> Egyes esetekben egy lemez teljesítményprobléma tűnik ténylegesen hálózati szűk keresztmetszeteket. Ezekben a helyzetekben, optimalizálja a [hálózati teljesítményt](../articles/virtual-network/virtual-network-optimize-network-bandwidth.md).
-> Ha a virtuális gép támogatja a gyorsított hálózatkezelés, győződjön meg arról, hogy engedélyezve van. Ha nincs engedélyezve, engedélyezheti a már üzembe helyezett virtuális gépeken is [Windows](../articles/virtual-network/create-vm-accelerated-networking-powershell.md#enable-accelerated-networking-on-existing-vms) és [Linux](../articles/virtual-network/create-vm-accelerated-networking-cli.md#enable-accelerated-networking-on-existing-vms).
-
-Mielőtt elkezdené, ha új prémium szintű Storage, először olvassa el a [IaaS virtuális gépekhez egy Azure-lemez típusának kiválasztása](../articles/virtual-machines/windows/disks-types.md) és [Azure Storage méretezhetőségi és Teljesítménycéljai](../articles/storage/common/storage-scalability-targets.md) cikkeket.
-
 ## <a name="application-performance-indicators"></a>Alkalmazás teljesítménymutatók
 
 Hogy ellenőrzéséhez, hogy az alkalmazások teljesítményének jól vagy nem a mutatók, például a teljesítmény, milyen gyors egy kérelem feldolgozása folyamatban van egy felhasználói kérelem mennyi adatot, egy kérelem feldolgozása kérelmenként, hány kér az alkalmazás feldolgozása folyamatban van egy adott időtartam, hogy mennyi ideig kapott választ a kérés elküldése után várnia a felhasználó rendelkezik. Ezek teljesítménymutatók műszaki használati, IOPS, az átviteli vagy a sávszélesség és késés.
 
 Ebben a szakaszban ismertetjük az általános teljesítménymutatók Premium Storage keretében. A következő szakaszban gyűjtése Alkalmazáskövetelményeket, akkor megtudhatja, hogyan az alkalmazás ezen teljesítménymutatók mérésére. Később az alkalmazások teljesítményének optimalizálása a ezeket teljesítménymutatók és javaslatokkal optimalizálhatja őket befolyásoló tényezők ismertetik.
 
-## <a name="iops"></a>IO
+## <a name="iops"></a>IOPS
 
 Iops-t vagy a bemeneti/kimeneti műveletek másodpercenként, akkor az alkalmazás egy második, a tárolólemezeket által küldött kérelmek száma. Egy bemeneti/kimeneti műveleti olvashatók vagy ír, egymást követő, illetve véletlenszerű. Online tranzakciófeldolgozási (OLTP) olyan alkalmazások, mint egy online kereskedelmi webhelyen kell számos egyidejű felhasználói kérések feldolgozása azonnal elkezdődik. A felhasználói kérések beszúrása és frissítése nagy számításigényű adatbázis-tranzakciók, amely az alkalmazás gyorsan kell feldolgozni. Ezért a OLTP alkalmazások nagyon magas iops-érték szükséges. Az ilyen alkalmazások több millió, a kis- és véletlenszerű i/o-kérelmek kezelésére. Ha van ilyen alkalmazás, az alkalmazás-infrastruktúrával való optimalizálásáról IOPS kell alakítja ki. A későbbi szakaszban *alkalmazások teljesítményének optimalizálása*, tárgyaljuk részletesen összes tényezőt kell figyelembe venni magas iops-érték beolvasása.
 
@@ -176,7 +154,7 @@ Ha egy alkalmazás, amely lehetővé teszi, hogy módosítani az i/o-mérete, ha
 
 Íme egy példa a módját, kiszámíthatja az IOPS és átviteli sebesség/sávszélesség az alkalmazáshoz. Vegyünk egy alkalmazást, a típus P30 lemez használatával. A maximális IOPS és átviteli sebesség/sávszélesség P30 lemez érhető el érték 5000 iops értékre, és 200 MB másodpercenként jelölik. Most ha az alkalmazás által kért a maximális P30 lemez IOPS és i/o kisebb mint 8 KB-os méretet használja, az eredményül kapott fogja tudni beolvasni a sávszélesség 40 MB / másodperc. Azonban ha az alkalmazás P30 lemez maximális átviteli sebesség/sávszélességet igényel, például 1024 KB nagyobb i/o-méretet használja, az eredményül kapott IOPS lesz kisebb, 200 iops-t. Az i/o-mérete ezért hangolása úgy, hogy mind az alkalmazás IOPS és átviteli sebesség/sávszélesség követelménynek megfelel-e. Az alábbi táblázat összefoglalja a különböző méretű i/o és azok megfelelő IOPS és átviteli sebesség P30 lemez.
 
-| Alkalmazás követelményeinek | I/o-mérete | IO | Throughput/Bandwidth |
+| Alkalmazás követelményeinek | I/o-mérete | IOPS | Throughput/Bandwidth |
 | --- | --- | --- | --- |
 | Maximális iops-érték |8 KB |5,000 |40 MB / s |
 | Maximális átviteli sebesség |1024 KB |200 |200 MB / s |
@@ -196,7 +174,7 @@ Amikor elindít egy alkalmazást, ehhez az első dolog, válasszon egy virtuáli
 
 Virtuális gépek méretezéséhez magas CPU magok, memória, az operációs rendszer és ideiglenes lemez méretét az eltérő számú különböző méretű érhető el. Minden Virtuálisgép-méret legfeljebb hány adatlemez csatolható a virtuális géphez is tartalmaz. Ezért hatással lesz a kiválasztott Virtuálisgép-méretet, mekkora feldolgozási, memória, és a tárolási kapacitás érhető el az alkalmazást. Azt is hatással van a számítási és tárolási költsége. Ha például az alábbiakban egy DS, DSv2 sorozat és a egy GS-sorozat a legnagyobb virtuális gép méretének előírásait:
 
-| Virtuális gép mérete | Processzormagok | Memory (Memória) | Virtuális gép lemezméretek | Legfeljebb Adatlemezek | Gyorsítótár mérete | IO | A sávszélesség-gyorsítótár i/o-korlátozások |
+| Virtuális gép mérete | Processzormagok | Memory (Memória) | Virtuális gép lemezméretek | Legfeljebb Adatlemezek | Gyorsítótár mérete | IOPS | A sávszélesség-gyorsítótár i/o-korlátozások |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | Standard_DS14 |16 |112 GB |OS = 1023 GB <br> Local SSD = 224 GB |32 |576 GB |50 000 IOPS-ÉRTÉK <br> 512 MB / s |4000 IOPS és 33 MB / s |
 | Például a Standard_GS5 |32 |448 GB |OS = 1023 GB <br> Local SSD = 896 GB |64 |4224 GB |80 000 IOPS <br> 2000 MB / s |5000 IOPS és az 50 MB / s |
@@ -413,4 +391,4 @@ További tudnivalók a rendelkezésre álló szabad típusok:
 Az SQL Server-felhasználók számára olvassa el az SQL Server ajánlott eljárások teljesítményének javításához cikkeket:
 
 * [Teljesítmény Azure-beli virtuális gépeken az SQL Serverhez kapcsolódó ajánlott eljárások](../articles/virtual-machines/windows/sql/virtual-machines-windows-sql-performance.md)
-* [Az SQL Server Azure-beli virtuális gépen legmagasabb szintű teljesítményt nyújt, az Azure Premium Storage](http://blogs.technet.com/b/dataplatforminsider/archive/2015/04/23/azure-premium-storage-provides-highest-performance-for-sql-server-in-azure-vm.aspx)
+* [Az SQL Server Azure-beli virtuális gépen legmagasabb szintű teljesítményt nyújt, az Azure Premium Storage](https://blogs.technet.com/b/dataplatforminsider/archive/2015/04/23/azure-premium-storage-provides-highest-performance-for-sql-server-in-azure-vm.aspx)

@@ -6,15 +6,15 @@ ms.service: firewall
 services: firewall
 ms.topic: overview
 ms.custom: mvc
-ms.date: 6/26/2019
+ms.date: 7/10/2019
 ms.author: victorh
 Customer intent: As an administrator, I want to evaluate Azure Firewall so I can determine if I want to use it.
-ms.openlocfilehash: 9a875f4450b700fc9db74b4402471e282f8e9dab
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: da82f6c93045b38aed887860c6d5c45c93b2260b
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67442913"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67703951"
 ---
 # <a name="what-is-azure-firewall"></a>Mi az Azure Firewall?
 
@@ -30,7 +30,7 @@ Az Azure Firewall az alábbi szolgáltatásokat kínálja:
 
 Magas rendelkezésre állású épül, így további terheléselosztók szükségesek, és semmit nem kell konfigurálnia.
 
-## <a name="availability-zones-public-preview"></a>A rendelkezésre állási zónák (nyilvános előzetes verzió)
+## <a name="availability-zones"></a>Rendelkezésre állási zónák
 
 Az Azure tűzfal span megnövelt rendelkezésre állás érdekében több rendelkezésre állási zónában való üzembe helyezéskor konfigurálható. A rendelkezésre állási zónákban a rendelkezésre állás 99,99 %-os növekszik. További információkért tekintse meg az Azure-tűzfal [szolgáltatói szerződés (SLA)](https://azure.microsoft.com/support/legal/sla/azure-firewall/v1_0/). A 99,99 %-os SLA-t érhető el, ha két vagy több rendelkezésre állási zónák vannak kijelölve.
 
@@ -51,7 +51,7 @@ Az Azure Firewall akármeddig felskálázható a változó hálózati forgalom k
 
 ## <a name="application-fqdn-filtering-rules"></a>Alkalmazások teljes tartománynevére vonatkozó szűrési szabályok
 
-A kimenő HTTP/S-forgalom korlátozható teljes tartománynevek (FQDN) egy megadott listájára (helyettesítő karakterek is alkalmazhatók). Ez a funkció nem szükséges SSL-lezárást.
+Kimenő HTTP-vagy Https-forgalom vagy az Azure SQL-forgalom (előzetes verzió) egy megadott listájához a helyettesítő karakterek használata például teljesen minősített tartománynevet (FQDN) korlátozhatja. Ez a funkció nem szükséges SSL-lezárást.
 
 ## <a name="network-traffic-filtering-rules"></a>Hálózati forgalomra vonatkozó szűrési szabályok
 
@@ -77,7 +77,11 @@ A rendszer a kimenő virtuális hálózati forgalomhoz tartozó minden IP-címet
 
 A tűzfal nyilvános IP-címére érkező bejövő hálózati forgalmat a rendszer lefordítja (Destination Network Address Translation, célhálózati címfordítás), és a virtuális hálózat magánhálózati IP-címeire szűri.
 
-## <a name="multiple-public-ips-public-preview"></a>Több nyilvános IP-címek (nyilvános előzetes verzió)
+## <a name="multiple-public-ip-addresses"></a>Több nyilvános IP-cím
+
+> [!IMPORTANT]
+> Több nyilvános IP-címekkel rendelkező Azure-tűzfalon keresztül az Azure PowerShell, az Azure CLI-vel, a REST és a sablonok érhető el. A portál kezelőfelülete ad hozzá régiókat Növekményesen, és lesz elérhető az összes régióban a bevezetés befejezésekor.
+
 
 (Legfeljebb 100) több nyilvános IP-címet társíthatja a tűzfal.
 
@@ -85,9 +89,6 @@ Ez lehetővé teszi a következő esetekben:
 
 - **DNAT** – több standard port példány lefordíttathatja a háttérkiszolgálókhoz. Például ha két nyilvános IP-címek, szerint lefordíttathatja a TCP-portját 3389 (RDP) IP-címe.
 - **SNAT** – további portokat a kimenő SNAT-kapcsolatok, csökkentve az esetleges SNAT portfogyás érhető el. Jelenleg az Azure-tűzfal véletlenszerűen kiválaszt a nyilvános IP-forráscím-kapcsolathoz való használatra. Ha bármelyik alárendelt szűrés a hálózaton, lehetővé teszik a tűzfal társított összes nyilvános IP-címeket szeretne.
-
-> [!NOTE]
-> A nyilvános előzetes során Ha hozzáad vagy eltávolít egy nyilvános IP-címet a futó tűzfal DNAT-szabályok használatával meglévő bejövő kapcsolat funkció 40 – 120 másodpercen. A tűzfal rendelt, kivéve, ha a tűzfal nincs lefoglalva, vagy törölve első nyilvános IP-cím nem lehet eltávolítani.
 
 ## <a name="azure-monitor-logging"></a>Azure Monitor-naplózás
 
@@ -108,10 +109,10 @@ A nem TCP/UDP-protokollokra (például ICMP) vonatkozó hálózati szűrési sza
 |Előfordulhat, hogy első maszkolva intelligens veszélyforrás-riasztásai|A hálózati szabályok a 80-as/443-as kimenő szűrési maszkok célhelyet fenyegetésészlelési intelligencia riasztást, ha a riasztás csak módra konfigurálni.|Hozzon létre kimenő szűrés a 80-as/443-as alkalmazás szabályok használatával. Vagy módosítsa a threat intelligence módot **riasztás és a megtagadási**.|
 |Az Azure tűzfal használja az Azure DNS csak a névfeloldáshoz|Azure tűzfal teljes tartománynevek csak az Azure DNS használatával oldja fel. Egyéni DNS-kiszolgáló nem támogatott. Nincs nincs hatással a DNS-feloldás más alhálózatokon.|Dolgozunk a korlátozás enyhítése.|
 |Az Azure tűzfal SNAT/DNAT nem működik a magánhálózati IP-célhelyek|Az Azure tűzfal SNAT/DNAT-támogatás internetes kimenő és bejövő korlátozódik. SNAT/DNAT jelenleg nem működik a magánhálózati IP-célhelyeket. Ha például a küllős topológiájú.|Ez a jelenlegi korlátozását.|
-|Első nyilvános IP-cím nem távolítható el.|A tűzfal rendelt, kivéve, ha a tűzfal nincs lefoglalva, vagy törölve első nyilvános IP-cím nem lehet eltávolítani.|Ez az elvárt működés.|
-|Ha ad hozzá, vagy távolítsa el a nyilvános IP-címet, a DNAT szabályok funkció ideiglenesen.| Hozzáadásakor, vagy távolítsa el a futó tűzfal egy nyilvános IP-címet, meglévő bejövő kapcsolat DNAT-szabályok használatával nem működnek a 40-120 másodperc.|Ez az egy korlátozás ennek a funkciónak a nyilvános előzetes verzióját.|
+|Első nyilvános IP-konfiguráció nem távolítható el.|Minden Azure-tűzfal nyilvános IP-cím hozzá van rendelve egy *IP-konfiguráció*.  Az első IP-konfigurációhoz van hozzárendelve, a tűzfal üzembe helyezése során, és általában hivatkozást tartalmaz a tűzfal alhálózathoz (kivéve, ha explicit módon másként konfigurálva keresztül egy sablon telepítése). Az IP-konfiguráció nem törölhető, mert azt kellene megszüntetéséhez lefoglalni a tűzfal. Továbbra is módosíthatja, vagy távolítsa el a nyilvános IP-címet az IP-konfiguráció társított, ha a tűzfal van legalább egy más nyilvános IP-cím is használható.|Ez az elvárt működés.|
 |A rendelkezésre állási zónák csak a telepítés során lehet konfigurálni.|A rendelkezésre állási zónák csak a telepítés során lehet konfigurálni. A rendelkezésre állási zónák nem lehet konfigurálni, a tűzfal üzembe helyezése után.|Ez az elvárt működés.|
 |A bejövő kapcsolatoknál SNAT|DNAT, a nyilvános IP-cím tűzfalon keresztüli kapcsolatokat mellett egy, a tűzfal a forgalmon forrásoldali hálózati címfordítást (bejövő) azok magánhálózati IP-címek. Ez a követelmény ma (is az aktív nva-k) szimmetrikus útválasztásának biztosításához.|Megőrizheti az eredeti forrásra HTTP/s, érdemes lehet [XFF](https://en.wikipedia.org/wiki/X-Forwarded-For) fejlécek. Például, mint például az szolgáltatást használ [Azure bejárati ajtajának](../frontdoor/front-door-http-headers-protocol.md#front-door-service-to-backend) a tűzfal előtt. WAF Azure bejárati ajtajának és lánc részeként a tűzfalhoz is hozzáadhat.
+|Az SQL teljes Tartományneve szűrésének támogatása csak a proxy mód (1433-as port)|Az Azure SQL Database az Azure SQL Data warehouse-ba, és az Azure SQL felügyelt példánya:<br><br>Az előzetes verzióban SQL teljesen minősített Tartományneve, szűrés proxyt módú csak (1433-as port) használata támogatott.<br><br>Az Azure az SQL IaaS:<br><br>Ha nem szabványos portokhoz használ, ezeket a portokat az alkalmazás szabályok is megadhat.|Átirányítási mód, amely az alapértelmezett érték, ha az Azure-on belül csatlakozik, az SQL-hozzáférés az SQL szolgáltatáscímke Azure hálózati tűzfalszabályok részeként inkább szűrhet.
 
 ## <a name="next-steps"></a>További lépések
 

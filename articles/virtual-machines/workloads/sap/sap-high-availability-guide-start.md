@@ -4,7 +4,7 @@ description: Magas rendelkezésre állású útmutató az SAP NetWeaver az Azure
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
 author: goraco
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 keywords: ''
@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 05/05/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 7de46a534ea7920bcae4a5b2a3316117f090a7bf
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5e5493b3688c4de9dab971d58b58f85d00f8003b
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60935891"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67709036"
 ---
 # <a name="azure-virtual-machines-high-availability-for-sap-netweaver"></a>Az Azure virtuális gépek magas rendelkezésre állás az SAP NetWeaver
 
@@ -193,7 +193,7 @@ A cikksorozat mutatja be:
 * SAP telepítésének lépései az Azure-ban magas rendelkezésre állású SAP-rendszerek telepítése az Azure Resource Manager-alapú üzemi modell használatával.
 
     > [!IMPORTANT]
-    > Javasoljuk, hogy az SAP-telepítések az Azure Resource Manager üzemi modell használata. Ez lehetővé teszi számos előnnyel jár, amelyek nem érhetők el a klasszikus üzemi modellben. További tudnivalók az Azure [üzembe helyezési modellek][virtual-machines-azure-resource-manager-architecture-benefits-arm].   
+    > Javasoljuk, hogy az SAP-telepítések az Azure Resource Manager üzemi modell használata. Ez lehetővé teszi számos előnnyel jár, amelyek nem érhetők el a klasszikus üzemi modellben. További információ az Azure [üzemi modellekről][virtual-machines-azure-resource-manager-architecture-benefits-arm].   
     >
 * SAP magas rendelkezésre állás:
   * ![Windows][Logo_Windows]**Windows**révén **Windows Server feladatátvételi fürt (WSFC)**

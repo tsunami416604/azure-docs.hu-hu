@@ -12,12 +12,12 @@ ms.date: 05/08/2019
 ms.author: celested
 ms.reviewer: arvinh,luleon
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 95b7cbcf4e485dc93d49b9559dcb7d0d4f597ebe
-ms.sourcegitcommit: 978e1b8cac3da254f9d6309e0195c45b38c24eb5
+ms.openlocfilehash: a72cb7bc7feeba984d568a0465d4f23a494496e8
+ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67550356"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67807657"
 ---
 # <a name="configure-single-sign-on-to-non-gallery-applications-in-microsoft-identity-platform"></a>Egyszeri bejelentkezés nem katalógusból származó alkalmazásokhoz a Microsoft identity platform konfigurálása
 
@@ -50,13 +50,14 @@ Az alkalmazásregisztrációt segítségével bármilyen típusú [támogatott h
 Egy listán nem szereplő alkalmazást egy alkalmazás-integráció sablon használatával csatlakozhat, hajtsa végre ezeket a lépéseket:
 
 1. Jelentkezzen be a [Azure Active Directory portálon](https://aad.portal.azure.com/) a Microsoft identity platform rendszergazdai fiók használatával.
-2. Válassza ki **vállalati alkalmazások** > **új alkalmazás**.
-3. (Nem kötelező, de ajánlott) Az a **Hozzáadás a katalógusból** keresőmezőbe, írja be az alkalmazás megjelenítendő neve. Ha az alkalmazás megjelenik a keresési eredmények között, válassza ki, és hagyja ki ezt az eljárást az.
-4. Válassza ki **katalógusban nem szereplő alkalmazás**. A **saját alkalmazás hozzáadása** lap jelenik meg.
+1. Válassza ki **vállalati alkalmazások** > **új alkalmazás**.
+1. (Nem kötelező, de ajánlott) Az a **Hozzáadás a katalógusból** keresőmezőbe, írja be az alkalmazás megjelenítendő neve. Ha az alkalmazás megjelenik a keresési eredmények között, válassza ki, és hagyja ki ezt az eljárást az.
+1. Válassza ki **katalógusban nem szereplő alkalmazás**. A **saját alkalmazás hozzáadása** lap jelenik meg.
 
-   ![Alkalmazás hozzáadása](./media/configure-single-sign-on-non-gallery-applications/add-your-own-application.png)
-5. Adja meg az új alkalmazás megjelenített neve.
-6. Válassza a **Hozzáadás** lehetőséget.
+   ![A Hozzáadás a saját alkalmazás lapját jeleníti meg](./media/configure-single-sign-on-non-gallery-applications/add-your-own-application.png)
+
+1. Adja meg az új alkalmazás megjelenített neve.
+1. Válassza a **Hozzáadás** lehetőséget.
 
 Az alkalmazás így hozzáadásával előre integrált alkalmazások, elérhető egy hasonló élményt biztosítani. Először válasszon **egyszeri bejelentkezési** való az alkalmazás oldalsávon. A következő oldalon (**egyszeri bejelentkezési módszer**) kapcsolódhatnak az egyszeri bejelentkezés konfigurálásához:
 
@@ -64,7 +65,7 @@ Az alkalmazás így hozzáadásával előre integrált alkalmazások, elérhető
 - **Jelszóalapú**
 - **A csatolt**
 
-![Egyszeri bejelentkezés módszer kiválasztása](./media/configure-single-sign-on-non-gallery-applications/select-a-single-sign-on-method.png)
+![Válassza a egyszeri bejelentkezési módszer oldalt jelenít meg](./media/configure-single-sign-on-non-gallery-applications/select-a-single-sign-on-method.png)
 
 Ezek a beállítások kapcsolatos további információkért tekintse meg a következő szakaszok a jelen cikk.
 
@@ -72,7 +73,7 @@ Ezek a beállítások kapcsolatos további információkért tekintse meg a köv
 
 Válassza ki a **SAML** beállítást, konfigurálhat a SAML-alapú hitelesítést az alkalmazáshoz. (Ez utóbbi lehetőség megköveteli, hogy az alkalmazás támogatja-e a SAML 2.0-s.) A **állítsa be egyszeri bejelentkezést az SAML** lap jelenik meg.
 
-![Egyszeri bejelentkezés az SAML beállítása](./media/configure-single-sign-on-non-gallery-applications/set-up-single-sign-on-with-saml.png)
+![Megjeleníti az egyszeri bejelentkezéshez a SAML lap beállítása](./media/configure-single-sign-on-non-gallery-applications/set-up-single-sign-on-with-saml.png)
 
 Ezen a lapon öt különböző fejlécek rendelkezik:
 
@@ -90,7 +91,7 @@ Most már gyűjt adatokat a folytatás előtt az alkalmazás SAML funkcióinak h
 
 Az Azure AD beállításához, nyissa meg a **alapszintű SAML-konfigurációja** címsor, és válassza ki a **szerkesztése** ikon (a Ceruza). Manuálisan adja meg az értékeket, vagy a mező értékének kinyerése-metaadatfájl feltöltésére.
 
-![Alapszintű SAML-konfigurációja](./media/configure-single-sign-on-non-gallery-applications/basic-saml-configuration.png)
+![Az alapszintű SAML konfigurációs lapját jeleníti meg](./media/configure-single-sign-on-non-gallery-applications/basic-saml-configuration.png)
 
 Az alábbi két mező szükség:
 
@@ -141,7 +142,7 @@ Megtekintését és szerkesztését a jogcímek küldése az alkalmazásnak az S
 
 - Nyissa meg a **felhasználói attribútumok & jogcímek** címsor, és válassza ki a **szerkesztése** ikonra. A **felhasználói attribútumok & jogcímek** lap jelenik meg.
 
-![Felhasználói attribútumokról és jogcímekről](./media/configure-single-sign-on-non-gallery-applications/user-attributes-and-claims.png)
+![A felhasználói attribútumokról és jogcímekről lapját jeleníti meg](./media/configure-single-sign-on-non-gallery-applications/user-attributes-and-claims.png)
 
 A két okból az SAML-jogkivonatban kiadott jogcímek szerkesztése lehet szükség:
 
@@ -158,7 +159,7 @@ Az Azure ad-ből, töltse le az aktív tanúsítvány Base64 vagy Raw formátumb
 
 Megtekintéséhez, létrehozásához, vagy töltse le a tanúsítványokat (aktív vagy inaktív), nyissa meg a **SAML-aláíró tanúsítvány** címsor, és válassza ki a **szerkesztése** ikonra. A **SAML-aláíró tanúsítvány** jelenik meg.
 
-![SAML-aláíró tanúsítvány](./media/configure-single-sign-on-non-gallery-applications/saml-signing-certificate.png)
+![Az SAML aláírási tanúsítvány oldal megjelenítése](./media/configure-single-sign-on-non-gallery-applications/saml-signing-certificate.png)
 
 Ellenőrizze a tanúsítvány rendelkezik-e:
 
@@ -182,13 +183,13 @@ Miután konfigurálta az alkalmazás használhatja az Azure AD SAML-alapú ident
 Az alkalmazás egy új felhasználó vagy csoport hozzárendelése:
 
 1. Az alkalmazás oldalsávon válassza **felhasználók és csoportok**. A  **\<alkalmazás neve >-felhasználók és csoportok** lap, amely hozzárendelt felhasználók és csoportok aktuális listáját jeleníti meg.
-2. Válassza ki **felhasználók hozzáadása**. A **hozzáadása hozzárendelések** lap jelenik meg.
-3. Válassza ki **felhasználók és csoportok (\<szám > kijelölt)** . A **felhasználók és csoportok** elérhető felhasználók és csoportok listáját tartalmazó lap jelenik meg,.
-4. Típus vagy görgessen lefelé, keresse meg a felhasználót vagy csoportot szeretne hozzárendelni a listából.
-5. Válassza ki a felhasználó vagy csoport, amelyet szeretne hozzáadni, és válassza ki a **kiválasztása** gombra. A **felhasználók és csoportok** lap eltűnik.
-6. Az a **hozzáadása hozzárendelések** lapon jelölje be **hozzárendelése**. A  **\<alkalmazás neve >-felhasználók és csoportok** lap jelenik meg a listában szereplő további felhasználóival.
+1. Válassza ki **felhasználók hozzáadása**. A **hozzáadása hozzárendelések** lap jelenik meg.
+1. Válassza ki **felhasználók és csoportok (\<szám > kijelölt)** . A **felhasználók és csoportok** elérhető felhasználók és csoportok listáját tartalmazó lap jelenik meg,.
+1. Típus vagy görgessen lefelé, keresse meg a felhasználót vagy csoportot szeretne hozzárendelni a listából.
+1. Válassza ki a felhasználó vagy csoport, amelyet szeretne hozzáadni, és válassza ki a **kiválasztása** gombra. A **felhasználók és csoportok** lap eltűnik.
+1. Az a **hozzáadása hozzárendelések** lapon jelölje be **hozzárendelése**. A  **\<alkalmazás neve >-felhasználók és csoportok** lap jelenik meg a listában szereplő további felhasználóival.
 
-   ![Alkalmazás-felhasználók és csoportok](./media/configure-single-sign-on-non-gallery-applications/application-users-and-groups.png)
+   ![Az alkalmazás felhasználók és csoportok lapját jeleníti meg](./media/configure-single-sign-on-non-gallery-applications/application-users-and-groups.png)
 
 Ebből a listából a következőket teheti:
 
@@ -213,26 +214,29 @@ Válassza ezt a beállítást, konfigurálhat [jelszóalapú egyszeri bejelentke
 
 Miután kiválasztotta **jelszóalapú**, adja meg az alkalmazás webes bejelentkezési oldal URL-CÍMÉT kéri.
 
-![Jelszavas egyszeri bejelentkezés](./media/configure-single-sign-on-non-gallery-applications/password-based-sso.png)
+![Bejelentkezési URL-címet a bejelentkezési URL-lapját jeleníti meg](./media/configure-single-sign-on-non-gallery-applications/password-based-sso.png)
 
 Majd hajtsa végre az alábbi lépéseket:
 
 1. Adja meg az URL-címet. Ez a karakterlánc a lapon, a felhasználónév beviteli mezőt kell lennie.
-2. Kattintson a **Mentés** gombra. Az Azure AD megpróbálja elemezni a bejelentkezési lapon adjon meg egy felhasználónevet és jelszót adjon meg.
-3. Ha az Azure ad-ben a elemzési kísérlet sikertelen lesz, válassza ki a **konfigurálása \<alkalmazásnév > jelszó egyszeri bejelentkezési beállításainak** megjelenítéséhez a **bejelentkezés konfigurálása** lap. (Ha a próbálkozás sikerre vezet, figyelmen kívül hagyhatja ezt az eljárást a többi.)
-4. Válassza ki **bejelentkezési mezők manuális észlelése**. A bejelentkezési mezők manuális észlelése további utasítások jelennek meg.
+1. Kattintson a **Mentés** gombra. Az Azure AD megpróbálja elemezni a bejelentkezési lapon adjon meg egy felhasználónevet és jelszót adjon meg.
+1. Ha az Azure ad-ben a elemzési kísérlet sikertelen lesz, válassza ki a **konfigurálása \<alkalmazásnév > jelszó egyszeri bejelentkezési beállításainak** megjelenítéséhez a **bejelentkezés konfigurálása** lap. (Ha a próbálkozás sikerre vezet, figyelmen kívül hagyhatja ezt az eljárást a többi.)
+1. Válassza ki **bejelentkezési mezők manuális észlelése**. A bejelentkezési mezők manuális észlelése további utasítások jelennek meg.
 
    ![A jelszóalapú egyszeri bejelentkezés manuális konfigurálása](./media/configure-single-sign-on-non-gallery-applications/password-configure-sign-on.png)
-5. Válassza ki **bejelentkezési mezők rögzítése**. Egy rögzítési állapot oldal: az üzenet egy új lapon nyílik meg **metaadatok rögzítése folyamatban van**.
-6. Ha a **hozzáférési Panel bővítmény szükséges** mező megjelenik egy új lapon válassza ki **telepítés most** telepítéséhez a **saját alkalmazások biztonságos bejelentkezési bővítménye** webböngésző-bővítmény. (A webböngésző-bővítmény használatához a Microsoft Edge, Chrome és a Firefox.) Majd telepítse, indítsa el, és engedélyezi a bővítményt, és frissíti a rögzítési állapot lapot.
+
+1. Válassza ki **bejelentkezési mezők rögzítése**. Egy rögzítési állapot oldal: az üzenet egy új lapon nyílik meg **metaadatok rögzítése folyamatban van**.
+1. Ha a **hozzáférési Panel bővítmény szükséges** mező megjelenik egy új lapon válassza ki **telepítés most** telepítéséhez a **saját alkalmazások biztonságos bejelentkezési bővítménye** webböngésző-bővítmény. (A webböngésző-bővítmény használatához a Microsoft Edge, Chrome és a Firefox.) Majd telepítse, indítsa el, és engedélyezi a bővítményt, és frissíti a rögzítési állapot lapot.
 
    A webböngésző-bővítmény majd megnyílik egy másik lapra, amely megjeleníti a megadott URL-címe.
-7. A megadott URL-CÍMÉT tartalmazó lapra keresse meg a bejelentkezési folyamatot. Töltse ki a felhasználónév és jelszó megadására, és próbáljon meg bejelentkezni. (Nem kell a helyes jelszót adja meg.)
+
+1. A megadott URL-CÍMÉT tartalmazó lapra keresse meg a bejelentkezési folyamatot. Töltse ki a felhasználónév és jelszó megadására, és próbáljon meg bejelentkezni. (Nem kell a helyes jelszót adja meg.)
 
    Kérdés megkérdezi, hogy mentse a rögzített bejelentkezési mezők.
-8. Kattintson az **OK** gombra. Bezárja a lapot, a webböngésző-bővítmény a rögzítési állapotlapon frissíti az üzenet **metaadatok frissítve lett az alkalmazás**, és a böngésző lapon is bezárul.
-9. Az Azure AD-ben **bejelentkezés konfigurálása** lapon jelölje be **rendben, sikerült jelentkezzen be az alkalmazás sikeresen**.
-10. Kattintson az **OK** gombra.
+
+1. Kattintson az **OK** gombra. Bezárja a lapot, a webböngésző-bővítmény a rögzítési állapotlapon frissíti az üzenet **metaadatok frissítve lett az alkalmazás**, és a böngésző lapon is bezárul.
+1. Az Azure AD-ben **bejelentkezés konfigurálása** lapon jelölje be **rendben, sikerült jelentkezzen be az alkalmazás sikeresen**.
+1. Kattintson az **OK** gombra.
 
 Után a bejelentkezési oldalon a rögzítési, felhasználók és csoportok lehet hozzárendelni, és beállíthatja a hitelesítőadat-szabályzatok, csakúgy, mint a normál [jelszó egyszeri bejelentkezési alkalmazások](what-is-single-sign-on.md).
 

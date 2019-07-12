@@ -105,7 +105,7 @@ sections:
             values:
               - href: /azure/sql-database/sql-database-managed-instance-get-started
               - href: 'https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44'
-              - href: sql-database-managed-instance-get-started
+              - href: /azure/sql-database/scripts/sql-database-create-configure-managed-instance-powershell
               - href: 'https://github.com/Azure/azure-quickstart-templates/tree/master/101-sqlmi-new-vnet'
           - title: A példány módosítása
             values:
@@ -141,7 +141,7 @@ sections:
             values:
               - href: null
               - href: null
-              - href: 'https://medium.com/azure-sqldb-managed-instance/geo-restore-your-databases-on-azure-sql-instances-1451480e90fa'
+              - href: /azure/sql-database/scripts/sql-managed-instance-restore-geo-backup
               - href: null
           - title: Set public IP endpoint
             values:
@@ -167,7 +167,7 @@ sections:
           - html: 'További információ a tárolási réteg <a href="https://medium.com/azure-sqldb-managed-instance/file-layout-in-general-purpose-azure-sql-managed-instance-cf21fff9c76c">általános célú csomagban</a> és a alkalmazni <a href="https://techcommunity.microsoft.com/t5/DataCAT/Storage-performance-best-practices-and-considerations-for-Azure/ba-p/305525">tárolási teljesítmény ajánlott eljárást és szempontot, általános célú szolgáltatási szinten</a>.'
           - html: 'Keresse meg az ajánlott eljárásokat és javaslatokat <a href="https://www.youtube.com/watch?v=vO6k05Ox1iI">biztonságossá tétele a-példány</a>.'
           - html: 'További információ <a href="sql-database-howto-managed-instance.md">útmutató végigvezeti a</a> , amelyek segítségével a felügyelt példány konfigurálását.'
-  - title: Leírások
+  - title: Hivatkozás
     items:
       - type: list
         style: cards

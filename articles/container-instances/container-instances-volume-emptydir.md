@@ -7,19 +7,19 @@ ms.service: container-instances
 ms.topic: article
 ms.date: 02/08/2018
 ms.author: danlep
-ms.openlocfilehash: 98a72123a05fa7d8dc16be7ddb787f2a2cf7e4d1
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: d91706da898e84effc6194a74dce69a66be0f4ac
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60563120"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67657612"
 ---
 # <a name="mount-an-emptydir-volume-in-azure-container-instances"></a>Az Azure Container Instances szolgáltatásban az emptyDir kötet csatlakoztatási
 
 Ismerje meg, hogyan csatlakoztathat egy *emptyDir* kötet egy tárolócsoportban, az Azure Container Instances a tárolók közötti.
 
 > [!NOTE]
-> Csatlakoztatási egy *emptyDir* kötet Linux-tárolók jelenleg korlátozva. Arra törekszünk, hogy idővel az összes funkció elérhető legyen a Windows-tárolókon is. Az egyes platformok közötti aktuális eltérésekről a [Azure Container Instances-kvóták és -régiók rendelkezésre állása](container-instances-quotas.md) részben tájékozódhat.
+> Csatlakoztatási egy *emptyDir* kötet Linux-tárolók jelenleg korlátozva. Amíg folyamatban van a Windows-tárolók idővel az összes funkció, annak aktuális platform különbségek a [áttekintése](container-instances-overview.md#linux-and-windows-containers).
 
 ## <a name="emptydir-volume"></a>az emptyDir kötet
 

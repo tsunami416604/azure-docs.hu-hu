@@ -3,16 +3,16 @@ title: A Verizon prémium szintű Azure CDN-szabályok adatbázismotor-funkciók
 description: A Verizon prémium szintű Azure CDN dokumentációja szabályok adatbázismotor-funkciók.
 services: cdn
 author: mdgattuso
-ms.service: cdn
+ms.service: azure-cdn
 ms.topic: article
 ms.date: 05/31/2019
 ms.author: magattus
-ms.openlocfilehash: 7e75a6ffe28aa74ea2fad30bbe2728317712d86b
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 9177ac544c83305ae95ad681d3dc9f84ac64ea36
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67443495"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67593243"
 ---
 # <a name="azure-cdn-from-verizon-premium-rules-engine-features"></a>Verizon Premium szabályok adatbázismotor-funkciók az Azure CDN
 
@@ -173,7 +173,7 @@ Name (Név) | Cél
 
 **Célú**: Meghatározza, hogy egy kora válasz fejléce szerepel-e a válasz a kérelmezőnek küldött.
 
-Érték|Eredmény
+Value|Eredmény
 --|--
 Enabled | A válasz a kérelmezőnek küldött az életkor válasz fejléce tartalmazza.
 Letiltva | A válasz a kérelmezőnek küldött az életkor válaszfejléc nem tartozik.
@@ -192,7 +192,7 @@ Letiltva | A válasz a kérelmezőnek küldött az életkor válaszfejléc nem t
 
 Sávszélesség-szabályozási paraméterek határozza meg, hogy az ügyfél által kért adatátviteli sebesség korlátozva, egy egyéni sebessége.
 
-Érték|Eredmény
+Value|Eredmény
 --|--
 Enabled|Lehetővé teszi, hogy tartsa tiszteletben a sávszélesség-szabályozási kérelmek kre.
 Letiltva|A kapcsolódási pontokat figyelmen kívül hagyja a sávszélesség-szabályozási paraméterek okoz. A kért tartalomkézbesítés általában (vagyis a sávszélesség szabályozása nélkül).
@@ -320,7 +320,7 @@ Legfontosabb tudnivalókat:
 - Adjon meg egy vagy több lekérdezési karakterlánc paraméterek nevei, és minden egyes paraméternév elválasztás egy szóköz.
 - Ez a funkció határozza meg, hogy lekérdezési karakterlánc paraméterei foglalt vagy zárva a gyorsítótár-kulcsot. További információ a következő táblázat az egyes beállítások.
 
-Típus|Leírás
+Type|Leírás
 --|--
  Belefoglalása|  Azt jelzi, hogy minden egyes megadott paraméter szerepelnie kell a gyorsítótár-kulcsot. Egyedi gyorsítótár-kulcs jön létre mindegyik kéréshez, amely ezt a szolgáltatást a megadott lekérdezési karakterlánc paramétereként egyedi értéket tartalmaz.
  Tartalmazza az összes  |Azt jelzi, hogy egyedi gyorsítótár-kulcs jön létre mindegyik kéréshez egy objektumba, amely tartalmazza az egyedi lekérdezési karakterláncot. Ezt a konfigurációtípust általában nem ajánlott, mert egy kis csoportja találatot eredményező gyorsítótárbeli kereséseinek vezethet. Találatot eredményező gyorsítótárbeli kereséseinek száma kevés növeli a forráskiszolgáló terhelése, mivel a további kérések pedig idézést kell benyújtania. Ez a konfiguráció duplikálja a gyorsítótárazási viselkedés, más néven "egyedi gyorsítótárazási" a lekérdezési karakterlánc gyorsítótárazási oldalon.
@@ -547,11 +547,11 @@ Hibakeresési fejlécek kérheti többek között a következő fejlécére, és
 
 `X-EC-Debug: _&lt;Directive1&gt;_,_&lt;Directive2&gt;_,_&lt;DirectiveN&gt;_`
 
-**Példa**
+**Példa:**
 
 X-EK-Debug: x-ec-cache,x-ec-check-cacheable,x-ec-cache-key,x-ec-cache-state
 
-Érték|Eredmény
+Value|Eredmény
 -|-
 Enabled|Hibakeresési gyorsítótár válaszfejlécek kérelmek választ küld, amely tartalmazza az X-EK-Debug fejléc.
 Letiltva|Az X-EK-Debug válaszfejléc nem kerülnek bele a választ.
@@ -634,7 +634,7 @@ Letiltva| Visszaállítja az alapértelmezett viselkedést. Az alapértelmezett 
 
 Ezt a konfigurációtípust elérése a legegyszerűbb módja, hogy helyezze el a külső Max-Age és a fejléc-kezelés lejár szolgáltatások ugyanabban az utasításban.
 
-Érték|Eredmény
+Value|Eredmény
 --|--
 Írja felül|Biztosítja, hogy a következő műveletek kerül sor:<br/>-Felülírja a `Expires` a forráskiszolgáló által generált fejléc.<br/>-Hozzáadja a `Expires` a külső Max-Age szolgáltatást, hogy a válasz által előállított fejléc.
 Továbbítása|Biztosítja, hogy a `Expires` fejléc a külső Max-Age funkció által előállított soha nem kerül a választ. <br/> Ha a forráskiszolgáló hoz létre egy `Expires` fejléc, akkor továbbítja a végfelhasználók számára. <br/>Ha a forráskiszolgáló nem eredményez olyan `Expires` fejléc, akkor ez a beállítás okozhat a válaszfejléc nem tartalmazza egy `Expires` fejléc.
@@ -825,7 +825,7 @@ A módját, mely gyorsítótárban beállítások nyomon követi, mert ez a funk
 
 Alapértelmezés szerint a megadott bájttartomány-kérés csatlakozási pont nem tud teljesíteni, és a egy If-tartomány kérelem fejléce mező nincs meghatározva az állapotkódot adott vissza.
 
-Érték|Eredmény
+Value|Eredmény
 -|-
 Enabled|Megakadályozza, hogy a POP egy 416 kért tartomány nem teljesíthető állapotkód: Érvénytelen bájttartomány irányuló válaszol. Ehelyett a kiszolgálók nyújthat a kért objektumhoz, és térjen vissza a 200-as rendben az ügyfél.
 Letiltva|Visszaállítja az alapértelmezett viselkedést. Az alapértelmezett viselkedést, hogy tartsa tiszteletben a 416 kért tartomány nem teljesíthető állapotkód:.
@@ -1017,7 +1017,7 @@ Legfontosabb tudnivalókat:
 
 A részleges gyorsítótár majd használhatók az adott tartalomhoz új kérések teljesítéséhez, mindaddig, amíg a rendszer teljes mértékben gyorsítótárazza a kért tartalmat.
 
-Érték|Eredmény
+Value|Eredmény
 -|-
 Enabled|Kérelmek hozhat létre részben a gyorsítótárazott tartalmat.
 Letiltva|Kérelmek csak hozhat létre egy teljes körűen gyorsítótárazott verziója a kért tartalmat.
@@ -1148,7 +1148,7 @@ Győződjön meg arról, hogy a megadott fejléc neve nem egyezik a következő 
 
 **Cél:** Meghatározza, hogy lejárt-e a gyorsítótárazott tartalmat kézbesíti a rendszer, ha hiba történik gyorsítótár újbóli ellenőrzése során, vagy az ügyfél forráskiszolgálóról a lekért tartalom lekérésekor.
 
-Érték|Eredmény
+Value|Eredmény
 -|-
 Enabled|Elavult tartalomkézbesítés a kérelmezőnek egy-a forrás-kiszolgálóhoz való csatlakozás során hiba esetén.
 Letiltva|A forráskiszolgáló hiba történt a kérelmező lesznek továbbítva.
@@ -1192,7 +1192,7 @@ A token értékeinek titkosítására és visszafejtésére használt titkosít�
 
 Ez a funkció élvez a URL-újraíró funkció kivételével a legtöbb funkciót.
 
-Érték | Eredmény
+Value | Eredmény
 ------|---------
 Enabled | A kért tartalmat a jogkivonat-alapú hitelesítés védi. Csak olyan ügyfelektől, amelyek meg egy érvényes jogkivonatot, és megfeleljenek a kérelmeket fogja figyelembe. FTP-tranzakciók jogkivonat-alapú hitelesítés nem tartoznak.
 Letiltva| Visszaállítja az alapértelmezett viselkedést. Az alapértelmezett viselkedést, hogy a jogkivonat-alapú hitelesítés konfiguráció meghatározásához, hogy egy kérés biztonságát engedélyezése.
@@ -1240,7 +1240,7 @@ Ha egy URL-címe nincs definiálva a 3xx állapotkódot, majd 3xx állapotkódot
 
 A nem kötelező fejléc értéke alfanumerikus karaktereket, idézőjelek között, és a tárolóhelyek támogatja.
 
-#### <a name="authentication"></a>Hitelesítés
+#### <a name="authentication"></a>Authentication
 
 Ez a funkció támogatja a funkció tartalmazza a WWW-Authenticate fejléc, amikor válaszol azokra a jogkivonat-alapú hitelesítés által védett tartalom irányuló jogosulatlan kérelem. Ha a WWW-Authenticate fejléc a konfigurációban az "alapszintű" van beállítva, majd a jogosulatlan felhasználó bekéri fiók hitelesítő adatait.
 

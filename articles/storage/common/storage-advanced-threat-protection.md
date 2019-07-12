@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 04/03/2019
 ms.author: tamram
 ms.reviewer: cbrooks
-ms.openlocfilehash: ed263fec271801ac9c46bbc3125c71ca15b9a330
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8cea4b3fb78f3430fdd92e40552d687501af4be8
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65153975"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67621963"
 ---
 # <a name="advanced-threat-protection-for-azure-storage"></a>Advanced Threat Protection for Azure Storage
 
@@ -111,7 +111,7 @@ Szokatlan és vélhetően kárt okozó kísérleteket elérni vagy kiaknázni a 
 
 ### <a name="anomalous-access-pattern-alerts"></a>Rendellenes hozzáférési minta riasztások
 
-* **Hozzáférés szokatlan helyről**: Ez a riasztás akkor aktiválódik, ha a tárfiók hozzáférési mintájában változik. Például ha valaki használta a storage-fiók egy szokatlan földrajzi helyről.
+* **Hozzáférés szokatlan helyről**: Ez a riasztás akkor aktiválódik, ha valaki használta a storage-fiók egy szokatlan földrajzi helyről.
 A lehetséges okok:
    * A támadó érte el a storage-fiók
    * Egy jogosult felhasználó fért hozzá a tárfiók egy új helyről
@@ -120,10 +120,16 @@ A lehetséges okok:
    * A támadó fért hozzá a tárfiók, egy új alkalmazással.
    * Egy jogosult felhasználónak a tárfiók eléréséhez egy új alkalmazást böngésző használatban van.
 
-* **Névtelen hozzáférés**: Ez a riasztás azt jelzi, hogy a tárfiók hozzáférési mintájában változás történik. Például a fiókjához nincs ehhez a fiókhoz a legutóbbi hozzáférés minta névtelenül elérhető (azaz minden hitelesítés nélkül), amely nem a várt képest.
+* **Névtelen hozzáférés**: Ez a riasztás jelzi, hogy lett-e ezt a fiókot ehhez a fiókhoz a legutóbbi hozzáférés minta névtelenül elérhető (azaz minden hitelesítés nélkül), amely nem a várt képest.
 A lehetséges okok:
    * A támadó bejutott nyilvános olvasási hozzáférés egy tárolóba.
    * Egy jogosult felhasználó vagy alkalmazás használatban van egy tárolót nyilvános olvasási hozzáférést.
+
+* **Tor Anomáliadetektálási**: Ez a riasztás azt jelzi, hogy ez a fiók rendelkezik hozzáfértek sikeresen egy aktív kilépési csomópontján Tor (anonymizing proxy) néven ismert IP-címek. Ez a riasztás súlyosságát is figyelembe veszi (ha vannak) használt hitelesítés típusa, és hogy a Ez az első esetben az ilyen hozzáférésre.
+A lehetséges okok:
+   * A támadó fért hozzá a tárfiók, Tor használatával.
+   * Egy jogosult felhasználó fért hozzá a tárfiók, Tor használatával.
+
 
 ### <a name="anomalous-extractupload-alerts"></a>Rendellenes kinyerési feltölti riasztások
 

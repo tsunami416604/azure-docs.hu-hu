@@ -4,7 +4,7 @@ description: Magas rendelkezésre állás az SAP Hana az Azure-ban (nagyméretű
 services: virtual-machines-linux
 documentationcenter: ''
 author: saghorpa
-manager: jeconnoc
+manager: gwallace
 editor: ''
 ms.service: virtual-machines-linux
 ms.devlang: NA
@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 11/21/2017
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3ef1656a7e8a66092de3050a8f14c5b38e0e2e6c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c7cbec63cb04075977c167d8b21bf3128e91434f
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62123569"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67710049"
 ---
 # <a name="high-availability-set-up-in-suse-using-the-stonith"></a>Magas rendelkezésre állás beállítása a STONITH használatával SUSE
 Ez a dokumentum beállítása a STONITH eszközzel SUSE operációs rendszer a magas rendelkezésre állás a részletes lépésenkénti utasításokat biztosít.
@@ -344,7 +344,7 @@ Most támasztja szolgáltatás leállítása **csomópont2** és erőforrások �
 ## <a name="9-troubleshooting"></a>9. Hibaelhárítás
 Ez a szakasz ismerteti a néhány hiba forgatókönyveket, amelyek a telepítés során előforduló is. Előfordulhat, hogy nem feltétlenül között ezeket a problémákat.
 
-### <a name="scenario-1-cluster-node-not-online"></a>1\. forgatókönyv: Fürtcsomópont nincs online állapotban
+### <a name="scenario-1-cluster-node-not-online"></a>forgatókönyv 1: Fürtcsomópont nincs online állapotban
 A csomópontokon nem jeleníti meg a Feladatátvevőfürt-kezelő online, megpróbálhatja a következő online állapotba.
 
 Az iSCSI-szolgáltatás indítása

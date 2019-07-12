@@ -6,20 +6,20 @@ author: adigan
 manager: shivamg
 ms.service: backup
 ms.topic: conceptual
-ms.date: 01/30/2019
+ms.date: 07/09/2019
 ms.author: adigan
-ms.openlocfilehash: e3004a44958d75d18d608a2fbed7ccc44a00dc93
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 5f656a097509e9998d6fb8f157d1910cc04b7799
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60642678"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67705159"
 ---
 # <a name="configure-azure-backup-reports"></a>Azure Backup-jelentések konfigurálása
 Ez a cikk bemutatja a lépést kell végrehajtania a jelentések az Azure Backup konfigurálása a Recovery Services-tároló használatával. Azt is bemutatja, hogyan lehet hozzáférni a jelentésekhez a Power BI használatával. Miután elvégezte ezeket a lépéseket, megnyithatja közvetlenül a Power BI segítségével megtekintheti, testreszabása és jelentéseket hozhat létre.
 
 > [!IMPORTANT]
-> 2018\. november 1-jét követően egyes ügyfelek problémákat tapasztalhatnak a Power BI Azure Backup alkalmazásában tárolt adatok betöltésekor, amikor is ez a hibaüzenet jelenik meg: „Felesleges karaktereket észleltünk a JSON-bevitel végén. A kivételt az IDataReader-felület jelezte.”
+> 2018. november 1-jét követően egyes ügyfelek problémákat tapasztalhatnak a Power BI Azure Backup alkalmazásában tárolt adatok betöltésekor, amikor is ez a hibaüzenet jelenik meg: „Felesleges karaktereket észleltünk a JSON-bevitel végén. A kivételt az IDataReader-felület jelezte.”
 A problémát az adatok a tárfiókba való betöltéséhez használt formátum változása okozza.
 Töltse le a legújabb alkalmazást (1.8-as) a probléma elkerülése érdekében.
 >
@@ -71,7 +71,7 @@ Kövesse az alábbi lépéseket egy Recovery Services-tárolót a storage-fiók 
       ![Diagnosztikai beállítás 9. lépés.](./media/backup-azure-configure-reports/diagnostic-setting-row.png)
 
 > [!NOTE]
-> A storage-fiókban mentésével jelentések konfigurálása után *Várjon 24 órát* a kezdeti adatok leküldés befejezéséhez. Importálja az Azure Backup-alkalmazás a Power BI csak az adott időpont után. További információkért lásd: a [gyakori kérdésekkel foglalkozó szakaszban](#frequently-asked-questions).
+> A storage-fiókban mentésével jelentések konfigurálása után *Várjon 24 órát* a kezdeti adatok leküldés befejezéséhez. Importálja az Azure Backup-alkalmazás a Power BI csak az adott időpont után. További információkért lásd: a [gyakori kérdésekkel foglalkozó szakaszban](backup-azure-monitor-alert-faq.md).
 >
 >
 
@@ -112,34 +112,6 @@ Ha testre szabhatja, és megosztja a jelentést, hozzon létre egy munkaterület
 
       ![Az Azure Backup-jelentések lap](./media/backup-azure-configure-reports/reports-tab-view.png)
 
-
-## <a name="frequently-asked-questions"></a>Gyakori kérdések
-
-### <a name="how-do-i-check-if-reporting-data-has-started-flowing-into-a-storage-account"></a>Hogyan tudom ellenőrizni, ha a jelentési adatok a tárfiókba kerülnek egy megkezdődött?
-Nyissa meg a konfigurált tárfiók, és válassza ki a tárolók. Ha a container insights-logs-azurebackupreport bejegyzést, azt jelzi, hogy vonatkozó adatokról szóló jelentéseket indult tárfiókba.
-
-### <a name="what-is-the-frequency-of-data-push-to-a-storage-account-and-the-azure-backup-content-pack-in-power-bi"></a>Mi az a gyakoriságát, adatleküldés egy storage-fiókot és az Azure Backup-tartalomcsomaghoz a Power bi-ban?
-  A felhasználók nap 0 vesz igénybe körülbelül 24 óra adatok leküldése egy storage-fiókot. A kezdeti leküldéses befejezése után az adatok frissülnek a gyakoriságú, az alábbi ábrán látható.
-
-  * Kapcsolódó adatok **feladatok**, **riasztások**, **biztonsági másolati elemek**, **tárolók**, **védett kiszolgálók**, és  **Házirendek** át lett helyezve egy ügyfél tárfiókja, amikor azt a naplózására akkor kerül sor.
-
-  * Kapcsolódó adatok **tárolási** át lett helyezve egy ügyfél tárfiókja 24 óránként.
-
-       ![Az Azure Backup-jelentések adatok leküldéses gyakorisága](./media/backup-azure-configure-reports/reports-data-refresh-cycle.png)
-
-  * A Power BI rendelkezik egy [az ütemezett frissítés naponta egyszer](https://powerbi.microsoft.com/documentation/powerbi-refresh-data/#what-can-be-refreshed). Az adatok manuális frissítés a tartalomcsomag a Power BI is végrehajthatja.
-
-### <a name="how-long-can-i-retain-reports"></a>Mennyi ideig őrizheti meg a jelentéseket?
-Amikor konfigurál egy tárfiókot, kiválaszthatja a jelentés adatai olyan megőrzési időszakot a storage-fiókban. 6\. a következő lépés a [jelentések tárfiók konfigurálása](backup-azure-configure-reports.md#configure-storage-account-for-reports) szakaszban. Emellett képes [elemzése az Excel](https://powerbi.microsoft.com/documentation/powerbi-service-analyze-in-excel/) , és mentse őket a hosszabb megőrzési időt, az igényei szerint.
-
-### <a name="will-i-see-all-my-data-in-reports-after-i-configure-the-storage-account"></a>A jelentésekben lévő adatok után a tárfiók konfigurálható látható?
- Storage-fiók beállítása után létrehozott összes adatok a storage-fiók át lett helyezve, és jelentésekben érhető el. Folyamatban lévő feladatok rendszer nem küldi le a jelentéskészítéshez. Miután a feladat befejeződik, vagy nem sikerül, a jelentések zajlik.
-
-### <a name="if-i-already-configured-the-storage-account-to-view-reports-can-i-change-the-configuration-to-use-another-storage-account"></a>Ha már konfigurálta a tárfiókot,-jelentések megtekintéséhez, módosítható a konfigurációt egy másik tárfiók használatára?
-Igen, módosíthatja a konfigurációt, hogy egy másik tárfiók mutasson. Az újonnan beállított storage-fiókot használja, amíg csatlakozik az Azure Backup-tartalomcsomaghoz. Miután egy másik tárfiók van konfigurálva, az új adatok folyamatok ezt a tárfiókot. Régebbi adatokat (mielőtt módosítaná a konfigurációt) továbbra is a korábbi tárfiókban maradnak.
-
-### <a name="can-i-view-reports-across-vaults-and-subscriptions"></a>Jelentések tekinthetem tárolók és -előfizetések között?
-Igen, cross-tároló jelentések megtekintéséhez a különböző tárolók ugyanazt a tárfiókot is konfigurálhatók. Konfigurálhatja a tárolók esetében ugyanazt a tárfiókot is, előfizetések között. Ezt követően használhatja ezt a tárfiókot, csatlakozik az Azure Backup-tartalomcsomaghoz a Power BI-jelentések megtekintése közben. A kiválasztott tárfiók és a Recovery Services-tárolónak ugyanabban a régióban kell lennie.
 
 ## <a name="troubleshooting-errors"></a>Hibaelhárítás
 | A hiba adatai | Megoldás: |

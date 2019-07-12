@@ -11,13 +11,13 @@ author: oslake
 ms.author: moslake
 ms.reviewer: sstein, carlrab
 manager: craigg
-ms.date: 06/12/2019
-ms.openlocfilehash: afa575c9015cbb21386d23101b74456822dfa33c
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.date: 07/05/2019
+ms.openlocfilehash: 5a1a5ea39c9c0ed8973e1ecfa46977d2d06f83e7
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67275467"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67603604"
 ---
 # <a name="azure-sql-database-serverless-preview"></a>Az Azure SQL Database kiszolgáló nélküli (előzetes verzió)
 
@@ -166,7 +166,7 @@ A késés autoresume és a egy kiszolgáló nélküli adatbázis autopause alapv
    |Paraméter|Érték választási lehetőségek|Alapértelmezett érték|
    |---|---|---|---|
    |Minimális virtuális magok|Bármelyik {0.5-ös, 1, 2, 4} nem haladja meg a maximális virtuális magok|0,5 virtuális mag|
-   |Autopause késleltetés|Minimum: 360 perc (6 óra)<br>Maximum: 10 080 perc (7 nap)<br>Lépésekben: 60 perc<br>Autopause letiltása: -1|360 minutes|
+   |Autopause késleltetés|Minimum: 60 perc (1 óra)<br>Maximum: 10 080 perc (7 nap)<br>Lépésekben: 60 perc<br>Autopause letiltása: -1|60 perc|
 
 > [!NOTE]
 > T-SQL használatával helyezze át a létező adatbázis, kiszolgáló nélküli, vagy a számítási méret módosítása jelenleg nem támogatott, de az Azure Portalon vagy a Powershellen keresztül teheti meg.

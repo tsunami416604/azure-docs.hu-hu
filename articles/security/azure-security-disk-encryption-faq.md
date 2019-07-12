@@ -7,12 +7,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 06/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: 98acc7f6dd5ec7cf3702bbcbe60e2739732512e2
-ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
+ms.openlocfilehash: c28cf4326593897dcbc90902737fc4846356078d
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67294912"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67653387"
 ---
 # <a name="azure-disk-encryption-for-iaas-vms-faq"></a>Az Azure Disk Encryption IaaS virtuális gépekhez – gyakori kérdések
 
@@ -33,6 +33,10 @@ Semmilyen díjat nem az Azure Disk Encryption Virtuálisgép-lemezek titkosítá
 ## <a name="how-can-i-start-using-azure-disk-encryption"></a>Hogyan lehet elindítani az Azure Disk Encryption használatával?
 
 Első lépések, olvassa el a [áttekintése az Azure Disk Encryption](azure-security-disk-encryption-overview.md).
+
+## <a name="what-vm-sizes-and-operating-systems-support-azure-disk-encryption"></a>Milyen Virtuálisgép-méretek és operációs rendszerek támogatják az Azure Disk Encryption?
+
+A [az Azure Disk Encryption előfeltétel](azure-security-disk-encryption-prerequisites.md) listák cikkre a [Virtuálisgép-méretek](azure-security-disk-encryption-prerequisites.md#supported-vm-sizes) és [virtuális gép operációs rendszerek](azure-security-disk-encryption-prerequisites.md#supported-operating-systems) , amelyek támogatják az Azure Disk Encryption.
 
 ## <a name="can-i-encrypt-both-boot-and-data-volumes-with-azure-disk-encryption"></a>A rendszerindító és az adatok kötetek az Azure Disk Encryption használatával titkosítsa?
 

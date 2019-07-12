@@ -7,19 +7,20 @@ author: rkarlin
 manager: rkarlin
 editor: ''
 ms.assetid: 3229233d-400d-4971-8d76-eaa0d6591d75
-ms.service: sentinel
+ms.service: azure-sentinel
+ms.subservice: azure-sentinel
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/07/2019
 ms.author: rkarlin
-ms.openlocfilehash: cad1f84f611ac3214b8823bb11817ffceb3e2017
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: eaad8a6ae3d2dbaacf01e256bb6aa5691b05af49
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66388701"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67620593"
 ---
 # <a name="connect-your-check-point-appliance"></a>A Check Point berendezés csatlakoztatása
 
@@ -102,7 +103,7 @@ Ha nem használja az Azure, ügynököt manuálisan telepíti az Azure-Sentinel 
       1. Indítsa újra a Syslog-ügynök a következő paranccsal: `sudo /opt/microsoft/omsagent/bin/service_control restart [{workspace GUID}]`
       1. Győződjön meg arról, hogy nincsenek hibák az ügynöknaplóban Ez a parancs futtatásával: `tail /var/opt/microsoft/omsagent/log/omsagent.log`
  
-## <a name="step-2-forward-check-point-logs-to-the-syslog-agent"></a>2\. lépés: A Syslog-ügynök előre a Check Point-naplók
+## <a name="step-2-forward-check-point-logs-to-the-syslog-agent"></a>2\. lépés: A Syslog-ügynök előre a Check Point-naplók
 
 Konfigurálja a Check Point berendezés továbbítani tudja a Syslog-üzeneteket az Azure-munkaterülethez a Syslog-ügynökön keresztül CEF formátumban.
 

@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: dfd0443dafbc4fcc221937f248bf6d2f292b528f
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 7570cfc8a9804f753a9de140a71436bcc0cebb43
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60335408"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67836651"
 ---
 # <a name="copy-data-to-and-from-azure-sql-data-warehouse-using-azure-data-factory"></a>Adatok másolása és az Azure SQL Data Warehouse az Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Válassza ki a Data Factory szolgáltatás használ:"]
@@ -53,7 +53,7 @@ Létrehozhat egy folyamatot egy másolási tevékenységgel az adatok áthelyez�
 
 Hozzon létre egy folyamatot, amely átmásolja az adatokat és-tárolókról az Azure SQL Data Warehouse legegyszerűbb módja, hogy az adatok másolása varázslóval. Lásd: [oktatóanyag: Adatok betöltése az SQL Data Warehouse a Data Factory](../../sql-data-warehouse/sql-data-warehouse-load-with-data-factory.md) gyors bemutató létrehozása egy folyamatot az adatok másolása varázsló használatával.
 
-A következő eszközök használatával hozzon létre egy folyamatot: **Az Azure portal**, **Visual Studio**, **Azure PowerShell-lel**, **Azure Resource Manager-sablon**, **.NET API**, és  **REST API-val**. Lásd: [másolási tevékenység oktatóanyagát](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) egy másolási tevékenységgel ellátott adatcsatorna létrehozása a részletes útmutatóját.
+A következő eszközök használatával hozzon létre egy folyamatot: **A Visual Studio**, **Azure PowerShell-lel**, **Azure Resource Manager-sablon**, **.NET API**, és **REST API-val**. Lásd: [másolási tevékenység oktatóanyagát](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) egy másolási tevékenységgel ellátott adatcsatorna létrehozása a részletes útmutatóját.
 
 Az eszközök vagy az API-kat használja, hogy létrehoz egy folyamatot, amely a helyez át adatokat egy forrásadattárból egy fogadó adattárba a következő lépéseket fogja végrehajtani:
 
@@ -146,7 +146,7 @@ GO
 | Tulajdonság | Leírás | Megengedett értékek | Szükséges |
 | --- | --- | --- | --- |
 | sqlWriterCleanupScript |Adjon meg egy lekérdezést a másolási tevékenység végrehajtásához úgy, hogy az adott szeletre vonatkozó adatok törlődnek. További információkért lásd: [ismételhetőség szakasz](#repeatability-during-copy). |A lekérdezési utasítást. |Nem |
-| allowPolyBase |Azt jelzi, hogy (ha van ilyen), a PolyBase használata helyett BULKINSERT mechanizmust. <br/><br/> **Az ajánlott módszer az adatok betöltése az SQL Data Warehouse-bA a PolyBase.** Lásd: [bA a PolyBase használatával az adatok betöltése az Azure SQL Data Warehouse](#use-polybase-to-load-data-into-azure-sql-data-warehouse) korlátozások és a részletek a következő szakaszban. |True (Igaz) <br/>FALSE (alapértelmezett) |Nem |
+| allowPolyBase |Azt jelzi, hogy (ha van ilyen), a PolyBase használata helyett BULKINSERT mechanizmust. <br/><br/> **Az ajánlott módszer az adatok betöltése az SQL Data Warehouse-bA a PolyBase.** Lásd: [bA a PolyBase használatával az adatok betöltése az Azure SQL Data Warehouse](#use-polybase-to-load-data-into-azure-sql-data-warehouse) korlátozások és a részletek a következő szakaszban. |True <br/>FALSE (alapértelmezett) |Nem |
 | polyBaseSettings |Egy csoport tulajdonságok is lehet megadni, ha a **allowPolybase** tulajdonsága **igaz**. |&nbsp; |Nem |
 | rejectValue |Megadja a szám vagy százalékos aránya, amelyek is vissza kell utasítani, mielőtt a lekérdezés nem sikerült sorokat. <br/><br/>További információ a PolyBase visszautasítási lehetőségeit a a **argumentumok** szakaszában [CREATE EXTERNAL TABLE (Transact-SQL)](https://msdn.microsoft.com/library/dn935021.aspx) témakör. |0 (alapértelmezett), 1, 2... |Nem |
 | rejectType |Itt adhatja meg, e a rejectValue kapcsoló Szövegkonstansérték vagy százalékban megadva. |Érték (alapértelmezett), százalékos aránya |Nem |
@@ -315,8 +315,8 @@ A Data Factory a tábla a ugyanazon tábla neve a source data Store céltár hoz
 | SmallMoney | SmallMoney |
 | binary | binary |
 | Varbinary | Varbinary (legfeljebb 8000-es) |
-| Dátum | Dátum |
-| DateTime | DateTime |
+| Date | Date |
+| Datetime | Datetime |
 | DateTime2 | DateTime2 |
 | Time | Time |
 | DateTimeOffset | DateTimeOffset |
@@ -381,7 +381,7 @@ A leképezés megegyezik a [SQL Server adattípus-leképezés az ADO.NET](https:
 A másolási tevékenységhez tartozó definíció a fogadó-adatkészlet-oszlop a forrásadatkészlet oszlopok is leképezheti. További információkért lásd: [az Azure Data Factoryban adatkészletoszlopok leképezése](data-factory-map-columns.md).
 
 ## <a name="json-examples-for-copying-data-to-and-from-sql-data-warehouse"></a>JSON-példák az adatok másolása, és az SQL Data Warehouse-ból
-Az alábbi példák megadják példa JSON-definíciók, amelyek segítségével létrehoz egy folyamatot használatával [az Azure portal](data-factory-copy-activity-tutorial-using-azure-portal.md) vagy [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) vagy [Azure PowerShell-lel](data-factory-copy-activity-tutorial-using-powershell.md). Adatok másolása az Azure SQL Data Warehouse és az Azure Blob Storage mutatnak. Azonban az adatok átmásolhatók **közvetlenül** bármelyik források a conditions stated above fogadóként valamelyik [Itt](data-factory-data-movement-activities.md#supported-data-stores-and-formats) a másolási tevékenységgel az Azure Data Factoryban.
+Az alábbi példák megadják példa JSON-definíciók, amelyek segítségével létrehoz egy folyamatot használatával [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) vagy [Azure PowerShell-lel](data-factory-copy-activity-tutorial-using-powershell.md). Adatok másolása az Azure SQL Data Warehouse és az Azure Blob Storage mutatnak. Azonban az adatok átmásolhatók **közvetlenül** bármelyik források a conditions stated above fogadóként valamelyik [Itt](data-factory-data-movement-activities.md#supported-data-stores-and-formats) a másolási tevékenységgel az Azure Data Factoryban.
 
 ### <a name="example-copy-data-from-azure-sql-data-warehouse-to-azure-blob"></a>Példa: Adatok másolása az Azure SQL Data warehouse-bA az Azure Blob
 A minta az alábbi Data Factory-entitások határozza meg:

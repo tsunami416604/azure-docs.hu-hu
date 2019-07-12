@@ -6,14 +6,14 @@ author: saurabhsensharma
 manager: saurabhsensharma
 ms.service: backup
 ms.topic: troubleshooting
-ms.date: 10/31/2018
-ms.author: saurabhsensharma
-ms.openlocfilehash: 1bc9c7b4f6e2a4f2a7c712d966caac74b73518df
-ms.sourcegitcommit: d2785f020e134c3680ca1c8500aa2c0211aa1e24
+ms.date: 07/05/2019
+ms.author: saurse
+ms.openlocfilehash: 592a46077bb9e3469f3a42a95173af1b6db93510
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/04/2019
-ms.locfileid: "67565667"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67704937"
 ---
 # <a name="troubleshoot-slow-backup-of-files-and-folders-in-azure-backup"></a>Az Azure Backup-fájlok és -mappák lassú biztonsági mentésének hibaelhárítása
 Ez a cikk segítségével diagnosztizálhatja a fájlok és mappák lassú biztonsági mentési teljesítmény okának, amikor az Azure Backup használata a hibaelhárítási útmutatót. Fájlok biztonsági mentése az Azure Backup-ügynök használatakor a biztonsági mentési folyamat a vártnál hosszabb vehet igénybe. Ez a késleltetés oka lehet egy vagy több, a következők:
@@ -31,7 +31,7 @@ Emellett javasoljuk, hogy tekintse át a [Azure Backup szolgáltatás – gyakor
 
 <a id="cause1"></a>
 
-## <a name="cause-performance-bottlenecks-on-the-computer"></a>OK: A számítógépen a teljesítmény szűk
+## <a name="cause-performance-bottlenecks-on-the-computer"></a>Ok: A számítógépen a teljesítmény szűk
 Azon a számítógépen, a másolat készül a szűk keresztmetszetek késéseket okozhat. Például a számítógép képes olvasni vagy írni lemezre vagy adatokat küldeni a hálózaton keresztül a rendelkezésre álló sávszélesség az szűk keresztmetszeteket okozhat.
 
 Windows beépített eszközt, amelynek a neve biztosít [Teljesítményfigyelő](https://technet.microsoft.com/magazine/2008.08.pulse.aspx) (Teljesítményfigyelő) észleli ezeket a szűk keresztmetszeteket.
@@ -88,8 +88,8 @@ author: saurabhsensharma
 manager: saurabhsensharma
 ms.service: backup
 ms.topic: troubleshooting
-ms.date: 10/31/2018
-ms.author: saurabhsensharma
+ms.date: 07/05/2019
+ms.author: saurse
 ---
 # Troubleshoot slow backup of files and folders in Azure Backup
 This article provides troubleshooting guidance to help you diagnose the cause of slow backup performance for files and folders when you're using Azure Backup. When you use the Azure Backup agent to back up files, the backup process might take longer than expected. This delay might be caused by one or more of the following:
@@ -132,7 +132,7 @@ Here are some performance counters and ranges that can be helpful in diagnosing 
 
 <a id="cause2"></a>
 
-## <a name="cause-another-process-or-antivirus-software-interfering-with-azure-backup"></a>OK: Egy másik folyamat vagy víruskereső zavarja a folyamatot az Azure Backup szolgáltatással
+## <a name="cause-another-process-or-antivirus-software-interfering-with-azure-backup"></a>Ok: Egy másik folyamat vagy víruskereső zavarja a folyamatot az Azure Backup szolgáltatással
 Megtudtuk, hogy több példányt, ahol más folyamatok, a Windows rendszerben rendelkezik az zavarhatja az Azure Backup ügynök folyamat teljesítményét. Például ha az Azure Backup ügynök és a egy másik program használja, a biztonsági másolatokat, vagy ha víruskereső fut, és zárolta a fájlok biztonsági mentése, az a többszörös zárolja a fájlok okozhat a versengés. Ebben a helyzetben a biztonsági mentés sikertelen lehet, vagy a feladat a vártnál hosszabb ideig tarthat.
 
 Ebben a forgatókönyvben a legjobb javaslat, hogy kapcsolja ki a másik biztonsági mentési program meg, hogy az Azure Backup-ügynök biztonsági mentésének ideje változik. Általában gondoskodik róla, hogy több biztonsági mentési feladat nem fut egyszerre is használhatók, nehogy azok egymással.
@@ -145,12 +145,12 @@ A víruskeresők azt javasoljuk, hogy a következő fájlok és helyek kizárás
 
 <a id="cause3"></a>
 
-## <a name="cause-backup-agent-running-on-an-azure-virtual-machine"></a>OK: Egy Azure virtuális gépen futó biztonsági mentési ügynök
+## <a name="cause-backup-agent-running-on-an-azure-virtual-machine"></a>Ok: Egy Azure virtuális gépen futó biztonsági mentési ügynök
 A Backup szolgáltatás ügynökét a virtuális gép futtatja, ha a teljesítmény lassabb, mint ha is futtat, a fizikai gép lesz. Ez várható IOPS-korlátozások miatt.  Azonban optimalizálhatja a teljesítményt az adatmeghajtók, amely éppen készül biztonsági másolat az Azure Premium Storage között. Dolgozunk a probléma javítása, és a javítás egy későbbi kiadásban elérhető lesz.
 
 <a id="cause4"></a>
 
-## <a name="cause-backing-up-a-large-number-millions-of-files"></a>OK: Nagyszámú (több millió) fájlok biztonsági mentésével
+## <a name="cause-backing-up-a-large-number-millions-of-files"></a>Ok: Nagyszámú (több millió) fájlok biztonsági mentésével
 Nagy mennyiségű adat áthelyezését-nál kisebb mennyiségű adatot áthelyezése hosszabb ideig tart. Bizonyos esetekben a biztonsági mentés időpontja nem csupán az adatok, hanem a fájlok és mappák száma méretének kapcsolódik. Ez akkor különösen igaz olyankor, amikor a kisméretű fájlok (és a néhány kilobájt néhány bájt) több millió éppen készül biztonsági másolat.
 
 Ez az oka, hogy közben az adatok biztonsági mentése és áthelyezi az Azure-ba, Azure egyidejűleg katalogizálni a fájlokat. Egyes ritka esetekben a katalógus műveletet is igénybe vehet a vártnál hosszabb.

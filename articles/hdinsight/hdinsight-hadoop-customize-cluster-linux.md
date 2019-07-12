@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/02/2019
-ms.openlocfilehash: 41a57d1ad5d216797fc60ea13acff346734fdef8
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 7885b03e9f92fc8e8c5b2c78049760cbed8d4dc7
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67433634"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67703965"
 ---
 # <a name="customize-azure-hdinsight-clusters-by-using-script-actions"></a>Az Azure HDInsight-fürtök testreszabása szkriptműveletek használatával
 
@@ -146,7 +146,7 @@ Parancsprogram-művelet parancsfájlok keresztül az alábbi segédprogramokat h
 
 HDInsight parancsprogramokkal történő telepítését a következő összetevőket a HDInsight-fürtökön biztosítja:
 
-| Name (Név) | Szkript |
+| Name (Név) | Parancsfájl |
 | --- | --- |
 | Azure Storage-fiók hozzáadása |`https://hdiconfigactions.blob.core.windows.net/linuxaddstorageaccountv01/add-storage-account-v01.sh`. Lásd: [további tárfiókok hozzáadása a HDInsight](hdinsight-hadoop-add-storage.md). |
 | A Hue telepítése |`https://hdiconfigactions.blob.core.windows.net/linuxhueconfigactionv02/install-hue-uber-v02.sh`. Lásd: [telepítése és használata a Hue HDInsight hadoop-fürtök](hdinsight-hadoop-hue-linux.md). |
@@ -173,12 +173,12 @@ Ez a szakasz ismerteti a különböző módokon használhatja a Parancsfájlműv
 
     A következő táblázat ismerteti az elemeket az űrlapon:
 
-    | Tulajdonság | Érték |
+    | Tulajdonság | Value |
     | --- | --- |
     | Szkript kiválasztása | A saját parancsfájl használatára, válassza ki a __egyéni__. Ellenkező esetben válassza a megadott szkriptek közül. |
     | Name (Név) |Adja meg a parancsfájlművelet nevét. |
     | Bash parancsfájl URI azonosítója |Adja meg a szkript URI azonosítója. |
-    | Head/Worker vagy ZooKeeper |Adja meg a csomópontok, amelyen a szkript fut: **Head**, **Worker**, vagy **ZooKeeper**. |
+    | A fő/feldolgozó vagy ZooKeeper |Adja meg a csomópontok, amelyen a szkript fut: **A fő**, **feldolgozó**, vagy **ZooKeeper**. |
     | Paraméterek |Adja meg a paramétereket, ha a parancsfájl által igényelt. |
 
     Használja a __parancsfájlműveletet__ bejegyzést, győződjön meg arról, hogy érvényesek-e a parancsfájl méretezési műveletek során.
@@ -255,7 +255,7 @@ Nyissa meg a [az Azure portal](https://portal.azure.com):
 
     A következő táblázat ismerteti az elemeket az űrlapon:
 
-    | Tulajdonság | Érték |
+    | Tulajdonság | Value |
     | --- | --- |
     | Szkript kiválasztása | A saját parancsfájl használatára, válassza ki a __egyéni__. Ellenkező esetben válassza ki a megadott parancsfájlt. |
     | Name (Név) |Adja meg a parancsfájlművelet nevét. |

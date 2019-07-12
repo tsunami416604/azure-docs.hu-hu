@@ -4,17 +4,17 @@ description: Az útmutató segítségével CEOs, informatikai vezetők, CISOs, v
 services: active-directory
 keywords: ''
 author: martincoetzer
-ms.author: martincoetzer
+ms.author: martinco
 ms.date: 04/12/2018
 ms.topic: article
 ms.service: active-directory
 ms.workload: identity
-ms.openlocfilehash: 26fca12060363f4ad05baaeceb6fb800a0d76216
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: c0faeb211860391c93563200f509d60876a504b9
+ms.sourcegitcommit: 1572b615c8f863be4986c23ea2ff7642b02bc605
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67449270"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67786699"
 ---
 # <a name="choose-the-right-authentication-method-for-your-azure-active-directory-hybrid-identity-solution"></a>Válassza ki a megfelelő hitelesítési módszert az Azure Active Directory hibrid identitáskezelési megoldás 
 
@@ -94,7 +94,7 @@ Döntési kérdések adatai:
 
 * **Speciális forgatókönyvek**. Ha szervezetek választja, akkor lehet is használható elemzéseket készítsenek identitások használata az Azure AD Premium P2 szintű Azure AD Identity Protection jelentéseket. Ilyen például, a kiszivárgott hitelesítő adatok a jelentés. Windows Hello for Business rendelkezik [konkrét követelmények, a Jelszókivonat-szinkronizálás használata esetén](https://docs.microsoft.com/windows/access-protection/hello-for-business/hello-identity-verification). [Az Azure AD Domain Services](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-getting-started-password-sync) üzembe helyezése felhasználók a felügyelt tartomány vállalati hitelesítő adataikkal történő Jelszókivonat-szinkronizálás szükséges.
 
-    Jelszókivonat-szinkronizálást a többtényezős hitelesítést kell használnia a többtényezős hitelesítés az Azure AD igénylő szervezeteknek vagy [feltételes hozzáférés az egyéni vezérlők](https://docs.microsoft.com/azure/active-directory/conditional-access/controls#custom-controls). Azon szervezetek nem használható külső vagy a helyszínen egy többtényezős hitelesítési módszereket, amelyek összevonási támaszkodik.
+    Jelszókivonat-szinkronizálást a többtényezős hitelesítést kell használnia a többtényezős hitelesítés az Azure AD igénylő szervezeteknek vagy [feltételes hozzáférés az egyéni vezérlők](https://docs.microsoft.com/azure/active-directory/conditional-access/controls#custom-controls-preview). Azon szervezetek nem használható külső vagy a helyszínen egy többtényezős hitelesítési módszereket, amelyek összevonási támaszkodik.
 
 > [!NOTE]
 > Az Azure AD feltételes hozzáférés szükséges [Azure AD Premium P1](https://azure.microsoft.com/pricing/details/active-directory/) licenceket.
@@ -118,7 +118,7 @@ Tekintse meg [Jelszókivonat-szinkronizálás megvalósítása](https://docs.mic
 
 * **Speciális forgatókönyvek**. Az átmenő hitelesítés az helyi fiók házirend megköveteli a bejelentkezés alkalmával. Ha például a hozzáférés megtagadva állapot le van tiltva, egy helyi felhasználói fiók zárolva, amikor vagy [jelszava lejárt](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-pta-faq#what-happens-if-my-users-password-has-expired-and-they-try-to-sign-in-by-using-pass-through-authentication) vagy az órákat, amikor a felhasználó számára engedélyezett bejelentkezni kívül esik. 
 
-    Többtényezős hitelesítés az átmenő hitelesítést kell használnia az Azure multi-factor Authentication (MFA) igénylő szervezeteknek vagy [feltételes hozzáférés az egyéni vezérlők](https://docs.microsoft.com/azure/active-directory/conditional-access/controls#custom-controls). Azon szervezetek nem használható egy külső vagy a helyszíni többtényezős hitelesítési módszer, amelynek összevonási támaszkodik. Speciális funkciók szükséges, hogy a Jelszókivonat-szinkronizálás üzemel-e úgy dönt, hogy átmenő hitelesítést. Ilyen például, a kiszivárgott hitelesítő adatok a jelentés az Identity Protection.
+    Többtényezős hitelesítés az átmenő hitelesítést kell használnia az Azure multi-factor Authentication (MFA) igénylő szervezeteknek vagy [feltételes hozzáférés az egyéni vezérlők](https://docs.microsoft.com/azure/active-directory/conditional-access/controls#custom-controls-preview). Azon szervezetek nem használható egy külső vagy a helyszíni többtényezős hitelesítési módszer, amelynek összevonási támaszkodik. Speciális funkciók szükséges, hogy a Jelszókivonat-szinkronizálás üzemel-e úgy dönt, hogy átmenő hitelesítést. Ilyen például, a kiszivárgott hitelesítő adatok a jelentés az Identity Protection.
 
 * **Üzletmenet-folytonossági**. Azt javasoljuk, hogy a két további átmenő hitelesítési ügynökök telepítése. Ezek a kiegészítő funkciók az Azure AD Connect-kiszolgáló az első ügynök mellett vannak. Ez további üzembe helyezési biztosítja a magas rendelkezésre állás, a hitelesítési kérelmek. Három ügynök telepítve van, ha egy ügynök továbbra is sikertelen lehet, ha egy másik ügynök karbantartás miatt nem üzemel. 
 
@@ -177,7 +177,7 @@ Az alábbi ábrák a magas szintű architektúra minden hitelesítési módszert
 |Consideration|A Jelszókivonat-szinkronizálás és a közvetlen egyszeri bejelentkezés|Az átmenő hitelesítés + közvetlen egyszeri bejelentkezés|Összevonás az AD FS rendszerrel|
 |:-----|:-----|:-----|:-----|
 |Amikor megtörténik a hitelesítés?|A felhőben|Egy biztonságos jelszó ellenőrzési exchange helyszíni hitelesítési ügynök után a felhőben|Helyszíni követelmények|
-|Mik azok a helyszíni kiszolgáló követelmények meghaladják a kiépítési rendszer: Azure AD Connect?|None|Egy kiszolgáló minden további hitelesítési ügynök|Két vagy több AD FS-kiszolgálók<br><br>A szegélyhálózat-alapú vagy szegélyhálózat (DMZ) hálózatban két vagy több WAP-kiszolgálók|
+|Mik azok a helyszíni kiszolgáló követelmények meghaladják a kiépítési rendszer: Azure AD Connect?|Nincsenek|Egy kiszolgáló minden további hitelesítési ügynök|Két vagy több AD FS-kiszolgálók<br><br>A szegélyhálózat-alapú vagy szegélyhálózat (DMZ) hálózatban két vagy több WAP-kiszolgálók|
 |Mik a helyszíni Internet követelményei és hálózatkezelési túl a kiépítési rendszer?|None|[Kimenő Internet-hozzáférés](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-pta-quick-start) a kiszolgálókról a futtató hitelesítési ügynökök|[Bejövő Internet-hozzáférés](https://docs.microsoft.com/windows-server/identity/ad-fs/overview/ad-fs-requirements) a WAP-kiszolgálókat a szegélyhálózaton<br><br>Bejövő hálózati hozzáférést AD FS-kiszolgálók a WAP-kiszolgálókat a szegélyhálózaton<br><br>Hálózati terheléselosztás|
 |Van egy SSL-tanúsítványra vonatkozó követelménnyel?|Nem|Nem|Igen|
 |Van egy állapotfigyelési megoldás?|Nem szükséges|Ügynök állapota által biztosított [Azure Active Directory felügyeleti központ](https://docs.microsoft.com/azure/active-directory/hybrid/tshoot-connect-pass-through-authentication)|[Azure AD Connect Health](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-health-adfs)|

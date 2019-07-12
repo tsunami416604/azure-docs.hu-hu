@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/17/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: e29a9265e010c3f442b742faf62b16dae02739fa
-ms.sourcegitcommit: 156b313eec59ad1b5a820fabb4d0f16b602737fc
+ms.openlocfilehash: 29ab9b3c33aae6005510c34b207c7f87714149e5
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67191181"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67608209"
 ---
 ### <a name="preview"></a>Hogyan részt a nyilvános előzetes verziója?
 
@@ -55,4 +55,8 @@ Annak érdekében, hogy a kapcsolat létrehozása a következő szerepkörök sz
 
 ### <a name="previewbill"></a>Díjszabás – számítják fel az előzetes verzióra való részvételhez?
 
-Csak díjköteles részben a nyilvános előzetes verzióban. Azonban nem nincs csatlakoztatva a telepítés, nem biztosítunk szolgáltatói szerződést. További tájékoztatás a [díjszabási lapon](https://aka.ms/BastionHostPricing) olvasható.
+Csak díjköteles részben a nyilvános előzetes verzióban. Azonban nem létezik az üzemelő példány csatlakozik, nem biztosítunk szolgáltatói szerződést. További tájékoztatás a [díjszabási lapon](https://aka.ms/BastionHostPricing) olvasható.
+
+### <a name="previewbill"></a>Miért kapok "a kapcsolat időkorlátja lejárt" hiba jelenik meg a megerősített munkamenet indítása előtt?
+
+A munkamenet csak az Azure Portalról kell kezdeményezni. Jelentkezzen be az Azure Portalon, és kezdje újra a munkamenetet. Ha az URL-címet közvetlenül a egy másik böngésző-munkamenetet, vagy a lapot, ez a hiba várható. Ez segít, győződjön meg arról, hogy a munkamenet biztonságát és, hogy a munkamenet a csak az Azure Portalon keresztül érhetők el.

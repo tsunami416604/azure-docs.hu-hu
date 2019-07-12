@@ -9,12 +9,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: b5ed614fdd378b36d8f95fc90ce7ff98d63ef31a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8357a53ee065812922b5df53fbdef7c14e5f0ff7
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60761870"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67621030"
 ---
 # <a name="troubleshoot-input-connections"></a>A bemeneti kapcsolatok hibaelhárítása
 
@@ -29,7 +29,7 @@ Ezen a lapon bemeneti kapcsolatok és hibaelhárítási információkat ismertet
         
     Használja a [ **mintaadatok** ](stream-analytics-sample-data-input.md) minden egyes bemenet gombra, és töltse le a bemeneti mintaadatokat.
         
-    Vizsgálja meg a mintaadatokat az adatok megértéséhez: a séma és a [adattípusok](https://msdn.microsoft.com/library/azure/dn835065.aspx).
+    Vizsgálja meg a mintaadatokat az adatok megértéséhez: a séma és a [adattípusok](https://docs.microsoft.com/stream-analytics-query/data-types-azure-stream-analytics).
 
 ## <a name="malformed-input-events-causes-deserialization-errors"></a>Helytelen formátumú bemeneti események okok Deszerializálási hiba 
 A deszerializálás problémák vannak az okozza, ha a Stream Analytics-feladat adatfolyam helytelenül formázott üzeneteket tartalmaz. Például egy helytelenül formázott üzenetet oka lehet egy hiányzó zárójelek vagy a JSON-objektum egy zárójelet, vagy egy helytelen időbélyeg formátuma a idő mezőben. 
@@ -145,5 +145,5 @@ További segítségre van szüksége, próbálja meg [Azure Stream Analytics-fó
 * [Az Azure Stream Analytics bemutatása](stream-analytics-introduction.md)
 * [Get started using Azure Stream Analytics](stream-analytics-real-time-fraud-detection.md) (Bevezetés az Azure Stream Analytics használatába)
 * [Scale Azure Stream Analytics jobs](stream-analytics-scale-jobs.md) (Azure Stream Analytics-feladatok méretezése)
-* [Azure Stream Analytics Query Language Reference](https://msdn.microsoft.com/library/azure/dn834998.aspx) (Referencia az Azure Stream Analytics lekérdezési nyelvhez)
+* [Azure Stream Analytics Query Language Reference](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference) (Referencia az Azure Stream Analytics lekérdezési nyelvhez)
 * [Az Azure Stream Analytics felügyeleti REST API referenciája](https://msdn.microsoft.com/library/azure/dn835031.aspx)

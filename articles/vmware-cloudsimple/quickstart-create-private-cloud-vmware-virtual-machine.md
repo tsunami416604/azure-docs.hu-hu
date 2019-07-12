@@ -3,17 +3,17 @@ title: Rövid útmutató – a Magánfelhő VMware virtuális gép létrehozása
 description: Azt ismerteti, hogyan hozhat létre és a VMware virtuális gép CloudSimple privát felhő
 author: sharaths-cs
 ms.author: b-shsury
-ms.date: 06/03/19
+ms.date: 06/03/2019
 ms.topic: article
 ms.service: vmware
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 217154578ad11755cd658ff3b106cfbe266277ab
-ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
+ms.openlocfilehash: 33354ce09ad6ba1a9a7c08a8cd3b945f3788011a
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67154615"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67595683"
 ---
 # <a name="create-vmware-virtual-machines-on-your-private-cloud"></a>A Magánfelhő létrehozása VMware virtuális gépek
 
