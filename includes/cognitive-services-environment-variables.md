@@ -4,18 +4,18 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 06/24/2019
 ms.author: aahi
-ms.openlocfilehash: 734fce2c01614d5dca73f171fb59f25f39d13705
-ms.sourcegitcommit: aa66898338a8f8c2eb7c952a8629e6d5c99d1468
+ms.openlocfilehash: 6d6451d50a00569eb1da8f5b0a0dc10d3c6b1115
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67461494"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67841514"
 ---
 ## <a name="configure-an-environment-variable-for-authentication"></a>A hitelesítési környezeti változó konfigurálása
 
-Alkalmazások hozzáférésének engedélyezése a Cognitive Services használata kell. Hitelesítést végezni, azt javasoljuk egy környezeti változót, egy kulcs tárolása az Azure-erőforrások létrehozásához. 
+Alkalmazások hozzáférésének engedélyezése a Cognitive Services használata kell. Hitelesítést végezni, azt javasoljuk egy környezeti változót, a kulcsok tárolására az Azure-erőforrások létrehozásához. 
 
-Miután a kulcs, kiírhatja azokat egy új környezeti változóba az alkalmazást futtató helyi gépen. A környezeti változó megadásához nyisson meg egy konzolablakot, és kövesse az operációs rendszerének megfelelő utasításokat. Cserélje le `your-key` a Anomáliadetektálási detector használatával hívóbetűre:
+Miután a kulcs, kiírhatja azokat egy új környezeti változóba az alkalmazást futtató helyi gépen. A környezeti változó megadásához nyisson meg egy konzolablakot, és kövesse az operációs rendszerének megfelelő utasításokat. Cserélje le `your-key` az erőforrás a kulcsok egyikével.
 
 * Windows
 
