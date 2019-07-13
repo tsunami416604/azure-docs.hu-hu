@@ -51,7 +51,8 @@
     - name: Lapozás a hírek között
       href: paging-news.md
     - name: Miniatűrök átméretezése és körülvágása
-      href: resize-and-crop-thumbnails.md
+      maintainContext: true
+      href: ../bing-web-search/resize-and-crop-thumbnails.md
     - name: Frissítés az API 5-ös verziójáról a 7-es verzióra
       href: bing-news-upgrade-guide-v5-to-v7.md
     - name: A Visual Studio használata

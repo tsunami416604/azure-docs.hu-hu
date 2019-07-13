@@ -45,7 +45,8 @@
 - name: Útmutatók
   items:
     - name: Miniatűrök átméretezése és körülvágása
-      href: resize-and-crop-thumbnails.md
+      maintainContext: true
+      href: ../bing-web-search/resize-and-crop-thumbnails.md
 - name: Alapelvek
   items:
     - name: Entitások keresése

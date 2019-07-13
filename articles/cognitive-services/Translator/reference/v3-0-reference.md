@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 03/29/2018
 ms.author: swmachan
-ms.openlocfilehash: 9b8f3894062c34e743a39f28b5f079a67a285c84
-ms.sourcegitcommit: a7ea412ca4411fc28431cbe7d2cc399900267585
+ms.openlocfilehash: 8956aff86777e2a2570c6a555a9bd0882f328a77
+ms.sourcegitcommit: 10251d2a134c37c00f0ec10e0da4a3dffa436fb3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/25/2019
-ms.locfileid: "67357685"
+ms.lasthandoff: 07/13/2019
+ms.locfileid: "67868413"
 ---
 # <a name="translator-text-api-v30"></a>Translator Text API 3.0-s verzió
 
@@ -31,10 +31,10 @@ ms.locfileid: "67357685"
 
 ## <a name="base-urls"></a>Alap URL-címek
 
-A Microsoft Translator van szolgálja ki több adatközpontban. Jelenleg találhatók 6 [Azure régiócsoportjairól](https://azure.microsoft.com/global-infrastructure/regions):
+A Microsoft Translator van szolgálja ki több adatközpontban. Jelenleg találhatók a 10 [Azure régiócsoportjairól](https://azure.microsoft.com/global-infrastructure/regions):
 
-* **Dél-Amerika:** 2. nyugati RÉGIÓJA és USA nyugati középső RÉGIÓJA 
-* **Ázsia Csendes-óceáni:** Délkelet-Ázsia és Dél-Korea
+* **Dél-Amerika:** USA keleti RÉGIÓJA, USA déli középső RÉGIÓJA, USA nyugati középső RÉGIÓJA és USA 2. nyugati 
+* **Ázsia Csendes-óceáni:** Korea déli régiója, kelet-japán, Ázsia és Kelet-Ausztrália
 * **Európa:** Észak-Európában és Nyugat-Európa
 
 A Microsoft Translator Text API kérelmek vannak a legtöbb esetben az adatközpont, ahol adja meg a kérelem legközelebb eső kezeli. Adatközpont-meghibásodás a kérelmek átirányíthatók földrajzi Azure-on kívül.
@@ -49,7 +49,7 @@ Hogy a kérelem egy adott Azure földrajzi kell kezelnie, módosítsa a kívánt
 |Azure|Ázsia és a Csendes-óceáni térség|    api-apc.cognitive.microsofttranslator.com|
 
 
-## <a name="authentication"></a>Hitelesítés
+## <a name="authentication"></a>Authentication
 
 Fizessen elő a Translator Text API vagy [Cognitive Services több szolgáltatás](https://azure.microsoft.com/pricing/details/cognitive-services/) Microsoft Cognitive Services, és az előfizetés key (az Azure Portalon érhető el) hitelesítést használni. 
 
@@ -58,7 +58,7 @@ Három fejlécek előfizetését hitelesítés használatával. A táblázat az 
 |Fejlécek|Leírás|
 |:----|:----|
 |OCP-Apim-Subscription-Key|*Cognitive Services-előfizetés használata, a titkos kulcs átadásakor*.<br/>A Translator Text API-előfizetéséhez tartozó Azure titkos kulcs értéke.|
-|Engedélyezés|*Cognitive Services-előfizetés használata egy hitelesítési tokent átadásakor.*<br/>A tulajdonosi jogkivonat értéke: `Bearer <token>`.|
+|Authorization|*Cognitive Services-előfizetés használata egy hitelesítési tokent átadásakor.*<br/>A tulajdonosi jogkivonat értéke: `Bearer <token>`.|
 |Ocp-Apim-Subscription-Region|*Használat a Cognitive Services több szolgáltatásos előfizetéssel egy több szolgáltatást a titkos kulcs átadásakor.*<br/>A régió, több szolgáltatásos előfizetés értéke. Ezt az értéket nem kötelező, ha nem használ egy több szolgáltatásos előfizetést.|
 
 ###  <a name="secret-key"></a>A titkos kulcs

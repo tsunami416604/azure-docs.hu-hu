@@ -10,12 +10,12 @@ ms.subservice: bing-video-search
 ms.topic: overview
 ms.date: 06/26/2019
 ms.author: scottwhi
-ms.openlocfilehash: 7b17c03b464ed7ccc13de2221c8e4cb36be05c3f
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 64d6613a5bfb9b13500d2263d2f826d342972639
+ms.sourcegitcommit: 10251d2a134c37c00f0ec10e0da4a3dffa436fb3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67442712"
+ms.lasthandoff: 07/13/2019
+ms.locfileid: "67867851"
 ---
 # <a name="what-is-the-bing-video-search-api"></a>Mi az a Bing Video Search API?
 
@@ -27,7 +27,7 @@ A Bing Video Search API megkönnyíti a videó keresését-képességeket adhat 
 |-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | [Keresési kifejezések valós idejű felkínálása](concepts/sending-requests.md#suggest-search-terms-with-the-bing-autosuggest-api) | A [Bing Autosuggest API](../bing-autosuggest/get-suggested-search-terms.md) a begépelés során javaslatokat tesz a keresési kifejezésekre, így könnyebbé teszi az alkalmazások használatát. |
 | [Szűrés és a videó korlátozása](concepts/get-videos.md#filtering-videos)                      | A videók szerkesztésével a lekérdezési paraméterek visszaadott szűrése.                                                                                                       |
-| [Miniatűrök körülvágása, átméretezése és megjelenítése](resize-and-crop-thumbnails.md)                                                | Szerkesztheti, és a Bing Videókeresési API által visszaadott videók a villámnézet megjelenítése.                                                                                      |
+| [Miniatűrök körülvágása, átméretezése és megjelenítése](../bing-web-search/resize-and-crop-thumbnails.md)                                                | Szerkesztheti, és a Bing Videókeresési API által visszaadott videók a villámnézet megjelenítése.                                                                                      |
 | [Felkapott videók beolvasása](trending-videos.md) | A világ különböző pontjain található a felkapott videók keresése.                                                                                                          |
 | [Videó elemzések lekérése](video-insights.md) | Felkapott videók, a világ különböző pontjain található a keresést tesztre szabhatja.                                                                                                          |
 

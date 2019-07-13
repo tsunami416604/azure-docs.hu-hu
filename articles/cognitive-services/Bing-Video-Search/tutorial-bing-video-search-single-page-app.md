@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-video-search
 ms.topic: tutorial
-ms.date: 01/31/2019
+ms.date: 07/12/2019
 ms.author: aahi
-ms.openlocfilehash: 6ba777754990560526d7981ef497ea7f0441e1b0
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: a14954de1f8ae073780098f9286aa70502472dcd
+ms.sourcegitcommit: 10251d2a134c37c00f0ec10e0da4a3dffa436fb3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65798461"
+ms.lasthandoff: 07/13/2019
+ms.locfileid: "67867862"
 ---
 # <a name="tutorial-single-page-video-search-app"></a>Oktatóanyag: Videókeresési egyoldalas alkalmazás
 A Bing Video Search API kikeresi az interneten a keresési lekérdezésnek megfelelő videótalálatokat. Ebben az oktatóanyagban létrehozunk egy egyoldalas webalkalmazást, amely a Bing Search API-t használja a keresési eredmények megjelenítéséhez az oldalon. Az alkalmazás HTML-, CSS- és JavaScript-összetevőkből áll.
@@ -261,7 +261,7 @@ Egy sikeres HTTP-kérés *nem* feltétlenül jelenti azt, hogy maga a keresés i
 
 Az előző két függvény kódjainak nagy része a hibakezelésért felel. A következő fázisoknál léphetnek fel hibák:
 
-|Szakasz|Lehetséges hiba vagy hibák|Kezelő|
+|Fázis|Lehetséges hiba vagy hibák|Kezelő|
 |-|-|-|
 |A JavaScript-kérésobjektum létrehozása|Érvénytelen URL-cím|`try`/`catch` blokk|
 |Kérés végrehajtása|Hálózati hibák, megszakított kapcsolatok|`error` és `abort` eseménykezelők|
@@ -308,7 +308,7 @@ A JSON-válasz a keresési eredményeket a legfelső szintű `value` objektumké
 
 A Bing News Search API legfeljebb négy különböző típusú kapcsolódó eredményt ad vissza, mindegyiket a saját legfelső szintű objektumában. Ezek a következők:
 
-|Kapcsolat|Leírás|
+|Kapcsolat típusa|Leírás|
 |-|-|
 |`pivotSuggestions`|Lekérdezések, amelyek az eredeti keresés egyik lecserélhető szavát egy másikra cserélik. Ha például a „piros virágok” kifejezésre keres, a „piros” egy lecserélhető szó, a „sárga virágok” pedig egy alternatív javaslat.|
 |`queryExpansions`|Lekérdezések, amelyek további kifejezések hozzáadásával szűkítik az eredeti keresést. Ha például a „Microsoft Surface” kifejezésre keres, a lekérdezés egyik lehetséges kibővítése a „Microsoft Surface Pro”.|
@@ -373,7 +373,7 @@ A leképező függvény:
 > * Létrehozza az `<a>` HTML-címkéket, amelyek a képre és a képet tartalmazó oldalra hivatkoznak.
 > * Létrehozza a leírást, amely információkat jelenít meg a képről és a képet tartalmazó oldalról.
 
-A miniatűr méretét az `<img>` címke, illetve a miniatűr URL-címének `h` és `w` mezője is használja. A [Bing miniatűr-szolgáltatása](resize-and-crop-thumbnails.md) ezután egy pontosan ekkora méretű miniatűrt állít elő.
+A miniatűr méretét az `<img>` címke, illetve a miniatűr URL-címének `h` és `w` mezője is használja. A Bing adja vissza egy [miniatűr](../bing-web-search/resize-and-crop-thumbnails.md) , pontosan ezt a méretet.
 
 ## <a name="persisting-client-id"></a>Ügyfél-azonosító megőrzése
 A Bing Search API-k válaszai tartalmazhatnak egy `X-MSEdge-ClientID` fejlécet, amelyet egymást követő kérésekkel vissza kell küldeni az API-nak. Ha több Bing Search API-t is használ, mindegyikhez ugyanazt az ügyfél-azonosítót használja, ha lehetséges.
@@ -389,7 +389,7 @@ A böngészők biztonsági szabályzatai (CORS) megakadályozhatják, hogy a Jav
 > [!NOTE]
 > Éles webalkalmazásban kiszolgálói oldalról hajtsa végre a kérést. Ellenkező esetben a weboldalnak tartalmaznia kell a Bing Search API-kulcsot, ahol a forrást megtekintők is hozzáférhetnek. Az API előfizetési kulcsával történő összes használatért Ön fizet, még az illetéktelen felek által létrehozott kérésekért is, ezért fontos, hogy a kulcsot ne tegye elérhetővé.
 
-Fejlesztési célokból a Bing Web Search API-kérést egy CORS-proxyn keresztül is végrehajthatja. Az ilyen proxyk válasza rendelkezik egy `Access-Control-Expose-Headers` fejléccel, amely engedélyezési listára teszi a válaszfejléceket, és elérhetővé teszi őket a JavaScript számára.
+Fejlesztési célokból a Bing Web Search API-kérést egy CORS-proxyn keresztül is végrehajthatja. Ilyen proxyn válasza rendelkezik egy `Access-Control-Expose-Headers` fejlécet, amely lehetővé teszi, hogy a válaszfejlécek, és elérhetővé teszi azokat a JavaScript.
 
 CORS-proxyt könnyedén telepíthet annak érdekében, hogy oktatóalkalmazásunk hozzáférhessen az ügyfél-azonosító fejlécéhez. Első lépésként [telepítse a Node.js-t](https://nodejs.org/en/download/), ha még nem tette meg. Ezután hajtsa végre egy parancsablakban a következő parancsot:
 

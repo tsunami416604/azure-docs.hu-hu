@@ -55,7 +55,8 @@
     - name: Lapozás a képek között
       href: paging-images.md
     - name: Miniatűrök átméretezése és körülvágása
-      href: resize-and-crop-thumbnails.md
+      maintainContext: true
+      href: ../bing-web-search/resize-and-crop-thumbnails.md
     - name: Frissítés 5-ös verzióról 7-es verzióra
       href: bing-image-upgrade-guide-v5-to-v7.md
 - name: Alapelvek

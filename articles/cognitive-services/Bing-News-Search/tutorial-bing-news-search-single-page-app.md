@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-news-search
 ms.topic: tutorial
-ms.date: 06/19/2019
+ms.date: 07/12/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 144ad8761b4d462012963e040b7699e38587831b
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: 10798b471012d53b5820b078b4be7c9c648d3233
+ms.sourcegitcommit: 10251d2a134c37c00f0ec10e0da4a3dffa436fb3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67272791"
+ms.lasthandoff: 07/13/2019
+ms.locfileid: "67868359"
 ---
 # <a name="tutorial-create-a-single-page-web-app"></a>Oktatóanyag: Egyoldalas webalkalmazás létrehozása
 
@@ -381,7 +381,7 @@ A hírleképező függvény:
 > * Létrehozza az `<a>` HTML-címkéket, amelyek a képre és a képet tartalmazó oldalra hivatkoznak.
 > * Létrehozza a leírást, amely információkat jelenít meg a képről és a képet tartalmazó oldalról.
 
-A miniatűr méretét az `<img>` címke, illetve a miniatűr URL-címének `h` és `w` mezője is használja. A [Bing miniatűr-szolgáltatása](resize-and-crop-thumbnails.md) ezután egy pontosan ekkora méretű miniatűrt állít elő.
+A miniatűr méretét az `<img>` címke, illetve a miniatűr URL-címének `h` és `w` mezője is használja. A [Bing miniatűr-szolgáltatása](../bing-web-search/resize-and-crop-thumbnails.md) ezután egy pontosan ekkora méretű miniatűrt állít elő.
 
 ## <a name="persisting-client-id"></a>Ügyfél-azonosító megőrzése
 A Bing Search API-k válaszai tartalmazhatnak egy `X-MSEdge-ClientID` fejlécet, amelyet egymást követő kérésekkel vissza kell küldeni az API-nak. Ha több Bing Search API-t is használ, mindegyikhez ugyanazt az ügyfél-azonosítót használja, ha lehetséges.
@@ -397,7 +397,7 @@ A böngészők biztonsági szabályzatai (CORS) megakadályozhatják, hogy a Jav
 > [!NOTE]
 > Éles webalkalmazásban kiszolgálói oldalról hajtsa végre a kérést. Ellenkező esetben a weboldalnak tartalmaznia kell a Bing Search API-kulcsot, ahol a forrást megtekintők is hozzáférhetnek. Az API előfizetési kulcsával történő összes használatért Ön fizet, még az illetéktelen felek által létrehozott kérésekért is, ezért fontos, hogy a kulcsot ne tegye elérhetővé.
 
-Fejlesztési célokból a Bing Web Search API-kérést egy CORS-proxyn keresztül is végrehajthatja. Az ilyen proxyk válasza rendelkezik egy `Access-Control-Expose-Headers` fejléccel, amely engedélyezési listára teszi a válaszfejléceket, és elérhetővé teszi őket a JavaScript számára.
+Fejlesztési célokból a Bing Web Search API-kérést egy CORS-proxyn keresztül is végrehajthatja. Ilyen proxyn válasza rendelkezik egy `Access-Control-Expose-Headers` fejlécet, amely lehetővé teszi, hogy a válaszfejlécek, és elérhetővé teszi azokat a JavaScript.
 
 CORS-proxyt könnyedén telepíthet annak érdekében, hogy oktatóalkalmazásunk hozzáférhessen az ügyfél-azonosító fejlécéhez. Első lépésként [telepítse a Node.js-t](https://nodejs.org/en/download/), ha még nem tette meg. Ezután hajtsa végre egy parancsablakban a következő parancsot:
 

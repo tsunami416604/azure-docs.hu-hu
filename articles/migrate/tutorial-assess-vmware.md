@@ -5,14 +5,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: azure-migrate
 ms.topic: tutorial
-ms.date: 07/11/2019
-ms.author: raynew
-ms.openlocfilehash: 5dc1a05e93bf1e82269a4291f147bac6e8ba657a
-ms.sourcegitcommit: af31deded9b5836057e29b688b994b6c2890aa79
+ms.date: 07/12/2019
+ms.author: hamusa
+ms.openlocfilehash: 5f70037b1e6ce284b55ff5ff0ae38eb50c320122
+ms.sourcegitcommit: 10251d2a134c37c00f0ec10e0da4a3dffa436fb3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67813008"
+ms.lasthandoff: 07/13/2019
+ms.locfileid: "67868658"
 ---
 # <a name="assess-vmware-vms-with-azure-migrate-server-assessment"></a>Mérje fel az Azure-ral a VMware virtuális gépek áttelepítése: Server Assessment
 
@@ -85,6 +85,7 @@ Az Azure Migrate: Server Assessment egy egyszerűsített VMware virtuális gép 
     - Töltse le az OVA sablon fájlt, és importálja a vCenter Serverhez.
     - A berendezés létrehozásához, és ellenőrizze, hogy képes csatlakozni az Azure Migrate Server Assessment.
     - Konfigurálja a berendezést először, és regisztrálja az Azure Migrate-projektben.
+- Beállíthat több készülékek egyetlen Azure Migrate-projekt. Az összes berendezések között legfeljebb 35,000 virtuális gépek felderítését használata támogatott. Legfeljebb 10 000 kiszolgálók száma berendezés könnyen megtalálhatók legyenek.
 
 ### <a name="download-the-ova-template"></a>Az OVA-sablon letöltése
 
@@ -171,12 +172,24 @@ Győződjön meg arról, hogy a berendezés virtuális gép kapcsolódik- [Azure
 Most a készülék vCenter-kiszolgálóhoz csatlakozhat, és indítsa el a virtuális gépek felderítésének.
 
 1. A **adja meg a vCenter Server adatait**, adja meg a nevét (FQDN) vagy a vCenter-kiszolgáló IP-címét. Hagyja bejelölve az alapértelmezett port, vagy adjon meg egy egyéni portot, amelyen a vCenter-kiszolgáló figyeli.
-2. A **felhasználónév** és **jelszó**, adja meg a csak olvasható fiók hitelesítő adatait, amelynek használatával a berendezést a vCenter-kiszolgáló a virtuális gépek felderítéséhez. Győződjön meg arról, hogy a fiók rendelkezik-e a [szükséges engedélyek a felderítéshez](migrate-support-matrix-vmware.md#assessment-vcenter-server-permissions).
+2. A **felhasználónév** és **jelszó**, adja meg a csak olvasható fiók hitelesítő adatait, amelynek használatával a berendezést a vCenter-kiszolgáló a virtuális gépek felderítéséhez. Győződjön meg arról, hogy a fiók rendelkezik-e a [szükséges engedélyek a felderítéshez](migrate-support-matrix-vmware.md#assessment-vcenter-server-permissions). A felderítés gazdagépcsoportjaira, a vCenter-fióknak hozzáférést korlátozza. További információ a felderítési hatókör [Itt](tutorial-assess-vmware.md#scoping-discovery).
 3. Kattintson a **-kapcsolat ellenőrzése** , győződjön meg arról, hogy a berendezés vCenter-kiszolgálóhoz csatlakozhat.
 4. A kapcsolat létrejötte után kattintson a **mentéséhez és a felderítés megkezdése**.
 
-
 Ez elindítja a felderítést. Megjelenik a portálon a felderített virtuális gépek metaadatait hozzávetőlegesen 15 percet vesz igénybe.
+
+### <a name="scoping-discovery"></a>Felderítési hatókör
+
+Felderítés hatóköre beállítható korlátozza a hozzáférést a detektáláshoz használt vCenter-fiók. A hatókör és a vCenter Server adatközpontok, a fürtök, fürtök, a gazdagépek, a gazdagépek, illetve az egyes virtuális gépekhez mappa megadható. 
+
+> [!NOTE]
+> Még ma az Server Assessment nem sikerül, ha a vCenter-fióknak vCenter VM mappa szintjén a hozzáférést a virtuális gépek felderítéséhez. Ha a virtuális gép mappák által a felderítés hatókörének, ezért úgy, hogy a vcenter-kiszolgáló csak olvasási hozzáféréssel rendelkezik egy VM-szinten hozzárendelt megteheti.  Az alábbiakban útmutatást találhat hogyan ehhez:
+>
+> 1. Rendelje hozzá a virtuális gép mappákat, amelyre a felderítés hatókörét szeretné az összes virtuális gép csak olvasható engedélyek. 
+> 2. A virtuális gépeket üzemeltető összes szülőobjektum olvasási hozzáférési jogot. Minden szülőobjektumok - gazdagép, a gazdagépek, a fürtben, fürtök mappa – a hierarchiában, akár az adatközpontban is használni fog. Nem kell az engedélyek az összes gyermekobjektum propagálása.
+> 3. A hitelesítő adatok használata az adatközpont, kiválasztása felderítéshez *gyűjtés hatóköre*. Állítsa be az RBAC biztosítja, hogy csak a bérlőspecifikus virtuális gépek a megfelelő vCenter-felhasználó hozzáférhet.
+>
+> Jegyezze fel a gazdagépek mappájából, és a fürtök támogatottak.
 
 ### <a name="verify-vms-in-the-portal"></a>Virtuális gépek ellenőrzése a portálon
 

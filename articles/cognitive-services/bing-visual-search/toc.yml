@@ -58,7 +58,8 @@
     - name: Elemzések lekérése tokennel
       href: use-insights-token.md
     - name: Miniatűrök átméretezése és körülvágása
-      href: resize-and-crop-thumbnails.md
+      maintainContext: true
+      href: ../bing-web-search/resize-and-crop-thumbnails.md
     - name: Kép keresése a kép megállapítástokenjeinek használatával
       href: tutorial-visual-search-insights-token.md
     - name: Egyoldalas webalkalmazás létrehozása
