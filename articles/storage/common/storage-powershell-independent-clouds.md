@@ -98,7 +98,7 @@ Az eredmények a következőhöz hasonlóak:
 
 |Tulajdonság neve|Érték|
 |----|----|
-| Name (Név) | AzureGermanCloud |
+| Name | AzureGermanCloud |
 | EnableAdfsAuthentication | False (Hamis) |
 | ActiveDirectoryServiceEndpointResourceI | http://management.core.cloudapi.de/ |
 | GalleryURL | https://gallery.cloudapi.de/ |
