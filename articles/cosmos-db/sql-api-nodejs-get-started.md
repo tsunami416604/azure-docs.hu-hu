@@ -9,20 +9,17 @@ ms.topic: tutorial
 ms.date: 06/05/2019
 ms.author: dech
 Customer intent: As a developer, I want to build a Node.js console application to access and manage SQL API account resources in Azure Cosmos DB, so that customers can better use the service.
-ms.openlocfilehash: 61569159d83493bb5338f8eda5b9201ef9164143
-ms.sourcegitcommit: 4cdd4b65ddbd3261967cdcd6bc4adf46b4b49b01
+ms.openlocfilehash: c98d52e95a285c2979742c8572a86718238548f4
+ms.sourcegitcommit: 6b41522dae07961f141b0a6a5d46fd1a0c43e6b2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66734584"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67985622"
 ---
 # <a name="tutorial-build-a-nodejs-console-app-with-the-javascript-sdk-to-manage-azure-cosmos-db-sql-api-data"></a>Oktatóanyag: Node.js-Konzolalkalmazás létrehozása az Azure Cosmos DB SQL API-adatok kezelése a JavaScript SDK-val
 
 > [!div class="op_single_selector"]
 > * [.NET](sql-api-get-started.md)
-> * [.NET (előzetes verzió)](sql-api-dotnet-get-started-preview.md)
-> * [.NET Core](sql-api-dotnetcore-get-started.md)
-> * [A .NET core (előzetes verzió)](sql-api-dotnet-core-get-started-preview.md)
 > * [Java](sql-api-java-get-started.md)
 > * [Aszinkron Java](sql-api-async-java-get-started.md)
 > * [Node.js](sql-api-nodejs-get-started.md)
@@ -102,7 +99,7 @@ Most, hogy az alkalmazás már létezik, győződjön meg arról, hogy kommunik�
 
    A JavaScript SDK-t használ az általános feltételek *tároló* és *elem*. A tároló lehet egy gyűjtemény, gráf vagy tábla. Az elem lehet egy dokumentum, él/csúcspont vagy sor, és ez jelöli a tárolóban lévő tartalmakat. 
    
-   `module.exports = config;` kód isused exportálása a ```config``` objektumot, hogy hivatkozhasson rá az ```app.js``` fájlt.
+   `module.exports = config;` kód segítségével exportálhatja a ```config``` objektumot, hogy hivatkozhasson rá az ```app.js``` fájlt.
 
 ## <a id="Connect"></a>Csatlakozás az Azure Cosmos DB-fiók
 
@@ -155,7 +152,7 @@ Most, hogy rendelkezik az Azure Cosmos DB-ügyfél elindításához szükséges 
 
    Egy adatbázis használatával hozható létre a `createIfNotExists` , vagy hozzon létre funkcióját a **adatbázisok** osztály. Az adatbázis a tárolók között particionált elemek logikai tárolója. 
 
-2. Másolja és illessze be a **createDatabase** és a **readDatabase** metódusokat a ```databaseId``` és a ```containerId``` definíciója alá az app.js fájlban. Ha még nem létezne, a **createDatabase** függvény létrehoz egy új adatbázist a ```FamilyDatabase``` azonosítóval, amelyet a ```config``` objektum határoz meg. A **readDatabase** függvény beolvassa az adatbázis definícióját, hogy ellenőrizze, hogy az adatbázis létezik-e.
+2. Másolja és illessze be a **createDatabase** és a **readDatabase** metódusokat a ```databaseId``` és a ```containerId``` definíciója alá az app.js fájlban. A **createDatabase** függvény létrehoz egy új adatbázist azonosítójú ```FamilyDatabase```, a megadott a ```config``` objektumot, ha ezt még nem létezik. A **readDatabase** függvény beolvassa az adatbázis definícióját, hogy ellenőrizze, hogy az adatbázis létezik-e.
 
    ```javascript
    /**
@@ -383,7 +380,7 @@ Egy tároló használatával hozható létre a `createIfNotExists` , vagy hozzon
 
 Egy elem a létrehozás funkciójának használatával hozható létre a **elemek** osztály. Az SQL API-t használja, amikor elemek leképezi a rendszer, amely felhasználó által megadott (tetszőleges) JSON tartalmak-dokumentumok formájában. Most már beszúrhat egy elemet az Azure Cosmos DB-be.
 
-1. Másolja és illessze be a **createFamilyItem** függvényt a **readContainer** függvény alá. A **createFamilyItem** függvény hozza létre a ```config``` objektumban mentett JSON-adatokat tartalmazó elemeket. Az egyes elemek létrehozása előtt a rendszer ellenőrzi, hogy létezik-e már elem ugyanazzal az azonosítóval.
+1. Másolja és illessze be a **createFamilyItem** függvényt a **readContainer** függvény alá. A **createFamilyItem** függvény hozza létre a ```config``` objektumban mentett JSON-adatokat tartalmazó elemeket. Ellenőrizzük, hogy egy elemet ugyanazzal az azonosítóval már nem létezik előtt hozza létre.
 
    ```javascript
    /**

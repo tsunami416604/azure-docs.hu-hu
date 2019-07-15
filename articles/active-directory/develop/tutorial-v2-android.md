@@ -16,12 +16,12 @@ ms.author: jmprieur
 ms.reviwer: brandwe
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 71c6b0d4cd664b12dbd0fbd4e9423240c8dbebb3
-ms.sourcegitcommit: 0ebc62257be0ab52f524235f8d8ef3353fdaf89e
+ms.openlocfilehash: cb1e322e0424debc14a29ad8a516c95acea54714
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67723817"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67872096"
 ---
 # <a name="sign-in-users-and-call-the-microsoft-graph-from-an-android-app"></a>A felhasználók és a Microsoft Graph hívása Androidos alkalmazásokból
 
@@ -33,61 +33,57 @@ Az útmutató befejezése után, az alkalmazás fogad a bejelentkezések a szem�
 
 ![A mintaalkalmazás által ebben az oktatóanyagban létrehozott működését mutatja](../../../includes/media/active-directory-develop-guidedsetup-android-intro/android-intro.svg)
 
-Ebben a példában az alkalmazás a felhasználók, és a adatok beolvasása a felhasználók nevében.  Ezeket az adatokat fogják elérni egy védett API-val (Microsoft Graph API), amely engedélyt igényel.
+Ebben az oktatóanyagban az alkalmazás a felhasználók, és a adatok beolvasása a felhasználók nevében.  Ezeket az adatokat a rendszer egy védett API (Microsoft Graph API), amely engedélyt igényel, és a Microsoft identity platform által védett keresztül érhetők el.
 
 Pontosabban:
 
 * Az alkalmazás fogja jelentkezzen be a felhasználó vagy egy böngészőben vagy a Microsoft Authenticator és az Intune vállalati portál használatával.
-* A felhasználó elfogadja az alkalmazás igényelt engedélyeket. 
+* A felhasználó elfogadja az alkalmazás igényelt engedélyeket.
 * Az alkalmazás fogja kiállítani egy hozzáférési jogkivonatot a Microsoft Graph API-hoz.
 * A hozzáférési jogkivonatot fog szerepelni a HTTP-kérést a webes API-hoz.
 * A Microsoft Graph-válasz feldolgozása.
 
-Ez a minta a Microsoft Authentication library for Android (MSAL) használja a hitelesítés végrehajtásához. Az MSAL automatikusan token megújítása, egyszeri bejelentkezés (SSO) az eszközön lévő más alkalmazások között szállítja és kezeli a fiók(ok) lesz.
+Ebben a példában a Microsoft Authentication library for Android (MSAL) hitelesítés megvalósításához: [com.microsoft.identity.client](https://javadoc.io/doc/com.microsoft.identity.client/msal).
+
+ Az MSAL automatikusan token megújítása, egyszeri bejelentkezés (SSO) az eszközön lévő más alkalmazások között szállítja és kezeli a fiók(ok) lesz.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Az interaktív telepítés Android Studiót használ.
-* 16 vagy újabb Android megadása kötelező (19 + ajánlott).
-
-## <a name="library"></a>Erőforrástár
-
-Ez az útmutató a következő hitelesítési tárat használja:
-
-|Erőforrástár|Leírás|
-|---|---|
-|[com.microsoft.identity.client](https://javadoc.io/doc/com.microsoft.identity.client/msal)|Microsoft Authentication Library (MSAL)|
+* Ehhez az oktatóanyaghoz az Android Studio 16 vagy újabb verzió (19 + ajánlott).
 
 ## <a name="create-a-project"></a>Projekt létrehozása
 
 Ebben az oktatóanyagban létrehoz egy új projektet. Ha ehelyett töltse le a befejezett oktatóanyaggal szeretné [letölteni a kódot](https://github.com/Azure-Samples/active-directory-android-native-v2/archive/master.zip).
 
-1. Nyissa meg az Android Studio, és válassza ki **indítsa el az új Android Studio-projekt**
-2. Válassza ki **alapszintű tevékenység** kattintson **tovább**.
-3. Adjon nevet az alkalmazásnak
-4. Mentse a csomag nevét. Megadja azt később be az Azure Portalra. 
+1. Nyissa meg az Android Studio, és válassza ki **indítsa el az új Android Studio-projekt**.
+2. Válassza ki **alapszintű tevékenység** válassza **tovább**.
+3. Adjon nevet az alkalmazásnak.
+4. Mentse a csomag nevét. Megadja azt később be az Azure Portalra.
 5. Állítsa be a **minimális API-szintet** való **API 19** vagy újabb, és kattintson a **Befejezés**.
 6. A projekt nézetben válassza ki a **projekt** nyissa meg a forrás- és nem-source project fájlok megjelenítése legördülő **app/build.gradle** és állítsa be `targetSdkVersion` való `27`.
 
 ## <a name="register-your-application"></a>Alkalmazás regisztrálása
 
-1. Nyissa meg az [Azure Portalt](https://aka.ms/MobileAppReg)
+1. Nyissa meg az [Azure Portal](https://aka.ms/MobileAppReg).
 2. Nyissa meg a [regisztrációk panelére](https://ms.portal.azure.com/?feature.broker=true#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredAppsPreview) kattintson **+ új regisztrációs**.
 3. Adjon meg egy **neve** , az alkalmazást, majd egy átirányítási URI megadása nélkül, kattintson a **regisztrálása**.
 4. Az a **kezelés** a panel, amely akkor jelenik meg, válassza ki a szakasz **hitelesítési** >  **+ hozzáadása egy platform** > **Android**.
 5. Adja meg a projekt csomag nevét. Ha letöltötte a kódot, az értéket nem `com.azuresamples.msalandroidapp`.
-6. Az a **aláírás-kivonatoló** szakaszában a **az Android-alkalmazás konfigurálása** kattintson **egy fejlesztési célú aláírás-kivonatoló létrehozása.** és másolja a KeyTool parancs használata a platformhoz. Ne feledje, a Java fejlesztői készlet (JDK) részeként telepíti a KeyTool.exe és is telepítenie kell az OpenSSL eszköz KeyTool parancs végrehajtása.
+6. Az a **aláírás-kivonatoló** szakaszában a **az Android-alkalmazás konfigurálása** kattintson **egy fejlesztési célú aláírás-kivonatoló létrehozása.** és másolja a KeyTool parancs használata a platformhoz.
+
+   > [!Note]
+   > A Java fejlesztői készlet (JDK) részeként telepíti a KeyTool.exe. Emellett telepítenie kell az OpenSSL eszköz KeyTool parancs végrehajtása.
+
 7. Adja meg a **aláírás-kivonatoló** KeyTool által generált.
-8. Kattintson a `Configure` , és mentse a **MSAL konfigurációs** , amely megjelenik **Android-eszközök konfigurációs** lapon, hogy meg lehessen adni azt az alkalmazás későbbi konfigurálásakor.  Kattintson a **Done** (Kész) gombra.
+8. Kattintson a `Configure` , és mentse a **MSAL konfigurációs** , amely megjelenik a **Android-eszközök konfigurációs** lapon, hogy meg lehessen adni azt az alkalmazás későbbi konfigurálásakor.  Kattintson a **Done** (Kész) gombra.
 
 ## <a name="build-your-app"></a>Alkalmazás létrehozása
 
-### <a name="configure-your-android-app"></a>Az Android-alkalmazás konfigurálása
+### <a name="add-your-app-registration"></a>Az alkalmazásregisztráció hozzáadása
 
 1. Az Android Studio project panelen lépjen **app\src\main\res**.
 2. Kattintson a jobb gombbal **res** válassza **új** > **Directory**. Adja meg `raw` új könyvtár neve, kattintson **OK**.
 3. A **alkalmazás** > **src** > **res** > **nyers**, hozzon létre egy új JSON-fájlt nevű `auth_config.json`, és illessze be a korábban mentett MSAL konfigurációt. Lásd: [további információ az MSAL konfigurációs](https://github.com/AzureAD/microsoft-authentication-library-for-android/wiki/Configuring-your-app).
-   <!-- Workaround for Docs conversion bug -->
 4. A **alkalmazás** > **src** > **fő** > **AndroidManifest.xml**, adja hozzá a `BrowserTabActivity`alábbi tevékenység. Ez a bejegyzés lehetővé teszi a Microsoft visszahívja az alkalmazáshoz, a hitelesítés befejezése után:
 
     ```xml
@@ -118,7 +114,7 @@ Ebben az oktatóanyagban létrehoz egy új projektet. Ha ehelyett töltse le a b
 ### <a name="create-the-apps-ui"></a>Az alkalmazás felhasználói felület létrehozása
 
 1. Az Android Studio projekt ablakról, lépjen a **alkalmazás** > **src** > **fő** > **res**  >  **elrendezés** , és nyissa meg **activity_main.xml** , és nyissa meg a **szöveg** megtekintése.
-2. Lépjen a tevékenység elrendezés például `<androidx.coordinatorlayout.widget.CoordinatorLayout` való `<androidx.coordinatorlayout.widget.LinearLayout`.
+2. Lépjen a tevékenység elrendezés, például: `<androidx.coordinatorlayout.widget.CoordinatorLayout` való `<androidx.coordinatorlayout.widget.LinearLayout`.
 3. Adja hozzá a `android:orientation="vertical"` tulajdonságot a `LinearLayout` csomópont.
 4. Illessze be az alábbi kódot a `LinearLayout` csomópontot, és cserélje le a jelenlegi tartalomról:
 
@@ -186,7 +182,7 @@ Ebben az oktatóanyagban létrehoz egy új projektet. Ha ehelyett töltse le a b
 ### <a name="use-msal"></a>Használható az MSAL
 
 Most végezze el a módosításokat belül `MainActivity.java` hozzáadása és használható az MSAL az alkalmazásban.
-Az Android Studio projekt ablakról, lépjen a **alkalmazás** > **src** > **fő** > **java**  >  **com.example.msal**, és nyissa meg a `MainActivity.java`
+Az Android Studio projekt ablakról, lépjen a **alkalmazás** > **src** > **fő** > **java**  >  **com.example.msal**, és nyissa meg a `MainActivity.java`.
 
 #### <a name="required-imports"></a>Szükséges importálások
 

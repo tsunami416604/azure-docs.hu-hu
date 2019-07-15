@@ -4,15 +4,15 @@ description: Ismerje meg, hogyan állíthatja be az Azure Cosmos DB globális te
 author: rimman
 ms.service: cosmos-db
 ms.topic: tutorial
-ms.date: 05/10/2019
+ms.date: 07/15/2019
 ms.author: rimman
 ms.reviewer: sngun
-ms.openlocfilehash: 4f97d1f052cd8684674eecf479133051f2cfb76e
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: c4ce60e3532179efe3ac68c21b32850e73f92a69
+ms.sourcegitcommit: 1b7b0e1c915f586a906c33d7315a5dc7050a2f34
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66480555"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67881226"
 ---
 # <a name="set-up-azure-cosmos-db-global-distribution-using-the-sql-api"></a>Az Azure Cosmos DB globális terjesztésének beállítása az SQL API használatával
 
@@ -47,7 +47,7 @@ Ha a PreferredLocations tulajdonság nincs beállítva, a kérelmek az aktuális
 ## <a name="net-sdk"></a>.NET SDK
 Az SDK a kód módosítása nélkül használható. Ebben az esetben az SDK automatikusan átirányítja az olvasásokat és az írásokat az aktuális írási régióba.
 
-A .NET SDK 1.8-as és újabb verzióiban a DocumentClient konstruktor ConnectionPolicy paramétere rendelkezik egy Microsoft.Azure.Documents.ConnectionPolicy.PreferredLocations nevű tulajdonsággal. Ez a tulajdonság egy `<string>` típusú gyűjtemény, amelynek egy listát kell tartalmaznia a régiónevekkel. A szöveges értékek formázása [Az Azure régiói][regions] oldalon található Régiónév oszlop alapján történik, és az első karakter előtt, illetve az utolsó karakter után nincs szóköz.
+A .NET SDK 1.8-as és újabb verzióiban a DocumentClient konstruktor ConnectionPolicy paramétere rendelkezik egy Microsoft.Azure.Documents.ConnectionPolicy.PreferredLocations nevű tulajdonsággal. Ez a tulajdonság egy `<string>` típusú gyűjtemény, amelynek egy listát kell tartalmaznia a régiónevekkel. A karakterlánc-értékek az oszlop szerint formázott a [Azure-régiók][regions] lapon, szóközök nélküli szövegláncként előtt vagy után az első és utolsó karakter.
 
 Az aktuális írási és olvasási végpontokat a DocumentClient.WriteEndpoint és a DocumentClient.ReadEndpoint tulajdonság tartalmazza.
 
@@ -78,10 +78,10 @@ DocumentClient docClient = new DocumentClient(
 await docClient.OpenAsync().ConfigureAwait(false);
 ```
 
-## <a name="nodejs-javascript-and-python-sdks"></a>NodeJS, JavaScript és Python SDK-k
+## <a name="nodejs-javascript-and-python-sdks"></a>NODE.js-, JavaScript és Python SDK-k
 Az SDK a kód módosítása nélkül használható. Ebben az esetben az SDK automatikusan átirányítja az olvasásokat és az írásokat az aktuális írási régióba.
 
-Az SDK-k 1.8-as és újabb verziójában a DocumentClient konstruktor ConnectionPolicy paramétere egy új DocumentClient.ConnectionPolicy.PreferredLocations nevű tulajdonsággal rendelkezik. Ez a paraméter egy sztringtömb, amely a régiónevek listáját használja. A nevek formázása [Az Azure régiói][regions] oldalon található Régiónév oszlop alapján történik. Az AzureDocuments.Regions objektumban található előre definiált konstansokat is használhatja
+Az SDK-k 1.8-as és újabb verziójában a DocumentClient konstruktor ConnectionPolicy paramétere egy új DocumentClient.ConnectionPolicy.PreferredLocations nevű tulajdonsággal rendelkezik. Ez a paraméter egy sztringtömb, amely a régiónevek listáját használja. A nevek vannak régiónév oszlop található a [Azure-régiók][regions] lap. Az AzureDocuments.Regions objektumban található előre definiált konstansokat is használhatja
 
 Az aktuális írási és olvasási végpontokat a DocumentClient.getWriteEndpoint és a DocumentClient.getReadEndpoint tulajdonság tartalmazza.
 
@@ -90,7 +90,7 @@ Az aktuális írási és olvasási végpontokat a DocumentClient.getWriteEndpoin
 >
 >
 
-Az alábbiakban egy NodeJS-/Javascript-példakódot láthat. A Python és a Java ugyanezt a mintát követi.
+Az alábbi, a példakód Node.js/Javascript számára. A Python és a Java ugyanezt a mintát követi.
 
 ```JavaScript
 // Creating a ConnectionPolicy object

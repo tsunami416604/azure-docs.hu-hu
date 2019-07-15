@@ -7,14 +7,14 @@ manager: rajvijan
 ms.service: key-vault
 ms.topic: tutorial
 ms.date: 09/05/2018
-ms.author: pryerram
+ms.author: mbaldwin
 ms.custom: mvc
-ms.openlocfilehash: e5fbb4e6f6599d8f9560561fc219dbf57ac0cee1
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: f002a4d67ee782b11cd8f39784eb48b136328c89
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "66147756"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67876708"
 ---
 # <a name="tutorial-use-a-linux-vm-and-a-python-app-to-store-secrets-in-azure-key-vault"></a>Oktatóanyag: Linux rendszerű virtuális gép és a egy Python-alkalmazás titkos kulcsok tárolására az Azure Key Vault használatával
 
@@ -25,7 +25,7 @@ Ebben az oktatóanyagban beállította egy Azure-webalkalmazás Azure-Kulcstart�
 > [!div class="checklist"]
 > * Kulcstartó létrehozása
 > * A key vaultban lévő titkos Store
-> * Linux rendszerű virtuális gép létrehozása
+> * Linuxos virtuális gép létrehozása
 > * Engedélyezze a [identitás](../active-directory/managed-identities-azure-resources/overview.md) a virtuális gép
 > * A szükséges a Konzolalkalmazás adatokat olvasni a key vault-engedélyek megadására
 > * A key vault titkos kulcs lekérése
@@ -95,11 +95,11 @@ Egy titkos kulcs hozzáadásával mutatjuk be ennek működését. Érdemes tár
 az keyvault secret set --vault-name "<YourKeyVaultName>" --name "AppSecret" --value "MySecret"
 ```
 
-## <a name="create-a-linux-virtual-machine"></a>Linux rendszerű virtuális gép létrehozása
+## <a name="create-a-linux-virtual-machine"></a>Linuxos virtuális gép létrehozása
 
 A virtuális gép létrehozása a `az vm create` parancsot.
 
-A következő példa létrehoz egy **myVM** nevű virtuális gépet, és hozzáad egy **azureuser** nevű felhasználói fiókot. A `--generate-ssh-keys` paraméter automatikusan hoz létre az SSH-kulcsot, és hozzáadja a kulcsok alapértelmezett helyén (**~/.ssh**). Ehelyett egy meghatározott készletének a kulcsok létrehozásához használja a `--ssh-key-value` lehetőséget.
+A következő példa létrehoz egy **myVM** nevű virtuális gépet, és hozzáad egy **azureuser** nevű felhasználói fiókot. A `--generate-ssh-keys` paraméter automatikusan hoz létre az SSH-kulcsot, és hozzáadja a kulcsok alapértelmezett helyén ( **~/.ssh**). Ehelyett egy meghatározott készletének a kulcsok létrehozásához használja a `--ssh-key-value` lehetőséget.
 
 ```azurecli-interactive
 az vm create \
