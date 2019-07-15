@@ -353,7 +353,7 @@ A következő mappa-struktúra létrehozása a blob Storage a HDInsight társít
 | &lt;felhasználó által definiált &gt; | A Spark-feladat fájlja mutató elérési utat. | Igen | Fájl |
 | . / jars | Ebben a mappában található összes fájlt feltölteni és a fürt a Java osztályútvonal elhelyezett. | Nem | Mappa |
 | ./pyFiles | Ebben a mappában található összes fájlt feltölteni és a fürt a PYTHONPATH elhelyezett. | Nem | Mappa |
-| ./files | Ebben a mappában található összes fájlt feltölteni és a végrehajtó munkakönyvtár helyezni. | Nem | Mappa |
+| . / fájlok | Ebben a mappában található összes fájlt feltölteni és a végrehajtó munkakönyvtár helyezni. | Nem | Mappa |
 | ./archives | Ebben a mappában található összes fájlt nincs tömörítve. | Nem | Mappa |
 | ./logs | A Spark-fürt naplóinak tárolására szolgáló mappa.| Nem | Mappa |
 
