@@ -22,6 +22,8 @@
       href: apache-spark-load-data-run-query.md
     - name: Apache Spark-lekérdezések futtatása IntelliJ használatával
       href: apache-spark-intellij-tool-plugin.md
+    - name: Hibás Spark-feladatok hibakeresése az IntelliJben (előzetes verzió)
+      href: apache-spark-intellij-tool-failure-debug.md
     - name: Adatok elemzése BI-eszközökkel
       href: apache-spark-use-bi-tools.md
     - name: Streamelési feladat futtatása

@@ -29,6 +29,8 @@
   items:
     - name: Dinamikus konfiguráció engedélyezése az ASP.NET Core-ban
       href: enable-dynamic-configuration-aspnet-core.md
+    - name: Dinamikus konfiguráció engedélyezése .NET Core-alkalmazásban
+      href: enable-dynamic-configuration-dotnet-core.md
     - name: Funkciójelölők használata .NET Core-alkalmazásokban
       href: use-feature-flags-dotnet-core.md
     - name: Funkciójelölők kezelése

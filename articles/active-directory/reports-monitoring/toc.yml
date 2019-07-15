@@ -58,7 +58,7 @@
           href: howto-power-bi-content-pack.md
         - name: A Reporting API előfeltételeinek konfigurálása
           href: howto-configure-prerequisites-for-reporting-api.md
-        - name: Azure Monitor-munkafüzetek használata
+        - name: Az Azure AD-munkafüzetek használata
           href: howto-use-azure-monitor-workbooks.md
     - name: Figyelés
       items:
@@ -87,6 +87,8 @@
 - name: Referencia
   expanded: true
   items:
+    - name: Az Azure AD PowerShell-parancsmagjai jelentéskészítéshez
+      href: reference-powershell-reporting.md
     - name: Auditnaplók API-referenciája
       href: 'https://developer.microsoft.com/graph/docs/api-reference/beta/resources/directoryaudit'
     - name: Bejelentkezési naplók API-referenciája

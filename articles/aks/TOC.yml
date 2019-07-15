@@ -126,6 +126,8 @@
           href: virtual-kubelet.md
         - name: Automatikus fürtméretező használata (előzetes verzió)
           href: cluster-autoscaler.md
+        - name: Az Availability Zones (előzetes verzió) használata
+          href: availability-zones.md
         - name: Több csomópontkészlet használata (előzetes verzió)
           href: use-multiple-node-pools.md
         - name: Az AKS üzembe helyezése Terraform használatával
@@ -315,6 +317,8 @@
         - name: Azure DevOps Project
           href: ../devops-project/azure-devops-project-aks.md
           maintainContext: true
+        - name: Az üzembehelyezési központ indítója
+          href: deployment-center-launcher.md
     - name: Hibaelhárítás
       items:
         - name: Gyakori problémák

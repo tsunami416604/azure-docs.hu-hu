@@ -66,10 +66,17 @@
     - name: Azure Resource Manager
       href: ../azure-resource-manager/resource-group-overview.md
       maintainContext: true
-    - name: Régiók és rendelkezésre állás
-      href: ../virtual-machines/windows/regions-and-availability.md
+    - name: Régiók
+      href: ../virtual-machines/windows/regions.md
+    - name: Rendelkezésre állás és teljesítmény
       maintainContext: true
       items:
+        - name: Rendelkezésre állás
+          href: availability.md
+        - name: Közös elhelyezés
+          href: co-location.md
+        - name: Hálózati teljesítmény
+          href: ../virtual-network/virtual-network-optimize-network-bandwidth.md?toc=%2fazure%2fvirtual-machine-scale-sets%2fwindows%2ftoc.json
         - name: Tartalék tartományok kezelése méretezési csoportokban
           href: virtual-machine-scale-sets-manage-fault-domains.md
     - name: Virtuálisgép-típusok és -méretek
@@ -245,6 +252,8 @@
               href: share-images-across-tenants.md
             - name: Megosztott rendszerképek hibaelhárítása
               href: troubleshooting-shared-images.md
+        - name: Közelségi elhelyezési csoport létrehozása
+          href: proximity-placement-groups.md
         - name: Függőleges méretezés méretezési csoportban
           href: virtual-machine-scale-sets-vertical-scale-reprovision.md
         - name: DSC és méretezési csoportok használata

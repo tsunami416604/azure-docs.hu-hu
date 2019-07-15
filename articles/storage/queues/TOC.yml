@@ -158,7 +158,7 @@
       items:
         - name: Fiók feladatátvételének indítása
           href: ../common/storage-initiate-account-failover.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
-    - name: A Storage Emulator használata
+    - name: Az Azure Storage Emulator használata
       href: ../common/storage-use-emulator.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
     - name: Fejlesztés üzenetsorok használatával
       items:

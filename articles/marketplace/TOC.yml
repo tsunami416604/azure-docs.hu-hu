@@ -443,6 +443,13 @@
           href: ./partner-center-portal/offer-creation-checklist.md
         - name: SaaS-ajánlat létrehozása
           href: ./partner-center-portal/create-new-saas-offer.md
+        - name: SaaS forgalmi díjas számlázás
+          href: ./partner-center-portal/saas-metered-billing.md
+          items:
+            - name: Marketplace metering service API-k – GYIK
+              href: ./partner-center-portal/marketplace-metering-service-apis-faq.md
+            - name: Marketplace metering service API-k
+              href: ./partner-center-portal/marketplace-metering-service-apis.md
         - name: SaaS Fulfillment API-k
           href: ./partner-center-portal/pc-saas-fulfillment-apis.md
           items:
@@ -452,6 +459,8 @@
               href: ./partner-center-portal/pc-saas-fulfillment-api-v2.md
             - name: 'SaaS Fulfillment API-k, 1-es verzió (elavult)'
               href: ./partner-center-portal/pc-saas-fulfillment-api-v1.md
+            - name: SaaS Fulfillment API-k – GYIK
+              href: ./partner-center-portal/saas-fulfillment-apis-faq.md
     - name: Közzététel állapota
       href: ./partner-center-portal/publishing-status.md
     - name: Létező ajánlatok frissítése

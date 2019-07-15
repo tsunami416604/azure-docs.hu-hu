@@ -14,13 +14,30 @@ metadata:
   ms.date: 11/22/2017
   ms.author: raynew
 abstract:
-  description: 'Az Azure Migrate segít a helyszíni gépek Azure-migrálásra való alkalmasságának felderítésében és értékelésében, valamint méretezési és költségbecslést is biztosít a futó Azure-beli virtuális gépekhez.'
+  description: 'Az Azure Migrate segít az Azure-felhőre migrálásban. Az Azure Migrate-ben egyetlen központi helyen követhető nyomon a helyszíni számítási feladatok és a felhőbeli virtuális gépek felderítése, felmérése és migrálása. Emellett elérhetőek Azure Migrate-eszközök a felméréshez és a migráláshoz, valamint független szoftverszállítók beépített eszközei is.'
 sections:
   - title: Részletes útmutatók
     items:
       - type: paragraph
-        text: 'Megtudhatja, hogyan értékelheti a helyszíni VMware virtuális gépeket az Azure-ba való migrálás előtt'
+        text: Útmutató a VMware virtuális gépek felméréséhez és Azure-ba migrálásához
+      - type: list
+        style: ordered
+        items:
+          - html: <a href="tutorial-prepare-vmware">A VMware virtuális gépek előkészítése a felméréshez és az Azure-ba való migráláshoz</a>
+          - html: <a href="tutorial-assess-vmware">A VMware virtuális gépek felmérése az Azure-ba való migráláshoz</a>
+          - html: <a href="tutorial-migrate-vmware">A VMware virtuális gépek migrálása az Azure-ba ügynök nélküli migrálással</a>
+          - html: <a href="tutorial-migrate-vmware-agent">A VMware virtuális gépek migrálása az Azure-ba ügynökalapú migrálással</a>
+      - type: paragraph
+        text: Útmutató a Hyper-V virtuális gépek felméréséhez és Azure-ba migrálásához
+      - type: list
+        style: ordered
+        items:
+          - html: <a href="tutorial-prepare-hyper-v">A Hyper-V virtuális gépek előkészítése a felméréshez és az Azure-ba való migráláshoz</a>
+          - html: <a href="tutorial-assess-hyper-v">A Hyper-V virtuális gépek felmérése az Azure-ba való migráláshoz</a>
+          - html: <a href="tutorial-migrate-hyper-v">A Hyper-V virtuális gépek migrálása az Azure-ba</a>
+      - type: paragraph
+        text: 'Útmutató fizikai kiszolgálók, virtualizált gépek és felhőbeli virtuális gépek az Azure-ba migrálásához'
       - type: list
         style: unordered
         items:
-          - html: <a href="tutorial-assessment-vmware">Helyszíni VMware virtuális gépek felderítése és kiértékelése</a>
+          - html: <a href="tutorial-migrate-physical-virtual-machines">Fizikai vagy virtualizált kiszolgálók migrálása az Azure-ba</a>
