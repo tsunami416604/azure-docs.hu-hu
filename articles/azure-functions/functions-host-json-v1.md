@@ -213,7 +213,7 @@ Vezérlők által írt naplók szűrése egy [ILogger objektum](functions-monito
 |Tulajdonság  |Alapértelmezett | Leírás |
 |---------|---------|---------| 
 |categoryFilter|n/a|Meghatározza a Szűrés kategória szerint| 
-|defaultLevel|Információ|A nincs megadva a kategóriákat a `categoryLevels` tömböt, ezen a szinten és újabb verziókhoz naplók küldése az Application Insightsba.| 
+|defaultLevel|Information|A nincs megadva a kategóriákat a `categoryLevels` tömböt, ezen a szinten és újabb verziókhoz naplók küldése az Application Insightsba.| 
 |categoryLevels|n/a|Kategóriák tömbje, amely meghatározza a küldendő kategóriákhoz tartozó Application Insights a minimális naplózási szint. Az itt megadott kategória szabályozza minden kategória ugyanazzal az értékkel kezdődő, és hosszabb értékek elsőbbséget. A fenti mintában *host.json* fájlt, az összes kategória napló "Host.Aggregator" karakterrel kezdődő `Information` szintjét. Minden más kategóriák kezdődő "Host", "Host.Executor", például log `Error` szintjét.| 
 
 ## <a name="queues"></a>üzenetsorok
