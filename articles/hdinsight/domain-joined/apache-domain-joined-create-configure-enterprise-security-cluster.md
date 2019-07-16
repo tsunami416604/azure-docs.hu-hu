@@ -310,7 +310,7 @@ Győződjön meg arról, hogy a tanúsítvány telepítve van-e a számítógép
         | Destination port range | 636 |
         | Protocol | Any |
         | Action | Allow |
-        | Prioritás | \<Kívánt szám\> |
+        | Priority | \<Desired Number\> |
         | Name (Név) | Port_LDAP_636 |
 
     ![bejövő biztonsági szabály](./media/apache-domain-joined-create-configure-enterprise-security-cluster/add-inbound-security-rule.png)
