@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 21c7e996cfe2f07d9a5b056d8cbc22f238bb48fd
-ms.sourcegitcommit: 8e76be591034b618f5c11f4e66668f48c090ddfd
+ms.openlocfilehash: e787366694b55d3dcd61eec2c5a5b42dd187ec55
+ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66357615"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "68226841"
 ---
 # <a name="search-nearby-points-of-interest-using-azure-maps"></a>Közeli hasznos helyek keresése az Azure Maps használatával
 
@@ -239,9 +239,9 @@ A létrehozott térkép ezen a ponton még csak a keresési eredmények hosszús
     map.events.add('mouseover', resultLayer, showPopup);
     ```
 
-    Az API-t `sup` olyan információkat nyújt a megfelelő helyre a térképen rögzített ablak. 
+    Az API-t `*atlas.Popup` olyan információkat nyújt a megfelelő helyre a térképen rögzített ablak. 
 
-2. Az a *parancsfájl* címke, miután a `GetMap` működik, adja hozzá a következő kódot az előugró eredmény információkat a moused megjelenítése.
+2. Adja hozzá az alábbi kódot a `GetMap` függvény eredménye információkat az előugró ablakban a moused megjelenítéséhez.
 
     ```JavaScript
     function showPopup(e) {

@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 04/03/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 54c3ae22b9cc2e447960b9e3527bbbb0afae3e54
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3c7f8c8efcad0a07a3d3a56925866b10d94f82ed
+ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67095096"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "68227466"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-pagedna"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező PageDNA
 
@@ -106,7 +106,7 @@ Szeretné konfigurálni az Azure AD egyszeri bejelentkezés PageDNA, tegye a kö
 
 1. Az a **alapszintű SAML-konfigurációja** ablaktáblán tegye a következőket:
 
-    ![PageDNA domain and URLs single sign-on information](common/sp-identifier.png)
+    ![PageDNA tartomány és URL-címeket egyetlen bejelentkezési adatait](common/sp-identifier.png)
 
     1. Az a **bejelentkezési URL-cím** mezőbe írjon be egy URL-címet a következő minták egyikét használva:
 
@@ -136,7 +136,7 @@ Szeretné konfigurálni az Azure AD egyszeri bejelentkezés PageDNA, tegye a kö
 1. Az a **PageDNA beállítása** területén másolja az URL-címe vagy URL-címeket, amelyekre szüksége:
 
    * **Bejelentkezési URL-címe**
-   * **Azure AD Identifier**
+   * **Az Azure AD-azonosító**
    * **Kijelentkezési URL-címe**
 
     ![Másolja a konfigurációs URL-címek](common/copy-configuration-urls.png)
@@ -171,7 +171,7 @@ Ebben a szakaszban hozzon létre egy tesztfelhasználót Britta Simon nevű az A
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
 
-Ebben a szakaszban engedélyezze Britta Simon Azure egyszeri bejelentkezés PageDNA saját hozzáférésének engedélyezésére használja.
+Ebben a szakaszban engedélyezze a felhasználó Britta Simon azzal a felhasználói hozzáférést, ha PageDNA Azure egyszeri bejelentkezés használatára.
 
 1. Az Azure Portalon válassza ki a **vállalati alkalmazások** > **minden alkalmazás** > **PageDNA**.
 
@@ -212,3 +212,4 @@ Ha bejelöli **PageDNA** a saját alkalmazások portál meg kell hogy automatiku
 * [Egyszeri bejelentkezés az Azure Active Directory-alkalmazások](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 * [Mi az az Azure Active Directory feltételes hozzáférés?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+

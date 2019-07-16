@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: rhurey
-ms.openlocfilehash: 158819d481c0ce245539d783f194b159b2b9edb6
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: d73a63a8f58e14149121d0860268fc23930001bf
+ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67606522"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "68226350"
 ---
 # <a name="phrase-lists-for-speech-to-text"></a>Hang-szöveg transzformációs listák kifejezés
 
@@ -24,6 +24,9 @@ Azáltal, hogy a beszédszolgáltatások kifejezések listájával, beszédfelis
 Például, ha egy parancs "-re", "Ward", előfordulhat, hogy beszélt, lehetséges célja a "Ward való áthelyezése" bejegyzést adhat hozzá. Kifejezés hozzáadása növeli a valószínűsége annak, amikor a hangot felismer, hogy "Ward való áthelyezése" helyett "Áthelyezési felé" ismerhető fel.
 
 Önálló szavak vagy kifejezések teljes listáját a kifejezés lehet hozzáadni. Során recognition található meg egy kifejezést használja, ha pontosan egyezik a hanganyag szerepel. Ha a kifejezés a lista tartalmazza a "Ward való áthelyezése" és a rögzített kifejezést az előző példa készítése "Áthelyezése felé lassan", majd a felismerés eredményét lesz az "Ugrás Ward lassan".
+
+>[!Note]
+> Jelenleg kifejezés sorolja fel csak angol nyelvet támogatja a hang-szöveg transzformációs.
 
 ## <a name="how-to-use-phrase-lists"></a>Felsorolja a kifejezés használata
 

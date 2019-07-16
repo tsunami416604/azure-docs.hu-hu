@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 06/04/2019
 ms.author: swmachan
-ms.openlocfilehash: a7621cc80a38d9a07872a94d8e5221dc04023b86
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: f9620cc5f135dd7b10da5528e5dec0f5baa70350
+ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67435030"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "68226253"
 ---
 # <a name="request-limits-for-translator-text"></a>A Translator Text kérelmekre vonatkozó korlátok
 
@@ -48,13 +48,13 @@ Ha Ön vagy előremutató ezeket a korlátokat, vagy túl nagy a kvóta egy rés
 |------|-----------------|
 | F0 | 2 millió karakter / óra |
 | S1 | 40 millió karakter / óra |
-| S2 / C2 | 40 millió karakter / óra |
+| S2 SZINTŰ / C2 | 40 millió karakter / óra |
 | S3 / C3 | 120 millió karakter / óra |
 | S4 / C4 | óránként 200 millió karakter |
 
 Korlátozza a [több szolgáltatásos előfizetések](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication) ugyanazok, mint az S1 szintet.
 
-Ezek a korlátok a Microsoft standard fordítói modelljeinek korlátozódnak. Egyéni a fordítót használó egyéni fordítási modellek korlátozva, másodpercenként 1,800 karakter.
+Ezek a korlátok a Microsoft standard fordítói modelljeinek korlátozódnak. Egyéni a fordítót használó egyéni fordítási modellek korlátozva, 1,800 karakterek száma másodpercenként.
 
 ## <a name="latency"></a>Késés
 

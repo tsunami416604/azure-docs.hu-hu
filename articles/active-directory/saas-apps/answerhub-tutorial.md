@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e51c37f983162b82747760b05e2ec5e4e6553c0b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ccf3894daf71be0defe4271a08ec5e8d963e0d34
+ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67106944"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "68227487"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-answerhub"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező AnswerHub
 
@@ -193,7 +193,7 @@ Ebben a szakaszban hozzon létre egy tesztfelhasználót Britta Simon nevű az A
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
 
-Ebben a szakaszban beállította Britta Simon számára a hozzáférés biztosításával AnswerHub az Azure AD egyszeri bejelentkezés használatára.
+Ebben a szakaszban, állítsa be a felhasználó Britta Simon által biztosított AnswerHub a felhasználói hozzáférés az Azure AD egyszeri bejelentkezés használatára.
 
 **Az Azure ad-ben tesztfelhasználó hozzárendelése:**
 

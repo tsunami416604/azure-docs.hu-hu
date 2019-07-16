@@ -1,6 +1,6 @@
 ---
 title: 'Oktatóanyag: Használja az R egy Spark számítási környezetet az Azure HDInsight'
-description: Oktatóprogram – Ismerkedés az R- és Spark Machine Learning-szolgáltatások.
+description: Oktatóanyag – első lépések az R- és Spark az Azure HDInsight, Machine Learning-szolgáltatások fürtön.
 ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
@@ -8,24 +8,24 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.date: 06/21/2019
-ms.openlocfilehash: 244c62467f187417bbb9f0e54173aad5a7d26d0a
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: f072b6905881da7b7854b0e51d690dbbd40dffb5
+ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67450281"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "68227443"
 ---
 # <a name="tutorial-use-r-in-a-spark-compute-context-in-azure-hdinsight"></a>Oktatóanyag: Használja az R egy Spark számítási környezetet az Azure HDInsight
 
-Ebben az oktatóanyagban egy Machine Learning-szolgáltatások Azure HDInsight-fürtön fut egy lépésről lépésre bemutatja az R-függvények használata Apache Spark biztosít.
+Ez az oktatóanyag ismerteti a lépésről lépésre bemutatja a R funkciókkal, az Apache Spark, amely egy Azure HDInsight, Machine Learning szolgáltatások a fürtön futnak.
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
-> * Mintaadatok letöltése a helyi tároló
-> * Adatok másolása az alapértelmezett tároló
-> * Adatkészlet beállítása
-> * Adatforrás létrehozása
+> * Töltse le a mintaadatokat a helyi tároló
+> * Az adatok másolása az alapértelmezett tároló
+> * Egy adatkészlet beállítása
+> * Adatforrások létrehozása
 > * A Spark számítási környezet létrehozása
 > * Lineáris modellt igazítása
 > * Összetett XDF-fájlok használata
@@ -33,21 +33,21 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Egy Machine Learning-szolgáltatások HDInsight fürt. Lásd: [Apache Hadoop-fürtök létrehozása az Azure portal használatával](../hdinsight-hadoop-create-linux-clusters-portal.md) válassza **Machine Learning-szolgáltatások** a **fürt típusa**.
+* Egy Azure HDInsight, Machine Learning-szolgáltatások fürt. Lépjen a [Apache Hadoop-fürtök létrehozása az Azure portal használatával](../hdinsight-hadoop-create-linux-clusters-portal.md) és a **fürt típusa**válassza **ML szolgáltatásokkal**.
 
 ## <a name="connect-to-rstudio-server"></a>Csatlakozás az RStudio Serverhez
 
-A fürt határcsomópontjához az RStudio Server fut. Nyissa meg a következő URL-címet, ahol `CLUSTERNAME` a Machine Learning-szolgáltatások létrehozott fürt neve:
+A fürt határcsomópontjához az RStudio Server fut. Nyissa meg a következő hely (ahol *CLUSTERNAME* az URL-cím van a HDInsight, Machine Learning-szolgáltatások létrehozott fürt neve):
 
 ```
 https://CLUSTERNAME.azurehdinsight.net/rstudio/
 ```
 
-Kétszer hitelesíteni kell az első alkalommal jelentkezik be. Az első hitelesítési kérésnél adja meg a fürt rendszergazdai bejelentkezési nevét és jelszavát, az alapértelmezett érték a `admin`. A második hitelesítési kérésnél adja meg a jelszó és SSH-bejelentkezéskor, az alapértelmezett érték a `sshuser`. Későbbi bejelentkezések csak az SSH hitelesítő adatok szükségesek.
+Az első alkalommal jelentkezik be, hitelesítést kétszer. : Az első hitelesítési kérésnél adja meg a fürt rendszergazdai felhasználónevét és jelszavát (az alapértelmezett érték *rendszergazdai*). A hitelesítés második adatkéréskor adja meg az SSH-felhasználónevet és jelszót (az alapértelmezett érték *sshuser*). Későbbi bejelentkezések csak az SSH hitelesítő adatok szükségesek.
 
-## <a name="download-sample-data"></a>Töltse le a mintaadatokat
+## <a name="download-the-sample-data-to-local-storage"></a>Töltse le a mintaadatokat a helyi tároló
 
-A *légitársaság 2012 időben adatkészlet* 12 a 2012-es év minden kereskedelmi repülőjáratok belül az Amerikai Egyesült Államok, repülési érkezési és indító részletei vonatkozó információkat tartalmazó vesszővel tagolt fájlból áll. Ez egy olyan big Data típusú adatok a több mint 6 millió megfigyeléseket.
+A *légitársaság 2012 időben adatkészlet* 12 a 2012-es év repülési érkezési és indító részletei az Egyesült Államok belül minden kereskedelmi repülőjáratok tartalmazó vesszővel tagolt fájlok áll. Ez az adatkészlet túl nagy, a több mint 6 millió megfigyeléseket.
 
 1. Néhány környezeti változók inicializálása. Az RStudio Server konzolon adja meg a következő kódot:
 
@@ -57,11 +57,11 @@ A *légitársaság 2012 időben adatkészlet* 12 a 2012-es év minden kereskedel
     remoteDir <- "https://packages.revolutionanalytics.com/datasets/AirOnTimeCSV2012" # location of data
     ```
 
-    A változók alapján a képernyő jobb oldalán jelennek meg a **környezet** fülre.
+1. A jobb oldali ablaktáblában jelölje ki a **környezet** fülre. A változók szakaszban látható **értékek**.
 
-    ![RStudio](./media/ml-services-tutorial-spark-compute/rstudio.png)
+    ![Az RStudio](./media/ml-services-tutorial-spark-compute/rstudio.png)
 
-2.  Hozzon létre helyi könyvtárba, és töltse le a mintaadatokat. Az RStudio adja meg a következő kódot:
+1.  Hozzon létre egy helyi könyvtárba, és töltse le a mintaadatokat. Az RStudio adja meg a következő kódot:
 
     ```R
     # Create local directory
@@ -82,11 +82,11 @@ A *légitársaság 2012 időben adatkészlet* 12 a 2012-es év minden kereskedel
     download.file(file.path(remoteDir, "airOT201212.csv"), file.path(localDir, "airOT201212.csv"))
     ```
 
-    A letöltés készül 9 és fél percet vesz igénybe.
+    A letöltés teljes készül 9,5 percek alatt kell lennie.
 
-## <a name="copy-data-to-default-storage"></a>Adatok másolása az alapértelmezett tároló
+## <a name="copy-the-data-to-default-storage"></a>Az adatok másolása az alapértelmezett tároló
 
-A HDFS-hely meg van adva a `airDataDir` változó. Az RStudio adja meg a következő kódot:
+A Hadoop elosztott fájlrendszer (HDFS) hely meg van adva a `airDataDir` változó. Az RStudio adja meg a következő kódot:
 
 ```R
 # Set directory in bigDataDirRoot to load the data into
@@ -102,9 +102,9 @@ rxHadoopCopyFromLocal(localDir, bigDataDirRoot)
 rxHadoopListFiles(airDataDir)
 ```
 
-A lépés nagyjából 10 másodpercet vesz igénybe.
+A lépés el kell végezni a nagyjából 10 másodpercet.
 
-## <a name="set-up-data-set"></a>Adatkészlet beállítása
+## <a name="set-up-a-dataset"></a>Egy adatkészlet beállítása
 
 1. Hozzon létre egy fájlt Rendszerobjektum, amely az alapértelmezett értékeket fogja használni. Az RStudio adja meg a következő kódot:
 
@@ -113,7 +113,7 @@ A lépés nagyjából 10 másodpercet vesz igénybe.
     hdfsFS <- RxHdfsFileSystem()
     ```
 
-2. Az eredeti CSV-fájlok helyett nehézkessé változónevek rendelkezik, így a Mi adjuk a `colInfo` lista, így könnyebben kezelhető. Az RStudio adja meg a következő kódot:
+1. Mivel az eredeti CSV-fájlok helyett nehézkessé változónevek rendelkeznek, Önnek kell letöltenie a *colInfo* lista, így könnyebben kezelhető. Az RStudio adja meg a következő kódot:
 
     ```R
     airlineColInfo <- list(
@@ -156,9 +156,9 @@ A lépés nagyjából 10 másodpercet vesz igénybe.
     varNames <- names(airlineColInfo)
     ```
 
-## <a name="create-data-source"></a>Adatforrás létrehozása
+## <a name="create-data-sources"></a>Adatforrások létrehozása
 
-A Spark számítási környezetben a következő függvények használatával adatforrások hozhat létre:
+A Spark számítási környezetben a következő függvények használatával hozhat létre adatforrások:
 
 |Függvény | Leírás |
 |---------|-------------|
@@ -168,7 +168,7 @@ A Spark számítási környezetben a következő függvények használatával ad
 |`RxParquetData` | Egy adatforrás Parquet objektumot állít elő.|
 |`RxOrcData` | Az Orc-adatforrás-objektum állít elő.|
 
-Hozzon létre egy [RxTextData](https://docs.microsoft.com/machine-learning-server/r-reference/revoscaler/rxtextdata) objektum HDFS másolt fájlokat használja. Az RStudio adja meg a következő kódot:
+Hozzon létre egy [RxTextData](https://docs.microsoft.com/machine-learning-server/r-reference/revoscaler/rxtextdata) objektum a HDFS másolt fájlok használatával. Az RStudio adja meg a következő kódot:
 
 ```R
 airDS <- RxTextData( airDataDir,
@@ -177,9 +177,9 @@ airDS <- RxTextData( airDataDir,
                         fileSystem = hdfsFS ) 
 ```
 
-## <a name="create-compute-context-for-spark"></a>A Spark számítási környezet létrehozása
+## <a name="create-a-compute-context-for-spark"></a>A Spark számítási környezet létrehozása
 
-Adatok betöltése, és elemzéseket futtathat a feldolgozó csomópontokat, a parancsfájl beállította a számítási környezet [RxSpark](https://docs.microsoft.com/machine-learning-server/r-reference/revoscaler/rxspark). Ebben a környezetben R-függvények automatikusan szét a számítási feladat összes a feldolgozó csomópontok, feladatok és a várólista nem beépített igényel. A Spark számítási környezetben keresztül létrejött `RxSpark` vagy `rxSparkConnect()` hozhat létre a Spark számítási környezetben, és használja `rxSparkDisconnect()` térjen vissza a helyi számítási környezettel. Az RStudio adja meg a következő kódot:
+Adatok betöltése, és elemzéseket futtathat a feldolgozó csomópontokat, a parancsfájl beállította a számítási környezet [RxSpark](https://docs.microsoft.com/machine-learning-server/r-reference/revoscaler/rxspark). Ebben a környezetben R-függvények automatikusan szét a számítási feladat összes a feldolgozó csomópontok, feladatok és a várólista nem beépített igényel. A Spark számítási környezetben keresztül létrejött `RxSpark` vagy `rxSparkConnect()` hozhat létre a Spark számítási környezetben, és használ `rxSparkDisconnect()` térjen vissza a helyi számítási környezettel. Az RStudio adja meg a következő kódot:
 
 ```R
 # Define the Spark compute context
@@ -200,7 +200,7 @@ rxSetComputeContext(mySparkCluster)
     )
     ```
     
-    Ebben a lépésben be kell fejeződnie, 2 és 3 perc között.
+    Ezt a lépést el kell végezni a 2-3 percig.
 
 1. Tekintse meg az eredményeket. Az RStudio adja meg a következő kódot:
 
@@ -241,11 +241,13 @@ rxSetComputeContext(mySparkCluster)
     Condition number: 1 
     ```
 
-    Figyelje meg, hogy az eredmények azt jelzik, hogy feldolgozta az összes adatot, 6 millió megfigyelések, a megadott könyvtárban található összes .csv fájl használatával. Figyelje meg, mert a megadott `cube = TRUE`, van egy becsült együttható minden nap, a hét (és nem az intercept).
+    Az eredmények jelzik, feldolgozta-e már az összes adatot, 6 millió megfigyelések, a megadott könyvtárban CSV-fájlok használatával. Mivel a megadott `cube = TRUE`, minden nap, a hét (és nem az intercept) egy becsült együttható rendelkezik.
 
 ## <a name="use-composite-xdf-files"></a>Összetett XDF-fájlok használata
 
-Úgy találtuk, elemezheti a hadoop közvetlenül az r nyelv CSV-fájlokat, de az elemzés végezhető gyorsabban ha hatékonyabb formátumban tárolja az adatokat. Az R .xdf formátum rendkívül hatékony, de módosítását valamelyest a HDFS, hogy az egyes fájlok maradjanak HDFS egyetlen blokkot. (A HDFS blokkméret telepítési telepítési változik, de általában akkor 64 MB-os vagy 128 MB.) Használata esetén [rxImport](https://docs.microsoft.com/machine-learning-server/r-reference/revoscaler/rximport) hadoop, adjon meg egy `RxTextData` adatforrás például `AirDS` a inData, és a egy `RxXdfData` fájlrendszer-adatforrás értékre van állítva egy HDFS-fájlrendszer eredményfájl argumentumaként, létrehozhat egy csoportot összetett .xdf fájlokat. A `RxXdfData` objektumot ezután felhasználhatók a további R-elemzések adatok argumentumaként.
+Hogy megismerte, elemezhetők a hadoop közvetlenül az r nyelv CSV-fájlok. Azonban lehetőség van az elemzés gyorsabban ha hatékonyabb formátumban tárolja az adatokat. Az R XDF fájlformátum hatékony, de azt módosította valamelyest a HDFS, hogy az egyes fájlok maradjanak HDFS egyetlen blokkot. (A HDFS blokkméret telepítési telepítési változik, de általában akkor 64 MB-os vagy 128 MB.) 
+
+Használata esetén [rxImport](https://docs.microsoft.com/machine-learning-server/r-reference/revoscaler/rximport) a Hadoop-hozhat létre olyan összetett XDF-fájlok készlete, adja meg egy `RxTextData` adatforrás például `AirDS` a inData, és a egy `RxXdfData` fájlrendszer-adatforrás beállítása egy HDFS-fájlrendszer, a Eredményfájl argumentum. Ezután a `RxXdfData` objektumot használ az adatok argumentum, a további R-elemzések.
 
 1. Adja meg egy `RxXdfData` objektum. Az RStudio adja meg a következő kódot:
 
@@ -273,7 +275,7 @@ rxSetComputeContext(mySparkCluster)
              numRows = numRowsToRead )
     ```
     
-    Ez a lépés néhány percet vesz igénybe.
+    Ezt a lépést el kell végezni néhány perc múlva.
 
 1. Új becslés az ugyanazon lineáris modellt, az új és gyorsabb adatforrás használata. Az RStudio adja meg a következő kódot:
 
@@ -284,7 +286,7 @@ rxSetComputeContext(mySparkCluster)
     )
     ```
     
-    A lépés kevesebb mint egy percet vesz igénybe.
+    A lépés el kell végezni, kevesebb mint egy perc alatt.
 
 1. Tekintse meg az eredményeket. Az eredményeket a CSV-fájlok viselkedéselemzési azonosnak kell lennie. Az RStudio adja meg a következő kódot:
 
@@ -296,11 +298,11 @@ rxSetComputeContext(mySparkCluster)
 
 ### <a name="in-a-spark-context"></a>Spark-környezetben
 
-Ha a fürt megosztott kötetei szolgáltatás alakítani elemzések futtatása során a hatékonyság kihasználásához, de most szeretné az adatok átalakítás a fürt megosztott Kötetévé XDF használatával teheti [rxDataStep](https://docs.microsoft.com/machine-learning-server/r-reference/revoscaler/rxdatastep).
+Ha az elemzések, de az adatok átalakítás a fürt megosztott Kötetévé most szeretne futtatása során a nagyobb hatékonyság XDF fájl formátumra alakítja át a CSV-fájlokat, megteheti a [rxDataStep](https://docs.microsoft.com/machine-learning-server/r-reference/revoscaler/rxdatastep).
 
-Hozzon létre egy mappát, vagy CSV-fájlt, először hozzon létre egy `RxTextData` objektumba a könyvtár neve a fájl argumentumként; Ez a mappa, amelyben létrehozza a CSV-fájlokat jelöli. Ez a könyvtár jön létre, amikor futtatja a `rxDataStep`. Ezután mutasson a `RxTextData` objektumának a `outFile` argumentumának a `rxDataStep`. Minden létrehozott CSV kapja a könyvtár neve alapján, és a egy szám követ.
+Hozzon létre egy mappát, vagy CSV-fájlt, először hozzon létre egy `RxTextData` objektum könyvtár nevét használják, mint a fájl argumentum. Ez az objektum a mappát, amelybe a CSV-fájlok létrehozása jelöli. Ez a könyvtár jön létre, amikor futtatja a `rxDataStep`. Ezután mutasson a `RxTextData` objektumának a `outFile` argumentumának a `rxDataStep`. Minden létrehozott CSV neve a könyvtár neve alapján, és a egy szám követ.
 
-Tegyük fel, hogy szeretnénk írható ki egy mappát a CSV a HDFS-ben a `airDataXdf` összetett XDF azt elvégzése után a logisztikai regressziós és előrejelzési, így az új CSV-fájlok tartalmazzák az előre jelzett értékek és például. Az RStudio adja meg a következő kódot:
+Tegyük fel, hogy szeretné-e írható ki egy mappába vagy CSV-fájlt a HDFS-ben a `airDataXdf` összetett XDF végrehajtása a logisztikai regressziós és előrejelzési, így az új CSV-fájlok tartalmazzák az előre jelzett értékek és például után. Az RStudio adja meg a következő kódot:
 
 ```R
 airDataCsvDir <- file.path(bigDataDirRoot,"AirDataCSV2012")
@@ -308,13 +310,13 @@ airDataCsvDS <- RxTextData(airDataCsvDir,fileSystem=hdfsFS)
 rxDataStep(inData=airDataXdf, outFile=airDataCsvDS)
 ```
 
-Ebben a lépésben nagyjából két és fél percet vesz igénybe.
+Ezt a lépést el kell végezni, körülbelül 2,5 percek alatt.
 
-Figyelje meg, hogy a `rxDataStep` kiírva minden .xdfd fájlt a bemeneti összetett XDF-fájlt egy CSV-t. Ez a fürt megosztott kötetei szolgáltatás összetett XDF az adatraktárba történő írás során HDFS Ha a számítási környezet beállítása alapértelmezett viselkedése `RxSpark`.
+A `rxDataStep` kiírva minden XDFD fájlt a bemeneti összetett XDF-fájlt egy CSV-fájl. Ez a CSV-fájlok összetett XDF-fájlok az adatraktárba történő írás során HDFS Ha a számítási környezet értékre van állítva az alapértelmezett viselkedése `RxSpark`.
 
 ### <a name="in-a-local-context"></a>Egy helyi környezetben.
 
-Azt is megteheti, a számítási környezet sikerült váltson vissza a `local` Ha elkészült a elemzések végrehajtása, és kihasználhatja belül két argumentumot `RxTextData` , amelyek lehetővé teszik az Ön valamivel több HDFS-be, a CSV-fájlok írásakor: `createFileSet` és `rowsPerOutFile`. Amikor `createFileSet` értékre van állítva `TRUE`, vagy CSV-fájlt egy mappába íródik a megadott könyvtárban. Amikor `createFileSet` értékre van állítva `FALSE` egy CSV-fájl írása. A második argumentum `rowsPerOutFile`, egy egész számot jelzi, hogy hány sort szeretne írni az egyes CSV-fájl mikor állítható `createFileSet` van `TRUE`.
+Azt is megteheti, ha befejezte az elemzést végez, a számítási környezet sikerült váltson vissza a `local` kihasználásához belül két argumentumot `RxTextData` , amely biztosítanak valamivel nagyobb mértékű HDFS-be CSV-fájlok kiírni: `createFileSet` és `rowsPerOutFile`. Ha `createFileSet` való `TRUE`, vagy CSV-fájlt egy mappába íródik a megadott könyvtárban. Ha `createFileSet` való `FALSE`, egy CSV-fájl írása. Beállíthatja, hogy a második argumentum `rowsPerOutFile`, annak jelzésére, hogy hány sort szeretne írni az egyes CSV-fájl mikor egész `createFileSet` van `TRUE`.
 
 Az RStudio adja meg a következő kódot:
 
@@ -325,13 +327,13 @@ airDataCsvRowsDS <- RxTextData(airDataCsvRowsDir, fileSystem=hdfsFS, createFileS
 rxDataStep(inData=airDataXdf, outFile=airDataCsvRowsDS)
 ```
 
-Ebben a lépésben nagyjából 10 percet vesz igénybe.
+Ezt a lépést el kell végezni, körülbelül 10 perc múlva.
 
-Használata esetén egy `RxSpark` számítási környezetet, `createFileSet` alapértelmezés szerint a `TRUE` és `rowsPerOutFile` nem lesz hatása. Így ha hozzon létre egy CSV-t, vagy testre szabhatja a fájlonkénti kell végrehajtania a sorok száma a `rxDataStep` a egy `local` számítási környezet (a adatok továbbra is lehet HDFS-ben).
+Ha egy `RxSpark` számítási környezetet, `createFileSet` alapértelmezés szerint a `TRUE` és `rowsPerOutFile` nem lesz hatása. Ezért, ha azt szeretné, hozzon létre egy CSV-t, vagy testre szabhatja a fájlonkénti sorok száma, hajtsa végre `rxDataStep` a egy `local` számítási környezet (a adatok továbbra is lehetnek HDFS-ben).
 
 ## <a name="final-steps"></a>Utolsó lépéseit
 
-1. Adatok törlése. Az RStudio adja meg a következő kódot:
+1. Az adatok törlése. Az RStudio adja meg a következő kódot:
 
     ```R
     rxHadoopRemoveDir(airDataDir)
@@ -355,13 +357,13 @@ Használata esetén egy `RxSpark` számítási környezetet, `createFileSet` ala
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Az oktatóanyag befejezése után érdemes törölni a fürtöt. A HDInsight az Azure Storage szolgáltatásban tárolja az adatokat, így biztonságosan törölhet olyan fürtöket, amelyek nincsenek használatban. Ráadásul a HDInsight-fürtök akkor is díjkötelesek, amikor éppen nincsenek használatban. Mivel a fürt költsége a sokszorosa a tároló költségeinek, gazdaságossági szempontból is ésszerű törölni a használaton kívüli fürtöket.
+Az oktatóanyag befejezése után érdemes törölni a fürtöt. HDInsight az adatok az Azure Storage tárolja, akkor nyugodtan törölheti az fürt, ha nem használja. Akkor is díjkötelesek egy HDInsight-fürtöt, még ha nem használja. Mivel a fürt díjai sokszor több, mint a storage díjai, logikus gazdasági fürtök törlése, ha azok még nem használja.
 
-Törölje a fürtöt, tekintse meg a [törlése egy HDInsight-fürtön a böngészőben, a PowerShell vagy az Azure CLI](../hdinsight-delete-cluster.md).
+Törölje a fürtöt, tekintse meg a [egy HDInsight-fürt törlése a böngészőben, a PowerShell vagy az Azure CLI használatával](../hdinsight-delete-cluster.md).
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben az oktatóanyagban megtudhatta, hogyan az Apache Spark egy Machine Learning-szolgáltatások Azure HDInsight-fürtön futó R-függvények használatához. További információkért tekintse át a következő cikkeket:
+Ebben az oktatóanyagban megtudhatta, hogyan használhatja az R a functions az Apache Spark, amely egy HDInsight, Machine Learning-szolgáltatások fürtön futnak. További információkért tekintse át a következő cikkeket:
 
-* [Számítási környezeti beállítások a HDInsight a Machine Learning-szolgáltatások](r-server-compute-contexts.md)
+* [Számítási környezeti beállítások egy Azure HDInsight, Machine Learning-szolgáltatások fürt esetében](r-server-compute-contexts.md)
 * [A Spark on Hadoop R függvényekkel](https://docs.microsoft.com/machine-learning-server/r-reference/revoscaler/revoscaler-hadoop-functions)

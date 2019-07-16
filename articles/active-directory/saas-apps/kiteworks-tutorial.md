@@ -13,37 +13,35 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 03/26/2019
+ms.date: 07/11/2019
 ms.author: jeedes
-ms.openlocfilehash: c480babcb88528ef59cc9f1a9a0478e35a7b3fba
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 853e23d4dd2c9192c15ab477571ca5cd0059e965
+ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67098717"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "68225466"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-kiteworks"></a>Oktatóanyag: A Kiteworks az Azure Active Directory-integráció
+# <a name="tutorial-integrate-kiteworks-with-azure-active-directory"></a>Oktatóanyag: Kiteworks integrálása az Azure Active Directoryval
 
-Ebben az oktatóanyagban elsajátíthatja, hogyan Kiteworks integrálása az Azure Active Directory (Azure AD).
-Az Azure AD integrálása a Kiteworks nyújt a következő előnyökkel jár:
+Ebben az oktatóanyagban elsajátíthatja a Kiteworks integrálása az Azure Active Directory (Azure AD) lesz. Kiteworks integrálása az Azure ad-vel, akkor a következőket teheti:
 
-* Szabályozhatja, ki férhet hozzá a Kiteworks Azure AD-ben.
-* Engedélyezheti a felhasználóknak, hogy lehet automatikusan bejelentkezett a Kiteworks (egyszeri bejelentkezés) az Azure AD-fiókjukat.
+* Szabályozza, ki férhet hozzá a Kiteworks Azure AD-ben.
+* Engedélyezze a felhasználóknak, hogy lehet automatikusan bejelentkezett a Kiteworks az Azure AD-fiókjukat.
 * A fiókok egyetlen központi helyen – az Azure Portalon kezelheti.
 
-Ha meg szeretné ismerni a SaaS-alkalmazás integráció az Azure ad-vel kapcsolatos további részletekért, lásd: [Mi az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
+SaaS-alkalmazás integráció az Azure ad-vel kapcsolatos további információkért lásd: [Mi az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az Azure AD-integráció konfigurálása a Kiteworks, a következőkre van szükség:
+Első lépésként szüksége van a következő elemek:
 
-* Az Azure AD-előfizetés. Ha nem rendelkezik egy Azure AD-környezetet, beszerezheti a [ingyenes fiókkal](https://azure.microsoft.com/free/)
-* Kiteworks egyszeri bejelentkezéses engedélyezett előfizetés
+* Az Azure AD-előfizetés. Ha nem rendelkezik előfizetéssel, beszerezheti a egyhónapos ingyenes próbaidőszakot [Itt](https://azure.microsoft.com/pricing/free-trial/).
+* Kiteworks egyszeri bejelentkezés (SSO) engedélyezve van az előfizetésben.
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
 
-Ebben az oktatóanyagban, tesztelése és konfigurálása az Azure AD egyszeri bejelentkezés egy tesztkörnyezetben.
+Ebben az oktatóanyagban, tesztelése és konfigurálása az Azure AD SSO-t egy tesztkörnyezetben.
 
 * Támogatja a Kiteworks **SP** által kezdeményezett egyszeri bejelentkezés
 * Támogatja a Kiteworks **igény szerinti** felhasználók átadása
@@ -52,82 +50,55 @@ Ebben az oktatóanyagban, tesztelése és konfigurálása az Azure AD egyszeri b
 
 Az Azure AD integrálása a Kiteworks konfigurálásához szüksége Kiteworks hozzáadása a felügyelt SaaS-alkalmazások listájában a katalógusból.
 
-**Adja hozzá a Kiteworks a katalógusból, hajtsa végre az alábbi lépéseket:**
+1. Jelentkezzen be egy munkahelyi vagy iskolai fiókkal vagy a személyes Microsoft-fiókjával az [Azure Portalra](https://portal.azure.com).
+1. A bal oldali navigációs ablaktáblán válassza ki a **Azure Active Directory** szolgáltatás.
+1. Navigáljon a **vállalati alkalmazások** majd **minden alkalmazás**.
+1. Új alkalmazás hozzáadásához válassza **új alkalmazás**.
+1. Az a **Hozzáadás a katalógusból** területén írja be a **Kiteworks** kifejezést a keresőmezőbe.
+1. Válassza ki **Kiteworks** az eredmények panelen, és vegye fel az alkalmazást. Várjon néhány másodpercet, amíg az alkalmazás bekerül a bérlőn.
 
-1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
-
-    ![Az Azure Active Directory gomb](common/select-azuread.png)
-
-2. Navigáljon a **vállalati alkalmazások** majd válassza ki a **minden alkalmazás** lehetőséget.
-
-    ![A vállalati alkalmazások panelen](common/enterprise-applications.png)
-
-3. Új alkalmazás hozzáadásához kattintson **új alkalmazás** gombra a párbeszédpanel tetején.
-
-    ![Az új alkalmazás gomb](common/add-new-app.png)
-
-4. A Keresés mezőbe írja be a **Kiteworks**válassza **Kiteworks** eredmény panelen kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
-
-     ![Az eredmények listájában Kiteworks](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés tesztelése és konfigurálása
 
-Ebben a szakaszban, tesztelése és konfigurálása az Azure AD egyszeri bejelentkezés a Kiteworks nevű tesztfelhasználó alapján **Britta Simon**.
-Egyszeri bejelentkezés működjön, az Azure AD-felhasználót és a kapcsolódó felhasználó a Kiteworks hivatkozás kapcsolata kell hozható létre.
+Konfigurálás és tesztelés az Azure AD SSO a Kiteworks nevű tesztfelhasználó használata **B.Simon**. Működik az egyszeri bejelentkezés Azure AD-felhasználót és a kapcsolódó felhasználó közötti kapcsolat kapcsolat létrehozására a Kiteworks szüksége.
 
-Az Azure AD egyszeri bejelentkezés a Kiteworks tesztelése és konfigurálása, hogy hajtsa végre a következő építőelemeit kell:
+Az Azure AD SSO a Kiteworks tesztelése és konfigurálása, hajtsa végre a következő építőelemeket:
 
-1. **[Az Azure AD egyszeri bejelentkezés konfigurálása](#configure-azure-ad-single-sign-on)**  – ahhoz, hogy ez a funkció használatát a felhasználók számára.
-2. **[Kiteworks egyszeri bejelentkezés konfigurálása](#configure-kiteworks-single-sign-on)**  – az alkalmazás oldalán az egyszeri bejelentkezés beállításainak konfigurálása.
+1. **[Az Azure AD SSO konfigurálása](#configure-azure-ad-sso)**  – ahhoz, hogy ez a funkció használatát a felhasználók számára.
+2. **[Kiteworks egyszeri bejelentkezést](#configure-kiteworks-sso)**  – az alkalmazás oldalán az egyszeri bejelentkezés beállításainak konfigurálása.
 3. **[Hozzon létre egy Azure ad-ben tesztfelhasználót](#create-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
 4. **[Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assign-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
 5. **[Hozzon létre Kiteworks tesztfelhasználót](#create-kiteworks-test-user)**  – egy megfelelője a Britta Simon Kiteworks, amely a felhasználó Azure ad-ben ábrázolása van csatolva van.
-6. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
+6. **[Egyszeri bejelentkezés tesztelése](#test-sso)**  – győződjön meg arról, hogy működik-e a konfiguráció.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
+### <a name="configure-azure-ad-sso"></a>Azure AD SSO konfigurálása
 
-Ebben a szakaszban engedélyeznie kell az Azure AD egyszeri bejelentkezés az Azure Portalon.
+Kövesse az alábbi lépéseket az Azure AD egyszeri bejelentkezés engedélyezése az Azure Portalon.
 
-Az Azure AD egyszeri bejelentkezés konfigurálásához a Kiteworks, hajtsa végre az alábbi lépéseket:
+1. Az a [az Azure portal](https://portal.azure.com/), a a **Kiteworks** alkalmazás integráció lapon keresse meg a **kezelése** szakaszt, és válassza **egyszeri bejelentkezési**.
+1. Az a **egyszeri bejelentkezési módszer** lapra, jelölje be **SAML**.
+1. Az a **állítsa be egyszeri bejelentkezést az SAML** lap, kattintson a Szerkesztés/toll ikonra a **alapszintű SAML-konfigurációja** beállításait módosíthatja.
 
-1. Az a [az Azure portal](https://portal.azure.com/), az a **Kiteworks** alkalmazás integráció lapon jelölje be **egyszeri bejelentkezés**.
+   ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
-    ![Egyszeri bejelentkezési hivatkozás konfigurálása](common/select-sso.png)
+1. Az a **alapszintű SAML-konfigurációja** területén adja meg az értékeket a következő mezőket:
 
-2. Az a **egyszeri bejelentkezési módszer** párbeszédpanelen válassza **SAML/WS-Fed** módot az egyszeri bejelentkezés engedélyezése.
+    a. Az a **bejelentkezési URL-cím** szövegmezőbe írja be a következő minta használatával URL-cím: `https://<kiteworksURL>.kiteworks.com`
 
-    ![Egyszeri bejelentkezés kijelölési mód bekapcsolása](common/select-saml-option.png)
-
-3. Az a **állítsa be egyszeri bejelentkezést az SAML** kattintson **szerkesztése** ikonra kattintva nyissa meg a **alapszintű SAML-konfigurációja** párbeszédpanel.
-
-    ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
-
-4. Az a **alapszintű SAML-konfigurációja** szakaszban, hajtsa végre az alábbi lépéseket:
-
-    ![Kiteworks tartomány és URL-címeket egyetlen bejelentkezési adatait](common/sp-identifier.png)
-
-    a. Az a **bejelentkezési URL-cím** szövegmezőbe írja be a következő minta használatával URL-cím: `https://<subdomain>.kiteworks.com`
-
-    b. Az a **azonosító (entityid)** szövegmezőbe írja be a következő minta használatával URL-cím: `https://<subdomain>.kiteworks.com/sp/module.php/saml/sp/saml2-acs.php/sp-sso`
+    b. Az a **azonosító (entityid)** szövegmezőbe írja be a következő minta használatával URL-cím: `https://<kiteworksURL>/sp/module.php/saml/sp/saml2-acs.php/sp-sso`
 
     > [!NOTE]
     > Ezek a értékei nem valódi. Frissítse a tényleges bejelentkezési URL-címet és azonosító ezeket az értékeket. Kapcsolattartó [Kiteworks ügyfél-támogatási csapatának](https://accellion.com/support) beolvasni ezeket az értékeket. Emellett olvassa el a minták látható a **alapszintű SAML-konfigurációja** szakaszban az Azure Portalon.
 
-5. Az a **állítsa be egyszeri bejelentkezést az SAML** lap a **SAML-aláíró tanúsítvány** területén kattintson **letöltése** letöltéséhez a **tanúsítvány (Base64)** a megadott lehetőségek közül a követelmény alapján, majd mentse el a számítógépen.
+1. A a **állítsa be egyszeri bejelentkezést az SAML** lap a **SAML-aláíró tanúsítvány** területén található **tanúsítvány (Base64)** válassza **letöltése** töltse le a tanúsítványt, és menti azt a számítógépet.
 
     ![A tanúsítvány letöltési hivatkozás](common/certificatebase64.png)
 
-6. Az a **állítsa be a Kiteworks** területén másolja megfelelően a követelmény a megfelelő URL-címe.
+1. Az a **állítsa be a Kiteworks** területén másolja a megfelelő URL-címe szerint.
 
     ![Másolja a konfigurációs URL-címek](common/copy-configuration-urls.png)
 
-    a. Bejelentkezési URL
-
-    b. Azure AD-azonosító
-
-    c. Kijelentkezési URL
-
-### <a name="configure-kiteworks-single-sign-on"></a>Kiteworks egyszeri bejelentkezés konfigurálása
+### <a name="configure-kiteworks-sso"></a>Kiteworks egyszeri bejelentkezés konfigurálása
 
 1. Jelentkezzen be rendszergazdaként a Kiteworks vállalati webhely.
 
@@ -159,54 +130,33 @@ Az Azure AD egyszeri bejelentkezés konfigurálásához a Kiteworks, hajtsa vég
 
 ### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára
 
-Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy tesztfelhasználót.
+Ebben a szakaszban az Azure Portalon B.Simon nevű tesztfelhasználó fog létrehozni.
 
-1. Az Azure Portalon, a bal oldali panelen válassza ki a **Azure Active Directory**válassza **felhasználók**, majd válassza ki **minden felhasználó**.
-
-    ![A "felhasználók és csoportok" és "Minden felhasználó" hivatkozások](common/users.png)
-
-2. Válassza ki **új felhasználó** a képernyő tetején.
-
-    ![Új felhasználó gomb](common/new-user.png)
-
-3. A felhasználó tulajdonságai között az alábbi lépések végrehajtásával.
-
-    ![A felhasználó párbeszédpanel](common/user-properties.png)
-
-    a. Az a **neve** mezőbe írja be **BrittaSimon**.
-  
-    b. Az a **felhasználónév** mezőtípus `brittasimon@yourcompanydomain.extension`  
-    Például: BrittaSimon@contoso.com
-
-    c. Válassza ki **Show jelszó** jelölje be a jelölőnégyzetet, és jegyezze fel az értékkel, a jelszó mező jelenik meg.
-
-    d. Kattintson a **Create** (Létrehozás) gombra.
+1. Az Azure Portal bal oldali panelén válassza **Azure Active Directory**válassza **felhasználók**, majd válassza ki **minden felhasználó**.
+1. Válassza ki **új felhasználó** a képernyő tetején.
+1. Az a **felhasználói** tulajdonságok, kövesse az alábbi lépéseket:
+   1. A **Név** mezőbe írja a következőt: `B.Simon`.  
+   1. Az a **felhasználónév** mezőbe írja be a username@companydomain.extension. Például: `B.Simon@contoso.com`.
+   1. Válassza ki a **Show jelszó** jelölje be a jelölőnégyzetet, és jegyezze fel a megjelenített érték a **jelszó** mezőbe.
+   1. Kattintson a **Create** (Létrehozás) gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
 
-Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés Kiteworks Azure egyszeri bejelentkezés használatára.
+Ebben a szakaszban B.Simon által biztosított hozzáférés Kiteworks Azure egyszeri bejelentkezés használatához engedélyeznie kell.
 
-1. Az Azure Portalon válassza ki a **vállalati alkalmazások**, jelölje be **minden alkalmazás**, majd **Kiteworks**.
+1. Az Azure Portalon válassza ki a **vállalati alkalmazások**, majd válassza ki **minden alkalmazás**.
+1. Az alkalmazások listájában jelölje ki a **Kiteworks**.
+1. Az alkalmazás áttekintése lapon keresse meg a **kezelés** szakaszt, és válassza **felhasználók és csoportok**.
 
-    ![Vállalati alkalmazások panelen](common/enterprise-applications.png)
+   ![A "Felhasználók és csoportok" hivatkozásra](common/users-groups-blade.png)
 
-2. Az alkalmazások listájában jelölje ki a **Kiteworks**.
+1. Válassza ki **felhasználó hozzáadása**, majd **felhasználók és csoportok** a a **hozzárendelés hozzáadása** párbeszédpanel.
 
-    ![Az alkalmazások listáját a Kiteworks hivatkozásra](common/all-applications.png)
+    ![A felhasználó hozzáadása hivatkozás](common/add-assign-user.png)
 
-3. A bal oldali menüben válassza **felhasználók és csoportok**.
-
-    ![A "Felhasználók és csoportok" hivatkozásra](common/users-groups-blade.png)
-
-4. Kattintson a **felhasználó hozzáadása** gombra, majd válassza **felhasználók és csoportok** a a **hozzárendelés hozzáadása** párbeszédpanel.
-
-    ![A hozzárendelés hozzáadása panel](common/add-assign-user.png)
-
-5. Az a **felhasználók és csoportok** párbeszédpanelen válassza **Britta Simon** a felhasználók listában, majd kattintson a **kiválasztása** gombra a képernyő alján.
-
-6. Ha minden szerepkör értéket várt a a SAML helyességi feltétel, majd a a **Szerepkörválasztás** párbeszédpanelen válassza ki a megfelelő szerepkört a felhasználó a listából, majd kattintson a **kiválasztása** gombra a képernyő alján.
-
-7. Az a **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelése** gombra.
+1. Az a **felhasználók és csoportok** párbeszédablakban válassza **B.Simon** a felhasználók listájából, majd kattintson a **kiválasztása** gombra a képernyő alján.
+1. Ha a SAML helyességi feltétel, a szerepkör értéket vár a **szerepkör kiválasztása** párbeszédpanelen válassza ki a megfelelő szerepkört a felhasználóhoz a listából, és kattintson a **kiválasztása** gombra a képernyő alján.
+1. Az a **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelése** gombra.
 
 ### <a name="create-kiteworks-test-user"></a>Kiteworks tesztfelhasználó létrehozása
 
@@ -217,7 +167,7 @@ Kiteworks támogatja a just-in-time-kiépítés, amely alapértelmezésben enged
 > [!NOTE]
 > Hozzon létre egy felhasználót manuálisan kell, ha kapcsolódni kell a [Kiteworks támogatási csoportjának](https://accellion.com/support).
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
+### <a name="test-sso"></a>Egyszeri bejelentkezés tesztelése
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 
@@ -225,8 +175,8 @@ Ha a hozzáférési panelen a Kiteworks csempére kattint, meg kell lehet automa
 
 ## <a name="additional-resources"></a>További források
 
-- [SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Mi az az Azure Active Directory feltételes hozzáférés?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

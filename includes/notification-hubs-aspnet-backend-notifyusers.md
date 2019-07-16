@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/22/2019
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: 28eac814364b56f59b8edc6f59209a6d742ff403
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 590ba4b7a61fa437767d99ac6b9ae3e0fa94edc3
+ms.sourcegitcommit: 6b41522dae07961f141b0a6a5d46fd1a0c43e6b2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67179365"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "68227793"
 ---
 ## <a name="create-the-webapi-project"></a>A WebAPI-projekt létrehozása
 
@@ -158,7 +158,7 @@ Ebben a szakaszban egy új vezérlőt fog hozzáadni a WebAPI háttérrendszerhe
 
 3. Az eredmények listájából válassza ki a **Microsoft Azure Notification Hubs** elemet, majd az **Install** (Telepítés) lehetőséget. Fejezze be a telepítést, majd zárja be a NuGet-csomagkezelő ablakát.
 
-    Ez a művelet hozzáad egy, az Azure Notification Hubs SDK-ra mutató hivatkozást a [Microsoft.Azure.Notification Hubs NuGet-csomag](http://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/) használatával.
+    Ez a művelet hozzáad egy, az Azure Notification Hubs SDK-ra mutató hivatkozást a [Microsoft.Azure.Notification Hubs NuGet-csomag](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/) használatával.
 
 4. Hozzon létre egy új osztályfájlt, amely az értesítések küldésére használt értesítési központtal való kapcsolatot jelöli. A Solution Explorer (Megoldáskezelő) ablakában kattintson a jobb gombbal a **Models** (Modellek) mappára, kattintson az **Add** (Hozzáadás) parancsra, majd kattintson a **Class** (Osztály) gombra. Nevezze el az új osztályt **Notifications.cs** néven, majd kattintson az **Add** (Hozzáadás) gombra az osztály létrehozásához.
 
@@ -170,7 +170,7 @@ Ebben a szakaszban egy új vezérlőt fog hozzáadni a WebAPI háttérrendszerhe
     using Microsoft.Azure.NotificationHubs;
     ```
 
-6. Cserélje le a `Notifications` osztálydefiníciót a következő kódra, a két helyőrzőt pedig az értesítési központ kapcsolati sztringjére (teljes hozzáféréssel) és a központ nevére (az [Azure Portalon](http://portal.azure.com) érhető el):
+6. Cserélje le a `Notifications` osztálydefiníciót a következő kódra, a két helyőrzőt pedig az értesítési központ kapcsolati sztringjére (teljes hozzáféréssel) és a központ nevére (az [Azure Portalon](https://portal.azure.com) érhető el):
 
     ```csharp
     public class Notifications

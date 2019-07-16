@@ -137,10 +137,14 @@
           href: how-to-update-iot-edge.md
     - name: Automatikus regisztráció DPS-sel
       items:
-        - name: Linux
-          href: how-to-auto-provision-simulated-device-linux.md
-        - name: Windows
-          href: how-to-auto-provision-simulated-device-windows.md
+        - name: Szimmetrikus kulcsú igazolás
+          href: how-to-auto-provision-symmetric-keys.md
+        - name: TPM-igazolás
+          items:
+            - name: Linux
+              href: how-to-auto-provision-simulated-device-linux.md
+            - name: Windows
+              href: how-to-auto-provision-simulated-device-windows.md
     - name: Egyéni modulok fejlesztése és hibakeresése
       items:
         - name: Visual Studio 2019

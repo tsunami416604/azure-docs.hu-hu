@@ -7,12 +7,12 @@ ms.service: blueprints
 ms.topic: sample
 ms.date: 06/26/2019
 ms.author: dacoulte
-ms.openlocfilehash: 2cb5f08cfc6e6bbf0f2df4cef44e4ecd1aa3aadf
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 743cd27b5328cae2fe19688f6d0638d6f706d8a8
+ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67428719"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "68225981"
 ---
 # <a name="azure-blueprints-samples"></a>Azure Blueprints-minták
 
@@ -27,6 +27,7 @@ A következő táblázat az Azure Blueprints szolgáltatáshoz használható min
 | [NIST SP 800-53 R4](./nist-sp-800-53-rev4/control-mapping.md) | Védőkorlátokat biztosít az NIST SP 800-53 R4 keretrendszernek való megfelelőséghez. |
 | [PCI-DSS 3.2.1](./pci-dss-3.2.1/index.md) | Szabályzatkészletet biztosít PCI-DSS 3.2.1 szabványnak való megfelelőséghez. |
 | [UK OFFICIAL és az Egyesült Királyság Nemzeti Egészségügyi Szolgálata – Szabályozás](./ukofficial/index.md) | Szabványoknak megfelelő infrastruktúra-minták és szabályzati védőkorlátok együttesét biztosítja, amelyek segítséget nyújtanak a UK OFFICIAL- és az Egyesült Királyság Nemzeti Egészségügyi Szolgálata által kiadott tanúsítvány megszerzéséhez. |
+
 
 ## <a name="next-steps"></a>További lépések
 

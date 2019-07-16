@@ -14,14 +14,14 @@ ms.tgt_pltfrm: mobile-android
 ms.devlang: java
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 04/30/2019
+ms.date: 07/15/2019
 ms.author: jowargo
-ms.openlocfilehash: f2efa9b7e1e534f93e4ea01ba52740c8c5ac7b02
-ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
+ms.openlocfilehash: a01a71190f6de4bd08ee306f0175b01fee3db3d5
+ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67653850"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "68227878"
 ---
 # <a name="tutorial-push-notifications-to-android-devices-by-using-azure-notification-hubs-and-google-firebase-cloud-messaging"></a>Oktatóanyag: Az Azure Notification Hubs és a Google Firebase Cloud Messaging leküldéses értesítések Android-eszközök
 
@@ -100,7 +100,6 @@ A központ dolgozhat a Firebase Cloud Messaging konfigurálva. Akkor is rendelke
     ![Android SDK Manager – Google Play-szolgáltatások kiválasztva](./media/notification-hubs-android-studio-add-google-play-services/google-play-services-selected.png)
 3. Ha megjelenik a **Módosítás megerősítése** párbeszédpanelen jelölje ki **OK**. Az összetevő-telepítő telepíti a kért összetevőket. Válassza ki **Befejezés** az összetevők telepítése után.
 4. Válassza ki **OK** gombra kattintva zárja be a **beállításait az új projektek** párbeszédpanel bezárásához.  
-5. Válassza ki **szinkronizálás most** ikonra az eszköztárban.
 1. Nyissa meg az AndroidManifest.xml fájlhoz, és adja a következő címkét a *alkalmazás* címke.
 
     ```xml
@@ -115,7 +114,6 @@ A központ dolgozhat a Firebase Cloud Messaging konfigurálva. Akkor is rendelke
 
     ```gradle
     implementation 'com.microsoft.azure:notification-hubs-android-sdk:0.6@aar'
-    implementation 'com.microsoft.azure:azure-notifications-handler:1.0.1@aar'
     ```
 
 2. A dependencies (függőségek) szakasz után vegye fel az alábbi tárhelyet.
@@ -146,7 +144,7 @@ A központ dolgozhat a Firebase Cloud Messaging konfigurálva. Akkor is rendelke
 
 ### <a name="update-the-androidmanifestxml-file"></a>Az AndroidManifest.xml fájl frissítése
 
-1. Miután megkapta az FCM regisztrációs jogkivonat, használja, azt [az Azure Notification Hubs](notification-hubs-push-notification-registration-management.md). A regisztrációt a háttérben használatával támogatja az `IntentService` nevű `RegistrationIntentService`. Ez a szolgáltatás az FCM regisztrációs jogkivonat is frissíti.
+1. Miután megkapta az FCM regisztrációs jogkivonat, használja, azt [az Azure Notification Hubs](notification-hubs-push-notification-registration-management.md). A regisztrációt a háttérben használatával támogatja az `IntentService` nevű `RegistrationIntentService`. Ez a szolgáltatás az FCM regisztrációs jogkivonat is frissíti. Is nevű osztály létrehozása `FirebaseService` alosztályának, `FirebaseMessagingService` , és felülbírálják a `onMessageReceived` metódus fogadásához és értesítések kezeléséhez. 
 
     Adja hozzá az alábbi szolgáltatásdefiníciót az AndroidManifest.xml fájlhoz, az `<application>` címkén belül.
 
@@ -155,22 +153,14 @@ A központ dolgozhat a Firebase Cloud Messaging konfigurálva. Akkor is rendelke
         android:name=".RegistrationIntentService"
         android:exported="false">
     </service>
-    ```
-
-2. Is van szükség, értesítések fogadásához egy fogadót meghatározásához. Adja hozzá az alábbi fogadódefiníciót az AndroidManifest.xml fájlhoz, az `<application>` címkén belül. 
-
-    ```xml
-    <receiver android:name="com.microsoft.windowsazure.notifications.NotificationsBroadcastReceiver"
-        android:permission="com.google.android.c2dm.permission.SEND">
+    <service
+        android:name=".FirebaseService"
+        android:exported="false">
         <intent-filter>
-            <action android:name="com.google.android.c2dm.intent.RECEIVE" />
-            <category android:name="<your package name>" />
+            <action android:name="com.google.firebase.MESSAGING_EVENT" />
         </intent-filter>
-    </receiver>
+    </service>
     ```
-
-    > [!IMPORTANT]
-    > Cserélje le a `<your package NAME>` helyőrzőt a tényleges csomagnevet, az AndroidManifest.xml fájlban tetején jelennek meg.
 3. Adja meg a következő szükséges FCM-kapcsolódó engedélyeket az alábbi a `</application>` címke.
 
     ```xml
@@ -307,7 +297,6 @@ A központ dolgozhat a Firebase Cloud Messaging konfigurálva. Akkor is rendelke
     ```java
     import com.google.android.gms.common.ConnectionResult;
     import com.google.android.gms.common.GoogleApiAvailability;
-    import com.microsoft.windowsazure.notifications.NotificationsManager;
     import android.content.Intent;
     import android.util.Log;
     import android.widget.TextView;
@@ -373,6 +362,7 @@ A központ dolgozhat a Firebase Cloud Messaging konfigurálva. Akkor is rendelke
 
         mainActivity = this;
         registerWithNotificationHubs();
+        FirebaseService.createChannelAndHandleNotifications(getApplicationContext());
     }
     ```
 
@@ -421,11 +411,14 @@ A központ dolgozhat a Firebase Cloud Messaging konfigurálva. Akkor is rendelke
     android:id="@+id/text_hello"
     ```
 
-11. Ezután hozzáadhat alosztályát az AndroidManifest.xml fájlban meghatározott fogadó számára. Adjon hozzá a projekthez egy másik új, `MyHandler` nevű osztályt.
+11. Ezután hozzáadhat alosztályát az AndroidManifest.xml fájlban meghatározott fogadó számára. Adjon hozzá a projekthez egy másik új, `FirebaseService` nevű osztályt.
 
-12. Vegye fel a következő importálási utasításokat a `MyHandler.java` felső részén:
+12. Vegye fel a következő importálási utasításokat a `FirebaseService.java` felső részén:
 
     ```java
+    import com.google.firebase.messaging.FirebaseMessagingService;
+    import com.google.firebase.messaging.RemoteMessage;
+    import android.util.Log;
     import android.app.NotificationChannel;
     import android.app.NotificationManager;
     import android.app.PendingIntent;
@@ -436,16 +429,17 @@ A központ dolgozhat a Firebase Cloud Messaging konfigurálva. Akkor is rendelke
     import android.os.Build;
     import android.os.Bundle;
     import android.support.v4.app.NotificationCompat;
-    import com.microsoft.windowsazure.notifications.NotificationsHandler;    
-    import com.microsoft.windowsazure.notifications.NotificationsManager;
     ```
 
-13. Adja hozzá a következő kódot a a `MyHandler` osztály, így a alosztálya `com.microsoft.windowsazure.notifications.NotificationsHandler`.
+13. Adja hozzá a következő kódot a a `FirebaseService` osztály, így a alosztálya `FirebaseMessagingService`.
 
-    Ez a kód felülírja az `OnReceive` metódust, így a kezelő jelentést küld a kapott értesítésekről. A kezelő az Android-értesítéskezelőnek is elküldi a leküldéses értesítést a `sendNotification()` metódus használatával. Hívja a `sendNotification()` metódust, amikor az alkalmazás nem fut, és értesítés érkezik.
+    Ez a kód felülírja az `onMessageReceived` kapott értesítéseket metódust, és jelentéseket. azt is a leküldéses értesítést küld az Android értesítéskezelőjén használatával a `sendNotification()` metódust. Hívja a `sendNotification()` metódust, amikor az alkalmazás nem fut, és értesítés érkezik.
 
     ```java
-    public class MyHandler extends NotificationsHandler {
+    public class FirebaseService extends FirebaseMessagingService
+    {
+        private String TAG = "FirebaseService";
+    
         public static final String NOTIFICATION_CHANNEL_ID = "nh-demo-channel-id";
         public static final String NOTIFICATION_CHANNEL_NAME = "Notification Hubs Demo Channel";
         public static final String NOTIFICATION_CHANNEL_DESCRIPTION = "Notification Hubs Demo Channel";
@@ -453,16 +447,33 @@ A központ dolgozhat a Firebase Cloud Messaging konfigurálva. Akkor is rendelke
         public static final int NOTIFICATION_ID = 1;
         private NotificationManager mNotificationManager;
         NotificationCompat.Builder builder;
-        Context ctx;
+        static Context ctx;
     
         @Override
-        public void onReceive(Context context, Bundle bundle) {
-            ctx = context;
-            String nhMessage = bundle.getString("message");
-            sendNotification(nhMessage);
+        public void onMessageReceived(RemoteMessage remoteMessage) {
+            // ...
+    
+            // TODO(developer): Handle FCM messages here.
+            // Not getting messages here? See why this may be: https://goo.gl/39bRNJ
+            Log.d(TAG, "From: " + remoteMessage.getFrom());
+    
+            String nhMessage;
+            // Check if message contains a notification payload.
+            if (remoteMessage.getNotification() != null) {
+                Log.d(TAG, "Message Notification Body: " + remoteMessage.getNotification().getBody());
+    
+                nhMessage = remoteMessage.getNotification().getBody();
+            }
+            else {
+                nhMessage = remoteMessage.getData().values().iterator().next();
+            }
+    
+            // Also if you intend on generating your own notifications as a result of a received FCM
+            // message, here is where that should be initiated. See sendNotification method below.
             if (MainActivity.isVisible) {
                 MainActivity.mainActivity.ToastNotify(nhMessage);
             }
+            sendNotification(nhMessage);
         }
     
         private void sendNotification(String msg) {
@@ -490,6 +501,8 @@ A központ dolgozhat a Firebase Cloud Messaging konfigurálva. Akkor is rendelke
         }
     
         public static void createChannelAndHandleNotifications(Context context) {
+            ctx = context;
+    
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
                 NotificationChannel channel = new NotificationChannel(
                         NOTIFICATION_CHANNEL_ID,
@@ -500,8 +513,7 @@ A központ dolgozhat a Firebase Cloud Messaging konfigurálva. Akkor is rendelke
     
                 NotificationManager notificationManager = context.getSystemService(NotificationManager.class);
                 notificationManager.createNotificationChannel(channel);
-                NotificationsManager.handleNotifications(context, "", MyHandler.class);
-            }
+             }
         }
     }
     ```
@@ -538,7 +550,7 @@ A leküldéses értesítéseket küldhet a [Azure Portal] a következő lépése
 ### <a name="run-the-mobile-app-on-emulator"></a>Futtassa a mobilalkalmazás-emulátor
 Leküldéses értesítések emulátorban tesztelése, előtt győződjön meg arról, hogy az emulátor rendszerképe támogatja-e az alkalmazáshoz kiválasztott Google API-szintet. Ha a rendszerkép nem támogatja a natív Google API-k, kaphat a **szolgáltatás\_nem\_elérhető** kivétel.
 
-Emellett győződjön meg arról, hogy hozzáadott a Google-fiókját a futó emulátorhoz alatt **beállítások** > **fiókok**. Ellenkező esetben az FCM-regisztrációs kísérletek azt eredményezheti, hogy a **hitelesítési\_sikertelen** kivétel.
+Győződjön meg arról, hogy hozzáadott a Google-fiókját a futó emulátorhoz alatt is **beállítások** > **fiókok**. Ellenkező esetben az FCM-regisztrációs kísérletek azt eredményezheti, hogy a **hitelesítési\_sikertelen** kivétel.
 
 ## <a name="next-steps"></a>További lépések
 Ebben az oktatóanyagban használt Firebase Cloud Messaging értesítéseket küldeni a szolgáltatásban regisztrált minden Android eszközre. Ha szeretné megtudni, hogy hogyan küldhet leküldéses értesítéseket adott eszközökre, lépjen tovább a következő oktatóanyagra:

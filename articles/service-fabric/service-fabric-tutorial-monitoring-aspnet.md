@@ -12,15 +12,15 @@ ms.devlang: dotNet
 ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 3/21/2019
+ms.date: 07/10/2019
 ms.author: dekapur
 ms.custom: mvc
-ms.openlocfilehash: 9de11c0049cf3db3feea311a2541640437ba8632
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 1f18aef12978b3df1ba1fd654ea4a0e9548a4b46
+ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60719859"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "68228079"
 ---
 # <a name="tutorial-monitor-and-diagnose-an-aspnet-core-application-on-service-fabric-using-application-insights"></a>Oktatóanyag: A Service Fabric Application Insights használatával egy ASP.NET Core alkalmazás monitorozása és diagnosztizálása
 
@@ -46,7 +46,7 @@ Ebben az oktatóanyag-sorozatban az alábbiakkal ismerkedhet meg:
 Az oktatóanyag elkezdése előtt:
 
 * Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-* [Telepítse a Visual Studio 2017-et](https://www.visualstudio.com/) az **Azure-fejlesztési**, valamint az **ASP.NET- és webfejlesztési** számítási feladatokkal.
+* [Telepítse a Visual Studio 2019](https://www.visualstudio.com/) , és telepítse a **Azure-fejlesztési** és **ASP.NET és webfejlesztési** számítási feladatokhoz.
 * [A Service Fabric SDK telepítése](service-fabric-get-started.md)
 
 ## <a name="download-the-voting-sample-application"></a>A mintául szolgáló szavazóalkalmazás letöltése
@@ -74,7 +74,7 @@ Miután kitöltötte a kötelező információkat, kattintson a **Létrehozás**
 
 ## <a name="add-application-insights-to-the-applications-services"></a>Az Application Insights hozzáadása az alkalmazás szolgáltatásaihoz
 
-Indítsa el a Visual Studio 2017-ben kattintson a jobb gombbal a Start menüben a Visual Studio ikonra, majd válassza a emelt szintű jogosultságokkal **Futtatás rendszergazdaként**. Kattintson a **Fájl** > **Megnyitás** > **Projekt/Megoldás** lehetőségre, és keresse meg a szavazóalkalmazást (az oktatóanyag első részében vagy Git-klónozással jött létre). Nyissa meg *Voting.sln*. Ha az alkalmazás NuGet-csomagok visszaállítására arra kéri, kattintson a **Igen**.
+Indítsa el a Visual Studio 2019 emelt szintű jogosultságokkal kattintson a jobb gombbal a Start menüben a Visual Studio ikonra, majd válassza a **Futtatás rendszergazdaként**. Kattintson a **Fájl** > **Megnyitás** > **Projekt/Megoldás** lehetőségre, és keresse meg a szavazóalkalmazást (az oktatóanyag első részében vagy Git-klónozással jött létre). Nyissa meg *Voting.sln*. Ha az alkalmazás NuGet-csomagok visszaállítására arra kéri, kattintson a **Igen**.
 
 Kövesse az alábbi lépéseket az Application Insights konfigurálásához a VotingWeb és a VotingData szolgáltatásokhoz:
 
@@ -190,7 +190,7 @@ Lépjen az Application Insights-erőforrásra az Azure Portalon.
 Kattintson az **Overview** (Áttekintés) lehetőségre, hogy visszatérjen az erőforrás kezdőlapjára. Kattintson a felül lévő **Search** (Keresés) gombra a bejövő nyomok megtekintéséhez. Néhány percig tart, amíg a nyomok megjelennek az Application Insightsban. Ha nem lát nyomokat, várjon egy percet, és kattintson a felül lévő **Refresh** (Frissítés) gombra.
 ![AI nyomok megtekintése](./media/service-fabric-tutorial-monitoring-aspnet/ai-search.png)
 
-Ha lefelé görget a *Search* (Keresés) ablakban, láthatja az Application Insightsban a vásárláskor szereplő összes bejövő telemetriát. Minden egyes művelethez, amely az Voting alkalmazásba megtette, nem kell egy kimenő PUT-kérelmet a *VotingWeb* (PUT szavazatok/Put [name]), egy bejövő PUT-kérelmet a *VotingData* (PUT VoteData/Put neve []), a GET kérelmek jeleníti meg az Adatfrissítés két követ. A helyi gazdagépen egy HTTP-függőségnyom is szerepel, mert ezek HTTP-kérések. Íme egy példa, mit lát egy szavazat hozzáadásakor:
+Ha lefelé görget a *Search* (Keresés) ablakban, láthatja az Application Insightsban a vásárláskor szereplő összes bejövő telemetriát. A szavazóalkalmazásban végzett összes művelethez szerepelnie kell egy kimenő PUT kérésnek a *VotingWeb* (PUT Votes/Put [név]) szolgáltatásból, egy bejövő PUT kérésnek a *VotingData* (PUT VoteData/Put [név]) alkalmazásból, amelyeket a GET kéréspár követ a megjelenített adatok frissítéséhez. A helyi gazdagépen egy HTTP-függőségnyom is szerepel, mert ezek HTTP-kérések. Íme egy példa, mit lát egy szavazat hozzáadásakor:
 
 ![AI mintakérés nyom](./media/service-fabric-tutorial-monitoring-aspnet/sample-request.png)
 
