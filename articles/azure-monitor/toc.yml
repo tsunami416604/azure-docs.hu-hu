@@ -280,8 +280,10 @@
               href: platform/custom-fields.md
         - name: Alkalmazások konfigurálása
           items:
-            - name: Azure-alkalmazások
+            - name: Azure-ban üzemeltetett alkalmazások
               items:
+                - name: Azure-beli virtuális gép és Azure-beli virtuálisgép-méretezési csoport
+                  href: app/azure-vm-vmss-apps.md
                 - name: Azure App Service
                   href: app/azure-web-apps.md
                 - name: Azure Cloud Services
@@ -709,8 +711,8 @@
               href: platform/metrics-getting-started.md
             - name: A Metrikaböngésző speciális funkciói
               href: platform/metrics-charts.md
-            - name: Példák metrikadiagramokra
-              href: platform/metric-chart-samples.md
+            - name: Naplóalapú metrikák
+              href: platform/app-insights-metrics.md
             - name: Metrikadiagramok hibaelhárítása
               href: platform/metrics-troubleshoot.md
         - name: Naplók

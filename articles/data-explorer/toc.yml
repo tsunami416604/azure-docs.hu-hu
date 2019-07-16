@@ -102,6 +102,8 @@
           href: manage-database-permissions.md
         - name: Fürt állapotának ellenőrzése
           href: check-cluster-health.md
+        - name: Fürt virtuálisgép-termékváltozatának kiválasztása
+          href: manage-cluster-choose-sku.md
         - name: Fürtök horizontális skálázásának kezelése
           href: manage-cluster-horizontal-scaling.md
         - name: Fürtök vertikális skálázásának kezelése

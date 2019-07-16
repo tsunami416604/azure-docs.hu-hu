@@ -59,9 +59,9 @@
           href: isv-create-sso-documentation.md
         - name: Egyszeri bejelentkezés üzembe helyezésének tervezése
           href: plan-sso-deployment.md
-    - name: Egy kattintással indítható SSO
+    - name: Egykattintásos SSO
       items:
-        - name: Mi az egy kattintással indítható SSO
+        - name: Egykattintásos SSO konfigurálása
           href: one-click-sso-tutorial.md
     - name: Felhasználók és csoportok üzembe helyezése
       items:
