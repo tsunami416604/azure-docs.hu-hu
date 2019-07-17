@@ -1,7 +1,7 @@
 ---
-title: Projekt Akusztika beépülő modul ismert problémái
+title: A Project Acoustics beépülő modullal kapcsolatos ismert problémák
 titlesuffix: Azure Cognitive Services
-description: A következő ismert problémák léphetnek fel a projekt Akusztika a Tervező előzetes verzió használata esetén.
+description: Előfordulhat, hogy a következő ismert problémák merülhetnek fel a Project Acoustics tervezői előzetes verziójának használatakor.
 services: cognitive-services
 author: kylestorck
 manager: nitinme
@@ -9,40 +9,40 @@ ms.service: cognitive-services
 ms.subservice: acoustics
 ms.topic: conceptual
 ms.date: 03/20/2019
-ms.author: kylesto
-ms.openlocfilehash: e425575c6529ac4638fc963915362e0ec03f1117
-ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
+ms.author: kylsto
+ms.openlocfilehash: 53df981564eb177da66b86022ecfc80b25f1c763
+ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67849915"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68296531"
 ---
-# <a name="project-acoustics-known-issues"></a>Projekt Akusztika ismert problémák
-A következő ismert problémák léphetnek fel a projekt Akusztika a Tervező előzetes verzió használata esetén.
+# <a name="project-acoustics-known-issues"></a>A projekt akusztikai ismert problémái
+Előfordulhat, hogy a következő ismert problémák merülhetnek fel a Project Acoustics tervezői előzetes verziójának használatakor.
 
-## <a name="acoustic-parameters-are-lost-when-you-rename-a-scene"></a>Akusztikai paraméterek elvesznek, ha átnevezi álló jelenet renderelése
+## <a name="acoustic-parameters-are-lost-when-you-rename-a-scene"></a>Az akusztikus paraméterek elvesznek a jelenet átnevezése során
 
-Átnevezése a helyszín esetén az összes, hogy a jelenet tartozó akusztikai paraméterek nem fog automatikusan át az új jelenetet. Fogja továbbra is léteznek a régi adategységfájlon azonban. Keresse meg a **SceneName_AcousticParameters.asset** belül fájlt a **szerkesztő** könyvtárat a jelenetfájl mellett. Nevezze át a fájlt, hogy tükrözzék az új helyszín neve.
+Ha átnevez egy jelenetet, a jelenethez tartozó összes akusztikai paraméter nem lesz automatikusan átmásolva az új színtérre. Azonban továbbra is léteznek a régi adatfájlban. Keresse meg a **SceneName_AcousticParameters. Asset** fájlt a saját jelenet fájlja melletti **szerkesztő** könyvtárban. Nevezze át a fájlt úgy, hogy az tükrözze az új jelenet nevét.
 
-## <a name="unity-crashes-when-closing-project"></a>Unity összeomlik, ha a projekt lezárása
+## <a name="unity-crashes-when-closing-project"></a>Az egység összeomlik a projekt bezárásakor
 
-A Unity (2018.2 +) legújabb verzióját van egy ismert hiba, ahol Unity összeomlik, ha bezárja a projekthez. Ez által nyomon követett [Unity probléma](https://issuetracker.unity3d.com/issues/crash-on-assetdatabase-getassetimporterversions-when-closing-a-specific-unity-project).
+Az Unity (2018.2 +) legújabb verzióiban létezik egy ismert hiba, amelyben az egység összeomlik a projekt lezárása után. Ezt az [egységességi probléma](https://issuetracker.unity3d.com/issues/crash-on-assetdatabase-getassetimporterversions-when-closing-a-specific-unity-project)követte nyomon.
 
-## <a name="deploying-to-android-from-some-unity-versions"></a>Az Android néhány Unity verzió üzembe helyezése
+## <a name="deploying-to-android-from-some-unity-versions"></a>Üzembe helyezés az Android rendszerbe néhány Unity-verzióból
 
-Unity egyes verziói hang beépülő modulok telepítése Android hibája rendelkezik. Ellenőrizze, hogy nem használja egy verzió által érintett [ezen hiba](https://issuetracker.unity3d.com/issues/android-ios-audiosource-playing-through-google-resonance-audio-sdk-with-spatializer-enabled-does-not-play-on-built-player).
+Az Unity egyes verzióiban hiba történt a hangbeépülő modulok Androidra történő telepítése során. Győződjön meg arról, hogy nem használja a [hiba](https://issuetracker.unity3d.com/issues/android-ios-audiosource-playing-through-google-resonance-audio-sdk-with-spatializer-enabled-does-not-play-on-built-player)által érintett verziót.
 
-## <a name="i-get-an-error-that-could-not-find-metadata-file-systemsecuritydll"></a>A "fájl nem található metaadat System.Security.dll" hibaüzenetet kapok
+## <a name="i-get-an-error-that-could-not-find-metadata-file-systemsecuritydll"></a>Hibaüzenet jelenik meg, amely szerint a "nem található a metaadat-fájlrendszer. Security. dll"
 
-Győződjön meg arról, a lejátszó beállítások Scripting futtatókörnyezet verziójának beállítása **.NET 4.x egyenértékű**, és indítsa újra a Unity.
+Győződjön meg arról, hogy a Player-beállítások parancsfájl-futtatási verziója a **.net 4. x**értékre van beállítva, majd indítsa újra az Unity műveletet.
 
-## <a name="im-having-authentication-problems-when-connecting-to-azure"></a>Hitelesítési problémák léptek fel az Azure-ba való csatlakozáskor
+## <a name="im-having-authentication-problems-when-connecting-to-azure"></a>Hitelesítési problémák történtek az Azure-hoz való csatlakozáskor
 
-Ellenőrizze a megfelelő hitelesítő adatokat az Azure-fiókjával, hogy a fiók támogatja-e a bake a kért csomópont típusa, és hogy a rendszeróra pontos használt.
+Ellenőrizze, hogy a megfelelő hitelesítő adatokat használta-e az Azure-fiókjához, és hogy a fiókja támogatja-e a sütni-ben kért csomópont típusát, valamint hogy a rendszer órája pontos-e.
 
-## <a name="canceling-a-bake-leaves-the-bake-tab-in-deleting-state"></a>Egy bake megszakítása hagyja el a "törlése" Bake lap
-Az összes Azure-erőforrások egy feladat sikeres befejezése vagy megszakítás projekt Akusztika fogja törölni. Ez akár 5 percet is igénybe vehet.
+## <a name="canceling-a-bake-leaves-the-bake-tab-in-deleting-state"></a>A sütni megszakítása elhagyja a "Törlés" állapotban lévő sütni fület
+A Project Acoustics minden Azure-erőforrást a sikeres befejezés vagy megszakítás után takarít meg a feladatokhoz. Ez akár 5 percet is igénybe vehet.
 
 ## <a name="next-steps"></a>További lépések
-* Próbálja ki a [Unity](unity-quickstart.md) vagy [Unreal](unreal-quickstart.md) tartalom minta
+* Az [Unity](unity-quickstart.md) vagy az [Unreal](unreal-quickstart.md) minta tartalmának kipróbálása
 

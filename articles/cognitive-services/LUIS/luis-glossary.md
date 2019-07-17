@@ -10,14 +10,14 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 01/23/2019
 ms.author: diberry
-ms.openlocfilehash: 3fc14b821064719f39eb877aa2253f8084496a66
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a88d7de69158a54995106d45683094c9b976896b
+ms.sourcegitcommit: af58483a9c574a10edc546f2737939a93af87b73
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65523499"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68302528"
 ---
-# <a name="language-understanding-glossary-of-common-vocabulary-and-concepts"></a>Language understanding szószedet gyakori szóhasználatának és fogalmak
+# <a name="language-understanding-glossary-of-common-vocabulary-and-concepts"></a>Nyelvi ismeretek a gyakori szószedetekről és fogalmakról
 A Language Understanding (LUIS) szószedet ismerteti feltételeit, amelyek találkozhat végzett munka során az intelligens HANGFELISMERÉSI API-szolgáltatást.
 
 ## <a name="active-version"></a>Aktív verziója
@@ -96,11 +96,11 @@ A példában a végpont hasonlóan néz ki:
 
 A [batch tesztelés](luis-interactive-test.md#batch-testing), a vizsgálat pontosságának mértékegysége.
 
-## <a name="false-negative"></a>Téves negatív (TN)
+## <a name="false-negative"></a>Hamis negatív (FN)
 
 A [batch tesztelés](luis-interactive-test.md#batch-testing), az adatpontok képviselik, amelyben az alkalmazás nem megfelelően előrejelzett érhető el a leképezés/célentitás a kimondott szöveg.
 
-## <a name="false-positive"></a>False positive (TP)
+## <a name="false-positive"></a>Hamis pozitív (FP)
 
 A [batch tesztelés](luis-interactive-test.md#batch-testing), az adatok pontok olyan időpontokat jelölnek, kimondott szöveg, amelyben az alkalmazás nem megfelelően előre jelzett a célként megadott leképezés/entitás létezik-e.
 

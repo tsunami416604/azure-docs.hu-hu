@@ -1,7 +1,7 @@
 ---
-title: A Tudásbázis Analytics
+title: Elemzés a Tudásbázisban
 titleSuffix: Azure Cognitive Services
-description: A QnA Maker minden csevegési naplók és egyéb telemetriát tárolja, ha engedélyezte az App Insights a QnA Maker szolgáltatás létrehozása során. A csevegési naplók lekérése az App Insights a minta lekérdezéseket futtathat.
+description: QnA Maker az összes csevegési naplót és más telemetria tárolja, ha az QnA Maker szolgáltatás létrehozása során engedélyezte az alkalmazás elemzését. Futtassa a lekérdezéseket, hogy beolvassa a csevegési naplókat az App ininsights szolgáltatásból.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -9,49 +9,50 @@ displayName: chat history, history, chat logs, logs
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 02/04/2019
+ms.date: 07/16/2019
 ms.author: diberry
-ms.openlocfilehash: 07ee6c27006d8444881d9d3b94cb623f0b0d0b1f
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 5fc473fb1a1b1af84b0966bde4ecf02f4f221bf1
+ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67447466"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68296406"
 ---
 # <a name="get-analytics-on-your-knowledge-base"></a>Tudásbázis elemzésének lekérése
 
-A QnA Maker tárolja az összes csevegési naplók és egyéb telemetriát, ha engedélyezte az App Insights során a [létrehozása a QnA Maker szolgáltatás](./set-up-qnamaker-service-azure.md). A csevegési naplók lekérése az App Insights a minta lekérdezéseket futtathat.
+QnA Maker az összes csevegési naplót és más telemetria tárolja, ha az [QnA Maker szolgáltatás létrehozása](./set-up-qnamaker-service-azure.md)során engedélyezte az alkalmazás elemzését. Futtassa a lekérdezéseket, hogy beolvassa a csevegési naplókat az App ininsights szolgáltatásból.
 
-1. Nyissa meg az App Insights-erőforrást.
+1. Nyissa meg az alkalmazás-keresési erőforrást.
 
-    ![Válassza ki az application insights-erőforrás](../media/qnamaker-how-to-analytics-kb/resources-created.png)
+    ![Válassza ki az Application ininsight-erőforrást](../media/qnamaker-how-to-analytics-kb/resources-created.png)
 
-2. Válassza ki **Analytics**. Egy új ablak megnyílik, hogy ahol lekérdezheti a QnA Maker telemetriai adatokat.
+2. Válassza az **elemzés**lehetőséget. Megnyílik egy új ablak, ahol lekérdezheti QnA Maker telemetria.
 
-    ![Válassza ki az Analytics](../media/qnamaker-how-to-analytics-kb/analytics.png)
+    ![Elemzés kiválasztása](../media/qnamaker-how-to-analytics-kb/analytics.png)
 
-3. Illessze be a következő lekérdezést, és futtathatja.
+3. Illessze be a következő lekérdezést, és futtassa.
 
     ```query
-        requests
-        | where url endswith "generateAnswer"
-        | project timestamp, id, name, resultCode, duration
-        | parse kind = regex name with *"(?i)knowledgebases/"KbId"/generateAnswer"
-        | join kind= inner (
-        traces | extend id = operation_ParentId
-        ) on id
-        | extend question = tostring(customDimensions['Question'])
-        | extend answer = tostring(customDimensions['Answer'])
-        | project KbId, timestamp, resultCode, duration, question, answer
+    requests
+    | where url endswith "generateAnswer"
+    | project timestamp, id, name, resultCode, duration, performanceBucket
+    | parse kind = regex name with *"(?i)knowledgebases/"KbId"/generateAnswer"
+    | join kind= inner (
+    traces | extend id = operation_ParentId
+    ) on id
+    | extend question = tostring(customDimensions['Question'])
+    | extend answer = tostring(customDimensions['Answer'])
+    | extend score = tostring(customDimensions['Score'])
+    | project timestamp, resultCode, duration, id, question, answer, score, performanceBucket,KbId 
     ```
 
-    Válassza ki **futtatása** a lekérdezés futtatásához.
+    A lekérdezés futtatásához válassza a **Futtatás** lehetőséget.
 
     ![A lekérdezés futtatása](../media/qnamaker-how-to-analytics-kb/run-query.png)
 
-## <a name="run-queries-for-other-analytics-on-your-qna-maker-knowledge-base"></a>A QnA Maker Tudásbázis más elemzési lekérdezések futtatása
+## <a name="run-queries-for-other-analytics-on-your-qna-maker-knowledge-base"></a>Lekérdezések futtatása a QnA Maker Tudásbázis egyéb elemzési adataihoz
 
-### <a name="total-90-day-traffic"></a>90 napos teljes forgalom
+### <a name="total-90-day-traffic"></a>90-napi forgalom összesen
 
 ```query
     //Total Traffic
@@ -61,7 +62,7 @@ A QnA Maker tárolja az összes csevegési naplók és egyéb telemetriát, ha e
     | summarize ChatCount=count() by bin(timestamp, 1d), KbId
 ```
 
-### <a name="total-question-traffic-in-a-given-time-period"></a>Teljes kérdés forgalmat egy adott időszakban
+### <a name="total-question-traffic-in-a-given-time-period"></a>A kérdéses forgalom teljes száma adott időszakban
 
 ```query
     //Total Question Traffic in a given time period
@@ -74,7 +75,7 @@ A QnA Maker tárolja az összes csevegési naplók és egyéb telemetriát, ha e
     | summarize ChatCount=count() by KbId
 ```
 
-### <a name="user-traffic"></a>A felhasználói adatforgalmat
+### <a name="user-traffic"></a>Felhasználói forgalom
 
 ```query
     //User Traffic
@@ -89,7 +90,7 @@ A QnA Maker tárolja az összes csevegési naplók és egyéb telemetriát, ha e
     | summarize ChatCount=count() by bin(timestamp, 1d), UserId, KbId
 ```
 
-### <a name="latency-distribution-of-questions"></a>Késés terjesztési kérdések
+### <a name="latency-distribution-of-questions"></a>Kérdések késésének eloszlása
 
 ```query
     //Latency distribution of questions

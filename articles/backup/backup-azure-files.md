@@ -8,12 +8,12 @@ ms.date: 01/31/2019
 ms.topic: tutorial
 ms.service: backup
 manager: carmonm
-ms.openlocfilehash: 30544a49f49714eeefbf54d70e54275d2cf9a7ef
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 252dc48fd35318f9cd8407007187b81a8674fab0
+ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66243552"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68296918"
 ---
 # <a name="back-up-azure-file-shares"></a>Azure-fájlmegosztások biztonsági mentése
 Ez a cikk azt ismerteti, hogyan használhatja az Azure Portalt az [Azure-fájlmegosztások](../storage/files/storage-files-introduction.md) biztonsági mentésére és visszaállítására.
@@ -31,16 +31,17 @@ Ebből az útmutatóból a következőket tanulhatja meg:
 Mielőtt biztonsági mentést készít egy Azure-fájlmegosztásról, győződjön meg arról, hogy az a [támogatott tárfióktípusok](backup-azure-files.md#limitations-for-azure-file-share-backup-during-preview) közé tartozik. Ennek ellenőrzését követően biztosíthatja a fájlmegosztások védelmét.
 
 ## <a name="limitations-for-azure-file-share-backup-during-preview"></a>Az Azure-fájlmegosztás biztonsági mentésének korlátozásai az előzetes verzióban
-Azure-fájlmegosztások biztonsági mentésének előzetes verzióban van. Azure-fájlmegosztások mindkét általános célú v1-ben, és az általános célú v2-tárfiókok támogatottak. Az Azure-fájlmegosztások nem támogatják az alábbi biztonsági mentési forgatókönyveket:
+Az Azure-fájlmegosztás biztonsági mentése előzetes verzióban érhető el. Az Azure-fájlmegosztás az általános célú v1 és az általános célú v2 Storage-fiókok esetében is támogatott. Az Azure-fájlmegosztások nem támogatják az alábbi biztonsági mentési forgatókönyveket:
+- A Storage-fiókokban tárolt Azure-fájlmegosztás biztonsági mentésének támogatása a [zóna redundáns tárolási](../storage/common/storage-redundancy-zrs.md) (ZRS) replikálásával jelenleg [ezekre](backup-azure-files-faq.md#in-which-geos-can-i-back-up-azure-file-shares-)a régiókra korlátozódik.
 - Nem biztosítható az Azure-fájlmegosztások védelme olyan tárfiókokban, amelyeken engedélyezve vannak a virtuális hálózatok vagy a tűzfal.
-- Nincs a CLI nem érhető el az Azure Backup használatával az Azure Files védelméhez.
+- Azure Backup használatával nem érhető el a CLI a Azure Files védelméhez.
 - Az ütemezett biztonsági mentések maximális száma naponta egy.
 - Az igény szerinti biztonsági mentések maximális száma naponta négy.
 - Használjon [erőforrászárat](https://docs.microsoft.com/cli/azure/resource/lock?view=azure-cli-latest) a tárfiókon, hogy megelőzze a helyreállítási tárban lévő biztonsági másolatok véletlen törlését.
 - Ne törölje az Azure Backuppal létrehozott pillanatképeket. A pillanatképek törlése helyreállítási pontok elvesztését és/vagy visszaállítási hibákat eredményezhet.
-- Ne törölje az Azure Backup által védett fájlmegosztások. Az aktuális megoldáshoz fog törölni a fájlmegosztás törlése után az Azure Backup által készített minden pillanatkép, és ezért elveszíti az összes visszaállítási pont
+- Ne törölje a Azure Backup által védett fájlmegosztást. A jelenlegi megoldás törli az Azure Backup által készített összes pillanatképet, miután a fájlmegosztás törölve lett, és így elveszíti az összes visszaállítási pontot.
 
-A Storage-fiókok az Azure-fájlmegosztások biztonsági mentési [zónaredundáns tárolás](../storage/common/storage-redundancy-zrs.md) (ZRS) replikációs érhető el jelenleg csak központi velünk a Kapcsolatot (CUS), East US (EUS), USA keleti RÉGIÓJA 2 (EUS2), északi Európa (NE), Ausztrália Ázsia (SEA), Nyugat-Európa (WE) és az USA nyugati RÉGIÓJA 2 (WUS2).
+
 
 ## <a name="configuring-backup-for-an-azure-file-share"></a>Azure-fájlmegosztások biztonsági mentésének konfigurálása
 Ez az oktatóanyag feltételezi, hogy már létrehozott egy Azure-fájlmegosztást. Az Azure-fájlmegosztás biztonsági mentése:
@@ -49,7 +50,7 @@ Ez az oktatóanyag feltételezi, hogy már létrehozott egy Azure-fájlmegosztá
 
     ![Azure-fájlmegosztás kiválasztása a biztonsági mentés céljaként](./media/backup-file-shares/overview-backup-page.png)
 
-2. Az a **a biztonsági mentési célja** menüben a **miről szeretne biztonsági másolatot készíteni?** , Azure-fájlmegosztás kiválasztása.
+2. A **biztonsági mentés célja** menüben a **mit szeretne biztonsági másolatot készíteni?** területen válassza az Azure fájlmegosztás lehetőséget.
 
     ![Azure-fájlmegosztás kiválasztása a biztonsági mentés céljaként](./media/backup-file-shares/choose-azure-fileshare-from-backup-goal.png)
 
@@ -74,7 +75,7 @@ Ez az oktatóanyag feltételezi, hogy már létrehozott egy Azure-fájlmegosztá
     A biztonsági mentési szabályzat létrehozása után pillanatkép készül a fájlmegosztásokról az ütemezett időpontban, és a rendszer megőrzi a helyreállítási pontot a választott időszakra vonatkozóan.
 
 ## <a name="create-an-on-demand-backup"></a>Igény szerinti biztonsági másolat létrehozása
-Esetenként érdemes lehet létrehozni biztonsági mentési pillanatképet vagy helyreállítási pontot a biztonsági mentési szabályzat ütemezett időpontjain kívül is. Igény szerinti biztonsági mentést leggyakrabban a biztonsági mentési szabályzat konfigurálása után hoznak létre. A biztonsági szabályzat ütemezése alapján lehet, hogy órák vagy napok is eltelnek addig, amíg a rendszer pillanatképet készít. Annak érdekében, hogy adatai a biztonsági mentési szabályzat elindulásáig is védve legyenek, indítson el egy igény szerinti biztonsági mentést. Egy igény szerinti biztonsági mentés létrehozása gyakran szükség végezni a tervezett módosítása előtt.
+Esetenként érdemes lehet létrehozni biztonsági mentési pillanatképet vagy helyreállítási pontot a biztonsági mentési szabályzat ütemezett időpontjain kívül is. Igény szerinti biztonsági mentést leggyakrabban a biztonsági mentési szabályzat konfigurálása után hoznak létre. A biztonsági szabályzat ütemezése alapján lehet, hogy órák vagy napok is eltelnek addig, amíg a rendszer pillanatképet készít. Annak érdekében, hogy adatai a biztonsági mentési szabályzat elindulásáig is védve legyenek, indítson el egy igény szerinti biztonsági mentést. Szükség van egy igény szerinti biztonsági mentés létrehozására, mielőtt tervezett változtatásokat hajt végre a fájlmegosztás számára.
 
 ### <a name="to-create-an-on-demand-backup"></a>Igény szerinti biztonsági másolat létrehozása
 
