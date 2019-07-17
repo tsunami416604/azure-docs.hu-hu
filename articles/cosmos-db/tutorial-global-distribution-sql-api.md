@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 07/15/2019
 ms.author: rimman
 ms.reviewer: sngun
-ms.openlocfilehash: c4ce60e3532179efe3ac68c21b32850e73f92a69
-ms.sourcegitcommit: 1b7b0e1c915f586a906c33d7315a5dc7050a2f34
+ms.openlocfilehash: a566094f88ba9ffd25eadd046ae7254e26b9c2cf
+ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67881226"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68234601"
 ---
 # <a name="set-up-azure-cosmos-db-global-distribution-using-the-sql-api"></a>Az Azure Cosmos DB globális terjesztésének beállítása az SQL API használatával
 
@@ -78,7 +78,8 @@ DocumentClient docClient = new DocumentClient(
 await docClient.OpenAsync().ConfigureAwait(false);
 ```
 
-## <a name="nodejs-javascript-and-python-sdks"></a>NODE.js-, JavaScript és Python SDK-k
+## <a name="nodejsjavascript"></a>Node.js/JavaScript
+
 Az SDK a kód módosítása nélkül használható. Ebben az esetben az SDK automatikusan átirányítja az olvasásokat és az írásokat az aktuális írási régióba.
 
 Az SDK-k 1.8-as és újabb verziójában a DocumentClient konstruktor ConnectionPolicy paramétere egy új DocumentClient.ConnectionPolicy.PreferredLocations nevű tulajdonsággal rendelkezik. Ez a paraméter egy sztringtömb, amely a régiónevek listáját használja. A nevek vannak régiónév oszlop található a [Azure-régiók][regions] lap. Az AzureDocuments.Regions objektumban található előre definiált konstansokat is használhatja
@@ -90,7 +91,7 @@ Az aktuális írási és olvasási végpontokat a DocumentClient.getWriteEndpoin
 >
 >
 
-Az alábbi, a példakód Node.js/Javascript számára. A Python és a Java ugyanezt a mintát követi.
+Az alábbi, a példakód Node.js/Javascript számára.
 
 ```JavaScript
 // Creating a ConnectionPolicy object
@@ -104,6 +105,34 @@ connectionPolicy.PreferredLocations = ['West US', 'East US', 'North Europe'];
 
 // initialize the connection
 var client = new DocumentDBClient(host, { masterKey: masterKey }, connectionPolicy);
+```
+
+## <a name="python-sdk"></a>Python SDK
+
+A következő kód bemutatja, hogyan állíthatja be az előnyben részesített helyek a Python SDK-val:
+
+```python
+
+connectionPolicy = documents.ConnectionPolicy()
+connectionPolicy.PreferredLocations = ['West US', 'East US', 'North Europe']
+client = cosmos_client.CosmosClient(ENDPOINT, {'masterKey': MASTER_KEY}, connectionPolicy)
+
+```
+
+## <a name="java-v2-sdk"></a>V2 a Java SDK
+
+A következő kód bemutatja, hogyan állíthatja be az előnyben részesített helyek a Java SDK-val:
+
+```java
+ConnectionPolicy policy = new ConnectionPolicy();
+policy.setUsingMultipleWriteLocations(true);
+policy.setPreferredLocations(Arrays.asList("East US", "West US", "Canada Central"));
+AsyncDocumentClient client =
+        new AsyncDocumentClient.Builder()
+                .withMasterKeyOrResourceToken(this.accountKey)
+                .withServiceEndpoint(this.accountEndpoint)
+                .withConnectionPolicy(policy)
+                .build();
 ```
 
 ## <a name="rest"></a>REST

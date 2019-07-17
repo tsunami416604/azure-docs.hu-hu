@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 07/08/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: fe83cd5f38e8c091ee72875da370b6929a99b727
-ms.sourcegitcommit: 470041c681719df2d4ee9b81c9be6104befffcea
+ms.openlocfilehash: d222936f93f90573a46cd7f6216fbde8043332c7
+ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67854137"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68261411"
 ---
 # <a name="migrate-vmware-vms-to-azure-agent-based"></a>VMware virtuális gépek áttelepítése az Azure-ba (az ügynök-alapú)
 
@@ -121,7 +121,7 @@ A bérlő globális rendszergazdája a következő engedélyek megadásához
 
 #### <a name="assign-application-developer-role"></a>Alkalmazás fejlesztője szerepkör hozzárendelése 
 
-A bérlő globális rendszergazdája a alkalmazásfejlesztő szerepkört rendelhet egy fiókot. [További információk](https://docs.microsoft.comazure/active-directory/fundamentals/active-directory-users-assign-role-azure-portal).
+A bérlő globális rendszergazdája a alkalmazásfejlesztő szerepkört rendelhet egy fiókot. [További információk](../active-directory/fundamentals/active-directory-users-assign-role-azure-portal.md).
 
 ## <a name="assign-permissions-to-create-key-vault"></a>A Key Vault létrehozásához szükséges engedélyek hozzárendelése
 

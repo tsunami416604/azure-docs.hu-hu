@@ -1,5 +1,5 @@
 ---
-title: Tárolótámogatás
+title: Ellenőrizze a Hangulatelemzés tárolópéldány
 titleSuffix: Azure Cognitive Services
 description: Ismerje meg, hogyan ellenőrizheti a vélemények elemzése tárolópéldányt.
 services: cognitive-services
@@ -9,23 +9,23 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 06/26/2019
 ms.author: dapine
-ms.openlocfilehash: f68d9c7098f2b1ca782e2522c632c2e267b35336
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: f69d573e9e70a505018e94cca354f363097cc1b8
+ms.sourcegitcommit: 6b41522dae07961f141b0a6a5d46fd1a0c43e6b2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67455136"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "68229272"
 ---
 ## <a name="verify-the-sentiment-analysis-container-instance"></a>Ellenőrizze a Hangulatelemzés tárolópéldány
 
 1. Válassza ki a **áttekintése** lapra, és másolja az IP-címet.
-1. Nyisson meg egy új böngészőlapot, és az IP-címet, például használja `http://<IP-address>:5000 (http://55.55.55.55:5000`). A tároló kezdőlapja jelenik meg, amely közli, a tároló fut-e.
+1. Nyisson meg egy új böngészőlapot, és adja meg az IP-címet. For example, adja meg `http://<IP-address>:5000 (http://55.55.55.55:5000`). A tároló kezdőlapja jelenik meg, amely közli, a tároló fut-e.
 
-    ![A tároló kezdőlapra, és ellenőrizze, hogy fut-e megtekintése](../media/how-tos/container-instance/swagger-docs-on-container.png)
+    ![Ellenőrizze, hogy fut-e a tároló kezdőlap megtekintése](../media/how-tos/container-instance/swagger-docs-on-container.png).
 
-1. Válassza ki a **szolgáltatás API-t leírása** navigáljon a tárolók swagger lapra mutató hivatkozást.
+1. Válassza ki a **szolgáltatás API-t leírása** lépjen az container swagger lapra mutató hivatkozást.
 
-1. Válassza ki bármelyik a **POST** API-kat, és válassza ki **kipróbálás**.  A paraméterek jelennek meg többek között a példabemenet:
+1. Válassza ki bármelyik a **POST** API-kat, és válassza ki **kipróbálás**.  Jelennek meg a paraméterek, többek között a példabemenet:
 
     ```json
     {
@@ -49,7 +49,7 @@ ms.locfileid: "67455136"
     }
     ```
 
-1. Cserélje le a bemeneti adatok az alábbi JSON-ra:
+1. Cserélje le a bemenetben a következő JSON-tartalmak:
 
     ```json
     {
@@ -67,7 +67,7 @@ ms.locfileid: "67455136"
 
 1. Válassza ki **Execute** meghatározni a szöveg a róluk szóló véleményeket.
 
-    A modell a tárolót csomagolt egy 0 és 1, ahol 0 a negatív pedig 1 pozitív közötti pontszámot állít elő.
+    A modell, amely a tárolót csomagolt egy 0 és 1, ahol 0 a negatív pedig 1 pozitív közötti pontszámot állít elő.
 
     A visszaadott JSON-válasz tartalmazza a frissített szövegbevitel vélemények:
 
@@ -93,4 +93,4 @@ ms.locfileid: "67455136"
     }
     ```
 
-Most már tudjuk kapcsolhatja össze a dokumentum `id` az eredeti kérelem hasznos dokumentumot a válasz hasznos JSON- `id`, és tekintse meg, hogy hiba történt a pontszámot keresztül `.98` nagyon pozitív vélemények jelző.
+Most már tudjuk kapcsolhatja össze a dokumentum `id` , a válasz-adattartalomra JSON-adatok az eredeti kérelem hasznos dokumentumot `id`. Láthatjuk, hogy a pontszám, több mint `.98`, erősen pozitív vélemények jelzi.

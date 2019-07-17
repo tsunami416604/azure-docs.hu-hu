@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 07/11/2019
 ms.author: jeedes
-ms.openlocfilehash: 853e23d4dd2c9192c15ab477571ca5cd0059e965
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
+ms.openlocfilehash: 52b113d92fa83795e94d5179ea47ed5d9d9e9a26
+ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68225466"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68248920"
 ---
 # <a name="tutorial-integrate-kiteworks-with-azure-active-directory"></a>Oktatóanyag: Kiteworks integrálása az Azure Active Directoryval
 
@@ -104,7 +104,7 @@ Kövesse az alábbi lépéseket az Azure AD egyszeri bejelentkezés engedélyez�
 
 1. A felső eszköztáron kattintson **beállítások**.
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/kiteworks-tutorial/tutorial_kiteworks_06.png) 
+    ![Egyszeri bejelentkezés konfigurálása](./media/kiteworks-tutorial/tutorial_kiteworks_06.png)
 
 1. Az a **hitelesítési és engedélyezési** területén kattintson **egyszeri bejelentkezés beállítása**.
 
@@ -118,7 +118,7 @@ Kövesse az alábbi lépéseket az Azure AD egyszeri bejelentkezés engedélyez�
 
     b. Válassza ki **AuthnRequest kezdeményezése**.
 
-    c. Az a **Identitásszolgáltató Entitásazonosító** szövegmezőbe, illessze be az értéket a **az Azure AD-azonosító**, az Azure Portalról másolt. 
+    c. Az a **Identitásszolgáltató Entitásazonosító** szövegmezőbe, illessze be az értéket a **az Azure AD-azonosító**, az Azure Portalról másolt.
 
     d. Az a **egyszeri bejelentkezési szolgáltatás URL-cím** szövegmezőbe, illessze be az értéket a **bejelentkezési URL-cím**, az Azure Portalról másolt.
 
@@ -135,7 +135,7 @@ Ebben a szakaszban az Azure Portalon B.Simon nevű tesztfelhasználó fog létre
 1. Az Azure Portal bal oldali panelén válassza **Azure Active Directory**válassza **felhasználók**, majd válassza ki **minden felhasználó**.
 1. Válassza ki **új felhasználó** a képernyő tetején.
 1. Az a **felhasználói** tulajdonságok, kövesse az alábbi lépéseket:
-   1. A **Név** mezőbe írja a következőt: `B.Simon`.  
+   1. A **Név** mezőbe írja a következőt: `B.Simon`.
    1. Az a **felhasználónév** mezőbe írja be a username@companydomain.extension. Például: `B.Simon@contoso.com`.
    1. Válassza ki a **Show jelszó** jelölje be a jelölőnégyzetet, és jegyezze fel a megjelenített érték a **jelszó** mezőbe.
    1. Kattintson a **Create** (Létrehozás) gombra.
@@ -162,7 +162,7 @@ Ebben a szakaszban B.Simon által biztosított hozzáférés Kiteworks Azure egy
 
 Ez a szakasz célja Britta Simon Kiteworks nevű felhasználó létrehozásához.
 
-Kiteworks támogatja a just-in-time-kiépítés, amely alapértelmezésben engedélyezve van. Nincs meg ebben a szakaszban a művelet elem. Új felhasználó jön létre az Kitewors elérésére, ha még nem létezik tett kísérlet során.
+Kiteworks támogatja a just-in-time-kiépítés, amely alapértelmezésben engedélyezve van. Nincs meg ebben a szakaszban a művelet elem. Új felhasználó próbál hozzáférni a Kiteworks, ha még nem létezik jön létre.
 
 > [!NOTE]
 > Hozzon létre egy felhasználót manuálisan kell, ha kapcsolódni kell a [Kiteworks támogatási csoportjának](https://accellion.com/support).
@@ -175,8 +175,8 @@ Ha a hozzáférési panelen a Kiteworks csempére kattint, meg kell lehet automa
 
 ## <a name="additional-resources"></a>További források
 
-- [ SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Mi az az Azure Active Directory feltételes hozzáférés?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

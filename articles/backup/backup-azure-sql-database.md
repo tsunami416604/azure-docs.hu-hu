@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: tutorial
 ms.date: 06/18/2019
 ms.author: raynew
-ms.openlocfilehash: 8e7e5d871fa1bb557de4e6fce22658115bf0fe94
-ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
+ms.openlocfilehash: 2957e784540f7c6450235d26da43121db2458dd1
+ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67806978"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68249530"
 ---
 # <a name="about-sql-server-backup-in-azure-vms"></a>Információk az Azure-beli virtuális gépeken futó SQL Server Backupról
 
@@ -47,7 +47,7 @@ A Kezdés előtt ellenőrizze az alábbi:
 --- | ---
 **Támogatott központi telepítések** | SQL piactér Azure-beli és nem Marketplace (manuálisan telepített SQL Server) virtuális gépek támogatottak.
 **Támogatott helyeken** | Délkelet-Ausztrália (ASE), Kelet-Ausztrália (AE) <br> Dél-Brazília (BRS)<br> Közép-Kanada (CNC), kelet-Kanada (CE)<br> Délkelet-Ázsia (SEA), Kelet-Ázsia (EA) <br> USA keleti RÉGIÓJA (EUS), USA keleti RÉGIÓJA (EUS2), USA nyugati középső RÉGIÓJA (WCUS), USA nyugati RÉGIÓJA (WUS); 2 USA nyugati RÉGIÓJA (WUS 2) 2 USA északi középső RÉGIÓJA (NCUS) USA középső RÉGIÓJA (CUS) déli középső RÉGIÓJA (SCUS) <br> Közép-India (INC), Dél-India (INS) <br> Kelet-japán (JPE), Nyugat-japán (JPW) <br> Korea középső régiója (KRC), Korea déli régiója (KRS) <br> Észak-Európa (NE), Nyugat-Európa <br> Egyesült Királyság déli régiója (UKS), az Egyesült Királyság nyugati régiója (UKW)
-**Támogatott operációs rendszerek** | Windows Server 2016, Windows Server 2012 R2, Windows Server 2012<br/><br/> Linux jelenleg nem támogatott.
+**Támogatott operációs rendszerek** | A Windows Server 2016, Windows Server 2012 R2, Windows Server 2012 rendszerben<br/><br/> Linux jelenleg nem támogatott.
 **Támogatott SQL Server-verziók** | SQL Server 2017 leírtaknak megfelelően [Itt](https://support.microsoft.com/lifecycle/search?alpha=SQL%20server%202017), SQL Server 2016 és a szervizcsomagok leírtaknak megfelelően [Itt](https://support.microsoft.com/lifecycle/search?alpha=SQL%20server%202016%20service%20pack), az SQL Server 2014, SQL Server 2012.<br/><br/> Enterprise, Standard, Web, Developer, Express.
 **Támogatott .NET-verziók** | .NET-keretrendszer 4.5.2-es verziója és az újabb verzióját a virtuális gépen
 
@@ -76,7 +76,7 @@ Felhasználók a szolgáltatás eddig: általánosan elérhető az idő nem kell
 - Akár biztonsági **nagyjából 2000** SQL Server-adatbázisok a tárolóban. Több tároló hozható létre, amennyiben rendelkezik a nagyobb adatbázisok száma.
 - Konfigurálhatja a biztonsági mentés akár **50** adatbázisok egy nyissa meg; ez a korlátozás segít optimalizálni a biztonsági mentési terhelések.
 - Akár támogatjuk az adatbázisok **2 TB-os** méretű; számára, hogy nagyobb méretű, a teljesítménnyel kapcsolatos problémák is kapja meg.
-- Már ismeri, feltárhatja, hogy hány adatbázist kiszolgálónként lehet védeni, kell figyelembe venni a tényezőket, például sávszélesség, Virtuálisgép-méretet, biztonsági mentés gyakoriságát, adatbázis mérete, stb. A planner, amelyek kiszámítása, ezek a számok az Ön tulajdonában segítené is dolgozunk. Azt fogja kell közzétételével, kis türelmet kérünk.
+- Már ismeri, feltárhatja, hogy hány adatbázist kiszolgálónként lehet védeni, kell figyelembe venni a tényezőket, például sávszélesség, Virtuálisgép-méretet, biztonsági mentés gyakoriságát, adatbázis mérete, stb. [Töltse le](http://download.microsoft.com/download/A/B/5/AB5D86F0-DCB7-4DC3-9872-6155C96DE500/SQL%20Server%20in%20Azure%20VM%20Backup%20Scale%20Calculator.xlsx) az erőforrás plannert, amely lehetővé teszi az adatbázisok hozzávetőleges száma is rendelkezik kiszolgálónként alapján, a Virtuálisgép-erőforrások és a biztonsági mentési szabályzatot.
 - Rendelkezésre állási csoportok esetén a biztonsági mentések néhány tényezők alapján különböző csomópontjából kerül. A rendelkezésre állási csoport biztonsági mentési viselkedés összefoglalása.
 
 ### <a name="back-up-behavior-in-case-of-always-on-availability-groups"></a>Biztonsági mentése esetén mindig viselkedés a rendelkezésre állási csoportok

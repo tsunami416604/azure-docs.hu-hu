@@ -8,14 +8,14 @@ ms.service: managed-applications
 ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
-ms.date: 06/04/2019
+ms.date: 07/15/2019
 ms.author: tomfitz
-ms.openlocfilehash: 40132f67b135b0dc081180c34361047e59776b81
-ms.sourcegitcommit: 6932af4f4222786476fdf62e1e0bf09295d723a1
+ms.openlocfilehash: 16b653d1018c0c9c090f027ebcd01468af0eefd8
+ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/05/2019
-ms.locfileid: "66688561"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68234711"
 ---
 # <a name="azure-managed-applications-in-the-marketplace"></a>Azure-beli felügyelt alkalmazások a Marketplace piactéren
 
@@ -105,6 +105,10 @@ Az SKU-k a fő ajánlat alatt jelennek meg a piactéren. Saját megvásárolhat�
    * **Csomagfájl (.zip)** : Ez a csomag tömörített .zip csomag két szükséges fájlokat tartalmazza. Az egyik fájl a Resource Manager-sablon, amely a felügyelt alkalmazáshoz üzembe helyezendő erőforrásokat határozza meg. A másik fájl a [felhasználói felületet](create-uidefinition-overview.md) határozza meg a felügyelt alkalmazást a portálon keresztül üzembe helyező felhasználók számára. A felhasználói felületen elemeket ad meg, amelyek lehetővé teszik a felhasználók számára paraméterértékek megadását.
    * **Bérlőazonosító**: A bérlő azonosítója a fiók eléréséhez.
    * **Igény szerinti elérésének lehetővé tétele**: Válassza ki **Igen** engedélyezéséhez [just-in-time hozzáférés-vezérlés](request-just-in-time-access.md) a fiókhoz. Ha engedélyezve van, a megadott időszakra vonatkozó kérelem a felhasználói fiókhoz való hozzáférést. Szükséges, hogy a felhasználók a felügyelt alkalmazás a fiók állandó hozzáférést adni, jelölje be **nem**.
+   * **Engedélyezett felhasználói műveletek testreszabása?** : Válassza ki **Igen** adja meg, milyen műveleteket végezzen fogyasztók is hajtsa végre a felügyelt erőforrásokkal kapcsolatos.
+   * **Ügyfél-műveletek engedélyezett**: Ha **Igen** az előző beállítás, megadhatja, milyen műveleteket végezzen a fogyasztók számára engedélyezettek a [megtagadása az Azure-erőforrások hozzárendelések](../role-based-access-control/deny-assignments.md).
+
+     További elérhető műveletek: [Azure Resource Manager erőforrás-szolgáltatói műveletek](../role-based-access-control/resource-provider-operations.md). Például, hogy engedélyezze a felhasználó számára, hogy indítsa újra a virtuális gépek, hozzáadása `Microsoft.Compute/virtualMachines/restart/action` az engedélyezett műveleteket hajthat végre. A `*/read` a művelet automatikusan engedélyezett, így nem kell ennek a beállításnak tartalmaznia.
    * **PrincipalId**: Ez a tulajdonság nem egy felhasználó, felhasználói csoport vagy alkalmazás számára biztosított Azure Active Directory (Azure AD) azonosítóját az ügyfél-előfizetés-erőforrásokhoz való hozzáférés. A Role Definition (Szerepkör-definíció) az engedélyeket ismerteti.
    * **Szerepkör-definíció**: Ez a tulajdonság egy minden a beépített szerepkörök listájával, szerepköralapú hozzáférés-vezérlés (RBAC) az Azure AD által támogatott. Kiválaszthatja az erőforrásoknak az ügyfél nevében történő felügyeletéhez leginkább megfelelőbb szerepkört.
    * **Házirend-beállítások**: Alkalmazza egy [Azure Policy](../governance/policy/overview.md) a felügyelt alkalmazást, hogy adja meg a megfelelőségi követelményei az üzembe helyezett megoldások. Válassza ki az alkalmazandó szabályzatokat az elérhető lehetőségek közül. **Szabályzatparaméterek** esetén adjon meg egy JSON-karakterláncot a paraméter értékeivel. A szabályzatdefiníciókról és a paraméterértékek formátumáról tekintse meg a következő dokumentumot: [Azure Policy-minták](../governance/policy/samples/index.md).

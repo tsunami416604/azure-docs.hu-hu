@@ -564,6 +564,8 @@
           href: solution-template-copy-files-multiple-containers.md
         - name: Új fájlok másolása az utolsó módosítás dátuma szerint
           href: solution-template-copy-new-files-lastmodifieddate.md
+        - name: Fájlok áthelyezése
+          href: solution-template-move-files.md
         - name: Tömeges másolás vezérlőtáblával
           href: solution-template-bulk-copy-with-control-table.md
         - name: Változásadatok másolása vezérlőtáblával
@@ -574,6 +576,8 @@
       items:
         - name: Tevékenységek hibaelhárítása
           href: data-factory-troubleshoot-guide.md
+        - name: Az Azure-SSIS integrációs modul kezelésével kapcsolatos hibaelhárítás
+          href: ssis-integration-runtime-management-troubleshoot.md
         - name: Csomagvégrehajtás hibaelhárítása az Azure-SSIS integrációs modulban
           href: ssis-integration-runtime-ssis-activity-faq.md
 - name: Referencia

@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 07/13/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ec333ccff0a79f0f0c1d070785768b7abb36bfac
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
+ms.openlocfilehash: ed5370fda9be2573f773bd2fe653feb74defeb7d
+ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68228918"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68248864"
 ---
 # <a name="tutorial-integrate-hyperanna-with-azure-active-directory"></a>Oktatóanyag: HyperAnna integrálása az Azure Active Directoryval
 
@@ -88,7 +88,7 @@ Kövesse az alábbi lépéseket az Azure AD egyszeri bejelentkezés engedélyez�
     | |
     |--|
     | `https://microsoft.hyperanna.com/userservice/auth/saml` |
-    |` https://anna.hyperanna.com/userservice/auth/saml` |
+    | `https://anna.hyperanna.com/userservice/auth/saml` |
 
 1. Kattintson a **további URL-címet beállítani** , és hajtsa végre a következő lépést, ha az alkalmazás a konfigurálni kívánt **SP** kezdeményezett mód:
 
@@ -152,9 +152,9 @@ Ha a hozzáférési panelen a HyperAnna csempére kattint, meg kell lehet automa
 
 ## <a name="additional-resources"></a>További források
 
-- [ SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Mi az az Azure Active Directory feltételes hozzáférés?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

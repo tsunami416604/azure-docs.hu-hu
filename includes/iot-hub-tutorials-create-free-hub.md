@@ -8,16 +8,16 @@ ms.topic: include
 ms.date: 04/19/2018
 ms.author: dobett
 ms.custom: include file
-ms.openlocfilehash: a7a86c6a2661a8a1f30491391fc76f4dc5d71f54
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 367a0b1d17f8d5ebe4f46835ace963b00e75354e
+ms.sourcegitcommit: 6b41522dae07961f141b0a6a5d46fd1a0c43e6b2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67179744"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "68229253"
 ---
 IoT Hub létrehozása az Azure Portallal:
 
-1. Jelentkezzen be az [Azure Portalra](http://portal.azure.com).
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 
 1. Válassza az **Erőforrás létrehozása** > **Eszközök internetes hálózata** > **IoT Hub** elemet.
 
@@ -27,8 +27,8 @@ IoT Hub létrehozása az Azure Portallal:
 
     | Beállítás | Érték |
     | ------- | ----- |
-    | Előfizetés | Válassza ki saját Azure-előfizetését a legördülő menüből. |
-    | Erőforráscsoport | Hozzon létre újat. Ez az oktatóanyag a **tutorials-iot-hub-rg** nevet használja. |
+    | Subscription | Válassza ki saját Azure-előfizetését a legördülő menüből. |
+    | Resource group | Hozzon létre újat. Ez az oktatóanyag a **tutorials-iot-hub-rg** nevet használja. |
     | Régió | Ez az oktatóanyag az **USA nyugati régióját** használja. Válassza ki az Önhöz legközelebbi régiót. |
     | Name (Név) | A következő képernyőkép a **tutorials-iot-hub** nevet használja. Saját hub létrehozásakor egyedi nevet kell választania. |
 

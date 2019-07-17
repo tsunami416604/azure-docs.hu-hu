@@ -10,12 +10,12 @@ ms.subservice: face-api
 ms.topic: conceptual
 ms.date: 05/16/2019
 ms.author: yluiu
-ms.openlocfilehash: fbefbea171a8559466117c55703a14268b4c4c99
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: 26ab3cb247309aa21791ca5a984f39ef40ce9a78
+ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67592926"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68249633"
 ---
 # <a name="specify-a-face-detection-model"></a>Arcfelismerési modell megadása
 
@@ -45,8 +45,7 @@ Használatakor a [A Face – észlelése] API-hoz, hozzárendelhet a modell a k�
 
 A kérelem URL-CÍMÉT a [A Face – észlelése] REST API-t fog kinézni:
 
-`https://westus.api.cognitive.microsoft.com/face/v1.0/detect[?returnFaceId][&returnFaceLandmarks][&returnFaceAttributes][&recognitionModel][&returnRecognitionModel][&detectionModel]
-&subscription-key=<Subscription key>`
+`https://westus.api.cognitive.microsoft.com/face/v1.0/detect[?returnFaceId][&returnFaceLandmarks][&returnFaceAttributes][&recognitionModel][&returnRecognitionModel][&detectionModel]&subscription-key=<Subscription key>`
 
 Az ügyféloldali kódtárat használja, ha az érték rendelhet `detectionModel` ad egy megfelelő karakterláncot. Ha meghagyja a hozzá nem rendelt, az API-t fogja használni az alapértelmezett modellverziója (`detection_01`). Tekintse meg a következő mintakód a .NET ügyféloldali kódtár.
 

@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 7/3/2019
 ms.author: dapine
-ms.openlocfilehash: 38addf4651373ba0f4df411325218a255c835508
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 05284d434e6bd22fd50957f7cc5ec966f88a4fd4
+ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67717195"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "68229321"
 ---
 ## <a name="create-an-azure-container-instance-resource"></a>Az Azure Container Instance-erőforrás létrehozásához
 
@@ -22,7 +22,7 @@ ms.locfileid: "67717195"
 
 2. Az a **alapjai** lapra, adja meg a következő adatokat:
 
-    |Beállítás|Érték|
+    |Beállítás|Value|
     |--|--|
     |Subscription|Válassza ki előfizetését.|
     |Resource group|Válassza ki az elérhető erőforráscsoportot vagy hozzon létre például egy új `cognitive-services`.|
@@ -35,16 +35,16 @@ ms.locfileid: "67717195"
 
 3. Az a **hálózatkezelés** lapra, adja meg a következő adatokat:
 
-    |Beállítás|Value|
+    |Beállítás|Érték|
     |--|--|
     |Portok|A TCP-port beállítása `5000`. Tesz elérhetővé a tárolót 5000-es porton.|
 
-4. Az a **speciális** lapra, adja meg a szükséges **környezeti változók** tároló [beállítások számlázási](https://docs.microsoft.com/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-install-containers#billing-arguments) az ACI erőforrás:
+4. Az a **speciális** lapra, adja meg a szükséges **környezeti változók** tároló számlázási az ACI-erőforrás beállítások:
 
     | Kulcs | Value |
     |--|--|
-    |`apikey`|Átmásolja a **kulcsok** a Text Analytics erőforrás lapján. Egy 32 alfanumerikus karakterből álló karakterlánc szóközöket vagy kötőjeleket, nélkül `xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx`.|
-    |`billing`|Átmásolja a **áttekintése** a Text Analytics erőforrás lapján. Például: `https://northeurope.api.cognitive.microsoft.com/text/analytics/v2.0`|
+    |`apikey`|Átmásolja a **kulcsok** az erőforrás oldalán. Egy 32 alfanumerikus karakterből álló karakterlánc szóközöket vagy kötőjeleket, nélkül `xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx`.|
+    |`billing`|Átmásolja a **áttekintése** az erőforrás oldalán.|
     |`eula`|`accept`|
 
 1. Kattintson a **ellenőrzés és létrehozás**

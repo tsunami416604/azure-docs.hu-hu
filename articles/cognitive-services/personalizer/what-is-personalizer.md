@@ -10,12 +10,12 @@ ms.subservice: personalizer
 ms.topic: overview
 ms.date: 05/07/2019
 ms.author: edjez
-ms.openlocfilehash: e5781af44732782936e1e1a87bf70bd4a9d4804d
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.openlocfilehash: 286a19207236392367b924bea7e26e90fd0db8d5
+ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67722287"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68253458"
 ---
 # <a name="what-is-personalizer"></a>Mi a Personalizer?
 
@@ -29,14 +29,14 @@ Az Azure Personalizer egy felhőalapú API-szolgáltatás, amellyel a valós ide
 
 ## <a name="how-does-personalizer-work"></a>Hogyan működik a Personalizer?
 
-Personalizer gépi tanulási modelleket használ környezetben legmagasabb rangú művelet felderítésére. Az ügyfélalkalmazás lehetséges olyan művelet, amely információkat tudhat meg róluk; listáját tartalmazza. és információt, amely előfordulhat, hogy a felhasználó, eszköz és egyéb információkat tartalmaznak. Personalizer elvégzendő műveletet határozza meg. Miután az ügyfélalkalmazásban használ a kiválasztott művelet, biztosít visszajelzés a Personalizer ellenszolgáltatás pontszámot formájában. A visszajelzési ciklus befejezését követően a Personalizer automatikusan frissíti a saját jövőbeli holtversenyben használt modell.
+Personalizer gépi tanulási modelleket használ környezetben legmagasabb rangú művelet felderítésére. Az ügyfélalkalmazás lehetséges olyan művelet, amely információkat tudhat meg róluk; listáját tartalmazza. és információt, amely előfordulhat, hogy a felhasználó, eszköz és egyéb információkat tartalmaznak. Personalizer elvégzendő műveletet határozza meg. Miután az ügyfélalkalmazásban használ a kiválasztott művelet, biztosít visszajelzés a Personalizer ellenszolgáltatás pontszámot formájában. A visszajelzés fogadását követően a Personalizer automatikusan frissíti a saját jövőbeli holtversenyben használt modell.
 
 ## <a name="how-do-i-use-the-personalizer"></a>Hogyan használhatom a Personalizer?
 
 ![Melyik videó megjelenítése a felhasználónak választania Personalizer használatával](media/what-is-personalizer/personalizer-example-highlevel.png)
 
 1. Válassza ki az alkalmazás személyre felületet nyújt.
-1. Hozzon létre, és a személyre szabás szolgáltatás konfigurálása az Azure Portalon
+1. Hozzon létre, és a személyre szabás szolgáltatás egy példányának konfigurálása az Azure Portalon. Minden példány egy Personalizer hurok.
 1. SDK használata Personalizer hívja meg információkat (_funkciók_) a felhasználók számára, és a tartalom (_műveletek_). Nem kell tiszta, adjon meg adatokat feliratú Personalizer használata előtt. 
 1. Az ügyfélalkalmazásban megjelenítése a felhasználónak Personalizer által kiválasztott.
 1. SDK használatával visszajelzést Personalizer, amely azt jelzi, ha a felhasználó kiválasztott Personalizer a műveletet. Ez egy _pontszám díjazza_, általában 1 és 1 között.

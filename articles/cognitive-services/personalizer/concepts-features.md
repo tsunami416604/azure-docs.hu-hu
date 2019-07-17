@@ -10,12 +10,12 @@ ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 06/24/2019
 ms.author: edjez
-ms.openlocfilehash: 94eaeb6e34e74e1a0f1a3958c23cf33b86c4adcd
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: c317cbec02b82743c233bf36f743cea808c30c69
+ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67620286"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68253589"
 ---
 # <a name="features-are-information-about-actions-and-context"></a>Funkciói a következők műveletek és a környezeti információk
 
@@ -58,7 +58,7 @@ Példák az alkalmazások által használt szolgáltatás névterek a következ�
 * User_Profile_from_CRM
 * Time
 * Mobile_Device_Info
-* http_user_agent
+* HTTP_USER_AGENT
 * VideoResolution
 * UserDeviceInfo
 * Időjárás
@@ -66,9 +66,10 @@ Példák az alkalmazások által használt szolgáltatás névterek a következ�
 * current_time
 * NewsArticle_TextAnalytics
 
-A szolgáltatás névterek mindaddig, amíg azok érvényes JSON-kulcsokat a saját konvenciók következő nevet adhat.
+A szolgáltatás névterek mindaddig, amíg azok érvényes JSON-kulcsokat a saját konvenciók következő nevet adhat. Névterek szolgáltatások különböző csoportokba rendszerezéséhez, valamint a félreérthetőség hasonló nevű szolgáltatások használhatók. Egy előtagként névterek is felfoghatók, amely a szolgáltatás neve kerül. Névterek nem ágyazhatók egymásba.
 
-A következő JSON-fájlban `user`, `state`, és `device` funkció névterekben vannak.
+
+A következő JSON-fájlban `user`, `state`, és `device` funkció névterekben vannak. Nyilvános előzetes verzióban Megjegyzés: Jelenleg azt erősen javasoljuk, hogy, amelyek az UTF-8-alapú szolgáltatás névtér nevét és a különböző kezdődniük. Ha például `user`, `state`, és `device` kezdődnie `u`, `s`, és `d`. Az első ugyanazokat a karaktereket névterek jelenleg kellene indexekben használt gépi tanulási ütközések eredményezhet.
 
 JSON-objektumok tartalmazhatnak, beágyazott JSON-objektumok és az egyszerű tulajdonságértékeket. Egy tömb csak akkor, ha a tömb cikkeket számok szerepelhetnek. 
 
@@ -77,7 +78,7 @@ JSON-objektumok tartalmazhatnak, beágyazott JSON-objektumok és az egyszerű tu
     "contextFeatures": [
         { 
             "user": {
-                "name":"Doug",
+                "profileType":"AnonymousUser",
                 "latlong": [47.6, -122.1]
             }
         },
@@ -167,7 +168,7 @@ A rang API-t küld a műveletek próbált személyre függ.
 
 Néhány példa:
 
-|Cél|Műveletek|
+|Cél|Action|
 |--|--|
 |Személyre szabott, mely cikk kiemelt hírek-webhelyen.|Minden művelet lehetséges hír.|
 |Egy webhelyen Active elhelyezési optimalizálása.|Minden művelet egy elrendezést vagy a szabályok létrehozása egy elrendezést a hirdetések (például a felül található a megfelelő, a kis képek, a big Data típusú rendszerképek) lesz.|

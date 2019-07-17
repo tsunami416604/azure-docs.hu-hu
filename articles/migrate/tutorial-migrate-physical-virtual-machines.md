@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 07/09/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 006f7270570eba17fb44421b1c181d9ad68ad2ee
-ms.sourcegitcommit: 470041c681719df2d4ee9b81c9be6104befffcea
+ms.openlocfilehash: 2554501ecf6d4ef115e3283fa635c24510b8c797
+ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67854181"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68249590"
 ---
 # <a name="migrate-physical-or-virtualized-servers-to-azure"></a>Fizikai vagy virtuális kiszolgálók áttelepítése az Azure-bA 
 
@@ -104,7 +104,7 @@ A bérlő globális rendszergazdája a következő engedélyek megadásához
 
 #### <a name="assign-application-developer-role"></a>Alkalmazás fejlesztője szerepkör hozzárendelése 
 
-A bérlő globális rendszergazdája a alkalmazásfejlesztő szerepkört rendelhet egy fiókot. [További információk](https://docs.microsoft.comazure/active-directory/fundamentals/active-directory-users-assign-role-azure-portal).
+A bérlő globális rendszergazdája a alkalmazásfejlesztő szerepkört rendelhet egy fiókot. [További információk](../active-directory/fundamentals/active-directory-users-assign-role-azure-portal.md).
 
 ## <a name="assign-permissions-to-create-key-vault"></a>A Key Vault létrehozásához szükséges engedélyek hozzárendelése
 
@@ -209,7 +209,7 @@ Regisztráció véglegesítése mindaddig, amíg a felderített gépek jelennek 
 Migrálni kívánt gépen kell telepíteni a mobilitási szolgáltatás. Az ügynök telepítőcsomagjai érhetők el a replikációs berendezésen. A megfelelő telepítőt, és telepítse az ügynököt minden olyan gép, amelyeket szeretné áttelepíteni. Ehhez a következő:
 
 1. Jelentkezzen be a replikációs berendezésre.
-2. Navigate to **%ProgramData%\ASR\home\svsystems\pushinstallsvc\repository**.
+2. Navigáljon a **%ProgramData%\ASR\home\svsystems\pushinstallsvc\repository**.
 3. A telepítő a gép operációs rendszere és verziója található. Felülvizsgálat [támogatott operációs rendszerek](https://docs.microsoft.com/azure/site-recovery/vmware-physical-azure-support-matrix#replicated-machines). 
 4. Másolja a telepítőfájl a migrálni kívánt gépen.
 5. Győződjön meg arról, hogy az a készülék üzembe helyezésekor létrejött hozzáférési kódot.

@@ -56,7 +56,7 @@
           href: active-directory-b2c-overview-custom.md
         - name: Felhasználói hozzáférés
           href: manage-user-access.md
-    - name: JavaScript és oldalszerződések
+    - name: JavaScript és oldalelrendezések
       href: user-flow-javascript-overview.md
     - name: OAuth 2.0
       href: active-directory-b2c-reference-oauth-code.md
@@ -142,8 +142,8 @@
               href: active-directory-b2c-custom-setup-msa-idp.md
             - name: Twitter
               href: active-directory-b2c-custom-setup-twitter-idp.md
-        - name: Oldalszerződés
-          href: page-contract.md
+        - name: Oldalelrendezés
+          href: page-layout.md
         - name: Jelszó bonyolultsága
           href: active-directory-b2c-reference-password-complexity-custom.md
         - name: Jelszó módosítása

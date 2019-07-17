@@ -54,34 +54,32 @@
       href: migrate-replication-appliance.md
     - name: Ajánlott felmérési eljárások
       href: best-practices-assessment.md
-    - name: Értékelési számítások
+    - name: Felmérések áttekintése
       href: concepts-assessment-calculation.md
     - name: Függőségek vizualizációja
       href: concepts-dependency-visualization.md
 - name: Útmutatók
   items:
-    - name: Migrálási példák – Contoso-sorozat
-      href: contoso-migration-overview.md
-    - name: Berendezés telepítése VMware-felméréshez/migráláshoz (ügynök nélkül)
+    - name: Az előző verzió használata
+      href: migrate-v1.md
+    - name: VMware-berendezés üzembe helyezése
       href: how-to-set-up-appliance-vmware.md
-    - name: Berendezés telepítése Hyper-V-felméréshez/migráláshoz
+    - name: Hyper-V-berendezés üzembe helyezése
       href: how-to-set-up-appliance-hyper-v.md
-    - name: Felmérési/migrálási eszköz hozzáadása első alkalommal
+    - name: Eszköz hozzáadása első alkalommal
       href: how-to-add-tool-first-time.md
     - name: Felmérőeszközök hozzáadása
       href: how-to-assess.md
-    - name: Migrálási eszközök hozzáadása
-      href: how-to-migrate.md
     - name: Gépek csoportosítása felméréshez
-      items:
-        - name: Csoport létrehozása
-          href: how-to-create-a-group.md
-        - name: Gépek csoportosítása a gépek függőségeivel
-          href: how-to-create-group-machine-dependencies.md
-        - name: Csoport pontosítása csoportos függőségekkel
-          href: how-to-create-group-dependencies.md
+      href: how-to-create-a-group.md
+    - name: Gépek csoportosítása a függőségek vizualizációjának használatával
+      href: how-to-create-group-machine-dependencies.md
+    - name: Értékelés létrehozása
+      href: how-to-create-assessment.md
     - name: Értékelés testreszabása
       href: how-to-modify-assessment.md
+    - name: Migrálási eszközök hozzáadása
+      href: how-to-migrate.md
     - name: Felmérés és migrálás skálázása
       items:
         - name: Hozzáférés nagy számú VMware virtuális géphez
@@ -90,6 +88,10 @@
           href: scale-hyper-v-assessment.md
         - name: Nagy számú virtuális gép migrálásának automatizálása
           href: how-to-migrate-at-scale.md
+    - name: Migrálási példák – Contoso-sorozat
+      href: contoso-migration-overview.md
+- name: Hibaelhárítás
+  items:
     - name: Az Azure Migrate hibaelhárítása
       href: troubleshooting-general.md
 - name: További források
