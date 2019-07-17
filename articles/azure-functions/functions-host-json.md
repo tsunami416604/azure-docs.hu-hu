@@ -209,7 +209,7 @@ A függvényalkalmazás, beleértve az Application Insights naplózási viselked
 |---------|---------|---------|
 |fileLoggingMode|debugOnly|Határozza meg, milyen szintű fájl naplózás engedélyezve van.  Lehetőségek a következők `never`, `always`, `debugOnly`. |
 |logLevel|n/a|A szűrés az alkalmazás a Functions naplókategória definiáló objektum. Verzió 2.x követi az ASP.NET Core-elrendezés log kategóriához szűrésre. Ez lehetővé teszi az egyes funkciók naplózási szűrő. További információkért lásd: [napló szűrése](https://docs.microsoft.com/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1#log-filtering) az ASP.NET Core dokumentációjában. |
-|console|n/a| A [konzol](#console) naplózási beállításokat. |
+|console|n/a| A [console](#console) naplózási beállításokat. |
 |applicationInsights|n/a| A [applicationInsights](#applicationinsights) beállítás. |
 
 ## <a name="console"></a>console
