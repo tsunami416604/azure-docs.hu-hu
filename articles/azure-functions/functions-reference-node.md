@@ -275,7 +275,7 @@ A nyomkövetési szint függvény streamnaplókba vizsgálatát teszi lehetővé
 
 | Módszer                 | Leírás                                |
 | ---------------------- | ------------------------------------------ |
-| **error (_üzenet_)**   | Naplózás, vagy alacsonyabb hibaszintet ír.   |
+| **error(_message_)**   | Naplózás, vagy alacsonyabb hibaszintet ír.   |
 | **warn(_message_)**    | Figyelmeztetési szint naplózás vagy alacsonyabb ír. |
 | **info(_message_)**    | Írási és naplózás, vagy alacsonyabb információ szintet.    |
 | **verbose(_message_)** | Részletes webhelyszintű naplózás ír.           |
