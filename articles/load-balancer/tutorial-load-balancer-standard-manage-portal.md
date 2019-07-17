@@ -4,7 +4,7 @@ titlesuffix: Azure Load Balancer
 description: Ez a rövid útmutató ismerteti, hogyan hozhat létre és felügyelhet egy Standard Load Balancert az Azure Portalon.
 services: load-balancer
 documentationcenter: na
-author: KumudD
+author: asudbring
 manager: twooley
 Customer intent: I want to create and Standard Load Balancer so that I can load balance internet traffic to VMs and add and remove VMs from the load-balanced set.
 ms.service: load-balancer
@@ -13,14 +13,14 @@ ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/11/2019
-ms.author: kumud
+ms.author: allensu
 ms.custom: seodec18
-ms.openlocfilehash: 78266e447d1ddf6daf5a9b0ad9172ab6470bf0c6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 22d0e56a77036c551b6006f43997c92fcce07499
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61320825"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68273355"
 ---
 # <a name="tutorial-load-balance-internet-traffic-to-vms-using-the-azure-portal"></a>Oktatóanyag: Terhelésének elosztása az internetes forgalmat a virtuális gépekhez az Azure portal használatával
 
@@ -49,15 +49,15 @@ Ebben a szakaszban egy Standard Load Balancer, amellyel a virtuális gépek terh
 
     | Beállítás                 | Érték                                              |
     | ---                     | ---                                                |
-    | Előfizetés               | Válassza ki előfizetését.    |    
-    | Erőforráscsoport         | Válassza ki **új létrehozása** , és írja be *myResourceGroupSLB* a szövegmezőben.|
+    | Subscription               | Válassza ki előfizetését.    |    
+    | Resource group         | Válassza ki **új létrehozása** , és írja be *myResourceGroupSLB* a szövegmezőben.|
     | Name (Név)                   | *myLoadBalancer*                                   |
     | Régió         | Válassza a **Nyugat-Európa** régiót.                                        |
-    | Típus          | Válassza ki **nyilvános**.                                        |
+    | Type          | Válassza ki **nyilvános**.                                        |
     | SKU           | Válassza ki **Standard**.                          |
     | Nyilvános IP-cím | Válassza az **Új létrehozása** lehetőséget. |
     | Nyilvános IP-cím neve              | Típus *myPublicIP* a szövegmezőben.   |
-    |Rendelkezésre állási zóna| Válassza ki **Zónaredundáns**.    |
+    |Rendelkezésre állási zónában| Válassza ki **Zónaredundáns**.    |
 
 3. Az a **felülvizsgálat + létrehozása** lapra, majd **létrehozás**.
 
@@ -86,7 +86,7 @@ Engedélyezi a Load Balancer monitorozhassa az alkalmazás állapotát, állapot
     | Beállítás | Érték |
     | ------- | ----- |
     | Name (Név) | Adja meg *myHealthProbe*. |
-    | Protokoll | Válassza ki **HTTP**. |
+    | Protocol | Válassza ki **HTTP**. |
     | Port | Adja meg *80-as*.|
     | Interval | Adja meg *15* számú **időköz** mintavételi kísérletek közötti másodpercek alatt. |
     | Nem kifogástalan állapot küszöbértéke | Válassza ki *2* számú **nem kifogástalan állapot küszöbértéke** vagy egymást követő mintavételi hiba, amely előtt a virtuális gép nem megfelelő állapotúnak számít.|
@@ -105,7 +105,7 @@ A terheléselosztási szabállyal azt lehet megadni, hogy a rendszer hogyan ossz
     | Beállítás | Érték |
     | ------- | ----- |
     | Name (Név) | Adja meg *myHTTPRule*. |
-    | Protokoll | Válassza ki **TCP**. |
+    | Protocol | Válassza ki **TCP**. |
     | Port | Adja meg *80-as*.|
     | Háttérport | Adja meg *80-as*. |
     | Háttérkészlet | Válassza ki *myBackendPool*.|
@@ -126,9 +126,9 @@ Ebben a szakaszban egy virtuális hálózat létrehozása, három virtuális gé
     | ------- | ----- |
     | Name (Név) | Adja meg a *myVNet* értéket. |
     | Címtér | Adja meg *10.1.0.0/16*. |
-    | Előfizetés | Válassza ki előfizetését.|
-    | Erőforráscsoport | Válassza ki a meglévő erőforrás - *myResourceGroupSLB*. |
-    | Location egység | Válassza a **Nyugat-Európa** régiót.|
+    | Subscription | Válassza ki előfizetését.|
+    | Resource group | Válassza ki a meglévő erőforrás - *myResourceGroupSLB*. |
+    | Location | Válassza a **Nyugat-Európa** régiót.|
     | Alhálózat - név | Adja meg a *myBackendSubnet* értéket. |
     | Alhálózat – címtartomány | Adja meg *10.1.0.0/24*. |
     
@@ -141,7 +141,7 @@ A standard Load Balancer csak támogatja a virtuális gépeket, a háttérkészl
 1. A portál bal felső oldalán válassza **erőforrás létrehozása** > **számítási** > **Windows Server 2016 Datacenter**. 
    
 1. A **hozzon létre egy virtuális gépet**adja meg a következő értékeket a **alapjai** lapon:
-   - **Előfizetés** > **erőforráscsoport**: Select **myResourceGroupSLB**.
+   - **Előfizetés** > **erőforráscsoport**: Válassza ki **myResourceGroupSLB**.
    - **Példány részletei** > **virtuális gép neve**: Típus *myVM1*.
    - **Példány részletei** > **régió** > Válasszon **Nyugat-Európa**.
    - **Példány részletei** > **rendelkezésre állási beállítások** > Válasszon **rendelkezésre állási zónák**. 

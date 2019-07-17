@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 12/21/2018
+ms.date: 07/16/2018
 ms.author: diberry
-ms.openlocfilehash: 87e006cc5d56e0c7eb5455147c5ce9eb40afc162
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 189514c51451dedfaab7b07f28d79f674b32f83a
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60597525"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68277537"
 ---
 # <a name="tutorial-identify-common-intents-and-entities"></a>Oktatóanyag: Közös szándékok és entitások azonosítása
 
@@ -61,7 +61,7 @@ A LUIS számos előre összeállított szándékot biztosít, amelyek segítenek
    * Utilities.StartOver
    * Utilities.Stop
 
-     Ezek a szándék hasznosak meghatározhatja a beszélgetést, ha a felhasználó van, és mi azok arra kérjük, hajtsa végre. 
+     Ezek a szándék hasznosak meghatározhatja a beszélgetést, ha a felhasználó van, és mi azok arra kérjük, hajtsa végre. Ezeket a leképezéseket használati az entitások tartalmaznak. Ezeket az entitásokat a rendszer automatikusan hozzáadja a LUIS-alkalmazásokon: száma, sorszámát és Utilities.DirectionalReference. 
 
 
 ## <a name="add-prebuilt-entities-to-help-with-common-data-type-extraction"></a>Gyakori típus adatkinyerés kiküszöbölni előre összeállított entitások hozzáadása

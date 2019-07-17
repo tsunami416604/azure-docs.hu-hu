@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 05/29/2019
+ms.date: 07/16/2019
 ms.author: diberry
-ms.openlocfilehash: a8a1f6fe9372d013d310c557161ceb813b8a478b
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 3682b9e0c38344be1522440290b46f8c10bd5607
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67163640"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68275905"
 ---
 # <a name="application-settings"></a>Alkalmazásbeállítások
 
@@ -24,8 +24,8 @@ Ezeket az alkalmazásbeállításokat vannak tárolva a [exportált](https://wes
 
 |Beállítás|Alapértelmezett érték|Megjegyzések|
 |--|--|--|
-|NormalizePunctuation|True (Igaz)|Eltávolítja az absztrakt.|
-|NormalizeDiacritics|True (Igaz)|Eltávolítja az e mellékjeleket.|
+|NormalizePunctuation|True|Eltávolítja az absztrakt.|
+|NormalizeDiacritics|True|Eltávolítja az e mellékjeleket.|
 
 ## <a name="diacritics-normalization"></a>E mellékjeleket normalizálási 
 
@@ -48,7 +48,7 @@ A következő utterances bemutatják, milyen hatással van a mellékjeleket norm
 
 #### <a name="brazilian-portuguese-pt-br-diacritics"></a>Brazíliai portugál nyelveken `pt-br` mellékjeleket
 
-|E mellékjeleket "false" értékűre.|E mellékjeleket "false" értékűre.|
+|E mellékjeleket "false" értékűre.|E mellékjeleket beállítása igaz értékre|
 |-|-|
 |`á`|`a`|
 |`â`|`a`|
@@ -66,7 +66,7 @@ A következő utterances bemutatják, milyen hatással van a mellékjeleket norm
 
 #### <a name="dutch-nl-nl-diacritics"></a>Holland `nl-nl` mellékjeleket
 
-|E mellékjeleket "false" értékűre.|E mellékjeleket "false" értékűre.|
+|E mellékjeleket "false" értékűre.|E mellékjeleket beállítása igaz értékre|
 |-|-|
 |`á`|`a`|
 |`à`|`a`|
@@ -85,7 +85,7 @@ A következő utterances bemutatják, milyen hatással van a mellékjeleket norm
 
 Ez magában foglalja a francia és a kanadai tápfolyadékok cseréjét.
 
-|E mellékjeleket "false" értékűre.|E mellékjeleket "false" értékűre.|
+|E mellékjeleket "false" értékűre.|E mellékjeleket beállítása igaz értékre|
 |--|--|
 |`é`|`e`|
 |`à`|`a`|
@@ -104,7 +104,7 @@ Ez magában foglalja a francia és a kanadai tápfolyadékok cseréjét.
 
 #### <a name="german-de-de-diacritics"></a>Német `de-de` mellékjeleket
 
-|E mellékjeleket "false" értékűre.|E mellékjeleket "false" értékűre.|
+|E mellékjeleket "false" értékűre.|E mellékjeleket beállítása igaz értékre|
 |--|--|
 |`ä`|`a`|
 |`ö`|`o`| 
@@ -112,7 +112,7 @@ Ez magában foglalja a francia és a kanadai tápfolyadékok cseréjét.
 
 #### <a name="italian-it-it-diacritics"></a>Olasz `it-it` mellékjeleket
 
-|E mellékjeleket "false" értékűre.|E mellékjeleket "false" értékűre.|
+|E mellékjeleket "false" értékűre.|E mellékjeleket beállítása igaz értékre|
 |--|--|
 |`à`|`a`|
 |`è`|`e`|
@@ -129,7 +129,7 @@ Ez magában foglalja a francia és a kanadai tápfolyadékok cseréjét.
 
 Ez magában foglalja, spanyol és a kanadai mexikói.
 
-|E mellékjeleket "false" értékűre.|E mellékjeleket "false" értékűre.|
+|E mellékjeleket "false" értékűre.|E mellékjeleket beállítása igaz értékre|
 |-|-|
 |`á`|`a`|
 |`é`|`e`|

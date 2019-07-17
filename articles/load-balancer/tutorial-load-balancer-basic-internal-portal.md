@@ -4,7 +4,7 @@ titlesuffix: Azure Load Balancer
 description: Ez az oktatóanyag bemutatja, hogyan hozhat létre belső alapszintű terheléselosztót az Azure portal használatával.
 services: load-balancer
 documentationcenter: na
-author: KumudD
+author: asudbring
 manager: twooley
 Customer intent: As an IT administrator, I want to create a load balancer that load balances incoming internal traffic to virtual machines within a specific zone in a region.
 ms.service: load-balancer
@@ -13,14 +13,14 @@ ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/27/2019
-ms.author: kumud
+ms.author: allensu
 ms.custom: seodec18
-ms.openlocfilehash: 56568cfb8fc659308475e581955e5acbdfd32b44
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 09a73b5d97e46797dd880f64383fdf03fd591f3d
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61318450"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68273497"
 ---
 # <a name="tutorial-balance-internal-traffic-load-with-a-basic-load-balancer-in-the-azure-portal"></a>Oktatóanyag: Egyenleg belső bejövő forgalmának terhelés egy alapszintű load balancer az Azure Portalon
 
@@ -89,16 +89,16 @@ Alapszintű belső load balancer létrehozása a portál használatával. A név
    
 2. Az a **alapjai** lapján a **terheléselosztó létrehozása** lap, adja meg vagy válassza ki a következő adatokat, fogadja el az alapértelmezett értékeket a többi beállításnál, és válassza **felülvizsgálat +létrehozása**:
 
-    | Beállítás                 | Érték                                              |
+    | Beállítás                 | Value                                              |
     | ---                     | ---                                                |
-    | Előfizetés               | Válassza ki előfizetését.    |    
-    | Erőforráscsoport         | Válassza ki **új létrehozása** , és írja be *MyResourceGroupLB* a szövegmezőben.|
+    | Subscription               | Válassza ki előfizetését.    |    
+    | Resource group         | Válassza ki **új létrehozása** , és írja be *MyResourceGroupLB* a szövegmezőben.|
     | Name (Név)                   | *myLoadBalancer*                                   |
     | Régió         | Válassza a **Nyugat-Európa** régiót.                                        |
-    | Típus          | Válassza ki **belső**.                                        |
+    | Type          | Válassza ki **belső**.                                        |
     | SKU           | Válassza az **Alapszintű** lehetőséget.                          |
     | Virtuális hálózat           | Válassza ki *MyVNet*.                          |    
-    | IP-címkiosztás              | Válassza ki **statikus**.   |
+    | IP-cím hozzárendelése              | Válassza ki **statikus**.   |
     | Magánhálózati IP-cím|Írjon be egy címet, amely a címterét a virtuális hálózatot és alhálózatot, például *10.3.0.7*.  |
 
 3. Az a **felülvizsgálat + létrehozása** lapra, majd **létrehozás**. 

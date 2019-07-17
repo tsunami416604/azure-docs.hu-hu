@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/11/2019
+ms.date: 07/16/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 42b7e59e39adbb485738ca66b7ad8e5ba8293ddc
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: ff2089e8abdde8e6a99de1be2be070fb457fa632
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65784999"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68276644"
 ---
 # <a name="call-microsoft-graph-api-from-a-universal-windows-platform-application-xaml"></a>A Microsoft Graph API meghívása (XAML) az univerzális Windows Platform-alkalmazásból
 
@@ -44,13 +44,13 @@ Ez az útmutató létrehoz egy minta UWP-alkalmazás, amely a Microsoft Graph AP
 
 Ez az útmutató a következő NuGet-csomagok használja:
 
-|Szalagtár|Leírás|
+|Erőforrástár|Leírás|
 |---|---|
 |[Microsoft.Identity.Client](https://www.nuget.org/packages/Microsoft.Identity.Client)|Microsoft Authentication Library|
 
 ## <a name="set-up-your-project"></a>A projekt beállítása
 
-Ebben a szakaszban egy Windows asztali .NET-alkalmazás (XAML) integrálása részletesen bemutatja a *Bejelentkezés Microsoft-*. Ezután lekérdezheti a webes API-k, amelyek egy jogkivonatot, például a Microsoft Graph API-t igényelnek.
+Ebben a szakaszban egy Windows asztali .NET-alkalmazás (XAML) integrálása részletesen bemutatja a *Bejelentkezés Microsoft-* . Ezután lekérdezheti a webes API-k, amelyek egy jogkivonatot, például a Microsoft Graph API-t igényelnek.
 
 Ez az útmutató létrehoz egy alkalmazás, amely egy gomb megjeleníti a lekérdezéseket a Graph API, a Kijelentkezés gombbal és a szövegmezők, amely a hívások eredményeinek megjelenítéséhez.
 
@@ -60,7 +60,7 @@ Ez az útmutató létrehoz egy alkalmazás, amely egy gomb megjeleníti a lekér
 ### <a name="create-your-application"></a>Az alkalmazás létrehozása
 
 1. A Visual Studióban válassza ki a **fájl** > **új** > **projekt**.
-2. A **sablonok**válassza **Visual C#**.
+2. A **sablonok**válassza **Visual C#** .
 3. Válassza a **Blank App (Universal Windows)** (Üres alkalmazás (Univerzális Windows-platform)) elemet.
 4. Nevezze el az alkalmazást, és válassza ki **OK**.
 5. Ha a rendszer kéri, válassza ki bármelyik verziója **cél** és **minimális** verziókat, és válassza ki **OK**.
@@ -147,7 +147,7 @@ Ez a szakasz bemutatja, hogyan használható az MSAL egy token beszerzése a Mic
         }
 
         /// <summary>
-        /// Call AcquireTokenAsync - to acquire a token requiring user to sign-in
+        /// Call AcquireTokenInteractive - to acquire a token requiring user to sign-in
         /// </summary>
         private async void CallGraphButton_Click(object sender, RoutedEventArgs e)
         {
@@ -329,7 +329,7 @@ Most szüksége az alkalmazás regisztrálása a Microsoft alkalmazásregisztrá
 1. Keresse meg a fejlesztők a Microsoft identity platform [alkalmazásregisztrációk](https://go.microsoft.com/fwlink/?linkid=2083908) lapot.
 1. Válassza ki **új regisztrációs**.
    - A **Név** szakaszban adja meg az alkalmazás felhasználói számára megjelenített, jelentéssel bíró alkalmazásnevet (például `UWP-App-calling-MSGraph`).
-   - Az a **támogatott fióktípusok** szakaszban jelölje be **fiókok minden olyan szervezeti directory és személyes Microsoft-fiókok (például a Skype, Xbox, Outlook.com)**.
+   - Az a **támogatott fióktípusok** szakaszban jelölje be **fiókok minden olyan szervezeti directory és személyes Microsoft-fiókok (például a Skype, Xbox, Outlook.com)** .
    - Válassza a **Regisztráció** elemet az alkalmazás létrehozásához.
 1. Az alkalmazás **áttekintése** lapon, keresse meg a **Alkalmazásazonosítót (ügyfél)** értékét, és jegyezze fel későbbi használatra. Lépjen vissza a Visual Studio, a nyílt **MainPage.xaml.cs**, és ClientId értékét cserélje le az imént regisztrált alkalmazás azonosítója:
 1. Az alkalmazás oldalainak listájában válassza a **Hitelesítés** elemet.
@@ -368,7 +368,7 @@ Amikor elkészült, teszteléséhez, válassza ki a **Microsoft Graph API meghí
 
 ![Bejelentkezési oldal](./media/tutorial-v2-windows-uwp/sign-in-page.png)
 
-### <a name="consent"></a>Hozzájárulás
+### <a name="consent"></a>Hozzájárulás megadása
 
 Az első alkalommal jelentkezik be az alkalmazás megjelenik a jóváhagyást kérő képernyőt, az alábbihoz hasonló. Válassza ki **Igen** explicit módon jóváhagyást eléréséhez:
 
@@ -385,7 +385,7 @@ A jogkivonat-n keresztül beszerzett alapvető adatait is megjelenik `AcquireTok
 |Tulajdonság  |Formátum  |Leírás |
 |---------|---------|---------|
 |**Felhasználónév** |<span>user@domain.com</span> |A felhasználónév, amely azonosítja a felhasználót.|
-|**Jogkivonat lejár** |DateTime |Az az időpont, amikor a jogkivonat érvényessége lejár. Az MSAL szükség szerint a token megújítása kiterjeszti a lejárati dátumot.|
+|**Jogkivonat lejár** |Datetime |Az az időpont, amikor a jogkivonat érvényessége lejár. Az MSAL szükség szerint a token megújítása kiterjeszti a lejárati dátumot.|
 
 ### <a name="more-information-about-scopes-and-delegated-permissions"></a>További információ a hatókörök és delegált engedélyek
 

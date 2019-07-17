@@ -59,6 +59,8 @@
   items:
     - name: Event Hubs-terminológia
       href: event-hubs-features.md
+    - name: Event Processor Host
+      href: event-hubs-event-processor-host.md
     - name: Rendelkezésre állás és konzisztencia
       href: event-hubs-availability-and-consistency.md
     - name: Méretezhetőség
@@ -90,8 +92,6 @@
           href: event-hubs-exchange-events-different-protocols.md
         - name: Programozási útmutató
           href: event-hubs-programming-guide.md
-        - name: Események fogadása az Event Processor Host használatával
-          href: event-hubs-event-processor-host.md
     - name: Adatok feldolgozása
       items:
         - name: Adatok feldolgozása az Azure Stream Analytics használatával

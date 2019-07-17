@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 02/19/2019
+ms.date: 07/16/2019
 ms.author: diberry
-ms.openlocfilehash: 118ac858103776e880e7304199279a7d50ad71b1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 2994f7b19d5a104b129dc4d7aff29dabbc89f0f4
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60599631"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68276021"
 ---
 # <a name="tutorial-fix-unsure-predictions-by-reviewing-endpoint-utterances"></a>Oktatóanyag: Javítsa ki a nem tudja, hogy előrejelzéseket végpont utterances áttekintésével
 Ebben az oktatóanyagban az alkalmazás előrejelzéseit fejlesztheti a LUIS által nem ismert LUIS HTTP-végponton keresztül kapott kimondott szövegek ellenőrzésével vagy javításával. Bizonyos kimondott szövegek esetében a szándékot, míg más kimondott szövegek esetében az entitást kell ellenőrizni. A végponti kimondott szövegek áttekintésének az ütemezett LUIS-karbantartás szerves részét kell képeznie. 
@@ -74,31 +74,22 @@ Ehhez a következő lépések szükségesek:
     
     [![Képernyőkép a felülvizsgálati végpont utterances az entitások megtekintéséhez a váltógomb kiemelésével](./media/luis-tutorial-review-endpoint-utterances/review-endpoint-utterances-with-token-view.png)](./media/luis-tutorial-review-endpoint-utterances/review-endpoint-utterances-with-token-view.png#lightbox)
 
+
+    Az utterance (kifejezés) `I'm looking for a job with Natural Language Processing`, nem szerepel a megfelelő célt. 
+
+    Az utterance (kifejezés) mispredicted volt az oka, hogy a **ApplyForJob** szándékot rendelkezik a 7 megcímkézzen képest 21 utterances **GetJobInformation**. A célt a további utterances nagyobb előrejelzési fog rendelkezni. Fontos, hogy a mennyiség és a szándék között a kimondott szöveg minőségét kiegyensúlyozott.
+
+1.  Való megfelelés érdekében az utterance (kifejezés), válassza ki a megfelelő leképezést, és jelölje meg a feladat entitás benne. A módosított utterance (kifejezés) Zöld jelölőnégyzet bejelölésével adja hozzá az alkalmazást. 
+
     |Kimondott szöveg|Megfelelő szándék|Hiányzó entitások|
     |:--|:--|:--|
-    |Természetes nyelvi feldolgozással kapcsolatos állást keresek|GetJobInfo|Állás – „Természetes nyelvi feldolgozás”|
+    |`I'm looking for a job with Natural Language Processing`|GetJobInfo|Állás – „Természetes nyelvi feldolgozás”|
 
-    Ez a kimondott szöveg nem a megfelelő szándékban van, és a pontszáma 50%-nál alacsonyabb. Az **ApplyForJob** szándék 21 kimondott szöveggel rendelkezik, míg a **GetJobInformation** csak héttel. A végponti kimondott szövegek helyes igazítása mellett további kimondott szövegeket kell hozzáadni a **GetJobInformation** szándékhoz. Ezt a feladatot önállóan kell végrehajtania. Minden szándéknak, a **None** szándék kivételével, megközelítőleg ugyanannyi példaként használt kimondott szöveggel kell rendelkeznie. A **None** szándéknak az összes kimondott szöveg 10%-ával kell rendelkeznie az alkalmazásban. 
+    Az utterance (kifejezés) az utterance (kifejezés) hozzáadása helyezi át a **tekintse át a végpont utterances** , a **GetJobInformation** szándékot. A végponti kimondott szöveg mostantól ennek a szándéknak a példaként szolgáló kimondott szövege. 
 
-1. Az `I'm looking for a job with Natual Language Processing` szándék esetében válassza ki a megfelelő szándékot (**GetJobInformation**) az **Aligned intent** (Igazított szándék) oszlopban. 
-
-    [![Képernyőkép a felülvizsgálati végpont kimondott szöveg utterance (kifejezés) beszédszándék igazítása](./media/luis-tutorial-review-endpoint-utterances/align-intent-1.png)](./media/luis-tutorial-review-endpoint-utterances/align-intent-1.png#lightbox)
-
-1. Ugyanabban a kimondott szövegben a `Natural Language Processing` entitása a keyPhrase. Ennek ehelyett **Job** (Állás) entitásnak kell lennie. Válassza a `Natural Language Processing` lehetőséget, majd a **Job** (Állás) entitást a listából.
-
-    [![Képernyőkép a felülvizsgálati végpont kimondott szöveg címkézés entitás az utterance (kifejezés)](./media/luis-tutorial-review-endpoint-utterances/label-entity.png)](./media/luis-tutorial-review-endpoint-utterances/label-entity.png#lightbox)
-
-1. Ugyanabban a sorban válassza ki a bekarikázott pipát az **Add to aligned intent** (Hozzáadás igazított szándékhoz) oszlopban. 
-
-    [![Képernyőkép az utterance (kifejezés) igazítása a leképezés véglegesítése](./media/luis-tutorial-review-endpoint-utterances/align-utterance.png)](./media/luis-tutorial-review-endpoint-utterances/align-utterance.png#lightbox)
-
-    Ez a művelet áthelyezi a kimondott szöveget a **Review endpoint utterances** (Végponti kimondott szövegek áttekintése) helyről a **GetJobInformation** szándékba. A végponti kimondott szöveg mostantól ennek a szándéknak a példaként szolgáló kimondott szövege. 
+    Igazítás megfelelően az utterance (kifejezés), valamint további utterances fel kell venni a **GetJobInformation** szándékot. Ezt a feladatot önállóan kell végrehajtania. Minden szándéknak, a **None** szándék kivételével, megközelítőleg ugyanannyi példaként használt kimondott szöveggel kell rendelkeznie. A **None** szándéknak az összes kimondott szöveg 10%-ával kell rendelkeznie az alkalmazásban. 
 
 1. Tekintse át a szándékban található további kimondott szövegeket, és lássa el őket címkével, illetve javítsa ki az **Igazított szándékot**, ha az nem megfelelő.
-
-1. Ha minden kimondott szöveg megfelelő, jelölje be az egyes sorok elején található jelölőnégyzeteket, majd válassza az **Add selected** (Kiválasztott hozzáadása) lehetőséget a kimondott szövegek megfelelő igazításához. 
-
-    [![Képernyőkép a fennmaradó utterances igazított beszédszándék véglegesítése](./media/luis-tutorial-review-endpoint-utterances/finalize-utterance-alignment.png)](./media/luis-tutorial-review-endpoint-utterances/finalize-utterance-alignment.png#lightbox)
 
 1. A listán már nem szabad ezeknek a kimondott szövegeknek megjelenniük. Ha további kimondott szövegek jelennek meg, haladjon végig a listán, javítsa ki a szándékokat, és címkézze meg a hiányzó entitásokat, amíg a listán már nem szerepel több elem. 
 

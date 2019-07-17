@@ -9,14 +9,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 02/22/2019
+ms.date: 07/16/2019
 ms.author: diberry
-ms.openlocfilehash: 33541d2a61c52476f6e314f6981a623390de8fa9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: e559d4a3366c45bd054cbf3a235805e048de3493
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60496904"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68276051"
 ---
 # <a name="tutorial-add-common-pattern-template-utterance-formats"></a>Oktatóanyag: Gyakori minta sablon utterance (kifejezés) formátumok hozzáadása
 
@@ -246,7 +246,7 @@ Ahhoz, hogy egy mintát egyeztetni lehessen egy kimondott szöveggel, a kimondot
 
 4. Miközben továbbra is a minták lapon, válassza ki a **szervezeti diagram – jelentések** szándékot, majd adja meg a következő sablon kimondott szöveg:
 
-    |Kimondottszöveg-sablonok|
+    |Kimondottszöveg-sablon|
     |:--|
     |Who are {Employee}['s] subordinates[?] (Kik {Alkalmazott} beosztottjai[?])|
     |Who reports to {Employee}[?] (Ki tartozik {Alkalmazott} alá[?])|

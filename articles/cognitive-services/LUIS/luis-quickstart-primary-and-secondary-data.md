@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 04/01/2019
+ms.date: 07/16/2019
 ms.author: diberry
-ms.openlocfilehash: ea9a2df1f06ba6836ef88bc57dc3f95fd31e1ee9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: a03a1224451411617f38c8cecafbef008aa08916
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66124156"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68276211"
 ---
 # <a name="tutorial-extract-names-with-simple-entity-and-a-phrase-list"></a>Oktatóanyag: Az egyszerű entitás és egy kifejezés lista nevének kinyerése
 
@@ -229,7 +229,7 @@ Nyissa meg a [feladatok-kifejezés-list.csv](https://github.com/Azure-Samples/co
 
 1. Válassza a **Create new phrase list** (Új kifejezéslista létrehozása) lehetőséget. 
 
-1. Az új kifejezéslistának adja a `JobNames` nevet és a jobs-phrase-list.csv fájlban található listát másolja a **Values** (Értékek) szövegmezőbe. Nyomja le az Enter billentyűt. 
+1. Az új kifejezéslistának adja a `JobNames` nevet és a jobs-phrase-list.csv fájlban található listát másolja a **Values** (Értékek) szövegmezőbe.
 
     [![Képernyőkép a hozzon létre új kifejezést tartalmazó párbeszédpanelen előugró](media/luis-quickstart-primary-and-secondary-data/hr-create-phrase-list-1.png "Képernyőkép az új kifejezést tartalmazó párbeszédpanelen előugró létrehozása")](media/luis-quickstart-primary-and-secondary-data/hr-create-phrase-list-1.png#lightbox)
 
@@ -237,7 +237,7 @@ Nyissa meg a [feladatok-kifejezés-list.csv](https://github.com/Azure-Samples/co
 
     Győződjön meg arról, hogy a **ezeket az értékeket felcserélhetők** be van jelölve, mert ezeket az értékeket minden kell kezelni a szinonimák feladatok. További tudnivalók a cserélhető és noninterchangeable [kifejezést a lista fogalmak](luis-concept-feature.md#how-to-use-phrase-lists).
 
-1. A kifejezéslista aktiválásához kattintson a **Save** (Mentés) gombra.
+1. Válassza ki **kész** a kifejezéslista aktiválásához.
 
     [![Képernyőkép a hozzon létre új kifejezést tartalmazó párbeszédpanelen előugró szavakat tartalmaznak az értékek listában kifejezés](media/luis-quickstart-primary-and-secondary-data/hr-create-phrase-list-2.png "képernyőkép hozzon létre új kifejezést tartalmazó párbeszédpanelen előugró szavakat tartalmaznak az értékek listában kifejezés")](media/luis-quickstart-primary-and-secondary-data/hr-create-phrase-list-2.png#lightbox)
 

@@ -8,14 +8,14 @@ ms.service: cognitive-services
 services: cognitive-services
 ms.subservice: language-understanding
 ms.topic: quickstart
-ms.date: 02/14/2019
+ms.date: 07/16/2019
 ms.author: diberry
-ms.openlocfilehash: 086f55094474d4c06e52001d77630932cd04213c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: af20d555a83e8d229ed5d83d3b1d3f242de1e4a8
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60557426"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68275810"
 ---
 # <a name="quickstart-query-prediction-endpoint-with-c-net-sdk"></a>Gyors útmutató: Előrejelzési koncového bodu lekérdezése C# .NET SDK-val
 
@@ -57,8 +57,8 @@ az cognitiveservices account create \
 
 Hozzon létre egy .NET Core console projektet a Visual Studio Community 2017.
 
-1. Open Visual Studio Community 2017.
-1. Hozzon létre egy új projektet a **Visual C#**  válassza **Console App (.NET Core)**.
+1. Nyissa meg a Visual Studio Community 2017.
+1. Hozzon létre egy új projektet a **Visual C#**  válassza **Console App (.NET Core)** .
 1. Adja meg a projekt nevét `QueryPrediction`, hagyja a többi alapértelmezett értéket, és válassza ki **OK**.
     Ez létrehoz egy egyszerű projekt nevű fájl elsődleges kód **Program.cs**.
 

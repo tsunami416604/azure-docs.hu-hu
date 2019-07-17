@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 07/05/2019
+ms.date: 07/16/2019
 ms.author: erhopf
-ms.openlocfilehash: 121e94228ca85684b20f2ee43c0f7fa3af82fc73
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: cb30b476471e140f96fa1d159e9a16898f529607
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67606338"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68277492"
 ---
 # <a name="speech-devices-sdk-microphone-array-recommendations"></a>Beszéd eszközök SDK mikrofon tömb javaslatok
 
@@ -43,34 +43,34 @@ A javasolt tulajdonságok mikrofonok kiválasztásakor a következők:
 
 | Paraméter                         | Ajánlott                       |
 |-----------------------------------|-----------------------------------|
-| SNR                               | \> 65 dB (1 kHz signal 94 dBSPL, A-weighted noise)   |
-| Amplitúdó egyeztetése                | ± 1 dB @ 1 kHz                     |
+| SNR                               | \>= (1 kHz jel 94 dBSPL, A-val súlyozott) 65 dB   |
+| Amplitúdó egyeztetése                | 1 kHz @ 1 dB ±                     |
 | Fázis egyeztetése                    | \+ 2° 1 kHz @                       |
-| Akusztikai túlterhelési pont (OFJ)     | \> 120 dBSPL (THD = 10%)          |
+| Akusztikai túlterhelési pont (OFJ)     | \>= 120 dBSPL (vonatkozik = 10 %)          |
 | Átviteli sebesség                          | Minimális 24 bites                    |
 | Mintavételezési frekvencia                     | Minimum 16 kHz\*                   |
-| Directivity                       | Körsugárzó                   |
 | Gyakoriság válasz                | ± 3 dB, 200-8000-es Hz lebegőpontos maszk\*|
 | Megbízhatóság                       | Tárolási hőmérséklet-70 C tartsuk ott-40 C<br />Működési hőmérséklet 20 ° C 55 c  |
 
-*\*Nagyobb mintavételi arányt vagy "szélesebb" gyakoriság tartományokat is szükség lehet magas színvonalú kommunikáció (VoIP) alkalmazások*
+*\* Nagyobb mintavételi arányt vagy "szélesebb" gyakoriság tartományokat is szükség lehet magas színvonalú kommunikáció (VoIP) alkalmazások*
 
 Jó összetevő kijelölés jó elektroakusztikai integrációs annak érdekében, hogy a teljesítmény, a használt összetevők funkcionalitásának megsértése kell megfeleltetni. Egyedi alkalmazási helyzetek is szükségessé teheti a további követelmények (például: hőmérséklet-tartományokban működő).
 
 ## <a name="microphone-array-integration"></a>Mikrofon tömb integráció
 
-A teljesítmény a tömbök integrálva az eszköz és a rögzített nyereséget vagy EQ után meg kell felelnie az alábbi javaslatokat:
+A mikrofon-tömb, amikor egy eszköz integrálva a teljesítmény, az összetevő-specifikáció különbözni fog. Fontos győződjön meg arról, hogy a mikrofonok is teljesül az integrációt követő. Ezért az eszköz teljesítménye mért, miután rögzített szerezhet vagy EQ meg kell felelnie az alábbi javaslatokat:
 
 |  Paraméter        |    Ajánlott |
 |--------------------|----------------------------------------------------|
-|  SNR                 | \> 65 dB (1 kHz signal 94 dBSPL, A-weighted noise) |
+|  SNR                 | \> 63 dB (1 kHz jel 94 dBSPL, A-val súlyozott) |
 |  Kimeneti érzékenység  | -26 dBFS/Pa @ 1 kHz (ajánlott) |
 |  Amplitúdó egyeztetése  | ± 2 dB, 200-8000 Hz |
-|  Fázis egyeztetése      | \+ 5°, 200-8000-es Hz |
-| THD%                 | Az időtartomány legfeljebb 1 %, 200-8000-es Hz, 94 dBSPL, 5. rendelés |
-|  Gyakoriság válasz  | ± 6 dB, 200-8000-es Hz lebegőpontos maszk\* |
+| A(Z) % VONATKOZIK\*                 | Az időtartomány legfeljebb 1 %, 200-8000-es Hz, 94 dBSPL, 5. rendelés |
+|  Gyakoriság válasz  | ± 6 dB, 200-8000-es Hz lebegőpontos maszk\*\* |
 
-*\*"Szélesebb" gyakoriság tartományok magas színvonalú kommunikáció (VoIP) alkalmazások esetén szükséges lehet*
+*\*\* Alacsony torzulást beszélő mérésére vonatkozik (pl. Neumann KH120) van szükség.*
+
+*\*\* "Szélesebb" gyakoriság tartományok magas színvonalú kommunikáció (VoIP) alkalmazások esetén szükséges lehet*
 
 ## <a name="speaker-integration-recommendations"></a>Hangszóró integrációs javaslatok
 
@@ -80,7 +80,7 @@ Echo megszakítás speech recognition eszközök előadói tartalmazó szükség
 |-----------------------------------|-----------------------------------|
 | Lineáris kapcsolatos szempontok          | Nincs nem lineáris feldolgozása után speaker referencia, ellenkező esetben egy visszacsatolási hardveralapú referencia adatfolyam megadása kötelező  |
 | Hangszóró visszacsatolási                  | Nyújtja WASAPI, saját API-k, egyéni ALSA beépülő modult (Linux), vagy a belső vezérlőprogram csatornán keresztül biztosítja      |
-| THD%                              | 3\. frekvenciáin legalább 5. ahhoz, @ 0,8 m ≤ 6.3 %, 315-500 Hz az időtartomány legfeljebb 5 % 630 – 5000 Hz 70 dBA lejátszás                 |
+| A(Z) % VONATKOZIK                              | 3\. frekvenciáin legalább 5. ahhoz, @ 0,8 m ≤ 6.3 %, 315-500 Hz az időtartomány legfeljebb 5 % 630 – 5000 Hz 70 dBA lejátszás                 |
 | A mikrofon echo kapcsoló      | \> a mic szintre normalized ITU-T G.122 melléklet B.4 módszerrel TCLw-10 dB<br />TCLw = TCLwmeasured \+ (kimeneti érzékenységi szint – mért cél)<br />TCLw = TCLwmeasured \+ (mért szint – (-26)) |
 
 ## <a name="integration-design-architecture"></a>Integráció tervezés architektúrájának
