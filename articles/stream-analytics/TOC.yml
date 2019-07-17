@@ -94,10 +94,12 @@
           href: stream-analytics-clean-up-your-job.md
         - name: Feladatok párosítása a megbízhatóság érdekében
           href: stream-analytics-job-reliability.md
-        - name: Hitelesítés felügyelt identitással
+        - name: Hitelesítés felügyelt identitással – 1. generációs ADLS-kimenet
           href: stream-analytics-managed-identities-adls.md
         - name: SQL-referenciaadatok használata
           href: sql-reference-data.md
+        - name: Hitelesítés felügyelt identitással – Blobkimenet
+          href: blob-output-managed-identity.md
     - name: Megoldások kiépítése
       items:
         - name: Twitter-hangulatelemzés

@@ -17,6 +17,8 @@
       href: notifications.md
     - name: Mi az a bejelentkezési élmény?
       href: flows.md
+    - name: Identity Protection- és B2B-felhasználók
+      href: concept-identity-protection-b2b.md
 - name: Útmutatók
   expanded: true
   items:

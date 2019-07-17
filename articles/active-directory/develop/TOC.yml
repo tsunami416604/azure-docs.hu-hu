@@ -81,8 +81,8 @@
       href: sample-v2-code.md
     - name: Alapelvek
       items:
-        - name: Alkalmazástípusok
-          href: v2-app-types.md
+        - name: Hitelesítési folyamatok és alkalmazás-forgatókönyvek
+          href: authentication-flows-app-scenarios.md
         - name: Alkalmazáshasználati helyzetek
           items:
             - name: Bejelentkezési közönség
@@ -227,6 +227,8 @@
                   href: msal-client-application-configuration.md
                 - name: Alkalmazások inicializálása (.NET)
                   href: msal-net-initializing-client-applications.md
+                - name: Ügyféltények (.NET)
+                  href: msal-net-client-assertions.md
                 - name: Alkalmazások inicializálása (JS)
                   href: msal-js-initializing-client-applications.md
             - name: Hibák és kivételek kezelése
@@ -267,10 +269,12 @@
                       href: msal-js-known-issues-ie-edge-browsers.md
                     - name: Ismert problémák – Safari
                       href: msal-js-known-issues-safari-browser.md
-        - name: Hitelesítés
+        - name: Hitelesítési protokoll
           items:
             - name: Hitelesítési alapok
               href: authentication-scenarios.md
+            - name: Alkalmazástípusok és az OAuth2.0
+              href: v2-app-types.md
             - name: Az OAuth 2.0 és az OpenID Connect protokoll
               href: active-directory-v2-protocols.md
             - name: OpenID Connect

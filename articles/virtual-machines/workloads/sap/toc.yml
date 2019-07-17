@@ -208,6 +208,8 @@
               href: sap-ascs-ha-multi-sid-wsfc-file-share.md
     - name: Azure Site Recovery az SAP-vészhelyreállításhoz
       href: '../../../site-recovery/site-recovery-workload.md#protect-sap'
+    - name: Azure-beli közelségi elhelyezési csoportok az optimális hálózati késés érdekében SAP-alkalmazások használatával
+      href: sap-proximity-placement-scenarios.md
 - name: AAD SAP-identitásintegráció és egyszeri bejelentkezés
   items:
     - name: Integráció az SAP-felhővel

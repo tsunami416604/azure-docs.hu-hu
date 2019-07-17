@@ -81,20 +81,6 @@
           href: tenant-restrictions.md
         - name: SAML-jogkivonat titkosításának konfigurálása (előzetes verzió)
           href: howto-saml-token-encryption.md
-    - name: Egyszeri bejelentkezés
-      items:
-        - name: Mi az az egyszeri bejelentkezés?
-          href: what-is-single-sign-on.md
-        - name: Egyszeri bejelentkezés üzembe helyezésének tervezése
-          href: plan-sso-deployment.md
-        - name: Az egyszeri bejelentkezés (SSO) engedélyezése több-bérlős alkalmazás esetében
-          href: isv-sso-content.md
-        - name: A megfelelő SSO összevonási protokoll kiválasztása
-          href: isv-choose-multi-tenant-federation.md
-        - name: Azure-bérlő létrehozása több-bérlős alkalmazás esetében
-          href: isv-tenant-multi-tenant-app.md
-        - name: SSO-dokumentáció létrehozása és közzététele az alkalmazás esetében
-          href: isv-create-sso-documentation.md
     - name: Végfelhasználói portálok
       href: end-user-experiences.md
 - name: Útmutatók

@@ -292,6 +292,8 @@
       displayName: 'module, import'
 - name: Több összetevőt érintő forgatókönyvek
   items:
+    - name: E-mail küldése runbookból a SendGrid használatával
+      href: automation-send-email.md
     - name: Runbook-katalógus
       href: automation-runbook-gallery.md
     - name: Runbookok monitorozása metrikariasztásokkal
