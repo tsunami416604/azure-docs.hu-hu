@@ -62,7 +62,7 @@ A REST API vagy a Resource Manager-sablon használatakor közé tartozik az ért
 
 | Mező | Kötelező? | Leírás |
 | --- | --- | --- |
-| A művelet |igen |Az értéknek kell lennie a "Méretezés" |
+| operation |igen |Az értéknek kell lennie a "Méretezés" |
 | sendToSubscriptionAdministrator |igen |érték lehet "igaz" vagy "false" |
 | sendToSubscriptionCoAdministrators |igen |érték lehet "igaz" vagy "false" |
 | customEmails |igen |érték lehet null értékű [] vagy e-mailek karakterlánc tömbje |
@@ -106,7 +106,7 @@ Ha az automatikus skálázási értesítés jön létre, a webhook hasznos adata
 | Mező | Kötelező? | Leírás |
 | --- | --- | --- |
 | status |igen |Az állapot, amely azt jelzi, hogy létrejött-e egy automatikus skálázási műveletet |
-| A művelet |igen |Példányok tervezni "Horizontális Felskálázás" lesz, és példányok csökkenését, a "Méretezés a" |
+| operation |igen |Példányok tervezni "Horizontális Felskálázás" lesz, és példányok csökkenését, a "Méretezés a" |
 | context |igen |Az automatikus skálázási művelet környezet |
 | timestamp |igen |Időbélyeg, ha az automatikus skálázási műveletet |
 | id |Igen |Automatikus skálázási beállítás erőforrás-kezelő azonosítója |
