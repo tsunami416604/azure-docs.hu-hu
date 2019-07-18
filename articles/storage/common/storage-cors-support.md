@@ -83,7 +83,7 @@ CORS-szabályok a következő korlátozások vonatkoznak:
 * Egy engedélyezett fejléc, közzétett fejléc vagy engedélyezett származási hossza legfeljebb 256 karakter.
 * Engedélyezett fejlécek és közzétett fejlécek lehetnek:
   * Szövegkonstans fejlécek, ahol a pontos fejlécnév áll rendelkezésre, mint például **x-ms-meta – feldolgozott**. Egy legfeljebb 64 szövegkonstans fejlécek a kérésben adható meg.
-  * A fejlécek, ahol a fejléc előtag áll rendelkezésre, például a következő előtaggal ** x-ms-meta-data x. Ily módon előtag megadása lehetővé teszi, vagy tesz közzé bármilyen fejlécet, amely a megadott előtaggal kezdődik. Legfeljebb két előtaggal ellátott fejléc adható meg a kérés adható meg.
+  * A fejlécek, ahol a fejléc előtag áll rendelkezésre, például a következő előtaggal **x-ms-meta-data x***. Ily módon előtag megadása lehetővé teszi, vagy tesz közzé bármilyen fejlécet, amely a megadott előtaggal kezdődik. Legfeljebb két előtaggal ellátott fejléc adható meg a kérés adható meg.
 * A megadott metódusok (vagy HTTP-műveletek) a **AllowedMethods** elemet meg kell felelnie az Azure storage szolgáltatás API-k által támogatott módszerek. Támogatott módszerek állnak a DELETE, GET, HEAD, EGYESÍTÉS, POST, beállítások és PUT.
 
 ## <a name="understanding-cors-rule-evaluation-logic"></a>CORS-szabály kiértékelési logika ismertetése

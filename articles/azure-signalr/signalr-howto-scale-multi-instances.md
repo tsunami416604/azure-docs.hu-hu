@@ -64,7 +64,7 @@ Alapértelmezés szerint az SDK-t használja a [DefaultEndpointRouter](https://g
 
 2. Kiszolgáló üzenet-útválasztása
 
-    Ha a * üzenetet küld egy adott ** kapcsolat x és a cél kapcsolat továbbítja a rendszer az aktuális kiszolgáló, az üzenet közvetlenül csatlakoztatott, hogy a végpont kerül. Ellenkező esetben az üzenetek vannak küldött minden Azure SignalR-végpontra.
+    Ha a *üzenetet küld egy adott **kapcsolat*** x és a cél kapcsolat továbbítja a rendszer az aktuális kiszolgáló, az üzenet közvetlenül csatlakoztatott, hogy a végpont kerül. Ellenkező esetben az üzenetek vannak küldött minden Azure SignalR-végpontra.
 
 #### <a name="customize-routing-algorithm"></a>Útválasztási algoritmust testreszabása
 A saját útválasztó hozhat létre, ha alapos ismeretére azonosításához milyen végpontokat, az üzenetek el kell küldeni.
