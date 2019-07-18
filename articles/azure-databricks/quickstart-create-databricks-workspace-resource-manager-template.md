@@ -1,5 +1,5 @@
 ---
-title: 'Gyors útmutató: Spark-feladatok futtatása Azure databricksen Resource Manager-sablon használatával '
+title: 'Gyors útmutató: Spark-feladatok futtatása Azure Databricks Resource Manager-sablon használatával '
 description: Ez a rövid útmutató bemutatja, hogyan használható az Azure Resource Manager-sablon egy Azure Databricks-munkaterület, majd egy Apache Spark-fürt létrehozásához, illetve Spark-feladatok futtatásához.
 services: azure-databricks
 ms.service: azure-databricks
@@ -9,25 +9,25 @@ ms.reviewer: jasonh
 ms.workload: big-data
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 11/12/2018
-ms.openlocfilehash: bee2be55ef34de90d7fec23844e5a2604e6a1294
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.date: 07/12/2019
+ms.openlocfilehash: 612c249abc3124e33badebd545f7220dd4cfc593
+ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62126715"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68311726"
 ---
-# <a name="quickstart-run-a-spark-job-on-azure-databricks-using-the-azure-resource-manager-template"></a>Gyors útmutató: Spark-feladatok futtatása Azure databricksen az Azure Resource Manager-sablon használatával
+# <a name="quickstart-run-a-spark-job-on-azure-databricks-using-the-azure-resource-manager-template"></a>Gyors útmutató: Spark-feladatok futtatása Azure Databricks a Azure Resource Manager sablon használatával
 
-Ez a rövid útmutató bemutatja, hogyan hozhat létre egy Azure Databricks-munkaterületet az Azure Resource Manager-sablon használatával. A munkaterület segítségével létrehoz egy Apache Spark-fürtöt, és futtat egy Spark-feladatot a Databricks-fürtön. További információt az Azure Databricksről [az Azure Databrickset](what-is-azure-databricks.md) ismertető cikkben talál.
+Ebben a rövid útmutatóban egy Azure Resource Manager sablonnal hoz létre egy Apache Spark-fürtöt tartalmazó Azure Databricks-munkaterületet. Futtat egy feladatot a fürtön, és egyéni diagramokkal valós idejű jelentéseket hozhat létre az ingyenes/fizetős használatból a demográfiai adatok alapján.
 
-Ebben a rövid útmutatóban a Spark-feladat részeként egy rádióadó előfizetési adatait elemzi, hogy a demográfiai adatok alapján betekintést nyerjen az ingyenes/fizetős használatba.
+## <a name="prerequisites"></a>Előfeltételek
 
-Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
+- Azure-előfizetés – [hozzon létre egyet ingyen](https://azure.microsoft.com/free/)
 
-> [!Note]
-> Ebben az oktatóanyagban nem lehet elvégezni használatával **Azure ingyenes próba-előfizetést**.
-> Ha egy ingyenes fiókot használna az Azure Databricks-fürt létrehozásához, a fürt létrehozása előtt nyissa meg a saját profilját, és módosítsa az előfizetését **használatalapú fizetésre**. További információkért lásd az [ingyenes Azure-fiókot](https://azure.microsoft.com/free/) ismertető cikket.
+## <a name="sign-in-to-the-azure-portal"></a>Jelentkezzen be az Azure Portalra
+
+Jelentkezzen be az [Azure Portalra](https://portal.azure.com). Ez az oktatóanyag nem hajtható végre az ingyenes Azure próbaverziós előfizetés használatával. Ha egy ingyenes fiókot használna az Azure Databricks-fürt létrehozásához, a fürt létrehozása előtt nyissa meg a saját profilját, és módosítsa az előfizetését **használatalapú fizetésre**. További információkért lásd az [ingyenes Azure-fiókot](https://azure.microsoft.com/free/) ismertető cikket.
 
 ## <a name="create-an-azure-databricks-workspace"></a>Azure Databricks-munkaterület létrehozása
 
@@ -84,7 +84,7 @@ További információt a fürtök létrehozásáról a [Spark-fürtök az Azure 
 Mielőtt ehhez a szakaszhoz hozzáfogna, a következő előfeltételeknek kell eleget tennie:
 
 * [Hozzon létre egy Azure Blob-tárfiókot](../storage/common/storage-quickstart-create-account.md).
-* Töltse le a JSON-mintafájlt [a Githubról](https://github.com/Azure/usql/blob/master/Examples/Samples/Data/json/radiowebsite/small_radio_json.json).
+* Töltsön le egy minta JSON [-fájlt a githubról](https://github.com/Azure/usql/blob/master/Examples/Samples/Data/json/radiowebsite/small_radio_json.json).
 * Töltse fel a JSON-mintafájlt a már létrehozott Azure Blob-tárfiókba. A fájlfeltöltéshez a [Microsoft Azure Storage Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md) használatát javasoljuk.
 
 A következő feladatok végrehajtásával hozzon létre egy jegyzetfüzetet a Databricksben, konfigurálja a jegyzetfüzetet úgy, hogy az Azure Blob-tárfiókból olvassa be az adatokat, majd ezt követően futtassa le a Spark SQL-feladatot az adatokon.
@@ -108,7 +108,7 @@ A következő feladatok végrehajtásával hozzon létre egy jegyzetfüzetet a D
 
    A következő kódtöredékben cserélje le a `{YOUR CONTAINER NAME}`, `{YOUR STORAGE ACCOUNT NAME}` és `{YOUR STORAGE ACCOUNT ACCESS KEY}` értékeket az Azure Storage-fiókjának megfelelő értékekre. Illessze be a kódtöredéket a notebook egyik üres cellájába, majd nyomja le a SHIFT + ENTER billentyűparancsot a kódcella futtatásához.
 
-   * **A tárfiók csatlakoztatása DBFS-szel (ajánlott)**. Ebben a kódtöredékben az Azure Storage-fiók útvonala a következőhöz van csatlakoztatva: `/mnt/mypath`. Így a jövőben az Azure Storage-fiók hozzáférésekor nem kell megadnia a teljes útvonalat. Egyszerűen használhatja a következőt: `/mnt/mypath`.
+   * **A tárfiók csatlakoztatása DBFS-szel (ajánlott)** . Ebben a kódtöredékben az Azure Storage-fiók útvonala a következőhöz van csatlakoztatva: `/mnt/mypath`. Így a jövőben az Azure Storage-fiók hozzáférésekor nem kell megadnia a teljes útvonalat. Egyszerűen használhatja a következőt: `/mnt/mypath`.
 
           dbutils.fs.mount(
             source = "wasbs://{YOUR CONTAINER NAME}@{YOUR STORAGE ACCOUNT NAME}.blob.core.windows.net/",
@@ -151,7 +151,7 @@ A következő feladatok végrehajtásával hozzon létre egy jegyzetfüzetet a D
 
    ![JSON-mintaadatok](./media/quickstart-create-databricks-workspace-resource-manager-template/databricks-sample-csv-data.png "JSON-mintaadatok")
 
-   Többek között, a mintaadatok rögzíti a választógomb csatorna tartalmazzák (oszlopnév, **nemek**) és a saját előfizetés-e ingyenes vagy fizetős (oszlopnév, **szint**).
+   Egyebek között a mintaadatok rögzítik a rádiós csatorna közönségét (oszlopnév, **nem),** valamint azt, hogy az előfizetésük ingyenes vagy fizetős-e (oszlopnév, **szint**).
 
 7. A következőkben vizuálisan jelenítjük meg ezeket az adatokat annak megfelelően, hogy az egyes nemek szerint hány felhasználó rendelkezik ingyenes fiókkal, illetve hányan fizetnek az előfizetésért. A táblázatos kimenet alján kattintson az **Oszlopdiagram** ikonra, majd az **Ábrázolási beállítások** elemre.
 
@@ -182,7 +182,7 @@ Ha végzett a cikkel, leállíthatja a fürtöt. Ehhez az Azure Databricks-munka
 
 ## <a name="next-steps"></a>További lépések
 
-Ennek a cikknek a segítségével létrehozott egy Spark-fürtöt az Azure Databricksben, illetve lefuttatott egy Spark-feladatot az Azure-tárterület adatainak felhasználásával. A [Spark-adatforrások](https://docs.azuredatabricks.net/spark/latest/data-sources/index.html) áttekintésével azt is megismerheti, hogyan importálhat adatokat más adatforrásokból az Azure Databricksbe. A Resource Manager-sablont is megtekintheti, ha [egyéni VNET-címmel szeretne létrehozni Azure Databricks-munkaterületet](https://github.com/Azure/azure-quickstart-templates/tree/master/101-databricks-workspace-with-custom-vnet-address). A JSON-szintaxist és a egy sablonban használandó tulajdonságokat: [Microsoft.Databricks/workspaces](/azure/templates/microsoft.databricks/workspaces) tárfióksablonok referenciáját.
+Ennek a cikknek a segítségével létrehozott egy Spark-fürtöt az Azure Databricksben, illetve lefuttatott egy Spark-feladatot az Azure-tárterület adatainak felhasználásával. A [Spark-adatforrások](https://docs.azuredatabricks.net/spark/latest/data-sources/index.html) áttekintésével azt is megismerheti, hogyan importálhat adatokat más adatforrásokból az Azure Databricksbe. A Resource Manager-sablont is megtekintheti, ha [egyéni VNET-címmel szeretne létrehozni Azure Databricks-munkaterületet](https://github.com/Azure/azure-quickstart-templates/tree/master/101-databricks-workspace-with-custom-vnet-address). A sablonban használandó JSON-szintaxis és-tulajdonságok a [Microsoft. Databricks/](/azure/templates/microsoft.databricks/workspaces) munkaterületek sablonjának dokumentációjában találhatók.
 
 Folytassa a következő cikkel annak megismeréséhez, hogyan végezhet ETL-műveletet (adatok kinyerését, átalakítását és betöltését) az Azure Databricks használatával.
 

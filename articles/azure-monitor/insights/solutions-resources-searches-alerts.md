@@ -179,7 +179,7 @@ A riasztási művelet erőforrás tulajdonságait az alábbi táblázatok ismert
 | type | Igen | A művelet típusa.  Ez a **riasztás** riasztási műveletek esetében. |
 | name | Igen | A riasztás megjelenítendő neve.  Ez a riasztási szabályt a konzolon megjelenített nevet. |
 | description | Nem | A riasztás leírását. |
-| severity | Igen | A következő értékek közül a riasztásbejegyzést súlyossága:<br><br> **critical**<br>**warning**<br>**Tájékoztató**
+| Severity | Igen | A következő értékek közül a riasztásbejegyzést súlyossága:<br><br> **critical**<br>**warning**<br>**Tájékoztató**
 
 
 #### <a name="threshold"></a>Küszöbérték
@@ -199,8 +199,8 @@ Ez a szakasz nem kötelező. Adja meg egy metrikamérési riasztás.
 | Elem neve | Szükséges | description |
 |:--|:--|:--|
 | TriggerCondition | Igen | Annak megadása, hogy a küszöbértéket az adatszivárgás vagy a következő értékek közül egymás utáni incidensek száma összesen:<br><br>**Teljes<br>egymást követő** |
-| Művelet | Igen | A következő értékek közül az összehasonlító operátort:<br><br>**gt = nagyobb, mint<br>lt = kisebb, mint** |
-| Érték | Igen | A feltételeknek teljesülniük kell a riasztást kiváltó idők számát. |
+| Operator | Igen | A következő értékek közül az összehasonlító operátort:<br><br>**gt = nagyobb, mint<br>lt = kisebb, mint** |
+| Value | Igen | A feltételeknek teljesülniük kell a riasztást kiváltó idők számát. |
 
 
 #### <a name="throttling"></a>Throttling

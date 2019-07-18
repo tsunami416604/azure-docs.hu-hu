@@ -108,7 +108,7 @@ Az automatikus skálázási beállítás séma mutatja be, a következő automat
 | metricTrigger | statisztika | A timeGrain időszakban használt összesítési módszer. Ha például **statisztika = "Average"** és **timeGrain = "PT1M"** azt jelenti, hogy a metrikák legyenek összesítve 1 percenként átlaga. Ez a tulajdonság szabja meg, hogyan mintavételezés a metrikát. |
 | metricTrigger | timeWindow | A metrikák visszakeresnünk időtartama. Ha például **timeWindow = "PT10M"** azt jelenti, hogy minden alkalommal, amikor az automatikus skálázási funkció az lekérdezi metrikák az elmúlt 10 percben. Az időtartomány lehetővé teszi, hogy a metrikák lesz normalizálva, és elkerülhető az átmeneti csúcsterhelésekre való reagálás. |
 | metricTrigger | timeAggregation | Az összesítési módszer összesíthetők a mintavételezett metrikák. Ha például **TimeAggregation = "Average"** kell összesíteni a mintavételezett metrikák átlaga. Az előző esetben a tíz 1 perces mintát venni, és az átlagos őket. |
-| rule | scaleAction | A szabály a metricTrigger kezdeményezése esetén végrehajtandó műveletet. |
+| rules | scaleAction | A szabály a metricTrigger kezdeményezése esetén végrehajtandó műveletet. |
 | scaleAction | direction | "Növelni" horizontális felskálázás, vagy "Csökkentéséhez" méret esetén.|
 | scaleAction | value | Mennyi növelése vagy csökkentése érdekében az erőforrás kapacitását. |
 | scaleAction | utáni | Mennyi ideig eltelte után a skálázási művelet újbóli skálázás előtt. Például ha **utáni = "PT10M"** , automatikus méretezés nem kísérli meg méretezését, ezáltal újra egy másik 10 perc. A utáni, hogy hozzáadását és eltávolítását a példányok után stabilizálódhatnak a metrikák engedélyezése. |

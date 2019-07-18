@@ -41,11 +41,11 @@ A legegyszerűbb szerkezetét, a sablon a következő elemekből áll:
 | $schema |Igen |A JSON-fájl, amely leírja a sablon nyelvének verziója helye.<br><br> Erőforráscsoportok üzemelő példányainak használja: `https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#`<br><br>Előfizetések üzemelő példányai használja: `https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentTemplate.json#` |
 | contentVersion |Igen |A sablon (például 1.0.0.0) verziója. Bármilyen értéket megadhat ehhez az elemhez. A dokumentum jelentős változásokat ezt az értéket használja a sablonban. A sablon használatával erőforrások üzembe helyezésekor, ezt az értéket segítségével győződjön meg arról, hogy a megfelelő sablon használatban van-e. |
 | apiProfile |Nem | Egy API-verzió, amely erőforrástípusok API-verziók gyűjteményének szolgál. Ez az érték használatával elkerülése érdekében, hogy meg kellene adni az egyes erőforrások API-verziók a sablonban. Adja meg az API-profil verziót, és API-verziót, az erőforrástípushoz nem ad meg, ha a Resource Manager API verzióját használja az erőforrás típusát, akkor a profilban megadott.<br><br>Az API-profil tulajdonság akkor hasznos, ha a különböző környezetekben, például az Azure Stack és a globális Azure-sablonok telepítésével. Az API-profil verzió használatával győződjön meg arról, hogy a sablon automatikusan használja mindkét környezetben támogatott. A jelenlegi API-profil verziók és az erőforrás-profilban megadott API-verziók listáját lásd: [API profil](https://github.com/Azure/azure-rest-api-specs/tree/master/profile).<br><br>További információkért lásd: [nyomon követése az API-profilok használatával verziók](templates-cloud-consistency.md#track-versions-using-api-profiles). |
-| [parameters](#parameters) |Nem |Üzembe helyezés testreszabásához erőforrások üzembe helyezésének végrehajtásakor biztosított értékeket. |
-| [variables](#variables) |Nem |Egyszerűsítése érdekében a Sablonnyelv-kifejezések, JSON-töredék a sablonban használt értékeket. |
-| [functions](#functions) |Nem |Felhasználó által megadott funkciók érhetők el a sablonon belül. |
-| [resources](#resources) |Igen |Erőforrástípusok, telepített vagy egy erőforráscsoport vagy előfizetés frissített. |
-| [outputs](#outputs) |Nem |Üzembe helyezés után visszaadott értékek. |
+| [paraméterek](#parameters) |Nem |Üzembe helyezés testreszabásához erőforrások üzembe helyezésének végrehajtásakor biztosított értékeket. |
+| [Változók](#variables) |Nem |Egyszerűsítése érdekében a Sablonnyelv-kifejezések, JSON-töredék a sablonban használt értékeket. |
+| [Függvények](#functions) |Nem |Felhasználó által megadott funkciók érhetők el a sablonon belül. |
+| [Erőforrások](#resources) |Igen |Erőforrástípusok, telepített vagy egy erőforráscsoport vagy előfizetés frissített. |
+| [kimenetek](#outputs) |Nem |Üzembe helyezés után visszaadott értékek. |
 
 Minden elem is megadhatja a tulajdonságokkal rendelkezik. Ez a cikk ismerteti a sablon nagyobb részletességgel szakaszait.
 
