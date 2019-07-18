@@ -569,6 +569,8 @@
           href: ../blobs/data-lake-storage-tutorial-extract-transform-load-hive.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
     - name: Alapelvek
       items:
+        - name: Többprotokollos hozzáférés
+          href: ../blobs/data-lake-storage-multi-protocol-access.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: Azure Blob File System-illesztőprogram Hadoophoz
           href: ../blobs/data-lake-storage-abfs-driver.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: Az Azure Blob File System URI-ja
@@ -577,12 +579,24 @@
           href: ../blobs/data-lake-storage-namespace.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: Ajánlott eljárások
           href: data-lake-storage-best-practices.md
+        - name: Hozzáférési szintek
+          items:
+            - name: Hozzáférési szintek
+              href: storage-blob-storage-tiers.md
+            - name: Azure Blob Storage-életciklus felügyelete
+              href: storage-lifecycle-management-concepts.md
         - name: Biztonság
           items:
             - name: Tárolóbiztonság – áttekintés
               href: ../common/storage-security-guide.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: Hozzáférés-vezérlés
               href: data-lake-storage-access-control.md
+        - name: Naplózás
+          items:
+            - name: Storage Analytics
+              href: ../common/storage-analytics.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+            - name: Storage Analytics-naplók
+              href: ../common/storage-analytics-logging.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: Eseménykezelés
           href: storage-blob-event-overview.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
     - name: Útmutató

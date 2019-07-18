@@ -564,12 +564,12 @@
           href: solution-template-copy-files-multiple-containers.md
         - name: Új fájlok másolása az utolsó módosítás dátuma szerint
           href: solution-template-copy-new-files-lastmodifieddate.md
+        - name: Tömeges másolás adatbázisból
+          href: solution-template-bulk-copy-with-control-table.md
+        - name: Változásadatok másolása adatbázisból
+          href: solution-template-delta-copy-with-control-table.md
         - name: Fájlok áthelyezése
           href: solution-template-move-files.md
-        - name: Tömeges másolás vezérlőtáblával
-          href: solution-template-bulk-copy-with-control-table.md
-        - name: Változásadatok másolása vezérlőtáblával
-          href: solution-template-delta-copy-with-control-table.md
         - name: Adatátalakítás a Databricksszel
           href: solution-template-databricks-notebook.md
     - name: Hibaelhárítási útmutató

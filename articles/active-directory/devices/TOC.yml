@@ -55,7 +55,9 @@
       items:
         - name: Jelenlegi hibrid Azure AD-csatlakoztatott Windows-eszközök hibaelhárítása
           href: troubleshoot-hybrid-join-windows-current.md
-        - name: Korábbi hibrid Azure AD-csatlakoztatott Windows-eszközök hibaelhárítása
+        - name: Hibaelhárítás dsregcmd használatával
+          href: troubleshoot-device-dsregcmd.md
+        - name: 'Hibrid Azure AD-csatlakoztatott, korábbi verziójú Windows-eszközök hibaelhárítása'
           href: troubleshoot-hybrid-join-windows-legacy.md
         - name: Az Enterprise State Roaming hibaelhárítása
           href: enterprise-state-roaming-troubleshooting.md

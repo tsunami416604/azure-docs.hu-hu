@@ -8,7 +8,7 @@
       href: whats-new.md
 - name: Oktatóanyagok
   items:
-    - name: VMware virtuális gép felmérése és migrálása
+    - name: VMware virtuális gépek felmérése és migrálása
       items:
         - name: VMware előkészítése felméréshez és migráláshoz
           href: tutorial-prepare-vmware.md
@@ -22,7 +22,7 @@
               href: tutorial-migrate-vmware.md
             - name: VMware virtuális gépek migrálása ügynökalapú migrálással
               href: tutorial-migrate-vmware-agent.md
-    - name: Hyper-V felmérése és migrálása
+    - name: Hyper-V virtuális gépek felmérése és migrálása
       items:
         - name: Hyper-V előkészítése felméréshez és migráláshoz
           href: tutorial-prepare-hyper-v.md

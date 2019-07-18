@@ -388,18 +388,26 @@
               items:
                 - name: Webalkalmazások
                   href: app/java-get-started.md
+                - name: Webalkalmazások (2.5.0 béta)
+                  href: app/java-get-started-25-beta.md
                 - name: Docker-alkalmazások
                   href: app/docker.md
                 - name: Nyomkövetési naplók
                   href: app/java-trace-logs.md
+                - name: Nyomkövetési naplók (2.5.0 béta)
+                  href: app/java-trace-logs-25-beta.md
                 - name: Unix-metrikák
                   href: app/java-collectd.md
                 - name: Függőségek
                   href: app/java-agent.md
+                - name: Függőségek (2.5.0 béta)
+                  href: app/java-agent-25-beta.md
                 - name: Szűrőtelemetria
                   href: app/java-filter-telemetry.md
                 - name: Mikrométeres metrikák
                   href: app/micrometer-java.md
+                - name: Mikrométeres metrikák (2.5.0 béta)
+                  href: app/micrometer-java-25-beta.md
                 - name: A Spring Boot Initializer-alkalmazás konfigurálása
                   href: /java/azure/spring-framework/configure-spring-boot-java-applicationinsights
             - name: Node.js-alkalmazások
