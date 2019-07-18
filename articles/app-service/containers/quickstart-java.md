@@ -1,7 +1,7 @@
 ---
-title: Java-webalkalmazás létrehozása linuxon – az Azure App Service-ben
+title: Java-Webalkalmazás létrehozása Linux rendszeren – Azure App Service
 description: Ezzel a rövid útmutatóval percek alatt üzembe helyezheti első Hello World Java-alkalmazását a Linuxon futó Azure App Service-ben.
-keywords: azure, app service, web app, linux, java, maven, quickstart
+keywords: Azure, app Service, Web App, Linux, Java, Maven, gyors útmutató
 services: app-service\web
 documentationcenter: ''
 author: msangapu
@@ -16,19 +16,19 @@ ms.topic: quickstart
 ms.date: 03/27/2019
 ms.author: msangapu
 ms.custom: mvc
-ms.openlocfilehash: 09a3ad182ff5ee19a81b03557b3277343912a774
-ms.sourcegitcommit: aa66898338a8f8c2eb7c952a8629e6d5c99d1468
+ms.openlocfilehash: 30689e05a2567646ff541818dc68a90c13da7a56
+ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67461418"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68297261"
 ---
-# <a name="quickstart-create-a-java-app-in-app-service-on-linux"></a>Gyors útmutató: Egy Java-alkalmazás létrehozása Linuxon futó App Service-ben
+# <a name="quickstart-create-a-java-app-in-app-service-on-linux"></a>Gyors útmutató: Java-alkalmazás létrehozása App Service Linux rendszeren
 
-A [Linuxon futó App Service](app-service-linux-intro.md) hatékonyan méretezhető, önjavító webes üzemeltetési szolgáltatást nyújt a Linux operációs rendszer használatával. Ez a rövid útmutató bemutatja, hogyan használhatja a [Azure CLI-vel](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) az a [Azure App Service-ben készült maven bővítmény](https://github.com/Microsoft/azure-maven-plugins/tree/develop/azure-webapp-maven-plugin) üzembe Java web archive-(WAR-) fájlt.
+A [Linuxon futó App Service](app-service-linux-intro.md) hatékonyan méretezhető, önjavító webes üzemeltetési szolgáltatást nyújt a Linux operációs rendszer használatával. Ebből a rövid útmutatóból megtudhatja, hogyan használhatja az [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) -t a [Azure app Service Maven beépülő modullal](https://github.com/Microsoft/azure-maven-plugins/tree/develop/azure-webapp-maven-plugin) egy Java Web Archive-(War-) fájl telepítéséhez.
 > [!NOTE]
 >
-> Ugyanezt megteheti is népszerű, például az IntelliJ és Eclipse ide használatával. Tekintse meg a következő hasonló dokumentumok [intellij-vel a rövid útmutató az Azure-eszközkészlet](/java/azure/intellij/azure-toolkit-for-intellij-create-hello-world-web-app) vagy [eclipse-ben a rövid útmutató az Azure-eszközkészlet](/java/azure/eclipse/azure-toolkit-for-eclipse-create-hello-world-web-app).
+> Ugyanezt a népszerű ide-ket is megteheti, például a IntelliJ és az Eclipse-et. Tekintse meg a hasonló dokumentumokat a [Azure Toolkit for IntelliJ](/java/azure/intellij/azure-toolkit-for-intellij-create-hello-world-web-app) rövid útmutatóban vagy [Azure Toolkit for Eclipse](/java/azure/eclipse/azure-toolkit-for-eclipse-create-hello-world-web-app)gyors útmutatóban.
 >
 ![Az Azure-ban futó mintaalkalmazás](media/quickstart-java/java-hello-world-in-browser.png)
 
@@ -38,7 +38,7 @@ A [Linuxon futó App Service](app-service-linux-intro.md) hatékonyan méretezhe
 
 ## <a name="create-a-java-app"></a>Java-alkalmazás létrehozása
 
-Hajtsa végre a következő Maven-parancsot a Cloud Shell használatával hozzon létre egy új alkalmazást nevű `helloworld`:
+A következő Maven-parancs végrehajtásával hozzon létre egy nevű `helloworld`új alkalmazást a Cloud Shell promptban:
 
 ```bash
 mvn archetype:generate -DgroupId=example.demo -DartifactId=helloworld -DarchetypeArtifactId=maven-archetype-webapp
@@ -67,13 +67,13 @@ Ezután adja hozzá a következő bővítménydefiníciót a `pom.xml` fájl `<b
 </plugins>
 ```
 
-Az üzembe helyezési folyamatnak az Azure App Service-fiók hitelesítő adatait az Azure CLI-vel használ. [Jelentkezzen be az Azure CLI](/cli/azure/authenticate-azure-cli?view=azure-cli-latest) a folytatás előtt.
+A Azure App Service üzembe helyezési folyamata a fiók hitelesítő adatait használja az Azure CLI-ből. [A folytatás előtt jelentkezzen be az Azure CLI-vel](/cli/azure/authenticate-azure-cli?view=azure-cli-latest) .
 
 ```azurecli
 az login
 ```
 
-Konfigurálhatja a központi telepítést, majd futtassa a maven-parancsot `mvn azure-webapp:config` a parancssorban, és használja az alapértelmezett konfigurációval billentyűkombináció lenyomásával **ENTER** amíg meg nem jelenik a **megerősítése (Y/N)** parancssorba, majd nyomja le az **"y"** és a konfigurálást.
+Ezután konfigurálhatja a központi telepítést, futtathatja a Maven `mvn azure-webapp:config` parancsot a parancssorban, és az alapértelmezett konfigurációkat az **ENTER** billentyű lenyomásával állíthatja be, amíg meg nem kapja a **Confirm (i/N)** kérést, majd nyomja le az **"y"** gombot, és a konfiguráció elkészült .
 
 ```cmd
 ~@Azure:~/helloworld$ mvn azure-webapp:config
@@ -83,7 +83,7 @@ Konfigurálhatja a központi telepítést, majd futtassa a maven-parancsot `mvn 
 [INFO] Building helloworld Maven Webapp 1.0-SNAPSHOT
 [INFO] --------------------------------[ war ]---------------------------------
 [INFO]
-[INFO] --- azure-webapp-maven-plugin:1.6.0:config (default-cli) @ helloworld ---
+[INFO] --- azure-webapp-maven-plugin:1.7.0:config (default-cli) @ helloworld ---
 [WARNING] The plugin may not work if you change the os of an existing webapp.
 Define value for OS(Default: Linux):
 1. linux [*]
@@ -114,17 +114,17 @@ Confirm (Y/N)? : Y
 > [!NOTE]
 > Ebben a cikkben csak WAR-fájlokba csomagolt Java-alkalmazásokat használunk. Ez a beépülő modul támogatja a JAR-webalkalmazásokat is. Ennek kipróbálásához tekintse meg [a Java SE JAR-fájlok Linuxon futó App Service-ben való üzembe helyezését ismertető részt](https://docs.microsoft.com/java/azure/spring-framework/deploy-spring-boot-java-app-with-maven-plugin?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json).
 
-Navigáljon a `pom.xml` újra szeretné látni, a beépülő modul konfigurációs frissül, módosíthatja egyéb konfigurációk, az App Service a pom-fájljába közvetlenül a Ha szükséges, a leggyakoribb azokat az alábbiak:
+Ha szeretné megtekinteni a beépülő modul konfigurációját, navigáljon újra,ésszükségeseténmódosítsaaappServiceegyébkonfigurációitis,haszükséges,néhánygyakorielemazalábbilistábanlátható:`pom.xml`
 
  Tulajdonság | Szükséges | Leírás | Version
 ---|---|---|---
-`<schemaVersion>` | false | Adja meg a konfigurációs séma verzióját. Támogatott értékei a következők: `v1`, `v2`. | 1.5.2
-`<resourceGroup>` | true | Azure-erőforráscsoportot a webalkalmazás számára. | 0.1.0+
-`<appName>` | true | A webalkalmazás neve. | 0.1.0+
-[`<region>`](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme#region) | true | Adja meg a régiót, ahol a webalkalmazás üzemeltetett; az alapértelmezett érték **westus**. Az összes érvényes régió, [támogatott régiók](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme#region) szakaszban. | 0.1.0+
-[`<pricingTier>`](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme##pricingtier) | false | A tarifacsomag webalkalmazása számára. Az alapértelmezett érték **P1V2**.| 0.1.0+
-[`<runtime>`](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme#runtimesetting) | true | A futtatókörnyezetének konfigurációja, sikerült talál a részletes [Itt](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme#runtimesetting). | 0.1.0+
-[`<deployment>`](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme#deploymentsetting) | true | A központi telepítés konfigurálása sikerült lásd a részleteket [Itt](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme#deploymentsetting). | 0.1.0+
+`<schemaVersion>` | false | Határozza meg a konfigurációs séma verzióját. A támogatott értékek a `v1`következők `v2`:,. | 1.5.2
+`<resourceGroup>` | true | Azure-erőforráscsoport a webalkalmazáshoz. | 0.1.0 +
+`<appName>` | true | A webalkalmazás neve. | 0.1.0 +
+[`<region>`](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme#region) | true | Meghatározza azt a régiót, ahol a webalkalmazás üzemeltetve lesz; az alapértelmezett érték a **westus**. A [támogatott régiók](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme#region) szakaszban található összes érvényes régió. | 0.1.0 +
+[`<pricingTier>`](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme##pricingtier) | false | A webalkalmazás díjszabási szintje. Az alapértelmezett érték a **P1V2**.| 0.1.0 +
+[`<runtime>`](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme#runtimesetting) | true | A futásidejű környezet konfigurációja a részleteket [itt](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme#runtimesetting)tekintheti meg. | 0.1.0 +
+[`<deployment>`](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme#deploymentsetting) | true | A központi telepítés konfigurálásával [itt](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme#deploymentsetting)láthatja a részleteket. | 0.1.0 +
 
 ## <a name="deploy-the-app"></a>Az alkalmazás üzembe helyezése
 
@@ -153,13 +153,13 @@ A parancs futtatása egy percig is eltarthat.
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Oktatóanyag: Java-vállalati alkalmazás és PostgreSQL](tutorial-java-enterprise-postgresql-app.md)
+> [Oktatóanyag: Java Enterprise-alkalmazás PostgreSQL-vel](tutorial-java-enterprise-postgresql-app.md)
 
 > [!div class="nextstepaction"]
 > [Java-alkalmazás konfigurálása](configure-custom-container.md)
 
 > [!div class="nextstepaction"]
-> [CI/CD a jenkins-szel](/azure/jenkins/deploy-jenkins-app-service-plugin)
+> [CI/CD a Jenkins-szel](/azure/jenkins/deploy-jenkins-app-service-plugin)
 
 > [!div class="nextstepaction"]
-> [Más Azure Java fejlesztői erőforrások](/java/azure/)
+> [Egyéb Azure Java-fejlesztői erőforrásokhoz](/java/azure/)

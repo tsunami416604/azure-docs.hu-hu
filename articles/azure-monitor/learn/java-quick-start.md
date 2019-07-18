@@ -1,22 +1,22 @@
 ---
 title: Az Azure Application Insights gyors üzembe helyezése | Microsoft Docs
-description: Útmutatás a használatával gyorsan egy Java webes alkalmazás figyelés az Application insights segítségével
+description: Útmutatást nyújt a Java-webalkalmazások gyors beállításához a Application Insights való figyeléshez
 services: application-insights
 keywords: ''
 author: mrbullwinkle
 ms.author: mbullwin
 ms.reviewer: lagayhar
-ms.date: 04/18/2019
+ms.date: 07/15/2019
 ms.service: application-insights
 ms.custom: mvc
 ms.topic: quickstart
 manager: carmonm
-ms.openlocfilehash: fc47b00bb266bb57ecffbb522667ca67ac7c8c97
-ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
+ms.openlocfilehash: ef3c7668f1fb462b2d6a91cc90746437e74df51d
+ms.sourcegitcommit: 6b41522dae07961f141b0a6a5d46fd1a0c43e6b2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67656742"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67989890"
 ---
 # <a name="start-monitoring-your-java-web-application"></a>A Java-webalkalmazás monitorozásának indítása
 
@@ -36,7 +36,7 @@ Ha nem rendelkezik Java-alapú dinamikus webes projekttel, a létrehozásához k
 
 Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány perc alatt létrehozhat egy [ingyenes](https://azure.microsoft.com/free/) fiókot.
 
-Ha inkább a Spring-keretrendszert, próbálja meg a [konfigurálása egy Spring Boot inicializáló alkalmazás Application Insights útmutató használata](https://docs.microsoft.com/java/azure/spring-framework/configure-spring-boot-java-applicationinsights)
+Ha a rugós keretrendszert szeretné használni, próbálkozzon a [Spring boot inicializáló alkalmazás konfigurálása Application Insights útmutató használatára](https://docs.microsoft.com/java/azure/spring-framework/configure-spring-boot-java-applicationinsights)
 
 ## <a name="sign-in-to-the-azure-portal"></a>Jelentkezzen be az Azure Portalra
 
@@ -49,8 +49,6 @@ Az Application Insights bármely, az internethez csatlakozó alkalmazásról ké
 1. Válassza az **Erőforrás létrehozása** > **Fejlesztői eszközök** > **Application Insights** elemet.
 
    ![Application Insights-erőforrások hozzáadása](./media/java-quick-start/1createresourseappinsights.png)
-
-   ![Application Insights-erőforrások hozzáadása](./media/java-quick-start/2createjavaapp.png)
 
    Megjelenik egy konfigurációs mező. Az adatbeviteli mezők kitöltéséhez használja az alábbi táblát.
 
@@ -84,14 +82,14 @@ Az Application Insights bármely, az internethez csatlakozó alkalmazásról ké
 
    ![Az Eclipse Azure-konfigurációs menüje](./media/java-quick-start/0007-j.png)
 
-5. Az Application Insights beépülő modul konfigurálása után kell [közzététele és újra közzétettük](https://docs.microsoft.com/azure/app-service/app-service-web-get-started-java#deploy-the-app) az alkalmazás újra, mielőtt azt fogja tudni telemetria küldésének elkezdésére.
+5. A Application Insights beépülő modul konfigurálását követően újra [közzé](https://docs.microsoft.com/azure/app-service/app-service-web-get-started-java#deploy-the-app) kell tennie az alkalmazást, majd újra közzé kell tennie az alkalmazást, mielőtt el tudná kezdeni a telemetria küldését.
 
 > [!NOTE]
 > A Javához készült Application Insights SDK képes élő metrikákat rögzíteni és megjeleníteni. Azonban az első alkalommal, amikor engedélyezi a telemetria gyűjtését, eltarthat néhány percig amíg az adatok megjelennek a portálon. Ha az alkalmazás egy alacsony forgalmú tesztalkalmazás, vegye figyelembe, hogy a legtöbb metrika rögzítése csak akkor történik, ha aktív kérések és műveletek vannak folyamatban.
 
 ## <a name="start-monitoring-in-the-azure-portal"></a>Monitorozás indítása az Azure Portalon
 
-1. Most megnyithatja ismét az Application Insights **áttekintése** a jelenleg futó alkalmazás részleteinek megtekintése az Azure Portalon lapot.
+1. Most újra megnyithatja a Azure Portal Application Insights **Áttekintés** lapját, ahol megtekintheti az aktuálisan futó alkalmazás részleteit.
 
    ![Az Application Insights áttekintése menü](./media/java-quick-start/3overview.png)
 
@@ -99,7 +97,7 @@ Az Application Insights bármely, az internethez csatlakozó alkalmazásról ké
 
    ![Alkalmazástérkép](./media/java-quick-start/4appmap.png)
 
-3.  Kattintson a **Alkalmazáselemzés** ikon ![Alkalmazáselemzés ikon](./media/java-quick-start/006.png) **megtekintés az Analyticsben**.  Megnyílik az **Application Insights Analytics**, amely egy részletes lekérdezési nyelvet biztosít az Application Insights által gyűjtött adatok elemzéséhez. Esetünkben most egy lekérdezés jön létre, amely a kérések számát egy diagramon jeleníti meg. A további adatok elemzéséhez írhat saját lekérdezéseket is.
+3.  Kattintson az **app Analytics** ikon ![alkalmazás-Térkép ikon](./media/java-quick-start/006.png) **nézet az elemzés**elemre.  Megnyílik az **Application Insights Analytics**, amely egy részletes lekérdezési nyelvet biztosít az Application Insights által gyűjtött adatok elemzéséhez. Esetünkben most egy lekérdezés jön létre, amely a kérések számát egy diagramon jeleníti meg. A további adatok elemzéséhez írhat saját lekérdezéseket is.
 
    ![Az adott időtartamon belüli felhasználói kéréseket mutató elemzési diagram](./media/java-quick-start/5analytics.png)
 
@@ -137,7 +135,7 @@ A Java monitorozásával kapcsolatos további információkért tekintse át [az
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Amikor végzett tesztelése, törölheti az erőforráscsoportot, és az összes kapcsolódó erőforrás. Ezért kövesse az alábbi lépéseket.
+Ha végzett a teszteléssel, törölheti az erőforráscsoportot és az összes kapcsolódó erőforrást. Ehhez kövesse az alábbi lépéseket.
 
 1. Az Azure Portal bal oldali menüjében kattintson az **Erőforráscsoportok** lehetőségre, majd kattintson a **myResourceGroup** elemre.
 2. Az erőforráscsoport oldalán kattintson a **Törlés** elemre, írja be a **myResourceGroup** szöveget a szövegmezőbe, majd kattintson a **Törlés** gombra.

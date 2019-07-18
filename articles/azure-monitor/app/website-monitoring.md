@@ -5,23 +5,23 @@ services: application-insights
 keywords: ''
 author: mrbullwinkle
 ms.author: mbullwin
-ms.date: 10/29/2018
+ms.date: 07/15/2019
 ms.service: application-insights
 ms.custom: mvc
 ms.topic: quickstart
 manager: carmonm
-ms.openlocfilehash: ece51892522721f7be3cdcadbb3b79705c9f83e4
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.openlocfilehash: 9845329d30da40243751c00f7c0fa62fdcfe5a0d
+ms.sourcegitcommit: 6b41522dae07961f141b0a6a5d46fd1a0c43e6b2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66384092"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67990092"
 ---
 # <a name="start-monitoring-your-website"></a>A webhely monitorozásának megkezdése
 
 Az Azure Monitor Application Insights segítségével egyszerűen monitorozhatja webhelye rendelkezésre állását, teljesítményét és használatát. Emellett egyszerűen azonosíthatja és diagnosztizálhatja az alkalmazás hibáit anélkül, hogy meg kellene várnia, amíg egy felhasználó jelenti azokat. Az Application Insights kiszolgálóoldali és ügyfél-/böngészőoldali monitorozási képességeket is biztosít.
 
-Ez a rövid útmutató végigvezeti a [nyílt forráskód az Application Insights JavaScript SDK](https://github.com/Microsoft/ApplicationInsights-JS) amely lehetővé teszi, hogy jobban megismerhesse a webhely látogatói/böngésző ügyféloldali élményét.
+Ez a rövid útmutató végigvezeti Önt a [nyílt forráskódú Application Insights JavaScript SDK](https://github.com/Microsoft/ApplicationInsights-JS) hozzáadásán, amely lehetővé teszi, hogy megismerje a webhely látogatói számára az ügyfél-és böngészőbeli élményt.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -41,14 +41,16 @@ Az Application Insights bármely, az internethez csatlakozó alkalmazásról ké
 
 1. Válassza az **Erőforrás létrehozása** > **Kezelőeszközök** > **Application Insights** elemet.
 
+   > [!NOTE]
+   >Ha első alkalommal hoz létre Application Insights-erőforrást, további információt az [Application Insights-erőforrás létrehozása](https://docs.microsoft.com/azure/azure-monitor/app/create-new-resource) című cikkben talál.
+
    Megjelenik egy konfigurációs mező. Az adatbeviteli mezők kitöltéséhez használja az alábbi táblát.
 
     | Beállítások        | Érték           | Leírás  |
    | ------------- |:-------------|:-----|
-   | **Name (Név)**      | Globálisan egyedi érték | A figyelt alkalmazást azonosító név |
-   | **Alkalmazás típusa** | Általános alkalmazás | A figyelt alkalmazás típusa |
+   | **Name**      | Globálisan egyedi érték | A figyelt alkalmazást azonosító név |
    | **Erőforráscsoport**     | myResourceGroup      | Az App Insights-adatokat futtató új erőforráscsoport neve |
-   | **Hely** | USA keleti régiója | Válasszon egy Önhöz vagy az alkalmazást futtató gazdagéphez közeli helyet. |
+   | **Location** | East US | Válasszon egy Önhöz vagy az alkalmazást futtató gazdagéphez közeli helyet. |
 
 2. Kattintson a **Create** (Létrehozás) gombra.
 

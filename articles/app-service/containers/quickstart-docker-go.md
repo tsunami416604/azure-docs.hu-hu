@@ -1,5 +1,5 @@
 ---
-title: Docker-/ Go-alkalmazás létrehozása linuxon – az Azure App Service-ben
+title: Docker/Go-alkalmazás létrehozása Linux rendszeren – Azure App Service
 description: Go-alkalmazást futtató Docker-rendszerkép üzembe helyezése az Azure Web App for Containersben.
 keywords: azure app service, web app, go, docker, container
 services: app-service
@@ -12,14 +12,14 @@ ms.topic: quickstart
 ms.date: 03/28/2019
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: 88c9996ce3f2d89ae58881c913f6bd4e549b5814
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: ec2b974e008ea4c7e266f5ae0d46cd67d2133e54
+ms.sourcegitcommit: 470041c681719df2d4ee9b81c9be6104befffcea
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62117747"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67854001"
 ---
-# <a name="run-a-custom-linux-container-in-azure-app-service"></a>Futtassa egy egyéni Linux-tárolót az Azure App Service-ben
+# <a name="run-a-custom-linux-container-in-azure-app-service"></a>Egyéni Linux-tároló futtatása Azure App Service
 
 Az [App Service Linux](app-service-linux-intro.md) előre meghatározott, olyan programozási nyelvek támogatásával rendelkező alkalmazáscsoportokat biztosít Linuxon, amelybe beletartozik például a .NET, a PHP vagy a Node.js. Használhat egyéni Docker rendszerképet is, hogy a webalkalmazást egy, az Azure-ban nem meghatározott alkalmazáscsoportban futtassa. Ez a rövid útmutató webalkalmazások létrehozását és Go-rendszerképek Docker Hubból való üzembe helyezését mutatja be. Az [Azure CLI-vel](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) létrehozhatja a webalkalmazást.
 
@@ -35,7 +35,7 @@ Az [App Service Linux](app-service-linux-intro.md) előre meghatározott, olyan 
 
 ## <a name="create-a-web-app"></a>Webalkalmazás létrehozása
 
-Az [ az webapp create](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) paranccsal hozzon létre egy [webalkalmazást](../overview.md) a `myAppServicePlan` App Service-csomagban. Ne felejtse el kicserélni az `<app name>` nevet egy globálisan egyedi alkalmazásnévre.
+Az [ az webapp create](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) paranccsal hozzon létre egy [webalkalmazást](../overview.md) a `myAppServicePlan` App Service-csomagban. Ne felejtse el `<app name>` lecserélni egy globálisan egyedi alkalmazás nevére ( `a-z`érvényes `0-9`karakterek: `-`, és).
 
 ```azurecli-interactive
 az webapp create --resource-group myResourceGroup --plan myAppServicePlan --name <app name> --deployment-container-image-name microsoft/azure-appservices-go-quickstart
@@ -75,10 +75,10 @@ http://<app_name>.azurewebsites.net/hello
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Oktatóanyag: Üzembe helyezés a privát tárház](tutorial-custom-docker-image.md)
+> [Oktatóanyag: Üzembe helyezés Private Container adattárból](tutorial-custom-docker-image.md)
 
 > [!div class="nextstepaction"]
-> [Egy egyéni tároló konfigurálása](configure-custom-container.md)
+> [Egyéni tároló konfigurálása](configure-custom-container.md)
 
 > [!div class="nextstepaction"]
-> [Oktatóanyag: Többtárolós WordPress-alkalmazás](tutorial-multi-container-app.md)
+> [Oktatóanyag: Multi-Container WordPress-alkalmazás](tutorial-multi-container-app.md)
