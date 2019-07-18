@@ -156,7 +156,7 @@ A következő táblázat ismerteti a használt paraméterek és értékek metrik
 | Ez a riasztási szabály helye |East US |
 | ResourceGroup |montest |
 | TargetResourceId |/subscriptions/s1/resourceGroups/montest/providers/Microsoft.Compute/virtualMachines/testconfig |
-| A létrehozott riasztás MetricName |\PhysicalDisk (aránya _teljes) \Disk Lemezírások/mp. Tekintse meg a `Get-MetricDefinitions` parancsmaggal kapcsolatos hogyan kérheti le a pontos metrikus nevek |
+| A létrehozott riasztás MetricName |\PhysicalDisk(_Total)\Disk Writes/sec.. Tekintse meg a `Get-MetricDefinitions` parancsmaggal kapcsolatos hogyan kérheti le a pontos metrikus nevek |
 | Operátor |GreaterThan |
 | Küszöbérték (száma/s az a mérőszám) |1 |
 | Ablakméret (Igen) |00:05:00 |
