@@ -1,61 +1,60 @@
 ---
-title: A Visual Studio Code az Azure fejlesztési tárolóhelyek működése
+title: Hogyan működik a Visual Studio Code az Azure dev Spaces-szel
 titleSuffix: Azure Dev Spaces
 services: azure-dev-spaces
 ms.service: azure-dev-spaces
-ms.component: azds-kubernetes
 author: zr-msft
 ms.author: zarhoads
 ms.date: 07/08/2019
 ms.topic: conceptual
-description: A Visual Studio Code az Azure fejlesztési tárolóhelyek működése
-keywords: Az Azure fejlesztési tárolóhelyek, fejlesztői, szóközök, Docker, Kubernetes, Azure, az AKS, Azure Kubernetes Service, tárolók
-ms.openlocfilehash: a7ec20908b75ae07532c16daab8950ace9cd67ae
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+description: Hogyan működik a Visual Studio Code az Azure dev Spaces-szel
+keywords: Azure dev Spaces, dev Spaces, Docker, Kubernetes, Azure, AK, Azure Kubernetes szolgáltatás, tárolók
+ms.openlocfilehash: 0d80643b366b6d7313f24e73258056e492eb56fc
+ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67712149"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68297871"
 ---
-# <a name="how-visual-studio-code-works-with-azure-dev-spaces"></a>A Visual Studio Code az Azure fejlesztési tárolóhelyek működése
+# <a name="how-visual-studio-code-works-with-azure-dev-spaces"></a>Hogyan működik a Visual Studio Code az Azure dev Spaces-szel
 
-Használhatja a Visual Studio Code és a [Azure fejlesztési tárolóhelyek bővítmény][azds-extension] előkészítése, futtatása és a szolgáltatások az Azure fejlesztési tárolóhelyek hibakeresés. A Visual Studio Code és az Azure fejlesztési tárolóhelyek bővítmény segítségével:
+Használhatja a Visual Studio Code és az [Azure dev Spaces bővítményt][azds-extension] a szolgáltatások előkészítéséhez, futtatásához és hibakereséséhez az Azure dev Spaces használatával. A Visual Studio Code és az Azure dev Spaces bővítménnyel a következőket teheti:
 
-* Hozzon létre eszközök futtatására és az aks-ben szolgáltatások hibakeresésében
-* A .NET Core, Java és Node.js szolgáltatások futtatása egy fejlesztési terület
-* A fejlesztési szóközzel futó .NET Core, Java és Node.js szolgáltatások közvetlen hibakeresése
+* Eszközök előállítása a szolgáltatások futtatásához és hibakereséséhez az AK-ban
+* Java-, Node. js-és .NET Core-szolgáltatások futtatása egy fejlesztői térben
+* A Java-, Node. js-és .NET Core-szolgáltatások közvetlen hibakeresése egy fejlesztői térben
 
-## <a name="generate-assets"></a>Adategységek létrehozása
+## <a name="generate-assets"></a>Eszközök előállítása
 
-A Visual Studio Code és az Azure fejlesztési tárolóhelyek-bővítmény létrehozása a következő eszközöket a projekthez:
+A Visual Studio Code és az Azure dev Spaces bővítmény a következő eszközöket állítja elő a projekthez:
 
-* Docker-fájlok a Maven használata Java-alkalmazások, a Node.js-alkalmazások és a .NET Core-alkalmazások
-* Szinte bármilyen nyelven, egy docker-fájlban a Helm-diagramok
-* Egy `azds.yaml` fájlt, amely a [Azure fejlesztési tárolóhelyek konfigurációs fájl][azds-yaml] a projekthez
-* A `.vscode` mappát a Visual Studio Code indítási konfigurációval a projektet Maven használata Java-alkalmazások, a Node.js-alkalmazások és a .NET Core-alkalmazások
+* Dockerfiles a Maven, Node. js-alkalmazásokat és .NET Core-alkalmazásokat használó Java-alkalmazásokhoz
+* Helm-diagramok szinte bármilyen nyelvhez egy Docker
+* Egy `azds.yaml` fájl, amely a projekthez tartozó [Azure dev Spaces konfigurációs fájl][azds-yaml]
+* Egy `.vscode` olyan mappa, amelyen a Visual Studio Code elindítja a projekt Java-alkalmazásokhoz készült konfigurációját a Maven, a Node. js-alkalmazások és a .net Core-alkalmazások használatával
 
-A docker-fájlban, Helm-diagramot, és `azds.yaml` fájlok jönnek létre, ha a futó ugyanazokat az eszközöket `azds prep`. Ezeket a fájlokat is használható a Visual Studio code-en kívül a projekt futtatása az aks-ben, például a futó `azds up`. A `.vscode` mappa csak használják a Visual Studio Code-ot a projekt futtatása az aks-ben a Visual Studio Code-ból.
+A Docker, a Helm diagram és `azds.yaml` a fájlok ugyanazokat az eszközöket generálják `azds prep`, amikor futnak. Ezek a fájlok a Visual Studio code-on kívül is használhatók a projekt AK-ban való futtatására `azds up`, például a futtatásra. A `.vscode` mappát csak a Visual Studio Code használja, hogy a projektet a Visual Studio Code-ból futtassa az AK-ban.
 
-## <a name="run-your-service-in-aks"></a>A szolgáltatás futtatásához az aks-ben
+## <a name="run-your-service-in-aks"></a>A szolgáltatás futtatása AK-ban
 
-Után az eszközök hozza létre a projektet, a Visual Studio Code-ból a .NET Core, Java és Node.js szolgáltatások futtathatja egy már létező fejlesztési területen. Az a *Debug* lap Visual Studio Code-ban, az indítási konfiguráció hívhat a `.vscode` könyvtárban futtassa a projektet.
+Miután létrehozta a projekthez tartozó eszközöket, futtathatja Java-, Node. js-és .NET Core-szolgáltatásait egy meglévő fejlesztői térben a Visual Studio Code-ból. A Visual Studio Code *hibakeresés* lapján megnyithatja a konfiguráció `.vscode` elindítása a címtárból a projekt futtatásához.
 
-Az AKS-fürt létrehozása és a fürtön a Visual Studio Code-en kívül Azure fejlesztési szóközt engedélyezni kell. Például használhatja az Azure CLI vagy az Azure Portalon ezt a beállítást. Használhat meglévő docker-fájlok, Helm-diagramok és `azds.yaml` például az eszközök futtatásával generált kívül a Visual Studio Code-ban létrehozott fájlok `azds prep`. Ha fel szeretné használni az eszközök a Visual Studio Code-en kívül létrehozott, továbbra is szüksége lesz egy `.vscode` könyvtár. Ez `.vscode` directory helyreállíthatja a Visual Studio code és az Azure fejlesztési tárolóhelyek bővítmény által, és nem írja felül a meglévő eszközök.
+Létre kell hoznia az AK-fürtöt, és engedélyeznie kell az Azure dev-helyeket a fürtön a Visual Studio code-on kívül. Használhatja például az Azure CLI-t vagy a Azure Portalt a beállítás elvégzéséhez. Újra felhasználhatja a meglévő Dockerfiles, Helm- `azds.yaml` diagramokat és a Visual Studio code-on kívül létrehozott fájlokat, például a `azds prep`futtatásával létrehozott eszközöket. Ha nem a Visual Studio code-on kívül generált eszközöket használ fel, akkor továbbra is `.vscode` rendelkeznie kell egy könyvtárral. Ezt `.vscode` a könyvtárat a Visual Studio Code és az Azure dev Spaces bővítmény újra létrehozhatja, és nem írja felül a meglévő eszközöket.
 
-.NET Core-projektek, rendelkeznie kell a [ C# bővítmény][csharp-extension] installed to run your .NET service from Visual Studio Code. Also for Java projects using Maven, you must have the [Java Debugger for Azure Dev Spaces extension][java-extension] telepített, valamint [telepítse és konfigurálja a Mavent][maven] futtatásához a Java a szolgáltatás a Visual Studio Code-ból.
+A .net Core-projektek esetében telepítve installed to run your .NET service from Visual Studio Code. Also for Java projects using Maven, you must have the [Java Debugger for Azure Dev Spaces extension][java-extension] kell lennie a [ C# bővítménynek][csharp-extension] , valamint a Maven [telepített és konfigurált][mavennek] a Java-szolgáltatás Visual Studio Code-ból való futtatásához.
 
-## <a name="debug-your-service-in-aks"></a>Az aks-ben a szolgáltatás hibakeresése
+## <a name="debug-your-service-in-aks"></a>Szolgáltatás hibakeresése az AK-ban
 
-Után a projekt indításához, a Java, Node.js és a .NET Core szolgáltatások közvetlenül a Visual Studio Code egy fejlesztési térben futó hibakeresési is. A launch-konfigurációt a `.vscode` directory szolgáltatást futtató a hibakeresést a fejlesztési szóközt engedélyezni a további hibakeresési információkat szolgáltat. A Visual Studio Code-ot is csatolja a hibakeresési folyamatot a futó tárolót a fejlesztői szóközöket a break pontok beállítása, és megvizsgálhatja a változókat, más hibakeresési műveletek végrehajtása lehetővé teszi.
+A projekt elindítása után a Java-, Node. js-és .NET Core-szolgáltatásait közvetlenül a Visual Studio Code-ból futtathatja a fejlesztői térben. A `.vscode` könyvtár indítási konfigurációja további hibakeresési információkat biztosít a szolgáltatás futtatásához, ha a hibakeresés engedélyezve van egy fejlesztői térben. A Visual Studio Code a dev Spaces-ben futó tárolóban is kapcsolódik a hibakeresési folyamathoz, amely lehetővé teszi a töréspontok beállítását, a változók vizsgálatát és más hibakeresési műveletek elvégzését.
 
 
-## <a name="use-visual-studio-code-with-azure-dev-spaces"></a>A Visual Studio Code használata az Azure fejlesztői, szóközök
+## <a name="use-visual-studio-code-with-azure-dev-spaces"></a>A Visual Studio Code használata az Azure dev Spaces használatával
 
-Visual Studio Code és az Azure fejlesztési tárolóhelyek bővítmény használata az Azure fejlesztési tárolóhelyek az alábbi rövid útmutatókat a tekintheti meg:
+A Visual Studio Code és az Azure dev Spaces bővítmény az Azure dev Spaces szolgáltatással használható az alábbi rövid útmutatókban:
 
-* [Fejlesztés Java nyelven][quickstart-java]
-* [Fejlesztés a .NET használatával][quickstart-netcore]
-* [Fejlesztés a Node.js használatával][quickstart-node]
+* [Fejlesztés a Javával][quickstart-java]
+* [Fejlesztés a .NET-tel][quickstart-netcore]
+* [Fejlesztés Node. js-sel][quickstart-node]
 
 [azds-extension]: https://marketplace.visualstudio.com/items?itemName=azuredevspaces.azds
 [azds-yaml]: how-dev-spaces-works.md#prepare-your-code

@@ -1,25 +1,25 @@
 ---
-title: IoT-központ kezelése az Azure PowerShell-lel |} A Microsoft Docs
-description: IoT-központ kezelése az Azure PowerShell.
+title: IoT Central kezelése Azure PowerShellból | Microsoft Docs
+description: IoT Central kezelése Azure PowerShellról.
 services: iot-central
 ms.service: iot-central
 author: dominicbetts
 ms.author: dobett
-ms.date: 01/14/2019
+ms.date: 07/11/2019
 ms.topic: conceptual
 manager: philmea
-ms.openlocfilehash: 086c7d303fd199090de3be77b2456c4ebcd053a8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 23243324c64519094432ee0c80d3e0cad447ef8b
+ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66726937"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67849052"
 ---
 # <a name="manage-iot-central-from-azure-powershell"></a>Az IoT Central kezelése az Azure PowerShellből
 
 [!INCLUDE [iot-central-selector-manage](../../includes/iot-central-selector-manage.md)]
 
-Létrehozásához és IoT-központ alkalmazások kezelése – az IoT-központ [alkalmazáskezelő](https://aka.ms/iotcentral) lapon használhatja [Azure PowerShell-lel](https://docs.microsoft.com/powershell/azure/overview) az alkalmazások kezeléséhez.
+IoT Central alkalmazások a IoT Central [Application Manager](https://aka.ms/iotcentral) -lapról való létrehozása és kezelése helyett az [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview) használatával kezelheti az alkalmazásokat.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -27,17 +27,17 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Ha inkább a helyi gépen az Azure PowerShell futtatásához, tekintse meg [Azure PowerShell-modul telepítéséhez](https://docs.microsoft.com/powershell/azure/install-az-ps). Azure PowerShell helyi futtatásakor használja a **Connect-AzAccount** parancsmag való bejelentkezéshez az Azure-ba, mielőtt megpróbálná a parancsmagok ebben a cikkben.
+Ha a Azure PowerShell a helyi gépen szeretné futtatni, tekintse meg [a Azure PowerShell modul telepítése](https://docs.microsoft.com/powershell/azure/install-az-ps)című témakört. Ha Azure PowerShell helyileg futtatja, a következő parancsmagok kipróbálása előtt jelentkezzen be az Azure-ba a **Csatlakozás-AzAccount** parancsmag használatával.
 
-## <a name="install-the-iot-central-module"></a>Az IoT-központ modul telepítése
+## <a name="install-the-iot-central-module"></a>A IoT Central modul telepítése
 
-A következő parancs futtatásával ellenőrizze a [IoT-központ modul](https://docs.microsoft.com/powershell/module/az.iotcentral/) telepítve van a PowerShell környezetben:
+A következő parancs futtatásával győződjön meg arról, hogy a [IoT Central modul](https://docs.microsoft.com/powershell/module/az.iotcentral/) telepítve van a PowerShell-környezetben:
 
 ```powershell
 Get-InstalledModule -name Az.I*
 ```
 
-Ha nem adja meg a telepített modulok listájának **Az.IotCentral**, futtassa a következő parancsot:
+Ha a telepített modulok listája nem tartalmazza az **az. IotCentral**, futtassa a következő parancsot:
 
 ```powershell
 Install-Module Az.IotCentral
@@ -45,7 +45,7 @@ Install-Module Az.IotCentral
 
 ## <a name="create-an-application"></a>Alkalmazás létrehozása
 
-Használja a [New-AzIotCentralApp](https://docs.microsoft.com/powershell/module/az.iotcentral/New-AzIotCentralApp) parancsmag IoT központi alkalmazás létrehozása az Azure-előfizetésében. Példa:
+A [New-AzIotCentralApp](https://docs.microsoft.com/powershell/module/az.iotcentral/New-AzIotCentralApp) parancsmag használatával hozzon létre egy IoT Central alkalmazást az Azure-előfizetésében. Példa:
 
 ```powershell
 # Create a resource group for the IoT Central application
@@ -61,33 +61,33 @@ New-AzIotCentralApp -ResourceGroupName "MyIoTCentralResourceGroup" `
   -DisplayName "My Custom Display Name"
 ```
 
-A szkript először létrehoz egy erőforráscsoportot a keleti régiójában, az alkalmazás. A következő táblázat ismerteti a használt paraméterek a **New-AzIotCentralApp** parancsot:
+A szkript először egy erőforráscsoportot hoz létre az USA keleti régiójában az alkalmazáshoz. A **New-AzIotCentralApp** paranccsal használt paramétereket a következő táblázat ismerteti:
 
 |Paraméter         |Leírás |
 |------------------|------------|
-|ResourceGroupName |Az erőforráscsoport, amely tartalmazza az alkalmazást. Ennek az erőforráscsoportnak már léteznie kell az előfizetésben. |
-|Location egység |Alapértelmezés szerint ez a parancsmag használja az erőforráscsoport helyét. Jelenleg az IoT Central alkalmazáshoz hozhat létre a **USA keleti RÉGIÓJA**, **USA nyugati RÉGIÓJA**, **Észak-Európa**, vagy **Nyugat-Európa** régióban. |
-|Name (Név)              |Az Azure Portalon az alkalmazás neve. |
-|Subdomain         |Az altartomány az alkalmazás URL-címét. A példában az alkalmazás URL-cím van https://mysubdomain.azureiotcentral.com. |
-|SKU               |Jelenleg az egyetlen érték **S1** (standard szintű). Lásd: [Azure IoT Central díjszabás](https://azure.microsoft.com/pricing/details/iot-central/). |
-|Sablon          | Az alkalmazás sablont szeretné használni. További információkért lásd az alábbi táblázatot: |
-|displayName       |Az alkalmazás a felhasználói felületen megjelenített neve. |
+|ResourceGroupName |Az alkalmazást tartalmazó erőforráscsoport. Ez az erőforráscsoport már léteznie kell az előfizetésben. |
+|Location |Alapértelmezés szerint ez a parancsmag az erőforráscsoport helyét használja. Jelenleg létrehozhat egy IoT Central alkalmazást az **USA keleti**régiójában, az **USA nyugati**régiójában, **Észak-Európában**és Nyugat- **Európában** . |
+|Name (Név)              |Az alkalmazás neve a Azure Portalban. |
+|Subdomain         |Az alkalmazás URL-címében szereplő altartomány. A példában az alkalmazás URL-címe https://mysubdomain.azureiotcentral.com:. |
+|SKU               |Jelenleg az egyetlen érték az **S1** (standard szint). Lásd: az [Azure IoT Central díjszabása](https://azure.microsoft.com/pricing/details/iot-central/). |
+|Sablon          | A használni kívánt alkalmazás sablonja. További információkért tekintse meg a következő táblázatot: |
+|DisplayName       |Az alkalmazás neve, ahogy az a felhasználói felületen látható. |
 
-**Az alkalmazás**
+**Alkalmazás-sablonok**
 
 |Sablon neve  |Leírás |
 |---------------|------------|
 |iotc-default@1.0.0 |Létrehoz egy üres alkalmazást, amelybe a saját eszközsablonjait és eszközeit helyezheti el. |
 |iotc-demo@1.0.0    |Létrehoz egy alkalmazást, amely már tartalmaz egy eszközsablont egy hűtött eladóautomatához. Használja ezt a sablont az Azure IoT Central megismerésének megkezdéséhez. |
-|iotc-devkit-sample@1.0.0 |Létrehoz egy eszközsablonokat tartalmazó alkalmazást, amelyekkel csatlakoztathat egy MXChip vagy Raspberry Pi eszközt. Sablon használata, ha ezek az eszközök bármelyikével kísérletezés eszköz fejlesztők. |
+|iotc-devkit-sample@1.0.0 |Létrehoz egy eszközsablonokat tartalmazó alkalmazást, amelyekkel csatlakoztathat egy MXChip vagy Raspberry Pi eszközt. Akkor használja ezt a sablont, ha egy eszköz fejlesztője ezen eszközök bármelyikével kísérletezik. |
 
-## <a name="view-your-iot-central-applications"></a>Az IoT-központ alkalmazások megtekintése
+## <a name="view-your-iot-central-applications"></a>IoT Central-alkalmazások megtekintése
 
-Használja a [Get-AzIotCentralApp](https://docs.microsoft.com/powershell/module/az.iotcentral/Get-AzIotCentralApp) parancsmag az IoT-központ alkalmazások listázása és megtekintése a metaadatokat.
+A [Get-AzIotCentralApp](https://docs.microsoft.com/powershell/module/az.iotcentral/Get-AzIotCentralApp) parancsmag használatával listázhatja IoT Central alkalmazásait, és megtekintheti a metaadatokat.
 
-## <a name="modify-an-application"></a>Módosítsa az alkalmazást
+## <a name="modify-an-application"></a>Alkalmazás módosítása
 
-Használja a [Set-AzIotCentralApp](https://docs.microsoft.com/powershell/module/az.iotcentral/set-aziotcentralapp) parancsmagot, hogy frissíteni azokat a metaadatokat az IoT Central alkalmazáshoz. Például módosíthatja az alkalmazás megjelenített neve:
+A [set-AzIotCentralApp](https://docs.microsoft.com/powershell/module/az.iotcentral/set-aziotcentralapp) parancsmag segítségével frissítheti egy IoT Central alkalmazás metaadatait. Például az alkalmazás megjelenítendő nevének módosításához:
 
 ```powershell
 Set-AzIotCentralApp -Name "myiotcentralapp" `
@@ -97,7 +97,7 @@ Set-AzIotCentralApp -Name "myiotcentralapp" `
 
 ## <a name="remove-an-application"></a>Alkalmazás eltávolítása
 
-Használja a [Remove-AzIotCentralApp](https://docs.microsoft.com/powershell/module/az.iotcentral/Remove-AzIotCentralApp) parancsmag egy IoT-központ alkalmazás törléséhez. Példa:
+IoT Central alkalmazás törléséhez használja a [Remove-AzIotCentralApp](https://docs.microsoft.com/powershell/module/az.iotcentral/Remove-AzIotCentralApp) parancsmagot. Példa:
 
 ```powershell
 Remove-AzIotCentralApp -ResourceGroupName "MyIoTCentralResourceGroup" `
@@ -106,7 +106,7 @@ Remove-AzIotCentralApp -ResourceGroupName "MyIoTCentralResourceGroup" `
 
 ## <a name="next-steps"></a>További lépések
 
-Most, hogy megismerte, hogyan kezelheti az Azure IoT Central alkalmazásait az Azure PowerShell, Íme a javasolt következő lépésre:
+Most, hogy megismerte, hogyan kezelheti az Azure IoT Central-alkalmazásokat a Azure PowerShellból, a következő lépés a javasolt lépés:
 
 > [!div class="nextstepaction"]
 > [Az alkalmazás felügyelete](howto-administer.md)

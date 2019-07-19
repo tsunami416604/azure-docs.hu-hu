@@ -1,165 +1,201 @@
 ---
-title: Az Azure-hálózatok |} A Microsoft Docs
-description: Ismerje meg az Azure hálózati szolgáltatásokat és képességeket.
+title: Azure-hálózatkezelés | Microsoft Docs
+description: Ismerje meg az Azure hálózatkezelési szolgáltatásait és képességeit.
 services: networking
 documentationcenter: na
-author: jimdial
-manager: timlt
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
+author: KumudD
+manager: twooley
 ms.service: virtual-network
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/19/2017
-ms.author: jdial
-ms.openlocfilehash: 02db9f2b8cb2ec71d23ad077b90eeacb905d2a16
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.date: 07/17/2019
+ms.author: kumud
+ms.openlocfilehash: 759b61e5fb444643bf83e1cca47b6f7152a96590
+ms.sourcegitcommit: 770b060438122f090ab90d81e3ff2f023455213b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60565855"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68305650"
 ---
-# <a name="azure-networking"></a>Az Azure-hálózatok
+# <a name="azure-networking"></a>Azure-hálózatkezelés
 
-Az Azure biztosít a különböző hálózati funkciói, amelyek együtt vagy külön-külön is használhatók. Kattintson bármelyik további információkat olvashat a következő főbb képességei:
-- [Azure-erőforrások közötti kapcsolat](#connectivity): Csatlakozás Azure-erőforrások együtt, a felhőben egy biztonságos, privát virtuális hálózatot.
-- [Internetkapcsolat](#internet-connectivity): Az Azure-erőforrások az interneten keresztül kommunikálnak.
-- [Helyszíni kapcsolatok](#on-premises-connectivity): A helyszíni hálózat csatlakoztatása az Azure-erőforrások virtuális magánhálózat (VPN) az interneten keresztül, vagy az Azure-bA egy dedikált kapcsolaton keresztül.
-- [Terheléselosztás és az adatforgalom irányának betöltése](#load-balancing): Bejövő forgalmának terheléselosztása kiszolgálók a ugyanarra a helyre és a forgalom különböző helyeken lévő kiszolgálókra.
-- [Biztonság](#security): Hálózati alhálózatokhoz vagy az egyes virtuális gépek (VM) közötti hálózati forgalom szűrése.
-- [Útválasztás](#routing): Használja az alapértelmezett útválasztását, vagy a teljes körűen szabályozhatja az Azure és helyszíni erőforrások között.
-- [Kezelhetőségi](#manageability): Figyelheti, és az Azure hálózati erőforrások kezeléséhez.
-- [Telepítési és konfigurációs eszközök](#tools): Egy olyan webes portál vagy a többplatformos parancssori eszközök segítségével telepítheti és konfigurálhatja a hálózati erőforrásokhoz.
+Az Azure hálózati szolgáltatásai különféle hálózati funkciókat biztosítanak, amelyek együtt vagy külön is használhatók. A következő főbb képességek bármelyikére kattintva további információkat tudhat meg róluk:
+- [**Csatlakozási szolgáltatások**](#connect): Az Azure-erőforrások és a helyszíni erőforrások összekapcsolása az Azure-Virtual Network (VNet), a Virtual WAN, a ExpressRoute, a VPN Gateway, a Azure DNS vagy az Azure Bastion hálózati szolgáltatásainak vagy kombinációjának használatával.
+- [**Alkalmazás-védelmi szolgáltatások**](#protect) Az alkalmazások védelme az Azure-DDoS Protection, a tűzfal, a hálózati biztonsági csoportok, a webalkalmazási tűzfal vagy a Virtual Network végpontok bármelyikének vagy kombinációjának használatával.
+- [**Application Delivery Services**](#deliver) Az Azure-hálózatban lévő alkalmazásokat az Azure-Content Delivery Network (CDN), az Azure bejárati szolgáltatás, a Traffic Manager, a Application Gateway vagy a Load Balancer ezen hálózati szolgáltatásainak bármelyikével vagy kombinációjával kézbesítheti.
+- [**Hálózati figyelés**](#monitor) – a hálózati erőforrások bármilyen vagy azzal együtt történő figyelése az Azure-Network Watcher, a ExpressRoute monitor, a Azure monitor vagy a VNet Terminal hozzáférési pont (TAP) használatával.
 
-## <a name="connectivity"></a>Azure-erőforrások közötti kapcsolat
+## <a name="connect"></a>Csatlakozási szolgáltatások
+ 
+Ez a szakasz azokat a szolgáltatásokat ismerteti, amelyek kapcsolatot biztosítanak az Azure-erőforrások, a helyszíni hálózat és az Azure-erőforrások közötti kapcsolat, valamint az Azure-beli virtuális hálózat, a ExpressRoute, a VPN Gateway, a virtuális WAN, a DNS és az Azure közötti kapcsolatok fiókirodájában Bastion.
 
-Például a Virtual Machines, Cloud Services, Virtual Machines Scale Sets és az Azure App Service Environment-környezetek Azure-erőforrások is privát módon kommunikáljanak egymással egy Azure virtuális hálózaton (VNet) keresztül. Virtuális hálózat egy logikai elkülönítés az Azure felhő számára kijelölt a [előfizetés](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fnetworking%2ftoc.json). Minden egyes Azure-előfizetésen belül több virtuális hálózat és az Azure valósíthat meg [régió](https://azure.microsoft.com/regions). Minden egyes virtuális hálózat el különítve a többi virtuális hálózatok. Az egyes virtuális hálózatok a következőket teheti:
+|Szolgáltatás|Miért érdemes használni?|Forgatókönyvek|
+|---|---|---|
+|[Virtuális hálózat](#vnet)|Lehetővé teszi az Azure-erőforrások számára, hogy biztonságosan kommunikáljanak egymással, az internettel és a helyszíni hálózatokkal.| <p>[Hálózati forgalom szűrése](../virtual-network/tutorial-filter-network-traffic.md)</p> <p>[Hálózati forgalom továbbítása](../virtual-network/tutorial-create-route-table-portal.md)</p> <p>[Erőforrások hálózati hozzáférésének korlátozása](../virtual-network/tutorial-restrict-network-access-to-resources.md)</p> <p>[Virtuális hálózatok csatlakoztatása](../virtual-network/tutorial-connect-virtual-networks-portal.md)</p>|
+|[ExpressRoute](#expressroute)|Kiterjesztheti helyszíni hálózatait a Microsoft-felhőbe egy olyan privát kapcsolaton keresztül, amely egy kapcsolati szolgáltató által könnyíti meg.|<p>[Az ExpressRoute-kapcsolatcsoport létrehozása és módosítása](../expressroute/expressroute-howto-circuit-portal-resource-manager.md)</p> <p>[ExpressRoute-kapcsolatcsoport társviszonyának létrehozása és módosítása](../expressroute/expressroute-howto-routing-portal-resource-manager.md)</p> <p>[VNet csatlakoztatása egy ExpressRoute-kapcsolatcsoporthoz](../expressroute/expressroute-howto-linkvnet-portal-resource-manager.md)</p> <p>[ExpressRoute-áramkörök útválasztási szűrőinek konfigurálása és kezelése](../expressroute/how-to-routefilter-portal.md)</p>|
+|[VPN Gateway](#vpngateway)|Titkosított forgalmat küld egy Azure-beli virtuális hálózat és egy helyszíni hely között a nyilvános interneten keresztül.|<p>[Helyek közötti kapcsolat](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md)</p> <p>[VNet – VNet kapcsolatok](../vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal.md)</p> <p>[Pont – hely kapcsolatok](../vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md)</p>|
+|[Virtuális WAN](#virtualwan)|Optimalizálja és automatizálja az Azure-ra és az-ra irányuló ág-kapcsolatot. Az Azure-régiók olyan hubok, amelyekhez az ágakat összekapcsolhatjuk.|<p>[Helyek közötti kapcsolatok](../virtual-wan/virtual-wan-site-to-site-portal.md), [ExpressRoute kapcsolatok](../virtual-wan/virtual-wan-expressroute-portal.md)</p> <p>[Pont – hely kapcsolatok](../virtual-wan/virtual-wan-point-to-site-portal.md)</p> |
+|[Azure DNS](#dns)|Olyan DNS-tartományokat üzemeltet, amelyek Microsoft Azure infrastruktúra használatával biztosítják a névfeloldást.|<p>[Saját tartomány üzemeltetése az Azure DNS-ben](../dns/dns-delegate-domain-azure-dns.md)</p><p>[DNS-rekordok létrehozása egy webalkalmazáshoz](../dns/dns-web-sites-custom-domain.md)</p> <p>[Alias-rekord létrehozása a Traffic Managerhoz](../dns/tutorial-alias-tm.md)</p> <p>[Alias-rekord létrehozása nyilvános IP-címhez](../dns/tutorial-alias-pip.md)</p> <p>[Alias-rekord létrehozása a zóna erőforrásrekord számára](../dns/tutorial-alias-rr.md)</p>|
+|[Azure Bastion (előzetes verzió)](#bastion)|Biztonságos és zökkenőmentes RDP-/SSH-kapcsolatokat konfigurálhat a virtuális gépeihez közvetlenül az Azure Portalon SSL használatával. Amikor az Azure Bastion-n keresztül kapcsolódik, a virtuális gépeknek nincs szükségük nyilvános IP-címekre|<p>[Azure Bastion-gazdagép létrehozása](../bastion/bastion-create-host-portal.md)</p><p>[Kapcsolódás az SSH-val Linux rendszerű virtuális géphez](../bastion/bastion-connect-vm-ssh.md)</p><p>[Kapcsolódás RDP használatával Windows rendszerű virtuális géphez](/bastion/bastion-connect-vm-rdp.md)</p>|
+||||
 
-- Megadhat egy egyéni magánhálózati IP-címteret nyilvános és magánhálózati (RFC 1918) címek használatával. Hozzárendelése az Azure-erőforrások csatlakozott a virtuális hálózathoz magánhálózati IP-cím hozzárendelése a címtér.
-- A virtuális hálózat szegmentálása egy vagy több alhálózatra, és foglaljon le egy minden egyes alhálózathoz a virtuális hálózat címtere része.
-- Használja az Azure által biztosított névfeloldást, vagy adja meg a saját DNS-kiszolgáló használatra egy virtuális hálózathoz csatlakozó erőforrás.
 
-Az Azure Virtual Network szolgáltatással kapcsolatos további tudnivalókért olvassa el a [virtuális hálózatok áttekintése](../virtual-network/virtual-networks-overview.md?toc=%2fazure%2fnetworking%2ftoc.json) cikk. Kapcsolódás virtuális hálózatok egymáshoz, erőforrások kommunikálhassanak egymással virtuális hálózatokat vagy a vneten engedélyezése. Használhatja az alábbi beállítások egyikében vagy egymáshoz virtuális hálózatok csatlakoztatása:
+### <a name="vnet"></a>Virtuális hálózat
 
-- **Társviszony-létesítés:** Lehetővé teszi a különböző Azure virtuális hálózat azonos Azure-régióban kommunikálnak egymással a kapcsolódó erőforrásokhoz. A sávszélességet és a virtuális hálózatok közötti késés megegyezik, mintha az erőforrásokat ugyanabban a Vnetben csatlakoztatva. Társviszony-létesítés kapcsolatos további információkért olvassa el a [virtuális hálózati társviszony-létesítési áttekintése](../virtual-network/virtual-network-peering-overview.md?toc=%2fazure%2fnetworking%2ftoc.json) cikk.
-- **VPN-átjáró:** Lehetővé teszi az erőforrások különböző Azure vnetekhez csatlakoztatni az Azure régiókon belül kommunikálni egymással. Virtuális hálózatok közötti forgalom halad keresztül az Azure VPN Gateway. A sávszélesség, az átjáró virtuális hálózatok közötti sávszélesség korlátozódik. Virtuális hálózatok csatlakoztatása VPN-átjáróval kapcsolatos további információkért olvassa el a [VNet – VNet kapcsolat konfigurálása a régiók közötti](../vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal.md?toc=%2fazure%2fnetworking%2ftoc.json) cikk.
+Az Azure Virtual Network (VNet) az Azure-beli magánhálózat alapvető építőeleme. A virtuális hálózatok a következőket végezheti el:
+- **Kommunikáció az Azure-erőforrások között**: Telepíthet virtuális gépeket és számos más típusú Azure-erőforrást egy virtuális hálózatra, például Azure App Service környezetekre, az Azure Kubernetes szolgáltatásra (ak) és az Azure Virtual Machine Scale Setsre. A virtuális hálózatokon üzembe helyezhető Azure-erőforrások teljes listájáért lásd: [Virtuális hálózati szolgáltatás integrálása](../virtual-network/virtual-network-for-azure-services.md).
+- **Kommunikáció egymás között**: A virtuális hálózatok közötti társviszony létesítésével lehetősége van arra, hogy virtuális hálózatokat kapcsoljon össze egymással, ezáltal lehetővé téve, hogy a virtuális hálózatok erőforrásai kommunikálhassanak egymással. Az összekacsolt virtuális hálózatok lehetnek azonos vagy eltérő Azure-régiókban. További információ: [Virtual Network peering](../virtual-network/virtual-network-peering-overview.md).
+- **Kommunikáció az internethez**: A VNet összes erőforrása alapértelmezés szerint képes kommunikálni az internet felé. Bejövő kommunikációt létesíthet egy erőforrással egy nyilvános IP-cím vagy Load Balancer hozzárendelésével. A kimenő kapcsolatok kezeléséhez [nyilvános IP-címeket](../virtual-network/virtual-network-public-ip-address.md) vagy nyilvános [Load Balancer](../load-balancer/load-balancer-overview.md) is használhat.
+- **Kommunikáció a**helyszíni hálózatokkal: [VPN Gateway](../vpn-gateway/vpn-gateway-about-vpngateways.md) vagy [ExpressRoute](../expressroute/expressroute-introduction.md)használatával összekapcsolhatja a helyszíni számítógépeit és hálózatait egy virtuális hálózathoz.
 
-## <a name="internet-connectivity"></a>Internetkapcsolat
+További információ: [Mi az az Azure Virtual Network?](../virtual-network/virtual-networks-overview.md)
 
-Egy virtuális hálózathoz csatlakozó összes Azure-erőforrások alapértelmezés szerint az internetre irányuló kimenő kapcsolattal rendelkezik. A magánhálózati IP-cím az erőforrás az adatforrás hálózati cím lefordított (SNAT) által az Azure-infrastruktúra nyilvános IP-címre. Kimenő internetkapcsolattal kapcsolatos további információkért olvassa el a [az Azure kimenő kapcsolatainak ismertetése](../load-balancer/load-balancer-outbound-connections.md?toc=%2fazure%2fnetworking%2ftoc.json) cikk.
+### <a name="expressroute"></a>ExpressRoute
+A ExpressRoute lehetővé teszi, hogy a helyszíni hálózatait a Microsoft-felhőben a kapcsolati szolgáltató által biztosított privát kapcsolaton keresztül bővítse. Ez a kapcsolat nem nyilvános. A forgalom nem az interneten keresztül halad át. Az ExpressRoute használatával kapcsolatokat létesíthet olyan Microsoft-felhőszolgáltatásokkal, mint például a Microsoft Azure, az Office 365 és a Dynamics 365.  További információ: [What is ExpressRoute?](../expressroute/expressroute-introduction.md).
 
-Bejövő kommunikációt az Azure-erőforrásokhoz az internetről, vagy kimenő kommunikációját az SNAT az interneten, kell egy erőforráshoz hozzárendelt nyilvános IP-cím. Nyilvános IP-címek kapcsolatos további információkért olvassa el a [nyilvános IP-címek](../virtual-network/virtual-network-public-ip-address.md?toc=%2fazure%2fnetworking%2ftoc.json) cikk.
+![Azure ExpressRoute](./media/networking-overview/expressroute-connection-overview.png)
 
-## <a name="on-premises-connectivity"></a>Helyszíni kapcsolatok
+### <a name="vpngateway"></a>VPN Gateway
+A VPN Gateway segítségével titkosított létesítmények közötti kapcsolatokat hozhat létre a virtuális hálózattal a helyszíni helyekről, illetve titkosított kapcsolatokat hozhat létre a virtuális hálózatok között. Különböző konfigurációk érhetők el VPN Gateway kapcsolatokhoz, például helyek közötti, pont – hely vagy VNet – VNet.
+A következő ábra több helyek közötti VPN-kapcsolatot mutat be ugyanahhoz a virtuális hálózathoz.
 
-Erőforrások a virtuális hálózatban található biztonságos kapcsolaton keresztül érheti el a VPN-kapcsolatot, vagy egy közvetlen, privát kapcsolat. Az Azure virtuális hálózat és a helyszíni hálózat közötti hálózati adatforgalom elküldésére, létre kell hoznia egy virtuális hálózati átjárót. Az átjáró, a típusú kapcsolat létrehozásához használni kívánt VPN- vagy ExpressRoute beállításokat konfigurál.
+![Helyek közötti Azure VPN Gateway kapcsolatok](./media/networking-overview/vpngateway-multisite-connection-diagram.png)
 
-A helyszíni hálózat csatlakozhat egy Vnethez a következő lehetőségek közül:
+További információ a VPN-kapcsolat különböző típusairól: [VPN Gateway](../vpn-gateway/vpn-gateway-about-vpngateways.md).
 
-**Pont – hely (az SSTP VPN)**
+### <a name="virtualwan"></a>Virtuális WAN
+Az Azure Virtual WAN egy hálózati szolgáltatás, amely optimalizált és automatizált ág-kapcsolatot biztosít az Azure-hoz és a-n keresztül. Az Azure-régiók olyan hubok, amelyekhez az ágakat összekapcsolhatjuk. Az Azure-gerinc kihasználható az ágak összekapcsolásához és a VNet közötti kapcsolathoz is. Az Azure Virtual WAN számos Azure Cloud connectivity-szolgáltatást kínál, többek között a helyek közötti VPN-t, a ExpressRoute, a pont – hely típusú felhasználói VPN-t egyetlen operatív felületre. Az Azure virtuális hálózatok-hez való kapcsolódás virtuális hálózati kapcsolatok használatával történik. További információ: [Mi az az Azure Virtual WAN?](../virtual-wan/virtual-wan-about.md).
 
-Az alábbi képen látható külön, mutasson a hely kapcsolatok több számítógép és a egy virtuális hálózat között:
+![A Virtual WAN ábrája](./media/networking-overview/virtualwan1.png)
 
-![Pont–hely kapcsolat](./media/networking-overview/point-to-site.png)
+### <a name="dns"></a>Azure DNS
+Az Azure DNS egy üzemeltetési szolgáltatás, amely a Microsoft Azure infrastruktúráját használja a DNS-tartományok névfeloldásához. Ha tartományait az Azure-ban üzemelteti, DNS-rekordjait a többi Azure-szolgáltatáshoz is használt hitelesítő adatokkal, API-kkal, eszközökkel és számlázási információkkal kezelheti. További információ: [Mi az Azure DNS?](../dns/dns-overview.md)
 
-Ez a kapcsolat egy egyedi számítógép és a egy virtuális hálózat között jön létre. Ez a kapcsolattípus remek választás, ha csak most ismerkedik az Azure szolgáltatással, illetve a fejlesztők számára, mert a meglévő hálózatot csak kis mértékben vagy egyáltalán nem kell módosítani. Egyben kényelmes, amikor csatlakozik egy távoli helyen, például egy konferencia- vagy otthoni. Pont – hely kapcsolatok gyakran összekapcsolt hely – hely kapcsolattal a ugyanazon a virtuális hálózati átjárón keresztül. A kapcsolat az SSTP protokollt használja, titkosított kommunikációt biztosít a számítógép és a virtuális hálózat között az interneten keresztül. A késés, a pont – hely VPN-hez már előre nem látható, mert az a forgalom az interneten halad át.
+### <a name="bastion"></a>Azure Bastion (előzetes verzió)
+Az Azure Bastion szolgáltatás egy új, teljes körűen felügyelt, a virtuális hálózaton belül kiépített, teljesen platform által felügyelt Pásti szolgáltatás. Biztonságos és zökkenőmentes RDP/SSH-kapcsolatot biztosít a virtuális gépekhez közvetlenül a Azure Portal SSL-en keresztül. Ha az Azure Bastionon keresztül csatlakozik, a virtuális gépeinek nincs szüksége nyilvános IP-címre. További információ: [Mi az az Azure Bastion?](/bastion/bastion-overview.md).
 
-**Site-to-site (IPsec/IKE VPN-alagút)**
+![Azure Bastion-architektúra](./media/networking-overview/architecture.png)
 
-![Helyek közötti kapcsolat](./media/networking-overview/site-to-site.png)
 
-Ezt a kapcsolatot a helyszíni VPN-eszköz és a egy Azure VPN Gateway átjáró között. Ez a kapcsolattípus lehetővé teszi, hogy bármilyen helyszíni erőforráshoz, hogy elérjék a virtuális hálózat eléréséhez. A kapcsolat egy IPSec/IKE VPN, amely titkosított kommunikációt biztosít a helyszíni eszközök és az Azure VPN gateway között az interneten. Több helyszíni helyhez csatlakozhatnak a VPN-átjáróhoz. Egyes helyeken a helyszíni VPN-eszköznek rendelkeznie kell egy kifelé irányuló nyilvános IP-címet, amely nem NAT mögött. A késést, helyek közötti kapcsolat nem határozható meg előre, mivel az a forgalom az interneten halad át.
+## <a name="protect"></a>Alkalmazás-védelmi szolgáltatások
 
-**ExpressRoute (dedikált privát kapcsolat)**
+Ez a szakasz az Azure hálózati szolgáltatásait ismerteti, amelyek segítenek a hálózati DDoS Protection erőforrások, a webalkalmazási tűzfal, a Azure Firewall, a hálózati biztonsági csoportok és a szolgáltatási végpontok védelmében.
 
-![ExpressRoute](./media/networking-overview/expressroute.png)
+|Szolgáltatás|Miért érdemes használni?|Forgatókönyv|
+|---|---|---|
+|[DDoS-védelem](#ddosprotection) |Magas rendelkezésre állás az alkalmazások számára a felesleges IP-forgalom elleni védelem ellenében|[Azure DDoS Protection kezelése](../virtual-network/manage-ddos-protection.md)|
+|[Webalkalmazási tűzfal](#waf)|<p>Az [Azure WAF és a Application Gateway](../application-gateway/waf-overview.md) helyi védelmet biztosít a nyilvános és privát címtartománybeli entitásoknak</p><p>A bejárati [ajtóval rendelkező Azure-WAF](../frontdoor/waf-overview.md) a hálózat peremén a nyilvános végpontok számára biztosít védelmet.</p>|<p>[A robot védelmi szabályainak konfigurálása](../frontdoor/waf-front-door-policy-configure-bot-protection.md)</p> <p>[Egyéni válasz kód konfigurálása](../frontdoor/waf-front-door-configure-custom-response-code.md)</p> <p>[IP-korlátozási szabályok konfigurálása](../frontdoor/waf-front-door-configure-ip-restriction.md)</p> <p>[A díjszabási korlát konfigurálása szabály](../frontdoor/waf-front-door-rate-limit-powershell.md)</p> |
+|[Azure Firewall](#firewall)|Az Azure Firewall egy felügyelt, felhőalapú hálózatbiztonsági szolgáltatás, amely Azure Virtual Network-erőforrásait védi. Ez egy teljesen állapot-nyilvántartó tűzfal, amely beépített, magas rendelkezésre állású és korlátlan Felhőbeli méretezhetőséggel rendelkezik.|<p>[Azure Firewall üzembe helyezése vnet](../firewall/tutorial-firewall-deploy-portal.md)</p> <p>[-Azure Firewall üzembe helyezése hibrid hálózaton](../firewall/tutorial-hybrid-ps.md)</p> <p>[Bejövő forgalom szűrése Azure Firewall DNAT](../firewall/tutorial-firewall-dnat.md)</p>|
+|[Hálózati biztonsági csoportok](#nsg)|Teljes részletességű elosztott végpont-vezérlés a virtuális gépen/alhálózatban az összes hálózati forgalom forgalmához|[Hálózati forgalom szűrése hálózati biztonsági csoportok használatával](../virtual-network/tutorial-filter-network-traffic.md)|
+|[Virtuális hálózati szolgáltatásvégpontok](#serviceendpoints)|Lehetővé teszi egyes Azure-szolgáltatási erőforrások hálózati hozzáférésének korlátozását egy virtuális hálózati alhálózatra.|[PaaS-erőforrásokhoz való hálózati hozzáférés korlátozása](../virtual-network/tutorial-restrict-network-access-to-resources-powershell.md)|
+|||
+### <a name="ddosprotection"></a>DDoS Protection 
+A [Azure DDoS Protection](../virtual-network/manage-ddos-protection.md) a legkifinomultabb DDoS-fenyegetések elleni védelmet nyújt. A szolgáltatás továbbfejlesztett DDoS-elhárítási képességeket biztosít az alkalmazáshoz és a virtuális hálózatokban üzembe helyezett erőforrásokhoz. Emellett a Azure DDoS Protectiont használó ügyfeleink hozzáférhetnek a DDoS gyors reagálás támogatásához, hogy aktív támadás közben is bekapcsolódjanak a DDoS-szakértőkbe.
 
-Ez a kapcsolattípus jön létre a hálózat és az Azure között egy ExpressRoute-partneren keresztül. Ez a kapcsolat nem nyilvános. Forgalom sem halad át az interneten. A késés, az ExpressRoute-kapcsolatok az már előre jelezhető, mert a forgalom nem haladnak át az interneten. Az ExpressRoute kombinálható egy helyek közötti kapcsolat.
+![DDoS Protection](./media/networking-overview/ddos-protection.png)
 
-Az előző kapcsolat lehetőségekkel kapcsolatos további tudnivalókért olvassa el a [kapcsolati topológia-diagramok](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fnetworking%2ftoc.json) cikk.
+### <a name="waf"></a>Webalkalmazási tűzfal
 
-## <a name="load-balancing"></a>Terheléselosztás és az adatforgalom irányának betöltése
+Az Azure webalkalmazási tűzfal (WAF) védelmet nyújt a webalkalmazásoknak a gyakori webes biztonsági rések és sebezhetőségek, például az SQL-injektálás és a helyek közötti parancsfájlok használatával. Az Azure WAF a felügyelt szabályok segítségével a OWASP 10 legfontosabb biztonsági résen kívülről is biztosít védelmet a box-ban. Emellett az ügyfelek egyéni szabályokat is megadhatnak, amelyek az ügyfél által felügyelt szabályok a forrás IP-címtartomány alapján további védelmet biztosítanak, és olyan attribútumokat igényelnek, mint a fejlécek, a cookie-k, az űrlap adatmezői vagy a lekérdezési karakterlánc
 
-A Microsoft Azure több szolgáltatásokat kínál a hálózati forgalom hogyan ossza kezelése és elosztott terhelésű. A következő lehetőségek bármelyikét használhatja önállóan vagy együtt:
+Az ügyfelek dönthetnek úgy, hogy üzembe helyezik az [Azure WAF-t Application Gateway,](../application-gateway/waf-overview.md) amely regionális védelmet biztosít a nyilvános és privát címtartomány entitásai számára. Az ügyfelek dönthetnek úgy is, hogy az [Azure WAF](../frontdoor/waf-overview.md) üzembe helyezését is lehetővé teszi, amely a hálózati peremhálózat védelmét biztosítja a nyilvános végpontok számára.
 
-**DNS terheléselosztás**
 
-Az Azure Traffic Manager szolgáltatás a globális DNS terheléselosztást biztosít. A TRAFFIC Manager-ügyfelek IP-címe megfelelően működő végpontot, az alábbi útválasztási módszerek egyike alapján válaszol:
-- **Földrajzi:** Az ügyfelek irányítja, meghatározott végpontokhoz (Azure, külső vagy beágyazott) alapú mely földrajzi helye határozza meg a DNS-lekérdezés származik. Ez a módszer lehetővé teszi az olyan forgatókönyvekben, ahol, hogy az ügyfél földrajzi régióban, és azok alapján, Útválasztás fontos. Ilyenek például az adatok szuverenitását megbízás tartalom és a felhasználói felület honosítása megfelel, és a különféle régiókból származó forgalom mérése.
-- **Teljesítmény:** Az ügyfélnek visszaadott IP-címet a "legközelebb" az ügyfél. A "legközelebbi" végpont nem feltétlenül legközelebbi mért földrajzi távolság. Ehelyett ez a módszer alapján lehetet nyilvántartani hálózati késés a legközelebb eső végpont határozza meg. A TRAFFIC Manager egy internetes késés tábla nyomon követéséhez az üzenetváltási idő közötti IP-címtartományok és minden egyes Azure-adatközpont tárolja.
-- **Prioritás:** Az elsődleges végpont (legnagyobb prioritás) átirányítja a forgalmat. Ha az elsődleges végpont nem érhető el, a Traffic Manager a második végpontra irányítja a forgalmat. Ha az elsődleges és másodlagos végpontok nem érhetők el, áramlik a forgalom, a harmadik, és így tovább. A végpont rendelkezésre állását a konfigurált állapota (engedélyezve vagy letiltva), és a folyamatban lévő végpont-monitorozás alapul.
-- **Súlyozott ciklikus időszeletelés:** Az egyes kérések a Traffic Manager véletlenszerűen választ elérhető végpontot. A valószínűsége annak, a végpont kiválasztása a hozzárendelt összes elérhető végpontok súlyok alapul. Az azonos súly használatával-még akkor is, az adatforgalom eloszlása eredményez az összes végpontok között. Ezekre a végpontokra, a DNS-válaszok ritkább vagy gyakoribb visszaadandó magasabb vagy alacsonyabb súlyok használata a meghatározott végpontokhoz okoz.
+### <a name="firewall"></a>Azure Firewall
+Az Azure Firewall egy felügyelt, felhőalapú hálózatbiztonsági szolgáltatás, amely Azure Virtual Network-erőforrásait védi. A Azure Firewall használatával központilag hozhat létre, kényszerítheti és naplózhatja az alkalmazás-és hálózati kapcsolati szabályzatokat az előfizetések és a virtuális hálózatok között. Az Azure Firewall statikus nyilvános IP-címet használ a virtuális hálózat erőforrásaihoz, így a külső tűzfalak azonosíthatják a virtuális hálózatból érkező forgalmat. 
 
-Az alábbi képen egy webalkalmazás, egy webalkalmazás végpont felé irányuló kérelmet. Végpontok az más Azure-szolgáltatások például a virtuális gépek és Felhőszolgáltatások is.
+A Azure Firewallról további információt a [Azure Firewall dokumentációjában](../firewall/overview.md)talál.
 
-![Traffic Manager](./media/networking-overview/traffic-manager.png)
+![Tűzfal áttekintése](./media/networking-overview/firewall-threat.png)
 
-Az ügyfél közvetlenül csatlakozik az, hogy a végpont. Az Azure Traffic Manager észleli, ha a végpont nem kifogástalan, és ezután átirányítja a felhasználókat az ügyfelek egy másik, megfelelő végpontra. Traffic Managerrel kapcsolatos további tudnivalókért olvassa el a [Azure Traffic Manager áttekintése](../traffic-manager/traffic-manager-overview.md?toc=%2fazure%2fnetworking%2ftoc.json) cikk.
+### <a name="nsg"></a>Hálózati biztonsági csoportok
+Hálózati biztonsági csoporttal szűrheti az Azure-beli virtuális hálózatban lévő és az Azure-erőforrások felé irányuló hálózati forgalmat. További információ: [biztonsági áttekintés](../virtual-network/security-overview.md).
 
-**Alkalmazásterhelés-elosztás**
+### <a name="serviceendpoints"></a>Szolgáltatási végpontok
+A virtuális hálózatok (VNet) szolgáltatásvégpontjai egy közvetlen kapcsolaton keresztül kiterjesztik a virtuális hálózat magáncímterét és a VNet identitását az Azure-szolgáltatásokra. A végpontok segítségével biztosíthatja, hogy kritikus fontosságú Azure-szolgáltatási erőforrásai csak a virtuális hálózatain legyenek elérhetőek. A VNet felől az Azure-szolgáltatás felé irányuló forgalom mindig a Microsoft Azure gerinchálózatán halad át. További információ: [Virtual Network szolgáltatás](../virtual-network/virtual-network-service-endpoints-overview.md)-végpontok.
 
-Az Azure Application Gateway szolgáltatás biztosítja az alkalmazáskézbesítési vezérlőt (ADC) szolgáltatást. Az Application Gateway az Ön alkalmazásait, beleértve a webalkalmazási tűzfal webes alkalmazásai védelmét a biztonsági rések és az azokat kihasználó támadások ellen különböző 7. rétegbeli (HTTP/HTTPS) terheléselosztás lehetőségeket kínál. Az Application Gateway lehetővé teszi optimalizálhatják a webfarmok termelékenységét a processzorigényes SSL-lezárások az Alkalmazásátjáró felé történő kiszervezésével. 
+![Virtuális hálózati szolgáltatásvégpontok](./media/networking-overview/vnet-service-endpoints-overview.png)
 
-Egyéb 7. rétegbeli útválasztási lehetőségeket tartalmazza, Ciklikus időszeleteléses elosztását bejövő forgalom, a cookie-alapú munkamenet-affinitást, a URL-cím-alapú útválasztás és a egy application gateway mögött több webhelyet is üzemeltethet. Az Application Gateway konfigurálható egy internetre irányuló átjáró, egy belső átjáró vagy mindkettőt. Application Gateway-példány az Azure teljes körűen felügyelt, méretezhető és magas rendelkezésre állású. Diagnosztikai és naplózási képességek széles skáláját biztosítja a jobb kezelhetőség érdekében. Az Application Gateway kapcsolatos további információkért olvassa el a [Application Gateway áttekintése](../application-gateway/application-gateway-introduction.md?toc=%2fazure%2fnetworking%2ftoc.json) cikk.
+## <a name="deliver"></a>Application Delivery Services
 
-Az alábbi képen látható URL-cím-alapú útválasztás az Application Gateway szolgáltatással:
+Ez a szakasz az Azure-ban elérhető hálózati szolgáltatásokat ismerteti, amelyek segítenek az alkalmazások Content Delivery Network (CDN), az Azure bejárati szolgáltatás, a Traffic Manager, a Application Gateway és a Load Balancer biztosításában.
 
-![Application Gateway](./media/networking-overview/application-gateway.png)
+|Szolgáltatás|Miért érdemes használni?|Forgatókönyv|
+|---|---|---|
+|[Content Delivery Network](#cdn)|Nagy sávszélességű tartalmat biztosít a felhasználóknak. A CDNs tárolja a gyorsítótárazott tartalmakat a végfelhasználók számára közel álló (POP) helyen található peremhálózati kiszolgálókon a késés csökkentése érdekében|<p>[CDN hozzáadása egy webalkalmazáshoz](../cdn/cdn-add-to-web-app.md)</p> <p>[-A Storage-Blobok elérése egy Azure CDN egyéni tartománnyal HTTPS-kapcsolaton keresztül](..//cdn/cdn-storage-custom-domain-https.md)</p> <p>[Egyéni tartomány hozzáadása az Azure CDN-végponthoz](../cdn/cdn-map-content-to-custom-domain.md)</p> <p>[HTTPS konfigurálása Azure CDN egyéni tartományon](../cdn/cdn-custom-ssl.md?tabs=option-1-default-enable-https-with-a-cdn-managed-certificate)</p>|
+|[Azure bejárati ajtó szolgáltatás](#frontdoor)|Lehetővé teszi a webes forgalom globális útválasztásának meghatározását, kezelését és figyelését azáltal, hogy optimalizálja a legjobb teljesítményt és azonnali globális feladatátvételt a magas rendelkezésre állás érdekében.|<p>[Egyéni tartomány hozzáadása az Azure bejárati ajtó szolgáltatásához](../frontdoor/front-door-custom-domain.md)</p> <p>[HTTPS konfigurálása az előtérben lévő egyéni tartományon](../frontdoor/front-door-custom-domain-https.md)</p><p>[A Geo-szűrés webalkalmazási tűzfal házirendjének beállítása](../frontdoor/front-door-tutorial-geo-filtering.md)|
+|[Traffic Manager](#trafficmanager)|A DNS-alapú forgalmat a globális Azure-régiókban lévő szolgáltatásokra osztja, miközben magas rendelkezésre állást és válaszadást biztosít.|<p> [Forgalom irányítása az alacsony késés érdekében](../traffic-manager/tutorial-traffic-manager-improve-website-response.md)</p><p>[Forgalom irányítása magas prioritású végpontra](../traffic-manager/traffic-manager-configure-priority-routing-method.md)</p><p> [Forgalom szabályozása súlyozott végpontokkal](../traffic-manager/tutorial-traffic-manager-weighted-endpoint-routing.md)</p><p>[Forgalom irányítása a végpont földrajzi helye alapján](../traffic-manager/traffic-manager-configure-geographic-routing-method.md)</p> <p> [Forgalom irányítása a felhasználó alhálózata alapján](../traffic-manager/tutorial-traffic-manager-subnet-routing.md)</p>|
+|[Load Balancer](#loadbalancer)|Regionális terheléselosztást biztosít a rendelkezésre állási zónák és a virtuális hálózatok közötti útválasztási forgalom alapján. Belső terheléselosztást biztosít az erőforrások közötti, valamint a regionális alkalmazás létrehozásához szükséges adatforgalom között.|<p> [Virtuális gépek internetes forgalmának terheléselosztása](../load-balancer/tutorial-load-balancer-standard-manage-portal.md)</p> <p>[Terheléselosztási forgalom elosztása virtuális hálózaton belüli virtuális gépek között](../load-balancer/tutorial-load-balancer-basic-internal-portal.md)<p>[A forgalom továbbítása adott virtuális gépek megadott portjára](../load-balancer/tutorial-load-balancer-port-forwarding-portal.md)</p><p> [Terheléselosztás és kimenő szabályok konfigurálása](../load-balancer/configure-load-balancer-outbound-cli.md)</p>|
+|[Application Gateway](#applicationgateway)|Az Azure Application Gateway egy webes forgalomra vonatkozó terheléselosztó, amellyel kezelheti a webalkalmazásai forgalmát.|<p>[Webes forgalom közvetlen továbbítása az Azure Application Gateway](../application-gateway/quick-create-portal.md)</p><p>[Alkalmazásátjáró konfigurálása az SSL leállításával](../application-gateway/create-ssl-portal.md)</p><p>[Alkalmazásátjáró létrehozása URL-alapú átirányítással](../application-gateway/create-url-route-portal.md) </p>|
+|
 
-**Hálózati terheléselosztás**
+### <a name="cdn"></a>Content Delivery Network
+Az Azure tartalomkézbesítési hálózat CDN a tartalmakat világszerte, stratégiai alapon elhelyezett fizikai csomópontokon gyorsítótárazva globális megoldást kínál a fejlesztők számára a tartalmak nagy sávszélességű gyors kézbesítéséhez a felhasználók felé. További információ a Azure CDNről: [Azure Content Delivery Network](../cdn/cdn-overview.md)
 
-Az Azure Load Balancerrel biztosít a nagy teljesítményű, kis késleltetésű 4. szintű terheléselosztó minden UDP és TCP protokollra. Kezeli a bejövő és kimenő kapcsolatokat. Beállíthatja, hogy a nyilvános és belső terheléselosztásos végpontjait. Meghatározhat szabályokat a bejövő kapcsolatok leképezése háttérbeli készletet destinations TCP- és HTTP-állapotellenőrzéséhez beállítások használatával kezelheti a szolgáltatás rendelkezésre állása. Load Balancer kapcsolatos további információkért olvassa el a [Load Balancer áttekintése](../load-balancer/load-balancer-overview.md?toc=%2fazure%2fnetworking%2ftoc.json) cikk.
+![Azure CDN](./media/networking-overview/cdn-overview.png)
 
-Az alábbi képen egy internetkapcsolattal rendelkező többrétegű alkalmazást, amely mindkét külső és belső terheléselosztók használja:
+### <a name="frontdoor"></a>Azure bejárati ajtó szolgáltatás
+Az Azure Front Door Service segítségével meghatározhatja, felügyelheti és monitorozhatja a webes forgalmának globális forgalomirányítását, optimalizálhatja annak teljesítményét, és azonnali globális feladatátvétellel magas rendelkezésre állást biztosíthat. A Front Door használatával a globális (több régióban található) fogyasztói és nagyvállalati alkalmazásait olyan robusztus, nagy teljesítményű, személyre szabott és modern alkalmazásokká, API-kká és tartalmakká alakíthatja, amelyek az Azure-on keresztül elérhetik a globális közönségüket. További információ: [Azure bejárati ajtó](../frontdoor/front-door-overview.md).
 
-![Terheléselosztó](./media/networking-overview/load-balancer.png)
 
-## <a name="security"></a>Biztonsági
+### <a name="trafficmanager"></a>Traffic Manager
 
-Az alábbi beállítások segítségével Azure-erőforrásoktól érkező forgalmat szűrheti:
+Az Azure Traffic Manager egy DNS-alapú forgalom-terheléselosztó, amely lehetővé teszi a szolgáltatásokhoz érkező forgalom optimális elosztását a globális Azure-régiókban, miközben magas rendelkezésre állást és válaszkészséget biztosít. Traffic Manager számos forgalom-útválasztási módszert biztosít a forgalom, például a prioritás, a súlyozott, a teljesítmény, a földrajzi, a többértékes vagy az alhálózat elosztására. További információ a forgalom-útválasztási módszerekről: [Traffic Manager útválasztási módszerek](../traffic-manager/traffic-manager-routing-methods.md).
 
-- **Hálózat:** Azure-beli hálózati biztonsági csoportok (NSG) az Azure-erőforrások bejövő és kimenő forgalom szűrése valósítható meg. Minden NSG tartalmaz egy vagy több bejövő és kimenő szabályok. Minden szabály azt határozza meg, a forrás IP-címek, cél IP-címek, port és protokoll, amely az forgalom szűrve van. NSG-ket az egyes alhálózatokat és az egyes virtuális gépekhez is alkalmazható. NSG-kkel kapcsolatos további információkért olvassa el a [hálózati biztonsági csoportok áttekintése](../virtual-network/security-overview.md?toc=%2fazure%2fnetworking%2ftoc.json) cikk.
-- **Alkalmazás:** Webalkalmazási tűzfallal rendelkező Application Gateway használatával védheti a webalkalmazásokat a biztonsági rések és az azokat kihasználó támadások ellen. Gyakori Példák SQL injektálási támadások, webhelyek közötti szkriptelést és hibás formátumú fejlécek. Az Application gateway szűri ki ezt a forgalmat, és leállítja a webkiszolgálók elérése. Ön engedélyezni kívánt szabályokat konfigurálhat. Az SSL-egyeztetési szabályzatokat konfigurálása biztosítja, hogy bizonyos szabályzatokat, le kell tiltani. A webalkalmazási tűzfallal kapcsolatos további információkért olvassa el a [webalkalmazási tűzfal](../application-gateway/application-gateway-web-application-firewall-overview.md?toc=%2fazure%2fnetworking%2ftoc.json) cikk.
+A következő ábra a végpontok prioritáson alapuló útválasztását mutatja Traffic Manager:
 
-Ha Azure-ban nem adja meg, vagy használhatja a helyszíni hálózati alkalmazások használandó hálózati képességet, a termékek bevezetése a virtuális gépek, és csatlakoztassa őket a virtuális hálózat. A [Azure Marketplace-en](https://azuremarketplace.microsoft.com/marketplace/apps/category/networking?page=1&subcategories=appliances) előfordulhat, hogy a jelenleg használt hálózati alkalmazások előre konfigurált számos különböző virtuális gépeket tartalmaz. Ezek a előre konfigurált virtuális gépek általában hálózati virtuális berendezések (NVA) nevezik. Az nva-k az alkalmazások, például tűzfal- és WAN-optimalizálás érhetők el.
+![Azure Traffic Manager "prioritás" forgalom – útválasztási módszer](./media/networking-overview/priority.png)
 
-## <a name="routing"></a>Útválasztás
+További információ a Traffic Managerról: [Mi az az Azure Traffic Manager?](../traffic-manager/traffic-manager-overview.md)
 
-Az Azure létrehozza alapértelmezett útválasztási táblázatokat, amelyek lehetővé teszik az erőforrások egymással kommunikálni bármely virtuális hálózat egyetlen alhálózatának sem kapcsolódik. A következő típusú útvonalakat az Azure-hoz létre alapértelmezett útvonalak felülírásához egyikében vagy valósíthatja meg:
-- **Felhasználó által definiált:** Létrehozhat egyéni útválasztási táblázatokat az útvonalakat a vezérlőelemre, hova érkezzen a forgalom az egyes alhálózatokon. A felhasználó által megadott útválasztással kapcsolatos további információkért olvassa el a [felhasználó által megadott útvonalakat](../virtual-network/virtual-networks-udr-overview.md?toc=%2fazure%2fnetworking%2ftoc.json) ismertető cikket.
-- **Border gateway protocol (BGP):** Ha a helyszíni hálózathoz egy VPN-átjáró vagy ExpressRoute-kapcsolat használatával csatlakoztatja a virtuális hálózat, a virtuális hálózatok propagálható BGP-útvonalak. A BGP az interneten gyakran használt szabványos útválasztási protokoll az útválasztási és elérhetőségi információcserére két vagy több hálózat között. Ha Azure-beli virtuális hálózatok összefüggésben használja, a BGP teszi lehetővé, az Azure VPN Gateway és a helyszíni VPN-eszközök, BGP-társak vagy -szomszédok, az "útvonalakat", amely tájékoztatja a rendelkezésre állási és az előtagok útválasztókon mindkét átjáró nevű az érintett átjárókon keresztül. Tranzit útválasztás több hálózat közötti egy BGP-társ BGP-átjáró tanul, más BGP-társak útvonalak propagálásával BGP is engedélyezheti. A BGP kapcsolatos további információkért tekintse meg a [BGP és az Azure VPN Gateway áttekintése](../vpn-gateway/vpn-gateway-bgp-overview.md?toc=%2fazure%2fnetworking%2ftoc.json) cikk.
+### <a name="loadbalancer"></a>Load Balancer
+Az Azure Load Balancer nagy teljesítményű, kis késleltetésű 4. rétegbeli terheléselosztást biztosít az összes UDP-és TCP-protokollhoz. Felügyeli a bejövő és kimenő kapcsolatokat. A nyilvános és a belső terheléselosztású végpontokat is konfigurálhatja. Meghatározhatja azokat a szabályokat, amelyekkel leképezheti a bejövő kapcsolatokat a háttér-készletek célhelyei számára a TCP és a HTTP Health-Probing beállításainak használatával a szolgáltatás rendelkezésre állásának kezeléséhez. Ha többet szeretne megtudni a Load Balancerről, olvassa el a [Load Balancer](../load-balancer/load-balancer-overview.md) áttekintő cikket.
 
-## <a name="manageability"></a>Kezelhetőségi
+Az alábbi képen egy internetre irányuló többrétegű alkalmazás jelenik meg, amely külső és belső terheléselosztót is használ:
 
-Az Azure a következő felügyelhető és kezelhető a hálózati eszközöket kínál:
-- **Tevékenységnaplók:** Az összes Azure-erőforrások tevékenységeket tartalmazó naplók, amely a műveletek végrehajtása műveletek állapotának információt biztosítanak, és a művelet kezdeményezője rendelkezik. A Tevékenységnaplók kapcsolatos további információkért olvassa el a [Tevékenységnaplók áttekintése](../azure-monitor/platform/activity-logs-overview.md?toc=%2fazure%2fnetworking%2ftoc.json) cikk.
-- **Diagnosztikai naplók:** Rendszeres és spontán események hálózati erőforrások által létrehozott és az Azure storage-fiókok esetében az Azure-Eseményközpontba küldi, vagy a Azure Monitor naplóira bejelentkezett. Erőforrás állapotának betekintést nyújtanak a diagnosztikai naplók. Diagnosztikai naplók Load Balancer (internetes elérésű), a hálózati biztonsági csoportok, útvonalak és az Application Gateway-okat. Diagnosztikai naplók kapcsolatos további információkért olvassa el a [diagnosztikai naplók áttekintése](../azure-monitor/platform/diagnostic-logs-overview.md?toc=%2fazure%2fnetworking%2ftoc.json) cikk.
-- **Metrikák:** Mérőszám játszik TELJESÍTMÉNYMÉRÉSEK és erőforrások olyan időszakban gyűjtött teljesítményszámlálók. Mérőszámok segítségével riasztás küszöbértékek alapján. Jelenleg metrikák érhetők el az Application Gatewayen. További információk a metrikákról, olvassa el a [metrikáinak áttekintésében](../monitoring-and-diagnostics/monitoring-overview-metrics.md?toc=%2fazure%2fnetworking%2ftoc.json) cikk.
-- **Hibaelhárítás:** Hibaelhárítási információk közvetlenül az Azure Portalon érhető el. Az információk segítik az ExpressRoute, VPN-átjárót, az Application Gateway, hálózati biztonsági naplók, útvonalak, DNS, terheléselosztó és a Traffic Manager szolgáltatással kapcsolatos gyakori problémák diagnosztizálásához.
-- **Szerepköralapú hozzáférés-vezérlés (RBAC):** Szabályozza, ki is létrehozhatja és kezelheti a szerepköralapú hozzáférés-vezérlés (RBAC) a hálózati erőforrásokat. További információ az RBAC olvassa el a [RBAC – első lépések](../role-based-access-control/overview.md?toc=%2fazure%2fnetworking%2ftoc.json) cikk. 
-- **Csomagrögzítés:** Az Azure Network Watcher szolgáltatás lehetővé teszi a csomagrögzítés futtatása virtuális gépen belül a virtuális gép egy bővítményével. Ez a funkció a Linux és Windows virtuális gépek érhető el. A csomagrögzítés kapcsolatos további információkért olvassa el a [Csomagrögzítés áttekintése](../network-watcher/network-watcher-packet-capture-overview.md?toc=%2fazure%2fnetworking%2ftoc.json) cikk.
-- **IP-forgalmának ellenőrzése:** A Network Watcher lehetővé teszi, hogy egy Azure virtuális Gépen, és a egy távoli erőforrás határozza meg, hogy a csomag engedélyezett vagy tiltott közötti IP-forgalmának ellenőrzése. Ez a funkció teszi lehetővé a rendszergazdák gyorsan diagnosztizálhatja a kapcsolódási problémák. IP-forgalmának ellenőrzése kapcsolatos további tudnivalókért olvassa el a [IP-folyamat ellenőrzése – áttekintés](../network-watcher/network-watcher-ip-flow-verify-overview.md?toc=%2fazure%2fnetworking%2ftoc.json) cikk.
-- **VPN-kapcsolatának hibaelhárítása:** A Network Watcher VPN hibaelhárító képességét lehetővé teszi a lekérdezés egy kapcsolattal vagy átjáró és az erőforrások állapotának ellenőrzése. VPN-kapcsolatok hibaelhárításával kapcsolatos további tudnivalókért olvassa el a [VPN-kapcsolat hibaelhárítása – áttekintés](../network-watcher/network-watcher-troubleshoot-overview.md?toc=%2fazure%2fnetworking%2ftoc.json) cikk.
-- **Hálózati topológia megtekintése:** Virtuális hálózat és a Network Watcher tekintse meg a hálózati erőforrások grafikus ábrázolását. Hálózati topológia megtekintése kapcsolatos további információkért olvassa el a [topológiájának áttekintése](../network-watcher/network-watcher-topology-overview.md?toc=%2fazure%2fnetworking%2ftoc.json) cikk.
+![Azure Load Balancer példa](./media/networking-overview/IC744147.png)
 
-## <a name="tools"></a>Telepítési és konfigurációs eszközök
 
-Telepítheti és konfigurálhatja az Azure hálózati erőforrásaival a következő eszközök bármelyikével:
+### <a name="applicationgateway"></a>Application Gateway
+Az Azure Application Gateway egy webes forgalomra vonatkozó terheléselosztó, amellyel kezelheti a webalkalmazásai forgalmát. Ez egy Application Delivery Controller (ADC) szolgáltatás, amely különböző 7. rétegbeli terheléselosztási funkciókat kínál alkalmazásai számára. További információ: [Mi az az Azure Application Gateway?](../application-gateway/overview.md)
 
-- **Az Azure Portalon:** Egy grafikus felhasználói felület, amelyen a böngészőben. Nyissa meg az [Azure Portalt](https://portal.azure.com).
-- **Azure PowerShell:** Windows-számítógépek kezelése az Azure parancssori eszközök. További információ az Azure PowerShell olvassa el a [Azure PowerShell áttekintése](/powershell/azure/overview?toc=%2fazure%2fnetworking%2ftoc.json) cikk.
-- **Az Azure parancssori felület (CLI):** Parancssori eszközök kezelése az Azure Linux, macOS vagy Windows-számítógépekről. További információ az Azure CLI olvassa el a [Azure CLI áttekintése](/cli/azure/get-started-with-azure-cli?toc=%2fazure%2fnetworking%2ftoc.json) cikk.
-- **Az Azure Resource Manager-sablonok:** Egy fájl (JSON formátumban), amely meghatározza az infrastruktúra és a egy Azure-megoldás konfigurációját. A sablonok segítségével a megoldás a teljes életciklusa során ismételten üzembe helyezhető, és az erőforrások üzembe helyezése biztosan konzisztens lesz. Sablonok készítése kapcsolatos további információkért olvassa el a [gyakorlati tanácsok a sablonok létrehozásához](../azure-resource-manager/resource-manager-template-best-practices.md?toc=%2fazure%2fnetworking%2ftoc.json) cikk. Sablonok is üzembe helyezhetők az Azure Portalon, parancssori felület vagy PowerShell. Első lépésként sablonokkal azonnal üzembe helyezése a sok előre konfigurált sablonok egyikét a [Azure gyorsindítási sablonok](https://azure.microsoft.com/resources/templates/?term=network) könyvtár. 
+Az alábbi ábra az URL-alapú útválasztást Application Gatewaysal mutatja.
 
-## <a name="pricing"></a>Díjszabás
+![Application Gateway példa](./media/networking-overview/figure1-720.png)
 
-Díj, az Azure hálózati szolgáltatások rendelkezik, míg mások ingyenes. Nézet a [virtuális hálózati](https://azure.microsoft.com/pricing/details/virtual-network), [VPN-átjáró](https://azure.microsoft.com/pricing/details/vpn-gateway), [Application Gateway](https://azure.microsoft.com/pricing/details/application-gateway/), [terheléselosztó](https://azure.microsoft.com/pricing/details/load-balancer), [Network Watcher](https://azure.microsoft.com/pricing/details/network-watcher), [DNS](https://azure.microsoft.com/pricing/details/dns), [Traffic Manager](https://azure.microsoft.com/pricing/details/traffic-manager) és [ExpressRoute](https://azure.microsoft.com/pricing/details/expressroute) díjszabási lapjait további információt.
+## <a name="monitor"></a>Hálózati figyelési szolgáltatások
+Ez a szakasz az Azure hálózati szolgáltatásait ismerteti, amelyek segítenek a hálózati erőforrások figyelésében – Network Watcher, ExpressRoute-figyelő, Azure Monitor és Virtual Network KOPPINTanak.
+
+|Szolgáltatás|Miért érdemes használni?|Forgatókönyv|
+|---|---|---|
+|[Network Watcher](#networkwatcher)|Segíti a kapcsolódási problémák figyelését és hibaelhárítását, segít a VPN-, NSG-és útválasztási problémák diagnosztizálásában, a csomagok rögzítésében a virtuális gépen, automatizálja a diagnosztikai eszközök aktiválását Azure Functions és Logic Apps használatával|<p>[Virtuálisgép-forgalom szűrésével kapcsolatos probléma diagnosztizálása](../network-watcher/diagnose-vm-network-traffic-filtering-problem.md)</p><p>[VM-útválasztási probléma diagnosztizálása](../network-watcher/diagnose-vm-network-routing-problem.md)</p><p>[Virtuális gépek közötti kommunikáció figyelése](../network-watcher/connection-monitor.md)</p><p>[Hálózatok közötti kommunikációs problémák diagnosztizálása](../network-watcher/diagnose-communication-problem-between-networks.md)</p><p>[Virtuális gép be- és kimenő forgalmának naplózása](../network-watcher/network-watcher-nsg-flow-logging-portal.md)</p>|
+|[ExpressRoute-figyelő](#expressroutemonitor)|Valós idejű monitorozást biztosít a hálózati teljesítmény, a rendelkezésre állás és a kihasználtság terén, segíti a hálózati topológia automatikus felderítését, gyorsabbá teszi a hibák elkülönítését, észleli az átmeneti hálózati problémákat, segít a korábbi hálózati teljesítmény elemzésében jellemzők, több előfizetés támogatása|<p>[Network Performance Monitor for ExpressRoute konfigurálása](../expressroute/how-to-npm.md)</p><p>[ExpressRoute figyelés, metrikák és riasztások](../expressroute/expressroute-monitoring-metrics-alerts.md)</p>|
+|[Azure Monitor](#azuremonitor)|Segít megérteni, hogy az alkalmazások hogyan működnek, és proaktív módon azonosítják azokat a problémákat, amelyek hatással vannak a rájuk és az azoktól függő erőforrásokra.|<p>[Metrikák és riasztások Traffic Manager](../traffic-manager/traffic-manager-metrics-alerts.md)</p><p>[Azure monitor diagnosztika a standard Load Balancer](../load-balancer/load-balancer-standard-diagnostics.md)</p><p>[Azure Firewall naplók és metrikák figyelése](../firewall/tutorial-diagnostics.md)</p><p>[Az Azure webalkalmazási tűzfalának monitorozása és naplózása](../frontdoor/waf-front-door-monitor.md)</p>|
+|[Virtual Network KOPPINTson](#vnettap)|Folyamatos adatfolyamot biztosít a virtuális gépek hálózati forgalmáról a csomagok gyűjtője számára, lehetővé teszi a hálózati és az alkalmazások teljesítmény-felügyeleti megoldásait és biztonsági elemzési eszközeit|[VNet-KOPPINTó erőforrás létrehozása](../virtual-network/tutorial-tap-virtual-network-cli.md)|
+|
+
+### <a name="networkwatcher"></a>Network Watcher
+Az Azure Network Watcher eszközeivel monitorozhatja és diagnosztizálhatja az erőforrásokat egy Azure virtuális hálózaton belül, illetve megtekintheti azok metrikáit, és engedélyezheti vagy letiltja azok naplóit. További információ: [Mi az Network Watcher?](../network-watcher/network-watcher-monitoring-overview.md?toc=%2fazure%2fnetworking%2ftoc.json)
+### <a name="expressroutemonitor"></a>ExpressRoute-figyelő
+További információ a ExpressRoute-áramköri metrikák, diagnosztikai naplók és riasztások megtekintéséről: [ExpressRoute-figyelés,-metrikák és-riasztások](../expressroute/expressroute-monitoring-metrics-alerts.md?toc=%2fazure%2fnetworking%2ftoc.json).
+### <a name="azuremonitor"></a>Azure Monitor
+Azure Monitor maximalizálja az alkalmazások rendelkezésre állását és teljesítményét azáltal, hogy átfogó megoldást kínál a Felhőbeli és a helyszíni környezetek telemetria gyűjtésére, elemzésére és működésére. Ez a szolgáltatás segít megérteni azt, hogy az alkalmazásai hogyan teljesítenek, valamint proaktív módon azonosítja a működésüket befolyásoló problémákat és azokat az erőforrásokat, amelyektől függenek. További információ: [Azure monitor Overview (áttekintés](../azure-monitor/overview.md?toc=%2fazure%2fnetworking%2ftoc.json)).
+### <a name="vnettap"></a>Virtual Network KOPPINTson
+Az Azure Virtual Network (terminál-hozzáférési pont) funkció lehetővé teszi a virtuális gép hálózati forgalmának folyamatos továbbítását egy hálózati csomag gyűjtője vagy analitikai eszköze számára. A gyűjtő vagy az elemzési eszközt egy [hálózati virtuális berendezési](https://azure.microsoft.com/solutions/network-appliances/) partner kapja meg. 
+
+Az alábbi képen látható, hogyan működik a virtuális hálózati KOPPINTÁS. 
+
+![A virtuális hálózat KOPPINTÁSának működése](./media/networking-overview/virtual-network-tap-architecture.png)
+
+További információ: [Mi az Virtual Network koppint](../virtual-network/virtual-network-tap-overview.md).
 
 ## <a name="next-steps"></a>További lépések
 
-- Az első virtuális hálózat létrehozása, és csatlakozzon néhány virtuális gépet, a lépéseket követve a [az első virtuális hálózat létrehozása](../virtual-network/quick-create-portal.md?toc=%2fazure%2fnetworking%2ftoc.json) cikk.
-- A számítógép csatlakoztatása virtuális hálózathoz a lépéseket követve a [pont – hely kapcsolat konfigurálása](../vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md?toc=%2fazure%2fnetworking%2ftoc.json) cikk.
-- Terheléselosztását internetes forgalom nyilvános kiszolgálókon található lépéseket követve a [hozható létre internetkapcsolattal rendelkező terheléselosztó](../load-balancer/load-balancer-get-started-internet-portal.md?toc=%2fazure%2fnetworking%2ftoc.json) cikk.
+- Hozza létre az első VNet, és kapcsolódjon néhány virtuális géphez a létrehozásához az [első virtuális hálózat létrehozása](../virtual-network/quick-create-portal.md?toc=%2fazure%2fnetworking%2ftoc.json) című cikkben ismertetett lépések végrehajtásával.
+- A számítógép csatlakoztatása egy VNet a [pont – hely kapcsolat konfigurálása című cikkben](../vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md?toc=%2fazure%2fnetworking%2ftoc.json)ismertetett lépések végrehajtásával.
+- Az internetre irányuló [terheléselosztó létrehozása](../load-balancer/load-balancer-get-started-internet-portal.md?toc=%2fazure%2fnetworking%2ftoc.json) című cikkben ismertetett lépések végrehajtásával terheléselosztást végezhet a nyilvános kiszolgálók internetes forgalmával.
+ 
+ 
+   

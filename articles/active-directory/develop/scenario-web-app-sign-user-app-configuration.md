@@ -1,6 +1,6 @@
 ---
-title: Webes alkalmazás, amely képes bejelentkeztetni a felhasználókat (kód konfiguráció) – a Microsoft identity platform
-description: Ismerje meg, hogyan hozhat létre egy webalkalmazást, amely képes bejelentkeztetni a felhasználókat (kód konfigurálása)
+title: Felhasználók számára bejelentkező webes alkalmazás (kód konfigurációja) – Microsoft Identity platform
+description: Megtudhatja, hogyan hozhat létre egy webalkalmazást, amely a felhasználók számára jelentkezik (kód konfigurálása)
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
@@ -15,37 +15,37 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b7484b627d3bc3f26fa01d4c38ee96047c70d007
-ms.sourcegitcommit: 1572b615c8f863be4986c23ea2ff7642b02bc605
+ms.openlocfilehash: c962e95b3d213c4089b51f58139cab17a3332cbd
+ms.sourcegitcommit: 470041c681719df2d4ee9b81c9be6104befffcea
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67785479"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67853070"
 ---
-# <a name="web-app-that-signs-in-users---code-configuration"></a>Webes alkalmazás, hogy jelentkezik be felhasználókat - kód-konfiguráció
+# <a name="web-app-that-signs-in-users---code-configuration"></a>Felhasználói bejelentkezést használó webalkalmazás – kód konfigurálása
 
-Ismerje meg, hogy a webalkalmazás kódját, hogy bejelentkezik felhasználók konfigurálása.
+Megtudhatja, hogyan konfigurálhatja a webalkalmazáshoz tartozó kódot, amely bejelentkezik a felhasználók számára.
 
-## <a name="libraries-used-to-protect-web-apps"></a>Webes alkalmazások védelmére használt kódtárak
+## <a name="libraries-used-to-protect-web-apps"></a>A Web Apps védeleméhez használt könyvtárak
 
 <!-- This section can be in an include for Web App and Web APIs -->
-A Web App (és a egy webes API-t) védelmére használt kódtárak a következők:
+A webalkalmazások (és a webes API-k) elleni védelemhez használt kódtárak a következők:
 
 | Platform | Erőforrástár | Leírás |
 |----------|---------|-------------|
-| ![.NET](media/sample-v2-code/logo_net.png) | [Identitás modellbővítményeket a .NET-hez](https://github.com/AzureAD/azure-activedirectory-identitymodel-extensions-for-dotnet/wiki) | Közvetlenül az ASP.NET és az ASP.NET Core, .NET-hez készült Microsoft identitás-bővítmények javaslatot tesz fut, mind a .NET-keretrendszer és a .NET Core dll-fájlok készlete. Egy ASP.NET/ASP.NET Core-webalkalmazást, a szabályozhatja jogkivonat érvényesítésére használatával a **TokenValidationParameters** osztály (különösen egyes Szoftverszállítói forgatókönyvekben) |
+| ![.NET](media/sample-v2-code/logo_net.png) | [A .NET-hez készült Identity Model-bővítmények](https://github.com/AzureAD/azure-activedirectory-identitymodel-extensions-for-dotnet/wiki) | A ASP.NET és a ASP.NET Core által közvetlenül használt Microsoft Identity Extensions for .NET azt javasolja, hogy a .NET-keretrendszer és a .NET Core rendszerű DLL-eket is használják. Egy ASP.NET/ASP.NET Core-webalkalmazásból a jogkivonat-érvényesítés a **TokenValidationParameters** osztály használatával szabályozható (különösen bizonyos ISV-forgatókönyvekben). |
 
-## <a name="aspnet-core-configuration"></a>ASP.NET Core-konfiguráció
+## <a name="aspnet-core-configuration"></a>ASP.NET Core konfiguráció
 
-Ez a cikk és az alábbi kódrészletek kinyert a [ASP.NET Core webes alkalmazás növekményes útmutató, 1. fejezet](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/1-WebApp-OIDC/1-1-MyOrg). Érdemes lehet hivatkozni az oktatóanyag a teljes megvalósítás részleteit.
+A cikkben szereplő kódrészletek és a következők a [ASP.net Core Web App növekményes oktatóanyagból, 1](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/1-WebApp-OIDC/1-1-MyOrg). fejezetből származnak. Ebben az oktatóanyagban a teljes körű megvalósítás részleteit érdemes megtekinteni.
 
-### <a name="application-configuration-files"></a>Alkalmazás-konfigurációs fájlok
+### <a name="application-configuration-files"></a>Alkalmazás konfigurációs fájljai
 
-Az ASP.NET Core, a webes alkalmazás bejelentkezés rendelkező felhasználók a Microsoft identity platform keresztül lehet konfigurálni a `appsettings.json` fájlt. Meg kell adni a beállítások a következők:
+ASP.net Core a Microsoft Identity platformmal rendelkező webalkalmazás-bejelentkezést használó felhasználók a `appsettings.json` fájlon keresztül konfigurálhatók. A kitöltendő beállítások a következők:
 
-- a felhő `Instance` Ha azt szeretné, hogy az alkalmazás futtatásához a nemzeti felhőkben
-- a célközönség `tenantId`
-- a `clientId` az alkalmazáshoz, mint az Azure Portalról másolt.
+- a felhőben `Instance` , ha azt szeretné, hogy az alkalmazás a nemzeti felhőkben fusson
+- a célközönség a`tenantId`
+- az `clientId` alkalmazáshoz a Azure Portalból másolt.
 
 ```JSon
 {
@@ -58,7 +58,7 @@ Az ASP.NET Core, a webes alkalmazás bejelentkezés rendelkező felhasználók a
     "Instance": "https://login.microsoftonline.com/",
 
     // Azure AD Audience among:
-    // - the tenant Id as a a GUID obtained from the azure portal to sign-in users in your organization
+    // - the tenant Id as a GUID obtained from the azure portal to sign-in users in your organization
     // - "organizations" to sign-in users in any work or school accounts
     // - "common" to sign-in users with any work and school account or Microsoft personal account
     // - "consumers" to sign-in users with Microsoft personal account only
@@ -72,7 +72,7 @@ Az ASP.NET Core, a webes alkalmazás bejelentkezés rendelkező felhasználók a
 }
 ```
 
-Az ASP.NET Core, van egy másik fájlba, amely tartalmazza az URL-cím (`applicationUrl`) és az SSL-portot (`sslPort`) az alkalmazását, valamint a különböző profilok.
+ASP.net Coreban van egy másik fájl, amely tartalmazza az alkalmazás URL`applicationUrl`-címét () és az`sslPort`SSL-portot (), valamint a különböző profilokat.
 
 ```JSon
 {
@@ -104,16 +104,16 @@ Az ASP.NET Core, van egy másik fájlba, amely tartalmazza az URL-cím (`applica
 }
 ```
 
-Az Azure Portalon, a válasz URI-k, amelyek a regisztrálnia kell a **hitelesítési** oldalon az alkalmazás meg kell felelnie az alábbi URL-címek; azaz a fenti két konfigurációs fájlok lennének `https://localhost:44321/signin-oidc` , a applicationUrl van `http://localhost:3110` , de a `sslPort` van megadott (44321), és a `CallbackPath` van `/signin-oidc` meghatározottak szerint a `appsettings.json`.
+A Azure Portal az alkalmazás **hitelesítési** lapján regisztrálni kívánt válasz URI-azonosítóknak meg kell egyezniük az URL-címekkel. Ez azt eredményezi `https://localhost:44321/signin-oidc` , hogy a fenti két konfigurációs fájl esetében a `http://localhost:3110` applicationUrl, de a `/signin-oidc` `sslPort` megadott érték (44321) `appsettings.json`, a `CallbackPath` pedig a.
   
-Ugyanúgy, kijelentkezési URI-t kellene állítani `https://localhost:44321/signout-callback-oidc`.
+Ugyanígy a kijelentkezési URI is a következőre lesz beállítva `https://localhost:44321/signout-callback-oidc`:.
 
-### <a name="initialization-code"></a>Inicializálási kódot
+### <a name="initialization-code"></a>Inicializálási kód
 
-Az ASP.NET Core Web Apps (és a webes API-k) az alkalmazás inicializálása során a kód található a `Startup.cs` fájlt, és adja hozzá a következő kódot a kell a Microsoft Identity platform (korábbi nevén az Azure AD) 2.0-s hitelesítés hozzáadásához. A Megjegyzések a kódban magától értetődő.
+ASP.net Core Web Apps (és webes API-k) esetében az alkalmazás inicializálását végző kód a `Startup.cs` fájlban található, és a Microsoft Identity platform (korábban Azure ad) 2.0-s verziójának használatával történő hitelesítéshez hozzá kell adnia a következő kódot. A kódban szereplő megjegyzéseknek magától értetődőnek kell lenniük.
 
   > [!NOTE]
-  > Ha először a projekt alapértelmezett ASP.NET core webes projekt a Visual studio vagy a használatával a `dotnet new mvc` módszer `AddAzureAD` állnak rendelkezésre, alapértelmezés szerint, mert a kapcsolódó csomagok automatikusan töltődnek be. Azonban ha egy teljesen új projekt buildjének elkészítéséhez, és használni kívánó az alábbi kód javasoljuk, hogy a NuGet-csomag hozzáadása **"Microsoft.AspNetCore.Authentication.AzureAD.UI"** a projekthez, hogy a `AddAzureAD` módszer érhető el.
+  > Ha a projektet a Visual Studióban lévő alapértelmezett ASP.net Core webes projekttel indítja el `dotnet new mvc` , vagy `AddAzureAD` a metódust használja, alapértelmezés szerint elérhető, mert a kapcsolódó csomagok automatikusan betöltődik. Ha azonban teljesen új projektet hoz létre, és az alábbi kódot próbálja használni, javasoljuk, hogy a `AddAzureAD` metódus elérhetővé tételéhez adja hozzá a **"Microsoft. AspNetCore. Authentication. AzureAD. UI"** NuGet-csomagot a projekthez.
   
 ```CSharp
  services.AddAuthentication(AzureADDefaults.AuthenticationScheme)
@@ -142,7 +142,7 @@ Az ASP.NET Core Web Apps (és a webes API-k) az alkalmazás inicializálása sor
 
 ## <a name="aspnet-configuration"></a>ASP.NET-konfiguráció
 
-Az ASP.NET, az alkalmazás keresztül lehet konfigurálni a `Web.Config` fájl
+A ASP.net-ben az alkalmazás a `Web.Config` fájlon keresztül van konfigurálva.
 
 ```XML
 <?xml version="1.0" encoding="utf-8"?>
@@ -164,7 +164,7 @@ Az ASP.NET, az alkalmazás keresztül lehet konfigurálni a `Web.Config` fájl
   </appSettings>
 ```
 
-A kód az ASP.NET-webalkalmazásban hitelesítéshez kapcsolódó / webes API-k található a `App_Start/Startup.Auth.cs` fájlt.
+A ASP.net Web App/web API-k hitelesítéséhez kapcsolódó kód a `App_Start/Startup.Auth.cs` fájlban található.
 
 ```CSharp
  public void ConfigureAuth(IAppBuilder app)

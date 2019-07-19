@@ -1,7 +1,7 @@
 ---
-title: Ismeri fel a nyomtató/kézzel írott szöveget, Computer Vision
+title: Nyomtatott/kézírásos szöveg felismerése, Computer Vision
 titleSuffix: Azure Cognitive Services
-description: A Computer Vision API használatával képeken nyomtatott és kézzel írt szöveg felismerése kapcsolatos fogalmakat.
+description: A nyomtatott és a kézírásos szöveg felismeréséhez kapcsolódó fogalmak a Computer Vision API használatával.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -11,87 +11,87 @@ ms.topic: conceptual
 ms.date: 04/17/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: bcaa990cc2186a5f1eecdbbca91804c92370277c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: cfbbd0b353699c4b04ede07df0450e66bd59612f
+ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66357186"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68311964"
 ---
 # <a name="recognize-printed-and-handwritten-text"></a>Nyomtatott és kézzel írt szöveg felismerése
 
-Számítógépes Látástechnológia számos olyan szolgáltatások észlelését, és nyomtatott vagy a kézírásos rendszerképek megjelenő szöveg kinyerése. Ez akkor hasznos, a számos célra jegyzetelési, orvosi, biztonsági és banki például. A következő három szakasz részletes három különböző szövegek felismerése API-k, minden egyes optimalizált különböző használati helyzetekhez.
+Computer Vision számos olyan szolgáltatást biztosít, amely a képeken megjelenő nyomtatott vagy kézírásos szöveg észlelésére és kinyerésére szolgál. Ez számos olyan forgatókönyvben hasznos, mint például a jegyzet készítése, az orvosi nyilvántartások, a biztonság és a banki szolgáltatások. A következő három szakaszban három különböző, különböző használati esetekre optimalizált szöveges felismerési API található.
 
-## <a name="read-api"></a>Elolvashatják az API
+## <a name="read-api"></a>API olvasása
 
-A elolvashatják az API segítségével azonosíthatja a legújabb modelleket a szöveges tartalom észleli és karaktersorozattá alakítja át a meghatározott szöveget. Szöveges adatot használó rendszerképek (például a digitális a beolvasott dokumentumokat) és a képek vizuális zaj rengeteg optimalizálva. Megállapítja, hogy melyik felismerés modellt használja, az egyes sorok, nyomtatott és a kézzel írt szöveg lemezképek támogatása. A elolvashatják az API aszinkron módon végrehajtja, mert adja vissza az eredményt több percet is igénybe vehet a nagyobb dokumentumokat.
+Az olvasási API a legújabb felismerési modellek használatával észleli a képek szöveges tartalmát, és átalakítja az azonosított szöveget egy géppel olvasható, a gép számára olvasható adatfolyamba. Ez a szöveg-nagy méretű képekre (például a digitálisan ellenőrzött dokumentumokra) és a sok vizuális zajjal rendelkező képekre van optimalizálva. Meghatározza, hogy melyik felismerési modellt kell használni az egyes szövegekhez, valamint a nyomtatott és a kézzel írott szöveggel is alátámasztott képeket. Az olvasási API aszinkron módon hajtható végre, mert a nagyobb dokumentumok több percet is igénybe vehetnek.
 
-Az olvasási művelet fenntartja a felismerhető szavak kimenetét eredeti sor csoportosítását. A soron belül minden szó a saját koordináták is rendelkezik, és az egyes sorok határolókeret koordinátái tartalmaz. Egy szó alacsony magabiztosan ismerhető fel, ha ezt az információt, valamint továbbítani. Tekintse meg a [elolvashatják az API-referenciadokumentumok](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/2afb498089f74080d7ef85eb) további.
+Az olvasási művelet megőrzi a felismert szavak eredeti sorát a kimenetében. Az egyes sorokhoz tartozik egy határolókeret koordinátái, és a sorban lévő minden szó saját koordinátákkal is rendelkezik. Ha egy szót alacsony megbízhatósággal ismertek fel, akkor az adatokat is továbbítjuk. További információért tekintse meg az [API](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/2afb498089f74080d7ef85eb) -k olvasása című dokumentációt.
 
 > [!NOTE]
-> Ez a funkció csak az angol nyelvű szövegekre érhető el.
+> Ez a funkció csak angol nyelvű szöveg esetén érhető el.
 
 ### <a name="image-requirements"></a>A rendszerképre vonatkozó követelmények
 
-Az olvasási API együttműködik a rendszerkép található, az alábbi követelményeknek:
+Az olvasási API az alábbi követelményeknek megfelelő rendszerképekkel működik:
 
-- A kép JPEG, PNG, BMP, PDF vagy TIFF formátumban kell bemutatni.
-- A kép mérete 50 x 50 és 4200 x 4200 képpont között kell lennie. PDF-oldalak 17 x 17 hüvelyk vagy kisebb kell lennie.
-- A lemezkép mérete kisebb, mint 20 megabájt (MB) kell lennie.
+- A képet JPEG, PNG, BMP, PDF vagy TIFF formátumban kell megjeleníteni.
+- A rendszerkép méretének 50 x 50 és 10000 x 10000 képpont közé kell esnie. A PDF-lapoknak 17 x 17 hüvelyk vagy kisebbnek kell lenniük.
+- A rendszerkép fájlméretének kisebbnek kell lennie 20 megabájtnál (MB).
 
 ### <a name="limitations"></a>Korlátozások
 
-Ha egy ingyenes szintű előfizetést használ, a elolvashatják az API csak dolgozza fel a PDF- vagy TIFF dokumentum első két oldalát. Fizetős előfizetéssel akár 200 lapokat fogja feldolgozni. Azt is vegye figyelembe, hogy az API-t észlelni fogja legfeljebb 300 sorok egy-egy lapon.
+Ha ingyenes szintű előfizetést használ, az olvasási API csak egy PDF-vagy TIFF-dokumentum első két oldalát dolgozza fel. Fizetős előfizetéssel akár 200 lapot is feldolgozhat. Azt is vegye figyelembe, hogy az API legfeljebb 300 sort fog érzékelni oldalanként.
 
 ## <a name="ocr-optical-character-recognition-api"></a>OCR (optikai karakterfelismerés) API
 
-Computer Vision API-t optikai karakterfelismerés (OCR) olvassa el az API-hoz hasonló, de végrehajtása szinkron módon történik, és a nagy dokumentumok nincs optimalizálva. További nyelvek; használja egy korábbi modell azonban működése Lásd: [nyelvi támogatás](language-support.md#text-recognition) a támogatott nyelvek teljes listáját.
+Computer Vision optikai karakterfelismerési (OCR) API hasonló az olvasási API-hoz, de szinkron módon fut, és nem nagy méretű dokumentumokra van optimalizálva. Egy korábbi felismerési modellt használ, de több nyelven is működik; a támogatott nyelvek teljes listáját a [nyelvi támogatás](language-support.md#text-recognition) részben tekintheti meg.
 
-Ha szükséges, optikai Karakterfelismerés visszaadó forgó eltolás a kép vízszintes tengely kapcsolatos fokban kijavítja a elforgatási szögét a felismert szöveget. Optikai Karakterfelismerés is biztosít a keret koordináták minden szó, az alábbi ábrán látható módon.
+Ha szükséges, az OCR kijavította a felismert szöveg forgását úgy, hogy a vízszintes képtengelyre vonatkozó fokban adja vissza a rotációs eltolást. Az OCR az egyes szavak keretének koordinátáit is megadja az alábbi ábrán látható módon.
 
-![Folyamatban van-e forgatni kép és a szöveg, olvassa el és a előrebocsátott](./Images/vision-overview-ocr.png)
+![Egy elforgatott kép és annak szövege olvasható és körülhatárolt](./Images/vision-overview-ocr.png)
 
-Tekintse meg a [OCR referenciadokumentumok](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc) további.
+További információt az [OCR](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc) -dokumentációban talál.
 
 ### <a name="image-requirements"></a>A rendszerképre vonatkozó követelmények
 
-Az optikai Karakterfelismerés API működik a lemezképek, amelyek megfelelnek a következő követelményeknek:
+Az OCR API olyan rendszerképeken működik, amelyek megfelelnek az alábbi követelményeknek:
 
-* A kép JPEG, PNG, GIF és BMP formátumban kell bemutatni.
-* A bemeneti kép mérete 50 x 50 és 4200 x 4200 képpont között kell lennie.
-* A kép szövegének forgatható szerint bármilyen több 90 fok és a egy kis szöge legfeljebb 40 fok.
+* A képet JPEG, PNG, GIF vagy BMP formátumban kell megjeleníteni.
+* A bemeneti rendszerkép méretének 50 x 50 és 4200 x 4200 képpont közé kell esnie.
+* A képen látható szöveg a 90 fokos többszörösével, valamint egy kisebb, legfeljebb 40 fokos szöggel forgatható el.
 
 ### <a name="limitations"></a>Korlátozások
 
-A fényképek, ahol szövege a következő meghatározó téves részlegesen felismert származhatnak. Az egyes fényképek, különösen a fényképek nélkül szöveg, a pontosság kép típusa függően változhat.
+Azokon a fényképeken, ahol a szöveg domináns, a hamis pozitív szavak a részben felismert szavakat eredményezik. Egyes fényképeken, különösen szöveg nélkül, a pontosság a rendszerkép típusától függően változhat.
 
-## <a name="recognize-text-api"></a>API szövegének felismerése
+## <a name="recognize-text-api"></a>szövegfelismerés API
 
 > [!NOTE]
-> A felismerni API értéke a elolvashatják az API elavult. Az olvasási API hasonló képességekkel rendelkezik, és frissül, és PDF-, TIFF és többoldalas fájlok kezeléséhez.
+> A szövegfelismerés API az olvasási API mellett elavult. Az olvasási API hasonló képességekkel rendelkezik, és frissül a PDF-, a TIFF-és a többoldalas fájlok kezeléséhez.
 
-A felismerni API OCR hasonló, de aszinkron, és a frissített modelleket használ. Tekintse meg a [ismeri fel a szöveges API-referenciadokumentumok](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/587f2c6a154055056008f200) további.
+A szövegfelismerés API hasonló az OCR-hez, de aszinkron módon fut, és frissített felismerő modelleket használ. További információért tekintse meg az [SZÖVEGFELISMERÉS API](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/587f2c6a154055056008f200) -dokumentációt.
 
 ### <a name="image-requirements"></a>A rendszerképre vonatkozó követelmények
 
-A felismerni API együttműködik a lemezképek, amelyek megfelelnek a következő követelményeknek:
+A szövegfelismerés API a következő követelményeknek megfelelő rendszerképekkel működik:
 
-- A kép JPEG, PNG vagy BMP formátumban kell bemutatni.
-- A kép mérete 50 x 50 és 4200 x 4200 képpont között kell lennie.
-- A lemezkép mérete kisebb, mint 4 megabájt (MB) kell lennie.
+- A képet JPEG, PNG vagy BMP formátumban kell megjeleníteni.
+- A rendszerkép méretének 50 x 50 és 4200 x 4200 képpont közé kell esnie.
+- A rendszerkép fájlméretének 4 megabájtnál (MB) kisebbnek kell lennie.
 
 ## <a name="limitations"></a>Korlátozások
 
-A szöveg felismerése műveletek pontosságát a képek minőségét függ. Az alábbi tényezők okozhatják egy pontatlan olvasása:
+A szöveges felismerési műveletek pontossága a képek minőségétől függ. A következő tényezők pontatlan olvasást eredményezhetnek:
 
 * Elmosódott képek.
 * Kézzel írt, folyóírásos szöveg.
 * Művészi betűstílusok.
 * Kis méretű szöveg.
 * Bonyolult háttér, árnyékok, a szöveget átfedő fényhatás vagy perspektivikus torzítás.
-* Hiányzik vagy túl nagy méretű nagybetűk, szavakat alapjait.
+* Túlméretezett vagy hiányzó nagybetűk a szavak elején.
 * Felső vagy alsó indexben lévő, vagy áthúzott szöveg.
 
 ## <a name="next-steps"></a>További lépések
 
-Kövesse a [(OCR) nyomtatott szöveg kinyerése](./quickstarts/csharp-print-text.md) rövid útmutató egy egyszerű szövegek felismerése implementálása C# alkalmazást.
+A szöveges felismerés egyszerű C# alkalmazásban való megvalósításához kövesse a [nyomtatott szöveg kibontása (OCR)](./quickstarts/csharp-print-text.md) rövid útmutatót.

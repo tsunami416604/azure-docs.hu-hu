@@ -7,29 +7,29 @@ ms.topic: conceptual
 ms.date: 07/09/2019
 ms.author: tomfitz
 ms.custom: seodec18
-ms.openlocfilehash: 36e881fb9ba3ab81611b94a36ef0beed8748d5b1
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: f457b316d9f499f2cab02452c1b03ad07a9aef27
+ms.sourcegitcommit: af58483a9c574a10edc546f2737939a93af87b73
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67705122"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68302836"
 ---
 # <a name="throttling-resource-manager-requests"></a>Resource Manager-kérelmek szabályozása
 
-Minden Azure-előfizetés és bérlő erőforrás-kezelő lehetővé teszi, hogy legfeljebb 12 000 olvasási kérelmek száma óránként és 1200 írási kérelmek száma óránként. Ezek a korlátok a rendszerbiztonsági tag (felhasználó vagy alkalmazás) hatóköre lehetővé téve a kéréseket és az előfizetés-azonosító vagy bérlői azonosító. Ha a kérelmek több, mint a rendszerbiztonsági tag származnak, a korlátot, az előfizetés vagy a bérlő között nagyobb, mint 12 000 és 1200 óránként.
+Minden Azure-előfizetés és bérlő erőforrás-kezelő lehetővé teszi, hogy legfeljebb 12 000 olvasási kérelmek száma óránként és 1200 írási kérelmek száma óránként. Ezek a korlátok a kéréseket és az előfizetés-azonosítót, vagy a bérlő AZONOSÍTÓját képező rendszerbiztonsági tag (felhasználó vagy alkalmazás) hatókörére vonatkoznak. Ha a kérések több rendszerbiztonsági tag között érkeznek, az előfizetés vagy a bérlő nagyobb, mint 12 000 és 1 200/óra.
 
-Az előfizetés vagy a bérlő kérelmek lépnek. Feliratkozási kérelmeket, amelyekről magában foglalja az előfizetés-Azonosítóját, például lekér az erőforráscsoportok az előfizetés átadása. Bérlő kérelmek nem tartalmaznak, például lekér érvényes Azure-helyen az előfizetés-Azonosítóját.
+Az előfizetés vagy a bérlő kérelmek lépnek. Az előfizetési kérelmek olyanok, amelyek az előfizetés-azonosító átadását foglalják magukban, például az erőforráscsoportok beolvasása az előfizetésben. Bérlő kérelmek nem tartalmaznak, például lekér érvényes Azure-helyen az előfizetés-Azonosítóját.
 
 Ezek a korlátok vonatkoznak minden Azure Resource Manager-példány. Több példány minden Azure-régióban, és Azure Resource Manager az összes Azure-régióban üzemel.  Így a gyakorlatban korlátai hatékonyan sokkal nagyobb ezeket a korlátokat, felhasználói kérések általában által kiszolgált számos különböző példányait.
 
-Ha az alkalmazást vagy parancsfájlt eléri az ezeket a korlátokat, akkor a kérelmek szabályozása. Ez a cikk bemutatja, miként állapítható meg, a fennmaradó kérelmek korlátjának elérése előtt, és hogyan reagáljon, amikor eléri a korlátot.
+Ha az alkalmazást vagy parancsfájlt eléri az ezeket a korlátokat, akkor a kérelmek szabályozása. Ez a cikk bemutatja, hogyan határozhatja meg a fennmaradó kérelmeket a korlát elérése előtt, és hogyan válaszolhat a korlát elérésekor.
 
 Ha eléri a korlátot, kap-e a HTTP-állapotkódot **429 túl sok kérelem**.
 
-Az Azure Erőforrás-grafikon korlátozza a műveleteire kérések száma. A cikkben található lépések meghatározásához, a fennmaradó kérelmeket, és hogyan reagáljon a korlát elérésekor Erőforrás-grafikon is vonatkozik. Erőforrás-grafikon azonban a saját korlátozása és a visszaállítási arány állítja be. További információkért lásd: [szabályozása az Azure-erőforrás Graph](../governance/resource-graph/overview.md#throttling).
+Az Azure Resource Graph korlátozza a műveleteire irányuló kérések számát. A cikkben ismertetett lépések alapján megállapíthatja a fennmaradó kérelmeket, és hogyan reagálhat a korlátra, ha az erőforrás-gráfra is érvényes. Az erőforrás-gráf azonban beállítja a saját korlátját és az alaphelyzetbe állítási arányt. További információ: [szabályozás az Azure Resource Graph-ban](../governance/resource-graph/overview.md#throttling).
 
 ## <a name="remaining-requests"></a>Fennmaradó kérelmek
-Megadhatja, hogy a fennmaradó kérések száma válaszfejlécek megvizsgálásával. Olvasási kérelmek ad vissza értéket, a fennmaradó olvasási kérelmek száma a fejlécében. Az írási kérések tartalmazzák a fennmaradó írási kérelmek száma értékét. A következő táblázat ismerteti a válaszfejlécek ezekhez az értékekhez ellenőrizheti:
+Megadhatja, hogy a fennmaradó kérések száma válaszfejlécek megvizsgálásával. Az olvasási kérelmek egy értéket adnak vissza a fejlécben a hátralévő olvasási kérelmek számának megfelelően. Az írási kérelmek tartalmazzák a fennmaradó írási kérések számát. A következő táblázat ismerteti a válaszfejlécek ezekhez az értékekhez ellenőrizheti:
 
 | Válaszfejléc | Leírás |
 | --- | --- |

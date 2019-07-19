@@ -1,32 +1,33 @@
 ---
-title: Az Azure Kubernetes Service-ből az Azure Container Registry a hitelesítéshez
-description: Ismerje meg, hogyan biztosíthat hozzáférést a privát tárolójegyzékben található rendszerképek Azure Kubernetes Service egy Azure Active Directory egyszerű szolgáltatás használatával.
+title: Hitelesítés Azure Container Registry az Azure Kubernetes szolgáltatással
+description: Megtudhatja, hogyan biztosíthat hozzáférést az Azure Kubernetes szolgáltatásban található lemezképekhez a privát tároló beállításjegyzékében egy Azure Active Directory egyszerű szolgáltatásnév használatával.
 services: container-service
 author: dlepow
+manager: gwallace
 ms.service: container-service
 ms.topic: article
 ms.date: 08/08/2018
 ms.author: danlep
-ms.openlocfilehash: a541af77daf4136c0056cf9919d69c538d1dc5b6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9690f900b6fe8d81fbebc3fcf5b7022b12bc3b96
+ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66754476"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68310265"
 ---
-# <a name="authenticate-with-azure-container-registry-from-azure-kubernetes-service"></a>Az Azure Kubernetes Service-ből az Azure Container Registry a hitelesítéshez
+# <a name="authenticate-with-azure-container-registry-from-azure-kubernetes-service"></a>Hitelesítés Azure Container Registry az Azure Kubernetes szolgáltatással
 
-Amikor az Azure Container Registry (ACR) az Azure Kubernetes Service (AKS) használ, olyan hitelesítési mechanizmust kell hozható létre. Ez a cikk részletesen az alábbi két Azure-szolgáltatások közötti hitelesítés ajánlott konfigurációkat.
+Ha Azure Container Registryt (ACR) használ az Azure Kubernetes szolgáltatással (ak), akkor hitelesítési mechanizmust kell létrehoznia. Ez a cikk a két Azure-szolgáltatás közötti hitelesítés ajánlott konfigurációit részletezi.
 
-Csak ki kell konfigurálja az alábbi hitelesítési módszerek valamelyikét. A leggyakrabban használt módszer az, hogy [hozzáférést biztosít az AKS egyszerű szolgáltatás használatával](#grant-aks-access-to-acr). Ha speciális egyéni igények, hogy igény szerint is [Kubernetes titkos kulcsok használatával hozzáférést](#access-with-kubernetes-secret).
+Csak az alábbi hitelesítési módszerek egyikét kell konfigurálnia. A leggyakoribb módszer az, hogy [hozzáférést biztosítson az AK egyszerű szolgáltatásának használatával](#grant-aks-access-to-acr). Ha konkrét igényei vannak, igény szerint [a Kubernetes](#access-with-kubernetes-secret)-titkokat is megadhatja.
 
-Ez a cikk feltételezi, hogy már létrehozott egy AKS-fürtöt, és a fürt eléréséhez a `kubectl` nevű parancssori ügyfelét.
+Ez a cikk azt feltételezi, hogy már létrehozott egy AK-fürtöt, és hozzáfér a fürthöz a `kubectl` parancssori ügyféllel.
 
-## <a name="grant-aks-access-to-acr"></a>Támogatás az AKS-hozzáférés az ACR-be
+## <a name="grant-aks-access-to-acr"></a>AK-hozzáférés biztosítása az ACR-hez
 
-Amikor egy AKS-fürtöt hoz létre, az Azure is létrehoz egy egyszerű szolgáltatást az egyéb Azure-erőforrások a fürt működési követelmények támogatásához. Hitelesítés az ACR-beállításjegyzékből ezt automatikusan létrehozott szolgáltatásnév is használhat. Ehhez hozzon létre egy Azure ad-ben kell [szerepkör-hozzárendelés](../role-based-access-control/overview.md#role-assignments) , amely engedélyezi a fürt szolgáltatásnév hozzáférhessen a tárolóregisztrációs adatbázisba.
+Ha AK-fürtöt hoz létre, az Azure egy egyszerű szolgáltatásnevet is létrehoz, amely támogatja a fürt más Azure-erőforrásokkal való működőképességét. Ezt az automatikusan létrehozott egyszerű szolgáltatást használhatja az ACR-beállításjegyzékkel való hitelesítéshez. Ehhez létre kell hoznia egy Azure AD-szerepkör- [hozzárendelést](../role-based-access-control/overview.md#role-assignments) , amely megadja a fürt egyszerű hozzáférését a tároló beállításjegyzékéhez.
 
-A következő szkript használatával egy Azure container Registry tárolóregisztrációs adatbázist az AKS által létrehozott szolgáltatás egyszerű lekéréses hozzáférést adni. Módosítsa a `AKS_*` és `ACR_*` változók a parancsfájl futtatása előtt környezete számára.
+Az alábbi szkripttel engedélyezheti az AK által generált egyszerű szolgáltatás lekéréses hozzáférését egy Azure Container registryhez. A parancsfájl `AKS_*` futtatása `ACR_*` előtt módosítsa a környezetét és változóit.
 
 ```bash
 #!/bin/bash
@@ -46,11 +47,11 @@ ACR_ID=$(az acr show --name $ACR_NAME --resource-group $ACR_RESOURCE_GROUP --que
 az role assignment create --assignee $CLIENT_ID --role acrpull --scope $ACR_ID
 ```
 
-## <a name="access-with-kubernetes-secret"></a>Hozzáférés a Kubernetes titkos kulcs
+## <a name="access-with-kubernetes-secret"></a>Hozzáférés a titkos Kubernetes
 
-Bizonyos esetekben előfordulhat, hogy nem kell a szükséges szerepkör hozzárendelése az automatikusan létrehozott AKS szolgáltatás egyszerű hozzáférést, az ACR-be. Például miatt a szervezet biztonsági modellt, akkor előfordulhat, hogy nem jogosult az AKS által létrehozott szolgáltatásnév, szerepkör hozzárendelése az Azure Active Directory-bérlőben. Szerepkört rendel egy egyszerű szolgáltatást kell az Azure AD-fiókot az Azure AD-bérlő írási engedéllyel kell rendelkeznie. Ha nem rendelkezik engedéllyel, hozzon létre egy új egyszerű szolgáltatást, majd hozzáférést, a container registry-Kubernetes kép lekérési titkos kulcs használatával.
+Bizonyos esetekben előfordulhat, hogy nem tudja hozzárendelni a szükséges szerepkört az automatikusan generált AK-szolgáltatáshoz, amely hozzáférést biztosít az ACR-hez. Előfordulhat például, hogy a szervezete biztonsági modellje miatt nem rendelkezik a megfelelő engedélyekkel a Azure Active Directory-bérlőben ahhoz, hogy szerepkört rendeljen az AK által generált egyszerű szolgáltatáshoz. Egy szerepkör egy egyszerű szolgáltatáshoz való hozzárendeléséhez az Azure AD-fióknak írási engedélyre van szüksége az Azure AD-bérlőhöz. Ha nincs engedélye, létrehozhat egy új szolgáltatásnevet, majd hozzáférést biztosíthat a tároló beállításjegyzékéhez egy Kubernetes-rendszerkép lekérési titok használatával.
 
-A következő parancsfájl használatával hozzon létre egy új egyszerű szolgáltatást (fogja használni a saját hitelesítő adatait a kép lekérési Kubernetes titkos). Módosítsa a `ACR_NAME` változó a környezetnek a parancsfájl futtatása előtt.
+A következő szkripttel hozzon létre egy új egyszerű szolgáltatást (a Kubernetes-rendszerkép lekérési titkának hitelesítő adatait fogja használni). A parancsfájl `ACR_NAME` futtatása előtt módosítsa a környezet változóját.
 
 ```bash
 #!/bin/bash
@@ -73,15 +74,15 @@ echo "Service principal ID: $CLIENT_ID"
 echo "Service principal password: $SP_PASSWD"
 ```
 
-A szolgáltatásnév hitelesítő adatainak most már tárolhat egy Kubernetes [kép lekérési titkos kulcs][image-pull-secret], amely az AKS-fürt fog hivatkozni, amikor a futó tárolók.
+Most már tárolhatja a szolgáltatásnév hitelesítő adatait egy Kubernetes-Rendszerképbeli lekérési [titokban][image-pull-secret], amelyet az AK-fürt a tárolók futtatásakor fog hivatkozni.
 
-Használja a következő **kubectl** parancsot a Kubernetes titkos kódjának létrehozása. Cserélje le `<acr-login-server>` az Azure container registry (szerepel a formátum "acrname.azurecr.io") teljes nevét. Cserélje le `<service-principal-ID>` és `<service-principal-password>` az előző parancsfájl futtatásával beszerzett értékekkel. Cserélje le `<email-address>` bármely szabályos e-mail-címmel.
+A Kubernetes titkos kulcs létrehozásához használja a következő **kubectl** -parancsot. Cserélje `<acr-login-server>` le az kifejezést az Azure Container Registry teljes nevére (ez a "acrname.azurecr.IO" formátumban van). Cserélje `<service-principal-ID>` le `<service-principal-password>` a és a értéket az előző szkript futtatásával kapott értékekre. Cserélje `<email-address>` le a t bármilyen jól formázott e-mail-címre.
 
 ```bash
 kubectl create secret docker-registry acr-auth --docker-server <acr-login-server> --docker-username <service-principal-ID> --docker-password <service-principal-password> --docker-email <email-address>
 ```
 
-Mostantól használhatja a Kubernetes titkos pod telepítések esetén adja meg a nevét (ebben az esetben "acr-hitelesítés") található a `imagePullSecrets` paramétert:
+Most már használhatja a Kubernetes titkot a pod üzemelő példányokban, ha megadja a nevét (ebben az esetben "ACR-Auth") a `imagePullSecrets` paraméterben:
 
 ```yaml
 apiVersion: apps/v1beta1

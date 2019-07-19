@@ -1,37 +1,47 @@
 ---
-title: Pontosság metrikák az automatikus ML képzés
+title: Pontossági mérőszámok betanítása automatizált ML-ben
 titleSuffix: Azure Machine Learning service
-description: További információ az automatikus a machine learning pontossága metrikák minden, a futtatások.
+description: Ismerje meg az automatizált gépi tanulás pontossági mérőszámait az egyes futtatásokhoz.
 author: j-martens
 ms.author: jmartens
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.date: 06/20/2019
-ms.openlocfilehash: 44dfa387b289afe4dc5f030cca0b13325c04e811
-ms.sourcegitcommit: 5cb0b6645bd5dff9c1a4324793df3fdd776225e4
+ms.date: 07/16/2019
+ms.openlocfilehash: dc147fd0252b2b5ec4ce334d6c1c464d9cde8ef5
+ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/21/2019
-ms.locfileid: "67313300"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68297894"
 ---
-# <a name="evaluate-training-accuracy-in-automated-ml-with-metrics"></a>Metrikák az automatikus ml képzési pontossága kiértékelése
+# <a name="evaluate-training-accuracy-in-automated-ml-with-metrics"></a>Az automatizált ML-ben mért betanítási pontosság kiértékelése metrikákkal
 
-Többféle módon futtatási törzsének képzési pontossága metrikákat tekinthet meg.
+Ebből a cikkből megtudhatja, hogyan használhatók a különböző mérőszámok a Azure Machine Learning automatizált ml-modelljeihez. 
 
-* Használat [Jupyter widget](how-to-track-experiments.md#view-run-details)
-* Használat [a `get_metrics()` függvény](how-to-track-experiments.md#query-run-metrics) bármely `Run` objektum
-* Nézet [a kísérlet mérőszámok az Azure Portalon](how-to-track-experiments.md#view-the-experiment-in-the-azure-portal)
+Több módon is megtekintheti az egyes futtatási ismétlések tanítási pontosságának mérőszámait.
+* [Jupyter widget](how-to-track-experiments.md#view-run-details) használata
+* [ A`get_metrics()` függvény](how-to-track-experiments.md#query-run-metrics) használata bármely `Run` objektumon
+* A [kísérlet metrikáinak megtekintése a Azure Portalban](how-to-track-experiments.md#view-the-experiment-in-the-azure-portal)
+
+## <a name="prerequisites"></a>Előfeltételek
+ 
+* Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy ingyenes fiókot. Próbálja ki a [Azure Machine learning Service ingyenes vagy fizetős verzióját](https://aka.ms/AMLFree) még ma.
+ 
+* Hozzon létre egy automatizált gépi tanulási kísérletet az SDK-val vagy a Azure Portal.
+ 
+    * Az SDK használata [besorolási modell](how-to-auto-train-remote.md) vagy regressziós [modell](tutorial-auto-train-models.md) létrehozásához
+    * A megfelelő adatfeltöltéssel hozzon létre egy besorolási vagy regressziós modellt a [Azure Portal](how-to-create-portal-experiments.md) használatával.
 
 ## <a name="classification-metrics"></a>Besorolási metrikák
 
-A következő metrikák besorolási feladat futtatási törzsének lesznek mentve.
+A következő metrikákat menti a rendszer minden egyes futtatási iterációban egy besorolási feladathoz.
 
 |Metrika|Leírás|Számítás|További paraméterek
 --|--|--|--|
 AUC_Macro| AUC az a terület, a fogadó működő jellemző görbe alatt. Makró minden egyes osztály a AUC számtani középértékét.  | [Számítás](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.roc_auc_score.html) | átlagos = "makra."|
-AUC_Micro| AUC az a terület, a fogadó működő jellemző görbe alatt. Micro globálisan számított a valódi pozitívok és az egyes osztályok vakriasztások kombinálásával| [Számítás](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.roc_auc_score.html) | átlagos = "micro"|
+AUC_Micro| AUC az a terület, a fogadó működő jellemző görbe alatt. A Micro kiszámításának alapja az egyes osztályok valódi pozitív és hamis pozitív kombinációja.| [Számítás](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.roc_auc_score.html) | átlagos = "micro"|
 AUC_Weighted  | AUC az a terület, a fogadó működő jellemző görbe alatt. Az eredmény az egyes osztályok az egyes osztályok igaz példányok száma szerint számtani súlyozott van.| [Számítás](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.roc_auc_score.html)|átlagos = "súlyozott"
 accuracy|Pontosság pontosan egyezik a valódi címkéket előre jelzett címkékhez százaléka. |[Számítás](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.accuracy_score.html) |None|
 average_precision_score_macro|Átlagos pontosság pontosság-visszahívási görbe elért minden egyes küszöbértéket, a korábbi küszöbértéket, a súly használt fogyasztóktól növekedés az szükséges, a súlyozott átlag foglalja össze. Makró az egyes osztályok átlagos pontosság pontszám középértéke|[Számítás](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.average_precision_score.html)|átlagos = "makra."|
@@ -53,7 +63,7 @@ weighted_accuracy|Ahol a súlyt kapnak valamennyi példa megegyezik az időarán
 
 ## <a name="regression-and-forecasting-metrics"></a>Regresszió és előrejelzési mérőszámok
 
-A következő metrikák regressziós vagy előrejelzési feladat futtatási törzsének lesznek mentve.
+A rendszer a következő metrikákat menti a regressziós vagy előrejelzési feladatokhoz minden futtatási iteráció során.
 
 |Metrika|Leírás|Számítás|További paraméterek
 --|--|--|--|
@@ -67,4 +77,8 @@ normalized_median_absolute_error|Normalizált medián abszolút hiba osztva az a
 root_mean_squared_error|Root mean squared hiba a cél- és az előrejelzési várt eltéréseinek négyzetgyökét|[Számítás](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_squared_error.html)|None|
 normalized_root_mean_squared_error|Normalizált legfelső szintű mean squared hiba root mean squared hiba osztva az adatok tartományán:|[Számítás](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_squared_error.html)|Az adatok számos nullával|
 root_mean_squared_log_error|Legfelső szintű mean squared log hiba a várt squared logaritmikus hiba négyzetgyökét|[Számítás](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_squared_log_error.html)|None|
-normalized_root_mean_squared_log_error|Root mean squared log normalizált hiba elosztja az adatokat számos root mean squared log hiba|[Számítás](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_squared_log_error.html)|Az adatok számos nullával|
+normalized_root_mean_squared_log_error|Normalizált legfelső szintű, négyzetes naplózási hiba: legfelső szintű négyzetes naplózási hiba az adattartomány szerint elosztva|[Számítás](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_squared_log_error.html)|Az adatok számos nullával|
+
+## <a name="next-steps"></a>További lépések
+
+További információ a Azure Machine Learning [automatizált ml](concept-automated-ml.md) -ről.

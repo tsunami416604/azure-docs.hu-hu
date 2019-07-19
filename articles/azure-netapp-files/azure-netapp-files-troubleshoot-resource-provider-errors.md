@@ -1,6 +1,6 @@
 ---
-title: Azure NetApp fájlok erőforrás-szolgáltató hibáinak elhárítása |} A Microsoft Docs
-description: Okait, a megoldások és a lehetséges megoldások a gyakori Azure NetApp fájlok erőforrás-szolgáltató által jelzett hibákat ismerteti.
+title: Az erőforrás-szolgáltatóval kapcsolatos hibák elhárítása Azure NetApp Files | Microsoft Docs
+description: A gyakori Azure NetApp Files erőforrás-szolgáltatói hibák okait, megoldásait és megkerülő megoldásait ismerteti.
 services: azure-netapp-files
 documentationcenter: ''
 author: b-juche
@@ -13,323 +13,672 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 03/25/2019
+ms.date: 07/10/2019
 ms.author: b-juche
-ms.openlocfilehash: d4e06429aa1efec7c3301c7d0f0e7e17800fd520
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f417d83a67f2f3afa33a83a56a72d0d82c64ab0d
+ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "63769436"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67850012"
 ---
-# <a name="troubleshoot-azure-netapp-files-resource-provider-errors"></a>Az Azure NetApp Files erőforrás-szolgáltatójának hibaelhárítása
-Ez a cikk ismerteti a gyakori Azure NetApp fájlok erőforrás-szolgáltató hibák, azok okok, megoldásokat és megkerülő megoldások. 
+# <a name="troubleshoot-azure-netapp-files-resource-provider-errors"></a>Az Azure NetApp Files erőforrás-szolgáltatójának hibaelhárítása 
 
-<a name="error_01"></a>***Az Azure Key Vault nincs konfigurálva.***   
-Az Azure Key Vault tárolja a szükséges hitelesítő adatok a mögöttes API eléréséhez. Ez a hiba azt jelzi, hogy az Azure Key Vault nem kapott a mögöttes API eléréséhez a teljes hitelesítő adatok.
+Ez a cikk a gyakori Azure NetApp Files erőforrás-szolgáltatói hibákat, azok okait, megoldásait és megkerülő megoldásait ismerteti (ha vannak ilyenek).
 
-* Ok  
-Az Azure Key Vault nem kapott megfelelő hitelesítő adatokkal, vagy a hitelesítő adatok nem teljesek.  
+## <a name="common-azure-netapp-files-resource-provider-errors"></a>Gyakori Azure NetApp Files erőforrás-szolgáltatói hibák
 
+***A BareMetalTenantId nem módosítható.***  
+
+Ez a hiba akkor fordul elő, ha egy kötetet próbál frissíteni vagy `BaremetalTenantId` javítani, és a tulajdonság módosult értékkel rendelkezik.
+
+* Ok:   
+Egy kötetet próbál frissíteni, és a `BaremetalTenantId` tulajdonság értéke eltér az Azure-ban tárolt értéktől.
 * Megoldás   
-Az Azure NetApp fájlok szolgáltatás az Azure Key Vault használ. Az Azure Key Vault az Azure Active Directoryból származó jogkivonat használatával hitelesíti magát. Ezért az alkalmazás tulajdonosának regisztrálnia kell az alkalmazást az Azure Active Directoryban.
+Ne foglalja `BaremetalTenantId` bele a patch és a Update (Put) kérelembe. `BaremetalTenantId` Azt is megteheti, hogy a kérelemben megegyeznek.
 
-* Áthidaló megoldás   
-Nincs.  Az Azure Key Vault megfelelően az Azure Files-NetApp használatával kell állítani.  
+***A ServiceLevel nem módosítható.***  
 
-<a name="error_02"></a>***Token létrehozása nem változtatható meg.***   
-Ez a hiba akkor fordul elő, amikor megpróbálja módosítani a létrehozási token, a kötet létrehozása után.
-Token létrehozása kell állítani, ha a kötet jön létre, és később nem módosítható.
+Ez a hiba akkor fordul elő, ha egy másik szolgáltatási szinttel rendelkező kapacitási készletet próbál frissíteni vagy kijavítani, ha a kapacitás-készlet már tartalmaz köteteket.
 
-* Ok   
-Próbál módosítani a létrehozási token, a kötet létrehozása után, ami nem támogatott művelet.
-
+* Ok:   
+Ha a készlet köteteket tartalmaz, frissítenie kell a kapacitási készlet szolgáltatási szintjét.
 * Megoldás   
-A kötet létrehozása után fontolja meg, a paraméter eltávolítását a kérést hagyja figyelmen kívül a hibaüzenetet.
+Törölje az összes kötetet a kapacitási készletből, majd módosítsa a szolgáltatási szintet.
+* Workaround   
+Hozzon létre egy másik kapacitási készletet, majd hozza létre újra a köteteket az új kapacitási készletben.
 
-* Áthidaló megoldás   
-A létrehozási token módosítani szeretné, hozzon létre egy új kötetet egy új létrehozás-jogkivonattal, és ezután telepítse át az adatokat az új kötetre.
+***A PoolId nem módosítható***  
 
+Ez a hiba akkor fordul elő, ha módosított `PoolId` tulajdonsággal rendelkező kapacitási készletet próbál frissíteni vagy kijavítani.
 
-<a name="error_03"></a>***Token létrehozása legalább 16 karakter hosszúságúnak kell lennie.***   
-Ez a hiba akkor fordul elő, amikor a létrehozás token nem felel meg a megengedettnél. A létrehozási token hossza legalább 16 karakter hosszúnak kell lennie.
-
-* Ok   
-A létrehozási token nem felel meg a megengedettnél.  Ha egy kötetet hoz létre az API-val, a egy létrehozási tokenre szükség. Ha a portált használja, a jogkivonat automatikusan létrehozható.
-
+* Ok:   
+Egy Capacity Pool `PoolId` tulajdonságot próbál frissíteni. A `PoolId` tulajdonság csak olvasható tulajdonság, és nem módosítható.
 * Megoldás   
-Növelje a létrehozási token hosszát. Ha például egy másik szóban is hozzáadhat elején vagy végén a létrehozási jogkivonat.
+Ne foglalja `PoolId` bele a patch és a Update (Put) kérelembe.  `PoolId` Azt is megteheti, hogy a kérelemben megegyeznek.
 
-* Áthidaló megoldás   
-Minimálisan szükséges hossza a létrehozási jogkivonat nem mellőzhetők.  Elő- vagy utótag segítségével növelheti a létrehozási token hossza.
+***A CreationToken nem módosítható.***
 
+Ez a hiba akkor fordul elő, amikor a kötet létrehozása után`CreationToken`megpróbálja módosítani a fájl elérési útját (). A kötet létrehozásakor meg kell adni a fájl elérési útját (`CreationToken`), és később nem módosítható.
 
-<a name="error_04"></a>***Hiba történt egy kötet, amely nem található a következő Azure NetApp fájlok törlése.***   
-Ez a hiba oka, hogy a belső beállításjegyzék-erőforrások nincs szinkronizálva.
-
-* Ok   
-A kötet még aktívak maradhatnak, a portálon megjelenített egy kis ideig, a törlés után. Ha a kötet törli az API-val, lehetőség, hogy a kötet nem lett megfelelően megadva. Elavult böngésző gyorsítótárának is okozhatja a hibát.
-
+* Ok:   
+A kötet létrehozása után megpróbálja módosítani a fájl elérési útját (`CreationToken`), amely nem támogatott művelet. 
 * Megoldás   
-Egyértelmű böngésző gyorsítótárát, ha a portált használja. Emellett van egy belső gyorsítótár, amely a 10 percenként frissül.  Próbálkozzon újra a gyorsítótár ürítése.  Ha a probléma továbbra is fennáll, 10 perc múlva, létrehozhat egy támogatási jegyet.
+Ha a fájl elérési útjának módosítása nem szükséges, akkor érdemes lehet eltávolítani a paramétert a kérelemből a hibaüzenet bezárásához.
+* Workaround   
+Ha módosítania kell a fájl elérési útját (`CreationToken`), létrehozhat egy új kötetet új elérési úttal, majd áttelepítheti az új kötetre.
 
-* Áthidaló megoldás   
-Addig is használjon egy másik kötetre, és figyelmen kívül hagyja a meglévőt.
+***A CreationToken legalább 16 karakter hosszúnak kell lennie.***
 
+Ez a hiba akkor fordul elő, ha`CreationToken`a fájl elérési útja () nem felel meg a hosszra vonatkozó követelménynek. A fájl elérési útjának hosszának legalább egy karakterből kell állnia.
 
-<a name="error_05"></a>***Hiba történt a szúr be egy új kötetet, az Azure Files-NetApp címen található.***   
-Ez a hiba oka, hogy a belső beállításjegyzék-erőforrások nincs szinkronizálva.
-
-* Ok   
-A kötet némi várakozás után a rendszer törölte előfordulhat, hogy továbbra is megjelenjenek a portálon. Ha a kötet törli az API-val, lehetőség, hogy a kötet nem lett megfelelően megadva.
-
+* Ok:   
+A fájl elérési útja üres.  Ha az API használatával hoz létre kötetet, a létrehozási jogkivonat megadása kötelező. Ha a Azure Portal használja, a fájl elérési útja automatikusan létrejön.
 * Megoldás   
-Ha a portált használja, a kötet már létrejött.  A kötet automatikusan meg kell jelennie. Ha a probléma nem szűnik meg, létrehozhat egy támogatási jegyet.
+Adjon meg legalább egy karaktert a fájl elérési útjaként (`CreationToken`).
 
-* Áthidaló megoldás   
-Létrehozhat egy kötet egy másik nevet, és a egy másik létrehozási token.
+***A tartománynév nem módosítható.***
 
+Ez a hiba akkor fordul elő, ha a tartománynevet Active Directoryban próbálja megváltoztatni.
 
-<a name="error_06"></a>***A fájl elérési útja neve betűket, számokat és kötőjeleket tartalmazhat ("" – "") csak.***   
-Ez a hiba akkor fordul elő, ha a fájl elérési útja nem támogatott karaktereket tartalmaz, például egy ideig ("."), vesszővel (","), aláhúzásjel ("\_"), vagy dollárjel ("$").
+* Ok:   
+A tartománynév tulajdonságot próbálja frissíteni.
+* Megoldás    
+Nincs. A tartomány neve nem módosítható.
+* Workaround   
+Törölje az összes kötetet a Active Directory konfiguráció használatával. Ezután törölje a Active Directory konfigurációt, és hozza létre újra a köteteket.
 
-* Ok   
-A fájl elérési útja nem támogatott karaktereket tartalmaz, például egy ideig ("."), vesszővel (","), aláhúzásjel ("\_"), vagy dollárjel ("$").
+***Ismétlődő érték történt az objektum ExportPolicy. rules [RuleIndex] esetében.***
 
+Ez a hiba akkor fordul elő, ha az exportálási házirend nincs definiálva egyedi indexszel. Az exportálási házirendek meghatározásakor minden exportálási házirendnek egyedi indexszel kell rendelkeznie 1 és 5 között.
+
+* Ok:   
+A megadott exportálási házirend nem felel meg az exportálási házirend szabályainak. A maximális értéknél egy exportálási házirendi szabályt kell megadnia a minimum és öt exportálási szabályhoz.
 * Megoldás   
-Távolítsa el a karaktereket, amelyek nem betűrend szerinti rendezés betűket, számokat és kötőjeleket tartalmazhat ("-") a megadott elérési útról.
+Győződjön meg arról, hogy az index még nincs használatban, és hogy az 1 és 5 közötti tartományba esik.
+* Workaround   
+Használjon másik indexet a beállítani kívánt szabályhoz.
 
-* Áthidaló megoldás   
-Cserélje le az aláhúzás kötőjel, vagy használja a kis-és nagybetűk tárolóhelyek helyett új szavakat (például "NewVolume" helyett "új kötet") kezdetét jelzi.
+***Hiba {Action} {resourceTypeName}***
 
+Ez a hiba akkor jelenik meg, ha más hibakezelés nem tudta kezelni a hibát egy erőforráson végrehajtott művelet végrehajtása közben.   Ide tartozik a "hiba" szöveg. Az `{action}` a következő lehet: (`getting`, `creating`, `updating`, vagy `deleting`).  `{resourceTypeName}` `netAppAccount` Aa`capacityPool`következő: (például ,,`volume`stb.). `resourceTypeName`
 
-<a name="error_07"></a>***Kötet azonosítója nem módosítható.***   
-Ez a hiba akkor fordul elő, amikor megpróbálja módosítani a kötet azonosítója.  A Kötetazonosító módosítása nem támogatott művelet.
-
-* Ok   
-A fájlrendszer azonosítója van beállítva, a kötet létrehozásakor. A Kötetazonosító ezt követően nem módosítható.
-
+* Ok:   
+Ez a hiba nem kezelt kivétel, ha az ok ismeretlen.
 * Megoldás   
+A naplók részletes okának jelentéséhez forduljon az Azure támogatási központjához.
+* Workaround   
 Nincs.
 
-* Áthidaló megoldás   
-Nincs.  A Kötetazonosító jön létre, ha a kötet jön létre, és ezt követően nem módosítható.
+***A fájl elérési útjának neve csak betűket, számokat és kötőjeleket (""-") tartalmazhat.***
 
+Ez a hiba akkor fordul elő, ha a fájl elérési útja nem támogatott karaktereket tartalmaz, például egy pontot ("."), vesszőt (","), aláhúzást (_) vagy dollár jelet ("$").
 
-<a name="error_08"></a>***Érvénytelen érték "{0}" érkezett {1}.***   
-Ez az üzenet azt jelzi, hogy a mezők RuleIndex, AllowedClients, UnixReadOnly, UnixReadWrite, Nfsv3 és Nfsv4.
-
-* Ok   
-A bemenet-ellenőrzés kérelme sikertelen a következő mezők egyikét: RuleIndex, AllowedClients, UnixReadOnly, UnixReadWrite, Nfsv3, and Nfsv4.
-
+* Ok:   
+A fájl elérési útja nem támogatott karaktereket tartalmaz, például egy pontot ("."), vesszőt (","), aláhúzást ("_") vagy dollár-jelet ("$").
 * Megoldás   
-Ellenőrizze, hogy az összes kötelező és nem ütköző paraméterek beállítása a parancssorból. Például a UnixReadOnly és a UnixReadWrite paraméter nem állítható egyszerre.
+A beírt fájl elérési útjából távolítsa el a betűket, számokat és kötőjeleket ("-").
+* Workaround   
+Az aláhúzást lecserélheti egy kötőjelre, vagy a szóközök helyett a nagybetűket is használhatja, hogy az új szavak elejét adja.  Például az "új kötet" helyett használja a "NewVolume" értéket.
 
-* Áthidaló megoldás   
-A megoldás című szakaszában talál.  
+***A FileSystemId nem módosítható.***
 
+Ez a hiba akkor fordul elő, ha `FileSystemId`megpróbálja módosítani.  A `FileSystemdId` módosítás nem támogatott művelet. 
 
-<a name="error_09"></a>***Hiányzó értéke "{0}".***   
-Ez a hiba azt jelzi, hogy egy kötelező attribútum hiányzik a kérelemből a következő paraméterek közül legalább az egyik: RuleIndex, AllowedClients, UnixReadOnly, UnixReadWrite, Nfsv3, and Nfsv4.
-
-* Ok   
-A bemenet-ellenőrzés kérelme sikertelen a következő mezők egyikét: RuleIndex, AllowedClients, UnixReadOnly, UnixReadWrite, Nfsv3, and Nfsv4.
-
+* Ok:   
+A rendszer a kötet létrehozásakor beállítja a fájlrendszer AZONOSÍTÓját. `FileSystemId`ezt követően nem módosítható.
 * Megoldás   
-Ellenőrizze, hogy az összes kötelező és nem ütköző paraméterek beállítása a parancssorból. Ha például nem állítható be a UnixReadOnly és a UnixReadWrite paraméterek egyszerre
+Ne szerepeljen `FileSystemId` a javítási és frissítési (Put) kérelemben.  Azt is megteheti, hogy `FileSystemId` ugyanaz a kérelemben.
 
-* Áthidaló megoldás   
-A megoldás című szakaszában talál.  
+***A (z) {string} azonosítójú ActiveDirectory nem létezik.***
 
+A `{string}` rész a Active Directory `ActiveDirectoryId` -kapcsolatok tulajdonságában megadott érték.
 
-<a name="error_10"></a> ***{0} már használatban van.***   
+* Ok:   
+Amikor létrehozott egy fiókot a Active Directory-konfigurációval, a megadott értéknek `ActiveDirectoryId` üresnek kell lennie.
+* Megoldás   
+Ne szerepeljenek `ActiveDirectoryId` a létrehozás (Put) kérelemben.
+
+***Érvénytelen API-Version.***
+
+Az API-verzió vagy nincs elküldve, vagy érvénytelen értéket tartalmaz.
+
+* Ok:   
+A lekérdezési paraméter `api-version` értéke érvénytelen értéket tartalmaz.
+* Megoldás   
+A megfelelő API-verzió értékének használata.  Az erőforrás-szolgáltató számos API-verziót támogat. Az érték éééé-hh-nn formátumban van.
+
+***Érvénytelen "{value}" érték érkezett a következőhöz {1}:.***
+
+Ez az üzenet a,,,, és `RuleIndex` `UnixReadOnly` `Nfsv3` `AllowedClients` `UnixReadWrite` rendszermezőinekhibájátjelzi`Nfsv4`.
+
+* Ok:   
+A bemeneti ellenőrzési kérelem sikertelen volt a következő mezők legalább egyike esetében: `RuleIndex` `AllowedClients` `Nfsv` `UnixReadOnly` `UnixReadWrite`,,,, 3 és `Nfsv4`.
+* Megoldás   
+Ügyeljen arra, hogy az összes szükséges és nem ütköző paramétert a parancssorban állítsa be. Nem állíthatja be `UnixReadOnly` például a és `UnixReadWrite` a paramétereket egyszerre.
+* Workaround   
+Tekintse meg a fenti megoldást.
+
+***A VLAN {0} {1}-hoz tartozó IP-címtartomány már használatban van {2}***
+
+Ez a hiba azért fordul elő, mert a használt IP-címtartományok belső rekordjai ütköznek az újonnan hozzárendelt IP-címmel.
+
+* Ok:   
+A kötet létrehozásához hozzárendelt IP-cím már regisztrálva van.
+Ennek oka lehet egy korábbi sikertelen kötetek létrehozása.
+* Megoldás   
+Forduljon az Azure támogatási központjához.
+
+***A (z) {Property} tulajdonság értéke hiányzik.***
+
+Ez a hiba azt jelzi, hogy hiányzik egy szükséges tulajdonság a kérelemből. A (z) {Property} karakterlánc a hiányzó tulajdonság nevét tartalmazza.
+
+* Ok:   
+A bemeneti ellenőrzési kérelem sikertelen volt legalább az egyik tulajdonságnál.
+* Megoldás   
+Győződjön meg arról, hogy a kérelemben az összes szükséges és nem ütköző tulajdonságot (speciálisan a hibaüzenetből) adja meg.
+
+***A MountTargets nem módosítható.***
+
+Ez a hiba akkor fordul elő, ha a felhasználó frissíteni vagy javítani szeretné a Volume MountTargets tulajdonságot.
+
+* Ok:   
+A Volume `MountTargets` tulajdonságot próbálja frissíteni. A tulajdonság módosítása nem támogatott.
+* Megoldás   
+Ne szerepeljen `MountTargets` a javítási és frissítési (Put) kérelemben.  Azt is megteheti `MountTargets` , hogy ugyanaz a kérelemben.
+
+***A név már használatban van.***
+
 Ez a hiba azt jelzi, hogy az erőforrás neve már használatban van.
 
-* Ok   
-Hozzon létre egy kötetet, amelynek neve megegyezik egy meglévő kötetet próbál.
-
+* Ok:   
+Egy meglévő erőforráshoz használt névvel rendelkező erőforrást próbál létrehozni.
 * Megoldás   
-Adjon meg egy egyedi nevet kötet létrehozásakor.
+Az erőforrás létrehozásakor használjon egyedi nevet.
 
-* Áthidaló megoldás   
-Ha szükséges, módosíthatja a meglévő kötet neve, hogy az új kötetet is használni kívánt nevét.
+***A fájl elérési útja már használatban van.***
 
+Ez a hiba azt jelzi, hogy a kötet elérési útja már használatban van.
 
-<a name="error_11"></a> ***{0} túl rövid.***   
-Ez a hiba azt jelzi, hogy a kötet neve nem felel meg a minimálisan megengedettnél.
-
-* Ok   
-A kötet név túl rövid.
-
+* Ok:   
+Olyan kötetet próbál létrehozni, amelynek elérési útja megegyezik egy meglévő kötettel.
 * Megoldás   
-Növelje a kötet neve.  
+A kötet létrehozásakor használjon egyedi elérési utat.
 
-* Áthidaló megoldás   
-A kötet nevét egy közös elő- vagy utótag adhat hozzá.
+***A név túl hosszú.***
 
+Ez a hiba azt jelzi, hogy az erőforrás neve nem felel meg a maximális hosszra vonatkozó követelménynek.
 
-<a name="error_12"></a>***Az Azure NetApp fájlok API nem érhető el.***   
-Az Azure API-t az Azure NetApp fájlok API-t a kötetek kezelése támaszkodik.  Ez a hiba az API-kapcsolat problémáját jelzi.
-
-* Ok   
-A mögöttes API nem válaszol, belső hiba történt az eredményül kapott. Ez a hiba akkor valószínű, hogy ideiglenes.
-
+* Ok:   
+Az erőforrás neve túl hosszú.
 * Megoldás   
-A probléma oka valószínűsíthetően átmeneti.  A kérelem sikeres legyen egy kis idő múlva.
+Használjon rövidebb nevet az erőforráshoz.
 
-* Áthidaló megoldás   
-Nincs. Kötetek kezelése a mögöttes API elengedhetetlen.  
+***A fájl elérési útja túl hosszú.***
 
+Ez a hiba azt jelzi, hogy a kötethez megadott elérési út nem felel meg a maximális hosszra vonatkozó követelménynek.
 
-<a name="error_13"></a>***Nincsenek hitelesítő adatok előfizetésben található '{0}".***   
-Ez a hiba azt jelzi, hogy a megadott hitelesítő adatok érvénytelenek, vagy hogy nem lett megfelelően beállítva az előfizetés.
-
-* Ok   
-Hitelesítő adatok érvénytelenek, vagy helytelenül beállított kötetek kezelése a szolgáltatáshoz való hozzáférés megakadályozása.
-
+* Ok:   
+A kötet fájljának elérési útja túl hosszú.
 * Megoldás   
-Győződjön meg arról, hogy a hitelesítő adatok beállítása és helyesen adta meg a parancssorban.
+Használjon rövidebb elérési utat.
 
-* Áthidaló megoldás   
-Nincs.  Hitelesítő adatok beállítása megfelelően elengedhetetlen az Azure Files-NetApp használatával.  
+***A név túl rövid.***
 
+Ez a hiba azt jelzi, hogy az erőforrás neve nem felel meg a minimális hosszra vonatkozó követelménynek.
 
-<a name="error_14"></a>***Nincs a művelet eredményazonosítója található "{0}".***   
-Ez a hiba azt jelzi, hogy egy belső hiba megakadályozza a művelet végrehajtását.
-
-* Ok   
-Belső hiba történt, és megakadályozta a művelet végrehajtását.
-
+* Ok:   
+Az erőforrás neve túl rövid.
 * Megoldás   
-Ez a hiba akkor valószínű, hogy ideiglenes.  Várjon néhány percet, majd próbálkozzon újra. Ha a probléma tartósan fennáll, hozzon létre egy jegyet technikai támogatás a probléma kivizsgálására.
+Használjon egy hosszú nevet az erőforráshoz.
 
-* Áthidaló megoldás   
-Várjon néhány percet, és ellenőrizze, hogy ha a probléma továbbra is fennáll-e.
+***A fájl elérési útja túl rövid.***
 
+Ez a hiba azt jelzi, hogy a kötet fájljának elérési útja nem felel meg a minimális hosszra vonatkozó követelménynek.
 
-<a name="error_15"></a>***A művelet "{0}" nem támogatott.***   
-Ez a hiba azt jelzi, hogy a parancs nem érhető el az aktív előfizetést vagy az erőforrás.
-
-* Ok   
-Az előfizetés vagy az erőforrás nem érhető el a műveletet.
-
+* Ok:   
+A kötet fájljának elérési útja túl rövid.
 * Megoldás   
-Győződjön meg arról, hogy a parancsot helyesen van-e megadva és az erőforrások és az előfizetés által használt érhető el.
+Növelje a kötet fájl elérési útjának hosszát.
 
-* Áthidaló megoldás   
-A megoldás című szakaszában talál.  
+***Azure NetApp Files API nem érhető el.***
 
+Az Azure API a Azure NetApp Files API-ra támaszkodik a kötetek kezeléséhez. Ez a hiba az API-kapcsolatok hibáját jelzi.
 
-<a name="error_16"></a>***A javítási művelet nem támogatott az erőforrástípushoz.***   
-Ez a hiba akkor fordul elő, amikor megpróbálja módosítani a csatlakoztatási célt vagy a pillanatkép.
-
-* Ok   
-A csatlakoztatási célt van meghatározva, a létrehozást, és ez a beállítás azt követően nem módosítható.
-
+* Ok:   
+A mögöttes API nem válaszol, ami belső hibát eredményez. Ez a hiba valószínűleg átmeneti.
 * Megoldás   
-Nincs.  Nem lehet módosítani a csatlakoztatási célt, a kötet létrehozása után.
+A probléma valószínűleg ideiglenes. Egy kis idő elteltével a kérelemnek sikeresnek kell lennie.
+* Workaround   
+Nincs. Az alapul szolgáló API elengedhetetlen a kötetek kezeléséhez.
 
-* Áthidaló megoldás   
+***Nem található műveleti eredmény-azonosító a{0}következőhöz: "".***
+
+Ez a hiba azt jelzi, hogy egy belső hiba megakadályozza a művelet befejezését.
+
+* Ok:   
+Belső hiba történt, és megakadályozta a művelet befejezését.
+* Megoldás   
+Ez a hiba valószínűleg átmeneti. Várjon néhány percet, és próbálkozzon újra. Ha a probléma továbbra is fennáll, hozzon létre egy jegyet a technikai támogatással kapcsolatos kérdés kivizsgálásához.
+* Workaround   
+Várjon néhány percet, és ellenőrizze, hogy a probléma továbbra is fennáll-e.
+
+***A CIFS és NFS protokollok típusai nem engedélyezettek***
+
+Ez a hiba akkor fordul elő, ha kötetet próbál létrehozni, és a kötet tulajdonságaiban mind a CIFS (SMB), mind az NFS protokoll típusa szerepel.
+
+* Ok:   
+A rendszer a CIFS (SMB) és az NFS protokollok típusát is használja a kötet tulajdonságaiban.
+* Megoldás   
+Távolítsa el a protokollok egyik típusát.
+* Workaround   
+Hagyja üresen a protokoll Type tulajdonságát, vagy a null értéket.
+
+***Elemek száma: {Value} az objektumhoz: A ExportPolicy. rules [RuleIndex] a min-max tartományon kívül esik.***
+
+Ez a hiba akkor fordul elő, ha az exportálási házirend szabályai nem felelnek meg a minimális vagy a maximális tartományra vonatkozó követelménynek. Ha az exportálási szabályzatot határozza meg, akkor a minimális és öt exportálási házirend-szabálynak rendelkeznie kell a maximális értéknél.
+
+* Ok:   
+A megadott exportálási szabályzat nem felel meg a szükséges tartománynak.
+* Megoldás   
+Győződjön meg arról, hogy az index még nincs használatban, és az 1 és 5 közötti tartományban van.
+* Workaround   
+A kötetek exportálási házirendjének használata nem kötelező. Az exportálási szabályzatot teljes mértékben kihagyhatja, ha nem kell használnia az exportálási házirend szabályait.
+
+***Csak egy Active Directory engedélyezett***
+
+Ez a hiba akkor fordul elő, amikor megpróbál létrehozni egy Active Directory konfigurációt, és egy már létezik az előfizetéshez a régióban. A hiba akkor is előfordulhat, ha egynél több Active Directory konfigurációt próbál létrehozni.
+
+* Ok:   
+Egy Active Directoryt próbál létrehozni (nem frissíteni), de egy már létezik.
+* Megoldás   
+Ha a Active Directory konfiguráció nincs használatban, először törölje a meglévő konfigurációt, majd próbálja megismételni a létrehozási műveletet.
+* Workaround   
+Nincs. Csak egy Active Directory engedélyezett.
+
+***A (z) {Operation} művelet nem támogatott.***
+
+Ez a hiba azt jelzi, hogy a művelet nem érhető el az aktív előfizetéshez vagy erőforráshoz.
+
+* Ok:   
+A művelet nem érhető el az előfizetéshez vagy az erőforráshoz.
+* Megoldás   
+Ellenőrizze, hogy a művelet helyesen van-e megadva, és hogy elérhető-e a használt erőforráshoz és előfizetéshez.
+
+***A OwnerId nem módosítható***
+
+Ez a hiba akkor fordul elő, amikor megpróbálja módosítani a kötet OwnerId tulajdonságát. A OwnerId módosítása nem támogatott művelet. 
+
+* Ok:   
+A `OwnerId` tulajdonság beállítása a kötet létrehozásakor történik. A tulajdonságot később nem lehet módosítani.
+* Megoldás   
+Ne szerepeljen `OwnerId` a javítási és frissítési (Put) kérelemben. Azt is megteheti `OwnerId` , hogy ugyanaz a kérelemben.
+
+***A szülő készlet nem található***
+
+Ez a hiba akkor fordul elő, ha kötetet próbál létrehozni, és a kötetet létrehozó kapacitási készlet nem található.
+
+* Ok:   
+Nem található az a kapacitási készlet, amelyben a kötet létrehozása folyamatban van.
+* Megoldás   
+A rendszer valószínűleg nem hozta létre teljesen a készletet, vagy már törölték a kötet létrehozásakor.
+
+***Ez az erőforrástípus nem támogatja a javítási műveletet.***
+
+Ez a hiba akkor fordul elő, amikor megpróbálja módosítani a csatlakoztatási célt vagy pillanatképet.
+
+* Ok:   
+A csatlakoztatási cél a létrehozáskor van definiálva, és a későbbiekben nem módosítható.
+A pillanatképek nem tartalmaznak a megváltoztathatatlan tulajdonságokat.
+* Megoldás   
+Nincs. Ezeknek az erőforrásoknak nincs módosítható tulajdonsága.
+
+***A készlet mérete túl kicsi a teljes kötet méretéhez.***
+
+Ez a hiba akkor fordul elő, ha frissíti a kapacitási készlet méretét, és a méret kisebb, `usedBytes` mint az adott kapacitású készlet összes kötetének teljes értéke.  Ez a hiba akkor is előfordulhat, ha új kötetet hoz létre, vagy egy meglévő kötetet átméretezi, és az új kötet mérete meghaladja a kapacitási készletben lévő szabad területet.
+
+* Ok:   
+A kapacitási készletet kisebb méretre próbálja frissíteni, mint a usedBytes lévő összes köteten.  Vagy olyan kötetet próbál létrehozni, amely nagyobb, mint a kapacitási készletben lévő szabad terület.  Azt is megteheti, hogy átméretezi a kötetet, és az új méret meghaladja a szabad területet a kapacitási készletben.
+* Megoldás   
+Állítsa a kapacitási készlet méretét nagyobb értékre, vagy hozzon létre egy köteten egy kisebb kötetet.
+* Workaround   
+Távolítson el elég köteteket, hogy a kapacitási készlet mérete frissíthető legyen erre a méretre.
+
+***A tulajdonság: A pillanatkép helyének meg kell egyeznie a kötettel***
+
+Ez a hiba akkor fordul elő, ha olyan pillanatképet hoz létre, amely nem a pillanatképet birtokló köteten található.
+
+* Ok:   
+Érvénytelen érték szerepel a pillanatkép Location tulajdonságában.
+* Megoldás   
+Érvényes karakterláncot állítson be a Location tulajdonságban.
+
+***A (z) {resourceType} nevének meg kell egyeznie az erőforrás-azonosító nevével.***
+
+Ez a hiba akkor fordul elő, ha erőforrást hoz létre, és a name tulajdonságot más értékkel tölti ki, mint `resourceId`a name tulajdonsága.
+
+* Ok:   
+Az erőforrás létrehozásakor érvénytelen érték szerepel a name tulajdonságban.
+* Megoldás   
+Hagyja üresen a Name (név `resourceId`) tulajdonságot, vagy engedélyezze, hogy ugyanazt az értéket használja, mint a Name tulajdonság (az utolsó fordított perjel "/" és a "?" kérdőjel között).
+
+***A protokoll típusa ({Value}) ismeretlen***
+
+Ez a hiba akkor fordul elő, ha ismeretlen protokoll típusú kötetet hoz létre.  Az érvényes értékek: "NFSv3" és "CIFS".
+
+* Ok:   
+Érvénytelen értéket próbál beállítani a Volume `protocolType` tulajdonságban.
+* Megoldás   
+Állítson be egy érvényes `protocolType`karakterláncot a alkalmazásban.
+* Workaround   
+NULL `protocolType` értékűként van beállítva.
+
+***A protokollok típusai nem módosíthatók***
+
+Ez a hiba akkor fordul elő, ha egy kötet `ProtocolType` frissítését vagy javítását kísérli meg.  A ProtocolType módosítása nem támogatott művelet.
+
+* Ok:   
+A `ProtocolType` tulajdonság beállítása a kötet létrehozásakor történik.  Nem frissíthető.
+* Megoldás   
 Nincs.
+* Workaround   
+Hozzon létre egy másik kötetet új protokoll-típusokkal.
 
+***A (z) {resourceType} típusú erőforrás létrehozása meghaladja a (z) {parentResourceType} {resourceType} típusú erőforrásokra vonatkozó kvótát. Az aktuális erőforrások száma {currentCount}, törölje az ilyen típusú erőforrásokat egy új létrehozása előtt.***
 
-<a name="error_17"></a>***Kapott egy csak olvasható tulajdonság értéke "{0}".***   
-Ez akkor fordul elő, amikor nem lehet módosítani a tulajdonság értékének meghatározása. Például nem módosíthatja a kötet azonosítója.
+Ez a hiba akkor fordul`NetAppAccount`elő, ha erőforrást ( `Volume`, `CapacityPool`, vagy `Snapshot`) próbál létrehozni, de a kvóta elérte a korlátot.
 
-* Ok   
-Megpróbálta módosítani egy paraméter (például a kötet azonosítója), és nem módosítható.
-
+* Ok:   
+Megpróbál létrehozni egy erőforrást, de elérte a kvóta korlátját (például: `NetAppAccounts` előfizetés vagy `CapacityPools` / `NetAppAccount`).
 * Megoldás   
-Nincs. A paraméter a kötet azonosítója nem módosítható.
+Növelje a kvóta korlátját.
+* Workaround   
+Törölje a nem használt erőforrásokat ugyanazzal a típussal, majd hozza létre újra.
 
-* Áthidaló megoldás   
-A kötet azonosító módosításának nincs szükség.  Ezért egy megkerülő megoldás már nem szükséges.
+***A rendszer a (z) {propertyName} írásvédett tulajdonság értékét fogadta.***
 
-<a name="error_18"></a>***A kért {0} nem található.***   
-Ez a hiba történik, ha egy nem létező erőforráshoz, például egy kötet vagy a pillanatkép hivatkozni. Előfordulhat, hogy az erőforrást törölték vagy hibás szó erőforrás nevét.
+Ez a hiba akkor fordul elő, ha olyan tulajdonság értékét definiálja, amely nem módosítható. A kötet azonosítója például nem módosítható.
 
-* Ok   
-Próbált egy nem létező erőforrás (például egy kötet vagy pillanatkép), amely már törölve van, vagy helytelenül viszonyt erőforrás neve.
-
+* Ok:   
+Egy olyan paramétert (például a kötet AZONOSÍTÓját) próbál módosítani, amely nem módosítható.
 * Megoldás   
-Ellenőrizze a helyesírást, győződjön meg arról, hogy helyesen hivatkozik rá, hogy a kérelem.
+Ne módosítsa a tulajdonság értékét.
 
-* Áthidaló megoldás   
-A megoldás című szakaszában talál.
+***A kért {Resource} nem található.***
 
-<a name="error_19"></a>***Nem sikerült beolvasni a hitelesítő adatok előfizetés "{0}".***   
-Ez a hiba azt jelzi, hogy a megadott hitelesítő adatok érvénytelenek, vagy helytelenül állította az előfizetésben.
+Ez a hiba akkor fordul elő, ha nem létező erőforrásra (például kötetre vagy pillanatképre) próbál hivatkozni. Lehetséges, hogy az erőforrás törölve lett, vagy hibásan van megadva az erőforrás neve.
 
-* Ok   
-Hitelesítő adatok érvénytelenek vagy nem megfelelően az előfizetés beállítása megakadályozza a hozzáférést a szolgáltatás kötetek kezeléséhez.
-
+* Ok:   
+Olyan nem létező erőforrásra (például kötetre vagy pillanatképre) próbál hivatkozni, amely már törölve lett, vagy hibásan írt erőforrás-névvel rendelkezik.
 * Megoldás   
-Győződjön meg arról, hogy a hitelesítő adatok beállítása és helyesen adta meg a parancssorban.
+Ellenőrizze a helyesírási hibák kérését, és győződjön meg arról, hogy megfelelően hivatkozik rá.
+* Workaround   
+Lásd a fenti megoldás szakaszt.
 
-* Áthidaló megoldás   
-Nincs.  Helyes hitelesítő adatok beállítása nélkülözhetetlenek az Azure Files-NetApp használatával.
+***A (z) {volumeServiceLevel} szolgáltatási szint magasabb a (z) {poolServiceLevel} szülőnél***
 
-<a name="error_20"></a>***Ismeretlen Azure NetApp fájlok hiba.***   
-Az Azure API-t az Azure NetApp fájlok API-t a kötetek kezelése támaszkodik. A hiba azt jelzi, hogy a kommunikáció az API-hoz a problémát.
+Ez a hiba akkor fordul elő, ha kötetet hoz létre vagy frissít, és a szolgáltatási szint magasabb szintre van állítva, mint az azt tartalmazó kapacitási készlet.
 
-* Ok   
-Ismeretlen hiba történt az alapul szolgáló API-t küld.  Ez a hiba akkor valószínű, hogy ideiglenes.
-
+* Ok:   
+Olyan kötetet próbál létrehozni vagy frissíteni, amely magasabb rangsorolt szolgáltatási szinttel rendelkezik, mint a szülő kapacitási készlet.
 * Megoldás   
-A problémát valószínűleg átmeneti, és a kérés sikeres legyen egy kis idő múlva. Ha a probléma tartósan fennáll, hozzon létre egy támogatási jegyet megvizsgálta a problémát.
+Állítsa a szolgáltatási szintet a szülő kapacitási készletnél megegyezőre vagy alacsonyabb rangra.
+* Workaround   
+Hozza létre a kötetet egy másik, megfelelő szolgáltatási szinttel rendelkező kapacitási készletben. Másik lehetőségként törölje az összes kötetet a kapacitási készletből, és állítsa be a kapacitási készlet szolgáltatási szintjét magasabb rangra.
 
-* Áthidaló megoldás   
-Nincs.  Kötetek kezelése a mögöttes API elengedhetetlen.
+***Az SMB-kiszolgáló neve nem lehet hosszabb 10 karakternél.***
 
-<a name="error_21"></a>***Ismeretlen tulajdonság kapott érték "{0}".***   
-Ez a hiba akkor fordul elő, amikor nem létező tulajdonságai egy erőforráshoz, például a kötet, pillanatkép vagy csatlakoztatási célt szolgálnak.
+Ez a hiba akkor fordul elő, ha egy fiók Active Directory konfigurációját hozza létre vagy frissíti.
 
-* Ok   
-A kérés rendelkezik, amely használható az egyes erőforrások tulajdonságait.  Minden nem létező tulajdonságot a kérelem nem adhat meg.
-
+* Ok:   
+Az SMB-kiszolgáló nevének hossza meghaladja a 10 karaktert.
 * Megoldás   
-Győződjön meg arról, hogy az összes tulajdonság nevét helyesen írta be és a tulajdonságok érhetők el az előfizetésben és erőforráscsoportban.
+Használjon rövidebb kiszolgálónevet. A maximális hossz 10 karakter.
+* Workaround   
+Nincs.  Tekintse meg a fenti megoldást. 
 
-* Áthidaló megoldás   
-A tulajdonság a hibát okozó kiküszöbölése érdekében a kérésben megadott tulajdonságok számának csökkentése.
+***A denetid nem módosítható.***
 
+Ez a hiba akkor fordul elő, ha a `subnetId` kötet létrehozása után megpróbálja módosítani a módosítást.  `SubnetId`a kötet létrehozásakor be kell állítani, és később nem módosítható.
 
-<a name="error_22"></a>***Frissítési művelet nem támogatott az erőforrástípushoz.***   
-Csak a kötetek frissíthetők. Ez a hiba történik, ha egy nem támogatott frissítési művelet végrehajtásához, például pillanatkép frissítése.
-
-* Ok   
-A frissíteni kívánt erőforrás nem támogatja a frissítési műveletet.  Kötetek csak a módosított tulajdonságok rendelkezhet.
-
+* Ok:   
+A kötet létrehozása után megpróbálja módosítani `subnetId` a kötetet, amely nem támogatott művelet. 
 * Megoldás   
-Nincs.  A frissíteni próbált erőforrás nem támogatja a frissítési műveletet. Ezért nem módosítható.
+Ha a `subnetId` módosítása nem szükséges, akkor érdemes lehet eltávolítani a paramétert a kérelemből a hibaüzenet elvetése érdekében.
+* Workaround   
+Ha módosítania kell a `subnetId`-t, létrehozhat egy új kötetet új `subnetId`értékkel, majd áttelepítheti az új kötetre.
 
-* Áthidaló megoldás   
-Egy kötet hozzon létre egy új erőforrást helyben a frissítéssel, és az adatok áttelepítéséhez.
+***A denetid formátuma érvénytelen.***
 
+Ez a hiba akkor fordul elő, amikor új kötetet próbál létrehozni `subnetId` , de a `resourceId` nem alhálózathoz tartozik.
 
-<a name="error_23"></a>***Azon elemek száma: {0} objektumhoz: {1} min-max-tartományon kívül van.***   
-Ez a hiba akkor fordul elő, ha az exportálási szabályok nem tesz eleget a minimális vagy maximális tartomány követelmény.  Az exportálási házirend határozza meg, akkor rendelkeznie kell legalább egy exportálási felügyeletiházirend-szabálya és legfeljebb öt exportálási szabályok.
-
-* Ok   
-A megadott exportálási házirend nem felel meg a szükséges tartomány.  
-
+* Ok:   
+Ez a hiba akkor fordul elő, amikor új kötetet próbál létrehozni, `subnetId` de a `resourceId` nem alhálózathoz tartozik. 
 * Megoldás   
-Győződjön meg arról, hogy a rendszer nem használja már az indexet, és 1 és 5 közé eshet.
+Ellenőrizze a értékét `subnetId` , hogy az `resourceId` tartalmazza-e a használt alhálózatot.
+* Workaround   
+Nincs. Tekintse meg a fenti megoldást. 
 
-* Áthidaló megoldás   
-Esetén nem kötelező exportálási házirend használatára a köteteken. Ezért kihagyhatja az exportálási házirend teljesen, ha nem szeretne exportálási szabályok rendelkezik.
+***Az alhálózatnak "Microsoft. NetApp/Volumes" delegálással kell rendelkeznie.***
 
+Ez a hiba akkor fordul elő, ha kötetet hoz létre, és a kiválasztott alhálózat nincs `Microsoft.NetApp/volumes`delegálva.
 
-<a name="error_24"></a>***Ismétlődő objektum értéke hibás {0}.***   
-Ez akkor fordul elő, amikor az exportálási házirend nincs definiálva egyedi indexszel.  Exportálási házirendek határozza meg, ha minden kiviteli szabályok rendelkeznie kell egy egyedi index 1 és 5 közötti.
-
-* Ok   
-A megadott exportálási házirend nem felel meg az exportálási szabályok vonatkozó követelmény. Rendelkeznie kell legalább egy exportálási felügyeletiházirend-szabálya és legfeljebb öt exportálási szabályok.  
-
+* Ok:   
+Megpróbált létrehozni kötetet, és olyan alhálózatot választott, amely nincs delegálva `Microsoft.NetApp/volumes`.
 * Megoldás   
-Győződjön meg arról, hogy az index nem már használja és, hogy a tartomány 1-től 5-re van.
+Válasszon másik alhálózatot, amely delegált `Microsoft.NetApp/volumes`.
+* Workaround   
+Adjon hozzá egy megfelelő delegálást az alhálózathoz.
 
-* Áthidaló megoldás   
-Egy másik index használja a beállítani kívánt szabályt.
+***A megadott erőforrástípus ismeretlen/nem alkalmazható.***
 
+Ez a hiba akkor fordul elő, ha a név-ellenőrzési kérelem nem alkalmazható erőforrástípus vagy ismeretlen erőforrástípus esetén lett kérelmezve.
 
+* Ok:   
+Ismeretlen vagy nem támogatott erőforrástípus számára kérték a név-ellenőrzését.
+* Megoldás   
+Győződjön meg arról, hogy a kérést végző erőforrás támogatott vagy nem tartalmaz helyesírási hibát.
+* Workaround   
+Tekintse meg a fenti megoldást.
+
+***Ismeretlen Azure NetApp Files hiba.***
+
+Az Azure API a Azure NetApp Files API-ra támaszkodik a kötetek kezeléséhez. A hiba az API-ra irányuló kommunikáció hibáját jelzi.
+
+* Ok:   
+Az alapul szolgáló API ismeretlen hibát küld. Ez a hiba valószínűleg átmeneti.
+* Megoldás   
+A probléma valószínűleg ideiglenes lesz, és egy kis idő elteltével a kérésnek sikeresnek kell lennie. Ha a probléma továbbra is fennáll, hozzon létre egy támogatási jegyet a probléma kivizsgálásához.
+* Workaround   
+Nincs. Az alapul szolgáló API elengedhetetlen a kötetek kezeléséhez.
+
+***A (z) {propertyName} ismeretlen tulajdonsághoz kapott érték.***
+
+Ez a hiba akkor fordul elő, ha nem létező tulajdonságok vannak megadva egy erőforráshoz, például a kötethez, a pillanatképhez vagy a csatlakoztatási célhoz.
+
+* Ok:   
+A kérelemben az egyes erőforrásokhoz használható tulajdonságok összessége látható. A kérelemben nem szerepelhetnek a nem létező tulajdonságok.
+* Megoldás   
+Győződjön meg arról, hogy az összes tulajdonságnév helyesen van megjelölve, és hogy a tulajdonságok elérhetők az előfizetés és az erőforrás számára.
+* Workaround   
+Csökkentse a kérésben definiált tulajdonságok számát a hibát okozó tulajdonság kizárása érdekében.
+
+***Ez az erőforrástípus nem támogatja a frissítési műveletet.***
+
+Csak kötetek frissíthetők. Ez a hiba akkor fordul elő, ha nem támogatott frissítési műveletet próbál végrehajtani, például egy pillanatkép frissítését.
+
+* Ok:   
+A frissíteni kívánt erőforrás nem támogatja a frissítési műveletet. Csak a kötetek módosíthatók a tulajdonságok.
+* Megoldás   
+Nincs. A frissíteni kívánt erőforrás nem támogatja a frissítési műveletet. Ezért nem módosítható.
+* Workaround   
+Kötet esetén hozzon létre egy új erőforrást a frissítéssel, és telepítse át az adatátvitelt.
+
+***A kötet nem hozható létre olyan készletben, amely állapota nem sikerült.***
+
+Ez a hiba akkor fordul elő, ha olyan kötetet próbál létrehozni egy olyan készletben, amely nem sikeres állapotban van. A kapacitási készlet létrehozási művelete valószínűleg valamilyen okból meghiúsult.
+
+* Ok:   
+Az új kötetet tartalmazó kapacitási készlet hibás állapotban van.
+* Megoldás   
+Győződjön meg arról, hogy a kapacitás-készlet létrehozása sikeres volt, és hogy nem meghibásodott állapotban van.
+* Workaround   
+Hozzon létre egy új kapacitási készletet, és hozza létre a kötetet az új készletben.
+
+***A kötet létrehozása folyamatban van, és jelenleg nem törölhető.***
+
+Ez a hiba akkor fordul elő, ha olyan kötetet próbál meg törölni, amely még létre van hozva.
+
+* Ok:   
+A kötet törlésének megkísérlésekor a kötet létrehozása még folyamatban van.
+* Megoldás   
+Várjon, amíg a kötet létrehozása befejeződik, majd próbálja megismételni a törlést.
+* Workaround   
+Tekintse meg a fenti megoldást.
+
+***A kötet törlése folyamatban van, és jelenleg nem törölhető.***
+
+Ez a hiba akkor fordul elő, ha olyan kötetet próbál törölni, amely már törölve van.
+
+* Ok:   
+A kötet törlésének megkísérlésekor a kötet már törölve lett.
+* Megoldás   
+Várjon, amíg befejeződik az aktuális törlési művelet.
+* Workaround   
+Tekintse meg a fenti megoldást.
+
+***A kötet frissítése folyamatban van, és jelenleg nem törölhető.***
+
+Ez a hiba akkor fordul elő, ha egy frissítendő kötetet próbál törölni.
+
+* Ok:   
+A kötet törlésének megkísérlésekor a kötet frissítése folyamatban van.
+* Megoldás   
+Várjon, amíg a frissítési művelet befejeződik, majd próbálja megismételni a törlést.
+* Workaround   
+Tekintse meg a fenti megoldást.
+
+***A kötet nem található, vagy nem sikerült létrehozni.***
+
+Ez a hiba akkor fordul elő, ha a kötet létrehozása meghiúsult, és megpróbálja módosítani a kötetet, vagy pillanatképet létrehozni a kötethez.
+
+* Ok:   
+A kötet nem létezik, vagy a létrehozás sikertelen volt.
+* Megoldás   
+Győződjön meg arról, hogy a megfelelő kötetet módosítja, és hogy a kötet létrehozása sikeres volt. Vagy győződjön meg arról, hogy a pillanatképet létrehozó kötet létezik.
+* Workaround   
+Nincs.  Tekintse meg a fenti megoldást. 
+
+***A megadott létrehozási jogkivonat már létezik***
+
+Ez a hiba akkor fordul elő, amikor kötetet próbál létrehozni, és megad egy létrehozási jogkivonatot (exportálási útvonalat), amelyhez a kötet már létezik.
+
+* Ok:   
+A kötet létrehozása során megadott létrehozási jogkivonat (exportálási útvonal) már egy másik kötethez van társítva. 
+* Megoldás   
+Válasszon másik létrehozási tokent.  Másik lehetőségként törölje a másik kötetet.
+
+***A megadott létrehozási jogkivonat foglalt***
+
+Ez a hiba akkor fordul elő, amikor kötetet próbál létrehozni, és az "alapértelmezett" vagy "None" értéket adta meg a fájl elérési útjaként (létrehozási jogkivonat).
+
+* Ok:    
+Kötetet próbál létrehozni, és az "alapértelmezett" vagy "None" értéket adta meg a fájl elérési útjaként (létrehozási jogkivonat).
+* Megoldás   
+Válasszon másik elérési utat (létrehozási jogkivonat).
+ 
+***Active Directory hitelesítő adatok használatban vannak***
+
+Ez a hiba akkor fordul elő, ha a Active Directory konfigurációt olyan fiókból próbálja meg törölni, amelyben legalább egy SMB-kötet még létezik.  Az SMB-kötet a törölni kívánt Active Directory konfiguráció használatával lett létrehozva.
+
+* Ok:   
+Egy fiókból kísérli meg törölni a Active Directory konfigurációt, de legalább egy SMB-kötet még létezik, amelyet eredetileg a Active Directory-konfiguráció használatával hoztak létre. 
+* Megoldás   
+Először törölje a Active Directory konfiguráció használatával létrehozott összes SMB-kötetet.  Ezután próbálja megismételni a konfiguráció törlését.
+
+***A szervezeti egység hozzárendelése nem módosítható, ha a hitelesítő adatok használatban vannak***
+
+Ez a hiba akkor fordul elő, ha egy Active Directory konfiguráció szervezeti egységét próbálja meg módosítani, de legalább egy SMB-kötet továbbra is létezik.  Az SMB-kötetet a törölni kívánt Active Directory konfiguráció használatával hozták létre.
+
+* Ok:   
+Egy Active Directory konfiguráció szervezeti egységét próbálja módosítani.  De legalább egy SMB-kötet még létezik, amelyet kezdetben a Active Directory konfiguráció használatával hoztak létre.
+* Megoldás   
+ Először törölje a Active Directory konfiguráció használatával létrehozott összes SMB-kötetet.  Ezután próbálja megismételni a konfiguráció törlését. 
+
+***Active Directory frissítés már folyamatban van***
+
+Ez a hiba akkor fordul elő, ha olyan Active Directory-konfigurációt próbál meg szerkeszteni, amelyhez már folyamatban van egy szerkesztési művelet.
+
+* Ok:   
+Egy Active Directory konfigurációt próbál szerkeszteni, de már folyamatban van egy másik szerkesztési művelet.
+* Megoldás   
+Várjon, amíg a jelenleg futó szerkesztési művelet befejeződik.
+
+***Az összes kötet törlése a kiválasztott hitelesítő adatokkal először***
+
+Ez a hiba akkor fordul elő, amikor egy Active Directory konfigurációt próbál törölni, de legalább egy SMB-kötet továbbra is létezik.  Az SMB-kötet a törölni kívánt Active Directory konfiguráció használatával lett létrehozva.
+
+* Ok:   
+Egy Active Directory konfiguráció törlését kísérli meg, de legalább egy SMB-kötet még létezik, amelyet eredetileg a Active Directory-konfiguráció használatával hoztak létre.
+* Megoldás   
+Először törölje a Active Directory konfiguráció használatával létrehozott összes SMB-kötetet.  Ezután próbálja megismételni a konfiguráció törlését. 
+
+***Nem található Active Directory hitelesítő adat a régióban***
+
+Ez a hiba akkor fordul elő, amikor SMB-kötetet próbál létrehozni, de nincs Active Directory konfiguráció hozzáadva a fiókhoz a régióhoz.
+
+* Ok:   
+SMB-kötetet próbál létrehozni, de nincs Active Directory konfiguráció hozzáadva a fiókhoz. 
+* Megoldás   
+SMB-kötet létrehozása előtt adjon hozzá egy Active Directory konfigurációt a fiókhoz.
+
+***Nem lehetett lekérdezni a DNS-kiszolgálót. Ellenőrizze, hogy a hálózati konfiguráció helyes-e, és hogy a DNS-kiszolgálók elérhetők-e.***
+
+Ez a hiba akkor fordul elő, amikor SMB-kötetet próbál létrehozni, de a Active Directory konfigurációjában megadott DNS-kiszolgáló nem érhető el. 
+
+* Ok:   
+SMB-kötetet próbál létrehozni, de a Active Directory konfigurációjában megadott DNS-kiszolgáló nem érhető el.
+* Megoldás   
+Tekintse át a Active Directory konfigurációját, és győződjön meg arról, hogy a DNS-kiszolgáló IP-címei helyesek és elérhetők.
+Ha nincs probléma a DNS-kiszolgáló IP-címeivel, akkor győződjön meg arról, hogy egyetlen tűzfal sem blokkolja a hozzáférést.
+
+***Túl sok egyidejű feladat***
+
+Ez a hiba akkor fordul elő, amikor pillanatképet próbál létrehozni, ha az előfizetés három másik pillanatkép-létrehozási művelete már folyamatban van.
+
+* Ok:   
+Létre kell hoznia egy pillanatképet, ha három másik pillanatkép-létrehozási művelet már folyamatban van az előfizetéshez. 
+* Megoldás   
+A pillanatkép-létrehozási feladatok elvégzése több másodpercig is eltarthat.  Várjon néhány másodpercet, és próbálkozzon újra a pillanatkép-létrehozási művelettel.
+
+***További feladatok nem állíthatók be. Várjon, amíg a folyamatban lévő feladatok befejeződik, és próbálkozzon újra***
+
+Ez a hiba akkor fordulhat elő, ha adott körülmények között megpróbál létrehozni vagy törölni egy kötetet.
+
+* Ok:   
+Adott körülmények között megpróbál létrehozni vagy törölni egy kötetet.
+* Megoldás   
+Várjon egy percet, és ismételje meg a műveletet.
+
+***A kötet már átmeneti állapotú***
+
+Ez a hiba akkor fordulhat elő, ha olyan kötetet próbál törölni, amely jelenleg átmeneti állapotban van (azaz jelenleg a létrehozás, frissítés vagy törlés állapotban van).
+
+* Ok:   
+Olyan kötetet próbál törölni, amely jelenleg átmeneti állapotban van.
+* Megoldás   
+Várjon, amíg a jelenleg futó (állapot-áttérési) művelet befejeződik, majd próbálja megismételni a műveletet.
+
+***Nem sikerült az új kötet felosztása a forrás kötet-pillanatképből***
+
+ Ez a hiba akkor fordulhat elő, ha kötetet próbál létrehozni egy pillanatképből.  
+
+* Ok:   
+Megpróbál létrehozni egy kötetet egy pillanatképből, és a kötet hibás állapotba végződik.
+* Megoldás   
+Törölje a kötetet, majd próbálja megismételni a kötet-létrehozási műveletet a pillanatképből.
+
+ 
+## <a name="next-steps"></a>További lépések
+
+* [Azure NetApp Files fejlesztése REST API](azure-netapp-files-develop-with-rest-api.md)

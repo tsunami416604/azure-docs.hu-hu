@@ -1,43 +1,43 @@
 ---
-title: Reagálás eseményekre az Azure SignalR Service
-description: Azure Event Grid használatával fizessen elő az Azure SignalR Service eseményeket.
+title: Reagálás az Azure Signaler szolgáltatás eseményeire
+description: Azure Event Grid használata az Azure Signaler szolgáltatás eseményeire való előfizetéshez.
 services: azure-signalr,event-grid
 author: chenyl
 ms.author: chenyl
 ms.reviewer: zhshang
 ms.date: 06/12/2019
 ms.topic: conceptual
-ms.service: azure-signalr
-ms.openlocfilehash: 02f88c5953d499b30f2ea3408318f70a72f42b0f
-ms.sourcegitcommit: 1572b615c8f863be4986c23ea2ff7642b02bc605
+ms.service: signalr
+ms.openlocfilehash: a3d0669a1a89f2fc5aaca0a96e00b731d2d40830
+ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67789188"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68296832"
 ---
-# <a name="reacting-to-azure-signalr-service-events"></a>Reagálás eseményekre az Azure SignalR Service
+# <a name="reacting-to-azure-signalr-service-events"></a>Reagálás az Azure Signaler szolgáltatás eseményeire
 
-Az Azure SignalR Service események alkalmazások reagálni azokra, csatlakoztatott vagy leválasztott modern, kiszolgáló nélküli architektúra használatával ügyfélkapcsolatok engedélyezése. Így összetettebb kódja vagy költséges és hatékony lekérdezési szolgáltatások nélkül hajtja végre.  Ehelyett eseményt leküld [Azure Event Grid](https://azure.microsoft.com/services/event-grid/) például előfizetők [Azure Functions](https://azure.microsoft.com/services/functions/), [Azure Logic Apps](https://azure.microsoft.com/services/logic-apps/), vagy akár a saját egyéni http-figyelőt, és csak akkor Mit kell fizetni.
+Az Azure Signaler szolgáltatás eseményei lehetővé teszik, hogy az alkalmazások reagálni tudjanak a modern kiszolgáló nélküli architektúrákkal létesített vagy leválasztott ügyfélkapcsolatokra. Ehhez nincs szükség bonyolult programkódra vagy költséges és nem hatékony lekérdezési szolgáltatásokra.  Ehelyett az eseményeket [Azure Event Grid](https://azure.microsoft.com/services/event-grid/) az előfizetők, például a [Azure Functions](https://azure.microsoft.com/services/functions/), a [Azure Logic apps](https://azure.microsoft.com/services/logic-apps/), vagy akár a saját egyéni HTTP-figyelő számára is leküldik, és csak azért kell fizetnie, amit ténylegesen használ.
 
-Az Event Grid szolgáltatást biztosít a megbízható kézbesítést szolgáltatásokat az alkalmazások sokoldalú újrapróbálkozási szabályzatok és a kézbesíthetetlen levelek kézbesítési megbízhatóan kapnak az Azure SignalR Service eseményeket. További tudnivalókért lásd: [Event Grid az üzenetek kézbesítését, és ismételje meg](https://docs.microsoft.com/azure/event-grid/delivery-and-retry).
+Az Azure Signaler szolgáltatás eseményei megbízhatóan eljutnak a Event Grid szolgáltatásba, amely megbízható kézbesítési szolgáltatásokat nyújt az alkalmazásoknak a gazdag újrapróbálkozási szabályzatok és a kézbesítetlen levelek kézbesítése révén. További információ: [Event Grid üzenet kézbesítése, és próbálkozzon újra](https://docs.microsoft.com/azure/event-grid/delivery-and-retry).
 
-![Event Grid-modell](https://docs.microsoft.com/azure/event-grid/media/overview/functional-model.png)
+![Event Grid modell](https://docs.microsoft.com/azure/event-grid/media/overview/functional-model.png)
 
-## <a name="serverless-state"></a>Kiszolgáló nélküli állapota
-Az Azure SignalR Service események csak akkor áll aktív, ha az ügyfélkapcsolatokat, kiszolgáló nélküli állapotban van. Általánosan fogalmazva Ha egy ügyfél nem átirányítása egy központi kiszolgálóval, kerül a kiszolgáló nélküli állapotot. Klasszikus üzemmódban a munkahelyi csak akkor, ha a hub, az ügyfélkapcsolatok csatlakozni, nem rendelkezik egy központi kiszolgálóval. Kiszolgáló nélküli módban ajánlott azonban néhány probléma elkerülése érdekében. Szolgáltatás módjával kapcsolatos további részletekért, lásd: [szolgáltatás mód kiválasztása](https://github.com/Azure/azure-signalr/blob/dev/docs/faq.md#what-is-the-meaning-of-service-mode-defaultserverlessclassic-how-can-i-choose).
+## <a name="serverless-state"></a>Kiszolgáló nélküli állapot
+Az Azure Signaler szolgáltatás eseményei csak akkor aktívak, ha az ügyfélkapcsolatok kiszolgáló nélküli állapotban vannak. Általánosságban elmondható, hogy ha egy ügyfél nem irányít egy központi kiszolgálót, akkor a kiszolgáló nélküli állapotba kerül. A klasszikus mód csak abban az esetben működik, ha a hub, amelyhez az ügyfélkapcsolatok csatlakoznak, nem rendelkezik központi kiszolgálóval. A probléma elkerülése érdekében azonban a kiszolgáló nélküli üzemmód használata javasolt. A szolgáltatási móddal kapcsolatos további információkért lásd: [a szolgáltatási mód kiválasztása](https://github.com/Azure/azure-signalr/blob/dev/docs/faq.md#what-is-the-meaning-of-service-mode-defaultserverlessclassic-how-can-i-choose).
 
-## <a name="available-azure-signalr-service-events"></a>Elérhető az Azure SignalR Service események
-Event grid használ [esemény-előfizetések](../event-grid/concepts.md#event-subscriptions) eseményt üzenetek továbbítását-előfizetők számára. Az Azure SignalR Service eseményelőfizetések események két típusát támogatja:  
+## <a name="available-azure-signalr-service-events"></a>Elérhető Azure Signaler szolgáltatás eseményei
+Az Event Grid [esemény](../event-grid/concepts.md#event-subscriptions) -előfizetések használatával irányítja az esemény-üzeneteket az előfizetőknek. Az Azure Signaler szolgáltatás esemény-előfizetései két típusú eseményt támogatnak:  
 
 |Esemény neve|Leírás|
 |----------|-----------|
-|`Microsoft.SignalRService.ClientConnectionConnected`|Következik be, amikor egy ügyfél kapcsolat van csatlakoztatva.|
-|`Microsoft.SignalRService.ClientConnectionDisconnected`|Következik be, amikor egy ügyfél-kapcsolat le van választva.|
+|`Microsoft.SignalRService.ClientConnectionConnected`|Az ügyfélkapcsolatok kapcsolódásakor következik be.|
+|`Microsoft.SignalRService.ClientConnectionDisconnected`|Az ügyfél kapcsolatának leválasztásakor következik be.|
 
 ## <a name="event-schema"></a>Eseményséma
-Az Azure SignalR Service események az adatok változásait válaszolni kell minden információt tartalmaznak. Az Azure SignalR Service eventType tulajdonság esemény kezdődik a "Microsoft.SignalRService" azonosíthatja. További információ a használati az Event Grid-esemény tulajdonságai dokumentált [Event Grid-esemény séma](../event-grid/event-schema.md).  
+Az Azure Signaler szolgáltatás eseményei tartalmazzák az adatok változásaira való válaszadáshoz szükséges összes információt. A "Microsoft. SignalRService" kezdetű Azure Signaler szolgáltatásbeli eseményt azonosíthatja a eventType tulajdonsággal. Event Grid esemény tulajdonságainak használatáról további információt [Event Grid Event Schema](../event-grid/event-schema.md)dokumentációban olvashat.  
 
-Íme egy példa egy ügyfél kapcsolat csatlakoztatott esemény:
+Az alábbi példa egy ügyfél-kapcsolathoz kapcsolódó eseményt mutat be:
 ```json
 [{
   "topic": "/subscriptions/{subscription-id}/resourceGroups/signalr-rg/providers/Microsoft.SignalRService/SignalR/signalr-resource",
@@ -56,12 +56,12 @@ Az Azure SignalR Service események az adatok változásait válaszolni kell min
 }]
 ```
 
-További információkért lásd: [SignalR Service események sémája](../event-grid/event-schema-azure-signalr.md).
+További információ: Signaler [Service Events Schema](../event-grid/event-schema-azure-signalr.md).
 
 ## <a name="next-steps"></a>További lépések
 
-További információ az Event Grid, és próbálja az Azure SignalR Service események:
+Tudjon meg többet a Event Gridről, és adjon meg egy esélyt az Azure Signaler szolgáltatás eseményeire:
 
 > [!div class="nextstepaction"]
-> [Próbálja ki az Azure SignalR Service egy minta Event Grid-integrációt](./signalr-howto-event-grid-integration.md)
-> [Event Grid](../event-grid/overview.md)
+> [Próbálja ki Event Grid integrációját az Azure signaler szolgáltatással](./signalr-howto-event-grid-integration.md)
+> a[Event Grid](../event-grid/overview.md)

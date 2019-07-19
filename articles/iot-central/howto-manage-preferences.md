@@ -1,42 +1,42 @@
 ---
-title: Az IoT-központ az alkalmazás-beállítások kezelése |} A Microsoft Docs
-description: Az alkalmazás- és IoT-központ a személyes beállítások kezelése
+title: Az alkalmazás beállításainak kezelése IoT Centralon | Microsoft Docs
+description: Az alkalmazás és a személyes beállítások kezelése IoT Central
 author: lmasieri
 ms.author: lmasieri
-ms.date: 02/20/2019
+ms.date: 07/10/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 00d40b9910f9b549443373c84b079c543037ce62
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c5c0dbcb1c1f483bd7499de08c9f1949adff415b
+ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65236324"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67850148"
 ---
-# <a name="manage-your-application-preferences"></a>Az alkalmazás-beállítások kezelése
+# <a name="manage-your-application-preferences"></a>Az alkalmazás beállításainak kezelése
 
 *Ez a cikk operátorokra, fejlesztőkre és rendszergazdákra vonatkozik.*
 
-IoT-központ rugalmasságot biztosít, és testre szabhatja az alkalmazást az igényeinek. Is biztosítunk néhány lehetőség a saját nézet testreszabásához felhasználónkénti alapon. Ez a cikk ismerteti a különböző testreszabási lehetőségek, hogy a profil egy felhasználó alkalmazhat.
+A IoT Central rugalmasságot biztosít az alkalmazások testreszabásához, hogy megfeleljenek a szükséges igényeknek. A saját nézetének testre szabását is biztosítjuk felhasználónkénti alapon. Ez a cikk azokat a különböző testreszabási beállításokat ismerteti, amelyeket a felhasználók a profiljára alkalmazhatnak.
 
 ## <a name="changing-language"></a>Nyelv módosítása
 
-IoT-központ több nyelven is támogatott. Elsődleges nyelv használatával válthat a **nyelvválasztó** a beállítások ikonra a felső navigációs sávon. Miután módosította a nyelvet, az IoT-központ megjegyzi a választását, és alkalmazza azt az alkalmazások közötti. Az irányítópult képeket nem honosított alkalmazáson belül testreszabása.
+IoT Central több nyelven is támogatott. Az előnyben részesített nyelvet a felső navigációs sávon található beállítások ikon **nyelvi választójának** használatával válthat. Miután módosította a nyelvét, IoT Central a kijelölést, és az összes alkalmazásra alkalmazza. Az alkalmazáson belüli testreszabások, például az irányítópulton található rendszerképek nincsenek honosítva.
 
 ## <a name="changing-theme"></a>Téma módosítása
 
-Támogatja a sötét téma és világos téma van. Alapértelmezés szerint a világos téma pedig módosíthatja a témát a beállítások ikonra a felső navigációs sávban a kiválasztásával.
+A sötét téma és a világos téma is támogatott. Bár a világos téma az alapértelmezett, a téma megváltoztatásához válassza a felső navigációs sávon a beállítások ikont.
 
-![IoT-központ témaválasztóval](media/howto-manage-preferences/settings.png)
+![IoT Central Theme Picker](media/howto-manage-preferences/settings.png)
 
 > [!NOTE]
-> Világos és sötét témák választhat a beállítás nem érhető el, ha a rendszergazda által konfigurált az alkalmazás egyéni témát.
+> A világos és a sötét témák közötti választás nem érhető el, ha a rendszergazda egyéni témát konfigurált az alkalmazáshoz.
 
 ## <a name="next-steps"></a>További lépések
 
-Most, hogy már megtanulta, hogyan kezelheti az Azure IoT Central profilját, Íme a javasolt következő lépésre:
+Most, hogy megismerte, hogyan kezelheti a profilját az Azure IoT Centralban, itt látható a következő lépés:
 
 > [!div class="nextstepaction"]
-> [Élő csevegés be-vagy kikapcsolása](howto-show-hide-chat.md)
+> [Élő csevegés váltógomb](howto-show-hide-chat.md)

@@ -1,16 +1,9 @@
 ---
-title: TCP/IP teljesítmény hangolása az Azure virtuális gépek |} A Microsoft Docs
-description: Ismerje meg, különböző gyakran használt TCP/IP teljesítmény hangolási módszerek és azok Azure virtuális gépeken.
+title: TCP/IP teljesítmény-hangolás Azure-beli virtuális gépekhez | Microsoft Docs
+description: Ismerje meg az Azure-beli virtuális gépekkel kapcsolatos különböző gyakori TCP/IP-teljesítmény-hangolási technikákat és azok kapcsolatát.
 services: virtual-network
 documentationcenter: na
-author:
-- rimayber
-- dgoddard
-- stegag
-- steveesp
-- minale
-- btalb
-- prachank
+author: rimayber
 manager: paragk
 editor: ''
 ms.assetid: ''
@@ -20,372 +13,366 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/02/2019
-ms.author:
-- rimayber
-- dgoddard
-- stegag
-- steveesp
-- minale
-- btalb
-- prachank
-ms.openlocfilehash: ad1a5b69e4ec7b44c0e61a5ddd2c06633464d31a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: rimayber
+ms.reviewer: dgoddard, stegag, steveesp, minale, btalb, prachank
+ms.openlocfilehash: bb23484903ac3ce129c6e7a7a27e0765c227fb1d
+ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66235001"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68297786"
 ---
-# <a name="tcpip-performance-tuning-for-azure-vms"></a>Az Azure virtuális gépek TCP/IP-teljesítményhangolása
+# <a name="tcpip-performance-tuning-for-azure-vms"></a>TCP/IP teljesítmény-hangolás Azure-beli virtuális gépekhez
 
-Ez a cikk ismerteti a gyakran használt TCP/IP teljesítmény hangolási módszerek és szempontokat kell figyelembe venni, ha azokat használja az Azure-ban futó virtuális gépek számára. Ez egy alapvető áttekintést nyújt a módszereket, és ismerje meg, hogy azok hangolásával.
+Ez a cikk a TCP/IP-teljesítmény hangolási módszereit és az Azure-on futó virtuális gépekhez való használat során megfontolandó szempontokat ismerteti. Alapszintű áttekintést nyújt a technikákról, és bemutatja, hogyan hangolható be.
 
-## <a name="common-tcpip-tuning-techniques"></a>Gyakran használt TCP/IP-hangolási módszerek
+## <a name="common-tcpip-tuning-techniques"></a>Gyakori TCP/IP-hangolási technikák
 
-### <a name="mtu-fragmentation-and-large-send-offload"></a>MTU töredezettséget és Nagy küldemények kiszervezése
+### <a name="mtu-fragmentation-and-large-send-offload"></a>MTU, töredezettség és nagyméretű küldés kiszervezése
 
 #### <a name="mtu"></a>MTU
 
-A maximális átviteli egység (MTU) a legnagyobb mérete keret (csomag), (bájt), amelyeket el küldhet egy hálózati adapter keresztül megadott. A maximális átviteli egység a konfigurálható beállítást. Az alapértelmezett MTU használt Azure-beli virtuális gépeken, és az alapértelmezett beállítás a legtöbb hálózati eszközön globálisan, 1500 bájt.
+A maximális átviteli egység (MTU) a bájtban megadott legnagyobb méretű keret (csomag), amely a hálózati adapteren keresztül küldhető el. Az MTU egy konfigurálható beállítás. Az Azure-beli virtuális gépeken használt alapértelmezett MTU és a legtöbb hálózati eszköz alapértelmezett beállítása 1 500 bájt.
 
 #### <a name="fragmentation"></a>Töredezettség
 
-Töredezettség akkor fordul elő, amikor egy csomagot küld a rendszer, amely meghaladja a maximális átviteli egység egy hálózati adapter. A TCP/IP-verem megszakítja a csomagot, amelyek megfelelnek a felület MTU kisebb darabokra (szilánkok). Töredezettség az IP-rétegben történik, és független a mögöttes protokollt (például a TCP). 1500 MTU-egy hálózati kapcsolaton keresztül egy 2 000 bájtos csomag elküldésekor a csomag egy 1500 bájt méretű csomagot és egy 500 bájt méretű csomagot kell bontani.
+A töredezettség akkor fordul elő, ha egy olyan csomagot kap, amely meghaladja a hálózati adapterek MTU-értékét. A TCP/IP-verem megtöri a csomagot kisebb darabokra (töredékekre), amelyek megfelelnek a csatoló MTU-ának. A töredezettség az IP-rétegen történik, és független a mögöttes protokolltól (például TCP). Ha 2 000 bájtos csomagot küld a rendszer a 1 500-es MTU-értékkel rendelkező hálózati adapteren, a csomag 1 1 500 bájtos csomagra és 1 500 bájtos csomagra lesz bontva.
 
-Hálózati eszközök az elérési út a forrás és cél között is vagy drop csomagot, amely meghaladja a maximális átviteli egység vagy a csomag töredékben kisebb tömbökre.
+A forrás és a cél közötti elérési úton lévő hálózati eszközök el tudják dobni a csomagokat, amelyek túllépik az MTU-t, vagy kisebb darabokra darabolják a csomagot.
 
-#### <a name="the-dont-fragment-bit-in-an-ip-packet"></a>A tördelést bites az IP-csomag
+#### <a name="the-dont-fragment-bit-in-an-ip-packet"></a>A nem töredék bit egy IP-csomagban
 
-A nem töredék (DF) bit értéke azt a jelzőt, az IP-protokoll fejlécben. A DF bit azt jelzi, hogy a hálózati eszközök az elérési úton, a küldő és fogadó között nem kell töredékben a csomagot. Sikerült beállítani a bit ennek számos oka lehet. (Például a jelen cikk "PMTU" című szakaszában talál.) A hálózati eszköz megkapja a tördelést bittel csomagot, és az eszköz felületén MTU meghaladja a csomagban, a standard szintű viselkedés esetén az eszköz dobja el a csomagot. Az eszköz az ICMP darabolás szükséges üzenetet küld a csomag eredeti forrásának.
+A nem töredék (DF) bit az IP protokoll fejlécének egyik jelzője. A DF bit azt jelzi, hogy a küldő és a fogadó közötti útvonalon lévő hálózati eszközök nem darabolják fel a csomagot. Ez a bit számos okból állítható be. (Lásd a jelen cikk "Path MTU-felderítés" című szakaszát egy példához.) Ha egy hálózati eszköz olyan csomagot kap, amely nem tartalmaz bit-készletet, és a csomag mérete meghaladja az eszköz Interface MTU-értékét, akkor a standard működés az eszköz eldobása. Az eszköz az ICMP-töredezettség szükséges üzenetet küld vissza a csomag eredeti forrására.
 
-#### <a name="performance-implications-of-fragmentation"></a>Töredezettség teljesítményre gyakorolt hatása
+#### <a name="performance-implications-of-fragmentation"></a>A töredezettség teljesítményének következményei
 
-Töredezettség negatív teljesítményre gyakorolt hatása lehet. Az egyik fő oka a hatása a teljesítményre, a Processzor/memória hatását a töredezettséget és csomagok összeállítását. A hálózati eszköz van szüksége egy csomag töredékben, amikor azt kell töredezettsége végrehajtásához CPU/memória-erőforrásokat.
+A töredezettség negatív teljesítménybeli következményekkel járhat. A teljesítményre gyakorolt hatás egyik fő oka a csomagok töredezettségének és újraösszeállításának a CPU/memória hatása. Ha egy hálózati eszköznek fel kell osztania egy csomagot, a töredezettség elvégzéséhez le kell foglalnia a CPU-/memória-erőforrásokat.
 
-Ugyanezt a csomagot a rendszer újra történik. A hálózati eszköz tárolására a töredékek száma, amíg nem érkezett, azt is, az eredeti csomaggal szétbontani rendelkezik. Ez a folyamat töredezettséget és újraépítési késés is eredményezheti.
+Ugyanaz a dolog történik a csomag újraösszeállításakor. A hálózati eszköznek az összes töredéket tárolnia kell, amíg meg nem érkeznek, így az eredeti csomagba újra összeállíthatók. Ez a töredezettségi és újraösszeállítási folyamat késést is okozhat.
 
-Más lehetséges negatívan befolyásolta a teljesítményt Ennek következménye töredezettség, hogy töredezett csomagokat sorrendben érkezik. Amikor csomagokat sorrendben érkeznek, bizonyos típusú hálózati eszközöket is el kell dobni ezeket. Ha ez történik, a teljes csomag van.
+A töredezettség más lehetséges negatív teljesítménybeli következménye, hogy a töredezett csomagok megérkeznek a sorrendbe. Ha a csomagok nem sorrendben érkeznek, a hálózati eszközök bizonyos típusai elhelyezhetik őket. Ebben az esetben a teljes csomagot újra kell küldeni.
 
-Töredékek általában dobja el a biztonsági eszközök, például a tűzfalak vagy elfogytak, amikor egy hálózati eszköz megkapják a pufferek. Amikor egy hálózati eszköz megkapják a pufferek elfogytak, a hálózati eszköz szétbontani töredezett csomagokat próbált, de nem rendelkezik az erőforrások tárolásához, és a csomag reassume.
+A töredékeket a biztonsági eszközök, például a hálózati tűzfalak vagy a hálózati eszközök fogadási pufferei kimerülése esetén általában eldobják. Ha egy hálózati eszköz fogadási pufferei ki vannak merítve, a hálózati eszköz egy töredezett csomag újraösszeállítását kísérli meg, de nem rendelkezik a csomag tárolására és visszavételére szolgáló erőforrásokkal.
 
-Töredezettség látható egy negatív műveletet, de a támogatási töredezettsége van szükség, nagy hálózatok csatlakozáskor az interneten keresztül.
+A töredezettséget negatív műveletnek tekintheti, de a töredezettség támogatása akkor szükséges, ha a különböző hálózatokat az interneten keresztül csatlakoztatja.
 
-#### <a name="benefits-and-consequences-of-modifying-the-mtu"></a>Előnyök és következményeinek MTU módosítása
+#### <a name="benefits-and-consequences-of-modifying-the-mtu"></a>Az MTU módosításának előnyei és következményei
 
-Hatékonyabb hálózati általánosan fogalmazva, növelje a MTU hozhat létre. Minden csomag továbbított fejléc-információkat adnak, akkor az eredeti csomaggal rendelkezik. Töredezettség további csomagokat hoz létre, ha nincs terhelés több fejlécet, és, amely lehetővé teszi a hálózati kevésbé hatékony.
+Általánosságban elmondható, hogy hatékonyabb hálózatot hozhat létre az MTU növelésével. Minden továbbított csomag fejléc-információval rendelkezik, amely az eredeti csomagba kerül. Ha a töredezettség több csomagot hoz létre, annál nagyobb a fejléc feje, és ez a hálózat kevésbé hatékony lesz.
 
-Íme egy példa. Ethernet fejléc mérete 14 bájt és a egy 4 bájtos keret ellenőrzés feladatütemezési keret konzisztencia biztosításához. Egy 2000 bájt méretű csomagot küld a rendszer, ha Ethernet terheléssel 18 bájt hozzáadódik a hálózaton. A csomag töredezett 1500 bájt méretű csomagot és egy 500 bájt méretű csomagot, egyes csomagok Ethernet-fejléc, összesen 36 bájt 18 bájtot fog rendelkezni.
+Íme egy példa. Az Ethernet-fejléc mérete 14 bájt, valamint egy 4 bájtos keret-ellenőrzési sorozat a keret konzisztenciájának biztosítása érdekében. Ha a rendszer 1 2 000 bájtos csomagot kap, a hálózatban 18 bájt Ethernet-terhelést ad hozzá. Ha a csomag egy 1 500 bájtos csomagba és egy 500 bájtos csomagba van feldarabolva, minden csomag 18 bájtos Ethernet-fejlécet tartalmaz, összesen 36 bájt.
 
-Ne feledje, hogy növelje a MTU nem feltétlenül hatékonyabb-hálózat létrehozása. Egy alkalmazás csak 500 bájtos csomagokat küld, ha ugyanazon fejléc többletterhelést fog léteznek, hogy MTU 1500 bájt vagy 9000 bájt. A hálózati hatékonyabb csak akkor, ha az MTU által érintett csomagméret nagyobb lesz.
+Ne feledje, hogy az MTU növelése nem feltétlenül hoz létre hatékonyabb hálózatot. Ha egy alkalmazás csak a 500 bájtos csomagokat küldi el, ugyanaz a fejléc jelenik meg, függetlenül attól, hogy az MTU értéke 1 500 bájt vagy 9 000 bájt. A hálózat csak akkor válik hatékonyabbá, ha az MTU által érintett nagyobb méretű csomagokat használ.
 
-#### <a name="azure-and-vm-mtu"></a>Az Azure és a virtuális gép MTU
+#### <a name="azure-and-vm-mtu"></a>Azure és VM MTU
 
-Az Azure virtuális gépek MTU alapértelmezés szerint 1500 bájt. A virtuális hálózat az Azure stack-töredékben 1,400 bájt, egy csomag megkísérli.
+Az Azure-beli virtuális gépek alapértelmezett MTU-értéke 1 500 bájt. Az Azure Virtual Network stack a csomagok 1 400 bájtnál való darabolását kísérli meg.
 
-Vegye figyelembe, hogy a virtuális hálózati verem nem természetüknél fogva nem elég hatékony, mert a töredékek csomagok 1,400 bájt, annak ellenére, hogy a virtuális gépek 1500 MTU-rendelkeznek. Nagy része a hálózati csomagok sokkal kisebb, mint 1,400 vagy 1500 bájt.
+Vegye figyelembe, hogy az Virtual Network verem nem hatékony, mert a csomagokat 1 400 bájtra darabolja, annak ellenére, hogy a virtuális gépek 1 500-os MTU-értékkel rendelkeznek. A hálózati csomagok nagy hányada jóval kisebb, mint 1 400 vagy 1 500 bájt.
 
 #### <a name="azure-and-fragmentation"></a>Az Azure és a töredezettség
 
-Virtuális hálózati vermet dobja el az "üzemen kívüli töredék,", nem töredezett eredeti sorrendjében érkeznek töredezett csomagokat van beállítva. Ezek a csomagok elsősorban bejelentett November 2018 FragmentSmack nevű hálózati biztonsági rés miatt a rendszer elveti.
+Virtual Network a verem úgy van beállítva, hogy elveszítse az eredeti töredezett sorrendben nem megjelenő töredezett csomagokat. Ezeket a csomagokat a rendszer a FragmentSmack-ben közzétett, 2018-ben bejelentett hálózati biztonsági sebezhetőség miatt eldobja.
 
-FragmentSmack a Linux kernel kezelése töredezett IPv4 és IPv6-csomagokat összeállítását hibának. A távoli támadó használhatja ezt a hibát a célrendszeren vezethet nagyobb CPU és a egy szolgáltatásmegtagadás eseményindító költséges töredék újraépítési műveletekhez.
+A FragmentSmack olyan hiba, amellyel a Linux kernel a töredezett IPv4-és IPv6-csomagok újraépítését kezelte. A távoli támadó ezt a hibát felhasználva költséges töredék-újraösszeállítási műveleteket indíthat el, ami növelheti a PROCESSZORt és szolgáltatásmegtagadást eredményezhet a célszámítógépen.
 
-#### <a name="tune-the-mtu"></a>MTU hangolása
+#### <a name="tune-the-mtu"></a>Az MTU hangolása
 
-Egy Azure virtuális gép MTU, mint bármely más operációs rendszerben konfigurálhatja. Vegye figyelembe a töredezettséget, amely az Azure-ban, a fent említett megy végbe, de amikor egy MTU konfigurálásakor.
+Az Azure-beli virtuális gépek MTU-értékét bármely más operációs rendszeren is konfigurálhatja. Azonban érdemes megfontolnia az Azure-ban megjelenő töredezettséget, amely az MTU konfigurálásakor fordul elő.
 
-Nem javasoljuk ügyfeleinknek, hogy virtuális gép MTU növelése érdekében. A hozzászólás hivatott azt ismertetik, hogyan Azure MTU valósít meg és hajtja végre a töredezettség részleteit.
+Nem javasoljuk ügyfeleinknek a virtuális gépek MTU növelését. Ebben a témakörben megtudhatja, hogyan valósítja meg az Azure az MTU-t, és hogyan hajtja végre a töredezettséget.
 
 > [!IMPORTANT]
->MTU növelése nem ismeri fel a teljesítmény javítása, és az alkalmazás teljesítményére negatív hatással lehet.
+>Az MTU növelése nem ismert a teljesítmény javítása érdekében, és negatív hatással lehet az alkalmazás teljesítményére.
 >
 >
 
-#### <a name="large-send-offload"></a>Nagy küldemények kiszervezése
+#### <a name="large-send-offload"></a>Nagyméretű küldés kiszervezése
 
-Nagy küldemények kiszervezése (LSO) a hálózati teljesítmény javíthatja a csomagok és az Ethernet-adaptert a szegmentálási felé történő kiszervezésével. LSO engedélyezve van, ha a TCP/IP-verem egy nagy méretű TCP-csomagot hoz létre, és elküldi azokat az Ethernet-adaptert a szegmentálási továbbítása előtt. LSO előnye, hogy a Processzor, a csomagok alkalmazásfelhasználókkal által MTU megfelel, és az Ethernet-adapter, hol történik a hardver a feldolgozás kiszervezése az ingyenes is. LSO előnyeivel kapcsolatos további tudnivalókért lásd: [támogató Nagy küldemények kiszervezése](https://docs.microsoft.com/windows-hardware/drivers/network/performance-in-network-adapters#supporting-large-send-offload-lso).
+A nagyméretű küldés kiszervezése (LSO) javíthatja a hálózati teljesítményt azáltal, hogy kiszervezi a csomagok szegmentálását az Ethernet-adapterre. Ha a LSO engedélyezve van, a TCP/IP-verem egy nagyméretű TCP-csomagot hoz létre, majd a továbbítás előtt elküldi az Ethernet-adapternek a szegmentáláshoz. A LSO előnye, hogy felszabadítja a PROCESSZORt a csomagok szegmentálásához, amely megfelel az MTU-nek, és a feldolgozást a hardveren végzett Ethernet-felületre végzi. Ha többet szeretne megtudni a LSO előnyeiről, tekintse meg a [nagyméretű küldési kiürítés támogatása](https://docs.microsoft.com/windows-hardware/drivers/network/performance-in-network-adapters#supporting-large-send-offload-lso)című témakört.
 
-Ha LSO engedélyezve van, az Azure-ügyfelek keret nagy méretek jelenhet meg, csomagrögzítés végrehajtásakor. A keret nagy méretek úgy gondolja, hogy töredezettség történik az egyes ügyfelek vagy az, hogy nagy MTU van jelenleg használva, ha az nem vezethet. LSO, az Ethernet-adapterét meghirdethet egy nagyobb maximális mérete (MSS) a TCP/IP-verem létrehozása egy nagyobb méretű TCP-csomagot. A teljes nem szegmentált keret továbbítja az Ethernet-adaptert, és a virtuális gépen végrehajtott csomagrögzítés látható lesz. Azonban a csomagot fogja bontásban sok kisebb keretet, az Ethernet-adaptert, az Ethernet-adaptert MTU megfelelően.
+Ha a LSO engedélyezve van, előfordulhat, hogy az Azure-ügyfelek nagy méretű kereteket látnak a csomagok rögzítésekor. Ezek a nagyméretű keretek azt eredményezik, hogy egyes ügyfelek meggondolják a töredezettséget, vagy nagy MTU-t használnak, ha nem. A LSO segítségével az Ethernet-adapter nagyobb méretű, maximális mennyiségű (MSS) szegmenst tud reklámozni a TCP/IP-verem számára egy nagyobb TCP-csomag létrehozásához. Ezt a teljes nem szegmentált keretet ezután továbbítja az Ethernet-adapternek, és láthatóvá válik a virtuális gépen végrehajtott csomagok rögzítése során. A csomag azonban az Ethernet-adapter által az Ethernet-adapter MTU-értéke szerint számos kisebb képkockára lesz bontva.
 
-### <a name="tcp-mss-window-scaling-and-pmtud"></a>TCP MSS ablak méretezéssel és a PMTUD
+### <a name="tcp-mss-window-scaling-and-pmtud"></a>TCP MSS ablak skálázás és PMTUD
 
-#### <a name="tcp-maximum-segment-size"></a>TCP-szegmens maximális méret
+#### <a name="tcp-maximum-segment-size"></a>Maximális TCP-szegmens mérete
 
-TCP maximális mérete (MSS) beállítás, amely korlátozza a TCP-szegmens, elkerülheti a töredezettség TCP csomagok méretét. Operációs rendszerek által általában használt képlet MSS beállításához:
+A maximális TCP-szegmens mérete (MSS) olyan beállítás, amely korlátozza a TCP-szegmensek méretét, így elkerülhető a TCP-csomagok töredezettsége. Az operációs rendszerek általában ezt a képletet használják a MSS beállítására:
 
 `MSS = MTU - (IP header size + TCP header size)`
 
-Az IP-fejrész, és a TCP-fejléc: 20 bájt vagy 40 bájtok száma összesen. Ezért 1500 MTU-felületet kap egy 1,460 az MSS. Azonban az MSS konfigurálható.
+Az IP-fejléc és a TCP-fejléc 20 bájt, vagy 40 bájt összesen. Így az 1 500-es MTU-kapcsolattal rendelkező interfészek 1 460-as MSS-vel rendelkeznek. A MSS azonban konfigurálható.
 
-Ez a beállítás van beleegyezett a TCP háromutas kézfogás a Ha a TCP-munkamenet be van állítva, egy forrás és cél között. Mindkét fél küldeni egy MSS értéket, és a TCP-kapcsolatot a két alacsonyabb szolgál.
+Ez a beállítás a TCP háromutas kézfogásban van elfogadva, ha egy TCP-munkamenet a forrás és a cél között van beállítva. Mindkét fél egy MSS-értéket küld, a kettő közül a kettőt pedig a TCP-kapcsolatban.
 
-Ne feledje, hogy a forrás- és a MTU nem az egyetlen olyan tényezőt, amelyek az MSS érték meghatározásához. Közbenső hálózati eszközök, például a VPN-átjárók, beleértve az Azure VPN Gateway, függetlenül a forrás- és optimális hálózati teljesítmény biztosítása érdekében MTU módosíthatja.
+Ne feledje, hogy a forrás és a cél MTU nem az egyetlen olyan tényező, amely meghatározza a MSS értékét. Az adatközvetítő hálózati eszközök, például a VPN-átjárók, beleértve az Azure VPN Gateway is, a forrástól és a célhelytől függetlenül módosíthatják az MTU-t, így biztosítva az optimális hálózati teljesítményt.
 
-#### <a name="path-mtu-discovery"></a>PMTU
+#### <a name="path-mtu-discovery"></a>Elérési út MTU-felderítése
 
-MSS egyeztetve van, de nem jelezheti, a tényleges MSS használható. Ennek oka az, előfordulhat, hogy a forrás- és a cél közötti elérési úton egyéb hálózati eszközöket, mint a forrás- és egy kisebb MTU-érték. Ebben az esetben az eszköz, amelynek MTU értéke kisebb, mint a csomag eldobja a csomagot. Az eszközt vissza egy ICMP darabolás szükséges (a típus 3, a kód 4) üzenet, amely tartalmazza a MTU küld. Az ICMP-üzenet lehetővé teszi, hogy a forrás gazdagépen az elérési út MTU megfelelően csökkentése érdekében. Az elérési út MTU-felderítés (PMTUD) nevezzük.
+A rendszer egyezteti a MSS-t, de előfordulhat, hogy nem jelzi a ténylegesen használható MSS-t. Ennek az az oka, hogy a forrás és a cél közötti útvonalon lévő más hálózati eszközöknél a forrás és a cél alacsonyabb MTU-értékkel rendelkezhet. Ebben az esetben az az eszköz, amelynek MTU-értéke kisebb, mint a csomag, el fogja dobni a csomagot. Az eszköz visszaküldi a szükséges ICMP-töredezettséget (3. kód) üzenet, amely az MTU-t tartalmazza. Ez az ICMP-üzenet lehetővé teszi, hogy a forrás gazdagépe megfelelően csökkentse a Path MTU-t. A folyamatot nevezzük Path MTU-felderítésnek (PMTUD).
 
-A PMTUD folyamat nem hatékony, és hatással van a hálózati teljesítmény. Csomagok, amelyek meghaladják a hálózati elérési út MTU elküldése, a csomagok kell az alacsonyabb MSS lesz küldve. Ha a küldő nem az ICMP darabolás szükséges üzenetet kapja, talán az elérési utat a hálózati tűzfal miatt (más néven egy *PMTUD blackhole*), a küldő nem tud az MSS csökkentheti, és folyamatosan szükséges ismét a csomagot. Ezért nem javasoljuk, hogy növelje az Azure virtuális gép MTU.
+A PMTUD folyamat nem hatékony, és hatással van a hálózati teljesítményre. Ha a csomagok küldése meghaladja a hálózati elérési út MTU-értékét, a csomagokat újra el kell küldeni egy alacsonyabb MSS-vel. Ha a küldő nem kapja meg az ICMP-töredezettségre vonatkozó szükséges üzenetet, valószínűleg azért, mert az elérési úton lévő hálózati tűzfal miatt (általában *PMTUD-Blackhole*nevezik), a küldőnek nem tudom, hogy csökkentenie kell a MSS-t, és folyamatosan újra kell küldenie a csomagot. Ezért nem javasoljuk az Azure virtuális gép MTU-értékének növelését.
 
-#### <a name="vpn-and-mtu"></a>VPN- és a maximális átviteli egység
+#### <a name="vpn-and-mtu"></a>VPN és MTU
 
-Hajtsa végre a beágyazás (például IPsec virtuális magánhálózatok) virtuális gépeket használ, van-e további megfontolásokat csomagméretet és MTU kapcsolatban. VPN-eket további fejlécek hozzáadása csomagok, ami növeli a csomag mérete és a egy kisebb MSS igényel.
+Ha olyan virtuális gépeket használ, amelyek beágyazást végeznek (például IPsec VPN-eket), a csomagok méretével és az MTU-val kapcsolatos további szempontokat is figyelembe kell venni A VPN-EK további fejléceket adhatnak hozzá a csomagokhoz, ami növeli a csomagok méretét, és kisebb MSS-t igényel.
 
-Az Azure-hoz azt javasoljuk, hogy beállította a TCP MSS korlátozását 1350 bájtra, és alagút 1400 MTU felületet. További információkért lásd: a [VPN eszközök és IPSec/IKE-Paraméterek lap](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpn-devices).
+Az Azure esetében javasoljuk, hogy állítsa be a TCP MSS 1 350 bájt és a bújtatási interfész MTU értékét 1 400-re. További információ: [VPN-eszközök és IPSec/IKE-paraméterek lap](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpn-devices).
 
-### <a name="latency-round-trip-time-and-tcp-window-scaling"></a>Késés, a üzenetváltási idő és a TCP-ablak méretezése
+### <a name="latency-round-trip-time-and-tcp-window-scaling"></a>Késés, oda-és visszaút ideje, valamint a TCP-ablak skálázása
 
-#### <a name="latency-and-round-trip-time"></a>Valós idejű adatelérést és üzenetváltási idő
+#### <a name="latency-and-round-trip-time"></a>Késés és oda-és visszaút ideje
 
-Hálózati késés szabályozzák a fénysebességgel fiber száloptikás hálózaton keresztül. Az üzenetváltási időt (RTT) két hálózati eszközök közötti hálózati átviteli sebessége a TCP is szabályozzák.
+A hálózati késést a száloptikai hálózatban fellépő fény sebessége szabályozza. A TCP hálózati átviteli sebességét is hatékonyan szabályozza a két hálózati eszköz közötti oda-és visszaúti idő (RTT).
 
 | | | | |
 |-|-|-|-|
-|**Route**|**távolságskála**|**Egyirányú idő**|**RTT**|
-|New York, San Francisco|4,148 km-re|21 ms|42 ms|
-|New York-i London|5,585 km-re|28 ms|56 ms|
-|Sydney New York-i|15,993 km-re|80 ms|160 ms|
+|**Route**|**Távolság**|**Egyirányú idő**|**RTT**|
+|New York – San Francisco|4 148 km|21 MS|42 MS|
+|New York – London|5 585 km|28 MS|56 ms|
+|New York-i Sydney|15 993 km|80 MS|160 MS|
 
-Ez a táblázat a lineáris két hely közötti távolság. A hálózatok, a távolság általában hosszabb, mint a lineáris távolság. A következő minimális RTT kiszámításához a fénysebességgel szabályozzák egy egyszerű képletet:
+Ez a táblázat a két helyszín közötti egyenes távolságot mutatja. A hálózatokban a távolság általában hosszabb, mint az egyenes vonal távolsága. Itt egy egyszerű képlettel számíthatja ki a minimális RTT, amelyet a fény sebessége szabályoz:
 
 `minimum RTT = 2 * (Distance in kilometers / Speed of propagation)`
 
-200-as propagálás sebességétől is használhat. Ez az a távolság, és az, hogy világos fogadja az 1 ezredmásodpercre.
+A propagálás sebességét 200-re használhatja. Ez a távolság (méterben), amely a fény 1 ezredmásodpercen át halad.
 
-Vegyük New York, San Francisco példaként. Lineáris távolság 4,148 km-re. Csatlakoztatás ezt az értéket, a egyenlőségi, lekérjük a következőket:
+Vegyük példaként a New York-i San Francisco-ot. Az egyenes vonal hossza 4 148 km. Ha ezt az értéket az egyenletbe csatlakoztatja, a következőkhöz juthat:
 
 `Minimum RTT = 2 * (4,148 / 200)`
 
-A egyenlőségi kimenete ezredmásodpercben.
+Az egyenlet kimenete ezredmásodpercben van.
 
-Ha azt szeretné, hogy a legjobb hálózati teljesítmény, jelölje be a előállítja a legrövidebb közöttük destinations, logikai lehetőség. A virtuális hálózati elérési útját forgalom optimalizálása, és csökkentheti a késéseket is tervezzen. További információkért lásd a "Hálózati kialakításával kapcsolatos szempontok" című szakaszát.
+Ha a legjobb hálózati teljesítményt szeretné kipróbálni, a logikai lehetőség a legrövidebb távolságú célhelyek kiválasztása. A virtuális hálózatot úgy is meg kell terveznie, hogy optimalizálja a forgalom elérési útját, és csökkentse a késést. További információt a jelen cikk "hálózati kialakítással kapcsolatos szempontok" című szakaszában talál.
 
-#### <a name="latency-and-round-trip-time-effects-on-tcp"></a>Valós idejű adatelérést és üzenetváltási idő hatások TCP
+#### <a name="latency-and-round-trip-time-effects-on-tcp"></a>Késés és a kerekítés időkorlátja a TCP protokollon
 
-Üzenetváltási idő maximális TCP átviteli közvetlen hatással van. A TCP protokoll *ablakméret* a maximális mennyisége, amelyeket el küldhet a TCP-kapcsolaton keresztül előtt a küldő kell úgy, hogy a fogadó nyugtázási fogadjon forgalmat. Ha a TCP MSS 1,460 értékre van állítva, és a TCP-ablakméret 65 535 közötti értékre van állítva, a küldő küldhet 45 csomagok előtt nyugtázási fogadjon a fogadó rendelkezik. Ha a küldő nyugtázási nem kap, azt fogja timeouts az adatokat. Itt látható a képlet:
+Az oda-és visszautazási idő közvetlen hatással van a maximális TCP-átviteli sebességre. A TCP protokollban az *ablakméret* a TCP-kapcsolaton keresztül elküldhető forgalom maximális mennyisége, mielőtt a küldőnek nyugtát kell kapnia a fogadótól. Ha a TCP MSS 1 460 értékre van beállítva, és a TCP-ablakméret értéke 65 535, a küldő 45-csomagokat küldhet, mielőtt nyugtát kapjon a fogadótól. Ha a küldő nem kap nyugtát, akkor a rendszer visszaküldi az adatküldési kéréseket. A képlet a következő:
 
 `TCP window size / TCP MSS = packets sent`
 
-Ebben a példában 65 535 / 1,460 kerekíti a rendszer legfeljebb 45.
+Ebben a példában a 65 535/1 460 a 45-ra van kerekítve.
 
-A "Várakozás az nyugtázási", olyan mechanizmus biztosítása érdekében az adatokról, megbízható kézbesítést állapota mi okozza a TCP teljesítményt érintő RTT. Minél hosszabb a küldő megvárja, amíg nyugtázás, annál több adatot küldenek, várjon van szüksége.
+Ez a "visszaigazolás visszaigazolása" állapotra, amely az adatok megbízható kézbesítésének biztosítására szolgál, mi okozza a RTT a TCP átviteli sebességét. Minél hosszabb a küldő vár nyugtára, annál hosszabb ideig kell várnia a további adatok küldése előtt.
 
-Íme egy TCP-kapcsolat a maximális átviteli sebesség kiszámítása a képletet:
+Az alábbi képlettel egy TCP-kapcsolatok maximális átviteli sebességét számítjuk ki:
 
 `Window size / (RTT latency in milliseconds / 1,000) = maximum bytes/second`
 
-Ez a táblázat bemutatja a maximális MB / s sebességet egyetlen TCP-kapcsolat. (Az olvashatóság érdekében (MB) szolgál a mértékegység.)
+Ez a táblázat az egyetlen TCP-kapcsolatok maximális megabájt/másodperces átviteli sebességét jeleníti meg. (Az olvashatóság érdekében a mértékegységhez megabájtot kell használni.)
 
 | | | | |
 |-|-|-|-|
-|**TCP-ablakméret (bájt)**|**Körbejárási késés (ms)**|**Maximális MB/s átviteli sebesség**|**Maximális megabit/másodperc átviteli sebesség**|
-|65,535|1|65.54|524.29|
-|65,535|30|2.18|17.48|
-|65,535|60|1.09|8.74|
-|65,535|90|.73|5.83|
+|**TCP-ablak mérete (bájt)**|**RTT késés (MS)**|**Maximális megabájt/másodperc átviteli sebesség**|**Maximális megabit/másodperc átviteli sebesség**|
+|65,535|1|65,54|524,29|
+|65,535|30|2,18|17,48|
+|65,535|60|1,09|8,74|
+|65,535|90|.73|5,83|
 |65,535|120|.55|4.37|
 
-A csomagok elvesznek, ha a maximális átviteli sebesség TCP-kapcsolat csökken közben a küldő újraküldi a már küldött adatokat.
+Ha a csomagok elvesznek, akkor a TCP-kapcsolat maximális átviteli sebessége csökken, amíg a küldő újraküldi a már elküldött adatokat.
 
-#### <a name="tcp-window-scaling"></a>TCP-ablak méretezése
+#### <a name="tcp-window-scaling"></a>TCP-ablak skálázása
 
-TCP-ablak méretezés olyan módszer, amely dinamikusan növeli a TCP-ablakméret további adatok nyugtázást ennyi küldésének engedélyezéséhez. Az előző példában 45 csomagok lenne küldhető előtt nyugtázást volt szükség. Ha növeli a csomagok, amelyeket el küldhet előtt nyugtázást szükséges számát, a küldő vár nyugtázása, ami növeli a TCP maximális átviteli sebesség hányszor van csökkentése.
+A TCP-ablak skálázása olyan technika, amely dinamikusan növeli a TCP-ablakméret méretét, így több adatátvitel is engedélyezhető, mielőtt nyugtázás szükséges. Az előző példában a rendszer a 45 csomagokat küldi el, mielőtt nyugtázás lenne szükséges. Ha növeli a nyugták megkezdése előtt elküldhető csomagok számát, akkor csökkenti a küldőnek a nyugtára várakozási idejének számát, ami növeli a maximális TCP-átviteli sebességet.
 
-A következő táblázat bemutatja ezen kapcsolatok:
+Ez a táblázat a következő kapcsolatokat szemlélteti:
 
 | | | | |
 |-|-|-|-|
-|**TCP-ablakméret (bájt)**|**Körbejárási késés (ms)**|**Maximális MB/s átviteli sebesség**|**Maximális megabit/másodperc átviteli sebesség**|
-|65,535|30|2.18|17.48|
-|131,070|30|4.37|34.95|
-|262,140|30|8.74|69.91|
-|524,280|30|17.48|139.81|
+|**TCP-ablak mérete (bájt)**|**RTT késés (MS)**|**Maximális megabájt/másodperc átviteli sebesség**|**Maximális megabit/másodperc átviteli sebesség**|
+|65,535|30|2,18|17,48|
+|131 070|30|4.37|34,95|
+|262 140|30|8,74|69,91|
+|524 280|30|17,48|139,81|
 
-De a TCP fejléc TCP-ablakméret értéke csak 2 bájt hosszúságú, ami azt jelenti, hogy a fogadó ablakban maximális értéke 65 535. A maximális méretének növeléséhez TCP ablak nagyságrendi tényezőt jelent meg.
+A TCP-ablakméret TCP-fejlécének értéke azonban csak 2 bájt hosszúságú, ami azt jelenti, hogy a fogadási ablak maximális értéke 65 535. A maximális ablakméret növeléséhez egy TCP-ablak skálázási tényezője lett bevezetve.
 
-A méretezési tényező is egy beállítást, amely az operációs rendszer lehet konfigurálni. Itt látható a képlet a TCP-ablakméret kiszámításához méret használatával:
+A skálázási tényező egy operációs rendszeren konfigurálható beállítás is. A TCP-ablakméret méretének kiszámításához használja a következő képletet:
 
 `TCP window size = TCP window size in bytes \* (2^scale factor)`
 
-3\. és a egy 65 535 ablak méretének kiszámítása ablak méretezési tényező a következő:
+Itt látható a 3. ablak méretezési tényezője és a 65 535-os ablakméret:
 
 `65,535 \* (2^3) = 262,140 bytes`
 
-14 nagyságrendi tényezőt eredményez a TCP-ablakméret 14 (az engedélyezett maximális eltolás). A TCP-ablakméret 1,073,725,440 bájtok (8,5 gigabitig) lesz.
+A 14-ös méretezési tényező a TCP-ablakméret 14 (a maximálisan engedélyezett eltolás) értékét eredményezi. A TCP-ablak mérete 1 073 725 440 bájt (8,5 Gigabit) lesz.
 
-#### <a name="support-for-tcp-window-scaling"></a>TCP-ablak méretezés támogatása
+#### <a name="support-for-tcp-window-scaling"></a>A TCP-ablak skálázásának támogatása
 
-Windows a különböző kapcsolattípusok különböző méretezési tényező állíthatja be. (A kapcsolatok osztályok között datacenter, internet stb.) Használja a `Get-NetTCPConnection` megtekintéséhez a kapcsolattípus skálázás ablak PowerShell-parancsot:
+A Windows különböző skálázási tényezőket állíthat be a különböző típusú kapcsolatok esetében. (A kapcsolatok osztályai közé tartozik az adatközpont, az internet stb.) A `Get-NetTCPConnection` PowerShell-parancs használatával megtekintheti az ablak skálázási kapcsolattípus:
 
 ```powershell
 Get-NetTCPConnection
 ```
 
-Használhatja a `Get-NetTCPSetting` tekintse meg az értékeket minden egyes osztály PowerShell-parancsot:
+A `Get-NetTCPSetting` PowerShell-parancs használatával megtekintheti az egyes osztályok értékeit:
 
 ```powershell
 Get-NetTCPSetting
 ```
 
-Beállíthatja a kezdeti TCP-ablakméret és TCP méretezési tényező a Windows használatával a `Set-NetTCPSetting` PowerShell-parancsot. További információkért lásd: [Set-NetTCPSetting](https://docs.microsoft.com/powershell/module/nettcpip/set-nettcpsetting?view=win10-ps).
+A kezdeti TCP-ablakméret és a TCP-méretezési tényező a Windowsban a `Set-NetTCPSetting` PowerShell-parancs használatával állítható be. További információ: [set-NetTCPSetting](https://docs.microsoft.com/powershell/module/nettcpip/set-nettcpsetting?view=win10-ps).
 
 ```powershell
 Set-NetTCPSetting
 ```
 
-Ezek a hatékony TCP beállításait `AutoTuningLevel`:
+Ezek a következő érvényes TCP-beállítások `AutoTuningLevel`:
 
 | | | | |
 |-|-|-|-|
-|**AutoTuningLevel**|**Méretezési faktor**|**Skálázási szorzót**|**A képlet<br/>maximális méretének kiszámítása**|
-|Letiltva|None|None|Ablakméret|
-|Korlátozott|4|2^4|Ablakméret * (2 ^ 4)|
-|Erősen korlátozott|2|2^2|Ablakméret * (2 ^ 2)|
-|Normál|8|2^8|Ablakméret * (2 ^ 8)|
-|Kísérleti|14|2^14|Ablakméret * (2 ^ 14)|
+|**AutoTuningLevel**|**Skálázási tényező**|**Skálázási szorzó**|**A maximális<br/>ablakméret kiszámításához használandó képlet**|
+|Letiltva|Nincsenek|None|Ablak mérete|
+|Korlátozott|4|2^4|Ablak mérete * (2 ^ 4)|
+|Szigorúan korlátozott|2|2^2|Ablak mérete * (2 ^ 2)|
+|Normál|8|2^8|Ablak mérete * (2 ^ 8)|
+|Kísérleti|14|2^14|Ablak mérete * (2 ^ 14)|
 
-Ezek a beállítások a legnagyobb valószínűséggel TCP teljesítményét befolyásolja, de ne feledje, hogy az interneten, az Azure-ban, a vezérlőn kívüli sok más tényező is befolyásolhatja a TCP teljesítményét.
+Ezek a beállítások a legvalószínűbb hatással vannak a TCP-teljesítményre, de ne feledje, hogy az Azure-on kívül számos más tényező is befolyásolhatja a TCP-teljesítményt.
 
-#### <a name="increase-mtu-size"></a>Maximális átviteli egység méretének növelése
+#### <a name="increase-mtu-size"></a>MTU méretének növeléséhez
 
-Mivel egy nagyobb MTU nagyobb MSS azt jelenti, hogy vezetőnév e MTU növelése növelheti a TCP teljesítményét. Valószínűleg nem. Vannak, és a csomag mérete túl csak a TCP-forgalom hátrányai. Ahogy arra már korábban, a TCP-átviteli teljesítményét befolyásoló legfontosabb tényezők a TCP-ablakméret csomagvesztés és RTT.
+Mivel a nagyobb MTU-érték nagyobb MSS-t jelent, lehet, hogy az MTU növelése növelheti a TCP-teljesítményt. Valószínűleg nem. A csomagok méretének előnyeit és hátrányait csak a TCP-forgalomon túl lehet. A korábban leírtaknak megfelelően a TCP-teljesítményt befolyásoló legfontosabb tényezők a TCP-ablakok mérete, a csomagok elvesztése és a RTT.
 
 > [!IMPORTANT]
-> Nem ajánlott, hogy az Azure-ügyfelek módosíthatja az alapértelmezett MTU-érték virtuális gépeken.
+> Nem javasoljuk, hogy az Azure-ügyfelek megváltoztassák az alapértelmezett MTU-értéket a virtuális gépeken.
 >
 >
 
-### <a name="accelerated-networking-and-receive-side-scaling"></a>A gyorsított hálózatkezelés és a fogadóoldali skálázás
+### <a name="accelerated-networking-and-receive-side-scaling"></a>Gyorsított Hálózatkezelés és fogadó oldali skálázás
 
 #### <a name="accelerated-networking"></a>Gyorsított hálózatkezelés
 
-Virtuális gép hálózati funkciók régebben lett Processzort, a Vendég virtuális Gépen és a hipervizorgazda is. Minden csomagot, amely a gazdagépen keresztül továbbítását a szoftver dolgozza fel a gazdagép CPU-használat, beleértve az összes virtuális hálózati beágyazás és kibontás. Így további áramlik a forgalom, amely a gazdagép, annál magasabb CPU betölteni. És ha a gazdagép Processzorának elfoglalva más műveletekkel, amely is hatással lesz hálózati átviteli sebességgel és késéssel. Az Azure gyorsított hálózatkezeléssel problémát orvosolja.
+A virtuálisgép-hálózat funkciói a vendég virtuális gépen és a hypervisoron/gazdagépen is hagyományosan nagy CPU-Igényűek. Minden olyan csomagot, amely a gazdagépen keresztül halad át, a gazdagép CPU-ját dolgozza fel, beleértve az összes virtuális hálózat beágyazását és leállítását. Tehát minél több forgalmat halad át a gazdagépen, annál nagyobb a CPU-terhelés. Ha pedig a gazdagép CPU-je más műveletekkel van elfoglalva, az hatással lesz a hálózati teljesítményre és a késésre is. Az Azure gyorsított hálózatkezeléssel kezeli ezt a problémát.
 
-Gyorsított hálózatkezelés a belső fejlesztésű programozható hardver az Azure és technológiákkal, mint az SR-IOV-n keresztül konzisztens ultralow hálózati késést biztosít. Gyorsított hálózatkezelés nagy része az Azure szoftveralapú hálózati verem ki a processzorok és az FPGA-alapú SmartNICs helyezi át. A módosítás lehetővé teszi a végfelhasználói alkalmazások visszaigényléséhez számítási ciklusok, ami kevesebb terhelést helyezi a virtuális gépen, a késés jitter és inkonzisztenciát csökkentésével. Más szóval teljesítmény sokkal kiszámíthatóbb lehet.
+A gyorsított hálózatkezelés konzisztens ultralow hálózati késést biztosít az Azure-ban és az olyan technológiákon keresztül, mint az SR-IOV. A gyorsított hálózatkezelés nagy mértékben áthelyezi az Azure szoftver által meghatározott hálózatkezelési veremet a processzorokból és a FPGA-alapú SmartNICs. Ez a módosítás lehetővé teszi a végfelhasználói alkalmazások számára a számítási ciklusok visszaigénylését, ami kevesebb terhelést eredményez a virtuális gépen, csökkentve a vibrálás és az inkonzisztencia késleltetését. Más szóval a teljesítmény több determinisztikus is lehet.
 
-Gyorsított hálózatkezelés javítja a teljesítményt azáltal, hogy a Vendég virtuális Gépen kerülni a gazdagépre, és létrehozza a közvetlenül a gazdagép SmartNIC egy datapath. Az alábbiakban néhány gyorsított hálózatkezelés előnyei:
+A gyorsított hálózatkezelés javítja a teljesítményt azáltal, hogy lehetővé teszi a vendég virtuális gép számára, hogy megkerüljék a gazdagépet, és közvetlenül egy gazdagép SmartNIC hozza létre a DataPath. A gyorsított hálózatkezelés előnyei a következők:
 
-- **Rövidebb válaszidőt / magasabb szintű csomag / másodperc (pps)** : A virtuális kapcsoló eltávolítása a datapath kiküszöböli a csomagokat használhat fel a gazdagép a házirend-feldolgozási idő, és növeli a dolgozhatók fel a virtuális gép csomagok száma.
+- **Kisebb késés/nagyobb csomagok másodpercenként (PPS)** : Ha eltávolítja a virtuális kapcsolót a DataPath, azzal kiküszöböli a gazdagépen a házirendek feldolgozására fordított időt, és növeli a virtuális gépen feldolgozható csomagok számát.
 
-- **Alacsonyabb jitter**: Virtuáliskapcsoló-feldolgozó a szabályzatot, amely a alkalmazni mennyiségét és a munkaterhelés, a CPU, amely a feldolgozási függ. A házirend betartatása hardverre tehermentesítést eltávolítja az adott változékonyságát azáltal, hogy a csomagok közvetlenül a virtuális Gépet, mivel a gazdagép Virtuálisgép kommunikáció és az összes szoftver megszakítások és a környezet kapcsolók a.
+- **Csökkentett Jitter**: A virtuális kapcsolók feldolgozása az alkalmazandó házirend mennyiségétől és a feldolgozást végző processzor munkaterheléstől függ. A szabályzat kényszerítésének a hardverre való kiszervezése eltávolítja a változékonyságot a csomagok közvetlenül a virtuális géphez való továbbításával, a gazdagépek közötti kommunikáció és a szoftveres megszakítások és a környezeti kapcsolók eltávolításával.
 
-- **Csökkent a CPU-kihasználtság**: A virtuális kapcsoló a gazdagép megkerülésével kevesebb hálózati forgalom feldolgozása tekintetében CPU-kihasználtság vezet.
+- **Csökkent CPU-kihasználtság**: A gazdagépen lévő virtuális kapcsoló megkerülése kevesebb CPU-kihasználtságot eredményez a hálózati forgalom feldolgozásakor.
 
-Gyorsított hálózatkezelés használata, meg kell explicit módon engedélyezi azt az egyes megfelelő virtuális Gépre. Lásd: [hozzon létre egy Linux rendszerű virtuális gép gyorsított hálózatkezelésű](https://docs.microsoft.com/azure/virtual-network/create-vm-accelerated-networking-cli) útmutatást.
+A gyorsított hálózatkezelés használatához explicit módon engedélyeznie kell azt az egyes alkalmazható virtuális gépeken. Útmutatásért lásd: [Linux rendszerű virtuális gép létrehozása gyorsított hálózatkezeléssel](https://docs.microsoft.com/azure/virtual-network/create-vm-accelerated-networking-cli) .
 
-#### <a name="receive-side-scaling"></a>Fogadóoldali skálázás
+#### <a name="receive-side-scaling"></a>Fogadó oldali skálázás
 
-Méretezés (RSS), amely hatékonyabban osztja el a hálózati forgalom fogadását osztja meg a hálózati illesztőprogram technológia kap feldolgozása több processzor között olyan többprocesszoros rendszerek oldalán kaphat. Egyszerűen fogalmazva az RSS lehetővé teszi a kapott forgalmat több feldolgozni, mert az összes rendelkezésre álló processzorok egy helyett használja a rendszer. További technikai az RSS, lásd: [fogadóoldali skálázás bemutatása](https://docs.microsoft.com/windows-hardware/drivers/network/introduction-to-receive-side-scaling).
+A fogadó oldali skálázás (RSS) egy olyan hálózati illesztőprogram-technológia, amely hatékonyabban osztja el a hálózati adatforgalmat azáltal, hogy több processzoron több CPU-ra terjeszti a fogadási feldolgozást többprocesszoros rendszerekben. Egyszerű feltételek mellett az RSS lehetővé teszi, hogy a rendszer több fogadott forgalmat feldolgozzon, mivel az összes rendelkezésre álló CPU-t csak egy helyett használja. Az RSS további technikai megvitatására lásd: [Bevezetés a fogadási oldali skálázásba](https://docs.microsoft.com/windows-hardware/drivers/network/introduction-to-receive-side-scaling).
 
-A legjobb teljesítmény akkor kaphat, ha a virtuális gépen engedélyezve van a gyorsított hálózatkezelés, akkor engedélyeznie kell az RSS. Az RSS is lehetővé teszi a gyorsított hálózatkezelést előnyei nem használó virtuális gépeken. Annak megállapítása, hogy engedélyezve van-e az RSS- és engedélyezését a áttekintését lásd: [hálózati átviteli sebesség optimalizálása az Azure virtual machines](https://aka.ms/FastVM).
+A legjobb teljesítmény érdekében, ha a gyorsított hálózatkezelés engedélyezve van egy virtuális gépen, engedélyeznie kell az RSS-t. Az RSS a gyorsított hálózatkezelést nem használó virtuális gépeken is biztosít előnyöket. Tekintse át, hogyan állapíthatja meg, hogy az RSS engedélyezve van-e, és hogyan engedélyezheti azt: az Azure-beli [virtuális gépek hálózati átviteli sebességének optimalizálása](https://aka.ms/FastVM).
 
-### <a name="tcp-timewait-and-timewait-assassination"></a>TCP TIME_WAIT és TIME_WAIT assassination
+### <a name="tcp-timewait-and-timewait-assassination"></a>TCP-TIME_WAIT és TIME_WAIT-merénylet
 
-TCP TIME_WAIT egy másik gyakori beállítás, amely hatással van a hálózati és az alkalmazások teljesítményét. A foglalt virtuális gépeken, amelyek nyissa meg és zár be számos, az ügyfelek vagy kiszolgálók (IP:Source forrásport és célport IP:Destination), TCP a normál működés során egy adott szoftvercsatorna is megtörténhet TIME_WAIT állapotú hosszú ideje. A TIME_WAIT állapot célja, hogy mielőtt bezárná, kézbesítendő szoftvercsatorna további adatok. Így TCP/IP-vermek általában a újbóli használatának tiltása a szoftvercsatorna TCP külön csomagot az ügyfél csendes elvetésével.
+A TCP-TIME_WAIT egy másik gyakori beállítás, amely hatással van a hálózatra és az alkalmazások teljesítményére. A sok szoftvercsatorna megnyitásakor és bezárásakor (például ügyfélként vagy kiszolgálóként (forrás IP-cím: forrásoldali port + cél IP-cím: célport) a TCP normál működése során egy adott szoftvercsatorna hosszú ideig TIME_WAIT állapotba kerül. A TIME_WAIT-állapot azt jelenti, hogy minden további, az adott szoftvercsatorna felé irányuló adattovábbítást engedélyezni kell a zárolás előtt. Így a TCP/IP-stackek általában megakadályozzák a szoftvercsatornák újrafelhasználását az ügyfél TCP SYN-csomagjának csendes eldobásával.
 
-Mennyi ideig TIME_WAIT van egy szoftvercsatorna nem konfigurálható. Ez terjedhet 30 másodperces 240 másodpercre. Sockets véges erőforrás, és a egy adott időpontban használható szoftvercsatornák számát konfigurálható. (Az elérhető szoftvercsatornák számát az általában körülbelül 30000.) Ha az elérhető szoftvercsatornák felhasználják, vagy ha az ügyfelek és kiszolgálók eltérő TIME_WAIT beállításait, és egy virtuális Gépet megpróbálja újból felhasználhatja a szoftvercsatorna TIME_WAIT állapotú, új kapcsolatok TCP külön csomagot csendes módban a rendszer elveti, sikertelen lesz.
+Az a mennyiség, ameddig a szoftvercsatorna TIME_WAIT van, konfigurálható. 30 másodperc és 240 másodperc között lehet. A szoftvercsatornák véges erőforrás, és az adott időpontban használható szoftvercsatornák száma konfigurálható. (A rendelkezésre álló szoftvercsatornák száma általában körülbelül 30 000.) Ha a rendelkezésre álló szoftvercsatornák használatban vannak, vagy ha az ügyfelek és a kiszolgálók nem egyeznek a TIME_WAIT beállításaival, és egy virtuális gép egy TIME_WAIT-állapotban próbálkozik a szoftvercsatorna újrafelhasználásával, akkor az új kapcsolatok meghiúsulnak, mivel a TCP SYN csomagok csendesen el lesznek dobva.
 
-Kimenő szoftvercsatorna-porttartomány értéke az operációs rendszer a TCP/IP-verem belül általában konfigurálható. Ugyanezt a TCP TIME_WAIT beállításait és a szoftvercsatorna újrafelhasználását. Ezek a számok módosítása esetleg javíthatja a skálázhatóságot. De a helyzettől függően ezek a változások együttműködési problémák okozhatják. Legyen óvatos, ha megváltoztatja ezeket az értékeket.
+A kimenő szoftvercsatornák porttartomány értéke általában az operációs rendszer TCP/IP-veremében konfigurálható. Ugyanez a helyzet a TCP-TIME_WAIT beállításai és a szoftvercsatorna újrafelhasználása esetén is igaz. A számok módosítása javíthatja a méretezhetőséget. Azonban a helyzettől függően ezek a változások együttműködési problémákat okozhatnak. Ha megváltoztatja ezeket az értékeket, körültekintően kell megjelennie.
 
-TIME_WAIT assassination használatával oldja meg a méretezési korlátozás. TIME_WAIT assassination lehetővé teszi, hogy szeretné újrafelhasználni bizonyos helyzetekben, például ha az új kapcsolat az IP-csomag sorszáma le az előző kapcsolat a legutóbbi csomag feladatütemezési száma meghaladja a szoftvercsatorna. Ebben az esetben az operációs rendszer lehetővé teszi az új kapcsolatot kíván létesíteni (akkor fogadja el az új SZIN ACK) és kényszerítése zárjon be az előző kapcsolat, amely TIME_WAIT állapotú volt. Ez a képesség az Azure-beli Windows virtuális gépeken támogatott. Támogatás a többi virtuális gép kapcsolatos további információkért ellenőrizze az operációs rendszer szállítójához.
+Ezt a skálázási korlátozást a TIME_WAIT-merénylettel kezelheti. A TIME_WAIT-merénylet lehetővé teszi, hogy a szoftvercsatorna bizonyos helyzetekben újra felhasználható legyen, például ha az új kapcsolat IP-csomagjaiban található sorozatszám meghaladja az előző kapcsolat utolsó csomagjának sorszámát. Ebben az esetben az operációs rendszer lehetővé teszi az új kapcsolatok létrehozását (az új SYN/ACK-t fogadja el), és kényszeríti az előző, TIME_WAIT állapotban lévő kapcsolódás bezárását. Ez a képesség az Azure-beli Windows rendszerű virtuális gépeken támogatott. Ha további információt szeretne a más virtuális gépek támogatásáról, tekintse meg az operációs rendszer gyártójával foglalkozó témakört.
 
-TCP TIME_WAIT beállítások és Forrásporttartomány konfigurálásával kapcsolatos további információkért lásd: [beállításokat, amelyeket a hálózati teljesítmény javításához módosíthatók](https://docs.microsoft.com/biztalk/technical-guides/settings-that-can-be-modified-to-improve-network-performance).
+A TCP-TIME_WAIT beállításainak és a forrásport tartományának konfigurálásával kapcsolatos további tudnivalókért tekintse meg [a hálózati teljesítmény javítása érdekében módosítható beállítások](https://docs.microsoft.com/biztalk/technical-guides/settings-that-can-be-modified-to-improve-network-performance)című témakört.
 
-## <a name="virtual-network-factors-that-can-affect-performance"></a>Virtuális hálózat olyan tényezőt, amelyek hatással lehetnek a teljesítmény
+## <a name="virtual-network-factors-that-can-affect-performance"></a>A teljesítményt befolyásoló virtuális hálózati tényezők
 
-### <a name="vm-maximum-outbound-throughput"></a>Virtuális gép maximális kimenő átviteli sebesség
+### <a name="vm-maximum-outbound-throughput"></a>Virtuális gép maximális kimenő átviteli sebessége
 
-Az Azure biztosít a különböző Virtuálisgép-méretek és típusok, minden egyes teljesítménybeli különböző vegyesen. Ezek a képességek egyik hálózati átviteli sebesség (vagy a sávszélesség), amely megabit / másodperc (Mbps) mérjük. Virtuális gépek megosztott hardveren található, mert a hálózati kapacitás kell viszonylag megoszthatók a virtuális gépek ugyanazt a hardvert használja. Nagyobb virtuális gépek nagyobb sávszélesség-nál kisebb méretű virtuális gépek vannak lefoglalva.
+Az Azure számos virtuálisgép-méretet és-típust biztosít, amelyek mindegyike különböző teljesítmény-képességekkel rendelkezik. Ezen képességek egyike a hálózati átviteli sebesség (vagy a sávszélesség), amelyet a megabit/másodpercben (Mbps) mérnek. Mivel a virtuális gépek megosztott hardveren futnak, a hálózati kapacitást a virtuális gépek között egyenlően kell megosztani ugyanazon hardver használatával. A nagyobb méretű virtuális gépek nagyobb sávszélességet foglalnak le, mint a kisebb virtuális gépek.
 
-A hálózati sávszélességet, minden virtuális gép számára lefoglalt kimenő forgalom (kimenő) forgalmat a virtuális gépről a forgalmi díjas. Minden hálózati forgalmat a virtuális gép elhagyása után kell fizetnie a lefoglalt korlátot, függetlenül a cél felé. Ha például egy virtuális gépet egy 1000 MB/s-korlát, akkor ezt a korlátot attól függetlenül érvényes, a kimenő forgalmat egy másik virtuális géphez ugyanazon a virtuális hálózaton vagy egy Azure-on kívül szánt.
+Az egyes virtuális gépek számára lefoglalt hálózati sávszélesség mérése a virtuális gépről érkező kimenő forgalomra vonatkozik. A virtuális gépet elhagyó összes hálózati forgalom beleszámít a lefoglalt korlát felé, a célhelytől függetlenül. Ha például egy virtuális gépen 1 000 MB/s korlát van, akkor ez a korlát attól függetlenül érvényes, hogy a kimenő forgalom egy másik, ugyanazon a virtuális hálózatban lévő virtuális gépre, vagy az Azure-on kívülre van-e szánva.
 
-Bejövő forgalom nem díjköteles, vagy közvetlenül korlátozott. De vannak más tényezők, például a Processzor- és tárterületi korlátozásai, amelyek hatással lehetnek a virtuális gépek képesek-e feldolgozni a beérkező adatokat.
+A bejövő forgalom nem mérhető vagy nem korlátozódik közvetlenül. Más tényezők, például a processzor és a tárterület korlátai is lehetnek, amelyek befolyásolhatják a virtuális gép a bejövő adatok feldolgozásának képességét.
 
-Gyorsított hálózatkezelés javítható a hálózati teljesítmény, beleértve a késés, átviteli sebesség és CPU-kihasználtság célja. Gyorsított hálózatkezelés javítja a virtuális gépek átviteli sebesség, de azt csak a virtuális gép kiosztott sávszélesség legfeljebb teheti meg.
+A gyorsított hálózatkezelés úgy lett kialakítva, hogy javítsa a hálózati teljesítményt, beleértve a késést, az átviteli sebességet és a CPU-kihasználtságot. A gyorsított hálózatkezelés javíthatja a virtuális gépek átviteli sebességét, de csak a virtuális gép lefoglalt sávszélességére képes.
 
-Azure-beli virtuális gépek legalább egy hálózati adapter csatlakoztatva van. Előfordulhat, hogy több rendelkeznek. A virtuális gép számára lefoglalt sávszélesség egyezik meg az összes kimenő forgalmat a géphez csatlakoztatott összes hálózati adapter esetében. Más szóval a sávszélességet egy virtuális gép alapon, függetlenül attól, hány hálózati adapter csatlakozik a gép.
+Az Azure-beli virtuális gépekhez legalább egy hálózati adapter csatlakozik. Lehet, hogy több van. A virtuális gép számára lefoglalt sávszélesség az összes kimenő forgalom összege a számítógéphez csatlakoztatott összes hálózati adapteren. Más szóval a sávszélesség virtuális gépenként van lefoglalva, függetlenül attól, hogy hány hálózati adapter van csatlakoztatva a számítógéphez.
 
-Várt kimenő adatátviteli és az egyes virtuális gép mérete által támogatott hálózati adapterek számát részletezi [méretek a Windows virtuális gépek az Azure-ban](https://docs.microsoft.com/azure/virtual-machines/windows/sizes?toc=%2fazure%2fvirtual-network%2ftoc.json). Maximális átviteli sebesség megtekintéséhez válasszon egy típust, például **általános célú**, majd keresse meg a méretet sorozat az eredményül kapott (például "a Dv2 sorozat") oldalon olvashat. Az egyes sorozatok van egy tábla által biztosított hálózati előírásoknak, az utolsó oszlopban, amelynek címe: "hálózati adapterek max. száma / várt hálózati sávszélesség (Mbps)."
+A várt kimenő átviteli sebesség és az egyes virtuálisgép-méretek által támogatott hálózati adapterek száma az Azure-beli [Windows rendszerű virtuális gépek méretében](https://docs.microsoft.com/azure/virtual-machines/windows/sizes?toc=%2fazure%2fvirtual-network%2ftoc.json)van részletezve. Ha meg szeretné tekinteni a maximális átviteli sebességet, válasszon egy típust, például az **általános célú**elemet, majd keresse meg az eredményül kapott oldalon található méretezési sorozat szakaszát (például "Dv2-sorozat"). Minden adatsorozathoz van egy táblázat, amely az utolsó oszlopban tartalmaz hálózati specifikációkat, amelyek a "Max NIC/várt hálózati sávszélesség (Mbps)" címmel rendelkeznek.
 
-Az átviteli sebesség korlát vonatkozik a virtuális géphez. Átviteli sebesség nem érinti a tényezők:
+Az átviteli sebesség korlátja a virtuális gépre vonatkozik. Az átviteli sebességet a következő tényezők nem érintik:
 
-- **Hálózati adapterek száma**: Egyezik meg az összes kimenő forgalmat a virtuális gépről vonatkozik a sávszélességre vonatkozó korlátját.
+- **Hálózati adapterek száma**: A sávszélesség korlátja a virtuális gépről érkező összes kimenő forgalom összegére vonatkozik.
 
-- **Gyorsított hálózatkezelés**: Bár ez a funkció akkor hasznosak, a közzétett korlát elérése, a korlát nem módosul.
+- **Gyorsított hálózatkezelés**: Bár ez a funkció hasznos lehet a közzétett korlát elérésében, nem változtatja meg a korlátot.
 
-- **Forgalom cél**: Az összes destinations beleszámítanak a kimenő korlátot.
+- **Forgalom célhelye**: A célhelyek száma a kimenő korlát felé.
 
-- **Protokoll**: Minden kimenő forgalmat az összes protokollhoz keresztül a határérték felé számolnak.
+- **Protokoll**: Az összes protokollon keresztüli kimenő forgalom a korlát irányába számít.
 
-További információkért lásd: [virtuális gép hálózati sávszélesség](https://aka.ms/AzureBandwidth).
+További információ: [virtuális gép hálózati sávszélessége](https://aka.ms/AzureBandwidth).
 
-### <a name="internet-performance-considerations"></a>Internetes teljesítménnyel kapcsolatos szempontok
+### <a name="internet-performance-considerations"></a>Internetes teljesítménnyel kapcsolatos megfontolások
 
-Ez a cikk teljes írtaknak tényezők az interneten és az Azure a vezérlőn kívüli hatással lehet a hálózati teljesítmény. Íme néhány tényezők:
+A cikkben leírtak szerint az interneten és az Azure-on kívüli tényezők hatással lehetnek a hálózati teljesítményre. Íme néhány tényező:
 
-- **Késés**: Problémák köztes hálózatokon, forgalmat, amely a "legrövidebb" distance útvonal nem használ, és optimálisnál társviszony-létesítési útvonalakon által hatással lehet az üzenetváltási idő két célhelyek között.
+- **Késés**: A köztes hálózatokkal kapcsolatos problémák befolyásolhatják a két cél közötti oda-és bejárási időt a "legrövidebb" távolsági elérési utat nem tartalmazó forgalom, valamint a másodlagos elérési utak használatával.
 
-- **Csomagveszteség**: Csomagveszteség okozhatja a hálózati torlódás, fizikai elérési út problémák és az alulteljesítő hálózati eszközöket.
+- **Csomagok elvesztése**: A csomagok elvesztését a hálózati torlódás, a fizikai elérési út problémái és a hálózati eszközök végrehajtása okozhatja.
 
-- **Maximális átviteli egység mérete/töredezettsége**: Az elérési úton elhelyezkedő töredezettsége késések adatok beérkezés vagy a csomagok ugyanis ronthatják az üzemen kívüli, ami kihathat a csomagok kézbesítését vezethet.
+- **MTU-méret/töredezettség**: Az útvonal töredezettsége az adatérkezés vagy a sorrendbe kerülő csomagok késését eredményezheti, ami hatással lehet a csomagok kézbesítésére.
 
-A traceroute egy olyan jó eszköz méri, hálózati teljesítményt nyújt (például a csomagvesztés és a késés) mentén minden hálózati elérési útját a forráseszközt és a egy cél-eszköz között.
+A traceroute jó eszköz a hálózati teljesítmény jellemzőinek (például a csomagok elvesztésének és késésének) mérésére a forrás-eszköz és a célként megadott eszköz közötti hálózati útvonalon.
 
-### <a name="network-design-considerations"></a>Hálózati kialakításával kapcsolatos szempontok
+### <a name="network-design-considerations"></a>A hálózat kialakításával kapcsolatos szempontok
 
-Az ebben a cikkben korábban ismertetett szempontok, valamint egy virtuális hálózat a topológia hatással lehet a hálózati teljesítmény. Ha például egy Központ-küllő-Tervező, hogy a backhauls globálisan single-hub virtuális hálózati forgalom hálózati késés, ami hatással lesz a teljes hálózati teljesítmény vezet be.
+A cikkben korábban tárgyalt megfontolások mellett a virtuális hálózat topológiája hatással lehet a hálózat teljesítményére. Például egy olyan sugaras kialakítás, amely globálisan backhauls az egyközpontos virtuális hálózatra, hálózati késést fog bevezetni, ami hatással lesz az általános hálózati teljesítményre.
 
-A hálózati adatforgalom azon hálózati eszközök számát is hatással lehet a teljes késése. Például a Központ-küllő tervezés, az adatforgalom áthalad egy küllős hálózati virtuális készüléket és a központ virtuális berendezés előtt áthaladó csatlakozik az internethez, ha a hálózati virtuális berendezések megjelentetni késés.
+A hálózati forgalom által áthaladó hálózati eszközök száma is hatással lehet a teljes késésre. Például egy küllős és küllős kialakításban, ha a forgalom egy küllős hálózati virtuális készüléken és egy hub virtuális készüléken halad át az internetre való továbbítás előtt, a hálózati virtuális berendezések késést okozhatnak.
 
-### <a name="azure-regions-virtual-networks-and-latency"></a>Az Azure-régiók, a virtuális hálózatok és a késés
+### <a name="azure-regions-virtual-networks-and-latency"></a>Azure-régiók, virtuális hálózatok és késés
 
-Azure-régió általános földrajzi területét belül található több adatközpontot épülnek fel. Ezek az adatközpontok nem feltétlenül fizikailag egymás mellé. Bizonyos esetekben azok van elválasztva a kevesebb mint 10 alapján. A virtuális hálózat egy logikai területre az Azure-adatközpont fizikai hálózat felett. Virtuális hálózat nem jelenti azt, semmilyen konkrét hálózati topológia az adatközponton belül.
+Az Azure-régiók több adatközpontból állnak, amelyek egy általános földrajzi területen belül találhatók. Előfordulhat, hogy ezek az adatközpontok nem fizikailag egymás mellett vannak. Bizonyos esetekben 10 kilométernél kevesebbet választanak. A virtuális hálózat logikai átfedésben van az Azure fizikai adatközpont-hálózat felett. A virtuális hálózat nem jelent semmilyen konkrét hálózati topológiát az adatközponton belül.
 
-Két virtuális gépet az azonos virtuális hálózatot és alhálózatot lévő Előfordulhat például, a különböző állványokon, sorok vagy akár adatközpontokban. Ezek külön feet fiber száloptikás kábelt, vagy adja meg kilométerben fiber száloptikás kábelt kell. Ezt a különbséget sikerült vezeti be a változó késés (néhány ezredmásodperc eltérést) különböző virtuális gépek között.
+Az azonos virtuális hálózatban és alhálózatban lévő két virtuális gép lehet például különböző állványok, sorok vagy akár adatközpontokban is. Ezek elválaszthatók a száloptikai kábel vagy a Fibre Optic-kábel által elválasztott lábakkal. Ez a változat változó késést (néhány ezredmásodpercet) jelenthet a különböző virtuális gépek között.
 
-Virtuális gép földrajzi helyét, és két virtuális gép között lehetséges késés befolyásolhatja a rendelkezésre állási csoportok és a rendelkezésre állási zónák konfigurációját. Azonban egy régióban adatközpontok közötti távolság régióspecifikus és elsősorban befolyásolt régióban adatközpont topológia szerint.
+A virtuális gépek földrajzi elhelyezkedése és a két virtuális gép közötti lehetséges késések a rendelkezésre állási csoportok és a Availability Zones konfigurációjában is befolyásolhatják. Az adatközpontok közötti távolság azonban régiónként jellemző, és elsősorban az adatközpont topológiája befolyásolja a régióban.
 
-### <a name="source-nat-port-exhaustion"></a>Forrás NAT portfogyás
+### <a name="source-nat-port-exhaustion"></a>Forrás NAT-portjának kimerülése
 
-Központi telepítés az Azure-ban és a nyilvános interneten és/vagy a nyilvános IP-címtér az Azure-on kívüli végpontok közötti kommunikációhoz. Amikor egy példányt egy kimenő kapcsolatot kezdeményez, Azure dinamikusan rendeli a magánhálózati IP-cím nyilvános IP-címre. Után az Azure létrehozza ezt a hozzárendelést, a kimenő származó folyamat visszatérő forgalom is elérheti a magánhálózati IP-címet, adja meg a folyamatot.
+Az Azure-beli üzemelő példányok az Azure-on kívüli végpontokkal is kommunikálhatnak a nyilvános interneten és/vagy a nyilvános IP-térben. Ha egy példány kimenő kapcsolatokat kezdeményez, az Azure dinamikusan leképezi a magánhálózati IP-címet egy nyilvános IP-címhez. Miután az Azure létrehozta ezt a leképezést, a kimenő forgalomból származó folyamat visszaadott forgalma elérheti azt a magánhálózati IP-címet is, ahol a folyamat származik.
 
-Minden kimenő kapcsolat az Azure Load Balancer kell ezt a hozzárendelést bizonyos ideig karbantartása. Az Azure több-bérlős jellegét Ez a leképezés minden kimenő flow minden virtuális gép karbantartása lehet erőforrás-igényesek. Úgy állítsa be és az Azure virtuális hálózat konfigurációja alapján korlátozva van. Vagy tegyük fel, amelyek pontosabban, az Azure virtuális Gépekhez is csak győződjön meg arról, kimenő kapcsolatok bizonyos számú egy adott időpontban. Ezek a korlátok elérésekor a virtuális gép nem fog tudni több kimenő kapcsolatok.
+Minden kimenő kapcsolatok esetében a Azure Load Balancernak meg kell őriznie ezt a leképezést egy bizonyos ideig. Az Azure több-bérlős jellegéből adódóan ez a leképezés minden virtuális gép kimenő forgalmához erőforrás-igényes lehet. Így az Azure-Virtual Network konfigurációján alapuló korlátok vannak beállítva. Azt is megteheti, hogy egy Azure-beli virtuális gép csak bizonyos számú kimenő kapcsolatot tud kiszolgálni egy adott időpontban. Ha eléri ezeket a korlátokat, a virtuális gép nem tud több kimenő kapcsolatot létesíteni.
 
-De ez a viselkedés módosítható. További információ az SNAT és SNAT port Erőforrásfogyás, lásd: [Ez a cikk](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections).
+Ez a viselkedés azonban konfigurálható. A SNAT és a SNAT-portok kimerülésével kapcsolatos további információkért tekintse meg [ezt a cikket](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections).
 
-## <a name="measure-network-performance-on-azure"></a>Mérték hálózati teljesítmény az Azure-ban
+## <a name="measure-network-performance-on-azure"></a>Hálózati teljesítmény mérése az Azure-ban
 
-A hálózati késést a teljesítmény kapacitástervezés ebben a cikkben számos kapcsolódó / üzenetváltási időt (RTT) két virtuális gép között. Ez a szakasz néhány javaslatot tesz a késési/RTT tesztelése és tesztelése a TCP teljesítményét és a virtuális gép hálózati teljesítmény. Hangolhassa és teljesítményének tesztelése a TCP/IP- és hálózati értékek taglaltak szerint ebben a szakaszban leírt módszerek segítségével. Csatlakoztassa a késés, MTU, MSS és ablak mérete értékének a korábban megadott számításokat, és hasonlítsa össze a tényleges értékeknek, amely a tesztelés során megfigyelte elméleti maximális értékeket.
+A cikk teljesítménybeli maximális száma a két virtuális gép közötti hálózati késéssel/oda-vissza (RTT) kapcsolatos. Ez a szakasz néhány javaslatot tartalmaz a késés/RTT tesztelésére és a TCP-teljesítmény és a virtuálisgép-hálózat teljesítményének tesztelésére. Az ebben a szakaszban ismertetett módszerekkel beállíthatja és tesztelheti a korábban tárgyalt TCP/IP-és hálózati értékeket. A késés, az MTU, a MSS és az ablak mérete értékeit a korábban megadott számításokhoz csatlakoztathatja, és összehasonlíthatja az elméleti maximális értékeket a tesztelés során megfigyelt tényleges értékekkel.
 
-### <a name="measure-round-trip-time-and-packet-loss"></a>Mérték üzenetváltási idő és a csomagveszteség
+### <a name="measure-round-trip-time-and-packet-loss"></a>A kerekítési idő és a csomagok elvesztésének mérése
 
-TCP teljesítményét az erősen RTT és adatveszteség csomagot használ. A Windows és Linux elérhető PING segédprogram a legkönnyebb RTT vagy csomagot biztosít. PING kimenete jelennek meg a minimális, maximális és átlagos késés a forrás és cél között. Csomagveszteség is megjelenik. PING alapértelmezés szerint az ICMP protokollt használja. Használhatja a PsPing TCP RTT teszteléséhez. További információkért lásd: [PsPing](https://docs.microsoft.com/sysinternals/downloads/psping).
+A TCP-teljesítmény nagy mértékben támaszkodik a RTT és a csomagok elvesztésére. A Windows és a Linux rendszerben elérhető PING segédprogram biztosítja a legegyszerűbb módszert a RTT és a csomagok elvesztésének mérésére. A PING kimenete a forrás és a cél minimális/maximális/átlagos késését mutatja. Emellett a csomagok elvesztését is megjeleníti. A PING alapértelmezés szerint az ICMP protokollt használja. A PsPing a TCP-RTT tesztelésére is használható. További információ: [PsPing](https://docs.microsoft.com/sysinternals/downloads/psping).
 
-### <a name="measure-actual-throughput-of-a-tcp-connection"></a>Mérték tényleges átviteli sebesség TCP-kapcsolat
+### <a name="measure-actual-throughput-of-a-tcp-connection"></a>TCP-kapcsolatok tényleges átviteli sebességének mérése
 
-NTttcp egy olyan eszköz, Linux vagy Windows virtuális gép TCP teljesítményének vizsgálatához. Különböző TCP beállításainak módosítása, és tesztelje a előnyöket NTttcp használatával. További információkért tekintse meg ezeket az erőforrásokat:
+A NTttcp egy olyan eszköz, amellyel tesztelheti a Linux vagy Windows rendszerű virtuális gépek TCP-teljesítményét. Módosíthatja a különböző TCP-beállításokat, majd tesztelheti az előnyöket a NTttcp használatával. További információkért tekintse meg a következő forrásokat:
 
-- [A sávszélesség/átviteli sebesség tesztelése (NTttcp)](https://aka.ms/TestNetworkThroughput)
+- [Sávszélesség/átviteli sebesség tesztelése (NTttcp)](https://aka.ms/TestNetworkThroughput)
 
 - [NTttcp segédprogram](https://gallery.technet.microsoft.com/NTttcp-Version-528-Now-f8b12769)
 
-### <a name="measure-actual-bandwidth-of-a-virtual-machine"></a>Mérték tényleges sávszélességet a virtuális gép
+### <a name="measure-actual-bandwidth-of-a-virtual-machine"></a>Virtuális gép tényleges sávszélességének mérése
 
-A különböző típusú virtuális Gépet, a gyorsított hálózati teljesítmény és így tovább iPerf nevű eszköz használatával. iPerf Linux és Windows rendszereken is érhető el. iPerf TCP vagy UDP tesztelésére használható teljes hálózati átviteli sebesség. TCP-átviteli tesztek iPerf (például a késés és RTT) ebben a cikkben tárgyalt tényezők befolyásolják. Ezért UDP előfordulhat, hogy felfüggesztési jobb eredményeket, ha csak át szeretné maximális átviteli sebesség tesztelése.
+A iPerf nevű eszköz használatával tesztelheti a különböző virtuálisgép-típusok teljesítményét, a gyorsított hálózatkezelést stb. a iPerf Linux és Windows rendszereken is elérhető. a iPerf a TCP-t vagy az UDP-t használhatja a teljes hálózati teljesítmény teszteléséhez. a iPerf TCP-átviteli sebességének tesztelését a cikkben tárgyalt tényezők befolyásolják (például késés és RTT). Így az UDP jobb eredményeket eredményezhet, ha csak a maximális átviteli sebességet szeretné tesztelni.
 
 További információval a következő cikkek szolgálnak:
 
-- [Az Expressroute hálózati teljesítmény hibaelhárítása](https://docs.microsoft.com/azure/expressroute/expressroute-troubleshooting-network-performance)
+- [Expressroute hálózati teljesítményének hibaelhárítása](https://docs.microsoft.com/azure/expressroute/expressroute-troubleshooting-network-performance)
 
 - [VPN teljesítményének érvényesítése virtuális hálózaton](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-validate-throughput-to-vnet)
 
-### <a name="detect-inefficient-tcp-behaviors"></a>Nem elég hatékony TCP viselkedések észleléséhez
+### <a name="detect-inefficient-tcp-behaviors"></a>Nem hatékony TCP-viselkedések észlelése
 
-Az Azure-ügyfelek csomagrögzítés, előfordulhat, hogy tekintse meg a TCP-csomagokat a TCP jelzővel (ZSÁK, Ismétlődő ACK, ÚJRAKÜLDÉSI és gyors TIMEOUTS), amely a hálózati teljesítmény problémákat jelezhet. Ezek a csomagok kifejezetten a csomagvesztés eredő hálózati hatékonysági jelzik. De csomagvesztés nem feltétlenül okozta Azure teljesítményproblémákat okozhat. Teljesítménybeli problémákat az alkalmazásokkal kapcsolatos problémák, operációs rendszer problémák vagy egyéb problémák, amelyek esetleg nem közvetlenül kapcsolódik az Azure platform oka lehet.
+A csomagok rögzítése során az Azure-ügyfeleknek TCP-jelzőket (SACK, DUP ACK, újraküldést és gyors újraküldést) tartalmazó TCP-csomagokat láthatnak, amelyek hálózati teljesítménnyel kapcsolatos problémákat jelezhetnek. Ezek a csomagok kifejezetten jelzik a csomagok elvesztését eredményező hálózati hatékonyságot. A csomagok elvesztését azonban nem feltétlenül az Azure teljesítményproblémák okozzák. Teljesítményproblémák merülhetnek fel az alkalmazással kapcsolatos problémák, az operációs rendszer problémái vagy az Azure platformmal közvetlenül nem kapcsolódó egyéb problémák miatt.
 
-Ezenkívül vegye figyelembe, hogy bizonyos újraküldési és ismétlődő ACK nem rendellenes a hálózaton. A TCP protokollt megbízható készült. A TCP-csomagokat a csomagrögzítés bizonyítékokat nem feltétlenül jelent rendszeres hálózati hiba, csak akkor, ha túl nagy.
+Azt is vegye figyelembe, hogy egyes újraküldési és ismétlődő nyugták a hálózatban normálisak. A TCP-protokollok megbízhatónak lettek kialakítva. A csomagok rögzítésében a TCP-csomagok bizonyítása nem feltétlenül jelent rendszerszintű hálózati problémát, kivéve, ha túlzottak.
 
-Továbbra is ezek csomagtípusok olyan TCP átviteli sebesség nem éri el a maximális teljesítmény érdekében a többi szakasz ebben a cikkben említett okokból jelzések.
+Ezek a csomagok azonban arra utalnak, hogy a TCP-átviteli sebesség nem tudja elérni a maximális teljesítményt, a cikk más részeiben tárgyalt okok miatt.
 
 ## <a name="next-steps"></a>További lépések
 
-Most, hogy megismerte a teljesítményhangolásról TCP/IP az Azure virtuális gépek, érdemes olvassa el az egyéb szempontok [virtuális hálózatok tervezési](https://docs.microsoft.com/azure/virtual-network/virtual-network-vnet-plan-design-arm) vagy [tudjon meg többet a csatlakozás és a virtuális hálózatok konfigurálása ](https://docs.microsoft.com/azure/virtual-network/).
+Most, hogy megismerte az Azure-beli virtuális gépek TCP/IP-teljesítményének finomhangolását, érdemes elolvasnia a [virtuális hálózatok](https://docs.microsoft.com/azure/virtual-network/virtual-network-vnet-plan-design-arm) megtervezésével kapcsolatos egyéb szempontokat, vagy többet is megtudhat a [virtuális hálózatok csatlakoztatásáról és konfigurálásáról](https://docs.microsoft.com/azure/virtual-network/).

@@ -1,71 +1,71 @@
 ---
-title: Az Azure IoT Central alkalmazások eszköz sablon versioning ismertetése |} A Microsoft Docs
-description: Az eszköz sablonok ciklustevékenység, hozzon létre új verziókat, és az élő csatlakoztatott eszközök befolyásolása nélkül
+title: Az Azure IoT Central-alkalmazások eszköz-sablon verziószámozásának ismertetése | Microsoft Docs
+description: Új verziók létrehozásával, valamint az élő csatlakoztatott eszközök hatása nélkül megismételheti az eszközök sablonjait
 author: sandeeppujar
 ms.author: sandeepu
-ms.date: 03/26/2019
+ms.date: 07/08/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: a53c1432ce4dc6be5dd15ee804cda6b00257ca0e
-ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
+ms.openlocfilehash: 638be5e62c523c478f139f13185edeb24995ab3f
+ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67509728"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67848991"
 ---
-# <a name="create-a-new-device-template-version"></a>Hozzon létre egy új eszköz sablon verziója
+# <a name="create-a-new-device-template-version"></a>Új sablon-verzió létrehozása
 
-Az Azure IoT Central lehetővé teszi az IoT-alkalmazások gyors fejlesztése. Akkor is gyorsan ciklustevékenység az eszköz sablon tervek hozzáadása, szerkesztése vagy törlése a mérések, beállítások és tulajdonságok szerint. Egyes módosítások a jelenleg csatlakoztatott eszközök zavaró lehet. Az Azure IoT Central azonosítja ezeket kompatibilitástörő változásokat, és lehetővé teszi a biztonságos üzembe ezeket a frissítéseket az eszközökre.
+Az Azure IoT Central lehetővé teszi a IoT alkalmazások gyors fejlesztését. Gyorsan megismételheti az eszköz sablonjának kialakítását a mérések, beállítások vagy tulajdonságok hozzáadásával, szerkesztésével vagy törlésével. Ezen módosítások némelyike zavaró lehet a jelenleg csatlakoztatott eszközökhöz. Az Azure IoT Central azonosítja ezeket a feltörési változásokat, és lehetővé teszi a frissítések biztonságos központi telepítését az eszközökön.
 
-Egy eszköz sablonjának egy verziószámot létrehozásakor. Alapértelmezés szerint a verziószáma 1.0.0. Ha eszköz sablon szerkesztése, és ezt a módosítást ronthatja az élő csatlakoztatott eszközök, Azure IoT Central felszólítja, hogy hozzon létre egy új eszköz sablon verziója.
-
-> [!NOTE]
-> Ismerje meg, hogy egy eszköz sablon létrehozásával kapcsolatos további információkért tekintse meg a [eszköz sablon beállítása](howto-set-up-template.md)
-
-## <a name="changes-that-prompt-a-version-change"></a>Módosítások kérése verzió módosítása
-
-Az általános beállítások és az eszköz-sablon tulajdonságainak módosítása kérése verzió módosítása.
+Az eszköz létrehozásakor a rendszer verziószámot tartalmaz. Alapértelmezés szerint a verziószáma a 1.0.0. Ha szerkeszt egy sablont, és ha ez a változás hatással lehet az élő csatlakoztatott eszközökre, az Azure IoT Central megkéri, hogy hozzon létre egy új sablon-verziót.
 
 > [!NOTE]
-> Az eszköz sablon végzett módosítások ne jelenjen meg újra egy új verziójára, ha nincs eszköz létrehozásához, vagy a legtöbb egy eszköz van csatlakoztatva.
+> Az eszközök létrehozásával kapcsolatos további tudnivalókért tekintse meg az [eszköz sablonjának beállítása](howto-set-up-template.md) című témakört.
 
-Az alábbi lista ismerteti a felhasználói műveleteket, hogy egy új verziója:
+## <a name="changes-that-prompt-a-version-change"></a>A verzió módosítását kérő módosítások
+
+A beállítások vagy az eszköz tulajdonságainak általános módosításakor a rendszer megváltoztatja a verziószámot.
+
+> [!NOTE]
+> Az eszköz sablonján végrehajtott módosítások nem kérik új verzió létrehozását, ha egyetlen eszköz sincs csatlakoztatva.
+
+Az alábbi lista azokat a felhasználói műveleteket ismerteti, amelyek új verziót igényelhetnek:
 
 * Tulajdonságok (kötelező)
-    * Felvételét vagy törlését kötelező tulajdonság
-    * A tulajdonság, az eszközök által üzenetek küldéséhez használt mező neve mező nevének módosítása.
+    * Szükséges tulajdonság hozzáadása vagy törlése
+    * Az eszközök által az üzenetek küldéséhez használt mező nevének módosítása.
 *  Tulajdonságok (nem kötelező)
-    * Egy nem kötelező tulajdonsággal törlése
-    * A tulajdonság, az eszközök által üzenetek küldéséhez használt mező neve mező nevének módosítása.
-    * Egy kötelező tulajdonság az egy nem kötelező tulajdonság módosítása
+    * Nem kötelező tulajdonság törlése
+    * Az eszközök által az üzenetek küldéséhez használt mező nevének módosítása.
+    * Opcionális tulajdonság módosítása kötelező tulajdonságra
 *  Beállítások
-    * Hozzáadásával vagy egy beállítás törlése
-    * A beállítás, az üzenetek küldése és fogadása az eszközök által használt mező neve mező nevének módosítása.
+    * Beállítás hozzáadása vagy törlése
+    * Az eszközök által az üzenetek küldéséhez és fogadásához használt mező nevének módosítása.
 
-## <a name="what-happens-on-version-change"></a>Mi történik, a verzió módosításakor?
+## <a name="what-happens-on-version-change"></a>Mi történik a verziók változásakor?
 
-Mi történik a szabályok és az eszköz irányítópultok, a verzió módosítása esetén?
+Mi történik a szabályokkal és az eszközök irányítópultokkal, ha módosulnak a verziók?
 
-**Szabályok** tartalmazhatnak a feltételeket, amelyek tulajdonságok függ. Ha eltávolított egy vagy több ezeket a tulajdonságokat, ezek a szabályok működésképtelenné tehet az új eszköz sablon verziója. Nyissa meg ezeket a szabályokat, és frissítse a feltételeket, javítsa ki a szabályokat. Az előző verzió szabályainak befolyásolása nélkül működnek.
+A **szabályok** olyan feltételeket tartalmazhatnak, amelyek a tulajdonságoktól függenek. Ha eltávolította a tulajdonságok közül egyet vagy többet, ezek a szabályok megbonthatók az új sablon-verzióban. Ezeket a konkrét szabályokat megtekintheti, és frissítheti a feltételeket a szabályok kijavításához. Az előző verzióra vonatkozó szabályoknak hatással kell lenniük a működésre.
 
-**Eszköz irányítópultok** számos különböző típusú csempék is tartalmazhat. A csempék némelyike tartalmazhat beállításait és tulajdonságait. Vlastnost nebo egy csempéhez használt beállítás törlődik, ha a csempe nem teljesen vagy részben működik. Nyissa meg a csempét, és hárítsa el a problémát, a csempe eltávolításával, vagy frissíti a csempe tartalmát.
+Az **eszköz** -irányítópultok többféle típusú csempét is tartalmazhatnak. A csempék némelyike tartalmazhatja a beállításokat és a tulajdonságokat. Ha a csempén használt tulajdonság vagy beállítás el van távolítva, a csempe teljesen vagy részben megszakad. Nyissa meg a csempét, és javítsa ki a problémát a csempe eltávolításával vagy a csempe tartalmának frissítésével.
 
-## <a name="migrate-a-device-across-device-template-versions"></a>Eszközök migrálása eszköz verziói között
+## <a name="migrate-a-device-across-device-template-versions"></a>Eszköz átmigrálása az eszköz sablonjának verziói között
 
-Az eszköz sablon több verzióját is létrehozhat. Az idő múlásával kell ezen eszköz-sablonokkal több csatlakoztatott eszközön. Az eszköz sablon egyik verziójának eszközök a másikba telepíthet át. Az alábbi lépések bemutatják, hogyan telepíthet át egy eszköz:
+Az eszköz sablonjának több verzióját is létrehozhatja. Idővel több csatlakoztatott eszköz fog rendelkezni ezekkel az eszközökkel. Az eszközöket áttelepítheti az eszköz sablonjának egyik verziójából egy másikba. Az alábbi lépések bemutatják, hogyan telepíthet át egy eszközt:
 
-1. Nyissa meg a **Device Explorer** lapot.
-1. Válassza ki az eszközt kell migrálnia, egy másik verziója.
-1. Válasszon **eszköz áttelepítése**.
-1. Válassza ki a verziószámot, telepítse át az eszköz számára, és válassza ki a kívánt **áttelepítése**.
+1. Lépjen a **Device Explorer** lapra.
+1. Válassza ki az eszközt, amelyet át kell telepítenie egy másik verzióra.
+1. Válassza az **eszköz áttelepíteni**lehetőséget.
+1. Válassza ki azt a verziószámot, amelyre át szeretné telepíteni az eszközt, majd válassza az **áttelepítés**lehetőséget.
 
-![Eszközök migrálása](media/howto-version-device-template/pick-version.png)
+![Eszköz áttelepítésének módja](media/howto-version-device-template/pick-version.png)
 
 ## <a name="next-steps"></a>További lépések
 
-Most, hogy, hogyan sablonverzióktól eszköz használata az Azure IoT Central alkalmazáshoz, Íme a javasolt következő lépésre:
+Most, hogy megismerte, hogyan használhatja az eszköz sablonjának verzióit az Azure IoT Central alkalmazásban, a következő lépés a javasolt lépés:
 
 > [!div class="nextstepaction"]
-> [Telemetria szabályok létrehozása](howto-create-telemetry-rules.md)
+> [Telemetria-szabályok létrehozása](howto-create-telemetry-rules.md)

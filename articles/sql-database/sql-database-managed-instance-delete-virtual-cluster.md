@@ -1,9 +1,8 @@
 ---
-title: Alhálózat törlése után törlése az Azure SQL Database felügyelt példány |} A Microsoft Docs
-description: Ismerje meg, hogyan törlése az Azure SQL Database felügyelt példány törlése, ha Azure-beli virtuális hálózathoz.
+title: Alhálózat törlése Azure SQL Database felügyelt példány törlése után | Microsoft Docs
+description: Megtudhatja, hogyan törölhet egy Azure-beli virtuális hálózatot Azure SQL Database felügyelt példány törlése után.
 services: sql-database
 ms.service: sql-database
-ms.subservice: management
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
@@ -12,47 +11,47 @@ ms.author: danil
 ms.reviewer: douglas, carlrab, sstein
 manager: craigg
 ms.date: 06/26/2019
-ms.openlocfilehash: 4679ecda210fa78aad4315bc6602b67dd1795ce9
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: ead7ea91e172f608c5364e4d5164d2a71dbf2f5f
+ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67427976"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68297629"
 ---
-# <a name="delete-a-subnet-after-deleting-an-azure-sql-database-managed-instance"></a>Alhálózat törlése után törlése az Azure SQL Database felügyelt példánya
+# <a name="delete-a-subnet-after-deleting-an-azure-sql-database-managed-instance"></a>Alhálózat törlése Azure SQL Database felügyelt példány törlése után
 
-A cikk ismerteti iránymutatásokat manuálisan törölje a egy alhálózatot, ha törli a legutóbbi Azure SQL Database felügyelt példány szereplő, hogyan.
+Ez a cikk útmutatást nyújt ahhoz, hogyan lehet manuálisan törölni az alhálózatot az utolsó Azure SQL Database felügyelt példányának törlése után.
 
-Az SQL Database adatbázisaihoz egy [virtuális fürt](sql-database-managed-instance-connectivity-architecture.md#virtual-cluster-connectivity-architecture) , a törölt felügyelt példányt tartalmaz. A virtuális fürt továbbra is fennáll, ahhoz, hogy gyorsan hozzon létre felügyelt példányok ugyanazon az alhálózaton, a példány törlése után 12 órán át. Nem jár, hogy egy üres virtuális fürt. Ebben az időszakban a virtuális fürthöz társított alhálózatot nem lehet törölni.
+SQL Database egy [virtuális fürtöt](sql-database-managed-instance-connectivity-architecture.md#virtual-cluster-connectivity-architecture) használ a törölt felügyelt példány tárolásához. A virtuális fürt a példány törlése után 12 órával továbbra is fennáll, így lehetővé teszi, hogy gyorsan hozzon létre felügyelt példányokat ugyanabban az alhálózatban. Üres virtuális fürt megőrzése díjmentes. Ebben az időszakban a virtuális fürthöz társított alhálózatot nem lehet törölni.
 
-Várjon, 12 órán át, és azonnal törli a virtuális fürt és az alhálózat inkább nem szeretné, ha manuálisan teheti. A virtuális fürt manuális módszerrel törölje az Azure Portalon vagy a virtuális fürtök API használatával.
+Ha nem szeretne 12 órát várni, és azonnal törölni szeretné a virtuális fürtöt és az alhálózatát, manuálisan is megteheti. Törölje manuálisan a virtuális fürtöt a Azure Portal vagy a virtuális fürtök API használatával.
 
 > [!NOTE]
-> A virtuális fürt egyetlen felügyelt példány a törlés sikeres tartalmaznia kell.
+> A virtuális fürtnek nem tartalmazhat felügyelt példányt, hogy a törlés sikeres legyen.
 
-## <a name="delete-virtual-cluster-from-the-azure-portal"></a>Virtuális fürt törlése az Azure Portalról
+## <a name="delete-virtual-cluster-from-the-azure-portal"></a>Virtuális fürt törlése a Azure Portalból
 
-Virtuális fürtök törlése az Azure Portalon keresse meg a virtuális fürt erőforrásait.
+Ha a Azure Portal használatával szeretne törölni egy virtuális fürtöt, keresse meg a virtuális fürt erőforrásait.
 
-![A keresőmezőbe, kiemelve az Azure portal képernyőképe](./media/sql-database-managed-instance-delete-virtual-cluster/virtual-clusters-search.png)
+![Képernyőkép a Azure Portalről, a keresőmezőbe kiemelve](./media/sql-database-managed-instance-delete-virtual-cluster/virtual-clusters-search.png)
 
-Miután megtalálta a törölni kívánt virtuális fürt, jelölje be ezt az erőforrást, és válassza **törlése**. A virtuális fürt törlés megerősítésére kéri.
+Miután megtalálta a törölni kívánt virtuális fürtöt, válassza ki ezt az erőforrást, és válassza a **Törlés**lehetőséget. A rendszer felszólítja, hogy erősítse meg a virtuális fürt törlését.
 
-![Képernyőkép az Azure Portal virtuális fürtök az irányítópult kiemelt törlése lehetőséggel](./media/sql-database-managed-instance-delete-virtual-cluster/virtual-clusters-delete.png)
+![Képernyőfelvétel a Azure Portal Virtual Clusters irányítópultról, a törlés lehetőség kiemelve](./media/sql-database-managed-instance-delete-virtual-cluster/virtual-clusters-delete.png)
 
-Az Azure portál értesítési területén látható megerősítése, hogy a virtuális fürt törölve lett. A virtuális fürt sikeres törléséhez azonnal kiadja az alhálózat ismételt felhasználásra.
+A Azure Portal értesítések részen a virtuális fürt törlésének megerősítése látható. A virtuális fürt sikeres törlése azonnal felszabadítja az alhálózatot az újrafelhasználáshoz.
 
 > [!TIP]
-> Ha nincsenek felügyelt példányok, a virtuális fürt látható, és nem tudja törölni a virtuális fürtöt, győződjön meg arról, hogy nem kell egy folyamatban lévő üzembe helyezésének folyamatban van. Ez magában foglalja a elindult, és a visszavont üzemelő példánya, amely még folyamatban van. Központi telepítések fülre az erőforráscsoport, a példány üzembe lett helyezve áttekintése a folyamatban lévő telepítések jelzi. Ebben az esetben await üzembe helyezés befejeződik, a felügyelt példány és a virtuális fürt törlése.
+> Ha nem találhatók felügyelt példányok a virtuális fürtben, és nem tudja törölni a virtuális fürtöt, győződjön meg arról, hogy nem rendelkezik folyamatban lévő példány-telepítéssel. Ez magában foglalja a még folyamatban lévő elindított és megszakított központi telepítéseket is. Azon erőforráscsoport központi telepítések lapjának áttekintése, amelyeken a példány telepítve lett, a rendszer minden folyamatban lévő központi telepítést jelez. Ebben az esetben várja meg a telepítés befejeződését, törölje a felügyelt példányt, majd a virtuális fürtöt.
 
-## <a name="delete-virtual-cluster-by-using-the-api"></a>Virtuális fürt törlése az API-val
+## <a name="delete-virtual-cluster-by-using-the-api"></a>Virtuális fürt törlése az API használatával
 
-Az API-n keresztül a virtuális fürt törléséhez használja a megadott URI-paraméterek a [virtuális fürtök törlése metódus](https://docs.microsoft.com/rest/api/sql/virtualclusters/delete).
+Ha a virtuális fürtöt az API-n keresztül szeretné törölni, használja a [virtuális fürtök delete metódusában](https://docs.microsoft.com/rest/api/sql/virtualclusters/delete)megadott URI-paramétereket.
 
 ## <a name="next-steps"></a>További lépések
 
-- Áttekintéséhez lásd: [mit jelent a felügyelt példány?](sql-database-managed-instance.md).
-- Ismerje meg [a felügyelt példány kapcsolati architektúra](sql-database-managed-instance-connectivity-architecture.md).
-- Ismerje meg, hogyan [módosíthatja egy meglévő virtuális hálózatot a felügyelt példány](sql-database-managed-instance-configure-vnet-subnet.md).
-- Ez az oktatóanyag bemutatja, hogyan hozzon létre egy virtuális hálózatot, hozzon létre egy felügyelt példányt, és egy adatbázist egy adatbázis biztonsági másolatból, lásd: [hozzon létre egy Azure SQL Database felügyelt példányába](sql-database-managed-instance-get-started.md).
-- DNS-problémák esetén lásd: [egy egyéni DNS konfigurálása](sql-database-managed-instance-custom-dns.md).
+- Tekintse át a [Mi az a felügyelt példány?](sql-database-managed-instance.md)című témakört.
+- Ismerje meg a [felügyelt példány kapcsolati architektúráját](sql-database-managed-instance-connectivity-architecture.md).
+- Megtudhatja, hogyan [módosíthat egy meglévő virtuális hálózatot a felügyelt példányok számára](sql-database-managed-instance-configure-vnet-subnet.md).
+- A virtuális hálózatok létrehozásával, felügyelt példány létrehozásával és adatbázis biztonsági másolatból való visszaállításával kapcsolatos oktatóanyagért lásd: [Azure SQL Database felügyelt példány létrehozása](sql-database-managed-instance-get-started.md).
+- DNS-problémák esetén tekintse meg az [Egyéni DNS konfigurálása](sql-database-managed-instance-custom-dns.md)című témakört.

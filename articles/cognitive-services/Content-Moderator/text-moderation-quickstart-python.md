@@ -1,5 +1,5 @@
 ---
-title: 'Gyors útmutató: A Python - Content Moderator szöveges tartalom elemzése'
+title: 'Gyors útmutató: Szöveges tartalom elemzése a Pythonban – Content Moderator'
 titlesuffix: Azure Cognitive Services
 description: Szöveges tartalmát a Moderator tartalom SDK a Pythonhoz készült használatával számos nem kívánt tartalom elemzése
 services: cognitive-services
@@ -10,14 +10,16 @@ ms.subservice: content-moderator
 ms.topic: quickstart
 ms.date: 07/03/2019
 ms.author: pafarley
-ms.openlocfilehash: 0fef3bffd30c19d0313e5fce7eb610ae7f6349f5
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: 01c153f2f8836b7d99de57af60b8623e54c6d6fe
+ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67606995"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68311930"
 ---
-# <a name="quickstart-analyze-text-content-for-objectionable-material-in-python"></a>Gyors útmutató: A nem kívánt tartalom a Pythonban szöveges tartalom elemzése
+[!code-python[import declarations](~/samples-anomaly-detector/quickstarts/sdk/python-sdk-sample.py?name=imports)]
+
+# <a name="quickstart-analyze-text-content-for-objectionable-material-in-python"></a>Gyors útmutató: Szöveges tartalom elemzése a nem kifogásolt anyagok számára a Pythonban
 
 Ez a cikk bemutatja, és Kódminták segítséget nyújtanak a Pythonhoz készült a Content Moderator SDK használatának megkezdéséhez. Megtanulhatja, hogyan végezhet szűrést kifejezések alapján, és hogyan osztályozhatja a szöveges tartalmakat az esetlegesen kifogásolható tartalmak moderálása céljából.
 
@@ -38,39 +40,34 @@ pip install azure-cognitiveservices-vision-contentmoderator
 
 ## <a name="import-modules"></a>Modulok importálása
 
-Hozzon létre egy új Python-szkriptet nevű _ContentModeratorQS.py_ , és adja hozzá a következő kódot a szükséges az SDK importálása.
+Hozzon létre egy új Python-szkriptet nevű _ContentModeratorQS.py_ , és adja hozzá a következő kódot a szükséges az SDK importálása. A megfelelő nyomtatási modul a JSON-válaszok könnyebb olvasására is használható.
 
-[!code-python[](~/cognitive-services-content-moderator-samples/documentation-samples/python/text-moderation-quickstart-python.py?range=1-10)]
-
-A "viszonylag nyomtatási" függvény, amely kezeli a végső kimenetet is importálhat.
-
-[!code-python[](~/cognitive-services-content-moderator-samples/documentation-samples/python/text-moderation-quickstart-python.py?range=12)]
+[!code-python[](~/cognitive-services-content-moderator-samples/documentation-samples/python/content_moderator_quickstart.py?name=imports)]
 
 
 ## <a name="initialize-variables"></a>Változók inicializálása
 
-Ezután adja hozzá a Content Moderator előfizetési kulcs és a végpont URL-változókat. Le kell cserélnie `<your subscription key>` a kulcs értékét. Szükség lehet a értékét módosítania `endpoint_url` a régió azonosító, az előfizetési kulcs használatára. Ingyenes próba-előfizetését kulcsokat hoz létre a a **westus** régióban.
+Ezután adja hozzá a Content Moderator előfizetési kulcs és a végpont URL-változókat. A nevet `CONTENT_MODERATOR_SUBSCRIPTION_KEY` hozzá kell adnia a környezeti változókhoz, és hozzá kell adnia az előfizetési kulcsot az értékhez. Az alap végpont URL-címéhez `CONTENT_MODERATOR_ENDPOINT` adja hozzá a környezeti változókat a régióra jellemző URL-cím értékeként, `https://westus.api.cognitive.microsoft.com`például:. Ingyenes próba-előfizetését kulcsokat hoz létre a a **westus** régióban.
 
-[!code-python[](~/cognitive-services-content-moderator-samples/documentation-samples/python/text-moderation-quickstart-python.py?range=14-16)]
+[!code-python[](~/cognitive-services-content-moderator-samples/documentation-samples/python/content_moderator_quickstart.py?name=authentication)]
 
+Egy fájlból álló többsoros szövegből álló karakterlánc moderálva lesz. Vegye fel a [content_moderator_text_moderation. txt](https://github.com/Azure-Samples/cognitive-services-content-moderator-samples/blob/master/documentation-samples/python/content_moderator_text_moderation.txt) fájlt a helyi gyökérkönyvtárba, és adja hozzá a fájl nevét a változókhoz:
 
-Az egyszerűség kedvéért a szöveg közvetlenül a parancsfájlból elemzi. Adja meg a szöveges tartalom mérsékelt új karakterlánc:
-
-[!code-python[](~/cognitive-services-content-moderator-samples/documentation-samples/python/text-moderation-quickstart-python.py?range=18-21)]
-
+[!code-python[](~/cognitive-services-content-moderator-samples/documentation-samples/python/content_moderator_quickstart.py?name=textModerationFile)]
 
 ## <a name="query-the-moderator-service"></a>Lekérdezés a Moderator szolgáltatás
 
-Hozzon létre egy **ContentModeratorClient** példány, az előfizetési kulcs és a végpont URL-cím használatával. Ezután használja az annak egy tagját **TextModerationOperations** példány a moderálási API meghívásához. Tekintse meg a **[screen_text](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-contentmoderator/azure.cognitiveservices.vision.contentmoderator.operations.textmoderationoperations?view=azure-python)** referenciadokumentációt hogyan hívhat meg, további tájékoztatást.
+Hozzon létre egy **ContentModeratorClient** példány, az előfizetési kulcs és a végpont URL-cím használatával. 
 
-[!code-python[](~/cognitive-services-content-moderator-samples/documentation-samples/python/text-moderation-quickstart-python.py?range=23-36)]
+[!code-python[](~/cognitive-services-content-moderator-samples/documentation-samples/python/content_moderator_quickstart.py?name=client)]
 
-## <a name="print-the-response"></a>A válasz megjelenítése
+Ezután használja az ügyfelet a tag **TextModerationOperations** -példánnyal, hogy meghívja a moderációs API- `screen_text`t a függvénnyel. Tekintse meg a **[screen_text](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-contentmoderator/azure.cognitiveservices.vision.contentmoderator.operations.textmoderationoperations?view=azure-python)** referenciadokumentációt hogyan hívhat meg, további tájékoztatást.
 
-Végül ellenőrizze, hogy a hívás sikeres volt, és adja vissza egy **képernyő** példány. Ezután nyomtassa ki a konzolba a visszaadott adatokhoz.
+[!code-python[](~/cognitive-services-content-moderator-samples/documentation-samples/python/content_moderator_quickstart.py?name=textModeration)]
 
-[!code-python[](~/cognitive-services-content-moderator-samples/documentation-samples/python/text-moderation-quickstart-python.py?range=38-39)]
+## <a name="check-the-printed-response"></a>A kinyomtatott Válasz keresése
 
+Futtassa a mintát, és erősítse meg a választ. A művelet végrehajtása sikeres volt, és egy **képernyő** -példányt adott vissza. A sikeres eredmény az alábbi formában jelenik meg:
 
 Ez a rövid útmutató eredmények a következő kimenet használt minta szöveg:
 

@@ -1,77 +1,77 @@
 ---
-title: Megismerheti az Azure digitális Twins ajánlott biztonsági eljárások |} A Microsoft Docs
-description: Az Azure digitális Twins ajánlott biztonsági eljárások.
+title: Az Azure Digital Twins biztonsági eljárásainak ismertetése | Microsoft Docs
+description: Azure Digital Twins – ajánlott biztonsági eljárások.
 author: kingdomofends
 manager: alinast
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 01/15/2019
+ms.date: 07/08/2019
 ms.author: v-adgera
-ms.openlocfilehash: 1d7194beeac1f6f0034738c842e0fc3a58668a13
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 64a980ba8ed581b3cad369951220d47baf9e17ab
+ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65966956"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67849290"
 ---
 # <a name="security-best-practices"></a>Ajánlott biztonsági eljárások
 
-Az Azure digitális Twins biztonsági lehetővé teszi a meghatározott erőforráshoz és művelethez az IoT-Graph pontos hozzáférést. Részletes szerepkör és az engedélyek kezelését nevű ilyeneket [szerepköralapú hozzáférés-vezérlés](./security-role-based-access-control.md).
+Az Azure digitális Twins biztonsági szolgáltatásával pontos hozzáférést érhet el a IoT gráf egyes erőforrásaihoz és műveleteihez. Ezt a részletes szerepkör és a [szerepköralapú hozzáférés-vezérlés](./security-role-based-access-control.md)nevű engedélyek kezelése teszi lehetővé.
 
-Az Azure digitális Twins is más biztonsági funkciókat, amelyek szerepelnek az Azure IoT, beleértve az Azure Active Directory (Azure AD) használja. Éppen ezért konfigurálásával és biztonságossá tétele az Azure digitális Twins épülő alkalmazások keretein belül a azonos számos [Azure IoT biztonsági eljárások](../iot-fundamentals/iot-security-best-practices.md) jelenleg ajánlott.
+Az Azure Digital Twins más biztonsági funkciókat is tartalmaz, amelyek az Azure IoT találhatók, beleértve a Azure Active Directory (Azure AD) szolgáltatást. Emiatt az Azure Digital Twins-ra épülő alkalmazások konfigurálása és biztonságossá tétele számos különböző [Azure IoT biztonsági gyakorlatot](../iot-fundamentals/iot-security-best-practices.md) használ, jelenleg ajánlott.
 
-Ez a cikk a főbb vonatkozó ajánlott eljárásokat foglalja össze.
+Ez a cikk a követendő ajánlott eljárásokat foglalja össze.
 
 > [!IMPORTANT]
-> IoT-tárhelyre vonatkozó maximális biztonság érdekében tekintse át a további biztonsági erőforrásokat. Ellenőrizze, hogy az eszközforgalmazók tartalmazza.
+> A IoT-terület maximális biztonságának biztosításához tekintse át a további biztonsági forrásokat. Ügyeljen rá, hogy tartalmazza az eszközök gyártóit.
 
 ## <a name="iot-security-best-practices"></a>Ajánlott biztonsági eljárások az IoT-hez
 
-Néhány kulcsfontosságú eljárásokat, és biztonságosan biztonságos az IoT-eszközökről a következők:
+Néhány kulcsfontosságú eljárás a IoT-eszközök biztonságos biztonságossá tételéhez a következők:
 
 > [!div class="checklist"]
-> * Minden eszköz, amely csatlakozik az IoT-terület hamisíthatatlan módon biztonságossá tételéhez.
-> * A szerepkör az egyes eszközök, érzékelők és az IoT-címtéren belüli személy korlátozza. Ha megsérül, a hatás minimálisra csökken.
-> * Gondolja végig a potenciális eszköz IP-cím a szűrés és korlátozás port.
-> * A teljesítmény javítása i/o- és eszköz sávszélesség korlátozása. A sebességhatárolt javíthatja a biztonsági-szolgáltatásmegtagadási támadások megelőzésével.
-> * Eszköz belső vezérlőprogramjának naprakészen tartása.
+> * Védje a IoT-területhez csatlakozó összes eszközt illetéktelen hozzáférést igazoló módon.
+> * Korlátozza az egyes eszközök, érzékelők és személyek szerepkörét a IoT belül. Ha sérült, a hatás kisméretű.
+> * Vegye figyelembe az eszközök IP-címek szűrésének és a portok korlátozásának lehetséges használatát.
+> * A teljesítmény javítása érdekében korlátozza az I/O és az eszköz sávszélességét. A díjszabási korlátozás a szolgáltatásmegtagadási támadások megakadályozásával növelheti a biztonságot.
+> * Az eszköz belső vezérlőprogramja naprakészen tartása.
 
-Néhány kulcsfontosságú eljárásokat, és biztonságosan biztonságos az IoT-terület a következők:
+A IoT-területek biztonságos biztonságossá tételéhez szükséges alapvető eljárások a következők:
 
 > [!div class="checklist"]
-> * Mentett, a tárolt vagy a perzisztens adatok titkosításához.
-> * Jelszavak vagy -kulcsok rendszeresen módosítani vagy frissíteni kell.
-> * Gondosan korlátozzák a hozzáférést és engedélyeket szerepkör. Című témakör [szerepköralapú hozzáférés-vezérlés ajánlott eljárások](#rbac) alatt.
-> * Erős titkosítást használjon. Hosszú jelszavak szükséges, és használjon biztonságos protokollok és a kétfaktoros hitelesítés.
+> * Mentett, tárolt vagy állandó adattitkosítás.
+> * A jelszavak vagy kulcsok rendszeres módosításának vagy frissítésének megkövetelése.
+> * A hozzáférés és az engedélyek körültekintő korlátozása szerepkör alapján. Tekintse meg az alábbi, [szerepköralapú hozzáférés-vezérléssel kapcsolatos ajánlott eljárásokat](#rbac) .
+> * Hatékony titkosítás használata. Hosszú jelszavak megkövetelése és biztonságos protokollok és kétfaktoros hitelesítés használata.
 
-[A figyelő](./how-to-configure-monitoring.md) figyelheti a kiugró értékek, a fenyegetések vagy kívül esne a szokásos műveletet az erőforrás-paraméterek IoT-erőforrásokat. Az Azure Analytics felügyeleti használni.
+[Figyelő](./how-to-configure-monitoring.md) A IoT a szokásos művelet tartományán kívül eső kiugró adatokat, fenyegetéseket vagy erőforrás-paramétereket figyeli. Az Azure Analytics használata figyelési felügyelethez.
 
 > [!NOTE]
-> Az esemény feldolgozása és figyelési további információkért lásd: [irányíthatja az események és az Azure digitális Twins üzenetek](./concepts-events-routing.md).
+> Az események feldolgozásával és figyelésével kapcsolatos további információkért lásd: [események és üzenetek átirányítása az Azure Digital Twins szolgáltatással](./concepts-events-routing.md).
 
-## <a name="azure-active-directory-best-practices"></a>Az Azure Active Directory – gyakorlati tanácsok
+## <a name="azure-active-directory-best-practices"></a>Azure Active Directory ajánlott eljárások
 
-Az Azure digitális Twins az Azure Active Directory felhasználók hitelesítéséhez és alkalmazások védelmét. Az Azure Active Directory különböző modern architektúrák támogatja a hitelesítést. Ezek még alapján szabványos protokollok, mint például az OAuth 2.0 vagy OpenID Connect. Biztonságos IoT tárhely az Azure Active Directory néhány kulcsfontosságú eljárások a következők:
+Az Azure Digital Twins Azure Active Directory használatával hitelesíti a felhasználókat és gondoskodik az alkalmazások biztonságáról. Azure Active Directory támogatja a különböző modern architektúrák hitelesítését. Ezek mind az iparági szabványnak megfelelő protokollok, például a OAuth 2,0 vagy az OpenID Connect alapján működnek. Néhány kulcsfontosságú gyakorlat a IoT-terület biztonságossá tételéhez Azure Active Directory többek között a következők:
 
 > [!div class="checklist"]
-> * Azure Active Directory-alkalmazás titkos kódok és kulcsok biztonságos helyen, Store például [Azure Key Vault](https://azure.microsoft.com/services/key-vault/).
-> * Egy megbízható által kibocsátott tanúsítványt használja [hitelesítésszolgáltató](../active-directory/authentication/active-directory-certificate-based-authentication-get-started.md) helyett Alkalmazáskulcs hitelesítéséhez.
-> * OAuth 2.0 hozzáférési jogkivonat hatóköre korlátozza.
-> * Mennyi ideig jogkivonat érvényességét. Ellenőrizze, és hogy-e a jogkivonat érvényes marad.
-> * Állítsa be a megfelelő hosszúságú, ameddig a jogkivonatok érvényesek.
-> * Frissítse a lejárt.
+> * Egy biztonságos helyen tárolja Azure Active Directory alkalmazás titkos kulcsait, például a [Azure Key Vault](https://azure.microsoft.com/services/key-vault/).
+> * A hitelesítéshez használjon egy megbízható [hitelesítésszolgáltató](../active-directory/authentication/active-directory-certificate-based-authentication-get-started.md) által kiadott tanúsítványt, nem pedig az alkalmazás titkos kulcsát.
+> * Korlátozza a OAuth 2,0 hozzáférés hatókörét.
+> * Ellenőrizze, hogy a jogkivonat érvényességi ideje érvényes-e, és hogy a jogkivonat érvényes marad-e.
+> * Állítsa be a megfelelő időtartamot, ameddig a tokenek érvényesek.
+> * Lejárt tokenek frissítése.
 
 <div id="rbac"></div>
 
-## <a name="role-based-access-control-best-practices"></a>Szerepköralapú hozzáférés-vezérlés ajánlott eljárások
+## <a name="role-based-access-control-best-practices"></a>Szerepköralapú hozzáférés-vezérlés – ajánlott eljárások
 
 [!INCLUDE [digital-twins-rbac-best-practices](../../includes/digital-twins-rbac-best-practices.md)]
 
 ## <a name="next-steps"></a>További lépések
 
-* További tudnivalók az Azure IoT ajánlott eljárásairól, olvassa el [IoT ajánlott biztonsági eljárások](../iot-fundamentals/iot-security-best-practices.md).
+* Ha többet szeretne megtudni az Azure IoT ajánlott eljárásairól, olvassa el a IoT-biztonsággal kapcsolatos [ajánlott eljárásokat](../iot-fundamentals/iot-security-best-practices.md).
 
-* Szerepköralapú hozzáférés-vezérléssel kapcsolatos tudnivalókért olvassa el [szerepköralapú hozzáférés-vezérlés](./security-role-based-access-control.md).
+* A szerepköralapú hozzáférés-vezérléssel kapcsolatos további tudnivalókért olvassa el a [szerepköralapú hozzáférés-vezérlés](./security-role-based-access-control.md)című témakört.
 
-* Hitelesítéssel kapcsolatban, olvassa el [hitelesítés API-kkal](./security-authenticating-apis.md).
+* A hitelesítéssel kapcsolatos további tudnivalókért olvassa el a [hitelesítés API](./security-authenticating-apis.md)-kkal című témakört.
