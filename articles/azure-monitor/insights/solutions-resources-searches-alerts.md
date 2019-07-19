@@ -179,7 +179,7 @@ A riasztási művelet erőforrás tulajdonságait az alábbi táblázatok ismert
 | type | Igen | A művelet típusa.  Ez a **riasztás** riasztási műveletek esetében. |
 | name | Igen | A riasztás megjelenítendő neve.  Ez a riasztási szabályt a konzolon megjelenített nevet. |
 | description | Nem | A riasztás leírását. |
-| Severity | Igen | A következő értékek közül a riasztásbejegyzést súlyossága:<br><br> **critical**<br>**warning**<br>**Tájékoztató**
+| severity | Igen | A következő értékek közül a riasztásbejegyzést súlyossága:<br><br> **critical**<br>**warning**<br>**Tájékoztató**
 
 
 #### <a name="threshold"></a>Küszöbérték
