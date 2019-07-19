@@ -1,10 +1,10 @@
 ---
-title: Load Balancer létrehozása a zónaszintű előtérbeli – Azure PowerShell-lel
+title: Load Balancer létrehozása a zóna-előtérben – Azure PowerShell
 titlesuffix: Azure Load Balancer
-description: Az Azure PowerShell-lel zónaszintű időtúllépést Standard Load Balancer létrehozása
+description: Megtudhatja, hogyan hozhat létre standard Load Balancert a zóna-előtérben a Azure PowerShell használatával
 services: load-balancer
 documentationcenter: na
-author: KumudD
+author: asudbring
 manager: twooley
 ms.service: load-balancer
 ms.devlang: na
@@ -13,17 +13,17 @@ ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/21/2019
-ms.author: kumud
-ms.openlocfilehash: 8ede8df2f069681008175494cfd5937738ce5ea9
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: allensu
+ms.openlocfilehash: a2c637ddbf5b7f5883016afe4a6d58ad9752cfc5
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66122159"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68275128"
 ---
-#  <a name="create-a-standard-load-balancer-with-zonal-frontend-using-azure-powershell"></a>Standard Load Balancer létrehozása az Azure PowerShell-lel zónaszintű frontend
+#  <a name="create-a-standard-load-balancer-with-zonal-frontend-using-azure-powershell"></a>standard Load Balancer létrehozása a zóna-előtérben a Azure PowerShell használatával
 
-Ez a cikk végigvezeti egy nyilvános létrehozása [Standard Load Balancer](https://aka.ms/azureloadbalancerstandard) és a egy zónaszintű frontend-IP szabványos nyilvános cím segítségével. Hogyan működnek a rendelkezésre állási zónák a Standard Load Balancer ismertetése: [Standard Load Balancer és rendelkezésre állási zónák](load-balancer-standard-availability-zones.md). 
+Ez a cikk egy nyilvános IP-címet használó nyilvános [standard Load Balancer](https://aka.ms/azureloadbalancerstandard) létrehozásával foglalkozik. Hogyan működnek a rendelkezésre állási zónák a Standard Load Balancer ismertetése: [Standard Load Balancer és rendelkezésre állási zónák](load-balancer-standard-availability-zones.md). 
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
@@ -89,7 +89,7 @@ $probe = New-AzLoadBalancerProbeConfig -Name 'myHealthProbe' -Protocol Http -Por
 ```
 
 ## <a name="create-a-load-balancer"></a>Load Balancer létrehozása
-Hozzon létre egy Standard Load Balancer használatával a következő parancsot:
+Hozzon létre egy standard Load Balancer a következő parancs használatával:
 
 ```azurepowershell-interactive
 $lb = New-AzLoadBalancer -ResourceGroupName myResourceGroupZLB -Name 'MyLoadBalancer' -Location westeurope `

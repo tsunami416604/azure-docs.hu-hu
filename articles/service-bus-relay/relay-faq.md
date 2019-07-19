@@ -1,6 +1,6 @@
 ---
-title: Az Azure Relay – gyakori kérdések |} A Microsoft Docs
-description: Válaszok néhány Azure Relay – gyakori kérdések.
+title: Azure Relay GYIK | Microsoft Docs
+description: Választ kaphat a Azure Relayával kapcsolatos gyakori kérdésekre.
 services: service-bus-relay
 documentationcenter: na
 author: spelluru
@@ -14,103 +14,103 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/21/2018
 ms.author: spelluru
-ms.openlocfilehash: c6ea5e72f70620004b4b00be0c779893a3b2ad90
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: f9f182a459f9a38c96bdf923998d1cdfee8fc3ac
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67706188"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68277963"
 ---
-# <a name="azure-relay-faqs"></a>Az Azure Relay – gyakori kérdések
+# <a name="azure-relay-faqs"></a>Azure Relay GYIK
 
-Ebben a cikkben megválaszolunk néhány gyakori kérdések (GYIK) kapcsolatos [Azure Relay](https://azure.microsoft.com/services/service-bus/). Általános Azure díjszabását és támogatási információk: a [– gyakori kérdések az Azure támogatja a](https://azure.microsoft.com/support/faq/).
+Ez a cikk a [Azure Relay](https://azure.microsoft.com/services/service-bus/)kapcsolatos gyakori kérdésekre (GYIK) ad választ. Az Azure-díjszabással és-támogatással kapcsolatos általános információkért tekintse meg az Azure-támogatással kapcsolatos [gyakori kérdéseket](https://azure.microsoft.com/support/faq/).
 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="general-questions"></a>Általános kérdések
 ### <a name="what-is-azure-relay"></a>Mi az az Azure Relay?
-A [Azure Relay szolgáltatás](relay-what-is-it.md) megkönnyíti a hibrid alkalmazásait elérhetővé biztonságosan a vállalati hálózaton a nyilvános felhőben található szolgáltatások segít. A szolgáltatások tehetők közzé egy tűzfalkapcsolatot megnyitása nélkül, és anélkül, hogy zavaró módosításokat kellene végrehajtani a vállalati hálózati infrastruktúrában.
+A [Azure Relay szolgáltatás](relay-what-is-it.md) megkönnyíti a hibrid alkalmazásokat azáltal, hogy biztonságosabban teszi közzé a vállalati vállalati hálózaton belüli szolgáltatásokat a nyilvános felhőben. A szolgáltatásokat tűzfal-kapcsolatok megnyitása nélkül is elérhetővé teheti, és anélkül, hogy zavaró módosításokat kellene létesíteni a vállalati hálózati infrastruktúrában.
 
-### <a name="what-is-a-relay-namespace"></a>Mi az a Relay-névteret?
-A [névtér](relay-create-namespace-portal.md) egy hatókörkezelési tároló, amely a továbbító erőforrások használhatja az alkalmazásban. Létre kell hoznia egy névteret Relay használata. Ez az első lépéseket az első lépések egyikét.
+### <a name="what-is-a-relay-namespace"></a>Mi az a Relay-névtér?
+A [névtér](relay-create-namespace-portal.md) egy hatókör-tároló, amelyet az alkalmazáson belüli továbbítási erőforrások kezelésére használhat. Létre kell hoznia egy névteret a Relay használatához. Ez a bevezetés első lépéseinek egyike.
 
-### <a name="what-happened-to-service-bus-relay-service"></a>Mi történt a Service Bus Relay szolgáltatás?
-A korábban elnevezett Service Bus Relay szolgáltatás új neve [WCF-továbbító](relay-wcf-dotnet-get-started.md). A szolgáltatás használatához a megszokott módon folytathatja. A hibrid kapcsolatok szolgáltatása egy olyan szolgáltatás, amely az Azure BizTalk Services rendszer lett visszaültetett frissített verzióját. A WCF-továbbító és a hibrid kapcsolatok egyaránt továbbra is támogatottak.
+### <a name="what-happened-to-service-bus-relay-service"></a>Mi történt a Service Bus Relay szolgáltatással?
+A korábban elnevezett Service Bus Relay szolgáltatás már [WCF Relay](relay-wcf-dotnet-get-started.md)néven is ismert. Továbbra is használhatja ezt a szolgáltatást a szokásos módon. A Hibrid kapcsolatok funkció egy olyan szolgáltatás frissített verziója, amely az Azure BizTalk Services-ból lett átültetve. WCF Relay és Hibrid kapcsolatok mindkettő továbbra is támogatott.
 
 ## <a name="pricing"></a>Díjszabás
-Ez a szakasz néhány gyakori kérdés a díjszabási struktúrája Relayjel kapcsolatos ad választ. Azt is láthatja a [Azure támogatás – gyakori kérdések](https://azure.microsoft.com/support/faq/) általános Azure díjszabási információk. A Relay díjszabással kapcsolatos részletes információkért lásd: [a Service Bus díjszabásáról][Pricing overview].
+Ez a szakasz a Relay díjszabási struktúrájával kapcsolatos gyakori kérdésekre ad választ. Az Azure- [támogatási GYIK](https://azure.microsoft.com/support/faq/) az általános Azure-díjszabással kapcsolatban is látható. A Relay díjszabásával kapcsolatos információkért tekintse meg a [Service Bus díjszabási részleteit][Pricing overview].
 
-### <a name="how-do-you-charge-for-hybrid-connections-and-wcf-relay"></a>Hogyan tegye meg díja szerint számítjuk fel a hibrid kapcsolatok és WCF-továbbító?
-A Relay díjszabással kapcsolatos részletes információkért lásd: a [hibrid kapcsolatok és WCF-továbbítók][Pricing overview] a Service Bus díjszabási részleteit ismertető oldal a táblában. Amellett, hogy az oldalon feltüntetett árak díjkötelesek, amelyben az alkalmazás ki van építve az adatközponton kívül kimenő tartozó adatforgalom.
+### <a name="how-do-you-charge-for-hybrid-connections-and-wcf-relay"></a>Hogyan számítjuk fel a díjat a Hibrid kapcsolatokért és a WCF Relayért?
+A Relay díjszabásával kapcsolatos információkért tekintse meg a [hibrid kapcsolatok és a WCF Relays][Pricing overview] táblát a Service Bus díjszabása lapon. Az ezen az oldalon feltüntetett árakon kívül a kimenő adatforgalomért az alkalmazás üzembe helyezéséhez használt adatközponton kívül is díjat számítunk fel.
 
-### <a name="how-am-i-billed-for-hybrid-connections"></a>Hogyan kell fizetnem a hibrid kapcsolatokhoz?
-Az alábbiakban három számlázási példaforgatókönyvek hibrid kapcsolatok:
+### <a name="how-am-i-billed-for-hybrid-connections"></a>Mennyit kell fizetnem a Hibrid kapcsolatokért?
+Íme három példa számlázási forgatókönyv a Hibrid kapcsolatok:
 
 *   forgatókönyv 1:
-    *   Rendelkezik egy egyetlen figyelője működik, például a Hibridkapcsolat-kezelő telepítve van és fut folyamatosan az egész hónapon egy példánya.
-    *   A kapcsolat a hónap során 3 GB adatot továbbít. 
-    *   A teljes díj összege az 5 USD.
+    *   Egyetlen figyelővel rendelkezik, mint például a Hibrid kapcsolatok Manager egy példánya, amely a teljes hónapra folyamatosan fut.
+    *   A hónap során 3 GB-nyi adat küldhető el a hálózaton. 
+    *   A teljes díj $5.
 *   2\. forgatókönyv:
-    *   Rendelkezik egy egyetlen figyelője működik, például a Hibridkapcsolat-kezelő telepítve van és fut folyamatosan az egész hónapon egy példánya.
-    *   10 GB adatot továbbít a kapcsolaton, a hónap során.
-    *   A teljes díj összege $7.50. Ez a kapcsolat és az első 5 GB-os $5 + $2,50 a további 5 GB adat.
+    *   Egyetlen figyelővel rendelkezik, mint például a Hibrid kapcsolatok Manager egy példánya, amely a teljes hónapra folyamatosan fut.
+    *   A hónap során 10 GB-nyi adat küldhető el a csatlakozáson keresztül.
+    *   A teljes díj $7,50. Ez $5 a kapcsolatok és az első 5 GB + $2,50 a további 5 GB adathoz.
 *   3\. forgatókönyv:
-    *   Két olyan példányt, és a Hybrid Connections Manager telepítve van és fut folyamatosan az egész hónapban, a B rendelkezik.
-    *   A kapcsolat a hónap során 3 GB adatot továbbít.
-    *   A hónap során a B kapcsolaton 6 GB adatot továbbít.
-    *   A teljes díj összege $10,50. Ez A kapcsolat 5 USD + 5 USD a B kapcsolat + 0,50 dollár (a B kapcsolaton hatodik gigabájt).
+    *   A Hibrid kapcsolatok Manager két példánya van, a és a B, a teljes hónapra folyamatosan fut.
+    *   A hónap során 3 GB-nyi adat küldhető el a kapcsolatok között.
+    *   A hónap során 6 GB-nyi adat küldhető a B hálózaton keresztül.
+    *   A teljes díj $10,50. Ez $5 a (z) B + $0,50 csatlakoztatásához a + $5-hez (a B-vel létesített hatodik gigabájthoz).
 
-Fontos, hogy a példákban használt díjak alkalmazható csak a hibrid kapcsolatok az előzetes verzió ideje alatt. Az árak a Hybrid Connections általános forgalomba hozatalkor változhat.
+Vegye figyelembe, hogy a példákban használt árak csak a Hibrid kapcsolatok előzetes verziójának időtartama alatt alkalmazhatók. Az árak a Hibrid kapcsolatok általánosan elérhetővé tételével változhatnak.
 
-### <a name="how-are-hours-calculated-for-relay"></a>Hogyan számítják ki óra a Relay?
+### <a name="how-are-hours-calculated-for-relay"></a>Hogyan számítják ki a továbbítási órákat?
 
-A WCF-továbbító csak a Standard szintű névterek érhető el. Díjszabás és [kapcsolat kvóták](../service-bus-messaging/service-bus-quotas.md) tartozó továbbítók más módon nem változtak. Ez azt jelenti, hogy a továbbítók továbbra is számítunk fel az üzenetek (nem műveletek) és a továbbítási órák száma alapján. További információkért lásd: a ["Hibrid kapcsolatok és WCF-továbbítók"](https://azure.microsoft.com/pricing/details/service-bus/) a díjszabási lapon található táblázat.
+WCF Relay csak a standard szintű névterek esetében érhető el. A továbbítások díjszabása és a [kapcsolatok kvótája](../service-bus-messaging/service-bus-quotas.md) más okból nem módosult. Ez azt jelenti, hogy a továbbítások továbbra is az üzenetek (nem az Operations) és a továbbítási órák száma alapján lesznek felszámítva. További információkért tekintse meg a ["hibrid kapcsolatok és WCF Relays"](https://azure.microsoft.com/pricing/details/service-bus/) táblázatot a díjszabás részletei lapon.
 
-### <a name="what-if-i-have-more-than-one-listener-connected-to-a-specific-relay"></a>Mi történik, ha van több figyelő kapcsolódik egy adott továbbítóhoz való?
-Bizonyos esetekben egyetlen továbbítási előfordulhat, hogy több csatlakoztatott figyelők. Számít nyissa meg, ha legalább egy relay-figyelő kapcsolódik hozzá. A további továbbítási óra hozzáadása egy nyitott továbbító eredmények figyelők. A relay feladók (olyan ügyfelek, amelyek meghívása, vagy üzeneteket küldenek továbbítók) száma, amelyek csatlakoztatva vannak a továbbító nem befolyásolja a továbbítási kiszámításának.
+### <a name="what-if-i-have-more-than-one-listener-connected-to-a-specific-relay"></a>Mi a teendő, ha egynél több figyelő csatlakozik egy adott továbbítóhoz?
+Bizonyos esetekben egyetlen továbbítóhoz több csatlakoztatott figyelő is tartozhat. A továbbító akkor tekinthető nyitottnak, ha legalább egy továbbító figyelő csatlakoztatva van hozzá. A figyelők egy nyitott továbbítóhoz való hozzáadása további továbbítási órákat eredményez. A Relay-továbbítók száma (az olyan ügyfelek, amelyek továbbítják vagy elküldik az üzeneteket a továbbításoknak) nem befolyásolják a továbbítási órák kiszámítását.
 
-### <a name="how-is-the-messages-meter-calculated-for-wcf-relays"></a>Hogyan számítják az üzenetek mérőszáma a WCF-továbbítók?
-(**Ez csak érvényes WCF-továbbítók. Üzenetek nem, a költség, a hibrid kapcsolatokhoz.** )
+### <a name="how-is-the-messages-meter-calculated-for-wcf-relays"></a>Hogyan számítja ki az üzenetek mérőszámát a WCF-továbbítóknak?
+(**Ez csak a WCF-továbbítók esetében érvényes. Az üzenetek nem a Hibrid kapcsolatok díja.** )
 
-Általában továbbítók a számlázandó üzenetek ugyanezzel a módszerrel, amely arra szolgál, az előzőekben leírt felügyelt entitások (üzenetsorok, témakörök és előfizetések) használatával számítják ki. Vannak azonban néhány jelentős különbség.
+Általánosságban elmondható, hogy a továbbítások számlázási üzeneteinek kiszámításához ugyanazt a módszert használja, mint a korábban leírt, felügyelt entitások (várólisták, témakörök és előfizetések) esetében. Van azonban néhány jelentős különbség.
 
-Egy üzenetet küld egy Service Bus relay-egységnek számít a relay-figyelő, amely fogadja az üzeneteket a "teljes keresztül" küldése. A Service Bus relay, az a relay-figyelő egy kézbesítési követ a küldési művelet nem számít. A kérés-válasz stílus szolgáltatásmeghívási (összesen legfeljebb 64 KB-os) szemben a relay két számlázandó üzenetek figyelő eredményez: a kérés és a válasz üzenet egy számlázandó üzenet egy számlázandó (feltéve, hogy a válasz egyben 64 KB-os vagy kisebb). Ez eltér attól az ügyfél és a egy szolgáltatás közötti résidőkiosztással egy üzenetsorba. Egy üzenetsor használatával résidőkiosztással egy ügyfél és a egy szolgáltatás között, ha a kérés-válasz minta egy kérelem küldése az üzenetsorba, kiegészítve a eltávolítása onnan/kézbesítési az üzenetsorból a szolgáltatás szükséges. Ide kerül egy válasz küldése egy másik üzenetsornak, és a egy eltávolítása onnan/kézbesítési az ügyfél számára, hogy az üzenetsorból. Az azonos mérete feltételezéseket egész (legfeljebb 64 KB-os) használ, a által üzenetsor mintája eredményez 4 számlázandó üzenetek. Kétszer ugyanazt a mintát, amely a továbbító végrehajtásában megvalósításához üzenetek számát számítjuk. Természetesen van arra, hogy ezt a mintát, például tartósságot érhet el, és a Terheléskiegyenlítés üzenetsorok használatával. Ezeket az előnyöket előfordulhat, hogy adja meg a további költségek.
+Ha üzenetet küld egy Service Bus továbbítónak, a rendszer az üzenetet fogadó továbbító figyelőnek küldi el a "teljes körű" küldést. A rendszer nem kezeli küldési műveletként a Service Bus továbbítónak, amelyet a Relay-figyelő kézbesítése követ. A kérés-válasz stílusú szolgáltatás (legfeljebb 64 KB) egy továbbító figyelővel való meghívása két számlázandó üzenetet eredményez: egy számlázandó üzenet a kérelemhez és egy számlázandó üzenet a válaszhoz (feltéve, hogy a válasz a 64 KB vagy kisebb). Ez különbözik az ügyfél és a szolgáltatás közötti közvetítési várólista használatával. Ha várólistát használ az ügyfél és a szolgáltatás közötti közvetítéshez, ugyanazt a kérelem-válasz típusú mintát kell elküldeni a várólistára, amelyet a várólista és a szolgáltatás felé irányuló kézbesítés is követ. Ezt a választ egy másik várólistára küldi a rendszer, valamint az adott várólistáról az ügyfélnek küldött várólistát/kézbesítést. Ha az egész (legfeljebb 64 KB) értékkel azonos méretű feltételezéseket használ, a közvetített üzenetsor-minta 4 számlázandó üzenetet eredményez. Az üzenetek számát kétszer kell kiszámlázni, hogy ugyanazt a mintát használja, mint a Relay használatával. Természetesen a várólisták használatának előnyei is hasznosak ennek a mintának az elérésére, például a tartósságra és a terheléselosztásra. Ezek az előnyök indokolttá tehetik a további költségeket.
 
-Továbbítók használatával megnyitott a **netTCPRelay** WCF kötés üzenetek kezelni, nem az egyes üzenetek, hanem egy adatfolyam áthaladnak a rendszeren. Ha ezt a kötést használja, csak a küldő és a figyelőt, hogy az egyes üzenetek küldése és fogadása a keretező. A továbbítókat használó a **netTCPRelay** kötés esetén minden adat számít egy stream kiszámításához a számlázandó üzenetek. Ebben az esetben a Service Bus számítja ki a teljes adatmennyiség küldött vagy fogadott keresztül minden egyes relay 5 perces időközönként. Ezt követően, elosztja a teljes adatmennyiség 64 KB-os meghatározni, hogy a továbbító esetében a számlázandó üzenetek száma időszak során.
+A **netTCPRelay** WCF-kötéssel megnyitott továbbítások nem önálló üzenetekként, hanem a rendszeren keresztül áramló adatfolyamként jelennek meg. Ha ezt a kötést használja, csak a küldő és a figyelő tekintheti meg az elküldött és fogadott üzenetek kialakítását. Az **netTCPRelay** -kötést használó relék esetében az összes adattal adatfolyamként kezeli a számlázandó üzenetek kiszámítását. Ebben az esetben a Service Bus 5 percenként kiszámítja az egyes továbbításokon keresztül küldött vagy fogadott adatmennyiséget. Ezt követően a 64 KB-ra osztja el az összes adatmennyiséget, hogy meghatározza a továbbításhoz tartozó számlázandó üzenetek számát az adott időszakban.
 
 ## <a name="quotas"></a>Kvóták
-| Kvóta neve | Scope |  Megjegyzések | Érték |
+| Kvóta neve | Scope |  Megjegyzések | Value |
 | --- | --- | --- | --- |
-| A továbbítási egyidejű figyelők |Entitás |További kapcsolatok későbbi kérelmeket a rendszer elutasítja, és a hívó kód által fogadott kivétel. |25 |
-| Egyidejű kapcsolatok egy szolgáltatási névtér összes továbbítási végpontok száma |Névtér |- |5,000 |
-| Szolgáltatásnévtér továbbítási végpontra |Névtér |- |10,000 |
-| Üzenet mérete a [NetOnewayRelayBinding](/dotnet/api/microsoft.servicebus.netonewayrelaybinding) és [NetEventRelayBinding](/dotnet/api/microsoft.servicebus.neteventrelaybinding) továbbítókat |Névtér |Ezek a kvóták túllépéséből bejövő üzenetek a rendszer elutasítja, és a hívó kód által fogadott kivétel. |64 KB |
-| Üzenet mérete a [HttpRelayTransportBindingElement](/dotnet/api/microsoft.servicebus.httprelaytransportbindingelement) és [NetTcpRelayBinding](/dotnet/api/microsoft.servicebus.nettcprelaybinding) továbbítókat |Névtér |Üzenet mérete nincs korlátozva. |Korlátlan |
+| Párhuzamos figyelők egy továbbítón |Entitás |A további kapcsolatokra vonatkozó további kérelmeket a rendszer elutasítja, és a hívó kód kivételt kap. |25 |
+| Egyidejű továbbítási kapcsolatok egy szolgáltatási névtér összes továbbítási végpontján |Névtér |- |5,000 |
+| Továbbító végpontok szolgáltatási névtérben |Névtér |- |10,000 |
+| Az üzenetek mérete a [NetOnewayRelayBinding](/dotnet/api/microsoft.servicebus.netonewayrelaybinding) és a [NetEventRelayBinding](/dotnet/api/microsoft.servicebus.neteventrelaybinding) relék számára |Névtér |Az ezeket a kvótákat meghaladó bejövő üzenetek elutasításra kerülnek, és a hívó kód kivételt kap. |64 KB |
+| Az üzenetek mérete a [HttpRelayTransportBindingElement](/dotnet/api/microsoft.servicebus.httprelaytransportbindingelement) és a [NetTcpRelayBinding](/dotnet/api/microsoft.servicebus.nettcprelaybinding) relék számára |Névtér |Nincs korlátozva az üzenetek mérete. |Korlátlan |
 
-### <a name="does-relay-have-any-usage-quotas"></a>Rendelkezik-e Relay használati kvóták?
-Alapértelmezés szerint minden olyan felhőalapú szolgáltatás, a Microsoft ügyfél-előfizetések összes számított egy összesített havi használati kvóta állítja be. Tisztában vagyunk vele, hogy időnként igényeinek meghaladhatja ezeket a korlátokat. Forduljon ügyfélszolgálat bármikor, ezért azt igényeinek, és ennek megfelelően módosítsa ezeket a korlátokat. A Service Bus az összesített használati kvóták a következők:
+### <a name="does-relay-have-any-usage-quotas"></a>A továbbító rendelkezik használati kvótával?
+Alapértelmezés szerint bármely felhőalapú szolgáltatás esetében a Microsoft egy összesített havi használati kvótát állít be, amelyet az ügyfél összes előfizetése alapján számítunk fel. Megértettük, hogy az igényeknek megfelelően előfordulhat, hogy túllépik ezeket a korlátokat. Bármikor felveheti a kapcsolatot az ügyfélszolgálattal, így tisztában lehet az igényeivel, és megfelelően módosíthatja ezeket a korlátokat. Service Bus esetében az összesített használati kvóták a következők:
 
-* 5 milliárd üzenetek
-* 2 millió továbbítási óra
+* 5 000 000 000 üzenet
+* 2 000 000 továbbítási idő
 
-Bár a fenntartjuk a jogot arra, hogy tiltsa le, amely meghaladja a havi használati kvóták, értesítő e-mailt kínálunk, és azt, hogy több megkísérel kapcsolatba lépni az ügyfél előtt műveleteknél véve. Ezek a kvóták túllépéséből ügyfelek továbbra is felelős további díjak.
+Habár fenntartjuk a jogot arra, hogy letiltson egy olyan fiókot, amely meghaladja a havi használati kvótát, e-mailes értesítést biztosítunk, és a művelet megkezdése előtt több kísérletet is teszünk az ügyféllel való kapcsolatfelvételre. Azok az ügyfelek, akik túllépik ezeket a kvótákat, továbbra is felelősek a költségekért.
 
-### <a name="naming-restrictions"></a>Vonatkozó elnevezési korlátozás
-A Relay-névtér neve 6 és 50 karakter hosszúságúnak kell lennie.
+### <a name="naming-restrictions"></a>Elnevezési korlátozások
+A továbbítási névtér nevének 6 és 50 karakter közöttinek kell lennie.
 
-## <a name="subscription-and-namespace-management"></a>Előfizetés és a névtér-kezelés
-### <a name="how-do-i-migrate-a-namespace-to-another-azure-subscription"></a>Hogyan migrálhatom a névtér egy másik Azure-előfizetésre?
+## <a name="subscription-and-namespace-management"></a>Előfizetés és névtér kezelése
+### <a name="how-do-i-migrate-a-namespace-to-another-azure-subscription"></a>Hogyan áttelepíteni egy névteret egy másik Azure-előfizetésbe?
 
-A névtér egy Azure-előfizetésből áthelyezése egy másik előfizetésben, használhatja a [az Azure portal](https://portal.azure.com) vagy a PowerShell-parancsokkal. Egy névtér áthelyezése egy másik előfizetést, a névtér már aktívnak kell lennie. A felhasználó a parancsok futtatása egy rendszergazda felhasználó a forrás és a cél előfizetések kell lennie.
+Ha egy névteret át szeretne helyezni egy Azure-előfizetésből egy másik előfizetésbe, használhatja a [Azure Portal](https://portal.azure.com) vagy használhatja a PowerShell-parancsokat. Ha egy névteret át szeretne helyezni egy másik előfizetésbe, a névtérnek már aktívnak kell lennie. A parancsokat futtató felhasználónak rendszergazdai felhasználónak kell lennie a forrás-és a cél előfizetésekben.
 
 #### <a name="azure-portal"></a>Azure Portal
 
-Az Azure portal segítségével Azure Relay-névterek áttelepítése másik előfizetésre egy előfizetésből, lásd: [erőforrások áthelyezése új erőforráscsoportba vagy előfizetésbe](../azure-resource-manager/resource-group-move-resources.md#use-the-portal). 
+Ha a Azure Portal használatával szeretné áttelepíteni Azure Relay névtereket az egyik előfizetésből egy másik előfizetésbe, olvassa el az [erőforrások áthelyezése új erőforráscsoporthoz vagy](../azure-resource-manager/resource-group-move-resources.md#use-the-portal)előfizetésbe című témakört. 
 
 #### <a name="powershell"></a>PowerShell
 
-A PowerShell használatával egy Azure-előfizetéssel névtér áthelyezése egy másik előfizetésben, használja a következő parancssorozat. Ez a művelet végrehajtásához a névtér már aktívnak kell lennie, és a PowerShell-parancsokat futtató felhasználónak kell lennie az előfizetések mind a forrás- és a egy rendszergazda felhasználó.
+Ha a PowerShell használatával szeretne áthelyezni egy névteret egy Azure-előfizetésből egy másik előfizetésbe, használja a következő parancsokat. A művelet végrehajtásához a névtérnek már aktívnak kell lennie, és a PowerShell-parancsokat futtató felhasználónak rendszergazdai felhasználónak kell lennie a forrás-és a cél előfizetésekben.
 
 ```azurepowershell-interactive
 # Create a new resource group in the target subscription.
@@ -124,14 +124,14 @@ Move-AzResource -DestinationResourceGroupName 'targetRG' -DestinationSubscriptio
 ```
 
 ## <a name="troubleshooting"></a>Hibaelhárítás
-### <a name="what-are-some-of-the-exceptions-generated-by-azure-relay-apis-and-suggested-actions-you-can-take"></a>Mik a kivételek Azure Relay API-k által létrehozott, és a javasolt műveletek végezhetők el?
-Gyakori kivételek és javasolt műveletek végezhetők el, olvassa el [kivételek továbbítási][Relay exceptions].
+### <a name="what-are-some-of-the-exceptions-generated-by-azure-relay-apis-and-suggested-actions-you-can-take"></a>Melyek a Azure Relay API-k által generált kivételek és a javasolt műveletek?
+A gyakori kivételek és a javasolt műveletek leírását a [továbbítási kivételek][Relay exceptions]című témakörben tekintheti meg.
 
-### <a name="what-is-a-shared-access-signature-and-which-languages-can-i-use-to-generate-a-signature"></a>Mi az a közös hozzáférésű jogosultságkódot, és milyen nyelveket használhatok aláírást létrehozni?
-A közös hozzáférésű Jogosultságkódok (SAS) olyan hitelesítési mechanizmust, SHA-256 biztonságos kivonatok vagy URI-k alapján. További információ a saját aláírásokat létrehozni az Node, PHP, Java, C és C#, lásd: [közös hozzáférésű jogosultságkódok használata a Service Bus-hitelesítés][Shared Access Signatures].
+### <a name="what-is-a-shared-access-signature-and-which-languages-can-i-use-to-generate-a-signature"></a>Mi a közös hozzáférési aláírás, és milyen nyelveket használhatok az aláírások létrehozásához?
+A közös hozzáférésű aláírások (SAS) az SHA-256 biztonságos kivonatokon vagy URI-kon alapuló hitelesítési mechanizmus. További információ a saját aláírások létrehozásáról a Node. js, a PHP, a Python, a Java, a C#C és a alkalmazásban: [Service Bus hitelesítés közös hozzáférési aláírásokkal][Shared Access Signatures].
 
-### <a name="is-it-possible-to-whitelist-relay-endpoints"></a>Az engedélyezési lista továbbítási végpontok is?
-Igen. A relay-ügyfél létesít kapcsolatot az Azure Relay szolgáltatás a teljes tartománynevek használatával. Ügyfelek adhat hozzá egy bejegyzés `*.servicebus.windows.net` a DNS-engedélyezési támogató tűzfalak.
+### <a name="is-it-possible-to-whitelist-relay-endpoints"></a>Lehetséges a továbbítási végpontok engedélyezési lehetősége?
+Igen. A továbbító ügyfél teljes tartománynevek használatával kapcsolatot létesít a Azure Relay szolgáltatással. Az ügyfelek hozzáadhatnak egy bejegyzést `*.servicebus.windows.net` a DNS-engedélyezési szolgáltatást támogató tűzfalakhoz.
 
 ## <a name="next-steps"></a>További lépések
 * [Névtér létrehozása](relay-create-namespace-portal.md)

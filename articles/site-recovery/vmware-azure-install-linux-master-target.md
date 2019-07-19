@@ -1,6 +1,6 @@
 ---
-title: Telepítse a Linuxos fő célkiszolgáló a feladat-visszavételhez helyszíni helyhez |} A Microsoft Docs
-description: Ismerje meg, hogyan állítható be egy Linux-fő célkiszolgálót egy helyszíni helyre történő feladat-visszavétel VMware virtuális gépek vészhelyreállítása az Azure-ban az Azure Site Recovery során.
+title: Linuxos fő célkiszolgáló telepítése feladat-visszavételhez helyszíni helyre | Microsoft Docs
+description: Megtudhatja, hogyan állíthat be egy linuxos fő célkiszolgáló számára a feladat-visszavételt egy helyszíni helyre, a VMware virtuális gépeknek az Azure-ba való vész-helyreállításával Azure Site Recovery használatával.
 author: mayurigupta13
 services: site-recovery
 manager: rochakm
@@ -8,222 +8,222 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 03/06/2019
 ms.author: mayg
-ms.openlocfilehash: efb49db6cce7ba238d40bf80ddf87b2a1a83834f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 062ed5e408317e95b36d6d0dfa395311ed4afe7f
+ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66479983"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68261431"
 ---
-# <a name="install-a-linux-master-target-server-for-failback"></a>Telepítse a Linuxos fő célkiszolgáló a feladat-visszavételhez
-Miután átadja a feladatokat a virtuális gépek az Azure-ba, visszaadhatja a virtuális gépek, a helyszíni helyre. Feladat-visszavételt, ismételt védelem a virtuális gép az Azure-ból a helyszíni helyre kell. Ez a folyamat szüksége lesz egy a helyszíni fő célkiszolgáló forgalom fogadására. 
+# <a name="install-a-linux-master-target-server-for-failback"></a>Linuxos fő célkiszolgáló telepítése feladat-visszavételhez
+A virtuális gépek Azure-ba történő feladatátvétele után a virtuális gépeket a helyszíni helyre is visszaállíthatja. A feladat-visszavétel érdekében újra kell telepítenie a virtuális gépet az Azure-ból a helyszíni helyre. Ehhez a folyamathoz egy helyszíni fő célkiszolgáló szükséges a forgalom fogadásához. 
 
-Ha a védett virtuális gépet egy Windows virtuális gépet, majd meg kell egy Windows fő célkiszolgáló. Linuxos virtuális gép szüksége lesz egy Linux rendszerű fő célkiszolgálót. Olvassa el az alábbi lépések végrehajtásával megtudhatja, hogyan hozhat létre, és a Linuxos fő célkiszolgáló telepítéséhez.
+Ha a védett virtuális gép egy Windows rendszerű virtuális gép, akkor szükség van egy Windows fő tárolóra. Linux rendszerű virtuális gépek esetén Linux fő célpontra van szükség. A következő lépésekből megtudhatja, hogyan hozhat létre és telepíthet linuxos fő célt.
 
 > [!IMPORTANT]
-> A 9.10.0 kiadásával kezdődően fő célkiszolgálót a legújabb fő célkiszolgáló csak telepíthető egy Ubuntu 16.04-kiszolgálón. Új telepítések CentOS6.6 kiszolgálókon nem engedélyezett. Azonban továbbra is a régi fő célkiszolgálók frissítése a 9.10.0 használatával verzió.
+> A 9.10.0 fő célkiszolgáló kiadásával kezdődően a legújabb fő célkiszolgáló csak Ubuntu 16,04-kiszolgálóra telepíthető. Az új telepítések nem engedélyezettek CentOS 6.6-kiszolgálókon. A régi fő célkiszolgáló azonban továbbra is frissíthető a 9.10.0 verziójának használatával.
 > Az LVM fő célkiszolgáló nem támogatott.
 
 ## <a name="overview"></a>Áttekintés
-Ez a cikk ismerteti a Linuxos fő célkiszolgáló telepítése.
+Ez a cikk útmutatást nyújt a Linux fő célhelyének telepítéséhez.
 
-Megjegyzéseit vagy kérdéseit közzététele Ez a cikk vagy a végén a [Azure Recovery Services fórumon](https://social.msdn.microsoft.com/forums/azure/home?forum=hypervrecovmgr).
+A cikk végén vagy az [Azure Recovery Services fórumán](https://social.msdn.microsoft.com/forums/azure/home?forum=hypervrecovmgr)megjegyzéseket vagy kérdéseket tehet közzé.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* A gazdagépen, amelyen a fő célkiszolgáló telepítéséhez kiválasztásához határozza meg, ha a feladat-visszavételi topológiában a helyszíni virtuális gép vagy egy új virtuális gépet. 
-    * Egy meglévő virtuális gép esetében a gazdagép a fő célkiszolgáló hozzáféréssel kell rendelkeznie a virtuális gép adattárakban.
-    * Ha a helyszíni virtuális gép nem létezik (esetén helyreállítást másik helyre), a feladat-visszavételi virtuális gép jön létre a fő célkiszolgáló ugyanazon a gazdagépen. Minden ESXi-gazdagép, a fő célkiszolgáló telepítéséhez választhat.
-* A fő célkiszolgálón, amely a folyamatkiszolgáló és a konfigurációs kiszolgáló képes kommunikálni a hálózaton kell lennie.
-* A fő célkiszolgáló verziója korábbi, mint a folyamatkiszolgáló és a konfigurációs kiszolgáló verziója vagy azzal egyenlőnek kell lennie. Például ha a konfigurációs kiszolgáló verziója 9.4, a fő célkiszolgáló verziója lehet 9.4 vagy 9.3, de nem 9,5.
-* A fő célkiszolgáló csak lehet, VMware virtuális gépeket és a egy fizikai kiszolgáló.
+* Annak a gazdagépnek a kiválasztásához, amelyre a fő célt telepíteni szeretné, állapítsa meg, hogy a feladat-visszavételi feladat egy meglévő helyszíni virtuális gép vagy egy új virtuális gép számára lesz-e. 
+    * Egy meglévő virtuális gép esetében a fő célként megadott gazdagépnek hozzáféréssel kell rendelkeznie a virtuális gép adattárához.
+    * Ha a helyszíni virtuális gép nem létezik (másodlagos hely helyreállítása esetén), a feladat-visszavételi virtuális gép ugyanazon a gazdagépen jön létre, mint a fő célként. Bármelyik ESXi-gazdagépet kiválaszthatja a fő cél telepítéséhez.
+* A fő célként olyan hálózaton kell lennie, amely képes kommunikálni a Process Serverrel és a konfigurációs kiszolgálóval.
+* A fő célként megadott verziónak egyenlőnek vagy annál korábbinak kell lennie a Process Server és a konfigurációs kiszolgáló verziójánál. Ha például a konfigurációs kiszolgáló verziója 9,4, akkor a fő cél verziója 9,4 vagy 9,3, de nem 9,5.
+* A fő cél csak VMware virtuális gép lehet, és nem fizikai kiszolgáló.
 
-## <a name="sizing-guidelines-for-creating-master-target-server"></a>Méretezési útmutatójának a fő célkiszolgáló létrehozása
+## <a name="sizing-guidelines-for-creating-master-target-server"></a>A fő célkiszolgáló létrehozásához szükséges Méretezési irányelvek
 
-Hozza létre a fő célkiszolgáló megfelelően a méretezése a következőkre:
+Hozza létre a fő célt a következő méretezési irányelveknek megfelelően:
 - **RAM**: 6 GB vagy több
-- **Operációsrendszer-lemez mérete**: 100 GB vagy több (az operációs rendszer telepítése)
-- **Adatmegőrzési meghajtó méretét további**: 1 TB
-- **CPU-magok**: 4 mag, vagy több
+- **Operációsrendszer-lemez mérete**: 100 GB vagy több (az operációs rendszer telepítéséhez)
+- **További lemez mérete az adatmegőrzési meghajtó számára**: 1 TB
+- **CPU-magok**: 4 mag vagy több
 
-A következő Ubuntu kernelekkel támogatottak.
+A következő Ubuntu-kernelek támogatottak.
 
 
-|Kernel-sorozat  |Legfeljebb  |
+|Kernel sorozat  |Támogatás legfeljebb  |
 |---------|---------|
 |4.4      |4.4.0-81-generic         |
 |4.8      |4.8.0-56-generic         |
-|4.10     |4.10.0-24-generic        |
+|4.10     |4.10.0 – 24 – általános        |
 
 
-## <a name="deploy-the-master-target-server"></a>A fő célkiszolgáló telepítése
+## <a name="deploy-the-master-target-server"></a>A fő célkiszolgáló üzembe helyezése
 
-### <a name="install-ubuntu-16042-minimal"></a>Ubuntu 16.04.2 telepítése minimális
+### <a name="install-ubuntu-16042-minimal"></a>Az Ubuntu 16.04.2 minimális telepítése
 
-Vegye figyelembe a következőket az Ubuntu 16.04.2 64 bites operációs rendszer telepítésének lépéseit.
+Hajtsa végre az alábbi lépéseket az Ubuntu 16.04.2 64 bites operációs rendszer telepítéséhez.
 
-1.   Nyissa meg a [letöltési hivatkozás](http://old-releases.ubuntu.com/releases/16.04.2/ubuntu-16.04.2-server-amd64.iso), válassza a legközelebbi tükrözött, és töltse le egy Ubuntu 16.04.2 minimális 64-bit ISO.
-Egy Ubuntu 16.04.2 minimális 64-bit ISO tartsa a DVD-meghajtóba, és indítsa el a rendszer.
+1.   Nyissa meg a [letöltési hivatkozást](http://old-releases.ubuntu.com/releases/16.04.2/ubuntu-16.04.2-server-amd64.iso), válassza ki a legközelebbi tükrözést, és töltse le az Ubuntu 16.04.2 minimális 64 bites ISO-t.
+Tartsa meg az Ubuntu 16.04.2 minimális 64 bites ISO-t a DVD-meghajtón, és indítsa el a rendszerét.
 
-1.  Válassza ki **angol** a választott nyelven, és válassza ki, **Enter**.
+1.  Válassza az **angol** nyelvet előnyben részesített nyelvként, majd válassza az **ENTER billentyűt**.
     
     ![Válasszon nyelvet](./media/vmware-azure-install-linux-master-target/image1.png)
-1. Válassza ki **Ubuntu Server telepítése**, majd válassza ki **Enter**.
+1. Válassza az **Ubuntu Server telepítése**lehetőséget, majd válassza az **ENTER billentyűt**.
 
-    ![Válassza ki az Ubuntu Server telepítése](./media/vmware-azure-install-linux-master-target/image2.png)
+    ![Válassza az Ubuntu Server telepítése lehetőséget.](./media/vmware-azure-install-linux-master-target/image2.png)
 
-1.  Válassza ki **angol** a választott nyelven, és válassza ki, **Enter**.
+1.  Válassza az **angol** nyelvet előnyben részesített nyelvként, majd válassza az **ENTER billentyűt**.
 
-    ![Válassza ki az angol, a választott nyelven](./media/vmware-azure-install-linux-master-target/image3.png)
+    ![Válassza ki az angolt az előnyben részesített nyelvként](./media/vmware-azure-install-linux-master-target/image3.png)
 
-1. Válassza ki a megfelelő lehetőséget a **időzóna** lehetőségek listájából, és válassza ki **Enter**.
+1. Válassza ki a megfelelő lehetőséget az **időzóna** beállításai listából, majd válassza az **ENTER billentyűt**.
 
-    ![Válassza ki a megfelelő időzónában](./media/vmware-azure-install-linux-master-target/image4.png)
+    ![Válassza ki a megfelelő időzónát](./media/vmware-azure-install-linux-master-target/image4.png)
 
-1. Válassza ki **nem** (az alapértelmezett beállítás), majd válassza ki **Enter**.
+1. Válassza a **nem** (az alapértelmezett beállítás) lehetőséget, majd válassza az **ENTER billentyűt**.
 
      ![A billentyűzet konfigurálása](./media/vmware-azure-install-linux-master-target/image5.png)
-1. Válassza ki **angol (amerikai)** a billentyűzet, majd válassza ki a származási ország/régió szerint **Enter**.
+1. Válassza az **angol (amerikai)** lehetőséget a billentyűzet származási országa/régiója számára, majd válassza az **ENTER**gombot.
 
-1. Válassza ki **angol (amerikai)** a billentyűzetkiosztás, és válassza ki, **Enter**.
+1. Válassza az **angol (US)** billentyűzetkiosztást, majd az **ENTER billentyűt**.
 
-1. Adja meg az állomásnevet a kiszolgáló számára a **állomásnév** mezőbe, majd válassza ki **Folytatás**.
+1. Adja meg a kiszolgáló állomásnevét a hostname ( **állomásnév** ) mezőben, majd kattintson a **Continue (folytatás**) gombra.
 
-1. Hozzon létre egy felhasználói fiókot, adja meg a felhasználónevet, és válassza **Folytatás**.
+1. Felhasználói fiók létrehozásához adja meg a felhasználónevet, majd kattintson a **Continue (folytatás**) gombra.
 
       ![Felhasználói fiók létrehozása](./media/vmware-azure-install-linux-master-target/image9.png)
 
-1. Adja meg az új felhasználói fiók jelszavát, és válassza **Folytatás**.
+1. Adja meg az új felhasználói fiók jelszavát, majd kattintson a **Continue (folytatás**) gombra.
 
-1.  Az új felhasználó jelszavát, és válassza ki **Folytatás**.
+1.  Erősítse meg az új felhasználó jelszavát, majd kattintson a **Continue (folytatás**) gombra.
 
-    ![A jelszó megerősítése](./media/vmware-azure-install-linux-master-target/image11.png)
+    ![A jelszavak megerősítése](./media/vmware-azure-install-linux-master-target/image11.png)
 
-1.  A következő kijelölés a kezdőkönyvtár titkosításához, jelölje be a **nem** (az alapértelmezett beállítás), majd válassza ki **Enter**.
+1.  A kezdőkönyvtár titkosításának következő kiválasztásakor válassza a **nem** (az alapértelmezett beállítás) lehetőséget, majd válassza az **ENTER billentyűt**.
 
-1. Ha az adott időzóna megjelenített megfelelő, válassza ki a **Igen** (az alapértelmezett beállítás), majd válassza ki **Enter**. Konfigurálja újra az időzónát, jelölje be **nem**.
+1. Ha a megjelenő időzóna helyes, válassza az **Igen** (az alapértelmezett beállítás) lehetőséget, majd válassza az **ENTER billentyűt**. Az időzóna újrakonfigurálásához válassza a **nem**lehetőséget.
 
-1. Az particionálási mód közül válassza ki a **interaktív – használja a teljes lemez**, majd válassza ki **Enter**.
+1. A particionálási módszer beállításainál válassza az **irányított – teljes lemez használata**lehetőséget, majd válassza az **ENTER billentyűt**.
 
-     ![Válassza a particionálási mód](./media/vmware-azure-install-linux-master-target/image14.png)
+     ![Válassza ki a particionálási módszer beállítást.](./media/vmware-azure-install-linux-master-target/image14.png)
 
-1.  Válassza ki a megfelelő lemezt a **válassza lemez partíció** lehetőségeket, és válassza ki **Enter**.
+1.  Válassza ki a megfelelő lemezt a **lemez kiválasztása** a particionáláshoz lehetőségre, majd válassza az **ENTER billentyűt**.
 
     ![Válassza ki a lemezt](./media/vmware-azure-install-linux-master-target/image15.png)
 
-1.  Válassza ki **Igen** írni lemezre, és válassza ki a módosítások **Enter**.
+1.  Válassza az **Igen** lehetőséget a lemez módosításainak írásához, majd válassza az **ENTER billentyűt**.
 
-    ![Válassza ki az alapértelmezett beállítás](./media/vmware-azure-install-linux-master-target/image16-ubuntu.png)
+    ![Válassza az alapértelmezett lehetőséget](./media/vmware-azure-install-linux-master-target/image16-ubuntu.png)
 
-1.  Válassza ki a configure proxy kijelölés, válassza ki az alapértelmezett beállítás **Folytatás**, majd válassza ki **Enter**.
+1.  A proxy kiválasztása beállításnál válassza az alapértelmezett beállítást, válassza a **Folytatás**lehetőséget, majd kattintson az **ENTER**gombra.
      
-     ![Válassza ki a frissítések kezelése](./media/vmware-azure-install-linux-master-target/image17-ubuntu.png)
+     ![Válassza ki a frissítések kezelésének módját](./media/vmware-azure-install-linux-master-target/image17-ubuntu.png)
 
-1.  Válassza ki **nincs automatikus frissítések** a kijelölt frissítéseket a rendszer kezelése lehetőséget, majd válassza ki **Enter**.
+1.  Válassza a **nincs automatikus frissítés** lehetőséget a rendszeren a frissítések kezeléséhez, majd válassza az **ENTER billentyűt**.
 
-     ![Válassza ki a frissítések kezelése](./media/vmware-azure-install-linux-master-target/image18-ubuntu.png)
+     ![Válassza ki a frissítések kezelésének módját](./media/vmware-azure-install-linux-master-target/image18-ubuntu.png)
 
     > [!WARNING]
-    > Az Azure Site Recovery fő célkiszolgáló az Ubuntu jellemző verziója szükséges, mert annak érdekében, hogy a kernel verziófrissítések le vannak tiltva, a virtuális gép szüksége. Ha engedélyezve vannak, a rendszeres megjelenjenek a fő célkiszolgáló hibás működését miatt. Mindenképpen jelölje ki a **nincs automatikus frissítések** lehetőséget.
+    > Mivel a Azure Site Recovery fő célkiszolgáló az Ubuntu nagyon konkrét verzióját igényli, gondoskodnia kell arról, hogy a kernel frissítései le legyenek tiltva a virtuális gépen. Ha engedélyezve vannak, akkor minden rendszeres frissítés a fő célkiszolgáló meghibásodását okozza. Győződjön meg arról, hogy a **nincs automatikus frissítés** lehetőséget választotta.
 
-1.  Válassza ki az alapértelmezett beállításokat. Ha openSSH SSH csatlakozás vonatkozó, jelölje be a **OpenSSH-server** lehetőséget, majd válassza ki **Folytatás**.
+1.  Válassza az alapértelmezett beállítások lehetőséget. Ha az openSSH-t SSH-kapcsolathoz szeretné használni, válassza az **OpenSSH-kiszolgáló** lehetőséget, majd kattintson a **Continue (folytatás**) gombra.
 
-    ![Válassza ki a szoftver](./media/vmware-azure-install-linux-master-target/image19-ubuntu.png)
+    ![Szoftver kiválasztása](./media/vmware-azure-install-linux-master-target/image19-ubuntu.png)
 
-1. Válassza ki a grub-HIBÁT rendszertöltő telepítéséhez a kijelölt, **Igen**, majd válassza ki **Enter**.
+1. A GRUB boot loader telepítéséhez válassza az **Igen**, majd az **ENTER**gombot.
      
-    ![GRUB rendszerindító telepítő](./media/vmware-azure-install-linux-master-target/image20.png)
+    ![GRUB rendszerindítási telepítő](./media/vmware-azure-install-linux-master-target/image20.png)
 
 
-1. Válassza ki a megfelelő eszköz, a rendszerindító betöltő telepítés (lehetőleg **/dev/sda**), majd válassza ki **Enter**.
+1. Válassza ki a megfelelő eszközt a rendszerindító betöltő telepítéséhez (lehetőleg **/dev/sda**), majd válassza az **ENTER billentyűt**.
      
-    ![Válassza ki a megfelelő eszköz](./media/vmware-azure-install-linux-master-target/image21.png)
+    ![Válassza ki a megfelelő eszközt](./media/vmware-azure-install-linux-master-target/image21.png)
 
-1. Válassza ki **Folytatás**, majd válassza ki **Enter** telepítésének befejezéséhez.
+1. Válassza a **Folytatás**lehetőséget, majd kattintson az **ENTER** gombra a telepítés befejezéséhez.
 
     ![A telepítés befejezése](./media/vmware-azure-install-linux-master-target/image22.png)
 
-1. Miután a telepítés befejeződött, jelentkezzen be a virtuális Gépet az új felhasználói hitelesítő adatokkal. (Tekintse meg **10. lépésében** további információt.)
+1. A telepítés befejezése után jelentkezzen be a virtuális gépre az új felhasználói hitelesítő adatokkal. (További információért tekintse meg a **10. lépést** .)
 
-1. Használja az alábbi képernyőképen a felhasználó jelszót állíthat be a legfelső szintű leírt lépéseket. Ezután jelentkezzen be GYÖKÉRSZINTŰ felhasználóként.
+1. A ROOT felhasználói jelszó beállításához kövesse az alábbi képernyőképen leírt lépéseket. Ezután jelentkezzen be ROOT felhasználóként.
 
-    ![A legfelső szintű felhasználói jelszó beállítása](./media/vmware-azure-install-linux-master-target/image23.png)
+    ![A gyökér felhasználói jelszavának beállítása](./media/vmware-azure-install-linux-master-target/image23.png)
 
 
-### <a name="configure-the-machine-as-a-master-target-server"></a>A gép egy fő célkiszolgáló konfigurálása
+### <a name="configure-the-machine-as-a-master-target-server"></a>A gép konfigurálása fő célkiszolgálóként
 
-A Linux rendszerű virtuális gépen, minden egyes SCSI merevlemez Azonosítójának lekéréséhez a **lemez. EnableUUID = TRUE** paramétert meg kell engedélyezni. Ahhoz, hogy ezt a paramétert, a következő lépéseket:
+Az egyes SCSI-merevlemezek AZONOSÍTÓjának lekéréséhez egy Linux rendszerű virtuális gépen, a **lemezen. A EnableUUID = TRUE** paramétert engedélyezni kell. A paraméter engedélyezéséhez hajtsa végre a következő lépéseket:
 
 1. Állítsa le a virtuális gépet.
 
-2. Kattintson a jobb gombbal a virtuális gép a bal oldali ablaktáblán a bejegyzést, és válassza **beállításainak szerkesztése**.
+2. Kattintson a jobb gombbal a virtuális gép bejegyzésére a bal oldali ablaktáblán, majd válassza a **beállítások szerkesztése**menüpontot.
 
-3. Válassza ki a **beállítások** fülre.
+3. Válassza a **Beállítások** lapot.
 
-4. A bal oldali panelen válassza ki a **speciális** > **általános**, majd válassza ki a **konfigurációs paramétereket** gombra a képernyő jobb alsó részén.
+4. A bal oldali ablaktáblán válassza a **speciális** > **általános**lehetőséget, majd a képernyő jobb alsó részén kattintson a **konfigurációs paraméterek** gombra.
 
-    ![Nyissa meg a konfigurációs paraméter](./media/vmware-azure-install-linux-master-target/image24-ubuntu.png) 
+    ![Konfigurációs paraméter megnyitása](./media/vmware-azure-install-linux-master-target/image24-ubuntu.png) 
 
-    A **konfigurációs paramétereket** lehetőség nem érhető el, ha a gép fut-e. Ahhoz, hogy ezen a lapon aktív, a virtuális gép leállítása.
+    A **konfigurációs paraméterek** beállítás nem érhető el, ha a gép fut. A Lap aktívvá tételéhez állítsa le a virtuális gépet.
 
-5. Tekintse meg, hogy a sor **lemez. EnableUUID** már létezik.
+5. Ellenőrizze, hogy van-e egy sor **lemezrel. A EnableUUID** már létezik.
 
-   - Ha az érték létezik, és értékre van állítva **hamis**, módosítsa az értéket **igaz**. (Az értékek nem kis-és nagybetűket.)
+   - Ha az érték létezik, és false ( **hamis**) értékre van állítva, módosítsa az értéket **igaz**értékre. (Az értékek nem megkülönböztetik a kis-és nagybetűket.)
 
-   - Ha az érték létezik, és értékre van állítva **igaz**válassza **Mégse**.
+   - Ha az érték létezik, és a értéke **true (igaz**), válassza a **Mégse**gombot.
 
-   - Ha az érték nem létezik, válassza ki a **sor hozzáadása**.
+   - Ha az érték nem létezik, válassza a **sor hozzáadása**lehetőséget.
 
-   - A név oszlop hozzáadása **lemez. EnableUUID**, majd állítsa az értékét, és **igaz**.
+   - A név oszlopban adja hozzá a **lemezt. EnableUUID**, majd állítsa **igaz**értékre az értéket.
 
-     ![Annak ellenőrzése e a lemezen. EnableUUID már létezik.](./media/vmware-azure-install-linux-master-target/image25.png)
+     ![Annak ellenőrzése, hogy a lemez. A EnableUUID már létezik](./media/vmware-azure-install-linux-master-target/image25.png)
 
-#### <a name="disable-kernel-upgrades"></a>Tiltsa le a kernel-frissítések
+#### <a name="disable-kernel-upgrades"></a>Kernel-frissítések letiltása
 
-Az Azure Site Recovery fő célkiszolgáló szükséges egy adott verzióját az Ubuntu, győződjön meg arról, hogy a kernel frissítéseket le vannak tiltva, a virtuális gép. Ha kernel frissítések engedélyezve vannak, a fő célkiszolgáló hibás működését okozhat.
+Azure Site Recovery fő célkiszolgáló az Ubuntu adott verzióját igényli, gondoskodjon arról, hogy a kernel frissítései le legyenek tiltva a virtuális gépen. Ha a kernel frissítése engedélyezve van, akkor a fő célkiszolgáló meghibásodását okozhatja.
 
 #### <a name="download-and-install-additional-packages"></a>További csomagok letöltése és telepítése
 
 > [!NOTE]
-> Győződjön meg arról, hogy van-e internetkapcsolat további csomagok letöltése és telepítése. Ha nem rendelkezik internetkapcsolattal, kell manuálisan keresse meg ezeket a Deb-csomagokat, és telepítse őket.
+> Ellenőrizze, hogy van-e internetkapcsolata további csomagok letöltéséhez és telepítéséhez. Ha nem rendelkezik internetkapcsolattal, ezeket a deb-csomagokat manuálisan kell megkeresnie, és telepítenie kell őket.
 
  `apt-get install -y multipath-tools lsscsi python-pyasn1 lvm2 kpartx`
 
-### <a name="get-the-installer-for-setup"></a>A telepítő a telepítő beolvasása
+### <a name="get-the-installer-for-setup"></a>A telepítő telepítőjének beszerzése
 
-Ha a fő célkiszolgáló rendelkezik internetkapcsolattal, a következő lépések segítségével töltse le a telepítőt. Ellenkező esetben másolja a telepítőt a folyamatkiszolgálóról, majd telepítse.
+Ha a fő célként internetkapcsolat is van, a következő lépésekkel töltheti le a telepítőt. Ellenkező esetben a telepítőt a Process Serverről másolhatja, majd telepítheti.
 
-#### <a name="download-the-master-target-installation-packages"></a>Töltse le a fő célkiszolgáló telepítési csomagok
+#### <a name="download-the-master-target-installation-packages"></a>A fő cél telepítési csomagjainak letöltése
 
-[Töltse le a legújabb Linux rendszerű fő célkiszolgáló telepítése bits](https://aka.ms/latestlinuxmobsvc).
+[Töltse le a legújabb Linux fő cél telepítési biteket](https://aka.ms/latestlinuxmobsvc).
 
-Letöltheti a Linux használatával, írja be:
+A Linux használatával történő letöltéséhez írja be a következőt:
 
 `wget https://aka.ms/latestlinuxmobsvc -O latestlinuxmobsvc.tar.gz`
 
 > [!WARNING]
-> Győződjön meg arról, hogy töltse le és csomagolja ki a telepítő a kezdőkönyvtárban. Ha, csomagolja ki, hogy **/usr/Local**, majd a telepítés sikertelen lesz.
+> Győződjön meg arról, hogy letöltötte és kicsomagolja a telepítőt a saját könyvtárában. Ha kibontja a **/usr/local**-t, akkor a telepítés sikertelen lesz.
 
 
-#### <a name="access-the-installer-from-the-process-server"></a>A telepítő a folyamatkiszolgálóról hozzáférés
+#### <a name="access-the-installer-from-the-process-server"></a>A telepítő elérése a Process Serverről
 
-1. A folyamatkiszolgáló, lépjen a **C:\Program Files (x86) \Microsoft Azure Site Recovery\home\svsystems\pushinstallsvc\repository**.
+1. A Process Serveren lépjen a **C:\Program Files (x86) \Microsoft Azure site Recovery\home\svsystems\pushinstallsvc\repository**.
 
-2. Másolja a szükséges telepítőfájl a folyamatkiszolgáló, és mentse a fájt **latestlinuxmobsvc.tar.gz** a kezdőkönyvtárban.
+2. Másolja a szükséges telepítőfájlt a Process Server rendszerből, és mentse a **latestlinuxmobsvc. tar. gz** néven a saját könyvtárába.
 
 
 ### <a name="apply-custom-configuration-changes"></a>Egyéni konfigurációs módosítások alkalmazása
 
-Egyéni konfigurációs módosítások alkalmazásához, használja az alábbi lépéseket:
+Az egyéni konfigurációs módosítások alkalmazásához kövesse az alábbi lépéseket:
 
 
-1. A következő parancsot a bináris untar.
+1. Futtassa a következő parancsot a bináris fájl untar.
 
     `tar -zxvf latestlinuxmobsvc.tar.gz`
 
-    ![Képernyőkép a parancs futtatása](./media/vmware-azure-install-linux-master-target/image16.png)
+    ![A futtatandó parancs képernyőképe](./media/vmware-azure-install-linux-master-target/image16.png)
 
-2. Futtassa a következő parancsot az engedélyt.
+2. A következő parancs futtatásával adja meg az engedélyt.
 
     `chmod 755 ./ApplyCustomChanges.sh`
 
@@ -233,49 +233,49 @@ Egyéni konfigurációs módosítások alkalmazásához, használja az alábbi l
     `./ApplyCustomChanges.sh`
 
 > [!NOTE]
-> Csak egyszer a szkript futtatása a kiszolgálón. Ezután állítsa le a kiszolgálót. Indítsa újra a kiszolgálót egy lemezt, hozzáadása után a következő szakaszban leírtak szerint.
+> Csak egyszer futtassa a parancsfájlt a kiszolgálón. Ezután állítsa le a kiszolgálót. A lemez hozzáadása után indítsa újra a kiszolgálót a következő szakaszban leírtak szerint.
 
-### <a name="add-a-retention-disk-to-the-linux-master-target-virtual-machine"></a>Adatmegőrzési lemez hozzáadása a Linuxos fő célkiszolgáló virtuális géphez
+### <a name="add-a-retention-disk-to-the-linux-master-target-virtual-machine"></a>Adatmegőrzési lemez hozzáadása a Linux fő célként szolgáló virtuális géphez
 
-A következő lépések segítségével hozzon létre egy adatmegőrzési lemez:
+Adatmegőrzési lemez létrehozásához kövesse az alábbi lépéseket:
 
-1. 1 TB-os új lemez csatolása a Linuxos fő célkiszolgáló virtuális géphez, és indítsa el a gépet.
+1. Csatoljon egy új 1 TB-os lemezt a Linux fő célként szolgáló virtuális géphez, majd indítsa el a gépet.
 
-2. Használja a **z-a többutas összes** parancsot az adatmegőrzési lemez többutas azonosítója további: **z-a többutas összes**
+2. Az adatmegőrzési lemez többutas AZONOSÍTÓjának megismeréséhez használja a **többutas-ll** parancsot: **többutas-ll**
 
-    ![A többutas azonosítója](./media/vmware-azure-install-linux-master-target/image27.png)
+    ![Többutas azonosító](./media/vmware-azure-install-linux-master-target/image27.png)
 
-3. Formázza a meghajtót, és hozza létre az operációs rendszer az új meghajtó: **mkfs.ext4 /dev/eseményleképező/< adatmegőrzési lemez többutas azonosítója >** .
+3. Formázza a meghajtót, majd hozzon létre egy fájlrendszert az új meghajtón: **mkfs. ext4\</dev/Mapper/adatmegőrzési lemez többutas azonosító >** .
     
     ![Fájlrendszer](./media/vmware-azure-install-linux-master-target/image23-centos.png)
 
-4. Miután létrehozta a fájlrendszer, csatlakoztassa az adatmegőrzési lemez.
+4. A fájlrendszer létrehozása után csatlakoztassa az adatmegőrzési lemezt.
 
     ```
     mkdir /mnt/retention
     mount /dev/mapper/<Retention disk's multipath id> /mnt/retention
     ```
 
-5. Hozzon létre a **fstab** bejegyzés az adatmegőrzési meghajtó csatlakoztatása a rendszer minden indításakor.
+5. Hozza létre az **fstab** -bejegyzést úgy, hogy a számítógép minden indításakor csatlakoztassa az adatmegőrzési meghajtót.
     
     `vi /etc/fstab`
     
-    Válassza ki **beszúrása** a fájl szerkeszthető. Hozzon létre egy új sort, és helyezze be a következő szöveget. Szerkessze a többutas Lemezazonosítót az előző parancs által kiemelt többutas azonosítója alapján.
+    A fájl szerkesztésének megkezdéséhez kattintson a **Beszúrás** gombra. Hozzon létre egy új sort, majd szúrja be a következő szöveget. Szerkessze a lemez többutas AZONOSÍTÓját az előző parancs kijelölt többutas AZONOSÍTÓjának alapján.
 
-    **/dev/eseményleképező/\<adatmegőrzési lemez többutas azonosítója >/mnt/megőrzési ext4 rw 0 0**
+    **/dev/Mapper/\<adatmegőrzési lemezek többutas azonosítója >/mnt/Retention ext4 RW 0 0**
 
-    Válassza ki **Esc**, majd írja be **: wq** (írás és kilépés) gombra kattintva zárja be a szerkesztő ablakot.
+    Válassza az **ESC**lehetőséget, majd írja be a következőt **: wq** (írás és Kilépés) a szerkesztő ablak bezárásához.
 
-### <a name="install-the-master-target"></a>A fő célkiszolgáló telepítése
+### <a name="install-the-master-target"></a>A fő cél telepítése
 
 > [!IMPORTANT]
-> A fő célkiszolgáló verziója korábbi, mint a folyamatkiszolgáló és a konfigurációs kiszolgáló verziója vagy azzal egyenlőnek kell lennie. Ha ez a feltétel nem teljesül, a védelem-újrabeállítás sikeres, de a replikáció sikertelen lesz.
+> A fő célkiszolgáló verziójának egyenlőnek vagy annál korábbinak kell lennie a Process Server és a konfigurációs kiszolgáló verziójánál. Ha ez az állapot nem teljesül, az ismételt védelem sikeres lesz, de a replikáció meghiúsul.
 
 
 > [!NOTE]
-> Mielőtt telepíti a fő célkiszolgáló, ellenőrizze, hogy a **/etc/hosts** fájlt a virtuális gépen bejegyzéseket, amelyek a helyi gazdanevet az összes hálózati adapterhez társított IP-címeket tartalmazza.
+> A fő célkiszolgáló telepítése előtt győződjön meg arról, hogy a virtuális gépen található **/etc/hosts** -fájl olyan bejegyzéseket tartalmaz, amelyek leképezik a helyi gazdagépet az összes hálózati adapterhez társított IP-címekre.
 
-1. Másolja a hozzáférési kódot a **C:\ProgramData\Microsoft Azure Site Recovery\private\connection.passphrase** a konfigurációs kiszolgálón. Ezután mentse a fájt **passphrase.txt** ugyanabban a helyi könyvtárban a következő parancs futtatásával:
+1. Másolja a jelszót a **C:\ProgramData\Microsoft Azure site Recovery\private\connection.passphrase** a konfigurációs kiszolgálón. Ezt követően a következő parancs futtatásával mentse a (z **) jelszót. txt** néven a helyi könyvtárban:
 
     `echo <passphrase> >passphrase.txt`
 
@@ -284,7 +284,7 @@ A következő lépések segítségével hozzon létre egy adatmegőrzési lemez:
        `echo itUx70I47uxDuUVY >passphrase.txt`
     
 
-2. Jegyezze fel a konfigurációs kiszolgáló IP-címet. Futtassa a következő parancsot a fő célkiszolgáló telepítéséhez, és a konfigurációs kiszolgálót regisztrálja a kiszolgálót.
+2. Jegyezze fel a konfigurációs kiszolgáló IP-címét. Futtassa a következő parancsot a fő célkiszolgáló telepítéséhez, és regisztrálja a kiszolgálót a konfigurációs kiszolgálóval.
 
     ```
     /usr/local/ASR/Vx/bin/UnifiedAgentConfigurator.sh -i <ConfigurationServer IP Address> -P passphrase.txt
@@ -296,26 +296,26 @@ A következő lépések segítségével hozzon létre egy adatmegőrzési lemez:
     /usr/local/ASR/Vx/bin/UnifiedAgentConfigurator.sh -i 104.40.75.37 -P passphrase.txt
     ```
 
-Várjon, amíg a parancsfájl befejeződik. Ha a fő célkiszolgáló regisztrálása sikeresen megtörtént, a fő célkiszolgáló megtalálható a **Site Recovery-infrastruktúra** a portál.
+Várjon, amíg a szkript be nem fejeződik. Ha a fő cél regisztrálása sikeresen megtörtént, a fő cél a portál **site Recovery infrastruktúra** lapján jelenik meg.
 
 
-#### <a name="install-the-master-target-by-using-interactive-installation"></a>A fő célkiszolgáló telepítéséhez használja az interaktív telepítés
+#### <a name="install-the-master-target-by-using-interactive-installation"></a>A fő cél telepítése interaktív telepítés használatával
 
-1. Futtassa a következő parancsot a fő célkiszolgáló telepítéséhez. Az ügynök szerepkör kiválasztása **fő célkiszolgáló**.
+1. Futtassa a következő parancsot a fő cél telepítéséhez. Az ügynök szerepkörhöz válassza a **fő cél**lehetőséget.
 
     ```
     ./install
     ```
 
-2. Válassza ki az alapértelmezett hely a telepítéshez, és válassza ki **Enter** folytatásához.
+2. Válassza ki a telepítés alapértelmezett helyét, majd válassza az **ENTER billentyűt** a folytatáshoz.
 
-    ![Alapértelmezett hely a fő célkiszolgáló telepítéséhez kiválasztása](./media/vmware-azure-install-linux-master-target/image17.png)
+    ![Alapértelmezett hely kiválasztása a fő cél telepítéséhez](./media/vmware-azure-install-linux-master-target/image17.png)
 
-A telepítés befejezése után, a konfigurációs kiszolgálót regisztrálja a parancssor használatával.
+A telepítés befejezése után regisztrálja a konfigurációs kiszolgálót a parancssor használatával.
 
-1. Megjegyzés: a konfigurációs kiszolgáló IP-címét. A következő lépésben kell.
+1. Jegyezze fel a konfigurációs kiszolgáló IP-címét. A következő lépésben szüksége lesz rá.
 
-2. Futtassa a következő parancsot a fő célkiszolgáló telepítéséhez, és a konfigurációs kiszolgálót regisztrálja a kiszolgálót.
+2. Futtassa a következő parancsot a fő célkiszolgáló telepítéséhez, és regisztrálja a kiszolgálót a konfigurációs kiszolgálóval.
 
     ```
     ./install -q -d /usr/local/ASR -r MT -v VmWare
@@ -327,35 +327,35 @@ A telepítés befejezése után, a konfigurációs kiszolgálót regisztrálja a
     /usr/local/ASR/Vx/bin/UnifiedAgentConfigurator.sh -i 104.40.75.37 -P passphrase.txt
     ```
 
-     Várjon, amíg a parancsfájl befejeződik. Ha a fő célkiszolgáló sikeres regisztrációja esetén a fő célkiszolgáló megtalálható a **Site Recovery-infrastruktúra** a portál.
+     Várjon, amíg a szkript be nem fejeződik. Ha a fő cél regisztrálása sikeresen megtörtént, a fő cél a portál **site Recovery infrastruktúra** lapján jelenik meg.
 
 
-### <a name="install-vmware-tools--open-vm-tools-on-the-master-target-server"></a>Telepítse a VMware-eszközök / nyílt-vm-eszközök a fő célkiszolgálón
+### <a name="install-vmware-tools--open-vm-tools-on-the-master-target-server"></a>A VMware Tools/Open-VM-Tools telepítése a fő célkiszolgálón
 
-Telepítenie kell a VMware-eszközök vagy a nyílt-vm-eszközök a fő célkiszolgáló, hogy azt felderíthessék adattárakban. Ha az eszközök nincsenek telepítve, a védelem-újrabeállítás képernyő nem szerepel a listán adattárakban. A VMware-eszközöket a telepítés után indítsa újra kell.
+Telepítenie kell a VMware-eszközöket vagy a nyílt virtuálisgép-eszközöket a fő célhelyre, hogy az képes legyen felderíteni az adattárakat. Ha az eszközök nincsenek telepítve, az ismételt védelem képernyő nem jelenik meg az adattárakban. A VMware-eszközök telepítését követően újra kell indítania.
 
-### <a name="upgrade-the-master-target-server"></a>Frissítse a fő célkiszolgálót
+### <a name="upgrade-the-master-target-server"></a>A fő célkiszolgáló frissítése
 
-Futtassa a telepítőt. Automatikusan észleli, hogy az ügynök telepítve van-e a fő célkiszolgáló. Szeretné frissíteni, válassza ki a **Y**.  A telepítés befejezése után a következő parancs segítségével telepítve van a fő célkiszolgáló verziójának ellenőrzése:
+Futtassa a telepítőt. A automatikusan észleli, hogy az ügynök telepítve van a fő célhelyen. A frissítéshez válassza az **Y**lehetőséget.  A telepítés befejezése után a következő parancs használatával keresse meg a telepített fő cél verzióját:
 
 `cat /usr/local/.vx_version`
 
 
-Látni fogja, hogy a **verzió** mező lehetővé teszi a fő célkiszolgáló verziószáma.
+Látni fogja, hogy a **Version (verzió** ) mező a fő cél verziószámát adja meg.
 
 ## <a name="common-issues"></a>Gyakori problémák
 
-* Ellenőrizze, hogy a Storage vMotion összetevőt minden olyan felügyeleti összetevők, például a fő célkiszolgáló nem kapcsolja. Ha a fő célkiszolgáló egy sikeres ismételt védelme után helyez át, nem sikerült leválasztani a virtuális gép lemezeinek (vmdk-inak). Ebben az esetben a feladat-visszavétele sikertelen lesz.
+* Ügyeljen rá, hogy ne kapcsolja be a vMotion a felügyeleti összetevőkön, például a fő célhelyen. Ha a fő cél sikeres ismételt védelem után mozog, a virtuális gép lemezei (VMDK) nem választhatók le. Ebben az esetben a feladat-visszavétel sikertelen lesz.
 
-* A fő célkiszolgáló nem kell minden olyan pillanatképek a virtuális gépen. Ha pillanatképeket, feladat-visszavétele sikertelen lesz.
+* A fő cél nem rendelkezhet pillanatképekkel a virtuális gépen. Pillanatképek esetén a feladat-visszavétel sikertelen lesz.
 
-* Egyes egyéni Hálózatiadapter-konfigurációk miatt a hálózati adapter le van tiltva, a rendszerindítás során, és a fő célkiszolgáló ügynököt nem lehet inicializálni. Győződjön meg arról, hogy a következő tulajdonságai megfelelően vannak-e beállítva. Ellenőrizze, hogy ezek a tulajdonságok a Ethernet kártya fájl /etc/sysconfig/network-scripts/ifcfg-eth *.
+* Egyes egyéni NIC-konfigurációk miatt a hálózati adapter az indítás során le van tiltva, és a fő célként megadott ügynök nem inicializálható. Győződjön meg arról, hogy a következő tulajdonságok helyesen vannak beállítva. Ezeket a tulajdonságokat az Ethernet kártya fájljának/etc/sysconfig/network-scripts/ifcfg-ETH *.
     * BOOTPROTO=dhcp
-    * ONBOOT = Igen
+    * ONBOOT = igen
 
 
 ## <a name="next-steps"></a>További lépések
-A telepítés és a fő célkiszolgáló regisztráció befejezése után, megjelenik a fő célkiszolgáló jelenik meg a **fő célkiszolgáló** szakasz **Site Recovery-infrastruktúra**, a konfiguráció alatt Server áttekintése.
+A fő cél telepítésének és regisztrálásának befejeződése után a fő cél a **site Recovery infrastruktúra** **fő célhely** szakaszában jelenik meg, a konfigurációs kiszolgáló áttekintése alatt.
 
-Most már folytathatja [ismételt védelem](vmware-azure-reprotect.md), majd a feladat-visszavétel.
+Most már folytathatja az ismételt [védelmet](vmware-azure-reprotect.md), majd a feladat-visszavétel után is.
 

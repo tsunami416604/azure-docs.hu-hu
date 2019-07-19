@@ -1,6 +1,6 @@
 ---
-title: 'Python rövid útmutató: Létrehozása, betöltése és lekérdezése az indexek az Azure Search REST API-k – Azure Search használatával'
-description: Azt ismerteti, hogyan-index létrehozása, adatok betöltése és a Python, a Jupyter notebookok és az Azure Search REST API-lekérdezések futtatásához.
+title: 'Python rövid útmutató: Indexek létrehozása, betöltése és lekérdezése a Azure Search REST API-kkal – Azure Search'
+description: Ismerteti, hogyan hozhat létre indexet, tölthet be és futtathat lekérdezéseket Python, Jupyter notebookok és a Azure Search REST API használatával.
 ms.date: 07/11/2019
 author: heidisteen
 manager: cgronlun
@@ -10,53 +10,53 @@ ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.custom: seodec2018
-ms.openlocfilehash: 123afa2452c3e492b85292514e64f84d3baec390
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.openlocfilehash: 1c570549514ff5a5e7e598aa54d8e2ac4b5a5341
+ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67840289"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67849785"
 ---
-# <a name="quickstart-create-an-azure-search-index-in-python-using-jupyter-notebooks"></a>Gyors útmutató: Az Azure Search-index létrehozása a Python, a Jupyter notebookok használatával
+# <a name="quickstart-create-an-azure-search-index-in-python-using-jupyter-notebooks"></a>Gyors útmutató: Azure Search index létrehozása a Pythonban Jupyter-jegyzetfüzetek használatával
 > [!div class="op_single_selector"]
 > * [Python (REST)](search-get-started-python.md)
 > * [PowerShell (REST)](search-create-index-rest-api.md)
 > * [C#](search-create-index-dotnet.md)
-> * [Postman (REST)](search-get-started-postman.md)
+> * [Poster (REST)](search-get-started-postman.md)
 > * [Portál](search-create-index-portal.md)
 > 
 
-Létrehozó, betöltődik, és Python használatával Azure Search-index lekérdezése Jupyter notebook létrehozása és a [Azure Search REST API-k](https://docs.microsoft.com/rest/api/searchservice/). Ez a cikk azt ismerteti, hogyan hozhat létre egy notebookot lépésről lépésre. Lehetőségként [letöltése és futtatása egy befejezett Jupyter Python-jegyzetfüzetet](https://github.com/Azure-Samples/azure-search-python-samples).
+Hozzon létre egy Jupyter-jegyzetfüzetet, amely létrehoz, betölt és lekérdez egy Azure Search indexet a Python és a [Azure Search REST API](https://docs.microsoft.com/rest/api/searchservice/)-k használatával. Ez a cikk bemutatja, hogyan hozhat létre egy jegyzetfüzetet lépésről lépésre. Azt is megteheti, hogy [letölti és futtatja a kész Jupyter Python notebookot](https://github.com/Azure-Samples/azure-search-python-samples).
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ez a rövid útmutató a következő szolgáltatásokat és eszközöket használatosak. 
+Ehhez a rövid útmutatóhoz a következő szolgáltatások és eszközök szükségesek. 
 
-+ [Anaconda 3.x](https://www.anaconda.com/distribution/#download-section), így a Python 3.x és Jupyter-Notebookjait.
++ [Anaconda 3. x](https://www.anaconda.com/distribution/#download-section), amely Python 3. x és Jupyter jegyzetfüzeteket biztosít.
 
-+ [Az Azure Search szolgáltatás létrehozása](search-create-service-portal.md) vagy [keresse meg a meglévő service](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) az aktuális előfizetésben. Ez a rövid útmutató az ingyenes szint is használhat. 
++ [Hozzon létre egy Azure Search szolgáltatást](search-create-service-portal.md) , vagy [keressen egy meglévő szolgáltatást](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) a jelenlegi előfizetése alatt. Ehhez a rövid útmutatóhoz az ingyenes szintet használhatja. 
 
-## <a name="get-a-key-and-url"></a>Egy kulcsot és egy URL-cím beszerzése
+## <a name="get-a-key-and-url"></a>Kulcs és URL-cím lekérése
 
 A REST-hívásokhoz minden kérésének tartalmaznia kell a szolgáltatás URL-címét és egy hozzáférési kulcsot. Mindkettőhöz létrejön egy keresési szolgáltatás, így ha hozzáadta az előfizetéséhez az Azure Searchöt, kövesse az alábbi lépéseket a szükséges információk beszerzéséhez:
 
-1. [Jelentkezzen be az Azure Portalon](https://portal.azure.com/), és a search szolgáltatás **áttekintése** lapon, az URL-cím lekéréséhez. A végpontok például a következőképpen nézhetnek ki: `https://mydemo.search.windows.net`.
+1. [Jelentkezzen be a Azure Portalba](https://portal.azure.com/), és a keresési szolgáltatás **Áttekintés** lapján töltse le az URL-címet. A végpontok például a következőképpen nézhetnek ki: `https://mydemo.search.windows.net`.
 
-1. A **beállítások** > **kulcsok**, a szolgáltatás a teljes körű rendszergazdai kulcs beszerzése. Nincsenek két felcserélhetők adminisztrációs kulcsot, az üzletmenet folytonosságának megadott abban az esetben egy vihető kell. Használható vagy az elsődleges vagy másodlagos kulcsot a kérések hozzáadása, módosítása és törlése objektumokat.
+1. A **Beállítások** > **kulcsaiban**kérjen meg egy rendszergazdai kulcsot a szolgáltatásra vonatkozó összes jogosultsághoz. Az üzletmenet folytonossága érdekében két, egymással megváltoztathatatlan rendszergazdai kulcs áll rendelkezésre. Az objektumok hozzáadására, módosítására és törlésére vonatkozó kérésekhez használhatja az elsődleges vagy a másodlagos kulcsot is.
 
-![Egy HTTP-végpontját és hozzáférési kulcs lekérése](media/search-get-started-postman/get-url-key.png "HTTP végpontját és hozzáférési kulcs beszerzése")
+![Http-végpont és elérési kulcs] beszerzése (media/search-get-started-postman/get-url-key.png "Http-végpont és elérési kulcs") beszerzése
 
-Minden kérelemhez szükséges halasztása minden kérelemnél a szolgáltatásnak küldött api-kulcsát. Érvényes kulcs birtokában kérelmenként létesíthető megbízhatósági kapcsolat a kérést küldő alkalmazás és az azt kezelő szolgáltatás között.
+Minden kérelemhez API-kulcs szükséges a szolgáltatásnak küldött összes kéréshez. Érvényes kulcs birtokában kérelmenként létesíthető megbízhatósági kapcsolat a kérést küldő alkalmazás és az azt kezelő szolgáltatás között.
 
-## <a name="connect-to-azure-search"></a>Kapcsolódás az Azure Search
+## <a name="connect-to-azure-search"></a>Kapcsolódás Azure Searchhoz
 
-Ebben a feladatban indíthat egy Jupyter notebookot, és győződjön meg arról, hogy képes-e csatlakozni az Azure Search. Lesz ehhez az indexek listájának lekérésekor a szolgáltatásból. Windows-Anaconda3 Anaconda-kezelő segítségével indítsa el a notebookot.
+Ebben a feladatban indítson el egy Jupyter-jegyzetfüzetet, és ellenőrizze, hogy tud-e csatlakozni Azure Searchhoz. Ezt úgy teheti meg, hogy az indexek listáját kéri le a szolgáltatásból. A Anaconda3-mel rendelkező Windows rendszeren a anaconda Navigator használatával indíthat el egy jegyzetfüzetet.
 
 1. Hozzon létre egy új Python3 notebookot.
 
-1. Az első olyan cellára, az a JSON-fájllal működik, és HTTP-kérések kidolgozásában függvénykönyvtárak betöltésére.
+1. Az első cellában töltse be a JSON-kezeléshez használt kódtárakat és a HTTP-kérelmek összeállítását.
 
    ```python
    import json
@@ -64,7 +64,7 @@ Ebben a feladatban indíthat egy Jupyter notebookot, és győződjön meg arról
    from pprint import pprint
    ```
 
-1. A második cellába adjon meg a kérelem elemek állandók halasztása minden kérelemnél meg. Cserélje le az érvényes értékek a keresési szolgáltatás nevének (a SEARCH-szolgáltatás neve) és a rendszergazdai API-kulcs (a-ADMIN-API-kulcs). 
+1. A második cellában adja meg azokat a kérelmeket, amelyek minden kérelemnél állandók lesznek. Cserélje le a keresési szolgáltatás nevét (a-SEARCH-SERVICE-NAME) és a felügyeleti API-kulcsot (a-ADMIN-API-KEY) érvényes értékekkel. 
 
    ```python
    endpoint = 'https://<YOUR-SEARCH-SERVICE-NAME>.search.windows.net/'
@@ -73,7 +73,7 @@ Ebben a feladatban indíthat egy Jupyter notebookot, és győződjön meg arról
            'api-key': '<YOUR-ADMIN-API-KEY>' }
    ```
 
-1. A harmadik cellába állítson össze a kérelmet. A GET-kérés célozza meg a keresési szolgáltatás indexek gyűjteményét, és kiválasztja a létező indexek a name tulajdonság.
+1. A harmadik cellában alakítsa ki a kérelmet. Ez a GET kérelem célja a keresési szolgáltatás indexek gyűjteménye, és kiválasztja a meglévő indexek Name (név) tulajdonságát.
 
    ```python
    url = endpoint + "indexes" + api_version + "&$select=name"
@@ -82,21 +82,21 @@ Ebben a feladatban indíthat egy Jupyter notebookot, és győződjön meg arról
    pprint(index_list)
    ```
 
-1. Minden lépés futtatásához. Ha létezik indexek, a válasz tartalmaz index nevének listáját. Az alábbi képernyőképen a szolgáltatás már az azureblob-index és a egy realestate-us-sample-index.
+1. Futtassa az egyes lépéseket. Ha az indexek léteznek, a válasz az indexek neveinek listáját tartalmazza. Az alábbi képernyőképen a szolgáltatás már rendelkezik egy azureblob és egy Realestate-US-Sample indextel.
 
-   ![Python-szkriptet a Jupyter notebook HTTP-kérelmek Azure Search](media/search-get-started-python/connect-azure-search.png "Python-szkriptet a Jupyter notebook HTTP-kérelmek Azure Search")
+   ![Python-szkript a Jupyter notebookon a Azure Search http-kérésekkel](media/search-get-started-python/connect-azure-search.png "Python-szkript a Jupyter notebookon a Azure Search http-kérésekkel")
 
-   Ellentétben az index üres gyűjteményt adja vissza ezt a választ: `{'@odata.context': 'https://mydemo.search.windows.net/$metadata#indexes(name)', 'value': []}`
+   Ezzel szemben egy üres index-gyűjtemény adja vissza ezt a választ:`{'@odata.context': 'https://mydemo.search.windows.net/$metadata#indexes(name)', 'value': []}`
 
 ## <a name="1---create-an-index"></a>1 – Index létrehozása
 
-A portál használata, az index léteznie kell a szolgáltatás adatok betöltése előtt. Ebben a lépésben használja a [Index REST API létrehozása](https://docs.microsoft.com/rest/api/searchservice/create-index) paranccsal küldje le a szolgáltatást az indexsémát.
+Ha nem használja a portált, akkor az adatgyűjtés előtt léteznie kell egy indexnek a szolgáltatáson. Ez a lépés az index [létrehozása REST API](https://docs.microsoft.com/rest/api/searchservice/create-index) használatával küldi el az indexelési sémát a szolgáltatásnak.
 
-Az index szükséges elemek közé tartozik a nevét, a mezők gyűjteményét és a egy kulcsot. A mezők gyűjteménye határozza meg a szerkezete egy *dokumentum*. Minden mező rendelkezik egy név, típus és attribútumok, amelyek meghatározzák, hogyan használja a mezőt (például, hogy-e teljes szöveges kereshető, szűrhető vagy lekérhető a keresési eredmények között). Index, egyes típusú mezők belül `Edm.String` kijelölt a *kulcs* dokumentum identitás.
+Az index kötelező elemei közé tartozik a név, a mezők gyűjteménye és a kulcs. A mezők gyűjteménye meghatározza a *dokumentumok*szerkezetét. Minden mező rendelkezik egy névvel, típussal és attribútummal, amely meghatározza a mező használatát (például hogy teljes szöveges kereshető, szűrhető vagy kereshető a keresési eredmények között). Egy indexen belül az egyik típusú `Edm.String` mezőt meg kell jelölni a dokumentum-identitás *kulcsaként* .
 
-Ez az index neve "hotels-quickstart" és a Meződefiníciók lentebb látható. A nagyobb része ["Hotels" index](https://github.com/Azure-Samples/azure-search-sample-data/blob/master/hotels/Hotels_IndexDefinition.JSON) használt egyéb forgatókönyvek. Hogy vágott ebben a rövid útmutatóban kihagytuk.
+Az index neve "Hotels-Gyorsindítás", és az alább látható mező-definíciók szerepelnek. Ez egy nagyobb, más forgatókönyvekben használt [szállodák indexének](https://github.com/Azure-Samples/azure-search-sample-data/blob/master/hotels/Hotels_IndexDefinition.JSON) részhalmaza. Ebben a rövid útmutatóban lerövidítjük.
 
-1. A következő cellába illessze be az alábbi példa a sémát adjon meg egy cellában. 
+1. A következő cellában illessze be a következő példát egy cellába a séma megadásához. 
 
     ```python
     index_schema = {
@@ -124,7 +124,7 @@ Ez az index neve "hotels-quickstart" és a Meződefiníciók lentebb látható. 
     }
     ```
 
-2. Egy másik cellába állítson össze a kérelmet. A PUT kérés célozza meg a keresési szolgáltatás indexek gyűjteményét, és létrehoz egy indexet az indexsémát az előző cella megadott alapján.
+2. Egy másik cellában alakítsa ki a kérelmet. Ez a PUT-kérelem a keresési szolgáltatás indexek gyűjteményét célozza meg, és az előző cellában megadott index séma alapján létrehoz egy indexet.
 
    ```python
    url = endpoint + "indexes" + api_version
@@ -133,22 +133,22 @@ Ez az index neve "hotels-quickstart" és a Meződefiníciók lentebb látható. 
    pprint(index)
    ```
 
-3. Minden lépés futtatásához.
+3. Futtassa az egyes lépéseket.
 
-   A válasz tartalmazza a sémát a JSON-ábrázolását. Az alábbi képernyőképen látható a válasz egy részét.
+   A válasz tartalmazza a séma JSON-ábrázolását. Az alábbi képernyőképen csak a válasz egy része látható.
 
-    ![Az index létrehozására vonatkozó kérelem](media/search-get-started-python/create-index.png "index létrehozására vonatkozó kérelem")
+    ![Index létrehozásához szükséges kérelem](media/search-get-started-python/create-index.png "Index létrehozásához szükséges kérelem")
 
 > [!Tip]
-> Index létrehozásának ellenőrzéséhez más úgy, hogy ellenőrizze a portálon az indexek listáját.
+> Az indexek létrehozásának egy másik módja az indexek listájának ellenőrzése a portálon.
 
 <a name="load-documents"></a>
 
 ## <a name="2---load-documents"></a>2 – dokumentumok betöltése
 
-Küldje le a dokumentumokat, használja a HTTP POST-kérelmet az index URL-cím végponthoz. A REST API [hozzáadása, frissítése vagy törlése dokumentumok](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents). Dokumentumok származik [HotelsData](https://github.com/Azure-Samples/azure-search-sample-data/blob/master/hotels/HotelsData_toAzureSearch.JSON) a Githubon.
+A dokumentumok leküldéséhez használjon HTTP POST-kérést az index URL-címének végpontján. A REST API [dokumentumok hozzáadása, frissítése vagy törlése](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents). A dokumentumok a GitHubon lévő [HotelsData](https://github.com/Azure-Samples/azure-search-sample-data/blob/master/hotels/HotelsData_toAzureSearch.JSON) származnak.
 
-1. Egy új cellába adja meg, amelyek megfelelnek az indexséma négy dokumentumokat. Adja meg az egyes dokumentumok feltöltési művelet.
+1. Egy új cellában négy olyan dokumentumot adjon meg, amelyek megfelelnek az index sémának. Minden dokumentumhoz meg kell adni egy feltöltési műveletet.
 
     ```python
     documents = {
@@ -233,7 +233,7 @@ Küldje le a dokumentumokat, használja a HTTP POST-kérelmet az index URL-cím 
     }
     ```   
 
-2. Egy másik cellába állítson össze a kérelmet. A POST-kérelemhez célozza meg, a szállodák-quickstart index docs gyűjteményét, majd leküldi az előző lépésben meghatározott dokumentumok.
+2. Egy másik cellában alakítsa ki a kérelmet. Ez a POST-kérelem a Hotels-gyors ismertető indexét célozza meg, és leküldi az előző lépésben megadott dokumentumokat.
 
    ```python
    url = endpoint + "indexes/hotels-quickstart/docs/index" + api_version
@@ -242,27 +242,27 @@ Küldje le a dokumentumokat, használja a HTTP POST-kérelmet az index URL-cím 
    pprint(index_content)
    ```
 
-3. Futtassa az egyes lépések a dokumentum elküldése egy indexbe a search szolgáltatás. Eredmények az alábbi példához hasonlóan kell kinéznie. 
+3. Futtassa az egyes lépéseket a dokumentumok a keresési szolgáltatásban lévő indexbe való leküldéséhez. Az eredményeknek az alábbi példához hasonlóan kell kinéznie. 
 
-    ![Dokumentumok elküldése egy indexbe](media/search-get-started-python/load-index.png "dokumentumokat küldeni egy indexbe")
+    ![Dokumentumok elküldése egy indexbe](media/search-get-started-python/load-index.png "Dokumentumok elküldése egy indexbe")
 
 ## <a name="3---search-an-index"></a>3 – Keresés az indexekben
 
-Ez a lépés bemutatja, hogyan kérdezhet le egy index használatával a [Search dokumentumok REST API](https://docs.microsoft.com/rest/api/searchservice/search-documents).
+Ez a lépés bemutatja, hogyan kérdezheti le az indexeket a [keresési dokumentumok REST API](https://docs.microsoft.com/rest/api/searchservice/search-documents)használatával.
 
-1. Egy cellába, adjon meg egy lekérdezési kifejezés, amely végrehajt egy üres keresés (keresési = *), az unranked listájának visszaadása (Keresés a pontszám = 1.0) tetszőleges dokumentumok. Alapértelmezés szerint az Azure Search egyszerre 50 egyezést adja vissza. Strukturált, mint ez a lekérdezés egy teljes dokumentum szerkezete és értékeket ad vissza. Adja hozzá a $count = true összes dokumentum számbavétele az eredményeket.
+1. Egy cellában adjon meg egy olyan lekérdezési kifejezést, amely üres keresést hajt végre (Search = *), és nem rangsorolt listát (keresési pontszám = 1,0) ad vissza tetszőleges dokumentumokhoz. Alapértelmezés szerint a Azure Search a 50-es egyezést adja vissza egyszerre. Strukturált módon a lekérdezés egy teljes dokumentum-struktúrát és-értéket ad vissza. Adja hozzá a $count = True értéket az eredményekben található összes dokumentum számának beolvasásához.
 
    ```python
    searchstring = '&search=*&$count=true'
    ```
 
-1. Egy új cellába adja meg az alábbi példa a feltételek "hotels" és "Wi-Fi" a kereséshez. Adja hozzá a $select, adja meg a keresési eredmények szerepeltetendő mezőket.
+1. Egy új cellában adja meg a következő példát a "Hotels" és a "WiFi" kifejezésre való kereséshez. $Select hozzáadása lehetőséggel megadhatja, hogy mely mezők szerepeljenek a keresési eredmények között.
 
    ```python
    searchstring = '&search=hotels wifi&$count=true&$select=HotelId,HotelName'
    ```
 
-1. Egy másik cellába állítson össze egy kérelmet. A GET kérelem a docs-gyűjtemény a szállodák-quickstart index célozza, és csatolja az előző lépésben megadott lekérdezés.
+1. Egy másik cellában állítson össze egy kérelmet. Ehhez a GET kérelemhez a Hotels-Gyorsindítás index, valamint az előző lépésben megadott lekérdezés csatolva van.
 
    ```python
    url = endpoint + "indexes/hotels-quickstart/docs" + api_version + searchstring
@@ -271,25 +271,25 @@ Ez a lépés bemutatja, hogyan kérdezhet le egy index használatával a [Search
    pprint(query)
    ```
 
-1. Minden lépés futtatásához. Eredmények a következő kimenet hasonlóan kell kinéznie. 
+1. Futtassa az egyes lépéseket. Az eredményeknek az alábbi kimenethez hasonlóan kell kinéznie. 
 
-    ![Keresés az indexekben](media/search-get-started-python/search-index.png "keresés az indexekben")
+    ![Keresés az indexben](media/search-get-started-python/search-index.png "Keresés az indexben")
 
-1. Próbálja meg néhány további lekérdezést példák betekintést nyerhet a szintaxis. Lecserélheti a `searchstring` az alábbi példák és majd futtassa újból a keresési kérelmet. 
+1. Néhány további lekérdezési példát is kipróbálhat a szintaxis megszerzéséhez. A következő példákkal `searchstring` lecserélheti a kifejezést, majd újra futtathatja a keresési kérelmet. 
 
-   Szűrő alkalmazásához: 
+   Szűrő alkalmazása: 
 
    ```python
    searchstring = '&search=*&$filter=Rating gt 4&$select=HotelId,HotelName,Description,Rating'
    ```
 
-   Végezze el a felső két eredmény:
+   Tegye meg az első két eredményt:
 
    ```python
    searchstring = '&search=boutique&$top=2&$select=HotelId,HotelName,Description,Category'
    ```
 
-    Egy adott mezőben Rendezés:
+    Sorrend egy adott mező szerint:
 
    ```python
    searchstring = '&search=pool&$orderby=Address/City&$select=HotelId, HotelName, Address/City, Address/StateProvince, Tags'
@@ -297,15 +297,15 @@ Ez a lépés bemutatja, hogyan kérdezhet le egy index használatával a [Search
 
 ## <a name="clean-up"></a>A fölöslegessé vált elemek eltávolítása
 
-Dolgozik, a saját előfizetése, esetén célszerű egy projektet a végén, hogy azonosítani, hogy az erőforrások továbbra is kell-e létrehozott. Erőforrások bal oldali futó is költséget takaríthat meg költséget. Külön-külön törölje az erőforrást, vagy törölje az erőforráscsoportot törli az erőforrások teljes készletében.
+Ha saját előfizetésében dolgozik, a projekt végén érdemes megállapítani, hogy továbbra is szüksége van-e a létrehozott erőforrásokra. A már futó erőforrások pénzbe kerülnek. Az erőforrásokat egyenként is törölheti, vagy az erőforráscsoport törlésével törölheti a teljes erőforrás-készletet.
 
-Megkeresheti és kezelheti az erőforrásokat a portál használatával a **összes erőforrás** vagy **erőforráscsoportok** hivatkozásra a bal oldali navigációs ablaktáblán.
+A bal oldali navigációs panelen a **minden erőforrás** vagy **erőforráscsoport** hivatkozás használatával megkeresheti és kezelheti az erőforrásokat a portálon.
 
-Ha használ egy ingyenes szolgáltatás, ne feledje, hogy korlátozódnak három indexek, indexelők és adatforrások. A korlátja alatt maradjunk a portál egyes elemeire törölheti. 
+Ha ingyenes szolgáltatást használ, ne feledje, hogy Ön legfeljebb három indexet, indexelő és adatforrást használhat. A portálon törölheti az egyes elemeket, hogy a korlát alatt maradjon. 
 
 ## <a name="next-steps"></a>További lépések
 
-Egyszerűsítését, mint az ebben a rövid útmutatóban a "Hotels" index rövidített verzióját használja. A teljes verzió érdekesebb lekérdezések kipróbálására is létrehozhat. A teljes verzió és minden 50 dokumentum lekéréséhez futtassa a **adatimportálás** varázslót, és válassza *hotels-sample* beépített minta adatforrásokból.
+Ennek egyszerűsítése érdekében ez a rövid útmutató a szállodák indexének rövidített verzióját használja. A teljes verziót a további érdekes lekérdezések kipróbálásához is létrehozhatja. A teljes verzió és az összes 50-dokumentum lekéréséhez futtassa az **adatok importálása** varázslót, és válassza a *Hotels-Sample* lehetőséget a beépített mintául szolgáló adatforrásokból.
 
 > [!div class="nextstepaction"]
-> [Rövid útmutató: Index létrehozása az Azure Portalon](search-get-started-portal.md)
+> [Rövid útmutató: Index létrehozása a Azure Portalban](search-get-started-portal.md)

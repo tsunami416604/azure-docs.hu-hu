@@ -1,23 +1,23 @@
 ---
 title: Rövid útmutató – Webes forgalom irányítása az Azure Application Gatewayjel – Azure PowerShell | Microsoft Docs
-description: Megtudhatja, hogyan hozhat létre az Azure Application Gateway, amely arra utasítja a webes forgalom háttérkészlet a virtuális gépek Azure PowerShell használatával.
+description: Ismerje meg, hogyan használható a Azure PowerShell egy olyan Azure-Application Gateway létrehozásához, amely egy háttér-készletben lévő virtuális gépekre irányítja a webes forgalmat.
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: quickstart
-ms.date: 06/11/2019
+ms.date: 07/17/2019
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: c0e80b1354302f227cb448391c7a92100049cc3a
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 1da7a2648fe8f97372f877a4e9c7894c4b2a4aed
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67053352"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68276578"
 ---
-# <a name="quickstart-direct-web-traffic-with-azure-application-gateway---azure-powershell"></a>Gyors útmutató: A közvetlen webes forgalom az Azure Application Gatewayjel – Azure PowerShell-lel
+# <a name="quickstart-direct-web-traffic-with-azure-application-gateway---azure-powershell"></a>Gyors útmutató: Webes forgalom közvetlen továbbítása az Azure Application Gateway-Azure PowerShell
 
-Ez a rövid útmutató bemutatja, hogyan hozhat létre gyorsan egy application gateway az Azure PowerShell használatával.  Az application gateway létrehozása után tesztelje, hogy ellenőrizze, hogy azok megfelelően működnek. Az Azure Application Gatewayjel az alkalmazás webes forgalom az erőforrásoknál figyelői hozzárendelése portokat, szabályok és hozzáadunk erőforrásokat egy háttérkészlet közvetlen. Az egyszerűség kedvéért a jelen cikk egy egyszerű beállítás nyilvános előtérbeli IP-cím, egy alapszintű figyelő gazdagéphez az application gateway-en egyetlen hely, a háttérkészlet és a egy egyszerű kérelem-útválasztási szabály használható két virtuális gépet használ.
+Ez a rövid útmutató bemutatja, hogyan használható a Azure PowerShell az Application Gateway gyors létrehozásához.  Az Application Gateway létrehozása után tesztelje, hogy megfelelően működik-e. Az Azure Application Gateway használatával a figyelőket a portokhoz, a szabályok létrehozásához és az erőforrások háttér-készlethez való hozzáadásához irányíthatja az alkalmazás webes forgalmát adott erőforrásokra. Az egyszerűség kedvéért ez a cikk egy egyszerű telepítőt használ egy nyilvános előtér-IP-címmel, egy alapszintű figyelővel, amely egyetlen helyet üzemeltet az Application gatewayben, két virtuális gépet használ a háttér-készlethez, valamint egy alapszintű kérelem-útválasztási szabályt.
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
@@ -29,14 +29,14 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 ### <a name="azure-powershell-module"></a>Azure PowerShell-modul
 
-Ha helyi telepítése és használata az Azure PowerShell választja, az oktatóanyaghoz az Azure PowerShell-modul verzióját 1.0.0 vagy újabb.
+Ha a Azure PowerShell helyi telepítését és használatát választja, akkor az oktatóanyaghoz az Azure PowerShell Module 1.0.0 vagy újabb verzió szükséges.
 
 1. A verzió megkereséséhez futtassa a következőt: `Get-Module -ListAvailable Az`. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-az-ps) ismertető cikket. 
-2. Kapcsolat létrehozása az Azure-ral, futtassa `Login-AzAccount`.
+2. Az Azure-beli kapcsolatok létrehozásához futtassa `Login-AzAccount`a parancsot.
 
-### <a name="resource-group"></a>Erőforráscsoport
+### <a name="resource-group"></a>Resource group
 
-Az Azure-ban a kapcsolódó erőforrásokat egy erőforráscsoportba foglalhat. Használjon egy meglévő erőforráscsoportot, vagy hozzon létre egy újat. Ebben a példában használatával fog létrehozni egy új erőforráscsoportot a [New-AzResourceGroup](/powershell/module/Az.resources/new-Azresourcegroup) parancsmag az alábbiak szerint: 
+Az Azure-ban kapcsolódó erőforrásokat oszt ki egy erőforráscsoporthoz. Használhat meglévő erőforráscsoportot, vagy létrehozhat egy újat. Ebben a példában egy új erőforráscsoportot hoz létre a [New-AzResourceGroup](/powershell/module/Az.resources/new-Azresourcegroup) parancsmag használatával a következő módon: 
 
 ```azurepowershell-interactive
 New-AzResourceGroup -Name myResourceGroupAG -Location eastus
@@ -44,11 +44,11 @@ New-AzResourceGroup -Name myResourceGroupAG -Location eastus
 
 ### <a name="required-network-resources"></a>Szükséges hálózati erőforrások
 
-Az Azure-hoz az erőforrások közötti kommunikációt, hogy hozzon létre egy virtuális hálózat szükséges.  Az application gateway alhálózatának csak az application Gateway-átjárókon is tartalmazhat. Egyéb erőforrások nem engedélyezettek.  Hozzon létre egy új alhálózatot az Application Gateway számára, vagy használjon egy meglévőt. Ebben a példában két alhálózat ebben a példában hoz létre: egyet az application gateway, a másik pedig a háttérkiszolgálókhoz. Az előtérbeli IP-címét az Application Gateway nyilvános vagy privát kell a használati eset megfelelően konfigurálhatja. Ebben a példában egy nyilvános előtérbeli IP-címet fogja választani.
+Ahhoz, hogy az Azure kommunikáljon a létrehozott erőforrások között, szüksége van egy virtuális hálózatra.  Az Application Gateway-alhálózat csak Application Gateway átjárókat tartalmazhat. Más erőforrások nem engedélyezettek.  Létrehozhat egy új alhálózatot Application Gatewayhoz, vagy használhat egy meglévőt is. Ebben a példában két alhálózatot hoz létre ebben a példában: egyet az Application Gateway számára, és egy másikat a háttér-kiszolgálók számára. A Application Gateway előtérbeli IP-címét a használati esetnek megfelelően lehet nyilvános vagy privátként beállítani. Ebben a példában egy nyilvános előtérbeli IP-címet választ.
 
-1. Hozzon létre az alhálózat-konfigurációit meghívásával [New-AzVirtualNetworkSubnetConfig](/powershell/module/Az.network/new-Azvirtualnetworksubnetconfig).
-2. A virtuális hálózat létrehozása az alhálózat-konfigurációit meghívásával [New-AzVirtualNetwork](/powershell/module/Az.network/new-Azvirtualnetwork). 
-3. A nyilvános IP-cím létrehozása meghívásával [New-AzPublicIpAddress](/powershell/module/Az.network/new-Azpublicipaddress). 
+1. Hozza létre az alhálózati konfigurációkat a [New-AzVirtualNetworkSubnetConfig](/powershell/module/Az.network/new-Azvirtualnetworksubnetconfig)hívásával.
+2. A [New-AzVirtualNetwork](/powershell/module/Az.network/new-Azvirtualnetwork)hívásával hozza létre a virtuális hálózatot az alhálózati konfigurációkkal. 
+3. Hozzon létre egy nyilvános IP-címet a [New-AzPublicIpAddress](/powershell/module/Az.network/new-Azpublicipaddress)hívásával. 
 
 ```azurepowershell-interactive
 $agSubnetConfig = New-AzVirtualNetworkSubnetConfig `
@@ -67,19 +67,20 @@ New-AzPublicIpAddress `
   -ResourceGroupName myResourceGroupAG `
   -Location eastus `
   -Name myAGPublicIPAddress `
-  -AllocationMethod Dynamic
+  -AllocationMethod Static
+  -Sku Standard
 ```
-### <a name="backend-servers"></a>Háttérkiszolgálók
+### <a name="backend-servers"></a>Háttér-kiszolgálók
 
-Háttérbeli hálózati adapterek, a virtual machine scale sets, nyilvános IP-címek állhat, belső IP-címek, teljesen minősített neve (FQDN), és több-bérlős háttéralkalmazások hasonlóan az Azure App Service-ben. Ebben a példában két virtuális gépet a háttérkiszolgálókhoz való használata az application gateway az Azure-hoz létre. Az IIS-et is telepíti, győződjön meg arról, hogy az Azure sikeresen létrejött-e az application gateway a virtuális gépeket.
+A háttér a hálózati adapterek, a virtuálisgép-méretezési csoportok, a nyilvános IP-címek, a belső IP-címek, a teljes tartománynevek (FQDN) és a több-bérlős háttérrendszer, például a Azure App Service tagjai lehetnek. Ebben a példában két virtuális gépet hoz létre az Azure-hoz, hogy háttér-kiszolgálóként használja az Application Gateway-t. Az IIS-t a virtuális gépeken is telepítheti annak ellenőrzéséhez, hogy az Azure sikeresen létrehozta-e az Application Gateway-t.
 
 #### <a name="create-two-virtual-machines"></a>Két virtuális gép létrehozása
 
 1. Hozzon létre egy hálózati adaptert a [New-AzNetworkInterface](/powershell/module/Az.network/new-Aznetworkinterface). 
 2. Hozzon létre egy virtuálisgép-konfigurációt a [New-AzVMConfig](/powershell/module/Az.compute/new-Azvmconfig).
-3. A virtuális gép létrehozása [New-azvm parancsmag](/powershell/module/Az.compute/new-Azvm).
+3. Hozza létre a virtuális gépet a [New-AzVM](/powershell/module/Az.compute/new-Azvm).
 
-A virtuális gépek létrehozásához a következő mintakód futtatásakor az Azure hitelesítő adatokat kér. Adja meg az *azureuser* felhasználónevet és az *Azure123456!* a jelszó:
+Ha a virtuális gépek létrehozásához az alábbi mintakód-mintát futtatja, az Azure kéri a hitelesítő adatok megadását. Adja meg az *azureuser* felhasználónevet és az *Azure123456!* a jelszóhoz:
     
 ```azurepowershell-interactive
 $vnet   = Get-AzVirtualNetwork -ResourceGroupName myResourceGroupAG -Name myVNet
@@ -129,9 +130,9 @@ for ($i=1; $i -le 2; $i++)
 
 ### <a name="create-the-ip-configurations-and-frontend-port"></a>Az IP-konfigurációk és az előtérbeli port létrehozása
 
-1. Használat [New-AzApplicationGatewayIPConfiguration](/powershell/module/Az.network/new-Azapplicationgatewayipconfiguration) az application gateway segítségével létrehozott a konfigurációt, amely hozzárendeli az alhálózat létrehozásához. 
-2. Használat [New-AzApplicationGatewayFrontendIPConfig](/powershell/module/Az.network/new-Azapplicationgatewayfrontendipconfig) a konfigurációt, amelyet korábban létrehozott nyilvános IP-címet rendel hozzá az application gateway létrehozásához. 
-3. Használat [New-AzApplicationGatewayFrontendPort](/powershell/module/Az.network/new-Azapplicationgatewayfrontendport) hozzárendelése az application gateway eléréséhez a 80-as porton.
+1. A [New-AzApplicationGatewayIPConfiguration](/powershell/module/Az.network/new-Azapplicationgatewayipconfiguration) használatával hozza létre az Application Gateway segítségével létrehozott alhálózatot társító konfigurációt. 
+2. A [New-AzApplicationGatewayFrontendIPConfig](/powershell/module/Az.network/new-Azapplicationgatewayfrontendipconfig) használatával hozzon létre egy olyan konfigurációt, amely hozzárendeli a korábban az Application gatewayhez létrehozott nyilvános IP-címet. 
+3. A [New-AzApplicationGatewayFrontendPort](/powershell/module/Az.network/new-Azapplicationgatewayfrontendport) használatával rendelje hozzá az 80-es portot az Application Gateway eléréséhez.
 
 ```azurepowershell-interactive
 $vnet   = Get-AzVirtualNetwork -ResourceGroupName myResourceGroupAG -Name myVNet
@@ -150,8 +151,8 @@ $frontendport = New-AzApplicationGatewayFrontendPort `
 
 ### <a name="create-the-backend-pool"></a>A háttérkészlet létrehozása
 
-1. Használat [New-AzApplicationGatewayBackendAddressPool](/powershell/module/Az.network/new-Azapplicationgatewaybackendaddresspool) létrehozása az application Gateway háttérkészlet. 
-2. Konfigurálja a háttérkészlet beállításait [New-AzApplicationGatewayBackendHttpSetting](/powershell/module/Az.network/new-Azapplicationgatewaybackendhttpsetting).
+1. A [New-AzApplicationGatewayBackendAddressPool](/powershell/module/Az.network/new-Azapplicationgatewaybackendaddresspool) használatával hozza létre a háttér-készletet az Application Gateway számára. 
+2. Konfigurálja a háttér-készlet beállításait a [New-AzApplicationGatewayBackendHttpSetting](/powershell/module/Az.network/new-Azapplicationgatewaybackendhttpsetting).
 
 ```azurepowershell-interactive
 $address1 = Get-AzNetworkInterface -ResourceGroupName myResourceGroupAG -Name myNic1
@@ -169,10 +170,10 @@ $poolSettings = New-AzApplicationGatewayBackendHttpSetting `
 
 ### <a name="create-the-listener-and-add-a-rule"></a>Figyelő létrehozása és szabály hozzáadása
 
-Azure van szüksége ahhoz, hogy az application gateway irányítaná a forgalmat a háttérkészlet megfelelő, egy figyelőt. Az Azure egy szabály a figyelőt, hogy tudja, melyik használja a bejövő forgalmat a háttérkészlet is szükséges. 
+Az Azure-ban egy figyelőnek kell engedélyeznie az Application Gateway számára a háttér-készletnek megfelelő útválasztási forgalmat. Az Azure-ban az is szükséges, hogy a figyelő melyik háttér-készletet használja a bejövő forgalomhoz. 
 
-1. Hozzon létre egy figyelőt a [New-AzApplicationGatewayHttpListener](/powershell/module/Az.network/new-Azapplicationgatewayhttplistener) az előtér-konfigurációjához és az elülső rétegbeli portot, amelyet korábban hozott létre. 
-2. Használat [New-AzApplicationGatewayRequestRoutingRule](/powershell/module/Az.network/new-Azapplicationgatewayrequestroutingrule) nevű szabály létrehozásához *felhasználóval a rule1*. 
+1. Hozzon létre egy figyelőt a [New-AzApplicationGatewayHttpListener](/powershell/module/Az.network/new-Azapplicationgatewayhttplistener) használatával a előtér-konfigurációval és a korábban létrehozott frontend-porttal. 
+2. A [New-AzApplicationGatewayRequestRoutingRule](/powershell/module/Az.network/new-Azapplicationgatewayrequestroutingrule) használatával hozzon létre egy *rule1*nevű szabályt. 
 
 ```azurepowershell-interactive
 $defaultlistener = New-AzApplicationGatewayHttpListener `
@@ -190,15 +191,15 @@ $frontendRule = New-AzApplicationGatewayRequestRoutingRule `
 
 ### <a name="create-the-application-gateway"></a>Application Gateway létrehozása
 
-Most, hogy létrehozta a szükséges támogató erőforrások, az application gateway létrehozásához:
+Most, hogy létrehozta a szükséges támogatási erőforrásokat, hozza létre az Application Gatewayt:
 
-1. Használat [New-AzApplicationGatewaySku](/powershell/module/Az.network/new-Azapplicationgatewaysku) , adja meg a paramétereket az application gateway számára.
-2. Használat [New-AzApplicationGateway](/powershell/module/Az.network/new-Azapplicationgateway) az application gateway létrehozásához.
+1. Használja a [New-AzApplicationGatewaySku](/powershell/module/Az.network/new-Azapplicationgatewaysku) paramétert az Application Gateway paramétereinek megadásához.
+2. Az Application Gateway létrehozásához használja a [New-AzApplicationGateway](/powershell/module/Az.network/new-Azapplicationgateway) .
 
 ```azurepowershell-interactive
 $sku = New-AzApplicationGatewaySku `
-  -Name Standard_Medium `
-  -Tier Standard `
+  -Name Standard_v2 `
+  -Tier Standard_v2 `
   -Capacity 2
 New-AzApplicationGateway `
   -Name myAppGateway `
@@ -216,10 +217,10 @@ New-AzApplicationGateway `
 
 ## <a name="test-the-application-gateway"></a>Az alkalmazásátjáró tesztelése
 
-Bár az application gateway létrehozásához az IIS nem szükséges, telepítette azt ebben a rövid, ellenőrizze, hogy az Azure sikeresen létrejött-e az application gateway. Az IIS használatával az application gateway teszteléséhez:
+Bár az IIS nem szükséges az Application Gateway létrehozásához, ezt a rövid útmutatóban telepítette annak ellenőrzéséhez, hogy az Azure sikeresen létrehozta-e az Application Gatewayt. Az IIS használata az Application Gateway teszteléséhez:
 
-1. Futtatás [Get-AzPublicIPAddress](/powershell/module/Az.network/get-Azpublicipaddress) , az application Gateway nyilvános IP-címének lekéréséhez. 
-2. Másolja és illessze be a nyilvános IP-címet a böngésző címsorába. Amikor frissíti a böngészőben, megtekintheti a virtuális gép nevét. Érvényes válasz ellenőrzi, hogy az application gateway létrehozása sikeresen megtörtént, és képes sikeresen csatlakozni a háttérszolgáltatás használatára.
+1. Futtassa a [Get-AzPublicIPAddress](/powershell/module/Az.network/get-Azpublicipaddress) parancsot az Application Gateway nyilvános IP-címének lekéréséhez. 
+2. Másolja és illessze be a nyilvános IP-címet a böngésző címsorába. A böngésző frissítésekor látnia kell a virtuális gép nevét. Egy érvényes válasz ellenőrzi, hogy az Application Gateway sikeresen létrejött-e, és hogy sikeresen tud-e kapcsolatot létesíteni a háttérrel.
 
 ```azurepowershell-interactive
 Get-AzPublicIPAddress -ResourceGroupName myResourceGroupAG -Name myAGPublicIPAddress
@@ -230,9 +231,9 @@ Get-AzPublicIPAddress -ResourceGroupName myResourceGroupAG -Name myAGPublicIPAdd
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha már nincs szüksége az application gateway segítségével létrehozott erőforrásokat, távolítsa el az erőforráscsoportot. Az erőforráscsoport eltávolításával is eltávolítja az application gateway és az összes kapcsolódó erőforrás. 
+Ha már nincs szüksége az Application Gateway használatával létrehozott erőforrásokra, távolítsa el az erőforráscsoportot. Az erőforráscsoport eltávolításával az Application Gateway és az ahhoz kapcsolódó összes erőforrást is eltávolítja. 
 
-Távolítsa el az erőforráscsoportot, hívja meg a [Remove-AzResourceGroup](/powershell/module/Az.resources/remove-Azresourcegroup) parancsmag az alábbiak szerint:
+Az erőforráscsoport eltávolításához hívja meg a [Remove-AzResourceGroup](/powershell/module/Az.resources/remove-Azresourcegroup) parancsmagot az alábbi módon:
 
 ```azurepowershell-interactive
 Remove-AzResourceGroup -Name myResourceGroupAG

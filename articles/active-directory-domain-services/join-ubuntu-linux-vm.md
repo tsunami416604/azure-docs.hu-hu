@@ -1,6 +1,6 @@
 ---
-title: 'Az Azure Active Directory tartományi szolgáltatások: Egy Ubuntu virtuális gép csatlakoztatása felügyelt tartományokhoz |} A Microsoft Docs'
-description: Egy Ubuntu Linux virtuális gépek csatlakoztatása az Azure AD tartományi szolgáltatások
+title: 'Azure Active Directory Domain Services: Ubuntu virtuális gép csatlakoztatása felügyelt tartományhoz | Microsoft Docs'
+description: Ubuntu Linux virtuális gép csatlakoztatása Azure AD Domain Services
 services: active-directory-ds
 documentationcenter: ''
 author: iainfoulds
@@ -15,214 +15,224 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/20/2019
 ms.author: iainfou
-ms.openlocfilehash: b21c5c517b1f4a1cbcbf2028a079793c70996d58
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: 29a6cb69a818ed11e5f20dddd7299c01fbefbf47
+ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67473122"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68234021"
 ---
-# <a name="join-an-ubuntu-virtual-machine-in-azure-to-a-managed-domain"></a>Ubuntus virtuális gép csatlakoztatása felügyelt tartományhoz az Azure-ban
-Ez a cikk bemutatja, hogyan lehet egy Ubuntu Linux virtuális gépek csatlakoztatása az Azure AD tartományi szolgáltatásokkal felügyelt tartományban.
+# <a name="join-an-ubuntu-virtual-machine-in-azure-to-a-managed-domain"></a>Ubuntu virtuális gép csatlakoztatása az Azure-ban egy felügyelt tartományhoz
+Ez a cikk bemutatja, hogyan csatlakozhat egy Ubuntu Linux virtuális géphez egy Azure AD Domain Services felügyelt tartományhoz.
 
 [!INCLUDE [active-directory-ds-prerequisites.md](../../includes/active-directory-ds-prerequisites.md)]
 
 ## <a name="before-you-begin"></a>Előkészületek
-A cikkben szereplő feladatok elvégzéséhez szüksége:  
-1. Egy érvényes **Azure-előfizetés**.
-2. Egy **Azure AD-címtár** -vagy az egy helyszíni címtár vagy egy csak felhőalapú címtárral szinkronizálja.
-3. **Az Azure AD Domain Services** engedélyezve kell lennie az Azure AD-címtárban. Ha még nem tette, minden ismertetett feladatok végrehajtásával a [a kezdeti lépések útmutatóban](create-instance.md).
-4. Győződjön meg arról, hogy már konfigurálta az IP-címek a felügyelt tartomány a virtuális hálózat DNS-kiszolgálóként. További információkért lásd: [az Azure virtuális hálózat DNS-beállításainak frissítése](active-directory-ds-getting-started-dns.md)
-5. Végezze el a szükséges lépéseket [szinkronizálja a jelszavakat az Azure AD tartományi szolgáltatásokkal felügyelt tartományban](active-directory-ds-getting-started-password-sync.md).
+A cikkben felsorolt feladatok elvégzéséhez a következőkre lesz szüksége:  
+1. Érvényes **Azure-előfizetés**.
+2. Egy **Azure ad-címtár** – szinkronizálva van egy helyszíni címtárral vagy egy csak felhőalapú címtárral.
+3. **Azure ad Domain Services** engedélyezni kell az Azure ad-címtárat. Ha még nem tette meg, kövesse az [első lépések útmutatóban](create-instance.md)ismertetett összes feladatot.
+4. Győződjön meg arról, hogy a felügyelt tartomány IP-címeit a virtuális hálózat DNS-kiszolgálóinak megfelelően konfigurálta. További információ: [Az Azure-beli virtuális hálózat DNS-beállításainak frissítése](active-directory-ds-getting-started-dns.md)
+5. Hajtsa végre a [jelszavak Azure ad Domain Services felügyelt tartományhoz](active-directory-ds-getting-started-password-sync.md)való szinkronizálásához szükséges lépéseket.
 
 
-## <a name="provision-an-ubuntu-linux-virtual-machine"></a>Egy Ubuntu Linux virtuális gép üzembe helyezése
-Egy Ubuntu Linux virtuális gép az Azure-ban, az alábbi módszerek bármelyikével üzembe helyezése:
+## <a name="provision-an-ubuntu-linux-virtual-machine"></a>Ubuntu Linux virtuális gép kiépítése
+Hozzon létre egy Ubuntu Linux virtuális gépet az Azure-ban az alábbi módszerek bármelyikével:
 * [Azure Portal](../virtual-machines/linux/quick-create-portal.md)
 * [Azure CLI](../virtual-machines/linux/quick-create-cli.md)
 * [Azure PowerShell](../virtual-machines/linux/quick-create-powershell.md)
 
 > [!IMPORTANT]
-> * Telepítse a virtuális gépet, azokat a **azonos virtuális hálózatban, amelyiken engedélyezte az Azure AD Domain Services**.
-> * Válasszon ki egy **másik alhálózatot** fut, amelyiken engedélyezte az Azure AD tartományi szolgáltatásokat.
+> * Telepítse a virtuális gépet ugyanabba a **virtuális hálózatba, amelyben engedélyezte a Azure ad Domain Services**.
+> * Válasszon egy **másik** alhálózatot, amelynél engedélyezte a Azure ad Domain Services.
 >
 
 
-## <a name="connect-remotely-to-the-ubuntu-linux-virtual-machine"></a>Távoli csatlakozás az Ubuntu Linux virtuális gép
-Az Ubuntu virtuális gép az Azure-ban van kiépítve. A következő feladata távolról csatlakozni a virtuális gépet a virtuális gép kiépítése során létrehozott helyi rendszergazdai fiókkal.
+## <a name="connect-remotely-to-the-ubuntu-linux-virtual-machine"></a>Távoli kapcsolódás a Ubuntu Linux virtuális géphez
+Az Ubuntu virtuális gép üzembe helyezése az Azure-ban történt. A következő feladat a virtuális gép távoli kapcsolódása a virtuális géphez a virtuális gép üzembe helyezése során létrehozott helyi rendszergazdai fiók használatával.
 
-Kövesse a cikk a [bejelentkezés egy Linux rendszerű virtuális gép](../virtual-machines/linux/mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+Kövesse a cikk utasításait a [Linux rendszerű virtuális gépekre való bejelentkezéshez](../virtual-machines/linux/mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
 
-## <a name="configure-the-hosts-file-on-the-linux-virtual-machine"></a>A Linux rendszerű virtuális gép hosts fájljának konfigurálása
-A terminálban SSH a Hosts fájl szerkesztése, és frissítse a gép IP-cím és az állomásnevet.
+## <a name="configure-the-hosts-file-on-the-linux-virtual-machine"></a>A Hosts fájl konfigurálása a Linux rendszerű virtuális gépen
+Az SSH-terminálban szerkessze a/etc/hosts fájlt, és frissítse a gép IP-címét és állomásnevét.
 
-```
+```console
 sudo vi /etc/hosts
 ```
 
-Adja meg a hosts fájl a következő értéket:
+A Hosts fájlban adja meg a következő értéket:
 
-```
+```console
 127.0.0.1 contoso-ubuntu.contoso100.com contoso-ubuntu
 ```
-"Contoso100.com" Íme a felügyelt tartomány DNS-tartomány nevét. "contoso-ubuntu", amelyhez csatlakozik, a felügyelt tartományhoz Ubuntu virtuális gép állomásnevét.
+
+Itt a "contoso100.com" a felügyelt tartomány DNS-tartományneve. a "contoso-Ubuntu" a felügyelt tartományhoz csatlakozó Ubuntu-beli virtuális gép állomásneve.
 
 
-## <a name="install-required-packages-on-the-linux-virtual-machine"></a>Telepítse a szükséges csomagokat a Linux rendszerű virtuális gépen
-Ezután telepítse a virtuális gép tartományhoz való csatlakozás a szükséges csomagokat. Hajtsa végre az alábbi lépéseket:
+## <a name="install-required-packages-on-the-linux-virtual-machine"></a>A szükséges csomagok telepítése a linuxos virtuális gépen
+Ezután telepítse a virtuális gépen a tartományhoz való csatlakozáshoz szükséges csomagokat. Hajtsa végre a következő lépéseket:
 
-1.  Az SSH terminálon írja be a következő parancsot a tárházban töltheti le a csomag listák. Ez a parancs a csomag listákat, az információ a csomagok és azok függőségeit a legújabb verzióra frissíti.
+1.  Az SSH-terminálon írja be a következő parancsot a csomagok listájáról a tárházból való letöltéséhez. Ez a parancs frissíti a csomagok listáját, hogy információt kapjon a csomagok legújabb verzióiról és azok függőségeiről.
 
-    ```
+    ```console
     sudo apt-get update
     ```
 
-2. Írja be a következő parancsot a szükséges csomagok telepítéséhez.
-    ```
+2. A szükséges csomagok telepítéséhez írja be a következő parancsot.
+
+    ```console
       sudo apt-get install krb5-user samba sssd sssd-tools libnss-sss libpam-sss ntp ntpdate realmd adcli
     ```
 
-3. A Kerberos-telepítés során megjelenik egy rózsaszín képernyő. A "krb5 – felhasználó" csomag telepítése kérni fogja a tartomány nevét (az összes NAGYBETŰT). A telepítés ír a [tartomány] és [domain_realm] /etc/krb5.conf szakaszait.
+3. A Kerberos-telepítés során egy rózsaszín képernyő jelenik meg. A "krb5-user" csomag telepítése kéri a tartománynevet (minden nagybetűs). A telepítés a [Realm] és a [domain_realm] szakaszt írja a/etc/krb5.conf.-ben.
 
     > [!TIP]
-    > Ha a felügyelt tartomány neve contoso100.com, adja meg a CONTOSO100.COM, a tartományt. Ne feledje, hogy a tartománynevet kötelező nagybetűs.
-    >
-    >
+    > Ha a felügyelt tartomány neve contoso100.com, adja meg a CONTOSO100.COM tartományt. Ne feledje, hogy a tartománynevet nagybetűvel kell megadni.
 
 
-## <a name="configure-the-ntp-network-time-protocol-settings-on-the-linux-virtual-machine"></a>A Linux rendszerű virtuális gépen az NTP (Network Time Protocol) beállításainak konfigurálása
-A dátum és idő, az Ubuntu virtuális gép kell szinkronizálni a felügyelt tartományhoz. A felügyelt tartomány NTP gazdagépnév hozzáadása a /etc/ntp.conf fájlban.
+## <a name="configure-the-ntp-network-time-protocol-settings-on-the-linux-virtual-machine"></a>Az NTP (Network Time Protocol) beállításainak konfigurálása a Linux rendszerű virtuális gépen
+Az Ubuntu-alapú virtuális gép dátumának és időpontjának szinkronizálnia kell a felügyelt tartománnyal. Adja hozzá a felügyelt tartomány NTP-állomásnevét a/etc/ntp.conf-fájlhoz.
 
-```
+```console
 sudo vi /etc/ntp.conf
 ```
 
-Ntp.conf a fájlban a következő értéket adja meg, és mentse a fájlt:
+Az NTP. conf fájlban adja meg a következő értéket, és mentse a fájlt:
 
-```
+```console
 server contoso100.com
 ```
-"Contoso100.com" Íme a felügyelt tartomány DNS-tartomány nevét.
 
-Szinkronizálja az Ubuntu rendszerű virtuális gép dátum és idő NTP-kiszolgálóval, és indítsa el az NTP-szolgáltatás:
+Itt a "contoso100.com" a felügyelt tartomány DNS-tartományneve.
 
-```
+Most szinkronizálja az Ubuntu virtuális gép dátumát és idejét az NTP-kiszolgálóval, majd indítsa el az NTP szolgáltatást:
+
+```console
 sudo systemctl stop ntp
 sudo ntpdate contoso100.com
 sudo systemctl start ntp
 ```
 
 
-## <a name="join-the-linux-virtual-machine-to-the-managed-domain"></a>A Linux rendszerű virtuális gép csatlakoztatása a felügyelt tartományhoz
-Most, hogy a szükséges csomagok telepítve vannak a Linux rendszerű virtuális gép, a következő feladata a virtuális gép csatlakoztatása a felügyelt tartományhoz.
+## <a name="join-the-linux-virtual-machine-to-the-managed-domain"></a>A linuxos virtuális gép csatlakoztatása a felügyelt tartományhoz
+Most, hogy a szükséges csomagok telepítve vannak a linuxos virtuális gépen, a következő feladat a virtuális gép csatlakoztatása a felügyelt tartományhoz.
 
-1. Fedezze fel az AAD tartományi szolgáltatásokkal felügyelt tartományban. Az SSH terminálon írja be a következő parancsot:
+1. Fedezze fel a HRE Domain Services által felügyelt tartományt. Az SSH-terminálban írja be a következő parancsot:
 
-    ```
+    ```console
     sudo realm discover CONTOSO100.COM
     ```
 
    > [!NOTE]
-   > **Hibaelhárítás:** Ha *a kezdőtartomány felderítése* nem találja a felügyelt tartomány:
-   >   * Győződjön meg arról, hogy a tartomány érhető el a virtuális gépről (ping. Próbálja meg).
-   >   * Ellenőrizze, hogy a virtuális gép valóban lett telepítve, az azonos virtuális hálózatban, amely a felügyelt tartomány érhető el.
-   >   * Ellenőrizze, hogy ha frissítette a DNS-kiszolgáló beállításainak a virtuális hálózathoz, hogy a felügyelt tartomány tartományvezérlőit mutasson.
+   > **Hibaelhárítás** Ha a *tartomány felderítése* nem találja a felügyelt tartományt:
+   >   * Győződjön meg arról, hogy a tartomány elérhető a virtuális gépről (ping kipróbálása).
+   >   * Győződjön meg arról, hogy a virtuális gép valóban telepítve van ugyanazon a virtuális hálózaton, amelyben a felügyelt tartomány elérhető.
+   >   * Ellenőrizze, hogy frissítette-e a virtuális hálózat DNS-kiszolgálójának beállításait, hogy a felügyelt tartomány tartományvezérlőjére mutasson.
 
-2. A Kerberos inicializálása. Az SSH terminálon írja be a következő parancsot:
+2. Kerberos inicializálása. Az SSH-terminálban írja be a következő parancsot:
 
     > [!TIP]
-    > * Győződjön meg arról, hogy megadja a felhasználó, aki az "AAD DC rendszergazdák" csoportba tartozik.
-    > * Adja meg a tartomány neve nagybetűvel, más kinit sikertelen lesz.
+    > * Győződjön meg arról, hogy az "HRE DC-rendszergazdák" csoportba tartozó felhasználót ad meg.
+    > * Adja meg a tartománynevet nagybetűvel, különben a kinit parancsot sikertelen lesz.
     >
 
-    ```
+    ```console
     kinit bob@CONTOSO100.COM
     ```
 
-3. A számítógép csatlakoztatása a tartományhoz. Az SSH terminálon írja be a következő parancsot:
+3. Csatlakoztassa a gépet a tartományhoz. Az SSH-terminálban írja be a következő parancsot:
 
     > [!TIP]
-    > Az azonos az előző lépésben (kinit) megadott felhasználói fiók használata.
-    >
+    > Használja ugyanazt a felhasználói fiókot, amelyet az előző lépésben ("kinit parancsot") adott meg.
 
-    ```
+    ```console
     sudo realm join --verbose CONTOSO100.COM -U 'bob@CONTOSO100.COM' --install=/
     ```
 
-Meg kell hibaüzenet jelenik meg ("sikeresen regisztrált számítógép tartomány") Ha a gép sikeresen csatlakozott a felügyelt tartományhoz.
+Ha a gép sikeresen csatlakoztatva van a felügyelt tartományhoz, egy üzenetet kell kapnia ("a számítógép sikeres regisztrálása a tartományban").
 
 
-## <a name="update-the-sssd-configuration-and-restart-the-service"></a>Frissítse a SSSD konfigurációját, és indítsa újra a szolgáltatást
-1. Az SSH terminálon írja be a következő parancsot. Nyissa meg a sssd.conf fájlt, és módosítsa a következőképpen
-    ```
+## <a name="update-the-sssd-configuration-and-restart-the-service"></a>Frissítse a SSSD konfigurációját, és indítsa újra a szolgáltatást.
+1. Az SSH-terminálon írja be a következő parancsot. Nyissa meg a sssd. conf fájlt, és végezze el a következő módosítást
+    
+    ```console
     sudo vi /etc/sssd/sssd.conf
     ```
 
-2. Tegye megjegyzésbe a sor **use_fully_qualified_names = True** és mentse a fájlt.
-    ```
+2. Tegye megjegyzésbe a **use_fully_qualified_names = True** sort, és mentse a fájlt.
+    
+    ```console
     # use_fully_qualified_names = True
     ```
 
 3. Indítsa újra a SSSD szolgáltatást.
-    ```
+    
+    ```console
     sudo service sssd restart
     ```
 
 
-## <a name="configure-automatic-home-directory-creation"></a>Kezdőkönyvtár automatikus létrehozásának konfigurálása
-Ahhoz, hogy a felhasználók a bejelentkezés után a kezdőkönyvtár automatikus létrehozását, a PuTTY terminálon írja be a következő parancsokat:
-```
+## <a name="configure-automatic-home-directory-creation"></a>Az automatikus kezdőkönyvtár létrehozásának konfigurálása
+Ha engedélyezni szeretné a kezdőkönyvtár automatikus létrehozását a felhasználók bejelentkezése után, írja be a következő parancsokat a PuTTY-terminálba:
+
+```console
 sudo vi /etc/pam.d/common-session
 ```
 
-Adja hozzá a következő sort a fájl 'munkamenet nem kötelező pam_sss.so' vonala alatti, és mentse azt:
-```
+Adja hozzá a következő sort a fájlhoz a "munkamenet választható pam_sss. so" sorban, és mentse:
+
+```console
 session required pam_mkhomedir.so skel=/etc/skel/ umask=0077
 ```
 
 
-## <a name="verify-domain-join"></a>A tartományhoz való csatlakozás ellenőrzéséhez
-Győződjön meg arról, hogy a gép sikeresen csatlakoztatva lett a felügyelt tartományhoz. Csatlakozhat a tartományhoz csatlakoztatott Ubuntu virtuális gép egy másik SSH-kapcsolatot. Egy tartományi fiókot használjon, és ezután ellenőrizze, hogy ha a felhasználói fióknak megfelelően megoldódott-e.
+## <a name="verify-domain-join"></a>Tartományhoz való csatlakozás ellenőrzése
+Ellenőrizze, hogy a gép sikeresen csatlakozott-e a felügyelt tartományhoz. Kapcsolódjon a tartományhoz csatlakoztatott Ubuntu virtuális géphez egy másik SSH-kapcsolat használatával. Használjon tartományi felhasználói fiókot, és ellenőrizze, hogy a felhasználói fiók megfelelően van-e feloldva.
 
-1. A terminálon az SSH-típus a következő parancsot a csatlakozás tartományhoz csatlakoztatott Ubuntu virtuális gép SSH-val. A felügyelt tartományhoz tartozó tartományi fiók használata (például "bob@CONTOSO100.COM" Ebben az esetben.)
-    ```
+1. Az SSH-terminálon írja be a következő parancsot a tartományhoz csatlakoztatott Ubuntu virtuális géphez való csatlakozáshoz az SSH használatával. Használjon olyan tartományi fiókot, amely a felügyelt tartományhoz tartozik (ebben azbob@CONTOSO100.COMesetben például "").
+    
+    ```console
     ssh -l bob@CONTOSO100.COM contoso-ubuntu.contoso100.com
     ```
 
-2. A terminálban SSH írja be a következő paranccsal tekintse meg, ha a kezdőkönyvtár megfelelően inicializálva.
-    ```
+2. Az SSH-terminálon írja be a következő parancsot annak ellenőrzéséhez, hogy a kezdőkönyvtár megfelelően lett-e inicializálva.
+    
+    ```console
     pwd
     ```
 
-3. Az SSH terminálon írja be a megtekintéséhez, ha a csoporttagság megfelelően vannak feloldva a következő parancsot.
-    ```
+3. Az SSH-terminálon írja be a következő parancsot annak ellenőrzéséhez, hogy a csoporttagság megfelelően van-e feloldva.
+    
+    ```console
     id
     ```
 
 
-## <a name="grant-the-aad-dc-administrators-group-sudo-privileges"></a>Az "AAD DC rendszergazdák" csoport sudo jogosultságok engedélyezése
-Meg lehet adni az "AAD DC rendszergazdák" csoport rendszergazdai jogosultságokkal az Ubuntu rendszerű virtuális gép azon tagjai. A sudo fájl nem található: /etc/sudoers. Az új funkció a sudoers AD-csoportok tagjai hajthatják végre a sudo.
+## <a name="grant-the-aad-dc-administrators-group-sudo-privileges"></a>A "HRE DC Administrators" csoport sudo-jogosultságának megadása
+Az "HRE DC rendszergazdák" csoport tagjainak rendszergazdai jogosultságokat adhat az Ubuntu virtuális gépen. A sudo fájl a következő helyen található:/etc/sudoers. A sudoers-ben hozzáadott AD-csoportok tagjai a sudo-t is elvégezhetik.
 
-1. Az SSH a terminál győződjön meg arról, jelentkezzen be a SUPERUSER felhasználói jogosultságai. A helyi rendszergazdai fiók, a virtuális gép létrehozásakor megadott is használhatja. Hajtsa végre a következő parancsot:
-    ```
+1. Az SSH-terminálon ellenőrizze, hogy rendszergazdai jogosultságokkal van-e bejelentkezve. Használhatja a virtuális gép létrehozásakor megadott helyi rendszergazdai fiókot. Hajtsa végre a következő parancsot:
+    
+    ```console
     sudo vi /etc/sudoers
     ```
 
-2. Adja hozzá a következő bejegyzést a /etc/sudoers fájlhoz, és mentse azt:
-    ```
+2. Adja hozzá a következő bejegyzést a/etc/sudoers-fájlhoz, és mentse azt:
+    
+    ```console
     # Add 'AAD DC Administrators' group members as admins.
     %AAD\ DC\ Administrators ALL=(ALL) NOPASSWD:ALL
     ```
 
-3. Most már bejelentkezhet az "AAD DC rendszergazdák" csoport tagjaként, és a virtuális gép rendszergazdai jogosultságokkal kell rendelkeznie.
+3. Most már bejelentkezhet az "HRE DC rendszergazdák" csoport tagjaként, és rendszergazdai jogosultságokkal kell rendelkeznie a virtuális gépen.
 
 
-## <a name="troubleshooting-domain-join"></a>A tartományhoz való csatlakozás hibáinak elhárítása
-Tekintse meg a [hibaelhárítás tartományhoz való csatlakozás](join-windows-vm.md#troubleshoot-joining-a-domain) cikk.
+## <a name="troubleshooting-domain-join"></a>Tartományhoz való csatlakozás hibaelhárítása
+Tekintse meg a tartományhoz való [Csatlakozás hibaelhárítása](join-windows-vm.md#troubleshoot-joining-a-domain) című cikket.
 
 
 ## <a name="related-content"></a>Kapcsolódó tartalom
-* [Az Azure AD tartományi szolgáltatások – első lépések útmutató](create-instance.md)
-* [A Windows Server virtuális gépek csatlakoztatása az Azure AD tartományi szolgáltatások által felügyelt tartományokhoz](active-directory-ds-admin-guide-join-windows-vm.md)
-* [Bejelentkezés Linux rendszerű virtuális gép](../virtual-machines/linux/mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+* [Azure AD Domain Services – Első lépések útmutató](create-instance.md)
+* [Windows Server rendszerű virtuális gép csatlakoztatása Azure AD Domain Services felügyelt tartományhoz](active-directory-ds-admin-guide-join-windows-vm.md)
+* [Bejelentkezés Linux rendszerű virtuális gépre](../virtual-machines/linux/mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).

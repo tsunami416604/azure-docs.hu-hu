@@ -1,6 +1,6 @@
 ---
-title: Hasonlítsa össze az alapkonfigurációkat a fájlintegritási Monitorozás az Azure Security Centerben |} A Microsoft Docs
-description: Ismerje meg, hogyan összehasonlítása alaptervek a fájlintegritási Monitorozás az Azure Security Centerben.
+title: Az alapkonfigurációk összehasonlítása a fájlok integritásának figyelésével Azure Security Centerban | Microsoft Docs
+description: Megtudhatja, hogyan hasonlíthatja össze az alapkonfigurációkat a fájlok integritásának figyelésével Azure Security Centerban.
 services: security-center
 documentationcenter: na
 author: monhaber
@@ -13,80 +13,80 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/29/2019
-ms.author: monhaber
-ms.openlocfilehash: e403a9bd4d3f8668544dab1d81e9052b37839bef
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: v-mohabe
+ms.openlocfilehash: afc03baa71f17deb0b923f483fde214a86c5e9b4
+ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66358438"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68296471"
 ---
-# <a name="compare-baselines-using-file-integrity-monitoring-fim"></a>Hasonlítsa össze az alapkonfigurációk fájl fájlintegritási Monitorozás (FIM) használatával
+# <a name="compare-baselines-using-file-integrity-monitoring-fim"></a>Alaptervek összehasonlítása a fájl sértetlenségének figyelésével (FIM)
 
-Fájl fájlintegritási Monitorozás (FIM) figyelmeztet, ha változás történik az erőforrások az érzékeny területekre így vizsgálja meg és oldja meg a jogosulatlan tevékenység. FIM figyeli a Windows-fájlok, beállításjegyzékek Windows és Linux-fájlok.
+A fájl integritásának figyelése (FIM) arról tájékoztatja, hogy Mikor változnak az erőforrások érzékeny területei, így megvizsgálhatja és kezelheti a jogosulatlan tevékenységeket. A FIM figyeli a Windows-fájlokat, a Windows-nyilvántartásokat és a Linux-fájlokat.
 
-Ez a témakör ismerteti, hogyan engedélyezheti a fájlok és a beállításjegyzékek FIM. FIM kapcsolatos további információkért lásd: [a fájlintegritási Monitorozás az Azure Security Centerben](security-center-file-integrity-monitoring.md).
+Ez a témakör bemutatja, hogyan engedélyezheti a FIM-t a fájlokon és a jegyzékeken. További információ a FIM-ről: [a fájlok integritásának figyelése Azure Security Center](security-center-file-integrity-monitoring.md).
 
-## <a name="why-use-fim"></a>FIM miért érdemes használni?
+## <a name="why-use-fim"></a>Miért érdemes a FIM-t használni?
 
-Operációs rendszer, alkalmazások és kapcsolódó konfigurációk szabályozhatja az erőforrások viselkedését és biztonsági állapotát. Így a támadók a fájlokat, amelyek vezérlik az erőforrásokat, annak érdekében, hogy az erőforrások operációs rendszer overtake és/vagy a tevékenységek végrehajtása feltűnésmentesen célba.
+Az operációs rendszer, az alkalmazások és a társított konfigurációk vezérlik az erőforrások viselkedését és biztonsági állapotát. Ezért a támadók az erőforrásokat vezérlő fájlokat célozzák meg, hogy az erőforrás operációs rendszerének és/vagy végrehajtásának észlelése nélkül is el lehessen végezni a műveleteket.
 
-Sőt számos törvényi megfelelőségi szabványai, például a PCI-DSS & ISO 17799 szükséges FIM ellenőrzések.  
+Valójában számos szabályozási megfelelőségi szabvány, például a PCI-DSS & ISO 17799 megköveteli a FIM-vezérlők megvalósítását.  
 
-## <a name="enable-built-in-recursive-registry-checks"></a>Beépített rekurzív beállításjegyzék-ellenőrzés engedélyezése
+## <a name="enable-built-in-recursive-registry-checks"></a>Beépített rekurzív beállításjegyzék-ellenőrzések engedélyezése
 
-Az FIM beállításjegyzék hive alapértelmezett értéket adja meg a rekurzív közös biztonsági területre végrehajtott módosítások monitorozásához kényelmes módot.  Például egy támadó egy indítási vagy leállítási egy végrehajtási konfigurálásával LOCAL_SYSTEM környezetben végrehajtandó szkript konfigurálhat.  Az ilyen típusú módosítások monitorozásához a beépített-ellenőrzés engedélyezése.  
+A FIM beállításjegyzék-struktúra alapértelmezései kényelmes módot biztosítanak a rekurzív változások figyelésére a közös biztonsági területeken belül.  Előfordulhat például, hogy egy támadó úgy konfigurálhat egy parancsfájlt, hogy LOCAL_SYSTEM környezetben fusson egy végrehajtás indításkor vagy leállításkor történő konfigurálásával.  Az ilyen típusú változások figyeléséhez engedélyezze a beépített ellenőrzést.  
 
 ![Beállításjegyzék](./media/security-center-file-integrity-monitoring-baselines/baselines-registry.png)
 
 >[!NOTE]
-> Rekurzív ellenőrzések csak ajánlott biztonsági struktúrát és egyéni beállításjegyzék elérési utak, nem vonatkoznak.  
+> A rekurzív ellenőrzések csak az ajánlott biztonsági struktúrákra vonatkoznak, és nem az egyéni beállításjegyzékbeli elérési utakra.  
 
-## <a name="adding-a-custom-registry-check"></a>Egy egyéni beállításjegyzék-ellenőrzés hozzáadása
+## <a name="adding-a-custom-registry-check"></a>Egyéni beállításjegyzék-ellenőrző hozzáadása
 
-FIM alaptervek azonosítása egy jó állapot, az operációs rendszer jellemzőit és az alkalmazás elindításához.  Ebben a példában a jelszó szabályzat beállításai Windows Server 2008 vagy újabb tárgyaljuk.
+A FIM alapkonfigurációk az operációs rendszer és a támogató alkalmazás ismert állapotának azonosításával kezdődnek.  Ebben a példában a Windows Server 2008-es és újabb verziójának jelszóházirend-konfigurációit fogjuk összpontosítani.
 
 
-|Szabályzat neve                 | Beállításjegyzék-beállítást|
+|Házirend neve                 | Beállításjegyzék-beállítás|
 |---------------------------------------|-------------|
-|Tartományvezérlő: A Számítógépfiók jelszómódosításának| MACHINE\System\CurrentControlSet\Services  \Netlogon\Parameters\RefusePasswordChange|
-|Tartományi tag: Digitális titkosítása vagy aláírása (mindig)|MACHINE\System\CurrentControlSet\Services \Netlogon\Parameters\RequireSignOrSeal|
-|Tartományi tag: (Ha lehet) biztonságos csatornák adatainak digitális titkosítása|MACHINE\System\CurrentControlSet\Services  \Netlogon\Parameters\SealSecureChannel|
-|Tartományi tag: (Ha ez lehetséges) digitális aláírása|MACHINE\System\CurrentControlSet\Services   \Netlogon\Parameters\SignSecureChannel|
-|Tartományi tag: Számítógépfiók jelszómódosításainak tiltása|MACHINE\System\CurrentControlSet\Services  \Netlogon\Parameters\DisablePasswordChange|
-|Tartományi tag: Számítógépfiók jelszavának maximális élettartama|MACHINE\System\CurrentControlSet\Services  \Netlogon\Parameters\MaximumPasswordAge|
-|Tartományi tag: Erős (Windows 2000 vagy frissebb rendszerű) munkamenetkulcs megkövetelése|MACHINE\System\CurrentControlSet\Services \Netlogon\Parameters\RequireStrongKey|
-|Hálózati biztonság: Az NTLM korlátozása:  Ebben a tartományban az NTLM-hitelesítés|MACHINE\System\CurrentControlSet\Services \Netlogon\Parameters\RestrictNTLMInDomain|
-|Hálózati biztonság: Az NTLM korlátozása: Ebben a tartományban kiszolgálókivételek hozzáadása|MACHINE\System\CurrentControlSet\Services  \Netlogon\Parameters\DCAllowedNTLMServers|
-|Hálózati biztonság: Az NTLM korlátozása: Az NTLM-hitelesítés naplózása ebben a tartományban|MACHINE\System\CurrentControlSet\Services \Netlogon\Parameters\AuditNTLMInDomain|
+|Tartományvezérlő: A számítógépfiók jelszavának módosításainak elutasítása| MACHINE\System\CurrentControlSet\Services \Netlogon\Parameters\RefusePasswordChange|
+|Tartományi tag: Biztonságos csatorna adatai digitális titkosítása vagy aláírása (mindig)|MACHINE\System\CurrentControlSet\Services \Netlogon\Parameters\RequireSignOrSeal|
+|Tartományi tag: Biztonságos csatorna adatai digitális titkosítása (ha lehetséges)|MACHINE\System\CurrentControlSet\Services \Netlogon\Parameters\SealSecureChannel|
+|Tartományi tag: Biztonságos csatornák digitális aláírása (ha lehetséges)|MACHINE\System\CurrentControlSet\Services \Netlogon\Parameters\SignSecureChannel|
+|Tartományi tag: A számítógépfiók jelszavának módosításainak letiltása|MACHINE\System\CurrentControlSet\Services  \Netlogon\Parameters\DisablePasswordChange|
+|Tartományi tag: Számítógépfiók maximális jelszavának kora|MACHINE\System\CurrentControlSet\Services \Netlogon\Parameters\MaximumPasswordAge|
+|Tartományi tag: Erős (Windows 2000 vagy újabb) munkamenetkulcs megkövetelése|MACHINE\System\CurrentControlSet\Services \Netlogon\Parameters\RequireStrongKey|
+|Hálózati biztonság: NTLM korlátozása:  NTLM-hitelesítés ebben a tartományban|MACHINE\System\CurrentControlSet\Services \Netlogon\Parameters\RestrictNTLMInDomain|
+|Hálózati biztonság: NTLM korlátozása: Kiszolgálói kivételek hozzáadása ebben a tartományban|MACHINE\System\CurrentControlSet\Services \Netlogon\Parameters\DCAllowedNTLMServers|
+|Hálózati biztonság: NTLM korlátozása: NTLM-hitelesítés naplózása ebben a tartományban|MACHINE\System\CurrentControlSet\Services \Netlogon\Parameters\AuditNTLMInDomain|
 
 > [!NOTE]
-> Különböző operációsrendszer-verziók által támogatott beállításjegyzék beállításaival kapcsolatos további tudnivalókért tekintse meg a [csoportházirend-beállítások hivatkozási számolótábla](https://www.microsoft.com/en-us/download/confirmation.aspx?id=25250).
+> Ha többet szeretne megtudni a különböző operációsrendszer-verziók által támogatott beállításjegyzék-beállításokról, tekintse meg a [csoportházirend beállítások hivatkozását tartalmazó táblázatot](https://www.microsoft.com/en-us/download/confirmation.aspx?id=25250).
 
-*FIM figyelése beállításjegyzék alaptervek konfigurálása:*
+*A FIM konfigurálása a beállításjegyzék alapkonfigurációinak figyeléséhez:*
 
-1. Az a **Windows-beállításjegyzék felvétele a Change Tracking megoldásba** ablakban, a a **Windows-beállításkulcs** szöveget adja meg a beállításkulcsot.
+1. A **Windows beállításjegyzék hozzáadása Change Tracking** ablakban a **Windows beállításjegyzék kulcsa** szövegmezőbe írja be a beállításkulcsot.
 
     <code>
 
     HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Netlogon\Parameters
     </code>
 
-      ![A beállításjegyzék FIM engedélyezése](./media/security-center-file-integrity-monitoring-baselines/baselines-add-registry.png)
+      ![A FIM engedélyezése a beállításjegyzékben](./media/security-center-file-integrity-monitoring-baselines/baselines-add-registry.png)
 
-## <a name="tracking-changes-to-windows-files"></a>Windows-fájlok a változások követését
+## <a name="tracking-changes-to-windows-files"></a>Windows-fájlok változásainak követése
 
-1. Az a **Windows-fájl felvétele a Change Tracking** ablakban, a a **Enter elérési út** szöveg mezőbe írja be a követni kívánt fájlokat tartalmazó mappát. A példában az alábbi ábrán **Contoso webalkalmazás** a D:\ található meghajtó belül a **ContosWebApp** mappastruktúra.  
-1. Hozzon létre egy egyéni Windows fájlt egy nevet a beállítás osztály, rekurzió engedélyezése és a egy helyettesítő karakter (*) utótaggal a legfelső szintű mappa megadása.
+1. A **Windows-fájl hozzáadása Change Tracking** ablakban az **elérési út megadása** szövegmezőbe írja be azt a mappát, amely tartalmazza a nyomon követni kívánt fájlokat. Az alábbi ábrán látható példában a **contoso** -webalkalmazás a D:\ található. meghajtó a **ContosWebApp** -mappa struktúráján belül.  
+1. Hozzon létre egy egyéni Windows-bejegyzést úgy, hogy megadja a beállítási osztály nevét, engedélyezi a rekurziót, és megadta a legfelső mappát helyettesítő karakter (*) utótaggal.
 
-    ![A fájl FIM engedélyezése](./media/security-center-file-integrity-monitoring-baselines/baselines-add-file.png)
+    ![FIM engedélyezése fájlon](./media/security-center-file-integrity-monitoring-baselines/baselines-add-file.png)
 
-## <a name="retrieving-change-data"></a>Adatváltozások beolvasása
+## <a name="retrieving-change-data"></a>Módosítási adatok beolvasása
 
-Fájlintegritási monitorozás az Azure Log Analytics belül található adatok / ConfigurationChange tábla állítsa.  
+A fájlok integritásának figyelési adatok az Azure Log Analytics/konfigurációváltozás tábla készletén belül találhatók.  
 
- 1. Állítsa be a módosításainak összegzése beolvasni az erőforrás által időtartományát.
-A következő példában azt olvassák összes módosítást a beállításjegyzékben és a fájlok a kategóriákban az elmúlt 14 napban:
+ 1. Állítsa be az időtartományt, hogy lekérje az erőforrás változásainak összefoglalását.
+A következő példában a beállításjegyzék és a fájlok kategóriáinak utolsó tizennégy napján beolvasunk minden változást:
 
     <code>
 
@@ -100,10 +100,10 @@ A következő példában azt olvassák összes módosítást a beállításjegyz
 
     </code>
 
-1. A beállításjegyzékbeli változások részleteinek megtekintéséhez:
+1. A beállításjegyzék módosításainak részleteinek megtekintése:
 
-    1. Távolítsa el **fájlok** származó a **ahol** záradék, 
-    1. Távolítsa el az összegzési sort, és cserélje le egy rendelési záradékkal:
+    1. **Fájlok** eltávolítása a **Where** záradékból 
+    1. Távolítsa el az összegzési sort, és cserélje le egy megrendelési záradékra:
 
     <code>
 
@@ -117,6 +117,6 @@ A következő példában azt olvassák összes módosítást a beállításjegyz
 
     </code>
 
-Jelentések archiválási és/vagy a Power BI-jelentésekhez channeled csv-fájlba exportálhatók.  
+A jelentések a CSV-fájlba exportálhatók archiválásra és/vagy csatornára Power BI jelentésbe.  
 
-![FIM-adatok](./media/security-center-file-integrity-monitoring-baselines/baselines-data.png)
+![FIM-adatbázis](./media/security-center-file-integrity-monitoring-baselines/baselines-data.png)

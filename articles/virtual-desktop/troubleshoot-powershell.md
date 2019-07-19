@@ -1,95 +1,95 @@
 ---
-title: Windows asztali virtuális PowerShell – Azure
-description: Tudnivalók a PowerShell-lel hibák elhárításához, ha egy virtuális asztali Windows-bérlős környezet beállítása.
+title: Windows rendszerű virtuális asztali PowerShell – Azure
+description: A PowerShell hibáinak elhárítása a Windows rendszerű virtuális asztali bérlői környezet beállításakor.
 services: virtual-desktop
 author: ChJenk
 ms.service: virtual-desktop
 ms.topic: troubleshooting
 ms.date: 04/08/2019
 ms.author: v-chjenk
-ms.openlocfilehash: 06b955365ffc7c0a1dff93db95932d8696293e9f
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: 41c3c25962d5cb0d608a226ed77408460446bfa5
+ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67605243"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68248204"
 ---
 # <a name="windows-virtual-desktop-powershell"></a>Windows Virtual Desktop – PowerShell
 
-Ez a cikk segítségével hibáinak és problémáinak megoldása, a virtuális asztal Windows PowerShell használatakor. További információ a távoli asztali szolgáltatások PowerShell: [Windows virtuális asztal Powershell](https://docs.microsoft.com/powershell/module/windowsvirtualdesktop/).
+Ez a cikk a PowerShell és a Windows rendszerű virtuális asztal használatával kapcsolatos hibák és problémák megoldására használható. Távoli asztali szolgáltatások PowerShell-lel kapcsolatos további információkért lásd: [Windows virtuális asztali PowerShell](https://docs.microsoft.com/powershell/module/windowsvirtualdesktop/).
 
 ## <a name="provide-feedback"></a>Visszajelzés küldése
 
-A Microsoft jelenleg nem tart támogatási esetek Windows virtuális asztal pedig előzetes verzióban érhető el. Látogasson el a [Windows virtuális asztal technikai Közösség](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop) vitatni a virtuális asztali Windows-szolgáltatás a termékért felelős csoport és az aktív Közösség tagjai.
+Jelenleg nem veszünk fel támogatási eseteket, amíg a Windows rendszerű virtuális asztal előzetes verzióban érhető el. Látogasson el a [Windows rendszerű virtuális asztali technikai Közösségbe](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop) , és beszéljen a Windows Virtual Desktop szolgáltatásról a termék csapatával és az aktív közösség tagjaival.
 
-## <a name="powershell-commands-used-during-windows-virtual-desktop-setup"></a>Windows virtuális asztalok telepítése során használt PowerShell-parancsok
+## <a name="powershell-commands-used-during-windows-virtual-desktop-setup"></a>A Windows rendszerű virtuális asztali telepítés során használt PowerShell-parancsok
 
-Ez a rész felsorolja, amely jellemzően Windows virtuális asztal beállítása közben, és azok használata közben felmerülő problémák megoldásához különféle módot kínál a PowerShell-parancsokat.
+Ez a szakasz azokat a PowerShell-parancsokat sorolja fel, amelyek a Windows rendszerű virtuális asztali környezet beállításakor használatosak, és módot biztosít a használat közben felmerülő problémák megoldására.
 
-### <a name="error-add-rdsappgroupuser-command----the-specified-userprincipalname-is-already-assigned-to-a-remoteapp-app-group-in-the-specified-host-pool"></a>Hiba: Adjon hozzá RdsAppGroupUser parancsot – a megadott UserPrincipalName már hozzá van rendelve a megadott gazdagép-készlet csoporthoz RemoteApp alkalmazás
+### <a name="error-add-rdsappgroupuser-command----the-specified-userprincipalname-is-already-assigned-to-a-remoteapp-app-group-in-the-specified-host-pool"></a>Hiba: Add-RdsAppGroupUser parancs – a megadott UserPrincipalName már hozzá van rendelve egy RemoteApp-alkalmazáshoz a megadott gazdagép-készletben
 
 ```Powershell
 Add-RdsAppGroupUser -TenantName <TenantName> -HostPoolName <HostPoolName> -AppGroupName 'Desktop Application Group' -UserPrincipalName <UserName>
 ```
 
-**OK:** Használt felhasználónév már lett hozzárendelve egy másik típusú alkalmazás csoporthoz. Felhasználók mindkét egy távoli asztal és a Távsegítség alkalmazás csoporthoz ugyanazon munkamenet gazdagép készlet alapján nem lehet hozzárendelni.
+**Okozhat** A használt Felhasználónév már hozzá van rendelve egy másik típusú alkalmazás csoportjához. A felhasználók nem rendelhetők hozzá egyszerre egy távoli asztali és távoli alkalmazáscsoport ugyanahhoz a munkamenet-készlethez.
 
-**Javítás:** Felhasználónak van szüksége, távoli alkalmazások és a távoli asztal, ha másik gazdagép-címkészletek létrehozása, vagy a távoli asztal, amelyek lehetővé teszik a minden alkalmazás használatát a munkamenet virtuális gép gazdagépen való felhasználói hozzáférést.
+**Javítsa ki** Ha a felhasználónak mind a távoli, mind a távoli asztal szolgáltatásra van szüksége, hozzon létre különböző gazdagép-készleteket, vagy engedélyezzen felhasználói hozzáférést a távoli asztalhoz, amely lehetővé teszi bármely alkalmazás használatát a munkamenet-gazda virtuális gépen.
 
-### <a name="error-add-rdsappgroupuser-command----the-specified-userprincipalname-doesnt-exist-in-the-azure-active-directory-associated-with-the-remote-desktop-tenant"></a>Hiba: Adjon hozzá RdsAppGroupUser parancsot – a megadott UserPrincipalName nem létezik a távoli asztal tenanthoz társított Azure Active Directoryban
+### <a name="error-add-rdsappgroupuser-command----the-specified-userprincipalname-doesnt-exist-in-the-azure-active-directory-associated-with-the-remote-desktop-tenant"></a>Hiba: Add-RdsAppGroupUser parancs – a megadott UserPrincipalName nem létezik a Távoli asztal bérlőhöz társított Azure Active Directory
 
 ```PowerShell
 Add-RdsAppGroupUser -TenantName <TenantName> -HostPoolName <HostPoolName> -AppGroupName “Desktop Application Group” -UserPrincipalName <UserPrincipalName>
 ```
 
-**OK:** A - UserPrincipalName által megadott felhasználó nem található az Azure Active Directory, a virtuális asztali Windows-bérlőhöz vannak kötve.
+**Okozhat** A-UserPrincipalName által megadott felhasználó nem található a Windows rendszerű virtuális asztali bérlőhöz kötött Azure Active Directoryban.
 
-**Javítás:** Erősítse meg a következő listán szereplő elemeket.
+**Javítsa ki** Erősítse meg az alábbi listán szereplő elemeket.
 
-- A felhasználó Azure Active Directoryval van szinkronizálva.
-- Végfelhasználói kereskedelem (B2C) vagy-vállalatközi (B2B) commerce üzleti a felhasználó nem kötődik.
-- A Windows virtuális asztal bérlő helyes-e az Azure Active Directory van kötve.
+- A felhasználó Azure Active Directoryra van szinkronizálva.
+- A felhasználó nincs a vállalati (B2C) vagy a vállalatközi (B2B) kereskedelemhez kötve.
+- A Windows rendszerű virtuális asztali bérlő helyes Azure Active Directoryhoz van kötve.
 
-### <a name="error-get-rdsdiagnosticactivities----user-isnt-authorized-to-query-the-management-service"></a>Hiba: Get-RdsDiagnosticActivities – Felhasználó nem jogosult a felügyeleti szolgáltatás lekérdezése
+### <a name="error-get-rdsdiagnosticactivities----user-isnt-authorized-to-query-the-management-service"></a>Hiba: Get-RdsDiagnosticActivities – a felhasználó nem rendelkezik jogosultsággal a kezelési szolgáltatás lekérdezéséhez
 
 ```PowerShell
 Get-RdsDiagnosticActivities -ActivityId <ActivityId>
 ```
 
-**OK:** - TenantName paraméter
+**OK:** -TenantName paraméter
 
-**Javítás:** Adja ki a Get-RdsDiagnosticActivities rendelkező - TenantName <TenantName>.
+**Javítsa ki** Probléma a Get-RdsDiagnosticActivities és a \<-TenantName TenantName >ával.
 
-### <a name="error-get-rdsdiagnosticactivities----the-user-isnt-authorized-to-query-the-management-service"></a>Hiba: Get-RdsDiagnosticActivities – a felhasználó nem jogosult a felügyeleti szolgáltatás lekérdezése
+### <a name="error-get-rdsdiagnosticactivities----the-user-isnt-authorized-to-query-the-management-service"></a>Hiba: Get-RdsDiagnosticActivities – a felhasználó nem rendelkezik jogosultsággal a kezelési szolgáltatás lekérdezéséhez
 
 ```PowerShell
 Get-RdsDiagnosticActivities -Deployment -username <username>
 ```
 
-**OK:** Használatával – üzembe helyezési kapcsoló.
+**Okozhat** A-Deployment kapcsoló használata.
 
-**Javítás:** -üzembe helyezési kapcsoló csak a központi telepítési rendszergazdái használható. Ezek a rendszergazdák általában a távoli asztali szolgáltatások/Windows virtuális asztal csapat tagjai. Cserélje le a – üzembe helyezés a kapcsolót a - TenantName <TenantName>.
+**Javítás:** – a központi telepítési kapcsolót csak a telepítési rendszergazdák használhatják. Ezek a rendszergazdák általában a Távoli asztali szolgáltatások/Windows virtuális asztali csapat tagjai. Cserélje le a-Deployment kapcsolót a \<-TenantName TenantName >.
 
-### <a name="error-new-rdsroleassignment----the-user-isnt-authorized-to-query-the-management-service"></a>Hiba: Új RdsRoleAssignment – a felhasználó nem jogosult a felügyeleti szolgáltatás lekérdezése
+### <a name="error-new-rdsroleassignment----the-user-isnt-authorized-to-query-the-management-service"></a>Hiba: New-RdsRoleAssignment – a felhasználó nem rendelkezik jogosultsággal a kezelési szolgáltatás lekérdezéséhez
 
-**1. ok:** Az éppen használt fiók a bérlő nem rendelkezik a távoli asztali szolgáltatások tulajdonosi engedélyekkel.
+**1. ok:** A használt fióknak nincs Távoli asztali szolgáltatások tulajdonosi engedélye a bérlőn.
 
-**1 javítás:** Távoli asztali szolgáltatások tulajdonosi engedélyekkel rendelkező felhasználó van szüksége a szerepkör-hozzárendelés végrehajtásához.
+**1. javítás:** Távoli asztali szolgáltatások tulajdonosi engedélyekkel rendelkező felhasználónak végre kell hajtania a szerepkör-hozzárendelést.
 
-**2. ok:** Az éppen használt fiók rendelkezik tulajdonosi engedélyekkel a távoli asztali szolgáltatások, de nem a bérlő Azure Active Directory része, vagy nem rendelkezik engedélyekkel, ahol a felhasználó megtalálható az Azure Active Directory lekérdezéséhez.
+**2. ok:** A használt fiók Távoli asztali szolgáltatások tulajdonosi engedélyekkel rendelkezik, de nem része a bérlő Azure Active Directorynak, vagy nem rendelkezik engedéllyel a felhasználó helye Azure Active Directory lekérdezéséhez.
 
-**2 Javítás:** Az Active Directory-engedélyek a felhasználónak kell hajtsa végre a szerepkör-hozzárendelést.
+**2. javítás:** Active Directory engedélyekkel rendelkező felhasználónak végre kell hajtania a szerepkör-hozzárendelést.
 
 >[!Note]
->Új RdsRoleAssignment, amely nem létezik az Azure Active Directory (AD) a felhasználó nem lehet engedélyt.
+>A New-RdsRoleAssignment nem tud engedélyeket adni olyan felhasználónak, aki nem létezik a Azure Active Directoryban (AD).
 
 ## <a name="next-steps"></a>További lépések
 
-- Hibaelhárítási Windows virtuális asztal és a kiterjesztés nyomon követi az áttekintést lásd: [hibaelhárítási áttekintése, visszajelzés és támogatás](troubleshoot-set-up-overview.md).
-- Windows virtuális asztali környezetben egy bérlő és a gazdagép-készlet létrehozása során problémák hibaelhárítása: [bérlő és a gazdagép-készlet létrehozása](troubleshoot-set-up-issues.md).
-- Egy virtuális gépet (VM) konfigurálása a Windows virtuális asztal során problémák hibaelhárítása: [munkamenetgazda virtuális gép konfigurálása](troubleshoot-vm-configuration.md).
-- Windows virtuális asztali kapcsolatok problémáinak hibaelhárítása: [távoli asztali kapcsolatok](troubleshoot-client-connection.md).
-- Az előzetes verziójú szolgáltatások kapcsolatos további információkért lásd: [Windows Desktop előzetes verziójú környezet](https://docs.microsoft.com/azure/virtual-desktop/environment-setup).
-- Nyissa meg a hibaelhárítás az oktatóanyagot, tekintse meg [oktatóanyag: Resource Manager-sablon üzemelő példányok hibaelhárítása](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-tutorial-troubleshoot).
-- Naplózási műveletek kapcsolatos további információkért lásd: [auditálási műveletek a Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-audit).
-- Üzembe helyezés során a hibák megállapításához műveleteivel kapcsolatos tudnivalókért lásd: [üzembehelyezési műveletek megtekintése](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-deployment-operations).
+- A Windows rendszerű virtuális asztalok és a eszkalációs sávok hibaelhárításával kapcsolatban lásd: [Hibaelhárítás – áttekintés, visszajelzés és támogatás](troubleshoot-set-up-overview.md).
+- A bérlők és a gazdagépek Windows rendszerű virtuális asztali környezetben való létrehozásakor felmerülő problémák elhárításához tekintse meg a [bérlői és az alkalmazáskészletek létrehozását](troubleshoot-set-up-issues.md)ismertető részt.
+- A virtuális gép (VM) Windows rendszerű virtuális asztali gépen való konfigurálása során felmerülő problémák elhárításával kapcsolatban lásd: a [munkamenet-gazdagép virtuális gép konfigurálása](troubleshoot-vm-configuration.md).
+- A Windows rendszerű virtuális asztali ügyfélkapcsolatokkal kapcsolatos problémák elhárításához lásd: [Távoli asztal ügyfélkapcsolatok](troubleshoot-client-connection.md).
+- Az előzetes verziójú szolgáltatással kapcsolatos további tudnivalókért tekintse meg a [Windows asztali előnézet környezetét](https://docs.microsoft.com/azure/virtual-desktop/environment-setup)ismertető témakört.
+- A következő témakörben talál útmutatást [a hibakereséshez: oktatóanyag: Resource Manager-sablonok központi telepítésének](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-tutorial-troubleshoot)hibája.
+- További információ a naplózási műveletekről: [műveletek naplózása a Resource Managerrel](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-audit).
+- Az üzembe helyezés során felmerülő hibák meghatározásával kapcsolatos további tudnivalókért lásd: [telepítési műveletek megtekintése](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-deployment-operations).

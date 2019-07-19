@@ -1,135 +1,135 @@
 ---
-title: Olvassa el a replikákat az Azure Database for MariaDB
-description: Ez a cikk ismerteti olvasható replikák MariaDB-hez készült Azure Database-hez.
+title: Replikák olvasása a Azure Database for MariaDBban
+description: Ez a cikk a Azure Database for MariaDB tartozó olvasási replikákat ismerteti.
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 06/10/2019
-ms.openlocfilehash: 8abe257090b5159053a37350c9e24cc27073679b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.date: 07/12/2019
+ms.openlocfilehash: e6bbe15727a6f989d8c16c67591d39d7870d5708
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67079365"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67874896"
 ---
-# <a name="read-replicas-in-azure-database-for-mariadb"></a>Olvassa el a replikákat az Azure Database for MariaDB
+# <a name="read-replicas-in-azure-database-for-mariadb"></a>Replikák olvasása a Azure Database for MariaDBban
 
-Az olvasási replika szolgáltatás replikálja az adatokat egy Azure Database for MariaDB-kiszolgálót egy írásvédett kiszolgáló teszi lehetővé. Fő ugyanabban a régióban legfeljebb öt replikához replikálhatja a fölérendelt kiszolgálótól. Replikák frissülnek, aszinkron módon használja a MariaDB-motor bináris napló (binlog) fájl elhelyezése-alapú replikációs technológiával globális tranzakció azonosítója (GTID). Binlog replikációval kapcsolatos további tudnivalókért tekintse meg a [binlog replikálációs szolgáltatása-áttekintés](https://mariadb.com/kb/en/library/replication-overview/).
+Az olvasási replika funkció lehetővé teszi az adatok replikálását egy Azure Database for MariaDB-kiszolgálóról egy írásvédett kiszolgálóra. A fő kiszolgálóról legfeljebb öt replikára lehet replikálni. A replikákat a rendszer aszinkron módon frissíti a MariaDB motor bináris naplójának (BinLog) fájljának pozíció-alapú replikációs technológiájának használatával globális tranzakciós AZONOSÍTÓval (GTID). A BinLog replikálásával kapcsolatos további tudnivalókért tekintse meg a [BinLog-replikáció áttekintése](https://mariadb.com/kb/en/library/replication-overview/)című témakört.
 
 > [!IMPORTANT]
-> Ugyanabban a régióban olvasható replika jelenleg nyilvános előzetes verzióban érhető el.
+> Létrehozhat egy olvasási replikát a főkiszolgálóval megegyező régióban, vagy bármely más, az Ön által választott Azure-régióban is. Az olvasási replikák (azonos régió és régiók) jelenleg nyilvános előzetes verzióban érhetők el.
 
-Replika új kiszolgálókat, amelyeket rendszeres hasonló, Azure Database for MariaDB-kiszolgáló felügyel. Az egyes olvassa el a replika, a számlázás a virtuális magok kiépített számítási és tárolási GB / hó.
+A replikák olyan új kiszolgálók, amelyeket a rendszeres Azure Database for MariaDB-kiszolgálókhoz hasonló módon kezel. Az egyes olvasási replikák esetében a virtuális mag és a Storage szolgáltatásban a kiépített számítási kapacitást a GB/hó értékben számítjuk fel.
 
-GTID replikációval kapcsolatos további tudnivalókért tekintse meg a [MariaDB replikációs dokumentáció](https://mariadb.com/kb/en/library/gtid/).
+A GTID replikálásával kapcsolatos további tudnivalókért tekintse meg a [MariaDB-replikáció dokumentációját](https://mariadb.com/kb/en/library/gtid/).
 
-## <a name="when-to-use-a-read-replica"></a>Ha egy olvasási-replika használatára
+## <a name="when-to-use-a-read-replica"></a>Mikor használjon olvasási replikát
 
-A olvasható replika szolgáltatás segítségével a teljesítményét és skálázhatóságát olvasásigényű munkaterhelésekhez javítása érdekében. Olvasási számítási feladatok is lehet a replikákra, elkülönített, miközben írási számítási feladatok a fő lehet irányítani.
+Az olvasási replika funkcióval javítható a nagy olvasási igényű számítási feladatok teljesítménye és méretezése. Az olvasási munkaterhelések elkülöníthetők a replikákkal, míg az írási munkaterhelések a főkiszolgálóhoz irányíthatók.
 
-Gyakran előfordul, hogy rendelkezzen a BI-ban, és elemzési számítási feladatok az olvasási-replika használatára adatforrásként a jelentéskészítéshez.
+Gyakori forgatókönyv, hogy a BI-és analitikai munkaterhelések az olvasási replikát használják adatforrásként a jelentéskészítéshez.
 
-Replikák írásvédettek, mivel azok nem csökkenti a fő írási kapacitású terheinek közvetlenül. Ez a funkció nem célzó írási-igényes számítási feladatokhoz.
+Mivel a replikák csak olvashatók, nem csökkentik közvetlenül az írási kapacitás terheit a főkiszolgálón. Ez a funkció nem a nagy írási igényű munkaterhelésekre irányul.
 
-Az olvasási replika szolgáltatás aszinkron replikációt használ. A szolgáltatás nem arra készült, a szinkron replikációs forgatókönyvek esetén. A master és a replika mérhető késleltetés lesz. A replikában tárolt idővel a fő lévő adatok konzisztens lesz. A funkció használatához a számítási feladatokhoz, amely képes kezelni ezt a késést.
+Az olvasási replika funkció aszinkron replikálást használ. A funkció nem a szinkron replikációs forgatókönyvek esetében jelent meg. A főkiszolgáló és a replika között mérhető késés lesz. A replikán lévő adatok végül konzisztensek maradnak a főkiszolgálón lévő adatokkal. Használja ezt a szolgáltatást olyan számítási feladatokhoz, amelyek alkalmasak erre a késésre.
 
-Olvasható replikák javíthatja a vészhelyreállítási tervet. Ha regionális katasztrófa, és a fölérendelt kiszolgáló nem érhető el, a számítási feladat egy replikának egy másik régióban irányíthatók. Ehhez először lehetővé teszik a replikát, fogadja el az írási műveletek a stop-replikáció függvény használatával. Az alkalmazás ezután átirányíthatja a kapcsolati karakterlánc módosításával. További információ: a [replikációleállítás](#stop-replication) szakaszban.
+Az olvasási replikák növelhetik a vész-helyreállítási tervet. Ha van regionális katasztrófa, és a főkiszolgáló nem érhető el, akkor a számítási feladatokat egy másik régióban lévő replikára irányíthatja. Ehhez először hagyja, hogy a replika fogadja az írásokat a replikálás leállítása funkció használatával. Ezután átirányíthatja az alkalmazást a kapcsolatok karakterláncának frissítésével. További információ a [replikálás leállítása](#stop-replication) szakaszban található.
 
 ## <a name="create-a-replica"></a>Replika létrehozása
 
-Ha a fő kiszolgálón nem meglévő replika kiszolgálók, a fő először újraindul felkészüljön a replikációhoz.
+Ha a főkiszolgáló nem rendelkezik meglévő replika-kiszolgálókkal, a főkiszolgáló először újraindul a replikálás előkészítéséhez.
 
-Amikor a létrehozás replika munkafolyamat, egy üres, Azure Database for MariaDB kiszolgáló jön létre. Az új kiszolgáló ki van töltve az adatokkal, amelyek a fő kiszolgálón volt. A létrehozás ideje függ a master és a múlt heti teljes biztonsági mentés óta eltelt idő adatok mennyisége. Az idő pár percet vagy akár több óráig terjedhet.
+A replika létrehozása munkafolyamat indításakor létrejön egy üres Azure Database for MariaDB-kiszolgáló. Az új kiszolgáló a főkiszolgálón található adatokkal van feltöltve. A létrehozási idő a főkiszolgálón tárolt adatok mennyiségétől és az utolsó heti teljes biztonsági mentés óta eltelt idővel függ. Az idő néhány perctől akár több órára is terjedhet.
 
 > [!NOTE]
-> A tárolási riasztási csoport nem rendelkezik a kiszolgálókon, azt javasoljuk, hogy lehetősége. A riasztás figyelmeztet, ha a kiszolgáló már majdnem elérte a tárolási kapacitását, amely hatással van a replikáció.
+> Ha nincs beállítva tárolási riasztás a kiszolgálókon, javasoljuk, hogy tegye meg ezt a szolgáltatást. A riasztás akkor értesíti, ha egy kiszolgáló eléri a tárolási korlátot, ami hatással lesz a replikálásra.
 
-Ismerje meg, hogyan [olvasható replika létrehozásához az Azure Portalon](howto-read-replicas-portal.md).
+Megtudhatja, hogyan [hozhat létre olvasási replikát a Azure Portalban](howto-read-replicas-portal.md).
 
-## <a name="connect-to-a-replica"></a>Csatlakozás egy replika
+## <a name="connect-to-a-replica"></a>Kapcsolódás replikához
 
-Amikor létrehoz egy replikát, a tűzfal- és VNet-szolgáltatásvégpont főkiszolgálójának nem örökli. Ezek a szabályok egymástól függetlenül a replika kell állítani.
+Replika létrehozásakor nem örökli a főkiszolgáló tűzfalszabályok vagy VNet szolgáltatási végpontját. Ezeket a szabályokat a replika egymástól függetlenül kell beállítani.
 
-A replika örökli a fölérendelt kiszolgáló a rendszergazdai fiókkal. A fölérendelt kiszolgáló az összes felhasználói fiók replikálva vannak a olvasható replikákat. Csak csatlakozhat egy olvasási replikát a fölérendelt kiszolgáló elérhető a felhasználói fiókok használatával.
+A replika örökli a rendszergazdai fiókot a főkiszolgálóról. A főkiszolgáló összes felhasználói fiókja replikálódik az olvasási replikára. Csak olvasási replikához csatlakozhat a főkiszolgálón elérhető felhasználói fiókok használatával.
 
-Csatlakozhat a replika használatával, az állomásnév és a egy érvényes felhasználói fiókot, mint egy normál, Azure Database for MariaDB-kiszolgáló. A kiszolgáló neve **myreplica** a rendszergazda felhasználóneve a **myadmin**, a replika a mysql parancssori felület használatával csatlakozhat:
+A replikához a hostname és egy érvényes felhasználói fiók használatával kapcsolódhat, ahogy azt egy normál Azure Database for MariaDB-kiszolgálón tenné. Ahhoz, hogy egy **myreplica** nevű kiszolgáló rendszergazdai felhasználónevét **myadmin**, a MySQL CLI használatával kapcsolódhat a replikához:
 
 ```bash
 mysql -h myreplica.mariadb.database.azure.com -u myadmin@myreplica -p
 ```
 
-Amikor a rendszer kéri adja meg a felhasználói fiók jelszavát.
+A parancssorba írja be a felhasználói fiókhoz tartozó jelszót.
 
-## <a name="monitor-replication"></a>A figyelő replikáció
+## <a name="monitor-replication"></a>Replikáció figyelése
 
-Azure Database for MariaDB kínál a **replikációs késés másodpercben** metrika az Azure monitorban. Ez a metrika csak a replikák számára érhető el.
+A Azure Database for MariaDB a **replikáció késését** a Azure monitor másodpercben mért metrikája biztosítja. Ez a metrika csak replikák esetében érhető el.
 
-Ez a metrika számítja ki a `seconds_behind_master` használja a MariaDB elérhető metrika `SHOW SLAVE STATUS` parancsot.
+Ezt a metrikát a `seconds_behind_master` `SHOW SLAVE STATUS` MariaDB parancsában elérhető metrika alapján számítjuk ki.
 
-Állítsa be egy riasztás értesíti, amikor a replikációs késés eléri-e egy érték, amely nem fogadható el, a számítási feladatok számára.
+Állítson be egy riasztást, amely tájékoztatja arról, ha a replikációs késés olyan értéket ér el, amely nem fogadható el a munkaterhelés számára.
 
 ## <a name="stop-replication"></a>Replikáció leállítása
 
-A master és a egy replika közötti replikációt is leállíthatja. Miután replikáció le van állítva, egy fölérendelt kiszolgáló és a egy olvasási replika között, a replika válik egy önálló kiszolgáló. Az önálló kiszolgáló adatai az adatokat, amelyek a stop replikációs parancs indításakor álltak rendelkezésre a replikán. Az önálló kiszolgáló kommunikálnak, nem történik meg.
+Leállíthatja a replikációt egy főkiszolgáló és egy replika között. Miután leállította a replikálást egy főkiszolgáló és egy olvasási replika között, a replika önálló kiszolgáló lesz. Az önálló kiszolgálóban található, a replikálás leállítása parancs elindításának időpontjában a replikán elérhető adatértékek. Az önálló kiszolgáló nem fog felzárkózni a főkiszolgálóval.
 
-Ha egy replika replikációleállítási választja, az összes hivatkozás elveszíti az előző fő és további replikák. Nincs a master és a replika között nincs automatikus feladatátvétellel.
+Ha úgy dönt, hogy leállítja a replikálást egy replikára, az elveszíti az előző főkiszolgálóra és más replikára mutató összes hivatkozást. A főkiszolgáló és a replikája között nincs automatikus feladatátvétel.
 
 > [!IMPORTANT]
-> Az önálló kiszolgáló nem hajtható végre egy replika be újra.
-> Mielőtt replikációleállítás olvasási replikán, győződjön meg arról, a replika rendelkezik a szükséges adatok.
+> Az önálló kiszolgáló nem hozható létre újra replikába.
+> Mielőtt leállítja a replikálást egy olvasási replikán, győződjön meg arról, hogy a replika rendelkezik a szükséges összes adattal.
 
-Ismerje meg, hogyan [állítania a replikálást a replika](howto-read-replicas-portal.md).
+Megtudhatja, hogyan [állíthatja le a replikálást egy replikára](howto-read-replicas-portal.md).
 
-## <a name="considerations-and-limitations"></a>Megfontolandó szempontok és korlátozások
+## <a name="considerations-and-limitations"></a>Megfontolások és korlátozások
 
 ### <a name="pricing-tiers"></a>Árképzési szintek
 
-Olvasható replika jelenleg csak az általános célú és memóriahasználatra optimalizált tarifacsomagok érhető el.
+Az olvasási replikák jelenleg csak a általános célú és a memória optimalizált díjszabási szintjein érhetők el.
 
-### <a name="master-server-restart"></a>Fő kiszolgáló újraindítása
+### <a name="master-server-restart"></a>Főkiszolgáló újraindítása
 
-Ha a replika tartozik egy főkiszolgálóhoz, amely nem tartalmaz meglévő másodpéldányokat hoz létre, a fő először újraindul felkészüljön a replikáció. Figyelembe kell venni ezt, és hajtsa végre ezeket a műveleteket egy csúcsidőn kívüli időszakban.
+Ha olyan mesteralakzathoz hoz létre replikát, amely nem rendelkezik meglévő replikákkal, a főkiszolgáló először újraindul, hogy felkészüljön a replikálásra. Ezt vegye figyelembe, és hajtsa végre ezeket a műveleteket egy leállási időszakon belül.
 
 ### <a name="new-replicas"></a>Új replikák
 
-Olvasási replika jön létre egy új, Azure Database for MariaDB-kiszolgáló. Meglévő kiszolgáló, a replika nem hajtható végre. Nem hozható létre egy másik olvasási replikára replikáját.
+Az olvasási replika új Azure Database for MariaDB-kiszolgálóként jön létre. Egy meglévő kiszolgálót nem lehet replikába készíteni. Egy másik olvasási replika replikája nem hozható létre.
 
-### <a name="replica-configuration"></a>Replikát konfigurációt
+### <a name="replica-configuration"></a>Replika konfigurációja
 
-A kiszolgáló ugyanazt a konfigurációt a master létrehoztak egy replikát. Replika létrehozása után több beállítások egymástól függetlenül lehet módosítani a fő kiszolgálóról: a számítási generáció, virtuális magok, tárolási, biztonsági másolat megőrzési idejének és MariaDB-motor verziója. A tarifacsomag egymástól függetlenül is módosítható, vagy az alapszintű csomag kivételével.
+A replikát ugyanazzal a kiszolgáló-konfigurációval hozza létre a rendszer, mint a főkiszolgálót. A replika létrehozása után több beállítás is módosítható a főkiszolgálótól függetlenül: számítási generáció, virtuális mag, tárterület, biztonsági másolat megőrzési ideje és MariaDB motor verziója. Az árképzési szint külön is módosítható, kivéve az alapszintű csomagból vagy abból.
 
 > [!IMPORTANT]
-> Egy fölérendelt kiszolgáló konfigurációs frissül az új értékekre, mielőtt frissíteni a replikát konfigurációt egyenlő vagy nagyobb értékre. Ez a művelet biztosítja, hogy a replika továbbra is a fő végzett módosítások.
+> A főkiszolgálói konfiguráció új értékekre frissítése előtt frissítse a replika konfigurációját az értékekkel egyenlő vagy nagyobb értékre. Ez a művelet biztosítja, hogy a replika képes legyen lépést tartani a főkiszolgálón végrehajtott módosításokkal.
 
 ### <a name="stopped-replicas"></a>Leállított replikák
 
-Ha megszakítja egy fölérendelt kiszolgáló és a egy olvasási replika közötti replikációt, a leállított replika válik egy önálló kiszolgáló, amely fogadja az olvasásokat és az írásokat. Az önálló kiszolgáló nem hajtható végre egy replika be újra.
+Ha leállítja a replikálást egy főkiszolgáló és egy olvasási replika között, a leállított replika önálló kiszolgáló lesz, amely fogadja az olvasásokat és az írásokat is. Az önálló kiszolgáló nem hozható létre újra replikába.
 
-### <a name="deleted-master-and-standalone-servers"></a>Törölt fő- és a különálló kiszolgálók
+### <a name="deleted-master-and-standalone-servers"></a>Törölt fő-és önálló kiszolgálók
 
-A törölt egy fölérendelt kiszolgáló replikációja leáll minden olvasási replikákra. Ezek a replikák önálló kiszolgálók válnak. A fölérendelt kiszolgáló maga törlődik.
+Főkiszolgáló törlésekor a replikáció minden olvasási replikára leállt. Ezek a replikák önálló kiszolgálókra válnak. Maga a főkiszolgáló törölve lett.
 
 ### <a name="user-accounts"></a>Felhasználói fiókok
 
-A fölérendelt kiszolgáló a felhasználók a olvasható replikák replikálódnak. Csak olvasási replika érhető el a felhasználói fiókok használata a fő kiszolgálón csatlakozni.
+A főkiszolgálón lévő felhasználókat a rendszer replikálja az olvasási replikára. Csak olvasási replikához csatlakozhat a főkiszolgálón elérhető felhasználói fiókok használatával.
 
 ### <a name="server-parameters"></a>Kiszolgálói paraméterek
 
-Megakadályozza az adatok szinkronizálva váljon, és esetleges adatvesztés vagy -sérülés elkerülése érdekében, néhány kiszolgálóparaméterekkel frissüljön, amikor használatával olvassa el a replikákat zárolva vannak.
+Ha meg szeretné akadályozni, hogy az adatok ne legyenek szinkronban, és elkerülhető legyen a lehetséges adatvesztés vagy-sérülés, egyes kiszolgálói paraméterek nem frissülnek az olvasási replikák használatakor.
 
-A következő kiszolgáló paramétereinek a fő-és a replika zárolva vannak:
+A következő kiszolgálói paraméterek a fő-és a replika-kiszolgálókon is zárolva vannak:
 - [`innodb_file_per_table`](https://mariadb.com/kb/en/library/innodb-system-variables/#innodb_file_per_table) 
 - [`log_bin_trust_function_creators`](https://mariadb.com/kb/en/library/replication-and-binary-log-system-variables/#log_bin_trust_function_creators)
 
-A [ `event_scheduler` ](https://mariadb.com/kb/en/library/server-system-variables/#event_scheduler) paraméter a replikakiszolgálókon zárolva van.
+A [`event_scheduler`](https://mariadb.com/kb/en/library/server-system-variables/#event_scheduler) paraméter zárolva van a replika-kiszolgálókon.
 
 ### <a name="other"></a>Egyéb
 
-- A replika egy replika létrehozása nem támogatott.
-- Előfordulhat, hogy a táblák replikák szinkronizálva lesz. Ez az egyik korlátozása a MariaDB replikációs technológiával.
-- Győződjön meg arról, a fölérendelt kiszolgáló táblák elsődleges kulcsot tartalmaznak. Elsődleges kulcsok hiánya a master és a replikák közötti replikációs késés eredményezhet.
+- Replika replikájának létrehozása nem támogatott.
+- A memóriában tárolt táblázatok miatt a replikák nem lesznek szinkronban. Ez a MariaDB replikációs technológia korlátozása.
+- Győződjön meg arról, hogy a fő kiszolgáló táblái rendelkeznek elsődleges kulccsal. Az elsődleges kulcsok hiánya replikációs késést eredményezhet a fő és a replikák között.
 
 ## <a name="next-steps"></a>További lépések
 
-- Ismerje meg, hogyan [létrehozása és kezelése az Azure portal használatával olvasható replikák](howto-read-replicas-portal.md)
+- Ismerje meg, hogyan [hozhat létre és kezelhet olvasási replikákat a Azure Portal használatával](howto-read-replicas-portal.md)

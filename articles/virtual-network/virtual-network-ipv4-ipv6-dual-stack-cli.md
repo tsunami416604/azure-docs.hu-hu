@@ -1,7 +1,7 @@
 ---
-title: Az Azure virtual network – parancssori felület IPv6 kettős verem az alkalmazások üzembe helyezése
+title: IPv6 Dual stack-alkalmazás üzembe helyezése az Azure Virtual Networkben – parancssori felület
 titlesuffix: Azure Virtual Network
-description: Ez a cikk bemutatja hogyan Azure CLI-vel az Azure virtual network IPv6 kettős verem az alkalmazások üzembe helyezése.
+description: Ez a cikk bemutatja, hogyan helyezhet üzembe egy IPv6-alapú Dual stack-alkalmazást az Azure Virtual Networkben az Azure CLI használatával.
 services: virtual-network
 documentationcenter: na
 author: KumudD
@@ -11,47 +11,49 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/22/2019
+ms.date: 07/08/2019
 ms.author: kumud
-ms.openlocfilehash: 9e591bdf2ff0b6493f092d666d02c2614c907700
-ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
+ms.openlocfilehash: cc89e9284e6dbb735aef08100c99a5a7fdb87549
+ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67798981"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68248845"
 ---
-# <a name="deploy-an-ipv6-dual-stack-application-in-azure-virtual-network---cli-preview"></a>Az Azure virtual network – parancssori felület (előzetes verzió) IPv6-alapú kettős verem az alkalmazások üzembe helyezése
+# <a name="deploy-an-ipv6-dual-stack-application-in-azure-virtual-network---cli-preview"></a>IPv6 Dual stack-alkalmazás üzembe helyezése az Azure Virtual Networkben – CLI (előzetes verzió)
 
-Ez a cikk bemutatja, hogyan egy kettős verem (IPv4 + IPv6) üzembe helyezése az Azure-ban, amely tartalmaz egy alhálózattal kettős verem (IPv4 + IPv6) kettős előtér-konfigurációkkal, kettős IP-konfigurációval rendelkező hálózati adapterrel rendelkező virtuális gépek egy terheléselosztó kettős verem virtuális hálózat kettős hálózati biztonsági csoport szabályait, és két nyilvános IP-címek.
+Ebből a cikkből megtudhatja, hogyan helyezhet üzembe egy kettős stack-alhálózattal rendelkező kettős verem-(IPv4-és IPv6-) alkalmazást az Azure-ban, amely kettős (IPv4 + IPv6-alapú) előtér-konfigurációkat, valamint kettős IP-konfigurációval rendelkező virtuális gépeket tartalmaz. kettős hálózati biztonsági csoportra vonatkozó szabályok és kettős nyilvános IP-címek.
 
 > [!Important]
-> Kettős verem IPv6-alapú Azure virtuális hálózat jelenleg nyilvános előzetes verzióban érhető el. Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. A részleteket lásd: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Az Azure Virtual Networkhez készült IPv6 Dual stack jelenleg nyilvános előzetes verzióban érhető el. Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. A részleteket lásd: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Ha úgy dönt, telepítése és használata az Azure CLI helyileg, ehhez a rövid útmutatóhoz, hogy az Azure CLI-vel 2.0.49 verzió vagy újabb. A telepített verzió megkereséséhez futtassa `az --version`. Lásd: [Azure CLI telepítése](/cli/azure/install-azure-cli) telepítési vagy frissítési adatai.
+Ha az Azure CLI helyi telepítését és használatát választja, akkor ehhez a rövid útmutatóhoz az Azure CLI 2.0.49 vagy újabb verzióját kell használnia. A telepített verziójának megkereséséhez `az --version`futtassa a parancsot. További információ: az [Azure CLI telepítése](/cli/azure/install-azure-cli) a telepítéshez vagy a frissítéshez.
 
 ## <a name="prerequisites"></a>Előfeltételek
-Az IPv6 protokollt használja az Azure virtual network szolgáltatáshoz, konfigurálnia kell az előfizetés az Azure PowerShell használatával az alábbiak szerint:
+Az IPv6 az Azure Virtual Network szolgáltatáshoz való használatához az előfizetést a Azure PowerShell használatával kell konfigurálnia az alábbiak szerint:
 
 ```azurecli
 az feature register --name AllowIPv6VirtualNetwork --namespace Microsoft.Network
+az feature register --name AllowIPv6CAOnStandardLB --namespace Microsoft.Network
 ```
-A szolgáltatás regisztráció befejezése akár 30 percet vesz igénybe. A regisztrációs állapot a következő Azure CLI-parancs futtatásával ellenőrizheti:
+A szolgáltatás regisztrációjának befejezéséhez akár 30 percet is igénybe vehet. A regisztrációs állapotát a következő Azure CLI-parancs futtatásával tekintheti meg:
 
 ```azurelci
 az feature show --name AllowIPv6VirtualNetwork --namespace Microsoft.Network
+az feature show --name AllowIPv6CAOnStandardLB --namespace Microsoft.Network
 ```
-A regisztráció befejezése után futtassa a következő parancsot:
+A regisztráció befejeződése után futtassa a következő parancsot:
 
 ```azurelci
 az provider register --namespace Microsoft.Network
 ```
 ## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 
-A kettős vermű virtuális hálózat létrehozása előtt létre kell hoznia egy erőforráscsoportot a [az csoport létrehozása](/cli/azure/group). A következő példában létrehozunk egy erőforráscsoportot, nevű *myRGDualStack* a a *eastus* helye:
+A kettős veremből álló virtuális hálózat létrehozása előtt létre kell hoznia egy erőforráscsoportot az [az Group Create](/cli/azure/group)paranccsal. A következő példában létrehozunk egy *myRGDualStack* nevű erőforráscsoportot a *eastus* helyen:
 
 ```azurecli
 az group create \
@@ -59,8 +61,8 @@ az group create \
 --location eastus
 ```
 
-## <a name="create-ipv4-and-ipv6-public-ip-addresses-for-load-balancer"></a>IPv4 és IPv6 típusú nyilvános IP-címek load Balancer létrehozása
-Az IPv4 és IPv6-végpontokat internetes eléréséhez szükséges IPv4 és IPv6 típusú nyilvános IP-címek a terheléselosztó. Hozzon létre egy nyilvános IP-címet az [az network public-ip create](/cli/azure/network/public-ip) paranccsal. A következő példában létrehozunk IPv4 és IPv6 típusú nyilvános IP-címet *dsPublicIP_v4* és *dsPublicIP_v6* a a *myRGDualStack* erőforráscsoportot:
+## <a name="create-ipv4-and-ipv6-public-ip-addresses-for-load-balancer"></a>IPv4-és IPv6-alapú nyilvános IP-címek létrehozása a Load Balancerhez
+Az IPv4-és IPv6-végpontok internetre való eléréséhez IPv4-és IPv6-alapú nyilvános IP-címek szükségesek a terheléselosztó számára. Hozzon létre egy nyilvános IP-címet az [az network public-ip create](/cli/azure/network/public-ip) paranccsal. Az alábbi példa a *dsPublicIP_v4* és a *dsPublicIP_v6* nevű IPv4-és IPv6-alapú nyilvános IP-címet hozza létre a *myRGDualStack* erőforráscsoporthoz:
 
 ```azurecli
 # Create an IPV4 IP address
@@ -85,7 +87,7 @@ az network public-ip create \
 
 ## <a name="create-public-ip-addresses-for-vms"></a>Nyilvános IP-címek létrehozása virtuális gépekhez
 
-Távoli eléréséhez a virtuális gépek az interneten, a nyilvános IP-címek IPv4-alapú virtuális gépek szüksége. Hozzon létre egy nyilvános IP-címet az [az network public-ip create](/cli/azure/network/public-ip) paranccsal.
+Ha távolról szeretné elérni a virtuális gépeket az interneten, IPv4 nyilvános IP-címeket kell használnia a virtuális gépekhez. Hozzon létre egy nyilvános IP-címet az [az network public-ip create](/cli/azure/network/public-ip) paranccsal.
 
 ```azurecli
 az network public-ip create \
@@ -107,11 +109,11 @@ az network public-ip create \
 
 ## <a name="create-basic-load-balancer"></a>Alapszintű Load Balancer létrehozása
 
-Ebben a szakaszban kettős frontend-IP (IPv4 és IPv6-alapú) és a háttér-címkészletet a load Balancer konfigurálása, és hozzon létre egy alapszintű Load Balancer.
+Ebben a szakaszban két előtérbeli IP-címet (IPv4 és IPv6) és a terheléselosztó háttér-címkészletet konfigurálja, majd létrehoz egy alapszintű Load Balancer.
 
 ### <a name="create-load-balancer"></a>Terheléselosztó létrehozása
 
-Hozzon létre az alapszintű Load Balancer- [az network lb létrehozása](https://docs.microsoft.com/cli/azure/network/lb?view=azure-cli-latest) nevű **dsLB** , amely tartalmaz egy nevű előtérbeli címkészletet **dsLbFrontEnd_v4**, nevű háttérkészlet  **dsLbBackEndPool_v4** társítva a nyilvános IP-cím IPv4 **dsPublicIP_v4** az előző lépésben létrehozott. 
+Hozza létre az alapszintű Load Balancer az az [Network LB Create](https://docs.microsoft.com/cli/azure/network/lb?view=azure-cli-latest) nevű **dsLB** , amely tartalmaz egy **dsLbFrontEnd_v4**nevű előtér-készletet, amely egy **dsLbBackEndPool_v4** nevű háttér-készlet, amely az IPv4 nyilvános IP-címhez **van társítva.** az előző lépésben létrehozott dsPublicIP_v4. 
 
 ```azurecli
 az network lb create \
@@ -124,9 +126,9 @@ az network lb create \
 --backend-pool-name dsLbBackEndPool_v4
 ```
 
-### <a name="create-ipv6-frontend"></a>IPv6-előtérbeli létrehozása
+### <a name="create-ipv6-frontend"></a>IPv6-előtérbeli felület létrehozása
 
-Hozzon létre egy IPV6-előtérbeli IP- [az network lb frontend-ip létrehozása](https://docs.microsoft.com/cli/azure/network/lb/frontend-ip?view=azure-cli-latest#az-network-lb-frontend-ip-create). A következő példában létrehozunk egy nevű előtérbeli IP-konfiguráció *dsLbFrontEnd_v6* , és csatolja a *dsPublicIP_v6* címe:
+Hozzon létre egy IPV6-előtérbeli IP-címet az [az Network LB frontend-IP Create](https://docs.microsoft.com/cli/azure/network/lb/frontend-ip?view=azure-cli-latest#az-network-lb-frontend-ip-create)paranccsal. A következő példa létrehoz egy *dsLbFrontEnd_v6* nevű előtérbeli IP-konfigurációt, és csatolja a *dsPublicIP_v6* -címet:
 
 ```azurepowershell-interactive
 az network lb frontend-ip create \
@@ -137,9 +139,9 @@ az network lb frontend-ip create \
 
 ```
 
-### <a name="configure-ipv6-back-end-address-pool"></a>IPv6-alapú háttér-címkészlet konfigurálása
+### <a name="configure-ipv6-back-end-address-pool"></a>IPv6-alapú háttérbeli címkészlet konfigurálása
 
-Hozzon létre egy IPv6-címet háttér-készletek [az network lb-címkészlet létrehozása](https://docs.microsoft.com/cli/azure/network/lb/address-pool?view=azure-cli-latest#az-network-lb-address-pool-create). A következő példában létrehozunk háttér-címkészletet *dsLbBackEndPool_v6* IPv6-alapú Hálózatiadapter-konfigurációval, virtuális gépeket tartalmazza:
+Hozzon létre egy IPv6-alapú háttér-címkészletet az [az Network LB cím-Pool Create](https://docs.microsoft.com/cli/azure/network/lb/address-pool?view=azure-cli-latest#az-network-lb-address-pool-create)paranccsal. Az alábbi példa létrehoz egy *dsLbBackEndPool_v6* nevű háttér-címkészletet a virtuális gépeket IPv6 NIC-konfigurációk használatával:
 
 ```azurecli
 az network lb address-pool create \
@@ -152,7 +154,7 @@ az network lb address-pool create \
 
 A terheléselosztási szabállyal azt lehet megadni, hogy a rendszer hogyan ossza el a forgalmat a virtuális gépek között. Meg kell határoznia az előtérbeli IP-konfigurációt a bejövő forgalomhoz és a háttérbeli IP-készletet a forgalom fogadásához, valamint a szükséges forrás- és célportot. 
 
-Hozzon létre egy terheléselosztási szabályt az [az network lb rule create](https://docs.microsoft.com/cli/azure/network/lb/rule?view=azure-cli-latest#az-network-lb-rule-create) paranccsal. A következő példában létrehozunk load balancer-szabályok nevű *dsLBrule_v4* és *dsLBrule_v6* , és elosztja a forgalmat a *TCP* port *80-as* , az IPv4 és IPv6-előtérbeli IP-konfigurációk:
+Hozzon létre egy terheléselosztási szabályt az [az network lb rule create](https://docs.microsoft.com/cli/azure/network/lb/rule?view=azure-cli-latest#az-network-lb-rule-create) paranccsal. Az alábbi példa a *dsLBrule_v4* és a *dsLBrule_v6* nevű terheléselosztó-szabályokat hozza létre, és a *80* -es *TCP* -porton az IPv4-és IPv6-előtérbeli IP-konfigurációkhoz tartozó forgalmat kiegyensúlyozza:
 
 ```azurecli
 az network lb rule create \
@@ -179,11 +181,11 @@ az network lb rule create \
 ```
 
 ## <a name="create-network-resources"></a>Hálózati erőforrások létrehozása
-Virtuális gépek üzembe helyezése, előtt létre kell hoznia támogató hálózati erőforrások – rendelkezésre állási csoport, a hálózati biztonsági csoport, a virtuális hálózat és a virtuális hálózati adapter. 
+Néhány virtuális gép üzembe helyezése előtt létre kell hoznia a támogató hálózati erőforrásokat – rendelkezésre állási csoportot, a hálózati biztonsági csoportot, a virtuális hálózatot és a virtuális hálózati adaptereket. 
 ### <a name="create-an-availability-set"></a>Rendelkezésre állási csoport létrehozása
-Az alkalmazás rendelkezésre állásának növeléséhez helyezze a virtuális gépeket egy rendelkezésre állási csoportban.
+Az alkalmazás rendelkezésre állásának javításához helyezze a virtuális gépeket egy rendelkezésre állási csoportba.
 
-Hozzon létre egy rendelkezésre állási csoportot az [az vm availability-set create](https://docs.microsoft.com/cli/azure/vm/availability-set?view=azure-cli-latest) paranccsal. A következő példában létrehozunk egy rendelkezésre állási csoport elnevezett *dsAVset*:
+Hozzon létre egy rendelkezésre állási csoportot az [az vm availability-set create](https://docs.microsoft.com/cli/azure/vm/availability-set?view=azure-cli-latest) paranccsal. A következő példa egy *dsAVset*nevű rendelkezésre állási készletet hoz létre:
 
 ```azurecli
 az vm availability-set create \
@@ -196,11 +198,11 @@ az vm availability-set create \
 
 ### <a name="create-network-security-group"></a>Hálózati biztonsági csoport létrehozása
 
-Hozzon létre egy hálózati biztonsági csoportot a szabályokat, amelyek szabályozzák a virtuális hálózatok közötti bejövő és kimenő kommunikáció.
+Hozzon létre egy hálózati biztonsági csoportot a VNET bejövő és kimenő kommunikációját szabályozó szabályokhoz.
 
 #### <a name="create-a-network-security-group"></a>Hálózati biztonsági csoport létrehozása
 
-Hozzon létre egy hálózati biztonsági csoport [az network nsg létrehozása](https://docs.microsoft.com/cli/azure/network/nsg?view=azure-cli-latest#az-network-nsg-create)
+Hálózati biztonsági csoport létrehozása az [az Network NSG Create](https://docs.microsoft.com/cli/azure/network/nsg?view=azure-cli-latest#az-network-nsg-create)
 
 
 ```azurecli
@@ -211,9 +213,9 @@ az network nsg create \
 
 ```
 
-#### <a name="create-a-network-security-group-rule-for-inbound-and-outbound-connections"></a>Hozzon létre egy hálózati biztonsági csoportra vonatkozó szabályt bejövő és kimenő kapcsolatok
+#### <a name="create-a-network-security-group-rule-for-inbound-and-outbound-connections"></a>Hálózati biztonsági csoport szabályának létrehozása a bejövő és kimenő kapcsolatokhoz
 
-Hozzon létre egy hálózati biztonsági csoportra vonatkozó szabályt port 3389, internetes kapcsolaton keresztül az RDP-kapcsolatok engedélyezéséhez a 80-as porton keresztül, és a kimenő kapcsolatok [az network nsg-szabály létrehozása](https://docs.microsoft.com/cli/azure/network/nsg/rule?view=azure-cli-latest#az-network-nsg-rule-create).
+Hozzon létre egy hálózati biztonsági csoportra vonatkozó szabályt, amely engedélyezi az RDP-kapcsolatokat az 3389-as porton keresztül, az internetkapcsolatot a 80-es porton keresztül, valamint az [az Network NSG Rule Create](https://docs.microsoft.com/cli/azure/network/nsg/rule?view=azure-cli-latest#az-network-nsg-rule-create)paranccsal
 
 ```azurecli
 # Create inbound rule for port 3389
@@ -266,7 +268,7 @@ az network nsg rule create \
 
 ### <a name="create-a-virtual-network"></a>Virtuális hálózat létrehozása
 
-Hozzon létre egy virtuális hálózatot az [az network vnet create](https://docs.microsoft.com/cli/azure/network/vnet?view=azure-cli-latest#az-network-vnet-create) paranccsal. A következő példában létrehozunk egy nevű virtuális hálózatot *dsVNET* alhálózattal *dsSubNET_v4* és *dsSubNET_v6*:
+Hozzon létre egy virtuális hálózatot az [az network vnet create](https://docs.microsoft.com/cli/azure/network/vnet?view=azure-cli-latest#az-network-vnet-create) paranccsal. A következő példában létrehozunk egy *dsVNET* nevű virtuális hálózatot az alhálózatok *dsSubNET_v4* és *dsSubNET_v6*:
 
 ```azurecli
 # Create the virtual network
@@ -288,7 +290,7 @@ az network vnet subnet create \
 
 ### <a name="create-nics"></a>Hálózati adapterek létrehozása
 
-Virtuális hálózati adapterek létrehozása a virtuális gépek [az network nic létrehozása](https://docs.microsoft.com/cli/azure/network/nic?view=azure-cli-latest#az-network-nic-create). Az alábbi példa létrehoz egy virtuális hálózati Adapterhez az egyes virtuális Gépekhez. Minden egyes hálózati adapter két IP-konfigurációval (IPv4-config 1, 1 IPv6-konfiguráció) rendelkezik. Az IPV6-konfigurációhoz létrehozhat [az network nic ip-config létrehozása](https://docs.microsoft.com/cli/azure/network/nic/ip-config?view=azure-cli-latest#az-network-nic-ip-config-create).
+Hozzon létre virtuális hálózati adaptereket minden virtuális GÉPHEZ az [az Network NIC Create](https://docs.microsoft.com/cli/azure/network/nic?view=azure-cli-latest#az-network-nic-create)paranccsal. Az alábbi példa egy virtuális hálózati adaptert hoz létre minden egyes virtuális GÉPHEZ. Minden hálózati adapter két IP-konfigurációval rendelkezik (1 IPv4-konfiguráció, 1 IPv6-konfiguráció). Az IPV6-konfigurációt az [az Network NIC IP-config Create paranccsal](https://docs.microsoft.com/cli/azure/network/nic/ip-config?view=azure-cli-latest#az-network-nic-ip-config-create)hozhatja létre.
  
 ```azurecli
 # Create NICs
@@ -339,9 +341,9 @@ az network nic ip-config create \
 
 ### <a name="create-virtual-machines"></a>Virtuális gépek létrehozása
 
-Hozzon létre a virtuális gépeket a [az virtuális gép létrehozása](https://docs.microsoft.com/cli/azure/vm?view=azure-cli-latest#az-vm-create). Az alábbi példa létrehoz két virtuális gépet, és a szükséges virtuális hálózati összetevőket, ha azok nem léteznek. 
+Hozza létre a virtuális gépeket az [az VM Create](https://docs.microsoft.com/cli/azure/vm?view=azure-cli-latest#az-vm-create)paranccsal. A következő példa két virtuális gépet hoz létre, és a szükséges virtuális hálózati összetevőket, ha azok még nem léteznek. 
 
-Virtuális gép létrehozása *dsVM0* módon:
+A következőképpen hozhat létre virtuális gépeket a *dsVM0* :
 
 ```azurecli
  az vm create \
@@ -350,9 +352,9 @@ Virtuális gép létrehozása *dsVM0* módon:
 --nics dsNIC0 \
 --size Standard_A2 \
 --availability-set dsAVset \
---image MicrosoftWindowsServer:WindowsServer:2016-Datacenter:latest  
+--image MicrosoftWindowsServer:WindowsServer:2019-Datacenter:latest  
 ```
-Virtuális gép létrehozása *dsVM1* módon:
+A következőképpen hozhat létre virtuális gépeket a *dsVM1* :
 
 ```azurecli
 az vm create \
@@ -361,18 +363,18 @@ az vm create \
 --nics dsNIC1 \
 --size Standard_A2 \
 --availability-set dsAVset \
---image MicrosoftWindowsServer:WindowsServer:2016-Datacenter:latest 
+--image MicrosoftWindowsServer:WindowsServer:2019-Datacenter:latest 
 ```
 
-## <a name="view-ipv6-dual-stack-virtual-network-in-azure-portal"></a>Virtuális hálózat IPv6-kettős verem megtekintése az Azure Portalon
-Tekintheti meg az IPv6-kettős verem virtuális hálózatot az Azure Portalon a következő:
-1. Adja meg a portál keresősávjában *dsVnet*.
-2. Amikor a **myVirtualNetwork** megjelenik a keresési eredmények között, válassza ki. Ezzel elindítja a **áttekintése** a kettős verem nevű virtuális hálózat lapján *dsVnet*. A kettős verem virtuális hálózat látható a két hálózati adapter IPv4- és IPv6-konfigurációval, a kettős verem nevű alhálózat található *dsSubnet*.
+## <a name="view-ipv6-dual-stack-virtual-network-in-azure-portal"></a>IPv6-alapú kettős verem virtuális hálózatának megtekintése Azure Portal
+Az IPv6 kettős verem virtuális hálózatát a következőképpen tekintheti meg Azure Portalban:
+1. A portál keresési sávján adja meg a *dsVnet*.
+2. Amikor a **myVirtualNetwork** megjelenik a keresési eredmények között, válassza ki. Ez elindítja a *dsVnet*nevű kettős verem virtuális hálózat **Áttekintés** lapját. A kettős verem virtuális hálózata két hálózati adaptert jelenít meg, amelyek IPv4-és IPv6-konfigurációval rendelkeznek, amelyek a *dsSubnet*nevű kettős verem alhálózatában találhatók.
 
-  ![IPv6-alapú kettős verem virtuális hálózat az Azure-ban](./media/virtual-network-ipv4-ipv6-dual-stack-powershell/dual-stack-vnet.png)
+  ![IPv6-alapú kettős verem virtuális hálózata az Azure-ban](./media/virtual-network-ipv4-ipv6-dual-stack-powershell/dual-stack-vnet.png)
 
 > [!NOTE]
-> Az IPv6-alapú Azure virtuális hálózat az Azure Portalon érhető el ebben az előzetes kiadásban a csak olvasható.
+> Az Azure-beli virtuális hálózat IPv6-értéke csak olvashatóként érhető el a Azure Portal ebben az előzetes kiadásban.
 
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
@@ -385,4 +387,4 @@ Ha már nincs rá szükség, a [az group delete](/cli/azure/group#az-group-delet
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben a cikkben létrehozott egy alapszintű Load Balancer kettős előtérbeli IP-konfiguráció (IPv4 és IPv6). Emellett létrehozott egy két virtuális gépet, amely a hálózati adapterek mellékelt kettős IP-konfigurációk (IPV4 + IPv6), amely a terheléselosztó háttérkészlet bővült. IPv6-támogatás az Azure virtuális hálózatokkal kapcsolatos további információkért lásd: [Mi az IPv6 és az Azure Virtual Network?](ipv6-overview.md)
+Ebben a cikkben egy alapszintű Load Balancer hozott létre egy kettős előtér-IP-konfigurációval (IPv4 és IPv6). Létrehozott két virtuális gépet is, amelyek a terheléselosztó háttér-készletéhez hozzáadott kettős IP-konfigurációval (IPV4 + IPv6) rendelkező hálózati adaptereket tartalmaznak. További információ az Azure-beli virtuális hálózatok IPv6-támogatásáról: [Mi az IPv6 for azure Virtual Network?](ipv6-overview.md)

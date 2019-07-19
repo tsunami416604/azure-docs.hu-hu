@@ -1,7 +1,7 @@
 ---
-title: Az Azure virtual network – Resource Manager-sablon (előzetes verzió) IPv6-alapú kettős verem az alkalmazások üzembe helyezése
+title: IPv6-alapú Dual stack-alkalmazás üzembe helyezése alapszintű Load Balancer az Azure Virtual Networkben – Resource Manger-sablon (előzetes verzió)
 titlesuffix: Azure Virtual Network
-description: Ez a cikk bemutatja hogyan Azure Resource Manager-beli Virtuálisgép-sablonok használata az Azure virtual network IPv6 kettős verem az alkalmazások üzembe helyezése.
+description: Ez a cikk bemutatja, hogyan helyezhet üzembe egy IPv6-alapú kettős verem alkalmazást az Azure Virtual Networkben Azure Resource Manager virtuálisgép-sablonok használatával.
 services: virtual-network
 documentationcenter: na
 author: KumudD
@@ -10,26 +10,26 @@ ms.service: virtual-network
 ms.devlang: NA
 ms.topic: article
 ms.workload: infrastructure-services
-ms.date: 04/22/2019
+ms.date: 06/26/2019
 ms.author: kumud
-ms.openlocfilehash: ae90bc4a12763803f38224d917c4644a68ae7d6b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e97a5a478871d94e074b59558a11df1ec752b0f9
+ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62130932"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68249849"
 ---
-# <a name="deploy-an-ipv6-dual-stack-application-in-azure---template-preview"></a>Alkalmazás üzembe helyezése IPv6 kettős verem az Azure - sablon (előzetes verzió)
+# <a name="deploy-an-ipv6-dual-stack-application-with-basic-load-balancer-in-azure---template-preview"></a>IPv6 Dual stack-alkalmazás üzembe helyezése alapszintű Load Balancer az Azure-ban – sablon (előzetes verzió)
 
-Ez a cikk az Azure Resource Manager Virtuálisgép-sablon, amelyre vonatkozik része az IPv6-alapú konfigurációs feladatok listáját tartalmazza. A kettős verem (IPv4 + IPv6) üzembe helyezése az Azure-ban, amely tartalmazza a kettős verem virtuális hálózat IPv4 és IPv6-alhálózattal rendelkező kettős (IPv4 + IPv6-alapú) előtérbeli konfigurációk esetén egy kettős IP-Címmel rendelkező hálózati adapterrel rendelkező virtuális gépek egy terheléselosztó a cikkben bemutatott sablon használatával konfiguráció, a hálózati biztonsági csoport és a nyilvános IP-címek. 
+Ez a cikk a Azure Resource Manager virtuálisgép-sablon részét képező IPv6-konfigurációs feladatok listáját tartalmazza. A cikkben ismertetett sablon használatával helyezzen üzembe egy kettős verem (IPv4 + IPv6) alkalmazást az Azure-ban, amely egy IPv4-és IPv6-alhálózattal rendelkező kettős veremből álló virtuális hálózatot tartalmaz, egy kettős (IPv4 + IPv6) előtér-konfigurációval rendelkező, kettős IP-címmel rendelkező virtuális gépeket tartalmazó terheléselosztó. konfiguráció, hálózati biztonsági csoport és nyilvános IP-címek. 
 
 ## <a name="required-configurations"></a>Szükséges konfigurációk
 
-A sablon megtekintéséhez, ahol megtörténik a sablon szakaszokra kereshet.
+Keresse meg a sablonhoz tartozó szakaszt, és ellenőrizze, hogy hol történnek.
 
-### <a name="ipv6-addressspace-for-the-virtual-network"></a>IPv6-címtartományt a virtuális hálózat
+### <a name="ipv6-addressspace-for-the-virtual-network"></a>A virtuális hálózat IPv6-addressSpace
 
-A sablonszakasznak hozzáadása:
+A sablon szakasza, melyet hozzá szeretne adni:
 
 ```JSON
         "addressSpace": {
@@ -38,9 +38,9 @@ A sablonszakasznak hozzáadása:
             "[variables('vnetv6AddressRange')]"    
 ```
 
-### <a name="ipv6-subnet-within-the-ipv6-virtual-network-addressspace"></a>Az IPv6-alapú virtuális hálózati címtartományt belül IPv6-alhálózatot
+### <a name="ipv6-subnet-within-the-ipv6-virtual-network-addressspace"></a>IPv6-alhálózat az IPv6 virtuális hálózat addressSpace
 
-A sablonszakasznak hozzáadása:
+A sablon szakasza, melyet hozzá szeretne adni:
 ```JSON
           {
             "name": "V6Subnet",
@@ -50,9 +50,9 @@ A sablonszakasznak hozzáadása:
 
 ```
 
-### <a name="ipv6-configuration-for-the-nic"></a>A hálózati adapter IPv6-konfigurációhoz
+### <a name="ipv6-configuration-for-the-nic"></a>A hálózati adapter IPv6-konfigurációja
 
-A sablonszakasznak hozzáadása:
+A sablon szakasza, melyet hozzá szeretne adni:
 ```JSON
           {
             "name": "ipconfig-v6",
@@ -68,7 +68,7 @@ A sablonszakasznak hozzáadása:
                 }
 ```
 
-### <a name="ipv6-network-security-group-nsg-rules"></a>IPv6-alapú hálózati biztonsági csoport (NSG) szabályai
+### <a name="ipv6-network-security-group-nsg-rules"></a>IPv6 hálózati biztonsági csoport (NSG) szabályai
 
 ```JSON
           {
@@ -88,7 +88,7 @@ A sablonszakasznak hozzáadása:
 
 ## <a name="conditional-configuration"></a>Feltételes konfiguráció
 
-Egy hálózati virtuális készüléket használja, ha az útválasztási táblázatban adja hozzá az IPv6-útvonalait. Ellenkező esetben ez a konfiguráció nem kötelező.
+Ha hálózati virtuális készüléket használ, adja hozzá az IPv6-útvonalakat az útválasztási táblázatban. Ellenkező esetben ez a konfiguráció nem kötelező.
 
 ```JSON
     {
@@ -109,7 +109,7 @@ Egy hálózati virtuális készüléket használja, ha az útválasztási tábl�
 
 ## <a name="optional-configuration"></a>Választható konfiguráció
 
-### <a name="ipv6-internet-access-for-the-virtual-network"></a>A virtuális hálózat IPv6-alapú Internet-hozzáférésének
+### <a name="ipv6-internet-access-for-the-virtual-network"></a>IPv6-alapú internet-hozzáférés a virtuális hálózathoz
 
 ```JSON
 {
@@ -120,7 +120,7 @@ Egy hálózati virtuális készüléket használja, ha az útválasztási tábl�
               }
 ```
 
-### <a name="ipv6-public-ip-addresses"></a>IPv6 Public IP addresses
+### <a name="ipv6-public-ip-addresses"></a>IPv6 nyilvános IP-címek
 
 ```JSON
     {
@@ -134,7 +134,7 @@ Egy hálózati virtuális készüléket használja, ha az útválasztási tábl�
       }
 ```
 
-### <a name="ipv6-front-end-for-load-balancer"></a>IPv6-alapú előtér Load balancerhez
+### <a name="ipv6-front-end-for-load-balancer"></a>IPv6-előtér Load Balancerhoz
 
 ```JSON
           {
@@ -145,7 +145,7 @@ Egy hálózati virtuális készüléket használja, ha az útválasztási tábl�
               }
 ```
 
-### <a name="ipv6-back-end-address-pool-for-load-balancer"></a>Load Balancer IPv6 háttér-címkészlet
+### <a name="ipv6-back-end-address-pool-for-load-balancer"></a>IPv6-alapú háttér-címkészlet Load Balancer
 
 ```JSON
               "backendAddressPool": {
@@ -158,7 +158,7 @@ Egy hálózati virtuális készüléket használja, ha az útválasztási tábl�
             "name": "lbrule-v6"
 ```
 
-### <a name="ipv6-load-balancer-rules-to-associate-incoming-and-outgoing-ports"></a>IPv6-alapú terheléselosztási szabályok a bejövő és kimenő portok társítása
+### <a name="ipv6-load-balancer-rules-to-associate-incoming-and-outgoing-ports"></a>IPv6 Load Balancer-szabályok a bejövő és a kimenő portok hozzárendeléséhez
 
 ```JSON
           {
@@ -175,9 +175,9 @@ Egy hálózati virtuális készüléket használja, ha az útválasztási tábl�
                 }
 ```
 
-## <a name="sample-vm-template-json"></a>Minta Virtuálisgép-sablon JSON-ban
-Kattintson a [Itt](https://azure.microsoft.com/resources/templates/ipv6-in-vnet/) az Azure Resource Manager-sablon használatával az Azure virtual network IPv6 kettős verem alkalmazás központi telepítése.
+## <a name="sample-vm-template-json"></a>Minta virtuálisgép-sablon JSON
+Ha Azure Resource Manager sablonnal szeretne IPv6 Dual stack alkalmazást üzembe helyezni az Azure Virtual Networkben, tekintse meg a [minta sablont.](https://azure.microsoft.com/resources/templates/ipv6-in-vnet/)
 
 ## <a name="next-steps"></a>További lépések
 
-A díjszabással kapcsolatos információk [nyilvános IP-címek](https://azure.microsoft.com/pricing/details/ip-addresses/), [hálózati sávszélesség](https://azure.microsoft.com/pricing/details/bandwidth/), vagy [terheléselosztó](https://azure.microsoft.com/pricing/details/load-balancer/).
+A [nyilvános IP-címekre](https://azure.microsoft.com/pricing/details/ip-addresses/), a [hálózati sávszélességre](https://azure.microsoft.com/pricing/details/bandwidth/)vagy a [Load Balancer](https://azure.microsoft.com/pricing/details/load-balancer/)díjszabására vonatkozó részletekért tekintse meg a következőt:.

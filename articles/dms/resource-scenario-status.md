@@ -1,6 +1,6 @@
 ---
-title: Adatbázis-áttelepítési forgatókönyv állapot |} A Microsoft Docs
-description: További információ az Azure Database Migration Service által támogatott áttelepítési forgatókönyvek állapotát.
+title: Adatbázis-áttelepítési forgatókönyv állapota | Microsoft Docs
+description: A Azure Database Migration Service által támogatott áttelepítési forgatókönyvek állapotának megismerése.
 services: database-migration
 author: HJToland3
 ms.author: jtoland
@@ -10,36 +10,41 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
-ms.date: 04/04/2019
-ms.openlocfilehash: 4159b2e7af83030f46d5aca150ef99a1380e711f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 07/13/2019
+ms.openlocfilehash: 44ac290a471fd0099b6589f84fea604249818432
+ms.sourcegitcommit: 10251d2a134c37c00f0ec10e0da4a3dffa436fb3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61473008"
+ms.lasthandoff: 07/13/2019
+ms.locfileid: "67868619"
 ---
-# <a name="status-of-migration-scenarios-supported-by-azure-database-migration-service"></a>Azure Database Migration Service által támogatott áttelepítési forgatókönyvek állapota
-Azure Database Migration Service úgy tervezték, hogy különböző áttelepítési forgatókönyveinek (forrás – cél párok) kapcsolat nélküli módban is támogatja (egyszeri) és az online (folyamatos szinkronizálása) áttelepítéseket. A forgatókönyv lefedettség, Azure Database Migration Service által biztosított idővel történő kiterjesztése. Új forgatókönyvek rendszeresen jelennek meg. Ez a cikk az Azure Database Migration Service és az egyes forgatókönyvek állapota (privát előzetes verzió, nyilvános előzetes verzió vagy általános rendelkezésre állás) által jelenleg támogatott áttelepítési forgatókönyvek azonosítja.
+# <a name="status-of-migration-scenarios-supported-by-azure-database-migration-service"></a>A Azure Database Migration Service által támogatott áttelepítési forgatókönyvek állapota
 
-## <a name="offline-versus-online-migrations"></a>Offline és online áttelepítések
-Azure Database Migration Service, az offline vagy egy online migrálás teheti. A *offline* áttelepítéseket alkalmazás üzemszünet megkezdése a migráláshoz kell egy időben. Leállását, mivel a migrálás befejezése után az új környezetben keresztül Kivágás szükséges idő korlátozásához használja egy *online* áttelepítés. Azt javasoljuk, hogy annak megállapításához, hogy az állásidő elfogadható; offline áttelepítés tesztelése Ha nem, hajtsa végre egy online migrálás.
+Azure Database Migration Service úgy lett kialakítva, hogy támogassa a különböző áttelepítési forgatókönyveket (forrás/cél párok) mind a kapcsolat nélküli (egyszeri), mind az online (folyamatos szinkronizálás) áttelepítéshez. Az Azure Database Migration Service által biztosított forgatókönyv-lefedettség időbeli kibővítése folyamatban van. Az új forgatókönyvek hozzáadása rendszeresen történik. Ez a cikk a Azure Database Migration Service által jelenleg támogatott áttelepítési forgatókönyveket, valamint az egyes forgatókönyvek (privát előzetes verzió, nyilvános előzetes verzió vagy általános rendelkezésre állás) állapotát azonosítja.
+
+## <a name="offline-versus-online-migrations"></a>Offline és online áttelepítés
+
+A Azure Database Migration Service offline vagy online áttelepítést is végezhet. Az *Offline* áttelepítések esetén az alkalmazás leállása az áttelepítés megkezdésének időpontjában kezdődik. Ha korlátozni szeretné az állásidőt az új környezetbe való áttelepítéshez szükséges időtartamra, használja az *online* áttelepítést. Javasoljuk, hogy tesztelje az offline áttelepítést annak megállapításához, hogy az állásidő elfogadható-e; Ha nem, akkor végezzen online áttelepítést.
 
 ## <a name="migration-scenario-status"></a>Áttelepítési forgatókönyv állapota
-Azure Database Migration Service által támogatott áttelepítési forgatókönyvek állapotának ideje függ. Általában a forgatókönyvek első kiadásakor a **privát előzetes verzió**. Beküldés jelölésre keresztül az ügyfelek részt vesz a privát előzetes verzió van szükség a [DMS Preview-hely](https://aka.ms/dms-preview). Privát előzetes verzió, miután a forgatókönyv állapota **nyilvános előzetes verzióban**. Azure Database Migration Service-felhasználók közvetlenül a felhasználói felület a nyilvános előzetes verzióban érhető el áttelepítési forgatókönyvek kipróbálhatja. Nincs előfizetés nem szükséges.  Nyilvános előzetes verzióban érhető el áttelepítési forgatókönyvek azonban nem érhető el minden régióban, és további változásokon előfordulhat, hogy végleges kiadás előtt. A nyilvános előzetest követően a forgatókönyv állapota **általánosan rendelkezésre állási**. Általánosan elérhető (GA) a végleges állapotát, és funkciója teljes és minden felhasználó számára elérhető.
 
-## <a name="migration-scenario-support"></a>Áttelepítés a forgatókönyv támogatása
-Az alábbi táblázatban megtekintheti, mely áttelepítési forgatókönyvek támogatottak, Azure Database Migration Service használata esetén.
+A Azure Database Migration Service által támogatott áttelepítési forgatókönyvek állapota az idő függvényében változhat. A forgatókönyvek általában **privát előzetes**verzióban jelennek meg. A privát előzetes verzióban való részvételhez az szükséges, hogy az ügyfelek a [DMS előzetes](https://aka.ms/dms-preview)verziójának webhelyén küldjenek jelölést. A privát előzetes verzió után a forgatókönyv állapota **nyilvános előzetesre**változik. Azure Database Migration Service felhasználók közvetlenül a felhasználói felületről kipróbálhatják a nyilvános előzetes verzióban elérhető áttelepítési forgatókönyveket. Nincs szükség regisztrációra.  Előfordulhat azonban, hogy a nyilvános előzetes verzióban az áttelepítési forgatókönyvek nem érhetők el minden régióban, és a végleges kiadás előtt további változtatások is előfordulhatnak. A nyilvános előzetes verzió után a forgatókönyv állapota **általánosan elérhetővé**vált. Az általános elérhetőség (GA) a végső kiadás állapota, és a funkciók teljesek, és minden felhasználó számára elérhetők.
+
+## <a name="migration-scenario-support"></a>Áttelepítési forgatókönyv támogatása
+
+Az alábbi táblázatok azt mutatják be, hogy mely áttelepítési forgatókönyvek támogatottak Azure Database Migration Service használatakor.
 
 > [!NOTE]
-> Ha megjelenik a listában, az alábbi támogatott forgatókönyv a felhasználói felületen belül nem jelenik meg, forduljon a [adatok Migrálási csapathoz](mailto:datamigrationteam@microsoft.com) további információt.
+> Ha az alábbi módon felsorolt forgatókönyvek nem jelennek meg a felhasználói felületen, forduljon az [Azure Database](mailto:AskAzureDatabaseMigrations@service.microsoft.com) áttelepítési alias kérése további információért.
 
 > [!IMPORTANT]
-> Azure Database Migration Service privát előzetes verzióban érhető el az jelenleg támogatja az összes forgatókönyv, tekintse meg a [DMS Preview-hely](https://aka.ms/dms-preview).
+> Ha a Azure Database Migration Service által jelenleg támogatott összes forgatókönyvet szeretné megtekinteni a privát előzetes verzióban, tekintse meg a [DMS előzetes](https://aka.ms/dms-preview)verzióját.
 
-### <a name="offline-one-time-migration-support"></a>A kapcsolat nélküli (egyszeri) áttelepítés támogatása
-Az alábbi táblázat az Azure Database Migration Service támogatja az offline áttelepítéshez.
+### <a name="offline-one-time-migration-support"></a>Offline (egyszeri) Migrálás támogatása
 
-| Target  | source | Támogatás | Állapot |
+Az alábbi táblázat az offline áttelepítések Azure Database Migration Service támogatását mutatja be.
+
+| Target  | Source | Támogatás | Állapot |
 | ------------- | ------------- |:-------------:|:-------------:|
 | **Azure SQL DB** | SQL Server | ✔ | FE |
 |   | RDS SQL |  |  |
@@ -47,18 +52,19 @@ Az alábbi táblázat az Azure Database Migration Service támogatja az offline 
 | **Azure SQL DB MI** | SQL Server | ✔ | FE |
 |   | RDS SQL |  |  |
 |   | Oracle |  |   |
-| **Az Azure SQL virtuális gép** | SQL Server | ✔ | FE |
+| **Azure SQL virtuális gép** | SQL Server | ✔ | FE |
 |   | Oracle |   |   |
-| **Azure Cosmos DB** | MongoDB | ✔ | Nyilvános előzetes verzió |
-| **MySQL-hez készült Azure DB** | MySQL |   |   |
+| **Azure Cosmos DB** | MongoDB | ✔ | FE |
+| **MySQL-hez készült Azure-adatbázis** | MySQL |   |   |
 |   | RDS MySQL |   |   |
-| **PostgreSQL-hez készült Azure DB** | PostgreSQL |  |
+| **PostgreSQL-hez készült Azure-adatbázis** | PostgreSQL |  |
 |  | RDS PostgreSQL |   |   |
 
-### <a name="online-continuous-sync-migration-support"></a>Online (folyamatos szinkronizálása) áttelepítés támogatása
-Az alábbi táblázat az Azure Database Migration Service támogatása online áttelepítéseket.
+### <a name="online-continuous-sync-migration-support"></a>Online (folyamatos szinkronizálás) áttelepítési támogatás
 
-| Target  | source | Támogatás | Állapot |
+Az alábbi táblázat az online áttelepítések Azure Database Migration Service támogatását mutatja be.
+
+| Target  | Source | Támogatás | Állapot |
 | ------------- | ------------- |:-------------:|:-------------:|
 | **Azure SQL DB** | SQL Server | ✔ | FE |
 |   | RDS SQL | ✔ | FE |
@@ -66,14 +72,15 @@ Az alábbi táblázat az Azure Database Migration Service támogatása online á
 | **Azure SQL DB MI** | SQL Server | ✔ | FE |
 |   | RDS SQL | ✔ | FE |
 |   | Oracle | ✔ | Privát előzetes verzió |
-| **Az Azure SQL virtuális gép** | SQL Server |   |   |
+| **Azure SQL virtuális gép** | SQL Server |   |   |
 |   | Oracle  |  |  |
-| **Azure Cosmos DB** | MongoDB | ✔ | Nyilvános előzetes verzió |
-| **MySQL-hez készült Azure DB** | MySQL | ✔ | FE |
+| **Azure Cosmos DB** | MongoDB | ✔ | FE |
+| **MySQL-hez készült Azure-adatbázis** | MySQL | ✔ | FE |
 |   | RDS MySQL | ✔ | FE |
-| **PostgreSQL-hez készült Azure DB** | PostgreSQL | ✔ | FE |
+| **PostgreSQL-hez készült Azure-adatbázis** | PostgreSQL | ✔ | FE |
 |   | RDS PostgreSQL | ✔ | FE |
 |   | Oracle | ✔ | Privát előzetes verzió |
 
 ## <a name="next-steps"></a>További lépések
-Azure Database Migration Service és a régiónkénti rendelkezésre állás áttekintését lásd: a cikk [Mi az az Azure Database Migration Service](dms-overview.md).
+
+A Azure Database Migration Service és a regionális elérhetőség áttekintését lásd: [Mi a Azure Database Migration Service](dms-overview.md).

@@ -1,6 +1,6 @@
 ---
-title: Fenyegetések észlelése a data services, az Azure Security Centerben |} A Microsoft Docs
-description: Ez a témakör bemutatja a szolgáltatások Adatriasztások elérhető az Azure Security Centerben.
+title: Veszélyforrások észlelése a Azure Security Center adatszolgáltatásaiban | Microsoft Docs
+description: Ez a témakör a Azure Security Centerban elérhető adatszolgáltatási riasztásokat mutatja be.
 services: security-center
 documentationcenter: na
 author: monhaber
@@ -13,60 +13,60 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 7/02/2019
-ms.author: monhaber
-ms.openlocfilehash: 87cfd2769e473d26c2dcae1b7b418f6fb1739915
-ms.sourcegitcommit: c0419208061b2b5579f6e16f78d9d45513bb7bbc
+ms.author: v-mohabe
+ms.openlocfilehash: 1cafd8a3c766e57aed67634d7da8498c9a6ee120
+ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67626284"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68295826"
 ---
-# <a name="threat-detection-for-data-services-in-azure-security-center"></a>A data services, az Azure Security Center fenyegetésészlelési
+# <a name="threat-detection-for-data-services-in-azure-security-center"></a>Veszélyforrások észlelése a Azure Security Center adatszolgáltatásaiban
 
- A Security Center elemzi a storage-adatszolgáltatások naplókat, és értesítést küld, ha az adatok erőforrások fenyegetést észlel. Ez a témakör felsorolja a riasztásokat a Security Center által létrehozott, a következő szolgáltatásokat:
+ Security Center elemzi az adattárolási szolgáltatások naplóit, és riasztásokat küld, amikor fenyegetést észlel az adaterőforrásaihoz. Ez a témakör felsorolja azokat a riasztásokat, amelyeket Security Center a következő szolgáltatásokhoz generál:
 
-* [Az Azure SQL Database és az SQL Data warehouse-bA](#data-sql)
+* [Azure SQL Database és SQL Data Warehouse](#data-sql)
 * [Azure Storage](#azure-storage)
 
-## Az Azure SQL Database és az SQL Data warehouse-bA <a name="data-sql"></a>
+## Azure SQL Database és SQL Data Warehouse<a name="data-sql"></a>
 
-SQL threat detection szokatlan és vélhetően kárt okozó jelző rendellenes tevékenységek észleli az adatbázisokat elérni vagy kiaknázni próbál. A Security Center elemzi az SQL-naplók, és az SQL-kezelő a natív módon futtatható.
+Az SQL veszélyforrások észlelése rendellenes tevékenységeket észlel, amelyekben szokatlan és potenciálisan ártalmas próbálkozások érhetők el az adatbázisok eléréséhez vagy kiaknázásához. Security Center elemzi az SQL-naplókat, és natív módon futtatja az SQL-motorban.
 
 |Riasztás|Leírás|
 |---|---|
-|**Biztonsági rés az SQL-injektálás**|Egy alkalmazás egy hibás SQL-utasítást jön létre az adatbázisban. Ez azt jelezheti SQL injektálási támadásokkal kihasználható biztonsági rést jelezhet. A hibás utasításokat két dolog okozhatja: Egy hiba kialakítani, vagy, a hibás SQL-utasítást. Vagy az alkalmazáskódok és tárolt eljárások nem ellenőrzik a felhasználói adatbevitelt a hibás SQL-utasítást, amely lehet használni. az SQL-injektálás létrehozásánál.|
-|**Potenciális SQL-injektálás**|Egy aktív biztonsági rés kiaknázása elleni sebezhető az SQL-injektálás azonosított alkalmazások történt. Ez azt jelenti, hogy egy támadó próbál beszúrása rosszindulatú SQL-utasításokat a sebezhető alkalmazáskód vagy tárolt eljárásokat.|
-|**Hozzáférés szokatlan helyről**|Az SQL Server, amikor valaki jelentkezett be az SQL Server egy szokatlan földrajzi helyről hozzáférési mintájában változás történt. Bizonyos esetekben a riasztás jogszerű műveleteket észlel (egy új alkalmazást vagy fejlesztői karbantartást). Más esetekben a riasztás kártékony műveleteket észlel (egy korábbi alkalmazott vagy egy külső támadó részéről).|
-|**Hozzáférés résztvevő részéről**|Az SQL-kiszolgáló hozzáférési mintájában a változás történt – valaki jelentkezett be az SQL server egy szokatlan résztvevő (SQL-felhasználó) használatával. Bizonyos esetekben a riasztás jogszerű műveleteket észlel (egy új alkalmazást vagy fejlesztői karbantartást). Más esetekben a riasztás kártékony műveleteket észlel (egy korábbi alkalmazott vagy egy külső támadó részéről).|
-|**Hozzáférés potenciálisan káros-alkalmazás**|Az adatbázis eléréséhez egy potenciálisan káros alkalmazást használatban van. Bizonyos esetekben a riasztás behatolási teszteket észlel működés közben. Más esetekben a riasztás egy gyakori támadóeszközökkel végrehajtott támadást észlel.|
-|**Találgatásos támadás SQL hitelesítő adatai**|Egy rendellenes nagy számú különböző hitelesítő adatok használatával történő sikertelen bejelentkezések történtek. Bizonyos esetekben a riasztás behatolási teszteket észlel működés közben. Más esetekben a riasztás egy találgatásos támadást észlel.|
+|**Biztonsági rés az SQL-injektáláshoz**|Egy alkalmazás egy hibás SQL-utasítást generált az adatbázisban. Ez az SQL-injektálási támadások lehetséges sebezhetőségét jelezheti. A hibás utasításokat két dolog okozhatja: Vagy az alkalmazás kódjában található hiba a hibás SQL-utasítást alakította ki. Vagy az alkalmazás kódja vagy tárolt eljárásai nem fertőtlenítik a felhasználói adatbevitelt a hibás SQL-utasítás létrehozásakor, amely az SQL-injektálás esetén kihasználható.|
+|**Lehetséges SQL-injektálás**|Aktív biztonsági rés történt egy azonosított alkalmazásban, amely sebezhető az SQL-injektálással. Ez azt jelenti, hogy a támadó rosszindulatú SQL-utasításokat próbál beszúrni a sebezhető alkalmazás kódjával vagy tárolt eljárásaival.|
+|**Hozzáférés szokatlan helyről**|Módosult az SQL Server hozzáférési mintája, ahol valaki szokatlan földrajzi helyről jelentkezett be az SQL-kiszolgálóra. Bizonyos esetekben a riasztás jogszerű műveleteket észlel (egy új alkalmazást vagy fejlesztői karbantartást). Más esetekben a riasztás kártékony műveleteket észlel (egy korábbi alkalmazott vagy egy külső támadó részéről).|
+|**Hozzáférés az ismeretlen résztvevőtől**|Módosult az SQL Server hozzáférési mintája – valaki szokatlan rendszerbiztonsági tag (SQL-felhasználó) használatával jelentkezett be az SQL-kiszolgálóra. Bizonyos esetekben a riasztás jogszerű műveleteket észlel (egy új alkalmazást vagy fejlesztői karbantartást). Más esetekben a riasztás kártékony műveleteket észlel (egy korábbi alkalmazott vagy egy külső támadó részéről).|
+|**Hozzáférés egy potenciálisan ártalmas alkalmazáshoz**|Az adatbázis elérésére potenciálisan ártalmas alkalmazás van használatban. Bizonyos esetekben a riasztás behatolási teszteket észlel működés közben. Más esetekben a riasztás egy gyakori támadóeszközökkel végrehajtott támadást észlel.|
+|**Találgatásos kényszerített SQL-hitelesítő adatok**|Szokatlanul nagy számú sikertelen bejelentkezés történt a különböző hitelesítő adatokkal. Bizonyos esetekben a riasztás behatolási teszteket észlel működés közben. Más esetekben a riasztás egy találgatásos támadást észlel.|
 
-További információ az SQL threat detection riasztások lásd:[Azure SQL Database fenyegetésészlelési](https://docs.microsoft.com/azure/sql-database/sql-database-threat-detection-overview), és tekintse át a threat detection riasztások szakaszban. Is láthatja, [útmutató az Azure Security Center segít a kibertámadás esetén felfedése](https://azure.microsoft.com/blog/how-azure-security-center-helps-reveal-a-cyberattack/) egy példát, hogyan a Security Center kártékony SQL-tevékenység felderítésének felderítésére szolgál a támadás megtekintéséhez.
+További információ az SQL Threat észlelési riasztásokról:[Azure SQL Database veszélyforrások észlelése](https://docs.microsoft.com/azure/sql-database/sql-database-threat-detection-overview), és a veszélyforrások észlelésével kapcsolatos riasztások szakasz áttekintése. Azt is megtudhatja, [hogyan Azure Security Center segít feltárni a Cyberattack](https://azure.microsoft.com/blog/how-azure-security-center-helps-reveal-a-cyberattack/) , hogy megtudja, Security Center hogyan használják a rosszindulatú SQL-tevékenység észlelését a támadás felderítése érdekében.
 
 ## Azure Storage<a name="azure-storage"></a>
 
 >[!NOTE]
-> Az Azure Storage komplex veszélyforrások elleni védelem csak a Blob Storage jelenleg érhető el. 
+> Az Azure Storage komplex veszélyforrások elleni védelme jelenleg csak Blob Storage érhető el. 
 
-Az Azure Storage-hoz nyújtott komplex veszélyforrások elleni védelem egy további biztonságiintelligencia-réteget ad, amely észleli a tárfiókok elérésére és felhasználására tett szokatlan és feltehetően ártalmas kísérleteket. A védelmi réteg lehetővé teszi cím fenyegetések, nem kell szakértői biztonsági, és a biztonsági monitorozási rendszerek felügyelete.
+Az Azure Storage-hoz nyújtott komplex veszélyforrások elleni védelem egy további biztonságiintelligencia-réteget ad, amely észleli a tárfiókok elérésére és felhasználására tett szokatlan és feltehetően ártalmas kísérleteket. Ez a védelmi réteg lehetővé teszi a fenyegetések kezelését anélkül, hogy biztonsági szakértőnek kellene lennie, és a biztonsági figyelő rendszereket kell kezelnie.
 
-A Security Center elemzi az olvasási, írási és törlési kérelmek a Blob storage, észlelheti a fenyegetéseket a diagnosztikai naplók, és értesítést küld a tevékenység anomáliák esetén. További információkért lásd: [Storage Analytics naplózási](https://docs.microsoft.com/azure/storage/common/storage-monitor-storage-account#configure-logging) további információt.
+Security Center elemzi az olvasási, írási és törlési kérelmeket a blob Storage-ba a fenyegetések észlelése érdekében, és riasztást küld, ha a tevékenységben rendellenességek jelentkeznek. További információ: [Storage Analytics naplózás konfigurálása](https://docs.microsoft.com/azure/storage/common/storage-monitor-storage-account#configure-logging) további információkhoz.
 
 > [!div class="mx-tableFixed"]
 
 |Riasztás|Leírás|
 |---|---|
-|**Hely szokatlan hozzáférés anomáliadetektálási**|A mintavételezett hálózati forgalomelemzés rendellenes kimenő távoli asztal protokoll (RDP)-kommunikációt észlelt származó egy erőforrást a központi telepítésben. Ez a Tevékenység ebben a környezetben rendellenesnek számít, és utalhat, hogy az erőforrás biztonsága sérült, és az használják külső találgatásos RDP-végpontot. Megjegyzendő, hogy ez a tevékenység külső entitások számára rosszindulatúként sorolhatja be az Ön IP-címét is.|
-|**Alkalmazás-hozzáférési anomáliadetektálási**|Azt jelzi, hogy szokatlan alkalmazáshoz fért hozzá ezt a tárfiókot. Egy lehetséges oka, hogy egy támadó fért hozzá a tárfiók, egy új alkalmazással.|
-|**Névtelen hozzáférés anomáliadetektálási**|Azt jelzi, hogy a tárfiók hozzáférési mintájában változás történik. Például a fiók rendelkezik hozzáfértek névtelenül (hitelesítés) nélkül, amelyek nem várt ehhez a fiókhoz a legutóbbi hozzáférés minta képest. Egy lehetséges oka, hogy egy támadó bejutott nyilvános olvasási hozzáférés, hogy visszatartással érvényteleníteni storage-tárolóba.|
-|**Adatok kiszűrése anomáliadetektálási**|Azt jelzi, hogy egy szokatlanul nagy mennyiségű adat lehívása a storage-tárolót a közelmúltbeli tevékenység képest. Egy lehetséges oka, hogy a támadó rendelkezik kinyert nagy mennyiségű adatot, hogy visszatartással érvényteleníteni storage tárolóban.|
-|**Anomáliadetektálási váratlan delete**|Azt jelzi, hogy egy vagy több váratlan törlési műveletek lépett-e a storage-fiókban, ehhez a fiókhoz a közelmúltbeli tevékenység képest. Egy lehetséges oka, hogy egy támadó törölte-e az adatokat a tárfiókból.|
-|**Azure Cloud Service-csomag feltöltése.**|Azt jelzi, hogy egy Azure Cloud Service-csomag (.cspkg fájl) fel van töltve a tárfiókhoz szokatlan módon, ehhez a fiókhoz a közelmúltbeli tevékenység képest. Egy lehetséges oka, hogy az egy támadó rosszindulatú kódot a tárfiókból egy Azure-felhőszolgáltatásban üzembe helyezéséhez előkészítése-e.|
-|**Engedély hozzáférés anomáliadetektálási**|Azt jelzi, hogy módosult-e a hozzáférési engedélyeket a storage-tároló szokatlan módon. A lehetséges oka, hogy egy támadó megváltozott gyengíthetik a biztonsági állapotáról, vagy próbál a jeggyel adatmegőrzés tároló engedélyeit.|
-|**Hálózatfelügyeleti hozzáférés anomáliadetektálási**|Azt jelzi, hogy a tárfiók hozzáférési engedélyek ellenőrzése után szokatlan módon, ehhez a fiókhoz a közelmúltbeli tevékenység képest. Egy lehetséges oka, hogy egy támadó hajtanak végre egy jövőbeli támadások.|
-|**Adatok feltárása anomáliadetektálási**|Azt jelzi, hogy BLOB vagy egy tárfiókban lévő tárolók lettek besorolva rendellenes módon, ehhez a fiókhoz a közelmúltbeli tevékenység képest. Egy lehetséges oka, hogy egy támadó hajtanak végre egy jövőbeli támadások.|
+|**Szokatlan hely elérési rendellenessége**|A mintavételes hálózati forgalom elemzése rendellenes kimenő RDP protokoll (RDP) kommunikációt észlelt az üzemelő példányból származó erőforrásból. Ez a tevékenység rendellenesnek minősül ebben a környezetben, és arra utalhat, hogy az erőforrást feltörték, és már használatban van a külső RDP-végpont találgatásos kényszerítéséhez. Megjegyzendő, hogy ez a tevékenység külső entitások számára rosszindulatúként sorolhatja be az Ön IP-címét is.|
+|**Alkalmazás-hozzáférési rendellenesség**|Azt jelzi, hogy egy szokatlan alkalmazás hozzáfért ehhez a Storage-fiókhoz. A lehetséges ok az, hogy egy támadó új alkalmazás használatával fér hozzá a Storage-fiókhoz.|
+|**Névtelen hozzáférési rendellenesség**|Azt jelzi, hogy a hozzáférési minta módosult egy Storage-fiókban. A fiókhoz például névtelenül (hitelesítés nélkül) férhet hozzá, ami nem várt, mint a fiók legutóbbi hozzáférési mintája. Ennek lehetséges oka, hogy egy támadó nyilvános olvasási hozzáférést kapott egy olyan tárolóhoz, amely blob (ok) tárolót tárol.|
+|**Az adatkiszűrése anomália**|Azt jelzi, hogy a tárolón a legutóbbi tevékenységhez képest szokatlanul nagy mennyiségű adattal lett kibontva. A lehetséges ok az, hogy egy támadó nagy mennyiségű adattal gyűjtött ki egy olyan tárolóból, amely blob (ok) tárolót tárol.|
+|**Váratlan törlési rendellenesség**|Azt jelzi, hogy egy vagy több váratlan törlési művelet történt egy Storage-fiókban, a fiókhoz tartozó legutóbbi tevékenységhez képest. Ennek lehetséges oka, hogy egy támadó törölte az adatait a Storage-fiókjából.|
+|**Azure Cloud Service-csomag feltöltése**|Azt jelzi, hogy egy Azure Cloud Service-csomag (. cspkg fájl) szokatlan módon lett feltöltve egy Storage-fiókba, a fiók legutóbbi tevékenységéhez képest. A lehetséges ok az, hogy egy támadó arra készül, hogy rosszindulatú kódot helyezzen üzembe a Storage-fiókból egy Azure Cloud Service-be.|
+|**Engedély-hozzáférési rendellenesség**|Azt jelzi, hogy a tároló hozzáférési engedélyei szokatlan módon módosultak. Ennek lehetséges oka, hogy egy támadó megváltoztatta a tároló engedélyeit, hogy gyengítse biztonsági állapotát, vagy az adatmegőrzést.|
+|**Ellenőrzési hozzáférési rendellenesség**|Azt jelzi, hogy a Storage-fiók hozzáférési engedélyei szokatlan módon lettek megvizsgálva, a fiók legutóbbi tevékenységéhez képest. A lehetséges ok az, hogy egy támadó egy jövőbeli támadáshoz Felderítőt hajtott végre.|
+|**Adatfeltárási rendellenesség**|Azt jelzi, hogy a Storage-fiókban lévő Blobok vagy tárolók rendellenes módon vannak felsorolva, a fiók legutóbbi tevékenységéhez képest. A lehetséges ok az, hogy egy támadó egy jövőbeli támadáshoz Felderítőt hajtott végre.|
 
 >[!NOTE]
->Komplex veszélyforrások elleni védelem az Azure Storage jelenleg nem érhető el az Azure government és szuverén felhő-régiók.
+>Az Azure Storage komplex veszélyforrások elleni védelme jelenleg nem érhető el az Azure governmentben és a szuverén Felhőbeli régiókban.
 
-A riasztások Storage kapcsolatos további információkért lásd: a [komplex veszélyforrások elleni védelem az Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-advanced-threat-protection) című cikket, és tekintse át a védelmi riasztások szakaszban.
+További információ a tárolási riasztásokról: az [Azure Storage komplex veszélyforrások elleni védelme](https://docs.microsoft.com/azure/storage/common/storage-advanced-threat-protection) , valamint a védelmi riasztások szakasz áttekintése.

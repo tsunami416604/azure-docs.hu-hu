@@ -1,5 +1,5 @@
 ---
-title: 'Az Azure Cosmos DB: SQL .NET Core API, SDK és -erőforrások'
+title: 'Az Azure Cosmos DB: SQL .NET Core API, SDK & erőforrások'
 description: Mindent megtudhat a SQL .NET Core API és az SDK, beleértve a kiadási dátum, kivezetési dátum és az Azure Cosmos DB .NET Core SDK minden verziója között végrehajtott módosítások.
 author: SnehaGunda
 ms.service: cosmos-db
@@ -8,18 +8,19 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 03/22/2018
 ms.author: sngun
-ms.openlocfilehash: 14350125f88c315a813eb64e3ce2b88dbec2aa24
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.openlocfilehash: de712d63fa2315a85c6c0eaf392d9c17758e4999
+ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67340197"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "68226187"
 ---
-# <a name="azure-cosmos-db-net-core-sdk-for-sql-api-release-notes-and-resources"></a>Az Azure Cosmos DB .NET Core SDK-t az SQL API-hoz: Kibocsátási megjegyzések és erőforrások
+# <a name="azure-cosmos-db-net-core-sdk-for-sql-api-release-notes-and-resources"></a>Azure Cosmos DB .NET Core SDK az SQL API-hoz: Kibocsátási megjegyzések és erőforrások
 > [!div class="op_single_selector"]
+> * [.NET Core](sql-api-sdk-dotnet-core.md)
+> * [.NET Standard](sql-api-sdk-dotnet-standard.md)
 > * [.NET](sql-api-sdk-dotnet.md)
 > * [.NET-módosítási hírcsatorna](sql-api-sdk-dotnet-changefeed.md)
-> * [.NET Core](sql-api-sdk-dotnet-core.md)
 > * [Node.js](sql-api-sdk-node.md)
 > * [Aszinkron Java](sql-api-sdk-async-java.md)
 > * [Java](sql-api-sdk-java.md)
@@ -35,66 +36,60 @@ ms.locfileid: "67340197"
 |**SDK letöltése**| [NuGet](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB.Core/)|
 |**API-dokumentáció**|[.NET API dokumentációja](/dotnet/api/overview/azure/cosmosdb?view=azure-dotnet)|
 |**Példák**|[.NET platformra írt kódmintái](sql-api-dotnet-samples.md)|
-|**Első lépések**|[Az Azure Cosmos DB .NET Core SDK használatának első lépései](sql-api-dotnet-core-get-started-preview.md)|
+|**Első lépések**|[Ismerkedés a Azure Cosmos DB .NET-tel](sql-api-sdk-dotnet.md)|
 |**Alapú webappokról szóló oktatóanyagunkat**|[Webalkalmazás-fejlesztés az Azure Cosmos DB használatával](sql-api-dotnet-application.md)|
 |**Aktuális támogatott keretrendszer**|[.NET standard 1.6-os és a .NET Standard 1.5-ös](https://www.nuget.org/packages/NETStandard.Library)|
 
 ## <a name="release-notes"></a>Kibocsátási megjegyzések
 
-Az Azure Cosmos DB .NET Core SDK legújabb verziójában funkcióparitás rendelkezik a [Azure Cosmos DB .NET SDK](sql-api-sdk-dotnet.md).
-
-### <a name="a-name3001-preview3001-preview"></a><a name="3.0.0.1-preview"/>3.0.0.1-Preview
-* 1 előzetes verziójának [3.0.0-s verziójának](https://www.nuget.org/packages/Microsoft.Azure.Cosmos/) a .NET SDK a nyilvános előzetes verziójához.
-* Cél .NET Standard, amely támogatja a .NET-keretrendszer 4.6.1+ és a .NET Core 2.0 +
-* Új hálózatiobjektum-modellt, a legfelső szintű CosmosClient és módszerek elosztja a megfelelő CosmosDatabases, CosmosContainers és CosmosItems osztályokat.
-* Streamek támogatását.
-* Frissített CosmosResponseMessage állapotkódot adja vissza, és csak throw kivétel, ha nem érkezik válasz-kiszolgálóról.
+> [!NOTE]
+> Ha .NET Core-t használ, tekintse meg a .net-szabványt megcélzó [.net SDK](sql-api-sdk-dotnet-standard.md)legújabb 3. x verzióját. 
 
 ### <a name="a-name241241"></a><a name="2.4.1"/>2.4.1
 
-* Nyomkövetés versenyhelyzet a lekérdezéseket, amelyek okozott az üres lap javításai
+* Kijavítja az üres lapokat okozó lekérdezések nyomkövetési versenyhelyzet-feltételeit
 
 ### <a name="a-name240240"></a><a name="2.4.0"/>2.4.0
 
-* SDK-k System.Net.Http verzióegyezéseket határozzák meg a NuGet-csomag
-* A LINQ-lekérdezések a Decimális pontosság mérete nagyobb.
-* Hozzáadott új osztályok CompositePath, CompositePathSortOrder, SpatialSpec, SpatialType és PartitionKeyDefinitionVersion
-* DocumentCollection a hozzáadott TimeToLivePropertyPath
-* A hozzáadott CompositeIndexes és SpatialIndexes IndexPolicy
-* PartitionKeyDefinition új verzióra
-* A PartitionKey nincs hozzáadva
+* Az SDK System .net. http verziója megegyezik a NuGet csomagban definiált értékkel
+* Nagyobb decimális pontossági méret a LINQ-lekérdezéseknél.
+* Új osztályok lettek hozzáadva a CompositePath, a CompositePathSortOrder, a SpatialSpec, a SpatialType és a PartitionKeyDefinitionVersion
+* TimeToLivePropertyPath hozzáadva a DocumentCollection-hoz
+* CompositeIndexes és SpatialIndexes hozzáadva a IndexPolicy-hez
+* PartitionKeyDefinition-verzió hozzáadva
+* Nincs hozzáadva a PartitionKey
 
 ### <a name="a-name230230"></a><a name="2.3.0"/>2.3.0
 
- * A hozzáadott IdleTcpConnectionTimeout, OpenTcpConnectionTimeout, MaxRequestsPerTcpConnection és a ConnectionPolicy MaxTcpConnectionsPerEndpoint.
+ * A IdleTcpConnectionTimeout, a OpenTcpConnectionTimeout, a MaxRequestsPerTcpConnection és a MaxTcpConnectionsPerEndpoint hozzáadva a ConnectionPolicy.
  
 ### <a name="a-name223223"></a><a name="2.2.3"/>2.2.3
 
-* Diagnosztikai
+* Diagnosztika fejlesztése
 
 ### <a name="a-name222222"></a><a name="2.2.2"/>2.2.2.
 
-* Hozzáadott környezeti változó beállítása "POCOSerializationOnly".
+* Környezeti változó hozzáadva a "POCOSerializationOnly" beállításhoz.
 
-* DocumentDB.Spatial.Sql.dll eltávolítva, és most már szerepel a Microsoft.Azure.Documents.ServiceInterop.dll
+* A DocumentDB. térbeli. SQL. dll fájl el lett távolítva, és már megtalálható a Microsoft. Azure. Documents. ServiceInterop. dll fájlban
 
 ### <a name="a-name221221"></a><a name="2.2.1"/>2.2.1
 
-* Fokozása újrapróbálkozási logikát a feladatátvétel során a tárolt eljárás végrehajtása hívásokat.
+* Az újrapróbálkozási logika fejlesztése a feladatátvétel során a StoredProcedure végrehajtásához.
 
-* Kezdeményezni DocumentClientEventSource egypéldányos. 
+* A DocumentClientEventSource egyszer készült. 
 
-* Javítsa ki a nem érvényesítenie ConnectionPolicy RequestTimeout GatewayAddressCache időkorlátja.
+* Javítsa ki a GatewayAddressCache időtúllépését, és ne tartsa tiszteletben a ConnectionPolicy-RequestTimeout.
 
 ### <a name="a-name220220"></a><a name="2.2.0"/>2.2.0
 
-* Közvetlen/TCP átviteli diagnosztikai hozzáadott TransportException, egy belső kivétel típusa, az SDK-t. Kivétel üzenetek szerepelnek, ha ez a típus jelenít meg további információt az ügyfél kapcsolódási problémák elhárításához.
+* A Direct/TCP Transport Diagnostics szolgáltatáshoz hozzáadott TransportException, az SDK belső kivételének típusa. Ha a kivételben lévő üzenetekben szerepel, ez a típus további információkat jelenít meg az ügyfelek kapcsolódási problémáinak elhárításához.
 
-* A hozzáadott új konstruktor túlterhelési egy HttpMessageHandler, egy HTTP-kezelő verem (pl. HttpClientHandler) HttpClient kérelmek küldéséhez használt foglalnak.
+* Új konstruktor-túlterhelést adott hozzá, amely egy HttpMessageHandler-t, egy HTTP-kezelői veremet használ a HttpClient-kérelmek küldéséhez (például HttpClientHandler).
 
-* Javításra ahol fejléc null értékű volt nem megfelelő kezelésének biztosítása érdekében.
+* Javítsa ki a hibát, hogy a null értékű fejlécek ne legyenek megfelelően kezelve.
 
-* Továbbfejlesztett gyűjtemény gyorsítótár érvényesítése.
+* Továbbfejlesztett gyűjtemények gyorsítótárának ellenőrzése.
 
 ### <a name="a-name213213"></a><a name="2.1.3"/>2.1.3
 
@@ -143,11 +138,11 @@ Az Azure Cosmos DB .NET Core SDK legújabb verziójában funkcióparitás rendel
 ### <a name="a-name191191"></a><a name="1.9.1"/>1.9.1
 
 * Rögzített KeyNotFoundException a partíció rendelés közötti esetekben a lekérdezések által.
-* Kijavítva a hiba, a select záradékban a LINQ-lekérdezések JsonProperty attribútum lett nem folyamatban figyelembe véve.
+* Kijavítva a hiba, ahol a JsonProperty attribútum a Select záradékban a LINQ-lekérdezésekhez nem lett betartva.
 
 ### <a name="a-name182182"></a><a name="1.8.2"/>1.8.2
 
-* Kijavítva a hiba, amely bizonyos fajta feltételek elérte az eredmények az időszakos "Microsoft.Azure.Documents.NotFoundException: Az olvasási munkamenet a bemeneti munkamenet-jogkivonat nem érhető el"hiba munkamenet konzisztenciaszint használatakor.
+* Bizonyos versenyfeltételek miatt megjelenő rögzített hiba, amely a "Microsoft. Azure. Documents. NotFoundException" időszakot eredményezi: A munkamenet-konzisztencia szintjének használata esetén az olvasási munkamenet nem érhető el a bemeneti munkamenet tokenje számára.
 
 ### <a name="a-name181181"></a><a name="1.8.1"/>1.8.1
 
@@ -220,7 +215,7 @@ Az Azure Cosmos DB .NET Core SDK legújabb verziójában funkcióparitás rendel
 
 ### <a name="a-name112112"></a><a name="1.1.2"/>1.1.2
 
-* Javítás a WebException alkalmanként okozó hibát: A távoli név nem oldható fel.
+* Javítsa ki a problémát, amely esetenként egy webszolgáltatást okoz: A távoli név nem oldható fel.
 * A beírt dokumentumok közvetlenül olvasásakor ReadDocumentAsync API új hozzáadásával támogatása hozzáadva.
 
 ### <a name="a-name111111"></a><a name="1.1.1"/>1.1.1
@@ -244,24 +239,24 @@ Az Azure Cosmos DB .NET Core SDK lehetővé teszi, hogy hozhat létre gyors és 
 Az Azure Cosmos DB .NET Core előzetes SDK lehetővé teszi, hogy hozhat létre gyors és platformfüggetlen [ASP.NET Core](https://www.asp.net/core) és [.NET Core](https://www.microsoft.com/net/core#windows) Windows, Mac és Linux rendszereken futó alkalmazások.
 
 Az Azure Cosmos DB .NET Core előzetes SDK funkcióparitás legújabb verziójával rendelkezik a [Azure Cosmos DB .NET SDK](sql-api-sdk-dotnet.md) és a következőket támogatja:
-* Az összes [csatlakozási mód](performance-tips.md#networking): Átjáró mód, a közvetlen TCP és közvetlen HTTPs.
-* Az összes [konzisztenciaszintek](consistency-levels.md): Erős, munkamenet, korlátozott frissesség, és végleges.
+* Minden [kapcsolási mód](performance-tips.md#networking): Átjáró mód, közvetlen TCP és közvetlen HTTPs.
+* Minden [konzisztencia-szint](consistency-levels.md): Erős, munkamenet, kötött elavulás és végleges.
 * [A particionált gyűjtemények](partition-data.md).
 * [Többrégiós adatbázisfiókhoz és georeplikáció útján](distribute-data-globally.md).
 
-Ha ez az SDK kapcsolatos kérdése van, küldése a [StackOverflow](https://stackoverflow.com/questions/tagged/azure-documentdb), vagy be a problémát a [GitHub-adattár](https://github.com/Azure/azure-documentdb-dotnet/issues).
+Ha az SDK-val kapcsolatos kérdése van, tegye közzé a [StackOverflow](https://stackoverflow.com/questions/tagged/azure-documentdb), vagy a [GitHub](https://github.com/Azure/azure-documentdb-dotnet/issues)-tárházban található problémát.
 
 ## <a name="release--retirement-dates"></a>Állapot tárolá & kivezetési dátum
 
 | Verzió | Kiadás dátuma | Visszavonás dátuma |
 | --- | --- | --- |
 | [2.4.1](#2.4.1) |2019. június 20. |--- |
-| [2.4.0](#2.4.0) |2019. május 05. |--- |
-| [2.3.0](#2.3.0) |2019. április 04. |--- |
-| [2.2.3](#2.2.3) |2019. márciusi 11. |--- |
-| [2.2.2](#2.2.2) |2019. február 06. |--- |
-| [2.2.1](#2.2.1) |2018. december 24. |--- |
-| [2.2.0](#2.2.0) |2018. december 07. |--- |
+| [2.4.0](#2.4.0) |Május 05., 2019 |--- |
+| [2.3.0](#2.3.0) |Április 04., 2019 |--- |
+| [2.2.3](#2.2.3) |2019. március 11. |--- |
+| [2.2.2](#2.2.2) |Február 06, 2019 |--- |
+| [2.2.1](#2.2.1) |December 24., 2018 |--- |
+| [2.2.0](#2.2.0) |December 07, 2018 |--- |
 | [2.1.3](#2.1.3) |2018. október 15. |--- |
 | [2.1.2](#2.1.2) |2018. október 04. |--- |
 | [2.1.1](#2.1.1) |2018. szeptember 27. |--- |

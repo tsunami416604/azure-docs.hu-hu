@@ -4,7 +4,7 @@ titlesuffix: Azure Load Balancer
 description: Ismerje meg, hogyan hozhat létre egy Azure Load Balancer – REST API használatával.
 services: load-balancer
 documentationcenter: na
-author: KumudD
+author: asudbring
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: article
@@ -12,17 +12,17 @@ ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.workload: load-balancer
 ms.date: 06/06/2018
-ms.author: kumud
-ms.openlocfilehash: 159fe9d6a891858d8d2cc2315e9544b79eb44cff
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: allensu
+ms.openlocfilehash: ae8fb4494d27d0c145963c9b32757bdb802e0cc7
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60884979"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68275545"
 ---
 # <a name="create-an-azure-basic-load-balancer-using-rest-api"></a>Az Azure alapszintű terheléselosztó létrehozása a REST API használatával
 
-Egy Azure Load Balancer osztja el az új bejövő folyamatok, amelyek a terheléselosztó előtérbeli, a háttérbeli készletet példányok, szabályok és az állapotadat-mintavételek alapján az ügyfélszámítógépekre érkeznek. A Load Balancer kétféle termékváltozatban érhető el: alap- és standard szinten. A két SKU-verziók közötti különbségek megértése [Load Balancer Termékváltozat összehasonlítások](load-balancer-overview.md#skus).
+Egy Azure Load Balancer osztja el az új bejövő folyamatok, amelyek a terheléselosztó előtérbeli, a háttérbeli készletet példányok, szabályok és az állapotadat-mintavételek alapján az ügyfélszámítógépekre érkeznek. A Load Balancer két SKU-ban érhető el: alap- és standard szinten. A két SKU-verziók közötti különbségek megértése [Load Balancer Termékváltozat összehasonlítások](load-balancer-overview.md#skus).
  
 Ez az útmutató bemutatja, hogyan hozzon létre egy Azure alapszintű Load Balancer a [Azure REST API](/rest/api/azure/) egyenleg bejövő kérelem terhelés egy Azure virtuális hálózaton belül több virtuális gép között. Teljes dokumentációt és további példákat érhető el a [Azure Load Balancer – REST-referencia](/rest/api/load-balancer/).
  
@@ -51,7 +51,7 @@ Csak a szükséges paraméter `location`. Ha nem adja meg a *Termékváltozat* v
 | location | sztring | Erőforrás helye. Helyek használatával aktuális listájának lekérése a [lista helyek](https://docs.microsoft.com/rest/api/resources/subscriptions/listlocations) műveletet. |
 
 
-## <a name="example-create-and-update-a-basic-load-balancer"></a>Példa: Létrehozhat és frissíthet egy alapszintű Load Balancer
+## <a name="example-create-and-update-a-basic-load-balancer"></a>Példa: Alapszintű Load Balancer létrehozása és frissítése
 
 Ebben a példában először létrehozhat egy alapszintű Load Balancer erőforrásait együtt. Ezután állítsa be a terheléselosztó erőforrásainak, beleértve az előtérbeli IP-konfiguráció, egy háttér címkészletet, a terheléselosztási szabály az állapotfigyelő mintavételező és bejövő NAT-szabály.
 

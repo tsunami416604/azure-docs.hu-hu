@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 11/25/2018
 ms.author: genli
 ms.openlocfilehash: 9ba3f3bbd0b553db888009df25449003f6a4e5c3
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 07/18/2019
 ms.locfileid: "67178934"
 ---
-Ha ebben a cikkben nem képes kezelni az Azure-beli probléma, látogasson el az Azure-fórumok a [MSDN és Stack Overflow](https://azure.microsoft.com/support/forums/). Közzé a problémát a fórumokban, vagy közzététel [ @AzureSupport a Twitteren](https://twitter.com/AzureSupport). Egy Azure-támogatási kérést is küldhet. Egy támogatási kérést szeretne beküldeni, a a [az Azure-támogatás](https://azure.microsoft.com/support/options/) lapon jelölje be **támogatás**.
+Ha az Azure-beli probléma nem szerepel ebben a cikkben, látogasson el az [MSDN webhelyen](https://azure.microsoft.com/support/forums/)található Azure-fórumokra, és stack overflow. Felteheti a problémát ezekben a fórumokon, vagy közzéteheti [ @AzureSupport ](https://twitter.com/AzureSupport)a Twitteren. Azure-támogatási kérelmet is küldhet. Ha támogatási kérést szeretne küldeni, az [Azure-támogatás](https://azure.microsoft.com/support/options/) lapon válassza a **támogatás**lekérése lehetőséget.
 

@@ -1,48 +1,48 @@
 ---
-title: Hozhat létre az Azure IoT Central eszköz híd |} A Microsoft Docs
-description: Hozhat létre az IoT-központ eszköz híd (Sigfox, Particle a dolgok hálózati stb.) más IoT-felhők csatlakozni az IoT Central alkalmazáshoz.
+title: Az Azure IoT Central Device Bridge létrehozása | Microsoft Docs
+description: A IoT Central Device Bridge használatával összekapcsolhatók más IoT-felhők (Sigfox, részecske, The Things Network stb.) a IoT Central alkalmazáshoz.
 services: iot-central
 ms.service: iot-central
 author: viv-liu
 ms.author: viviali
-ms.date: 03/26/2019
+ms.date: 07/09/2019
 ms.topic: conceptual
 manager: peterpr
-ms.openlocfilehash: 246c9ad8ab3083c1b847c1c25230a7193a8192e3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c98574bc3447482429d7a028c6b47197e08e2e38
+ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60886878"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67850236"
 ---
-# <a name="build-the-iot-central-device-bridge-to-connect-other-iot-clouds-to-iot-central"></a>Az IoT-központ eszköz híd egyéb IoT-felhők csatlakozni az IoT-központ létrehozása
+# <a name="build-the-iot-central-device-bridge-to-connect-other-iot-clouds-to-iot-central"></a>Hozza létre a IoT Central Device Bridge eszközt más IoT-felhők csatlakoztatásához IoT Central
 
-*Ez a témakör a rendszergazdák vonatkozik.*
+*Ez a témakör a rendszergazdákra vonatkozik.*
 
-Az IoT-központ eszköz bridge, amely egy nyílt forráskódú megoldás, amely a Sigfox, Particle, a dolgokat Network és más felhők csatlakozik az IoT Central-alkalmazást. Akár nyomon követése Sigfox az alacsony szintű Power hálózathoz csatlakoztatott eszközök használata, légi minőség a Particle eszközről a felhőbe az eszközök figyelése, vagy használja a TTN eszközök figyelése talajjal nedvesség használatával közvetlenül használja ki az IoT Az IoT-központ eszköz bridge segítségével központi. Az eszköz híd egyéb IoT-felhők összekapcsolja az IoT-központ által a más felhőkben keresztül az IoT Central alkalmazáshoz küldeni az eszközök az adatokat továbbító. Az IoT-központ alkalmazásban is hozhat létre szabályokat és elemzések futtatására az adatok, munkafolyamatok létrehozása a Microsoft Flow és az Azure Logic appsben, exportálhatja az adatokat, és még sok más. Első a [IoT-központ eszköz híd](https://aka.ms/iotcentralgithubdevicebridge) a Githubról
+A IoT Central Device Bridge egy nyílt forráskódú megoldás, amely összekapcsolja a Sigfox, a részecske-t, a hálózatokat és más felhőket a IoT Central alkalmazáshoz. Függetlenül attól, hogy a Sigfox alacsony energiaellátású hálózatához csatlakoztatott eszköz-követési eszközöket használ, vagy a levegőminőség-figyelési eszközöket a részecske-eszköz felhőben használja, vagy a TTN a talaj nedvességtartalmának figyelésére szolgáló eszközöket használja, közvetlenül kihasználhatja a IoT erejét Központi a IoT Central Device Bridge használatával. Az eszköz-híd más IoT-Felhőkkel csatlakozik a IoT Centralhoz, és továbbítja azokat az eszközöket, amelyeket az eszközök a többi felhőbe továbbítanak a IoT Central alkalmazásba. A IoT Central alkalmazásban szabályokat hozhat létre, és elemzéseket futtathat ezen az adatain, munkafolyamatokat hozhat létre a Microsoft Flow és az Azure Logic apps szolgáltatásban, majd exportálhatja azokat. A [IoT Central-eszköz híd](https://aka.ms/iotcentralgithubdevicebridge) beszerzése a githubról
 
 ## <a name="what-is-it-and-how-does-it-work"></a>Mi ez, és hogyan működik?
-Az IoT-központ eszköz bridge, amely egy nyílt forráskódú megoldás a Githubon. Nyissa meg a "Üzembe helyezése az Azure-bA" gomb, amely az Azure-előfizetésben helyezi üzembe helyezi a egyéni Azure Resource Manager-sablonnal a több Azure-erőforrások készen áll. Az erőforrások a következők:
--   Azure-függvényalkalmazás
+A IoT Central Device Bridge egy nyílt forráskódú megoldás a GitHubban. Készen áll a "üzembe helyezés az Azure-ban" gombra, amely egy egyéni Azure Resource Manager-sablont helyez üzembe több Azure-erőforrással az Azure-előfizetésében. Az erőforrások a következők:
+-   Azure Function-alkalmazás
 -   Azure Storage-tárfiók neve
 -   Használatalapú csomag
 -   Azure Key Vault
 
-A függvényalkalmazás az eszköz híd kritikus részeihez. HTTP POST-kérelmet kap más IoT platformok vagy bármilyen egyéni platformon egy egyszerű webhook-integrációt. Példák azt mutatják be, hogyan csatlakozhat Sigfox Particle és TTN felhők adtunk meg. Ez a megoldás az egyéni IoT-felhőbe csatlakozni, ha a platform HTTP POST kéréseket küldhetnek a függvényalkalmazás könnyen kiterjesztheti.
-A függvényalkalmazás alakítja át az adatokat olyan formátumra, fogadja el az IoT-központ, majd továbbítja azt mentén DPS API-kon keresztül.
+A Function alkalmazás az eszköz híd kritikus eleme. HTTP POST-kéréseket kap más IoT platformokról vagy egyéni platformokról egy egyszerű webhook-integráción keresztül. Olyan példákat ismertetünk, amelyek bemutatják, hogyan csatlakozhat a Sigfox, a részecske-és a TTN-felhőkhöz. Ezt a megoldást egyszerűen kiterjesztheti az egyéni IoT-felhőhöz való kapcsolódáshoz, ha a platform HTTP POST-kéréseket küldhet a Function alkalmazásnak.
+A Function alkalmazás az IoT Central által elfogadott formátumba átalakítja az adathalmazt, és a DPS API-kon keresztül továbbítja azokat.
 
-![Az Azure functions képernyőképe](media/howto-build-iotc-device-bridge/azfunctions.png)
+![Képernyőkép az Azure functions szolgáltatásról](media/howto-build-iotc-device-bridge/azfunctions.png)
 
-Ha az IoT Central-alkalmazást az eszköz által Eszközazonosítót a továbbított üzenet felismeri, egy új mérték jelenik meg az eszközön. Ha az eszköz azonosítója soha nem látják az IoT Central-alkalmazást, a függvényalkalmazás megkísérli egy új eszközt regisztrálhat az adott eszköz Azonosítóját, és az IoT Central-alkalmazást egy "társítatlan eszköz" állapottal fog megjelenni. 
+Ha a IoT Central alkalmazás a továbbított üzenetben az eszköz azonosítója alapján ismeri fel az eszközt, az adott eszközhöz új mérték fog megjelenni. Ha az eszköz AZONOSÍTÓját soha nem látták a IoT Central alkalmazás, a Function alkalmazás megpróbál regisztrálni egy új eszközt az eszköz azonosítójával, és a rendszer a IoT Central alkalmazásban "nem társított eszközként" jelenik meg. 
 
-## <a name="how-do-i-set-it-up"></a>Hogyan állíthatok azt be?
-Az utasításokat az információs fájl, a GitHub-adattárat a részletes listáját. 
+## <a name="how-do-i-set-it-up"></a>Hogyan beállítani?
+Az utasításokat a GitHub-adattár README fájljában találja meg részletesen. 
 
 ## <a name="pricing"></a>Díjszabás
-Az Azure-erőforrások üzemeltetett Azure-előfizetésében. További információ a díjszabásról a a [információs fájl](https://aka.ms/iotcentralgithubdevicebridge).
+Az Azure-erőforrások az Azure-előfizetésében lesznek üzemeltetve. A díjszabással kapcsolatos további információkért tekintse meg a [Readme fájlt](https://aka.ms/iotcentralgithubdevicebridge).
 
 ## <a name="next-steps"></a>További lépések
-Most, hogy megismerte, hogyan hozhat létre az IoT-központ eszköz híd, Íme a javasolt következő lépésre:
+Most, hogy megismerte, hogyan hozhatja létre a IoT Central-eszköz hidat, itt látható a javasolt következő lépés:
 
 > [!div class="nextstepaction"]
 > [Saját eszközök kezelése](howto-manage-devices.md)

@@ -1,10 +1,10 @@
 ---
-title: Zónaredundáns előtér - Azure portal a Load Balancer létrehozása
+title: Load Balancer létrehozása a Zone-redundáns frontend-Azure Portal
 titlesuffix: Azure Load Balancer
 description: Ismerje meg, hogyan hozhat létre egy nyilvános Standard Load Balancer zónaredundáns nyilvános előtérbeli IP-Címmel cím az Azure portal használatával
 services: load-balancer
 documentationcenter: na
-author: KumudD
+author: asudbring
 manager: twooley
 ms.service: load-balancer
 ms.devlang: na
@@ -13,17 +13,17 @@ ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/22/2018
-ms.author: kumud
-ms.openlocfilehash: 448ae5f8a615a526460ac92eaaf6c7d16761aec2
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: allensu
+ms.openlocfilehash: a875fc3446944b8a39f43b29440ab1d7179b847d
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60684917"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68275082"
 ---
 #  <a name="create-a-standard-load-balancer-with-zone-redundant-frontend-using-azure-portal"></a>Standard Load Balancer létrehozása az Azure portal használatával, a zónaredundáns frontend
 
-Ez a cikk végigvezeti egy nyilvános létrehozása [Standard Load Balancer](https://aka.ms/azureloadbalancerstandard) és a egy zónaredundáns frontend-IP szabványos nyilvános cím segítségével. A Standard Load Balancer egy egyetlen előtérbeli IP-cím zónaredundáns alapértelmezés szerint.
+Ez a cikk a nyilvános IP-címet használó, nyilvános IP-címmel rendelkező, nyilvános [standard Load Balancer](https://aka.ms/azureloadbalancerstandard) létrehozásához szükséges lépéseket ismerteti. A Standard Load Balancer egy egyetlen előtérbeli IP-cím zónaredundáns alapértelmezés szerint.
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 

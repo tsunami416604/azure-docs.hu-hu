@@ -1,10 +1,10 @@
 ---
-title: 'Gyors útmutató: Egy alapszintű Load Balancer létrehozása – Azure PowerShell-lel'
+title: 'Gyors útmutató: Alapszintű Load Balancer létrehozása – Azure PowerShell'
 titlesuffix: Azure Load Balancer
 description: Ez a rövid útmutató bemutatja, hogyan hozhat létre alapszintű terheléselosztót a PowerShell használatával
 services: load-balancer
 documentationcenter: na
-author: KumudD
+author: asudbring
 manager: twooley
 Customer intent: I want to create a Basic Load balancer so that I can load balance internet traffic to VMs.
 ms.service: load-balancer
@@ -13,16 +13,16 @@ ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/21/2019
-ms.author: kumud
+ms.author: allensu
 ms:custom: seodec18
-ms.openlocfilehash: 5b77087557bc4ca1bea3cb4a36a50d787a5edf4d
-ms.sourcegitcommit: 1aefdf876c95bf6c07b12eb8c5fab98e92948000
+ms.openlocfilehash: 58b36265a5e440dbf33a5d6fb85e791abbd006a8
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66729848"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68274245"
 ---
-# <a name="get-started"></a>Gyors útmutató: Azure PowerShell-lel nyilvános load balancer létrehozása
+# <a name="get-started"></a>QuickStart Nyilvános terheléselosztó létrehozása Azure PowerShell használatával
 
 Ez a rövid útmutató bemutatja, hogyan hozhat létre alapszintű terheléselosztót az Azure PowerShell használatával. A terheléselosztó teszteléséhez két, Windows kiszolgálót futtató virtuális gépet helyez üzembe, és elosztja ezek között egy webalkalmazás terhelését.
 
@@ -34,7 +34,7 @@ Ha a PowerShell helyi telepítése és használata mellett dönt, ehhez a cikkhe
 
 ## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 
-A terheléselosztó létrehozásához, létre kell hoznia egy erőforráscsoportot a [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup). A következő példában létrehozunk egy *myResourceGroupLB* nevű erőforráscsoportot az *EastUS* helyen:
+A terheléselosztó létrehozása előtt létre kell hoznia egy erőforráscsoportot a [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup)használatával. A következő példában létrehozunk egy *myResourceGroupLB* nevű erőforráscsoportot az *EastUS* helyen:
 
 ```azurepowershell-interactive
 New-AzResourceGroup `
@@ -43,7 +43,7 @@ New-AzResourceGroup `
 ```
 
 ## <a name="create-a-public-ip-address"></a>Hozzon létre egy nyilvános IP-címet
-Az alkalmazás internetes eléréséhez a terheléselosztónak nyilvános IP-címmel kell rendelkeznie. Hozzon létre egy nyilvános IP-címet [New-AzPublicIpAddress](/powershell/module/az.network/new-azpublicipaddress). Az alábbi példában létrejön egy *myPublicIP* nevű nyilvános IP-cím a *myResourceGroupLB* erőforráscsoportban:
+Az alkalmazás internetes eléréséhez a terheléselosztónak nyilvános IP-címmel kell rendelkeznie. Hozzon létre egy nyilvános IP [-címet a New-AzPublicIpAddress](/powershell/module/az.network/new-azpublicipaddress). Az alábbi példában létrejön egy *myPublicIP* nevű nyilvános IP-cím a *myResourceGroupLB* erőforráscsoportban:
 
 ```azurepowershell-interactive
 $publicIP = New-AzPublicIpAddress `
@@ -55,11 +55,11 @@ $publicIP = New-AzPublicIpAddress `
 
 ## <a name="create-basic-load-balancer"></a>Alapszintű Load Balancer létrehozása
 
-Ebben a szakaszban az előtérbeli IP-címet és a háttér-címkészletet a load Balancer konfigurálása, és az alapszintű Load Balancer létrehozása a majd.
+Ebben a szakaszban az előtérbeli IP-címet és a háttérbeli címkészletet konfigurálja a terheléselosztó számára, majd létrehozza az alapszintű Load Balancer.
 
-### <a name="create-front-end-ip"></a>Előtérbeli IP-cím létrehozása
+### <a name="create-front-end-ip"></a>Előtér-IP-cím létrehozása
 
-Hozzon létre egy előtér-IP-Címmel rendelkező [New-AzLoadBalancerFrontendIpConfig](/powershell/module/az.network/new-azloadbalancerfrontendipconfig). Az alábbi példa követésével létrehoz egy *myFrontEnd* nevű előtérbeli IP-konfigurációt, majd csatolja a *myPublicIP* címet:
+Hozzon létre egy előtér-IP-címet a [New-AzLoadBalancerFrontendIpConfig](/powershell/module/az.network/new-azloadbalancerfrontendipconfig). Az alábbi példa követésével létrehoz egy *myFrontEnd* nevű előtérbeli IP-konfigurációt, majd csatolja a *myPublicIP* címet:
 
 ```azurepowershell-interactive
 $frontendIP = New-AzLoadBalancerFrontendIpConfig `
@@ -67,9 +67,9 @@ $frontendIP = New-AzLoadBalancerFrontendIpConfig `
   -PublicIpAddress $publicIP
 ```
 
-### <a name="configure-back-end-address-pool"></a>Háttér-címkészlet konfigurálása
+### <a name="configure-back-end-address-pool"></a>Háttérbeli címkészlet konfigurálása
 
-A háttér-címkészlet létrehozása [New-AzLoadBalancerBackendAddressPoolConfig](/powershell/module/az.network/new-azloadbalancerbackendaddresspoolconfig). A virtuális gépek csatlakoztatása a hátralévő lépések során a háttérkészlethez. A következő példában létrehozunk egy háttér-címkészletet *myBackEndPool*:
+Hozzon létre egy háttér-címkészletet a [New-AzLoadBalancerBackendAddressPoolConfig](/powershell/module/az.network/new-azloadbalancerbackendaddresspoolconfig). A virtuális gépek ehhez a háttér-készlethez csatlakoznak a hátralévő lépésekben. A következő példa egy *myBackEndPool*nevű háttér-címkészletet hoz létre:
 
 ```azurepowershell-interactive
 $backendPool = New-AzLoadBalancerBackendAddressPoolConfig -Name "myBackEndPool"
@@ -80,7 +80,7 @@ Ahhoz, hogy a terheléselosztó monitorozhassa az alkalmazás állapotát, álla
 
 Az alábbi példában egy TCP-mintavétel jön létre. Egyéni HTTP-mintavételt is létrehozhat részletesebb állapotellenőrzések elvégzéséhez. Egyéni HTTP-mintavétel használatakor létre kell hoznia az állapotellenőrzési oldalt, például: *healthcheck.aspx*. A mintavételnek a **HTTP 200 OK** választ kell visszaadnia ahhoz, hogy a terheléselosztó a gazdagépet a rotációban tartsa.
 
-TCP-állapotminta létrehozásához használja [Add-AzLoadBalancerProbeConfig](/powershell/module/az.network/add-azloadbalancerprobeconfig). Az alábbi példában egy *myHealthProbe* nevű állapotmintát hozunk létre, amely a *80*-as *HTTP*-porton lévő virtuális gépeket monitorozza:
+A TCP Health-mintavétel létrehozásához használja az [Add-AzLoadBalancerProbeConfig](/powershell/module/az.network/add-azloadbalancerprobeconfig). Az alábbi példában egy *myHealthProbe* nevű állapotmintát hozunk létre, amely a *80*-as *HTTP*-porton lévő virtuális gépeket monitorozza:
 
 ```azurepowershell-interactive
 $probe = New-AzLoadBalancerProbeConfig `
@@ -111,7 +111,7 @@ $lbrule = New-AzLoadBalancerRuleConfig `
 
 ### <a name="create-the-nat-rules"></a>A NAT-szabályok létrehozása
 
-Hozzon létre a NAT-szabályokat a [Add-AzLoadBalancerRuleConfig](/powershell/module/az.network/new-azloadbalancerinboundnatruleconfig). Az alábbi példák követésével létrehozhatja a *myLoadBalancerRDP1* és *myLoadBalancerRDP2* nevű NAT-szabályokat a háttérkiszolgáló RDP-kapcsolatainak 4221-es és 4222-es portokon történő engedélyezésével:
+NAT-szabályok létrehozása a [Add-AzLoadBalancerRuleConfig](/powershell/module/az.network/new-azloadbalancerinboundnatruleconfig). Az alábbi példák követésével létrehozhatja a *myLoadBalancerRDP1* és *myLoadBalancerRDP2* nevű NAT-szabályokat a háttérkiszolgáló RDP-kapcsolatainak 4221-es és 4222-es portokon történő engedélyezésével:
 
 ```azurepowershell-interactive
 $natrule1 = New-AzLoadBalancerInboundNatRuleConfig `
@@ -131,7 +131,7 @@ $natrule2 = New-AzLoadBalancerInboundNatRuleConfig `
 
 ### <a name="create-load-balancer"></a>Terheléselosztó létrehozása
 
-Az alapszintű Load Balancer-létrehozása [új AzLoadBalancer](/powershell/module/az.network/new-azloadbalancer). Az alábbi példát követve létrehozhat egy myLoadBalancer nevű nyilvános alapszintű terheléselosztót az előző lépésekben létrehozott előtérbeli IP-konfiguráció, háttérkészlet, állapotminta, terheléselosztási szabály és NAT-szabályok használatával:
+Hozza létre az alapszintű Load Balancert a [New-AzLoadBalancer](/powershell/module/az.network/new-azloadbalancer). Az alábbi példát követve létrehozhat egy myLoadBalancer nevű nyilvános alapszintű terheléselosztót az előző lépésekben létrehozott előtérbeli IP-konfiguráció, háttérkészlet, állapotminta, terheléselosztási szabály és NAT-szabályok használatával:
 
 ```azurepowershell-interactive
 $lb = New-AzLoadBalancer `
@@ -151,7 +151,7 @@ Mielőtt üzembe helyezne néhány virtuális gépet és tesztelhetné a terhel�
 
 ### <a name="create-a-virtual-network"></a>Virtuális hálózat létrehozása
 
-A virtuális hálózat létrehozása [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork). Az alábbi példa létrehoz egy *mySubnet* hálózattal rendelkező *myVNet* nevű virtuális hálózatot:
+Hozzon létre egy új virtuális hálózatot a [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork). Az alábbi példa létrehoz egy *mySubnet* hálózattal rendelkező *myVNet* nevű virtuális hálózatot:
 
 ```azurepowershell-interactive
 # Create subnet config
@@ -174,7 +174,7 @@ Hozzon létre hálózati biztonsági csoportot a virtuális hálózat bejövő k
 
 #### <a name="create-a-network-security-group-rule-for-port-3389"></a>Hálózati biztonságicsoport-szabály létrehozása a 3389-es porhoz
 
-Hozzon létre egy hálózati biztonsági csoportra vonatkozó szabályt az RDP-kapcsolatok engedélyezése a 3389-es porton keresztül [New-AzNetworkSecurityRuleConfig](/powershell/module/az.network/new-aznetworksecurityruleconfig).
+Hozzon létre egy hálózati biztonsági csoportra vonatkozó szabályt, amely engedélyezi az RDP-kapcsolatokat a 3389-as porton a [New-AzNetworkSecurityRuleConfig](/powershell/module/az.network/new-aznetworksecurityruleconfig).
 
 ```azurepowershell-interactive
 $rule1 = New-AzNetworkSecurityRuleConfig `
@@ -192,7 +192,7 @@ $rule1 = New-AzNetworkSecurityRuleConfig `
 
 #### <a name="create-a-network-security-group-rule-for-port-80"></a>Hálózati biztonságicsoport-szabály létrehozása a 80-as porhoz
 
-Hozzon létre egy hálózati biztonsági csoportra vonatkozó szabályt a bejövő kapcsolatok engedélyezéséhez a 80-as porton keresztül [New-AzNetworkSecurityRuleConfig](/powershell/module/az.network/new-aznetworksecurityruleconfig).
+Hozzon létre egy hálózati biztonsági csoportra vonatkozó szabályt, amely engedélyezi a bejövő kapcsolatokat a 80-as porton keresztül a [New-AzNetworkSecurityRuleConfig](/powershell/module/az.network/new-aznetworksecurityruleconfig).
 
 ```azurepowershell-interactive
 $rule2 = New-AzNetworkSecurityRuleConfig `
@@ -210,7 +210,7 @@ $rule2 = New-AzNetworkSecurityRuleConfig `
 
 #### <a name="create-a-network-security-group"></a>Hálózati biztonsági csoport létrehozása
 
-Hozzon létre egy hálózati biztonsági csoport [New-AzNetworkSecurityGroup](/powershell/module/az.network/new-aznetworksecuritygroup).
+Hozzon létre egy hálózati biztonsági csoportot a [New-AzNetworkSecurityGroup](/powershell/module/az.network/new-aznetworksecuritygroup).
 
 ```azurepowershell-interactive
 $nsg = New-AzNetworkSecurityGroup `
@@ -222,7 +222,7 @@ $nsg = New-AzNetworkSecurityGroup `
 
 ### <a name="create-nics"></a>Hálózati adapterek létrehozása
 
-A létrehozott virtuális hálózati adapter létrehozása [New-AzNetworkInterface](/powershell/module/az.network/new-aznetworkinterface). Az alábbi példa két virtuális hálózati adaptert hoz létre. (Egy virtuális NIC-t minden virtuális géphez, amelyet létre fog hozni az alkalmazáshoz a következő lépések során). Bármikor létrehozhat további virtuális NIC-ket és virtuális gépeket, és hozzáadhatja őket a terheléselosztóhoz:
+Hozzon létre a [New-AzNetworkInterface](/powershell/module/az.network/new-aznetworkinterface)létrehozott virtuális hálózati adaptereket. Az alábbi példa két virtuális hálózati adaptert hoz létre. (Egy virtuális NIC-t minden virtuális géphez, amelyet létre fog hozni az alkalmazáshoz a következő lépések során). Bármikor létrehozhat további virtuális NIC-ket és virtuális gépeket, és hozzáadhatja őket a terheléselosztóhoz:
 
 ```azurepowershell-interactive
 # Create NIC for VM1
@@ -250,7 +250,7 @@ $nicVM2 = New-AzNetworkInterface `
 
 Az alkalmazás magas rendelkezésre állásának növeléséhez helyezze a virtuális gépeket egy rendelkezésre állási csoportba.
 
-Hozzon létre egy rendelkezésre állási csoport [New-AzAvailabilitySet](/powershell/module/az.compute/new-azavailabilityset). Az alábbi példa egy *myAvailabilitySet* nevű rendelkezésre állási csoportot hoz létre:
+Hozzon létre egy rendelkezésre állási készletet [New-AzAvailabilitySet](/powershell/module/az.compute/new-azavailabilityset). Az alábbi példa egy *myAvailabilitySet* nevű rendelkezésre állási csoportot hoz létre:
 
 ```azurepowershell-interactive
 $availabilitySet = New-AzAvailabilitySet `
@@ -268,7 +268,7 @@ A [Get-Credential](https://msdn.microsoft.com/powershell/reference/5.1/microsoft
 $cred = Get-Credential
 ```
 
-Most már létrehozhatja a virtuális gépeket a [New-azvm parancsmag](/powershell/module/az.compute/new-azvm). Az alábbi példa létrehoz két virtuális gépet, és a szükséges virtuális hálózati összetevőket, ha azok nem léteznek. Ebben a példában a hálózati adaptereket (*VM1* és *VM2*) az előző lépésben létrehozott virtuális gépek automatikusan rendelt *VM1* és *VM2*mivel ugyanolyan nevű, és ugyanahhoz a virtuális hálózathoz rendelt (*myVnet*) és az alhálózati (*mySubnet*). Ezenkívül a hálózati adapterek társítva a terheléselosztó háttérkészlethez, mivel a virtuális gépek rendszer automatikusan hozzáadja a háttérkészlethez.
+Most már létrehozhatja a virtuális gépeket a [New-AzVM](/powershell/module/az.compute/new-azvm)használatával. A következő példa két virtuális gépet hoz létre, és a szükséges virtuális hálózati összetevőket, ha azok még nem léteznek. Ebben a példában az előző lépésben létrehozott hálózati adaptereket (*VM1* és *VM2*) a rendszer automatikusan hozzárendeli a virtuális gépek *VM1* és *VM2* , mivel azok azonos névvel rendelkeznek, és ugyanahhoz a virtuális hálózathoz (*myVnet*) vannak társítva, és alhálózat (*mySubnet*). Továbbá, mivel a hálózati adapterek a terheléselosztó háttér-készletéhez vannak társítva, a rendszer automatikusan hozzáadja a virtuális gépeket a háttér-készlethez.
 
 ```azurepowershell-interactive
 for ($i=1; $i -le 2; $i++)
@@ -323,7 +323,7 @@ Telepítése az IIS-t egyéni weblappal mindkét háttérszolgáltatás nyújtó
 6. Hozzon létre egy RDP-kapcsolatot a *myVM2* géphez a `mstsc /v:PublicIpAddress:4222` parancs futtatásával, és ismételje meg a 4. lépést a *VM2* gépnél.
 
 ## <a name="test-load-balancer"></a>Terheléselosztó tesztelése
-A terheléselosztó a nyilvános IP-cím beszerzése [Get-AzPublicIPAddress](/powershell/module/az.network/get-azpublicipaddress). A következő példa a korábban létrehozott *myPublicIP* IP-címét kéri le:
+Szerezze be a terheléselosztó nyilvános IP-címét a [Get-AzPublicIPAddress](/powershell/module/az.network/get-azpublicipaddress). A következő példa a korábban létrehozott *myPublicIP* IP-címét kéri le:
 
 ```azurepowershell-interactive
 Get-AzPublicIPAddress `
@@ -339,7 +339,7 @@ Annak megtekintéséhez, hogyan osztja el a Load Balancer az alkalmazást futtat
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha már nincs rá szükség, használhatja a [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) paranccsal eltávolítható az erőforráscsoport, a virtuális gép és az összes kapcsolódó erőforrás.
+Ha már nincs rá szükség, használhatja a [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) parancsot az erőforráscsoport, a virtuális gép és az összes kapcsolódó erőforrás eltávolításához.
 
 ```azurepowershell-interactive
 Remove-AzResourceGroup -Name myResourceGroupLB

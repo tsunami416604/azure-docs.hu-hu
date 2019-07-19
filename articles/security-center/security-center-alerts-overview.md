@@ -1,6 +1,6 @@
 ---
-title: Az Azure Security Center biztonsági riasztásainak |} A Microsoft Docs
-description: Ez a témakör ismerteti, melyek a biztonsági riasztások és az Azure Security Centerben elérhető különböző típusait.
+title: Biztonsági riasztások a Azure Security Centerban | Microsoft Docs
+description: Ez a témakör ismerteti a biztonsági riasztásokat és a Azure Security Centerban elérhető különböző típusokat.
 services: security-center
 documentationcenter: na
 author: monhaber
@@ -13,70 +13,70 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 7/02/2019
-ms.author: monhaber
-ms.openlocfilehash: 06f41bbfd97d5deb59e7bfd08615b2f28e256070
-ms.sourcegitcommit: 1e347ed89854dca2a6180106228bfafadc07c6e5
+ms.author: v-mohabe
+ms.openlocfilehash: 91dd397095718b3b43e41767af422801fd50b7f1
+ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67571672"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68295684"
 ---
-# <a name="security-alerts-in-azure-security-center"></a>Az Azure Security Center biztonsági riasztások
+# <a name="security-alerts-in-azure-security-center"></a>Biztonsági riasztások Azure Security Center
 
-Ez a cikk bemutatja az Azure Security Center (ASC) elérhető biztonsági riasztások különböző típusú. Nincsenek a számos különböző típusú riasztások különböző. ASC mind az Azure-ban üzembe helyezett erőforrásokhoz riasztásokat állít elő, és a telepített erőforrások a helyszíni és hibrid felhőkörnyezetekben. 
+Ez a cikk a Azure Security Centerban (ASC) elérhető biztonsági riasztások különböző típusait ismerteti. Számos különböző erőforrás-típussal kapcsolatos riasztás létezik. Az ASC riasztásokat hoz létre az Azure-ban üzembe helyezett összes erőforrásra, valamint a helyszíni és hibrid felhőalapú környezetekben üzembe helyezett erőforrásokra vonatkozóan. 
 
 ## <a name="what-are-security-alerts"></a>Mik azok a biztonsági riasztások?
 
-Riasztások az értesítéseket, amelyek a Security Center állít elő, amikor a rendszer a fenyegetéseket az erőforrások. Rangsorolja és a szükséges, hogy a probléma gyors vizsgálatára vonatkozó információk a riasztások listája. A Security Center is a támadás elhárításával hogyan vonatkozó javaslatokkal szolgál.
+A riasztások a Security Center által generált értesítések, amikor észlelik a fenyegetéseket az erőforrásokon. Rangsorolja és felsorolja a riasztásokat, valamint azokat az információkat, amelyek a probléma gyors kivizsgálásához szükségesek. A Security Center javaslatokat is tartalmaz a támadások megoldásához.
 
-## <a name="how-does-security-center-detect-threats"></a>A Security Center hogyan nem észleli a fenyegetéseket?
+## <a name="how-does-security-center-detect-threats"></a>Hogyan ismeri fel Security Center a fenyegetéseket?
 
-A valós fenyegetések észlelése és a vakriasztások számának csökkentése érdekében a Security Center gyűjti, elemzi és integrálja az Azure-erőforrások, a hálózati, és a csatlakoztatott partneri megoldások, például tűzfal és a végpontvédelmi megoldások naplóadatait. A Security Center elemzi ezt az információt, gyakran naplókezelője azonosítani a fenyegetéseket, több forrásból származó adatokat.
+A valós fenyegetések észlelése és a téves pozitív állapotok csökkentése érdekében Security Center gyűjti, elemzi és integrálja az Azure-erőforrások, a hálózat és a csatlakoztatott partneri megoldások, például a tűzfal és az Endpoint Protection-megoldások naplójának adatait. Security Center elemzi ezeket az információkat, és gyakran korrelál több forrásból származó információkat a fenyegetések azonosítása érdekében.
 
-ASC figyeli az erőforrásokat, hogy a üzembe helyezett Azure-ban vagy más helyszíni és hibrid környezetekben telepíthető. Észlelésével és a fenyegetésekkel szembeni további tudnivalókért lásd: [útmutató a Security Center észleli, és reagáljon a fenyegetések](security-center-detection-capabilities.md#asc-detects).
+Az ASC figyeli az Azure-ban üzembe helyezett vagy más helyszíni és hibrid felhőalapú környezetekben üzembe helyezett erőforrásokat. A fenyegetések észlelésével és reagálásával kapcsolatos további információkért lásd: [How Security Center észleli és reagál a fenyegetésekre](security-center-detection-capabilities.md#asc-detects).
 
-## <a name="security-alert-types"></a>Biztonsági riasztástípusok
+## <a name="security-alert-types"></a>Biztonsági riasztások típusai
 
-A következő témakörök végigvezeti Önt a különböző ASC riasztások erőforrástípusok szerint:
+Az alábbi témakörök a különböző ASC-riasztásokat ismertetik az erőforrástípusok szerint:
 
-* [IaaS virtuális gépek és kiszolgálók riasztások](security-center-alerts-iaas.md)
+* [IaaS virtuális gépek &-kiszolgálók riasztásai](security-center-alerts-iaas.md)
 * [Natív számítási riasztások](security-center-alerts-compute.md)
-* [Data services – riasztások](security-center-alerts-data-services.md)
+* [Adatszolgáltatási riasztások](security-center-alerts-data-services.md)
 
-Az alábbi témakörök ismertetik, hogyan használja a Security Center a a különféle telemetriai adatokból, hogy azt gyűjti össze az Azure-infrastruktúra integrálása annak érdekében, hogy további védelmi réteget üzembe helyezett erőforrásokra érvényesek az Azure-ban:
+A következő témakörök azt ismertetik, hogy Security Center milyen módon használja fel az Azure-infrastruktúra integrálásával gyűjtött különböző telemetria az Azure-ban üzembe helyezett erőforrások további védelmi rétegeinek alkalmazása érdekében:
 
-* [Szolgáltatási réteg riasztások](security-center-alerts-service-layer.md)
-* [Integráció az Azure biztonsági termékek](security-center-alerts-integration.md)
+* [Szolgáltatási réteggel kapcsolatos riasztások](security-center-alerts-service-layer.md)
+* [Integráció az Azure Security-termékekkel](security-center-alerts-integration.md)
 
-## <a name="what-are-alert-incidents"></a>Mik a riasztás incidensek?
+## <a name="what-are-alert-incidents"></a>Mik azok a riasztási incidensek?
 
-Biztonsági incidensek kapcsolódó riasztások helyett minden egyes riasztás külön-külön ajánlati gyűjteménye. A Security Center fusion használ, amelyek a biztonsági incidensek különböző riasztások és kis pontosságú jelek.
+A biztonsági incidensek a kapcsolódó riasztások gyűjteményei, az egyes riasztások egyenkénti listázása helyett. A Security Center a Fusion segítségével korrelálja a különböző riasztásokat és az alacsony megbízhatósági jeleket a biztonsági incidensekben.
 
-Használja az incidensek, a Security Center biztosít a támadássorozatot és az összes kapcsolódó riasztást egyetlen nézetben. Ez a nézet lehetővé teszi, hogy gyorsan megismerheti, milyen műveletek, a támadó időt vett igénybe, és az érintett erőforrások. További információkért lásd: [Felhőbeli intelligens riasztási korrelációs](security-center-alerts-cloud-smart.md).
+Az incidensek használatával a Security Center egyetlen nézetet biztosít a támadási kampányokról és az összes kapcsolódó riasztásról. Ez a nézet lehetővé teszi, hogy gyorsan megértse, milyen műveleteket végeztek a támadó, és milyen erőforrásokra volt hatással. További információ: [felhőalapú intelligens riasztás korrelációja](security-center-alerts-cloud-smart.md).
 
-## <a name="get-started-with-alerts"></a>Riasztások – első lépések
+## <a name="get-started-with-alerts"></a>Ismerkedés a riasztásokkal
 
-Többet szeretne tudni az erőforrásokat az ASC, és hogyan reagál a riasztásokat az ASC által bemutatott figyelni, a következő témakörökben talál.
+Tekintse meg az alábbi témaköröket, amelyekkel jobban megismerheti az ASC által figyelt erőforrásokat, valamint az ASC által bemutatott riasztásokra való reagálásra vonatkozó útmutatást.
 
-* Mely platformokat és funkciókat az ASC által védett, olvassa el [platformok és az Azure Security Center által támogatott funkciók](security-center-os-coverage.md).  
-* Mik azok a biztonsági incidensek és a hozzájuk ASC reakciója ismertetése: [az Azure Security Centerben a biztonsági incidensek kezelése](security-center-incident.md). 
-* Megtudhatja, hogyan kezelheti a riasztásokat kap, tekintse meg a [kezelése és válaszadás a biztonsági riasztásokra az Azure Security Center](security-center-managing-and-responding-alerts.md).
-* Információ arról, hogy miként ellenőrizze, hogy megfelelően van-e konfigurálva a Security Center és a egy teszt a riasztás kelteni, lásd: [riasztások érvényesítése az Azure Security Center](security-center-alert-validation.md).  
+* Az ASC által védett platformok és szolgáltatások megtekintéséhez lásd: [Azure Security Center által támogatott platformok és szolgáltatások](security-center-os-coverage.md).  
+* A biztonsági incidensek és az ASC által reagált információk megismeréséhez tekintse meg a [biztonsági incidensek kezelése a Azure Security Center-ben](security-center-incident.md)című témakört. 
+* A kapott riasztások kezelésével kapcsolatos további információkért lásd: a [biztonsági riasztások kezelése és válaszadás a Azure Security Center](security-center-managing-and-responding-alerts.md).
+* További információ arról, hogy miként ellenőrizhető, hogy a Security Center megfelelően van-e konfigurálva, és hogyan ösztönözheti a riasztásokat a [riasztások érvényesítése Azure Security Center](security-center-alert-validation.md).  
 
 
-## <a name="upgrade-to-standard-for-advanced-detections"></a>A speciális észlelések frissítsen a standard előfizetésre
+## <a name="upgrade-to-standard-for-advanced-detections"></a>A standard verzióra való frissítés speciális észlelések esetén
 
 A speciális észlelések beállításához frissítsen az Azure Security Center Standard verzióra. 
 
-1. A Security Center menüből válassza ki a **biztonsági házirend**.
-2. Az előfizetések Standard csomagra váltani szeretne, kattintson a **beállításainak szerkesztése**. 
-3. A beállítások lapon válassza ki a **Tarifacsomag**. 
-   Ingyenes próbaverzió egy hónapig érhető el. További tudnivalókért tekintse meg a [díjszabását ismertető lapon](https://azure.microsoft.com/pricing/details/security-center/). 
+1. A Security Center menüben válassza a **biztonsági házirend**elemet.
+2. A standard szintű csomagra áthelyezni kívánt előfizetések esetében kattintson a **beállítások szerkesztése**elemre. 
+3. A beállítások lapon válassza ki az **árképzési szintet**. 
+   Egy hónapig ingyenes próbaverzió érhető el. További információkért tekintse meg a [díjszabási oldalt](https://azure.microsoft.com/pricing/details/security-center/). 
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben a cikkben megtanulta, melyek a biztonsági riasztások és a Security Centerben elérhető riasztások különböző típusait. További információkért tekintse át a következők témaköröket:
+Ebben a cikkben megtanulta, milyen biztonsági riasztások és milyen típusú riasztások érhetők el a Security Centerban. További információkért tekintse át a következők témaköröket:
 
 * [Útmutató az Azure Security Center tervezéséhez és működtetéséhez](https://docs.microsoft.com/azure/security-center/security-center-planning-and-operations-guide)
-* [Az Azure Security Center – gyakori kérdések](https://docs.microsoft.com/azure/security-center/security-center-faq): Gyakori kérdések a szolgáltatás használatával kapcsolatban.
+* [Azure Security Center gyakori kérdések](https://docs.microsoft.com/azure/security-center/security-center-faq): Gyakori kérdések a szolgáltatás használatával kapcsolatban.
 

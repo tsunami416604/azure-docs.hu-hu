@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: 02bbde9a2d744c79cc8a7e95b0732b775c4dc695
-ms.sourcegitcommit: 0ebc62257be0ab52f524235f8d8ef3353fdaf89e
+ms.openlocfilehash: 1c12007e04ff8cd08ddb7afdf9a3c2add9638de3
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "66241623"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68277434"
 ---
 # <a name="monitor-performance-and-storage-metrics-in-azure-cosmos-db"></a>Az Azure Cosmos DB teljesítmény- és tárolási metrikák figyelése
 
@@ -27,7 +27,7 @@ Metrikák tekinthető meg a fiók lapon, az új mérőszámok lap vagy az Azure 
 
    Az Azure portal megjeleníti a gyűjtemény metrikák elérhető csomag. Vegye figyelembe, hogy átviteli sebesség, a storage, a rendelkezésre állási, a késés és a konzisztencia metrikákat külön lapon. Kellhet további részleteket a metrikák, dupla nyilat tetején kattintson az egyes metrika panel.
 
-   ![A figyelés fókuszban a metrikák suite megjelenítő képernyőkép](./media/monitor-accounts/metrics-suite.png)
+   ![A metrikák csomagját megjelenítő figyelési lencse képernyőképe](./media/monitor-accounts/metrics-suite.png)
 
 ## <a name="view-performance-metrics-by-using-azure-monitoring"></a>A teljesítménymetrikák megjelenítése az Azure Monitoring segítségével
 1. Az a [az Azure portal](https://portal.azure.com/), kattintson a **figyelő** a bal oldali sávon.
@@ -43,14 +43,18 @@ Metrikák tekinthető meg a fiók lapon, az új mérőszámok lap vagy az Azure 
    * Az aktuális napra kérelmek teljes száma.
    * Felhasznált tárterület.
    
-   ![A figyelés fókuszban a kérelmek és a tárolási felhasználásának megjelenítő képernyőkép](./media/monitor-accounts/documentdb-total-requests-and-usage.png)
+   ![Képernyőkép a figyelési lencséről, amely a kérelmeket és a tárterület használatát mutatja be](./media/monitor-accounts/documentdb-total-requests-and-usage.png)
 3. Kattintson a dupla nyilat a jobb felső részén található a **kérelmek** csempe megnyílik egy részletes **metrika** lap.
 4. A **metrika** az oldal megjeleníti az összes kérelem részleteit. 
 
 ## <a name="set-up-alerts-in-the-portal"></a>A portál beállítása
+
+> [!NOTE]
+> A Azure Monitor klasszikus riasztása 2019. augusztus 31-ig megszűnik. A Azure Portal áttelepítési [eszközt](../azure-monitor/platform/alerts-using-migration-tool.md) biztosít a klasszikus riasztási szabályok áttelepítéséhez. Azonban a Azure Cosmos DB metrikákkal kapcsolatos klasszikus riasztások nem telepíthetők át, néhány kivételt nem lehet áttelepíteni a [klasszikus](../azure-monitor/platform/alerts-understand-migration.md#cosmos-db-metrics) riasztások listáját, amelyek nem telepíthetők át. 
+
 1. Az a [az Azure portal](https://portal.azure.com/), kattintson a **minden szolgáltatás**, kattintson a **Azure Cosmos DB**, majd kattintson a nevére, amelyhez szeretné beállítani a teljesítmény az Azure Cosmos DB-fiók metrikákhoz kapcsolódó riasztások.
 2. Az erőforrás menüben kattintson **riasztási szabályok** a riasztási szabályok lap megnyitásához.  
-   ![Képernyőfelvétel a riasztási szabályok rész kiválasztva](./media/monitor-accounts/madocdb10.5.png)
+   ![Képernyőkép a riasztási szabályok kijelölt részéről](./media/monitor-accounts/madocdb10.5.png)
 3. Az a **riasztási szabályok** kattintson **riasztás hozzáadása**.  
    ![Képernyőfelvétel a riasztási szabályok lapján, a riasztás hozzáadása gomb kiemelésével](./media/monitor-accounts/madocdb11.png)
 4. Az a **riasztási szabály hozzáadása** csoportjában adja meg:
@@ -61,7 +65,7 @@ Metrikák tekinthető meg a fiók lapon, az új mérőszámok lap vagy az Azure 
    * A feltétel küszöbértékét és időszak, amelyek meghatározzák, ha a riasztás aktiválódik. Ha például egy kiszolgáló hibák száma az elmúlt 15 percben 5-nél nagyobb.
    * Hogy a szolgáltatás-rendszergazda és társrendszergazdák rendszer e-mailben a riasztás aktiválódásakor.
    * Riasztási értesítések további e-mail-címét.  
-     ![Képernyőfelvétel a hozzáadása egy riasztási szabályt lap](./media/monitor-accounts/madocdb12.png)
+     ![A riasztási szabály hozzáadása lap képernyőképe](./media/monitor-accounts/madocdb12.png)
 
 ## <a name="monitor-azure-cosmos-db-programmatically"></a>Azure Cosmos DB programozott figyelése
 A fiók metrikáit, például a fiók tárolási használat és a teljes kérelmek, a portálon elérhető nem érhetők el az SQL API-kon keresztül. Használati adatok, a gyűjtemény szintjén azonban lekérheti az SQL API-k használatával. Adatgyűjtési szint adatok lekéréséhez tegye a következőket:

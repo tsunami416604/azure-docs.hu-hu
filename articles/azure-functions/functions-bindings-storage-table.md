@@ -1,6 +1,6 @@
 ---
-title: Az Azure storage táblakötések az Azure Functions szolgáltatáshoz
-description: Megtudhatja, hogyan használhatja az Azure Table storage-kötések az Azure Functions szolgáltatásban.
+title: Azure Functions Azure Table Storage-kötések
+description: Ismerje meg, hogyan használhatók az Azure Table Storage-kötések Azure Functionsban.
 services: functions
 documentationcenter: na
 author: craigshoemaker
@@ -11,22 +11,22 @@ ms.devlang: multiple
 ms.topic: reference
 ms.date: 09/03/2018
 ms.author: cshoe
-ms.openlocfilehash: b815ce95da24b20ff18ea03d637ad85bfe72cb00
-ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
+ms.openlocfilehash: 5c3049b5f9f7607b9b75f3bee48b6ccd44601b15
+ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67654238"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68254762"
 ---
-# <a name="azure-table-storage-bindings-for-azure-functions"></a>Az Azure storage táblakötések az Azure Functions szolgáltatáshoz
+# <a name="azure-table-storage-bindings-for-azure-functions"></a>Azure Functions Azure Table Storage-kötések
 
-Ez a cikk bemutatja, hogyan használható az Azure Table storage-kötések az Azure Functions szolgáltatásban. Az Azure Functions támogatja a bemeneti és kimeneti kötések az Azure Table storage.
+Ez a cikk azt ismerteti, hogyan használhatók az Azure Table Storage-kötések Azure Functionsban. Azure Functions támogatja az Azure Table Storage bemeneti és kimeneti kötéseit.
 
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
 ## <a name="packages---functions-1x"></a>Csomagok – 1.x függvények
 
-A Table storage kötéseket szerepelnek a [Microsoft.Azure.WebJobs](https://www.nuget.org/packages/Microsoft.Azure.WebJobs) NuGet-csomag verziója 2.x. A csomag forráskódja a [azure-webjobs-sdk](https://github.com/Azure/azure-webjobs-sdk/tree/v2.x/src/Microsoft.Azure.WebJobs.Storage/Table) GitHub-adattárban.
+A Table Storage-kötések a [Microsoft. Azure. webjobs](https://www.nuget.org/packages/Microsoft.Azure.WebJobs) NuGet csomagban, 2. x verzióban vannak megadva. A csomag forráskódja a [azure-webjobs-sdk](https://github.com/Azure/azure-webjobs-sdk/tree/v2.x/src/Microsoft.Azure.WebJobs.Storage/Table) GitHub-adattárban.
 
 [!INCLUDE [functions-package-auto](../../includes/functions-package-auto.md)]
 
@@ -34,33 +34,33 @@ A Table storage kötéseket szerepelnek a [Microsoft.Azure.WebJobs](https://www.
 
 ## <a name="packages---functions-2x"></a>Csomagok – 2.x függvények
 
-A Table storage kötéseket szerepelnek a [Microsoft.Azure.WebJobs.Extensions.Storage](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.Storage) NuGet-csomag verziója 3.x. A csomag forráskódja a [azure-webjobs-sdk](https://github.com/Azure/azure-webjobs-sdk/tree/dev/src/Microsoft.Azure.WebJobs.Extensions.Storage/Tables) GitHub-adattárban.
+A Table Storage-kötések a [Microsoft. Azure. webjobs. Extensions. Storage](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.Storage) NuGet csomag 3. x verziójában érhetők el. A csomag forráskódja a [azure-webjobs-sdk](https://github.com/Azure/azure-webjobs-sdk/tree/dev/src/Microsoft.Azure.WebJobs.Extensions.Storage/Tables) GitHub-adattárban.
 
 [!INCLUDE [functions-package-v2](../../includes/functions-package-v2.md)]
 
 ## <a name="input"></a>Input (Bemenet)
 
-Az Azure Table storage bemeneti kötés használatával olvassa el az Azure Storage-fiók egyik táblájában.
+Egy Azure Storage-fiókban lévő tábla beolvasásához használja az Azure Table Storage bemeneti kötését.
 
-## <a name="input---example"></a>Adjon meg – példa
+## <a name="input---example"></a>Bemenet – példa
 
 Tekintse meg az adott nyelvű példa:
 
-* [C# egy entitás olvasása](#input---c-example---one-entity)
-* [Az IQueryable kötési C#](#input---c-example---iqueryable)
-* [C# CloudTable kötéssel](#input---c-example---cloudtable)
-* [C#-szkript egy entitás olvasása](#input---c-script-example---one-entity)
-* [C# szkriptet kötéskérelmek IQueryable](#input---c-script-example---iqueryable)
-* [C# szkriptet kötéskérelmek CloudTable](#input---c-script-example---cloudtable)
+* [C#egy entitás olvasása](#input---c-example---one-entity)
+* [C#kötés a IQueryable](#input---c-example---iqueryable)
+* [C#kötés a CloudTable](#input---c-example---cloudtable)
+* [C#parancsfájl olvasása egy entitásból](#input---c-script-example---one-entity)
+* [C#parancsfájl kötése a IQueryable](#input---c-script-example---iqueryable)
+* [C#parancsfájl kötése a CloudTable](#input---c-script-example---cloudtable)
 * [F#](#input---f-example)
 * [JavaScript](#input---javascript-example)
 * [Java](#input---java-example)
 
-### <a name="input---c-example---one-entity"></a>Adjon meg egy entitás – C#-példa –
+### <a name="input---c-example---one-entity"></a>Input – C# példa – egy entitás
 
-A következő példa bemutatja egy [C#-függvény](functions-dotnet-class-library.md) , amely egy tábla egyetlen sor beolvasása. 
+Az alábbi példa egy [ C# ](functions-dotnet-class-library.md) olyan függvényt mutat be, amely egy egyoszlopos sort olvas. 
 
-A sorok "{queueTrigger}" kulcs értéke azt jelzi, hogy a sorkulcs származik-e a várólista üzenet karakterlánc.
+A (z) "{queueTrigger}" sorcsoport-érték azt jelzi, hogy a sor kulcsa az üzenetsor-üzenet sztringből származik.
 
 ```csharp
 public class TableStorage
@@ -83,9 +83,9 @@ public class TableStorage
 }
 ```
 
-### <a name="input---c-example---iqueryable"></a>Bemenet - C#-példa – IQueryable
+### <a name="input---c-example---iqueryable"></a>Bemeneti – C# példa – IQueryable
 
-A következő példa bemutatja egy [C#-függvény](functions-dotnet-class-library.md) , amely több tábla sorait olvassa. Vegye figyelembe, hogy a `MyPoco` származik- `TableEntity`.
+Az alábbi példa egy [ C# függvényt](functions-dotnet-class-library.md) mutat be, amely több táblázatos sort olvas be. Vegye figyelembe, `MyPoco` hogy az osztályból `TableEntity`származik.
 
 ```csharp
 public class TableStorage
@@ -109,9 +109,9 @@ public class TableStorage
 }
 ```
 
-### <a name="input---c-example---cloudtable"></a>Bemenet - C#-példa – CloudTable
+### <a name="input---c-example---cloudtable"></a>Bemeneti – C# példa – CloudTable
 
-`IQueryable` nem támogatott a [funkciók v2 modul](functions-versions.md). A másik lehetőség használatához egy `CloudTable` metódus paraméteren a tábla olvasása az Azure Storage SDK használatával. Íme egy példa, amely egy Azure Functions naplótábláját 2.x függvény:
+`IQueryable`nem támogatott a [functions v2 futtatókörnyezetben](functions-versions.md). Egy másik megoldás, ha `CloudTable` metódus-paramétert használ a tábla olvasásához az Azure Storage SDK használatával. Íme egy példa egy 2. x függvényre, amely lekérdez egy Azure Functions naplózási táblázatot:
 
 ```csharp
 using Microsoft.Azure.WebJobs;
@@ -157,15 +157,15 @@ namespace FunctionAppCloudTable2
 }
 ```
 
-CloudTable használatával kapcsolatos további információkért lásd: [Azure Table storage használatának első lépései](../cosmos-db/table-storage-how-to-use-dotnet.md).
+További információ a CloudTable használatáról: Ismerkedés [Az Azure Table Storage](../cosmos-db/table-storage-how-to-use-dotnet.md)szolgáltatással.
 
-Ha megpróbál kötést létrehozni `CloudTable` és a egy hibaüzenet, győződjön meg arról, hogy rendelkezik-e egy hivatkozást, [a megfelelő Storage SDK-verzió](#azure-storage-sdk-version-in-functions-1x).
+Ha egy hibaüzenetet próbál meg `CloudTable` kötni, és hibaüzenetet kap, ellenőrizze, hogy rendelkezik-e [a megfelelő Storage SDK](#azure-storage-sdk-version-in-functions-1x)-verzióra mutató hivatkozással.
 
-### <a name="input---c-script-example---one-entity"></a>Bemenet - C#-példaszkript – egyetlen entitást
+### <a name="input---c-script-example---one-entity"></a>Input- C# script példa – egy entitás
 
-Az alábbi példa bemutatja a bemeneti tábla kötés egy *function.json* fájl és [C#-szkript](functions-reference-csharp.md) a kötést használó kód. A funkció egy üzenetsor eseményindító egyetlen tábla sorokat olvashat el. 
+Az alábbi példa egy Table input-kötést mutat be egy *function. JSON* fájlban és [ C# ](functions-reference-csharp.md) a kötést használó parancsfájl-kódban. A függvény üzenetsor-triggert használ egy egytáblázatos sor olvasására. 
 
-A *function.json* fájl adja meg azt a `partitionKey` és a egy `rowKey`. A `rowKey` "{queueTrigger}" érték azt jelzi, hogy a sorkulcs származik-e a várólista üzenet karakterlánc.
+A *function. JSON* fájl a `partitionKey` és a `rowKey`paramétert adja meg. A `rowKey` (z) {queueTrigger} érték azt jelzi, hogy a sor kulcsa az üzenetsor-üzenet sztringből származik.
 
 ```json
 {
@@ -210,9 +210,9 @@ public class Person
 }
 ```
 
-### <a name="input---c-script-example---iqueryable"></a>Bemenet - C#-példaszkript – IQueryable
+### <a name="input---c-script-example---iqueryable"></a>Input- C# script példa – IQueryable
 
-Az alábbi példa bemutatja a bemeneti tábla kötés egy *function.json* fájl és [C#-szkript](functions-reference-csharp.md) a kötést használó kód. A függvény egy partíciókulcsot, egy üzenetsor-üzenetet a megadott tartozó entitásokat olvas be.
+Az alábbi példa egy Table input-kötést mutat be egy *function. JSON* fájlban és [ C# ](functions-reference-csharp.md) a kötést használó parancsfájl-kódban. A függvény beolvassa az entitásokat egy üzenetsor-üzenetben megadott partíciós kulcshoz.
 
 Íme a *function.json* fájlt:
 
@@ -240,7 +240,7 @@ Az alábbi példa bemutatja a bemeneti tábla kötés egy *function.json* fájl 
 
 A [konfigurációs](#input---configuration) szakasz mutatja be ezeket a tulajdonságokat.
 
-A C#-szkriptkódot, hogy az entitás típusa származtathatók ad hozzá egy hivatkozást az Azure Storage SDK `TableEntity`:
+A C# szkript kódja az Azure Storage SDK-ra mutató hivatkozást tartalmaz, hogy az entitás típusa a következőből származtatható `TableEntity`:
 
 ```csharp
 #r "Microsoft.WindowsAzure.Storage"
@@ -262,9 +262,9 @@ public class Person : TableEntity
 }
 ```
 
-### <a name="input---c-script-example---cloudtable"></a>Bemenet - C#-példaszkript – CloudTable
+### <a name="input---c-script-example---cloudtable"></a>Input- C# script példa – CloudTable
 
-`IQueryable` nem támogatott a [funkciók v2 modul](functions-versions.md). A másik lehetőség használatához egy `CloudTable` metódus paraméteren a tábla olvasása az Azure Storage SDK használatával. Íme egy példa, amely egy Azure Functions naplótábláját 2.x függvény:
+`IQueryable`nem támogatott a [functions v2 futtatókörnyezetben](functions-versions.md). Egy másik megoldás, ha `CloudTable` metódus-paramétert használ a tábla olvasásához az Azure Storage SDK használatával. Íme egy példa egy 2. x függvényre, amely lekérdez egy Azure Functions naplózási táblázatot:
 
 ```json
 {
@@ -321,15 +321,15 @@ public class LogEntity : TableEntity
 }
 ```
 
-CloudTable használatával kapcsolatos további információkért lásd: [Azure Table storage használatának első lépései](../cosmos-db/table-storage-how-to-use-dotnet.md).
+További információ a CloudTable használatáról: Ismerkedés [Az Azure Table Storage](../cosmos-db/table-storage-how-to-use-dotnet.md)szolgáltatással.
 
-Ha megpróbál kötést létrehozni `CloudTable` és a egy hibaüzenet, győződjön meg arról, hogy rendelkezik-e egy hivatkozást, [a megfelelő Storage SDK-verzió](#azure-storage-sdk-version-in-functions-1x).
+Ha egy hibaüzenetet próbál meg `CloudTable` kötni, és hibaüzenetet kap, ellenőrizze, hogy rendelkezik-e [a megfelelő Storage SDK](#azure-storage-sdk-version-in-functions-1x)-verzióra mutató hivatkozással.
 
-### <a name="input---f-example"></a>Bemenet - F# példa
+### <a name="input---f-example"></a>Bemenet – F# példa
 
-Az alábbi példa bemutatja a bemeneti tábla kötés egy *function.json* fájl és [ F# parancsfájl](functions-reference-fsharp.md) a kötést használó kód. A funkció egy üzenetsor eseményindító egyetlen tábla sorokat olvashat el. 
+Az alábbi példa egy Table input-kötést mutat be egy *function. JSON* fájlban és [ F# ](functions-reference-fsharp.md) a kötést használó parancsfájl-kódban. A függvény üzenetsor-triggert használ egy egytáblázatos sor olvasására. 
 
-A *function.json* fájl adja meg azt a `partitionKey` és a egy `rowKey`. A `rowKey` "{queueTrigger}" érték azt jelzi, hogy a sorkulcs származik-e a várólista üzenet karakterlánc.
+A *function. JSON* fájl a `partitionKey` és a `rowKey`paramétert adja meg. A `rowKey` (z) {queueTrigger} érték azt jelzi, hogy a sor kulcsa az üzenetsor-üzenet sztringből származik.
 
 ```json
 {
@@ -372,11 +372,11 @@ let Run(myQueueItem: string, personEntity: Person) =
     log.LogInformation(sprintf "Name in Person entity: %s" personEntity.Name)
 ```
 
-### <a name="input---javascript-example"></a>Bemenet - JavaScript-példa
+### <a name="input---javascript-example"></a>Bemenet – JavaScript-példa
 
-Az alábbi példa bemutatja a bemeneti tábla kötés egy *function.json* fájl és [JavaScript-kódot](functions-reference-node.md) , amely a kötés használja. A funkció egy üzenetsor eseményindító egyetlen tábla sorokat olvashat el. 
+Az alábbi példa egy Table input-kötést mutat be egy *function. JSON* fájlban és [JavaScript-kódban](functions-reference-node.md) , amely a kötést használja. A függvény üzenetsor-triggert használ egy egytáblázatos sor olvasására. 
 
-A *function.json* fájl adja meg azt a `partitionKey` és a egy `rowKey`. A `rowKey` "{queueTrigger}" érték azt jelzi, hogy a sorkulcs származik-e a várólista üzenet karakterlánc.
+A *function. JSON* fájl a `partitionKey` és a `rowKey`paramétert adja meg. A `rowKey` (z) {queueTrigger} érték azt jelzi, hogy a sor kulcsa az üzenetsor-üzenet sztringből származik.
 
 ```json
 {
@@ -414,9 +414,9 @@ module.exports = function (context, myQueueItem) {
 };
 ```
 
-### <a name="input---java-example"></a>Bemenet - Java-példában
+### <a name="input---java-example"></a>Bemenet – Java-példa
 
-Az alábbi példa bemutatja egy HTTP által aktivált függvényt, amely elemek teljes számát adja meg a Table storage-ban megadott partíción.
+Az alábbi példa egy HTTP által aktivált függvényt mutat be, amely egy adott partíció elemeinek teljes számát adja vissza a Table Storage-ban.
 
 ```java
 @FunctionName("getallcount")
@@ -435,11 +435,11 @@ public int run(
 
 ## <a name="input---attributes"></a>Bemenet - attribútumok
  
-A [C#-osztálykódtárakat](functions-dotnet-class-library.md), használja a következő attribútumokat a bemeneti tábla kötésének konfigurálása:
+Az [ C# osztályok könyvtáraiban](functions-dotnet-class-library.md)használja a következő attribútumokat egy tábla bemeneti kötésének konfigurálásához:
 
 * [TableAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.Extensions.Storage/Tables/TableAttribute.cs)
 
-  Az attribútum konstruktorának paramétereként meg a táblázat neve, a partíciókulcs és a sorkulcs. Használat egy out paraméterben, illetve a függvény visszatérési értéke a következő példában látható módon:
+  Az attribútum konstruktora a tábla nevét, a partíció kulcsát és a sor kulcsát veszi figyelembe. Az alábbi példában látható módon vagy a függvény visszatérési értékén is használható.
 
   ```csharp
   [FunctionName("TableInput")]
@@ -452,7 +452,7 @@ A [C#-osztálykódtárakat](functions-dotnet-class-library.md), használja a kö
   }
   ```
 
-  Beállíthatja a `Connection` tulajdonságot adja meg a storage-fiókot szeretne használni, az alábbi példában látható módon:
+  A `Connection` tulajdonság beállításával megadhatja a használni kívánt Storage-fiókot, ahogy az az alábbi példában is látható:
 
   ```csharp
   [FunctionName("TableInput")]
@@ -465,11 +465,11 @@ A [C#-osztálykódtárakat](functions-dotnet-class-library.md), használja a kö
   }
   ```
 
-  Egy teljes példa: a bemenet - C# példa.
+  A teljes példa: input- C# example.
 
 * [StorageAccountAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/StorageAccountAttribute.cs)
 
-  A használandó tárfiókot adjon meg egy másik megoldást kínál. A konstruktorban vesz igénybe egy tárolási kapcsolati karakterlánccal tartalmazó alkalmazásbeállítás neve. Az attribútum a paramétert, a metódus vagy az osztály szintjén alkalmazhatók. Az alábbi példa bemutatja az osztály és metódust:
+  Egy másik módszert biztosít a használni kívánt Storage-fiók megadására. A konstruktor egy olyan Alkalmazásbeállítás nevét veszi fel, amely egy tárolási kapcsolatot tartalmazó karakterláncot tartalmaz. Az attribútum a paramétert, a metódus vagy az osztály szintjén alkalmazhatók. Az alábbi példa bemutatja az osztály és metódust:
 
   ```csharp
   [StorageAccount("ClassLevelStorageAppSetting")]
@@ -483,17 +483,17 @@ A [C#-osztálykódtárakat](functions-dotnet-class-library.md), használja a kö
   }
   ```
 
-A használandó tárfiókot határozza meg a következő sorrendben:
+A használandó Storage-fiók a következő sorrendben van meghatározva:
 
 * A `Table` attribútum `Connection` tulajdonság.
 * A `StorageAccount` a paramétert, amelyek azonos, alkalmazott attribútum a `Table` attribútum.
 * A `StorageAccount` attribútum a függvény a alkalmazni.
 * A `StorageAccount` attribútum az osztály a alkalmazni.
-* Az alapértelmezett tárfiókot a függvényalkalmazás ("AzureWebJobsStorage" alkalmazás beállítás).
+* A Function alkalmazás alapértelmezett Storage-fiókja ("AzureWebJobsStorage").
 
-## <a name="input---java-annotations"></a>Bemenet - Java-jegyzetek
+## <a name="input---java-annotations"></a>Bevitel – Java-jegyzetek
 
-Az a [Java-függvények futásidejű kódtár](/java/api/overview/azure/functions/runtime), használja a `@TableInput` jegyzet paraméterekkel, amelynek az értéke lenne származnak, Table storage-ból.  A jegyzet használható natív Java-típusokat, POJOs vagy nullázható értékek használata nem kötelező<T>. 
+A [Java functions runtime library](/java/api/overview/azure/functions/runtime)-ben használja `@TableInput` a jegyzeteket azon paramétereknél, amelyek értéke a Table Storage-ból származik.  Ezt a jegyzetet natív Java-típusokkal, szerializálói vagy NULL értékű értékekkel lehet használni opcionális\<T > használatával. 
 
 ## <a name="input---configuration"></a>Bemenet - konfiguráció
 
@@ -501,43 +501,43 @@ A következő táblázat ismerteti a megadott kötés konfigurációs tulajdons�
 
 |Function.JSON tulajdonság | Attribútum tulajdonsága |Leírás|
 |---------|---------|----------------------|
-|**type** | n/a | Meg kell `table`. Ez a tulajdonság beállítása automatikusan történik, a kötés létrehozásakor az Azure Portalon.|
-|**direction** | n/a | Meg kell `in`. Ez a tulajdonság beállítása automatikusan történik, a kötés létrehozásakor az Azure Portalon. |
-|**name** | n/a | A tábla vagy a függvénykódot az entitást képviselő változó neve. | 
-|**Táblanév** | **TableName** | A tábla neve.| 
-|**partitionKey** | **PartitionKey** |Választható. A partíciókulcs a tábla entitás olvasni. Tekintse meg a [használati](#input---usage) hogyan használja ezt a tulajdonságot a következő szakaszban.| 
-|**Rowkey tulajdonságok esetén** |**Rowkey tulajdonságok esetén** | Választható. A sorkulcs beolvasni a tábla entitás. Tekintse meg a [használati](#input---usage) hogyan használja ezt a tulajdonságot a következő szakaszban.| 
-|**take** |**hajtsa végre a megfelelő** | Választható. Olvassa el a JavaScript entitások maximális számát. Tekintse meg a [használati](#input---usage) hogyan használja ezt a tulajdonságot a következő szakaszban.| 
-|**filter** |**Szűrő** | Választható. JavaScript a bemeneti tábla OData szűrési kifejezés. Tekintse meg a [használati](#input---usage) hogyan használja ezt a tulajdonságot a következő szakaszban.| 
-|**kapcsolat** |**kapcsolat** | A tárolási kapcsolati karakterlánc használata ehhez a kötéshez tartalmazó alkalmazásbeállítás neve. Azon alkalmazásbeállítás neve "AzureWebJobs" kezdődik, ha csak a maradékot Itt a neve is megadhat. Például, ha a beállított `connection` a "MyStorage", a Functions futtatókörnyezete úgy tűnik, a beállítás, amely alkalmazás neve "AzureWebJobsMyStorage." Ha meghagyja a `connection` üres, a Functions futtatókörnyezete használja az alapértelmezett tárolási kapcsolati karakterlánc nevű Alkalmazásbeállítás `AzureWebJobsStorage`.|
+|**type** | n/a | Meg kell `table`. A rendszer automatikusan beállítja ezt a tulajdonságot, amikor létrehozza a kötést a Azure Portalban.|
+|**direction** | n/a | Meg kell `in`. A rendszer automatikusan beállítja ezt a tulajdonságot, amikor létrehozza a kötést a Azure Portalban. |
+|**name** | n/a | Annak a változónak a neve, amely a függvény kódjában szereplő táblát vagy entitást jelképezi. | 
+|**Táblanév** | **Táblanév** | A tábla neve.| 
+|**partitionKey** | **PartitionKey** |Választható. Az olvasni kívánt tábla entitás partíciós kulcsa. Tekintse meg a [használat](#input---usage) című szakaszt, amely útmutatást nyújt ennek a tulajdonságnak a használatáról.| 
+|**rowKey** |**RowKey** | Választható. Az olvasni kívánt tábla entitáshoz tartozó sor kulcsa. Tekintse meg a [használat](#input---usage) című szakaszt, amely útmutatást nyújt ennek a tulajdonságnak a használatáról.| 
+|**take** |**Eltarthat** | Választható. A JavaScriptben olvasható entitások maximális száma. Tekintse meg a [használat](#input---usage) című szakaszt, amely útmutatást nyújt ennek a tulajdonságnak a használatáról.| 
+|**filter** |**Szűrő** | Választható. OData-szűrési kifejezés a JavaScriptben a tábla beviteléhez. Tekintse meg a [használat](#input---usage) című szakaszt, amely útmutatást nyújt ennek a tulajdonságnak a használatáról.| 
+|**kapcsolat** |**kapcsolat** | Egy olyan Alkalmazásbeállítás neve, amely a kötéshez használandó tárolási kapcsolati karakterláncot tartalmazza. Ha az Alkalmazásbeállítások neve "AzureWebJobs" előtaggal kezdődik, akkor itt csak a nevet adja meg. Ha például a "MyStorage" `connection` értékre van állítva, a functions futtatókörnyezet egy "AzureWebJobsMyStorage" nevű alkalmazás-beállítást keres. Ha üresen `connection` hagyja, a functions futtatókörnyezet az alapértelmezett tárolási kapcsolatok karakterláncát használja a nevű `AzureWebJobsStorage`alkalmazás-beállításban.|
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
 ## <a name="input---usage"></a>Bemenet - használat
 
-A Table storage bemeneti kötésnek a következő eseteket támogatja:
+A Table Storage bemeneti kötése a következő forgatókönyveket támogatja:
 
-* **C# vagy a C#-szkript egyetlen sor olvasása**
+* **Egy sor C# beolvasása C# a vagy parancsfájlban**
 
-  Állítsa be `partitionKey` és `rowKey`. Táblák adatainak eléréséhez egy metódus-paramétert használatával `T <paramName>`. A C#-szkript `paramName` az értéket a megadott a `name` tulajdonsága *function.json*. `T` általában olyan típusú, amely megvalósítja az `ITableEntity` vagy származó `TableEntity`. A `filter` és `take` tulajdonságai nem szerepel ebben a forgatókönyvben. 
+  Beállítás `partitionKey` és `rowKey`. A tábla adataihoz a metódus paraméterének `T <paramName>`használatával férhet hozzá. A C# szkriptben `paramName` a *függvény. JSON* `name` tulajdonságában megadott érték. `T`általában olyan típus, amely a- `ITableEntity` ból `TableEntity`implementál vagy származtat. A `filter` és`take` a tulajdonságok nem használatosak ebben a forgatókönyvben. 
 
-* **C# vagy a C#-szkript egy vagy több sor olvasása**
+* **Egy vagy több sor olvasása C# a C# vagy parancsfájlban**
 
-  Táblák adatainak eléréséhez egy metódus-paramétert használatával `IQueryable<T> <paramName>`. A C#-szkript `paramName` az értéket a megadott a `name` tulajdonsága *function.json*. `T` megvalósító típusúnak kell lennie `ITableEntity` vagy származó `TableEntity`. Használhat `IQueryable` módszereket a megadott szűréseket szükséges. A `partitionKey`, `rowKey`, `filter`, és `take` tulajdonságai nem szerepel ebben a forgatókönyvben.  
+  A tábla adataihoz a metódus paraméterének `IQueryable<T> <paramName>`használatával férhet hozzá. A C# szkriptben `paramName` a *függvény. JSON* `name` tulajdonságában megadott érték. `T`olyan típusnak kell lennie, `ITableEntity` amely a-ből `TableEntity`implementál vagy származtat. A módszerek használatával `IQueryable` bármilyen szűrést végezhet. A `partitionKey` ,`rowKey`, és`take` tulajdonságokat nem használja ebben a forgatókönyvben. `filter`  
 
   > [!NOTE]
-  > `IQueryable` nem támogatott a [funkciók v2 modul](functions-versions.md). Alternatív [CloudTable paramName metódus-paramétert használja](https://stackoverflow.com/questions/48922485/binding-to-table-storage-in-v2-azure-functions-using-cloudtable) a tábla olvasása az Azure Storage SDK használatával. Ha megpróbál kötést létrehozni `CloudTable` és a egy hibaüzenet, győződjön meg arról, hogy rendelkezik-e egy hivatkozást, [a megfelelő Storage SDK-verzió](#azure-storage-sdk-version-in-functions-1x).
+  > `IQueryable`nem támogatott a [functions v2 futtatókörnyezetben](functions-versions.md). Egy másik lehetőség egy [CloudTable paramName metódus paraméter használata](https://stackoverflow.com/questions/48922485/binding-to-table-storage-in-v2-azure-functions-using-cloudtable) a tábla olvasásához az Azure Storage SDK használatával. Ha egy hibaüzenetet próbál meg `CloudTable` kötni, és hibaüzenetet kap, ellenőrizze, hogy rendelkezik-e [a megfelelő Storage SDK](#azure-storage-sdk-version-in-functions-1x)-verzióra mutató hivatkozással.
 
-* **A JavaScript egy vagy több sor olvasása**
+* **Egy vagy több sor olvasása a JavaScriptben**
 
-  Állítsa be a `filter` és `take` tulajdonságait. Nem állít be `partitionKey` vagy `rowKey`. A bemeneti tábla entitás (vagy entitások) használatával eléréséhez `context.bindings.<name>`. A deszerializált objektum rendelkezik `RowKey` és `PartitionKey` tulajdonságait.
+  Adja meg `filter` a `take` és a tulajdonságokat. Nincs beállítva `partitionKey` vagy `rowKey`. A bemeneti tábla entitás (vagy entitások) elérése `context.bindings.<name>`a használatával. A deszerializált objektumok rendelkeznek `RowKey` és `PartitionKey` tulajdonságokkal rendelkeznek.
 
 ## <a name="output"></a>Output
 
-Használja az Azure Table-tároló kimeneti kötését entitások írni az Azure Storage-fiók egyik táblájában.
+Egy Azure Table Storage-beli kimeneti kötés használatával entitásokat írhat egy Azure Storage-fiókba tartozó táblába.
 
 > [!NOTE]
-> A kimeneti kötés nem támogatja a meglévő entitások frissítése. Használja a `TableOperation.Replace` művelet [Azure Storage SDK](https://docs.microsoft.com/azure/cosmos-db/tutorial-develop-table-dotnet#delete-an-entity) frissíteni egy létező entitásba.   
+> Ez a kimeneti kötés nem támogatja a meglévő entitások frissítését. Egy meglévő `TableOperation.Replace` entitás frissítéséhez használja az [Azure Storage SDK](https://docs.microsoft.com/azure/cosmos-db/tutorial-develop-table-dotnet#delete-an-entity) műveletét.   
 
 ## <a name="output---example"></a>Kimenete – példa
 
@@ -550,7 +550,7 @@ Tekintse meg az adott nyelvű példa:
 
 ### <a name="output---c-example"></a>Kimenet – C#-példa
 
-A következő példa bemutatja egy [C#-függvény](functions-dotnet-class-library.md) egy HTTP-triggert használó egyetlen tábla sor írása. 
+Az alábbi példa egy [ C# ](functions-dotnet-class-library.md) olyan függvényt mutat be, amely egy http-triggert használ egy egyoszlopos sor írásához. 
 
 ```csharp
 public class TableStorage
@@ -574,7 +574,7 @@ public class TableStorage
 
 ### <a name="output---c-script-example"></a>Kimenet – C#-szkript példa
 
-Az alábbi példa bemutatja egy rendszertábla kimenetében a kötés egy *function.json* fájl és [C#-szkript](functions-reference-csharp.md) a kötést használó kód. A függvény több táblaentitások ír.
+Az alábbi példa egy tábla kimeneti kötést mutat be egy *function. JSON* fájlban [ C# ](functions-reference-csharp.md) és a kötést használó parancsfájl kódjában. A függvény több tábla entitást ír.
 
 Íme a *function.json* fájlt:
 
@@ -629,7 +629,7 @@ public class Person
 
 ### <a name="output---f-example"></a>Kimenete – F# példa
 
-Az alábbi példa bemutatja egy rendszertábla kimenetében a kötés egy *function.json* fájl és [ F# parancsfájl](functions-reference-fsharp.md) a kötést használó kód. A függvény több táblaentitások ír.
+Az alábbi példa egy tábla kimeneti kötést mutat be egy *function. JSON* fájlban [ F# ](functions-reference-fsharp.md) és a kötést használó parancsfájl kódjában. A függvény több tábla entitást ír.
 
 Íme a *function.json* fájlt:
 
@@ -676,7 +676,7 @@ let Run(input: string, tableBinding: ICollector<Person>, log: ILogger) =
 
 ### <a name="output---javascript-example"></a>Kimenet – JavaScript-példa
 
-Az alábbi példa bemutatja egy rendszertábla kimenetében a kötés egy *function.json* fájl és a egy [JavaScript-függvény](functions-reference-node.md) , amely a kötés használja. A függvény több táblaentitások ír.
+Az alábbi példa egy Table output-kötést mutat be egy *function. JSON* fájlban, valamint egy [JavaScript](functions-reference-node.md) -függvényt, amely a kötést használja. A függvény több tábla entitást ír.
 
 Íme a *function.json* fájlt:
 
@@ -723,9 +723,9 @@ module.exports = function (context) {
 
 ## <a name="output---attributes"></a>Kimenet – attribútumok
 
-A [C#-osztálykódtárakat](functions-dotnet-class-library.md), használja a [TableAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.Extensions.Storage/Tables/TableAttribute.cs).
+Az [ C# osztályok könyvtáraiban](functions-dotnet-class-library.md)használja a [TableAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.Extensions.Storage/Tables/TableAttribute.cs).
 
-Az attribútum konstruktorának paramétereként meg a tábla neve. A használat egy `out` paraméter vagy a visszaadott érték a függvény az alábbi példában látható módon:
+Az attribútum konstruktora a tábla nevét adja meg. Az alábbi példában látható módon vagy `out` a függvény visszatérési értékén is használható.
 
 ```csharp
 [FunctionName("TableOutput")]
@@ -738,7 +738,7 @@ public static MyPoco TableOutput(
 }
 ```
 
-Beállíthatja a `Connection` tulajdonságot adja meg a storage-fiókot szeretne használni, az alábbi példában látható módon:
+A `Connection` tulajdonság beállításával megadhatja a használni kívánt Storage-fiókot, ahogy az az alábbi példában is látható:
 
 ```csharp
 [FunctionName("TableOutput")]
@@ -753,7 +753,7 @@ public static MyPoco TableOutput(
 
 Egy teljes példa: [kimenet – C#-példa](#output---c-example).
 
-Használhatja a `StorageAccount` attribútumot az osztályra, módszer vagy paraméter szintű tárfiókot adjon meg. További információkért lásd: [bemenet - attribútumok](#input---attributes).
+`StorageAccount` Az attribútummal megadhatja a Storage-fiókot az osztály, a metódus vagy a paraméter szintjén. További információ: [input-attributes](#input---attributes).
 
 ## <a name="output---configuration"></a>Kimenete – konfiguráció
 
@@ -761,40 +761,40 @@ A következő táblázat ismerteti a megadott kötés konfigurációs tulajdons�
 
 |Function.JSON tulajdonság | Attribútum tulajdonsága |Leírás|
 |---------|---------|----------------------|
-|**type** | n/a | Meg kell `table`. Ez a tulajdonság beállítása automatikusan történik, a kötés létrehozásakor az Azure Portalon.|
-|**direction** | n/a | Meg kell `out`. Ez a tulajdonság beállítása automatikusan történik, a kötés létrehozásakor az Azure Portalon. |
-|**name** | n/a | A függvény kódját a táblával vagy entitással a használt változó neve. Állítsa be `$return` való hivatkozáshoz függvény visszatérési értéke.| 
-|**Táblanév** |**TableName** | A tábla neve.| 
-|**partitionKey** |**PartitionKey** | A partíciókulcs a tábla entitás írni. Tekintse meg a [szakaszban](#output---usage) hogyan használni ezt a tulajdonságot.| 
-|**Rowkey tulajdonságok esetén** |**Rowkey tulajdonságok esetén** | A tábla entitás írni a sorkulcs. Tekintse meg a [szakaszban](#output---usage) hogyan használni ezt a tulajdonságot.| 
-|**kapcsolat** |**kapcsolat** | A tárolási kapcsolati karakterlánc használata ehhez a kötéshez tartalmazó alkalmazásbeállítás neve. Azon alkalmazásbeállítás neve "AzureWebJobs" kezdődik, ha csak a maradékot Itt a neve is megadhat. Például, ha a beállított `connection` a "MyStorage", a Functions futtatókörnyezete úgy tűnik, a beállítás, amely alkalmazás neve "AzureWebJobsMyStorage." Ha meghagyja a `connection` üres, a Functions futtatókörnyezete használja az alapértelmezett tárolási kapcsolati karakterlánc nevű Alkalmazásbeállítás `AzureWebJobsStorage`.|
+|**type** | n/a | Meg kell `table`. A rendszer automatikusan beállítja ezt a tulajdonságot, amikor létrehozza a kötést a Azure Portalban.|
+|**direction** | n/a | Meg kell `out`. A rendszer automatikusan beállítja ezt a tulajdonságot, amikor létrehozza a kötést a Azure Portalban. |
+|**name** | n/a | A táblát vagy entitást jelölő függvény kódjában használt változó neve. `$return` Állítsa a értékre a függvény visszatérési értékének hivatkozásához.| 
+|**Táblanév** |**Táblanév** | A tábla neve.| 
+|**partitionKey** |**PartitionKey** | Az írni kívánt tábla entitás partíciós kulcsa. Tekintse meg a [használat című szakaszt](#output---usage) , amely útmutatást nyújt ennek a tulajdonságnak a használatáról.| 
+|**rowKey** |**RowKey** | Az írni kívánt tábla entitáshoz tartozó sor kulcsa. Tekintse meg a [használat című szakaszt](#output---usage) , amely útmutatást nyújt ennek a tulajdonságnak a használatáról.| 
+|**kapcsolat** |**kapcsolat** | Egy olyan Alkalmazásbeállítás neve, amely a kötéshez használandó tárolási kapcsolati karakterláncot tartalmazza. Ha az Alkalmazásbeállítások neve "AzureWebJobs" előtaggal kezdődik, akkor itt csak a nevet adja meg. Ha például a "MyStorage" `connection` értékre van állítva, a functions futtatókörnyezet egy "AzureWebJobsMyStorage" nevű alkalmazás-beállítást keres. Ha üresen `connection` hagyja, a functions futtatókörnyezet az alapértelmezett tárolási kapcsolatok karakterláncát használja a nevű `AzureWebJobsStorage`alkalmazás-beállításban.|
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
 ## <a name="output---usage"></a>Kimenet – használat
 
-A Table storage kimeneti kötés támogatja a következő esetekben:
+A tábla tárolási kimenetének kötése a következő forgatókönyveket támogatja:
 
-* **Bármilyen nyelven egy sor írása**
+* **Egy sor írása bármilyen nyelven**
 
-  A C# és a C#-szkript, eléréséhez a kimeneti tábla entitás parametr metody használatával `out T paramName` vagy a függvény visszatérési értéke. A C#-szkript `paramName` az értéket a megadott a `name` tulajdonsága *function.json*. `T` lehet bármilyen szerializálható típust, ha a partíciókulcs és a sorkulcs által biztosított a *function.json* fájl vagy a `Table` attribútum. Ellenkező esetben `T` tartalmazó típusnak kell lennie `PartitionKey` és `RowKey` tulajdonságait. Ebben a forgatókönyvben `T` általában valósít meg `ITableEntity` vagy származó `TableEntity`, de nem kell.
+  A C# ( C# z) és a (z) parancsfájlban a kimeneti tábla entitáshoz `out T paramName` a metódus paraméterének (például vagy a függvény visszatérési értéke) használatával férhet hozzá. A C# szkriptben `paramName` a *függvény. JSON* `name` tulajdonságában megadott érték. `T`bármely szerializálható típus lehet, ha a Partition kulcs és a sor kulcsa a *function. JSON* fájl vagy az `Table` attribútum adja meg. Ellenkező esetben olyan típusnak kell lennie `PartitionKey` , `RowKey` amely tartalmazza a és a tulajdonságokat. `T` Ebben a forgatókönyvben `T` általában `ITableEntity` a vagy a `TableEntity`származtatja, de nem szükséges.
 
-* **Írja be egy vagy több sor C# vagy C# parancsfájl**
+* **Egy vagy több sor írása C# vagy C# parancsfájl futtatása**
 
-  A C# és a C#-szkript, elérni a kimeneti tábla entitás parametr metody `ICollector<T> paramName` vagy `IAsyncCollector<T> paramName`. A C#-szkript `paramName` az értéket a megadott a `name` tulajdonsága *function.json*. `T` Adja meg a hozzáadni kívánt entitásokat sémája. Általában `T` származó `TableEntity` vagy valósít meg `ITableEntity`, de nem kell. A partíciókulcs és a sor a kulcsértékek *function.json* vagy a `Table` attribútum konstruktorának nem szerepel ebben a forgatókönyvben.
+  A C# ( C# z) és a (z) parancsfájlban a kimeneti tábla `ICollector<T> paramName` entitást a Method paraméter vagy `IAsyncCollector<T> paramName`a használatával érheti el. A C# szkriptben `paramName` a *függvény. JSON* `name` tulajdonságában megadott érték. `T`meghatározza a hozzáadni kívánt entitások sémáját. Jellemzően a `T` `TableEntity` származtatja vagy implementálja `ITableEntity`, de nem szükséges. A Partition kulcs és a sor kulcsa a *function. JSON* fájlban vagy `Table` az attribútum konstruktorában nem használatos ebben a forgatókönyvben.
 
-  A másik lehetőség használatához egy `CloudTable` metódus paraméteren a tábla írni az Azure Storage SDK használatával. Ha megpróbál kötést létrehozni `CloudTable` és a egy hibaüzenet, győződjön meg arról, hogy rendelkezik-e egy hivatkozást, [a megfelelő Storage SDK-verzió](#azure-storage-sdk-version-in-functions-1x). Például egy kódot, amely összekapcsolja `CloudTable`, tekintse meg a bemeneti kötési példák [C#](#input---c-example---cloudtable) vagy [C#-szkript](#input---c-script-example---cloudtable) jelen cikk korábbi.
+  Alternatív megoldásként a `CloudTable` metódus paraméterének használatával írhat a táblázatba az Azure Storage SDK használatával. Ha egy hibaüzenetet próbál meg `CloudTable` kötni, és hibaüzenetet kap, ellenőrizze, hogy rendelkezik-e [a megfelelő Storage SDK](#azure-storage-sdk-version-in-functions-1x)-verzióra mutató hivatkozással. A következőhöz kötődő `CloudTable`kód például a jelen cikk korábbi, a bemeneti kötési példák [C#](#input---c-example---cloudtable) vagy [ C# ](#input---c-script-example---cloudtable) a szkriptek című szakaszában található.
 
-* **Egy vagy több sor írását a JavaScript**
+* **Egy vagy több sor írása a JavaScriptben**
 
-  JavaScript-függvények, férnek hozzá a táblázatos kimenetet használatával `context.bindings.<name>`.
+  A JavaScript-függvényekben a táblázat kimenetét `context.bindings.<name>`a paranccsal érheti el.
 
 ## <a name="exceptions-and-return-codes"></a>Kivételek és a visszatérési kódok
 
 | Kötés | Hivatkozás |
 |---|---|
-| Tábla | [Tábla hibakódok](https://docs.microsoft.com/rest/api/storageservices/fileservices/table-service-error-codes) |
-| Blob, Table, Queue | [Storage-hibakódok](https://docs.microsoft.com/rest/api/storageservices/fileservices/common-rest-api-error-codes) |
+| Tábla | [Tábla Hibakódai](https://docs.microsoft.com/rest/api/storageservices/fileservices/table-service-error-codes) |
+| Blob, Table, Queue | [Tárolási hibakódok](https://docs.microsoft.com/rest/api/storageservices/fileservices/common-rest-api-error-codes) |
 | Blob, Table, Queue | [Hibaelhárítás](https://docs.microsoft.com/rest/api/storageservices/fileservices/troubleshooting-api-operations) |
 
 ## <a name="next-steps"></a>További lépések

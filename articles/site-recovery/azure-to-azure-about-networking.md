@@ -1,74 +1,74 @@
 ---
-title: Tudnivalók az Azure Site Recovery használatával az Azure-bA vész-helyreállítási hálózat |} A Microsoft Docs
-description: Az Azure Site Recovery használatával az Azure virtuális gépek replikálását hálózatkezelés áttekintése.
+title: Tudnivalók az Azure-beli hálózatkezelésről az Azure vész-helyreállítási Azure Site Recovery használatával | Microsoft Docs
+description: Áttekintést nyújt az Azure-beli virtuális gépek Azure Site Recovery használatával történő replikálásához szükséges hálózatkezelésről.
 services: site-recovery
 author: sujayt
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
 ms.date: 3/29/2019
-ms.author: sujayt
-ms.openlocfilehash: a6c9c690efe8b75cd1a939de1c68cf4e5bd40d70
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: sutalasi
+ms.openlocfilehash: 844563e03529e472624b35d2b545c3e432e4ea17
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60789804"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67876301"
 ---
-# <a name="about-networking-in-azure-to-azure-replication"></a>Hálózatkezelés az Azure-bA replikációs kapcsolatban
+# <a name="about-networking-in-azure-to-azure-replication"></a>Tudnivalók az Azure-beli hálózatkezelésről az Azure-ba – replikálás
 
 
 
-A cikkből hálózati takarít meg replikálása és helyreállítása Azure virtuális gépek egyik régióból egy másik használatával [Azure Site Recovery](site-recovery-overview.md).
+Ez a cikk hálózatkezelési útmutatást nyújt az Azure-beli virtuális gépek egyik régióból a másikba történő replikálásához és helyreállításához [Azure site Recovery](site-recovery-overview.md)használatával.
 
 ## <a name="before-you-start"></a>Előkészületek
 
-Bemutatjuk, hogy a Site Recovery hogyan nyújt vészhelyreállítás [ebben a forgatókönyvben](azure-to-azure-architecture.md).
+[Ebből a forgatókönyvből](azure-to-azure-architecture.md)megtudhatja, hogyan biztosít a site Recovery vész-helyreállítást.
 
-## <a name="typical-network-infrastructure"></a>Tipikus hálózati infrastruktúrát
+## <a name="typical-network-infrastructure"></a>Tipikus hálózati infrastruktúra
 
-Az alábbi ábrán egy tipikus Azure-környezethez, Azure virtuális gépeken futó alkalmazások ábrázolja:
+Az alábbi ábra egy tipikus Azure-környezetet ábrázol az Azure-beli virtuális gépeken futó alkalmazások esetében:
 
-![ügyfél-környezet](./media/site-recovery-azure-to-azure-architecture/source-environment.png)
+![ügyfél – környezet](./media/site-recovery-azure-to-azure-architecture/source-environment.png)
 
-Azure ExpressRoute vagy VPN-kapcsolatot használ a helyszíni hálózatból az Azure-ba, ha a környezet a következőképpen:
+Ha Azure-ExpressRoute használ, vagy a helyszíni hálózatról az Azure-ba VPN-kapcsolattal rendelkezik, a környezet a következő:
 
-![ügyfél-környezet](./media/site-recovery-azure-to-azure-architecture/source-environment-expressroute.png)
+![ügyfél – környezet](./media/site-recovery-azure-to-azure-architecture/source-environment-expressroute.png)
 
-Hálózatok általában védettek, a tűzfalak és hálózati biztonsági csoportok (NSG-k) használatával. Tűzfalak URL-cím vagy IP-alapú engedélyezési segítségével szabályozza a hálózati kapcsolatot. Az NSG-k adja meg a szabályokat, amelyek IP-címtartományok segítségével szabályozza a hálózati kapcsolatot.
+A hálózatok általában tűzfalak és hálózati biztonsági csoportok (NSG-EK) használatával védettek. A tűzfalak az URL-cím vagy az IP-alapú engedélyezési lista használatával vezérlik a hálózati kapcsolatot. A NSG olyan szabályokat biztosítanak, amelyek IP-címtartományok használatával vezérlik a hálózati kapcsolatot.
 
 >[!IMPORTANT]
-> A Site Recovery nem támogatja hálózati kapcsolatok szabályozásához hitelesített proxyt használ, és a replikáció nem engedélyezhető.
+> Site Recovery nem támogatja hitelesített proxy használatát a hálózati kapcsolat vezérléséhez, és a replikáció nem engedélyezhető.
 
 
 ## <a name="outbound-connectivity-for-urls"></a>Kimenő kapcsolat URL-címek esetén
 
-URL-alapú tűzfalproxyt használ a kimenő kapcsolat szabályozásához, ha a Site Recovery URL-címek engedélyezése:
+Ha URL-alapú tűzfal-proxyt használ a kimenő kapcsolat vezérléséhez, engedélyezze ezeket a Site Recovery URL-címeket:
 
 
 **URL-cím** | **Részletek**  
 --- | ---
-*.blob.core.windows.net | Szükséges, hogy az adatokat a virtuális gépről is írható a gyorsítótárfiók a forrásrégióban. Ha tudja, hogy a gyorsítótár összes storage-fiókok a virtuális gépek számára, is engedélyezett az adott tárolási fiók URL-címeket (például: cache1.blob.core.windows.net és cache2.blob.core.windows.net) helyett *. blob.core.windows.net
-login.microsoftonline.com | A Site Recovery szolgáltatás URL-címeinek a hitelesítési és engedélyezési szükséges.
-*.hypervrecoverymanager.windowsazure.com | Szükséges, hogy a Site Recovery szolgáltatás kommunikációja fordulhat elő, a virtuális gépről. A megfelelő "Site Recovery IP-cím" is használhatja, ha a tűzfal proxy IP-címeket támogatja.
-*.servicebus.windows.net | Szükséges, hogy a virtuális Gépet a Site Recovery monitorozási és diagnosztikai adatok beírhatók. A megfelelő "Site Recovery figyelési IP-címet" is használhatja, ha a tűzfal proxy IP-címeket támogatja.
+*.blob.core.windows.net | Kötelező megadni, hogy az adatok a virtuális gépről származó forrás régióban lévő cache Storage-fiókba írhatók legyenek. Ha ismeri a virtuális gépekhez tartozó összes gyorsítótárbeli Storage-fiókot, akkor az adott Storage-fiók URL-címeit (pl.: cache1.blob.core.windows.net és cache2.blob.core.windows.net) a *. blob.core.windows.net
+login.microsoftonline.com | Az engedélyezéshez és a hitelesítéshez szükséges a Site Recovery szolgáltatás URL-címeihez.
+*.hypervrecoverymanager.windowsazure.com | Szükséges, hogy a Site Recovery szolgáltatás kommunikációja a virtuális gépről is megtörténjen. Ha a tűzfal proxyja támogatja az IP-címeket, használhatja a megfelelő "Site Recovery IP-címet".
+*.servicebus.windows.net | Szükséges, hogy a Site Recovery monitorozási és diagnosztikai adatok a virtuális gépről is írhatók legyenek. Ha a tűzfal proxyja támogatja az IP-címeket, használhatja a megfelelő "Site Recovery figyelési IP-címet".
 
 ## <a name="outbound-connectivity-for-ip-address-ranges"></a>Kimenő kapcsolat az IP-címtartományokhoz
 
-Ha egy IP-alapú tűzfalproxyt vagy NSG-szabályokat használ a kimenő kapcsolat szabályozásához, ezeket az IP-címtartományok kell engedélyezni kell.
+Ha IP-alapú tűzfal-proxyt használ, vagy a kimenő kapcsolat vezérléséhez NSG szabályokat, akkor ezeket az IP-tartományokat engedélyezni kell.
 
-- Összes IP-címtartományokat, amelyek megfelelnek a forrásrégióban tárfiókokba
-    - Hozzon létre egy [tárolási szolgáltatáscímke](../virtual-network/security-overview.md#service-tags) a forrásrégióban az NSG-szabály alapján.
-    - Ezek a címek lehetővé teszik, úgy, hogy az adatokat a virtuális gépről a gyorsítótárfiókba írhatók.
+- Minden olyan IP-címtartomány, amely a forrástartomány Storage-fiókjainak felel meg
+    - Hozzon létre egy [tárolási szolgáltatás címkén](../virtual-network/security-overview.md#service-tags) ALAPULó NSG-szabályt a forrás régióhoz.
+    - Engedélyezze ezeket a címeket úgy, hogy az adatok a virtuális gépről a gyorsítótárbeli Storage-fiókba legyenek írva.
 - Hozzon létre egy [Azure Active Directory (AAD) szolgáltatáscímke](../virtual-network/security-overview.md#service-tags) alapú Hálózatibiztonságicsoport-szabály engedélyezi a hozzáférést az aad-hez tartozó összes IP-címek számára
     - Hozzáadja az új címeket az Azure Active Directory (AAD) a jövőben, ha szeretne létrehozni új NSG-szabályokat.
-- Site Recovery szolgáltatás végpont IP-címek – elérhető egy [XML-fájl](https://aka.ms/site-recovery-public-ips) , és a célhely függnek.
-- Azt javasoljuk, hogy a szükséges NSG-szabályok létrehozása egy teszt NSG-t, és ellenőrizze, hogy nincsenek-e problémák a szabályokat az NSG-t éles létrehozása előtt.
+- Site Recovery szolgáltatási végpont IP-címei – egy [XML-fájlban](https://aka.ms/site-recovery-public-ips) érhetők el, és a célhelytől függenek.
+- Javasoljuk, hogy hozza létre a szükséges NSG-szabályokat egy teszt NSG, és ellenőrizze, hogy nincsenek-e problémák a szabályok éles NSG való létrehozása előtt.
 
 
 Site Recovery IP-címtartományok a következők:
 
-   **Target** | **Site Recovery IP** |  **A Site Recovery IP figyelése**
+   **Target** | **Site Recovery IP-cím** |  **Site Recovery figyelési IP-cím**
    --- | --- | ---
    Kelet-Ázsia | 52.175.17.132 | 13.94.47.61
    Délkelet-Ázsia | 52.187.58.193 | 13.76.179.223
@@ -77,7 +77,7 @@ Site Recovery IP-címtartományok a következők:
    USA északi középső régiója | 23.96.195.247 | 168.62.249.226
    Észak-Európa | 40.69.212.238 | 52.169.18.8
    Nyugat-Európa | 52.166.13.64 | 40.68.93.145
-   USA keleti régiója | 13.82.88.226 | 104.45.147.24
+   East US | 13.82.88.226 | 104.45.147.24
    USA nyugati régiója | 40.83.179.48 | 104.40.26.199
    USA déli középső régiója | 13.84.148.14 | 104.210.146.250
    USA középső régiója | 40.69.144.231 | 52.165.34.144
@@ -99,7 +99,7 @@ Site Recovery IP-címtartományok a következők:
    Korea déli régiója | 52.231.198.185 | 52.231.200.144
    Közép-Franciaország | 52.143.138.106 | 52.143.136.55
    Dél-Franciaország | 52.136.139.227 |52.136.136.62
-   Ausztrália középső| 20.36.34.70 | 20.36.46.142
+   Közép-Ausztrália| 20.36.34.70 | 20.36.46.142
    Ausztrália 2. középső régiója| 20.36.69.62 | 20.36.74.130
    Dél-Afrika nyugati régiója | 102.133.72.51 | 102.133.26.128
    Dél-Afrika északi régiója | 102.133.160.44 | 102.133.154.128
@@ -109,65 +109,65 @@ Site Recovery IP-címtartományok a következők:
    USA-beli államigazgatás – Texas | 52.238.119.218 | 52.238.116.60
    US DoD – Kelet | 52.181.164.103 | 52.181.162.129
    US DoD – Középső régió | 52.182.95.237 | 52.182.90.133
-## <a name="example-nsg-configuration"></a>Az NSG konfigurálása – példa
+## <a name="example-nsg-configuration"></a>Példa NSG-konfigurációra
 
-Ez a példa bemutatja egy virtuális gép replikálása NSG-szabályok konfigurálása.
+Ez a példa bemutatja, hogyan konfigurálhatja a virtuális gépek NSG-szabályait a replikáláshoz.
 
-- NSG-szabályokat használ a kimenő kapcsolat szabályozásához, ha az összes szükséges IP-címtartományok "Kimenő HTTPS engedélyezése" szabályokat a: 443-as portot használja.
-- A példa feltételezi, hogy a virtuális gép helyét "USA keleti régiója" és a célhelyen található az "USA középső Régiója".
+- Ha NSG szabályokat használ a kimenő kapcsolatok vezérlésére, használja a "HTTPS kimenő" szabályokat a 443-as portra a szükséges IP-címtartományok esetében.
+- A példa azt feltételezi, hogy a virtuális gép forrása "az USA keleti régiója", a célhely pedig az "USA középső régiója".
 
-### <a name="nsg-rules---east-us"></a>Az NSG-szabályok – USA keleti RÉGIÓJA
+### <a name="nsg-rules---east-us"></a>NSG-szabályok – USA keleti régiója
 
-1. HTTPS (443) kimenő biztonsági szabály létrehozása "Storage.EastUS" az NSG-t az alábbi képernyőképen látható módon.
+1. Hozzon létre egy kimenő HTTPS (443) biztonsági szabályt a "Storage. EastUS" számára a NSG, ahogy az alábbi képernyőképen is látható.
 
-      ![storage-tag](./media/azure-to-azure-about-networking/storage-tag.png)
+      ![Storage-tag](./media/azure-to-azure-about-networking/storage-tag.png)
 
-2. HTTPS (443) kimenő biztonsági szabály létrehozása "AzureActiveDirectory" az NSG-t az alábbi képernyőképen látható módon.
+2. Hozzon létre egy kimenő HTTPS (443) biztonsági szabályt a NSG "AzureActiveDirectory" számára, ahogy az alábbi képernyőképen is látható.
 
-      ![aad-címke](./media/azure-to-azure-about-networking/aad-tag.png)
+      ![HRE – címke](./media/azure-to-azure-about-networking/aad-tag.png)
 
-3. A Site Recovery IP-címek, amelyek megfelelnek a célhelyen kimenő HTTPS (443) a szabályok létrehozása:
+3. Kimenő HTTPS (443) szabályok létrehozása a célhelynek megfelelő Site Recovery IP-címekhez:
 
-   **Hely** | **Site Recovery IP-cím** |  **Site Recovery monitorozási IP-cím**
+   **Location** | **Site Recovery IP-cím** |  **Site Recovery figyelési IP-cím**
     --- | --- | ---
    USA középső régiója | 40.69.144.231 | 52.165.34.144
 
-### <a name="nsg-rules---central-us"></a>Az NSG-szabályok – USA középső RÉGIÓJA
+### <a name="nsg-rules---central-us"></a>NSG-szabályok – USA középső régiója
 
-Ezek a szabályok szükségesek, hogy replikációs lehet engedélyezni a a célrégióban a forrás régió-feladatátvétel után:
+Ezek a szabályok azért szükségesek, hogy a replikáció engedélyezhető legyen a célként megadott régióból a feladatátvételt követően:
 
-1. HTTPS (443) kimenő biztonsági szabály létrehozása "Storage.CentralUS" az NSG-t.
+1. Hozzon létre egy kimenő HTTPS (443) biztonsági szabályt a "Storage. CentralUS" számára a NSG.
 
-2. HTTPS (443) kimenő biztonsági szabály létrehozása "AzureActiveDirectory" az NSG-t.
+2. Hozzon létre egy kimenő HTTPS (443) biztonsági szabályt a "AzureActiveDirectory" számára a NSG.
 
-3. Kimenő HTTPS (443) a szabályok létrehozása a Site Recovery IP-címek, amelyek megfelelnek a forrás helye:
+3. Kimenő HTTPS (443) szabályok létrehozása a forrás helyének megfelelő Site Recovery IP-címekhez:
 
-   **Hely** | **Site Recovery IP-cím** |  **Site Recovery monitorozási IP-cím**
+   **Location** | **Site Recovery IP-cím** |  **Site Recovery figyelési IP-cím**
     --- | --- | ---
    USA középső régiója | 13.82.88.226 | 104.45.147.24
 
-## <a name="network-virtual-appliance-configuration"></a>Hálózati virtuális berendezés konfigurációjának
+## <a name="network-virtual-appliance-configuration"></a>Hálózati virtuális berendezés konfigurációja
 
-Ha a hálózati virtuális berendezések (nva-k) segítségével szabályozhatja a virtuális gépek kimenő hálózati forgalmát, a készülék előfordulhat, hogy leszabályozza, ha a replikációs forgalmat az nva-n keresztül továbbítja. Azt javasoljuk, hogy hoz létre egy hálózati végpontot a virtuális hálózat "Tároló" úgy, hogy a replikálás forgalma nem halad, az nva-n.
+Ha hálózati virtuális berendezéseket (NVA-ket) használ a virtuális gépek kimenő hálózati forgalmának szabályozására, akkor előfordulhat, hogy a berendezés szabályozása megtörténik, ha az összes replikációs forgalom a NVA halad át. Javasoljuk, hogy hozzon létre egy hálózati szolgáltatási végpontot a virtuális hálózaton a "Storage" számára, hogy a replikálási forgalom ne lépjen a NVA.
 
-### <a name="create-network-service-endpoint-for-storage"></a>A tárolási hálózati szolgáltatásvégpont létrehozása
-Létrehozhat egy hálózati végpontot a virtuális hálózat "Tároló" úgy, hogy a replikálás forgalma nem hagyja el az Azure-határ.
+### <a name="create-network-service-endpoint-for-storage"></a>Hálózati szolgáltatás végpontjának létrehozása a Storage-hoz
+Létrehozhat egy hálózati szolgáltatási végpontot a virtuális hálózatban a "Storage" számára, így a replikálási forgalom nem hagyja el az Azure-határt.
 
-- Válassza ki az Azure virtuális hálózatot, majd kattintson a "szolgáltatásvégpontokkal:
+- Válassza ki az Azure-beli virtuális hálózatot, és kattintson a "szolgáltatási végpontok" elemre.
 
-    ![storage-endpoint](./media/azure-to-azure-about-networking/storage-service-endpoint.png)
+    ![tárolás – végpont](./media/azure-to-azure-about-networking/storage-service-endpoint.png)
 
-- Kattintson a "Hozzáadás" és "Szolgáltatásvégpontok hozzáadása" lap megnyitása
-- Válassza ki a "Microsoft.Storage" a "Service" és "Alhálózatok" mező mellett a szükséges alhálózatokat, és kattintson a "Hozzáadás" gombra
+- Kattintson a "Hozzáadás" és a "szolgáltatási végpontok hozzáadása" fülre.
+- Válassza a "Microsoft. Storage" lehetőséget a "szolgáltatás" alatt, valamint a szükséges alhálózatokat az "alhálózatok" mezőben, és kattintson a "Hozzáadás" gombra.
 
 >[!NOTE]
->Az ASR használt tárfiókok nem virtuális hálózati hozzáférésének korlátozása. Érdemes engedélyezi a hozzáférést minden hálózatból
+>Ne korlátozza a virtuális hálózati hozzáférést az ASR szolgáltatáshoz használt Storage-fiókokhoz. Engedélyeznie kell a hozzáférést az összes hálózatról
 
 ### <a name="forced-tunneling"></a>Alagúthasználat kényszerítése
 
-Az Azure alapértelmezett rendszer útvonalat a 0.0.0.0/0 címelőtag a felülbírálhatja egy [egyéni útválasztási](../virtual-network/virtual-networks-udr-overview.md#custom-routes) és átirányít a VM forgalmat egy a helyszíni hálózati virtuális berendezésre (NVA), de ez a konfiguráció nem ajánlott a Site Recovery a replikáció. Ha egyéni útvonalakat használ, akkor [hozzon létre egy virtuális hálózati szolgáltatásvégpont](azure-to-azure-about-networking.md#create-network-service-endpoint-for-storage) a virtuális hálózatot "Tároló" úgy, hogy a replikálás forgalma nem hagyja el az Azure határain.
+Az Azure alapértelmezett rendszerútvonalát felülbírálhatja a 0.0.0.0/0 címek előtagja számára egy [Egyéni útvonallal](../virtual-network/virtual-networks-udr-overview.md#custom-routes) , és átirányíthatja a virtuális gépek forgalmát egy helyszíni hálózati virtuális készülékre (NVA), de ez a konfiguráció nem ajánlott site Recovery replikáláshoz. Ha egyéni útvonalakat használ, [hozzon létre egy virtuális hálózati szolgáltatási végpontot](azure-to-azure-about-networking.md#create-network-service-endpoint-for-storage) a "Storage" virtuális hálózatában, hogy a replikálási forgalom ne hagyja el az Azure-határt.
 
 ## <a name="next-steps"></a>További lépések
-- A számítási feladatai védelméről [Azure-beli virtuális gépek replikálása](site-recovery-azure-to-azure.md).
-- Tudjon meg többet [IP-cím megőrzése](site-recovery-retain-ip-azure-vm-failover.md) Azure virtuális gép feladatátvételi.
-- További információ a vész-helyreállítási [Azure-beli virtuális gépek az expressroute-tal](azure-vm-disaster-recovery-with-expressroute.md).
+- Az Azure-beli [virtuális gépek replikálásával](site-recovery-azure-to-azure.md)megkezdheti a számítási feladatok védelmét.
+- További információ az Azure-beli virtuális gépek feladatátvételének [IP-címének megőrzéséről](site-recovery-retain-ip-azure-vm-failover.md) .
+- További információ az Azure-beli [virtuális gépek ExpressRoute](azure-vm-disaster-recovery-with-expressroute.md)-mel való vész-helyreállításáról.

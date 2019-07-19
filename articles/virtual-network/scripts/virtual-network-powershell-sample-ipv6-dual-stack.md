@@ -1,7 +1,7 @@
 ---
-title: Az Azure PowerShell-példaszkript – konfigurálása IPv6-alapú virtuális hálózat végpontok (előzetes verzió)
+title: Azure PowerShell parancsfájl-minta – IPv6 virtuális hálózati végpontok konfigurálása (előzetes verzió)
 titlesuffix: Azure Virtual Network
-description: Az Azure Virtual Network Powershell használatával IPv6-os végpontjaiig engedélyezése
+description: IPv6-végpontok engedélyezése a PowerShell használatával az Azure-ban Virtual Network
 services: virtual-network
 documentationcenter: na
 author: KumudD
@@ -10,35 +10,37 @@ ms.service: virtual-network
 ms.devlang: NA
 ms.topic: article
 ms.workload: infrastructure-services
-ms.date: 04/22/2019
+ms.date: 07/15/2019
 ms.author: kumud
-ms.openlocfilehash: 627ff40361b562630f05c70823e9ad2c7ef711e0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4f07aae0e8baae44ade152cf3fe20facc7fe6770
+ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66002232"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68248814"
 ---
-# <a name="configure-ipv6-endpoints-in-virtual-network-script-sample-preview"></a>IPv6-végpontok konfigurálása a virtuális hálózat példaszkript (előzetes verzió)
+# <a name="configure-ipv6-endpoints-in-virtual-network-script-sample-preview"></a>IPv6-végpontok konfigurálása a Virtual Network script Sample (előzetes verzió) szolgáltatásban
 
-Ez a cikk bemutatja, hogyan egy kettős verem (IPv4 + IPv6) üzembe helyezése az Azure-ban, amely tartalmaz egy alhálózattal kettős verem (IPv4 + IPv6) kettős előtér-konfigurációkkal, kettős IP-konfigurációval rendelkező hálózati adapterrel rendelkező virtuális gépek egy terheléselosztó kettős verem virtuális hálózat kettős hálózati biztonsági csoport szabályait, és két nyilvános IP-címek.
+Ebből a cikkből megtudhatja, hogyan helyezhet üzembe egy kettős stack-alhálózattal rendelkező kettős verem-(IPv4-és IPv6-) alkalmazást az Azure-ban, amely kettős (IPv4 + IPv6-alapú) előtér-konfigurációkat, valamint kettős IP-konfigurációval rendelkező virtuális gépeket tartalmaz. kettős hálózati biztonsági csoportra vonatkozó szabályok és kettős nyilvános IP-címek.
 
-A szkriptet az Azure [Cloud Shellben](https://shell.azure.com/powershell) vagy egy helyi PowerShell-telepítésből futtathatja. Ha helyileg használja a Powershellt, ehhez a szkripthez az Azure Az PowerShell-modul verzióját 1.0.0 vagy újabb. A telepített verzió azonosításához futtassa a következőt: `Get-Module -ListAvailable Az`. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-az-ps) ismertető cikket. Ha helyileg futtatja a PowerShellt, akkor emellett a `Connect-AzAccount` futtatásával kapcsolatot kell teremtenie az Azure-ral.
+A szkriptet az Azure [Cloud Shellben](https://shell.azure.com/powershell) vagy egy helyi PowerShell-telepítésből futtathatja. Ha helyileg használja a PowerShellt, a parancsfájlhoz az Azure az PowerShell-modul 1.0.0 vagy újabb verziója szükséges. A telepített verzió azonosításához futtassa a következőt: `Get-Module -ListAvailable Az`. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-az-ps) ismertető cikket. Ha helyileg futtatja a PowerShellt, akkor emellett a `Connect-AzAccount` futtatásával kapcsolatot kell teremtenie az Azure-ral.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="prerequisites"></a>Előfeltételek
-Az Azure-ban kettős verem alkalmazást telepít központilag, konfigurálnia kell az előfizetés csak egyszer az előzetes verziójú funkció, a következő Azure PowerShell-lel:
+A Dual stack-alkalmazás Azure-ban való üzembe helyezése előtt az alábbi Azure PowerShell használatával csak egyszer kell konfigurálnia az előfizetést:
 
-Regisztrálja az alábbiak szerint:
+Regisztráljon a következőképpen:
 ```azurepowershell
 Register-AzProviderFeature -FeatureName AllowIPv6VirtualNetwork -ProviderNamespace Microsoft.Network
+Register-AzProviderFeature -FeatureName AllowIPv6CAOnStandardLB -ProviderNamespace Microsoft.Network
 ```
-A szolgáltatás regisztráció befejezése akár 30 percet vesz igénybe. A regisztrációs állapot a következő Azure PowerShell-parancs futtatásával ellenőrizheti: Ellenőrizze a regisztrációt a következőképpen:
+A szolgáltatás regisztrációjának befejezéséhez akár 30 percet is igénybe vehet. A regisztrációs állapotát a következő Azure PowerShell parancs futtatásával tekintheti meg: A regisztrációt a következőképpen tekintheti meg:
 ```azurepowershell
 Get-AzProviderFeature -FeatureName AllowIPv6VirtualNetwork -ProviderNamespace Microsoft.Network
+Get-AzProviderFeature -FeatureName AllowIPv6CAOnStandardLB -ProviderNamespace Microsoft.Network
 ```
-A regisztráció befejezése után futtassa a következő parancsot:
+A regisztráció befejeződése után futtassa a következő parancsot:
 
 ```azurepowershell
 Register-AzResourceProvider -ProviderNamespace Microsoft.Network
@@ -260,7 +262,7 @@ A szkript a következő parancsokat használja egy erőforráscsoport, egy virtu
 | [New-AzNetworkSecurityGroup](/powershell/module/az.network/new-aznetworksecuritygroup) | Létrehoz egy hálózati biztonsági csoportot (NSG), amely biztonsági határként szolgál az internet és a virtuális gép között. |
 | [New-AzNetworkSecurityRuleConfig](/powershell/module/az.network/new-aznetworksecurityruleconfig) | Létrehoz egy NSG-szabályt a befelé irányuló forgalom engedélyezésére. Ebben a példában a 22-es portot nyitjuk meg az SSH-forgalom számára. |
 | [New-AzNetworkInterface](/powershell/module/az.network/new-aznetworkinterface) | Létrehoz egy virtuális hálózati kártyát, és csatlakoztatja a virtuális hálózathoz, az alhálózathoz és az NSG-hez. |
-| [New-AzAvailabilitySet](/powershell/module/az.compute/new-azavailabilityset) | Létrehoz egy rendelkezésre állási csoportot. A rendelkezésre állási csoportok között osztja szét a virtuális gépek fizikai erőforrások úgy, hogy a hiba akkor fordul elő, ha nincs hatással az teljes alkalmazások rendelkezésre állását biztosítják. |
+| [New-AzAvailabilitySet](/powershell/module/az.compute/new-azavailabilityset) | Létrehoz egy rendelkezésre állási csoportot. A rendelkezésre állási csoportok biztosítják az alkalmazások üzemidőét azáltal, hogy a virtuális gépeket a fizikai erőforrások között terjesztik, így ha hiba történik, a teljes készletet nem érinti a rendszer. |
 | [New-AzVMConfig](/powershell/module/az.compute/new-azvmconfig) | Egy virtuálisgép-konfigurációt hoz létre. Ebben a konfigurációban olyan információk szerepelnek, mint a virtuális gép neve, az operációs rendszer és a rendszergazdai hitelesítő adatok. A rendszer a virtuális gépek létrehozása során használja ezt a konfigurációt. |
 | [New-AzVM](/powershell/module/az.compute/new-azvm)  | Létrehozza a virtuális gépet, és csatlakoztatja a hálózati kártyához, a virtuális hálózathoz, az alhálózathoz és az NSG-hez. A parancs megadja továbbá a használandó virtuálisgép-rendszerképet és a rendszergazdai jelszavakat.  |
 | [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | Töröl egy erőforráscsoportot az összes beágyazott erőforrással együtt. |

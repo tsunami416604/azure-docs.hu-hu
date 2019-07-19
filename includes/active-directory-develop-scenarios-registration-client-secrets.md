@@ -1,6 +1,6 @@
 ---
 title: fájl belefoglalása
-description: adatfájl (démon, webalkalmazás, webes API-t) a főoldalakon bizalmas ügyfél forgatókönyv
+description: fájl belefoglalása a bizalmas ügyfél-forgatókönyvekhez (démon, webalkalmazás, webes API)
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
@@ -14,31 +14,33 @@ ms.workload: identity
 ms.date: 04/18/2018
 ms.author: jmprieur
 ms.custom: include file
-ms.openlocfilehash: 9ee7422b372993d60c629524eb036b9678e5776c
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: cd37880be6d518105e880b93a0bd748f7c729d88
+ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67179301"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68286185"
 ---
-## <a name="registration-of-secrets-or-certificates"></a>Titkos kódok és tanúsítványok regisztrálása
+## <a name="registration-of-secrets-or-certificates"></a>Titkok vagy tanúsítványok regisztrálása
 
-Mint minden bizalmas ügyfélalkalmazáshoz, regisztrálnia kell egy titkos kulcsot vagy a tanúsítványt. A titkos alkalmazáskulcsok keresztül interaktív felhasználói élménye is regisztrálni a [az Azure portal](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredAppsPreview), vagy a parancssori eszközök (például a PowerShell)
+A bizalmas ügyfélalkalmazások esetében hasonlóan regisztrálnia kell egy titkos vagy egy tanúsítványt. Az alkalmazási titkokat a [Azure Portal](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredAppsPreview)interaktív felületén vagy parancssori eszközökkel (például a PowerShell-lel) is regisztrálhatja.
 
-### <a name="registering-client-secrets-using-the-application-registration-portal"></a>Ügyfél titkok az alkalmazásregisztrációs portálon regisztrálása
+### <a name="registering-client-secrets-using-the-application-registration-portal"></a>Ügyfél-titkok regisztrálása az alkalmazás regisztrációs portálján
 
-Az ügyfél-hitelesítő adatok kezelése történik a **tanúsítványok és titkos kulcsok** oldal egy alkalmazás:
+Az ügyfél hitelesítő adatainak kezelése a **tanúsítványok & Secrets** oldalon történik egy alkalmazáshoz:
 
 ![image](../articles/active-directory/develop/media/quickstart-update-azure-ad-app-preview/credentials-certificates-secrets-expanded.png)
 
-- az Azure AD-ben a bizalmas ügyfélalkalmazás a regisztráció során hozza létre az alkalmazás titkos (is a megnevezett ügyfél titkos kódot). Ezt a létrehozást történik, ha kiválasztja **új titkos ügyfélkulcsot**. Ezen a ponton kell másolnia a titkos karakterláncot a vágólapra az alkalmazásában, kiválasztása előtt **mentése**. Ez a karakterlánc többé nem kell bemutatni.
-- a tanúsítvány feltöltése az alkalmazás regisztrációs felületén a **tanúsítvány feltöltése** gomb
+- Az Azure AD a bizalmas ügyfélalkalmazás regisztrálása során létrehozta az alkalmazás titkos kulcsát (más néven az ügyfél titkát). Ez a létrehozás akkor történik meg, amikor **új ügyfél-titkos kulcsot**választ. Ezen a ponton a **Save (Mentés) gombra**kattintva a vágólapon lévő titkos karakterláncot kell átmásolnia az alkalmazásban való használathoz. Ez a karakterlánc többé nem jelenik meg.
+- a tanúsítvány feltöltése az alkalmazás regisztrálásával történik a **tanúsítvány feltöltése** gomb használatával. Az Azure AD csak az alkalmazásban közvetlenül regisztrált tanúsítványokat támogatja, és nem követi a tanúsítványkezelőket.
 
-További információkért lásd: [a rövid útmutató: Webes API-k eléréséhez ügyfélalkalmazás konfigurálása |} Hitelesítő adatok hozzáadása az alkalmazáshoz](../articles/active-directory/develop/quickstart-configure-app-access-web-apis.md#add-credentials-to-your-web-application)
+Részletekért lásd: [gyors útmutató: Ügyfélalkalmazás konfigurálása a webes API-k eléréséhez | Hitelesítő adatok hozzáadása az alkalmazáshoz](../articles/active-directory/develop/quickstart-configure-app-access-web-apis.md#add-credentials-to-your-web-application)
 
-### <a name="registering-client-secrets-using-powershell"></a>Regisztrálás az ügyfél titkos kulcsok a PowerShell használatával
 
-Az alkalmazás azt is megteheti, regisztrálhat az Azure ad-vel parancssori eszközök használatával. A [active-directory-dotnetcore-démon-v2](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2) minta megmutatja, hogyan szeretne regisztrálni Azure AD-alkalmazást egy alkalmazás titkos kulcs vagy egy tanúsítvány:
 
-- Egy alkalmazás titkos regisztrálásával kapcsolatos részletekért lásd: [AppCreationScripts/Configure.ps1](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2/blob/5199032b352a912e7cc0fce143f81664ba1a8c26/AppCreationScripts/Configure.ps1#L190)
-- További információ a tanúsítvány regisztrálása az alkalmazással: [AppCreationScripts-withCert/Configure.ps1](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2/blob/5199032b352a912e7cc0fce143f81664ba1a8c26/AppCreationScripts-withCert/Configure.ps1#L162-L178)
+### <a name="registering-client-secrets-using-powershell"></a>Ügyfél-titkok regisztrálása a PowerShell-lel
+
+Azt is megteheti, hogy az alkalmazást az Azure AD-ben a parancssori eszközök használatával regisztrálja. Az [Active-Directory-dotnetcore-Daemon-v2](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2) minta bemutatja, hogyan regisztrálhat egy alkalmazás titkát vagy tanúsítványt egy Azure ad-alkalmazással:
+
+- Az alkalmazás titkos kódjának regisztrálásával kapcsolatos további információkért lásd: [AppCreationScripts/configure. ps1](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2/blob/5199032b352a912e7cc0fce143f81664ba1a8c26/AppCreationScripts/Configure.ps1#L190)
+- A tanúsítványok alkalmazással való regisztrálásával kapcsolatos további információkért lásd: [AppCreationScripts-withCert/configure. ps1](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2/blob/5199032b352a912e7cc0fce143f81664ba1a8c26/AppCreationScripts-withCert/Configure.ps1#L162-L178)

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/16/2018
 ms.author: sedusch
-ms.openlocfilehash: 46044c061cca24714d1a951e28cf01ca29f14a7e
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: cd377e78abe328814795bb1f75465b090a13e456
+ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67707211"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "68228351"
 ---
 # <a name="setting-up-pacemaker-on-suse-linux-enterprise-server-in-azure"></a>A SUSE Linux Enterprise Server az Azure-ban támasztja beállítása
 
@@ -84,7 +84,7 @@ Futtassa az alábbi parancsokat az összes **iSCSI cél virtuális gépek**.
 
 Futtassa az alábbi parancsokat az összes **iSCSI cél virtuális gépek** a fürtök, az SAP-rendszerek által használt iSCSI-lemezek létrehozásához. A következő példában több fürt SBD eszközök jönnek létre. Ez bemutatja, hogyan szeretné használni egy iSCSI-tárolókiszolgáló több fürthöz. Az operációsrendszer-lemez a SBD eszközök kerülnek. Győződjön meg arról, hogy rendelkezik-e elegendő lemezterület.
 
-**`nfs`** az NFS-fürt azonosítására használt **ascsnw1** azonosítja az ASCS fürt **NW1**, **dbnw1** azonosítja az adatbázis fürt **NW1** , **nfs-0** és **nfs-1** NFS fürtcsomópont a gazdanevek vannak **nw1-xscs-0** és **nw1-xscs-1**, a gazdanevek vannak a **NW1** ASCS fürt csomópontjai, és **nw1-db-0** és **nw1-db-1** a gazdanevek, az adatbázis-fürtcsomópontok vannak. Cserélje le őket a fürtcsomópontok állomásnevét, és az SAP-rendszerhez biztonsági azonosítója.
+**`nfs`** az NFS-fürt azonosítására szolgál, a **ascsnw1** a **NW1**ASCS-fürt azonosítására szolgál. **a dbnw1** a **NW1**, az **NFS-0** és az **NFS-1 adatbázis-** fürt azonosítására szolgál, az NFS-fürtcsomópontok állomásneve,  **a NW1-xscs-0** és a **NW1-xscs-1** a **NW1** ASCS-fürtcsomópontok állomásneve, a **NW1-db-0** és a **NW1-db-1** az adatbázis-fürt csomópontjainak állomásneve. Cserélje le őket a fürtcsomópontok állomásnevét, és az SAP-rendszerhez biztonsági azonosítója.
 
 <pre><code># Create the root folder for all SBD devices
 sudo mkdir /sbd
@@ -302,7 +302,7 @@ A következő elemek van fűzve előtagként vagy **[A]** – az összes csomóp
    <b>SBD_WATCHDOG="yes"</b>
    </code></pre>
 
-   Hozzon létre a `softdog` konfigurációs fájl
+   A `softdog` konfigurációs fájl létrehozása
 
    <pre><code>echo softdog | sudo tee /etc/modules-load.d/softdog.conf
    </code></pre>
@@ -321,7 +321,7 @@ A következő elemek van fűzve előtagként vagy **[A]** – az összes csomóp
    <pre><code>sudo zypper update
    </code></pre>
 
-1. **[A]**  Az operációs rendszer konfigurálása
+1. **[A]** az operációs rendszer konfigurálása
 
    Bizonyos esetekben támasztja sok folyamatot hoz létre, és ezáltal kimerítik a folyamatok engedélyezett számát. Ebben az esetben a fürt csomópontok közötti szívverést előfordulhat, hogy sikertelen, és az erőforrások feladatátvételi vezethet. Javasoljuk, hogy növelje a maximálisan megengedett folyamatok a következő paraméter beállításával.
 
@@ -348,9 +348,9 @@ A következő elemek van fűzve előtagként vagy **[A]** – az összes csomóp
    vm.dirty_background_bytes = 314572800
    </code></pre>
 
-1. **[A]**  Konfigurálása azure-felhő-netconfig magas rendelkezésre ÁLLÁS-fürthöz
+1. **[A]** a Cloud-netconfig konfigurálása – Azure a ha-fürthöz
 
-   Módosítsa a konfigurációs fájlt a hálózati adapter, megakadályozza, hogy a felhő hálózati beépülő modul a virtuális IP-cím (támasztja kell szabályozhatja a virtuális IP-cím-hozzárendelés) eltávolítása az alább látható módon. További információ: [SUSE KB-os 7023633](https://www.suse.com/support/kb/doc/?id=7023633). 
+   Módosítsa a hálózati adapter konfigurációs fájlját az alább látható módon, hogy megakadályozza, hogy a Cloud Network beépülő modul eltávolítsa a virtuális IP-címet (a pacemakernek meg kell határoznia a VIP-hozzárendelést). További információ: [SUSE KB 7023633](https://www.suse.com/support/kb/doc/?id=7023633). 
 
    <pre><code># Edit the configuration file
    sudo vi /etc/sysconfig/network/ifcfg-eth0 
@@ -448,7 +448,7 @@ A következő elemek van fűzve előtagként vagy **[A]** – az összes csomóp
    <pre><code>sudo vi /etc/corosync/corosync.conf
    </code></pre>
 
-   Adja hozzá a következő félkövér tartalmat a fájlhoz, ha az értékek nem ott vagy eltérő. Ellenőrizze, hogy módosítsa a jogkivonatot, hogy a karbantartás megőrzése memória 30000. További információkért lásd: [Ez a cikk a Linux-][virtual-machines-linux-maintenance] or [Windows][virtual-machines-windows-maintenance]. Ügyeljen arra, hogy a paraméter mcastaddr eltávolítása.
+   Adja hozzá a következő félkövér tartalmat a fájlhoz, ha az értékek nem ott vagy eltérő. Ellenőrizze, hogy módosítsa a jogkivonatot, hogy a karbantartás megőrzése memória 30000. További információkért tekintse meg [ezt a cikket a Linux][virtual-machines-linux-maintenance] or [Windows][virtual-machines-windows-maintenance]rendszerhez. Ügyeljen arra, hogy a paraméter mcastaddr eltávolítása.
 
    <pre><code>[...]
      <b>token:          30000
@@ -495,17 +495,18 @@ A következő elemek van fűzve előtagként vagy **[A]** – az összes csomóp
 
 A STONITH eszköz hitelesítéséhez, szemben a Microsoft Azure egy egyszerű szolgáltatást használja. Kövesse az alábbi lépéseket egy szolgáltatásnév létrehozásához.
 
-1. odamegy [https://portal.azure.com](https://portal.azure.com)
+1. Nyissa meg a következőt: <https://portal.azure.com>
 1. Nyissa meg az Azure Active Directory panel  
    Lépjen a Tulajdonságok részhez, és jegyezze fel a címtár-azonosító. Ez a **bérlőazonosító**.
 1. Kattintson az alkalmazásregisztrációk
-1. Kattintson az Add (Hozzáadás) parancsra
-1. Adjon meg egy nevet, válassza ki a "Web app/API" alkalmazástípus, adja meg a bejelentkezési URL-címet (például http\://localhost), és kattintson a Létrehozás gombra
-1. A bejelentkezési URL-címet nem használja, és bármilyen érvényes URL-cím lehet
-1. Válassza ki az új alkalmazást, és a beállítások lapon kattintson a kulcsok
-1. Adja meg egy új kulcs leírását, válassza a "Soha nem jár le", és kattintson a Mentés gombra
+1. Kattintson az új regisztráció elemre.
+1. Adjon meg egy nevet, válassza a "fiókok ebben a szervezeti címtárban" lehetőséget. 
+2. Válassza az alkalmazás típusa "web" lehetőséget, adjon meg egy bejelentkezési URL-címet (például\/http:/localhost), és kattintson a Hozzáadás gombra.  
+   A bejelentkezési URL-címet nem használja, és bármilyen érvényes URL-cím lehet
+1. Válassza a tanúsítványok és titkos kulcsok lehetőséget, majd kattintson az új ügyfél titka elemre.
+1. Adja meg az új kulcs leírását, válassza a "soha nem jár le" lehetőséget, majd kattintson a Hozzáadás gombra.
 1. Jegyezze fel az értéket. Használatban van a **jelszó** a Szolgáltatásnévhez
-1. Jegyezze fel az alkalmazás azonosítóját. A felhasználónév használatban van (**bejelentkezési azonosító** az alábbi lépéseket a) a szolgáltatásnév
+1. Válassza az Áttekintés lehetőséget. Jegyezze fel az alkalmazás azonosítóját. A felhasználónév használatban van (**bejelentkezési azonosító** az alábbi lépéseket a) a szolgáltatásnév
 
 ### <a name="1-create-a-custom-role-for-the-fence-agent"></a>**[1]**  Az időkorlát-ügynökhöz tartozó egyéni szerepkör létrehozása
 
@@ -533,11 +534,11 @@ A bemeneti fájl használja az alábbi tartalommal. Szeretne az előfizetések a
 }
 ```
 
-### <a name="a-assign-the-custom-role-to-the-service-principal"></a>**[A]**  Az egyéni szerepkör hozzárendelése a Szolgáltatásnévhez
+### <a name="a-assign-the-custom-role-to-the-service-principal"></a>**[A]** az egyéni szerepkör társítása az egyszerű szolgáltatáshoz
 
 Rendelje hozzá az egyéni szerepkör "Linux időkorlát ügynök szerepkör", amely az előző fejezetben a szolgáltatásnév sikeresen létrehozva. A tulajdonosi szerepkör ne használjon többé!
 
-1. odamegy [https://portal.azure.com](https://portal.azure.com)
+1. odamegy[https://portal.azure.com](https://portal.azure.com)
 1. Nyissa meg az összes erőforrás panelen
 1. Válassza ki a virtuális gépet, az első fürtcsomópontra
 1. Kattintson a hozzáférés-vezérlés (IAM)
@@ -576,16 +577,16 @@ sudo crm configure primitive <b>stonith-sbd</b> stonith:external/sbd \
    op monitor interval="15" timeout="15"
 </code></pre>
 
-## <a name="pacemaker-configuration-for-azure-scheduled-events"></a>Az Azure az ütemezett események támasztja konfigurációja
+## <a name="pacemaker-configuration-for-azure-scheduled-events"></a>Pacemaker-konfiguráció az Azure ütemezett eseményeihez
 
-Azure-ajánlatok [ütemezett események](https://docs.microsoft.com/azure/virtual-machines/linux/scheduled-events). Az ütemezett események metaadatok szolgáltatáson keresztül, ha elegendő idő marad az alkalmazás előkészítése az eseményekről, mint a virtuális gép leállítása, a virtuális gép újbóli üzembe helyezése, stb. Erőforrás-ügynök **[azure-események](https://github.com/ClusterLabs/resource-agents/pull/1161)** figyeli az Azure az ütemezett események. Események észlelése esetén az ügynök megpróbálja az összes erőforrás leállítása az érintett virtuális gépre, és helyezze át őket a fürt egy másik csomópontra. A további támasztja erőforrások eléréséhez kell konfigurálni. 
+Az Azure [ütemezett eseményeket](https://docs.microsoft.com/azure/virtual-machines/linux/scheduled-events)kínál. Az ütemezett események a meta-adatszolgáltatáson keresztül érhetők el, és lehetővé teszik, hogy az alkalmazás előkészítse az eseményeket, például a virtuális gépek leállítását, a virtuális gépek újratelepítését stb. Erőforrás **[-ügynök Azure – események](https://github.com/ClusterLabs/resource-agents/pull/1161)** figyelők az ütemezett Azure-eseményekhez. Ha a rendszer eseményeket észlel, az ügynök megkísérli leállítani az érintett virtuális gép összes erőforrását, és áthelyezi őket a fürt egy másik csomópontjára. A további pacemaker-erőforrások eléréséhez konfigurálni kell. 
 
-1. **[A]**  Telepítse a **azure-események** ügynök. 
+1. **[A]** telepítse az **Azure-Events** ügynököt. 
 
 <pre><code>sudo zypper install resource-agents
 </code></pre>
 
-2. **[1]**  Támasztja az erőforrások konfigurálása. 
+2. **[1]** adja meg az erőforrásokat a pacemakerben. 
 
 <pre><code>
 #Place the cluster in maintenance mode
@@ -600,17 +601,17 @@ sudo crm configure property maintenance-mode=false
 </code></pre>
 
    > [!NOTE]
-   > A támasztja erőforrásait az azure-eseményeket az ügynök, ha a karbantartási módból, vagy helyezze el a fürt konfigurálása, után, például a figyelmeztető üzenetek kaphat:  
-     Figyelmeztetés: cib-rendszerindítási-beállítások: Ismeretlen "hostName_  <strong>állomásnév</strong>"  
-     Figyelmeztetés: cib-rendszerindítási-beállítások: "az azure-events_globalPullState" Ismeretlen attribútum  
-     Figyelmeztetés: cib-rendszerindítási-beállítások: Ismeretlen "hostName_ <strong>állomásnév</strong>"  
-   > A figyelmeztető üzenetek figyelmen kívül hagyható.
+   > Miután konfigurálta a pacemaker erőforrásait az Azure-Events Agent szolgáltatáshoz, amikor a fürtöt karbantartási módba vagy kifelé helyezi, a következőhöz hasonló figyelmeztető üzenetek jelenhetnek meg:  
+     Figyelmeztetés: CIB-bootstrap-Options: ismeretlen "hostName_ <strong>hostName</strong>" attribútum  
+     Figyelmeztetés: CIB-bootstrap-Options: ismeretlen "Azure-events_globalPullState" attribútum  
+     Figyelmeztetés: CIB-bootstrap-Options: ismeretlen "hostName_ <strong>hostName</strong>" attribútum  
+   > Ezek a figyelmeztető üzenetek figyelmen kívül hagyhatók.
 
 ## <a name="next-steps"></a>További lépések
 
-* [Az Azure virtuális gépek tervezése és megvalósítása SAP][planning-guide]
-* [Az SAP az Azure virtuális gépek üzembe helyezése][deployment-guide]
-* [Az SAP az Azure Virtual Machines DBMS üzembe helyezése][dbms-guide]
-* [Magas rendelkezésre állás NFS, a SUSE Linux Enterprise Server Azure virtuális gépeken][sles-nfs-guide]
-* [Magas rendelkezésre állás az SAP NetWeaver SUSE Linux Enterprise Server az Azure virtuális gépeken SAP-alkalmazások][sles-guide]
-* Magas rendelkezésre állást és az Azure virtuális gépeken SAP Hana vész-helyreállítási terv létrehozásához, lásd: [magas rendelkezésre állás az SAP HANA Azure-beli virtuális gépeken (VM)][sap-hana-ha]
+* [Azure Virtual Machines az SAP tervezéséhez és megvalósításához][planning-guide]
+* [Azure Virtual Machines üzembe helyezés az SAP-ban][deployment-guide]
+* [Azure Virtual Machines adatbázis-kezelői telepítés az SAP-hoz][dbms-guide]
+* [Magas rendelkezésre állás az NFS-en SUSE Linux Enterprise Server Azure-beli virtuális gépeken][sles-nfs-guide]
+* [Magas rendelkezésre állás az Azure-beli virtuális gépeken futó SAP NetWeaver számára SUSE Linux Enterprise Server SAP-alkalmazásokhoz][sles-guide]
+* A magas rendelkezésre állás és a SAP HANA Azure-beli virtuális gépeken történő vész-helyreállítási tervének megismeréséhez lásd: [Az Azure-beli SAP HANA magas rendelkezésre állása Virtual Machines (VM)][sap-hana-ha]

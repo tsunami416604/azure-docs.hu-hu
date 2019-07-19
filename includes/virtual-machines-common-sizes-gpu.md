@@ -8,30 +8,30 @@ ms.topic: include
 ms.date: 06/11/2019
 ms.author: cynthn;azcspmt;jonbeck
 ms.custom: include file
-ms.openlocfilehash: b7bc040ae799aec98454fb227bbeeb6027f9615a
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: 0325fc8cabc43988fb27a307921977b9b487c123
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67673364"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68286155"
 ---
-GPU-optimalizált virtuális gépek méretek a következők specializált virtuális gépek egy vagy több NVIDIA gpu-k használatával érhető el. Ezeket a méreteket képi megjelenítés, nagy számítási igényű és magas grafikai igényű számítási feladatokhoz tervezték. Ez a cikk ismerteti a száma, és a GPU-k, vcpu-k, az adatlemezeket és a hálózati adapter típusa. Tároló átviteli sebesség és a hálózati sávszélesség is szerepelnek az ennél a csoportosításnál méreteire vonatkoztatva.
+A GPU-ra optimalizált virtuálisgép-méretek olyan speciális virtuális gépek, amelyek egy vagy több NVIDIA GPU-val érhetők el. Ezek a méretek nagy számítási igényű, grafikus igényű és vizualizációs munkaterhelésekhez készültek. Ez a cikk a GPU-k, a vCPU, az adatlemezek és a hálózati adapterek számáról és típusáról nyújt információt. A rendszer a tároló átviteli sebességét és a hálózati sávszélességet is tartalmazza a csoportosítás minden egyes méretéhez.
 
-* **Hálózati vezérlő által, az NCv2, az NCv3** méretek nagy számítási és hálózatigényű alkalmazásokra és algoritmusokra vannak optimalizálva. Néhány példa a CUDA - és OpenCL-alapú alkalmazásokat és szimulációkat, mesterséges Intelligencia és a Deep Learning. Az NCv3 sorozat a nagy teljesítményű számítási feladatokhoz, amely NVIDIA Tesla V100 GPU összpontosít. Az NC sorozat használja a v3-as 2.60 GHz-es Intel Xeon E5-2690 v3 (Haswell) processzor szolgál, és az NCv2 sorozatú és az NCv3 sorozatú virtuális gépek használata az Intel Xeon E5-2690 v4 (Broadwell) processzor.
+* Az **NC, a NCv2, a NCv3** -méretek nagy számítási igényű és hálózati igényű alkalmazásokhoz és algoritmusokhoz vannak optimalizálva. Ilyenek például a CUDA-és OpenCL-alapú alkalmazások, a szimulációk, az AI-k és a Deep learning. A NCv3 sorozat az NVIDIA Tesla V100 GPU-val rendelkező nagy teljesítményű számítási feladatokra összpontosít. Az NC sorozat az Intel Xeon E5-2690 v3 2.60 GHz v3 (Haswell) processzort használja, a NCv2 és a NCv3 sorozatú virtuális gépek pedig az Intel Xeon E5-2690 v4 (Broadwell) processzort használják.
 
-* **ND és NDv2** az ND sorozat deep learning eszköz tanuláshoz és következtetésekhez forgatókönyvei összpontosít. Az NVIDIA Tesla P40 GPU-és az Intel Xeon E5-2690 v4 (Broadwell) processzor. A NDv2-sorozat az Intel Xeon Platinum 8168 (Skylake) processzor használ.
+* **ND és NDv2** Az ND sorozat a mélyreható tanuláshoz szükséges képzésekre és következtetésekre összpontosít. Az NVIDIA Tesla P40 GPU és az Intel Xeon E5-2690 v4 (Broadwell) processzort használja. Az NDv2 sorozat az Intel Xeon Platinum 8168 (Skylake) processzort használja.
 
-* **NV és NVv3** méretek a távoli képi megjelenítés, streamelési, játék, kódolási és VDI-forgatókönyvekhez OpenGL, DirectX és hasonló keretrendszereket használó kialakítva és optimalizálva.  Ezek a virtuális gépek az NVIDIA Tesla M60 GPU élvezik.
+* Az **NV-és NVv3** -méretek a távoli vizualizációk, streaming-, játék-, kódolási és VDI-forgatókönyvekhez lettek optimalizálva, például az OpenGL és a DirectX használatával.  Ezeket a virtuális gépeket az NVIDIA Tesla M60 GPU támogatja.
 
 ## <a name="nc-series"></a>NC sorozat
 
 Prémium szintű Storage:  Nem támogatott
 
-Prémium szintű Storage gyorsítótárazást:  Nem támogatott
+Premium Storage gyorsítótárazás:  Nem támogatott
 
-NC sorozat virtuális gépei működteti a [NVIDIA Tesla K80](https://www.nvidia.com/content/dam/en-zz/Solutions/Data-Center/tesla-product-literature/Tesla-K80-BoardSpec-07317-001-v05.pdf) kártya és az Intel Xeon E5-2690 v3 (Haswell) processzor szolgál. Felhasználók is gyorsabb adatokat az energiafeltérképező alkalmazások üzemeltet, összeomlás-szimulációk, ray követett Renderelés, a mély tanulás és egyebek. A NC24r-konfigurációt egy alacsony késleltetésű, nagy átviteli sebességű hálózati adaptert szorosan összefüggő párhuzamos számítási feladatokhoz biztosít.
+Az NC sorozatú virtuális gépeket az [NVIDIA Tesla K80](https://www.nvidia.com/content/dam/en-zz/Solutions/Data-Center/tesla-product-literature/Tesla-K80-BoardSpec-07317-001-v05.pdf) kártya és az Intel Xeon E5-2690 v3 (Haswell) processzor látja el. A felhasználók gyorsabban végezhetik el az adatgyűjtést, ha a CUDA használatával hasznosítják az energetikai feltárási alkalmazásokat, az összeomlási szimulációkat, a Ray által követett renderelést, a mély tanulást stb. A NC24r konfiguráció alacsony késésű, nagy átviteli sebességű hálózati adaptert biztosít a szorosan összekapcsolt párhuzamos számítási feladatokhoz.
 
-| Size | vCPU | Memória: GiB | Ideiglenes tárterület (SSD) GiB | GPU | GPU-memóriával: GiB | Adatlemezek max. száma | Hálózati adapterek maximális száma |
+| Size | vCPU | Memória: GiB | Ideiglenes tárterület (SSD) GiB | GPU | GPU memória: GiB | Adatlemezek max. száma | Hálózati adapterek maximális száma |
 | --- | --- | --- | --- | --- | --- | --- | ---- |
 | Standard_NC6 |6 |56 | 340 | 1 | 12 | 24 | 1 |
 | Standard_NC12 |12 |112 | 680 | 2 | 24 | 48 | 2 |
@@ -46,22 +46,22 @@ NC sorozat virtuális gépei működteti a [NVIDIA Tesla K80](https://www.nvidia
 
 Prémium szintű Storage:  Támogatott
 
-Prémium szintű Storage gyorsítótárazást:  Támogatott
+Premium Storage gyorsítótárazás:  Támogatott
 
-NCv2 sorozatú virtuális gépek működteti [NVIDIA Tesla P100](https://www.nvidia.com/en-us/data-center/tesla-p100/) gpu-kkal. Az gpu-k biztosíthat az NC sorozat számítási teljesítményének több mint 2. Ügyfelek kihasználhatja az frissített gpu-k hagyományos HPC számítási feladatokhoz, például a olajfúrás-modellezés, DNS-sel szekvenálás, fehérjeanalízis, Monte Carlo-szimulációk és mások. A GPU-k mellett az NCv2 sorozatú virtuális gépek is működteti az Intel Xeon E5-2690 v4 (Broadwell) processzor.
+Az NCv2 sorozatú virtuális gépeket [NVIDIA Tesla P100](https://www.nvidia.com/en-us/data-center/tesla-p100/) GPU-k működtetik. Ezek a GPU-k az NC sorozat számítási teljesítményének több mint kétszeresét biztosítják. Az ügyfelek igénybe vehetik a frissített GPU-ket a hagyományos HPC-számítási feladatokhoz, mint például a tározó modellezése, a DNS-szekvencia, a protein-elemzés, a Monte Carlo-szimulációk és egyebek. A GPU-k mellett az Intel Xeon E5-2690 v4 (Broadwell) processzorok is a NCv2 sorozatú virtuális gépeket használják.
 
-A NC24rs v2 konfiguráció egy alacsony késleltetésű, nagy átviteli sebességű hálózati adaptert szorosan összefüggő párhuzamos számítási feladatokhoz biztosít.
+A NC24rs v2-konfiguráció alacsony késleltetésű, nagy átviteli sebességű hálózati adaptert biztosít a szorosan összekapcsolt párhuzamos számítási feladatokhoz.
 
 > [!IMPORTANT]
-> Az ezen virtuálisgépméret-családhoz az előfizetés vCPU-(mag-) kvóta kezdetben értéke 0 minden régióban. [Egy vCPU-kvóta növelésére](../articles/azure-supportability/resource-manager-core-quotas-request.md) a termékcsalád az az [elérhető régióban](https://azure.microsoft.com/regions/services/).
+> Ennél a méretnél az előfizetéshez tartozó vCPU (mag) kvóta kezdetben az egyes régiókban 0 értékre van állítva. [VCPU-kvóta növelésének kérése](../articles/azure-supportability/resource-manager-core-quotas-request.md) a család számára egy [elérhető régióban](https://azure.microsoft.com/regions/services/).
 >
 
-| Size | vCPU | Memória: GiB | Ideiglenes tárterület (SSD) GiB | GPU | GPU-memóriával: GiB | Adatlemezek max. száma | Max. gyorsítótárazás nélküli lemezteljesítmény: IOPS / MBps | Hálózati adapterek maximális száma |
+| Size | vCPU | Memória: GiB | Ideiglenes tárterület (SSD) GiB | GPU | GPU memória: GiB | Adatlemezek max. száma | Max. gyorsítótárazás nélküli lemezteljesítmény: IOPS / MBps | Hálózati adapterek maximális száma |
 | --- | --- | --- | --- | --- | --- | ---  | ---| --- |
 | Standard_NC6s_v2 | 6 |112 | 736 | 1 | 16 | 12 | 20000/ 200 | 4 |
-| Standard_NC12s_v2 | 12 |224 | 1474 | 2 | 32 | 24 | 40000 / 400 | 8 |
-| Standard_NC24s_v2 | 24 |448 | 2948 | 4 | 64 | 32 | 80000 / 800 | 8 |
-| Standard_NC24rs_v2* | 24 |448 | 2948 | 4 | 64 | 32 | 80000 / 800 | 8 |
+| Standard_NC12s_v2 | 12 |224 | 1474 | 2 | 32 | 24 | 40000/400 | 8 |
+| Standard_NC24s_v2 | 24 |448 | 2948 | 4 | 64 | 32 | 80000/800 | 8 |
+| Standard_NC24rs_v2* | 24 |448 | 2948 | 4 | 64 | 32 | 80000/800 | 8 |
 
 1 GPU = egy P100 kártya.
 
@@ -71,20 +71,20 @@ A NC24rs v2 konfiguráció egy alacsony késleltetésű, nagy átviteli sebessé
 
 Prémium szintű Storage:  Támogatott
 
-Prémium szintű Storage gyorsítótárazást:  Támogatott
+Premium Storage gyorsítótárazás:  Támogatott
 
-Az NCv3 sorozatú virtuális gépek működteti [NVIDIA Tesla V100](https://www.nvidia.com/en-us/data-center/tesla-v100/) gpu-kkal. Az gpu-k 1,5 x az NCv2 sorozat számítási teljesítményt tud biztosítani. Ügyfelek kihasználhatja az frissített gpu-k hagyományos HPC számítási feladatokhoz, például a olajfúrás-modellezés, DNS-sel szekvenálás, fehérjeanalízis, Monte Carlo-szimulációk és mások. A NC24rs v3 konfiguráció egy alacsony késleltetésű, nagy átviteli sebességű hálózati adaptert szorosan összefüggő párhuzamos számítási feladatokhoz biztosít. A GPU-k mellett az NCv3 sorozatú virtuális gépek is működteti az Intel Xeon E5-2690 v4 (Broadwell) processzor.
+Az NCv3 sorozatú virtuális gépeket [NVIDIA Tesla V100](https://www.nvidia.com/en-us/data-center/tesla-v100/) GPU-k működtetik. Ezek a GPU-k 1,5 x-t biztosítanak a NCv2 sorozat számítási teljesítményéhez. Az ügyfelek igénybe vehetik a frissített GPU-ket a hagyományos HPC-számítási feladatokhoz, mint például a tározó modellezése, a DNS-szekvencia, a protein-elemzés, a Monte Carlo-szimulációk és egyebek. Az NC24rs v3 konfiguráció alacsony késésű, nagy átviteli sebességű hálózati adaptert biztosít a szorosan összekapcsolt párhuzamos számítási feladatokhoz. A GPU-k mellett az Intel Xeon E5-2690 v4 (Broadwell) processzorok is a NCv3 sorozatú virtuális gépeket használják.
 
 > [!IMPORTANT]
-> Az ezen virtuálisgépméret-családhoz az előfizetés vCPU-(mag-) kvóta kezdetben értéke 0 minden régióban. [Egy vCPU-kvóta növelésére](../articles/azure-supportability/resource-manager-core-quotas-request.md) a termékcsalád az az [elérhető régióban](https://azure.microsoft.com/regions/services/).
+> Ennél a méretnél az előfizetéshez tartozó vCPU (mag) kvóta kezdetben az egyes régiókban 0 értékre van állítva. [VCPU-kvóta növelésének kérése](../articles/azure-supportability/resource-manager-core-quotas-request.md) a család számára egy [elérhető régióban](https://azure.microsoft.com/regions/services/).
 >
 
-| Size | vCPU | Memória: GiB | Ideiglenes tárterület (SSD) GiB | GPU | GPU-memóriával: GiB | Adatlemezek max. száma | Max. gyorsítótárazás nélküli lemezteljesítmény: IOPS / MBps | Hálózati adapterek maximális száma |
+| Size | vCPU | Memória: GiB | Ideiglenes tárterület (SSD) GiB | GPU | GPU memória: GiB | Adatlemezek max. száma | Max. gyorsítótárazás nélküli lemezteljesítmény: IOPS / MBps | Hálózati adapterek maximális száma |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | Standard_NC6s_v3 | 6 |112 | 736 | 1 | 16 | 12 | 20000 / 200 | 4 |
-| Standard_NC12s_v3 | 12 |224 | 1474 | 2 | 32 | 24 | 40000 / 400 | 8 |
-| Standard_NC24s_v3 | 24 |448 | 2948 | 4 | 64 | 32 | 80000 / 800 | 8 | 
-| Standard_NC24rs_v3* |24 |448 | 2948 | 4 | 64 | 32 | 80000 / 800 | 8 |
+| Standard_NC12s_v3 | 12 |224 | 1474 | 2 | 32 | 24 | 40000/400 | 8 |
+| Standard_NC24s_v3 | 24 |448 | 2948 | 4 | 64 | 32 | 80000/800 | 8 | 
+| Standard_NC24rs_v3* |24 |448 | 2948 | 4 | 64 | 32 | 80000/800 | 8 |
 
 1 GPU = egy V100 kártya.
 
@@ -94,37 +94,37 @@ Az NCv3 sorozatú virtuális gépek működteti [NVIDIA Tesla V100](https://www.
 
 Prémium szintű Storage:  Támogatott
 
-Prémium szintű Storage gyorsítótárazást:  Támogatott
+Premium Storage gyorsítótárazás:  Támogatott
 
-Infiniband: Nem támogatott
+InfiniBand Nem támogatott
 
-NDv2 sorozatú virtuális gép egy újdonága a HPC, mesterséges Intelligencia és machine learning-munkaterhelések igényeinek megfelelően kialakított GPU-család. 8 működteti az NVIDIA Tesla V100 NVLINK összekapcsolt gpu-k és 40 Intel Xeon Platinum 8168 (Skylake) magok és 672 GB memóriát a rendszer. Az NDv2-példányok kitűnő FP32- és FP64-teljesítmény nyújtanak egyebek között a Cuda, a TensorFlow, a Pytorch, a Caffe keretrendszereket használó HPC és AI számítási feladatokhoz.
+A NDv2 sorozatú virtuális gép a HPC-, AI-és gépi tanulási munkaterhelések igényeihez tervezett GPU-család új bővítménye. A szolgáltatás 8 NVIDIA Tesla V100 NVLINK összekapcsolt GPU-k és 40 Intel Xeon Platinum 8168 (Skylake) maggal és 672 GiB rendszermemóriával rendelkezik. Az NDv2-példányok kitűnő FP32- és FP64-teljesítmény nyújtanak egyebek között a Cuda, a TensorFlow, a Pytorch, a Caffe keretrendszereket használó HPC és AI számítási feladatokhoz.
 
-[Regisztráljon, és hozzáférhet ezek a gépek előzetes verzió ideje alatt](https://aka.ms/ndv2signup).
+Az előzetes verzió használatakor [regisztráljon, és máris hozzáférhet ezekhez a gépekhez](https://aka.ms/ndv2signup).
 <br>
 
-| Size | vCPU | GPU | Memory (Memória) | Hálózati adapterek (max) | Temp Storage (SSD) GiB | Legfeljebb Adatlemezek | Max. gyorsítótárazás nélküli lemezteljesítmény: IOPS / MBps | Maximális sávszélesség | 
+| Size | vCPU | GPU | Memory (Memória) | Hálózati adapterek (max) | Temp Storage (SSD) GiB | Legfeljebb adatlemezek | Max. gyorsítótárazás nélküli lemezteljesítmény: IOPS / MBps | Maximális hálózati sávszélesség | 
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| Standard_ND40s_v2 | 40 | 8 V100 (NVLink) | 672 GiB | 8 | 2948 | 32 | 80000 / 800 | 24000 Mbps |
+| Standard_ND40s_v2 | 40 | 8 V100 (NVLink) | 672 GiB | 8 | 2948 | 32 | 80000/800 | 24000 Mbps |
 
 ## <a name="nd-series"></a>ND sorozat
 
 Prémium szintű Storage:  Támogatott
 
-Prémium szintű Storage gyorsítótárazást:  Támogatott
+Premium Storage gyorsítótárazás:  Támogatott
 
-Az ND sorozatú virtuális gépek, és a mesterséges Intelligencia, Deep Learning számítási feladatokhoz készült a GPU-termékcsalád új mellett. Kiváló teljesítmény tanuláshoz és következtetésekhez kínálnak. ND példányok működteti [NVIDIA Tesla P40](https://images.nvidia.com/content/pdf/tesla/184427-Tesla-P40-Datasheet-NV-Final-Letter-Web.pdf) gpu-k és az Intel Xeon E5-2690 v4 (Broadwell) processzor. Ezek a példányok remek teljesítményt egyszeres pontosságú lebegőpontos műveletekhez, AI a Microsoft Cognitive Toolkit, TensorFlow, Caffe és más keretrendszerekhez biztosítanak. Az ND sorozat jóval nagyobb GPU-memóriával rendelkezik (24 GB), így jelentősen nagyobb neurálishálózat-modellekhez is alkalmazható. Az NC sorozathoz hasonlóan az ND sorozat távoli közvetlen memória, egy másodlagos alacsony késleltetésű, nagy átviteli sebességű hálózati konfigurációval kínál és InfiniBand-kapcsolattal nagy méretű betanítási feladatokat futtathatnak több gpu-k futtatásához.
+Az ND sorozatú Virtual Machines az AI-hoz készült GPU-család, valamint a Deep learning számítási feladatainak egy új kiegészítése. Kiváló teljesítményt nyújtanak a képzéshez és a következtetésekhez. Az ND-példányokat az [NVIDIA Tesla P40](https://images.nvidia.com/content/pdf/tesla/184427-Tesla-P40-Datasheet-NV-Final-Letter-Web.pdf) GPU-k és az Intel Xeon E5-2690 v4 (Broadwell) processzorok működtetik. Ezek a példányok kiváló teljesítményt biztosítanak az egyszeres pontosságú lebegőpontos műveletekhez, a Microsoft Cognitive Toolkit, TensorFlow, Cafe és más keretrendszereket használó AI-munkaterhelésekhez. Az ND sorozat jóval nagyobb GPU-memóriával rendelkezik (24 GB), így jelentősen nagyobb neurálishálózat-modellekhez is alkalmazható. Az NC sorozathoz hasonlóan az ND sorozat egy olyan konfigurációt kínál, amely egy másodlagos, kis késleltetésű, nagy átviteli sebességű hálózattal rendelkezik a RDMA-on keresztül, és InfiniBand a kapcsolatot, így nagy léptékű, több GPU-ra kiterjedő képzési feladatokat is futtathat.
 
 > [!IMPORTANT]
-> Ez virtuálisgépméret-családhoz tartozó vCPU-(mag-) kvóta az előfizetésben régiónként kezdetben értéke 0. [Egy vCPU-kvóta növelésére](../articles/azure-supportability/resource-manager-core-quotas-request.md) a termékcsalád az az [elérhető régióban](https://azure.microsoft.com/regions/services/).
+> Ennél a méretnél az előfizetéshez tartozó régiónként az vCPU (Core) kvóta beállítása kezdetben 0. [VCPU-kvóta növelésének kérése](../articles/azure-supportability/resource-manager-core-quotas-request.md) a család számára egy [elérhető régióban](https://azure.microsoft.com/regions/services/).
 >
 
-| Size | vCPU | Memória: GiB | Ideiglenes tárterület (SSD) GiB | GPU | GPU-memóriával: GiB | Adatlemezek max. száma | Max. gyorsítótárazás nélküli lemezteljesítmény: IOPS / MBps | Hálózati adapterek maximális száma |
+| Size | vCPU | Memória: GiB | Ideiglenes tárterület (SSD) GiB | GPU | GPU memória: GiB | Adatlemezek max. száma | Max. gyorsítótárazás nélküli lemezteljesítmény: IOPS / MBps | Hálózati adapterek maximális száma |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | Standard_ND6s | 6 |112 | 736 | 1 | 24 | 12 | 20000 / 200 | 4 |
-| Standard_ND12s | 12 |224 | 1474 | 2 | 48 | 24 | 40000 / 400 | 8 | 
-| Standard_ND24s | 24 |448 | 2948 | 4 | 96 | 32 | 80000 / 800 | 8 |
-| Standard_ND24rs* | 24 |448 | 2948 | 4 | 96 | 32 | 80000 / 800 | 8 |
+| Standard_ND12s | 12 |224 | 1474 | 2 | 48 | 24 | 40000/400 | 8 | 
+| Standard_ND24s | 24 |448 | 2948 | 4 | 96 | 32 | 80000/800 | 8 |
+| Standard_ND24rs* | 24 |448 | 2948 | 4 | 96 | 32 | 80000/800 | 8 |
 
 1 GPU = egy P40 kártya.
 
@@ -134,13 +134,13 @@ Az ND sorozatú virtuális gépek, és a mesterséges Intelligencia, Deep Learni
 
 Prémium szintű Storage:  Nem támogatott
 
-Prémium szintű Storage gyorsítótárazást:  Nem támogatott
+Premium Storage gyorsítótárazás:  Nem támogatott
 
-Működteti az NV-sorozat virtuális gépei [NVIDIA Tesla M60](https://images.nvidia.com/content/tesla/pdf/188417-Tesla-M60-DS-A4-fnl-Web.pdf) gpu-k és az NVIDIA GRID technológiát kínál a desktopban gyorsított alkalmazások és virtuális asztalok ügyfelek amelyeknél jeleníthetik meg adataikat vagy szimulációikat. Jeleníthetik meg a grafikus kiemelkedő grafikai képesség, és emellett a különálló precíziós számítási feladatokat, például a kódolás és megjelenítési szoftverek futtatása az NV-példányokat a számításigényes munkafolyamatokat, a felhasználók. NV-sorozat virtuális gépei is működteti az Intel Xeon E5-2690 v3 (Haswell) processzorok.
+Az NV-sorozatú virtuális gépeket az [NVIDIA Tesla M60](https://images.nvidia.com/content/tesla/pdf/188417-Tesla-M60-DS-A4-fnl-Web.pdf) GPU-k és az NVIDIA Grid Technology működteti az asztali gyorsított alkalmazások és virtuális asztalok számára, amelyekben az ügyfelek képesek megjeleníteni az adatvagy szimulációkat. A felhasználók képesek megjeleníteni az NV-példányokon elérhető grafikai igényű munkafolyamatokat, így kiváló grafikai képességeket szerezhetnek, és emellett egyetlen pontosságú számítási feladatot is futtathatnak, például a kódolást és a renderelést. Az NV sorozatú virtuális gépeket az Intel Xeon E5-2690 v3 (Haswell) processzorok is működtetik.
 
-NV-példányokat az egyes GPU rács licenccel rendelkezik. Ez a licenc rugalmasságot biztosít az NV-példány használata virtuális munkaállomás, egy-egy felhasználóhoz, vagy 25 párhuzamos felhasználó csatlakozhat a virtuális gép virtuális alkalmazás esetén.
+Az NV-példányokban minden GPU egy RÁCSos licenccel rendelkezik. Ez a licenc lehetővé teszi, hogy az NV-példányokat virtuális munkaállomásként használja egyetlen felhasználó számára, vagy 25 egyidejű felhasználó csatlakozhat a virtuális GÉPHEZ egy virtuális alkalmazási forgatókönyv esetén.
 
-| Size | vCPU | Memória: GiB | Ideiglenes tárterület (SSD) GiB | GPU | GPU-memóriával: GiB | Adatlemezek max. száma | Hálózati adapterek maximális száma | Virtuális munkaállomásait | A virtuális alkalmazások |
+| Size | vCPU | Memória: GiB | Ideiglenes tárterület (SSD) GiB | GPU | GPU memória: GiB | Adatlemezek max. száma | Hálózati adapterek maximális száma | Virtuális munkaállomások | Virtuális alkalmazások |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | Standard_NV6 |6 |56 |340 | 1 | 8 | 24 | 1 | 1 | 25 |
 | Standard_NV12 |12 |112 |680 | 2 | 16 | 48 | 2 | 2 | 50 |
@@ -148,22 +148,22 @@ NV-példányokat az egyes GPU rács licenccel rendelkezik. Ez a licenc rugalmass
 
 1 GPU = fél M60 kártya.
 
-## <a name="nvv3-series-preview-sup1sup"></a>NVv3 sorozat (előzetes verzió) <sup>1</sup>
+## <a name="nvv3-series--sup1sup"></a>NVv3 – <sup>1</sup> . sorozat
 
 Prémium szintű Storage:  Támogatott
 
-Prémium szintű Storage gyorsítótárazást:  Támogatott
+Premium Storage gyorsítótárazás:  Támogatott
 
-A NVv3-sorozat virtuális gépei által kezelt [NVIDIA Tesla M60](https://images.nvidia.com/content/tesla/pdf/188417-Tesla-M60-DS-A4-fnl-Web.pdf) gpu-k és az NVIDIA GRID technológia és az Intel E5-2690 v4 (Broadwell) processzor. Ezek a virtuális gépek célozzák meg GPU gyorsított grafikai alkalmazásnál, és virtuális asztalok, ahol az ügyfelek szeretnék megjelenítheti az adatokat, szimulálása eredmények megtekintése érdekében CAD, vagy a renderelési és a stream tartalmát. Ezenkívül egyszeres pontosságú számítási feladatok is futtathatók az ilyen gépeken, például kódolás és renderelés. NVv3 virtuális gépek Premium Storage támogatja, és kapható kétszer a rendszer memória (RAM), az NV-sorozat elődjéhez képest.  
+A NVv3 sorozatú virtuális gépeket az [NVIDIA Tesla M60](https://images.nvidia.com/content/tesla/pdf/188417-Tesla-M60-DS-A4-fnl-Web.pdf) GPU-k és az NVIDIA Grid Technology működteti Intel E5-2690 v4 (Broadwell) processzorokkal. Ezek a virtuális gépek a GPU-gyorsított grafikus alkalmazásokat és virtuális asztalokat célozzák meg, ahol az ügyfelek szeretnék megjeleníteni az adatokat, szimulálni az eredményeket a megtekintésre, a CAD-re való munkavégzésre vagy a tartalmak megjelenítésére és továbbítására. Ezenkívül egyszeres pontosságú számítási feladatok is futtathatók az ilyen gépeken, például kódolás és renderelés. A NVv3 Virtual Machines támogatja a Premium Storaget, és a korábbi NV-sorozattal összehasonlítva kétszer a rendszermemóriát (RAM) is elérheti.  
 
-Minden egyes GPU NVv3 esetekben rács licencet tartalmaz. Ez a licenc rugalmasságot biztosít az NV-példány használata virtuális munkaállomás, egy-egy felhasználóhoz, vagy 25 párhuzamos felhasználó csatlakozhat a virtuális gép virtuális alkalmazás esetén.
+A NVv3-példányok minden GPU-je tartalmaz egy RÁCSos licencet. Ez a licenc lehetővé teszi, hogy az NV-példányokat virtuális munkaállomásként használja egyetlen felhasználó számára, vagy 25 egyidejű felhasználó csatlakozhat a virtuális GÉPHEZ egy virtuális alkalmazási forgatókönyv esetén.
 
-| Size | vCPU | Memória: GiB | Ideiglenes tárterület (SSD) GiB | GPU | GPU-memóriával: GiB | Adatlemezek max. száma | Max. gyorsítótárazás nélküli lemezteljesítmény: IOPS / MBps | Hálózati adapterek maximális száma | Virtuális munkaállomásait | A virtuális alkalmazások | 
+| Size | vCPU | Memória: GiB | Ideiglenes tárterület (SSD) GiB | GPU | GPU memória: GiB | Adatlemezek max. száma | Max. gyorsítótárazás nélküli lemezteljesítmény: IOPS / MBps | Hálózati adapterek maximális száma | Virtuális munkaállomások | Virtuális alkalmazások | 
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | Standard_NV12s_v3 |12 |112 |320 | 1 | 8 | 12 | 20000 / 200 | 4 | 1 | 25 |
-| Standard_NV24s_v3 |24 |224 |640 | 2 | 16 | 24 | 40000 / 400 | 8 | 2 | 50 |
-| Standard_NV48s_v3 |48 |448 |1280 | 4 | 32 | 32 | 80000 / 800 | 8 | 4 | 100 |
+| Standard_NV24s_v3 |24 |224 |640 | 2 | 16 | 24 | 40000/400 | 8 | 2 | 50 |
+| Standard_NV48s_v3 |48 |448 |1280 | 4 | 32 | 32 | 80000/800 | 8 | 4 | 100 |
 
 1 GPU = fél M60 kártya.
 
-<sup>1</sup> NVv3 sorozat virtuális gépei Intel Hiperszálkezelési technológiája
+<sup>1</sup> a NVv3 sorozatú virtuális gépek Intel Hyper-Threading technológiával rendelkeznek

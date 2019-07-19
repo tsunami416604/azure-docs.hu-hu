@@ -1,6 +1,6 @@
 ---
-title: Az Azure Policy használatával korlátozhatja a VM-bővítmény telepítése |} A Microsoft Docs
-description: Az Azure Policy használatával korlátozza a virtuális gépek bővítmény üzembe helyezése.
+title: A virtuálisgép-bővítmények telepítésének korlátozása a Azure Policy használatával | Microsoft Docs
+description: A virtuálisgép-bővítmények üzembe helyezésének korlátozásához használja a Azure Policy.
 services: virtual-machines-linux
 documentationcenter: ''
 author: roiyz-msft
@@ -12,33 +12,34 @@ ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/23/2018
-ms.author: roiyz;cynthn
-ms.openlocfilehash: 5a885637aa2321e12953a72754eed42c91b5b201
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.author: roiyz
+ms.reviewer: cynthn
+ms.openlocfilehash: 79a65dc0e7aa85b2f8cef5f884fab7bc6cd076fe
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67706730"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67876726"
 ---
-# <a name="use-azure-policy-to-restrict-extensions-installation-on-linux-vms"></a>Az Azure Policy használatával korlátozhatja a bővítmények telepítése Linux rendszerű virtuális gépeken
+# <a name="use-azure-policy-to-restrict-extensions-installation-on-linux-vms"></a>A bővítmények Linux rendszerű virtuális gépeken való telepítésének korlátozása a Azure Policy használatával
 
-Ha azt szeretné, hogy használatát vagy a Linux rendszerű virtuális gépek az egyes bővítmények telepítését, létrehozhat egy Azure szabályzat a parancssori felületről bővítmények korlátozni a virtuális gépek erőforráscsoporton belül. 
+Ha meg szeretné akadályozni bizonyos bővítmények használatát vagy telepítését a Linux rendszerű virtuális gépeken, létrehozhat egy Azure-szabályzatot a parancssori felület használatával a virtuális gépek bővítményeinek korlátozásához az erőforráscsoporthoz. 
 
-Ebben az oktatóanyagban a parancssori felület belül az Azure Cloud Shellt, amely folyamatosan frissül a legújabb verzióra. Ha azt szeretné, az Azure parancssori felület helyi futtatását, 2.0.26-os verzió telepítenie kell, vagy később. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése]( /cli/azure/install-azure-cli). 
+Ez az oktatóanyag a CLI-t használja a Azure Cloud Shellon belül, amely folyamatosan frissül a legújabb verzióra. Ha helyileg szeretné futtatni az Azure CLI-t, telepítenie kell a 2.0.26 vagy újabb verziót. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése]( /cli/azure/install-azure-cli). 
 
-## <a name="create-a-rules-file"></a>Hozzon létre egy szabályok fájlt
+## <a name="create-a-rules-file"></a>Szabály létrehozása fájl
 
-Korlátozhatja a telepíthető bővítmények, rendelkeznie kell egy [szabály](../../governance/policy/concepts/definition-structure.md#policy-rule) azonosíthatja a bővítményt a logika biztosít.
+A bővítmények telepítésének korlátozásához rendelkeznie kell egy olyan [szabállyal](../../governance/policy/concepts/definition-structure.md#policy-rule) , amely megadja a logikát a bővítmény azonosításához.
 
-Ez a példa bemutatja, hogyan megtagadási szabályokat fájl létrehozásával az Azure Cloud Shellben "Microsoft.OSTCExtensions" által közzétett bővítmények telepítése, de ha a parancssori felület helyileg dolgozik, is hozzon létre egy helyi fájlt és az elérési út (~/clouddrive) cserélje le a elérési útja a helyi fájlt a gépén.
+Ebből a példából megtudhatja, hogyan tagadhatja meg a "Microsoft. OSTCExtensions" által közzétett bővítmények telepítését egy Azure Cloud Shell, de ha a parancssori felület helyileg dolgozik, létrehozhat egy helyi fájlt is, és lecserélheti az elérési utat (~/clouddrive) a következő elérési útra: a helyi fájl a gépen.
 
-Az egy [Cloud Shell bash](https://shell.azure.com/bash), írja be:
+Egy [bash-Cloud Shell](https://shell.azure.com/bash)írja be a következőt:
 
 ```azurecli-interactive 
 vim ~/clouddrive/azurepolicy.rules.json
 ```
 
-Másolja és illessze be a következő .JSON kiterjesztésű fájlba.
+Másolja és illessze be a következő. JSON fájlt a fájlba.
 
 ```json
 {
@@ -64,22 +65,22 @@ Másolja és illessze be a következő .JSON kiterjesztésű fájlba.
 }
 ```
 
-Amikor végzett, nyomja le az **Esc** kulcsra, és írja be **: wq** mentse és zárja be a fájlt.
+Ha elkészült, nyomja le az **ESC** billentyűt, majd írja be a következőt **: wq** a fájl mentéséhez és bezárásához.
 
 
-## <a name="create-a-parameters-file"></a>A paraméterfájl létrehozása
+## <a name="create-a-parameters-file"></a>Parameters-fájl létrehozása
 
-Is szükség van egy [paraméterek](../../governance/policy/concepts/definition-structure.md#parameters) fájlt, amely számára, hogy az blokkolja a kiterjesztések listája megadásának struktúrát hoz létre. 
+Szükség van egy [paraméter](../../governance/policy/concepts/definition-structure.md#parameters) -fájlra is, amely létrehoz egy struktúrát, amellyel elvégezhető a letiltani kívánt bővítmények listájának átadása. 
 
-Ez a példa bemutatja, hogyan hozzon létre egy paraméterek fájlt a Cloud Shellben a Linux rendszerű virtuális gépekhez, de ha a parancssori felület helyileg dolgozik, is hozzon létre egy helyi fájlt és az elérési út (~/clouddrive) cserélje le a számítógépre a helyi fájl elérési útját.
+Ebből a példából megtudhatja, hogyan hozhat létre a Linux rendszerű virtuális gépekhez tartozó Parameters-fájlt a Cloud Shellban, de ha helyileg dolgozik a CLI-ben, létrehozhat egy helyi fájlt is, és lecserélheti az elérési utat (~/clouddrive) a helyi fájl elérési útjára a gépen.
 
-Az a [Cloud Shell bash](https://shell.azure.com/bash), írja be:
+A [bash Cloud Shell](https://shell.azure.com/bash)írja be a következőt:
 
 ```azurecli-interactive
 vim ~/clouddrive/azurepolicy.parameters.json
 ```
 
-Másolja és illessze be a következő .JSON kiterjesztésű fájlba.
+Másolja és illessze be a következő. JSON fájlt a fájlba.
 
 ```json
 {
@@ -94,13 +95,13 @@ Másolja és illessze be a következő .JSON kiterjesztésű fájlba.
 }
 ```
 
-Amikor végzett, nyomja le az **Esc** kulcsra, és írja be **: wq** mentse és zárja be a fájlt.
+Ha elkészült, nyomja le az **ESC** billentyűt, majd írja be a következőt **: wq** a fájl mentéséhez és bezárásához.
 
 ## <a name="create-the-policy"></a>A szabályzat létrehozása
 
-Szabályzat-definíció egy olyan objektum, a konfigurációt, amely a használni kívánt tárolja. A szabályzatdefiníció a szabályzat meghatározására szabályok és a paraméterek-fájlokat használja. Létrehozhatja a szabályzat definíciója [az szabályzatdefiníció létrehozása](/cli/azure/role/assignment?view=azure-cli-latest).
+A házirend-definíció a használni kívánt konfiguráció tárolására szolgáló objektum. A házirend-definíció a szabályok és paraméterek fájlok használatával határozza meg a szabályzatot. Hozza létre a házirend-definíciót az [az Policy definition Create](/cli/azure/role/assignment?view=azure-cli-latest)paranccsal.
 
-Ebben a példában a szabályok és a paraméterek a következők létrehozott és a cloud shellben .JSON kiterjesztésű fájlként tárolja a fájlokat.
+Ebben a példában a szabályok és paraméterek a létrehozott és. JSON-fájlként tárolt fájlok a Cloud shellben.
 
 ```azurecli-interactive
 az policy definition create \
@@ -113,11 +114,11 @@ az policy definition create \
 ```
 
 
-## <a name="assign-the-policy"></a>A szabályzat hozzárendelése
+## <a name="assign-the-policy"></a>A szabályzat kiosztása
 
-Ebben a példában a szabályzatot rendel egy erőforrás csoport használatával [az szabályzat-hozzárendelés létrehozására](/cli/azure/policy/assignment). A létrehozott virtuális Gépeket a **myResourceGroup** erőforráscsoport nem fogja tudni a Linux rendszerű virtuális gép hozzáférést vagy a Custom Script-bővítményeinek telepítése Linux rendszeren. Az erőforráscsoport léteznie kell, mielőtt is hozzárendeli a szabályzatot.
+Ez a példa hozzárendeli a szabályzatot egy erőforráscsoporthoz az [az Policy hozzárendelés létrehozása](/cli/azure/policy/assignment)paranccsal. A **myResourceGroup** ERŐFORRÁSCSOPORTHOZ létrehozott virtuális gépek nem telepíthetik a linuxos virtuális gép elérését vagy a Linuxhoz készült egyéni parancsfájl-bővítményeket. Ahhoz, hogy hozzá lehessen rendelni a szabályzatot, az erőforráscsoport léteznie kell.
 
-Használjon [az fióklista](/cli/azure/account?view=azure-cli-latest) beolvasni az előfizetés-Azonosítóját használja egy, a példában helyett.
+Az az [Account List](/cli/azure/account?view=azure-cli-latest) paranccsal kérheti le az előfizetés azonosítóját, hogy az a példában szereplő helyett használja.
 
 
 ```azurecli-interactive
@@ -135,9 +136,9 @@ az policy assignment create \
     }'
 ```
 
-## <a name="test-the-policy"></a>A házirend tesztelése
+## <a name="test-the-policy"></a>A szabályzat tesztelése
 
-A szabályzat új virtuális gép létrehozása és a egy új felhasználót a hozzáadni kívánt ellenőrzéséhez.
+A szabályzat teszteléséhez hozzon létre egy új virtuális gépet, és próbálkozzon új felhasználó hozzáadásával.
 
 
 ```azurecli-interactive
@@ -148,7 +149,7 @@ az vm create \
     --generate-ssh-keys
 ```
 
-Hozzon létre egy új felhasználót nevű próbál **myNewUser** a Virtuálisgép-hozzáférési bővítmény használatával.
+Hozzon létre egy **myNewUser** nevű új felhasználót a virtuálisgép-hozzáférési bővítmény használatával.
 
 ```azurecli-interactive
 az vm user update \
@@ -165,7 +166,7 @@ az vm user update \
 ```azurecli-interactive
 az policy assignment delete --name 'not-allowed-vmextension-linux' --resource-group myResourceGroup
 ```
-## <a name="remove-the-policy"></a>Távolítsa el a szabályzatot
+## <a name="remove-the-policy"></a>A házirend eltávolítása
 
 ```azurecli-interactive
 az policy definition delete --name 'not-allowed-vmextension-linux'

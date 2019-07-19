@@ -12,18 +12,18 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 05/24/2019
 ms.author: lagayhar
-ms.openlocfilehash: a453e82f47bb9eed25c8d5caf986bc854085e8ac
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: d3edfa1ca63560f447d2c9ea3da3588e069b7af1
+ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67061211"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "68226829"
 ---
 # <a name="get-started-with-application-insights-in-a-java-web-project"></a>Ismerkedés az Application Insights szolgáltatással Java webes projektben
 
-Az [Application Insights](https://azure.microsoft.com/services/application-insights/) egy bővíthető elemzési szolgáltatás a webfejlesztők számára, amely segít megérteni az élő alkalmazása teljesítményét és használatát. Ezzel [automatikusan tartozó kérelem, a nyomon követése függőségeket és a teljesítményszámlálók gyűjtése](auto-collect-dependencies.md#java), diagnosztizálhatja a teljesítménnyel kapcsolatos hibákat és kivételeket, és [kód írása] [ api] nyomon követheti a felhasználók használják az alkalmazást. 
+Az [Application Insights](https://azure.microsoft.com/services/application-insights/) egy bővíthető elemzési szolgáltatás a webfejlesztők számára, amely segít megérteni az élő alkalmazása teljesítményét és használatát. Ezzel a megoldással automatikusan kérheti a kérelmeket, [nyomon követheti a függőségeket, és](auto-collect-dependencies.md#java)összegyűjtheti a teljesítményszámlálókat, diagnosztizálhatja a teljesítménnyel kapcsolatos hibákat és kivételeket, és [kódot írhat][api] a felhasználók által az alkalmazással való használatra. 
 
-![Képernyőkép a mintaadatok áttekintése](./media/java-get-started/overview-graphs.png)
+![A mintaadatok áttekintését bemutató képernyőkép](./media/java-get-started/overview-graphs.png)
 
 Az Application Insights a Linux, Unix vagy Windows rendszeren futó Java alkalmazásokat támogatja.
 
@@ -91,7 +91,7 @@ Ezután frissítse a projektfüggőségeket, hogy letöltse a bináris fájlokat
 ```
 
 #### <a name="if-youre-using-eclipse-to-create-a-dynamic-web-project-"></a>Ha az Eclipse-t használja dinamikus webes projekt létrehozásához...
-Használja a [Javához készült Application Insights SDK beépülő modult][eclipse]. Megjegyzés: Annak ellenére, hogy ezzel a beépülő modullal gyorsabban kezdheti el az Application Insights használatát (feltéve, hogy nem használ Mavent/Gradle-t), ez nem függőségkezelési rendszer. A beépülő modul frissítése ezért nem frissíti automatikusan a projektben lévő Application Insights-kódtárakat.
+Használja a [Application INSIGHTS SDK for Java beépülő modult][eclipse]. Megjegyzés: Annak ellenére, hogy ezzel a beépülő modullal gyorsabban kezdheti el az Application Insights használatát (feltéve, hogy nem használ Mavent/Gradle-t), ez nem függőségkezelési rendszer. A beépülő modul frissítése ezért nem frissíti automatikusan a projektben lévő Application Insights-kódtárakat.
 
 * *Build- vagy ellenőrzőösszeg-érvényesítési hibák?* Próbáljon egy adott verziót használni, például a következőt: `version:'2.0.n'`. A legújabb verziót az [SDK kiadási megjegyzéseiben](https://github.com/Microsoft/ApplicationInsights-Java#release-notes) vagy a [Maven-összetevőkben](https://search.maven.org/#search%7Cga%7C1%7Capplicationinsights) találja.
 * *Frissítés új SDK-ra* A projekt függőségeinek frissítése.
@@ -150,7 +150,7 @@ A konfigurációs fájlt bármely, az alkalmazás számára elérhető helyen t�
 
 * A kialakítási kulcsot a telemetria minden elemével megkapja, és ez közli az Application Insights eszközzel, hogy megjelenítse azt az erőforrásban.
 * A HTTP-kérelemösszetevő nem kötelező. Automatikusan telemetriát küld a kérelmekkel és válaszidőkkel kapcsolatban a portálra.
-* Az eseménykorreláció a HTTP-kérelemösszetevő további eleme. Azonosítót rendel a kiszolgáló által fogadott összes kérelemhez, és az azonosítót „Operation.Id” tulajdonságként hozzáadja a telemetria minden eleméhez. Lehetővé teszi az egyes kérelmekkel társított telemetria korrelációját, ha beállít egy szűrőt a [diagnosztikai keresésben][diagnostic].
+* Az eseménykorreláció a HTTP-kérelemösszetevő további eleme. Azonosítót rendel a kiszolgáló által fogadott összes kérelemhez, és az azonosítót „Operation.Id” tulajdonságként hozzáadja a telemetria minden eleméhez. Lehetővé teszi, hogy összekapcsolja az egyes kérelmekhez társított telemetria egy szűrő beállításával a [diagnosztikai keresésben][diagnostic].
 
 ### <a name="alternative-ways-to-set-the-instrumentation-key"></a>A kialakítási kulcs beállításának egyéb módjai
 Az Application Insights SDK ebben a sorrendben keresi a kulcsot:
@@ -169,6 +169,8 @@ Az Application Insights SDK ebben a sorrendben keresi a kulcsot:
         TelemetryConfiguration.getActive().setInstrumentationKey(instrumentationKey);
     }
 ```
+
+Vegye figyelembe, hogy az [élő metrikák](https://docs.microsoft.com/azure/azure-monitor/app/live-stream) nem támogatják a rendszerállapot-kulcs kód alapján történő olvasását.
 
 ## <a name="4-add-an-http-filter"></a>4. HTTP-szűrő hozzáadása
 Az utolsó konfigurációs lépéssel a HTTP-kérelemösszetevő mindegyik webes kérelmet naplózhatja. (Nem szükséges, ha csak az API-ra van szüksége.)
@@ -304,13 +306,13 @@ Térjen vissza az Application Insights-erőforráshoz a [Microsoft Azure Portalo
 
 A HTTP-kérelemadatok az áttekintési panelen jelennek meg. (Ha nincsenek ott, várjon néhány másodpercig, majd kattintson a Frissítés gombra.)
 
-![Képernyőkép a mintaadatok áttekintése](./media/java-get-started/overview-graphs.png)
+![A mintaadatok áttekintését bemutató képernyőkép](./media/java-get-started/overview-graphs.png)
 
 [További információk a metrikákról.][metrics]
 
 Részletesebb összesített mérőszámokért kattintson bármelyik diagramra.
 
-![Application Insights hibák panelen diagramok használata](./media/java-get-started/006-barcharts.png)
+![Application Insights hibák panel diagramokkal](./media/java-get-started/006-barcharts.png)
 
 > Az Application Insights feltételezi, hogy az MVC alkalmazások HTTP-kérelmeinek formátuma a következő: `VERB controller/action`. Például a `GET Home/Product/f9anuh81`, a `GET Home/Product/2dffwrf5` és a `GET Home/Product/sdf96vws` a következőbe van csoportosítva: `GET Home/Product`. Ez a csoportosítás lehetővé teszi a kérelmek fontos információkat biztosító összesítéseit, például a kérelmek számának és a kérelmek átlagos végrehajtási idejének meghatározását.
 >
@@ -319,9 +321,9 @@ Részletesebb összesített mérőszámokért kattintson bármelyik diagramra.
 ### <a name="instance-data"></a>Példányadatok
 Kattintson az adott kérelemtípusokra az egyes példányok megtekintéséhez.
 
-![Egy adott minta nézet részletesen](./media/java-get-started/007-instance.png)
+![Részletezés egy adott minta nézetbe](./media/java-get-started/007-instance.png)
 
-### <a name="analytics-powerful-query-language"></a>Analytics: Hatékony lekérdezési nyelvet
+### <a name="analytics-powerful-query-language"></a>Analytics Hatékony lekérdezési nyelv
 Ahogy egyre több adatot gyűjt össze, lekérdezéseket futtathat az adatok összegzéséhez és egyéni példányok megkereséséhez is.  Az [elemzés](../../azure-monitor/app/analytics.md) erőteljes eszköz a teljesítmény és a használat megértéséhez és diagnosztikai célokra is.
 
 ![Példa elemzésre](./media/java-get-started/0025.png)
@@ -342,9 +344,9 @@ Most tegye közzé az alkalmazást a kiszolgálón, hagyja, hogy mások használ
 
     (Ez az összetevő lehetővé teszi a teljesítményszámlálókat.)
 
-## <a name="azure-app-service-config-spring-boot"></a>Az Azure App Service-config (Spring Boot)
+## <a name="azure-app-service-config-spring-boot"></a>Azure App Service config (Spring boot)
 
-Windows rendszeren futó Spring Boot alkalmazásokat igényel további konfigurálást az Azure App Services szolgáltatásban futtathatja. Módosítsa **web.config** , és adja hozzá a következő:
+A Windows rendszeren futó Spring boot-alkalmazások további konfigurálást igényelnek az Azure App Services-on való futtatáshoz. Módosítsa a **web. config** fájlt, és adja hozzá a következőket:
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -360,28 +362,28 @@ Windows rendszeren futó Spring Boot alkalmazásokat igényel további konfigur�
 ```
 
 ## <a name="exceptions-and-request-failures"></a>Kivételek és kérelemhibák
-Nem kezelt kivételeket is összegyűjti.
+A kezeletlen kivételek gyűjtése automatikusan történik.
 
 Adatok és más kivételek gyűjtésére két lehetősége van:
 
-* [Szúrja be a trackException() hívásait a kódba][apiexceptions].
+* [Szúrjon be hívásokat a trackException () a kódban][apiexceptions].
 * [Telepítse a Java ügynököt a kiszolgálón](java-agent.md). Válassza ki a megtekinteni kívánt metódusokat.
 
 ## <a name="monitor-method-calls-and-external-dependencies"></a>Metódushívások és külső függőségek megfigyelése
 [Telepítse a Java ügynököt](java-agent.md) a megadott belső módszerek és a JDBC-n keresztül végzett hívások naplózásához, időzítési adatokkal.
 
-## <a name="w3c-distributed-tracing"></a>W3C elosztott nyomkövetést
+## <a name="w3c-distributed-tracing"></a>W3C elosztott nyomkövetés
 
-Az Application Insights Java SDK mostantól támogatja a [W3C elosztott nyomkövetést](https://w3c.github.io/trace-context/).
+A Application Insights Java SDK mostantól támogatja a [W3C elosztott nyomkövetést](https://w3c.github.io/trace-context/).
 
-A bejövő SDK konfigurációját és a foglalkozó további kifejtett [korrelációs](correlation.md#w3c-distributed-tracing).
+A bejövő SDK konfigurációját a [korrelációról](correlation.md#w3c-distributed-tracing)szóló cikkben ismertetjük.
 
-Kimenő SDK konfigurációs van definiálva a [AI-Agent.xml](java-agent.md) fájlt.
+A kimenő SDK-konfiguráció a [AI-Agent. XML](java-agent.md) fájlban van definiálva.
 
 ## <a name="performance-counters"></a>Teljesítményszámlálók
-Nyissa meg **vizsgálat**, **metrikák**, ahol láthatja a teljesítményszámlálók készletét.
+Nyissa meg a **vizsgálat**, **mérőszámok**lehetőséget, és tekintse meg a teljesítményszámlálók tartományát.
 
-![Képernyőkép a metrikák panelen a kiválasztott folyamat saját bájtjai](./media/java-get-started/011-perf-counters.png)
+![Képernyőfelvétel a metrikák panelről a folyamat saját bájtjainak kiválasztásával](./media/java-get-started/011-perf-counters.png)
 
 ### <a name="customize-performance-counter-collection"></a>Teljesítményszámláló-gyűjtemény testreszabása
 A teljesítményszámlálók standard készlete gyűjtésének letiltásához adja a következő kódot az ApplicationInsights.xml fájl gyökércsomópontja alatt:
@@ -434,49 +436,25 @@ Mindegyik [Windows-teljesítményszámláló](https://msdn.microsoft.com/library
 ### <a name="unix-performance-counters"></a>Unix-teljesítményszámlálók
 * [Telepítse a gyűjteményt az Application Insights beépülő modullal](java-collectd.md) számos rendszer- és hálózati adat lekéréséhez.
 
-## <a name="local-forwarder"></a>Helyi továbbító
-
-[Helyi továbbító](https://docs.microsoft.com/azure/application-insights/local-forwarder) olyan ügynök, amely gyűjti az Application Insights vagy [OpenCensus](https://opencensus.io/) használati adatok gyűjtése a különböző SDK-k és keretrendszereket és továbbítja azt az Application Insights. Windows és Linux alatt alkalmas állapotban.
-
-```xml
-<Channel type="com.microsoft.applicationinsights.channel.concrete.localforwarder.LocalForwarderTelemetryChannel">
-<DeveloperMode>false</DeveloperMode>
-<EndpointAddress><!-- put the hostname:port of your LocalForwarder instance here --></EndpointAddress>
-<!-- The properties below are optional. The values shown are the defaults for each property -->
-<FlushIntervalInSeconds>5</FlushIntervalInSeconds><!-- must be between [1, 500]. values outside the bound will be rounded to nearest bound -->
-<MaxTelemetryBufferCapacity>500</MaxTelemetryBufferCapacity><!-- units=number of telemetry items; must be between [1, 1000] -->
-</Channel>
-```
-
-SpringBoot alapszintű használja, ha a konfigurációs fájl (application.properties) adja hozzá a következő:
-
-```yml
-azure.application-insights.channel.local-forwarder.endpoint-address=<!--put the hostname:port of your LocalForwarder instance here-->
-azure.application-insights.channel.local-forwarder.flush-interval-in-seconds=<!--optional-->
-azure.application-insights.channel.local-forwarder.max-telemetry-buffer-capacity=<!--optional-->
-```
-
-Alapértelmezett értékek azonosak SpringBoot application.properties és applicationinsights.xml konfigurációját.
-
 ## <a name="get-user-and-session-data"></a>Felhasználói és munkamenetadatok lekérése
 Telemetriát küld a webkiszolgálóról. Az alkalmazás teljes körű megfigyelése érdekében további megfigyelést adhat hozzá:
 
-* [Adjon telemetriát a weblapokhoz][usage] a lapmegtekintések és a felhasználói mérőszámok megfigyelése érdekében.
-* [Beállíthat webes teszteket][availability] annak biztosításához, hogy az alkalmazás mindig elérhető és válaszkész legyen.
+* Az telemetria és a felhasználói mérőszámok figyeléséhez [vegyen fel][usage] weblapokat.
+* [Állítson be][availability] webteszteket annak biztosítására, hogy az alkalmazás élő és rugalmas maradjon.
 
 ## <a name="capture-log-traces"></a>Naplónyomkövetések rögzítése
-Az Application Insights segítségével naplókat szeletelhet a Log4J, a Logback vagy más naplózási keretrendszerekből. HTTP-kérelmekkel és más telemetriával kapcsolhatja össze a naplókat. [Itt megismerkedhet az erre vonatkozó részletekkel][javalogs].
+Az Application Insights segítségével naplókat szeletelhet a Log4J, a Logback vagy más naplózási keretrendszerekből. HTTP-kérelmekkel és más telemetriával kapcsolhatja össze a naplókat. [További tudnivalókat itt talál][javalogs].
 
 ## <a name="send-your-own-telemetry"></a>Saját telemetria küldése
 Most, hogy telepítette az SDK-t, az API-val saját telemetriát küldhet.
 
-* [Nyomon követheti az egyéni eseményeket és mérőszámokat][api], hogy megtudja, hogyan használják a felhasználók az alkalmazását.
-* [Eseményeket és naplókat kereshet][diagnostic], amelyek segítenek a problémák diagnosztizálásában.
+* [Nyomon követheti az egyéni eseményeket és mérőszámokat][api] , hogy megtudja, mit csinálnak a felhasználók az alkalmazással.
+* [Keressen eseményeket és naplókat][diagnostic] a problémák diagnosztizálásához.
 
 ## <a name="availability-web-tests"></a>Rendelkezésre állási webes tesztek
 Az Application Insights rendszeres időközönként teszteli a webhelyét, hogy működik és jól válaszol-e.
 
-[További információ a rendelkezésre állási webes tesztek-telepítés.][availability]
+[További információ a rendelkezésre állási webes tesztek beállításáról.][availability]
 
 ## <a name="questions-problems"></a>Kérdései vannak? Problémákat tapasztal?
 [A Java hibaelhárítása](java-troubleshoot.md)

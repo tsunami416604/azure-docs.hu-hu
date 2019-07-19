@@ -1,10 +1,10 @@
 ---
-title: Load Balancer létrehozása a zónaredundáns előtérbeli – Azure PowerShell-lel
+title: Load Balancer létrehozása a Zone-redundáns frontend-Azure PowerShell
 titlesuffix: Azure Load Balancer
-description: Nyilvános Standard Load Balancer létrehozása a PowerShell-lel zónaredundáns nyilvános IP-cím cím előtérbeli ismerje meg
+description: Megtudhatja, hogyan hozhat létre nyilvános standard Load Balancer egy zóna – redundáns nyilvános IP-cím felülettel a PowerShell használatával
 services: load-balancer
 documentationcenter: na
-author: KumudD
+author: asudbring
 manager: twooley
 ms.service: load-balancer
 ms.devlang: na
@@ -13,17 +13,17 @@ ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/21/2019
-ms.author: kumud
-ms.openlocfilehash: 9cee3b68273fe98e70d558b5d01232bedf113224
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: allensu
+ms.openlocfilehash: 3ce14a0d9d5b9d5ef7ca7be34faad3fa60795ab9
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66122142"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68275089"
 ---
 #  <a name="create-a-standard-load-balancer-with-zone-redundant-frontend-using-azure-powershell"></a>Standard Load Balancer létrehozása az Azure PowerShell-lel zónaredundáns frontend
 
-Ez a cikk végigvezeti egy nyilvános létrehozása [Standard Load Balancer](https://aka.ms/azureloadbalancerstandard) és a egy zónaredundáns frontend-IP szabványos nyilvános cím segítségével.
+Ez a cikk a nyilvános IP-címet használó, nyilvános IP-címmel rendelkező, nyilvános [standard Load Balancer](https://aka.ms/azureloadbalancerstandard) létrehozásához szükséges lépéseket ismerteti.
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
@@ -89,7 +89,7 @@ $probe = New-AzLoadBalancerProbeConfig -Name 'myHealthProbe' -Protocol Http -Por
 ```
 
 ## <a name="create-a-load-balancer"></a>Load Balancer létrehozása
-Hozzon létre egy Standard Load Balancer használatával a következő parancsot:
+Hozzon létre egy standard Load Balancer a következő parancs használatával:
 
 ```azurepowershell-interactive
 $lb = New-AzLoadBalancer -ResourceGroupName myResourceGroup -Name 'MyLoadBalancer' -Location westeurope `

@@ -1,6 +1,6 @@
 ---
-title: Zónázott Linux rendszerű virtuális gép létrehozása az Azure CLI-vel |} A Microsoft Docs
-description: Linux rendszerű virtuális gép létrehozása egy rendelkezésre állási zónában az Azure CLI-vel
+title: Zónában lévő linuxos virtuális gép létrehozása az Azure CLI-vel | Microsoft Docs
+description: Linuxos virtuális gép létrehozása rendelkezésre állási zónában az Azure CLI-vel
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: dlepow
@@ -16,26 +16,26 @@ ms.workload: infrastructure
 ms.date: 04/05/2018
 ms.author: danlep
 ms.custom: ''
-ms.openlocfilehash: 87263d11828ff5122122ef36850fade87949bcac
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: 6bdbc566215fb7e68109b523fb2af9bca16c328c
+ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67671613"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67849698"
 ---
-# <a name="create-a-linux-virtual-machine-in-an-availability-zone-with-the-azure-cli"></a>Linux rendszerű virtuális gép létrehozása egy rendelkezésre állási zónában az Azure CLI-vel
+# <a name="create-a-linux-virtual-machine-in-an-availability-zone-with-the-azure-cli"></a>Linuxos virtuális gép létrehozása rendelkezésre állási zónában az Azure CLI-vel
 
-Ez a cikk végigvezeti az Azure CLI használatával egy Linux rendszerű virtuális gép létrehozása az Azure rendelkezésre állási zónában. A [rendelkezésre állási zónák](../../availability-zones/az-overview.md) egy Azure-régió fizikailag elkülönített zónáit jelentik. Az alkalmazások és az adatok védelmét rendelkezésre állási zónákkal biztosíthatja nem várt hibák bekövetkezése, illetve a teljes adatközpont elérhetetlenné válása esetére.
+Ez a cikk a Linux rendszerű virtuális gépek Azure-beli rendelkezésre állási zónában történő létrehozásához szükséges lépéseket ismerteti az Azure CLI használatával. A [rendelkezésre állási zónák](../../availability-zones/az-overview.md) egy Azure-régió fizikailag elkülönített zónáit jelentik. Az alkalmazások és az adatok védelmét rendelkezésre állási zónákkal biztosíthatja nem várt hibák bekövetkezése, illetve a teljes adatközpont elérhetetlenné válása esetére.
 
 Rendelkezésre állási zóna használatához egy [támogatott Azure-régióban](../../availability-zones/az-overview.md#services-support-by-region) hozza létre a virtuális gépet.
 
-Győződjön meg arról, hogy telepítette-e a legújabb [Azure CLI-vel](/cli/azure/install-az-cli2) és hogy bejelentkezett egy Azure-fiókjába való [az bejelentkezési](/cli/azure/reference-index).
+Győződjön meg arról, hogy telepítette a legújabb [Azure CLI](/cli/azure/install-az-cli2) -t, és bejelentkezett egy Azure-fiókba az [az login](/cli/azure/reference-index)paranccsal.
 
 
 ## <a name="check-vm-sku-availability"></a>A VM-termékváltozatok rendelkezésre állásának ellenőrzése
 A virtuális gépek méretének vagy termékváltozatainak rendelkezésre állása régiónként és zónánként eltérhet. Ha fel szeretne készülni a rendelkezésre állási zónák használatára, megtekintheti a virtuális gépek termékváltozatainak listáját Azure-régió és zóna szerint. Ezáltal megfelelő virtuálisgép-méretet választhat, valamint biztosíthatja a zónák közötti rugalmasság kívánt szintjét. További információ a virtuális gépek különböző típusairól és méreteiről: [Virtuálisgép-méretek – áttekintés](sizes.md).
 
-Megtekintheti az elérhető virtuális gépek Termékváltozatait a [az vm list-skus](/cli/azure/vm) parancsot. Az alábbi példa az *eastus2* régióban található virtuális gépek elérhető termékváltozatait listázza:
+Az elérhető VM SKU-ket az az [VM List-SKUs](/cli/azure/vm) paranccsal tekintheti meg. Az alábbi példa az *eastus2* régióban található virtuális gépek elérhető termékváltozatait listázza:
 
 ```azurecli
 az vm list-skus --location eastus2 --output table
@@ -64,25 +64,25 @@ virtualMachines   eastus2    Standard_E4_v3              Standard   E4_v3    1,2
 
 Hozzon létre egy erőforráscsoportot az [az group create](/cli/azure/group) paranccsal.  
 
-Az Azure-erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat. Az erőforráscsoportot még a virtuális gép létrejötte előtt létre kell hozni. Ebben a példában egy erőforráscsoportot nevű *myResourceGroupVM* jön létre a *eastus2* régióban. USA keleti RÉGIÓJA 2 egyike az Azure-régióban, amely támogatja a rendelkezésre állási zónák.
+Az Azure-erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat. Az erőforráscsoportot még a virtuális gép létrejötte előtt létre kell hozni. Ebben a példában egy *myResourceGroupVM* nevű erőforráscsoportot hoznak létre a *eastus2* régióban. Az USA 2. keleti régiója a rendelkezésre állási zónákat támogató Azure-régiók egyike.
 
 ```azurecli 
 az group create --name myResourceGroupVM --location eastus2
 ```
 
-Az erőforráscsoport létrehozása vagy módosítása egy virtuális Gépet, amely az egész cikkben tekinthet során van megadva.
+Az erőforráscsoport a virtuális gép létrehozásakor vagy módosításakor van megadva, amely ebben a cikkben is látható.
 
 ## <a name="create-virtual-machine"></a>Virtuális gép létrehozása
 
 Hozzon létre egy virtuális gépet az [az vm create](/cli/azure/vm) paranccsal. 
 
-Egy virtuális gép létrehozásakor több lehetőség is rendelkezésre áll, például az operációsrendszer-lemezkép, a lemezméretezés vagy a rendszergazdai hitelesítő adatok. Ebben a példában egy *myVM* nevű virtuális gépet hozunk létre, amelyen az Ubuntu Server fut. A virtuális gép létrehozása rendelkezésre állási zónában *1*. Alapértelmezés szerint a virtuális gép létrehozása a *Standard_DS1_v2* méretét.
+Egy virtuális gép létrehozásakor több lehetőség is rendelkezésre áll, például az operációsrendszer-lemezkép, a lemezméretezés vagy a rendszergazdai hitelesítő adatok. Ebben a példában egy *myVM* nevű virtuális gépet hozunk létre, amelyen az Ubuntu Server fut. A virtuális gép az *1*. rendelkezésre állási zónában jön létre. Alapértelmezés szerint a virtuális gép a *Standard_DS1_v2* méretben jön létre.
 
 ```azurecli-interactive 
 az vm create --resource-group myResourceGroupVM --name myVM --location eastus2 --image UbuntuLTS --generate-ssh-keys --zone 1
 ```
 
-A virtuális gép létrehozása eltarthat néhány percig. A virtuális gép létrehozása után az Azure CLI a virtuális géppel kapcsolatos adatokat jelenít meg. Jegyezze fel a `zones` érték, amely azt jelzi, hogy a rendelkezésre állási zónában, amelyben a virtuális gép fut. 
+A virtuális gép létrehozása eltarthat néhány percig. A virtuális gép létrehozása után az Azure CLI a virtuális géppel kapcsolatos adatokat jelenít meg. Jegyezze fel `zones` az értéket, amely arra a rendelkezésre állási zónára utal, amelyben a virtuális gép fut. 
 
 ```azurecli 
 {
@@ -98,16 +98,16 @@ A virtuális gép létrehozása eltarthat néhány percig. A virtuális gép lé
 }
 ```
 
-## <a name="confirm-zone-for-managed-disk-and-ip-address"></a>IP-cím és a felügyelt lemez zónájának megerősítése
+## <a name="confirm-zone-for-managed-disk-and-ip-address"></a>A felügyelt lemez és az IP-cím zónájának megerősítése
 
-Ha a virtuális gép egy rendelkezésre állási zónában, egy felügyelt lemezt a virtuális gép ugyanabban a rendelkezésre állási zónában jön létre. Alapértelmezés szerint egy nyilvános IP-címet is létrejön a zóna. Az alábbi példák ezeket az erőforrásokat adatainak beolvasása.
+Ha a virtuális gép rendelkezésre állási zónában van telepítve, a virtuális gép felügyelt lemeze ugyanabban a rendelkezésre állási zónában jön létre. Alapértelmezés szerint a rendszer a zónában is létrehoz egy nyilvános IP-címet. Az alábbi példák információt kapnak ezekről az erőforrásokról.
 
-Győződjön meg arról, hogy a virtuális gép felügyelt lemez a rendelkezésre állási zónában, használja a [az vm show](/cli/azure/vm) parancsba is, a lemez azonosítóját. Ebben a példában a Lemezazonosítót egy változó egy későbbi lépésben használt tárolja. 
+Annak ellenőrzéséhez, hogy a virtuális gép felügyelt lemeze szerepel-e a rendelkezésre állási zónában, használja az az [VM show](/cli/azure/vm) parancsot a lemez azonosítójának visszaküldéséhez. Ebben a példában a lemez AZONOSÍTÓját egy későbbi lépésben használt változó tárolja. 
 
 ```azurecli-interactive
 osdiskname=$(az vm show -g myResourceGroupVM -n myVM --query "storageProfile.osDisk.name" -o tsv)
 ```
-Most már a felügyelt lemez kapcsolatos információkat is kap:
+Most a felügyelt lemezről kaphat információkat:
 
 ```azurecli-interactive
 az disk show --resource-group myResourceGroupVM --name $osdiskname
@@ -149,19 +149,19 @@ A kimenetben az látható, hogy a felügyelt lemez és a virtuális gép azonos 
 }
 ```
 
-Használja a [az vm list-ip-addresses](/cli/azure/vm) parancsba is, a nyilvános IP-cím erőforrás neve *myVM*. Ebben a példában a neve egy változó egy későbbi lépésben használt tárolja.
+A *myVM*-ben adja vissza a nyilvános IP-cím erőforrás nevét az az [VM List-IP-Addresss](/cli/azure/vm) paranccsal. Ebben a példában a nevet egy későbbi lépésben használt változó tárolja.
 
 ```azurecli
 ipaddressname=$(az vm list-ip-addresses -g myResourceGroupVM -n myVM --query "[].virtualMachine.network.publicIpAddresses[].name" -o tsv)
 ```
 
-Most már az IP-címre vonatkozó információkat szerezhet:
+Most lekérheti az IP-címmel kapcsolatos információkat:
 
 ```azurecli
 az network public-ip show --resource-group myResourceGroupVM --name $ipaddressname
 ```
 
-A kimenet mutatja, hogy az IP-cím szerepel-e a virtuális géppel azonos rendelkezésre állási zóna:
+A kimenet azt mutatja, hogy az IP-cím ugyanabban a rendelkezésre állási zónában van, mint a virtuális gép:
 
 ```azurecli
 {
@@ -198,7 +198,7 @@ A kimenet mutatja, hogy az IP-cím szerepel-e a virtuális géppel azonos rendel
 
 ## <a name="next-steps"></a>További lépések
 
-Ebből a cikkből megtudhatta, hogyan hozható létre virtuális gép egy rendelkezésre állási zónában. Itt további információkat talál az Azure-beli virtuális gépek [régióiról és rendelkezésre állásáról](regions-and-availability.md).
+Ebből a cikkből megtudhatta, hogyan hozható létre virtuális gép egy rendelkezésre állási zónában. További információ az Azure-beli virtuális gépek [rendelkezésre állásáról](availability.md) .
 
 
 

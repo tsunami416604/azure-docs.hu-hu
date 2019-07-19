@@ -1,7 +1,7 @@
 ---
-title: Az Azure CLI-példaszkript – konfigurálása IPv6-alapú virtuális hálózat végpontok (előzetes verzió)
+title: Azure CLI-parancsfájl mintája – IPv6 virtuális hálózati végpontok konfigurálása (előzetes verzió)
 titlesuffix: Azure Virtual Network
-description: Azure CLI használatával az Azure virtuális hálózat IPv6-os végpontjaiig engedélyezése
+description: IPv6-végpontok engedélyezése az Azure CLI használatával az Azure-ban Virtual Network
 services: virtual-network
 documentationcenter: na
 author: KumudD
@@ -12,33 +12,35 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 04/23/2019
 ms.author: kumud
-ms.openlocfilehash: a1c8f151a4c6459064d92ff2efb44fa8b74f8fc1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3df475ce89a3b1f5a1acfb20dc427fdb7a9b7d16
+ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "63761459"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68248896"
 ---
-# <a name="configure-ipv6-endpoints-in-virtual-network-script-sample-preview"></a>IPv6-végpontok konfigurálása a virtuális hálózat példaszkript (előzetes verzió)
+# <a name="configure-ipv6-endpoints-in-virtual-network-script-sample-preview"></a>IPv6-végpontok konfigurálása a Virtual Network script Sample (előzetes verzió) szolgáltatásban
 
-Ez a cikk bemutatja, hogyan egy kettős verem (IPv4 + IPv6) üzembe helyezése az Azure-ban, amely tartalmaz egy alhálózattal kettős verem (IPv4 + IPv6) kettős előtér-konfigurációkkal, kettős IP-konfigurációval rendelkező hálózati adapterrel rendelkező virtuális gépek egy terheléselosztó kettős verem virtuális hálózat kettős hálózati biztonsági csoport szabályait, és két nyilvános IP-címek.
+Ebből a cikkből megtudhatja, hogyan helyezhet üzembe egy kettős stack-alhálózattal rendelkező kettős verem-(IPv4-és IPv6-) alkalmazást az Azure-ban, amely kettős (IPv4 + IPv6-alapú) előtér-konfigurációkat, valamint kettős IP-konfigurációval rendelkező virtuális gépeket tartalmaz. kettős hálózati biztonsági csoportra vonatkozó szabályok és kettős nyilvános IP-címek.
 
 A szkriptet az Azure [Cloud Shellben](https://shell.azure.com/bash) vagy egy helyi Azure CLI-telepítésből futtathatja. Ha a parancssori felületet helyileg használja, akkor ehhez a szkripthez az Azure CLI 2.0.28-as vagy újabb verziójára lesz szükség. A telepített verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne, olvassa el [az Azure CLI telepítését](/cli/azure/install-azure-cli) ismertető cikket. Ha helyileg futtatja a parancssori felületet, akkor emellett a `az login` futtatásával kapcsolatot kell teremtenie az Azure-ral.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="prerequisites"></a>Előfeltételek
-Az IPv6 protokollt használja az Azure virtual network szolgáltatáshoz, konfigurálnia kell az előfizetés csak egyszer az alábbiak szerint:
+Az IPv6 az Azure Virtual Network szolgáltatáshoz való használatához az előfizetést csak egyszer kell konfigurálnia az alábbiak szerint:
 
 ```azurecli
 az feature register --name AllowIPv6VirtualNetwork --namespace Microsoft.Network
+az feature register --name AllowIPv6CAOnStandardLB --namespace Microsoft.Network
 ```
-A szolgáltatás regisztráció befejezése akár 30 percet vesz igénybe. A regisztrációs állapot a következő Azure CLI-parancs futtatásával ellenőrizheti:
+A szolgáltatás regisztrációjának befejezéséhez akár 30 percet is igénybe vehet. A regisztrációs állapotát a következő Azure CLI-parancs futtatásával tekintheti meg:
 
 ```azurelci
 az feature show --name AllowIPv6VirtualNetwork --namespace Microsoft.Network
+az feature show --name AllowIPv6CAOnStandardLB --namespace Microsoft.Network
 ```
-A regisztráció befejezése után futtassa a következő parancsot:
+A regisztráció befejeződése után futtassa a következő parancsot:
 
 ```azurelci
 az provider register --namespace Microsoft.Network
