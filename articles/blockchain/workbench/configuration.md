@@ -55,10 +55,10 @@ Egy alkalmazás üzleti logika egy állapotú gép, hol tart a művelet hatásá
 
 | Mező | Description | Kötelező | Maximális hossz |
 |-------|-------------|:--------:|-----------:|
-| Name (Név) | A munkafolyamat egyedi neve. A megfelelő intelligens szerződést kell használnia az azonos **neve** a vonatkozó szerződési osztályhoz. | Igen | 50 |
+| Name | A munkafolyamat egyedi neve. A megfelelő intelligens szerződést kell használnia az azonos **neve** a vonatkozó szerződési osztályhoz. | Igen | 50 |
 | DisplayName | A munkafolyamat megjelenített felhasználóbarát neve. | Igen | 255 |
 | Description | A munkafolyamat leírása. | Nem | 255 |
-| Kezdeményező | A gyűjtemény [ApplicationRoles](#application-roles). A felhasználók számára, akik jogosultak a szerződések létrehozása a munkafolyamat rendelt szerepkörök. | Igen | |
+| Initiators | A gyűjtemény [ApplicationRoles](#application-roles). A felhasználók számára, akik jogosultak a szerződések létrehozása a munkafolyamat rendelt szerepkörök. | Igen | |
 | StartState | A kezdeti állapota a munkafolyamat nevét. | Igen | |
 | Tulajdonságok | A gyűjtemény [azonosítók](#identifiers). Jelöli data láncon kívüli vagy teszi a felhasználó olvasható élmény eszközt. | Igen | |
 | A konstruktor | Bemeneti paramétereit a munkafolyamat egy példányát határozza meg. | Igen | |
