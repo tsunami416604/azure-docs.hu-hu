@@ -1,58 +1,58 @@
 ---
-title: Egy mindig bekapcsolt VPN-alagutat VPN-átjáró konfigurálása
-description: VPN Gateway átjáró esetében mindig bekapcsolt VPN-alagút konfigurálásának lépései
+title: Always On VPN-alagút konfigurálása VPN Gateway
+description: Az Always On VPN-alagút VPN Gatewayhoz való konfigurálásának lépései
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
-ms.topic: conceptional
+ms.topic: conceptual
 ms.date: 07/09/2019
 ms.author: cherylmc
-ms.openlocfilehash: 81822297dcf9370fc8ce7f7ce0285689c31606ce
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 98d8c2f6870be16f3eb92219fc3d02f988390a41
+ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67695797"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68295470"
 ---
 # <a name="configure-an-always-on-vpn-device-tunnel"></a>AlwaysOn VPN-eszközalagút konfigurálása
 
-Az új szolgáltatások a Windows 10-es virtuális magánhálózati (VPN) ügyfél egyik, a VPN-kapcsolat fenntartása. Always On funkciója a Windows 10-es, amely lehetővé teszi az aktív VPN-profil automatikus csatlakozás és csatlakoztatott eseményindítók alapján – azaz felhasználói bejelentkezés, hálózati állapot módosítása vagy aktív eszköz képernyőjén.
+A Windows 10 virtuális magánhálózati (VPN) ügyfél egyik új funkciója a VPN-kapcsolat fenntartásának lehetősége. Az Always on egy Windows 10 funkció, amely lehetővé teszi, hogy az aktív VPN-profil automatikusan kapcsolódjon, és az eseményindítók (azaz a felhasználói bejelentkezés, a hálózati állapot változása vagy az eszköz aktív állapota) alapján is csatlakoztatva maradjon.
 
-Az Azure virtuális hálózati átjárók állandó felhasználói alagút, valamint az eszköz alagutak az Azure-bA létrehozására használható a Windows 10-es Always On. Ez a cikk segítséget nyújt egy Always ON VPN-eszköz alagút konfigurálása.
+Az Azure-beli virtuális hálózati átjárók a Windows 10 always on szolgáltatással használhatók állandó felhasználói alagutak, valamint az Azure-beli eszköz-alagutak létrehozására. Ez a cikk segítséget nyújt az Always ON VPN-eszközök bújtatásának konfigurálásához.
 
-Mindig bekapcsolva beállítású VPN-kapcsolatok kétféle alagút tartalmaznak:
+Az Always On VPN-kapcsolatok két típusú alagutat tartalmaznak:
 
-* **Eszköz alagút** csatlakozik a megadott VPN-kiszolgálókhoz, mielőtt bejelentkeznek az eszköz. Bejelentkezés előtti kapcsolódási forgatókönyvek és az eszköz felügyeleti célokra használja az eszköz alagutat.
+* Az **eszköz-alagút** a megadott VPN-kiszolgálókhoz csatlakozik, mielőtt a felhasználók bejelentkeznek az eszközre. A Bejelentkezés előtti kapcsolódási forgatókönyvek és az eszközkezelés célja az eszköz-alagút használata.
 
-* **Felhasználói alagút** csak az eszköz egy felhasználó bejelentkezése után kapcsolódik. Felhasználói alagút lehetővé teszi, hogy a felhasználók számára a VPN-kiszolgálókon keresztül férnek hozzá a szervezeti erőforrásokhoz.
+* A **felhasználói alagút** csak az eszköz felhasználói bejelentkezését követően csatlakozik. A felhasználói alagút lehetővé teszi a felhasználók számára a vállalati erőforrások elérését a VPN-kiszolgálókon keresztül.
 
-Eszköz alagút és alagút felhasználói is egymástól függetlenül a saját VPN-profilok működnek. Csatlakozhat egy időben, és különböző hitelesítési módszerek és a VPN-konfigurációs beállításait is használja, szükség szerint.
+Az eszköz-alagút és a felhasználói alagút egymástól függetlenül működik a VPN-profiljaival. Egyszerre csatlakozhatnak, és szükség szerint különböző hitelesítési módszereket és egyéb VPN-konfigurációs beállításokat használhatnak.
 
 ## <a name="1-configure-the-gateway"></a>1. Az átjáró konfigurálása
 
-Az IKEv2 és Tanúsítványalapú hitelesítés használatával a VPN-átjáró konfigurálása [pont – hely cikk](vpn-gateway-howto-point-to-site-resource-manager-portal.md).
+Konfigurálja úgy a VPN-átjárót, hogy a IKEv2 és a tanúsítványalapú hitelesítést használja ezen [pont – hely cikk](vpn-gateway-howto-point-to-site-resource-manager-portal.md)alapján.
 
-## <a name="2-configure-the-user-tunnel"></a>2. A felhasználó bújtatás konfigurálása
+## <a name="2-configure-the-user-tunnel"></a>2. A felhasználói alagút konfigurálása
 
-1. Ügyféltanúsítványok telepítése a Windows 10-es ügyfél, ahogy ez az [pont – hely VPN-ügyfél cikk](point-to-site-how-to-vpn-client-install-azure-cert.md). A tanúsítványt kell lennie a jelenlegi felhasználó Store
-2. A PowerShell, az SCCM vagy az Intune használatával mindig bekapcsolva beállítású VPN-ügyfél konfigurálása [ezek az utasítások](https://docs.microsoft.com/windows-server/remote/remote-access/vpn/always-on-vpn/deploy/vpn-deploy-client-vpn-connections).
+1. Telepítse az Ügyféltanúsítványok szolgáltatást a Windows 10-es ügyfélen a [pont – hely VPN-ügyfél című cikkben](point-to-site-how-to-vpn-client-install-azure-cert.md)látható módon. A tanúsítványnak az aktuális felhasználói tárolóban kell lennie
+2. Konfigurálja az Always On VPN-ügyfelet a PowerShell, a SCCM vagy az Intune használatával az [alábbi utasítások](https://docs.microsoft.com/windows-server/remote/remote-access/vpn/always-on-vpn/deploy/vpn-deploy-client-vpn-connections)segítségével.
 
-## <a name="3-configure-the-device-tunnel"></a>3. Az eszköz alagút konfigurálása
+## <a name="3-configure-the-device-tunnel"></a>3. Az eszköz bújtatásának konfigurálása
 
-Az alábbi követelményeknek teljesülniük kell ahhoz, hogy egy eszköz alagút sikeres létesítéséhez:
+Az eszköz-alagút sikeres létrehozásához az alábbi követelményeknek kell teljesülniük:
 
-* Az eszköz egy Windows 10 Enterprise és Education verzióját futtató 1709-es vagy újabb verzióját a tartományhoz csatlakozó számítógépen kell lennie.
-* Az alagút csak konfigurálható a Windows beépített VPN-megoldás, és az IKEv2 számítógép-tanúsítvány hitelesítése a létrejött. 
-* Csak egy eszköz alagút eszközönként konfigurálható.
+* Az eszköznek olyan tartományhoz csatlakoztatott számítógépnek kell lennie, amely a Windows 10 Enterprise vagy az Education 1709-es vagy újabb verzióját futtatja.
+* Az alagút csak a Windows beépített VPN-megoldásához állítható be, és a IKEv2 használatával a számítógép-Tanúsítványos hitelesítéssel van létrehozva. 
+* Eszközönként csak egy eszköz-alagút állítható be.
 
-1. Ügyféltanúsítványok telepítése a Windows 10-es ügyfél, ahogy ez az [pont – hely VPN-ügyfél cikk](point-to-site-how-to-vpn-client-install-azure-cert.md). A tanúsítványt kell lennie a helyi számítógép tárolójában.
-1. Használat [ezek az utasítások](https://docs.microsoft.com/windows-server/remote/remote-access/vpn/vpn-device-tunnel-config#vpn-device-tunnel-configuration) VPN-profil létrehozása és konfigurálása eszköz alagutat a helyi rendszerfiók környezetében.
+1. Telepítse az Ügyféltanúsítványok szolgáltatást a Windows 10-es ügyfélen a [pont – hely VPN-ügyfél című cikkben](point-to-site-how-to-vpn-client-install-azure-cert.md)látható módon. A tanúsítványnak a helyi számítógép tárolójába kell esnie.
+1. Ezekkel az [utasításokkal](https://docs.microsoft.com/windows-server/remote/remote-access/vpn/vpn-device-tunnel-config#vpn-device-tunnel-configuration) hozhat létre VPN-profilt, és konfigurálhatja az eszköz-ALAGUTAT a helyi rendszerfiók környezetében.
 
-### <a name="configuration-example-for-device-tunnel"></a>Példa konfigurációs eszköz alagút
+### <a name="configuration-example-for-device-tunnel"></a>Az eszköz-alagút konfigurációs példája
 
-Miután beállította a virtuális hálózati átjáró és a helyi számítógép tárolójában, a Windows 10-es ügyfél telepítve van az ügyféltanúsítvány, használja az alábbi példák egy ügyfél eszköz alagút konfigurálásához.
+Miután konfigurálta a virtuális hálózati átjárót, és telepítette az ügyféltanúsítványt a helyi számítógép tárolójába a Windows 10-ügyfélen, az alábbi példák segítségével konfigurálja az ügyfél-eszköz alagutat.
 
-1. Másolja az alábbi szöveget, és mentse ***devicecert.ps1***.
+1. Másolja a következő szöveget, és mentse a ***devicecert. ps1***néven.
 
    ```
    Param(
@@ -104,7 +104,7 @@ Miután beállította a virtuális hálózati átjáró és a helyi számítóg�
    $Message = "Complete."
    Write-Host "$Message"
    ```
-1. Másolja az alábbi szöveget, és mentse ***VPNProfile.xml*** ugyanabban a mappában **devicecert.ps1**. Szerkessze a következő szöveget a környezetéhez.
+1. Másolja az alábbi szöveget, és mentse ***VPNProfile. XML*** néven a **devicecert. ps1**fájl mappájába. Szerkessze a következő szöveget a környezetének megfelelően.
 
    * `<Servers>azuregateway-1234-56-78dc.cloudapp.net</Servers>`
    * `<Address>192.168.3.5</Address>`
@@ -139,8 +139,8 @@ Miután beállította a virtuális hálózati átjáró és a helyi számítóg�
    <RegisterDNS>true</RegisterDNS>
    </VPNProfile>
    ```
-1. Töltse le **PsExec** a [Sysinternals](https://docs.microsoft.com/sysinternals/downloads/psexec) , és bontsa ki a fájlokat **C:\PSTools**.
-1. Az egy rendszergazdai parancssort indítsa el a Powershellt futtatásával:
+1. Töltse le a **PsExec** -t a [Sysinternals](https://docs.microsoft.com/sysinternals/downloads/psexec) -ból, és bontsa ki a fájlokat a **C:\PSTools**.
+1. A rendszergazda parancssorból indítsa el a PowerShellt a következő parancs futtatásával:
 
    ```
    C:\PsTools\PsExec.exe Powershell for 32-bit Windows
@@ -148,20 +148,20 @@ Miután beállította a virtuális hálózati átjáró és a helyi számítóg�
    ```
 
    ![PowerShell](./media/vpn-gateway-howto-always-on-device-tunnel/powershell.png)
-1. A PowerShellben váltson arra a mappára, ahol **devicecert.ps1** és **VPNProfile.xml** találhatók, és futtassa a következő parancsot:
+1. A PowerShellben váltson arra a mappára, ahol a **devicecert. ps1** és az **VPNProfile. xml fájl** található, és futtassa a következő parancsot:
 
    ```powershell
    C:\> .\devicecert.ps1 .\VPNProfile.xml MachineCertTest
    ```
    
    ![MachineCertTest](./media/vpn-gateway-howto-always-on-device-tunnel/machinecerttest.png)
-1. Futtatás **rasphone**.
+1. Futtassa a **Rasphone**.
 
    ![Rasphone](./media/vpn-gateway-howto-always-on-device-tunnel/rasphone.png)
-1. Keresse meg a **MachineCertTest** bejegyzést, és kattintson **Connect**.
+1. Keresse meg a **MachineCertTest** bejegyzést, és kattintson a **kapcsolat**elemre.
 
    ![Kapcsolódás](./media/vpn-gateway-howto-always-on-device-tunnel/connect.png)
-1. Ha a kapcsolódás sikeres, indítsa újra a számítógépet. Az alagút automatikusan kapcsolódik.
+1. Ha a kapcsolatok sikeresek, indítsa újra a számítógépet. Az alagút automatikusan fog összekapcsolást.
 
 ## <a name="cleanup"></a>Felesleges tartalmak törlése
 
@@ -171,4 +171,4 @@ A profil eltávolításához futtassa a következő parancsot:
 
 ## <a name="next-steps"></a>További lépések
 
-Című témakörben [Azure pont – hely kapcsolati problémák](vpn-gateway-troubleshoot-vpn-point-to-site-connection-problems.md)
+Hibaelhárítási információkért lásd: [Azure pont – hely kapcsolati problémák](vpn-gateway-troubleshoot-vpn-point-to-site-connection-problems.md)

@@ -1,6 +1,6 @@
 ---
-title: Tudnivalók a felhasználói felület testreszabása az Azure Active Directory B2C |} A Microsoft Docs
-description: Ismerje meg az Azure Active Directory B2C-t használó alkalmazások számára a felhasználói felület testreszabása.
+title: Tudnivalók a felhasználói felület testreszabásáról a Azure Active Directory B2Cban | Microsoft Docs
+description: Ismerje meg, hogyan szabhatja testre a Azure Active Directory B2Ct használó alkalmazásai felhasználói felületét.
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
@@ -10,63 +10,63 @@ ms.topic: conceptual
 ms.date: 02/07/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 6c9109cf4d6d67d3d8001a9de1d54e24622a9286
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 13ae1b74acbcab8d623c24d6a7b8d7e1355b80e8
+ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66511180"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "68227156"
 ---
-# <a name="about-user-interface-customization-in-azure-active-directory-b2c"></a>Tudnivalók az Azure Active Directory B2C felhasználói felület testreszabása
+# <a name="about-user-interface-customization-in-azure-active-directory-b2c"></a>Tudnivalók a felhasználói felület testreszabásáról Azure Active Directory B2C
 
-Lehetővé teszi, hogy saját arculat és testre szabhatja a felhasználói felület (UI), amely az Azure Active Directory (Azure AD) B2C arra szolgál, az alkalmazások fontos zökkenőmentes élményt biztosít az ügyfélnek. Ezek a tapasztalatok közé tartozik a regisztrációs, bejelentkezési, profil szerkesztésére és jelszó alaphelyzetbe állítása. Ez a cikk segítséget nyújt az alkalmazások a felhasználói felület testreszabása.
+Az Azure Active Directory (Azure AD) B2C által az alkalmazásokhoz használt felhasználói felület (UI) márkájának és testreszabásának lehetősége fontos, hogy zökkenőmentes felhasználói élményt biztosítson ügyfeleinek. Ezek a tapasztalatok közé tartozik a regisztráció, a bejelentkezés, a profil szerkesztése és a jelszó-visszaállítás. Ez a cikk az alkalmazások felhasználói felületének testreszabását segítő információkat tartalmaz.
 
-Esetén ezek a tapasztalatok, attól függően, az igényeinek, hogy a felhasználói felület testreszabása az alkalmazás különböző módon. Példa:
+Az Ön igényeitől függően az alkalmazás felhasználói felületét többféleképpen testreszabhatja. Példa:
 
-- Ha használ [felhasználói folyamatok](active-directory-b2c-reference-policies.md) regisztrálási vagy bejelentkezési, a jelszó alaphelyzetbe állítása, illetve profilszerkesztést funkciókat az alkalmazásban, használja a [a felhasználói felület testreszabása az Azure Portalon](tutorial-customize-ui.md).
-- Ha v2 felhasználói folyamat használja, akkor használhatja egy [lap Elrendezéssablon](#page-layout-templates) megváltoztatása nélkül további testreszabási felhasználói folyamat lapokat. Például is alkalmazhat egy Óceánt kék vagy befutó szürke téma az összes oldalra a felhasználói folyamat.
-- Ha Ön biztosítani a bejelentkezési csak, a hozzájuk tartozó jelszó-visszaállítási oldalra, és ellenőrzési e-mailt küld, használja a testreszabási lépéseket, amelyeket egy [az Azure AD bejelentkezési oldal](../active-directory/fundamentals/customize-branding.md).
-- Ha az ügyfelek kipróbálják, szerkesztheti a profilját, mielőtt bejelentkeznek, a rendszer átirányítja egy oldal, testre szabhatja az Azure AD bejelentkezési oldal testreszabása használt lépésekben.
-- Használata [egyéni szabályzatok](active-directory-b2c-overview-custom.md) adnia regisztrálási vagy bejelentkezési, a jelszót alaphelyzetbe állítása, illetve -profilszerkesztést az alkalmazásban, használhatja [házirendfájljait testreszabni a felhasználói Felületet](active-directory-b2c-ui-customization-custom.md).
-- Ha meg kell adnia egy ügyfél döntés a dinamikus tartalmak, használhatja a [egyéni szabályzatot, amely módosíthatja lapon tartalom](active-directory-b2c-ui-customization-custom-dynamic.md) függően egy lekérdezési karakterláncban elküldött paraméter. Például a háttérkép, az Azure AD B2C-vel regisztrálási vagy bejelentkezési oldalon megváltozik, egy paramétert, amely adja át a webes vagy mobilalkalmazás alapján.
-- Az Azure AD B2C-ben engedélyezheti a JavaScript ügyféloldali kódot [felhasználói folyamatok](user-flow-javascript-overview.md) vagy [egyéni szabályzatok](page-contract.md).
+- Ha [felhasználói folyamatokat](active-directory-b2c-reference-policies.md) használ a regisztrációhoz, a bejelentkezéshez, a jelszó-visszaállításhoz vagy a profil-szerkesztési élményekhez az alkalmazásban, akkor a [Azure Portal használatával TESTRESZABHATJA a felhasználói felületet](tutorial-customize-ui.md).
+- Ha v2 felhasználói folyamatot használ, az [oldalelrendezés sablonnal](#page-layout-templates) megváltoztathatja a felhasználói folyamatok lapjainak megjelenését további testreszabás nélkül. Például a felhasználói folyamat összes lapjára alkalmazhatja az Ocean Blue vagy a pala szürke témákat.
+- Ha csak a bejelentkezést, a hozzá tartozó jelszó-visszaállítási lapot és a hitelesítő e-maileket használja, akkor ugyanazokat a testreszabási lépéseket kell használnia, amelyek az [Azure ad bejelentkezési oldalához](../active-directory/fundamentals/customize-branding.md)használatosak.
+- Ha az ügyfelek a bejelentkezés előtt megpróbálják szerkeszteni a profiljaikat, a rendszer átirányítja egy olyan oldalra, amelyet az Azure AD bejelentkezési oldalának testreszabásához használt lépések használatával testreszab.
+- Ha [egyéni házirendeket](active-directory-b2c-overview-custom.md) használ a regisztrációhoz vagy a bejelentkezéshez, a jelszó-visszaállításhoz vagy a profil szerkesztéséhez az alkalmazásban, akkor [a felhasználói felület testreszabásához házirend-fájlokat](active-directory-b2c-ui-customization-custom.md)használ.
+- Ha az ügyfél döntése alapján dinamikus tartalmat kell megadnia, olyan egyéni házirendeket használhat, amelyek a lekérdezési karakterláncban elküldett paraméterektől függően módosíthatják az [oldal tartalmát](active-directory-b2c-ui-customization-custom-dynamic.md) . Például a Azure AD B2C regisztrációs vagy bejelentkezési oldalon megjelenő háttérkép megváltozik a webes vagy mobil alkalmazástól kapott paraméter alapján.
+- A JavaScript ügyféloldali kódokat a Azure AD B2C [felhasználói folyamatokban](user-flow-javascript-overview.md) vagy [Egyéni házirendekben](page-layout.md)engedélyezheti.
 
-Az Azure AD B2C az ügyfél böngészőjében kódja fut, és egy modern néven ismert megközelítés [eltérő eredetű erőforrások megosztása (CORS)](https://www.w3.org/TR/cors/). Tartalom futásidőben, be van töltve a felhasználói folyamat vagy szabályzat megadott URL-címről. Különböző URL-eket különböző oldalain adhatja meg. Tartalom betöltését a URL-CÍMÉT, miután egy HTML-részlet beszúrni az Azure AD B2C-ből, és ezután megjelenik, az ügyfél és az egyesítés.
+A Azure AD B2C kódot futtat az ügyfél böngészőjében, és egy modern megközelítést használ az eltérő [eredetű erőforrás-megosztás (CORS)](https://www.w3.org/TR/cors/)néven. Futásidőben a tartalom betöltődik a felhasználói folyamatokban vagy házirendekben megadott URL-címről. Különböző URL-címeket adhat meg különböző lapokhoz. Miután betöltötte a tartalmat az URL-címről, a rendszer egyesít egy, a Azure AD B2Cból beszúrt HTML-kódrészlettel, majd megjeleníti az ügyfelet.
 
-Ha használja a saját HTML és CSS-fájlokat a felhasználói felület testreszabása, megkezdése előtt tekintse át a következő útmutatást:
+Ha saját HTML-és CSS-fájlokat használ a felhasználói felület testreszabásához, a Kezdés előtt tekintse át a következő útmutatót:
 
-- Az Azure AD B2C egyesíti az oldal HTML-tartalmakat. Ne másolja, és próbálja meg módosítani az alapértelmezett tartalom, amely az Azure AD B2C-t biztosít. Célszerű hozhat létre a teljesen új HTML-tartalmakat, és használja az alapértelmezett tartalom hivatkozásként van listázva.
-- A JavaScript már felvehetők az egyéni tartalomban.
-- Támogatott böngésző verziók a következők: 
-    - Internet Explorer 11, 10 and Microsoft Edge
-    - Az Internet Explorer 9 és 8 korlátozott támogatása
-    - Google Chrome 42.0 vagy újabb verzió
-    - Mozilla Firefox 38.0 vagy újabb verzió
-- Győződjön meg arról, hogy nem adja meg űrlap címkék a HTML-ben, mivel ez rontja a POST műveletek az Azure AD B2C-ből az injektált HTML által generált.
+- Azure AD B2C egyesít HTML-tartalmat az oldalaiba. Ne másolja, és próbálja meg módosítani a Azure AD B2C által biztosított alapértelmezett tartalmat. A legjobb megoldás, ha a HTML-tartalmakat a semmiből hozza létre, és az alapértelmezett tartalmat használja hivatkozásként.
+- A JavaScript mostantól az egyéni tartalomban is szerepelhet.
+- A támogatott böngésző-verziók a következők:
+    - Internet Explorer 11, 10 és Microsoft Edge
+    - Korlátozott támogatás az Internet Explorer 9 és 8 rendszerhez
+    - Google Chrome 42,0 és újabb verziók
+    - Mozilla Firefox 38,0 és újabb verziók
+- Győződjön meg arról, hogy nem tartalmazza az űrlap címkéit a HTML-kódban, mert az a befecskendezett HTML által generált POST műveletekkel ütközik Azure AD B2C.
 
-## <a name="page-layout-templates"></a>Oldal elrendezése sablonok
+## <a name="page-layout-templates"></a>Lapelrendezés-sablonok
 
-Felhasználói folyamatok v2 választhat egy előre elkészített sablont, amely lehetővé teszi az alapértelmezett lapok jobb tekintse meg, és a saját testreszabáshoz jó alapjául szolgál.
+A v2 felhasználói folyamatok esetében olyan előre megtervezett sablont választhat, amely lehetővé teszi, hogy az alapértelmezett lapok jobban megtekintsenek, és a saját testreszabásának megfelelő módon szolgálnak.
 
-A bal oldali menü alatt **Testreszabás**, jelölje be **elrendezések lapon**. Válassza ki **sablon (előzetes verzió)** .
+A bal oldali menüben a **Testreszabás**területen válassza a **lapelrendezések**elemet. Ezután válassza a **sablon (előzetes verzió)** lehetőséget.
 
-![Válasszon egy sablont az oldal elrendezése](media/customize-ui-overview/template.png)
+![Sablon kiválasztása legördülő menü a Azure Portal felhasználói folyamat lapján](media/customize-ui-overview/template.png)
 
-Válasszon olyan sablont a listából. Ha például a **óceán kék** sablon a következő elrendezés vonatkozik a felhasználói folyamat lapjait:
+Válasszon ki egy sablont a listából. Az **Ocean Blue** sablon például a következő elrendezést alkalmazza a felhasználói folyamatok lapjaira:
 
-![A sablon óceán kék](media/customize-ui-overview/ocean-blue.png)
+![Példa a bejelentkezési oldalon megjelenített Ocean Blue-sablonra](media/customize-ui-overview/ocean-blue.png)
 
-Ha úgy dönt, hogy a sablon, a felhasználói folyamat összes oldalára vonatkozik a kijelölt elrendezés és az URI-t minden olyan lap jelenik meg a a **egyéni oldal URI-ja** mező.
+Ha kiválaszt egy sablont, a rendszer a kiválasztott elrendezést alkalmazza a felhasználói folyamat összes lapjára, és az egyes lapok URI-ja látható az **Egyéni lap URI** mezőjében.
 
-## <a name="where-do-i-store-ui-content"></a>Hol tárolja a felhasználói felület tartalmat?
+## <a name="where-do-i-store-ui-content"></a>Hol tárolhatom a felhasználói felület tartalmát?
 
-A felhasználói felület testreszabása a saját HTML és CSS-fájlok használatával, amikor a tartalom bárhonnan, például a felhasználói felület üzemeltethető [Azure Blob storage](../storage/blobs/storage-blobs-introduction.md), webalkalmazás-kiszolgálók, CDN, az AWS S3, vagy a megosztási fájlrendszerek. A fontos, hogy Ön üzemeltető egy nyilvánosan elérhető HTTPS-végpontokat CORS-támogatással rendelkező tartalmát. A tartalomban lévő megadásakor egy abszolút URL-címet kell használnia.
+Ha saját HTML-és CSS-fájlokat használ a felhasználói felület testreszabásához, bárhol tárolhatja a felhasználói felület tartalmát, például az [Azure Blob Storage](../storage/blobs/storage-blobs-introduction.md)-ban, a webkiszolgálókon, a CDNs, az AWS S3-ban vagy a fájlmegosztást használó rendszerekben. A lényeg az, hogy a tartalmat egy nyilvánosan elérhető HTTPS-végponton üzemelteti, amelyen engedélyezve van a CORS. A tartalomban való megadásakor abszolút URL-címet kell használnia.
 
 ## <a name="how-do-i-get-started"></a>Hogyan kezdhetek hozzá?
 
-A felhasználói felület testreszabása a következők elvégzését:
+A következő műveleteket végezheti el a felhasználói felület testreszabásához:
 
-- Hozzon létre egy üres tartalom megfelelően formázott HTML `<div id="api"></div>` elem található valahol a `<body>`. A elem jelek, ahol az Azure AD B2C-tartalom egészül ki. Az alábbi példa egy minimális lapját jeleníti meg:
+- Hozzon létre jól formázott HTML-tartalmat egy `<div id="api"></div>` olyan üres elemmel, amely `<body>`valahol a-ben található. Ez az elem a Azure AD B2C tartalmának beszúrt helyét jelöli. Az alábbi példa egy minimális oldalt mutat be:
 
     ```html
     <!DOCTYPE html>
@@ -82,16 +82,16 @@ A felhasználói felület testreszabása a következők elvégzését:
     </html>
     ```
 
-- A tartalmakat a HTTPS-végpont állomás (a CORS engedélyezve). Mindkét LEKÉRÉSE, és a beállítások kérési metódusainak engedélyezni kell a CORS konfigurálása során.
-- A CSS segítségével stílus az Azure AD B2C-vel szúr be a lap felhasználói felületi elemeket. Az alábbi példa bemutatja egy egyszerű CSS-fájlt, amely a regisztrációs injektált HTML-elemek beállításait is tartalmazza:
+- Tartalom üzemeltetése HTTPS-végponton (CORS engedélyezett). A CORS konfigurálásakor engedélyezni kell a GET és a OPTIONs metódust is.
+- A CSS használatával a Azure AD B2C beszúrható felhasználói felületi elemeket alakíthatja át az oldalára. Az alábbi példa egy egyszerű CSS-fájlt mutat be, amely a regisztrációs beszúrt HTML-elemek beállításait is tartalmazza:
 
-    ```css 
+    ```css
     h1 {
       color: blue;
       text-align: center;
     }
     .intro h2 {
-      text-align: center; 
+      text-align: center;
     }
     .entry {
       width: 400px ;
@@ -99,7 +99,7 @@ A felhasználói felület testreszabása a következők elvégzését:
       margin-right: auto ;
     }
     .divider h2 {
-      text-align: center; 
+      text-align: center;
     }
     .create {
       width: 400px ;
@@ -108,32 +108,32 @@ A felhasználói felület testreszabása a következők elvégzését:
     }
     ```
 
-- Hozzon létre, vagy az Ön által létrehozott tartalom használatára a szabályzatot.
+- Hozzon létre vagy szerkesszen egy szabályzatot a létrehozott tartalom használatához.
 
-A következő táblázat felsorolja az Azure AD B2C-vel egyesít HTML-töredékek a `<div id="api"></div>` elem található a tartalmat.
+A következő táblázat felsorolja azokat a HTML-töredékeket, amelyeket Azure ad B2C egyesít `<div id="api"></div>` a tartalomban található elembe.
 
-| Beszúrt lap | A HTML-leírás |
+| Beszúrt oldal | HTML leírása |
 | ------------- | ------------------- |
-| Identitás-szolgáltató kiválasztása | Gombok listája tartalmazza identitásszolgáltatókat, amelyek az ügyfél során regisztrálási vagy bejelentkezési közül választhat. Ezekre a gombokra közé tartozik a közösségi Identitásszolgáltatók, például Facebook, Google vagy a helyi fiókok (e-mail-cím vagy a felhasználó neve alapján). |
-| Helyi fiók regisztrálási | Egy e-mail-cím vagy felhasználónév alapján helyi fiók regisztrációs űrlapot tartalmaz. Az űrlap különböző bemeneti vezérlőelemekből, például a bemeneti szövegmezőt, bejegyzés mezőben, választógomb, egyszeri kiválasztásos legördülő listák és többszörös kiválasztási jelölőnégyzetet is tartalmazhat. |
-| Közösségi fiók regisztrációs | Előfordulhat, hogy jelennek meg, amikor regisztrál egy közösségi identitásszolgáltatót, mint a Facebook, Google vagy a meglévő fiók használata. Ha további információt kell gyűjteni a regisztrációs űrlap segítségével ügyfél használható. |
-| Egyesített regisztrálási vagy bejelentkezési | Mind előfizetési, és jelentkezzen be az ügyfeleink, akik közösségi Identitásszolgáltatók, például Facebook, Google vagy a helyi fiókok is kezeli. |
-| Multi-Factor Authentication | Ügyfelek regisztrálási vagy bejelentkezési során ellenőrizni tudja a telefonszámokat, (a szöveges vagy szóbeli). |
-| Hiba | Tájékoztatást nyújt az ügyfélnek. |
+| Identitás-szolgáltató kiválasztása | Azon identitás-szolgáltatók gombjainak listáját tartalmazza, amelyeket az ügyfél a regisztráció vagy a bejelentkezés során választhat. Ezek a gombok olyan közösségi identitás-szolgáltatók, mint például a Facebook, a Google vagy a helyi fiókok (e-mail-cím vagy Felhasználónév alapján). |
+| Helyi fiók regisztrálása | Egy űrlapot tartalmaz a helyi fiók regisztrálásához egy e-mail-cím vagy egy Felhasználónév alapján. Az űrlap különböző beviteli vezérlőket tartalmazhat, mint például a szövegbeviteli mező, a jelszó-beviteli mező, a választógomb, az egyszeres kijelölés legördülő lista és a többszörös kijelölés jelölőnégyzet. |
+| Közösségi fiók regisztrálása | Akkor jelenhet meg, ha egy közösségi identitás-szolgáltató, például a Facebook vagy a Google egy meglévő fiókjának használatával regisztrál. Akkor használatos, ha az ügyféltől további információkat kell gyűjteni a regisztrációs űrlap használatával. |
+| Egyesített regisztráció vagy bejelentkezés | A olyan ügyfelek regisztrációját és bejelentkezését kezeli, akik használhatják a közösségi identitás-szolgáltatókat, például a Facebookot, a Google-t vagy a helyi fiókokat. |
+| Multi-Factor Authentication | Az ügyfelek a regisztrálás vagy a bejelentkezés során ellenőrizhetik a telefonszámokat (szöveg vagy hang használatával). |
+| Hiba | Információt nyújt az ügyfélnek. |
 
 
-## <a name="how-do-i-localize-content"></a>Hogyan tartalom honosítása?
+## <a name="how-do-i-localize-content"></a>Hogyan a tartalom honosítása?
 
-A HTML-tartalom engedélyezésével a honosítás [nyelvi testreszabás](active-directory-b2c-reference-language-customization.md) az Azure AD B2C-bérlőben. Ez a funkció lehetővé teszi, hogy az Azure AD B2C-vel továbbítja az Open ID Connect paraméter `ui-locales` a végponthoz. A webtartalom-kiszolgáló a paraméter használatával adja meg a HTML-lapok nyelvét.
+A HTML-tartalmat honosíthatja a Azure AD B2C bérlő [nyelvi testreszabásainak](active-directory-b2c-reference-language-customization.md) engedélyezésével. A funkció engedélyezése lehetővé teszi Azure ad B2C számára, hogy továbbítsa az `ui-locales` Open ID kapcsolódási paramétert a végpontnak. A Content Server ezt a paramétert használhatja a nyelvspecifikus HTML-lapok megadásához.
 
-A használt területi beállítása alapján különböző helyen is kéri le tartalmat. A CORS-kompatibilis végpont beállíthatja a mappastruktúrát gazdagép tartalom bizonyos nyelveken. Ha a helyettesítő karaktert tartalmazó értéket {kulturális környezet: RFC5646}, felhívjuk a megfelelőt. Például az egyéni oldal URI-t a következőhöz hasonló lehet `https://contoso.blob.core.windows.net/{Culture:RFC5646}/myHTML/unified.html`. Az oldal francia nyelvű kiindulásként tartalom betöltése `https://contoso.blob.core.windows.net/fr/myHTML/unified.html`
+A tartalmat a használt területi beállítás alapján különböző helyekről lehet kihúzni. A CORS-kompatibilis végponton beállíthatja, hogy a rendszer egy adott nyelvhez tartozó tartalmat működtessen. Ha a (z) {Culture: RFC5646} helyettesítő karaktert használja, akkor meg kell hívnia a megfelelő értéket. Előfordulhat például, hogy az egyéni oldal URI-ja `https://contoso.blob.core.windows.net/{Culture:RFC5646}/myHTML/unified.html`hasonlít. A lapot francia nyelven is betöltheti, ha tartalmat húz a következőből:`https://contoso.blob.core.windows.net/fr/myHTML/unified.html`
 
 ## <a name="examples"></a>Példák
 
-Példák testreszabási, töltse le, majd tekintse át a [sablonfájlokat minta](https://github.com/azureadquickstarts/b2c-azureblobstorage-client/archive/master.zip).
+A testreszabási példákhoz töltse le és tekintse át ezeket a [sablonfájl-fájlokat](https://github.com/azureadquickstarts/b2c-azureblobstorage-client/archive/master.zip).
 
 ## <a name="next-steps"></a>További lépések
 
-- Felhasználói folyamatok használata, indítsa el az oktatóanyag a felhasználói felület testreszabása: [Az alkalmazások az Azure Active Directory B2C a felhasználói felület testreszabása](tutorial-customize-ui.md).
-- Egyéni szabályzat használata, indítsa el az a cikk a felhasználói felület testreszabása: [Az alkalmazás egyéni szabályzat használata az Azure Active Directory B2C a felhasználói felület testreszabása](active-directory-b2c-ui-customization-custom.md).
+- Ha felhasználói folyamatokat használ, megkezdheti a felhasználói felület testreszabását az oktatóanyag segítségével: [Testreszabhatja alkalmazásai felhasználói felületét Azure Active Directory B2Cban](tutorial-customize-ui.md).
+- Ha egyéni házirendeket használ, megkezdheti a felhasználói felület testreszabását a cikk használatával: [Testre szabhatja az alkalmazás felhasználói felületét az Azure Active Directory B2C-ban található egyéni házirend használatával](active-directory-b2c-ui-customization-custom.md).
 

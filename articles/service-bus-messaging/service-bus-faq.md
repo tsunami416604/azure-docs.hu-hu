@@ -1,6 +1,6 @@
 ---
-title: Az Azure Service Bus – gyakori kérdések (GYIK) |} A Microsoft Docs
-description: Néhány Azure Service busszal kapcsolatos gyakori kérdésekre ad választ.
+title: Azure Service Bus gyakori kérdések (GYIK) | Microsoft Docs
+description: Válaszok a Azure Service Busekkel kapcsolatos gyakori kérdésekre.
 services: service-bus-messaging
 author: axisc
 manager: timlt
@@ -9,145 +9,145 @@ ms.service: service-bus-messaging
 ms.topic: article
 ms.date: 01/23/2019
 ms.author: aschhab
-ms.openlocfilehash: 26609e7b21af8804a4b43039c84c04597035721c
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 80809afc9f2a8e8da2f6adecfe916141c4cd3e45
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67706211"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68278342"
 ---
 # <a name="service-bus-faq"></a>Service Bus – GYIK
 
-Ez a cikk ismerteti a néhány gyakori kérdés a Microsoft Azure Service Bus szolgáltatásról. Emellett letöltheti a [– gyakori kérdések az Azure támogatja a](https://azure.microsoft.com/support/faq/) általános Azure díjszabását és támogatási információk.
+Ez a cikk a Microsoft Azure Service Busokkal kapcsolatos gyakori kérdéseket tárgyalja. Az Azure- [támogatási GYIK](https://azure.microsoft.com/support/faq/) általános Azure-díjszabást és támogatási információkat is talál.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="general-questions-about-azure-service-bus"></a>Azure Service Bus általános kérdések
+## <a name="general-questions-about-azure-service-bus"></a>Általános kérdések a Azure Service Bus
 ### <a name="what-is-azure-service-bus"></a>Mi az Azure Service Bus?
-[Az Azure Service Bus](service-bus-messaging-overview.md) egy aszinkron üzenetkezelési felhőalapú platform, amely lehetővé teszi, hogy adatokat a leválasztott rendszerek között. A Microsoft szolgáltatás, ami azt jelenti, hogy nem kell üzemeltetésére használhatja azt a saját hardver ezt a szolgáltatást kínál.
+A [Azure Service Bus](service-bus-messaging-overview.md) egy aszinkron üzenetkezelő felhőalapú platform, amely lehetővé teszi a leválasztott rendszerek közötti adatküldést. A Microsoft ezt a szolgáltatást szolgáltatásként kínálja, ami azt jelenti, hogy nem kell saját hardvert üzemeltetni a használatához.
 
-### <a name="what-is-a-service-bus-namespace"></a>Mi a Service Bus-névtér?
-A [névtér](service-bus-create-namespace-portal.md) egy hatókörkezelési tárolót biztosít a Service Bus erőforrásainak címzéséhez az alkalmazáson belül. Hozzon létre egy névteret kell a Service Bus és az első lépéseket ismertető az első lépéseket.
+### <a name="what-is-a-service-bus-namespace"></a>Mi az Service Bus névtér?
+A [névtér](service-bus-create-namespace-portal.md) egy hatókör-tárolót biztosít az alkalmazáson belüli Service Bus erőforrások kezeléséhez. A névtér létrehozása szükséges a Service Bus használatához, és az első lépések egyike.
 
-### <a name="what-is-an-azure-service-bus-queue"></a>Mi az Azure Service Bus-üzenetsor?
-A [Service Bus-üzenetsorba](service-bus-queues-topics-subscriptions.md) olyan entitás, amelyben üzenetek találhatók. Üzenetsorok hasznosak, ha több alkalmazást, vagy ha több részből állnak kell kommunikálniuk egymással egy elosztott alkalmazás. A várólista hasonlít egy kulcskiosztó központ, hogy több termékeket (üzenetek) kapott, és elküldi az adott helyről.
+### <a name="what-is-an-azure-service-bus-queue"></a>Mi az Azure Service Bus üzenetsor?
+A [Service Bus üzenetsor](service-bus-queues-topics-subscriptions.md) olyan entitás, amelyben az üzenetek tárolódnak. A várólisták akkor hasznosak, ha több alkalmazással vagy egy elosztott alkalmazás több részével kell kommunikálni egymással. A várólista hasonló ahhoz a terjesztési központhoz, amelyben több termék (üzenet) érkezett, majd az adott helyről lesz küldve.
 
-### <a name="what-are-azure-service-bus-topics-and-subscriptions"></a>Mik az Azure Service Bus-üzenettémák és előfizetések?
-A témakör az alábbi ábra egy üzenetsorba, és ha több előfizetést használ, egy gazdagabb üzenetkezelési modellt; válik lényegében egy-a-többhöz típusú eszköz. Ez a közzétételi és előfizetési modell (vagy *pub/sub*) lehetővé teszi az alkalmazások, amelyek több alkalmazás által fogadott üzenet rendelkezik több előfizetést egy üzenettémához üzenetet küld.
+### <a name="what-are-azure-service-bus-topics-and-subscriptions"></a>Mik azok a Azure Service Bus témakörök és előfizetések?
+A témakörök üzenetsorként és több előfizetés használata esetén is megjeleníthetők, így gazdagabb üzenetkezelési modellvé válnak. lényegében egy-a-többhöz kommunikációs eszköz. Ez a közzétételi/előfizetési modell (vagy a *pub/sub*) lehetővé teszi egy alkalmazás számára, hogy több előfizetéssel rendelkező témakörhöz üzenetet küldjön, hogy több alkalmazás fogadja az üzenetet.
 
-### <a name="what-is-a-partitioned-entity"></a>Mit jelent a particionált entitás?
-A hagyományos üzenetsor vagy témakör egyetlen üzenettovábbítóról kezeli, és egyetlen üzenetküldési tárolóra tárolja. Csak az alapszintű és Standard szintű üzenetkezelés támogatja a [particionált üzenetsorra vagy témakörbe](service-bus-partitioning.md) kezeli a több üzenetközvetítők és több üzenetküldési tároló tárolja. Ez a szolgáltatás azt jelenti, hogy a teljes átviteli képessége particionált üzenetsor vagy témakör már nem korlátozzák a teljesítmény egyetlen üzenettovábbítóról vagy üzenetküldési tárolóban. Emellett egy átmeneti szolgáltatáskimaradás az üzenetküldési tárolóban nem jelennek meg a particionált üzenetsor vagy témakör nem érhető el.
+### <a name="what-is-a-partitioned-entity"></a>Mi az a particionált entitás?
+Egy hagyományos üzenetsor vagy témakör kezelése egyetlen Message Broker által történik, és egy üzenetkezelő tárolóban tárolódik. Csak az alapszintű és a standard szintű üzenetkezelési szinten támogatott, a [particionált várólistákat vagy témákat](service-bus-partitioning.md) több üzenet-átvitelszervező kezeli, és több üzenetkezelési tárolóban tárolják. Ez a funkció azt jelenti, hogy egy particionált üzenetsor vagy témakör teljes átviteli sebességét már nem korlátozza egyetlen Message Broker vagy üzenetküldési tároló teljesítménye. Emellett az üzenetküldési tároló átmeneti kimaradása nem jeleníti meg a particionált üzenetsor vagy a témakör nem érhető el.
 
-Rendezés nem biztosított, ha használata particionált entitások. Abban az esetben, ha egy partíció nem érhető el, továbbra is küldhet és a többi partíció-üzeneteket fogadjon.
+Particionált entitások használata esetén a rendelés nem biztosítható. Abban az esetben, ha egy partíció nem érhető el, továbbra is küldhet és fogadhat üzeneteket a többi partícióról.
 
- A particionált entitások már nem támogatottak a [prémium szintű Termékváltozat](service-bus-premium-messaging.md). 
+ A particionált entitások már nem támogatottak a [Premium SKU](service-bus-premium-messaging.md)-ban. 
 
-### <a name="what-ports-do-i-need-to-open-on-the-firewall"></a>Milyen portokat tegye kell megnyitni a tűzfalon? 
-Segítségével az alábbi protokollok Azure Service Bus-üzenetek küldése és fogadása:
+### <a name="what-ports-do-i-need-to-open-on-the-firewall"></a>Milyen portokat kell megnyitni a tűzfalon? 
+Az üzenetek küldéséhez és fogadásához a következő protokollokat használhatja Azure Service Bus:
 
 - Advanced Message Queueing Protocol (AMQP)
-- Service Bus-üzenetkezelés protokoll (SBMP)
+- Service Bus üzenetküldési protokoll (SBMP)
 - HTTP
 
-Tekintse meg a következő táblázat tartalmazza a kimenő portokat, meg kell nyitnia ezeket a protokollokat használata az Azure Event Hubs való kommunikációhoz. 
+Az alábbi táblázat tartalmazza azokat a kimenő portokat, amelyeket meg kell nyitni a protokollok Azure Event Hubs-vel való kommunikációhoz való használatához. 
 
 | Protocol | Portok | Részletek | 
 | -------- | ----- | ------- | 
-| AMQP | 5671, 5672 és | Lásd: [AMQP protokoll-útmutató](service-bus-amqp-protocol-guide.md) | 
-| SBMP | 9350 a 9354-es | Lásd: [csatlakozási mód](/dotnet/api/microsoft.servicebus.connectivitymode?view=azure-dotnet) |
+| AMQP | 5671 és 5672 | Lásd: [AMQP protokoll – útmutató](service-bus-amqp-protocol-guide.md) | 
+| SBMP | 9350 – 9354 | Lásd: [kapcsolati mód](/dotnet/api/microsoft.servicebus.connectivitymode?view=azure-dotnet) |
 | HTTP, HTTPS | 80, 443 | 
 
-### <a name="what-ip-addresses-do-i-need-to-whitelist"></a>Milyen IP-címeket engedélyezési lista kell?
-A kapcsolat a megfelelő IP-címek engedélyezési lista megkereséséhez kövesse az alábbi lépéseket:
+### <a name="what-ip-addresses-do-i-need-to-whitelist"></a>Milyen IP-címekre van szükségem az engedélyezési listához?
+Az alábbi lépéseket követve megkeresheti a megfelelő IP-címeket a kapcsolatokhoz tartozó fehér listához:
 
-1. Futtassa a következő parancsot a parancssorba: 
+1. Futtassa a következő parancsot egy parancssorból: 
 
     ```
     nslookup <YourNamespaceName>.servicebus.windows.net
     ```
-2. Jegyezze fel a visszaadott IP-címet `Non-authoritative answer`. Az IP-címet a statikus. A csak időben megváltozna azt, hogy ha egy másik fürtön be a névtér visszaállítását.
+2. Jegyezze fel `Non-authoritative answer`a visszaadott IP-címet. Ez az IP-cím statikus. Ha a névteret egy másik fürtre állítja vissza, az egyetlen olyan időpontot kell megváltoztatnia, amelyik megváltozhat.
 
-A zone redudancy a névteret használja, ha néhány további lépések végrehajtásához szüksége: 
+Ha a zóna redundanciát használja a névtérhez, néhány további lépést is végre kell hajtania: 
 
-1. Először futtassa a nslookup a névtérhez.
+1. Először futtassa az nslookupt a névtéren.
 
     ```
     nslookup <yournamespace>.servicebus.windows.net
     ```
-2. Jegyezze fel a neve a **nem mérvadó válasz** szakaszt, amely a következő formátumok egyikében: 
+2. Jegyezze fel a nevet a **nem mérvadó válasz** szakaszban, amely az alábbi formátumok egyike: 
 
     ```
     <name>-s1.servicebus.windows.net
     <name>-s2.servicebus.windows.net
     <name>-s3.servicebus.windows.net
     ```
-3. Az nslookup futtassa egyesével az utótagok s1, s2 és s3 három rendelkezésre állási zónában futó összes három példány IP-címeket 
+3. Futtassa az nslookupt mindegyikhez az S1, az S2 és az S3 utótaggal a három rendelkezésre állási zónában futó mindhárom példány IP-címeinek lekéréséhez. 
 
 
 ## <a name="best-practices"></a>Ajánlott eljárások
-### <a name="what-are-some-azure-service-bus-best-practices"></a>Mik az Azure Service Bus ajánlott eljárásokat?
-Lásd: [ajánlott eljárások a teljesítmény Service Bus használatával][Best practices for performance improvements using Service Bus] – Ez a cikk bemutatja, hogyan lehet optimalizálni a teljesítményt üzenetváltásokban.
+### <a name="what-are-some-azure-service-bus-best-practices"></a>Milyen Azure Service Bus ajánlott eljárások?
+Lásd: [ajánlott eljárások a teljesítmény fejlesztéséhez Service Bus használatával][Best practices for performance improvements using Service Bus] – ez a cikk azt ismerteti, hogyan optimalizálható a teljesítmény az üzenetek cseréjekor.
 
-### <a name="what-should-i-know-before-creating-entities"></a>Mit kell tudni entitások létrehozása előtt?
-Egy üzenetsor és a témakör következő tulajdonságai nem módosíthatók. Fontolja meg ezt a korlátozást az entitások üzembe helyezésekor, ezek a Tulajdonságok helyettesítő új entitások létrehozása nélkül nem módosítható.
+### <a name="what-should-i-know-before-creating-entities"></a>Mit kell tudni az entitások létrehozása előtt?
+A várólista és a témakör következő tulajdonságai nem változtathatók meg. Vegye figyelembe ezt a korlátozást az entitások kiépítésekor, mivel ezek a tulajdonságok nem módosíthatók új helyettesítő entitás létrehozása nélkül.
 
 * Particionálás
 * Munkamenetek
 * Duplikálás észlelése
-* Az expressz entitások
+* Expressz entitás
 
 ## <a name="pricing"></a>Díjszabás
-Ez a szakasz néhány – gyakori kérdések a Service Bus díjszabási struktúrája ad választ.
+Ez a szakasz a Service Bus árképzési struktúrával kapcsolatos gyakori kérdésekre ad választ.
 
-A [a Service Bus díjszabása és számlázási](https://azure.microsoft.com/pricing/details/service-bus/) a cikk ismerteti a Service Bus a számlázási mérőszámok. További részletes információ a Service Bus díjszabási lehetőségek: [a Service Bus díjszabásáról](https://azure.microsoft.com/pricing/details/service-bus/).
+A [Service Bus díjszabása és a számlázási](https://azure.microsoft.com/pricing/details/service-bus/) cikk a Service Bus számlázási mérőszámait ismerteti. A Service Bus díjszabási lehetőségeivel kapcsolatos további információkért tekintse meg a [Service Bus díjszabási részleteit](https://azure.microsoft.com/pricing/details/service-bus/).
 
-Emellett letöltheti a [Azure támogatás – gyakori kérdések](https://azure.microsoft.com/support/faq/) általános Azure díjszabási információk. 
+Az Azure- [támogatási GYIK](https://azure.microsoft.com/support/faq/) általános Azure-díjszabási információit is felkeresheti. 
 
-### <a name="how-do-you-charge-for-service-bus"></a>Hogyan tegye meg díja szerint számítjuk fel a Service Bus?
-Teljes információ a Service Bus díjszabásáról: [a Service Bus díjszabásáról][Pricing overview]. A feltüntetett árak mellett díjkötelesek kapcsolódó adatforgalmi kimenő kívül az adatközpontot, amelyben az alkalmazás ki van építve.
+### <a name="how-do-you-charge-for-service-bus"></a>Hogyan díjköteles a Service Bus?
+A Service Bus díjszabásával kapcsolatos információkért tekintse meg a [Service Bus díjszabási részleteit][Pricing overview]. A feljegyzett díjak mellett a kimenő adatforgalomért is fizetnie kell azon adatközponton kívül, amelyben az alkalmazás üzembe lett helyezve.
 
-### <a name="what-usage-of-service-bus-is-subject-to-data-transfer-what-is-not"></a>Milyen a Service Bus használata, az adatátviteli vonatkoznak? Nincs mit jelent?
-Egy adott Azure-régión belül minden olyan adatforgalom díjmentes, valamint bejövő adatforgalom biztosítunk. Adatátvitel a régión kívül van alkalmaz a kimenő forgalom költségeit, amely találhatók rajtuk [Itt](https://azure.microsoft.com/pricing/details/bandwidth/).
+### <a name="what-usage-of-service-bus-is-subject-to-data-transfer-what-is-not"></a>Milyen Service Bus használatára vonatkozik az adatátvitel? Mi nem?
+Az adott Azure-régión belüli adatforgalom díjmentesen, valamint a bejövő adatforgalomban is elérhető. A régión kívüli adatforgalomra a kimenő forgalom díja vonatkozik, amely [itt](https://azure.microsoft.com/pricing/details/bandwidth/)található.
 
-### <a name="does-service-bus-charge-for-storage"></a>Nem a Service Bus tárhelyért számítunk fel díjat?
-Nem, a Service Bus nem tárhelyért számítunk fel díjat. Van azonban egy kvótakorlátozó maximális adatmennyiség / üzenetsor/témakör megőrizhetők. Tekintse meg a következő gyakori kérdések.
+### <a name="does-service-bus-charge-for-storage"></a>Service Bus díjat a tárterületért?
+Nem, Service Bus a tárterületért nem számítunk fel díjat. Van azonban egy kvóta, amely korlátozza a várólistára vagy témakörre vonatkozó maximálisan megőrzött adatmennyiséget. Tekintse meg a következő gyakori kérdéseket.
 
 ## <a name="quotas"></a>Kvóták
 
-A Service Bus-korlátok és kvóták listáját lásd: a [Service Bus-kvóták áttekintése][Quotas overview].
+Service Bus korlátok és kvóták listáját a [Service Bus kvóták áttekintésében][Quotas overview]találhatja meg.
 
-### <a name="does-service-bus-have-any-usage-quotas"></a>Rendelkezik a Service Bus használati kvóták?
-Alapértelmezés szerint bármilyen felhőhöz szolgáltatás a Microsoft állítja be az összes olyan ügyfél-előfizetések számított egy összesített havi használati kvóta. Ha több mint ezeket a korlátokat, és igényeinek megfelelően állítsa be ezeket a korlátokat bármikor meg is forduljon az ügyfélszolgálathoz. A Service Bus az összesített használati kvóta havonta 5 milliárd üzeneteket.
+### <a name="does-service-bus-have-any-usage-quotas"></a>Van Service Bus használati kvótája?
+Alapértelmezés szerint bármely felhőalapú szolgáltatás esetében a Microsoft egy összesített havi használati kvótát állít be, amelyet az ügyfél összes előfizetése alapján számítunk fel. Ha ennél több korlátra van szüksége, bármikor felveheti a kapcsolatot az ügyfélszolgálattal, hogy megértse az igényeit, és megfelelően módosítsa ezeket a korlátokat. Service Bus esetében az összesített használati kvóta 5 000 000 000 üzenet havonta.
 
-A Microsoft fenntartja a jogot arra, hogy túllépte a használati kvóták az adott hónapban felhasználói fiók letiltása, amíg e-mail értesítések kiküldése, és tett kísérletet tett forduljon az ügyfél előtt műveleteknél véve. Ügyfelek kvóta túllépése esetén a kvóták túllépéséből eredő díjakat továbbra is felelős.
+Míg a Microsoft fenntartja a jogot arra, hogy letiltsa a használati kvótákat egy adott hónapban, a rendszer elküldje az e-mailes értesítéseket, és a művelet végrehajtása előtt több kísérletet Kérjen a felhasználótól. Az ezen kvótákat meghaladó ügyfelek továbbra is felelősek a kvótákat túllépő díjakért.
 
-Más szolgáltatások az Azure-ban, a Service Bus adott kvótakészlet annak érdekében, hogy nincs-e az erőforrások valós használati érvénybe lépteti. További információt a kvóta annak a [Service Bus-kvóták áttekintése][Quotas overview].
+Az Azure-ban más szolgáltatásokhoz hasonlóan a Service Bus meghatározott kvótákat kényszerít ki annak biztosítására, hogy az erőforrások valós kihasználtsága legyen. Ezekről a kvótákkal kapcsolatban a [Service Bus][Quotas overview]-kvóták áttekintésében talál további információt.
 
-### <a name="how-to-handle-messages-of-size--1-mb"></a>Hogyan kezeléséhez az üzenetek > 1 MB méretű?
-A Service Bus üzenetkezelési szolgáltatások (az üzenetsorok és üzenettémák, előfizetések) teszik lehetővé az alkalmazás méretű üzenetek küldése akár 256 KB-os (standard szintű) vagy 1 MB (prémium szintű). Ha 1 MB-nál nagyobb méretű üzenetek kezelése, használja a jogcím minta ismertetett [ebben a blogbejegyzésben](https://www.serverless360.com/blog/deal-with-large-service-bus-messages-using-claim-check-pattern).
+### <a name="how-to-handle-messages-of-size--1-mb"></a>1 MB méretű üzenetek kezelése >
+Service Bus Messaging Services (várólisták és témakörök/előfizetések) lehetővé teszik, hogy az alkalmazás legfeljebb 256 KB-os (standard szintű) vagy 1 MB (prémium szint) méretű üzeneteket küldjön. Ha 1 MB-nál nagyobb méretű üzeneteket használ, használja az [ebben](https://www.serverless360.com/blog/deal-with-large-service-bus-messages-using-claim-check-pattern)a blogbejegyzésben leírt jogcím-ellenőrzési mintát.
 
 ## <a name="troubleshooting"></a>Hibaelhárítás
-### <a name="why-am-i-not-able-to-create-a-namespace-after-deleting-it-from-another-subscription"></a>Miért nem tudok-névtér létrehozása egy másik előfizetésből törlését követően? 
-Ha egy névtér töröl egy előfizetést, várjon, amíg 4 óra, mielőtt újra egy másik előfizetésben található ugyanazzal a névvel. Ellenkező esetben a következő hibaüzenet jelenhet: `Namespace already exists`. 
+### <a name="why-am-i-not-able-to-create-a-namespace-after-deleting-it-from-another-subscription"></a>Miért nem lehet névteret létrehozni egy másik előfizetésből való törlés után? 
+Ha töröl egy névteret egy előfizetésből, várjon 4 órát, mielőtt újra létrehozza azt ugyanazzal a névvel egy másik előfizetésben. Ellenkező esetben a következő hibaüzenet jelenhet meg: `Namespace already exists`. 
 
-### <a name="what-are-some-of-the-exceptions-generated-by-azure-service-bus-apis-and-their-suggested-actions"></a>Mik az Azure Service Bus API-k és a javasolt lépések által előállított kivételeket?
-Lehetséges a Service Bus-kivételek listáját lásd: [kivételek áttekintése][Exceptions overview].
+### <a name="what-are-some-of-the-exceptions-generated-by-azure-service-bus-apis-and-their-suggested-actions"></a>Melyek a Azure Service Bus API-k által generált kivételek és a javasolt műveletek?
+A lehetséges Service Bus kivételek listáját lásd: [kivételek áttekintése][Exceptions overview].
 
-### <a name="what-is-a-shared-access-signature-and-which-languages-support-generating-a-signature"></a>Mi az a közös hozzáférésű Jogosultságkód és nyelveket támogatja az aláírás létrehozásához?
-Közös hozzáférésű Jogosultságkódok olyan hitelesítési mechanizmust, SHA-256 biztonságos kivonatok vagy URI-k alapján. További információ a saját aláírásokat létrehozni a Node.js, PHP, Java vagy C\#, tekintse meg a [közös hozzáférési aláírások][Shared Access Signatures] cikk.
+### <a name="what-is-a-shared-access-signature-and-which-languages-support-generating-a-signature"></a>Mi a közös hozzáférési aláírás, és milyen nyelveket támogat az aláírás létrehozása?
+A közös hozzáférésű aláírások az SHA-256 biztonságos kivonatokon vagy URI-kon alapuló hitelesítési mechanizmusok. A saját aláírások létrehozásáról a Node. js, a PHP, a Java, a Python és C#a című témakörben talál további információt a [közös hozzáférésű aláírásokról][Shared Access Signatures] szóló cikkben.
 
-## <a name="subscription-and-namespace-management"></a>Előfizetés és a névtér-kezelés
-### <a name="how-do-i-migrate-a-namespace-to-another-azure-subscription"></a>Hogyan migrálhatom a névtér egy másik Azure-előfizetésre?
+## <a name="subscription-and-namespace-management"></a>Előfizetés és névtér kezelése
+### <a name="how-do-i-migrate-a-namespace-to-another-azure-subscription"></a>Hogyan áttelepíteni egy névteret egy másik Azure-előfizetésbe?
 
-Áthelyezheti a névtér egy Azure-előfizetésből egy másikba, segítségével a [az Azure portal](https://portal.azure.com) vagy a PowerShell-parancsokat. A művelet végrehajtásához a névtér már aktívnak kell lennie. A felhasználó a parancsok végrehajtása a forrás- és a célként megadott előfizetés rendszergazdájának kell lennie.
+A névteret áthelyezheti egyik Azure-előfizetésből egy másikba, a [Azure Portal](https://portal.azure.com) vagy a PowerShell-parancsok használatával. A művelet végrehajtásához a névtérnek már aktívnak kell lennie. A parancsokat végrehajtó felhasználónak a forrás-és a cél előfizetések rendszergazdájának kell lennie.
 
 #### <a name="portal"></a>Portál
 
-Az Azure portal használatával a Service Bus-névterek áttelepítése másik előfizetésre, kövesse az utasításokat [Itt](../azure-resource-manager/resource-group-move-resources.md#use-the-portal). 
+Ha a Azure Portal segítségével szeretné áttelepíteni Service Bus névtereket egy másik előfizetésbe, kövesse az [alábbi](../azure-resource-manager/resource-group-move-resources.md#use-the-portal)utasításokat. 
 
 #### <a name="powershell"></a>PowerShell
 
-A következő lépéseket a PowerShell-parancsok névtér áthelyezi egy Azure-előfizetésből egy másikba. Ez a művelet végrehajtásához a névtér már aktívnak kell lennie, és a PowerShell-parancsokat futtató felhasználónak kell lennie a forrás- és a célként megadott előfizetés rendszergazdája.
+A PowerShell-parancsok következő sora egy névteret helyez át egy másik Azure-előfizetésből. A művelet végrehajtásához a névtérnek már aktívnak kell lennie, és a PowerShell-parancsokat futtató felhasználónak a forrás-és a cél előfizetések rendszergazdájának kell lennie.
 
 ```powershell
 # Create a new resource group in target subscription
@@ -161,11 +161,11 @@ Move-AzResource -DestinationResourceGroupName 'targetRG' -DestinationSubscriptio
 ```
 
 ## <a name="next-steps"></a>További lépések
-A Service Bus kapcsolatos további információkért tekintse meg a következő cikkeket:
+Ha többet szeretne megtudni a Service Busről, tekintse meg a következő cikkeket:
 
-* [Introducing Azure Service Bus prémium szintű (blogbejegyzés)](https://azure.microsoft.com/blog/introducing-azure-service-bus-premium-messaging/)
-* [Introducing Azure Service Bus prémium szintű) (Channel9)](https://channel9.msdn.com/Blogs/Subscribe/Introducing-Azure-Service-Bus-Premium-Messaging)
-* [A Service Bus – áttekintés](service-bus-messaging-overview.md)
+* [Azure Service Bus Premium bemutatása (blogbejegyzés)](https://azure.microsoft.com/blog/introducing-azure-service-bus-premium-messaging/)
+* [Azure Service Bus Premium (Channel9) bemutatása](https://channel9.msdn.com/Blogs/Subscribe/Introducing-Azure-Service-Bus-Premium-Messaging)
+* [Service Bus áttekintése](service-bus-messaging-overview.md)
 * [Bevezetés a Service Bus által kezelt üzenetsorok használatába](service-bus-dotnet-get-started-with-queues.md)
 
 [Best practices for performance improvements using Service Bus]: service-bus-performance-improvements.md

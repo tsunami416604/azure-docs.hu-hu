@@ -1,19 +1,20 @@
 ---
-title: 'Hozzon létre, és módosítsa az ExpressRoute-kapcsolatcsoport - PowerShell: Azure | Microsoft Docs'
+title: 'ExpressRoute-kör létrehozása és módosítása – PowerShell: Azure | Microsoft Docs'
 description: Hozzon létre, üzembe helyezése, győződjön meg arról, frissítése, törlése és ExpressRoute-kapcsolatcsoport megszüntetése.
 services: expressroute
 author: cherylmc
 ms.service: expressroute
 ms.topic: article
 ms.date: 02/20/2019
-ms.author: ganesr;cherylmc
+ms.author: cherylmc
+ms.reviewer: ganesr
 ms.custom: seodec18
-ms.openlocfilehash: 06f49dc00b83ee2190f6361ebb8e6f052384402a
-ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
+ms.openlocfilehash: 2ff22a3c0087ff7e24517f792ba9abacbae76e3a
+ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67657305"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67846645"
 ---
 # <a name="create-and-modify-an-expressroute-circuit-using-powershell"></a>Létrehozása és módosítása a PowerShell használatával egy ExpressRoute-kapcsolatcsoporttal
 > [!div class="op_single_selector"]
@@ -45,7 +46,7 @@ Mielőtt elkezdené, tekintse át a [Előfeltételek](expressroute-prerequisites
 ### <a name="2-get-the-list-of-supported-providers-locations-and-bandwidths"></a>2. A támogatott szolgáltatók, a helyek és a sávszélesség-lista lekérése
 ExpressRoute-kapcsolatcsoport létrehozása, birtokában támogatott kapcsolatszolgáltatók, helyek és sávszélesség-lehetőségek listája.
 
-A PowerShell-parancsmag **Get-AzExpressRouteServiceProvider** adja vissza ezt az információt fogja használni a későbbi lépésekben:
+A **Get-AzExpressRouteServiceProvider PowerShell-** parancsmag ezt az információt adja vissza, amelyet a későbbi lépésekben fog használni:
 
 ```azurepowershell-interactive
 Get-AzExpressRouteServiceProvider
@@ -90,7 +91,7 @@ get-help New-AzExpressRouteCircuit -detailed
 
 
 ### <a name="4-list-all-expressroute-circuits"></a>4. Minden ExpressRoute-kapcsolatcsoport listázása
-Az összes Ön által létrehozott ExpressRoute-Kapcsolatcsoportok listájának lekéréséhez futtassa a **Get-AzExpressRouteCircuit** parancsot:
+Az összes létrehozott ExpressRoute-áramkör listájának lekéréséhez futtassa a **Get-AzExpressRouteCircuit** parancsot:
 
 ```azurepowershell-interactive
 Get-AzExpressRouteCircuit -Name "ExpressRouteARMCircuit" -ResourceGroupName "ExpressRouteResourceGroup"
@@ -216,7 +217,7 @@ Részletes útmutatásért tekintse meg a [ExpressRoute-Kapcsolatcsoportok útv�
 Ezután egy virtuális hálózat összekapcsolása az ExpressRoute-kapcsolatcsoportot. Használja a [virtuális hálózatok összekapcsolása az ExpressRoute-Kapcsolatcsoportok](expressroute-howto-linkvnet-arm.md) című cikket, amikor a Resource Manager üzemi modellel dolgozik.
 
 ## <a name="getting-the-status-of-an-expressroute-circuit"></a>Az ExpressRoute-Kapcsolatcsoportok állapotának beolvasása
-Ezt az információt bármikor használatával lekérheti a **Get-AzExpressRouteCircuit** parancsmagot. Minden kapcsolatcsoportra paraméterek nélkül a következő hívással sorolja fel.
+Ezeket az adatokat bármikor lekérheti a **Get-AzExpressRouteCircuit** parancsmag használatával. Minden kapcsolatcsoportra paraméterek nélkül a következő hívással sorolja fel.
 
 ```azurepowershell-interactive
 Get-AzExpressRouteCircuit

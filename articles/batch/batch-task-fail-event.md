@@ -1,9 +1,9 @@
 ---
-title: Az Azure Batch tevékenység meghiúsult esemény |} A Microsoft Docs
-description: Referencia a Batch-feladat sikertelen esemény.
+title: Azure Batch feladat meghiúsulása esemény | Microsoft Docs
+description: A Batch feladat sikertelen eseményének hivatkozása.
 services: batch
 author: laurenhughes
-manager: jeconnoc
+manager: gwallace
 ms.assetid: ''
 ms.service: batch
 ms.devlang: multiple
@@ -12,19 +12,19 @@ ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 04/20/2017
 ms.author: lahugh
-ms.openlocfilehash: f37769ceb761b8c8bc4834568813bb1b7af7f66a
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 68c57fbf510d923c4c87bc180a935965a511dc26
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60549988"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68322917"
 ---
 # <a name="task-fail-event"></a>Tevékenység meghiúsult esemény
 
- Ez az esemény bocsásson ki egy hibával egy feladat befejeződésekor. Jelenleg minden nullától eltérő kilépési kódot minősülnek hibák. Ezt az eseményt a rendszer kibocsátott *mellett* feladat végezze el az eseményt, és használható annak észlelése, ha egy feladat sikertelen volt.
+ Ezt az eseményt akkor bocsátja ki a rendszer, ha egy feladat hibát jelez. A nullától eltérő kilépési kódok jelenleg nem minősülnek hibáknak. Ez az esemény a feladat teljes eseményén *kívül* lesz kibocsátva, és felhasználható arra, hogy észlelje, ha egy feladat meghiúsult.
 
 
- Az alábbi példa bemutatja, hogy a szervezet egy feladat sikertelen esemény.
+ A következő példa egy feladat sikertelen eseményének törzsét mutatja be.
 
 ```
 {
@@ -52,43 +52,43 @@ ms.locfileid: "60549988"
 }
 ```
 
-|Elem neve|Típus|Megjegyzések|
+|Elem neve|Type|Megjegyzések|
 |------------------|----------|-----------|
-|jobId|String|A feladat a tevékenységet tartalmazó azonosítója.|
-|id|String|A feladat azonosítója.|
-|taskType|String|A feladat típusát. Ez is jelezve, hogy ez a feladatkezelői tevékenység JobManager, vagy már nem a feladatkezelői tevékenység jelző "felhasználó". Ez az esemény nem kibocsátott, feladat-előkészítési tevékenységeket, a feladatkiadási tevékenységeket vagy az indítási tevékenységeket.|
-|systemTaskVersion|Int32|Ez a tevékenység a belső újrapróbálkozási számláló. A Batch szolgáltatás belsőleg áthidalhatók az átmeneti hibák feladat újra. Ezek a helyzetek közé tartoznak a belső ütemezési hibák, vagy a helyreállítás kísérletek számítási csomópontok rossz állapotban.|
-|[nodeInfo](#nodeInfo)|Komplex típus|A számítási csomóponton, amelyen a feladat futott kapcsolatos információt tartalmazza.|
-|[multiInstanceSettings](#multiInstanceSettings)|Komplex típus|Megadja, hogy a tevékenység egy többpéldányos tevékenység több számítási csomópontokat igényelnek.  Lásd: [multiInstanceSettings](https://docs.microsoft.com/rest/api/batchservice/get-information-about-a-task) részleteiről.|
-|[Korlátozások](#constraints)|Komplex típus|A végrehajtási korlátozások, amelyek a alkalmazni ezt a feladatot.|
-|[executionInfo](#executionInfo)|Komplex típus|A feladat végrehajtásának kapcsolatos információt tartalmazza.|
+|jobId|Karakterlánc|A feladatot tartalmazó feladat azonosítója.|
+|id|Sztring|A feladat azonosítója.|
+|taskType|Sztring|A feladat típusa. Ez lehet "JobManager", amely azt jelzi, hogy egy Feladatkezelő feladat vagy "felhasználó", amely azt jelzi, hogy a feladat nem Feladatkezelő feladat. Ez az esemény nem lett kibocsátva a feladat-előkészítési feladatokhoz, a feladat-felszabadítási feladatokhoz és a tevékenységek indításához|
+|systemTaskVersion|Int32|Ez a feladat belső újrapróbálkozási számlálója. A Batch szolgáltatás belsőleg újra tud próbálkozni az átmeneti problémák miatti feladatokkal. Ezek a problémák belső ütemezési hibákat tartalmazhatnak, vagy helytelen állapotú számítási csomópontokból történő helyreállításra tett kísérleteket okozhatnak.|
+|[nodeInfo](#nodeInfo)|Összetett típus|A feladat futtatására szolgáló számítási csomóponttal kapcsolatos információkat tartalmazza.|
+|[multiInstanceSettings](#multiInstanceSettings)|Összetett típus|Megadja, hogy a feladat több számítási csomópontot igénylő többpéldányos feladat.  További részletekért lásd: [multiInstanceSettings](https://docs.microsoft.com/rest/api/batchservice/get-information-about-a-task) .|
+|[korlátok](#constraints)|Összetett típus|A feladatra érvényes végrehajtási megkötések.|
+|[executionInfo](#executionInfo)|Összetett típus|A feladat végrehajtásával kapcsolatos információkat tartalmaz.|
 
-###  <a name="nodeInfo"></a> nodeInfo
+###  <a name="nodeInfo"></a>nodeInfo
 
-|Elem neve|Típus|Megjegyzések|
+|Elem neve|Type|Megjegyzések|
 |------------------|----------|-----------|
-|poolId|String|A annak a készletnek azonosítója, amelyen a tevékenység futott.|
-|nodeId|String|A csomópont, amelyen a feladat futott azonosítója.|
+|poolId|Karakterlánc|Annak a készletnek az azonosítója, amelyen a feladat futott.|
+|nodeId|Sztring|Annak a csomópontnak az azonosítója, amelyen a feladat futott.|
 
-###  <a name="multiInstanceSettings"></a> multiInstanceSettings
+###  <a name="multiInstanceSettings"></a>multiInstanceSettings
 
-|Elem neve|Típus|Megjegyzések|
+|Elem neve|Type|Megjegyzések|
 |------------------|----------|-----------|
-|numberOfInstances|Int32|A tevékenységhez szükséges számítási csomópontok száma.|
+|numberOfInstances|Int32|A feladat által igényelt számítási csomópontok száma.|
 
-###  <a name="constraints"></a> Korlátozások
+###  <a name="constraints"></a>korlátok
 
-|Elem neve|Típus|Megjegyzések|
+|Elem neve|Type|Megjegyzések|
 |------------------|----------|-----------|
-|maxTaskRetryCount|Int32|A maximális száma a próbálhassa. A Batch szolgáltatás feladat újrapróbálkozik, ha annak kilépési kódja nullától eltérő.<br /><br /> Vegye figyelembe, hogy ez az érték kifejezetten határozza meg az újrapróbálkozások számát. A Batch szolgáltatás egyszer megkísérli a feladat, és előfordulhat, hogy próbálkozzon újra legfeljebb ezt a korlátot. Például ha az újrapróbálkozások maximális száma 3, köteg próbálkozás egy feladat legfeljebb 4 alkalommal (kezdeti próbálkozás és 3 újrapróbálás).<br /><br /> Ha az újrapróbálkozások maximális száma 0, a Batch szolgáltatás nem próbálkozik újra a feladatot.<br /><br /> Ha az újrapróbálkozások maximális száma -1, akkor a Batch szolgáltatás korlátozás nélkül feladatok újrapróbálkozik.<br /><br /> Az alapértelmezett érték: 0 (nincs újrapróbálkozás).|
+|maxTaskRetryCount|Int32|A feladat újrapróbálkozásának maximális száma. A Batch szolgáltatás újrapróbálkozik a feladattal, ha a kilépési kód nem nulla.<br /><br /> Vegye figyelembe, hogy ez az érték kifejezetten meghatározza az újrapróbálkozások számát. A Batch szolgáltatás egyszer próbálkozik a feladattal, és ezt követően újra próbálkozik a korláttal. Ha például az újrapróbálkozások maximális száma 3, a Batch 4 alkalommal próbálkozik a feladattal (egy kezdeti próbálkozás és 3 újrapróbálkozás).<br /><br /> Ha a maximális újrapróbálkozások száma 0, a Batch szolgáltatás nem próbálkozik újra a tevékenységekkel.<br /><br /> Ha a maximális újrapróbálkozások száma-1, a Batch szolgáltatás korlátozás nélkül újrapróbálkozik a feladatokkal.<br /><br /> Az alapértelmezett érték: 0 (nincs újrapróbálkozás).|
 
 
-###  <a name="executionInfo"></a> executionInfo
+###  <a name="executionInfo"></a>executionInfo
 
-|Elem neve|Típus|Megjegyzések|
+|Elem neve|Type|Megjegyzések|
 |------------------|----------|-----------|
-|startTime|DateTime|Amikor a feladat elindításának ideje. "Fut" megfelel a **futó** állapotba, így ha a feladat Erőforrásfájlok vagy az alkalmazáscsomagok határozza meg, majd a kezdési időpont tükrözi az idő, amikor a feladat elindult letöltése vagy telepítése ezeket.  Ha a feladat újraindítása, vagy a rendszer megpróbálja újból végrehajtani, akkor a legutóbbi idő, amikor a feladat elindításának.|
-|endTime|DateTime|Az az időpont, amikor a tevékenység befejeződött.|
-|exitCode|Int32|A tevékenység kilépési kódját.|
-|RetryCount|Int32|A száma a feladat rendelkezik lett rendszer megpróbálja újból végrehajtani a Batch szolgáltatás által. A rendszer megpróbálja újból végrehajtani a feladatot, ha egy nem nulla kilépési kóddal, legfeljebb a megadott MaxTaskRetryCount kilép.|
-|requeueCount|Int32|A száma a feladat eredményeként egy felhasználói kérelem rendelkezik a Batch szolgáltatás által lett lefutni.<br /><br /> Amikor a felhasználó eltávolítja csomópontok egy készletet (átméretezése, vagy a készletre kicsinyítésével), vagy ha a feladat letiltása közben, a felhasználó is adja meg, hogy fut a csomópontokon feladatok várólistára kerülnek végrehajtásra. Ez a szám ebből kifolyólag a feladat rendelkezik lett várólistára hány alkalommal követi nyomon.|
+|startTime|Datetime|Az az idő, amikor a feladat futása megkezdődött. A "Running" érték a **futó** állapotnak felel meg, így ha a feladat erőforrás-fájlokat vagy alkalmazáscsomagokat határoz meg, akkor a kezdési időpont azt az időpontot jelzi, amikor a feladat megkezdte a letöltését vagy üzembe helyezését.  Ha a feladat újraindult vagy újrapróbálkozott, ez a legutóbbi időpont, amikor a feladat elindult.|
+|endTime|Datetime|Az az idő, amikor a feladat befejeződött.|
+|exitCode|Int32|A feladat kilépési kódja.|
+|retryCount|Int32|A Batch szolgáltatás által újrapróbált feladatok száma. A feladat újra próbálkozik, ha a nullától eltérő kilépési kóddal kilép a megadott MaxTaskRetryCount.|
+|requeueCount|Int32|A Batch szolgáltatás által a felhasználói kérelem eredményeképpen újravárólistázott feladatok száma.<br /><br /> Ha a felhasználó eltávolít egy készletből származó csomópontokat (a készlet átméretezésével vagy kicsinyítésével), vagy ha a feladat le van tiltva, a felhasználó megadhatja, hogy a csomópontokon futó feladatokat a rendszer újravárólistára helyezi-e a végrehajtáshoz. Ez a szám azt követi nyomon, hogy a feladat hányszor lett újravárólistázott ezen okok miatt.|

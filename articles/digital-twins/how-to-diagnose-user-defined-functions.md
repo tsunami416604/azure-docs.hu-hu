@@ -1,95 +1,95 @@
 ---
-title: Az Azure digitális Twins felhasználói függvények hibakeresése |} A Microsoft Docs
-description: Az Azure digitális Twins felhasználói függvények hibakeresése kapcsolatos útmutató arra az esetre.
+title: UDF hibakeresése az Azure Digital Twinsban | Microsoft Docs
+description: Útmutató a UDF hibakereséséhez az Azure digitális Twins-ban.
 author: stefanmsft
 manager: deshner
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
 ms.date: 06/05/2019
-ms.author: stefanmsft
+ms.author: stegaw
 ms.custom: seodec18
-ms.openlocfilehash: 4d772b8cad64f138d93d91e87f6e6364c5a5d602
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 577467a6322b7f6d3cd7f199d80963f2f1a98ed6
+ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66808894"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67849326"
 ---
-# <a name="how-to-debug-user-defined-functions-in-azure-digital-twins"></a>Az Azure digitális Twins felhasználó által definiált függvények hibakeresése
+# <a name="how-to-debug-user-defined-functions-in-azure-digital-twins"></a>Felhasználó által definiált függvények hibakeresése az Azure Digital Ikrekben
 
-Ez a cikk összefoglalja, hogyan diagnosztizálhatja és elháríthatja a felhasználó által definiált függvények az Azure digitális Twins. Ezután azonosítja a leggyakoribb forgatókönyvek található, amikor azok hibakeresés némelyike.
+Ez a cikk összefoglalja, hogyan diagnosztizálhatja és hibakeresést végezhet a felhasználó által definiált függvények között az Azure digitális Twins-ban. Ezt követően azonosítja a leggyakoribb forgatókönyvek némelyikét a hibakeresés során.
 
 >[!TIP]
-> Olvasási [figyelés és naplózás konfigurálása](./how-to-configure-monitoring.md) tudhat meg többet a hibakeresést az Azure digitális Twins tevékenységeket tartalmazó naplók, a diagnosztikai naplók és az Azure Monitor használatával eszközök beállítása.
+> Olvassa el, [hogyan konfigurálhatja a figyelést és](./how-to-configure-monitoring.md) a naplózást, ha többet szeretne megtudni a hibakeresési eszközök Azure digitális Twins-beli beállításáról a tevékenységek naplói, a diagnosztikai naplók és a Azure monitor használatával.
 
-## <a name="debug-issues"></a>Hibakeresés
+## <a name="debug-issues"></a>Hibakeresési problémák
 
-Az Azure digitális Twins belül hibáinak diagnosztizálása, hogy lehetővé teszi hatékonyan problémák elemzése, azonosíthatja a problémák okait, és megfelelő megoldásokat biztosít a számukra.
+Az Azure Digital Twins-beli problémák diagnosztizálásának ismerete lehetővé teszi a problémák hatékony elemzését, a problémák okának azonosítását, valamint a megfelelő megoldások megadását.
 
-Ennek számos naplózási, elemzési és diagnosztikai eszközök állnak rendelkezésre.
+Erre a célból számos naplózási, elemzési és diagnosztikai eszközt biztosítunk.
 
-### <a name="enable-logging-for-your-instance"></a>A példány naplózás engedélyezése
+### <a name="enable-logging-for-your-instance"></a>A példány naplózásának engedélyezése
 
-Az Azure digitális Twins támogatja a hatékony naplózás, figyelés és elemzés. Megoldások fejlesztők használhatják az Azure Monitor naplók, diagnosztikai naplók, tevékenységeket tartalmazó naplók és egyéb szolgáltatásokat az IoT-alkalmazás összetett figyelési igényeinek támogatása. Naplózási beállítások kombinálhatók, kérdezheti le vagy rekordokat jelenít meg több szolgáltatás és a részletes naplózást biztosít számos szolgáltatás számára.
+Az Azure digitális Twins támogatja a robusztus naplózást, monitorozást és elemzést. A megoldások fejlesztői Azure Monitor naplókat, diagnosztikai naplókat, tevékenységi naplókat és más szolgáltatásokat használhatnak a IoT-alkalmazások összetett figyelési igényeinek támogatásához. A naplózási lehetőségek kombinálhatók több szolgáltatás rekordjainak lekérdezéséhez és megjelenítéséhez, valamint számos szolgáltatás részletes naplózási lefedettségének biztosításához.
 
-* Az Azure digitális Twins adott naplózási konfiguráció, olvassa el a [figyelés és naplózás konfigurálása](./how-to-configure-monitoring.md).
-* Tekintse át a [Azure Monitor](../azure-monitor/overview.md) megismerheti a hatékony naplókeresési beállítások engedélyezve az Azure Monitor áttekintése.
-* Tekintse át a [gyűjtése és felhasználása a naplófájlok adatait az Azure-erőforrások](../azure-monitor/platform/diagnostic-logs-overview.md) diagnosztikai beállítások konfigurálásának lépései az Azure digitális Twins az Azure Portal, az Azure CLI vagy a Powershellen keresztül.
+* Az Azure Digital Twins-specifikus naplózási konfigurációhoz olvassa el a [figyelés és naplózás konfigurálását](./how-to-configure-monitoring.md)ismertető témakört.
+* Tekintse át a [Azure monitor](../azure-monitor/overview.md) áttekintését, és ismerkedjen meg a Azure monitor használatával engedélyezett hatékony naplózási beállításokkal.
+* Tekintse át az Azure- [erőforrások naplózási adatainak gyűjtésére és felhasználására szolgáló adatokat](../azure-monitor/platform/diagnostic-logs-overview.md) az Azure-beli digitális ikrek diagnosztikai napló beállításainak az Azure Portalon, az Azure CLI-n vagy a powershellen keresztül történő konfigurálásához.
 
-A beállítása után válassza ki az összes naplókategóriák, metrikák, és hatékony Azure Monitor log analytics-munkaterületek használatával támogatja a hibakeresési munkája alapján lesz.
+A konfigurálást követően kiválaszthatja az összes naplózási kategóriát, metrikákat, és hatékony Azure Monitor log Analytics-munkaterületeket használhat a hibakeresési erőfeszítések támogatásához.
 
-### <a name="trace-sensor-telemetry"></a>Mozgásérzékelő – híváslánc-telemetria
+### <a name="trace-sensor-telemetry"></a>Nyomkövetési érzékelő telemetria
 
-Nyomkövetési érzékelő telemetriai adatokat, győződjön meg arról, hogy a diagnosztikai beállítások engedélyezve vannak az Azure digitális Twins-példány. Ezt követően győződjön meg arról, hogy az összes kívánt naplókategóriák ki van jelölve. Végül ellenőrizze, hogy az Azure Monitor-naplók a kívánt naplók kap.
+Az érzékelő telemetria nyomon követéséhez ellenőrizze, hogy a diagnosztikai beállítások engedélyezve vannak-e az Azure Digital Twins-példányhoz. Ezután győződjön meg arról, hogy az összes kívánt naplózási kategória ki van választva. Végül ellenőrizze, hogy a rendszer elküldje-e a kívánt naplókat Azure Monitor naplókba.
 
-Egyezik meg a megfelelő naplók érzékelő telemetriai üzenetet, adja meg a korrelációs Azonosítót meg az eseményadatokat küld a rendszer. Ehhez állítsa a `x-ms-client-request-id` tulajdonságát egy GUID Azonosítót.
+Ahhoz, hogy az érzékelő telemetria az adott naplóba, megadhat egy korrelációs azonosítót az elküldött esemény adataihoz. Ehhez állítsa a `x-ms-client-request-id` tulajdonságot egy GUID azonosítóra.
 
-Telemetria küldése után nyissa meg a log analyticsben, hogy a lekérdezés használatával a naplókhoz korrelációs azonosító:
+A telemetria elküldése után nyissa meg a log Analytics szolgáltatást a naplók lekérdezéséhez a korrelációs azonosító beállítása:
 
 ```Kusto
 AzureDiagnostics
 | where CorrelationId == 'YOUR_CORRELATION_IDENTIFIER'
 ```
 
-| Érték lekérdezése | Csere erre |
+| Lekérdezés értéke | Csere erre |
 | --- | --- |
-| YOUR_CORRELATION_IDENTIFIER | A korrelációs Azonosítót, amely az eseményadatok lett megadva |
+| YOUR_CORRELATION_IDENTIFIER | Az esemény-adathalmazban megadott korrelációs azonosító |
 
-A felhasználó által definiált függvény engedélyezi a naplózást, ezeket a naplókat megjelennek-e a log analytics-példány kategóriával `UserDefinedFunction`. Kérheti le azokat, adja meg a log analytics a következő lekérdezési feltétel:
+Ha engedélyezi a naplózást a felhasználó által definiált függvény számára, ezek a naplók a log Analytics-példányban `UserDefinedFunction`jelennek meg a kategóriával. A beolvasáshoz adja meg a következő lekérdezési feltételt a log Analyticsben:
 
 ```Kusto
 AzureDiagnostics
 | where Category == 'UserDefinedFunction'
 ```
 
-Hatékony lekérdezési műveletekkel kapcsolatos további információkért olvassa el [Ismerkedés a lekérdezések](../azure-monitor/log-query/get-started-queries.md).
+A hatékony lekérdezési műveletekkel kapcsolatos további információkért olvassa el a [lekérdezések első lépéseivel foglalkozó](../azure-monitor/log-query/get-started-queries.md)témakört.
 
 ## <a name="identify-common-issues"></a>Gyakori problémák azonosítása
 
-Diagnosztizálás és a gyakori problémák azonosításában is fontosak, a megoldás hibaelhárítása során. Több felhasználó által definiált függvények fejlesztése során gyakran felmerülő problémák a következő alszakaszokat foglalja össze.
+A megoldás hibaelhárításakor a gyakori problémák diagnosztizálása és azonosítása is fontos. A felhasználó által definiált függvények fejlesztésekor gyakran előforduló problémák a következő alszakaszokban vannak összegezve.
 
 [!INCLUDE [Digital Twins Management API](../../includes/digital-twins-management-api.md)]
 
-### <a name="check-if-a-role-assignment-was-created"></a>Ha a szerepkör-hozzárendelés létrehozásának ellenőrzése
+### <a name="check-if-a-role-assignment-was-created"></a>Szerepkör-hozzárendelés létrehozásának engedélyezése
 
-Szerepkör-hozzárendelés létrehozása a kezelési API a felhasználó által definiált függvény nem férhet hozzá minden olyan műveleteket, például az értesítések küldését, metaadatok beolvasása és beállítás számított értékek a topológia belül.
+A felügyeleti API-n belül létrehozott szerepkör-hozzárendelés nélkül a felhasználó által definiált függvény nem rendelkezik hozzáféréssel olyan műveletek elvégzéséhez, mint például az értesítések küldése, a metaadatok beolvasása és a számított értékek beállítása a topológián belül.
 
-Ellenőrizze, hogy a szerepkör-hozzárendelés a felügyeleti API-n keresztül a felhasználó által definiált függvény:
+Ellenőrizze, hogy létezik-e szerepkör-hozzárendelés a felhasználó által definiált függvényhez a felügyeleti API-n keresztül:
 
 ```plaintext
 GET YOUR_MANAGEMENT_API_URL/roleassignments?path=/&traverse=Down&objectId=YOUR_USER_DEFINED_FUNCTION_ID
 ```
 
-| Hodnota parametru | Csere erre |
+| Paraméter értéke | Csere erre |
 | --- | --- |
-| YOUR_USER_DEFINED_FUNCTION_ID | Szerepkör-hozzárendeléseit a lekérdezni kívánt felhasználó által definiált függvény Azonosítóját|
+| YOUR_USER_DEFINED_FUNCTION_ID | A felhasználó által definiált függvény azonosítója a szerepkör-hozzárendelések lekéréséhez a következőhöz:|
 
-Ismerje meg, [a felhasználó által definiált függvény szerepkör-hozzárendelés létrehozása](./how-to-user-defined-functions.md), ha szerepkör-hozzárendelések nem létezik.
+Megtudhatja, [hogyan hozhat létre szerepkör-hozzárendelést a felhasználó által definiált függvényhez](./how-to-user-defined-functions.md), ha nem létezik szerepkör-hozzárendelés.
 
-### <a name="check-if-the-matcher-works-for-a-sensors-telemetry"></a>Ha a megfeleltetőben megadott működik egy érzékelő telemetriai adatok ellenőrzése
+### <a name="check-if-the-matcher-works-for-a-sensors-telemetry"></a>Ellenőrizze, hogy az Matcher működik-e az érzékelő telemetria
 
-A következő hívást kell végrehajtanunk a digitális Twins Azure-példányok felügyeleti API-t, az Ön meg tudja határozni, ha egy adott megfeleltetőben megadott érvényes az adott érzékelő.
+A következő hívással az Azure digitális Twins-példányok felügyeleti API-jával meghatározhatja, hogy egy adott Matcher vonatkozik-e az adott érzékelőre.
 
 ```plaintext
 GET YOUR_MANAGEMENT_API_URL/matchers/YOUR_MATCHER_IDENTIFIER/evaluate/YOUR_SENSOR_IDENTIFIER?enableLogging=true
@@ -97,8 +97,8 @@ GET YOUR_MANAGEMENT_API_URL/matchers/YOUR_MATCHER_IDENTIFIER/evaluate/YOUR_SENSO
 
 | Paraméter | Csere erre |
 | --- | --- |
-| *YOUR_MATCHER_IDENTIFIER* | Az értékelni kívánt megfeleltetőben megadott azonosítója |
-| *YOUR_SENSOR_IDENTIFIER* | Az értékelni kívánt érzékelő azonosítója |
+| *YOUR_MATCHER_IDENTIFIER* | A kiértékelni kívánt Matcher azonosítója |
+| *YOUR_SENSOR_IDENTIFIER* | A kiértékelni kívánt érzékelő azonosítója |
 
 Válasz:
 
@@ -111,9 +111,9 @@ Válasz:
 }
 ```
 
-### <a name="check-what-a-sensor-triggers"></a>Ellenőrizze az érzékelő aktiválása
+### <a name="check-what-a-sensor-triggers"></a>Az érzékelő eseményindítóinak megkeresése
 
-A következő hívást kell végrehajtanunk az Azure digitális Twins felügyeleti API-k, az Ön meg tudja határozni a bejövő telemetriát az adott érzékelő által aktivált a felhasználó által definiált függvények-azonosítók:
+A következő hívással az Azure digitális Twins felügyeleti API-jai segítségével meghatározhatja az adott érzékelő bejövő telemetria által aktivált, felhasználó által definiált függvények azonosítóit:
 
 ```plaintext
 GET YOUR_MANAGEMENT_API_URL/sensors/YOUR_SENSOR_IDENTIFIER/matchers?includes=UserDefinedFunctions
@@ -121,7 +121,7 @@ GET YOUR_MANAGEMENT_API_URL/sensors/YOUR_SENSOR_IDENTIFIER/matchers?includes=Use
 
 | Paraméter | Csere erre |
 | --- | --- |
-| *YOUR_SENSOR_IDENTIFIER* | Telemetriát küldjön az érzékelő azonosítója |
+| *YOUR_SENSOR_IDENTIFIER* | Az telemetria elküldeni kívánt érzékelő azonosítója |
 
 Válasz:
 
@@ -152,11 +152,11 @@ Válasz:
 ]
 ```
 
-### <a name="issue-with-receiving-notifications"></a>Az értesítések fogadásának kiadása
+### <a name="issue-with-receiving-notifications"></a>Értesítés fogadásával kapcsolatos probléma
 
-Ön nem kapja meg értesítések, a felhasználó által definiált aktivált függvényt, erősítse meg, hogy a topológia objektum típusú paraméter használt azonosító típusa megegyezik-e.
+Ha nem kap értesítéseket az aktivált felhasználó által definiált függvényből, ellenőrizze, hogy a topológia objektumtípus-paramétere megegyezik-e a használt azonosító típusával.
 
-**Helytelen** példa:
+**Helytelen** Például
 
 ```JavaScript
 var customNotification = {
@@ -166,9 +166,9 @@ var customNotification = {
 sendNotification(telemetry.SensorId, "Space", JSON.stringify(customNotification));
 ```
 
-Ebben a forgatókönyvben merül fel, mert a használt azonosító hivatkozik érzékelő, míg a topológia objektumtípus megadott `Space`.
+Ez a forgatókönyv azért fordul elő, mert a használt azonosító egy érzékelőre hivatkozik, amíg meg van `Space`adva a topológiai objektum típusa.
 
-**Megfelelő** példa:
+**Helyes** Például
 
 ```JavaScript
 var customNotification = {
@@ -178,7 +178,7 @@ var customNotification = {
 sendNotification(telemetry.SensorId, "Sensor", JSON.stringify(customNotification));
 ```
 
-Futtassa ezt a hibát a legegyszerűbb módja az, hogy használja a `Notify` metódust a metaadat-objektum.
+A probléma legegyszerűbb módja, ha a `Notify` metódust használja a metaadat-objektumon.
 
 Példa:
 
@@ -195,18 +195,18 @@ function process(telemetry, executionContext) {
 }
 ```
 
-## <a name="common-diagnostic-exceptions"></a>Diagnosztikai gyakori kivételek
+## <a name="common-diagnostic-exceptions"></a>Gyakori diagnosztikai kivételek
 
-Diagnosztikai beállítások engedélyezése, ha ezek a gyakori kivételek merülhetnek fel:
+Ha engedélyezi a diagnosztikai beállításokat, a következő gyakori kivételek merülhetnek fel:
 
-1. **Szabályozás**: Ha a felhasználó által definiált függvény meghaladja-e a feldolgozási korlátok leírt sebességét a [Szolgáltatáskorlátok](./concepts-service-limits.md) a cikkben azt szabályozva lesz. Nincsenek további műveletek végrehajtása sikeresen a sávszélesség-szabályozási korlátok lejártáig.
+1. **Szabályozás**: Ha a felhasználó által definiált függvény meghaladja a [szolgáltatási korlátok](./concepts-service-limits.md) című cikkben ismertetett végrehajtási arányt, a rendszer szabályozza a szabályozást. A szabályozási korlátok lejárta előtt nem sikerült végrehajtani a további műveleteket.
 
-1. **Nem találhatók adatok**: Ha a felhasználó által definiált függvény megpróbál hozzáférni a metaadatokat, amelyek nem létezik, a művelet sikertelen lesz.
+1. **Nem találhatók adatok**: Ha a felhasználó által definiált függvény megpróbál hozzáférni a nem létező metaadatokhoz, a művelet sikertelen lesz.
 
-1. **Nem jogosult**: Ha a felhasználó által definiált függvény nem rendelkezik a szerepkör-hozzárendelés beállítása, vagy nem rendelkezik megfelelő engedéllyel az egyes metaadatok elérését a topológia, a művelet sikertelen lesz.
+1. **Nem engedélyezett**: Ha a felhasználó által definiált függvény nem rendelkezik szerepkör-hozzárendelési készlettel, vagy nem áll rendelkezésre elegendő engedélye bizonyos metaadatok elérésére a topológiából, a művelet meghiúsul.
 
 ## <a name="next-steps"></a>További lépések
 
-- Ismerje meg, hogyan engedélyezheti [figyelés és a naplók](./how-to-configure-monitoring.md) az Azure digitális Twins.
+- Ismerje meg, hogyan engedélyezheti a [monitorozást és](./how-to-configure-monitoring.md) a naplókat az Azure digitális Twins szolgáltatásban.
 
-- Olvassa el a [áttekintése az Azure-tevékenységnapló](../azure-monitor/platform/activity-logs-overview.md) további Azure naplózási lehetőségek ismertető cikket.
+- További Azure-naplózási lehetőségekért olvassa el az [Azure-tevékenység naplójának áttekintését ismertető](../azure-monitor/platform/activity-logs-overview.md) cikket.

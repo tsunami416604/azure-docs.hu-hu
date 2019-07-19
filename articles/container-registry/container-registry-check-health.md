@@ -1,43 +1,44 @@
 ---
-title: Az Azure Container Registry beállításjegyzék állapotának ellenőrzése
-description: Ismerje meg, hogyan azonosíthatja a gyakori problémákat, egy Azure container registryt, beleértve a helyi Docker-konfigurációját és a beállításjegyzék kapcsolat használata esetén a gyors diagnosztikai parancs végrehajtása
+title: A beállításjegyzék állapotának ellenõrzése Azure Container Registry
+description: Megtudhatja, hogyan futtathat egy gyors diagnosztikai parancsot az Azure Container Registry használata során felmerülő gyakori problémák azonosításához, beleértve a helyi Docker-konfigurációt és a beállításjegyzékhez való kapcsolódást.
 services: container-registry
 author: dlepow
+manager: gwallace
 ms.service: container-registry
 ms.topic: article
 ms.date: 07/02/2019
 ms.author: danlep
-ms.openlocfilehash: 3e5b5467f9fa25e23f6661c6630d346aa85e2205
-ms.sourcegitcommit: 978e1b8cac3da254f9d6309e0195c45b38c24eb5
+ms.openlocfilehash: 3511655d220ee85ce6b5744612e5d6fddafbe877
+ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67555097"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68309736"
 ---
-# <a name="check-the-health-of-an-azure-container-registry"></a>Egy Azure container registry állapotának ellenőrzése
+# <a name="check-the-health-of-an-azure-container-registry"></a>Azure Container Registry állapotának megtekintése
 
-Azure container registry használata esetén előfordulhat, hogy időnként tapasztal. Például hogy nem tudja lekérdezni egy tárolórendszerképet a docker használatával a helyi környezetben probléma miatt. Vagy hálózati probléma előfordulhat, hogy megakadályozzák a csatlakozást a regisztrációs adatbázisba. 
+Az Azure Container Registry használatakor időnként problémák merülhetnek fel. Előfordulhat például, hogy nem tudja lekérni a tároló rendszerképét, mert a helyi környezetben Docker-probléma van. Vagy a hálózati hiba miatt nem lehet csatlakozni a beállításjegyzékhez. 
 
-Diagnosztikai az első lépés, futtassa a [az acr jelölőnégyzet-állapot][az-acr-check-health] command to get information about the health of the environment and optionally access to a target registry. This command is available in Azure CLI version 2.0.67 or later. If you need to install or upgrade, see [Install Azure CLI][azure-cli].
+Az első diagnosztikai lépésként futtassa az az [ACR-ellenőrzési állapotot][az-acr-check-health] command to get information about the health of the environment and optionally access to a target registry. This command is available in Azure CLI version 2.0.67 or later. If you need to install or upgrade, see [Install Azure CLI][azure-cli].
 
-## <a name="run-az-acr-check-health"></a>Az acr-ellenőrzés-állapotfigyelő futtatása
+## <a name="run-az-acr-check-health"></a>Futtatás az ACR ellenõrzés-Health
 
-A következő példákban futtatni különböző módszereket mutatnak a `az acr check-health` parancsot.
+A következő példák a `az acr check-health` parancs futtatásának különböző módjait mutatják be.
 
 > [!NOTE]
-> Ha az Azure Cloud Shellben futtassa a parancsot, a rendszer nem ellenőrzi a helyi környezetben. Azonban a hozzáférést egy tároló-beállításjegyzéket ellenőrizheti.
+> Ha Azure Cloud Shellban futtatja a parancsot, a helyi környezet nincs bejelölve. Megtekintheti azonban a cél beállításjegyzékhez való hozzáférést.
 
-### <a name="check-the-environment-only"></a>Csak a környezet
+### <a name="check-the-environment-only"></a>Csak a környezet ellenőrzését
 
-Ellenőrizze a helyi Docker démon, a parancssori felület verziójának és a Helm ügyfél-konfigurációt, futtassa a parancsot további paraméterek nélkül:
+A helyi Docker-démon, a CLI-verzió és a Helm-ügyfél konfigurációjának vizsgálatához további paraméterek nélkül futtassa a parancsot:
 
 ```azurecli
 az acr check-health
 ```
 
-### <a name="check-the-environment-and-a-target-registry"></a>Ellenőrizze a környezet és a egy tároló-beállításjegyzéket
+### <a name="check-the-environment-and-a-target-registry"></a>A környezet és a cél beállításjegyzékének keresése
 
-Ellenőrizze a beállításjegyzék elérését, valamint a helyi környezetben-ellenőrzést, át kell adnia egy tároló-beállításjegyzék nevére. Példa:
+A beállításjegyzékhez való hozzáférés ellenőrzéséhez, valamint a helyi környezet-ellenőrzések végrehajtásához adja meg a cél-beállításjegyzék nevét. Példa:
 
 ```azurecli
 az acr check-health --name myregistry
@@ -45,9 +46,9 @@ az acr check-health --name myregistry
 
 ## <a name="error-reporting"></a>Hibajelentés
 
-A parancs információkat naplózza a normál a kimenetbe. Ha probléma merül fel, biztosít egy hibakódot és egy leírást. A kódok és a lehetséges megoldások kapcsolatos további információkért lásd: a [hibaútmutató](container-registry-health-error-reference.md).
+A parancs adatokat naplóz a standard kimenetre. Ha a rendszer problémát észlel, hibakódot és leírást is tartalmaz. További információ a kódokról és a lehetséges megoldásokról: a [hiba leírása](container-registry-health-error-reference.md).
 
-Alapértelmezés szerint a parancs leállítja az, ha hibát talált. Is futtathatja a parancsot, hogy a kimeneti biztosít az összes állapot-ellenőrzések, még akkor is, ha hibák találhatók. Adja hozzá a `--ignore-errors` paramétert, a következő példákban szemléltetett módon:
+Alapértelmezés szerint a parancs leáll, amikor hibát talál. Futtathatja is a parancsot úgy, hogy az minden állapot-ellenőrzés kimenetét megadja, még akkor is, ha a rendszer hibákat talál. Adja hozzá `--ignore-errors` a paramétert az alábbi példákban látható módon:
 
 ```azurecli
 # Check environment only
@@ -78,9 +79,9 @@ Fetch access token for registry 'myregistry.azurecr.io' : OK
 
 ## <a name="next-steps"></a>További lépések
 
-Által visszaadott hibakódok részleteit a [az acr jelölőnégyzet-állapot][az-acr-check-health] parancshoz, tekintse meg a [állapotának ellenőrzése hibaútmutató](container-registry-health-error-reference.md).
+Az az ACR Return [-Health][az-acr-check-health] parancs által visszaadott hibakódokkal kapcsolatos részletekért tekintse meg az [állapot-ellenőrzési hiba referenciáját](container-registry-health-error-reference.md).
 
-Tekintse meg a [– gyakori kérdések](container-registry-faq.md) vonatkozó gyakori kérdések és ismert problémákkal kapcsolatban az Azure Container Registrybe.
+Tekintse [meg a](container-registry-faq.md) gyakori kérdések és a Azure Container Registry kapcsolatos egyéb ismert problémák gyakori kérdéseit.
 
 
 

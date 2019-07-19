@@ -1,6 +1,6 @@
 ---
-title: 'Az Azure Állapotfigyelőt v2 API-leírások: Tiltsa le a figyelés |} A Microsoft Docs'
-description: Állapot figyelő v2 API-hivatkozás. Disable-ApplicationInsightsMonitoring. A webhely újbóli üzembe helyezése nélkül webhely teljesítményének megfigyeléséhez. ASP.NET-webalkalmazásokat együttműködik a helyileg üzemeltetett, a virtuális gépek vagy az Azure-ban.
+title: 'Az Azure Állapotmonitor v2 API-referenciája: Figyelés letiltása | Microsoft Docs'
+description: Állapotmonitor v2 API-referenciát. Disable-ApplicationInsightsMonitoring. Webhelyek teljesítményének figyelése a webhely újbóli üzembe helyezése nélkül. Együttműködik a helyszínen, a virtuális gépeken vagy az Azure-on üzemeltetett ASP.NET Web Apps szolgáltatásokkal.
 services: application-insights
 documentationcenter: .net
 author: MS-TimothyMothra
@@ -12,29 +12,24 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: tilee
-ms.openlocfilehash: 98171692284f5f28fb189e2658d207fb80d428ba
-ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
+ms.openlocfilehash: 368365251ec61464869c6120ded2ec2237acffea
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67807143"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68326413"
 ---
-# <a name="status-monitor-v2-api-disable-applicationinsightsmonitoring-v040-alpha"></a>A figyelő v2 API állapota: Disable-ApplicationInsightsMonitoring (v0.4.0-alpha)
+# <a name="status-monitor-v2-api-disable-applicationinsightsmonitoring"></a>Állapotmonitor v2 API: ApplicationInsightsMonitoring letiltása
 
-Ez a cikk ismerteti, amely tagja a parancsmag a [Az.ApplicationMonitor PowerShell-modul](https://www.powershellgallery.com/packages/Az.ApplicationMonitor/).
-
-> [!IMPORTANT]
-> Állapot figyelő v2 jelenleg nyilvános előzetes verzióban érhető el.
-> Ez az előnézeti verzió egy szolgáltatásiszint-megállapodás nélkül biztosított, és ezt nem javasoljuk a termelési számítási feladatokhoz. Előfordulhat, hogy néhány funkció nem támogatott, és néhány előfordulhat, hogy korlátozott képességekkel rendelkezik.
-> További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+Ez a cikk olyan parancsmagot ismertet, amely az az [. ApplicationMonitor PowerShell-modul](https://www.powershellgallery.com/packages/Az.ApplicationMonitor/)tagja.
 
 ## <a name="description"></a>Leírás
 
 Letiltja a figyelést a célszámítógépen.
-Ez a parancsmag eltávolítja az IIS applicationHost.config módosításainak és beállításkulcsok eltávolítása.
+Ez a parancsmag eltávolítja a módosításokat az IIS applicationHost. config fájlból, és eltávolítja a beállításkulcsokat.
 
 > [!IMPORTANT] 
-> Ez a parancsmag megköveteli egy PowerShell-munkamenetet rendszergazdai jogosultságokkal rendelkezik.
+> Ehhez a parancsmaghoz rendszergazdai engedélyekkel rendelkező PowerShell-munkamenet szükséges.
 
 ## <a name="examples"></a>Példák
 
@@ -44,13 +39,13 @@ PS C:\> Disable-ApplicationInsightsMonitoring
 
 ## <a name="parameters"></a>Paraméterek 
 
-### <a name="-verbose"></a>-Verbose
-**Általános paraméter.** Ez a kapcsoló használatával jeleníti meg a részletes naplókat.
+### <a name="-verbose"></a>-Részletes
+**Általános paraméter.** Ezzel a kapcsolóval részletes naplókat jeleníthet meg.
 
 ## <a name="output"></a>Output
 
 
-#### <a name="example-output-from-successfully-disabling-monitoring"></a>Sikerült letiltani a figyelést a példa a kimenetre
+#### <a name="example-output-from-successfully-disabling-monitoring"></a>Példa a figyelés sikeres letiltására
 
 ```
 Initiating Disable Process
@@ -76,5 +71,5 @@ Successfully disabled Application Insights Status Monitor
 
 ## <a name="next-steps"></a>További lépések
 
- Hozzon ki még többet Állapotfigyelőt v2:
- - Használja az útmutatóban [hibaelhárítása](status-monitor-v2-troubleshoot.md) Állapotfigyelőt v2.
+ További Állapotmonitor v2:
+ - A Állapotmonitor v2 [hibáinak megoldásához](status-monitor-v2-troubleshoot.md) használja az útmutatót.

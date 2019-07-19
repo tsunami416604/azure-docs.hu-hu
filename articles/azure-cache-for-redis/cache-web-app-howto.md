@@ -1,6 +1,6 @@
 ---
-title: ASP.NET-webalkalmazás létrehozása az Azure Cache redis |} A Microsoft Docs
-description: Ebben a rövid útmutató ASP.NET-webalkalmazás létrehozása az Azure Cache redis
+title: ASP.NET-Webalkalmazás létrehozása az Azure cache for Redis | Microsoft Docs
+description: Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre ASP.NET-webalkalmazást az Azure cache használatával a Redis
 services: cache
 documentationcenter: ''
 author: yegu-ms
@@ -15,28 +15,21 @@ ms.topic: quickstart
 ms.date: 03/26/2018
 ms.author: yegu
 ms.custom: mvc
-ms.openlocfilehash: bac43ef17116dcb2d6a6bb3dd7c1617d91a010d9
-ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
+ms.openlocfilehash: 7cca9d020d5e999bda2c494853295957da5cca1a
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65864822"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68326501"
 ---
-# <a name="quickstart-create-an-aspnet-web-app"></a>Gyors útmutató: ASP.NET-webapp létrehozása 
+# <a name="quickstart-use-azure-cache-for-redis-with-an-aspnet-web-app"></a>Gyors útmutató: Az Azure cache használata a Redis egy ASP.NET-webalkalmazással 
 
-## <a name="introduction"></a>Bemutatás
-
-A rövid útmutató bemutatja, hogyan hozhat létre, és üzembe helyezése egy ASP.NET-alkalmazás Azure App Service-ben a Visual Studio 2019 használatával. A mintaalkalmazás csatlakozik az Azure Cache redis tárolására és az adatok lekérése a gyorsítótárból. Miután elvégezte a rövid útmutató, rendelkezni fog egy olyan futó webalkalmazással, az Azure-ban üzemeltetett, Olvasás és írás Azure Cache a Redis.
-
-![Egyszerű teszt eredménye – Azure](./media/cache-web-app-howto/cache-simple-test-complete-azure.png)
-
-[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
+Ebben a rövid útmutatóban a Visual Studio 2019 segítségével hozhat létre olyan ASP.NET-webalkalmazást, amely az Azure cache-hez csatlakozik a Redis-hoz az adatok tárolásához és lekéréséhez a gyorsítótárból. Ezután központilag telepíti az alkalmazást Azure App Service.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ez a rövid útmutató elvégzéséhez, telepítenie kell [Visual Studio 2019](https://www.visualstudio.com/downloads/) a következő környezeteket:
-* ASP.NET és webfejlesztés
-* Azure-fejlesztés
+- Azure-előfizetés – [hozzon létre egyet ingyen](https://azure.microsoft.com/free/)
+- A [Visual Studio 2019](https://www.visualstudio.com/downloads/) a **ASP.net, valamint a webes fejlesztési** és az **Azure-fejlesztési** számítási feladatokkal.
 
 ## <a name="create-the-visual-studio-project"></a>A Visual Studio-projekt létrehozása
 
@@ -95,16 +88,16 @@ A következő lépésben létrehozza az alkalmazás gyorsítótárát.
 
 ## <a name="update-the-mvc-application"></a>Az MVC alkalmazás frissítése
 
-Ebben a szakaszban frissítse az alkalmazás egy új nézetet, amely egy egyszerű tesztelési ellen az Azure Cache jeleníti meg a redis támogatja.
+Ebben a szakaszban frissíti az alkalmazást egy olyan új nézet támogatásához, amely egyszerű tesztet jelenít meg a Redis készült Azure cache-ben.
 
 * [A web.config fájl frissítése egy gyorsítótárhoz tartozó alkalmazásbeállítással](#update-the-webconfig-file-with-an-app-setting-for-the-cache)
-* A StackExchange.Redis ügyfél használatához az alkalmazás konfigurálása
+* Az alkalmazás konfigurálása a StackExchange. Redis ügyfél használatára
 * A HomeController és az elrendezés frissítése
 * Új RedisCache nézet hozzáadása
 
 ### <a name="update-the-webconfig-file-with-an-app-setting-for-the-cache"></a>A web.config fájl frissítése egy gyorsítótárhoz tartozó alkalmazásbeállítással
 
-Ha futtatja az alkalmazást helyileg, az *CacheSecrets.config* kapcsolódhat az Azure Cache a Redis-példányt. Később ezt az alkalmazást fogja üzembe helyezni az Azure-ban. Ekkor konfigurálni fog egy alkalmazásbeállítást az Azure-ban, amelyet az alkalmazás a fájl helyett fog használni a gyorsítótár kapcsolati információinak lekéréséhez. 
+Amikor helyileg futtatja az alkalmazást, a *CacheSecrets. config fájlban* található információk használatával kapcsolódhat az Azure cache Redis-példányhoz. Később ezt az alkalmazást fogja üzembe helyezni az Azure-ban. Ekkor konfigurálni fog egy alkalmazásbeállítást az Azure-ban, amelyet az alkalmazás a fájl helyett fog használni a gyorsítótár kapcsolati információinak lekéréséhez. 
 
 Mivel a *CacheSecrets.config* fájl nem lesz üzembe helyezve az Azure-on az alkalmazással együtt, csak akkor fogja használni, amikor helyben teszteli az alkalmazást. Ezt az információt a lehető legbiztonságosabb módon kell tárolni, hogy mások ne férhessenek hozzá károkozási szándékkal a gyorsítótárazott adatokhoz.
 
@@ -116,9 +109,9 @@ Mivel a *CacheSecrets.config* fájl nem lesz üzembe helyezve az Azure-on az alk
 2. A *web.config* fájlban keresse meg az `<appSetting>` elemet. Ezután adja hozzá a következő `file` attribútumot. Ha más fájlnevet vagy helyet használ, cserélje le a példában látható értékeket.
 
 * Előtte: `<appSettings>`
-* Után:  `<appSettings file="C:\AppSecrets\CacheSecrets.config">`
+* Után`<appSettings file="C:\AppSecrets\CacheSecrets.config">`
 
-Az ASP.NET futtatási környezet a külső fájl tartalmát egyesíti az `<appSettings>` elem kódjával. Ha a megadott fájl nem található, a futtatási környezet figyelmen kívül hagyja a fájlattribútumot. A titkos kulcsok (a gyorsítótárhoz tartozó kapcsolati sztringek) nem képezik részét az alkalmazás forráskódjának. Ha a webes alkalmazás üzembe helyezése az Azure-bA a *CacheSecrets.config* fájl nincs telepítve.
+Az ASP.NET futtatási környezet a külső fájl tartalmát egyesíti az `<appSettings>` elem kódjával. Ha a megadott fájl nem található, a futtatási környezet figyelmen kívül hagyja a fájlattribútumot. A titkos kulcsok (a gyorsítótárhoz tartozó kapcsolati sztringek) nem képezik részét az alkalmazás forráskódjának. Amikor üzembe helyezi a webalkalmazást az Azure-ban, a *CacheSecrets. config* fájl nincs telepítve.
 
 ### <a name="to-configure-the-application-to-use-stackexchangeredis"></a>Az alkalmazás konfigurálása a StackExchange.Redis használatára
 
@@ -252,9 +245,9 @@ Alapértelmezés szerint a projekt úgy van konfigurálva, hogy helyben üzemelt
 ### <a name="to-run-the-app-locally"></a>Az alkalmazás futtatása helyben
 1. A Visual Studióban válassza a **Debug** (Hibakeresés)  >  **Start Debugging** (Hibakeresés indítása) elemet az alkalmazás teszteléshez és hibakereséshez való létrehozásához és helyi elindításához.
 
-2. Válassza ki a böngészőben **Azure Cache Redis tesztelési** a navigációs sávon.
+2. A böngészőben válassza az **Azure cache** lehetőséget a Redis teszteléséhez a navigációs sávon.
 
-3. A következő példában a `Message` kulcs a korábban gyorsítótárazott értéket, amely az Azure Cache a Redis-konzol a portál használatával. Az alkalmazás frissítette ezt a gyorsítótárazott értéket. Az alkalmazás továbbá végrehajtotta a `PING` és a `CLIENT LIST` parancsot.
+3. A következő példában a `Message` kulcs korábban egy gyorsítótárazott értékkel rendelkezett, amelyet a portálon a Redis-konzol Azure cache szolgáltatásával állítottak be. Az alkalmazás frissítette ezt a gyorsítótárazott értéket. Az alkalmazás továbbá végrehajtotta a `PING` és a `CLIENT LIST` parancsot.
 
     ![Egyszerű teszt eredménye – helyi](./media/cache-web-app-howto/cache-simple-test-complete-local.png)
 
@@ -307,7 +300,7 @@ Az új alkalmazás közzététele után adjon hozzá egy új alkalmazásbeállí
 
 Lépjen a böngészőben az alkalmazás URL-címére. Az URL-cím megjelenik a Visual Studio kimeneti ablakában a közzétételi művelet eredményei között. Az Azure Portalon, a létrehozott alkalmazás áttekintőoldalán is megtalálható.
 
-Válassza ki **Redis tesztelése az Azure Cache** gyorsítótár hozzáférési tesztelni a navigációs sávon.
+A gyorsítótár-hozzáférés teszteléséhez válassza a navigációs sávon a **Redis-teszt Azure cache** elemét.
 
 ![Egyszerű teszt eredménye – Azure](./media/cache-web-app-howto/cache-simple-test-complete-azure.png)
 
@@ -324,7 +317,7 @@ Ha azonban befejezte az oktatóanyag mintaalkalmazásának használatát, a díj
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com), és válassza az **Erőforráscsoportok** elemet.
 
-2. A **Szűrés név alapján** mezőbe írja be az erőforráscsoport nevét. A jelen cikk utasításai egy *TestResources* nevű erőforráscsoportot használtak. Az erőforráscsoport eredménylistájában válassza a **...**, majd az **Erőforráscsoport törlése** lehetőséget.
+2. A **Szűrés név alapján** mezőbe írja be az erőforráscsoport nevét. A jelen cikk utasításai egy *TestResources* nevű erőforráscsoportot használtak. Az erőforráscsoport eredménylistájában válassza a **...** , majd az **Erőforráscsoport törlése** lehetőséget.
 
     ![Törlés](./media/cache-web-app-howto/cache-delete-resource-group.png)
 
@@ -334,7 +327,7 @@ A rendszer néhány pillanaton belül törli az erőforráscsoportot és annak e
 
 ## <a name="next-steps"></a>További lépések
 
-A következő oktatóanyaggal használhatja az Azure Cache redis valószerűbb forgatókönyvet szeretne az alkalmazás teljesítményének növelése. Frissíti az alkalmazást, hogy gyorsítótárazza egy ranglista eredményeit a gyorsítótár-feltöltési minta, az ASP.NET és egy adatbázis együttes használatával.
+A következő oktatóanyagban az Azure cache-t a Redis reálisabb forgatókönyvben használhatja az alkalmazások teljesítményének növelése érdekében. Frissíti az alkalmazást, hogy gyorsítótárazza egy ranglista eredményeit a gyorsítótár-feltöltési minta, az ASP.NET és egy adatbázis együttes használatával.
 
 > [!div class="nextstepaction"]
 > [Gyorsítótár-feltöltési ranglista létrehozása az ASP.NET-en](cache-web-app-cache-aside-leaderboard.md)

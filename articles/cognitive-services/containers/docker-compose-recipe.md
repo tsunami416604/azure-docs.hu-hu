@@ -1,7 +1,7 @@
 ---
-title: A docker compose tároló receptek
+title: Több tároló üzembe helyezése a Docker-összeállítás használatával
 titleSuffix: Azure Cognitive Services
-description: Ismerje meg, hogyan helyezhet üzembe több Cognitive Services-tároló. Ez az eljárás bemutatja, miként kell levezényelni a több Docker-tárolók lemezképeit a Docker Compose.
+description: Ismerje meg, hogyan helyezhet üzembe több Cognitive Services tárolót. Ez a cikk bemutatja, hogyan hangolhat össze több Docker-tároló lemezképet a Docker-összeállítás használatával.
 services: cognitive-services
 author: IEvangelist
 manager: nitinme
@@ -10,43 +10,43 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 06/26/2019
 ms.author: dapine
-ms.openlocfilehash: 8afb7e866bc2a5fefe28a71653c4a2a87fdc7a5b
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 95ec80af88e0b89f61bebed08f4b96a09947f401
+ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67445798"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68311548"
 ---
-# <a name="use-multiple-containers-in-a-private-network-with-docker-compose"></a>A Docker Compose egy magánhálózaton lévő több tároló használata
+# <a name="use-docker-compose-to-deploy-multiple-containers"></a>Több tároló üzembe helyezése a Docker-összeállítás használatával
 
-Ismerje meg, hogyan helyezhet üzembe több Cognitive Services-tároló. Ez az eljárás bemutatja, miként kell levezényelni a több Docker-tárolók lemezképeit a Docker Compose.
+Ez a cikk bemutatja, hogyan helyezhet üzembe több Azure Cognitive Services-tárolót. Pontosabban megtudhatja, hogyan hozhat létre több Docker-tároló rendszerképet a Docker-összeállítás használatával.
 
-> [A docker Compose](https://docs.docker.com/compose/) meghatározása és a többtárolós Docker alkalmazásokat futtató eszköz. Az összeállítás egy YAML-fájlt az alkalmazás szolgáltatások konfigurálásához használja. Ezután, egyetlen paranccsal hozzon létre, és indítsa el az összes szolgáltatást a konfigurációból.
+> A Docker- [összeállítás](https://docs.docker.com/compose/) egy olyan eszköz, amely több tárolós Docker-alkalmazások definiálására és futtatására szolgál. Az összeállítás során YAML-fájlt használ az alkalmazás szolgáltatásainak konfigurálásához. Ezután egyetlen parancs futtatásával hozza létre és indítsa el az összes szolgáltatást a konfigurációból.
 
-Ha szükséges, meggyőző replikálásával segít a vállalatnak egy egyetlen számítógépen több tárolórendszerképek lehet. Ebben a cikkben azt fogjuk lekérheti a szöveg felismerése és űrlap felismerő szolgáltatás együtt.
+Hasznos lehet több tároló lemezképének összehangolása egyetlen gazdagépen. Ebben a cikkben a szövegfelismerés és az űrlap-felismerő tárolókat fogjuk egyesíteni.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ez az eljárás több eszközt, hogy telepítve legyen, és helyi futtatása szükséges.
+Ez az eljárás számos olyan eszközt igényel, amelyeknek helyileg kell telepítenie és futnia:
 
-* Használja az Azure-előfizetéssel. Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/) a virtuális gép létrehozásának megkezdése előtt.
-* [Docker-motor](https://www.docker.com/products/docker-engine) , és ellenőrizze, hogy működik-e a Docker parancssori felületén a konzolablakban.
-* Egy Azure-erőforrás a megfelelő tarifacsomagot. Nem minden tarifacsomag használata ebben a tárolóban:
-  * **Számítógépes Látástechnológia** erőforrás F0 vagy Standard díjszabás csak szint esetében.
-  * **Űrlap-felismerő** erőforrás F0 vagy Standard díjszabás csak szint esetében.
-  * **A cognitive Services** tarifacsomag az S0 erőforrás.
+* Azure-előfizetés. Ha még nincs előfizetése, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/), mielőtt hozzákezd.
+* [Docker-motor](https://www.docker.com/products/docker-engine). Ellenőrizze, hogy a Docker CLI működik-e a konzol ablakban.
+* Egy megfelelő árképzési szintű Azure-erőforrás. Ebben a tárolóban csak a következő díjszabási szintek működnek:
+  * Csak F0 vagy standard árképzési szinttel **Computer Vision** erőforrást.
+  * Csak F0 vagy standard árképzési szinttel rendelkező **űrlap-felismerő** erőforrás.
+  * **Cognitive Services** az erőforrást a S0 díjszabási szintjével.
 
-## <a name="request-access-to-the-container-registry"></a>A tároló-beállításjegyzék hozzáférés kérése
+## <a name="request-access-to-the-container-registry"></a>Hozzáférés kérése a tároló beállításjegyzékéhez
 
-És küldje el a [Cognitive Services beszéd tárolók űrlapot](https://aka.ms/speechcontainerspreview/) hozzáférés kéréséhez a tárolóhoz. 
+Fejezze be és küldje be a [Cognitive Services Speech containers kérelem űrlapját](https://aka.ms/speechcontainerspreview/). 
 
 [!INCLUDE [Request access to the container registry](../../../includes/cognitive-services-containers-request-access-only.md)]
 
 [!INCLUDE [Authenticate to the container registry](../../../includes/cognitive-services-containers-access-registry.md)]
 
-## <a name="docker-compose-file"></a>A docker compose-fájl
+## <a name="docker-compose-file"></a>Docker-összeállítási fájl
 
-A YAML-fájl üzembe helyezni a szolgáltatások határozza meg. Ezek a szolgáltatások támaszkodnak, vagy egy `DockerFile` egy meglévő tárolórendszerképet, és ebben az esetben fogjuk használni, vagy két előzetes verziójú lemezképeket. Másolja és illessze be a következő YAML-fájlt, és mentse *docker-compose.yaml*. Adja meg a megfelelő _apikey tulajdonsággal végzett tesztelése_, _számlázási_, és _végpont URI_ lévő értékeknek a _docker-compose.yml_ az alábbi fájl.
+A YAML fájl határozza meg az összes telepítendő szolgáltatást. Ezek a szolgáltatások a vagy egy `DockerFile` meglévő tároló képére támaszkodnak. Ebben az esetben két előzetes rendszerképet fogunk használni. Másolja és illessze be a következő YAML-fájlt, és mentse *Docker-levélírás. YAML*néven. Adja meg a megfelelő **apikey**, **Számlázási**és **fájlban lecserélendő endpointuri** értékeket a fájlban.
 
 ```yaml
 version: '3.7'
@@ -61,10 +61,10 @@ services:
        FormRecognizer__ComputerVisionEndpointUri: # < Your form recognizer URI >
     volumes:
        - type: bind
-         source: e:\publicpreview\output
+         source: E:\publicpreview\output
          target: /output
        - type: bind
-         source: e:\publicpreview\input
+         source: E:\publicpreview\input
          target: /input
     ports:
       - "5010:5000"
@@ -80,22 +80,22 @@ services:
 ```
 
 > [!IMPORTANT]
-> A könyvtárak létrehozása a gazdagépen, amely alapján vannak megadva a `volumes` csomópont. Ez azért szükséges, ahogy a könyvtárak a lemezkép csatlakoztatása a kötet kötések megkísérlése előtt léteznie kell.
+> Hozza létre a könyvtárakat a **kötetek** csomópont alatt megadott gazdagépen. Erre a megközelítésre azért van szükség, mert a könyvtáraknak léteznie kell, mielőtt mennyiségi kötések használatával próbál csatlakoztatni egy rendszerképet.
 
-## <a name="start-the-configured-docker-compose-services"></a>Kezdő a konfigurált docker-compose szolgáltatások
+## <a name="start-the-configured-docker-compose-services"></a>A konfigurált Docker-összeállítási szolgáltatások elindítása
 
-Egy a docker compose fájl lehetővé teszi, hogy a meghatározott szolgáltatási összes-életciklusait; felügyeletét indítása/leállítása és a szolgáltatások újraépítését, a szolgáltatás állapota, és a naplózási adatfolyam megtekintése. A projekt könyvtárában nyissa meg a parancssori felület (ahol a *docker-compose.yaml* megszabhatja fájlt).
+A Docker-összeállítási fájlok lehetővé teszik a megadott szolgáltatás életciklusának minden szakaszának kezelését: a szolgáltatások elindítása, leállítása és újraépítése; a szolgáltatás állapotának megtekintése; és a log streaming. Nyisson meg egy parancssori felületet a projekt könyvtárában (ahol a Docker-levélírás. YAML fájl található).
 
 > [!NOTE]
-> Hibák elkerülése érdekében, hogy a gazdagép frissítéséből megfelelően megosztása rendelkező meghajtókat a **Docker-motor**. Például ha *e:\publicpreview* szolgál egy-egy könyvtárat a *docker-compose.yaml* megosztani a *E meghajtó* a docker használatával.
+> A hibák elkerülése érdekében győződjön meg arról, hogy a gazdagép megfelelően osztja meg a meghajtókat a Docker Engine használatával. Ha például a E:\publicpreview a Docker-levélírás. YAML fájlban található könyvtárként használja, ossza meg az E meghajtót a Docker használatával.
 
-A parancssori felületről, hajtsa végre a következő parancsot a definiált szolgáltatások indítása (vagy újraindítása) a *docker-compose.yaml*:
+A parancssori felületen hajtsa végre a következő parancsot a Docker-levélírás. YAML fájlban definiált összes szolgáltatás elindításához (vagy újraindításához):
 
 ```console
 docker-compose up
 ```
 
-Az első végrehajtás ideje a `docker-compose up` parancsot ezzel a konfigurációval **Docker** alatt vannak konfigurálva a lemezképeket fogja lekérni a `services` csomópont--letöltése vagy csatlakoztatási őket:
+Az első alkalommal, amikor a Docker végrehajtja a **Docker-** összeállító parancsot ezzel a konfigurációval, lekéri a **szolgáltatások** csomópont alatt konfigurált lemezképeket, majd letölti és csatlakoztatja azokat:
 
 ```console
 Pulling forms (containerpreview.azurecr.io/microsoft/cognitive-services-form-recognizer:)...
@@ -126,7 +126,7 @@ c56511552241: Waiting
 e91d2aa0f1ad: Downloading [==============================================>    ]  162.2MB/176.1MB
 ```
 
-A rendszerképek lesznek letöltve, majd a lemezkép-szolgáltatás elindult.
+A lemezképek letöltése után a rendszerkép-szolgáltatások el lesznek indítva:
 
 ```console
 Starting docker_ocr_1   ... done
@@ -162,7 +162,7 @@ ocr_1    | Application started. Press Ctrl+C to shut down.
 
 [!INCLUDE [Tip for using docker list](../../../includes/cognitive-services-containers-docker-list-tip.md)]
 
-Alább a következő egy példa a kimenetre:
+Íme néhány példa a kimenetre:
 
 ```
 IMAGE ID            REPOSITORY                                                                 TAG
@@ -170,19 +170,19 @@ IMAGE ID            REPOSITORY                                                  
 4be104c126c5        containerpreview.azurecr.io/microsoft/cognitive-services-recognize-text    latest
 ```
 
-### <a name="test-the-recognize-text-container"></a>A felismerés szöveg tároló tesztelése
+### <a name="test-the-recognize-text-container"></a>A szövegfelismerés tároló tesztelése
 
-Nyisson meg egy böngészőt a gazdagépen, és navigáljon a `localhost` a megadott porton érkező a *docker-compose.yaml*, például `http://localhost:5021/swagger/index.html`. Használhatja a szolgáltatást, próbálja meg az API tesztelése a felismerése szöveg végpontot.
+Nyisson meg egy böngészőt a gazdagépen, és nyissa meg a **localhost** -ot a Docker-levélírás. YAML fájl megadott portjának http://localhost:5021/swagger/index.html használatával, például:. Az szövegfelismerés-végpont teszteléséhez használhatja az API "kipróbálás" funkcióját.
 
-![Szöveg Swagger felismerése](media/recognize-text-swagger-page.png)
+![szövegfelismerés tároló](media/recognize-text-swagger-page.png)
 
-### <a name="test-the-form-recognizer-container"></a>A képernyő felismerő tároló tesztelése
+### <a name="test-the-form-recognizer-container"></a>Az űrlap-felismerő tároló tesztelése
 
-Nyisson meg egy böngészőt a gazdagépen, és navigáljon a `localhost` a megadott porton érkező a *docker-compose.yaml*, például `http://localhost:5010/swagger/index.html`. Használhatja a szolgáltatást, próbálja meg az API tesztelése az űrlap felismerő végpont.
+Nyisson meg egy böngészőt a gazdagépen, és nyissa meg a **localhost** -ot a Docker-levélírás. YAML fájl megadott portjának http://localhost:5010/swagger/index.html használatával, például:. A "kipróbálás" funkció az API-ban az űrlap-felismerő végpont tesztelésére használható.
 
-![Űrlap felismerő Swagger](media/form-recognizer-swagger-page.png)
+![Űrlap-felismerő tároló](media/form-recognizer-swagger-page.png)
 
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [A cognitive Services-tárolók](../cognitive-services-container-support.md)
+> [Cognitive Services tárolók](../cognitive-services-container-support.md)

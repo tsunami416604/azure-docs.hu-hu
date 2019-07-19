@@ -8,14 +8,14 @@ ms.topic: conceptual
 ms.date: 05/20/2019
 ms.reviewer: sngun
 ms.custom: seodec18
-ms.openlocfilehash: 51a554586c67842ead40cd4a1bfaaa51bbdd8a18
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e450c0682a22a6e667a2bca153ce5d706a5bea96
+ms.sourcegitcommit: 6b41522dae07961f141b0a6a5d46fd1a0c43e6b2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65954396"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67986235"
 ---
-# <a name="change-feed-in-azure-cosmos-db---overview"></a>Az Azure Cosmos DB – csatorna módosítása – áttekintés
+# <a name="change-feed-in-azure-cosmos-db---overview"></a>Azure Cosmos DB adatcsatorna módosítása – áttekintés
 
 Módosítási hírcsatorna támogatása az Azure Cosmos DB működését úgy egy Azure Cosmos DB-tárolók nem változott. Majd megjeleníti a dokumentumok a sorrendben, amelyben a módosítás módosult a listán. A módosítások meg lesznek őrizve, feldolgozhatók aszinkron és fokozatos módon is, a kimenet pedig több fogyasztó között is elosztható a párhuzamos feldolgozáshoz. 
 
@@ -33,7 +33,7 @@ Az Azure Cosmos DB a változáscsatorna lehetővé teszi, hogy ezek a minták mi
 
 Ez a funkció jelenleg a következő Azure Cosmos DB API-k és ügyféloldali SDK-k által támogatott.
 
-| **Ügyfél-illesztőprogramok** | **Azure CLI** | **SQL API-HOZ** | **Cassandra API** | **Az Azure Cosmos DB MongoDB API-jaival** | **Gremlin API**|**Tábla API** |
+| **Ügyfél-illesztőprogramok** | **Azure CLI** | **SQL API-HOZ** | **Cassandra API** | **Azure Cosmos DB API-MongoDB** | **Gremlin API**|**Tábla API** |
 | --- | --- | --- | --- | --- | --- | --- |
 | .NET | NA | Igen | Nem | Nem | Igen | Nem |
 |Java|NA|Igen|Nem|Nem|Igen|Nem|
@@ -58,7 +58,7 @@ Ha egy élettartam (idő élettartama) tulajdonsága egy elemet a -1, módosít�
 
 ### <a name="change-feed-and-etag-lsn-or-ts"></a>Csatorna módosítása és _etag, _lsn vagy _ts
 
-A belső _etag formátuma, és nem megtétele függőségi rajta, mivel bármikor módosíthatja. _ts módosítását vagy a létrehozás időbélyegzője. Időrendi összehasonlító _ts is használhat. _lsn egy hozzáadott a változáscsatorna csak; Kötegazonosító Ez azt jelenti, hogy a tranzakció azonosítója. Előfordulhat, hogy hány elemet azonos _lsn. A FeedResponse ETag eltér a _etag akkor jelenik meg a cikket. _etag belső azonosítója, és ez használatos egyidejűségi vezérlő a verziójának használatát a cikk arról tájékoztatja, mivel az ETag használt műveleti sorrend a hírcsatorna.
+A belső _etag formátuma, és nem megtétele függőségi rajta, mivel bármikor módosíthatja. _ts módosítását vagy a létrehozás időbélyegzője. Időrendi összehasonlító _ts is használhat. a _lsn egy olyan batch-azonosító, amely csak a változási hírcsatornához lett hozzáadva; Ez a tranzakció AZONOSÍTÓját jelöli. Előfordulhat, hogy hány elemet azonos _lsn. A FeedResponse ETag eltér a _etag akkor jelenik meg a cikket. _etag belső azonosítója, és ez használatos egyidejűségi vezérlő a verziójának használatát a cikk arról tájékoztatja, mivel az ETag használt műveleti sorrend a hírcsatorna.
 
 ## <a name="change-feed-use-cases-and-scenarios"></a>Csatorna használati esetekre és forgatókönyvekre módosítása
 
@@ -94,7 +94,7 @@ Az alábbiakban a forgatókönyvek is egyszerűen implementálni a módosítás 
 Az alábbi beállítások segítségével módosítási hírcsatorna használhatja:
 
 * [Az Azure Functions használatával módosítási hírcsatorna](change-feed-functions.md)
-* [A változáscsatorna feldolgozói könyvtárával használatával módosítási hírcsatorna](change-feed-processor.md) 
+* [Módosítási hírcsatorna használata a Change feed processzorral](change-feed-processor.md) 
 
 Módosítási hírcsatorna érhető el a tárolóban lévő minden egyes logikai partíciós kulcs, és hogy szét lehetnek osztva egy vagy több ügyfél párhuzamos feldolgozásra az alábbi képen látható módon.
 
@@ -108,7 +108,7 @@ Módosítási hírcsatorna érhető el a tárolóban lévő minden egyes logikai
 
 * A módosítási hírcsatorna beszúrások és a tárolóban lévő elemek frissítési műveleteket tartalmaz. Rögzítheti a törlések az elemek (például dokumentumok) belül "helyreállítható törlés" jelölő beállításával törlése helyett. Másik lehetőségként beállíthatja egy véges lejárati idejét az elemek a [TTL képesség](time-to-live.md). Például 24 óra és -felhasználási rögzítheti a tulajdonság értékét törli. Ezzel a megoldással hogy feldolgozza a módosításokat a TTL lejárata időszaknál rövidebb időközt belül. 
 
-* Minden módosítás elem pontosan egyszer jelenik meg a változáscsatorna, és az ügyfelek az ellenőrzőpontok használata logikát kell kezelni. Ha szeretné elkerülni az ellenőrzőpontok kezelésének bonyolultságát, a változáscsatorna feldolgozói könyvtárával biztosít automatikus ellenőrzőpont-készítés és a "legalább egyszeri" szemantika. Lásd: [használatával módosítási hírcsatorna a változáscsatorna feldolgozói kódtára](change-feed-processor.md).
+* Minden módosítás elem pontosan egyszer jelenik meg a változáscsatorna, és az ügyfelek az ellenőrzőpontok használata logikát kell kezelni. Ha el szeretné kerülni az ellenőrzőpontok kezelésének bonyolultságát, akkor a változási hírcsatorna-feldolgozó automatikus ellenőrzőpontot és "legalább egyszer" szemantikaot biztosít. Lásd: [a Change feed használata a Change feed Processor használatával](change-feed-processor.md).
 
 * Egy adott elem csak a legutóbbi módosítás a módosítási napló tartalmazza. Közbenső változások nem érhető el.
 
@@ -118,7 +118,7 @@ Módosítási hírcsatorna érhető el a tárolóban lévő minden egyes logikai
 
 * Változások az Azure Cosmos-tároló az összes logikai partíciókulcsok párhuzamosan érhetők el. Ez a funkció lehetővé teszi, hogy a változásokat a nagy méretű tárolók több fogyasztó a párhuzamos feldolgozásra.
 
-* Alkalmazások egyszerre több módosítási hírcsatorna ugyanazt a tárolót a kérhetnek. ChangeFeedOptions.StartTime használható egy kezdeti kiindulási pontot biztosít. Ha például a folytatási kód egy megadott idő értékeknek megfelelő található. A continuationtoken argumentumot használja, ha meg van adva, a WINS-keresztül a StartTime és StartFromBeginning értékeket. A pontosság ChangeFeedOptions.StartTime ~ 5 másodperc. 
+* Az alkalmazások egyszerre több módosítási csatornát is igényelhetnek ugyanazon a tárolón. ChangeFeedOptions.StartTime használható egy kezdeti kiindulási pontot biztosít. Ha például a folytatási kód egy megadott idő értékeknek megfelelő található. A continuationtoken argumentumot használja, ha meg van adva, a WINS-keresztül a StartTime és StartFromBeginning értékeket. A pontosság ChangeFeedOptions.StartTime ~ 5 másodperc. 
 
 ## <a name="next-steps"></a>További lépések
 
@@ -126,4 +126,4 @@ Folytassa további információ a változáscsatorna az alábbi cikkeket:
 
 * [Olvassa el a beállításokat a módosítási hírcsatornáról](read-change-feed.md)
 * [Az Azure Functions használatával módosítási hírcsatorna](change-feed-functions.md)
-* [Feldolgozói kódtára használatával módosítási hírcsatorna](change-feed-processor.md)
+* [A csatorna módosítása](change-feed-processor.md)

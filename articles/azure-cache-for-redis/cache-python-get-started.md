@@ -1,6 +1,6 @@
 ---
-title: 'Gyors útmutató: Azure Cache redis használó Python-alkalmazás létrehozása |} A Microsoft Docs'
-description: Ez a rövid útmutatóban megismerheti, hogyan hozhat létre egy Python-alkalmazás által használt Azure Cache redis
+title: Azure cache-t használó Python-alkalmazás létrehozása a Redis-hez | Microsoft Docs
+description: Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre olyan Python-alkalmazást, amely az Azure cache-t használja a Redis
 services: cache
 documentationcenter: ''
 author: yegu-ms
@@ -15,38 +15,32 @@ ms.workload: tbd
 ms.date: 05/11/2018
 ms.author: yegu
 ms.custom: mvc
-ms.openlocfilehash: 73c14b3d3023dcca113589d63276216fcfdd17f1
-ms.sourcegitcommit: 6cb4dd784dd5a6c72edaff56cf6bcdcd8c579ee7
+ms.openlocfilehash: 70a8e4cd694a90e83bf78e00a7c725a8c887b2eb
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67513443"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68324078"
 ---
-# <a name="quickstart-use-azure-cache-for-redis-with-python"></a>Gyors útmutató: Az Azure Cache használata pythonnal Redis
+# <a name="quickstart-use-azure-cache-for-redis-with-python"></a>Gyors útmutató: Az Azure cache használata a Redis és a Python használatával
 
-
-## <a name="introduction"></a>Bevezetés
-
-Ez a rövid útmutató bemutatja, hogyan csatlakozhat egy Azure Cache redis az olvasási és írási gyorsítótár a Python használatával. 
-
-![Python-teszt befejezve](./media/cache-python-get-started/cache-python-completed.png)
-
-[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
+Ebben a rövid útmutatóban egy Python-alkalmazásba foglalja bele az Azure cache-t a Redis-ba, hogy hozzáférhessen egy biztonságos, dedikált gyorsítótárhoz, amely az Azure-on belül bármely alkalmazásból elérhető.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* [Python 2 vagy Python 3-környezetben](https://www.python.org/downloads/) telepített [pip](https://pypi.org/project/pip/). 
+- Azure-előfizetés – [hozzon létre egyet ingyen](https://azure.microsoft.com/free/)
+- [Python 2 vagy 3](https://www.python.org/downloads/)
 
-## <a name="create-an-azure-cache-for-redis-on-azure"></a>Azure Cache létrehozása a redis az Azure-ban
+## <a name="create-an-azure-cache-for-redis-on-azure"></a>Azure cache létrehozása az Azure-beli Redis
 [!INCLUDE [redis-cache-create](../../includes/redis-cache-create.md)]
 
 [!INCLUDE [redis-cache-create](../../includes/redis-cache-access-keys.md)]
 
 ## <a name="install-redis-py"></a>A redis-py telepítése
 
-[A redis-py](https://github.com/andymccurdy/redis-py) van egy Python-felület az Azure Cache redis. A *pip* nevű Python-csomag eszközzel telepítheti a redis-py csomagot. 
+A [Redis-](https://github.com/andymccurdy/redis-py) a Redis egy Python-felület az Azure cache-hez. A *pip* nevű Python-csomag eszközzel telepítheti a redis-py csomagot. 
 
-Az alábbi példában *pip3* a Python3 a redis-py csomag telepítéséhez használja a Visual Studio 2019 fejlesztői parancssort emelt szintű rendszergazdai jogosultságokkal fut a Windows 10.
+Az alábbi példa a *pip3* for Python3 használatával telepíti a Redis-a Windows 10-es verzióját a Visual Studio 2019 fejlesztői parancssorból, amely emelt szintű rendszergazdai jogosultságokkal fut.
 
 ```python
     pip3 install redis
@@ -57,7 +51,7 @@ Az alábbi példában *pip3* a Python3 a redis-py csomag telepítéséhez haszn�
 
 ## <a name="read-and-write-to-the-cache"></a>Olvasás és írás a gyorsítótárban
 
-Futtassa a Pythont, és teszteljen a gyorsítótárral a parancssorból. Cserélje le `<Your Host Name>` és `<Your Access Key>` azokra az értékekre, az Azure Cache redis. 
+Futtassa a Pythont, és teszteljen a gyorsítótárral a parancssorból. Cserélje `<Your Host Name>` le `<Your Access Key>` a és a értéket a Redis Azure-gyorsítótárának értékeire. 
 
 ```python
 >>> import redis
@@ -70,13 +64,13 @@ b'bar'
 ```
 
 > [!IMPORTANT]
-> A Redis verzió 3.0-s vagy újabb verziója szükséges, az SSL-tanúsítvány-ellenőrzés van érvényben. ssl_ca_certs explicit módon kell állítani a Redis való csatlakozáskor. RH Linux esetén ssl_ca_certs megtalálható a "/ etc/pki/tls/certs/ca-bundle.crt" tanúsítvány modul.
+> A Redis verziószáma 3,0 vagy magasabb, az SSL-tanúsítvány-ellenőrzési funkció érvénybe lép. a ssl_ca_certs explicit módon be kell állítani a Redis való csatlakozáskor. RH Linux esetén a ssl_ca_certs a "/etc/PKI/TLS/certs/CA-Bundle.CRT" tanúsítvány-modulban található.
 
 ## <a name="create-a-python-script"></a>Python-szkript létrehozása
 
 Hozzon létre egy *PythonApplication1.py* nevű új szöveges szkriptfájlt.
 
-Adja a következő szkriptet a *PythonApplication1.py* fájlhoz, és mentse a fájlt. Ez a szkript teszteli a gyorsítótár hozzáférését. Cserélje le `<Your Host Name>` és `<Your Access Key>` azokra az értékekre, az Azure Cache redis. 
+Adja a következő szkriptet a *PythonApplication1.py* fájlhoz, és mentse a fájlt. Ez a szkript teszteli a gyorsítótár hozzáférését. Cserélje `<Your Host Name>` le `<Your Access Key>` a és a értéket a Redis Azure-gyorsítótárának értékeire. 
 
 ```python
 import redis
@@ -127,13 +121,10 @@ A rendszer az erőforráscsoport törlésének megerősítését fogja kérni. A
 
 A rendszer néhány pillanaton belül törli az erőforráscsoportot és a benne foglalt erőforrásokat.
 
-
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Hozzon létre egy egyszerű ASP.NET-webalkalmazás, egy Azure Cache redis használó.](./cache-web-app-howto.md)
-
-
+> [Hozzon létre egy egyszerű ASP.NET-webalkalmazást, amely egy Azure cache-t használ a Redis.](./cache-web-app-howto.md)
 
 <!--Image references-->
 [1]: ./media/cache-python-get-started/redis-cache-new-cache-menu.png

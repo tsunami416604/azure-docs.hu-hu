@@ -6,15 +6,15 @@ ms.service: firewall
 services: firewall
 ms.topic: overview
 ms.custom: mvc
-ms.date: 7/10/2019
+ms.date: 07/19/2019
 ms.author: victorh
 Customer intent: As an administrator, I want to evaluate Azure Firewall so I can determine if I want to use it.
-ms.openlocfilehash: 2894af5f253e20b32dde0ecc5f658edff4814149
-ms.sourcegitcommit: 10251d2a134c37c00f0ec10e0da4a3dffa436fb3
+ms.openlocfilehash: 1349e07662504564fdf48a53f24525c4a16aa477
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/13/2019
-ms.locfileid: "67868428"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68326903"
 ---
 # <a name="what-is-azure-firewall"></a>Mi az Azure Firewall?
 
@@ -80,7 +80,7 @@ A tűzfal nyilvános IP-címére érkező bejövő hálózati forgalmat a rendsz
 ## <a name="multiple-public-ip-addresses"></a>Több nyilvános IP-cím
 
 > [!IMPORTANT]
-> A több nyilvános IP-címmel rendelkező Azure Firewall Azure PowerShell, az Azure CLI, a REST és a sablonok használatával érhető el. A portál felhasználói felülete fokozatosan bővül, és minden régióban elérhető lesz, amikor a bevezetés befejeződik.
+> A több nyilvános IP-címmel rendelkező Azure Firewall a Azure Portal, a Azure PowerShell, az Azure CLI, a REST és a sablonok használatával érhető el.
 
 
 A tűzfallal több nyilvános IP-címet is hozzárendelhet (legfeljebb 100).

@@ -1,6 +1,6 @@
 ---
-title: Fenyegetések észlelése a felhőbeli natív számítást az Azure Security Centerben |} A Microsoft Docs
-description: Ez a témakör bemutatja a felhőben az Azure Security Centerben elérhető natív számítási riasztások. az Azure Security Centerben.
+title: Fenyegetések észlelése a Felhőbeli natív számítási feladatokhoz a Azure Security Centerban | Microsoft Docs
+description: Ez a témakör a Felhőbeli natív számítási riasztásokat mutatja be Azure Security Centerban. Azure Security Center.
 services: security-center
 documentationcenter: na
 author: monhaber
@@ -13,49 +13,49 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 7/02/2019
-ms.author: monhaber
-ms.openlocfilehash: bc3cb66d43e71777e06c6bd63dcff35e2ff19df8
-ms.sourcegitcommit: 1e347ed89854dca2a6180106228bfafadc07c6e5
+ms.author: v-mohabe
+ms.openlocfilehash: 14433806a28e31cef1a278e16cb69e7c9b1a2458
+ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67571685"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68295845"
 ---
-# <a name="threat-detection-for-cloud-native-compute-in-azure-security-center"></a>A fenyegetésészlelés felhőbeli natív számítást az Azure Security Centerben
+# <a name="threat-detection-for-cloud-native-compute-in-azure-security-center"></a>Fenyegetések észlelése a Felhőbeli natív számítási feladatokhoz Azure Security Center
 
-A felhőszolgáltatók, mint a Security Center kihasználja a belső-naplók elemzése, és azonosítani a támadási módszert a több cél rendelkezik egyedi látható-e. Ez a témakör bemutatja a riasztások a következő Azure-szolgáltatásokhoz érhető el:
+A felhőalapú szolgáltatóként a Security Center kihasználja az egyedi láthatóságot, amely a belső naplók elemzésére és a támadási módszerek azonosítására szolgál több cél esetében. Ez a témakör a következő Azure-szolgáltatásokhoz elérhető riasztásokat mutatja be:
 
 * [Azure App Service](#app-services)
 * [Containers](#azure-containers) 
 
-## Azure App Service <a name="app-services"></a>
+## Azure App Service<a name="app-services"></a>
 
-A Security Center a méretezési csoport a felhő keresztül az Azure App Service-ben futó ügyfelek alkalmazásokat célzó támadások azonosítására használ. Webes alkalmazások gyakorlatilag bármely modern hálózati a folyamatban, a támadók mintavételi és kiaknázhatóak ezeket. Bizonyos környezetekben való továbbítása, mielőtt az Azure-ban futó alkalmazások kérelmek próbálja ki több átjáró, ellenőrzött és naplózott. Ezeket az adatokat használjuk majd azonosításához az azokat kihasználó támadások ellen, a támadók, és a további új minták létrehozását, amelyek később fogja használni.
+Security Center kihasználja a felhő méretezését, hogy azonosítsa a Azure App Serviceon futó ügyfelekre irányuló támadásokat. Ha a webalkalmazások gyakorlatilag bármilyen modern hálózaton vannak, a támadók megkeresik ezeket a gyengeségeket, és kihasználják azokat. Az Azure-ban futó alkalmazásokra irányuló kérelmek az adott környezetbe való átirányításuk előtt több átjárón haladnak át, ahol megvizsgálják és naplózzák azokat. Ezt követően a rendszer felhasználja ezeket az információkat a biztonsági rések, a támadók és a később felhasználható új minták azonosítására.
 
-Használata révén, amely az Azure rendelkezik a felhőszolgáltatók látható-e, a Security Center elemzi az App Service belső naplók segítségével határozza meg a több cél támadási módszert. Ha például széles körű keresés és elosztott támadások. Ilyen típusú támadások általában egy kis részét jelentik az IP-címek származik, és kiváló utaló bejárás hasonló végpontokra keresése a sebezhető oldalon vagy a beépülő modul több gazdagépen. Ez a felhő használatával észlelhető, de nem lehet azonosítani egy gazdagép szempontjából.
+Azáltal, hogy az Azure-t felhőalapú szolgáltatóként látja el, Security Center elemzi App Service belső naplókat, hogy azonosítsa a támadási módszereket több célponton. Ilyenek például a széleskörű vizsgálat és az elosztott támadások. Ez a típusú támadás általában az IP-címek kis részéből származik, és a hasonló végpontokra való bejárási mintákat mutatja több gazdagépen, egy sebezhető oldal vagy beépülő modul keresésekor. Ez a felhő használatával észlelhető, de egyetlen gazdagép szempontjából nem azonosítható.
 
-A Security Center is hozzáfér az alapul szolgáló próbakörnyezetbe lefordítja és virtuális gépek számára. Memória típusú kérdéseket, és az infrastruktúra képes a történet, egy új támadástól, az ügyfél gépek feltörések kártevőcsaládok mozognak. Ezért Security Center észlelni tudja a webalkalmazások hosszú elleni támadások kihasznált után.
+A Security Center az alapul szolgáló munkapéldányokat és virtuális gépeket is elérheti. A memória-kriminalisztikai szolgáltatással együtt az infrastruktúra megtudhatja a történetet egy olyan új támadástól, amely a vadonban kering, és megsérül az ügyfél-gépeken. Ezért a Security Center a webalkalmazások elleni támadásokat a kihasználás után hosszú ideig képes felderíteni.
 
 > [!div class="mx-tableFixed"]
 
 |Riasztás|Leírás|
 |---|---|
-|**Észlelt gyanús WordPress téma meghívása**|Az Azure App Service tevékenységnapló azt jelzi, hogy az App Service erőforrás egy lehetséges kód injektálási tevékenységet.<br/> Ez a gyanús tevékenység hasonló tevékenységnek, amely kezeli a WordPress téma kiszolgálóoldali kód, kiegészítve a úgy témafájl meghívandó közvetlen webes kérelem végrehajtása támogatja. A tevékenységet is látható volt a múltban támadássorozatot részeként WordPress keresztül.|
-|**Weblap kapcsolatot észlelt rendellenes IP-címről**|Az Azure App Service tevékenységnapló azt jelzi, hogy kapcsolatot egy bizalmas weblapra, amely soha nem csatlakozott, mielőtt a forrás-címről. Ez azt jelentheti, hogy valaki megpróbál a webalkalmazás felügyeleti oldalakra találgatásos támadás. Az eredmény egy új hiteles felhasználó által használt IP-cím is lehet.|
-|**IP-címet, amely csatlakozik az Azure App Service FTP felület található fenyegetések felderítése**|Az Azure App Service FTP-naplók analysis észlelte a forrás-címmel, amely nem található a Fenyegetésfelderítési hírcsatorna kapcsolatot. Során ezt a kapcsolatot a felhasználó az alábbi oldalakat érhető el.|
-|**Webalkalmazás-ujjlenyomat észlelt**|Az Azure App Service tevékenységnapló azt jelzi, hogy egy lehetséges webes tevékenység az App Service erőforrás-ujjlenyomat. <br/>A rendszer gyanús tevékenységet észlelt a vakok Elefántviselkedési nevű eszközt társítva. Az eszköz ujjlenyomatok webkiszolgálók, és megpróbálja észlelni a telepített alkalmazások és azok verzióinak. A támadók gyakran használnak az eszköz számára a webalkalmazások tesztelés biztonsági rések.|
-|**Esetlegesen sebezhető weblap észlelt gyanús hozzáférés**|Az Azure App Service tevékenységnapló azt jelzi, hogy fértek hozzá, hogy egy weblap, amelyen úgy tűnik, hogy bizalmas. <br/>A gyanús tevékenységek, egy forrás címe, amelynek hozzáférési mintájában hasonlít a webes képolvasó származik. Az ilyen típusú tevékenység gyakran egy támadó a hálózaton, próbálja ki, és hozzáférhetnek a bizalmas vagy sebezhető weblapok kísérlet társítva.|
-|**PHP-fájl feltöltése mappában**|Az Azure App Service tevékenységnapló azt jelzi, hogy valami fért hozzá a feltöltési mappában található gyanús PHP lapra. <br/>Az ilyen típusú mappa nem tartalmaz általában PHP-fájlokat. Az ilyen típusú fájl létezik-e egy tetszőleges fájl feltöltése biztonsági rések kihasználásával kiaknázása utalhat.|
-|**Linux-parancsok futtatása a Windows App Service-ben**|App Service-ben folyamatok elemzési azt észlelte, hogy a Windows App Service Linux parancs futtatására tett kísérlet. Ez a művelet a webalkalmazás futtatása. Ez a jelenség gyakran látható egy közös webalkalmazás biztonsági réseket kihasználó kampányok során.|
-|**Gyanús PHP-végrehajtást észlelt**|Gép naplóinak jelzi, amely egy gyanús PHP-folyamat fut-e. A művelet tartalmazza az operációs rendszer parancsok vagy a PHP-kód futtatása a parancssorból, a PHP-folyamat használatával. Ez a viselkedés jogos lehetnek, a webes alkalmazások ezt a viselkedést is meg a kártékony tevékenységek, például a kísérletek webes parancskörnyezet webhelyek fertőznek.|
-|**A folyamat végrehajtását ideiglenes mappából**|App Service-ben folyamatok elemzési az alkalmazás ideiglenes mappából egy folyamat végrehajtásának észlelte. Bár lehet, hogy ez a viselkedés jogos, a webalkalmazásokat a kártékony tevékenységek is meg ezt a viselkedést.|
-|**Észlelt magas jogosultsági parancs futtatása**|Az App Service-folyamatok elemzése észlelte a magas szintű jogosultságot igénylő parancs futtatására tett kísérlet. A parancsot futtatta, a webes alkalmazás környezetében. Bár lehet, hogy ez a viselkedés jogos, a webalkalmazásokat a kártékony tevékenységek is meg ezt a viselkedést.|
+|**Gyanús WordPress Theme meghívást észlelt**|A Azure App Service tevékenység naplója az App Service-erőforrás lehetséges kód-injektálási tevékenységét jelzi.<br/> Ez a gyanús tevékenység olyan tevékenységhez hasonlít, amely egy WordPress-témát kezel a kód kiszolgálóoldali végrehajtásának támogatásához, majd egy közvetlen webes kérést, amely a manipulált téma meghívására szolgál. Ez a típusú tevékenység a múltban a WordPress elleni támadási kampány részeként látható.|
+|**Kapcsolat a weboldallal az észlelt rendellenes IP-címről**|A Azure App Service tevékenység naplója egy bizalmas weboldalhoz való kapcsolódást jelez egy olyan forrásoldali címről, amely még soha nem kapcsolódott hozzá. Ez arra utalhat, hogy valaki egy találgatásos támadásra tesz kísérletet a webalkalmazás-adminisztrációs oldalain. Az is előfordulhat, hogy egy legitim felhasználó új IP-címet használ.|
+|**Az Azure App Service FTP-interfészhez kapcsolódó IP-cím található a veszélyforrások felderítésében**|Azure App Service az FTP-naplók elemzése a veszélyforrások felderítése hírcsatornában található forrás címről érkező kapcsolatokat észlelt. Ebben a kapcsolatban a felhasználók az alább felsorolt oldalakat érik el.|
+|**Webes ujjlenyomat észlelhető**|A Azure App Service tevékenység naplója egy lehetséges webes ujjlenyomat-hozzárendelési tevékenységet jelez a App Service erőforráson. <br/>Ez a gyanús tevékenység a Blind Elephant nevű eszközhöz van társítva. Az eszköz ujjlenyomatok webkiszolgálók, és megkísérli felderíteni a telepített alkalmazásokat és azok verzióit. A támadók gyakran ezt az eszközt használják a webalkalmazások felderítésére a biztonsági rések kereséséhez.|
+|**A rendszer gyanús hozzáférést észlelt a valószínűleg sebezhető weblaphoz**|A Azure App Service tevékenység naplója azt jelzi, hogy egy bizalmasnak tűnő weblap elérhető. <br/>Ez a gyanús tevékenység olyan forrásoldali címről származik, amelynek a hozzáférési mintája egy webes képolvasó esetében hasonlít. Ez a fajta tevékenység gyakran a támadók által a hálózatra irányuló kísérlettel van társítva, hogy megpróbáljon hozzáférni a bizalmas vagy sebezhető weblapokhoz.|
+|**PHP-fájl a feltöltési mappában**|A Azure App Service tevékenység naplója azt jelzi, hogy valami hozzáfért egy gyanús PHP-oldalhoz, amely a feltöltés mappában található. <br/>Ez a típusú mappa általában nem tartalmaz PHP-fájlokat. Az ilyen típusú fájlok létezése arra utalhat, hogy kihasználja a fájlok feltöltésének tetszőleges sebezhetőségét.|
+|**Linux-parancsok futtatására tett kísérlet Windows App Service**|App Service folyamatok elemzése azt észlelte, hogy egy Linux-parancs futtatására tett kísérletet a Windows App Service. Ezt a műveletet a webalkalmazás futtatta. Ez gyakran előfordul a gyakori webalkalmazások biztonsági réseit kihasználó kampányok során.|
+|**Gyanús PHP-végrehajtás észlelhető**|A gépi naplók azt jelzik, hogy egy gyanús PHP-folyamat fut. A művelet az operációsrendszer-parancsok vagy PHP-kód parancssorból való futtatására tett kísérletet a PHP-folyamat használatával. Habár ez a viselkedés legitim lehet, a webalkalmazásokban ez a viselkedés olyan rosszindulatú tevékenységekben is megfigyelhető, mint például a webhelyek webes rendszerhéjokkal történő megfertőzésének kísérlete.|
+|**Folyamat-végrehajtás ideiglenes mappából**|App Service folyamatok elemzése egy folyamat végrehajtását észlelte az alkalmazás ideiglenes mappájából. Habár ez a viselkedés legitim lehet, a webalkalmazásokban ez a viselkedés a kártékony tevékenységekben is megfigyelhető.|
+|**Kísérlet történt a magas jogosultságú parancs futtatására**|A App Service folyamatok elemzése olyan parancs futtatására tett kísérletet észlelt, amely magas szintű jogosultságokat igényel. A parancs a webalkalmazási környezetben futott. Habár ez a viselkedés legitim lehet, a webalkalmazásokban ez a viselkedés a kártékony tevékenységekben is megfigyelhető.|
 
 > [!NOTE]
-> Security Center Fenyegetésészlelése App Service-ben jelenleg nem érhető el az Azure government és szuverén felhő-régiók.
+> Security Center veszélyforrások észlelése App Service jelenleg nem érhető el az Azure governmentben és a szuverén Felhőbeli régiókban.
 
-További információ az App Service fenyegetésészlelési riasztások látogasson el az Azure Security Center védelme az App Service, és tekintse át a figyelési és az App Service-munkaterhelések védelmének engedélyezése.
+App Service veszélyforrások észlelésével kapcsolatos riasztásokról a App Service védelme a Azure Security Center használatával című témakörben olvashat bővebben, és áttekintheti, hogyan engedélyezheti a App Service számítási feladatok figyelését és védelmét.
 
-## Tárolók <a name="azure-containers"></a>
+## Konténerek<a name="azure-containers"></a>
 
-A Security Center a tárolókhoz a valós idejű fenyegetésészlelés Linuxos gépeken a auditd keretrendszer alapján biztosít. A riasztások Docker gyanús tevékenységek például a létrehozása egy gazdagépen arra utalhat, hogy a Secure Shell (SSH) kiszolgálót egy Docker-tárolót, vagy a titkosítási használja használatát belül futó emelt szintű tároló azonosítása. Ezen adatok alapján gyorsan elháríthatja a biztonsági problémákat, és javíthatja tárolói védelmét. Linux észlelések, mellett a Security Center is kínál, amelyek adott tárolók központi telepítések analytics.
+Security Center valós idejű veszélyforrásokat észlel a tárolók számára a Linux rendszerű gépeken az auditált keretrendszer alapján. A riasztások számos gyanús Docker-tevékenységet azonosítanak, például egy gazdagépre emelt jogosultságú tároló létrehozását, a Docker-tárolón belül futó Secure Shell-(SSH-) kiszolgáló, illetve a kriptográfiai bányászok használatát. Ezen adatok alapján gyorsan elháríthatja a biztonsági problémákat, és javíthatja tárolói védelmét. A Linux-észlelések mellett a Security Center a tárolók üzembe helyezésére vonatkozó elemzéseket is kínál.

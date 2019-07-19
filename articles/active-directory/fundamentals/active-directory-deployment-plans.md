@@ -12,12 +12,12 @@ ms.date: 02/08/2019
 ms.author: lizross
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f59cae87af5f29d900159639798f9cd031f3d765
-ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
+ms.openlocfilehash: 7f695d9f0240f8c27ea0bedba7e532d37a177752
+ms.sourcegitcommit: 770b060438122f090ab90d81e3ff2f023455213b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67302387"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68304746"
 ---
 # <a name="azure-active-directory-deployment-plans"></a>Azure Active Directory-üzembehelyezési tervek
 Átfogó útmutatót keres az Azure Active Directory (Azure AD) egyes képességeinek üzembe helyezéséhez? Az alábbi üzembehelyezési tervek végigvezetik az egyes gyakoribb Azure AD-képességek sikeres bevezetéséhez szükséges, az üzleti értékkel, a tervezési szempontokkal, a kialakítással és az üzemeltetéssel kapcsolatos eljárásokon. 
@@ -26,42 +26,42 @@ A dokumentumok többek között e-mailes sablonokat, rendszerarchitektúra-diagr
 
 Kíváncsiak vagyunk a dokumentumokkal kapcsolatos visszajelzésére. Ennek a rövid [felmérésnek](https://aka.ms/deploymentplanfeedback) a kitöltésével tudathatja velünk, mennyire találta hasznosnak a dokumentumokat. 
 
-## <a name="include-the-right-stakeholders"></a>A jobb oldali érdekelt felek belefoglalása
+## <a name="include-the-right-stakeholders"></a>A megfelelő résztvevők belefoglalása
 
-Az üzembehelyezés-Tervező egy új funkció kezdve esetén fontos, hogy a fő érintettek a szervezetben. Azt javasoljuk, hogy azonosítása, és dokumentálja a személy vagy személyek, akik megfelelnek a következő szerepkörök mindegyike, és vele együttműködve határozza meg a projektben való részvételét.  
+Amikor megkezdi az üzembe helyezést egy új képesség megtervezése során, fontos, hogy a szervezeten belül kulcsfontosságú érdekelteket vegyen fel. Javasoljuk, hogy azonosítsa és dokumentálja azokat a személyeket vagy személyeket, akik a következő szerepköröket teljesítik, és működjenek együtt velük a projektben való részvételük meghatározásához.  
 
-Szerepkörök a következők lehetnek 
+A szerepkörök a következők lehetnek: 
 
-|Szerepkör |Leírás |
+|Role |Leírás |
 |-|-|
-|Végfelhasználó|A felhasználók, amelynek hajtják végre a funkció egy reprezentatív csoportja. Gyakran előnézetek olyan próbafázisban lévő program változásokat.
-|Informatikai igazgató|Informatikai támogatási szervezet képviselője, amely bemeneti biztosít a segélyszolgálat szempontból a módosítása a támogathatóság.  
-|Identitás-mérnök vagy az Azure globális rendszergazda|Identity management képviselőjéhez felelős meghatározása, hogy ez a változás az alapvető identity management infrastruktúra a szervezetben való igazítását.|
-|Alkalmazás tulajdonosa |Az érintett alkalmazás, amely hozzáférés-kezelés általános üzleti tulajdonosa.  A felhasználói élmény és a módosítás a végfelhasználó szemszögéből hasznosságát bemeneti is rendelkezhetnek.
-|Biztonsági tulajdonosa|A biztonsági csapat, amely képes jelentkezzen ki, hogy a csomag megfelel a szervezet biztonsági követelményeinek képviselőjével.|
-|Megfelelőségi Manager|A szervezetben való vállalati megfelelőség, iparágtól vagy kormányzati követelmények biztosításáért felelős személy.|
+|Végfelhasználó|Azoknak a felhasználóknak a reprezentatív csoportja, amelyekhez a képességet alkalmazni kívánja. Gyakran megtekinti a kísérleti program módosításait.
+|INFORMATIKAI támogatás kezelője|Támogatja a szervezeti képviselőt, aki megadhatja a változás támogatását a helpdesk szemszögéből.  
+|Identity Architect vagy Azure globális rendszergazda|Az Identitáskezelés csapatának képviselője, amely meghatározza, hogy a változás hogyan igazodik a szervezet alapvető Identity Management infrastruktúrához.|
+|Alkalmazás üzleti tulajdonosa |Az érintett alkalmazás (ok) általános üzleti tulajdonosa, amely magában foglalhatja a hozzáférés kezelését is.  A felhasználói élmény és a változás hasznosságát is megadhatja a végfelhasználó szemszögéből.
+|Biztonsági tulajdonos|A biztonsági csapat képviselője, amely kijelentkezhet, hogy a terv megfelel a szervezete biztonsági követelményeinek.|
+|Megfelelőség-kezelő|A szervezeten belül a vállalat, az iparág vagy a kormányzati követelmények teljesítésének biztosításáért felelős személy.|
 
-**Bevonása szintek a következők lehetnek:**
+**A részvételi szintek a következők lehetnek:**
 
-- **R**esponsible megvalósításához projektterv és eredménye 
+- Az **R**esponsible a projekt tervének és eredményének megvalósításához 
 
-- **A**pproval projektterv és eredménye 
+- **Pproval és**-eredmény 
 
-- **C**ontributor projektterv és eredménye 
+- **C**ontributor a projekt tervéhez és eredményéhez 
 
-- **E**nformed projektterv és eredménye
+- **Nformed és**végeredmény
  
-## <a name="deployment-plans"></a>Központi telepítési csomagok
+## <a name="deployment-plans"></a>Üzembe helyezési csomagok
 
 
 
 |Forgatókönyv |Leírás |
 |-|-|
 |[Többtényezős hitelesítés](../authentication/howto-mfa-getstarted.md)|Az Azure Multi-Factor Authentication (MFA) a Microsoft kétlépéses hitelesítési megoldása. A rendszergazda által engedélyezett hitelesítési módszerek használatával az Azure MFA segíti az adatok és alkalmazások védelmét az illetéktelen hozzáféréssel szemben, miközben lehetővé teszi az igényeknek megfelelő, egyszerű bejelentkezési folyamat használatát.|
-|[Feltételes hozzáférés](https://aka.ms/deploymentplans/ca)|A feltételes hozzáférés automatikus döntést hozhasson a hozzáférésről vonatkozó feltételek alapján a felhőalkalmazásokhoz hozzáférő valósíthat meg.|
-|[Új jelszó önkiszolgáló kérése](https://aka.ms/SSPRDPDownload)|Az új jelszó önkiszolgáló kérésével a felhasználók a rendszergazda beavatkozása nélkül igényelhetnek új jelszót, ahol és amikor csak szükségük van rá.|
-|[Privileged Identity Management](https://aka.ms/deploymentplans/pim)|Az Azure AD Privileged Identity Management (PIM) segít a kiemelt jogosultságú rendszergazdai szerepkörök kezelése az Azure ad-ben, Azure-erőforrások és más Microsoft Online Services. A PIM például igény szerinti elérése, a kérelem-jóváhagyási munkafolyamatokat és a teljes körűen integrált hozzáférési felülvizsgálatok így azonosíthatja, tárhat fel, és a valós idejű kiemelt szerepkörök rosszindulatú tevékenységek megakadályozása megoldásokat nyújt.|
-|[Egyszeri bejelentkezés](https://aka.ms/SSODPDownload)|Az egyszeri bejelentkezéssel mindössze egyetlen bejelentkezéssel és egyetlen felhasználói fiókkal elérheti az üzleti tevékenységeihez szükséges összes alkalmazást és erőforrást. Miután bejelentkezett, a Microsoft Office-ból anélkül léphet át a SalesForce-ba vagy a Boxba, hogy újfent el kellene végeznie a hitelesítést (például meg kellene adnia egy jelszót).|
+|[Feltételes hozzáférés](https://aka.ms/deploymentplans/ca)|A feltételes hozzáféréssel olyan automatizált hozzáférés-vezérlési döntéseket hozhat létre, amelyek a feltételek alapján hozzáférhetnek a felhőalapú alkalmazásokhoz.|
+|[Új jelszó önkiszolgáló kérése](https://aka.ms/deploymentplans/sspr)|Az új jelszó önkiszolgáló kérésével a felhasználók a rendszergazda beavatkozása nélkül igényelhetnek új jelszót, ahol és amikor csak szükségük van rá.|
+|[Privileged Identity Management](https://aka.ms/deploymentplans/pim)|Azure AD Privileged Identity Management (PIM) segítségével felügyelheti az Azure AD, az Azure-erőforrások és más Microsoft Online Services Kiemelt felügyeleti szerepköreit. A PIM olyan megoldásokat kínál, mint az igény szerinti hozzáférés, a jóváhagyási munkafolyamatok kérése és a teljes körűen integrált hozzáférési felülvizsgálatok, amelyek segítségével valós időben azonosíthatja, feltárhatja és megakadályozhatja a Kiemelt szerepkörök rosszindulatú tevékenységeit.|
+|[Egyszeri bejelentkezés](https://aka.ms/deploymentplans/sso)|Az egyszeri bejelentkezéssel mindössze egyetlen bejelentkezéssel és egyetlen felhasználói fiókkal elérheti az üzleti tevékenységeihez szükséges összes alkalmazást és erőforrást. Miután bejelentkezett, a Microsoft Office-ból anélkül léphet át a SalesForce-ba vagy a Boxba, hogy újfent el kellene végeznie a hitelesítést (például meg kellene adnia egy jelszót).|
 |[Közvetlen egyszeri bejelentkezés](https://aka.ms/SeamlessSSODPDownload)|Az Azure Active Directory közvetlen egyszeri bejelentkezése (Azure AD közvetlen SSO) automatikusan bejelentkezteti a felhasználókat, ha azok a vállalati hálózatra csatlakozó vállalati eszközeiket használják. A szolgáltatás bekapcsolását követően a felhasználóknak nem kell megadniuk a jelszavukat az Azure AD-be való bejelentkezéshez, sőt általában még a felhasználónevüket sem kell megadniuk. A szolgáltatás használatával a felhasználók könnyen elérhetik a felhőalapú alkalmazásokat anélkül, hogy ehhez további helyszíni összetevőkre lenne szükség.|
 |[Hozzáférési panel](https://aka.ms/AccessPanelDPDownload)|A felhasználók egy egyszerű központ felderítése és érik el a alkalmazásokat kínál. Lehetővé teszi önkiszolgáló képességek kérhet hozzáférést az új alkalmazások és a csoportok, például a hatékonyabb legyen, vagy mások nevében ezekhez az erőforrásokhoz való hozzáférés kezelése.|
 |[ADFS a jelszókivonat-szinkronizáláshoz](https://aka.ms/deploymentplans/adfs2phs)|A jelszókivonat-szinkronizálás szinkronizálja a felhasználói jelszavak kivonatait a helyszíni Active Directoryból az Azure AD-be, így az Azure AD úgy tudja hitelesíteni a felhasználókat, hogy nem kell kommunikálnia a helyszíni Active Directoryval.|

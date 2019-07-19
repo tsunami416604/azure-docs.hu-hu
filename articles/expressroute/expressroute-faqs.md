@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 06/28/2019
 ms.author: jaredro
 ms.custom: seodec18
-ms.openlocfilehash: 02f772d02f5cc6f188d69b5e79debc0013cf1faa
-ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
+ms.openlocfilehash: e5674ffb4325eb27af8d0673b2d6ad5ba3a6195e
+ms.sourcegitcommit: 470041c681719df2d4ee9b81c9be6104befffcea
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67488505"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67854346"
 ---
 # <a name="expressroute-faq"></a>ExpressRoute – Gyakori kérdések
 
@@ -27,7 +27,7 @@ Az ExpressRoute-kapcsolatok nem a nyilvános interneten haladnak át. A szokván
 
 ### <a name="where-is-the-service-available"></a>Hol érhető el a szolgáltatást?
 
-Szolgáltatáskeresés és rendelkezésre állás érdekében ezt oldal jelenik meg: [Az ExpressRoute-partnerek és helyek](expressroute-locations.md).
+A szolgáltatás helyének és rendelkezésre állásának megtekintéséhez tekintse meg ezt a lapot: [ExpressRoute-partnerek és-helyszínek](expressroute-locations.md).
 
 ### <a name="how-can-i-use-expressroute-to-connect-to-microsoft-if-i-dont-have-partnerships-with-one-of-the-expressroute-carrier-partners"></a>Hogyan használhatom az ExpressRoute csatlakozni a Microsoft, ha az ExpressRoute-szolgáltató partnereink egyikével partneri nem rendelkezem?
 
@@ -43,7 +43,7 @@ Nem. A szolgáltató egy VPN-kapcsolat bármely sebességű vásárolhatnak. Az 
 
 ### <a name="if-i-pay-for-an-expressroute-circuit-of-a-given-bandwidth-do-i-have-the-ability-to-burst-up-to-higher-speeds-if-necessary"></a>Az adott sávszélesség ExpressRoute-kapcsolatcsoport kell fizetnem, ha kell a nagyobb sebesség, szükség esetén akár eszközcsomag lehetővé teszi?
 
-Igen. Az ExpressRoute-Kapcsolatcsoportok legfeljebb kétszer a sávszélességre vonatkozó korlátját kétszereséig további költségek nélkül is. engedélyezésére vannak konfigurálva. Ellenőrizze a szolgáltató megtekintéséhez, hogy támogatja-e ezt a funkciót. Ez nem egy huzamosabb ideig és nem garantált. 
+Igen. Az ExpressRoute-Kapcsolatcsoportok legfeljebb kétszer a sávszélességre vonatkozó korlátját kétszereséig további költségek nélkül is. engedélyezésére vannak konfigurálva. Ellenőrizze a szolgáltató megtekintéséhez, hogy támogatja-e ezt a funkciót. Ez nem hosszabb ideig tart, és nem garantált. 
 
 ### <a name="can-i-use-the-same-private-network-connection-with-virtual-network-and-other-azure-services-simultaneously"></a>Használhatom ugyanazt a magánhálózati kapcsolatot rendelkező virtuális hálózatot és más Azure-szolgáltatások egyszerre?
 
@@ -72,7 +72,7 @@ Az ExpressRoute támogatja [három útválasztási tartományt](expressroute-cir
 * Az Azure-szolgáltatások többsége támogatottak. Tekintse meg közvetlenül a kívánt ellenőrizheti a támogatási szolgáltatással.<br><br>
   **A következő szolgáltatások nem támogatottak**:
     * Tartalomkézbesítési hálózat (CDN)
-    * Az Azure bejárati ajtajának
+    * Azure bejárati ajtó
     * Multi-Factor Authentication
     * Traffic Manager
 
@@ -80,12 +80,12 @@ Az ExpressRoute támogatja [három útválasztási tartományt](expressroute-cir
 
 * [Office 365](https://aka.ms/ExpressRouteOffice365)
 * Dynamics 365 
-* Tekintse meg a Power BI – elérhető az Azure regionális közösségi [Itt](https://docs.microsoft.com/power-bi/service-admin-where-is-my-tenant-located) megállapítása a régióját, a Power BI-bérlője számára. 
+* Power BI az Azure regionális közösségén keresztül érhető el, [itt](https://docs.microsoft.com/power-bi/service-admin-where-is-my-tenant-located) találhatja meg a Power bi bérlő régióját. 
 * Azure Active Directory
 * [Az Azure DevOps](https://blogs.msdn.microsoft.com/devops/2018/10/23/expressroute-for-azure-devops/) (globális Azure-szolgáltatások közösségi)
 * Az Azure-szolgáltatások többsége támogatottak. Tekintse meg közvetlenül a kívánt ellenőrizheti a támogatási szolgáltatással.<br><br>**A következő szolgáltatások nem támogatottak**:
     * Tartalomkézbesítési hálózat (CDN)
-    * Az Azure bejárati ajtajának
+    * Azure bejárati ajtó
     * Multi-Factor Authentication
     * Traffic Manager
 
@@ -119,21 +119,27 @@ Igen. Mindegyik ExpressRoute-kapcsolatcsoport redundáns párjai közötti kapcs
 
 Ha egyik közötti kapcsolat nem sikerül nem megszakad a kapcsolat. Redundáns kapcsolat támogatja a terhelés, a hálózat és a magas rendelkezésre állás az ExpressRoute-kapcsolatcsoport érhető el. Emellett egy másik társviszony-létesítési helyszínen kapcsolatcsoport-szintű rugalmasság elérése érdekében a kapcsolatcsoport hozhat létre.
 
-### <a name="how-do-i-implement-redundancy-on-private-peering"></a>Hogyan implementálhatom redundancia a privát társviszony-létesítés?
+### <a name="how-do-i-implement-redundancy-on-private-peering"></a>Hogyan a redundancia megvalósítását a privát partnereken?
 
-Több ExpressRoute-Kapcsolatcsoportok társviszony-létesítési különböző helyekről csatlakoztatható ugyanahhoz a virtuális hálózathoz, magas rendelkezésre állású abban az esetben adja meg, hogy egyetlen kapcsolatcsoport elérhetetlenné válik. Ezután [nagyobb súly hozzárendelése](https://docs.microsoft.com/azure/expressroute/expressroute-optimize-routing#solution-assign-a-high-weight-to-local-connection) az alkalmazást a helyi kapcsolathoz inkább adott expressroute-kapcsolatcsoporthoz. Erősen ajánlott, hogy az ügyfelek beállítása kritikus hibapontok elkerülése érdekében legalább két ExpressRoute-Kapcsolatcsoportok. 
+A különböző társi helyekről több ExpressRoute-áramkör csatlakoztatható ugyanahhoz a virtuális hálózathoz, hogy magas rendelkezésre állást biztosítson abban az esetben, ha egyetlen áramkör elérhetetlenné válik. Ezután a helyi kapcsolathoz [nagyobb súlyt rendelhet](https://docs.microsoft.com/azure/expressroute/expressroute-optimize-routing#solution-assign-a-high-weight-to-local-connection) hozzá, és előnyben részesített egy adott áramkört. Erősen ajánlott, hogy az ügyfelek legalább két ExpressRoute-áramkört állítsanak be az egyes meghibásodási pontok elkerülése érdekében. 
 
-Lásd: [Itt](https://docs.microsoft.com/azure/expressroute/designing-for-high-availability-with-expressroute) magas rendelkezésre állású tervezéséhez és [Itt](https://docs.microsoft.com/azure/expressroute/designing-for-disaster-recovery-with-expressroute-privatepeering) vész-helyreállítási tervezéséhez.  
+[Itt](https://docs.microsoft.com/azure/expressroute/designing-for-high-availability-with-expressroute) megtekintheti a magas rendelkezésre állást és [itt](https://docs.microsoft.com/azure/expressroute/designing-for-disaster-recovery-with-expressroute-privatepeering) megtervezheti a vész-helyreállítást.  
 
-### <a name="how-i-do-implement-redundancy-on-microsoft-peering"></a>Hogyan tudok megvalósítása a redundanciát a Microsoft társviszony-létesítés?
+### <a name="how-i-do-implement-redundancy-on-microsoft-peering"></a>Hogyan valósítható meg a redundancia a Microsoft-partnereken?
 
-Erősen ajánlott, ha használják az ügyfelek a Microsoft társviszony-létesítést úgy, mint például az Azure Storage vagy Azure SQL, valamint a Microsoft Office 365-höz, hogy a másik társviszony-létesítés megvalósítása során több Kapcsolatcsoportok társviszony-létesítést használó ügyfelek számára az Azure nyilvános szolgáltatások eléréséhez helyek faiure annak elkerülése érdekében. Ügyfelek vagy meghirdeti mindkét Kapcsolatcsoportok az ugyanazon előtaggal, és használjon [AS PATH előtag-Beillesztés](https://docs.microsoft.com/azure/expressroute/expressroute-optimize-routing#solution-use-as-path-prepending) vagy határozza meg a helyi elérési útja eltérő előtagokat hirdet meg.
+Erősen ajánlott, ha az ügyfelek a Microsoft-partneri kapcsolatot használják az Azure-beli nyilvános szolgáltatások, például az Azure Storage vagy az Azure SQL eléréséhez, valamint az Office 365-hoz készült Microsoft-társítást használó ügyfelek számára az egypontos meghibásodások elkerülésére szolgáló helyek. Az ügyfelek megtehetik ugyanazt az előtagot mindkét áramkörön, és az [elérési út](https://docs.microsoft.com/azure/expressroute/expressroute-optimize-routing#solution-use-as-path-prepending) alapján vagy különböző előtagokat is megadhatnak a helyi elérési út meghatározásához.
 
-Lásd: [Itt](https://docs.microsoft.com/azure/expressroute/designing-for-high-availability-with-expressroute) magas rendelkezésre állású tervezéséhez.
+A magas rendelkezésre állás kialakításához [itt](https://docs.microsoft.com/azure/expressroute/designing-for-high-availability-with-expressroute) talál további információt.
 
 ### <a name="how-do-i-ensure-high-availability-on-a-virtual-network-connected-to-expressroute"></a>Hogyan biztosítja a magas rendelkezésre állás az expressroute-hoz csatlakoztatott virtuális hálózaton?
 
 Magas rendelkezésre állást érhet el, a virtuális hálózathoz való csatlakozás ExpressRoute-Kapcsolatcsoportok társviszony-létesítési különböző helyeken (például, Szingapúr, szingapúr2). Ha egy ExpressRoute-kapcsolatcsoport leáll, kapcsolat feladatátvételt hajt végre egy másik ExpressRoute-kapcsolatcsoporthoz. Alapértelmezés szerint a virtuális hálózatot elhagyó forgalomra legyen irányítva a egyenlő költség több útvonalas útválasztás (ECMP) alapú. Kapcsolat súly segítségével egy kapcsolatcsoport inkább egy másikba. További információkért lásd: [ExpressRoute-útválasztás optimalizálása](expressroute-optimize-routing.md).
+
+### <a name="how-do-i-ensure-that-my-traffic-destined-for-azure-public-services-like-azure-storage-and-azure-sql-on-microsoft-or-public-peering-is-preferred-on-the-expressroute-path"></a>Hogyan az Azure-beli nyilvános szolgáltatásokhoz, például az Azure Storage-hoz és az Azure SQL-hez a Microsofton vagy a nyilvános ExpressRoute-on keresztül érkező forgalmat előnyben részesítettük?
+
+Meg kell valósítania az útválasztó (k) *helyi preferencia* attribútumát annak biztosításához, hogy a helyszínről az Azure-ba irányuló útvonal mindig a ExpressRoute-áramkör (ek) re legyen előnyben részesítve.
+
+További részletek [itt](https://docs.microsoft.com/azure/expressroute/expressroute-optimize-routing#path-selection-of-microsoft-and-public-peerings) találhatók a BGP-útvonal kiválasztása és az általános útválasztó-konfigurációk című részben. 
 
 ### <a name="onep2plink"></a>Ha nem vagyok, felhőalapú adatcsere közös elhelyezésű, és a szolgáltató a pontok közötti kapcsolatot biztosít, kell order két fizikai kapcsolattal a helyszíni hálózat és a Microsoft között?
 
@@ -158,7 +164,7 @@ Ha a szolgáltató biztosít ExpressRoute mindkét helyen, a szolgáltatónál d
 
 ### <a name="can-i-have-multiple-expressroute-circuits-in-the-same-metro-can-i-link-them-to-the-same-virtual-network"></a>Használhatok több ExpressRoute-kapcsolatcsoporttal a az azonos metro? Is lehet hivatkozni őket az ugyanazon a virtuális hálózaton?
 
-Igen. Használhat több ExpressRoute-Kapcsolatcsoportok azonos vagy eltérő szolgáltatókkal. Ha a metro rendelkezik több ExpressRoute-társviszony-létesítési helyszínek, és a Kapcsolatcsoportok hozhatók létre, különböző társviszony-létesítési helyszínek, az azonos virtuális hálózatban csatolhatja őket. Ha a Kapcsolatcsoportok társviszony-létesítési ugyanott lehet létrehozni, akár 4 Kapcsolatcsoportok hozzákapcsolhatja ugyanahhoz a virtuális hálózathoz.
+Igen. Használhat több ExpressRoute-Kapcsolatcsoportok azonos vagy eltérő szolgáltatókkal. Ha a metro rendelkezik több ExpressRoute-társviszony-létesítési helyszínek, és a Kapcsolatcsoportok hozhatók létre, különböző társviszony-létesítési helyszínek, az azonos virtuális hálózatban csatolhatja őket. Ha az áramkör ugyanazon a helyen jön létre, akkor akár 4 áramkört is összekapcsolhat ugyanahhoz a virtuális hálózathoz.
 
 ### <a name="how-do-i-connect-my-virtual-networks-to-an-expressroute-circuit"></a>Hogyan létesíthetek kapcsolatot a virtuális hálózatok csatlakoztatása egy ExpressRoute-kapcsolatcsoporthoz
 
@@ -180,7 +186,7 @@ Igen. Legfeljebb 10 virtuális hálózati kapcsolatok standard ExpressRoute-kapc
 
 ### <a name="i-have-multiple-azure-subscriptions-that-contain-virtual-networks-can-i-connect-virtual-networks-that-are-in-separate-subscriptions-to-a-single-expressroute-circuit"></a>Több Azure-virtuális hálózatokat tartalmazó előfizetéssel rendelkezem. Egyetlen ExpressRoute-kapcsolatcsoporthoz különböző előfizetésben található virtuális hálózat kapcsolható össze?
 
-Igen. Legfeljebb 10 virtuális hálózatok ugyanahhoz az előfizetéshez, a kapcsolatcsoport vagy eltérő előfizetésekben használatával egy ExpressRoute-kapcsolatcsoport a kapcsolat. Ez a korlátozás az ExpressRoute prémium funkció engedélyezésével növelhető.
+Igen. Akár 10 virtuális hálózatot is összekapcsolhat ugyanabban az előfizetésben, mint az áramkör vagy a különböző előfizetések egyetlen ExpressRoute áramkör használatával. Ez a korlátozás az ExpressRoute prémium funkció engedélyezésével növelhető.
 
 További információkért lásd: [ExpressRoute-kapcsolatcsoport megosztása több előfizetés között](expressroute-howto-linkvnet-arm.md).
 
@@ -196,7 +202,7 @@ Nem. Az útválasztási szempontjából minden, az ugyanahhoz az ExpressRoute-ka
 
 ### <a name="can-i-have-one-virtual-network-connected-to-more-than-one-expressroute-circuit"></a>Használhatok egy virtuális hálózatot több ExpressRoute-kapcsolatcsoporthoz csatlakozik?
 
-Igen. Kapcsolat az azonos vagy eltérő társviszony-létesítési helyszínek legfeljebb négy ExpressRoute-Kapcsolatcsoportok az egyetlen virtuális hálózaton. 
+Igen. Egyetlen virtuális hálózatot legfeljebb négy ExpressRoute-áramkörhöz kapcsolhat ugyanazon vagy különböző egyenrangú helyeken. 
 
 ### <a name="can-i-access-the-internet-from-my-virtual-networks-connected-to-expressroute-circuits"></a>A saját virtuális hálózatok összekötése ExpressRoute-kapcsolatcsoportokkal csatlakoztatott elérhető számomra az interneten?
 
@@ -226,7 +232,7 @@ Igen. Legfeljebb 4000 útvonal címelőtagjainak magánhálózati társviszony-l
 
 ### <a name="are-there-restrictions-on-ip-ranges-i-can-advertise-over-the-bgp-session"></a>Tudom a BGP-munkamenetben meghirdetni is IP-címtartományok korlátozások vannak?
 
-A Microsoft társviszony-létesítési BGP-munkamenet nem fogadunk el saját előtagok (RFC1918). A Microsoft és a privát társviszony-létesítés fogadunk bármilyen (legfeljebb tulajdonságot/32) előtag méretét.
+A Microsoft társviszony-létesítési BGP-munkamenet nem fogadunk el saját előtagok (RFC1918). A Microsofton és a privát társon is elfogadunk minden előtag-méretet (legfeljebb/32).
 
 ### <a name="what-happens-if-i-exceed-the-bgp-limits"></a>Mi történik, ha túllépem a BGP-t korlátai?
 
@@ -290,25 +296,25 @@ Tekintse meg [díjszabás](https://azure.microsoft.com/pricing/details/expressro
 
 Igen. Az ExpressRoute prémium szintű díjak vonatkoznak, és az ExpressRoute kapcsolatcsoport a kapcsolatszolgáltató által igényelt díjakat felett.
 
-## <a name="expressroute-local"></a>ExpressRoute Local
-### <a name="what-is-expressroute-local"></a>Mit jelent a helyi ExpressRoute?
-Az ExpressRoute helyi egy elérhető a Termékváltozat az ExpressRoute-kapcsolatcsoport [ExpressRoute közvetlen](expressroute-erdirect-about.md). A rendszer helyi egyik legfőbb jellemzője, hogy egy ExpressRoute-társviszony-létesítési helyszínen biztosítja a helyi expressroute-kapcsolatcsoporthoz a hozzáférést csak egy vagy két Azure-régiókban lévő vagy a azonos metro. Ezzel szemben a standard szintű kapcsolatcsoportot hozzáférést biztosít minden Azure-régióban egy geopolitikai területen és a egy prémium szintű Azure-régiók mindegyikében kapcsolatcsoport globálisan. 
+## <a name="expressroute-local"></a>Helyi ExpressRoute
+### <a name="what-is-expressroute-local"></a>Mi az a ExpressRoute local?
+A ExpressRoute local a [ExpressRoute Direct](expressroute-erdirect-about.md)szolgáltatásban elérhető ExpressRoute-áramkör SKU-je. A helyi legfontosabb funkciója, hogy egy ExpressRoute-társítási helyen lévő helyi áramkör csak egy vagy két Azure-régióhoz fér hozzá, vagy közel azonos metróhoz. Ezzel szemben a standard szintű áramkör hozzáférést biztosít a geopolitikai területeken lévő összes Azure-régióhoz, valamint egy prémium szintű áramkört az összes Azure-régióhoz. 
 
-### <a name="what-are-the-benefits-of-expressroute-local"></a>Milyen előnyökkel jár az ExpressRoute helyi?
-Míg a Standard vagy prémium szintű ExpressRoute-kapcsolatcsoport kimenő adatforgalom díjköteles van szüksége, nem kell fizetnie kimenő adatátvitel külön-külön helyi ExpressRoute-kapcsolatcsoporthoz. Más szóval az ára az ExpressRoute helyi adatok átviteli díján tartalmazza. Az ExpressRoute helyi a leggazdaságosabb megoldás, ha nagy mennyiségű adat átvitelét és a kívánt Azure-régiók közel társviszony-létesítési ExpressRoute-egységekhez egy privát kapcsolaton keresztül az adatok is tenné. 
+### <a name="what-are-the-benefits-of-expressroute-local"></a>Milyen előnyökkel jár a ExpressRoute helyi?
+A standard vagy prémium szintű ExpressRoute-áramkör esetében a kimenő adatforgalomért nem kell külön fizetnie a kimenő adatforgalomért a ExpressRoute helyi áramköre számára. Más szóval a ExpressRoute helyi díja adatátviteli díjakat is tartalmaz. A helyi ExpressRoute sokkal gazdaságosabb megoldás, ha nagy mennyiségű adat átvitelére van szükség, és az adatokhoz privát kapcsolaton keresztül kapcsolódhat a kívánt Azure-régiók közelében lévő ExpressRoute-partneri helyhez. 
 
-### <a name="what-features-are-available-and-what-are-not-on-expressroute-local"></a>Milyen funkciók érhetők el és mit nem az ExpressRoute helyi?
-Egy Standard ExpressRoute-kapcsolatcsoport képest, helyi expressroute-kapcsolatcsoporthoz ugyanazokat a funkciókat kivéve rendelkezik:
-* Az Azure-régiókhoz való hozzáféréshez leírtaknak megfelelően a fenti hatóköre
-* Az ExpressRoute globális elérhetőségű nem érhető el helyi
+### <a name="what-features-are-available-and-what-are-not-on-expressroute-local"></a>Milyen funkciók érhetők el, és mi nem a ExpressRoute helyi rendszeren?
+A standard ExpressRoute áramkörhöz képest a helyi áramkör ugyanazokkal a szolgáltatásokkal rendelkezik, mint a következő:
+* Az Azure-régiókhoz való hozzáférés hatóköre a fent leírtak szerint
+* A ExpressRoute Global Reach helyi rendszeren nem érhető el
 
-ExpressRoute helyi is az azonos korlátozások vonatkoznak az erőforrások (pl. a száma virtuális hálózatok kapcsolatcsoportonként) standard. 
+A helyi ExpressRoute is ugyanazok a korlátozások vonatkoznak az erőforrásokra (például a virtuális hálózatok száma) a standard értékre. 
 
-### <a name="how-to-configure-expressroute-local"></a>Hogyan kell konfigurálni a helyi ExpressRoute? 
-Az ExpressRoute helyi csak az ExpressRoute közvetlen érhető el. Ezért először kell konfigurálnia az ExpressRoute közvetlen portot. A közvetlen port létrehozása után hozhat létre a biztonsági utasítások helyi expressroute-kapcsolatcsoporthoz [Itt](expressroute-howto-erdirect.md).
+### <a name="how-to-configure-expressroute-local"></a>A ExpressRoute helyi konfigurálása 
+A ExpressRoute local csak a ExpressRoute Direct szolgáltatásban érhető el. Először konfigurálnia kell a ExpressRoute Direct portot. Miután létrehozta a közvetlen portot, létrehozhat egy helyi áramkört, amely az [itt](expressroute-howto-erdirect.md)található utasításokat követi.
 
-### <a name="where-is-expressroute-local-available-and-which-azure-regions-is-each-peering-location-mapped-to"></a>Hol érhető el az ExpressRoute helyi és melyik Azure-régiók minden társviszony-létesítési helyszínen hozzárendelt?
-A társviszony-létesítési helyszínek, ahol egy vagy két Azure-régióban, zárja be a helyi ExpressRoute érhető el. Nem érhető el egy társviszony-létesítési helyen, ahol az adott állam vagy megye vagy ország nem Azure-régióban van. További információt a pontos leképezések [a helyek lapot](expressroute-locations-providers.md).  
+### <a name="where-is-expressroute-local-available-and-which-azure-regions-is-each-peering-location-mapped-to"></a>Hol van a ExpressRoute helyi elérhetősége, és mely Azure-régiók vannak leképezve az összes társítási helyhez?
+A ExpressRoute local (helyi) lehetőség azon a társítási helyeken érhető el, ahol egy vagy két Azure-régiót zártak be. Nem érhető el olyan egyenrangú helyen, ahol az adott államban, tartományban vagy országban nem található Azure-régió. Tekintse meg a pontos leképezéseket a [helyszínek lapon](expressroute-locations-providers.md).  
 
 ## <a name="expressroute-for-office-365"></a>Az Office 365 ExpressRoute
 
@@ -381,6 +387,6 @@ A meglévő expressroute-kapcsolatcsoporttal továbbra is az előtagokat hirdet 
 
 [!INCLUDE [ExpressRoute Direct](../../includes/expressroute-direct-faq-include.md)]
 
-## <a name="globalreach"></a>Globális elérhetőség
+## <a name="globalreach"></a>Global Reach
 
 [!INCLUDE [Global Reach](../../includes/expressroute-global-reach-faq-include.md)]

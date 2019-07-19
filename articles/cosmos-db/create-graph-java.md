@@ -8,14 +8,14 @@ ms.devlang: java
 ms.topic: quickstart
 ms.date: 03/26/2019
 ms.author: lbosq
-ms.openlocfilehash: a56fab3f8f572f277c11dc566c7d74104226b4fc
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: dd7d8658b8f1fbe01a8928963e7f78d2adbe1d74
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66480575"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68325509"
 ---
-# <a name="quickstart-create-a-graph-database-in-azure-cosmos-db-using-the-java-sdk"></a>Gyors útmutató: A gráfadatbázis létrehozásához az Azure Cosmos DB Java SDK-val 
+# <a name="quickstart-create-a-graph-database-in-azure-cosmos-db-using-the-java-sdk"></a>Gyors útmutató: Graph-adatbázis létrehozása Azure Cosmos DB a Java SDK használatával 
 
 > [!div class="op_single_selector"]
 > * [Gremlin-konzol](create-graph-gremlin-console.md)
@@ -35,7 +35,7 @@ Ez a rövid útmutató létrehoz egy egyszerű gráfadatbázist az Azure Cosmos 
 
 Továbbá:
 
-* [Java fejlesztői készlet (JDK) 8-as verzió](https://aka.ms/azure-jdks)
+* [A Java Development Kit (JDK) 8-as verziója](https://aka.ms/azure-jdks)
     * Ügyeljen arra, hogy a JAVA_HOME környezeti változó arra a mappára mutasson, ahová a JDK telepítve lett.
 * [Maven](https://maven.apache.org/download.cgi) bináris archívum [letöltése](https://maven.apache.org/install.html) és [telepítése](https://maven.apache.org/)
     * Ubuntu rendszeren futtathatja az `apt-get install maven` parancsot a Maven telepítéséhez.
@@ -150,13 +150,13 @@ Lépjen vissza az Azure Portalra a kapcsolati adatokért, majd másolja be azoka
 
 2. A git terminálablakában futtassa a következő parancsot a szükséges Java-csomagok telepítéséhez.
 
-   ```
+   ```git
    mvn package
    ```
 
 3. A git terminálablakában futtassa a következő parancsot a Java-alkalmazás elindításához.
     
-    ```
+    ```git
     mvn exec:java -D exec.mainClass=GetStarted.Program
     ```
 

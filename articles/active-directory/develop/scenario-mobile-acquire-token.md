@@ -1,9 +1,9 @@
 ---
-title: A mobilalkalmazás, hogy a hívások webes API-k – az alkalmazás jogkivonatának beolvasása |} A Microsoft identity platform
-description: Ismerje meg, hogyan hozhat létre, amely meghívja a webes API-kat (az alkalmazás egy token beszerzése) mobilalkalmazás
+title: Webes API-kat meghívó mobil alkalmazás – token beszerzése az alkalmazáshoz | Microsoft Identity platform
+description: Megtudhatja, hogyan hozhat létre olyan mobil alkalmazást, amely meghívja a webes API-kat (az alkalmazás jogkivonatának beszerzése)
 services: active-directory
 documentationcenter: dev-center-name
-author: danieldobalian
+author: jmprieur
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
@@ -16,22 +16,22 @@ ms.author: jmprieur
 ms.reviwer: brandwe
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 590184c25fa0aa3cb3219aa9c185a31e62090ba9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5c1ac880aa8274cc9a4ea554de84dcb46476236f
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67111142"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68320907"
 ---
-# <a name="mobile-app-that-calls-web-apis---get-a-token"></a>Mobilalkalmazás, amely meghívja a webes API-k – egy token beszerzése
+# <a name="mobile-app-that-calls-web-apis---get-a-token"></a>Webes API-kat meghívó mobil alkalmazás – jogkivonat beolvasása
 
-Megkezdéséhez hívása a védett webes API-k, az alkalmazás kell egy hozzáférési jogkivonatot. Ez a cikk végigvezeti a folyamat az első egy tokent a Microsoft-hitelesítési tár (MSAL) használatával.
+A védett webes API-k hívásának megkezdése előtt az alkalmazásnak hozzáférési jogkivonatra lesz szüksége. Ez a cikk végigvezeti a jogkivonat beszerzésének folyamatán a Microsoft Authentication Library (MSAL) használatával.
 
-## <a name="scopes-to-request"></a>Hatókörök kérni
+## <a name="scopes-to-request"></a>Kérelmekre vonatkozó hatókörök
 
-Ha egy tokent kér, kell hatókör meghatározása. A hatókör határozza meg, hogy az alkalmazás hozzáférhessen-adatokat.  
+Ha jogkivonatot kér, meg kell határoznia egy hatókört. A hatókör határozza meg, hogy az alkalmazás milyen adataihoz férhet hozzá.  
 
-A legegyszerűbb megközelítés, ha a kívánt webes API-kat kombinálja `App ID URI` a hatókörrel rendelkező `.default`. Ezzel arra utasítja a Microsoft identity platform adott alkalmazáshoz szükséges összes hatókör beállítása a portálon.
+A legegyszerűbb módszer a kívánt webes API-k `App ID URI` és a hatókör `.default`összevonása. Ez azt jelzi, hogy az alkalmazásnak szüksége van a Microsoft Identity platformra, amely a portálon beállított összes hatókört igényli.
 
 #### <a name="android"></a>Android
 ```Java
@@ -48,11 +48,11 @@ let scopes: [String] = ["https://graph.microsoft.com/.default"]
 var scopes = new [] {"https://graph.microsoft.com/.default"};
 ```
 
-## <a name="get-tokens"></a>A jogkivonatok lekérésére
+## <a name="get-tokens"></a>Jogkivonatok beolvasása
 
 ### <a name="via-msal"></a>Via MSAL
 
-Az MSAL lehetővé teszi, hogy a tokenek beszerzésére, csendes és interaktív alkalmazásokhoz. Csak az ezen módszerek hívja, és az MSAL adja vissza egy hozzáférési jogkivonatot a kért hatókörhöz. A helyes mintát, hogy hajtsa végre a beavatkozás nélküli kérést, és egy interaktív kérelem térhet vissza.
+A MSAL lehetővé teszi, hogy az alkalmazások csendes és interaktív módon szerezzenek jogkivonatokat. Csak hívja meg ezeket a metódusokat, és a MSAL egy hozzáférési jogkivonatot ad vissza a kért hatókörökhöz. A helyes minta egy csendes kérés végrehajtása és egy interaktív kérelemre való visszatérés.
 
 #### <a name="android"></a>Android
 
@@ -161,13 +161,13 @@ catch(MsalUiRequiredException e)
 }
 ```
 
-### <a name="via-the-protocol"></a>A protokoll segítségével
+### <a name="via-the-protocol"></a>A protokollon keresztül
 
-Nem ajánlott közvetlenül a protokoll használatával. Ha így tesz, az alkalmazás nem támogatja a bizonyos egyszeri bejelentkezés (SSO), eszközkezelés, és a feltételes hozzáférési forgatókönyvek.
+A protokollt nem ajánlott közvetlenül használni. Ha így tesz, az alkalmazás nem támogatja az egyszeri bejelentkezést (SSO), az eszközkezelés és a feltételes hozzáférési forgatókönyveket.
 
-A protokoll használatával tokenekhez mobilalkalmazásokhoz, amikor két kérést kell: hozzáférési kód beszerzése és az exchange-, a jogkivonat.
+Ha a protokollt használja a Mobile apps-jogkivonatok beszerzéséhez, két kérést kell tennie: Kérjen egy engedélyezési kódot, és cserélje ki egy tokenre.
 
-#### <a name="get-authorization-code"></a>Hozzáférési kód lekérése
+#### <a name="get-authorization-code"></a>Engedélyezési kód lekérése
 
 ```Text
 https://login.microsoftonline.com/{tenant}/oauth2/v2.0/authorize?
@@ -179,7 +179,7 @@ client_id=<CLIENT_ID>
 &state=12345
 ```
 
-#### <a name="get-access-and-refresh-token"></a>Hozzáférés és a frissítési token beszerzése
+#### <a name="get-access-and-refresh-token"></a>Hozzáférési és frissítési jogkivonat beolvasása
 
 ```Text
 POST /{tenant}/oauth2/v2.0/token HTTP/1.1
@@ -196,4 +196,4 @@ client_id=<CLIENT_ID>
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [A webes API meghívása](scenario-mobile-call-api.md)
+> [Webes API meghívása](scenario-mobile-call-api.md)

@@ -1,5 +1,5 @@
 ---
-title: Határozza meg a közzététel lehetőséget az Azure Marketplace-en |} Az Azure Marketplace-en
+title: A közzétételi lehetőség meghatározása az Azure Marketplace-en | Azure piactér
 description: Ez a cikk ismerteti a megfelelőségi feltételeket, és szeretné ismerni az alkalmazások közzététele az Azure piactér közzétételi követelmények partnerek.
 services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
 author: qianw211
@@ -7,42 +7,42 @@ manager: pabutler
 ms.service: marketplace
 ms.topic: article
 ms.date: 11/13/2018
-ms.author: qianw211
-ms.openlocfilehash: 7a6a4c1366f23336072e00d1af59bbaa4bd5c7a4
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.author: pabutler
+ms.openlocfilehash: 4864e2c040ad6771ad187269de43d5978fc6324f
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67442053"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67876058"
 ---
 # <a name="publishing-guide-by-offer-type"></a>Közzétételi útmutató ajánlattípusok szerint
 
-Egyszer, [vonatkozó közzétételi lehetőség](https://docs.microsoft.com/azure/marketplace/determine-your-listing-type), válassza ki, amely jelenleg az ajánlatot a rendszer készen áll. 
+A [közzétételi lehetőség](https://docs.microsoft.com/azure/marketplace/determine-your-listing-type)kiválasztása után kiválaszthatja az ajánlat bemutatására használni kívánt ajánlat típusát. 
 
- A *ajánlattípus* határozza meg az ajánlat struktúra, amely tartalmazza a metaadatok, összetevők és egyéb tartalmak bemutatására az ajánlatot a piactéren.
+ Az *ajánlat típusa* határozza meg az ajánlat struktúráját, amely tartalmazza azokat a metaadatokat, összetevőket és egyéb tartalmakat, amelyek az ajánlatnak a piactéren való bemutatására szolgálnak.
 
-Mielőtt létrehozhatna egy ajánlatot, ki kell választania egy ajánlat típusát. Az ajánlat típusát a típusú megoldás, alkalmazás, vagy a szolgáltatási ajánlat, amely a közzétenni kívánt, valamint Microsoft-termékek és szolgáltatások igazítást felel meg. 
+Ajánlat létrehozása előtt ki kell választania egy ajánlat típusát. Az ajánlat típusa megegyezik a közzétenni kívánt megoldás, alkalmazás vagy szolgáltatási ajánlat típusával, valamint a Microsoft-termékekkel és-szolgáltatásokkal való összehangolásával. 
 
-Egyetlen ajánlattípusra konfigurálható eltérően ahhoz, hogy különböző közzétételi beállítások, a hívások művelet, számítógéppel történő kiépítéssel vagy díjszabása. A közzétételi beállítások és az ajánlat típusú konfigurációs is igazítása az ajánlat jogosult-e és technikai követelményeket. 
+A különböző közzétételi lehetőségek, a műveletek meghívása, a kiépítés vagy a díjszabás lehetővé tételéhez egy adott típusú ajánlat típusát különbözőképpen lehet konfigurálni. A közzétételi lehetőség és az ajánlat típusának konfigurációja is igazodik az ajánlat támogathatóságához és a technikai követelményekhez. 
 
-Mindenképpen tekintse át a kirakat, illetve típus jogosultsági követelményeknek és a műszaki közzétételi követelmények az ajánlat létrehozása előtt.
+Győződjön meg arról, hogy az ajánlat létrehozása előtt tekintse át a kirakati és az ajánlat típusának támogathatósági követelményeit, valamint a technikai közzétételi követelményeket.
 
-## <a name="list-of-offer-types"></a>Az ajánlat típusok listája
+## <a name="list-of-offer-types"></a>Ajánlati típusok listája
 
-Az Azure Marketplace-ajánlat típusok az alábbi táblázatban láthatók.
+Az Azure Marketplace-ajánlatok típusai az alábbi táblázatban találhatók.
 
-| **Csomag típusa**    | **Leírás**  |
+| **Ajánlat típusa**    | **Leírás**  |
 | :------------------- | :-------------------|
-| [**Virtual machines (Virtuális gépek)** ](https://docs.microsoft.com/azure/marketplace/marketplace-virtual-machines) | Virtuális berendezés az előfizetéshez társított az ügyfelek központi telepítéséhez használja a virtuális gép ajánlat típusát. |
-| [**Megoldássablonok**](https://docs.microsoft.com/azure/marketplace/marketplace-solution-templates) | A megoldás sablontípus-ajánlat akkor használja, ha a megoldáshoz szükséges további telepítési és konfigurációs automation túl egy egyszerű virtuális Gépet. |
-| [**Felügyelt alkalmazások**](https://docs.microsoft.com/azure/marketplace/marketplace-managed-apps) | Használja az Azure-alkalmazás: az ajánlat alkalmazástípus kezelése, ha az alábbi feltételek szükségesek: <br> <ul> <li> Vagy egy előfizetés-alapú megoldás üzembe helyezése egy virtuális gép vagy a teljes IaaS-alapú megoldás segítségével az ügyfelek számára. </li> <li>Ön vagy az ügyfél szükséges, hogy a megoldás egy partner kezeli-e. </li> <ul> |
-| [**SaaS-alkalmazásokhoz**](https://docs.microsoft.com/azure/marketplace/marketplace-saas-applications-technical-publishing-guide) | Az SaaS-alkalmazás ajánlattípus használatával engedélyezhető az ügyfelek a SaaS-alapú, technikai megoldás egy előfizetés vásárlása. |
-| [**Tároló-ajánlatok**](https://docs.microsoft.com/azure/marketplace/marketplace-containers) | A tároló ajánlattípusra használja, amikor a megoldás üzembe egy Kubernetes-alapú Azure tárolószolgáltatás, Docker-tároló rendszerképét. |
-| [**IoT a Microsoft Edge-modulok**](https://docs.microsoft.com/azure/marketplace/iot-edge-module) | Az Azure IoT Edge-modulok IoT Edge által kezelt legkisebb számítási egységek, és a Microsoft-szolgáltatások (például az Azure Stream Analytics), 3. fél szolgáltatások vagy a saját megoldásspecifikus kódját is tartalmazhat. |
-| [**Tanácsadási szolgáltatások**](https://docs.microsoft.com/azure/marketplace/consulting-services) | Tanácsadási szolgáltatások segítik a szolgáltatások támogatására, és kiterjesztheti az Azure-, Dynamics 365-vagy Power Suite szolgáltatások használata az ügyfelek csatlakozni.|
+| [**Virtual machines (Virtuális gépek)** ](https://docs.microsoft.com/azure/marketplace/marketplace-virtual-machines) | Ha virtuális berendezést telepít az ügyfélhez társított előfizetésre, használja a virtuális gép ajánlatának típusát. |
+| [**Megoldási sablonok**](https://docs.microsoft.com/azure/marketplace/marketplace-solution-templates) | Akkor használja a megoldás sablonjának típusát, ha a megoldáshoz egy egyszerű virtuális gépen kívül további üzembe helyezési és konfigurálási automatizálásra van szükség. |
+| [**Felügyelt alkalmazások**](https://docs.microsoft.com/azure/marketplace/marketplace-managed-apps) | Használja az Azure-alkalmazást: felügyelt alkalmazás-ajánlat típusa, ha a következő feltételek szükségesek: <br> <ul> <li> Az ügyfél előfizetésen alapuló megoldását egy virtuális gép vagy egy teljes IaaS-alapú megoldás használatával helyezheti üzembe. </li> <li>Ön vagy az ügyfele megköveteli, hogy a megoldást egy partner felügyelje. </li> <ul> |
+| [**SaaS-alkalmazások**](https://docs.microsoft.com/azure/marketplace/marketplace-saas-applications-technical-publishing-guide) | A SaaS app Offer típus használatával engedélyezheti az ügyfél számára, hogy előfizetésként vásárolja meg SaaS-alapú, technikai megoldását. |
+| [**Tároló ajánlatok**](https://docs.microsoft.com/azure/marketplace/marketplace-containers) | Ha a megoldás egy, a Kubernetes-alapú Azure Container Service-ben kiépített Docker-tároló-rendszerkép, akkor használja a Container ajánlat típusát. |
+| [**IoT Microsoft Edge-modulok**](https://docs.microsoft.com/azure/marketplace/iot-edge-module) | Azure IoT Edge modulok a IoT Edge által kezelt legkisebb számítási egységek, és tartalmazhatnak Microsoft-szolgáltatásokat (például Azure Stream Analytics), harmadik féltől származó szolgáltatásokat vagy a saját megoldásokra vonatkozó kódokat. |
+| [**Tanácsadási szolgáltatások**](https://docs.microsoft.com/azure/marketplace/consulting-services) | A tanácsadási szolgáltatások segítségével az ügyfeleket összekapcsolhatja a szolgáltatásokkal az Azure, a Dynamics 365 vagy a Power Suite szolgáltatások használatának támogatásához és bővítéséhez.|
 
 
-Végül tekintse meg [ **Azure AD-követelményeket** ](https://docs.microsoft.com/azure/marketplace/enable-appsource-marketplace-using-azure-ad) a beállítások listázása és típusok egyszeri bejelentkezés követelményekről további információt kínálnak.
+Végül az egyszeri bejelentkezésre vonatkozó követelményekkel kapcsolatos további információkért tekintse meg az [**Azure ad-követelményeket**](https://docs.microsoft.com/azure/marketplace/enable-appsource-marketplace-using-azure-ad) a beállítások és az ajánlati típusok listázásával.
 
 ## <a name="next-steps"></a>További lépések
 

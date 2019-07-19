@@ -1,145 +1,166 @@
 ---
-title: A gépek függőségeivel az Azure Migrate |} A Microsoft Docs
-description: Ismerteti, hogyan hozhat létre értékeléseket függőségeivel az Azure Migrate szolgáltatással.
+title: Gépek csoportosítása gépi függőségekkel Azure Migrate használatával | Microsoft Docs
+description: Ismerteti, hogyan lehet értékelést létrehozni a Azure Migrate szolgáltatással rendelkező számítógép-függőségek használatával.
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: article
-ms.date: 12/05/2018
-ms.author: raynew
-ms.openlocfilehash: af47678b19209936aed86c132a8a3f400c3a7e8f
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.date: 07/17/2019
+ms.author: hamusa
+ms.openlocfilehash: 7cde18f2da764a055443900e7daf160f72e2eeb5
+ms.sourcegitcommit: af58483a9c574a10edc546f2737939a93af87b73
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60596806"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68301658"
 ---
-# <a name="group-machines-using-machine-dependency-mapping"></a>Gépek csoportosítása a gépek függőségi leképezés használatával
+# <a name="set-up-dependency-visualization-for-assessment"></a>Függőségi vizualizáció beállítása az értékeléshez
 
-Ez a cikk bemutatja, hogyan hozhat létre egy csoportot a gépek [Azure Migrate](migrate-overview.md) értékelés gépek függőségek vizualizációjával. Ez a módszer általában esetén annak ellenőrzéséhez, virtuális gépek magasabb megbízhatósági szintű csoportok szerint kereszt-ellenőrzés gépek függőségeit, az értékelés futtatása előtt célszerű használni. Függőségek képi megjelenítésének segítségével hatékonyan tervezheti a migrálást az Azure-bA. Ez segít győződjön meg arról, hogy semmi sem marad, és meglepetés valamilyen okból kimaradás lép fordul elő, ha az Azure-bA áttelepítésekor. Felfedezheti, hogy az összes saját rendszerek esetében, amelyek együtt áttelepíti, és adja meg, hogy a futó rendszerek továbbra is szolgálja ki felhasználók, illetve egy jelölt helyett áttelepítési leszerelése.
+Ez a cikk azt ismerteti, hogyan állítható be a függőségi leképezés a Azure Migrateban: Kiszolgáló értékelése.
 
-> [!NOTE]
-> A függőségek képi megjelenítésének funkcióival nem érhető el az Azure Government szolgáltatásban.
+A függőségi leképezés segítségével megjelenítheti a függőségeket a felmérni és áttelepíteni kívánt gépek között.
 
-## <a name="prepare-for-dependency-visualization"></a>Előkészítéséhez a függőségek képi megjelenítése
-Az Azure Migrate a Service Map megoldását az Azure Monitor naplóira függőségek vizualizációjához engedélyezéséhez használja.
+- Azure Migrate: A kiszolgálók értékelése során összegyűjtheti a gépeket az értékeléshez. Általában azokat a gépeket, amelyeket együtt szeretne áttelepíteni.
+- Jellemzően függőségi leképezést használ, ha a magasabb szintű megbízhatóságú csoportokat szeretné felmérni.
+- A függőségek leképezése segítséget nyújt a számítógép függőségeinek ellenőrzéséhez az értékelés és a Migrálás futtatása előtt.
+- A függőségek leképezése és megjelenítése révén hatékonyan megtervezheti az Azure-ba való áttelepítést. Ezzel biztosítható, hogy semmi ne maradjon hátra, így elkerülhetők a váratlan kimaradások az áttelepítés során.
+- A leképezés használatával felderítheti azokat az egymástól függő rendszereket, amelyeknek együtt kell áttelepíteniük. Azt is meghatározhatja, hogy egy futó rendszer továbbra is a felhasználókat szolgálja-e, vagy az áttelepítés helyett a leszerelésre jelölt.
 
-### <a name="associate-a-log-analytics-workspace"></a>Log Analytics-munkaterület társítása
-Kihasználhatja a függőségek képi megjelenítésével, hozzá kell rendelni egy Log Analytics-munkaterületet, vagy új vagy meglévő, az Azure Migrate-projektet. Csak létrehozása vagy csatolása ugyanahhoz az előfizetéshez egy munkaterületet, ahol a migrálási projekt létrejön.
+[További](concepts-dependency-visualization.md#how-does-it-work) információ a függőségi vizualizációról.
 
-- Egy projektet a Log Analytics-munkaterület csatlakoztatni kívánt **áttekintése**, lépjen a **Essentials** projekt kattintson **konfigurálást igényel**
+## <a name="before-you-start"></a>Előkészületek
 
-    ![Log Analytics-munkaterület társítása](./media/concepts-dependency-visualization/associate-workspace.png)
+- Győződjön meg arról, hogy [létrehozott](how-to-add-tool-first-time.md) egy Azure Migrate projektet.
+- Ha már létrehozott egy projektet, győződjön meg arról, hogy [felvette](how-to-assess.md) a Azure Migrate: Kiszolgáló-értékelési eszköz.
+- Győződjön meg arról, hogy felderítette a gépeket a Azure Migrate; Ezt úgy teheti meg, hogy a [VMware](how-to-set-up-appliance-vmware.md) vagy a [Hyper-V](how-to-set-up-appliance-hyper-v.md)Azure Migrate berendezését állítja be. A készülék felfedi a helyszíni gépeket, és metaadatokat és teljesítményadatokat küld a Azure Migratenak: Kiszolgáló értékelése. [További információk](migrate-appliance.md).
 
-- Munkaterület társítása, miközben kap arra, hozzon létre egy új munkaterületet, vagy csatlakoztasson egy már meglévőt:
-  - Amikor létrehoz egy új munkaterületet, adja meg a munkaterület nevét kell. A munkaterületen létrejön ugyanabban a régióban [Azure földrajzi](https://azure.microsoft.com/global-infrastructure/geographies/) a migrálási projektet.
-  - Ha csatlakoztat egy meglévő munkaterületet, a rendelkezésre álló munkaterületek ugyanahhoz az előfizetéshez tartozik, mint a migrálási projekt közül választhat. Vegye figyelembe, hogy csak azokat a munkaterületeket egy régióban létrehozott szerepel ahol [Service Map támogatott](https://docs.microsoft.com/azure/azure-monitor/insights/service-map-configure#supported-azure-regions). Tudják csatolása egy munkaterületet, győződjön meg arról, hogy a munkaterület "Olvasó" elérhető lesz.
 
-> [!NOTE]
-> A migrálási projekthez tartozó munkaterület nem módosítható.
+**Szolgáltatások** | **Megjegyzés**
+--- | ---
+Rendelkezésre állás | A függőségi vizualizáció nem érhető el Azure Governmentban.
+Szolgáltatástérkép | A függőségi vizualizáció Service Map megoldást használ Azure Monitor naplókban. [Service Map](../azure-monitor/insights/service-map-configure.md) automatikusan felfedi és megjeleníti a kiszolgálók közötti kapcsolatokat.
+Ügynökök | A függőségi vizualizáció használatához telepítsen néhány ügynököt a leképezni kívánt gépekre:<br/> - [Azure log Analytics](../azure-monitor/platform/log-analytics-agent.md) -ügynök (korábbi nevén Microsoft monitoring Agent (MMA).<br/> – Service Map függőségi ügynököt.<br/><br/> Az ügynök telepítésének automatizálásához használhat olyan központi telepítési eszközt, mint például a System Center Configuration Manager vagy egy partneri eszköz, például a [Intigua](https://www.intigua.com/getting-started-intigua-for-azure-migration), amely rendelkezik ügynök-telepítési megoldással Azure Migratehoz.
+Függőségi ügynök | Tekintse át a [Windows](/azure-monitor/insights/service-map-configure.md#supported-windows-operating-systems) és a [Linux](../azure-monitor/insights/service-map-configure.md#supported-linux-operating-systems)függőségi ügynökének támogatását.<br/><br/> [További](https://docs.microsoft.com/azure/monitoring/monitoring-service-map-configure#installation-script-examples) információ a függőségi ügynök telepítéséhez szükséges parancsfájlok használatával.
+Log Analytics ügynök (MMA) | [További](../azure-monitor/platform/log-analytics-agent.md#install-and-configure-agent) információ az MMA telepítési módszereiről.<br/><br/> System Center Operations Manager 2012 R2 vagy újabb rendszer által figyelt gépek esetében nem kell telepítenie az MMA-ügynököt. A Service Map a Operations Managersal integrálódik. Az integrációt az [itt](https://docs.microsoft.com/azure/azure-monitor/insights/service-map-scom#prerequisites)található útmutatás használatával engedélyezheti. Vegye figyelembe azonban, hogy a függőségi ügynöknek telepítve kell lennie ezekre a gépekre.<br/><br/> [Tekintse át](../azure-monitor/platform/log-analytics-agent.md#supported-linux-operating-systems) a log Analytics ügynök által támogatott Linux operációs rendszereket.
+Értékelési csoportok | Azok a csoportok, amelyeknek a függőségeit szeretné megjeleníteni, nem tartalmazhatnak 10 rendszernél több gépet. Ha több mint 10 géppel rendelkezik, a függőségek megjelenítéséhez ossza fel őket kisebb csoportokba.
 
-### <a name="download-and-install-the-vm-agents"></a>A virtuálisgép-ügynökök letöltése és telepítése
-Miután konfigurál egy munkaterületet, akkor kell töltse le és telepítse az ügynököt minden olyan szeretne értékelni a helyszíni gépen. Ezenkívül, ha internetkapcsolat nélküli gépek, kell letölteni és telepíteni [Log Analytics-átjáró](../azure-monitor/platform/gateway.md) rajtuk.
+## <a name="associate-a-log-analytics-workspace"></a>Log Analytics munkaterület hozzárendelése
 
-1. A **áttekintése**, kattintson a **kezelés** > **gépek**, és válassza ki a szükséges gépet.
-2. Az a **függőségek** oszlopot, kattintson a **ügynökök telepítése**.
-3. Az a **függőségek** lapon, töltse le és telepítse a Microsoft Monitoring Agent (MMA) és a függőségi ügynök minden virtuális Géphez szeretne értékelni.
-4. Másolja ki a munkaterület-azonosítót és -kulcsot. Szükség van ezekre az MMA a helyi gépen való telepítésekor.
+A függőségi vizualizáció használatához hozzá kell rendelnie egy [log Analytics](../azure-monitor/platform/manage-access.md) munkaterületet egy Azure Migrate projekthez.
 
-> [!NOTE]
-> Az ügynökök telepítésének automatizálásához használhatja bármely üzembe helyezési eszköz például a System Center Configuration Manager vagy a partner eszközzel [Intigua](https://www.intigua.com/getting-started-intigua-for-azure-migration), az Azure Migrate-ügynök telepítési megoldás, amely rendelkezik.
+- Csak a Azure Migrate projekt-előfizetésben csatolhat munkaterületet.
+- Egy meglévő munkaterületet is csatolhat, vagy létrehozhat egy újat.
+- A munkaterületet a gép függőségi vizualizációjának első beállításakor csatolja.
+- A munkaterületet csak a Azure Migrate projektben lévő gépek felfedése után lehet csatlakoztatni. Ezt úgy teheti meg, hogy a [VMware](how-to-set-up-appliance-vmware.md) vagy a [Hyper-V](how-to-set-up-appliance-hyper-v.md)Azure Migrate berendezését állítja be. A készülék felfedi a helyszíni gépeket, és metaadatokat és teljesítményadatokat küld a Azure Migratenak: Kiszolgáló értékelése. [További információk](migrate-appliance.md).
+
+Csatoljon egy munkaterületet az alábbiak szerint:
+
+1. **Azure Migrate: Kiszolgáló értékelése**, kattintson az **Áttekintés**elemre. Ha még nem adta hozzá a kiszolgáló-értékelési eszközt, [tegye](how-to-assess.md)meg az elsőt.
+2. Az **Áttekintés**területen kattintson a lefelé mutató nyílra az **alapvető**erőforrások kibontásához.
+3. A **OMS**munkaterületen kattintson a **Konfigurálás szükséges**elemre.
+4. A **munkaterület konfigurálása**lapon adja meg, hogy új munkaterületet kíván-e létrehozni, vagy egy meglévőt szeretne használni:
+
+    ![Munkaterület hozzáadása](./media/how-to-create-group-machine-dependencies/workspace.png)
+
+    - Miután megadta az új munkaterülethez tartozó nevet, a rendszer ugyanabban a földrajzi régióban jön létre, mint a Azure Migrate-projekt.
+    - Ha meglévő munkaterületet csatol, az összes elérhető munkaterületet az áttelepítési projekttel megegyező előfizetésben is kiválaszthatja.
+    - A munkaterülethez olvasói hozzáféréssel kell rendelkeznie ahhoz, hogy csatolni lehessen.
+    - A projekthez társított munkaterület nem módosítható a csatolása után.
+
+## <a name="download-and-install-the-vm-agents"></a>A virtuálisgép-ügynökök letöltése és telepítése
+
+Töltse le és telepítse az ügynököket minden olyan helyszíni gépen, amelyet a függőségi leképezéssel szeretne megjeleníteni.
+
+1. **Azure Migrate: Kiszolgáló értékelése**, kattintson a felderített **kiszolgálók**elemre.
+2. Minden olyan géphez, amelyhez függőségi vizualizációt kíván használni, kattintson az **ügynök telepítésének**megkezdése elemre.
+3. A gép **függőségek** oldalán > **töltse le és telepítse az MMA**-t, töltse le a megfelelő ügynököt, és telepítse az alább leírtak szerint.
+4. A **függőségi ügynök letöltése és telepítése**területen töltse le a megfelelő ügynököt, és telepítse az alább leírtak szerint.
+5. Az **MMA-ügynök konfigurálása**területen másolja a munkaterület azonosítóját és kulcsát. Ezek az MMA-ügynök telepítésekor szükségesek.
 
 ### <a name="install-the-mma"></a>Az MMA telepítése
 
-#### <a name="install-the-agent-on-a-windows-machine"></a>Az ügynök telepítése Windows gépen
+#### <a name="install-the-agent-on-a-windows-machine"></a>Az ügynök telepítése Windows rendszerű gépre
 
-Az ügynök telepítése a Windows-gépen:
+Az ügynök telepítése Windows rendszerű gépre:
 
 1. Kattintson duplán a letöltött ügynökre.
 2. Az **Üdvözöljük** lapon kattintson a **Tovább** gombra. A **Licencfeltételek** oldalon kattintson az **Elfogadom** gombra a feltételek elfogadásához.
-3. A **célmappa**, megtartani, vagy módosítsa az alapértelmezett telepítési mappa > **tovább**.
-4. A **ügynök telepítésének beállításai**válassza **Azure Log Analytics** > **tovább**.
-5. Kattintson a **Hozzáadás** hozzáadása egy új Log Analytics-munkaterületet. Illessze be a munkaterület Azonosítóját és kulcsát, a portálról kimásolt. Kattintson a **tovább**.
+3. A **célmappában**tartsa meg vagy módosítsa az alapértelmezett telepítési mappát > a **Tovább gombra**.
+4. Az **ügynök telepítési beállításai**területen válassza az **Azure log Analytics** > **tovább**lehetőséget.
+5. Új Log Analytics munkaterület hozzáadásához kattintson a **Hozzáadás** gombra. Illessze be azt a munkaterület-azonosítót és-kulcsot, amelyet a portálról másolt. Kattintson a **Tovább** gombra.
 
-A parancssorból vagy egy automatizált módszer, például a System Center Configuration Manager használatával telepítheti az ügynököt. [További](https://docs.microsoft.com/azure/azure-monitor/platform/log-analytics-agent#install-and-configure-agent) ezen módszerek használatáról az MMA-ügynök telepítése.
+#### <a name="install-the-agent-on-a-linux-machine"></a>Az ügynök telepítése Linux rendszerű gépre
 
-#### <a name="install-the-agent-on-a-linux-machine"></a>Az ügynök telepítése Linux rendszerű gépen
+Az ügynök telepítése Linux rendszerű gépre:
 
-Az ügynök telepítése Linux rendszerű gépen:
-
-1. Vigye át a megfelelő csomagot (x86 vagy x64) a Linux rendszerű számítógép scp/sftp használatával.
-2. A csomag telepítéséhez használja az--install argumentum.
+1. Vigye át a megfelelő köteget (x86 vagy x64) a Linux rendszerű számítógépre SCP/SFTP használatával.
+2. Telepítse a csomagot a--install argumentum használatával.
 
     ```sudo sh ./omsagent-<version>.universal.x64.sh --install -w <workspace id> -s <workspace key>```
 
-[További](https://docs.microsoft.com/azure/log-analytics/log-analytics-concept-hybrid#supported-linux-operating-systems) kapcsolatos Linux operációs rendszerek támogatása az MMA által listája.
-
-#### <a name="install-the-agent-on-a-machine-monitored-by-scom"></a>Az ügynök telepítése az SCOM által figyelt gépen
-
-A gépek figyeli a System Center Operations Manager 2012 R2 vagy újabb nem az MMA-ügynök telepítése nem szükséges. A Service Map rendelkezik, amely az SCOM MMA információkat gyűjthet a szükséges függőséget az SCOM-integráció. Az útmutató segítségével az integráció engedélyezheti [Itt](https://docs.microsoft.com/azure/azure-monitor/insights/service-map-scom#prerequisites). Vegye figyelembe azonban, hogy a függőségi ügynököt ezeken a gépeken telepíteni kell.
-
-
 ### <a name="install-the-dependency-agent"></a>A függőségi ügynök telepítése
-1. A függőségi ügynök telepítése a Windows-gépen, kattintson duplán a telepítőfájlra, és kövesse a varázsló utasításait.
-2. A függőségi ügynök telepítése Linux rendszerű gépen telepítse a következő parancsot rendszergazdaként:
+1. A függőségi ügynök Windows rendszerű gépen való telepítéséhez kattintson duplán a telepítési fájlra, és kövesse a varázslót.
+2. A függőségi ügynök Linux rendszerű gépen történő telepítéséhez a következő parancs használatával root-ként kell telepíteni:
 
     ```sh InstallDependencyAgent-Linux64.bin```
 
-További információ a függőségi ügynök támogatása a [Windows](../azure-monitor/insights/service-map-configure.md#supported-windows-operating-systems) és [Linux](../azure-monitor/insights/service-map-configure.md#supported-linux-operating-systems) operációs rendszereket.
+## <a name="create-a-group-using-dependency-visualization"></a>Csoport létrehozása függőségi vizualizáció használatával
 
-[További](https://docs.microsoft.com/azure/monitoring/monitoring-service-map-configure#installation-script-examples) hogyan használja a szkriptek a függőségi ügynököt.
+1. **Azure Migrate: Kiszolgáló értékelése**, kattintson a felderített **kiszolgálók**elemre.
+2. A **függőségek** oszlopban kattintson a **függőségek megtekintése** elemre minden áttekinteni kívánt gépen.
+3. A függőségi térképen a következők láthatók:
+    - Bejövő (ügyfelek) és kimenő (kiszolgálók) TCP-kapcsolatok a gépre és a gépről.
+    - Azok a függő gépek, amelyeken nincs telepítve a függőségi ügynökök, portszámok szerint vannak csoportosítva.
+    - A telepített függőségi ügynökökkel rendelkező függő gépek külön mezőkként jelennek meg.
+    - A gépen futó folyamatok. Bontsa ki az egyes gépek mezőt a folyamatok megtekintéséhez.
+    - Számítógép tulajdonságai (beleértve a teljes tartománynevet, az operációs rendszert, a MAC-címeket). A részletek megtekintéséhez kattintson az egyes gépek mezőre.
 
-
-## <a name="create-a-group"></a>Csoport létrehozása
-
-1. Miután telepítette az ügynököket, nyissa meg a portálon, majd kattintson **kezelés** > **gépek**.
-2. Keresse meg a gép, amelyen az ügynökök.
-3. A **függőségek** oszlop a gép ekkor látnia kell **függőségek megtekintése**. Kattintson az oszlop a gép függőségeinek megtekintése.
-4. A függőségi térkép a gép a következő részleteket tartalmazza:
-    - (Ügyfelek) a bejövő és kimenő (kiszolgálók) TCP-kapcsolatok és- tárolókról a gép
-        - A függő gépek, amelyeken nincs telepítve az MMA és a függőségi ügynök portszámok szerint vannak csoportosítva
-        - Az MMA és a függőségi ügynök telepítve van a függő gépek külön mezőkben jelennek meg
-    - A gépen futó folyamatokat, bővítheti, minden gép, ha azt szeretné, hogy a folyamatok megtekintése
-    - Például a teljes tartománynév, az operációs rendszer, az egyes gépek MAC-cím stb tulajdonságait, kattintson a minden gép, ha azt szeretné, hogy ezek a részletek megtekintéséhez
-
-      ![Gépek függőségeinek megtekintése](./media/how-to-create-group-machine-dependencies/machine-dependencies.png)
-
-4. Tekintse függőségek másik időpontot időtartamok az az időtartam, az az idő tartománycímke kattintva. Alapértelmezés szerint a tartománya egy órán keresztül. Módosíthatja az időtartományt, vagy adja meg a kezdő és záró dátumát, és időtartama.
-
-   > [!NOTE]
-   >    A függőségek képi megjelenítéséről felhasználói felület jelenleg nem támogatja egy óránál hosszabb időtartomány kiválasztását. Naplók használata az Azure Monitor [a függőségi adatok lekérdezése](https://docs.microsoft.com/azure/migrate/how-to-create-group-machine-dependencies) hosszabb ideig keresztül.
-
-5. Miután csoportba a kívánt függő gép azonosítása, használatával Ctrl + kattintás jelölje ki több gépet a térképen, és kattintson a **gépeket**.
-6. Adjon meg egy csoportnevet. Győződjön meg arról, hogy a függő gépek Azure Migrate által felderített.
+4. A különböző időtartamokra vonatkozó függőségeket az időtartomány címkében lévő idő időtartamára kattintva tekintheti meg. Alapértelmezés szerint a tartomány egy óra. Módosíthatja az időtartományt, vagy megadhatja a kezdő és a záró dátumot, valamint az időtartamot.
 
     > [!NOTE]
-    > Ha egy függő gép az Azure Migrate által nem észlelhető, nem adhat, a csoporthoz. Az ilyen gépeket ad hozzá a csoporthoz, kell futtatnia a felderítési folyamat a vCenter-kiszolgáló a megfelelő hatókörben, és győződjön meg arról, hogy a gép az Azure Migrate által felderített.  
+    > Az időtartomány akár egy óráig is elvégezhető. Ha hosszabb tartományra van szüksége, használja a Azure Monitort a függő adatlekérdezés hosszabb időtartamra való lekéréséhez.
 
-7. Ha azt szeretné, hozzon létre egy értékelést a csoport számára, jelölje be a jelölőnégyzetet a csoport egy új értékelés létrehozása.
-8. Kattintson a **OK** menteni a csoportot.
+5. Miután azonosította a csoportba felvenni kívánt függő gépeket, a CTRL billentyűt lenyomva tartva kiválaszthat több gépet a térképen, majd kattintson a **csoport gépek**elemre.
+6. Adja meg a csoport nevét.
+7. Győződjön meg arról, hogy a Azure Migrate a függő gépeket deríti fel.
 
-A csoport létrehozása után ajánlott ügynökök telepítése a csoport összes gépen, és a csoportok pontosításához függőséget, a teljes csoport vizualizációjával.
+    - Ha a Azure Migrate nem észleli a függő gépet: A kiszolgáló értékelése nem vehető fel a csoportba.
+    - Számítógép hozzáadásához futtassa újra a felderítést, és ellenőrizze, hogy a gép fel van-e derítve.
 
-## <a name="query-dependency-data-from-azure-monitor-logs"></a>Az Azure Monitor naplóira függőségi adatait
+8. Ha értékelést szeretne készíteni ehhez a csoporthoz, jelölje be a jelölőnégyzetet, és hozzon létre egy új értékelést a csoport számára.
+8. A csoport mentéséhez kattintson **az OK** gombra.
 
-Rögzíti a Service Map függőségi adatok lekérdezéséhez az Azure Migrate-projekt társított Log Analytics munkaterületén érhető el. [További](https://docs.microsoft.com/azure/azure-monitor/insights/service-map#log-analytics-records) kapcsolatban a Service Map adattáblák lekérdezése az Azure monitorban naplózza. 
+A csoport létrehozása után javasoljuk, hogy telepítse az ügynököket a csoport összes számítógépére, majd jelenítse meg a függőségeket a teljes csoport számára.
 
-A Kusto-lekérdezések futtatása:
+## <a name="query-dependency-data-in-azure-monitor"></a>Függőségi adatlekérdezések Azure Monitor
 
-1. Miután telepítette az ügynököket, nyissa meg a portálon, majd kattintson **áttekintése**.
-2. A **áttekintése**, lépjen a **Essentials** szakaszában a projektet, majd kattintson a munkaterület neve melletti megadva **OMS-munkaterület**.
-3. A Log Analytics munkaterület oldalán kattintson a **általános** > **naplók**.
-4. Az Azure Monitor-naplók használatával információkat gyűjthet dependency lekérdezés írása. A lekérdezés a következő szakaszban találja.
-5. A lekérdezés futtatásához kattintson a Futtatás. 
+A Azure Migrate projekthez társított Log Analytics munkaterületen Service Map által rögzített függőségi adatait kérdezheti le. A Log Analytics Azure Monitor naplók írására és futtatására szolgál.
 
-[További](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal) Kusto-lekérdezések írásával kapcsolatban. 
+- Megtudhatja, [Hogyan](../azure-monitor/insights/service-map.md#log-analytics-records) kereshet Service Map-adatLog Analyticsokban.
+- [Tekintse](../azure-monitor/log-query/get-started-queries.md) át a [log Analytics](../azure-monitor/log-query/get-started-portal.md)naplójának lekérdezéseit.
 
-### <a name="sample-azure-monitor-logs-queries"></a>Példa az Azure Monitor lekérdezések naplózása
+Futtasson egy lekérdezést a függőségi értékekhez a következő módon:
 
-Az alábbiakban mintalekérdezések használhatja a függőségi adatokat nyerhet ki. Módosíthatja a lekérdezéseket az előnyben részesített adatpontok kibontásához. Függőségi adatfelderítési rekordok mezőit teljesnek érhető el [Itt](https://docs.microsoft.com/azure/azure-monitor/insights/service-map#log-analytics-records). Keresse meg a további mintalekérdezések [Itt](https://docs.microsoft.com/azure/azure-monitor/insights/service-map#sample-log-searches).
+1. Az ügynökök telepítése után lépjen a portálra, és kattintson az **Áttekintés**elemre.
+2. **Azure Migrate: Kiszolgáló értékelése**, kattintson az **Áttekintés**elemre. Az **Essentials**kibontásához kattintson a lefelé mutató nyílra.
+3. A **OMS**munkaterületen kattintson a munkaterület nevére.
+3. A Log Analytics munkaterület oldalon > **általános**lapon kattintson a **naplók**elemre.
+4. Írja be a lekérdezést, és kattintson a **Futtatás**gombra.
 
-#### <a name="summarize-inbound-connections-on-a-set-of-machines"></a>Bejövő kapcsolatok gépekről összefoglalója
+### <a name="sample-queries"></a>Mintalekérdezések
 
-Vegye figyelembe, hogy a tábla kapcsolati metrika, VMConnection, a rekordok nem felelnek meg az egyes fizikai hálózati kapcsolatok. Több fizikai hálózati kapcsolatot logikai kapcsolatot vannak csoportosítva. [További](https://docs.microsoft.com/azure/azure-monitor/insights/service-map#connections) hogyan fizikai hálózati kapcsolatra vonatkozó adatokat egyetlen logikai rekord VMConnection összesíti. 
+A függőségi adatok kinyeréséhez használhatunk egy minta típusú lekérdezéseket.
+
+- A lekérdezéseket módosíthatja az előnyben részesített adatpontok kinyeréséhez.
+- [Tekintse át](https://docs.microsoft.com/azure/azure-monitor/insights/service-map#log-analytics-records) a függőségi adatrekordok teljes listáját.
+- [Tekintse át](https://docs.microsoft.com/azure/azure-monitor/insights/service-map#sample-log-searches) a további mintavételi lekérdezéseket.
+
+#### <a name="sample-review-inbound-connections"></a>Minta: Bejövő kapcsolatok áttekintése
+
+Egy virtuális gép bejövő kapcsolatainak áttekintése.
+
+- A kapcsolati metrikák (VMConnection) táblában lévő rekordok nem jelölik az egyes fizikai hálózati kapcsolatokat.
+- A fizikai hálózati kapcsolatok több logikai kapcsolatba vannak csoportosítva.
+- [További](https://docs.microsoft.com/azure/azure-monitor/insights/service-map#connections) információ a fizikai hálózati kapcsolatok adatainak összesítéséről a VMConnection-ben.
 
 ```
 // the machines of interest
@@ -147,15 +168,17 @@ let ips=materialize(ServiceMapComputer_CL
 | summarize ips=makeset(todynamic(Ipv4Addresses_s)) by MonitoredMachine=ResourceName_s
 | mvexpand ips to typeof(string));
 let StartDateTime = datetime(2019-03-25T00:00:00Z);
-let EndDateTime = datetime(2019-03-30T01:00:00Z); 
+let EndDateTime = datetime(2019-03-30T01:00:00Z);
 VMConnection
-| where Direction == 'inbound' 
+| where Direction == 'inbound'
 | where TimeGenerated > StartDateTime and TimeGenerated  < EndDateTime
 | join kind=inner (ips) on $left.DestinationIp == $right.ips
 | summarize sum(LinksEstablished) by Computer, Direction, SourceIp, DestinationIp, DestinationPort
 ```
 
-#### <a name="summarize-volume-of-data-sent-and-received-on-inbound-connections-between-a-set-of-machines"></a>Küldött és fogadott a gépek közötti bejövő kapcsolatok adatmennyiség összefoglalója
+#### <a name="sample-summarize-sent-and-received-data"></a>Minta: Küldött és fogadott adathalmazok összegzése
+
+Ez a minta összefoglalja a számítógépek egy készlete közötti bejövő kapcsolatokon küldött és fogadott adatmennyiséget.
 
 ```
 // the machines of interest
@@ -163,9 +186,9 @@ let ips=materialize(ServiceMapComputer_CL
 | summarize ips=makeset(todynamic(Ipv4Addresses_s)) by MonitoredMachine=ResourceName_s
 | mvexpand ips to typeof(string));
 let StartDateTime = datetime(2019-03-25T00:00:00Z);
-let EndDateTime = datetime(2019-03-30T01:00:00Z); 
+let EndDateTime = datetime(2019-03-30T01:00:00Z);
 VMConnection
-| where Direction == 'inbound' 
+| where Direction == 'inbound'
 | where TimeGenerated > StartDateTime and TimeGenerated  < EndDateTime
 | join kind=inner (ips) on $left.DestinationIp == $right.ips
 | summarize sum(BytesSent), sum(BytesReceived) by Computer, Direction, SourceIp, DestinationIp, DestinationPort
@@ -173,6 +196,4 @@ VMConnection
 
 ## <a name="next-steps"></a>További lépések
 
-- [További](https://docs.microsoft.com/azure/migrate/resources-faq#dependency-visualization) kapcsolatban a gyakori kérdések a függőségek képi megjelenítéséről.
-- [Ismerje meg, hogyan](how-to-create-group-dependencies.md) , a csoport pontosítása csoportos függőségek vizualizációjával.
-- [További információk](concepts-assessment-calculation.md) az értékelések számításával kapcsolatban.
+[Hozzon létre](how-to-create-assessment.md) egy értékelést egy csoport számára.

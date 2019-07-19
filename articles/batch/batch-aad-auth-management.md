@@ -1,10 +1,10 @@
 ---
-title: Azure Active Directory használatával hitelesíti a Batch Management solutions |} A Microsoft Docs
-description: Azure Resource Manager és a Batch erőforrás-szolgáltató-val készített alkalmazások az Azure AD-hitelesítést.
+title: A Batch felügyeleti megoldások hitelesítése Azure Active Directory használatával | Microsoft Docs
+description: A Azure Resource Manager és a Batch erőforrás-szolgáltatóval létrehozott alkalmazások az Azure AD-vel való hitelesítést végzik.
 services: batch
 documentationcenter: .net
 author: laurenhughes
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
@@ -15,69 +15,69 @@ ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 04/27/2017
 ms.author: lahugh
-ms.openlocfilehash: 0f6db6d9c86e6da047c45ae7b1c43cf5f55c7e2b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 18cb7433de81ddf6733a494778d0a7c82afb5677
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64922851"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68323984"
 ---
-# <a name="authenticate-batch-management-solutions-with-active-directory"></a>Hitelesítés az Active Directory Batch Management solutions
+# <a name="authenticate-batch-management-solutions-with-active-directory"></a>Batch-felügyeleti megoldások hitelesítése Active Directory
 
-Az alkalmazásokat, amelyek az Azure Batch Management szolgáltatás hívása a hitelesítéshez [Azure Active Directory] [ aad_about] (Azure AD). Az Azure AD egy, a Microsoft több-bérlős felhőalapú címtár- és identitáskezelési szolgáltatása. Azure magát az Azure AD, az ügyfelek, a szolgáltatás-rendszergazdák és a szervezeti felhasználók hitelesítésére.
+Azok az alkalmazások, amelyek meghívják a Azure Batch felügyeleti szolgáltatást [Azure Active Directory][aad_about] (Azure ad) hitelesítéssel. Az Azure AD a Microsoft több-bérlős felhőalapú címtár-és Identitáskezelés-kezelő szolgáltatása. Az Azure maga az Azure AD-t használja az ügyfelek, a szolgáltatás-rendszergazdák és a szervezeti felhasználók hitelesítéséhez.
 
-A Batch Management .NET könyvtár típusok használata Batch-fiókok, fiókkulcsok, alkalmazások és az alkalmazáscsomagok számára tesz elérhetővé. A Batch Management .NET könyvtár egy Azure-erőforrás-szolgáltató ügyfél, és együtt használatos [Azure Resource Manager] [ resman_overview] programozott módon kezelheti ezeket az erőforrásokat. Az Azure AD bármely Azure-erőforrás szolgáltató ügyfél, például a Batch Management .NET könyvtár és révén-kérelmek hitelesítéséhez szükséges [Azure Resource Manager][resman_overview].
+A Batch Management .NET könyvtár a Batch-fiókokkal, a fiók kulcsaival, az alkalmazásokkal és az alkalmazásokkal kapcsolatos műveletek típusait teszi elérhetővé. A Batch Management .NET-függvénytár egy Azure erőforrás-szolgáltatói ügyfél, és a [Azure Resource Manager][resman_overview] együtt használható az erőforrások programozott kezeléséhez. Az Azure AD-nek szüksége van az Azure erőforrás-szolgáltatói ügyfélen keresztül küldött kérések hitelesítésére, beleértve a Batch Management .NET könyvtárat és a [Azure Resource Manager][resman_overview].
 
-Ebben a cikkben tárgyaljuk, az Azure AD-vel történő hitelesítés a Batch Management .NET-es libraryt használó alkalmazások. Bemutatjuk, hogyan az Azure AD használatával hitelesíti a előfizetés rendszergazdai vagy társadminisztrátori, integrált hitelesítés használatával. Használjuk a [AccountManagement] [ acct_mgmt_sample] mintaprojektet, elérhető a Githubon, az Azure AD-vel a Batch Management .NET könyvtár az bemutatására.
+Ebben a cikkben azt vizsgáljuk, hogy az Azure AD használatával kell hitelesíteni a Batch Management .NET könyvtárat használó alkalmazásokkal. Bemutatjuk, hogyan lehet az Azure AD-t az előfizetés-adminisztrátor vagy a közös rendszergazda hitelesítésére használni integrált hitelesítés használatával. A GitHubon elérhető [AccountManagement][acct_mgmt_sample] -minta projektet használjuk az Azure ad és a Batch Management .net könyvtár használatával történő átjárásra.
 
-A Batch Management .NET könyvtár és a AccountManagement minta használatával kapcsolatos további tudnivalókért lásd: [kezelése a Batch-fiókok és kvóták a Batch Management .NET-hez készült ügyféloldali kódtára a](batch-management-dotnet.md).
+Ha többet szeretne megtudni a Batch Management .NET-könyvtár és a AccountManagement-minta használatáról, tekintse meg [a Batch-fiókok és kvóták kezelése a .net-hez készült batch Management ügyféloldali kódtár](batch-management-dotnet.md)használatával című témakört.
 
-## <a name="register-your-application-with-azure-ad"></a>Az alkalmazás regisztrálása az Azure ad-vel
+## <a name="register-your-application-with-azure-ad"></a>Az alkalmazás regisztrálása az Azure AD-ben
 
-Az Azure [Active Directory Authentication Library] [ aad_adal] (ADAL) programozható felületet biztosít az Azure AD az alkalmazásaiban. Adal-t hívja az alkalmazásból, regisztrálnia kell az alkalmazását az Azure AD-bérlő. Ha regisztrálja az alkalmazást, adja meg az Azure AD-információk az alkalmazásról, beleértve a nevét, az Azure AD bérlőn belül. Ezután az Azure AD-alkalmazás azonosítója, amellyel az alkalmazás társítása az Azure ad-vel futásidőben biztosít. Az Alkalmazásazonosítót kapcsolatos további információkért lásd: [alkalmazás és egyszerű szolgáltatási objektumok Azure Active Directoryban](../active-directory/develop/app-objects-and-service-principals.md).
+Az Azure [Active Directory-hitelesítési tár][aad_adal] (ADAL) egy programozott felületet biztosít az Azure ad számára az alkalmazásokon belüli használathoz. Az ADAL az alkalmazásból való meghívásához regisztrálnia kell az alkalmazást egy Azure AD-bérlőben. Az alkalmazás regisztrálásakor az Azure AD-t az alkalmazással kapcsolatos információkkal látja el, beleértve az Azure AD-bérlőn belüli nevet is. Az Azure AD ezt követően egy alkalmazás-azonosítót biztosít, amelyet az alkalmazás az Azure AD-vel való hozzárendeléséhez használ futásidőben. Az alkalmazás-AZONOSÍTÓval kapcsolatos további tudnivalókért tekintse meg az [alkalmazás-és szolgáltatásnév objektumait Azure Active Directoryban](../active-directory/develop/app-objects-and-service-principals.md).
 
-A AccountManagement mintaalkalmazás regisztrálásához kövesse a [egy alkalmazás hozzáadása](../active-directory/develop/quickstart-register-app.md) szakasz [alkalmazások integrálása az Azure Active Directory] [ aad_integrate]. Adja meg **natív ügyfélalkalmazás** az alkalmazás számára. Az iparági szabványos OAuth 2.0-s URI-azonosítóját a **átirányítási URI-t** van `urn:ietf:wg:oauth:2.0:oob`. Azonban megadhat bármilyen érvényes URI-t (például `http://myaccountmanagementsample`) esetében a **átirányítási URI-t**, mert nem kell valódi végpontnak lennie:
+A AccountManagement-minta alkalmazás regisztrálásához kövesse az alkalmazások [hozzáadása](../active-directory/develop/quickstart-register-app.md) című szakasz lépéseit az [alkalmazások integrálása a Azure Active Directorysal][aad_integrate]című témakörben. **Natív ügyfélalkalmazás** megadása az alkalmazás típusához. Az iparági szabványnak megfelelő OAuth 2,0 URI az átirányítási **URI** `urn:ietf:wg:oauth:2.0:oob`-hoz. Megadhat azonban bármilyen érvényes URI-t `http://myaccountmanagementsample`(például) az átirányítási **URI**számára, mivel nem kell valódi végpontnak lennie:
 
 ![](./media/batch-aad-auth-management/app-registration-management-plane.png)
 
-Miután elvégezte a regisztrációs folyamat, látni fogja az alkalmazás azonosítója és az alkalmazás felsorolt Objektumazonosító (egyszerű szolgáltatásnevének).  
+Miután elvégezte a regisztrációs folyamatot, megjelenik az alkalmazás azonosítója és az objektum (egyszerű szolgáltatásnév) azonosítója.  
 
 ![](./media/batch-aad-auth-management/app-registration-client-id.png)
 
-## <a name="grant-the-azure-resource-manager-api-access-to-your-application"></a>Az Azure Resource Manager API-hoz hozzáférést az alkalmazáshoz
+## <a name="grant-the-azure-resource-manager-api-access-to-your-application"></a>A Azure Resource Manager API-hozzáférés biztosítása az alkalmazáshoz
 
-Ezután szüksége lesz az alkalmazás az Azure Resource Manager API-hoz való hozzáférés delegálására. A Resource Manager API-hoz az Azure ad-ben az azonosító **Windows Azure szolgáltatásfelügyeleti API**.
+Ezután delegálnia kell az alkalmazáshoz való hozzáférést a Azure Resource Manager API-nak. A Resource Manager API-hoz készült Azure AD-azonosító a **Windows Azure Service Management API**.
 
-Kövesse az alábbi lépéseket az Azure Portalon:
+Kövesse az alábbi lépéseket a Azure Portalban:
 
-1. Válassza ki az Azure Portal bal oldali navigációs ablaktáblán, **minden szolgáltatás**, kattintson a **Alkalmazásregisztrációk**, és kattintson a **hozzáadása**.
-2. Keresse meg az alkalmazásregisztrációk a listában az alkalmazás neve:
+1. A Azure Portal bal oldali navigációs paneljén válassza a **minden szolgáltatás**elemet, kattintson az **alkalmazás**-regisztrációk elemre, majd a **Hozzáadás**gombra.
+2. Keresse meg az alkalmazás nevét az alkalmazások regisztrációinak listájában:
 
-    ![Keresse meg az alkalmazás neve](./media/batch-aad-auth-management/search-app-registration.png)
+    ![Az alkalmazás nevének megkeresése](./media/batch-aad-auth-management/search-app-registration.png)
 
-3. Megjelenítés a **beállítások** panelen. Az a **API-hozzáférés** szakaszban jelölje be **szükséges engedélyek**.
-4. Kattintson a **Hozzáadás** hozzáadása egy új szükséges engedélyt. 
-5. Adja meg az 1. lépésben, **Windows Azure szolgáltatásfelügyeleti API**, válassza ki az API az eredmények listájából, majd kattintson a **kiválasztása** gombra.
-6. A 2. lépésben, jelölje be a **más szervezet felhasználói hozzáférés az Azure klasszikus üzemi modellben**, és kattintson a **válassza** gombra.
+3. A **Beállítások** panel megjelenítése Az a **API-hozzáférés** szakaszban jelölje be **szükséges engedélyek**.
+4. Új szükséges engedély hozzáadásához kattintson a **Hozzáadás** gombra. 
+5. Az 1. lépésben írja be a **Windows Azure Service Management APIt**, válassza ki az API-t az eredmények listájából, majd kattintson a **kiválasztás** gombra.
+6. A 2. lépésben jelölje be a **klasszikus Azure-beli üzembe helyezési modell a szervezeti felhasználókként való elérésének**jelölőnégyzetét, majd kattintson a **kiválasztás** gombra.
 7. Kattintson a **kész** gombra.
 
-A **szükséges engedélyek** panelen most már látható, hogy az alkalmazásnak engedélyek az adal-t és a Resource Manager API-k. Engedélyek az adal-t alapértelmezés szerint amikor az alkalmazás regisztrálása az Azure ad-ben.
+A **szükséges engedélyek** panelen látható, hogy az alkalmazáshoz tartozó engedélyek a ADAL és a Resource Manager API-k számára is érvényesek. Alapértelmezés szerint az Azure AD-ben való regisztráláskor az engedélyek a ADAL számára lesznek elérhetők.
 
-![Az Azure Resource Manager API-engedélyek delegálása](./media/batch-aad-auth-management/required-permissions-management-plane.png)
+![Engedélyek delegálása a Azure Resource Manager API-nak](./media/batch-aad-auth-management/required-permissions-management-plane.png)
 
 ## <a name="azure-ad-endpoints"></a>Azure AD-végpontok
 
-A Batch-kezelési megoldások az Azure AD-hitelesítést, jól ismert végpontokat kell.
+A Batch-felügyeleti megoldások Azure AD-vel történő hitelesítéséhez két jól ismert végpontra lesz szüksége.
 
-- A **gyakori Azure AD-végpont** összegyűjtéséhez felület egy adott bérlő nem áll rendelkezésre, ha integrált hitelesítés esetén általános hitelesítő adatokat biztosít:
+- Az **Azure ad Common Endpoint** egy általános hitelesítőadat-összegyűjtési felületet biztosít, ha nincs megadva egy adott bérlő, mint az integrált hitelesítés esetében:
 
     `https://login.microsoftonline.com/common`
 
-- A **Azure Resource Manager-végpontot** szolgál a Batch management szolgáltatás irányuló kérelmek hitelesítéséhez szükséges jogkivonat beszerzése:
+- A **Azure Resource Manager végpont** a kérelmeknek a Batch Management szolgáltatásba való hitelesítéséhez használt jogkivonat beszerzésére szolgál:
 
     `https://management.core.windows.net/`
 
-A AccountManagement mintaalkalmazás állandókat ezeket a végpontokat határoz meg. Ezt a állandót változatlanul hagyja:
+A AccountManagement-minta alkalmazás állandókat határoz meg ezekhez a végpontokhoz. Hagyja változatlanul a következő állandókat:
 
 ```csharp
 // Azure Active Directory "common" endpoint.
@@ -86,9 +86,9 @@ private const string AuthorityUri = "https://login.microsoftonline.com/common";
 private const string ResourceUri = "https://management.core.windows.net/";
 ```
 
-## <a name="reference-your-application-id"></a>Hivatkozás az alkalmazás azonosítója 
+## <a name="reference-your-application-id"></a>Az alkalmazás AZONOSÍTÓjának hivatkozása 
 
-Az ügyfélalkalmazás az Alkalmazásazonosítót (más néven az ügyfél-azonosító) használ futtatáskor az Azure AD eléréséhez. Miután regisztrálta az alkalmazást az Azure Portalon, frissítse a kódot, és használja az Alkalmazásazonosítót, regisztrált egy alkalmazást az Azure AD által támogatott. A AccountManagement mintaalkalmazásban másolja az alkalmazás azonosítója az Azure Portalon a megfelelő konstans:
+Az ügyfélalkalmazás az alkalmazás AZONOSÍTÓját (más néven ügyfél-azonosítót) használja az Azure AD eléréséhez futásidőben. Miután regisztrálta az alkalmazást a Azure Portalban, frissítse a kódját, hogy az Azure AD által megadott alkalmazás-azonosítót használja a regisztrált alkalmazáshoz. A AccountManagement minta alkalmazásban másolja az alkalmazás AZONOSÍTÓját a Azure Portal a megfelelő konstansba:
 
 ```csharp
 // Specify the unique identifier (the "Client ID") for your application. This is required so that your
@@ -97,7 +97,7 @@ Az ügyfélalkalmazás az Alkalmazásazonosítót (más néven az ügyfél-azono
 // https://azure.microsoft.com/documentation/articles/active-directory-integrating-applications/
 private const string ClientId = "<application-id>";
 ```
-Az átirányítási URI-t, amely a regisztrációs folyamat során megadott példányát is. Az átirányítási URI-t a kódban megadott meg kell egyeznie az átirányítási URI-t az alkalmazás regisztrációja során megadott.
+Másolja a regisztrációs folyamat során megadott átirányítási URI-t is. A kódban megadott átirányítási URI-nek meg kell egyeznie az alkalmazás regisztrálásakor megadott átirányítási URI-val.
 
 ```csharp
 // The URI to which Azure AD will redirect in response to an OAuth 2.0 request. This value is
@@ -106,9 +106,9 @@ Az átirányítási URI-t, amely a regisztrációs folyamat során megadott pél
 private const string RedirectUri = "http://myaccountmanagementsample";
 ```
 
-## <a name="acquire-an-azure-ad-authentication-token"></a>Az Azure AD hitelesítési jogkivonat beszerzése
+## <a name="acquire-an-azure-ad-authentication-token"></a>Azure AD-hitelesítési jogkivonat beszerzése
 
-Miután a AccountManagement minta regisztrálása az Azure AD-bérlő és a forrás mintakód frissítse az értékeket, a minta készen áll a hitelesítés az Azure AD használatával. A minta futtatásakor megkísérli az ADAL-hitelesítési jogkivonat beszerzése. Ebben a lépésben, a Microsoft hitelesítő adatokat kér: 
+Miután regisztrálta az AccountManagement mintát az Azure AD-bérlőben, és frissíti a minta forráskódját az értékekkel, a minta készen áll a hitelesítésre az Azure AD használatával. A minta futtatásakor a ADAL hitelesítési jogkivonat beszerzését kísérli meg. Ebben a lépésben a Microsoft hitelesítő adatait kéri: 
 
 ```csharp
 // Obtain an access token using the "common" AAD resource. This allows the application
@@ -121,21 +121,21 @@ AuthenticationResult authResult = authContext.AcquireToken(ResourceUri,
                                                         PromptBehavior.Auto);
 ```
 
-Miután megadta a hitelesítő adatait, a mintaalkalmazás a Batch management szolgáltatás hitelesített küldött kérések kiadására is folytatható. 
+A hitelesítő adatok megadása után a minta alkalmazás folytathatja a hitelesített kérések kiküldését a Batch Management szolgáltatásba. 
 
 ## <a name="next-steps"></a>További lépések
 
-További információ a futó a [AccountManagement mintaalkalmazás][acct_mgmt_sample], lásd: [kezelése a Batch-fiókok és kvóták a Batch Management .NET-hez készült ügyféloldali kódtára a](batch-management-dotnet.md) .
+A [AccountManagement-minta alkalmazás][acct_mgmt_sample]futtatásával kapcsolatos további információkért lásd: [Batch-fiókok és kvóták kezelése a .net-hez készült batch Management ügyféloldali kódtár használatával](batch-management-dotnet.md).
 
-Az Azure AD kapcsolatos további információkért tekintse meg a [Azure Active Directory dokumentációs](https://docs.microsoft.com/azure/active-directory/). Részletes példákat adal-t használó érhetők el a [Azure-Kódminták](https://azure.microsoft.com/resources/samples/?service=active-directory) könyvtár.
+Az Azure AD-vel kapcsolatos további tudnivalókért tekintse meg a [Azure Active Directory dokumentációját](https://docs.microsoft.com/azure/active-directory/). A ADAL használatát bemutató részletes példák az [Azure Code Samples](https://azure.microsoft.com/resources/samples/?service=active-directory) Library-ben érhetők el.
 
-Az Azure AD-vel Batch-szolgáltatás alkalmazások hitelesítéséhez, lásd: [az Active Directory hitelesítést Batch-szolgáltatási megoldások](batch-aad-auth.md). 
+A Batch szolgáltatásbeli alkalmazások Azure AD-vel történő hitelesítéséhez tekintse meg [a Batch szolgáltatással kapcsolatos megoldások hitelesítése Active Directory](batch-aad-auth.md)használatával című témakört. 
 
 
 [aad_about]:../active-directory/fundamentals/active-directory-whatis.md "Mi az Azure Active Directory?"
 [aad_adal]: ../active-directory/active-directory-authentication-libraries.md
-[aad_auth_scenarios]:../active-directory/develop/authentication-scenarios.md "Hitelesítési forgatókönyvek az Azure ad-ben"
-[aad_integrate]: ../active-directory/active-directory-integrating-applications.md "Alkalmazások integrálása az Azure Active Directoryval"
+[aad_auth_scenarios]:../active-directory/develop/authentication-scenarios.md "Hitelesítési forgatókönyvek az Azure AD-hez"
+[aad_integrate]: ../active-directory/active-directory-integrating-applications.md "Alkalmazások integrálása a Azure Active Directory"
 [acct_mgmt_sample]: https://github.com/Azure/azure-batch-samples/tree/master/CSharp/AccountManagement
 [azure_portal]: https://portal.azure.com
 [resman_overview]: ../azure-resource-manager/resource-group-overview.md

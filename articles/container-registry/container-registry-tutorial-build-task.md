@@ -1,25 +1,26 @@
 ---
-title: Oktatóanyag – tároló rendszerképek létrehozásának – az Azure Container Registry feladatok automatizálása
-description: Ebben az oktatóanyagban elsajátíthatja, hogyan konfigurálhatja egy Azure Container beállításjegyzék feladattal automatikusan indítható a felhőalapú tároló-rendszerképek létrehozásának, ha véglegesítése a forráskód Git-tárházba.
+title: Oktatóanyag – a Container rendszerkép-buildek automatizálása – Azure Container Registry feladatok
+description: Ebből az oktatóanyagból megtudhatja, hogyan konfigurálhat egy Azure Container Registry feladatot úgy, hogy automatikusan aktiválja a tároló rendszerképét a felhőben, amikor a forráskódot egy git-tárházba véglegesíti.
 services: container-registry
 author: dlepow
+manager: gwallace
 ms.service: container-registry
 ms.topic: tutorial
 ms.date: 05/04/2019
 ms.author: danlep
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 7a9a1e3d3c92f43d19a75e7cd0e10b3fd395a9b5
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.openlocfilehash: ea3f4f295da747b3a53956c0888797a5f8607d6e
+ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65544990"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68310477"
 ---
-# <a name="tutorial-automate-container-image-builds-in-the-cloud-when-you-commit-source-code"></a>Oktatóanyag: Felhőalapú tároló-rendszerképek létrehozásának automatizálása, ha forráskódot véglegesítése
+# <a name="tutorial-automate-container-image-builds-in-the-cloud-when-you-commit-source-code"></a>Oktatóanyag: A tároló rendszerképének automatizálása a forráskód elküldésekor
 
-Mellett egy [gyors feladat](container-registry-tutorial-quick-task.md), ACR feladatok támogatja az automatikus Docker-tároló rendszerképét a felhőben hoz létre, amikor véglegesítése a forráskód Git-tárházba.
+Egy [gyors](container-registry-tutorial-quick-task.md)feladaton kívül az ACR-feladatok támogatják az automatizált Docker-tárolók rendszerképét a felhőben, amikor a forráskódot egy git-tárházba véglegesíti.
 
-Ebben az oktatóanyagban az ACR-feladat állít össze, és a egy docker-fájlban megadott véglegesítése a forráskód Git-adattár, akkor egyetlen tárolórendszerkép leküldések. Hozhat létre egy [többlépéses feladat](container-registry-tasks-multi-step.md) egy YAML-fájlt használó hozhat létre, leküldéses, és szükség esetén a kód véglegesítésére több tároló tesztelése, lásd: lépések meghatározásához [oktatóanyag: Többlépéses tároló munkafolyamat futtatása a felhőben, ha forráskódot véglegesíti](container-registry-tutorial-multistep-task.md). ACR-tevékenységek áttekintését lásd: [automatizálása operációs rendszer és a keretrendszer javítása az ACR-feladatok](container-registry-tasks-overview.md)
+Ebben az oktatóanyagban az ACR-feladat létrehozza és leküldi a Docker megadott egyetlen tároló-rendszerképet, amikor egy git-tárházba véglegesíti a forráskódot. Ha olyan többlépéses [feladatot](container-registry-tasks-multi-step.md) szeretne létrehozni, amely YAML-fájlt használ a kód végrehajtásához szükséges több tároló létrehozásához, leküldéséhez és opcionális teszteléséhez [, tekintse meg a következőt: oktatóanyag: Futtasson egy többlépéses tároló munkafolyamatot a felhőben, amikor](container-registry-tutorial-multistep-task.md)a forráskódot véglegesíti. Az ACR-feladatok áttekintését lásd: az [operációs rendszer és a keretrendszer javításának automatizálása az ACR-](container-registry-tasks-overview.md) feladatokkal
 
 Ebben az oktatóanyagban:
 
@@ -33,7 +34,7 @@ Ez az oktatóanyag feltételezi, hogy elvégezte az [előző oktatóanyag](conta
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Ha az Azure CLI-t helyben szeretné használni, az Azure CLI **2.0.46-os** vagy újabb verzióját kell telepítenie, és be kell jelentkeznie az [az login][az-login] paranccsal. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretné a parancssori felületet, olvassa el [az Azure CLI telepítését][azure-cli] ismertető témakört.
+Ha helyileg szeretné használni az Azure CLI-t, az Azure CLI **2.0.46** vagy újabb verzióját kell telepítenie, és be kell jelentkeznie az [az login][az-login]paranccsal. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepítenie vagy frissítenie kell a CLI-t, tekintse meg az [Azure CLI telepítését][azure-cli]ismertető témakört.
 
 [!INCLUDE [container-registry-task-tutorial-prereq.md](../../includes/container-registry-task-tutorial-prereq.md)]
 
@@ -41,7 +42,7 @@ Ha az Azure CLI-t helyben szeretné használni, az Azure CLI **2.0.46-os** vagy 
 
 Most, miután végrehajtotta az ahhoz szükséges lépéseket, hogy az ACR Tasks olvashassa a véglegesítési állapotokat, és webhookokat hozhasson létre egy adattárban, létrehozhat egy feladatot, amely egy tárolórendszerkép összeállítását váltja ki az adattárban való véglegesítés esetén.
 
-Először lássa el ezeket a rendszerhéj-környezeti változókat a környezetnek megfelelő értékekkel. Ez a lépés nem feltétlenül szükséges, de némileg könnyebbé teszi az oktatóanyagban lévő többsoros Azure CLI-parancsok végrehajtását. Ha ezeket a környezeti változókat nem feltöltéséhez, kézzel kell lecserélnie egyes bárhol a Példaparancsok megjelenik.
+Először lássa el ezeket a rendszerhéj-környezeti változókat a környezetnek megfelelő értékekkel. Ez a lépés nem feltétlenül szükséges, de némileg könnyebbé teszi az oktatóanyagban lévő többsoros Azure CLI-parancsok végrehajtását. Ha nem tölti fel ezeket a környezeti változókat, manuálisan kell lecserélnie az egyes értékeket, bárhol is megjelenjenek a példában szereplő parancsokban.
 
 ```azurecli-interactive
 ACR_NAME=<registry-name>        # The name of your Azure container registry
@@ -49,7 +50,7 @@ GIT_USER=<github-username>      # Your GitHub user account name
 GIT_PAT=<personal-access-token> # The PAT you generated in the previous section
 ```
 
-Hozza létre a tevékenység az alábbiak végrehajtásával [az acr-feladat létrehozása] [ az-acr-task-create] parancsot:
+Most hozza létre a feladatot a következő az [ACR Task Create][az-acr-task-create] parancs végrehajtásával:
 
 ```azurecli-interactive
 az acr task create \
@@ -63,11 +64,11 @@ az acr task create \
 ```
 
 > [!IMPORTANT]
-> Ha korábban már létrehozott feladatokat az előzetes verzióban az `az acr build-task` paranccsal, azokat a feladatokat újra létre kell hoznia az [az acr task][az-acr-task] paranccsal.
+> Ha az előzetes `az acr build-task` verzióban korábban létrehozott feladatokat a paranccsal, ezeket a feladatokat az az [ACR Task][az-acr-task] paranccsal újra létre kell hozni.
 
-A feladat megadja, hogy minden alkalommal, amikor kódot véglegesítenek a `--context` argumentumban megadott adattár *fő* elágazásába, az ACR Tasks összeállítja a tárolórendszerképet az elágazásban lévő kódból. A docker-fájlban megadott `--file` a tárházból legfelső szintű a rendszerkép létrehozásához használt. Az `--image` argumentum a `{{.Run.ID}}` egy parametrikus értékét adja meg a rendszerkép címkéjének a verzióra vonatkozó részéhez, ezzel biztosítva, hogy az összeállított rendszerkép egy adott összeállításhoz tartozzon és egyedi címkével legyen jelölve.
+A feladat megadja, hogy minden alkalommal, amikor kódot véglegesítenek a `--context` argumentumban megadott adattár *fő* elágazásába, az ACR Tasks összeállítja a tárolórendszerképet az elágazásban lévő kódból. A `--file` rendszer a tárház gyökerében megadott Docker használja a rendszerkép létrehozásához. Az `--image` argumentum a `{{.Run.ID}}` egy parametrikus értékét adja meg a rendszerkép címkéjének a verzióra vonatkozó részéhez, ezzel biztosítva, hogy az összeállított rendszerkép egy adott összeállításhoz tartozzon és egyedi címkével legyen jelölve.
 
-A sikeres [az acr task create][az-acr-task-create] parancs kimenete az alábbihoz hasonló:
+A sikeres az [ACR Task Create][az-acr-task-create] parancs kimenete az alábbihoz hasonló:
 
 ```console
 {
@@ -128,7 +129,7 @@ A sikeres [az acr task create][az-acr-task-create] parancs kimenete az alábbiho
 
 ## <a name="test-the-build-task"></a>Az összeállítási feladat tesztelése
 
-Most már rendelkezik az összeállítást definiáló feladattal. Az összeállítási folyamat teszteléséhez aktiváljon manuálisan egy összeállítást az [az acr task run][az-acr-task-run] parancs végrehajtásával:
+Most már rendelkezik az összeállítást definiáló feladattal. A létrehozási folyamat teszteléséhez indítson el egy összeállítást manuálisan az az [ACR Task Run][az-acr-task-run] parancs végrehajtásával:
 
 ```azurecli-interactive
 az acr task run --registry $ACR_NAME --name taskhelloworld
@@ -208,7 +209,7 @@ Run ID: da2 was successful after 27s
 
 A feladat manuális futtatással való tesztelését követően aktiválja automatikusan a feladatot a forráskód módosításával.
 
-Először ellenőrizze, hogy az [adattár][sample-repo] helyi klónját tartalmazó könyvtárban van:
+Először is győződjön meg arról, hogy az [adattár][sample-repo]helyi klónját tartalmazó könyvtárban van:
 
 ```azurecli-interactive
 cd acr-build-helloworld-node
@@ -251,7 +252,7 @@ Run ID: da4 was successful after 38s
 
 ## <a name="list-builds"></a>Összeállítások listázása
 
-Az ACR Tasks által a regisztrációs adatbázis számára elkészített feladatfuttatások listájának megtekintéséhez futtassa az [az acr task list-runs][az-acr-task-list-runs] parancsot:
+Ha szeretné megtekinteni a feladat által futtatott ACR-feladatokat a beállításjegyzékben, futtassa az az [ACR Task List-Run][az-acr-task-list-runs] parancsot:
 
 ```azurecli-interactive
 az acr task list-runs --registry $ACR_NAME --output table

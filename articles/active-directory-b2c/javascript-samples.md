@@ -1,5 +1,5 @@
 ---
-title: JavaScript-minták – Azure Active Directory B2C |} A Microsoft Docs
+title: JavaScript-minták – Azure Active Directory B2C | Microsoft Docs
 description: Ismerje meg az Azure Active Directory B2C JavaScript használatával.
 services: active-directory-b2c
 author: mmacy
@@ -10,25 +10,25 @@ ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 9e19df7c50ca9d2c57ab385a567f4911b200c5e2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5dfc1ef732c8456356de82f7fe026476fdfc075b
+ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66510888"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "68227135"
 ---
 # <a name="javascript-samples-for-use-in-azure-active-directory-b2c"></a>JavaScript-minták az Azure Active Directory B2C használata
 
 [!INCLUDE [active-directory-b2c-public-preview](../../includes/active-directory-b2c-public-preview.md)]
 
-Az Azure Active Directory (Azure AD) B2C-alkalmazásokat a saját ügyféloldali JavaScript-kódot adhat hozzá. JavaScript engedélyezése az alkalmazások számára, hozzá kell adnia egy elem a [egyéni házirendet](active-directory-b2c-overview-custom.md), jelölje be egy [lap szerződés](page-contract.md), és [b2clogin.com-on](b2clogin.md) a kérelmek a. Ez a cikk bemutatja, hogyan módosíthatja az egyéni házirend parancsfájl végrehajtásának engedélyezéséhez.
+Az Azure Active Directory (Azure AD) B2C-alkalmazásokat a saját ügyféloldali JavaScript-kódot adhat hozzá. Az alkalmazásokhoz való JavaScript engedélyezéséhez hozzá kell adnia egy elemet az [Egyéni szabályzathoz](active-directory-b2c-overview-custom.md), ki kell választania egy [lapelrendezést](page-layout.md), és a [b2clogin.com](b2clogin.md) kell használnia a kérésekben. Ez a cikk azt ismerteti, hogyan módosíthatja az egyéni házirendet a parancsfájlok végrehajtásának engedélyezéséhez.
 
 > [!NOTE]
-> Ha a felhasználói folyamatok JavaScript engedélyezni szeretné, tekintse meg [JavaScript és a lap szerződés az Azure Active Directory B2C verziók](user-flow-javascript-overview.md).
+> Ha engedélyezni szeretné a JavaScriptet a felhasználói folyamatokhoz, tekintse [meg a JavaScript-és lapelrendezés-verziókat a Azure Active Directory B2C](user-flow-javascript-overview.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Válassza ki a felhasználói felületi elemek az alkalmazás egy oldal külön. Ha szeretne használni a JavaScript, egy lap szerződés verziót a tartalom-definíciók minden definiálása az egyéni házirendek szeretné.
+Válassza ki az alkalmazás felhasználói felületi elemeinek lapelrendezés elemet. Ha a JavaScriptet szeretné használni, meg kell adnia egy lapelrendezés-verziót az egyéni szabályzat összes tartalmi definíciójában.
 
 ## <a name="add-the-scriptexecution-element"></a>Adja hozzá a ScriptExecution elemet
 
@@ -143,7 +143,7 @@ function addTermsOfUseLink() {
 }
 ```
 
-Cserélje le a kód `termsOfUseUrl` a használati feltételek a hivatkozást tartalmazó. A címtárban, hozzon létre egy új felhasználói attribútum nevű **termsOfUse** , majd belefoglalhat **termsOfUse** felhasználói attribútumaként.
+Cserélje le a kód `termsOfUseUrl` a használati feltételek a hivatkozást tartalmazó. A címtárhoz hozzon létre egy **termsOfUse** nevű új felhasználói attribútumot, majd adja hozzá a **termsOfUse** felhasználói attribútumként.
 
 ## <a name="next-steps"></a>További lépések
 

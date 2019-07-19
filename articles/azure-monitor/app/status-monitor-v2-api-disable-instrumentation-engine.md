@@ -1,6 +1,6 @@
 ---
-title: 'Az Azure Állapotfigyelőt v2 API-leírások: Tiltsa le a kialakítási motor |} A Microsoft Docs'
-description: Állapot figyelő v2 API-hivatkozás. Disable-InstrumentationEngine. A webhely újbóli üzembe helyezése nélkül webhely teljesítményének megfigyeléséhez. ASP.NET-webalkalmazásokat együttműködik a helyileg üzemeltetett, a virtuális gépek vagy az Azure-ban.
+title: 'Az Azure Állapotmonitor v2 API-referenciája: Instrumentation-motor letiltása | Microsoft Docs'
+description: Állapotmonitor v2 API-referenciát. Disable-InstrumentationEngine. Webhelyek teljesítményének figyelése a webhely újbóli üzembe helyezése nélkül. Együttműködik a helyszínen, a virtuális gépeken vagy az Azure-on üzemeltetett ASP.NET Web Apps szolgáltatásokkal.
 services: application-insights
 documentationcenter: .net
 author: MS-TimothyMothra
@@ -12,28 +12,23 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: tilee
-ms.openlocfilehash: cd35af6ead2d734fa68b85b199aac219daf8dcd9
-ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
+ms.openlocfilehash: 827f8555718a22979617c9b0794dce3bd92207f4
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67807157"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68326389"
 ---
-# <a name="status-monitor-v2-api-disable-instrumentationengine-v040-alpha"></a>A figyelő v2 API állapota: Disable-InstrumentationEngine (v0.4.0-alpha)
+# <a name="status-monitor-v2-api-disable-instrumentationengine"></a>Állapotmonitor v2 API: InstrumentationEngine letiltása
 
-Ez a cikk ismerteti, amely tagja a parancsmag a [Az.ApplicationMonitor PowerShell-modul](https://www.powershellgallery.com/packages/Az.ApplicationMonitor/).
-
-> [!IMPORTANT]
-> Állapot figyelő v2 jelenleg nyilvános előzetes verzióban érhető el.
-> Ez az előnézeti verzió egy szolgáltatásiszint-megállapodás nélkül biztosított, és ezt nem javasoljuk a termelési számítási feladatokhoz. Előfordulhat, hogy néhány funkció nem támogatott, és néhány előfordulhat, hogy korlátozott képességekkel rendelkezik.
-> További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+Ez a cikk olyan parancsmagot ismertet, amely az az [. ApplicationMonitor PowerShell-modul](https://www.powershellgallery.com/packages/Az.ApplicationMonitor/)tagja.
 
 ## <a name="description"></a>Leírás
-A rendszerállapot-motor letilthatja bizonyos beállításkulcsok eltávolítása.
-Indítsa újra az IIS a módosítások érvénybe léptetéséhez.
+Letiltja a rendszerállapot-kezelő motort néhány beállításkulcs eltávolításával.
+A módosítások érvénybe léptetéséhez indítsa újra az IIS-t.
 
 > [!IMPORTANT] 
-> Ez a parancsmag megköveteli egy PowerShell-munkamenetet rendszergazdai jogosultságokkal rendelkezik.
+> Ehhez a parancsmaghoz rendszergazdai engedélyekkel rendelkező PowerShell-munkamenet szükséges.
 
 ## <a name="examples"></a>Példák
 
@@ -43,13 +38,13 @@ PS C:\> Disable-InstrumentationEngine
 
 ## <a name="parameters"></a>Paraméterek 
 
-### <a name="-verbose"></a>-Verbose
-**Általános paraméter.** Használja ezt a kapcsolót a kimenetben a részletes naplókat.
+### <a name="-verbose"></a>-Részletes
+**Általános paraméter.** Ezt a kapcsolót használja a részletes naplók kinyomtatásához.
 
 ## <a name="output"></a>Output
 
 
-#### <a name="example-output-from-successfully-disabling-the-instrumentation-engine"></a>Sikerült letiltani a rendszerállapot-motor példa a kimenetre
+#### <a name="example-output-from-successfully-disabling-the-instrumentation-engine"></a>Példa a Instrumentation-motor sikeres letiltásának kimenetére
 
 ```
 Configuring IIS Environment for instrumentation engine...
@@ -62,5 +57,5 @@ Configuring registry for instrumentation engine...
 
 ## <a name="next-steps"></a>További lépések
 
- Hozzon ki még többet Állapotfigyelőt v2:
- - Használja az útmutatóban [hibaelhárítása](status-monitor-v2-troubleshoot.md) Állapotfigyelőt v2.
+ További Állapotmonitor v2:
+ - A Állapotmonitor v2 [hibáinak megoldásához](status-monitor-v2-troubleshoot.md) használja az útmutatót.

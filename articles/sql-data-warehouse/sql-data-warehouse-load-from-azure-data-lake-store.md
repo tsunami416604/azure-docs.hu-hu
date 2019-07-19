@@ -1,51 +1,51 @@
 ---
-title: Az Azure Data Lake Storage-ból az Azure SQL Data Warehouse oktatóanyag terhelés |} A Microsoft Docs
-description: Adatok betöltése az Azure Data Lake Storage az Azure SQL Data Warehouse a PolyBase külső táblák használatával.
+title: Oktatóanyag betöltése Azure Data Lake Storageról Azure SQL Data Warehousera | Microsoft Docs
+description: Az adatok Azure Data Lake Storageból a Azure SQL Data Warehouseba való betöltéséhez használjon albase külső táblákat.
 services: sql-data-warehouse
 author: kevinvngo
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: load-data
-ms.date: 04/26/2019
+ms.date: 07/17/2019
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: c69382ee0bec5586fc247cd0e568f5f48f0eda08
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: cbf642b47e4233cec2e2d860288b3bb35b419cf2
+ms.sourcegitcommit: 770b060438122f090ab90d81e3ff2f023455213b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67588597"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68304169"
 ---
-# <a name="load-data-from-azure-data-lake-storage-to-sql-data-warehouse"></a>Adatok betöltése az Azure Data Lake Storage-ból az SQL Data Warehouse
-Adatok betöltése az Azure Data Lake Storage az Azure SQL Data Warehouse a PolyBase külső táblák használatával. Bár a Data Lake Storage-ban tárolt adatokkal kapcsolatos ad hoc ad hoc lekérdezéseket is futtathat, javasoljuk, hogy az adatok importálása a legjobb teljesítmény érdekében az SQL Data Warehouse-bA.
+# <a name="load-data-from-azure-data-lake-storage-to-sql-data-warehouse"></a>Adatok betöltése a Azure Data Lake Storageból a SQL Data Warehouseba
+Az adatok Azure Data Lake Storageból a Azure SQL Data Warehouseba való betöltéséhez használjon albase külső táblákat. Bár a Data Lake Storage tárolt adatain is futtathatók az ad hoc lekérdezések, javasoljuk, hogy az adatSQL Data Warehouse a legjobb teljesítmény érdekében importálja az adatkészletbe.
 
 > [!div class="checklist"]
-> * Hozzon létre a Data Lake Storage betöltéshez szükséges adatbázis-objektumokat.
-> * Csatlakozás a Data Lake Storage directory.
-> * Adatok betöltése az Azure SQL Data Warehouse-bA.
+> * Hozza létre a Data Lake Storage betöltéséhez szükséges adatbázis-objektumokat.
+> * Kapcsolódjon egy Data Lake Storage könyvtárhoz.
+> * Betöltés az Azure SQL Data Warehouseba.
 
 Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
 
 ## <a name="before-you-begin"></a>Előkészületek
 Az oktatóanyag megkezdése előtt töltse le és telepítse az [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) (SSMS) legújabb verzióját.
 
-Ez az oktatóanyag futtatásához szüksége:
+Az oktatóanyag futtatásához a következőkre lesz szüksége:
 
-* Az Azure Active Directory-alkalmazás szolgáltatások közötti hitelesítés használatára, ha betöltés forrásaként Gen1. Létrehozásához hajtsa végre az [Active directory-hitelesítés](../data-lake-store/data-lake-store-authenticate-using-active-directory.md)
+* Azure Active Directory alkalmazást a szolgáltatások közötti hitelesítéshez a Gen1-ból való betöltéskor. A létrehozásához kövesse az [Active Directory-hitelesítést](../data-lake-store/data-lake-store-authenticate-using-active-directory.md)
 
 >[!NOTE] 
-> Az Azure Data Lake ki Gen1 tölt be, ha az ügyfél-azonosító, a kulcs és a OAuth2.0 Token végpont értékét az Active Directory-alkalmazás az SQL Data Warehouse-ból kapcsolódni a tárfiók van szükség. Ezeket az értékeket beszerzése részletei találhatók a fenti hivatkozásra. Az Azure Active Directory Alkalmazásregisztráció használja az alkalmazás azonosítója, az ügyfél-azonosító.
+> Ha Azure Data Lakei Gen1 tölti be a betöltést, szüksége lesz a Active Directory alkalmazás ügyfél-azonosító, kulcs és OAuth 2.0 jogkivonat-végponti értékére, hogy a SQL Data Warehouse a Storage-fiókjához kapcsolódjon. Ezeknek az értékeknek a megszerzésével kapcsolatos részletek a fenti hivatkozáson olvashatók. Azure Active Directory alkalmazás regisztrálásához használja az alkalmazás AZONOSÍTÓját ügyfél-AZONOSÍTÓként.
 > 
 
-* Az Azure SQL Data Warehouse. Lásd: [létrehozása és a lekérdezés és az Azure SQL Data Warehouse](create-data-warehouse-portal.md).
+* Egy Azure SQL Data Warehouse. Lásd: [Létrehozás és lekérdezés és Azure SQL Data Warehouse](create-data-warehouse-portal.md).
 
-* A Data Lake tárfiókot. Lásd: [Ismerkedés az Azure Data Lake Storage](../data-lake-store/data-lake-store-get-started-portal.md). 
+* Egy Data Lake Storage-fiók. Lásd: [Azure Data Lake Storage első lépései](../data-lake-store/data-lake-store-get-started-portal.md). 
 
-##  <a name="create-a-credential"></a>Hitelesítő adatok létrehozása
-A Data Lake Storage-fiókja eléréséhez szüksége lesz egy fő adatbáziskulcsot titkosíthatja a hitelesítésiadat-titok a következő lépésben hozzon létre. Ezután hozzon létre egy Database Scoped Credential. A Database Scoped Credential Gen1, az egyszerű szolgáltatás hitelesítő adatai állítsa be az aad-ben tárolja. A Database Scoped Credential Gen2 a tárfiók-kulcsot kell használnia. 
+##  <a name="create-a-credential"></a>Hitelesítő adat létrehozása
+A Data Lake Storage-fiók eléréséhez létre kell hoznia egy adatbázis-főkulcsot a következő lépésben használt hitelesítő adatok titkosításához. Ezután létrehoz egy adatbázis-hatókörű hitelesítő adatot. A Gen1 esetében az adatbázis-hatókörrel rendelkező hitelesítő adatok az HRE-ben beállított egyszerű szolgáltatás hitelesítő adatait tárolják. A Storage-fiók kulcsát a Gen2 adatbázis-hatókörű hitelesítő adataiban kell használni. 
 
-Data Lake Storage Gen1 csatlakozni kell **első** hozzon létre egy Azure Active Directory-alkalmazás, hozzon létre egy hozzáférési kulcsot és az alkalmazás hozzáférést biztosít a Data Lake Storage Gen1 erőforráshoz. Útmutatásért lásd: [hitelesítés az Azure Data Lake Storage Gen1 használó Active Directory](../data-lake-store/data-lake-store-authenticate-using-active-directory.md).
+Data Lake Storage Gen1hoz való kapcsolódáshoz **először** létre kell hoznia egy Azure Active Directory alkalmazást, létre kell hoznia egy hozzáférési kulcsot, és biztosítania kell az alkalmazás számára a Data Lake Storage Gen1 erőforrás elérését. Útmutatásért lásd: [hitelesítés a Azure Data Lake Storage Gen1 Active Directory használatával](../data-lake-store/data-lake-store-authenticate-using-active-directory.md).
 
 ```sql
 -- A: Create a Database Master Key.
@@ -85,8 +85,8 @@ WITH
 ;
 ```
 
-## <a name="create-the-external-data-source"></a>A külső adatforrás létrehozása
-Ezzel [CREATE EXTERNAL DATA SOURCE](/sql/t-sql/statements/create-external-data-source-transact-sql) tárolja az adatok helyének parancsot. 
+## <a name="create-the-external-data-source"></a>Külső adatforrás létrehozása
+Ezzel a [create External adatforrás](/sql/t-sql/statements/create-external-data-source-transact-sql) -paranccsal tárolhatók az adattárolók helye. 
 
 ```sql
 -- C (for Gen1): Create an external data source
@@ -109,14 +109,14 @@ WITH (
 CREATE EXTERNAL DATA SOURCE AzureDataLakeStorage
 WITH (
     TYPE = HADOOP,
-    LOCATION='abfs://<container>@<AzureDataLake account_name>.dfs.core.windows.net', -- Please note the abfs endpoint
+    LOCATION='abfss://<container>@<AzureDataLake account_name>.dfs.core.windows.net', -- Please note the abfs endpoint
     CREDENTIAL = ADLSCredential
 );
 ```
 
-## <a name="configure-data-format"></a>Adatformátum konfigurálása
-Az adatok importálása a Data Lake Storage adja meg a külső fájlformátumot kell. Ezt az objektumot határozza meg, hogyan a fájlok a Data Lake Storage készültek.
-A teljes listát, tekintse meg a T-SQL-dokumentációnk [CREATE EXTERNAL FILE FORMAT](/sql/t-sql/statements/create-external-file-format-transact-sql)
+## <a name="configure-data-format"></a>Az adatformátum konfigurálása
+Az adatok Data Lake Storageból történő importálásához meg kell adnia a külső fájlformátumot. Ez az objektum határozza meg, hogy a fájlok hogyan íródnak Data Lake Storageba.
+A teljes lista esetében tekintse meg a T-SQL-dokumentáció [külső fájlformátum létrehozása](/sql/t-sql/statements/create-external-file-format-transact-sql) című dokumentumot.
 
 ```sql
 -- D: Create an external file format
@@ -136,8 +136,8 @@ WITH
 );
 ```
 
-## <a name="create-the-external-tables"></a>A külső táblák létrehozása
-Most, hogy megadta a forrás- és a fájl adatformátum, készen áll a külső táblák létrehozásához. Külső táblák olyan külső adatok kezelését ismerteti. A hely paraméter megadhatja egy fájl vagy könyvtár. Ha egy könyvtárat, a címtárban található összes fájl lesz betöltve.
+## <a name="create-the-external-tables"></a>Külső táblák létrehozása
+Most, hogy megadta az adatforrás és a fájl formátumát, készen áll a külső táblák létrehozására. A külső táblák a külső adatforrásokkal való interakciók. A Location paraméter egy fájlt vagy egy könyvtárat is megadhat. Ha megadja a könyvtárat, a rendszer a könyvtárban lévő összes fájlt betölti.
 
 ```sql
 -- D: Create an External Table
@@ -165,22 +165,22 @@ WITH
 
 ```
 
-## <a name="external-table-considerations"></a>External Table Considerations
-Egy külső tábla létrehozása egyszerű, de van néhány kell vitatni részleteiről.
+## <a name="external-table-considerations"></a>Külső tábla szempontjai
+Egy külső tábla létrehozása egyszerű, de van néhány olyan árnyalat, amelyet meg kell vitatni.
 
-Külső táblák vannak listaobjektum. Ez azt jelenti, hogy az adatok betöltése folyamatban minden egyes sorára meg kell felelniük a tábla sémadefiníciója.
-Egy sor nem egyezik a sémadefiníciót, ha a terhelést a sor fogja elutasítani.
+A külső táblák erősen begépeltek. Ez azt jelenti, hogy a betöltött adatsorok mindegyikének meg kell felelnie a tábla sémájának definíciójának.
+Ha egy sor nem felel meg a séma definíciójának, a rendszer elutasítja a sort a betöltésből.
 
-A REJECT_TYPE és REJECT_VALUE beállítás lehetővé teszi, hogy meghatározza, hogy hány sort vagy az adatok milyen százalékos szerepelnie kell a végső táblázatba. Betöltéskor Ha az elutasítás érték elérésekor a terhelés sikertelen lesz. Visszautasított sorok leggyakoribb oka séma definíció nem egyeznek. Például ha egy oszlop helytelenül van megadva az int-séma, amikor az adatok a fájl egy karakterlánc, minden egyes sora lesz nem sikerült betölteni.
+A REJECT_TYPE és a REJECT_VALUE beállítások segítségével megadhatja, hogy a végső táblában hány sor vagy milyen százalékban kell szerepelnie az adatmennyiségnek. Ha a betöltés során az elutasítás értéke elérte a értéket, a betöltés sikertelen lesz. Az elutasított sorok leggyakoribb oka a séma definíciójának eltérése. Ha például egy oszlop helytelenül van megadva az int sémája, ha a fájlban lévő adat karakterlánc, akkor minden sor betöltése sikertelen lesz.
 
-Data Lake Storage Gen1 szerepkör alapú hozzáférés-vezérlés (RBAC) használ az adatokhoz való hozzáférés vezérlésére. Ez azt jelenti, hogy az egyszerű szolgáltatás Olvasás engedéllyel rendelkezik a könyvtárak a helyre paraméterben meghatározott, és végső könyvtárat és fájlokat gyermekei. Ez lehetővé teszi a hitelesítéshez és az adatok betöltése a PolyBase. 
+Data Lake Storage Gen1 a szerepköralapú Access Control (RBAC) használatával vezérli az adathozzáférést. Ez azt jelenti, hogy az egyszerű szolgáltatásnak olvasási engedéllyel kell rendelkeznie a Location paraméterben definiált címtárakhoz és a végső könyvtár és a fájlok gyermekeihez. Ez lehetővé teszi, hogy a Base hitelesítse és betöltse az adatok betöltését. 
 
 ## <a name="load-the-data"></a>Az adatok betöltése
-Adatok betöltése a Data Lake Storage használatát az [CREATE TABLE AS SELECT (Transact-SQL)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse) utasítást. 
+Az adatok Data Lake Storage való betöltéséhez használja a [CREATE TABLE as Select (Transact-SQL)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse) utasítást. 
 
-A CTAS egy új táblát hoz létre, és feltölti azt egy kiválasztási utasítás eredményeivel. A CTAS határozza meg az új tábla, ugyanazokat az oszlopokat és adattípusokkal rendelkezik, mint a kiválasztási utasítás eredményei. Ha minden oszlop egy külső táblából választ, az új táblázat a külső tábla adattípusok és az oszlopok egy replikát.
+A CTAS létrehoz egy új táblát, és feltölti azt egy SELECT utasítás eredményeivel. A CTAS határozza meg, hogy az új tábla ugyanazokat az oszlopokat és adattípusokat tartalmazza, mint a SELECT utasítás eredményei. Ha az összes oszlopot kiválasztja egy külső táblából, az új tábla a külső tábla oszlopainak és adattípusának replikája.
 
-Ebben a példában létrehozunk egy kivonat alapján elosztott tábla a külső tábla DimProduct_external DimProduct meghívva.
+Ebben a példában egy DimProduct nevű kivonatoló elosztott táblát hozunk létre a külső tábla DimProduct_external.
 
 ```sql
 
@@ -193,9 +193,9 @@ OPTION (LABEL = 'CTAS : Load [dbo].[DimProduct]');
 
 
 ## <a name="optimize-columnstore-compression"></a>Oszlopcentrikus tömörítés optimalizálása
-Alapértelmezés szerint az SQL Data Warehouse tárolja a tábla egy fürtözött oszlopcentrikus indexet. A betöltés befejezése után az adatsorokat némelyike előfordulhat, hogy nem tömöríti az oszloptárba.  Nincs több okból miért Ez akkor történhet. További tudnivalókért lásd: [oszlopcentrikus Indexek kezelése](sql-data-warehouse-tables-index.md).
+Alapértelmezés szerint a SQL Data Warehouse fürtözött oszlopcentrikus indexként tárolja a táblát. A betöltés befejeződése után előfordulhat, hogy egyes adatsorok nem lesznek tömörítve a oszlopcentrikus.  Ennek számos oka lehet. További információ: [oszlopcentrikus indexek kezelése](sql-data-warehouse-tables-index.md).
 
-Lekérdezési teljesítmény és a egy betöltés után oszlopcentrikus tömörítés optimalizálása érdekében végezze el a tábla az oszlopcentrikus indexet az összes sor tömörítendő kényszerítése.
+A lekérdezés teljesítményének és a oszlopcentrikus a terhelés utáni tömörítésének optimalizálásához építse újra a táblázatot a oszlopcentrikus index kikényszerítéséhez az összes sor tömörítéséhez.
 
 ```sql
 
@@ -203,30 +203,30 @@ ALTER INDEX ALL ON [dbo].[DimProduct] REBUILD;
 
 ```
 
-## <a name="optimize-statistics"></a>Statisztika optimalizálása
-Célszerű a betöltés után azonnal létrehozza a egyoszlopos statisztikát. Van néhány statisztikai lehetőségeit. Például ha egyoszlopos statisztikát hoz létre minden oszlopról építse újra az összes statisztika hosszú ideig eltarthat. Ha ismeri az egyes oszlopok nem gazdakiszolgálói lesznek az olyan predikátumokban lekérdezés, kihagyhatja a statisztikák létrehozása az oszlopokat.
+## <a name="optimize-statistics"></a>Statisztikák optimalizálása
+A legjobb, ha egy terhelés után azonnal létrehoz egy egyoszlopos statisztikát. Néhány statisztikai lehetőség is rendelkezésre áll. Ha például egyoszlopos statisztikát hoz létre minden egyes oszlophoz, akkor hosszú időt vehet igénybe az összes statisztika újraépítéséhez. Ha tudja, hogy bizonyos oszlopok nem szerepelnek a lekérdezési predikátumokban, kihagyhatja ezeket az oszlopokat a statisztikák létrehozásával.
 
-Ha úgy dönt, hogy egy oszlop statisztikákat létrehozni minden tábla minden oszlopához, használhatja a tárolt eljárás kódminta `prc_sqldw_create_stats` a a [statisztika](sql-data-warehouse-tables-statistics.md) cikk.
+Ha úgy dönt, hogy egyoszlopos statisztikát hoz létre minden táblázat minden oszlopához, használhatja a [statisztikai](sql-data-warehouse-tables-statistics.md) cikk tárolt eljárás `prc_sqldw_create_stats` kódja mintáját.
 
-Az alábbi példa a statisztikák létrehozása az jó kiindulási pont. A dimenzió tábla minden oszlopához, és az egyes csatlakozó oszlopa a ténytáblák hozza egyoszlopos statisztikát. Mindig hozzáadhat egy vagy több oszlop statisztikai más (tény) tábla oszlopait később.
+Az alábbi példa jó kiindulási pont a statisztikák létrehozásához. Egyoszlopos statisztikát hoz létre a dimenzió tábla minden egyes oszlopán, valamint a táblák egyes összekapcsolási oszlopaiban. Később is hozzáadhat egy vagy több oszlopos statisztikát más táblák oszlopaihoz.
 
-## <a name="achievement-unlocked"></a>Feloldotta eléréséhez!
-Az Azure SQL Data Warehouse-bA betöltött adatok sikeresen. Remek munka!
+## <a name="achievement-unlocked"></a>A megvalósítás feloldva!
+Sikeresen betöltötte az adatAzure SQL Data Warehouseba. Remek munka!
 
 ## <a name="next-steps"></a>További lépések 
-Ebben az oktatóanyagban a Data Lake Storage Gen1 tárolt adatok struktúráját külső táblákat hozott létre, és a PolyBase CREATE TABLE AS SELECT utasítás segítségével adatok betöltése az adattárházba. 
+Ebben az oktatóanyagban külső táblákat hozott létre a Data Lake Storage Gen1ban tárolt adatok struktúrájának definiálásához, majd a Base CREATE TABLE AS SELECT utasítás használatával tölti be az adatok adattárházba való betöltését. 
 
 A következőket hajtotta végre:
 > [!div class="checklist"]
-> * A Data Lake Storage Gen1 betöltéséhez szükséges létrehozott adatbázis-objektumokat.
-> * A Data Lake Storage Gen1 directory csatlakozik.
-> * Az Azure SQL Data Warehouse-bA betöltött adatokról.
+> * A Data Lake Storage Gen1ból való betöltéshez szükséges adatbázis-objektumok létrehozása.
+> * Egy Data Lake Storage Gen1 könyvtárhoz csatlakozik.
+> * A rendszer betöltötte az adatAzure SQL Data Warehouse.
 > 
 
-Adatok betöltése az adattárház-megoldását az SQL Data Warehouse fejlesztés első lépése. Tekintse meg a fejlesztői erőforrások.
+Az adatraktár-megoldások betöltésének első lépése a SQL Data Warehouse használatával történő adattárház-megoldás fejlesztése. Tekintse meg fejlesztési erőforrásait.
 
 > [!div class="nextstepaction"]
->[Ismerje meg, hogyan hozhat létre a táblát az SQL Data Warehouse](sql-data-warehouse-tables-overview.md)
+>[Ismerje meg, hogyan fejleszthet táblázatok SQL Data Warehouse](sql-data-warehouse-tables-overview.md)
 
 
 

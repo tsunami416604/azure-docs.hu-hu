@@ -1,6 +1,6 @@
 ---
-title: Az Azure AD tartományi szolgáltatások – a felügyelt tartomány állapotának ellenőrzéséhez |} A Microsoft Docs
-description: A health-oldal használatával az Azure Portalon a felügyelt tartomány állapotának ellenőrzéséhez.
+title: Azure AD Domain Services – a felügyelt tartomány állapotának ellenőrzését | Microsoft Docs
+description: A felügyelt tartomány állapotának ellenőrzését a Azure Portal állapot lapján hajthatja meg.
 services: active-directory-ds
 documentationcenter: ''
 author: iainfoulds
@@ -15,70 +15,70 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/20/2019
 ms.author: iainfou
-ms.openlocfilehash: 38403efd72843e7cd6d1afff5ff65a15af39c107
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: 6b808126fe4366d3ca3cc19c674b489ec3055665
+ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67473973"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68234157"
 ---
-# <a name="check-the-health-of-an-azure-ad-domain-services-managed-domain"></a>Az Azure AD Domain Services felügyelt tartomány állapotának ellenőrzése
+# <a name="check-the-health-of-an-azure-ad-domain-services-managed-domain"></a>Azure AD Domain Services felügyelt tartomány állapotának ellenőrzését
 
-## <a name="overview-of-the-health-page"></a>A health-oldal áttekintése
-A health-oldal használatával az Azure Portalon, Ön képesek arra, hogy mi történik a felügyelt tartomány naprakész. Ez a cikk végigvezeti a health-oldal elemeit.
+## <a name="overview-of-the-health-page"></a>Az állapot lap áttekintése
+A Azure Portal állapot lapján naprakészen tarthatja, hogy mi történik a felügyelt tartományon. Ez a cikk végigvezeti az állapot lap elemein.
 
 ### <a name="how-to-view-the-health-of-your-managed-domain"></a>A felügyelt tartomány állapotának megtekintése
-1. Keresse meg a [Azure AD tartományi szolgáltatások lap](https://portal.azure.com/#blade/HubsExtension/Resources/resourceType/Microsoft.AAD%2FdomainServices) az Azure Portalon.
-2. Kattintson a tartomány állapotának megtekintéséhez.
-3. Kattintson a bal oldali navigációs ablaktáblában **egészségügyi**.
+1. Navigáljon a Azure Portal [Azure ad Domain Services lapjára](https://portal.azure.com/#blade/HubsExtension/Resources/resourceType/Microsoft.AAD%2FdomainServices) .
+2. Kattintson arra a tartományra, amelynek állapotát meg szeretné tekinteni.
+3. A bal oldali navigációs ablaktáblán kattintson az **állapot**elemre.
 
-A következő képen látható egy minta health-oldal mutatja be: ![Példa health-oldal](./media/active-directory-domain-services-alerts/health-page.png)
+A következő kép egy minta állapotot ábrázoló oldalt mutat be: ![Példa állapot lap](./media/active-directory-domain-services-alerts/health-page.png)
 
 >[!NOTE]
-> A felügyelt tartomány állapotának abban az esetben minden órában. A felügyelt tartomány módosítások elvégzése után várja meg, amíg a következő értékelési ciklus során frissített a felügyelt tartomány állapotának megtekintéséhez. A jobb felső sarokban lévő "Legutóbbi értékelésének" időbélyeg jeleníti meg, ha a felügyelt tartomány állapotának legutóbbi értékelésének.
+> A felügyelt tartomány állapota óránként lesz kiértékelve. Miután módosította a felügyelt tartományt, várjon, amíg a következő kiértékelési ciklus megtekinti a felügyelt tartomány frissített állapotát. A jobb felső sarokban lévő "utolsó kiértékelt" időbélyegző azt mutatja, hogy a felügyelt tartomány állapota mikor lett utoljára kiértékelve.
 >
 
-### <a name="status-of-your-managed-domain"></a>A felügyelt tartomány állapotának
-A felső állapota az állapot, a jobb oldalon azt jelzi, hogy a felügyelt tartomány általános állapotát. Az állapot a meglévő riasztásokat a tartományban lévő összes számításba. A tartomány állapotának az Azure AD tartományi szolgáltatások – áttekintés oldalán is megtekintheti.
+### <a name="status-of-your-managed-domain"></a>A felügyelt tartomány állapota
+Az állapot oldal jobb felső sarkában található állapot a felügyelt tartomány általános állapotát jelzi. A tartomány összes meglévő riasztásának állapotára vonatkozó tényezők. A tartomány állapotát a Azure AD Domain Services áttekintés lapján is megtekintheti.
 
 | Állapot | Ikon | Magyarázat |
 | --- | :----: | --- |
-| Fut | <img src= "./media/active-directory-domain-services-alerts/running-icon.png" width = "15"> | A felügyelt tartomány már simán fut, és nem rendelkezik minden kritikus vagy figyelmeztető riasztást. Ez a tartomány előfordulhat tájékoztatási szintű riasztások. |
-| Figyelmet igényel (figyelmeztetés) | <img src= "./media/active-directory-domain-services-alerts/warning-icon.png" width = "15"> | Nincsenek kritikus riasztások a felügyelt tartományban lévő, de tartandó egy vagy több figyelmeztető riasztások. |
-| Figyelmet igényel (kritikus) | <img src= "./media/active-directory-domain-services-alerts/critical-icon.png" width = "15"> | Nincs olyan egy vagy több kritikus riasztást a felügyelt tartományra. Figyelmeztetési és/vagy tájékoztató riasztások is rendelkezhetnek. |
-| Üzembe helyezése | <img src= "./media/active-directory-domain-services-alerts/deploying-icon.png" width = "15"> | A tartomány folyamatban üzembe helyezése folyamatban van. |
+| Fut | <img src= "./media/active-directory-domain-services-alerts/running-icon.png" width = "15" alt="Green check mark for running"> | A felügyelt tartomány zökkenőmentesen fut, és nem rendelkezik kritikus vagy figyelmeztető riasztásokkal. Ez a tartomány tájékoztató riasztásokkal rendelkezhet. |
+| Figyelmet igényel (figyelmeztetés) | <img src= "./media/active-directory-domain-services-alerts/warning-icon.png" width = "15" alt="Yellow exclamation mark for warning"> | Nincsenek kritikus riasztások a felügyelt tartományon, de egy vagy több figyelmeztető riasztást kell kezelni. |
+| Figyelmet igényel (kritikus) | <img src= "./media/active-directory-domain-services-alerts/critical-icon.png" width = "15" alt="Red exclamation mark for critical"> | Egy vagy több kritikus riasztás található a felügyelt tartományon. Figyelmeztetési és/vagy tájékoztató riasztásokat is tartalmazhat. |
+| Telepítése | <img src= "./media/active-directory-domain-services-alerts/deploying-icon.png" width = "15" alt="Blue circular arrows for deploying"> | A tartomány üzembe helyezése folyamatban van. |
 
 ## <a name="monitors"></a>Monitorozások
-Figyelők a felügyelt tartományhoz, amely rendszeresen figyeli az Azure AD Domain Services aspektusait. A legjobb módja, hogy a figyelő kifogástalan állapotban, a felügyelt tartományhoz tartozó aktív riasztások megoldása érdekében.
+A figyelők a felügyelt tartomány azon szempontjai, amelyek rendszeres időközönként Azure AD Domain Services figyelik. A figyelők kifogástalan állapotban tartásához a legjobb módszer a felügyelt tartományhoz tartozó aktív riasztások feloldása.
 
-Az Azure AD tartományi szolgáltatások jelenleg a következőket figyeli:
+Azure AD Domain Services jelenleg a következőket figyeli:
  - Backup
- - Szinkronizálás az Azure ad-vel
+ - Szinkronizálás az Azure AD-vel
 
-### <a name="the-backup-monitor"></a>A "backup" figyelő
-Ez figyeli, hogy rendszeresen készítsen biztonsági másolatokat a felügyelt tartomány végrehajtása. A következő táblázat ismerteti, hogy milyen hatással vannak a biztonsági mentési figyelő részletei oszlopában:
+### <a name="the-backup-monitor"></a>A "Backup" figyelő
+Ez figyeli, hogy a felügyelt tartomány rendszeres biztonsági mentése zajlik-e. A következő táblázat ismerteti, mire számíthat a Backup figyelő részletek oszlopában:
 
-| Részletek értéke | Magyarázat |
+| Részletességi érték | Magyarázat |
 | --- | --- |
-|"Soha nem biztonsági mentése" | Ebben az állapotban előfordulhat, hogy egy újonnan létrehozott felügyelt tartományon. Az első biztonsági mentés általában 24 órával a felügyelt tartomány kiépítése után jön létre. Ha a felügyelt tartomány nem újonnan létrehozott vagy rendellenes mennyi idő, jelennek meg ebben az állapotban [forduljon az ügyfélszolgálathoz](contact-us.md). |
-| Legutóbbi biztonsági mentés készült 1-től 14 nappal ezelőtt | Általánosságban véve a biztonsági mentési figyelő ezt az értéket várt. |
-| Legutóbbi biztonsági mentés 14 napnál régebben történt. | Két héttel hosszabb ideje szokatlanul hosszú ideig a legutóbbi biztonsági mentés óta. Aktív kritikus riasztások a felügyelt tartományt megakadályozhatja rendszeres biztonsági mentés alatt álló. First, minden aktív a felügyelt tartományhoz tartozó riasztást, és ezután Ha a probléma továbbra is fennáll, hárítsa el [forduljon az ügyfélszolgálathoz](contact-us.md). |
+|"Soha nem biztonsági másolat készítése" | Ez az állapot egy újonnan létrehozott felügyelt tartomány esetében normális. Általában az első biztonsági mentés a felügyelt tartomány kiépítés utáni 24 órában jön létre. Ha a felügyelt tartomány nem újonnan lett létrehozva, vagy rendellenes ideig látja ezt az állapotot, [forduljon](contact-us.md)az ügyfélszolgálathoz. |
+| A legutóbbi biztonsági mentés 1 – 14 nappal ezelőtt történt | Általánosságban elmondható, hogy ez az érték a biztonsági mentési figyelő esetében várható. |
+| A legutóbbi biztonsági mentés több mint 14 napja is megtörtént. | A legutóbbi biztonsági mentés óta a két hétnél hosszabb idő szokatlanul hosszú. Az aktív kritikus riasztások akadályozhatják a felügyelt tartomány rendszeres biztonsági mentését. Először oldja meg a felügyelt tartomány összes aktív riasztását, és ha a probléma továbbra is fennáll, [forduljon](contact-us.md)az ügyfélszolgálathoz. |
 
 
-### <a name="the-synchronization-with-azure-ad-monitor"></a>A "az Azure AD szinkronizálási" figyelője
-A Microsoft figyeli, hogy milyen gyakran a felügyelt tartományhoz az Azure Active Directory szinkronizálva van. Objektumot (felhasználókat és csoportokat), és mivel a legutóbbi szinkronizálás is érinthetik mennyi ideig is eltarthat a szinkronizálási időszakot az Azure AD-címtárhoz végrehajtott módosítások számát száma. Ha a felügyelt tartomány volt utoljára szinkronizálva több mint három nappal ezelőtt, [forduljon az ügyfélszolgálathoz](contact-us.md).
+### <a name="the-synchronization-with-azure-ad-monitor"></a>A "szinkronizálás az Azure AD-vel" figyelő
+A Microsoft figyeli, hogy a felügyelt tartomány milyen gyakran szinkronizálva van Azure Active Directoryával. Az objektumok (felhasználók & csoportok) száma és az Azure AD-címtárban végrehajtott módosítások száma, mivel a legutóbbi szinkronizálás is befolyásolhatja, hogy mennyi ideig tarthat a szinkronizálási időszak. Ha a felügyelt tartománya három nappal ezelőtt volt utoljára szinkronizálva, [forduljon](contact-us.md)az ügyfélszolgálathoz.
 
 ## <a name="alerts"></a>Riasztások
-Riasztások jönnek létre a problémákat a tartandó ahhoz, hogy az Azure AD tartományi szolgáltatások futtatásához, a felügyelt tartományban. Minden riasztás ismerteti a problémát, és biztosít egy megoldás URL-címet, amely a probléma megoldásának lépéseit ismerteti. Minden riasztás és azok megoldásait megtekintéséhez keresse fel a [elháríthatja a riasztásokat](troubleshoot-alerts.md) cikk.
+A rendszer riasztásokat hoz létre a felügyelt tartományhoz tartozó olyan problémák esetén, amelyeket a Azure AD Domain Services futtatásához kell kezelnie. Az egyes riasztások ismertetik a problémát, és egy olyan feloldási URL-címet biztosítanak, amely a probléma megoldásának konkrét lépéseit ismerteti. Az összes riasztás és a hozzájuk tartozó [megoldás](troubleshoot-alerts.md) megtekintéséhez tekintse meg a riasztások elhárítása című cikket.
 
 ### <a name="alert-severity"></a>Riasztás súlyossága
-Riasztások súlyosság három különböző szintjei kategóriákba: kritikus, figyelmeztetés és információs.
+A riasztások három különböző súlyossági szintre vannak kategorizálva: kritikus, figyelmeztetés és tájékoztató.
 
- * **Kritikus riasztások** a problémák hátrányosan befolyásolhatja a felügyelt tartományra. Ezek a riasztások, azonnal foglalkozzon, mint a Microsoft nem figyelése, kezelése, javítani és szinkronizálni a felügyelt tartományt. 
- * **Figyelmeztetési szintű riasztások** Önt a problémákat, amelyek hatással lehet a jövőben a felügyelt tartományra. Ezek a riasztások a felügyelt tartomány secure javaslatok kínálnak.
- * **Tájékoztatási szintű riasztások** értesítéseket, amelyek nem negatív negatív hatással vannak a tartományban vannak. Tájékoztatási szintű riasztások úgy tervezték, hogy mi történik a tartomány és az Azure AD tartományi szolgáltatások alapos ismerete.
+ * A **kritikus riasztások** olyan problémák, amelyek súlyosan érintik a felügyelt tartományt. Ezeket a riasztásokat azonnal meg kell oldani, mivel a Microsoft nem tudja figyelni, felügyelni, javítani és szinkronizálni a felügyelt tartományt. 
+ * A **figyelmeztető riasztások** értesítést küldenek arról, hogy a későbbiekben milyen problémák léphetnek fel a felügyelt tartományra. Ezek a riasztások a felügyelt tartomány biztonságossá tételére vonatkozó javaslatokat nyújtanak.
+ * Az **tájékoztató riasztások** olyan értesítések, amelyek nem negatív hatással vannak a tartományra. Az tájékoztató riasztások úgy lettek kialakítva, hogy megismerje a tartományon és a Azure AD Domain Serviceson zajló teendőket.
 
 ## <a name="next-steps"></a>További lépések
-- [Riasztások a felügyelt tartományon](troubleshoot-alerts.md)
-- [További információ az Azure AD tartományi szolgáltatások](overview.md)
-- [Lépjen kapcsolatba a termékcsoport](contact-us.md)
+- [Riasztások feloldása a felügyelt tartományon](troubleshoot-alerts.md)
+- [További információ a Azure AD Domain Servicesról](overview.md)
+- [Kapcsolatfelvétel a termék csapatával](contact-us.md)

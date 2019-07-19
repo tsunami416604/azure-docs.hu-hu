@@ -1,6 +1,6 @@
 ---
-title: Az SAP HANA az Azure-ban (nagyméretű példányok) az operációs rendszer frissítése |} A Microsoft Docs
-description: Hajtsa végre az operációs rendszer frissítése az SAP Hana az Azure-ban (nagyméretű példányok)
+title: Az Azure-beli SAP HANA operációs rendszerének frissítése (nagyméretű példányok) | Microsoft Docs
+description: Operációs rendszer verziófrissítésének elvégzése SAP HANA Azure-ban (nagyméretű példányok)
 services: virtual-machines-linux
 documentationcenter: ''
 author: saghorpa
@@ -11,45 +11,45 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 06/28/2018
-ms.author: saghorpa
+ms.date: 07/04/2019
+ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5583a633c64943185f874e1c0ff80f654010aa53
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: aa88e45f2523dd65c4f714bfeab1c0eda401d720
+ms.sourcegitcommit: 10251d2a134c37c00f0ec10e0da4a3dffa436fb3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67710022"
+ms.lasthandoff: 07/13/2019
+ms.locfileid: "67869151"
 ---
 # <a name="operating-system-upgrade"></a>Operációs rendszer frissítése
-Ez a dokumentum ismerteti a részletek a HANA nagyméretű példányok az operációsrendszer-frissítést.
+Ez a dokumentum ismerteti az operációs rendszer frissítésének részleteit a HANA nagyméretű példányain.
 
 >[!NOTE]
->Az operációs rendszer frissítése a vevők felelőssége, Microsoft üzemeltetéstámogatás is végigvezeti Önt a legfontosabb területek, hogy figyelje, hogy a frissítés során. Azt tervezi, a frissítés előtt nézze át, valamint az operációs rendszer gyártója.
+>Az operációs rendszer frissítése az ügyfelek felelőssége, a Microsoft operatív támogatási szolgálata útmutatást nyújt a főbb területekhez, amelyekkel megtekintheti a frissítést. A frissítés megtervezése előtt tekintse meg az operációs rendszer gyártóját is.
 
-A kiépítés HLI egység időpontjában a Microsoft üzemeltetési csapat az operációs rendszer telepítése. Az idő függvényében, fenntartásához szükséges az operációs rendszer (Példa: Javítás, hangolása, a frissítés stb.) a HLI egységen.
+A HLI egység kiépítés időpontjában a Microsoft Operations csapat telepíti az operációs rendszert. Az idő múlásával meg kell őriznie az operációs rendszert (például: Javítások, hangolás, verziófrissítés stb.) a HLI egységen.
 
-Előtt a operációs rendszerben (például frissítése SP1, SP2-re) nagyobb, forduljon a támogatási jegy megnyitásával kell forduljon a Microsoft Operations csapatához.
+Mielőtt megkezdené az operációs rendszer jelentős módosításait (például a SP1 verzióról SP2-re), forduljon a Microsoft Operations csapathoz egy támogatási jegy megnyitásával.
 
-A jegy a következők:
+Belefoglalás a jegybe:
 
-* Az HLI előfizetési azonosítóját.
-* A kiszolgáló nevét.
-* A alkalmazni kíván javítási szintet.
-* Azt tervezi, hogy ez a módosítás dátuma. 
+* A HLI-előfizetés azonosítója.
+* A kiszolgáló neve.
+* Az alkalmazni kívánt javítási szint.
+* A módosítás megtervezésének dátuma. 
 
-Akkor javasoljuk, hogy miatt a rendszer ellenőrzi, hogy a belső vezérlőprogram frissítése szükséges a kiszolgáló panelen lesz, a üzemeltetési csapat kellene kívánatos frissítési időpont előtt legalább egy héttel a jegy megnyitásakor.
+Javasoljuk, hogy ezt a jegyet legalább egy héttel a kívánt frissítési dátum előtt nyissa meg, mert a műveleti csapat ellenőrzi, hogy szükség van-e belső vezérlőprogram-frissítésre a kiszolgáló paneljén.
 
 
-A különböző Linux-verziók a különböző SAP HANA-verziók támogatási mátrixa, lásd: [SAP Megjegyzés #2235581](https://launchpad.support.sap.com/#/notes/2235581).
+A különböző Linux-verziókkal rendelkező különböző SAP HANA verziók támogatási mátrixa: [SAP Note #2235581](https://launchpad.support.sap.com/#/notes/2235581).
 
 
 ## <a name="known-issues"></a>Ismert problémák
 
-Az alábbiakban néhány gyakori ismert problémákat a frissítés során:
-- Termékváltozat II. típusú osztályról Termékváltozat az operációs rendszer frissítése után a rendszer eltávolítja a software foundation szoftvert (SFS). Az operációs rendszer frissítése után újra kell telepítenie a kompatibilis SFS.
-- Ethernet-illesztők (ENIC és FNIC) vissza lett állítva a régebbi verziót. A frissítés után újra kell telepíteni az illesztőprogramokat kompatibilis verziója.
+A frissítés során néhány gyakori ismert probléma a következő:
+- A II. típusú SKU-ban az operációs rendszer frissítése után törlődnek a szoftver Foundation szoftverei (a strukturális alapok). Az operációs rendszer frissítése után újra kell telepítenie a kompatibilis strukturális rendszereket.
+- Az Ethernet-kártya illesztőprogramjai (ENIC és FNIC) visszaállnak a régebbi verzióra. A frissítés után újra kell telepítenie az illesztőprogramok kompatibilis verzióját.
 
 ## <a name="next-steps"></a>További lépések
-- Tekintse meg [biztonsági mentési és visszaállítási](hana-overview-high-availability-disaster-recovery.md) az operációs rendszer biztonsági mentési i. típus Termékváltozat osztály.
-- Tekintse meg [operációs rendszer biztonsági mentése II. típusú termékváltozatokhoz](os-backup-type-ii-skus.md) típus II Termékváltozat osztályhoz.
+- Tekintse át a [biztonsági mentést és](hana-overview-high-availability-disaster-recovery.md) a visszaállítást az operációs rendszer biztonsági mentése I SKU osztályban.
+- Tekintse át az [operációs rendszer biztonsági másolatát](os-backup-type-ii-skus.md) , amely a 2. típusú SKU osztályhoz tartozó 3. típusú bélyegzőket használja.

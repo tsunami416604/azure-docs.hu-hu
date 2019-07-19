@@ -1,77 +1,77 @@
 ---
-title: Az Azure digitális Twins nyilvános előzetes verziójú szolgáltatásokra vonatkozó korlátozások |} A Microsoft Docs
-description: Ismerje meg az Azure digitális Twins nyilvános előzetes verziójú szolgáltatásokra vonatkozó korlátozások.
+title: Az Azure Digital Twins nyilvános előzetes verziójának szolgáltatási korlátai | Microsoft Docs
+description: Ismerje meg az Azure Digital Twins nyilvános előzetes verziójának szolgáltatási korlátait.
 author: dwalthermsft
 manager: deshner
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
 ms.date: 01/03/2019
-ms.author: dwalthermsft
-ms.openlocfilehash: cc873ad441c93a7fce54c275e9f7d52f0b044319
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: dwalther
+ms.openlocfilehash: f3239fa5d21078795e7b063cb0364e905cba25c1
+ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60927553"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67846628"
 ---
 # <a name="public-preview-service-limits"></a>A szolgáltatás nyilvános előzetes verziójának korlátozásai
 
-A nyilvános előzetes verzióban az Azure digitális Twins rendelkezik, az alábbi ideiglenes előfizetéssel, a példány és a sebességhatár beállításával.
+A nyilvános előzetes verzióban az Azure Digital Twins a következő ideiglenes előfizetést, példányt és díjszabási korlátot jeleníti meg.
 
-Ezek a korlátozások létezik, így egyszerűsítve az új szolgáltatást és a számos funkciót.
+Ezek a megkötések megkönnyítik az új szolgáltatással és számos szolgáltatásával kapcsolatos ismeretek leegyszerűsítését.
 
 > [!NOTE]
-> Ezek a korlátok fog növelhető vagy általánosan (elérhetővé tétel GA) funkcióval.
+> Ezeket a korlátokat az általános elérhetőség (GA) növeli vagy eltávolítja.
 
-## <a name="per-subscription-limits"></a>Előfizetésenként korlátok
+## <a name="per-subscription-limits"></a>Előfizetési korlátok
 
-A nyilvános előzetes során minden Azure-előfizetés létrehozása, vagy egyszerre csak egy Azure digitális Twins példány futtatható.
+A nyilvános előzetes verzióban minden egyes Azure-előfizetés egyszerre csak egy Azure digitális Twins-példányt tud létrehozni vagy futtatni.
 
 > [!TIP]
 > Ha törli a példányt, létrehozhat egy újat.
 
-## <a name="per-instance-limits"></a>Példány korlátok
+## <a name="per-instance-limits"></a>Felhasználónkénti korlátok
 
-Ezután minden egyes Azure digitális Twins példány veheti fel:
+Az egyes Azure-beli digitális Twins-példányok pedig a következőket tehetik:
 
-- Pontosan egy beágyazott **IoTHub** szolgáltatás kiépítése során automatikusan létrehozott erőforrást.
-- Pontosan egy **EventHub** esemény típusú végpont **DeviceMessage**.
-- Legfeljebb három **EventHub**, **ServiceBus**, vagy **EventGrid** az esemény típusú végpontok **SensorChange**, **SpaceChange** , **TopologyOperation**, vagy **UdfCustom**.
+- Pontosan egy beágyazott **IoTHub** -erőforrás, amelyet a rendszer automatikusan hozott létre a szolgáltatás kiépítés során.
+- Pontosan egy **EventHub** -végpont az esemény típusának **DeviceMessage**.
+- Legfeljebb három **EventHub**, **ServiceBus**vagy **EventGrid** végpont, **SensorChange**, **SpaceChange**, **TopologyOperation**vagy **UdfCustom**eseménytípus.
 
 > [!NOTE]
-> Egyes általában a fenti Azure IoT-entitások létrehozásakor meghatározott paraméterek nem szükségesek a nyilvános előzetes verzió ideje alatt.
-> - Tekintse át a [Swagger dokumentációja](./how-to-use-swagger.md) számára a legújabb API-specifikációkat.
+> A nyilvános előzetes verzióban általában a fenti Azure IoT-entitások létrehozásakor meghatározott paraméterek nem szükségesek.
+> - A legfrissebb API-specifikációkat a [hencegő dokumentációban találja](./how-to-use-swagger.md) .
 
-## <a name="azure-digital-twins-management-api-limits"></a>Az Azure digitális Twins felügyeleti API-korlátok
+## <a name="azure-digital-twins-management-api-limits"></a>Azure digitális Twins felügyeleti API-korlátok
 
-Az Azure digitális Twins felügyeleti API a kérelem sebességhatárt a következők:
+Az Azure Digital Twins felügyeleti API-ra vonatkozó kérelmek díjszabása a következő:
 
-- 100 vonatkozó kérelmek másodpercenkénti száma az Azure digitális Twins felügyeleti API-hoz.
-- Egyetlen Azure digitális Twins felügyeleti API-lekérdezés által visszaadott legfeljebb 1000 objektumot.
+- 100 másodpercenkénti kérelmek az Azure digitális Twins felügyeleti API-hoz.
+- Akár 1 000 objektum, amelyet egyetlen Azure digitális ikrek felügyeleti API-lekérdezése adott vissza.
 
 > [!IMPORTANT]
-> Ha 1000-objektum korlátot túllépi, hibaüzenetet kap, és a lekérdezés egyszerűsítenie kell.
+> Ha túllépi az 1 000-Object korlátot, hibaüzenetet kap, és egyszerűsíteni kell a lekérdezést.
 
-## <a name="user-defined-functions-rate-limits"></a>Felhasználó által definiált függvények sebességhatárok
+## <a name="user-defined-functions-rate-limits"></a>Felhasználó által definiált függvények díjszabási korlátai
 
-Az alábbi korlátozások beállítása az Azure digitális Twins-példány összes felhasználó által definiált függvény hívások teljes száma:
+A következő korlátok határozzák meg az Azure Digital Twins-példányon végrehajtott összes felhasználó által megadott függvényhívás teljes számát:
 
-- 400 client library hívások / másodperc
-- 100 **SendNotification** hívások / másodperc
+- 400 ügyféloldali függvénytár-hívások másodpercenként
+- 100 **SendNotification** -hívások másodpercenként
 
 > [!NOTE]
-> Előfordulhat, hogy a következő műveleteket a alkalmazni ideiglenesen további sebességhatárok:
-> - A topológia objektum metaadatainak szerkesztése
-> - A felhasználó által definiált függvény definíciója végzett frissítések
-> - Az első alkalommal telemetriai adatokat küldő eszközök
+> A következő műveletek a további díjszabási korlátokat is okozhatják ideiglenesen:
+> - A topológiai objektum metaadatainak módosításai
+> - A felhasználó által definiált függvény definíciójának frissítései
+> - Azok az eszközök, amelyek első alkalommal küldenek telemetria
 
-## <a name="device-telemetry-limits"></a>Telemetria eszközkorlátok
+## <a name="device-telemetry-limits"></a>Eszközök telemetria korlátai
 
-Az alábbi korlátozások költségplafont, az eszközök küldhet az Azure digitális Twins-példány összes üzenetek teljes száma:
+Az alábbi korlátok az eszközök által az Azure Digital Twins-példányba küldött összes üzenet teljes száma.
 
-- 100 üzenetek / másodperc
+- 100 üzenet másodpercenként
 
 ## <a name="next-steps"></a>További lépések
 
-- Próbálja ki az Azure digitális Twins minta, nyissa meg [rövid útmutatóban elérhető teremkeresés](./quickstart-view-occupancy-dotnet.md).
+- Egy Azure-beli digitális Twins-minta kipróbálásához lépjen a gyors üzembe helyezési lehetőségre, [és keresse meg az elérhető szobákat](./quickstart-view-occupancy-dotnet.md).
