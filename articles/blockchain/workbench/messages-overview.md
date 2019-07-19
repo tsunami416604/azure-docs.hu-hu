@@ -117,7 +117,7 @@ A kérelemhez szükséges a következő mezőket:
 | userChainIdentifier  | A blockchain-hálózat létrehozó felhasználó címe. Ez a cím Ethereum, a felhasználó **lánc** címet. |
 | applicationName      | Az alkalmazás neve |
 | version              | Az alkalmazás verziója. Van szükség, ha engedélyezve van az alkalmazás több verzióját. Ellenkező esetben a verzió nem kötelező. Alkalmazások verziószámozása további információkért lásd: [Azure Blockchain Workbench alkalmazás verziószámozása](version-app.md). |
-| WorkflowName         | A munkafolyamat neve |
+| workflowName         | A munkafolyamat neve |
 | parameters           | Bemeneti paraméterek szerződés létrehozása |
 | connectionId         | A blockchain-kapcsolat egyedi azonosítója |
 | messageSchemaVersion | Üzenetkezelési sémaverzió |
