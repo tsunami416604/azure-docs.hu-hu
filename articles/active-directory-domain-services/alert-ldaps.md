@@ -1,6 +1,6 @@
 ---
-title: 'Az Azure Active Directory tartományi szolgáltatások: Hibaelhárítási Secure LDAP-konfiguráció |} A Microsoft Docs'
-description: Az Azure AD Domain Services hibaelhárítási biztonságos LDAP
+title: 'Azure Active Directory Domain Services: Biztonságos LDAP-hibák megoldása | Microsoft Docs'
+description: Hibaelhárítási Secure LDAP Azure AD Domain Services
 services: active-directory-ds
 documentationcenter: ''
 author: iainfoulds
@@ -15,54 +15,54 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/22/2019
 ms.author: iainfou
-ms.openlocfilehash: 453018f486ca3fda91d8447208fe3d936722522e
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: 8a542f7927ddd834c7273f6ef8b251ddc35e8436
+ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67473953"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68234188"
 ---
-# <a name="azure-ad-domain-services---troubleshooting-secure-ldap-configuration"></a>Az Azure AD tartományi szolgáltatások – hibaelhárítási Secure LDAP-konfiguráció
+# <a name="azure-ad-domain-services---troubleshooting-secure-ldap-configuration"></a>Azure AD Domain Services – Secure LDAP konfiguráció hibaelhárítása
 
-Ez a cikk gyakori elhárítási problémákkal [a secure LDAP konfigurálása](configure-ldaps.md) az Azure AD tartományi szolgáltatásokhoz.
+Ez a cikk a [biztonságos LDAP](configure-ldaps.md) a Azure ad domain Serviceshoz való konfigurálásakor felmerülő gyakori problémák megoldásait ismerteti.
 
 ## <a name="aadds101-secure-ldap-network-security-group-configuration"></a>AADDS101: Secure LDAP hálózati biztonsági csoport konfigurálása
 
-**Riasztás jelenik meg:**
+**Riasztási üzenet:**
 
-*A felügyelt tartomány Secure LDAP interneten keresztül engedélyezve van. 636-os porthoz való hozzáférés le a hálózati biztonsági csoport használatával azonban nincs zárolva. Ez előfordulhat, hogy teszik elérhetővé a felhasználói fiókok jelszavát találgatásos támadások, a felügyelt tartományon.*
+*Az interneten keresztüli Secure LDAP engedélyezve van a felügyelt tartományhoz. Az 636-as porthoz való hozzáférés azonban nem áll le hálózati biztonsági csoport használatával. A felhasználók a felügyelt tartomány felhasználói fiókjait felhasználhatják az elkövetett jelszavakkal kapcsolatos támadásokra.*
 
-### <a name="secure-ldap-port"></a>Biztonságos LDAP-port
+### <a name="secure-ldap-port"></a>Secure LDAP port
 
-Ha a secure LDAP engedélyezve van, azt javasoljuk, hogy csak bizonyos IP-címekről érkező bejövő LDAPS hozzáférést további szabályok létrehozásával. Ezek a szabályok a tartomány elleni találgatásos támadásokkal szemben, amelyek biztonsági fenyegetést jelenthetnek. Port a 636-os lehetővé teszi, hogy a felügyelt tartomány elérését. Itt látható az NSG-t hozzáférés engedélyezése a Secure LDAP protokollhoz frissítése:
+Ha engedélyezve van a biztonságos LDAP, javasoljuk, hogy hozzon létre további szabályokat, amelyekkel a bejövő LDAP-hozzáférés csak bizonyos IP-címekről engedélyezett. Ezek a szabályok olyan találgatásos támadásokkal védik a tartományt, amelyek biztonsági fenyegetést jelenthetnek. A 636-es port lehetővé teszi a hozzáférést a felügyelt tartományhoz. Az alábbi módon frissítheti a NSG a Secure LDAP való hozzáférés engedélyezéséhez:
 
-1. Keresse meg a [hálózati biztonsági csoportok lapon](https://portal.azure.com/#blade/HubsExtension/Resources/resourceType/Microsoft.Network%2FNetworkSecurityGroups) az Azure Portalon
-2. Válassza ki a tartományt a táblázatban a társított NSG-t.
-3. Kattintson a **bejövő biztonsági szabályok**
-4. A 636-os portot szabály létrehozása
-   1. Kattintson a **Hozzáadás** a felső navigációs sávon.
-   2. Válasszon **IP-címek** a forrás.
-   3. Adja meg a forrásporttartományok ehhez a szabályhoz.
-   4. "636" bemeneti Célporttartomány.
-   5. Protokoll **TCP**.
-   6. Adjon a szabálynak megfelelő nevet, leírást és prioritás. Ez a szabály prioritása nagyobb, mint az "Összes Megtagadás" szabály prioritását, lehet, ha rendelkezik ilyennel.
+1. Navigáljon a [hálózati biztonsági csoportok lapra](https://portal.azure.com/#blade/HubsExtension/Resources/resourceType/Microsoft.Network%2FNetworkSecurityGroups) a Azure Portal
+2. Válassza ki a tartományhoz társított NSG a táblából.
+3. Kattintson a **bejövő biztonsági szabályok** elemre.
+4. A 636-as port létrehozása szabály
+   1. Kattintson a felső navigációs sávon a **Hozzáadás** gombra.
+   2. Válassza ki a forrás **IP-címeit** .
+   3. A szabályhoz tartozó forrásport-tartományok megadása.
+   4. "636" bemenet a célport tartományához.
+   5. A protokoll **TCP**.
+   6. Adjon a szabálynak megfelelő nevet, leírást és prioritást. A szabály prioritásának magasabbnak kell lennie, mint az "összes letiltása" szabály prioritása, ha rendelkezik ilyennel.
    7. Kattintson az **OK** gombra.
-5. Győződjön meg arról, hogy a szabály létrejött-e.
-6. A tartomány állapotának ellenőrzése annak biztosítása érdekében, hogy végrehajtotta a lépéseket megfelelően két órán belül.
+5. Ellenőrizze, hogy létrejött-e a szabály.
+6. Ellenőrizze a tartomány állapotát két órán belül, és győződjön meg arról, hogy megfelelően végrehajtotta-e a lépéseket.
 
 > [!TIP]
-> Az Azure AD tartományi szolgáltatásokkal való zökkenőmentes szükséges egyetlen szabály 636-os portot nem áll. További tudnivalókért látogasson el a [hálózati útmutató](network-considerations.md) vagy [hibaelhárítása NSG konfigurációs](alert-nsg.md) cikkeket.
+> A 636-es port nem az egyetlen olyan szabály, amely a Azure AD Domain Services zökkenőmentes futtatásához szükséges. További tudnivalókért tekintse meg a [hálózati irányelveket](network-considerations.md) , vagy hárítsa el a [NSG konfigurációs](alert-nsg.md) cikkeit.
 >
 
-## <a name="aadds502-secure-ldap-certificate-expiring"></a>AADDS502: Secure LDAP-tanúsítvány hamarosan lejár
+## <a name="aadds502-secure-ldap-certificate-expiring"></a>AADDS502: Secure LDAP a tanúsítvány lejárata
 
-**Riasztás jelenik meg:**
+**Riasztási üzenet:**
 
-*A felügyelt tartomány secure LDAP-tanúsítványt lejár: [date]].*
+*A felügyelt tartomány biztonságos LDAP-tanúsítványa a következő időpontban lejár: [date]].*
 
 **Megoldás:**
 
-Hozzon létre egy új secure LDAP-tanúsítványt a következő témakörben ismertetett lépéseket a [secure LDAP konfigurálása](configure-ldaps.md) cikk.
+Hozzon létre egy új biztonságos LDAP-tanúsítványt a [biztonságos LDAP konfigurálása](configure-ldaps.md) című cikkben ismertetett lépéseket követve.
 
 ## <a name="contact-us"></a>Kapcsolat
-Lépjen kapcsolatba az Azure Active Directory Domain Services termékért felelős csoport [visszajelzés és támogatás](contact-us.md).
+A [visszajelzések megosztásához és](contact-us.md)a támogatáshoz forduljon a Azure Active Directory Domain Services termék csapatához.

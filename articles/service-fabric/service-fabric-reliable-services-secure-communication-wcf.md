@@ -1,6 +1,6 @@
 ---
-title: Biztonságos WCF-alapú kommunikációt az Azure Service Fabricben |} A Microsoft Docs
-description: Útmutató a biztonságos kommunikáció a WCF-alapú reliable Services, Azure Service Fabric-fürtben futó.
+title: Biztonságos WCF-alapú szolgáltatás-kommunikáció az Azure Service Fabricban | Microsoft Docs
+description: Ismerje meg, hogyan védheti meg a WCF-alapú kommunikációt az Azure Service Fabric-fürtön futó megbízható szolgáltatások esetében.
 services: service-fabric
 documentationcenter: .net
 author: suchiagicha
@@ -13,20 +13,20 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 04/20/2017
-ms.author: suchiagicha
-ms.openlocfilehash: 26d34f0473dec5e0767041df400b84887a0d1778
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: chackdan
+ms.openlocfilehash: 4e41638472307f0f88e92413d98b669b27572f54
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60725584"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67872125"
 ---
-# <a name="secure-wcf-based-communications-for-a-service"></a>Biztonságos kommunikáció a WCF-alapú szolgáltatás
-Biztonsági az egyik legfontosabb szempontja kommunikáció. A Reliable Services alkalmazási keretrendszer tartalmaz néhány előre létrehozott kommunikációs implementációt, eszközök, amelyek a biztonság növelése érdekében használhatja. Ez a cikk ismerteti hogyan szolgáltatás távelérésének lehetővé tétele használatakor a biztonság növelése érdekében.
+# <a name="secure-wcf-based-communications-for-a-service"></a>Biztonságos WCF-alapú kommunikáció egy szolgáltatáshoz
+A biztonság a kommunikáció egyik legfontosabb aspektusa. A Reliable Services alkalmazás-keretrendszer néhány előre elkészített kommunikációs veremet és eszközt biztosít, amelyek segítségével javíthatja a biztonságot. Ez a cikk arról beszél, hogyan javíthatja a biztonságot a szolgáltatás távelérésének használatakor.
 
-Egy meglévő használjuk [példa](service-fabric-reliable-services-communication-wcf.md) , amely azt ismerteti, hogyan állítható be egy WCF-alapú kommunikációs verem reliable Services. Biztonságos egy szolgáltatás, amikor egy WCF-alapú kommunikációs verem használata érdekében kövesse az alábbi lépéseket:
+Egy meglévő [példát](service-fabric-reliable-services-communication-wcf.md) használunk, amely elmagyarázza, hogyan állíthat be egy WCF-alapú kommunikációs veremet a megbízható szolgáltatásokhoz. Ha WCF-alapú kommunikációs verem használatával kívánja biztonságossá tenni a szolgáltatást, kövesse az alábbi lépéseket:
 
-1. A szolgáltatást, hogy kell biztonságossá tétele a WCF-kommunikáció figyelője (`WcfCommunicationListener`), amely hoz létre. Ehhez módosítsa a `CreateServiceReplicaListeners` metódust.
+1. A szolgáltatáshoz segítenie kell a létrehozott WCF kommunikációs figyelő (`WcfCommunicationListener`) védelmét. Ehhez módosítsa a `CreateServiceReplicaListeners` metódust.
 
     ```csharp
     protected override IEnumerable<ServiceReplicaListener> CreateServiceReplicaListeners()
@@ -63,7 +63,7 @@ Egy meglévő használjuk [példa](service-fabric-reliable-services-communicatio
         return b;
     }
     ```
-2. Az ügyfél a `WcfCommunicationClient` osztály, amely az előzőleg létrehozott [példa](service-fabric-reliable-services-communication-wcf.md) változatlan marad. De felül kell bírálnia az `CreateClientAsync` metódusa `WcfCommunicationClientFactory`:
+2. Az ügyfélben az `WcfCommunicationClient` előző [példában](service-fabric-reliable-services-communication-wcf.md) létrehozott osztály változatlan marad. Azonban felül kell bírálni a `CreateClientAsync` `WcfCommunicationClientFactory`metódust:
 
     ```csharp
     public class SecureWcfCommunicationClientFactory<TServiceContract> : WcfCommunicationClientFactory<TServiceContract> where TServiceContract : class
@@ -113,7 +113,7 @@ Egy meglévő használjuk [példa](service-fabric-reliable-services-communicatio
     }
     ```
 
-    Használat `SecureWcfCommunicationClientFactory` hozhat létre egy WCF-kommunikáció ügyfél (`WcfCommunicationClient`). Az ügyfél segítségével szolgáltatás metódusokat hívhat meg.
+    A `SecureWcfCommunicationClientFactory` használatával WCF kommunikációs ügyfelet (`WcfCommunicationClient`) hozhat létre. Használja az ügyfelet a szolgáltatási módszerek meghívására.
 
     ```csharp
     IServicePartitionResolver partitionResolver = ServicePartitionResolver.GetDefault();
@@ -129,4 +129,4 @@ Egy meglévő használjuk [példa](service-fabric-reliable-services-communicatio
         client => client.Channel.Add(2, 3)).Result;
     ```
 
-A következő lépésben, olvassa el a [webes API-hoz a Reliable Services OWIN](service-fabric-reliable-services-communication-webapi.md).
+A következő lépésként olvassa el a [webes API-t a OWIN Reliable Services-ben](service-fabric-reliable-services-communication-webapi.md)című témakörben.

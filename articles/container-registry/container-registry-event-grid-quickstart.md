@@ -1,37 +1,38 @@
 ---
-title: Rövid útmutató – Event Grid események küldése az Azure Container Registrybe
-description: Ez a rövid útmutatóban a tárolóregisztrációs adatbázis előkészítése a Event Grid-események majd küldött tároló rendszerképet leküldéses és egy mintaalkalmazást események törlése.
+title: Rövid útmutató – Azure Container Registry események küldése Event Grid
+description: Ebben a rövid útmutatóban engedélyezheti Event Grid eseményeit a tároló-beállításjegyzékben, majd elküldheti a tároló-rendszerkép leküldését és az események törlését egy minta alkalmazásba.
 services: container-registry
 author: dlepow
+manager: gwallace
 ms.service: container-registry
 ms.topic: article
 ms.date: 08/23/2018
 ms.author: danlep
 ms.custom: seodec18
-ms.openlocfilehash: f5c075942a29968ea57c684cd817e578df951989
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 49ee9a7f12601b0d93e320ab797be4a1ada41c04
+ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60427701"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68309806"
 ---
-# <a name="quickstart-send-events-from-private-container-registry-to-event-grid"></a>Gyors útmutató: Események küldése privát tárolóregisztrációs adatbázisból az Event Grid
+# <a name="quickstart-send-events-from-private-container-registry-to-event-grid"></a>Gyors útmutató: Események küldése a privát tároló beállításjegyzékből a Event Gridba
 
-Az Azure Event Grid egy teljes körűen felügyelt esemény-útválasztó szolgáltatás közzétételi használatával eseményfelhasználást biztosító – előfizetési modellt. Ebben a rövid útmutatóban az Azure CLI használhatja a tároló-beállításjegyzék létrehozása, beállításjegyzék események előfizetni, majd üzembe helyezünk egy mintaalkalmazást webes az események fogadására. Végül indít el a tároló rendszerképét `push` és `delete` események és a mintaalkalmazásban az eseménytartalom megtekintése.
+A Azure Event Grid egy teljes körűen felügyelt esemény-útválasztási szolgáltatás, amely egységes esemény-felhasználást biztosít a közzétételi és előfizetési modell használatával. Ebben a rövid útmutatóban az Azure CLI használatával hozzon létre egy tároló-beállításjegyzéket, fizessen elő a beállításjegyzék eseményeire, majd helyezzen üzembe egy minta webalkalmazást az események fogadásához. Végezetül aktiválja a tároló képét `push` és `delete` eseményeit, és tekintse meg az esemény hasznos adatait a minta alkalmazásban.
 
-Miután elvégezte a cikkben ismertetett lépések, a mintául szolgáló webalkalmazás Event Grid a tárolóregisztrációs adatbázisból küldött események jelennek meg:
+A cikk lépéseinek elvégzése után a tároló-beállításjegyzékből eljuttatott események Event Grid megjelennek a minta-webalkalmazásban:
 
-![A mintául szolgáló webalkalmazás három fogadott események megjelenítése webböngészőt][sample-app-01]
+![Webböngésző – a minta-webalkalmazás három fogadott eseménysel való megjelenítése][sample-app-01]
 
-Ha nem rendelkezik Azure-előfizetéssel, első lépésként létrehozhat egy [ingyenes][azure-account] fiókot.
+Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot][azure-account] a virtuális gép létrehozásának megkezdése előtt.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Ez a cikk az Azure CLI-parancsok vannak formázva a **Bash** rendszerhéjat. Ha például a PowerShell vagy az parancssor egy másik shell használata esetén szükség lehet sor folytatási karaktert vagy változó-hozzárendelés sorok ennek megfelelően módosítsa. Ez a cikk a parancsot a szükséges szerkesztési minimalizálására változókat használ.
+A cikkben szereplő Azure CLI-parancsok a **bash** -rendszerhéjhoz vannak formázva. Ha más, például PowerShell-vagy parancssor-rendszerhéjt használ, lehetséges, hogy a sor folytatási karaktereit vagy a változók hozzárendelési sorait ennek megfelelően kell módosítania. Ez a cikk változók használatával minimálisra csökkentheti a parancsok szerkesztésének szükséges mennyiségét.
 
 ## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 
-Azure-erőforráscsoport olyan logikai tároló, amelyben üzembe helyezése és kezelése az Azure-erőforrások. A következő [az csoport létrehozása] [ az-group-create] parancs létrehoz egy erőforráscsoportot, nevű *myResourceGroup* a a *eastus* régióban. Ha szeretné használni egy másik nevet az erőforráscsoport, állítsa `RESOURCE_GROUP_NAME` más értékre.
+Az Azure-erőforráscsoport olyan logikai tároló, amelyben üzembe helyezheti és felügyelheti Azure-erőforrásait. A következő az [Group Create][az-group-create] parancs létrehoz egy *myResourceGroup* nevű erőforráscsoportot a *eastus* régióban. Ha más nevet szeretne használni az erőforráscsoport számára, állítsa `RESOURCE_GROUP_NAME` egy másik értékre.
 
 ```azurecli-interactive
 RESOURCE_GROUP_NAME=myResourceGroup
@@ -41,7 +42,7 @@ az group create --name $RESOURCE_GROUP_NAME --location eastus
 
 ## <a name="create-a-container-registry"></a>Tároló-beállításjegyzék létrehozása
 
-Ezután telepítse egy tároló-beállításjegyzéket, az alábbi parancsokkal az erőforrás-csoportba. Futtatása előtt a [az acr létrehozása] [ az-acr-create] parancsot, és állítsa `ACR_NAME` , a beállításjegyzék nevét. A név Azure-on belül egyedinek kell lennie, és 5 – 50 alfanumerikus karaktert korlátozódik.
+Ezután helyezzen üzembe egy tároló-beállításjegyzéket az erőforráscsoporthoz az alábbi parancsokkal. Az az [ACR Create][az-acr-create] parancs futtatása előtt állítsa `ACR_NAME` be a beállításjegyzék nevét. A névnek egyedinek kell lennie az Azure-on belül, és 5-50 alfanumerikus karakterre van korlátozva.
 
 ```azurecli-interactive
 ACR_NAME=<acrName>
@@ -49,7 +50,7 @@ ACR_NAME=<acrName>
 az acr create --resource-group $RESOURCE_GROUP_NAME --name $ACR_NAME --sku Basic
 ```
 
-Miután létrejött a beállításjegyzékben, az Azure CLI hasonló kimenetet ad vissza a következő:
+A beállításjegyzék létrehozása után az Azure CLI a következőhöz hasonló kimenetet ad vissza:
 
 ```json
 {
@@ -73,11 +74,11 @@ Miután létrejött a beállításjegyzékben, az Azure CLI hasonló kimenetet a
 
 ```
 
-## <a name="create-an-event-endpoint"></a>Egy esemény-végpont létrehozása
+## <a name="create-an-event-endpoint"></a>Esemény-végpont létrehozása
 
-Ebben a szakaszban használhatja a Resource Manager-sablon egy GitHub-adattárban található egy előre elkészített mintát az Azure App Service webalkalmazás üzembe helyezése. Később fizessen elő a tárolójegyzék Event Grid-események, és adja meg az alkalmazás a végpontot, amelyhez az események küldhetők.
+Ebben a szakaszban egy GitHub-tárházban található Resource Manager-sablont használ egy előre elkészített minta webalkalmazás üzembe helyezéséhez Azure App Service. Később előfizet a beállításjegyzék Event Grid eseményeire, és megadhatja az alkalmazást, mint az eseményeket küldő végpontot.
 
-Mintaalkalmazás üzembe helyezése, állítsa `SITE_NAME` egy egyedi nevet a webalkalmazáshoz, és hajtsa végre a következő parancsokat. A helynév Azure-on belül egyedinek kell lennie, mert a webalkalmazás teljesen minősített tartománynevét (FQDN) részét képezi. Egy későbbi szakaszban olvashat, keresse meg az alkalmazás teljes Tartománynevét egy webböngészőben a tárolójegyzék események megtekintéséhez.
+A minta alkalmazás üzembe helyezéséhez állítson be `SITE_NAME` egy egyedi nevet a webalkalmazás számára, és hajtsa végre a következő parancsokat. A hely nevének egyedinek kell lennie az Azure-ban, mivel az a webalkalmazás teljes tartománynevének (FQDN) részét képezi. Egy későbbi szakaszban navigáljon az alkalmazás teljes tartománynevéhez egy böngészőben a beállításjegyzék eseményeinek megtekintéséhez.
 
 ```azurecli-interactive
 SITE_NAME=<your-site-name>
@@ -88,19 +89,19 @@ az group deployment create \
     --parameters siteName=$SITE_NAME hostingPlanName=$SITE_NAME-plan
 ```
 
-Miután az üzembe helyezés sikeres volt (néhány percet igénybe vehet), nyisson meg egy böngészőt, és keresse meg, hogy a webalkalmazás fut:
+Ha az üzembe helyezés sikeres volt (eltarthat néhány percig), nyisson meg egy böngészőt, és navigáljon a webalkalmazáshoz, és győződjön meg arról, hogy az fut:
 
 `http://<your-site-name>.azurewebsites.net`
 
-Nem jelenik meg eseményt üzenetek jelennek meg a mintaalkalmazást kell megjelennie:
+Meg kell jelennie a példaként megjelenített alkalmazásnak, amely nem jeleníti meg az esemény üzeneteit:
 
-![Webes böngésző ábrázoló mintául szolgáló webalkalmazás-események nem jelenik meg][sample-app-02]
+![Webböngészőben megjelenített, események nélküli minta webalkalmazás][sample-app-02]
 
 [!INCLUDE [event-grid-register-provider-cli.md](../../includes/event-grid-register-provider-cli.md)]
 
-## <a name="subscribe-to-registry-events"></a>Fizessen elő a beállításjegyzék-események
+## <a name="subscribe-to-registry-events"></a>Előfizetés a beállításjegyzék eseményeire
 
-Az Event Gridben, az előfizetett egy *témakör* amely megszabja, hogy mely eseményeket kívánja nyomon követni, és hol el őket. A következő [az eventgrid esemény-előfizetés létrehozása] [ az-eventgrid-event-subscription-create] parancs feliratkozik a létrehozott, és adja meg a webalkalmazás URL-címet a végpontot, amelyhez eseményt küldjön a tárolóregisztrációs adatbázisba. A környezeti változókat, hogy kitölti a korábbi szakaszokban vannak lapkészlettel, így nem módosítások szükségesek.
+Event Grid a *témakörre* való előfizetéssel megtudhatja, hogy mely eseményeket kívánja nyomon követni, és hová szeretné elküldeni őket. A következő az [eventgrid Event-előfizetés-létrehozási][az-eventgrid-event-subscription-create] parancs előfizet a létrehozott tároló-beállításjegyzékre, és megadja a webalkalmazás URL-címét, amelynek a végpontjának kell elküldeni az eseményeket. A korábbi szakaszokban feltöltött környezeti változók itt lesznek újra felhasználva, ezért nincs szükség módosításra.
 
 ```azurecli-interactive
 ACR_REGISTRY_ID=$(az acr show --name $ACR_NAME --query id --output tsv)
@@ -112,7 +113,7 @@ az eventgrid event-subscription create \
     --endpoint $APP_ENDPOINT
 ```
 
-Az előfizetés befejezése után az alábbihoz hasonló kimenetnek kell megjelennie:
+Az előfizetés befejezésekor a következőhöz hasonló kimenetnek kell megjelennie:
 
 ```JSON
 {
@@ -139,19 +140,19 @@ Az előfizetés befejezése után az alábbihoz hasonló kimenetnek kell megjele
 }
 ```
 
-## <a name="trigger-registry-events"></a>Az eseményindító beállításjegyzék események
+## <a name="trigger-registry-events"></a>Beállításjegyzék-események kiváltása
 
-Most, hogy működik a mintaalkalmazást, és fut, és a regisztrációs adatbázisba, az Event Griddel feliratkozott, készen áll az egyes eseményeket létrehozásához. Ebben a szakaszban ACR-feladatokat hozhat létre és használhat továbbít egy rendszerképet a tárolójegyzékbe. ACR-feladatokat az Azure Container Registry, amely lehetővé teszi, hogy hozhat létre tárolórendszerképeket a felhőben anélkül, hogy a Docker-motor telepítve van a helyi gépén funkciója.
+Most, hogy már működik a minta alkalmazás, és előfizetett a beállításjegyzékbe Event Grid, készen áll néhány esemény előállítására. Ebben a szakaszban ACR-feladatokat használ a tárolók rendszerképének kiépítéséhez és leküldéséhez a beállításjegyzékbe. Az ACR-feladatok az Azure Container Registry egyik funkciója, amely lehetővé teszi a tároló lemezképek létrehozását a felhőben anélkül, hogy a Docker-motort telepíteni kellene a helyi gépre.
 
-### <a name="build-and-push-image"></a>Hozhat létre, és a rendszerkép leküldése
+### <a name="build-and-push-image"></a>Rendszerkép létrehozása és leküldése
 
-Hajtsa végre a következő Azure CLI-paranccsal hozhat létre a tartalmát egy GitHub-adattárban található tárolórendszerképet. Alapértelmezés szerint ACR feladatok automatikusan leküldi a sikeresen összeállított rendszerképet a beállításjegyzékbe, amely létrehozza a `ImagePushed` esemény.
+A következő Azure CLI-parancs végrehajtásával hozzon létre egy tároló-rendszerképet egy GitHub-tárház tartalmából. Alapértelmezés szerint az ACR-feladatok automatikusan leküldenek egy sikeresen létrehozott rendszerképet a beállításjegyzékbe, `ImagePushed` amely létrehozza az eseményt.
 
 ```azurecli-interactive
 az acr build --registry $ACR_NAME --image myimage:v1 -f Dockerfile https://github.com/Azure-Samples/acr-build-helloworld-node.git
 ```
 
-ACR-feladatok épít, és majd leküldi a lemezképet a következőhöz hasonló kimenetnek kell megjelennie. Az alábbi kimeneti példa kivonatosan csonkolva lettek.
+A következőhöz hasonló kimenetnek kell megjelennie, míg az ACR-feladatok buildek, majd leküldi a rendszerképet. A következő minta kimenete rövidítve lett csonkítva.
 
 ```console
 $ az acr build -r $ACR_NAME --image myimage:v1 -f Dockerfile https://github.com/Azure-Samples/acr-build-helloworld-node.git
@@ -168,13 +169,13 @@ Step 1/5 : FROM node:9-alpine
 ...
 ```
 
-Annak ellenőrzéséhez, hogy az összeállított rendszerképet a regisztrációs adatbázis, hajtsa végre a "myimage" tárházban címkéinek megtekintéséhez a következő parancsot:
+Annak ellenőrzéséhez, hogy a beépített rendszerkép szerepel-e a beállításjegyzékben, hajtsa végre a következő parancsot a címkék megtekintéséhez a "MyImage" adattárban:
 
 ```azurecli-interactive
 az acr repository show-tags --name $ACR_NAME --repository myimage
 ```
 
-A "v1" címke a rendszerkép létrehozott meg kell jelennie a kimenet az alábbihoz hasonló:
+A létrehozott rendszerkép "v1" címkéje a kimenetben jelenik meg, a következőhöz hasonlóan:
 
 ```console
 $ az acr repository show-tags --name $ACR_NAME --repository myimage
@@ -183,15 +184,15 @@ $ az acr repository show-tags --name $ACR_NAME --repository myimage
 ]
 ```
 
-### <a name="delete-the-image"></a>A lemezkép törlése
+### <a name="delete-the-image"></a>A rendszerkép törlése
 
-Most, hozzon létre egy `ImageDeleted` esemény törlésével a rendszerképet a [az acr-adattár törlése] [ az-acr-repository-delete] parancsot:
+Most állítson elő `ImageDeleted` egy eseményt a rendszerkép törlésével az az [ACR repository delete][az-acr-repository-delete] paranccsal:
 
 ```azurecli-interactive
 az acr repository delete --name $ACR_NAME --image myimage:v1
 ```
 
-A következőhöz hasonló kimenetnek kell megjelennie a jegyzékfájlt és a hozzá kapcsolódó képek törlése megerősítés:
+Az alábbihoz hasonló kimenetnek kell megjelennie, amely megerősítést kér a jegyzékfájl és a kapcsolódó rendszerképek törléséhez:
 
 ```console
 $ az acr repository delete --name $ACR_NAME --image myimage:v1
@@ -201,36 +202,36 @@ Are you sure you want to continue? (y/n): y
 
 ## <a name="view-registry-events"></a>Beállításjegyzék-események megtekintése
 
-Hogy egy kép most már leküldte a tárolójegyzékbe, és törölte azt. Keresse meg az Event Grid megjelenítő webalkalmazását, és mindkettő kell megjelennie `ImageDeleted` és `ImagePushed` eseményeket. Egy előfizetés érvényesítési esemény, a parancs végrehajtása által generált is megjelenhet a [előfizetni a beállításjegyzék-események](#subscribe-to-registry-events) szakaszban.
+Most leküldte a rendszerképet a beállításjegyzékbe, majd törölte. Navigáljon a Event Grid Viewer webalkalmazáshoz, és mindkettőt `ImageDeleted` és `ImagePushed` eseményt kell látnia. Előfordulhat, hogy megjelenik egy előfizetés-ellenőrzési esemény is, amelyet a [Feliratkozás a beállításjegyzék eseményeire](#subscribe-to-registry-events) című szakaszban található parancs végrehajtásával generált.
 
-Az alábbi képernyőfelvételen a mintaalkalmazást a három eseményekhez, és a `ImageDeleted` esemény ki van bontva, a részleteinek megjelenítéséhez.
+Az alábbi képernyőfelvételen a három eseménnyel rendelkező minta alkalmazás látható, az `ImageDeleted` esemény pedig kibontva jelenik meg a részletek megjelenítéséhez.
 
-![A mintaalkalmazás ImagePushed és ImageDeleted események megjelenítése webböngészőt][sample-app-03]
+![Webböngésző, amely a ImagePushed és a ImageDeleted eseményekkel rendelkező minta alkalmazást jeleníti meg][sample-app-03]
 
-Gratulálunk! Ha megjelenik a `ImagePushed` és `ImageDeleted` események, a beállításjegyzék eseményeket küld az Event Gridbe, és Event Grid továbbító események a web app-végpontra.
+Gratulálunk! Ha a és `ImageDeleted` az `ImagePushed` eseményeket látja, a beállításjegyzék az eseményeket Event Gridba küldi, és Event Grid továbbítja ezeket az eseményeket a webalkalmazás-végpontnak.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Miután végzett, az ebben a rövid útmutatóban létrehozott erőforrásokat, az Azure CLI-parancsot a törölheti azokat. Ha töröl egy erőforráscsoportot, az összes benne található erőforrást véglegesen törlődnek.
+Ha elkészült az ebben a rövid útmutatóban létrehozott erőforrásokkal, az alábbi Azure CLI-paranccsal törölheti őket. Egy erőforráscsoport törlésekor a benne lévő összes erőforrás véglegesen törlődik.
 
-**FIGYELMEZTETÉS**: Ez a művelet nem vonható vissza. Győződjön meg arról, hogy már nincs szüksége a az erőforrások a csoport a parancs futtatása előtt.
+**FIGYELMEZTETÉS**: Ez a művelet nem vonható vissza. A parancs futtatása előtt győződjön meg arról, hogy már nincs szüksége a csoport erőforrásaira.
 
 ```azurecli-interactive
 az group delete --name $RESOURCE_GROUP_NAME
 ```
 
-## <a name="event-grid-event-schema"></a>Event Grid eseménysémája
+## <a name="event-grid-event-schema"></a>Event Gridi esemény sémája
 
-Az Azure Container Registry esemény üzenet séma referencia az Event Grid dokumentációjában találhatja meg:
+A Event Grid dokumentációjában találhatja meg az Azure Container Registry esemény-üzenet sémájának hivatkozását:
 
-[Tároló-beállításjegyzék Azure Event Grid eseménysémája](../event-grid/event-schema-container-registry.md)
+[Container Registry Azure Event Gridi esemény sémája](../event-grid/event-schema-container-registry.md)
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben a rövid, üzembe helyezett egy tároló-beállításjegyzéket, egy rendszerképet az ACR-feladatok beépített, törlése, és használt fel, a beállításjegyzék események Event Grid egy mintaalkalmazással. Ezután helyezze át a tudhat meg többet a felhőben, a tárolórendszerképek létrehozása automatikus többek között az ACR-feladatok oktatóanyag rendszerkép alapszintű frissítésének épül:
+Ebben a rövid útmutatóban üzembe helyezett egy tároló-beállításjegyzéket, amely egy ACR-feladatokból álló képet készített, törölte azt, és felhasználta a beállításjegyzék eseményeit Event Grid egy minta alkalmazással. Ezután lépjen be az ACR-feladatok oktatóanyagba, ahol többet tudhat meg a Felhőbeli tároló-lemezképek létrehozásáról, beleértve az alapszintű lemezkép frissítésének automatizált buildeit is:
 
 > [!div class="nextstepaction"]
-> [Az ACR-feladatokat a felhőben tárolórendszerképek létrehozása](container-registry-tutorial-quick-task.md)
+> [Tároló lemezképek létrehozása a felhőben ACR-feladatokkal](container-registry-tutorial-quick-task.md)
 
 <!-- IMAGES -->
 [sample-app-01]: ./media/container-registry-event-grid-quickstart/sample-app-01.png

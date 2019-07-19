@@ -1,46 +1,47 @@
 ---
-title: Függőségi beszúrást használata a .NET Azure Functions szolgáltatásban
-description: Megtudhatja, hogyan használja a függőségi beszúrást regisztrálásához és a szolgáltatások használata a .NET-es függvényeket
+title: Függőségi befecskendezés használata a .NET-Azure Functions
+description: Ismerje meg, hogyan használhatja a függőségi befecskendezést a szolgáltatások .NET-függvényekbe való regisztrálásához és használatához
 services: functions
 documentationcenter: na
 author: craigshoemaker
 manager: gwallace
-keywords: az Azure functions, függvények, kiszolgáló nélküli architektúra
+keywords: Azure functions, functions, kiszolgáló nélküli architektúra
 ms.service: azure-functions
 ms.devlang: dotnet
 ms.topic: reference
 ms.date: 05/28/2019
-ms.author: jehollan, cshoe
-ms.openlocfilehash: 781bcdc158cb362b7c46e1ba9771b6a92ebc56a8
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.author: cshoe
+ms.reviewer: jehollan
+ms.openlocfilehash: 1ebb2fd77830074648a580dddad98e05e10c9c75
+ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67479617"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67850023"
 ---
-# <a name="use-dependency-injection-in-net-azure-functions"></a>Függőségi beszúrást használata a .NET Azure Functions szolgáltatásban
+# <a name="use-dependency-injection-in-net-azure-functions"></a>Függőségi befecskendezés használata a .NET-Azure Functions
 
-Az Azure Functions támogatja a függőségi injektálási (DI) szoftver tervezési mintát, amely a technika eléréséhez [vezérlő invertálásának (IoC)](https://docs.microsoft.com/dotnet/standard/modern-web-apps-azure-architecture/architectural-principles#dependency-inversion) osztályok és a függőségek között.
+A Azure Functions támogatja a függőségi injektálás (DI) szoftver kialakítási mintáját, amely az osztályok és a függőségek közötti [vezérlés (NOB)](https://docs.microsoft.com/dotnet/standard/modern-web-apps-azure-architecture/architectural-principles#dependency-inversion) elérését szolgáló módszer.
 
-Az Azure Functions az ASP.NET Core függőségi beszúrást funkciók épül. Szolgáltatások élettartam és tervezési mintáinak ismerete [ASP.NET Core függőségi beszúrást](https://docs.microsoft.com/aspnet/core/fundamentals/dependency-injection) DI szolgáltatásainak használata az Azure Functions előtt javasolt a alkalmazás.
+A Azure Functions a ASP.NET Core függőségek befecskendezési funkcióinak tetejére épül. A [ASP.net Core függőségi injekció](https://docs.microsoft.com/aspnet/core/fundamentals/dependency-injection) szolgáltatásainak, élettartamának és kialakítási mintáinak ismerete a Azure functions alkalmazásban található di-funkciók használata előtt ajánlott.
 
-A függőségi beszúrást megkezdi az Azure Functions támogatása 2.x.
+A függőségi befecskendezés támogatása Azure Functions 2. x-vel kezdődik.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Függőségi beszúrást használata előtt telepítenie kell a következő NuGet-csomagokat:
+A függőségi befecskendezés használata előtt telepítenie kell a következő NuGet-csomagokat:
 
 - [Microsoft.Azure.Functions.Extensions](https://www.nuget.org/packages/Microsoft.Azure.Functions.Extensions/)
 
-- [Microsoft.NET.Sdk.Functions csomag](https://www.nuget.org/packages/Microsoft.NET.Sdk.Functions/) 1.0.28 verzió vagy újabb
+- A [Microsoft. net. SDK. functions csomag](https://www.nuget.org/packages/Microsoft.NET.Sdk.Functions/) 1.0.28 vagy újabb verziója
 
-- Nem kötelező: [Microsoft.Extensions.Http](https://www.nuget.org/packages/Microsoft.Extensions.Http/) csak indításkor HttpClient regisztrálásához szükséges
+- Nem kötelező: A [Microsoft. Extensions. http](https://www.nuget.org/packages/Microsoft.Extensions.Http/) csak indításkor szükséges a HttpClient regisztrálásához
 
 ## <a name="register-services"></a>Szolgáltatások regisztrálása
 
-Szolgáltatások regisztrálása, konfigurálásához, és adjon hozzá összetevőket metódus segítségével létrehozhat egy `IFunctionsHostBuilder` példány.  Az Azure Functions állomás létrehoz egy példányt a `IFunctionsHostBuilder` és továbbadja azt közvetlenül a metódus.
+A szolgáltatások regisztrálásához létrehozhat egy metódust a `IFunctionsHostBuilder` példányok konfigurálásához és az összetevők hozzáadásához.  A Azure functions gazdagép létrehoz egy példányt, `IFunctionsHostBuilder` és közvetlenül a metódusba továbbítja azokat.
 
-A módszer regisztrálásához adja hozzá a `FunctionsStartup` szerelvény attribútum, amely meghatározza a típusnév indítása során használt. Kód is hivatkozik egy előzetes verzióját [Microsoft.Azure.Cosmos](https://www.nuget.org/packages/Microsoft.Azure.Cosmos/) nugeten.
+A metódus regisztrálásához adja hozzá `FunctionsStartup` azt a Assembly attribútumot, amely megadja az indításkor használt típus nevét. A kód emellett a [Microsoft. Azure. Cosmos](https://www.nuget.org/packages/Microsoft.Azure.Cosmos/) előzetes kiadására hivatkozik a Nuget.
 
 ```csharp
 using System;
@@ -68,9 +69,9 @@ namespace MyNamespace
 }
 ```
 
-## <a name="use-injected-dependencies"></a>Injektált-függőségek használatára
+## <a name="use-injected-dependencies"></a>Beinjektált függőségek használata
 
-ASP.NET Core konstruktor injektálási használja a függőségek a függvény számára elérhetővé tenni. A következő minta bemutatja, hogyan a `IMyService` és `HttpClient` függőségek a rendszer kártevő program férkőzik be egy HTTP-eseményindítóval aktivált függvényt.
+ASP.NET Core a konstruktor injekcióját használja, hogy a függőségek elérhetők legyenek a függvény számára. Az alábbi minta azt mutatja be, `IMyService` hogyan `HttpClient` történik a és a függőségek beadása egy http-triggerrel elindított függvénybe.
 
 ```csharp
 using System;
@@ -111,43 +112,43 @@ namespace MyNamespace
 }
 ```
 
-Konstruktor injektálási használatát, az azt jelenti, hogy ne használjon statikus funkciók Ha előnyeit függőségi beszúrást szeretné.
+A konstruktor-injektálás használata azt jelenti, hogy nem használhat statikus függvényeket, ha szeretné kihasználni a függőségi injekciót.
 
-## <a name="service-lifetimes"></a>Szolgáltatás-élettartam
+## <a name="service-lifetimes"></a>Szolgáltatás élettartama
 
-Az Azure Functions-alkalmazások, adja meg, az azonos szolgáltatás élettartamának [ASP.NET függőségi beszúrást](https://docs.microsoft.com/aspnet/core/fundamentals/dependency-injection#service-lifetimes): átmeneti, hatókörrel rendelkező, és egypéldányos.
+Azure Functions alkalmazások ugyanazt a szolgáltatási élettartamot biztosítják, mint a [ASP.net függőségi befecskendezés](https://docs.microsoft.com/aspnet/core/fundamentals/dependency-injection#service-lifetimes): átmeneti, hatókörű és egyedi.
 
-A functions-alkalmazás egy hatókörrel rendelkező szolgáltatás élettartamának megegyezik a függvény végrehajtási idejének magyarázata. Hatókörön belüli szolgáltatások végrehajtásonkénti egyszer létrehozni. A végrehajtás során, hogy a szolgáltatás újabb kérelmek újból felhasználhatja a meglévő szolgáltatáspéldány. A singleton szolgáltatás élettartama megegyezik a gazdagép élettartama, és a függvénykivételek azon a példányon keresztül újrahasznosított.
+A functions alkalmazásban a hatókörön belüli szolgáltatás élettartama megegyezik a függvény végrehajtási élettartamával. A hatókörrel rendelkező szolgáltatások végrehajtáskor egyszer jönnek létre. A szolgáltatás későbbi kérelmei a végrehajtás során újra felhasználják a meglévő szolgáltatást. Az egyszeres szolgáltatás élettartama megegyezik a gazdagép élettartamával, és az adott példányon végrehajtott függvények végrehajtása során újra felhasználja őket.
 
-Egyszeres élettartama szolgáltatások ajánlott kapcsolatok és az ügyfeleknek, például `SqlConnection`, `CloudBlobClient`, vagy `HttpClient` példányok.
+Az egyedi élettartamú szolgáltatások a kapcsolatok és az ügyfelek, például `SqlConnection` `CloudBlobClient`, vagy `HttpClient` példányok esetén ajánlottak.
 
-Megtekintése vagy letöltése egy [különböző élettartam-minta](https://aka.ms/functions/di-sample) a Githubon.
+A GitHubon megtekintheti és letöltheti a [különböző szolgáltatási élettartamokat tartalmazó mintát](https://aka.ms/functions/di-sample) .
 
 ## <a name="logging-services"></a>Naplózási szolgáltatások
 
-Ha saját naplózási szolgáltatói van szüksége, ajánlott módja regisztrálni egy `ILoggerProvider` példány. Az Application Insights automatikusan hozzáadja az Azure Functions.
+Ha saját naplózási szolgáltatóra van szüksége, az ajánlott módszer egy `ILoggerProvider` példány regisztrálása. A Application Insights Azure Functions automatikusan hozzáadja.
 
 > [!WARNING]
-> Ne adjon hozzá `AddApplicationInsightsTelemetry()` regisztrál, mert a szolgáltatások gyűjtemény adott ütközés services a környezet által biztosított szolgáltatásokkal.
+> Ne adja hozzá `AddApplicationInsightsTelemetry()` a szolgáltatások gyűjteményhez, mert regisztrálja azokat a szolgáltatásokat, amelyek ütköznek a környezet által nyújtott szolgáltatásokkal.
 
-## <a name="function-app-provided-services"></a>Függvény a megadott app servicesben
+## <a name="function-app-provided-services"></a>A függvény által biztosított szolgáltatások
 
-A függvény gazdagép számos szolgáltatás regisztrálja. A következő szolgáltatások biztonságosak az alkalmazás függőségei:
+A Function Host számos szolgáltatást regisztrál. A következő szolgáltatások az alkalmazástól való függőségként is biztonságosak:
 
-|Service Type|Élettartam|Leírás|
+|Service Type|Élettartama|Leírás|
 |--|--|--|
-|`Microsoft.Extensions.Configuration.IConfiguration`|Egypéldányos|Futásidejű konfigurációja|
-|`Microsoft.Azure.WebJobs.Host.Executors.IHostIdProvider`|Egypéldányos|Biztosítja a gazdagép-példány azonosítója|
+|`Microsoft.Extensions.Configuration.IConfiguration`|Singleton|Futásidejű konfiguráció|
+|`Microsoft.Azure.WebJobs.Host.Executors.IHostIdProvider`|Singleton|A gazdagép-példány AZONOSÍTÓjának biztosításáért felelős|
 
-Ha azt szeretné, hogy más szolgáltatások [probléma létrehozása, és javaslatot őket a Githubon](https://github.com/azure/azure-functions-host).
+Ha vannak olyan szolgáltatások, amelyeknek függőségi viszonyra van szüksége, [hozzon létre egy problémát, és javasolja őket a githubon](https://github.com/azure/azure-functions-host).
 
-### <a name="overriding-host-services"></a>Szolgáltatások működtetéséhez felülbírálása
+### <a name="overriding-host-services"></a>Gazdagép-szolgáltatások felülbírálása
 
-Felülbírálja a gazdagép által nyújtott szolgáltatások jelenleg nem támogatott.  Ha szeretné felülbírálni, szolgáltatást [probléma létrehozása, és javaslatot őket a Githubon](https://github.com/azure/azure-functions-host).
+A gazdagép által nyújtott szolgáltatások felülbírálása jelenleg nem támogatott.  Ha vannak olyan szolgáltatások, amelyeket felül szeretne bírálni, [hozzon létre egy problémát, és javasolja őket a githubon](https://github.com/azure/azure-functions-host).
 
 ## <a name="next-steps"></a>További lépések
 
 További információkért lásd a következőket:
 
-- [A függvényalkalmazás figyelése](functions-monitoring.md)
-- [Functions – ajánlott eljárások](functions-best-practices.md)
+- [A Function-alkalmazás figyelése](functions-monitoring.md)
+- [Ajánlott eljárások a functions szolgáltatáshoz](functions-best-practices.md)

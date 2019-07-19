@@ -1,59 +1,59 @@
 ---
-title: Az Azure IoT Central webhookok használata az Azure Functions aktiválása
-description: Hozzon létre egy függvényalkalmazást, amely minden alkalommal, amikor egy szabály akkor lesz kiváltva futtatja az Azure IoT Central.
+title: Trigger Azure Functions az Azure-beli webhookok használatával IoT Central
+description: Hozzon létre egy olyan Function alkalmazást, amely minden alkalommal fut, amikor egy szabály aktiválódik az Azure IoT Centralban.
 author: viv-liu
 ms.author: viviali
-ms.date: 03/26/2019
+ms.date: 07/09/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 0d92e9bdf8ec207e5ef0e3f891c162182b5a4fff
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 92d6f005018040e20c2df72dbc608a47bc8d9f08
+ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60518349"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67849021"
 ---
-# <a name="trigger-azure-functions-using-webhooks-in-azure-iot-central"></a>Az Azure IoT Central webhookok használata az Azure Functions aktiválása
+# <a name="trigger-azure-functions-using-webhooks-in-azure-iot-central"></a>Trigger Azure Functions az Azure-beli webhookok használatával IoT Central
 
-*Ez a témakör létrehozói és a rendszergazdák vonatkozik.*
+*Ez a témakör az építők és a rendszergazdákra vonatkozik.*
 
-Azure Functions használatával kiszolgáló nélküli programkód webhook kimenetén az IoT-központ szabályok futtatása. Virtuális gép létrehozása, vagy használhatja az Azure Functions egy webalkalmazás közzététele nem szükséges, de Ehelyett futtathatja a kódot, kiszolgáló nélküli. Az Azure Functions segítségével átalakíthatja a webhook hasznos adatai, például egy SQL database vagy az Event Grid a végső rendeltetési elküldése előtt.
+A Azure Functions használatával kiszolgáló nélküli kódokat futtathat IoT Central szabályok webhook kimenetén. Nem kell létrehoznia egy virtuális gépet, vagy közzé kell tennie egy webalkalmazást a Azure Functions használatához, de ehelyett futtathatja ezt a kódot kiszolgáló nélkül. Az Azure Functions használatával alakítsa át a webhook hasznos adatait, mielőtt elküldi azt a végső célhelyre, például egy SQL-adatbázisra vagy Event Gridra.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
-## <a name="how-to-connect-azure-functions"></a>Csatlakozás az Azure Functions
+## <a name="how-to-connect-azure-functions"></a>A Azure Functions kapcsolódása
 
-1. [Új függvényalkalmazás létrehozása az Azure Portalon](https://ms.portal.azure.com/#create/Microsoft.FunctionApp).
+1. [Hozzon létre egy új Function-alkalmazást a Azure Portal](https://ms.portal.azure.com/#create/Microsoft.FunctionApp).
 
-    ![Új függvényalkalmazás létrehozása az Azure Portalon](media/howto-trigger-azure-functions/createfunction.png)
+    ![Új Function-alkalmazás létrehozása a Azure Portal](media/howto-trigger-azure-functions/createfunction.png)
 
-2. Bontsa ki a függvényalkalmazást, és válassza ki a **+ gomb** funkciók mellett. Ha ez a funkció csak az elsőt a függvényalkalmazásban, jelölje be **portálon** fejlesztési környezetet, és válassza ki, **Folytatás**.
+2. Bontsa ki a Function alkalmazást, és kattintson a függvények elem melletti **+ gombra** . Ha ez a függvény az első a Function alkalmazásban, válassza **a portál** fejlesztési környezetként lehetőséget, és válassza a **Folytatás**lehetőséget.
 
-    ![Válasszon függvényalkalmazást egyéni függvény](media/howto-trigger-azure-functions/customfunction.png)
+    ![Egyéni függvény választása a Function alkalmazásban](media/howto-trigger-azure-functions/customfunction.png)
 
-3. Válasszon **Webhook + API** sablont, és válassza ki **létrehozás**. Ez a témakör a .NET-alapú Azure-függvényt használja.
+3. Válassza a **webhook + API** -sablon elemet, majd válassza a **Létrehozás**lehetőséget. Ez a témakör a .NET-alapú Azure-függvényt használja.
 
-    ![Általános webhook-eseményindító kiválasztása](media/howto-trigger-azure-functions/genericwebhooktrigger.png)
+    ![Általános webhook-trigger kiválasztása](media/howto-trigger-azure-functions/genericwebhooktrigger.png)
 
-4. Válassza ki az új függvényben **<> / Get függvény URL-Címének**, majd másolja és mentse az értéket. Erre az értékre a webhook konfigurálásához lesz szükség.
+4. Az új függvényben válassza a **</> függvény URL-címének**beolvasása lehetőséget, majd másolja és mentse az értéket. Erre az értékre a webhook konfigurálásához lesz szükség.
 
-    ![A függvény URL-címére](media/howto-trigger-azure-functions/getfunctionurl.png)
+    ![A függvény URL-címének beolvasása](media/howto-trigger-azure-functions/getfunctionurl.png)
 
-4. IoT-központ keresse meg a szabály, amely a függvényalkalmazás csatlakozni szeretne.
+4. A IoT Centralban navigáljon ahhoz a szabályhoz, amelyhez csatlakozni szeretne a Function alkalmazáshoz.
 
-5. Adjon hozzá egy webhook művelettel. Adjon meg egy **megjelenítendő név** és illessze be a függvény URL-címet korábban vágólapra másolt be **visszahívási URL-Címének**.
+5. Webhook-művelet hozzáadása. Adja meg a **megjelenített nevet** , és illessze be a korábban a visszahívási **URL**-címre másolt függvény URL-címét.
 
-    ![A visszahívási URL-cím mezőben adja meg a függvény URL-címe](media/howto-trigger-azure-functions/configurewebhook.PNG)
+    ![Adja meg a függvény URL-címét a visszahívási URL-cím mezőben](media/howto-trigger-azure-functions/configurewebhook.PNG)
 
-6. A szabály mentéséhez. Most már a szabály akkor lesz kiváltva, ha a webhook hív meg, a függvényalkalmazás futtatásához. A függvényalkalmazásban, kiválaszthatja a **figyelő** a függvény meghívási előzményeinek megtekintéséhez. Az App Insights vagy a klasszikus nézet segítségével tekintse meg az előzményeket.
+6. Mentse a szabályt. Most, hogy a szabály aktiválódik, a webhook elindítja a Function alkalmazást a futtatáshoz. A Function alkalmazásban a **figyelő** lehetőség kiválasztásával megtekintheti a függvény Meghívási előzményeit. Az előzmények megjelenítéséhez használhatja az App bepillantást vagy a klasszikus nézetet is.
 
-    ![A függvény meghívási előzményeinek figyelése](media/howto-trigger-azure-functions/monitorfunction.PNG)
+    ![A függvény Meghívási előzményeinek figyelése](media/howto-trigger-azure-functions/monitorfunction.PNG)
 
-További információért látogasson el az Azure Functions cikk kapcsolatos [általános webhook által aktivált függvény létrehozása](https://docs.microsoft.com/azure/azure-functions/functions-create-generic-webhook-triggered-function).
+További információért látogasson el az [általános webhook által aktivált függvény létrehozásáról](https://docs.microsoft.com/azure/azure-functions/functions-create-generic-webhook-triggered-function)szóló Azure functions cikkre.
 
 ## <a name="next-steps"></a>További lépések
-Most, hogy, hogyan állíthatja be, és webhookok használata, a javasolt következő lépésre megismeréséhez [munkafolyamatokat a Microsoft Flow-hoz](howto-add-microsoft-flow.md).
+Most, hogy megismerte, hogyan állíthat be és használhat webhookokat, a javasolt következő lépés a munkafolyamatok [kiépítése a Microsoft flow](howto-add-microsoft-flow.md).

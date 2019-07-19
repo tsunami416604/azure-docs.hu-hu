@@ -11,14 +11,14 @@ ms.service: azure-monitor
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 06/12/2019
+ms.date: 07/12/2019
 ms.author: magoedte
-ms.openlocfilehash: a370dcb349b61f3dda544d9c5a2030b6789e34c4
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: dc55e4999a09c45463ae75b05d610b290f5ff526
+ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67075435"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68248313"
 ---
 # <a name="understand-aks-cluster-performance-with-azure-monitor-for-containers"></a>Az AKS fürtteljesítmény és az Azure Monitor-tárolókhoz ismertetése 
 Az Azure monitorral tárolók segítségével a teljesítmény diagramokat és az állapot az Azure Kubernetes Service (AKS)-fürtök két perspektíva adatai, közvetlenül az AKS-fürt vagy az Azure-ból összes AKS-fürt az előfizetéshez, a számítási feladat figyeléséhez Ez a figyelő. Megtekintése az Azure Container Instances (ACI) esetén is lehetséges egy adott AKS-fürt monitorozására.
@@ -27,15 +27,15 @@ A cikknek a segítségével megismerheti, hogyan segít gyorsan felmérheti, kiv
 
 A tárolók az Azure Monitor engedélyezésével kapcsolatos információkért lásd: [előkészítése az Azure Monitor-tárolókhoz](container-insights-onboard.md).
 
-Az Azure Monitor az összes figyelt AKS-fürt futtató, Linux és Windows Server 2019 az előfizetéseken lévő erőforráscsoportok telepített állapotát megjelenítő több fürt nézetet biztosít.  AKS-fürtök észlelt, amely nem a megoldás által figyelt jeleníti meg. Azonnal képes megérteni a fürt állapotát, és innen lefúrhat a csomópont és a tartományvezérlő teljesítmény lapján, vagy keresse meg a fürt teljesítménydiagramok megtekintéséhez.  AKS fürtök felderített és a nem figyelt azonosította engedélyezheti a tetszőleges időpontban, hogy a fürt figyelése.  
+A Azure Monitor egy több fürtből álló nézetet biztosít, amely az előfizetésekben lévő erőforráscsoportok között telepített összes, Linux és Windows Server 2019 rendszerű, figyelt AK-fürt állapotát mutatja.  AKS-fürtök észlelt, amely nem a megoldás által figyelt jeleníti meg. Azonnal képes megérteni a fürt állapotát, és innen lefúrhat a csomópont és a tartományvezérlő teljesítmény lapján, vagy keresse meg a fürt teljesítménydiagramok megtekintéséhez.  AKS fürtök felderített és a nem figyelt azonosította engedélyezheti a tetszőleges időpontban, hogy a fürt figyelése.  
 
-A Windows Server-fürt figyelése és az Azure Monitor-tárolókhoz képest Linux-fürt fő különbségek a következők:
+A Windows Server-fürtök egy Linux-fürthöz képest Azure Monitorekkel való figyelésének fő eltérései a következők:
 
-- Memória RSS metrika nem érhető el a Windows-csomópont és a tárolók 
-- Lemez tárolókapacitás információi nem érhető el Windows-csomópontok
-- Élő naplók támogatás Windows tárolónaplók kivételével érhető el.
-- Csak a pod környezetekben megfigyelt, nem a Docker-környezetekben.
-- Az előzetes kiadással legfeljebb 30 Windows Server-tárolók támogatottak. Ez a korlátozás nem vonatkozik a Linux-tárolókat.  
+- A memóriabeli RSS-metrika nem érhető el a Windows-csomópontok és-tárolók esetében.
+- A lemezes tárolás kapacitására vonatkozó információk nem érhetők el Windows-csomópontok esetén.
+- Az élő naplók támogatása a Windows-tároló naplófájljainak kivételével érhető el.
+- Csak a pod környezetek figyelhetők meg, nem pedig a Docker-környezetek.
+- Az előzetes kiadásban legfeljebb 30 Windows Server-tároló támogatott. Ez a korlátozás nem vonatkozik a Linux-tárolók esetében.  
 
 ## <a name="sign-in-to-the-azure-portal"></a>Jelentkezzen be az Azure Portalra
 Jelentkezzen be az [Azure Portalra](https://portal.azure.com). 
@@ -49,8 +49,8 @@ Az a **fürtök figyelt** lapon is tudja ismerje meg a következőket:
 
 1. Hány fürtök kritikus vagy nem megfelelő állapotú, és hány megfelelő vagy nem jelentéskészítési (néven állapota ismeretlen) vannak?
 2. Összes saját [Azure Kubernetes-(AKS-motor) motor](https://github.com/Azure/aks-engine) kifogástalan üzemelő példányok?
-3. Hány csomópontokat, a felhasználó és a rendszer podok egy fürtben üzembe helyezett?
-4. Lemezterület érhető el, és a egy kapacitás probléma?
+3. Hány csomópontot, felhasználói és rendszerhüvelyt helyeznek üzembe fürtön?
+4. Mekkora lemezterület áll rendelkezésre, és van kapacitási probléma?
 
 Tartalmazza a rendszerállapot-állapotok az alábbiak: 
 
@@ -61,10 +61,10 @@ Tartalmazza a rendszerállapot-állapotok az alábbiak:
 * **Nem található** - vagy a munkaterületen, az erőforráscsoportra vagy törölték a megoldás, amely tartalmazza a munkaterület előfizetés.
 * **Jogosulatlan** -felhasználó nem rendelkezik az adatok a munkaterület olvasásához szükséges engedélyekkel.
 * **Hiba** -hiba történt a munkaterület adatainak olvasására tett kísérlet során.
-* **Nincs megfelelően konfigurálva** -tárolókhoz az Azure Monitor nincs megfelelően konfigurálva az adott munkaterületen.
+* Helytelenül **konfigurált-Azure monitor** a tárolók nem megfelelően lettek konfigurálva a megadott munkaterületen.
 * **Nincs adat** -adatok nem jelentette a munkaterülethez az elmúlt 30 percben.
 
-Állapot alapján számítja ki a teljes fürt állapotát, *legrosszabb,* , egy kivétellel – a három állapotok, ha a három állapotok valamelyikében van *ismeretlen*, megjelenik a teljes fürt állapota **ismeretlen**.  
+Az állapot kiszámítja a fürt teljes állapotát, mivel a három állapot közül a *legrosszabb* az egyik kivétel – ha a három állam bármelyike *ismeretlen*, a teljes fürt állapota **ismeretlen**lesz.  
 
 A következő táblázat nyújt információkat a számítás, a figyelt fürt a fürt több nézet állapotokat szabályozása.
 
@@ -102,17 +102,17 @@ Az alapértelmezett oldalt megnyitni kattintva **Insights** van **fürt**, és a
 
 A teljesítmény diagramon négy teljesítmény-mérőszámait jeleníti meg:
 
-- **Csomópont CPU-kihasználtság&nbsp;%** : Összesített szempontjából CPU-kihasználtság az egész fürt számára. Kijelölésével szűrheti az eredményeket a időtartományban **átlagos**, **Min**, **maximális**, **50**, **90**, és **95.** percentilisei-választójában jelenítse a diagram felett vagy külön-külön vagy együtt. 
-- **Csomópont memóriahasználat&nbsp;%** : Összesített szempontjából a memóriahasználat, az egész fürt számára. Kijelölésével szűrheti az eredményeket a időtartományban **átlagos**, **Min**, **maximális**, **50**, **90**, és **95.** percentilisei-választójában jelenítse a diagram felett vagy külön-külön vagy együtt. 
-- **Csomópontok száma**: A csomópontok száma és a Kubernetes állapota. A fürtcsomópontok jelölt állapotok a *összes*, *készen*, és *nem áll készen* és szűrt külön-külön vagy együtt a választó a diagram felett a. 
-- **Tevékenységnapló-pod száma**: A pod száma és a Kubernetes állapota. A podok jelöli az állapotok a *összes*, *függőben lévő*, *futó*, és *ismeretlen* és szűrt külön-külön vagy együtt a a a diagram felett választó. 
+- **&nbsp;Csomópont CPU-%kihasználtsága**: A teljes fürt CPU-kihasználtságának összesített perspektívája. Kijelölésével szűrheti az eredményeket a időtartományban **átlagos**, **Min**, **maximális**, **50**, **90**, és **95.** percentilisei-választójában jelenítse a diagram felett vagy külön-külön vagy együtt. 
+- **&nbsp;Csomópont memóriájának%kihasználtsága**: A teljes fürt memória-kihasználtságának összesített perspektívája. Kijelölésével szűrheti az eredményeket a időtartományban **átlagos**, **Min**, **maximális**, **50**, **90**, és **95.** percentilisei-választójában jelenítse a diagram felett vagy külön-külön vagy együtt. 
+- **Csomópontok száma**: Csomópontok száma és állapota a Kubernetes. A fürtcsomópontok jelölt állapotok a *összes*, *készen*, és *nem áll készen* és szűrt külön-külön vagy együtt a választó a diagram felett a. 
+- **Activity Pod-szám**: A Kubernetes származó Pod-szám és-állapot. A podok jelöli az állapotok a *összes*, *függőben lévő*, *futó*, és *ismeretlen* és szűrt külön-külön vagy együtt a a a diagram felett választó. 
 
-A balra vagy jobbra nyíl billentyűk használatával válthat a PERCENTILIS vonalak kulcsok a diagram és a felfelé és lefelé mutató nyílra, az az egyes válthat. Kattintson a rajzszög ikonra a felső sarkában a diagramok bármelyike rögzítenie a kijelölt diagram legutóbb megtekintve utolsó Azure-irányítópultra. Az irányítópultról, átméretezheti és áthelyezheti a diagramot. Válassza ki a diagram az irányítópult-tárolókhoz az Azure monitornak átirányítás, és a megfelelő hatókörben és nézet betöltése.
+A bal/jobb nyílbillentyűk használatával a diagramon az egyes adatpontokon keresztül válthat, a fel/le nyílbillentyűk pedig a percentilis vonalakon válthatnak. Az egyik diagram jobb felső sarkában található rögzítés ikonra kattintva rögzítheti a kiválasztott diagramot az utolsó megtekintett Azure-irányítópulton. Az irányítópultról átméretezheti és áthelyezheti a diagramot. Ha kiválasztja a diagramot az irányítópultról, a rendszer átirányítja Azure Monitor a tárolók számára, és betölti a megfelelő hatókört és nézetet.
 
-Az Azure Monitor-tárolókhoz is támogatja az Azure Monitor [metrikaböngésző](../platform/metrics-getting-started.md), ahol hozzon létre saját diagram diagramokat, összevetését és megvizsgálhatja a trendeket, és rögzíthet az irányítópultokon. A metrikaböngésző, is használhatja a feltételeknek, a metrikák megjelenítéséhez alapjául szolgáló meg egy [mérőszám-alapú riasztási szabály](../platform/alerts-metric.md).  
+A tárolók Azure Monitor támogatja a Azure Monitor [metrikák Explorert](../platform/metrics-getting-started.md)is, ahol saját diagramokat hozhat létre, összekapcsolhatja és megvizsgálhatja a trendeket, és rögzítheti az irányítópultokat. A mérőszámok Intézőből a metrikák egy [metrika-alapú riasztási szabály](../platform/alerts-metric.md)alapján történő megjelenítéséhez beállított feltételeket is használhatja.  
 
-## <a name="view-container-metrics-in-metrics-explorer"></a>Tároló mérőszámainak megtekintése a metrikaböngészőben
-A metrikaböngészőben megtekintheti összesített csomópont és a pod-tárolókhoz az Azure Monitor kihasználtsági mérőszámokat. Az alábbi táblázat foglalja össze a segítségével megismerheti a mérőszám-diagramok használata tárolómetrikák megjelenítése a részletek.
+## <a name="view-container-metrics-in-metrics-explorer"></a>Tároló metrikáinak megtekintése a metrikák Explorerben
+A metrikák Explorerben megtekintheti az összesített csomópont-és Pod-kihasználtsági metrikákat Azure Monitor a tárolók számára. A következő táblázat összefoglalja a részleteket, amelyekkel megismerheti, Hogyan jeleníthető meg a metrikai diagramok a tároló metrikáinak megjelenítéséhez.
 
 |Névtér | Metrika |
 |----------|--------|
@@ -124,25 +124,25 @@ A metrikaböngészőben megtekintheti összesített csomópont és a pod-tárol�
 | | memoryWorkingSetBytes |
 | | memoryWorkingSetPercentage |
 | | nodesCount |
-| insights.container/pods | |
+| bepillantást nyerhet. tároló/hüvely | |
 | | PodCount |
 
-Alkalmazhat [felosztás](../platform/metrics-charts.md#apply-splitting-to-a-chart) dimenzió tekinti meg, és megjelenítheti a különböző szegmenseinek metrikát, hasonlítsa össze egymással. Egy csomópont a diagram a is szegmentálhatja a *gazdagép* dimenzió, és a egy pod is szegmentálhatja, a következő szempontok alapján:
+Alkalmazhat egy mérőszám [felosztását](../platform/metrics-charts.md#apply-splitting-to-a-chart) úgy, hogy megtekintse azt dimenzió alapján, és megjelenítse, hogy a különböző szegmensek hogyan hasonlítanak egymáshoz. Csomópont esetében a diagramot a *gazdagép* dimenziója alapján, a pod-ból pedig a következő dimenziók szerint szegmentálhatja:
 
-* tartományvezérlő
+* Tartományvezérlő
 * Kubernetes-névtér
 * Csomópont
 * Fázis
 
-## <a name="analyze-nodes-controllers-and-container-health"></a>Csomópontok, a tartományvezérlőket és a tároló állapotának elemzése
+## <a name="analyze-nodes-controllers-and-container-health"></a>Csomópontok, vezérlők és tároló állapotának elemzése
 
-Ha úgy vált, hogy **csomópontok**, **tartományvezérlők**, és **tárolók** lap jobb oldalán található az automatikusan megjelennek a tulajdonság panelen. Látható tulajdonságait, az elem kiválasztva, beleértve a Kubernetes-objektumokat rendszerezéséhez határoz meg feliratok. Amikor egy Linux-csomópont van kiválasztva, azt is bemutatja a szakaszában **helyi lemezkapacitás** rendelkezésre álló lemezterület és az egyes lemezek, a csomópont számára megjelenő használt százalék. Kattintson a **>>** összekapcsolása a panelen view\hide a panelen. 
+Ha úgy vált, hogy **csomópontok**, **tartományvezérlők**, és **tárolók** lap jobb oldalán található az automatikusan megjelennek a tulajdonság panelen. Megjeleníti a kiválasztott elem tulajdonságait, beleértve a Kubernetes objektumok rendszerezéséhez definiált címkéket is. Linux-csomópont kiválasztásakor azt is megjeleníti a **helyi lemez kapacitása** rendelkezésre álló lemezterület és a csomóponton bemutatott egyes lemezek esetében használt százalék. Kattintson a **>>** összekapcsolása a panelen view\hide a panelen. 
 
 ![Példa Kubernetes perspektívák tulajdonságait tartalmazó ablaktáblán](./media/container-insights-analyze/perspectives-preview-pane-01.png)
 
-Kibontja a hierarchia az objektumok, ahogy a Tulajdonságok panelen frissítések alapján a kiválasztott objektum. A panelen is megtekintheti az előre definiált naplókeresések Kubernetes-események kattintva a **nézet Kubernetes eseménynaplók** a panel tetején lévő hivatkozásra. Kubernetes-naplóadatok megtekintésével kapcsolatos további információkért lásd: [keresni a naplókban az adatelemzéshez](container-insights-log-search.md). Fürterőforrások tekinti át, miközben tárolónaplók és az események valós időben láthatja. Ez a szolgáltatás és a konfigurációt, és hozzáférést biztosít a szükséges kapcsolatos további információkért lásd: [megtekintése naplók valós időben az Azure Monitor szolgáltatással tárolók](container-insights-live-logs.md). 
+Kibontja a hierarchia az objektumok, ahogy a Tulajdonságok panelen frissítések alapján a kiválasztott objektum. A panelen is megtekintheti az előre definiált naplókeresések Kubernetes-események kattintva a **nézet Kubernetes eseménynaplók** a panel tetején lévő hivatkozásra. Kubernetes-naplóadatok megtekintésével kapcsolatos további információkért lásd: [keresni a naplókban az adatelemzéshez](container-insights-log-search.md). A fürt erőforrásainak áttekintése közben valós időben láthatja a tároló naplóit és eseményeit. További információ erről a szolgáltatásról, valamint a hozzáférés biztosításához és vezérléséhez szükséges konfigurációról: a [naplók valós idejű megtekintése a Azure monitor for containers használatával](container-insights-live-logs.md). 
 
-Használja a **+ szűrő hozzáadása** lehetőséget az oldal tetején a nézet által az eredmények szűréséhez **szolgáltatás**, **csomópont**, **Namespace**, vagy  **Csomópontkészletek** a szűrő hatókör kiválasztása, után, majd válassza ki az egyik látható értékeket a **érték(ek) kiválasztása** mező.  A szűrés konfigurálása után érvényes globálisan az AKS-fürt bármely szempontjából megtekintése közben.  A képlet csak az egyenlőségjel támogatja.  A találatok további szűkítéséhez az eredményeket a legelső felül további szűrőket adhat hozzá.  Ha például egy szűrő által megadott **csomópont**, a második szűrőt csak lehetővé tenné, hogy válassza ki **szolgáltatás** vagy **Namespace**.  
+A lap felső részén található **+ szűrő hozzáadása** lehetőséggel szűrheti a nézet által megjelenített eredményeket a **szolgáltatás**, a **csomópont**, a **névtér**vagy a **csomópont-készlet** alapján, majd a szűrő hatókörének kijelölése után kiválaszthatja a következő értékek egyikét: **Válassza az érték (ek)** mezőt.  A szűrés konfigurálása után érvényes globálisan az AKS-fürt bármely szempontjából megtekintése közben.  A képlet csak az egyenlőségjel támogatja.  A találatok további szűkítéséhez az eredményeket a legelső felül további szűrőket adhat hozzá.  Ha például egy szűrő által megadott **csomópont**, a második szűrőt csak lehetővé tenné, hogy válassza ki **szolgáltatás** vagy **Namespace**.  
 
 ![Példa eredmények szűkítéséhez a szűrő használatával](./media/container-insights-analyze/add-filter-option-01.png)
 
@@ -152,9 +152,9 @@ Váltson a **csomópontok** lapra, és a sor hierarchia követi a Kubernetes há
 
 ![Kubernetes-csomópontot példahierarchia a teljesítmény nézet](./media/container-insights-analyze/containers-nodes-view.png)
 
-A Windows Server 2019 operációs rendszert futtató Windows Server-tárolók a Linux-alapú csomópontokat, a lista összes után jelennek meg. Amikor kibővít egy Windows Server-csomópontra, megtekintheti a podok és a tárolók a csomóponton futó egy vagy több. Ha egy csomópont van kiválasztva, a Tulajdonságok panelen látható verzióadatok ügynök adatainak kivételével, mivel a Windows Server-csomópontok nem rendelkeznek telepített ügynök.  
+A Windows Server 2019 operációs rendszert futtató Windows Server-tárolók a listában szereplő összes Linux-alapú csomópont után jelennek meg. Egy Windows Server-csomópont kibontásakor megtekintheti a csomóponton futó egy vagy több hüvelyt és tárolót. Csomópont kiválasztásakor a Tulajdonságok ablaktábla a verziószámot jeleníti meg, kivéve az ügynökök adatait, mivel a Windows Server-csomópontok nem rendelkeznek ügynökkel.  
 
-![Csomópont-hierarchiától például a felsorolt Windows Server-csomópontok](./media/container-insights-analyze/nodes-view-windows.png) 
+![Példa a csomópont-hierarchiára a felsorolt Windows Server-csomópontokkal](./media/container-insights-analyze/nodes-view-windows.png) 
 
 Az Azure Container Instances virtuális csomópontok a Linux operációs rendszert futtató a listában lévő utolsó AKS fürtcsomópont után jelennek meg.  Amikor kibővít egy ACI virtuális csomópont, egy vagy több ACI podok és tárolók a csomóponton futó megtekintheti.  Metrikák nem összegyűjtött és jelentett csomópontok, csak a podok.
 
@@ -163,7 +163,9 @@ Az Azure Container Instances virtuális csomópontok a Linux operációs rendsze
 Egy kibontott csomópontból részletezhet a pod vagy teljesítményadatok szűrve, hogy a tartományvezérlő a tartományvezérlőre, amely a csomóponton futó tárolót. Kattintson az érték a a **vezérlő** oszlopban az adott csomópont számára.   
 ![Példa Lehatolás csomópontból a teljesítmény nézet-vezérlő](./media/container-insights-analyze/drill-down-node-controller.png)
 
-Válassza ki a tartományvezérlők vagy a lap tetején lévő tárolókat, és tekintse át az állapot- és erőforrás-felhasználást azokat az objektumokat.  Ha ehelyett meg szeretné tekinteni a memóriahasználat, az a **metrika** legördülő listában válassza **memória RSS** vagy **memória-munkakészlet**. **Memória RSS** csak Kubernetes 1.8-as és újabb verziók esetében támogatott. Ellenkező esetben, tekintse meg az értékeket **Min&nbsp; %**  , *NaN&nbsp;%* , azaz egy nem definiált képviselő numerikus típus értéke vagy ábrázolható érték. 
+Válassza ki a tartományvezérlők vagy a lap tetején lévő tárolókat, és tekintse át az állapot- és erőforrás-felhasználást azokat az objektumokat.  Ha ehelyett meg szeretné tekinteni a memóriahasználat, az a **metrika** legördülő listában válassza **memória RSS** vagy **memória-munkakészlet**. **Memória RSS** csak Kubernetes 1.8-as és újabb verziók esetében támogatott. Ellenkező esetben, tekintse meg az értékeket **Min&nbsp; %**  , *NaN&nbsp;%* , azaz egy nem definiált képviselő numerikus típus értéke vagy ábrázolható érték.
+
+A memória-munkakészletben a rezidens memória és a virtuális memória (gyorsítótár) is látható, és az alkalmazás teljes egészében a használatos. A memória RSS csak a fő memóriát jeleníti meg, amely a rezidens memória. Ez a mérőszám a rendelkezésre álló memória tényleges kapacitását mutatja.
 
 ![Tároló csomópontok teljesítmény nézet](./media/container-insights-analyze/containers-node-metric-dropdown.png)
 
@@ -171,9 +173,9 @@ Alapértelmezés szerint a teljesítményadatokat az elmúlt hat órán alapul, 
 
 ![Az adatok szűrésének. percentilis kiválasztása](./media/container-insights-analyze/containers-metric-percentile-filter.png)
 
-Amikor egérmutatót alatt az oszlopdiagram a **Trend** oszlop, minden egyes sávon látható, vagy a CPU, vagy a memória kihasználtsága, attól függően, amelyek metrika van kijelölve, 15 percen belül minta. Miután kiválasztotta a trend diagram keresztül billentyűzet, az Alt + Page Up vagy Alt + PAGE DOWN billentyűkkel kulcsok segítségével sávok külön-külön válthat, és az azonos részleteinek beolvasása, mint egy rámutatásra.
+Amikor egérmutatót alatt az oszlopdiagram a **Trend** oszlop, minden egyes sávon látható, vagy a CPU, vagy a memória kihasználtsága, attól függően, amelyek metrika van kijelölve, 15 percen belül minta. Miután kiválasztotta a trend diagramot a billentyűzeten, használhatja az ALT + PageUp vagy az ALT + PageDown billentyűkombinációt az egyes sávokon való váltáshoz, és ugyanazokat a részleteket kapja meg, mint a mouseover-en.
 
-![Sáv diagram vigye a kurzort a példában trend](./media/container-insights-analyze/containers-metric-trend-bar-01.png)    
+![Példa a trend oszlopdiagram fölé](./media/container-insights-analyze/containers-metric-trend-bar-01.png)    
 
 A következő példában, vegye figyelembe a lista – az első node *aks-nodepool1 -* , értéke **tárolók** érték 9, amely egy összegző üzembe helyezett tárolókat teljes száma.
 
@@ -200,7 +202,7 @@ Válassza ki a választó **tartományvezérlők**.
 
 Itt megtekintheti a tartományvezérlők és ACI virtuális csomópont tartományvezérlőkön vagy egy tartományvezérlő nem csatlakozik virtuális csomópont podok teljesítménybeli állapotát.
 
-![< név > tartományvezérlők teljesítmény nézet](./media/container-insights-analyze/containers-controllers-view.png)
+![\<Név > vezérlők teljesítmény nézete](./media/container-insights-analyze/containers-controllers-view.png)
 
 A sor hierarchia vezérlő kezdődik, és amikor kibővít egy tartományvezérlő, megtekintheti az egy vagy több podok.  Bontsa ki a pod, és az utolsó sort jeleníti meg a tároló a pod szerint vannak csoportosítva. Egy kibontott vezérlőből származó részletes elemzését is a csomópontot, szűri az adott csomópont teljesítményadatok futtató. Egy tartományvezérlő nem csatlakozik az ACI podok utolsó szerepelnek a listában.
 
@@ -216,10 +218,10 @@ A tartományvezérlők megtekintésekor megjelenő információkat az alábbi t�
 |--------|-------------|
 | Name (Név) | A vezérlő neve.|
 | status | A tárolókat, ha befejeződött, például a futó állapotú, összesítő állapotát *OK*, *kilépett*, *sikertelen* *leállítva*, vagy *Szüneteltetve*. Ha a tároló fut-e, de a állapota volt, vagy nem megfelelően jelenik meg, vagy volt nem dolgozza fel az ügynök és a 30 percnél hosszabb ideig nem válaszolt, az állapot értéke *ismeretlen*. További részletek a állapot ikon az alábbi táblázatban szerepelnek.|
-| Átlagos&nbsp;%, Min&nbsp;% Max&nbsp;%, az 50&nbsp;%, 90&nbsp;% | Összesítő átlagos százalékos aránya a kiválasztott metrika és PERCENTILIS minden entitás átlaga. |
-| Avg, Min, Max, 50, 90  | Az átlagos CPU millicore vagy a memória teljesítményét a kiválasztott PERCENTILIS tárolója összesítő. Az átlagos érték podot beállított CPU/memória felső korlátja mérése történik. |
+| Átlagos&nbsp;%, Min&nbsp;% Max&nbsp;%, az 50&nbsp;%, 90&nbsp;% | Az egyes entitások átlagos százalékos arányának összesítése a kiválasztott metrika és a percentilis esetében. |
+| Avg, Min, Max, 50, 90  | A kiválasztott százalékos értékhez tartozó tároló átlagos CPU-millicore vagy memória-teljesítményének összesítése. Az átlagos érték podot beállított CPU/memória felső korlátja mérése történik. |
 | Containers | A vezérlő vagy a pod tárolók száma összesen. |
-| Újraindul | Összesítő újraindítás száma, a tárolók. |
+| Újraindul | A tárolók újraindítási számának összesítése. |
 | Hasznos üzemidő | Egy tároló indítása óta idejét jelzi. |
 | Csomópont | Csak a tárolók és a podokat. Melyik, a hozzá tartozó tartományvezérlő jeleníti meg. | 
 | Átlagos trend&nbsp;%, Min&nbsp;% Max&nbsp;%, az 50&nbsp;%, 90&nbsp;%| Oszlopdiagram trend a átlagos PERCENTILIS mérőszám, a vezérlő jelöli. |
@@ -241,7 +243,7 @@ Válassza ki a választó **tárolók**.
 
 Itt megtekintheti az Azure-beli Kubernetes és az Azure Container Instances a tárolók teljesítménybeli állapotát.  
 
-![< név > tartományvezérlők teljesítmény nézet](./media/container-insights-analyze/containers-containers-view.png)
+![\<Név > vezérlők teljesítmény nézete](./media/container-insights-analyze/containers-containers-view.png)
 
 Egy tárolóban, a részletes elemzését is egy pod vagy egy csomópontot, szűri az adott objektum teljesítményadatainak megjelenítéséhez. Kattintson az érték a a **Pod** vagy **csomópont** oszlopban az adott tároló.   
 
@@ -272,19 +274,19 @@ Az állapot mezőben az ikonok jelzi a podok, online válik, az alábbi tábláz
 | ![Sikertelen állapotikon](./media/container-insights-analyze/containers-failed-icon.png) | Hibás állapotban |  
 
 ## <a name="disk-capacity-workbook"></a>Lemez kapacitása munkafüzet
-Munkafüzetek kombinálhatja a szöveg, [lekérdezések naplózását](../log-query/query-language.md), [metrikák](../platform/data-platform-metrics.md), és látványos interaktív jelentéseket paramétereket. Munkafüzetek bármely más csapattagokat ugyanazon Azure-erőforrásokhoz való hozzáféréssel rendelkező tagjai szerkeszthetik.
+A munkafüzetek szövegeket, [naplókat](../log-query/query-language.md), [metrikákat](../platform/data-platform-metrics.md)és paramétereket egyesítenek gazdag interaktív jelentésekben. A munkafüzetek szerkeszthető más csapattagok számára, akik ugyanahhoz az Azure-erőforrásokhoz férnek hozzá.
 
-Tárolók az Azure Monitor tartalmazza az első lépésekhez, egy munkafüzet **lemez kapacitása**.  Ez a munkafüzet interaktív lemez használati diagramok az egyes lemezek, a következő perspektívák által a csomópontra a tárolókon belül bemutatott mutat be:
+A tárolók Azure Monitor tartalmaz egy munkafüzetet az elinduláshoz, a **lemez kapacitásához**.  Ez a munkafüzet interaktív lemez-használati diagramokat jelenít meg a tárolóban a csomóponton a következő perspektívák által bemutatott lemezekhez:
 
-- Az összes lemez % Lemezhasználat
-- Minden lemez esetében a szabad lemezterület
-- Foglalt hely % az egyes csomópontok lemez megjelenítő táblázat, % trendjének használt terület, a szabad lemezterület (GB) és a trend (GB) szabad lemezterület szükséges. Foglalt hely %- és a szabad lemezterület (GB) az alábbiakban látható kiválasztásakor egy sort a táblázatban, 
+- Lemez kihasználtsága (%) az összes lemez esetében
+- Szabad lemezterület az összes lemez számára
+- Egy táblázat, amely az egyes csomópontok lemezeit, a felhasznált%-ot, a felhasznált lemezterület%-át, a szabad lemezterületet (GiB) és a szabad lemezterület (GiB) trendjét mutatja. Ha a táblázatban egy sor van kiválasztva, akkor a (z)% felhasznált terület és a szabad lemezterület (GiB) alább látható. 
 
-Ez a munkafüzet kiválasztásával fér hozzá **lemez kapacitása** származó a **nézet munkafüzetek** legördülő listából válassza ki.  
+Ezt a munkafüzetet úgy érheti el, ha kiválasztja a **lemez kapacitása** lehetőséget a **munkafüzetek megtekintése** legördülő listából.  
 
-![Munkafüzetek legördülő lista megtekintése](./media/container-insights-analyze/view-workbooks-dropdown-list.png)
+![Munkafüzetek megtekintése legördülő lista](./media/container-insights-analyze/view-workbooks-dropdown-list.png)
 
 
 ## <a name="next-steps"></a>További lépések
-- Tekintse át a [teljesítményével kapcsolatos riasztások létrehozása az Azure Monitor szolgáltatással tárolók](container-insights-alerts.md) megtudhatja, hogyan hozhat létre riasztásokat a magas CPU és memória kihasználtságáról, a DevOps és üzemeltetési folyamatokat és eljárásokat támogatásához. 
-- Nézet [lekérdezés példák jelentkezzen](container-insights-log-search.md#search-logs-to-analyze-data) , előre definiált lekérdezések és példák kiértékelése vagy riasztási, megjelenítése és elemzése a fürtök testreszabásához.
+- Tekintse át a [teljesítménnyel kapcsolatos riasztások létrehozása a Azure monitor for containers](container-insights-alerts.md) szolgáltatással című témakört, amelyből megtudhatja, hogyan hozhat létre riasztásokat magas CPU-és memóriahasználat esetén a DevOps vagy működési folyamatok és eljárások támogatása 
+- Megtekintheti a [napló lekérdezési példáit](container-insights-log-search.md#search-logs-to-analyze-data) , amelyekkel előre definiált lekérdezéseket és példákat tekinthet meg a fürtök riasztásának, megjelenítésének vagy elemzésének kiértékeléséhez és testreszabásához.

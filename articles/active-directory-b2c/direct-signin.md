@@ -1,6 +1,6 @@
 ---
-title: Állítsa be a közvetlen bejelentkezés az Azure Active Directory B2C használatával |} A Microsoft Docs
-description: Ismerje meg, hogy feltöltse a bejelentkezési neve, vagy közvetlenül egy közösségi identitásszolgáltatót irányítsa át.
+title: Közvetlen bejelentkezés beállítása a Azure Active Directory B2C használatával | Microsoft Docs
+description: Megtudhatja, hogyan lehet előre kitölteni a bejelentkezési nevet, vagy egyenesen átirányítani egy közösségi identitás-szolgáltatóra.
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
@@ -10,26 +10,26 @@ ms.topic: conceptual
 ms.date: 06/18/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 869097ac3b91e55d5dbf948680450f31efafd359
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8c0f3d8f3f49001e1326688ccc794e19d1148e5d
+ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66511114"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67846889"
 ---
-# <a name="set-up-direct-sign-in-using-azure-active-directory-b2c"></a>Állítsa be a közvetlen bejelentkezés az Azure Active Directory B2C használatával
+# <a name="set-up-direct-sign-in-using-azure-active-directory-b2c"></a>Közvetlen bejelentkezés beállítása Azure Active Directory B2C használatával
 
-Állítson be jelentkezzen be az alkalmazás az Azure Active Directory (AD) B2C-vel, megadhatja a bejelentkezési név vagy közvetlen jelentkezzen be egy adott közösségi identitásszolgáltató, például a Facebook, a LinkedIn, vagy a Microsoft-fiókkal. 
+Ha Azure Active Directory (AD) B2C használatával állítja be az alkalmazásba való bejelentkezést, előre feltöltheti a bejelentkezési nevet vagy a közvetlen bejelentkezést egy adott közösségi identitás-szolgáltatóba, például a Facebook, a LinkedIn vagy egy Microsoft-fiók.
 
-## <a name="prepopulate-the-sign-in-name"></a>Feltöltse a bejelentkezési neve
+## <a name="prepopulate-the-sign-in-name"></a>A bejelentkezési név előre feltöltése
 
-Során a bejelentkezési felhasználói interakciósorozat egy függő entitás alkalmazás megcélozhatnak egy adott felhasználó vagy tartomány neve. Amikor megcélozni a felhasználókat, megadhatja az alkalmazás, az engedélyezési kérésben a `login_hint` lekérdezési paraméter az a felhasználó bejelentkezési nevét. Az Azure AD B2C automatikusan feltölti a bejelentkezési neve, amíg a felhasználó csak kell adnia a jelszót.
+A bejelentkezési felhasználói úton a függő entitás alkalmazás egy adott felhasználót vagy tartománynevet is megcélozhat. Egy felhasználó megcélzásakor az alkalmazás megadhatja az engedélyezési kérelemben a `login_hint` lekérdezési paramétert a felhasználó bejelentkezési nevével. Azure AD B2C automatikusan feltölti a bejelentkezési nevet, míg a felhasználónak csak meg kell adnia a jelszót.
 
-![bejelentkezési mutató használatával](./media/direct-signin/login-hint.png) 
+![Bejelentkezési oldal regisztrálása az URL-ben Kiemelt login_hint lekérdezési paraméterekkel](./media/direct-signin/login-hint.png)
 
-A felhasználó nem módosíthatja a bejelentkezési szövegmező értékét.
+A felhasználó módosíthatja a bejelentkezési szövegmezőben lévő értéket.
 
-Ha egyéni szabályzatot használ, bírálja felül a `SelfAsserted-LocalAccountSignin-Email` technikai profil. Az a `<InputClaims>` területen állítsa be a signInName kérelemnek a DefaultValue `{OIDC:LoginHint}`. A `{OIDC:LoginHint}` változó értékét tartalmazza a `login_hint` paraméter. Az Azure AD B2C beolvassa a signInName jogcím értékét, és előre feltölti a signInName szövegmezőbe.
+Ha egyéni szabályzatot használ, bírálja felül a `SelfAsserted-LocalAccountSignin-Email` technikai profilt. A `<InputClaims>` szakaszban állítsa be a signInName `{OIDC:LoginHint}`jogcím DefaultValue értékét a következőre:. A `{OIDC:LoginHint}` változó tartalmazza a `login_hint` paraméter értékét. Azure AD B2C beolvassa a signInName jogcím értékét, és előre feltölti a signInName szövegmezőt.
 
 ```xml
 <ClaimsProvider>
@@ -45,13 +45,13 @@ Ha egyéni szabályzatot használ, bírálja felül a `SelfAsserted-LocalAccount
 </ClaimsProvider>
 ```
 
-## <a name="redirect-sign-in-to-a-social-provider"></a>Jelentkezzen be egy közösségi szolgáltató átirányítása
+## <a name="redirect-sign-in-to-a-social-provider"></a>Bejelentkezés átirányítása egy közösségi szolgáltatóba
 
-Ha konfigurálta a bejelentkezési utazás, hogy az alkalmazás közé tartozik a közösségi fiókok, mint a Facebook, a LinkedIn, vagy a Google, megadhatja a `domain_hint` paraméter. A lekérdezési paraméter mutatót Azure AD B2C-vel kapcsolatban a közösségi identitásszolgáltató a bejelentkezéshez használandó. Például, ha az alkalmazás az `domain_hint=facebook.com`, jelentkezzen be közvetlenül kerül a Facebook-Bejelentkezés lapra.
+Ha úgy konfigurálta a bejelentkezési utat, hogy az alkalmazás belefoglalja a közösségi fiókokat, például a Facebookot, a linkedint vagy a `domain_hint` Google-t, megadhatja a paramétert. Ez a lekérdezési paraméter egy olyan célzást tartalmaz, amely a bejelentkezéshez használandó közösségi identitás-szolgáltatóról Azure AD B2C. Ha például az alkalmazás megadja `domain_hint=facebook.com`, a bejelentkezés közvetlenül a Facebook bejelentkezési oldalára kerül.
 
-![tartományemlékeztető használatával](./media/direct-signin/domain-hint.png) 
+![Bejelentkezési oldal regisztrálása az URL-ben Kiemelt domain_hint lekérdezési paraméterekkel](./media/direct-signin/domain-hint.png)
 
-Ha egyéni szabályzatot használ, a tartomány neve használatával konfigurálhatja a `<Domain>domain name</Domain>` XML-elem bármely `<ClaimsProvider>`. 
+Ha egyéni szabályzatot használ, a tartománynevet a `<Domain>domain name</Domain>` tetszőleges `<ClaimsProvider>`XML-elem használatával is konfigurálhatja.
 
 ```xml
 <ClaimsProvider>

@@ -1,6 +1,6 @@
 ---
-title: Azure Files-NetApp használatával megoldásarchitektúrák |} A Microsoft Docs
-description: Ajánlott eljárások mutató hivatkozásokat biztosít a megoldásarchitektúrák, Azure NetApp Files használatával.
+title: Megoldási architektúrák a Azure NetApp Files használatával | Microsoft Docs
+description: Az Azure NetApp Filest használó megoldási architektúrák ajánlott eljárásaira mutató hivatkozásokat tartalmaz.
 services: azure-netapp-files
 documentationcenter: ''
 author: b-juche
@@ -14,26 +14,27 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/24/2019
 ms.author: b-juche
-ms.openlocfilehash: 89d6bd183d8cfc47915936e536f5ab9bf0ac258a
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: d4682ed375453cee4e5aa107d69c288e66cd11a7
+ms.sourcegitcommit: 10251d2a134c37c00f0ec10e0da4a3dffa436fb3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67454125"
+ms.lasthandoff: 07/13/2019
+ms.locfileid: "67867407"
 ---
 # <a name="solution-architectures-using-azure-netapp-files"></a>Megoldásarchitektúrák az Azure NetApp Filesszal
-Ez a cikk ismerteti a referenciák, ajánlott eljárások, amelyek segítségével megismerheti a megoldás architektúrák Azure NetApp Files használatával.  
+Ez a cikk az ajánlott eljárásokra mutató hivatkozásokat tartalmaz, amelyek segítségével megismerheti a Azure NetApp Files használatának megoldási architektúráit.  
 
-## <a name="solutions-for-oracle-database"></a>Oracle database-megoldások
+## <a name="solutions-for-oracle-database"></a>Megoldások az Oracle Database-hez
 
-* [Az Oracle az Azure-beli Azure NetApp fájlok használata ajánlott eljárásokat tartalmazó útmutató](https://www.netapp.com/us/media/tr-4780.pdf)
-* [Oracle Virtuálisgép-rendszerképek és azok központi telepítésének a Microsoft Azure-ban: Megosztott tároló konfigurációs beállítások](https://docs.microsoft.com/azure/virtual-machines/workloads/oracle/oracle-vm-solutions#shared-storage-configuration-options)
+* [Oracle az Azure-beli üzembe helyezéssel kapcsolatos ajánlott eljárási útmutató az Azure NetApp Files](https://www.netapp.com/us/media/tr-4780.pdf)
+* [Oracle VM-rendszerképek és azok üzembe helyezése Microsoft Azureon: Megosztott tároló konfigurációs beállításai](https://docs.microsoft.com/azure/virtual-machines/workloads/oracle/oracle-vm-solutions#shared-storage-configuration-options)
 
-## <a name="solutions-for-sap-applications"></a>Megoldások az SAP-alkalmazások
+## <a name="solutions-for-sap-applications"></a>Megoldások SAP-alkalmazásokhoz
 
-* [A Microsoft Azure-ban Azure NetApp fájlok SAP-alkalmazások](https://www.netapp.com/us/media/tr-4746.pdf)
-* [Magas rendelkezésre állás az SAP NetWeaver SUSE Linux Enterprise Server az Azure NetApp Files SAP alkalmazások az Azure virtuális gépeken](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-netapp-files)
+* [SAP-alkalmazások Microsoft Azure a Azure NetApp Files használatával](https://www.netapp.com/us/media/tr-4746.pdf)
+* [Magas rendelkezésre állás az Azure-beli virtuális gépeken futó SAP NetWeaver-hez SUSE Linux Enterprise Serveron Azure NetApp Files SAP-alkalmazásokhoz](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-netapp-files)
+* [Az Azure Virtual Machines magas rendelkezésre állása az SAP NetWeaver számára a Red Hat Enterprise Linux SAP-alkalmazásokhoz Azure NetApp Files](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-netapp-files)
 
-## <a name="talon-solutions"></a>Talon megoldások 
+## <a name="talon-solutions"></a>Talon-megoldások 
 
-[Globálisan elosztott vállalati fájlmegosztási Azure NetApp fájlokkal és Talon FAST™](https://www.talonstorage.com/products/azure-netapp-files)
+[Globálisan elosztott nagyvállalati fájlmegosztás Azure NetApp Files és Talon gyors™](https://www.talonstorage.com/products/azure-netapp-files)

@@ -1,41 +1,41 @@
 ---
-title: Hozzon létre egy munkaterületet egy Azure Resource Manager-sablon használatával
+title: Munkaterület létrehozása Azure Resource Manager sablonnal
 titleSuffix: Azure Machine Learning service
-description: Ismerje meg, hogyan hozzon létre egy új Azure Machine Learning szolgáltatás munkaterületet egy Azure Resource Manager-sablon használatával.
+description: Megtudhatja, hogyan hozhat létre új Azure Machine Learning szolgáltatás-munkaterületet egy Azure Resource Manager sablon használatával.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.author: larryfr
 author: Blackmist
-ms.date: 04/16/2019
+ms.date: 07/16/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: 4e0af3b395ec640fd037a1e76365408c10613340
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: 0e78d9cfce59615a53534fe9815205e39f64853d
+ms.sourcegitcommit: 10251d2a134c37c00f0ec10e0da4a3dffa436fb3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67477015"
+ms.lasthandoff: 07/13/2019
+ms.locfileid: "67868837"
 ---
-# <a name="use-an-azure-resource-manager-template-to-create-a-workspace-for-azure-machine-learning-service"></a>Hozzon létre egy munkaterületet, az Azure Machine Learning szolgáltatás egy Azure Resource Manager-sablon használatával
+# <a name="use-an-azure-resource-manager-template-to-create-a-workspace-for-azure-machine-learning-service"></a>Munkaterületek létrehozása Azure Machine Learning szolgáltatáshoz Azure Resource Manager sablon használatával
 
-Ez a cikk bemutatja egy Azure Machine Learning szolgáltatás munkaterület használata az Azure Resource Manager-sablonok létrehozásának számos módja. A Resource Manager-sablon megkönnyíti az erőforrások létrehozása egyetlen, koordinált műveletben. A sablon egy JSON-dokumentum, amely meghatározza az erőforrások üzembe helyezéséhez szükséges. Üzembe helyezési paraméterek azt is megadhatja. Paraméterek segítségével a sablon használata esetén adja meg a bemeneti értékeket.
+Ebből a cikkből megtudhatja, hogyan hozhat létre Azure Machine Learning szolgáltatás-munkaterületet Azure Resource Manager sablonok használatával. A Resource Manager-sablonok segítségével egyszerűen hozhat létre erőforrásokat egyetlen, koordinált műveletként. A sablon egy JSON-dokumentum, amely meghatározza a központi telepítéshez szükséges erőforrásokat. Emellett telepítési paramétereket is megadhat. A paraméterek a sablon használatakor a bemeneti értékek biztosítására szolgálnak.
 
-További információkért lásd: [alkalmazás üzembe helyezése Azure Resource Manager-sablonnal](../../azure-resource-manager/resource-group-template-deploy.md).
+További információ: [alkalmazások központi telepítése Azure Resource Manager sablonnal](../../azure-resource-manager/resource-group-template-deploy.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Egy **Azure-előfizetés**. Ha nem rendelkezik egy, a [Azure Machine Learning szolgáltatás ingyenes vagy fizetős verzióját](https://aka.ms/AMLFree).
+* Egy **Azure-előfizetés**. Ha még nem rendelkezik ilyennel, próbálja ki [Azure Machine learning szolgáltatás ingyenes vagy fizetős verzióját](https://aka.ms/AMLFree).
 
-* A parancssori felületen a sablon használatához szüksége vagy [Azure PowerShell-lel](https://docs.microsoft.com/powershell/azure/overview?view=azps-1.2.0) vagy a [Azure CLI-vel](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
+* Ha a parancssori felületről szeretne sablont használni, [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview?view=azps-1.2.0) vagy az [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)-t kell használnia.
 
 ## <a name="resource-manager-template"></a>Resource Manager-sablon
 
-A következő Resource Manager-sablon segítségével hozzon létre egy Azure Machine Learning szolgáltatás munkaterület és a kapcsolódó Azure-erőforrásokhoz:
+A következő Resource Manager-sablon használatával létrehozhat egy Azure Machine Learning szolgáltatás-munkaterületet és a hozzá tartozó Azure-erőforrásokat:
 
 [!code-json[create-azure-machine-learning-service-workspace](~/quickstart-templates/101-machine-learning-create/azuredeploy.json)]
 
-Ezzel a sablonnal hoz létre a következő Azure-szolgáltatások:
+Ez a sablon a következő Azure-szolgáltatásokat hozza létre:
 
 * Azure-erőforráscsoport
 * Azure Storage-tárfiók neve
@@ -44,41 +44,41 @@ Ezzel a sablonnal hoz létre a következő Azure-szolgáltatások:
 * Azure Container Registry
 * Azure Machine Learning-munkaterület
 
-Az erőforráscsoport a tároló, amely a szolgáltatások. A különböző szolgáltatások által az Azure Machine Learning-munkaterület szükséges.
+Az erőforráscsoport az a tároló, amely a szolgáltatásokat tárolja. A Azure Machine Learning munkaterület különböző szolgáltatásokat igényel.
 
-A példa sablon két paraméterrel rendelkezik:
+A példában szereplő sablonnak két paramétere van:
 
-* A **hely** ahol az erőforráscsoportot és a szolgáltatások létrejön.
+* A **hely** , ahol az erőforráscsoport és a szolgáltatások létre lesznek hozva.
 
-    A sablont fogja használni, válassza ki a helyet a legtöbb erőforrást. A kivétel ez alól az Application Insights szolgáltatás, amely nem érhető el az összes, a többi szolgáltatás helyét. Ha egy helyen, ahol nem érhető el, a szolgáltatás az USA déli középső régiójában létrejön.
+    A sablon a legtöbb erőforráshoz kiválasztott helyet fogja használni. A kivétel a Application Insights szolgáltatás, amely nem érhető el a többi szolgáltatás összes helyén. Ha olyan helyet választ, ahol nem érhető el, a szolgáltatás az USA déli középső régiójában lesz létrehozva.
 
-* A **munkaterületnév**, azaz a valódi neve az Azure Machine Learning-munkaterületet az.
+* A **munkaterület neve**, amely a Azure Machine learning munkaterület rövid neve.
 
-    A többi szolgáltatás nevei véletlenszerűen jönnek létre.
+    A többi szolgáltatás neve véletlenszerűen jön létre.
 
-További információ a sablonok tekintse meg a következő cikkeket:
+A sablonokkal kapcsolatos további információkért tekintse meg a következő cikkeket:
 
-* [Szerzői Azure Resource Manager-sablonok](../../azure-resource-manager/resource-group-authoring-templates.md)
+* [Azure Resource Manager sablonok szerzője](../../azure-resource-manager/resource-group-authoring-templates.md)
 * [Alkalmazás üzembe helyezése Azure Resource Manager-sablonokkal](../../azure-resource-manager/resource-group-template-deploy.md)
-* [Microsoft.MachineLearningServices erőforrástípusok](https://docs.microsoft.com/azure/templates/microsoft.machinelearningservices/allversions)
+* [Microsoft. MachineLearningServices erőforrástípusok](https://docs.microsoft.com/azure/templates/microsoft.machinelearningservices/allversions)
 
 ## <a name="use-the-azure-portal"></a>Az Azure Portal használata
 
-1. Kövesse a [erőforrások egyéni sablon üzembe helyezése](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy-portal#deploy-resources-from-custom-template). Ha akkor érkeznek a __sablon szerkesztése__ lapon illessze be a sablon a dokumentumban.
-1. Válassza ki __mentése__ használhatja a sablont. Adja meg a következő adatokat, és vállalja, hogy a felsorolt feltételeket és kikötéseket:
+1. Kövesse az [erőforrások telepítése egyéni sablonból](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy-portal#deploy-resources-from-custom-template)című témakör lépéseit. Amikor megérkezik a __Sablon szerkesztése__ képernyőre, illessze be a sablont a dokumentumból.
+1. A sablon használatához válassza a __Mentés__ lehetőséget. Adja meg a következő információkat, és fogadja el a felsorolt feltételeket és kikötéseket:
 
-   * Előfizetés: Válassza ki az Azure-előfizetés használni ezekhez az erőforrásokhoz.
-   * Erőforráscsoport: Válassza ki vagy hozzon létre egy erőforráscsoportot a szolgáltatásokat tartalmazza.
-   * Munkaterület neve: Az Azure Machine Learning-munkaterületet, amely létrehozza a használni kívánt nevet. A munkaterület neve 3 – 33 karakter hosszúnak kell lennie. Csak alfanumerikus karaktereket tartalmazhat, és '-'.
-   * Hely: Válassza ki a helyet, ahol létrejön az erőforrásokat.
+   * Előfizetés: Válassza ki az erőforrásokhoz használni kívánt Azure-előfizetést.
+   * Erőforráscsoport: Válasszon ki vagy hozzon létre egy erőforráscsoportot, amely tartalmazza a szolgáltatásokat.
+   * Munkaterület neve: A létrehozandó Azure Machine Learning munkaterülethez használandó név. A munkaterület nevének 3 és 33 karakter közöttinek kell lennie. Csak alfanumerikus karaktereket és "-" karaktert tartalmazhat.
+   * Helyen Válassza ki azt a helyet, ahová létre kívánja hozni az erőforrásokat.
 
-     ![A sablon paramétereit az Azure Portalon](media/how-to-create-workspace-template/template-parameters.png)
+     ![A sablon paramétereinek a Azure Portal](media/how-to-create-workspace-template/template-parameters.png)
 
-További információkért lásd: [erőforrások egyéni sablon üzembe helyezése](../../azure-resource-manager/resource-group-template-deploy-portal.md#deploy-resources-from-custom-template).
+További információ: [erőforrások központi telepítése egyéni sablonból](../../azure-resource-manager/resource-group-template-deploy-portal.md#deploy-resources-from-custom-template).
 
 ## <a name="use-azure-powershell"></a>Azure PowerShell használatával
 
-Ez a példa feltételezi, hogy a sablon nevű fájlban mentette `azuredeploy.json` az aktuális könyvtárban:
+Ez a példa feltételezi, hogy mentette a sablont egy nevű `azuredeploy.json` fájlba az aktuális könyvtárban:
 
 ```powershell
 New-AzResourceGroup -Name examplegroup -Location "East US"
@@ -87,11 +87,11 @@ new-azresourcegroupdeployment -name exampledeployment `
   -templatefile .\azuredeploy.json -workspaceName "exampleworkspace"
 ```
 
-További információkért lásd: [erőforrások üzembe helyezése Resource Manager-sablonokkal és az Azure PowerShell-lel](../../azure-resource-manager/resource-group-template-deploy.md) és [üzembe helyezés saját Resource Manager-sablon az SAS-jogkivonat és az Azure PowerShell](../../azure-resource-manager/resource-manager-powershell-sas-token.md).
+További információ: [erőforrások üzembe helyezése Resource Manager-sablonokkal és Azure PowerShell](../../azure-resource-manager/resource-group-template-deploy.md) , valamint [saját Resource Manager-sablon üzembe helyezése sas-jogkivonat és Azure PowerShell segítségével](../../azure-resource-manager/resource-manager-powershell-sas-token.md).
 
 ## <a name="use-azure-cli"></a>Az Azure parancssori felület használatával
 
-Ez a példa feltételezi, hogy a sablon nevű fájlban mentette `azuredeploy.json` az aktuális könyvtárban:
+Ez a példa feltételezi, hogy mentette a sablont egy nevű `azuredeploy.json` fájlba az aktuális könyvtárban:
 
 ```azurecli-interactive
 az group create --name examplegroup --location "East US"
@@ -102,22 +102,22 @@ az group deployment create \
   --parameters workspaceName=exampleworkspace location=eastus
 ```
 
-További információkért lásd: [erőforrások üzembe helyezése Resource Manager-sablonokkal és az Azure CLI-vel](../../azure-resource-manager/resource-group-template-deploy-cli.md) és [üzembe helyezés saját Resource Manager-sablon az SAS-jogkivonat és az Azure CLI](../../azure-resource-manager/resource-manager-cli-sas-token.md).
+További információ: [erőforrások üzembe helyezése Resource Manager-sablonokkal és az Azure CLI](../../azure-resource-manager/resource-group-template-deploy-cli.md) -vel, valamint [saját Resource Manager-sablon üzembe helyezése sas-JOGKIVONAT és Azure CLI használatával](../../azure-resource-manager/resource-manager-cli-sas-token.md).
 
-## <a name="azure-key-vault-access-policy-and-azure-resource-manager-templates"></a>Az Azure Key Vault hozzáférési szabályzattal és Azure Resource Manager-sablonok
+## <a name="azure-key-vault-access-policy-and-azure-resource-manager-templates"></a>Azure Key Vault hozzáférési szabályzat és Azure Resource Manager sablonok
 
-Használhatja az Azure Resource Manager-sablonok létrehozása a munkaterület és a kapcsolódó erőforrások (beleértve az Azure Key Vault), több alkalommal. Például használja a sablon többször ugyanazokat a paramétereket egy folyamatos integrációt és üzembe helyezési folyamat részeként.
+Ha Azure Resource Manager sablonnal hozza létre a munkaterületet és a hozzá tartozó erőforrásokat (beleértve a Azure Key Vault), többször is. Például a sablon többszöri használata ugyanazzal a paraméterekkel, mint a folyamatos integráció és üzembe helyezési folyamat részeként.
 
-A legtöbb erőforrás-létrehozási műveletet sablonok idempotensek, de a Key Vault törli a hozzáférési szabályzatok minden alkalommal, amikor a sablont használ. A hozzáférési szabályzatok szünetek a Key Vault elérése bármely meglévő munkaterület által használt törlése. Például az Azure notebookok virtuális gép leállítása/létrehozása funkciók sikertelen lehet.  
+A sablonokon keresztül a legtöbb erőforrás-létrehozási művelet idempotens, de Key Vault törli a hozzáférési házirendeket a sablon használatakor. A hozzáférési házirendek törlése megszakítja a hozzáférést a Key Vault az azt használó meglévő munkaterületekhez. Előfordulhat például, hogy a Azure Notebooks virtuális gép működőképességének leállítása/létrehozása sikertelen.  
 
-Ez a probléma elkerülése érdekében javasoljuk, hogy a következő módszerek egyikét:
+A probléma elkerüléséhez a következő módszerek egyikét javasoljuk:
 
-*  Nem telepíthető a sablon egynél többször ugyanazokat a paramétereket. Vagy törölje a meglévő erőforrások újra létrehozhatja őket a sablon használata előtt.
+*  A sablont ne telepítse többször ugyanarra a paraméterekre. Vagy törölje a meglévő erőforrásokat, mielőtt a sablon használatával újra létrehozza őket.
   
-* Vizsgálja meg a kulcstartó-hozzáférési szabályzatok, és ezek a szabályzatok segítségével állítsa be a sablon a accessPolicies tulajdonságot.
-* Ellenőrizze, hogy a Key Vault erőforrás már létezik. Ha igen, nem hozza létre újra, a sablon segítségével. Például adjon hozzá egy paramétert, amely lehetővé teszi, hogy tiltsa le a Key Vault-erőforrást, ha már létezik.
+* Vizsgálja meg a Key Vault hozzáférési házirendeket, majd használja ezeket a házirendeket a sablon accessPolicies tulajdonságának beállításához.
+* Ellenőrizze, hogy a Key Vault erőforrás már létezik-e. Ha igen, ne hozza létre újra a sablonon keresztül. Hozzáadhat például egy olyan paramétert, amely lehetővé teszi, hogy letiltsa a Key Vault erőforrás létrehozását, ha az már létezik.
 
 ## <a name="next-steps"></a>További lépések
 
-* [Erőforrások üzembe helyezése Resource Manager-sablonok és a Resource Manager REST API](../../azure-resource-manager/resource-group-template-deploy-rest.md).
-* [Létrehozása és telepítése az Azure erőforráscsoport-sablonok a Visual Studio](../../azure-resource-manager/vs-azure-tools-resource-groups-deployment-projects-create-deploy.md).
+* [Erőforrások üzembe helyezése Resource Manager-sablonokkal és Resource Manager-Rest APIokkal](../../azure-resource-manager/resource-group-template-deploy-rest.md).
+* [Azure-erőforráscsoportok létrehozása és üzembe helyezése a Visual Studióval](../../azure-resource-manager/vs-azure-tools-resource-groups-deployment-projects-create-deploy.md).

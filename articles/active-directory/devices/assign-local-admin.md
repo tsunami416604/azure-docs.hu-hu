@@ -1,6 +1,6 @@
 ---
-title: A helyi Rendszergazdák csoport kezelése az Azure AD-hez csatlakoztatott eszközök |} A Microsoft Docs
-description: Ismerje meg az Azure-szerepkörök hozzárendelése a helyi Rendszergazdák csoport egy Windows-eszköz.
+title: A helyi Rendszergazdák csoport kezelése az Azure AD-hez csatlakoztatott eszközökön | Microsoft Docs
+description: Ismerje meg, hogyan rendelhet Azure-szerepköröket egy Windows-eszköz helyi rendszergazdák csoportjához.
 services: active-directory
 ms.service: active-directory
 ms.subservice: devices
@@ -11,86 +11,86 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 11b71b4656181da328cf630cefa4d25cb4f4efda
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: 35cb6cba02a1bdcf9f19c7f02b7e2ca4d01e0d3f
+ms.sourcegitcommit: 6b41522dae07961f141b0a6a5d46fd1a0c43e6b2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67482117"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67983673"
 ---
-# <a name="how-to-manage-the-local-administrators-group-on-azure-ad-joined-devices"></a>A helyi Rendszergazdák csoport kezelése az Azure AD-hez csatlakoztatott eszközök
+# <a name="how-to-manage-the-local-administrators-group-on-azure-ad-joined-devices"></a>A helyi Rendszergazdák csoport kezelése az Azure AD-hez csatlakoztatott eszközökön
 
-Windows-eszköz felügyelete, a helyi Rendszergazdák csoport tagjának lennie kell. Az Azure Active Directory (Azure AD) való csatlakozás folyamat részeként az Azure AD frissíti egy eszközön a csoport tagságát. Testre szabhatja a csoporttagság-frissítést, az üzleti követelményeinek kielégítéséhez. A csoporttagság-frissítést akkor lehet hasznos, például a segélyszolgálat munkatársait a feladatok végrehajtására kellene rendszergazdai jogosultságokkal az eszközön engedélyezni kívánja.
+Windows-eszközök kezeléséhez a helyi Rendszergazdák csoport tagjának kell lennie. A Azure Active Directory (Azure AD) csatlakoztatási folyamatának részeként az Azure AD frissíti a csoport tagságát az eszközön. A tagsági frissítést testreszabhatja az üzleti igények kielégítése érdekében. A tagság frissítése például hasznos, ha engedélyezni szeretné, hogy az ügyfélszolgálat munkatársai olyan feladatokat végezzenek el, amelyeken rendszergazdai jogosultságok szükségesek az eszközön.
 
-Ez a cikk bemutatja, hogyan működik az a csoporttagság-frissítést, és hogyan tudná testre szabni az Azure AD-csatlakozás során. Ez a cikk tartalma nem vonatkozik a **hibrid** az Azure AD Joint.
+Ez a cikk azt ismerteti, hogyan működik a tagsági frissítés, és hogyan szabható testre az Azure AD JOIN szolgáltatásban. A cikk tartalma nem vonatkozik a **hibrid** Azure ad-csatlakozásra.
 
 ## <a name="how-it-works"></a>Működés
 
-Ha egy Windows-eszköz csatlakozik az Azure AD szolgáltatással az Azure AD-csatlakozás, Azure ad-ben az eszközön a helyi Rendszergazdák csoport ad hozzá a következő biztonsági alapelvek:
+Ha Azure ad-csatlakozással csatlakoztat egy Windows-eszközt az Azure AD-hez, az Azure AD a következő biztonsági alapelveket adja hozzá a helyi Rendszergazdák csoporthoz az eszközön:
 
-- Az Azure AD globális rendszergazdai szerepkör
-- Az eszköz rendszergazdai szerepkörű Azure AD 
-- A felhasználó elvégezhesse a az Azure AD-csatlakozás   
+- Az Azure AD globális rendszergazdai szerepköre
+- Az Azure AD-eszköz rendszergazdai szerepköre 
+- Az Azure AD Joint végző felhasználó   
 
-Az Azure AD-szerepkörök hozzáadása a helyi rendszergazdák csoportjához, frissítheti a felhasználók által kezelhető semmit az eszközön módosítása nélkül bármikor az Azure ad-ben egy eszközt. Csoportok jelenleg nem rendelhet egy rendszergazdai szerepkörhöz.
-Az Azure AD rendszergazdai szerepkörű Azure AD eszköz is hozzáadja a helyi rendszergazdák csoportjának a elvét (PoLP) támogatásához. A globális rendszergazdák mellett is engedélyezhető, amelyeket felhasználók *csak* eszköz felügyelete, az eszköz rendszergazdai szerepkör. 
+Az Azure AD-szerepkörök a helyi Rendszergazdák csoporthoz való hozzáadásával frissítheti azokat a felhasználókat, akik az Azure AD-ben bármikor kezelhetik az eszközöket anélkül, hogy bármit módosítani kellene az eszközön. Jelenleg nem rendelhet hozzá csoportokat rendszergazdai szerepkörhöz.
+Az Azure AD az Azure AD-eszköz rendszergazdai szerepkörét is hozzáadja a helyi rendszergazdák csoportjához a legalacsonyabb jogosultsági szint (PoLP) elvének támogatásához. A globális rendszergazdák mellett engedélyezheti azon felhasználók számára is, akik *csak* az eszköz rendszergazdai szerepkörét rendelték hozzá az eszközök kezeléséhez. 
 
-## <a name="manage-the-global-administrators-role"></a>A globális Rendszergazdák szerepkör kezelése
+## <a name="manage-the-global-administrators-role"></a>A globális rendszergazdák szerepkör kezelése
 
-Megtekintheti, és frissíti a globális rendszergazdai szerepkör tagsága, lásd:
+A globális rendszergazdai szerepkör tagságának megtekintéséhez és frissítéséhez tekintse meg a következőt:
 
-- [Az Azure Active Directory-Rendszergazdák szerepkör tagjai az összes megtekintése](../users-groups-roles/directory-manage-roles-portal.md)
-- [Felhasználó hozzárendelése az Azure Active Directory rendszergazdai szerepkörök](../fundamentals/active-directory-users-assign-role-azure-portal.md)
+- [Rendszergazdai szerepkör összes tagjának megtekintése Azure Active Directory](../users-groups-roles/directory-manage-roles-portal.md)
+- [Felhasználó társítása rendszergazdai szerepkörökhöz Azure Active Directory](../fundamentals/active-directory-users-assign-role-azure-portal.md)
 
 
-## <a name="manage-the-device-administrator-role"></a>Az eszköz rendszergazdai szerepkör kezelése 
+## <a name="manage-the-device-administrator-role"></a>Az eszköz rendszergazdai szerepkörének kezelése 
 
-Az Azure Portalon kezelheti az eszközadminisztrátori szerepkörre a **eszközök** lapot. Megnyitásához a **eszközök** oldalon:
+A Azure Portal az **eszközök** lapon kezelheti az eszköz rendszergazdai szerepkörét. Az **eszközök** lap megnyitása:
 
-1. Jelentkezzen be a [az Azure portal](https://portal.azure.com) egy globális rendszergazdai vagy eszköz rendszergazdaként.
-1. A bal oldali navigációs sávon kattintson **Azure Active Directory**. 
-1. Az a **kezelés** területén kattintson **eszközök**.
-1. Az a **eszközök** kattintson **eszközbeállítások**.
+1. Jelentkezzen be a [Azure Portal](https://portal.azure.com) globális rendszergazdaként vagy az eszköz rendszergazdájával.
+1. A bal oldali navigációs sávon kattintson a **Azure Active Directory**elemre. 
+1. A **kezelés** szakaszban kattintson az **eszközök**elemre.
+1. Az **eszközök** lapon kattintson az **eszközbeállítások**elemre.
 
-Az eszköz rendszergazdai szerepkör módosítása, állítson be **további helyi rendszergazdák az Azure AD-hez csatlakoztatott eszközök**.  
+Az eszköz rendszergazdai szerepkörének módosításához további helyi rendszergazdákat kell konfigurálnia az **Azure ad-hez csatlakoztatott eszközökön**.  
 
 ![További helyi rendszergazdák](./media/assign-local-admin/10.png)
 
 >[!NOTE]
-> Ez utóbbi lehetőség megköveteli egy prémium szintű Azure AD-bérlővel. 
+> Ehhez a beállításhoz prémium szintű Azure AD bérlő szükséges. 
 
-Eszközadminisztrátorok minden Azure AD-csatlakoztatott eszközök vannak hozzárendelve. Az eszközök meghatározott eszközadminisztrátorok nem körét. Az eszköz rendszergazdai szerepkör frissítése nem feltétlenül közvetlen hatással, az érintett felhasználók. Az eszközök esetén a felhasználó már bejelentkezett, a jogosultság frissítése történik:
+Az eszközök rendszergazdái az összes Azure AD-hez csatlakoztatott eszközhöz vannak rendelve. Az eszközök rendszergazdái nem állíthatók be egy adott eszközre. Az eszköz rendszergazdai szerepkörének frissítése nem feltétlenül jelent azonnali hatást az érintett felhasználókra. Az eszközök esetében a felhasználó már be van jelentkezve, a jogosultságok frissítése zajlik le:
 
-- Amikor egy felhasználó bejelentkezik,.
-- 4 óra elteltével új elsődleges jogkivonat frissítése jelenik meg. 
+- Amikor a felhasználó kijelentkezik.
+- 4 óra elteltével új elsődleges frissítési jogkivonat kiállítása után. 
 
 ## <a name="manage-regular-users"></a>Normál felhasználók kezelése
 
-Alapértelmezés szerint az Azure AD hozzáadja a felhasználó elvégezhesse a rendszergazda csoporthoz az Azure AD-csatlakozás az eszközön. Ha azt szeretné, hogy rendszeres felhasználók ne váljon a helyi rendszergazdák, a következő lehetőségek állnak rendelkezésére:
+Alapértelmezés szerint az Azure AD hozzáadja az Azure AD-csatlakozást végző felhasználót az eszközön található rendszergazdai csoporthoz. Ha meg szeretné akadályozni, hogy a normál felhasználók helyi rendszergazdák legyenek, a következő lehetőségek közül választhat:
 
-- [Windows Autopilot](https://docs.microsoft.com/windows/deployment/windows-autopilot/windows-10-autopilot) – Windows Autopilot-beállítás megakadályozza, hogy az illesztés végrehajtása a helyi rendszergazdák váljon elsődleges felhasználója biztosít. Ez által elvégezhető [Autopilot-profil létrehozása](https://docs.microsoft.com/intune/enrollment-autopilot#create-an-autopilot-deployment-profile).
-- [Csoportos regisztrálás](https://docs.microsoft.com/intune/windows-bulk-enroll) – egy Azure AD-csatlakozás a tömeges Regisztrálás a környezetben végrehajtott műveletek egy automatikusan létrehozott felhasználó környezetében történik. Bejelentkezés után az eszköz csatlakoztatva lett a felhasználók ne adják hozzá a Rendszergazdák csoportnak.   
+- [Windows Autopilot](https://docs.microsoft.com/windows/deployment/windows-autopilot/windows-10-autopilot) – a Windows Autopilot lehetővé teszi, hogy megakadályozza, hogy az összekapcsolást végző elsődleges felhasználó helyi rendszergazda legyen. Ezt az [Autopilot-profil létrehozásával](https://docs.microsoft.com/intune/enrollment-autopilot#create-an-autopilot-deployment-profile)végezheti el.
+- [Tömeges beléptetés](https://docs.microsoft.com/intune/windows-bulk-enroll) – egy olyan Azure ad-csatlakozás, amely egy tömeges beléptetés kontextusában történik, egy automatikusan létrehozott felhasználó kontextusában történik. Az eszköz csatlakoztatása után bejelentkezett felhasználók nem lesznek hozzáadva a rendszergazdák csoporthoz.   
 
-## <a name="manually-elevate-a-user-on-a-device"></a>Manuálisan egy felhasználó jogosultságszintjének emeléséhez az eszközön 
+## <a name="manually-elevate-a-user-on-a-device"></a>Felhasználó manuális megemelése egy eszközön 
 
-Mellett az Azure AD join folyamat használja, manuálisan is szintre emelhet, az átlagos felhasználók egy adott eszköz helyi rendszergazdája lesz. Ez a lépés megköveteli, hogy a helyi Rendszergazdák csoport tagjának lennie. 
+Az Azure AD JOIN folyamatán kívül manuálisan is beállíthatja, hogy egy normál felhasználó helyi rendszergazda legyen egy adott eszközön. Ehhez a lépéshez már a helyi Rendszergazdák csoport tagjának kell lennie. 
 
-Kezdve a **Windows 10 1709-es** kiadásban hajthat végre ezt a feladatot **beállítások -> fiókok -> más felhasználók**. Válassza ki **munkahelyi vagy iskolai felhasználó hozzáadása**, adja meg a felhasználó egyszerű Felhasználónevét a **felhasználói fiók** válassza *rendszergazda* alatt **fiók típusa**  
+A **Windows 10 1709** kiadástól kezdve ezt a feladatot elvégezheti a **Beállítások – > fiókok – > más felhasználók**. Válassza a **munkahelyi vagy iskolai felhasználó hozzáadása**lehetőséget, írja be a felhasználó egyszerű felhasználónevét a **felhasználói fiók** területen, és válassza a *rendszergazda* elemet a **Fiók típusa** területen.  
  
-Ezenkívül is hozzáadhat felhasználókat a parancssor használatával:
+Emellett a parancssor használatával is hozzáadhat felhasználókat:
 
-- Ha a bérlői felhasználó számára a helyszíni Active Directoryból szinkronizált, `net localgroup administrators /add "Contoso\username"`.
-- Ha az Azure AD-bérlő felhasználóit jönnek létre, `net localgroup administrators /add "AzureAD\UserUpn"`
+- Ha a bérlő felhasználóit szinkronizálják a helyszíni Active Directory, használja `net localgroup administrators /add "Contoso\username"`a következőt:.
+- Ha a bérlői felhasználók az Azure AD-ban jönnek létre, használja a`net localgroup administrators /add "AzureAD\UserUpn"`
 
 ## <a name="considerations"></a>Megfontolandó szempontok 
 
-Az eszköz rendszergazdai szerepkör nem rendelhet hozzá csoportokat, csak az egyes felhasználók engedélyezettek.
+Nem rendelhet hozzá csoportokat az eszköz rendszergazdai szerepköréhez, csak az egyes felhasználók engedélyezettek.
 
-Eszközadminisztrátorok minden Azure AD-csatlakoztatás eszközök vannak hozzárendelve. Azok az eszközök meghatározott nem illeszthetők.
+Az eszközök rendszergazdái az összes Azure AD-hez csatlakoztatott eszközhöz vannak rendelve. Nem lehetnek hatókörük egy adott eszközre.
 
-Felhasználók eltávolítása az eszközadminisztrátori szerepkörre, ha továbbra sem rendelkezik az eszközön a helyi rendszergazdai jogosultság mindaddig, amíg rá bejelentkezés. A következő bejelentkezés során, vagy ha egy új elsődleges frissítési jogkivonat kiadott 4 óra elteltével a jogosultság visszavonva.
+Ha eltávolítja a felhasználókat az eszköz rendszergazdai szerepkörből, akkor továbbra is a helyi rendszergazdai jogosultsággal rendelkezik az eszközön, amíg be van jelentkezve. A rendszer visszavonja a jogosultságot a következő bejelentkezéskor, vagy 4 óra elteltével, amikor új elsődleges frissítési jogkivonatot állít ki.
 
 ## <a name="next-steps"></a>További lépések
 
 - További információk az eszközök Azure Portalon végzett felügyeletéről: [Eszközfelügyelet az Azure Portalon](device-management-azure-portal.md).
-- Eszközalapú feltételes hozzáférési kapcsolatos további információkért lásd: [Azure Active Directory eszközalapú feltételes hozzáférési szabályzatok konfigurálhatók](../conditional-access/require-managed-devices.md).
+- Ha többet szeretne megtudni az eszközökön alapuló feltételes hozzáférésről, tekintse meg [Azure Active Directory eszközön alapuló feltételes hozzáférési szabályzatok konfigurálása](../conditional-access/require-managed-devices.md)című témakört.

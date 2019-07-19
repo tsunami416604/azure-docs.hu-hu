@@ -1,32 +1,42 @@
 ---
-title: Az Azure Data Factory adatokat folyamat oszlop minták leképezése
-description: Megismerkedhet az Azure Data Factory oszlop minták az adatfolyam-leképezés létrehozása általánosított sablont minták alkalmazásán át a mezőket az adatok folyamat során, függetlenül az alapul szolgáló séma-metaadatok
+title: Azure Data Factory az adatfolyam-oszlopok mintáinak leképezése
+description: Általánosított Adatátalakítási minták létrehozása Azure Data Factory oszlopos minták használatával a leképezési adatfolyamatokban
 author: kromerm
 ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 01/30/2019
-ms.openlocfilehash: 08cdaafe00b7dc586ea75f6ff03fdb89107edee9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d24988dfd5cbaf20e92c5afbbc39dc0c78e3ef6a
+ms.sourcegitcommit: da0a8676b3c5283fddcd94cdd9044c3b99815046
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66430755"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68314858"
 ---
-# <a name="azure-data-factory-mapping-data-flows-column-patterns"></a>Az Azure data factory-társítási adatok elkezdenek beérkezni oszlop minták
+# <a name="azure-data-factory-mapping-data-flows-column-patterns"></a>Azure-beli adatfeldolgozó-leképezés adatforgalmának oszlop mintái
 
 [!INCLUDE [notes](../../includes/data-factory-data-flow-preview.md)]
 
-Több Azure Data Factory adatfolyam átalakítások támogatja az elgondolásra épül, "Oszlopok minták", úgy, hogy a sablon oszlopok helyett változtatható oszlopnevek minták alapján is létrehozhat. Ez a funkció a Kifejezésszerkesztő belül használhatja oszlopok átalakítása pontosan, a megadott mezőnevek átjárószolgáltatásnak-minták meghatározására. Minták hasznosak, ha a bejövő forrásmezőket módosítása gyakran, különösen az oszlopok módosítása a szöveges fájlokat, vagy a NoSQL-adatbázisok esetében. Ez a feltétel más "Séma eltéréseket" néven.
+Számos Azure Data Factory adatfolyam-átalakítás támogatja az "oszlopok mintáit", így a sablon oszlopai a rögzített oszlopnevek helyett mintázatok alapján hozhatók létre. Ezt a funkciót a Kifejezésszerkesztő segítségével definiálhatja az átalakítási oszlopoknak megfelelő mintázatokat, és nem kell pontos, konkrét mezőneveket megadni. A minták akkor hasznosak, ha a bejövő forrás mezői gyakran változnak, különösen abban az esetben, ha szövegfájlokban vagy NoSQL-adatbázisokban módosítanak oszlopokat. Ezt az állapotot más néven "Schema Drift"-ként nevezzük.
 
-![oszlop minták](media/data-flow/columnpattern2.png "oszlop minták")
+![oszlop mintázatai](media/data-flow/columnpattern2.png "Oszlop mintázatai")
 
-Oszlop minták hasznosak séma eltéréseket forgatókönyvek és is általános forgatókönyvek kezeléséhez. Azt, a feltételeknek megfelelő ahol nem áll teljesen hogy minden oszlop neve. A mintát is felel meg az oszlop neve, és oszlopok adatainak írja be, és a egy adott művelet bármely mező, amely megfelel az adatfolyamban végző átalakításkor kifejezés összeállítása a `name`  &  `type` mintákat.
+Az oszlopos minták hasznosak a séma-eltolódási forgatókönyvek, valamint az általános forgatókönyvek kezelésére. Ez olyan feltételek esetén jó, amikor nem tudja teljesen tudni az egyes oszlopok nevét. Megadhatja az oszlop nevét és az oszlop adattípusát, és létrehozhat egy kifejezést az átalakításhoz, amely végrehajtja az adott műveletet a `name` `type` mintázatnak megfelelő adatfolyam  &  bármely mezőjén.
 
-Való hozzáadásakor egy kifejezés olyan átalakítást, amely elfogadja a mintákat, válassza az "Oszlop minta hozzáadása". Oszlop minták lehetővé teszi, hogy a séma eltéréseket oszlop egyező mintákat.
+Ha olyan kifejezést ad hozzá egy átalakításhoz, amely mintákat fogad, válassza az "oszlop hozzáadása" mintát. Az oszlop mintázatai lehetővé teszik a séma drift oszlop egyeztetési mintáit.
 
-Sablon oszlop minták létrehozását, használjon `$$` a kifejezés a bemeneti streamből minden egyező mező való hivatkozást jelöl.
+A sablon oszlopainak mintáinak kiépítésekor a kifejezést használva `$$` a bemeneti adatfolyamban található minden egyező mezőre mutató hivatkozást jelöl.
 
-Ha kíván használni a Kifejezésszerkesztő regex függvények egyikét, majd ezt követően használhatja $1, 2 USD, $3... az alárendelt minták hivatkozni megfeleltetni a regex kifejezés.
+Ha úgy dönt, hogy az egyik Expression Builder regex-függvényt használja, ezt követően használhatja a $1, $2, $3... a regex kifejezéssel megegyező almintákra való hivatkozáshoz.
 
-Oszlop minta forgatókönyv például összeg használ több bejövő mezőket. A SUM összesítő számítások az összesítésben átalakításában. Ezután használhatja, amely egyezik "egész" és a $$ segítségével minden egyes egyezik a kifejezésben hivatkoznak mezőtípusok minden egyező összege.
+Az oszlopdiagram példája egy több beérkező mezővel rendelkező összeg használata. Az összesített összeg kiszámítása az összesített átalakításban történik. Ezután az összeg értékkel egyező típusú mezőkhöz tartozó SUM függvényt használhatja, majd a $ $ értéket használva hivatkozhat a kifejezésben szereplő összes találatra.
+
+## <a name="match-columns"></a>Oszlopok egyeztetése
+![oszlop típusú mintázatok](media/data-flow/pattern2.png "Mintázat típusai")
+
+Az oszlopokon alapuló mintázatok létrehozásához az oszlopnév, a típus, a stream vagy a pozíció, valamint a Expression functions és a reguláris kifejezések kombinációját használhatja.
+
+![oszlop pozíciója](media/data-flow/position.png "Oszlop pozíciója")
+
+## <a name="next-steps"></a>További lépések
+További információ az ADF-leképezés adatáramlási [kifejezésének nyelvéről](http://aka.ms/dataflowexpressions) adatátalakítások esetén

@@ -1,7 +1,7 @@
 ---
-title: A figyelő gépi Tanulási modellek az Azure Application Insights beállítása
+title: Az Azure Application Insights beállítása a ML-modellek figyelésére
 titleSuffix: Azure Machine Learning service
-description: Az Azure Machine Learning szolgáltatásban Azure Application Insights használatával üzembe helyezett webszolgáltatások figyelése
+description: Azure Machine Learning szolgáltatással üzembe helyezett webszolgáltatások figyelése az Azure-ban Application Insights
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.reviewer: jmartens
 ms.author: marthalc
 author: marthalc
-ms.date: 04/02/2019
+ms.date: 07/12/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: 2e481a388d8cbd6baf66b95c74449396b2e70f7d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1c12f55228d77656ef57598da0fb002fdea29bd4
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60820230"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67871789"
 ---
 # <a name="monitor-your-azure-machine-learning-models-with-application-insights"></a>Az Application insights szolgáltatással az Azure Machine Learning-modellek figyelése
 
@@ -30,13 +30,13 @@ Ebből a cikkből elsajátíthatja az Azure Application Insights beállítása a
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy ingyenes fiókot megkezdése előtt. Próbálja ki a [Azure Machine Learning szolgáltatás ingyenes vagy fizetős verzióját](https://aka.ms/AMLFree) még ma.
+* Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy ingyenes fiókot. Próbálja ki a [Azure Machine learning Service ingyenes vagy fizetős verzióját](https://aka.ms/AMLFree) még ma.
 
 * Egy helyi könyvtárba, amely tartalmazza a parancsfájlokat, és az Azure Machine Learning SDK telepítve van a Pythonhoz készült Azure Machine Learning munkaterület. Ismerje meg, hogyan tehet szert az Előfeltételek, lásd: [a fejlesztési környezet konfigurálása](how-to-configure-environment.md).
 * Egy betanított gépi tanulási modellt az Azure Kubernetes Service (AKS) vagy az Azure Container Instance (aci) Szolgáltatásban üzembe helyezhető. Ha még nincs fiókja, tekintse meg a [Train kép osztályozási modell](tutorial-train-models-with-aml.md) oktatóanyag.
 
 
-## <a name="use-sdk-to-configure"></a>SDK segítségével a konfigurálása 
+## <a name="use-sdk-to-configure"></a>Az SDK használata a konfiguráláshoz 
 
 ### <a name="update-a-deployed-service"></a>Telepített szolgáltatások frissítésével
 1. A munkaterület a szolgáltatás azonosítására. Az érték `ws` a munkaterület neve.
@@ -77,7 +77,7 @@ Az Application Insights letiltásához használja a következő kódot:
 <service_name>.update(enable_app_insights=False)
 ```
     
-## <a name="use-portal-to-configure"></a>Konfigurálja a portál használatával
+## <a name="use-portal-to-configure"></a>A portál használata a konfiguráláshoz
 
 Engedélyezheti és letilthatja az Application Insights az Azure Portalon.
 
@@ -131,11 +131,11 @@ Az Application Insights használatával kapcsolatos további tudnivalókért lá
 
 ## <a name="example-notebook"></a>Példa notebook
 
-A [how-to-use-azureml/deployment/enable-app-insights-in-production-service/enable-app-insights-in-production-service.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/deployment/enable-app-insights-in-production-service/enable-app-insights-in-production-service.ipynb) notebook mutatja be a jelen cikk fogalmait. 
+Az [enable-app-Insight-in-producting-Service. ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/deployment/enable-app-insights-in-production-service/enable-app-insights-in-production-service.ipynb) notebook bemutatja a cikkben szereplő fogalmakat. 
  
 [!INCLUDE [aml-clone-in-azure-notebook](../../../includes/aml-clone-for-examples.md)]
 
 ## <a name="next-steps"></a>További lépések
 A modellek éles a is gyűjthet adatokat. A cikk a [modellek éles adatokat gyűjthessen](how-to-enable-data-collection.md). 
 
-Emellett olvasási [-tárolókhoz az Azure Monitor](https://docs.microsoft.com/azure/monitoring/monitoring-container-insights-overview?toc=%2fazure%2fmonitoring%2ftoc.json).
+[A tárolók Azure monitor](https://docs.microsoft.com/azure/monitoring/monitoring-container-insights-overview?toc=%2fazure%2fmonitoring%2ftoc.json)is olvashatja.

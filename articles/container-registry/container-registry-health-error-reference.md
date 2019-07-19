@@ -1,106 +1,107 @@
 ---
-title: Állapot-ellenőrzése – az Azure Container Registry hiba referenciája
-description: Hibakódok és lehetséges megoldásokat az Azure Container Registryben az acr jelölőnégyzet-állapot diagnosztikai parancs futtatásával talált problémák
+title: Az állapot-ellenőrzési hiba referenciája – Azure Container Registry
+description: Hibakódok és lehetséges megoldások olyan problémákra, amelyek a Azure Container Registry
 services: container-registry
 author: dlepow
+manager: gwallace
 ms.service: container-registry
 ms.topic: article
 ms.date: 07/02/2019
 ms.author: danlep
-ms.openlocfilehash: fc29b27cbb7eea983140c59529d981ad95c27ae8
-ms.sourcegitcommit: 978e1b8cac3da254f9d6309e0195c45b38c24eb5
+ms.openlocfilehash: 672d446fa8dc27612c7b046cac109bfa4ca5fec5
+ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67555110"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68309374"
 ---
-# <a name="health-check-error-reference"></a>Állapot ellenőrzése hibás hivatkozás
+# <a name="health-check-error-reference"></a>Állapot-ellenőrzési hiba referenciája
 
-Az alábbiakban által visszaadott hibakódok részleteit a [az acr jelölőnégyzet-állapot][az-acr-check-health] parancsot. Minden egyes hibához a lehetséges megoldásokról jelennek meg.
+Az alábbi információk az az [ACR állapotfelmérés][az-acr-check-health] parancs által visszaadott hibakódokról találhatók. Minden hiba esetén a lehetséges megoldások szerepelnek a felsorolásban.
 
 ## <a name="dockercommanderror"></a>DOCKER_COMMAND_ERROR
 
-Ez a hiba, az azt jelenti, hogy a CLI Docker-ügyfél nem található. Ennek eredményeképpen nem futnak a következő további ellenőrzések: Docker-verzió, Docker kiértékelése démon állapot keresése és futtatása a Docker pull parancsot.
+Ez a hiba azt jelenti, hogy a CLI-hez készült Docker-ügyfél nem található. Ennek eredményeképpen a következő további ellenőrzések nem futnak: a Docker-verzió megkeresése, a Docker-démon állapotának kiértékelése és a Docker pull parancs futtatása.
 
-*A lehetséges megoldások*: Docker-ügyfél; telepítése Docker-elérési út hozzáadása a rendszerváltozók.
+*Lehetséges megoldások*: A Docker-ügyfél telepítése; adja hozzá a Docker elérési útját a rendszerváltozóhoz.
 
 ## <a name="dockerdaemonerror"></a>DOCKER_DAEMON_ERROR
 
-Ez a hiba azt jelenti, hogy a Docker-démon állapota nem érhető el, vagy hogy azt nem érhető el a parancssori felület használatával. Emiatt, Docker-műveletek (például `docker login` és `docker pull`) érhetők el a parancssori felületén keresztül.
+Ez a hiba azt jelenti, hogy a Docker-démon állapota nem érhető el, vagy nem érhető el a CLI használatával. Ennek eredményeképpen a Docker-műveletek (például `docker login` és `docker pull`) nem érhetők el a CLI-n keresztül.
 
-*A lehetséges megoldások*: Indítsa újra a Docker-démont, vagy ellenőrizze, hogy helyesen van-e telepítve.
+*Lehetséges megoldások*: Indítsa újra a Docker-démont, vagy ellenőrizze, hogy megfelelően van-e telepítve.
 
 ## <a name="dockerversionerror"></a>DOCKER_VERSION_ERROR
 
-Ez a hiba, az azt jelenti, hogy a CLI nem volt képes a parancs futtatásához `docker --version`.
+Ez a hiba azt jelenti, hogy a CLI nem tudta futtatni `docker --version`a parancsot.
 
-*A lehetséges megoldások*: Próbálja ki a következő parancs futtatásával manuálisan, ellenőrizze, hogy a CLI legújabb verzióját, és vizsgálja meg a hibaüzenetet.
+*Lehetséges megoldások*: Próbálja meg manuálisan futtatni a parancsot, győződjön meg arról, hogy rendelkezik a CLI legújabb verziójával, és vizsgálja meg a hibaüzenetet.
 
 ## <a name="dockerpullerror"></a>DOCKER_PULL_ERROR
 
-Ez a hiba, az azt jelenti, hogy a CLI nem tudta lekérni egy képet a környezetben.
+Ez a hiba azt jelenti, hogy a CLI nem tudta lekérni a minta rendszerképét a környezetbe.
 
-*A lehetséges megoldások*: Ellenőrizze, hogy az összes összetevő szükséges képet betölteni megfelelően futnak-e.
+*Lehetséges megoldások*: Ellenőrizze, hogy a rendszerképek lekéréséhez szükséges összes összetevő megfelelően fut-e.
 
 ## <a name="helmcommanderror"></a>HELM_COMMAND_ERROR
 
-Ez a hiba azt jelenti, hogy a Helm-ügyfél nem található a parancssori felület, amely kizárja a Helm-műveletnél.
+Ez a hiba azt jelenti, hogy a parancssori ügyfél nem található a CLI-ben, ami kizárja a többi Helm-műveletet.
 
-*A lehetséges megoldások*: Ellenőrizze, hogy a Helm-ügyfél telepítve van-e, valamint, hogy az elérési útja bekerül a rendszerszintű környezeti változókat.
+*Lehetséges megoldások*: Ellenőrizze, hogy a Helm-ügyfél telepítve van-e, és hogy az elérési útja hozzá van-e adva a rendszerkörnyezeti változókhoz.
 
 ## <a name="helmversionerror"></a>HELM_VERSION_ERROR
 
-Ez a hiba, az azt jelenti, hogy a CLI nem tudta meghatározni a Helm-verzió van telepítve. Ez akkor fordulhat elő, ha az Azure CLI verziójának (vagy ha a Helm-verzió) használt elavult.
+Ez a hiba azt jelenti, hogy a CLI nem tudta meghatározni a Helm telepített verzióját. Ez akkor fordulhat elő, ha az Azure CLI verziója (vagy a Helm-verzió) elavult.
 
-*A lehetséges megoldások*: Azure CLI legújabb verzióját vagy az ajánlott Helm verzió frissítése manuálisan futtassa a parancsot, és vizsgálja meg a hibaüzenetet.
+*Lehetséges megoldások*: Frissítsen az Azure CLI legújabb verziójára vagy az ajánlott Helm-verzióra; futtassa manuálisan a parancsot, és vizsgálja meg a hibaüzenetet.
 
 ## <a name="connectivitydnserror"></a>CONNECTIVITY_DNS_ERROR
 
-Ez a hiba azt jelenti, hogy a DNS-ÉT az adott adatbázis bejelentkezési kiszolgálója volt pingkérést küldött, de nem válaszolt, ami azt jelenti, hogy nem érhető el. Ez azt jelezheti kapcsolódási problémák. Azt is megteheti a beállításjegyzék nem létezik, a felhasználó előfordulhat, hogy nincs engedélye a a beállításjegyzék (lekérdezni a bejelentkezési kiszolgáló megfelelően), vagy a tároló-beállításjegyzék, mint az Azure CLI-ben használt egy másik felhőben.
+Ez a hiba azt jelenti, hogy a megadott beállításjegyzékbeli bejelentkezési kiszolgáló DNS-je pingelésre került, de nem válaszolt, ami azt jelenti, hogy nem érhető el. Ez bizonyos kapcsolódási problémákra utalhat. Előfordulhat, hogy a beállításjegyzék nem létezik, előfordulhat, hogy a felhasználó nem rendelkezik a beállításjegyzék engedélyeivel (a bejelentkezési kiszolgáló megfelelő beolvasásához), vagy a cél beállításjegyzéke az Azure CLI-ben használttól eltérő felhőben található.
 
-*A lehetséges megoldások*: Ellenőrizze a csatlakozásukat; a beállításjegyzék helyesírás-ellenőrzése, és a beállításjegyzék létezik; Győződjön meg arról, hogy a felhasználó rendelkezik-e a megfelelő engedélyekkel, és, hogy a tárolójegyzék felhőalapú megegyezik az Azure CLI-ben használt.
+*Lehetséges megoldások*: Kapcsolat ellenőrzése; Ellenőrizze a beállításjegyzék helyesírását, és hogy létezik-e a beállításjegyzék. Ellenőrizze, hogy a felhasználó rendelkezik-e a megfelelő engedélyekkel, és hogy a beállításjegyzék felhője megegyezik-e az Azure CLI-vel.
 
 ## <a name="connectivityforbiddenerror"></a>CONNECTIVITY_FORBIDDEN_ERROR
 
-Ez a hiba, az azt jelenti, hogy az adott beállításjegyzékhez a kérdés végpont válaszolt egy 403 Tiltott HTTP-állapot. Ez a hiba, az azt jelenti, hogy felhasználók nincs hozzáférése a regisztrációs adatbázisba, valószínűleg egy virtuális hálózati konfiguráció miatt.
+Ez a hiba azt jelenti, hogy a megadott beállításjegyzékhez tartozó kérdés-végpont 403 Tiltott HTTP-állapottal válaszolt. Ez a hiba azt jelenti, hogy a felhasználók nem férhetnek hozzá a beállításjegyzékhez, valószínűleg egy virtuális hálózati konfiguráció miatt.
 
-*A lehetséges megoldások*: Távolítsa el a virtuális hálózati szabályok, vagy a jelenlegi ügyfél IP-cím hozzáadása az engedélyezett listára.
+*Lehetséges megoldások*: Távolítsa el a virtuális hálózati szabályokat, vagy adja hozzá az aktuális ügyfél IP-címét az engedélyezett listához.
 
 ## <a name="connectivitychallengeerror"></a>CONNECTIVITY_CHALLENGE_ERROR
 
-Ez a hiba, az azt jelenti, hogy a tároló-beállításjegyzék challenge végpontja nem hajtotta végre kihívást.
+Ez a hiba azt jelenti, hogy a célként megadott beállításjegyzék kérdéses végpontja nem adott meg kihívást.
 
-*A lehetséges megoldások*: Próbálkozzon újra egy kis idő múlva. Ha a hiba nem szűnik meg, nyissa meg a probléma https://aka.ms/acr/issues.
+*Lehetséges megoldások*: Próbálkozzon újra egy kis idő múlva. Ha a hiba továbbra is fennáll, nyisson meg https://aka.ms/acr/issues egy problémát a következő helyen:.
 
 ## <a name="connectivityaadloginerror"></a>CONNECTIVITY_AAD_LOGIN_ERROR
 
-Ez a hiba azt jelenti, hogy a tároló-beállításjegyzék challenge végpontja kihívást, de az a beállításjegyzék nem támogatja az Azure Active Directory-hitelesítést.
+Ez a hiba azt jelenti, hogy a célként megadott beállításjegyzék Challenge végpontja kiadta a problémát, de a beállításjegyzék nem támogatja Azure Active Directory hitelesítést.
 
-*A lehetséges megoldások*: Próbálja ki a másik mód a hitelesítésre, például rendszergazdai hitelesítő adataival. Felhasználók hitelesítése az Azure Active Directory használatával kell, ha nyissa meg a problémát, https://aka.ms/acr/issues.
+*Lehetséges megoldások*: Próbáljon ki egy másik módszert a hitelesítésre, például rendszergazdai hitelesítő adatokkal. Ha a felhasználóknak Azure Active Directory használatával kell hitelesítést végezniük, nyisson meg egy https://aka.ms/acr/issues problémát a következő címen:.
 
 ## <a name="connectivityrefreshtokenerror"></a>CONNECTIVITY_REFRESH_TOKEN_ERROR
 
-Ez a hiba, az azt jelenti, hogy a tárolójegyzék bejelentkezési kiszolgálójának nem válaszolt frissítési jogkivonatok, így a tároló-beállításjegyzék való hozzáférés megtagadva. Ez a hiba akkor fordulhat elő, ha a felhasználó nem rendelkezik a megfelelő engedélyekkel a beállításjegyzék, vagy ha a felhasználói hitelesítő adatok az Azure CLI elavult.
+Ez a hiba azt jelenti, hogy a beállításjegyzék bejelentkezési kiszolgálója nem válaszolt a frissítési tokenre, ezért a rendszer megtagadta a hozzáférést a célként megadott beállításjegyzékhez. Ez a hiba akkor fordulhat elő, ha a felhasználó nem rendelkezik a megfelelő engedélyekkel a beállításjegyzékben, vagy ha az Azure CLI felhasználói hitelesítő adatai elavultak.
 
-*A lehetséges megoldások*: Győződjön meg arról, ha a felhasználó rendelkezik-e a megfelelő engedélyekkel a beállításjegyzék; Futtatás `az login` engedélyeket, a jogkivonatok és a hitelesítő adatok frissítéséhez.
+*Lehetséges megoldások*: Ellenőrizze, hogy a felhasználó rendelkezik-e a megfelelő engedélyekkel a beállításjegyzékben; a `az login` futtatásával frissítheti az engedélyeket, a jogkivonatokat és a hitelesítő adatokat.
 
 ## <a name="connectivityaccesstokenerror"></a>CONNECTIVITY_ACCESS_TOKEN_ERROR
 
-Ez a hiba azt jelenti, hogy, hogy a tárolójegyzék bejelentkezési kiszolgálójának nem válaszolt egy hozzáférési jogkivonattal, hogy a tároló-beállításjegyzék a hozzáférés meg lett tagadva. Ez a hiba akkor fordulhat elő, ha a felhasználó nem rendelkezik a megfelelő engedélyekkel a beállításjegyzék, vagy ha a felhasználói hitelesítő adatok az Azure CLI elavult.
+Ez a hiba azt jelenti, hogy a beállításjegyzék bejelentkezési kiszolgálója nem válaszolt egy hozzáférési jogkivonatra, így a rendszer megtagadta a hozzáférést a célként megadott beállításjegyzékhez. Ez a hiba akkor fordulhat elő, ha a felhasználó nem rendelkezik a megfelelő engedélyekkel a beállításjegyzékben, vagy ha az Azure CLI felhasználói hitelesítő adatai elavultak.
 
-*A lehetséges megoldások*: Győződjön meg arról, ha a felhasználó rendelkezik-e a megfelelő engedélyekkel a beállításjegyzék; Futtatás `az login` engedélyeket, a jogkivonatok és a hitelesítő adatok frissítéséhez.
+*Lehetséges megoldások*: Ellenőrizze, hogy a felhasználó rendelkezik-e a megfelelő engedélyekkel a beállításjegyzékben; a `az login` futtatásával frissítheti az engedélyeket, a jogkivonatokat és a hitelesítő adatokat.
 
 ## <a name="loginservererror"></a>LOGIN_SERVER_ERROR
 
-Ez a hiba azt jelenti, hogy a CLI nem találja a megadott beállításkulcs értékét a bejelentkezési kiszolgáló, nem alapértelmezett utótag nem található a jelenlegi felhőt. Ez a hiba akkor fordulhat elő, ha a beállításjegyzék nem létezik, ha a felhasználó nem rendelkezik a megfelelő engedélyekkel a beállításjegyzék Ha a tárolójegyzék felhőbeli és a jelenlegi Azure CLI-felhő nem egyezik, vagy ha az Azure CLI verziója elavult.
+Ez a hiba azt jelenti, hogy a CLI nem találta meg az adott beállításjegyzék bejelentkezési kiszolgálóját, és nem található alapértelmezett utótag az aktuális felhőhöz. Ez a hiba akkor fordulhat elő, ha a beállításjegyzék nem létezik, ha a felhasználó nem rendelkezik a megfelelő engedélyekkel a beállításjegyzékben, ha a beállításjegyzék felhője és az aktuális Azure CLI-felhő nem egyezik, vagy ha az Azure CLI verziója elavult.
 
-*A lehetséges megoldások*: Győződjön meg arról, hogy helyesen szerepel-e a helyesírás-ellenőrzés, és arról, hogy létezik a beállításjegyzék; Győződjön meg arról, hogy a felhasználó a megfelelő engedélyekkel rendelkezik a beállításjegyzékben, és a felhők a beállításjegyzék és a parancssori felületi környezetben megfelelő; Azure CLI frissítése a legújabb verzióra.
+*Lehetséges megoldások*: Győződjön meg arról, hogy a helyesírás helyes, valamint hogy a beállításjegyzék létezik; Ellenőrizze, hogy a felhasználó rendelkezik-e a megfelelő engedélyekkel a beállításjegyzékben, valamint hogy a beállításjegyzék és a CLI-környezet is egyezik-e a felhővel. frissítse az Azure CLI-t a legújabb verzióra.
 
 ## <a name="next-steps"></a>További lépések
 
-A beállításjegyzék állapotának ellenőrzéséhez lehetőségekről [egy Azure container registryt állapotát](container-registry-check-health.md).
+A beállításjegyzék állapotának vizsgálatához tekintse meg [Az Azure Container Registry állapotának ellenőrzését](container-registry-check-health.md)ismertető témakört.
 
-Tekintse meg a [– gyakori kérdések](container-registry-faq.md) vonatkozó gyakori kérdések és ismert problémákkal kapcsolatban az Azure Container Registrybe.
+Tekintse [meg a](container-registry-faq.md) gyakori kérdések és a Azure Container Registry kapcsolatos egyéb ismert problémák gyakori kérdéseit.
 
 
 

@@ -1,6 +1,6 @@
 ---
-title: Jogkivonat-beszerzési csendes (Microsoft-hitelesítési tár .NET) |} Az Azure
-description: Ismerje meg, hogyan használja a Microsoft-hitelesítési tár .NET (MSAL.NET) csendes módban (a gyorsítótárból token) hozzáférési jogkivonat beszerzése.
+title: Jogkivonat beszerzése csendesen (Microsoft Authentication Library for .NET) | Azure
+description: Megtudhatja, hogyan szerezheti be csendesen a hozzáférési tokent (a jogkivonat-gyorsítótárból) a .NET-hez készült Microsoft Authentication Library (MSAL.NET) használatával.
 services: active-directory
 documentationcenter: dev-center-name
 author: rwike77
@@ -12,25 +12,25 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/30/2019
+ms.date: 07/16/2019
 ms.author: ryanwi
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6331407067a39550d866d7c293a92fac9184b54e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 309e912f2adf5249770b40a631ed62f7cb3113e5
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65544236"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68277947"
 ---
-# <a name="get-a-token-from-the-token-cache-using-msalnet"></a>A token gyorsítótárból MSAL.NET használatával egy token beszerzése
+# <a name="get-a-token-from-the-token-cache-using-msalnet"></a>Jogkivonat beszerzése a jogkivonat-gyorsítótárból a MSAL.NET használatával
 
-Használatával a Microsoft-hitelesítési tár .NET (MSAL.NET) hozzáférési jogkivonatot szerez be, amikor a rendszer gyorsítótárazza a jogkivonat. Ha az alkalmazás egy jogkivonatot, azt először meghívja a `AcquireTokenSilent` metódust annak ellenőrzéséhez, ha egy elfogadható jogkivonat a gyorsítótárban. Sok esetben egy másik jogkivonatot beszerezni egy jogkivonat a gyorsítótárban alapján további hatókörökkel. Akkor is egy jogkivonat frissítése, ha azt hamarosan lejár az első (mivel a jogkivonatok gyorsítótárának is tartalmaz egy frissítési jogkivonat).
+Ha a .NET-hez készült Microsoft Authentication Library (MSAL.NET) használatával szerzi be a hozzáférési jogkivonatot, a rendszer gyorsítótárazza a tokent. Ha az alkalmazásnak tokenre van szüksége, először hívja meg `AcquireTokenSilent` a metódust annak ellenőrzéséhez, hogy elfogadható token van-e a gyorsítótárban. Sok esetben lehetséges, hogy a gyorsítótárban lévő tokenen alapuló további hatókörökkel is beszerezhető egy másik jogkivonat. Az is lehetséges, hogy a jogkivonatot a lejárati idő lezárása után is frissíteni kell (mivel a jogkivonat-gyorsítótár frissítési jogkivonatot is tartalmaz).
 
-A javasolt egyik hívja a `AcquireTokenSilent` metódus első.  Ha `AcquireTokenSilent` meghiúsul, majd más módszerekkel jogkivonat beszerzése.
+A javasolt minta a `AcquireTokenSilent` metódus első meghívása.  Ha `AcquireTokenSilent` a művelet sikertelen, akkor más metódusok használatával szerezzen be egy jogkivonatot.
 
-Az alkalmazás a következő példában először megkísérli a token a gyorsítótárból egy token beszerzéséhez.  Ha egy `MsalUiRequiredException` kivétel történt, az alkalmazás tokenbeolvasás interaktív módon. 
+Az alábbi példában az alkalmazás először a jogkivonat-gyorsítótárból kísérli meg a jogkivonat beszerzését.  `MsalUiRequiredException` Ha kivétel keletkezik, az alkalmazás interaktív módon szerzi be a tokent. 
 
 ```csharp
 AuthenticationResult result = null;
@@ -43,8 +43,8 @@ try
 }
 catch (MsalUiRequiredException ex)
 {
- // A MsalUiRequiredException happened on AcquireTokenSilentAsync.
- // This indicates you need to call AcquireTokenAsync to acquire a token
+ // A MsalUiRequiredException happened on AcquireTokenSilent.
+ // This indicates you need to call AcquireTokenInteractive to acquire a token
  System.Diagnostics.Debug.WriteLine($"MsalUiRequiredException: {ex.Message}");
 
  try

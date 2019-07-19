@@ -1,19 +1,20 @@
 ---
-title: 'Létrehozása és módosítása egy ExpressRoute-kapcsolatcsoport - portálon: Azure | Microsoft Docs'
+title: 'ExpressRoute-kör létrehozása és módosítása – portál: Azure | Microsoft Docs'
 description: Hozzon létre, üzembe helyezése, győződjön meg arról, frissítése, törlése és ExpressRoute-kapcsolatcsoport megszüntetése.
 services: expressroute
 author: cherylmc
 ms.service: expressroute
 ms.topic: article
 ms.date: 10/20/2018
-ms.author: cherylmc;ganesr
+ms.author: cherylmc
+ms.reviewer: ganesr
 ms.custom: seodec18
-ms.openlocfilehash: ce6d64f1df7a91f68e4621189553c36b36709039
-ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
+ms.openlocfilehash: 25821f60f47b1279e70cba2574901cd5df3d327f
+ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67657226"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67846580"
 ---
 # <a name="create-and-modify-an-expressroute-circuit"></a>Létrehozása és módosítása egy ExpressRoute-kapcsolatcsoporttal
 
@@ -54,10 +55,10 @@ Egy böngészőből lépjen az [Azure Portalra](https://portal.azure.com), majd 
    ![A Termékváltozat-szint és az adatforgalom-mérést konfigurálása](./media/expressroute-howto-circuit-portal-resource-manager/createcircuit.png)
 
    * **Réteg** határozza meg, hogy egy ExpressRoute-standard vagy az ExpressRoute prémium bővítmény engedélyezve van. Megadhat **Standard** beolvasni a standard Termékváltozat vagy **prémium** for a premium bővítményt.
-   * **Az adatforgalom-mérést** határozza meg a számlázási típusát. Megadhat **forgalmi díjas** forgalmi díjas csomag, és **korlátlan** a korlátlan adatforgalmú. Vegye figyelembe, hogy a számlázási típust módosíthatja **forgalmi díjas** való **korlátlan**.
+   * **Az adatforgalom-mérést** határozza meg a számlázási típusát. Megadhat **forgalmi díjas** forgalmi díjas csomag, és **korlátlan** a korlátlan adatforgalmú. Vegye figyelembe, hogy a számlázási típus a **mért** értékről **korlátlanra**módosítható.
 
      > [!IMPORTANT]
-     > Nem módosíthatja a típust **korlátlan** való **forgalmi díjas**.
+     > A típus nem módosítható **korlátlanról** **mértre**.
 
    * **Társviszony-létesítési helyszínen** a fizikai hely, ahol van Microsoft-társviszony van.
 
@@ -85,19 +86,19 @@ Ezen a lapon **szolgáltató állapota** információt nyújt a szolgáltatói o
 Amikor létrehoz egy új ExpressRoute-kapcsolatcsoportot, a kapcsolatcsoport a következő állapotban van:
 
 Szolgáltató állapota: Nincs kiépítve<BR>
-Kapcsolatcsoport állapota: Enabled
+Áramkör állapota: Enabled
 
 ![Üzembe helyezési folyamatának elindításához](./media/expressroute-howto-circuit-portal-resource-manager/status.png)
 
 A kapcsolatcsoport változik a következő állapotot, amikor a kapcsolatszolgáltató van folyamatban, amely lehetővé teszi az Ön számára:
 
 Szolgáltató állapota: Kiépítés<BR>
-Kapcsolatcsoport állapota: Enabled
+Áramkör állapota: Enabled
 
 ExpressRoute-kapcsolatcsoport segítségével tudja meg a következő állapotban kell lennie:
 
 Szolgáltató állapota: Kiépítve<BR>
-Kapcsolatcsoport állapota: Enabled
+Áramkör állapota: Enabled
 
 ### <a name="5-periodically-check-the-status-and-the-state-of-the-circuit-key"></a>5. Rendszeresen ellenőrizze a kapcsolatcsoport kulcs állapotát és az állapot
 

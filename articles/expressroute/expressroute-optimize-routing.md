@@ -1,22 +1,53 @@
 ---
-title: 'Optimalizálható az Útválasztás – az ExpressRoute-Kapcsolatcsoportok: Azure | Microsoft Docs'
+title: 'Útválasztási ExpressRoute áramkörök optimalizálása: Azure | Microsoft Docs'
 description: Ez az oldal részletesen ismerteti, hogyan optimalizálható az útválasztás, ha több olyan ExpressRoute-kapcsolatcsoporttal rendelkezik, amely összeköti a Microsoftot a vállalati hálózatával.
 services: expressroute
 author: charwen
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 12/07/2018
+ms.date: 07/11/2019
 ms.author: charwen
 ms.custom: seodec18
-ms.openlocfilehash: 65c23b05cfcb623f8e2870df813f5516b3039d5c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0bd8c0417b32e93a4f52b545c4d7fc532992a0b1
+ms.sourcegitcommit: 470041c681719df2d4ee9b81c9be6104befffcea
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60883520"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67854329"
 ---
 # <a name="optimize-expressroute-routing"></a>Az ExpressRoute-útválasztás optimalizálása
 Ha több ExpressRoute-kapcsolatcsoporttal rendelkezik, több útvonalon csatlakozhat a Microsofthoz. Ennek eredményeképpen előfordulhat, hogy az útválasztás nem lesz optimális – azaz a forgalom hosszabb úton jut el a Microsofthoz, illetve a Microsofttól az Ön hálózatába. Minél hosszabb a hálózati útvonal, annál nagyobb a késés. A késés közvetlen hatással van az alkalmazások teljesítményére és a felhasználói élményre. Ez a cikk ezt a problémát mutatja be, és ismerteti, hogyan optimalizálható az útválasztás a standard útválasztási technológiák segítségével.
+
+## <a name="path-selection-on-microsoft-and-public-peerings"></a>Elérési út kiválasztása a Microsoft és a nyilvános hálózatokon
+Fontos annak biztosítása, hogy a Microsoft vagy a nyilvános hálózat használatakor a forgalom a kívánt útvonalon haladjon át, ha egy vagy több ExpressRoute-áramkört használ, valamint internetes Exchange (IX) vagy internetszolgáltató (ISP) használatával az internetre mutató útvonalakat. A BGP a legjobb útvonal-kiválasztási algoritmust használja számos tényező alapján, beleértve a leghosszabb előtag-egyezést (LPM). Annak biztosítása érdekében, hogy az Azure-ra irányuló forgalom a Microsofton vagy a nyilvános közvetítésen keresztül haladjon át a ExpressRoute útvonalon, az ügyfeleknek a *helyi preferencia* attribútumot kell alkalmazniuk ahhoz, hogy az elérési út mindig előnyben részesített a ExpressRoute. 
+
+> [!NOTE]
+> Az alapértelmezett helyi beállítás általában 100. A magasabb helyi beállítások előnyben részesítettek. 
+>
+>
+
+Vegye figyelembe a következő példát:
+
+![1\. ExpressRoute-probléma – az optimálisnál rosszabb útválasztás az ügyféltől a Microsoft felé](./media/expressroute-optimize-routing/expressroute-localPreference.png)
+
+A fenti példában a ExpressRoute elérési utak előnyben részesítése a következő módon konfigurálja a helyi beállításokat. 
+
+**Cisco IOS-XE konfiguráció R1 perspektívából:**
+
+    R1(config)#route-map prefer-ExR permit 10
+    R1(config-route-map)#set local-preference 150
+
+    R1(config)#router BGP 345
+    R1(config-router)#neighbor 1.1.1.2 remote-as 12076
+    R1(config-router)#neighbor 1.1.1.2 activate
+    R1(config-router)#neighbor 1.1.1.2 route-map prefer-ExR in
+
+**Junos konfiguráció R1 perspektívából:**
+
+    user@R1# set protocols bgp group ibgp type internal
+    user@R1# set protocols bgp group ibgp local-preference 150
+
+
 
 ## <a name="suboptimal-routing-from-customer-to-microsoft"></a>Optimálisnál rosszabb útválasztás az ügyféltől a Microsoft felé
 Vizsgáljuk meg az útválasztási problémát egy példán keresztül. Tegyük fel, hogy van két irodája az Egyesült Államokban, egy Los Angelesben és egy New Yorkban. Az irodák egy nagykiterjedésű hálózaton (WAN) keresztül csatlakoznak, amely lehet a saját gerinchálózata vagy a szolgáltatója IP-alapú VPN hálózata. Két ExpressRoute-kapcsolatcsoporttal rendelkezik, egy az USA nyugati régiójában és egy az USA keleti régiójában, amelyek szintén a WAN hálózathoz csatlakoznak. Nyilvánvaló, hogy két útvonalon keresztül csatlakozhat a Microsoft hálózatához. Most tegyük fel, hogy az USA nyugati régiójában és az USA keleti régiójában is rendelkezik egy Azure üzemelő példánnyal (például az Azure App Service-szel). Az a szándéka, hogy a Los Angeles-i felhasználóit az USA nyugati Azure-régiójához, a New York-i felhasználóit pedig az USA keleti Azure-régiójához csatlakoztassa, mivel a szolgáltatás-rendszergazdája azt hirdeti az egyes irodákban lévő felhasználóknak, hogy a közelebbi Azure szolgáltatáshoz férjenek hozzá az optimális élmény érdekében. Sajnos ez a terv csak a keleti parti felhasználók esetében működik jól, a nyugati parti felhasználók esetében nem. A probléma oka a következő. Mindkét ExpressRoute-kapcsolatcsoporton meghirdetjük az USA keleti Azure-régiójához tartozó előtagot (23.100.0.0/16) és az USA nyugati Azure-régiójához tartozó előtagot (13.100.0.0/16) is. Ha nem tudja, hogy melyik előtag melyik régióból származik, nem tudja különböző módon kezelni őket. A WAN hálózat azt hiheti, hogy mindkét előtag közelebb van az USA keleti régiójához, mint az USA nyugati régiójához, és ezért mindkét iroda felhasználóit az USA keleti régiójában lévő ExpressRoute-kapcsolatcsoporthoz irányíthatja. Ennek eredménye, hogy sok elégedetlen felhasználó lesz a Los Angeles-i irodában.

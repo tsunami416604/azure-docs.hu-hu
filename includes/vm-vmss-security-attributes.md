@@ -4,37 +4,37 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 07/10/2019
 ms.author: mbaldwin
-ms.openlocfilehash: df11493fa9663d3fcbf0a2f74a5acbead55a25fb
-ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
+ms.openlocfilehash: 642f63966533416be7b86bae362d24cd286706b3
+ms.sourcegitcommit: 770b060438122f090ab90d81e3ff2f023455213b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67800275"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68306103"
 ---
 ## <a name="preventative"></a>Megelőző
 
 | Biztonsági attribútum | Igen/nem | Megjegyzések |
 |---|---|--|
-| Titkosítás inaktív állapotban (például a kiszolgálóoldali titkosítás, a kiszolgálóoldali titkosítást az ügyfél által felügyelt kulcsokat és más titkosítási szolgáltatások) | Igen | Lásd: [az Azure-beli Linuxos virtuális gép titkosítása](/azure/virtual-machines/linux/encrypt-disks.md) és [a Windows virtuális gép virtuális lemezek titkosítása](/azure/virtual-machines/windows/encrypt-disks.md). |
-| Titkosítás az átvitel során (például az ExpressRoute-titkosítás, a virtuális hálózatok közötti titkosítás és a VNet – VNet titkosítási)| Igen | Az Azure Virtual Machines támogatja [ExpressRoute](/azure/expressroute) és a virtuális hálózatok közötti titkosítást. Lásd: [az átvitel közbeni titkosítás, a virtuális gépek](/azure/security/security-azure-encryption-overview.md#in-transit-encryption-in-vms). |
-| Titkosítási kulcs kezelése (CMK, BYOK, stb.)| Igen | Felhasználó által kezelt kulcsokkal egy Azure-titkosítás támogatott forgatókönyv; Lásd: [Azure-titkosítás áttekintése](/azure/security/security-azure-encryption-overview#in-transit-encryption-in-vms.md).|
-| Oszlop a blokkszintű titkosítás (az Azure Data Services)| – | |
-| Titkosított API-hívások| Igen | HTTPS és SSL. |
+| Titkosítás inaktív állapotban (például kiszolgálóoldali titkosítás, ügyfél által felügyelt kulcsokkal rendelkező kiszolgálóoldali titkosítás és egyéb titkosítási funkciók) | Igen | Lásd: Linux rendszerű [virtuális gép titkosítása az Azure-ban](/azure/virtual-machines/linux/encrypt-disks) és a [virtuális lemezek titkosítása egy Windowsos](/azure/virtual-machines/windows/encrypt-disks)virtuális gépen. |
+| Az átvitel közbeni titkosítás (például ExpressRoute titkosítás, VNet titkosítás és VNet-VNet titkosítás)| Igen | Az Azure Virtual Machines támogatja a [ExpressRoute](/azure/expressroute) és a VNET titkosítást. Lásd: [tranzitraktár titkosítás a virtuális gépeken](/azure/security/security-azure-encryption-overview#in-transit-encryption-in-vms). |
+| Titkosítási kulcsok kezelését (CMK, BYOK stb.)| Igen | Az ügyfél által felügyelt kulcsok egy támogatott Azure-titkosítási forgatókönyv; Lásd: az [Azure-titkosítás áttekintése](/azure/security/security-azure-encryption-overview#in-transit-encryption-in-vms).|
+| Oszlop szintű titkosítás (Azure Data Services)| – | |
+| Titkosított API-hívások| Igen | HTTPS és SSL használatával. |
 
-## <a name="network-segmentation"></a>Hálózati szegmentálást
+## <a name="network-segmentation"></a>Hálózati szegmentálás
 
 | Biztonsági attribútum | Igen/nem | Megjegyzések |
 |---|---|--|
-| Szolgáltatási végpont támogatás| Igen | |
-| VNet-injektálási támogatás| Igen | . |
-| Hálózatelkülönítés és Firewalling támogatása| Igen |  |
-| Kényszerített bújtatás támogatása| Igen | Lásd: [kényszerített bújtatás, az Azure Resource Manager-alapú üzemi modellel konfigurálása](/azure/vpn-gateway/vpn-gateway-forced-tunneling-rm.md). |
+| Szolgáltatás végpontjának támogatása| Igen | |
+| VNet-befecskendezés támogatása| Igen | . |
+| Hálózati elkülönítés és tűzfalak támogatása| Igen |  |
+| Kényszerített bújtatás támogatása| Igen | Lásd: [kényszerített bújtatás konfigurálása a Azure Resource Manager üzemi modell használatával](/azure/vpn-gateway/vpn-gateway-forced-tunneling-rm). |
 
 ## <a name="detection"></a>Észlelés
 
 | Biztonsági attribútum | Igen/nem | Megjegyzések|
 |---|---|--|
-| Azure monitorozási támogatása (a Log analytics, az App insights, stb.)| Igen | Lásd: [figyelésére és frissítésére az Azure-beli Linuxos virtuális gép](/azure/virtual-machines/linux/tutorial-monitoring.md) és [figyelésére és frissítésére az Azure-beli Windows virtuális gép](/azure/virtual-machines/windows/tutorial-monitoring.md). |
+| Azure monitoring-támogatás (log Analytics, alkalmazás-elemzések stb.)| Igen | Lásd: Linux rendszerű [virtuális gépek monitorozása és frissítése az Azure-ban](/azure/virtual-machines/linux/tutorial-monitoring) , valamint [Windowsos virtuális gépek monitorozása és frissítése az Azure-ban](/azure/virtual-machines/windows/tutorial-monitoring). |
 
 ## <a name="identity-and-access-management"></a>Identitás- és hozzáférés-kezelés
 
@@ -44,15 +44,15 @@ ms.locfileid: "67800275"
 | Authorization| Igen |  |
 
 
-## <a name="audit-trail"></a>Auditnapló
+## <a name="audit-trail"></a>Naplózási nyomvonal
 
 | Biztonsági attribútum | Igen/nem | Megjegyzések|
 |---|---|--|
-| Vezérlő és a felügyeleti sík naplózási és naplózása| Igen |  |
-| Adatsík naplózása és naplózása | Nem |  |
+| Vezérlési és felügyeleti síkok naplózása és naplózása| Igen |  |
+| Adatsíkok naplózása és naplózása | Nem |  |
 
 ## <a name="configuration-management"></a>Konfigurációkezelés
 
 | Biztonsági attribútum | Igen/nem | Megjegyzések|
 |---|---|--|
-| Konfiguráció kezelésével kapcsolatos támogatás (versioning konfiguráció stb.)| Igen |  | 
+| Configuration Management-támogatás (konfiguráció verziószámozása stb.)| Igen |  | 
