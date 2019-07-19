@@ -179,7 +179,7 @@
                   displayname: 'ASP.NET, c#, csharp, .NET, NET, dotnet'
                   href: app/asp-net.md
                 - name: .NET-konzol
-                  displayname: 'console, .NET, dotnet console, dotenet, c#, csharp, NET'
+                  displayname: 'console, .NET, dotnet console, dotnet, c#, csharp, NET'
                   href: app/console.md
                 - name: ILogger
                   displayname: 'ilogger, logging, log'
@@ -295,7 +295,7 @@
                 - name: Teljesítménytesztelés
                   href: app/performance-testing.md
                 - name: Hibaelhárítás
-                  displayname: 'availability, troublshoot, troubleshoot availability'
+                  displayname: 'availability, troubleshoot, troubleshoot availability'
                   href: app/troubleshoot-availability.md
             - name: Elosztott nyomkövetés
               items:
@@ -497,6 +497,8 @@
                   href: insights/container-insights-alerts.md
                 - name: Ügynökkezelés
                   href: insights/container-insights-manage-agent.md
+                - name: Ügynökgyűjtemény-beállítások konfigurálása
+                  href: insights/container-insights-agent-config.md
                 - name: Frissítés a metrikák engedélyezéséhez
                   href: insights/container-insights-update-metrics.md
                 - name: Hibaelhárítás
@@ -612,8 +614,6 @@
                   href: insights/vminsights-workbooks.md
                 - name: Adatelemzés naplólekérdezésekkel
                   href: insights/vminsights-log-search.md
-                - name: Ügynökgyűjtemény-beállítások konfigurálása
-                  href: insights/container-insights-agent-config.md
                 - name: Monitorozás letiltása
                   href: insights/vminsights-optout.md
             - name: Kapacitással és teljesítménnyel kapcsolatos megoldás

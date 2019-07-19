@@ -1,9 +1,9 @@
 ---
-title: A mobilalkalmazás, hogy a hívások webes API-k – az alkalmazás kódja konfigurációját |} A Microsoft identity platform
-description: Ismerje meg a mobilalkalmazások, hogy a hívások webes API-k (alkalmazás kód konfigurálása)
+title: Webes API-kat meghívó mobil alkalmazás – alkalmazás kódjának konfigurációja | Microsoft Identity platform
+description: Ismerje meg, hogyan hozhat létre webes API-kat meghívó mobil alkalmazást (az alkalmazás kódjának konfigurációja)
 services: active-directory
 documentationcenter: dev-center-name
-author: danieldobalian
+author: jmprieur
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
@@ -16,38 +16,38 @@ ms.author: jmprieur
 ms.reviwer: brandwe
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2b6ebab0eeca6895e1c7a0f6008972030d81da42
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f43ae9da51f68c9765a36d27c993d1c9935d61fa
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65962410"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68326124"
 ---
-# <a name="mobile-app-that-calls-web-apis---app-registration"></a>A mobilalkalmazás, hogy a hívások webes API-k – alkalmazás regisztrálása
+# <a name="mobile-app-that-calls-web-apis---app-registration"></a>Webes API-kat meghívó mobil alkalmazás – alkalmazás regisztrálása
 
-Ez a cikk egy mobilalkalmazás létrehozása az alkalmazás regisztrációs utasításokat tartalmazza.
+Ez a cikk az alkalmazás regisztrációs utasításait tartalmazza a mobileszközök létrehozásához.
 
 ## <a name="supported-account-types"></a>Támogatott fióktípusok
 
-A mobilalkalmazások támogatott fióktípusok attól függ, a felhasználói élményt szeretné engedélyezni, és a felhasználók az alkalmazáshoz be van-e állítva.
+A Mobile Applications által támogatott fióktípus függ az engedélyezni kívánt felhasználói élménytől, és az alkalmazás által megcélzott felhasználóknak.
 
-## <a name="platform-configuration-and-redirect-uris"></a>Platform konfigurációja és az átirányítási URI-k  
+## <a name="platform-configuration-and-redirect-uris"></a>Platform konfigurálása és URI-k átirányítása  
 
-Mobilalkalmazások készítése, kritikus fontosságú lépésben esetén az átirányítási URI-t. E beállítás révén a [platform konfigurációja a hitelesítési panelen](https://aka.ms/MobileAppReg).
+A mobil alkalmazások létrehozásakor a legkritikusabb regisztrációs lépés az átirányítási URI. Ez a hitelesítés panelen állítható be a [platform-konfiguráción](https://aka.ms/MobileAppReg)keresztül.
 
-Ez a tapasztalat lehetővé teszi az alkalmazás első egyszeri bejelentkezés (SSO) keresztül a Microsoft Authenticator (és az Intune vállalati portál Android rendszeren) támogatás és az eszközfelügyeleti szabályzatokat.
+Ez a felhasználói élmény lehetővé teszi az alkalmazás számára, hogy egyszeri bejelentkezést (SSO) kapjon a Microsoft Authenticator (és az Androidon Intune Céges portál), valamint az eszköz-felügyeleti házirendek támogatásával.
 
-Ha inkább manuálisan konfigurálnia a átirányítási URI-t, ezt az alkalmazásjegyzék keresztül teheti meg. A javasolt formátuma a következő:
+Ha manuálisan szeretné konfigurálni az átirányítási URI-t, ezt az alkalmazás Jegyzékfájlján keresztül teheti meg. Az ajánlott formátum a következő:
 
-- ***iOS***: `msauth.<BUNDLE_ID>://auth`
-- ***Android***: `msauth://<PACKAGE_NAME>/<SIGNATURE_HASH>`
-  - A Android aláírás-kivonatoló kiadási vagy hibakeresési kulcsokkal a KeyTool paranccsal hozhatók létre.
+- ***iOS***:`msauth.<BUNDLE_ID>://auth`
+- ***Android***:`msauth://<PACKAGE_NAME>/<SIGNATURE_HASH>`
+  - Az androidos aláírás kivonata a Key Tool parancs használatával hozható létre a kiadási vagy a hibakeresési kulcsokkal.
 
 ## <a name="api-permissions"></a>API-engedélyek
 
-Mobilalkalmazások API-k hívása a bejelentkezett felhasználó nevében. Az alkalmazás kell kérhetnek delegált engedélyeket, más néven hatókörök. Attól függően, a kívánt környezet ezt megteheti statikusan az Azure Portalon keresztül vagy dinamikusan, futásidőben. Engedélyek statikusan regisztrálása lehetővé teszi, hogy a rendszergazdák egyszerűen hagyja jóvá az alkalmazást, és javasolt.
+A Mobile Applications a bejelentkezett felhasználó nevében hívja meg az API-kat. Az alkalmazásnak delegált engedélyeket kell igényelnie, más néven hatóköröknek kell lennie. A kívánt élménytől függően ez statikusan végezhető el a Azure Portalon vagy dinamikusan, futásidőben. Az engedélyek statikus regisztrálása lehetővé teszi, hogy a rendszergazdák egyszerűen jóváhagyják az alkalmazást, és ajánlottak legyenek.
 
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Egy token beszerzése](scenario-mobile-acquire-token.md)
+> [Token beszerzése](scenario-mobile-acquire-token.md)

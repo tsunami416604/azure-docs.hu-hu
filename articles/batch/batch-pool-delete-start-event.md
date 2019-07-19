@@ -1,9 +1,9 @@
 ---
-title: Az Azure Batch készlet törlésének indítása esemény |} A Microsoft Docs
-description: Referencia a Batch készlet törlésének indítása esemény.
+title: Azure Batch készlet delete eseményének törlése | Microsoft Docs
+description: A Batch-készlet törlésének kezdési eseményének hivatkozása.
 services: batch
 author: laurenhughes
-manager: jeconnoc
+manager: gwallace
 ms.assetid: ''
 ms.service: batch
 ms.devlang: multiple
@@ -12,18 +12,18 @@ ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 04/20/2017
 ms.author: lahugh
-ms.openlocfilehash: 2352971af3844b56f93c16ebaf6cb23bd5fd8a5a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 65d20f2194b2bf83ecf32e19c1ab5b0f7bc7a004
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60774539"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68323218"
 ---
 # <a name="pool-delete-start-event"></a>Készlet törlésének indítása esemény
 
- Ez az esemény bocsásson ki, amikor egy alkalmazáskészlet-törlési művelet megkezdődött. Mivel a készlet törlése aszinkron esemény, várható a készlet törlése kész esemény a delete művelet befejezése után bocsátjuk rendelkezésre.
+ Ezt az eseményt a rendszer a készlet törlési műveletének megkezdése után bocsátja ki. Mivel a készlet törlése egy aszinkron esemény, várhatóan a készlet törlésének befejezési eseményét kell kiállítani a törlési művelet befejeződése után.
 
- Az alábbi példa bemutatja egy készlet törlésének indítása esemény törzsét.
+ Az alábbi példa egy készlet-törlési esemény törzsét mutatja be.
 
 ```
 {
@@ -31,6 +31,6 @@ ms.locfileid: "60774539"
 }
 ```
 
-|Elem|Típus|Megjegyzések|
+|Elem|Type|Megjegyzések|
 |-------------|----------|-----------|
-|id|String|A készlet azonosítója.|
+|id|Sztring|A készlet azonosítója.|

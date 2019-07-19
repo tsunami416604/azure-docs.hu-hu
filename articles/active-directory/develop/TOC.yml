@@ -408,7 +408,7 @@
         - name: Kompatibilitástörő változások
           href: reference-breaking-changes.md
 - name: 1.0-s verzió
-  expanded: true
+  expanded: false
   items:
     - name: Áttekintés
       href: v1-overview.md

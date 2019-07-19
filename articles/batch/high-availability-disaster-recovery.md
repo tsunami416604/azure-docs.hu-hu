@@ -1,10 +1,10 @@
 ---
-title: Magas rendelkezésre állás és vészhelyreállítás helyreállítási – Azure Batch |} A Microsoft Docs
-description: Ismerje meg, hogyan tervezhet a Batch-alkalmazás számára regionális kimaradás
+title: Magas rendelkezésre állás és vész-helyreállítás – Azure Batch | Microsoft Docs
+description: Megtudhatja, hogyan tervezheti meg a Batch-alkalmazást regionális leállás esetén
 services: batch
 documentationcenter: ''
 author: laurenhughes
-manager: jeconnoc
+manager: gwallace
 editor: ''
 ms.assetid: ''
 ms.service: batch
@@ -14,41 +14,41 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/29/2019
 ms.author: lahugh
-ms.openlocfilehash: b863785575263fedd144b3d599962a8e1559e0a3
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 3c76a5100e6ac1db067ccdbd582ddf9adba946c1
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60549752"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68322589"
 ---
 # <a name="design-your-application-for-high-availability"></a>Magas rendelkezésre állású alkalmazás tervezése
 
-Az Azure Batch szolgáltatás egy regionális szolgáltatás. A Batch minden Azure-régióban érhető el, de egy Batch-fiók létrehozása után hozzá kell rendelnie az egy régióban. Ezután alkalmazza a Batch-fiók összes művelet adott régióban. Ha például készletek és a hozzájuk tartozó virtuális gépeket (VM) jönnek létre a Batch-fiók ugyanabban a régióban.
+Azure Batch regionális szolgáltatás. A Batch az összes Azure-régióban elérhető, de egy batch-fiók létrehozásakor egy régióhoz kell társítani. Ezután a Batch-fiók összes művelete erre a régióra vonatkozik. A készletek és a társított virtuális gépek (VM-EK) például a Batch-fiókkal megegyező régióban jönnek létre.
 
-Batch használó alkalmazások tervezésekor figyelembe kell vennie a Batch nem érhetők az egy régióban lehetőségét. Lehetséges, olyan ritka helyzet állhat elő, ahol a régió teljes problémája van, az egész köteget szolgáltatást a régiót, vagy probléma a megadott Batch-fiók.
+A Batch szolgáltatást használó alkalmazások tervezésekor figyelembe kell vennie, hogy a Batch ne legyen elérhető egy régióban. Előfordulhat, hogy ritkán fordul elő, amikor a régió egésze, a teljes batch szolgáltatás a régióban, vagy az adott batch-fiókkal kapcsolatos probléma merül fel.
 
-Ha az alkalmazás vagy megoldás használata Batch-mindig elérhetőnek kell lennie, akkor azt egy másik régióba történő feladatátvételt kell megtervezni, vagy mindig van elosztva a két vagy több régióban a számítási. Mindkét módszerénél legalább két Batch-fiókok, minden más régióban található fiók szükséges.
+Ha a Batch-t használó alkalmazást vagy megoldást mindig elérhetőnek kell lennie, akkor azt úgy kell megtervezni, hogy egy másik régióba kerüljön feladatátvételre, vagy hogy a számítási feladatok mindig két vagy több régió között legyenek felosztva. Mindkét módszernek legalább két batch-fiókra van szüksége, és minden fiók egy másik régióban található.
 
-## <a name="multiple-batch-accounts-in-multiple-regions"></a>Több Batch-fiókok több régióban
+## <a name="multiple-batch-accounts-in-multiple-regions"></a>Több batch-fiók több régióban
 
-Különböző régiókban lévő több Batch-fiókok használatával teszi lehetővé, hogy az alkalmazás marad, ha a Batch-fiók egy másik régióban elérhetetlenné válik. Több fiók használata különösen fontos, ha az alkalmazásnak kell magas rendelkezésre állású legyen.
+A különböző régiókban több batch-fiók használata lehetővé teszi, hogy az alkalmazás továbbra is fusson, ha egy másik régióban lévő batch-fiók elérhetetlenné válik. Több fiók használata különösen fontos, ha az alkalmazásnak nagy rendelkezésre állást kell biztosítania.
 
-Bizonyos esetekben egy alkalmazást úgy tervezték, hogy mindig a két vagy több régiót használnak. Például amikor szüksége van egy jelentős mennyiségű kapacitást, több régióban használatával lehet szükség nagyméretű alkalmazások kezeléséhez, vagy gondoskodjon arról, hogy a jövőbeli növekedésre.
+Bizonyos esetekben előfordulhat, hogy egy alkalmazás úgy van kialakítva, hogy mindig két vagy több régiót használjon. Ha például jelentős mennyiségű kapacitásra van szüksége, több régió használata szükséges lehet egy nagyméretű alkalmazás kezeléséhez vagy a jövőbeli növekedéshez.
 
-## <a name="design-considerations-for-providing-failover"></a>Feladatátvételi nyújtó kapcsolatos kialakítási szempontok
+## <a name="design-considerations-for-providing-failover"></a>Tervezési szempontok a feladatátvétel biztosításához
 
-Feladatátvétele egy másodlagos régióba megadásakor vegye figyelembe a lényeg az, hogy a megoldás összes összetevő figyelembe kell venni; azt azonban nem egyszerűen rendelkezik második Batch-fiókkal. Például a legtöbb Batch-alkalmazások Azure-tárfiókra szükség, a storage-fiók és a Batch-fiók láthatják el az elfogadható teljesítmény ugyanabban a régióban.
+A másik régióba való feladatátvételi képesség biztosításának egyik kulcsfontosságú pontja, hogy figyelembe kell venni a megoldás összes összetevőjét. nem elegendő, ha csak egy második batch-fiókkal rendelkezik. A legtöbb batch-alkalmazásban például szükség van egy Azure Storage-fiókra, és a Storage-fióknak és a Batch-fióknak ugyanabban a régióban kell lennie az elfogadható teljesítmény érdekében.
 
-Egy megoldás, amely a feladatátvétel tervezésekor, vegye figyelembe a következőket:
+A feladatátvételt biztosító megoldás tervezésekor vegye figyelembe a következő szempontokat:
 
-- Előre hozzon létre minden egyes régióban, mint például a Batch-fiók és a storage-fiókot az összes szükséges fiókokat. Gyakran nem áll bármilyen díjat kellene létrehozott fiókok, csak akkor van, tárolt adatok vagy a fiókot használja.
-- Ellenőrizze, hogy a kvóták időben, a fiókok van beállítva, hogy a szükséges a Batch-fiók használatával magok száma foglalhat.
-- Sablonok és/vagy parancsprogramok segítségével automatizálni az üzembe helyezést, az alkalmazás egy régióban.
-- Tartsa naprakészen a alkalmazás bináris fájljainak és a referenciaadatok az összes régióban. Naprakész állapotban tartózkodó biztosítja a régió is lehet gyorsabban online állapotba nem kell megvárnia a fájlok telepítéséhez és a feltöltés. Például ha a készlet csomópontjain telepítendő egyéni alkalmazás tárolt hivatkozott használata Batch-alkalmazáscsomagokkal az alkalmazás egy új verzió jön létre, amikor azt kell kell minden egyes Batch-fiókhoz feltöltött és a tárolókészlet konfigurációját által hivatkozott (vagy Győződjön meg az új verziót az alapértelmezett verzió).
-- Az alkalmazásban, Batch, storage, és más szolgáltatásokat, egyszerűen áttérés ügyfelek vagy a terhelés hívása a másik régióba.
-- Ajánlott eljárás az, győződjön meg arról, a feladatátvétel sikeres lesz, hogy gyakran Váltás normál működés részeként egy másodlagos régióba. Ha például a két külön régióban, a másodlagos régióba havonta áttérés üzemelő.
+- Minden szükséges fiók előzetes létrehozása minden régióban, például a Batch-fiók és a Storage-fiók. Gyakran nem számítunk fel díjat a fiókok létrehozásakor, csak akkor, ha a tárolt vagy a fiók használatban van.
+- Győződjön meg arról, hogy a kvóták előre vannak beállítva a fiókokon, így a Batch-fiók használatával lefoglalhatja a szükséges magok számát.
+- A sablonok és/vagy parancsfájlok segítségével automatizálhatja az alkalmazás központi telepítését egy adott régióban.
+- Az alkalmazások bináris fájljainak és az adatok naprakészen tartása minden régióban. Naprakészen tarthatja, hogy a régiót gyorsan online állapotba hozhatja anélkül, hogy várnia kellene a fájlok feltöltésére és telepítésére. Ha például egy, a készlet csomópontjain telepítendő egyéni alkalmazást a Batch-alkalmazáscsomag használatával tárol és hivatkozik, akkor az alkalmazás új verziójának előállításakor fel kell töltenie az egyes batch-fiókokat, és a készlet konfigurációja hivatkozik rá (vagy hozza az új verziót az alapértelmezett verzióra.
+- Az alkalmazásban a Batch, a Storage és bármely más szolgáltatás meghívásával egyszerűen átkapcsolhatja az ügyfeleket vagy a terhelést a másik régióba.
+- Ajánlott eljárás a feladatátvétel sikerességének biztosítására, hogy a normál működés részeként gyakran váltson át egy másik régióba. Ha például két üzemelő példány külön régióban található, a rendszer minden hónapban átvált a másodlagos régióba.
 
 ## <a name="next-steps"></a>További lépések
 
-- További tudnivalók a Batch-fiókok létrehozása a [az Azure portal](batch-account-create-portal.md), a [Azure CLI-vel](cli-samples.md), [Powershell](batch-powershell-cmdlets-get-started.md), vagy a [Batch management API](batch-management-dotnet.md).
-- Batch-fiók; alapértelmezett kvóták tartoznak [Ez a cikk](batch-quota-limit.md) részletek alapértelmezett értéket, majd azt ismerteti, hogyan lehet növelni a kvóták.
+- További információ a Batch-fiókok [Azure Portal](batch-account-create-portal.md), az [Azure CLI](cli-samples.md), a [POWERSHELL](batch-powershell-cmdlets-get-started.md)vagy a [Batch Management API](batch-management-dotnet.md)használatával történő létrehozásáról.
+- Az alapértelmezett kvóták egy batch-fiókhoz vannak társítva; [Ez a cikk](batch-quota-limit.md) az alapértelmezett kvóta-értékeket részletezi, és leírja, hogyan lehet növelni a kvótákat.

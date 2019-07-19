@@ -10,15 +10,13 @@ ms.subservice: content-moderator
 ms.topic: quickstart
 ms.date: 07/03/2019
 ms.author: pafarley
-ms.openlocfilehash: 01c153f2f8836b7d99de57af60b8623e54c6d6fe
-ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
+ms.openlocfilehash: bb0e44f83e2101a7b21e7b7ec6fdc75974c6d6d8
+ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68311930"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68333607"
 ---
-[!code-python[import declarations](~/samples-anomaly-detector/quickstarts/sdk/python-sdk-sample.py?name=imports)]
-
 # <a name="quickstart-analyze-text-content-for-objectionable-material-in-python"></a>Gyors útmutató: Szöveges tartalom elemzése a nem kifogásolt anyagok számára a Pythonban
 
 Ez a cikk bemutatja, és Kódminták segítséget nyújtanak a Pythonhoz készült a Content Moderator SDK használatának megkezdéséhez. Megtanulhatja, hogyan végezhet szűrést kifejezések alapján, és hogyan osztályozhatja a szöveges tartalmakat az esetlegesen kifogásolható tartalmak moderálása céljából.
@@ -47,7 +45,7 @@ Hozzon létre egy új Python-szkriptet nevű _ContentModeratorQS.py_ , és adja 
 
 ## <a name="initialize-variables"></a>Változók inicializálása
 
-Ezután adja hozzá a Content Moderator előfizetési kulcs és a végpont URL-változókat. A nevet `CONTENT_MODERATOR_SUBSCRIPTION_KEY` hozzá kell adnia a környezeti változókhoz, és hozzá kell adnia az előfizetési kulcsot az értékhez. Az alap végpont URL-címéhez `CONTENT_MODERATOR_ENDPOINT` adja hozzá a környezeti változókat a régióra jellemző URL-cím értékeként, `https://westus.api.cognitive.microsoft.com`például:. Ingyenes próba-előfizetését kulcsokat hoz létre a a **westus** régióban.
+Ezután adja hozzá a Content Moderator előfizetési kulcs és a végpont URL-változókat. Adja hozzá a `CONTENT_MODERATOR_SUBSCRIPTION_KEY` nevet a környezeti változókhoz az előfizetési kulcs értékeként. Az alap végpont URL-címéhez `CONTENT_MODERATOR_ENDPOINT` adja hozzá a környezeti változókat a régióra jellemző URL-cím értékeként, `https://westus.api.cognitive.microsoft.com`például:. Ingyenes próba-előfizetését kulcsokat hoz létre a a **westus** régióban.
 
 [!code-python[](~/cognitive-services-content-moderator-samples/documentation-samples/python/content_moderator_quickstart.py?name=authentication)]
 
@@ -67,9 +65,7 @@ Ezután használja az ügyfelet a tag **TextModerationOperations** -példánnyal
 
 ## <a name="check-the-printed-response"></a>A kinyomtatott Válasz keresése
 
-Futtassa a mintát, és erősítse meg a választ. A művelet végrehajtása sikeres volt, és egy **képernyő** -példányt adott vissza. A sikeres eredmény az alábbi formában jelenik meg:
-
-Ez a rövid útmutató eredmények a következő kimenet használt minta szöveg:
+Futtassa a mintát, és erősítse meg a választ. A sikeres befejezést követően egy **képernyő** -példányt ad vissza. A sikeres eredmény az alábbiak szerint jelenik meg:
 
 ```console
 {'auto_corrected_text': '" Is this a garbage email abide@ abed. com, phone: '

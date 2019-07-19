@@ -1,10 +1,10 @@
 ---
-title: Fiók-erőforrások kezelése a az ügyféloldali kódtára a .NET-keretrendszerhez – Azure Batch |} A Microsoft Docs
-description: Létrehozása, törlése és módosítása a Batch Management .NET könyvtár az Azure Batch-fiók erőforrásokat.
+title: A fiók erőforrásainak kezelése a .NET-hez készült ügyféloldali kódtár használatával – Azure Batch | Microsoft Docs
+description: Azure Batch fiók-erőforrások létrehozása, törlése és módosítása a Batch Management .NET-könyvtárral.
 services: batch
 documentationcenter: .net
 author: laurenhughes
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 ms.assetid: 16279b23-60ff-4b16-b308-5de000e4c028
@@ -16,14 +16,14 @@ ms.workload: big-compute
 ms.date: 04/24/2017
 ms.author: lahugh
 ms.custom: seodec18
-ms.openlocfilehash: 301a3f9a500c41cf13dfa071d3526d2128b5e131
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 41f3eecb1b3f488c355b1bad65b90dae8c76126e
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60775134"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68323458"
 ---
-# <a name="manage-batch-accounts-and-quotas-with-the-batch-management-client-library-for-net"></a>Batch-fiókok és kvóták kezelése a a Batch Management ügyféloldali kódtára a .NET-hez
+# <a name="manage-batch-accounts-and-quotas-with-the-batch-management-client-library-for-net"></a>Batch-fiókok és kvóták kezelése a Batch Management ügyféloldali kódtáraval a .NET-hez
 
 > [!div class="op_single_selector"]
 > * [Azure Portal](batch-account-create-portal.md)
@@ -31,22 +31,22 @@ ms.locfileid: "60775134"
 > 
 > 
 
-Csökkentheti karbantartási terhelés az Azure Batch-alkalmazások használatával a [Batch Management .NET használatával] [ api_mgmt_net] kódtár Batch-fiók létrehozása, törlés, kulcskezelés és kvóta felderítési automatizálásához.
+A Batch-fiókok létrehozásával, törlésével, a kulcskezelő szolgáltatással és a kvóta-felderítéssel automatizálható [a Azure batch][api_mgmt_net] -alkalmazások terhelésének csökkentése.
 
-* **Hozzon létre vagy töröljön a Batch-fiókok** belül bármely régióba. Ha egy független szoftverszállító (ISV), például megad egy szolgáltatás, amelyben minden egyes hozzárendelnek egy külön a Batch-fiók számlázási célokra az ügyfelek, a fiók létrehozását és törlését képességek a felhasználói portálra is hozzáadhat.
-* **Kérje le, és a fiókkulcsok ismételt létrehozása** programozott módon bármelyik a Batch-fiókok esetében. Ez segíthet felel meg, amelyeket rendszeres helyettesítő vagy fiókkulcsok lejártát biztonsági házirendeknek. Ha különböző Azure-régiókban található számos Batch-fiókok, a helyettesítő folyamat automation növeli a megoldás hatékonyságát.
-* **Ellenőrizze a fiókra vonatkozó kvóták** és a találgatást próbaverzió és a hiba meghatározása, hogy melyik Batch-fiókok milyen korlátokkal rendelkeznek. A fiókra vonatkozó kvóták ellenőrzésével feladatok megkezdése előtt, készletek létrehozását, vagy a számítási csomópontok hozzáadása, hol proaktív módon módosíthatja, vagy amikor ezek a számítási erőforrás jön létre. Megadhatja, hogy melyik fiók szükséges kvóta növeli a ezeket a fiókokat a további erőforrások kiosztása előtt.
-* **Más Azure-szolgáltatások funkciói egyesítése** egy teljes körű megoldást – Batch Management .NET használatával az [Azure Active Directory][aad_about], és a [Azure Erőforrás-kezelő] [ resman_overview] ugyanazzal az alkalmazással együtt. Ezek a funkciók és saját API-k használatával megadhat egy zökkenőmentes hitelesítési módszer, erőforráscsoportok és a egy teljes körű megoldás a fentiekben leírt funkciók létrehozását és törlését teszi.
+* **Hozzon létre és töröljön batch-fiókokat** bármely régión belül. Ha például egy független szoftvergyártó (ISV) olyan szolgáltatást biztosít ügyfeleinek, amelyben a számlázáshoz külön batch-fiókot rendelnek hozzá, a fiókok létrehozására és törlésére vonatkozó képességeket adhat az ügyfél-portálhoz.
+* A **fiók kulcsainak** programozott módon történő beolvasása és újragenerálása bármely batch-fiókhoz. Ez segíthet a biztonsági szabályzatok betartásában, amelyek kényszerítik az ismétlődő átütemezést vagy a fiók kulcsainak lejáratát. Ha több batch-fiókkal rendelkezik különböző Azure-régiókban, akkor ez a rollover-folyamat automatizálása növeli a megoldás hatékonyságát.
+* Tekintse meg a **fiók kvótáit** , és végezze el a próba-és hibaüzenetet, és határozza meg, hogy melyik batch-fiókoknak milyen korlátai vannak. A fiók kvótáinak a feladatok elindítása, készletek létrehozása vagy számítási csomópontok hozzáadása előtt történő ellenőrzésével proaktív módon módosíthatja a számítási erőforrások létrehozásának helyét vagy időpontját. Megadhatja, hogy mely fiókoknál van szükség kvóta növelésére a fiókok további erőforrásainak lefoglalása előtt.
+* **Más Azure-szolgáltatások funkcióinak kombinálása** egy teljes funkcionalitású felügyeleti felülettel – a Batch Management .NET használatával [Azure Active Directory][aad_about] , and the [Azure Resource Manager][resman_overview] együtt ugyanabban az alkalmazásban. Ezekkel a szolgáltatásokkal és API-kkal a zökkenőmentes hitelesítési élmény, az erőforráscsoportok létrehozására és törlésére, valamint a fent ismertetett képességek teljes körű felügyeleti megoldásra való képességét biztosíthatja.
 
 > [!NOTE]
-> Amíg ez a cikk a Batch-fiókok, a kulcsok és a kvóták szoftveres kezelését összpontosít, is elvégezheti ezeket a tevékenységeket számos használatával a [az Azure portal][azure_portal]. További információkért lásd: [hozzon létre egy Azure Batch-fiókot az Azure portal használatával](batch-account-create-portal.md) és [kvóták és korlátozások az Azure Batch szolgáltatás](batch-quota-limit.md).
+> Ez a cikk a Batch-fiókok, a kulcsok és a kvóták programozott felügyeletére összpontosít, és a [Azure Portal][azure_portal]használatával számos tevékenységet végrehajthat. További információ: [Azure batch fiók létrehozása a](batch-account-create-portal.md) Azure Batch szolgáltatás Azure Portal és kvótái [és korlátai](batch-quota-limit.md)alapján.
 > 
 > 
 
-## <a name="create-and-delete-batch-accounts"></a>Hozzon létre vagy töröljön a Batch-fiókok
-Ahogy említettük, az elsődleges funkcióit a Batch Management API egyik létrehozására és törlésére a Batch-fiókok egy Azure-régióban. Ehhez használja [BatchManagementClient.Account.CreateAsync] [ net_create] és [DeleteAsync][net_delete], vagy mint a szinkron.
+## <a name="create-and-delete-batch-accounts"></a>Batch-fiókok létrehozása és törlése
+Ahogy említettük, a Batch Management API egyik elsődleges funkciója a Batch-fiókok létrehozása és törlése egy Azure-régióban. Ehhez használja a [BatchManagementClient. Account. CreateAsync][net_create] and [DeleteAsync][net_delete]vagy a szinkron társaikat.
 
-Az alábbi kódrészlet létrehoz egy fiókot, beolvassa az újonnan létrehozott fiókhoz a Batch szolgáltatás és törli őket. Ez a kódrészlet és a többi ebben a cikkben `batchManagementClient` egy teljesen inicializálva példánya [BatchManagementClient][net_mgmt_client].
+A következő kódrészlet létrehoz egy fiókot, beolvassa az újonnan létrehozott fiókot a Batch szolgáltatásból, majd törli azt. Ebben a kódrészletben és a cikk `batchManagementClient` többi részében a [BatchManagementClient][net_mgmt_client]teljes mértékben inicializált példánya.
 
 ```csharp
 // Create a new Batch account
@@ -64,12 +64,12 @@ await batchManagementClient.Account.DeleteAsync("MyResourceGroup", account.Name)
 ```
 
 > [!NOTE]
-> A Batch Management .NET könyvtár és annak BatchManagementClient osztályt használó alkalmazásoknak **szolgáltatás-rendszergazda** vagy **coadministrator** hozzáférést az előfizetéshez, amely a Batch tulajdonosa fiók kezelését. További információkért tekintse meg az Azure Active Directory szakaszban, és a [AccountManagement] [ acct_mgmt_sample] kódmintát.
+> A Batch Management .NET-függvénytárat és annak BatchManagementClient osztályt használó alkalmazásokhoz a **szolgáltatás-rendszergazda** **vagy a** felügyelni kívánt batch-fiókot birtokló előfizetés szükséges. További információ: Azure Active Directory szakasz és a [AccountManagement][acct_mgmt_sample] -kód minta.
 > 
 > 
 
-## <a name="retrieve-and-regenerate-account-keys"></a>Kérje le, és a fiókkulcsok ismételt létrehozása
-Az elsődleges és másodlagos kulcsainak beszerzése az adott előfizetéshez tartozó minden Batch-fiókból használatával [ListKeysAsync][net_list_keys]. Ezeknek a kulcsoknak használatával létrehozhatja [RegenerateKeyAsync][net_regenerate_keys].
+## <a name="retrieve-and-regenerate-account-keys"></a>Fiókok kulcsainak beolvasása és újragenerálása
+Szerezze be az elsődleges és a másodlagos fiókok kulcsait az előfizetésben található összes batch-fiókból a [ListKeysAsync][net_list_keys]. You can regenerate those keys by using [RegenerateKeyAsync][net_regenerate_keys]használatával.
 
 ```csharp
 // Get and print the primary and secondary keys
@@ -91,17 +91,17 @@ BatchAccountRegenerateKeyResponse newKeys =
 ```
 
 > [!TIP]
-> Létrehozhat egy zökkenőmentes kapcsolat a munkafolyamat felügyeleti alkalmazásai számára. Először szerezze be a Batch-fiók a kezelni kívánt fiók kulcsára [ListKeysAsync][net_list_keys]. Ezután használja ezt a kulcsot, a Batch .NET-kódtár inicializálása közben [BatchSharedKeyCredentials] [ net_sharedkeycred] osztály, amely inicializálása közben használatos [BatchClient] [ net_batch_client].
+> Létrehozhat egy egyszerűsített munkafolyamatot a felügyeleti alkalmazásaihoz. Először szerezzen be egy, a [ListKeysAsync][net_list_keys] . Then, use this key when initializing the Batch .NET library's [BatchSharedKeyCredentials][net_sharedkeycred] osztállyal felügyelni kívánt batch-fiókhoz tartozó fiókot, amelyet a rendszer a [BatchClient]-[net_batch_client]inicializálásakor használ.
 > 
 > 
 
-## <a name="check-azure-subscription-and-batch-account-quotas"></a>Ellenőrizze az Azure-előfizetés és a Batch-fiókra vonatkozó kvóták
-Az Azure-előfizetések és az egyes Azure-szolgáltatások például a kötegelt összes rendelkezik alapértelmezett őket bizonyos entitások számát korlátozó kvótákat. Az Azure-előfizetések alapértelmezett kvótái, lásd: [Azure-előfizetés és a szolgáltatások korlátozásai, kvótái és megkötései](../azure-subscription-service-limits.md). Az alapértelmezett kvótákat a Batch szolgáltatás, lásd: [kvóták és korlátozások az Azure Batch szolgáltatás](batch-quota-limit.md). A Batch Management .NET könyvtár használatával ellenőrizheti az alkalmazások kvóta. Ez lehetővé teszi, hogy foglalási döntéseket, mielőtt fiókok hozzáadása, vagy a számítási erőforrások, például a készletek és számítási csomópontokon.
+## <a name="check-azure-subscription-and-batch-account-quotas"></a>Az Azure-előfizetés és a Batch-fiók kvótáinak megtekintése
+Az Azure-előfizetések és az egyes Azure-szolgáltatások (például a Batch) minden alapértelmezett kvótával rendelkeznek, amelyek korlátozzák a bennük található egyes entitások számát. Az Azure-előfizetések alapértelmezett kvótái az [Azure-előfizetés és a szolgáltatás korlátai, kvótái és](../azure-subscription-service-limits.md)megkötései című részben olvashatók. A Batch szolgáltatás alapértelmezett kvótái esetében lásd: [kvóták és korlátozások a Azure batch szolgáltatáshoz](batch-quota-limit.md). A Batch Management .NET-kódtár használatával megtekintheti ezeket a kvótákat az alkalmazásaiban. Ez lehetővé teszi a kiosztási döntések meghozatalát a fiókok vagy számítási erőforrások, például a készletek és a számítási csomópontok hozzáadása előtt.
 
-### <a name="check-an-azure-subscription-for-batch-account-quotas"></a>Ellenőrizze a Batch-fiókra vonatkozó kvóták az Azure-előfizetés
-Mielőtt létrehozná a Batch-fiók egy régióban, ellenőrizheti, hogy vannak-e fiókkal az adott régióban adhat hozzá Azure-előfizetéséhez.
+### <a name="check-an-azure-subscription-for-batch-account-quotas"></a>A Batch-fiókokra vonatkozó kvóták Azure-előfizetésének keresése
+Mielőtt létrehoz egy batch-fiókot egy régióban, megtekintheti az Azure-előfizetését, és megtekintheti, hogy hozzá tud-e adni egy fiókot az adott régióban.
 
-Az alábbi kódrészlet először használjuk [BatchManagementClient.Account.ListAsync] [ net_mgmt_listaccounts] gyűjteménye, amelyek egy előfizetésen belül az összes Batch-fiókok beolvasásához. Amint azt korábban beszerzett ebben a gyűjteményben, hogy állapítsa meg, hány fiókok a célrégióban. Majd ezzel [BatchManagementClient.Subscriptions] [ net_mgmt_subscriptions] szerezze be a Batch-fiókkvótája, és meghatározhatja, hány fiókok (ha vannak) az adott régióban hozható létre.
+Az alábbi kódrészletben először a [BatchManagementClient. Account. ListAsync][net_mgmt_listaccounts] to get a collection of all Batch accounts that are within a subscription. Once we've obtained this collection, we determine how many accounts are in the target region. Then we use [BatchManagementClient.Subscriptions][net_mgmt_subscriptions] használjuk a Batch-fiók kvótájának beszerzéséhez és annak meghatározásához, hogy hány fiók (ha van) hozható létre az adott régióban.
 
 ```csharp
 // Get a collection of all Batch accounts within the subscription
@@ -125,10 +125,10 @@ Console.WriteLine("Accounts in {0}: {1}", region, accountsInRegion);
 Console.WriteLine("You can create {0} accounts in the {1} region.", quotaResponse.AccountQuota - accountsInRegion, region);
 ```
 
-A fenti kódrészletben `creds` példánya [TokenCloudCredentials][azure_tokencreds]. Ez az objektum létrehozása egy példát, olvassa el a [AccountManagement] [ acct_mgmt_sample] kód példa a Githubon.
+A fenti `creds` kódrészletben a [TokenCloudCredentials][azure_tokencreds] . To see an example of creating this object, see the [AccountManagement][acct_mgmt_sample] -mintakód egy példánya a githubon.
 
-### <a name="check-a-batch-account-for-compute-resource-quotas"></a>Ellenőrizze a számítási erőforrás kvótákat a Batch-fiók
-Növelje a számítási erőforrásokat a Batch-megoldás, mielőtt ellenőrizheti annak biztosítása érdekében a hozzárendelni kívánt erőforrások nem haladhatja meg a fiókra vonatkozó kvóták. Az alábbi kódrészlet azt nyomtassa ki a kvótákra vonatkozó információk nevű Batch-fiók `mybatchaccount`. A saját alkalmazásában az ilyen információk segítségével határozza meg, hogy a fiók képes kezelni a további erőforrások létrehozása.
+### <a name="check-a-batch-account-for-compute-resource-quotas"></a>Batch-fiók beadása számítási erőforrások kvótái számára
+A Batch-megoldás számítási erőforrásainak növelése előtt ellenőrizheti, hogy a lefoglalni kívánt erőforrások nem lépik túl a fiók kvótáit. Az alábbi kódrészletben kinyomtatjuk a nevű `mybatchaccount`batch-fiók kvótájának adatait. A saját alkalmazásban az ilyen információk segítségével meghatározhatja, hogy a fiók képes-e kezelni a létrehozandó további erőforrásokat.
 
 ```csharp
 // First obtain the Batch account
@@ -143,43 +143,43 @@ Console.WriteLine("Active job and job schedule quota: {0}", account.Properties.A
 ```
 
 > [!IMPORTANT]
-> Nincsenek alapértelmezett kvóták az Azure-előfizetések és-szolgáltatások, míg számos ilyen korlátozás megemelhetők a kérelem elküldése a [az Azure portal][azure_portal]. Lásd a [kvóták és korlátozások az Azure Batch szolgáltatás](batch-quota-limit.md) vonatkozó utasításokat a Batch-fiókra vonatkozó kvóták növelését.
+> Habár az Azure-előfizetések és-szolgáltatások esetében alapértelmezett kvóták vannak, ezek a korlátozások nagy része egy kérelemnek a [Azure Portal][azure_portal]való kiállításával állítható elő. A Batch-fiók kvótáinak növelésével kapcsolatos utasításokért tekintse meg például [a Azure batch szolgáltatás kvótáit és korlátait](batch-quota-limit.md) .
 > 
 > 
 
-## <a name="use-azure-ad-with-batch-management-net"></a>Az Azure AD a Batch Management .NET használata
+## <a name="use-azure-ad-with-batch-management-net"></a>Az Azure AD használata a Batch Management .NET használatával
 
-A Batch Management .NET könyvtár egy Azure-erőforrás-szolgáltató ügyfél, és együtt használatos [Azure Resource Manager] [ resman_overview] programozott módon kezelheti a fiók erőforrásokat. Az Azure AD bármely Azure-erőforrás szolgáltató ügyfél, például a Batch Management .NET könyvtár és révén-kérelmek hitelesítéséhez szükséges [Azure Resource Manager][resman_overview]. A Batch Management .NET könyvtár az Azure AD-vel kapcsolatos további információkért lásd: [használata az Azure Active Directory hitelesítést Batch-megoldások](batch-aad-auth.md). 
+A Batch Management .NET-függvénytár egy Azure erőforrás-szolgáltatói ügyfél, és a [Azure Resource Manager][resman_overview] együtt használható a fiók erőforrásainak programozott kezeléséhez. Az Azure AD-nek szüksége van az Azure erőforrás-szolgáltatói ügyfélen keresztül küldött kérések hitelesítésére, beleértve a Batch Management .NET könyvtárat és a [Azure Resource Manager][resman_overview]. További információ az Azure AD és a Batch Management .NET könyvtár használatáról: a [Batch-megoldások hitelesítésének Azure Active Directory használata](batch-aad-auth.md). 
 
-## <a name="sample-project-on-github"></a>Minta-projektet a Githubon
+## <a name="sample-project-on-github"></a>Minta projekt a GitHubon
 
-Tekintse meg a Batch Management .NET használatával működés közben, tekintse át a [AccountManagement] [ acct_mgmt_sample] mintaprojektet a Githubon. A AccountManagement mintaalkalmazás bemutatja a következő műveleteket:
+A Batch Management .NET működés közbeni megtekintéséhez tekintse meg a [AccountManagement][acct_mgmt_sample] -minta projektet a githubon. A AccountManagement minta alkalmazás a következő műveleteket mutatja be:
 
-1. Az Azure AD-ből biztonsági jogkivonat beszerzése [ADAL][aad_adal]. Ha a felhasználó még nem jelentkezett be, bekapcsolják a Azure hitelesítő adatait.
-2. Az Azure ad-ből kapott biztonsági jogkivonat, hozzon létre egy [SubscriptionClient] [ resman_subclient] Azure lekérdezni a fiókhoz tartozó előfizetések listáját. A felhasználó is válasszon egy előfizetést a listából, ha több előfizetéssel tartalmazza.
-3. A kiválasztott előfizetéshez társított hitelesítő adatainak lekérése.
-4. Hozzon létre egy [ResourceManagementClient] [ resman_client] objektum a hitelesítő adatok használatával.
-5. Használja a [ResourceManagementClient] [ resman_client] objektumot hozzon létre egy erőforráscsoportot.
-6. Használja a [BatchManagementClient] [ net_mgmt_client] objektum több Batch-fiók műveletek végrehajtásához:
-   * Batch-fiók létrehozása az új erőforráscsoportban.
-   * Az újonnan létrehozott fiókhoz le a Batch szolgáltatásban.
-   * Nyomtassa ki a fiókkulcsok az új fiókhoz.
-   * A fiók egy új elsődleges kulcs újragenerálása.
-   * Nyomtassa ki a kvóta a fiók adatai.
-   * Az előfizetéshez tartozó kvóta információt kinyomtatni.
-   * Nyomtassa ki az előfizetésen belüli összes fiókot.
-   * Törölje az újonnan létrehozott fiókhoz.
+1. Biztonsági jogkivonat beszerzése az Azure AD-ből a [ADAL][aad_adal]használatával. Ha a felhasználó még nincs bejelentkezve, a rendszer kérni fogja az Azure-beli hitelesítő adataikat.
+2. Az Azure AD-től kapott biztonsági jogkivonat segítségével hozzon létre egy [SubscriptionClient][resman_subclient] az Azure lekérdezéséhez a fiókhoz társított előfizetések listájának megjelenítéséhez. A felhasználó kiválaszthat egy előfizetést a listából, ha több előfizetést is tartalmaz.
+3. A kiválasztott előfizetéshez társított hitelesítő adatok beolvasása.
+4. Hozzon létre egy [ResourceManagementClient][resman_client] objektumot a hitelesítő adatok használatával.
+5. Hozzon létre egy erőforráscsoportot egy [ResourceManagementClient][resman_client] objektum használatával.
+6. [BatchManagementClient][net_mgmt_client] -objektum használata több batch-fiók műveleteinek elvégzéséhez:
+   * Hozzon létre egy batch-fiókot az új erőforráscsoporthoz.
+   * Szerezze be az újonnan létrehozott fiókot a Batch szolgáltatásból.
+   * Nyomtassa ki az új fiókhoz tartozó fiók kulcsait.
+   * Új elsődleges kulcs újralétrehozása a fiókhoz.
+   * Nyomtassa ki a fiók kvótájának adatait.
+   * Nyomtassa ki az előfizetés kvótájának adatait.
+   * Az előfizetésen belüli összes fiók nyomtatása.
+   * Az újonnan létrehozott fiók törlése.
 7. Törölje az erőforráscsoportot.
 
-Mielőtt az újonnan létrehozott Batch-fiók és az erőforrás csoportot töröl, megtekintheti őket a [az Azure portal][azure_portal]:
+Az újonnan létrehozott batch-fiók és az erőforráscsoport törlése előtt megtekintheti őket a [Azure Portalban][azure_portal]:
 
-A mintaalkalmazás sikeresen futtatni, először regisztrálja az Azure Portalon az Azure AD-bérlő, és engedélyek megadása az Azure Resource Manager API-hoz. Az itt ismertetett lépéseket követve [az Active Directory hitelesítést Batch Management solutions](batch-aad-auth-management.md).
+A minta alkalmazás sikeres futtatásához először regisztrálnia kell a Azure Portal Azure AD-Bérlővel, és engedélyt kell adnia a Azure Resource Manager API-nak. Kövesse a [Batch-felügyeleti megoldások Active Directory](batch-aad-auth-management.md)használatával végzett hitelesítésének lépéseit.
 
 
 [aad_about]:../active-directory/fundamentals/active-directory-whatis.md "Mi az Azure Active Directory?"
 [aad_adal]: ../active-directory/active-directory-authentication-libraries.md
-[aad_auth_scenarios]:../active-directory/develop/authentication-scenarios.md "Hitelesítési forgatókönyvek az Azure ad-ben"
-[aad_integrate]:../active-directory/develop/quickstart-v1-integrate-apps-with-azure-ad.md "Alkalmazások integrálása az Azure Active Directoryval"
+[aad_auth_scenarios]:../active-directory/develop/authentication-scenarios.md "Hitelesítési forgatókönyvek az Azure AD-hez"
+[aad_integrate]:../active-directory/develop/quickstart-v1-integrate-apps-with-azure-ad.md "Alkalmazások integrálása a Azure Active Directory"
 [acct_mgmt_sample]: https://github.com/Azure/azure-batch-samples/tree/master/CSharp/AccountManagement
 [api_net]: https://msdn.microsoft.com/library/azure/mt348682.aspx
 [api_mgmt_net]: https://msdn.microsoft.com/library/azure/mt463120.aspx

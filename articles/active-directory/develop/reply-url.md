@@ -1,69 +1,70 @@
 ---
-title: Átirányítási URI-t/válasz URL-cím korlátozások és korlátozásai – a Microsoft identity platform
-description: Válasz URL-címek/átirányítási URL-címek korlátozások és korlátozások
+title: Átirányítási URI/válasz URL-korlátozások és korlátozások – Microsoft Identity platform
+description: Válasz URL-címek/átirányítási URL-címek korlátozása & korlátozásai
 author: SureshJa
 ms.author: sureshja
 manager: CelesteDG
 ms.date: 06/29/2019
 ms.topic: article
 ms.subservice: develop
+ms.custom: aaddev
 ms.service: active-directory
 ms.reviewer: lenalepa, manrath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 07be7d0c70193fec88782fea681e33d6b4cf4b40
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: e5e557d74ff0cb959b11e99391c47e91a90d17ef
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67486232"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68325300"
 ---
 # <a name="redirect-urireply-url-restrictions-and-limitations"></a>Átirányítási URI/válasz URL-cím korlátozásai
 
-Átirányítási URI-t vagy a válasz URL-cím, a helyet, hogy az engedélyezési kiszolgáló fog küldeni a felhasználó többször az alkalmazás sikeresen engedélyezve lett, és a egy engedélyezési kód vagy hozzáférést kapott jogkivonatok. A kód vagy a tokenen szerepel az átirányítási URI-t vagy a válasz token, ezért fontos, hogy regisztrálja az alkalmazás regisztrációs folyamat részeként a megfelelő helyre.
+Az átirányítási URI-vagy válasz-URL-cím az a hely, amelyet az engedélyezési kiszolgáló az alkalmazás sikeres engedélyezése után elküld a felhasználónak, és engedélyezési kódot vagy hozzáférési jogkivonatot adott meg. A kód vagy token az átirányítási URI vagy a válasz jogkivonatában található, ezért fontos, hogy regisztrálja a megfelelő helyet az alkalmazás regisztrációs folyamatának részeként.
 
 ## <a name="maximum-number-of-redirect-uris"></a>Átirányítási URI-k maximális száma
 
-Az alábbi táblázat az átirányítási URI-nak, hogy az alkalmazás regisztrálásakor is hozzáadhat a maximális számát. 
+A következő táblázat az alkalmazás regisztrálásakor felvehető átirányítási URI-k maximális számát mutatja. 
 
-| Éppen bejelentkezett fiókok | Átirányítási URI-k maximális száma | Leírás |
+| Bejelentkezett fiókok | Átirányítási URI-k maximális száma | Leírás |
 |--------------------------|---------------------------------|-------------|
-| A Microsoft munkahelyi vagy iskolai fiókok bármely szervezet Azure Active Directory (Azure AD) bérlő | 256 | `signInAudience` az alkalmazásjegyzékben mező értéke termékeken *AzureADMyOrg* vagy *AzureADMultipleOrgs* |
-| Személyes Microsoft-fiókok és a munkahelyi és iskolai fiókok | 100 | `signInAudience` az alkalmazásjegyzékben mező értéke *AzureADandPersonalMicrosoftAccount* |
+| Microsoft munkahelyi vagy iskolai fiókok bármely szervezet Azure Active Directory (Azure AD) bérlőben | 256 | `signInAudience`az alkalmazás jegyzékfájljában lévő mező beállítása *AzureADMyOrg* vagy *AzureADMultipleOrgs* |
+| Személyes Microsoft-fiókok és munkahelyi és iskolai fiókok | 100 | `signInAudience`az alkalmazás jegyzékfájljának mezője *AzureADandPersonalMicrosoftAccount* értékre van állítva |
 
-## <a name="maximum-uri-length"></a>Hosszabb URI
+## <a name="maximum-uri-length"></a>URI maximális hossza
 
-Minden átirányítási URI-t, amely egy alkalmazásregisztráció ad hozzá egy legfeljebb 256 karakter használható.
+Az alkalmazások regisztrálásához hozzáadott átirányítási URI-azonosítóhoz legfeljebb 256 karaktert használhat.
 
-## <a name="restrictions-using-a-wildcard-in-uris"></a>Helyettesítő karakterek használatával az URI-k korlátozásai
+## <a name="restrictions-using-a-wildcard-in-uris"></a>A helyettesítő karakterek használata URI-k használatával
 
-Helyettesítő karaktert tartalmazó URI-k, például `https://*.contoso.com`, kényelmesek, de el kell kerülni. Helyettesítő karakterek használata az átirányítási URI biztonsági hatással van. Az OAuth 2.0 ismertetőjének megfelelően ([szakasz az RFC 6749 3.1.2](https://tools.ietf.org/html/rfc6749#section-3.1.2)), egy átirányítási végpont URI-t egy abszolút URI Azonosítónak kell lennie. 
+A helyettesítő karakteres URI `https://*.contoso.com`-k (például) kényelmesek, de elkerülhetők. Az átirányítási URI-ban a helyettesítő karakterek használata biztonsági következményekkel jár. Az OAuth 2,0 specifikációnak megfelelően (az[RFC 6749 3.1.2](https://tools.ietf.org/html/rfc6749#section-3.1.2). szakasza) az átirányítási VÉGPONT URI azonosítójának abszolút URI-nak kell lennie. 
 
-Az Azure AD-alkalmazásmodell nem támogatja a helyettesítő karaktert tartalmazó URI-k alkalmazásokat, jelentkezzen be személyes Microsoft-fiókok és a munkahelyi vagy iskolai fiókokhoz. Azonban a helyettesítő karaktert tartalmazó URI-k engedélyezettek, jelentkezzen be munkahelyi vagy ma iskolai fiókokat a szervezet Azure AD-bérlőjében konfigurált alkalmazások. 
+Az Azure AD-alkalmazás modelljében nem támogatottak a személyes Microsoft-fiókokhoz és munkahelyi vagy iskolai fiókokhoz való bejelentkezésre konfigurált alkalmazások helyettesítő URI-azonosítói. A helyettesítő URI-k használata azonban engedélyezett olyan alkalmazások esetében, amelyek a munkahelyi vagy iskolai fiókoknak a szervezet Azure AD-bérlőben való bejelentkezésére vannak konfigurálva. 
  
 > [!NOTE]
-> Az új [alkalmazásregisztrációk](https://go.microsoft.com/fwlink/?linkid=2083908) élmény nem teszi lehetővé a fejlesztők számára a helyettesítő karaktert tartalmazó URI-k hozzáadása a felhasználói felületen. Csak az alkalmazás alkalmazásjegyzék-szerkesztőben keresztül támogatott helyettesítő URI-t az alkalmazásokhoz, melyek jelentkezzen be munkahelyi vagy iskolai fiókok hozzáadása. Továbbítja, új alkalmazásokat nem lehet helyettesítő karakterek használata az átirányítási URI-t. Azonban régebbi átirányítási helyettesítő karaktereket tartalmazó alkalmazások URI-k továbbra is működni fog.
+> Az új [Alkalmazásregisztrációki](https://go.microsoft.com/fwlink/?linkid=2083908) felület nem teszi lehetővé a fejlesztők számára, hogy helyettesítő URI-ket adjanak hozzá a felhasználói felületen. A munkahelyi vagy iskolai fiókokat bejelentkező alkalmazások wilcard URI-ja csak az alkalmazás jegyzékfájl-szerkesztőjében támogatott. Az új alkalmazások nem fogják tudni használni a helyettesítő karaktereket az átirányítási URI-ban. Az átirányítási URI-k helyettesítő karaktereit tartalmazó régebbi alkalmazások azonban továbbra is működni fognak.
 
-Ha további átirányítási URI-k, mint a maximálisan engedélyezett, hanem helyettesítő átirányítási URI-t, vegye figyelembe a következő megközelítések egyikét.
+Ha a forgatókönyv több átirányítási URI-t igényel, mint az engedélyezett maximális korlát, a helyettesítő karakteres átirányítási URI-k hozzáadása helyett vegye figyelembe az alábbi módszerek egyikét.
 
-### <a name="use-a-state-parameter"></a>A state paraméter használata
+### <a name="use-a-state-parameter"></a>Állapot paraméterének használata
 
-Ha rendelkezik egy altartományok számát, és ha sikeres hitelesítést követően a felhasználók ugyanazt a lapot, ahol elkezdett irányíthatja, hasznos lehet a state paraméter használatával. 
+Ha több altartománya van, és ha a forgatókönyve megköveteli, hogy a felhasználókat a sikeres hitelesítésre irányítsa át ugyanarra az oldalra, ahol elkezdődtek, az állapot paraméterének használata hasznos lehet. 
 
 Ebben a megközelítésben:
 
-1. Hozzon létre egy "megosztott" átirányítási URI-JÁNAK feldolgozni a biztonsági jogkivonatokat kap az engedélyezési végpont alkalmazásonként.
-1. Az alkalmazás alkalmazás-specifikus paramétereket (például ha a felhasználó adja meg, vagy bármi, például védjegyzési információinak altartományok URL) elküldheti a state paraméterben. A state paraméter használatakor az megvédje CSRF védelmi megadott [szakasz az RFC 6749 10.12](https://tools.ietf.org/html/rfc6749#section-10.12)). 
-1. Az alkalmazás-specifikus paramétereket jelennek meg a helyes-e az alkalmazás élmény a felhasználó számára, azaz, hozza létre a megfelelő alkalmazásállapot szükséges összes információt tartalmazza. Az Azure AD engedélyezési végpont sávok HTML a state paraméterben, ezért ügyeljen arra, nem megfelelőek HTML tartalom ebben a paraméterben.
-1. Az Azure AD átirányítási URI-JÁNAK "megosztott" választ küld, amikor a state paraméterben küld az alkalmazásnak.
-1. Az alkalmazás felhasználhatja az értéket a state paraméterben további küldése a felhasználót, hogy mely URL-cím meghatározásához. Ellenőrizze, hogy ellenőrizze, hogy CSRF védelemre.
+1. Hozzon létre egy "Shared" átirányítási URI-t az alkalmazásban az engedélyezési végponttól kapott biztonsági jogkivonatok feldolgozásához.
+1. Az alkalmazás elküldheti az alkalmazásspecifikus paramétereket (például altartomány URL-címét, ahol a felhasználó származik, vagy bármi más, mint a márkaépítési információ) az állapot paraméterben. A State paraméter használatakor az CSRF elleni védelem az [RFC 6749 10,12](https://tools.ietf.org/html/rfc6749#section-10.12). szakaszának megfelelően van megadva. 
+1. Az alkalmazásspecifikus paraméterek tartalmazzák az alkalmazás számára a megfelelő felhasználói élmény megjelenítéséhez szükséges összes információt, azaz a megfelelő alkalmazás-állapotot. Az Azure AD engedélyezési végpontja a HTML-kódot az állapot paraméterből adja meg, ezért ügyeljen arra, hogy ne legyenek átadva a HTML-tartalom ebben a paraméterben.
+1. Ha az Azure AD választ küld a "Shared" átirányítási URI-nak, az állapot-paraméter visszakerül az alkalmazásnak.
+1. Az alkalmazás ezután használhatja az állapot paraméter értékét annak meghatározásához, hogy melyik URL-címet szeretné elküldeni a felhasználónak. Győződjön meg arról, hogy a CSRF-védelem érvényesítése megtörtént.
 
 > [!NOTE]
-> Ez a megközelítés lehetővé teszi, hogy egy sérült biztonságú ügyfél a további paraméterek, a state paraméterben, amelyik átirányítja az a felhasználó egy másik URL-címet, amely a küldött módosításához a [nyissa meg az átirányító threat](https://tools.ietf.org/html/rfc6819#section-4.2.4) RFC 6819 ismertetett. Ezért az ügyfél kell védi ezeket a paramétereket az állapot titkosítása vagy ellenőrzése, például az átirányítási URI-t a jogkivonat alapján tartománynév érvényesítése más módon.
+> Ez a módszer lehetővé teszi a feltört ügyfél számára, hogy módosítsa az állapot paraméterében eljuttatott további paramétereket, így átirányítja a felhasználót egy másik URL-címre, amely az RFC 6819-ben leírt [nyílt átirányító fenyegetés](https://tools.ietf.org/html/rfc6819#section-4.2.4) . Ezért az ügyfélnek védenie kell ezeket a paramétereket az állapot titkosításával vagy más módon történő ellenőrzésével, például az átirányítási URI-azonosítóban lévő tartománynév érvényesítésével.
 
-### <a name="add-redirect-uris-to-service-principals"></a>Adjon hozzá átirányítási URI-k, az egyszerű szolgáltatások
+### <a name="add-redirect-uris-to-service-principals"></a>Átirányítási URI-k hozzáadása az egyszerű szolgáltatásokhoz
 
-Másik megoldás, adjon hozzá átirányítási URI-k, a [egyszerű szolgáltatások](app-objects-and-service-principals.md#application-and-service-principal-relationship) , amelyek az alkalmazás regisztrációját minden olyan Azure AD-bérlőben. Ez a megközelítés is használhatja, a state paraméter nem használható, vagy a forgatókönyv szükséges hozzá az új átirányítási URI-k az alkalmazás minden támogatott új bérlőhöz. 
+Egy másik módszer az, hogy átirányítási URI-ket adjon [hozzá az alkalmazás](app-objects-and-service-principals.md#application-and-service-principal-relationship) regisztrálásához bármely Azure ad-bérlőben. Ezt a módszert akkor használhatja, ha nem használhat State paramétert, vagy ha a forgatókönyv megköveteli, hogy új átirányítási URI azonosítókat adjon az alkalmazás regisztrálásához minden Ön által támogatott új bérlőhöz. 
 
 ## <a name="next-steps"></a>További lépések
 
-- További információ a [Application manifest](reference-app-manifest.md)
+- Az [alkalmazás jegyzékfájljának](reference-app-manifest.md) megismerése

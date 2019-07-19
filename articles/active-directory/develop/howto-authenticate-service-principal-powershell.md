@@ -8,6 +8,7 @@ manager: CelesteDG
 ms.assetid: d2caf121-9fbe-4f00-bf9d-8f3d1f00a6ff
 ms.service: active-directory
 ms.subservice: develop
+ms.custom: aaddev
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: multiple
@@ -16,12 +17,12 @@ ms.date: 10/24/2018
 ms.author: ryanwi
 ms.reviewer: tomfitz
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d6d6de5186b1906d56b5a43317d9c36ad1cc6aad
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 73033f91e9d20c56fedc6b4faf26dcf312fce1e1
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65540401"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68321113"
 ---
 # <a name="how-to-use-azure-powershell-to-create-a-service-principal-with-a-certificate"></a>Útmutató: Tanúsítvánnyal rendelkező szolgáltatásnév létrehozása az Azure PowerShell használatával
 
@@ -31,7 +32,7 @@ Ha olyan alkalmazása van, amelynek erőforrásokhoz kell hozzáférnie, létreh
 * Tanúsítvány használata hitelesítéshez szkriptek felügyelet nélküli futtatásakor.
 
 > [!IMPORTANT]
-> Egyszerű szolgáltatás létrehozása helyett fontolja meg a felügyelt identitások használatával az Azure-erőforrások esetében az alkalmazás azonosítóját. A kódot, amely támogatja a felügyelt identitások és hozzáférések erőforrások, amelyek támogatják az Azure Active Directory (Azure AD) hitelesítési szolgáltatás fut, ha a felügyelt identitásokból, jobb megoldás. További információ az Azure-erőforrásokhoz, mely szolgáltatások jelenleg támogatja, beleértve a felügyelt identitásokból [Mi az Azure-erőforrások felügyelt identitások?](../managed-identities-azure-resources/overview.md).
+> Egyszerű szolgáltatásnév létrehozása helyett érdemes felügyelt identitásokat használni az Azure-erőforrásokhoz az alkalmazás identitásához. Ha a kód olyan szolgáltatáson fut, amely támogatja a felügyelt identitásokat, és a Azure Active Directory (Azure AD) hitelesítést támogató erőforrásokhoz fér hozzá, a felügyelt identitások jobb megoldást biztosítanak Önnek. Ha többet szeretne megtudni az Azure-erőforrások felügyelt identitásáról, beleértve a jelenleg támogatott szolgáltatásokat, tekintse meg a [Mi az Azure-erőforrások felügyelt identitásai?](../managed-identities-azure-resources/overview.md)című témakört.
 
 Ez a cikk bemutatja, hogy hogyan hozhat létre egy szolgáltatásnevet tanúsítvánnyal történő hitelesítéshez. A jelszót használó szolgáltatásnevek beállításáról a következő témakörben tájékozódhat: [Azure-beli szolgáltatásnév létrehozása az Azure PowerShell használatával](/powershell/azure/create-azure-service-principal-azureps).
 
@@ -41,13 +42,13 @@ A cikk lépéseinek követéséhez a PowerShell [legújabb verzióját](/powersh
 
 ## <a name="required-permissions"></a>Szükséges engedélyek
 
-Ez a cikk végrehajtásához az Azure ad megfelelő engedélyekkel kell rendelkeznie, és Azure-előfizetést. Pontosabban kell lennie az Azure AD-ben hozzon létre egy alkalmazást, és az egyszerű szolgáltatás hozzárendelése szerepkörhöz.
+A cikk elvégzéséhez megfelelő engedélyekkel kell rendelkeznie az Azure AD-ben és az Azure-előfizetésben. Pontosabban létre kell hoznia egy alkalmazást az Azure AD-ben, és hozzá kell rendelnie a szolgáltatásnevet egy szerepkörhöz.
 
 A legegyszerűbben a portálon ellenőrizheti, hogy rendelkezik-e megfelelő jogosultságokkal. Lásd: [Szükséges engedélyek ellenőrzése](howto-create-service-principal-portal.md#required-permissions).
 
 ## <a name="create-service-principal-with-self-signed-certificate"></a>Szolgáltatásnév létrehozása önaláírt tanúsítvánnyal
 
-Az alábbi példa egy egyszerű forgatókönyvet követ. Használ [New-AzADServicePrincipal](/powershell/module/az.resources/new-azadserviceprincipal) hozzon létre egy egyszerű szolgáltatást egy önaláírt tanúsítványt, és használja a [New-AzureRmRoleAssignment](/powershell/module/az.resources/new-azroleassignment) hozzárendelése a [közreműködői](../../role-based-access-control/built-in-roles.md#contributor) az egyszerű szolgáltatás szerepkör. A szerepkör-hozzárendelés hatóköre az aktuális Azure-előfizetés. Válasszon ki egy másik előfizetést, használja a [Set-AzContext](/powershell/module/Az.Accounts/Set-AzContext).
+Az alábbi példa egy egyszerű forgatókönyvet követ. A [New-AzADServicePrincipal](/powershell/module/az.resources/new-azadserviceprincipal) használatával létrehoz egy önaláírt tanúsítvánnyal rendelkező szolgáltatásnevet, és a [New-AzureRmRoleAssignment](/powershell/module/az.resources/new-azroleassignment) használatával rendeli hozzá a [közreműködői](../../role-based-access-control/built-in-roles.md#contributor) szerepkört az egyszerű szolgáltatáshoz. A szerepkör-hozzárendelés hatóköre az aktuális Azure-előfizetés. Másik előfizetés kiválasztásához használja a [set-AzContext](/powershell/module/Az.Accounts/Set-AzContext).
 
 ```powershell
 $cert = New-SelfSignedCertificate -CertStoreLocation "cert:\CurrentUser\My" `
@@ -63,7 +64,7 @@ Sleep 20
 New-AzRoleAssignment -RoleDefinitionName Contributor -ServicePrincipalName $sp.ApplicationId
 ```
 
-A példában alvó állapotban van, várja meg, hogy az új szolgáltatás egyszerű, az Azure AD egészében propagálása 20 másodpercet. Ha a parancsfájl nem elég hosszú, akkor egy hibaüzenet szerint jelenik meg: "{ID} rendszerbiztonsági tag nem létezik a következő könyvtárban: {DIR-ID}." A probléma megoldásához Várjon egy kicsit, majd futtassa a **New-AzRoleAssignment** újra a parancsot.
+A példa 20 másodpercig alvó állapotba lép, hogy az új szolgáltatásnév az Azure AD-ben való propagálása némi időt hagyjon. Ha a parancsfájl nem vár elég sokáig, a következő hibaüzenet jelenik meg: "A (z) {ID} résztvevő nem létezik a (z) {DIR-ID} címtárban." A hiba megoldásához várjon egy percet, majd futtassa újra a **New-AzRoleAssignment** parancsot.
 
 A szerepkör-hozzárendelés hatókörét beállíthatja egy adott erőforráscsoportra a **ResourceGroupName** paraméter használatával. Egy adott erőforrásra is beállíthatja a hatókört a **ResourceType** és a **ResourceName** paraméter együttes használatával. 
 
@@ -86,7 +87,7 @@ $cert = Get-ChildItem -path Cert:\CurrentUser\my | where {$PSitem.Subject -eq 'C
 
 ### <a name="provide-certificate-through-automated-powershell-script"></a>Tanúsítvány biztosítása automatizált PowerShell-szkripttel
 
-A szolgáltatásnévvel való bejelentkezéskor mindig meg kell adnia az AD-alkalmazás címtárának bérlőazonosítóját. A bérlő az Azure AD-példányba.
+A szolgáltatásnévvel való bejelentkezéskor mindig meg kell adnia az AD-alkalmazás címtárának bérlőazonosítóját. A bérlő az Azure AD egy példánya.
 
 ```powershell
 $TenantId = (Get-AzSubscription -SubscriptionName "Contoso Default").TenantId
@@ -146,7 +147,7 @@ Param (
 ```
 
 ### <a name="provide-certificate-through-automated-powershell-script"></a>Tanúsítvány biztosítása automatizált PowerShell-szkripttel
-A szolgáltatásnévvel való bejelentkezéskor mindig meg kell adnia az AD-alkalmazás címtárának bérlőazonosítóját. A bérlő az Azure AD-példányba.
+A szolgáltatásnévvel való bejelentkezéskor mindig meg kell adnia az AD-alkalmazás címtárának bérlőazonosítóját. A bérlő az Azure AD egy példánya.
 
 ```powershell
 Param (
@@ -190,7 +191,7 @@ Az alkalmazásazonosító megállapításához használja a következőt:
 
 ## <a name="change-credentials"></a>Hitelesítő adatok módosítása
 
-AD-alkalmazás, vagy a biztonsági sérülés vagy a hitelesítő adatok lejárata miatt a hitelesítő adatok módosításához használja a [Remove-AzADAppCredential](/powershell/module/az.resources/remove-azadappcredential) és [New-AzADAppCredential](/powershell/module/az.resources/new-azadappcredential) parancsmagok.
+Ha módosítani szeretné egy AD-alkalmazás hitelesítő adatait, vagy a biztonsági sérülés vagy a hitelesítő adatok lejárata miatt, használja a [Remove-AzADAppCredential](/powershell/module/az.resources/remove-azadappcredential) és a [New-AzADAppCredential](/powershell/module/az.resources/new-azadappcredential) parancsmagokat.
 
 Ha egy alkalmazás összes hitelesítő adatát szeretné eltávolítani, használja a következőt:
 
@@ -211,13 +212,13 @@ Get-AzADApplication -DisplayName exampleapp | New-AzADAppCredential `
 
 A szolgáltatásnév létrehozásakor az alábbi hibákba ütközhet:
 
-* **„Authentication_Unauthorized”** vagy **„No subscription found in the context.”** (Nem található előfizetés a környezetben.) – Ezt a hibaüzenetet, ha a fiókja nem rendelkezik a [szükséges engedélyek](#required-permissions) az alkalmazás regisztrálása az Azure ad-ben. Általában ezt a hibaüzenetet, ha az Azure Active Directoryban csak rendszergazda felhasználók regisztrálhatnak alkalmazásokat, és a fiók nem rendszergazda. Kérje meg a rendszergazdáját, hogy rendeljen rendszergazdai szerepkört Önhöz, vagy hogy engedélyezze az alkalmazások regisztrálását a felhasználóknak.
+* **„Authentication_Unauthorized”** vagy **„No subscription found in the context.”** (Nem található előfizetés a környezetben.) – Ez a hiba akkor jelenik meg, ha a fiókja nem rendelkezik a [szükséges engedélyekkel](#required-permissions) az Azure ad-ben az alkalmazás regisztrálásához. Ez a hiba általában akkor jelenik meg, ha csak a Azure Active Directory rendszergazdai felhasználói regisztrálhatnak alkalmazásokat, és a fiókja nem rendszergazda. Kérje meg a rendszergazdáját, hogy rendeljen rendszergazdai szerepkört Önhöz, vagy hogy engedélyezze az alkalmazások regisztrálását a felhasználóknak.
 
-* A fiók **"Nincs engedélyezés műveletre 'Microsoft.Authorization/roleAssignments/write' over scope"/ subscriptions / {guid}"."**  – Ezt a hibát látja, ha a fiókja nem rendelkezik megfelelő engedélyekkel szerepkörök hozzárendeléséhez, az identitás. Kérje meg az előfizetés-rendszergazdáját, hogy adja hozzá Önt a Felhasználói hozzáférés rendszergazdája szerepkörhöz.
+* A (z) "nincs engedélye a (z **)" Microsoft. Authorization/roleAssignments/Write "művelet végrehajtására a (z)"/Subscriptions/{GUID} "hatókörben."** – ezt a hibát akkor látja, ha a fiók nem rendelkezik megfelelő engedélyekkel ahhoz, hogy szerepkört rendeljen hozzá identitás. Kérje meg az előfizetés-rendszergazdáját, hogy adja hozzá Önt a Felhasználói hozzáférés rendszergazdája szerepkörhöz.
 
 ## <a name="next-steps"></a>További lépések
 
 * A jelszót használó szolgáltatásnevek beállításáról a következő témakörben tájékozódhat: [Azure-beli szolgáltatásnév létrehozása az Azure PowerShell használatával](/powershell/azure/create-azure-service-principal-azureps).
 * Az erőforrásokat kezelő alkalmazások Azure-ba való integrálásáról részletes útmutatást az [Azure Resource Manager API-val végzett engedélyezés fejlesztői útmutatójában](../../azure-resource-manager/resource-manager-api-authentication.md) találhat.
 * Az alkalmazásokról és a szolgáltatásnevekről bővebben az [Alkalmazásobjektumok és egyszerű szolgáltatási objektumok](app-objects-and-service-principals.md) című cikkben olvashat.
-* Az Azure AD-hitelesítéssel kapcsolatos további információkért lásd: [hitelesítési forgatókönyvek az Azure ad-ben](authentication-scenarios.md).
+* Az Azure AD-hitelesítéssel kapcsolatos további információkért lásd: [hitelesítési forgatókönyvek az Azure ad-hez](authentication-scenarios.md).

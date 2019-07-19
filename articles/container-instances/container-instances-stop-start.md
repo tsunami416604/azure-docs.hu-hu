@@ -1,58 +1,59 @@
 ---
-title: Manuálisan állítsa le, vagy indítsa el a tárolók az Azure Container Instances szolgáltatásban
-description: Ismerje meg, hogy manuálisan állítsa le és indítsa el a tárolócsoport az Azure Container Instances szolgáltatásban.
+title: Tárolók manuális leállítása vagy elindítása Azure Container Instances
+description: Megtudhatja, hogyan állíthatja be manuálisan a tárolók csoportját a Azure Container Instancesban.
 services: container-instances
 author: dlepow
+manager: gwallace
 ms.service: container-instances
 ms.topic: article
 ms.date: 04/15/2019
 ms.author: danlep
-ms.openlocfilehash: 8e62d106a42dfbec897e5e14cf68fd3d7fd823c4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c7d46ad8d935e28b5a24e48c85ac2464b55b2669
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65070819"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68325644"
 ---
-# <a name="manually-stop-or-start-containers-in-azure-container-instances"></a>Manuálisan állítsa le, vagy indítsa el a tárolók az Azure Container Instances szolgáltatásban
+# <a name="manually-stop-or-start-containers-in-azure-container-instances"></a>Tárolók manuális leállítása vagy elindítása Azure Container Instances
 
-A [újraindítási házirend](container-instances-restart-policy.md) egy tárolócsoport beállítás azt határozza meg, hogyan tárolópéldányok indítása vagy leállítása alapértelmezés szerint. Az alapértelmezett beállítás szerint manuálisan leállítása vagy elindítása egy tárolócsoport felül lehet bírálni.
+A tároló-csoport újraindítási [házirend](container-instances-restart-policy.md) beállítása határozza meg, hogy a tároló példányai alapértelmezés szerint hogyan kezdődnek vagy álljanak le. Az alapértelmezett beállítás felülbírálható egy tároló csoport manuális leállításával vagy indításával.
 
 ## <a name="stop"></a>Leállítás
 
-Egy futó tárolócsoportra - manuálisan állítsa le például használatával a [az tároló stop] [ az-container-stop] parancsot vagy az Azure Portalon. Az egyes tárolókhoz kapcsolódó számítási feladatok, érdemes leállítani egy hosszú ideig futó tárolócsoport menteni a költségeket a meghatározott időszak után. 
+Állítson le manuálisan egy futó tároló csoportot – például az az [Container stop][az-container-stop] paranccsal vagy a Azure Portal használatával. Bizonyos tároló-munkaterhelések esetében előfordulhat, hogy egy hosszú ideig futó tároló-csoportot kell leállítania a költségek megtakarítása érdekében meghatározott időszak után. 
 
-*Egy tárolócsoport leállított állapotba kerül, ha leállítja és újraindítja a csoportban lévő összes tárolót. Nem őrzi meg a tároló állapota.*
+*Ha egy tároló csoport leállított állapotba kerül, a leállítja és újrahasznosítja a csoportban lévő összes tárolót. Nem őrzi meg a tároló állapotát.*
 
-A tárolók lehetőség, ha a [erőforrások](container-instances-container-groups.md#resource-allocation) felszabadított állapotban vannak, és a számlázás a tárolócsoport leáll.
+A tárolók újrahasznosítása esetén az [erőforrások](container-instances-container-groups.md#resource-allocation) fel lesznek terhelve, és a tároló csoport számlázása leáll.
 
-A leállítási művelet nem befolyásolja, ha a tárolócsoport már befejeződött (sikeres vagy sikertelen állapotban van). Például egyszer futtatott tároló feladatok, amelyek sikeresen futtattak egy tárolócsoportot ér véget, a sikeres állapotú. Megkísérli leállítani a csoport, ebben az állapotban nem módosítja a állapotát. 
+A Leállítás műveletnek nincs hatása, ha a tároló csoport már le van állítva (vagy sikeres vagy sikertelen állapotban van). Például egy olyan tároló-csoport, amelyen a Run-Once tároló feladatainak futtatása sikeres volt, sikeresen leállt a sikeres állapotba. Az adott állapotban lévő csoport leállítására tett kísérletek nem változtatják meg az állapotot. 
 
-## <a name="start"></a>Indítás
+## <a name="start"></a>Start
 
-A tárolócsoport le van állítva – vagy mert a tárolók saját leállt, vagy manuálisan leállították a csoport - elindításához a tárolók. Például a [az tároló kezdő] [ az-container-start] parancsot vagy az Azure Portalon manuálisan elindítani a tárolók a csoportban. Bármely tárolóra a tárolórendszerkép frissül, ha egy új rendszerképet kéri le. 
+Ha egy tároló csoport leáll – vagy azért, mert a tárolók le vannak zárva, vagy manuálisan leállította a csoportot –, elindíthatja a tárolókat. Például az az [Container Start][az-container-start] paranccsal vagy Azure Portal használatával manuálisan indíthatja el a csoportba tartozó tárolókat. Ha egy tárolóhoz tartozó tároló képe frissül, egy új rendszerképet kell meghúzni. 
 
-Új központi telepítést azonos konfigurációjú tároló indítása egy tárolócsoport kezdődik. Ez a művelet segítségével gyorsan felhasználhatja egy ismert tároló a portcsoportok, amely a várt módon működik. Nem kell ugyanazt a számítási feladatot futtatni egy új tárolócsoport létrehozásához.
+A tároló-csoport elindítása egy új központi telepítést indít el ugyanazzal a tároló-konfigurációval. Ezzel a művelettel gyorsan újra felhasználhatja a várt módon működő, ismert tárolók csoportjainak konfigurációját. Nem kell létrehoznia új tároló csoportot, hogy ugyanazt a számítási feladatot futtassa.
 
-Ez a művelet által elindított egy tárolócsoport összes tárolót. A csoport egy adott tároló nem lehet elindítani.
+Ez a művelet elindítja a tároló csoport összes tárolóját. A csoportban nem indítható el egy adott tároló.
 
-Manuálisan indítsa el, vagy indítsa újra egy tárolócsoportot, miután a tároló csoport fut a beállított megfelelően újraindítási házirend.
+A tároló csoport manuális elindítása vagy újraindítása után a tároló csoport a beállított újraindítási szabályzatnak megfelelően fut.
   
 ## <a name="restart"></a>Újraindítás
 
-Futás közben – például az egy tárolócsoport újraindíthatja a [az tároló újraindítási] [ az-container-restart] parancsot. Ez a művelet újraindítja az összes tároló tárolócsoportban. Bármely tárolóra a tárolórendszerkép frissül, ha egy új rendszerképet kéri le. 
+A tárolók csoportjának újraindításához futtathatja a rendszert, például az az [Container restart][az-container-restart] parancs használatával. Ez a művelet újraindítja a tároló csoportban lévő összes tárolót. Ha egy tárolóhoz tartozó tároló képe frissül, egy új rendszerképet kell meghúzni. 
 
-A tárolócsoport újraindítása akkor hasznos, ha a kívánt központi telepítési hiba elhárítása. Például ha egy ideiglenes erőforrás-korlátozás meggátolja, hogy a tárolók sikeresen fut, a csoport újraindítása megoldhatja a problémát.
+A tároló-csoport újraindítása akkor hasznos, ha az üzembe helyezéssel kapcsolatos problémát szeretné elhárítani. Ha például egy ideiglenes erőforrás-korlátozás megakadályozza, hogy a tárolók sikeresen fussanak, a csoport újraindítása megoldhatja a problémát.
 
-A tárolócsoport összes tároló újra lesz indítva, ezzel a művelettel. A csoport egy adott tároló nem indítható újra.
+Ez a művelet újraindítja a tárolók csoportjának összes tárolóját. A csoportban lévő adott tároló nem indítható újra.
 
-Manuálisan indítsa újra egy tárolócsoportot, miután a tároló csoport fut a beállított megfelelően újraindítási házirend.
+A tároló csoport manuális újraindítása után a tároló csoport a beállított újraindítási szabályzatnak megfelelően fut.
 
 ## <a name="next-steps"></a>További lépések
 
-Tudjon meg többet [indítsa újra a házirend-beállítások](container-instances-restart-policy.md) az Azure Container Instances szolgáltatásban.
+További információ a Azure Container Instances újraindítási [házirend](container-instances-restart-policy.md) -beállításairól.
 
-Manuálisan leállítása folyamatban van, és a egy tárolócsoport kezdve a meglévő konfigurációt kívül is [-beállításainak frissítése](container-instances-update.md) egy futó tárolócsoportra vonatkozó.
+A meglévő konfigurációval rendelkező tárolók manuális leállítása és elindítása mellett a futó tárolók csoportjának [beállításait](container-instances-update.md) is frissítheti.
 
 <!-- LINKS - External -->
 

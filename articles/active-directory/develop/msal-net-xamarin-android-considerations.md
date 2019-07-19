@@ -1,6 +1,6 @@
 ---
-title: Xamarin Android szempontok (Microsoft-hitelesítési tár .NET) |} Az Azure
-description: Figyelembe kell venni bizonyos ismerje meg a Xamarin Android használata a Microsoft-hitelesítési tár .NET (MSAL.NET) esetén.
+title: Xamarin Android-megfontolások (Microsoft Authentication Library for .NET) | Azure
+description: Ismerje meg a Xamarin Android és a .NET-hez készült Microsoft Authentication Library (MSAL.NET) használatára vonatkozó szempontokat.
 services: active-directory
 documentationcenter: dev-center-name
 author: rwike77
@@ -17,30 +17,48 @@ ms.author: ryanwi
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 357c83cfd0ae3fed8b13419e72f50fcb90c04186
-ms.sourcegitcommit: 978e1b8cac3da254f9d6309e0195c45b38c24eb5
+ms.openlocfilehash: ff55853c859008690548b161451a24941a597d3a
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67550659"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68277903"
 ---
-# <a name="xamarin-android-specific-considerations-with-msalnet"></a>Xamarin Android-specifikus MSAL.NET megfontolások
-Ez a cikk ismerteti a figyelembe kell venni bizonyos Xamarin Android használata a Microsoft-hitelesítési tár .NET (MSAL.NET) esetén.
+# <a name="xamarin-android-specific-considerations-with-msalnet"></a>Xamarin Android-specifikus megfontolások a MSAL.NET
+Ez a cikk a Xamarin Android és a .NET-hez készült Microsoft Authentication Library (MSAL.NET) használatára vonatkozó szempontokat ismerteti.
 
-Ez a cikk szól MSAL.NET 3.x. Ha érdekli az MSAL.NET 2.x verzióját, lásd: [Xamarin Android tulajdonságairól az MSAL.NET 2.x](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/Xamarin-Android-specifics-2x).
+## <a name="set-the-parent-activity"></a>A szülő tevékenység beállítása
 
-## <a name="set-the-parent-activity"></a>A szülőtevékenység beállítása
-
-Xamarin.Android, meg kell, hogy a jogkivonat beolvasása vissza, ha a kapcsolati történt, állítsa be a fölérendelt tevékenység.
+A Xamarin. Android esetében be kell állítania a fölérendelt tevékenységet, hogy a jogkivonat a beavatkozást követően visszakerüljön.
 
 ```csharp
 var authResult = AcquireTokenInteractive(scopes)
  .WithParentActivityOrWindow(parentActivity)
  .ExecuteAsync();
 ```
+Ezt a PublicClientApplication szintjén (MSAL 4.2 +) is beállíthatja egy visszahívás használatával.
 
-## <a name="ensuring-control-goes-back-to-msal-once-the-interactive-portion-of-the-authentication-flow-ends"></a>Ellenőrzést biztosító visszatér arra MSAL egyszer interaktív részének a hitelesítési folyamat véget ér
-Android rendszeren felül kell bírálnia az `OnActivityResult` módszer a `Activity` és AuthenticationContinuationHelper MSAL osztály SetAuthenticationContinuationEventArgs metódust.
+```CSharp
+// Requires MSAL.NET 4.2 or above
+var pca = PublicClientApplicationBuilder
+  .Create("<your-client-id-here>")
+  .WithParentActivityOrWindow(() => parentActivity)
+  .Build();
+```
+
+Javasoljuk, hogy a CurrentActivityPlugin használja [itt](https://github.com/jamesmontemagno/CurrentActivityPlugin).  Ezt követően a PublicClientApplication Builder-kód így fog kinézni:
+
+```CSharp
+// Requires MSAL.NET 4.2 or above
+var pca = PublicClientApplicationBuilder
+  .Create("<your-client-id-here>")
+  .WithParentActivityOrWindow(() => CrossCurrentActivity.Current)
+  .Build();
+```
+
+
+## <a name="ensuring-control-goes-back-to-msal-once-the-interactive-portion-of-the-authentication-flow-ends"></a>Annak biztosítása, hogy a vezérlés visszakerüljön a MSAL, amint a hitelesítési folyamat interaktív része véget ér
+Androidon felül kell bírálnia `OnActivityResult` a metódust `Activity` , és meg kell hívnia a AuthenticationContinuationHelper MSAL osztály SetAuthenticationContinuationEventArgs metódusát.
 
 ```csharp
 protected override void OnActivityResult(int requestCode, 
@@ -53,10 +71,10 @@ protected override void OnActivityResult(int requestCode,
 }
 
 ```
-Sort biztosítja, hogy a vezérlőelem visszatér arra MSAL után interaktív részének a hitelesítési folyamat véget ért.
+Ez a vonal biztosítja, hogy a vezérlő visszakerüljön a MSAL, amint a hitelesítési folyamat interaktív része befejeződött.
 
-## <a name="update-the-android-manifest"></a>Az Android-jegyzékfájlban frissítése
-A `AndroidManifest.xml` tartalmaznia kell a következő értékeket:
+## <a name="update-the-android-manifest"></a>Az Android-jegyzékfájl frissítése
+A `AndroidManifest.xml` következő értékeket kell tartalmaznia:
 ```csharp
 <activity android:name="microsoft.identity.client.BrowserTabActivity">
     <intent-filter>
@@ -68,9 +86,9 @@ A `AndroidManifest.xml` tartalmaznia kell a következő értékeket:
 </activity>
 ```
 
-## <a name="use-the-embedded-web-view-optional"></a>(Nem kötelező) a beágyazott webes nézet használata
+## <a name="use-the-embedded-web-view-optional"></a>A beágyazott webes nézet használata (nem kötelező)
 
-Alapértelmezés szerint az MSAL.NET használja a rendszer webböngésző, amely lehetővé teszi, hogy az egyszeri bejelentkezés a webes alkalmazások és más alkalmazások. Egyes ritka esetekben érdemes lehet, hogy adja meg, hogy szeretné-e használni a beágyazott webes nézet. További információkért lásd: [MSAL.NET használ egy webes böngésző](msal-net-web-browsers.md) és [Android rendszer böngésző](msal-net-system-browser-android-considerations.md).
+Alapértelmezés szerint a MSAL.NET a rendszerböngészőt használja, amely lehetővé teszi az egyszeri bejelentkezést a webalkalmazásokkal és más alkalmazásokkal. Bizonyos ritkán előforduló esetekben érdemes megadnia, hogy a beágyazott webes nézetet kívánja használni. További információ: [a MSAL.net](msal-net-web-browsers.md) webböngészőt és [Android rendszerű böngészőt](msal-net-system-browser-android-considerations.md)használ.
 
 ```csharp
 bool useEmbeddedWebView = !app.IsSystemWebViewAvailable;
@@ -82,22 +100,22 @@ var authResult = AcquireTokenInteractive(scopes)
 ```
 
 ## <a name="troubleshooting"></a>Hibaelhárítás
-Hozzon létre egy új Xamarin.Forms-alkalmazást, és vegyen fel egy hivatkozást az MSAL.Net NuGet-csomagot, ha ezt ugyanúgy működnek.
-Ha frissíteni szeretne egy meglévő Xamarin.Forms-alkalmazás az MSAL.NET 1.1.2 előzetes verzió, vagy később build problémákat tapasztalhat.
+Ha létrehoz egy új Xamarin. Forms alkalmazást, és felvesz egy hivatkozást a MSAL.Net NuGet-csomagra, akkor ez csak működni fog.
+Ha azonban egy meglévő Xamarin. Forms alkalmazást szeretne frissíteni a MSAL.NET Preview 1.1.2 vagy újabb verziójára, előfordulhat, hogy felmerülő problémák merülhetnek fel.
 
-Ezek a problémák elhárításához, a következőket kell elvégeznie:
-- Frissítse a meglévő MSAL.NET NuGet-csomag MSAL.NET előzetes 1.1.2 vagy újabb
-- Ellenőrizze, hogy Xamarin.Forms automatikusan frissülnek 2.5.0.122203 verzió (Ha nem, erre a verzióra frissítés)
-- Ellenőrizze, hogy Xamarin.Android.Support.v4 automatikusan frissülnek 25.4.0.2 verzió (Ha nem, erre a verzióra frissítés)
-- Összes Xamarin.Android.Support csomagot kell célzó 25.4.0.2 verzió
-- Tiszta/újraépítése
-- Próbálja meg a maximális párhuzamos projekt beállítása hoz létre a Visual Studióban 1 (beállításai -> projektek és megoldások -> Build és Futtatás -> párhuzamos projektek buildek maximális száma)
-- Azt is megteheti Ha hoz létre a parancssorból, próbálja meg /m eltávolítását a parancs, ha azt használja.
+A problémák elhárításához a következőket kell tennie:
+- A meglévő MSAL.NET NuGet-csomag frissítése a MSAL.NET Preview 1.1.2-es vagy újabb verziójára
+- Ellenőrizze, hogy a Xamarin. Forms automatikusan frissítve lett-e a 2.5.0.122203 verzióra (ha nem, frissítsen erre a verzióra)
+- Ellenőrizze, hogy a Xamarin. Android. support. v4 automatikusan frissítve lett-e a 25.4.0.2 verzióra (ha nem, frissítsen erre a verzióra)
+- Az összes Xamarin. Android. support csomagnak a 25.4.0.2 verziónak kell megcéloznia
+- Tisztítás/Újraépítés
+- Próbálja meg a maximális párhuzamos projektet 1 értékre állítani a Visual Studióban (Options-> projektek és megoldások – > Build és Run – > a párhuzamos projektek maximális száma)
+- Ha a parancssorból kíván felépíteni, próbálja meg eltávolítani az/m parancsot a parancsból, ha azt használja.
 
 
-### <a name="error-the-name-authenticationcontinuationhelper-does-not-exist-in-the-current-context"></a>Hiba: A név "AuthenticationContinuationHelper" nem létezik az aktuális környezetben
+### <a name="error-the-name-authenticationcontinuationhelper-does-not-exist-in-the-current-context"></a>Hiba: A "AuthenticationContinuationHelper" név nem létezik az aktuális környezetben.
 
-Ennek oka valószínűleg az, hogy a Visual Studio megfelelően nem frissítette a Android.csproj* fájlt. Egyes esetekben a  **\<HintPath >** filepath helytelenül tartalmaz helyett netstandard13 **monoandroid90**.
+Ez valószínűleg azért van, mert a Visual Studio nem tudta megfelelően frissíteni az Android. csproj * fájlt. Előfordul, hogy a  **\<HintPath >** filepath helytelenül tartalmazza a netstandard13-t a **monoandroid90**helyett.
 
 ```xml
 <Reference Include="Microsoft.Identity.Client, Version=3.0.4.0, Culture=neutral, PublicKeyToken=0a613f4dd989e8ae,
@@ -108,8 +126,8 @@ Ennek oka valószínűleg az, hogy a Visual Studio megfelelően nem frissítette
 
 ## <a name="next-steps"></a>További lépések
 
-További részletek és példák találhatók a [Android figyelembe kell venni bizonyos](https://github.com/azure-samples/active-directory-xamarin-native-v2#android-specific-considerations) bekezdés readme.md fájl a következő mintát:
+További részleteket és mintákat a következő minta readme.md-fájljának [Android-specifikus megfontolások](https://github.com/azure-samples/active-directory-xamarin-native-v2#android-specific-considerations) című részében talál:
 
 | Sample | Platform | Leírás |
 | ------ | -------- | ----------- |
-|[https://github.com/Azure-Samples/active-directory-xamarin-native-v2](https://github.com/azure-samples/active-directory-xamarin-native-v2) | Xamarin iOS, Android, UWP | Egy egyszerű Xamarin Forms alkalmazás amely hogyan használható az MSAL MSA és az Azure AD a AADD v2.0-végpont hitelesítéséhez, és hozzáférhet a Microsoft Graph, az eredményül kapott jogkivonatokkal. <br>![Topológia](media/msal-net-xamarin-android-considerations/topology.png) |
+|[https://github.com/Azure-Samples/active-directory-xamarin-native-v2](https://github.com/azure-samples/active-directory-xamarin-native-v2) | Xamarin iOS, Android, UWP | Egy egyszerű Xamarin űrlapos alkalmazás, amely bemutatja, hogyan használhatja az MSAL-t a MSA és az Azure AD hitelesítésére a AADD 2.0-s végponton keresztül, és az eredményül kapott jogkivonattal fér hozzá a Microsoft Graphhoz. <br>![Topológia](media/msal-net-xamarin-android-considerations/topology.png) |

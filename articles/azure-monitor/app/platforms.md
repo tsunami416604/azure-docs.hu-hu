@@ -1,6 +1,6 @@
 ---
-title: 'Application Insights: nyelvek, platformok és integrációk| Microsoft Docs'
-description: Az Application Insightshoz elérhető nyelvek, platformok és integrációk
+title: 'Application Insights: nyelvek, platformok és integrációk | Microsoft Docs'
+description: A Application Insights számára elérhető nyelvek, platformok és integrációk
 services: application-insights
 documentationcenter: ''
 author: mrbullwinkle
@@ -13,32 +13,36 @@ ms.topic: conceptual
 ms.date: 07/06/2019
 ms.reviewer: olegan
 ms.author: mbullwin
-ms.openlocfilehash: 100f1f8875dd53f954e99c50f0bc5b9cd3fee31b
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: db79f2b1d3857aac2f71d2e18a3949f068b746eb
+ms.sourcegitcommit: 6b41522dae07961f141b0a6a5d46fd1a0c43e6b2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67617823"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67990060"
 ---
-# <a name="languages---officially-supported-by-application-insights-team"></a>Az Application Insights csapata által hivatalosan támogatott nyelvek
+# <a name="languages---officially-supported-by-application-insights-team"></a>Nyelvek – Application Insights csapat által hivatalosan támogatott
+
 * [C#|VB (.NET)](../../azure-monitor/app/asp-net.md)
 * [Java](../../azure-monitor/app/java-get-started.md)
 * [JavaScript-weblapok](../../azure-monitor/app/javascript.md)
 * [Node.JS](../../azure-monitor/app/nodejs.md)
 
-## <a name="languages---community-supported"></a>Közösség által támogatott nyelvek
+## <a name="community-sdks"></a>Közösségi SDK-k
 
-Számos közösségi támogatott Application Insights SDK-k számos, amelyek eredetileg a Microsoft által készített. Közösségi támogatott SDK-k nem hivatalosan fenn a Microsoft és nem biztosít támogatást, amely nem a hivatalosan támogatott listán szereplő bármely SDK-t. Ezek az SDK-k kísérleti minősülnek, és nem ajánlottak éles környezetben való használatra.
+Számos közösségi Azure Application Insights SDK található, amelyek közül sokat eredetileg a Microsoft készített. A Microsoft nem tartja hivatalosan a közösségi SDK-kat. Nem lehet támogatást nyújtani minden olyan SDK-hoz, amely nem szerepel a hivatalosan támogatott listán. Ezek az SDK-k kísérleti jellegűek, és éles használatra nem ajánlottak.
 
 ## <a name="platforms-and-frameworks"></a>Platformok és keretrendszerek
-* [ASP.NET](../../azure-monitor/app/asp-net.md)
+### <a name="instrumentation-for-already-deployed-applications-codeless-agent-based"></a>Már üzembe helyezett alkalmazások rendszerállapotba állítása (kód nélküli, ügynök-alapú)
+* [Azure-beli virtuális gépek és Azure-beli virtuálisgép-méretezési csoportok](../../azure-monitor/app/azure-vm-vmss-apps.md)
+* [Azure App Service](../../azure-monitor/app/azure-web-apps.md)
 * [ASP.NET – már élő alkalmazásokhoz](../../azure-monitor/app/monitor-performance-live-website-now.md)
+* [Azure-Cloud Services](../../azure-monitor/app/cloudservices.md), beleértve a webes és a feldolgozói szerepköröket is
+* [Azure Functions](https://docs.microsoft.com/azure/azure-functions/functions-monitoring)
+### <a name="instrumentation-through-code-sdks"></a>Rendszerállapot-kódok (SDK-k)
+* [ASP.NET](../../azure-monitor/app/asp-net.md)
 * [ASP.NET Core](../../azure-monitor/app/asp-net-core.md)
 * [Android](../../azure-monitor/learn/mobile-center-quickstart.md) (App Center)
 * [Android](https://github.com/Microsoft/ApplicationInsights-Android) (App Center)
-* [Azure App Service](../../azure-monitor/app/azure-web-apps.md)
-* [Az Azure Cloud Services](../../azure-monitor/app/cloudservices.md) (webes és feldolgozói szerepkörök)
-* [Azure Functions](https://docs.microsoft.com/azure/azure-functions/functions-monitoring)
 * [iOS](../../azure-monitor/learn/mobile-center-quickstart.md) (App Center)
 * [Java EE](../../azure-monitor/app/java-get-started.md)
 * [Node.JS](https://www.npmjs.com/package/applicationinsights)

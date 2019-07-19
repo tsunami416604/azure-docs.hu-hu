@@ -1,31 +1,31 @@
 ---
-title: Az Azure Cosmos DB eseményindító-naplói
-description: Ismerje meg, hogyan teszi közzé az Azure Cosmos DB-eseményindító bejegyzéseit, amelyek az Azure Functions-naplózás folyamat
+title: Naplók konfigurálása és olvasása a Azure Functions trigger használatakor Cosmos DB
+description: Megtudhatja, hogyan teheti elérhetővé a naplókat a Azure Functions naplózási folyamatához Azure Functions trigger használatakor Cosmos DB
 author: ealsur
 ms.service: cosmos-db
 ms.topic: sample
-ms.date: 05/23/2019
+ms.date: 07/17/2019
 ms.author: maquaran
-ms.openlocfilehash: bf5216dc3b296c98176387c6e2cfff7c31daedab
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: ad53762ad490c5e8feedb83007b8721fe4883806
+ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66241021"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68334532"
 ---
-# <a name="how-to-configure-and-read-the-azure-cosmos-db-trigger-logs"></a>Eseménynaplók konfigurálása, és olvassa el az Azure Cosmos DB-eseményindító
+# <a name="how-to-configure-and-read-the-logs-when-using-azure-functions-trigger-for-cosmos-db"></a>Naplók konfigurálása és olvasása a Azure Functions trigger használatakor Cosmos DB
 
-Ez a cikk bemutatja, hogyan konfigurálhatja az Azure Functions-környezet az Azure Cosmos DB-eseményindító naplókat küld a konfigurált [figyelési megoldás](../azure-functions/functions-monitoring.md).
+Ez a cikk azt ismerteti, hogyan konfigurálhatja a Azure Functions környezetét, hogy elküldje a Azure Functions triggert Cosmos DB naplók számára a konfigurált [figyelési megoldásba](../azure-functions/functions-monitoring.md).
 
 ## <a name="included-logs"></a>Belefoglalt naplók
 
-Az Azure Cosmos DB-eseményindító használja a [módosítási hírcsatorna feldolgozói kódtára](./change-feed-processor.md) belső használatra, és a tár létrehoz egy belső műveleteinek figyeléséhez használható egészségügyi naplók [hibaelhárítási célból](./troubleshoot-changefeed-functions.md).
+A Cosmos DB Azure Functions-trigger a következőt használja: a [feed Processor Library módosítása](./change-feed-processor.md) . a könyvtár a belső műveletek [hibaelhárítási célból](./troubleshoot-changefeed-functions.md)történő figyelésére szolgáló rendszerállapot-naplókat állít elő.
 
-Az egészségügyi naplók ismertetik, hogyan viselkedik az Azure Cosmos DB-eseményindító, terheléselosztási forgatókönyveket vagy az inicializálás során a műveletek megkísérlésekor.
+Az állapotadatok azt írják le, hogy a Cosmos DB Azure Functions triggere hogyan viselkedik a műveletek a terheléselosztási forgatókönyvek vagy az inicializálás során való megkísérlése során.
 
 ## <a name="enabling-logging"></a>Naplózás engedélyezése
 
-Keresse meg az Azure Cosmos DB-eseményindító naplózás engedélyezéséhez a `host.json` fájlt az Azure Functions-projektet vagy az Azure Functions és [szükséges naplózási szint konfigurálása](../azure-functions/functions-monitoring.md#log-configuration-in-hostjson). A nyomkövetések számára engedélyeznie kell a `Host.Triggers.CosmosDB` az alábbi mintában látható módon:
+A naplózás engedélyezéséhez Cosmos db Azure functions trigger használata esetén keresse meg a `host.json` fájlt a Azure functions projektben vagy Azure functions alkalmazásban, és [konfigurálja a szükséges naplózás szintjét](../azure-functions/functions-monitoring.md#log-configuration-in-hostjson). Engedélyeznie kell a nyomkövetést `Host.Triggers.CosmosDB` a következő mintában látható módon:
 
 ```js
 {
@@ -39,11 +39,11 @@ Keresse meg az Azure Cosmos DB-eseményindító naplózás engedélyezéséhez a
 }
 ```
 
-Az Azure-függvény üzembe helyezése a frissített konfigurációval, után látni fogja az Azure Cosmos DB-eseményindító naplók trasování részeként. A konfigurált naplózás szolgáltató alatt tekintheti meg a naplókat a *kategória* `Host.Triggers.CosmosDB`.
+Miután telepítette az Azure-függvényt a frissített konfigurációval, a Nyomkövetések részeként megjelenik a Cosmos DB naplók Azure Functions triggere. A megadott naplózási szolgáltató naplóit a *Kategória* `Host.Triggers.CosmosDB`alatt tekintheti meg.
 
 ## <a name="query-the-logs"></a>Naplók lekérdezése
 
-Futtassa a következő lekérdezést a lekérdezés a naplók által létrehozott az Azure Cosmos DB-eseményindító a [Azure Application Insights Analytics](../azure-monitor/app/analytics.md):
+A következő lekérdezés futtatásával lekérdezheti az [Azure Application Insights Analytics szolgáltatásban](../azure-monitor/app/analytics.md)Cosmos db Azure functions trigger által létrehozott naplókat:
 
 ```sql
 traces
@@ -52,5 +52,5 @@ traces
 
 ## <a name="next-steps"></a>További lépések
 
-* [Engedélyezze a monitorozást](../azure-functions/functions-monitoring.md) az Azure Functions alkalmazásokban.
-* Ismerje meg, hogyan [diagnosztizálása és a gyakori problémák megoldása](./troubleshoot-changefeed-functions.md) Azure Functions az Azure Cosmos DB-eseményindító használata során.
+* A [figyelés engedélyezése](../azure-functions/functions-monitoring.md) a Azure functions alkalmazásokban.
+* Megtudhatja, hogyan [diagnosztizálhatja és elháríthatja a gyakori problémákat](./troubleshoot-changefeed-functions.md) a Cosmos db Azure functions triggerének használatakor.

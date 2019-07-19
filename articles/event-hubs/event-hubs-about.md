@@ -1,5 +1,5 @@
 ---
-title: Mi az Azure Event Hubs? – egy Big Data-feldolgozó szolgáltatás |} A Microsoft Docs
+title: Mi az Azure Event Hubs? – Big adatfeldolgozási szolgáltatás | Microsoft Docs
 description: További tudnivalók az Azure Event Hubsról, amely egy másodpercenként több millió eseményt feldolgozó Big Data streamszolgáltatás.
 services: event-hubs
 documentationcenter: na
@@ -10,17 +10,17 @@ ms.topic: overview
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 7362bd5b4e15df516478ef4bef20d76fc46b326f
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: 242f2fa9885f3f85439caddd061f650baafb8df4
+ms.sourcegitcommit: da0a8676b3c5283fddcd94cdd9044c3b99815046
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67275364"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68314415"
 ---
 # <a name="azure-event-hubs--a-big-data-streaming-platform-and-event-ingestion-service"></a>Azure Event Hubs – Big data streamelési platform és eseménybetöltő szolgáltatás
-Az Azure Event Hubs szolgáltatás a big Data típusú adatstreamelési platform és eseményfeldolgozó szolgáltatás. Képes fogadni és feldolgozni másodpercenként több millió. Az eseményközpontokba elküldött adatok bármilyen valós idejű elemzési szolgáltató vagy kötegelési/tárolóadapter segítségével átalakíthatók és tárolhatók.
+Az Azure Event Hubs egy big data streaming platform és esemény-betöltési szolgáltatás. Másodpercenként akár több millió eseményt is képes fogadni és feldolgozni. Az eseményközpontokba elküldött adatok bármilyen valós idejű elemzési szolgáltató vagy kötegelési/tárolóadapter segítségével átalakíthatók és tárolhatók.
 
-A következő esetekben a forgatókönyveket, melyekben használhatja az Event Hubs néhány:
+A következő forgatókönyvek néhány olyan forgatókönyvet érintenek, amelyekben a Event Hubs használható:
 
 - Rendellenességek észlelése (csalások/kiugró értékek)
 - Alkalmazásnaplózás
@@ -29,46 +29,48 @@ A következő esetekben a forgatókönyveket, melyekben használhatja az Event H
 - Adatok archiválása
 - Tranzakciófeldolgozás
 - Felhasználói telemetria feldolgozása
-- Eszköztelemetria-stream 
+- Eszköztelemetria-stream
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/45wgY-VSk9I" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 ## <a name="why-use-event-hubs"></a>Miért érdemes az Event Hubs platformot használni?
 
-Az adatok csak akkor képviselnek értéket, ha könnyen feldolgozhatók, és időszerű elemzések állíthatók össze az adatforrásokból. Az Event Hubs elosztott stream feldolgozási platformot biztosít alacsony késéssel és zökkenőmentes integrációt, az adatok és analitika belül és kívül a teljes körű big Data típusú adatok folyamatot hozhat létre Azure szolgáltatásokkal.
+Az adatok csak akkor képviselnek értéket, ha könnyen feldolgozhatók, és időszerű elemzések állíthatók össze az adatforrásokból. A Event Hubs az Azure-on belüli és azon kívüli adatelemzési és a zökkenőmentes integrációt biztosító elosztott adatfolyam-feldolgozó platformot biztosít a teljes big data folyamat létrehozásához.
 
-Az Event Hubs az eseményfolyamatok „bejárati ajtaja”, amelyet gyakran neveznek *eseménybetöltőnek* a megoldásarchitektúrákban. Az eseménybetöltő egy olyan összetevő vagy szolgáltatás, amely az esemény-közzétevők és az eseményfelhasználók közé ékelődve elkülöníti az eseménystream létrehozását az események felhasználásától. Az Event Hubs az eseményfelhasználók eseménykészítőkből elválasztás idő megőrzési pufferrel egységes streamelési platformot biztosít. 
+Az Event Hubs az eseményfolyamatok „bejárati ajtaja”, amelyet gyakran neveznek *eseménybetöltőnek* a megoldásarchitektúrákban. Az eseménybetöltő egy olyan összetevő vagy szolgáltatás, amely az esemény-közzétevők és az eseményfelhasználók közé ékelődve elkülöníti az eseménystream létrehozását az események felhasználásától. A Event Hubs egy egységes adatfolyam-platformot biztosít az időmegőrzési pufferrel, az események fogyasztóitól való leválasztást.
 
-A következő szakaszok az Azure Event Hubs szolgáltatás legfontosabb jellemzőit ismertetik: 
+A következő szakaszok az Azure Event Hubs szolgáltatás legfontosabb jellemzőit ismertetik:
 
-## <a name="fully-managed-paas"></a>Teljes mértékben felügyelt PaaS 
+## <a name="fully-managed-paas"></a>Teljes mértékben felügyelt PaaS
 
-Azure Event Hubs szolgáltatás egy teljes körűen felügyelt Platform--szolgáltatásként (PaaS) a kis konfiguráció vagy a felügyeleti terheket, így Ön az üzleti megoldások. [Az Apache Kafkához készült Event Hubs-ökoszisztéma](event-hubs-for-kafka-ecosystem-overview.md) anélkül biztosítja a PaaS Kafka előnyeit, hogy saját fürtöket kellene kezelnie, konfigurálnia vagy futtatnia.
+A Event Hubs egy teljes körűen felügyelt platform-szolgáltatás (a Pásti), amely kis konfigurációval vagy felügyeleti terheléssel rendelkezik, így Ön az üzleti megoldásokra koncentrálhat. [Az Apache Kafkához készült Event Hubs-ökoszisztéma](event-hubs-for-kafka-ecosystem-overview.md) anélkül biztosítja a PaaS Kafka előnyeit, hogy saját fürtöket kellene kezelnie, konfigurálnia vagy futtatnia.
 
 ## <a name="support-for-real-time-and-batch-processing"></a>Valós idejű kötegelt feldolgozás támogatása
 
-Valós időben töltheti be, pufferelheti, tárolhatja és dolgozhatja fel a streameket, hogy a gyakorlatban is használható elemzésekhez jusson. Az Event Hubs használ egy [particionált felhasználói modell](event-hubs-scalability.md#partitions), az adatfolyam folyamat több alkalmazás egyidejűleg engedélyezése és a feldolgozás sebessége, ami lehetővé teszi.
+Valós időben töltheti be, pufferelheti, tárolhatja és dolgozhatja fel a streameket, hogy a gyakorlatban is használható elemzésekhez jusson. A Event Hubs [particionált fogyasztói modellt](event-hubs-scalability.md#partitions)használ, amely lehetővé teszi, hogy több alkalmazás egyszerre dolgozza fel az adatfolyamot, és lehetővé tegye a feldolgozás sebességének szabályozását.
 
-[Rögzítés](event-hubs-capture-overview.md) a közel valós időben az adatok egy [Azure Blob storage](https://azure.microsoft.com/services/storage/blobs/) vagy [Azure Data Lake Storage](https://azure.microsoft.com/services/data-lake-store/) a hosszú távú megőrzés vagy irányuló mikrokötegelt feldolgozást. Ez a viselkedés használhat valós idejű elemzési származtatás ugyanazon streamben érheti el. Az esemény adatok rögzítése, beállítania gyors. Nincsenek a futtatáshoz felügyeleti költségek, és automatikusan átméreteződik az Event Hubs [átviteli egységek](event-hubs-scalability.md#throughput-units). Az Event Hubs lehetővé teszi fókusz adatfeldolgozási helyett az adatváltozások rögzítése.
+Az adatok közel valós idejű [rögzítése](event-hubs-capture-overview.md) [Azure Blob Storage](https://azure.microsoft.com/services/storage/blobs/) -ban vagy [Azure Data Lake Storage](https://azure.microsoft.com/services/data-lake-store/) a hosszú távú adatmegőrzéshez vagy a mikro-kötegelt feldolgozáshoz. Ezt a viselkedést a valós idejű elemzések elvégzéséhez használt adatfolyamon érheti el. Az események rögzítésének beállítása gyors. Nincs felügyeleti költség a futtatásához, és a rendszer automatikusan méretezi Event Hubs [átviteli egységekkel](event-hubs-scalability.md#throughput-units). A Event Hubs lehetővé teszi az adatfeldolgozásra koncentrálva az adatrögzítés helyett.
 
 Az Azure Event Hubs az [Azure Functions](/azure/azure-functions/) szolgáltatással is integrálható egy kiszolgáló nélküli architektúra keretein belül.
 
-## <a name="scalable"></a>Méretezhető 
+## <a name="scalable"></a>Méretezhető
 
-Az Event Hubs szolgáltatással megabájtokban kezdheti az adatstreameket, és onnan továbbléphet a giga- és terabájtokra. Az [automatikus feltöltési](event-hubs-auto-inflate.md) funkció az egyik lehetőség az átviteli egységek számának a használati igényeinek megfelelő módosítására. 
+Az Event Hubs szolgáltatással megabájtokban kezdheti az adatstreameket, és onnan továbbléphet a giga- és terabájtokra. Az [automatikus feltöltési](event-hubs-auto-inflate.md) funkció az egyik lehetőség az átviteli egységek számának a használati igényeinek megfelelő módosítására.
 
 ## <a name="rich-ecosystem"></a>Gazdag ökoszisztéma
 
-[Az Event Hubs, az Apache Kafka-ökoszisztéma](event-hubs-for-kafka-ecosystem-overview.md) lehetővé teszi, hogy [Apache Kafka (1.0-ás és újabb verziók)](https://kafka.apache.org/) ügyfelek és alkalmazások felvenni a kapcsolatot az Event hubs szolgáltatásba. Nem kell beállítani, konfigurálása és a saját Kafka-fürtök kezelése.
- 
-A különböző [nyelveken (.NET, Java, Python, Go, Node.js)](https://github.com/Azure/azure-event-hubs) elérhető sokoldalú ökoszisztéma megkönnyíti a streamek feldolgozását az Event Hubsból. Az összes támogatott ügyfélnyelv alacsony szintű integrációt biztosít. Az ökoszisztéma emellett lehetőséget biztosít az Azure Stream Analytics és az Azure Functions Azure-szolgáltatásokkal való zökkenőmentes integrációt, és így lehetővé teszi, hogy a kiszolgáló nélküli architektúrákat hozhat létre.
+[A Apache Kafka ökoszisztémák Event Hubs](event-hubs-for-kafka-ecosystem-overview.md) [Apache Kafka (1,0 és újabb)](https://kafka.apache.org/) ügyfelek és alkalmazások számára lehetővé teszi, hogy Event Hubsekkel beszéljenek. Nem kell beállítania, konfigurálnia és felügyelni saját Kafka-fürtöket.
+
+A különböző [nyelveken (.NET, Java, Python, Go, Node.js)](https://github.com/Azure/azure-event-hubs) elérhető sokoldalú ökoszisztéma megkönnyíti a streamek feldolgozását az Event Hubsból. Az összes támogatott ügyfélnyelv alacsony szintű integrációt biztosít. Az ökoszisztéma olyan zökkenőmentes integrációt is biztosít az Azure-szolgáltatásokkal, mint például a Azure Stream Analytics és a Azure Functions, így kiszolgáló nélküli architektúrákat hozhat létre.
 
 ## <a name="key-architecture-components"></a>Az architektúra legfontosabb összetevői
 Az Event Hubs az alábbi [fő összetevőket](event-hubs-features.md) foglalja magába:
 
-- **Eseménykészítőkből**: Minden entitás, amely adatokat küld egy eseményközpontnak. Az esemény-közzétevők a HTTPS, az AMQP 1.0 vagy az Apache Kafka (1.0 és újabb) használatával tehetik közzé az eseményeket.
-- **A partíciók**: Mindegyik felhasználó csak egy meghatározott részhalmazát, azaz partícióját az üzenetet olvassa be.
-- **Fogyasztói csoportok**: Nézete (állapot, pozíció vagy eltolás) teljes eseményközpont. Fogyasztói csoportok engedélyezése felhasználó alkalmazás az eseménystream külön nézetével rendelkezik. A stream egymástól függetlenül saját tempójában és saját eltolásával beolvasni azokat.
-- **Átviteli egységek**: Előre megvásárolt kapacitásegységek, amely az Event Hubs átviteli kapacitásának szabályozása.
-- **Esemény fogadók**: Minden entitás, amely eseményadatokat olvas egy eseményközpontból. Minden Event Hubs-felhasználó az AMQP 1.0-munkameneten keresztül csatlakozik. Az Event Hubs szolgáltatás kézbesíti az elérhetővé váló programkedvezményekről egy munkamenet-n keresztül. Minden Kafka-fogyasztó a Kafka-protokoll 1.0-s vagy újabb verziójával csatlakozik.
+- **Esemény**-előállítók: Bármely entitás, amely adatokat küld az Event hub-nak. Az esemény-közzétevők a HTTPS, az AMQP 1.0 vagy az Apache Kafka (1.0 és újabb) használatával tehetik közzé az eseményeket.
+- **Partíciók**: Minden fogyasztó csak az üzenet adatfolyamának egy adott részhalmazát vagy partícióját olvassa.
+- **Fogyasztói csoportok**: Egy teljes Event hub nézete (állapot, pozíció vagy eltolás). A fogyasztói csoportok lehetővé teszik, hogy az alkalmazások mindegyike külön nézetben jelenítse meg az esemény-adatfolyamot. A streamet egymástól függetlenül, saját tempójában, saját eltolással olvassák.
+- **Átviteli egységek**: Előre megvásárolt kapacitás, amely a Event Hubs átviteli kapacitását vezérli.
+- **Esemény**-fogadók: Minden olyan entitás, amely az Event hub eseményeit olvassa be. Minden Event Hubs fogyasztó a AMQP 1,0-munkameneten keresztül kapcsolódhat. A Event Hubs szolgáltatás egy munkameneten keresztül nyújt eseményeket, amint azok elérhetővé válnak. Minden Kafka-fogyasztó a Kafka-protokoll 1.0-s vagy újabb verziójával csatlakozik.
 
 A következő ábrán az Event Hubs streamfeldolgozási architektúrája látható:
 
@@ -77,7 +79,7 @@ A következő ábrán az Event Hubs streamfeldolgozási architektúrája láthat
 
 ## <a name="next-steps"></a>További lépések
 
-Event Hubs használatának első lépései, tekintse meg a **események küldéséhez és fogadásához** oktatóanyagok: 
+Az Event Hubs használatának megkezdéséhez tekintse meg az **események küldése és fogadása** oktatóanyagokat:
 
 - [.NET Core](event-hubs-dotnet-standard-getstarted-send.md)
 - [.NET-keretrendszer](event-hubs-dotnet-framework-getstarted-send.md)
@@ -85,8 +87,8 @@ Event Hubs használatának első lépései, tekintse meg a **események küldés
 - [Python](event-hubs-python-get-started-send.md)
 - [Node.js](event-hubs-node-get-started-send.md)
 - [Go](event-hubs-go-get-started-send.md)
-- [C (csak küldése)](event-hubs-c-getstarted-send.md)
-- [Az Apache Storm (csak fogadás)](event-hubs-storm-getstarted-receive.md)
+- [C (csak küldés)](event-hubs-c-getstarted-send.md)
+- [Apache Storm (csak fogadás)](event-hubs-storm-getstarted-receive.md)
 
 
 Az Event Hubsszal kapcsolatos további információkért olvassa el a következő cikkeket:

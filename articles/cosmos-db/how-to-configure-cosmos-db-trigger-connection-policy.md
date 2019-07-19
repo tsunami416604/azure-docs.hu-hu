@@ -1,29 +1,29 @@
 ---
-title: Az Azure Cosmos DB-eseményindító kapcsolat-házirend
-description: Ismerje meg, hogyan lehet az Azure Cosmos DB-eseményindító által használt kapcsolat-házirend konfigurálása
+title: Azure Functions trigger Cosmos DB-kapcsolatok házirendjéhez
+description: Megtudhatja, hogyan konfigurálhatja a Azure Functions trigger által használt kapcsolódási szabályzatot Cosmos DB
 author: ealsur
 ms.service: cosmos-db
 ms.topic: sample
-ms.date: 06/05/2019
+ms.date: 07/17/2019
 ms.author: maquaran
-ms.openlocfilehash: 584d59884b70d2ee8243216e6f907fc9ec2d8ad4
-ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
+ms.openlocfilehash: 359b6a905e64046aad62b70ae53b993c86884ad2
+ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/07/2019
-ms.locfileid: "66755331"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68335624"
 ---
-# <a name="how-to-configure-the-connection-policy-used-by-azure-cosmos-db-trigger"></a>Az Azure Cosmos DB-eseményindító által használt kapcsolat szabályzat konfigurálása
+# <a name="how-to-configure-the-connection-policy-used-by-azure-functions-trigger-for-cosmos-db"></a>A Azure Functions trigger által használt kapcsolódási szabályzat konfigurálása Cosmos DBhoz
 
-Ez a cikk bemutatja, hogyan konfigurálhatja a kapcsolódási szabályzat az Azure Cosmos DB-eseményindító használata az Azure Cosmos-fiókhoz való csatlakozáshoz.
+Ez a cikk azt ismerteti, hogyan konfigurálhatja a kapcsolati házirendet, ha a Azure Functions triggert használja Cosmos DB az Azure Cosmos-fiókhoz való csatlakozáshoz.
 
-## <a name="why-is-the-connection-policy-important"></a>Miért fontos a kapcsolódási szabályzat?
+## <a name="why-is-the-connection-policy-important"></a>Miért fontos a kapcsolatkérelem-házirend?
 
-Nincsenek két csatlakozási módot - közvetlen és átjáró mód. E kapcsolat módokkal kapcsolatos további tudnivalókért tekintse meg a [teljesítménnyel kapcsolatos tippek](./performance-tips.md#networking) cikk. Alapértelmezés szerint **átjáró** az Azure Cosmos DB-eseményindító az összes kapcsolat létesítésére szolgál. Azt azonban nem feltétlenül a legjobb választás a teljesítmény-központú forgatókönyvek.
+Két kapcsolattípus van – közvetlen mód és átjáró mód. Ha többet szeretne megtudni ezekről a kapcsolódási módokról, tekintse meg a [teljesítménnyel kapcsolatos tippeket](./performance-tips.md#networking) ismertető cikket. Alapértelmezés szerint az **átjáró** a Cosmos db Azure functions trigger összes kapcsolatának létrehozására szolgál. Előfordulhat azonban, hogy nem a legjobb megoldás a teljesítmény-vezérelt forgatókönyvek esetében.
 
-## <a name="changing-the-connection-mode-and-protocol"></a>A kapcsolati módot és a protokoll módosítása
+## <a name="changing-the-connection-mode-and-protocol"></a>A kapcsolati mód és a protokoll módosítása
 
-Két fő konfigurációs beállítások konfigurálhatók a kapcsolat ügyfélházirend – a **kapcsolati módot** és a **csatlakozási protokoll**. Módosíthatja az alapértelmezett csatlakozási mód és az Azure Cosmos DB-eseményindító és az összes által használt protokoll a [Azure Cosmos DB-kötéseket](../azure-functions/functions-bindings-cosmosdb-v2.md#output)). Módosítsa az alapértelmezett beállításokat, keresse meg kell a `host.json` az Azure Functions-projektet vagy az Azure Functions fájlt, és adja hozzá a következő [további beállítás](../azure-functions/functions-bindings-cosmosdb-v2.md#hostjson-settings):
+Az ügyfélkapcsolati házirend konfigurálásához két kulcsfontosságú konfigurációs beállítás érhető el – a **kapcsolati mód** és a **kapcsolati protokoll**. A Azure Functions trigger által használt alapértelmezett kapcsolati mód és protokoll a Cosmos DB és az összes [Azure Cosmos db kötés](../azure-functions/functions-bindings-cosmosdb-v2.md#output)esetében módosítható. Az alapértelmezett beállítások módosításához meg kell keresnie a `host.json` fájlt a Azure functions projektben vagy Azure functions alkalmazásban, és hozzá kell adnia a következő [extra beállítást](../azure-functions/functions-bindings-cosmosdb-v2.md#hostjson-settings):
 
 ```js
 {
@@ -34,9 +34,9 @@ Két fő konfigurációs beállítások konfigurálhatók a kapcsolat ügyfélh�
 }
 ```
 
-Ahol `connectionMode` rendelkeznie kell a megfelelő csatlakozási mód (közvetlenül vagy átjárókiszolgáló) és `protocol` a kívánt kapcsolat protocol (Tcp- vagy Https). 
+Ahol `connectionMode` a kötelező kapcsolati mód (közvetlen vagy átjáró) és `protocol` a kívánt kapcsolati protokoll (TCP vagy https) szükséges. 
 
-Ha az Azure Functions-projektet az Azure Functions V1-futtatókörnyezetben működik, a konfigurációs van különbség a kis mértékben neve, használjon `documentDB` helyett `cosmosDB`:
+Ha a Azure functions-projekt a Azure functions v1 futtatókörnyezettel dolgozik, a konfigurációnak kisebb a neve, akkor a következők `documentDB` `cosmosDB`helyett érdemes használni:
 
 ```js
 {
@@ -48,10 +48,10 @@ Ha az Azure Functions-projektet az Azure Functions V1-futtatókörnyezetben műk
 ```
 
 > [!NOTE]
-> Az Azure Functions Használatalapú csomaghoz kötődő üzemeltetés csomag használatakor minden példány esetében a kibocsátott, amely akkor is fenntartható a szoftvercsatorna-kapcsolatok. Az közvetlen használatakor / TCP mód tervezés több kapcsolat jön létre, és is eléri a [Használatalapú csomagban korlát](../azure-functions/manage-connections.md#connection-limit), ebben az esetben átjáró mód használatára, vagy az Azure Functions futtatása [App Service mód](../azure-functions/functions-scale.md#app-service-plan).
+> Azure Functions használati terv üzemeltetési tervének használatakor az egyes példányok esetében a szoftvercsatorna-kapcsolatok mennyisége korlátozva lehet. A közvetlen/TCP mód használata esetén több kapcsolat jön létre, és elérheti a használati [terv korlátját](../azure-functions/manage-connections.md#connection-limit). ebben az esetben használhatja az átjáró üzemmódot, vagy [app Service módban](../azure-functions/functions-scale.md#app-service-plan)futtathatja a Azure functions.
 
 ## <a name="next-steps"></a>További lépések
 
-* [Az Azure Functions kapcsolat korlátai](../azure-functions/manage-connections.md#connection-limit)
-* [Az Azure Cosmos DB teljesítménnyel kapcsolatos tippek](./performance-tips.md)
+* [A Azure Functions a kapcsolatok korlátai](../azure-functions/manage-connections.md#connection-limit)
+* [Teljesítménnyel kapcsolatos tippek Azure Cosmos DB](./performance-tips.md)
 * [Kódminták](https://github.com/ealsur/serverless-recipes/tree/master/connectionmode)
