@@ -1,5 +1,5 @@
 ---
-title: 'Gyors útmutató: Átbetűzés szöveg-, Python – Translator Text API'
+title: 'Gyors útmutató: Átbetűzés szöveg, Python-Translator Text API'
 titleSuffix: Azure Cognitive Services
 description: Ebből a rövid útmutatóból megtudhatja, hogyan írhat (alakíthat) át szöveget egyik szkriptből a másikba a Python és a Translator Text REST API használatával. Ebben a példában egy japán nyelvű szövegből hozunk létre latin betűs átiratot.
 services: cognitive-services
@@ -10,21 +10,21 @@ ms.subservice: translator-text
 ms.topic: quickstart
 ms.date: 06/04/2019
 ms.author: swmachan
-ms.openlocfilehash: c6c6bb526c78ce87b9ee2acca05f478fee0ae5ff
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: cafaf67cfaa07d27bf4569efbc7f76196222cc2a
+ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67704356"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68348729"
 ---
-# <a name="quickstart-use-the-translator-text-api-to-transliterate-text-using-python"></a>Gyors útmutató: A Translator Text API használatával átbetűzés szöveg Python használatával
+# <a name="quickstart-use-the-translator-text-api-to-transliterate-text-using-python"></a>Gyors útmutató: Szöveg átbetűzés a Python használatával a Translator Text API használatával
 
 Ebből a rövid útmutatóból megtudhatja, hogyan írhat (alakíthat) át szöveget egyik szkriptből a másikba a Python és a Translator Text REST API használatával. A megadott példában egy japán nyelvű szövegből hozunk létre latin betűs átiratot.
 
 Ehhez a rövid útmutatóhoz szükség van egy [Azure Cognitive Services-fiókra](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account), amely tartalmaz egy Translator Text-erőforrást. Ha nincs fiókja, használhatja az ingyenes [próbaidőszakot](https://azure.microsoft.com/try/cognitive-services/) egy előfizetői azonosító beszerzéséhez.
 
 >[!TIP]
-> Ha szeretné egyszerre az összes kód megtekintéséhez, ehhez a mintához forráskódja elérhető a [GitHub]().
+> Ha az összes kódot egyszerre szeretné látni, a minta forráskódja elérhető a [githubon](https://github.com/MicrosoftTranslator/Text-Translation-API-V3-Python).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -35,7 +35,7 @@ Ehhez a rövid útmutatóhoz a következőkre van szükség:
 
 ## <a name="create-a-project-and-import-required-modules"></a>Projekt létrehozása és a szükséges modulok importálása
 
-Hozzon létre egy új projektet egy fájlt a kedvenc IDE- vagy szerkesztő, vagy egy új mappát használata `transliterate-text.py` az asztalon. Ez a kódrészlet majd másolja a projektfájlban:
+Hozzon létre egy új projektet a kedvenc ide vagy szerkesztőjével, vagy egy új mappát, amely `transliterate-text.py` egy nevű fájlt használ az asztalon. Ezután másolja a kódrészletet a projektbe vagy fájlba:
 
 ```python
 # -*- coding: utf-8 -*-
@@ -70,12 +70,12 @@ else:
 #subscriptionKey = 'put_your_key_here'
 ```
 
-A Translator Text globális végpontja van beállítva, a `base_url`. A `path` tulajdonság a `transliterate` útvonalat állítja be, és meghatározza, hogy a 3-as API-verziót szeretnénk használni.
+A Translator Text globális végpont beállítása `base_url`. A `path` tulajdonság a `transliterate` útvonalat állítja be, és meghatározza, hogy a 3-as API-verziót szeretnénk használni.
 
 A beviteli nyelv, valamint a bemeneti és a kimeneti szkriptek a `params` értékeként állíthatók be. Ebben a példában egy japán nyelvű szövegből hozunk létre latin betűs átiratot.
 
 >[!NOTE]
-> Végpontok, útvonalak és a kérelem paramétereinek kapcsolatos további információkért lásd: [Translator Text API 3.0: Átbetűzés](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-transliterate).
+> További információ a végpontokról, az útvonalakról és a kérelmek paraméteréről [: Translator Text API 3,0: Átbetűzés](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-transliterate).
 
 ```python
 base_url = 'https://api.cognitive.microsofttranslator.com'
@@ -98,7 +98,7 @@ headers = {
 }
 ```
 
-Ha egy több szolgáltatást a Cognitive Services-előfizetést használ, akkor is tartalmaznia kell a `Ocp-Apim-Subscription-Region` az a kérelem paramétereit. [További információ a több szolgáltatásos előfizetéshez való hitelesítés közben](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication).
+Ha Cognitive Services több szolgáltatásra kiterjedő előfizetést használ, akkor a kérés paramétereinek `Ocp-Apim-Subscription-Region` is szerepelnie kell. [További információ a többszolgáltatásos előfizetés hitelesítéséről](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication).
 
 ## <a name="create-a-request-to-transliterate-text"></a>Kérelem létrehozása szöveg átírásához
 
@@ -155,14 +155,14 @@ Ha nem változtatható módon adta meg az előfizetői azonosítót a programban
 
 ## <a name="next-steps"></a>További lépések
 
-Vessen egy pillantást az API-referencia az elvégezhető műveletek a Translator Text API ismertetése.
+Tekintse meg az API-referenciát, amely mindent megtudhat a Translator Text API.
 
 > [!div class="nextstepaction"]
 > [API-leírások](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference)
 
 ## <a name="see-also"></a>Lásd még
 
-Ismerje meg, hogyan használható a Translator Text API-t:
+Ismerje meg, hogyan használhatja a Translator Text API a következőhöz:
 
 * [Szöveg lefordítása](quickstart-python-translate.md)
 * [A beviteli nyelv azonosítása](quickstart-python-detect.md)

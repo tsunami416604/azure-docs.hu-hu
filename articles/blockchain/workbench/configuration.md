@@ -209,7 +209,7 @@ A munkafolyamat a végrehajtható függvények határozza meg.
 
 | Mező | Description | Szükséges | Maximális hossz |
 |-------|-------------|:--------:|-----------:|
-| Name (Név) | A függvény egyedi neve. A megfelelő intelligens szerződést kell használnia az azonos **neve** a alkalmazni függvény. | Igen | 50 |
+| Name | A függvény egyedi neve. A megfelelő intelligens szerződést kell használnia az azonos **neve** a alkalmazni függvény. | Igen | 50 |
 | DisplayName | A függvény rövid megjelenített neve. | Igen | 255 |
 | Description | A funkció leírása | Nem | 255 |
 | Paraméterek | A gyűjtemény [azonosítók](#identifiers) megfelelő paramétereire a függvény. | Igen | |
@@ -257,7 +257,7 @@ Egy munkafolyamaton belül egyedi állapotok gyűjteménye. Minden állapot egyi
 
 | Mező | Description | Kötelező | Maximális hossz |
 |-------|-------------|:--------:|-----------:|
-| Name (Név) | Az állapot egyedi nevét. A megfelelő intelligens szerződést kell használnia az azonos **neve** a megfelelő állapothoz. | Igen | 50 |
+| Name | Az állapot egyedi nevét. A megfelelő intelligens szerződést kell használnia az azonos **neve** a megfelelő állapothoz. | Igen | 50 |
 | DisplayName | Az állapot hangzó megjelenítési nevet. | Igen | 255 |
 | Description | Az állapot leírása. | Nem | 255 |
 | KészültségiSzint | Egy egész számot a Blockchain Workbenchet felhasználói felületen a folyamat ellenőrzéséhez az üzleti logika átvitelvezérlés belül jelenik meg. | Igen | |
@@ -371,7 +371,7 @@ Alkalmazás-szerepkörök meghatározhatja egy adott szerepkörök, felhasznál�
 
 | Mező | Description | Kötelező | Maximális hossz |
 |-------|-------------|:--------:|-----------:|
-| Name (Név) | Az alkalmazás-szerepkör egyedi neve. A megfelelő intelligens szerződést kell használnia az azonos **neve** a alkalmazni szerepkörhöz. Základní typ nevek használata nem engedélyezett. Nem lehet nevezze el az alkalmazás-szerepkör neve megegyezik a [típusa](#type)| Igen | 50 |
+| Name | Az alkalmazás-szerepkör egyedi neve. A megfelelő intelligens szerződést kell használnia az azonos **neve** a alkalmazni szerepkörhöz. Základní typ nevek használata nem engedélyezett. Nem lehet nevezze el az alkalmazás-szerepkör neve megegyezik a [típusa](#type)| Igen | 50 |
 | Description | Az alkalmazás-szerepkör leírása. | Nem | 255 |
 
 ### <a name="application-roles-example"></a>Példa az alkalmazások szerepkörök
@@ -394,7 +394,7 @@ Azonosítók munkafolyamat tulajdonságait, konstruktor és függvény paraméte
 
 | Mező | Description | Szükséges | Maximális hossz |
 |-------|-------------|:--------:|-----------:|
-| Name (Név) | A tulajdonság vagy paraméter egyedi neve. A megfelelő intelligens szerződést kell használnia az azonos **neve** a megfelelő tulajdonság vagy paraméter. | Igen | 50 |
+| Name | A tulajdonság vagy paraméter egyedi neve. A megfelelő intelligens szerződést kell használnia az azonos **neve** a megfelelő tulajdonság vagy paraméter. | Igen | 50 |
 | DisplayName | A paraméter vagy hangzó megjelenítési nevet. | Igen | 255 |
 | Description | A tulajdonság, vagy a paraméter leírása. | Nem | 255 |
 

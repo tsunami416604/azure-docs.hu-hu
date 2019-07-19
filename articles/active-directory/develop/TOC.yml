@@ -81,6 +81,8 @@
       href: sample-v2-code.md
     - name: Alapelvek
       items:
+        - name: Hitelesítési alapok
+          href: authentication-scenarios.md
         - name: Hitelesítési folyamatok és alkalmazás-forgatókönyvek
           href: authentication-flows-app-scenarios.md
         - name: Alkalmazáshasználati helyzetek
@@ -271,8 +273,6 @@
                       href: msal-js-known-issues-safari-browser.md
         - name: Hitelesítési protokoll
           items:
-            - name: Hitelesítési alapok
-              href: authentication-scenarios.md
             - name: Alkalmazástípusok és az OAuth2.0
               href: v2-app-types.md
             - name: Az OAuth 2.0 és az OpenID Connect protokoll
