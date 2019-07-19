@@ -4,7 +4,7 @@ description: Megismerheti, hogyan használhatja az Azure Batch szolgáltatást n
 services: batch
 documentationcenter: ''
 author: mscurrell
-manager: jeconnoc
+manager: gwallace
 editor: ''
 ms.assetid: ''
 ms.service: batch
@@ -15,12 +15,12 @@ ms.topic: overview
 ms.date: 01/19/2018
 ms.author: markscu
 ms.custom: mvc
-ms.openlocfilehash: 1dbd31b3c666857765b8b20a11d4d0c7ea8ea37b
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: c55b831903ed8dad124156013c8379536f676efa
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67704758"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68322785"
 ---
 # <a name="what-is-azure-batch"></a>Mi az Azure Batch?
 
@@ -30,7 +30,7 @@ A fejlesztők a Batch platformszolgáltatásként való használatával olyan Sa
 
 A Batch felár nélkül használható. Csak a mögöttes erőforrások, például a virtuális gépek, a tárolók és a hálózatkezelés használatáért kell fizetnie.
 
-Kötegelt és egyéb HPC-megoldás az Azure-ban közötti összehasonlításáért lásd: [magas teljesítményt feldolgozási (HPC) az Azure-ban](https://docs.microsoft.com/azure/architecture/topics/high-performance-computing/).
+Az Azure batch és egyéb HPC-megoldási lehetőségeinek összehasonlítását lásd: [nagy teljesítményű számítástechnika (HPC) az Azure](https://docs.microsoft.com/azure/architecture/topics/high-performance-computing/)-ban.
 
 ## <a name="run-parallel-workloads"></a>Párhuzamos számítási feladatok futtatása
 A Batch nagyszerűen működik a belsőleg párhuzamos (más néven „zavaróan párhuzamos”) számítási feladatokkal. A belsőleg párhuzamos számítási feladatok azok, amelyek esetében az alkalmazások egymástól függetlenül futtathatóak, és mindegyik példány a munka egy részét végzi el. Az alkalmazások végrehajtásakor a példányok hozzáférhetnek bizonyos közös adatokhoz, de egymás között nem kommunikálnak. A belsőleg párhuzamos számítási feladatok ezért nagy méretben futtathatók, amit csupán az alkalmazások egyidejű futtatásához rendelkezésre álló számítási erőforrások mennyisége határoz meg.

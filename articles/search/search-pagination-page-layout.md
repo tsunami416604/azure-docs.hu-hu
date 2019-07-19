@@ -1,6 +1,6 @@
 ---
-title: Keresési eredmények – Azure Search használata
-description: Struktúra és rendezés alapjaként, dokumentumok számát, és adja hozzá a tartalom Navigálás a keresési eredmények az Azure Search szolgáltatásban.
+title: A keresési eredmények használata – Azure Search
+description: A keresési eredmények strukturálása és rendezése, a dokumentumok számának beolvasása, valamint a tartalom navigációjának hozzáadása a Azure Search keresési eredményeihez.
 author: HeidiSteen
 manager: cgronlun
 services: search
@@ -10,106 +10,106 @@ ms.topic: conceptual
 ms.date: 06/13/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 73f0dc98d7d2c3e7aa77f6414cbd58e58599eae7
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: bb86a75be464cb78a16170626bc96778d43bb8b6
+ms.sourcegitcommit: 6b41522dae07961f141b0a6a5d46fd1a0c43e6b2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67068825"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67974626"
 ---
-# <a name="how-to-work-with-search-results-in-azure-search"></a>Hogyan használható a keresési eredmények az Azure Search szolgáltatásban
-Ez a cikk útmutatást nyújt a-keresési eredmények, például a teljes száma, a dokumentum lekéréséhez, a rendezési sorrend és navigációs oldal szokásos megoldások szabványos elemeit megvalósításához. Keresztül megadott oldal kapcsolatos beállításokat, adatokat vagy a keresési eredmények információkat közreműködik a [dokumentum keresése](https://docs.microsoft.com/rest/api/searchservice/Search-Documents) az Azure Search szolgáltatás küldött kérelmeket. 
+# <a name="how-to-work-with-search-results-in-azure-search"></a>Keresési eredmények használata Azure Search
+Ez a cikk útmutatást nyújt a keresési eredmények oldalának szabványos elemeinek megvalósításához, például az összesített számokhoz, a dokumentumok lekéréséhez, a rendezési sorrendekhez és a navigáláshoz. Az oldalhoz kapcsolódó olyan beállítások, amelyek a keresési eredményeknek megfelelő adatokat vagy információkat járulnak hozzá, a Azure Search szolgáltatásnak küldött [keresési dokumentumok](https://docs.microsoft.com/rest/api/searchservice/Search-Documents) között adhatók meg. 
 
-A REST API-kérések közé tartozik egy GET parancs, elérési út, és tájékoztatja a szolgáltatást milyen kérelem lekérdezési paraméterek és hogyan határozhatja meg a választ. A .NET SDK-ban, az egyenértékű API van [DocumentSearchResult osztály](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.documentsearchresult-1).
+A REST API a kérelmek között szerepel a GET parancs, az elérési út és a lekérdezési paraméterek, amelyek tájékoztatják a szolgáltatást a kért szolgáltatásról, valamint a válasz kialakításának módjáról. A .NET SDK-ban az egyenértékű API a [DocumentSearchResult osztály](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.documentsearchresult-1).
 
-Számos mintakódot közé tartozik az előtérbeli webes felületet, amely itt található: [New York City feladatok bemutatóalkalmazást](https://azjobsdemo.azurewebsites.net/) és [CognitiveSearchFrontEnd](https://github.com/LuisCabrer/CognitiveSearchFrontEnd).
+Számos mintakód tartalmaz egy webes frontend felületet, amelyet itt talál: [New York City Jobs bemutató alkalmazás](https://azjobsdemo.azurewebsites.net/) -és [CognitiveSearchFrontEnd](https://github.com/LuisCabrer/CognitiveSearchFrontEnd).
 
 > [!NOTE]
-> Kérés számos olyan elemek, például a szolgáltatás URL-CÍMÉT és az elérési út, HTTP-műveletet, `api-version`, és így tovább. Kihagytuk hogy vágott a példákat, jelölje ki, amely fontos tördelés szintaxisát. Kérelem szintaxissal kapcsolatos további információkért lásd: [Azure Search szolgáltatás REST](https://docs.microsoft.com/rest/api/searchservice).
+> Egy érvényes kérelem számos elemet tartalmaz, például egy szolgáltatás URL-címét és elérési útját, http `api-version`-műveletét stb. A rövidség kedvéért a példákat úgy vágja ki, hogy csak a tördeléshez kapcsolódó szintaxist emelje ki. További információ a kérelem szintaxisáról: [Azure Search szolgáltatás Rest](https://docs.microsoft.com/rest/api/searchservice).
 >
 
-## <a name="total-hits-and-page-counts"></a>Találatok és a lapok száma
+## <a name="total-hits-and-page-counts"></a>Találatok és oldalszámok összesen
 
-Bemutató egy lekérdezés által visszaadott eredmények teljes száma, és a kisebb adattömbökben, majd ezeket a eredményt adnak vissza az alapvető fontosságú, gyakorlatilag az összes keresési oldalakba.
+A lekérdezésből visszaadott eredmények teljes számát jeleníti meg, majd az eredményeket kisebb adattömbökben adja vissza, ami gyakorlatilag minden keresési oldalhoz elengedhetetlen.
 
 ![][1]
 
-Az Azure Search használata a `$count`, `$top`, és `$skip` vissza ezeket az értékeket a paramétereket. A következő példa bemutatja egy mintakérelmet összesítéshez eléri az "online-katalógus", nevű index lekérdezéseire adja vissza a `@odata.count`:
+A Azure Search a, `$count` `$top`a és `$skip` a paramétereket használja az értékek visszaadásához. Az alábbi példa egy "online-katalógus" nevű index összes találatára vonatkozó minta-kérést mutat be, `@odata.count`amelyet a következőként adott vissza:
 
     GET /indexes/online-catalog/docs?$count=true
 
-15 csoportokban lévő dokumentumok lekéréséhez, és is megjelenítheti a találatok, az első oldal kezdőár:
+Kérje le a dokumentumokat 15 csoportba, és jelenítse meg az összes találatot, az első oldalon kezdődően:
 
-    GET /indexes/online-catalog/docs?search=*$top=15&$skip=0&$count=true
+    GET /indexes/online-catalog/docs?search=*&$top=15&$skip=0&$count=true
 
-Eredmények oldalankénti két feltétel szükséges `$top` és `$skip`, ahol `$top` Itt adhatja meg, hány elemek egy kötegben visszaadandó és `$skip` Itt adhatja meg, hány elem kihagyásához. A következő példában a növekményes ezzel a művelettel az egyes lapon látható a következő 15 elemek jelzi a `$skip` paraméter.
+Az oldalszámozási eredményekhez `$top` a `$skip`és a `$top` is szükség van, ahol a meghatározza, hogy hány elemet `$skip` szeretne visszaadni egy kötegben, és megadja, hogy hány elemet szeretne kihagyni. A következő példában az egyes lapok a következő 15 elemet jelenítik meg, amelyeket a `$skip` paraméter növekményes ugrásai jeleznek.
 
-    GET /indexes/online-catalog/docs?search=*$top=15&$skip=0&$count=true
+    GET /indexes/online-catalog/docs?search=*&$top=15&$skip=0&$count=true
 
-    GET /indexes/online-catalog/docs?search=*$top=15&$skip=15&$count=true
+    GET /indexes/online-catalog/docs?search=*&$top=15&$skip=15&$count=true
 
-    GET /indexes/online-catalog/docs?search=*$top=15&$skip=30&$count=true
+    GET /indexes/online-catalog/docs?search=*&$top=15&$skip=30&$count=true
 
 ## <a name="layout"></a>Layout
 
-A keresési eredmények oldalon érdemes asztalnak a miniatűrjére, a mezőket egy részhalmazát és a egy teljes termékkiadásban lapra mutató hivatkozást.
+A keresési eredmények lapon lehet, hogy meg szeretné jeleníteni a miniatűr képét, a mezők egy részhalmazát, valamint egy teljes termékre mutató hivatkozást.
 
  ![][2]
 
-Használja az Azure Search szolgáltatásban `$select` és a egy [keresési API-kérelem](https://docs.microsoft.com/rest/api/searchservice/search-documents) a felület megvalósítása.
+A Azure Search a és egy `$select` [keresési API-kérést](https://docs.microsoft.com/rest/api/searchservice/search-documents) használ a felhasználói élmény megvalósításához.
 
-A mozaik elrendezés mezőket egy részhalmazát adja vissza:
+Mezők egy részhalmazának visszaküldése mozaik elrendezéshez:
 
     GET /indexes/online-catalog/docs?search=*&$select=productName,imageFile,description,price,rating
 
-Képek és adathordozó-fájlok nem közvetlenül kereshető, és egy másik tárolási platform, például az Azure Blob storage, a költségek csökkentése érdekében kell tárolni. Az index és a dokumentumok egy mezőt, amely tárolja a külső tartalom URL-címét határozza meg. Ezután használhatja a mezőt, a lemezkép-hivatkozás. A dokumentum a kép URL-Címének kell lennie.
+A képek és a médiafájlok nem kereshetők közvetlenül, és egy másik tárolási platformon, például az Azure Blob Storage-ban tárolódnak a költségek csökkentése érdekében. Az index és a dokumentumok területen adjon meg egy mezőt, amely a külső tartalom URL-címét tárolja. Ezt követően a mezőt képhivatkozásként is használhatja. A rendszerkép URL-címének szerepelnie kell a dokumentumban.
 
-Beolvasni a leírást termékoldalán egy **onClick** esemény, használja [keresési dokumentum](https://docs.microsoft.com/rest/api/searchservice/Lookup-Document) megadni a dokumentum lekérni a kulcsot. A kulcs az adattípus `Edm.String`. Ebben a példában van *246810*.
+Egy **OnClick** esemény termékleírási oldalának lekéréséhez használja a [keresési dokumentumot](https://docs.microsoft.com/rest/api/searchservice/Lookup-Document) a beolvasandó dokumentum kulcsaként. A kulcs `Edm.String`adattípusa:. Ebben a példában ez *246810*.
 
     GET /indexes/online-catalog/docs/246810
 
-## <a name="sort-by-relevance-rating-or-price"></a>Rendezés találati pontosságot, minősítés vagy ár
+## <a name="sort-by-relevance-rating-or-price"></a>Rendezés relevancia, minősítés vagy ár szerint
 
-Rendezés találati pontosság gyakran alapértelmezés szerint orders, de a gyakori, hogy alternatív rendezési rendelések könnyen elérhető, hogy az ügyfelek egy eltérő sorrend be gyorsan is átütemezésével meglévő eredmények.
+A rendezési sorrendek gyakran az alapértelmezett érték, de gyakori, hogy az alternatív rendezési sorrendek azonnal elérhetők legyenek, így az ügyfelek gyorsan átrendezhetik a meglévő eredményeket egy másik rangsorba.
 
  ![][3]
 
-Az Azure Search szolgáltatásban rendezés alapján a `$orderby` kifejezés, indexeli, mezők `"Sortable": true.` egy `$orderby` záradék egy OData-kifejezésnek. A szintaxissal kapcsolatos információkért lásd: [OData-kifejezések szintaxisa a szűrők és order by záradékok](query-odata-filter-orderby-syntax.md).
+Azure Search a rendezés a `$orderby` kifejezésen alapul, az összes olyan mező esetében, amely `"Sortable": true.` egy `$orderby` záradékként indexelt, OData kifejezés. A szintaxissal kapcsolatos további információkért lásd: [OData kifejezés szintaxisa szűrőkhöz és Order-by záradékokhoz](query-odata-filter-orderby-syntax.md).
 
-Relevancia alapján végzett erősen kapcsolódik a pontozási profilok. Segítségével az alapértelmezett pontozási, amely szövegelemzés és statisztikai támaszkodik egy keresési kifejezést a dokumentumok, amelyek további vagy erősebb egyezés fog magasabb pontszámok a rangsorolt típusú minden eredmény.
+A relevancia erősen társítva van pontozási profilokhoz. Használhatja az alapértelmezett pontozást, amely a szöveges elemzésre és a statisztikákra támaszkodik az összes eredmény rangsorolása érdekében, és a keresési kifejezés több vagy erősebb egyezést eredményező dokumentumoknál magasabb pontszámot fog keresni.
 
-Alternatív a rendezési sorrend azok **onClick** eseményeket, amelyek visszahívást olyan módszer, amely összeállítja a rendezési sorrendet. Ha például adott ezt oldal elem:
+Az alternatív rendezési sorrendek általában olyan **OnClick** -eseményekhez vannak társítva, amelyek a rendezési sorrendet felépítő metódusnak hívnak vissza. Például az oldal eleme:
 
  ![][4]
 
-Akkor kell létrehoznia egy metódushoz, amely fogad el bemenetként a kijelölt rendezési beállítás, és a egy társított ezt a lehetőséget a feltétel számára rendezett listát ad vissza.
+Hozzon létre egy metódust, amely fogadja a kiválasztott rendezési lehetőséget bemenetként, és egy rendezett listát ad vissza a beállításhoz társított feltételekhez.
 
  ![][5]
 
 > [!NOTE]
-> Bár az alapértelmezett pontozási számos forgatókönyv esetében elegendő, javasoljuk, hogy inkább az egyéni a pontozási profilok relevancia alapján végzett egyik. Egy egyéni relevanciaprofil boost elemek, amelyek több előnyös, ha az üzleti egy megoldást kínál. Lásd: [relevanciaprofil hozzáadása](index-add-scoring-profiles.md) további információt.
+> Habár az alapértelmezett pontozás számos forgatókönyv esetében elegendő, javasoljuk, hogy az egyéni pontozási profilra alapozza a fontosságot. Az egyéni pontozási profilok lehetővé teszik az üzleti szempontból előnyös elemek növelését. További információ: [pontozási profilok hozzáadása](index-add-scoring-profiles.md) .
 >
 
 ## <a name="faceted-navigation"></a>Jellemzőalapú navigáció
 
-Keresés a navigációban szokás eredmények oldalon gyakran oldalán vagy a lap tetején található. Az Azure Search szolgáltatásban a jellemzőalapú navigáció biztosít önállóan irányított keresés előre definiált szűrők alapján. Lásd: [Jellemzőalapú navigáció az Azure Search](search-faceted-navigation.md) részleteiről.
+A keresési navigáció gyakori az eredmények oldalon, gyakran az oldal oldalán vagy tetején található. Azure Search a csiszolatlan navigálás az előre definiált szűrők alapján önálló irányított keresést tesz lehetővé. A részletekért tekintse [meg a Azure Search csiszolt navigáció](search-faceted-navigation.md) című témakört.
 
-## <a name="filters-at-the-page-level"></a>A lapszintű szűrők
+## <a name="filters-at-the-page-level"></a>Szűrők az oldal szintjén
 
-Ha a megoldás kialakításának tartalmazza az adott típusú tartalom (például olyan online kereskedelmi alkalmazás megjelenik az oldal tetején lévő részlegek) dedikált keresési oldalak, beszúrhat egy [szűrési kifejezés](search-filters.md) mellett egy **onClick** esemény előre szűrt állapotban lévő oldal megnyitásához.
+Ha a megoldás kialakítása speciális keresési lapokat tartalmaz bizonyos típusú tartalmakhoz (például egy online kereskedelmi alkalmazáshoz, amely az oldal tetején található részlegeket tartalmazza), akkor egy **OnClick** eseményhez kapcsolódó [szűrési kifejezést](search-filters.md) szúrhat be a következőre: egy oldal megnyitása előre szűrt állapotban.
 
-Egy szűrő vagy anélkül egy keresési kifejezést is elküldheti. Például a következő kérelmet szűrést márkanév, csak a megfelelő, dokumentumok visszaadása.
+A szűrőket keresési kifejezéssel vagy anélkül is elküldheti. A következő kérelem például a márkanév alapján fog szűrni, és csak azokat a dokumentumokat adja vissza, amelyek megfelelnek a névnek.
 
     GET /indexes/online-catalog/docs?$filter=brandname eq 'Microsoft' and category eq 'Games'
 
-Lásd: [dokumentumok keresése (Azure Search API)](https://docs.microsoft.com/rest/api/searchservice/Search-Documents) bővebben `$filter` kifejezéseket.
+A `$filter` kifejezésekkel kapcsolatos további információkért tekintse meg a [dokumentumok keresése (Azure Search API)](https://docs.microsoft.com/rest/api/searchservice/Search-Documents) című témakört.
 
 ## <a name="see-also"></a>Lásd még:
 
-- [Az Azure Search szolgáltatás REST API-ja](https://docs.microsoft.com/rest/api/searchservice)
-- [Indexműveletek](https://docs.microsoft.com/rest/api/searchservice/Index-operations)
-- [A dokumentum műveletek](https://docs.microsoft.com/rest/api/searchservice/Document-operations)
-- [Jellemzőalapú navigáció az Azure Search szolgáltatásban](search-faceted-navigation.md)
+- [Azure Search szolgáltatás REST API](https://docs.microsoft.com/rest/api/searchservice)
+- [Indexelési műveletek](https://docs.microsoft.com/rest/api/searchservice/Index-operations)
+- [Dokumentumok műveletei](https://docs.microsoft.com/rest/api/searchservice/Document-operations)
+- [Sokoldalú Navigálás Azure Search](search-faceted-navigation.md)
 
 <!--Image references-->
 [1]: ./media/search-pagination-page-layout/Pages-1-Viewing1ofNResults.PNG

@@ -1,23 +1,23 @@
 ---
-title: 'Oktatóanyag: Adatok betöltése az Azure SQL Data Warehouse |} A Microsoft Docs'
-description: Oktatóanyag az Azure portal és az SQL Server Management Studio segítségével tölthető be a WideWorldImportersDW adattárházat a globális Azure-blobból Azure SQL Data Warehouse.
+title: 'Oktatóanyag: Betöltés az Azure SQL Data Warehouseba | Microsoft Docs'
+description: Az oktatóanyag Azure Portal és SQL Server Management Studio használatával tölti be a Wideworldimportersdw adattárházat-adattárházat egy globális Azure-blobból a Azure SQL Data Warehouseba.
 services: sql-data-warehouse
 author: kevinvngo
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: load-data
-ms.date: 04/17/2018
+ms.date: 07/17/2019
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: e20667c0414f551a545e66b84da31c873c96dc48
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: 30b4009b2f52f4949a380f0fc51b02f94c98d966
+ms.sourcegitcommit: 770b060438122f090ab90d81e3ff2f023455213b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67589023"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68304296"
 ---
-# <a name="tutorial-load-data-to-azure-sql-data-warehouse"></a>Oktatóanyag: Adatok betöltése az Azure SQL Data warehouse-bA
+# <a name="tutorial-load-data-to-azure-sql-data-warehouse"></a>Oktatóanyag: Betöltés az Azure SQL Data Warehouseba
 
 Ez az oktatóanyag a PolyBase segítségével tölti be a WideWorldImportersDW adattárházat az Azure Blob Storage-ból az Azure SQL Data Warehouse-ba. Az oktatóanyag az [Azure Portalt](https://portal.azure.com) és az [SQL Server Management Studiót](/sql/ssms/download-sql-server-management-studio-ssms) (SSMS) használja a következőkhöz:
 
@@ -78,9 +78,9 @@ Kövesse az alábbi lépéseket egy üres SQL-adattárház létrehozásához.
 
 5. Kattintson a **Kiválasztás** gombra.
 
-6. Kattintson a **Teljesítményszint** elemre az adattárházegységek számának, valamint annak meghatározásához, hogy az adattárház rugalmasságra vagy számítási feladatokra legyen optimalizálva. 
+6. Kattintson a **teljesítményszint** elemre annak megadásához, hogy az adatraktár Gen1 vagy Gen2, valamint az adatraktár-egységek számát. 
 
-7. A jelen oktatóanyag esetében válassza a **Rugalmasságra optimalizált** szolgáltatási szintet. A csúszka alapértelmezés szerint a **DW400** értéken áll.  Csúsztassa fel és le, hogy kipróbálja a működését a gyakorlatban. 
+7. Ebben az oktatóanyagban válassza a **Gen1** szolgáltatási szintet. A csúszka alapértelmezés szerint a **DW400** értéken áll.  Csúsztassa fel és le, hogy kipróbálja a működését a gyakorlatban. 
 
     ![teljesítmény konfigurálása](media/load-data-wideworldimportersdw/configure-performance.png)
 
@@ -158,7 +158,7 @@ Ebben a részben az [SQL Server Management Studio](/sql/ssms/download-sql-server
 
 4. Kattintson a **Csatlakozás** gombra. Megnyílik az Object Explorer ablak az SSMS-ben. 
 
-5. Az Object Explorerben bontsa ki a **Databases** (Adatbázisok) elemet. Ezután bontsa ki a **System databases** (Rendszeradatbázisok) és a **master** elemeket az objektumok megtekintéséhez a master adatbázisban.  Bontsa ki a **SampleDW** az új adatbázisban található objektumok megtekintéséhez.
+5. Az Object Explorerben bontsa ki a **Databases** (Adatbázisok) elemet. Ezután bontsa ki a **System databases** (Rendszeradatbázisok) és a **master** elemeket az objektumok megtekintéséhez a master adatbázisban.  Bontsa ki a **sampledw adatbázison** elemet az új adatbázisban található objektumok megtekintéséhez.
 
     ![adatbázis-objektumok](media/load-data-wideworldimportersdw/connected.png) 
 
@@ -217,7 +217,7 @@ Az adatok betöltésének első lépése a LoaderRC60-ként való bejelentkezés
 
 Készen áll megkezdeni az adatok az új adattárházba való betöltésének folyamatát. Ha később szeretné megismerni az adatok Azure Blob Storage-ba való áthelyezésének vagy a forrásból közvetlenül az SQL Data Warehouse-ba való betöltésének a módját, olvassa el a [betöltés áttekintését](sql-data-warehouse-overview-load.md).
 
-Futtassa a következő SQL-szkripteket a betölteni kívánt adatokra vonatkozó információk megadásához. Ezen információk közé tartozik az adatok helye, az adatok tartalmának formátuma és az adatok tábladefiníciója. Az adatok egy globális Azure-blobban találhatók.
+Futtassa a következő SQL-szkripteket a betölteni kívánt adatokra vonatkozó információk megadásához. Ezen információk közé tartozik az adatok helye, az adatok tartalmának formátuma és az adatok tábladefiníciója. Az adatközpont egy globális Azure-blobban található.
 
 1. Az előző szakaszban LoaderRC60-ként jelentkezett be az adattárházba. Az SSMS-ben kattintson a jobb gombbal a LoaderRC60-kapcsolat alatt található **SampleDW** elemre, és válassza a **New Query** (Új lekérdezés) elemet.  Megnyílik egy új lekérdezési ablak. 
 
@@ -231,7 +231,7 @@ Futtassa a következő SQL-szkripteket a betölteni kívánt adatokra vonatkozó
     CREATE MASTER KEY;
     ```
 
-4. Futtassa a következő [CREATE EXTERNAL DATA SOURCE](/sql/t-sql/statements/create-external-data-source-transact-sql) utasítást az Azure blob helyének meghatározásához. Ez az a hely a külső világszerte importers adatok.  A lekérdezési ablakhoz hozzáfűzött parancsok futtatásához jelölje ki a futtatni kívánt parancsokat, majd kattintson az **Execute** (Végrehajtás) elemre.
+4. Futtassa a következő [CREATE EXTERNAL DATA SOURCE](/sql/t-sql/statements/create-external-data-source-transact-sql) utasítást az Azure blob helyének meghatározásához. Ez a külső globális importőrök által tárolt adatmennyiség helye.  A lekérdezési ablakhoz hozzáfűzött parancsok futtatásához jelölje ki a futtatni kívánt parancsokat, majd kattintson az **Execute** (Végrehajtás) elemre.
 
     ```sql
     CREATE EXTERNAL DATA SOURCE WWIStorage
@@ -540,13 +540,13 @@ Futtassa a következő SQL-szkripteket a betölteni kívánt adatokra vonatkozó
     );
     ```
 
-8. Az Object Explorerben bontsa ki a sampledw elemet az Ön által létrehozott külső táblák listájának megtekintéséhez.
+8. A Object Explorer bontsa ki a Sampledw adatbázison elemet a létrehozott külső táblák listájának megtekintéséhez.
 
     ![Külső táblák megtekintése](media/load-data-wideworldimportersdw/view-external-tables.png)
 
 ## <a name="load-the-data-into-your-data-warehouse"></a>Az adatok betöltése az adattárházba
 
-Ez a szakasz a mintaadatok betöltését az Azure-Blobból az SQL Data Warehouse definiált külső táblák használja.  
+Ez a szakasz a mintaadatok Azure Blobból SQL Data Warehouseba való betöltéséhez megadott külső táblázatokat használja.  
 
 > [!NOTE]
 > Ez az oktatóanyag az adatokat közvetlenül a végső táblázatba tölti be. Éles környezetben általában a CREATE TABLE AS SELECT utasítás használatával végez betöltést egy előkészítési táblába. Amíg az adatok az előkészítési táblában vannak, bármilyen szükséges átalakítás elvégezhető rajtuk. Az előkészítési táblában lévő adatok éles táblához való hozzáfűzéséhez használhatja az INSERT...SELECT utasítást. További információkért lásd: [Adatok beszúrása egy éles táblába](guidance-for-loading-data.md#inserting-data-into-a-production-table).
@@ -554,7 +554,7 @@ Ez a szakasz a mintaadatok betöltését az Azure-Blobból az SQL Data Warehouse
 
 A szkript a [CREATE TABLE AS SELECT (CTAS)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse) T-SQL-utasítást használja az adatok betöltéséhez az Azure Storage-blobból az adattárházban található új táblákba. A CTAS egy új táblát hoz létre egy kiválasztási utasítás eredményei alapján. Az új tábla oszlopai és adattípusai megegyeznek a kiválasztási utasítás eredményeivel. Amikor a kiválasztási utasítás egy külső táblából választ, az SQL Data Warehouse egy relációs táblába importálja az adatokat az adattárházban. 
 
-Ez a szkript nem tölt be adatokat a wwi.dimension_Date és wwi.fact_Sale táblákba. Ezek a táblák egy későbbi lépésben jönnek létre, hogy a tábláknak megfelelő számú sora legyen.
+Ez a parancsfájl nem tölti be az adatbevitelt az első világháború. dimension_Date és az első világháború. fact_Sale tábláiba. Ezek a táblák egy későbbi lépésben jönnek létre, hogy a tábláknak megfelelő számú sora legyen.
 
 1. Futtassa a következő szkriptet az adatok betöltéséhez az adattárházban található új táblákba.
 
@@ -750,7 +750,7 @@ Ez a szkript nem tölt be adatokat a wwi.dimension_Date és wwi.fact_Sale tábl�
 
 ## <a name="create-tables-and-procedures-to-generate-the-date-and-sales-tables"></a>Táblák és eljárások létrehozása a Date és Sales táblák létrehozásához
 
-Ez a szakasz a wwi.dimension_Date és wwi.fact_Sale táblát hoz létre. A wwi.dimension_Date és wwi.fact_Sale tábla sorok millióinak előállítására képes tárolt eljárásokat is létrehoz.
+Ez a szakasz létrehozza az első világháború. dimension_Date és az első világháború. fact_Sale táblákat. Emellett olyan tárolt eljárásokat is létrehoz, amelyek több millió sort hozhatnak létre az első világháború. dimension_Date és az első világháború. fact_Sale tábláiban.
 
 1. Hozza létre a dimension_Date és a fact_Sale táblát.  
 
@@ -893,7 +893,7 @@ Ez a szakasz a wwi.dimension_Date és wwi.fact_Sale táblát hoz létre. A wwi.d
     DROP table #days;
     END;
     ```
-4. Ez az eljárás, amely feltölti a wwi.dimension_Date és wwi.fact_Sale táblát hozzon létre. Meghívja a [wwi].[PopulateDateDimensionForYear] eljárást a wwi.dimension_Date feltöltéséhez.
+4. Hozza létre ezt az eljárást, amely feltölti az első világháború. dimension_Date és az első világháború. fact_Sale táblákat. Meghívja a [wwi].[PopulateDateDimensionForYear] eljárást a wwi.dimension_Date feltöltéséhez.
 
     ```sql
     CREATE PROCEDURE [wwi].[Configuration_PopulateLargeSaleTable] @EstimatedRowsPerDay [bigint],@Year [int] AS
@@ -949,7 +949,7 @@ Ez a szakasz a wwi.dimension_Date és wwi.fact_Sale táblát hoz létre. A wwi.d
     ```
 
 ## <a name="generate-millions-of-rows"></a>Sorok millióinak előállítása
-Sorok millióinak előállítása a wwi.fact_Sale tábla és a hozzájuk tartozó adatokat a wwi.dimension_Date táblában létrehozott tárolt eljárásokat használhatja. 
+A létrehozott tárolt eljárások segítségével több millió sort hozhat létre az első világháború. fact_Sale táblában, valamint az első világháború. dimension_Date táblában található megfelelő adatmennyiséget. 
 
 
 1. Futtassa ezt az eljárást, hogy a [wwi].[seed_Sale] további sorokkal töltődjön fel.
@@ -958,7 +958,7 @@ Sorok millióinak előállítása a wwi.fact_Sale tábla és a hozzájuk tartoz�
     EXEC [wwi].[InitialSalesDataPopulation]
     ```
 
-2. Futtassa ezt az eljárást minden nap a 2000 napi 100 000 sorral wwi.fact_Sale feltöltéséhez.
+2. Futtassa ezt az eljárást az első lépések megtételéhez a 100 000-as számú, a 2000-es év minden napján napi sorral.
 
     ```sql
     EXEC [wwi].[Configuration_PopulateLargeSaleTable] 100000, 2000
@@ -1098,7 +1098,7 @@ Kövesse az alábbi lépéseket a fölöslegessé vált erőforrások eltávolí
 
     ![Az erőforrások eltávolítása](media/load-data-from-azure-blob-storage-using-polybase/clean-up-resources.png)
 
-2. Ha szeretné az adatokat megtartani a tárolóban, a számítási erőforrásokat szüneteltetheti, amíg nem használja az adattárházat. A számítás felfüggesztése, csak akkor adatok tárhelyére, és folytathatja a számítást, amikor készen áll az adatokkal való munka. A számítási erőforrások szüneteltetéshez kattintson a **Szüneteltetés** gombra. Ha az adattárház szüneteltetve van, az **Indítás** gomb látható.  A számítási erőforrások újraindításához kattintson az **Indítás** gombra.
+2. Ha szeretné az adatokat megtartani a tárolóban, a számítási erőforrásokat szüneteltetheti, amíg nem használja az adattárházat. A számítás felfüggesztésével csak az Adattárolásért kell fizetnie, és folytathatja a számítást, amikor készen áll az adatokkal való munkára. A számítási erőforrások szüneteltetéshez kattintson a **Szüneteltetés** gombra. Ha az adattárház szüneteltetve van, az **Indítás** gomb látható.  A számítási erőforrások újraindításához kattintson az **Indítás** gombra.
 
 3. Ha szeretné megelőzni a jövőbeli kiadásokat, az adattárházat törölheti is. Ha el szeretné távolítani az adattárházat, hogy a számítási és tárolási erőforrásokért se kelljen fizetnie, kattintson a **Törlés** parancsra.
 
@@ -1120,7 +1120,7 @@ A következőket hajtotta végre:
 > * Az adatok állapotának megtekintése betöltés közben
 > * Statisztikák készítése az újonnan betöltött adatokról
 
-Folytassa a megtudhatja, hogyan telepíthet át egy meglévő adatbázist az SQL Data Warehouse fejlesztői áttekintés.
+Folytassa a fejlesztési áttekintéssel, amelyből megtudhatja, hogyan telepíthet át egy meglévő adatbázist SQL Data Warehouseba.
 
 > [!div class="nextstepaction"]
->[Tervezési döntéseket telepíthet át egy meglévő adatbázist az SQL Data Warehouse](sql-data-warehouse-overview-develop.md)
+>[Megtervezheti a meglévő adatbázisok SQL Data Warehouseba való átépítésének döntéseit](sql-data-warehouse-overview-develop.md)

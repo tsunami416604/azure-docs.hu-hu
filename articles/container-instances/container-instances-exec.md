@@ -1,38 +1,39 @@
 ---
-title: Hajtsa végre a parancsokat a futó tárolók az Azure Container Instances szolgáltatásban
-description: Ismerje meg, hogyan hajtsa végre a parancsot egy tároló, amely jelenleg fut az Azure Container Instances szolgáltatásban
+title: Parancsok végrehajtása a futó tárolókban Azure Container Instances
+description: Megtudhatja, hogyan hajthat végre egy parancsot egy olyan tárolóban, amely jelenleg fut Azure Container Instances
 services: container-instances
 author: dlepow
+manager: gwallace
 ms.service: container-instances
 ms.topic: article
 ms.date: 03/30/2018
 ms.author: danlep
-ms.openlocfilehash: 577e2386c352798bc21a2c78b22726128ac7cf0a
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: a8583cf605891631a2bce6914b24525aebd59ea0
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60579746"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68325982"
 ---
-# <a name="execute-a-command-in-a-running-azure-container-instance"></a>Futtassa a parancsot a futó Azure container instance-példány
+# <a name="execute-a-command-in-a-running-azure-container-instance"></a>Parancs végrehajtása egy futó Azure Container-példányban
 
-Az Azure Container Instances támogatja a parancs végrehajtása a futó tárolót. A parancs futtatása egy tárolóban, hogy már használatba különösen hasznos az alkalmazások fejlesztését és a hibaelhárítás során. A leggyakoribb Ez a funkció használata interaktív shell elindításához, így Ön is a futó tárolót kapcsolatos problémák megoldásában.
+Azure Container Instances támogatja a parancs futtatását egy futó tárolóban. A már elindított tárolók egy parancsának futtatása különösen hasznos az alkalmazások fejlesztése és hibaelhárítása során. Ennek a funkciónak a leggyakoribb funkciója egy interaktív rendszerhéj elindítása, amely a futó tárolók hibáinak hibakeresését teszi elérhetővé.
 
-## <a name="run-a-command-with-azure-cli"></a>Az Azure CLI-parancs futtatása
+## <a name="run-a-command-with-azure-cli"></a>Parancs futtatása az Azure CLI-vel
 
-Futtassa a parancsot a futó tároló [az tároló exec] [ az-container-exec] a a [Azure CLI-vel][azure-cli]:
+Parancs végrehajtása futó tárolóban az [az Container exec][az-container-exec] in the [Azure CLI][azure-cli]:
 
 ```azurecli
 az container exec --resource-group <group-name> --name <container-group-name> --exec-command "<command>"
 ```
 
-Ha például egy Bash-rendszerhéjból az Nginx-tároló elindításához:
+Például egy bash-rendszerhéj elindításához egy Nginx-tárolóban:
 
 ```azurecli
 az container exec --resource-group myResourceGroup --name mynginx --exec-command "/bin/bash"
 ```
 
-Az alábbi példa kimenetében, a Bash felületen elindításkor mindig futó Linux-tárolók biztosít, amelyben parancsot egy terminálban a `ls` hajtja végre:
+Az alábbi példában a bash rendszerhéj egy futó Linux-tárolóban indul el, amely egy olyan terminált biztosít, `ls` amelyben a végrehajtás fut:
 
 ```console
 $ az container exec --resource-group myResourceGroup --name mynginx --exec-command "/bin/bash"
@@ -44,7 +45,7 @@ exit
 Bye.
 ```
 
-Ebben a példában egy futó Nanoserver-tárolót a parancssor használatával indul el:
+Ebben a példában a parancssor egy futó Nanoserver-tárolóban indul el:
 
 ```console
 $ az container exec --resource-group myResourceGroup --name myiis --exec-command "cmd.exe"
@@ -74,9 +75,9 @@ Bye.
 
 ## <a name="multi-container-groups"></a>Többtárolós csoportok
 
-Ha a [tárolócsoport](container-instances-container-groups.md) rendelkezik több tárolót, például egy alkalmazástárolót, és a naplózás az oldalkocsi, adja meg a használandó futtassa a parancsot a tároló neve `--container-name`.
+Ha a [tároló-csoport](container-instances-container-groups.md) több tárolót tartalmaz, például egy alkalmazás-tárolót és egy az oldalkocsit, adja meg annak a tárolónak a nevét, `--container-name`amelyben a parancsot futtatni kívánja.
 
-Például a tárolócsoport *mynginx* két tárolói *nginx-alkalmazás* és *naplózó*. Az-shell elindításához a *nginx-alkalmazás* tároló:
+Például a Container Group *mynginx* két tároló, *Nginx-app* és *Logger*. Rendszerhéj elindítása az *Nginx-app* tárolóban:
 
 ```azurecli
 az container exec --resource-group myResourceGroup --name mynginx --container-name nginx-app --exec-command "/bin/bash"
@@ -84,11 +85,11 @@ az container exec --resource-group myResourceGroup --name mynginx --container-na
 
 ## <a name="restrictions"></a>Korlátozások
 
-Az Azure Container Instances jelenleg támogatja az egyetlen folyamat elindítása [az tároló exec][az-container-exec], és a parancs argumentumai nem adhatók át. Például nem láncolt parancsok például a `sh -c "echo FOO && echo BAR"`, vagy hajtsa végre a `echo FOO`.
+Azure Container Instances jelenleg egyetlen folyamat indítását támogatja az [az Container exec][az-container-exec]paranccsal, és a parancs argumentumai nem adhatók át. Például nem lehet a (z) vagy a `sh -c "echo FOO && echo BAR"`Execute `echo FOO`parancshoz hasonló parancsokat kikötni.
 
 ## <a name="next-steps"></a>További lépések
 
-Ismerje meg más hibaelhárítási eszközei és a gyakori üzembe helyezési problémák [tároló és a telepítési problémák az Azure Container Instances szolgáltatásban](container-instances-troubleshooting.md).
+További információ a hibaelhárítási eszközökről és az általános telepítési problémákról: a [tárolók és az üzembe helyezési problémák elhárítása Azure Container Instancesban](container-instances-troubleshooting.md).
 
 <!-- LINKS - internal -->
 [az-container-create]: /cli/azure/container#az-container-create

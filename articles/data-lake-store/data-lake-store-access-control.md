@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: twooley
-ms.openlocfilehash: 211cb32298b17bb9e4023bf8bc74233c3916f58d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 276e691351d852d6dcb0075d47bf33af6767fc10
+ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60879106"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "68226098"
 ---
 # <a name="access-control-in-azure-data-lake-storage-gen1"></a>Hozzáférés-vezérlés az Azure Data Lake Storage Gen1
 
@@ -27,9 +27,9 @@ Az Azure Data Lake Storage Gen1 egy hozzáférés-vezérlési modellből szárma
 
 Kétféle hozzáférés-vezérlési lista (ACL) létezik – a **hozzáférési ACL** és az **alapértelmezett ACL**.
 
-* **Hozzáférési ACL-ek**: Hozzáféréseit vezérlik az objektum. A fájlok és mappák egyaránt rendelkeznek hozzáférési ACL-lel.
+* **Hozzáférési ACL**-EK: Ezek a vezérlőelemek egy objektumhoz férnek hozzá. A fájlok és mappák egyaránt rendelkeznek hozzáférési ACL-lel.
 
-* **Alapértelmezett ACL-ek**: Egy ACL "sablon", a mappához társított amelyek meghatározzák, hogy bármely adott mappában létrehozott gyermekelemek hozzáférési ACL-ek. A fájlok nem rendelkeznek alapértelmezett ACL-ekkel.
+* **Alapértelmezett ACL**-EK: Egy olyan mappához tartozó ACL sablonja, amely meghatározza az adott mappában létrehozott alárendelt elemek hozzáférési ACL-jeit. A fájlok nem rendelkeznek alapértelmezett ACL-ekkel.
 
 
 A hozzáférési ACL-ek és alapértelmezett ACL-ek ugyanazzal a struktúrával rendelkeznek.
@@ -133,7 +133,7 @@ Mivel nincs "elsődleges csoporttal" tartozó Data Lake Storage Gen1 a felhaszn�
 **Egy új fájl vagy mappa esetében a tulajdonoscsoport hozzárendelése**
 
 * **1. eset**: A gyökérmappa "/". Ez a mappa a Data Lake Storage Gen1 fiók létrehozásakor jön létre. Ebben az esetben a tulajdonoscsoport értéke egy minden nulla GUID-Azonosítót.  Ez az érték nem engedélyezi a hozzáférést.  Egy helyőrző addig egy csoport van hozzárendelve.
-* **2. eset** (minden egyéb eset): Új elem létrehozásakor a tulajdonoscsoport a szülőmappából másolódik át.
+* **2. eset** (Minden egyéb eset): Új elem létrehozásakor a rendszer átmásolja a tulajdonos csoportot a szülőmappa mappájából.
 
 **A tulajdonoscsoport módosítása**
 
@@ -166,7 +166,7 @@ def access_check( user, desired_perms, path ) :
   # Handle the owning user. Note that mask IS NOT used.
   entry = get_acl_entry( path, OWNER )
   if (user == entry.identity)
-      return ( (desired_perms & e.permissions) == desired_perms )
+      return ( (desired_perms & entry.permissions) == desired_perms )
 
   # Handle the named users. Note that mask IS used.
   entries = get_acl_entries( path, NAMED_USER )
@@ -216,9 +216,9 @@ Az új fájlok vagy mappák meglévő mappában történő létrehozásakor a sz
 
 ### <a name="umask"></a>umask
 
-Egy fájl vagy mappa létrehozásakor umask segítségével módosíthatja az alapértelmezett ACL-ek az alárendelt elem beállításának módját. umask egy 9 bites egy 9 bites érték, amely tartalmaz egy RWX-érték a fölérendelt mappák **tulajdonos**, **tulajdonoscsoport**, és **más**.
+Egy fájl vagy mappa létrehozásakor umask segítségével módosíthatja az alapértelmezett ACL-ek az alárendelt elem beállításának módját. a umask egy 9 bites érték a szülő mappákban, amelyek RWX értéket tartalmaznak a **tulajdonos felhasználó**, a **tulajdonos csoport**és a **többi**számára.
 
-Az Azure Data Lake Storage Gen1 állandó érték, amely az umask 007 beállítása. Ezt az értéket a rendszer lefordítja arra
+A Azure Data Lake Storage Gen1 umask egy állandó érték, amely a 007-re van állítva. Ezt az értéket a rendszer lefordítja arra
 
 | umask összetevő     | Numerikus alak | Rövid alak | Jelentés |
 |---------------------|--------------|------------|---------|

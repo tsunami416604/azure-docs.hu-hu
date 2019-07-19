@@ -1,24 +1,25 @@
 ---
-title: Az Azure Monitor naplóira tároló példány naplózása
-description: Ismerje meg, hogyan lehet elküldeni a naplókat az Azure container instances Azure Monitor naplóira.
+title: Tároló-példányok naplózása Azure Monitor naplókkal
+description: Ismerje meg, hogyan küldhet naplókat az Azure Container instances szolgáltatásból Azure Monitor naplókba.
 services: container-instances
 author: dlepow
+manager: gwallace
 ms.service: container-instances
 ms.topic: overview
 ms.date: 07/09/2019
 ms.author: danlep
-ms.openlocfilehash: cab0bc4d2d0491c70a1d2f11f3a5d5d831ade6cf
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.openlocfilehash: 4099bc0b15f02faade02f47aeb00fb7c4b4a3332
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67722644"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68325887"
 ---
-# <a name="container-instance-logging-with-azure-monitor-logs"></a>Az Azure Monitor naplóira tároló példány naplózása
+# <a name="container-instance-logging-with-azure-monitor-logs"></a>Tároló-példányok naplózása Azure Monitor naplókkal
 
-Log Analytics-munkaterületek adjon meg egy központi helyre a tároló és lekérdező nem csak Azure-erőforrásokat, de is a helyszíni erőforrásokhoz és erőforrások más felhőkben naplóadatait. Az Azure Container Instances szolgáltatás beépített módon támogatja az Azure Monitor naplóira történő adatküldés.
+Log Analytics-munkaterületek központi helyet biztosítanak a naplófájlok adatainak tárolásához és lekérdezéséhez nem csak az Azure-erőforrások, hanem a helyszíni erőforrások és erőforrások között más felhőkben is. A Azure Container Instances beépített támogatást nyújt az adatok Azure Monitor naplókba való küldéséhez.
 
-Tároló példány adatokat küldeni az Azure Monitor naplóira, meg kell adnia egy Log Analytics munkaterület Azonosítóját és a munkaterület kulcsát, amikor egy tárolócsoportot hoz létre. A következő szakaszok egy naplózható tárolócsoport létrehozásának és a naplók lekérdezésének menetét ismertetik.
+A tároló-példányok adatAzure Monitori naplóiba való küldéséhez meg kell adnia egy Log Analytics-munkaterület AZONOSÍTÓját és a munkaterület kulcsát egy tároló-csoport létrehozásakor. A következő szakaszok egy naplózható tárolócsoport létrehozásának és a naplók lekérdezésének menetét ismertetik.
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
@@ -33,10 +34,10 @@ A tárolópéldányokban való naplózás engedélyezéséhez a következőkre v
 
 Az Azure Container Instancesnek engedélyre van szüksége ahhoz, hogy adatokat küldhessen a Log Analytics-munkaterületre. Ennek az engedélynek a megadásához és a naplózás engedélyezéséhez a tárolócsoport létrehozásakor meg kell adnia a Log Analytics-munkaterület azonosítóját és egy ahhoz tartozó kulcsot (az elsődleges vagy a másodlagos kulcsot).
 
-A log analytics-munkaterület Azonosítójára és az elsődleges kulcs beszerzése:
+A log Analytics-munkaterület AZONOSÍTÓjának és elsődleges kulcsának beszerzése:
 
 1. Az Azure Portalon lépjen a saját Log Analytics-munkaterületére
-1. A **beállítások**válassza **speciális beállítások**
+1. A **Beállítások**területen válassza a **Speciális beállítások** lehetőséget.
 1. Válassza ki az **Összekapcsolt források** > **Windows-kiszolgálók** lehetőséget (vagy **Linux-kiszolgálók** lehetőséget – mindkettőhöz ugyanaz az azonosító és kulcs tartozik)
 1. Jegyezze fel a következőket:
    * **MUNKATERÜLET AZONOSÍTÓJA**
@@ -44,13 +45,13 @@ A log analytics-munkaterület Azonosítójára és az elsődleges kulcs beszerz�
 
 ## <a name="create-container-group"></a>Tárolócsoport létrehozása
 
-Most, hogy a log analytics-munkaterület Azonosítójára és az elsődleges kulcs, készen áll naplózás engedélyezése tárolócsoport létrehozásához.
+Most, hogy megkapta a log Analytics-munkaterület AZONOSÍTÓját és az elsődleges kulcsot, készen áll egy naplózásra képes tároló csoport létrehozására.
 
-Az alábbi példák bemutatják, kétféle módon hozhat létre egy tárolócsoport egyetlen [fluentd][fluentd] tároló: Az Azure CLI és az Azure CLI-t egy YAML-sablont. A Fluentd tároló az alapértelmezett konfiguráció szerint több sornyi kimenetet hoz létre. Mivel ez a kimenet a Log Analytics-munkaterületre lesz elküldve, jól használható a naplók megtekintésének és lekérdezésének bemutatásához.
+Az alábbi példák két módszert mutatnak be egy olyan tároló-csoport létrehozására, amely egyetlen [Fluent][fluentd] -tárolóval rendelkezik: Az Azure CLI és az Azure CLI egy YAML sablonnal. A Fluentd tároló az alapértelmezett konfiguráció szerint több sornyi kimenetet hoz létre. Mivel ez a kimenet a Log Analytics-munkaterületre lesz elküldve, jól használható a naplók megtekintésének és lekérdezésének bemutatásához.
 
 ### <a name="deploy-with-azure-cli"></a>Üzembe helyezés az Azure CLI-vel
 
-Adja meg az Azure CLI-vel üzembe helyezéséhez a `--log-analytics-workspace` és `--log-analytics-workspace-key` paramétereket a [az tároló létrehozása][az-container-create] parancsot. Cserélje le a két munkaterület-értéket az előző lépésben lekért értékekre (és frissítse az erőforráscsoport nevét) a következő parancs futtatása előtt.
+Az Azure CLI-vel való üzembe helyezéshez `--log-analytics-workspace` a `--log-analytics-workspace-key` és a paramétereket az az [Container Create][az-container-create] paranccsal adhatja meg. Cserélje le a két munkaterület-értéket az előző lépésben lekért értékekre (és frissítse az erőforráscsoport nevét) a következő parancs futtatása előtt.
 
 ```azurecli-interactive
 az container create \
@@ -90,7 +91,7 @@ tags: null
 type: Microsoft.ContainerInstance/containerGroups
 ```
 
-Ezután hajtsa végre a következő parancsot a tároló-csoport központi telepítése. Cserélje le `myResourceGroup` egy erőforrással rendelkező csoportot az előfizetésében (vagy először hozzon létre egy erőforráscsoportot "myResourceGroup" nevű):
+Ezután hajtsa végre a következő parancsot a tároló csoport üzembe helyezéséhez. Cserélje `myResourceGroup` le az kifejezést az előfizetéshez tartozó erőforráscsoporthoz (vagy először hozzon létre egy "myResourceGroup" nevű erőforráscsoportot):
 
 ```azurecli-interactive
 az container create --resource-group myResourceGroup --name mycontainergroup001 --file deploy-aci.yaml
@@ -98,22 +99,22 @@ az container create --resource-group myResourceGroup --name mycontainergroup001 
 
 Röviddel a parancs kiadását követően választ kell kapnia az Azure-tól, amely az üzemelő példány részleteit taglalja.
 
-## <a name="view-logs-in-azure-monitor-logs"></a>Naplók megtekintése az Azure Monitor naplóira
+## <a name="view-logs-in-azure-monitor-logs"></a>Naplók megtekintése Azure Monitor naplókban
 
-A tárolócsoport üzembe helyezése után néhány percbe telik (legfeljebb 10 percbe), hogy az Azure Portalon megjelenjenek az első naplóbejegyzések. A tárolócsoport naplók megtekintése:
+A tárolócsoport üzembe helyezése után néhány percbe telik (legfeljebb 10 percbe), hogy az Azure Portalon megjelenjenek az első naplóbejegyzések. A tároló csoport naplóinak megtekintése:
 
 1. Az Azure Portalon lépjen a saját Log Analytics-munkaterületére
-1. A **általános**válassza **naplók**  
-1. Írja be a következő lekérdezést: `search *`
-1. Válassza ki **futtatása**
+1. Az **általános**területen válassza a **naplók** lehetőséget.  
+1. Írja be a következő lekérdezést:`search *`
+1. **Futtatás** kiválasztása
 
-Ekkor számos eredményt kell megjelenítenie a `search *` lekérdezésnek. Ha először eredményt nem látja, várjon néhány percet, majd válassza a **futtatása** gomb újra végrehajtani a lekérdezést. Alapértelmezés szerint a naplóbejegyzések megjelennek **tábla** formátumban. Ezután a sorokat kibontva tekintheti meg az egyes naplóbejegyzések tartalmát.
+Ekkor számos eredményt kell megjelenítenie a `search *` lekérdezésnek. Ha először nem lát eredményt, várjon néhány percet, majd kattintson a **Futtatás** gombra a lekérdezés újbóli végrehajtásához. Alapértelmezés szerint a naplóbejegyzések **táblázatos** formátumban jelennek meg. Ezután a sorokat kibontva tekintheti meg az egyes naplóbejegyzések tartalmát.
 
 ![Naplókeresési találatok az Azure Portalon][log-search-01]
 
 ## <a name="query-container-logs"></a>Tárolónaplók lekérdezése
 
-Az Azure Monitor naplóira tartalmaz egy [lekérdezési nyelvet][query_lang] a napló kimeneti sor több ezer adatainak lekérése.
+Azure Monitor naplók széles körű [lekérdezési nyelvet][query_lang] foglalnak magukban, hogy az információk a naplófájlok esetlegesen több ezer sorából legyenek kihúzva.
 
 Az Azure Container Instances naplózó ügynöke a bejegyzéseket a Log Analytics-munkaterület `ContainerInstanceLog_CL` táblájába küldi. A lekérdezések alapvető szerkezete a következő: a forrástábla (`ContainerInstanceLog_CL`) után több operátor következik, a függőleges vonal (`|`) karakterrel elválasztva. Több operátor sorba állításával finomíthatja az eredményeket, és speciális funkciókat végezhet el.
 
@@ -136,9 +137,9 @@ ContainerInstanceLog_CL
 
 ### <a name="azure-monitor-logs"></a>Azure Monitor-naplók
 
-Naplók lekérdezése és riasztások konfigurálása az Azure Monitor naplóira kapcsolatos további információkért lásd:
+A naplók lekérdezéséről és a riasztások Azure Monitor naplókban való konfigurálásáról további információt a következő témakörben talál:
 
-* [Naplókereséseit ismertető az Azure Monitor naplóira](../log-analytics/log-analytics-log-search.md)
+* [A naplók Azure Monitor naplókban való keresésének ismertetése](../log-analytics/log-analytics-log-search.md)
 * [Egyesített riasztások az Azure Monitorban](../azure-monitor/platform/alerts-overview.md)
 
 

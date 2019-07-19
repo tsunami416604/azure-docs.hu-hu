@@ -1,6 +1,6 @@
 ---
 title: Java használata Azure SQL-adatbázis lekérdezéséhez | Microsoft Docs
-description: Bemutatja, hogyan használható a Java egy Azure SQL Database-adatbázishoz csatlakozó program létrehozásához, és lekérdezi a T-SQL-utasításokkal.
+description: Bemutatja, hogyan használható a Java olyan program létrehozásához, amely egy Azure SQL Database-adatbázishoz csatlakozik, és T-SQL-utasítások használatával kérdezi le azokat.
 services: sql-database
 ms.service: sql-database
 ms.subservice: development
@@ -11,64 +11,63 @@ ms.author: andrela
 ms.reviewer: v-masebo
 manager: craigg
 ms.date: 03/25/2019
-ms.openlocfilehash: 2d9ce34d52d08b4dd38caaadfab48b7a69870e9a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: fcc1a093f8df87da24f9d7f7945c490d7b58c9bd
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61408979"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68320582"
 ---
 # <a name="quickstart-use-java-to-query-an-azure-sql-database"></a>Gyors útmutató: Java használata Azure SQL-adatbázis lekérdezéséhez
 
-Ez a cikk bemutatja, hogyan használható [Java](/sql/connect/jdbc/microsoft-jdbc-driver-for-sql-server) csatlakozni egy Azure SQL Database-adatbázishoz. Ezután használhatja a T-SQL-utasítások használatával adatokat lekérdezni.
+Ez a cikk bemutatja, hogyan használható a [Java](/sql/connect/jdbc/microsoft-jdbc-driver-for-sql-server) egy Azure SQL Database-adatbázishoz való kapcsolódáshoz. Ezután a T-SQL-utasítások segítségével adatokat lehet lekérdezni.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ez a minta, győződjön meg arról, hogy rendelkezik a következő előfeltételek vonatkoznak:
+A minta elvégzéséhez győződjön meg arról, hogy rendelkezik a következő előfeltételekkel:
 
-- Azure SQL-adatbázis. Az alábbi rövid útmutatókban hozhat létre, és válassza az Azure SQL Database egy adatbázis is használja:
+- Azure SQL-adatbázis. Az alábbi rövid útmutatók segítségével hozhat létre és konfigurálhat egy adatbázist Azure SQL Databaseban:
 
   || Önálló adatbázis | Felügyelt példány |
   |:--- |:--- |:---|
-  | Létrehozás| [Portál](sql-database-single-database-get-started.md) | [Portál](sql-database-managed-instance-get-started.md) |
+  | Hozzon létre| [Portál](sql-database-single-database-get-started.md) | [Portál](sql-database-managed-instance-get-started.md) |
   || [Parancssori felület](scripts/sql-database-create-and-configure-database-cli.md) | [Parancssori felület](https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44) |
   || [PowerShell](scripts/sql-database-create-and-configure-database-powershell.md) | [PowerShell](scripts/sql-database-create-configure-managed-instance-powershell.md) |
-  | Konfigurálás | [kiszolgálószintű IP-tűzfalszabály](sql-database-server-level-firewall-rule.md)| [Kapcsolat egy virtuális gépről](sql-database-managed-instance-configure-vm.md)|
-  |||[Helyszíni kapcsolat](sql-database-managed-instance-configure-p2s.md)
-  |Adatok betöltése|Az Adventure Works betöltött száma a rövid útmutató|[Állítsa vissza a Wide World Importers](sql-database-managed-instance-get-started-restore.md)
-  |||Állítsa vissza vagy importálása az Adventure Works [BACPAC](sql-database-import.md) fájlt [GitHub](https://github.com/Microsoft/sql-server-samples/tree/master/samples/databases/adventure-works)|
-  |||
-
+  | Konfigurálás | [Kiszolgálói szintű IP-tűzfalszabály](sql-database-server-level-firewall-rule.md)| [Kapcsolódás virtuális gépről](sql-database-managed-instance-configure-vm.md)|
+  |||[Kapcsolódás a webhelyről](sql-database-managed-instance-configure-p2s.md)
+  |Adatok betöltése|Adventure Works betöltve|[Széles körű globális importőrök visszaállítása](sql-database-managed-instance-get-started-restore.md)
+  |||Adventure Works visszaállítása vagy importálása a [BACPAC](sql-database-import.md) -fájlból a [githubról](https://github.com/Microsoft/sql-server-samples/tree/master/samples/databases/adventure-works)|
+  
   > [!IMPORTANT]
-  > Ebben a cikkben a parancsfájlok az Adventure Works adatbázisa használatához készültek. Felügyelt példánnyal Ha az Adventure Works adatbázisa importálása-példány adatbázis, vagy módosítsa a parancsfájlokat ebben a cikkben a Wide World Importers-adatbázis használatára.
+  > A cikkben található parancsfájlok az Adventure Works-adatbázis használatára íródnak. Felügyelt példány esetén importálnia kell az Adventure Works-adatbázist egy példány-adatbázisba, vagy módosítania kell a jelen cikkben szereplő parancsfájlokat a Wide World Importálós adatbázis használatára.
 
-- Java-kapcsolódó szoftverek az operációs rendszer telepítve:
+- Az operációs rendszeréhez telepített Java-szoftverek:
 
-  - **MacOS**, telepítse a homebrew-t és a Java, majd telepítse a Mavent. Lásd az [1.2 és 1.3 lépést](https://www.microsoft.com/sql-server/developer-get-started/java/mac/).
+  - **MacOS**, telepítse a Homebrew-t és a Java-t, majd telepítse a mavent. Lásd az [1.2 és 1.3 lépést](https://www.microsoft.com/sql-server/developer-get-started/java/mac/).
 
-  - **Ubuntu**, telepítheti a javát, a Java Development Kitet, majd telepítse a Mavent. Lásd az [1.2, 1.3 és 1.4 lépést](https://www.microsoft.com/sql-server/developer-get-started/java/ubuntu/).
+  - **Ubuntu**, telepítse a Java, a Java fejlesztői készletet, majd telepítse a mavent. Lásd az [1.2, 1.3 és 1.4 lépést](https://www.microsoft.com/sql-server/developer-get-started/java/ubuntu/).
 
-  - **Windows**, telepítheti a javát, majd telepítse a Mavent. Lásd az [1.2 és 1.3 lépést](https://www.microsoft.com/sql-server/developer-get-started/java/windows/).
+  - **Windows**, telepítse a Java-t, majd telepítse a mavent. Lásd az [1.2 és 1.3 lépést](https://www.microsoft.com/sql-server/developer-get-started/java/windows/).
 
-## <a name="get-sql-server-connection-information"></a>Az SQL server-kapcsolati adatok lekéréséhez
+## <a name="get-sql-server-connection-information"></a>SQL Server-kapcsolatok adatainak beolvasása
 
-Az Azure SQL-adatbázishoz való csatlakozáshoz szükséges kapcsolati információkat kaphat. A következő eljárások szüksége a kiszolgáló teljes nevét vagy a gazdagépnév, az adatbázis neve és a bejelentkezési adatait.
+Az Azure SQL Database-adatbázishoz való kapcsolódáshoz szükséges kapcsolati adatok beolvasása. A közelgő eljárásokhoz szüksége lesz a teljes kiszolgálónévre vagy az állomásnévre, az adatbázis nevére és a bejelentkezési adatokra.
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 
-2. Keresse meg a **SQL-adatbázisok** vagy **SQL felügyelt példányai** lapot.
+2. Navigáljon az **SQL-adatbázisok** vagy az **SQL-felügyelt példányok** lapra.
 
-3. A a **áttekintése** lapon, tekintse át a teljes kiszolgálónevet melletti **kiszolgálónév** egy önálló adatbázis vagy a kiszolgáló teljes neve melletti **gazdagép** számára egy felügyelt a példány. Másolja ki a kiszolgáló nevét vagy az állomásnevet, rámutatnak, és válassza a **másolási** ikonra. 
+3. Az **Áttekintés** lapon tekintse át a teljes kiszolgálónevet a **kiszolgáló neve** mellett egyetlen adatbázishoz vagy a felügyelt példányhoz tartozó **gazdagép** melletti teljes kiszolgálónévhez. A kiszolgálónév vagy az állomásnév másolásához vigye a kurzort a fölé, és válassza a **Másolás** ikont. 
 
 ## <a name="create-the-project"></a>A projekt létrehozása
 
-1. A parancssor használatával hozzon létre egy új nevű Maven-projektet *sqltest*.
+1. Hozzon létre egy új, *sqltest*nevű Maven-projektet a parancssorból.
 
     ```bash
     mvn archetype:generate "-DgroupId=com.sqldbsamples" "-DartifactId=sqltest" "-DarchetypeArtifactId=maven-archetype-quickstart" "-Dversion=1.0.0" --batch-mode
     ```
 
-1. A mappa módosítása *sqltest* , és nyissa meg *pom.xml* a kedvenc szövegszerkesztőjével. Adja hozzá a **Microsoft JDBC-illesztőprogram SQL Serverhez** , a következő kód használatával a projekt függőségeit.
+1. Módosítsa a mappát *sqltest* , és nyissa meg a *Pom. xml fájlt* a kedvenc szövegszerkesztővel. Adja hozzá a **Microsoft JDBC-illesztőprogramot** a projekt függőségeihez a következő kód használatával SQL Server.
 
     ```xml
     <dependency>
@@ -89,13 +88,13 @@ Az Azure SQL-adatbázishoz való csatlakozáshoz szükséges kapcsolati informá
 
 1. Mentse és zárja be a *pom.xml* fájlt.
 
-## <a name="add-code-to-query-database"></a>Adja hozzá a kódot az adatbázis lekérdezése
+## <a name="add-code-to-query-database"></a>Kód hozzáadása az adatbázis lekérdezéséhez
 
-1. Már rendelkezik egy nevű fájlt *App.java* a Maven-projektben található:
+1. A Maven-projektben már van egy *app. Java* nevű fájl, amely a következő helyen található:
 
    *..\sqltest\src\main\java\com\sqldbsamples\App.java*
 
-1. Nyissa meg a fájlt, és cserélje le a tartalmát a következő kódra. Majd adja hozzá a megfelelő értékeket a kiszolgáló, adatbázis, a felhasználó és a jelszavát.
+1. Nyissa meg a fájlt, és cserélje le a tartalmát a következő kódra. Ezután adja hozzá a kiszolgáló, az adatbázis, a felhasználó és a jelszó megfelelő értékeit.
 
     ```java
     package com.sqldbsamples;
@@ -153,7 +152,7 @@ Az Azure SQL-adatbázishoz való csatlakozáshoz szükséges kapcsolati informá
     ```
 
    > [!NOTE]
-   > A példakód az **AdventureWorksLT** mintaadatbázist az Azure SQL.
+   > A Code példa az Azure SQL-hoz készült **AdventureWorksLT** mintaadatbázis használatával működik.
 
 ## <a name="run-the-code"></a>A kód futtatása
 
@@ -164,11 +163,11 @@ Az Azure SQL-adatbázishoz való csatlakozáshoz szükséges kapcsolati informá
     mvn -q exec:java "-Dexec.mainClass=com.sqldbsamples.App"
     ```
 
-1. Ellenőrizze az első 20 sort adja vissza, és az alkalmazás ablak bezárásához.
+1. Ellenőrizze, hogy az első 20 sor vissza lett-e jelenítve, és az alkalmazás ablakának lezárása.
 
 ## <a name="next-steps"></a>További lépések
 
-- [Az első Azure SQL-adatbázis megtervezése](sql-database-design-first-database.md)  
+- [Az első SQL Database-adatbázis megtervezése](sql-database-design-first-database.md)  
 
 - [Microsoft JDBC-illesztőprogram SQL Serverhez](https://github.com/microsoft/mssql-jdbc)  
 

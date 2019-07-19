@@ -6,135 +6,141 @@ ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 5/2/2019
-ms.openlocfilehash: c1b2875e6899d2301a4c4b564882214dc7bc4981
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8e3ae84242a1a9b76fbb18a8d8164c97a62a97d9
+ms.sourcegitcommit: 6b41522dae07961f141b0a6a5d46fd1a0c43e6b2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65205463"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "68003914"
 ---
 # <a name="compatibility-level-for-azure-stream-analytics-jobs"></a>Az Azure Stream Analytics-feladatok kompatibilitási szintje
 
-Ez a cikk ismerteti a kompatibilitási szint lehetőség az Azure Stream Analytics szolgáltatásban. Stream Analytics egy felügyelt szolgáltatás, amelynek rendszeres szolgáltatásfrissítések, és a teljesítménnyel kapcsolatos fejlesztések a. A szolgáltatás futtatókörnyezetek frissítések a legtöbb esetben automatikusan elérhetővé a végfelhasználók számára. 
+Ez a cikk a Azure Stream Analytics kompatibilitási szintjének beállítását ismerteti. A Stream Analytics felügyelt szolgáltatás, amely rendszeres frissítésekkel és teljesítménnyel kapcsolatos újdonságokkal rendelkezik. A szolgáltatás futtatókörnyezetének legtöbb frissítése automatikusan elérhetővé válik a végfelhasználók számára. 
 
-Azonban egyes új funkciókat a szolgáltatásban egy jelentős változás, például egy meglévő feladat a működésében változást vezethet be, vagy az adatok megjelenítésének módosítása a futó feladatok használja fel. Beállíthatja, hogy a meglévő, ha a beállítás alacsonyabb kompatibilitási szint jelentős módosítások nélkül futó Stream Analytics feladatok. Ha készen áll a legfrissebb futtatókörnyezet viselkedéseket, vehetnek részt a kompatibilitási szint megemelése szerint. 
+A szolgáltatás egyes új funkciói azonban jelentős változást is bevezethetnek, például egy meglévő feladat viselkedésének változását, vagy az adatok futtatásának módját a futó feladatok során. A meglévő Stream Analytics feladatok jelentős változtatások nélkül is megtarthatók, ha elhagyja a kompatibilitási szint beállítását. Ha készen áll a legújabb futásidejű viselkedésekre, a kompatibilitási szint növelésével engedélyezheti a funkciót. 
 
-## <a name="choose-a-compatibility-level"></a>Válassza ki a kompatibilitási szintje
+## <a name="choose-a-compatibility-level"></a>Kompatibilitási szint kiválasztása
 
 Kompatibilitási szint szabályozza a stream analytics-feladat működését. 
 
-Az Azure Stream Analytics jelenleg három kompatibilitási szinteket támogatja:
+A Azure Stream Analytics jelenleg három kompatibilitási szintet támogat:
 
-* 1.0 - korábbi működése
-* 1.1 – az alapértelmezett viselkedés
-* 1.2-es (előzetes verzió) – a kiértékelés legfrissebb fejlesztései legújabb viselkedés
+* 1,0 – korábbi viselkedés
+* 1,1 – alapértelmezett viselkedés
+* 1,2 (előzetes verzió) – a legújabb működés a kiértékelés legutóbbi tökéletesítésével
 
-Az eredeti 1.0-kompatibilitási szint jelent során általános rendelkezésre állás az Azure Stream Analytics évekkel ezelőtt.
+Az eredeti 1,0 kompatibilitási szint számos éve Azure Stream Analytics általánosan elérhető.
 
-Amikor létrehoz egy új Stream Analytics-feladat, célszerű a legújabb kompatibilitási szint használatával létrehozott. Indítsa el a a legújabb viselkedések hagyatkozna feladat tervezési hozzáadott módosítása és a bonyolultságot később elkerülése érdekében.
+Amikor új Stream Analytics feladatot hoz létre, ajánlott azt a legújabb kompatibilitási szinttel létrehozni. Indítsa el a feladat kialakítását a legújabb viselkedések alapján, hogy a későbbiekben ne kelljen a változásokhoz és a bonyolultsághoz adni.
 
-## <a name="set-the-compatibility-level"></a>A kompatibilitási szint
+## <a name="set-the-compatibility-level"></a>Kompatibilitási szint beállítása
 
-A Stream Analytics-feladat kompatibilitási szintje az Azure Portalon vagy a használatával beállíthatja a [feladat REST API-hívás létrehozásához](/rest/api/streamanalytics/stream-analytics-job).
+A Stream Analyticsi feladatokhoz tartozó kompatibilitási szint beállítható a Azure Portal vagy a [feladatok létrehozása REST API hívás](/rest/api/streamanalytics/stream-analytics-job)használatával.
 
-A kompatibilitási szintje az Azure Portalon a feladat frissítése:
+A Azure Portal a feladatokhoz tartozó kompatibilitási szint frissítése:
 
-1. Használja a [az Azure portal](https://portal.azure.com) keresse meg a Stream Analytics-feladathoz.
-2. **Állítsa le** a feladatot, mielőtt frissítené a kompatibilitási szintet. A kompatibilitási szint nem frissíthető, ha a feladat nem futó állapotban.
-3. Alatt a **konfigurálása** szakaszban kattintson **kompatibilitási szint**.
+1. A Stream Analytics feladatainak megkereséséhez használja a [Azure Portal](https://portal.azure.com) .
+2. A kompatibilitási szint frissítése előtt **állítsa le** a feladatot. A kompatibilitási szint nem frissíthető, ha a feladat nem futó állapotban.
+3. A **configure (Konfigurálás** ) fejléc alatt válassza a **kompatibilitási szint**lehetőséget.
 4. Válassza ki a kívánt kompatibilitási szint értékét.
-5. Válassza ki **mentése** az oldal alján.
+5. Kattintson a lap alján található **Mentés** gombra.
 
 ![Stream Analytics kompatibilitási szintje az Azure Portalon](media/stream-analytics-compatibility-level/stream-analytics-compatibility.png)
 
 Amikor frissíti a kompatibilitási szintet, a T-SQL nyelvű fordítón belülre érvényesíti a feladat a szintaxissal, amely megfelel a kiválasztott kompatibilitási szintet.
 
-## <a name="compatibility-level-12-preview"></a>Kompatibilitási szint 1.2-es (előzetes verzió)
+## <a name="compatibility-level-12-preview"></a>Kompatibilitási szint 1,2 (előzetes verzió)
 
-1\.2-es kompatibilitási szinten a következő jelentős változások történtek:
+A kompatibilitási szint 1,2-as verziójában a következő jelentős változások következnek be:
 
 ### <a name="geospatial-functions"></a>Térinformatikai funkciók
 
-**Előző szintek:** Az Azure Stream Analytics földrajzi számítások használja.
+**Előző szintek:** Azure Stream Analytics használt földrajzi számítások.
 
-**1.2-es szint:** Az Azure Stream Analytics geometriai tervezett geo koordináták számítási teszi lehetővé. Nem történik változás a térinformatikai függvények az aláírás. Azonban a szemantika, kissé eltérő, így pontosabb számítási mint előtt.
+**1,2 szint:** Azure Stream Analytics lehetővé teszi a geometriai tervezett földrajzi koordináták számítását. A térinformatikai függvények aláírása nem változik. Azonban a szemantikauk némileg eltérő, ami pontosabb számítást tesz lehetővé, mint korábban.
 
-Az Azure Stream Analytics támogatja a térinformatikai referencia adatok indexelése. Térinformatikai elemeket tartalmazó referenciaadatok is lehet indexelni gyorsabb illesztési számítást.
+Azure Stream Analytics támogatja a térinformatikai segédletek indexelését. A térinformatikai elemeket tartalmazó hivatkozási adatokat egy gyorsabb összekapcsolási számításhoz lehet indexelni.
 
-A frissített térinformatikai funkciók a teljes kifejezőképessége Well Known Text (wkt) formátumú térinformatikai formátum használata. A GeoJson is megadhat más térinformatikai összetevők, amelyek korábban nem támogatott.
+A frissített térinformatikai függvények a jól ismert Text (WKT) térinformatikai formátum teljes kifejező. Más térinformatikai összetevőket is megadhat, amelyek korábban nem támogatottak a GeoJson.
 
-További információkért lásd: [térinformatikai szolgáltatások az Azure Stream Analytics – Felhőbeli és az IoT Edge a frissítések](https://azure.microsoft.com/blog/updates-to-geospatial-functions-in-azure-stream-analytics-cloud-and-iot-edge/).
+További információ: a [térinformatikai funkciók frissítései Azure stream Analytics – felhő és IoT Edge](https://azure.microsoft.com/blog/updates-to-geospatial-functions-in-azure-stream-analytics-cloud-and-iot-edge/).
 
-### <a name="parallel-query-execution-for-input-sources-with-multiple-partitions"></a>A bemeneti források több partícióval rendelkező párhuzamos lekérdezés-végrehajtás
+### <a name="parallel-query-execution-for-input-sources-with-multiple-partitions"></a>Több partíciót tartalmazó bemeneti források párhuzamos lekérdezésének végrehajtása
 
-**Előző szintek:** Az Azure Stream Analytics-lekérdezések párhuzamosíthatja a lekérdezés-feldolgozás bemeneti forrás partíciók között a PARTITION BY záradék használata szükséges.
+**Előző szintek:** Azure Stream Analytics lekérdezésekhez szükséges a PARTITION BY záradék használata, hogy integrálással a lekérdezések feldolgozását a bemeneti forrás partíciói között.
 
-**1.2-es szint:** Lekérdezés logikája képes bemeneti forrás partíciójára méretezésnek megfelelően, ha az Azure Stream Analytics példányok külön lekérdezést hoz létre, és számításokat párhuzamosan fut.
+**1,2 szint:** Ha a lekérdezési logika párhuzamosan használható a bemeneti forrás partíciók között, Azure Stream Analytics különálló lekérdezési példányokat hoz létre, és párhuzamosan futtatja a számításokat.
 
-### <a name="native-bulk-api-integration-with-cosmosdb-output"></a>A kimenet a cosmos DB natív tömeges API-integráció
+### <a name="native-bulk-api-integration-with-cosmosdb-output"></a>Natív, tömeges API-integráció a CosmosDB kimenetével
 
-**Előző szintek:** Az upsert viselkedés volt *beszúrása vagy merge*.
+**Előző szintek:** A upsert viselkedése *Beszúrás vagy egyesítés*volt.
 
-**1.2-es szint:** Natív integráció tömeges API cosmos db kimeneti maximalizálja a teljesítményt, és hatékonyan kezeli a kérelmek szabályozása. További információkért lásd: [az Azure Cosmos DB oldal az Azure Stream Analytics kimeneti](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-documentdb-output#improved-throughput-with-compatibility-level-12).
+**1,2 szint:** A CosmosDB-kimenettel való natív, tömeges API-integráció maximalizálja az átviteli sebességet, és hatékonyan kezeli a szabályozási kérelmeket. További információkért tekintse meg [a Azure Cosmos DB Azure stream Analytics kimenete lapot](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-documentdb-output#improved-throughput-with-compatibility-level-12).
 
-Az upsert működése *beszúrása vagy lecserélése*.
+A upsert viselkedése *INSERT vagy replace*.
 
-### <a name="datetimeoffset-when-writing-to-sql-output"></a>A DateTimeOffset SQL kimeneti való írás esetén
+### <a name="datetimeoffset-when-writing-to-sql-output"></a>DateTimeOffset SQL-kimenetre írásakor
 
-**Előző szintek:** [DateTimeOffset](https://docs.microsoft.com/sql/t-sql/data-types/datetimeoffset-transact-sql?view=sql-server-2017) típusok (UTC) lett igazítva.
+**Előző szintek:** A [DateTimeOffset](https://docs.microsoft.com/sql/t-sql/data-types/datetimeoffset-transact-sql?view=sql-server-2017) -típusok UTC értékre lettek igazítva.
 
-**1.2-es szint:** DateTimeOffset már nem módosul.
+**1,2 szint:** A DateTimeOffset már nincs módosítva.
 
-### <a name="strict-validation-of-prefix-of-functions"></a>Szigorú ellenőrzési előtag-függvényekkel
+### <a name="long-when-writing-to-sql-output"></a>Az SQL-kimenetre való írás hosszú ideig
 
-**Előző szintek:** Hiba történt az előtagok függvény nem szigorú ellenőrzési.
+**Előző szintek:** A cél típusa alapján a rendszer csonkolt értékeket adott meg.
 
-**1.2-es szint:** Az Azure Stream Analytics egy szigorú ellenőrzési az előtagok függvény rendelkezik. Előtag hozzáadása egy beépített függvény hibát okoz. Ha például`myprefix.ABS(…)` nem támogatott.
+**1,2 szint:** A célként megadott típushoz nem illeszkedő értékeket a kimeneti hiba házirendjének megfelelően kezeli a rendszer.
 
-Emellett beépített összesítések ad hozzá egy előtagot hiba eredményez. Ha például `myprefix.SUM(…)` nem támogatott.
+### <a name="strict-validation-of-prefix-of-functions"></a>A függvények előtagja szigorú ellenőrzése
 
-Hiba történt a felhasználó által definiált függvények eredményt "rendszer" előtagot használja.
+**Előző szintek:** A függvény előtagjainak szigorú ellenőrzése nem történt meg.
 
-### <a name="disallow-array-and-object-as-key-properties-in-cosmos-db-output-adapter"></a>A Cosmos DB kimeneti adapter kulcs tulajdonságai, a tömb- és letiltása
+**1,2 szint:** Azure Stream Analytics a függvények előtagjainak szigorú ellenőrzése. Egy előtag egy beépített függvényhez való hozzáadása hibát okoz. Például`myprefix.ABS(…)` nem támogatott.
 
-**Előző szintek:** Tömb- és típusok kulcstulajdonságként is támogatott.
+Egy előtagnak a beépített összesítésekhez való hozzáadása hibát is eredményez. Például `myprefix.SUM(…)` nem támogatott.
 
-**1.2-es szint:** Tömb- és típusok kulcstulajdonságként már nem támogatottak.
+A "System" előtag használata bármely felhasználó által definiált függvénynél hibát eredményez.
 
-## <a name="compatibility-level-11"></a>1\.1-es kompatibilitási szint
+### <a name="disallow-array-and-object-as-key-properties-in-cosmos-db-output-adapter"></a>Tömb és objektum kulcs tulajdonságaiként való letiltása Cosmos DB kimeneti adapteren
+
+**Előző szintek:** A tömb és az Objektumtípusok a Key tulajdonságként támogatottak.
+
+**1,2 szint:** A tömb-és objektumtípusok már nem támogatottak Key tulajdonságként.
+
+## <a name="compatibility-level-11"></a>Kompatibilitási szint 1,1
 
 1\.1-kompatibilitási szinten a következő jelentős változások történtek:
 
-### <a name="service-bus-xml-format"></a>Service Bus XML-formátuma
+### <a name="service-bus-xml-format"></a>Service Bus XML-formátum
 
-**1.0-ás szintje:** Az Azure Stream Analytics DataContractSerializer, használja, ezért az üzenet tartalmának XML-címkéket tartalmazza. Példa:
+**1,0 szint:** Azure Stream Analytics használt DataContractSerializer, így az üzenet tartalma XML-címkéket tartalmaz. Példa:
 
 `@\u0006string\b3http://schemas.microsoft.com/2003/10/Serialization/\u0001{ "SensorId":"1", "Temperature":64\}\u0001`
 
-**1.1 szintje:** Az üzenet tartalma közvetlenül a nincsenek további címkék a streamet tartalmaz. Például:`{ "SensorId":"1", "Temperature":64}`
+**1,1 szint:** Az üzenet tartalma közvetlenül tartalmazza a streamet, és nem tartalmaz további címkéket. Például:`{ "SensorId":"1", "Temperature":64}`
 
-### <a name="persisting-case-sensitivity-for-field-names"></a>A mezőnevek megőrzése Kisbetű/nagybetű megkülönböztetése
+### <a name="persisting-case-sensitivity-for-field-names"></a>Kis-és nagybetűk megkülönböztetése a mezőnevek esetében
 
-**1.0-ás szintje:** Alacsonyabb olyan esetekben, amikor az Azure Stream Analytics-motor általi feldolgozásának mezőnevek módosult.
+**1,0 szint:** A mezők nevei a Azure Stream Analytics motor általi feldolgozáskor kisbetűre változtak.
 
-**1.1-es szint:** Kisbetű/nagybetű megkülönböztetése mezők nevét a rendszer megőrzi, az Azure Stream Analytics-motor feldolgozásakor.
+**1,1 szint:** a kis-és nagybetűk megkülönböztetése megmarad a mezők neveinél, amikor azokat a Azure stream Analytics motor dolgozza fel.
 
 > [!NOTE]
 > Persisting Kisbetű/nagybetű megkülönböztetése még nem érhető el az Edge-környezetben üzemeltetett Stream elemzési feladatok. Ennek eredményeképpen minden mezőnevek vannak kisbetűssé konvertált, ha a feladat az Edge-ben üzemel.
 
 ### <a name="floatnandeserializationdisabled"></a>FloatNaNDeserializationDisabled
 
-**1.0-ás szintje:** CREATE TABLE parancs nem fejeződött az NaN (nem szám az események szűrése. Például végtelenig, - Infinity) egy LEBEGŐPONTOS oszlop írja be, mert ezek a számok a dokumentált tartományon vannak.
+**1,0 szint:** CREATE TABLE parancs nem szűrte az eseményeket NaN (nem-a-Number) értékkel. Például végtelenig, - Infinity) egy LEBEGŐPONTOS oszlop írja be, mert ezek a számok a dokumentált tartományon vannak.
 
-**1.1 szintje:** CREATE TABLE lehetővé teszi, hogy adjon meg egy erős sémát. A Stream Analytics-motor ellenőrzi, hogy az adatok megfelel-e a séma. Ebben a modellben a parancs szűrheti NaN értéket tartalmazó eseményeket.
+**1,1 szint:** CREATE TABLE lehetővé teszi egy erős séma megadását. A Stream Analytics-motor ellenőrzi, hogy az adatok megfelel-e a séma. Ebben a modellben a parancs szűrheti NaN értéket tartalmazó eseményeket.
 
-### <a name="disable-automatic-upcast-for-datetime-strings-in-json"></a>Tiltsa le az automatikus upcast dátum/idő karakterlánc JSON-ban
+### <a name="disable-automatic-upcast-for-datetime-strings-in-json"></a>Automatikus leküldési idő letiltása a JSON-beli datetime-karakterláncokhoz
 
-**1.0-ás szintje:** A JSON-elemző ehhez automatikusan upcast karakterláncértékek dátum/idő típus dátum/időzóna információkat, és átalakítása (UTC). Ez a viselkedés eredményezett elvesztése az időzóna adatait.
+**1,0 szint:** A JSON-elemző automatikusan a dátum/idő/zóna információval rendelkező karakterlánc-értékeket a DateTime típusúra konvertálja, majd átalakítja az UTC értékre. Ez a viselkedés az időzóna-információk elvesztését eredményezte.
 
-**1.1 szintje:** Nincs több automatikusan upcast, a karakterlánc-értékeket dátum/idő típus dátum/időzóna információkat. Ennek eredményeképpen az időzónaadatok tartani.
+**1,1 szint:** A dátum/idő/zóna információval rendelkező karakterlánc-értékek nem rendelkeznek automatikusan DateTime típussal. Ennek eredményeképpen az időzónaadatok tartani.
 
 ## <a name="next-steps"></a>További lépések
 
 * [Az Azure Stream Analytics bemenetek hibaelhárítása](stream-analytics-troubleshoot-input.md)
-* [Stream Analytics-erőforrás állapota](stream-analytics-resource-health.md)
+* [Erőforrás-állapot Stream Analytics](stream-analytics-resource-health.md)

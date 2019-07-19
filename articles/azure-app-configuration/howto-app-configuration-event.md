@@ -1,6 +1,6 @@
 ---
-title: Küldhet eseményeket egy webes végpontra Azure alkalmazás konfigurációs beállításával kapcsolatos oktatóanyag |} A Microsoft Docs
-description: Ebben az oktatóanyagban megismerheti, hogyan állítható be esemény-előfizetések Azure-alkalmazások konfigurálása annak, hogy a kulcs-érték módosítása eseményeket küld egy webes végpontra.
+title: Oktatóanyag az Azure-alkalmazások konfigurációjának beállításához az események webes végpontra való küldéséhez | Microsoft Docs
+description: Ebből az oktatóanyagból megtudhatja, hogyan állíthatja be az Azure-alkalmazás konfigurációs esemény-előfizetéseit a kulcs-érték módosítási események webes végpontra való küldéséhez.
 services: azure-app-configuration
 documentationcenter: ''
 author: jimmyca
@@ -13,24 +13,20 @@ ms.topic: tutorial
 ms.date: 05/30/2019
 ms.author: yegu
 ms.custom: mvc
-ms.openlocfilehash: 2cb9ad28a21842987f8c0f7c75151ab8c7fe6fa0
-ms.sourcegitcommit: 4cdd4b65ddbd3261967cdcd6bc4adf46b4b49b01
+ms.openlocfilehash: d41ce06279536e3479b96d8d7afedf81624dbc9b
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66735359"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68326602"
 ---
-# <a name="quickstart-route-azure-app-configuration-events-to-a-web-endpoint-with-azure-cli"></a>Gyors útmutató: Alkalmazások konfigurálása az Azure-események átirányítása az Azure CLI-vel egy webes végpontra
+# <a name="quickstart-route-azure-app-configuration-events-to-a-web-endpoint-with-azure-cli"></a>Gyors útmutató: Azure-alkalmazás konfigurációs eseményeinek átirányítása webes végpontra az Azure CLI-vel
 
-Alkalmazások konfigurálása az Azure-felhasználók előfizethetnek eseményeket, amelyek vannak kibocsátva, kulcs-értékeket módosításakor. Ezeket az eseményeket is indíthat, webhookok, az Azure Functions, az Azure Storage üzenetsorok vagy bármely más eseménykezelő által támogatott [Azure Event Grid](https://docs.microsoft.com/azure/event-grid/event-handlers). Ebben a cikkben megtudhatja hogyan fizessen elő az Azure App-konfigurációs események az Azure CLI használatával.
+Ebből a rövid útmutatóból megtudhatja, hogyan állíthatja be az Azure-alkalmazás konfigurációs esemény-előfizetéseit a kulcs-érték módosítási események webes végpontra való küldéséhez. Az Azure-alkalmazások konfigurációjának felhasználói előfizethetnek olyan eseményekre, amelyek a kulcs-érték módosításakor lettek kibocsátva. Ezek az események indíthatnak webhookokat, Azure Functionseket, Azure Storage-várólistákat vagy bármely más, a Azure Event Grid által támogatott eseménykezelőt. Általában olyan végpontoknak szoktunk eseményeket küldeni, amelyek eseményadatokat dolgoznak fel és műveleteket hajtanak végre. A cikk egyszerűsítése érdekében azonban az eseményeket egy olyan webalkalmazásnak küldjük el, amely az üzenetek gyűjtésével és megjelenítésével foglalkozik.
 
-Általában olyan végpontoknak szoktunk eseményeket küldeni, amelyek eseményadatokat dolgoznak fel és műveleteket hajtanak végre. A cikk egyszerűsítése érdekében azonban az eseményeket egy olyan webalkalmazásnak küldjük el, amely az üzenetek gyűjtésével és megjelenítésével foglalkozik.
+## <a name="prerequisites"></a>Előfeltételek
 
-A cikkben leírt lépések elvégzése után látni fogja, hogy az eseményadatokat a webalkalmazásnak küldte el a rendszer.
-
-![Előfizetési esemény megtekintése](./media/quickstarts/event-grid/view-results.png)
-
-[!INCLUDE [quickstarts-free-trial-note.md](../../includes/quickstarts-free-trial-note.md)]
+- Azure-előfizetés – [hozzon létre egyet ingyen](https://azure.microsoft.com/free/). Igény szerint a Azure Cloud Shell is használhatja.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -44,15 +40,15 @@ Az Event Grid-témakörök Azure-erőforrások, amelyeket egy Azure-erőforrásc
 
 Hozzon létre egy erőforráscsoportot az [az group create](/cli/azure/group) paranccsal. 
 
-A következő példában létrehozunk egy erőforráscsoportot, nevű `<resource_group_name>` a a *westus* helyét.  A `<resource_group_name>` elemet az erőforráscsoport egyedi nevére cserélje le.
+A következő példában létrehozunk egy nevű `<resource_group_name>` erőforráscsoportot a *westus* helyen.  A `<resource_group_name>` elemet az erőforráscsoport egyedi nevére cserélje le.
 
 ```azurecli-interactive
 az group create --name <resource_group_name> --location westus
 ```
 
-## <a name="create-an-app-configuration"></a>Az alkalmazás konfigurációjának létrehozása
+## <a name="create-an-app-configuration"></a>Alkalmazás konfigurációjának létrehozása
 
-Cserélje le `<appconfig_name>` az alkalmazáskonfiguráció, egyedi névvel és `<resource_group_name>` a korábban létrehozott erőforráscsoportot. A nevének egyedinek kell lennie, mert a DNS-név használatban van.
+A `<appconfig_name>` helyére írja be az alkalmazás konfigurációjának egyedi nevét, `<resource_group_name>` valamint a korábban létrehozott erőforráscsoportot. A névnek egyedinek kell lennie, mert DNS-névként van használatban.
 
 ```azurecli-interactive
 az appconfig create \
@@ -82,9 +78,9 @@ A helynek megjelenített üzenetek nélkül kell megjelennie.
 
 [!INCLUDE [event-grid-register-provider-cli.md](../../includes/event-grid-register-provider-cli.md)]
 
-## <a name="subscribe-to-your-app-configuration"></a>Fizessen elő az alkalmazáskonfiguráció
+## <a name="subscribe-to-your-app-configuration"></a>Előfizetés az alkalmazás konfigurációjához
 
-A témakörre való feliratkozással lehet tudatni az Event Griddel, hogy mely eseményeket kívánja nyomon követni, és hová szeretné küldeni azokat. Az alábbi példa feliratkozik a létrehozott, és az eseményértesítés végpontjaként adja át az URL-címet a webalkalmazás az app-konfigurációhoz. Az `<event_subscription_name>` elemet cserélje le az esemény-előfizetéshez választott névre. A `<resource_group_name>` és `<appconfig_name>` elemnél a korábban létrehozott értékeket adja meg.
+A témakörre való feliratkozással lehet tudatni az Event Griddel, hogy mely eseményeket kívánja nyomon követni, és hová szeretné küldeni azokat. Az alábbi példa előfizet a létrehozott alkalmazás-konfigurációra, és átadja az URL-címet a webalkalmazásból az eseményekről szóló értesítés végpontjának. Az `<event_subscription_name>` elemet cserélje le az esemény-előfizetéshez választott névre. A `<resource_group_name>` és `<appconfig_name>` elemnél a korábban létrehozott értékeket adja meg.
 
 A webalkalmazás végpontjának az `/api/updates/` utótagot kell tartalmaznia.
 
@@ -102,9 +98,9 @@ Tekints meg újra a webalkalmazást, ahol láthatja, hogy az fogadta az előfize
 
 ![Előfizetési esemény megtekintése](./media/quickstarts/event-grid/view-subscription-event.png)
 
-## <a name="trigger-an-app-configuration-event"></a>Alkalmazáskonfiguráció esemény aktiválása
+## <a name="trigger-an-app-configuration-event"></a>Alkalmazás-konfigurációs esemény elindítása
 
-Most aktiváljunk egy eseményt, és lássuk, hogyan küldi el az üzenetet az Event Grid a végpontnak. Hozzon létre egy kulcs-érték a `<appconfig_name>` a korábban.
+Most aktiváljunk egy eseményt, és lássuk, hogyan küldi el az üzenetet az Event Grid a végpontnak. Hozzon létre egy kulcs-érték `<appconfig_name>` értéket a-ből a korábbi verziók használatával.
 
 ```azurecli-interactive
 az appconfig kv set --name <appconfig_name> --key Foo --value Bar --yes
@@ -130,7 +126,7 @@ az appconfig kv set --name <appconfig_name> --key Foo --value Bar --yes
 ```
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
-Ha azt tervezi, hogy folytatja ezen alkalmazások konfigurálásáról és az esemény-előfizetés, akkor ne törölje az ebben a cikkben létrehozott erőforrásokat. Ha nem folytatja a munkát, akkor a következő paranccsal törölheti a cikkben létrehozott erőforrásokat.
+Ha azt tervezi, hogy folytatja az alkalmazás konfigurálását és az esemény-előfizetést, ne törölje az ebben a cikkben létrehozott erőforrásokat. Ha nem folytatja a munkát, akkor a következő paranccsal törölheti a cikkben létrehozott erőforrásokat.
 
 A `<resource_group_name>` elemet cserélje le a fent létrehozott erőforráscsoportra.
 
@@ -140,7 +136,8 @@ az group delete --name <resource_group_name>
 
 ## <a name="next-steps"></a>További lépések
 
-Most, hogy tudja, hogyan hozhat létre témaköröket és eseményfeliratkozásokat, tudjon meg többet a kulcs-érték eseményeket, és mi Event Grid segítségére lehet:
+Most, hogy már tudja, hogyan hozhat létre témaköröket és esemény-előfizetéseket, többet tudhat meg a kulcs-érték eseményekről, és arról, hogy milyen Event Grid segíthet:
 
-- [Reagálás eseményekre kulcs-érték](concept-app-configuration-event.md)
+- [Reagálás a kulcs-érték eseményekre](concept-app-configuration-event.md)
 - [Bevezetés az Event Grid használatába](../event-grid/overview.md)
+- [Azure Event Grid kezelők](../event-grid/event-handlers.md)

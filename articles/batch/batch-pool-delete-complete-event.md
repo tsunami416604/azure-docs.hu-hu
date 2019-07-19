@@ -1,9 +1,9 @@
 ---
-title: Az Azure Batch-készlet törlése kész esemény |} A Microsoft Docs
-description: Referencia a Batch-készlet törlése kész esemény.
+title: Azure Batch készlet törlése kész esemény | Microsoft Docs
+description: A Batch-készlet törlésének befejezési eseménye.
 services: batch
 author: laurenhughes
-manager: jeconnoc
+manager: gwallace
 ms.assetid: ''
 ms.service: batch
 ms.devlang: multiple
@@ -12,18 +12,18 @@ ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 04/20/2017
 ms.author: lahugh
-ms.openlocfilehash: e715ccd0f5e79f9c640a3c060b0252b798748b4d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: fd32554866d1e2130fd0833adc1b286fb6bc07a5
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60775763"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68323228"
 ---
 # <a name="pool-delete-complete-event"></a>Készlet törlése kész esemény
 
- Ez az esemény bocsásson ki egy alkalmazáskészlet-törlési művelet befejezése után.
+ Ez az esemény akkor van kibocsátva, ha a készlet törlési művelete befejeződött.
 
- Az alábbi példa bemutatja egy készlet törlése kész esemény törzsét.
+ Az alábbi példa egy készlet törlésének befejezése eseményt mutatja.
 
 ```
 {
@@ -33,11 +33,11 @@ ms.locfileid: "60775763"
 }
 ```
 
-|Elem|Típus|Megjegyzések|
+|Elem|Type|Megjegyzések|
 |-------------|----------|-----------|
-|id|String|A készlet azonosítója.|
-|startTime|DateTime|Az idő a készlet törlése megkezdődött.|
-|endTime|DateTime|Az idő a készlet törlése befejeződött.|
+|id|Karakterlánc|A készlet azonosítója.|
+|startTime|Datetime|A készlet törlésének időpontja.|
+|endTime|Datetime|A készlet törlésének időpontja.|
 
 ## <a name="remarks"></a>Megjegyzések
-További információ az állapotok és a készlet átméretezés hibakódok: [címkészlet törlése egy fiókból](https://docs.microsoft.com/rest/api/batchservice/delete-a-pool-from-an-account).
+A készlet-átméretezési művelet állapotával és hibakódokkal kapcsolatos további információkért lásd: [készlet törlése egy fiókból](https://docs.microsoft.com/rest/api/batchservice/delete-a-pool-from-an-account).

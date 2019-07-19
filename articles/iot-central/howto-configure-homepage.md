@@ -1,52 +1,52 @@
 ---
-title: Az Azure IoT Central irányítópult konfigurálása |} A Microsoft Docs
-description: A jelentéskészítő, megtudhatja, hogyan konfigurálhatja az alapértelmezett Azure IoT Central irányítópult.
+title: Az Azure IoT Central alkalmazás irányítópultjának konfigurálása | Microsoft Docs
+description: A Builder használatával megtudhatja, hogyan konfigurálhatja az alapértelmezett Azure IoT Central alkalmazás-irányítópultot.
 author: dominicbetts
 ms.author: dobett
-ms.date: 02/13/2019
+ms.date: 07/10/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: e6947a4f15797028274d49069d9e2787b143860d
-ms.sourcegitcommit: 837dfd2c84a810c75b009d5813ecb67237aaf6b8
+ms.openlocfilehash: 94ad51ac11687dfe060176132e2030d61b8d4ffc
+ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67503226"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67850210"
 ---
-# <a name="configure-the-application-dashboard"></a>Az irányítópult konfigurálása
+# <a name="configure-the-application-dashboard"></a>Az alkalmazás irányítópultjának konfigurálása
 
-A **irányítópult** az oldal, amely betölti, ha az alkalmazáshoz hozzáféréssel rendelkező felhasználók keresse meg az alkalmazás URL-CÍMÉT. Ha a kiválasztott vagy a **minta Contoso** vagy **minta Devkits** alkalmazássablon hozhat létre az alkalmazást, az alkalmazás tartalmaz egy előre meghatározott irányítópultot. Ha úgy döntött a **egyéni alkalmazás** alkalmazássablon, az irányítópulton az üres.
+Az **irányítópult** az a lap, amely akkor töltődik be, amikor az alkalmazáshoz hozzáférő felhasználók megnyitják az alkalmazás URL-címét. Ha a **minta contoso** vagy a **minta Devkits** alkalmazás sablonját választotta az alkalmazás létrehozásához, az alkalmazás előre definiált irányítópulttal rendelkezik. Ha az **egyéni alkalmazás** -alkalmazás sablont választotta, az irányítópult üres.
 
 > [!NOTE]
-> A felhasználók is [saját személyes irányítópultok kialakítása](howto-personalize-dashboard.md) helyett az alapértelmezett irányítópult.
+> A felhasználók az alapértelmezett alkalmazás-irányítópult helyett [saját személyes irányítópultokat](howto-personalize-dashboard.md) is létrehozhatnak.
 
 ## <a name="add-tiles"></a>Csempék hozzáadása
 
-Az alábbi képernyőképen az irányítópult látható a létrehozott alkalmazás a **minta Contoso** sablont. Lehetőséggel testre szabhatja az alkalmazás az alapértelmezett irányítópult, **szerkesztése** tetején, az oldal jobb.
+Az alábbi képernyőképen egy, a **minta contoso** -sablonból létrehozott alkalmazás irányítópultja látható. Az alkalmazás alapértelmezett irányítópultjának testreszabásához kattintson a lap jobb felső sarkában található **Szerkesztés** gombra.
 
-![A "Contoso minta" sablonon alapuló alkalmazások irányítópult](media/howto-configure-homepage/image1a.png)
+![Az alkalmazások irányítópultja a "minta contoso" sablon alapján](media/howto-configure-homepage/image1a.png)
 
-Kiválasztásával **szerkesztése**, az irányítópult könyvtár panel nyílik meg. A függvénytár tartalmazza a csempék és irányítópult primitívek segítségével testre szabhatja az irányítópultot.
+A **Szerkesztés**lehetőség kiválasztásával megnyílik az irányítópult-könyvtár panel. A függvénytár tartalmazza az irányítópult testreszabásához használható csempéket és irányítópult-primitíveket.
 
 ![Irányítópult-könyvtár](media/howto-configure-homepage/image2a.png)
 
-Hozzáadhat például egy **eszközbeállítások, illetve tulajdonságok** mozaiklapra a választott eszköz aktuális beállítások és tulajdonságok értékeit. Ehhez először válassza ki a **eszköz sablon** válassza ki a **eszközpéldány**. Miután egy cím, és kattintson a csempére, adjon egy **beállítás** vagy egy **tulajdonság** megjelenítéséhez. A következő képernyőképen az látható, beállítás- és a csempe hozzáadása kiválasztva. Válassza ki **kész** menteni a módosítást az irányítópulton.
+Hozzáadhat például egy eszközbeállítások **és a tulajdonságok** csempét egy eszköz aktuális beállításainak és tulajdonságainak értékének megjelenítéséhez. Ehhez először válasszon ki egy **eszközt** , majd válassza ki az **eszköz példányát**. Ezután adjon meg egy címet a csempének, és válasszon egy **beállítást** vagy egy **tulajdonságot** , amelyet meg szeretne adni. Az alábbi képernyőfelvételen a csempéhez való hozzáadáshoz kiválasztott beállítások és tulajdonságok láthatók. Kattintson a **kész** gombra a módosítás az irányítópulton való mentéséhez.
 
-![Részletes beállítások és tulajdonságok "Konfigurálása eszköz részletei" képernyő](media/howto-configure-homepage/image3a.png)
+!["Az eszköz részleteinek konfigurálása" űrlap a beállítások és a tulajdonságok részleteivel](media/howto-configure-homepage/image3a.png)
 
-Az operátornak megtekinti az alapértelmezett irányítópult, amikor azok az új csempe jelenik meg a most a **beállítása hőmérséklet** az eszköz beállítása:
+Most, amikor egy operátor megtekinti az alapértelmezett alkalmazás-irányítópultot, az új csempe jelenik meg az eszköz **beállított hőmérsékleti** beállításával:
 
-![A megjelenített beállítások és tulajdonságok csempe "Az irányítópult" lap](media/howto-configure-homepage/image4a.png)
+!["Irányítópult" lap, amely megjeleníti a csempén látható beállításokat és tulajdonságokat](media/howto-configure-homepage/image4a.png)
 
-Áttekintheti a többi csempe a könyvtárban a felderítendő típusok az alapértelmezett irányítópult további testreszabásával.
+A könyvtárban található egyéb csempe-típusok megismerésével megismerheti, hogyan szabhatja testre az alapértelmezett alkalmazás-irányítópultot.
 
-Csempék az Azure IoT Central használatával kapcsolatos további tudnivalókért lásd: [irányítópult-csempék használata](howto-use-tiles.md).
+Ha többet szeretne megtudni a csempék használatáról az Azure IoT Centralban, tekintse meg az [irányítópult-csempék használatát](howto-use-tiles.md)ismertető témakört.
 
 ## <a name="next-steps"></a>További lépések
 
-Most, hogy megismerte az Azure IoT Central alapértelmezett alkalmazás irányítópult konfigurálása, hogy a következőket teheti:
+Most, hogy megismerte az Azure IoT Central alapértelmezett alkalmazás-irányítópultjának konfigurálását, a következőket teheti:
 
 > [!div class="nextstepaction"]
-> [Ismerje meg, hogyan készítheti elő és képek feltöltése](howto-prepare-images.md)
+> [Útmutató képek előkészítéséhez és feltöltéséhez](howto-prepare-images.md)

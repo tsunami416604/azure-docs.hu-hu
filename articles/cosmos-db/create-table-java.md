@@ -1,5 +1,5 @@
 ---
-title: 'Gyors útmutató: Tábla API a Javával – Azure Cosmos DB használatával'
+title: 'Gyors útmutató: Table API Javával – Azure Cosmos DB'
 description: Ez a rövid útmutató ismerteti, hogyan használható az Azure Cosmos DB Table API alkalmazások létrehozására az Azure Portal és a Java használatával
 author: SnehaGunda
 ms.service: cosmos-db
@@ -8,14 +8,14 @@ ms.devlang: java
 ms.topic: quickstart
 ms.date: 04/10/2018
 ms.author: sngun
-ms.openlocfilehash: 22d5aea119d71553afc02ee923fab5cf5ead5ce0
-ms.sourcegitcommit: 17411cbf03c3fa3602e624e641099196769d718b
+ms.openlocfilehash: 3610a5be356f306e4f92ea35d399a888f568d6d3
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/10/2019
-ms.locfileid: "65519048"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68326186"
 ---
-# <a name="quickstart-build-a-table-api-app-with-java-and-azure-cosmos-db"></a>Gyors útmutató: Egy táblát a Java és az Azure Cosmos DB API-alkalmazás létrehozása
+# <a name="quickstart-build-a-table-api-app-with-java-and-azure-cosmos-db"></a>Gyors útmutató: Table API-alkalmazás létrehozása Javával és Azure Cosmos DB
 
 > [!div class="op_single_selector"]
 > * [.NET](create-table-dotnet.md)
@@ -35,7 +35,7 @@ Az Azure Cosmos DB a Microsoft globálisan elosztott, többmodelles adatbázis-s
 
 Továbbá: 
 
-* [Java fejlesztői készlet (JDK) 8](https://aka.ms/azure-jdks)
+* [Java Development Kit (JDK) 8](https://aka.ms/azure-jdks)
     * Ügyeljen arra, hogy a JAVA_HOME környezeti változó arra a mappára mutasson, ahová a JDK telepítve lett.
 * [Maven](https://maven.apache.org/download.cgi) bináris archívum [letöltése](https://maven.apache.org/install.html) és [telepítése](https://maven.apache.org/)
     * Ubuntu rendszeren futtathatja az `apt-get install maven` parancsot a Maven telepítéséhez.
@@ -94,7 +94,7 @@ Lépjen vissza az Azure Portalra a kapcsolati sztring adataiért, majd másolja 
 
 5. Tegyen megjegyzés jelzést az első sor mellé, és törölje a jelzést a második sor mellől. Az első két sornak most a következőképpen kell kinéznie.
 
-    ```
+    ```xml
     #StorageConnectionString = UseDevelopmentStorage=true
     StorageConnectionString = DefaultEndpointsProtocol=https;AccountName=[ACCOUNTNAME];AccountKey=[ACCOUNTKEY]
     ```

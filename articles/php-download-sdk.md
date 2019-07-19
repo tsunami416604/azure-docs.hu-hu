@@ -1,6 +1,6 @@
 ---
 title: A PHP-hoz készült Azure SDK letöltése
-description: Ismerje meg, hogyan tölthet le és telepítse az Azure SDK a php-hez.
+description: Ismerje meg, hogyan töltheti le és telepítheti a PHP-hez készült Azure SDK-t.
 documentationcenter: php
 services: app-service\web
 author: allclark
@@ -13,45 +13,45 @@ ms.tgt_pltfrm: na
 ms.devlang: PHP
 ms.topic: article
 ms.date: 06/01/2016
-ms.author: allclark;yaqiyang
-ms.openlocfilehash: f6b21f288b94e06414fe66ff775ebb264368c0b8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: yaya
+ms.openlocfilehash: 9dd336ef973b603108aad62c90e4dab385d20317
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65411603"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67873898"
 ---
 # <a name="download-the-azure-sdk-for-php"></a>A PHP-hoz készült Azure SDK letöltése
 
 ## <a name="overview"></a>Áttekintés
 
-A php-hez készült Azure SDK összetevők, amelyek lehetővé teszik, hogy fejlesztése, üzembe helyezése és kezelése az Azure-ban PHP-alkalmazásokat tartalmaz. Pontosabban a php-hez készült Azure SDK a következőket tartalmazza:
+A PHP-hez készült Azure SDK olyan összetevőket tartalmaz, amelyek lehetővé teszik a PHP-alkalmazások fejlesztését, üzembe helyezését és kezelését az Azure-hoz. A PHP-hez készült Azure SDK a következőket tartalmazza:
 
-* **A PHP-klienskódtárak Azure**. Ezek a kódtárak osztály lehetővé tevő interfészt biztosítanak az Azure-szolgáltatások, például az adatkezelési szolgáltatások eléréséhez, és felhőszolgáltatásokat fejleszthet.
-* **Az Azure parancssori felület Mac, Linux és Windows (az Azure parancssori felület)** . Ez a központi telepítésére és felügyeletére az Azure-szolgáltatások, például az Azure Websites és az Azure Virtual Machines parancsokat. Az Azure CLI-vel munkahelyi bármilyen platformon, beleértve a Mac, Linux és Windows.
-* **Az Azure PowerShell (csak Windows)** . Ez az üzembe helyezése és kezelése az Azure-szolgáltatások, például a Cloud Services és a virtuális gépek PowerShell-parancsmagok egy halmaza.
-* **Az Azure-emulátorok (csak Windows)** . A számítási és tárolási emulátory systému olyan helyi emulátor cloud services és az adatkezelési szolgáltatások, amelyek lehetővé teszik, hogy az alkalmazás helyi tesztelése. Az Azure-emulátorok csak futtatható Windows.
+* **Az Azure**-hoz készült php-ügyféloldali kódtárak. Ezek a kódtárak olyan felületet biztosítanak az Azure-szolgáltatások eléréséhez, mint például az adatkezelési szolgáltatások és a felhőalapú szolgáltatások.
+* **A Mac, Linux és Windows rendszerhez készült Azure parancssori felület (Azure CLI)** . Ez az Azure-szolgáltatások, például az Azure websites és az Azure Virtual Machines üzembe helyezésére és kezelésére szolgáló parancsok összessége. Az Azure CLI bármilyen platformon működik, beleértve a Mac, Linux és Windows rendszert is.
+* **Azure PowerShell (csak Windows)** . Ez az Azure-szolgáltatások üzembe helyezésére és kezelésére szolgáló PowerShell-parancsmagok, például a Cloud Services és a Virtual Machines.
+* **Az Azure-emulátorok (csak Windows)** . A számítási és tárolási emulátorok a Cloud Services és az adatkezelési szolgáltatások helyi emulátorai, amelyek lehetővé teszik az alkalmazások helyi tesztelését. Az Azure-emulátorok csak Windows rendszeren futnak.
 
-Az alábbi szakaszok ismertetik töltse le és telepítse a fent leírt összetevőket.
+Az alábbi szakaszok a fent ismertetett összetevők letöltését és telepítését ismertetik.
 
-A témakörben található utasítások azt feltételezik, hogy [PHP] [ install-php] telepítve.
+A jelen témakörben szereplő utasítások feltételezik, hogy telepítve van a [php][install-php] .
 
 > [!NOTE]
-> 5\.5-ös vagy újabb verziója használandó a PHP-klienskódtárak Azure PHP kell rendelkeznie.
+> Az Azure-hoz készült PHP-ügyféloldali kódtárak használatához PHP 5,5 vagy újabb verzió szükséges.
 >
 >
 
 ## <a name="php-client-libraries-for-azure"></a>PHP-klienskódtárak Azure-hoz
 
-A PHP-Klienskódtárak Azure illesztőfelületet biztosítanak az Azure-szolgáltatások, például az adatkezelési szolgáltatások eléréséhez, és a felhőszolgáltatások bármilyen operációs rendszerből. Ezek a könyvtárak a szerkesztő használatával is telepíthető.
+Az Azure-hoz készült PHP-ügyféloldali kódtárak olyan felületet biztosítanak az Azure-szolgáltatások, mint például az adatkezelési szolgáltatások és a felhőalapú szolgáltatások eléréséhez bármely operációs rendszerről. Ezek a kódtárak a zeneszerző használatával telepíthetők.
 
-Az Azure-hoz a PHP-Klienskódtárak használatával kapcsolatos információkért lásd: [használata a Blob szolgáltatás][blob-service], [a Table Service használata] [ table-service]és [a Queue szolgáltatás használata][queue-service].
+További információ az Azure-hoz készült php-ügyféloldali kódtárak használatáról: [a blob szolgáltatás][blob-service] , [How to Use the Table Service][table-service] használata és [a várólista-szolgáltatás][üzenetsor-szolgáltatásának]használata.
 
-### <a name="install-via-composer"></a>Composer-n keresztül telepítése
+### <a name="install-via-composer"></a>Telepítés a Zeneszerzőn keresztül
 
-1. [A Git telepítése][install-git]. A Windows is szüksége lesz a Git végrehajtható hozzáadása a PATH környezeti változóhoz.
+1. [Telepítse a Git szoftvert][install-git]. Windows rendszeren a git végrehajtható fájlt is hozzá kell adnia a PATH környezeti változóhoz.
 
-2. Hozzon létre egy fájlt **composer.json** a projekt gyökérkönyvtárában található és adja hozzá a következő kódot:
+2. Hozzon létre egy **zeneszerző. JSON** nevű fájlt a projekt gyökérkönyvtárában, és adja hozzá a következő kódot:
 
         {
             "require": {
@@ -59,27 +59,27 @@ Az Azure-hoz a PHP-Klienskódtárak használatával kapcsolatos információkér
             }
         }
 
-3. Töltse le **[composer.phar] [ composer-phar]** a projekt gyökérkönyvtárában.
+3. A **[zeneszerző. farmakovigilancia][composer-phar]** letöltése a projekt gyökerében.
 
-4. Nyisson meg egy parancssort, és hajtsa végre ezt a projekt gyökérkönyvtárában
+4. Nyisson meg egy parancssort, és hajtsa végre ezt a projekt gyökerében
 
         php composer.phar install
 
-## <a name="azure-powershell-and-azure-emulators"></a>Az Azure PowerShell és az Azure-emulátorok
+## <a name="azure-powershell-and-azure-emulators"></a>Azure PowerShell és Azure-emulátorok
 
-Az Azure PowerShell az üzembe helyezése és kezelése az Azure-szolgáltatások (például a Cloud Services és Virtual Machines) PowerShell-parancsmagok egy halmaza. Az Azure-emulátorok emulátory systému a cloud services és az adatkezelési szolgáltatások, amelyek lehetővé teszik, hogy az alkalmazás helyi tesztelése is. Ezek az összetevők támogatott csak Windows.
+A Azure PowerShell PowerShell-parancsmagokat tartalmaz az Azure-szolgáltatások üzembe helyezéséhez és kezeléséhez (például Cloud Services és Virtual Machines). Az Azure-emulátorok a Cloud Services és az adatkezelési szolgáltatások emulátorai, amelyek lehetővé teszik az alkalmazások helyi tesztelését. Ezek az összetevők csak a Windows támogatottak.
 
-Azure PowerShell-lel és az Azure-emulátorok telepítéséhez ajánlott módja a használja a [Microsoft Webplatform-telepítő][download-wpi]. Vegye figyelembe, hogy azt is beállíthatja más fejlesztési összetevők, például a PHP, SQL Server, a Microsoft SQL Server, a PHP és a WebMatrix Drivers telepítéséhez.
+A Azure PowerShell és az Azure-emulátorok telepítésének ajánlott módja a [Microsoft webplatform-telepítő][download-wpi]használata. Vegye figyelembe, hogy más fejlesztői összetevőket is telepít, például a PHP-t, a SQL Servert, a PHP-hoz készült Microsoft-SQL Server illesztőprogramokat és a WebMatrix.
 
-Azure PowerShell használatával kapcsolatos információkért lásd: [hogyan használja az Azure PowerShell][powershell-tools].
+További információ a Azure PowerShell használatáról: a [Azure PowerShell használata][powershell-tools].
 
 ## <a name="azure-cli"></a>Azure CLI
 
-Az Azure CLI parancsok központi telepítésére és felügyeletére az Azure-szolgáltatások, például az Azure Websites és az Azure Virtual Machines. Azure CLI telepítésével kapcsolatos információkért lásd: [az Azure CLI telepítése](cli-install-nodejs.md).
+Az Azure CLI az Azure-szolgáltatások, például az Azure websites és az Azure Virtual Machines üzembe helyezésére és kezelésére szolgáló parancsok összessége. További információ az Azure CLI telepítéséről: [Az Azure CLI telepítése](cli-install-nodejs.md).
 
 ## <a name="next-steps"></a>További lépések
 
-További információkért lásd: a [PHP fejlesztői központ](https://azure.microsoft.com/develop/php/).
+További információ: [php fejlesztői központ](https://azure.microsoft.com/develop/php/).
 
 [install-php]: https://www.php.net/manual/en/install.php
 [composer-github]: https://github.com/composer/composer

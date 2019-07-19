@@ -1,6 +1,6 @@
 ---
-title: Az Azure Policy használatával korlátozhatja a VM-bővítmény telepítése |} A Microsoft Docs
-description: Az Azure Policy használatával korlátozza a bővítmény központi telepítések.
+title: A virtuálisgép-bővítmények telepítésének korlátozása a Azure Policy használatával | Microsoft Docs
+description: A bővítmények üzembe helyezésének korlátozásához használja a Azure Policy.
 services: virtual-machines-linux
 documentationcenter: ''
 author: roiyz-msft
@@ -12,35 +12,36 @@ ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/23/2018
-ms.author: roiyz;cynthn
-ms.openlocfilehash: e0fcc53df27e46c56066fb0eedc87a3970a7c409
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.author: roiyz
+ms.reviewer: cynthn
+ms.openlocfilehash: 7060ef84a3483b1f74253a7f96ac33f7929b6799
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67706013"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67876744"
 ---
-# <a name="use-azure-policy-to-restrict-extensions-installation-on-windows-vms"></a>Az Azure Policy használatával korlátozhatja a bővítmények telepítése Windows virtuális gépeken
+# <a name="use-azure-policy-to-restrict-extensions-installation-on-windows-vms"></a>A bővítmények Windows rendszerű virtuális gépeken való telepítésének korlátozása Azure Policy használatával
 
-Ha azt szeretné, hogy használatát vagy a Windows virtuális gépek az egyes bővítmények telepítését, létrehozhat egy Azure szabályzat bővítmények korlátozása a virtuális gépek erőforráscsoporton belül a PowerShell használatával. 
+Ha meg szeretné akadályozni bizonyos bővítmények használatát vagy telepítését a Windows rendszerű virtuális gépeken, létrehozhat egy Azure-szabályzatot a PowerShell használatával, és korlátozhatja a virtuális gépek bővítményeit az erőforráscsoporthoz. 
 
-Ebben az oktatóanyagban az Azure PowerShell belül a Cloud Shell, amely folyamatosan frissül a legújabb verzióra. 
+Ez az oktatóanyag Azure PowerShellt használ a Cloud Shellon belül, amely folyamatosan frissül a legújabb verzióra. 
 
 [!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
 
-## <a name="create-a-rules-file"></a>Hozzon létre egy szabályok fájlt
+## <a name="create-a-rules-file"></a>Szabály létrehozása fájl
 
-Korlátozhatja a telepíthető bővítmények, rendelkeznie kell egy [szabály](../../governance/policy/concepts/definition-structure.md#policy-rule) azonosíthatja a bővítményt a logika biztosít.
+A bővítmények telepítésének korlátozásához rendelkeznie kell egy olyan [szabállyal](../../governance/policy/concepts/definition-structure.md#policy-rule) , amely megadja a logikát a bővítmény azonosításához.
 
-Ez a példa bemutatja, hogyan szabályok fájl létrehozásával az Azure Cloud Shellben "Microsoft.Compute" által közzétett bővítmények megtagadása, de ha a PowerShell helyileg dolgozik, is hozzon létre egy helyi fájlt és az elérési út ($home/clouddrive) az elérési útját a helyi fájlt a gépén.
+Ebből a példából megtudhatja, hogyan tagadhatja meg a "Microsoft. számítás" által közzétett bővítményeket egy szabály fájljának létrehozásával Azure Cloud Shellban, de ha helyileg dolgozik a PowerShellben, létrehozhat egy helyi fájlt is, és lecserélheti az elérési utat ($home/clouddrive) a következő elérési úttal: helyi fájl a gépen.
 
-Az egy [Cloud Shell](https://shell.azure.com/powershell), írja be:
+A [Cloud Shell](https://shell.azure.com/powershell)írja be a következőt:
 
 ```azurepowershell-interactive
 nano $home/clouddrive/rules.json
 ```
 
-Másolja és illessze be a következő .JSON kiterjesztésű fájlba.
+Másolja és illessze be a következő. JSON fájlt a fájlba.
 
 ```json
 {
@@ -66,21 +67,21 @@ Másolja és illessze be a következő .JSON kiterjesztésű fájlba.
 }
 ```
 
-Amikor végzett, nyomja le az **Ctrl + O** , majd **Enter** szeretné menteni a fájlt. Találati **Ctrl + X** gombra kattintva zárja be a fájl- és kilépési.
+Ha elkészült, nyomja le a **CTRL + O billentyűkombinációt** , majd a fájl mentéséhez **írja be** a következőt:. Nyomja le a **CTRL + X** billentyűkombinációt a fájl bezárásához és a kilépéshez.
 
-## <a name="create-a-parameters-file"></a>A paraméterfájl létrehozása
+## <a name="create-a-parameters-file"></a>Parameters-fájl létrehozása
 
-Is szükség van egy [paraméterek](../../governance/policy/concepts/definition-structure.md#parameters) fájlt, amely számára, hogy az blokkolja a kiterjesztések listája megadásának struktúrát hoz létre. 
+Szükség van egy [paraméter](../../governance/policy/concepts/definition-structure.md#parameters) -fájlra is, amely létrehoz egy struktúrát, amellyel elvégezhető a letiltani kívánt bővítmények listájának átadása. 
 
-Ez a példa bemutatja, hogyan hozhat létre olyan paramétereket tartalmazó fájlt a Cloud Shell-beli virtuális gépek, de ha a PowerShell helyileg dolgozik, is hozzon létre egy helyi fájlt és az elérési út ($home/clouddrive) az a számítógépen a helyi fájl elérési útját.
+Ebből a példából megtudhatja, hogyan hozhat létre paramétereket a virtuális gépekhez Cloud Shellban, de ha helyileg dolgozik a PowerShellben, létrehozhat egy helyi fájlt is, és lecserélheti az elérési utat ($home/clouddrive) a helyi fájl elérési útjára a gépen.
 
-A [Cloud Shell](https://shell.azure.com/powershell), írja be:
+A [Cloud Shell](https://shell.azure.com/powershell)írja be a következőt:
 
 ```azurepowershell-interactive
 nano $home/clouddrive/parameters.json
 ```
 
-Másolja és illessze be a következő .JSON kiterjesztésű fájlba.
+Másolja és illessze be a következő. JSON fájlt a fájlba.
 
 ```json
 {
@@ -95,13 +96,13 @@ Másolja és illessze be a következő .JSON kiterjesztésű fájlba.
 }
 ```
 
-Amikor végzett, nyomja le az **Ctrl + O** , majd **Enter** szeretné menteni a fájlt. Találati **Ctrl + X** gombra kattintva zárja be a fájl- és kilépési.
+Ha elkészült, nyomja le a **CTRL + O billentyűkombinációt** , majd a fájl mentéséhez **írja be** a következőt:. Nyomja le a **CTRL + X** billentyűkombinációt a fájl bezárásához és a kilépéshez.
 
 ## <a name="create-the-policy"></a>A szabályzat létrehozása
 
-Szabályzat-definíció egy olyan objektum, a konfigurációt, amely a használni kívánt tárolja. A szabályzatdefiníció a szabályzat meghatározására szabályok és a paraméterek-fájlokat használja. Hozzon létre egy szabályzat definíciója a [New-AzPolicyDefinition](https://docs.microsoft.com/powershell/module/az.resources/new-azpolicydefinition) parancsmagot.
+A házirend-definíció a használni kívánt konfiguráció tárolására szolgáló objektum. A házirend-definíció a szabályok és paraméterek fájlok használatával határozza meg a szabályzatot. Hozzon létre egy szabályzat-definíciót a [New-AzPolicyDefinition](https://docs.microsoft.com/powershell/module/az.resources/new-azpolicydefinition) parancsmag használatával.
 
- A szabályok és a paraméterek a létrehozott és a cloud shellben .JSON kiterjesztésű fájlként tárolja a fájlokat.
+ A házirend-szabályok és paraméterek a létrehozott és. JSON-fájlként tárolt fájlok a Cloud shellben.
 
 
 ```azurepowershell-interactive
@@ -116,11 +117,11 @@ $definition = New-AzPolicyDefinition `
 
 
 
-## <a name="assign-the-policy"></a>A szabályzat hozzárendelése
+## <a name="assign-the-policy"></a>A szabályzat kiosztása
 
-Ebben a példában a szabályzatot rendel egy erőforrás csoport használatával [New-AzPolicyAssignment](https://docs.microsoft.com/powershell/module/az.resources/new-azpolicyassignment). A létrehozott virtuális Gépeket a **myResourceGroup** erőforráscsoport nem fogja tudni telepíteni a Virtuálisgép-hozzáférési ügynök vagy egyéni parancsfájl-bővítmények. 
+Ez a példa a szabályzatot egy erőforráscsoporthoz rendeli hozzá a [New-AzPolicyAssignment](https://docs.microsoft.com/powershell/module/az.resources/new-azpolicyassignment)használatával. A **myResourceGroup** erőforráscsoporthoz létrehozott összes virtuális gép nem tudja telepíteni a virtuálisgép-hozzáférési ügynököt vagy az egyéni parancsfájl-bővítményeket. 
 
-Használja a [Get-AzSubscription |} Táblázat formázása](https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription) -parancsmaggal beolvasható az előfizetés-Azonosítóját használja egy, a példában helyett.
+A [Get-AzSubscription használata | Formázza a Table](https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription) parancsmagot, hogy az előfizetés-azonosítót a példában szereplő egyik helyett használja.
 
 ```azurepowershell-interactive
 $scope = "/subscriptions/<subscription id>/resourceGroups/myResourceGroup"
@@ -139,9 +140,9 @@ $assignment = New-AzPolicyAssignment `
 $assignment
 ```
 
-## <a name="test-the-policy"></a>A házirend tesztelése
+## <a name="test-the-policy"></a>A szabályzat tesztelése
 
-Ha tesztelni szeretné a szabályzatot, próbálja meg használni a Virtuálisgép-hozzáférési bővítmény. A következő üzenettel kell sikertelen "Set-AzVMAccessExtension: Erőforrás "myVMAccess" szabályzat tiltja."
+A szabályzat teszteléséhez próbálja meg használni a virtuális gép elérési bővítményét. A következő üzenetnek sikertelennek kell lennie a "set-AzVMAccessExtension: A szabályzat nem engedélyezte a (z) "myVMAccess" erőforrást. "
 
 ```azurepowershell-interactive
 Set-AzVMAccessExtension `
@@ -151,7 +152,7 @@ Set-AzVMAccessExtension `
    -Location EastUS 
 ```
 
-A portálon a jelszó módosítása kell sikertelen, és az "a sablon telepítése nem sikerült szabályzat megsértése miatt." az üzenet.
+A portálon a jelszó módosításának sikertelennek kell lennie a "a sablon központi telepítése sikertelen volt a szabályzat megsértése miatt." üzenetet.
 
 ## <a name="remove-the-assignment"></a>A hozzárendelés eltávolítása
 
@@ -159,7 +160,7 @@ A portálon a jelszó módosítása kell sikertelen, és az "a sablon telepíté
 Remove-AzPolicyAssignment -Name not-allowed-vmextension-windows -Scope $scope
 ```
 
-## <a name="remove-the-policy"></a>Távolítsa el a szabályzatot
+## <a name="remove-the-policy"></a>A házirend eltávolítása
 
 ```azurepowershell-interactive
 Remove-AzPolicyDefinition -Name not-allowed-vmextension-windows

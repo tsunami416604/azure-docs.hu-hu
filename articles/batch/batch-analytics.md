@@ -1,9 +1,9 @@
 ---
-title: Az Azure Batch-elemzés |} A Microsoft Docs
-description: Az Azure Batch-elemzés dokumentációja.
+title: Azure Batch Analitika | Microsoft Docs
+description: Azure Batch Analitika referenciája.
 services: batch
 author: laurenhughes
-manager: jeconnoc
+manager: gwallace
 ms.assetid: ''
 ms.service: batch
 ms.devlang: multiple
@@ -12,21 +12,21 @@ ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 04/20/2017
 ms.author: lahugh
-ms.openlocfilehash: 999c3037196044250b8a12d6b6b380553e58c6ba
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0f8233846f3835a2bbccf9a7072f223d435b90af
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60721555"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68323832"
 ---
 # <a name="batch-analytics"></a>Batch-elemzés
-A Batch-elemzés témakörei az események és riasztások érhető el, a Batch szolgáltatás erőforrásainak referenciaadatai tartalmaznak.
+A Batch Analytics témakörei a Batch szolgáltatás erőforrásaihoz elérhető eseményekre és riasztásokra vonatkozó információkat tartalmaznak.
 
-Lásd: [diagnosztikai naplózás az Azure Batch](https://azure.microsoft.com/documentation/articles/batch-diagnostics/) engedélyezése és a diagnosztikai naplók a Batchben felhasználása további tájékoztatást.
+A Batch diagnosztikai naplók engedélyezésével és elfogyasztásával kapcsolatos további információkért tekintse meg a [Azure batch diagnosztikai naplózást](https://azure.microsoft.com/documentation/articles/batch-diagnostics/) ismertető témakört.
 
 ## <a name="diagnostic-logs"></a>Diagnosztikai naplók
 
-Az Azure Batch szolgáltatás a következő diagnosztikai napló események egyes Batch-erőforrások teljes élettartama során bocsát ki.
+A Azure Batch szolgáltatás a következő diagnosztikai naplózási eseményeket bocsátja ki bizonyos batch-erőforrások élettartama alatt.
 
 **Szolgáltatás bejelentkezési események**
 * [Készlet létrehozása](batch-pool-create-event.md)

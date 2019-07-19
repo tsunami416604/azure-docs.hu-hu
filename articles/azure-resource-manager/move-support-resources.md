@@ -1,22 +1,22 @@
 ---
-title: Művelet támogatási áthelyezése az Azure-erőforrástípus szerint
-description: Az Azure-erőforrástípus, amely egy új erőforráscsoportot vagy előfizetést is áthelyezhető sorolja fel.
+title: A művelet támogatásának áthelyezése Azure-erőforrástípus szerint
+description: Felsorolja az új erőforráscsoporthoz vagy előfizetésbe áthelyezhető Azure-erőforrástípusok listáját.
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: reference
 ms.date: 7/9/2019
 ms.author: tomfitz
-ms.openlocfilehash: 093c20407cb6210125106189f36566f539de0dcc
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.openlocfilehash: 22493ad7998e9014c88c79e6ac5eee3bf1216119
+ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67721111"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "68226811"
 ---
-# <a name="move-operation-support-for-resources"></a>Művelet támogatási erőforrások áthelyezése
-Ez a cikk felsorolja egy Azure-erőforrás az áthelyezési művelet támogatja-e. Erőforrások áthelyezésekor megfontolandó szempontok speciális feltételekkel kapcsolatos információkat is biztosít.
+# <a name="move-operation-support-for-resources"></a>Művelet-támogatás áthelyezése az erőforrásokhoz
+Ez a cikk azt mutatja be, hogy az Azure-erőforrástípus támogatja-e az áthelyezési műveletet. Emellett az erőforrások áthelyezésekor megfontolandó speciális feltételekkel kapcsolatos információkat is tartalmaz.
 
-Egy erőforrás-szolgáltató névtere ugorhat:
+Ugrás erőforrás-szolgáltatói névtérre:
 > [!div class="op_single_selector"]
 > - [Microsoft.AAD](#microsoftaad)
 > - [microsoft.aadiam](#microsoftaadiam)
@@ -29,14 +29,14 @@ Egy erőforrás-szolgáltató névtere ugorhat:
 > - [Microsoft.Automation](#microsoftautomation)
 > - [Microsoft.AzureActiveDirectory](#microsoftazureactivedirectory)
 > - [Microsoft.AzureStack](#microsoftazurestack)
-> - [Microsoft.Backup](#microsoftbackup)
-> - [Microsoft.Batch](#microsoftbatch)
-> - [Microsoft.BatchAI](#microsoftbatchai)
-> - [Microsoft.BingMaps](#microsoftbingmaps)
-> - [Microsoft.BizTalkServices](#microsoftbiztalkservices)
+> - [Microsoft. backup](#microsoftbackup)
+> - [Microsoft. batch](#microsoftbatch)
+> - [Microsoft. BatchAI](#microsoftbatchai)
+> - [Microsoft. BingMaps](#microsoftbingmaps)
+> - [Microsoft. BizTalkServices](#microsoftbiztalkservices)
 > - [Microsoft.Blockchain](#microsoftblockchain)
-> - [Microsoft.Blueprint](#microsoftblueprint)
-> - [Microsoft.BotService](#microsoftbotservice)
+> - [Microsoft. Blueprint](#microsoftblueprint)
+> - [Microsoft. BotService](#microsoftbotservice)
 > - [Microsoft.Cache](#microsoftcache)
 > - [Microsoft.Cdn](#microsoftcdn)
 > - [Microsoft.CertificateRegistration](#microsoftcertificateregistration)
@@ -81,41 +81,41 @@ Egy erőforrás-szolgáltató névtere ugorhat:
 > - [Microsoft.HanaOnAzure](#microsofthanaonazure)
 > - [Microsoft.HDInsight](#microsofthdinsight)
 > - [Microsoft.HealthcareApis](#microsofthealthcareapis)
-> - [Microsoft.HybridCompute](#microsofthybridcompute)
+> - [Microsoft. HybridCompute](#microsofthybridcompute)
 > - [Microsoft.HybridData](#microsofthybriddata)
-> - [Microsoft.ImportExport](#microsoftimportexport)
+> - [Microsoft. ImportExport](#microsoftimportexport)
 > - [microsoft.insights](#microsoftinsights)
 > - [Microsoft.IoTCentral](#microsoftiotcentral)
-> - [Microsoft.IoTSpaces](#microsoftiotspaces)
+> - [Microsoft. IoTSpaces](#microsoftiotspaces)
 > - [Microsoft.KeyVault](#microsoftkeyvault)
 > - [Microsoft.Kusto](#microsoftkusto)
-> - [Microsoft.LabServices](#microsoftlabservices)
+> - [Microsoft. LabServices](#microsoftlabservices)
 > - [Microsoft.LocationBasedServices](#microsoftlocationbasedservices)
-> - [Microsoft.LocationServices](#microsoftlocationservices)
+> - [Microsoft. LocationServices](#microsoftlocationservices)
 > - [Microsoft.Logic](#microsoftlogic)
 > - [Microsoft.MachineLearning](#microsoftmachinelearning)
 > - [Microsoft.MachineLearningCompute](#microsoftmachinelearningcompute)
-> - [Microsoft.MachineLearningExperimentation](#microsoftmachinelearningexperimentation)
+> - [Microsoft. MachineLearningExperimentation](#microsoftmachinelearningexperimentation)
 > - [Microsoft.MachineLearningModelManagement](#microsoftmachinelearningmodelmanagement)
 > - [Microsoft.MachineLearningOperationalization](#microsoftmachinelearningoperationalization)
 > - [Microsoft.MachineLearningServices](#microsoftmachinelearningservices)
 > - [Microsoft.ManagedIdentity](#microsoftmanagedidentity)
-> - [Microsoft.Maps](#microsoftmaps)
+> - [Microsoft. Maps](#microsoftmaps)
 > - [Microsoft.MarketplaceApps](#microsoftmarketplaceapps)
 > - [Microsoft.Media](#microsoftmedia)
-> - [Microsoft.Migrate](#microsoftmigrate)
+> - [Microsoft. Migrálás](#microsoftmigrate)
 > - [Microsoft.NetApp](#microsoftnetapp)
 > - [Microsoft.Network](#microsoftnetwork)
-> - [Microsoft.NotificationHubs](#microsoftnotificationhubs)
+> - [Microsoft. NotificationHubs](#microsoftnotificationhubs)
 > - [Microsoft.OperationalInsights](#microsoftoperationalinsights)
 > - [Microsoft.OperationsManagement](#microsoftoperationsmanagement)
-> - [Microsoft.Peering](#microsoftpeering)
+> - [Microsoft. peering](#microsoftpeering)
 > - [Microsoft.Portal](#microsoftportal)
 > - [Microsoft.PortalSdk](#microsoftportalsdk)
 > - [Microsoft.PowerBI](#microsoftpowerbi)
 > - [Microsoft.PowerBIDedicated](#microsoftpowerbidedicated)
 > - [Microsoft.ProjectOxford](#microsoftprojectoxford)
-> - [Microsoft.RecoveryServices](#microsoftrecoveryservices)
+> - [Microsoft. Recoveryservices szolgáltatónál](#microsoftrecoveryservices)
 > - [Microsoft.Relay](#microsoftrelay)
 > - [Microsoft.SaaS](#microsoftsaas)
 > - [Microsoft.Scheduler](#microsoftscheduler)
@@ -140,14 +140,14 @@ Egy erőforrás-szolgáltató névtere ugorhat:
 > - [Microsoft.StreamAnalytics](#microsoftstreamanalytics)
 > - [Microsoft.StreamAnalyticsExplorer](#microsoftstreamanalyticsexplorer)
 > - [Microsoft.TerraformOSS](#microsoftterraformoss)
-> - [Microsoft.TimeSeriesInsights](#microsofttimeseriesinsights)
-> - [Microsoft.Token](#microsofttoken)
+> - [Microsoft. TimeSeriesInsights](#microsofttimeseriesinsights)
+> - [Microsoft. token](#microsofttoken)
 > - [Microsoft.VirtualMachineImages](#microsoftvirtualmachineimages)
 > - [microsoft.visualstudio](#microsoftvisualstudio)
 > - [Microsoft.VMwareCloudSimple](#microsoftvmwarecloudsimple)
 > - [Microsoft.Web](#microsoftweb)
 > - [Microsoft.WindowsIoT](#microsoftwindowsiot)
-> - [Microsoft.WindowsVirtualDesktop](#microsoftwindowsvirtualdesktop)
+> - [Microsoft. WindowsVirtualDesktop](#microsoftwindowsvirtualdesktop)
 
 ## <a name="microsoftaad"></a>Microsoft.AAD
 | Erőforrás típusa | Resource group | Subscription |
@@ -157,7 +157,7 @@ Egy erőforrás-szolgáltató névtere ugorhat:
 ## <a name="microsoftaadiam"></a>microsoft.aadiam
 | Erőforrás típusa | Resource group | Subscription |
 | ------------- | ----------- | ---------- |
-| Bérlők | Nem | Nem |
+| bérlők | Nem | Nem |
 
 ## <a name="microsoftalertsmanagement"></a>Microsoft.AlertsManagement
 | Erőforrás típusa | Resource group | Subscription |
@@ -184,10 +184,10 @@ Egy erőforrás-szolgáltató névtere ugorhat:
 | ------------- | ----------- | ---------- |
 | apiapps | Nem | Nem |
 | appidentities | Nem | Nem |
-| Átjárók | Nem | Nem |
+| átjárók | Nem | Nem |
 
 > [!IMPORTANT]
-> Lásd: [App Service-ben áthelyezése útmutatást](./move-limitations/app-service-move-limitations.md).
+> Lásd: [app Service áthelyezési útmutató](./move-limitations/app-service-move-limitations.md).
 
 ## <a name="microsoftauthorization"></a>Microsoft.Authorization
 | Erőforrás típusa | Resource group | Subscription |
@@ -199,10 +199,10 @@ Egy erőforrás-szolgáltató névtere ugorhat:
 | ------------- | ----------- | ---------- |
 | automationaccounts | Igen | Igen |
 | automationaccounts/konfigurációk | Igen | Igen |
-| automationaccounts/runbooks | Igen | Igen |
+| automationaccounts/runbookok | Igen | Igen |
 
 > [!IMPORTANT]
-> Runbookok léteznie kell, az Automation-fióknak ugyanabban az erőforráscsoportban.
+> A runbookok ugyanabban az erőforráscsoporthoz kell tartoznia, mint az Automation-fióknak.
 
 ## <a name="microsoftazureactivedirectory"></a>Microsoft.AzureActiveDirectory
 | Erőforrás típusa | Resource group | Subscription |
@@ -227,9 +227,9 @@ Egy erőforrás-szolgáltató névtere ugorhat:
 ## <a name="microsoftbatchai"></a>Microsoft.BatchAI
 | Erőforrás típusa | Resource group | Subscription |
 | ------------- | ----------- | ---------- |
-| Fürtök | Nem | Nem |
+| fürtök | Nem | Nem |
 | fileservers | Nem | Nem |
-| Feladatok | Nem | Nem |
+| feladatok | Nem | Nem |
 | Munkaterületek | Nem | Nem |
 
 ## <a name="microsoftbingmaps"></a>Microsoft.BingMaps
@@ -247,12 +247,12 @@ Egy erőforrás-szolgáltató névtere ugorhat:
 | ------------- | ----------- | ---------- |
 | blockchainmembers | Igen | Igen |
 
-## <a name="microsoftblueprint"></a>Microsoft.Blueprint
+## <a name="microsoftblueprint"></a>Microsoft. Blueprint
 | Erőforrás típusa | Resource group | Subscription |
 | ------------- | ----------- | ---------- |
 | blueprintassignments | Nem | Nem |
 
-## <a name="microsoftbotservice"></a>Microsoft.BotService
+## <a name="microsoftbotservice"></a>Microsoft. BotService
 | Erőforrás típusa | Resource group | Subscription |
 | ------------- | ----------- | ---------- |
 | botservices | Igen | Igen |
@@ -260,16 +260,16 @@ Egy erőforrás-szolgáltató névtere ugorhat:
 ## <a name="microsoftcache"></a>Microsoft.Cache
 | Erőforrás típusa | Resource group | Subscription |
 | ------------- | ----------- | ---------- |
-| Redis Cache | Igen | Igen |
+| Redis | Igen | Igen |
 
 > [!IMPORTANT]
-> Ha az Azure Cache Redis-példány és a virtuális hálózat van konfigurálva, a példány nem helyezhető át egy másik előfizetést. Lásd: [virtuális hálózatok áthelyezése korlátozások](./move-limitations/virtual-network-move-limitations.md).
+> Ha az Azure cache for Redis-példány virtuális hálózattal van konfigurálva, a példány nem helyezhető át egy másik előfizetésbe. Lásd: a [virtuális hálózatok áthelyezésének korlátai](./move-limitations/virtual-network-move-limitations.md).
 
 ## <a name="microsoftcdn"></a>Microsoft.Cdn
 | Erőforrás típusa | Resource group | Subscription |
 | ------------- | ----------- | ---------- |
 | profiles | Igen | Igen |
-| profilok és végpontok | Igen | Igen |
+| profilok/végpontok | Igen | Igen |
 
 ## <a name="microsoftcertificateregistration"></a>Microsoft.CertificateRegistration
 | Erőforrás típusa | Resource group | Subscription |
@@ -277,16 +277,16 @@ Egy erőforrás-szolgáltató névtere ugorhat:
 | tanúsítványrendelések | Igen | Igen |
 
 > [!IMPORTANT]
-> Lásd: [App Service-ben áthelyezése útmutatást](./move-limitations/app-service-move-limitations.md).
+> Lásd: [app Service áthelyezési útmutató](./move-limitations/app-service-move-limitations.md).
 
 ## <a name="microsoftclassiccompute"></a>Microsoft.ClassicCompute
 | Erőforrás típusa | Resource group | Subscription |
 | ------------- | ----------- | ---------- |
-| domainnames | Igen | Nem |
-| virtuális gép | Igen | Nem |
+| tartománynevek | Igen | Nem |
+| virtualmachines | Igen | Nem |
 
 > [!IMPORTANT]
-> Lásd: [klasszikus üzembe helyezési útmutató áthelyezése](./move-limitations/classic-model-move-limitations.md). Klasszikus üzembe helyezési erőforrásokkal is áthelyezhető egy adott művelethez előfizetésekben forgatókönyvhöz.
+> Lásd: [klasszikus üzembe helyezési útmutató](./move-limitations/classic-model-move-limitations.md). A klasszikus üzembe helyezési erőforrások az adott forgatókönyvre jellemző művelettel helyezhetők át az előfizetések között.
 
 ## <a name="microsoftclassicnetwork"></a>Microsoft.ClassicNetwork
 | Erőforrás típusa | Resource group | Subscription |
@@ -296,15 +296,15 @@ Egy erőforrás-szolgáltató névtere ugorhat:
 | virtualnetworks | Nem | Nem |
 
 > [!IMPORTANT]
-> Lásd: [klasszikus üzembe helyezési útmutató áthelyezése](./move-limitations/classic-model-move-limitations.md). Klasszikus üzembe helyezési erőforrásokkal is áthelyezhető egy adott művelethez előfizetésekben forgatókönyvhöz.
+> Lásd: [klasszikus üzembe helyezési útmutató](./move-limitations/classic-model-move-limitations.md). A klasszikus üzembe helyezési erőforrások az adott forgatókönyvre jellemző művelettel helyezhetők át az előfizetések között.
 
 ## <a name="microsoftclassicstorage"></a>Microsoft.ClassicStorage
 | Erőforrás típusa | Resource group | Subscription |
 | ------------- | ----------- | ---------- |
-| tárfiókok | Igen | Nem |
+| storageaccounts | Igen | Nem |
 
 > [!IMPORTANT]
-> Lásd: [klasszikus üzembe helyezési útmutató áthelyezése](./move-limitations/classic-model-move-limitations.md). Klasszikus üzembe helyezési erőforrásokkal is áthelyezhető egy adott művelethez előfizetésekben forgatókönyvhöz.
+> Lásd: [klasszikus üzembe helyezési útmutató](./move-limitations/classic-model-move-limitations.md). A klasszikus üzembe helyezési erőforrások az adott forgatókönyvre jellemző művelettel helyezhetők át az előfizetések között.
 
 ## <a name="microsoftcognitiveservices"></a>Microsoft.CognitiveServices
 | Erőforrás típusa | Resource group | Subscription |
@@ -315,24 +315,24 @@ Egy erőforrás-szolgáltató névtere ugorhat:
 | Erőforrás típusa | Resource group | Subscription |
 | ------------- | ----------- | ---------- |
 | availabilitysets | Igen | Igen |
-| Lemezek | Igen | Igen |
+| lemezek | Igen | Igen |
 | katalógusok | Nem | Nem |
-| galériák vagy-képekből | Nem | Nem |
-| galériák/képek/verziója | Nem | Nem |
+| galériák/lemezképek | Nem | Nem |
+| galériák/lemezképek/verziók | Nem | Nem |
 | hostgroups | Nem | Nem |
-| hostgroups /-gazdagépek | Nem | Nem |
+| hostgroups/gazdagépek | Nem | Nem |
 | images | Igen | Igen |
 | proximityplacementgroups | Nem | Nem |
 | restorepointcollections | Nem | Nem |
 | sharedvmimages | Nem | Nem |
-| sharedvmimages/verziója | Nem | Nem |
-| snapshots | Igen | Igen |
-| virtuális gép | Igen | Igen |
-| virtuális gép/bővítmények | Igen | Igen |
+| sharedvmimages/verziók | Nem | Nem |
+| Pillanatképek | Igen | Igen |
+| virtualmachines | Igen | Igen |
+| virtualmachines/bővítmények | Igen | Igen |
 | virtualmachinescalesets | Igen | Igen |
 
 > [!IMPORTANT]
-> Lásd: [virtuális gépek áthelyezése útmutatást](./move-limitations/virtual-machines-move-limitations.md).
+> Lásd: [Virtual Machines áthelyezési útmutató](./move-limitations/virtual-machines-move-limitations.md).
 
 ## <a name="microsoftcontainer"></a>Microsoft.Container
 | Erőforrás típusa | Resource group | Subscription |
@@ -347,11 +347,11 @@ Egy erőforrás-szolgáltató névtere ugorhat:
 ## <a name="microsoftcontainerregistry"></a>Microsoft.ContainerRegistry
 | Erőforrás típusa | Resource group | Subscription |
 | ------------- | ----------- | ---------- |
-| beállításjegyzékek | Igen | Igen |
+| kibocsátásiegység | Igen | Igen |
 | registries/buildtasks | Igen | Igen |
-| beállításjegyzékek/replikációk | Igen | Igen |
-| beállításjegyzékek/feladatok | Igen | Igen |
-| beállításjegyzékek és webhookok | Igen | Igen |
+| kibocsátásiegység-forgalmi jegyzékek/replikálások | Igen | Igen |
+| kibocsátásiegység-forgalmi jegyzékek/feladatok | Igen | Igen |
+| kibocsátásiegység-forgalmi jegyzékek/webhookok | Igen | Igen |
 
 ## <a name="microsoftcontainerservice"></a>Microsoft.ContainerService
 | Erőforrás típusa | Resource group | Subscription |
@@ -378,12 +378,12 @@ Egy erőforrás-szolgáltató névtere ugorhat:
 ## <a name="microsoftcustomerinsights"></a>Microsoft.CustomerInsights
 | Erőforrás típusa | Resource group | Subscription |
 | ------------- | ----------- | ---------- |
-| hubok | Igen | Igen |
+| Hubs | Igen | Igen |
 
 ## <a name="microsoftdatabox"></a>Microsoft.DataBox
 | Erőforrás típusa | Resource group | Subscription |
 | ------------- | ----------- | ---------- |
-| Feladatok | Nem | Nem |
+| feladatok | Nem | Nem |
 
 ## <a name="microsoftdataboxedge"></a>Microsoft.DataBoxEdge
 | Erőforrás típusa | Resource group | Subscription |
@@ -409,14 +409,14 @@ Egy erőforrás-szolgáltató névtere ugorhat:
 ## <a name="microsoftdataexchange"></a>Microsoft.DataExchange
 | Erőforrás típusa | Resource group | Subscription |
 | ------------- | ----------- | ---------- |
-| Csomagok | Nem | Nem |
-| Csomagok | Nem | Nem |
+| csomagok | Nem | Nem |
+| tervek | Nem | Nem |
 
 ## <a name="microsoftdatafactory"></a>Microsoft.DataFactory
 | Erőforrás típusa | Resource group | Subscription |
 | ------------- | ----------- | ---------- |
 | datafactories | Igen | Igen |
-| gyárak | Igen | Igen |
+| előállítók | Igen | Igen |
 
 ## <a name="microsoftdatalake"></a>Microsoft.DataLake
 | Erőforrás típusa | Resource group | Subscription |
@@ -437,8 +437,8 @@ Egy erőforrás-szolgáltató névtere ugorhat:
 | Erőforrás típusa | Resource group | Subscription |
 | ------------- | ----------- | ---------- |
 | services | Nem | Nem |
-| Services-projektek | Nem | Nem |
-| tárhelyek | Nem | Nem |
+| szolgáltatások/projektek | Nem | Nem |
+| bővítőhely | Nem | Nem |
 
 ## <a name="microsoftdbformariadb"></a>Microsoft.DBforMariaDB
 | Erőforrás típusa | Resource group | Subscription |
@@ -461,10 +461,10 @@ Egy erőforrás-szolgáltató névtere ugorhat:
 | Erőforrás típusa | Resource group | Subscription |
 | ------------- | ----------- | ---------- |
 | artifactsources | Igen | Igen |
-| Kibocsátások | Igen | Igen |
+| kibocsátások | Igen | Igen |
 | servicetopologies | Igen | Igen |
 | servicetopologies/szolgáltatások | Igen | Igen |
-| servicetopologies/services/serviceunits | Igen | Igen |
+| servicetopologies/szolgáltatások/serviceunits | Igen | Igen |
 | lépések | Igen | Igen |
 
 ## <a name="microsoftdevices"></a>Microsoft.Devices
@@ -478,19 +478,19 @@ Egy erőforrás-szolgáltató névtere ugorhat:
 ## <a name="microsoftdevspaces"></a>Microsoft.DevSpaces
 | Erőforrás típusa | Resource group | Subscription |
 | ------------- | ----------- | ---------- |
-| Tartományvezérlők | Nem | Nem |
+| tartományvezérlők | Nem | Nem |
 
 ## <a name="microsoftdevtestlab"></a>Microsoft.DevTestLab
 | Erőforrás típusa | Resource group | Subscription |
 | ------------- | ----------- | ---------- |
 | labcenters | Nem | Nem |
-| Laborgyakorlatok | Igen | Nem |
-| laborok/környezetek | Igen | Igen |
-| labs/servicerunners | Igen | Igen |
-| laborok/virtuális gép | Igen | Nem |
-| Ütemezések | Igen | Igen |
+| Labs | Igen | Nem |
+| Labs/környezetek | Igen | Igen |
+| Labor/servicerunners | Igen | Igen |
+| Labor/virtualmachines | Igen | Nem |
+| menetrend | Igen | Igen |
 
-## <a name="microsoftdns"></a>microsoft.dns
+## <a name="microsoftdns"></a>Microsoft. DNS
 | Erőforrás típusa | Resource group | Subscription |
 | ------------- | ----------- | ---------- |
 | dnszones | Nem | Nem |
@@ -498,7 +498,7 @@ Egy erőforrás-szolgáltató névtere ugorhat:
 | dnszones/aaaa | Nem | Nem |
 | dnszones/cname | Nem | Nem |
 | dnszones/mx | Nem | Nem |
-| dnszones/ptr | Nem | Nem |
+| dnszones/PTR | Nem | Nem |
 | dnszones/srv | Nem | Nem |
 | dnszones/txt | Nem | Nem |
 | trafficmanagerprofiles | Nem | Nem |
@@ -522,13 +522,13 @@ Egy erőforrás-szolgáltató névtere ugorhat:
 | Erőforrás típusa | Resource group | Subscription |
 | ------------- | ----------- | ---------- |
 | tartományok | Igen | Igen |
-| kapcsolatos témakörök | Igen | Igen |
+| témakörök | Igen | Igen |
 
 ## <a name="microsofteventhub"></a>Microsoft.EventHub
 | Erőforrás típusa | Resource group | Subscription |
 | ------------- | ----------- | ---------- |
-| Fürtök | Igen | Igen |
-| Névterek | Igen | Igen |
+| fürtök | Igen | Igen |
+| névterek | Igen | Igen |
 
 ## <a name="microsoftgenomics"></a>Microsoft.Genomics
 | Erőforrás típusa | Resource group | Subscription |
@@ -543,7 +543,7 @@ Egy erőforrás-szolgáltató névtere ugorhat:
 ## <a name="microsofthdinsight"></a>Microsoft.HDInsight
 | Erőforrás típusa | Resource group | Subscription |
 | ------------- | ----------- | ---------- |
-| Fürtök | Igen | Igen |
+| fürtök | Igen | Igen |
 
 > [!IMPORTANT]
 > HDInsight-fürtök áthelyezheti egy új előfizetést, vagy az erőforráscsoportot. Azonban nem helyezhetők át a hálózati erőforrások (például a virtuális hálózathoz, a hálózati adapter vagy a terheléselosztó) a HDInsight-fürthöz társított előfizetésekben. Emellett nem helyezhető át egy új erőforráscsoportot egy hálózati Adaptert, amely a fürt egy virtuális géphez van csatolva.
@@ -555,12 +555,12 @@ Egy erőforrás-szolgáltató névtere ugorhat:
 | ------------- | ----------- | ---------- |
 | services | Igen | Igen |
 
-## <a name="microsofthybridcompute"></a>Microsoft.HybridCompute
+## <a name="microsofthybridcompute"></a>Microsoft. HybridCompute
 | Erőforrás típusa | Resource group | Subscription |
 | ------------- | ----------- | ---------- |
 | gépek | Nem | Nem |
 
-## <a name="microsofthybriddata"></a>Microsoft.HybridData
+## <a name="microsofthybriddata"></a>Microsoft. HybridData
 | Erőforrás típusa | Resource group | Subscription |
 | ------------- | ----------- | ---------- |
 | datamanagers | Igen | Igen |
@@ -568,34 +568,34 @@ Egy erőforrás-szolgáltató névtere ugorhat:
 ## <a name="microsoftimportexport"></a>Microsoft.ImportExport
 | Erőforrás típusa | Resource group | Subscription |
 | ------------- | ----------- | ---------- |
-| Feladatok | Igen | Igen |
+| feladatok | Igen | Igen |
 
-## <a name="microsoftinsights"></a>microsoft.insights
+## <a name="microsoftinsights"></a>Microsoft. bepillantások
 | Erőforrás típusa | Resource group | Subscription |
 | ------------- | ----------- | ---------- |
 | fiókok | Nem | Nem |
 | actiongroups | Igen | Igen |
 | activitylogalerts | Nem | Nem |
 | alertrules | Igen | Igen |
-| autoscalesettings beállítás | Igen | Igen |
+| autoscalesettings | Igen | Igen |
 | Összetevők | Igen | Igen |
 | guestdiagnosticsettings | Nem | Nem |
 | metricalerts | Nem | Nem |
 | notificationgroups | Nem | Nem |
 | notificationrules | Nem | Nem |
 | scheduledqueryrules | Igen | Igen |
-| webteszt | Igen | Igen |
-| munkafüzetek | Igen | Igen |
+| webteszteket | Igen | Igen |
+| Munkafüzetek | Igen | Igen |
 
 > [!IMPORTANT]
-> Ellenőrizze, hogy új előfizetésbe való áthelyezését nem haladja meg [előfizetési kvóták](../azure-subscription-service-limits.md#azure-monitor-limits).
+> Ügyeljen arra, hogy az új előfizetésre való áttérés ne haladja meg az [előfizetési kvótákat](../azure-subscription-service-limits.md#azure-monitor-limits)
 
 ## <a name="microsoftiotcentral"></a>Microsoft.IoTCentral
 | Erőforrás típusa | Resource group | Subscription |
 | ------------- | ----------- | ---------- |
 | iotapps | Igen | Igen |
 
-## <a name="microsoftiotspaces"></a>Microsoft.IoTSpaces
+## <a name="microsoftiotspaces"></a>Microsoft. IoTSpaces
 | Erőforrás típusa | Resource group | Subscription |
 | ------------- | ----------- | ---------- |
 | checknameavailability | Igen | Igen |
@@ -605,15 +605,15 @@ Egy erőforrás-szolgáltató névtere ugorhat:
 | Erőforrás típusa | Resource group | Subscription |
 | ------------- | ----------- | ---------- |
 | hsmpools | Nem | Nem |
-| tárolók | Igen | Igen |
+| boltívek | Igen | Igen |
 
 > [!IMPORTANT]
-> Key vault-Kulcstartók lemez titkosításához használt erőforráscsoport az ugyanazon az előfizetésen belül vagy előfizetések között nem lehet áthelyezni.
+> A lemezes titkosításhoz használt kulcstartók nem helyezhetők át ugyanabba az előfizetésbe vagy előfizetésbe tartozó erőforráscsoporthoz.
 
 ## <a name="microsoftkusto"></a>Microsoft.Kusto
 | Erőforrás típusa | Resource group | Subscription |
 | ------------- | ----------- | ---------- |
-| Fürtök | Igen | Igen |
+| fürtök | Igen | Igen |
 
 ## <a name="microsoftlabservices"></a>Microsoft.LabServices
 | Erőforrás típusa | Resource group | Subscription |
@@ -637,13 +637,13 @@ Egy erőforrás-szolgáltató névtere ugorhat:
 | integrationaccounts | Igen | Igen |
 | integrationserviceenvironments | Nem | Nem |
 | isolatedenvironments | Nem | Nem |
-| A munkafolyamatok | Igen | Igen |
+| munkafolyamatok | Igen | Igen |
 
 ## <a name="microsoftmachinelearning"></a>Microsoft.MachineLearning
 | Erőforrás típusa | Resource group | Subscription |
 | ------------- | ----------- | ---------- |
 | commitmentplans | Igen | Igen |
-| problémák megoldásához segítséget | Igen | Nem |
+| WebServices | Igen | Nem |
 | Munkaterületek | Igen | Igen |
 
 ## <a name="microsoftmachinelearningcompute"></a>Microsoft.MachineLearningCompute
@@ -651,15 +651,15 @@ Egy erőforrás-szolgáltató névtere ugorhat:
 | ------------- | ----------- | ---------- |
 | operationalizationclusters | Igen | Igen |
 
-## <a name="microsoftmachinelearningexperimentation"></a>Microsoft.MachineLearningExperimentation
+## <a name="microsoftmachinelearningexperimentation"></a>Microsoft. MachineLearningExperimentation
 | Erőforrás típusa | Resource group | Subscription |
 | ------------- | ----------- | ---------- |
 | fiókok | Nem | Nem |
-| fiókok és munkaterületek | Nem | Nem |
-| fiókok/munkaterületeket és projekteket | Nem | Nem |
+| fiókok/munkaterületek | Nem | Nem |
+| fiókok/munkaterületek/projektek | Nem | Nem |
 | teamaccounts | Nem | Nem |
 | teamaccounts/munkaterületek | Nem | Nem |
-| teamaccounts/munkaterületeket és projekteket | Nem | Nem |
+| teamaccounts/munkaterületek/projektek | Nem | Nem |
 
 ## <a name="microsoftmachinelearningmodelmanagement"></a>Microsoft.MachineLearningModelManagement
 | Erőforrás típusa | Resource group | Subscription |
@@ -694,9 +694,9 @@ Egy erőforrás-szolgáltató névtere ugorhat:
 ## <a name="microsoftmedia"></a>Microsoft.Media
 | Erőforrás típusa | Resource group | Subscription |
 | ------------- | ----------- | ---------- |
-| mediaservices | Igen | Igen |
-| mediaservices/liveevents | Igen | Igen |
-| mediaservices/streamvégpontok | Igen | Igen |
+| Mediaservices | Igen | Igen |
+| Mediaservices/liveevents | Igen | Igen |
+| Mediaservices/streamingendpoints | Igen | Igen |
 
 ## <a name="microsoftmigrate"></a>Microsoft.Migrate
 | Erőforrás típusa | Resource group | Subscription |
@@ -710,7 +710,7 @@ Egy erőforrás-szolgáltató névtere ugorhat:
 | ------------- | ----------- | ---------- |
 | netappaccounts | Nem | Nem |
 | netappaccounts/capacitypools | Nem | Nem |
-| netappaccounts/capacitypools/volumes | Nem | Nem |
+| netappaccounts/capacitypools/kötetek | Nem | Nem |
 | netappaccounts/capacitypools/volumes/mounttargets | Nem | Nem |
 | netappaccounts/capacitypools/volumes/snapshots | Nem | Nem |
 
@@ -722,7 +722,7 @@ Egy erőforrás-szolgáltató névtere ugorhat:
 | applicationsecuritygroups | Igen | Igen |
 | azurefirewalls | Igen | Igen |
 | bastionhosts | Nem | Nem |
-| Kapcsolatok | Igen | Igen |
+| kapcsolatok | Igen | Igen |
 | ddoscustompolicies | Igen | Igen |
 | ddosprotectionplans | Nem | Nem |
 | dnszones | Igen | Igen |
@@ -732,23 +732,23 @@ Egy erőforrás-szolgáltató névtere ugorhat:
 | expressrouteports | Nem | Nem |
 | frontdoors | Nem | Nem |
 | frontdoorwebapplicationfirewallpolicies | Nem | Nem |
-| loadbalancers | Igen – alapszintű Termékváltozat<br>Nem – a Standard Termékváltozat | Igen – alapszintű Termékváltozat<br>Nem – a Standard Termékváltozat |
+| loadbalancers | Igen – alapszintű SKU<br>Nem szabványos SKU | Igen – alapszintű SKU<br>Nem szabványos SKU |
 | localnetworkgateways | Igen | Igen |
 | natgateways | Igen | Igen |
 | networkintentpolicies | Igen | Igen |
-| hálózati | Igen | Igen |
+| networkinterfaces | Igen | Igen |
 | networkprofiles | Nem | Nem |
 | networksecuritygroups | Igen | Igen |
 | networkwatchers | Igen | Igen |
 | networkwatchers/connectionmonitors | Igen | Igen |
-| networkwatchers/átvilágított felülettel | Igen | Igen |
+| networkwatchers/objektívek | Igen | Igen |
 | networkwatchers/pingmeshes | Igen | Igen |
 | p2svpngateways | Nem | Nem |
 | privatednszones | Igen | Igen |
 | privatednszones/virtualnetworklinks | Igen | Igen |
 | privateendpoints | Nem | Nem |
 | privatelinkservices | Nem | Nem |
-| publicipaddresses | Igen – alapszintű Termékváltozat<br>Nem – a Standard Termékváltozat | Igen – alapszintű Termékváltozat<br>Nem – a Standard Termékváltozat |
+| nyilvános IP | Igen – alapszintű SKU<br>Nem szabványos SKU | Igen – alapszintű SKU<br>Nem szabványos SKU |
 | publicipprefixes | Igen | Igen |
 | routefilters | Nem | Nem |
 | routetables | Igen | Igen |
@@ -765,13 +765,13 @@ Egy erőforrás-szolgáltató névtere ugorhat:
 | webapplicationfirewallpolicies | Igen | Igen |
 
 > [!IMPORTANT]
-> Lásd: [virtuális hálózatok áthelyezése útmutatást](./move-limitations/virtual-network-move-limitations.md).
+> Lásd: [Virtual Networks Move útmutató](./move-limitations/virtual-network-move-limitations.md).
 
 ## <a name="microsoftnotificationhubs"></a>Microsoft.NotificationHubs
 | Erőforrás típusa | Resource group | Subscription |
 | ------------- | ----------- | ---------- |
-| Névterek | Igen | Igen |
-| névtér/notificationhubs | Igen | Igen |
+| névterek | Igen | Igen |
+| névterek/notificationhubs | Igen | Igen |
 
 ## <a name="microsoftoperationalinsights"></a>Microsoft.OperationalInsights
 | Erőforrás típusa | Resource group | Subscription |
@@ -779,24 +779,24 @@ Egy erőforrás-szolgáltató névtere ugorhat:
 | Munkaterületek | Igen | Igen |
 
 > [!IMPORTANT]
-> Ellenőrizze, hogy új előfizetésbe való áthelyezését nem haladja meg [előfizetési kvóták](../azure-subscription-service-limits.md#azure-monitor-limits).
+> Ügyeljen arra, hogy az új előfizetésre való áttérés ne haladja meg az [előfizetési kvótákat](../azure-subscription-service-limits.md#azure-monitor-limits)
 
 ## <a name="microsoftoperationsmanagement"></a>Microsoft.OperationsManagement
 | Erőforrás típusa | Resource group | Subscription |
 | ------------- | ----------- | ---------- |
 | managementconfigurations | Igen | Igen |
 | megoldások | Igen | Igen |
-| Nézetek | Igen | Igen |
+| Kilátással | Igen | Igen |
 
-## <a name="microsoftpeering"></a>Microsoft.Peering
+## <a name="microsoftpeering"></a>Microsoft. peering
 | Erőforrás típusa | Resource group | Subscription |
 | ------------- | ----------- | ---------- |
-| társviszony-létesítések | Nem | Nem |
+| társviszonyok | Nem | Nem |
 
 ## <a name="microsoftportal"></a>Microsoft.Portal
 | Erőforrás típusa | Resource group | Subscription |
 | ------------- | ----------- | ---------- |
-| Az irányítópultok | Igen | Igen |
+| Irányítópultok | Igen | Igen |
 
 ## <a name="microsoftportalsdk"></a>Microsoft.PortalSdk
 | Erőforrás típusa | Resource group | Subscription |
@@ -811,7 +811,7 @@ Egy erőforrás-szolgáltató névtere ugorhat:
 ## <a name="microsoftpowerbidedicated"></a>Microsoft.PowerBIDedicated
 | Erőforrás típusa | Resource group | Subscription |
 | ------------- | ----------- | ---------- |
-| Kapacitások | Igen | Igen |
+| kapacitások | Igen | Igen |
 
 ## <a name="microsoftprojectoxford"></a>Microsoft.ProjectOxford
 | Erőforrás típusa | Resource group | Subscription |
@@ -821,15 +821,15 @@ Egy erőforrás-szolgáltató névtere ugorhat:
 ## <a name="microsoftrecoveryservices"></a>Microsoft.RecoveryServices
 | Erőforrás típusa | Resource group | Subscription |
 | ------------- | ----------- | ---------- |
-| tárolók | Igen | Igen |
+| boltívek | Igen | Igen |
 
 > [!IMPORTANT]
-> Lásd: [Recovery Services áthelyezése útmutatást](../backup/backup-azure-move-recovery-services-vault.md?toc=/azure/azure-resource-manager/toc.json).
+> Lásd: [Recovery Services áthelyezési útmutató](../backup/backup-azure-move-recovery-services-vault.md?toc=/azure/azure-resource-manager/toc.json).
 
 ## <a name="microsoftrelay"></a>Microsoft.Relay
 | Erőforrás típusa | Resource group | Subscription |
 | ------------- | ----------- | ---------- |
-| Névterek | Igen | Igen |
+| névterek | Igen | Igen |
 
 ## <a name="microsoftsaas"></a>Microsoft.SaaS
 | Erőforrás típusa | Resource group | Subscription |
@@ -839,7 +839,7 @@ Egy erőforrás-szolgáltató névtere ugorhat:
 ## <a name="microsoftscheduler"></a>Microsoft.Scheduler
 | Erőforrás típusa | Resource group | Subscription |
 | ------------- | ----------- | ---------- |
-| folyamatok | Igen | Igen |
+| flow | Igen | Igen |
 | feladatgyűjtemények | Igen | Igen |
 
 ## <a name="microsoftsearch"></a>Microsoft.Search
@@ -848,7 +848,7 @@ Egy erőforrás-szolgáltató névtere ugorhat:
 | searchservices | Igen | Igen |
 
 > [!IMPORTANT]
-> Nem helyezhetők át erőforrások keresése több különböző régiókban lévő több műveletet. Helyezze át őket a különböző műveletek.
+> Egy műveletben nem helyezhető át több keresési erőforrás különböző régiókban. Ehelyett külön műveletekben helyezze át őket.
 
 ## <a name="microsoftsecurity"></a>Microsoft.Security
 | Erőforrás típusa | Resource group | Subscription |
@@ -858,23 +858,23 @@ Egy erőforrás-szolgáltató névtere ugorhat:
 ## <a name="microsoftservermanagement"></a>Microsoft.ServerManagement
 | Erőforrás típusa | Resource group | Subscription |
 | ------------- | ----------- | ---------- |
-| Átjárók | Nem | Nem |
+| átjárók | Nem | Nem |
 | csomópontok | Nem | Nem |
 
 ## <a name="microsoftservicebus"></a>Microsoft.ServiceBus
 | Erőforrás típusa | Resource group | Subscription |
 | ------------- | ----------- | ---------- |
-| Névterek | Igen | Igen |
+| névterek | Igen | Igen |
 
 ## <a name="microsoftservicefabric"></a>Microsoft.ServiceFabric
 | Erőforrás típusa | Resource group | Subscription |
 | ------------- | ----------- | ---------- |
 | alkalmazások | Nem | Nem |
-| Fürtök | Igen | Igen |
+| fürtök | Igen | Igen |
 | containergroups | Nem | Nem |
 | containergroupsets | Nem | Nem |
 | edgeclusters | Nem | Nem |
-| Hálózatok | Nem | Nem |
+| hálózatok | Nem | Nem |
 | secretstores | Nem | Nem |
 | volumes | Nem | Nem |
 
@@ -883,15 +883,15 @@ Egy erőforrás-szolgáltató névtere ugorhat:
 | ------------- | ----------- | ---------- |
 | alkalmazások | Igen | Igen |
 | containergroups | Nem | Nem |
-| Átjárók | Igen | Igen |
-| Hálózatok | Igen | Igen |
-| Titkos kulcsok | Igen | Igen |
+| átjárók | Igen | Igen |
+| hálózatok | Igen | Igen |
+| titkok | Igen | Igen |
 | volumes | Igen | Igen |
 
 ## <a name="microsoftsignalrservice"></a>Microsoft.SignalRService
 | Erőforrás típusa | Resource group | Subscription |
 | ------------- | ----------- | ---------- |
-| a signalr | Igen | Igen |
+| signalr | Igen | Igen |
 
 ## <a name="microsoftsiterecovery"></a>Microsoft.SiteRecovery
 | Erőforrás típusa | Resource group | Subscription |
@@ -899,13 +899,13 @@ Egy erőforrás-szolgáltató névtere ugorhat:
 | siterecoveryvault | Nem | Nem |
 
 > [!IMPORTANT]
-> Lásd: [Recovery Services áthelyezése útmutatást](../backup/backup-azure-move-recovery-services-vault.md?toc=/azure/azure-resource-manager/toc.json).
+> Lásd: [Recovery Services áthelyezési útmutató](../backup/backup-azure-move-recovery-services-vault.md?toc=/azure/azure-resource-manager/toc.json).
 
 ## <a name="microsoftsolutions"></a>Microsoft.Solutions
 | Erőforrás típusa | Resource group | Subscription |
 | ------------- | ----------- | ---------- |
 | appliancedefinitions | Nem | Nem |
-| készülékek | Nem | Nem |
+| berendezések | Nem | Nem |
 | applicationdefinitions | Nem | Nem |
 | alkalmazások | Nem | Nem |
 | jitrequests | Nem | Nem |
@@ -913,16 +913,16 @@ Egy erőforrás-szolgáltató névtere ugorhat:
 ## <a name="microsoftsql"></a>Microsoft.Sql
 | Erőforrás típusa | Resource group | Subscription |
 | ------------- | ----------- | ---------- |
-| instancepools | Igen | Igen |
-| managedinstances | Igen | Igen |
-| managedinstances/adatbázis | Igen | Igen |
+| instancepools | Nem | Nem |
+| managedinstances | Nem | Nem |
+| managedinstances/adatbázisok | Nem | Nem |
 | Kiszolgálók | Igen | Igen |
-| kiszolgálók és adatbázisok | Igen | Igen |
+| kiszolgálók/adatbázisok | Igen | Igen |
 | servers/elasticpools | Igen | Igen |
 | virtualclusters | Igen | Igen |
 
 > [!IMPORTANT]
-> Egy adatbázis és a kiszolgáló ugyanabban az erőforráscsoportban kell lennie. Ha áthelyezi SQL-kiszolgáló, az összes hozzá tartozó adatbázisok is kerülnek. Ez a viselkedés az Azure SQL Database és az Azure SQL Data Warehouse-adatbázisok vonatkozik.
+> Az adatbázisnak és a kiszolgálónak ugyanabban az erőforráscsoporthoz kell tartoznia. Ha áthelyezi SQL-kiszolgáló, az összes hozzá tartozó adatbázisok is kerülnek. Ez a viselkedés az Azure SQL Database és az Azure SQL Data Warehouse-adatbázisok vonatkozik.
 
 ## <a name="microsoftsqlvirtualmachine"></a>Microsoft.SqlVirtualMachine
 | Erőforrás típusa | Resource group | Subscription |
@@ -938,12 +938,12 @@ Egy erőforrás-szolgáltató névtere ugorhat:
 ## <a name="microsoftstorage"></a>Microsoft.Storage
 | Erőforrás típusa | Resource group | Subscription |
 | ------------- | ----------- | ---------- |
-| tárfiókok | Igen | Igen |
+| storageaccounts | Igen | Igen |
 
 ## <a name="microsoftstoragecache"></a>Microsoft.StorageCache
 | Erőforrás típusa | Resource group | Subscription |
 | ------------- | ----------- | ---------- |
-| Gyorsítótárak | Nem | Nem |
+| gyorsítótárak | Nem | Nem |
 
 ## <a name="microsoftstoragesync"></a>Microsoft.StorageSync
 | Erőforrás típusa | Resource group | Subscription |
@@ -963,7 +963,7 @@ Egy erőforrás-szolgáltató névtere ugorhat:
 ## <a name="microsoftstorsimple"></a>Microsoft.StorSimple
 | Erőforrás típusa | Resource group | Subscription |
 | ------------- | ----------- | ---------- |
-| vezetők | Nem | Nem |
+| kezelők | Nem | Nem |
 
 ## <a name="microsoftstreamanalytics"></a>Microsoft.StreamAnalytics
 | Erőforrás típusa | Resource group | Subscription |
@@ -971,12 +971,12 @@ Egy erőforrás-szolgáltató névtere ugorhat:
 | streamingjobs | Igen | Igen |
 
 > [!IMPORTANT]
-> Stream Analytics-feladatok nem lehet áthelyezni, ha a futó állapotban.
+> Stream Analytics feladatok futási állapotban nem helyezhetők át.
 
 ## <a name="microsoftstreamanalyticsexplorer"></a>Microsoft.StreamAnalyticsExplorer
 | Erőforrás típusa | Resource group | Subscription |
 | ------------- | ----------- | ---------- |
-| Környezetek | Nem | Nem |
+| környezetben | Nem | Nem |
 | környezetek/eventsources | Nem | Nem |
 | példányok | Nem | Nem |
 | példányok/környezetek | Nem | Nem |
@@ -991,70 +991,70 @@ Egy erőforrás-szolgáltató névtere ugorhat:
 ## <a name="microsofttimeseriesinsights"></a>Microsoft.TimeSeriesInsights
 | Erőforrás típusa | Resource group | Subscription |
 | ------------- | ----------- | ---------- |
-| Környezetek | Igen | Igen |
+| környezetben | Igen | Igen |
 | környezetek/eventsources | Igen | Igen |
 | környezetek/referencedatasets | Igen | Igen |
 
-## <a name="microsofttoken"></a>Microsoft.Token
+## <a name="microsofttoken"></a>Microsoft. token
 | Erőforrás típusa | Resource group | Subscription |
 | ------------- | ----------- | ---------- |
-| tárolók | Nem | Nem |
+| tárolja | Nem | Nem |
 
 ## <a name="microsoftvirtualmachineimages"></a>Microsoft.VirtualMachineImages
 | Erőforrás típusa | Resource group | Subscription |
 | ------------- | ----------- | ---------- |
 | imagetemplates | Nem | Nem |
 
-## <a name="microsoftvisualstudio"></a>microsoft.visualstudio
+## <a name="microsoftvisualstudio"></a>Microsoft. VisualStudio
 | Erőforrás típusa | Resource group | Subscription |
 | ------------- | ----------- | ---------- |
 | account | Igen | Igen |
 | fiók/bővítmény | Igen | Igen |
-| fiók és a projekt | Igen | Igen |
+| fiók/projekt | Igen | Igen |
 
 > [!IMPORTANT]
-> Ha módosítani szeretné az előfizetést az Azure DevOps, lásd: [számlázáshoz használható Azure-előfizetést](/azure/devops/organizations/billing/change-azure-subscription?toc=/azure/azure-resource-manager/toc.json).
+> Az Azure DevOps-előfizetés módosításához tekintse meg [a számlázáshoz használt Azure-előfizetés módosítása](/azure/devops/organizations/billing/change-azure-subscription?toc=/azure/azure-resource-manager/toc.json)című témakört.
 
 ## <a name="microsoftvmwarecloudsimple"></a>Microsoft.VMwareCloudSimple
 | Erőforrás típusa | Resource group | Subscription |
 | ------------- | ----------- | ---------- |
 | dedicatedcloudnodes | Igen | Igen |
 | dedicatedcloudservices | Igen | Igen |
-| virtuális gép | Igen | Igen |
+| virtualmachines | Igen | Igen |
 
 ## <a name="microsoftweb"></a>Microsoft.Web
 | Erőforrás típusa | Resource group | Subscription |
 | ------------- | ----------- | ---------- |
 | Tanúsítványok | Nem | Igen |
 | connectiongateways | Igen | Igen |
-| Kapcsolatok | Igen | Igen |
+| kapcsolatok | Igen | Igen |
 | customapis | Igen | Igen |
 | hostingenvironments | Nem | Nem |
-| serverfarms | Igen | Igen |
-| Helyek | Igen | Igen |
-| webhelyek/premieraddons | Igen | Igen |
-| helyek és tárhelyek | Igen | Igen |
+| kiszolgálófarmok | Igen | Igen |
+| helyek | Igen | Igen |
+| helyek/premieraddons | Igen | Igen |
+| helyek/bővítőhelyek | Igen | Igen |
 
 > [!IMPORTANT]
-> Lásd: [App Service-ben áthelyezése útmutatást](./move-limitations/app-service-move-limitations.md).
+> Lásd: [app Service áthelyezési útmutató](./move-limitations/app-service-move-limitations.md).
 
 ## <a name="microsoftwindowsiot"></a>Microsoft.WindowsIoT
 | Erőforrás típusa | Resource group | Subscription |
 | ------------- | ----------- | ---------- |
 | deviceservices | Nem | Nem |
 
-## <a name="microsoftwindowsvirtualdesktop"></a>Microsoft.WindowsVirtualDesktop
+## <a name="microsoftwindowsvirtualdesktop"></a>Microsoft. WindowsVirtualDesktop
 | Erőforrás típusa | Resource group | Subscription |
 | ------------- | ----------- | ---------- |
 | applicationgroups | Nem | Nem |
 | hostpools | Nem | Nem |
 | Munkaterületek | Nem | Nem |
 
-## <a name="third-party-services"></a>Külső szolgáltatások
+## <a name="third-party-services"></a>Harmadik féltől származó szolgáltatások
 
-Külső szolgáltatások jelenleg nem támogatják az áthelyezési művelet.
+A harmadik féltől származó szolgáltatások jelenleg nem támogatják az áthelyezési műveletet.
 
 ## <a name="next-steps"></a>További lépések
-Erőforrások áthelyezése parancsokért lásd: [erőforrások áthelyezése új erőforráscsoportba vagy előfizetésbe](resource-group-move-resources.md).
+Az erőforrások áthelyezésére szolgáló parancsokért lásd: [erőforrások áthelyezése új erőforráscsoporthoz vagy](resource-group-move-resources.md)előfizetésbe.
 
-Első ugyanazokat az adatokat egy vesszővel tagolt formátumú fájlt, töltse le a [move-támogatás – resources.csv](https://github.com/tfitzmac/resource-capabilities/blob/master/move-support-resources.csv).
+Ha ugyanazokat az adatokkal szeretné lekérni a vesszővel tagolt értékeket, töltse le a [Move-support-Resources. csv](https://github.com/tfitzmac/resource-capabilities/blob/master/move-support-resources.csv)fájlt.

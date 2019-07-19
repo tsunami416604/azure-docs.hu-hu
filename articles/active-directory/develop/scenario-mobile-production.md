@@ -1,9 +1,9 @@
 ---
-title: A mobilalkalmazás, hogy hívások webes API-kat (Váltás az éles környezetben) – a Microsoft identity platform
-description: Ismerje meg a mobilalkalmazások, hogy a hívások webes API-k (Váltás az éles környezetben)
+title: Webes API-kat meghívó mobil alkalmazás (áttérés éles környezetbe) – Microsoft Identity platform
+description: Megtudhatja, hogyan hozhat létre webes API-kat meghívó mobil alkalmazást (az éles környezetbe)
 services: active-directory
 documentationcenter: dev-center-name
-author: danieldobalian
+author: jmprieur
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
@@ -13,36 +13,36 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 05/07/2019
 ms.author: jmprieur
-ms.reviwer: brandwe
+ms.reviwer: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d8b6a5c2a29228de806088ea93e197d42bf1ab47
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4e778e55bd87e325b3dcf14a8c9f1616157a420b
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65962359"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68320893"
 ---
-# <a name="mobile-app-that-calls-web-apis---move-to-production"></a>Mobilalkalmazás, amely meghívja a webes API-k – helyezze át az éles környezetbe
+# <a name="mobile-app-that-calls-web-apis---move-to-production"></a>Webes API-kat meghívó mobil alkalmazás – áttérés éles környezetbe
 
-Ez a cikk részletesen ismerteti a minőség és a megbízhatóság az alkalmazás javítása, az éles környezetbe való áthelyezése előtt.
+Ez a cikk részletesen ismerteti, hogy miként javítható az alkalmazás minősége és megbízhatósága, mielőtt az éles környezetbe helyezné őket.
 
-## <a name="handling-errors-in-mobile-applications"></a>A mobilalkalmazások hibák kezelése
+## <a name="handling-errors-in-mobile-applications"></a>Hibák feldolgozása a Mobile Applications szolgáltatásban
 
-Számos esetben hiba fordul elő az alkalmazás ezen a ponton. A főbb forgatókönyvek kezeléséhez a következők: beavatkozás nélküli hibák és interakció DecoderReplacementFallback(""). Egyéb feltételeket, amelyeket érdemes éles környezetben nem hálózati helyzetek, szolgáltatás-kimaradások, rendszergazdai jóváhagyás követelményei és más forgatókönyvekre jellemző esetben tartalmazza.
+Ezen a ponton számos hiba fordulhat elő az alkalmazásban. A kezelés fő forgatókönyvei a beavatkozás nélküli hibák és tartalékok. Más feltételek, amelyeket érdemes figyelembe venni az éles környezetben, nem hálózati helyzetek, szolgáltatási kimaradások, rendszergazdai belefoglalási követelmények és egyéb forgatókönyv-specifikus esetekben.
 
-Minden egyes MSAL függvénytár minta kódja és wiki tartalom, amely azt ismerteti, hogyan kezelje ezeket a feltételeket:
+Minden MSAL-könyvtárhoz tartozik egy mintakód és egy wiki-tartalom, amely leírja, hogyan kell kezelni ezeket a feltételeket:
 
 - [MSAL Android Wiki](https://github.com/AzureAD/microsoft-authentication-library-for-android)
-- [Az MSAL iOS Wiki](https://github.com/AzureAD/microsoft-authentication-library-for-objc/wiki)
-- [MSAL.NET Wiki](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki)
+- [MSAL iOS wiki](https://github.com/AzureAD/microsoft-authentication-library-for-objc/wiki)
+- [MSAL.NET wiki](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki)
 
-## <a name="mitigating-and-investigating-issues"></a>Csökkentése és a problémák kivizsgálása
+## <a name="mitigating-and-investigating-issues"></a>Problémák enyhítése és kivizsgálása
 
-Diagnosztizálhatja a problémákat az alkalmazásban, segít a adatainak gyűjtéséről. Milyen típusú adatok kapcsolatos információk gyűjtése, tekintse meg az MSAL platform wikit.
+Az alkalmazásban felmerülő problémák diagnosztizálásához segíti az adatok gyűjtését. További információ a gyűjtött adattípusokról: MSAL platform wikik.
 
-- Felhasználók előfordulhat, hogy kérjen segítséget, ha problémákba. Ajánlott eljárás, hogy rögzíteni és ideiglenesen naplók tárolására, és adjon meg egy helyet, ahol a felhasználók is feltölthetők. Az MSAL naplózási bővítmények hitelesítési vonatkozó részletes információkat biztosít.
-- Ha elérhető, az MSAL felhasználók bejelentkezik módját, az alkalmazás kapcsolatos adatokhoz keresztül telemetria engedélyezése.
+- A felhasználók segítséget kérhetnek, amikor problémákba ütköznek. Az ajánlott eljárás az, hogy rögzítse és ideiglenesen tárolja a naplókat, és adjon meg egy helyet, ahol a felhasználók fel tudják tölteni őket. A MSAL naplózási bővítményeket biztosít a hitelesítés részletes adatainak rögzítéséhez.
+- Ha elérhető, engedélyezze a telemetria a MSAL-n keresztül, hogy adatokat gyűjtsön arról, hogy a felhasználók hogyan jelentkeznek be az alkalmazásba.
 
 ## <a name="next-steps"></a>További lépések
 

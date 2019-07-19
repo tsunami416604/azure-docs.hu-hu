@@ -4,7 +4,7 @@ description: Gyors bevezetést olvashat Azure Batch szolgáltatás erőforrásai
 services: batch
 documentationcenter: ''
 author: laurenhughes
-manager: jeconnoc
+manager: gwallace
 editor: ''
 ms.assetid: fcd76587-1827-4bc8-a84d-bba1cd980d85
 ms.service: batch
@@ -15,12 +15,12 @@ ms.workload: big-compute
 ms.date: 07/24/2018
 ms.author: lahugh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e2bd67ebb977a37c75631f16fbbf4c7dbd6bf250
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6e541ef82b7fe63042adf84733dd86fdd3eabdf1
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60782553"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68323719"
 ---
 # <a name="manage-batch-resources-with-azure-cli"></a>Batch-erőforrássok kezelése az Azure CLI-vel
 
@@ -76,7 +76,7 @@ Ahogyan az itt látható, az `az login` parancs egy tokent ad vissza, amely a hi
 
 ![Jelentkezzen be az Azure-ba](./media/batch-cli-get-started/az-login.png)
 
-A minta rendszerhéj-parancsfájlok szakaszban felsorolt példák azt is bemutatják, hogyan indítunk majd indítsa el az Azure CLI-munkamenetet. Bejelentkezés után parancshívások használatával elkezdheti a munkát a különböző Batch Management-erőforrásokkal, többek között a Batch-fiókokkal, kulcsokkal, alkalmazáscsomagokkal és kvótákkal.  
+A minta rendszerhéj-parancsfájlok szakaszban felsorolt példák azt is bemutatják, hogyan indíthatja el az Azure CLI-munkamenetet az interaktív Azure-ba való bejelentkezéssel. Bejelentkezés után parancshívások használatával elkezdheti a munkát a különböző Batch Management-erőforrásokkal, többek között a Batch-fiókokkal, kulcsokkal, alkalmazáscsomagokkal és kvótákkal.  
 
 ### <a name="log-in-to-your-batch-account"></a>Bejelentkezés a Batch-fiókjába
 
@@ -110,7 +110,7 @@ A Batch-fiók hitelesítését két módon is elvégezheti:
     az batch account login -g myresourcegroup -n mybatchaccount --shared-key-auth
     ```
 
-A minta rendszerhéj-parancsfájlok szakaszban felsorolt példák bemutatják, hogyan bejelentkezni az Azure CLI-vel a Batch-fiók-egyaránt az Azure AD és a megosztott kulcsot.
+A minta rendszerhéj-parancsfájlok szakaszban felsorolt példák bemutatják, hogyan jelentkezhet be a Batch-fiókjába az Azure CLI-vel az Azure AD és a Shared Key használatával.
 
 ## <a name="use-azure-batch-cli-extension-commands"></a>Az Azure Batch CLI-bővítmény parancsainak használata
 
@@ -130,7 +130,7 @@ az batch pool create my_batch_pool.json
 
 Míg a legtöbb Batch-erőforrás létrehozását végre lehet hajtani mindössze parancssori kapcsolókkal, néhány szolgáltatáshoz egy olyan JSON-formátumú fájlt kell megadnia, amely tartalmazza az erőforrás adatait. Például JSON-fájlt kell használnia, ha erőforrásfájlokat szeretne meghatározni egy indítási tevékenységhez.
 
-Az erőforrás létrehozásához szükséges JSON-szintaxissal kapcsolatban az MSDN webhelyén található, [Batch – REST API-referencia][rest_api] című dokumentáció nyújt segítséget. A REST API-referenciában mindegyik „*Erőforrástípus* hozzáadása” témakör tartalmaz egy-egy JSON-szkript mintát is az adott erőforrás létrehozásához. Ezeket a JSON-mintaszkripteket sablonként használhatja az Azure CLI-vel használandó JSON-fájlok írásához. Például, ha a készletek létrehozásához használt JSON-szintaxisra kíváncsi, tekintse meg a [Készlet hozzáadása a fiókhoz][rest_add_pool] című témakört.
+Ha meg szeretné tekinteni az erőforrás létrehozásához szükséges JSON-szintaxist, tekintse meg a [Batch REST API][rest_api] dokumentációját. A REST API-referenciában mindegyik „*Erőforrástípus* hozzáadása” témakör tartalmaz egy-egy JSON-szkript mintát is az adott erőforrás létrehozásához. Ezeket a JSON-mintaszkripteket sablonként használhatja az Azure CLI-vel használandó JSON-fájlok írásához. Ha például a készlet létrehozásához a JSON-szintaxist szeretné látni, tekintse meg a [készlet hozzáadása egy fiókhoz][rest_add_pool]című témakört.
 
 JSON-fájlra hivatkozó szkriptre példát a [Feladatok és tevékenységek futtatása a Batch-csel](./scripts/batch-cli-sample-run-job.md) című témakörben talál.
 
@@ -168,7 +168,7 @@ Az következő tippek segíthetnek az Azure CLI használata során felmerülő p
 
 * A `-h` segítségével **súgószöveget** kérhet bármely CLI parancshoz
 * A `-v` és a `-vv` segítségével **részletes** parancskimenetet jeleníthet meg. Ha a parancs tartalmazza a `-vv` jelzőt, az Azure CLI megjeleníti a tényleges REST-kérelmeket és válaszokat is. Ezek a kapcsolók jól jönnek a teljes hibakimenet megjelenítéséhez.
-* A **kapcsolóval megtekintheti a**parancskimenetet JSON-fájlként`--json`. Például az `az batch pool show pool001 --json` JSON-formátumban jeleníti meg a pool001 tulajdonságait. Ezután másolja ki és módosíthatja ezt a kimenetet a használatára egy `--json-file` (lásd a cikk korábbi részeiben JSON-fájlok).
+* A **kapcsolóval megtekintheti a**parancskimenetet JSON-fájlként`--json`. Például az `az batch pool show pool001 --json` JSON-formátumban jeleníti meg a pool001 tulajdonságait. Ezután átmásolhatja és módosíthatja ezt a kimenetet `--json-file` (lásd a jelen cikk korábbi részében található JSON-fájlokat).
 <!---Loc Comment: Please, check link [JSON files] since it's not redirecting to any location.--->
 
 ## <a name="next-steps"></a>További lépések

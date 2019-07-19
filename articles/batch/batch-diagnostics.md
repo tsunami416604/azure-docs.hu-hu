@@ -1,10 +1,10 @@
 ---
-title: Metrikák, a riasztások és a diagnosztikai naplók – Azure Batch |} A Microsoft Docs
+title: Metrikák, riasztások és diagnosztikai naplók – Azure Batch | Microsoft Docs
 description: Jegyezze fel, és elemezze a diagnosztikai naplót eseményeire az Azure Batch-fiók erőforrásokat, például a készletek és tevékenységek.
 services: batch
 documentationcenter: ''
 author: laurenhughes
-manager: jeconnoc
+manager: gwallace
 editor: ''
 ms.assetid: ''
 ms.service: batch
@@ -15,12 +15,12 @@ ms.workload: big-compute
 ms.date: 12/05/2018
 ms.author: lahugh
 ms.custom: seodec18
-ms.openlocfilehash: e1fc405951789305b0df86fd0f7b91890fb45c06
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 63d0196609e432b081e91a49b5b1410431223632
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66242620"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68323629"
 ---
 # <a name="batch-metrics-alerts-and-logs-for-diagnostic-evaluation-and-monitoring"></a>Batch-metrikák, a riasztások és a naplókat a további diagnosztikai kiértékeléséhez és figyeléséhez
 
@@ -29,7 +29,7 @@ Ez a cikk azt ismerteti, hogyan szolgáltatását használja, amely a Batch-fió
 
 ## <a name="batch-metrics"></a>Batch-metrikák
 
-Metrikák az Azure-erőforrások, amelyek használják az Azure Monitor szolgáltatás által kibocsátott (más néven teljesítményszámlálók) Azure telemetriai adatokat. A Batch-fiókokban például metrikák a következők: Készlet létrehozása esemény, alacsony prioritású csomópontok száma és a feladat befejezéséhez eseményeket. 
+Metrikák az Azure-erőforrások, amelyek használják az Azure Monitor szolgáltatás által kibocsátott (más néven teljesítményszámlálók) Azure telemetriai adatokat. A Batch-fiók metrikái például a következők: A készletben események hozhatók létre, alacsony prioritású csomópontok száma és a feladat teljes eseményei. 
 
 Tekintse meg a [Batch támogatott mérőszámok listája](../azure-monitor/platform/metrics-supported.md#microsoftbatchbatchaccounts).
 
@@ -37,7 +37,7 @@ Metrikák a következők:
 
 * Minden egyes Batch-fiókban, további konfiguráció nélkül alapértelmezés szerint engedélyezve
 * Generált 1 percenként
-* Nem maradnak meg automatikusan, de van egy 30 napos gördülő előzményei. Diagnosztikai naplózás részeként tevékenységi metrikák is megmarad.
+* Nem maradnak meg automatikusan, de van egy 30 napos gördülő előzményei. A tevékenység-metrikák a diagnosztikai naplózás részeként is megmaradhatnak.
 
 ### <a name="view-metrics"></a>Metrikák megtekintése
 
@@ -91,7 +91,7 @@ A diagnosztikai naplók számára más választható célok:
 
 * Kötegelt diagnosztikai napló események a Stream- [Azure Event Hub](../event-hubs/event-hubs-what-is-event-hubs.md). Az Event Hubs fogadására képes több millió esemény / másodperc, amely, átalakíthatja és tárolhatja bármilyen valós idejű elemzési szolgáltató segítségével. 
 
-* Diagnosztikai naplók küldése [naplózza az Azure Monitor](../log-analytics/log-analytics-overview.md), ahol elemezheti és exportálhatja is azokat elemzés a Power bi-ban vagy az Excel.
+* Diagnosztikai naplók küldése [Azure monitor naplókba](../log-analytics/log-analytics-overview.md), ahol elemezheti őket, vagy exportálhatja őket elemzésre Power bi vagy Excelben.
 
 > [!NOTE]
 > Ön további költségekkel járhat tárolásához, vagy az Azure-szolgáltatások diagnosztikai naplóadatokat feldolgozni. 
@@ -101,7 +101,7 @@ A diagnosztikai naplók számára más választható célok:
 
 1. Kattintson a portál **minden szolgáltatás** > **Batch-fiókok**, majd kattintson a Batch-fiók nevére.
 2. A **figyelés**, kattintson a **diagnosztikai naplók** > **diagnosztika bekapcsolása**.
-3. A **diagnosztikai beállítások**, adjon meg egy nevet a beállítás, és válassza ki a naplócél (meglévő tárfiókot, Event Hub vagy az Azure Monitor naplóira). Válassza ki az egyik vagy mindkét **ServiceLog** és **AllMetrics**.
+3. A **diagnosztikai beállítások**területen adja meg a beállítás nevét, és válassza ki a napló célhelyét (meglévő Storage-fiók, Event Hub vagy Azure monitor napló). Válassza ki az egyik vagy mindkét **ServiceLog** és **AllMetrics**.
 
     Amikor kiválaszt egy tárfiókot, igény szerint adatmegőrzési szabály beállításához. Ha nem adja meg a megőrzési napok száma, adatok megőrződnek a storage-fiók élettartama során.
 

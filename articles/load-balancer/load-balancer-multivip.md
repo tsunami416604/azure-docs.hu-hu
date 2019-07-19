@@ -1,10 +1,10 @@
 ---
-title: Több virtuális IP-címek a felhőalapú szolgáltatáshoz
+title: Több VIP-cím a Cloud Service-hez
 titlesuffix: Azure Load Balancer
-description: Több és több virtuális IP-címek megadása a felhő alapú szolgáltatás áttekintése
+description: A című üzemelő áttekintése és a több virtuális IP-cím beállítása a Cloud Service-ben
 services: load-balancer
 documentationcenter: na
-author: KumudD
+author: asudbring
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: article
@@ -12,78 +12,78 @@ ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
-ms.author: kumud
-ms.openlocfilehash: bf5721e206316a4ce576253743e9ac65de47094a
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: allensu
+ms.openlocfilehash: 3e97bea85d4d97b159168b21b4a6e932e655ccfb
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60591768"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68274706"
 ---
-# <a name="configure-multiple-vips-for-a-cloud-service"></a>Több virtuális IP-címek a felhőszolgáltatások konfigurálása
+# <a name="configure-multiple-vips-for-a-cloud-service"></a>Több virtuális IP-cím konfigurálása egy felhőalapú szolgáltatáshoz
 
 [!INCLUDE [load-balancer-basic-sku-include.md](../../includes/load-balancer-basic-sku-include.md)]
 
-A nyilvános interneten keresztül az Azure cloud services hozzáférhet az Azure által megadott IP-cím használatával. A nyilvános IP-cím néven virtuális IP-címhez (virtuális IP-), mivel az Azure load balancer kapcsolódik, és nem a virtuális gép (VM) instances felhőszolgáltatáson belül. Minden Virtuálisgép-példány a felhőszolgáltatásban elérheti egy egyetlen virtuális IP-cím használatával.
+Az Azure Cloud Services a nyilvános interneten keresztül érhető el az Azure által biztosított IP-cím használatával. Ez a nyilvános IP-cím VIP-ként (virtuális IP) hivatkozik, mert az Azure Load Balancerhez van csatolva, és nem a felhőalapú szolgáltatásban található virtuálisgép-példányokhoz. Egy felhőalapú szolgáltatás bármely virtuálisgép-példányát egyetlen virtuális IP-cím használatával érheti el.
 
-Vannak azonban forgatókönyvek, amelyben szükség lehet egynél több virtuális IP-CÍMEK bejegyzésként ugyanazon a felhőszolgáltatáson mutasson. Például a cloud Services több webhelyet is, amely SSL-kapcsolatok használatával az alapértelmezett port a 443-as, szükség szerint minden hely egy másik ügyfél üzemel, vagy a bérlői is üzemeltethet. Ebben az esetben szüksége lesz egy másik nyilvános felé néző IP-címet minden webhelyre vonatkozóan. Az alábbi ábra egy tipikus több-bérlős webszolgáltatási az ugyanazt a nyilvános portot több SSL-tanúsítvány szükséges.
+Vannak azonban olyan helyzetek, amikor egynél több VIP-t kell bejelentkeznie ugyanahhoz a felhőalapú szolgáltatáshoz. Előfordulhat például, hogy a felhőalapú szolgáltatás több olyan webhelyet is üzemeltet, amelyek SSL-kapcsolatot igényelnek az alapértelmezett 443-as porton, mivel az egyes helyek egy másik ügyfélhez vagy bérlőhöz vannak tárolva. Ebben az esetben az egyes webhelyekhez eltérő nyilvános IP-címmel kell rendelkeznie. Az alábbi ábra egy tipikus több-bérlős webüzemeltetést mutat be, amelynek több SSL-tanúsítványra van szüksége ugyanazon a nyilvános porton.
 
-![Több virtuális IP-cím SSL eset](./media/load-balancer-multivip/Figure1.png)
+![Több VIP SSL-forgatókönyv](./media/load-balancer-multivip/Figure1.png)
 
-A fenti példában az összes virtuális IP-címeket használja a nyilvános portot (443) és forgalmat a rendszer átirányítja egy vagy több elosztott terhelésű virtuális gépek egyedi magánhálózati port az összes webhely üzemeltető felhőszolgáltatás belső IP-címét.
-
-> [!NOTE]
-> A több virtuális IP-címek használni egy másik helyzet futtató több SQL AlwaysOn rendelkezésre állási csoport figyelője a virtuális gépek ugyanahhoz az adatkészlethez.
-
-Virtuális IP-címek dinamikusak alapértelmezettként, ami azt jelenti, hogy a felhőalapú szolgáltatáshoz rendelt konkrét IP-címet idővel változhat. Akadályozható, amely, fenntartott virtuális IP-címhez a szolgáltatás. Fenntartott virtuális IP-címek kapcsolatos további információkért lásd: [lefoglalt nyilvános IP-cím](../virtual-network/virtual-networks-reserved-public-ip.md).
+A fenti példában az összes virtuális IP-cím ugyanazt a nyilvános portot (443) használja, és a rendszer átirányítja egy vagy több elosztott terhelésű virtuális gépre az összes webhelyet üzemeltető felhőalapú szolgáltatás belső IP-címére.
 
 > [!NOTE]
-> Lásd: [IP-címek díjszabása](https://azure.microsoft.com/pricing/details/ip-addresses/) díjszabás a virtuális IP-címek és fenntartott IP-címek kapcsolatos információkat.
+> Egy másik megoldás, ha a több virtuális IP-cím használatát igényli, több SQL alAlwaysOnon rendelkezésre állási csoport figyelőt üzemeltet ugyanazon a Virtual Machineson.
 
-Meg is a VIP-címek a felhőalapú szolgáltatások által használt ellenőrzése a PowerShell használatával, valamint hozzáadása és távolítsa el a virtuális IP-címek egy végpontnak egy virtuális IP-cím társítása és konfigurálja egy adott VIP-címet a terheléselosztási.
+Alapértelmezés szerint a VIP-címek dinamikusak, ami azt jelenti, hogy a felhőalapú szolgáltatáshoz hozzárendelt tényleges IP-cím idővel változhat. Ennek megelőzése érdekében fenntarthat egy VIP-t a szolgáltatás számára. További információ a fenntartott VIP-címekről: [fenntartott nyilvános IP-cím](../virtual-network/virtual-networks-reserved-public-ip.md).
+
+> [!NOTE]
+> A virtuális [IP](https://azure.microsoft.com/pricing/details/ip-addresses/) -címekkel és a fenntartott IP-címekkel kapcsolatos díjszabásról a további tudnivalókat lásd:
+
+A PowerShell segítségével ellenőrizheti a Cloud Services által használt VIP-ket, valamint a VIP-címek hozzáadását és eltávolítását, a virtuális IP-címek hozzárendelését egy végponthoz, és konfigurálhatja a terheléselosztást egy adott VIP-címen.
 
 ## <a name="limitations"></a>Korlátozások
 
-Jelenleg több virtuális IP-CÍMEK funkció korlátozódik a következő forgatókönyvekre:
+Jelenleg a több VIP-funkció a következő forgatókönyvekre korlátozódik:
 
-* **Csak az IaaS**. Több virtuális IP-CÍMEK a virtuális gépeket tartalmazó felhőszolgáltatások csak engedélyezheti. Több virtuális IP-cím nem használható PaaS szerepkörpéldányok forgatókönyvekben.
-* **Csak a PowerShell**. Több virtuális IP-CÍMEK csak a PowerShell-lel kezelheti.
+* **Csak IaaS**. Csak a virtuális gépeket tartalmazó felhőalapú szolgáltatások esetében engedélyezheti a több VIP-t. A több virtuális IP-cím nem használható a szerepkör-példányokkal rendelkező, Pásti-forgatókönyvekben.
+* **Csak PowerShell**. A PowerShell használatával csak a több VIP-t kezelheti.
 
-Ezek a korlátozások ideiglenesek, és bármikor megváltozhat. Ellenőrizze, hogy ezen a lapon a későbbi módosítások ellenőrzéséhez nyissa meg újra.
+Ezek a korlátozások ideiglenesek, és bármikor megváltozhatnak. A jövőbeli változások ellenőrzéséhez mindenképpen tekintse át ezt a lapot.
 
-## <a name="how-to-add-a-vip-to-a-cloud-service"></a>Felhőszolgáltatás virtuális IP-címhez hozzáadása
-Egy virtuális IP-CÍMEK hozzáadása a szolgáltatáshoz, futtassa a következő PowerShell-parancsot:
+## <a name="how-to-add-a-vip-to-a-cloud-service"></a>VIP hozzáadása felhőalapú szolgáltatáshoz
+Ha VIP-t szeretne hozzáadni a szolgáltatáshoz, futtassa a következő PowerShell-parancsot:
 
 ```powershell
 Add-AzureVirtualIP -VirtualIPName Vip3 -ServiceName myService
 ```
 
-Ez a parancs a következő mintához hasonló eredményt jeleníti meg:
+Ez a parancs a következő mintához hasonló eredményt jelenít meg:
 
     OperationDescription OperationId                          OperationStatus
     -------------------- -----------                          ---------------
     Add-AzureVirtualIP   4bd7b638-d2e7-216f-ba38-5221233d70ce Succeeded
 
-## <a name="how-to-remove-a-vip-from-a-cloud-service"></a>Felhőszolgáltatás virtuális IP-címhez eltávolítása
-A fenti példában a szolgáltatáshoz hozzáadott virtuális IP-CÍMEK eltávolításához futtassa a következő PowerShell-parancsot:
+## <a name="how-to-remove-a-vip-from-a-cloud-service"></a>VIP eltávolítása felhőalapú szolgáltatásból
+A fenti példában a szolgáltatáshoz hozzáadott virtuális IP-cím eltávolításához futtassa a következő PowerShell-parancsot:
 
 ```powershell
 Remove-AzureVirtualIP -VirtualIPName Vip3 -ServiceName myService
 ```
 
 > [!IMPORTANT]
-> Egy virtuális IP-CÍMEK csak távolítsa el, ha nincsenek végpontok társítva van hozzá.
+> Csak akkor távolíthat el VIP-t, ha nincs hozzá társított végpont.
 
 
-## <a name="how-to-retrieve-vip-information-from-a-cloud-service"></a>Hogyan Felhőszolgáltatás virtuális IP-CÍMEK információt lekérni
-Egy felhőszolgáltatáshoz társított virtuális IP-cím lekéréséhez futtassa a következő PowerShell-parancsfájlt:
+## <a name="how-to-retrieve-vip-information-from-a-cloud-service"></a>VIP-információk lekérése egy felhőalapú szolgáltatásból
+A felhőalapú szolgáltatáshoz társított VIP-címek lekéréséhez futtassa a következő PowerShell-parancsfájlt:
 
 ```powershell
 $deployment = Get-AzureDeployment -ServiceName myService
 $deployment.VirtualIPs
 ```
 
-A szkript a következő mintához hasonló eredményt jeleníti meg:
+A parancsfájl a következő mintához hasonló eredményt jelenít meg:
 
     Address         : 191.238.74.148
     IsDnsProgrammed : True
@@ -103,17 +103,17 @@ A szkript a következő mintához hasonló eredményt jeleníti meg:
     ReservedIPName  :
     ExtensionData   :
 
-Ebben a példában a felhőszolgáltatás 3 rendelkezik virtuális IP-címek:
+Ebben a példában a Cloud Service 3 VIP-t tartalmaz:
 
-* **Vip1-en** az alapértelmezett virtuális IP-cím, akkor tudja, hogy mivel a IsDnsProgrammedName értéke igaz.
-* **Vip2** és **Vip3** nem szolgálnak bármely IP-címek nem rendelkeznek. Használni fogják őket csak egy végpontot a virtuális IP-CÍMEK társításakor.
+* A **Vip1** az alapértelmezett VIP, de tudja, hogy a IsDnsProgrammedName értéke TRUE (igaz).
+* A **VIP2** és a **Vip3** nem használhatók, mert nincsenek IP-címei. Csak akkor lesznek használatban, ha egy végpontot rendel hozzá a VIP-hez.
 
 > [!NOTE]
-> Az előfizetés csak kell fizetni további virtuális IP-címek után azok a végpont. További információ a díjszabásról lásd: [IP-címek díjszabása](https://azure.microsoft.com/pricing/details/ip-addresses/).
+> Az előfizetést csak akkor számítjuk fel, ha a további VIP-címekhez egy végpontot társítanak. A díjszabással kapcsolatos további információkért tekintse meg az [IP-címek díjszabását](https://azure.microsoft.com/pricing/details/ip-addresses/).
 
-## <a name="how-to-associate-a-vip-to-an-endpoint"></a>Egy végpontnak egy virtuális IP-cím társítása
+## <a name="how-to-associate-a-vip-to-an-endpoint"></a>VIP hozzárendelése végponthoz
 
-Egy végpontot egy felhőszolgáltatásban lévő virtuális IP-címhez társítható, futtassa a következő PowerShell-parancsot:
+Ha VIP-t szeretne hozzárendelni egy felhőalapú szolgáltatáshoz egy végponthoz, futtassa a következő PowerShell-parancsot:
 
 ```powershell
 Get-AzureVM -ServiceName myService -Name myVM1 |
@@ -121,7 +121,7 @@ Get-AzureVM -ServiceName myService -Name myVM1 |
     Update-AzureVM
 ```
 
-A parancs létrehoz egy végpontot a virtuális IP-cím nevű társított *Vip2* porton *80-as*, és csatolja azt a virtuális gép nevű *myVM1* felhőszolgáltatásban nevű *myService* használatával *TCP* porton *8080-as*.
+A parancs létrehoz egy *VIP2* nevű virtuális IP-címet a *80*-as porton, és összekapcsolja azt a *myService* nevű *myVM1* nevű Felhőbeli szolgáltatásban a *8080*-es porton a *TCP* protokoll használatával.
 
 A konfiguráció ellenőrzéséhez futtassa a következő PowerShell-parancsot:
 
@@ -150,9 +150,9 @@ A kimenet a következő példához hasonlóan néz ki:
     ReservedIPName  :
     ExtensionData   :
 
-## <a name="how-to-enable-load-balancing-on-a-specific-vip"></a>Egy adott virtuális IP-cím a terheléselosztás engedélyezése
+## <a name="how-to-enable-load-balancing-on-a-specific-vip"></a>Egy adott VIP-cím terheléselosztásának engedélyezése
 
-A terheléselosztás céljából több virtuális gép egyetlen virtuális IP-címhez társíthatja. Például, hogy egy felhőalapú szolgáltatás nevű *myService*, és két virtuális gép *myVM1* és *myVM2*. A cloud Services pedig több virtuális IP-cím, az egyiket nevű *Vip2*. Ha szeretné biztosítani, hogy minden forgalomnak portra *81-es* a *Vip2* közötti kiegyensúlyozott *myVM1* és *myVM2* porton *8181* , futtassa a következő PowerShell-parancsfájlt:
+Terheléselosztási célokra egyetlen virtuális IP-címet is hozzárendelhet több virtuális géphez. Tegyük fel például, hogy rendelkezik egy *myService*nevű felhőalapú szolgáltatással, és két virtuális gépet *myVM1* és *myVM2*néven. A Cloud Service-nek több VIP-je van, amelyek közül az egyik a *VIP2*nevű. Ha biztosítani szeretné, hogy a *Vip2* *81* -es portján lévő összes forgalom a *8181*-es porton a *myVM1* és a *myVM2* között legyen, futtassa a következő PowerShell-parancsfájlt:
 
 ```powershell
 Get-AzureVM -ServiceName myService -Name myVM1 |
@@ -164,7 +164,7 @@ Get-AzureVM -ServiceName myService -Name myVM2 |
     Update-AzureVM
 ```
 
-A terheléselosztó egy másik virtuális IP-cím használatára is frissítheti. Például ha az alábbi PowerShell-parancsot futtatta, megváltozik a terheléselosztás beállítása egy vip1-en nevű virtuális IP-cím használata:
+A terheléselosztó másik VIP használatára is frissíthető. Ha például az alábbi PowerShell-parancsot futtatja, a terheléselosztási készletet úgy kell módosítania, hogy az Vip1 nevű VIP-t használja:
 
 ```powershell
 Set-AzureLoadBalancedEndpoint -ServiceName myService -LBSetName myLBSet -VirtualIPName Vip1
@@ -172,12 +172,12 @@ Set-AzureLoadBalancedEndpoint -ServiceName myService -LBSetName myLBSet -Virtual
 
 ## <a name="next-steps"></a>További lépések
 
-[Az Azure-terheléselosztás az Azure Monitor naplóira](load-balancer-monitor-log.md)
+[Azure Monitor naplók az Azure Load Balance szolgáltatáshoz](load-balancer-monitor-log.md)
 
-[Az Internet felé néző load balancer áttekintése](load-balancer-internet-overview.md)
+[Internetkapcsolattal rendelkező Load Balancer – áttekintés](load-balancer-internet-overview.md)
 
-[Bevezetés az internetkapcsolattal rendelkező load balancer](load-balancer-get-started-internet-arm-ps.md)
+[Ismerkedés az internetkapcsolattal rendelkező Load balancerrel](load-balancer-get-started-internet-arm-ps.md)
 
 [A Virtual Network áttekintése](../virtual-network/virtual-networks-overview.md)
 
-[Fenntartott IP-címet REST API-k](https://msdn.microsoft.com/library/azure/dn722420.aspx)
+[Fenntartott IP REST API-k](https://msdn.microsoft.com/library/azure/dn722420.aspx)

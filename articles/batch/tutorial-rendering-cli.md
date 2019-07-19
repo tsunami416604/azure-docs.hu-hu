@@ -3,20 +3,20 @@ title: Jelenetek renderelése a felhőben – Azure Batch
 description: Oktatóanyag – Autodesk 3ds Max jelenetek renderelése az Arnolddal a Batch renderelési szolgáltatás és az Azure parancssori felület használatával
 services: batch
 author: laurenhughes
-manager: jeconnoc
+manager: gwallace
 ms.service: batch
 ms.topic: tutorial
 ms.date: 12/11/2018
 ms.author: lahugh
 ms.custom: mvc
-ms.openlocfilehash: 5abc2e673438a1ffa22e8d010bf2ee395cd521ae
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 0c87a6968e5c6fd0e587c240b0a5df0a73f9909b
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66127306"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68321658"
 ---
-# <a name="tutorial-render-a-scene-with-azure-batch"></a>Oktatóanyag: Az Azure Batch álló jelenet renderelése 
+# <a name="tutorial-render-a-scene-with-azure-batch"></a>Oktatóanyag: Jelenet megjelenítése Azure Batch 
 
 Az Azure Batch felhőméretű renderelési képességeket biztosít használatalapú fizetéssel. Az Azure Batch támogatja renderelési alkalmazások, például az Autodesk Maya, a 3ds Max, az Arnold és a V-Ray használatát. Ez az oktatóanyag azt mutatja be, hogy milyen lépésekkel renderelhet kisebb jeleneteket a Batch és az Azure parancssori felület használatával. Az alábbiak végrehajtásának módját ismerheti meg:
 

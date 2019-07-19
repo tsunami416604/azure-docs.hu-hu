@@ -1,44 +1,49 @@
 ---
-title: Leképezés adatfolyam - Azure Data Factory az Adatátalakítási összesített |} A Microsoft Docs
-description: Ismerje meg, hogyan összesíti a leképezési adatok Flow összesített átalakítása az Azure Data Factory a nagy mennyiségű adat.
+title: Összesített átalakítás a leképezési adatfolyamban – Azure Data Factory | Microsoft Docs
+description: Megtudhatja, hogyan összesítheti a Azure Data Factory méretezési adatokat a leképezési adatfolyam összesített átalakításával.
 author: kromerm
 ms.author: makromer
-ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/01/2019
-ms.openlocfilehash: 21135b26d4bc840b3fcb091e675e5e6bd24d8548
-ms.sourcegitcommit: 5cb0b6645bd5dff9c1a4324793df3fdd776225e4
+ms.openlocfilehash: 778aefc05a9b12648e60d752a3c281cb18323125
+ms.sourcegitcommit: da0a8676b3c5283fddcd94cdd9044c3b99815046
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/21/2019
-ms.locfileid: "67312117"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68314230"
 ---
-# <a name="aggregate-transformation-in-mapping-data-flow"></a>Az adatfolyam-leképezés összesített átalakítása 
+# <a name="aggregate-transformation-in-mapping-data-flow"></a>Összesített átalakítás a leképezési adatfolyamban 
 
 [!INCLUDE [notes](../../includes/data-factory-data-flow-preview.md)]
 
-Az összesített átalakítás, ahol meghatározhatja a data-adatfolyamok összesítések az oszlopok. A Kifejezésszerkesztő segítségével meghatározhatja a különböző típusú összesítés, mint például a SUM, MIN, MAX és száma, amely a meglévő vagy számított oszlop szerint csoportosíthatók.
+Az összesített átalakítás az, ahol meghatározhatja az adatstreamek oszlopainak összesítéseit. A Kifejezésszerkesztő használatával különböző típusú összesítéseket határozhat meg, például a SUM, a MIN, a MAX és a COUNT értéket, amely a meglévő vagy számított oszlopok szerint csoportosítható.
 
-## <a name="group-by"></a>Csoportosítási szempont
-Válasszon ki egy meglévő oszlopot, vagy hozzon létre egy új számított oszlop használata csoportként záradék által az összesítés. Egy létező oszlop használatához a legördülő listából válassza ki a kívánt oszlop. Új számított oszlop létrehozása, a záradék fölé, majd kattintson a "Számított oszlop". Ekkor megnyílik a [Data Flow Kifejezésszerkesztő](concepts-data-flow-expression-builder.md). Miután létrehozta a számított oszlop, adja meg a kimeneti oszlop neve "Néven" mező alatti. Szeretne hozzáadni egy további olyan csoport by záradékban, ha egy meglévő záradék mutasson, és kattintson a "+".
+## <a name="group-by"></a>Csoportosítási alapja
+Válasszon ki egy meglévő oszlopot, vagy hozzon létre egy új számított oszlopot, amelyet Group By záradékként kíván használni az összesítéshez. Meglévő oszlop használatához válassza ki a kívánt oszlopot a legördülő listából. Új számított oszlop létrehozásához vigye a kurzort a záradék fölé, és kattintson a "számított oszlop" elemre. Ekkor megnyílik az adatfolyam- [kifejezés szerkesztője](concepts-data-flow-expression-builder.md). Miután létrehozta a számított oszlopot, adja meg a kimeneti oszlop nevét a "név" mezőben. Ha további Group By záradékot szeretne hozzáadni, vigye a kurzort egy meglévő záradék fölé, és kattintson a "+" elemre.
 
-![Összesített átalakítási csoport beállításai szerint](media/data-flow/agg.png "összesített átalakítási csoport beállításai szerint")
-
-> [!NOTE]
-> Egy csoport by záradékban nem egy összesített átalakításában szerepel a kötelező megadni.
-
-## <a name="aggregate-column"></a>Összesített oszlop 
-Válassza a "Összesítések" lapot összesítő kifejezések felépítéséhez létre. Válasszon egy meglévő oszlopára, és az az érték felülírása az összesítést, vagy létrehoz egy új mezőt egy új. Az összesítő kifejezésben a jobb oldali mezőbe az Oszlopválasztó neve mellett is meg kell adni. A kifejezés szerkesztéséhez kattintson a szövegmezőbe írja be a Kifejezésszerkesztő megnyitása. Adjon hozzá további összesítést, vigye a kurzort egy meglévő kifejezést, majd kattintson a "+" összesítés új oszlop létrehozása, vagy [oszlop minta](concepts-data-flow-column-pattern.md).
-
-![Aggregált összesítő átalakítási beállítások](media/data-flow/agg2.png "aggregált összesítő átalakítási beállítások")
+![Összesítő transzformációs csoport beállítások szerint](media/data-flow/agg.png "Összesítő transzformációs csoport beállítások szerint")
 
 > [!NOTE]
-> Minden egyes összesítő kifejezés tartalmaznia kell legalább egy összesítő függvény.
+> Group By záradék használata nem kötelező egy összesített átalakításban.
+
+## <a name="aggregate-column"></a>Összesítő oszlop 
+Az összesítési kifejezések létrehozásához válassza az "összesítések" fület. Kiválaszthat egy meglévő oszlopot, és felülírhatja az összesítési értéket, vagy létrehozhat egy új mezőt új névvel. Az összesítési kifejezés az oszlopnév-választó melletti jobb oldali mezőben van megadva. A kifejezés szerkesztéséhez kattintson a szövegmezőre, hogy megnyissa a Kifejezésszerkesztő párbeszédpanelt. További összesítés hozzáadásához vigye a kurzort egy meglévő kifejezés fölé, és kattintson a "+" elemre egy új aggregációs oszlop vagy [oszlop minta](concepts-data-flow-column-pattern.md)létrehozásához.
+
+![Összesített átalakítás összesített beállításai](media/data-flow/agg2.png "Összesített átalakítás összesített beállításai")
 
 > [!NOTE]
-> Hibakeresési módban a Kifejezésszerkesztő adatelőnézetek az aggregátumfüggvények nem tud létrehozni. Összesített átalakítások adatok előnézetének megtekintéséhez zárja be a Kifejezésszerkesztő és megtekinteni az adatokat az "Adatok előnézet" lapján.
+> Minden összesítési kifejezésnek legalább egy összesítő függvényt tartalmaznia kell.
+
+> [!NOTE]
+> Hibakeresési módban a Kifejezésszerkesztő nem hozhat létre összesítő függvényekből származó adat-előnézeteket. Az összesített átalakításokhoz tartozó adatelőnézetek megtekintéséhez a Kifejezésszerkesztő bezárásához és az adatelőnézet lapon megtekintheti az adatokat.
+
+## <a name="reconnect-rows-and-columns"></a>Sorok és oszlopok újracsatolása
+Az összesített átalakítások szorosan egyenértékűek az SQL aggregált választó lekérdezésekkel. Azokat az oszlopokat, amelyek nem szerepelnek a GROUP BY záradékban, vagy az összesítő függvények nem kerülnek át az összesített átalakítás kimenetére. Ha más oszlopok is szerepelnek az összesített sorok kimenetében, akkor a következők valamelyikét kell megadnia:
+
+* Összesítő függvény használata a további oszlop, például az utolsó () vagy az első () érték befoglalásához
+* Csatlakoztassa újra az oszlopokat az összesítéshez a [saját illesztési minta](https://mssqldude.wordpress.com/2018/12/20/adf-data-flows-self-join/)használatával.
 
 ## <a name="next-steps"></a>További lépések
 
--Meghatározhatja a Windows-alapú összesítést használja a [ablak átalakítása](data-flow-window.md)
+* Ablak alapú összesítés definiálása az ablak- [transzformáció](data-flow-window.md) használatával

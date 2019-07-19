@@ -13,27 +13,27 @@ ms.date: 08/10/2018
 ms.author: routlaw
 ms.reviewer: glenga
 ms.custom: mvc, devcenter
-ms.openlocfilehash: fcbf181601230493dc52bde06e4f35db062f9a32
-ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
+ms.openlocfilehash: 20327e64080182518fd28b1d367ffe37be5ce9a4
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67807171"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68323971"
 ---
-# <a name="create-your-first-function-with-java-and-maven"></a>Az első függvény létrehozása a Java és Maven
+# <a name="create-your-first-function-with-java-and-maven"></a>Az első függvény létrehozása a Java és a Maven használatával
 
-Ez a cikk végigvezeti a Maven parancssori eszköz használatával hozhat létre, és a egy Java-függvény közzététele az Azure Functionsben. Ha elkészült, a függvény kódját fut-e a [Használatalapú csomagban](functions-scale.md#consumption-plan) az Azure-ban és a egy HTTP-kérelem használatával aktiválhatja.
+Ez a cikk végigvezeti a Maven parancssori eszköz használatával a Java-függvények Azure Functions való létrehozásához és közzétételéhez. Ha elkészült, a függvény kódja az Azure-beli [felhasználási terven](functions-scale.md#consumption-plan) fut, és HTTP-kérelem használatával indítható el.
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Fejlesztés Java használatával függvényeket, a következőkkel kell rendelkeznie:
+A Java-t használó függvények fejlesztéséhez a következőkre van szükség:
 
-- [Java fejlesztői készlet](https://aka.ms/azure-jdks), 8-as verzió
-- [Az Apache Maven](https://maven.apache.org), 3.0-s verzió vagy újabb
+- [Java Developer Kit](https://aka.ms/azure-jdks), 8-as verzió
+- [Apache Maven](https://maven.apache.org), 3,0-es vagy újabb verzió
 - [Azure CLI](https://docs.microsoft.com/cli/azure)
-- [Az Azure Functions Core Tools](./functions-run-local.md#v2) 2.6.666 verzió vagy újabb
+- [Azure functions Core Tools](./functions-run-local.md#v2) 2.6.666 vagy újabb verzió
 
 > [!IMPORTANT]
 > A rövid útmutató befejezéséhez a JAVA_HOME környezeti változót a JDK telepítési helyére kell beállítani.
@@ -51,7 +51,7 @@ mvn archetype:generate \
 ```
 
 > [!NOTE]
-> Ha olyan a parancs futtatásával problémákat tapasztal, tekintse meg, milyen `maven-archetype-plugin` verziót használja. Mivel a parancs egy üres Directory nélkül futtatja `.pom` fájlt, akkor előfordulhat, hogy próbál használni, a régebbi verziójú, a beépülő modul `~/.m2/repository/org/apache/maven/plugins/maven-archetype-plugin` Ha régebbi verzióról frissített a Maven. Ha igen, próbálja meg törölni a `maven-archetype-plugin` directory és a következő parancs újbóli futtatásával.
+> Ha a parancs futtatásával kapcsolatos problémákat tapasztal, tekintse meg, hogy milyen `maven-archetype-plugin` verziót használ. Mivel a parancsot egy üres, fájl nélküli `.pom` könyvtárban futtatja, előfordulhat, hogy a régebbi `~/.m2/repository/org/apache/maven/plugins/maven-archetype-plugin` verzió beépülő modulját próbálja használni, ha a mavent egy régebbi verzióról frissítette. Ha igen, próbálja meg törölni `maven-archetype-plugin` a könyvtárat, és futtassa újra a parancsot.
 
 ### <a name="windows"></a>Windows
 
@@ -82,7 +82,7 @@ Define value for property 'resourceGroup' java-functions-group: :
 Confirm properties configuration: Y
 ```
 
-A Maven az _artifactId_ nevét viselő új mappában hozza létre a projektfájlokat, amely ebben a példában `fabrikam-functions`. A rendszer készen áll a generált kód futtatása a projektben van egy [HTTP által aktivált](/azure/azure-functions/functions-bindings-http-webhook) -függvény, amely a kérés törzsét. Cserélje le *src/main/java/com/fabrikam/functions/Function.java* a következő kóddal: 
+A Maven az _artifactId_ nevét viselő új mappában hozza létre a projektfájlokat, amely ebben a példában `fabrikam-functions`. A készen áll a generált kód futtatására a projektben egy [http által aktivált](/azure/azure-functions/functions-bindings-http-webhook) függvény, amely megismétli a kérelem törzsét. Cserélje le a *src/Main/Java/com/Fabrikam/functions/function. Java* kódot a következő kódra: 
 
 ```java
 package com.fabrikam.functions;
@@ -117,7 +117,7 @@ public class Function {
 
 ```
 
-## <a name="enable-extension-bundles"></a>Bővítmény csomagjaiból engedélyezése
+## <a name="enable-extension-bundles"></a>Bővítmény-csomagok engedélyezése
 
 [!INCLUDE [functions-extension-bundles](../../includes/functions-extension-bundles.md)]
 
@@ -125,7 +125,7 @@ public class Function {
 
 Módosítsa a könyvtárt az újonnan létrehozott projektmappára, majd hozza létre és futtassa a függvényt a Maven használatával:
 
-```
+```CMD
 cd fabrikam-function
 mvn clean package 
 mvn azure-functions:run
@@ -147,7 +147,7 @@ Http Functions:
 
 Aktiválja a függvényt a parancssorból egy új terminálablakban a curl használatával:
 
-```
+```CMD
 curl -w "\n" http://localhost:7071/api/hello -d LocalFunction
 ```
 
@@ -159,18 +159,18 @@ A `Ctrl-C` billentyűparanccsal állítsa le a függvénykódot a terminálablak
 
 ## <a name="deploy-the-function-to-azure"></a>A függvény üzembe helyezése az Azure-ban
 
-Az Azure Functions üzembehelyezési folyamata az Azure parancssori felületről származó fiókhitelesítő-adatokat használja. [Jelentkezzen be az Azure CLI](/cli/azure/authenticate-azure-cli?view=azure-cli-latest) a folytatás előtt.
+Az Azure Functions üzembehelyezési folyamata az Azure parancssori felületről származó fiókhitelesítő-adatokat használja. [A folytatás előtt jelentkezzen be az Azure CLI-vel](/cli/azure/authenticate-azure-cli?view=azure-cli-latest) .
 
 ```azurecli
 az login
 ```
 
-Helyezze üzembe a kódot egy új függvényalkalmazásban az `azure-functions:deploy` Maven-cél használatával. Ez hajtja végre a [futtassa a csomag Zip üzembe](functions-deployment-technologies.md#zip-deploy) mód engedélyezve van.
+Helyezze üzembe a kódot egy új függvényalkalmazásban az `azure-functions:deploy` Maven-cél használatával. Ez egy olyan [zip-telepítést](functions-deployment-technologies.md#zip-deploy) hajt végre, amelyen engedélyezve van a csomag mód futtatása.
 
 > [!NOTE]
-> Amikor a függvényalkalmazás üzembe helyezése a Visual Studio Code használatával, válassza ki a nem ingyenes előfizetés ne felejtse el, vagy megjelenik egy hibaüzenet. Az előfizetés, a bal oldalon az integrált tekintheti meg.
+> Ha Visual Studio Code-ot használ a Function alkalmazás üzembe helyezéséhez, ne felejtsen el nem ingyenes előfizetést választani, vagy hibaüzenetet kap. Az előfizetést az IDE oldal bal oldalán tekintheti meg.
 
-```
+```azurecli
 mvn azure-functions:deploy
 ```
 
@@ -187,9 +187,9 @@ Az üzembe helyezés végén megjelenik az URL-cím, amellyel bejelentkezhet az 
 Tesztelje az Azure-ban futó függvényalkalmazást a `cURL` használatával. Az alábbi mintában található URL-címet módosítsa az előző lépésben üzembe helyezett saját függvényalkalmazása címére.
 
 > [!NOTE]
-> Mindenképpen állítsa be a **hozzáférési jogosultságok** való `Anonymous`. Ha úgy dönt, hogy az alapértelmezett szintű `Function`, kell mutatnia a [függvénykulcs](../azure-functions/functions-bindings-http-webhook.md#authorization-keys) a kérések a függvény-végpontot.
+> Győződjön meg arról, hogy a **hozzáférési jogosultságokat** a `Anonymous`következőre állítja be:. Ha az alapértelmezett szintet `Function`választja, akkor a függvény-végpont eléréséhez a kérelmekben be kell mutatnia a [függvény kulcsát](../azure-functions/functions-bindings-http-webhook.md#authorization-keys) .
 
-```
+```azurecli
 curl -w "\n" https://fabrikam-function-20170920120101928.azurewebsites.net/api/hello -d AzureFunctions
 ```
 
@@ -211,7 +211,7 @@ A következőre:
 return request.createResponse(200, "Hi, " + name);
 ```
 
-Mentse a módosításokat. Futtatási mvn tiszta csomag- és ismételt üzembe helyezés futtatásával `azure-functions:deploy` mint korábban a terminálról. A függvényalkalmazás frissül, és ez a kérés:
+Mentse a módosításokat. Futtassa a MVN tiszta csomagot, és végezze `azure-functions:deploy` el az újbóli üzembe helyezést a terminálról a korábban lefuttatva. A függvényalkalmazás frissül, és ez a kérés:
 
 ```bash
 curl -w '\n' -d AzureFunctionsTest https://fabrikam-functions-20170920120101928.azurewebsites.net/api/hello

@@ -1,5 +1,5 @@
 ---
-title: 'Azure rövid útmutató: Blob létrehozása objektumtárban Java Storage SDK V10 használatával |} A Microsoft Docs'
+title: 'Azure rövid útmutató: BLOB létrehozása az objektum-tárolóban a Java Storage SDK v10 használatával | Microsoft Docs'
 description: Ebben a rövid útmutatóban létrehoz egy tárolót egy objektumtárban (Azure Blob Storage-ban), feltölt egy fájlt, objektumokat listáz ki, valamint letöltést végez a Java Storage SDK használatával.
 services: storage
 author: mhopkins-msft
@@ -9,14 +9,14 @@ ms.topic: quickstart
 ms.date: 11/14/2018
 ms.author: mhopkins
 ms.reviewer: seguler
-ms.openlocfilehash: f023f3fdbc82960f3994f8e5763310dc95ca1c2f
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 2aa004ffa98730341c8de105f16feea6e3931a86
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65152799"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68326683"
 ---
-# <a name="quickstart-upload-download-and-list-blobs-by-using-the-java-storage-sdk-v10"></a>Gyors útmutató: Feltöltése, letöltése és a Java Storage SDK V10 használatával blobok listázása
+# <a name="quickstart-upload-download-and-list-blobs-by-using-the-java-storage-sdk-v10"></a>Gyors útmutató: Blobok feltöltése, letöltése és listázása a Java Storage SDK v10 használatával
 
 A rövid útmutató azt ismerteti, hogyan használható az új Java Storage SDK blokkblobok feltöltésére, letöltésére és listázására egy, az Azure Blob Storage-ben található tárolóban. Az új Java SDK a reaktív programozási modellt használja az RxJavával, amely aszinkron műveleteket biztosít. További tudnivalókat az RxJaváról [a Java virtuális gépekhez készült reaktív bővítményeket](https://github.com/ReactiveX/RxJava) ismertető cikkben olvashat. 
 
@@ -24,9 +24,9 @@ A rövid útmutató azt ismerteti, hogyan használható az új Java Storage SDK 
 
 [!INCLUDE [storage-quickstart-prereq-include](../../../includes/storage-quickstart-prereq-include.md)]
 
-Győződjön meg arról, hogy telepítve van a következő további Előfeltételek:
+Győződjön meg arról, hogy a következő további előfeltételek vannak telepítve:
 
-* [Maven](https://maven.apache.org/download.cgi) a parancssorból, vagy bármely Java integrált fejlesztői környezet, amely igény szerint működjön.
+* A [Maven](https://maven.apache.org/download.cgi) a parancssorból való munkához, vagy bármely előnyben részesített Java integrált fejlesztői környezethez.
 * [JDK](https://aka.ms/azure-jdks)
 
 ## <a name="download-the-sample-application"></a>A mintaalkalmazás letöltése
@@ -50,14 +50,14 @@ Ehhez a megoldáshoz biztonságosan kell tárolni a tárfiók nevét és kulcsá
 
 ### <a name="linux-example"></a>Linuxos példa
 
-```
+```bash
 export AZURE_STORAGE_ACCOUNT="<youraccountname>"
 export AZURE_STORAGE_ACCESS_KEY="<youraccountkey>"
 ```
 
 ### <a name="windows-example"></a>Windowsos példa
 
-```
+```CMD
 setx AZURE_STORAGE_ACCOUNT "<youraccountname>"
 setx AZURE_STORAGE_ACCESS_KEY "<youraccountkey>"
 ```
@@ -74,7 +74,7 @@ Ha a Maven használatával szeretné futtatni a mintát a parancssorban, nyisson
 
 A következő példa az alkalmazás Windows rendszeren végzett futtatásakor látható kimenetet mutatja.
 
-```
+```Output
 Created quickstart container
 Enter a command
 (P)utBlob | (L)istBlobs | (G)etBlob | (D)eleteBlobs | (E)xitSample

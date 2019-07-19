@@ -1,6 +1,6 @@
 ---
-title: Az Azure Active Directory feltételes hozzáférés az Azure-felügyelet elérésének kezelése
-description: További információ a feltételes hozzáférés használata az Azure ad-ben az Azure-felügyelet elérésének kezeléséhez.
+title: Az Azure-felügyelethez való hozzáférés kezelése feltételes hozzáféréssel Azure Active Directory
+description: Ismerje meg, hogyan használhatja a feltételes hozzáférést az Azure AD-ben az Azure-felügyelethez való hozzáférés kezeléséhez.
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -12,29 +12,38 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 01/15/2019
+ms.date: 07/15/2019
 ms.author: rolyon
 ms.reviewer: skwan
-ms.openlocfilehash: 4ee58835a5055f5382cefa3a049424ffe97a01c4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3aa24fdfc156c0197d724fd57729f5b11fa908ee
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67122945"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68278147"
 ---
-# <a name="manage-access-to-azure-management-with-conditional-access"></a>A feltételes hozzáférés az Azure-felügyelet elérésének kezelése
+# <a name="manage-access-to-azure-management-with-conditional-access"></a>Az Azure-felügyelethez való hozzáférés kezelése feltételes hozzáféréssel
 
-Feltételes hozzáférés az Azure Active Directory (Azure AD) irányítja a hozzáférést a felhőalkalmazások adott Ön által megadott feltételek alapján. Engedélyezi a hozzáférést, hozzon létre feltételes hozzáférési szabályzatokat, amelyek alapján a házirendben a követelmények teljesülnek-e a hozzáférés engedélyezése vagy letiltása. 
+A Azure Active Directory (Azure AD) feltételes hozzáférése a megadott feltételek alapján szabályozza a felhőalapú alkalmazásokhoz való hozzáférést. A hozzáférés engedélyezéséhez olyan feltételes hozzáférési szabályzatokat hozhat létre, amelyek engedélyezik vagy letiltják a hozzáférést attól függően, hogy teljesülnek-e a szabályzat követelményei. 
 
-Feltételes hozzáférés jellemzően a felhőbeli alkalmazásokhoz való hozzáférés szabályozásához használhatja. Is állíthat be szabályzatokat bizonyos feltételek (például a bejelentkezési kockázat, hely vagy eszköz) alapján az Azure felügyeleti való hozzáférés szabályozásához és a követelményeket, például a többtényezős hitelesítés kényszerítéséhez.
+A felhőalapú alkalmazásokhoz való hozzáférés szabályozása jellemzően feltételes hozzáféréssel végezhető el. Házirendeket is beállíthat az Azure-felügyelethez való hozzáférés szabályozására bizonyos feltételek (például bejelentkezési kockázat, hely vagy eszköz) alapján, valamint a követelmények érvényesítéséhez, például a többtényezős hitelesítéshez.
 
-Az Azure felügyeleti szabályzat létrehozásához válassza **a Microsoft Azure Management** alatt **Felhőalkalmazások** kiválasztásakor az alkalmazás, amelyre a alkalmazni a szabályzatot.
+Az Azure Management szabályzatának létrehozásához válassza a **Microsoft Azure felügyelet** lehetőséget a **Cloud apps** alatt, amikor kiválasztja azt az alkalmazást, amelyre alkalmazni szeretné a szabályzatot.
 
-![Feltételes hozzáférés az Azure felügyeleti](./media/conditional-access-azure-management/conditional-access-azure-mgmt.png)
+![Feltételes hozzáférés az Azure felügyeleti szolgáltatásaihoz](./media/conditional-access-azure-management/conditional-access-azure-mgmt.png)
 
-Az összes az Azure felügyeleti végpontok, beleértve az Azure portal, az Azure Resource Manager-szolgáltató, a klasszikus Service Management API-k, az Azure PowerShell és a Visual Studio előfizetések adminisztrátori portál hoz létre a szabályzat vonatkozik. Vegye figyelembe, hogy a szabályzat vonatkozik, az Azure PowerShell, amely az Azure Resource Manager API-hívások. Nem alkalmazható a [az Azure AD PowerShell](/powershell/azure/active-directory/install-adv2), amely meghívja a Microsoft Graph.
+A létrehozott szabályzat az összes Azure felügyeleti végpontra vonatkozik, beleértve a következőket:
+
+- Azure Portal
+- Azure Resource Manager szolgáltató
+- Klasszikus Service Management API-k
+- Azure PowerShell
+- Visual Studio-előfizetések felügyeleti portál
+- Azure DevOps
+
+Vegye figyelembe, hogy a házirend Azure PowerShellra vonatkozik, amely meghívja a Azure Resource Manager API-t. Ez nem vonatkozik az [Azure ad powershellre](/powershell/azure/active-directory/install-adv2), amely meghívja a Microsoft Graph.
 
 > [!CAUTION]
-> Győződjön meg arról, hogy megismerte, hogyan működik a feltételes hozzáférési szabályzat beállítása az Azure felügyeleti való hozzáférés kezelése előtt. Ellenőrizze, hogy nem hoz létre, amelyek letilthatják a portálon a saját hozzáférési feltételek.
+> Győződjön meg arról, hogy az Azure-felügyelethez való hozzáférés kezeléséhez szükséges szabályzat beállítása előtt meg kell ismernie a feltételes hozzáférés működését. Ügyeljen arra, hogy ne hozzon létre olyan feltételeket, amelyek letiltják a saját hozzáférését a portálhoz.
 
-Állítsa be, és a feltételes hozzáférés használata a további információkért lásd: [feltételes hozzáférés az Azure Active Directory](../active-directory/active-directory-conditional-access-azure-portal.md).
+További információ a feltételes hozzáférés beállításáról és használatáról: [Azure Active Directory](../active-directory/active-directory-conditional-access-azure-portal.md).
