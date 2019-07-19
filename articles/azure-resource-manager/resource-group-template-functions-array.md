@@ -17,23 +17,23 @@ ms.locfileid: "67206380"
 
 A Resource Manager-tömbök és objektumok használata a számos funkciót biztosít.
 
-* [Pole](#array)
-* [Coalesce](#coalesce)
+* [array](#array)
+* [coalesce](#coalesce)
 * [concat](#concat)
-* [tartalmaz](#contains)
+* [contains](#contains)
 * [createArray](#createarray)
-* [üres](#empty)
-* [első](#first)
-* [Metszet](#intersection)
+* [empty](#empty)
+* [first](#first)
+* [intersection](#intersection)
 * [json](#json)
 * [last](#last)
-* [Hossza](#length)
+* [length](#length)
 * [max](#max)
 * [min](#min)
 * [range](#range)
 * [skip](#skip)
-* [hajtsa végre a megfelelő](#take)
-* [Union](#union)
+* [take](#take)
+* [union](#union)
 
 Érték elválasztva karakterlánc-értékek tömbje lekéréséhez lásd: [felosztása](resource-group-template-functions-string.md#split).
 
