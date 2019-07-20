@@ -2,49 +2,59 @@
 author: wolfma61
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 09/13/2018
+ms.date: 07/05/2019
 ms.author: wolfma
-ms.openlocfilehash: afe6f1493c7fa8272c67f23d6708ad6e4eea9381
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 308ee2ef121648cb45152948926c5fd7fb934744
+ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67179412"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68362525"
 ---
-1. Indítsa el a Visual Studio 2017-et.
+1. Nyissa meg a Visual Studio 2019 alkalmazást.
 
-1. Válassza ki a Visual Studio menüsorára, **eszközök > Get Tools** , és ellenőrizze, hogy a **.NET asztali fejlesztés** számítási feladat érhető el. Ha a munkaterhelés nem lett telepítve, jelölje be a jelölőnégyzetet, majd kattintson a **módosítás** a telepítés elindításához. Töltse le és telepítse néhány percig is eltarthat.
+1. A Start ablakban válassza az **új projekt létrehozása**lehetőséget. 
 
-   Ha a jelölőnégyzet be **.NET asztali fejlesztés** van kijelölve, a párbeszédpanel most már bezárhatja.
+1. Válassza a **konzol alkalmazás (.NET-keretrendszer)** elemet, majd kattintson a **tovább**gombra.
 
-   ![A .NET asztali fejlesztés engedélyezése](~/articles/cognitive-services/speech-service/media/sdk/vs-enable-net-desktop-workload.png)
+1. A **Project Name (projekt neve**) mezőben adja meg `helloworld`a nevet, majd válassza a **Létrehozás**lehetőséget.
 
-1. Következő lépésként hozzunk létre egy projektet. A menüsávon válassza **File > New > Project**. A párbeszédpanel akkor jelenik meg, ha a bal oldali panelen bontsa ki a ezekben a szakaszokban **telepített > Visual C# > Windows asztali** válassza **Console App (.NET Framework)** . Adja a projektnek *helloworld*.
+1. A Visual Studio menüsávján válassza az **eszközök** > **eszközök és szolgáltatások**beolvasása lehetőséget, és győződjön meg arról, hogy elérhető-e a **.net Desktop-fejlesztési** feladat. Ha a munkaterhelés még nincs telepítve, jelölje be a jelölőnégyzetet, majd kattintson a **módosítás** gombra a telepítés elindításához. A letöltése és telepítése néhány percet is igénybe vehet.
 
-    ![Create Visual C# Console App (.NET Framework) (Visual C#-konzolalkalmazás létrehozása (.NET keretrendszer))](~/articles/cognitive-services/speech-service/media/sdk/qs-csharp-dotnet-windows-01-new-console-app.png "Create Visual C# Console App (.NET Framework) (Visual C#-konzolalkalmazás létrehozása (.NET keretrendszer))")
+   Ha a **.net Desktop-fejlesztés** melletti jelölőnégyzet be van jelölve, akkor bezárhatja a párbeszédpanelt.
 
-1. Most, hogy a projekt beállítását, telepíteni kell a [beszéd SDK NuGet-csomagot](https://aka.ms/csspeech/nuget) , és hivatkozzon arra a kódban. Keresse meg a Megoldáskezelőben, és kattintson a jobb gombbal a helloworld. Válassza a menü **NuGet-csomagok kezelése...** .
+   ![A .NET asztali fejlesztés engedélyezése](../articles/cognitive-services/speech-service/media/sdk/vs-enable-net-desktop-workload.png)
 
-   ![Kattintson a jobb gombbal a Manage NuGet Packages for Solution (NuGet-csomagok kezelése a megoldáshoz) elemre](~/articles/cognitive-services/speech-service/media/sdk/qs-csharp-dotnet-windows-02-manage-nuget-packages.png "Manage NuGet Packages for Solution (NuGet-csomagok kezelése a megoldáshoz)")
+A következő lépés a [SPEECH SDK NuGet-csomag](https://aka.ms/csspeech/nuget)telepítése, így a kódban hivatkozhat rá.
 
-1. A jobb felső sarokban a NuGet-Csomagkezelőt, keresse meg a **csomag forrása** legördülő listából, és ellenőrizze, hogy **nuget.org** van kiválasztva. Ezután válassza ki **Tallózás** , és keresse meg a `Microsoft.CognitiveServices.Speech` csomagot, és telepítse a legújabb stabil verzióra.
+1. A megoldáskezelő kattintson `helloworld`a jobb gombbal a elemre, majd válassza a **NuGet-csomagok kezelése** lehetőséget a NuGet csomagkezelő megjelenítéséhez.
 
-   ![A Microsoft.CognitiveServices.Speech NuGet-csomag telepítése](~/articles/cognitive-services/speech-service/media/sdk/qs-csharp-dotnet-windows-03-nuget-install-1.0.0.png "NuGet-csomag telepítése")
+   ![NuGet csomagkezelő](../articles/cognitive-services/speech-service/media/sdk/vs-nuget-package-manager.png)
 
-1. Fogadja el az összes szerződések és licencek a telepítés elindításához.
+1. A jobb felső sarokban keresse meg a **csomag forrása** legördülő listát, és ellenőrizze, hogy a **nuget.org** van-e kiválasztva.
 
-   ![A licenc elfogadása](~/articles/cognitive-services/speech-service/media/sdk/qs-csharp-dotnet-windows-04-nuget-license.png "A licenc elfogadása")
+1. A bal felső sarokban válassza a **Tallózás**lehetőséget.
 
-    A csomag telepítése után a Package Manager konzolban egy megerősítési üzenet jelenik meg.
+1. A keresőmezőbe írja be `Microsoft.CognitiveServices.Speech` a csomag kifejezést, majd nyomja le az ENTER billentyűt.
 
-1. A következő lépés, hogy a használatával hozhat létre és futtassa a konzolalkalmazást számítógép architektúrájának megfelelő platform konfiguráció létrehozásához. A menüsávban válassza **összeállítása** > **Configuration Manager...** .
+1. Válassza `Microsoft.CognitiveServices.Speech`a lehetőséget, majd a **telepítés** gombra kattintva telepítse a legújabb stabil verziót.
 
-    ![A Configuration Manager indítása](~/articles/cognitive-services/speech-service/media/sdk/qs-csharp-dotnet-windows-05-cfg-manager-click.png "A Configuration Manager indítása")
+   ![Telepítse a Microsoft. CognitiveServices. Speech NuGet csomagot](../articles/cognitive-services/speech-service/media/sdk/qs-csharp-dotnet-windows-03-nuget-install-1.0.0.png)
 
-1. Az a **Configuration Manager** párbeszédpanelen keresse meg a **aktív megoldás platformját** legördülő listára, és válassza **új**.
+1. A telepítés elindításához fogadja el az összes szerződést és licencet.
 
-    ![Add a new platform under the configuration manager window (Új platform hozzáadása egy Configuration Manager-ablakban)](~/articles/cognitive-services/speech-service/media/sdk/qs-csharp-dotnet-windows-06-cfg-manager-new.png "Add a new platform under the configuration manager window (Új platform hozzáadása egy Configuration Manager-ablakban)")
+   A csomag telepítése után a rendszer megerősítő üzenetet jelenít meg a **Package Manager konzol** ablakban.
 
-1. Ha futtatja a Windows 64 bites, amikor a rendszer kéri a **írja be vagy válassza az új platformra**, `x64`. Ha 32 bites Windows futtatja, jelölje be `x86`. Ha elkészült, kattintson a **OK**.
+A konzol alkalmazás létrehozásához és futtatásához hozzon létre egy, a számítógép architektúrájának megfelelő platform-konfigurációt.
 
-    ![64 bites Windows használata esetén adjon hozzá egy „x64” nevű új platformot](~/articles/cognitive-services/speech-service/media/sdk/qs-csharp-dotnet-windows-07-cfg-manager-add-x64.png "x64 nevű platform hozzáadása")
+1. A menüsávban válassza a **Build** > **Configuration Manager**elemet. A **Configuration Manager** párbeszédpanel jelenik meg.
+
+   ![Configuration Manager párbeszédpanel](../articles/cognitive-services/speech-service/media/sdk/vs-configuration-manager-dialog-box.png)
+
+1. Az **aktív megoldási platform** legördülő listában válassza az **új**lehetőséget. Megjelenik az **új megoldás-platform** párbeszédpanel.
+
+1. A **típus vagy a válassza ki az új platform** legördülő listát:
+   - Ha 64 bites Windows rendszert futtat, válassza az **x64**elemet.
+   - Ha 32 bites Windows rendszert futtat, válassza az **x86**lehetőséget.
+
+1. Válassza **az OK** , majd a **Bezárás**lehetőséget.

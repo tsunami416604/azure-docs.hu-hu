@@ -9,12 +9,12 @@ ms.date: 04/05/2018
 author: wmengmsft
 ms.author: wmeng
 ms.reviewer: sngun
-ms.openlocfilehash: 11b47483eaf39e7445ece8b9e38d81a6a2404cc6
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: 0f0acc721fd8888953d80976234b431943985ebf
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62130472"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68356266"
 ---
 # <a name="get-started-with-azure-table-storage-and-the-azure-cosmos-db-table-api-using-python"></a>Bevezetés az Azure Table Storage és az Azure Cosmos DB Table API Pythonnal való használatával
 
@@ -56,7 +56,7 @@ A Storage-fiók létrehozása után a következő lépés az [Azure Cosmos DB Ta
 
 ## <a name="import-the-tableservice-and-entity-classes"></a>A TableService és az Entity osztály importálása
 
-Ha az Azure Table Service entitásait szeretné használni a Pythonban, használja a [TableService][py_TableService] és az [Entity][py_Entity] osztályt. Adja hozzá ezt a kódot a Python-fájl elejéhez mindkét osztály importálásához:
+Ha az Azure Table serviceban lévő entitásokkal szeretne dolgozni a Pythonban, használja a [TableService][py_TableService] and [Entity][py_Entity] osztályt. Adja hozzá ezt a kódot a Python-fájl elejéhez mindkét osztály importálásához:
 
 ```python
 from azure.cosmosdb.table.tableservice import TableService
@@ -81,7 +81,7 @@ table_service = TableService(connection_string='DefaultEndpointsProtocol=https;A
 
 ## <a name="create-a-table"></a>Tábla létrehozása
 
-Hívja meg a [create_table][py_create_table] metódust a tábla létrehozásához.
+Hívja meg a [create_table][py_create_table] a tábla létrehozásához.
 
 ```python
 table_service.create_table('tasktable')
@@ -89,16 +89,17 @@ table_service.create_table('tasktable')
 
 ## <a name="add-an-entity-to-a-table"></a>Entitás hozzáadása a táblához
 
-Entitás hozzáadásához először létre kell hoznia az entitást képviselő objektumot, majd át kell adnia az objektumot a [TableService.insert_entity metódusnak][py_TableService]. Az entitásobjektum lehet egy szótár vagy [Entity][py_Entity] típusú objektum, és az entitás tulajdonságneveit és tulajdonságértékeit határozza meg. Minden entitásnak tartalmaznia kell a szükséges [PartitionKey és RowKey](#partitionkey-and-rowkey) tulajdonságot, az entitás számára meghatározott egyéb tulajdonságokon kívül.
+Entitás hozzáadásához először létre kell hoznia az entitást képviselő objektumot, majd át kell adni az objektumot az [TableService. insert_entity metódusnak][py_TableService]. The entity object can be a dictionary or an object of type [Entity][py_Entity], és meg kell határoznia az entitás tulajdonságainak nevét és értékeit. Minden entitásnak tartalmaznia kell a szükséges [PartitionKey és RowKey](#partitionkey-and-rowkey) tulajdonságot, az entitás számára meghatározott egyéb tulajdonságokon kívül.
 
-Ez a példa egy entitást képviselő szótárobjektumot hoz létre, majd átadja azt az [insert_entity][py_insert_entity] metódusnak a táblához való hozzáadásához:
+Ez a példa egy entitást jelképező szótár objektumot hoz létre, majd átadja a [insert_entity][py_insert_entity] metódusnak, hogy hozzáadja a táblához:
 
 ```python
-task = {'PartitionKey': 'tasksSeattle', 'RowKey': '001', 'description' : 'Take out the trash', 'priority' : 200}
+task = {'PartitionKey': 'tasksSeattle', 'RowKey': '001',
+        'description': 'Take out the trash', 'priority': 200}
 table_service.insert_entity('tasktable', task)
 ```
 
-Ez a példa egy [Entity][py_Entity] objektumot hoz létre, majd átadja az [insert_entity][py_insert_entity] metódusnak a táblához való hozzáadásához:
+Ez a példa egy [entitás][py_Entity] object, then passes it to the [insert_entity][py_insert_entity] -metódust hoz létre a táblához való hozzáadáshoz:
 
 ```python
 task = Entity()
@@ -117,39 +118,44 @@ A Table Service a **PartitionKey** tulajdonságot használja a táblaentitások 
 
 ## <a name="update-an-entity"></a>Entitás frissítése
 
-Az entitás mindegyik tulajdonságértékének frissítéséhez hívja meg az [update_entity][py_update_entity] metódust. Ez a példa bemutatja, hogyan cserélhető le egy meglévő entitás a frissített verzióra:
+Az entitások összes tulajdonságának frissítéséhez hívja meg a [update_entity][py_update_entity] metódust. Ez a példa bemutatja, hogyan cserélhető le egy meglévő entitás a frissített verzióra:
 
 ```python
-task = {'PartitionKey': 'tasksSeattle', 'RowKey': '001', 'description' : 'Take out the garbage', 'priority' : 250}
+task = {'PartitionKey': 'tasksSeattle', 'RowKey': '001',
+        'description': 'Take out the garbage', 'priority': 250}
 table_service.update_entity('tasktable', task)
 ```
 
-Ha a frissítendő entitás már nem létezik, a frissítési művelet sikertelen lesz. Ha egy entitást szeretne tárolni, függetlenül attól, hogy az létezik-e, használja az [insert_or_replace_entity][py_insert_or_replace_entity] metódust. Az alábbi példában az első hívás lecseréli a meglévő entitást. A második hívás beszúr egy új entitást, mivel nem létezik a megadott PartitionKey és RowKey tulajdonsággal rendelkező entitás a táblában.
+Ha a frissítendő entitás már nem létezik, a frissítési művelet sikertelen lesz. Ha olyan entitást szeretne tárolni, amely létezik vagy sem, használja a [insert_or_replace_entity][py_insert_or_replace_entity]. Az alábbi példában az első hívás lecseréli a meglévő entitást. A második hívás beszúr egy új entitást, mivel nem létezik a megadott PartitionKey és RowKey tulajdonsággal rendelkező entitás a táblában.
 
 ```python
 # Replace the entity created earlier
-task = {'PartitionKey': 'tasksSeattle', 'RowKey': '001', 'description' : 'Take out the garbage again', 'priority' : 250}
+task = {'PartitionKey': 'tasksSeattle', 'RowKey': '001',
+        'description': 'Take out the garbage again', 'priority': 250}
 table_service.insert_or_replace_entity('tasktable', task)
 
 # Insert a new entity
-task = {'PartitionKey': 'tasksSeattle', 'RowKey': '003', 'description' : 'Buy detergent', 'priority' : 300}
+task = {'PartitionKey': 'tasksSeattle', 'RowKey': '003',
+        'description': 'Buy detergent', 'priority': 300}
 table_service.insert_or_replace_entity('tasktable', task)
 ```
 
 > [!TIP]
-> Az [update_entity][ py_update_entity] metódus lecseréli egy meglévő entitás minden tulajdonságát és értékét, illetve a metódus egy meglévő entitás tulajdonságainak eltávolítására is használható. A [merge_entity] [py_merge_entity] metódussal egy meglévő entitást frissíthet az új vagy módosított tulajdonságértékekkel anélkül, hogy teljesen lecserélné az entitást.
+> A [update_entity][py_update_entity] metódus lecseréli egy meglévő entitás összes tulajdonságát és értékét, amelyet a tulajdonságok meglévő entitásból való eltávolítására is használhat. A [merge_entity][py_merge_entity] metódussal a meglévő entitásokat új vagy módosított tulajdonságértékek használatával frissítheti anélkül, hogy teljesen lecseréli az entitást.
 
 ## <a name="modify-multiple-entities"></a>Több entitás módosítása
 
-Annak biztosításához, hogy a Table Service elvégezze a kérés atomi feldolgozását, egy kötegben egyszerre több műveletet is elküldhet. Először használja a [TableBatch][py_TableBatch] osztályt több művelet hozzáadására egyetlen köteghez. Ezután hívja meg a [TableService][py_TableService].[commit_batch][py_commit_batch] metódust a műveletek egy atomi műveletben való elküldéséhez. A kötegelten módosítani kívánt entitásoknak ugyanazon a partíción kell lenniük.
+Annak biztosításához, hogy a Table Service elvégezze a kérés atomi feldolgozását, egy kötegben egyszerre több műveletet is elküldhet. Először használja a [TableBatch][py_TableBatch] osztályt több művelet egyetlen kötegbe való felvételéhez. Ezután hívja meg a [TableService][py_TableService]. [commit_batch][py_commit_batch] a műveleteknek egy atomi műveletben való elküldéséhez. A kötegelten módosítani kívánt entitásoknak ugyanazon a partíción kell lenniük.
 
 Ez a példa két entitást ad hozzá egy kötegben:
 
 ```python
 from azure.cosmosdb.table.tablebatch import TableBatch
 batch = TableBatch()
-task004 = {'PartitionKey': 'tasksSeattle', 'RowKey': '004', 'description' : 'Go grocery shopping', 'priority' : 400}
-task005 = {'PartitionKey': 'tasksSeattle', 'RowKey': '005', 'description' : 'Clean the bathroom', 'priority' : 100}
+task004 = {'PartitionKey': 'tasksSeattle', 'RowKey': '004',
+           'description': 'Go grocery shopping', 'priority': 400}
+task005 = {'PartitionKey': 'tasksSeattle', 'RowKey': '005',
+           'description': 'Clean the bathroom', 'priority': 100}
 batch.insert_entity(task004)
 batch.insert_entity(task005)
 table_service.commit_batch('tasktable', batch)
@@ -158,8 +164,10 @@ table_service.commit_batch('tasktable', batch)
 A kötegek a környezetkezelő szintaxisával is használhatók:
 
 ```python
-task006 = {'PartitionKey': 'tasksSeattle', 'RowKey': '006', 'description' : 'Go grocery shopping', 'priority' : 400}
-task007 = {'PartitionKey': 'tasksSeattle', 'RowKey': '007', 'description' : 'Clean the bathroom', 'priority' : 100}
+task006 = {'PartitionKey': 'tasksSeattle', 'RowKey': '006',
+           'description': 'Go grocery shopping', 'priority': 400}
+task007 = {'PartitionKey': 'tasksSeattle', 'RowKey': '007',
+           'description': 'Clean the bathroom', 'priority': 100}
 
 with table_service.batch('tasktable') as batch:
     batch.insert_entity(task006)
@@ -168,7 +176,7 @@ with table_service.batch('tasktable') as batch:
 
 ## <a name="query-for-an-entity"></a>Entitás lekérdezése
 
-Egy táblában szereplő entitás lekérdezéséhez adja át az entitás PartitionKey és RowKey tulajdonságát a [TableService][py_TableService].[get_entity][py_get_entity] metódusnak.
+Egy táblában lévő entitás lekérdezéséhez adja át a PartitionKey és a RowKey a [TableService][py_TableService]. [get_entity][py_get_entity] metódus.
 
 ```python
 task = table_service.get_entity('tasktable', 'tasksSeattle', '001')
@@ -181,7 +189,8 @@ print(task.priority)
 Több entitást is lekérdezhet, ha megadja egy szűrősztringet a **filter** paraméterrel. Ez a példa a Seattle-ben található összes feladatot megkeresi egy szűrőnek a PartitionKey tulajdonságra való alkalmazásával:
 
 ```python
-tasks = table_service.query_entities('tasktable', filter="PartitionKey eq 'tasksSeattle'")
+tasks = table_service.query_entities(
+    'tasktable', filter="PartitionKey eq 'tasksSeattle'")
 for task in tasks:
     print(task.description)
     print(task.priority)
@@ -197,14 +206,15 @@ Az alábbi kódban szereplő lekérdezés csak a táblában található entitás
 > Az alábbi kódrészlet csak az Azure Storage esetén használható. A Storage Emulator nem támogatja.
 
 ```python
-tasks = table_service.query_entities('tasktable', filter="PartitionKey eq 'tasksSeattle'", select='description')
+tasks = table_service.query_entities(
+    'tasktable', filter="PartitionKey eq 'tasksSeattle'", select='description')
 for task in tasks:
     print(task.description)
 ```
 
 ## <a name="delete-an-entity"></a>Entitás törlése
 
-Entitás törléséhez adja át az entitás **PartitionKey** és **RowKey** tulajdonságát a [delete_entity][py_delete_entity] metódusnak.
+Entitás törlése a **PartitionKey** és a **RowKey** a [delete_entity][py_delete_entity] metódusba való átadásával.
 
 ```python
 table_service.delete_entity('tasktable', 'tasksSeattle', '001')
@@ -212,7 +222,7 @@ table_service.delete_entity('tasktable', 'tasksSeattle', '001')
 
 ## <a name="delete-a-table"></a>Tábla törlése
 
-Ha már nincs szüksége egy táblára vagy a benne található entitásokra, hívja meg a [delete_table][py_delete_table] metódust a tábla végleges törlésére az Azure Storage-ból.
+Ha már nincs szüksége egy táblára vagy a benne lévő entitásokra, hívja meg a [delete_table][py_delete_table] metódust a tábla végleges törléséhez az Azure Storage-ból.
 
 ```python
 table_service.delete_table('tasktable')
@@ -223,7 +233,7 @@ table_service.delete_table('tasktable')
 * [A Table API-val történő fejlesztéshez kapcsolódó gyakori kérdések](https://docs.microsoft.com/azure/cosmos-db/faq)
 * [Az Azure Cosmos DB SDK Pythonhoz API-referenciája](https://docs.microsoft.com/python/api/overview/azure/cosmosdb?view=azure-python)
 * [Python fejlesztői központ](https://azure.microsoft.com/develop/python/)
-* [A Microsoft Azure Storage Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md): Egy ingyenes, platformfüggetlen alkalmazás vizuálisan való munkához Azure Storage-adatokkal Windows, macOS és Linux rendszereken.
+* [Microsoft Azure Storage Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md): Ingyenes, platformfüggetlen alkalmazás, amellyel vizuálisan dolgozhat Azure Storage-szolgáltatásokkal Windows, macOS és Linux rendszereken.
 * [A Python használata a Visual Studióban (Windows)](https://docs.microsoft.com/visualstudio/python/overview-of-python-tools-for-visual-studio)
 
 

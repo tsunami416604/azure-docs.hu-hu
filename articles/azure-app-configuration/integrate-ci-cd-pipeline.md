@@ -1,6 +1,6 @@
 ---
-title: Oktatóanyag az Azure-alkalmazások konfigurálása a folyamatos integrációt és teljesítést folyamat való integrálásának |} A Microsoft Docs
-description: Ebben az oktatóanyagban megismerheti, hogyan hozhat létre egy konfigurációs fájl használatával adatokat az Azure-alkalmazások konfigurálása során a folyamatos integrációt és teljesítést
+title: Oktatóanyag folyamatos integrációs és kézbesítési folyamat integrálásához az Azure app Configuration használatával | Microsoft Docs
+description: Ebből az oktatóanyagból megtudhatja, hogyan hozhatja ki a konfigurációs fájlokat az Azure-alkalmazások konfigurációjában tárolt adathasználattal a folyamatos integráció és a kézbesítés során
 services: azure-app-configuration
 documentationcenter: ''
 author: yegu-ms
@@ -12,51 +12,51 @@ ms.topic: tutorial
 ms.date: 02/24/2019
 ms.author: yegu
 ms.custom: mvc
-ms.openlocfilehash: 26bd49af7245d6e6dde3162a2e1d95c54f13e35b
-ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
+ms.openlocfilehash: e2f682a2782eb1a61dd44e02d665175e31c441f8
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65415939"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68357015"
 ---
 # <a name="integrate-with-a-cicd-pipeline"></a>Integráció CI-/CD-folyamattal
 
-Ez a cikk ismerteti az adatok az Azure-alkalmazások konfigurálása egy folyamatos integrációs és folyamatos üzembe helyezés rendszer használatával különféle módjait.
+Ez a cikk az Azure-alkalmazások konfigurálásának különböző módjait ismerteti folyamatos integrációs és folyamatos üzembe helyezési rendszer esetén.
 
-## <a name="use-app-configuration-in-your-azure-devops-pipeline"></a>Használhatja az Alkalmazáskonfigurációt az az Azure DevOps-folyamattal
+## <a name="use-app-configuration-in-your-azure-devops-pipeline"></a>Az alkalmazások konfigurációjának használata az Azure DevOps-folyamatában
 
-Ha rendelkezik egy Azure-fejlesztési és üzemeltetési folyamatot, kulcs-értékeket beolvasni az alkalmazás konfigurációjából, és változók módon állítsa be őket. A [Azure alkalmazás konfigurációs DevOps-bővítmény](https://go.microsoft.com/fwlink/?linkid=2091063) van egy kiegészítő modult, amely ezt a funkciót biztosít. Egyszerűen kövesse az utasításokat bővítményt használja a build vagy a feladatütemezés kiadási.
+Ha rendelkezik Azure DevOps-folyamattal, beolvashatja a kulcs-értékeket az alkalmazás konfigurációjában, és beállíthatja feladatként változóként. Az [Azure app Configuration DevOps bővítmény](https://go.microsoft.com/fwlink/?linkid=2091063) egy kiegészítő modul, amely biztosítja ezt a funkciót. Egyszerűen kövesse az utasításokat, hogy a bővítményt felépítési vagy kiadási Feladatsorban használja.
 
-## <a name="deploy-app-configuration-data-with-your-application"></a>Alkalmazáskonfigurációs adatok az alkalmazás üzembe helyezése
+## <a name="deploy-app-configuration-data-with-your-application"></a>Alkalmazások konfigurációs adatai üzembe helyezése az alkalmazással
 
-Az alkalmazás futtatásához, ha az Azure App konfigurációjától függ, és nem tudja elérni, sikertelen lehet. Javíthatja kezelése érdekében tett ilyen esemény, azonban valószínűleg nem fordulhat elő, ha az alkalmazás rugalmasságát. Ehhez a csomag aktuális konfigurációs adatok fájlba, hogy az alkalmazás és a betöltött helyben telepített az indítás során. Ez a megközelítés biztosítja, hogy az alkalmazás alapértelmezett beállítás értéke van legalább. Ezek az értékek felülírja, az alkalmazás a konfigurációs adattároló újabb módosításainak elérhetővé válik.
+Előfordulhat, hogy az alkalmazás nem futtatható, ha az az Azure-alkalmazás konfigurációjától függ, és nem tudja elérni. Javíthatja az alkalmazás rugalmasságát, hogy az ilyen eseményekkel foglalkozzon, azonban valószínűtlen, hogy ez megtörténik. Ehhez csomagolja ki az aktuális konfigurációs adatfájlt egy olyan fájlba, amely az alkalmazással együtt lett telepítve, és helyileg töltődik be az indítás során. Ez a módszer garantálja, hogy az alkalmazásnak legalább az alapértelmezett értékeket kell beállítania. Ezeket az értékeket az alkalmazás konfigurációs tárolójának bármely újabb változása felülírja, ha az elérhető.
 
-Használatával a [exportálása](./howto-import-export-data.md#export-data) függvényt az Azure-alkalmazások konfigurálása, automatizálhatja egyetlen fájlként aktuális konfigurációs adatok lekérését jelenti. Ezután egy build és a központi telepítési lépés a folyamatos integráció és folyamatos üzembe helyezés (CI/CD) folyamatokat ágyazhat be ezt a fájlt.
+Az Azure-alkalmazások konfigurációjának [Exportálás](./howto-import-export-data.md#export-data) funkciója segítségével automatizálhatja az aktuális konfigurációs adatok egyetlen fájlként történő beolvasásának folyamatát. Ezt követően ágyazza be ezt a fájlt a folyamatos integráció és a folyamatos üzembe helyezés (CI/CD) folyamatának összeállítási vagy telepítési lépéseként.
 
-Az alábbi példa bemutatja, hogyan foglalhat bele az Alkalmazáskonfigurációt az adatok egy buildet. lépés: a webalkalmazás a rövid útmutatók rendszerben bevezetett. A folytatás előtt Befejezés [ASP.NET Core-alkalmazás létrehozása az alkalmazás konfigurációs](./quickstart-aspnet-core-app.md) első.
+Az alábbi példa bemutatja, hogyan lehet az alkalmazás konfigurációs információit felépíteni a gyors útmutatókban bemutatott webalkalmazáshoz. A folytatás előtt fejezze be a [ASP.net Core alkalmazás létrehozása az alkalmazás](./quickstart-aspnet-core-app.md) -konfigurációval először.
 
-Bármely Kódszerkesztő segítségével hajtsa végre a lépéseket ebben az oktatóanyagban. [A Visual Studio Code](https://code.visualstudio.com/) kiváló lehetőség a Windows, macOS és Linux platformokon az érhető el.
+Az oktatóanyag lépéseihez bármilyen Kódszerkesztő használható. A [Visual Studio Code](https://code.visualstudio.com/) kiváló lehetőség a Windows, MacOS és Linux platformokon.
 
 ### <a name="prerequisites"></a>Előfeltételek
 
-Ha helyileg hoz létre, töltse le és telepítse a [Azure CLI-vel](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) Ha még nem tette.
+Ha helyileg épít, töltse le és telepítse az [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) -t, ha még nem tette meg.
 
-Ehhez egy felhő-összeállítási, az Azure DevOps például ellenőrizze, hogy a [Azure CLI-vel](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) a buildelési rendszer van telepítve.
+A felhőalapú buildek létrehozásához az Azure DevOps például ellenőrizze, hogy az [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) telepítve van-e a Build rendszerbe.
 
-### <a name="export-an-app-configuration-store"></a>Egy alkalmazás a konfigurációs adattároló exportálása
+### <a name="export-an-app-configuration-store"></a>Alkalmazás-konfigurációs tároló exportálása
 
-1. Nyissa meg a *.csproj* fájlt, és adja hozzá a következő szkriptet:
+1. Nyissa meg a *. csproj* fájlt, és adja hozzá a következő parancsfájlt:
 
     ```xml
     <Target Name="Export file" AfterTargets="Build">
         <Message Text="Export the configurations to a temp file. " />
-        <Exec WorkingDirectory="$(MSBuildProjectDirectory)" Condition="$(ConnectionString) != ''" Command="az appconfig kv export -f $(OutDir)\azureappconfig.json --format json --separator : --connection-string $(ConnectionString)" />
+        <Exec WorkingDirectory="$(MSBuildProjectDirectory)" Condition="$(ConnectionString) != ''" Command="az appconfig kv export -d file --path $(OutDir)\azureappconfig.json --format json --separator : --connection-string $(ConnectionString)" />
     </Target>
     ```
 
-    Adja hozzá a *ConnectionString* társított konfigurációs alkalmazásáruházában környezeti változóban.
+    Adja hozzá az alkalmazás konfigurációs tárolójához társított *ConnectionString* környezeti változóként.
 
-2. Nyissa meg *Program.cs*, és frissítse a `CreateWebHostBuilder` metódus meghívásával az exportált JSON-fájl használata a `config.AddJsonFile()` metódust.
+2. Nyissa meg a *program.cs*, `CreateWebHostBuilder` és frissítse a metódust az exportált JSON- `config.AddJsonFile()` fájl használatára a metódus meghívásával.
 
     ```csharp
     public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
@@ -72,35 +72,35 @@ Ehhez egy felhő-összeállítási, az Azure DevOps például ellenőrizze, hogy
             .UseStartup<Startup>();
     ```
 
-### <a name="build-and-run-the-app-locally"></a>Hozhat létre, és az alkalmazás helyileg történő futtatása
+### <a name="build-and-run-the-app-locally"></a>Az alkalmazás helyi létrehozása és futtatása
 
-1. Nevű környezeti változó értéke **ConnectionString**, és állítsa be az alkalmazás a konfigurációs adattárolónál a hozzáférési kulcsot. Ha használja a Windows-parancssort, futtassa a következő parancsot, és a parancssort, a módosítás érvénybe léptetéséhez indítsa újra:
+1. Állítson be egy **ConnectionString**nevű környezeti változót, és állítsa be az alkalmazás konfigurációs tárolójának hozzáférési kulcsára. Ha a Windows-parancssort használja, futtassa a következő parancsot, és indítsa újra a parancssort, hogy a módosítás érvénybe lépjen:
 
         setx ConnectionString "connection-string-of-your-app-configuration-store"
 
-    Windows PowerShell használatakor a következő parancsot:
+    Ha a Windows PowerShellt használja, futtassa a következő parancsot:
 
         $Env:ConnectionString = "connection-string-of-your-app-configuration-store"
 
-    Ha macOS vagy Linux használ, futtassa a következő parancsot:
+    Ha macOS vagy Linux rendszert használ, futtassa a következő parancsot:
 
         export ConnectionString='connection-string-of-your-app-configuration-store'
 
-2. Az alkalmazás létrehozása a .NET Core-CLI-vel, a következő parancsot az parancs-rendszerhéjba:
+2. Ha az alkalmazást a a .NET Core parancssori felülete használatával szeretné felépíteni, futtassa a következő parancsot a parancs-rendszerhéjban:
 
         dotnet build
 
-3. A build sikeres befejezése után futtassa a következő parancsot a webalkalmazás helyi futtatásához:
+3. A létrehozás sikeres befejezése után futtassa a következő parancsot a webalkalmazás helyi futtatásához:
 
         dotnet run
 
-4. Nyisson meg egy böngészőablakot, és nyissa meg `http://localhost:5000`, azaz a helyileg üzemeltetett webes alkalmazás alapértelmezett URL-CÍMÉT.
+4. Nyisson meg egy böngészőablakot `http://localhost:5000`, és nyissa meg a következőt:, amely a helyileg üzemeltetett webalkalmazás alapértelmezett URL-címe.
 
-    ![A rövid útmutató alkalmazások indítása helyi](./media/quickstarts/aspnet-core-app-launch-local.png)
+    ![Gyorsindítás alkalmazás elindítása helyi](./media/quickstarts/aspnet-core-app-launch-local.png)
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben az oktatóanyagban a telepítési folyamat használható Azure alkalmazás konfigurációs adatok exportálása. Ismerje meg, hogyan használhatja az Alkalmazáskonfigurációt, folytassa az Azure CLI-minták.
+Ebben az oktatóanyagban exportálta az Azure-alkalmazás konfigurációs szolgáltatásait egy központi telepítési folyamat során. Ha többet szeretne megtudni az alkalmazások konfigurációjának használatáról, folytassa az Azure CLI-mintákkal.
 
 > [!div class="nextstepaction"]
-> [Felügyelt identitás-integráció](./howto-integrate-azure-managed-service-identity.md)
+> [Felügyelt identitások integrációja](./howto-integrate-azure-managed-service-identity.md)

@@ -1,21 +1,21 @@
 ---
-title: Egy Azure Cosmos-tárolóhoz egyedi kulcsok definiálása
-description: Ismerje meg, hogyan adhat meg egy Azure Cosmos-tárolóhoz egyedi kulcsok
+title: Egyedi kulcsok definiálása egy Azure Cosmos-tárolóhoz
+description: Ismerje meg, hogyan határozhat meg egyedi kulcsokat egy Azure Cosmos-tárolóhoz
 author: ThomasWeiss
 ms.service: cosmos-db
 ms.topic: sample
 ms.date: 05/23/2019
 ms.author: thweiss
-ms.openlocfilehash: fb9872d2fd41066899ff9198915d573bfb4a0b84
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 313dd07c2b8eeb5684310b57d74053d3cbc1b5e1
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66240973"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68356388"
 ---
-# <a name="define-unique-keys-for-an-azure-cosmos-container"></a>Egy Azure Cosmos-tárolóhoz egyedi kulcsok definiálása
+# <a name="define-unique-keys-for-an-azure-cosmos-container"></a>Egyedi kulcsok definiálása egy Azure Cosmos-tárolóhoz
 
-Ez a cikk bemutatja a különböző módszerrel határozhatja meg az [egyedi kulcsok](unique-keys.md) egy Azure Cosmos-tároló létrehozásakor. Ez a művelet végrehajtásához, vagy az Azure portal használatával, vagy az SDK-k egyikével jelenleg lehetőség.
+Ez a cikk bemutatja az [egyedi kulcsok](unique-keys.md) definiálásának különböző módjait az Azure Cosmos-tárolók létrehozásakor. Ezt a műveletet jelenleg a Azure Portal vagy az egyik SDK használatával lehet elvégezni.
 
 ## <a name="use-the-azure-portal"></a>Az Azure Portal használata
 
@@ -23,21 +23,21 @@ Ez a cikk bemutatja a különböző módszerrel határozhatja meg az [egyedi kul
 
 1. [Hozzon létre egy új Azure Cosmos-fiókot](create-sql-api-dotnet.md#create-account) , vagy válasszon ki egy meglévőt.
 
-1. Nyissa meg a **adatkezelő** ablaktáblán, és válassza ki a tárolót, hogy a használni kívánt.
+1. Nyissa meg a **adatkezelő** ablaktáblát, és válassza ki a használni kívánt tárolót.
 
-1. Kattintson a **új tároló**.
+1. Kattintson az **új tároló**elemre.
 
-1. Az a **tároló hozzáadása** párbeszédpanel, kattintson a **+ egyedi kulcs hozzáadása** egyedi bejegyzés hozzáadása.
+1. A **tároló hozzáadása** párbeszédpanelen kattintson az **+ egyedi kulcs hozzáadása** lehetőségre egy egyedi kulcs hozzáadásához.
 
-1. Adja meg az elérési úton a egyedi key megkötés
+1. Adja meg az egyedi kulcs megkötésének elérési útját (ke) t
 
-1. Szükség esetén adjon hozzá további egyedi kulcsbejegyzésekhez kattintva **+ egyedi kulcs hozzáadása**
+1. Ha szükséges, vegyen fel további egyedi kulcs-bejegyzéseket a **+ egyedi kulcs hozzáadása** lehetőségre kattintva.
 
-![Egyedi kulcsmegkötés bejegyzés az Azure Portal képernyőképe](./media/how-to-define-unique-keys/unique-keys-portal.png)
+![Képernyőkép a Azure Portal egyedi kulcs megkötésének bejegyzéséről](./media/how-to-define-unique-keys/unique-keys-portal.png)
 
-## <a name="use-the-net-sdk-v2"></a>A .NET SDK V2 használata
+## <a name="use-the-net-sdk-v2"></a>A .NET SDK v2 használata
 
-Létrehozásakor egy új tárolót használ a [.NET SDK-val v2](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/), amely egy `UniqueKeyPolicy` objektum egyedi kulcsra vonatkozó megkötések meghatározására használható.
+Amikor új tárolót hoz létre a [.net SDK v2](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/)használatával, `UniqueKeyPolicy` egy objektum használható egyedi kulcsokra vonatkozó megkötések definiálásához.
 
 ```csharp
 client.CreateDocumentCollectionAsync(UriFactory.CreateDatabaseUri("database"), new DocumentCollection
@@ -54,9 +54,9 @@ client.CreateDocumentCollectionAsync(UriFactory.CreateDatabaseUri("database"), n
 });
 ```
 
-## <a name="use-the-java-sdk"></a>Use the Java SDK
+## <a name="use-the-java-sdk"></a>A Java SDK használata
 
-Létrehozásakor egy új tárolót használ a [Java SDK](https://mvnrepository.com/artifact/com.microsoft.azure/azure-cosmosdb), amely egy `UniqueKeyPolicy` objektum egyedi kulcsra vonatkozó megkötések meghatározására használható.
+Amikor a [Java SDK](https://mvnrepository.com/artifact/com.microsoft.azure/azure-cosmosdb)-val új tárolót hoz létre `UniqueKeyPolicy` , egy objektum használható egyedi kulcsokra vonatkozó megkötések definiálásához.
 
 ```java
 // create a new DocumentCollection object
@@ -86,9 +86,9 @@ container.setUniqueKeyPolicy(uniqueKeyPolicy);
 client.createCollection(String.format("/dbs/%s", "database"), container, null);
 ```
 
-## <a name="use-the-nodejs-sdk"></a>A Node.js SDK-val
+## <a name="use-the-nodejs-sdk"></a>A Node. js SDK használata
 
-Egy új tárolót a létrehozásakor a [Node.js SDK](https://www.npmjs.com/package/@azure/cosmos), amely egy `UniqueKeyPolicy` objektum egyedi kulcsra vonatkozó megkötések meghatározására használható.
+Ha a [Node. js SDK](https://www.npmjs.com/package/@azure/cosmos)-val új tárolót hoz létre `UniqueKeyPolicy` , egy objektum használható egyedi kulcsokra vonatkozó megkötések definiálásához.
 
 ```javascript
 client.database('database').containers.create({
@@ -104,15 +104,15 @@ client.database('database').containers.create({
 
 ## <a name="use-the-python-sdk"></a>A Python SDK használata
 
-Egy új tárolót a létrehozásakor a [Python SDK](https://pypi.org/project/azure-cosmos/), egyedi kulcsokra vonatkozó korlátozások a szótárban, a paraméterként részeként adható meg.
+Amikor új tárolót hoz létre a [PYTHON SDK](https://pypi.org/project/azure-cosmos/)használatával, az egyedi kulcsokra vonatkozó megkötések a paraméterként átadott szótár részeként adhatók meg.
 
 ```python
 client.CreateContainer('dbs/' + config['DATABASE'], {
     'id': 'container',
     'uniqueKeyPolicy': {
         'uniqueKeys': [
-            { 'paths': ['/firstName', '/lastName', '/emailAddress'] },
-            { 'paths': ['/address/zipCode'] }
+            {'paths': ['/firstName', '/lastName', '/emailAddress']},
+            {'paths': ['/address/zipCode']}
         ]
     }
 })
@@ -120,5 +120,5 @@ client.CreateContainer('dbs/' + config['DATABASE'], {
 
 ## <a name="next-steps"></a>További lépések
 
-- Tudjon meg többet [particionálása](partition-data.md)
-- Ismerkedés a [indexelési útmutató](index-overview.md)
+- További információ a [particionálásról](partition-data.md)
+- Az [indexelés működésének](index-overview.md) megismerése

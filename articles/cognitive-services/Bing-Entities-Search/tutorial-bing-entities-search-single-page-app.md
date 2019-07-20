@@ -1,5 +1,5 @@
 ---
-title: 'Oktatóanyag: A Bing Entity Search egyoldalas webalkalmazást'
+title: 'Oktatóanyag: Egyoldalas webalkalmazás Bing Entity Search'
 titlesuffix: Azure Cognitive Services
 description: Útmutató a Bing Entity Search API egyoldalas webalkalmazásban való használatához.
 services: cognitive-services
@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-entity-search
 ms.topic: tutorial
-ms.date: 02/01/2019
+ms.date: 07/15/2019
 ms.author: aahi
-ms.openlocfilehash: 1b8cf36c631755458bc0c531773a6b2aba7f1038
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.openlocfilehash: 67aaf2a3b0c7de85283642795cc1a69e9c36aa37
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65406381"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68360570"
 ---
 # <a name="tutorial-single-page-web-app"></a>Oktatóanyag: Egyoldalas webalkalmazás
 
@@ -380,7 +380,7 @@ function handleBingResponse() {
 
 Az előző két függvény kódjainak nagy része a hibakezelésért felel. A következő fázisoknál léphetnek fel hibák:
 
-|Szakasz|Lehetséges hiba vagy hibák|Kezelő|
+|Fázis|Lehetséges hiba vagy hibák|Kezelő|
 |-|-|-|
 |JavaScript-kérésobjektum létrehozása|Érvénytelen URL|`try`/`catch` blokk|
 |Kérés végrehajtása|Hálózati hibák, megszakított kapcsolatok|`error` és `abort` eseménykezelők|
@@ -535,7 +535,7 @@ CORS-proxyt könnyedén telepíthet annak érdekében, hogy oktatóalkalmazásun
 
 Következő lépésként írja át a Bing Web Search-végpontot a HTML-fájlban a következőre:
 
-    https://localhost:9090/httpss://api.cognitive.microsoft.com/bing/v7.0/search
+    http://localhost:9090/https://api.cognitive.microsoft.com/bing/v7.0/search
 
 Végül indítsa el a CORS-proxyt a következő paranccsal:
 

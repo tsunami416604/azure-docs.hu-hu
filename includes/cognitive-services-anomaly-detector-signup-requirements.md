@@ -4,11 +4,11 @@ ms.author: aahi
 ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/21/2019
-ms.openlocfilehash: 9a813daa01266ab439ab6be60116860876334014
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 5892b16c37272229e93c2f01cd1b5b23f1184697
+ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67457388"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68362528"
 ---
-Rendelkeznie kell egy [Cognitive Services API-fiók](../articles/cognitive-services/cognitive-services-apis-create-account.md) az Anomáliadetektálási detector használatával API-hozzáféréssel rendelkező. Megtekintheti az előfizetési kulcs, a [az Azure portal](../articles/cognitive-services/cognitive-services-apis-create-account.md#get-the-keys-for-your-subscription) a fiók létrehozását követően.
+Rendelkeznie kell egy [Cognitive Services API](../articles/cognitive-services/cognitive-services-apis-create-account.md) -fiókkal, amelynek hozzáférése van a rendellenesség-érzékelő API-hoz. A fiók létrehozása után lekérheti az előfizetési kulcsot a [Azure Portal](../articles/cognitive-services/cognitive-services-apis-create-account.md#get-the-keys-for-your-resource) .

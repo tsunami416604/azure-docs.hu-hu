@@ -1,7 +1,7 @@
 ---
-title: 'Regressziós modell oktatóanyag: Automatizált ML'
+title: 'A regressziós modell oktatóanyaga: Automatizált ML'
 titleSuffix: Azure Machine Learning service
-description: Ismerje meg, hogyan hozhat létre a machine learning-modellek automatizált machine learning segítségével. Az Azure Machine Learning hajthat végre adatok előfeldolgozása, az algoritmus kiválasztása és a hiperparaméter kiválasztása automatikusan az Ön számára. Ezután a kész modell Azure Machine Learning szolgáltatás van telepítve.
+description: Ismerje meg, hogyan hozhatja ki gépi tanulási modellt az automatizált gépi tanulás használatával. A Azure Machine Learning az adatok előfeldolgozását, az algoritmus kiválasztását és a hiperparaméter kiválasztását automatizált módon végezheti el. Ezután az utolsó modell üzembe helyezése Azure Machine Learning szolgáltatással történik.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,85 +11,85 @@ ms.author: nilesha
 ms.reviewer: trbye
 ms.date: 04/11/2019
 ms.custom: seodec18
-ms.openlocfilehash: 8cedf7abf71a772a0b770dd2f82d9a5508f5dd75
-ms.sourcegitcommit: dda9fc615db84e6849963b20e1dce74c9fe51821
+ms.openlocfilehash: a49ee5720711bb23ec4770de38a408827c645b73
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67622377"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68360949"
 ---
-# <a name="tutorial-use-automated-machine-learning-to-build-your-regression-model"></a>Oktatóanyag: Automatizált gépi tanulás a regressziós modell létrehozása
+# <a name="tutorial-use-automated-machine-learning-to-build-your-regression-model"></a>Oktatóanyag: Az automatizált gépi tanulás használata a regressziós modell létrehozásához
 
 Ez az oktatóanyag **egy kétrészes oktatóanyag-sorozat második része**. Az előző oktatóanyagban, [előkészítette a NYC-i taxik adatait regressziós modellezéshez](tutorial-data-prep.md).
 
-Most már készen áll a modellben az Azure Machine Learning szolgáltatás kiépítésének megkezdésére. Az oktatóanyag jelen részében az előkészített adatokat használhatja, és automatikusan létrehozhat egy taxi diszkont árak előrejelzésére regressziós modell. Az automatikus gépi tanulási funkciókat a szolgáltatás segítségével meghatározhatja a gépi tanulási célok és korlátozások. Az automatikus gépi tanulási folyamat indíthatja el. Ezután lehetővé teszik az algoritmus kiválasztása és a hiperparaméter finomhangolása történjen meg. Az automatikus gépi tanulási módszert algoritmusok és hiperparaméterek számos kombinációit ismétel, amíg nem talál a legoptimálisabb modellt, a feltétel alapján.
+Most már készen áll arra, hogy megkezdje a modell kiépítése Azure Machine Learning szolgáltatással. Az oktatóanyag ezen részében az előkészített és automatikusan létrehoz egy regressziós modellt, amellyel előre jelezheti a taxi viteldíjak árát. A szolgáltatás automatizált gépi tanulási képességeinek használatával megadhatja a gépi tanulási célokat és korlátozásokat. Elindítja az automatizált gépi tanulás folyamatát. Ezután engedélyezze az algoritmus kiválasztását és a hiperparaméter finomhangolását. Az automatizált gépi tanulási módszer az algoritmusok és a hiperparaméterek beállítása számos kombinációjára támaszkodik, amíg meg nem találja a legjobb modellt a feltétele alapján.
 
-![folyamatábrája](./media/tutorial-auto-train-models/flow2.png)
+![Folyamatábra](./media/tutorial-auto-train-models/flow2.png)
 
-Ebben az oktatóanyagban elsajátíthatja a következő feladatokat:
+Ez az oktatóanyag a következő feladatokat ismerteti:
 
 > [!div class="checklist"]
-> * Egy Python-környezetet, és az SDK-csomagok importálásához.
-> * Az Azure Machine Learning szolgáltatás munkaterületén konfigurálhatja.
-> * Egy regressziós modell Autotrain.
-> * A modell helyileg futtassa egyéni paraméterekkel.
-> * Ismerje meg az eredményeket.
+> * Hozzon létre egy Python-környezetet, és importálja az SDK-csomagokat.
+> * Azure Machine Learning szolgáltatás munkaterületének konfigurálása.
+> * Egy regressziós modell újratanítása.
+> * A modell helyi futtatása egyéni paraméterekkel.
+> * Ismerkedjen meg az eredményekkel.
 
-Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy ingyenes fiókot megkezdése előtt. Próbálja ki a [Azure Machine Learning szolgáltatás ingyenes vagy fizetős verzióját](https://aka.ms/AMLFree) még ma.
+Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy ingyenes fiókot. Próbálja ki a [Azure Machine learning Service ingyenes vagy fizetős verzióját](https://aka.ms/AMLFree) még ma.
 
 >[!NOTE]
-> Ebben a cikkben kód az Azure Machine Learning SDK verziója 1.0.39 lett tesztelve.
+> A cikkben ismertetett kód Azure Machine Learning SDK 1.0.39-verzióval lett tesztelve.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ugrás a [a fejlesztési környezet beállítása](#start) olvassa végig a notebook lépéseket, vagy használja az alábbi utasításokat a notebook beszerzése és az Azure notebookok vagy a saját notebook server futtatásához. A jegyzetfüzet futtatásához szüksége lesz:
+Ugorjon a telepítési [környezet beállítása](#start) a jegyzetfüzet lépéseinek beolvasásához, vagy az alábbi utasításokat követve szerezze be a jegyzetfüzetet, és futtassa azt Azure Notebooks vagy a saját notebook-kiszolgálóján. A jegyzetfüzet futtatásához a következőkre lesz szüksége:
 
 * [Futtassa az adat-előkészítési oktatóanyagot](tutorial-data-prep.md).
-* Egy Python 3.6-os notebook kiszolgálót a következőkkel:
-    * Az Azure Machine Learning SDK a Pythonhoz készült `automl` és `notebooks` kiegészítő funkciók
+* Python 3,6 notebook-kiszolgáló a következő telepítéssel:
+    * A Pythonhoz készült `automl` Azure Machine learning SDK és `notebooks` az extrák
     * `matplotlib`
-* Az oktatóanyag notebook
-* A machine learning-munkaterület
-* A konfigurációs fájl ugyanabban a könyvtárban, a notebookot a munkaterület számára
+* Az oktatóanyag notebookja
+* Machine learning-munkaterület
+* A munkaterülethez tartozó konfigurációs fájl ugyanabban a könyvtárban, mint a jegyzetfüzet
 
-Ezekről az előfeltételekről le az alábbi szakaszok egyikét.
+Az alábbi részekben ismertetett előfeltételek bármelyikét lekérheti.
 
-* Használja a [felhőalapú notebook server a munkaterületen](#azure) 
-* Használat [saját notebook server](#server)
+* [Felhőalapú notebook-kiszolgáló használata a](#azure) munkaterületen 
+* [Saját notebook-kiszolgáló](#server) használata
 
-### <a name="azure"></a>A munkaterület egy felhőbeli notebook server használata
+### <a name="azure"></a>Felhőalapú notebook-kiszolgáló használata a munkaterületen
 
-Is könnyen a saját felhőalapú notebook server használatának első lépései. A [Azure Machine Learning SDK Pythonhoz készült](https://aka.ms/aml-sdk) már telepítve és konfigurálva van az Ön számára a felhőalapú erőforrás létrehozása után.
+Könnyedén megkezdheti saját felhőalapú notebook-kiszolgálójának megkezdését. A [Pythonhoz készült Azure Machine learning SDK](https://aka.ms/aml-sdk) már telepítve van és konfigurálva van a felhőalapú erőforrás létrehozása után.
 
 [!INCLUDE [aml-azure-notebooks](../../../includes/aml-azure-notebooks.md)]
 
-* A notebook weblap indításához után futtassa a **oktatóanyagok/regressziós-part2-automated-ml.ipynb** notebook.
+* A jegyzetfüzet weboldalának elindítása után futtassa az **oktatóanyagok/Regression-part2-Automated-ml. ipynb** notebookot.
 
-### <a name="server"></a>A saját Jupyter notebook server használata
+### <a name="server"></a>Saját Jupyter notebook-kiszolgáló használata
 
-Ezek a lépések használatával hozzon létre egy helyi Jupyter Notebook kiszolgálót a számítógépen.  Győződjön meg arról, hogy telepítsen `matplotlib` és a `automl` és `notebooks` kiegészítő funkciók a környezetben.
+Ezek a lépések használatával hozzon létre egy helyi Jupyter Notebook kiszolgálót a számítógépen.  Győződjön meg arról, hogy `matplotlib` a környezetében `notebooks` a és a és az `automl` extrák is telepítve vannak.
 
 [!INCLUDE [aml-your-server](../../../includes/aml-your-server.md)]
 
-Miután végrehajtotta a lépéseket, futtassa a **oktatóanyagok/regressziós-part2-automated-ml.ipynb** notebookot.
+A lépések elvégzése után futtassa az **oktatóanyagok/Regression-part2-Automated-ml. ipynb** notebookot.
 
 ## <a name="start"></a>A fejlesztési környezet beállítása
 
-Egy Python-notebookban a fejlesztési munka összes beállítása megadható. A telepítő az alábbi műveleteket tartalmazza:
+Egy Python-notebookban a fejlesztési munka összes beállítása megadható. A telepítő a következő műveleteket tartalmazza:
 
 * Az SDK telepítése
 * Python-csomagok importálása
-* A munkaterület konfigurálása
+* Munkaterület konfigurálása
 
-### <a name="install-and-import-packages"></a>Telepítse és importálja a csomagok
+### <a name="install-and-import-packages"></a>Csomagok telepítése és importálása
 
-Ha az oktatóanyag a saját Python-környezetben, használja a következő szükséges csomagok telepítéséhez.
+Ha saját Python-környezetében követi az oktatóanyagot, a következő paranccsal telepítheti a szükséges csomagokat.
 
 ```shell
 pip install azureml-sdk[automl,notebooks] matplotlib
 ```
 
-Ebben az oktatóanyagban szüksége a Python-csomagok importálása:
+Importálja az oktatóanyagban szükséges Python-csomagokat:
 
 ```python
 import azureml.core
@@ -101,11 +101,11 @@ import os
 
 ### <a name="configure-workspace"></a>Munkaterület konfigurálása
 
-Hozzon létre egy munkaterület-objektumot a meglévő munkaterületről. A [munkaterület](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py) egy osztály, amely fogadja a az Azure-előfizetésben és erőforráscsoportban információkat. Is létrehoz egy felhőalapú erőforrás figyeléséhez és nyomon követéséhez a modell futtatások.
+Hozzon létre egy munkaterület-objektumot a meglévő munkaterületről. A [munkaterület](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py) egy olyan osztály, amely elfogadja az Azure-előfizetést és az erőforrás-információkat. Létrehoz egy felhőalapú erőforrást is a modell futtatásának figyelésére és nyomon követésére.
 
 A `Workspace.from_config()` beolvassa a **config.json** fájlt, és betölti a részleteket a `ws` nevű objektumba.  A `ws` a kód további részében használható ebben az oktatóanyagban.
 
-Miután egy munkaterület-objektumot, nevezze el a kísérletben. Létrehozhat és regisztrálhat egy helyi könyvtárban a munkaterülethez. Minden Futtatás előzményeit rögzíti a megadott kísérlet keretében és a a [az Azure portal](https://portal.azure.com).
+A munkaterület-objektum megadását követően adja meg a kísérlet nevét. Hozzon létre és regisztráljon helyi könyvtárat a munkaterülettel. Az összes Futtatás előzményeit a megadott kísérlet és a [Azure Portal](https://portal.azure.com)rögzíti.
 
 
 ```python
@@ -128,7 +128,7 @@ pd.DataFrame(data=output, index=['']).T
 
 ## <a name="explore-data"></a>Adatok megismerése
 
-Az az előző oktatóanyagban létrehozott folyamatot objektum használja. Összefoglalva, ez az oktatóanyag 1. rész így volt használható a machine learning-modell tisztítani a NYC i taxik adatait. Most az adatkészlet különböző funkciók használata, és lehetővé teszi az a funkciók és a egy taxi utazást árát közötti kapcsolatokat hozhat létre automatizált modell. Nyissa meg és futtassa az adatok az adatfolyam, és tekintse át az eredményeket:
+Használja az előző oktatóanyagban létrehozott adatfolyam-objektumot. Az oktatóanyag 1. része megtisztította a New York-i taxi adatait, hogy a gépi tanulási modellben is felhasználható legyen. Mostantól különböző funkciókat használhat az adatkészletből, és lehetővé teszi, hogy az automatizált modell kapcsolatokat építsen ki a szolgáltatások és a taxik ára között. Nyissa meg és futtassa az adatfolyamot, és tekintse át az eredményeket:
 
 
 ```python
@@ -144,26 +144,26 @@ dflow_prepared.get_profile()
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>Típus</th>
+      <th>Type</th>
       <th>Min</th>
       <th>Max</th>
       <th>Count</th>
-      <th>Hiányzó száma</th>
-      <th>Nem hiányzó száma</th>
+      <th>Hiányzó darabszám</th>
+      <th>Hiányzó darabszám</th>
       <th>Hiányzó százalék</th>
-      <th>Hibák száma</th>
+      <th>Hibaszámláló</th>
       <th>Üres száma</th>
-      <th>0,1 % ki osztóérték</th>
-      <th>1 % ki osztóérték</th>
-      <th>5 %-os ki osztóérték</th>
-      <th>25 %-os ki osztóérték</th>
-      <th>50 %-os ki osztóérték</th>
-      <th>75 %-os ki osztóérték</th>
-      <th>95 %-os ki osztóérték</th>
-      <th>99 %-os ki osztóérték</th>
-      <th>99,9 %-os ki osztóérték</th>
+      <th>0,1% quantile</th>
+      <th>1% quantile</th>
+      <th>5% quantile</th>
+      <th>25% quantile</th>
+      <th>50% quantile</th>
+      <th>75% quantile</th>
+      <th>95% quantile</th>
+      <th>99% quantile</th>
+      <th>99,9% quantile</th>
       <th>középérték</th>
-      <th>Szórás</th>
+      <th>Standard szórás</th>
       <th>Variancia</th>
       <th>Döntés</th>
       <th>Értékek</th>
@@ -615,16 +615,17 @@ dflow_prepared.get_profile()
   </tbody>
 </table>
 
-Az adatokat a kísérlethez oszlopok hozzáadásával előkészítése `dflow_x` kell funkciók a modell létrehozásához. Megadhat `dflow_y` az előrejelzési értéknek kell lennie **költség**:
+Az adatokat a kísérlethez oszlopok hozzáadásával előkészítése `dflow_x` kell funkciók a modell létrehozásához. Ön határozza `dflow_y` meg, hogy az előrejelzés értéke, a **Cost**:
 
 ```python
-dflow_X = dflow_prepared.keep_columns(['pickup_weekday','pickup_hour', 'distance','passengers', 'vendor'])
+dflow_X = dflow_prepared.keep_columns(
+    ['pickup_weekday', 'pickup_hour', 'distance', 'passengers', 'vendor'])
 dflow_y = dflow_prepared.keep_columns('cost')
 ```
 
-### <a name="split-the-data-into-train-and-test-sets"></a>Az adatok felosztása tanítási és csoportok tesztelése
+### <a name="split-the-data-into-train-and-test-sets"></a>Az adat felosztása a vonatra és a tesztelési csoportokra
 
-Most az adatok felosztása tanítási és tesztelési használatával beállítja a `train_test_split` működni a `sklearn` könyvtár. Ez a függvény elkülöníti az adatok be az x **funkciók**, modellek tanítása és az y adatkészletet **előrejelzésére értékek**, tesztelési adatkészlet. A `test_size` paraméter határozza meg az adatok tesztelését lefoglalni aránya. A `random_state` paraméter az egyik Kezdőérték a véletlenszerű generátor beállítja, hogy a tanítási és tesztelési elágazást mindig determinisztikus:
+Most az adat kiosztását betanítási és tesztelési csoportokra bontja `train_test_split` a `sklearn` könyvtárban található függvény használatával. Ez a függvény elkülöníti az adatokat az x, a **funkciók**, az adatkészlet és a modell betanítása, valamint az y, az **előre jelzett értékek**, a tesztelési adatkészlet számára. A `test_size` paraméter határozza meg az adatok tesztelését lefoglalni aránya. A `random_state` paraméter beállítja a magot a véletlenszerű generátorra, így a vonat-teszt felosztás mindig determinisztikus:
 
 ```python
 from sklearn.model_selection import train_test_split
@@ -632,72 +633,73 @@ from sklearn.model_selection import train_test_split
 x_df = dflow_X.to_pandas_dataframe()
 y_df = dflow_y.to_pandas_dataframe()
 
-x_train, x_test, y_train, y_test = train_test_split(x_df, y_df, test_size=0.2, random_state=223)
+x_train, x_test, y_train, y_test = train_test_split(
+    x_df, y_df, test_size=0.2, random_state=223)
 # flatten y_train to 1d array
 y_train.values.flatten()
 ```
 
-Ebben a lépésben az a célja, hogy adatpont a kész modell teszteléséhez, amely még nem használták a modell betanítását annak érdekében, hogy igaz pontossága mérjük. Egy jól betanított modell más szóval pontos előrejelzéseket adatokból már nem látott képesnek kell lennie. Most már rendelkezik a szükséges csomagokat, és a modell autotraining kész adatokat.
+Ennek a lépésnek a célja, hogy az adatpontokkal tesztelje a modell betanítására nem használt befejezett modellt a valódi pontosság mérése érdekében. Más szóval a jól betanított modellnek képesnek kell lennie arra, hogy a már nem látott adatok alapján pontosan elvégezze az előrejelzések készítését. Most már rendelkezik a modell kiképzéséhez szükséges csomagokkal és adatkészletekkel.
 
 ## <a name="automatically-train-a-model"></a>Automatikusan a modell tanítása
 
-Automatikusan betanítja a modellt, hajtsa végre az alábbi lépéseket:
-1. A kísérlet futtatásához beállításainak megadása. A betanítási adatok csatolja a konfigurációt, és a betanítási folyamat szabályozó beállítások módosítása.
-1. A modell finomhangolása a kísérlet elküldése. A kísérlet elküldése, miután a folyamat végighalad a különböző machine learning-algoritmusok és a hiperparaméter beállításait, a által definiált megkötéseket tartja. A regressziós modell optimalizálása egy pontossága metrika szerint választja ki.
+A modellek automatikus betanításához hajtsa végre a következő lépéseket:
+1. Adja meg a kísérlet futtatásának beállításait. Csatolja a betanítási adatait a konfigurációhoz, és módosítsa a betanítási folyamatot szabályozó beállításokat.
+1. A kísérlet beküldése a modell finomhangolására. A kísérlet elküldése után a folyamat különböző gépi tanulási algoritmusokon és hiperparaméter-beállításokon keresztül megismétli a megadott megkötéseket. A pontosság mérőszámának optimalizálásával kiválasztja a legjobban illeszkedő modellt.
 
 ### <a name="define-settings-for-autogeneration-and-tuning"></a>A személyfelismerési és a hangolási beállításainak megadása
 
-Adja meg a kísérlet paramétert, és a modell a személyfelismerési és a hangolási beállításai. Tekintse meg a teljes listáját [beállítások](how-to-configure-auto-train.md). A kísérlet elküldése az alábbi alapértelmezett beállításokkal lesz körülbelül 10 – 15 perc is, de ha azt szeretné, hogy egy rövidebb futási időt, csökkentheti vagy `iterations` vagy `iteration_timeout_minutes`.
+Adja meg a kísérlet paraméterét és a modell beállításait az automatikus létrehozáshoz és a finomhangoláshoz. Tekintse meg a teljes listáját [beállítások](how-to-configure-auto-train.md). Ha a kísérletet ezekkel az alapértelmezett beállításokkal küldi el, a rendszer körülbelül 10-15 percig tart, de ha rövidebb futási `iteration_timeout_minutes`időt szeretne, csökkentse `iterations` a vagy a értéket.
 
 
 |Tulajdonság| Az oktatóanyagban szereplő érték |Leírás|
 |----|----|---|
-|**iteration_timeout_minutes**|10|Minden egyes ismétléskor percben időkorlát. Ezt az értéket a teljes futásidő csökkentéséhez csökkentse.|
-|**iterations**|30|Iterációk száma. Minden egyes ismétléskor egy új gépi tanulási modell tanítása az adatok. Ez az elsődleges, amely befolyásolja a teljes futási idő értéke.|
-|**primary_metric**| spearman_correlation | Az optimalizálni kívánt metrika. A regressziós modell Ez a metrika alapján fogja kiválasztani.|
-|**preprocess**| True | Használatával **igaz**, a kísérlet is előfeldolgozása a bemeneti adatok (kezelése az adatok hiányoznak, szöveg konvertálása a numerikus, stb.)|
+|**iteration_timeout_minutes**|10|Az egyes iterációk időkorlátja percben kifejezve. Csökkentse ezt az értéket a teljes futtatókörnyezet csökkentése érdekében.|
+|**iterations**|30|Iterációk száma. Minden egyes iterációban egy új gépi tanulási modell van betanítva az adataival. Ez az elsődleges érték, amely a teljes futási időt befolyásolja.|
+|**primary_metric**| spearman_correlation | Az optimalizálni kívánt metrika. A legjobban illeszkedő modell a metrika alapján lesz kiválasztva.|
+|**preprocess**| True | Az **igaz**értékkel a kísérlet feldolgozhatja a bemeneti adatokat (a hiányzó adatok kezelésével, a szöveg a numerikus szöveggé való konvertálásával stb.).|
 |**Részletességi**| logging.INFO | A naplózási szint szabályozza.|
-|**n_cross_validations**|5|Kereszt-ellenőrzési elágazást végrehajtani, ha nincs megadva érvényesítési adatok száma.|
+|**n_cross_validations**|5|Az ellenőrzési adatok megadásakor végrehajtandó, több ellenőrzési felosztások száma.|
 
 
 
 ```python
 automl_settings = {
-    "iteration_timeout_minutes" : 10,
-    "iterations" : 30,
-    "primary_metric" : 'spearman_correlation',
-    "preprocess" : True,
-    "verbosity" : logging.INFO,
+    "iteration_timeout_minutes": 10,
+    "iterations": 30,
+    "primary_metric": 'spearman_correlation',
+    "preprocess": True,
+    "verbosity": logging.INFO,
     "n_cross_validations": 5
 }
 ```
 
-Használja a meghatározott képzési beállításokat paramétere egy `AutoMLConfig` objektum. Ezenkívül megadhatja a betanítási adatok és a modell, amely `regression` ebben az esetben.
+A megadott tanítási beállításokat paraméterként használhatja egy `AutoMLConfig` objektumhoz. Továbbá adja meg a betanítási adatait és a modell típusát, amely `regression` ebben az esetben.
 
 ```python
 from azureml.train.automl import AutoMLConfig
 
 # local compute
-automated_ml_config = AutoMLConfig(task = 'regression',
-                             debug_log = 'automated_ml_errors.log',
-                             path = project_folder,
-                             X = x_train.values,
-                             y = y_train.values.flatten(),
-                             **automl_settings)
+automated_ml_config = AutoMLConfig(task='regression',
+                                   debug_log='automated_ml_errors.log',
+                                   path=project_folder,
+                                   X=x_train.values,
+                                   y=y_train.values.flatten(),
+                                   **automl_settings)
 ```
 
 ### <a name="train-the-automatic-regression-model"></a>Az automatikus regressziós modell betanítása
 
-Indítsa el a kísérlet helyi futtatását. Adja át a definiált `automated_ml_config` objektum a kísérletvászonra. A kimenetét állítsa `True` folyamatának megtekintése a kísérlet során:
+Indítsa el a kísérlet helyi futtatását. Adja át a `automated_ml_config` definiált objektumot a kísérletnek. Állítsa be a kimenetet `True` , hogy megtekintse az előrehaladást a kísérlet során:
 
 
 ```python
 from azureml.core.experiment import Experiment
-experiment=Experiment(ws, experiment_name)
+experiment = Experiment(ws, experiment_name)
 local_run = experiment.submit(automated_ml_config, show_output=True)
 ```
 
-A frissítések megjelenő kimenet a kísérlet futása élő. Minden egyes ismétléskor láthatja, a modell típusa, a Futási időtartam és a képzési pontosságát. A mező `BEST` nyomon követi a legjobban fut képzési pontszám a metrika típusa alapján.
+A rendszer a kísérlet futtatásakor élőben jeleníti meg a frissítéseket. Minden egyes iterációnál megjelenik a modell típusa, a Futtatás időtartama és a képzés pontossága. A mező `BEST` a metrikák típusától függően a legjobb futó tanítási pontszámot követi nyomon.
 
     Parent Run ID: AutoML_02778de3-3696-46e9-a71b-521c8fca0651
     *******************************************************************************************
@@ -744,9 +746,9 @@ A frissítések megjelenő kimenet a kísérlet futása élő. Minden egyes ism�
 
 Fedezze fel az automatikus képzési egy Jupyter widgettel, vagy a kísérlet előzmények megvizsgálásával eredményeit.
 
-### <a name="option-1-add-a-jupyter-widget-to-see-results"></a>Option 1: Találatok megjelenítéséhez egy Jupyter widget hozzáadása
+### <a name="option-1-add-a-jupyter-widget-to-see-results"></a>1\. lehetőség: Jupyter widget hozzáadása az eredmények megtekintéséhez
 
-Ha egy Jupyter notebookot fog használni, használja a Jupyter notebook widget grafikon és a egy tábla összes eredmény megtekintéséhez:
+Ha Jupyter-jegyzetfüzetet használ, a Jupyter notebook widgettel megjelenítheti az összes eredmény gráfját és táblázatát:
 
 
 ```python
@@ -754,19 +756,20 @@ from azureml.widgets import RunDetails
 RunDetails(local_run).show()
 ```
 
-![A Futtatás részletei Jupyter widget](./media/tutorial-auto-train-models/automl-dash-output.png)
-![Jupyter widget diagram](./media/tutorial-auto-train-models/automl-chart-output.png)
+![Jupyter widget-Futtatás](./media/tutorial-auto-train-models/automl-dash-output.png)
+részletei![Jupyter widget Plot](./media/tutorial-auto-train-models/automl-chart-output.png)
 
-### <a name="option-2-get-and-examine-all-run-iterations-in-python"></a>Option 2: Első, és vizsgálja meg az összes futtatási ismétlését a Pythonban
+### <a name="option-2-get-and-examine-all-run-iterations-in-python"></a>2\. lehetőség: Minden futtatási iteráció beolvasása és vizsgálata a Pythonban
 
-Minden egyes kísérlet előzményeinek lekérése is, és minden egyes ismétléskor futtatásához egyedi metrikák vizsgálata. Minden egyes futtatásához egyedi modell Gyökátlagos (root_mean_squared_error) megvizsgálásával láthatja, hogy a legtöbb ismétlések vannak előrejelzésére ($3-4) ésszerű tűréshatáron belül taxi valós költségeit.
+Lekérheti az egyes kísérletek előzményeit is, és megtekintheti az egyes iterációk egyes futtatásainak egyes mérőszámait. Ha megvizsgálja az egyes modellek GYÖKÁTLAGOS (root_mean_squared_error), láthatja, hogy a legtöbb iteráció ésszerűen ($ 3-4) belül előre megjósolja a taxi méltányos árát.
 
 ```python
 children = list(local_run.get_children())
 metricslist = {}
 for run in children:
     properties = run.get_properties()
-    metrics = {k: v for k, v in run.get_metrics().items() if isinstance(v, float)}
+    metrics = {k: v for k, v in run.get_metrics().items()
+               if isinstance(v, float)}
     metricslist[int(properties['iteration'])] = metrics
 
 rundata = pd.DataFrame(metricslist).sort_index(1)
@@ -1107,7 +1110,7 @@ rundata
 
 ## <a name="retrieve-the-best-model"></a>A legjobb modellt beolvasása
 
-Válassza ki a legjobb folyamat az ismétlések. A `get_output` metódust `automl_classifier` a legjobb Futtatás és illesztett modell az utolsó hívás szélességhez tartozó adja vissza. A túlterhelések a használatával `get_output`, kérheti, hogy a legjobb futtatás, és bármely illesztett modell naplózott metrika vagy egy adott iterációhoz:
+Válassza ki a legjobb folyamat az ismétlések. A `get_output` metódust `automl_classifier` a legjobb Futtatás és illesztett modell az utolsó hívás szélességhez tartozó adja vissza. A túlterhelések bekapcsolásával `get_output`lekérheti az összes naplózott metrika vagy egy adott iteráció esetében a legjobb futtatási és a beépített modellt:
 
 ```python
 best_run, fitted_model = local_run.get_output()
@@ -1117,14 +1120,14 @@ print(fitted_model)
 
 ## <a name="test-the-best-model-accuracy"></a>A legpontosabb modell tesztelése
 
-Használja a legjobb modellt a tesztelési adatkészletnél taxi vitel előrejelzésére előrejelzéseket futtatásához. A függvény `predict` a legjobb modellt használja, és megbecsüli y, értékének **költség kivételre**, az a `x_test` adatkészlet. Nyomtatás az első 10-es előre jelzett költség értékeit `y_predict`:
+A legjobb modell használatával előrejelzéseket futtathat a tesztelési adatkészleten a taxi viteldíjak előrejelzéséhez. A függvény `predict` a legjobb modellt használja, és az `x_test` adatkészletből megjósolja az y, az **utazás költségeit**. Nyomtassa ki az első 10 előre jelzett költségadatok `y_predict`értékét a következőből:
 
 ```python
 y_predict = fitted_model.predict(x_test.values)
 print(y_predict[:10])
 ```
 
-Hozzon létre egy pontdiagram jelenítheti meg az előre jelzett költség értékeket, a tényleges költségek értékek képest. A következő kódban a `distance` funkció az x tengely és utazás `cost` , az y tengelyen. Minden egyes út távolság értéke a előre jelzett költség varianciáját összehasonlítani, az első 100, előre meghatározott és a tényleges költségek értékek külön adatsorozatként jönnek létre. Vizsgálata folyamatban van a diagram mutatja, hogy a távolság/költség kapcsolat szinte lineáris, és az előre jelzett költség értékek a következők a legtöbb esetben a nagyon közeli azonos trip távolság tényleges költségek értékeit.
+Hozzon létre egy scatter-mintaterületet, amely megjeleníti a becsült költségadatok értékét a tényleges költségadatok alapján. A következő kód az x `distance` tengely és az út `cost` y tengelyként való használatát használja. Ha a becsült költségeket az egyes utazási távolságok értéke alapján össze szeretné hasonlítani, az első 100 előre jelzett és tényleges költségadatok külön adatsorozatként jönnek létre. A mintaterület vizsgálata azt mutatja, hogy a távolság/ár kapcsolat közel lineáris, és az előre jelzett költségadatok a legtöbb esetben nagyon közel vannak az azonos utazási távolság tényleges értékéhez.
 
 ```python
 %matplotlib inline
@@ -1137,8 +1140,10 @@ ax1 = fig.add_subplot(111)
 distance_vals = [x[4] for x in x_test.values]
 y_actual = y_test.values.flatten().tolist()
 
-ax1.scatter(distance_vals[:100], y_predict[:100], s=18, c='b', marker="s", label='Predicted')
-ax1.scatter(distance_vals[:100], y_actual[:100], s=18, c='r', marker="o", label='Actual')
+ax1.scatter(distance_vals[:100], y_predict[:100],
+            s=18, c='b', marker="s", label='Predicted')
+ax1.scatter(distance_vals[:100], y_actual[:100],
+            s=18, c='r', marker="o", label='Actual')
 
 ax1.set_xlabel('distance (mi)')
 ax1.set_title('Predicted and Actual Cost/Distance')
@@ -1151,7 +1156,7 @@ plt.show()
 
 ![Előrejelzési pontdiagram](./media/tutorial-auto-train-models/automl-scatter-plot.png)
 
-Kiszámítja a `root mean squared error` az eredmények. Használja a `y_test` dataframe. Konvertálja az előre jelzett értékek összehasonlítására listáját. A függvény `mean_squared_error` két Pole hodnot tart, és kiszámítja az átlagos squared hiba közöttük. Hiba történt az eredmény négyzetgyökét véve adja meg ugyanazt a mértékegységet az y változóként **költség**. Azt jelzi, illesztésnek nagyjából a taxi diszkont előrejelzéseket, a tényleges vitel:
+`root mean squared error` Az eredmények kiszámítása. Használja a `y_test` dataframe. Alakítsa át egy listára, hogy összehasonlítsa az előre jelzett értékeket. A függvény `mean_squared_error` két tömb értéket vesz igénybe, és kiszámítja a közöttük lévő átlagos négyzetes hibát. Az eredmény négyzet gyökerének megadásával az y változóval megegyező egységekben talál **hibát.** Nagyjából azt jelzi, hogy a taxi viteldíjai milyen mértékben vannak a tényleges díjaktól:
 
 ```python
 from sklearn.metrics import mean_squared_error
@@ -1163,7 +1168,7 @@ rmse
 
     3.2204936862688798
 
-Futtassa a következő kódot a teljes használatával számítják ki az átlagos abszolút százalékos hiba (MAPE) `y_actual` és `y_predict` adatkészletek. Ez a metrika egy minden egyes előrejelzett és tényleges értékkel és összegeket összes különbségek közötti különbségek abszolút eltérésének számítja ki. Ezután fejezi ki, hogy az összeg az összes tényleges értékek százalékban:
+Futtassa a következő kódot a teljes `y_actual` és `y_predict` adatkészletek használatával a középérték abszolút százalékának (mape) kiszámításához. Ez a mérőszám az összes előre jelzett és tényleges érték közötti abszolút különbséget számítja ki, és összegzi az összes különbséget. Ezt követően az összeg a tényleges értékek összegének százalékában kifejezve:
 
 ```python
 sum_actuals = sum_errors = 0
@@ -1190,7 +1195,7 @@ print(1 - mean_abs_percent_error)
     Model Accuracy:
     0.8945484613043041
 
-A végső előrejelzés pontosságát mérőszámokat azt látja, hogy a modell viszonylag jó taxi vitel a az adatkészlet-szolgáltatások, általában belül + - $3.00 előrejelzésére. A hagyományos gépi tanulási modell fejlesztési folyamatok magas erőforrás-igényes, és jelentős tartomány ismeretek és idő befektetési futtatásához, és több tucatnyi modellek eredményeinek összehasonlítására, igényel. Automatizált machine learning használatával kiválóan alkalmas a rövid idő alatt az a forgatókönyvben számos különböző modell tesztelhető.
+A végső előrejelzés pontossági mérőszámai alapján láthatja, hogy a modell elég jó, ha az adatkészlet szolgáltatásaiból, jellemzően a +-$3,00-n belül megjósolja a taxi viteldíjait. A hagyományos gépi tanulási modell fejlesztési folyamatok magas erőforrás-igényes, és jelentős tartomány ismeretek és idő befektetési futtatásához, és több tucatnyi modellek eredményeinek összehasonlítására, igényel. Az automatizált gépi tanulás nagyszerű módja annak, hogy gyorsan tesztelje a forgatókönyv számos különböző modelljét.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
@@ -1198,11 +1203,11 @@ A végső előrejelzés pontosságát mérőszámokat azt látja, hogy a modell 
 
 ## <a name="next-steps"></a>További lépések
 
-Az automatikus Machine learning oktatóanyagban tette a következő feladatokat:
+Ebben az automatizált gépi tanulási oktatóanyagban a következő feladatokat hajtotta végre:
 
 > [!div class="checklist"]
-> * Konfigurált egy munkaterületet, és a egy kísérletet az előkészített adatok.
-> * Tanítása egy automatizált regressziós modell helyileg az egyéni paraméterekkel.
-> * Felderített és ellenőrzött képzési eredményeket.
+> * Egy kísérlethez konfigurált egy munkaterületet és egy előkészített adatkészletet.
+> * Automatikus regressziós modell használatával, helyi egyéni paraméterekkel.
+> * A betanítási eredmények megismerése és felülvizsgálata.
 
 [A modell üzembe helyezése](tutorial-deploy-models-with-aml.md) az Azure Machine Learning.

@@ -1,7 +1,7 @@
 ---
-title: 'Gyors útmutató: Meghívja a Text Analytics szolgáltatást, a Python SDK használatával'
+title: 'Gyors útmutató: A Text Analytics szolgáltatás meghívása a Python SDK használatával'
 titleSuffix: Azure Cognitive Services
-description: Get information és kód minták segítségével gyorsan Ismerkedés a szövegelemzési API-val az Azure Cognitive Servicesben.
+description: Az Azure Cognitive Services Text Analytics API használatának gyors megkezdéséhez olvassa el az információk és a kódok mintáit.
 services: cognitive-services
 author: ctufts
 manager: assafi
@@ -10,55 +10,55 @@ ms.subservice: text-analytics
 ms.topic: quickstart
 ms.date: 03/28/2019
 ms.author: aahi
-ms.openlocfilehash: b319abf22f9aa4cdd9a5fef91be0628672d47bd4
-ms.sourcegitcommit: 8c49df11910a8ed8259f377217a9ffcd892ae0ae
+ms.openlocfilehash: c24979d9aef74b6cc840427a010b9ce70f2c0b8a
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66297783"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68356955"
 ---
-# <a name="quickstart-call-the-text-analytics-service-using-the-python-sdk"></a>Gyors útmutató: Meghívja a Text Analytics szolgáltatást, a Python SDK használatával 
+# <a name="quickstart-call-the-text-analytics-service-using-the-python-sdk"></a>Gyors útmutató: A Text Analytics szolgáltatás meghívása a Python SDK használatával 
 <a name="HOLTop"></a>
 
-Ez a rövid útmutató segítségével megkezdheti a Text Analytics SDK-val nyelvi elemzése a Pythonhoz készült. Bár a Text Analytics REST API kompatibilis szinte bármelyik programozási nyelvével, az SDK biztosít egy egyszerű módja annak, hogy a szolgáltatás integrálása az alkalmazásokba anélkül szerializálásához és deszerializálásához JSON. Ez a minta forráskódja találhatók [GitHub](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/blob/master/samples/language/text_analytics_samples.py).
+Ezzel a rövid útmutatóval megkezdheti a nyelv elemzését a Pythonhoz készült Text Analytics SDK-val. Míg a Text Analytics REST API a legtöbb programozási nyelvvel kompatibilis, az SDK egyszerű módszert kínál a szolgáltatás alkalmazásba való integrálására a JSON szerializálása és deszerializálása nélkül. A minta forráskódja a [githubon](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/blob/master/samples/language/text_analytics_samples.py)található.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 * [Python 3.x](https://www.python.org/)
 
-* A Text Analytics [pythonhoz készült SDK](https://pypi.org/project/azure-cognitiveservices-language-textanalytics/) telepítheti a csomagot:
+* A Pythonhoz készült Text Analytics [SDK](https://pypi.org/project/azure-cognitiveservices-language-textanalytics/) telepítheti a csomagot a következővel:
 
     `pip install --upgrade azure-cognitiveservices-language-textanalytics`
 
 [!INCLUDE [cognitive-services-text-analytics-signup-requirements](../../../../includes/cognitive-services-text-analytics-signup-requirements.md)]
 
-Rendelkeznie kell a [végpontját és hozzáférési kulcsát](../How-tos/text-analytics-how-to-access-key.md) , amely jött létre az Ön számára a regisztrációhoz.
+A regisztráció során a [végpontot és a hozzáférési kulcsot](../How-tos/text-analytics-how-to-access-key.md) is meg kell adni.
 
 ## <a name="create-a-new-python-application"></a>Új Python-alkalmazás létrehozása
 
-Hozzon létre egy új Python-alkalmazás a kedvenc szerkesztőjében, vagy IDE. Ezután adja hozzá a következő importálási utasításokat a fájlhoz.
+Hozzon létre egy új Python-alkalmazást a kedvenc szerkesztőjében vagy az IDE-ban. Ezután adja hozzá a következő importálási utasításokat a fájlhoz.
 
 ```python
 from azure.cognitiveservices.language.textanalytics import TextAnalyticsClient
 from msrest.authentication import CognitiveServicesCredentials
 ```
 
-## <a name="authenticate-your-credentials"></a>A hitelesítő adatokat
+## <a name="authenticate-your-credentials"></a>Hitelesítő adatok hitelesítése
 
 > [!Tip]
-> A titkos kulcsok az éles rendszereket a telepítés biztonságának használatát javasoljuk [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/quick-create-net).
+> A titkok biztonságos üzembe helyezéséhez az éles rendszerekben javasolt a [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/quick-create-net)használata.
 >
 
-Miután kiválasztotta a Szövegelemzés előfizetéshez kulcs egy olyan változót, hozza létre a `CognitiveServicesCredentials` objektum vele.
+Miután létrehozta a Text Analytics előfizetési kulcsának változóját, egy `CognitiveServicesCredentials` objektumot hoz létre.
 
 ```python
 subscription_key = "enter-your-key-here"
 credentials = CognitiveServicesCredentials(subscription_key)
 ```
 
-## <a name="create-a-text-analytics-client"></a>A Text Analytics-ügyfél létrehozása
+## <a name="create-a-text-analytics-client"></a>Text Analytics-ügyfél létrehozása
 
-Hozzon létre egy új `TextAnalyticsClient` rendelkező objektum `credentials` és `text_analytics_url` paraméterként. A megfelelő Azure-régiót használni a Szövegelemzés előfizetéshez (például `westcentralus`).
+Hozzon létre `TextAnalyticsClient` egy új `credentials` objektumot `text_analytics_url` paraméterként. A Text Analytics-előfizetéséhez használja a megfelelő Azure-régiót (például `westcentralus`).
 
 ```
 text_analytics_url = "https://westcentralus.api.cognitive.microsoft.com/"
@@ -67,42 +67,43 @@ text_analytics = TextAnalyticsClient(endpoint=text_analytics_url, credentials=cr
 
 ## <a name="sentiment-analysis"></a>Hangulatelemzés
 
-Az API-hoz a hasznos listája áll `documents`, amely vannak szótárak tartalmazó egy `id` és a egy `text` attribútum. A `text` attribútumtárak elemezni, a szöveg és a `id` bármilyen érték lehet. 
+Az API-ra való hasznos adattartalom a `documents` `id` és egy `text` attribútumot tartalmazó szótárakból áll. Az `text` attribútum tárolja az elemezni kívánt szöveget, és a `id` értéke bármilyen lehet. 
 
 ```python
 documents = [
-  {
-    "id": "1", 
-    "language": "en", 
-    "text": "I had the best day of my life."
-  },
-  {
-    "id": "2", 
-    "language": "en", 
-    "text": "This was a waste of my time. The speaker put me to sleep."
-  },  
-  {
-    "id": "3", 
-    "language": "es", 
-    "text": "No tengo dinero ni nada que dar..."
-  },  
-  {
-    "id": "4", 
-    "language": "it", 
-    "text": "L'hotel veneziano era meraviglioso. È un bellissimo pezzo di architettura."
-  }
+    {
+        "id": "1",
+        "language": "en",
+        "text": "I had the best day of my life."
+    },
+    {
+        "id": "2",
+        "language": "en",
+        "text": "This was a waste of my time. The speaker put me to sleep."
+    },
+    {
+        "id": "3",
+        "language": "es",
+        "text": "No tengo dinero ni nada que dar..."
+    },
+    {
+        "id": "4",
+        "language": "it",
+        "text": "L'hotel veneziano era meraviglioso. È un bellissimo pezzo di architettura."
+    }
 ]
 ```
 
-Hívja a `sentiment()` funkciót, és az eredményt kapja. Ezután Iterál végig az eredményeket, és nyomtassa ki minden egyes dokumentum-Azonosítót és véleménypontszámot. 0 közelebb pontszámot azt jelzi, hogy egy negatív véleményt jelölnek, míg 1 közelebb pontszámot azt jelzi, hogy egy pozitív véleményt.
+Hívja meg `sentiment()` a függvényt, és szerezze be az eredményt. Ezután ismételje meg az eredményeket, és nyomtassa ki az egyes dokumentumok AZONOSÍTÓit, valamint a hangulat pontszámát. Ha a pontszám közelebb van a 0 értékhez, a negatív érzést jelez, míg az 1. számú pontszám pozitív hangulatot jelez.
 
 ```python
 response = text_analytics.sentiment(documents=documents)
 for document in response.documents:
-     print("Document Id: ", document.id, ", Sentiment Score: ", "{:.2f}".format(document.score))
+    print("Document Id: ", document.id, ", Sentiment Score: ",
+          "{:.2f}".format(document.score))
 ```
 
-### <a name="output"></a>Kimenet
+### <a name="output"></a>Output
 
 ```console
 Document Id:  1 , Sentiment Score:  0.87
@@ -113,34 +114,35 @@ Document Id:  4 , Sentiment Score:  1.00
 
 ## <a name="language-detection"></a>Nyelvfelismerés
 
-Hozzon létre egy szótárak, a dokumentumot tartalmazó elemezni szeretné. A `text` attribútumtárak elemezni, a szöveg és a `id` bármilyen érték lehet. 
+Hozzon létre egy listát a szótárakból, amelyek tartalmazzák az elemezni kívánt dokumentumot. Az `text` attribútum tárolja az elemezni kívánt szöveget, és a `id` értéke bármilyen lehet. 
 
 ```python
 documents = [
-    { 
-        'id': '1', 
-        'text': 'This is a document written in English.' 
+    {
+        'id': '1',
+        'text': 'This is a document written in English.'
     },
     {
-        'id': '2', 
-        'text': 'Este es un document escrito en Español.' 
+        'id': '2',
+        'text': 'Este es un document escrito en Español.'
     },
-    { 
-        'id': '3', 
-        'text': '这是一个用中文写的文件' 
+    {
+        'id': '3',
+        'text': '这是一个用中文写的文件'
     }
 ]
-``` 
+```
 
-Az ügyfél korábban létrehozott használja, hívja `detect_language()` és az eredményt kapja. Ezután Iterál végig az eredményeket, és nyomtassa ki minden egyes dokumentum-Azonosítót és az első visszaadott nyelv.
+A korábban létrehozott ügyfél használatával hívja `detect_language()` meg és szerezze be az eredményt. Ezután ismételje meg az eredményeket, és nyomtassa ki az egyes dokumentumok AZONOSÍTÓit, valamint az első visszaadott nyelvet.
 
 ```python
 response = text_analytics.detect_language(documents=documents)
 for document in response.documents:
-    print("Document Id: ", document.id , ", Language: ", document.detected_languages[0].name)
+    print("Document Id: ", document.id, ", Language: ",
+          document.detected_languages[0].name)
 ```
 
-### <a name="output"></a>Kimenet
+### <a name="output"></a>Output
 
 ```console
 Document Id:  1 , Language:  English
@@ -150,25 +152,25 @@ Document Id:  3 , Language:  Chinese_Simplified
 
 ## <a name="entity-recognition"></a>Entitások felismerése
 
-Hozzon létre egy Tulajdonságtár, amely tartalmazza a dokumentumok elemezni szeretné. A `text` attribútumtárak elemezni, a szöveg és a `id` bármilyen érték lehet. 
+Hozzon létre egy listát a szótárakból, amelyek tartalmazzák az elemezni kívánt dokumentumokat. Az `text` attribútum tárolja az elemezni kívánt szöveget, és a `id` értéke bármilyen lehet. 
 
 
 ```python
 documents = [
     {
         "id": "1",
-        "language": "en", 
+        "language": "en",
         "text": "Microsoft was founded by Bill Gates and Paul Allen on April 4, 1975, to develop and sell BASIC interpreters for the Altair 8800."
     },
     {
         "id": "2",
-        "language": "es", 
+        "language": "es",
         "text": "La sede principal de Microsoft se encuentra en la ciudad de Redmond, a 21 kilómetros de Seattle."
     }
 ]
 ```
 
-Az ügyfél korábban létrehozott használja, hívja `entities()` funkciót, és az eredményt kapja. Ezután Iterál végig az eredményeket, és nyomtassa ki minden egyes dokumentum-Azonosítót és a benne tárolt entitásokat.
+A korábban létrehozott ügyfél használatával hívja `entities()` meg a függvényt, és szerezze be az eredményt. Ezután ismételje meg az eredményeket, és nyomtassa ki az egyes dokumentumok AZONOSÍTÓit, valamint a benne található entitásokat.
 
 ```python
 response = text_analytics.entities(documents=documents)
@@ -177,14 +179,15 @@ for document in response.documents:
     print("Document Id: ", document.id)
     print("\tKey Entities:")
     for entity in document.entities:
-        print("\t\t", "NAME: ",entity.name, "\tType: ", entity.type, "\tSub-type: ", entity.sub_type)
+        print("\t\t", "NAME: ", entity.name, "\tType: ",
+              entity.type, "\tSub-type: ", entity.sub_type)
         for match in entity.matches:
             print("\t\t\tOffset: ", match.offset, "\tLength: ", match.length, "\tScore: ",
                   "{:.2f}".format(match.entity_type_score))
 ```
 
 
-### <a name="output"></a>Kimenet
+### <a name="output"></a>Output
 
 ```console
 Document Id:  1
@@ -217,35 +220,35 @@ Document Id:  2
 
 ## <a name="key-phrase-extraction"></a>A kulcsfontosságú kifejezések kinyerése
 
-Hozzon létre egy Tulajdonságtár, amely tartalmazza a dokumentumok elemezni szeretné. A `text` attribútumtárak elemezni, a szöveg és a `id` bármilyen érték lehet. 
+Hozzon létre egy listát a szótárakból, amelyek tartalmazzák az elemezni kívánt dokumentumokat. Az `text` attribútum tárolja az elemezni kívánt szöveget, és a `id` értéke bármilyen lehet. 
 
 
 ```python
 documents = [
     {
-        "id": "1", 
-        "language": "ja", 
+        "id": "1",
+        "language": "ja",
         "text": "猫は幸せ"
     },
     {
-        "id": "2", 
-        "language": "de", 
+        "id": "2",
+        "language": "de",
         "text": "Fahrt nach Stuttgart und dann zum Hotel zu Fu."
     },
     {
-        "id": "3", 
+        "id": "3",
         "language": "en",
         "text": "My cat might need to see a veterinarian."
     },
     {
-        "id": "4", 
-        "language": "es", 
+        "id": "4",
+        "language": "es",
         "text": "A mi me encanta el fútbol!"
     }
 ]
 ```
 
-Az ügyfél korábban létrehozott használja, hívja `key_phrases()` funkciót, és az eredményt kapja. Ezután Iterál végig az eredményeket, és nyomtassa ki minden egyes dokumentum-Azonosítót és a benne tárolt kulcskifejezéseket.
+A korábban létrehozott ügyfél használatával hívja `key_phrases()` meg a függvényt, és szerezze be az eredményt. Ezután ismételje meg az eredményeket, és nyomtassa ki az egyes dokumentumok AZONOSÍTÓit, valamint az abban található fő kifejezéseket.
 
 ```python
 response = text_analytics.key_phrases(documents=documents)
@@ -254,10 +257,10 @@ for document in response.documents:
     print("Document Id: ", document.id)
     print("\tKey Phrases:")
     for phrase in document.key_phrases:
-        print("\t\t",phrase)
+        print("\t\t", phrase)
 ```
 
-### <a name="output"></a>Kimenet
+### <a name="output"></a>Output
 
 ```console
 Document Id:  1
@@ -285,6 +288,6 @@ Document Id:  4
 
 ## <a name="see-also"></a>Lásd még
 
-* [Mi az a szövegelemzési API-t?](../overview.md)
-* [Felhasználói bemutató példák](../text-analytics-user-scenarios.md)
+* [Mi a Text Analytics API?](../overview.md)
+* [Példa felhasználói forgatókönyvekre](../text-analytics-user-scenarios.md)
 * [Gyakori kérdések (GYIK)](../text-analytics-resource-faq.md)
