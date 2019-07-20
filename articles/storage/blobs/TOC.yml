@@ -553,10 +553,6 @@
           href: ../blobs/data-lake-storage-data-scenarios.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
     - name: Gyors útmutatók
       items:
-        - name: Storage-fiók létrehozása
-          href: ../blobs/data-lake-storage-quickstart-create-account.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-        - name: Adatok kezelése a Storage Explorerrel
-          href: ../blobs/data-lake-storage-explorer.md
         - name: Adatelemzés a Databricksszel
           href: ../blobs/data-lake-storage-quickstart-create-databricks-account.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
     - name: Oktatóanyagok
@@ -601,6 +597,16 @@
           href: storage-blob-event-overview.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
     - name: Útmutató
       items:
+        - name: Tárfiókok létrehozása és kezelése
+          items:
+            - name: Általános célú tárfiók létrehozása
+              href: ../blobs/data-lake-storage-quickstart-create-account.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+            - name: Tárfiók kezelése
+              href: ../common/storage-account-manage.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+            - name: Adatok kezelése a Storage Explorerrel
+              href: ../blobs/data-lake-storage-explorer.md
+            - name: Tárfiók frissítése
+              href: ../common/storage-account-upgrade.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: Adatok betöltése
           items:
             - name: AzCopy
