@@ -56,8 +56,6 @@
           href: best-practices-distributive-collaborative-development-environment.md
         - name: Integráció az Azure DevOpsszal
           href: devtest-lab-dev-ops.md
-        - name: Jogcímképességek használata
-          href: devtest-lab-use-claim-capabilities.md
         - name: Forgatókönyvek
           items:
             - name: Népszerű forgatókönyvek a DevTest Labs használatához
@@ -68,6 +66,8 @@
               href: devtest-lab-test-env.md
             - name: Tesztkörnyezetek használata képzéshez
               href: devtest-lab-training-lab.md
+            - name: Igényelhető virtuális gépek használatára vonatkozó forgatókönyvek
+              href: devtest-lab-use-claim-capabilities.md
 - name: Útmutatók
   items:
     - name: Osztályterem-tesztkörnyezetek
@@ -158,11 +158,11 @@
           items:
             - name: Virtuális gép létrehozása – Azure Portal
               href: devtest-lab-add-vm.md
-            - name: Virtuális gép létrehozása az Azure PowerShell használatával
+            - name: Virtuális gép létrehozása – Azure PowerShell
               href: devtest-lab-vm-powershell.md
-            - name: Virtuális gépek létrehozása és kezelése az Azure CLI-vel
+            - name: Virtuális gép létrehozása – Azure CLI
               href: devtest-lab-vmcli.md
-            - name: Virtuális gép létrehozása Resource Manager-sablonból
+            - name: Virtuális gép létrehozása – Resource Manager-sablon
               href: devtest-lab-use-resource-manager-template.md
             - name: Virtuális gép indítása vagy leállítása PowerShell vagy CLI használatával
               href: use-command-line-start-stop-virtual-machines.md
@@ -172,6 +172,8 @@
               href: devtest-lab-resize-vm.md
             - name: Virtuális gép ismételt üzembe helyezése
               href: devtest-lab-redeploy-vm.md
+            - name: Virtuális gép automatikus leállításának konfigurálása
+              href: devtest-lab-auto-shutdown-vm.md
             - name: Igényelhető virtuális gépek létrehozása és felügyelete
               href: devtest-lab-add-claimable-vm.md
             - name: Titkos kulcsok konfigurálása
@@ -210,9 +212,9 @@
               items:
                 - name: Egyéni lemezkép készítése egy virtuális gépről
                   href: devtest-lab-create-custom-image-from-vm-using-portal.md
-                - name: 'Egyéni lemezkép készítése VHD-fájlból, az Azure Portal használatával'
+                - name: Virtuális rendszerkép készítése VHD-ről – Azure Portal
                   href: devtest-lab-create-template.md
-                - name: 'Egyéni lemezkép készítése VHD-fájlból, a PowerShell használatával'
+                - name: Egyéni rendszerkép készítése VHD-ről – PowerShell
                   href: devtest-lab-create-custom-image-from-vhd-using-powershell.md
                 - name: VHD-fájl feltöltése AzCopy használatával
                   href: devtest-lab-upload-vhd-using-azcopy.md

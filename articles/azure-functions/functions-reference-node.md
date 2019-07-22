@@ -110,7 +110,7 @@ A JavaScript [kötések](functions-triggers-bindings.md) konfigurált, és a egy
 
 ### <a name="inputs"></a>Bemenetek
 Bemeneti az Azure Functions két kategóriába oszthatók: egy a trigger bemenete a másik pedig a további adatokat. Az eseményindító és más bemeneti kötések (vazby prvku `direction === "in"`) háromféleképpen függvény által olvasható:
- - ** _[Ajánlott]_  a függvénynek átadott paraméterek.** A függvény ugyanabban a sorrendben vannak meghatározva, a rendszer átad *function.json*. A `name` meghatározott tulajdonság *function.json* nem kell egyeznie a paraméter nevével, bár azt kell.
+ - **_[Ajánlott]_  a függvénynek átadott paraméterek.** A függvény ugyanabban a sorrendben vannak meghatározva, a rendszer átad *function.json*. A `name` meghatározott tulajdonság *function.json* nem kell egyeznie a paraméter nevével, bár azt kell.
  
    ```javascript
    module.exports = async function(context, myTrigger, myInput, myOtherInput) { ... };
@@ -141,7 +141,7 @@ Kimenetek (vazby prvku `direction === "out"`) számos módon a függvény által
 
 Kimeneti kötések adatok rendelhet a (nem a két módszer együttesen) a következő módszerek valamelyikével:
 
-- ** _[Több kimenetek ajánlott]_  Objektum visszaadása.** Egy aszinkron/Promise visszaadó függvény használatakor visszatérhessen hozzárendelt kimeneti adatokat tartalmazó objektumot. Az alábbi példában a kimeneti kötések neve "httpResponse" és "queueOutput" a *function.json*.
+- **_[Több kimenetek ajánlott]_  Objektum visszaadása.** Egy aszinkron/Promise visszaadó függvény használatakor visszatérhessen hozzárendelt kimeneti adatokat tartalmazó objektumot. Az alábbi példában a kimeneti kötések neve "httpResponse" és "queueOutput" a *function.json*.
 
   ```javascript
   module.exports = async function(context) {
@@ -156,7 +156,7 @@ Kimeneti kötések adatok rendelhet a (nem a két módszer együttesen) a követ
   ```
 
   Egy szinkron függvényt használja, ha az objektum segítségével visszatérhet [ `context.done` ](#contextdone-method) (lásd a példát).
-- ** _[Ajánlott egyetlen kimeneti]_  Közvetlenül érték visszaadása, és az $return kötés használatával.** Ez csak az aszinkron/Promise visszatérő függvények esetében működik. A példa [exportálása egy aszinkron függvény](#exporting-an-async-function). 
+- **_[Ajánlott egyetlen kimeneti]_  Közvetlenül érték visszaadása, és az $return kötés használatával.** Ez csak az aszinkron/Promise visszatérő függvények esetében működik. A példa [exportálása egy aszinkron függvény](#exporting-an-async-function). 
 - **Az értékeket rendel `context.bindings`**  közvetlenül a context.bindings rendelhet értéket.
 
   ```javascript
@@ -397,9 +397,9 @@ Ha HTTP-eseményindítók használata során a HTTP kérés- és objektumokat sz
     ```javascript
     context.bindings.response = { status: 201, body: "Insert succeeded." };
     ```
-+ ** _[Csak válasz]_  Meghívásával `context.res.send(body?: any)`.** HTTP-választ jön létre a bemeneti `body` , a válasz törzse. `context.done()` implicit módon nevezzük.
++ **_[Csak válasz]_  Meghívásával `context.res.send(body?: any)`.** HTTP-választ jön létre a bemeneti `body` , a válasz törzse. `context.done()` implicit módon nevezzük.
 
-+ ** _[Csak válasz]_  Meghívásával `context.done()`.** Egy speciális típusú HTTP-kötést ad vissza a választ, amely az átadott a `context.done()` metódust. A következő HTTP-kimeneti kötés határozza meg a `$return` kimeneti paraméterként:
++ **_[Csak válasz]_  Meghívásával `context.done()`.** Egy speciális típusú HTTP-kötést ad vissza a választ, amely az átadott a `context.done()` metódust. A következő HTTP-kimeneti kötés határozza meg a `$return` kimeneti paraméterként:
 
     ```json
     {

@@ -217,8 +217,8 @@
         - name: Előrejelzési modellek automatikus betanítása
           displayName: time series
           href: how-to-auto-train-forecast.md
-        - name: A pontossági mutatók megtekintése
-          href: how-to-understand-accuracy-metrics.md
+        - name: Diagramok és metrikák értelmezése
+          href: how-to-understand-automated-ml.md
     - name: Modellek üzembe helyezése és kiszolgálása
       items:
         - name: Az üzembe helyezés módja és helye

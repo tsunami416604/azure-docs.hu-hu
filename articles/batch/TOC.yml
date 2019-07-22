@@ -61,6 +61,8 @@
           href: batch-account-create-portal.md
         - name: Batch-fiókok kezelése a Batch Management .NET használatával
           href: batch-management-dotnet.md
+        - name: Költségelemzés és költségvetések
+          href: budget.md
     - name: Hitelesítés az Azure AD-vel
       items:
         - name: Azure AD a Batch szolgáltatással
