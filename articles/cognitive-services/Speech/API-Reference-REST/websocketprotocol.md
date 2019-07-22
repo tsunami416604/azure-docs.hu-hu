@@ -175,7 +175,7 @@ Az ügyfelek *kell* küldése egy `speech.config` azokat a csatlakozást beszéd
 | Mező | Leírás |
 |----|----|
 | WebSocket-üzenetek kódolása | Text |
-| Törzs | A tartalom egy JSON-struktúrát |
+| Body | A tartalom egy JSON-struktúrát |
 
 #### <a name="required-message-headers"></a>Szükséges fejlécek
 
@@ -244,7 +244,7 @@ Beszédszolgáltatás használja az első `audio` üzenet, amely tartalmaz egy e
 | Mező | Leírás |
 |-------------|----------------|
 | WebSocket-üzenetek kódolása | binary |
-| Törzs | A hang adattömbök bináris adatait. Maximális mérete 8192 bájt. |
+| Body | A hang adattömbök bináris adatait. Maximális mérete 8192 bájt. |
 
 #### <a name="required-message-headers"></a>Szükséges fejlécek
 
@@ -332,7 +332,7 @@ A `speech.startDetected` az üzenet azt jelzi, hogy beszédszolgáltatás az aud
 | WebSocket-üzenetek kódolása | Text |
 | Path | `speech.startDetected` |
 | Content-Type | az Application/json; charset = utf-8 |
-| Törzs | A JSON-szerkezet speech kezdetét észlelésekor a feltételek kapcsolatos információkat tartalmazó. A *eltolás* ebben a struktúrában mező eltolását (100 nanoszekundumos egységekben) Ha speech észlelt az audio-adatfolyamot, a stream elején viszonyítva. |
+| Body | A JSON-szerkezet speech kezdetét észlelésekor a feltételek kapcsolatos információkat tartalmazó. A *eltolás* ebben a struktúrában mező eltolását (100 nanoszekundumos egységekben) Ha speech észlelt az audio-adatfolyamot, a stream elején viszonyítva. |
 
 #### <a name="sample-message"></a>Mintaüzenet
 
@@ -358,7 +358,7 @@ Beszédfelismerés, során beszédszolgáltatás rendszeres időközönként ál
 | Path | `speech.hypothesis` |
 | X-RequestId | A "no-dash" formátumban UUID |
 | Content-Type | application/json |
-| Törzs | A beszédfelismerés elmélet JSON struktúrában |
+| Body | A beszédfelismerés elmélet JSON struktúrában |
 
 #### <a name="sample-message"></a>Mintaüzenet
 
@@ -389,7 +389,7 @@ Amikor beszédszolgáltatás határozza meg, hogy arról, hogy vannak-e elegend�
 | WebSocket-üzenetek kódolása | Text |
 | Path | `speech.phrase` |
 | Content-Type | application/json |
-| Törzs | A beszédfelismerés kifejezés JSON-struktúra |
+| Body | A beszédfelismerés kifejezés JSON-struktúra |
 
 A beszédfelismerés kifejezés JSON-sémája a következő mezőket tartalmazzák: `RecognitionStatus`, `DisplayText`, `Offset`, és `Duration`. Ezek a mezők kapcsolatos további információkért lásd: [Beszédátírási válaszok](../concepts.md#transcription-responses).
 
@@ -416,7 +416,7 @@ A `speech.endDetected` üzenet Megadja, hogy az ügyfélalkalmazás álljon le, 
 | ------------- | ---------------- |
 | WebSocket-üzenetek kódolása | Text |
 | Path | `speech.endDetected` |
-| Törzs | A JSON-szerkezet, amely tartalmazza az eltolást, beszéd végén észlelésekor. Az eltolás jelenik meg az 100 nanoszekundumos egységek eltolás kezdete és hang felismerés szolgálja ki. |
+| Body | A JSON-szerkezet, amely tartalmazza az eltolást, beszéd végén észlelésekor. Az eltolás jelenik meg az 100 nanoszekundumos egységek eltolás kezdete és hang felismerés szolgálja ki. |
 | Content-Type | az Application/json; charset = utf-8 |
 
 #### <a name="sample-message"></a>Mintaüzenet
@@ -442,7 +442,7 @@ A `turn.start` jelzi a egy kapcsolja be a szolgáltatás szempontjából. A `tur
 | WebSocket-üzenetek kódolása | Text |
 | Path | `turn.start` |
 | Content-Type | az Application/json; charset = utf-8 |
-| Törzs | JSON-struktúra |
+| Body | JSON-struktúra |
 
 #### <a name="sample-message"></a>Mintaüzenet
 
@@ -468,7 +468,7 @@ A `turn.end` szempontjából a szolgáltatás egy kapcsolja végén jelzi. A `tu
 | ------------- | ---------------- |
 | WebSocket-üzenetek kódolása | Text |
 | Path | `turn.end` |
-| Törzs | None |
+| Body | None |
 
 #### <a name="sample-message"></a>Mintaüzenet
 

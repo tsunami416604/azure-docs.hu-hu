@@ -56,8 +56,8 @@ Vagy, ha a kapcsolat már létezik, adja meg a szükséges információkat az es
    | Tulajdonság | Szükséges | Value | Leírás |
    |----------|----------|-------|-------------|
    | Search Query | Igen | <*search-words*> | Adja meg a használni kívánt keresési kulcsszavakat. |
-   | Market | Igen | <*locale*> | A keresési nyelv. Az alapértelmezett érték "en-US", de választhat egy másik értéket. |
-   | Safe Search | Igen | <*search-level*> | A szűrő kizárása, felnőtt tartalom szintje. Az alapértelmezett érték a "Közepes", de egy másik szintet választ. |
+   | Market | Igen | <*Területi beállítás*> | A keresési nyelv. Az alapértelmezett érték "en-US", de választhat egy másik értéket. |
+   | Safe Search | Igen | <*Keresés-szint*> | A szűrő kizárása, felnőtt tartalom szintje. Az alapértelmezett érték a "Közepes", de egy másik szintet választ. |
    | Count | Nem | <*results-count*> | A megadott számú eredményt adja vissza. Az alapértelmezett érték 20, de egy másik értéket is megadhat. A visszaadott eredmények tényleges száma kisebb, mint a megadott szám lehet. |
    | Offset | Nem | <*skip-value*> | Mielőtt az eredményt adnak vissza a kihagyandó találatok száma |
    |||||
@@ -109,7 +109,7 @@ Jelölje ki az elvégzendő műveletek listájában.
    | Search Query | Igen | <*search-expression*> | Adja meg a kiértékelt kifejezés az eseményindító eredmények lekérdezése. Válassza ki a mezőket a dinamikus tartalmak listájában, vagy hozzon létre egy kifejezést a Kifejezésszerkesztőt. |
    | Market | Igen | <*Területi beállítás*> | A keresési nyelv. Az alapértelmezett érték "en-US", de választhat egy másik értéket. |
    | Safe Search | Igen | <*Keresés-szint*> | A szűrő kizárása, felnőtt tartalom szintje. Az alapértelmezett érték a "Közepes", de egy másik szintet választ. |
-   | Count | Nem | <*eredmények száma*> | A megadott számú eredményt adja vissza. Az alapértelmezett érték 20, de egy másik értéket is megadhat. A visszaadott eredmények tényleges száma kisebb, mint a megadott szám lehet. |
+   | Count | Nem | <*results-count*> | A megadott számú eredményt adja vissza. Az alapértelmezett érték 20, de egy másik értéket is megadhat. A visszaadott eredmények tényleges száma kisebb, mint a megadott szám lehet. |
    | Offset | Nem | <*skip-value*> | Mielőtt az eredményt adnak vissza a kihagyandó találatok száma |
    |||||
 
