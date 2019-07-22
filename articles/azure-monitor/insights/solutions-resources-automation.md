@@ -281,9 +281,9 @@ Ha a változó kezdeti értéke, hogy kell konfigurálni a megfelelő adattípus
 
 | Adattípus | Leírás | Példa | Oldja fel |
 |:--|:--|:--|:--|
-| string   | Tegye idézőjelek értéket.  | "\"Helló, világ\"" | "Hello world" |
+| string   | Tegye idézőjelek értéket.  | "\"Hello world\"" | "Hello world" |
 | numeric  | A numerikus értékek a szimpla idézőjelek között.| "64" | 64 |
-| boolean  | **Igaz** vagy **hamis** idézőjelben.  Vegye figyelembe, hogy ez az érték csak kisbetűket tartalmazhatnak. | "true" | true |
+| boolean  | **true** vagy **false** idézőjelben.  Vegye figyelembe, hogy ez az érték csak kisbetűket tartalmazhatnak. | "true" | true |
 | datetime | A szerializált dátumérték.<br>A PowerShellben a ConvertTo-Json-parancsmag segítségével hozza létre ezt az értéket egy adott dátumot.<br>Példa: get-date "5/24/2017 13:14:57" \| ConvertTo-Json | "\\/Date(1495656897378)\\/" | 2017-05-24 13:14:57 |
 
 ## <a name="modules"></a>Modulok

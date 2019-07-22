@@ -100,7 +100,7 @@ Az alábbi táblázat a Log Analytics és az Application Insights séma különb
 |------------|------------| 
 | AnonUserId | user_id|
 | ApplicationId | appId|
-| Alkalmazásnév | Alkalmazásnév|
+| ApplicationName | appName|
 | ApplicationTypeVersion | application_Version |
 | AvailabilityCount | itemCount |
 | AvailabilityDuration | duration |
