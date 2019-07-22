@@ -311,7 +311,7 @@ Az automatikus beszédfelismerés ideális megoldást készíthet, az alkalmazá
 | Path | `telemetry` |
 | X-Timestamp | Ügyfél UTC óra ISO 8601 formátumú időbélyeg |
 | Content-Type | `application/json` |
-| Törzs | Egy JSON-struktúrát, amely a kapcsolja ügyfél-információkat tartalmaz |
+| Body | Egy JSON-struktúrát, amely a kapcsolja ügyfél-információkat tartalmaz |
 
 A séma törzséhez tartozó a `telemetry` üzenet van definiálva a [Telemetriai séma](#telemetry-schema) szakaszban.
 
