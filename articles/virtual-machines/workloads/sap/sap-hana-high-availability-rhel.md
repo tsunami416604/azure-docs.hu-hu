@@ -4,7 +4,7 @@ description: Magas rendelkezésre állás az SAP Hana az Azure-beli virtuális g
 services: virtual-machines-linux
 documentationcenter: ''
 author: MSSedusch
-manager: jeconnoc
+manager: gwallace
 editor: ''
 ms.service: virtual-machines-linux
 ms.devlang: NA
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 03/15/2019
 ms.author: sedusch
-ms.openlocfilehash: 1eca9dd82bec120e5554627ade71688c82be7763
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 66e1e4603602835d6ed5be9af58eb09a24b00b63
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64922132"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67709121"
 ---
 # <a name="high-availability-of-sap-hana-on-azure-vms-on-red-hat-enterprise-linux"></a>Magas rendelkezésre állás az SAP HANA, Red Hat Enterprise Linux-alapú Azure virtuális gépeken
 
@@ -101,7 +101,7 @@ Az Azure Marketplace-en Red Hat Enterprise Linux 7.4 egy képet, amely az új vi
 A gyorsindítási sablonok, amelyek a Githubon a szükséges erőforrások üzembe helyezéséhez használhatja. A sablon üzembe helyezi a virtuális gépek, a load balancer, a rendelkezésre állási csoport, és így tovább.
 A sablon üzembe helyezéséhez kövesse az alábbi lépéseket:
 
-1. Nyissa meg a [adatbázis sablon] [ template-multisid-db] az Azure Portalon.
+1. Nyissa meg a [adatbázis sablon][template-multisid-db] az Azure Portalon.
 1. Adja meg a következő paraméterekkel:
     * **Rendszer-azonosító SAP**: Adja meg az SAP az SAP-rendszer telepíteni kívánt rendszer-azonosító. Az azonosító az üzembe helyezett erőforrások előtagjaként is szolgál.
     * **Operációs rendszer típusa**: Válasszon ki egy Linux-disztribúció. Ebben a példában válassza **RHEL 7**.
@@ -335,7 +335,7 @@ A jelen szakaszban ismertetett lépések használja az alábbi előtagokat:
 
 1. **[A]**  SAP gazdagép-ügynök frissítése.
 
-   Töltse le a legújabb SAP gazdagép-ügynök archívumot a a [SAP Software Center] [ sap-swcenter] , és futtassa a következő parancsot az ügynököt. Cserélje le a letöltött fájlra mutasson az archívum elérési útja:
+   Töltse le a legújabb SAP gazdagép-ügynök archívumot a a [SAP Software Center][sap-swcenter] , és futtassa a következő parancsot az ügynököt. Cserélje le a letöltött fájlra mutasson az archívum elérési útja:
 
    <pre><code>sudo /usr/sap/hostctrl/exe/saphostexec -upgrade -archive &lt;path to SAP Host Agent SAR&gt;
    </code></pre>

@@ -44,8 +44,8 @@ A legegyszerűbb szerkezetét, a sablon a következő elemekből áll:
 | [paraméterek](#parameters) |Nem |Üzembe helyezés testreszabásához erőforrások üzembe helyezésének végrehajtásakor biztosított értékeket. |
 | [Változók](#variables) |Nem |Egyszerűsítése érdekében a Sablonnyelv-kifejezések, JSON-töredék a sablonban használt értékeket. |
 | [Függvények](#functions) |Nem |Felhasználó által megadott funkciók érhetők el a sablonon belül. |
-| [Erőforrások](#resources) |Igen |Erőforrástípusok, telepített vagy egy erőforráscsoport vagy előfizetés frissített. |
-| [kimenetek](#outputs) |Nem |Üzembe helyezés után visszaadott értékek. |
+| [resources](#resources) |Igen |Erőforrástípusok, telepített vagy egy erőforráscsoport vagy előfizetés frissített. |
+| [outputs](#outputs) |Nem |Üzembe helyezés után visszaadott értékek. |
 
 Minden elem is megadhatja a tulajdonságokkal rendelkezik. Ez a cikk ismerteti a sablon nagyobb részletességgel szakaszait.
 

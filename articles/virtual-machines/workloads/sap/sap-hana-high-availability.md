@@ -4,7 +4,7 @@ description: A SUSE Linux Enterprise Server Azure virtuális gépeken SAP Hana m
 services: virtual-machines-linux
 documentationcenter: ''
 author: MSSedusch
-manager: jeconnoc
+manager: gwallace
 editor: ''
 ms.service: virtual-machines-linux
 ms.devlang: NA
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 03/15/2019
 ms.author: sedusch
-ms.openlocfilehash: 3d59fc48f1f6f6931ca18e09a420fdbccc7d53dc
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 78d14add09a89b7ec4d4844a12ffa0434d714b3a
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64922290"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67709101"
 ---
 # <a name="high-availability-of-sap-hana-on-azure-vms-on-suse-linux-enterprise-server"></a>A SUSE Linux Enterprise Server Azure virtuális gépeken SAP Hana magas rendelkezésre állás
 
@@ -71,9 +71,9 @@ Először olvassa el az alábbi SAP-megjegyzések és tanulmányok:
 * SAP-Jegyzetnek [401162] elkerülésével "címet már használja" HANA Rendszerreplikáció beállításakor szóló információt tartalmaz.
 * [Az SAP közösségi WIKI](https://wiki.scn.sap.com/wiki/display/HOME/SAPonLinuxNotes) rendelkezik az összes szükséges az SAP-megjegyzések Linux rendszeren.
 * [Az SAP HANA Certified IaaS-platformon](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure)
-* [Az Azure virtuális gépek tervezése és megvalósítása a linuxon futó SAP] [ planning-guide] útmutató.
-* [Az Azure virtuális gépek üzembe helyezése Linuxon futó SAP-] [ deployment-guide] (Ez a cikk).
-* [Az Azure Virtual Machines DBMS üzembe helyezése Linuxon futó SAP-] [ dbms-guide] útmutató.
+* [Az Azure virtuális gépek tervezése és megvalósítása a linuxon futó SAP][planning-guide] útmutató.
+* [Az Azure virtuális gépek üzembe helyezése Linuxon futó SAP-][deployment-guide] (Ez a cikk).
+* [Az Azure Virtual Machines DBMS üzembe helyezése Linuxon futó SAP-][dbms-guide] útmutató.
 * [SUSE Linux Enterprise Server SAP alkalmazások 12 SP3 ajánlott eljárások][sles-for-sap-bp]
   * Az SAP HANA SR teljesítmény optimalizált infrastruktúrájának beállításával (SLES for SAP alkalmazások 12 SP1). Az útmutató összes beállítása a helyszíni fejlesztési SAP HANA-Rendszerreplikálást a szükséges információkat tartalmazza. Ez az útmutató használja kiindulópontként.
   * Az SAP HANA SR költség optimalizált infrastruktúrájának beállításával (SLES for SAP alkalmazások 12 SP1)
@@ -101,8 +101,8 @@ Az Azure Marketplace-en SUSE Linux Enterprise Server SAP alkalmazások 12, amely
 A gyorsindítási sablonok, amelyek a Githubon a szükséges erőforrások üzembe helyezéséhez használhatja. A sablon üzembe helyezi a virtuális gépek, a load balancer, a rendelkezésre állási csoport, és így tovább.
 A sablon üzembe helyezéséhez kövesse az alábbi lépéseket:
 
-1. Nyissa meg a [adatbázis sablon] [ template-multisid-db] vagy a [sablon összevont] [ template-converged] az Azure Portalon. 
-    Az adatbázis-sablon csak egy adatbázishoz tartozó terheléselosztási szabályok hoz létre. A konvergens sablon ASCS/SCS és SSZON (csak Linux) példány is a terheléselosztási szabályokat hoz létre. Ha azt tervezi, hogy az SAP NetWeaver-alapú rendszert telepíti, és szeretne az ASC/SCS példányhoz telepítse az azonos gépekre, használja a [sablon összevont][template-converged].
+1. Nyissa meg a [adatbázis sablon][template-multisid-db] or the [converged template][template-converged] on the Azure portal. 
+    The database template creates the load-balancing rules for a database only. The converged template also creates the load-balancing rules for an ASCS/SCS and ERS (Linux only) instance. If you plan to install an SAP NetWeaver-based system and you want to install the ASCS/SCS instance on the same machines, use the [converged template][template-converged].
 
 1. Adja meg a következő paraméterekkel:
     - **Rendszer-azonosító SAP**: Adja meg az SAP az SAP-rendszer telepíteni kívánt rendszer-azonosító. Az azonosító az üzembe helyezett erőforrások előtagjaként is szolgál.
@@ -347,7 +347,7 @@ Az SAP HANA-Rendszerreplikálást telepítéséhez hajtsa végre a fejezete 4 a 
 
 1. **[A]**  SAP gazdagép-ügynök frissítése.
 
-   Töltse le a legújabb SAP gazdagép-ügynök archívumot a a [SAP Software Center] [ sap-swcenter] , és futtassa a következő parancsot az ügynököt. Cserélje le a letöltött fájlra mutasson az archívum elérési útja:
+   Töltse le a legújabb SAP gazdagép-ügynök archívumot a a [SAP Software Center][sap-swcenter] , és futtassa a következő parancsot az ügynököt. Cserélje le a letöltött fájlra mutasson az archívum elérési útja:
 
    <pre><code>sudo /usr/sap/hostctrl/exe/saphostexec -upgrade -archive &lt;path to SAP Host Agent SAR&gt;
    </code></pre>
