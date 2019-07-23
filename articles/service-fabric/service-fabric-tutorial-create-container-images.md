@@ -13,17 +13,17 @@ ms.service: service-fabric
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/15/2017
+ms.date: 07/22/2019
 ms.author: suhuruli
 ms.custom: mvc
-ms.openlocfilehash: fe01d55b17c0f6f6dd6a621fbac0cf4d3a268ee3
-ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
+ms.openlocfilehash: b5dba1f7e71149c37edc909d2bb43d708192bdbb
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66306778"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68385225"
 ---
-# <a name="tutorial-create-container-images-on-a-linux-service-fabric-cluster"></a>Oktatóanyag: Tárolórendszerképek létrehozása Linux-alapú Service Fabric-fürtön
+# <a name="tutorial-create-container-images-on-a-linux-service-fabric-cluster"></a>Oktatóanyag: Tároló lemezképek létrehozása Linux Service Fabric-fürtön
 
 Ez az oktatóanyag egy olyan sorozat első része, amely azt mutatja be, hogyan használhatók tárolók a Linux Service Fabric-fürtökben. Ebben az oktatóanyagban egy többtárolós alkalmazást fog előkészíteni a Service Fabrichez. Az ezt követő oktatóanyagok ezeket a rendszerképeket fogják használni egy Service Fabric-alkalmazás részeként. Ezen oktatóanyag segítségével megtanulhatja a következőket:
 
@@ -88,7 +88,7 @@ tiangolo/uwsgi-nginx-flask   python3.6           590e17342131        5 days ago 
 
 ## <a name="deploy-azure-container-registry"></a>Azure Container Registry üzembe helyezése
 
-Először futtassa a **az bejelentkezési** paranccsal jelentkezzen be az Azure-fiókjával.
+Először futtassa az az **login** parancsot az Azure-fiókjába való bejelentkezéshez.
 
 ```bash
 az login
@@ -116,9 +116,9 @@ az acr create --resource-group <myResourceGroup> --name <acrName> --sku Basic --
 
 Az oktatóanyag hátralevő részében az „acrName” kifejezés helyettesíti a tárolóregisztrációs adatbázis választott nevét. Jegyezze fel ezt az értéket.
 
-## <a name="sign-in-to-your-container-registry"></a>Jelentkezzen be a tárolóregisztrációs adatbázis
+## <a name="sign-in-to-your-container-registry"></a>Jelentkezzen be a tároló-beállításjegyzékbe
 
-Jelentkezzen be az ACR-példányba, mielőtt rendszerképeket próbálna leküldeni rá. Használja az **az acr login** parancsot a művelet befejezéséhez. Adja meg a tárolóregisztrációs adatbázis egyedi nevét, amelyet a létrehozásakor adott meg.
+Jelentkezzen be az ACR-példányba, mielőtt a képeket kikényszeríti. Használja az **az acr login** parancsot a művelet befejezéséhez. Adja meg a tárolóregisztrációs adatbázis egyedi nevét, amelyet a létrehozásakor adott meg.
 
 ```bash
 az acr login --name <acrName>
@@ -208,7 +208,7 @@ Az oktatóanyag végeztével a tárolórendszerképet egy privát Azure Containe
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben az oktatóanyagban egy alkalmazást kértünk le a Githubról, és tárolórendszerképeket létrehozott és leküldte a tárolójegyzékbe. A következő lépéseket hajtotta végre:
+Ebben az oktatóanyagban egy alkalmazást hoztak létre a GitHubról, és a tároló lemezképeit létrehozták, és elküldték a beállításjegyzékbe. A következő lépéseket hajtotta végre:
 
 > [!div class="checklist"]
 > * Alkalmazás forrásának klónozása a GitHubról

@@ -12,24 +12,24 @@ ms.devlang: dotNet
 ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 11/28/2017
+ms.date: 07/22/2019
 ms.author: aljo
 ms.custom: mvc
-ms.openlocfilehash: 8bb8a635c3699828376390c489697b6315030937
-ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
+ms.openlocfilehash: 187b1f760ca1e37da55f4d41b62334830043e592
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66306674"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68384952"
 ---
-# <a name="tutorial-upgrade-the-runtime-of-a-service-fabric-cluster-in-azure"></a>Oktatóanyag: Az Azure Service Fabric-fürt futtatókörnyezetének frissítése
+# <a name="tutorial-upgrade-the-runtime-of-a-service-fabric-cluster-in-azure"></a>Oktatóanyag: Service Fabric-fürt futtatókörnyezetének frissítése az Azure-ban
 
-Ez az oktatóanyag része, amely egy sorozat negyedik, és bemutatja, hogyan frissítse a Service Fabric-futtatókörnyezet, az Azure Service Fabric-fürtön. Az oktatóanyag ezen része az Azure-ban futó Service Fabric-fürtök számára készült, és nem vonatkozik a különálló Service Fabric fürtök.
+Ez az oktatóanyag egy sorozat negyedik része, és bemutatja, hogyan frissítheti az Service Fabric futtatókörnyezetet egy Azure Service Fabric-fürtön. Ez az oktatóanyag-rész az Azure-on futó Service Fabric-fürtökre íródott, és nem vonatkozik az önálló Service Fabric-fürtökre.
 
 > [!WARNING]
 > Az oktatóanyag jelen részéhez PowerShell szükséges. Az Azure CLI-eszközök még nem támogatják a fürt-futtatókörnyezet frissítésének támogatását. Másik lehetőségként a fürt a portálon is frissíthető. További információkért lásd az [Azure Service Fabric-fürt frissítését](service-fabric-cluster-upgrade.md).
 
-Ha a fürt már fut a legújabb Service Fabric-futtatókörnyezet, nem kell erre a lépésre szükség. Azonban ez a cikk az Azure Service Fabric-fürtön található bármely támogatott futtatókörnyezet telepítéséhez használható.
+Ha a fürt már futtatta a legújabb Service Fabric futtatókörnyezetet, ezt a lépést nem kell végrehajtania. Azonban ez a cikk az Azure Service Fabric-fürtön található bármely támogatott futtatókörnyezet telepítéséhez használható.
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
@@ -39,8 +39,8 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 Ebben az oktatóanyag-sorozatban az alábbiakkal ismerkedhet meg:
 > [!div class="checklist"]
-> * Hozzon létre egy biztonságos [Windows-fürt](service-fabric-tutorial-create-vnet-and-windows-cluster.md) az Azure-ban sablon használatával
-> * [-Fürt monitorozása](service-fabric-tutorial-monitor-cluster.md)
+> * Biztonságos Windows- [fürt](service-fabric-tutorial-create-vnet-and-windows-cluster.md) létrehozása az Azure-ban sablon használatával
+> * [Fürt figyelése](service-fabric-tutorial-monitor-cluster.md)
 > * [Fürt horizontális fel- és leskálázása](service-fabric-tutorial-scale-cluster.md)
 > * Fürt futtatókörnyezetének frissítése
 > * [Fürt törlése](service-fabric-tutorial-delete-cluster.md)
@@ -53,9 +53,9 @@ Ebben az oktatóanyag-sorozatban az alábbiakkal ismerkedhet meg:
 Az oktatóanyag elkezdése előtt:
 
 * Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-* Telepítés [az Azure Powershell](https://docs.microsoft.com/powershell/azure/install-Az-ps) vagy [az Azure CLI](/cli/azure/install-azure-cli).
-* Hozzon létre egy biztonságos [Windows-fürt](service-fabric-tutorial-create-vnet-and-windows-cluster.md) az Azure-ban
-* Egy Windows fejlesztési környezet beállítása. Telepítés [Visual Studio 2019](https://www.visualstudio.com) és a **Azure-fejlesztési**, **ASP.NET és webfejlesztési**, és **.NET Core platformfüggetlen fejlesztési**számítási feladatokhoz.  Ezután hozzon létre egy [.NET fejlesztési környezet](service-fabric-get-started.md).
+* Telepítse az [Azure PowerShellt](https://docs.microsoft.com/powershell/azure/install-Az-ps) vagy az [Azure CLI](/cli/azure/install-azure-cli)-t.
+* Biztonságos Windows- [fürt](service-fabric-tutorial-create-vnet-and-windows-cluster.md) létrehozása az Azure-ban
+* Windows fejlesztési környezet beállítása. Telepítse a [Visual Studio 2019](https://www.visualstudio.com) -es és az **Azure development**, a **ASP.net és a Web Development**, valamint a **.net Core platformfüggetlen fejlesztési** számítási feladatokat.  Ezután hozzon létre egy [.NET fejlesztési környezet](service-fabric-get-started.md).
 
 ### <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 
@@ -69,14 +69,14 @@ Set-AzContext -SubscriptionId <guid>
 
 ## <a name="get-the-runtime-version"></a>Futtatókörnyezet verziójának lekérése
 
-Miután csatlakozott az Azure-ba, a kiválasztott az előfizetést, amely tartalmazza a Service Fabric-fürt, megtekintheti a fürt futtatókörnyezetének verzióját.
+Miután csatlakozott az Azure-hoz, válassza ki a Service Fabric fürtöt tartalmazó előfizetést, lekérheti a fürt futásidejű verzióját.
 
 ```powershell
 Get-AzServiceFabricCluster -ResourceGroupName SFCLUSTERTUTORIALGROUP -Name aztestcluster `
     | Select-Object ClusterCodeVersion
 ```
 
-Vagy egyszerűen lekérheti az alábbi példa az előfizetésében lévő összes fürt listáját:
+Vagy tekintse meg az előfizetéshez tartozó összes fürt listáját a következő példával:
 
 ```powershell
 Get-AzServiceFabricCluster | Select-Object Name, ClusterCodeVersion
