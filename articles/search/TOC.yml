@@ -334,8 +334,6 @@
           href: cognitive-search-skill-keyphrases.md
         - name: Nyelvfelismerés
           href: cognitive-search-skill-language-detection.md
-        - name: Megnevezett entitások felismerése
-          href: cognitive-search-skill-named-entity-recognition.md
         - name: Entitások felismerése
           href: cognitive-search-skill-entity-recognition.md
         - name: Szövegegyesítő
@@ -344,6 +342,8 @@
           href: cognitive-search-skill-textsplit.md
         - name: Hangulat
           href: cognitive-search-skill-sentiment.md
+        - name: Szöveg fordítása (előzetes verzió)
+          href: cognitive-search-skill-text-translation.md
         - name: Képelemzés
           href: cognitive-search-skill-image-analysis.md
         - name: OCR
@@ -352,12 +352,15 @@
           href: cognitive-search-skill-shaper.md
         - name: Feltételes
           href: cognitive-search-skill-conditional.md
-        - name: Elavult készségek
-          href: cognitive-search-skill-deprecated.md
     - name: Egyéni készségek
       items:
         - name: Egyéni webes API
           href: cognitive-search-custom-skill-web-api.md
+    - name: Elavult készségek
+      href: cognitive-search-skill-deprecated.md
+      items:
+        - name: Megnevezett entitások felismerése
+          href: cognitive-search-skill-named-entity-recognition.md
 - name: További források
   items:
     - name: Azure közösségi támogatás

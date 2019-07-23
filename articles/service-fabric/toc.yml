@@ -547,8 +547,8 @@
           href: service-fabric-cloud-services-migration-worker-role-stateless-service.md
         - name: Ajánlott eljárások
           href: /azure/architecture/service-fabric/migrate-from-cloud-services
-        - name: Migrált alkalmazás újrabontása
-          href: /azure/architecture/service-fabric/refactor-migrated-app
+        - name: Az alkalmazás modernizálása
+          href: /azure/architecture/service-fabric/modernize-app-azure-service-fabric
     - name: Alkalmazások életciklus-kezelése
       items:
         - name: Alkalmazás becsomagolása

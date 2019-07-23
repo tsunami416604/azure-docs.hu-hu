@@ -53,6 +53,8 @@
       href: functions-twitter-email.md
     - name: Kiszolgáló nélküli API létrehozása
       href: functions-create-serverless-api.md
+    - name: Python-függvények fejlesztése VS Code-dal
+      href: tutorial-vs-code-serverless-python.md
     - name: OpenAPI definíció létrehozása
       href: functions-openapi-definition.md
     - name: Csatlakozás virtuális hálózathoz

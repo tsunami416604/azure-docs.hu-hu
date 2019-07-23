@@ -29,6 +29,8 @@
       href: publish-service-catalog-app.md
     - name: Piactéren elérhető alkalmazás közzététele
       href: publish-marketplace-app.md
+    - name: Felügyelt alkalmazás létrehozása egyéni szolgáltatóval
+      href: tutorial-create-managed-app-with-custom-provider.md
 - name: Példák
   items:
     - name: Azure CLI
@@ -83,6 +85,14 @@
           href: custom-providers-proxy-cache-resource-endpoint-reference.md
         - name: Egyéni szolgáltató RESTful-végpontja – referencia
           href: reference-custom-providers-csharp-endpoint.md
+    - name: Alkalmazás-összetevők
+      items:
+        - name: Felhasználó felület elemei
+          href: reference-createuidefinition-artifact.md
+        - name: Üzembehelyezési sablon
+          href: reference-main-template-artifact.md
+        - name: Meghatározás megtekintése
+          href: reference-view-definition-artifact.md
     - name: Azure CLI
       href: /cli/azure/managedapp
     - name: PowerShell

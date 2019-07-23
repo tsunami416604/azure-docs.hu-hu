@@ -245,3 +245,5 @@
       href: 'https://docs.microsoft.com/azure/architecture/best-practices/api-design?toc=%2Fazure%2Fapi-management%2Ftoc.json'
     - name: API-implementálási segédlet
       href: 'https://docs.microsoft.com/azure/architecture/best-practices/api-implementation?toc=%2Fazure%2Fapi-management%2Ftoc.json'
+    - name: „A hibaelhárítás nem tudta frissíteni a gazdagépneveket” hiba
+      href: api-management-troubleshoot-cannot-add-custom-domain.md
