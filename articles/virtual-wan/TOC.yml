@@ -10,8 +10,6 @@
       href: virtual-wan-site-to-site-portal.md
     - name: ExpressRoute-kapcsolat létrehozása
       href: virtual-wan-expressroute-portal.md
-    - name: Pont–hely kapcsolat létrehozása
-      href: virtual-wan-point-to-site-portal.md
 - name: Alapelvek
   items:
     - name: Helyekkel és partnerekkel kapcsolatos információk

@@ -220,8 +220,6 @@
           href: ../hdinsight-virtual-network-architecture.md
         - name: Tűzfal használata a kimenő forgalom korlátozására
           href: ../hdinsight-restrict-outbound-traffic.md
-        - name: HDInsight az Azure VNetben
-          href: ../hdinsight-extend-hadoop-virtual-network.md
         - name: A HDInsight csatlakoztatása a helyszíni hálózathoz
           href: ../connect-on-premises-network.md
     - name: Monitorozás Azure Monitor-naplókkal
