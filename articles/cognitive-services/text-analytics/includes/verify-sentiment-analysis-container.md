@@ -1,7 +1,7 @@
 ---
-title: Ellenőrizze a Hangulatelemzés tárolópéldány
+title: Az érzelmek elemzése tároló példányának ellenőrzése
 titleSuffix: Azure Cognitive Services
-description: Ismerje meg, hogyan ellenőrizheti a vélemények elemzése tárolópéldányt.
+description: Ismerje meg, hogyan ellenőrizheti az érzelmek elemzése tároló példányát.
 services: cognitive-services
 author: IEvangelist
 manager: nitinme
@@ -9,23 +9,23 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 06/26/2019
 ms.author: dapine
-ms.openlocfilehash: f69d573e9e70a505018e94cca354f363097cc1b8
-ms.sourcegitcommit: 6b41522dae07961f141b0a6a5d46fd1a0c43e6b2
+ms.openlocfilehash: 1303d753b1cbfabe7ddd3442e0880b0bffe089b3
+ms.sourcegitcommit: b49431b29a53efaa5b82f9be0f8a714f668c38ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68229272"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68377393"
 ---
-## <a name="verify-the-sentiment-analysis-container-instance"></a>Ellenőrizze a Hangulatelemzés tárolópéldány
+## <a name="verify-the-sentiment-analysis-container-instance"></a>Az érzelmek elemzése tároló példányának ellenőrzése
 
-1. Válassza ki a **áttekintése** lapra, és másolja az IP-címet.
-1. Nyisson meg egy új böngészőlapot, és adja meg az IP-címet. For example, adja meg `http://<IP-address>:5000 (http://55.55.55.55:5000`). A tároló kezdőlapja jelenik meg, amely közli, a tároló fut-e.
+1. Válassza az **Áttekintés** lapot, és másolja ki az IP-címet.
+1. Nyisson meg egy új böngésző fület, és adja meg az IP-címet. Írja be `http://<IP-address>:5000 (http://55.55.55.55:5000`például a következőt:). Megjelenik a tároló kezdőlapja, amelyből megtudhatja, hogy fut-e a tároló.
 
-    ![Ellenőrizze, hogy fut-e a tároló kezdőlap megtekintése](../media/how-tos/container-instance/swagger-docs-on-container.png).
+    ![A tároló kezdőlapjának megtekintése annak ellenőrzéséhez, hogy fut-e](../media/how-tos/container-instance/swagger-docs-on-container.png).
 
-1. Válassza ki a **szolgáltatás API-t leírása** lépjen az container swagger lapra mutató hivatkozást.
+1. Válassza ki a **szolgáltatás API leírása** hivatkozást, hogy megnyissa a tároló hencegő lapját.
 
-1. Válassza ki bármelyik a **POST** API-kat, és válassza ki **kipróbálás**.  Jelennek meg a paraméterek, többek között a példabemenet:
+1. Válassza ki a **post** API-k bármelyikét, és válassza a **kipróbálás**lehetőséget. A paraméterek megjelennek, amely tartalmazza a következő bemeneti példát:
 
     ```json
     {
@@ -49,7 +49,7 @@ ms.locfileid: "68229272"
     }
     ```
 
-1. Cserélje le a bemenetben a következő JSON-tartalmak:
+1. Cserélje le a bemenetet a következő JSON-tartalomra:
 
     ```json
     {
@@ -63,13 +63,13 @@ ms.locfileid: "68229272"
     }
     ```
 
-1. Állítsa be **showStats** igaz értékre.
+1. Állítsa a **showStats** igaz értékre.
 
-1. Válassza ki **Execute** meghatározni a szöveg a róluk szóló véleményeket.
+1. A szöveg hangulatának meghatározásához válassza a **végrehajtás** lehetőséget.
 
-    A modell, amely a tárolót csomagolt egy 0 és 1, ahol 0 a negatív pedig 1 pozitív közötti pontszámot állít elő.
+    A tárolóban csomagolt modell egy 0 és 1 közötti értéket generál, ahol a 0 negatív, az 1 pedig pozitív.
 
-    A visszaadott JSON-válasz tartalmazza a frissített szövegbevitel vélemények:
+    A visszaadott JSON-válasz magában foglalja a frissített szövegbeviteli adatok hangulatát:
 
     ```json
     {
@@ -93,4 +93,4 @@ ms.locfileid: "68229272"
     }
     ```
 
-Most már tudjuk kapcsolhatja össze a dokumentum `id` , a válasz-adattartalomra JSON-adatok az eredeti kérelem hasznos dokumentumot `id`. Láthatjuk, hogy a pontszám, több mint `.98`, erősen pozitív vélemények jelzi.
+Most már összekapcsolhatja a `id` válasz adattartalom JSON-adatainak dokumentumát az eredeti kérelem adattartalma `id`dokumentumával. A pontszáma nagyobb, `.98` mint egy erősen pozitív hangulat.

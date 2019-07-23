@@ -52,8 +52,6 @@
           href: howto-provide-risk-event-feedback.md
         - name: Kockázati szabályzatok beállítása
           href: howto-configure-risk-policies.md
-        - name: Észlelés pontosságának javítása
-          href: howto-improve-detection-accuracy.md
         - name: Gyakori kérdések és ismert problémák
           href: known-issues.md
 - name: Referencia

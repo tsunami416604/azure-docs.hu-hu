@@ -11,12 +11,12 @@ ms.author: nilesha
 ms.reviewer: trbye
 ms.date: 04/11/2019
 ms.custom: seodec18
-ms.openlocfilehash: a49ee5720711bb23ec4770de38a408827c645b73
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: bbb9653173925e1443504aa3f2e9c5e6edbfc486
+ms.sourcegitcommit: c71306fb197b433f7b7d23662d013eaae269dc9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68360949"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68371040"
 ---
 # <a name="tutorial-use-automated-machine-learning-to-build-your-regression-model"></a>Oktatóanyag: Az automatizált gépi tanulás használata a regressziós modell létrehozásához
 
@@ -748,7 +748,7 @@ Fedezze fel az automatikus képzési egy Jupyter widgettel, vagy a kísérlet el
 
 ### <a name="option-1-add-a-jupyter-widget-to-see-results"></a>1\. lehetőség: Jupyter widget hozzáadása az eredmények megtekintéséhez
 
-Ha Jupyter-jegyzetfüzetet használ, a Jupyter notebook widgettel megjelenítheti az összes eredmény gráfját és táblázatát:
+Ha Jupyter-jegyzetfüzetet használ, ezzel a [Jupyter](https://docs.microsoft.com/python/api/azureml-widgets/azureml.widgets?view=azure-ml-py) -widgettel megtekintheti az összes eredmény gráfját és táblázatát:
 
 
 ```python
@@ -758,6 +758,13 @@ RunDetails(local_run).show()
 
 ![Jupyter widget-Futtatás](./media/tutorial-auto-train-models/automl-dash-output.png)
 részletei![Jupyter widget Plot](./media/tutorial-auto-train-models/automl-chart-output.png)
+
+Ugyanazokat az eredményeket a rendszer a munkaterületen tárolja.  A Futtatás eredményét a következő hivatkozással érheti el:
+
+```
+local_run.get_portal_url()
+```
+  
 
 ### <a name="option-2-get-and-examine-all-run-iterations-in-python"></a>2\. lehetőség: Minden futtatási iteráció beolvasása és vizsgálata a Pythonban
 
