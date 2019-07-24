@@ -1,7 +1,7 @@
 ---
-title: 'Funkciók: A művelet és a környezet – Personalizer'
+title: 'Funkciók: Művelet és környezet – személyre szabás'
 titleSuffix: Azure Cognitive Services
-description: Personalizer jobb rangsorolási javaslatokat funkciókat, műveleteket és a környezetben használja. Szolgáltatások nagyon általános vagy adott elem lehet.
+description: A személyre szabott javaslatokat a testre szabható funkciók, a műveletek és a kontextus információi alapján végezheti el. A funkciók lehetnek általánosak vagy egy elemre jellemzőek.
 services: cognitive-services
 author: edjez
 manager: nitinme
@@ -10,55 +10,55 @@ ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 06/24/2019
 ms.author: edjez
-ms.openlocfilehash: c317cbec02b82743c233bf36f743cea808c30c69
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: 2dab7447e6051d4559f7f3985579cac9376ac7be
+ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68253589"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68423282"
 ---
-# <a name="features-are-information-about-actions-and-context"></a>Funkciói a következők műveletek és a környezeti információk
+# <a name="features-are-information-about-actions-and-context"></a>A funkciók a műveletekkel és környezettel kapcsolatos információk
 
-A Personalizer szolgáltatás működik, tanulás, amit az alkalmazás kell megjelenítése a felhasználónak egy adott környezetben.
+A személyre szabott szolgáltatás úgy működik, hogy megtanítja, hogy az alkalmazás hogyan jelenjen meg a felhasználók számára egy adott kontextusban.
 
-Personalizer használ **funkciók**, amely az kapcsolatos információ a **aktuális környezet** , válassza ki a legjobb **művelet**. A szolgáltatásokat jelölik úgy gondolja, hogy segítségére lehetnek a nagyobb profit érdekében személyre szabása minden információt. Szolgáltatások nagyon általános vagy adott elem lehet. 
+A személyre szabott **funkciók**az **aktuális környezettel** kapcsolatos információkat használják, és kiválasztják a legjobb **műveletet**. A funkciók az összes olyan információt képviselik, amelyet úgy gondol, hogy a személyre szabhatja a magasabb szintű jutalmakat. A funkciók lehetnek általánosak vagy egy elemre jellemzőek. 
 
-Például előfordulhat, hogy rendelkezik egy **funkció** kapcsolatban:
+Előfordulhat például, hogy a következő **funkcióval** rendelkezik:
 
-* A _felhasználói_ például egy `UserID`. 
-* A _tartalom_ például ha egy videó van egy `Documentary`, amely egy `Movie`, vagy egy `TV Series`, vagy e-kereskedelmi elem érhető el tárolójában.
-* A _aktuális_ időszakának idő, például a hét mely napján legyen.
+* A _felhasználó_ , például a `UserID`. 
+* A _tartalom_ , például ha egy videó az a `Documentary`, a `Movie`vagy a `TV Series`, vagy hogy elérhető-e egy kereskedelmi elem a tárolóban.
+* Az _aktuális_ idő, például a hét napja.
 
-Personalizer nem írja elő, korlátozza, vagy javítsa ki milyen funkciókat is elküldheti a műveletek, a környezet:
+A személyre szabott funkció nem írja elő, korlátozza vagy kijavítja a műveletekhez és környezetekhez elküldhető szolgáltatásokat:
 
-* Egyes funkciók bizonyos műveletek másoknak pedig nem, ha nincs is küldhet. TV-sorozatának Előfordulhat például, filmek nincs attribútumok.
-* Előfordulhat, egyes funkciói csak néhány alkalommal. Például egy mobilalkalmazás, mint a weblapon további információt tartalmaznak. 
-* Az idő múlásával, előfordulhat, hogy szolgáltatások hozzáadására és eltávolítására vonatkozó környezeti és műveletek. Personalizer továbbra is fennáll, további információt a rendelkezésre álló információt.
-* A környezet legalább egy szolgáltatás kell lennie. Personalizer nem támogatja az üres objektumkörnyezethez. Ha azt csak egy rögzített környezet küldése minden alkalommal, Personalizer választja ki módosítják a rangsort tartozó művelet csak az a funkciók kapcsolatos műveletek. 
-* Válassza ki, amely a leginkább mindenki bármikor műveleteket personalizer megpróbálja.
+* Ha nem rendelkezik ezekkel a funkciókkal, néhány művelethez elküldheti mások számára a szolgáltatásokat. Előfordulhat például, hogy a TV-sorozat attribútumai nem rendelkeznek.
+* Előfordulhat, hogy néhány szolgáltatás csak időnként elérhető. Előfordulhat például, hogy egy mobil alkalmazás több információt biztosít, mint a weblap. 
+* Idővel hozzáadhat és eltávolíthat szolgáltatásokat a környezettel és a műveletekkel kapcsolatban. A személyre szabás folytatja az elérhető információk megismerését.
+* Legalább egy szolgáltatásnak szerepelnie kell a kontextusban. A személyre szabott nem támogatja az üres környezetet. Ha minden alkalommal csak rögzített kontextust küld, a személyre szabott művelet csak a műveletek funkcióit érintő rangsorolási műveletet fogja kiválasztani.
+* A kategorikus funkciók esetében nem kell meghatároznia a lehetséges értékeket, és nem kell előre definiálni a numerikus értékek tartományait.
 
-## <a name="supported-feature-types"></a>Támogatott szolgáltatás típusa
+## <a name="supported-feature-types"></a>Támogatott szolgáltatások típusai
 
-Personalizer karakterlánc, numerikus és logikai típusú funkcióját támogatja.
+A személyre szabás a sztring, a numerikus és a logikai típusok funkcióit támogatja.
 
-### <a name="how-choice-of-feature-type-affects-machine-learning-in-personalizer"></a>Hogyan befolyásolja az szolgáltatástípus kiválasztása a Machine Learning Personalizer
+### <a name="how-choice-of-feature-type-affects-machine-learning-in-personalizer"></a>A szolgáltatás típusának kiválasztása a személyre szabás Machine Learningét érinti
 
-* **Karakterláncok**: A karakterlánc típusú kulcs-érték minden egyes kombinációjához új súlyok a Personalizer gépi tanulási modellt hoz létre. 
-* **Numerikus**: Numerikus értékeket kell használnia, ha a szám arányosan befolyásolhatja a személyre szabási eredményének. Ez a függő nagyon forgatókönyv. A példában egy egyszerűsített pl. amikor személyre szabásához kiskereskedelmi észlel, NumberOfPetsOwned lehet egy szolgáltatás, amely befolyásolhatja az kétszer vagy kevesebb mint háromszor kellene 1 kisállat személyre szabása eredménye 2 vagy 3 kisállatok rendelkező személyek érdemes numerikus van. Funkciók, amelyek numerikus egységek alapulnak, de ahol értelmében nem lineáris - kor, hőmérséklet vagy személy magasság - legjobb kódolt, karakterláncok és a szolgáltatás-minőségi általában javítása érdekében tartományok használatával. Például kora sikerült kódolni, "Age": "0-5", "Age": "6 – 10", stb.
-* **Logikai** elküldött act "false" értékű, ha azok minden korábban elküldött értékek.
+* **Karakterláncok**: A karakterlánc-típusok esetében a kulcs és érték minden kombinációja új súlyozást hoz létre a személyre szabott gépi tanulási modellben. 
+* **Numerikus**: Numerikus értékeket kell használnia, ha a számnak arányosan kell érintenie a személyre szabási eredményt. Ez a forgatókönyv függ. Egy egyszerűsített példában például a kiskereskedelmi élmény személyre szabása esetén a NumberOfPetsOwned olyan funkció lehet, amely numerikus, ha 2 vagy 3 személyre szabottan szeretné, hogy a megszemélyesítési eredmények kétszer vagy háromszor legyenek felhasználva, mint 1 kisállat. A numerikus egységeken alapuló, de ha a jelentés nem lineáris – például az életkor, a hőmérséklet vagy a személy magassága – a legjobb karakterláncként kódolva, és a szolgáltatás minősége általában tartományok használatával javítható. Például a kor kódolása "Age": "0-5", "Age": "6-10" stb.
+* A "false" értékkel ellátott **logikai** értékek úgy vannak megadva, mintha egyáltalán nem küldték el őket.
 
-Az funkciók, amelyek nem találhatók a kérelem ki lehet hagyni. Kerülje a küldési szolgáltatások null értékű, mert fogja feldolgozni, meglévő, és a egy értéke "null" Ha a modell betanításához.
+A nem jelen lévő funkciókat ki kell hagyni a kérelemből. Kerülje a funkciók NULL értékkel történő küldését, mert az a modell betanításakor a meglévőként és a "NULL" értékkel lesz feldolgozva.
 
-## <a name="categorize-features-with-namespaces"></a>A névterek funkcióinak kategorizálása
+## <a name="categorize-features-with-namespaces"></a>Funkciók kategorizálása névterekkel
 
-Personalizer vesz igénybe a szolgáltatásokat névtereket vannak rendezve. Azt állapítja meg, az alkalmazás, ha névtereket használ, és mit kell lenniük. Névterek használhatók hasonló témájú, illetve szolgáltatásait, amelyek egy adott forrásból származnak.
+A személyre szabás a névterekben rendezett funkciókat veszi igénybe. Ön határozza meg, hogy az alkalmazásban névterek vannak-e használatban, és mi legyen az. A névterek egy hasonló témakör vagy egy bizonyos forrásból származó funkciók csoportosítására szolgálnak.
 
-Példák az alkalmazások által használt szolgáltatás névterek a következők:
+Az alábbi példák az alkalmazások által használt szolgáltatások névtereit mutatják be:
 
 * User_Profile_from_CRM
 * Time
 * Mobile_Device_Info
-* HTTP_USER_AGENT
+* http_user_agent
 * VideoResolution
 * UserDeviceInfo
 * Időjárás
@@ -66,12 +66,12 @@ Példák az alkalmazások által használt szolgáltatás névterek a következ�
 * current_time
 * NewsArticle_TextAnalytics
 
-A szolgáltatás névterek mindaddig, amíg azok érvényes JSON-kulcsokat a saját konvenciók következő nevet adhat. Névterek szolgáltatások különböző csoportokba rendszerezéséhez, valamint a félreérthetőség hasonló nevű szolgáltatások használhatók. Egy előtagként névterek is felfoghatók, amely a szolgáltatás neve kerül. Névterek nem ágyazhatók egymásba.
+A szolgáltatás névtereit a saját konvenciói szerint nevezheti el, feltéve, hogy érvényes JSON-kulcsok vannak. A névterek a funkciók különálló készletekre való rendszerezésére, valamint a hasonló névvel rendelkező funkciók egyértelműsítse szolgálnak. A névtereket "előtagként" tekintheti meg, amelyet a rendszer a szolgáltatás neveként ad hozzá. A névterek nem ágyazhatók egymásba.
 
 
-A következő JSON-fájlban `user`, `state`, és `device` funkció névterekben vannak. Nyilvános előzetes verzióban Megjegyzés: Jelenleg azt erősen javasoljuk, hogy, amelyek az UTF-8-alapú szolgáltatás névtér nevét és a különböző kezdődniük. Ha például `user`, `state`, és `device` kezdődnie `u`, `s`, és `d`. Az első ugyanazokat a karaktereket névterek jelenleg kellene indexekben használt gépi tanulási ütközések eredményezhet.
+A következő JSON `user` `state`-ban a, a `device` és a szolgáltatás névtereket tartalmaz. Nyilvános előzetes Megjegyzés: Jelenleg erősen ajánlott az UTF-8-alapú és más betűvel ellátott szolgáltatásbeli névterek neveinek használata. Például `user` `device` `d`:,, és kezdje a `u` következővel:,és.`s` `state` A jelenleg azonos első karakterrel rendelkező névterek ütközést okozhatnak a gépi tanuláshoz használt indexekben.
 
-JSON-objektumok tartalmazhatnak, beágyazott JSON-objektumok és az egyszerű tulajdonságértékeket. Egy tömb csak akkor, ha a tömb cikkeket számok szerepelhetnek. 
+A JSON-objektumok tartalmazhatnak beágyazott JSON-objektumokat és egyszerű tulajdonságokat/értékeket is. Egy tömb csak akkor szerepelhet, ha a tömb elemei számokból állnak. 
 
 ```JSON
 {
@@ -98,109 +98,109 @@ JSON-objektumok tartalmazhatnak, beágyazott JSON-objektumok és az egyszerű tu
 }
 ```
 
-## <a name="how-to-make-feature-sets-more-effective-for-personalizer"></a>Hogyan javíthatja a szolgáltatás hatékonyabb beállítja Personalizer
+## <a name="how-to-make-feature-sets-more-effective-for-personalizer"></a>A funkciók hatékonyabbvé tétele a személyre szabáshoz
 
-Egy jó szolgáltatáskészlet segítségével ismerje meg, hogy miként jelezhetők előre a műveletet, amelyek a legnagyobb ellenszolgáltatás Personalizer. 
+Egy jó szolgáltatáskészlet segít személyre szabni, hogyan jósolhatja meg a legmagasabb jutalmat eredményező műveletet. 
 
-Vegye figyelembe, hogy küldési szolgáltatások a Personalizer rang API, amely kövesse ezeket a javaslatokat:
+Vegye fontolóra a funkciók küldését a személyre szabási rangsor API-ra, amely az alábbi ajánlásokat követi:
 
-* Nincsenek meghajtó személyre szabás elegendő funkciókat. Minél több pontosan megcélzott a tartalom kell lennie, a további funkciók szükségesek.
+* A személyre szabáshoz elegendő funkció áll rendelkezésre. Minél pontosabban célozza meg a tartalmat, annál több szolgáltatásra van szükség.
 
-* Nincsenek elegendő funkcióit különféle *sűrűség*. A funkció *sűrű* Ha sok elem néhány gyűjtők szerint vannak csoportosítva. Például több ezer videókat, így csoportosíthatók, "Hosszú" (több mint 5 perc hosszú) és "Rövid" (5 perc alatt hosszú). Ez egy *nagyon sűrű* funkció. Az azonos ezer elem, másrészt "Title", amely szinte soha nem fog rendelkezni a ugyanazt az értéket az egyik cikkből a másikra nevű attribútum is rendelkezik. Ez egy nagyon nem-sűrű a vagy *ritka* funkció.  
+* Számos különféle sűrűségű funkció létezik . A szolgáltatás *sűrű* , ha sok elem van csoportosítva néhány gyűjtőn. Több ezer videó például "Long" (5 percnél hosszabb) és "Short" (5 percnél hosszabb) besorolású lehet. Ez egy *nagyon sűrű* funkció. Másfelől ugyanezen ezer elemnek egy "title" nevű attribútummal is rendelkezhet, amely szinte soha nem lesz ugyanaz az érték az egyik elemből a másikba. Ez egy nagyon nem sűrű vagy *ritka* funkció.  
 
-A tanulás az egyik cikkből a másikra extrapolálja Personalizer kellene a nagy sűrűségű szolgáltatások segítségével. De ha csak néhány funkcióval, és azok túl sűrű, megpróbálja a Personalizer pontosan tartalmat csak néhány gyűjtők közül választhat a cél.
+A nagy sűrűségű funkciókkal a személyre szabott kikövetkeztethető az egyik elemről a másikra. Ha azonban csak néhány funkció van, és túl sűrű, a személyre szabott felhasználó megpróbál pontosan megcélozni a tartalmat, és csak néhány gyűjtő közül választhat.
 
-### <a name="improve-feature-sets"></a>Szolgáltatások javítása 
+### <a name="improve-feature-sets"></a>A szolgáltatási készletek fejlesztése 
 
-A felhasználói viselkedés elemzéséhez Offline értékelést kezelése végrehajtásával. Ez lehetővé teszi, hogy tekintse meg korábbi adatait, hogy lássa, milyen szolgáltatások erősen működik közre, amelyek kisebb működik közre és pozitív jutalmakat. Láthatja, hogy milyen funkciók segítenek, és határozhatják meg és az alkalmazás jobb szolgáltatásokat található küldendő Personalizer még tovább eredmények javítása érdekében.
+Elemezheti a felhasználói viselkedést offline kiértékeléssel. Így megtekintheti a múltbeli adatmennyiségeket, és megtekintheti, hogy a funkciók jelentős mértékben járulnak hozzá a pozitív juttatásokhoz és a kevésbé jelentős előnyökhöz. Megtekintheti, hogy milyen funkciók segítik a segítséget, és hogy Ön és az alkalmazása is jobban megkeresheti a személyre szabott funkciókat, hogy még tovább javítsa az eredményeket.
 
-Ezek a következő szakaszok olyan gyakori eljárások Personalizer küldött funkciók fejlesztése.
+A következő szakaszban gyakori eljárások találhatók a személyre szabott szolgáltatások fejlesztéséhez.
 
-#### <a name="make-features-more-dense"></a>Győződjön meg, a szolgáltatások több sűrű
+#### <a name="make-features-more-dense"></a>A funkciók sűrűvé tétele
 
-A szolgáltatáskészleteket szerkeszti őket, így nagyobb és több vagy kevesebb sűrű javítása érdekében lehetőség.
+Lehetőség van a szolgáltatáskészletek javítására úgy, hogy azok nagyobb vagy kevésbé sűrűvé teszik őket.
 
-A második lefelé időbélyeg például az egyik nagyon ritka szolgáltatása. Azt sikerült végezhető további sűrű (tényleges) időpontok Írisz "reggeli", "csúcspontját", "délután", stb.
+Például egy időbélyeg, amely a másodikra mutat, nagyon ritka funkció. Az idő a "Morning", a "délig", a "délutáni", illetve a "délelőtt" értékre való besorolásával sűrűbb (hatékony) lehet.
 
 
-#### <a name="expand-feature-sets-with-extrapolated-information"></a>Bontsa ki a szolgáltatáskészleteket extrapolált adatokkal
+#### <a name="expand-feature-sets-with-extrapolated-information"></a>A szolgáltatási készletek kibontása a kikövetkeztetett információkkal
 
-További funkciók is beszerezheti a biztonságához felderítetlen attribútumok származhatnak információ áll rendelkezésére. Ha például egy fiktív movie lista személyre szabása, az, lehetséges, hogy a hétvégi vs hétköznap elicits különböző viselkedését a felhasználók? Idő lehetett kibontani a "hétvégi" vagy "hét napja" attribútuma. Tegye nemzeti kulturális ünnepek meghajtó figyelmet a film bizonyos? Ha például egy "Halloween" attribútum hasznos helyeken, ahol fontos. Az lehetséges, hogy Esős időjárási jelentős hatással van a film a kiválasztott sokak számára? Időben és helyen, az időjárás szolgáltatás biztosíthatja, hogy információkat, és hozzáadhatja egy külön szolgáltatás. 
+További funkciókat is megtudhat a már meglévő információkból származtatott, nem feltárt attribútumok alapján. A kitalált filmek listájának személyre szabása például lehetséges, hogy egy hétvége és a hétköznap különböző viselkedést váltott ki a felhasználóktól? Az időt kiterjesztheti "hétvége" vagy "hétköznap" attribútummal. A nemzeti kulturális ünnepek bizonyos filmek típusaira vonatkozó figyelmet igényelnek? A "Halloween" attribútum például hasznos lehet olyan helyeken, ahol releváns. Lehetséges, hogy az esős Időjárás jelentős hatással van a sok ember számára a film megválasztására? Az idő és a hely esetében az időjárási szolgáltatás megadhatja ezt az információt, és további szolgáltatásként is hozzáadhatja. 
 
-#### <a name="expand-feature-sets-with-artificial-intelligence-and-cognitive-services"></a>Bontsa ki a mesterséges intelligencia és cognitive services szolgáltatáskészleteket
+#### <a name="expand-feature-sets-with-artificial-intelligence-and-cognitive-services"></a>A szolgáltatás-készletek kibontása mesterséges intelligenciával és kognitív szolgáltatásokkal
 
-Mesterséges intelligencia és Cognitive Services futásra kész a Personalizer nagyon hatékony mellett is lehet. 
+A mesterséges intelligencia és a használatra kész Cognitive Services lehet a személyre szabott funkció. 
 
-Előfeldolgozási az elemekről mesterségesintelligencia-szolgáltatásokkal, akkor automatikusan kinyerheti az valószínűleg testre szabási célból vonatkozó információkat.
+Az elemek mesterséges intelligencia-szolgáltatásokkal történő előfeldolgozásával automatikusan kinyerheti azokat az adatokat, amelyek valószínűleg relevánsak a személyre szabáshoz.
 
 Példa:
 
-* Egy filmet fájl futtatása [Video Indexer](https://azure.microsoft.com/services/media-services/video-indexer/) jelenet elemeket, szöveg, hangulatát és számos más attribútum kibontásához. Ezek az attribútumok majd több sűrű megfelelően jellemzőit, amelyek az eredeti elem metaadatai nem lehet kapcsolódni. 
-* Képek futtatható keresztül objektumfelismerés arcok a róluk szóló véleményeket, stb.
-* Szöveges információ kiegészíthető oly módon, entitásokat, hangulatát, bővülő entitások és a Bing knowledge graph felületéhez, stb.
+* A Movie-fájlok [video Indexer](https://azure.microsoft.com/services/media-services/video-indexer/) segítségével is futtathatók a jelenet elemeinek, szövegének, hangulatának és számos más attribútumnak a kinyeréséhez. Ezeket az attribútumokat ezután sűrűvé teheti az eredeti elemek metaadatainak nem megfelelő jellemzőinek megfelelően. 
+* A képek az objektumok észlelése, az érzelmek és a hangulatok révén is futtathatók.
+* A szövegben található információk kibonthatók az entitások, a hangulat, az entitások kibontása a Bing Knowledge Graph használatával stb.
 
-Több más [Azure Cognitive Services](https://www.microsoft.com/cognitive-services), például
+Számos más [Azure-Cognitive Services](https://www.microsoft.com/cognitive-services)is használhat, például:
 
-* [Entitáskapcsolás](../entitylinking/home.md)
+* [Entitás összekapcsolása](../entitylinking/home.md)
 * [Szövegelemzés](../text-analytics/overview.md)
-* [Érzelemfelismerési](../emotion/home.md)
+* [Emotion](../emotion/home.md)
 * [Computer Vision](../computer-vision/home.md)
 
-## <a name="actions-represent-a-list-of-options"></a>Műveletek beállítások listáját tartalmazzák.
+## <a name="actions-represent-a-list-of-options"></a>A műveletek a lehetőségek listáját jelölik
 
 Minden művelet:
 
-* -Azonosítóval rendelkezik.
-* Szolgáltatások listája szerepel.
-* A szolgáltatások listájában lehet nagy (több száz), de javasoljuk, hogy értékelje a Funkciók, amelyek nem hozzájárulva jutalmakat első eltávolítandó funkció hatékonyságát. 
-* Az a funkciók a **műveletek** előfordulhat, hogy nem rendelkezik minden olyan funkciókat a korrelációs a **környezet** Personalizer használják.
-* Lehet, hogy a műveletek funkciók bizonyos műveleteket másoknak pedig nem található. 
-* Az egy bizonyos művelet azonosítója szolgáltatásai előfordulhat, hogy rendelkezésre egy nap, de később már nem érhető el. 
+* Rendelkezik AZONOSÍTÓval.
+* A funkciók listáját tartalmazza.
+* A szolgáltatások listája nagy (száz) lehet, de javasoljuk, hogy a funkciók hatékonyságának értékelésével távolítsa el azokat a funkciókat, amelyek nem járulnak hozzá a jutalmak beszerzéséhez. 
+* Előfordulhat, hogy a **műveletek** funkciói nem rendelkeznek a személyre szabott **környezet** által használt szolgáltatásokkal való korrelációval.
+* A műveletek funkciói bizonyos műveletekben és másokban is előfordulhatnak. 
+* Előfordulhat, hogy egy adott műveleti azonosító funkciói egy nap múlva elérhetők, de később elérhetetlenné válnak. 
 
-Personalizer a gépi tanulási algoritmusok javítja a teljesítményt a szolgáltatás stabil eljáráscsoport, de rangsorolják hívások sikeresek lesznek, ha a szolgáltatás beállítása módosítások idővel.
+A személyre szabott gépi tanulási algoritmusok jobb teljesítményt biztosítanak, ha a funkciók stabilak, de a rangsorolt hívások nem fognak sikerülni, ha a szolgáltatás beállított ideje módosul.
 
-Ne küldjön a több mint 50 műveletek során rangsorolási műveleteket. Lehet 50 ugyanazokat a műveleteket, ezek minden alkalommal, vagy azok változhatnak. Például ha 10 000 elemek egy e-kereskedelmi alkalmazás termék katalógust, használhat egy javaslat vagy szűrési motor ügyfél lehet, például, és Personalizer használatával (például hoz létre a legtöbb fejében, amelyen az első 40 meghatározásához a felhasználó hozzáadja a kosárhoz) az aktuális környezetben.
+A műveletek rangsorolásakor ne küldjön több mint 50 műveletet. Ezek az 50-műveletek minden alkalommal megegyeznek, vagy megváltozhatnak. Ha például egy e-kereskedelmi alkalmazáshoz 10 000-elemet tartalmazó termékkatalógust használ, használhat egy javaslatot vagy egy szűrési motort, amellyel meghatározhatja a legfelső szintű 40 ügyfelet, és személyre szabhatja, hogy megkeresse a legtöbb jutalmat eredményező szolgáltatást (például , a rendszer hozzáadja a felhasználót a kosárhoz) az aktuális környezethez.
 
 
-### <a name="examples-of-actions"></a>Tevékenységek
+### <a name="examples-of-actions"></a>Példák a műveletekre
 
-A rang API-t küld a műveletek próbált személyre függ.
+A Rank API-nak küldött műveletek attól függnek, hogy mit próbál személyre szabni.
 
 Néhány példa:
 
 |Cél|Action|
 |--|--|
-|Személyre szabott, mely cikk kiemelt hírek-webhelyen.|Minden művelet lehetséges hír.|
-|Egy webhelyen Active elhelyezési optimalizálása.|Minden művelet egy elrendezést vagy a szabályok létrehozása egy elrendezést a hirdetések (például a felül található a megfelelő, a kis képek, a big Data típusú rendszerképek) lesz.|
-|Vásárlási webhelyek személyre szabott rangsorolási ajánlott elemek megjelenítése.|Minden művelet egy bizonyos termékben.|
-|Javasoljuk, például egy adott fénykép alkalmazandó szűrők felhasználói felületi elemekre.|Minden művelet egy másik szűrőt is lehet.|
-|Válassza ki a felhasználói szándékot tisztázása, vagy a javasolt művelet egy csevegőrobot választ.|Minden művelet, a válasz értelmezése lehetőség.|
-|Válassza ki a felső részén a keresési eredmények listájában megjelenítése|Egyes műveletek egyike a felső néhány keresési eredmények között.|
+|Személyre szabhatja, hogy mely cikkek legyenek kiemelve a hírek webhelyén.|Minden művelet egy lehetséges újságcikk.|
+|Optimalizálja az ad-elhelyezést egy webhelyen.|Minden művelet elrendezést vagy szabályokat tartalmaz a hirdetések elrendezésének létrehozásához (például felül, a jobb oldalon, a kis képeken és a nagyméretű képeken).|
+|Az ajánlott elemek személyre szabott rangsorolásának megjelenítése egy bevásárlási webhelyen.|Minden művelet egy adott termék.|
+|Javasoljon olyan felhasználói felületi elemeket, mint például a szűrők, amelyek egy adott fényképre vonatkoznak.|Minden művelet lehet egy másik szűrő.|
+|Válassza ki a csevegési bot válaszát a felhasználó szándékának tisztázására, vagy tegyen javaslatot egy műveletre.|Minden művelet a válasz értelmezésének egyik módja.|
+|Válassza ki, mit szeretne megjeleníteni a keresési eredmények listájának tetején|Mindegyik művelet a leggyakoribb keresési eredmények egyike.|
 
 
-### <a name="examples-of-features-for-actions"></a>Példák a szolgáltatások műveletek
+### <a name="examples-of-features-for-actions"></a>Példák a műveletek funkcióihoz
 
-A következő példák hasznos funkciót kínál a műveleteket. Ezek függ, sokkal minden kérelmet.
+A következő példák a műveletek funkcióinak megfelelő példáit mutatják be. Ezek sok minden alkalmazástól függenek.
 
-* A műveletek jellemzői a funkciókat. Ha például az, filmek és tv-sorozatának?
-* Rendelkezik előfordulhat, hogy hogyan kezelhetők felhasználók Ez a művelet az elmúlt kapcsolatos funkciók. Ha például a film nagyrészt A vagy B demográfiai belüli személyek számára látható, általában játékkal legfeljebb egy ideje.
-* Hogyan jellemzőit kapcsolatos funkciókat a felhasználó *látja* műveleteket. Például nem jelennek meg a miniatűr Belefoglalás arcok, autókból vagy környezetünk a film a poszter?
+* Funkciók a műveletek jellemzőivel. Például film vagy TV-sorozat?
+* Azon funkciók, amelyekkel a felhasználók a múltban is felhasználhatták ezt a műveletet. Például ezt a filmet többnyire az A vagy B demográfiai személyek látják, általában csak egyszer játszanak egyszerre.
+* A *felhasználók által* a műveletek végrehajtásának jellemzőit ismertető funkciók. Például a miniatűrben látható film posztere arcok, autók vagy tájak?
 
-### <a name="load-actions-from-the-client-application"></a>Az ügyfélalkalmazás műveletek betöltése
+### <a name="load-actions-from-the-client-application"></a>Műveletek betöltése az ügyfélalkalmazás alapján
 
-A műveletek funkciók általában származhatnak a tartalomkezelő rendszerek katalógusok és ajánló rendszerek. Az alkalmazás felelős a műveletekkel kapcsolatos információk betöltése a megfelelő adatbázisokból és rendszerek rendelkezik. Ha a műveletek ne módosítsa vagy betöltött első minden alkalommal szükségtelen hatással van a teljesítményre, a logikai gyorsítótárazásához ezt az információt az alkalmazásban is hozzáadhat.
+A műveletekből származó funkciók általában tartalomkezelő rendszerekből, katalógusokból és ajánló rendszerekből származnak. Az alkalmazás feladata a megfelelő adatbázisok és rendszerek műveleteire vonatkozó információk betöltése. Ha a műveletek nem változnak, vagy a betöltésük minden alkalommal szükségtelen hatással van a teljesítményre, akkor az alkalmazásban logika hozzáadásával gyorsítótárazhatja ezeket az információkat.
 
-### <a name="prevent-actions-from-being-ranked"></a>Rangsorolt folyamatban a műveletek megakadályozása
+### <a name="prevent-actions-from-being-ranked"></a>A műveletek rangsorolásának megakadályozása
 
-Bizonyos esetekben vannak műveleteket, amelyeket nem szeretne megjeleníteni a felhasználók számára. A legjobb módja, hogy egy művelet folyamatban van az első szerint legfelső a beállítás először adja hozzá a műveleti lista a rang API.
+Bizonyos esetekben vannak olyan műveletek, amelyeket nem kíván megjeleníteni a felhasználók számára. A legjobb módszer arra, hogy megakadályozza, hogy egy művelet a legfelső szintnek legyen rangsorolva, és ne foglalja bele a rangsor API-ba az első helyen.
 
-Néhány esetben azt csak lehet meghatározni az üzleti logikát a későbbi Ha egy eredő _művelet_ egy rang API-hívás jelennek meg a felhasználó van. Ezekben az esetekben kell használnia _inaktív események_.
+Bizonyos esetekben csak később határozható meg az üzleti logikában, ha egy Range API-hívást eredményező _művelet_ jelenik meg egy felhasználó számára. Ezekben az esetekben _inaktív eseményeket_kell használnia.
 
-## <a name="json-format-for-actions"></a>JSON-formátumban műveletek
+## <a name="json-format-for-actions"></a>Műveletek JSON-formátuma
 
-Rang hívásakor, amelyet el szeretne küldeni több művelet közül választhat:
+A rangsor meghívásakor több műveletet is el fog küldeni a következő lehetőségek közül:
 
-JSON-objektumok tartalmazhatnak, beágyazott JSON-objektumok és az egyszerű tulajdonságértékeket. Egy tömb csak akkor, ha a tömb cikkeket számok szerepelhetnek. 
+A JSON-objektumok tartalmazhatnak beágyazott JSON-objektumokat és egyszerű tulajdonságokat/értékeket is. Egy tömb csak akkor szerepelhet, ha a tömb elemei számokból állnak. 
 
 ```json
 {
@@ -265,23 +265,23 @@ JSON-objektumok tartalmazhatnak, beágyazott JSON-objektumok és az egyszerű tu
 }
 ```
 
-## <a name="examples-of-context-information"></a>Példák a környezeti információk
+## <a name="examples-of-context-information"></a>Példák a környezeti információkra
 
-Adatait a _környezet_ egyes és használati esetekhez, attól függ, de ez általában tartalmaznak adatokat például:
+A kontextusra  vonatkozó információk az egyes alkalmazásokról és a használati esetekről függenek, de általában olyan információkat is tartalmazhatnak, mint például a következők:
 
-* A felhasználó demográfiai és a profil adatait.
-* HTTP-fejléceket, például a felhasználói ügynök kinyert vagy HTTP-adatokat, például IP-címek alapján földrajzi névkeresést származó információkkal.
-* Az aktuális idő, például a hét hétvégi vagy nem, reggel vagy délután, az ünnepi időszakban kapcsolatos információkat, vagy nem, és így tovább.
-* Mobil alkalmazások, például hely, áthelyezése vagy töltöttségi szint kinyert adatokat.
-* A működés, a felhasználók – például, hogy mik a film műfajokat korábbi összesítések Ez a felhasználó tekintette meg a leginkább.
+* A felhasználóval kapcsolatos demográfiai és profilbeli információk.
+* HTTP-fejlécből kinyert információk, például felhasználói ügynök vagy HTTP-adatokból származtatott adatok, például az IP-címeken alapuló fordított földrajzi keresések.
+* Az aktuális időpontra vonatkozó információk, például a hét napja, hétvége vagy nem, reggel vagy délután, ünnepi időszak vagy nem stb.
+* A mobil alkalmazásokból kinyert információk, például a hely, a mozgás vagy az akkumulátor szintje.
+* A felhasználók viselkedésének múltbeli összesítései – például hogy milyen filmes műfajok jelennek meg a felhasználó számára.
 
-Az alkalmazás felelős a környezeti információk betöltése a vonatkozó adatbázis, érzékelők és rendszerek lehet. A környezet adatait nem változik, ha a logikai alkalmazásban való gyorsítótár ezt az információt, mielőtt elküldené a rang API is hozzáadhat.
+Az alkalmazás feladata, hogy betöltse a környezetre vonatkozó információkat a megfelelő adatbázisokból, érzékelőkből és rendszerekből. Ha a környezeti adatok nem változnak, az alkalmazásban logika hozzáadásával gyorsítótárazhatja ezeket az adatokat, mielőtt elküldené a rangsor API-nak.
 
-## <a name="json-format-for-context"></a>JSON-formátumban környezethez. 
+## <a name="json-format-for-context"></a>JSON formátum a kontextushoz 
 
-JSON-objektum a rang API-nak küldött környezet fejezzük ki:
+A kontextus a Rank API-nak eljuttatott JSON-objektumként van kifejezve:
 
-JSON-objektumok tartalmazhatnak, beágyazott JSON-objektumok és az egyszerű tulajdonságértékeket. Egy tömb csak akkor, ha a tömb cikkeket számok szerepelhetnek. 
+A JSON-objektumok tartalmazhatnak beágyazott JSON-objektumokat és egyszerű tulajdonságokat/értékeket is. Egy tömb csak akkor szerepelhet, ha a tömb elemei számokból állnak. 
 
 ```JSON
 {
@@ -311,4 +311,4 @@ JSON-objektumok tartalmazhatnak, beágyazott JSON-objektumok és az egyszerű tu
 
 ## <a name="next-steps"></a>További lépések
 
-[Megerősítő tanulást](concepts-reinforcement-learning.md) 
+[Megerősítő tanulás](concepts-reinforcement-learning.md) 

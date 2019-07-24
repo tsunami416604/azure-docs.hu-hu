@@ -1,75 +1,75 @@
 ---
-title: Kategóriák keresse meg a helyi vállalati keresési Bing-API |} A Microsoft Docs
+title: Keresési kategóriák a Bing helyi üzleti keresési API-hoz
 titleSuffix: Azure Cognitive Services
-description: Ez a cikk segítségével megtudhatja, hogyan keresési kategóriák a helyi vállalati Bing keresési API-végpont létrehozása.
+description: Ebből a cikkből megtudhatja, hogyan adhatja meg a keresési kategóriákat a Bing local Business Search API-végponthoz.
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
-ms.topic: article
+ms.topic: quickstart
 ms.date: 11/01/2018
 ms.author: rosh
-ms.openlocfilehash: 7e5515aeee319464a65088653ad5e2bfe5b0b1f8
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: e7088ac11556d8810c744ab4b56d2639865fb2f5
+ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67592817"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68423413"
 ---
-# <a name="search-categories-for-the-bing-local-business-search-api"></a>Keresés kategória a helyi vállalati keresési Bing-API
+# <a name="search-categories-for-the-bing-local-business-search-api"></a>Keresési kategóriák a Bing helyi üzleti keresési API-hoz
 
-A helyi vállalati keresési Bing-API lehetővé teszi, hogy keresse meg a különböző kategóriák, helyi üzleti entitásokat elsőbbséget adva eredmények zárja be a felhasználó helye. Ezek a keresések hozzáadhatja a keresésre és a `localCircularView` és `localMapView` [paraméterek](specify-geographic-search.md).
+A Bing helyi üzleti keresési API lehetővé teszi a helyi üzleti entitások különböző kategóriákban való keresését, és prioritást biztosít a felhasználó helyének bezárásához. Ezeket a kereséseket a és `localCircularView` `localMapView` a [paraméterekkel](specify-geographic-search.md)együtt is felveheti.
 
 
-## <a name="toplevel-categories"></a>TopLevel kategóriák 
+## <a name="toplevel-categories"></a>TopLevel-kategóriák 
 
-A következő típusú Search fő kategória határozza meg.  Egynél több kategória használatával rendelve egy vesszővel tagolt listája adható meg a `localCategories` paraméter.  
+A következő típusok a keresés főbb kategóriáit határozzák meg.  Több kategória is megadható a `localCategories` paraméterhez rendelt vesszővel tagolt lista használatával.  
 - EatDrink 
 - SeeDo 
-- Üzemi 
+- Üzlet 
 - HotelsAndMotels 
 - BanksAndCreditUnions 
 - Ideiglenes 
-- A kórházak 
+- Kórházak 
 
 ## <a name="sub-categories"></a>Alkategóriák
-Alkategóriák átadott ugyanúgy, mint `localCategories`. Alkategóriákat több meghatározott kategóriában. Abban az értelemben, hogy ha megad egy kategóriát C és a egy S alkategóriákkal ugyanabban a vesszővel tagolt listában, kapni fog a ugyanazokat az eredményeket, mintha egyedül C megadott alárendelt.
+Az alkategóriák ugyanolyan módon lesznek átadva `localCategories`, mint a. Az alkategóriák konkrétabb kategóriák. Az alárendeltek abban az értelemben, hogy ha a C kategóriát és annak egyik alkategóriáját adja meg ugyanazon a vesszővel tagolt listában, akkor ugyanazokat az eredményeket kapja meg, mint ha csak a C értéket adta meg.
 
-### <a name="eat-drink"></a>Keleti-afrikai ital 
+### <a name="eat-drink"></a>Egyél inni 
 |  |  |  |  |
 | - | - | - | - |
 | BreweriesAndBrewPubs | CocktailLounges | AfricanRestaurants |
 | AmericanRestaurants | Bagels | BarbecueRestaurants |
-| Október | SportsBars | Sávok |
+| Vendéglők | SportsBars | Sávok |
 | BarsGrillsAndPubs | BuffetRestaurants| BelgianRestaurants | 
 | BritishRestaurants | CafeRestaurants | CaribbeanRestaurants |
-| ChineseRestaurants | CoffeeAndTea | Delicatessens | 
+| ChineseRestaurants | CoffeeAndTea | Csemegeüzletekben | 
 | DeliveryService | Diners | DiscountStores | 
-| Donuts | FastFood | FrenchRestaurants | 
-| FrozenYogurt | GermanRestaurants | Bevásárlóközpontok | 
-| GreekRestaurants | Grocers | HawaiianRestaurants | 
+| Fánk | Gyorsétterem | FrenchRestaurants | 
+| FrozenYogurt | GermanRestaurants | Szupermarketek | 
+| GreekRestaurants | Fűszerek | HawaiianRestaurants | 
 | HungarianRestaurants | IceCreamAndFrozenDesserts | IndianRestaurants | 
-| ItalianRestaurants | JapaneseRestaurants | Lé | 
+| ItalianRestaurants | JapaneseRestaurants | Gyümölcslevek | 
 | KoreanRestaurants | LiquorStores | MexicanRestaurants |
 | MiddleEasternRestaurants | Pizza | PolishRestaurants | 
-| PortugueseRestaurants | Pretzels | Éttermek | 
-| RussianAndUkrainianRestaurants | Szendvics | SeafoodRestaurants | 
+| PortugueseRestaurants | Perecet | Éttermek | 
+| RussianAndUkrainianRestaurants | Szendvicsek | SeafoodRestaurants | 
 | SpanishRestaurants | SteakHouseRestaurants | SushiRestaurants | 
-| TakeAway | ThaiRestaurants | TurkishRestaurants | 
+| Elvihető | ThaiRestaurants | TurkishRestaurants | 
 | VegetarianAndVeganRestaurants | VietnameseRestaurants|  |
  
-### <a name="see-do"></a>Lásd: lehetőségek 
+### <a name="see-do"></a>Lásd: do 
 |  |  |  |
 | -- | -- | -- |
-| AmusementParks | Létesítmények | Carnivals |
+| AmusementParks | Látnivalók | Karneválok |
 | Kaszinók | LandmarksAndHistoricalSites | MiniatureGolfCourses |
-| MovieTheaters | Múzeumi | Park |
+| MovieTheaters | Múzeumok | Parkot |
 | SightseeingTours | TouristInformation | Állatkertek |
  
-### <a name="shop"></a>Üzemi 
+### <a name="shop"></a>Üzlet 
 |  |  |  |
 | -- | -- | -- |
-| AntiqueStores | Könyvesboltokban | CDAndRecordStores |
+| AntiqueStores | Könyvesboltok | CDAndRecordStores |
 | ChildrensClothingStores | CigarAndTobaccoShops | ComicBookStores |
 | DepartmentStores | DiscountStores | FleaMarketsAndBazaars |
 | FurnitureStores | HomeImprovementStores | JewelryAndWatchesStores |
@@ -80,9 +80,9 @@ Alkategóriák átadott ugyanúgy, mint `localCategories`. Alkategóriákat töb
 | VitaminAndSupplementStores | WomensClothingStores |  |
 
 
-## <a name="examples-of-local-categories-search"></a>Helyi kategóriák keresése
+## <a name="examples-of-local-categories-search"></a>Példák a helyi kategóriák keresésére
 
-Az alábbi példák GET eredmények a következők szerint a `localCategories` paramétert:
+Az alábbi példák a `localCategories` paraméternek megfelelően szereznek eredményt:
 
 `https://api.cognitive.microsoft.com/localbusinesses/v7.0/search?&q=&mkt=en-US&localcategories=HotelsAndMotels`
 
@@ -92,11 +92,11 @@ Az alábbi példák GET eredmények a következők szerint a `localCategories` p
 
 `https://api.cognitive.microsoft.com/localbusinesses/v7.0/search?&q=&mkt=en-US&localcategories=Hospitals`
 
-A következő lekérdezést a "kórházi" eredményeket, hogy a helyi vállalati keresési Bing-API által visszaadott első három számának korlátozása:
+A következő lekérdezés korlátozza a "kórházi" eredmények számát a Bing helyi üzleti keresési API-ból az első három visszaadott értékre:
 
 `https://api.cognitive.microsoft.com/localbusinesses/v7.0/search?&q=&mkt=en-US&localCategories=Hospitals&count=3&offset=0`
 
-Az alábbi példa JSON-válasz nagyobb Seattle környékén lévő három kórházak tartalmazza:
+A következő példában szereplő JSON-válasz három kórházat tartalmaz a Seattle területén:
 
 ```json
 BingAPIs-TraceId: 68AFB51807C6485CAB8AAF20E232EFFF
@@ -216,6 +216,6 @@ X-MSEdge-Ref: Ref A: 68AFB51807C6485CAB8AAF20E232EFFF Ref B: CO1EDGE0108 Ref C: 
 ```
 
 ## <a name="next-steps"></a>További lépések
-- [Földrajzi keresés határok](specify-geographic-search.md)
+- [Földrajzi keresési határok](specify-geographic-search.md)
 - [Lekérdezés és válasz](local-search-query-response.md)
-- [A rövid útmutatóC#](quickstarts/local-quickstart.md)
+- [Gyors útmutatóC#](quickstarts/local-quickstart.md)

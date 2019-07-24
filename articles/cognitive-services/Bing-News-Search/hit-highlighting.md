@@ -1,7 +1,7 @@
 ---
-title: Szöveg – a Bing News Search kiemelése decoration jelölők használatával
-titlesuffix: Azure Cognitive Services
-description: Bemutatja, hogyan szöveg dekorációkat a keresési találatok engedélyezése.
+title: Szöveg kiemelése a dekorációs jelölők használatával – Bing News Search
+titleSuffix: Azure Cognitive Services
+description: Bemutatja, hogyan lehet engedélyezni a szöveg kitüntetéseit a keresési válaszokban.
 services: cognitive-services
 author: swhite-msft
 manager: nitinme
@@ -10,13 +10,13 @@ ms.subservice: bing-news-search
 ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: scottwhi
-ms.openlocfilehash: 83c97069a9fad3bffde2f38dd33083ab02de2b87
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 6d9209165f433af086d211b0176406a301911106
+ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60527938"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68423812"
 ---
-# <a name="using-decoration-markers-to-highlight-text"></a>Kiemelheti a szöveg decoration jelölők használatával
+# <a name="using-decoration-markers-to-highlight-text"></a>A dekorációs jelölők használata a szöveg kiemeléséhez
 
 [!INCLUDE [cognitive-services-bing-hit-highlighting](../../../includes/cognitive-services-bing-hit-highlighting.md)]
