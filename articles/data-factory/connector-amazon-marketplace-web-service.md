@@ -46,7 +46,7 @@ Amazon Marketplace Web Service társított szolgáltatás a következő tulajdon
 |:--- |:--- |:--- |
 | type | A type tulajdonságot kell beállítani: **AmazonMWS** | Igen |
 | endpoint | A végpont (azaz mws.amazonservices.com) Amazon MWS-kiszolgáló  | Igen |
-| marketplaceID | Amazon Marketplace azonosítója szeretné beolvasni az adatokat. Adatokat lekérni a Marketplace-en több ID, válassza el őket egy vesszőt (`,`). (azaz A2EUQ1WTGCTBG2)  | Igen |
+| marketplaceID | Amazon Marketplace ID szeretné beolvasni az adatokat. Adatokat lekérni a Marketplace-en több ID, válassza el őket egy vesszőt (`,`). (azaz A2EUQ1WTGCTBG2)  | Igen |
 | sellerID | Az Amazon értékesítői azonosítója.  | Igen |
 | mwsAuthToken | Az Amazon MWS hitelesítési jogkivonatot. Ez a mező megjelölése tárolja biztonságos helyen a Data Factory, a SecureString vagy [hivatkozik az Azure Key Vaultban tárolt titkos](store-credentials-in-key-vault.md). | Igen |
 | accessKeyId | A hozzáférési kulcs adatok eléréséhez használt azonosítója.  | Igen |
