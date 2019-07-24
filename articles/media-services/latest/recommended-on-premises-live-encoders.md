@@ -1,37 +1,37 @@
 ---
-title: Élő adatfolyam-Media Services – Azure által javasolt kódolók |} A Microsoft Docs
-description: További tudnivalók a Media Services által ajánlott élő streamelési helyszíni kódolók
+title: Media Services által ajánlott élő adatfolyam-kódolók – Azure | Microsoft Docs
+description: Ismerkedjen meg a Media Services által ajánlott élő streaming helyszíni kódolókkal
 services: media-services
 keywords: kódolás; kódolók; adathordozó
 author: johndeu
 manager: johndeu
 ms.author: johndeu
-ms.date: 06/12/2019
+ms.date: 08/16/2019
 ms.topic: article
 ms.service: media-services
-ms.openlocfilehash: e31ad51121b1b198e2d444e70c3f482b208ef105
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.openlocfilehash: 1f152f7f94c12beecf015d9389ed85cb310573bd
+ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67840139"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68297727"
 ---
-# <a name="recommended-live-streaming-encoders"></a>Ajánlott élő streamelési kódolók
+# <a name="recommended-live-streaming-encoders"></a>Ajánlott élő adatfolyam-kódolók
 
-Az Azure Media Services egy [élő esemény](https://docs.microsoft.com/rest/api/media/liveevents) (csatorna) egy olyan folyamatot jelent feldolgozása live-streaming-tartalmat. Az élő esemény élő bemeneti streamekhez kap a két módszer egyikével.
+Azure Media Services egy [élő esemény](https://docs.microsoft.com/rest/api/media/liveevents) (csatorna) az élő közvetítésre szánt tartalom feldolgozásához szükséges folyamatot jelöli. Az élő esemény két módon fogadja az élő bemeneti adatfolyamokat.
 
-* Egy helyszíni élő kódoló küld az élő eseményt nincs engedélyezve a valós idejű kódolás a Media Services adatfolyam egy többszörös sávszélességű RTMP vagy Smooth Streaming (darabolt MP4). Élő események továbbítja a feldolgozott adatfolyamok további feldolgozás nélkül. Ezt a metódust meghívják **átmenő**. Az élő kódolók olyan küldhet egy egyszeres átviteli sebességű streamet átmenő csatornát. Ez a konfiguráció nem ajánlott, mert nem teszi lehetővé az adaptív sávszélességű streamelés az ügyfélnek.
+* A helyszíni élő kódoló egy többszörös sávszélességű RTMP vagy Smooth Streaming (darabolt MP4) streamet küld az élő eseményre, amely nincs engedélyezve az élő kódolás végrehajtásához Media Services. A betöltött adatfolyamok további feldolgozás nélkül haladnak át az élő eseményeken. Ezt a metódust áteresztőnek nevezzük. Egy élő kódoló egyetlen sávszélességű streamet küldhet egy átmenő csatornára. Ez a konfiguráció nem ajánlott, mert nem teszi lehetővé az adaptív sávszélességű adatfolyam-továbbítást az ügyfél számára.
 
   > [!NOTE]
-  > Valamely áteresztő módszer használata a leggazdaságosabb élő közvetítést végezni.
+  > Az átmenő módszer használata a leggazdaságosabb módja az élő közvetítésnek.
  
-* A helyszíni élő kódoló egy egyféle sávszélességű adatfolyamot küld az élő esemény, amely engedélyezve van a valós idejű kódolás a Media Services a következő formátumok egyikében: RTMP vagy Smooth Streaming (darabolt MP4). Az élő esemény végez a bejövő egyszeres átviteli sebességű streamet, és többféle sávszélességű (adaptív) video-adatfolyamot élő kódolás.
+* A helyszíni élő kódoló egyetlen sávszélességű streamet küld az élő eseménynek, amely lehetővé teszi, hogy a következő formátumok valamelyikével Media Services élő kódolást végezzen el: RTMP vagy Smooth Streaming (darabolt MP4). Az élő esemény ezután a bejövő egyszeri átviteli sebességű adatfolyam élő kódolását egy többszörös sávszélességű (adaptív) videó streamre hajtja végre.
 
-Valós idejű kódolás a Media Services használatával kapcsolatos részletes információkért lásd: [élő adások online közvetítése a Media Services v3](live-streaming-overview.md).
+A Media Services élő kódolásával kapcsolatos részletes információkért lásd: [élő adatfolyamok Media Services v3](live-streaming-overview.md).
 
-## <a name="live-encoders-that-output-rtmp"></a>Élő kódolók képesek RTMP-kimenetre
+## <a name="live-encoders-that-output-rtmp"></a>Az RTMP kimenetét futtató élő kódolók
 
-A Media Services a következő, RTMP kimenetű élő kódolók használatát javasolja. A támogatott URL-sémák a `rtmp://` vagy `rtmps://`.
+A Media Services a következő, RTMP kimenetű élő kódolók használatát javasolja. A támogatott URL- `rtmp://` sémák `rtmps://`a vagy a.
 
 > [!NOTE]
 > Amikor RTMP-vel streamel, ellenőrizze a tűzfal és/vagy a proxy beállításaiban, hogy az 1935-ös és az 1936-os kimenő TCP-portok nyitva vannak-e.
@@ -49,86 +49,86 @@ A Media Services a következő, RTMP kimenetű élő kódolók használatát jav
 - VMIX
 - xStream
 
-## <a name="live-encoders-that-output-fragmented-mp4"></a>Élő kódolók képesek: darabolt MP4 kimeneti
+## <a name="live-encoders-that-output-fragmented-mp4"></a>Feldarabolt MP4 kimenetű élő kódolók
 
-A Media Services a következő élő kódolók többféle sávszélességű Smooth Streaming (darabolt MP4) kimenetként rendelkező egyikének használatát javasolja. A támogatott URL-sémák a `http://` vagy `https://`.
+Media Services javasolja a következő élő kódolók egyikének használatát, amelyekben a többszörös sávszélességű Smooth Streaming (töredékes MP4) kimenetként van használatban. A támogatott URL- `http://` sémák `https://`a vagy a.
 
 - Ateme TITAN Live
 - Cisco Digital Media Encoder 2200
 - Elemental Live
 - Envivio 4Caster C4 Gen III
-- Az Imagine Communications Selenio MCP3
+- Imagine Communications Selenio MCP3
 - Media Excel Hero Live és Hero 4K (UHD/HEVC)
 
 > [!TIP]
->  Élő események (például egy angol nyelvű hangsávra és a egy spanyol hangsávra) több nyelven is streaming, ha Ön a Media Excel úgy konfigurálva, hogy az élő adás küldése egy csatlakoztatott élő esemény élő kódolóval való végezheti el.
+>  Ha több nyelven végez élő eseményeket (például egy angol hangsávot és egy spanyol hangsávot), akkor ezt a Media Excel Live encoderben állíthatja be úgy, hogy az élő hírcsatornát továbbítsa egy átmenő élő eseményre.
 
-## <a name="configuring-on-premises-live-encoder-settings"></a>Konfigurálása a helyszíni élő kódoló beállításai
+## <a name="configuring-on-premises-live-encoder-settings"></a>Helyszíni élő kódoló beállításainak konfigurálása
 
-Milyen beállítások érvényesek az élő esemény típus kapcsolatos információkért lásd: [élő esemény-típusok összehasonlítása](live-event-types-comparison.md).
+Arról, hogy milyen beállítások érvényesek az élő esemény típusára, lásd: [élő események típusai összehasonlítás](live-event-types-comparison.md).
 
 ### <a name="playback-requirements"></a>Lejátszási követelmények
 
-Vissza a tartalom lejátszása, mind az audio- és stream elérhetőnek kell lennie. A csak a videó Stream lejátszás nem támogatott.
+A tartalom lejátszásához a hang-és video streamnek is jelen kell lennie. A csak videó stream lejátszása nem támogatott.
 
 ### <a name="configuration-tips"></a>Konfigurációs tippek
 
 - Amikor csak lehetséges, hardveresen rögzített beállítású internet kapcsolat használatára.
-- Amikor sávszélességre van szükség, double a streamelési bitsebességre való átkódolása meghatározása. Bár nem kötelező, az egyszerű szabály segít mérsékelni a hálózati torlódás hatását.
+- A sávszélesség-követelmények meghatározásakor a továbbítási bitrátát dupla értékre kell kiszámítani. Bár nem kötelező, ez az egyszerű szabály segít csökkenteni a hálózati torlódás hatását.
 - Szoftveralapú kódolók használatáról, amikor el minden felesleges programot zárja be.
-- Az esemény negatív hatással a kódoló konfiguráció módosítása, miután elkezdődött annak elküldése rendelkezik. Konfigurációs módosítások okozhat az esemény instabillá válhat. 
-- Győződjön meg arról, hogy engedélyezi a saját maga állíthatja be az esemény bőséges időt. Nagy méretű események javasoljuk, hogy a telepítő egy újabb órájába az esemény előtt.
+- A kódoló konfigurációjának a megkezdése után történő módosítása negatív hatással van az eseményre. A konfigurációs változások hatására az esemény instabillá válhat. 
+- Győződjön meg arról, hogy elegendő időt ad az esemény beállítására. A nagy léptékű események esetében javasoljuk, hogy a telepítőt egy órával az esemény előtt indítsa el.
 
-## <a name="becoming-an-on-premises-encoder-partner"></a>Egy helyszíni kódolót partner lenni
+## <a name="becoming-an-on-premises-encoder-partner"></a>Helyszíni kódoló partnervé válás
 
-Egy Azure Media Services a helyszíni kódolót partnerként a Media Services a termék elősegíti a vállalati ügyfelek számára a kódoló javaslatot. Egy helyszíni kódolót partner szeretne lenni, ellenőriznie kell a helyszíni kódolót kompatibilitását a Media Services használatával. Ehhez a következő ellenőrzések elvégzéséhez.
+Azure Media Services helyszíni kódoló partnerként a kódolót a nagyvállalati ügyfeleknek ajánljuk, Media Services népszerűsíti a terméket. Helyszíni kódoló partnernek való megfeleléshez ellenőriznie kell a helyszíni kódoló kompatibilitását Media Services használatával. Ehhez végezze el a következő ellenőrzéseket.
 
-### <a name="pass-through-live-event-verification"></a>Az átmenő Live Event ellenőrzése
+### <a name="pass-through-live-event-verification"></a>Áteresztő élő esemény ellenőrzése
 
-1. A Media Services-fiók, győződjön meg arról, hogy a **folyamatos átviteli végponton** fut-e. 
-2. Hozzon létre, és indítsa el a **átmenő** élő esemény. <br/> További információkért lásd: [élő esemény állapotok és számlázási](live-event-states-billing.md).
-3. A betöltés URL-címek lekérése, és állítsa be az URL-cím segítségével egy többszörös sávszélességű élő streamet küldeni a Media Services a helyszíni kódolót.
-4. Előnézeti URL-címére, és a segítségével ellenőrizheti, hogy a kódoló a bemeneti ténylegesen fogadja.
-5. Hozzon létre egy új **eszköz** objektum.
-6. Hozzon létre egy **élő kimeneti** , és használja az Ön által létrehozott objektum nevét.
-7. Hozzon létre egy **Streamelési lokátor** a beépített **Streamelési házirend** típusokat.
-8. Az útvonalak listájában a **Streamelési lokátor** visszatéréshez használandó URL-címeket.
-9. A gazdagép nevét a **folyamatos átviteli végponton** , amelyet ki szeretne.
-10. Az URL-címet a 8. lépés kombinálva a számítógép neve a teljes URL-címére a 9. lépés.
-11. Futtassa az élő kódoló körülbelül 10 percre.
-12. Leállítja az élő eseményt. 
-13. Például egy lejátszóval [Azure Media Player](http://aka.ms/azuremediaplayer) tekintse meg az adott lejátszási nem látható hipervizorgazdákat ne legyen minden minőségi szinten archivált objektumot. Vagy nézze meg, és ellenőrizze az előnézeti URL-CÍMEN keresztül az élő munkamenet során.
-14. Jegyezze fel az eszköz azonosítója, közzétett streamelési URL-CÍMÉT az élő archívumot, és a beállítások és az élő kódoló a használt verzió.
-15. Élő esemény állapot alaphelyzetbe állítása az összes minta létrehozása után.
-16. A kódoló (rendelkező és anélküli ad jelzés, feliratokat vagy különböző kódolási sebességű) által támogatott konfigurációk ismételje meg az 5 – 15.
+1. A Media Services-fiókjában ellenőrizze, hogy fut-e a **folyamatos átviteli végpont** . 
+2. Hozzon létre és indítsa el az **átmenő** élő eseményt. <br/> További információ: [élő események állapota és számlázása](live-event-states-billing.md).
+3. Töltse le a betöltési URL-címeket, és konfigurálja a helyszíni kódolót úgy, hogy az URL-cím használatával egy többszörös sávszélességű élő streamet küldjön Media Services.
+4. Szerezze be az előnézeti URL-címet, és annak ellenőrzéséhez, hogy a kódolóból érkező adatok fogadása ténylegesen megtörténik-e.
+5. Hozzon létre  egy új objektum objektumot.
+6. Hozzon létre egy **élő kimenetet** , és használja a létrehozott eszköz nevét.
+7. Hozzon létre egy **streaming** -keresőt a beépített **folyamatos átviteli házirend** -típusokkal.
+8. A **streaming-lokátor** elérési útjának listázása a használni kívánt URL-címek visszaszerzéséhez.
+9. Szerezze be annak a streaming- **végpontnak** az állomásnevét, amelyről a streamet továbbítani kívánja.
+10. A teljes URL-cím lekéréséhez kombinálja a 8. lépésből álló URL-címet a 9. lépésben szereplő állomásnévvel.
+11. Az élő kódolót körülbelül 10 percen belül futtathatja.
+12. Állítsa le az élő eseményt. 
+13. Az archivált eszközöket úgy is használhatja, mint a [Azure Media Player](https://aka.ms/azuremediaplayer) , így biztosítva, hogy a lejátszás nem tartalmaz minden minőségi szinten látható hibát. Vagy tekintse meg és ellenőrizze az előnézeti URL-cím használatával az élő munkamenet során.
+14. Jegyezze fel az eszköz AZONOSÍTÓját, a közzétett streaming URL-címet az élő archívumhoz, valamint az élő kódoló beállításait és verzióját.
+15. Az élő esemény állapotának alaphelyzetbe állítása az egyes minták létrehozása után.
+16. Ismételje meg az 5 – 15. lépést a kódoló által támogatott összes konfiguráció esetében (az ad-jelzések, a feliratok vagy a különböző kódolási sebességek nélkül).
 
-### <a name="live-encoding-live-event-verification"></a>Élő kódolás Live Event ellenőrzése
+### <a name="live-encoding-live-event-verification"></a>Élő események élő kódolásának ellenőrzése
 
-1. A Media Services-fiók, győződjön meg arról, hogy a **folyamatos átviteli végponton** fut-e. 
-2. Hozzon létre, és indítsa el a **valós idejű kódolás** élő esemény. <br/> További információkért lásd: [élő esemény állapotok és számlázási](live-event-states-billing.md).
-3. A betöltés URL-címek lekérése, és állítsa be a Media Services egy egyféle sávszélességű élő streamet leküldése a kódolót.
-4. Előnézeti URL-címére, és a segítségével ellenőrizheti, hogy a kódoló a bemeneti ténylegesen fogadja.
-5. Hozzon létre egy új **eszköz** objektum.
-6. Hozzon létre egy **élő kimeneti** , és használja az Ön által létrehozott objektum nevét.
-7. Hozzon létre egy **Streamelési lokátor** a beépített **Streamelési házirend** típusokat.
-8. Az útvonalak listájában a **Streamelési lokátor** visszatéréshez használandó URL-címeket.
-9. A gazdagép nevét a **folyamatos átviteli végponton** , amelyet ki szeretne.
-10. Az URL-címet a 8. lépés kombinálva a számítógép neve a teljes URL-címére a 9. lépés.
-11. Futtassa az élő kódoló körülbelül 10 percre.
-12. Leállítja az élő eseményt.
-13. Például egy lejátszóval [Azure Media Player](http://aka.ms/azuremediaplayer) tekintse meg az adott lejátszási ne legyen az összes minőségi szinthez nem látható hipervizorgazdákat archivált objektumot. Vagy nézze meg, és ellenőrizze az előnézeti URL-CÍMEN keresztül az élő munkamenet során.
-14. Jegyezze fel az eszköz azonosítója, közzétett streamelési URL-CÍMÉT az élő archívumot, és a beállítások és az élő kódoló a használt verzió.
-15. Élő esemény állapot alaphelyzetbe állítása az összes minta létrehozása után.
-16. A kódoló (rendelkező és anélküli ad jelzés, feliratokat vagy különböző kódolási sebességű) által támogatott konfigurációk ismételje meg az 5 – 15.
+1. A Media Services-fiókjában ellenőrizze, hogy fut-e a **folyamatos átviteli végpont** . 
+2. Hozza létre és indítsa el az élő **kódolás** élő eseményét. <br/> További információ: [élő események állapota és számlázása](live-event-states-billing.md).
+3. Szerezze be a betöltési URL-címeket, és konfigurálja a kódolót úgy, hogy egyetlen sávszélességű élő streamet továbbítson Media Services.
+4. Szerezze be az előnézeti URL-címet, és annak ellenőrzéséhez, hogy a kódolóból érkező adatok fogadása ténylegesen megtörténik-e.
+5. Hozzon létre  egy új objektum objektumot.
+6. Hozzon létre egy **élő kimenetet** , és használja a létrehozott eszköz nevét.
+7. Hozzon létre egy **streaming** -keresőt a beépített **folyamatos átviteli házirend** -típusokkal.
+8. A **streaming-lokátor** elérési útjának listázása a használni kívánt URL-címek visszaszerzéséhez.
+9. Szerezze be annak a streaming- **végpontnak** az állomásnevét, amelyről a streamet továbbítani kívánja.
+10. A teljes URL-cím lekéréséhez kombinálja a 8. lépésből álló URL-címet a 9. lépésben szereplő állomásnévvel.
+11. Az élő kódolót körülbelül 10 percen belül futtathatja.
+12. Állítsa le az élő eseményt.
+13. Az archivált eszközöket úgy is használhatja, mint a [Azure Media Player](https://aka.ms/azuremediaplayer) , így biztosítva, hogy a lejátszásban ne legyen látható hibák az összes minőségi szinten. Vagy tekintse meg és ellenőrizze az előnézeti URL-cím használatával az élő munkamenet során.
+14. Jegyezze fel az eszköz AZONOSÍTÓját, a közzétett streaming URL-címet az élő archívumhoz, valamint az élő kódoló beállításait és verzióját.
+15. Az élő esemény állapotának alaphelyzetbe állítása az egyes minták létrehozása után.
+16. Ismételje meg az 5 – 15. lépést a kódoló által támogatott összes konfiguráció esetében (az ad-jelzések, a feliratok vagy a különböző kódolási sebességek nélkül).
 
-### <a name="longevity-verification"></a>Az érvényességi ideje ellenőrzése
+### <a name="longevity-verification"></a>Élettartam ellenőrzése
 
-Kövesse a lépéseket, mint a [átmenő élő esemény ellenőrzési](#pass-through-live-event-verification) kivételével 11. lépés. <br/>10 perc helyett futtassa az élő kódoló egy hét vagy hosszabb ideig. Például egy lejátszóval [Azure Media Player](http://aka.ms/azuremediaplayer) tekintse meg az élő streamelés időpontból lejátszás ne legyen semmilyen látható hipervizorgazdákat idő (vagy egy archivált objektumot).
+Kövesse az [élő esemény ellenőrzésének](#pass-through-live-event-verification) megfelelő lépéseket, kivéve a 11. lépést. <br/>10 perc helyett futtassa az élő kódolót egy hétig vagy tovább. Az élő adatfolyamok időről időre (vagy archivált eszközre) való megtekintésével ellenőrizheti, hogy a lejátszás nem rendelkezik-e látható hibákkal. [Azure Media Player](https://aka.ms/azuremediaplayer)
 
-### <a name="email-your-recorded-settings"></a>Az e-mail a rögzített beállítások
+### <a name="email-your-recorded-settings"></a>A rögzített beállítások elküldése e-mailben
 
-Végül az e-mail a rögzített beállítások és archív paramétereket, az Azure Media Services élő amslived@microsoft.com , egy értesítés, hogy az összes önkiszolgáló ellenőrzési ellenőrzések. Is bármely követések kapcsolattartási adatait. Az Azure Media Services team, ha bármilyen kérdése van, erről a folyamatról fordulnia.
+Végezetül küldje el a rögzített beállításokat és az élő archiválási paramétereket, amshelp@microsoft.com hogy a rendszer értesítést küldjön az összes önellenőrzési ellenőrzés Azure Media Services. Adja meg a kapcsolattartási adatait is a követő feladatokhoz. A folyamattal kapcsolatos bármilyen kérdéssel kapcsolatba léphet a Azure Media Services csapatával.
 
 ## <a name="next-steps"></a>További lépések
 
-[Élő adások online közvetítése a Media Services v3](live-streaming-overview.md)
+[Élő közvetítés a Media Services v3-val](live-streaming-overview.md)

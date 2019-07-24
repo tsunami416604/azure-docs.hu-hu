@@ -1,6 +1,6 @@
 ---
-title: Démon alkalmazás hívó webes API-kat (az alkalmazás konfigurálása) – a Microsoft identity platform
-description: Ismerje meg, hogyan hozhat létre egy démon alkalmazást, hogy a hívások webes API-k (alkalmazások konfigurálása)
+title: Daemon-alkalmazás webes API-k meghívása (alkalmazás konfigurációja) – Microsoft Identity platform
+description: Megtudhatja, hogyan hozhat létre olyan Daemon-alkalmazást, amely webes API-kat hív meg (alkalmazás konfigurációja)
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
@@ -12,63 +12,63 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/07/2019
+ms.date: 07/16/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fd2da6baecdce3ab85a45347f27f573bf814445d
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 705545fd5167087be1a001c45f58907d6ff225e8
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67055752"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68277825"
 ---
-# <a name="daemon-app-that-calls-web-apis---code-configuration"></a>Démon alkalmazások, hogy a hívások webes API-k – helykódot
+# <a name="daemon-app-that-calls-web-apis---code-configuration"></a>Webes API-kat meghívó Daemon-alkalmazás – kód konfigurálása
 
-Ismerje meg, hogyan konfigurálhatja a kódot, hogy a hívások webes API-kat démon alkalmazás.
+Megtudhatja, hogyan konfigurálhatja a webes API-kat meghívó Daemon-alkalmazás kódját.
 
-## <a name="msal-libraries-supporting-daemon-apps"></a>Az MSAL kódtárak támogató démon alkalmazások
+## <a name="msal-libraries-supporting-daemon-apps"></a>Daemon-alkalmazásokat támogató MSAL-kódtárak
 
-Démon alkalmazások támogatása a Microsoft-kódtárakat a következők:
+A Daemon-alkalmazásokat támogató Microsoft-kódtárak a következők:
 
-  Az MSAL könyvtár | Leírás
+  MSAL-könyvtár | Leírás
   ------------ | ----------
-  ![MSAL.NET](media/sample-v2-code/logo_NET.png) <br/> MSAL.NET  | A démon-alkalmazás létrehozása a támogatott platformok azok .NET-keretrendszer és a .NET Core platform (UWP-nem Xamarin.iOS és Xamarin.Android platformokhoz, használnak nyilvános ügyfél alkalmazásokat hozhat létre)
-  ![Python](media/sample-v2-code/logo_python.png) <br/> MSAL.Python | Folyamat – nyilvános előzetes verzióban érhető el a fejlesztést
-  ![Java](media/sample-v2-code/logo_java.png) <br/> MSAL.Java | Folyamat – nyilvános előzetes verzióban érhető el a fejlesztést
+  ![MSAL.NET](media/sample-v2-code/logo_NET.png) <br/> MSAL.NET  | A Daemon-alkalmazások létrehozásához támogatott platformok a .NET-keretrendszer és a .NET Core-platformok (a UWP, a Xamarin. iOS és a Xamarin. Android is, mivel ezek a platformok nyilvános ügyfélalkalmazások létrehozásához használhatók)
+  ![Python](media/sample-v2-code/logo_python.png) <br/> MSAL.Python | Fejlesztés folyamatban – nyilvános előzetes verzió
+  ![Java](media/sample-v2-code/logo_java.png) <br/> MSAL.Java | Fejlesztés folyamatban – nyilvános előzetes verzió
 
 ## <a name="configuration-of-the-authority"></a>A szolgáltató konfigurációja
 
-Tekintettel arra, hogy a démon alkalmazások ne használja a delegált engedélyeket, de az Alkalmazásengedélyek, azok *támogatott fióktípus* nem lehet *bármely szervezeti directory fiókok és a személyes Microsoft-fiókok () Ha például a Skype, Xbox, Outlook.com)* . Valójában nincs nincs Bérlői rendszergazda hozzájárulását a démon alkalmazás személyes Microsoft-fiókok. Válassza ki kell *fiókokat a szervezet* vagy *bármely szervezeti fiókok*.
+Mivel a démon-alkalmazások nem használnak delegált engedélyeket, de az alkalmazás engedélyei, a *támogatott fióktípus* nem lehet *fiók a szervezeti címtárban és a személyes Microsoft-fiókokban (például Skype, Xbox, Outlook.com)* . Valójában nincs bérlői rendszergazda, aki beleegyezik a Microsoft személyes fiókjaihoz tartozó Daemon-alkalmazásba. A szervezetem vagy a  fiókjaim fiókjait *minden szervezetnél*ki kell választania.
 
-Ezért a jogosultságokat az alkalmazás konfigurációjában megadott bérlő-ed (a bérlő Azonosítóját vagy a szervezetéhez tartozó tartománynév megadása) kell lennie.
+Ezért az alkalmazás konfigurációjában megadott szolgáltatónak bérlő-ED típusúnak kell lennie (a bérlő AZONOSÍTÓját vagy a szervezethez társított tartománynevet kell megadnia).
 
-Amennyiben, ISV, és adjon meg egy több-bérlős eszközt szeretne, használhat `organizations`. De vegye figyelembe, hogy az ügyfelek számára bemutatják, hogyan biztosítson rendszergazdai jóváhagyás is kell. Lásd: [hozzájárulás kérése egy teljes bérlő](v2-permissions-and-consent.md#requesting-consent-for-an-entire-tenant) részleteiről. Emellett van egy korlátozás az MSAL, amely `organizations` csak akkor engedélyezett, ha az ügyfél-hitelesítő adatok egy alkalmazás titkos kulcs (a tanúsítvány nem). Lásd: [#891 MSAL.NET hiba](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/issues/891)
+Ha Ön ISV, és több-bérlős eszközt szeretne biztosítani, használja `organizations`a következőt:. Ne feledje azonban, hogy az ügyfeleket is meg kell magyaráznia, hogy hogyan adhat meg rendszergazdai jóváhagyást. További részletekért lásd: a [teljes bérlők](v2-permissions-and-consent.md#requesting-consent-for-an-entire-tenant) belefoglalásának kérelmezése. Emellett a MSAL `organizations` jelenleg csak akkor engedélyezett, ha az ügyfél hitelesítő adatai egy alkalmazás titkos kulcsa (nem tanúsítvány). Lásd: [MSAL.net bug #891](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/issues/891)
 
-## <a name="application-configuration-and-instantiation"></a>Az alkalmazások konfigurálásával és a példányosítás
+## <a name="application-configuration-and-instantiation"></a>Alkalmazás konfigurációja és példánya
 
-Az MSAL könyvtárak az ügyfél-hitelesítő adatok (titkos kulcs vagy tanúsítvány) a bizalmas ügyfél alkalmazás építési paraméterként ad tovább.
+A MSAL-könyvtárakban az ügyfél hitelesítő adatai (titkos vagy tanúsítvány) a bizalmas ügyfélalkalmazás-építés paramétereként lesznek átadva.
 
 > [!IMPORTANT]
-> Akkor is, ha az alkalmazás egy konzolalkalmazás-szolgáltatás fut, ha a démon alkalmazások kell lennie egy bizalmas ügyfélalkalmazás.
+> Még akkor is, ha az alkalmazás egy szolgáltatásként futó konzolos alkalmazás, ha az egy démon alkalmazás, amelyet bizalmas ügyfélalkalmazásnak kell lennie.
 
 ### <a name="msalnet"></a>MSAL.NET
 
-Adja hozzá a [Microsoft.IdentityClient](https://www.nuget.org/packages/Microsoft.Identity.Client) az alkalmazás NuGet-csomagot.
+Adja hozzá a [Microsoft. IdentityClient](https://www.nuget.org/packages/Microsoft.Identity.Client) NuGet-csomagot az alkalmazáshoz.
 
-MSAL.NET névtér használatára
+MSAL.NET-névtér használata
 
 ```CSharp
 using Microsoft.Identity.Client;
 ```
 
-A démon alkalmazás megjelenik a egy `IConfidentialClientApplication`
+A démon alkalmazást egy`IConfidentialClientApplication`
 
 ```CSharp
 IConfidentialClientApplication app;
 ```
 
-A hozhat létre egy alkalmazást egy alkalmazás titkos kód itt látható:
+Az alábbi kód segítségével hozhat létre alkalmazást az alkalmazás titkos kódjával:
 
 ```CSharp
 app = ConfidentialClientApplicationBuilder.Create(config.ClientId)
@@ -77,7 +77,7 @@ app = ConfidentialClientApplicationBuilder.Create(config.ClientId)
            .Build();
 ```
 
-A tanúsítvány az alkalmazás létrehozását a kód itt látható:
+Az alábbi kód segítségével hozhat létre egy tanúsítványt az alkalmazáshoz:
 
 ```CSharp
 X509Certificate2 certificate = ReadCertificate(config.CertificateName);
@@ -86,6 +86,9 @@ app = ConfidentialClientApplicationBuilder.Create(config.ClientId)
     .WithAuthority(new Uri(config.Authority))
     .Build();
 ```
+
+Végül, az ügyfél titka vagy tanúsítványa helyett a bizalmas ügyfélalkalmazás is igazolhatja személyazonosságát az ügyfél-kijelentések használatával. Ez a speciális forgatókönyv részletesen szerepel az [ügyfél](msal-net-client-assertions.md) -kijelentésekben
+
 
 ### <a name="msalpython"></a>MSAL.Python
 
@@ -120,4 +123,4 @@ ConfidentialClientApplication cca = ConfidentialClientApplication
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Démon alkalmazások – az alkalmazás-jogkivonatok beszerzésének](./scenario-daemon-acquire-token.md)
+> [Daemon-alkalmazás – jogkivonatok beszerzése az alkalmazáshoz](./scenario-daemon-acquire-token.md)

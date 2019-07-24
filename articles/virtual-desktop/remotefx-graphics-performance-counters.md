@@ -1,110 +1,106 @@
 ---
-title: A távoli asztali – Azure grafikus teljesítményproblémák diagnosztizálása
-description: Ez a cikk ismerteti a távoli asztali protokoll-munkamenetek RemoteFX grafikus számlálók segítségével diagnosztizálhatja a teljesítménnyel kapcsolatos problémák a Windows virtuális asztal grafikákkal.
+title: A grafikus teljesítménnyel kapcsolatos problémák diagnosztizálása a távoli asztalon – Azure
+description: Ez a cikk azt ismerteti, hogyan használhatók a távoli asztali protokoll munkameneteiben lévő távoli grafikus számlálók a Windows rendszerű virtuális asztalban található grafikákkal kapcsolatos teljesítményproblémák diagnosztizálásához.
 services: virtual-desktop
 author: ChJenk
 ms.service: virtual-desktop
 ms.topic: troubleshooting
 ms.date: 05/23/2019
 ms.author: v-chjenk
-ms.openlocfilehash: a139542bf9272336784ac96d667d65caa1ed96ff
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: 8cd24861b9d7432a582d1b635b8ffcf0d8d2b9e6
+ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67607336"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68233624"
 ---
-# <a name="diagnose-graphics-performance-issues-in-remote-desktop"></a>A távoli asztali grafikus teljesítménybeli problémák diagnosztizálása
+# <a name="diagnose-graphics-performance-issues-in-remote-desktop"></a>A grafikus teljesítménnyel kapcsolatos problémák diagnosztizálása a Távoli asztalban
 
-Amikor a rendszer nem hajt végre a várt módon, fontos a probléma okának azonosításához. Ezen cikk segítségével azonosíthatja és javíthatja a grafikus kapcsolatos teljesítmény szűk Remote Desktop Protocol (RDP) munkamenet során.
+A távoli munkamenetek élmény-minőségi problémáinak diagnosztizálásához a Teljesítményfigyelőben a távoli rendszerképek szakaszban található számlálók vannak megadva. Ebből a cikkből megtudhatja, hogyan erősítheti meg és javíthatja a grafikákkal kapcsolatos teljesítménybeli szűk keresztmetszeteket az ilyen számlálókat használó RDP protokoll (RDP) munkamenet
 
-## <a name="find-your-remote-session-name"></a>Keresse meg a távoli munkamenet neve
+## <a name="find-your-remote-session-name"></a>Távoli munkamenet nevének megkeresése
 
-A távoli munkamenet nevét a grafikus teljesítményszámlálók lesz szüksége. Kövesse az utasításokat, ez a rész azonosíthatja a Windows virtuális asztal előzetes távoli munkamenet nevét.
+A grafikus teljesítményszámlálók azonosításához szüksége lesz a távoli munkamenet nevére. Kövesse az ebben a szakaszban található utasításokat az egyes számlálók példányának azonosításához.
 
-1. Nyissa meg a Windows-parancssort a távoli munkamenet.
-2. Futtassa a **qwinsta** parancsot.
-    - Ha a munkamenet több munkamenet virtuális gépen (VM) üzemel: Az utótag minden számláló neve pedig ugyanazon utótag a munkamenet nevében, például az "rdp-tcp 37."
-    - Ha a munkamenet üzemel, amely támogatja a virtuális grafikai feldolgozási egységek (vGPU) virtuális gépen: A számlálók van a kiszolgálón tárolt helyett a virtuális gépen. A teljesítményszámláló-példányok tartalmaznak, a virtuális gép neve helyett a szám a munkamenet nevében, mint például "Win8 Enterprise VM."
-
->[!NOTE]
-> Míg a számlálók RemoteFX nevükben, távoli asztali grafikus vGPU forgatókönyvek, valamint ezek tartalmazzák.
-
-## <a name="access-performance-counters"></a>Access-teljesítményszámlálók
-
-Teljesítményszámlálók a RemoteFX grafikus segítséget nyújtanak többek között a keret kódolás idő nyomon követése segít észlelni a szűk keresztmetszeteket, és kihagyja a keretek.
-
-Miután ellenőrizte a távoli munkamenet neve, kövesse ezeket az utasításokat a távoli munkamenet a RemoteFX grafikus teljesítményszámlálót gyűjt.
-
-1. Válassza ki **Start** > **felügyeleti eszközök** > **Teljesítményfigyelő**.
-2. Az a **Teljesítményfigyelő** párbeszédpanelen bontsa ki **figyelési eszközök**, jelölje be **Teljesítményfigyelő**, majd válassza ki **Hozzáadás**.
-3. Az a **Számláló hozzáadása** párbeszédpanelen, a **elérhető számlálók** list, bontsa ki a teljesítményszámláló objektum RemoteFX grafikus.
-4. Válassza ki a figyelendő számlálókat.
-5. Az a **példányok kijelölt objektum** listájához, válassza ki a figyelni a kiválasztott számlálókat, és válassza ki a konkrét példányok **Hozzáadás**. Válassza ki az összes rendelkezésre álló számlálópéldányt, válassza ki a **példányainak**.
-6. Válassza ki a számlálók a felvett **OK**.
-
-A kiválasztott teljesítményszámlálókat a Teljesítményfigyelő képernyőn jelenik meg.
+1. Nyissa meg a Windows-parancssort a távoli munkamenetből.
+2. Futtassa a **qwinsta** parancsot, és keresse meg a munkamenet nevét.
+    - Ha a munkamenet egy több munkamenetből álló virtuális gépen (VM) fut: Az egyes számlálók példányának utótagja azonos számú, mint a munkamenet neve, például "RDP-TCP 37".
+    - Ha a munkamenet olyan virtuális GÉPEN fut, amely támogatja a virtuális grafikus processzorokat (vGPU): Az egyes számlálók példányát a rendszer a virtuális gép helyett a kiszolgálón tárolja. A számláló példányai között szerepel a virtuális gép neve a munkamenet neve helyett, például "Win8 Enterprise VM".
 
 >[!NOTE]
->Minden aktív munkamenet egy gazdagépen rendelkezik minden teljesítményszámláló a saját példányát.
+> Míg a számlálók távolról is szerepelnek a nevükben, a távoli asztali grafikákat is tartalmazzák a vGPU-forgatókönyvekben.
 
-## <a name="diagnosis"></a>Elemzés céljából
+## <a name="access-performance-counters"></a>Elérési teljesítményszámlálók
 
-Grafikus kapcsolatos teljesítményproblémák általában négy kategóriába sorolhatók:
+Miután meghatározta a távoli munkamenet nevét, kövesse az alábbi utasításokat, hogy összegyűjtse a távoli munkamenethez tartozó távoli grafikus teljesítményszámlálókat.
 
-- Alacsony képkockasebessége
-- Véletlenszerű leállások
+1. Válassza  > a**felügyeleti eszközök** > **Teljesítményfigyelő**indítása elemet.
+2. A **Teljesítményfigyelő** párbeszédpanelen bontsa ki a **figyelési eszközök**elemet, válassza a **Teljesítményfigyelő**lehetőséget, majd kattintson a **Hozzáadás**gombra.
+3. A **számlálók hozzáadása** párbeszédpanelen, a **rendelkezésre álló számlálók** listából bontsa ki a távoli rendszerképekhez tartozó szakaszt.
+4. Válassza ki a figyelni kívánt számlálókat.
+5. A **kiválasztott objektumok** listájának példányai listában válassza ki a kijelölt számlálók számára figyelni kívánt példányokat, majd válassza a **Hozzáadás**lehetőséget. Az összes rendelkezésre álló számláló-példány kiválasztásához válassza a **minden példány**lehetőséget.
+6. A számlálók hozzáadása után kattintson **az OK gombra**.
+
+A kiválasztott teljesítményszámlálók megjelennek a Teljesítményfigyelő képernyőjén.
+
+>[!NOTE]
+>A gazdagép minden aktív munkamenetének saját példánya van az egyes teljesítményszámlálók számára.
+
+## <a name="diagnose-issues"></a>Problémák diagnosztizálása
+
+A grafikával kapcsolatos teljesítménnyel kapcsolatos problémák általában négy kategóriába sorolhatók:
+
+- Alacsony képkockák száma
+- Véletlenszerű stallek
 - Magas bemeneti késés
-- Keret gyenge minőség
+- Gyenge keret minősége
 
-Első lépésként címzés alacsony képkockasebessége, véletlenszerű leállások és magas a bemeneti késés. A következő szakaszban megtudhatja, mely teljesítményszámlálókat mérni az egyes kategóriák.
+### <a name="addressing-low-frame-rate-random-stalls-and-high-input-latency"></a>Alacsony képkocka-arány, véletlenszerű stallek és magas bemeneti késés kezelése
 
-### <a name="performance-counters"></a>Teljesítményszámlálók
+Először keresse meg a kimeneti képkockákat/a második számlálót. Az ügyfél számára elérhetővé tett keretek számát méri. Ha ez az érték kisebb, mint a bemeneti keret/második számláló, a keretek kimaradnak. A szűk keresztmetszetek azonosításához használja a képkockák kihagyott/második számlálóját.
 
-Ez a szakasz segítséget nyújt a szűk keresztmetszetek azonosítása.
+A kereteknek három típusa van kihagyva/másodperc számláló:
 
-Először ellenőrizze a kimeneti Frames/Second számlálót. Az ügyfél számára elérhetővé tett keretek számát méri. Ha ez az érték kisebb, mint a bemeneti Frames/Second számlálót, keretek vannak hagyva. A szűk keresztmetszetet azonosításához használja a keretek kihagyva másodpercenként számlálókat.
+- Kihagyott keretek/másodperc (nincs elegendő kiszolgálói erőforrás)
+- Kihagyott keretek/másodperc (nincs elegendő hálózati erőforrás)
+- Kihagyott keretek/másodperc (nincs elegendő ügyféloldali erőforrás)
 
-A keretek kihagyva másodpercenként számlálók három típusa van:
+A kihagyott keretek bármelyikének nagy értéke, a másodpercenkénti számlálók azt jelzik, hogy a probléma a Counter tracks erőforráshoz kapcsolódik. Ha például az ügyfél nem dekódol, és a képkockákat ugyanazon a sebességgel jeleníti meg, a kiszolgáló biztosítja a kereteket, a kihagyott keretek/másodperc (az ügyfél erőforrásai nem elégségesek) számláló magas lesz.
 
-- A képkockák kihagyott/másodperc (nincs elegendő hálózati erőforrások)
-- Keretek kihagyott/másodperc (nincs elegendő ügyfél erőforrások)
-- A képkockák kihagyott/másodperc (nincs elég rendszererőforrás)
+Ha a kimeneti keretek/második számláló megegyezik a bemeneti képkockákkal/a második számlálóval, de továbbra is szokatlan késést vagy leállást észlel, az átlagos kódolási idő lehet a bűnös. A kódolás egy szinkron folyamat, amely a kiszolgálón az egymunkamenetes (vGPU) forgatókönyvben és a többmunkamenetes forgatókönyvben lévő virtuális gépen történik. Az átlagos kódolási időtartamnak 33 MS alatt kell lennie. Ha az átlagos kódolási idő 33 MS alatt van, de továbbra is teljesítménnyel kapcsolatos problémái vannak, előfordulhat, hogy probléma van a használt alkalmazással vagy operációs rendszerrel.
 
-Egy magas szintű bármely kihagyva másodpercenként számlálók azt jelenti, hogy a problémát az erőforrás a keretek a számlálóval követi nyomon. Például ha az ügyfél nem dekódolható, és ugyanez a díjszabás a kiszolgáló jelen képkockákat lehetővé teszi a keretek, a keretek kihagyva/másodperc (ügyfél erőforráshiány) számláló magas lesz.
+Az alkalmazással kapcsolatos problémák diagnosztizálásával kapcsolatos további információkért lásd: [felhasználói bemeneti késleltetési](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/rds-rdsh-performance-counters)teljesítményszámlálók.
 
-Ha a kimeneti Frames/Second számláló megegyezik a bemeneti Frames/Second számlálót, még szokatlan lag továbbra is fennáll, vagy elakad, a probléma lehet, hogy a kódolást átlagos ideje. Kódolás az szinkron, amely egyetlen munkamenet-(vGPU) forgatókönyvben a kiszolgálón, és több munkamenet forgatókönyvben a virtuális gépen történik. Kódolás átlagos ideje 33 ms alatt kell lennie. Kódolás átlagos ideje 33 ezredmásodperc alatti, de továbbra is problémákba ütközik a teljesítményt, ha az alkalmazás vagy a használt operációs rendszertől probléma lehet.
+Mivel az RDP a 33 ms-os átlagos kódolási időt támogatja, a bemeneti képkockákat legfeljebb 30 képkocka/másodperc értékre támogatja. Vegye figyelembe, hogy az 33 MS a támogatott képkockák maximális száma. Sok esetben a felhasználó által tapasztalt Képkockasebesség alacsonyabb lesz, attól függően, hogy milyen gyakran biztosítanak keretet az RDP számára a forrás. Például a videók megtekintésére szolgáló feladatok esetében a teljes bemeneti képkockák száma 30 képkocka/másodperc, de kevésbé számítási feladatokhoz, például a dokumentumok ritkán történő szerkesztéséhez sokkal alacsonyabb érték szükséges a bemeneti képkockák/másodpercek romlásának hiányában a felhasználó a tapasztalatok minősége.
 
-Alkalmazáshoz kapcsolódó problémák diagnosztizálásával kapcsolatos további információkért lásd: [felhasználói bevitel késleltetés teljesítményszámlálók](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/rds-rdsh-performance-counters).
+### <a name="addressing-poor-frame-quality"></a>Gyenge képkockák minőségének kezelése
 
-RDP egy átlagos kódolás idő, MS-os 33 támogatja, mert támogatja egy bemeneti képkockasebessége legfeljebb 30 képkocka/másodperc. Vegye figyelembe, hogy 33 ms a maximális támogatott képkockasebességet. Sok esetben a felhasználó által tapasztalt képkockasebessége függően, hogy milyen gyakran keret a forrás az RDP-hez biztosított alacsonyabb lesz. Például a feladatok például a figyelt videó szükséges a teljes bemeneti képkockasebessége 30 képkocka/másodperc, de kevesebb erőforrás műveltekből feladatokat, mint a word-dokumentumban ritkán szerkesztése nem igénylik az ilyen a képkockák másodpercenkénti bemeneti nagy mértékű jó felhasználói élményt.
-
-A keret minőségi számláló segítségével keret minőségi problémák diagnosztizálásához. Ez a számláló a forrás-keret minőség százalékos fejezi ki a kimeneti keret minőségét. Minőségi elvesztését okozhatja a RemoteFX, vagy a grafikus forrás rejlő lehet. A RemoteFX által okozott a minőségi adatveszteség, ha a probléma magasabb színvonalú használatot élvezhet tartalom küldése hálózati vagy kiszolgálói erőforrások hiánya lehet.
+A keret minőségével kapcsolatos problémák diagnosztizálásához használja a frame Quality számlálót. Ez a számláló a forrás keret minőségének százalékában kifejezi a kimeneti keret minőségét. A minőség elvesztése a távoli elérés oka lehet, vagy a grafikus forrás velejárója lehet. Ha a távoli a minőségi adatvesztést okozta, a probléma oka lehet a hálózati vagy a kiszolgálói erőforrások hiánya, hogy jobb minőségű tartalmat küldjön.
 
 ## <a name="mitigation"></a>Kezelés
 
-Ha a kiszolgáló-erőforrásokon a szűk keresztmetszetet okozó, próbálja meg egy, a teljesítmény javítása az alábbiak egyikét:
+Ha a kiszolgáló erőforrásai a szűk keresztmetszetet okozzák, próbálkozzon az alábbi módszerek egyikével a teljesítmény javítása érdekében:
 
-- Csökkentse a gazdagép-munkamenetek számát.
-- Növelje a memória, és a számítási erőforrásokat a kiszolgálón.
-- A kapcsolat a feloldás eldobni.
+- Csökkentse a munkamenetek számát egy gazdagépen.
+- Növelje a memória és a számítási erőforrások mennyiségét a kiszolgálón.
+- Dobja el a kapcsolatok feloldását.
 
-Ha a szűk keresztmetszetet okozó hálózati erőforrások, próbálja meg egy munkamenetenként a hálózat rendelkezésre állásának javítása érdekében az alábbiak egyikét:
+Ha a hálózati erőforrások a szűk keresztmetszetet okozzák, próbálja meg a következő módszerek egyikét a hálózati rendelkezésre állás növeléséhez a munkamenetek során:
 
-- Csökkentse a gazdagép-munkamenetek számát.
-- A kapcsolat a feloldás eldobni.
-- Nagyobb sávszélesség hálózatot használ.
+- Csökkentse a munkamenetek számát egy gazdagépen.
+- Használjon nagyobb sávszélességű hálózatot.
+- Dobja el a kapcsolatok feloldását.
 
-Ha a szűk keresztmetszetet okozó ügyfél erőforrások, tegye a egyikét vagy mindkettőt a teljesítmény javítása az alábbiak egyikét:
+Ha az ügyfél erőforrásai a szűk keresztmetszetet okozzák, próbálkozzon az alábbi módszerek egyikével a teljesítmény javítása érdekében:
 
-- Telepítse a legújabb távoli asztali ügyfél.
-- Növelje a memória méretét, és a számítási erőforrásokat az ügyfélszámítógépen.
+- Telepítse a legújabb Távoli asztal-ügyfelet.
+- Növelje a memória és a számítási erőforrások mennyiségét az ügyfélszámítógépen.
 
 > [!NOTE]
-> A forrás Frames/Second számláló jelenleg nem támogatottak. Most a forrás Frames/Second számláló mindig állítja be 0.
+> Jelenleg nem támogatjuk a forrás-és a második számlálót. Egyelőre a forrás-és a második számláló mindig a 0 értéket fogja megjeleníteni.
 
 ## <a name="next-steps"></a>További lépések
 
-- Az Azure GPU-optimalizált virtuális gépek létrehozásához lásd: [grafikus processzorral (GPU) egység gyorsítását Windows virtuális asztal előzetes verziójú környezet konfigurálásához](https://docs.microsoft.com/azure/virtual-desktop/configure-vm-gpu).
-- Hibaelhárítás és eszkalációs nyomon követi az áttekintést lásd: [hibaelhárítási áttekintése, visszajelzés és támogatás](https://docs.microsoft.com/azure/virtual-desktop/troubleshoot-set-up-overview).
-- Az előzetes verziójú szolgáltatások kapcsolatos további információkért lásd: [Windows Desktop előzetes verziójú környezet](https://docs.microsoft.com/azure/virtual-desktop/environment-setup).
+- A GPU-ra optimalizált Azure-beli virtuális gépek létrehozásával kapcsolatban lásd: [Graphics Processing Unit (GPU) gyorsulás konfigurálása a Windows rendszerű virtuális asztali](https://docs.microsoft.com/azure/virtual-desktop/configure-vm-gpu)előnézeti környezethez.
+- A hibaelhárítási és eszkalációs sávok áttekintését lásd: [Hibaelhárítás – áttekintés, visszajelzés és támogatás](https://docs.microsoft.com/azure/virtual-desktop/troubleshoot-set-up-overview).
+- Az előzetes verziójú szolgáltatással kapcsolatos további tudnivalókért tekintse meg a [Windows asztali előnézet környezetét](https://docs.microsoft.com/azure/virtual-desktop/environment-setup)ismertető témakört.

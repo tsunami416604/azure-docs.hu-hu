@@ -1,6 +1,6 @@
 ---
-title: Virtuális gép létrehozása a DevTest Labs szolgáltatásban az Azure PowerShell-lel |} A Microsoft Docs
-description: Ismerje meg, hogyan használható az Azure DevTest Labs szolgáltatásban hozhat létre és kezelhet virtuális gépeket az Azure PowerShell használatával.
+title: Virtuális gép létrehozása a DevTest Labs szolgáltatásban Azure PowerShell használatával | Microsoft Docs
+description: Megtudhatja, hogyan hozhat létre és kezelhet Azure DevTest Labs virtuális gépeket Azure PowerShell használatával.
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
 author: spelluru
@@ -13,24 +13,24 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/02/2019
 ms.author: spelluru
-ms.openlocfilehash: a9629cd14c71a163612c2c4ba3c7b109a52b91ad
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 1a6938bd541e316dbe9f333c670c382faab6ad21
+ms.sourcegitcommit: 470041c681719df2d4ee9b81c9be6104befffcea
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60622439"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67854266"
 ---
-# <a name="create-a-virtual-machine-with-devtest-labs-using-azure-powershell"></a>Virtuális gép létrehozása a DevTest Labs szolgáltatással az Azure PowerShell-lel
-Ez a cikk bemutatja, hogyan egy virtuális gép létrehozása az Azure DevTest Labs szolgáltatásban az Azure PowerShell használatával. PowerShell-parancsfájlok segítségével automatizálhatja a virtuális gépek az Azure DevTest Labs szolgáltatásban létrehozott tesztkörnyezet létrehozását. 
+# <a name="create-a-virtual-machine-with-devtest-labs-using-azure-powershell"></a>Virtuális gép létrehozása a DevTest Labs használatával Azure PowerShell
+Ez a cikk bemutatja, hogyan hozhat létre virtuális gépet a Azure DevTest Labsban Azure PowerShell használatával. A PowerShell-parancsfájlok segítségével automatizálhatja a virtuális gépek létrehozását a laborban Azure DevTest Labs. 
 
 ## <a name="prerequisites"></a>Előfeltételek
 Előkészületek:
 
-- [Labor létrehozása](devtest-lab-create-lab.md) Ha nem kívánja a parancsfájlok vagy parancsok teszteléséhez, ebben a cikkben egy meglévő lab használatával. 
-- [Azure PowerShell telepítése](/powershell/azure/install-az-ps?view=azps-1.7.0) vagy használja az Azure Cloud Shellt, amely integrálva van az Azure Portalon. 
+- [Hozzon létre egy labort](devtest-lab-create-lab.md) , ha nem szeretne meglévő labort használni a szkript vagy a parancsok teszteléséhez ebben a cikkben. 
+- [Telepítse](/powershell/azure/install-az-ps?view=azps-1.7.0) a Azure PowerShellt, vagy használja a Azure Portalba integrált Azure Cloud shell. 
 
 ## <a name="powershell-script"></a>PowerShell-szkript
-A minta parancsfájl ebben a szakaszban a [Invoke-AzResourceAction](/powershell/module/az.resources/invoke-azresourceaction?view=azps-1.7.0) parancsmagot.  Ennél a parancsmagnál a labor létrehozása erőforrás-azonosító, a művelet végrehajtásához nevének (`createEnvironment`), és a szükséges paramétereket, hogy a művelet végrehajtására. A paraméterek egy kivonattábla, amely tartalmazza a virtuális gép teljes leírás tulajdonságai szerepelnek. 
+Az ebben a szakaszban szereplő minta parancsfájl a [rehív-AzResourceAction](/powershell/module/az.resources/invoke-azresourceaction?view=azps-1.7.0) parancsmagot használja.  Ez a parancsmag a labor erőforrás-azonosítóját, a végrehajtandó művelet nevét (`createEnvironment`) és a művelet végrehajtásához szükséges paramétereket veszi át. A paraméterek egy olyan kivonatoló táblában találhatók, amely tartalmazza az összes virtuális gép leírásának tulajdonságait. 
 
 ```powershell
 [CmdletBinding()]
@@ -82,6 +82,7 @@ try {
           "labSubnetName"           = $labSubnetName;
           "notes"                   = "Windows Server 2016 Datacenter";
           "osType"                  = "windows"
+          "expirationDate"          = "2019-12-01"
           "galleryImageReference"   = @{
              "offer"     = "WindowsServer";
              "publisher" = "MicrosoftWindowsServer";
@@ -114,29 +115,29 @@ finally {
 }
 ```
 
-A fenti szkript a virtuális gép tulajdonságainak lehetővé számunkra, hogy a virtuális gép létrehozása a Windows Server 2016 DataCenter, az operációs rendszer. Az egyes virtuális gépet ezeket a tulajdonságokat némiképp eltérő lesz. A [határozza meg a virtuális gép](#define-virtual-machine) szakasz bemutatja, hogyan használja ezt a szkriptet a tulajdonságok meghatározásához.
+A fenti parancsfájlban található virtuális gép tulajdonságai lehetővé teszik, hogy a Windows Server 2016 DataCenter operációs rendszert futtató virtuális gépet hozzon létre operációs rendszerként. Minden egyes virtuális gép esetében ezek a tulajdonságok kis mértékben eltérőek lesznek. A [virtuális gép definiálása](#define-virtual-machine) szakaszban megtudhatja, hogyan határozhatja meg, hogy mely tulajdonságokat szeretné használni ebben a parancsfájlban.
 
-A következő parancsot a mentett fájl nevét a parancsfájl futtatásától szemlélteti: Create-LabVirtualMachine.ps1. 
+A következő parancs egy példát mutat be a fájl nevében mentett parancsfájl futtatására: Create-LabVirtualMachine.ps1. 
 
 ```powershell
  PS> .\Create-LabVirtualMachine.ps1 -ResourceGroupName 'MyLabResourceGroup' -LabName 'MyLab' -userName 'AdminUser' -password 'Password1!' -VMName 'MyLabVM'
 ```
 
-## <a name="define-virtual-machine"></a>Virtuális gép definíciója
-Ez a szakasz bemutatja, hogyan hozhatja ki a létrehozni kívánt virtuális gép egy típusú jellemző tulajdonságok. 
+## <a name="define-virtual-machine"></a>Virtuális gép definiálása
+Ez a szakasz bemutatja, hogyan kérheti le a létrehozni kívánt virtuális géphez tartozó tulajdonságokat. 
 
 ### <a name="use-azure-portal"></a>Az Azure Portal használata
-Az Azure Resource Manager-sablon is létrehozhat, ha a virtuális gép létrehozása az Azure Portalon. Nem kell végezze el a virtuális gép létrehozásának folyamatán. Ön csak akkor kövesse a lépéseket, amíg meg nem látja a sablont. Ez az a legjobb módszer a szükséges JSON-leírásuk kaphat, ha Ön még nem rendelkezik egy létrehozott virtuális laborban. 
+Létrehozhat egy Azure Resource Manager sablont, amikor virtuális gépet hoz létre a Azure Portalban. Nem kell befejeznie a virtuális gép létrehozásának folyamatát. Csak akkor kövesse a lépéseket, amíg meg nem jelenik a sablon. Ez a legjobb módszer a szükséges JSON-Leírás beszerzésére, ha még nincs létrehozva labor virtuális gép. 
 
 1. Lépjen az [Azure Portalra](https://portal.azure.com).
-2. Válassza ki **minden szolgáltatás** a bal oldali navigációs menüben.
-3. Keresse meg és válassza **DevTest Labs** a szolgáltatások listájából. 
-4. Az a **DevTest Labs** lapon, a tesztkörnyezetek listájában válassza ki a labor.
-5. Válassza ki a labor kezdőlapja, **+ Hozzáadás** az eszköztáron. 
-6. Válassza ki a **alaplemezkép** a virtuális gép számára. 
-7. Válassza ki **automatizálási lehetőségek** fenti az oldal alján a **küldés** gombra. 
-8. Megjelenik a **Azure Resource Manager-sablon** a virtuális gép létrehozásához. 
-9. A JSON-szegmenst a **erőforrások** szakasz a korábban kiválasztott kép típus definíciója. 
+2. A bal oldali navigációs menüben válassza a **minden szolgáltatás** lehetőséget.
+3. Keresse meg és válassza ki a **DevTest Labs** elemet a szolgáltatások listájából. 
+4. A **DevTest Labs** lapon válassza ki a labort a laborok listájában.
+5. A labor kezdőlapján válassza a **+ Hozzáadás** lehetőséget az eszköztáron. 
+6. Válasszon ki  egy alapképet a virtuális géphez. 
+7. Válassza az **automatizálási beállítások** lehetőséget az oldal alján a **Küldés** gomb felett. 
+8. Megjelenik a virtuális gép létrehozásához **Azure Resource Manager sablon** . 
+9. A Resources ( **erőforrások** ) szakaszban található JSON-szegmens a korábban kiválasztott rendszerkép típusának definícióját tartalmazza. 
 
     ```json
     {
@@ -176,19 +177,52 @@ Az Azure Resource Manager-sablon is létrehozhat, ha a virtuális gép létrehoz
     }
     ```
 
-Ebben a példában bemutatjuk, hogyan Azure Marketplace-beli kép definíciójának beolvasása. Egyéni rendszerkép, egy képlet vagy egy környezet definíciójának azonos módon olvashatók be. Adja hozzá a virtuális géphez szükséges összes összetevőt, és állítsa be a szükséges a speciális beállításokat. Miután megadta az értékeket a kötelező mezőket, és a választható mezőket, mielőtt kiválasztja a **automatizálási lehetőségek** gombra.
+Ebből a példából megtudhatja, hogyan szerezhet be egy Azure Market-rendszerkép definícióját. Egy egyéni rendszerkép, egy képlet vagy egy környezet definícióját is lekérheti. Adja hozzá a virtuális géphez szükséges összes összetevőt, és adja meg a szükséges speciális beállításokat. Miután megadta a kötelező mezők és az opcionális mezők értékét, mielőtt kiválasztja az **Automation Options (automatizálási beállítások** ) gombot.
 
 ### <a name="use-azure-rest-api"></a>Az Azure REST API használata
-Az alábbi eljárás lépéseit egy lemezkép tulajdonságainak lekérése a REST API-val biztosít: Ezek a lépések csak a meglévő virtuális gép tesztkörnyezetben. 
+Az alábbi eljárás a rendszerképek tulajdonságainak beolvasását ismerteti a REST API használatával: Ezek a lépések csak egy meglévő virtuális gép esetében működnek a laborban. 
 
-1. Keresse meg a [listázása virtuálisgép -](/rest/api/dtl/virtualmachines/list) lapon jelölje be **kipróbálás** gombra. 
+1. Navigáljon a [Virtual Machines-List](/rest/api/dtl/virtualmachines/list) lapra, válassza a **kipróbálás** gombot. 
 2. Válassza ki az **Azure-előfizetését**.
-3. Adja meg a **erőforráscsoport a laborhoz**.
-4. Adja meg a **neve a labor**. 
+3. Adja meg a laborhoz tartozó **erőforráscsoportot**.
+4. Adja meg a **labor nevét**. 
 5. Válassza a **Futtatás** lehetőséget.
-6. Megjelenik a **a lemezkép tulajdonságainak** alapján a virtuális gép létrejött. 
+6. A rendszerkép azon **tulajdonságait** látja, amelyeken a virtuális gép létrejött. 
 
+## <a name="set-expiration-date"></a>Lejárati dátum beállítása
+Olyan forgatókönyvek esetén, mint például a képzés, a bemutatók és a próbaverziók, érdemes lehet virtuális gépeket létrehozni, és azokat automatikusan törölni rögzített időtartam után, hogy ne kelljen szükségtelen költségeket fizetnie. Megadhat egy virtuális gép lejárati dátumát a PowerShell használatával, ahogy az a [PowerShell-parancsfájl](#powershell-script) című szakaszban is látható.
+
+Itt látható egy PowerShell-parancsfájl, amely a laborban lévő összes meglévő virtuális gép lejárati dátumát állítja be:
+
+```powershell
+# Values to change
+$subscriptionId = '<Enter the subscription Id that contains lab>'
+$labResourceGroup = '<Enter the lab resource group>'
+$labName = '<Enter the lab name>'
+$VmName = '<Enter the VmName>'
+$expirationDate = '<Enter the expiration date e.g. 2019-12-16>'
+
+# Log into your Azure account
+Login-AzureRmAccount
+
+Select-AzureRmSubscription -SubscriptionId $subscriptionId
+$VmResourceId = "subscriptions/$subscriptionId/resourcegroups/$labResourceGroup/providers/microsoft.devtestlab/labs/$labName/virtualmachines/$VmName"
+
+$vm = Get-AzureRmResource -ResourceId $VmResourceId -ExpandProperties
+
+# Get all the Vm properties
+$VmProperties = $vm.Properties
+
+# Set the expirationDate property
+If ($VmProperties.expirationDate -eq $null) {
+    $VmProperties | Add-Member -MemberType NoteProperty -Name expirationDate -Value $expirationDate
+} Else {
+    $VmProperties.expirationDate = $expirationDate
+}
+
+Set-AzureRmResource -ResourceId $VmResourceId -Properties $VmProperties -Force
+```
 
 
 ## <a name="next-steps"></a>További lépések
-Tekintse meg az alábbi tartalommal: [Az Azure PowerShell-dokumentáció az Azure DevTest Labs szolgáltatásban](/powershell/module/az.devtestlabs/)
+Tekintse meg a következő tartalmakat: [Azure DevTest Labs Azure PowerShell dokumentációja](/powershell/module/az.devtestlabs/)

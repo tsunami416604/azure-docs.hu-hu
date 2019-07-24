@@ -13,87 +13,87 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/30/2018
-ms.author: monhaber
-ms.openlocfilehash: a30bc55c564f852a5fef6e71aad9e607e6aa1065
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: v-mohabe
+ms.openlocfilehash: 73480c6e24ab13b7764c5b72280c19971eb3d039
+ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67083675"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68296491"
 ---
-# <a name="monitor-identity-and-access-in-azure-security-center-preview"></a>Identitás és hozzáférés az Azure Security Centerben (előzetes verzió) figyelése
+# <a name="monitor-identity-and-access-in-azure-security-center-preview"></a>Identitás és hozzáférés figyelése Azure Security Centerban (előzetes verzió)
 Ez a cikk útmutatást nyújt a felhasználók identitási és hozzáférési tevékenységeinek az Azure Security Center segítségével történő figyeléséhez.
 
 > [!NOTE]
-> A "nézet *klasszikus* identitás és hozzáférés" hivatkozást a 2019. július 31-én kivezetjük. Kattintson a [Itt](security-center-features-retirement-july2019.md#menu_classicidentity) alternatív szolgáltatások további.
+> A " *klasszikus* Identity &-hozzáférés megtekintése" hivatkozás kimarad a 2019. július 31-ig. Kattintson [ide](security-center-features-retirement-july2019.md#menu_classicidentity) az alternatív szolgáltatások megismeréséhez.
 
 > [!NOTE]
-> Identitás és hozzáférés figyelése az előzetes verzióban és csak a Security Center Standard szinten érhető el. A Security Center tarifacsomagjaival kapcsolatos további információért lásd a [díjszabást](security-center-pricing.md).
+> Az identitás és a hozzáférés figyelése előzetes verzióban érhető el, és csak a standard szintű Security Center érhető el. A Security Center tarifacsomagjaival kapcsolatos további információért lásd a [díjszabást](security-center-pricing.md).
 >
 
-Az identitásnak kell lennie a vállalat vezérlősíkjának, és az identitás védelmének kell kapnia a legmagasabb prioritást. A biztonsági határt, egy identitás szegélyhálózat-alapú alakult az a hálózat pereme. Biztonsági kapcsolatban nyújt a hálózat védelmébe, és további információk az adatok védelme, valamint a biztonság, az alkalmazások és felhasználók kezelése válik. Napjainkban egyre több adat és alkalmazás kerül a felhőbe, így az identitás lép a szegélyhálózatok helyére.
+Az identitásnak kell lennie a vállalat vezérlősíkjának, és az identitás védelmének kell kapnia a legmagasabb prioritást. A biztonsági szegély egy hálózati kerületből lett kialakulóban egy identitási peremhálózaton. A biztonság kevesebb információt nyújt a hálózat védelméről és az adatai védelméről, valamint az alkalmazások és a felhasználók biztonságának kezeléséről. Napjainkban egyre több adat és alkalmazás kerül a felhőbe, így az identitás lép a szegélyhálózatok helyére.
 
-Az identitástevékenységek figyelésével proaktív módon tud cselekedni, mielőtt egy incidens bekövetkezne, illetve reaktív tevékenységekkel leállíthatja a támadási kísérleteket. Az identitás és hozzáférés irányítópult nyújt ajánlásokat például:
+Az identitástevékenységek figyelésével proaktív módon tud cselekedni, mielőtt egy incidens bekövetkezne, illetve reaktív tevékenységekkel leállíthatja a támadási kísérleteket. Az Identity & Access irányítópult a következőkhöz nyújt javaslatokat:
 
 - Az MFA engedélyezése az előfizetés kiemelt jogosultságú fiókjaiban
 - Írási engedélyekkel rendelkező külső fiókok eltávolítása az előfizetésből
 - Kiemelt jogosultságú külső fiókok eltávolítása az előfizetésből
 
 > [!NOTE]
-> Ha az előfizetés több mint 600 fiókkal rendelkezik, a Security Center nem tudja futtatni az identitás javaslatokat az előfizetésen. Javaslatok, amelyek nem futnak a "értékelések nem érhetők el" amelyet alatt vannak felsorolva.
-A Security Center nem tud az identitás javaslatokat futtatásához egy Felhőszolgáltató (CSP) partner által létrehozott felügyeleti ügynökök.
+> Ha az előfizetése több mint 600-fiókkal rendelkezik, Security Center nem tudja futtatni az identitással kapcsolatos ajánlásokat az előfizetésében. A nem futtatott javaslatok az alább ismertetett "nem elérhető értékelések" alatt találhatók.
+A Security Center nem tudja futtatni az identitásra vonatkozó javaslatokat a Cloud Solution Provider (CSP) partner rendszergazdai ügynökeit.
 >
 
-Lásd: [javaslatok](security-center-identity-access.md#recommendations) a Security Center által biztosított identitás- és hozzáférés javaslatok listája.
+A Security Center által biztosított identitás-és hozzáférési javaslatok listáját a [javaslatok](security-center-identity-access.md#recommendations) részben tekintheti meg.
 
 ## <a name="monitoring-security-health"></a>A biztonsági állapot figyelése
-Az erőforrások biztonsági állapotát a figyelemmel kísérheti a **Security Center – áttekintés** irányítópultot. A **erőforrások** szakaszban az egyes erőforrástípusok súlyossági megjelenítő állapotjelző.
+Az erőforrások biztonsági állapotát a figyelemmel kísérheti a **Security Center – áttekintés** irányítópultot. Az **erőforrások** szakasz egy állapotjelző, amely az egyes erőforrástípusok súlyosságát mutatja.
 
-Megtekintheti az összes hibáit kiválasztásával **javaslatok**. A **erőforrások**, megtekintheti az adott számítási & alkalmazások, adatok biztonságát, hálózati, vagy identitás és hozzáférés a problémák listáját. Javaslatok alkalmazásával kapcsolatos további információkért lásd: [biztonsági javaslatok alkalmazása az Azure Security Center](security-center-recommendations.md).
+Megtekintheti az összes hibáit kiválasztásával **javaslatok**. Az **erőforrások**területen megtekintheti a számítási & alkalmazások, az adatbiztonság, a hálózatkezelés vagy az identitás & elérésére vonatkozó problémák listáját. Javaslatok alkalmazásával kapcsolatos további információkért lásd: [biztonsági javaslatok alkalmazása az Azure Security Center](security-center-recommendations.md).
 
-Identitás és hozzáférés ajánlások teljes listáját lásd: [javaslatok](security-center-identity-access.md#recommendations).
+Az identitás-és hozzáférési javaslatok teljes listáját a [javaslatok](security-center-identity-access.md#recommendations)című részben tekintheti meg.
 
-A folytatáshoz válasszon ki **identitás és hozzáférés** alatt **erőforrások** vagy a Security Center főmenüjébe.
+A folytatáshoz válassza az **identitás & hozzáférés** az **erőforrások** vagy a Security Center főmenü lehetőséget.
 
 ![A Security Center irányítópultja][1]
 
 ## <a name="monitor-identity-and-access"></a>Identitás és hozzáférés monitorozása
-A **identitás és hozzáférés**, két lap található:
+Az **identitás & hozzáférés**alatt két lap található:
 
-- **Áttekintés**: a Security Center által azonosított javaslatok.
-- **Előfizetések**: az előfizetések és az egyes aktuális biztonsági állapotának listája.
+- **Áttekintés**: Security Center által azonosított javaslatok.
+- Előfizetések: az előfizetések és a jelenlegi biztonsági állapotok listája.
 
 ![Identitás és hozzáférés][2]
 
-### <a name="overview-section"></a>A szakasz áttekintése
-A **áttekintése**, nincs javaslat listája. Az első oszlop a javaslatokat sorolja fel. A második oszlop az adott javaslat által érintett előfizetések teljes számát jeleníti meg. A harmadik oszlop a probléma súlyosságát mutatja.
+### <a name="overview-section"></a>Áttekintés szakasz
+Az **Áttekintés**területen a javaslatok listája szerepel. Az első oszlop a javaslatokat sorolja fel. A második oszlop az adott javaslat által érintett előfizetések teljes számát jeleníti meg. A harmadik oszlop a probléma súlyosságát mutatja.
 
-1. Válasszon ki egy javaslatot. A javaslatban ablak nyílik meg, és megjeleníti:
+1. Válasszon egy javaslatot. Megnyílik az ajánlás ablaka, amely a következőket jeleníti meg:
 
    - A javaslat leírása
-   - Nem megfelelő állapotú és kifogástalan állapotú előfizetések listáját
-   - Lista, amelyek egy hibás értékelése miatt nem vizsgált erőforrások vagy erőforrás-előfizetéshez az ingyenes szinten fut, és nincs értékelve van
+   - Sérült és kifogástalan állapotú előfizetések listája
+   - A sikertelen értékelés miatt nem ellenőrzött erőforrások listája, vagy az erőforrás az ingyenes szinten futó előfizetéshez tartozik, és nincs értékelve.
 
-   ![A javaslat ablak][3]
+   ![Javaslat ablaka][3]
 
-1. További részleteket talál a listában, válasszon ki egy előfizetést.
+1. További részletekért válasszon egy előfizetést a listában.
 
 ### <a name="subscriptions-section"></a>Előfizetések szakasz
-A **előfizetések**, nincs az előfizetések listáját. Az első oszlop az előfizetések listája. A második oszlop az egyes előfizetésekhez javaslatok teljes számát jeleníti meg. A harmadik oszlop tartalmazza a súlyossági szinten pedig a problémák.
+Az előfizetések alatt található az előfizetések listája. Az első oszlop felsorolja az előfizetéseket. A második oszlop az egyes előfizetésekhez tartozó javaslatok teljes számát jeleníti meg. A harmadik oszlop a problémák súlyosságát mutatja.
 
-![Az előfizetéshez tartozó lap][4]
+![Előfizetés lapja][4]
 
 1. Válasszon egy előfizetést. Összegzési nézetet megnyílik a három lappal:
 
    - **Javaslatok**: nem sikerült, a Security Center által végzett alapján.
    - **Sikeres értékelések**: megfelelt a Security Center által végzett listája.
-   - **Értékelések nem érhetők el**: list-vizsgálat futtatása egy hiba miatt sikertelen volt, vagy mert az előfizetés több mint 600 fiókkal rendelkezik.
+   - Nem **elérhető értékelések**: azon értékelések listája, amelyeket egy hiba miatt nem sikerült futtatni, vagy mert az előfizetés több mint 600 fiókot tartalmaz.
 
-   A **javaslatok** minden javaslat súlyosságát és a kiválasztott előfizetéshez tartozó a javaslatok listája.
+   A **javaslatok** szakaszban a kiválasztott előfizetésre és az egyes javaslatok súlyosságára vonatkozó javaslatok szerepelnek.
 
-   ![Javaslatok az előfizetés kiválasztása][5]
+   ![Javaslatok az előfizetés kiválasztására][5]
 
-1. Válasszon ki egy javaslatot, egy leírást a javaslat, a nem megfelelő állapotú és kifogástalan állapotú előfizetések listáját és a nem vizsgált erőforrások listáját.
+1. Válassza ki a javaslat leírását, a nem kifogástalan állapotú és az egészséges előfizetések listáját, valamint a nem ellenőrzött erőforrások listáját.
 
    ![Javaslat leírása][6]
 
@@ -101,36 +101,36 @@ A **előfizetések**, nincs az előfizetések listáját. Az első oszlop az el�
 
    ![Sikeres értékelések][7]
 
-1. Jelöljön ki egy átadott értékelés a lista az értékelés leírását és kifogástalan állapotú előfizetések listáját. Nincs egy nem megfelelő állapotú előfizetések szolgáló lap, amely felsorolja az összes olyan előfizetést, amely nem sikerült.
+1. Válasszon ki egy átadott értékelést a listából az értékelés leírásának és az egészséges előfizetések listájának megtekintéséhez. A nem megfelelő állapotú előfizetések lapján található egy lap, amely felsorolja az összes sikertelen előfizetést.
 
    ![Sikeres értékelések][8]
 
 ## <a name="recommendations"></a>Javaslatok
-Referenciaként az alábbi táblázat segítségével segítenek megérteni a rendelkezésre álló identitás és hozzáférés ajánlásokat, és mindegyik funkciója alkalmazásuk esetén.
+Az alábbi táblázat hivatkozásként használható, amely segít megérteni az elérhető identitást & hozzáférési javaslatokat, valamint azt, hogy mit tesz, ha alkalmazza.
 
 |Erőforrás típusa|Biztonsági pontszám|Ajánlás|Leírás|
 |----|----|----|----|
-|Előfizetés|50|MFA engedélyezni kell a fiókok az előfizetésben tulajdonosi engedélyekkel rendelkező|A multi-factor Authentication (MFA) engedélyezéséhez a fiókok vagy az erőforrások biztonsági incidenseinek megelőzése rendszergazdai jogosultságokkal rendelkező összes előfizetési fiókban.|
-|Előfizetés|40|MFA engedélyezni kell a írási engedéllyel rendelkező előfizetés fiókjának|Engedélyezi a multi-factor Authentication (MFA) a fiókok vagy az erőforrások biztonsági incidenseinek megelőzése írási jogosultsággal rendelkező összes előfizetési fiókban.|
-|Előfizetés|30|Tulajdonosi engedélyekkel rendelkező külső fiókokat el kell távolítani az előfizetésből|Tulajdonosi engedélyekkel rendelkező külső fiókok eltávolítása az előfizetésből a nem monitorozott hozzáférések megelőzése céljából.|
-|Előfizetés|30|MFA a az előfizetés olvasási engedélyekkel rendelkező fiókok engedélyezve kell lennie|A multi-factor Authentication (MFA) engedélyezéséhez a fiókok vagy az erőforrások biztonsági incidenseinek megelőzése olvasási jogosultságokkal rendelkező összes előfizetési fiókban.|
-|Előfizetés|25|Írási engedélyekkel rendelkező külső fiókokat el kell távolítani az előfizetésből|Írási engedélyekkel rendelkező külső fiókok eltávolítása az előfizetésből a nem monitorozott hozzáférések megelőzése céljából. |
-|Előfizetés|20|Tulajdonosi engedélyekkel rendelkező elavult fiókokat el kell távolítani az előfizetésből|Tulajdonosi engedélyekkel rendelkező elavult fiókok eltávolítása az előfizetések közül.|
-|Előfizetés|5|Elavult fiókokat el kell távolítani az előfizetésből|Elavult fiókok eltávolítása az csak az aktuális felhasználó hozzáférésének engedélyezése az előfizetések közül. |
-|Előfizetés|5|Meg kell adni az előfizetéshez hozzárendelt egynél több tulajdonosa|Több mint egy előfizetés-tulajdonost kijelölni a rendszergazdai hozzáférés redundanciájának biztosításához.|
-|Előfizetés|5|Legfeljebb 3 tulajdonosok az előfizetéshez kell kijelölni|Kevesebb mint 3 előfizetés-tulajdonost kijelölni az esetleges illetéktelen behatolás feltört tulajdonosa.|
-|Key Vault|5|Engedélyezni kell a Key Vault-diagnosztikai naplók|Naplók engedélyezése és legfeljebb egy évig megőrizheti azokat. Ez lehetővé teszi, hogy a tevékenység nyomot hagyjanak maguk után a támadások hatékonyabb kivizsgálásához hozza létre újra, amikor egy biztonsági incidens következik be, vagy a hálózat biztonsága sérül. |
-|Előfizetés|15|Olvasási jogosultsággal rendelkező külső fiókokat el kell távolítani az előfizetésből|Az olvasási jogosultsággal rendelkező külső fiókok eltávolítása az előfizetésből a nem monitorozott hozzáférések megelőzése céljából.| 
+|Subscription|50|Az MFA-t engedélyezni kell az előfizetéshez tartozó tulajdonosi engedélyekkel rendelkező fiókokon|A többtényezős hitelesítés (MFA) engedélyezése minden olyan előfizetési fióknál, amely rendszergazdai jogosultságokkal rendelkezik a fiókok vagy erőforrások megszegésének megakadályozásához.|
+|Subscription|40|Az MFA-t az írási engedélyekkel rendelkező előfizetési fiókokban kell engedélyezni|A többtényezős hitelesítés (MFA) engedélyezése az írási jogosultságokkal rendelkező előfizetési fiókok számára a fiókok vagy erőforrások megszegésének megakadályozása érdekében.|
+|Subscription|30|A tulajdonosi engedélyekkel rendelkező külső fiókokat el kell távolítani az előfizetésből|A nem figyelt hozzáférés megakadályozása érdekében távolítsa el a tulajdonosi engedélyekkel rendelkező külső fiókokat az előfizetésből.|
+|Subscription|30|Az MFA-nak engedélyezve kell lennie az előfizetési fiókokban olvasási engedélyekkel|A többtényezős hitelesítés (MFA) engedélyezése az olvasási jogosultságokkal rendelkező előfizetési fiókok esetében a fiókok vagy erőforrások megszegésének megelőzése érdekében.|
+|Subscription|25|Írási engedélyekkel rendelkező külső fiókokat el kell távolítani az előfizetésből|A nem figyelt hozzáférés megakadályozása érdekében távolítsa el az előfizetésből származó írási engedélyekkel rendelkező külső fiókokat. |
+|Subscription|20|A tulajdonosi engedélyekkel rendelkező elavult fiókokat el kell távolítani az előfizetésből|A tulajdonosi engedélyekkel rendelkező elavult fiókok eltávolítása az előfizetésből.|
+|Subscription|5|Az elavult fiókokat el kell távolítani az előfizetésből|Az elavult fiókok eltávolítása az előfizetésből, hogy csak az aktuális felhasználók férhessenek hozzá. |
+|Subscription|5|Az előfizetéshez egynél több tulajdonos rendelhető hozzá|Egynél több előfizetés-tulajdonost jelölhet ki a rendszergazdai hozzáférés redundancia érdekében.|
+|Subscription|5|Az előfizetéshez legfeljebb 3 tulajdonost kell kijelölni|Kevesebb mint 3 előfizetés-tulajdonost jelölhet ki, hogy csökkentse a feltört tulajdonos általi illetéktelen behatolás lehetőségét.|
+|Key Vault|5|A Key Vault diagnosztikai naplóit engedélyezni kell|Naplók engedélyezése és legfeljebb egy évig megőrizheti azokat. Ez lehetővé teszi, hogy a tevékenység nyomot hagyjanak maguk után a támadások hatékonyabb kivizsgálásához hozza létre újra, amikor egy biztonsági incidens következik be, vagy a hálózat biztonsága sérül. |
+|Subscription|15|Az olvasási engedélyekkel rendelkező külső fiókokat el kell távolítani az előfizetésből|A nem figyelt hozzáférés megakadályozása érdekében távolítsa el a külső fiókokat olvasási jogosultságokkal az előfizetésből.| 
 
 > [!NOTE]
-> Ha létrehozott egy feltételes hozzáférési szabályzatot, amely szükségessé teszi a többtényezős hitelesítés, de beállítása kizárásokkal rendelkezik, a Security Center MFA javaslat értékelés figyelembe veszi a szabályzat nem megfelelő, egyes felhasználók az Azure MFA nélkül bejelentkezni, mert.
+> Ha olyan feltételes hozzáférési szabályzatot hozott létre, amely MFA-t igényel, de kizárások vannak beállítva, akkor a Security Center MFA ajánlási felmérése nem megfelelőnek tekinti a szabályzatot, mivel lehetővé teszi egyes felhasználók számára, hogy MFA nélkül jelentkezzenek be az Azure-ba.
 
 ## <a name="next-steps"></a>További lépések
 Javaslatok, amelyek vonatkoznak a többi Azure-erőforrásokkal kapcsolatos további információkért tekintse meg a következőket:
 
 - [A gépek és alkalmazások védelme az Azure Security Centerben](security-center-virtual-machine-recommendations.md)
 - [Hálózat védelme az Azure Security Centerben](security-center-network-recommendations.md)
-- [Az Azure SQL-szolgáltatás és az adatok az Azure Security Center védelme](security-center-sql-service-recommendations.md)
+- [Az Azure SQL-szolgáltatás és-adatok védelme Azure Security Center](security-center-sql-service-recommendations.md)
 
 A Security Centerrel kapcsolatos további információkért olvassa el a következőket:
 * [Biztonsági riasztások kezelése és válaszadás a riasztásokra az Azure Security Centerben](https://docs.microsoft.com/azure/security-center/security-center-managing-and-responding-alerts). A Security Center-riasztások kezelését és a biztonsági eseményekre való válaszadást ismertető útmutató.

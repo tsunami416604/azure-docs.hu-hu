@@ -1,6 +1,6 @@
 ---
-title: Virtuális hálózat üzletmenet-folytonossági |} A Microsoft Docs
-description: Ismerje meg, mi a teendő az Azure-beli virtuális hálózatok érintő Azure szolgáltatáskimaradás működésében.
+title: Virtuális hálózat üzletmenet-folytonossága | Microsoft Docs
+description: Ismerje meg, mi a teendő az Azure-beli virtuális hálózatokat érintő Azure-szolgáltatásokkal kapcsolatos fennakadások esetén.
 services: virtual-network
 documentationcenter: ''
 author: NarayanAnnamalai
@@ -13,40 +13,41 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/16/2016
-ms.author: narayan;aglick
-ms.openlocfilehash: 68a9523dcc9c4dd84399c68fc7e31a692c011487
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: narayan
+ms.reviewer: aglick
+ms.openlocfilehash: 3f91d24bff0bec540ff0e7964f21c2f47c03638c
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65523254"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67876174"
 ---
-# <a name="virtual-network--business-continuity"></a>Virtuális hálózat – üzletmenet-folytonossági
+# <a name="virtual-network--business-continuity"></a>Virtual Network – üzletmenet folytonossága
 
 ## <a name="overview"></a>Áttekintés
-Virtuális hálózat (VNet) a felhőbeli hálózatának logikai megfelelője. Lehetővé teszi a saját privát IP-címteret és a hálózat szegmentálása alhálózatra. Virtuális hálózatok egy megbízhatósági kapcsolat határán a számítási erőforrások, például az Azure Virtual Machines és Cloud Services (webes/feldolgozói szerepkörök) üzemeltetésére szolgál. Virtuális hálózat lehetővé teszi a közvetlen saját integrációs csomaggal folytatott kommunikációhoz a benne lévő üzemeltetett erőforrások között. A helyszíni hálózathoz egy VPN-átjáró vagy ExpressRoute virtuális hálózati kapcsolat.
+A Virtual Network (VNet) a hálózat logikai ábrázolása a felhőben. Lehetővé teszi saját magánhálózati IP-címtartomány megadását és a hálózat alhálózatokra való szegmentálását. A virtuális hálózatok megbízhatósági kapcsolati határként szolgál a számítási erőforrások, például az Azure Virtual Machines és Cloud Services (webes/feldolgozói szerepkörök) üzemeltetéséhez. A VNet lehetővé teszi a közvetlen magánhálózati IP-kommunikációt a benne tárolt erőforrások között. Egy virtuális hálózatot VPN Gateway vagy ExpressRoute keresztül kapcsolhat egy helyszíni hálózathoz.
 
-Virtuális hálózat egy régió hatókörén belül jön létre. Is *létrehozása* egyező virtuális hálózat címtere (például USA keleti régiója, USA nyugati régiója) két különböző régióban, de mivel ugyanazt a címtartományt, akkor nem kapcsolhatja össze azokat. 
+Egy VNet egy régió hatókörén belül jön létre. A virtuális hálózatok  két különböző régióban (például az USA keleti régiójában és az USA nyugati régiójában) is létrehozhatja, de mivel ugyanaz a címtartomány, nem csatlakoztatható együtt. 
 
 ## <a name="business-continuity"></a>Üzleti folytonosság
 
-Előfordulhat, hogy különféle módokon, hogy az alkalmazás sikerült tartománnyá. Egy régióban sikerült teljesen vágható természeti katasztrófa vagy részleges katasztrófa miatt több eszköz vagy szolgáltatás hibája miatt. A művelet hatása a VNet szolgáltatás eltér az egyes ezekben a helyzetekben.
+Számos különböző módon lehet megszakítani az alkalmazást. Egy régiót egy természeti katasztrófa vagy egy részleges katasztrófa miatt teljesen le lehet vágni, mert több eszköz vagy szolgáltatás meghibásodik. A VNet szolgáltatásra gyakorolt hatás különbözik az egyes helyzetekben.
 
-**K: Mi a teendő, ha kimaradás fordul elő egy teljes régióra? Például ha egy régió teljesen levágja természeti katasztrófa miatt? Mi történik, a virtuális hálózatok régióban üzemeltet?**
+**K: Ha egy teljes régió esetében áramkimaradás történik, mi a teendő? Ha például egy régió teljesen ki van vágva egy természeti katasztrófa miatt? Mi történik a régióban üzemeltetett virtuális hálózatokkal?**
 
-V: A virtuális hálózat és az érintett régióban lévő erőforrásokat az a szolgáltatás megszűnésének alatt marad nem érhető el.
+V: A virtuális hálózat és az érintett régióban lévő erőforrások a szolgáltatás megszakadásának ideje alatt elérhetetlenné válnak.
 
-![Egyszerű virtuális hálózati diagramja](./media/virtual-network-disaster-recovery-guidance/vnet.png)
+![Egyszerű Virtual Network diagram](./media/virtual-network-disaster-recovery-guidance/vnet.png)
 
-**K: Milyen lehetőségeket újra létre kell hoznia egy másik régióban lévő ugyanazon a virtuális hálózaton?**
+**K: Hogyan lehet újra létrehozni ugyanazt a virtuális hálózatot egy másik régióban?**
 
-V: Virtuális hálózatok viszonylag könnyen használható erőforrásokat. Az azonos címtartomány egy másik régióban lévő virtuális hálózat létrehozása az Azure API-k hívhat meg. Hozza létre újból az ugyanabban a környezetben, amely érintett a régióban található, akkor győződjön meg arról, API-hívások ismételt üzembe helyezése a Cloud Services webes és feldolgozói szerepkörök és a virtuális gépek volt. Ha helyszíni kapcsolatok, például az egy hibrid telepítésben rendelkezik egy új VPN-átjáró üzembe helyezése, és csatlakoztassa a helyszíni hálózathoz.
+V: A virtuális hálózatok meglehetősen egyszerű erőforrások. Az Azure API-k meghívásával olyan VNet hozhat létre, amely egy másik régióban található azonos címterületet használ. Ha újra létre szeretné hozni az érintett régióban található környezetet, az API-hívások újratelepítik a Cloud Services webes és feldolgozói szerepköröket, valamint a virtuális gépeket. Ha helyszíni kapcsolattal rendelkezik, például hibrid telepítés esetén, telepítenie kell egy új VPN Gatewayt, és csatlakoznia kell a helyszíni hálózathoz.
 
-Virtuális hálózat létrehozása: [hozzon létre egy virtuális hálózatot](manage-virtual-network.md#create-a-virtual-network).
+Virtuális hálózat létrehozásához tekintse meg [a virtuális hálózat létrehozása](manage-virtual-network.md#create-a-virtual-network)című témakört.
 
-**K: Virtuális hálózat egy adott régióban replikája lehet újra létre kelljen egy másik régióban?**
+**K: Egy adott régióban lévő VNet replikája újra létrejön egy másik régióban?**
 
-V: Két virtuális hálózat azonos magánhálózati IP-címtér és erőforrások használatával két különböző régióban kelljen Igen, hozhat létre. Internetes szolgáltatások a virtuális hálózat üzemel, ha sikerült földrajzi irányítása a régiót, amelyben aktív forgalom értékre állította be a Traffic Managert. Azonban nem lehet csatlakoztatni két virtuális hálózat az ugyanazt a címtartományt a helyszíni hálózathoz, virtuális berendezés útválasztási problémái okozna. A időben vészhelyzet és a egy virtuális hálózat egy adott régióban, adatvesztés a másik virtuális hálózat használható a régióban, csatlakozni tudjon a helyszíni hálózathoz a megfelelő címterét.
+V: Igen, két virtuális hálózatok hozhat létre, amelyek ugyanazt a magánhálózati IP-címtartományt és-erőforrást használják az idő előtt két különböző régióban. Ha az internetre irányuló szolgáltatásokat a VNet üzemelteti, beállíthatja, hogy a rendszer az aktív régió felé irányítsa a forgalmat Traffic Manager. Azonban nem csatlakoztatható két virtuális hálózatok ugyanazzal a Címterület-kapcsolattal a helyszíni hálózathoz, mivel az útválasztási problémákhoz vezethet. Egy adott régióban a VNet katasztrófájának és elvesztésének időpontjában az elérhető régió többi VNet összekapcsolhatja a helyszíni hálózattal egyező címterület használatával.
 
-Virtuális hálózat létrehozása: [hozzon létre egy virtuális hálózatot](manage-virtual-network.md#create-a-virtual-network).
+Virtuális hálózat létrehozásához tekintse meg [a virtuális hálózat létrehozása](manage-virtual-network.md#create-a-virtual-network)című témakört.
 

@@ -1,6 +1,6 @@
 ---
-title: Az Azure Active Directory B2C felhasználói felületének (UI) egyéni szabályzatok használatával dinamikus testreszabása |} A Microsoft Docs
-description: Támogatja a HTML5-alapú/CSS tartalom, amely dinamikusan változik a futásidőben több márkajelzési környezeteket.
+title: A Azure Active Directory B2C felhasználói felület (UI) dinamikus testreszabása Egyéni szabályzatok használatával | Microsoft Docs
+description: Több védjegyezési tapasztalat támogatása a HTML5-/CSS-tartalommal, amely dinamikusan változik futásidőben.
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
@@ -10,100 +10,100 @@ ms.topic: conceptual
 ms.date: 09/20/2017
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: a798b766d09428e7ebebc04d969d63a542de3808
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.openlocfilehash: 43c0da3ca8fa4b2f74d48b0e202cc56bc8b9406c
+ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67835717"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "68227226"
 ---
-# <a name="azure-active-directory-b2c-configure-the-ui-with-dynamic-content-by-using-custom-policies"></a>Azure Active Directory B2C: Egyéni szabályzatok használatával konfigurálja a felhasználói felület dinamikus tartalom
+# <a name="azure-active-directory-b2c-configure-the-ui-with-dynamic-content-by-using-custom-policies"></a>Azure Active Directory B2C: A felhasználói felület konfigurálása dinamikus tartalommal egyéni házirendek használatával
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Azure Active Directory B2C használatával egyéni házirendek (Azure AD B2C-vel) el lehet küldeni egy lekérdezési karakterlánc paramétert. A paraméterek a HTML-végpontnak való átadásával dinamikusan változtathatja az oldal tartalmát. Például megváltoztathatja a háttérképet az Azure AD B2C regisztrációs vagy bejelentkezési oldalán egy olyan paraméter alapján, amelyet a web- vagy mobilalkalmazásából ad át.
+Azure Active Directory B2C (Azure AD B2C) egyéni házirendek használatával a paramétereket egy lekérdezési karakterláncban küldheti el. A paraméterek a HTML-végpontnak való átadásával dinamikusan változtathatja az oldal tartalmát. Például megváltoztathatja a háttérképet az Azure AD B2C regisztrációs vagy bejelentkezési oldalán egy olyan paraméter alapján, amelyet a web- vagy mobilalkalmazásából ad át.
 
 ## <a name="prerequisites"></a>Előfeltételek
-Ez a cikk foglalkozik az Azure AD B2C felhasználói felület testreszabása a *dinamikus tartalom* egyéni szabályzatok használatával. Első lépésként lásd [egyéni házirendet a felhasználói felületének testreszabását](active-directory-b2c-ui-customization-custom.md).
+Ez a cikk azt ismerteti, hogyan szabhatja testre a Azure AD B2C felhasználói felületét a *dinamikus tartalommal* egyéni házirendek használatával. Első lépésként tekintse meg a [felhasználói felület testreszabása Egyéni szabályzatban](active-directory-b2c-ui-customization-custom.md)című témakört.
 
 >[!NOTE]
->Az Azure AD B2C-cikkben [konfigurálása a felhasználói felület testreszabása a egyéni házirendet](active-directory-b2c-ui-customization-custom.md), a következő alapjait ismerteti:
-> * A lap felhasználói felületének (UI) testreszabási funkcióról.
-> * Alapvető fontosságú eszközök lap felhasználói felületi testreszabási szolgáltatásának tesztelési minta tartalom használatával.
-> * Írja be az egyes oldalak fő felhasználói felületi elemeket.
-> * Ez a funkció alkalmazása ajánlott eljárásai.
+>A Azure AD B2C cikk, a [felhasználói felület testreszabásának konfigurálása egyéni szabályzatokban](active-directory-b2c-ui-customization-custom.md)a következő alapvető tudnivalókat ismerteti:
+> * Az oldal felhasználói felületének (UI) testreszabása funkció.
+> * Alapvető eszközök az oldal felhasználói felületének testreszabási funkciójának teszteléséhez a minta tartalma alapján.
+> * Az egyes lapok típusának alapvető felhasználói felületi elemei
+> * Ajánlott eljárások a funkció alkalmazásához.
 
-## <a name="add-a-link-to-html5css-templates-to-your-user-journey"></a>Hivatkozás hozzáadása a felhasználói interakciósorozat HTML5/CSS-sablonok
+## <a name="add-a-link-to-html5css-templates-to-your-user-journey"></a>A HTML5/CSS-sablonokra mutató hivatkozás hozzáadása a felhasználói útra
 
-Egyéni házirend tartalomdefiníció határozza meg a HTML5-alapú oldal URI-ja, amely egy megadott felhasználói felület lépést (például a bejelentkezési vagy regisztrációs oldal) szolgál. Az alap házirend alapértelmezett megjelenését és működését mutat, egy URI-t a HTML5-fájlok (az a CSS) határozza meg. A bővítmény a házirend módosíthatja a letiltásával a HTML5-fájl a LoadUri megjelenését és működését. Tartalomdefiníciók külső tartalomra, amely a HTML5-alapú/CSS-fájlokat, szükség szerint elvégezte határozzák URL-címeket tartalmazza.
+Egy egyéni szabályzatban a tartalom definíciója határozza meg a HTML5-oldal URI-JÁT, amelyet egy adott felhasználói felületi lépéshez használ (például a bejelentkezési vagy a regisztrációs lapokat). Az alapházirend határozza meg az alapértelmezett megjelenést és működést úgy, hogy a HTML5-fájlok URI-JÁT (a CSS-ben) mutat. A kiterjesztési szabályzatban módosíthatja a megjelenést és a működést úgy, hogy felülbírálja a HTML5-fájl Tartalomdefinícióban. A tartalmi definíciók a HTML5-/CSS-fájlok a megfelelő módon történő elvégzésével meghatározott külső tartalmak URL-jeit tartalmazzák.
 
-A `ContentDefinitions` szakasz tartalmaz egy sorozatát `ContentDefinition` XML-elemeket. Az azonosító attribútuma a `ContentDefinition` elem határozza meg, amely kapcsolódik a tartalomdefiníció az oldal. Azt jelenti az elem határozza meg a környezetet, amely a HTML5-alapú/CSS egyéni sablont fogja alkalmazni. A következő táblázat ismerteti a tartalomdefiníció IEF motor és a hozzájuk kapcsolódó lap típusok által elfogadottakkal azonosítók készletét.
+A `ContentDefinitions` szakasz több `ContentDefinition` XML-elemet tartalmaz. Az `ContentDefinition` elem ID attribútuma határozza meg a tartalom-definícióhoz kapcsolódó oldal típusát. Vagyis az elem határozza meg azt a környezetet, amelyet egy egyéni HTML5/CSS-sablon fog alkalmazni. A következő táblázat a IEF motor által felismert tartalmi definíciós azonosítókat, valamint az azokhoz kapcsolódó lapokat ismerteti.
 
-| Tartalomdefiníció azonosítója | Alapértelmezett HTML5-sablon| Leírás |
+| Tartalom definíciójának azonosítója | Alapértelmezett HTML5-sablon| Leírás |
 |-----------------------|--------|-------------|
-| *api.error* | [exception.cshtml](https://login.microsoftonline.com/static/tenant/default/exception.cshtml) | **Hibalap**. Ez az oldal jelenik meg kivételt vagy hibát észlelt. |
-| *api.idpselections* | [idpSelector.cshtml](https://login.microsoftonline.com/static/tenant/default/idpSelector.cshtml) | **Identitásszolgáltató kiválasztása oldal**. Ezen a lapon találhatók az identitás-szolgáltatóktól, amelyeket a felhasználók a bejelentkezés során. A beállítások általában: vállalati identitás-szolgáltatóktól, közösségi Identitásszolgáltatók, például a Facebook és a Google + vagy helyi fiókot. |
-| *api.idpselections.signup* | [idpSelector.cshtml](https://login.microsoftonline.com/static/tenant/default/idpSelector.cshtml) | **Identity provider adatgyűjtésre vonatkozó felhasználói előfizetési**. Ezen a lapon találhatók az identitás-szolgáltatóktól, amelyeket a felhasználók a regisztráció során. A beállítások vagy a vállalati identitás-szolgáltatóktól, közösségi Identitásszolgáltatók, például a Facebook és a Google + vagy a helyi fiókok. |
-| *api.localaccountpasswordreset* | [selfasserted.html](https://login.microsoftonline.com/static/tenant/default/selfAsserted.cshtml) | **Elfelejtett jelszó oldal**. Ez az oldal által felhasználók végrehajtandó kezdeményezni a jelszó-visszaállítás űrlap tartalmazza.  |
-| *api.localaccountsignin* | [selfasserted.html](https://login.microsoftonline.com/static/tenant/default/selfAsserted.cshtml) | **Helyi fiók bejelentkezési oldal**. Ez az oldal számára egy egy e-mail-cím vagy felhasználónév alapján helyi fiókkal történő bejelentkezés űrlapot tartalmaz. Az űrlap egy bemeneti szövegmezőt és a jelszó mező tartalmazhat. |
-| *api.localaccountsignup* | [selfasserted.html](https://login.microsoftonline.com/static/tenant/default/selfAsserted.cshtml) | **Helyi fiók regisztrációs oldala**. Ez az oldal tartalmazza egy űrlap egy helyi fiókot, egy e-mail-cím vagy felhasználónév alapján. Az űrlap tartalmazhat különböző bemeneti vezérlők, például: egy szövegbeviteli mezőbe, a jelszó mező, választógomb, egyszeri kiválasztásos legördülő listák, és a többszörös kijelöléssel jelölje be. |
-| *api.phonefactor* | [multifactor-1.0.0.cshtml](https://login.microsoftonline.com/static/tenant/default/multifactor-1.0.0.cshtml) | **A multi-factor authentication-oldal**. Ezen a lapon felhasználók ellenőrizheti azok telefonszámok (a szöveges vagy szóbeli) regisztrálási vagy bejelentkezési során. |
-| *api.selfasserted* | [selfasserted.html](https://login.microsoftonline.com/static/tenant/default/selfAsserted.cshtml) | **Közösségi fiók regisztrálására szolgáló oldal**. Ezen a lapon, hogy a felhasználók hajtsa végre, amikor regisztrál egy közösségi identitásszolgáltatót egy meglévő fiókot az űrlapot tartalmaz. Ezen a lapon a hasonló az előző közösségi fiók regisztrációs oldalon, a jelszó számbeviteli mezők kivételével. |
-| *api.selfasserted.profileupdate* | [updateprofile.html](https://login.microsoftonline.com/static/tenant/default/updateProfile.cshtml) | **Frissítés profillapján**. Ezen a lapon, hogy a profil frissítése a felhasználók űrlapot tartalmaz. Ez az oldal hasonlít a közösségi fiók regisztrációs oldalon, a jelszó számbeviteli mezők kivételével. |
-| *api.signuporsignin* | [unified.html](https://login.microsoftonline.com/static/tenant/default/unified.cshtml) | **Egyesített regisztrálási vagy bejelentkezési oldal**. Ezen az oldalon a felhasználói regisztráció és a bejelentkezési folyamat kezeli. Felhasználók a vállalati identitás-szolgáltatóktól, közösségi Identitásszolgáltatók, például Facebook vagy a Google + vagy helyi fiókot.  |
+| *api.error* | [exception.cshtml](https://login.microsoftonline.com/static/tenant/default/exception.cshtml) | **Hiba lap**. Ez az oldal akkor jelenik meg, ha kivételt vagy hibát észlel. |
+| *api.idpselections* | [idpSelector.cshtml](https://login.microsoftonline.com/static/tenant/default/idpSelector.cshtml) | **Identitás-szolgáltató kiválasztása lap**. Ezen a lapon megtekintheti azokat az identitás-szolgáltatókat, amelyeket a felhasználók a bejelentkezés során választhatnak. A lehetőségek általában a vállalati identitás-szolgáltatók, a közösségi identitás-szolgáltatók, például a Facebook és a Google +, vagy a helyi fiókok. |
+| *api.idpselections.signup* | [idpSelector.cshtml](https://login.microsoftonline.com/static/tenant/default/idpSelector.cshtml) | **Az identitás-szolgáltató kiválasztása a regisztrációhoz**. Ezen a lapon megtekintheti azokat az azonosítókat, amelyeket a felhasználók a regisztráció során választhatnak. A lehetőségek a vállalati identitás-szolgáltatók, a közösségi identitás-szolgáltatók, például a Facebook, a Google + vagy a helyi fiókok. |
+| *api.localaccountpasswordreset* | [selfasserted.html](https://login.microsoftonline.com/static/tenant/default/selfAsserted.cshtml) | **Elfelejtett jelszó lap**. Ez az oldal olyan űrlapot tartalmaz, amelyet a felhasználóknak be kell fejezniük a jelszó-visszaállítás elindításához.  |
+| *api.localaccountsignin* | [selfasserted.html](https://login.microsoftonline.com/static/tenant/default/selfAsserted.cshtml) | **Helyi fiók bejelentkezési lapja**. Ez az oldal egy olyan űrlapot tartalmaz, amely egy e-mail-cím vagy egy Felhasználónév alapján helyi fiókkal jelentkezik be. Az űrlap tartalmazhatja a szövegbeviteli és a jelszó-beviteli mezőt is. |
+| *api.localaccountsignup* | [selfasserted.html](https://login.microsoftonline.com/static/tenant/default/selfAsserted.cshtml) | **Helyi fiók regisztrációs lapja**. Ez az oldal egy olyan űrlapot tartalmaz, amely az e-mail-cím vagy a Felhasználónév alapján létrehozott helyi fiókra regisztrál. Az űrlap különböző beviteli vezérlőket tartalmazhat, például a következőket: szövegbeviteli mező, jelszó-beviteli mező, választógomb, egyszeres kijelölés legördülő lista és többszörös kijelölés jelölőnégyzet. |
+| *api.phonefactor* | [multifactor-1.0.0.cshtml](https://login.microsoftonline.com/static/tenant/default/multifactor-1.0.0.cshtml) | **Multi-Factor Authentication oldal**. Ezen a lapon a felhasználók megtekinthetik a telefonszámokat (szöveg vagy hang használatával) a regisztráció vagy a bejelentkezés során. |
+| *api.selfasserted* | [selfasserted.html](https://login.microsoftonline.com/static/tenant/default/selfAsserted.cshtml) | **Közösségi fiók regisztrálása oldal**. Ez az oldal egy olyan űrlapot tartalmaz, amelyet a felhasználóknak be kell fejezniük, amikor regisztrálnak egy meglévő fiókkal egy közösségi identitás-szolgáltatótól. Ez az oldal hasonló az előző közösségi fiók regisztrálási lapjához, a jelszó-beviteli mezők kivételével. |
+| *api.selfasserted.profileupdate* | [updateprofile.html](https://login.microsoftonline.com/static/tenant/default/updateProfile.cshtml) | **Profil frissítése lap**. Ez a lap egy űrlapot tartalmaz, amelyet a felhasználók frissíthetnek a profiljuk frissítéséhez. Ez az oldal hasonló a közösségi fiók regisztrációs oldalához, a jelszó-beviteli mezők kivételével. |
+| *api.signuporsignin* | [unified.html](https://login.microsoftonline.com/static/tenant/default/unified.cshtml) | **Egyesített regisztrációs vagy bejelentkezési oldal**. Ez a lap kezeli a felhasználói regisztrációt és a bejelentkezési folyamatot. A felhasználók a vállalati identitás-szolgáltatók, a közösségi identitás-szolgáltatók, például a Facebook vagy a Google +, vagy a helyi fiókok használatával használhatják a felhasználókat.  |
 
 ## <a name="serving-dynamic-content"></a>Dinamikus tartalom kiszolgálása
-Az a [konfigurálása a felhasználói felület testreszabása a egyéni házirendet](active-directory-b2c-ui-customization-custom.md) a cikkben az Azure Blob storage HTML5-fájlok feltöltése. HTML5-fájlokhoz statikus, és az azonos HTML tartalom az egyes kérések jelennek meg.
+A [felhasználói felület testreszabása Egyéni házirendben](active-directory-b2c-ui-customization-custom.md) című cikkben a HTML5-fájlokat az Azure Blob Storage-ba töltheti fel. Ezek a HTML5-fájlok statikusak, és ugyanazokat a HTML-tartalmakat jelenítik meg az egyes kérésekhez.
 
-Ebben a cikkben használata ASP.NET-webalkalmazás, amely fogadja el a lekérdezési karakterlánc paraméterei, és ennek megfelelően válaszolnak.
+Ebben a cikkben egy ASP.NET-webalkalmazást használ, amely fogadja a lekérdezési karakterlánc paramétereit, és ennek megfelelően válaszol.
 
-Ez az útmutató akkor:
-* Hozzon létre egy ASP.NET Core-webalkalmazás, amely futtatja a HTML5-sablonokat.
-* Adjon hozzá egy egyéni sablont HTML5 _unified.cshtml_.
-* A webalkalmazás közzététele az Azure App Service-ben.
-* Eltérő eredetű erőforrások megosztása (CORS) a webalkalmazás beállítása.
-* Bírálja felül a `LoadUri` elemeit képeztük le a HTML5-fájlra mutat.
+Ebben az útmutatóban a következőket végezheti el:
+* Hozzon létre egy ASP.NET Core webalkalmazást, amely a HTML5-sablonokat tárolja.
+* Egyéni HTML5-sablon hozzáadása, _Unified. cshtml_.
+* A webalkalmazás közzététele Azure App Service.
+* Állítsa be a CORS a webalkalmazáshoz.
+* A `LoadUri` HTML5-fájlra mutató elemek felülbírálása.
 
 ## <a name="step-1-create-an-aspnet-web-app"></a>1\. lépés: ASP.NET-webapp létrehozása
 
-1. A Visual Studióban hozzon létre egy projektet kiválasztásával **fájl** > **új** > **projekt**.
+1. A Visual Studióban hozzon létre egy projektet a **fájl** > **új** > **projekt**lehetőség kiválasztásával.
 
-2. Az a **új projekt** ablakban válassza **Visual C#**  > **webes** > **ASP.NET Core-webalkalmazás (.NET Core)** .
+2. Az **új projekt** ablakban válassza  > a **Visual C#**  **web** > **ASP.net Core Web Application (.net Core)** elemet.
 
-3. Adjon nevet az alkalmazásnak (például *Contoso.AADB2C.UI*), majd válassza ki **OK**.
+3. Nevezze el az alkalmazást (például *contoso. AADB2C. UI*), majd kattintson **az OK gombra**.
 
     ![Új Visual Studio-projekt létrehozása](media/active-directory-b2c-ui-customization-custom-dynamic/aadb2c-ief-ui-customization-create-project1.png)
 
-4. Válassza ki a **webalkalmazás** sablont.
+4. Válassza ki  a webalkalmazás-sablont.
 
-5. A hitelesítés beállítása **nincs hitelesítés**.
+5. Állítsa be a hitelesítést hitelesítés **nélkül**.
 
-    ![Webalkalmazás-sablon kiválasztása](media/active-directory-b2c-ui-customization-custom-dynamic/aadb2c-ief-ui-customization-create-project2.png)
+    ![Webalkalmazás sablonjának kiválasztása](media/active-directory-b2c-ui-customization-custom-dynamic/aadb2c-ief-ui-customization-create-project2.png)
 
 6. A projekt létrehozásához válassza az **OK** lehetőséget.
 
 ## <a name="step-2-create-mvc-view"></a>2\. lépés: MVC-nézet létrehozása
-### <a name="step-21-download-the-b2c-built-in-html5-template"></a>2\.1. lépés: A B2C beépített HTML5-sablon letöltése
-A HTML5-alapú egyéni sablont az Azure AD B2C-vel beépített HTML5 sablonon alapul. Letöltheti a [unified.html fájl](https://login.microsoftonline.com/static/tenant/default/unified.cshtml) vagy töltse le a sablont a [alapszintű csomagja](https://github.com/AzureADQuickStarts/B2C-AzureBlobStorage-Client/tree/master/sample_templates/wingtip). Ez a HTML5-fájl használatával hozzon létre egy egyesített regisztrálási vagy bejelentkezési oldal.
+### <a name="step-21-download-the-b2c-built-in-html5-template"></a>2,1. lépés: A B2C beépített HTML5-sablon letöltése
+Az egyéni HTML5-sablon a Azure AD B2C beépített HTML5-sablonon alapul. Letöltheti az [egyesített. html fájlt](https://login.microsoftonline.com/static/tenant/default/unified.cshtml) , vagy letöltheti a sablont az alapszintű [csomagból](https://github.com/AzureADQuickStarts/B2C-AzureBlobStorage-Client/tree/master/sample_templates/wingtip). Ezzel a HTML5-fájllal létrehozhat egy egyesített regisztrációs vagy bejelentkezési oldalt.
 
-### <a name="step-22-add-the-mvc-view"></a>2\.2. lépés: Az MVC-nézet hozzáadása
-1. Kattintson a jobb gombbal a nézetek készletkövetést mappát, majd **Hozzáadás** > **új elem**.
+### <a name="step-22-add-the-mvc-view"></a>2,2. lépés: Az MVC-nézet hozzáadása
+1. Kattintson a jobb gombbal a nézetek/Kezdőlap mappára, majd **vegyen fel** > **új elemeket**.
 
-    ![A Visual Studióban adjon hozzá új cikk menüpont](media/active-directory-b2c-ui-customization-custom-dynamic/aadb2c-ief-ui-customization-add-view1.png)
+    ![Új elem menüpont hozzáadása a Visual Studióban](media/active-directory-b2c-ui-customization-custom-dynamic/aadb2c-ief-ui-customization-add-view1.png)
 
-2. Az a **új elem hozzáadása – Contoso.AADB2C.UI** ablakban válassza **Web > ASP.NET**.
+2. Az **új elem hozzáadása – contoso. AADB2C. UI** ablakban válassza a **Web > ASP.net**lehetőséget.
 
-3. Válassza ki **MVC-weblap megtekintéséhez**.
+3. Válassza az **MVC-nézet lapot**.
 
-4. Az a **neve** változtassa a nevet a **unified.cshtml**.
+4. A **név** mezőben módosítsa a nevet az **Unified. cshtml**értékre.
 
 5. Válassza a **Hozzáadás** lehetőséget.
 
-    ![Új elem párbeszédpanel hozzáadása a Visual Studióban az MVC-nézet lap kiemelésével](media/active-directory-b2c-ui-customization-custom-dynamic/aadb2c-ief-ui-customization-add-view2.png)
+    ![Új elem hozzáadása párbeszédpanel a Visual Studióban az MVC View oldalon kiemelve](media/active-directory-b2c-ui-customization-custom-dynamic/aadb2c-ief-ui-customization-add-view2.png)
 
-6. Ha a *unified.cshtml* fájlban még nem nyitott, kattintson duplán a fájlra a megnyitásához, és törölje a fájl tartalmát.
+6. Ha az *egyesített. cshtml* fájl már nincs megnyitva, kattintson duplán a fájlra a megnyitásához, majd törölje a fájl tartalmát.
 
-7. Ebben a bemutatóban elrendezés-lapra mutató hivatkozás eltávolítása. Adja hozzá a következő kódrészletet a _unified.cshtml_:
+7. Ebben az útmutatóban eltávolítjuk az elrendezési oldalra mutató hivatkozást. Adja hozzá a következő kódrészletet az _Unified. cshtml_:
 
     ```csharp
     @{
@@ -111,23 +111,23 @@ A HTML5-alapú egyéni sablont az Azure AD B2C-vel beépített HTML5 sablonon al
     }
     ```
 
-8. Nyissa meg a _unified.cshtml_ sablonból az Azure AD B2C-vel beépített HTML5 letöltött fájl.
+8. Nyissa meg Azure AD B2C beépített HTML5-sablonból letöltött _Unified. cshtml_ fájlt.
 
-9. Cserélje le az egyetlen kukacjelek (@) két jeleket (@).
+9. Cserélje le az "a" jeleket (@) dupla jelre (@ @).
 
-10. Másolja ki a fájl tartalmát, és illessze be alább az elrendezés definíciója. A kód hasonlóan kell kinéznie:
+10. Másolja ki a fájl tartalmát, és illessze be az elrendezés definíciója alá. A kódnak így kell kinéznie:
 
-    ![Miután hozzáadta a HTML5 Unified.cshtml fájl](media/active-directory-b2c-ui-customization-custom-dynamic/aadb2c-ief-ui-customization-edit-view1.png)
+    ![egységes. cshtml fájl a HTML5 hozzáadása után](media/active-directory-b2c-ui-customization-custom-dynamic/aadb2c-ief-ui-customization-edit-view1.png)
 
-### <a name="step-23-change-the-background-image"></a>2\.3. lépés: Háttérkép módosítása
+### <a name="step-23-change-the-background-image"></a>2,3. lépés: Háttérkép módosítása
 
-Keresse meg a `<img>` elem, amely tartalmazza a `ID` érték *background_background_image*, majd cserélje le a `src` értéket **https://kbdevstorage1.blob.core.windows.net/asset-blobs/19889_en_1** vagy bármely más obrázek pozadí is használni szeretné.
+`ID` `src` **Keressemeg https://kbdevstorage1.blob.core.windows.net/asset-blobs/19889_en_1** azt az elemet, amely a background_background_image értéket tartalmazza, majd cserélje le az értéket az értékre, vagy bármely más háttérképet, amelyet használni szeretne `<img>` .
 
-![Az oldal háttér módosítása](media/active-directory-b2c-ui-customization-custom-dynamic/aadb2c-ief-ui-customization-add-static-background.png)
+![IMG-elem egyéni background_background_image src értékkel](media/active-directory-b2c-ui-customization-custom-dynamic/aadb2c-ief-ui-customization-add-static-background.png)
 
-### <a name="step-24-add-your-view-to-the-mvc-controller"></a>2\.4. lépés: A nézet hozzáadása az MVC-vezérlő
+### <a name="step-24-add-your-view-to-the-mvc-controller"></a>2,4. lépés: Nézet hozzáadása az MVC-vezérlőhöz
 
-1. Nyissa meg **Controllers\HomeController.cs**, és adja hozzá az alábbi metódust:
+1. Nyissa meg a **Controllers\HomeController.cs**, és adja hozzá a következő metódust:
 
     ```C
     public IActionResult unified()
@@ -135,119 +135,119 @@ Keresse meg a `<img>` elem, amely tartalmazza a `ID` érték *background_backgro
         return View();
     }
     ```
-    Ez a kód határozza meg, hogy a módszert kell használnia egy *nézet* sablonfájl renderelni a böngészőnek adott válaszban. Mivel nincs explicit módon megadott neve a *nézet* sablonfájl, MVC alapértelmezés szerint az a _unified.cshtml_ a fájl megtekintése a */nézetek készletkövetést* mappa.
+    Ez a kód azt adja meg, hogy a metódusnak meg kell-e *tekinteni a nézet* sablonját, hogy választ lehessen megjeleníteni a böngészőnek. Mivel nem explicit módon adjuk meg a *nézet* sablonjának nevét, az MVC alapértelmezett értéke az _egyesített. cshtml_ View fájl használata a */views/Home* mappában.
 
-    Miután hozzáadta a _egységes_ metódus, a kód hasonlóan kell kinéznie:
+    Az _egyesített_ metódus hozzáadása után a kódnak a következőhöz hasonlóan kell kinéznie:
 
-    ![A nézet megjelenítése a vezérlő módosítása](media/active-directory-b2c-ui-customization-custom-dynamic/aadb2c-ief-ui-customization-controller-view.png)
+    ![A nézet megjelenítéséhez módosítsa a vezérlőt](media/active-directory-b2c-ui-customization-custom-dynamic/aadb2c-ief-ui-customization-controller-view.png)
 
-2. A webalkalmazás hibakeresése, és ellenőrizze, hogy a _egységes_ lapon érhető el (például `http://localhost:<Port number>/Home/unified`).
+2. Hibakeresés a webalkalmazásban, és győződjön meg arról, hogy az _egyesített_ oldal elérhető (például `http://localhost:<Port number>/Home/unified`:).
 
-### <a name="step-25-publish-to-azure"></a>2\.5. lépés: Közzététel az Azure platformon
-1. A **Megoldáskezelőben**, kattintson a jobb gombbal a **Contoso.AADB2C.UI** projektre, és válassza ki **közzététel**.
+### <a name="step-25-publish-to-azure"></a>2,5. lépés: Közzététel az Azure platformon
+1. **Megoldáskezelő**kattintson a jobb gombbal a **contoso. AADB2C. UI** projektre, majd válassza a **Közzététel**lehetőséget.
 
-    ![A Microsoft Azure App Service-ben való közzététele](media/active-directory-b2c-ui-customization-custom-dynamic/aadb2c-ief-ui-customization-publish1.png)
+    ![Közzététel Microsoft Azure App Service](media/active-directory-b2c-ui-customization-custom-dynamic/aadb2c-ief-ui-customization-publish1.png)
 
-2. Válassza ki a **Microsoft Azure App Service** csempére, majd válassza ki **közzététel**.
+2. Válassza ki a **Microsoft Azure app Service** csempét, majd válassza a **Közzététel**lehetőséget.
 
-    ![Hozzon létre új Microsoft Azure App Service](media/active-directory-b2c-ui-customization-custom-dynamic/aadb2c-ief-ui-customization-publish2.png)
+    ![Új Microsoft Azure létrehozása App Service](media/active-directory-b2c-ui-customization-custom-dynamic/aadb2c-ief-ui-customization-publish2.png)
 
-    A **létrehozása App Service** ablak nyílik meg. Ez a megkezdéséhez az összes szükséges Azure-erőforrások létrehozása az ASP.NET-webalkalmazás futtatása az Azure-ban.
+    Megnyílik a **Create app Service (létrehozás** ) ablak. Ebben az esetben elkezdheti létrehozni az összes szükséges Azure-erőforrást a ASP.NET-webalkalmazás Azure-ban való futtatásához.
 
     > [!NOTE]
-    > Közzétételre vonatkozó további információkért lásd: [ASP.NET-webalkalmazás létrehozása az Azure-ban](https://docs.microsoft.com/azure/app-service-web/app-service-web-get-started-dotnet).
+    > További információ a közzétételről: [ASP.net-Webalkalmazás létrehozása az Azure-ban](https://docs.microsoft.com/azure/app-service-web/app-service-web-get-started-dotnet).
 
-3. Az a **webalkalmazás neve** mezőbe írja be egy egyedi névre (érvényes karakterek: a – z, A-Z, 0 – 9 és a kötőjel (-). A webalkalmazás URL-címe `http://<app_name>.azurewebsites.NET`, amelyben a `<app_name>` a webalkalmazás neve. Elfogadhatja az automatikusan létrehozott nevet is, amely már egyedi.
+3. A **Web App Name (webalkalmazás neve** ) mezőben adjon meg egy egyedi nevet (érvényes karakterek: a-z, a-z, 0-9 és a kötőjel (-). A webalkalmazás URL-címe `http://<app_name>.azurewebsites.NET`, amelyben a `<app_name>` a webalkalmazás neve. Elfogadhatja az automatikusan létrehozott nevet is, amely már egyedi.
 
 4. A **Create** (Létrehozás) gombra kattintva hozzákezdhet az Azure-erőforrások létrehozásához.
 
-    ![Adja meg a tulajdonságokat App Service-ben](media/active-directory-b2c-ui-customization-custom-dynamic/aadb2c-ief-ui-customization-publish3.png)
+    ![App Service tulajdonságainak megadása](media/active-directory-b2c-ui-customization-custom-dynamic/aadb2c-ief-ui-customization-publish3.png)
 
-    A létrehozási folyamat befejezése után a varázsló közzéteszi az ASP.NET webalkalmazást az Azure-ba, és ezután elindítja az alkalmazást, az alapértelmezett böngészőben.
+    A létrehozási folyamat befejezése után a varázsló közzéteszi a ASP.NET-webalkalmazást az Azure-ban, majd elindítja az alkalmazást az alapértelmezett böngészőben.
 
-5. Másolja az URL-címét a _egységes_ lap (például _https://<app_name>.azurewebsites.net/home/unified_).
+5. Másolja az _egyesített_ lap URL-címét (például _https://< APP_NAME >. azurewebsites. net/Home/Unified_).
 
-## <a name="step-3-configure-cors-in-azure-app-service"></a>3\. lépés: A CORS konfigurálása az Azure App Service-ben
-1. Az a [az Azure portal](https://portal.azure.com/)válassza **App Services**, majd válassza ki az API-alkalmazás neve.
+## <a name="step-3-configure-cors-in-azure-app-service"></a>3\. lépés: CORS konfigurálása Azure App Serviceban
+1. A [Azure Portal](https://portal.azure.com/)válassza a **app Services**lehetőséget, majd válassza ki az API-alkalmazás nevét.
 
-    ![API-alkalmazás kiválasztása az Azure Portalon](media/active-directory-b2c-ui-customization-custom-dynamic/aadb2c-ief-ui-customization-CORS1.png)
+    ![Válassza ki az API-alkalmazást a Azure Portal](media/active-directory-b2c-ui-customization-custom-dynamic/aadb2c-ief-ui-customization-CORS1.png)
 
-2. Az a **beállítások** szakasz **API** szakaszban jelölje be **CORS**.
+2. A **Beállítások** szakasz **API** területén válassza a **CORS**lehetőséget.
 
-    ![A CORS menüpont kiemelésével App Service-ben menü az Azure Portalon](media/active-directory-b2c-ui-customization-custom-dynamic/aadb2c-ief-ui-customization-CORS2.png)
+    ![A CORS App Service menüjében Kiemelt menüelem Azure Portal](media/active-directory-b2c-ui-customization-custom-dynamic/aadb2c-ief-ui-customization-CORS2.png)
 
-3. Az a **CORS** ablakban, a a **engedélyezett eredetek** tegye a következők egyikét:
+3. A **CORS** ablak **engedélyezett** források mezőjében tegye a következők egyikét:
 
-    * Adja meg az URL-címe vagy URL-címek, amelyek számára engedélyezni a JavaScript-hívásokat. Csak kisbetűk használata a beírt URL-címeket kell.
-    * Adja meg a csillag (*) adja meg, hogy minden eredettartományból elfogadja a hívásokat.
+    * Adja meg azt az URL-címet vagy URL-címet, amely számára engedélyezni szeretné a JavaScript-hívásokat. A beírt URL-címeken az összes kisbetűs betűt kell használnia.
+    * A csillag (*) érték megadásával adhatja meg, hogy az összes forrás tartomány fogadva legyen-e.
 
 4. Kattintson a **Mentés** gombra.
 
-    ![Engedélyezett eredetek színnel csillag CORS-beállítások lap](media/active-directory-b2c-ui-customization-custom-dynamic/aadb2c-ief-ui-customization-CORS3.png)
+    ![CORS-beállítások lap, csillaggal kiemelve az engedélyezett Eredetekben](media/active-directory-b2c-ui-customization-custom-dynamic/aadb2c-ief-ui-customization-CORS3.png)
 
-    Miután kiválasztotta **mentése**, az API-alkalmazásba, fogadja el a megadott URL-címekről jövő hívásokat.
+    A **Mentés**gombra kattintva az API-alkalmazás a megadott URL-címekről fogadja a JavaScript-hívásokat.
 
-## <a name="step-4-html5-template-validation"></a>4\. lépés: HTML5-alapú sablon érvényesítése
-A HTML5-alapú sablon készen áll a használatra. Azonban nem érhető el a a `ContentDefinition` kódot. Hozzáadása előtt `ContentDefinition` az egyéni házirend biztosítja, hogy:
-* A tartalom HTML5 megfelelő és elérhető-e.
-* A webtartalom-kiszolgáló a CORS engedélyezve van.
-
-    >[!NOTE]
-    >Győződjön meg arról, hogy a hely hol tárolja a tartalmat a CORS engedélyezve van, és tesztelheti a CORS-kérések, lépjen a [test-cors.org](https://test-cors.org/) webhelyén.
-
-* A biztonságos keresztül szolgálatban tartalma **HTTPS**.
-* Használ *abszolút URL-CÍMEK*, mint például `https://yourdomain/content`, minden hivatkozások, a CSS-tartalom és a képeket.
-
-## <a name="step-5-configure-your-content-definition"></a>5\. lépés: A tartalom definíció konfigurálása
-Konfigurálása `ContentDefinition`, tegye a következőket:
-1. Nyissa meg a szabályzat alapszintű fájlt (például *TrustFrameworkBase.xml*).
-
-2. Keresse meg a `<ContentDefinitions>` elemet, majd másolja ki a teljes tartalmát a `<ContentDefinitions>` csomópont.
-
-3. Nyissa meg a kiterjesztésű fájlt (például *TrustFrameworkExtensions.xml*), és keressen rá a `<BuildingBlocks>` elemet. Ha az elem nem létezik, adja hozzá.
-
-4. Illessze be a teljes tartalmát a `<ContentDefinitions>` csomópont gyermekeként kimásolt a `<BuildingBlocks>` elemet.
-
-5. Keresse meg a `<ContentDefinition>` tartalmazó csomópont `Id="api.signuporsignin"` XML-másolta.
-
-6. Módosítsa az értéket a `LoadUri` a _~/tenant/default/unified_ való _https://<app_name>.azurewebsites.net/home/unified_.
-    Az egyéni házirendet a következőhöz hasonlóan kell kinéznie:
-
-    ![XML-kódrészlet például LoadUri elemmel kiemelésével](media/active-directory-b2c-ui-customization-custom-dynamic/aadb2c-ief-ui-customization-content-definition.png)
-
-## <a name="step-6-upload-the-policy-to-your-tenant"></a>6\. lépés: A szabályzat feltöltése a bérlőhöz
-1. Az a [az Azure portal](https://portal.azure.com), váltson át a [az Azure AD B2C-bérlője kontextusában](active-directory-b2c-navigate-to-b2c-context.md), majd válassza ki **Azure AD B2C-vel**.
-
-2. Válassza ki **identitás-kezelőfelületi keretrendszer**.
-
-3. Válassza ki **összes szabályzat**.
-
-4. Válassza ki **szabályzat feltöltése**.
-
-5. Válassza ki a **szabályzat felülírása, ha létezik** jelölőnégyzetet.
-
-6. Töltse fel a *TrustFrameworkExtensions.xml* fájlt, és győződjön meg arról, hogy érvényesítési továbbítja.
-
-## <a name="step-7-test-the-custom-policy-by-using-run-now"></a>7\. lépés: Az egyéni házirend tesztelése a Futtatás most
-1. Válassza ki **Azure AD B2C-beállítások**, majd válassza ki **identitás-kezelőfelületi keretrendszer**.
+## <a name="step-4-html5-template-validation"></a>4\. lépés: HTML5-sablon ellenőrzése
+A HTML5-sablon használatra kész. Azonban a `ContentDefinition` kódban nem érhető el. Az egyéni szabályzathoz `ContentDefinition` való hozzáadás előtt győződjön meg az alábbiakról:
+* A tartalom HTML5-kompatibilis és elérhető.
+* A CORS engedélyezve van a tartalom-kiszolgáló.
 
     >[!NOTE]
-    >Futtatás most kell előzetesen regisztrálva, a bérlő legalább egy alkalmazás szükséges. Megtudhatja, hogyan regisztrálja az alkalmazást, tekintse meg az Azure AD B2C [Ismerkedés](active-directory-b2c-get-started.md) cikk vagy a [alkalmazásregisztráció](active-directory-b2c-app-registration.md) cikk.
+    >A [test-CORS.org](https://test-cors.org/) webhelyén ellenőrizheti, hogy az a hely, ahol a tartalmat üzemelteti, engedélyezve van-e a CORS, és képes-e a CORS-kérelmek tesztelésére.
 
-2. Nyissa meg **B2C_1A_signup_signin**, a függő entitásonkénti (RP) egyéni-szabályzattal, feltöltött, és válassza ki **Futtatás most**.
-    Megtekintheti a háttérben történő, amelyet korábban hozott létre az egyéni HTML5 kell lennie.
+* A kiszolgált tartalom biztonságos **https**-kapcsolaton keresztül.
+* *Abszolút URL-címeket*használ, például `https://yourdomain/content`az összes hivatkozáshoz, a CSS-tartalomhoz és a képekhez.
+
+## <a name="step-5-configure-your-content-definition"></a>5\. lépés: A tartalom definíciójának konfigurálása
+A konfigurálásához `ContentDefinition`tegye a következőket:
+1. Nyissa meg a szabályzat alapfájlját (például *TrustFrameworkBase. XML*).
+
+2. Keresse meg az `<ContentDefinitions>` elemet, majd másolja a `<ContentDefinitions>` csomópont teljes tartalmát.
+
+3. Nyissa meg a kiterjesztési fájlt (például *TrustFrameworkExtensions. XML*), majd keresse meg `<BuildingBlocks>` az elemet. Ha az elem nem létezik, adja hozzá.
+
+4. Illessze be annak a `<ContentDefinitions>` csomópontnak a teljes tartalmát, amelyet az `<BuildingBlocks>` elem gyermeke másolt.
+
+5. Keresse meg a `<ContentDefinition>` csomópontot `Id="api.signuporsignin"` , amely a másolt XML-fájlban található.
+
+6. Módosítsa a `LoadUri` _~/Tenant/default/Unified_ értéket a _https://< APP_NAME >. azurewebsites. net/Home/Unified_értékre.
+    Az egyéni szabályzatnak a következőhöz hasonlóan kell kinéznie:
+
+    ![Példa XML-kódrészletre Kiemelt Tartalomdefinícióban elemmel](media/active-directory-b2c-ui-customization-custom-dynamic/aadb2c-ief-ui-customization-content-definition.png)
+
+## <a name="step-6-upload-the-policy-to-your-tenant"></a>6\. lépés: Töltse fel a szabályzatot a bérlőbe
+1. A [Azure Portal](https://portal.azure.com)váltson a [Azure ad B2C bérlő kontextusára](active-directory-b2c-navigate-to-b2c-context.md), majd válassza a **Azure ad B2C**lehetőséget.
+
+2. Válassza az **identitási élmény keretrendszert**.
+
+3. Válassza **az összes szabályzat**lehetőséget.
+
+4. Válassza a **szabályzat feltöltése**lehetőséget.
+
+5. Jelölje be a **házirend felülírása, ha létezik** jelölőnégyzetet.
+
+6. Töltse fel a *TrustFrameworkExtensions. XML* fájlt, és ellenőrizze, hogy átadja-e az érvényesítést.
+
+## <a name="step-7-test-the-custom-policy-by-using-run-now"></a>7\. lépés: Az egyéni házirend tesztelése a Futtatás most használatával
+1. Válassza ki **Azure ad B2C beállításokat**, majd válassza az **identitási élmény keretrendszert**.
+
+    >[!NOTE]
+    >A futtatáshoz szükség van legalább egy alkalmazás előregisztrálására a bérlőn. Az alkalmazások regisztrálásának megismeréséhez tekintse meg a Azure AD B2C első [lépések](active-directory-b2c-get-started.md) című cikket, vagy az [alkalmazás regisztrációját](active-directory-b2c-app-registration.md) ismertető cikket.
+
+2. Nyissa meg a **B2C_1A_signup_signin**, a függő entitás (RP) egyéni házirendjét, majd válassza a **Futtatás most**lehetőséget.
+    A korábban létrehozott háttérrel megtekintheti az egyéni HTML5-t.
 
     ![A regisztrálási vagy bejelentkezési szabályzat](media/active-directory-b2c-ui-customization-custom-dynamic/aadb2c-ief-ui-customization-demo1.png)
 
 ## <a name="step-8-add-dynamic-content"></a>8\. lépés: Dinamikus tartalom hozzáadása
-Módosítsa a lekérdezési sztring paramétereként nevű alapján háttérben _campaignId_. Az RP-alkalmazás (webes és mobilalkalmazások) Azure AD B2C-t küld a paraméter. A házirend beolvassa a paramétert, és elküldi az értékét a HTML5-sablont.
+Módosítsa a hátteret a _campaignId_nevű lekérdezési karakterlánc paraméter alapján. Az RP-alkalmazás (webes és mobil alkalmazások) elküldi a paramétert Azure AD B2Cnak. A házirend beolvassa a paramétert, és elküldi az értékét a HTML5-sablonnak.
 
-### <a name="step-81-add-a-content-definition-parameter"></a>8\.1. lépés: Tartalomdefiníció paraméter hozzáadása
+### <a name="step-81-add-a-content-definition-parameter"></a>8,1. lépés: Content definition paraméter hozzáadása
 
-Adja hozzá a `ContentDefinitionParameters` elem az alábbiak szerint:
-1. Nyissa meg a *SignUpOrSignin* a házirend-fájlját (például *SignUpOrSignin.xml*).
+Adja hozzá `ContentDefinitionParameters` az elemet a következő módon:
+1. Nyissa meg a szabályzat *SignUpOrSignin* -fájlját (például *SignUpOrSignin. XML*).
 
-2. Alatt a `<DefaultUserJourney>` csomópont, adja hozzá a `UserJourneyBehaviors` csomópont:
+2. A csomópont alatt adja hozzá a `UserJourneyBehaviors` csomópontot: `<DefaultUserJourney>`
 
     ```XML
     <RelyingParty>
@@ -261,10 +261,10 @@ Adja hozzá a `ContentDefinitionParameters` elem az alábbiak szerint:
     </RelyingParty>
     ```
 
-### <a name="step-82-change-your-code-to-accept-a-query-string-parameter-and-replace-the-background-image"></a>8\.2. lépés: Módosítania kell a kódot, fogadja el a lekérdezési sztring paramétereként, és cserélje le a háttérkép
-Módosítsa a HomeController `unified` fogadja el a campaignId paraméter metódust. A metódus ezután ellenőrzi a paraméter értékét, és beállítja a `ViewData["background"]` változó ennek megfelelően.
+### <a name="step-82-change-your-code-to-accept-a-query-string-parameter-and-replace-the-background-image"></a>8,2. lépés: A kód módosításával fogadja el a lekérdezési karakterlánc paraméterét, és cserélje le a háttérképet
+Módosítsa a HomeController `unified` metódust, hogy fogadja el a campaignId paramétert. A metódus ezután ellenőrzi a paraméter értékét, és ennek megfelelően `ViewData["background"]` állítja be a változót.
 
-1. Nyissa meg a *Controllers\HomeController.cs* fájlt, és módosítsa a `unified` metódus adja hozzá a következő kódrészletet:
+1. Nyissa meg a *Controllers\HomeController.cs* fájlt, majd módosítsa `unified` a metódust úgy, hogy hozzáadja a következő kódrészletet:
 
     ```csharp
     public IActionResult unified(string campaignId)
@@ -290,60 +290,60 @@ Módosítsa a HomeController `unified` fogadja el a campaignId paraméter metód
 
     ```
 
-2. Keresse meg a `<img>` element s ID `background_background_image`, és cserélje le a `src` értéket `@ViewData["background"]`.
+2. Keresse meg `<img>` az azonosítóval `background_background_image`rendelkező elemet, `@ViewData["background"]`és `src` cserélje le a értéket a értékre.
 
-    ![kiemelt src értékkel img elem ](media/active-directory-b2c-ui-customization-custom-dynamic/aadb2c-ief-ui-customization-add-dynamic-background.png)
+    ![IMG elem Kiemelt src értékkel ](media/active-directory-b2c-ui-customization-custom-dynamic/aadb2c-ief-ui-customization-add-dynamic-background.png)
 
-### <a name="83-upload-the-changes-and-publish-your-policy"></a>8.3: Töltse fel a módosításokat, és a házirend közzététele
-1. A Visual Studio-projekt közzététele az Azure App Service-ben.
+### <a name="83-upload-the-changes-and-publish-your-policy"></a>8,3: Töltse fel a módosításokat, és tegye közzé a szabályzatot
+1. Tegye közzé a Visual Studio-projektet Azure App Service.
 
-2. Töltse fel a *SignUpOrSignin.xml* szabályzatot az Azure AD B2C-t.
+2. Töltse fel a *SignUpOrSignin. XML* szabályzatot a Azure ad B2Cra.
 
-3. Nyissa meg **B2C_1A_signup_signin**, a helyreállítási pont Védettként egyéni házirendet, amelyet feltöltött, és válassza ki **Futtatás most**.
-    A korábban használt azonos háttérkép kell megjelennie.
+3. Nyissa meg a **B2C_1A_signup_signin**, a feltöltött RP egyéni szabályzatot, majd válassza a **Futtatás most**lehetőséget.
+    Ugyanazt a háttérképet kell látnia, amely korábban meg volt jelenítve.
 
-4. Másolja az URL-címet a böngésző címsorában.
+4. Másolja az URL-címet a böngésző címsorába.
 
-5. Adja hozzá a _campaignId_ lekérdezési karakterlánc paraméterének URI-ra. Hozzáadhat például `&campaignId=hawaii`, ahogy az alábbi képen is látható:
+5. Adja hozzá a _campaignId_ lekérdezési karakterlánc paramétert az URI-hoz. Adja `&campaignId=hawaii`meg például a következő ábrán látható módon:
 
-    ![A kiemelt campaignId lekérdezési karakterlánc paramétereként URI](media/active-directory-b2c-ui-customization-custom-dynamic/aadb2c-ief-ui-customization-campaignId-param.png)
+    ![CampaignId lekérdezési karakterlánc paraméterrel jelölt URI](media/active-directory-b2c-ui-customization-custom-dynamic/aadb2c-ief-ui-customization-campaignId-param.png)
 
-6. Válassza ki **Enter** a Hawaii háttérkép megjelenítéséhez.
+6. A Hawaii háttérkép megjelenítéséhez válassza az **ENTER billentyűt** .
 
-    ![Regisztrációs bejelentkezési oldalon a Hawaii egyéni háttérkép](media/active-directory-b2c-ui-customization-custom-dynamic/aadb2c-ief-ui-customization-demo2.png)
+    ![Bejelentkezési oldal regisztrálása a Hawaii-rendszerkép egyéni hátterével](media/active-directory-b2c-ui-customization-custom-dynamic/aadb2c-ief-ui-customization-demo2.png)
 
-7. Módosítsa az értéket *Tokió*, majd válassza ki **Enter**.
-    A böngészőben a Tokiói háttérben jeleníti meg.
+7. Módosítsa az értéket *Tokióra*, majd válassza az **ENTER billentyűt**.
+    A böngésző megjeleníti a tokiói hátteret.
 
-    ![Regisztrációs bejelentkezési oldalon a Tokiói egyéni háttérkép](media/active-directory-b2c-ui-customization-custom-dynamic/aadb2c-ief-ui-customization-demo3.png)
+    ![Bejelentkezési oldal regisztrálása a Tokyo-rendszerkép egyéni hátterével](media/active-directory-b2c-ui-customization-custom-dynamic/aadb2c-ief-ui-customization-demo3.png)
 
-## <a name="step-9-change-the-rest-of-the-user-journey"></a>9\. lépés: Módosítsa a többi felhasználói interakciósorozat
-Ha a **regisztráció** a bejelentkezési lapon, a böngésző megjeleníti az alapértelmezett háttérkép, a lemezkép nem meghatározott. Ez a viselkedés akkor merül fel, mert csak a regisztrálási vagy bejelentkezési oldal módosította. A helyi Vyhodnocení tartalomdefiníciók részeinek módosítása:
-1. Lépjen vissza a "2. lépésre", és tegye a következőket:
+## <a name="step-9-change-the-rest-of-the-user-journey"></a>9\. lépés: A felhasználó többi útvonalának módosítása
+Ha bejelöli a **regisztráció most** hivatkozást a bejelentkezési oldalon, a böngésző az alapértelmezett háttérképet jeleníti meg, nem pedig a megadott képet. Ez a viselkedés azért fordul elő, mert csak a regisztrációs vagy bejelentkezési oldalt módosította. Az önérvényesítő tartalom további definícióinak módosítása:
+1. Lépjen vissza a "2. lépés" kifejezésre, és tegye a következőket:
 
     a. Töltse le a *selfasserted* fájlt.
 
-    b. Másolja a fájlok tartalmát.
+    b. Másolja a fájl tartalmát.
 
     c. Hozzon létre egy új nézetet, *selfasserted*.
 
-    d. Adjon hozzá *selfasserted* , a **kezdőlap** vezérlő.
+    d. Adja hozzá a *selfasserted* a **saját** vezérlőhöz.
 
-2. "4. lépés" lépjen vissza, és tegye a következőket:
+2. Lépjen vissza a "4. lépés" kifejezésre, és tegye a következőket:
 
-    a. A bővítmény a házirend, keresse meg a `<ContentDefinition>` tartalmazó csomópont `Id="api.selfasserted"`, `Id="api.localaccountsignup"`, és `Id="api.localaccountpasswordreset"`.
+    a. A bővítmény házirendjében keresse meg a `<ContentDefinition>` `Id="api.selfasserted"`, `Id="api.localaccountsignup"`a és `Id="api.localaccountpasswordreset"`a csomópontot.
 
-    b. Állítsa be a `LoadUri` attribútumot a *selfasserted* URI-t.
+    b. Állítsa az `LoadUri` attribútumot a *selfasserted* URI-ra.
 
-3. Lépjen vissza "Lépés 8.2", és módosítsa a kódokat a lekérdezési karakterlánc paraméterei, de ezúttal a fogadja el a *selfasserted* függvény.
+3. Lépjen vissza a "Step 8,2" értékre, és módosítsa a kódot, hogy fogadja a lekérdezési karakterlánc paramétereit, de ezúttal a *selfasserted* függvénynek.
 
-4. Töltse fel a *TrustFrameworkExtensions.xml* szabályzatot, és győződjön meg arról, hogy érvényesítési továbbítja.
+4. Töltse fel a *TrustFrameworkExtensions. XML* szabályzatot, és ellenőrizze, hogy átadja-e az érvényesítést.
 
-5. A házirend-teszt futtatása, és válassza ki **regisztráció** az eredmény megjelenítéséhez.
+5. Futtassa a házirend-tesztet, majd válassza a **regisztráció most** lehetőséget az eredmény megtekintéséhez.
 
-## <a name="optional-download-the-complete-policy-files-and-code"></a>(Nem kötelező) A teljes házirend fájlok és a kód letöltése
-* Miután elvégezte a [egyéni szabályzatok – első lépések](active-directory-b2c-get-started-custom.md) forgatókönyv, azt javasoljuk, hogy a forgatókönyv a saját egyéni házirend-fájlok használatával hozhat létre. Referenciaként adtunk meg [házirendfájljait minta](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/aadb2c-ief-ui-customization).
-* Letöltheti a teljes kódját [mintát a Visual Studio-megoldás referenciaként](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/aadb2c-ief-ui-customization).
+## <a name="optional-download-the-complete-policy-files-and-code"></a>Választható A teljes szabályzat fájljainak és kódjának letöltése
+* Miután elvégezte az [Egyéni szabályzatok használatának első lépései útmutatót](active-directory-b2c-get-started-custom.md) , javasoljuk, hogy a saját egyéni házirend-fájljaival hozza létre a forgatókönyvet. Az Ön referenciája alapján megadta a [minta házirend-fájlokat](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/aadb2c-ief-ui-customization).
+* A Visual Studio-megoldás teljes kódját a [következő hivatkozásra töltheti le: minta](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/aadb2c-ief-ui-customization).
 
 
 

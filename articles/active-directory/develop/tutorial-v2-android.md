@@ -1,6 +1,6 @@
 ---
-title: Android – a Microsoft identity platform – első lépések |} Az Azure
-description: Android-alkalmazás hogyan hozzáférési jogkivonatot kapjon, és a Microsoft Graph API vagy a hozzáférési jogkivonatok a Microsoft identity platform szükséges API-hívás.
+title: Első lépések az Androidban – Microsoft Identity platform | Azure
+description: Az Android-alkalmazások hozzáférési jogkivonatának beszerzése és a Microsoft Identity platform hozzáférési jogkivonatokat igénylő API-k hívása Microsoft Graph API vagy API-k esetén.
 services: active-directory
 documentationcenter: dev-center-name
 author: danieldobalian
@@ -16,75 +16,75 @@ ms.author: jmprieur
 ms.reviwer: brandwe
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cb1e322e0424debc14a29ad8a516c95acea54714
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: 5bd19b6094d68277130916b5cda565ba9e633c59
+ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67872096"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68334111"
 ---
-# <a name="sign-in-users-and-call-the-microsoft-graph-from-an-android-app"></a>A felhasználók és a Microsoft Graph hívása Androidos alkalmazásokból
+# <a name="sign-in-users-and-call-the-microsoft-graph-from-an-android-app"></a>Bejelentkezés a felhasználókba és a Microsoft Graph meghívása Android-alkalmazásból
 
-Ebben az oktatóanyagban elsajátíthatja a Android-alkalmazás integrálása a Microsoft identity platform lesz. Az alkalmazás bejelentkeztetni egy felhasználót, a Microsoft Graph API meghívása a hozzáférési jogkivonatot kapjon, és indítson egy Microsoft Graph API-t.  
+Ebből az oktatóanyagból megtudhatja, hogyan integrálhat egy Android-alkalmazást a Microsoft Identity platformmal. Az alkalmazás bejelentkezik egy felhasználóval, hozzáférési jogkivonatot kap a Microsoft Graph API meghívásához, és kérelmet küld a Microsoft Graph API-nak.  
 
-Az útmutató befejezése után, az alkalmazás fogad a bejelentkezések a személyes Microsoft-fiókok (beleértve az Outlook.com-os, live.com, és mások), és a munkahelyi vagy iskolai fiókok bármely vállalat vagy szervezet, amely az Azure Active Directory.
+Az útmutató elvégzése után az alkalmazás elfogadja a személyes Microsoft-fiókok (például a outlook.com, a live.com és mások) és a munkahelyi vagy iskolai fiókok bejelentkezési adatait bármely olyan vállalattól vagy szervezettől, amely Azure Active Directoryt használ.
 
-## <a name="how-this-tutorial-works"></a>Ebben az oktatóanyagban működése
+## <a name="how-this-tutorial-works"></a>Az oktatóanyag működése
 
-![A mintaalkalmazás által ebben az oktatóanyagban létrehozott működését mutatja](../../../includes/media/active-directory-develop-guidedsetup-android-intro/android-intro.svg)
+![Bemutatja, hogyan működik az oktatóanyag által generált minta alkalmazás](../../../includes/media/active-directory-develop-guidedsetup-android-intro/android-intro.svg)
 
-Ebben az oktatóanyagban az alkalmazás a felhasználók, és a adatok beolvasása a felhasználók nevében.  Ezeket az adatokat a rendszer egy védett API (Microsoft Graph API), amely engedélyt igényel, és a Microsoft identity platform által védett keresztül érhetők el.
+Az oktatóanyagban szereplő alkalmazás bejelentkezik a felhasználók számára, és az Ön nevében kéri le az adatkérést.  Ezek az adatok egy olyan védett API-n (Microsoft Graph API) keresztül érhetők el, amely az engedélyezést igényli, és a Microsoft Identity platform védi.
 
 Pontosabban:
 
-* Az alkalmazás fogja jelentkezzen be a felhasználó vagy egy böngészőben vagy a Microsoft Authenticator és az Intune vállalati portál használatával.
-* A felhasználó elfogadja az alkalmazás igényelt engedélyeket.
-* Az alkalmazás fogja kiállítani egy hozzáférési jogkivonatot a Microsoft Graph API-hoz.
-* A hozzáférési jogkivonatot fog szerepelni a HTTP-kérést a webes API-hoz.
-* A Microsoft Graph-válasz feldolgozása.
+* Az alkalmazás egy böngészőn vagy a Microsoft Authenticatoron keresztül fog bejelentkezni a felhasználóba, és Intune Céges portál.
+* A végfelhasználó el fogja fogadni az alkalmazás által kért engedélyeket.
+* Az alkalmazás egy hozzáférési jogkivonatot fog kiadni a Microsoft Graph API-hoz.
+* A hozzáférési jogkivonatot a rendszer a webes API-hoz tartozó HTTP-kérelemben fogja tartalmazni.
+* Dolgozza fel a Microsoft Graph választ.
 
-Ebben a példában a Microsoft Authentication library for Android (MSAL) hitelesítés megvalósításához: [com.microsoft.identity.client](https://javadoc.io/doc/com.microsoft.identity.client/msal).
+Ez a példa az Androidhoz készült Microsoft Authentication Library (MSAL) használatával valósítja meg a hitelesítést: [com. microsoft. Identity. Client](https://javadoc.io/doc/com.microsoft.identity.client/msal).
 
- Az MSAL automatikusan token megújítása, egyszeri bejelentkezés (SSO) az eszközön lévő más alkalmazások között szállítja és kezeli a fiók(ok) lesz.
+ A MSAL automatikusan megújítja a tokeneket, egyszeri bejelentkezést (SSO) tesz elérhetővé az eszköz más alkalmazásai között, és felügyeli a fiók (oka) t.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Ehhez az oktatóanyaghoz az Android Studio 16 vagy újabb verzió (19 + ajánlott).
+* Ehhez az oktatóanyaghoz Android Studio 16-os vagy újabb verzió szükséges (19 + ajánlott).
 
 ## <a name="create-a-project"></a>Projekt létrehozása
 
-Ebben az oktatóanyagban létrehoz egy új projektet. Ha ehelyett töltse le a befejezett oktatóanyaggal szeretné [letölteni a kódot](https://github.com/Azure-Samples/active-directory-android-native-v2/archive/master.zip).
+Ez az oktatóanyag egy új projektet fog létrehozni. Ha ehelyett a kész oktatóanyagot szeretné letölteni, [töltse le a kódot](https://github.com/Azure-Samples/active-directory-android-native-v2/archive/master.zip).
 
-1. Nyissa meg az Android Studio, és válassza ki **indítsa el az új Android Studio-projekt**.
-2. Válassza ki **alapszintű tevékenység** válassza **tovább**.
+1. Nyissa meg Android Studio, majd válassza **az új Android Studio projekt indítása**lehetőséget.
+2. Válassza  az alaptevékenység lehetőséget, majd kattintson a **Tovább gombra**.
 3. Adjon nevet az alkalmazásnak.
-4. Mentse a csomag nevét. Megadja azt később be az Azure Portalra.
-5. Állítsa be a **minimális API-szintet** való **API 19** vagy újabb, és kattintson a **Befejezés**.
-6. A projekt nézetben válassza ki a **projekt** nyissa meg a forrás- és nem-source project fájlok megjelenítése legördülő **app/build.gradle** és állítsa be `targetSdkVersion` való `27`.
+4. Mentse a csomag nevét. Később adja meg a Azure Portal.
+5. Állítsa a **minimális API** -szintet **API 19** vagy újabb értékre, majd kattintson a **Befejezés**gombra.
+6. A Project nézetben a legördülő menüben válassza a **projekt** lehetőséget a forrás-és a nem forrásként szolgáló projektfájlok megjelenítéséhez, majd nyissa meg `targetSdkVersion` az `27` **app/Build. gradle** fájlt, és állítsa a következőre:.
 
 ## <a name="register-your-application"></a>Alkalmazás regisztrálása
 
 1. Nyissa meg az [Azure Portal](https://aka.ms/MobileAppReg).
-2. Nyissa meg a [regisztrációk panelére](https://ms.portal.azure.com/?feature.broker=true#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredAppsPreview) kattintson **+ új regisztrációs**.
-3. Adjon meg egy **neve** , az alkalmazást, majd egy átirányítási URI megadása nélkül, kattintson a **regisztrálása**.
-4. Az a **kezelés** a panel, amely akkor jelenik meg, válassza ki a szakasz **hitelesítési** >  **+ hozzáadása egy platform** > **Android**.
-5. Adja meg a projekt csomag nevét. Ha letöltötte a kódot, az értéket nem `com.azuresamples.msalandroidapp`.
-6. Az a **aláírás-kivonatoló** szakaszában a **az Android-alkalmazás konfigurálása** kattintson **egy fejlesztési célú aláírás-kivonatoló létrehozása.** és másolja a KeyTool parancs használata a platformhoz.
+2. Nyissa meg a [Alkalmazásregisztrációk](https://ms.portal.azure.com/?feature.broker=true#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredAppsPreview) panelt, és kattintson az **+ új regisztráció**elemre.
+3. Adja meg az alkalmazás **nevét** , majd az átirányítási URI beállítása nélkül kattintson a **regisztráció**elemre.
+4. A megjelenő panel **kezelés** szakaszában válassza a **hitelesítés** >  **+ platform** > hozzáadása**Android**lehetőséget.
+5. Adja meg a projekt csomagjának nevét. Ha letöltötte a kódot, akkor ez az `com.azuresamples.msalandroidapp`érték.
+6. Az **Android-alkalmazás konfigurálása** lap **aláírás-kivonatolás** szakaszában kattintson a **fejlesztési aláírás kivonatának létrehozása** lehetőségre. és másolja a Főeszköz parancsot a platformhoz való használatra.
 
    > [!Note]
-   > A Java fejlesztői készlet (JDK) részeként telepíti a KeyTool.exe. Emellett telepítenie kell az OpenSSL eszköz KeyTool parancs végrehajtása.
+   > A. exe a Java Development Kit (JDK) részeként van telepítve. Az OpenSSL eszközt is telepítenie kell, hogy végrehajtsa a parancssori eszközt.
 
-7. Adja meg a **aláírás-kivonatoló** KeyTool által generált.
-8. Kattintson a `Configure` , és mentse a **MSAL konfigurációs** , amely megjelenik a **Android-eszközök konfigurációs** lapon, hogy meg lehessen adni azt az alkalmazás későbbi konfigurálásakor.  Kattintson a **Done** (Kész) gombra.
+7. Adja meg  a Főeszköz által generált aláírási kivonatot.
+8. Kattintson `Configure` és mentse az **Android-konfiguráció** lapon megjelenő **MSAL** -konfigurációt, így megadhatja, amikor később konfigurálja az alkalmazást.  Kattintson a **Done** (Kész) gombra.
 
 ## <a name="build-your-app"></a>Alkalmazás létrehozása
 
-### <a name="add-your-app-registration"></a>Az alkalmazásregisztráció hozzáadása
+### <a name="add-your-app-registration"></a>Az alkalmazás regisztrációjának hozzáadása
 
-1. Az Android Studio project panelen lépjen **app\src\main\res**.
-2. Kattintson a jobb gombbal **res** válassza **új** > **Directory**. Adja meg `raw` új könyvtár neve, kattintson **OK**.
-3. A **alkalmazás** > **src** > **res** > **nyers**, hozzon létre egy új JSON-fájlt nevű `auth_config.json`, és illessze be a korábban mentett MSAL konfigurációt. Lásd: [további információ az MSAL konfigurációs](https://github.com/AzureAD/microsoft-authentication-library-for-android/wiki/Configuring-your-app).
-4. A **alkalmazás** > **src** > **fő** > **AndroidManifest.xml**, adja hozzá a `BrowserTabActivity`alábbi tevékenység. Ez a bejegyzés lehetővé teszi a Microsoft visszahívja az alkalmazáshoz, a hitelesítés befejezése után:
+1. A Android Studio projekt ablaktábláján navigáljon a **app\src\main\res**elemre.
+2. Kattintson a jobb gombbal a **res** elemre, és válassza az **új** > **könyvtár**lehetőséget. Adja `raw` meg az új könyvtárnév nevet, majd kattintson az **OK**gombra.
+3. Az **app** >  `auth_config.json` **src** **res** **RAW**-ben hozzon létre egy nevű új JSON-fájlt, és illessze be a korábban mentett MSAL-konfigurációt. >  >  [További információért](https://github.com/AzureAD/microsoft-authentication-library-for-android/wiki/Configuring-your-app)lásd: MSAL-konfiguráció.
+4. Az **app** >  `BrowserTabActivity` **src** **Main** **AndroidManifest. XML fájljában**adja hozzá az alábbi tevékenységet. >  >  Ez a bejegyzés lehetővé teszi, hogy a Microsoft visszahívjon az alkalmazásba a hitelesítés befejezése után:
 
     ```xml
     <!--Intent filter to capture System Browser or Authenticator calling back to our app after sign-in-->
@@ -101,22 +101,22 @@ Ebben az oktatóanyagban létrehoz egy új projektet. Ha ehelyett töltse le a b
     </activity>
     ```
 
-    Helyettesítse be a csomag nevét, az Azure Portalon regisztrálta a `android:host=` értéket.
-    Helyettesítse be az Azure Portalon regisztrálta a kulcskivonat a `android:path=` értéket. Az aláírás-kivonatoló nem lehet URL-kódolású.
+    Helyettesítse be a Azure Portal regisztrált csomag nevét az `android:host=` értékhez.
+    Helyettesítse be a Azure Portalban `android:path=` regisztrált kulcs kivonatát az értékhez. Az aláírási kivonat nem lehet URL-kódolású.
 
-5. Belül a **AndroidManifest.xml**, feladatállapotában a `<application>` címkével, adja hozzá a következő engedélyekkel:
+5. A **AndroidManifest. xml fájlban**, közvetlenül a `<application>` címke felett adja hozzá a következő engedélyeket:
 
     ```xml
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     ```
 
-### <a name="create-the-apps-ui"></a>Az alkalmazás felhasználói felület létrehozása
+### <a name="create-the-apps-ui"></a>Az alkalmazás felhasználói felületének létrehozása
 
-1. Az Android Studio projekt ablakról, lépjen a **alkalmazás** > **src** > **fő** > **res**  >  **elrendezés** , és nyissa meg **activity_main.xml** , és nyissa meg a **szöveg** megtekintése.
-2. Lépjen a tevékenység elrendezés, például: `<androidx.coordinatorlayout.widget.CoordinatorLayout` való `<androidx.coordinatorlayout.widget.LinearLayout`.
-3. Adja hozzá a `android:orientation="vertical"` tulajdonságot a `LinearLayout` csomópont.
-4. Illessze be az alábbi kódot a `LinearLayout` csomópontot, és cserélje le a jelenlegi tartalomról:
+1. A Android Studio projekt ablakban navigáljon az **app** > **src** > **Main** > **res** > **elrendezéshez** , és nyissa meg a **activity_main. xml fájlt** , és nyissa meg a **szöveget.** nézet.
+2. Módosítsa a tevékenység elrendezését, például: `<androidx.coordinatorlayout.widget.CoordinatorLayout`. `<androidx.coordinatorlayout.widget.LinearLayout`
+3. Adja hozzá `android:orientation="vertical"` a tulajdonságot `LinearLayout` a csomóponthoz.
+4. Illessze be a következő kódot a `LinearLayout` csomópontba, és cserélje le az aktuális tartalmat:
 
     ```xml
     <TextView
@@ -169,24 +169,24 @@ Ebben az oktatóanyagban létrehoz egy új projektet. Ha ehelyett töltse le a b
     </LinearLayout>
     ```
 
-### <a name="add-msal-to-your-project"></a>Az MSAL hozzáadása a projekthez
+### <a name="add-msal-to-your-project"></a>MSAL hozzáadása a projekthez
 
-1. Az Android Studio projekt ablakról, lépjen a **alkalmazás** > **src** > **build.gradle**.
-2. A **függőségek**, illessze be a következőt:
+1. A Android Studio projekt ablakban navigáljon az **app** > **src** > **Build. gradle**elemre.
+2. A **függőségek**alatt illessze be a következőt:
 
     ```gradle  
     implementation 'com.android.volley:volley:1.1.1'
     implementation 'com.microsoft.identity.client:msal:0.3.+'
     ```
 
-### <a name="use-msal"></a>Használható az MSAL
+### <a name="use-msal"></a>MSAL használata
 
-Most végezze el a módosításokat belül `MainActivity.java` hozzáadása és használható az MSAL az alkalmazásban.
-Az Android Studio projekt ablakról, lépjen a **alkalmazás** > **src** > **fő** > **java**  >  **com.example.msal**, és nyissa meg a `MainActivity.java`.
+Most végezze `MainActivity.java` el a módosításokat a MSAL hozzáadásához és használatához az alkalmazásban.
+A Android Studio projekt ablakban navigáljon az **app** > **src** > **Main** > **Java** > **com. example. msal**elemre, és `MainActivity.java`nyissa meg a következőt:.
 
 #### <a name="required-imports"></a>Szükséges importálások
 
-Adja hozzá az alábbi importálásokat tetején `MainActivity.java`:
+Adja hozzá az alábbi importálásokat a tetején `MainActivity.java`a következők közelében:
 
 ```java
 import android.app.Activity;
@@ -209,9 +209,9 @@ import com.microsoft.identity.client.exception.*;
 
 #### <a name="instantiate-msal"></a>Instantiate MSAL
 
-Belül a `MainActivity` osztály kell példányosítani MSAL valamint Mik kapcsolatos néhány alkalmazás tegye a hatókörök például lesz, és webes API-t szeretnénk elérni.
+Az osztályban `MainActivity` a MSAL-t is létre kell hoznia néhány konfigurációval, hogy mi az alkalmazás, beleértve a hatóköreit és a webes API-t, melyeket szeretnénk elérni.
 
-Másolja az alábbi változókat belül a `MainActivity` osztály:
+Másolja a következő változókat a `MainActivity` osztályba:
 
 ```java
 final static String SCOPES [] = {"https://graph.microsoft.com/User.Read"};
@@ -227,7 +227,7 @@ private PublicClientApplication sampleApp;
 private IAuthenticationResult authResult;
 ```
 
-Cserélje le a tartalmát `onCreate()` MSAL példányt létrehozni a következő kóddal:
+Cserélje le a tartalmát `onCreate()` a következő kódra a MSAL létrehozásához:
 
 ```java
 super.onCreate(savedInstanceState);
@@ -267,19 +267,19 @@ sampleApp.getAccounts(new PublicClientApplication.AccountsLoadedCallback() {
 });
 ```
 
-A fenti kód megpróbál bejelentkezni felhasználói beavatkozás nélkül az alkalmazás megnyitásakor `getAccounts()` , és ha sikeres, `acquireTokenSilentAsync()`.  A következő néhány szakaszban a visszahíváskezelőt Pro nincs az ügy nem bejelentkezett fiókok kell hoznunk.
+A fenti kód a felhasználók csendes bejelentkezését kísérli meg, amikor a `getAccounts()` és a `acquireTokenSilentAsync()`sikeres módon megnyitják az alkalmazást.  A következő néhány szakaszban végre fogjuk hajtani a visszahívási kezelőt arra az esetre, ha nincsenek bejelentkezett fiókok.
 
-#### <a name="use-msal-to-get-tokens"></a>A jogkivonatok lekérésére az MSAL használatával
+#### <a name="use-msal-to-get-tokens"></a>A MSAL használata a jogkivonatok lekéréséhez
 
-Most hogy valósítható meg az alkalmazás Kezelőfelületén feldolgozó logika és a jogkivonatok interaktív módon az MSAL használatával.
+Most megvalósíthatja az alkalmazás felhasználói felületének feldolgozási logikáját, és interaktív módon lekérdezheti a tokeneket a MSAL-on keresztül.
 
-Az MSAL jogkivonatok lekérésének lépéseiről két elsődleges módszerét mutatja: `acquireTokenSilentAsync()` és `acquireToken()`.  
+A MSAL két elsődleges módszert tesz elérhetővé a tokenek `acquireTokenSilentAsync()` beszerzéséhez: és `acquireToken()`.  
 
-`acquireTokenSilentAsync()` jelentkezik be egy felhasználó és a get jogkivonatok, ha egy fiók található felhasználói beavatkozás nélkül. Ha ez sikeres, az MSAL lesz-e a handoff számára az alkalmazáshoz, ha ez nem sikerül a jogkivonatokat hoz létre egy `MsalUiRequiredException`.  Ha ehhez a kivételhez jön létre, vagy azt szeretné, hogy a felhasználót, hogy rendelkezik egy interaktív bejelentkezési élmény (hitelesítő adatok, az mfa vagy más feltételes hozzáférési szabályzatok feltétlenül nem szükséges), majd a `acquireToken()`.  
+`acquireTokenSilentAsync()`bejelentkezik egy felhasználóba, és felhasználói beavatkozás nélkül kap jogkivonatokat, ha van ilyen fiókja. Ha ez sikeres, a MSAL handoff a tokeneket az alkalmazásba, ha a művelet meghiúsul, akkor a rendszer `MsalUiRequiredException`létrehoz egy-t.  Ha ezt a kivételt létrehozták, vagy azt szeretné, hogy a felhasználó interaktív bejelentkezési élményt biztosítson (hitelesítő adatok, MFA vagy más feltételes hozzáférési szabályzatok vagy esetleg nem szükségesek), `acquireToken()`használja a következőt:.  
 
-`acquireToken()` felhasználói Felületet jeleníti meg, jelentkezzen be a felhasználó és a jogkivonatok lekérésére tett kísérlet közben. Mégis előfordulhat, hogy használni munkamenet-cookie-kat a böngészőben, vagy egy fiókot a Microsoft Authenticator alkalmazást, az a interaktív egyszeri bejelentkezési élményt.
+`acquireToken()`felhasználói FELÜLETET jelenít meg, amikor megpróbál bejelentkezni a felhasználóba, és jogkivonatokat kap. A böngészőben azonban munkamenet-cookie-kat, illetve a Microsoft-hitelesítő egyik fiókját is használhatja az interaktív egyszeri bejelentkezés élményének biztosításához.
 
-Az alábbi három felhasználói felület módszerrel belül hozzon létre a `MainActivity` osztály:
+Hozza létre a következő három felhasználóifelület-módszert `MainActivity` az osztályban:
 
 ```java
 /* Set the UI for successful token acquisition data */
@@ -312,7 +312,7 @@ private void onCallGraphClicked() {
 }
 ```
 
-Adja hozzá a következő módszerek lekérése az aktuális tevékenység, és a csendes & interaktivního okna visszahívások feldolgozásához:
+Adja hozzá a következő metódusokat az aktuális tevékenység beszerzéséhez és a folyamat csendes & interaktív visszahívásához:
 
 ```java
 public Activity getActivity() {
@@ -406,14 +406,14 @@ private AuthenticationCallback getAuthInteractiveCallback() {
 }
 ```
 
-#### <a name="use-msal-for-sign-out"></a>Használható az MSAL a Kijelentkezés
+#### <a name="use-msal-for-sign-out"></a>MSAL használata a kijelentkezéshez
 
-Ezután adja hozzá a támogatása kijelentkezést.
+Ezután vegyen fel támogatást a kijelentkezéshez.
 
 > [!Important]
-> A felhasználó az összes ismert információ lehet kijelentkezni az MSAL eltávolítja az alkalmazást, de továbbra is rendelkezni fog egy aktív munkamenet az eszköz. Ha a felhasználó megpróbál bejelentkezni újra előfordulhat, hogy tekintse meg a bejelentkezési felhasználói felület, hanem előfordulhat, hogy nem kell a hitelesítő adatait adja meg újból, mert az eszköz munkamenet továbbra is aktív.
+> A MSAL-ből való kijelentkezés eltávolítja az alkalmazással kapcsolatos összes ismert információt, de a felhasználó továbbra is aktív munkamenettel fog rendelkezni az eszközön. Ha a felhasználó ismét megkísérli a bejelentkezést, láthatják a bejelentkezési felhasználói felületet, de előfordulhat, hogy nem kell újra megadniuk a hitelesítő adataikat, mert az eszköz munkamenete még aktív.
 
-Kijelentkezési képesség felvételéhez adja hozzá a következő metódust belül a `MainActivity` osztály. Ez a módszer Váltás az összes fiókot, és eltávolítja azokat a:
+A kijelentkezési képesség hozzáadásához adja hozzá a következő metódust `MainActivity` a osztályon belül. Ez a módszer az összes fiókra váltást hajt végre, és eltávolítja azokat:
 
 ```java
 /* Clears an account's tokens from the cache.
@@ -456,13 +456,13 @@ private void onSignOutClicked() {
 
 #### <a name="call-the-microsoft-graph-api"></a>A Microsoft Graph API meghívása
 
-Miután megkaptuk a jogkivonatot, kérést is létrehozunk a [Microsoft Graph API](https://graph.microsoft.com) a hozzáférési jogkivonat helyezkednek majd el a `AuthenticationResult` belül a hitelesítés-visszahívás `onSuccess()` metódust. Egy jogosult kérést hozhatnak létre, az alkalmazás a hozzáférési jogkivonat hozzáadása a HTTP-fejlécben lesz szüksége:
+Ha megkaptuk a jogkivonatot, a hozzáférési token `AuthenticationResult` a hitelesítési visszahívási `onSuccess()` metóduson belül található [Microsoft Graph API](https://graph.microsoft.com) -nak. Egy jogosult kérelem létrehozásához az alkalmazásnak hozzá kell adnia a hozzáférési jogkivonatot a HTTP-fejléchez:
 
-| Fejléc kulcs    | value                 |
+| fejléc kulcsa    | value                 |
 | ------------- | --------------------- |
-| Authorization | Tulajdonosi \<hozzáférési jogkivonat > |
+| Authorization | Tulajdonosi \<hozzáférés – token > |
 
-Adja hozzá az alábbi két módszer belül a `MainActivity` osztály graph hívja, és frissíti a felhasználói felületen:
+Adja hozzá a következő két metódust `MainActivity` az osztályban a Graph meghívásához és a felhasználói felület frissítéséhez:
 
 ```java
 /* Use Volley to make an HTTP request to the /me endpoint from MS Graph using an access token */
@@ -519,22 +519,27 @@ private void updateGraphUI(JSONObject graphResponse) {
 }
 ```
 
-#### <a name="multi-account-applications"></a>Több fiók alkalmazások
+#### <a name="multi-account-applications"></a>Több fiókból álló alkalmazások
 
-Ez az alkalmazás egyetlen fiók esetén épül. Az MSAL is több fiók-forgatókönyveket teszi lehetővé, de alkalmazásokból néhány további munkát igényel. Szüksége lesz a felhasználói felület segítségével a felhasználó számára a jogkivonatok igénylő műveletek használni kívánja, hogy melyik fiók létrehozása. Azt is megteheti, az alkalmazás valósíthat meg, válassza ki, melyik fiókot szeretné használni a keresztül heurisztikát a `getAccounts()` metódust.
+Ez az alkalmazás egyetlen fiókra épül. A MSAL támogatja a többfiókos forgatókönyveket is, de az alkalmazások további munkája szükséges. Létre kell hoznia egy felhasználói FELÜLETET, amellyel a felhasználó kiválaszthatja, hogy melyik fiókot szeretné használni a jogkivonatokat igénylő műveletekhez. Azt is megteheti, hogy az alkalmazás egy heurisztikus módszert alkalmaz, amellyel kiválaszthatja, hogy melyik fiókot szeretné használni a `getAccounts()` metódus segítségével.
 
 ## <a name="test-your-app"></a>Az alkalmazás tesztelése
 
 ### <a name="run-locally"></a>Helyi futtatás
 
-Hozhat létre és telepítse az alkalmazást a vizsgálati eszközt vagy emulátort a. Meg kell tudni jelentkezzen be, és a jogkivonatok lekérésére, az Azure ad vagy személyes Microsoft-fiókok.
+Az alkalmazás létrehozása és üzembe helyezése tesztelési eszközön vagy emulátoron. A bejelentkezéshez és az Azure AD-vagy személyes Microsoft-fiókokhoz tartozó jogkivonatok beszerzéséhez be kell tudnia jelentkezni.
 
-Miután bejelentkezett, az alkalmazás megjeleníti az adatokat a Microsoft Graph által visszaadott `/me` végpont.
+A bejelentkezést követően az alkalmazás megjeleníti az Microsoft Graph `/me` végpont által visszaadott adatok megjelenítését.
 
-### <a name="consent"></a>Hozzájárulás megadása
+### <a name="consent"></a>Hozzájárulása
 
-Bármely felhasználó jelentkezik be az alkalmazáshoz, első alkalommal kéri a Microsoft identity hogy engedélyt adjanak az igényelt engedélyeket.  A felhasználók többsége képes a küldőnek, amelyek minden egyes Azure AD-bérlőre letiltotta a felhasználói beleegyezés, amelyhez szükség van a rendszergazdai jóváhagyást az összes felhasználó nevében. Ez a forgatókönyv támogatása érdekében az alkalmazás hatókörök regisztrálja az Azure Portalon.
+Amikor a felhasználó először jelentkezik be az alkalmazásba, a Microsoft Identity a kért engedélyekkel való beleegyezett.  Habár a legtöbb felhasználó képes hozzájárulni, néhány Azure AD-bérlő letiltotta a felhasználói beleegyezését, amelyhez a rendszergazdáknak minden felhasználó nevében hozzá kell járulniuk. A forgatókönyv támogatásához regisztrálja az alkalmazás hatóköreit a Azure Portalban.
 
 ## <a name="get-help"></a>Segítségkérés
 
-Látogasson el [Súgó és támogatás](https://docs.microsoft.com/azure/active-directory/develop/developer-support-help-options) Ha nem ez az oktatóanyag vagy a Microsoft identitásplatformjához.
+Ha problémája van az Oktatóanyaggal vagy a Microsoft Identity platformmal, látogasson el a [Súgó és támogatás](https://docs.microsoft.com/azure/active-directory/develop/developer-support-help-options) webhelyre.
+
+Segítsen nekünk a Microsoft Identity platform fejlesztésében. Mondja el, mit gondol egy rövid, kétkérdéses felmérés végrehajtásával.
+
+> [!div class="nextstepaction"]
+> [Microsoft Identity platform-felmérés](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRyKrNDMV_xBIiPGgSvnbQZdUQjFIUUFGUE1SMEVFTkdaVU5YT0EyOEtJVi4u)

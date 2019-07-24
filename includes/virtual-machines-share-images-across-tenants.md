@@ -8,57 +8,57 @@ ms.topic: include
 ms.date: 04/25/2019
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 499aeccdf00980eeb66ac6ee06e45267fd515143
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: cf05468af17a4fafa7c81c7ad8bc89b3306a54af
+ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67179083"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68286177"
 ---
-Megosztott kép katalógusok lehetővé teszik a megosztás képek RBAC használatával. Az RBAC használatával megoszthatja a bérlőn kívüli lemezképeket a bérlőn belül, és akár egyéni felhasználók számára. De ha meg szeretné osztani a lemezképek kívül az Azure-bérlőhöz, ipari méretekben, hozzunk létre egy alkalmazás regisztrációját a megosztás megkönnyítése érdekében.  Az alkalmazásregisztráció használatával engedélyezheti a összetettebb megosztási helyzetek, például: 
+A megosztott képtárak lehetővé teszik a képek megosztását a RBAC használatával. A RBAC segítségével megoszthatja a bérlőn belüli képeket, és akár a bérlőn kívüli személyeket is. Ha azonban az Azure-bérlőn kívül szeretné megosztani a lemezképeket, akkor a megosztás megkönnyítéséhez létre kell hoznia egy alkalmazás-regisztrálást.  Az alkalmazások regisztrálásával összetettebb megosztási forgatókönyvek is engedélyezhetők, például a következő esetekben: 
 
-* Képek megosztott kezelése, ha egy vállalat beszerzi egy másik, és az Azure-infrastruktúra külön bérlők között megoszlik. 
-* Az Azure-partnerek ügyfeleik nevében kezelhet az Azure-infrastruktúrákat. Lemezképek testreszabása a partnerek bérlőn belül történik, de az infrastruktúra központi telepítések akkor történik meg az ügyfél-bérlőben. 
-
-
-## <a name="create-the-app-registration"></a>Az alkalmazásregisztráció létrehozása
-
-Hozzon létre egy alkalmazás regisztrálása a lemezkép gyűjtemény-erőforrások megosztása mind a bérlők által használandó.
-1. Nyissa meg a [alkalmazásregisztrációk (előzetes verzió) az Azure Portalon](https://ms.portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade/quickStartType//sourceType/).    
-1. Válassza ki **új regisztrációs** az oldal felső részén látható menüben.
-1. A **neve**, típus *myGalleryApp*.
-1. A **támogatott fióktípusok**válassza **fiókok minden olyan szervezeti directory és személyes Microsoft-fiókok**.
-1. A **átirányítási URI-t**, típus *https://www.microsoft.com* majd **regisztrálása**. Miután létrejött az alkalmazás regisztrációját, az Áttekintés lap nyílik meg.
-1. Az Áttekintés oldalon másolja az **Alkalmazásazonosítót (ügyfél)** , és mentse későbbi használatra.   
-1. Válassza ki **tanúsítványok és titkos kulcsok**, majd válassza ki **új titkos ügyfélkulcsot**.
-1. A **leírás**, típus *megosztott kép katalógus több-bérlős alkalmazás titkos kulcsát*.
-1. A **lejárat**, hagyja bejelölve az alapértelmezett **az 1 év** majd **Hozzáadás**.
-1. Másolja a titkos kulcs értékét, és mentse azt biztonságos helyre. Ez az oldal elhagyása után nem lehet lekérdezni.
+* Megosztott lemezképek kezelése, amikor egy vállalat megvásárol egy másikat, az Azure-infrastruktúra pedig külön bérlők között oszlik meg. 
+* Az Azure-partnerek az Azure-infrastruktúrát az ügyfeleik nevében kezelhetik. A képek testreszabása a partnerek bérlőn belül történik, de az infrastruktúra központi telepítései az ügyfél bérlője számára történnek. 
 
 
-Adjon engedélyt az alkalmazásnak regisztrációs megosztott lemezkép-katalógus használatával.
-1. Az Azure Portalon válassza ki a megosztott lemezkép-katalógusban, hogy meg szeretné osztani egy másik bérlőben.
-1. Válassza ki **válassza ki a hozzáférés-vezérlés (IAM)** , majd a **szerepkör-hozzárendelés hozzáadása** kiválasztása *Hozzáadás*. 
-1. A **szerepkör**válassza **olvasó**.
-1. A **hozzáférés hozzárendelése:** , hagyja meg az **az Azure AD-felhasználó, csoport vagy szolgáltatásnév**.
-1. A **válassza**, típus *myGalleryApp* , és jelölje ki, amikor az megjelenik a listában. Amikor elkészült, válassza ki a **mentése**.
+## <a name="create-the-app-registration"></a>Az alkalmazás regisztrációjának létrehozása
+
+Hozzon létre egy alkalmazás-regisztrációt, amelyet mindkét bérlő használni fog a képkatalógus erőforrásainak megosztásához.
+1. Nyissa meg a [Azure Portal Alkalmazásregisztrációk (előzetes verzió)](https://ms.portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade/quickStartType//sourceType/).    
+1. Az oldal tetején található menüben válassza az **új regisztráció** lehetőséget.
+1. A **név**mezőbe írja be a következőt: *myGalleryApp*.
+1. A **támogatott fióktípus**területen válassza a **fiókok lehetőséget bármely szervezeti címtárban és személyes Microsoft-fiókban**.
+1. Az **átirányítási URI**mezőbe *https://www.microsoft.com* írja be a nevet, majd válassza a **regisztráció**lehetőséget. Az alkalmazás regisztrációjának létrehozása után megnyílik az áttekintő oldal.
+1. Az Áttekintés lapon másolja az **alkalmazás (ügyfél) azonosítóját** , és mentse a alkalmazást később.   
+1. Válassza a **tanúsítványok & titkok**lehetőséget, majd válassza az **új ügyfél titka**lehetőséget.
+1. A **Leírás**mezőbe írja be a *megosztott rendszerkép-katalógus több-bérlős alkalmazás titkos kulcsát*.
+1. A lejáratnál hagyja meg az alapértelmezett **1 év** értéket, majd válassza a **Hozzáadás**lehetőséget.
+1. Másolja a titkos kulcs értékét, és mentse egy biztonságos helyre. Az oldal elhagyása után nem kérhető le.
 
 
-## <a name="give-tenant-2-access"></a>Bérlő 2 hozzáférést
+Adja meg az alkalmazás regisztrációjának engedélyét a megosztott képtárat használva.
+1. A Azure Portal válassza ki azt a megosztott képtárat, amelyet másik Bérlővel szeretne megosztani.
+1. Válassza a **hozzáférés-vezérlés kiválasztása (iam)** lehetőséget, majd a **szerepkör-hozzárendelés hozzáadása** területen válassza a *Hozzáadás*lehetőséget. 
+1. A **szerepkör**területen válassza az **olvasó**lehetőséget.
+1. A **hozzáférés társítása a**következőhöz területen hagyja ezt az **Azure ad-felhasználó,-csoport vagy egyszerű szolgáltatásnév**beállításnál.
+1. A **Select (kijelölés**) területen írja be a *myGalleryApp* , és válassza ki azt, amikor megjelenik a listában. Ha elkészült, válassza a **Mentés**lehetőséget.
 
-Bérlői 2 hozzáférést biztosít a kérelem kérve egy böngészővel bejelentkezési. Cserélje le *<Tenant2 ID>* bérlőazonosítójú szeretné osztani a lemezkép-katalógusában a bérlőhöz. Cserélje le *< alkalmazás (ügyfél) azonosítója >* a létrehozott alkalmazás regisztráció az alkalmazás azonosítójával. Ha elkészült, így a cserét, illessze be az URL-címet egy böngészőben, és a bejelentkezési utasításokat követve jelentkezzen be a bérlő 2.
+
+## <a name="give-tenant-2-access"></a>2\. bérlői hozzáférés biztosítása
+
+Adja meg a bérlő 2 hozzáférését az alkalmazáshoz egy böngésző használatával történő bejelentkezés kérésével. Cserélje le  *\<a Tenant2 ID >* a bérlői azonosítóra annak a bérlőnek a bérlői azonosítójával, amelyhez meg szeretné osztani a rendszerkép-katalógust. Cserélje le  *\<az alkalmazás (ügyfél) azonosítóját >* a létrehozott alkalmazás-regisztráció alkalmazás-azonosítójával. Ha végzett a kihelyezéssel, illessze be az URL-címet egy böngészőben, és kövesse a bejelentkezési utasításokat a 2. Bérlőbe való bejelentkezéshez.
 
 ```
 https://login.microsoftonline.com/<Tenant 2 ID>/oauth2/authorize?client_id=<Application (client) ID>&response_type=code&redirect_uri=https%3A%2F%2Fwww.microsoft.com%2F 
 ```
 
-Az a [az Azure portal](https://portal.azure.com) jelentkezzen be a bérlő 2 és az alkalmazás regisztrációs hozzáférést biztosíthat az erőforráscsoportot kívánja a virtuális gép létrehozásához.
+A [Azure Portal](https://portal.azure.com) jelentkezzen be bérlői 2-ként, és adja meg az alkalmazás regisztrációs hozzáférését ahhoz az erőforráscsoporthoz, amelyben létre szeretné hozni a virtuális gépet.
 
-1. Válassza ki az erőforráscsoportot, majd **hozzáférés-vezérlés (IAM)** . A **szerepkör-hozzárendelés hozzáadása** kiválasztása **Hozzáadás**. 
-1. A **szerepkör**, típus **közreműködői**.
-1. A **hozzáférés hozzárendelése:** , hagyja meg az **az Azure AD-felhasználó, csoport vagy szolgáltatásnév**.
-1. A **kiválasztása** típus *myGalleryApp* majd válassza ki, amikor az megjelenik a listában. Amikor elkészült, válassza ki a **mentése**.
+1. Válassza ki az erőforráscsoportot, majd válassza a **hozzáférés-vezérlés (iam)** lehetőséget. A **szerepkör-hozzárendelés hozzáadása** területen válassza a **Hozzáadás**lehetőséget. 
+1. A **szerepkör**alatt írja be a közreműködőt.
+1. A **hozzáférés társítása a**következőhöz területen hagyja ezt az **Azure ad-felhasználó,-csoport vagy egyszerű szolgáltatásnév**beállításnál.
+1. A **Select** Type *MyGalleryApp* (típus kiválasztása) területen válassza ki azt, amikor megjelenik a listában. Ha elkészült, válassza a **Mentés**lehetőséget.
 
 > [!NOTE]
-> Várjon, amíg a rendszerkép verziószámát teljesen befejeződik, beépített és a replikált felügyelt ugyanazt a lemezképet létrehozni egy másik lemezkép-verzió használata előtt kell.
+> Meg kell várnia, amíg a rendszerkép verziója teljesen elkészült és replikálva lett ahhoz, hogy ugyanazt a felügyelt képet használhassa egy másik rendszerkép-verzió létrehozásához.
 

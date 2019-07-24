@@ -1,6 +1,6 @@
 ---
-title: A felhőbe – ESP8266 Feather HUZZAH ESP8266 csatlakozhat az Azure IoT Hub |} A Microsoft Docs
-description: Ismerje meg, hogyan és beállítása és kapcsolódás Adafruit Feather HUZZAH ESP8266 Azure IoT Hub, az Azure felhőalapú platformján ebben az oktatóanyagban adatokat küldeni.
+title: ESP8266 a Feather-HUZZAH ESP8266 az Azure IoT Hubba | Microsoft Docs
+description: Ebből az oktatóanyagból megtudhatja, hogyan telepítheti és csatlakozhat a adafruit Feather HUZZAH ESP8266 az Azure IoT Hubhoz, hogy az Azure Cloud platformba küldje az információkat.
 author: wesmc7777
 manager: philmea
 ms.service: iot-hub
@@ -9,114 +9,117 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 04/11/2018
 ms.author: wesmc
-ms.openlocfilehash: de4029d7c454ed590fdf974771d5f55c52590c93
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.openlocfilehash: 8e97a979c37af8ade51b4ff6ca4b2c5b4eec126e
+ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67839051"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68232726"
 ---
-# <a name="connect-adafruit-feather-huzzah-esp8266-to-azure-iot-hub-in-the-cloud"></a>Adafruit Feather HUZZAH ESP8266 csatlakoztatása Azure IoT hubhoz a felhőben
+# <a name="connect-adafruit-feather-huzzah-esp8266-to-azure-iot-hub-in-the-cloud"></a>A adafruit Feather HUZZAH ESP8266 összekapcsolhatók az Azure IoT Hub a felhőben
 
 [!INCLUDE [iot-hub-get-started-device-selector](../../includes/iot-hub-get-started-device-selector.md)]
 
-![DHT22 Feather HUZZAH ESP8266 és az IoT Hub közötti kapcsolat](./media/iot-hub-arduino-huzzah-esp8266-get-started/1_connection-hdt22-feather-huzzah-iot-hub.png)
+![Kapcsolat a DHT22, a Feather HUZZAH ESP8266 és a IoT Hub között](./media/iot-hub-arduino-huzzah-esp8266-get-started/1_connection-hdt22-feather-huzzah-iot-hub.png)
 
-## <a name="what-you-do"></a>TEENDŐ
+## <a name="what-you-do"></a>Teendők
 
-Adafruit Feather HUZZAH ESP8266 csatlakozni az IoT hub által létrehozott. Ezután egy mintaalkalmazás futtatunk ESP8266 DHT22 érzékelő hőmérséklettel és páratartalommal kapcsolatos adatok gyűjtését. Végül az érzékelő adatokat küld az IoT hubnak.
+Csatlakoztathatja a adafruit Feather HUZZAH ESP8266 egy olyan IoT-hubhoz, amelyet Ön hozott létre. Ezután egy minta alkalmazást futtat a ESP8266-on a hőmérséklet és a páratartalom adatainak a DHT22-érzékelőből való összegyűjtéséhez. Végül elküldi az érzékelő adatait az IoT hubhoz.
 
 > [!NOTE]
-> Ha használ egyéb ESP8266 célra szolgáló kártyákat, ezeket a lépéseket csatlakozni az IoT hub továbbra is követheti. Az ESP8266 táblához használ, attól függően előfordulhat, hogy szeretne a `LED_PIN`. Például ha ESP8266 az AI-Thinker használ, érdemes lehet módosítani a `0` való `2`. Még nem rendelkezik egy csomagot? A letöltés a [Azure-webhelyen](https://azure.com/iotstarterkits).
+> Ha más ESP8266-kártyákat használ, továbbra is követheti ezeket a lépéseket az IoT hubhoz való kapcsolódáshoz. Az Ön által használt ESP8266 függően előfordulhat, hogy újra kell konfigurálnia a `LED_PIN`-t. Ha például a ESP8266-t használja az AI-Think szolgáltatásból, akkor előfordulhat, `0` hogy a verzióról a értékre `2`módosítja. Még nem rendelkezik csomaggal? Töltse le az [Azure](https://azure.com/iotstarterkits)-webhelyről.
 
 ## <a name="what-you-learn"></a>Ismertetett témák
 
-* IoT hub létrehozása és eszköz regisztrálása az Feather HUZZAH ESP8266
-* Az érzékelő és a számítógép Feather HUZZAH ESP8266 csatlakoztatása
-* A mintaalkalmazás futtat Feather HUZZAH ESP8266 érzékelőktől kapott adatok gyűjtéséről
-* Az érzékelőktől kapott adatok küldése az IoT hubhoz
+* IoT hub létrehozása és az eszköz regisztrálása a Feather HUZZAH ESP8266
+* A Feather HUZZAH ESP8266 összekötése az érzékelővel és a számítógéppel
+* Az érzékelők adatainak összegyűjtése a Feather HUZZAH-ESP8266 futó minta alkalmazás futtatásával
+* Az érzékelő adatainak elküldése az IoT hubhoz
 
 ## <a name="what-you-need"></a>Mi szükséges
 
-![Az oktatóanyaghoz szükség részei](./media/iot-hub-arduino-huzzah-esp8266-get-started/2_parts-needed-for-the-tutorial.png)
+![Az oktatóanyaghoz szükséges részek](./media/iot-hub-arduino-huzzah-esp8266-get-started/2_parts-needed-for-the-tutorial.png)
 
-Ez a művelet végrehajtásához a következő részek a Feather HUZZAH ESP8266 Starter Kit a kell:
+A művelet végrehajtásához a Feather HUZZAH ESP8266 Starter Kit következő részeire lesz szüksége:
 
-* A Feather HUZZAH ESP8266 tábla
-* A Micro USB-Kapcsolattal a típust egy USB-kábelen keresztül
+* A Feather HUZZAH ESP8266-táblája
+* USB-kábel beírása a Micro USB-vel
 
-A fejlesztési környezetet is kell az alábbiakat:
+A fejlesztési környezethez az alábbiakra is szükség van:
 
-* Aktív Azure-előfizetés. Ha nem rendelkezik Azure-fiók [hozzon létre egy ingyenes Azure próbafiókot](https://azure.microsoft.com/free/) mindössze néhány perc múlva.
-* Mac vagy Windows- vagy Ubuntu rendszert futtató számítógép.
-* Feather HUZZAH ESP8266 szeretne csatlakozni a vezeték nélküli hálózathoz.
-* Töltse le a konfigurációs eszközt internetkapcsolaton keresztül.
-* [A Visual Studio Code-bővítmény Arduino](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.vscode-arduino).
+* Aktív Azure-előfizetés. Ha nem rendelkezik Azure-fiókkal, mindössze néhány perc alatt [hozzon létre egy ingyenes Azure próbaverziós fiókot](https://azure.microsoft.com/free/) .
+* Windows vagy Ubuntu rendszert futtató Mac vagy PC.
+* [GIT](https://git-scm.com/download)
+* [Arduino](https://www.arduino.cc/en/main/software#download)
+* [Adafruit Huzzah ESP8266-illesztőprogram USB-hez](https://learn.adafruit.com/adafruit-feather-huzzah-esp8266/using-arduino-ide)
+* Egy vezeték nélküli hálózat, amely a Feather HUZZAH ESP8266 csatlakozik.
+* Internetkapcsolat a konfigurációs eszköz letöltéséhez.
+* [Visual Studio Code-bővítmény az Arduino-hez](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.vscode-arduino).
 
 > [!Note]
-> A Visual Studio Code-bővítménnyel használja Arduino azt kell verzió 1.6.8 Arduino IDE verzió vagy újabb. Korábbi verziók nem működnek a AzureIoT könyvtárhoz.
+> Az Arduino-hez készült Visual Studio Code-bővítmény által használt Arduino IDE-verziónak 1.6.8 vagy újabb verziónak kell lennie. A korábbi verziók nem működnek a AzureIoT könyvtárral.
 
-A következő elemek nem kötelezők, abban az esetben nem kell érzékelő. Akkor is szimulált érzékelői adatokat használja.
+Ha nem rendelkezik érzékelővel, a következő elemek választhatók. Lehetősége van szimulált szenzoros adatmennyiséget is használni.
 
-* Az Adafruit DHT22 hőmérséklettel és páratartalommal kapcsolatos érzékelő.
-* Egy breadboard
-* Millió/M átkötés fenyegetéseknek
+* Adafruit DHT22 hőmérséklet-és páratartalom-érzékelő
+* Egy kenyérvágódeszka
+* M/M jumper huzalok
 
 ## <a name="create-an-iot-hub"></a>IoT Hub létrehozása
 
 [!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
 
-## <a name="register-a-new-device-in-the-iot-hub"></a>Új eszköz regisztrálása az IoT hubban
+## <a name="register-a-new-device-in-the-iot-hub"></a>Új eszköz regisztrálása az IoT hub-ban
 
 [!INCLUDE [iot-hub-include-create-device](../../includes/iot-hub-include-create-device.md)]
 
-## <a name="connect-feather-huzzah-esp8266-with-the-sensor-and-your-computer"></a>Az érzékelő és a számítógép Feather HUZZAH ESP8266 csatlakoztatása
+## <a name="connect-feather-huzzah-esp8266-with-the-sensor-and-your-computer"></a>A Feather HUZZAH ESP8266 összekötése az érzékelővel és a számítógéppel
 
-Ebben a szakaszban az érzékelők a táblához való csatlakozáshoz. Majd, az eszköz csatlakoztatása a számítógépre, további használatra.
+Ebben a szakaszban az érzékelőket a táblához kapcsolja. Ezután további használatra csatlakoztathatja az eszközt a számítógéphez.
 
-### <a name="connect-a-dht22-temperature-and-humidity-sensor-to-feather-huzzah-esp8266"></a>Csatlakozás egy DHT22 hőmérsékleti és páratartalom-érzékelőt Feather HUZZAH ESP8266
+### <a name="connect-a-dht22-temperature-and-humidity-sensor-to-feather-huzzah-esp8266"></a>DHT22 hőmérséklet-és páratartalom-érzékelő összekötése a Feather HUZZAH ESP8266
 
-Használják a breadboard és átkötés módon hozhatja létre a kapcsolatot. Ha nem rendelkezik olyan érzékelő, kihagyhatja ezt a szakaszt, mert a szimulált érzékelői adatokat használhatja helyette.
+A kenyérvágódeszka és a jumper huzalok segítségével a következő módon teheti meg a kapcsolódást. Ha még nem rendelkezik érzékelővel, ugorja át ezt a szakaszt, mert a szimulált szenzoros adattípusokat is használhatja.
 
-![Kapcsolatok referencia](./media/iot-hub-arduino-huzzah-esp8266-get-started/17_connections_on_breadboard.png)
+![Kapcsolatok referenciája](./media/iot-hub-arduino-huzzah-esp8266-get-started/17_connections_on_breadboard.png)
 
-Érzékelő PIN-kód használja a következő kábelezés:
+Az érzékelő PIN-kódokhoz használja a következő huzalozást:
 
-| Indítsa el az (érzékelő.)           | Teljes (tábla)            | Kábel színe   |
+| Indítás (érzékelő)           | Befejezés (tábla)            | Kábel színe   |
 | -----------------------  | ---------------------- | ------------  |
-| VDD (31F PIN-kód)            | 3V (rögzítése 58H)           | Piros kábel     |
-| ADATOK (32F PIN-kód)           | GPIO 2 (46A PIN-kód)       | Kék kábel    |
-| GND (34F PIN-kód)            | GND (56I PIN-kód)          | Fekete kábellel   |
+| VDD (PIN-kód 31F)            | 3V (PIN-kód 58H)           | Piros kábel     |
+| Adatkezelési (32F PIN-kód)           | 2\. GPIO (PIN-kód 46A)       | Kék kábel    |
+| GND (PIN-kód 34F)            | GND (PIn-kód 56I)          | Fekete kábel   |
 
-További információkért lásd: [Adafruit DHT22 érzékelő telepítése](https://learn.adafruit.com/dht/connecting-to-a-dhtxx-sensor) és [Adafruit Feather HUZZAH Esp8266 érintkezőkiosztása szerepel](https://learn.adafruit.com/adafruit-feather-huzzah-esp8266/using-arduino-ide?view=all#pinouts).
+További információ: [ADAFRUIT DHT22-érzékelő beállítása](https://learn.adafruit.com/dht/connecting-to-a-dhtxx-sensor) és [adafruit Feather HUZZAH Esp8266 pinouts](https://learn.adafruit.com/adafruit-feather-huzzah-esp8266/using-arduino-ide?view=all#pinouts).
 
-Most már a Feather Huzzah ESP8266 kell csatlakoztatni a működő érzékelő.
+Most a Feather Huzzah-ESP8266 egy működő érzékelővel kell összekapcsolni.
 
-![Feather Huzzah DHT22 összekapcsolása](media/iot-hub-arduino-huzzah-esp8266-get-started/8_connect-dht22-feather-huzzah.png)
+![A DHT22 és a Feather Huzzah összekötése](media/iot-hub-arduino-huzzah-esp8266-get-started/8_connect-dht22-feather-huzzah.png)
 
-### <a name="connect-feather-huzzah-esp8266-to-your-computer"></a>Feather HUZZAH ESP8266 kapcsolódni a számítógéphez
+### <a name="connect-feather-huzzah-esp8266-to-your-computer"></a>A Feather HUZZAH ESP8266 összekötése a számítógéphez
 
-Ahogyan tovább, a Micro USB-Kapcsolattal a típust egy USB-kábel használatával Feather HUZZAH ESP8266 kapcsolódni a számítógéphez.
+A következő ábrán látható módon a Micro USB-vel írja be az USB-kábelt a Feather HUZZAH ESP8266 csatlakoztatásához a számítógéphez.
 
-![Feather Huzzah kapcsolódni a számítógéphez](media/iot-hub-arduino-huzzah-esp8266-get-started/9_connect-feather-huzzah-computer.png)
+![A Feather Huzzah összekötése a számítógéphez](media/iot-hub-arduino-huzzah-esp8266-get-started/9_connect-feather-huzzah-computer.png)
 
-### <a name="add-serial-port-permissions-ubuntu-only"></a>Adja hozzá a soros port engedélyek (csak Ubuntu)
+### <a name="add-serial-port-permissions-ubuntu-only"></a>Soros port engedélyeinek hozzáadása (csak Ubuntu esetén)
 
-Ubuntu használatakor győződjön meg arról, hogy az engedélyeket a Feather HUZZAH ESP8266 USB portot a művelethez használandó. Soros portos engedélyek hozzáadásához kövesse az alábbi lépéseket:
+Ha Ubuntut használ, győződjön meg arról, hogy rendelkezik a tollas HUZZAH ESP8266 USB-portján való működéséhez szükséges engedélyekkel. A soros port engedélyeinek hozzáadásához kövesse az alábbi lépéseket:
 
-1. Parancsot egy terminálban futtassa a következő parancsokat:
+1. Futtassa a következő parancsokat egy terminálon:
 
    ```bash
    ls -l /dev/ttyUSB*
    ls -l /dev/ttyACM*
    ```
 
-   A következő kimenetek egyik kap:
+   A következő kimenetek valamelyikét kapja:
 
-   * crw-rw---1 a legfelső szintű uucp xxxxxxxx
-   * crw-rw---1 a legfelső szintű kitárcsázáshoz xxxxxxxx
+   * CRW-RW----1 root UUCP XXXXXXXX
+   * CRW-RW----1 root kitárcsázáshoz XXXXXXXX
 
-   A kimenetben láthatja, hogy `uucp` vagy `dialout` az USB-port a csoport tulajdonosának neve.
+   A kimenetben figyelje meg, `uucp` hogy `dialout` a vagy az USB-port csoportjának tulajdonosi neve.
 
 2. Adja hozzá a felhasználót a csoporthoz a következő parancs futtatásával:
 
@@ -124,21 +127,21 @@ Ubuntu használatakor győződjön meg arról, hogy az engedélyeket a Feather H
    sudo usermod -a -G <group-owner-name> <username>
    ```
 
-   `<group-owner-name>` az a csoport tulajdonosa név az előző lépésben beszerzett. `<username>` az Ön Ubuntu felhasználó neve.
+   `<group-owner-name>`az előző lépésben beszerzett csoport tulajdonosának neve. `<username>`az Ubuntu-felhasználóneve.
 
-3. Jelentkezzen ki az Ubuntu, és jelentkezzen be újra a módosítás megjelenik.
+3. Jelentkezzen ki az Ubuntu szolgáltatásból, majd jelentkezzen be újra a módosítás megjelenéséhez.
 
-## <a name="collect-sensor-data-and-send-it-to-your-iot-hub"></a>Érzékelőktől kapott adatok gyűjtésére, és küldje el az IoT hubhoz
+## <a name="collect-sensor-data-and-send-it-to-your-iot-hub"></a>Érzékelő adatainak összegyűjtése és az IoT hub-ba való küldése
 
-Ebben a szakaszban üzembe és futtathat egy mintaalkalmazást a Feather HUZZAH ESP8266. A mintaalkalmazás a LED a Feather HUZZAH ESP8266 v milisekundách, és az IoT hubhoz a DHT22 érzékelő összegyűjtött hőmérséklettel és páratartalommal kapcsolatos adatokat küld.
+Ebben a szakaszban egy minta alkalmazást helyez üzembe és futtat a Feather HUZZAH ESP8266. A minta alkalmazás a tollas HUZZAH ESP8266, és a DHT22 érzékelőtől az IoT hubhoz gyűjtött hőmérséklet-és páratartalom-adatokat küldi el.
 
-### <a name="get-the-sample-application-from-github"></a>A mintaalkalmazás beszerzése a Githubról
+### <a name="get-the-sample-application-from-github"></a>Minta alkalmazás beszerzése a GitHubról
 
-A mintaalkalmazás GitHub-ban üzemel. Klónozza a mintatárházat, amely tartalmazza a mintaalkalmazást a Githubról. A minta tárház klónozásához, kövesse az alábbi lépéseket:
+A minta alkalmazás a GitHubon fut. A minta alkalmazást tartalmazó minta tárház klónozása a GitHubról. A minta tárház klónozásához kövesse az alábbi lépéseket:
 
-1. Nyisson meg egy parancssort vagy terminálablakot.
+1. Nyisson meg egy parancssort vagy egy Terminálablak-ablakot.
 
-2. Nyissa meg egy mappára, ahol a mintaalkalmazás kell tárolni.
+2. Nyissa meg azt a mappát, ahol a minta alkalmazást tárolni szeretné.
 
 3. Futtassa a következő parancsot:
 
@@ -146,51 +149,51 @@ A mintaalkalmazás GitHub-ban üzemel. Klónozza a mintatárházat, amely tartal
    git clone https://github.com/Azure-Samples/iot-hub-feather-huzzah-client-app.git
    ```
 
-   Ezután telepítse a csomagot a Feather HUZZAH ESP8266 Visual Studio Code-ban.
+   Ezután telepítse a Feather HUZZAH ESP8266 csomagot a Visual Studio Code-ban.
 
-4. Nyissa meg a mappát, ahol a mintaalkalmazás tárolja.
+4. Nyissa meg azt a mappát, ahol a minta alkalmazást tárolja.
 
-5. Nyissa meg a app.ino fájlt a Visual Studio Code az alkalmazás mappájában.
+5. Nyissa meg az app. Ino fájlt az App mappában a Visual Studio Code-ban.
 
-   ![A mintaalkalmazás megnyitásához a Visual Studio Code-ban](media/iot-hub-arduino-huzzah-esp8266-get-started/10_vscode-open-sample-app.png)
+   ![A minta alkalmazás megnyitása a Visual Studio Code-ban](media/iot-hub-arduino-huzzah-esp8266-get-started/10_vscode-open-sample-app.png)
 
-6. Adja meg a Visual Studio Code-ban `F1`.
+6. A Visual Studio Code-ban adja `F1`meg a értéket.
 
-7. Típus **Arduino** válassza **Arduino: Üzenőfal Manager**.
+7. Írja  be az Arduino **elemet, és válassza az Arduino: Üzenőfal-** kezelő.
 
-8. Az a **Arduino tábla Manager** lapra, majd **további URL-címek**.
+8. Az **Arduino Board Manager** lapon kattintson a **további URL-címek**elemre.
 
-   ![A VS Code Arduino tábla Manager](media/iot-hub-arduino-huzzah-esp8266-get-started/11_vscode-arduino-board-manager.png)
+   ![VS Code Arduino Board Manager](media/iot-hub-arduino-huzzah-esp8266-get-started/11_vscode-arduino-board-manager.png)
 
-9. Az a **felhasználói beállítások** ablakban másolja és illessze be a következő parancsot a fájl vége
+9. A **felhasználói beállítások** ablakban másolja és illessze be a következőt a fájl végére.
 
    ```json
    "arduino.additionalUrls": "https://arduino.esp8266.com/stable/package_esp8266com_index.json"
    ```
 
-   ![Arduino csomag URL-cím konfigurálása a VS Code-ban](media/iot-hub-arduino-huzzah-esp8266-get-started/12_vscode-package-url.png)
+   ![Arduino-csomag URL-címének konfigurálása a VS Code-ban](media/iot-hub-arduino-huzzah-esp8266-get-started/12_vscode-package-url.png)
 
-10. Mentse a fájlt, és zárja be a **felhasználói beállítások** fülre.
+10. Mentse a fájlt, és zárjuk be a **felhasználói beállítások** lapot.
 
-11. Kattintson a **csomag indexek frissítése**. A frissítés befejezése után keressen **esp8266**.
+11. Kattintson a **csomag indexek frissítése**elemre. A frissítés befejeződése után keresse meg a **esp8266**.
 
-12. Kattintson a **telepítése** esp8266 gombra.
+12. Kattintson a **telepítés** gombra a esp8266.
 
-    Tanácsok Manager azt jelzi, hogy telepítve van-e a ESP8266 és a egy 2.2.0 vagy újabb verziója.
+    A Boards Manager azt jelzi, hogy a ESP8266 a 2.2.0 vagy újabb verzióval van telepítve.
 
-    ![Az esp8266 csomag telepítve van](media/iot-hub-arduino-huzzah-esp8266-get-started/13_vscode-esp8266-installed.png)
+    ![A esp8266 csomag telepítve van](media/iot-hub-arduino-huzzah-esp8266-get-started/13_vscode-esp8266-installed.png)
 
-13. Adja meg `F1`, majd írja be a **Arduino** válassza **Arduino: Board Config**.
+13. Írja `F1`be, majd  írja be az **Arduino elemet, és válassza az Arduino: Tábla konfigurációja**
 
-14. Jelölje be a **kijelölt táblához:** , és írja be **esp8266**, majd **Adafruit HUZZAH ESP8266 (esp8266)** .
+14. Kattintson a **kijelölt táblához** tartozó mezőre, és írja be a következőt: **esp8266**, majd válassza a **adafruit HUZZAH esp8266 (esp8266)** lehetőséget.
 
-    ![Esp8266 tábla kiválasztása](media/iot-hub-arduino-huzzah-esp8266-get-started/14_vscode-select-esp8266.png)
+    ![Esp8266-tábla kiválasztása](media/iot-hub-arduino-huzzah-esp8266-get-started/14_vscode-select-esp8266.png)
 
-### <a name="install-necessary-libraries"></a>Szükséges kódtárak telepítése
+### <a name="install-necessary-libraries"></a>A szükséges kódtárak telepítése
 
-1. Adja meg a Visual Studio Code-ban `F1`, majd írja be a **Arduino** válassza **Arduino: Szalagtár Manager**.
+1. A Visual Studio Code-ban írja `F1`be a (z), **majd írja be az **Arduino** elemet, és válassza az Arduino: Library Manager**.
 
-2. Keresse meg a következő könyvtár egyenként neveket. Minden könyvtár talált, kattintson a **telepítése**.
+2. Keresse meg a következő könyvtárak nevét eggyel. Minden megtalált könyvtárhoz kattintson a **telepítés**gombra.
    * `AzureIoTHub`
    * `AzureIoTUtility`
    * `AzureIoTProtocol_MQTT`
@@ -198,63 +201,63 @@ A mintaalkalmazás GitHub-ban üzemel. Klónozza a mintatárházat, amely tartal
    * `DHT sensor library`
    * `Adafruit Unified Sensor`
 
-### <a name="dont-have-a-real-dht22-sensor"></a>Nincs valós DHT22 érzékelő?
+### <a name="dont-have-a-real-dht22-sensor"></a>Nem rendelkezik valós DHT22-érzékelővel?
 
-A mintaalkalmazás abban az esetben nem kell valódi érzékelő DHT22 szimulálhat hőmérséklettel és páratartalommal kapcsolatos adatokat. Szimulált adatok használata a mintaalkalmazás beállításához, kövesse az alábbi lépéseket:
+Ha nem rendelkezik valós DHT22-érzékelővel, a minta alkalmazás képes szimulálni a hőmérséklet-és páratartalom-adattípust. A következő lépésekkel állíthatja be a minta alkalmazást a szimulált adatértékek használatára:
 
-1. Nyissa meg a `config.h` fájlt a `app` mappát.
+1. Nyissa meg a `app` fájltamappában.`config.h`
 
-2. Keresse meg a következő kódsort, és módosítsa az értéket `false` való `true`:
+2. Keresse meg a következő kódrészletet, és módosítsa az értéket `false` `true`a következőre:
 
    ```c
    define SIMULATED_DATA true
    ```
 
-   ![A mintaalkalmazás szimulált adatok konfigurálása](media/iot-hub-arduino-huzzah-esp8266-get-started/15_vscode-configure-app-use-simulated-data.png)
+   ![A minta alkalmazás konfigurálása szimulált adatértékek használatára](media/iot-hub-arduino-huzzah-esp8266-get-started/15_vscode-configure-app-use-simulated-data.png)
 
 3. Mentse a fájlt.
 
-### <a name="deploy-the-sample-application-to-feather-huzzah-esp8266"></a>A mintaalkalmazás Feather HUZZAH ESP8266 üzembe helyezése
+### <a name="deploy-the-sample-application-to-feather-huzzah-esp8266"></a>A minta alkalmazás üzembe helyezése a Feather HUZZAH ESP8266
 
-1. A Visual Studio Code-ban kattintson  **\<válassza ki a soros Port >** állapotát, és majd kattintson a soros port Feather HUZZAH ESP8266 a.
+1. A Visual Studio Code-ban kattintson a  **\<soros port kiválasztása >** elemre az állapotsoron, majd kattintson a soros portra a Feather HUZZAH ESP8266.
 
-2. Adja meg `F1`, majd írja be a **Arduino** válassza **Arduino: Töltse fel** készíthet és helyezhet üzembe a mintaalkalmazás Feather HUZZAH ESP8266.
+2. Írja `F1`be, majd  írja be az **Arduino elemet, és válassza az Arduino: Töltse** fel a minta alkalmazást a Feather HUZZAH ESP8266 felépítésére és üzembe helyezésére.
 
-### <a name="enter-your-credentials"></a>Adja meg hitelesítő adatait
+### <a name="enter-your-credentials"></a>Adja meg a hitelesítő adatait
 
-A feltöltés sikeres befejeződése után adja meg hitelesítő adatait az alábbi lépésekkel:
+A feltöltés sikeres befejezése után kövesse az alábbi lépéseket a hitelesítő adatok megadásához:
 
-1. Nyissa meg az Arduino IDE, kattintson **eszközök** > **soros figyelő**.
+1. Nyissa meg az Arduino IDE-t, kattintson az **eszközök** > **soros figyelő**elemre.
 
-2. A soros figyelő ablakban figyelje meg, hogy a két legördülő lista a jobb alsó sarokban.
+2. A soros figyelő ablakban figyelje meg a két legördülő listát a jobb alsó sarokban.
 
-3. Válassza ki **nincs sor vége** a bal oldali legördülő listát.
+3. A bal oldali legördülő listához válassza a **Nincs vonal véget** .
 
-4. Válassza ki **115200 átviteli** a megfelelő legördülő listát.
+4. A jobb oldali legördülő listához válassza a **115200 Baud** lehetőséget.
 
-5. A soros figyelő ablak tetején található beviteli mezőbe, írja be az a következő információkat, ha a rendszer megkéri, hogy adja meg őket, és kattintson a **küldése**.
+5. A soros figyelő ablak felső részén található beviteli mezőben adja meg a következő információkat, ha a rendszer kéri, hogy adja meg azokat, majd kattintson a **Küldés**gombra.
 
    * Wi-Fi SSID
-   * Wi-Fi-jelszó
-   * Eszköz kapcsolati karakterláncát
+   * Wi-Fi jelszó
+   * Eszköz-csatlakoztatási karakterlánc
 
 > [!Note]
-> A hitelesítő adatokat EEPROM Feather HUZZAH ESP8266 van tárolva. A Feather HUZZAH ESP8266 táblán a Visszaállítás gombra kattint, a mintaalkalmazás megkérdezi, hogy szeretné-e törölni az adatokat. Adja meg `Y` az adatok törölve lesz. Adja meg az adatokat egy második alkalommal kéri.
+> A hitelesítő adatokat a rendszer az EEPROM-ban tárolja a Feather HUZZAH ESP8266. Ha a Feather HUZZAH ESP8266-tábla alaphelyzetbe állítás gombjára kattint, a minta alkalmazás megkérdezi, hogy szeretné-e törölni az adatokat. Adja `Y` meg, hogy az adatok törlődnek-e. A rendszer Másodszor kéri az információ megadását.
 
-### <a name="verify-the-sample-application-is-running-successfully"></a>A mintaalkalmazás sikeresen fut-e
+### <a name="verify-the-sample-application-is-running-successfully"></a>A minta alkalmazás sikeres futtatásának ellenőrzése
 
-Ha a soros figyelő ablakból és a villogó LED a következő kimenet látható Feather HUZZAH ESP8266, a mintaalkalmazás sikeresen fut.
+Ha a soros figyelő ablakának következő kimenetét látja, és a villogó LED a Feather HUZZAH ESP8266, a minta alkalmazás sikeresen fut.
 
-![Végeredmény a Arduino IDE](media/iot-hub-arduino-huzzah-esp8266-get-started/16_arduino-ide-final-output.png)
+![Végső kimenet az Arduino IDE-ben](media/iot-hub-arduino-huzzah-esp8266-get-started/16_arduino-ide-final-output.png)
 
-## <a name="read-the-messages-received-by-your-hub"></a>Olvassa el a hub által fogadott üzeneteket
+## <a name="read-the-messages-received-by-your-hub"></a>A hub által fogadott üzenetek olvasása
 
-Egy figyelheti az eszközről az IoT hub által fogadott üzeneteket módja az Azure IoT-eszközök használata a Visual Studio Code. További tudnivalókért lásd: [használata az Azure IoT Tools for Visual Studio Code használatával az eszközön, és az IoT Hub közötti üzenetek küldése és fogadása](iot-hub-vscode-iot-toolkit-cloud-device-messaging.md).
+Az IoT hub által az eszközről fogadott üzenetek figyelésének egyik módja a Visual Studio Code-hoz készült Azure IoT Tools használata. További információ: az [Azure IoT Tools for Visual Studio Code használata üzenetek küldéséhez és fogadásához az eszköz és a IoT hub között](iot-hub-vscode-iot-toolkit-cloud-device-messaging.md).
 
-A további lehetőségek a eszköz által küldött adatok feldolgozásához folytassa a következő szakaszban.
+Az eszköz által elküldhető adatfeldolgozás további módjairól folytassa a következő szakasszal.
 
 ## <a name="next-steps"></a>További lépések
 
-Sikeresen egy Feather HUZZAH ESP8266 csatlakozik az IoT hubhoz, és az IoT hubnak küldött rögzített érzékelőadatokat.
+Sikeresen csatlakoztatta a tollas HUZZAH ESP8266 az IoT hubhoz, és elküldte a rögzített érzékelő adatait a IoT hubhoz.
 
 [!INCLUDE [iot-hub-get-started-next-steps](../../includes/iot-hub-get-started-next-steps.md)]

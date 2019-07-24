@@ -1,5 +1,5 @@
 ---
-title: Az Azure fejlesztői, szóközök bemutatása
+title: Bevezetés az Azure dev Spaces használatába
 titleSuffix: Azure Dev Spaces
 author: zr-msft
 services: azure-dev-spaces
@@ -7,50 +7,50 @@ ms.service: azure-dev-spaces
 ms.author: zarhoads
 ms.date: 05/07/2019
 ms.topic: overview
-description: Az Azure fejlesztői, szóközök bemutatása
-keywords: Docker, Kubernetes, Azure, az AKS, az Azure Kubernetes Service, tárolók, a kubectl, k8s
+description: Bevezetés az Azure dev Spaces használatába
+keywords: Docker, Kubernetes, Azure, AK, Azure Kubernetes szolgáltatás, tárolók, kubectl, k8s
 manager: gwallace
-ms.openlocfilehash: 33ac5a7aa6d823105b87325ba52aa77cd9b9b3a3
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: c96115f2eba6f8c8a028251d146ca3f766eba044
+ms.sourcegitcommit: 770b060438122f090ab90d81e3ff2f023455213b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67706304"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68305456"
 ---
 # <a name="azure-dev-spaces"></a>Azure Dev Spaces
 
-Az Azure fejlesztési tárolóhelyek egy gyors, iteratív Kubernetes fejlesztési környezetet biztosít az Azure Kubernetes Service (AKS) fürtök csapatok számára. Együttműködhet a csapata egy megosztott AKS-fürtben. Azure fejlesztési tárolóhelyek is lehetővé teszi, hogy tesztelje az alkalmazás összes összetevőjét az aks-ben végez replikálást, vagy utánzási függőségek mentése nélkül. Iteratív futtathat, és közvetlenül az aks-ben a minimális fejlesztői gép telepítést tárolók hibakeresés.
+Az Azure dev Spaces egy gyors, ismétlődő Kubernetes-fejlesztési élmény az Azure Kubernetes Service (ak)-fürtökben található csapatok számára. Közös AK-fürtben dolgozhat a csapatával. Az Azure dev Spaces lehetővé teszi az alkalmazás összes összetevőjének az AK-ban való tesztelését anélkül, hogy a függőségeket replikálni vagy kigúnyolni kellene. A tárolók futtatásához és hibakereséséhez közvetlenül az AK-ban minimális fejlesztői iteratív kell telepíteni.
 
 ![](media/azure-dev-spaces/collaborate-graphic.gif)
 
 
 ## <a name="how-azure-dev-spaces-simplifies-kubernetes-development"></a>Hogyan egyszerűsíti le az Azure Dev Spaces a Kubernetes fejlesztést
 
-Az Azure fejlesztési tárolóhelyek segítségével csapatai az ügyfelek közvetlenül a teljes mikroszolgáltatási architektúra vagy az aks-ben futó alkalmazás fejlesztését és azok mikroszolgáltatás-alkalmazások gyors ismétlését összpontosítsanak. Az Azure fejlesztési tárolóhelyek lehetőséget egymástól elkülönítve a mikroszolgáltatási architektúra részeit anélkül, hogy befolyásolná a többi az AKS-fürtöt, vagy más fejlesztők is biztosít. Az Azure fejlesztési tárolóhelyek fejlesztése és tesztelése alacsonyabb szintű fejlesztési és tesztelési környezetben, és nem javasolt éles környezetben az AKS-fürtök.
+Az Azure dev Spaces lehetővé teszi a csapatok számára, hogy a Service-alkalmazás fejlesztésére és gyors iterációra összpontosítsanak azáltal, hogy a csapatok közvetlenül a teljes, AK-ban futó Service-architektúrával vagy alkalmazással működnek. Az Azure dev Spaces lehetővé teszi, hogy a rendszer elkülönítetten frissítse a szolgáltatás-architektúra egyes részeit anélkül, hogy ez hatással lenne a többi AK-fürtre vagy más fejlesztőre. Az Azure dev Spaces fejlesztésre és tesztelésre szolgál az alacsonyabb szintű fejlesztési és tesztelési környezetekben, és nem a termelési AK-fürtökön való futtatásra készült.
 
-Mivel csapatok együttműködve a teljes alkalmazást, és közvetlenül az aks-ben, az Azure fejlesztési tárolóhelyek együttműködés:
+Mivel a csapatok a teljes alkalmazással dolgozhatnak, és együttműködnek közvetlenül az AK-ban, az Azure dev Spaces szolgáltatásban:
 
-* Minimalizálja a helyi gép beállítása
-* Csökken a csapat új fejlesztők idő beállítása
-* Egy csapat sebesség révén gyorsabban iteráció növekszik
-* Kevesebb redundáns fejlesztése és integrációja környezetek óta a csapat tagjai megoszthat egy fürt
-* Szükségtelenné teszi a replikálása, vagy a függőségek utánzása
-* Együttműködés javítja a fejlesztői csapatok, valamint a csapatok működnek, mint például a DevOps-csapatok között
+* A helyi gép beállításának csökkentése
+* A csapat új fejlesztői számára beállított idő csökkentése
+* Gyorsabb iterációval növeli a csapat sebességét
+* Csökkenti a redundáns fejlesztési és integrációs környezetek számát, mivel a csapattagok megoszthatnak egy fürtöt
+* Megszünteti a függőségek replikálásának vagy kimodellezésének szükségességét
+* Javítja a fejlesztési csapatok és a velük dolgozó csapatok együttműködését, például a DevOps csapatait
 
-Az Azure fejlesztési tárolóhelyek azokat az eszközöket a projektek a Docker és a Kubernetes eszközök létrehozásához biztosít. Az eszközkészlet segítségével egyszerűen hozzáadhatja az új és meglévő alkalmazások fejlesztési szóközzel és más AKS-fürtök is.
+Az Azure dev Spaces lehetővé teszi a Docker-és Kubernetes-eszközök létrehozását a projektekhez. Ez az eszköz lehetővé teszi új és meglévő alkalmazások egyszerű hozzáadását a fejlesztői és egyéb AK-fürtökhöz.
 
-Azure fejlesztői tárolóhelyek működésével kapcsolatos további információkért lásd: [hogyan Azure fejlesztési tárolóhelyek működik, és konfigurált][how-dev-spaces-works].
+Az Azure dev Spaces működésével kapcsolatos további információkért lásd: [Az Azure dev Spaces működése és konfigurálása][how-dev-spaces-works].
 
 ## <a name="supported-regions-and-configurations"></a>Támogatott régiók és konfigurációk
 
-Az Azure Dev Spacest csak az **USA keleti régiója**, **USA 2. keleti régiója**, **USA középső régiója**, **USA 2. nyugati régiója**, **Észak-Európa**, **Nyugat-Európa**, **az Egyesült Királyság déli régiója**, **Délkelet-Ázsia**, **Kelet-Ausztrália**, **Közép-Kanada** és **Kelet-Kanada** régió AKS-fürtjei támogatják. Az Azure Dev Spaces támogatja az [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) és a [Visual Studio Code](https://code.visualstudio.com/download) használatát Linux, MacOS és Windows 8 vagy újabb rendszerű gépeken (ha azokon telepítve van az [Azure Dev Spaces bővítmény](https://marketplace.visualstudio.com/items?itemName=azuredevspaces.azds)) az alkalmazások AKS-en való létrehozásához és futtatásához. Emellett támogatja a [Visual Studio](https://aka.ms/vsdownload?utm_source=mscom&utm_campaign=msdocs) telepítve a Windows 8-as vagy nagyobb. A Visual Studio 2019 szüksége lesz az Azure-fejlesztési számítási feladatot. A Visual Studio 2017, szüksége lesz a webalkalmazás-fejlesztési számítási feladatot és [Visual Studio Tools for Kubernetes](https://aka.ms/get-vsk8stools).
+Az Azure dev-tárhelyeket csak az **USA keleti**régiójában, az **USA 2**. keleti régiójában, az USA **déli középső**régiójában, az USA 2. **nyugati**régiójában, Észak- **Európában**, Nyugat- **Európában**, Egyesült Királyság déli régiójaban, Délkelet-  **Ázsiában**  **Kelet-Ausztrália**, **Közép-Kanada**és **Kelet-Kanada** régiók. Az Azure Dev Spaces támogatja az [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) és a [Visual Studio Code](https://code.visualstudio.com/download) használatát Linux, MacOS és Windows 8 vagy újabb rendszerű gépeken (ha azokon telepítve van az [Azure Dev Spaces bővítmény](https://marketplace.visualstudio.com/items?itemName=azuredevspaces.azds)) az alkalmazások AKS-en való létrehozásához és futtatásához. Emellett támogatja a Windows 8 vagy újabb rendszerre telepített [Visual Studio](https://aka.ms/vsdownload?utm_source=mscom&utm_campaign=msdocs) használatát is. A Visual Studio 2019 esetében szüksége lesz az Azure-fejlesztési számítási feladatra. A Visual Studio 2017 esetében szüksége lesz a webes fejlesztési számítási feladatra és a [Visual Studio](https://aka.ms/get-vsk8stools)-eszközökre a Kubernetes.
 
 ## <a name="next-steps"></a>További lépések
 
-További információ a gyors, iteratív fejlesztési csapat fejlesztési rövid útmutatóban az Azure fejlesztési tárolóhelyek csapatok számára.
+Tudjon meg többet az Azure fejlesztői útmutatóval rendelkező csapatok gyors, ismétlődő fejlesztéséről.
 
 > [!div class="nextstepaction"]
-> [Fejlesztői csapat a rövid útmutató](quickstart-team-development.md)
+> [A Team Development gyors üzembe helyezése](quickstart-team-development.md)
 
 
 [how-dev-spaces-works]: how-dev-spaces-works.md

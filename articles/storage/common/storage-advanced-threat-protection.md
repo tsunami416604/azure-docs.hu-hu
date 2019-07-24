@@ -1,6 +1,6 @@
 ---
 title: Advanced Threat Protection for Azure Storage
-description: Állítsa be az Azure Storage komplex veszélyforrások elleni védelem fióktevékenység rendellenességek észlelése és csupán a vélhetően kárt okozó kísérleteket hozzáférjen a fiókjához.
+description: Az Azure Storage komplex veszélyforrások elleni védelem konfigurálása a fiókban észlelt rendellenességek észlelésére és a fiókhoz való hozzáférésre vonatkozó lehetséges ártalmas kísérletek bejelentésére.
 services: storage
 author: tamram
 ms.service: storage
@@ -8,156 +8,166 @@ ms.topic: article
 ms.date: 04/03/2019
 ms.author: tamram
 ms.reviewer: cbrooks
-ms.openlocfilehash: 8cea4b3fb78f3430fdd92e40552d687501af4be8
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: fb221d774d9d00a5dc7b0d94edc35a5651443a5b
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67621963"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67874051"
 ---
 # <a name="advanced-threat-protection-for-azure-storage"></a>Advanced Threat Protection for Azure Storage
 
-Az Azure Storage-hoz nyújtott komplex veszélyforrások elleni védelem egy további biztonságiintelligencia-réteget ad, amely észleli a tárfiókok elérésére és felhasználására tett szokatlan és feltehetően ártalmas kísérleteket. A védelmi réteget teszi cím fenyegetések szakértői biztonsági szakértelem vagy biztonság monitorozási rendszerek felügyelete nélkül. 
+Az Azure Storage-hoz nyújtott komplex veszélyforrások elleni védelem egy további biztonságiintelligencia-réteget ad, amely észleli a tárfiókok elérésére és felhasználására tett szokatlan és feltehetően ártalmas kísérleteket. Ez a védelmi réteg lehetővé teszi a fenyegetések kezelését anélkül, hogy biztonsági szakértőnek kellene lennie, vagy biztonsági figyelő rendszereket kellene kezelnie. 
 
-Biztonsági riasztások aktiválódnak rendellenességeket a tevékenység esetén.  Ezek a biztonsági riasztások integrálva vannak az [az Azure Security Center](https://azure.microsoft.com/services/security-center/), és az előfizetés adminisztrátorainak, gyanús tevékenységeket és a problémák kivizsgálásához és elhárításához fenyegetésekkel kapcsolatos javaslatok részleteit tartalmazó e-mailen keresztül is kapnak.
+A biztonsági riasztások akkor lépnek életbe, ha a tevékenységben anomáliák vannak.  Ezek a biztonsági riasztások integrálva vannak [Azure Security Centerekkel](https://azure.microsoft.com/services/security-center/), és e-mailben is elküldjük az előfizetés-rendszergazdáknak, a gyanús tevékenységek részleteivel és a fenyegetések kivizsgálásával és javításával kapcsolatos ajánlásokkal együtt.
 
 > [!NOTE]
-> * Komplex veszélyforrások elleni védelem az Azure Storage jelenleg csak az a Blob storage.
-> * A díjszabás részleteiért, beleértve a 30 napos ingyenes próbaverziót, tekintse meg a [az Azure Security Center díjszabását ismertető lapon]( https://azure.microsoft.com/pricing/details/security-center/).
-> * Az Azure storage szolgáltatás ATP jelenleg nem érhető el az Azure government és szuverén felhő-régiók.
+> * Az Azure Storage komplex veszélyforrások elleni védelme jelenleg csak a blob Storage esetében érhető el.
+> * A díjszabással kapcsolatos részletekért, beleértve az ingyenes 30 napos próbaverziót is, tekintse meg a [Azure Security Center díjszabási oldalát]( https://azure.microsoft.com/pricing/details/security-center/).
+> * Az Azure Storage-hoz készült ATP szolgáltatás jelenleg nem érhető el az Azure governmentben és a szuverén Felhőbeli régiókban.
 
-Komplex veszélyforrások elleni védelem az Azure Storage-diagnosztikai naplók, olvasási, írási és törlési kérelmek a Blob storage, a fenyegetésészlelés fogadnak. A komplex veszélyforrások elleni védelem riasztások vizsgálatához megtekintheti a Storage Analytics-naplózás használata a kapcsolódó tárolási tevékenység. További információkért lásd: hogyan [Storage Analytics naplózási](storage-monitor-storage-account.md#configure-logging).
+Az Azure Storage komplex veszélyforrások elleni védelme a fenyegetések észlelésére szolgáló olvasási, írási és törlési kérések diagnosztikai naplóit is betölti. A komplex veszélyforrások elleni védelemből származó riasztások vizsgálatához a kapcsolódó tárolási tevékenységeket Storage Analytics naplózás használatával tekintheti meg. További információ: [Storage Analytics naplózásának konfigurálása](storage-monitor-storage-account.md#configure-logging).
 
-## <a name="set-up-advanced-threat-protection"></a>Állítsa be a komplex veszélyforrások elleni védelem 
+## <a name="set-up-advanced-threat-protection"></a>Komplex veszélyforrások elleni védelem beállítása 
 
 ### <a name="using-the-portal"></a>A portál használata
 
-1. Indítsa el az Azure Portalra a [ https://portal.azure.com ](https://portal.azure.com/).
+1. Indítsa el a Azure Portal [https://portal.azure.com](https://portal.azure.com/)a következő helyen:.
 
-2. Keresse meg a védeni kívánt Azure Storage-fiók-konfigurációs oldalához. Az a **beállítások** lapon jelölje be **komplex veszélyforrások elleni védelem**.
+2. Navigáljon a védelemmel ellátni kívánt Azure Storage-fiók konfigurációs lapjára. A **Beállítások** lapon válassza a komplex **veszélyforrások elleni védelem**lehetőséget.
 
-3. Az a **komplex veszélyforrások elleni védelem** konfigurálása panel
-    * Kapcsolja be **ON** speciális *veszélyforrások elleni védelem*
-    * Kattintson a **mentése** mentse az új vagy frissített komplex veszélyforrások elleni védelem szabályzatot. (A képen árak például csak célokat.)
+3. A **speciális veszélyforrások elleni védelem** konfiguráció paneljén
+    * **Az** összetett *veszélyforrások elleni védelem* bekapcsolása
+    * Kattintson a **Save (Mentés** ) gombra az új vagy frissített összetett veszélyforrások elleni védelmi szabályzat mentéséhez. (A rendszerkép árai csak példaként szolgálnak.)
 
-![Azure Storage komplex veszélyforrások elleni védelem bekapcsolása](./media/storage-advanced-threat-protection/storage-advanced-threat-protection-turn-on.png)
+![Az Azure Storage komplex veszélyforrások elleni védelem bekapcsolása](./media/storage-advanced-threat-protection/storage-advanced-threat-protection-turn-on.png)
 
 ### <a name="using-azure-security-center"></a>Az Azure Security Center használatával
-A Standard szintű szolgáltatásra való előfizetéskor az Azure Security Centerben, komplex veszélyforrások elleni védelem a van beállítva a storage-fiókok. További információ: [a Security Center Standard csomagra váltásával fokozott biztonságot érhet](https://docs.microsoft.com/azure/security-center/security-center-pricing). (A képen árak például csak célokat.)
 
-![Az ASC a standard csomag](./media/storage-advanced-threat-protection/storage-advanced-threat-protection-pricing.png)
+Amikor előfizet a Azure Security Center Standard csomagra, a komplex veszélyforrások elleni védelem automatikusan be lesz állítva az összes Storage-fiókra. A következő módon engedélyezheti vagy letilthatja az összetett veszélyforrások elleni védelmet a Storage-fiókjaihoz egy adott előfizetésben:
 
-### <a name="using-azure-resource-manager-templates"></a>Azure Resource Manager-sablonok használatával
+1. A [Azure Portal]([https://portal.azure.com) **Azure Security Center** elindítása.
+1. A főmenüben kattintson a **díjszabás & beállítások**elemre.
+1. Kattintson arra az előfizetésre, amelyre engedélyezni vagy le szeretné tiltani a veszélyforrások elleni védelmet a Storage-fiókjaihoz.
 
-Az Azure Resource Manager-sablon üzembe helyezéséhez a komplex veszélyforrások elleni védelem az Azure Storage-fiók használata engedélyezett.
-További információkért lásd: [komplex veszélyforrások elleni védelem tárfiók](https://azure.microsoft.com/resources/templates/201-storage-advanced-threat-protection-create/).
+    ![Előfizetés kiválasztása](./media/storage-advanced-threat-protection/storage-advanced-threat-protection-subscription.png)
 
-### <a name="using-azure-policy"></a>Az Azure Policy használata
+1. Kattintson a díjszabási csomag elemre.
+1. Az **árképzési rétegek kiválasztása erőforrástípus szerint** szakaszban, a Storage- **fiókok** sorban kattintson az **engedélyezve** vagy a Letiltva lehetőségre.
 
-Az Azure Policy használatával komplex veszélyforrások elleni védelem engedélyezése egy adott előfizetés vagy az erőforrás-csoportban tárfiókok között.
+    ![ATP engedélyezése Security Center](./media/storage-advanced-threat-protection/storage-advanced-threat-protection-pricing2.png)
+1. Kattintson a **Save** (Mentés) gombra.
 
-1. Az Azure delek **szabályzat – definíciók** lapot.
+### <a name="using-azure-resource-manager-templates"></a>Azure Resource Manager-sablonok használata
 
-1. Keresse meg a **üzembe helyezése komplex veszélyforrások elleni védelem a Storage-fiókok** házirend.
+Egy Azure Resource Manager sablon használatával üzembe helyezhet egy Azure Storage-fiókot, amelyen engedélyezve van az összetett veszélyforrások védelme. További információ: Storage- [fiók komplex veszélyforrások elleni védelemmel](https://azure.microsoft.com/resources/templates/201-storage-advanced-threat-protection-create/).
 
-     ![Keresés a házirend](./media/storage-advanced-threat-protection/storage-atp-policy-definitions.png)
+### <a name="using-azure-policy"></a>Azure Policy használata
+
+Egy Azure Policy használatával engedélyezheti a komplex veszélyforrások elleni védelmet egy adott előfizetés vagy erőforráscsoport alatt lévő Storage-fiókok között.
+
+1. Ebéd az Azure **Policy-fogalommeghatározások** oldalon.
+
+1. Keresse meg a komplex **veszélyforrások elleni védelem telepítése a Storage** -fiókokra vonatkozó házirendet.
+
+     ![Keresési szabályzat](./media/storage-advanced-threat-protection/storage-atp-policy-definitions.png)
   
-1. Válasszon ki egy Azure előfizetést vagy az erőforrást.
+1. Válasszon ki egy Azure-előfizetést vagy erőforráscsoportot.
 
     ![Előfizetés vagy csoport kiválasztása](./media/storage-advanced-threat-protection/storage-atp-policy2.png)
 
-1. A szabályzat hozzárendelése.
+1. Rendelje hozzá a szabályzatot.
 
-    ![Definíciók szabályzatról](./media/storage-advanced-threat-protection/storage-atp-policy1.png)
+    ![Házirend-definíciók lap](./media/storage-advanced-threat-protection/storage-atp-policy1.png)
 
 ### <a name="using-rest-api"></a>A REST API használata
-Rest API-parancsok segítségével létrehozása, frissítése és az adott tárfiókhoz a komplex veszélyforrások elleni védelem beállítás.
+A REST API-parancsok használatával létrehozhat, frissíthet vagy beszerezhet egy adott Storage-fiók komplex veszélyforrások elleni védelem beállítását.
 
-* [Komplex veszélyforrások elleni védelem – létrehozása](https://docs.microsoft.com/rest/api/securitycenter/advancedthreatprotection/create)
-* [Komplex veszélyforrások elleni védelem – beolvasása](https://docs.microsoft.com/rest/api/securitycenter/advancedthreatprotection/get)
+* [Komplex veszélyforrások elleni védelem – létrehozás](https://docs.microsoft.com/rest/api/securitycenter/advancedthreatprotection/create)
+* [Komplex veszélyforrások elleni védelem – Get](https://docs.microsoft.com/rest/api/securitycenter/advancedthreatprotection/get)
 
 ### <a name="using-azure-powershell"></a>Az Azure PowerShell használata
 
-A következő PowerShell-parancsmagokat használja:
+Használja a következő PowerShell-parancsmagokat:
 
-  * [A komplex veszélyforrások elleni védelem engedélyezése](https://docs.microsoft.com/powershell/module/az.security/enable-azsecurityadvancedthreatprotection)
-  * [Első komplex veszélyforrások elleni védelem](https://docs.microsoft.com/powershell/module/az.security/get-azsecurityadvancedthreatprotection)
+  * [Komplex veszélyforrások elleni védelem engedélyezése](https://docs.microsoft.com/powershell/module/az.security/enable-azsecurityadvancedthreatprotection)
+  * [Komplex veszélyforrások elleni védelem](https://docs.microsoft.com/powershell/module/az.security/get-azsecurityadvancedthreatprotection)
   * [A komplex veszélyforrások elleni védelem letiltása](https://docs.microsoft.com/powershell/module/az.security/disable-azsecurityadvancedthreatprotection)
 
-## <a name="explore-security-anomalies"></a>Ismerje meg a biztonsági anomáliák kezelésére
+## <a name="explore-security-anomalies"></a>Biztonsági rendellenességek megismerése
 
-Tárolási tevékenységével kapcsolatos szabálytalanságokat fordulhat elő, ha e-mail-értesítést a gyanús biztonsági eseményről információkat kap. Az esemény részleteinek a következők:
+Ha a tárolási tevékenységek rendellenességeket tapasztalnak, e-mailben értesítést kap a gyanús biztonsági eseményről. Az esemény részletei a következők:
 
-* Az anomáliadetektálási jellege
-* A tárfiók neve
+* A rendellenesség természete
+* A Storage-fiók neve
 * Az esemény időpontja
-* A tárolási típust
+* A tárolási típus
 * A lehetséges okok 
-* A kivizsgálás szükséges lépéseit
-* Hibaelhárítási lépések
+* A vizsgálat lépései
+* A szervizelés lépései
 
 
-Az e-mailben is kitérnek a lehetséges okok és ajánlott műveletek vizsgálata és enyhítése érdekében a potenciális fenyegetést.
+Az e-mail emellett tartalmazza a lehetséges okokat és az ajánlott műveleteket is a lehetséges fenyegetések kivizsgálásához és enyhítéséhez.
 
-![Az Azure Storage komplex veszélyforrások elleni védelem riasztási e-mail](./media/storage-advanced-threat-protection/storage-advanced-threat-protection-alert-email.png)
+![Azure Storage komplex veszélyforrások elleni védelem – riasztási e-mail](./media/storage-advanced-threat-protection/storage-advanced-threat-protection-alert-email.png)
 
-Tekintse át, és az aktuális biztonsági riasztások kezelése az Azure Security Center [biztonsági riasztások csempe](../../security-center/security-center-managing-and-responding-alerts.md#managing-security-alerts). Részletek és az aktuális fenyegetések kivizsgálása és a jövőbeli fenyegetésekkel szembeni címzés műveletek egy meghatározott riasztásra kattintva biztosít.
+Az aktuális biztonsági riasztásokat a Azure Security Center [biztonsági riasztások csempéről](../../security-center/security-center-managing-and-responding-alerts.md#managing-security-alerts)tekintheti meg és kezelheti. Ha egy adott riasztásra kattint, a rendszer részletesen ismerteti az aktuális fenyegetés kivizsgálásával és a jövőbeli fenyegetésekkel kapcsolatos műveleteket.
 
-![Az Azure Storage komplex veszélyforrások elleni védelem riasztási e-mail](./media/storage-advanced-threat-protection/storage-advanced-threat-protection-alert.png)
+![Azure Storage komplex veszélyforrások elleni védelem – riasztási e-mail](./media/storage-advanced-threat-protection/storage-advanced-threat-protection-alert.png)
 
-## <a name="protection-alerts"></a>Védelmi figyelmeztetések
+## <a name="protection-alerts"></a>Védelmi riasztások
 
-Szokatlan és vélhetően kárt okozó kísérleteket elérni vagy kiaknázni a storage-fiókok által előállított riasztások. Ezeket az eseményeket is aktiválhatja a következő riasztásokat:
+A riasztásokat szokatlan és potenciálisan ártalmas kísérletek generálják a Storage-fiókok eléréséhez vagy kiaknázásához. Ezek az események a következő riasztásokat indíthatják el:
 
-### <a name="anomalous-access-pattern-alerts"></a>Rendellenes hozzáférési minta riasztások
+### <a name="anomalous-access-pattern-alerts"></a>Rendellenes hozzáférési minta riasztásai
 
-* **Hozzáférés szokatlan helyről**: Ez a riasztás akkor aktiválódik, ha valaki használta a storage-fiók egy szokatlan földrajzi helyről.
-A lehetséges okok:
-   * A támadó érte el a storage-fiók
-   * Egy jogosult felhasználó fért hozzá a tárfiók egy új helyről
+* **Hozzáférés szokatlan helyről**: Ez a riasztás akkor aktiválódik, ha valaki egy szokatlan földrajzi helyről fér hozzá egy Storage-fiókhoz.
+Lehetséges okok:
+   * Egy támadó hozzáfért a Storage-fiókhoz
+   * Egy megbízható felhasználó új helyről fér hozzá a Storage-fiókhoz
  
-* **Alkalmazás Anomáliadetektálási**: Ez a riasztás azt jelzi, hogy szokatlan alkalmazáshoz fért hozzá ezt a tárfiókot. A lehetséges okok:
-   * A támadó fért hozzá a tárfiók, egy új alkalmazással.
-   * Egy jogosult felhasználónak a tárfiók eléréséhez egy új alkalmazást böngésző használatban van.
+* **Alkalmazás anomália**: Ez a riasztás azt jelzi, hogy egy szokatlan alkalmazás hozzáfért ehhez a Storage-fiókhoz. Lehetséges okok:
+   * Egy támadó új alkalmazás használatával fér hozzá a Storage-fiókhoz.
+   * Egy megbízható felhasználó új alkalmazást vagy böngészőt használt a Storage-fiók eléréséhez.
 
-* **Névtelen hozzáférés**: Ez a riasztás jelzi, hogy lett-e ezt a fiókot ehhez a fiókhoz a legutóbbi hozzáférés minta névtelenül elérhető (azaz minden hitelesítés nélkül), amely nem a várt képest.
-A lehetséges okok:
-   * A támadó bejutott nyilvános olvasási hozzáférés egy tárolóba.
-   * Egy jogosult felhasználó vagy alkalmazás használatban van egy tárolót nyilvános olvasási hozzáférést.
+* **Névtelen hozzáférés**: Ez a riasztás azt jelzi, hogy ez a fiók névtelenül (azaz hitelesítés nélkül) lett elküldve, ami nem várt, mint a fiók legutóbbi hozzáférési mintája.
+Lehetséges okok:
+   * Egy támadó nyilvános olvasási hozzáférést kapott egy tárolóhoz.
+   * Egy megbízható felhasználó vagy alkalmazás nyilvános olvasási hozzáférést használt egy tárolóhoz.
 
-* **Tor Anomáliadetektálási**: Ez a riasztás azt jelzi, hogy ez a fiók rendelkezik hozzáfértek sikeresen egy aktív kilépési csomópontján Tor (anonymizing proxy) néven ismert IP-címek. Ez a riasztás súlyosságát is figyelembe veszi (ha vannak) használt hitelesítés típusa, és hogy a Ez az első esetben az ilyen hozzáférésre.
-A lehetséges okok:
-   * A támadó fért hozzá a tárfiók, Tor használatával.
-   * Egy jogosult felhasználó fért hozzá a tárfiók, Tor használatával.
+* **Tor**-anomália: Ez a riasztás azt jelzi, hogy ez a fiók sikeresen elérhető egy olyan IP-címről, amely a Tor (egy anonimizálásával proxy) aktív kilépési csomópontjának ismert. Ennek a riasztásnak a súlyossága figyelembe veszi a használt hitelesítési típust (ha van ilyen), és hogy ez az ilyen hozzáférés első esete-e.
+Lehetséges okok:
+   * A támadó a Tor használatával fér hozzá a Storage-fiókhoz.
+   * Egy megbízható felhasználó a Tor használatával fér hozzá a Storage-fiókhoz.
 
 
-### <a name="anomalous-extractupload-alerts"></a>Rendellenes kinyerési feltölti riasztások
+### <a name="anomalous-extractupload-alerts"></a>Rendellenes kinyerési/feltöltési riasztások
 
-* **Adatok kiszűrése**: Ez a riasztás azt jelzi, hogy egy szokatlanul nagy mennyiségű adat lehívása a storage-tárolót a közelmúltbeli tevékenység képest. A lehetséges okok:
-   * A támadó rendelkezik egy nagy mennyiségű adatot kinyert egy tárolót. (Például: adatok kiszűrése vagy illetéktelen behatolás, adatok jogosulatlan átvitelét)
-   * Egy jogosult felhasználó vagy alkalmazás rendelkezik kinyert egy szokatlan adatmennyiség egy tárolót. (Például: karbantartási tevékenységek)
+* **Az adatkiszűrése**: Ez a riasztás azt jelzi, hogy a tárolón a legutóbbi tevékenységhez képest szokatlanul nagy mennyiségű adattal lett kibontva. Lehetséges okok:
+   * Egy támadó nagy mennyiségű adattal kivont egy tárolóból. (Például: adatok kiszűrése/megszegése, jogosulatlan adatátvitel)
+   * Egy megbízható felhasználó vagy alkalmazás szokatlan mennyiségű adattal kibontotta a tárolót. (Például: karbantartási tevékenység)
 
-* **Váratlan delete**: Ez a riasztás azt jelzi, hogy egy vagy több váratlan törlési műveletek történt-e a storage-fiókban, ehhez a fiókhoz a közelmúltbeli tevékenység képest. A lehetséges okok:
-   * A támadó tárfiókban lévő adatok törölve van.
-   * Egy jogosult felhasználó hajtott végre egy szokatlan törlése.
+* **Váratlan törlés**: Ez a riasztás azt jelzi, hogy egy vagy több váratlan törlési művelet történt egy Storage-fiókban, a fiók legutóbbi tevékenységéhez képest. Lehetséges okok:
+   * Egy támadó törölte az adatait a Storage-fiókjából.
+   * Egy megbízható felhasználó szokatlan törlést hajtott végre.
 
-* **Töltse fel az Azure Cloud Service-csomag**: Ez a riasztás azt jelzi, hogy egy Azure Cloud Service-csomag (.cspkg fájl) fel van töltve a tárfiókhoz szokatlan módon, ehhez a fiókhoz a közelmúltbeli tevékenység képest. A lehetséges okok: 
-   * A támadó előkészítése meg a központi telepítése egy Azure-felhőszolgáltatás az Ön tárfiókjából rosszindulatú kódot.
-   * Hiteles felhasználó rendelkezik lett egy megbízható szolgáltatás üzembe helyezésének előkészítése.
+* **Azure Cloud Service-csomag feltöltése**: Ez a riasztás azt jelzi, hogy egy Azure Cloud Service-csomag (. cspkg fájl) szokatlan módon lett feltöltve egy Storage-fiókba, a fiókhoz tartozó közelmúltbeli tevékenységhez képest. Lehetséges okok: 
+   * Egy támadó arra készül, hogy rosszindulatú kódot helyezzen üzembe a Storage-fiókból egy Azure Cloud Service-be.
+   * Egy megbízható felhasználó előkészítette a megbízható szolgáltatás központi telepítését.
 
-### <a name="suspicious-storage-activities-alerts"></a>A storage gyanús tevékenységek riasztások
+### <a name="suspicious-storage-activities-alerts"></a>Gyanús tárolási tevékenységek riasztásai
 
-* **Hozzáférési engedély módosítása**: Ez a riasztás azt jelzi, hogy módosult-e a hozzáférési engedélyeket a storage-tároló szokatlan módon. A lehetséges okok: 
-   * A támadó megváltozott tároló gyengíthetik a biztonsági engedélyeket.
-   * Egy jogosult felhasználó megváltozott a tároló engedélyeit.
+* **Hozzáférési engedély módosítása**: Ez a riasztás azt jelzi, hogy a tárolási tároló hozzáférési engedélyei szokatlan módon módosultak. Lehetséges okok: 
+   * A támadó megváltoztatta a tároló engedélyeit, hogy gyengítse a biztonságot.
+   * Egy megbízható felhasználó módosította a tároló engedélyeit.
 
-* **Hálózatfelügyeleti eléréséhez**: Ez a riasztás azt jelzi, hogy a tárfiók hozzáférési engedélyek ellenőrzése után szokatlan módon, ehhez a fiókhoz a közelmúltbeli tevékenység képest. A lehetséges okok: 
-   * A támadó egy jövőbeli támadások végzett felderítés.
-   * Egy jogosult felhasználó hajtott végre karbantartási a tárfiókban.
+* **Hozzáférés ellenőrzése**: Ez a riasztás azt jelzi, hogy a Storage-fiók hozzáférési engedélyei szokatlan módon lettek megvizsgálva, a fiók legutóbbi tevékenységéhez képest. Lehetséges okok: 
+   * Egy támadó egy jövőbeli támadás felderítését végezte el.
+   * Egy megbízható felhasználó karbantartási műveleteket hajtott végre a Storage-fiókon.
 
-* **Adatfeltárás**: Ez a riasztás azt jelzi, hogy BLOB vagy egy tárfiókban lévő tárolók lettek besorolva szokatlan módon, ehhez a fiókhoz a közelmúltbeli tevékenység képest. A lehetséges okok: 
-   * A támadó egy jövőbeli támadások végzett felderítés.
-   * Egy jogosult felhasználó vagy alkalmazáslogika rendelkezik megvizsgálta a tárfiókban lévő adatokat.
+* **Adatelemzés**: Ez a riasztás azt jelzi, hogy a Storage-fiókban lévő Blobok vagy tárolók szokatlan módon vannak felsorolva a fiók legutóbbi tevékenységéhez képest. Lehetséges okok: 
+   * Egy támadó egy jövőbeli támadás felderítését végezte el.
+   * Egy megbízható felhasználó vagy alkalmazás logikája a Storage-fiókban található meg.
 
 
 
@@ -166,6 +176,6 @@ A lehetséges okok:
 
 ## <a name="next-steps"></a>További lépések
 
-* Tudjon meg többet [naplók az Azure Storage-fiókok](/rest/api/storageservices/About-Storage-Analytics-Logging)
+* További információ az [Azure Storage-fiókok naplóiról](/rest/api/storageservices/About-Storage-Analytics-Logging)
 
-* Tudjon meg többet [Azure Security Centerben](../../security-center/security-center-intro.md)
+* További információ a [Azure Security Center](../../security-center/security-center-intro.md)

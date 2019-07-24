@@ -1,120 +1,120 @@
 ---
-title: Az adatok exportálása az Azure Event Hubs és Azure Service Bus |} A Microsoft Docs
-description: Adatok exportálása az Azure Event Hubs és Azure Service Bus az Azure IoT Central alkalmazásból
+title: Exportálja adatait az Azure Event Hubsba és Azure Service Busba | Microsoft Docs
+description: Adatok exportálása az Azure IoT Central alkalmazásból az Azure-ba Event Hubs és Azure Service Bus
 services: iot-central
 author: viv-liu
 ms.author: viviali
-ms.date: 03/20/2019
+ms.date: 07/09/2019
 ms.topic: conceptual
 ms.service: iot-central
 manager: peterpr
-ms.openlocfilehash: 78edeb0c418f5c426771d241464d389f8a632e96
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c6f10352646350152c5aac795885231697e81fe7
+ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65463999"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67850191"
 ---
-# <a name="export-your-data-in-azure-iot-central"></a>Exportálhatja az adatokat az Azure IoT Central
+# <a name="export-your-data-in-azure-iot-central"></a>Exportálja adatait az Azure IoT Central
 
-*Ez a témakör a rendszergazdák vonatkozik.*
+*Ez a témakör a rendszergazdákra vonatkozik.*
 
-Ez a cikk bemutatja, hogyan használható a folyamatos exportálás funkció az Azure IoT Central exportálhatja az adatokat a saját **Azure Event Hubs**, és **Azure Service Bus** példányok. Exportálhatja **mérések**, **eszközök**, és **eszközsablonok** saját célra a meleg folyamatból információkhoz és elemzésekhez juthat. Ez magában foglalja a elindítása az Azure Stream Analytics szolgáltatásban az egyéni szabályok, egyéni munkafolyamatokat az Azure Logic Appsben, elindítása vagy az adatok átalakítása és azt továbbítja az Azure Functions. 
+Ez a cikk azt ismerteti, hogyan használható az Azure IoT Central folyamatos adatexportálás funkciója az adatai saját **Azure**-Event Hubsba és **Azure Service Bus** példányokra való exportálására. A saját céljára exportálhatja a **méréseket**, az eszközöket és az **eszközöket**, így a meleg elérési utat és az elemzést is elvégezheti. Ez magában foglalja az egyéni szabályok beindítását a Azure Stream Analyticsban, az egyéni munkafolyamatok aktiválását Azure Logic Appsekben, illetve az adatátalakítást és a Azure Functionson keresztüli átadását. 
 
 > [!Note]
-> Ismét bekapcsolja a folyamatos exportálás, kap csak az adatok ettől a pillanattól kezdve. Jelenleg adatokat nem lehet beolvasni egy alkalommal, amikor folyamatos adatexportálás ki volt kapcsolva. További korábbi adatok megőrzése, kapcsolja be a folyamatos exportálás korai.
+> Ha ismét bekapcsolja a folyamatos adatexportálást, az adott pillanattól kezdve csak az adott adatot kapja meg. Jelenleg nem lehet lekérni az adatgyűjtési időt, amikor a folyamatos adatexportálás ki lett kapcsolva. Több korábbi adat megtartásához kapcsolja be a folyamatos adatexportálást.
 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Egy rendszergazdának kell lennie az IoT-központ alkalmazásában
+- A IoT Central-alkalmazásban rendszergazdának kell lennie
 
-## <a name="set-up-export-destination"></a>Exportálási cél beállítása
+## <a name="set-up-export-destination"></a>Exportálás célhelyének beállítása
 
-Ha nem rendelkezik egy meglévő Event Hubs és a Service Bus exportálása, kövesse az alábbi lépéseket:
+Ha nem rendelkezik meglévő Event Hubs/Service Bus az exportáláshoz, kövesse az alábbi lépéseket:
 
-## <a name="create-event-hubs-namespace"></a>Event Hubs-névtér létrehozása
+## <a name="create-event-hubs-namespace"></a>Event Hubs névtér létrehozása
 
-1. Hozzon létre egy [új Event Hubs-névtér az Azure Portalon](https://ms.portal.azure.com/#create/Microsoft.EventHub). További a [Azure Event Hubs docs](https://docs.microsoft.com/azure/event-hubs/event-hubs-create).
+1. Hozzon létre egy [új Event Hubs névteret a Azure Portalban](https://ms.portal.azure.com/#create/Microsoft.EventHub). További információt az [Azure Event Hubs dokumentációjában](https://docs.microsoft.com/azure/event-hubs/event-hubs-create)olvashat.
 2. Válasszon egy előfizetést. 
 
     > [!Note] 
-    > Most már exportálhatja az adatokat más előfizetésekre, amelyek **nem azonos** azzal, az utólagos elszámolású IoT Central alkalmazáshoz. Ebben az esetben a kapcsolati karakterlánc használatával csatlakozik.
-3. Az Event Hubs-névtér az eseményközpont létrehozásához. Lépjen a névteréhez, majd válassza **+ Event Hub** felső hozhat létre egy event hubs-példánnyal.
+    > Mostantól exportálhat más előfizetésekre is, amelyek **nem egyeznek** meg az utólagos elszámolású IoT Central alkalmazása során. Ebben az esetben kapcsolati sztringet fog használni.
+3. Hozzon létre egy Event hubot a Event Hubs névtérben. Nyissa meg a névteret, és a felül található **+ Event hub** elemet választva hozzon létre egy Event hub-példányt.
 
-## <a name="create-service-bus-namespace"></a>A Service Bus-névtér létrehozása
+## <a name="create-service-bus-namespace"></a>Service Bus névtér létrehozása
 
-1. Hozzon létre egy [új Service Bus-névteret, az Azure Portalon](https://ms.portal.azure.com/#create/Microsoft.ServiceBus.1.0.5) . További a [Azure Service Bus docs](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-create-namespace-portal).
+1. Hozzon létre egy [új Service Bus névteret a Azure Portalban](https://ms.portal.azure.com/#create/Microsoft.ServiceBus.1.0.5) . [Azure Service Bus dokumentációban](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-create-namespace-portal)bővebben is olvashat.
 2. Válasszon egy előfizetést. 
 
     > [!Note] 
-    > Most már exportálhatja az adatokat más előfizetésekre, amelyek **nem azonos** azzal, az utólagos elszámolású IoT Central alkalmazáshoz. Ebben az esetben a kapcsolati karakterlánc használatával csatlakozik.
+    > Mostantól exportálhat más előfizetésekre is, amelyek **nem egyeznek** meg az utólagos elszámolású IoT Central alkalmazása során. Ebben az esetben kapcsolati sztringet fog használni.
 
-3. Nyissa meg a Service Bus-névteret, és válassza ki **+ üzenetsor** vagy **+ témakör** hozhat létre egy üzenetsorba vagy témakörbe történő exportálása tetején.
+3. Nyissa meg a Service Bus névteret, és a felül található **+ üzenetsor** vagy **+ témakör** használatával hozzon létre egy üzenetsor vagy témakört az exportáláshoz.
 
 
-## <a name="set-up-continuous-data-export"></a>Állítsa be a folyamatos exportálás
+## <a name="set-up-continuous-data-export"></a>Folyamatos adatexportálás beállítása
 
-Most, hogy az adatok exportálása az Event Hubs és a Service Bus cél, az alábbi lépésekkel állítsa be a folyamatos exportálás. 
+Most, hogy rendelkezik egy Event Hubs/Service Bus céllal, hogy exportálja az adatexportálást, kövesse az alábbi lépéseket a folyamatos adatexportálás beállításához. 
 
-1. Jelentkezzen be az IoT Central alkalmazáshoz.
+1. Jelentkezzen be IoT Central alkalmazásba.
 
-2. A bal oldali menüben válassza ki a **folyamatos adatexportálás**.
+2. A bal oldali menüben válassza a **folyamatos adatexportálás**lehetőséget.
 
     > [!Note]
-    > Ha nem látja a folyamatos adatexportálás bal oldali menüben lévő, Ön nem rendszergazda az alkalmazásban. Kérdezze meg a rendszergazda állíthatja be az adatok exportálása.
+    > Ha a bal oldali menüben nem látja a folyamatos adatexportálást, akkor Ön nem rendszergazda az alkalmazásban. Az adatexportálás beállításához forduljon a rendszergazdához.
 
-    ![Új cde Eseményközpont létrehozása](media/howto-export-data/export_menu1.png)
+    ![Új CDE-esemény hub létrehozása](media/howto-export-data/export_menu1.png)
 
-3. Válassza ki a **+ új** gombra a jobb felső sarokban. Válasszon egyet az **Azure Event Hubs** vagy **Azure Service Bus** az exportálás céljaként. 
-
-    > [!NOTE] 
-    > Export alkalmazásonként maximális száma öt. 
-
-    ![Hozzon létre új folyamatos adatexportálás](media/howto-export-data/export_new1.png)
-
-4. A legördülő listában jelölje ki a **az Event Hubs-névtér/Service Bus-névtér**. A legutóbbi lehetőséget is kiválaszthat a listában, amely **adjon meg egy kapcsolati karakterláncot**. 
+3. Kattintson a jobb felső sarokban található **+ új** gombra. Válasszon ki egy **Azure-Event Hubs** vagy **Azure Service Bus** az Exportálás célhelye. 
 
     > [!NOTE] 
-    > Storage-fiókok és az Event Hubs névterekben/Service Bus-névterek az csak akkor jelenik meg a **megegyező előfizetésben, az IoT-központ alkalmazás**. Ha szeretne exportálni egy célhelyre kívül ehhez az előfizetéshez, válasszon **adjon meg egy kapcsolati karakterláncot** , és tekintse meg az 5. lépés.
+    > Az alkalmazások exportálásának maximális száma öt. 
+
+    ![Új folyamatos adatexportálás létrehozása](media/howto-export-data/export_new1.png)
+
+4. A legördülő listában válassza ki a **Event Hubs névtér/Service Bus névteret**. A lista utolsó elemét is kiválaszthatja, amely a **kapcsolatok karakterláncát adja meg**. 
 
     > [!NOTE] 
-    > Próbaverziós alkalmazások, csak úgy konfigurálja a folyamatos exportálás 7 napon keresztül egy kapcsolati karakterláncot történik. Ennek oka az, 7 napos próbaverziós alkalmazások nem rendelkeznek társított Azure-előfizetéssel.
+    > A Storage-fiókok/Event Hubs névterek/Service Bus névterek a **IoT Central alkalmazással megegyező**előfizetésben jelennek meg. Ha az előfizetésen kívüli célhelyre szeretne exportálni, válassza **az adja meg a kapcsolati karakterláncot** , és tekintse meg az 5. lépést.
 
-    ![Új cde Eseményközpont létrehozása](media/howto-export-data/export_create1.png)
+    > [!NOTE] 
+    > A 7 napos próbaverziós alkalmazások esetében az egyetlen módszer a folyamatos adatexportálás konfigurálására egy kapcsolódási karakterláncon keresztül. Ennek az az oka, hogy a 7 napos próbaverziós alkalmazások nem rendelkeznek társított Azure-előfizetéssel.
 
-5. (Nem kötelező) Ha úgy döntött **adjon meg egy kapcsolati karakterláncot**, egy új mező jelenik meg, hogy illessze be a kapcsolati karakterláncot. Kapcsolati karakterláncára beolvasni a:
-    - Az Event Hubs vagy a Service Bus, nyissa meg a névteret, az Azure Portalon.
-        - A **beállítások**válassza **megosztott hozzáférési házirendek**
+    ![Új CDE-esemény hub létrehozása](media/howto-export-data/export_create1.png)
+
+5. Választható Ha a **kapcsolódási karakterlánc megadása**lehetőséget választotta, a rendszer egy új mezőt jelenít meg a kapcsolódási karakterlánc beillesztéséhez. A következőhöz tartozó kapcsolódási karakterlánc lekérése:
+    - Event Hubs vagy Service Bus, lépjen a Azure Portal névtér elemére.
+        - A **Beállítások**területen válassza a **megosztott elérési szabályzatok** elemet.
         - Válassza ki az alapértelmezett **RootManageSharedAccessKey** , vagy hozzon létre egy újat
-        - Vagy az elsődleges vagy másodlagos kapcsolati karakterlánc másolása
+        - Az elsődleges vagy a másodlagos kapcsolatok karakterláncának másolása
  
-6. A legördülő listából válassza ki a Event hub/üzenetsor vagy témakör.
+6. Válassza ki az Event hub/üzenetsor vagy a témakört a legördülő listából.
 
-7. A **exportálható adatot**, adja meg az egyes adattípusok úgy, hogy a típus exportálása **a**.
+7. Az **exportálni kívánt adat**területen adja meg az exportálandó adattípusokat, ha a típust be értékre állítja.
 
-6. Folyamatos adatexportálás bekapcsolása, ellenőrizze, hogy **adatexportálás** van **a**. Kattintson a **Mentés** gombra.
+6. A folyamatos adatexportálás bekapcsolásához ellenőrizze, hogy be van-e **kapcsolva**az adatexportálás. Kattintson a **Mentés** gombra.
 
     ![Folyamatos adatexportálás konfigurálása](media/howto-export-data/export_list1.png)
 
-7. Néhány perc elteltével az adatok megjelennek a kiválasztott cél.
+7. Néhány perc elteltével az adatai megjelennek a választott célhelyen.
 
 
-## <a name="export-to-azure-event-hubs-and-azure-service-bus"></a>Az Azure Event Hubs és Azure Service Bus exportálása
+## <a name="export-to-azure-event-hubs-and-azure-service-bus"></a>Exportálás az Azure Event Hubsba és Azure Service Bus
 
-Mértékek, eszközök és eszközadatok sablonok az event hubs vagy Service Bus-üzenetsor vagy témakör, közel valós idejű exportálódik. Exportált mérések adatok tartalmazzák a teljes üzenet küld az IoT-központ, az eszközök nem csak a maguk mérések értékeinek. Exportált eszközök adatok tulajdonságokat és beállításokat az összes eszköz módosításokat tartalmaz, és az exportált eszközsablonok összes eszközsablonok módosításokat tartalmaz. Az exportált adatok a "body" tulajdonságban pedig JSON formátumban.
+A mérések, az eszközök és az eszközök sablonjainak adatai exportálva lesznek az Event hub-ba, vagy Service Bus üzenetsor vagy témakör a közel valós időben. Az exportált mérési adatok teljes egészében tartalmazzák az eszközök által IoT Central küldött üzenetet, nem csak a mérések értékeit. Az exportált eszközök az összes eszköz tulajdonságainak és beállításainak módosításait tartalmazzák, az exportált sablonok pedig az összes eszközosztály változásait tartalmazzák. Az exportált érték a "Body" tulajdonságban van, és JSON formátumú.
 
 > [!NOTE]
-> Az exportálási cél, az üzenetsorok és témakörök egy Service Bus kiválasztásakor **nem lehet munkamenetet vagy ismétlődő a Fenyegetésészlelés engedélyezve**. Ezek a lehetőségek valamelyikét engedélyezve vannak, ha egyes üzeneteket az üzenetsor vagy témakör nem érkezik.
+> Service Bus exportálási célhelyként való kiválasztásakor a várólisták és a témakörök nem rendelkezhetnek a munkamenetek és az **ismétlődő észlelések engedélyezésével**. Ha ezek bármelyike engedélyezve van, néhány üzenet nem érkezik meg a várólistán vagy a témakörben.
 
 ### <a name="measurements"></a>Mérések
 
-Egy új üzenet gyorsan exportálása után az IoT-központ fogadja az üzenetet az eszközről. Minden exportált üzenetet az Event Hubs és a Service Bus tartalmazza a teljes üzenet az eszközön, a "body" tulajdonságban JSON formátumban küldi el. 
+A rendszer gyorsan exportál egy új üzenetet, miután IoT Central fogadja az üzenetet az eszközről. Event Hubs és Service Bus összes exportált üzenete teljes üzenetet tartalmaz, amelyet az eszköz JSON formátumban küldött a "Body" tulajdonságban. 
 
 > [!NOTE]
-> Az eszközöket, amelyek a mérések küldése (lásd a következő szakaszok) eszköz azonosítóját képviseli. Az eszközök nevei, eszköz-adatok exportálása és vesse össze az egyes felettese használatával a **connectionDeviceId** , amely megfelel a **deviceId** , az üzenetet.
+> A méréseket küldő eszközöket az eszközök azonosítói jelölik (lásd a következő részeket). Az eszközök nevének beszerzéséhez exportálja az eszközöket, és korrelálja az egyes messsage a **connectionDeviceId** , amely megfelel az eszközhöz tartozó üzenet **deviceId** értékének.
 
-A következő példa bemutatja, hogy mérések adatokkal kapcsolatos üzenet érkezett az event hubs vagy a Service Bus-üzenetsor vagy témakör.
+Az alábbi példa egy üzenetet jelenít meg az Event hub-ban vagy Service Bus-várólistában vagy-témakörben fogadott mérési adatmennyiségekről.
 
 ```json
 {
@@ -155,24 +155,24 @@ A következő példa bemutatja, hogy mérések adatokkal kapcsolatos üzenet ér
 
 ### <a name="devices"></a>Eszközök
 
-Eszköz-adatokat tartalmazó üzenetek érkeznek az event hubs vagy Service Bus-üzenetsor vagy témakör néhány percenként. Ez azt jelenti, hogy néhány percenként egy üzenetköteget érkezik adatokkal kapcsolatban
-- Új hozzáadott eszközöket
-- Módosított tulajdonság és értékeinek beállítása
+Az eszköz adatait tartalmazó üzeneteket a rendszer néhány percenként egyszer elküldi az Event hub-nak vagy Service Bus üzenetsor vagy témakörnek. Ez azt jelenti, hogy minden percben egy köteg üzenet érkezik a
+- Új, hozzáadott eszközök
+- Módosított tulajdonsággal rendelkező és beállított értékeket tartalmazó eszközök
 
-Minden üzenetet egy eszközhöz egy vagy több módosítás óta az utolsó exportált üzenet jelöli. Az egyes üzenetekben küldött adatokat tartalmazza:
-- `id` az eszköz az IoT-központ
-- `name` az eszköz
-- `deviceId` a [Device Provisioning Service](https://aka.ms/iotcentraldocsdps)
-- Eszköz sablon adatai
+Minden üzenet az eszköz egy vagy több módosítását jelöli az utolsó exportált üzenet óta. Az egyes üzenetekben küldendő információk a következők:
+- `id`az eszköz IoT Central
+- `name`az eszköz
+- `deviceId`a [Device kiépítési szolgáltatásból](https://aka.ms/iotcentraldocsdps)
+- Eszköz sablonjának adatai
 - Tulajdonságok értékei
-- Beállításértékek
+- Értékek beállítása
 
 > [!NOTE]
-> Az eszközök történt, a legutóbbi köteg nem exportálható. Jelenleg nincsenek mutatók törölt eszközök exportált üzenetekben.
+> Az utolsó köteg óta törölt eszközök nem lesznek exportálva. Jelenleg nincsenek mutatók a törölt eszközök exportált üzeneteiben.
 >
-> Az eszköz a sablon, amely minden eszközhöz tartozik egy eszközazonosítót sablon. által jelölt Az eszköz sablon nevének lekérése, ügyeljen arra, eszközadatok sablon exportálása túl.
+> Az eszközök sablonja, amelyhez az egyes eszközök tartoznak, egy eszköz-sablon azonosítója jelöli. Az eszköz sablonjának beolvasásához ügyeljen arra, hogy az eszköz sablonjának adatmennyiségét is exportálja.
 
-Az alábbi példa bemutatja a eszközadatok szóló üzenetet az event hubs vagy a Service Bus-üzenetsor vagy témakör:
+Az alábbi példa egy üzenetet jelenít meg az Event hub-ban vagy Service Bus üzenetsor vagy témakörben található eszköz adatainak:
 
 
 ```json
@@ -214,24 +214,24 @@ Az alábbi példa bemutatja a eszközadatok szóló üzenetet az event hubs vagy
 }
 ```
 
-### <a name="device-templates"></a>Eszköz-sablonok
+### <a name="device-templates"></a>Eszközök sablonjai
 
-Eszköz sablonok adatokat tartalmazó üzenetek érkeznek az event hubs vagy Service Bus-üzenetsor vagy témakör néhány percenként. Ez azt jelenti, hogy néhány percenként egy üzenetköteget érkezik adatokkal kapcsolatban
-- Hozzáadott új eszközt-sablonok
-- Eszközsablonok módosított mérések, tulajdonságot és definíciókat beállítása
+A rendszer néhány percenként egyszer elküldi az eszköz-sablonok adatait tartalmazó üzeneteket az Event hub-nak vagy Service Bus üzenetsor vagy témakör számára. Ez azt jelenti, hogy minden percben egy köteg üzenet érkezik a
+- Új, hozzáadott eszköz-sablonok
+- Megváltoztatott mértékegységekkel, tulajdonsággal és beállítási definíciókkal rendelkező eszközök sablonjai
 
-Minden üzenetet egy vagy több módosítás eszköz sablonok óta az utolsó exportált üzenet jelöli. Az egyes üzenetekben küldött adatokat tartalmazza:
-- `id` az eszköz sablon
-- `name` az eszköz sablon
-- `version` az eszköz sablon
-- Mérési az adattípusok és a minimális/maximális értékei
-- A tulajdonság az adattípusok és az alapértelmezett értékek
-- A beállítás az adattípusokat és az alapértelmezett értékek
+Minden üzenet a legutóbbi exportált üzenet óta egy vagy több módosítást jelképez az eszközön. Az egyes üzenetekben küldendő információk a következők:
+- `id`az eszköz sablonja
+- `name`az eszköz sablonja
+- `version`az eszköz sablonja
+- Mérési adattípusok és minimális/maximális értékek
+- Tulajdonság adattípusai és alapértelmezett értékei
+- Az adattípusok és az alapértelmezett értékek beállítása
 
 > [!NOTE]
-> Törli a legutóbbi köteg óta eszközsablonok nem exportálható. Jelenleg nincsenek mutatók az exportált üzenetekben a törölt sablonokat.
+> Az eszköz sablonjai törölve lettek az utolsó köteg exportálása óta. Jelenleg nincsenek mutatók a törölt eszközök sablonjaihoz tartozó exportált üzenetekben.
 
-Az alábbi példa bemutatja a sablonok eszközadatok szóló üzenetet az event hubs vagy a Service Bus-üzenetsor vagy témakör:
+Az alábbi példa egy üzenetet jelenít meg az Event hub vagy Service Bus üzenetsor vagy témakör eszköz sablonjaival kapcsolatos adatainak:
 
 ```json
 {
@@ -295,7 +295,7 @@ Az alábbi példa bemutatja a sablonok eszközadatok szóló üzenetet az event 
 
 ## <a name="next-steps"></a>További lépések
 
-Most, hogy tudja, hogyan exportálhatja az adatokat az Azure Event Hubs és Azure Service Bus, folytassa a következő lépéssel:
+Most, hogy már tudja, hogyan exportálhatja adatait az Azure Event Hubsba és Azure Service Busba, folytassa a következő lépéssel:
 
 > [!div class="nextstepaction"]
-> [Hogyan lehet az Azure Functions aktiválása](howto-trigger-azure-functions.md)
+> [A Azure Functions elindítása](howto-trigger-azure-functions.md)

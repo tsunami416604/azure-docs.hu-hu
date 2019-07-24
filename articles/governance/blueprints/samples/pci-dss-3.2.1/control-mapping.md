@@ -1,6 +1,6 @@
 ---
-title: Minta - PCI-DSS v3.2.1 tervezet - vezérlő leképezés
-description: A fizetési Card Industry Data Security Standard v3.2.1 tervezet minta és az Azure Policy RBAC leképezés vezérlő.
+title: Minta-PCI-DSS v 3.2.1 terv – vezérlés leképezése
+description: A Payment Card Industry adatbiztonsági standard v 3.2.1 tervezetének vezérlése a Azure Policy és a RBAC.
 services: blueprints
 author: DCtheGeek
 ms.author: dacoulte
@@ -8,129 +8,129 @@ ms.date: 06/24/2019
 ms.topic: conceptual
 ms.service: blueprints
 manager: carmonm
-ms.openlocfilehash: 38b1cc6249da98e11167416c8e18d06de1645679
-ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
+ms.openlocfilehash: 1e85cb5c06f36e0f8c105ece2c012cfe7cb77bf4
+ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67540951"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "68226024"
 ---
-# <a name="control-mapping-of-the-pci-dss-v321-blueprint-sample"></a>A PCI-DSS v3.2.1 tervezet minta vezérlő leképezés
+# <a name="control-mapping-of-the-pci-dss-v321-blueprint-sample"></a>A PCI-DSS v 3.2.1 Blueprint-minta leképezésének vezérlése
 
-A következő cikk részletezi, hogyan képez le az Azure tervezetek PCI-DSS v3.2.1 tervezet minta a PCI-DSS v3.2.1 vezérlők. A vezérlőkkel kapcsolatos további információkért lásd: [PCI-DSS v3.2.1](https://www.pcisecuritystandards.org/documents/PCI_DSS_v3-2-1.pdf).
+A következő cikk azt ismerteti, hogyan jelennek meg az Azure-tervrajzok PCI-DSS v 3.2.1 terv mintája a PCI-DSS v 3.2.1 vezérlőkhöz. További információ a vezérlőelemekről: [PCI-DSS v 3.2.1](https://www.pcisecuritystandards.org/documents/PCI_DSS_v3-2-1.pdf).
 
-A következő hozzárendeléseket a rendszer a **PCI-DSS v3.2.1:2018** szabályozza. A jobb oldalon a navigációs segítségével közvetlenül egy adott vezérlőt leképezés ugorhat. Számos, a csatlakoztatott vezérlők implementálása egy [Azure Policy](../../../policy/overview.md) kezdeményezésére. Tekintse át a teljes kezdeményezés, nyissa meg a **házirend** az Azure Portalon, és válassza a **definíciók** lapot. Ezután keresse meg és válassza ki a  **[Előzetes verzió] naplózási PCI v3.2.1:2018 vezérli, és a naplózási követelmények támogatására adott Virtuálisgép-bővítmények telepítése** beépített szabályzat-kezdeményezéshez.
+A következő leképezések a **PCI-DSS v 3.2.1:2018-** as vezérlőkre vonatkoznak. A jobb oldali navigációs sávon közvetlenül egy adott vezérlőelem-megfeleltetésre ugorhat. A leképezett vezérlők számos [Azure Policy](../../../policy/overview.md) kezdeményezéssel valósulnak meg. A teljes kezdeményezés áttekintéséhez nyissa  meg a szabályzatot a Azure Portalban, és válassza a **definíciók** lapot. Ezután keresse meg és válassza ki  **\[az\] előzetes naplózási PCI v 3.2.1:2018 vezérlőt, és telepítsen speciális virtuálisgép-bővítményeket a naplózási követelmények** beépített házirend-kezdeményezésének támogatásához.
 
-## <a name="132-and-134-boundary-protection"></a>1.3.2 és 1.3.4 határ védelmére
+## <a name="132-and-134-boundary-protection"></a>1.3.2 és 1.3.4 határ védelme
 
-Ez a megoldás segítségével felügyelheti és ellenőrizheti a hálózatok hozzárendelésével [Azure Policy](../../../policy/overview.md) figyeli a megengedő hálózati biztonsági csoportokkal kapcsolatos definíciókat. Előfordulhat, hogy nem kívánt hálózati hozzáférés engedélyezése, amelyek túl megengedő szabályok, és át kell tekinteni. A tervezet hozzárendeli egy védelem nélküli végpontok, alkalmazások és tárfiókok figyelése Azure szabályzatdefiníciók. Végpontok és a egy tűzfal és a korlátlan hozzáférést a storage-fiókok által nem védett alkalmazások lehetővé tehetik a információs rendszerben található információkhoz való nem szándékos hozzáférés.
+Ez a terv segítséget nyújt a hálózatok kezelésében és szabályozásában olyan [Azure Policy](../../../policy/overview.md) -definíciók hozzárendelésével, amelyek megengedő szabályokkal figyelik a hálózati biztonsági csoportokat. A túl megengedhető szabályok lehetővé tehetik a nem kívánt hálózati hozzáférést, és azt felül kell vizsgálni. Ez a terv egy olyan Azure Policy-definíciót rendel hozzá, amely figyeli a nem védett végpontokat, az alkalmazásokat és a Storage-fiókokat. A tűzfal által nem védett végpontok és alkalmazások, valamint a korlátlan hozzáféréssel rendelkező Storage-fiókok nem kívánt hozzáférést biztosíthatnak az információs rendszeren belül található információkhoz.
 
-- A storage-fiókok nem korlátozott hálózati hozzáférés naplózása
-- Az Internet felé néző végpont keresztüli hozzáférés korlátozva kell lennie.
+- Nem korlátozott hálózati hozzáférés naplózása a Storage-fiókokhoz
+- Korlátozni kell az internet felé irányuló végponton keresztüli hozzáférést
 
-## <a name="34a-41-41g-41h-and-653-cryptographic-protection"></a>3.4.a, 4.1-, 4.1.g, 4.1.h és 6.5.3 titkosítási védelme
+## <a name="34a-41-41g-41h-and-653-cryptographic-protection"></a>3.4. a, 4,1, 4.1. g, 4.1. h és 6.5.3 titkosítási védelem
 
-Ez a megoldás segít érvényesíteni a házirendet, cryptograph vezérlők használatával hozzárendelésével [Azure Policy](../../../policy/overview.md) definíciók, amelyek adott cryptograph vezérlők és naplózási gyenge kriptográfiai beállítások használatát. Ismertetése, ahol az Azure-erőforrások rendelkezhetnek titkosítási konfiguráció nem optimális segíthet az információk biztonsági szabályzatának megfelelően konfigurált erőforrások biztosítása érdekében javítási műveleteket. Pontosabban a házirendek, ez a megoldás által hozzárendelt; SQL-adatbázisok transzparens titkosításának kötelezővé tétele a storage-fiókok és az automation-fiók változók titkosítási hiányzó naplózási. Mely címet naplózása nem biztonságos kapcsolatok a storage-fiókok, Függvényalkalmazások, webalkalmazás, az API Apps és Redis Cache és a Service Fabric a titkosítatlan kommunikációnak naplózási házirendek is vannak.
+Ez a terv segít kikényszeríteni a szabályzatot a titkosítási vezérlők használatával [Azure Policy](../../../policy/overview.md) definíciók kiosztásával, amelyek bizonyos titkosítási vezérlőket kényszerítenek, és a gyenge titkosítási beállítások naplózási funkcióit használják. Annak megismerése, hogy az Azure-erőforrások nem optimális titkosítási konfigurációval rendelkezzenek-e, segítheti a javítási műveleteket, hogy az erőforrások konfigurálása az adatvédelmi szabályzatnak megfelelően történjen. Pontosabban, az ehhez a tervhez hozzárendelt szabályzatok transzparens adattitkosítást igényelnek az SQL-adatbázisokban; a Storage-fiókok és az Automation-fiókok változóinak naplózása. Léteznek olyan szabályzatok is, amelyek a Storage-fiókok, a Function apps, a WebApp, a API Apps és a Redis Cache nem biztonságos kapcsolatait naplózzák, és naplózzák a titkosítatlan Service Fabric kommunikációt.
 
 - Alkalmazás függvény csak elérhetőnek kell lennie HTTPS-kapcsolaton keresztül
 - Webes alkalmazás csak elérhetőnek kell lennie HTTPS-kapcsolaton keresztül
-- API-alkalmazás csak elérhetőnek kell lennie HTTPS-kapcsolaton keresztül
-- Az Azure Security Centerben a titkosítatlan SQL database monitorozása
-- Lemeztitkosítás alkalmazni kell a virtuális gépek
-- Automation-fiók változókat a rendszer titkosítsa
-- A Redis gyorsítótárhoz kizárólag biztonságos kapcsolatot engedélyezni kell
-- Engedélyezni kell a biztonságos átvitelt a storage-fiókok
-- Service Fabric-fürtök kell rendelkeznie a ClusterProtectionLevel tulajdonság EncryptAndSign beállítása
-- Engedélyezni kell az SQL Database-adatbázisok transzparens adattitkosítás
-- SQL-Adatbázisok transzparens adattitkosításának üzembe helyezése
+- Az API-alkalmazás csak HTTPS protokollon keresztül érhető el
+- Titkosítatlan SQL-adatbázis figyelése Azure Security Center
+- A lemezes titkosítást a virtuális gépeken kell alkalmazni
+- Az Automation-fiók változóit titkosítani kell
+- Csak a Redis Cache biztonságos kapcsolatai legyenek engedélyezve
+- A Storage-fiókoknak való biztonságos átvitelt engedélyezni kell
+- Service Fabric-fürtökön a ClusterProtectionLevel tulajdonságot EncryptAndSign értékre kell beállítani
+- Az SQL-adatbázisokon engedélyezni kell transzparens adattitkosítás
+- Az SQL DB transzparens adattitkosításának üzembe helyezése
 
-## <a name="51-62-66-and-1121-vulnerability-scanning-and-system-updates"></a>5.1, 6.2, 6.6 és 11.2.1 programcsomag rendszerfrissítések és a biztonsági rések keresése
+## <a name="51-62-66-and-1121-vulnerability-scanning-and-system-updates"></a>5,1, 6,2, 6,6 és 11.2.1 sebezhetőségi vizsgálat és rendszerfrissítések
 
-Ez a megoldás segít információt rendszer biztonsági rések kezelése hozzárendelésével [Azure Policy](../../../policy/overview.md) definíciók, amelyek a hiányzó Rendszerfrissítések, operációs rendszer biztonsági rései, az SQL biztonsági réseket és a virtuális gép figyelése az Azure Security Center biztonsági rései. Az Azure Security Center jelentéskészítési lehetőségeket, amelyek lehetővé teszik, hogy üzembe helyezett Azure-erőforrások biztonsági állapotának valós idejű betekintést biztosít.
+Ez a terv a hiányzó rendszerfrissítéseket, az operációs rendszer biztonsági réseit, az SQL-biztonsági réseket és a virtuális gépek Azure-beli biztonsági réseit figyelő [Azure Policy](../../../policy/overview.md) -definíciók hozzárendelésével segíti a biztonsági rések kezelését Security Center. A Azure Security Center jelentéskészítési funkciókat biztosít, amelyekkel valós idejű betekintést nyerhet az üzembe helyezett Azure-erőforrások biztonsági állapotára.
 
-- Az Azure Security Centerben a végpontok hiányzó védelmének monitorozása
-- Windows Serverhez készült alapértelmezett Microsoft IaaSAntimalware bővítmény telepítése
-- A Fenyegetésészlelés az SQL Server-kiszolgálók üzembe helyezése
-- Rendszerfrissítések, telepítenie kell a gépek
-- Biztonsági beállítások a gépek biztonsági réseinek kell kijavítható.
-- Az SQL-adatbázisok biztonsági rések kell kijavítható.
-- Biztonsági rések kell kijavítható biztonságirés-értékelési megoldás által
+- Hiányzó Endpoint Protection figyelése Azure Security Center
+- A Windows Serverhez készült alapértelmezett Microsoft IaaSAntimalware-bővítmény telepítése
+- Veszélyforrások észlelésének üzembe helyezése SQL-kiszolgálókon
+- A számítógépekre telepíteni kell a rendszerfrissítéseket
+- A gépek biztonsági beállításainak sebezhetőségeit szervizelni kell
+- Az SQL-adatbázisok biztonsági réseit szervizelni kell
+- A biztonsági réseket a sebezhetőség-felmérési megoldásnak kell szervizelni
 
-## <a name="711-712-and-713-separation-of-duties"></a>7.1.1. 7.1.2-es és 7.1.3 feladatkörök
+## <a name="711-712-and-713-separation-of-duties"></a>7.1.1. a 7.1.2 és a 7.1.3 elkülönítése
 
-Csak egy Azure-előfizetés tulajdonosa kellene nem engedélyezi a felügyeleti redundancia biztosítása érdekében. Ezzel szemben túl sok Azure-előfizetéssel rendelkező kellene növelheti a lehetséges egy biztonsági kockázatot jelentő tulajdonosok fiók keresztül megsértése. Ez a megoldás segít a megfelelő számú Azure-előfizetéssel rendelkező karbantartása hozzárendelésével [Azure Policy](../../../policy/overview.md) definíciók, amelyek naplózása az Azure-előfizetések tulajdonosainak száma. Előfizetés tulajdonosi engedélyekkel kezelése segíthetnek a megfelelő feladatkörök megvalósításához.
+Csak egy Azure-előfizetéshez tartozó tulajdonos nem engedélyez felügyeleti redundanciát. Ezzel szemben az Azure-előfizetések tulajdonosai is növelhetik a biztonsági réseket egy sérült tulajdonosi fiókon keresztül. Ez a tervezet segítséget nyújt a megfelelő számú Azure-előfizetési tulajdonos fenntartásához olyan [Azure Policy](../../../policy/overview.md) -definíciók kiosztásával, amelyek az Azure-előfizetések tulajdonosainak számát naplózzák. Az előfizetés tulajdonosi engedélyeinek kezelése segítséget nyújt a feladatok megfelelő elkülönítésének megvalósításában.
 
-- Meg kell adni az előfizetéshez hozzárendelt egynél több tulajdonosa
-- Legfeljebb 3 tulajdonosok az előfizetéshez kell kijelölni 
+- Az előfizetéshez egynél több tulajdonos rendelhető hozzá
+- Az előfizetéshez legfeljebb 3 tulajdonost kell kijelölni 
 
-## <a name="32-721-831a-and-831b-management-of-privileged-access-rights"></a>3.2-es, 7.2.1, a kiemelt hozzáférési jogosultságok 8.3.1.a és 8.3.1.b felügyeleti
+## <a name="32-721-831a-and-831b-management-of-privileged-access-rights"></a>3,2, 7.2.1, 8.3.1. a és 8.3.1. b privilegizált hozzáférési jogosultságok kezelése
 
-Ez a megoldás segít korlátozása, valamint szabályozhatja a privilegizált hozzáférési jogosultsága hozzárendelésével [Azure Policy](../../../policy/overview.md) definíciók külső fiókok naplózási tulajdonosával, írási és/vagy tulajdonosa és/vagy írási engedélyek és alkalmazott fiókok olvasása olyan engedélyeket, amelyek nem rendelkeznek a többtényezős hitelesítés engedélyezve van. Azure szerepköralapú hozzáférés-vezérlés (RBAC) való hozzáférés kezeléséhez az Azure-erőforrások valósítja meg. Ismertetése, amelyeknél megvalósítása az egyéni RBAC-szabályok segítségével van szüksége, és megfelelő végrehajtásához, győződjön meg arról, egyéni RBAC-szabályok hibalehetőségeket rejt magában. Ez is tervezetet rendel [Azure Policy](../../../policy/overview.md) SQL-kiszolgálók az Azure Active Directory-hitelesítés használata definíciók naplózását. Az Azure Active Directory hitelesítési egyszerűsíti az engedélyek kezelését és központosítja adatbázis-felhasználók és más Microsoft-identitás kezelése  
-Szolgáltatások.
+Ebből a tervből megtudhatja, hogyan korlátozhatja és szabályozhatja a privilegizált hozzáférési jogosultságokat, ha [Azure Policy](../../../policy/overview.md) definíciókat rendel hozzá a külső fiókoknak a tulajdonossal, írási és/vagy olvasási engedélyekkel, valamint a tulajdonossal és/vagy írási engedélyekkel rendelkező alkalmazott fiókokkal. a többtényezős hitelesítés engedélyezve van. Az Azure szerepköralapú hozzáférés-vezérlést (RBAC) valósít meg, amellyel felügyelheti, hogy ki férhet hozzá az Azure-erőforrásokhoz. Az egyéni RBAC-szabályok megvalósításának megismerése segíthet a szükséges és a megfelelő implementáció ellenőrzésében, mivel az egyéni RBAC-szabályok hibásak. Ez a terv [Azure Policy](../../../policy/overview.md) definíciókat is HOZZÁRENDEL az SQL-kiszolgálók Azure Active Directory-hitelesítésének naplózásához. A Azure Active Directory hitelesítés használata leegyszerűsíti az engedélyek kezelését, és központosítja az adatbázis-felhasználók és más Microsoft-identitások felügyeletét  
+Services.
  
-- Tulajdonosi engedélyekkel rendelkező külső fiókokat el kell távolítani az előfizetésből
+- A tulajdonosi engedélyekkel rendelkező külső fiókokat el kell távolítani az előfizetésből
 - Írási engedélyekkel rendelkező külső fiókokat el kell távolítani az előfizetésből
-- Olvasási jogosultsággal rendelkező külső fiókokat el kell távolítani az előfizetésből
-- MFA engedélyezni kell a fiókok az előfizetésben tulajdonosi engedélyekkel rendelkező
-- Az MFA engedélyezett fiókok, az előfizetés írási jogosultsággal rendelkező kell lennie.
-- MFA engedélyezni kell a fiókok az előfizetés olvasási jogosultsággal rendelkező
-- Az Azure Active Directory-rendszergazda üzembe helyezi az SQL Server-kiszolgálók
-- Az egyéni RBAC-szabályok használatának naplózása
+- Az olvasási engedélyekkel rendelkező külső fiókokat el kell távolítani az előfizetésből
+- Az MFA-t engedélyezni kell az előfizetéshez tartozó tulajdonosi engedélyekkel rendelkező fiókokon
+- Az MFA-nak engedélyezve kell lennie az előfizetéséhez tartozó írási engedélyekkel rendelkező fiókoknak
+- Az MFA-t engedélyezni kell az előfizetésre vonatkozó olvasási engedéllyel rendelkező fiókokon
+- Az SQL-kiszolgálókhoz Azure Active Directory rendszergazdának kell kiépíteni
+- Egyéni RBAC-szabályok használatának naplózása
 
-## <a name="812-and-815-least-privilege-and-review-of-user-access-rights"></a>8.1.2-es és 8.1.5 legalább jogosultsággal, és tekintse át a felhasználói hozzáférési jogosultságokat
+## <a name="812-and-815-least-privilege-and-review-of-user-access-rights"></a>8.1.2 és 8.1.5 a felhasználói hozzáférési jogok minimális jogosultsága és felülvizsgálata
 
-Azure szerepköralapú hozzáférés-vezérlés (RBAC segítségével kezelhetők, ki férhet hozzá az erőforrásokat az Azure-ban) valósítja meg. Az Azure Portalon, megtekintheti, ki férhet hozzá az Azure-erőforrások és a hozzájuk tartozó jogosultságokat. A tervezet rendeli [Azure Policy](../../../policy/overview.md) fiókokat, ellenőrzésre, beleértve a értékcsökkentett és emelt szintű engedélyekkel rendelkező külső fiókok élveznek naplózása érdekében.
+Az Azure szerepköralapú hozzáférés-vezérlést (RBAC) valósít meg, amellyel felügyelheti, hogy ki férhet hozzá az Azure-beli erőforrásokhoz. A Azure Portal használatával áttekintheti, hogy ki férhet hozzá az Azure-erőforrásokhoz és azok engedélyeihez. Ez a terv [Azure Policy](../../../policy/overview.md) -definíciókat rendel hozzá a naplózási fiókokhoz, amelyeket érdemes áttekinteni, beleértve az értékcsökkenéssel rendelkező fiókokat és a emelt szintű engedélyekkel rendelkező külső fiókokat.
 
-- Elavult fiókokat el kell távolítani az előfizetésből
-- Tulajdonosi engedélyekkel rendelkező elavult fiókokat el kell távolítani az előfizetésből
-- Tulajdonosi engedélyekkel rendelkező külső fiókokat el kell távolítani az előfizetésből
+- Az elavult fiókokat el kell távolítani az előfizetésből
+- A tulajdonosi engedélyekkel rendelkező elavult fiókokat el kell távolítani az előfizetésből
+- A tulajdonosi engedélyekkel rendelkező külső fiókokat el kell távolítani az előfizetésből
 - Írási engedélyekkel rendelkező külső fiókokat el kell távolítani az előfizetésből
-- Olvasási jogosultsággal rendelkező külső fiókokat el kell távolítani az előfizetésből
+- Az olvasási engedélyekkel rendelkező külső fiókokat el kell távolítani az előfizetésből
 
-## <a name="813-removal-or-adjustment-of-access-rights"></a>8.1.3 eltávolítása és a hozzáférési jogosultságok beállítása
+## <a name="813-removal-or-adjustment-of-access-rights"></a>8.1.3 eltávolítása vagy a hozzáférési jogosultságok módosítása
 
-Azure szerepköralapú hozzáférés-vezérlés (RBAC), amelyek segítségével kezelheti a kinek van hozzáférése, az Azure-erőforrások valósítja meg. Az Azure Active Directory és az RBAC használatával, frissítheti a szervezeti változásainak felhasználói szerepköröket. Ha szükséges, fiókok bejelentkezés blokkolva (vagy eltávolítása), amely azonnal eltávolítja az Azure-erőforrásokhoz való hozzáférési jogosultságok. A tervezet rendeli [Azure Policy](../../../policy/overview.md) definíciók naplózása értékcsökkentett fiók eltávolítása kell figyelembe venni.
+Az Azure szerepköralapú hozzáférés-vezérlést (RBAC) valósít meg, amellyel felügyelheti, hogy ki férhet hozzá az Azure-beli erőforrásokhoz. A Azure Active Directory és a RBAC használatával frissítheti a felhasználói szerepköröket a szervezeti változások tükrözése érdekében. Ha szükséges, a fiókokat le lehet tiltani a bejelentkezés (vagy Eltávolítás) alól, amely azonnal eltávolítja az Azure-erőforrásokhoz való hozzáférési jogokat. Ez a terv [Azure Policy](../../../policy/overview.md) -definíciókat rendel hozzá a leértékelt fiókokhoz, amelyeket el kell tekinteni az eltávolításhoz.
 
-- Elavult fiókokat el kell távolítani az előfizetésből
-- Tulajdonosi engedélyekkel rendelkező elavult fiókokat el kell távolítani az előfizetésből
+- Az elavult fiókokat el kell távolítani az előfizetésből
+- A tulajdonosi engedélyekkel rendelkező elavult fiókokat el kell távolítani az előfizetésből
 
-## <a name="823ab-824ab-and-825-password-based-authentication"></a>8.2.3.a,b, 8.2.4.a,b és 8.2.5 jelszóalapú hitelesítés
+## <a name="823ab-824ab-and-825-password-based-authentication"></a>8.2.3. a, b, 8.2.4. a, b és 8.2.5 jelszó alapú hitelesítés
 
-Ez a megoldás segít a erős jelszavak kényszerítése hozzárendelésével [Azure Policy](../../../policy/overview.md) definíciókat, amelyeket nem minimális erősségét és más jelszókövetelményeinek Windows virtuális gépek naplózása. A jelszó erőssége szabályzat megsértése a virtuális gépek figyelése segítséget nyújt az összes virtuális gép felhasználói fiók jelszavát felelnek meg a házirend biztosítása érdekében javítási műveleteket.
+Ez a terv segít az erős jelszavak betartatásában olyan [Azure Policy](../../../policy/overview.md) -definíciók hozzárendelésével, amelyek a minimális szilárdságot és egyéb jelszavakat nem érvényesítő Windows-virtuális gépeket naplózzák. A jelszó erősségét sértő virtuális gépek ismerete segít az összes virtuálisgép-felhasználói fiók jelszavának megfelelő javítási műveletek elvégzésében.
 
-- [Előzetes verzió]: Audit Windows VMs that do not have a maximum password age of 70 days
-- [Előzetes verzió]: Deploy requirements to audit Windows VMs that do not have a maximum password age of 70 days
-- [Előzetes verzió]: Audit Windows VMs that do not restrict the minimum password length to 14 characters
-- [Előzetes verzió]: Deploy requirements to audit Windows VMs that do not restrict the minimum password length to 14 characters
-- [Előzetes verzió]: Audit Windows VMs that allow re-use of the previous 24 passwords
-- [Előzetes verzió]: Deploy requirements to audit Windows VMs that allow re-use of the previous 24 passwords
+- \[Előzetes\]verzió: A maximális jelszóval nem rendelkező Windows rendszerű virtuális gépek naplózása 70 nap
+- \[Előzetes\]verzió: Követelmények telepítése a maximális jelszóval nem rendelkező Windows rendszerű virtuális gépek naplózásához 70 nap
+- \[Előzetes\]verzió: A jelszó minimális hosszát 14 karakterre nem korlátozó Windows-alapú virtuális gépek naplózása
+- \[Előzetes\]verzió: Követelmények telepítése a Windows rendszerű virtuális gépek naplózására, amelyek nem korlátozzák a jelszó minimális hosszát 14 karakternél
+- \[Előzetes\]verzió: Az előző 24 jelszó újbóli használatát lehetővé tevő Windows rendszerű virtuális gépek naplózása
+- \[Előzetes\]verzió: Az előző 24 jelszó újbóli használatát lehetővé tevő Windows rendszerű virtuális gépek naplózására vonatkozó követelmények telepítése
 
-## <a name="103-and-1054-audit-generation"></a>10.3 és 10.5.4 létrehozás naplózása
+## <a name="103-and-1054-audit-generation"></a>10,3 és 10.5.4 naplózási generáció
 
-Ez a megoldás segítségével győződjön meg, hogy a rendszer eseményeket naplóz hozzárendelésével [Azure Policy](../../../policy/overview.md) naplózási beállításai az Azure-erőforrás naplózása definíciókat.
-Diagnosztikai naplók adja meg az Azure-erőforrások belül végrehajtott műveletekkel kapcsolatos információk. Az Azure-naplók az események idő korrelált rekord létrehozása az erőforrások között szinkronizált belső órát támaszkodnak.
+Ez a terv segítséget nyújt a rendszeresemények naplózásához az Azure-erőforrások naplózási beállításait naplózó [Azure Policy](../../../policy/overview.md) -definíciók hozzárendelésével.
+A diagnosztikai naplók betekintést nyújtanak az Azure-erőforrásokon belül végrehajtott műveletekre. Az Azure-naplók a szinkronizált belső órákat használják az események időbeli korrelációs rekordjának létrehozásához az erőforrások között.
 
-- Az Azure Security Center nem naplózott SQL-kiszolgálók figyelése
+- Nem naplózott SQL-kiszolgálók figyelése Azure Security Center
 - Diagnosztikai beállítás naplózása
-- Az SQL server szintű naplózási beállításainak naplózása
-- Az SQL Server-kiszolgálók üzembe helyezése a naplózás
-- Storage-fiókokat kell áttelepíteni az új Azure Resource Manager-erőforrások
-- Virtuális gépek kell áttelepíteni az új Azure Resource Manager-erőforrások
+- Az SQL Server szintű naplózási beállítások naplózása
+- Naplózás üzembe helyezése SQL-kiszolgálókon
+- A Storage-fiókokat át kell telepíteni az új Azure Resource Manager erőforrásokra
+- A virtuális gépeket át kell telepíteni az új Azure Resource Manager erőforrásokra
 
-## <a name="1236-and-1237-information-security"></a>12.3.6 és 12.3.7 információ-biztonság
+## <a name="1236-and-1237-information-security"></a>12.3.6 és 12.3.7-adatok biztonsága
 
-Ez a megoldás segítségével kezelheti és irányítást a hálózat hozzárendelése [Azure Policy](../../../policy/overview.md) elfogadható hálózati helyek és a jóváhagyott vállalati termékek definíciókat engedélyezett a környezethez. Ezek a szabályzat paraméterei ezekkel a szabályzatokkal belül minden egyes vállalat testre szabható.
+Ez a terv segít a hálózat kezelésében és szabályozásában [Azure Policy](../../../policy/overview.md) definíciók kiosztásával, amelyek naplózzák az elfogadható hálózati telephelyeket és a környezet számára engedélyezett jóváhagyott vállalati termékeket. Ezek az egyes vállalatok által testreszabhatók az egyes szabályzatok házirend-paraméterei között.
 
 - Engedélyezett helyek
-- Engedélyezett helyek az erőforráscsoportok
+- Erőforráscsoportok engedélyezett helyei
 
 ## <a name="next-steps"></a>További lépések
 
-Most, hogy áttekintette a PCI-DSS v3.2.1 tervezet vezérlő leképezése, látogasson el a további információ az áttekintést, és ez a minta üzembe helyezése a következő cikkeket:
+Most, hogy áttekintette a PCI-DSS v 3.2.1 terv vezérlési leképezését, a következő cikkekben megismerheti az áttekintést és a minta üzembe helyezésének módját:
 
 > [!div class="nextstepaction"]
-> [PCI-DSS v3.2.1 tervezet - áttekintés](./index.md)
-> [PCI-DSS v3.2.1 tervezetet – a telepítés lépéseit](./deploy.md)
+> [PCI-DSS v 3.2.1 terv – áttekintés](./index.md)
+> [PCI-DSS v 3.2.1 Blueprint – lépések üzembe helyezése](./deploy.md)
 
 ## <a name="addition-articles-about-blueprints-and-how-to-use-them"></a>További cikkek a tervekről és azok használatáról:
 

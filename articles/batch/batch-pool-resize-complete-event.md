@@ -1,9 +1,9 @@
 ---
-title: Az Azure Batch-készlet átméretezése kész esemény |} A Microsoft Docs
-description: Referencia a Batch-készlet átméretezése kész esemény.
+title: Azure Batch készlet átméretezése kész esemény | Microsoft Docs
+description: A Batch-készlet átméretezésének befejezési eseménye.
 services: batch
 author: laurenhughes
-manager: jeconnoc
+manager: gwallace
 ms.assetid: ''
 ms.service: batch
 ms.devlang: multiple
@@ -12,18 +12,18 @@ ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 04/20/2017
 ms.author: lahugh
-ms.openlocfilehash: 87c98b89a49adbad88841dccbd4ba47d370b2be7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c2544bd2be683b731c3dac0bea651d4b64dff75e
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60776422"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68323200"
 ---
 # <a name="pool-resize-complete-event"></a>Készlet átméretezése kész esemény
 
- Ez az esemény bocsásson ki, ha a készlet átméretezése befejeződött vagy meghiúsult.
+ Ezt az eseményt akkor bocsátja ki a rendszer, ha a készlet átméretezése befejeződött vagy meghiúsult.
 
- Az alábbi példa bemutatja a törzse a készlet átméretezése kész esemény-készlet, amely nagyobb méretű, és sikeresen befejeződött.
+ A következő példa egy készlet-átméretezési esemény törzsét mutatja be egy olyan készlet esetében, amely megnövelte a méretet, és sikeresen befejeződött.
 
 ```
 {
@@ -40,15 +40,15 @@ ms.locfileid: "60776422"
 }
 ```
 
-|Elem|Típus|Megjegyzések|
+|Elem|Type|Megjegyzések|
 |-------------|----------|-----------|
-|id|String|A készlet azonosítója.|
-|nodeDeallocationOption|String|Itt adható meg, amikor csomópontok lehet, hogy eltávolítja a készletből, ha a készlet méretének csökkenésekor.<br /><br /> Lehetséges értékek:<br /><br /> **újbóli várólistázás** – futó tevékenységek leállítása és újbóli várólistázása. A tevékenységek a feladat engedélyezésekor fognak újra futni. Távolítsa el a csomópontokat, amint a tevékenységek leállítása után.<br /><br /> **leállítja** – futó tevékenységek leállítása. A tevékenységek nem fognak újra futni. Távolítsa el a csomópontokat, amint a tevékenységek leállítása után.<br /><br /> **taskcompletion** – engedélyezése jelenleg futó feladatok végrehajtásához. Ne ütemezzen új feladatokat való várakozás során. Távolítsa el a csomópontok, feladatok befejezését.<br /><br /> **Retaineddata** – lehetővé teszi a futó tevékenységek befejeződését, majd megvárja, hogy minden tevékenység adatmegőrzési ideje leteljen lejár. Ne ütemezzen új feladatokat való várakozás során. Távolíthat el csomópontokat, amikor az összes feladat megőrzési időszak lejárt.<br /><br /> Az alapértelmezett érték: újbóli várólistázás.<br /><br /> Ha a készlet méretét növekszik, akkor a értéke **érvénytelen**.|
-|currentDedicated|Int32|A készlethez rendelt számítási csomópontok száma.|
-|targetDedicated|Int32|Számítási csomópontok a készlet kért száma.|
-|enableAutoScale|Bool|Itt adhatja meg, hogy a készlet mérete automatikusan alkalmazkodik a kijelző idővel.|
-|isAutoPool|Bool|Megadja, hogy a készlet hozták-e egy feladat AutoPool mechanizmus révén.|
-|startTime|DateTime|Az idő a készlet átméretezése elindult.|
-|endTime|DateTime|Az idő a készlet méretezése befejeződött.|
-|Eredménykód|String|Az átméretezés eredménye.|
-|resultMessage|String|Az átméretezési hibát jelez az eredmény részletezi.<br /><br /> Ha az átméretezés sikeresen befejeződött, hogy a művelet sikeresen befejeződött.|
+|id|Sztring|A készlet azonosítója.|
+|nodeDeallocationOption|Sztring|Megadja, hogy a rendszer mikor távolítsa el a csomópontokat a készletből, ha a készlet mérete csökken.<br /><br /> Lehetséges értékek a következők:<br /><br /> **újravárólista** – leállítja a futó feladatokat, és újravárólistára helyezi őket. A feladatok akkor futnak újra, amikor a feladat engedélyezve van. A csomópontokat a feladatok leállítása után távolítsa el.<br /><br /> **megszakítás** – futó feladatok leállítása. A feladatok nem futnak újra. A csomópontokat a feladatok leállítása után távolítsa el.<br /><br /> **taskcompletion** – a jelenleg futó feladatok befejezésének engedélyezése. A várakozás közben nem ütemezhet új feladatokat. Csomópontok eltávolítása, ha az összes feladat befejeződött.<br /><br /> **Retaineddata** – lehetővé teszi a jelenleg futó feladatok befejezését, majd várjon, amíg az összes feladat adatmegőrzési időszaka lejár. A várakozás közben nem ütemezhet új feladatokat. Csomópontok eltávolítása, ha az összes tevékenység megőrzési időszaka lejárt.<br /><br /> Az alapértelmezett érték az újraüzenetsor.<br /><br /> Ha a készlet mérete növekszik, az érték érvénytelenre van állítva .|
+|currentDedicated|Int32|A készlethez jelenleg hozzárendelt számítási csomópontok száma.|
+|targetDedicated|Int32|A készlethez igényelt számítási csomópontok száma.|
+|enableAutoScale|Bool|Meghatározza, hogy a készlet mérete automatikusan igazodik-e az idő múlásával.|
+|isAutoPool|Bool|Azt határozza meg, hogy a készlet a feladatok autopool mechanizmusán keresztül lett-e létrehozva.|
+|startTime|Datetime|A készlet átméretezésének időpontja.|
+|endTime|Datetime|A készlet átméretezésének időpontja.|
+|resultCode|Sztring|Az átméretezés eredménye.|
+|resultMessage|Sztring|Az átméretezési hiba az eredmény részleteit tartalmazza.<br /><br /> Ha az átméretezés sikeresen befejeződött, az azt jelzi, hogy a művelet sikeres volt.|

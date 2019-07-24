@@ -1,7 +1,7 @@
 ---
-title: Java-webalkalmazás létrehozása a Windows - Azure App Service-ben
-description: Ez a rövid útmutatóban az első Hello World Java az Azure App Service, a Windows percek alatt üzembe.
-keywords: Azure, az app service, webalkalmazás, windows, a java, maven, a rövid útmutató
+title: Java-Webalkalmazás létrehozása Windows rendszeren – Azure App Service
+description: Ebben a rövid útmutatóban percek alatt üzembe helyezheti az első Java-"Helló világ!" alkalmazás Azure App Service Windows rendszeren.
+keywords: Azure, app Service, Web App, Windows, Java, Maven, gyors útmutató
 services: app-service\web
 documentationcenter: ''
 author: msangapu-msft
@@ -16,23 +16,23 @@ ms.topic: quickstart
 ms.date: 05/29/2019
 ms.author: jafreebe
 ms.custom: mvc
-ms.openlocfilehash: 0ca50bae0748570932c7a4cc3bb10cde17c940f5
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 1e25f65cf7ec52b4a58386843a1d2f5796c66e65
+ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67617714"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68297359"
 ---
-# <a name="quickstart-create-a-java-app-in-app-service"></a>Gyors útmutató: Hozzon létre egy Java-alkalmazás az App Service-ben
+# <a name="quickstart-create-a-java-app-in-app-service"></a>Gyors útmutató: Java-alkalmazás létrehozása App Service
 
 > [!NOTE]
-> Ebben a cikkben egy alkalmazást helyezünk üzembe a Windowson futó App Service-ben. Az App Service-ben üzembe _Linux_, lásd: [létrehozása a Java-webalkalmazást Linux rendszeren](./containers/quickstart-java.md).
+> Ebben a cikkben egy alkalmazást helyezünk üzembe a Windowson futó App Service-ben. A Linuxon App Service való üzembe helyezéssel kapcsolatban lásd: Java- [Webalkalmazás létrehozása Linuxon](./containers/quickstart-java.md).
 >
 
-Az [Azure App Service](overview.md) egy hatékonyan méretezhető, önjavító webes üzemeltetési szolgáltatás.  Ez a rövid útmutató bemutatja, hogyan használhatja a [Azure CLI-vel](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) az a [Azure App Service-ben készült maven bővítmény](https://github.com/Microsoft/azure-maven-plugins/tree/develop/azure-webapp-maven-plugin) üzembe Java web archive-(WAR-) fájlt.
+Az [Azure App Service](overview.md) egy hatékonyan méretezhető, önjavító webes üzemeltetési szolgáltatás.  Ebből a rövid útmutatóból megtudhatja, hogyan használhatja az [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) -t a [Azure app Service Maven beépülő modullal](https://github.com/Microsoft/azure-maven-plugins/tree/develop/azure-webapp-maven-plugin) egy Java Web Archive-(War-) fájl telepítéséhez.
 
 > [!NOTE]
-> Ugyanezt megteheti is népszerű, például az IntelliJ és Eclipse ide használatával. Tekintse meg a következő hasonló dokumentumok [intellij-vel a rövid útmutató az Azure-eszközkészlet](/java/azure/intellij/azure-toolkit-for-intellij-create-hello-world-web-app) vagy [eclipse-ben a rövid útmutató az Azure-eszközkészlet](/java/azure/eclipse/azure-toolkit-for-eclipse-create-hello-world-web-app).
+> Ugyanezt a népszerű ide-ket is megteheti, például a IntelliJ és az Eclipse-et. Tekintse meg a hasonló dokumentumokat a [Azure Toolkit for IntelliJ](/java/azure/intellij/azure-toolkit-for-intellij-create-hello-world-web-app) rövid útmutatóban vagy [Azure Toolkit for Eclipse](/java/azure/eclipse/azure-toolkit-for-eclipse-create-hello-world-web-app)gyors útmutatóban.
 >
 ![Az Azure-ban futó mintaalkalmazás](./media/app-service-web-get-started-java/java-hello-world-in-browser.png)
 
@@ -42,7 +42,7 @@ Az [Azure App Service](overview.md) egy hatékonyan méretezhető, önjavító w
 
 ## <a name="create-a-java-app"></a>Java-alkalmazás létrehozása
 
-Hajtsa végre a következő Maven-parancsot a Cloud Shell használatával hozzon létre egy új alkalmazást nevű `helloworld`:
+A következő Maven-parancs végrehajtásával hozzon létre egy nevű `helloworld`új alkalmazást a Cloud Shell promptban:
 
 ```bash
 mvn archetype:generate -DgroupId=example.demo -DartifactId=helloworld -DarchetypeArtifactId=maven-archetype-webapp
@@ -66,7 +66,7 @@ Ezután adja hozzá a következő bővítménydefiníciót a `pom.xml` fájl `<b
     <plugin>
         <groupId>com.microsoft.azure</groupId>
         <artifactId>azure-webapp-maven-plugin</artifactId>
-        <version>1.6.0</version>
+        <version>1.7.0</version>
         <configuration>
             <!-- Specify v2 schema -->
             <schemaVersion>v2</schemaVersion>
@@ -104,10 +104,10 @@ Frissítse a következő helyőrzőket a bővítmény konfigurációjában:
 
 | Helyőrző | Leírás |
 | ----------- | ----------- |
-| `SUBSCRIPTION_ID` | Egyedi azonosítója annak az előfizetésnek az alkalmazást telepíteni kívánja. Alapértelmezett előfizetés-azonosító megtalálja a Cloud Shellben vagy a parancssori felület használatával a `az account show` parancsot. Az összes rendelkezésre álló előfizetések, használja a `az account list` parancsot.|
-| `RESOURCEGROUP_NAME` | Az új erőforráscsoport, amelyben létrehozza az alkalmazás neve. Ha egy alkalmazás összes erőforrását egy csoportban helyezi el, akkor mindet együtt kezelheti. Az erőforráscsoport törlésével például az alkalmazáshoz társított összes erőforrást törli. Frissítse ezt az értéket egy egyedi új erőforráscsoport-nevet, például *myResourceGroup*. Ezt az erőforráscsoport-nevet használjuk egy későbbi szakaszban az összes Azure-erőforrás eltávolításához. |
-| `WEBAPP_NAME` | Az alkalmazás nevét az alkalmazás az Azure-ba (WEBAPP_NAME.azurewebsites.net) telepítésekor az állomás neve része lesz. Frissítse ezt az értéket fogja futtatni a Java-alkalmazás, például új App Service-alkalmazás egyedi nevet *contoso*. |
-| `REGION` | Ha az alkalmazás üzemel, például egy Azure-régió *westus2*. A régiók listáját az `az account list-locations` paranccsal, a Cloud Shellben vagy a CLI-ben kérheti le. |
+| `SUBSCRIPTION_ID` | Annak az előfizetésnek az egyedi azonosítója, amelyre telepíteni kívánja az alkalmazást. Az alapértelmezett előfizetés azonosítója a Cloud Shell vagy a `az account show` parancssori felület használatával érhető el. Az összes elérhető előfizetéshez használja az `az account list` parancsot.|
+| `RESOURCEGROUP_NAME` | Az új erőforráscsoport neve, amelyben létre szeretné hozni az alkalmazást. Ha egy alkalmazás összes erőforrását egy csoportban helyezi el, akkor mindet együtt kezelheti. Az erőforráscsoport törlésével például az alkalmazáshoz társított összes erőforrást törli. Frissítse ezt az értéket egy egyedi új erőforráscsoport-névvel, például *myResourceGroup*. Ezt az erőforráscsoport-nevet használjuk egy későbbi szakaszban az összes Azure-erőforrás eltávolításához. |
+| `WEBAPP_NAME` | Az alkalmazás neve az alkalmazás állomásneve része lesz az Azure-ban (WEBAPP_NAME. azurewebsites. net) való üzembe helyezéskor. Frissítse ezt az értéket az új App Service alkalmazás egyedi nevével, amely a Java-alkalmazást, például a contosot fogja üzemeltetni. |
+| `REGION` | Egy Azure-régió, ahol az alkalmazás üzemeltetve van, például *westus2*. A régiók listáját az `az account list-locations` paranccsal, a Cloud Shellben vagy a CLI-ben kérheti le. |
 
 ## <a name="deploy-the-app"></a>Az alkalmazás üzembe helyezése
 
@@ -121,14 +121,14 @@ Az üzembe helyezést követően keresse meg az üzembe helyezett alkalmazást a
 
 ![Az Azure-ban futó mintaalkalmazás](./media/app-service-web-get-started-java/java-hello-world-in-browser.png)
 
-**Gratulálunk!** App Service-ben Windows elvégezte az első Java-alkalmazás üzembe helyezését.
+**Gratulálunk!** Üzembe helyezte az első Java-alkalmazást, hogy App Service Windows rendszeren.
 
 [!INCLUDE [cli-samples-clean-up](../../includes/cli-samples-clean-up.md)]
 
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Azure Java fejlesztői erőforrások](/java/azure/)
+> [Azure Java-fejlesztőknek – erőforrások](/java/azure/)
 
 > [!div class="nextstepaction"]
 > [Egyéni tartomány leképezése](app-service-web-tutorial-custom-domain.md)

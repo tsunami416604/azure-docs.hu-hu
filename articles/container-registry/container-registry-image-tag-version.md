@@ -1,63 +1,63 @@
 ---
-title: Címke és a verzió az Azure Container Registry rendszerképek
-description: Ajánlott eljárások a címkézés és a versioning Docker tárolórendszerképek
+title: A címkék és a verziók képei a Azure Container Registry
+description: Ajánlott eljárások a Docker-tároló rendszerképeinek címkézéséhez és verziószámozásához
 services: container-registry
 author: stevelasker
 ms.service: container-registry
 ms.topic: article
 ms.date: 07/10/2019
-ms.author: steve.lasker
-ms.openlocfilehash: bd00fd4f8dd247c766eb34849ecf9de603c5171b
-ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
+ms.author: stevelas
+ms.openlocfilehash: ea7c0831f4ecc345cbcd8a9b8eb6d6566e8c5023
+ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67800392"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68297769"
 ---
-# <a name="recommendations-for-tagging-and-versioning-container-images"></a>Tárolórendszerképek címkézése és verziókezelését javaslatok
+# <a name="recommendations-for-tagging-and-versioning-container-images"></a>A tároló lemezképének címkézésére és verziószámozására vonatkozó javaslatok
 
-Üzembe helyezése tárolórendszerképek leküldése egy tároló-beállításjegyzéket, és ezután telepíti őket, amikor szükség van egy stratégia képcímkézés és verziókezelését. Ez a cikk ismerteti a két megközelítést, és ahol minden megfelelő tároló életciklusa során:
+Amikor egy tároló-beállításjegyzékbe helyezi üzembe a tároló-lemezképek telepítését, majd telepíti őket, szüksége lesz egy, a képcímkézésre és a verziószámozásra vonatkozó stratégiára. Ebből a cikkből megtudhatja, hogyan illeszkedik a tároló életciklusa során a következő két módszerre:
 
-* **A címkék stabil** -jelzi a fő vagy alverziót például újból felhasználja, például címkék *mycontainerimage:1.0*.
-* **Egyedi címkék** – az egyes lemezképek például leküldi a beállításjegyzékbe, egy másik címkét *mycontainerimage:abc123*.
+* **Stabil címkék** – felhasználható címkék, például egy fő vagy alverzió (például *mycontainerimage: 1.0*) jelzése.
+* **Egyedi címkék** – egy másik címkét minden olyan képhez, amelyet egy beállításjegyzékbe küld, például *mycontainerimage: abc123*.
 
-## <a name="stable-tags"></a>Stabil címkék
+## <a name="stable-tags"></a>Stabil Címkék
 
-**Az ajánlás**: Stabil címkék használatával karbantartása **lemezképek kiinduló** esetében a tároló épít. Kerülje a stabil címkékkel rendelkező központi telepítések, hiszen ezen címkék továbbra is kaphat frissítéseket, és éles környezetben lévő inkonzisztenciák megjelentetni.
+**Javaslat**: Használjon stabil címkéket a tárolók alapképeinek karbantartásához. Kerülje a stabil címkékkel való üzembe helyezést, mivel ezek a címkék továbbra is megkapják a frissítéseket, és következetlenségeket vezethetnek be az éles környezetekben.
 
-*A címkék stabil* jelenti azt, hogy a fejlesztők vagy a buildelési rendszert, továbbra is egy adott címkével, és továbbra is frissítéseket lekéréses. Stabil nem jelenti azt, a tartalma szüneteltetve legyenek. Stabil, azt jelenti, a kép stabil a szándéka, hogy verziót kell lennie. Maradjon "stabil", előfordulhat, hogy szolgálja ki biztonsági javítások vagy framework-frissítések alkalmazásához.
+A *stabil címkék* azt jelentik, hogy egy fejlesztő vagy egy összeállítási rendszer továbbra is lehívhat egy adott címkét, amely továbbra is frissítéseket kap. A stabil nem jelenti azt, hogy a tartalom zárolva van. Ehelyett a stabil a rendszerképnek stabilnak kell lennie az adott verzió céljához. A "stabil" maradni a biztonsági javítások vagy a keretrendszer frissítéseinek alkalmazásával lehet kiszolgálni.
 
 ### <a name="example"></a>Példa
 
-A keretrendszer csapat mobilplatform 1.0-s verziója. Tudni fogják, hogy azok fog tegye elérhetővé a frissítéseket, köztük a kisebb. Egy adott fő- és alverzió verzió támogatja az állandó címkéket, két készletnyi stabil címkékkel rendelkeznek.
+A Framework Team-hajók 1,0-es verzióval rendelkeznek. Tudják, hogy frissítéseket küldenek, beleértve a kisebb frissítéseket is. Egy adott fő-és alverzióhoz tartozó stabil címkék támogatásához két stabil címkével rendelkeznek.
 
-* `:1` – a főverzió stabil címkét. `1` a "legújabb" vagy "legutóbbi" 1.* verziót jelöli.
-* `:1.0`– 1.0-s verziója lehetővé teszi a frissítések 1.0 kötést létrehozni, és nem állítható előre 1.1 akkor szabadul fel, amikor egy fejlesztő stabil címkét.
+* `:1`– a főverzió stabil címkéje. `1`a "legújabb" vagy "legújabb" 1. * verziót jelöli.
+* `:1.0`– az 1,0-es verzió stabil címkéje, amely lehetővé teszi a fejlesztők számára, hogy a 1,0-es frissítésekhez kapcsolódjanak, és ne legyenek továbbítva a 1,1-ra a kiadáskor.
 
-A csapata is használ a `:latest` címke, amely a legújabb stabil címke, függetlenül attól, hogy milyen a jelenlegi fő verzió mutat.
+A csapat a `:latest` címkét is használja, amely a legújabb stabil címkére mutat, függetlenül attól, hogy milyen a jelenlegi főverzió.
 
-Amikor alaplemezkép frissítések érhetők el, vagy bármilyen típusú, a keretrendszert, a képeket a stabil címkékkel kiadása karbantartási frissítve lett, hogy a legújabb kivonatoló, amely a legújabb stabil kiadás, azt a verziót jelöli.
+Ha az alapszintű lemezkép frissítései elérhetők, vagy a keretrendszer bármely típusú karbantartási kiadása, a stabil címkékkel rendelkező rendszerképek frissülnek a legújabb kivonatoló értékre, amely az adott verzió legújabb stabil kiadását jelöli.
 
-Ebben az esetben a fő- és alverzió címkék vannak folyamatosan szolgálja ki. Alaplemezkép forgatókönyv lehetővé teszi a lemezkép tulajdonosa szervizelt rendszerképeket biztosít.
+Ebben az esetben a fő és a másodlagos címkéket is folyamatosan szervizeli a rendszer. Alaprendszerkép-forgatókönyv esetén ez lehetővé teszi, hogy a rendszerkép tulajdonosa kiszolgált lemezképeket biztosítson.
 
 ## <a name="unique-tags"></a>Egyedi címkék
 
-**Az ajánlás**: Az egyedi címkékkel **központi telepítések**, különösen olyan környezetben, több csomóponton méretezése sikerült. Valószínűleg érdemes szándékos összetevők megegyező verziójának telepítéséhez. Ha a tároló újraindul, vagy az orchestrator elvégzi a horizontális felskálázást további példányok, a gazdagépek nem fog véletlenül lekéréses egy újabb verzióra, a többi csomópont konzisztens.
+**Javaslat**: Egyedi címkéket használhat a **központi telepítésekhez**, különösen olyan környezetben, amely több csomópontra is méretezhető. Valószínűleg az összetevők konzisztens verziójának szándékos telepítését szeretné használni. Ha a tároló újraindul, vagy egy Orchestrator több példányra van kibővítve, a gazdagépek nem fognak véletlenül újabb verziót lekérni, és nem konzisztensek a többi csomóponttal.
 
-Egyedi címkézés egyszerűen azt jelenti, hogy minden rendszerképet leküldte a tárolójegyzékbe egyedi kódot. A címkék nem újra felhasználhatók. Van néhány minták egyedi címkéket, beleértve a létrehozásához követheti:
+Az egyedi címkézés egyszerűen azt jelenti, hogy a beállításjegyzékbe leküldött összes rendszerkép egyedi címkével rendelkezik. A címkék nem lesznek újra felhasználva. Az egyedi címkék létrehozásához több minta is készíthető, többek között a következők:
 
-* **Dátum-idő bélyeg** – Ez a megközelítés akkor viszonylag egyszerű, mivel egyértelműen mutatja, ha a rendszerkép lett létrehozva. De hogyan kapcsolható vissza a buildelési rendszer? Keresse meg a build egy időben végrehajtott van? Milyen időzónában tartózkodik? Korlátokon vannak belül minden build rendszerét az UTC Időzóna?
-* **A Git commit** – a módszer jól használható, amíg alaplemezkép frissítések támogató megkezdése. Ha egy rendszerkép alapszintű frissítésének történik, az összeállítási rendszer elindít az azonos Git véglegesítéshez, mint a korábbi build. Azonban az alaprendszerképet rendelkezik új tartalmat. Általánosságban véve a Git commit biztosít egy *félig*-címke stabil.
-* **Jegyzékfájl kivonatoló** – minden tárolórendszerképet fel leküldéssel továbbíthat egy tárolóregisztrációs adatbázisba társítva egy egyedi SHA-256 kivonatoló vagy kivonatoló által azonosított-jegyzék,. Egyedi, míg a kivonatoló hosszú, nehezen olvasható, de a build-környezete predikátumban.
-* **Azonosító létrehozása** – Ez a beállítás ajánlott lehet, mivel valószínűleg növekményes, és lehetővé teszi az összetevők és a naplók keresése a meghatározott build vissza a korrelációját. Azonban például egy jegyzékfájl kivonatoló lehet nehezen olvasható egy emberi.
+* **Dátum-idő bélyegző** – ez a megközelítés meglehetősen gyakori, mivel a rendszerkép létrehozásakor egyértelműen megtudhatja, hogy mikor készült. De hogyan lehet összekapcsolni a Build-rendszerrel? Meg kell keresnie az adott időpontban befejezett buildet? Milyen időzóna van? Az összes Build rendszerét UTC-re kalibrálták?
+* **Git** -véglegesítés – ez a megközelítés csak az alapszintű rendszerkép frissítéseinek támogatásának megkezdése után működik. Ha egy alaprendszerkép frissítése történik, a Build rendszer a korábbi buildtel megegyező git-véglegesítés után indul el. Az alaprendszerkép azonban új tartalommal rendelkezik. Általánosságban elmondható, hogy a git-véglegesítés egy *félig*stabil címkét biztosít.
+* **Manifest Digest** – a tároló-beállításjegyzékbe leküldött összes tároló-rendszerkép egy jegyzékfájlhoz van társítva, amely egyedi SHA-256 kivonattal vagy kivonattal van azonosítva. Míg egyedi, a kivonat hosszú, nehezen olvasható és nem korrelál a Build-környezettel.
+* **Build azonosítója** – ez a lehetőség lehet a legjobb megoldás, mivel ez valószínűleg növekményes, és lehetővé teszi, hogy az összes összetevő és napló megtalálásához visszakapcsolja az adott buildet. A manifest-kivonatokhoz hasonlóan előfordulhat, hogy az embernek nem kell elolvasnia a problémát.
 
-  Ha a szervezete több buildelési rendszert, a címke az összeállítási rendszer nevű előtag ezzel a beállítással egy variációja: `<build-system>-<build-id>`. Például sikerült különbséget tenni a buildeket, az API-csapat Jenkins buildelési rendszert, és a webes csapata Azure folyamatokat hozhat létre a rendszer.
+  Ha a szervezet több Build-rendszerrel rendelkezik, a címke előállítása a létrehozási rendszer nevével a következő beállítás egyik `<build-system>-<build-id>`változata:. Megkülönböztetni például az API csapat Jenkins Build rendszerét és a webes csapat Azure-folyamatait.
 
 ## <a name="next-steps"></a>További lépések
 
-A jelen cikk fogalmait részletes tárgyalását lásd: a következő blogbejegyzésben: [Docker címkézés: Ajánlott eljárások a docker-rendszerképek címkézése és verziókezelését](https://stevelasker.blog/2018/03/01/docker-tagging-best-practices-for-tagging-and-versioning-docker-images/).
+Az ebben a cikkben szereplő fogalmak részletesebb ismertetését a Docker-címkézést követő [blogbejegyzésben találja: Ajánlott eljárások a Docker-rendszerképek](https://stevelasker.blog/2018/03/01/docker-tagging-best-practices-for-tagging-and-versioning-docker-images/)címkézéséhez és verziószámozásához.
 
-Annak érdekében, teljesítménnyel és költséghatékonysággal használhatja az Azure container registry, lásd: [ajánlott eljárások az Azure Container Registry](container-registry-best-practices.md).
+Az Azure Container Registry teljesítményének és költséghatékony használatának maximalizálása érdekében tekintse meg az [ajánlott eljárásokat a Azure Container Registryhoz](container-registry-best-practices.md).
 
 <!-- IMAGES -->
 

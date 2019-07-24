@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: Figma felhasználók automatikus átadása az Azure Active Directory konfigurálása |} A Microsoft Docs'
-description: Megtudhatja, hogyan konfigurálhatja az Azure Active Directoryban történő automatikus kiépítésének és megszüntetésének Figma felhasználói fiókokat.
+title: 'Oktatóanyag: A Figma automatikus felhasználó-kiépítés konfigurálása a Azure Active Directoryrel | Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhatja a Azure Active Directoryt, hogy automatikusan kiépítse és kiépítse a felhasználói fiókokat a Figma.
 services: active-directory
 documentationcenter: ''
 author: zchia
@@ -8,159 +8,159 @@ writer: zchia
 manager: beatrizd
 ms.assetid: na
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2019
 ms.author: zhchia
-ms.openlocfilehash: b71aa6709b1c93688ea3eece4ce3f4066f9a6b7a
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: 38ebba8803e584e9b5d1179281fcff3a3f98d5a4
+ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67673170"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67848222"
 ---
-# <a name="tutorial-configure-figma-for-automatic-user-provisioning"></a>Oktatóanyag: Felhasználók automatikus átadása Figma konfigurálása
+# <a name="tutorial-configure-figma-for-automatic-user-provisioning"></a>Oktatóanyag: Figma konfigurálása automatikus felhasználó-kiépítési szolgáltatáshoz
 
-Ez az oktatóanyag célja a lépéseket kell végrehajtania a Figma és Azure Active Directory (Azure AD) konfigurálása az Azure AD automatikus kiépítésének és megszüntetésének felhasználók és csoportok a Figma bemutatása.
+Az oktatóanyag célja annak bemutatása, hogy milyen lépéseket kell végrehajtani a Figma és a Azure Active Directory (Azure AD) szolgáltatásban az Azure AD konfigurálásához, hogy a felhasználók és/vagy csoportok automatikusan kiépítsék és kiépítsék a Figma.
 
 > [!NOTE]
-> Ez az oktatóanyag az Azure AD-felhasználó Provisioning Service-ra épülő összekötők ismerteti. Ez a szolgáltatás leírása, hogyan működik és gyakran ismételt kérdések a fontos tudnivalókat tartalmaz [automatizálhatja a felhasználókiépítés és -átadás megszüntetése SaaS-alkalmazásokban az Azure Active Directory](../manage-apps/user-provisioning.md).
+> Ez az oktatóanyag az Azure AD-beli felhasználói kiépítési szolgáltatásra épülő összekötőt ismerteti. A szolgáltatás működésének, működésének és gyakori kérdéseinek részletes ismertetését lásd: a felhasználók üzembe helyezésének [automatizálása és az SaaS-alkalmazások kiépítése Azure Active Directory használatával](../manage-apps/user-provisioning.md).
 >
-> Ez az összekötő jelenleg nyilvános előzetes verzióban érhető el. Az általános Microsoft Azure használati feltételek az előzetes verziójú funkciók további információkért lásd: [kiegészítő használati feltételei a Microsoft Azure Előzetesekre vonatkozó](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Ez az összekötő jelenleg nyilvános előzetes verzióban érhető el. Az előzetes verziójú funkciók általános Microsoft Azure használati feltételeivel kapcsolatos további információkért tekintse meg a Microsoft Azure-előnézetek [kiegészítő használati](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)feltételeit.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az ebben az oktatóanyagban ismertetett forgatókönyv feltételezi, hogy már rendelkezik a következő előfeltételek vonatkoznak:
+Az oktatóanyagban ismertetett forgatókönyv feltételezi, hogy már rendelkezik a következő előfeltételekkel:
 
 * Egy Azure AD-bérlő.
-* [A bérlő egy Figma](https://www.figma.com/pricing/).
-* Egy felhasználói fiókot a Figma rendszergazdai jogosultságokkal rendelkezik.
+* [Egy Figma-bérlő](https://www.figma.com/pricing/).
+* Rendszergazdai jogosultságokkal rendelkező felhasználói fiók a Figma-ben.
 
-## <a name="assign-users-to-figma"></a>Felhasználók hozzárendelése Figma.
-Az Azure Active Directory egy fogalom, más néven hozzárendeléseket használatával határozza meg, hogy mely felhasználók kell kapnia a kiválasztott alkalmazásokhoz való hozzáférés. Felhasználók automatikus átadása kontextusában csak a felhasználók, illetve az Azure AD-alkalmazáshoz hozzárendelt csoportok vannak szinkronizálva.
+## <a name="assign-users-to-figma"></a>Felhasználók kiosztása a Figma.
+Azure Active Directory a hozzárendelések nevű koncepció használatával határozza meg, hogy mely felhasználók kapnak hozzáférést a kiválasztott alkalmazásokhoz. Az automatikus felhasználó-kiépítés kontextusában csak az Azure AD-alkalmazáshoz hozzárendelt felhasználók és/vagy csoportok lesznek szinkronizálva.
 
-Felhasználók automatikus kiépítés engedélyezése és konfigurálása, mielőtt, meg kell határoznia, melyik felhasználók, illetve a csoportok az Azure ad-ben Figma hozzáférésre van szükségük. Ha úgy döntött, hozzárendelheti a felhasználók és csoportok Figma utasításokat követve:
+A felhasználók automatikus üzembe helyezésének konfigurálása és engedélyezése előtt döntse el, hogy az Azure AD mely felhasználóinak és/vagy csoportjai számára szükséges a Figma való hozzáférés. Miután eldöntötte, ezeket a felhasználókat és/vagy csoportokat hozzárendelheti a Figma az alábbi utasításokat követve:
  
-* [Egy felhasználó vagy csoport hozzárendelése egy vállalati alkalmazás](../manage-apps/assign-user-or-group-access-portal.md)
-## <a name="important-tips-for-assigning-users-to-figma"></a>Felhasználók hozzárendelése Figma fontos tippek
+* [Felhasználó vagy csoport társítása vállalati alkalmazáshoz](../manage-apps/assign-user-or-group-access-portal.md)
+## <a name="important-tips-for-assigning-users-to-figma"></a>Fontos Tippek a felhasználók Figma való hozzárendeléséhez
 
- * Javasoljuk, hogy egyetlen Azure AD-felhasználó van rendelve Figma a felhasználók automatikus konfiguráció teszteléséhez. További felhasználók és csoportok később is rendelhető.
+ * Azt javasoljuk, hogy egyetlen Azure AD-felhasználó legyen hozzárendelve a Figma-hoz az automatikus felhasználó-kiépítési konfiguráció teszteléséhez. Később további felhasználókat és/vagy csoportokat is hozzá lehet rendelni.
 
-* Amikor egy felhasználó hozzárendelése Figma, a hozzárendelés párbeszédpanelen válassza ki bármely érvényes alkalmazás-specifikus szerepkört (ha elérhető). Az alapértelmezett hozzáférési szerepkörrel rendelkező felhasználók ki vannak zárva, a létesítési.
+* Amikor Figma rendel hozzá egy felhasználóhoz, a hozzárendelés párbeszédpanelen ki kell választania bármely érvényes alkalmazásspecifikus szerepkört (ha elérhető). Az alapértelmezett hozzáférési szerepkörrel rendelkező felhasználók ki vannak zárva a kiépítés alól.
 
-## <a name="set-up-figma-for-provisioning"></a>Üzembe helyezés Figma beállítása
+## <a name="set-up-figma-for-provisioning"></a>Figma beállítása a kiépítés számára
 
-Az Azure AD-felhasználók automatikus Figma konfigurálja, mielőtt kell Figma lévő egyes kiépítési információk lekéréséhez.
+Az Azure AD-vel való automatikus Figma konfigurálása előtt le kell kérnie néhány kiépítési információt a Figma-ből.
 
-1. Jelentkezzen be a [Figma felügyeleti konzol](https://www.Figma.com/). Kattintson a fogaskerék ikonra a bérlő mellett.
+1. Jelentkezzen be a [Figma felügyeleti konzolra](https://www.Figma.com/). Kattintson a bérlő melletti fogaskerék ikonra.
 
     ![FigmaFigma-employee-provision](media/Figma-provisioning-tutorial/image0.png)
 
-2. Navigáljon a **általános > jelentkezzen be a beállítások frissítése**.
+2. Lépjen az **általános > frissítési napló beállításai elemre**.
 
     ![FigmaFigma-employee-provision](media/Figma-provisioning-tutorial/figma03.png)
 
-3. Másolás a **Bérlőazonosító**. Ezt az értéket fogja segítségével hozza létre az SCIM végponti URL-cím adható meg, a **bérlői URL-cím** mezőt a kiépítés lapon Figma alkalmazását az Azure Portalon.
+3. Másolja a **bérlő azonosítóját**. Ezt az értéket fogja használni a SCIM-végpont URL-címének megadásához  a Figma alkalmazás létesítés lapján a Azure Portal.
 
-    ![Figma jogkivonat létrehozása](media/Figma-provisioning-tutorial/figma-tenantid.png)
+    ![Figma-létrehozási jogkivonat](media/Figma-provisioning-tutorial/figma-tenantid.png)
 
-4. Görgessen lefelé, és kattintson a **API jogkivonat készítése**.
+4. Görgessen le, és kattintson az **API-jogkivonat**előállítása elemre.
 
-    ![Figma jogkivonat létrehozása](media/Figma-provisioning-tutorial/token.png)
+    ![Figma-létrehozási jogkivonat](media/Figma-provisioning-tutorial/token.png)
 
-5. Másolás a **API-jogkivonat** értéket. Ezt az értéket fog megadni az **titkos jogkivonat** mezőt a kiépítés lapon Figma alkalmazását az Azure Portalon. 
+5. Másolja az **API-jogkivonat** értékét. Ez az érték a Figma alkalmazás üzembe helyezés lapjának **titkos jogkivonat** mezőjében jelenik meg a Azure Portal. 
 
-    ![Figma jogkivonat létrehozása](media/Figma-provisioning-tutorial/figma04.png)
+    ![Figma-létrehozási jogkivonat](media/Figma-provisioning-tutorial/figma04.png)
 
-## <a name="add-figma-from-the-gallery"></a>Figma hozzáadása a katalógusból
+## <a name="add-figma-from-the-gallery"></a>Figma hozzáadása a gyűjteményből
 
-Az Azure AD-felhasználók automatikus Figma konfigurálásához szüksége az Azure AD alkalmazáskatalógusában Figma hozzáadása a felügyelt SaaS-alkalmazások listája.
+Az Azure AD-vel való automatikus Figma konfigurálásához hozzá kell adnia a Figma az Azure AD Application Gallery-ből a felügyelt SaaS-alkalmazások listájához.
 
-1. Az a  **[az Azure portal](https://portal.azure.com)** , a bal oldali navigációs panelen válassza ki a **Azure Active Directory**.
+1. A **[Azure Portal](https://portal.azure.com)** a bal oldali navigációs panelen válassza a **Azure Active Directory**lehetőséget.
 
     ![Az Azure Active Directory gomb](common/select-azuread.png)
 
-2. Lépjen a **vállalati alkalmazások**, majd válassza ki **minden alkalmazás**.
+2. Lépjen a **vállalati alkalmazások**elemre, majd válassza a **minden alkalmazás**lehetőséget.
 
     ![A vállalati alkalmazások panelen](common/enterprise-applications.png)
 
-3. Új alkalmazás hozzáadásához válassza a **új alkalmazás** gombra a panel tetején.
+3. Új alkalmazás hozzáadásához kattintson a panel tetején található **új alkalmazás** gombra.
 
     ![Az új alkalmazás gomb](common/add-new-app.png)
 
-4. A Keresés mezőbe írja be a **Figma**válassza **Figma** az eredmények panelen, majd kattintson a a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
+4. A keresőmezőbe írja be a **Figma**kifejezést, válassza az **Figma** elemet az eredmények panelen, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
 
-    ![Az eredmények listájában Figma](common/search-new-app.png)
+    ![Figma az eredmények listájában](common/search-new-app.png)
 
-## <a name="configuring-automatic-user-provisioning-to-figma"></a>Figma történő automatikus felhasználókiépítés konfigurálása 
+## <a name="configuring-automatic-user-provisioning-to-figma"></a>Automatikus felhasználó-kiépítés beállítása a Figma 
 
-Ez a szakasz végigvezeti az Azure AD létesítési szolgáltatás létrehozása, frissítése és tiltsa le a felhasználók konfigurálásáról és/vagy az Azure AD-felhasználói és/vagy a csoport-hozzárendelések alapján csoportosítja a Figma.
+Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálásának lépésein, hogy az Azure AD-ben felhasználói és/vagy Figma alapuló felhasználókat és/vagy csoportokat hozzon létre, frissítsen és tiltsa le.
 
 > [!TIP]
-> Előfordulhat, hogy meg az SAML-alapú egyszeri bejelentkezés az Figma engedélyezése, a biztonsági utasítások megadott a [Figma egyszeri bejelentkezéses oktatóanyag](figma-tutorial.md). Egyszeri bejelentkezés konfigurálható függetlenül, hogy a felhasználók automatikus átadása, abban az esetben, ha e két szolgáltatás segítőosztályok egymással.
+> Azt is megteheti, hogy engedélyezi az SAML-alapú egyszeri bejelentkezést a Figma számára, az [Figma egyszeri bejelentkezés oktatóanyagában](figma-tutorial.md)megadott utasításokat követve. Az egyszeri bejelentkezés az automatikus felhasználó-kiépítés függetlenül is konfigurálható, bár ez a két funkció egymáshoz tartozik.
 
-### <a name="to-configure-automatic-user-provisioning-for-figma--in-azure-ad"></a>Konfigurálhatja a felhasználók automatikus átadása Figma az Azure AD-ben:
+### <a name="to-configure-automatic-user-provisioning-for-figma--in-azure-ad"></a>Az automatikus felhasználó-kiépítés konfigurálása a Figma az Azure AD-ben:
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com). Válassza ki **vállalati alkalmazások**, majd **minden alkalmazás**.
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com). Válassza a **vállalati alkalmazások**lehetőséget, majd válassza **a minden alkalmazás**lehetőséget.
 
-    ![Vállalati alkalmazások panelen](common/enterprise-applications.png)
+    ![Vállalati alkalmazások panel](common/enterprise-applications.png)
 
-2. Az alkalmazások listájában jelölje ki a **Figma**.
+2. Az alkalmazások listában válassza a **Figma**lehetőséget.
 
-    ![Az alkalmazások listáját a Figma hivatkozásra](common/all-applications.png)
+    ![Az Figma hivatkozás az alkalmazások listájában](common/all-applications.png)
 
-3. Válassza ki a **kiépítési** fülre.
+3. Válassza ki  a kiépítés lapot.
 
-    ![Kiépítés lapon](common/provisioning.png)
+    ![Kiépítés lap](common/provisioning.png)
 
-4. Állítsa be a **Kiépítési mód** való **automatikus**.
+4. Állítsa a **kiépítési módot** **automatikus**értékre.
 
-    ![Kiépítés lapon](common/provisioning-automatic.png)
+    ![Kiépítés lap](common/provisioning-automatic.png)
 
-5. Alatt a **rendszergazdai hitelesítő adataival** szakaszban bemeneti `https://www.figma.com/scim/v2/<TenantID>` a **bérlői URL-cím** ahol **TenantID** lekért Figma korábban megadott érték. Bemenet a **API-jogkivonat** értékét **titkos jogkivonat**. Kattintson a **kapcsolat tesztelése** annak biztosítása érdekében az Azure AD Figma csatlakozhat. Ha a kapcsolat hibája esetén, győződjön meg arról, Figma fiókja rendszergazdai engedélyekkel rendelkező, és próbálkozzon újra.
+5. A **rendszergazdai hitelesítő adatok** szakaszban adja `https://www.figma.com/scim/v2/<TenantID>` meg a **bérlői URL-címet** , ahol a **TenantID** az az érték, amelyet korábban a Figma adott vissza. Adja meg az **API-jogkivonat** értékét a titkos jogkivonatban. Kattintson a **kapcsolat tesztelése** lehetőségre, hogy az Azure ad képes legyen csatlakozni a Figma. Ha a kapcsolat meghiúsul, győződjön meg arról, hogy a Figma-fiókja rendszergazdai jogosultságokkal rendelkezik, és próbálkozzon újra.
 
-    ![Bérlői URL-cím + jogkivonat](common/provisioning-testconnection-tenanturltoken.png)
+    ![Bérlői URL + token](common/provisioning-testconnection-tenanturltoken.png)
 
-8. Az a **értesítő e-mailt** mezőbe írja be az e-mail-címét egy személyt vagy csoportot, akik kell üzembe helyezési hiba értesítéseket fogadni, és jelölje be a jelölőnégyzetet - **e-mail-értesítés küldése, ha hiba történik**.
+8. Az **értesítési e-mail** mezőben adja meg egy olyan személy vagy csoport e-mail-címét, akinek meg kell kapnia a kiépítési hibákra vonatkozó értesítéseket, és jelölje be a jelölőnégyzetet – **e-mail-értesítés küldése hiba**esetén.
 
     ![Értesítő E-mail](common/provisioning-notification-email.png)
 
 9. Kattintson a **Save** (Mentés) gombra.
 
-10. Alatt a **leképezések** szakaszban jelölje be **szinkronizálása az Azure Active Directory-felhasználók a Figma**.
+10. A **leképezések** szakaszban válassza a **Azure Active Directory felhasználók szinkronizálása a Figma**lehetőséget.
 
-    ![Figma Felhasználóleképezéseket](media/Figma-provisioning-tutorial/figma05.png)
+    ![Figma felhasználói leképezések](media/Figma-provisioning-tutorial/figma05.png)
 
-11. Tekintse át a Figma a az Azure AD-ből szinkronizált felhasználói attribútumok a **attribútumleképzés** szakaszban. A kiválasztott attribútumok **megfelelést kiváltó** tulajdonságok segítségével felel meg a frissítési műveletek Figma levő felhasználói fiókokat. Válassza ki a **mentése** gombra kattintva véglegesítse a módosításokat.
+11. Tekintse át az Azure AD-ből szinkronizált felhasználói attribútumokat az **attribútum** -hozzárendelési szakaszban található Figma. Az **egyeztetési** tulajdonságokként kiválasztott attribútumok a Figma felhasználói fiókjainak a frissítési műveletekhez való megfeleltetésére szolgálnak. A módosítások elvégzéséhez kattintson a **Save (Mentés** ) gombra.
 
-    ![Figma felhasználói attribútumok](media/Figma-provisioning-tutorial/figma06.png)
+    ![Figma felhasználói attribútumai](media/Figma-provisioning-tutorial/figma06.png)
 
-12. Hatókörszűrő konfigurálásához tekintse meg a következő utasításokat a [Scoping szűrő oktatóanyag](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md).
+12. A hatóköri szűrők konfigurálásához tekintse meg az alábbi utasításokat a [hatókör szűrője oktatóanyagban](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md).
 
-13. Az Azure AD létesítési szolgáltatás Figma engedélyezéséhez módosítsa a **üzembe helyezési állapotra** való **a** a a **beállítások** szakaszban.
+13. Az Azure AD-kiépítési szolgáltatás Figma való engedélyezéséhez módosítsa a kiépítési **állapotot** a **Beállítások** szakaszban.
 
-    ![Kiépítési állapot bekapcsolt](common/provisioning-toggle-on.png)
+    ![Kiépítés állapota bekapcsolva](common/provisioning-toggle-on.png)
 
-14. A felhasználók és/vagy a kívánt csoportok definiálása Figma való kiépítéséhez válassza ki a kívánt értékeket a **hatókör** a a **beállítások** szakaszban.
+14. Adja meg a Figma kiépíteni kívánt felhasználókat és/vagy csoportokat a Settings ( **Beállítások** ) szakasz **hatókörében** a kívánt értékek kiválasztásával.
 
-    ![Hatókör-kiépítés](common/provisioning-scope.png)
+    ![Kiépítési hatókör](common/provisioning-scope.png)
 
-15. Ha készen áll rendelkezésre, kattintson a **mentése**.
+15. Ha készen áll a létesítésre, kattintson a **Mentés**gombra.
 
-    ![Üzembe helyezési konfiguráció mentése](common/provisioning-configuration-save.png)
+    ![Kiépítési konfiguráció mentése](common/provisioning-configuration-save.png)
 
-Ez a művelet elindítja a kezdeti szinkronizálás, az összes olyan felhasználó és/vagy meghatározott csoportoknak **hatókör** a a **beállítások** szakaszban. A kezdeti szinkronizálás végrehajtásához, mint az ezt követő szinkronizálások, amely körülbelül 40 percenként történik, amennyiben az Azure AD létesítési szolgáltatás fut-e több időt vesz igénybe. Használhatja a **szinkronizálás részleteivel** szakasz előrehaladásának figyeléséhez, és kövesse a hivatkozásokat kiépítés tevékenységgel kapcsolatos jelentés, amely az Azure AD létesítési szolgáltatás a Figma által végrehajtott összes műveletet ismerteti.
+Ez a művelet elindítja a **Beállítások** szakasz hatókörében meghatározott összes felhasználó és/vagy  csoport kezdeti szinkronizálását. A kezdeti szinkronizálás hosszabb időt vesz igénybe, mint a későbbi szinkronizálások, amelyek körülbelül 40 percenként történnek, amíg az Azure AD kiépítési szolgáltatás fut. A **szinkronizálás részletei** szakasz segítségével figyelheti a folyamat előrehaladását, és követheti a kiépítési tevékenységre mutató hivatkozásokat, amelyek az Azure ad-kiépítési szolgáltatás által a Figma-on végrehajtott összes műveletet ismertetik.
 
 Az Azure AD létesítési naplók olvasása további információkért lásd: [-jelentések automatikus felhasználói fiók kiépítése](../manage-apps/check-status-user-account-provisioning.md).
 
 ## <a name="additional-resources"></a>További források
 
-* [Felhasználói fiók kiépítése a vállalati alkalmazások kezelése](../manage-apps/configure-automatic-user-provisioning-portal.md)
+* [Felhasználói fiók üzembe helyezésének kezelése vállalati alkalmazásokhoz](../manage-apps/configure-automatic-user-provisioning-portal.md)
 * [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>További lépések
 
-* [Tekintse át a naplók és jelentések készítése a tevékenység kiépítése](../manage-apps/check-status-user-account-provisioning.md)
+* [Megtudhatja, hogyan tekintheti át a naplókat, és hogyan kérhet jelentéseket a kiépítési tevékenységekről](../manage-apps/check-status-user-account-provisioning.md)

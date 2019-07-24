@@ -1,6 +1,6 @@
 ---
-title: 'Az Azure Active Directory tartományi szolgáltatások: A csoportházirend a felügyelt tartomány felügyeletéhez |} A Microsoft Docs'
-description: Csoportházirend felügyelete az Azure Active Directory Domain Services által felügyelt tartományokhoz
+title: 'Azure Active Directory Domain Services: Csoportházirend felügyelete | Microsoft Docs'
+description: Csoportházirend felügyelete Azure Active Directory Domain Services felügyelt tartományokban
 services: active-directory-ds
 documentationcenter: ''
 author: iainfoulds
@@ -15,118 +15,118 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/13/2019
 ms.author: iainfou
-ms.openlocfilehash: 3776ec6fd60ad888102cbc4992572516386fede2
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: c7b32885fdb3cf4f3e584c916d6b234fff54bfc4
+ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67473108"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68234031"
 ---
-# <a name="administer-group-policy-on-an-azure-ad-domain-services-managed-domain"></a>Az Azure AD tartományi szolgáltatásokkal felügyelt tartományban a Csoportházirend-kezelése
-Az Azure Active Directory Domain Services beépített csoportházirend-objektumok (GPO) tartalmazza a "AADDC felhasználók" és "AADDC számítógépek" tárolók. Testre szabhatja a beépített csoportházirend-objektumokat a csoportházirend a felügyelt tartományon. Az "AAD DC rendszergazdák" csoport tagjai ezenkívül a felügyelt tartomány hozhat létre saját egyéni szervezeti egységekhez. Azok is egyéni csoportházirend-objektumok létrehozásához, és hozzárendelheti őket az alábbi egyéni szervezeti egységek. Az "AAD DC rendszergazdák" csoportba tartozó felhasználók kapnak a felügyelt tartomány csoportházirend felügyeleti jogosultságokkal.
+# <a name="administer-group-policy-on-an-azure-ad-domain-services-managed-domain"></a>Csoportházirend felügyelete Azure AD Domain Services felügyelt tartományon
+A Azure Active Directory Domain Services beépített Csoportházirend objektumokat (GPO-kat) tartalmaz a "AADDC Users" és a "AADDC Computers" tárolók számára. Ezeket a beépített csoportházirend-objektumokat testreszabhatja a felügyelt tartomány Csoportházirend konfigurálásához. Emellett az "HRE DC-rendszergazdák" csoport tagjai létrehozhatják saját egyéni szervezeti egységeket a felügyelt tartományban is. Emellett egyéni csoportházirend-objektumokat is létrehozhatnak, és összekapcsolhatják ezeket az egyéni szervezeti egységeket. Az "HRE DC rendszergazdák" csoportba tartozó felhasználók Csoportházirend felügyeleti jogosultságokat kapnak a felügyelt tartományon.
 
 [!INCLUDE [active-directory-ds-prerequisites.md](../../includes/active-directory-ds-prerequisites.md)]
 
 ## <a name="before-you-begin"></a>Előkészületek
-A cikkben szereplő feladatok elvégzéséhez szüksége:
+A cikkben felsorolt feladatok elvégzéséhez a következőkre lesz szüksége:
 
-1. Egy érvényes **Azure-előfizetés**.
-2. Egy **Azure AD-címtár** -vagy az egy helyszíni címtár vagy egy csak felhőalapú címtárral szinkronizálja.
-3. **Az Azure AD Domain Services** engedélyezve kell lennie az Azure AD-címtárban. Ha még nem tette, minden ismertetett feladatok végrehajtásával a [a kezdeti lépések útmutatóban](create-instance.md).
-4. A **tartományhoz csatlakoztatott virtuális gép** , amelyről felügyelheti az Azure AD tartományi szolgáltatásokkal felügyelt tartományban. Ha egy virtuális gép nem rendelkezik, az összes című cikkben ismertetett feladatok végrehajtásával [Windows virtuális gépek csatlakoztatása felügyelt tartományhoz](active-directory-ds-admin-guide-join-windows-vm.md).
-5. A hitelesítő adatait kell egy **felhasználói fiók, az "AAD DC rendszergazdák" csoportba tartozó** a címtárban, a felügyelt tartomány felügyeletéhez a csoportházirend.
+1. Érvényes **Azure-előfizetés**.
+2. Egy **Azure ad-címtár** – szinkronizálva van egy helyszíni címtárral vagy egy csak felhőalapú címtárral.
+3. **Azure ad Domain Services** engedélyezni kell az Azure ad-címtárat. Ha még nem tette meg, kövesse az [első lépések útmutatóban](create-instance.md)ismertetett összes feladatot.
+4. Egy **tartományhoz csatlakoztatott virtuális gép** , amelyről felügyeli a Azure ad Domain Services felügyelt tartományt. Ha nem rendelkezik ilyen virtuális géppel, hajtsa végre a [Windows rendszerű virtuális gép csatlakoztatása felügyelt tartományhoz](active-directory-ds-admin-guide-join-windows-vm.md)című cikkben ismertetett lépéseket.
+5. Szüksége lesz egy olyan felhasználói fiók hitelesítő adataira, amely a címtárban található **"HRE DC Administrators" csoportjába tart** , a felügyelt tartomány csoportházirend felügyeletéhez.
 
 <br>
 
-## <a name="task-1---provision-a-domain-joined-virtual-machine-to-remotely-administer-group-policy-for-the-managed-domain"></a>1\. feladat – távoli felügyeletéhez a felügyelt tartományhoz tartozó csoportházirend tartományhoz csatlakoztatott virtuális gép kiépítése
-Az Azure AD Domain Services felügyelt tartomány távolról a jól ismert az Active Directory felügyeleti eszközök például az Active Directory felügyeleti központ (ADAC) vagy AD PowerShell segítségével is felügyelhetők. Hasonlóképpen a felügyelt tartományhoz tartozó csoportházirend felügyelhetők távolról a csoportházirend felügyeleti eszközök használatával.
+## <a name="task-1---provision-a-domain-joined-virtual-machine-to-remotely-administer-group-policy-for-the-managed-domain"></a>1\. feladat – tartományhoz csatlakoztatott virtuális gép kiépítése a felügyelt tartomány Csoportházirend távoli felügyeletéhez
+Azure AD Domain Services felügyelt tartományok távolról kezelhetők a jól ismert Active Directory felügyeleti eszközök, például a Active Directory felügyeleti központ (ADAC) vagy az AD PowerShell használatával. Hasonlóképpen, a felügyelt tartomány Csoportházirend a Csoportházirend felügyeleti eszközök használatával távolról is felügyelhetők.
 
-Az Azure AD-címtár rendszergazdái nem rendelkezik jogosultságokkal a tartományvezérlők a távoli asztalon keresztül felügyelt tartományon való kapcsolódáshoz. Az "AAD DC rendszergazdák" csoport tagjai felügyelhetik a csoportházirend a felügyelt tartományok távolról. A felügyelt tartományhoz csatlakoztatott Windows Server-ügyfél számítógépen használhatják a csoportházirend-eszközök. A csoportházirend eszközei a Csoportházirend kezelése a Windows Server és a felügyelt tartományhoz csatlakoztatott ügyfélgépek választható szolgáltatás részeként is telepíthető.
+Az Azure AD-címtár rendszergazdái nem rendelkeznek jogosultságokkal a felügyelt tartományhoz tartozó tartományvezérlőkön való kapcsolódáshoz Távoli asztalon keresztül. Az "HRE DC rendszergazdák" csoport tagjai távolról felügyelhetik Csoportházirend felügyelt tartományokhoz. Használhatják Csoportházirend eszközöket a felügyelt tartományhoz csatlakoztatott Windows Server-vagy ügyfélszámítógép-számítógépen. Csoportházirend eszközök a felügyelt tartományhoz csatlakoztatott Windows Server-és ügyfélszámítógépeken a Csoportházirend felügyelet választható funkciójának részeként telepíthetők.
 
-Az első feladatra, hogy a felügyelt tartományhoz csatlakozó Windows Server virtuális gép kiépítése. Útmutatásért tekintse meg a című cikkben [Windows Server virtuális gép csatlakoztatása az Azure AD tartományi szolgáltatások által felügyelt tartományokhoz](active-directory-ds-admin-guide-join-windows-vm.md).
+Az első feladat a felügyelt tartományhoz csatlakoztatott Windows Server rendszerű virtuális gép kiépítése. Útmutatásért tekintse meg a [Windows Server rendszerű virtuális gép csatlakoztatása Azure ad Domain Services felügyelt tartományhoz](active-directory-ds-admin-guide-join-windows-vm.md)című cikket.
 
-## <a name="task-2---install-group-policy-tools-on-the-virtual-machine"></a>2\. feladat – a virtuális gép telepítése csoportházirend-eszközök
-A következő lépésekkel telepítse a csoport házirend felügyeleti eszközeit a tartományhoz csatlakoztatott virtuális gépen.
+## <a name="task-2---install-group-policy-tools-on-the-virtual-machine"></a>2\. feladat – Csoportházirend eszközök telepítése a virtuális gépre
+A következő lépések végrehajtásával telepítse a Csoportházirend felügyeleti eszközöket a tartományhoz csatlakoztatott virtuális gépre.
 
-1. Keresse meg az Azure Portalon. Kattintson a **összes erőforrás** a bal oldali panelen. Keresse meg és kattintson a virtuális gép az 1. feladatban létrehozott.
-2. Kattintson a **Connect** gomb az Áttekintés lapon. Egy Remote Desktop Protocol (.rdp) fájlt a rendszer létrehoz és letölt.
+1. Navigáljon a Azure Portal. Kattintson az **összes erőforrás** elemre a bal oldali panelen. Keresse meg és kattintson arra a virtuális gépre, amelyet az 1. feladatban hozott létre.
+2. Kattintson a **kapcsolat** gombra az Áttekintés lapon. A rendszer létrehoz és letölt egy RDP protokoll (. rdp) fájlt.
 
-    ![Windows virtuális gép eléréséhez](./media/active-directory-domain-services-admin-guide/connect-windows-vm.png)
-3. Nyissa meg az RDP-fájlt a virtuális géphez való csatlakozáshoz. Ha a rendszer kéri, akkor kattintson a **Csatlakozás** gombra. Bejelentkezés a parancssorba az "AAD DC rendszergazdák" csoportba tartozó felhasználói hitelesítő adatokat használja. Például, hogy használja "bob@domainservicespreview.onmicrosoft.com" Ebben az esetben a. A bejelentkezés során egy figyelmeztetés jelenhet meg a tanúsítvánnyal kapcsolatban. Kattintson az Igen gombra, vagy továbbra is a csatlakozás folytatásához.
-4. A kezdőképernyőről nyissa meg a **Kiszolgálókezelő**. Kattintson a **szerepkörök és szolgáltatások hozzáadása** a Kiszolgálókezelő ablakban középső ablaktábláján.
+    ![Kapcsolódás a Windows rendszerű virtuális géphez](./media/active-directory-domain-services-admin-guide/connect-windows-vm.png)
+3. Nyissa meg az RDP-fájlt a virtuális géphez való csatlakozáshoz. Ha a rendszer kéri, akkor kattintson a **Csatlakozás** gombra. A bejelentkezési kérésben használja az "HRE DC rendszergazdák" csoportba tartozó felhasználó hitelesítő adatait. Például a "bob@domainservicespreview.onmicrosoft.com"-t használjuk a esetünkben. A bejelentkezés során egy figyelmeztetés jelenhet meg a tanúsítvánnyal kapcsolatban. A kapcsolódás folytatásához kattintson az igen vagy a Folytatás gombra.
+4. A kezdőképernyőn nyissa meg a **Kiszolgálókezelő alkalmazást**. Kattintson a **szerepkörök és szolgáltatások hozzáadása** elemre a Kiszolgálókezelő ablakának központi ablaktábláján.
 
-    ![Indítsa el a Kiszolgálókezelőt a virtuális gépen](./media/active-directory-domain-services-admin-guide/install-rsat-server-manager.png)
-5. Az a **alapismeretek** lapján a **adja hozzá szerepkörök és szolgáltatások varázsló**, kattintson a **tovább**.
+    ![A Kiszolgálókezelő elindítása a virtuális gépen](./media/active-directory-domain-services-admin-guide/install-rsat-server-manager.png)
+5. A **szerepkörök és szolgáltatások hozzáadása varázsló**alapismeretek lapján kattintson a **tovább**gombra.
 
-    ![Lap megkezdése előtt](./media/active-directory-domain-services-admin-guide/install-rsat-server-manager-add-roles-begin.png)
-6. Az a **telepítési típus** lapon, hagyja a **szerepköralapú vagy szolgáltatásalapú telepítés** lehetőség be van jelölve, majd kattintson **tovább**.
+    ![Mielőtt elkezdené a lapot](./media/active-directory-domain-services-admin-guide/install-rsat-server-manager-add-roles-begin.png)
+6. A **telepítés típusa** lapon hagyja bejelölve a **szerepköralapú vagy a szolgáltatáson alapuló telepítési** beállítást, majd kattintson a **tovább**gombra.
 
     ![Telepítés típusa lap](./media/active-directory-domain-services-admin-guide/install-rsat-server-manager-add-roles-type.png)
-7. Az a **kiszolgáló kiválasztása** lapon válassza ki az aktuális virtuális gépet a kiszolgálókészletből, és kattintson a **tovább**.
+7. A **kiszolgáló kiválasztása** lapon válassza ki az aktuális virtuális gépet a kiszolgáló készletből, és kattintson a **tovább**gombra.
 
     ![Kiszolgáló kiválasztása lap](./media/active-directory-domain-services-admin-guide/install-rsat-server-manager-add-roles-server.png)
-8. Az a **kiszolgálói szerepkörök** kattintson **tovább**. Ezen a lapon azt kihagyása, mert azt nem telepíti minden szerepkört a kiszolgálón.
-9. Az a **funkciók** lapon válassza ki a **Csoportházirend kezelése** funkció.
+8. A **kiszolgálói szerepkörök** lapon kattintson a **tovább**gombra. Ezt az oldalt kihagyjuk, mivel nem telepítünk szerepköröket a kiszolgálón.
+9. A **szolgáltatások** lapon válassza ki a **csoportházirend felügyeleti** funkciót.
 
-    ![Szolgáltatások lapon](./media/active-directory-domain-services-admin-guide/install-rsat-server-manager-add-roles-gp-management.png)
-10. Az a **megerősítő** kattintson **telepítése** telepítheti a Csoportházirend kezelése szolgáltatást a virtuális gépen. Ha a szolgáltatás telepítése sikeresen befejeződött, kattintson az **Bezárás** való kilépéshez a **szerepkörök és szolgáltatások hozzáadása** varázsló.
+    ![Szolgáltatások lap](./media/active-directory-domain-services-admin-guide/install-rsat-server-manager-add-roles-gp-management.png)
+10. A **jóváhagyás** lapon kattintson a **telepítés** gombra a csoportházirend felügyeleti szolgáltatás virtuális gépen való telepítéséhez. Ha a szolgáltatás telepítése sikeresen befejeződik, kattintson a **Bezárás** gombra a **szerepkörök és szolgáltatások hozzáadása** varázslóból való kilépéshez.
 
-    ![Megerősítő oldal](./media/active-directory-domain-services-admin-guide/install-rsat-server-manager-add-roles-gp-management-confirmation.png)
+    ![Megerősítést kérő oldal](./media/active-directory-domain-services-admin-guide/install-rsat-server-manager-add-roles-gp-management-confirmation.png)
 
-## <a name="task-3---launch-the-group-policy-management-console-to-administer-group-policy"></a>3\. feladat – indítsa el a Csoportházirend kezelése konzol Csoportházirend-kezelése
-A tartományhoz csatlakoztatott virtuális gépen a Csoportházirend kezelése konzol segítségével felügyelheti a csoportházirend a felügyelt tartományon.
+## <a name="task-3---launch-the-group-policy-management-console-to-administer-group-policy"></a>3\. feladat – a Csoportházirend felügyeleti konzol elindítása Csoportházirend felügyeletéhez
+A tartományhoz csatlakoztatott virtuális gépen a Csoportházirend felügyeleti konzol használatával felügyelheti Csoportházirend a felügyelt tartományon.
 
 > [!NOTE]
-> A felügyelt tartományon a Csoportházirend-kezelése a "AAD DC rendszergazdák" csoport tagjának lennie kell.
+> Az "HRE DC rendszergazdák" csoport tagjának kell lennie a felügyelt tartomány Csoportházirend felügyeletéhez.
 >
 >
 
-1. A kezdőképernyőről kattintson **felügyeleti eszközök**. Megtekintheti a **Csoportházirend kezelése** konzol telepítése a virtuális gépen.
+1. A kezdőképernyőn kattintson a **felügyeleti eszközök**elemre. A virtuális gépre telepített **csoportházirend felügyeleti** konzolnak kell megjelennie.
 
-    ![Indítsa el a Csoportházirend kezelése](./media/active-directory-domain-services-admin-guide/gp-management-installed.png)
-2. Kattintson a **Csoportházirend kezelése** , indítsa el a Csoportházirend kezelése konzolt.
+    ![Csoportházirend-kezelés elindítása](./media/active-directory-domain-services-admin-guide/gp-management-installed.png)
+2. A Csoportházirend felügyeleti konzol elindításához kattintson a **csoportházirend felügyelet** elemre.
 
-    ![Csoportházirend-konzol](./media/active-directory-domain-services-admin-guide/gp-management-console.png)
+    ![Csoportházirend konzol](./media/active-directory-domain-services-admin-guide/gp-management-console.png)
 
-## <a name="task-4---customize-built-in-group-policy-objects"></a>4\. feladat – beépített csoportházirend-objektumok testreszabása
-Nincsenek két beépített csoportházirend-objektumok (GPO) – egyet-egyet a a felügyelt tartomány "AADDC számítógépek" és "AADDC felhasználók" tárolókat. Testre szabhatja a csoportházirend-objektumokat a csoportházirend a felügyelt tartományon.
+## <a name="task-4---customize-built-in-group-policy-objects"></a>4\. feladat – beépített Csoportházirend objektumok testreszabása
+Két beépített Csoportházirend objektum (GPO) létezik – egyet a felügyelt tartomány "AADDC számítógépek" és "AADDC Users" tárolói számára. A csoportházirend-objektumok testreszabásával konfigurálhatja a csoportházirendet a felügyelt tartományon.
 
-1. Az a **Csoportházirend kezelése** konzol, ide kattintva bontsa ki a **erdő: contoso100.com** és **tartományok** lásd: a csoportházirendek a felügyelt tartományhoz tartozó csomópontokat.
+1. A **csoportházirend felügyeleti** konzolon kattintson ide az **erdő: contoso100.com** és **tartományok** csomópontok kibontásához a felügyelt tartományhoz tartozó csoportházirendek megtekintéséhez.
 
     ![Beépített csoportházirend-objektumok](./media/active-directory-domain-services-admin-guide/builtin-gpos.png)
-2. Ezek beépített csoportházirend-objektumok csoportházirend konfigurálása a felügyelt tartomány testre szabhatja. Kattintson a jobb gombbal a csoportházirend-Objektumot, és kattintson a **szerkesztése...**  szabhatja testre a beépített csoportházirend-Objektumot. A Helyicsoportházirend-szerkesztő konfigurációs eszköz lehetővé teszi, hogy testre szabhatja a csoportházirend-Objektumot.
+2. Ezeket a beépített csoportházirend-objektumokat testreszabhatja a felügyelt tartományhoz tartozó csoportházirendek konfigurálásához. Kattintson a jobb gombbal a csoportházirend-objektumra, majd kattintson a **Szerkesztés...** elemre a beépített csoportházirend-objektum testreszabásához. A Csoportházirend Configuration Editor eszköz lehetővé teszi a csoportházirend-objektum testreszabását.
 
-    ![Szerkessze a beépített GPO](./media/active-directory-domain-services-admin-guide/edit-builtin-gpo.png)
-3. Most már használhatja a **Csoportházirendkezelés-szerkesztő** konzol a beépített csoportházirend-objektum szerkesztéséhez. Az alábbi képernyőképen például bemutatja, hogyan szabhatja testre a beépített "AADDC számítógépek" csoportházirend-Objektumot.
+    ![Beépített csoportházirend-objektum szerkesztése](./media/active-directory-domain-services-admin-guide/edit-builtin-gpo.png)
+3. Mostantól a **csoportházirend-felügyeleti szerkesztő** -konzollal szerkesztheti a beépített csoportházirend-objektumot. A következő képernyőkép például bemutatja, hogyan szabhatja testre a beépített "AADDC számítógépek" csoportházirend-objektumot.
 
     ![Csoportházirend-objektum testreszabása](./media/active-directory-domain-services-admin-guide/gp-editor.png)
 
-## <a name="task-5---create-a-custom-group-policy-object-gpo"></a>5\. feladat – egy egyéni szabályzat objektum (GPO) létrehozása
-Hozzon létre, vagy saját egyéni csoportházirend-objektumok importálása. A felügyelt tartományra a létrehozott egyéni szervezeti egyéni csoportházirend-objektumok is csatolható. Egyéni szervezeti egységek létrehozásával kapcsolatos további információkért lásd: [egy egyéni szervezeti egység létrehozása egy felügyelt tartományon](create-ou.md).
+## <a name="task-5---create-a-custom-group-policy-object-gpo"></a>5\. feladat – egyéni Csoportházirend objektum (GPO) létrehozása
+Létrehozhat vagy importálhat saját egyéni csoportházirend-objektumokat. Egyéni csoportházirend-objektumokat is csatolhat a felügyelt tartományban létrehozott egyéni szervezeti egységekhez. Az egyéni szervezeti egységek létrehozásával kapcsolatos további információkért lásd: [Egyéni szervezeti egység létrehozása felügyelt tartományon](create-ou.md).
 
 > [!NOTE]
-> A felügyelt tartományon a Csoportházirend-kezelése a "AAD DC rendszergazdák" csoport tagjának lennie kell.
+> Az "HRE DC rendszergazdák" csoport tagjának kell lennie a felügyelt tartomány Csoportházirend felügyeletéhez.
 >
 >
 
-1. Az a **Csoportházirend kezelése** konzol, kattintson az egyéni szervezeti egység (OU) kiválasztásához. Kattintson a jobb gombbal a szervezeti Egységet, és kattintson a **csoportházirend-objektum létrehozása ebben a tartományban, és hivatkozás létrehozása itt...** .
+1. A **csoportházirend felügyeleti** konzolon kattintson az egyéni szervezeti egység (OU) kiválasztásához. Kattintson a jobb gombbal a szervezeti egységre, majd kattintson **a csoportházirend-objektum létrehozása ebben a tartományban, és hivatkozás itt..** . elemre.
 
-    ![Hozzon létre egy egyéni csoportházirend-objektum](./media/active-directory-domain-services-admin-guide/gp-create-gpo.png)
-2. Adjon meg egy nevet az új csoportházirend-objektum, és kattintson **OK**.
+    ![Egyéni csoportházirend-objektum létrehozása](./media/active-directory-domain-services-admin-guide/gp-create-gpo.png)
+2. Adja meg az új csoportházirend-objektum nevét, majd kattintson **az OK**gombra.
 
-    ![Adja meg a csoportházirend-objektum nevét](./media/active-directory-domain-services-admin-guide/gp-specify-gpo-name.png)
-3. Egy új csoportházirend-objektum létrejött, és az egyéni szervezeti Egységhez kapcsolódik. Kattintson a jobb gombbal a csoportházirend-Objektumot, és kattintson a **szerkesztése...**  a menüből.
+    ![Adja meg a GPO nevét](./media/active-directory-domain-services-admin-guide/gp-specify-gpo-name.png)
+3. Létrejön egy új csoportházirend-objektum, amely az egyéni szervezeti egységhez van csatolva. Kattintson a jobb gombbal a csoportházirend-objektumra, majd kattintson a menü **Szerkesztés...** parancsára.
 
-    ![Az újonnan létrehozott csoportházirend-objektum](./media/active-directory-domain-services-admin-guide/gp-gpo-created.png)
-4. Az újonnan létrehozott csoportházirend-objektum segítségével testre szabhatja a **Csoportházirendkezelés-szerkesztő**.
+    ![Újonnan létrehozott GPO](./media/active-directory-domain-services-admin-guide/gp-gpo-created.png)
+4. Az újonnan létrehozott csoportházirend-objektumot a **csoportházirend-felügyeleti szerkesztő**használatával szabhatja testre.
 
     ![Új csoportházirend-objektum testreszabása](./media/active-directory-domain-services-admin-guide/gp-customize-gpo.png)
 
 
-További információk [Csoportházirend kezelése konzol](https://technet.microsoft.com/library/cc753298.aspx) érhető el a TechNet webhelyén.
+További információ a [csoportházirend-kezelő konzol](https://technet.microsoft.com/library/cc753298.aspx) használatáról a TechNet webhelyen érhető el.
 
 ## <a name="related-content"></a>Kapcsolódó tartalom
-* [Az Azure AD tartományi szolgáltatások – első lépések útmutató](create-instance.md)
-* [A Windows Server virtuális gépek csatlakoztatása az Azure AD tartományi szolgáltatások által felügyelt tartományokhoz](active-directory-ds-admin-guide-join-windows-vm.md)
-* [Az Azure AD Domain Services tartomány kezelése](manage-domain.md)
-* [Csoportházirend kezelése konzol](https://technet.microsoft.com/library/cc753298.aspx)
+* [Azure AD Domain Services – Első lépések útmutató](create-instance.md)
+* [Windows Server rendszerű virtuális gép csatlakoztatása Azure AD Domain Services felügyelt tartományhoz](active-directory-ds-admin-guide-join-windows-vm.md)
+* [Azure AD Domain Services tartomány kezelése](manage-domain.md)
+* [Csoportházirend-kezelő konzol](https://technet.microsoft.com/library/cc753298.aspx)

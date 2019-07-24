@@ -1,6 +1,6 @@
 ---
-title: (Előzetes verzió) beállításának bejelentkezés Azure Active Directory konfigurálása
-description: Az Azure ad-bA FIDO2 biztonsági hitelesítő adatok vagy a Microsoft Authenticator alkalmazás (előzetes verzió) beállításának bejelentkezés engedélyezése
+title: A jelszó nélküli bejelentkezés Azure Active Directory konfigurálása (előzetes verzió)
+description: Jelszó nélküli bejelentkezés engedélyezése az Azure AD-be a FIDO2 biztonsági kulcsaival vagy a Microsoft Authenticator alkalmazással (előzetes verzió)
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
@@ -11,190 +11,190 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5ba2545467ebfbd032408aeee25b82b92a628f2a
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 79f5eba18e34f65f7bc8a625babca92b86e06b4c
+ms.sourcegitcommit: 10251d2a134c37c00f0ec10e0da4a3dffa436fb3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67712071"
+ms.lasthandoff: 07/13/2019
+ms.locfileid: "67867321"
 ---
-# <a name="enable-passwordless-sign-in-for-azure-ad-preview"></a>Az Azure ad-ben (előzetes verzió) beállításának bejelentkezés engedélyezése
+# <a name="enable-passwordless-sign-in-for-azure-ad-preview"></a>Jelszó nélküli bejelentkezés engedélyezése az Azure AD-ben (előzetes verzió)
 
 ## <a name="requirements"></a>Követelmények
 
 * Azure Multi-Factor Authentication
-* Kombinált regisztrációs előzetes verzió
-* Biztonsági kulcs előzetes FIDO2 kompatibilis FIDO2 biztonsági kulcsra van szükség.
-* WebAuthN igényel a Microsoft Edge a Windows 10-es 1809 vagy újabb verzió
-* Alapján Windows jelentkezzen be az Azure AD szükséges FIDO2 csatlakoztatott Windows 10-es 1809 vagy újabb verzió
+* A kombinált regisztráció előzetes verziója
+* A FIDO2 biztonsági kulcs előzetes verziójának kompatibilis FIDO2 biztonsági kulcsokra van szüksége
+* A WebAuthN használatához a Microsoft Edge szükséges a Windows 10 1809-es vagy újabb verziójához
+* A FIDO2-alapú Windows-bejelentkezéshez az Azure AD-hez csatlakoztatott Windows 10 1809-es vagy újabb verziójára van szükség
 
-## <a name="prepare-devices-for-preview"></a>Eszközök előzetes előkészítése
+## <a name="prepare-devices-for-preview"></a>Eszközök előkészítése az előzetes verzióra
 
-Eszközöket, amelyek az ügyfélteszteléssel futnia kell a Windows 10-es verzió 1809 vagy újabb verziója. A legjobb élményt 1903 vagy újabb verziójú Windows 10-be van kapcsolva.
+A teszteléshez használt eszközökön a Windows 10 1809-es vagy újabb verziójának kell futnia. A legjobb élmény a Windows 10 1903-es vagy újabb verziója.
 
-## <a name="enable-security-keys-for-windows-sign-in"></a>A Windows bejelentkezési biztonsági kulcsok engedélyezése
+## <a name="enable-security-keys-for-windows-sign-in"></a>Biztonsági kulcsok engedélyezése Windows-bejelentkezéshez
 
-Szervezet dönthet elvégzéséhez, vagy jelentkezzen be az alábbi módszerekkel ahhoz, hogy a biztonsági kulcsok használatát a Windows.
+A szervezetek dönthetnek úgy, hogy az alábbi módszerek közül egy vagy több használatával engedélyezik a Windows-bejelentkezéshez szükséges biztonsági kulcsok használatát.
 
-### <a name="enable-credential-provider-via-intune"></a>Intune-on keresztül a hitelesítőadat-szolgáltató engedélyezése
-
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-1. Keresse meg a **a Microsoft Intune** > **eszközregisztráció** > **Windows regisztrációs** > **Windows Hello a vállalati** > **tulajdonságok**.
-1. A **beállítások** beállítása **biztonsági kulcsok használata a bejelentkezéshez** való **engedélyezve**.
-
-A bejelentkezéshez, a biztonsági kulcsok konfigurálása nem függ a Windows Hello for Business konfigurálása.
-
-#### <a name="enable-targeted-intune-deployment"></a>Célzott Intune üzembe helyezésének engedélyezése
-
-Cél ahhoz, hogy a hitelesítőadat-szolgáltató megfelelő eszközcsoportok, használja a következő egyéni beállítások az Intune-on keresztül. 
+### <a name="enable-credential-provider-via-intune"></a>Hitelesítő adatok szolgáltatójának engedélyezése az Intune-on keresztül
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-1. Keresse meg a **a Microsoft Intune** > **eszközkonfiguráció** > **profilok** > **profillétrehozása**.
-1. Az új profil konfigurálása a következő beállításokkal
-   1. Név: A Windows bejelentkezési biztonsági kulcsok
-   1. Leírás: Lehetővé teszi, hogy a Windows bejelentkezési során használandó FIDO biztonsági kulcsok
+1. Tallózással **Microsoft Intune** > **eszköz** > beléptetése Windows-**regisztráció** > Windows**Hello for Business** > -**Tulajdonságok**.
+1. A **Settings (beállítások** ) beállításnál a bejelentkezéshez a **biztonsági kulcsok használata** **engedélyezett**.
+
+A bejelentkezéshez szükséges biztonsági kulcsok konfigurálása nem függ a vállalati Windows Hello konfigurálásának.
+
+#### <a name="enable-targeted-intune-deployment"></a>A célként megadott Intune üzembe helyezésének engedélyezése
+
+A hitelesítő adatok szolgáltatójának engedélyezéséhez a következő egyéni beállításokat használhatja az Intune-on keresztül. 
+
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
+1. Tallózással keresse meg **Microsoft Intune** > **eszköz konfigurációs** > **profiljainak** > **profil létrehozása**lehetőséget.
+1. Konfigurálja az új profilt a következő beállításokkal
+   1. Név: Biztonsági kulcsok a Windows-bejelentkezéshez
+   1. Leírás: Lehetővé teszi, hogy a Windows bejelentkezéskor használni lehessen a következő biztonsági kulcsokat:
    1. Platform: Windows 10 és újabb verziók
    1. Platform típusa: Egyéni
    1. Egyéni OMA-URI beállítások:
-      1. Név: FIDO biztonsági kulcs kapcsolja be a Windows-bejelentkezés
-      1. OMA-URI: ./Device/Vendor/MSFT/PassportForWork/SecurityKey/UseSecurityKeyForSignin
+      1. Név: A Windows-bejelentkezéshez tartozó a biztonsági kulcsok bekapcsolása
+      1. OMA-URI:./Device/Vendor/MSFT/PassportForWork/SecurityKey/UseSecurityKeyForSignin
       1. Adattípus: Egész szám
-      1. Érték: 1 
-1. Ez a szabályzat adott felhasználók, eszközök és csoportok is hozzárendelhető. További információ a cikkben található [hozzárendelése a felhasználói és eszközprofilok a Microsoft Intune-ban](https://docs.microsoft.com/intune/device-profile-assign).
+      1. Érték 1 
+1. Ezt a házirendet meghatározott felhasználókhoz, eszközökhöz vagy csoportokhoz lehet hozzárendelni. További információt a következő cikkben talál: [Microsoft Intune felhasználói és eszköz profiljának társítása](https://docs.microsoft.com/intune/device-profile-assign).
 
-![Az Intune egyéni konfigurációs szabályzat létrehozása](./media/howto-authentication-passwordless-enable/intune-custom-profile.png)
+![Egyéni Intune-eszköz konfigurációs szabályzatának létrehozása](./media/howto-authentication-passwordless-enable/intune-custom-profile.png)
 
-### <a name="enable-credential-provider-via-provisioning-package"></a>Kiépítési csomag keresztül a hitelesítőadat-szolgáltató engedélyezése
+### <a name="enable-credential-provider-via-provisioning-package"></a>Hitelesítőadat-szolgáltató engedélyezése a kiépítési csomag használatával
 
-Az Intune által nem felügyelt eszközök esetén a kiépítési csomag funkcióinak is telepíthető. A Windows Configuration Designerben telepíthető a [Microsoft Store](https://www.microsoft.com/store/apps/9nblggh4tx22).
+Az Intune által nem felügyelt eszközök esetében a kiépítési csomag telepíthető a funkció engedélyezéséhez. A Windows Configuration Designer alkalmazást a [Microsoft Store](https://www.microsoft.com/store/apps/9nblggh4tx22)lehet telepíteni.
 
-1. Indítsa el a Windows Configuration Designer.
-1. Válassza ki **fájl** > **új projekt**.
-1. Adja meg a projekt nevét, és jegyezze fel azokat, az elérési utat, ahol a projekt létrejön.
+1. Indítsa el a Windows Configuration Designer alkalmazást.
+1. Válassza a **fájl** > **új projekt**lehetőséget.
+1. Adjon nevet a projektnek, és jegyezze fel az elérési utat, ahol a projekt létrejött.
 1. Kattintson a **Tovább** gombra.
-1. Hagyja **kiépítési csomag** érték van kiválasztva a a **kijelölt projekt munkafolyamat** válassza **tovább**.
-1. Válassza ki **minden Windows asztali kiadások** alatt **mely beállítások megtekintéséhez és konfigurálásához válassza** válassza **tovább**.
+1. Hagyja kiválasztva a **kiépítési csomagot** a **kiválasztott projekt** -munkafolyamatként, és válassza a **tovább**lehetőséget.
+1. Válassza ki az **összes Windows asztali kiadás** elemet a **válassza ki a megtekinteni és konfigurálni kívánt beállításokat** , majd válassza a **tovább**lehetőséget.
 1. Válassza a **Finish** (Befejezés) elemet.
-1. Az újonnan létrehozott projektben keresse meg a **futásidejű beállításokat** > **WindowsHelloForBusiness** > **SecurityKeys**  >  **UseSecurityKeyForSignIn**.
-1. Állítsa be **UseSecurityKeyForSignIn** való **engedélyezve**.
-1. Válassza ki **exportálása** > **kiépítési csomag**
-1. Meghagyhatja az alapértelmezett beállításokat, az a **hozhat létre** időszak alatt **ismertetik a kiépítési csomagot** válassza **tovább**.
-1. Meghagyhatja az alapértelmezett beállításokat, az a **hozhat létre** időszak alatt **válassza ki a kiépítési csomagot vonatkozó biztonsági információkat** válassza **tovább**.
-1. Jegyezze fel, vagy módosítsa az elérési utat a **hozhat létre** windows alatt **válassza ki a kiépítési csomag mentési helyének** válassza **tovább**.
-1. Válassza ki **hozhat létre** a a **a kiépítési csomagot készíthet** lapot.
-1. Mentse a két létrehozott fájlok (ppkg és cat) egy olyan helyre, ahol alkalmazhatja őket gépekhez később.
-1. Kövesse a cikk útmutatást [kiépítési csomag alkalmazása](https://docs.microsoft.com/windows/configuration/provisioning-packages/provisioning-apply-package), hogy a kiépítési csomagot létrehozta a alkalmazni.
+1. Az újonnan létrehozott projektben keresse meg a **Futásidejű beállítások** > **WindowsHelloForBusiness** > **SecurityKeys** > **UseSecurityKeyForSignIn**.
+1. Állítsa be a **UseSecurityKeyForSignIn** beállítást **engedélyezve**értékre.
+1. Válassza  > ki a**kiépítési csomag** exportálása lehetőséget
+1. Hagyja meg az alapértelmezett értékeket a **létrehozási** ablakban a **kiépítési csomag leírása** szakaszban, majd válassza a **tovább**lehetőséget.
+1. Hagyja meg az alapértelmezett értékeket a **létrehozási** ablakban a kiépítési **csomag biztonsági adatainak kiválasztása** területen, majd válassza a **tovább**lehetőséget.
+1. Jegyezze fel, vagy módosítsa a **Build** -ablakok elérési útját a **válassza ki, hová szeretné menteni a kiépítési csomagot** , és válassza a **tovább**lehetőséget.
+1. Válassza a **Létrehozás** lehetőséget a kiépítési **csomag összeállítása** lapon.
+1. Mentse a létrehozott két fájlt (ppkg és Cat) egy olyan helyre, ahol később is alkalmazhatja a gépeket.
+1. A létrehozott kiépítési csomag alkalmazásához kövesse a következő cikkben található útmutatást: a [kiépítési csomag alkalmazása](https://docs.microsoft.com/windows/configuration/provisioning-packages/provisioning-apply-package).
 
-## <a name="obtain-fido2-security-keys"></a>FIDO2 biztonsági kulcsok beszerzése
+## <a name="obtain-fido2-security-keys"></a>FIDO2 biztonsági kulcsainak beszerzése
 
-: A cikk szakasz FIDO2 biztonsági kulcsait, [beállításának mi?](concept-authentication-passwordless.md) támogatott kulcsok és a gyártók további információt.
+A támogatott kulcsokkal és gyártókkal kapcsolatos további információkért tekintse meg a FIDO2 biztonsági kulcsait [ismertető cikket.](concept-authentication-passwordless.md)
 
 > [!NOTE]
-> Ha vásárol, és bizonyos NFC-alapú biztonsági kulcsok használatához szüksége lesz egy támogatott NFC-olvasó.
+> Az NFC-alapú biztonsági kulcsok megvásárlása és megtervezése esetén támogatott NFC-olvasóra lesz szüksége.
 
-## <a name="enable-passwordless-authentication-methods"></a>Beállításának hitelesítési módszerek engedélyezése
+## <a name="enable-passwordless-authentication-methods"></a>Jelszóval nem rendelkező hitelesítési módszerek engedélyezése
 
-### <a name="enable-the-combined-registration-experience"></a>A kombinált regisztrációs felület engedélyezéséhez
+### <a name="enable-the-combined-registration-experience"></a>A kombinált regisztráció használatának engedélyezése
 
-Eszközregisztrációs szolgáltatások FIDO2 biztonsági kulcsok esetén az egyesített regisztrációs előzetes támaszkodnak. A kombinált regisztrációs előzetes verziójának engedélyezése az alábbi lépésekkel.
+A FIDO2 biztonsági kulcsaihoz tartozó regisztrációs funkciók a közös regisztráció előzetes verziójára támaszkodnak. Az egyesített regisztráció előzetes verziójának engedélyezéséhez kövesse az alábbi lépéseket.
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com)
-1. Keresse meg a **az Azure Active Directory** > **felhasználói beállítások**
-   1. Kattintson a **hozzáférési panel előzetes verziójú funkciók beállításainak kezelése**
-   1. A **felhasználók használhatják a előzetes verziójú funkciók regisztrálása és biztonsági adatai – továbbfejlesztett kezelésének**.
-      1. Válasszon **kijelölt** , és válassza ki a csoport számára, aki részt fog venni az előzetes verzióban érhető el.
-      1. Vagy válasszon **összes** ahhoz, hogy a címtár minden tagja számára.
+1. **Azure Active Directory** > **felhasználói beállítások** keresése
+   1. Kattintson a **felhasználói szolgáltatás előzetes verziójának beállításainak kezelése** lehetőségre.
+   1. A **felhasználók a biztonsági adatok regisztrálásához és kezeléséhez használható előzetes funkciókat használhatják**.
+      1. Válassza a **kijelölés** lehetőséget, és válasszon ki egy olyan felhasználói csoportot, akik részt vesznek az előzetes verzióban.
+      1. Vagy válassza az **összes** lehetőséget a címtárban mindenki számára történő engedélyezéshez.
 1. Kattintson a **Save** (Mentés) gombra
 
-### <a name="enable-new-passwordless-authentication-methods"></a>Új beállításának hitelesítési módszerek engedélyezése
+### <a name="enable-new-passwordless-authentication-methods"></a>Új, jelszóval nem rendelkező hitelesítési módszerek engedélyezése
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com)
-1. Keresse meg a **Azure Active Directory** > **hitelesítési módszerek** > **hitelesítési módszer házirend (előzetes verzió)**
-1. Minden **metódus**, a következő beállítások
-   1. **Engedélyezése** – igen / nem
-   1. **Cél** – összes felhasználó vagy a kiválasztott felhasználók
-1. **Mentés** az egyes módszerek
+1. Keresse meg **Azure Active Directory** > **hitelesítési módszerek** > **hitelesítési módszerének házirendjét (előzetes verzió)**
+1. Az egyes **módszerek**alatt válassza ki a következő beállításokat
+   1. **Engedélyezés** – igen vagy nem
+   1. **Cél** – az összes felhasználó vagy a felhasználók kiválasztása
+1. Minden metódus **mentése**
 
 > [!WARNING]
-> A "Kulcs a szoftverkorlátozó házirendek" nem működnek még FIDO2. Ez a funkció általános elérhetősége előtt, kérjük, ne módosítsa ezeket a szabályzatokat az alapértelmezett.
+> A "Key korlátozási szabályzatok" FIDO2 még nem működik. Ez a funkció az általános elérhetőség előtt elérhető lesz, ne módosítsa ezeket a szabályzatokat az alapértelmezett értékre.
 
 > [!NOTE]
-> Nem kell mind a beállításának módszerek engedélyezése (előzetes verzió csak egy beállításának módszert szeretné, ha engedélyezheti csak ez a módszer). Javasoljuk, hogy próbálja ki a két módszert, mivel mindkettő saját előnyeit.
+> Nem kell mindkettőt a jelszó nélkül használni (ha csak egy jelszóval nem rendelkező metódust szeretne megtekinteni, csak ezt a metódust engedélyezheti). Javasoljuk, hogy mindkét módszert kipróbálhatja, mivel mindkettőnek saját előnyei vannak.
 
-## <a name="user-registration-and-management-of-fido2-security-keys"></a>Felhasználói regisztráció és felügyeleti FIDO2 biztonsági kulcsok
+## <a name="user-registration-and-management-of-fido2-security-keys"></a>FIDO2 biztonsági kulcsok felhasználói regisztrációja és kezelése
 
-1. Keresse meg a [https://myprofile.microsoft.com](https://myprofile.microsoft.com)
-1. Jelentkezzen, ha még nem már
-1. Kattintson a **biztonsági adatai**
-   1. A felhasználónak már van regisztrálva legalább egy Azure multi-factor Authentication módszer, ha azokat közvetlenül regisztrálhatja FIDO2 biztonsági kulcs.
-   1. Ha nem rendelkeznek legalább egy Azure multi-factor Authentication módszer regisztrált, hozzá kell egyet.
-1. Adjon hozzá egy FIDO2 biztonsági kulcsot kattintva **metódus hozzáadása** kiválasztása és **biztonsági kulcs**
-1. Válasszon **USB-eszköz** vagy **NFC-eszköz**
-1. Készen áll, és válassza ki a kulcsot **tovább**
-1. Egy mező fogja jelennek meg, és megkérjük, hogy hozzon létre vagy adja meg a PIN-kód a biztonsági kulcs, majd a szükséges hitelesítési módok végrehajtását a kulcshoz biometrikus vagy touch.
-1. Ön visszaadott az egyesített regisztrációs felhasználói felületre és meg kell adnia egy kifejező nevet a jogkivonatot, így ha több azonosíthatja melyiket fogja. Kattintson a **Tovább** gombra.
-1. Kattintson a **kész** befejezése
+1. Tallózással keresse meg a[https://myprofile.microsoft.com](https://myprofile.microsoft.com)
+1. Ha még nem tette meg, jelentkezzen be
+1. Kattintson a **biztonsági adatok** lehetőségre
+   1. Ha a felhasználó már rendelkezik legalább egy olyan Azure multi-Factor Authentication-hitelesítési módszerrel, amely regisztrálva van, akkor azonnal regisztrálhatnak egy FIDO2 biztonsági kulcsot.
+   1. Ha nincs regisztrálva legalább egy Azure multi-Factor Authentication-módszer, hozzá kell adnia egyet.
+1. Adjon hozzá egy FIDO2 biztonsági kulcsot a **metódus hozzáadása** és a **biztonsági kulcs** kiválasztása elemre kattintva.
+1. **USB-eszköz** vagy **NFC-eszköz** kiválasztása
+1. Álljon készen a kulcsra, és válassza a **tovább** lehetőséget.
+1. Megjelenik egy mező, és megkéri, hogy hozzon létre/adjon meg egy PIN-kódot a biztonsági kulcshoz, majd végezze el a szükséges kézmozdulatot a kulcshoz: biometrikus vagy Touch.
+1. A rendszer visszaadja a kombinált regisztrációs élményt, és arra kéri, hogy adjon meg egy értelmes nevet a jogkivonat számára, hogy megismerje, melyik, ha több van. Kattintson a **Tovább** gombra.
+1. A folyamat befejezéséhez kattintson a **kész** gombra.
 
-### <a name="manage-security-key-biometric-pin-or-reset-security-key"></a>Biztonsági kulcs biometrikus, PIN-kód, kezelése vagy a biztonsági kulcs visszaállítása
+### <a name="manage-security-key-biometric-pin-or-reset-security-key"></a>Biztonsági kulcs biometrikus kezelése, PIN-kód vagy alaphelyzetbe állítása
 
-* A Windows 10-es verzió 1809
-   * A biztonsági kulcs szállítótól kiegészítő szoftver megadása kötelező
-* A Windows 10-es 1903 vagy újabb verzió
-   * Felhasználó meg tudja nyitni **Windows beállítások** az eszköz > **fiókok** > **biztonsági kulcs**
-   * A felhasználók a PIN, biometrika, illetve a biztonsági kulcs visszaállítása
+* Windows 10 1809-es verzió
+   * A biztonsági kulcs gyártójától származó kiegészítő szoftver szükséges
+* Windows 10 1903-es vagy újabb verzió
+   * A felhasználók megnyitják a **Windows beállításait** az eszközön > **fiókok** > **biztonsági kulcsával**
+   * A felhasználók módosíthatják a PIN-kódját, frissíthetik a biometriat, vagy alaphelyzetbe állíthatják a biztonsági kulcsot
 
-## <a name="user-registration-and-management-of-microsoft-authenticator-app"></a>Felhasználói regisztráció és a Microsoft Authenticator alkalmazás kezelése
+## <a name="user-registration-and-management-of-microsoft-authenticator-app"></a>Microsoft Authenticator alkalmazás felhasználói regisztrációja és kezelése
 
-A Microsoft Authenticator alkalmazást a telefonos bejelentkezés konfigurálásához kövesse a cikk útmutatást [jelentkezzen be a Microsoft Authenticator alkalmazás használata a fiókok](../user-help/user-help-auth-app-sign-in.md).
+Ha be szeretné állítani a Microsoft Authenticator alkalmazást a telefonos bejelentkezéshez, kövesse a bejelentkezni a [fiókba a Microsoft Authenticator alkalmazás használatával](../user-help/user-help-auth-app-sign-in.md)című cikkben található útmutatást.
 
-## <a name="sign-in-with-passwordless-credentials"></a>Jelentkezzen be beállításának hitelesítő adataival
+## <a name="sign-in-with-passwordless-credentials"></a>Bejelentkezés jelszó nélküli hitelesítő adatokkal
 
-### <a name="sign-in-at-the-lock-screen"></a>Jelentkezzen be a zárolási képernyőn
+### <a name="sign-in-at-the-lock-screen"></a>Bejelentkezés a zárolási képernyőn
 
-A felhasználó az alábbi példában Bala Sandhu már kiépített azok FIDO2 biztonsági kulcs. Bala is válassza ki a biztonsági kulcs hitelesítőadat-szolgáltató a Windows 10-es zárolási képernyőről, és jelentkezzen be a Windows, a biztonsági kulcsot.
+Az alábbi példában a felhasználó, Bala FIDO2 már kiépített egy biztonsági kulcsot. A Bala kiválaszthatja a biztonsági kulcs hitelesítő adatait szolgáltatót a Windows 10 zárolási képernyőjén, és beillesztheti a biztonsági kulcsot a Windowsba való bejelentkezéshez.
 
-![A Windows 10-es zárolási képernyőn jelentkezzen be biztonsági kulcs](./media/howto-authentication-passwordless-enable/fido2-windows-10-1903-sign-in-lock-screen.png)
+![Biztonsági kulcs bejelentkezés a Windows 10 zárolási képernyőjén](./media/howto-authentication-passwordless-enable/fido2-windows-10-1903-sign-in-lock-screen.png)
 
-### <a name="sign-in-on-the-web"></a>Jelentkezzen be a weben
+### <a name="sign-in-on-the-web"></a>Bejelentkezés a weben
 
-A felhasználó az alábbi példában már osztott azok FIDO2 biztonsági kulcs. A felhasználó jelentkezzen be a weben azok FIDO2 biztonsági kulcs a Windows 10-es 1809 vagy újabb verzióját a Microsoft Edge böngésző belül lehet váltani.
+Az alábbi példában a felhasználó már kiépített egy FIDO2 biztonsági kulcsot. A felhasználó dönthet úgy, hogy a Microsoft Edge böngészőben a Windows 10 1809-es vagy újabb verzióján belül bejelentkezik a webes FIDO2 biztonsági kulcsával.
 
-![Biztonsági kulcs bejelentkezés a Microsoft Edge-ben](./media/howto-authentication-passwordless-enable/fido2-windows-10-1903-edge-sign-in.png)
+![Biztonsági kulcs aláírása a Microsoft Edge-ben](./media/howto-authentication-passwordless-enable/fido2-windows-10-1903-edge-sign-in.png)
 
-Bejelentkezés a Microsoft Authenticator alkalmazással kapcsolatos információkat lásd: a cikk [jelentkezzen be a Microsoft Authenticator alkalmazás használata a fiókok](../user-help/user-help-auth-app-sign-in.md).
+További információ a Microsoft Authenticator alkalmazás használatával történő bejelentkezésről: a [Microsoft Authenticator alkalmazás használatával jelentkezzen](../user-help/user-help-auth-app-sign-in.md)be a fiókjaiba.
 
 ## <a name="known-issues"></a>Ismert problémák
 
 ### <a name="fido2-security-keys"></a>FIDO2 biztonsági kulcsok
 
-#### <a name="security-key-provisioning"></a>Biztonsági kulcs kiépítése
+#### <a name="security-key-provisioning"></a>Biztonsági kulcs kiépítés
 
-Rendszergazda üzembe helyezést és megszüntetést biztonsági kulcsok nem érhető el a nyilvános előzetes verzióban érhető el.
+A nyilvános előzetes verzióban nem érhető el a rendszergazdai kiépítés és a biztonsági kulcsok kiépítés.
 
 #### <a name="hybrid-azure-ad-join"></a>Hibrid Azure AD-csatlakozás
 
-WIA SSO függő felügyelt hitelesítő adatokat használó felhasználók például FIDO2 biztonsági kulcsait, vagy beállításának jelentkezzen be a Microsoft Authenticator alkalmazás hibrid csatlakozniuk kell a Windows 10-es egyszeri Bejelentkezéssel kihasználása érdekében. Azonban a biztonsági kulcsok az Azure Active Directoryhoz csatlakoztatott gépek egyelőre csak munkahelyi. Azt javasoljuk, hogy csak kipróbálhatja FIDO2 biztonsági kulcsok az Azure Active Directoryhoz csatlakoztatott gépeken tiszta Windows zárolási képernyőjén. Ez a korlátozás nem vonatkozik a webes.
+Azok a felhasználók, akik felügyelt hitelesítő adatokat használnak, például a FIDO2 biztonsági kulcsokat vagy a jelszó nélküli bejelentkezést a Microsoft Authenticator alkalmazással, a Windows 10 rendszerhez való hibrid csatlakozásra van szükségük az egyszeri bejelentkezés előnyeinek kihasználásához. A biztonsági kulcsok azonban csak Azure Active Directory csatlakoztatott gépeken működnek. Javasoljuk, hogy a tiszta Azure Active Directory csatlakoztatott gépeken csak a Windows zárolási képernyőjén próbálja ki a FIDO2 biztonsági kulcsait. Ez a korlátozás nem vonatkozik a webes használatra.
 
-#### <a name="upn-changes"></a>Egyszerű felhasználónév módosítások
+#### <a name="upn-changes"></a>UPN-változások
 
-Dolgozunk a szolgáltatás lehetővé teszi a hibrid AADJ UPN változás- és AADJ eszközök támogatása. Ha módosítja egy felhasználó egyszerű Felhasználónevét, FIDO2 biztonsági kulcsok a fiók számára, amely már nem módosíthatja. Így az egyetlen módszer visszaállítani az eszközt, és a felhasználó rendelkezik az újbóli regisztrációt.
+Dolgozunk azon funkció támogatásán, amely lehetővé teszi az UPN-változást a hibrid AADJ és AADJ eszközökön. Ha a felhasználó egyszerű felhasználóneve megváltozik, már nem módosíthatja a FIDO2 biztonsági kulcsait az adott fiókhoz. Ezért az egyetlen módszer, ha alaphelyzetbe állítja az eszközt, és a felhasználónak újra regisztrálnia kell.
 
 ### <a name="authenticator-app"></a>Hitelesítő alkalmazás
 
-#### <a name="ad-fs-integration"></a>AD FS-integráció
+#### <a name="ad-fs-integration"></a>AD FS integráció
 
-Amikor egy felhasználó engedélyezte a Microsoft Authenticator beállításának hitelesítő adatokat, az adott felhasználó hitelesítési mindig alapértelmezés szerint egy jóváhagyási értesítést küld. A logikai meggátolja a felhasználókat a hibrid bérlő irányítja az ADFS-be a bejelentkezés ellenőrzésének anélkül, hogy a felhasználó egy további lépést tart kattintson a "Inkább jelszó használata." Ez a folyamat is megkerülik bármilyen helyszíni feltételes hozzáférési szabályzatokat, és átmenő hitelesítési folyamatok. A kivétel ez alól egy login_hint-e megadva, a felhasználó autoforwarded az AD FS-hez, és megkerülése a beállításának hitelesítő adatok használatát.
+Ha egy felhasználó engedélyezte a Microsoft Authenticator jelszóval nem rendelkező hitelesítő adatokat, akkor a felhasználó hitelesítése mindig az alapértelmezett, ha értesítést szeretne küldeni jóváhagyásra. Ez a logika megakadályozza, hogy a hibrid bérlő felhasználói ne legyenek átirányítva az ADFS-be a bejelentkezési ellenőrzéshez anélkül, hogy a felhasználó további lépést kellene tennie a jelszó használata helyett. Ez a folyamat a helyszíni feltételes hozzáférési szabályzatokat és az átmenő hitelesítési folyamatokat is megkerüli. Ennek a folyamatnak a kivétele, ha meg van adva egy login_hint, a rendszer automatikusan továbbítja a felhasználót a AD FSba, és megkerüli a jelszóval nem rendelkező hitelesítő adatok használatára vonatkozó lehetőséget.
 
-#### <a name="azure-mfa-server"></a>Az Azure MFA-kiszolgáló
+#### <a name="azure-mfa-server"></a>Azure MFA-kiszolgáló
 
-Végfelhasználók, akik az MFA engedélyezve vannak a szervezet helyszíni Azure MFA-kiszolgálón keresztül továbbra is létrehozhat és egyetlen beállításának telefon bejelentkezési hitelesítő adatok használata. Ha a felhasználó megpróbálja több telepített (5 +) frissítése a Microsoft Authenticator a hitelesítő adataival, a módosítás hibát eredményezhet.  
+Azok a végfelhasználók, akik az MFA számára engedélyezve vannak a szervezet helyszíni Azure MFA-kiszolgálóján keresztül, továbbra is létrehozhatnak és használhatnak egyszeri, jelszó nélküli telefonos bejelentkezési hitelesítő adatokat. Ha a felhasználó a hitelesítő adatokkal rendelkező Microsoft Authenticator több telepítésének (5 +) frissítését kísérli meg, ez a változás hibát okozhat.  
 
 #### <a name="device-registration"></a>Eszközregisztráció
 
-Az előfeltételeket az új, erős hitelesítő adat, létrehozása egyik célja, hogy hol vannak az eszköz regisztrálva van-e belül az Azure AD-bérlővel, egy adott felhasználóhoz. Eszköz regisztrációs korlátozások miatt egy eszközhöz csak egy bérlőben lehet regisztrálni. Ezt a korlátot, az azt jelenti, hogy csak egy munkahelyi vagy iskolai fiókkal, a Microsoft Authenticator alkalmazást a telefonos bejelentkezés esetén is engedélyezhető.
+Az új, erős hitelesítő adatok létrehozásának egyik előfeltétele, hogy az eszköz, ahol a hely található, regisztrálva van az Azure AD-bérlőn belül az egyes felhasználók számára. Az eszköz regisztrációs korlátozásai miatt egy eszköz csak egyetlen bérlőben regisztrálható. Ez a korlát azt jelenti, hogy a Microsoft Authenticator alkalmazásban csak egy munkahelyi vagy iskolai fiók engedélyezhető a telefonos bejelentkezéshez.
 
 ## <a name="next-steps"></a>További lépések
 
-[Ismerje meg az eszköz regisztrálása](../devices/overview.md)
+[Tudnivalók az eszközök regisztrálásáról](../devices/overview.md)
 
-[További tudnivalók az Azure multi-factor Authentication](../authentication/howto-mfa-getstarted.md)
+[Az Azure multi-Factor Authentication ismertetése](../authentication/howto-mfa-getstarted.md)

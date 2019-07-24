@@ -1,7 +1,7 @@
 ---
-title: Űrlap felismerő tároló konfigurálása
+title: Tároló konfigurálása az űrlap-felismerőhöz
 titleSuffix: Azure Cognitive Services
-description: Megtudhatja, hogyan konfigurálhatja a képernyő felismerő tároló elemezni az űrlap és a táblák adatait.
+description: Megtudhatja, hogyan konfigurálhatja az űrlap-felismerő tárolót az űrlap-és a tábla-adatelemzéshez.
 author: IEvangelist
 manager: nitinme
 ms.service: cognitive-services
@@ -9,31 +9,31 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 06/19/2019
 ms.author: dapine
-ms.openlocfilehash: 7752b09dd1bf20d796b19d03e62426b098486c39
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.openlocfilehash: 4a490e8a9f111985df9c9e8c9f73bc36d686cc2a
+ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67718457"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68348694"
 ---
-# <a name="configure-form-recognizer-containers"></a>Űrlap felismerő tárolók konfigurálása
+# <a name="configure-form-recognizer-containers"></a>Űrlap-felismerő tárolók konfigurálása
 
-Az Azure-űrlap felismerő tárolók használatával hozhat létre egy stabil felhőalapú képességek és a peremhálózati helye kihasználásához optimalizált architektúra.
+Az Azure űrlap-felismerő tárolók használatával olyan alkalmazás-architektúrát építhet ki, amely a robusztus Felhőbeli képességek és a peremhálózat környékének kihasználására van optimalizálva.
 
-A képernyő felismerő tároló futtatási környezet segítségével konfigurálhatja a `docker run` parancssori argumentumokat. Ez a tároló rendelkezik több szükséges beállításokat, és néhány nem kötelező beállítások. Néhány példákért lásd a ["Példa docker-parancsok futtatása"](#example-docker-run-commands) szakaszban. A tároló-specifikus beállítások a számlázási beállításokat is.
+Az űrlap-felismerő tároló futásidejű környezetét a `docker run` parancs argumentumai segítségével állíthatja be. Ehhez a tárolóhoz több szükséges beállítás és néhány választható beállítás is tartozik. Néhány példa a ["Docker Run commands"](#example-docker-run-commands) című szakaszban található. A tárolóra jellemző beállítások a számlázási beállítások.
 
 ## <a name="configuration-settings"></a>Konfigurációs beállítások
 
 [!INCLUDE [Container shared configuration settings table](../../../includes/cognitive-services-containers-configuration-shared-settings-table.md)]
 
 > [!IMPORTANT]
-> A [ `ApiKey` ](#apikey-configuration-setting), [ `Billing` ](#billing-configuration-setting), és [ `Eula` ](#eula-setting) beállítások együtt használja. Mindhárom beállítás; meg kell adnia az érvényes értékek Ellenkező esetben a tároló nem indul el. Egy tároló példányosítása a konfigurációs beállítások használatával kapcsolatos további információkért lásd: [számlázási](form-recognizer-container-howto.md#billing).
+> A [`ApiKey`](#apikey-configuration-setting), [`Billing`](#billing-configuration-setting)a [és`Eula`](#eula-setting) a beállításokat együtt használja a rendszer. Mindhárom beállításhoz érvényes értékeket kell megadnia; Ellenkező esetben a tároló nem indul el. Egy tároló példányosítása a konfigurációs beállítások használatával kapcsolatos további információkért lásd: [számlázási](form-recognizer-container-howto.md#billing).
 
 ## <a name="apikey-configuration-setting"></a>Konfigurációs beállítás apikey tulajdonsággal végzett tesztelése
 
-A `ApiKey` beállítás határozza meg a számlázási adatokat tároló nyomon követésére használt Azure-erőforrás kulcs. A apikey tulajdonsággal végzett tesztelése értéke az érvényes kulcsot kell lennie a _űrlap felismerő_ megadott erőforrás `Billing` a "konfigurációs beállítás számlázást (Billing) szakaszban.
+A `ApiKey` beállítás megadja a tároló számlázási adatainak nyomon követéséhez használt Azure-erőforrás kulcsát. A ApiKey értékének érvényes kulcsnak kell lennie a "  számlázási konfigurációs beállítás" szakaszban megadott `Billing` , az űrlap-felismerő erőforrás számára.
 
-Ezt a beállítást, az Azure Portalon, az annak **űrlap felismerő erőforrás-kezelés**alatt **kulcsok**.
+Ez a beállítás a Azure Portalban, a **kulcsok**területen, az **űrlap-felismerő erőforrás-kezelés**szakaszban található.
 
 ## <a name="applicationinsights-setting"></a>Applicationinsights – beállítás
 
@@ -41,9 +41,9 @@ Ezt a beállítást, az Azure Portalon, az annak **űrlap felismerő erőforrás
 
 ## <a name="billing-configuration-setting"></a>Számlázási konfigurációs beállítás
 
-A `Billing` beállítás határozza meg a végpont URI-t, a _űrlap felismerő_ erőforrás, amellyel mérni a számlázási adatokat tároló Azure-ban. A konfigurációs beállítás értéke egy érvényes végpont URI-t kell lennie a egy _űrlap felismerő_ erőforrást az Azure-ban. A tároló használati jelentések kapcsolatos 10 – 15 percenként.
+A `Billing` beállítás megadja az Azure-beli _űrlap-felismerő_ erőforrás végpont-URI-ját, amely a tároló számlázási adatainak mérésére szolgál. A konfigurációs beállítás értékének érvényes végponti URI-nak kell lennie az Azure-beli _űrlap-felismerő_ erőforráshoz. A tároló 10 – 15 percen belül jelentést készít a használatról.
 
-Ezt a beállítást, az Azure Portalon, az annak **űrlap felismerő áttekintése**alatt **végpont**.
+Ez a beállítás a Azure Portalban, az űrlap- **felismerő áttekintés**területén, a **végpont**területen található.
 
 |Szükséges| Name (Név) | Adattípus | Leírás |
 |--|------|-----------|-------------|
@@ -57,7 +57,7 @@ Ezt a beállítást, az Azure Portalon, az annak **űrlap felismerő áttekinté
 
 [!INCLUDE [Container shared configuration fluentd settings](../../../includes/cognitive-services-containers-configuration-shared-settings-fluentd.md)]
 
-## <a name="http-proxy-credentials-settings"></a>HTTP-proxybeállításai hitelesítő adatok
+## <a name="http-proxy-credentials-settings"></a>HTTP-proxy hitelesítő adatainak beállításai
 
 [!INCLUDE [Container shared configuration fluentd settings](../../../includes/cognitive-services-containers-configuration-shared-settings-http-proxy.md)]
 
@@ -68,44 +68,44 @@ Ezt a beállítást, az Azure Portalon, az annak **űrlap felismerő áttekinté
 
 ## <a name="mount-settings"></a>Csatlakoztatási beállítások
 
-Kötés használatát csatlakoztatja az adatok olvasását és írását, és a tárolóból. Megadásával megadhat egy bemeneti csatlakoztatási vagy egy kimeneti csatlakoztatási a `--mount` beállítást a [ `docker run` parancs](https://docs.docker.com/engine/reference/commandline/run/).
+Kötés használatát csatlakoztatja az adatok olvasását és írását, és a tárolóból. Megadhat egy bemeneti csatlakoztatást vagy egy kimeneti csatlakoztatást a `--mount` [ `docker run` parancsban](https://docs.docker.com/engine/reference/commandline/run/)található beállítás megadásával.
 
-A képernyő felismerő tároló egy bemeneti csatlakoztatási és a egy kimeneti csatlakoztatási van szükség. A bemeneti csatlakoztatási lehet csak olvasható, és ez a tanítási és pontozási folyamatokat használt adatok hozzáférés szükséges. A kimeneti csatlakoztatási írhatók legyenek rendelkezik, és a modellek és az ideiglenes adatok tárolásához használja.
+Az űrlap-felismerő tárolóhoz bemeneti csatlakoztatás és kimeneti csatlakoztatás szükséges. A bemeneti csatlakoztatás csak olvasható lehet, és szükséges a betanításhoz és a pontozáshoz használt adatokhoz való hozzáféréshez. A kimeneti csatlakoztatásnak írhatónak kell lennie, és a modelleket és az ideiglenes adatokat a használatával tárolja.
 
-A gazdagép csatlakoztatási helye a pontos szintaxisa a gazdagép operációs rendszere függően változik. Ezenkívül a csatlakoztatási helye a [gazdaszámítógép](form-recognizer-container-howto.md#the-host-computer) előfordulhat, hogy nem érhető el a Docker szolgáltatás fiók és a gazdagép csatlakozási helyet engedélyeinek közötti ütközés miatt.
+A gazdagép csatlakoztatási helye a pontos szintaxisa a gazdagép operációs rendszere függően változik. Emellett előfordulhat, hogy a [gazdaszámítógép](form-recognizer-container-howto.md#the-host-computer) csatlakoztatási helye nem érhető el, mert a Docker-szolgáltatásfiók engedélyei és a gazdagép csatlakoztatási helyének engedélyei ütköznek.
 
 |Optional| Name (Név) | Adattípus | Leírás |
 |-------|------|-----------|-------------|
 |Szükséges| `Input` | Sztring | A bemeneti csatlakoztatási célját. Az alapértelmezett érték `/input`.    <br><br>Példa:<br>`--mount type=bind,src=c:\input,target=/input`|
-|Szükséges| `Output` | Sztring | A kimeneti csatlakoztatási célját. Az alapértelmezett érték `/output`.  <br><br>Példa:<br>`--mount type=bind,src=c:\output,target=/output`|
+|Szükséges| `Output` | Karakterlánc | A kimeneti csatlakoztatási célját. Az alapértelmezett érték `/output`.  <br><br>Példa:<br>`--mount type=bind,src=c:\output,target=/output`|
 
 ## <a name="example-docker-run-commands"></a>Példa docker-parancsok futtatása
 
-Az alábbi példák bemutatják, hogyan írhat, és használja a konfigurációs beállítások segítségével `docker run` parancsokat. Ha fut, a tároló továbbra is fut, amíg ki nem [leállíthassák](form-recognizer-container-howto.md#stop-the-container).
+Az alábbi példák bemutatják, hogyan írhat, és használja a konfigurációs beállítások segítségével `docker run` parancsokat. Ha fut, a tároló továbbra is futni fog, amíg [le nem állítja](form-recognizer-container-howto.md#stop-the-container).
 
-* **Vonal-folytatási karakter**: Az alábbi szakaszok a Docker-parancsokat használja egy fordított perjel (\\) sor folytatási karakterként. Cserélje le, vagy távolítsa el ezt a karaktert, attól függően, a gazdagép operációs rendszerre vonatkozó követelmények.
-* **Argument sorrend**: Ne módosítsa az argumentumok sorrendje, kivéve, ha ismeri a Docker-tárolókat.
+* **Vonal-folytatási karakter**: A következő szakaszban található Docker-parancsok egy hátsó perjelet (\\) használnak a vonal folytatási karakterként. Cserélje ki vagy távolítsa el ezt a karaktert a gazdagép operációs rendszerének követelményeitől függően.
+* **Argumentumok sorrendje**: Ne módosítsa az argumentumok sorrendjét, hacsak nem ismeri a Docker-tárolókat.
 
-Cserélje le a(z)_argument_name_} a következő táblázatban a saját értékeire:
+Cserélje le a {_argument_name_} értéket a következő táblázatba a saját értékeivel:
 
-| Helyőrző | Value |
+| Helyőrző | Érték |
 |-------------|-------|
-|{BILLING_KEY} | A kulcsot, amellyel a tárolót. Az Azure Portalon űrlap felismerő kulcsok lapján érhető el.  |
-|{BILLING_ENDPOINT_URI} | A számlázási végpont URI azonosítóját az Azure Portalon űrlap felismerő áttekintése oldalon érhető el.|
-|{COMPUTER_VISION_API_KEY}| A kulcsot az Azure Portalon számítógép Vision API-kulcsok lapon érhető el.|
-|{COMPUTER_VISION_ENDPOINT_URI}|A számlázási végpont. Ha egy felhőalapú számítógépes Látástechnológiai erőforrást használ, az Azure Portalon számítógép Vision API – áttekintés oldalra az URI értéket érhető el. Ha használ egy *cognitive services-felismerni-szöveges* tárolót, használja a számlázási végpont URL-címe a tárolóhoz, az átadott a `docker run` parancsot.|
+|{FORM_RECOGNIZER_API_KEY} | A tároló elindításához használt kulcs. Ez a Azure Portal űrlap-felismerési kulcsok lapon érhető el.  |
+|{FORM_RECOGNIZER_ENDPOINT_URI} | A számlázási végpont URI-értéke a Azure Portal űrlap-felismerő eszköz áttekintés lapján érhető el.|
+|{COMPUTER_VISION_API_KEY}| A kulcs a Azure Portal Computer Vision API kulcsok lapon érhető el.|
+|{COMPUTER_VISION_ENDPOINT_URI}|A számlázási végpont. Ha felhőalapú Computer Vision-erőforrást használ, az URI-érték a Azure Portal Computer Vision API – áttekintés oldalon érhető el. Ha *kognitív-szolgáltatások-felismerő-Text* tárolót használ, használja a `docker run` parancsban szereplő tárolónak átadott számlázási végpont URL-címét.|
 
 > [!IMPORTANT]
-> A tároló futtatásához adja meg a `Eula`, `Billing`, és `ApiKey` beállítások; ellenkező esetben a tároló nem indul el. További információkért lásd: [számlázási](#billing-configuration-setting).
+> A tároló futtatásához adja meg a `Eula`, `Billing`a és `ApiKey` a beállításokat; egyéb esetben a tároló nem indul el. További információkért lásd: [számlázási](#billing-configuration-setting).
 
 > [!NOTE] 
-> Apikey tulajdonsággal végzett tesztelése értéke a **kulcs** Azure űrlap felismerő erőforrás kulcsok lapjáról.
+> A ApiKey értéke az Azure Form felismerő erőforrás-kulcsok oldalának **kulcsa** .
 
-## <a name="form-recognizer-container-docker-examples"></a>Űrlap-felismerő tároló Docker-példák
+## <a name="form-recognizer-container-docker-examples"></a>Űrlap-felismerő tárolók Docker-példák
 
-Az alábbi Docker-példák vannak az űrlap felismerő tároló.
+A következő Docker-példák az űrlap-felismerő tárolóra vonatkoznak.
 
-### <a name="basic-example-for-form-recognizer"></a>Az űrlap felismerő alapszintű példa
+### <a name="basic-example-for-form-recognizer"></a>Az űrlap-felismerő alapszintű példája
 
 ```Docker
 docker run --rm -it -p 5000:5000 --memory 8g --cpus 2 \
@@ -113,13 +113,13 @@ docker run --rm -it -p 5000:5000 --memory 8g --cpus 2 \
 --mount type=bind,source=c:\output,target=/output \
 containerpreview.azurecr.io/microsoft/cognitive-services-form-recognizer \
 Eula=accept \
-Billing={BILLING_ENDPOINT_URI} \
-ApiKey={BILLING_KEY} \
+Billing={FORM_RECOGNIZER_ENDPOINT_URI} \
+ApiKey={FORM_RECOGNIZER_API_KEY} \
 FormRecognizer:ComputerVisionApiKey={COMPUTER_VISION_API_KEY} \
 FormRecognizer:ComputerVisionEndpointUri={COMPUTER_VISION_ENDPOINT_URI}
 ```
 
-### <a name="logging-example-for-form-recognizer"></a>Az űrlap felismerő naplózási példa
+### <a name="logging-example-for-form-recognizer"></a>Naplózási példa az űrlap-felismerőhöz
 
 ```Docker
 docker run --rm -it -p 5000:5000 --memory 8g --cpus 2 \
@@ -127,14 +127,13 @@ docker run --rm -it -p 5000:5000 --memory 8g --cpus 2 \
 --mount type=bind,source=c:\output,target=/output \
 containerpreview.azurecr.io/microsoft/cognitive-services-form-recognizer \
 Eula=accept \
-Billing={BILLING_ENDPOINT_URI} \
-ApiKey={BILLING_KEY} \
+Billing={FORM_RECOGNIZER_ENDPOINT_URI} \
+ApiKey={FORM_RECOGNIZER_API_KEY} \
 FormRecognizer:ComputerVisionApiKey={COMPUTER_VISION_API_KEY} \
 FormRecognizer:ComputerVisionEndpointUri={COMPUTER_VISION_ENDPOINT_URI}
 Logging:Console:LogLevel:Default=Information
 ```
 
-
 ## <a name="next-steps"></a>További lépések
 
-* Felülvizsgálat [telepítése és futtatása tárolók](form-recognizer-container-howto.md).
+* Tekintse át [a tárolók telepítése és futtatása](form-recognizer-container-howto.md)című ismertetőt.

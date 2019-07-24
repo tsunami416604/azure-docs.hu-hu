@@ -1,7 +1,7 @@
 ---
-title: Az Azure portal segítségével Azure bejárati ajtajának webes alkalmazás tűzfal házirend létrehozása
+title: Hozzon létre egy webalkalmazási tűzfal-házirendet az Azure-beli előtérben a Azure Portal használatával
 titlesuffix: Azure web application firewall
-description: Útmutató a webes alkalmazás tűzfal (WAF) szabályzat létrehozása az Azure portal használatával.
+description: Ismerje meg, hogyan hozhat létre webalkalmazási tűzfal-(WAF-) szabályzatot a Azure Portal használatával.
 services: frontdoor
 documentationcenter: na
 author: KumudD
@@ -12,70 +12,71 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/31/2019
-ms.author: kumud;tyao
-ms.openlocfilehash: 15a80dac0e0601480e22ad960f2827f3d8f290c0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: kumud
+ms.reviewer: tyao
+ms.openlocfilehash: abaef0fb521d848134885a06591b0656c60c67e6
+ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66479067"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67846390"
 ---
-# <a name="create-a-waf-policy-for-azure-front-door-by-using-the-azure-portal"></a>Az Azure portal segítségével Azure bejárati ajtajának WAF szabályzat létrehozása
+# <a name="create-a-waf-policy-for-azure-front-door-by-using-the-azure-portal"></a>WAF-szabályzat létrehozása az Azure bejárati ajtóhoz a Azure Portal használatával
 
-Ez a cikk ismerteti, hogyan hozhat létre egy alapszintű Azure-alapú webes alkalmazás-tűzfal (WAF) házirend, és alkalmazhatja azt egy előtér-gazdagépen található Azure bejárati ajtajának.
+Ez a cikk bemutatja, hogyan hozhat létre egy alapszintű Azure webalkalmazási tűzfal-(WAF-) szabályzatot, és hogyan alkalmazhatja azt egy előtér-gazdagépre az Azure bejárati Ajtóján.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Hozzon létre egy bejárati ajtajának profilt leírt utasítások alapján [a rövid útmutató: Hozzon létre egy bejárati ajtajának profilt](quickstart-create-front-door.md). 
+A rövid útmutatóban ismertetett [utasításokat követve hozzon létre egy bejárati ajtót. Hozzon létre egy előtérben lévő profilt](quickstart-create-front-door.md). 
 
-## <a name="create-a-waf-policy"></a>A WAF-szabályzat létrehozása
+## <a name="create-a-waf-policy"></a>WAF szabályzat létrehozása
 
-Először hozzon létre egy alapszintű WAF-házirend a felügyelt alapértelmezett szabály beállítása (DRS) a portál használatával. 
+Először hozzon létre egy alapszintű WAF szabályzatot a felügyelt alapértelmezett szabálykészlet (DRS) használatával a portálon. 
 
-1. A képernyő bal felső sarkában válassza **erőforrás létrehozása**> keresse meg **WAF**> Válasszon **webalkalmazási tűzfal (előzetes verzió)** > válassza  **Hozzon létre**.
-2. Az a **alapjai** lapján a **WAF-házirend létrehozása** lap, adja meg vagy válassza ki a következő adatokat, fogadja el az alapértelmezett értékeket a többi beállításnál, és válassza **felülvizsgálat +létrehozása**:
+1. A képernyő bal felső részén válassza az **erőforrás létrehozása**> **WAF**keresése lehetőséget > válassza a webalkalmazási **tűzfal (előzetes verzió)** lehetőséget > válassza a **Létrehozás**lehetőséget.
+2. A **WAF házirend létrehozása** lap **alapok** lapján adja meg vagy válassza ki a következő adatokat, fogadja el az alapértelmezett értékeket a többi beállításnál, majd válassza a **felülvizsgálat + létrehozás**:
 
-    | Beállítás                 | Érték                                              |
+    | Beállítás                 | Value                                              |
     | ---                     | ---                                                |
-    | Előfizetés            |Válassza ki a bejárati ajtajának előfizetés nevét.|
-    | Erőforráscsoport          |Válassza ki a bejárati ajtajának erőforráscsoport-nevet.|
-    | Házirend neve             |Adjon meg egy egyedi nevet a WAF-szabályzat.|
+    | Subscription            |Válassza ki a bejárati ajtó előfizetés nevét.|
+    | Resource group          |Válassza ki az első ajtóhoz tartozó erőforráscsoport nevét.|
+    | Szabályzat neve             |Adja meg a WAF szabályzat egyedi nevét.|
 
-   ![A WAF-szabályzat létrehozása](./media/waf-front-door-create-portal/basic.png)
+   ![WAF szabályzat létrehozása](./media/waf-front-door-create-portal/basic.png)
 
-3. Az a **társítás** lapján a **WAF-házirend létrehozása** lapon jelölje be **előtér-gazdagép hozzáadása**, és adja meg a következő beállításokat, majd válassza ki **Hozzáadás**:
+3. A **WAF házirend létrehozása** lap **társítás** lapján válassza a előtér- **gazdagép hozzáadása**lehetőséget, adja meg a következő beállításokat, majd válassza a **Hozzáadás**lehetőséget:
 
-    | Beállítás                 | Érték                                              |
+    | Beállítás                 | Value                                              |
     | ---                     | ---                                                |
-    | Bejárati ajtajának              | Válassza ki a bejárati ajtajának profil nevét.|
-    | Előtér-gazdagép           | Válassza ki a bejárati ajtajának gazdagép nevét, majd válassza ki **Hozzáadás**.|
+    | Bejárati ajtó              | Válassza ki a bejárati ajtó profiljának nevét.|
+    | Előtér-gazdagép           | Válassza ki a bejárati ajtó gazdagépének nevét, majd válassza a **Hozzáadás**lehetőséget.|
     
     > [!NOTE]
-    > Az előtér-állomás a WAF-házirend társítva, ha azt látható módon szürkén jelenik meg. Először távolítsa el a frontend gazdagépet a társított házirendből, és újra társítani a előtér-gazdagép egy új WAF-házirend.
-1. Válassza ki **felülvizsgálat + létrehozása**, majd **létrehozás**.
+    > Ha a előtér-gazdagép egy WAF-házirendhez van társítva, akkor a rendszer szürkén jelenik meg. Először el kell távolítania a előtér-gazdagépet a társított házirendből, majd újra társítania kell a előtér-gazdagépet egy új WAF-házirendhez.
+1. Válassza a **felülvizsgálat + létrehozás**, majd a **Létrehozás**lehetőséget.
 
-## <a name="configure-waf-rules-optional"></a>(Nem kötelező) WAF-szabályok konfigurálása
+## <a name="configure-waf-rules-optional"></a>WAF-szabályok konfigurálása (nem kötelező)
 
-### <a name="change-mode"></a>Mód megváltoztatása
+### <a name="change-mode"></a>Mód váltása
 
-A WAF-házirend létrehozásakor az alapértelmezett WAF házirend alapértelmezés szerint **észlelési** mód. A **észlelési** mód, WAF nem blokkolja a kérések, ehelyett a WAF-naplókban a WAF-szabályoknak-kérés naplózásra kerül.
-WAF működés megtekintéséhez módosíthatja a mód beállításait **észlelési** való **megelőzési**. A **megelőzési** módban kéri, hogy egyezik az alapértelmezett szabály beállítása (DRS) meghatározott szabályokat blokkolva vannak, és WAF-naplókban naplózza.
+WAF szabályzat létrehozásakor az alapértelmezett WAF-házirend észlelési módban van. **Észlelési** módban a WAF nem blokkolja a kérelmeket, hanem a WAF-szabályoknak megfelelő kérelmeket naplózza a rendszer a WAF-naplókon.
+Ha működés közben szeretné látni a WAF, az észleléstől kezdve a  **megelőzés**lehetőségre módosíthatja a mód beállításait. A **megelőzési** módban az alapértelmezett SZABÁLYKÉSZLET (DRS) által meghatározott szabályoknak megfelelő kérelmeket a rendszer letiltja és naplózza a WAF-naplókban.
 
- ![WAF házirend módváltás](./media/waf-front-door-create-portal/policy.png)
+ ![WAF házirend mód módosítása](./media/waf-front-door-create-portal/policy.png)
 
 ### <a name="custom-rules"></a>Egyéni szabályok
 
-Létrehozhat egy egyéni szabály kiválasztásával **egyéni szabály felvétele** alatt a **egyéni szabályok** szakaszban. Ezzel elindítja az egyéni szabály konfigurációs lapon. Az alábbi példában egy egyéni szabályt, amely blokkolja egy kérelmet, ha a lekérdezési karakterláncot tartalmaz konfigurálási, **blockme**.
+Egyéni szabály létrehozásához válassza az egyéni **szabály hozzáadása** lehetőséget az **Egyéni szabályok** szakaszban. Ezzel elindítja az egyéni szabály konfigurálása lapot. Az alábbi példa egy egyéni szabály konfigurálását mutatja be egy kérelem blokkolására, ha a lekérdezési karakterlánc **blockme**tartalmaz.
 
-![WAF házirend módváltás](./media/waf-front-door-create-portal/customquerystring2.png)
+![WAF házirend mód módosítása](./media/waf-front-door-create-portal/customquerystring2.png)
 
-### <a name="default-rule-set-drs"></a>Alapértelmezett szabálykészletet (DRS)
+### <a name="default-rule-set-drs"></a>Alapértelmezett szabálykészlet (DRS)
 
-Azure által felügyelt alapértelmezett szabálykészletet alapértelmezés szerint engedélyezve van. Egy szabály csoporton belül az egyes szabályok letiltása, bontsa ki az adott szabály csoport, válassza a szabályok a **jelölőnégyzet** elé a szabály száma, és válassza **letiltása** az lapon. Műveletek típusok módosításához szabályban egyéni szabályok beállítása, jelölje be a szabály száma elé, és válassza a **művelet módosítható** fenti fülre.
+Az Azure által felügyelt alapértelmezett szabálykészlet alapértelmezés szerint engedélyezve van. Ha le szeretne tiltani egy szabály csoportjának egy adott szabályát, bontsa ki a szabály csoporton  belüli szabályokat, jelölje be a szabály száma előtt található jelölőnégyzetet, majd válassza a **Letiltás** lehetőséget a fenti lapon. Ha módosítani szeretné a szabálykészlet egyes szabályainak típusát, jelölje be a szabály száma előtt található jelölőnégyzetet, majd válassza a fenti **módosítási művelet** fület.
 
  ![WAF-szabálykészlet módosítása](./media/waf-front-door-create-portal/managed2.png)
 
 ## <a name="next-steps"></a>További lépések
 
-- Ismerje meg [Azure webalkalmazási tűzfal](waf-overview.md).
-- Tudjon meg többet [Azure bejárati ajtajának](front-door-overview.md).
+- Ismerje meg az [Azure](waf-overview.md)webalkalmazási tűzfalat.
+- További információ az [Azure](front-door-overview.md)bejáratáról.

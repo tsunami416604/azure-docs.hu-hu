@@ -1,97 +1,97 @@
 ---
-title: A Blob storage használata a Hudson |} A Microsoft Docs
-description: Ismerteti, hogyan lehet használata a Hudson az Azure Blob storage a build-összetevőket.
+title: A Hudson használata blob Storage-tárolóval | Microsoft Docs
+description: Leírja, hogyan használható a Hudson az Azure Blob Storage-ban a Build-összetevők tárháza.
 services: storage
 author: seguler
 ms.service: storage
 ms.devlang: Java
 ms.topic: article
 ms.date: 02/28/2017
-ms.author: seguler
+ms.author: tarcher
 ms.subservice: common
-ms.openlocfilehash: 4b47af857fada453e36fcb0c23e6d89e5ad90e42
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 54e91d4df1109b9ece1150f8b44665789e4dfce1
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65154347"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67875887"
 ---
 # <a name="using-azure-storage-with-a-hudson-continuous-integration-solution"></a>Az Azure Storage szolgáltatás használata Hudson folyamatos integrációs megoldással
 ## <a name="overview"></a>Áttekintés
-A következő adatokat használja a Blob storage vagy a Hudson folyamatos integrációs (CI) megoldás által létrehozott, vagy letölthető fájlok forrásként használható a létrehozási folyamat mutatja be. A forgatókönyvek, ahol Ön is hasznos ez egyik, kódolási használ (a Java vagy más nyelvek) Agilis fejlesztési környezetben, a folyamatos integrációs buildek alapján futnak, és a build-összetevőket, szüksége lesz egy adattár, hogy sikerült, például megoszthatók más szervezet tagjaival, az ügyfelek vagy karbantartása az archívumot.  Egy másik helyzet lehet, ha a fordítási feladatot magán szükséges egyéb fájlokat, például a build bemeneti részeként letöltéséhez függőségek.
+Az alábbi információk azt mutatják be, hogyan használhatók a blob Storage a Hudson folyamatos integrációs (CI) megoldás által létrehozott Build-összetevők tárháza, vagy a felépítési folyamat során felhasználható letölthető fájlok forrásaként. Az egyik forgatókönyv, ahol hasznosnak találta ezt a megoldást, ha egy agilis fejlesztési környezetben (Java vagy más nyelv használatával) végez kódolást, a buildek folyamatos integráción alapulnak, és szüksége van a Build-összetevők tárházára, így Ön is megoszthatja például azokat más szervezet tagjaival, ügyfeleivel vagy megtarthatja az archívumot.  Egy másik forgatókönyv, ha a felépítési feladatnak más fájlokra is szüksége van, például a Build bemenet részeként letölteni kívánt függőségekre.
 
-Ebben az oktatóanyagban fog használni az Azure Storage beépülő modul a Microsoft által rendelkezésre bocsátott Hudson folyamatos integrációhoz.
+Ebben az oktatóanyagban a Microsoft által elérhető Hudson CI-hez készült Azure Storage beépülő modult fogja használni.
 
-## <a name="introduction-to-hudson"></a>Hudson bemutatása
-Hudson lehetővé teszi, hogy a folyamatos integráció, a szoftver projekt azáltal, hogy fejlesztők könnyedén integrálhatják a kód módosításait, és buildek előállított automatikusan és gyakran, ezáltal a fejlesztők a termelékenység növelése. Buildek rendszerverzióval ellátott, illetve build-összetevőket is feltölthetők a különböző adattárak. Ebből a cikkből megtudhatja, a build-összetevőket a tárházat az Azure Blob storage használata. Azt is megjelennek a függőségek letöltése az Azure Blob storage-ból.
+## <a name="introduction-to-hudson"></a>A Hudson bemutatása
+A Hudson lehetővé teszi a szoftveres projektek folyamatos integrálását azáltal, hogy lehetővé teszi a fejlesztők számára, hogy egyszerűen integrálják a kód módosításait, és automatikusan és gyakran hozzanak létre buildeket, ezáltal növelve a fejlesztők termelékenységét. A buildek verziója, és az összetevők feltölthetők különböző adattárakba. Ez a cikk bemutatja, hogyan használható az Azure Blob Storage a Build-összetevők tárháza. Azt is bemutatja, hogyan tölthetők le az Azure Blob Storage függőségei.
 
-További információ a Hudson található [megfelelnek Hudson](https://wiki.eclipse.org/Hudson-ci/Meet_Hudson).
+A Hudson-vel kapcsolatos további információkért tekintse [meg](https://wiki.eclipse.org/Hudson-ci/Meet_Hudson)a következőt:.
 
-## <a name="benefits-of-using-the-blob-service"></a>A Blob szolgáltatás használatának előnyei
-A Blob service használata az Agilis fejlesztési build-összetevők futtatásához előnyei a következők:
+## <a name="benefits-of-using-the-blob-service"></a>A Blob service használatának előnyei
+A Blob service használatának előnyei az agilis fejlesztői Build-összetevők üzemeltetéséhez:
 
-* Magas rendelkezésre állás, a build-összetevőket és/vagy letölthető függőségek.
-* Teljesítmény, ha a Hudson CI-megoldás a build-összetevőket tölt fel.
-* Amikor az ügyfelek és partnerek töltse le a build-összetevők teljesítményét.
-* Felhasználói hozzáférési házirendeket, a névtelen hozzáférés, lejárati-alapú közös hozzáférésű jogosultságkód hozzáférést, privát választhat felett ellenőrzést hozzáférés, stb.
+* A Build-összetevők és/vagy a letölthető függőségek magas rendelkezésre állása.
+* Teljesítmény, ha a Hudson CI-megoldás feltölti a Build-összetevőket.
+* Teljesítmény, amikor az ügyfelek és a partnerek letöltik a Build-összetevőket.
+* A felhasználói hozzáférési házirendek vezérlése a névtelen hozzáférés, a lejáraton alapuló közös hozzáférésű aláírás-hozzáférés, a privát hozzáférés stb. között.
 
 ## <a name="prerequisites"></a>Előfeltételek
-A Blob service használata a Hudson CI-megoldás a következő lesz szüksége:
+A következőkre lesz szüksége a Blob service és a Hudson CI megoldás használatához:
 
-* A Hudson folyamatos integrációs megoldással.
+* Hudson folyamatos integrációs megoldás.
   
-    Ha jelenleg nem rendelkezik a Hudson CI-megoldás, futtassa az alábbi eljárással használata Hudson CI megoldást:
+    Ha jelenleg nem rendelkezik Hudson CI-megoldással, a következő módszer használatával futtathat egy Hudson CI-megoldást:
   
-  1. Egy Java-kompatibilis gépen töltse le a Hudson HÁBORÚ <http://hudson-ci.org/>.
-  2. Egy a mappába, amely tartalmazza a Hudson WAR megnyitott parancssorban futtassa a Hudson WAR. Ha például 3.1.2 verzió letöltése:
+  1. A Java-kompatibilis gépen töltse le a Hudson WAR-t <http://hudson-ci.org/>.
+  2. Nyisson meg egy parancssort, amely a Hudson WAR-t tartalmazó mappához van megnyitva. Futtassa a Hudson WAR-t. Ha például letöltötte a 3.1.2-es verziót:
      
       `java -jar hudson-3.1.2.war`
 
-  3. A böngészőben nyissa meg a `http://localhost:8080/`. Ekkor megnyílik a Hudson irányítópultján.
-  4. Hudson első használatakor, végezze el a kezdeti beállítás, `http://localhost:8080/`.
-  5. Után végezze el a kezdeti beállítását, megszakítja a futó példányát, a Hudson WAR, indítsa újra a Hudson WAR, és nyissa meg újra a Hudson irányítópult `http://localhost:8080/`, mert ezzel fogja telepítése és konfigurálása az Azure Storage beépülő modul.
+  3. A böngészőben nyissa meg `http://localhost:8080/`a t. Ekkor megnyílik a Hudson-irányítópult.
+  4. A Hudson első használatakor végezze el a kezdeti telepítést `http://localhost:8080/`a következő címen:.
+  5. A kezdeti beállítás befejezése után szakítsa meg a Hudson-háború futó példányát, indítsa el újra a Hudson-háborút, majd nyissa meg újra `http://localhost:8080/`a Hudson-irányítópultot, amelyet az Azure Storage beépülő modul telepítéséhez és konfigurálásához fog használni.
      
-      Bár egy tipikus Hudson CI-megoldást szeretne úgy, hogy a szolgáltatás, a Hudson war futtatása a parancssorból futtassa a jelen oktatóanyag elegendő lesz.
-* Egy Azure-fiók. Iratkozzon fel a következő Azure-fiókot <https://www.azure.com>.
-* Egy Azure-tárfiók. Ha a tárfiók már nem rendelkezik, létrehozhat egyet a következő lépések használatával [hozzon létre egy Tárfiókot](../common/storage-quickstart-create-account.md).
-* A Hudson CI megoldás ismeretét ajánlott, de nem szükséges, az alábbi tartalommal fogja használni egy alapszintű példa mutatni, ha a Blob service használata Hudson CI vagy a szükséges lépéseket build-összetevőket.
+      Habár egy tipikus Hudson CI-megoldás úgy lesz beállítva, hogy szolgáltatásként fusson, a Hudson War a parancssorban való futtatása elegendő lesz ehhez az oktatóanyaghoz.
+* Egy Azure-fiók. Regisztrálhat egy Azure-fiókot a következő címen: <https://www.azure.com>.
+* Egy Azure-tárfiók. Ha még nem rendelkezik Storage-fiókkal, létrehozhat egyet a [Storage-fiók létrehozása](../common/storage-quickstart-create-account.md)című témakör lépéseit követve.
+* A Hudson CI-megoldás ismerete ajánlott, de nem szükséges, mivel az alábbi tartalom egy alapszintű példát mutat be a Blob service a Hudson CI-Build-összetevők tárházként való használatakor szükséges lépések megjelenítéséhez.
 
-## <a name="how-to-use-the-blob-service-with-hudson-ci"></a>A Blob szolgáltatás használata Hudson CI-vel
-A Blob service használata Hudson, szüksége lesz az Azure Storage beépülő modul telepítéséhez, a storage-fiók használata a beépülő modul konfigurálásához és majd a felépítés utáni művelet, amely a build-összetevőket tölt fel a tárfiók létrehozása. A következő szakaszok ezeket a lépéseket ismerteti.
+## <a name="how-to-use-the-blob-service-with-hudson-ci"></a>A Blob service használata a Hudson CI-vel
+Ahhoz, hogy a Blob servicet a Hudson használatával használhassa, telepítenie kell az Azure Storage beépülő modult, konfigurálnia kell a beépülő modult a Storage-fiók használatára, majd létre kell hoznia egy utólagos felépítési műveletet, amely feltölti a Build-összetevőket a Storage-fiókjába. Ezeket a lépéseket a következő szakaszokban ismertetjük.
 
 ## <a name="how-to-install-the-azure-storage-plugin"></a>Az Azure Storage beépülő modul telepítése
-1. Kattintson a Hudson irányítópulton **kezelése Hudson**.
-2. Az a **kezelése Hudson** kattintson **beépülő modulok kezelése**.
-3. Kattintson a **elérhető** fülre.
-4. Kattintson a **mások**.
-5. Az a **összetevő Feltöltők** szakaszban jelölje be **a Microsoft Azure Storage beépülő modul**.
+1. A Hudson-irányítópulton kattintson a **Hudson kezelése**lehetőségre.
+2. A **Hudson kezelése** lapon kattintson a **beépülő modulok kezelése**lehetőségre.
+3. Kattintson a **rendelkezésre álló** fülre.
+4. Kattintson a **mások**gombra.
+5. Az összetevő  -feltöltők szakaszban válassza **Microsoft Azure Storage beépülő modult**.
 6. Kattintson az **Install** (Telepítés) gombra.
-7. A telepítés befejezése után indítsa újra a Hudson.
+7. A telepítés befejezése után indítsa újra a Hudson-t.
 
-## <a name="how-to-configure-the-azure-storage-plugin-to-use-your-storage-account"></a>A tárfiók használata az Azure Storage beépülő modul konfigurálása
-1. Kattintson a Hudson irányítópulton **kezelése Hudson**.
-2. Az a **kezelése Hudson** kattintson **rendszer konfigurálása**.
-3. Az a **a Microsoft Azure Storage-fiók konfigurációja** szakaszban:
+## <a name="how-to-configure-the-azure-storage-plugin-to-use-your-storage-account"></a>Az Azure Storage beépülő modul konfigurálása a Storage-fiók használatára
+1. A Hudson-irányítópulton kattintson a **Hudson kezelése**lehetőségre.
+2. A **Hudson kezelése** lapon kattintson a **rendszer konfigurálása**elemre.
+3. A **Microsoft Azure Storage fiók konfigurációja** szakaszban:
    
-    a. Adja meg a tárfiók nevét, amely szerezhet be a [az Azure Portal](https://portal.azure.com).
+    a. Adja meg a Storage-fiók nevét, amelyet az [Azure Portalról](https://portal.azure.com)szerezhet be.
    
-    b. Adja meg a tárfiók kulcsára, is megrendelhető az [az Azure Portal](https://portal.azure.com).
+    b. Adja meg a Storage-fiók kulcsát, amely az [Azure Portalon](https://portal.azure.com)is elérhető.
    
-    c. Használja az alapértelmezett értéket a **Blob Service-végpont URL-címe** használata a nyilvános Azure-felhőben. Ha egy másik Azure-felhőben használja, használja a végponthoz megadott a [az Azure Portal](https://portal.azure.com) a tárfiók számára.
+    c. Ha a nyilvános Azure-felhőt használja, használja a **blob Service-végpont URL-címéhez** tartozó alapértelmezett értéket. Ha más Azure-felhőt használ, használja az [Azure Portalon](https://portal.azure.com) megadott végpontot a Storage-fiókjához.
    
-    d. Kattintson a **tároló hitelesítő adatainak ellenőrzésére** ellenőrzése a storage-fiókjában.
+    d. A Storage-fiók érvényesítéséhez kattintson a **tárolási hitelesítő adatok ellenőrzése** elemre.
    
-    e. [Opcionális] Ha további tárfiókokat, amelyeket szeretne elérhetővé tett a Hudson CI, kattintson a **további tárfiókok hozzáadása**.
+    e. Választható Ha további Storage-fiókokat szeretne elérhetővé tenni a Hudson CI számára, kattintson a **további Storage-fiókok hozzáadása**lehetőségre.
    
-    f. Kattintson a **mentése** a beállítások mentéséhez.
+    f. A beállítások mentéséhez kattintson a **Save (Mentés** ) gombra.
 
-## <a name="how-to-create-a-post-build-action-that-uploads-your-build-artifacts-to-your-storage-account"></a>A felépítés utáni művelet, amely a build-összetevőket tölt fel a tárfiók létrehozása
-Utasítás céljából először azt kell hozzon létre egy feladatot, amely több, a fájl létrehozásához, majd adja hozzá a felépítés utáni műveletben, a fájlok feltöltése a storage-fiók.
+## <a name="how-to-create-a-post-build-action-that-uploads-your-build-artifacts-to-your-storage-account"></a>Build-összetevők feltöltése a Storage-fiókba feltöltés utáni művelet létrehozása
+Útmutatásként először létre kell hozni egy olyan feladatot, amely több fájlt hoz létre, majd a létrehozás utáni művelettel felveszi a fájlokat a Storage-fiókjába.
 
-1. Kattintson a Hudson irányítópulton **új feladat**.
-2. Nevezze el a feladat **MyJob**, kattintson a **hozhat létre egy ingyenes stílusú szoftverfrissítési feladat**, és kattintson a **OK**.
-3. Az a **hozhat létre** szakaszban kattintson a feladat-konfiguráció **felépítési lépés hozzáadása** , és válassza **végrehajtása Windows kötegparanccsal**.
-4. A **parancs**, használja a következő parancsokat:
+1. A Hudson-irányítópulton kattintson az **új feladatok**elemre.
+2. Adja meg a **MyJob**nevet, kattintson a **szabad stílusú szoftver felépítése**elemre, majd kattintson **az OK**gombra.
+3. A feladatok konfigurációjának **build (létrehozás** ) részében kattintson a **Build lépés hozzáadása** elemre, majd válassza a **Windows batch-parancs végrehajtása parancsot**.
+4. A **parancsban**használja a következő parancsokat:
 
     ```   
         md text
@@ -101,65 +101,65 @@ Utasítás céljából először azt kell hozzon létre egy feladatot, amely tö
         time /t >> date.txt
     ```
 
-5. Az a **felépítés utáni műveletekben** szakaszban kattintson a feladat-konfiguráció **összetevők feltöltése a Microsoft Azure Blob storage**.
-6. A **Tárfióknevet**, válassza ki a használandó tárfiókot.
-7. A **Tárolónév**, adja meg a tároló nevét. (A tároló fog hozható létre, ha ezt még nem létezik a build-összetevőket feltöltésekor.) Környezeti változók használata is, így ebben a példában adja meg **${JOB_NAME}** a tároló neve.
+5. A feladatok konfigurációjának **létrehozás utáni műveletek** szakaszában kattintson az összetevők feltöltése elemre **Microsoft Azure Blob Storage-hoz**.
+6. A **Storage-fiók neve**mezőben válassza ki a használni kívánt Storage-fiókot.
+7. A **tároló neve**mezőben adja meg a tároló nevét. (A tároló akkor jön létre, ha még nem létezik a Build-összetevők feltöltésekor.) Használhat környezeti változókat, ezért ebben a példában a **$ {JOB_NAME}** értéket adja meg a tároló neveként.
    
     **Tipp**
    
-    Alább a **parancs** szkript megadásánál szakasz **végrehajtása Windows kötegparanccsal** a környezeti változók ismeri fel a Hudson mutató hivatkozás. Kattintson a hivatkozásra a környezeti változók neve és leírása. Vegye figyelembe, hogy környezeti változókat, amelyek tartalmazzák a speciális karakterek, mint például a **BUILD_URL** környezeti változót, a tároló neve vagy a közös virtuális elérési út nem engedélyezettek.
-8. Kattintson a **alapértelmezés szerint az új tároló nyilvánosságra** ebben a példában. (Ha szeretne egy privát tároló használatára, szüksége való hozzáférés engedélyezése a közös hozzáférésű jogosultságkód létrehozása. Ez a cikk nem foglalkozik. További információ a közös hozzáférésű jogosultságkódok [használatával a közös hozzáférésű Jogosultságkódok (SAS)](../storage-dotnet-shared-access-signature-part-1.md).)
-9. [Opcionális] Kattintson a **tiszta tároló feltöltése előtt** Ha azt szeretné, hogy a tároló tartalmát törölni kell, mielőtt feltöltésekor a rendszer a build-összetevőket (ne jelölje ezt, ha nem szeretné, hogy a tároló tartalmának törlése).
-10. A **összetevők lista feltöltéséhez**, adja meg **szöveg/*.txt**.
-11. A **feltöltött összetevők közös virtuális elérési út**, adja meg **${hozhat létre\_azonosító} / ${hozhat létre\_NUMBER}** .
-12. Kattintson a **mentése** a beállítások mentéséhez.
-13. A Hudson irányítópultján kattintson **hozhat létre most** futtatásához **MyJob**. Vizsgálja meg a konzol kimenete az állapotát. Az Azure Storage-állapotüzenetek fog szerepelni a konzol kimenete feltölteni a build-összetevőket a felépítés utáni művelet indításakor.
-14. A feladat sikeres telepítést vizsgálja meg a build-összetevőket a nyilvános blob megnyitásával.
+    A **parancs** alatt, ahol a **Windows batch** futtatása parancshoz megadott egy parancsfájlt, a Hudson által felismert környezeti változókra mutató hivatkozás. Kattintson erre a hivatkozásra a környezeti változók nevének és leírásának megismeréséhez. Vegye figyelembe, hogy a speciális karaktereket (például a **BUILD_URL** környezeti változót) tartalmazó környezeti változók nem engedélyezettek tároló neveként vagy közös virtuális elérési úton.
+8. Ehhez a példához kattintson az **új tároló nyilvánosvé tétele alapértelmezés szerint** lehetőségre. (Ha privát tárolót szeretne használni, létre kell hoznia egy közös hozzáférési aláírást a hozzáférés engedélyezéséhez. Ez meghaladja a jelen cikk hatókörét. A közös hozzáférési aláírásokról a [közös hozzáférési aláírások (SAS) használatával](../storage-dotnet-shared-access-signature-part-1.md)tájékozódhat.)
+9. Választható Ha  azt szeretné, hogy a tárolót az összetevők feltöltése előtt törölje, kattintson a tároló tisztítása elemre, ha azt szeretné, hogy a tároló tartalma ne legyen feltöltve (ne jelölje be a jelölőnégyzetet, ha nem szeretné törölni a tároló tartalmát).
+10. A **feltölteni kívánt**összetevők listájához írja be a **Text/*. txt fájlt**.
+11. A **feltöltött összetevők közös virtuális elérési útjának**megadásához írja be a következőt: **$\_{Build\_ID}/$ {Build Number}** .
+12. A beállítások mentéséhez kattintson a **Save (Mentés** ) gombra.
+13. A Hudson-irányítópulton kattintson a **Build most** gombra a **MyJob**futtatásához. Ellenőrizze a konzol kimenetét az állapothoz. Az Azure Storage-hoz tartozó állapotüzenetek a konzol kimenetében jelennek meg, amikor a Build utáni művelet elindítja a Build-összetevők feltöltését.
+14. A feladatok sikeres befejezését követően a nyilvános blob megnyitásával ellenőrizheti a Build-összetevőket.
     
     a. Jelentkezzen be az [Azure Portal](https://portal.azure.com).
     
-    b. Kattintson a **tárolási**.
+    b. Kattintson a **tárterület**elemre.
     
-    c. Kattintson a Hudson használt tárfiók nevét.
+    c. Kattintson a Hudson-hoz használt Storage-fiók nevére.
     
-    d. Kattintson a **tárolók**.
+    d. Kattintson a tárolók elemre.
     
-    e. Kattintson a tároló nevű **myjob**, amely az, hogy a feladat neve, a Hudson feladat létrehozásakor hozzárendelt kis verziója. A tároló nevének és a blob nevét is kisbetű (és a kis-és nagybetűket) az Azure Storage-ban. A tárolót a blobok listáját belül **myjob** kell megjelennie **hello.txt** és **date.txt**. Ezek az elemek egyikét másolja az URL-címet, és nyissa meg a böngészőben. Szöveges fájlt töltött fel, mint a buildösszetevőt jelenik meg.
+    e. Kattintson a **myjob**nevű tárolóra, amely a Hudson-feladatok létrehozásakor hozzárendelt feladatnév kisbetűs verziója. A tárolók neve és a blob neve kisbetűs (és kis-és nagybetűket megkülönböztető) az Azure Storage-ban. A **myjob** nevű tároló Blobok listáján belül a **Hello. txt** és a **Date. txt fájlt**kell látnia. Másolja az egyik elem URL-címét, és nyissa meg a böngészőben. Ekkor megjelenik a Build-összetevőként feltöltött szövegfájl.
 
-Csak egy felépítés utáni művelet, amely feltölti az összetevők az Azure Blob storage-feladat hozható létre. Vegye figyelembe, hogy az egyetlen felépítés utáni művelet összetevők feltöltése az Azure Blob storage-adhatja meg (beleértve a helyettesítő karaktereket) a különböző fájlok és a belül fájlok elérési útjait **összetevők lista feltöltéséhez** pontosvesszővel az elválasztó használatával. Például, ha a Hudson hozhat létre és hoz létre JAR-fájlok TXT-fájlokat a munkaterületen **hozhat létre** mappát, és a feltöltése az Azure Blob storage egyaránt, használja a következőt szeretné az **összetevők lista feltöltéséhez** érték: **összeállítása /\*.jar; build /\*.txt**. Dupla kettőspont szintaxis segítségével adja meg egy elérési útját használja a blob neveként belül. Például, ha azt szeretné, hogy a JAR-fájlok kivételével az első feltöltött használatával **bináris** a blob elérési útja és a TXT-fájlokat feltölteni lekérése használatával **hirdetmények** a blob elérési útja, használja a következő a **listán az összetevők a feltöltendő** érték: **hozhat létre /\*. jar::binaries; build /\*. txt::notices**.
+Feladatokból csak egy, az Azure Blob Storage-ba feltöltés utáni művelet hozható létre. Vegye figyelembe, hogy az összetevők az Azure Blob Storage-ba való feltöltésének utáni egyszeri művelet különböző fájlokat (például helyettesítő karaktereket) és elérési utakat adhat meg a pontosvesszővel elválasztó karakterrel **feltöltött** összetevők listáján belül. Ha például a Hudson Build jar-fájlokat és txt-fájlokat hoz létre a munkaterület **Build** mappájában, és az Azure Blob Storage-ba szeretne feltölteni, a következőt kell használnia a feltöltendő összetevők **listájához** : **Build/\*. jar; Build/\*. txt**. A dupla kettőspontos szintaxist is használhatja a blob nevében használandó elérési út megadásához. Ha például azt szeretné, hogy az adattégelyek a blob elérési útjában található **bináris** fájlok használatával legyenek feltöltve, és a txt-fájlok a blob elérési útjában található **megjegyzésekkel** töltődnek fel, a következőt kell használnia a feltöltendő összetevők **listájához** : **Build/\*. jar: : bináris fájlok, Build\*/. txt:: megjegyzések**.
 
-## <a name="how-to-create-a-build-step-that-downloads-from-azure-blob-storage"></a>Hogyan hozhat létre, amely az Azure Blob storage-ból letöltött buildelési lépést
-A következő lépések bemutatják, hogyan konfigurálhatja egy lépést, amely elemek letöltése az Azure Blob storage-ból. Ez akkor lehet hasznos, ha az elemek felvétele a build, például JAR-fájlok kivételével az Azure Blob storage-ban tartó a szeretné.
+## <a name="how-to-create-a-build-step-that-downloads-from-azure-blob-storage"></a>Az Azure Blob Storage-ból letöltött Build lépés létrehozása
+A következő lépések bemutatják, hogyan konfigurálhat egy Build lépést az elemek Azure Blob Storage-ból való letöltéséhez. Ez akkor lehet hasznos, ha a buildben lévő elemeket is bele kívánja foglalni, például az Azure Blob Storage-ban megőrizni kívánt tégelyeket.
 
-1. Az a **hozhat létre** szakaszban kattintson a feladat-konfiguráció **felépítési lépés hozzáadása** , és válassza **töltse le az Azure Blob storage-ból**.
-2. A **tárfióknevet**, válassza ki a használandó tárfiókot.
-3. A **Tárolónév**, adja meg a tároló, amelyben a blobokat letölteni kívánt nevét. Környezeti változókat is használhat.
-4. A **blobnév**, adja meg a blob nevét. Környezeti változókat is használhat. Is használhatja egy csillagot helyettesítő karakter a kezdeti betűjét a blob nevének megadása után. Ha például **projekt\\** * kellene megadnia kezdődő összes BLOB **projekt**.
-5. [Opcionális] A **letöltési mappa elérési útját**, adja meg az elérési utat a Hudson számítógépen, ahol szeretné tölteni a fájlokat az Azure Blob storage-ból. A környezeti változók is használható. (Ha nem ad meg értéket **letöltési mappa elérési útját**, a feladatok munkaterület a fájlok az Azure Blob storage-ból letöltött.)
+1. A feladatok konfigurációjának **build (létrehozás** ) részében kattintson a **Build lépés hozzáadása** elemre, és válassza a **Letöltés az Azure Blob Storage-ból**lehetőséget.
+2. A **Storage-fiók neve**mezőben válassza ki a használni kívánt Storage-fiókot.
+3. A **tároló neve**mezőben adja meg annak a tárolónak a nevét, amely a letölteni kívánt blobokat tartalmazni kívánja. Környezeti változókat is használhat.
+4. A **blob neve**mezőben adja meg a blob nevét. Környezeti változókat is használhat. Azt is megteheti, hogy egy csillagot is használhat helyettesítő karakterként, miután megadta a blob nevének kezdeti betűjelét (ke) t. A **Project\\** * például minden olyan blobot megad, amelynek a neve a **projekttel**kezdődik.
+5. Választható A **letöltési útvonal**mezőben határozza meg az elérési utat a Hudson-gépen, amelyen le szeretné tölteni a fájlokat az Azure Blob Storage-ból. A környezeti változók is használhatók. (Ha nem ad meg értéket a **letöltési útvonalhoz**, a rendszer letölti az Azure Blob Storage-ból származó fájlokat a feladatok munkaterületére.)
 
-Ha további elemek szeretné tölteni az Azure Blob storage-ból, létrehozhat további létrehozási lépések.
+Ha további elemeket szeretne letölteni az Azure Blob Storage-ból, további létrehozási lépéseket is létrehozhat.
 
-Miután lefuttatta a build, ellenőrizze a korábbi konzol kimenete, vagy tekintse meg a letöltési helyét, megtekintheti, hogy a várt blobok letöltése sikeresen megtörtént.
+A Build futtatása után megtekintheti a létrehozási előzmények konzoljának kimenetét, vagy megtekintheti a letöltési helyet, és megtekintheti, hogy a várt Blobok letöltése sikeres volt-e.
 
-## <a name="components-used-by-the-blob-service"></a>A Blob szolgáltatás által használt összetevők
-A következő a Blob szolgáltatás-összetevők áttekintést nyújt.
+## <a name="components-used-by-the-blob-service"></a>Az Blob service által használt összetevők
+Az alábbi áttekintést nyújt a Blob service összetevőkről.
 
-* **Storage-fiók**: Minden, az Azure Storage-hozzáférés tárfiókon keresztül történik. Ez az a névtér a blobok elérése a legmagasabb szintű. Egy fiók korlátlan számú tárolók, tartalmazhat, mindaddig, amíg azok teljes mérete 100 TB-os alatt.
-* **tároló**: Egy tároló blobokat áll csoportosítását biztosítja. Az összes blobnak tárolóban kell lennie. Egy fiók korlátlan számú tárolót tartalmazhat. Egy tároló korlátlan számú blob tárolására használható.
-* **Blob**: Bármilyen típusú és méretű fájl. A blobok Azure Storage-ban tárolt két típusa van: blokkblobok és lapblobok. Fájlok a legtöbb esetben blokkblobok. Egyetlen blokkblob akár 200 GB méretű lehet. Ebben az oktatóanyagban a blokkblobok használatát támogatják. Lapblobok és a egy másik blob típusú tárfiók, akár 1 TB-ig a mérete, és kiváló hatékonyabb lehet, ha egy fájlban bájtos címtartományok gyakran módosítják. Blobok kapcsolatos további információkért lásd: [Understanding Block Blobs, hozzáfűző blobokat és Lapblobokat](https://msdn.microsoft.com/library/azure/ee691964.aspx).
-* **URL-formátum**: Blobok legyenek a következő URL-formátummal:
+* **Storage-fiók**: Az Azure Storage-hoz való összes hozzáférés egy Storage-fiókon keresztül történik. Ez a névtér legmagasabb szintje a Blobok eléréséhez. Egy fiók korlátlan számú tárolót tartalmazhat, feltéve, hogy a teljes méret 100 TB.
+* **Tároló**: A tároló Blobok egy csoportját biztosítja. Az összes blobnak tárolóban kell lennie. Egy fiók korlátlan számú tárolót tartalmazhat. Egy tároló korlátlan számú blob tárolására használható.
+* **Blob**: Bármilyen típusú és méretű fájl. Az Azure Storage-ban két típusú blob tárolható: a blokk-és a Blobok. A legtöbb fájl blokkolja a blobokat. Egy blokkos blob mérete legfeljebb 200 GB lehet. Ez az oktatóanyag blokk-blobokat használ. Az oldal Blobok, egy másik blob típusa akár 1 TB méretű is lehet, és hatékonyabb, ha a fájlban lévő bájtok tartományait gyakran módosítják. A Blobokkal kapcsolatos további információkért lásd: [a Blobok, a blobok és](https://msdn.microsoft.com/library/azure/ee691964.aspx)a Blobok hozzáfűzésének ismertetése.
+* **URL-formátum**: A Blobok a következő URL-formátummal érhetők el:
   
     `http://storageaccount.blob.core.windows.net/container_name/blob_name`
   
-    (A fenti formátum a nyilvános Azure felhő vonatkozik. Egy másik Azure-felhőben használja, ha a végpont belül használja a [az Azure Portal](https://portal.azure.com) meghatározni az URL-végpontot.)
+    (A fenti formátum a nyilvános Azure-felhőre vonatkozik. Ha más Azure-felhőt használ, az URL-végpont meghatározásához használja az [Azure Portalon](https://portal.azure.com) belüli végpontot.)
   
-    A fenti formátumban `storageaccount` pedig a tárfiók nevét `container_name` a tároló nevét jelöli, és `blob_name` rendre a blob nevét jelöli. A tároló nevének belül használhat több elérési útnak perjellel elválasztva **/** . A példa tároló neve ebben az oktatóanyagban **MyJob**, és **${hozhat létre\_azonosító} / ${hozhat létre\_szám}** használták a közös virtuális elérési utat, a blob URL-Címének kellene eredményez a a következő képernyőn:
+    A fenti `storageaccount` formátumban a Storage- `container_name` fiók nevét jelöli, a pedig a tároló nevét, valamint `blob_name` a blob nevét jelöli. A tároló neve alatt több elérési út is lehet, a továbbítási perjelekkel **/** elválasztva. Az oktatóanyagban szereplő példa **MyJob**volt, a közös virtuális elérési útra pedig a **\_$ {Build ID}/$ {Build\_Number}** lett használva, ami a blob URL-címét a következő formában adja meg:
   
     `http://example.blob.core.windows.net/myjob/2014-05-01_11-56-22/1/hello.txt`
 
 ## <a name="next-steps"></a>További lépések
-* [Hudson felel meg](https://wiki.eclipse.org/Hudson-ci/Meet_Hudson)
-* [Az Azure Storage-hoz készült Java SDK](https://github.com/azure/azure-storage-java)
+* [A Hudson megfelel](https://wiki.eclipse.org/Hudson-ci/Meet_Hudson)
+* [Javához készült Azure Storage SDK](https://github.com/azure/azure-storage-java)
 * [Azure Storage ügyféloldali SDK-referencia](http://dl.windowsazure.com/storage/javadoc/)
 * [Az Azure Storage-szolgáltatások REST API-ja](https://msdn.microsoft.com/library/azure/dd179355.aspx)
 * [Az Azure Storage csapat blogja](https://blogs.msdn.com/b/windowsazurestorage/)

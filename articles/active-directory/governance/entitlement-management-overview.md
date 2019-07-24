@@ -1,10 +1,10 @@
 ---
-title: Mi az Azure ad-ben tagjogosultság-kezelés? (Előzetes verzió) – az Azure Active Directory
-description: Tagjogosultság-kezelés Azure Active Directoryban, és hogyan használhatja azt a belső és külső felhasználók számára csoportok, alkalmazások és a SharePoint Online-webhelyekkel való hozzáférés kezelése áttekintést kaphat.
+title: Mi az Azure AD-jogosultságok kezelése? (Előzetes verzió) – Azure Active Directory
+description: Áttekintés a Azure Active Directory jogosultságok kezeléséről, valamint arról, hogy miként kezelheti a csoportokhoz, alkalmazásokhoz és SharePoint Online-webhelyekhez való hozzáférést a belső és külső felhasználók számára.
 services: active-directory
 documentationCenter: ''
-author: rolyon
-manager: mtillman
+author: msaburnley
+manager: daveba
 editor: markwahl-msft
 ms.service: active-directory
 ms.workload: identity
@@ -12,129 +12,129 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
-ms.date: 06/05/2019
-ms.author: rolyon
+ms.date: 07/10/2019
+ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fbb4001e9496d31d9c2879721f8cf8e26b74ddf3
-ms.sourcegitcommit: 156b313eec59ad1b5a820fabb4d0f16b602737fc
+ms.openlocfilehash: 896cc495d6f369c034171833a9b90aa53e6477b6
+ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67204554"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68234629"
 ---
-# <a name="what-is-azure-ad-entitlement-management-preview"></a>Mi az Azure ad-ben tagjogosultság-kezelés? (Előzetes verzió)
+# <a name="what-is-azure-ad-entitlement-management-preview"></a>Mi az Azure AD-jogosultságok kezelése? (Előzetes verzió)
 
 > [!IMPORTANT]
-> Az Azure Active Directory (Azure AD) tagjogosultság-kezelés jelenleg nyilvános előzetes verzióban érhető el.
+> A Azure Active Directory (Azure AD) jogosultság-kezelési szolgáltatás jelenleg nyilvános előzetes verzióban érhető el.
 > Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik.
 > További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-A szervezet alkalmazottai a különböző csoportok, alkalmazások és webhelyek végezhető el a feladat hozzá kell férniük. A hozzáférés-kezelés nagyobb kihívást jelent. A legtöbb esetben nem nem rendezett lista egy felhasználónak adott projekthez tartozó összes erőforrást. A projektvezető rendelkezik a szükséges erőforrásokat, a felhasználók részt vevő, és mennyi a projekt legutóbbi fog beható ismerete. Azonban a projektvezető általában nincs engedélye, amelyben jóváhagyhatja vagy hozzáférést biztosítani másoknak. Ebben a forgatókönyvben beolvasása bonyolultabb, külső egyének és vállalatok együttműködve megkísérlésekor.
+A szervezet alkalmazottainak a feladatuk elvégzéséhez különböző csoportokhoz, alkalmazásokhoz és webhelyekhez kell hozzáférnie. A hozzáférés kezelése kihívást jelent. A legtöbb esetben nem létezik a projekthez felhasználói igényeknek megfelelő összes erőforrást tartalmazó rendezett lista. A projektmenedzser jól ismeri a szükséges erőforrásokat, az érintett személyeket, és azt, hogy mennyi ideig tart a projekt. A projektmenedzsernek azonban általában nincs engedélye a mások számára való hozzáférés engedélyezésére vagy megadására. Ez a forgatókönyv bonyolultabb lehet, ha külső személyeket vagy vállalatokat próbál meg dolgozni.
 
-Az Azure Active Directory (Azure AD) tagjogosultság-kezelés segítségével kezelheti a belső felhasználók, és a szervezeten kívüli felhasználók csoportokat, alkalmazásokat és a SharePoint Online-webhelyekkel való hozzáférését.
+A Azure Active Directory (Azure AD) jogosultságok kezelése segítséget nyújt a csoportokhoz, alkalmazásokhoz és SharePoint Online-webhelyekhez való hozzáférés kezeléséhez a belső felhasználók és a szervezeten kívüli felhasználók számára egyaránt.
 
-## <a name="why-use-entitlement-management"></a>Tagjogosultság-kezelés miért érdemes használni?
+## <a name="why-use-entitlement-management"></a>Miért érdemes használni a jogosultság-kezelést?
 
-Vállalati szervezetek gyakran szembesülnek olyan kihívásokkal, ha például az erőforrásokhoz való hozzáférés kezelése:
+A nagyvállalati szervezetek gyakran szembesülnek kihívásokkal az erőforrásokhoz való hozzáférés kezelése során, például:
 
-- Felhasználók nem lehetséges, hogy tudja, milyen hozzáféréssel kell rendelkezniük
-- Felhasználók nehézségekbe, a megfelelő felhasználók vagy az erőforrások megkeresése
-- Felhasználók keresése, és a egy erőforráshoz hozzáférést kapnak a, akkor előfordulhat, hogy tartsa lenyomva az eléréséhez szükséges üzleti célra hosszabb
+- Előfordulhat, hogy a felhasználók nem tudják, milyen hozzáférésre van szükségük
+- Előfordulhat, hogy a felhasználók nehézségekbe ütközik a megfelelő személyek vagy a megfelelő erőforrások megkeresése során
+- Miután a felhasználók megkeresik és megkapják a hozzáférést egy erőforráshoz, előfordulhat, hogy a hozzáférésük hosszabb ideig tart, mint az üzleti célra szükséges
 
-Ezek a problémák vannak bonyolítja a felhasználók számára, akiknek szükség van egy másik címtár, például az ellátási lánc szervezetek és más üzleti partnerek külső felhasználók hozzáférését. Példa:
+Ezek a problémák olyan felhasználók számára vannak összekapcsolva, akiknek más címtárból kell elérniük, például az ellátási lánc szervezeteitől vagy más üzleti partnereinktől származó külső felhasználóknak. Példa:
 
-- Előfordulhat, hogy szervezetek nem ismeri az adott személyek más címtárakban lehet meghívni őket az összes
-- Akkor is, ha a szervezetek is ezeket a felhasználókat meghívni, szervezetek nem emlékeznek egységesen kezelheti a felhasználói hozzáférés az összes
+- Előfordulhat, hogy a szervezetek nem tudják, hogy a többi könyvtárban lévő egyes személyek meghívhatják őket
+- Még ha a szervezetek is meghívhatják ezeket a felhasználókat, előfordulhat, hogy a szervezetek nem emlékeznek arra, hogy az összes felhasználó hozzáférését következetesen kezeljék
 
-Az Azure AD tagjogosultság-kezelés segítségével, ezek a kihívások megoldása.
+Az Azure AD-jogosultságok kezelése segíthet a problémák megoldásában.
 
-## <a name="what-can-i-do-with-entitlement-management"></a>Mire használhatom az tagjogosultság-kezelés?
+## <a name="what-can-i-do-with-entitlement-management"></a>Mire használhatom a jogosultságok felügyeletét?
 
-Íme néhány tagjogosultság-kezelés képességeit:
+Íme néhány lehetőség a jogosultságok kezeléséhez:
 
-- Csomagok, amelyek a felhasználók kérhetik kapcsolódó erőforrások létrehozása
-- Erőforrás-kérelmek és a hozzáférési lejáratának hogyan-szabályok definiálása
-- Belső és külső felhasználók hozzáférését életciklusának szabályozása
-- Az erőforrások felügyelet delegálása
-- Kérelmek jóváhagyása a jóváhagyók kijelölése
-- Előzmények nyomon jelentések létrehozása
+- A felhasználók által igényelhető kapcsolódó erőforrások csomagjainak létrehozása
+- Szabályok definiálása az erőforrások igényléséhez és a hozzáférés lejáratakor
+- A belső és külső felhasználókhoz való hozzáférés életciklusának szabályozása
+- Erőforrások kezelésének delegálása
+- Jóváhagyók kijelölése a kérelmek jóváhagyásához
+- Jelentések létrehozása az előzmények követéséhez
 
-Identitáskezelést és tagjogosultság-kezelés áttekintését a következő videó a 2018-as Ignite konferenciáról:
+Az Identitáskezelés és a jogosultságok kezelésének áttekintéséhez tekintse meg az alábbi videót az Ignite 2018 konferenciáról:
 
 >[!VIDEO https://www.youtube.com/embed/aY7A0Br8u5M]
 
-## <a name="what-resources-can-i-manage"></a>Milyen erőforrásokat lehet kezelni?
+## <a name="what-resources-can-i-manage"></a>Milyen erőforrásokat kezelhetek?
 
-Az alábbiakban a típusú erőforrásokat tagjogosultság-kezelés való hozzáférést kezelheti:
+A jogosultság-kezeléssel a következő típusú erőforrásokat kezelheti:
 
-- Az Azure AD biztonsági csoportok
+- Azure AD-beli biztonsági csoportok
 - Office 365-csoportok
-- Az Azure AD vállalati alkalmazások, például SaaS-alkalmazás és az egyéni integrált alkalmazások, amelyek támogatják az összevonási vagy kiépítése
-- A SharePoint Online webhelycsoportokhoz és helyek
+- Azure AD Enterprise-alkalmazások, beleértve az SaaS-alkalmazásokat és az összevonást vagy üzembe helyezést támogató egyedi integrált alkalmazásokat
+- SharePoint Online-webhelyek gyűjteményei és webhelyei
 
-Szabályozhatja, hogy az Azure AD biztonsági csoportok vagy az Office 365-csoportok támaszkodik más erőforrásokhoz való hozzáférést is.  Példa:
+Az Azure AD biztonsági csoportjaira vagy az Office 365-csoportokra támaszkodó egyéb erőforrásokhoz való hozzáférést is szabályozhatja.  Példa:
 
-- Adhat felhasználói licenceket a Microsoft Office 365-höz egy hozzáférés-csomag az Azure AD biztonsági csoportok használatáról és konfigurálásáról [Csoportalapú licencelés](../users-groups-roles/licensing-groups-assign.md) az adott csoporthoz
-- Engedélyezheti a felhasználók számára hozzáférést Azure-erőforrások kezelése az Azure AD biztonsági csoportok használatával egy hozzáférési csomagban, és hozzon létre egy [Azure szerepkör-hozzárendelés](../../role-based-access-control/role-assignments-portal.md) az adott csoporthoz
+- A Microsoft Office 365-es verzióra vonatkozó licenccel rendelkező felhasználók számára engedélyezheti az Azure AD biztonsági csoportját egy hozzáférési csomagban, és konfigurálhatja az adott csoportra vonatkozó [csoport alapú licencelést](../users-groups-roles/licensing-groups-assign.md) .
+- Hozzáférést biztosíthat a felhasználóknak az Azure-erőforrások kezeléséhez egy hozzáférési csomagban található Azure AD biztonsági csoport használatával és az adott csoport [Azure](../../role-based-access-control/role-assignments-portal.md) -beli szerepkör-hozzárendelésének létrehozásával
 
-## <a name="what-are-access-packages-and-policies"></a>Melyek a hozzáférési csomagok és a szabályzatok?
+## <a name="what-are-access-packages-and-policies"></a>Mik azok a hozzáférési csomagok és szabályzatok?
 
-Tagjogosultság-kezelés bemutatja a egy *hozzáférés csomag*. Egy hozzáférés-csomag egy felhasználó számára a projekthez, vagy a feladat végrehajtásához szükséges összes erőforrás bundle. Az erőforrások közé tartoznak a csoportok, alkalmazások vagy helyek elérését. Hozzáférési csomagok segítségével szabályozzák a hozzáférést a belső alkalmazottak, valamint a szervezeten kívüli felhasználók számára. Hozzáférési csomagok meghatározott nevű tárolók *katalógusok*.
+A jogosultságok kezelése bevezeti a *hozzáférési csomag*fogalmát. A hozzáférési csomag az összes olyan erőforrás kötegét képezi, amelyet a felhasználónak egy projekten kell dolgoznia, vagy feladatait kell végrehajtania. Az erőforrások közé tartoznak a csoportok, az alkalmazások és a webhelyek hozzáférése. A hozzáférési csomagok a belső alkalmazottak és a szervezeten kívüli felhasználók hozzáférésének szabályozására szolgálnak. A hozzáférési csomagok a katalógusok nevű tárolókban vannak meghatározva.
 
-Hozzáférési csomagok is tartalmaznak egy vagy több *házirendek*. A szabályzat határozza meg, a szabályok vagy guardrails eléréséhez egy hozzáférés-csomagot. A szabályzat engedélyezése kikényszeríti, hogy csak a megfelelő felhasználók kapnak hozzáférést, a megfelelő erőforrásokat és a megfelelő mennyiségű időt.
+A hozzáférési csomagok egy vagy több *szabályzatot*is tartalmaznak. A szabályzatok határozzák meg a hozzáférési csomag elérésére vonatkozó szabályokat vagy guardrails. A szabályzat engedélyezése kényszeríti, hogy csak a megfelelő felhasználók férhessenek hozzá a megfelelő erőforrásokhoz, és a megfelelő időtartamra.
 
-![Hozzáférés csomag- és szabályzatok](./media/entitlement-management-overview/elm-overview-access-package.png)
+![Hozzáférési csomag és szabályzatok](./media/entitlement-management-overview/elm-overview-access-package.png)
 
-Egy hozzáférési csomaghoz és a rájuk vonatkozó szabályzatoknak a hozzáférés-kezelő határozza meg:
+A hozzáférési csomag és a hozzá tartozó házirendek esetében a hozzáférés-csomagkezelő a következőket határozza meg:
 
 - További források
-- A felhasználók szerepkörökhöz kell az erőforrások
-- Belső és külső felhasználók, amelyek jogosultak arra, hogy a hozzáférés kérése
-- Jóváhagyási folyamat és a felhasználók, jóváhagyhatja vagy megtagadja a hozzáférést
+- A felhasználók számára szükséges szerepkörök az erőforrásokhoz
+- Belső felhasználók és külső felhasználók, akik jogosultak a hozzáférés kérésére
+- Jóváhagyási folyamat és a hozzáférést engedélyező vagy megtagadó felhasználók
 - A felhasználó hozzáférésének időtartama
 
-Az alábbi ábrán látható egy példa a különböző elemekhez az tagjogosultság-kezelés. Ez a két példa hozzáférési csomagok jeleníti meg.
+Az alábbi ábrán egy példa látható a jogosultságok kezelésének különböző elemeire. Két példa hozzáférési csomagot mutat be.
 
-- **1 hozzáférési csomag** erőforrásként egyetlen csoportot tartalmaz. Hozzáférési szabályzat, amely lehetővé teszi, hogy a felhasználók a címtárban való hozzáférését van definiálva.
-- **2. hozzáférés-csomag** tartalmaz egy csoport, alkalmazás és a SharePoint Online-webhely erőforrásként. Hozzáférés két különböző szabályzatok van meghatározva. Az első házirend lehetővé teszi, hogy a felhasználók a címtárban való hozzáférését. A második szabályzat lehetővé teszi, hogy egy külső könyvtár a felhasználók hozzáférést kérhetnek.
+- Az **1. csomag elérési csomagja** egyetlen csoportot tartalmaz erőforrásként. A hozzáférés egy olyan házirenddel van meghatározva, amely lehetővé teszi, hogy a címtárban lévő felhasználók egy csoportja hozzáférjen a hozzáféréshez.
+- A **2-es hozzáférési csomag** egy csoportot, egy alkalmazást és egy SharePoint Online-webhelyet tartalmaz erőforrásként. A hozzáférés két különböző házirenddel van definiálva. Az első házirend lehetővé teszi, hogy a címtárban a felhasználók egy csoportja hozzáférjen a hozzáféréshez. A második házirend lehetővé teszi a külső címtárban lévő felhasználók számára a hozzáférés kérését.
 
-![A jogosultság – áttekintés](./media/entitlement-management-overview/elm-overview.png)
+![A jogosultságok kezelésének áttekintése](./media/entitlement-management-overview/elm-overview.png)
 
 ## <a name="external-users"></a>Külső felhasználók
 
-Használatakor a [az Azure AD--vállalatközi (B2B)](../b2b/what-is-b2b.md) meghívása a tapasztalatok már ismernie kell a külső vendégfelhasználóknak az erőforrás-könyvtár állapotba, és dolgozhat e-mail címét. Ez a rövid távú vagy kisebb projekten dolgozik, és résztvevők már jól ismert, de ez jóval nehezebb kezelése, ha a használni kívánt felhasználók számos lehetősége van, vagy ha az idő előrehaladtával változik a résztvevők nagyszerű működik.  Például, előfordulhat, hogy lehet egy másik szervezet használata és az adott szervezet kapcsolatba lépnek egy pont, de idővel további felhasználókat a szervezetben lévő is kell hozzáférést.
+Az [Azure ad vállalatközi (B2B)](../b2b/what-is-b2b.md) Meghívási szolgáltatás használatakor már ismernie kell azon külső vendég felhasználók e-mail-címeit, akiket be szeretne állítani az erőforrás-könyvtárba, és együttműködik a szolgáltatással. Ez remekül működik, ha kisebb vagy rövid távú projekttel dolgozik, és már ismeri az összes résztvevőt, de ez nehezebben kezelhető, ha sok felhasználóval szeretne dolgozni, vagy ha a résztvevők idővel változnak.  Előfordulhat például, hogy egy másik szervezettel dolgozik, és egy kapcsolattartási ponttal rendelkezik az adott szervezethez, de az adott szervezet további felhasználói számára is hozzáférésre van szüksége.
 
-Tagjogosultság-kezelés definiálhat egy szabályzatot, amely lehetővé teszi, hogy adja meg, az igénylést egy hozzáférés-csomagot az Azure AD-ben is használó szervezetek. Megadhatja, hogy e jóváhagyásra szükség, és a hozzáférés a lejárati dátumot. Jóváhagyásra szükség, ha akkor is kijelölhet egy jóváhagyó egy vagy több felhasználót a külső szervezet, amely korábban meghívót – mivel valószínű, hogy tudja, melyik külső felhasználók a szervezet hozzáférésre van szükségük. Miután konfigurálta a hozzáférés-csomag, küldhet egy hivatkozást a hozzáférés csomaghoz, a kapcsolattartó személy a szervezetnél, külső. Azt a külső szervezet más felhasználókkal megoszthatja, és használhatják erre a hivatkozásra a hozzáférés csomag kéréséhez.  A címtárba már meghívott szervezetben lévő felhasználók hivatkozás is használhatja.
+A jogosultságok kezelésével meghatározhatja azt a szabályzatot, amely lehetővé teszi, hogy az Azure AD-t is használó szervezetek felhasználói hozzáférhessenek a hozzáférési csomag igényléséhez. Megadhatja, hogy szükséges-e a jóváhagyás, valamint a hozzáférés lejárati dátuma. Ha jóváhagyásra van szükség, akkor azt is megadhatja, hogy jóváhagyóként egy vagy több felhasználót a korábban meghívott külső szervezettől, mivel valószínűleg tudni fogja, hogy a szervezet külső felhasználói számára van-e hozzáférése. Miután konfigurálta a hozzáférési csomagot, a külső szervezet kapcsolattartója számára is elküldheti a hozzáférési csomagra mutató hivatkozást. Ez a kapcsolat a külső szervezet más felhasználóival is megosztható, és ezt a hivatkozást használhatja a hozzáférési csomag igényléséhez.  Az adott szervezet azon felhasználói, akik már meghívást kaptak a címtárba, a hivatkozást is használhatják.
 
-Amikor jóváhagyják a kérését, tagjogosultság-kezelés is üzembe helyezi a felhasználót a szükséges hozzáférést, amelyek magukban foglalhatják bejelentkezésre kéri a felhasználót, ha még nincsenek a címtárban. Az Azure AD automatikusan létrehoz egy B2B-fiókot a számukra.  Vegye figyelembe, hogy a rendszergazda korábban áramellátásuk beállításával melyik szervezetek engedélyezettek az együttműködéshez, a [B2B engedélyezik vagy megtagadják a lista](../b2b/allow-deny-list.md) engedélyezésére vagy letiltására meghívót küld a más szervezetek számára.  Ha a felhasználó nem engedélyezett az engedélyezési vagy letiltási listát, amelyet ezután nem lehet meghívni.
+A kérések jóváhagyása esetén a jogosultságok kezelése a szükséges hozzáféréssel fogja kiépíteni a felhasználót, amely magában foglalhatja a felhasználó meghívását, ha még nem szerepelnek a címtárban. Az Azure AD automatikusan létrehoz egy B2B-fiókot.  Vegye figyelembe, hogy a rendszergazdák korábban már korlátozták az együttműködésre engedélyezett szervezeteket, ha egy [B2B engedélyezési vagy megtagadási listát](../b2b/allow-deny-list.md) állítanak be a más szervezetek számára történő meghívások engedélyezéséhez vagy letiltásához.  Ha a felhasználó számára nem engedélyezett az engedélyezési vagy a tiltási lista, a rendszer nem kéri le őket.
 
-Mivel nem szeretné, hogy a külső felhasználó hozzáférése az utolsó tartja, megadhatja lejárati dátumot a házirendet, például a 180 nap. 180 nap elteltével a hozzáférése nem újítja meg, ha tagjogosultság-kezelés eltávolítja a hozzáférés-csomaghoz társított összes hozzáférést.  Tagjogosultság-kezelés révén meghívták a felhasználó nem rendelkezik más hozzáférési csomag hozzárendelésekkel, ha majd ha megszakad a utolsó hozzárendelés B2B-fiókjuk 30 napig bejelentkezés blokkolva, és azt követően eltávolítja.  Ez megakadályozza, hogy a szükségtelen fiókok elterjedése.  
+Mivel nem szeretné, hogy a külső felhasználó hozzáférhessen az utolsó Forever-hez, meg kell adnia egy lejárati dátumot a szabályzatban, például 180 nap. 180 nap után, ha a hozzáférésük nincs megújítva, a jogosultságok kezelése eltávolítja a hozzáférési csomaghoz társított összes hozzáférést.  Ha a jogosultságok kezelésében meghívott felhasználó nem rendelkezik más hozzáférési csomag-hozzárendelésekkel, akkor amikor elvesztik az utolsó hozzárendelést, a rendszer 30 napig letiltja a B2B-fiókját, és ezt követően eltávolítja azt.  Ez megakadályozza a szükségtelen fiókok elterjedését.  
 
 ## <a name="terminology"></a>Terminológia
 
-Tagjogosultság-kezelés és a hozzá tartozó dokumentáció jobb megértéséhez, tekintse át az alábbi feltételek.
+A jogosultságok kezelésének és dokumentációjának jobb megismeréséhez tekintse át a következő feltételeket.
 
 | Kifejezés vagy fogalom | Leírás |
 | --- | --- |
-| tagjogosultság-kezelés | Egy szolgáltatás, amely hozzárendeli, visszavonja, és felügyeli a hozzáférési csomagok. |
-| Access-csomag | Engedélyeket és szabályzatokat olyan felhasználók kérhetik gyűjteménye. Egy hozzáférés-csomag mindig szerepel egy katalógust. |
-| hozzáférési kérelem | Egy olyan hozzáférési csomagot elérésére irányuló kérelmet. Egy kérelem általában halad végig egy munkafolyamatot. |
-| policy | Szabályok készletét, amely meghatározza az access-életciklus, például hogyan felhasználók is hozzáférhetnek, akik jóváhagyhatja és mennyi ideig a felhasználók hozzáférhetnek. A házirendek például alkalmazottak hozzáférését és külső hozzáférés tartalmazza. |
-| catalog | Egy kapcsolódó erőforrások és a hozzáférési csomagok tároló. |
-| Általános katalógus | A beépített katalógus, amely mindig elérhető. Az általános katalógus erőforrások felvétele a bizonyos engedélyek szükségesek. |
-| resource | Egy eszköz vagy szolgáltatás (például egy csoport, alkalmazás vagy webhely), amely egy felhasználó kaphat engedélyeket. |
-| Erőforrás típusa | Típusú erőforrások, például a csoportokat, alkalmazásokat és a SharePoint Online-webhelyhez. |
-| erőforrás-szerepkör | Egy gyűjtemény társítva erőforrás. |
-| erőforrás-könyvtár | Egy könyvtárat, amely rendelkezik egy vagy több erőforrás megosztására. |
-| hozzárendelt felhasználó | Hozzárendelés-hozzáférés egy felhasználó vagy csoport csomag. |
-| Engedélyezése | A folyamat a felhasználók kérvényezhetik a kívánt elérhetővé egy hozzáférés-csomagot. |
+| jogosultságok kezelése | Hozzáférési csomagokat hozzárendelő, visszavonó és felügyelő szolgáltatás. |
+| hozzáférési csomag | Engedélyek és szabályzatok gyűjteménye a felhasználók által igényelhető erőforrásokhoz. Egy hozzáférési csomag mindig szerepel a katalógusban. |
+| hozzáférési kérelem | Hozzáférési csomag elérésére irányuló kérelem. A kérések általában egy munkafolyamaton keresztül haladnak át. |
+| policy | Olyan szabályok összessége, amelyek meghatározzák a hozzáférési életciklust, például azt, hogy a felhasználók hogyan férhetnek hozzá, ki hagyhatják jóvá, és hogy mennyi ideig férhetnek hozzá a felhasználók. Például a szabályzatok az alkalmazottak hozzáférését és a külső hozzáférést is tartalmazzák. |
+| catalog | Kapcsolódó erőforrások és hozzáférési csomagok tárolója. |
+| Általános katalógus | Olyan beépített katalógus, amely mindig elérhető. Ahhoz, hogy erőforrásokat vegyen fel az általános katalógusba, bizonyos engedélyekre van szükség. |
+| resource | Olyan eszköz vagy szolgáltatás (például csoport, alkalmazás vagy hely), amelyhez a felhasználó engedélyt kaphat. |
+| Erőforrás típusa | Az erőforrás típusa, amely magában foglalja a csoportokat, az alkalmazásokat és a SharePoint Online-webhelyeket. |
+| erőforrás-szerepkör | Egy erőforráshoz társított engedélyek gyűjteménye. |
+| erőforrás könyvtára | Egy vagy több megosztani kívánt erőforrással rendelkező könyvtár. |
+| hozzárendelt felhasználók | Hozzáférési csomag hozzárendelése egy felhasználóhoz vagy csoporthoz. |
+| Engedélyezése | Hozzáférési csomag elérhetővé tétele a felhasználók számára a kéréshez. |
 
 ## <a name="license-requirements"></a>Licenckövetelmények
 
 [!INCLUDE [Azure AD Premium P2 license](../../../includes/active-directory-p2-license.md)]
 
-Speciális felhőkben, mint például az Azure Government, Azure Germany és Azure China 21Vianet nem érhetők el jelenleg ebben az előzetes verzióban használható.
+A speciális felhők, például az Azure Government, az Azure Germany és az Azure China 21Vianet jelenleg nem használhatók ebben az előzetes verzióban.
 
 ## <a name="next-steps"></a>További lépések
 

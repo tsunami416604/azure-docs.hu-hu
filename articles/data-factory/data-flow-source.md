@@ -1,158 +1,162 @@
 ---
-title: Állítsa be az Azure Data Factory az adatfolyam-leképezés funkció a forrás-átalakítás
-description: Ismerje meg, hogyan állítható be egy adatfolyam-leképezés forrás átalakítási műveletet.
+title: Forrás-átalakítás beállítása a Azure Data Factory leképezési adatáramlási szolgáltatásában
+description: Megtudhatja, hogyan állíthatja be a forrás-átalakítást a leképezési adatfolyamban.
 author: kromerm
 ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/12/2019
-ms.openlocfilehash: 4f77eafd3309d7c1d679c126b1a5eb1ff0e9a28d
-ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
+ms.openlocfilehash: f6aed5d2ac1c4672d8d8868fe127ead053512e42
+ms.sourcegitcommit: da0a8676b3c5283fddcd94cdd9044c3b99815046
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67490095"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68314838"
 ---
-# <a name="source-transformation-for-mapping-data-flow"></a>Forrás átalakításában adatfolyam-leképezés 
+# <a name="source-transformation-for-mapping-data-flow"></a>Forrás-átalakítás a leképezési adatfolyamhoz 
 
 [!INCLUDE [notes](../../includes/data-factory-data-flow-preview.md)]
 
-Egy adatforrás-átalakítás konfigurálja az adatforrást az adatfolyamhoz. Egy adatfolyamot is tartalmazhat egynél több adatforrás-átalakítás. Folyamatok tervezése az adatokat, amikor kezdő mindig egy adatforrás-átalakítás.
+A forrás-átalakítás konfigurálja az adatforrást az adatfolyamhoz. Egy adatfolyam több forrás-átalakítást is tartalmazhat. Az adatfolyamatok tervezésekor mindig a forrás-átalakítással kezdjen.
 
-Minden adat folyamat szükséges legalább egy adatforrás-átalakítás. Az adatátalakítások végrehajtásához szükség szerint adjon hozzá a legtöbb forrásból. Csatlakozhat egy illesztési átalakítási mód vagy a union átalakítás együtt forrásokat.
+Minden adatfolyamhoz legalább egy forrás-átalakítás szükséges. Az adatátalakítások végrehajtásához tetszőleges számú forrást kell hozzáadnia. Ezeket a forrásokat összekapcsolhatja összekapcsolási átalakítással vagy Union-transzformációval.
 
 > [!NOTE]
-> Hibakeresése az adatfolyamot, az adatok beolvasva a forrás a mintavételi beállítást vagy a hibakeresési forrás korlátozások használatával. Fogadóba másolt adatokat írni, futtatnia kell az adatfolyam egy folyamatból, az adatfolyam-tevékenység. 
+> Az adatfolyamatok hibakeresése során az adatok beolvasása a forrásból a mintavételezési beállítás vagy a hibakeresési forrás korlátai alapján történik. Az adatok fogadóba való írásához az adatfolyamot egy adatfolyamati tevékenységből kell futtatnia. 
 
-![Az adatforrás-beállítások lapon átalakítási beállítások a forrás](media/data-flow/source.png "forrás")
+![Forrás-átalakítási beállítások a forrás beállításai lapon](media/data-flow/source.png "forrás")
 
-Társítsa a forrás adatfolyam átalakítása pontosan egy Data Factory-adatkészlet. Az adatkészlet határozza meg, az alakzat és írni vagy olvasni az adatok helyének. A forrás és a fájl helyettesítő karakterek listák segítségével egyszerre több fájl használatához.
+Társítsa az adatfolyam forrás-átalakítását pontosan egy Data Factory adatkészlettel. Az adatkészlet határozza meg az adatokat, amelyeket írni vagy olvasni szeretne. A forrásban lévő helyettesítő karakterekkel és fájlokkal egyszerre több fájllal is dolgozhat.
 
-## <a name="data-flow-staging-areas"></a>Data Flow átmeneti területekből
+## <a name="data-flow-staging-areas"></a>Adatfolyam-előkészítési területek
 
-Az adatfolyam együttműködik *átmeneti* adatkészleteket, amelyek az összes Azure-ban. Az adatok átalakításakor használt átmeneti ezeket az adatkészleteket használja. 
+Az adatfolyam olyan *előkészítési* adatkészletekkel működik, amelyek mind az Azure-ban találhatók. Ezeket az adatkészleteket használja az előkészítéshez az adatátalakításkor. 
 
-A Data Factory csaknem 80 natív összekötőket hozzáféréssel rendelkezik. Olyan más forrásból származó adatok szerepeljenek az adatfolyamot, a másolási tevékenység eszközzel, hogy az adatfolyam adatkészlet átmeneti terület egyikének az adatok előkészítéséhez.
+Data Factory közel 80 natív összekötőhöz férhet hozzá. Az adatfolyamatban lévő más forrásokból származó adatok belefoglalásához használja a másolási tevékenység eszközt, hogy az adatok az adatforgalom adatkészletének egyik átmeneti területén legyenek.
 
 ## <a name="options"></a>Beállítások
 
-Válassza ki a sémát és a mintavételi lehetőség az adatok.
+Válassza ki az adataihoz tartozó séma-és mintavételi beállításokat.
 
-### <a name="allow-schema-drift"></a>Séma eltéréseket engedélyezése
-Válassza ki **séma eltéréseket engedélyezése** , ha a forrás oszlopok gyakran változik. Ezzel a beállítással minden bejövő forrásmezőket a fogadó átalakítások keresztül érhetők el.
+### <a name="schema-drift"></a>Sémaeltérés
+A [séma-eltolódás](concepts-data-flow-schema-drift.md) az ADF képes natív módon kezelni az adatfolyamatokban lévő rugalmas sémákat anélkül, hogy explicit módon meg kellene határoznia az oszlopok módosításait.
 
-### <a name="validate-schema"></a>Séma érvényesítése
+* Válassza a **séma eltolódásának engedélyezése** lehetőséget, ha a forrás oszlopai gyakran változnak. Ez a beállítás lehetővé teszi, hogy az összes bejövő forrás mező áthaladjon a fogadóra történő átalakításokon.
 
-Ha a forrásadatok bejövő verziója nem egyezik a megadott séma, az adatfolyam nem fogja tudni futtatni.
+* A **következtetett oszlopok típusának** kiválasztásakor a rendszer az ADF-et az összes felderített oszlop adattípusának definiálására utasítja. Ha ez a funkció ki van kapcsolva, az ADF a karakterláncot fogja feltételezni.
 
-![Nyilvános adatforrás-beállítások a beállítások ellenőrzése séma, az engedélyezési séma eltéréseket és a mintavételi megjelenítő](media/data-flow/source1.png "1 nyilvános adatforrás")
+### <a name="validate-schema"></a>Séma ellenőrzése
 
-### <a name="sample-the-data"></a>Az adatok
-Engedélyezése **mintavételi** a forrásból sorok számának korlátozására. Használja ezt a beállítást, ha a teszt, vagy az adatokat a forrásból, hibakeresési célra.
+Ha a forrásadatok bejövő verziója nem egyezik a definiált sémával, az adatfolyam futtatása sikertelen lesz.
 
-## <a name="define-schema"></a>Séma megadása
+![A nyilvános forrás beállításai, amelyek a séma érvényesítésének lehetőségeit, a séma-eltolódás engedélyezését és a mintavételezést mutatják](media/data-flow/source1.png "nyilvános forrás 1")
 
-Ha a forrásfájl nem listaobjektum (a példában, egybesimított fájlok helyett Parquet-fájlokat), itt minden mező esetében az adattípusok definiálása az az adatforrás-átalakítás.  
+### <a name="sample-the-data"></a>Az adatgyűjtés mintája
+A **mintavétel** engedélyezése a forrás sorainak számának korlátozásához. Akkor használja ezt a beállítást, ha hibakeresési célból teszteli vagy felveszi az adatait a forrásból.
 
-![A séma megadása lapon átalakítási beállítások a forrás](media/data-flow/source2.png "2 forrás")
+## <a name="define-schema"></a>Séma definiálása
 
-Válassza ki az átalakítás az oszlopnevek később módosíthatja. A származtatott oszlop átalakítása használatával az adattípusok módosítása. Típusos forrásokhoz módosíthatja az adattípusok később válassza átalakításban. 
+Ha a forrásfájlok nincsenek szigorúan beírva (például a parketta-fájlok helyett egyszerű fájlok), a forrás-átalakításban adja meg az egyes mezők adattípusait.  
 
-![Adattípusok a select átalakítás](media/data-flow/source003.png "adattípusok")
+![Forrás-átalakítási beállítások a séma definiálása lapon](media/data-flow/source2.png "2. forrás")
 
-### <a name="optimize-the-source-transformation"></a>Az adatforrás-átalakítás optimalizálása
+Később módosíthatja az oszlopok nevét egy kiválasztott átalakításban. A származtatott oszlop átalakításával módosíthatja az adattípusokat. A szigorúan beírt források esetében az adattípusokat egy későbbi kiválasztott átalakításban módosíthatja. 
 
-Az a **optimalizálása** lapon láthatja a forrás átalakításkor az egy **forrás** partíció típusa. Ez a beállítás csak akkor, ha a forrás az Azure SQL Database érhető el. Ennek az az oka a Data Factory megpróbál kapcsolatok párhuzamos, nagy lekérdezések futtatásához az SQL Database-forrás.
+![Adattípusok egy kiválasztott átalakításban](media/data-flow/source003.png "") adattípusok
 
-![Forrás partícióbeállítások](media/data-flow/sourcepart3.png "particionálása")
+### <a name="optimize-the-source-transformation"></a>A forrás átalakítás optimalizálása
 
-Nem kell az adatok particionálása az SQL Database-forrás, de hasznos, ha nagy lekérdezések partíciókat. A partíció alapja egy olyan oszlop vagy egy lekérdezés.
+A forrás-átalakítás **optimalizálása** lapján megjelenhet a **forrás** partíció típusa. Ez a beállítás csak akkor érhető el, ha a forrás Azure SQL Database. Ennek az az oka, hogy Data Factory párhuzamosan próbálkozik a csatlakozással, hogy nagy lekérdezéseket futtasson a SQL Database-forráson.
 
-### <a name="use-a-column-to-partition-data"></a>Használja az adatok particionálására egy oszlop
+![Forrás partíció beállításai](media/data-flow/sourcepart3.png "particionálás")
 
-A forrás táblából válasszon ki egy oszlopot, partícióhoz a. A partíciók számát is megadhatja.
+Nem kell particionálnia az SQL Database-forrás adatait, de a partíciók nagy lekérdezések esetén hasznosak. A partíciót egy oszlopra vagy egy lekérdezésre alapozhatja.
 
-### <a name="use-a-query-to-partition-data"></a>Az adatok particionálása lekérdezés használata
+### <a name="use-a-column-to-partition-data"></a>Oszlop használata az adatparticionáláshoz
 
-Kiválaszthatja, hogy a lekérdezés alapján kapcsolatok particionálásához. Egyszerűen adja meg a WHERE predikátum tartalmát. Adja meg például az 1980 >.
+A forrás táblából válassza ki a particionálni kívánt oszlopot. Állítsa be a partíciók számát is.
 
-## <a name="source-file-management"></a>Forrás fájlok kezelése
+### <a name="use-a-query-to-partition-data"></a>Adatparticionálásra szolgáló lekérdezés használata
 
-Válassza ki a beállítások a forrás található fájlok kezeléséhez. 
+Dönthet úgy is, hogy egy lekérdezés alapján particionálja a kapcsolatokat. Egyszerűen adja meg egy WHERE predikátum tartalmát. Adja meg például a következőt: év > 1980.
 
-![Az új forrásbeállítások](media/data-flow/source2.png "új beállításai")
+## <a name="source-file-management"></a>Forrásfájlok kezelése
 
-* **Helyettesítő karaktert tartalmazó elérési út**: A forrásmappából válasszon, amely egy mintának megfelelő fájlok. Ez a beállítás felülbírál bármely fájl az adatkészlet-definícióban.
+Válassza a beállítások elemet a forrásban található fájlok kezeléséhez. 
 
-Helyettesítő példák:
+![Új forrás beállításai](media/data-flow/source2.png "Új beállítások")
 
-* ```*``` Bármely karakter jelöl
-* ```**``` A rekurzív directory beágyazási jelöli
-* ```?``` Egy karaktert váltja fel
-* ```[]``` Több karaktert a zárójelek között szerepel
+* **Helyettesítő karakter elérési útja**: A forrás tárolóban válasszon egy olyan fájlt, amely megfelel a mintának. Ez a beállítás felülbírálja az adatkészlet-definícióban található összes fájlt.
 
-* ```/data/sales/**/*.csv``` Az összes csv-fájlok alatt /data/sales beolvasása
-* ```/data/sales/20??/**``` Lekérdezi a 20 századi minden fájl
-* ```/data/sales/2004/*/12/[XY]1?.csv``` Az összes csv-fájlok lekéri az 2004. december kezdve az X vagy Y 2 számjegyű előtagja
+Helyettesítő karakteres példák:
 
-A kötettárolóhoz kell adni az adatkészletben. A helyettesítő karaktereket tartalmazó cím ezért is tartalmaznia kell abból a gyökérmappából, a mappa elérési útja.
+* ```*```A karakterek tetszőleges halmazát jelöli.
+* ```**```Rekurzív könyvtár beágyazását jelöli
+* ```?```Egy karakter cseréje
+* ```[]```A zárójelben szereplő több karakternek felel meg.
 
-* **Fájlok listája**: Ez egy olyan fájlt. Hozzon létre egy szövegfájlt, amely relatív elérési út feldolgozandó fájlok listáját tartalmazza. A szövegfájl mutasson.
-* **Tároló neve oszlop**: A forrásfájl neve Store az adatok egy oszlopban. Adjon meg egy új nevet a fájl karakterlánc tárolására.
-* **A művelet befejezését követően**: Kiválasztása után az adatok folyamatfuttatási jogosultságot, törölje a forrás-fájlt, vagy helyezze át a forrásfájl nem történik semmi. a forrás-fájllal. Az áthelyezés utakat relatív.
+* ```/data/sales/**/*.csv```Az összes CSV-fájl beolvasása a/Data/Sales alatt
+* ```/data/sales/20??/**```Minden fájl beolvasása a huszadik században
+* ```/data/sales/2004/*/12/[XY]1?.csv```Minden CSV-fájl beolvasása a 2004-ben decemberben, X vagy Y előtaggal, 2 jegyű számmal
 
-Forrásfájljainak áthelyezése egy másik hely utófeldolgozás, először válassza ki "Áthelyezése" file művelet. Ezután adja meg a "feladó" könyvtár. Ha nem használ semmilyen helyettesítő karakterek az elérési úthoz, majd a "feladó" beállítás lesz a forrásmappa ugyanabban a mappában.
+A tárolót meg kell adni az adatkészletben. A helyettesítő karakteres elérési útnak ezért a gyökérmappa elérési útját is tartalmaznia kell.
 
-Ha például van egy helyettesítő karakterrel megadott forrás elérési útja:
+* **Fájlok listája**: Ez egy beállított fájl. Hozzon létre egy szövegfájlt, amely tartalmazza a feldolgozandó relatív elérési út fájljainak listáját. Mutasson erre a szövegfájlra.
+* **A fájl nevét tároló oszlop**: Tárolja a forrásfájl nevét az adataiban található oszlopban. Adja meg a fájlnév karakterláncának tárolására szolgáló új nevet.
+* **Befejezés után**: Ha az adatfolyam futtatása után semmit nem kíván végrehajtani a forrásfájlban, törölje a forrásfájlt, vagy helyezze át a forrásfájlt. Az áthelyezés elérési útjai relatívak.
+
+Ha a forrásfájlokat másik helyre szeretné áthelyezni a feldolgozás után, először válassza a "áthelyezés" lehetőséget a fájl művelethez. Ezután állítsa be a "from" könyvtárat. Ha nem használ helyettesítő karaktert az elérési úthoz, akkor a "from" beállítás lesz a forrás mappájával megegyező mappa.
+
+Ha van helyettesítő forrás elérési útja, például:
 
 ```/data/sales/20??/**/*.csv```
 
-Megadhatja "feladó"
+A "from" lehetőséget adhatja meg
 
 ```/data/sales```
 
-És a "záró", mint
+És "to"
 
 ```/backup/priorSales```
 
-Ebben az esetben minden alkönyvtár /data/sales alkatrészekből, amelyek alapján kerülnek /backup/priorSales viszonyítva.
+Ebben az esetben a forrásként szolgáló/Data/Sales alatti összes alkönyvtárat a rendszer a/backup/priorSales.-hez viszonyítva helyezi át
 
 ### <a name="sql-datasets"></a>SQL-adatkészletek
 
-Ha a forrás SQL-adatbázis vagy az SQL Data Warehouse, a forrás Fájlkezelés további lehetősége van.
+Ha a forrás SQL Database vagy SQL Data Warehouse, akkor további lehetőségek állnak rendelkezésre a forrásfájlok kezeléséhez.
 
-* **Lekérdezés**: Adja meg a forrás SQL-lekérdezést. Ez a beállítás felülbírál bármely táblázat, amely a kiválasztott adatkészlet. Vegye figyelembe, hogy **Order By** záradékok itt nem támogatottak, de beállíthatja, hogy egy teljes válassza ki az utasítást. Felhasználó által definiált táblafüggvények is használható. **Válassza ki * a udfGetData()** van egy SQL-táblát visszaadó UDF. Ezt a lekérdezést, amelyet használhat az adatfolyam a forrástábla állítja elő.
-* **Kötegméret**: Adja meg a Köteg mérete nagy mennyiségű adat álló olvasott be.
-* **Elkülönítési szintet**: SQL-források az ADF-leképezés adatfolyamok alapértelmezés olvassa el a nem véglegesített. Az elkülönítési szint Itt módosíthatja az alábbi értékek egyikére:
-* Zárolásalapú
-* Olvassa el a nem véglegesített
-* Megismételhető olvasása
-* A szerializálható
-* Egyik sem (figyelmen kívül hagyása elkülönítési szint)
+* **Lekérdezés**: Adja meg a forráshoz tartozó SQL-lekérdezést. Ez a beállítás felülbírálja az adatkészletben kiválasztott összes táblát. Vegye figyelembe, hogy az **Order by** záradékok itt nem támogatottak, de a teljes select from utasítással is megadható. A felhasználó által definiált Table functions is használható. a **select * from udfGetData ()** egy olyan UDF az SQL-ben, amely egy táblázatot ad vissza. Ez a lekérdezés létrehoz egy forrástábla, amelyet az adatfolyamatában használhat.
+* **Köteg mérete**: Adjon meg egy batch-méretet, amely nagy mennyiségű adatokat olvas be.
+* **Elkülönítési szint**: Az ADF-leképezési adatfolyamatokban lévő SQL-források alapértelmezett értéke nem véglegesített. A következő értékek egyikére módosíthatja az elkülönítési szintet:
+* Olvasás véglegesítve
+* Nem véglegesített olvasás
+* Ismételhető olvasás
+* Szerializálható
+* Nincs (elkülönítési szint figyelmen kívül hagyása)
 
-![Elkülönítési szintet](media/data-flow/isolationlevel.png "elkülönítési szint")
+![Elkülönítési szint](media/data-flow/isolationlevel.png "Elkülönítési szint")
 
 > [!NOTE]
-> Fájlműveletek futtassa, csak akkor, ha az adatok az adatfolyam kezdhet egy (a folyamat hibakeresési vagy a Futtatás végrehajtási) futtatása, a folyamat a végrehajtása az adatfolyam tevékenységeit használó folyamatot. A fájl az operations *nem* adatfolyam hibakeresési módban futtatja.
+> A fájl műveletei csak akkor futnak, amikor egy folyamaton belül indítja el az adatfolyamatot (a folyamat hibakeresési vagy végrehajtási futtatása), amely az adatfolyamok végrehajtása tevékenységet használja egy folyamaton belül. A fájl műveletei *nem* futnak adatfolyam-hibakeresési módban.
 
 ### <a name="projection"></a>Vetület
 
-Sémák adatkészletekben, mint például a leképezésben az olyan adatforrások az adatokat tartalmazó oszlopok, típusok és a forrásadatok formátumok határozza meg. 
+Az adatkészletekben lévő sémák esetében a forrás vetülete határozza meg a forrásadatok adatoszlopait, típusait és formátumait. 
 
-![A leképezés lap beállításai](media/data-flow/source3.png "leképezése")
+![Beállítások a kivetítés lapon](media/data-flow/source3.png "Kivetítés")
 
-Ha a szöveges fájl nincs meghatározott sémája rendelkezik, válassza ki a **észlelje az adattípusokat** , hogy a Data Factory fog minta és az adattípusok kikövetkeztetni. Válassza ki **definiálása alapértelmezett formátuma** az automatikus észlelés alapértelmezett fájlformátum. 
+Ha a szövegfájl nem rendelkezik meghatározott sémával, válassza  az adattípusok észlelése lehetőséget, hogy Data Factory az adattípusok mintavételezését és következtetését. Válassza az **alapértelmezett formátum megadása** lehetőséget az alapértelmezett adatformátumok automatikus észleléséhez. 
 
-Módosíthatja az oszlop adattípusait később származtatott oszlopot átalakításban. Válassza ki az átalakítás használatával módosíthatja az oszlopok neveit.
+Az oszlop adattípusait egy későbbi származtatott oszlop-átalakításban módosíthatja. Az oszlopnevek módosításához válasszon transzformációt.
 
-![Alapértelmezett adatformátumok a célnyelven beállításainak](media/data-flow/source2.png "alapértelmezett formátumok")
+![Alapértelmezett adatformátumok beállításai](media/data-flow/source2.png "Alapértelmezett formátumok")
 
 ### <a name="add-dynamic-content"></a>Dinamikus tartalom hozzáadása
 
-Ha a beállítás panel mezők belül kattint, megjelenik egy "Dinamikus tartalom hozzáadása" hivatkozást. Ide kattintva, elindul a Kifejezésszerkesztőt. Ez a, amelyen beállíthatja értékek beállítások segítségével dinamikusan kifejezések, statikus konstansértékekkel vagy paramétereit.
+Ha a beállítások panelen a mezőkön belülre kattint, megjelenik a "dinamikus tartalom hozzáadása" hivatkozás. Ha ide kattint, elindul a Kifejezésszerkesztő. Itt állíthatja be dinamikusan a beállítások értékeit kifejezések, statikus literális értékek vagy paraméterek használatával.
 
-![Paraméterek](media/data-flow/params6.png "paraméterek")
+![Paraméterek](media/data-flow/params6.png "Paraméterek")
 
 ## <a name="next-steps"></a>További lépések
 
-Épület megkezdése egy [származtatott oszlop átalakítása](data-flow-derived-column.md) és a egy [válassza ki az átalakítási](data-flow-select.md).
+Egy származtatott [oszlop átalakításának](data-flow-derived-column.md) és egy [kiválasztott átalakítás](data-flow-select.md)létrehozásának megkezdése.

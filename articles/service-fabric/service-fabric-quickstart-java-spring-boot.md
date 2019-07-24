@@ -15,14 +15,14 @@ ms.workload: NA
 ms.date: 01/29/2019
 ms.author: suhuruli
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 2c98b069e042f9cbd07ccee643028ac84b3471c6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: f7cf3f4cc0ceba89c031f5c36e90bbd6ef3dd20a
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60728559"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68327156"
 ---
-# <a name="quickstart-deploy-a-java-spring-boot-application-to-service-fabric"></a>Gyors útmutató: A Service Fabric Java Spring Boot-alkalmazás üzembe helyezése
+# <a name="quickstart-deploy-a-java-spring-boot-application-to-service-fabric"></a>Gyors útmutató: Java Spring boot-alkalmazás üzembe helyezése Service Fabric
 
 Az Azure Service Fabric egy elosztott rendszerplatform, amely mikroszolgáltatások és tárolók üzembe helyezésére és kezelésére szolgál.
 
@@ -90,7 +90,7 @@ git clone https://github.com/spring-guides/gs-spring-boot.git
     java -jar gs-spring-boot-0.1.0.jar
     ```
 
-1. Adja hozzá az **Endpoints** erőforrást a `gs-spring-boot/SpringServiceFabric/SpringServiceFabric/SpringGettingStartedPkg/ServiceManifest.xml` fájlban:
+1. Adja hozzá  a végpontok erőforrást a *GS-Spring-boot/SpringServiceFabric/SpringServiceFabric/SpringGettingStartedPkg/ServiceManifest. xml fájlban.*
 
     ```xml 
         <Resources>
@@ -161,7 +161,7 @@ Mostanra más létrehozta Spring Boot mintájához tartozó Service Fabric-alkal
     ./install.sh
     ```
 
-1. Nyissa meg a kedvenc webböngészőjét, és az alkalmazás elérése elérésével `http://localhost:8080`.
+1. Nyissa meg a kedvenc webböngészőjét, és nyissa meg az alkalmazást az alkalmazáshoz `http://localhost:8080`való hozzáféréssel.
 
     ![Helyi alkalmazás kezelőfelülete](./media/service-fabric-quickstart-java-spring-boot/springbootsflocalhost.png)
 

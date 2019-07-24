@@ -1,51 +1,54 @@
 ---
-title: Egy változó igényeket elégíthet Azure adatkezelő fürt vertikális
-description: Ez a cikk ismerteti a lépéseket vertikális felskálázás és vertikális leskálázás egy igény szerinti rendelheti az adatkezelőt az Azure-fürtön.
+title: A fürt vertikális skálázása (horizontális felskálázás) kezelése az Azure Adatkezelő a változó igények kielégítése érdekében
+description: Ez a cikk az Azure Adatkezelő-fürt vertikális felskálázásának és méretezésének lépéseit ismerteti az igények módosítása alapján.
 author: radennis
 ms.author: radennis
 ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
-ms.date: 06/30/2019
-ms.openlocfilehash: dc9ca8bb592e699d19835efeafb91e81408ae297
-ms.sourcegitcommit: 1e347ed89854dca2a6180106228bfafadc07c6e5
+ms.date: 07/14/2019
+ms.openlocfilehash: 80bbdf3a5d936719b06782cd78d56088b36cb21d
+ms.sourcegitcommit: 6b41522dae07961f141b0a6a5d46fd1a0c43e6b2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67571529"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67985487"
 ---
-# <a name="manage-cluster-scale-up-to-accommodate-changing-demand"></a>Fürt vertikális felskálázása változó igényeket elégíthet kezelése
+# <a name="manage-cluster-vertical-scaling-scale-up-in-azure-data-explorer-to-accommodate-changing-demand"></a>A fürt vertikális skálázása (horizontális felskálázás) kezelése az Azure Adatkezelő a változó igények kielégítése érdekében
 
-Van egy Azure Data Explorer-fürt méretezése két munkafolyamatok:
-1. [Horizontális skálázás](manage-cluster-horizontal-scaling.md), más néven is néven horizontális fel- és a.
-2. Függőleges méretezés, más néven felfelé és lefelé skálázást.
+A fürt megfelelő méretezése az Azure-Adatkezelő teljesítményének szempontjából kritikus fontosságú. A statikus fürt mérete a használaton kívüli vagy túlzott kihasználtságot eredményezhet, ami egyik ideális megoldás.
 
-Ez a cikk bemutatja, hogyan kezelheti a fürt vertikális skálázás.
+Mivel a fürt iránti igényt nem lehet abszolút pontossággal előre jelezni, a jobb megoldás  a fürt méretezése, a kapacitás és a CPU-erőforrások hozzáadása és eltávolítása a változó igényekkel. 
 
-Fürt méretezése megfelelően, kritikus fontosságú a teljesítmény az Azure Data Explorer. De igény szerint egy fürtön nem becsülhető abszolút pontossággal. Egy statikus fürtméret vezethet alulkihasználtságának vagy overutilization, ezek egyike sem nem ideális. Az, hogy esetleg jobb megközelítés *méretezési* egy fürthöz, hozzáadása és eltávolítása a kapacitás és a Processzor-erőforrások igény szerinti módosítását. 
+Az Azure Adatkezelő-fürtök méretezésére két munkafolyamat áll rendelkezésre:
 
-## <a name="steps-to-configure-vertical-scaling"></a>Vertikális skálázás konfigurálásának lépései
+* [Horizontális skálázás](manage-cluster-horizontal-scaling.md), más néven skálázás be-és kifelé.
+* Vertikális skálázás, más néven felfelé és lefelé skálázás.
 
-1. Nyissa meg a fürt. A **beállítások**válassza **vertikális felskálázás**.
+Ez a cikk a vertikális skálázási munkafolyamatot ismerteti:
 
-    A rendelkezésre álló termékváltozatok listáját még látható. Például az alábbi ábrán csak négy termékváltozatban érhetők el.
+## <a name="configure-vertical-scaling"></a>Vertikális skálázás konfigurálása
+
+1. A Azure Portal lépjen az Azure Adatkezelő fürterőforrás elemre. A **Beállítások**területen válassza a vertikális felskálázás lehetőséget.
+
+1. A **felskálázás** ablakban megjelenik a fürthöz elérhető SKU-ket tartalmazó lista. Az alábbi ábrán például csak négy SKU érhető el.
 
     ![Vertikális felskálázás](media/manage-cluster-vertical-scaling/scale-up.png)
 
-    SKU-k le vannak tiltva, mert az aktuális Termékváltozat zajlik, vagy nem érhetők el a régióban, ahol a fürt is található.
+    Az SKU-ket a rendszer letiltotta, mert az aktuális SKU, vagy nem érhetők el abban a régióban, ahol a fürt található.
 
-1. A Termékváltozat, jelölje ki a Termékváltozat szeretne, majd válassza ki a **kiválasztása** gombra.
+1. Az SKU módosításához válasszon ki egy új SKU-t, majd kattintson a **kiválasztás**elemre.
 
 > [!NOTE]
-> A vertikális skálázása folyamat néhány percet is igénybe vehet, és ebben az időszakban a fürt felfüggesztjük. Vegye figyelembe, hogy a vertikális leskálázást károsíthatják a fürt teljesítményét.
+> * A vertikális skálázási folyamat eltarthat néhány percig, és ez idő alatt a fürt fel lesz függesztve. 
+> * A leskálázás a fürt teljesítményének károsodását okozhatja.
+> * Az ár a fürt virtuális gépei és az Azure Adatkezelő szolgáltatási költségeinek becslése. Egyéb költségeket nem tartalmaz. A teljes díjszabási információkért tekintse meg az Azure Adatkezelő a [Cost kalkulátort](https://dataexplorer.azure.com/AzureDataExplorerCostEstimator.html) ismertető oldalt, valamint az Azure adatkezelő [díjszabási oldalát](https://azure.microsoft.com/pricing/details/data-explorer/) .
 
-Most végezze el az Azure Data Explorer fürt egy felfelé vagy lefelé művelet.
-
-Ha a fürt méretezése problémák segítségre van szüksége [nyisson egy támogatási kérést](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview) az Azure Portalon.
+Most beállította a vertikális skálázást az Azure Adatkezelő-fürthöz. Adjon hozzá egy másik szabályt egy horizontális skálázáshoz. Ha segítségre van szüksége a fürtök skálázásával kapcsolatos problémák megoldásához, [Nyisson meg egy támogatási kérést](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview) a Azure Portal.
 
 ## <a name="next-steps"></a>További lépések
 
-* [Fürt horizontális méretezés kezelésére](manage-cluster-horizontal-scaling.md) dinamikusan méretezheti az out a példányok száma a megadott metrikák alapján.
+* A [fürt vízszintes skálázásának kezelése](manage-cluster-horizontal-scaling.md) a megadott mérőszámok alapján a példányszám dinamikusan horizontális felskálázásához.
 
-* Az erőforrás-használat figyelése a következő cikkben: [Azure Data Explorer Teljesítményfigyelő, egészségügyi és használati metrikákkal](using-metrics.md).
+* Figyelje meg az erőforrás-használatot a következő cikk alapján: [Az Azure adatkezelő teljesítményének, állapotának és használatának monitorozása metrikákkal](using-metrics.md).
 

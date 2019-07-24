@@ -1,90 +1,114 @@
 ---
-title: Megismerheti az Azure Reserved VM Instances kedvezményes |} A Microsoft Docs
-description: Ismerje meg, hogyan rendszer alkalmazza a kedvezményt az Azure fenntartott VM-példány működő virtuális gépekhez.
-documentationcenter: ''
+title: A Azure Reserved VM Instances kedvezmény ismertetése | Microsoft Docs
+description: Ismerje meg, hogyan történik az Azure-beli fenntartott VM-példányra vonatkozó kedvezmény alkalmazása a futó virtuális gépekre.
 author: yashesvi
 manager: yashar
-editor: ''
 ms.service: billing
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/13/2019
+ms.date: 07/11/2019
 ms.author: banders
-ms.openlocfilehash: b112dd881d4b2e87e617111d00bc82c6151d7750
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 191160035f516d818d5537c5c47f9604998c46f7
+ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60370074"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67849993"
 ---
-# <a name="how-the-azure-reservation-discount-is-applied-to-virtual-machines"></a>Hogyan kell alkalmazni az Azure a foglalási kedvezményt a virtuális gépek
+# <a name="how-the-azure-reservation-discount-is-applied-to-virtual-machines"></a>Az Azure foglalási kedvezmény alkalmazása a virtuális gépekre
 
-Miután vásárol egy Azure Reserved Virtual Machine Instance, a rendszer automatikusan alkalmazza a foglalási kedvezményt a virtuális gépek, amelyek megfelelnek a attribútumok és a Foglalás mennyiségét. A Foglalás magában foglalja a számítási költségek a virtuális gépek.
+Az Azure-beli fenntartott virtuálisgép-példány megvásárlása után a foglalási kedvezmény automatikusan a foglalás attribútumait és mennyiségét megegyező virtuális gépekre lesz alkalmazva. A foglalás lefedi a virtuális gépek számítási költségeit.
 
-A foglalási kedvezményt az alap virtuális gépekre az Azure piactéren megvásárolt vonatkozik.
+A foglalási kedvezmény az Azure piactéren vásárolt alapszintű virtuális gépekre vonatkozik.
 
-Az SQL Database szolgáltatás számára fenntartott kapacitás, lásd: [Azure Reserved Instances ismertetése kedvezményes](billing-understand-reservation-charges.md).
+SQL Database fenntartott kapacitásért lásd: az [Azure Reserved instances kedvezményének ismertetése](billing-understand-reservation-charges.md).
 
-Az alábbi táblázat ismerteti a kapcsolódó költségek a virtuális gépet egy fenntartott VM-példány megvásárlása után. Minden esetben díjkötelesek tárolási és hálózatkezelési a normál díjakat.
+A következő táblázat a fenntartott VM-példányok megvásárlása után mutatja be a virtuális gép költségeit. Minden esetben a normál díjszabás szerint kell fizetnie a tárolásért és a hálózatkezelésért.
 
-| Virtuális gép típusa  | A díjat a fenntartott VM-példány |
+| Virtuális gép típusa  | Fenntartott VM-példánnyal kapcsolatos díjak |
 |-----------------------|--------------------------------------------|
-|Linux rendszerű virtuális gépek anélkül, hogy további szoftvereket | A Foglalás magában foglalja a virtuális gép infrastrukturális költségeit.|
-|Linux rendszerű virtuális gépek szoftvereinek díjait (például a Red Hat) | A Foglalás infrastrukturális költségek ismerteti. További szoftverek díjkötelesek.|
-|Windows virtuális gépek anélkül, hogy további szoftvereket |A Foglalás infrastrukturális költségek ismerteti. Windows szoftverek díjkötelesek.|
-|Windows virtuális gépek további szoftvereket (például SQL server) | A Foglalás infrastrukturális költségek ismerteti. Windows szoftverek és a egy másik szoftver díjkötelesek.|
-|Windows virtuális gépek [Azure Hybrid Benefit értékelem](../virtual-machines/windows/hybrid-use-benefit-licensing.md) | A Foglalás infrastrukturális költségek ismerteti. Az Azure Hybrid Benefit a Windows a szoftverek díjait tartoznak. E kiegészítő programokat, külön számlázzuk.|
+|Linux rendszerű virtuális gépek további szoftverek nélkül | A foglalás a virtuális gép infrastrukturális költségeire vonatkozik.|
+|Linuxos virtuális gépek szoftveres költségekkel (például Red Hat) | A foglalás az infrastrukturális költségek fedezésére is vonatkozik. További szoftverekért kell fizetnie.|
+|Windows rendszerű virtuális gépek további szoftverek nélkül |A foglalás az infrastrukturális költségek fedezésére is vonatkozik. Windows-szoftverekért kell fizetnie.|
+|Windows rendszerű virtuális gépek további szoftverrel (például SQL Server) | A foglalás az infrastrukturális költségek fedezésére is vonatkozik. Windows-szoftverekért és további szoftverért kell fizetnie.|
+|Windows rendszerű virtuális gépek [Azure Hybrid Benefit](../virtual-machines/windows/hybrid-use-benefit-licensing.md) | A foglalás az infrastrukturális költségek fedezésére is vonatkozik. A Windows-szoftverek költségeit a Azure Hybrid Benefit szabályozza. A további szoftverekért külön díjat számítunk fel.|
 
-## <a name="how-reservation-discount-is-applied"></a>Hogyan alkalmazza a foglalási kedvezményt
+## <a name="how-reservation-discount-is-applied"></a>A foglalási kedvezmény alkalmazása
 
-A foglalási kedvezményt a "*használata – it-vagy-elveszíti-it*". Tehát ha az adott órán belül nem rendelkezik megfelelő erőforrásokat, majd elvesznek a foglalási mennyiség az adott órában. Nem sokat fel nem használt fenntartott órán keresztül továbbítja.
+A foglalási kedvezmény "*use-this-or-Lose-it*". Ha tehát nem rendelkezik a megfelelő erőforrásokkal, akkor az adott órára vonatkozó foglalási mennyiség elvész. Nem lehet továbbítani a használaton kívüli órákat.
 
-Ha leállítja egy erőforrást, a foglalási kedvezményt automatikusan alkalmazza a megadott hatókörben lévő másik egyező erőforrás. A megadott hatókörben lévő nem megfelelő erőforrások találhatók, akkor a szolgáltatás számára fenntartott órák *elveszett*.
+Egy erőforrás leállításakor a foglalási kedvezmény automatikusan a megadott hatókörben lévő másik egyező erőforrásra vonatkozik. Ha nem található egyező erőforrás a megadott hatókörben, akkor a lefoglalt órák elvesznek.
 
-## <a name="reservation-discount-for-non-windows-vms"></a>Foglalási kedvezményt a nem - Windows rendszerű virtuális gépek
+## <a name="reservation-discount-for-non-windows-vms"></a>Nem Windows rendszerű virtuális gépek foglalási kedvezménye
 
- Óránként fut a Virtuálisgép-példányok az Azure a foglalási kedvezményt alkalmazza. A foglalások vásárolt a alkalmazni a foglalási kedvezményt a futó virtuális gépek által kibocsátott használat egyeztetését. A virtuális gépek nem futtathatnak a teljes órát a Foglalás szerepelni fog a többi virtuális gép nem használ egy foglalást, beleértve az egyidejűleg futó virtuális gépeket. Az óra végén (óra) a virtuális gépek foglalási alkalmazás zárolva van. Virtuális gép nem fut egy órára, vagy egy órán belül egyidejű virtuális gépek nem tölti ki a Foglalás órányi, a foglalást az adott órára van eredményeztek. A következő diagram azt mutatja be az alkalmazás egy foglalási számlázható Virtuálisgép-használat. Az ábrán egy foglalás megvásárlása és két egyező Virtuálisgép-példányok alapul.
+ Az Azure foglalási kedvezmény a virtuálisgép-példányok óránkénti futtatására vonatkozik. A megvásárolt foglalások megfelelnek a futó virtuális gépek által a foglalási kedvezmény alkalmazására kibocsátott használati feltételeknek. A teljes órát nem futtató virtuális gépek esetén a foglalás a foglalást nem használó más virtuális gépekről lesz kitöltve, beleértve az egyidejű futtatású virtuális gépeket is. Az óra végén az óra alatt lévő virtuális gépek foglalási alkalmazása zárolva van. Abban az esetben, ha egy virtuális gép nem fut egy órán belül egy órára vagy egyidejű virtuális gépre, nem tölti ki a foglalás óráját, a foglalást az adott órára kihasználjuk. A következő gráf a kiszámlázható virtuális gépek használatára vonatkozó foglalás alkalmazását szemlélteti. Az ábra egy foglalási vásárláson és két megfelelő virtuálisgép-példányon alapul.
 
-![Képernyőkép egy alkalmazott foglalás és a két egyező Virtuálisgép-példányok](./media/billing-reserved-vm-instance-application/billing-reserved-vm-instance-application.png)
+![Képernyőfelvétel egy alkalmazott foglalásról és két megfelelő VM-példányról](./media/billing-reserved-vm-instance-application/billing-reserved-vm-instance-application.png)
 
-1. A Foglalás sor meghaladja a használatot a lekérdezi a normál használatalapú díjakat kell fizetnie. Ön nem foglalások vonalai alatti használat díját óta már fizettek foglalásvásárlás részeként.
-2. 1 óra, a példány 1 0,75 óra fut, és példány 2 0,5 óra fut. 1 óra felhasználás teljes 1,25 órát jelent. A használatalapú díjszabás a többi 0,25 órában díjkötelesek.
-3. Óra 2 és 3 óra, a példány is futásának időtartama: 1 óra. Egy példány a Foglalás hatálya alá tartozik, és a másik díját az utólagos elszámolású díjszabás szerint számlázzuk.
-4. 4 órán keresztül 1 példány 0,5 óra fut, és 2 példány 1 órán keresztül futtat. 1 példány teljes mértékben a foglalást, és 2 példány 0,5 óra foglalkozik. A fennmaradó 0,5 óra használatalapú díjon díjkötelesek.
+1. A foglalási sor feletti használatért az utólagos elszámolású díjszabást kell fizetni. A foglalások sorban nem számítunk fel díjat, mert a foglalások vásárlásának részeként már befizették.
+2. 1 óra, a példány 1 0,75 óra fut, és példány 2 0,5 óra fut. Az 1. órában felhasznált teljes használat 1,25 óra. Az utólagos elszámolású díjszabás díját a fennmaradó 0,25 óra után számítjuk fel.
+3. A 2. és az Hour 3 esetében mindkét példány 1 órára futott. Az egyik példányt a foglalás tartalmazza, a másikat utólagos elszámolású díjszabással számoljuk el.
+4. A 4. órában az 1. példány 0,5 óra, a 2. példány pedig 1 órára fut. Az 1. példányt a foglalás teljes egészében lefedi, a 2. példány pedig 0,5 óra. Az utólagos elszámolású díjakat a fennmaradó 0,5 óra után számítjuk fel.
 
-Ismertetése és használati jelentések számlázási megtekintheti az alkalmazást az Azure-foglalások: [foglalás használatának megértéséhez](billing-understand-reserved-instance-usage-ea.md).
+Ha szeretné megismerni és megtekinteni a Azure Reservations alkalmazását a számlázási használati jelentésekben, tekintse meg a [foglalás használatának ismertetése](billing-understand-reserved-instance-usage-ea.md)című témakört.
 
-## <a name="reservation-discount-for-windows-vms"></a>Windows virtuális gépek foglalási kedvezményt
+## <a name="reservation-discount-for-windows-vms"></a>Windows rendszerű virtuális gépek foglalási kedvezménye
 
-Ha Windows Virtuálisgép-példányokat futtatja, a Foglalás alkalmazva az infrastrukturális költségek. Az alkalmazás a Windows-beli virtuális gépek a virtuális gép infrastrukturális költségek foglalási ugyanaz, mint a nem - Windows rendszerű virtuális gépek. Díjkötelesek külön vCPU / alapon Windows szoftverek. Lásd: [Windows szoftverek díjait a foglalások](billing-reserved-Instance-windows-software-costs.md). A Windows licencelési költségek lefedheti [Azure Hybrid Benefit a Windows Server](../virtual-machines/windows/hybrid-use-benefit-licensing.md).
+Windowsos virtuálisgép-példányok futtatásakor a rendszer a foglalást az infrastrukturális költségek fedezésére alkalmazza. A Windows rendszerű virtuális gépekhez tartozó virtuálisgép-infrastruktúrára fordított foglalás alkalmazása megegyezik a nem Windows rendszerű virtuális gépekkel. A Windows-szoftverekért külön díjat kell fizetnie vCPU alapján. Lásd: [a Windows-szoftverek költségei a foglalásokkal](billing-reserved-Instance-windows-software-costs.md). Az [Azure Hybrid Benefit for Windows Serverre vonatkozó](../virtual-machines/windows/hybrid-use-benefit-licensing.md)licencelési költségeket a Windows-kiszolgálóval is lefedi.
 
-## <a name="discount-can-apply-to-different-sizes"></a>Kedvezményt is alkalmazhat különböző méretű
+## <a name="discount-can-apply-to-different-sizes"></a>A kedvezmény eltérő méretekre is alkalmazható
 
-Vásárlásakor a fenntartott VM-példány, ha **optimalizált**: **példány mérete rugalmasan**, a kedvezmény lefedettség választja virtuális gép méretétől függ. A Foglalás az azonos méretű adatsorozat-csoport a virtuális gépek (VM)-méretek is alkalmazhat. További információkért lásd: [virtuális gép mérete rugalmasan Reserved VM Instances](../virtual-machines/windows/reserved-vm-instance-size-flexibility.md).
+A fenntartott VM-példányok megvásárlásakor, ha az **optimalizált**: **példány méretének rugalmasságát**választja, a kedvezményes lefedettség a kiválasztott virtuálisgép-mérettől függ. A foglalás a virtuális gépek (VM-EK) méretére is vonatkozhat ugyanabban a méretű adatsorozat-csoportban. További információ: [virtuális gépek méretének rugalmassága fenntartott VM](../virtual-machines/windows/reserved-vm-instance-size-flexibility.md)-példányokkal.
 
-## <a name="discount-applies-to-matching-servicetype-only"></a>ServiceType csak megfelelő vonatkozik kedvezmény
+## <a name="discount-applies-to-matching-servicetype-only"></a>A kedvezmény csak a megfelelő ServiceType vonatkozik
 
-A foglalási kedvezményt csak azokra a Virtuálisgép-használat, a `ServiceType` értékét `AdditionalInfo` megegyezik a Foglalás megvásárolható. Foglalás vonatkozó kedvezmény alkalmazása figyelmen kívül hagyja a mérőszám a virtuális gépek használják, és csak kiértékeli `ServiceType`. Tudja, melyik szolgáltatást, írja be, hogy a virtuális gép vásárolt. Egy nem prémium szintű tárolás Virtuálisgép-foglalás egy prémium szintű storage foglalás vagy ellentétes módon tudjon cserélni.
+A foglalási kedvezmény csak azokra a virtuális gépek használatára `ServiceType` vonatkozik, `AdditionalInfo` ahol a érték megegyezik a megvásárolt foglalással. A foglalási kedvezmény alkalmazása figyelmen kívül hagyja a virtuális gépekhez használt mérőszámot, és csak a kiértékelését `ServiceType`végzi. Adja meg, hogy melyik szolgáltatástípus vásárolta meg a virtuális gépet. A prémium szintű Storage-foglalások esetében nem prémium szintű Storage-foglalást, vagy ellenkező módon válthat.
 
-## <a name="classic-vms-and-cloud-services"></a>Klasszikus virtuális gépek és felhőszolgáltatások
+## <a name="services-that-get-vm-reservation-discounts"></a>A virtuális gépek foglalási kedvezményeit lekérdező szolgáltatások
 
-Fenntartott Virtuálisgép-példányok automatikusan mindkét klasszikus virtuális gépekre vonatkozik, és a felhőszolgáltatások, ha a példány mérete rugalmasan engedélyezve van. A cloud services esetében a foglalási kedvezményt vonatkozik csak a számítási költségeket. A foglalási kedvezményt a felhőalapú szolgáltatásokhoz való alkalmazásakor a használati díjak a compute-ra (Linux mérő) osztották, és a cloud services díjak (cloud services felügyeleti mérőszám). További információkért lásd: [hogyan a foglalási kedvezményt vonatkozik a Cloud Services](billing-reserved-instance-windows-software-costs.md#cloud-services-software-meters-not-included-in-reservation-cost).
+A VM-foglalások a több szolgáltatásból kibocsátott virtuálisgép-használatra vonatkozhatnak, nem csupán a virtuális gépek üzembe helyezésére. A foglalási kedvezményeket lefoglaló erőforrások a példány méretének rugalmassági beállításától függően változnak.
+
+### <a name="instance-size-flexibility-setting"></a>Példány méretének rugalmassági beállítása
+
+A példány méretének rugalmassága beállítás határozza meg, hogy mely szolgáltatások kapják meg a fenntartott példányok kedvezményeit.
+
+Azt jelzi, hogy be van-e kapcsolva a beállítás, és a foglalási kedvezmények automatikusan érvényesek- `Microsoft.Compute`e a *ConsumedService* a megfelelő virtuális gépek használatára. Ezért a *ConsumedService* értéknél keresse meg a használati adatokat. Néhány példa:
+
+- Virtual machines (Virtuális gépek)
+- Virtuálisgép-méretezési csoportok
+- Tároló szolgáltatás
+- Azure Batch üzemelő példányok (felhasználói előfizetési módban)
+- Azure Kubernetes Service (AKS)
+- Service Fabric
+
+Ha a beállítás be van kapcsolva, a foglalási kedvezmények automatikusan érvényesek a virtuális gépek használatára, ha a *ConsumedService* a következő elemek bármelyike:
+
+- Microsoft.Compute
+- Microsoft.ClassicCompute
+- Microsoft.Batch
+- Microsoft.MachineLearningServices
+- Microsoft.Kusto
+
+Ellenőrizze a használati adatok *ConsumedService* értékét annak megállapításához, hogy a használat jogosult-e a foglalási kedvezményekre.
+
+A példányok méretének rugalmasságával kapcsolatos további információkért lásd: [virtuális gépek méretének rugalmassága fenntartott VM](../virtual-machines/windows/reserved-vm-instance-size-flexibility.md)-példányokkal.
+
 
 ## <a name="need-help-contact-us"></a>Segítség Kapcsolat
 
-Ha kérdése van vagy segítségre van szüksége, [hozzon létre egy támogatási kérést](https://go.microsoft.com/fwlink/?linkid=2083458).
+Ha kérdése van, vagy segítségre van szüksége, [hozzon létre egy támogatási kérést](https://go.microsoft.com/fwlink/?linkid=2083458).
 
 ## <a name="next-steps"></a>További lépések
 
-Azure-foglalások kapcsolatos további információkért tekintse meg a következő cikkeket:
+Ha többet szeretne megtudni a Azure Reservationsről, tekintse meg a következő cikkeket:
 
-- [Mik azok a foglalást az Azure-hoz?](billing-save-compute-costs-reservations.md)
+- [Mik az Azure-foglalások?](billing-save-compute-costs-reservations.md)
 - [Előre fizetés Azure-beli fenntartott virtuálisgép-példányokkal rendelkező virtuális gépekért](../virtual-machines/windows/prepay-reserved-vm-instances.md)
 - [Előre fizetés fenntartott Azure SQL Database-kapacitással rendelkező SQL Database számítási erőforrásokért](../sql-database/sql-database-reserved-capacity.md)
-- [Azure-foglalások kezelése](billing-manage-reserved-vm-instance.md)
-- [A használatalapú fizetéses előfizetést foglalás használati adatai](billing-understand-reserved-instance-usage.md)
-- [A nagyvállalati beléptetés foglalás használati adatai](billing-understand-reserved-instance-usage-ea.md)
-- [CSP-előfizetésekben foglalás használati adatai](/partner-center/azure-reservations)
-- [Windows szoftverek díjait nem tartalmazza a foglalások](billing-reserved-instance-windows-software-costs.md)
+- [Azure-beli foglalások kezelése](billing-manage-reserved-vm-instance.md)
+- [Az utólagos elszámolású előfizetés foglalási használatának ismertetése](billing-understand-reserved-instance-usage.md)
+- [A nagyvállalati beléptetés foglalási használatának ismertetése](billing-understand-reserved-instance-usage-ea.md)
+- [A CSP-előfizetések foglalási használatának ismertetése](/partner-center/azure-reservations)
+- [A Windows-szoftverek nem tartalmazzák a foglalásokat](billing-reserved-instance-windows-software-costs.md)

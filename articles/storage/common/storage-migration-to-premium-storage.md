@@ -256,7 +256,7 @@ Most, hogy a VHD-t a helyi könyvtárban, az AzCopy vagy AzurePowerShell haszná
 Add-AzureVhd [-Destination] <Uri> [-LocalFilePath] <FileInfo>
 ```
 
-Példa \<Uri > lehet, hogy  ** _"https://storagesample.blob.core.windows.net/mycontainer/blob1.vhd"_** . Példa \<FileInfo > lehet, hogy  ** _"C:\path\to\upload.vhd"_** .
+Példa \<Uri > lehet, hogy **_"https://storagesample.blob.core.windows.net/mycontainer/blob1.vhd"_** . Példa \<FileInfo > lehet, hogy **_"C:\path\to\upload.vhd"_** .
 
 ##### <a name="option-2-using-azcopy-to-upload-the-vhd-file"></a>Option 2: A .vhd-fájl feltöltése AzCopy használatával
 AzCopy használatával könnyedén tölthet fel a VHD-t az interneten keresztül. A VHD méretétől függően ez időt vehet igénybe. Fontos, hogy ellenőrizze a tárfiókok bejövő/kimenő forgalom korlátai, ez a beállítás használatakor. Lásd: [Azure Storage méretezhetőségi és Teljesítménycéljai](storage-scalability-targets.md) részleteiről.

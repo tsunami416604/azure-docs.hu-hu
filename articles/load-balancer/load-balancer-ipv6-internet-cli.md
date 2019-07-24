@@ -4,7 +4,7 @@ titlesuffix: Azure Load Balancer
 description: Ismerje meg, hogyan hozhat létre az Azure CLI-vel nyilvános load balancer konfigurálása IPv6-tal.
 services: load-balancer
 documentationcenter: na
-author: KumudD
+author: asudbring
 keywords: IPv6-alapú, az azure load balancer, kettős verem, nyilvános IP-cím, natív ipv6, mobil, iot
 ms.service: load-balancer
 ms.devlang: na
@@ -13,13 +13,13 @@ ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/25/2018
-ms.author: kumud
-ms.openlocfilehash: 1caa8e7554024c3b2e3d86436d3d494d7995169a
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: allensu
+ms.openlocfilehash: 0ee85a92753845e0e67fff22da894a048acb1b14
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60516682"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68274958"
 ---
 # <a name="create-a-public-load-balancer-with-ipv6-using-azure-cli"></a>Hozzon létre egy nyilvános load balancer konfigurálása IPv6-tal Azure CLI használatával
 
@@ -46,11 +46,11 @@ A következő lépésekkel egy nyilvános terheléselosztó létrehozása az Azu
 
 A terheléselosztó üzembe helyezéséhez, hozzon létre és konfigurálja a következő objektumokat:
 
-* **Előtérbeli IP-konfigurációhoz**: A bejövő hálózati forgalomhoz nyilvános IP-címeket tartalmazza.
-* **Háttér címkészletet**: Hálózati adaptereket (NIC) tartalmaz a virtuális gépek a terheléselosztóról érkező hálózati forgalom fogadására.
-* **Terheléselosztási szabályok**: Olyan szabályokat, amelyek a terheléselosztó nyilvános portját a háttér-címkészletben levő porthoz tartalmaz.
-* **Bejövő NAT-szabályok**: Hálózati címfordítás (NAT) szabályait, amelyek a terheléselosztó nyilvános portjait egy adott virtuális gép a háttér-címkészletben levő porthoz tartalmazza.
-* **Mintavételek**: A háttér-címkészletet a virtuálisgép-példányok rendelkezésre állásának ellenőrzésére használt állapotfigyelő mintavételezőket tartalmaz.
+* **Előtér-IP-konfiguráció**: Nyilvános IP-címeket tartalmaz a bejövő hálózati forgalomhoz.
+* **Háttérbeli címkészlet**: Hálózati adaptereket (NIC) tartalmaz a virtuális gépek számára a terheléselosztó hálózati forgalmának fogadásához.
+* **Terheléselosztási szabályok**: Olyan szabályokat tartalmaz, amelyek a terheléselosztó nyilvános portját leképezik a háttérbeli címkészlet egy portjára.
+* **Bejövő NAT-szabályok**: Olyan hálózati címfordítási (NAT) szabályokat tartalmaz, amelyek egy nyilvános portot képeznek le a terheléselosztó egyik portjához a háttérbeli címkészlet adott virtuális gépe számára.
+* Mintavételek: Olyan állapot-mintavételeket tartalmaz, amelyek a virtuálisgép-példányok rendelkezésre állásának ellenőrzését szolgálják a háttérbeli címkészlet esetében.
 
 ## <a name="set-up-azure-cli"></a>Az Azure parancssori felület beállítása
 

@@ -1,53 +1,56 @@
 ---
-title: Hozzon létre egy Cognitive Services-fiókot az Azure CLI használatával
+title: Cognitive Services-erőforrás létrehozása az Azure CLI használatával
 titlesuffix: Azure Cognitive Services
-description: Hogyan hozhat létre az Azure CLI használatával az Azure Cognitive Services API-k-fiókot.
+description: Az Azure Cognitive Services használatának első lépései az Azure parancssori felülettel létrehozott és előfizetéssel ellátott erőforrásokra való feliratkozással.
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: conceptual
-ms.date: 06/26/2019
+ms.date: 07/17/2019
 ms.author: aahi
-ms.openlocfilehash: acafc2c42c2946632496b646d001c58d6b48c2a6
-ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
+ms.openlocfilehash: 05b679fd969dc766d697070979416312c3bad622
+ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67657708"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68334272"
 ---
-# <a name="create-a-cognitive-services-account-using-the-azure-command-line-interfacecli"></a>Az Azure parancssori Interface(CLI) használatával Cognitive Services-fiók létrehozása
+# <a name="create-a-cognitive-services-resource-using-the-azure-command-line-interfacecli"></a>Cognitive Services-erőforrás létrehozása az Azure parancssori felületének (CLI) használatával
 
-Ebben a rövid, megtudhatja, hogyan regisztrálhat az Azure Cognitive Services, és hozzon létre egy fiókot, amely rendelkezik egy – olyan egyetlen szolgáltatást, illetve több szolgáltatási előfizetés használata az [Azure parancssori Interface(CLI)](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest). Ezek a szolgáltatások szerepelnek az Azure által [erőforrások](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-portal), amelyek lehetővé teszik, hogy kapcsolódjon az Azure Cognitive Services API-k közül legalább egyet.
+Ez a rövid útmutató az Azure Cognitive Services [Azure parancssori felületen (CLI)](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)való használatának megkezdéséhez használható. A Cognitive Services az Azure-előfizetésében létrehozott Azure- [erőforrások](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-portal) jelölik. Az erőforrás létrehozása után az Ön által létrehozott kulcsokkal és végponttal hitelesítheti alkalmazásait. 
+
+
+Ebből a rövid útmutatóból megtudhatja, hogyan regisztrálhat az Azure Cognitive Servicesra, és hogyan hozhat létre egy olyan fiókot, amely az [Azure parancssori felületének (CLI)](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)használatával egyetlen szolgáltatást vagy többszolgáltatásos előfizetéssel rendelkezik. Ezeket a szolgáltatásokat az Azure- [erőforrások](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-portal)képviselik, amelyek lehetővé teszik egy vagy több azure-Cognitive Services API-khoz való kapcsolódást.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Egy érvényes Azure-előfizetés. [Hozzon létre egy fiókot](https://azure.microsoft.com/free/) ingyenes.
-* A [Interface(CLI) Azure parancssori felületével](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)
+* Érvényes Azure-előfizetés – [hozzon létre egyet](https://azure.microsoft.com/free/) ingyen.
+* Az [Azure parancssori felülete (CLI)](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)
 
 [!INCLUDE [cognitive-services-subscription-types](../../includes/cognitive-services-subscription-types.md)]
 
 ## <a name="install-the-azure-cli-and-sign-in"></a>Az Azure CLI telepítése és bejelentkezés 
 
-Telepítse az [Azure CLI-t](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest). Jelentkezzen be a parancssori felület helyi telepítésen, futtassa a [az bejelentkezési](https://docs.microsoft.com/cli/azure/reference-index#az-login) parancsot:
+Telepítse az [Azure CLI-t](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest). Ha be szeretné jelentkezni a CLI helyi telepítésére, futtassa az az [login](https://docs.microsoft.com/cli/azure/reference-index#az-login) parancsot:
 
 ```console
 az login
 ```
 
-Is használhatja a zöld **Kipróbálom** gombra kattintva futtassa az alábbi parancsokat a böngészőben.
+A parancsok a böngészőben való futtatásához a zöld kipróbálom gombot is használhatja.
  
-## <a name="create-a-new-azure-cognitive-services-resource-group"></a>Hozzon létre egy új Azure Cognitive Services
+## <a name="create-a-new-azure-cognitive-services-resource-group"></a>Új Azure Cognitive Services erőforráscsoport létrehozása
 
-Az előfizetések, a Cognitive Services, Azure-erőforrások képviseli. Azure-erőforráscsoport összes Cognitive Services-fiók (és a kapcsolódó Azure-erőforrás) kell tartoznia.
+Cognitive Services erőforrás létrehozása előtt rendelkeznie kell egy Azure-erőforrással, amely tartalmazza az erőforrást. Új erőforrás létrehozásakor létrehozhat egy új erőforráscsoportot, vagy használhat egy meglévőt. Ez a cikk bemutatja, hogyan hozhat létre egy új erőforráscsoportot.
 
-### <a name="choose-your-resource-group-location"></a>Válassza ki az erőforráscsoport helye
+### <a name="choose-your-resource-group-location"></a>Válassza ki az erőforráscsoport helyét
 
-Erőforrás létrehozása kell egy elérhető az Azure-helyen az előfizetéshez. Lekérheti az elérhető helyek listáját a [az fiók list-locations](/cli/azure/account#az-account-list-locations) parancsot. A legtöbb Cognitive Services több helyről is elérhetők. Válassza ki az Önhöz legközelebbi egy, vagy tekintse meg, melyik helyek elérhetőek a szolgáltatáshoz.
+Erőforrás létrehozásához szüksége lesz az előfizetéséhez elérhető Azure-helyekre. Az elérhető helyszínek listáját az az [Account List-Locations](/cli/azure/account#az-account-list-locations) paranccsal kérheti le. A legtöbb Cognitive Services több helyről is elérhető. Válassza ki az Önhöz legközelebb lévőt, vagy tekintse meg a szolgáltatáshoz elérhető helyeit.
 
 > [!IMPORTANT]
-> * Az Azure-beli hely, ne feledje, mert szüksége lesz rá az Azure Cognitive Services hívása során.
-> * Néhány kognitív szolgáltatások rendelkezésre állásának régiónként. További információkért lásd: [az Azure-termékek régiók szerint](https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services).  
+> * Vegye figyelembe az Azure-beli helyét, mivel szüksége lesz rá az Azure-Cognitive Services meghívásakor.
+> * Egyes Cognitive Servicesok rendelkezésre állása régiónként eltérő lehet. További információ: Azure- [termékek régiónként](https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services).  
 
 ```azurecli-interactive
 az account list-locations \
@@ -55,9 +58,9 @@ az account list-locations \
     --out table
 ```
 
-Miután az Azure-beli hely, hozzon létre egy új erőforráscsoportot az Azure parancssori felületén a [az csoport létrehozása](/cli/azure/group#az-group-create) parancsot.
+Az Azure-beli hely létrehozása után hozzon létre egy új erőforráscsoportot az Azure CLI-ben az az [Group Create](/cli/azure/group#az-group-create) paranccsal.
 
-Az alábbi példában cserélje le az Azure-beli hely `westus2` az előfizetéshez elérhető Azure-helyek egyikével.
+Az alábbi példában cserélje le az Azure-helyet `westus2` az előfizetéséhez elérhető Azure-helyek egyikére.
 
 ```azurecli-interactive
 az group create \
@@ -67,27 +70,27 @@ az group create \
 
 ## <a name="create-a-cognitive-services-resource"></a>Cognitive Services-erőforrás létrehozása
 
-### <a name="choose-a-cognitive-service-and-pricing-tier"></a>A cognitive Services-szolgáltatás és a tarifacsomag kiválasztása
+### <a name="choose-a-cognitive-service-and-pricing-tier"></a>Válasszon ki egy kognitív szolgáltatást és egy díjszabási szintet
 
-Új erőforrás létrehozásakor, ismernie kell a "kind" szeretné használni, valamint a szolgáltatás a [tarifacsomag](https://azure.microsoft.com/pricing/details/cognitive-services/) (vagy termékváltozat) szeretné. Használni kívánt és más információk paraméterek az erőforrás létrehozásakor.
+Új erőforrás létrehozásakor ismernie kell a használni kívánt szolgáltatás típusát, valamint a kívánt [árképzési szintet](https://azure.microsoft.com/pricing/details/cognitive-services/) (vagy SKU-t). Ezt és egyéb információkat paraméterekként fogja használni az erőforrás létrehozásakor.
 
 > [!NOTE]
-> Számos, a Cognitive services segítségével próbálja ki a szolgáltatást ingyenesen rendelkezik. Az ingyenes szint használatához `F0` , az erőforrás a termékváltozat.
+> Számos kognitív szolgáltatásnak van egy ingyenes szintje, amellyel kipróbálhatja a szolgáltatást. Az ingyenes szintet az erőforráshoz tartozó `F0` SKU-ként használhatja.
 
 ### <a name="vision"></a>Látás
 
-| Szolgáltatás                    | Kind                      |
+| Szolgáltatás                    | Típusú                      |
 |----------------------------|---------------------------|
 | Számítógépes látástechnológia            | `ComputerVision`          |
-| Egyéni vizuális - előrejelzés | `CustomVision.Prediction` |
-| Custom Vision - képzés   | `CustomVision.Training`   |
+| Custom Vision – előrejelzés | `CustomVision.Prediction` |
+| Custom Vision – képzés   | `CustomVision.Training`   |
 | Face API                   | `Face`                    |
 | Form Recognizer            | `FormRecognizer`          |
 | Ink Recognizer             | `InkRecognizer`           |
 
 ### <a name="search"></a>Keresés
 
-| Szolgáltatás            | Kind                  |
+| Szolgáltatás            | Típusú                  |
 |--------------------|-----------------------|
 | Bing – Automatikus kiegészítés   | `Bing.Autosuggest.v7` |
 | Bing – Egyéni keresés | `Bing.CustomSearch`   |
@@ -97,16 +100,16 @@ az group create \
 
 ### <a name="speech"></a>Beszéd
 
-| Szolgáltatás            | Kind                 |
+| Szolgáltatás            | Típusú                 |
 |--------------------|----------------------|
 | Beszédszolgáltatások    | `SpeechServices`     |
 | Beszédfelismerés | `SpeakerRecognition` |
 
 ### <a name="language"></a>Nyelv
 
-| Szolgáltatás            | Kind                |
+| Szolgáltatás            | Típusú                |
 |--------------------|---------------------|
-| Képernyő ismertetése | `FormUnderstanding` |
+| Űrlap megértése | `FormUnderstanding` |
 | LUIS               | `LUIS`              |
 | QnA Maker          | `QnAMaker`          |
 | Szövegelemzés     | `TextAnalytics`     |
@@ -114,23 +117,23 @@ az group create \
 
 ### <a name="decision"></a>Döntés
 
-| Szolgáltatás           | Kind               |
+| Szolgáltatás           | Típusú               |
 |-------------------|--------------------|
 | Anomaly Detector  | `AnomalyDetector`  |
 | Tartalommoderátor | `ContentModerator` |
 | Personalizer      | `Personalizer`     |
 
-Annak elérhető a Cognitive Services listáját "típusú" az a [az cognitiveservices account list-típusú](https://docs.microsoft.com/cli/azure/cognitiveservices/account?view=azure-cli-latest#az-cognitiveservices-account-list-kinds) parancsot:
+Az elérhető kognitív szolgáltatás "típusai" listáját az az [cognitiveservices Account List-kinds](https://docs.microsoft.com/cli/azure/cognitiveservices/account?view=azure-cli-latest#az-cognitiveservices-account-list-kinds) paranccsal találja:
 
 ```azurecli-interactive
 az cognitiveservices account list-kinds
 ```
 
-### <a name="add-a-new-resource-to-your-resource-group"></a>Adjon hozzá egy új erőforrást az erőforráscsoport
+### <a name="add-a-new-resource-to-your-resource-group"></a>Új erőforrás hozzáadása az erőforráscsoporthoz
 
-Hozzon létre, és iratkozzon fel az új Cognitive Services-erőforrás, használja a [az cognitive Services-fiók létrehozása](https://docs.microsoft.com/cli/azure/cognitiveservices/account?view=azure-cli-latest#az-cognitiveservices-account-create) parancsot. Ezzel a paranccsal egy új számlázható erőforrás hozzáadja a korábban létrehozott erőforráscsoportot. Az új erőforrás létrehozásakor, akkor ismernie kell, a tarifacsomag (vagy sku) együtt használni kívánt szolgáltatás "típusú" és a egy Azure-beli hely:
+Új Cognitive Services erőforrás létrehozásához és előfizetéséhez használja az az [cognitiveservices Account Create](https://docs.microsoft.com/cli/azure/cognitiveservices/account?view=azure-cli-latest#az-cognitiveservices-account-create) parancsot. Ezzel a paranccsal új számlázandó erőforrást adhat hozzá a korábban létrehozott erőforráscsoporthoz. Az új erőforrás létrehozásakor ismernie kell a használni kívánt szolgáltatás típusát, valamint az árképzési szintet (vagy SKU-t) és egy Azure-helyet:
 
-Létrehozhat egy F0 (ingyenes) erőforrás az Anomáliadetektálási detector használatával nevű `anomaly-detector-resource` az alábbi paranccsal.
+Az alábbi paranccsal létrehozhat egy F0 (ingyenes) erőforrást az anomália `anomaly-detector-resource` -detektorhoz.
 
 ```azurecli-interactive
 az cognitiveservices account create \
@@ -142,15 +145,15 @@ az cognitiveservices account create \
     --yes
 ```
 
-## <a name="get-the-keys-for-your-subscription"></a>Az előfizetés-kulcsok beolvasása
+## <a name="get-the-keys-for-your-resource"></a>Az erőforrás kulcsainak beolvasása
 
-Jelentkezzen be a helyi telepítése a parancssori Interface(CLI), használja a [az bejelentkezési](https://docs.microsoft.com/cli/azure/reference-index?view=azure-cli-latest#az-login) parancsot.
+A parancssori felület (CLI) helyi telepítésére való bejelentkezéshez használja az az [login](https://docs.microsoft.com/cli/azure/reference-index?view=azure-cli-latest#az-login) parancsot.
 
 ```console
 az login
 ```
 
-Használja a [az cognitiveservices account kulcsok listája](https://docs.microsoft.com/cli/azure/cognitiveservices/account/keys?view=azure-cli-latest#az-cognitiveservices-account-keys-list) kérnie a kulcsokat a Cognitive Services-szolgáltatás-erőforrás a parancsot.
+A kognitív szolgáltatás erőforrásaihoz tartozó kulcsok beszerzéséhez használja az az [cognitiveservices Account Keys List](https://docs.microsoft.com/cli/azure/cognitiveservices/account/keys?view=azure-cli-latest#az-cognitiveservices-account-keys-list) parancsot.
 
 ```azurecli-interactive
     az cognitiveservices account keys list \
@@ -162,9 +165,9 @@ Használja a [az cognitiveservices account kulcsok listája](https://docs.micros
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha szeretné törölni, és távolítsa el a Cognitive Services-előfizetést, törölheti az erőforrást vagy erőforráscsoportot. Az erőforráscsoport törlésekor a az erőforráscsoporthoz társított erőforrásokat is törli.
+Ha törölni szeretné egy Cognitive Services erőforrást, törölheti azt vagy az erőforráscsoportot. Az erőforráscsoport törlése a csoportban található egyéb erőforrásokat is törli.
 
-A az group delete parancs használatával távolítsa el az erőforráscsoportot és az összes kapcsolódó erőforrás, beleértve az új tárfiókot is.
+Az erőforráscsoport és a hozzá tartozó erőforrások eltávolításához használja az az Group delete parancsot.
 
 ```azurecli-interactive
 az group delete --name storage-resource-group
@@ -172,7 +175,7 @@ az group delete --name storage-resource-group
 
 ## <a name="see-also"></a>Lásd még
 
-* [Az Azure Cognitive Services-kérések hitelesítéséhez](authentication.md)
+* [Kérelmek hitelesítése az Azure Cognitive Services](authentication.md)
 * [Mi az Azure Cognitive Services?](Welcome.md)
 * [Természetes nyelvi támogatás](language-support.md)
-* [Docker-tároló támogatása](cognitive-services-container-support.md)
+* [Docker-tárolók támogatása](cognitive-services-container-support.md)

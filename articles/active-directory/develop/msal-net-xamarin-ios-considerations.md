@@ -1,6 +1,6 @@
 ---
-title: Xamarin IOS-es szempontok (Microsoft-hitelesítési tár .NET) |} Az Azure
-description: Figyelembe kell venni bizonyos ismerje meg a Xamarin IOS-es használata a Microsoft-hitelesítési tár .NET (MSAL.NET) esetén.
+title: Xamarin iOS-megfontolások (Microsoft Authentication Library for .NET) | Azure
+description: Ismerje meg, hogy milyen szempontokat kell figyelembe venni a Xamarin iOS és a .NET-hez készült Microsoft Authentication Library (MSAL.NET) használata esetén.
 services: active-directory
 documentationcenter: dev-center-name
 author: rwike77
@@ -12,39 +12,39 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/24/2019
+ms.date: 07/16/2019
 ms.author: ryanwi
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bf236bff2300129ec97d3b8946c4c2a2748bca77
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b7bb4aab4c217e20245a1f6ee9b2910a4558acad
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65602129"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68278213"
 ---
-# <a name="xamarin-ios-specific-considerations-with-msalnet"></a>Xamarin iOS-specifikus MSAL.NET megfontolások
-Xamarin IOS-eszközökön több szempontot figyelembe kell végrehajtania, amikor az MSAL.NET használatával
+# <a name="xamarin-ios-specific-considerations-with-msalnet"></a>Xamarin iOS-specifikus megfontolások a MSAL.NET
+A Xamarin iOS-ben számos szempontot figyelembe kell venni a MSAL.NET használatakor
 
-- [IOS 12- és hitelesítési szolgáltatással kapcsolatos ismert problémák](#known-issues-with-ios-12-and-authentication)
-- [Bírálja felül, és implementálása a `OpenUrl` működni a `AppDelegate`](#implement-openurl)
-- [A kulcslánccsoportok engedélyezése](#enable-keychain-groups)
-- [Engedélyezze a jogkivonatok gyorsítótárának megosztása](#enable-token-cache-sharing-across-ios-applications)
-- [Kulcslánc-hozzáférési engedélyezése](#enable-keychain-access)
+- [Az iOS 12 és a hitelesítés ismert problémái](#known-issues-with-ios-12-and-authentication)
+- [A `OpenUrl` függvény felülbírálása és implementálása a`AppDelegate`](#implement-openurl)
+- [Kulcstartó-csoportok engedélyezése](#enable-keychain-access)
+- [Jogkivonat-gyorsítótár megosztásának engedélyezése](#enable-token-cache-sharing-across-ios-applications)
+- [Kulcstartó-hozzáférés engedélyezése](#enable-keychain-access)
 
-## <a name="known-issues-with-ios-12-and-authentication"></a>IOS 12- és hitelesítési szolgáltatással kapcsolatos ismert problémák
-A Microsoft közzétette egy [biztonsági tanácsadó](https://github.com/aspnet/AspNetCore/issues/4647) iOS12 és bizonyos típusú hitelesítés között inkompatibilitás kapcsolatos adatok megadása. Az inkompatibilitás oldaltörések szociális, WSFed és OIDC bejelentkezések. A tanácsadó is útmutatást nyújt a fejlesztők mire képes lesz iOS12 kompatibilis alkalmazásokhoz az ASP.NET által hozzáadott aktuális biztonsági korlátozások eltávolítása.  
+## <a name="known-issues-with-ios-12-and-authentication"></a>Az iOS 12 és a hitelesítés ismert problémái
+A Microsoft [biztonsági tanácsadót](https://github.com/aspnet/AspNetCore/issues/4647) bocsátott ki a iOS12 és bizonyos hitelesítési típusok közötti inkompatibilitással kapcsolatos információk biztosításához. A kompatibilitási megszakítja a közösségi, a WSFed és a OIDC bejelentkezéseket. Ez a tanácsadó emellett útmutatást nyújt arról, hogy mit tehet a fejlesztők a ASP.NET által a iOS12 való kompatibilitás érdekében hozzáadott aktuális biztonsági korlátozások eltávolításához.  
 
-Xamarin iOS-en MSAL.NET alkalmazások fejlesztésekor végtelen ciklust láthatja, jelentkezzen be a webhelyek IOS 12 tett kísérlet során (ehhez hasonló [ADAL probléma](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/issues/1329). 
+A MSAL.NET-alkalmazások Xamarin iOS rendszeren való fejlesztésekor a rendszer végtelen hurkot tapasztalhat, amikor megpróbál bejelentkezni a webhelyekre az iOS 12 rendszerből (ehhez hasonlóan ehhez a [ADAL](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/issues/1329)-hibához). 
 
-Az ASP.NET Core OIDC hitelesítési IOS 12 szünet is megjelenhet ez leírtak szerint a Safari [WebKit probléma](https://bugs.webkit.org/show_bug.cgi?id=188165).
+Előfordulhat, hogy a jelen [WebKit-probléma](https://bugs.webkit.org/show_bug.cgi?id=188165)című részben leírtak szerint ASP.net Core OIDC-hitelesítést is megtalálhatja az iOS 12 Safariban.
 
 ## <a name="implement-openurl"></a>OpenUrl megvalósítása
 
-Először felül kell bírálnia az `OpenUrl` módszere a `FormsApplicationDelegate` származtatott osztály és hívás `AuthenticationContinuationHelper.SetAuthenticationContinuationEventArgs`.
+Először felül kell bírálnia `OpenUrl` a `FormsApplicationDelegate` származtatott osztály metódusát és a hívást `AuthenticationContinuationHelper.SetAuthenticationContinuationEventArgs`.
 
-```csharp
+```CSharp
 public override bool OpenUrl(UIApplication app, NSUrl url, NSDictionary options)
 {
     AuthenticationContinuationHelper.SetAuthenticationContinuationEventArgs(url);
@@ -52,24 +52,16 @@ public override bool OpenUrl(UIApplication app, NSUrl url, NSDictionary options)
 }
 ```
 
-Emellett egy URL-séma határozza meg, az alkalmazás meghív egy másik alkalmazást, rendelkezik egy adott képernyő az átirányítási URL-cím és az átirányítási URL-címet a regisztrálásához engedély szükséges a [az Azure portal](https://portal.azure.com).
+Emellett meg kell határoznia egy URL-sémát, meg kell adnia, hogy az alkalmazásnak meg kell hívnia egy másik alkalmazást, rendelkeznie kell egy adott űrlappal az átirányítási URL-címhez, és regisztrálnia kell az átirányítási URL-címet a [Azure Portal](https://portal.azure.com)
 
-## <a name="enable-keychain-groups"></a>A Kulcslánccsoportok engedélyezése
+### <a name="enable-keychain-access"></a>Kulcstartó-hozzáférés engedélyezése
 
-Annak érdekében, hogy a jogkivonat munkahelyi gyorsítótárazza, és rendelkezik a `AcquireTokenSilentAsync` metódus munka, több lépést kell követnie:
-1. A kulcslánc-hozzáférési engedélyezése a *`* Entitlements.plist* fájlt, és adja meg a **Kulcslánccsoportok** található a csomagazonosító.
-2. Válassza ki *`*Entitlements.plist*`* fájlt a **egyéni jogosultságok** mezőt a beállítások ablakban iOS projekt **csomag aláírási nézet**.
-3. Amikor aláíró tanúsítványt, ellenőrizze, hogy XCode használja ugyanazt az Apple ID azonosítójával.
+A kulcstartó-hozzáférés engedélyezéséhez az alkalmazásnak rendelkeznie kell egy kulcstartó-hozzáférési csoporttal.
+Az alkalmazás létrehozásakor az `WithIosKeychainSecurityGroup()` API használatával állíthatja be a kulcstartó-hozzáférési csoportot:
 
-## <a name="enable-token-cache-sharing-across-ios-applications"></a>Token gyorsítótár iOS-alkalmazások közötti megosztásának engedélyezése
+Az egyszeri bejelentkezés engedélyezéséhez a `PublicClientApplication.iOSKeychainSecurityGroup` tulajdonságot az összes alkalmazásban azonos értékre kell állítania.
 
-Az MSAL kezdődően 2.x, megadhat egy biztonsági kulcslánccsoportot a token gyorsítótár megőrzése több alkalmazás használata. Ez lehetővé teszi, hogy ugyanazon biztonsági kulcslánccsoportot beleértve a-val fejlesztett kellene több alkalmazás között a jogkivonatok gyorsítótárának megosztása [ADAL.NET](https://aka.ms/adal-net), MSAL.NET Xamarin.iOS-alkalmazást, és fejlett natív iOS-alkalmazások a [ADAL.objc](https://github.com/AzureAD/azure-activedirectory-library-for-objc) vagy [MSAL.objc](https://github.com/AzureAD/microsoft-authentication-library-for-objc)).
-
-A jogkivonatok gyorsítótárának megosztása lehetővé teszi, hogy egyszeri bejelentkezés (SSO) az összes biztonsági azonos kulcslánccsoportot használó alkalmazások között.
-
-Egyszeri bejelentkezés engedélyezéséhez kell beállítani a `PublicClientApplication.iOSKeychainSecurityGroup` ugyanazt az értéket az összes alkalmazás tulajdonságát.
-
-Például az MSAL használatával v3.x lenne:
+Erre példa a MSAL v3. x használatával:
 ```csharp
 var builder = PublicClientApplicationBuilder
      .Create(ClientId)
@@ -77,34 +69,9 @@ var builder = PublicClientApplicationBuilder
      .Build();
 ```
 
-Például az MSAL használatával v2.7.x lenne:
+A jogosultságokat. plist frissíteni kell, hogy az a következő XML-kódrészlethez hasonlítson:
 
-```csharp
-PublicClientApplication.iOSKeychainSecurityGroup = "com.microsoft.msalrocks";
-```
-
-> [!NOTE]
-> A `KeychainSecurityGroup` tulajdonság elavult. Korábban a MSAL 2.x használatakor előtagot meg teamid értéknek kellett a fejlesztők a `KeychainSecurityGroup` tulajdonság. 
-> 
-> Most MSAL kezdődően 2.7.x, MSAL feloldja teamid értéknek előtagot futásidőben használatakor a `iOSKeychainSecurityGroup` tulajdonság. Ez a tulajdonság használata esetén az értékben nem szerepelhetnek a teamid értéknek előtagot. 
-> 
-> Az új `iOSKeychainSecurityGroup` tulajdonság, amely nem igényel a fejlesztők számára, hogy adja meg a teamid értéknek. A `KeychainSecurityGroup` tulajdonság már elavult. 
-
-## <a name="enable-keychain-access"></a>Kulcslánc-hozzáférési engedélyezése
-
-Az MSAL 2.x és ADAL 4.x a teamid értéknek használható a kulcsláncba, amely lehetővé teszi az egyszeri bejelentkezés (SSO) az ugyanattól alkalmazások között adja meg a hitelesítési tárak elérésére. 
-
-Mi az a [TeamIdentifierPrefix](/xamarin/ios/deploy-test/provisioning/entitlements?tabs=vsmac) (csoportazonosító)? Az App Store egyedi azonosítóját (vállalati vagy személyes). Az alkalmazásazonosító egy egyedülálló megoldás, az alkalmazáshoz. Ha egynél több alkalmazás, az összes alkalmazásra vonatkozó TeamId ugyanaz lesz, de az AppId eltérő lesz. A kulcslánc-hozzáférési csoportot a következő előtaggal teamid értéknek által automatikusan az egyes csoportokhoz a rendszer. Hogyan kényszeríti az operációs rendszer, hogy a az ugyanazon közzétevőtől származó alkalmazások hozzáférhessenek-e a megosztott kulcslánc. 
-
-Inicializálásakor a `PublicClientApplication`, ha egy `MsalClientException` üzenettel: `TeamId returned null from the iOS keychain...`, tegye a következőket a Xamarin iOS-alkalmazás az kell:
-
-1. A VS-ben hibakeresési lapján, Ugrás nameOfMyApp.iOS tulajdonságai...
-2. Folytassa a csomag aláírása iOS 
-3. Egyéni jogosultságokat, kattintson a... Jelölje ki a Entitlements.plist fájlt az alkalmazásból
-4. Az iOS-alkalmazás csproj-fájljában most már tartalmazza ezt a sort kell rendelkeznie: `<CodesignEntitlements>Entitlements.plist</CodesignEntitlements>`
-5. **Építse újra** a projektet.
-
-Ez a *emellett* , amely lehetővé teszi a kulcslánc-hozzáférési a `Entitlements.plist` fájlt, vagy az alábbi hozzáférési csoportot vagy a saját:
+Ez a változás  a kulcstartó hozzáférésének `Entitlements.plist` engedélyezése mellett a fájlban, vagy az alábbi hozzáférési csoport vagy a saját:
 
 ```xml
 <?xml version="1.0" encoding="UTF-8" ?>
@@ -113,16 +80,44 @@ Ez a *emellett* , amely lehetővé teszi a kulcslánc-hozzáférési a `Entitlem
 <dict>
   <key>keychain-access-groups</key>
   <array>
-    <string>$(AppIdentifierPrefix)com.microsoft.adalcache</string>
+    <string>$(AppIdentifierPrefix)com.microsoft.msalrocks</string>
   </array>
 </dict>
 </plist>
 ```
 
-## <a name="next-steps"></a>További lépések
+Erre példa a MSAL v4. x használatával:
 
-További részletek szerepelnek a [iOS figyelembe kell venni bizonyos](https://github.com/azure-samples/active-directory-xamarin-native-v2#ios-specific-considerations) bekezdés readme.md fájl a következő mintát:
+```csharp
+PublicClientApplication.iOSKeychainSecurityGroup = "com.microsoft.msalrocks";
+```
 
-Sample | Platform | Leírás 
+Ha az `WithIosKeychainSecurityGroup()` API-t használja, a MSAL automatikusan hozzáfűzi a biztonsági csoportot az alkalmazás "Team id" (AppIdentifierPrefix) végéhez, mert az alkalmazásnak a Xcode használatával történő létrehozásakor ugyanaz lesz. [További részletekért tekintse meg az iOS](https://developer.apple.com/documentation/security/keychain_services/keychain_items/sharing_access_to_keychain_items_among_a_collection_of_apps)-jogosultságok dokumentációját. Ezért frissítenie kell a jogosultságokat, hogy a $ (AppIdentifierPrefix) belefoglalása előtt a jogosultságok. plist fájlhoz tartozó kulcstartó-hozzáférési csoport szerepeljen.
+
+### <a name="enable-token-cache-sharing-across-ios-applications"></a>Jogkivonat-gyorsítótár megosztásának engedélyezése iOS-alkalmazások között
+
+A 2. x MSAL megadhat egy kulcstartó-hozzáférési csoportot, amelyet a jogkivonat-gyorsítótár több alkalmazásban való megőrzésére használhat. Ezzel a beállítással megoszthatja a jogkivonat-gyorsítótárat több alkalmazás között ugyanazzal a kulcstartó-hozzáférési csoporttal, beleértve azokat is, amelyek a [ADAL.net](https://aka.ms/adal-net), a MSAL.net Xamarin. iOS-alkalmazásokkal és a fejlesztett [natív iOS-alkalmazásokkal lettek kifejlesztve ADAL. ObjC](https://github.com/AzureAD/azure-activedirectory-library-for-objc) vagy [MSAL. ObjC](https://github.com/AzureAD/microsoft-authentication-library-for-objc)).
+
+A jogkivonat-gyorsítótár megosztása lehetővé teszi az egyszeri bejelentkezést az összes olyan alkalmazás között, amelyek ugyanazt a kulcstartó-hozzáférési csoportot használják.
+
+A gyorsítótár megosztásának engedélyezéséhez be kell állítania a "WithIosKeychainSecurityGroup ()" metódust úgy, hogy a kulcstartó-hozzáférési csoportot azonos értékre állítsa az összes olyan alkalmazásban, amely ugyanazt a gyorsítótárat használja, mint a fenti példában látható.
+
+Korábban már említettük, hogy a MSAL hozzáadta a $ (AppIdentifierPrefix) értéket, `WithIosKeychainSecurityGroup()` amikor az API-t használja. Ennek az az oka, hogy a AppIdentifierPrefix vagy a "csapat azonosítója" annak biztosítására szolgál, hogy csak az azonos közzétevő által készített alkalmazások tudják megosztani a kulcstartók elérését.
+
+#### <a name="note-keychainsecuritygroup-property-deprecated"></a>Megjegyzés: A KeychainSecurityGroup tulajdonság elavult
+
+Korábban a MSAL 2. x verziójában a fejlesztők a `KeychainSecurityGroup` tulajdonság használatakor kénytelenek voltak belefoglalni a TeamId előtagot
+
+A MSAL 2.7. x verziójában az új `iOSKeychainSecurityGroup` tulajdonság használatakor a MSAL feloldja a TeamId előtagot a futtatókörnyezet során. Ha ezt a tulajdonságot használja, az érték nem tartalmazhatja a TeamId előtagot.
+
+Használja az új `iOSKeychainSecurityGroup` tulajdonságot, amelyhez nincs szükség a fejlesztők számára a TeamId biztosítására, mivel `KeychainSecurityGroup` az előző tulajdonság elavult.
+
+### <a name="sample-illustrating-xamarin-ios-specific-properties"></a>Példa a Xamarin iOS-specifikus tulajdonságainak szemléltetésére
+
+További részletek a következő minta readme.md-fájljának [iOS-specifikus szempontjaival](https://github.com/azure-samples/active-directory-xamarin-native-v2#ios-specific-considerations) kapcsolatos bekezdésében találhatók:
+
+Sample | Platform | Leírás
 ------ | -------- | -----------
-[https://github.com/Azure-Samples/active-directory-xamarin-native-v2](https://github.com/azure-samples/active-directory-xamarin-native-v2) | Xamarin iOS, Android, UWP | Egy egyszerű Xamarin Forms alkalmazás amely hogyan használható az MSAL MSA és az Azure AD-n keresztül az AAD V2.0-végpont hitelesítéséhez, és hozzáférhet a Microsoft Graph, az eredményül kapott jogkivonatokkal. <br>![Topológia](media/msal-net-xamarin-ios-considerations/topology.png)
+[https://github.com/Azure-Samples/active-directory-xamarin-native-v2](https://github.com/azure-samples/active-directory-xamarin-native-v2) | Xamarin iOS, Android, UWP | Egy egyszerű Xamarin űrlapos alkalmazás, amely bemutatja, hogyan használható a MSAL a MSA és az Azure AD hitelesítésére az Azure AD V 2.0-végponton keresztül, és az eredményül kapott jogkivonattal fér hozzá a Microsoft Graphhoz.
+
+<!--- https://github.com/Azure-Samples/active-directory-xamarin-native-v2/blob/master/ReadmeFiles/Topology.png -->

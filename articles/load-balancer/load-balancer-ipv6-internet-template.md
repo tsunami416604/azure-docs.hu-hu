@@ -1,10 +1,10 @@
 ---
-title: Egy internetkapcsolattal rendelkező load balancer IPv6 - Azure-sablon üzembe helyezése
+title: Internetkapcsolattal rendelkező Load-Balancer üzembe helyezése IPv6-Azure-sablonnal
 titlesuffix: Azure Load Balancer
-description: Hogyan helyezheti üzembe az Azure Load Balancer és a virtuális gépek elosztott terhelésű IPv6-támogatás.
+description: IPv6-támogatás telepítése Azure Load Balancer és elosztott terhelésű virtuális gépekhez.
 services: load-balancer
 documentationcenter: na
-author: KumudD
+author: asudbring
 keywords: IPv6-alapú, az azure load balancer, kettős verem, nyilvános IP-cím, natív ipv6, mobil, iot
 ms.service: load-balancer
 ms.devlang: na
@@ -13,15 +13,15 @@ ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
-ms.author: kumud
-ms.openlocfilehash: 4a8c7309a07238ef3410e42c3d631ad525f023cc
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: allensu
+ms.openlocfilehash: 4286879dc53cc835532c7a8243eaf88813545265
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61216792"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68275000"
 ---
-# <a name="deploy-an-internet-facing-load-balancer-solution-with-ipv6-using-a-template"></a>Megoldás üzembe helyezése egy internetkapcsolattal rendelkező load balancer konfigurálása IPv6-tal sablon használatával
+# <a name="deploy-an-internet-facing-load-balancer-solution-with-ipv6-using-a-template"></a>Internetkapcsolattal rendelkező terheléselosztó megoldás üzembe helyezése IPv6-sablonnal sablon használatával
 
 > [!div class="op_single_selector"]
 > * [PowerShell](load-balancer-ipv6-internet-ps.md)
@@ -34,106 +34,106 @@ Az Azure Load Balancer 4. szintű (TCP, UDP) terheléselosztónak minősül. A t
 
 ## <a name="example-deployment-scenario"></a>A példában üzembe helyezési forgatókönyv
 
-A következő ábra szemlélteti a terheléselosztási megoldás üzembe helyezéséhez a cikkben bemutatott példa-sablon használatával.
+A következő ábra azt szemlélteti, hogy a cikkben ismertetett példa sablonnal milyen terheléselosztási megoldás van üzembe helyezve.
 
 ![Terheléselosztói forgatókönyv](./media/load-balancer-ipv6-internet-template/lb-ipv6-scenario.png)
 
-Ebben a forgatókönyvben a következő Azure-erőforrásokat hoz létre:
+Ebben a forgatókönyvben a következő Azure-erőforrásokat fogja létrehozni:
 
-* Az egyes virtuális Gépekhez rendelt IPv4- és IPv6-címekkel rendelkező virtuális hálózati adapter
-* egy internetkapcsolattal rendelkező Load Balancer egy IPv4-és IPv6-alapú nyilvános IP-cím
-* Két a nyilvános VIP-címek leképezése a privát végpontok terheléselosztási szabályok betöltése
-* rendelkezésre állási csoport, amely tartalmazza a két virtuális gép
-* Két virtuális gép (VM)
+* virtuális hálózati adapter minden virtuális GÉPHEZ, amelyhez IPv4-és IPv6-címek vannak hozzárendelve
+* egy internetre irányuló Load Balancer IPv4-és IPv6-alapú nyilvános IP-címmel
+* két terheléselosztási szabály a nyilvános VIP-címek a privát végpontokra való leképezéséhez
+* a két virtuális gépet tartalmazó rendelkezésre állási csoport
+* két virtuális gép (VM)
 
-## <a name="deploying-the-template-using-the-azure-portal"></a>Helyezi üzembe a sablont az Azure portal használatával
+## <a name="deploying-the-template-using-the-azure-portal"></a>A sablon üzembe helyezése a Azure Portal használatával
 
-Ez a cikk hivatkozik, amely közzé van téve a sablon a [Azure gyorsindítási sablonok](https://azure.microsoft.com/documentation/templates/201-load-balancer-ipv6-create/) gyűjteménye. A sablon letöltése a katalógusból, vagy indítsa el az üzembe helyezés az Azure-ban közvetlenül a katalógusból. Ez a cikk feltételezi, hogy a sablon letöltötte a helyi számítógépen.
+Ez a cikk az [Azure gyorsindítási sablonok](https://azure.microsoft.com/documentation/templates/201-load-balancer-ipv6-create/) galériájában közzétett sablonra hivatkozik. A sablont letöltheti a katalógusból, vagy közvetlenül a katalógusból is elindíthatja az üzembe helyezést az Azure-ban. Ez a cikk azt feltételezi, hogy letöltötte a sablont a helyi számítógépre.
 
-1. Nyissa meg az Azure portal és a virtuális gépek és a egy Azure-előfizetésen belül a hálózati erőforrások létrehozásához szükséges engedélyek rendelkező fiókkal jelentkezzen be. Is kivéve, ha meglévő erőforrásokat használ, a fiókot kell egy erőforráscsoportot és a egy storage-fiók létrehozásához szükséges engedéllyel.
-2. Kattintson a "+ új" az a menüben, majd írja be a keresőmezőbe a "sablon". A keresési eredmények közül válassza ki a "Sablon telepítése".
+1. Nyissa meg a Azure Portalt, és jelentkezzen be egy olyan fiókkal, amely jogosult virtuális gépek és hálózati erőforrások létrehozására egy Azure-előfizetésen belül. Emellett, ha nem használ meglévő erőforrásokat, a fióknak engedéllyel kell rendelkeznie az erőforráscsoport és a Storage-fiók létrehozásához.
+2. Kattintson az "+ új" gombra a menüből, majd írja be a "sablon" kifejezést a keresőmezőbe. A keresési eredmények közül válassza a "Template deployment" lehetőséget.
 
     ![lb-ipv6-portal-step2](./media/load-balancer-ipv6-internet-template/lb-ipv6-portal-step2.png)
 
-3. A minden erőforrás panelen kattintson a "Központi telepítési sablont."
+3. Az összes panelen kattintson a "Template deployment" elemre.
 
     ![lb-ipv6-portal-step3](./media/load-balancer-ipv6-internet-template/lb-ipv6-portal-step3.png)
 
-4. Kattintson a "Create".
+4. Kattintson a Létrehozás gombra.
 
     ![lb-ipv6-portal-step4](./media/load-balancer-ipv6-internet-template/lb-ipv6-portal-step4.png)
 
-5. Kattintson a "Sablon szerkesztése." Meglévő tartalmának törlése másolja és illessze be a teljes tartalmát a sablonfájlt (a kezdete és vége {}), majd kattintson a "Mentés."
+5. Kattintson a "sablon szerkesztése" elemre. Törölje a meglévő tartalmakat, és másolja/illessze be a sablonfájl teljes tartalmát (a kezdő és a befejező {} érték belefoglalásához), majd kattintson a Save (Mentés) gombra.
 
     > [!NOTE]
-    > Ha használja a Microsoft Internet Explorer, illessze be, amikor egy párbeszédpanel rákérdez arra, hogy engedélyezze a hozzáférést a Windows-vágólapra. Kattintson a "Hozzáférés engedélyezése".
+    > Ha a Microsoft Internet Explorert használja, a beillesztéskor egy párbeszédpanel jelenik meg, amely arra kéri, hogy engedélyezze a hozzáférést a Windows vágólaphoz. Kattintson a hozzáférés engedélyezése lehetőségre.
 
     ![lb-ipv6-portal-step5](./media/load-balancer-ipv6-internet-template/lb-ipv6-portal-step5.png)
 
-6. Kattintson a "Paraméterek szerkesztése." A sablon paraméterek szakaszban határozza meg az értéket, az útmutatót az (paraméterek) panelen, majd kattintson a "Mentés" gombra kattintva zárja be a (paraméterek) panelen. Az egyéni üzembe helyezés panelen válassza ki az előfizetést, egy meglévő erőforráscsoportot, vagy hozzon létre egyet. Ha hoz létre egy erőforráscsoportot, majd válassza ki az erőforráscsoport helyét. Ezután kattintson **jogi feltételek**, majd kattintson a **beszerzési** a jogi feltételek. Az Azure elkezdi üzembe helyezni az erőforrásokat. Erőforrások üzembe helyezése néhány percet vesz igénybe.
+6. Kattintson a paraméterek szerkesztése elemre. A parameters (paraméterek) panelen adja meg az értékeket a sablon paramétereinek szakaszban, majd kattintson a Save (Mentés) gombra a paraméterek panel bezárásához. Az egyéni üzembe helyezés panelen válassza ki az előfizetést, egy meglévő erőforráscsoportot, vagy hozzon létre egyet. Ha létrehoz egy erőforráscsoportot, válassza ki az erőforráscsoport helyét. Ezután kattintson a **jogi feltételek**elemre,  majd a jogi feltételek megvásárlása elemre. Az Azure megkezdi az erőforrások üzembe helyezését. Az összes erőforrás üzembe helyezése több percet vesz igénybe.
 
     ![lb-ipv6-portal-step6](./media/load-balancer-ipv6-internet-template/lb-ipv6-portal-step6.png)
 
-    További információ ezekről a paraméterekről: a [sablon paramétereket és változókat](#template-parameters-and-variables) Ez a cikk későbbi szakaszában talál.
+    A paraméterekkel kapcsolatos további információkért tekintse meg a cikk későbbi, a [sablon paramétereinek és változóinak](#template-parameters-and-variables) című szakaszát.
 
-7. A sablon által létrehozott erőforrások megtekintéséhez kattintson a Tallózás gombra, görgessen lefelé a listában, amíg meg nem tekintse meg a "Erőforráscsoportok", majd kattintson rá.
+7. A sablon által létrehozott erőforrások megtekintéséhez kattintson a Tallózás gombra, görgessen le a listára, amíg meg nem jelenik az "erőforráscsoportok", majd kattintson rá.
 
     ![lb-ipv6-portal-step7](./media/load-balancer-ipv6-internet-template/lb-ipv6-portal-step7.png)
 
-8. Az erőforrás csoportok paneljén kattintson az eljárás 6. lépésében megadott erőforráscsoport nevét. Az üzembe helyezett összes erőforrás listáját láthatja. Jól történt összes, "Succeeded" kell kapnia a "Legutóbbi üzembe helyezés." Ha nem, akkor győződjön meg arról, hogy a használt fiók rendelkezik-e a szükséges erőforrások létrehozásához szükséges engedélyek.
+8. Az erőforráscsoportok panelen kattintson a 6. lépésben megadott erőforráscsoport nevére. Ekkor megjelenik az összes telepített erőforrás listája. Ha minden rendben volt, azt az "utolsó üzembe helyezés" szakasz "sikeres" értékének kell megjelennie. Ha nem, győződjön meg arról, hogy a használt fiók rendelkezik a szükséges erőforrások létrehozásához szükséges engedélyekkel.
 
     ![lb-ipv6-portal-step8](./media/load-balancer-ipv6-internet-template/lb-ipv6-portal-step8.png)
 
     > [!NOTE]
-    > Az erőforráscsoportok közvetlenül a 6. lépés befejezése után keresse meg, ha "A legutóbbi üzembe helyezés" közben a rendszer telepíti az erőforrások "Üzembe helyezés" állapotát megjeleníti.
+    > Ha a 6. lépés befejezése után azonnal böngészhet az erőforráscsoportok között, a "legutóbbi üzembe helyezés" a "telepítés" állapotot jeleníti meg, miközben az erőforrások üzembe helyezése történik.
 
-9. Kattintson a "myIPv6PublicIP" az erőforrások listájában. Láthatja, hogy rendelkezik-e az IP-cím IPv6-címet, és hogy a DNS-név a 6. lépésben dnsNameforIPv6LbIP paraméterben megadott értéket. Ezt az erőforrást a nyilvános IPv6 cím és a gazdagépcsoport nevét, amely az Internet-ügyfelek számára elérhető.
+9. Kattintson a "myIPv6PublicIP" elemre az erőforrások listájában. Láthatja, hogy az IP-cím alatt IPv6-címmel rendelkezik, és a DNS-neve a 6. lépésben a dnsNameforIPv6LbIP paraméterhez megadott érték. Ez az erőforrás a nyilvános IPv6-cím és az internetes ügyfelek számára elérhető állomásnév.
 
     ![lb-ipv6-portal-step9](./media/load-balancer-ipv6-internet-template/lb-ipv6-portal-step9.png)
 
 ## <a name="validate-connectivity"></a>Kapcsolat ellenőrzése
 
-Sikeresen helyezte üzembe a sablont, amikor kapcsolat a következő feladatok végrehajtásával ellenőrizheti:
+A sablon sikeres üzembe helyezése után a következő feladatok végrehajtásával ellenőrizheti a kapcsolatot:
 
-1. Jelentkezzen be az Azure Portalon, és csatlakozzon az egyes szerint a sablon üzembe helyezéséhez létrehozott virtuális gépek. Ha telepítette a Windows Server virtuális gép, IP-konfiguráció futtatása és- tárolókról az összes parancsot a parancssorba. Láthatja, hogy a virtuális gépek rendelkeznek-e az IPv4 és IPv6-címeket is. Ha Linux rendszerű virtuális gépek üzembe helyezte, kell fogadni a megjelenő utasításokat a Linux-disztribúció használatával dinamikus IPv6-címek a Linux operációs rendszer konfigurálása.
-2. A terheléselosztó a nyilvános IPv6-cím kapcsolatot kezdeményeznie a IPv6-alapú internetre csatlakozó ügyfélszámítógépről. Annak ellenőrzéséhez, hogy a két virtuális gép között osztja el a terheléselosztó, telepítheti az egyes virtuális gépek egy webkiszolgáló, például a Microsoft Internet Information Services (IIS). Az alapértelmezett weblapot minden kiszolgálón tartalmazhatnak a szöveget "Server0" vagy "Kiszolgáló1" egyedi azonosításához. Ezután nyisson meg egy webböngészőt IPv6 internetkapcsolat-ügyfélre, és keresse meg az állomásnevet, erősítse meg az egyes virtuális gépek teljes körű IPv6-kapcsolatot, hogy a terheléselosztó dnsNameforIPv6LbIP paraméterében megadott. Ha csak a weblap csak egy kiszolgálóról, szükség lehet törölni a böngésző gyorsítótárát. Nyisson meg több privát böngészési munkamenetet. Megtekintheti az egyes kiszolgáló válaszára.
-3. A terheléselosztó a nyilvános IPv4-cím kapcsolatot kezdeményeznie a IPv4 internetkapcsolattal rendelkező ügyfélszámítógépről. Annak ellenőrzése, hogy a terheléselosztó terheléselosztási a két virtuális gép, tesztelhet, az IIS használatával a 2. lépésben leírt módon.
-4. Minden egyes virtuális gépről kezdeményezzen egy kimenő kapcsolatot egy IPv6-alapú vagy internetes IPv4-csatlakoztatott eszközön. Mindkét esetben a céleszköz által látott forrás IP-címe a terheléselosztó nyilvános IPv4- vagy IPv6-címét.
+1. Jelentkezzen be a Azure Portalba, és kapcsolódjon a sablon telepítése által létrehozott összes virtuális géphez. Ha Windows Server rendszerű virtuális gépet telepített, futtassa az ipconfig/all parancsot egy parancssorból. Láthatja, hogy a virtuális gépek IPv4-és IPv6-címekkel is rendelkeznek. Ha Linux rendszerű virtuális gépeket telepített, akkor konfigurálnia kell a Linux operációs rendszert, hogy fogadja a dinamikus IPv6-címeket a Linux-disztribúcióhoz megadott utasítások alapján.
+2. Egy IPv6-alapú internetkapcsolattal rendelkező ügyfélről kezdeményezzen kapcsolatot a terheléselosztó nyilvános IPv6-címeként. Annak ellenőrzéséhez, hogy a terheléselosztó egyensúlyba kerüljön-e a két virtuális gép között, telepíthet egy webkiszolgálót, például a Microsoft Internet Information Services (IIS) szolgáltatást mindegyik virtuális gépre. Az egyes kiszolgálók alapértelmezett weblapjai a "Server0" vagy a "Kiszolgáló1" szöveget is tartalmazhatják az egyedi azonosításhoz. Ezután nyisson meg egy Internet-böngészőt egy IPv6-alapú internetkapcsolattal rendelkező ügyfélen, és keresse meg a terheléselosztó dnsNameforIPv6LbIP paraméteréhez megadott állomásnevet, hogy erősítse meg az egyes virtuális gépek végpontok közötti IPv6-kapcsolatát. Ha csak egyetlen kiszolgálóról látja a weblapot, előfordulhat, hogy törölnie kell a böngésző gyorsítótárát. Nyisson meg több privát böngészési munkamenetet. Az egyes kiszolgálók válaszait kell megjelennie.
+3. Egy IPv4-alapú internethez csatlakozó ügyfélről kezdeményezzen kapcsolatot a terheléselosztó nyilvános IPv4-címeként. Annak megerősítéséhez, hogy a terheléselosztó terheléselosztást végez a két virtuális gép között, tesztelheti az IIS-t a 2. lépésben részletezett módon.
+4. Az egyes virtuális gépekről kezdeményezzen kimenő kapcsolatot egy IPv6-vagy IPv4-kapcsolattal rendelkező Internet-eszközzel. A célként megadott eszköz által látott forrás IP-cím mindkét esetben a terheléselosztó nyilvános IPv4-vagy IPv6-címe.
 
 > [!NOTE]
-> IPv4 és IPv6 ICMP le van tiltva, a az Azure-hálózatot. Ennek eredményeképpen ICMP-eszközök például mindig pingelése sikertelen. A kapcsolat teszteléséhez használja a TCP helyett például TCPing vagy a PowerShell Test-NetConnection parancsmagról. Vegye figyelembe, hogy az IP-címek az ábrán látható értékeket, amelyeket láthat példát. Az IPv6-címeket dinamikusan hozzá van rendelve, mert a címek kap eltérőek lehetnek, és régiónként. Azt is gyakori, hogy a magánhálózati IPv6-címek a háttér-címkészletben lévő, mint a különböző előtaggal indítsa el a terheléselosztó a nyilvános IPv6-cím.
+> Az ICMP az IPv4 és az IPv6 esetében is le van tiltva az Azure-hálózaton. Ennek eredményeképpen az olyan ICMP-eszközök, mint a pingelés, mindig sikertelenek lesznek. A kapcsolat teszteléséhez használjon olyan TCP-alternatívát, mint a TCPing vagy a PowerShell test-NetConnection parancsmag. Vegye figyelembe, hogy a diagramon megjelenő IP-címek például az esetlegesen megjelenő értékek. Mivel az IPv6-címek hozzárendelése dinamikusan történik, a fogadott címek eltérőek lehetnek, és régiónként változhatnak. Az is gyakori, hogy a terheléselosztó nyilvános IPv6-címéhez a háttérbeli készletben lévő magánhálózati IPv6-címektől eltérő előtagot kell kezdeni.
 
-## <a name="template-parameters-and-variables"></a>Sablon paraméterek és változók
+## <a name="template-parameters-and-variables"></a>Sablon paraméterei és változói
 
-Az Azure Resource Manager-sablon több változók és paraméterek, amelyeket az igényeinek megfelelően testre is tartalmazza. Rögzített értékek, amelyek nem szeretné, hogy a felhasználó módosíthatja a változókat használják. Paraméterek használhatók értékeket, hogy szeretné-e a felhasználónak meg kell adnia a sablon üzembe helyezésekor. A példában a sablon a cikkben leírt forgatókönyvhöz van konfigurálva. A környezet igényeinek megfelelően szabhatja.
+Egy Azure Resource Manager sablon több változót és paramétert tartalmaz, amelyeket testreszabhat igényei szerint. A változók olyan rögzített értékekhez használatosak, amelyeket nem kíván módosítani a felhasználó. A paraméterek olyan értékekhez használatosak, amelyeket a felhasználónak meg kell adnia a sablon telepítésekor. A példa sablon a jelen cikkben ismertetett forgatókönyvhöz van konfigurálva. Ezt testreszabhatja a környezet igényei szerint.
 
-Ebben a cikkben használt példa sablon tartalmazza az alábbi változók és paraméterek:
+A cikkben használt példa sablon a következő változókat és paramétereket tartalmazza:
 
-| A paraméter / változó | Megjegyzések |
+| Paraméter/változó | Megjegyzések |
 | --- | --- |
-| adminUsername |Adja meg a virtuális gépekhez való bejelentkezéshez használt rendszergazdai fiók nevét. |
-| adminPassword |Adja meg a jelszót a rendszergazdai fiók segítségével jelentkezzen be a virtuális gépek számára. |
-| dnsNameforIPv4LbIP |Adja meg a terheléselosztó a nyilvános nevet hozzárendelni kívánt DNS-állomásnevét. Ez a név a terheléselosztó nyilvános IPv4-cím mutat. A neve kisbetűket és felel meg a következő reguláris kifejezésre: ^ [a – z] [a-z0 - 9-]{1,61}[a-z0-9] $. |
-| dnsNameforIPv6LbIP |Adja meg a terheléselosztó a nyilvános nevet hozzárendelni kívánt DNS-állomásnevét. Ez a név a terheléselosztó nyilvános IPv6-címére oldja fel. A neve kisbetűket és felel meg a következő reguláris kifejezésre: ^ [a – z] [a-z0 - 9-]{1,61}[a-z0-9] $. Ez lehet a neve megegyezik az IPv4-címet. Amikor egy ügyfél az Azure ad vissza. Ez a név DNS-lekérdezést küld mind a és AAAA típusú rögzíti, amikor a neve meg van osztva. |
-| vmNamePrefix |Adja meg a virtuális gép nevének előtagja. A sablon hozzáfűz egy számot (0, 1, stb.), a neve, ha a virtuális gépek jönnek létre. |
-| nicNamePrefix |Adja meg a hálózati adapter nevének előtagja. A sablon hozzáfűz egy számot (0, 1, stb.) a nevére, a hálózati adapterek létrehozásakor. |
-| storageAccountName |Adja meg a nevét, egy meglévő tárfiókot, vagy adjon meg egy újat kell létrehoznia a sablon nevét. |
-| availabilitySetName |Írja be a nevét, a rendelkezésre állási csoportot a virtuális gépek használandó |
-| addressPrefix |A címelőtag segítségével határozhatók meg azok a virtuális hálózat címtartománya |
-| subnetName |A virtuális hálózat számára létrehozott alhálózat neve |
-| subnetPrefix |A címelőtag segítségével határozhatók meg az alhálózat címtartománya |
-| vnetName |Adja meg a virtuális gépek által használt virtuális hálózat nevét. |
-| ipv4PrivateIPAddressType |A lefoglalási módszert használni a magánhálózati IP-cím (statikus vagy dinamikus) |
-| ipv6PrivateIPAddressType |A lefoglalási módszert használni a magánhálózati IP-cím (dinamikus). Az IPv6 csak dinamikus kiosztási támogatja. |
-| numberOfInstances |A sablon által üzembe helyezett terhelésű példányok száma |
-| ipv4PublicIPAddressName |Adja meg a terheléselosztó a nyilvános IPv4-címmel folytatott kommunikációhoz használni kívánt DNS-név. |
-| ipv4PublicIPAddressType |A lefoglalási módszert használja a nyilvános IP-cím (statikus vagy dinamikus) |
-| Ipv6PublicIPAddressName |Adja meg a terheléselosztó a nyilvános IPv6-cím folytatott kommunikációhoz használni kívánt DNS-név. |
-| ipv6PublicIPAddressType |A lefoglalási módszert használja a nyilvános IP-cím (dinamikus). Az IPv6 csak dinamikus kiosztási támogatja. |
-| lbName |Adja meg a terheléselosztó nevét. Ez a név megjelenik a portálon vagy megnevezése, a parancssori felület vagy PowerShell-paranccsal. |
+| adminUsername |Adja meg a virtuális gépekre való bejelentkezéshez használt rendszergazdai fiók nevét. |
+| adminPassword |A alkalmazásban a virtuális gépekre való bejelentkezéshez használt rendszergazdai fiók jelszavának megadása. |
+| dnsNameforIPv4LbIP |Adja meg a terheléselosztó nyilvános neveként hozzárendelni kívánt DNS-állomásnév nevét. Ez a név a terheléselosztó nyilvános IPv4-címeként lett feloldva. A névnek kisbetűnek kell lennie, és meg kell egyeznie a reguláris kifejezéssel: ^ [a-z{1,61}] [a-Z0-9-] [a-Z0-9] $. |
+| dnsNameforIPv6LbIP |Adja meg a terheléselosztó nyilvános neveként hozzárendelni kívánt DNS-állomásnév nevét. Ez a név a terheléselosztó nyilvános IPv6-címeként van feloldva. A névnek kisbetűnek kell lennie, és meg kell egyeznie a reguláris kifejezéssel: ^ [a-z{1,61}] [a-Z0-9-] [a-Z0-9] $. Ez az IPv4-címként megegyező név lehet. Amikor egy ügyfél DNS-lekérdezést küld az Azure-nak, az a és az AAAA rekordot is visszaadja, ha a név meg van osztva. |
+| vmNamePrefix |Adja meg a virtuális gép nevének előtagját. A sablon hozzáfűz egy számot (0, 1 stb.) a virtuális gépek létrehozásakor a névhez. |
+| nicNamePrefix |Adja meg a hálózati adapter nevének előtagját. A sablon hozzáfűz egy számot (0, 1 stb.) a nevet a hálózati adapterek létrehozásakor. |
+| storageAccountName |Adja meg egy meglévő Storage-fiók nevét, vagy adja meg a sablon által létrehozandó új nevet. |
+| availabilitySetName |Adja meg a virtuális gépekhez használni kívánt rendelkezésre állási csoport nevét. |
+| addressPrefix |A Virtual Network címtartomány definiálásához használt címzési előtag |
+| subnetName |A VNet létrehozott alhálózat neve |
+| subnetPrefix |Az alhálózat Címtartomány-tartományának definiálásához használt címzési előtag |
+| vnetName |Adja meg a virtuális gépek által használt VNet nevét. |
+| ipv4PrivateIPAddressType |A magánhálózati IP-címhez használt kiosztási módszer (statikus vagy dinamikus) |
+| ipv6PrivateIPAddressType |A magánhálózati IP-címhez (dinamikus) használt kiosztási módszer. Az IPv6 csak a dinamikus foglalást támogatja. |
+| numberOfInstances |A sablon által üzembe helyezett elosztott terhelésű példányok száma |
+| ipv4PublicIPAddressName |Adja meg a terheléselosztó nyilvános IPv4-címeként való kommunikációhoz használni kívánt DNS-nevet. |
+| ipv4PublicIPAddressType |A nyilvános IP-címhez használt kiosztási módszer (statikus vagy dinamikus) |
+| Ipv6PublicIPAddressName |Adja meg a terheléselosztó nyilvános IPv6-címeként való kommunikációhoz használni kívánt DNS-nevet. |
+| ipv6PublicIPAddressType |A nyilvános IP-címhez (dinamikus) használt kiosztási módszer. Az IPv6 csak a dinamikus foglalást támogatja. |
+| lbName |Adja meg a terheléselosztó nevét. Ez a név jelenik meg a portálon, vagy a parancssori felülettel vagy PowerShell-paranccsal való hivatkozáskor használatos. |
 
-A fennmaradó változók a sablonban vannak hozzárendelve, amikor az Azure létrehozza az erőforrásokat származtatott értékeket tartalmaznak. Ne módosítsa ezeket a változókat.
+A sablon többi változója olyan származtatott értékeket tartalmaz, amelyek akkor vannak hozzárendelve, amikor az Azure létrehozza az erőforrásokat. Ne módosítsa ezeket a változókat.
 
 ## <a name="next-steps"></a>További lépések
 
-A JSON-szintaxist és a egy terheléselosztó-sablon tulajdonságainak [Microsoft.Network/loadBalancers](/azure/templates/microsoft.network/loadbalancers).
+A sablonban lévő terheléselosztó JSON-szintaxisához és tulajdonságaihoz lásd: [Microsoft. Network/loadBalancers](/azure/templates/microsoft.network/loadbalancers).

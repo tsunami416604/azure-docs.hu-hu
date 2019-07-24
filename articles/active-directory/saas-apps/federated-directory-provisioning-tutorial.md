@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: Felhasználók automatikus átadása az Azure Active Directoryval összevont könyvtár konfigurálása |} A Microsoft Docs'
-description: Megtudhatja, hogyan konfigurálhatja az Azure Active Directoryban történő automatikus kiépítésének és megszüntetésének Directory összevont felhasználói fiókokat.
+title: 'Oktatóanyag: Összevont könyvtár konfigurálása az automatikus felhasználó-kiépítés Azure Active Directoryhoz | Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhatja a Azure Active Directoryt, hogy automatikusan kiépítse és kiépítse a felhasználói fiókokat az összevont könyvtárba.
 services: active-directory
 documentationcenter: ''
 author: zchia
@@ -8,178 +8,178 @@ writer: zchia
 manager: beatrizd
 ms.assetid: na
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2019
 ms.author: zhchia
-ms.openlocfilehash: 19f5690a6852161abce2565a8c4a52ce86ff5187
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.openlocfilehash: bc19a64fc72fef6407416f65cdc3b60a4c4f9464
+ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67840588"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68296075"
 ---
-# <a name="tutorial-configure-federated-directory-for-automatic-user-provisioning"></a>Oktatóanyag: Összevont Directory konfigurálása a felhasználók automatikus átadása
+# <a name="tutorial-configure-federated-directory-for-automatic-user-provisioning"></a>Oktatóanyag: Összevont könyvtár konfigurálása a felhasználók automatikus üzembe helyezéséhez
 
-Ez az oktatóanyag célja a lépések végrehajtása összevont Directory és az Azure Active Directory (Azure AD) konfigurálása az Azure AD automatikus kiépítésének és megszüntetésének felhasználók és csoportok Directory összevont is bemutatják.
+Ennek az oktatóanyagnak a célja, hogy bemutassa az összevont címtárban végrehajtandó lépéseket, valamint Azure Active Directory (Azure AD) az Azure AD konfigurálásához a felhasználók és/vagy csoportok összevont címtárba való automatikus kiépítéséhez és kiépítéséhez.
 
 > [!NOTE]
->  Ez az oktatóanyag az Azure AD-felhasználó Provisioning Service-ra épülő összekötők ismerteti. Ez a szolgáltatás leírása, hogyan működik és gyakran ismételt kérdések a fontos tudnivalókat tartalmaz [automatizálhatja a felhasználókiépítés és -átadás megszüntetése SaaS-alkalmazásokban az Azure Active Directory](../manage-apps/user-provisioning.md).
+>  Ez az oktatóanyag az Azure AD-beli felhasználói kiépítési szolgáltatásra épülő összekötőt ismerteti. A szolgáltatás működésének, működésének és gyakori kérdéseinek részletes ismertetését lásd: a felhasználók üzembe helyezésének [automatizálása és az SaaS-alkalmazások kiépítése Azure Active Directory használatával](../manage-apps/user-provisioning.md).
 >
-> Ez az összekötő jelenleg nyilvános előzetes verzióban érhető el. Az általános Microsoft Azure használati feltételek az előzetes verziójú funkciók további információkért lásd: [kiegészítő használati feltételei a Microsoft Azure Előzetesekre vonatkozó](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Ez az összekötő jelenleg nyilvános előzetes verzióban érhető el. Az előzetes verziójú funkciók általános Microsoft Azure használati feltételeivel kapcsolatos további információkért tekintse meg a Microsoft Azure-előnézetek [kiegészítő használati](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)feltételeit.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az ebben az oktatóanyagban ismertetett forgatókönyv feltételezi, hogy már rendelkezik a következő előfeltételek vonatkoznak:
+Az oktatóanyagban ismertetett forgatókönyv feltételezi, hogy már rendelkezik a következő előfeltételekkel:
 
 * Egy Azure AD-bérlő.
-* [A Directory összevont](https://www.federated.directory/pricing).
-* Egy felhasználói fiók összevont címtárban rendszergazdai jogosultságokkal rendelkezik.
+* [Egy összevont könyvtár](https://www.federated.directory/pricing).
+* Egy felhasználói fiók az összevont címtárban rendszergazdai engedélyekkel.
 
-## <a name="assign-users-to-federated-directory"></a>Felhasználók hozzárendelése összevont könyvtár
-Az Azure Active Directory egy fogalom, más néven hozzárendeléseket használatával határozza meg, hogy mely felhasználók kell kapnia a kiválasztott alkalmazásokhoz való hozzáférés. Felhasználók automatikus átadása kontextusában csak a felhasználók, illetve az Azure AD-alkalmazáshoz hozzárendelt csoportok vannak szinkronizálva.
+## <a name="assign-users-to-federated-directory"></a>Felhasználók társítása összevont címtárhoz
+Azure Active Directory a hozzárendelések nevű koncepció használatával határozza meg, hogy mely felhasználók kapnak hozzáférést a kiválasztott alkalmazásokhoz. Az automatikus felhasználó-kiépítés kontextusában csak az Azure AD-alkalmazáshoz hozzárendelt felhasználók és/vagy csoportok lesznek szinkronizálva.
 
-Felhasználók automatikus kiépítés engedélyezése és konfigurálása, mielőtt, meg kell határoznia, melyik felhasználók, illetve a csoportok az Azure AD Directory összevont hozzáféréssel kell rendelkezniük. Ha úgy döntött, rendelhet a felhasználók és csoportok Directory összevont utasításokat követve:
+Az automatikus felhasználó-kiépítés konfigurálása és engedélyezése előtt döntse el, hogy az Azure AD mely felhasználóinak és/vagy csoportjai számára szükséges az összevont címtárhoz való hozzáférés. Miután eldöntötte, ezeket a felhasználókat és/vagy csoportokat a következő utasítások alapján rendelheti hozzá az összevont címtárhoz:
 
- * [Egy felhasználó vagy csoport hozzárendelése egy vállalati alkalmazás](../manage-apps/assign-user-or-group-access-portal.md) 
+ * [Felhasználó vagy csoport társítása vállalati alkalmazáshoz](../manage-apps/assign-user-or-group-access-portal.md) 
  
- ## <a name="important-tips-for-assigning-users-to-federated-directory"></a>Felhasználók hozzárendelése Directory összevont fontos tippek
- * Javasoljuk, hogy egyetlen Azure AD-felhasználó van rendelve összevont Directory a felhasználók automatikus konfiguráció teszteléséhez. További felhasználók és csoportok később is rendelhető.
+ ## <a name="important-tips-for-assigning-users-to-federated-directory"></a>Fontos Tippek a felhasználók összevont címtárhoz való hozzárendeléséhez
+ * Azt javasoljuk, hogy egyetlen Azure AD-felhasználó legyen hozzárendelve az összevont címtárhoz az automatikus felhasználó-kiépítési konfiguráció teszteléséhez. Később további felhasználókat és/vagy csoportokat is hozzá lehet rendelni.
 
-* Összevont könyvtárba való hozzárendelésekor a felhasználó, a hozzárendelés párbeszédpanelen válassza ki bármely érvényes alkalmazás-specifikus szerepkört (ha elérhető). Az alapértelmezett hozzáférési szerepkörrel rendelkező felhasználók ki vannak zárva, a létesítési.
+* Ha egy felhasználót összevont címtárhoz rendel hozzá, ki kell választania egy érvényes alkalmazásspecifikus szerepkört (ha elérhető) a hozzárendelési párbeszédpanelen. Az alapértelmezett hozzáférési szerepkörrel rendelkező felhasználók ki vannak zárva a kiépítés alól.
     
- ## <a name="set-up-federated-directory-for-provisioning"></a>Összevont Directory beállítása az üzembe helyezés
+ ## <a name="set-up-federated-directory-for-provisioning"></a>Összevont könyvtár beállítása a kiépítés számára
 
-Mielőtt konfigurálná a Directory összevont felhasználók automatikus üzembe helyezés az Azure ad-vel, szüksége lesz az összevont Directory SCIM-kiépítés engedélyezése.
+Az összevont címtár az Azure AD-vel való automatikus felhasználói üzembe helyezése előtt engedélyeznie kell a SCIM-létesítést az összevont címtárban.
 
-1. Jelentkezzen be a [összevont könyvtár-felügyeleti konzol](https://federated.directory/of)
+1. Jelentkezzen be az [összevont címtár-felügyeleti konzolba](https://federated.directory/of)
 
-    ![Összevont Directory oktatóanyag](media/federated-directory-provisioning-tutorial/companyname.png)
+    ![Összevont címtár – oktatóanyag](media/federated-directory-provisioning-tutorial/companyname.png)
 
-2. Navigáljon a **könyvtárak > felhasználó könyvtárak** , és válassza ki a bérlő. 
+2. Navigáljon a **címtárak > felhasználói könyvtárak** elemre, és válassza ki a bérlőt. 
 
     ![összevont könyvtár](media/federated-directory-provisioning-tutorial/ad-user-directories.png)
 
-3.  Hozzon létre egy állandó tulajdonosi jogkivonattal, navigáljon a **Directory kulcsok > új kulcs létrehozása.** 
+3.  Állandó tulajdonosi jogkivonat létrehozásához navigáljon a **címtár kulcsai > hozzon létre új kulcsot.** 
 
     ![összevont könyvtár](media/federated-directory-provisioning-tutorial/federated01.png)
 
-4. Hozzon létre egy könyvtárat kulcsot. 
+4. Hozzon létre egy könyvtárat. 
 
     ![összevont könyvtár](media/federated-directory-provisioning-tutorial/federated02.png)
     
 
-5. Másolás a **Access Token** értéket. Ezt az értéket fog megadni az **titkos jogkivonat** mezőt a kiépítés lapon az összevont Directory-alkalmazás az Azure Portalon. 
+5. Másolja a **hozzáférési jogkivonat** értékét. Ezt az értéket az összevont Directory-alkalmazás kiépítés lapjának **titkos jogkivonat** mezőjébe írja be a Azure Portal. 
 
     ![összevont könyvtár](media/federated-directory-provisioning-tutorial/federated03.png)
     
-## <a name="add-federated-directory-from-the-gallery"></a>Összevont könyvtár hozzáadása a katalógusból
+## <a name="add-federated-directory-from-the-gallery"></a>Összevont könyvtár hozzáadása a gyűjteményből
 
-Összevont könyvtár konfigurálása az Azure AD-felhasználók automatikus, szüksége az Azure AD alkalmazáskatalógusában összevont könyvtár hozzáadása a felügyelt SaaS-alkalmazások listája.
+Az összevont címtár az Azure AD-vel való automatikus felhasználók számára történő konfigurálásához hozzá kell adnia az összevont könyvtárat az Azure AD Application Gallery-ből a felügyelt SaaS-alkalmazások listájához.
 
-**Az Azure AD alkalmazáskatalógusában Directory összevont hozzáadásához hajtsa végre az alábbi lépéseket:**
+**Összevont címtár hozzáadásához az Azure AD alkalmazás-katalógusból hajtsa végre a következő lépéseket:**
 
-1. Az a  **[az Azure portal](https://portal.azure.com)** , a bal oldali navigációs panelen válassza ki a **Azure Active Directory**.
+1. A **[Azure Portal](https://portal.azure.com)** a bal oldali navigációs panelen válassza a **Azure Active Directory**lehetőséget.
 
     ![Az Azure Active Directory gomb](common/select-azuread.png)
 
-2. Lépjen a **vállalati alkalmazások**, majd válassza ki **minden alkalmazás**.
+2. Lépjen a **vállalati alkalmazások**elemre, majd válassza a **minden alkalmazás**lehetőséget.
 
     ![A vállalati alkalmazások panelen](common/enterprise-applications.png)
 
-3. Új alkalmazás hozzáadásához válassza a **új alkalmazás** gombra a panel tetején.
+3. Új alkalmazás hozzáadásához kattintson a panel tetején található **új alkalmazás** gombra.
 
     ![Az új alkalmazás gomb](common/add-new-app.png)
 
-4. A Keresés mezőbe írja be a **Directory összevont**válassza **Directory összevont** az eredmények panelen.
+4. A keresőmezőbe írja be az **összevont címtár**kifejezést, majd válassza az **összevont címtár** lehetőséget az eredmények panelen.
 
-    ![Az eredmények listájában összevont könyvtár](common/search-new-app.png)
+    ![Összevont címtár az eredmények listájában](common/search-new-app.png)
 
-5. Keresse meg a **URL-cím** kiemelve alább a egy külön böngészőablakot. 
+5. Nyissa meg az alábbi **URL-címet** egy külön böngészőben. 
 
     ![összevont könyvtár](media/federated-directory-provisioning-tutorial/loginpage1.png)
 
-6. Kattintson a **bejelentkezés**.
+6. Kattintson **a bejelentkezés**elemre.
 
     ![összevont könyvtár](media/federated-directory-provisioning-tutorial/federated04.png)
 
-7.  Mivel Directory összevont OpenIDConnect alkalmazás, válassza a bejelentkezés az összevont Directory, a Microsoft munkahelyi fiókjával.
+7.  Mivel az összevont címtár egy OpenIDConnect-alkalmazás, az összevont címtárba való bejelentkezést a Microsoft munkahelyi fiókjával lehet bejelentkezni.
     
     ![összevont könyvtár](media/federated-directory-provisioning-tutorial/loginpage3.png)
  
-8. A sikeres hitelesítés után fogadja el a hozzájárulást kérő lap hozzájárulási kérése. Az alkalmazás ezután automatikusan hozzáadódik a bérlőhöz, és a rendszer átirányítja az összevont Directory-fiókjához.
+8. Sikeres hitelesítés után fogadja el a jóváhagyást kérő lapot. Az alkalmazás ezután automatikusan hozzáadódik a bérlőhöz, és a rendszer átirányítja az összevont címtár-fiókhoz.
 
-    ![összevont directory SCIM hozzáadása](media/federated-directory-provisioning-tutorial/premission.png)
+    ![összevont címtár SCIM hozzáadása](media/federated-directory-provisioning-tutorial/premission.png)
 
 
 
-## <a name="configuring-automatic-user-provisioning-to-federated-directory"></a>Összevont Directory történő automatikus felhasználókiépítés konfigurálása 
+## <a name="configuring-automatic-user-provisioning-to-federated-directory"></a>Az automatikus felhasználó-kiépítés konfigurálása az összevont címtárba 
 
-Ez a szakasz végigvezeti az Azure AD létesítési szolgáltatás létrehozása, frissítése és tiltsa le a felhasználók és csoportok az Azure AD-ben a felhasználó és/vagy a csoport-hozzárendelések alapján összevont Directory konfigurálásának lépéseit.
+Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálásának lépésein, amelyekkel felhasználókat és/vagy csoportokat hozhat létre, frissíthet és tilt le az összevont címtárban felhasználói és/vagy csoportos hozzárendelések alapján az Azure AD-ben.
 
-### <a name="to-configure-automatic-user-provisioning-for-federated-directory-in-azure-ad"></a>Konfigurálhatja a felhasználók automatikus átadása összevont címtár Azure AD-ben:
+### <a name="to-configure-automatic-user-provisioning-for-federated-directory-in-azure-ad"></a>Az automatikus felhasználó-kiépítés konfigurálása az összevont címtárhoz az Azure AD-ben:
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com). Válassza ki **vállalati alkalmazások**, majd **minden alkalmazás**.
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com). Válassza a **vállalati alkalmazások**lehetőséget, majd válassza **a minden alkalmazás**lehetőséget.
 
-    ![Vállalati alkalmazások panelen](common/enterprise-applications.png)
+    ![Vállalati alkalmazások panel](common/enterprise-applications.png)
 
-2. Az alkalmazások listájában jelölje ki a **Directory összevont**.
+2. Az alkalmazások listában válassza az **összevont címtár**elemet.
 
-    ![Az alkalmazások listáját az összevont Directory hivatkozásra](common/all-applications.png)
+    ![Az összevont könyvtár hivatkozása az alkalmazások listájában](common/all-applications.png)
 
-3. Válassza ki a **kiépítési** fülre.
+3. Válassza ki  a kiépítés lapot.
 
-    ![Kiépítés lapon](common/provisioning.png)
+    ![Kiépítés lap](common/provisioning.png)
 
-4. Állítsa be a **Kiépítési mód** való **automatikus**.
+4. Állítsa a **kiépítési módot** **automatikus**értékre.
 
-    ![Kiépítés lapon](common/provisioning-automatic.png)
+    ![Kiépítés lap](common/provisioning-automatic.png)
 
-5. Alatt a **rendszergazdai hitelesítő adataival** szakaszban bemeneti `https://api.federated.directory/v2/` a bérlői URL-cím. Az értéket, amely kéri le, és a korábban mentett Directory összevont **titkos jogkivonat**. Kattintson a **kapcsolat tesztelése** annak biztosítása érdekében az Azure AD Directory összevont csatlakozhat. Ha a kapcsolat nem sikerül, ellenőrizze a Directory összevont fiókja rendszergazdai engedélyekkel rendelkező, és próbálkozzon újra.
+5. A **rendszergazdai hitelesítő adatok** szakaszban `https://api.federated.directory/v2/` adja meg a bérlői URL-címet. Adja meg a beolvasott és a korábban mentett értéket az összevont könyvtárból **titkos**jogkivonatban. Kattintson a **kapcsolat tesztelése** elemre annak biztosításához, hogy az Azure ad csatlakozni tud az összevont címtárhoz. Ha a kapcsolat meghiúsul, győződjön meg arról, hogy az összevont címtár rendszergazdai jogosultságokkal rendelkezik, és próbálkozzon újra.
 
-    ![Bérlői URL-cím + jogkivonat](common/provisioning-testconnection-tenanturltoken.png)
+    ![Bérlői URL + token](common/provisioning-testconnection-tenanturltoken.png)
 
-8. Az a **értesítő e-mailt** mezőbe írja be az e-mail-címét egy személyt vagy csoportot, akik kell üzembe helyezési hiba értesítéseket fogadni, és jelölje be a jelölőnégyzetet - **e-mail-értesítés küldése, ha hiba történik**.
+8. Az **értesítési e-mail** mezőben adja meg egy olyan személy vagy csoport e-mail-címét, akinek meg kell kapnia a kiépítési hibákra vonatkozó értesítéseket, és jelölje be a jelölőnégyzetet – **e-mail-értesítés küldése hiba**esetén.
 
     ![Értesítő E-mail](common/provisioning-notification-email.png)
 
 9. Kattintson a **Save** (Mentés) gombra.
 
-10. Alatt a **leképezések** szakaszban jelölje be **szinkronizálása az Azure Active Directory-felhasználók Directory összevont**.
+10. A **leképezések** szakaszban válassza a **szinkronizálás Azure Active Directory a felhasználók összevont címtárba**lehetőséget.
 
-    ![Összevont Directory oktatóanyag](media/federated-directory-provisioning-tutorial/user-mappings.png)
+    ![Összevont címtár – oktatóanyag](media/federated-directory-provisioning-tutorial/user-mappings.png)
     
     
-11. Tekintse át az összevont címtárhoz az Azure AD-ből szinkronizált felhasználói attribútumok a **attribútumleképzés** szakaszban. A kiválasztott attribútumok **megfelelést kiváltó** tulajdonságai megfelelően a frissítési műveletek összevont címtárban levő felhasználói fiókokat használnak. Válassza ki a **mentése** gombra kattintva véglegesítse a módosításokat.
+11. Tekintse át az Azure AD-ből szinkronizált felhasználói attribútumokat az attribútum- **hozzárendelési** szakaszban az összevont címtárba. Az **egyeztetési** tulajdonságokként kiválasztott attribútumok az összevont címtárban lévő felhasználói fiókoknak a frissítési műveletekhez való megfeleltetésére szolgálnak. A módosítások elvégzéséhez kattintson a **Save (Mentés** ) gombra.
 
-    ![Összevont Directory oktatóanyag](media/federated-directory-provisioning-tutorial/user-attributes.png)
+    ![Összevont címtár – oktatóanyag](media/federated-directory-provisioning-tutorial/user-attributes.png)
     
 
-12. Hatókörszűrő konfigurálásához tekintse meg a következő utasításokat a [Scoping szűrő oktatóanyag](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md).
+12. A hatóköri szűrők konfigurálásához tekintse meg az alábbi utasításokat a [hatókör szűrője oktatóanyagban](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md).
 
-13. Az Azure AD létesítési szolgáltatás összevont Directory engedélyezéséhez módosítsa a **üzembe helyezési állapotra** való **a** a a **beállítások** szakaszban.
+13. Az Azure AD kiépítési szolgáltatás összevont címtárhoz való engedélyezéséhez módosítsa a **kiépítési állapotot** a  **Beállítások** szakaszban.
 
-    ![Kiépítési állapot bekapcsolt](common/provisioning-toggle-on.png)
+    ![Kiépítés állapota bekapcsolva](common/provisioning-toggle-on.png)
 
-14. A felhasználók és/vagy a csoportok, adja meg kiépítése összevont könyvtárba való meghatározásához válassza ki a kívánt értékeket a **hatókör** a a **beállítások** szakaszban.
+14. Adja meg azokat a felhasználókat és/vagy csoportokat, amelyeket az összevont címtárban szeretne kiépíteni, ehhez válassza ki a kívánt értékeket a **hatókör** területen a **Beállítások** szakaszban.
 
-    ![Hatókör-kiépítés](common/provisioning-scope.png)
+    ![Kiépítési hatókör](common/provisioning-scope.png)
 
-15. Ha készen áll rendelkezésre, kattintson a **mentése**.
+15. Ha készen áll a létesítésre, kattintson a **Mentés**gombra.
 
-    ![Üzembe helyezési konfiguráció mentése](common/provisioning-configuration-save.png)
+    ![Kiépítési konfiguráció mentése](common/provisioning-configuration-save.png)
 
-Ez a művelet elindítja a kezdeti szinkronizálás, az összes olyan felhasználó és/vagy meghatározott csoportoknak **hatókör** a a **beállítások** szakaszban. A kezdeti szinkronizálás végrehajtásához, mint az ezt követő szinkronizálások, amely körülbelül 40 percenként történik, amennyiben az Azure AD létesítési szolgáltatás fut-e több időt vesz igénybe. Használhatja a **szinkronizálás részleteivel** szakasz előrehaladásának figyeléséhez, és kövesse a hivatkozásokat kiépítés tevékenységgel kapcsolatos jelentés, amely az Azure AD létesítési szolgáltatás összevont könyvtár által végrehajtott összes műveletet ismerteti.
+Ez a művelet elindítja a **Beállítások** szakasz hatókörében meghatározott összes felhasználó és/vagy  csoport kezdeti szinkronizálását. A kezdeti szinkronizálás hosszabb időt vesz igénybe, mint a későbbi szinkronizálások, amelyek körülbelül 40 percenként történnek, amíg az Azure AD kiépítési szolgáltatás fut. A **szinkronizálás részletei** szakasz segítségével figyelheti a folyamat előrehaladását, és követheti a kiépítési tevékenységek jelentésére mutató hivatkozásokat, amelyek az Azure ad-kiépítési szolgáltatás által az összevont címtárban végrehajtott összes műveletet ismertetik.
 
-Az Azure AD létesítési naplók olvasása további információkért lásd: [-jelentések automatikus felhasználói fiók kiépítése](../manage-apps/check-status-user-account-provisioning.md)
+Az Azure AD-kiépítési naplók beolvasásával kapcsolatos további információkért lásd: [jelentéskészítés az automatikus felhasználói fiókok üzembe](../manage-apps/check-status-user-account-provisioning.md) helyezésével kapcsolatban.
 ## <a name="additional-resources"></a>További források
 
-* [Felhasználói fiók kiépítése a vállalati alkalmazások kezelése](../manage-apps/configure-automatic-user-provisioning-portal.md)
+* [Felhasználói fiók üzembe helyezésének kezelése vállalati alkalmazásokhoz](../manage-apps/configure-automatic-user-provisioning-portal.md)
 * [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>További lépések
 
-* [Tekintse át a naplók és jelentések készítése a tevékenység kiépítése](../manage-apps/check-status-user-account-provisioning.md)
+* [Megtudhatja, hogyan tekintheti át a naplókat, és hogyan kérhet jelentéseket a kiépítési tevékenységekről](../manage-apps/check-status-user-account-provisioning.md)

@@ -1,57 +1,57 @@
 ---
-title: Erőforrások üzembe helyezése az Azure CLI és a sablon |} A Microsoft Docs
-description: Azure Resource Manager és az Azure CLI használatával helyezhet üzembe erőforrásokat az Azure-bA. Az erőforrások egy Resource Manager-sablonban vannak meghatározva.
+title: Erőforrások üzembe helyezése az Azure CLI-vel és sablonnal | Microsoft Docs
+description: Erőforrások üzembe helyezése az Azure-ban a Azure Resource Manager és az Azure CLI használatával. Az erőforrások egy Resource Manager-sablonban vannak meghatározva.
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 03/28/2019
+ms.date: 07/12/2019
 ms.author: tomfitz
-ms.openlocfilehash: 11d5b174dc21392df89def8e91847e8a0dd12562
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: 93b1b16776bac6cb24996d6fa08a547318802f32
+ms.sourcegitcommit: 470041c681719df2d4ee9b81c9be6104befffcea
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67206540"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67853833"
 ---
 # <a name="deploy-resources-with-resource-manager-templates-and-azure-cli"></a>Erőforrások üzembe helyezése Resource Manager-sablonokkal és az Azure parancssori felületével
 
-Ez a cikk ismerteti az Azure CLI használata a Resource Manager-sablonok, az erőforrások üzembe helyezése az Azure. Ha nem ismeri a fogalmait, üzembe helyezése és kezelése az Azure-megoldások, lásd: [Azure Resource Manager áttekintése](resource-group-overview.md).  
+Ez a cikk azt ismerteti, hogyan használhatja az Azure CLI-t Resource Manager-sablonokkal az erőforrások Azure-ba történő üzembe helyezéséhez. Ha nem ismeri az Azure-megoldások üzembe helyezésével és kezelésével kapcsolatos fogalmakat, tekintse meg az [Azure Resource Manager áttekintése](resource-group-overview.md)című témakört.  
 
 [!INCLUDE [sample-cli-install](../../includes/sample-cli-install.md)]
 
-Ha nem rendelkezik Azure CLI telepítve van, használhatja a [Cloud Shell](#deploy-template-from-cloud-shell).
+Ha nincs telepítve az Azure CLI, használhatja a [Cloud Shell](#deploy-template-from-cloud-shell).
 
-## <a name="deployment-scope"></a>Üzembe helyezés hatálya
+## <a name="deployment-scope"></a>Központi telepítés hatóköre
 
-A központi telepítést az Azure-előfizetés és a egy erőforráscsoportot egy előfizetésen belül célba. A legtöbb esetben egy erőforráscsoportba irányuló üzembe helyezés céljaként meghatározott lesz. Előfizetések üzemelő példányai használatával alkalmazza a házirendeket és a szerepkör-hozzárendelések az előfizetésből. Hozzon létre egy erőforráscsoportot, és üzembe helyezni erőforrásokat, előfizetés központi telepítéseket is használ. Az üzembe helyezés, függően különböző parancsokat használhatja.
+Az üzembe helyezést egy előfizetésen belül egy Azure-előfizetésre vagy egy erőforráscsoporthoz is megcélozhatja. A legtöbb esetben az üzembe helyezést egy erőforráscsoporthoz kell megcélozni. Az előfizetés központi telepítései használatával házirendek és szerepkör-hozzárendelések alkalmazhatók az előfizetések között. Az előfizetések központi telepítését is használhatja az erőforráscsoport létrehozásához és az erőforrások üzembe helyezéséhez. A központi telepítés hatókörének függvényében különböző parancsokat kell használnia.
 
-Központi telepítése egy **erőforráscsoport**, használjon [az csoport központi telepítésének létrehozása](/cli/azure/group/deployment?view=azure-cli-latest#az-group-deployment-create):
+Egy **erőforráscsoporthoz**való üzembe helyezéshez használja az [az Group Deployment Create](/cli/azure/group/deployment?view=azure-cli-latest#az-group-deployment-create):
 
 ```azurecli
 az group deployment create --resource-group <resource-group-name> --template-file <path-to-template>
 ```
 
-Központi telepítése egy **előfizetés**, használjon [az üzembe helyezés létrehozása](/cli/azure/deployment?view=azure-cli-latest#az-deployment-create):
+Az előfizetésre való központi telepítéshez használja az [az Deployment Create](/cli/azure/deployment?view=azure-cli-latest#az-deployment-create):
 
 ```azurecli
 az deployment create --location <location> --template-file <path-to-template>
 ```
 
-Felügyeleti csoportok üzemelő példányai jelenleg csak a REST API-n keresztül támogatottak. Lásd: [erőforrások üzembe helyezése Resource Manager-sablonok és a Resource Manager REST API](resource-group-template-deploy-rest.md).
+Jelenleg a felügyeleti csoport központi telepítései csak a REST APIon keresztül támogatottak. Lásd: [erőforrások üzembe helyezése Resource Manager-sablonokkal és Resource Manager-Rest APIokkal](resource-group-template-deploy-rest.md).
 
-Ebben a cikkben szereplő példák erőforráscsoportok üzemelő példányainak használja. Előfizetések üzemelő példányai kapcsolatos további információkért lásd: [erőforráscsoport és erőforrások létrehozásához az előfizetés szintjén](deploy-to-subscription.md).
+A cikkben szereplő példák az erőforráscsoportok központi telepítését használják. Az előfizetések telepítésével kapcsolatos további információkért lásd: [erőforráscsoportok és erőforrások létrehozása az előfizetési szinten](deploy-to-subscription.md).
 
 ## <a name="deploy-local-template"></a>Helyi sablon üzembe helyezése
 
-Erőforrások üzembe helyezésekor az Azure-ba, hogy:
+Amikor erőforrásokat telepít az Azure-ba, a következőket teheti:
 
 1. Jelentkezzen be az Azure-fiókjába
-2. Hozzon létre egy erőforráscsoportot, amely a telepített erőforrások tárolójaként szolgál. Az erőforráscsoport neve csak alfanumerikus karaktereket, pontokat, aláhúzásjeleket, kötőjeleket és zárójelet tartalmazhat. Legfeljebb 90 karakter lehet. Nem végződhet ponttal.
-3. Az erőforráscsoport üzembe a sablont, amely meghatározza az erőforrások létrehozása
+2. Hozzon létre egy erőforráscsoportot, amely tárolóként szolgál az üzembe helyezett erőforrásokhoz. Az erőforráscsoport neve csak alfanumerikus karaktereket, pontokat, aláhúzásokat, kötőjeleket és zárójeleket tartalmazhat. Legfeljebb 90 karakter hosszú lehet. Nem végződhet ponttal.
+3. Üzembe helyezés az erőforráscsoporthoz a létrehozandó erőforrásokat definiáló sablon
 
-A sablon paramétereit, amelyek lehetővé teszik az üzembe helyezés testreszabása tartalmazhat. Például megadhat értékeket, amelyek egy adott környezetben (például fejlesztési, tesztelési és éles környezetben). A mintasablon a tárfiók SKU paraméter határozza meg. 
+A sablon tartalmazhat olyan paramétereket, amelyek lehetővé teszik a központi telepítés testreszabását. Megadhat például egy adott környezetre szabott értékeket (például fejlesztési, tesztelési és éles). A minta sablon egy paramétert határoz meg a Storage-fiók SKU-jának. 
 
-Az alábbi példa létrehoz egy erőforráscsoportot, és üzembe helyezi a sablont a helyi gépen:
+A következő példában létrehozunk egy erőforráscsoportot, és üzembe helyezünk egy sablont a helyi gépről:
 
 ```azurecli-interactive
 az group create --name ExampleGroup --location "Central US"
@@ -62,7 +62,7 @@ az group deployment create \
   --parameters storageAccountType=Standard_GRS
 ```
 
-Az üzembe helyezés eltarthat néhány percig. Amikor befejeződik, megjelenik egy üzenet, amely tartalmazza az eredmény:
+Az üzembe helyezés eltarthat néhány percig. Amikor befejeződik, megjelenik egy üzenet, amely tartalmazza a következő eredményt:
 
 ```azurecli
 "provisioningState": "Succeeded",
@@ -70,9 +70,9 @@ Az üzembe helyezés eltarthat néhány percig. Amikor befejeződik, megjelenik 
 
 ## <a name="deploy-remote-template"></a>Távoli sablon üzembe helyezése
 
-Resource Manager-sablonok tárolása a helyi gépén, helyett érdemesebb lehet külső helyen tárolja őket. Sablonok verziókövetési adattár (például a GitHub) tárolhatja. Vagy tárolhatja őket az Azure storage-fiók, a közös hozzáférésű a szervezetben.
+A Resource Manager-sablonok helyi gépen való tárolása helyett érdemes lehet őket külső helyen tárolni. A sablonok a verziókövetés adattárában (például a GitHubon) is tárolhatók. Egy Azure Storage-fiókban is tárolhatja őket a szervezet megosztott hozzáféréséhez.
 
-Egy külső sablon üzembe helyezéséhez használja a **sablon-uri** paraméter. A példában az URI használatával helyezhet üzembe a mintául szolgáló sablont a Githubból.
+Külső sablon üzembe helyezéséhez használja a **template-URI** paramétert. A példában szereplő URI használatával telepítse a minta sablont a GitHubról.
 
 ```azurecli-interactive
 az group create --name ExampleGroup --location "Central US"
@@ -83,11 +83,11 @@ az group deployment create \
   --parameters storageAccountType=Standard_GRS
 ```
 
-Az előző példában a sablon, amely a legtöbb esetben működik, mivel a sablon ne tartalmazza a bizalmas adatokat egy nyilvánosan elérhető-e URI-t igényel. Adja meg a bizalmas adatok (például egy rendszergazdai jelszót) van szüksége, ha biztonságos paraméterként adja át ezt az értéket. Azonban ha nem szeretné a sablon nyilvánosan hozzáférhető, segítségével megvédheti azokat a személyes tárolót tárolja őket. Egy közös hozzáférésű jogosultságkód (SAS) igénylő sablonok telepítésével kapcsolatos információkért lásd: [saját sablon üzembe helyezése SAS-jogkivonat használatával](resource-manager-cli-sas-token.md).
+Az előző példa egy nyilvánosan elérhető URI-t igényel a sablonhoz, amely a legtöbb forgatókönyv esetében működik, mert a sablon nem tartalmazhat bizalmas adatokat. Ha bizalmas adatokat (például rendszergazdai jelszót) kell megadnia, adja át ezt az értéket biztonságos paraméterként. Ha azonban nem szeretné, hogy a sablon nyilvánosan elérhető legyen, akkor azt egy privát tárolóban tárolhatja. A közös hozzáférésű aláírási (SAS-) tokent igénylő sablonok telepítésével kapcsolatos információkért lásd: [privát sablon telepítése sas](resource-manager-cli-sas-token.md)-tokenrel.
 
 [!INCLUDE [resource-manager-cloud-shell-deploy.md](../../includes/resource-manager-cloud-shell-deploy.md)]
 
-A Cloud shellben használja az alábbi parancsokat:
+A Cloud Shell használja a következő parancsokat:
 
 ```azurecli-interactive
 az group create --name examplegroup --location "South Central US"
@@ -96,18 +96,18 @@ az group deployment create --resource-group examplegroup \
   --parameters storageAccountType=Standard_GRS
 ```
 
-## <a name="redeploy-when-deployment-fails"></a>Telepítse újra a központi telepítésének hibája esetén
+## <a name="redeploy-when-deployment-fails"></a>Újratelepítése, ha a telepítés sikertelen
 
-Ez a funkció más néven van *visszaállítási hiba*. Ha egy központi telepítés nem sikerül, automatikusan is újratelepítése egy korábbi, a sikeres telepítés az üzembe helyezési előzményekből. Újbóli üzembe helyezés megadásához használja a `--rollback-on-error` paramétert a üzembe helyezés parancsba. Ez a funkció akkor hasznos, ha van egy korábbi hibátlan állapotra az infrastruktúra üzembe helyezéshez, és szeretné állítani az állapotot. Nincsenek figyelmeztetések és korlátozások:
+Ez a szolgáltatás a *hiba miatt visszagörgetés*néven is ismert. Ha egy telepítés meghiúsul, automatikusan újratelepítheti a korábbi, sikeres telepítést az üzembe helyezési előzményekből. Az újratelepítés megadásához használja `--rollback-on-error` a paramétert a telepítési parancsban. Ez a funkció akkor hasznos, ha az infrastruktúra központi telepítésének ismert jó állapota van, és ezt az állapotot szeretné visszaállítani. Számos figyelmeztetés és korlátozás létezik:
 
-- Az újbóli üzembe helyezés pontosan, ahogy korábban már volt futtatva ugyanazokkal a paraméterekkel futtatja. A paraméterek nem módosítható.
-- A korábbi központi telepítés segítségével futtatja a [teljes mód](./deployment-modes.md#complete-mode). Nem szerepel a korábbi központi telepítés minden erőforrás törlődni, és a minden erőforrás-konfigurációt az előző állapotukba. Győződjön meg arról, hogy megértette a [üzembe helyezési mód](./deployment-modes.md).
-- Az újratelepítés csak érinti az erőforrásokat, adatok módosításokat a változás nem érinti.
-- Ez a funkció csak az erőforráscsoport központi telepítések, nem előfizetési szintű központi telepítések támogatott. Előfizetés-szintű üzembe helyezéssel kapcsolatos további információkért lásd: [erőforráscsoport és erőforrások létrehozásához az előfizetés szintjén](./deploy-to-subscription.md).
+- Az újratelepítést a rendszer pontosan úgy futtatja, ahogy korábban ugyanazzal a paraméterekkel futtatta. A paraméterek nem módosíthatók.
+- Az előző központi telepítés a [teljes móddal](./deployment-modes.md#complete-mode)fut. A rendszer törli az előző üzemelő példányban nem szereplő erőforrásokat, és minden erőforrás-konfiguráció a korábbi állapotukra van beállítva. Győződjön meg arról, hogy teljes mértékben megértette az [üzembe helyezési módokat](./deployment-modes.md).
+- Az újratelepítés csak az erőforrásokat befolyásolja, az adatváltozások nincsenek hatással.
+- Ez a funkció csak az erőforráscsoport-telepítések esetében támogatott, az előfizetés szintjén üzemelő példányok nem. Az előfizetési szintű telepítéssel kapcsolatos további információkért lásd: [erőforráscsoportok és erőforrások létrehozása az előfizetési szinten](./deploy-to-subscription.md).
 
-Ez a beállítás használatához az üzemelő példányok egyedi névvel kell rendelkezniük az előzményekben található ellenőrizhető, hogy. Ha nem rendelkezik egyedi nevét, az aktuális telepítése sikertelen volt. a korábban sikeresen végrehajtott központi telepítés előzményei esetleg felülírhatja. Használhatja ezt a beállítást csak a legfelső szintű telepítések. Beágyazott sablonból üzemelő példányok nem újbóli üzembe helyezés érhetők el.
+Ha ezt a beállítást szeretné használni, a központi telepítéseknek egyedi névvel kell rendelkezniük, hogy az előzményekben azonosíthatók legyenek. Ha nem rendelkezik egyedi névvel, akkor az aktuális sikertelen telepítés felülírhatja a korábban sikeres telepítést az előzményekben. Ezt a lehetőséget csak gyökérszintű központi telepítések esetén használhatja. A beágyazott sablonból történő központi telepítések nem érhetők el az újratelepítéshez.
 
-Telepítse újra a legutóbbi sikeres üzembe helyezés, adja hozzá a `--rollback-on-error` paramétert, azt a jelzőt.
+Az utolsó sikeres központi telepítés újbóli üzembe helyezéséhez `--rollback-on-error` adja hozzá a paramétert jelzőként.
 
 ```azurecli-interactive
 az group deployment create \
@@ -118,7 +118,7 @@ az group deployment create \
   --rollback-on-error
 ```
 
-Az újratelepítés egy adott, használja a `--rollback-on-error` paramétert, és adja meg a központi telepítés nevét.
+Egy adott központi telepítés újbóli üzembe helyezéséhez `--rollback-on-error` használja a paramétert, és adja meg a központi telepítés nevét.
 
 ```azurecli-interactive
 az group deployment create \
@@ -129,15 +129,15 @@ az group deployment create \
   --rollback-on-error ExampleDeployment01
 ```
 
-A megadott központi telepítés sikeres volt kell rendelkeznie.
+A megadott központi telepítésnek sikeresnek kell lennie.
 
 ## <a name="parameters"></a>Paraméterek
 
-Paraméterértékek átadni, vagy a beágyazott paraméterek, vagy egy paraméterfájl használható. Az előző példák ebben a cikkben a beágyazott paraméterek megjelenítése.
+A paraméterek értékének átadásához használhat beágyazott paramétereket vagy egy paraméter-fájlt. A cikk előző példái a beágyazott paramétereket mutatják be.
 
-### <a name="inline-parameters"></a>A beágyazott paraméterek
+### <a name="inline-parameters"></a>Beágyazott paraméterek
 
-A beágyazott paraméterek adhatók át, adja meg az értékeket `parameters`. Például egy karakterláncot és egy tömb átadása egy sablont egy Bash-felületen, használja:
+A beágyazott paraméterek átadásához adja meg az értékeket `parameters`a következőben:. Ha például egy karakterláncot és tömböt szeretne átadni egy sablonnak egy bash-rendszerhéjra, használja a következőt:
 
 ```azurecli
 az group deployment create \
@@ -146,7 +146,9 @@ az group deployment create \
   --parameters exampleString='inline string' exampleArray='("value1", "value2")'
 ```
 
-Fájl tartalmának beolvasása, és adja meg a beágyazott paraméterként tartalom is.
+Ha az Azure CLI-t a Windows parancssorral (CMD) vagy a PowerShell-lel használja, adja át a `exampleArray="['value1','value2']"`tömböt a következő formátumban:.
+
+Emellett beolvashatja a fájl tartalmát, és megadhatja a tartalmat beágyazott paraméterként.
 
 ```azurecli
 az group deployment create \
@@ -155,9 +157,9 @@ az group deployment create \
   --parameters exampleString=@stringContent.txt exampleArray=@arrayContent.json
 ```
 
-A paraméter értékének lekérése egy fájl akkor hasznos, ha meg kell adnia a konfigurációs értékeket. Megadhat például [Linux rendszerű virtuális gép értékeit a cloud-init](../virtual-machines/linux/using-cloud-init.md).
+Egy paraméter értékének beolvasása a fájlból hasznos lehet, ha konfigurációs értékeket kell megadnia. Megadhat például [egy Linux rendszerű virtuális gép számára a Cloud-init értékeket](../virtual-machines/linux/using-cloud-init.md).
 
-ArrayContent.json formátuma:
+A arrayContent. JSON formátum:
 
 ```json
 [
@@ -166,11 +168,11 @@ ArrayContent.json formátuma:
 ]
 ```
 
-### <a name="parameter-files"></a>Alkalmazásparaméter-fájlok
+### <a name="parameter-files"></a>Paraméter fájljai
 
-Ahelyett, hogy a paraméterek átadása a parancsfájlban beágyazott értékekként, akkor előfordulhat, hogy egyszerűbb paraméter értékét tartalmazó JSON-fájl használata. A paraméterfájl egy helyi fájlba kell lennie. Külső alkalmazásparaméter-fájlok nem támogatottak az Azure CLI használatával.
+Ahelyett, hogy a paramétereket a parancsfájlba beágyazott értékként adja át, előfordulhat, hogy könnyebben használható egy JSON-fájl, amely tartalmazza a paraméter értékeit. A paraméter fájljának helyi fájlnak kell lennie. A külső paraméterek fájljai nem támogatottak az Azure CLI-vel.
 
-A paraméterfájl a következő formátumban kell lennie:
+A paraméter fájljának a következő formátumúnak kell lennie:
 
 ```json
 {
@@ -184,11 +186,11 @@ A paraméterfájl a következő formátumban kell lennie:
 }
 ```
 
-Figyelje meg, hogy a paraméterek szakasz tartalmazza-e a paraméter neve, amely megegyezik a paraméter definiálva a sablonban (Tárfióktípus). A paraméterfájl a paraméter értékét tartalmazza. Ezt az értéket automatikusan kerülnek a sablon üzembe helyezése során. Hozzon létre több alkalmazásparaméter-fájlt, és akkor továbbítja a forgatókönyvnek megfelelő paraméterfájlban. 
+Figyelje meg, hogy a parameters (paraméterek) szakasz egy olyan paraméter nevét tartalmazza, amely megegyezik a sablonban definiált paraméterrel (Tárfióktípus). A paraméter értéke tartalmazza a paraméter értékét. A rendszer ezt az értéket automatikusan átadja a sablonnak az üzembe helyezés során. Több paramétert is létrehozhat, majd átadhatja a megfelelő paramétert a forgatókönyvhöz. 
 
-Másolja ki az előző példában, és mentse a fájlt `storage.parameters.json`.
+Másolja az előző példát, és mentse egy nevű `storage.parameters.json`fájlként.
 
-Adja át a helyi alkalmazásparaméter-fájlt, használja a `@` storage.parameters.json nevű helyi fájl megadásához.
+Helyi paraméterérték átadásához a paranccsal `@` adjon meg egy Storage. Parameters. JSON nevű helyi fájlt.
 
 ```azurecli-interactive
 az group deployment create \
@@ -198,9 +200,9 @@ az group deployment create \
   --parameters @storage.parameters.json
 ```
 
-### <a name="parameter-precedence"></a>A paraméter sorrend
+### <a name="parameter-precedence"></a>Paraméter prioritása
 
-A beágyazott paraméterek és a egy helyi paraméterfájl azonos központi telepítési művelet is használhatja. Például néhány értéket adja meg a helyi alkalmazásparaméter-fájlt, és adja hozzá az egyéb értékek beágyazott üzembe helyezés során. Ha a paraméter a helyi alkalmazásparaméter-fájlt és a beágyazott értékeket ad meg, a beágyazott elsőbbséget.
+A beágyazott paramétereket és a helyi paramétereket is használhatja ugyanabban a telepítési műveletben. Megadhat például néhány értéket a helyi paraméter fájljában, és az üzembe helyezés során további értékeket is hozzáadhat. Ha a paraméter értékét a helyi paraméter fájljában és a beágyazott mezőben is megadja, a beágyazott érték elsőbbséget élvez.
 
 ```azurecli
 az group deployment create \
@@ -210,9 +212,9 @@ az group deployment create \
   --parameters exampleArray=@arrtest.json
 ```
 
-## <a name="test-a-template-deployment"></a>Egy sablon üzemelő példány tesztelése
+## <a name="test-a-template-deployment"></a>Sablon központi telepítésének tesztelése
 
-A sablonnal és paraméterfájlokkal értékek teszteléséhez ténylegesen az olyan erőforrások telepítés nélkül használhatja a [az csoport központi telepítésének ellenőrzése](/cli/azure/group/deployment#az-group-deployment-validate). 
+A sablon és a paraméterek értékének az erőforrások tényleges üzembe helyezése nélküli teszteléséhez használja [az az Group Deployment validate](/cli/azure/group/deployment#az-group-deployment-validate). 
 
 ```azurecli-interactive
 az group deployment validate \
@@ -221,7 +223,7 @@ az group deployment validate \
   --parameters @storage.parameters.json
 ```
 
-Ha nincsenek hibák észlelhetők, a parancs visszaadja a teszt üzembe helyezéssel kapcsolatos adatokat. Különösen, vegye figyelembe, hogy a **hiba** null értékű.
+Ha a rendszer nem észlel hibát, a parancs adatokat ad vissza a tesztelési telepítésről. Fontos megjegyezni, hogy a **hiba** értéke null.
 
 ```azurecli
 {
@@ -230,7 +232,7 @@ Ha nincsenek hibák észlelhetők, a parancs visszaadja a teszt üzembe helyezé
       ...
 ```
 
-Ha hibát észlel, a parancs hibaüzenetet ad vissza. Például a tárfiók SKU, helytelen értéket átadja adja vissza a következő hibával:
+Ha a rendszer hibát észlel, a parancs hibaüzenetet ad vissza. Ha például helytelen értéket ad meg a Storage-fiók SKU-jának, a a következő hibaüzenetet adja vissza:
 
 ```azurecli
 {
@@ -246,7 +248,7 @@ Ha hibát észlel, a parancs hibaüzenetet ad vissza. Például a tárfiók SKU,
 }
 ```
 
-Ha a sablon szintaktikai hibát tartalmaz, a parancs visszaadja egy hibaüzenet, nem lehetett elemezni a sablont. Az üzenet azt jelzi, hogy a sor száma és az elemzési hiba pozícióját.
+Ha a sablon szintaktikai hibát tartalmaz, a parancs egy hibaüzenetet ad vissza, amely azt jelzi, hogy nem tudta elemezni a sablont. Az üzenet a sorszámot és az elemzési hiba pozícióját jelzi.
 
 ```azurecli
 {
@@ -263,9 +265,9 @@ Ha a sablon szintaktikai hibát tartalmaz, a parancs visszaadja egy hibaüzenet,
 
 ## <a name="next-steps"></a>További lépések
 
-- Ebben a cikkben szereplő példák erőforrások üzembe helyezése az erőforráscsoporthoz, az alapértelmezett előfizetést. Használjon másik előfizetést, lásd: [több Azure-előfizetések kezelése](/cli/azure/manage-azure-subscriptions-azure-cli).
-- Adja meg, hogyan legyen kezelve az erőforrásokat, az erőforráscsoportban létezik, de nincsenek definiálva a sablonban, lásd: [Azure Resource Manager üzembe helyezési mód](deployment-modes.md).
-- A sablonban szereplő paraméterekkel definiálása ismertetése: [struktúra és az Azure Resource Manager-sablonok szintaxisát](resource-group-authoring-templates.md).
-- Gyakori üzembehelyezési hibák elhárítása a tippek: [hibáinak elhárítása a közös Azure-beli hibák az Azure Resource Manager](resource-manager-common-deployment-errors.md).
-- SAS-token igénylő sablonok telepítésével kapcsolatos információkért lásd: [saját sablon üzembe helyezése SAS-jogkivonat használatával](resource-manager-cli-sas-token.md).
-- Biztonságosan terjed ki a szolgáltatás több régióban, lásd: [Azure Deployment Manager](deployment-manager-overview.md).
+- A cikkben szereplő példák az erőforrásokat az alapértelmezett előfizetésben lévő erőforráscsoporthoz telepítik. Ha másik előfizetést szeretne használni, tekintse meg a [több Azure-előfizetés kezelése](/cli/azure/manage-azure-subscriptions-azure-cli)című témakört.
+- Ha meg szeretné adni, hogyan kezelje az erőforráscsoport meglévő erőforrásait, de a sablonban nincs definiálva, tekintse meg a [Azure Resource Manager üzembe helyezési módokat](deployment-modes.md).
+- Ha szeretné megtudni, hogyan határozhat meg paramétereket a sablonban, olvassa el [a Azure Resource Manager sablonok struktúrájának és szintaxisának megismerését](resource-group-authoring-templates.md)ismertető témakört.
+- A gyakori telepítési hibák megoldásával kapcsolatos tippekért lásd: [gyakori Azure-telepítési hibák elhárítása Azure Resource Managerokkal](resource-manager-common-deployment-errors.md).
+- A SAS-tokent igénylő sablonok telepítésével kapcsolatos információkért lásd: [privát sablon üzembe helyezése sas](resource-manager-cli-sas-token.md)-tokenrel.
+- A szolgáltatás több régióba való biztonságos kivonásához lásd: [Azure Telepítéskezelő](deployment-manager-overview.md).

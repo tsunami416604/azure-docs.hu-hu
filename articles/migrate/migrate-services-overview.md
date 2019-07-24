@@ -7,95 +7,95 @@ ms.topic: overview
 ms.date: 07/11/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 083eaaa5be35d515a477ce6286f226b267569e1e
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.openlocfilehash: 5409ed799454a6bb64077ee884065fc518556142
+ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67840364"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "68227812"
 ---
 # <a name="about-azure-migrate"></a>Az Azure Migrate bemutatása
 
-Ez a cikk egy rövid áttekintést nyújt az Azure Migrate.
+Ez a cikk a Azure Migrate gyors áttekintését tartalmazza.
 
-Az Azure Migrate segít az Azure-bA migrálása. Az Azure Migrate biztosít egy információs központ nyomon követéséhez a felderítése, a felmérési és a helyszíni infrastruktúra, alkalmazások és adatok áttelepítése az Azure-bA. A hub felmérés és migrálás, valamint a külső független szoftverszállítók (ISV) szállító ajánlatok az Azure eszközöket biztosít. Az alábbiakat biztosítja:
+Azure Migrate segítségével áttelepítheti az Azure-ba. A Azure Migrate központosított központot biztosít a helyszíni infrastruktúrák, alkalmazások és az Azure-ba irányuló adatfelderítés,-értékelés és-áttelepítés nyomon követéséhez. A hub Azure-eszközöket biztosít az értékeléshez és az áttelepítéshez, valamint a harmadik féltől származó független szoftvergyártói (ISV) ajánlatokhoz. Az alábbiakat biztosítja:
 
-- **Áttelepítési egységes platform**: Használatával egyetlen portál indításához futtassa, és nyomon követheti a migrálási folyamat az Azure-bA.
-- **Számos eszközt**: Az Azure Migrate natív eszközöket biztosít, és integrálja az Azure-szolgáltatásokat, valamint az ISV-eszközökkel. Válassza ki a megfelelő elemzésekhez és migráláshoz eszközökkel, a szervezeti követelmények alapján. 
-- **Az Azure Migrate Server Assessment**: Felmérheti az Server Assessment eszköz használatával a helyszíni VMware virtuális gépek és a Hyper-V virtuális gépek, az Azure-ba való migrálásra.
-- **Az Azure Migrate-kiszolgáló áttelepítése**: A kiszolgáló-áttelepítési eszköz használata a helyszíni VMware virtuális gépeket, Hyper-V virtuális gépek, cloud virtuális gépek és fizikai kiszolgálók áttelepítése az Azure-bA.
-- **Az Azure Migrate az adatbázis-értékelés**: Mérje fel a helyszíni adatbázisok az Azure-ba való migrálásra.
-- **Az Azure Migrate az adatbázis-Migrálás**: A helyszíni adatbázisok migrálása az Azure-bA.
+- **Egységesített áttelepítési platform**: Egyetlen portál használatával elindíthatja, futtathatja és nyomon követheti az Azure-ba való áttelepítést.
+- **Eszközök köre**: A Azure Migrate natív eszközöket biztosít, és integrálható más Azure-szolgáltatásokkal, valamint az ISV-eszközökkel. Válassza ki a megfelelő értékelési és áttelepítési eszközöket a szervezeti követelmények alapján. 
+- **Azure Migrate kiszolgáló értékelése**: A kiszolgáló-értékelési eszközzel kiértékelheti a helyszíni VMware virtuális gépeket és a Hyper-V virtuális gépeket az Azure-ba való áttelepítéshez.
+- **Azure Migrate kiszolgáló áttelepítése**: A kiszolgáló áttelepítési eszközével helyszíni VMware virtuális gépeket, Hyper-V virtuális gépeket, Felhőbeli virtuális gépeket és fizikai kiszolgálókat telepíthet át az Azure-ba.
+- **Azure Migrate adatbázis-értékelés**: Helyszíni adatbázisok kiértékelése az Azure-ba való áttelepítéshez.
+- **Adatbázis áttelepítése Azure Migrate**: Helyszíni adatbázisok migrálása az Azure-ba.
 
 
-## <a name="azure-migrate-versions"></a>Az Azure Migrate-verziók
+## <a name="azure-migrate-versions"></a>Azure Migrate verziók
 
-Nincsenek az Azure Migrate szolgáltatás két verziója:
+A Azure Migrate szolgáltatásnak két verziója van:
 
-- **Aktuális verzió**: Ez a verzió használatával hozható létre az Azure Migrate a helyszíni gépek felderítését és felmérését és áttelepítések. [További](whats-new.md) kapcsolatos újdonságok ebben a verzióban.
-- **Előző verzió**: Ha az Azure Migrate (csak a helyszíni VMware virtuális gépek értékelése támogatta) előző verzióját használja, most aktuális verzióját kell használni. Már nem hozható létre az Azure Migrate a korábbi verziót használ, vagy hajtsa végre az új felderítések. Azonban továbbra is elérheti meglévő projekteket. Ehhez az Azure Portal > **minden szolgáltatás**, keressen **Azure Migrate**. Az Azure Migrate irányítópulton nincs értesítés és a egy hivatkozást a régi Azure Migrate projektek.
+- **Aktuális verzió**: Ezzel a verzióval Azure Migrate projekteket hozhat létre, felderítheti a helyszíni gépeket, és összehangolhatja az értékeléseket és áttelepítéseket. [További](whats-new.md) információ az ebben a verzióban található újdonságokról.
+- **Előző verzió**: Ha a Azure Migrate korábbi verzióját használta (csak a helyszíni VMware virtuális gépek felmérése támogatott), akkor most az aktuális verziót kell használnia. Az előző verzió használatával már nem hozhat létre Azure Migrate projekteket, és javasoljuk, hogy ne végezzen új felfedezéseket. A meglévő projektek eléréséhez a Azure Portal > **minden szolgáltatás**területen keressen **Azure Migrate**. A Azure Migrate irányítópulton van egy értesítés és egy hivatkozás a régi Azure Migrate projektek eléréséhez.
 
-## <a name="isv-integration"></a>Az ISV-integráció
+## <a name="isv-integration"></a>ISV-integráció
 
-Natív Azure-eszközök Azure Migrate integrálódik az ISV-ajánlatokról számos. Azonosíthatja az eszközt kell, és adja hozzá az Azure Migrate-projektet. A migrálási folyamat az az Azure Migrate-projektben a központilag nyomon követése az Azure és a független Szoftverszállítók eszközök között.
+A natív Azure-eszközökön kívül a Azure Migrate számos ISV-ajánlattal is integrálható. Azonosíthatja a szükséges eszközt, és hozzáadhatja egy Azure Migrate projekthez. Központilag követheti az áttelepítési utat a Azure Migrate projektből az Azure-ban és az ISV-eszközökön.
 
 **ISV** | **Funkció**
 --- | ---
 [Cloudamize](https://www.cloudamize.com/platform) | Értékelés
 [Eszköz 42](https://docs.device42.com/) | Értékelés
-[A Turbonomic](https://learn.turbonomic.com/azure-migrate-portal-free-trial) | Értékelés
+[Turbonomic](https://learn.turbonomic.com/azure-migrate-portal-free-trial) | Értékelés
 [UnifyCloud](https://www.cloudatlasinc.com/cloudrecon/) | Értékelés
-[Corent Technology](https://www.corenttech.com/AzureMigrate/) | Értékelni és migrálni
+[A kölcsönzés technológiája](https://www.corenttech.com/AzureMigrate/) | Értékelés és Migrálás
 [Carbonite](https://www.carbonite.com/globalassets/files/datasheets/carb-migrate4azure-microsoft-ds.pdf) | Migrate (Áttelepítés)
 
-### <a name="selecting-an-isv-tool"></a>Egy független Szoftverszállító eszköz kiválasztása
+### <a name="selecting-an-isv-tool"></a>ISV-eszköz kiválasztása
 
-A felvett egy ISV-eszköz az Azure Migrate-projektet, első lépésként a eszközzel licenc, vagy regisztráljon egy ingyenes próbaverzióra, az ISV-szabályzatának megfelelően. Minden egyes eszköz csatlakozni az Azure Migrate lehetőség van. Kövesse az eszköz utasításokat és dokumentációja, az eszköz csatlakoztatása az Azure Migrate.
+Miután hozzáadta az ISV-eszközt egy Azure Migrate projekthez, a licenc beszerzésével vagy az ingyenes próbaverzióra való feliratkozással megkezdheti az eszközt az ISV-szabályzatnak megfelelően. Minden eszközön lehetőség van a Azure Migratehoz való kapcsolódásra. Az eszköz Azure Migrate való összekapcsolásához kövesse az eszköz útmutatásait és dokumentációját.
 
-## <a name="azure-migrate-server-assessment"></a>Az Azure Migrate Server Assessment
+## <a name="azure-migrate-server-assessment"></a>Azure Migrate kiszolgáló értékelése
 
-Az Azure Migrate Server Assessment deríti fel, és felméri a helyszíni VMware virtuális gépek és a Hyper-V virtuális gépek, az Azure-ba való migrálásra. Ez segít azonosítani a következő:
+Azure Migrate Server Assessment a helyszíni VMware virtuális gépeket és a Hyper-V virtuális gépeket az Azure-ba való Migrálás során felfedi és értékeli. Ez segít a következők azonosításában:
 
-- **Azure-kompatibilitás:** Annak ellenőrzéséhez, hogy készen áll a helyszíni gépek az Azure-ba való migrálásra.
-- **Az Azure méretezési:** Azure virtuális gépek méretének becslése az áttelepítés után.
-- **Az Azure költségbecslés:** Becsült költségek a helyszíni kiszolgálók Azure-ban futó.
-- **Függőségek képi megjelenítése:** Azonosítsa a kiszolgálók közötti függőségeket, és a legjobb módszer a függő kiszolgálók áthelyezése az Azure-bA. 
+- **Azure-készültség:** Vizsgálja meg, hogy a helyszíni gépek készen állnak-e az Azure-ba való áttelepítésre.
+- **Az Azure méretezése:** A Migrálás után megbecsülheti az Azure-beli virtuális gépek méretét.
+- **Azure-költségbecslés:** A helyszíni kiszolgálók Azure-beli futtatásával kapcsolatos költségek becslése.
+- **Függőségi vizualizáció:** Azonosítsa a kiszolgálók közötti függőségeket, és a legjobb módszer a függő kiszolgálók Azure-ba való áthelyezésére. 
 
-Server Assessment egy egyszerűsített, hogy telepítse őket a helyszínen, és regisztrálja Server Assessment berendezést használ.
+A kiszolgáló értékelése egy, a helyszínen üzembe helyezett, egyszerűsített berendezést használ, és regisztrálja magát a kiszolgáló értékelésével.
 
-- A berendezés felderíti a helyszíni gépek, Server Assessment csatlakozik, és folyamatosan elküldi a metaadatokat és a teljesítménnyel kapcsolatos adatokat az Azure Migrate.
-- Ügynök nélküli kivételfigyelés az észlelés. Semmit nem kell telepíteni a felderített virtuális gépen.
-- Miután a felfedezett gépek őket csoportokba rendezheti, amelyek általában együtt áttelepíteni kívánt virtuális gépek állnak.
-- Hozzon létre egy értékelést a csoport számára. Az értékelés, döntse el, az áttelepítési stratégiáját, majd elemezheti.
+- A készülék felfedi a helyszíni gépeket, csatlakozik a kiszolgáló értékeléséhez, és folyamatosan küldi a metaadatokat és a teljesítménnyel kapcsolatos adatokat Azure Migrate.
+- A felderítés ügynök nélküli. Nem kell telepíteni a felderített virtuális gépeket.
+- A gépek felderítése után azokat a csoportokat kell összegyűjtenie, amelyek jellemzően az áttelepíteni kívánt virtuális gépekből állnak.
+- Hozzon létre egy értékelést a csoport számára. Ezután elemezheti az értékelést, hogy kiderítse az áttelepítési stratégiát.
 
-## <a name="azure-migrate-server-migration"></a>Az Azure Migrate-kiszolgáló áttelepítése
+## <a name="azure-migrate-server-migration"></a>Azure Migrate kiszolgáló áttelepítése
 
-Az Azure Migrate kiszolgáló áttelepítése segít, hogy telepítse a helyszíni VMware virtuális gépek, a Hyper-V virtuális gépek, fizikai kiszolgálókon, más virtuális gépek és a nyilvános felhőbeli virtuális géphez, az Azure-bA. Gépek áttelepítheti azokat értékelése után, vagy anélkül egy értékelést. 
+A Azure Migrate-kiszolgáló áttelepítése a helyszíni VMware virtuális gépek, Hyper-V virtuális gépek, fizikai kiszolgálók, más virtualizált gépek és nyilvános Felhőbeli virtuális gépek áttelepítését teszi lehetővé az Azure-ba. A gépeket a kiértékelésük után vagy értékelés nélkül is áttelepítheti. 
 
-## <a name="azure-migrate-database-assessment"></a>Az Azure Migrate az adatbázis-értékelés
+## <a name="azure-migrate-database-assessment"></a>Adatbázis-értékelés Azure Migrate
 
-Az Azure Migrate integrálható a Data Migration Assistant (DMA) a helyszíni SQL Server-adatbázisok Azure SQL Database, Azure SQL felügyelt példánya vagy SQL Server rendszert futtató Azure virtuális gépek a migrálás értékeléséhez. DMA áttelepítés lehetséges hátráltató tényezőkkel kapcsolatos információkat biztosít. Nem támogatott szolgáltatások, valamint, hogy az áttelepítés után is kihasználhatják, és segít azonosítani a helyes elérési útjával adatbázis migrálása az új funkciók azonosítja. [További információk](https://docs.microsoft.com/sql/dma/dma-overview?view=sql-server-2017).
+A Azure Migrate a Data Migration Assistant (DMA) szolgáltatással integrálható a helyszíni SQL Server adatbázisok áttelepítésére az Azure SQL DB-be, az Azure SQL felügyelt példányaiba vagy SQL Server-t futtató Azure-beli virtuális gépekre. A DMA információt nyújt az áttelepítéssel kapcsolatos lehetséges blokkolási problémákról. Azonosítja a nem támogatott funkciókat, valamint az áttelepítés után kihasználható új funkciókat, és segít az adatbázis-áttelepítés megfelelő elérési útjának azonosításában. [További információk](https://docs.microsoft.com/sql/dma/dma-overview?view=sql-server-2017).
 
 
-## <a name="azure-migrate-database-migration"></a>Az Azure Migrate az adatbázis-Migrálás
+## <a name="azure-migrate-database-migration"></a>Adatbázis-áttelepítés Azure Migrate
 
-Az Azure Migrate integrálható az az Azure Database Migration Service (DMS), a helyszíni adatbázisok áttelepítése az Azure-bA. A DMS használatával a helyszíni adatbázisok migrálása az Azure virtuális gépeken futó SQL, Azure SQL Database és az Azure SQL felügyelt példányok. [További információk](https://docs.microsoft.com/azure/dms/dms-overview).
+A Azure Migrate a Azure Database Migration Service (DMS) szolgáltatással integrálható a helyszíni adatbázisok Azure-ba való migrálása érdekében. A DMS használatával helyszíni adatbázisokat telepíthet át az SQL, az Azure SQL DB és az Azure SQL felügyelt példányain futó Azure virtuális gépekre. [További információk](https://docs.microsoft.com/azure/dms/dms-overview).
 
-## <a name="web-app-assessment-and-migration"></a>Webes alkalmazás elemzésekhez és migráláshoz
+## <a name="web-app-assessment-and-migration"></a>Webalkalmazások felmérése és áttelepítése
 
-Az Azure Migrate hubról mérje fel, és a helyileg üzemeltetett webes alkalmazások migrálása az Azure-bA.
+Az Azure Migrate központban a helyszíni webalkalmazásokat az Azure-ba is felhasználhatja és áttelepítheti.
 
-- **Mérje fel a webalkalmazások online**: Az Azure App Service Migration Assistant annak ellenőrzésére fog használni a helyszíni webhelyek az Azure App Service-ben való migráláshoz.
-- **Web Apps alkalmazások áttelepítése a**: .NET és a PHP webes alkalmazások migrálása az Azure-ba, az Azure App Service Migration Assistant használata.
+- **Webes alkalmazások felmérése online**: A Azure App Service Migration Assistant segítségével kihasználhatja a helyszíni webhelyeket Azure App Servicere való áttelepítéshez.
+- Webalkalmazások migrálása: Telepítse át a .NET-és PHP-webalkalmazásokat az Azure-ba Azure App Service Migration Assistant használatával.
 
 [Részletek](https://appmigration.microsoft.com/)
 
-## <a name="offline-data-migration"></a>Offline adatok migrálása
+## <a name="offline-data-migration"></a>Offline adatáttelepítés
 
-A Data Box offline termékcsalád használatával nagy mennyiségű adat áthelyezése az Azure-bA. [További információ](https://docs.microsoft.com/azure/databox/)
+A Data Box offline termékcsalád használatával nagy mennyiségű adatátvitelt helyezhet át az Azure-ba. [További információ](https://docs.microsoft.com/azure/databox/)
 
 ## <a name="next-steps"></a>További lépések
 
-- Próbálja ki az oktatóanyagaink felmérése [VMware virtuális gépek](tutorial-assess-vmware.md) és [Hyper-V virtuális gépek](tutorial-assess-hyper-v.md).
+- Próbálja ki az oktatóanyagokat a [VMWare virtuális gépek](tutorial-assess-vmware.md) és a [Hyper-V virtuális gépek](tutorial-assess-hyper-v.md)értékeléséhez.
 - [Itt talál további információkat](https://azure.microsoft.com/pricing/details/azure-migrate/) az Azure Migrate díjszabásáról.
 - Tekintse meg az Azure Migrate használatával kapcsolatban felmerülő [gyakori kérdéseket](resources-faq.md).

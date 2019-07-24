@@ -1,29 +1,29 @@
 ---
-title: Azure-erőforrások logikai szervezet címkézése |} A Microsoft Docs
-description: Bemutatja a számlázási és kezelése az Azure-erőforrások rendszerezése címkékkel.
+title: Azure-erőforrások címkézése a logikai szervezet számára | Microsoft Docs
+description: Bemutatja, hogyan alkalmazhat címkéket az Azure-erőforrások számlázáshoz és felügyelethez való rendszerezéséhez.
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 07/11/2019
+ms.date: 07/17/2019
 ms.author: tomfitz
-ms.openlocfilehash: 77175738a0cae5c6185a8ac74e51e9b91b685235
-ms.sourcegitcommit: 441e59b8657a1eb1538c848b9b78c2e9e1b6cfd5
+ms.openlocfilehash: e18fc040249954ce7ea6a8a686e121a4b56fb54a
+ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67827937"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68312124"
 ---
 # <a name="use-tags-to-organize-your-azure-resources"></a>Azure-erőforrások rendszerezése címkékkel
 
 [!INCLUDE [resource-manager-governance-tags](../../includes/resource-manager-governance-tags.md)]
 
-Erőforrások címkékkel, a felhasználó adott erőforrástípus írási hozzáféréssel kell rendelkeznie. Címkéjét szeretné alkalmazni az összes erőforrástípus, használja a [közreműködői](../role-based-access-control/built-in-roles.md#contributor) szerepkör. A címkék alkalmazása csak egy erőforrás típusa, használja a közreműködő szerepkört az adott erőforráshoz. Például a címkék alkalmazása a virtuális gépekhez használja a [virtuális gépek Közreműködője](../role-based-access-control/built-in-roles.md#virtual-machine-contributor).
+Ahhoz, hogy címkéket lehessen alkalmazni az erőforrásokra, a felhasználónak írási hozzáféréssel kell rendelkeznie az adott erőforrás-típushoz. Ha címkéket szeretne alkalmazni az összes erőforrástípus, használja a [közreműködő](../role-based-access-control/built-in-roles.md#contributor) szerepkört. Ha csak egy erőforrás-típusra kíván címkéket alkalmazni, használja az adott erőforrás közreműködői szerepkörét. Ha például címkéket szeretne alkalmazni a virtuális gépekre, használja a [virtuális gép közreműködőjét](../role-based-access-control/built-in-roles.md#virtual-machine-contributor).
 
 [!INCLUDE [Handle personal data](../../includes/gdpr-intro-sentence.md)]
 
 ## <a name="policies"></a>Házirendek
 
-Használhat [Azure Policy](../governance/policy/overview.md) címkézési szabályok és konvenciói. Szabályzat létrehozásával a forgatókönyv az erőforrások üzembe helyezéséhez az előfizetéshez, amelyek nem felelnek a szervezet számára a várt címkék elkerülése érdekében. Ahelyett, hogy manuálisan alkalmaz a címkéket, vagy nem megfelelő erőforrások keresése létrehozhat egy szabályzatot, amely automatikusan alkalmazza a szükséges címkék üzembe helyezés során. A következő szakaszban látható példa címkékre vonatkozó szabályzatokat.
+A [Azure Policy](../governance/policy/overview.md) a címkézési szabályok és konvenciók betartatására használható. A szabályzat létrehozásával elkerülhető, hogy az előfizetéshez üzembe helyezett erőforrások milyen helyzetben legyenek, és nem felelnek meg a szervezete számára várt címkéknek. A címkék manuális alkalmazása vagy a nem megfelelő erőforrások keresése helyett létrehozhat egy olyan szabályzatot, amely automatikusan alkalmazza a szükséges címkéket az üzembe helyezés során. A következő szakasz példákat mutat be a címkékre.
 
 [!INCLUDE [Tag policies](../../includes/azure-policy-samples-general-tags.md)]
 
@@ -70,7 +70,7 @@ Vagy *megadott névvel és erőforráscsoporttal rendelkező erőforrás* meglé
 (Get-AzResource -Tag @{ Dept="Finance"}).Name
 ```
 
-Az első *, amelyek egy adott címkével nevét erőforrásokhoz*, használja:
+*Egy adott címke nevével rendelkező erőforrások*lekéréséhez használja a következőt:
 
 ```azurepowershell-interactive
 (Get-AzResource -TagName Dept).Name
@@ -107,7 +107,7 @@ $r.Tags.Add("Status", "Approved")
 Set-AzResource -Tag $r.Tags -ResourceId $r.ResourceId -Force
 ```
 
-Összes címkéjét szeretné alkalmazni egy erőforráscsoportot az erőforrásaira, és *korábbi címkék megőrzése nélkül az erőforrásokon*, használja a következő szkriptet:
+Ha az erőforráscsoport összes címkéjét az erőforrásaira szeretné alkalmazni, és *nem szeretné megtartani a meglévő címkéket az erőforrásokon*, használja a következő parancsfájlt:
 
 ```azurepowershell-interactive
 $groups = Get-AzResourceGroup
@@ -117,7 +117,7 @@ foreach ($g in $groups)
 }
 ```
 
-Összes címkéjét szeretné alkalmazni egy erőforráscsoportot az erőforrásaira, és *meglévő címkék maradjon az erőforrásokat, amelyek nem ismétlődő*, használja a következő szkriptet:
+Ha az erőforráscsoport összes címkéjét az erőforrásaira kívánja alkalmazni, és a *meglévő címkéket a nem duplikált erőforrásokon*szeretné megtartani, használja a következő parancsfájlt:
 
 ```azurepowershell-interactive
 $group = Get-AzResourceGroup "examplegroup"
@@ -168,25 +168,25 @@ A szkript a következő formátumot adja vissza:
 }
 ```
 
-Vagy meglévő címkéinek megtekintéséhez egy *erőforrás, amely rendelkezik a megadott név, típus és erőforrás-csoport*, használja:
+Vagy a *megadott névvel, típussal és erőforráscsoporthoz rendelkező erőforrás*meglévő címkéit a következő paranccsal tekintheti meg:
 
 ```azurecli
 az resource show -n examplevnet -g examplegroup --resource-type "Microsoft.Network/virtualNetworks" --query tags
 ```
 
-Hurkolás keresztül erőforrások gyűjteménye, amikor érdemes megjelenítése az erőforrás által erőforrás-azonosítója. A cikk későbbi részében látható egy teljes példát. *Megadott erőforrás-azonosítóval rendelkező erőforrás* meglévő címkéinek megtekintéséhez használja a következőt:
+Ha egy erőforrás-gyűjteményen keresztüli hurkot szeretne használni, érdemes lehet az erőforrást erőforrás-azonosító alapján megjeleníteni. A cikk későbbi részében megjelenik egy teljes példa. *Megadott erőforrás-azonosítóval rendelkező erőforrás* meglévő címkéinek megtekintéséhez használja a következőt:
 
 ```azurecli
 az resource show --id <resource-id> --query tags
 ```
 
-Adott címkével rendelkező erőforráscsoportok lekéréséhez használja `az group list`:
+Adott címkével rendelkező erőforráscsoportok lekéréséhez használja `az group list`a következőt:
 
 ```azurecli
 az group list --tag Dept=IT
 ```
 
-Egy bizonyos címkével és értékkel rendelkező összes erőforrást használja `az resource list`:
+Az adott címkével és értékkel rendelkező erőforrások beszerzéséhez használja `az resource list`a következőt:
 
 ```azurecli
 az resource list --tag Dept=Finance
@@ -206,7 +206,7 @@ Ha *meglévő címkék nélküli erőforráshoz* szeretne címkéket adni, haszn
 az resource tag --tags Dept=IT Environment=Test -g examplegroup -n examplevnet --resource-type "Microsoft.Network/virtualNetworks"
 ```
 
-Címkék hozzáadása a címkékkel rendelkező erőforráshoz, beolvasni a meglévő címkéket, formázza újra ezt az értéket, és alkalmazza ismét a meglévő és új címkéket:
+Ha címkéket szeretne felvenni egy olyan erőforráshoz, amely már rendelkezik címkékkel, kérje le a meglévő címkéket, formázza újra az értéket, majd alkalmazza újra a meglévő és az új címkéket:
 
 ```azurecli
 jsonrtag=$(az resource show -g examplegroup -n examplevnet --resource-type "Microsoft.Network/virtualNetworks" --query tags)
@@ -214,7 +214,7 @@ rt=$(echo $jsonrtag | tr -d '"{},' | sed 's/: /=/g')
 az resource tag --tags $rt Project=Redesign -g examplegroup -n examplevnet --resource-type "Microsoft.Network/virtualNetworks"
 ```
 
-Összes címkéjét szeretné alkalmazni egy erőforráscsoportot az erőforrásaira, és *korábbi címkék megőrzése nélkül az erőforrásokon*, használja a következő szkriptet:
+Ha az erőforráscsoport összes címkéjét az erőforrásaira szeretné alkalmazni, és *nem szeretné megtartani a meglévő címkéket az erőforrásokon*, használja a következő parancsfájlt:
 
 ```azurecli
 groups=$(az group list --query [].name --output tsv)
@@ -230,7 +230,7 @@ do
 done
 ```
 
-Összes címkéjét szeretné alkalmazni egy erőforráscsoportot az erőforrásaira, és *erőforrások meglévő címkéit tartsa*, használja a következő szkriptet:
+Ha az erőforráscsoport összes címkéjét az erőforrásaira kívánja alkalmazni, és a *meglévő címkéket szeretné megőrizni*az erőforrásokon, használja a következő parancsfájlt:
 
 ```azurecli
 groups=$(az group list --query [].name --output tsv)
@@ -250,7 +250,148 @@ done
 
 ## <a name="templates"></a>Sablonok
 
-[!INCLUDE [resource-manager-tags-in-templates](../../includes/resource-manager-tags-in-templates.md)]
+Ha egy erőforrást az üzembe helyezés során szeretne `tags` felcímkézni, adja hozzá az elemet az üzembe helyezett erőforráshoz. Adja meg a címke nevét és értékét.
+
+### <a name="apply-a-literal-value-to-the-tag-name"></a>Szövegkonstansérték alkalmazása a címkenévre
+
+Az alábbi példában egy tárfiók látható két címkével (`Dept` és `Environment`), amelyek szövegkonstansértékre vannak beállítva:
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "location": {
+            "type": "string",
+            "defaultValue": "[resourceGroup().location]"
+        }
+    },
+    "resources": [
+        {
+            "apiVersion": "2019-04-01",
+            "type": "Microsoft.Storage/storageAccounts",
+            "name": "[concat('storage', uniqueString(resourceGroup().id))]",
+            "location": "[parameters('location')]",
+            "tags": {
+                "Dept": "Finance",
+                "Environment": "Production"
+            },
+            "sku": {
+                "name": "Standard_LRS"
+            },
+            "kind": "Storage",
+            "properties": {}
+        }
+    ]
+}
+```
+
+Ha a címkét datetime értékre szeretné beállítani, használja a [utcNow függvényt](resource-group-template-functions-string.md#utcnow).
+
+### <a name="apply-an-object-to-the-tag-element"></a>Objektum alkalmazása a címkeelemre
+
+Megadhat olyan objektumparamétert, amely több címkét tartalmaz, majd alkalmazhatja azt az objektumot a címkeelemre. Az objektum minden tulajdonsága az erőforrás külön címkéjévé válik. Az alábbi példa egy `tagValues` nevű paramétert tartalmaz, amely a címkeelemre van alkalmazva.
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "location": {
+            "type": "string",
+            "defaultValue": "[resourceGroup().location]"
+        },
+        "tagValues": {
+            "type": "object",
+            "defaultValue": {
+                "Dept": "Finance",
+                "Environment": "Production"
+            }
+        }
+    },
+    "resources": [
+        {
+            "apiVersion": "2019-04-01",
+            "type": "Microsoft.Storage/storageAccounts",
+            "name": "[concat('storage', uniqueString(resourceGroup().id))]",
+            "location": "[parameters('location')]",
+            "tags": "[parameters('tagValues')]",
+            "sku": {
+                "name": "Standard_LRS"
+            },
+            "kind": "Storage",
+            "properties": {}
+        }
+    ]
+}
+```
+
+### <a name="apply-a-json-string-to-the-tag-name"></a>JSON-sztring alkalmazása a címkenévre
+
+Ha több értéket szeretne tárolni egyetlen címkében, alkalmazzon a megfelelő értékeket képviselő JSON-sztringet. A teljes JSON-karakterlánc egyetlen címkeként van tárolva, amely nem lehet hosszabb 256 karakternél. Az alábbi példában egy `CostCenter` nevű címke szerepel, amely egy JSON-sztring számos értékét tartalmazza:  
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "location": {
+            "type": "string",
+            "defaultValue": "[resourceGroup().location]"
+        }
+    },
+    "resources": [
+        {
+            "apiVersion": "2019-04-01",
+            "type": "Microsoft.Storage/storageAccounts",
+            "name": "[concat('storage', uniqueString(resourceGroup().id))]",
+            "location": "[parameters('location')]",
+            "tags": {
+                "CostCenter": "{\"Dept\":\"Finance\",\"Environment\":\"Production\"}"
+            },
+            "sku": {
+                "name": "Standard_LRS"
+            },
+            "kind": "Storage",
+            "properties": {}
+        }
+    ]
+}
+```
+
+### <a name="apply-tags-from-resource-group"></a>Címkék alkalmazása az erőforrás-csoportból
+
+Ha címkéket szeretne alkalmazni egy erőforráscsoporthoz egy erőforrásra, használja a [resourceGroup](resource-group-template-functions-resource.md#resourcegroup) függvényt. A címke értékének beolvasása során `tags.[tag-name]` a szintaxis helyett `tags.tag-name` használja a szintaxist, mert néhány karakter nem megfelelően van értelmezve a dot jelölésben.
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "location": {
+            "type": "string",
+            "defaultValue": "[resourceGroup().location]"
+        }
+    },
+    "resources": [
+        {
+            "apiVersion": "2019-04-01",
+            "type": "Microsoft.Storage/storageAccounts",
+            "name": "[concat('storage', uniqueString(resourceGroup().id))]",
+            "location": "[parameters('location')]",
+            "tags": {
+                "Dept": "[resourceGroup().tags['Dept']]",
+                "Environment": "[resourceGroup().tags['Environment']]"
+            },
+            "sku": {
+                "name": "Standard_LRS"
+            },
+            "kind": "Storage",
+            "properties": {}
+        }
+    ]
+}
+```
 
 ## <a name="portal"></a>Portál
 
@@ -258,17 +399,17 @@ done
 
 ## <a name="rest-api"></a>REST API
 
-Az Azure portal és a PowerShell is használja a [Resource Manager REST API](https://docs.microsoft.com/rest/api/resources/) a háttérben. Ha integrálja a címkézés egy másik környezetbe kell, beszerezheti a címkék használatával **első** az erőforrás-azonosító és frissíteni a csoportot a címkék használatával egy **javítására** hívja.
+A Azure Portal és a PowerShell egyaránt a [Resource Manager REST API](https://docs.microsoft.com/rest/api/resources/) használja a jelenetek mögött. Ha a címkézést egy másik környezetbe kell integrálnia, az erőforrás-azonosító  lekérése lehetőséggel beolvashatja a címkéket, és frissítheti a címkék készletét egy **javítási** hívás használatával.
 
-## <a name="tags-and-billing"></a>A címkék és számlázás
+## <a name="tags-and-billing"></a>Címkék és számlázás
 
-Címkék használatával az elszámolási adatok. Például ha különböző szervezetek több virtuális gépet futtat, használja a címkék használata a költséghely szerint. Címkék használatával költségek kategorizálása futtatókörnyezet, például a számlázási használata az éles környezetben futó virtuális gépek szerint.
+A címkéket a számlázási adataik csoportosítására használhatja. Ha például több virtuális gépet futtat különböző szervezetekhez, a címkék használatával csoportosítsa a használatot Cost Center alapján. A címkék használatával kategorizálhatja a költségeket futásidejű környezet szerint, például az éles környezetben futó virtuális gépek számlázási használatát.
 
-Információ a címkék használatával lekérheti a [Azure erőforrás-használat és RateCard API-k](../billing/billing-usage-rate-card-overview.md) vagy a használati vesszővel elválasztott értékeket (CSV) fájl. A használati fájl letöltése a [Azure Account Center](https://account.azure.com/Subscriptions) vagy az Azure Portalon. További információkért lásd: [letöltéséhez vagy az Azure számlázási és napi használati adatok megtekintéséhez](../billing/billing-download-azure-invoice-daily-usage-date.md). Válassza a használatot részletező fájl az Azure Account Center letöltésekor **2-es verzió**. A címkék a számlázási támogató szolgáltatások, a címkék jelennek meg a **címkék** oszlop.
+A címkékre vonatkozó információkat az [Azure erőforrás-használat és a RateCard API](../billing/billing-usage-rate-card-overview.md) -k, illetve a használat vesszővel tagolt (CSV) fájl segítségével kérheti le. A használati fájlt a [Azure Fiókközpont](https://account.azure.com/Subscriptions) vagy Azure Portal töltheti le. További információkért tekintse [meg az Azure számlázási és napi használati adatainak letöltését vagy megtekintését](../billing/billing-download-azure-invoice-daily-usage-date.md)ismertető témakört. A Azure Fiókközpont a használati fájl letöltésekor válassza a **2. verziót**. A számlázási címkéket támogató szolgáltatások esetében a címkék a **címkék** oszlopban jelennek meg.
 
-REST API-műveleteket, lásd: [Azure Billing – REST API-referencia](/rest/api/billing/).
+REST API műveletekhez tekintse meg az [Azure számlázási REST API referenciáját](/rest/api/billing/).
 
 ## <a name="next-steps"></a>További lépések
 
-* Nem minden erőforrástípus támogatja a címkék. Ha alkalmazhat egy címkét egy erőforrástípus megállapításához lásd: [címkézése Azure-erőforrások támogatása](tag-support.md).
-* Bevezetés a portál használatával, lásd: [az Azure-erőforrások kezelése az Azure portal használatával](manage-resource-groups-portal.md).  
+* Nem minden erőforrástípus támogatja a címkéket. Annak megállapításához, hogy lehet-e címkét alkalmazni az erőforrás típusára, tekintse meg [Az Azure-erőforrások támogatásának címkézését](tag-support.md)ismertető témakört.
+* A portál használatának bevezetését lásd: [a Azure Portal használata az Azure-erőforrások kezeléséhez](manage-resource-groups-portal.md).  

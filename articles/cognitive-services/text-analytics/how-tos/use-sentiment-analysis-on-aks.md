@@ -1,7 +1,7 @@
 ---
-title: Futtassa az Azure Kubernetes-szolgáltatás
+title: Az Azure Kubernetes Service futtatása
 titleSuffix: Text Analytics - Azure Cognitive Services
-description: Helyezze üzembe a text analytics tárolókat a vélemények elemzése lemezképpel, az Azure Kubernetes-szolgáltatás, és tesztelje a szolgáltatást egy webböngészőben.
+description: A Text Analytics tárolók üzembe helyezése az adatelemzési képpel az Azure Kubernetes Service-ben, és tesztelés egy böngészőben.
 services: cognitive-services
 author: IEvangelist
 manager: nitinme
@@ -10,66 +10,66 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 06/21/2019
 ms.author: dapine
-ms.openlocfilehash: a419ed3b9c0d2c4db9c552642dc5c662786f6730
-ms.sourcegitcommit: d3b1f89edceb9bff1870f562bc2c2fd52636fc21
+ms.openlocfilehash: 290a01e7e478f718607c0550702474cd31979a63
+ms.sourcegitcommit: b49431b29a53efaa5b82f9be0f8a714f668c38ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/04/2019
-ms.locfileid: "67561250"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68377387"
 ---
-# <a name="deploy-a-sentiment-analysis-container-to-azure-kubernetes-services-aks"></a>Hangulatelemzés a tároló üzembe helyezése az Azure Kubernetes-szolgáltatások (AKS)
+# <a name="deploy-a-sentiment-analysis-container-to-azure-kubernetes-service"></a>Hangulat-elemzési tároló üzembe helyezése az Azure Kubernetes Service-ben
 
-Ismerje meg, hogyan helyezhet üzembe a Cognitive Services [Szövegelemzés](https://docs.microsoft.com/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-install-containers) a Hangulatelemzés lemezképet az Azure Kubernetes-szolgáltatások (AKS)-tárolóban. Ez az eljárás exemplifies a egy erőforrás létrehozását a Text Analytics, a társított Hangulatelemzés lemezkép és az azon képessége, hogy a két közvetlenül a böngészőből a vezénylési létrehozását. Tárolók használatával is shift figyelmét a fejlesztők számára az alkalmazásfejlesztés inkább összpontosító infrastruktúra kezelése.
+Megtudhatja, hogyan helyezheti üzembe az Azure Cognitive Services [text Analytics](https://docs.microsoft.com/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-install-containers) -tárolót a hangulat-elemzési képpel az Azure Kubernetes Service (ak) szolgáltatásban. Ez az eljárás bemutatja, hogyan hozhat létre egy Text Analytics-erőforrást, hogyan hozhat létre egy kapcsolódó hangulat-elemzési képet, és hogyan gyakorolhatja a kettőt egy böngészőből. A tárolók használatával átirányíthatja a figyelmet az infrastruktúra kezelése helyett, hogy az alkalmazások fejlesztésére összpontosítsanak.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ez az eljárás több eszközt, hogy telepítve legyen, és helyi futtatása szükséges. Ne használja az Azure Cloud shellben.
+Ennek az eljárásnak számos olyan eszközre van szüksége, amelyet helyileg kell telepíteni és futtatni. Ne használja a Azure Cloud Shell. A következőkre lesz szüksége:
 
-* Használja az Azure-előfizetéssel. Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/) a virtuális gép létrehozásának megkezdése előtt.
-* Szövegszerkesztőben, például: [Visual Studio Code](https://code.visualstudio.com/download).
-* Telepítse az [Azure CLI-t](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
-* Telepítse a [Kubernetes parancssori Felületét](https://kubernetes.io/docs/tasks/tools/install-kubectl/).
-* Egy Azure-erőforrás a megfelelő tarifacsomagot. Nem minden tarifacsomag használata ebben a tárolóban:
-    * **Szövegelemzés** erőforrás F0 vagy Standard díjszabás csak szint esetében.
-    * **A cognitive Services** tarifacsomag az S0 erőforrás.
+* Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/) a virtuális gép létrehozásának megkezdése előtt.
+* Egy szövegszerkesztő, például a [Visual Studio Code](https://code.visualstudio.com/download).
+* Az [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) telepítve van.
+* A [KUBERNETES CLI](https://kubernetes.io/docs/tasks/tools/install-kubectl/) telepítve van.
+* Egy megfelelő árképzési szintű Azure-erőforrás. Nem minden díjszabási csomag működik ezzel a tárolóval:
+    * Az **Azure Text Analytics** erőforrás csak a F0 vagy a standard szintű árképzési szinttel rendelkezik.
+    * **Azure Cognitive Services** erőforrás a S0 díjszabási szintjével.
 
 [!INCLUDE [Create a Cognitive Services Text Analytics resource](../includes/create-text-analytics-resource.md)]
 
-[!INCLUDE [Create a Text Analytics Containers on Azure Kubernetes Services (AKS)](../../containers/includes/create-aks-resource.md)]
+[!INCLUDE [Create a Text Analytics container on Azure Kubernetes Service (AKS)](../../containers/includes/create-aks-resource.md)]
 
-## <a name="deploy-text-analytics-container-to-an-aks-cluster"></a>Text Analytics tároló üzembe AKS-fürt
+## <a name="deploy-a-text-analytics-container-to-an-aks-cluster"></a>Text Analytics tároló üzembe helyezése egy AK-fürtön
 
-1. Nyissa meg az Azure parancssori felület és a bejelentkezés az Azure-bA
+1. Nyissa meg az Azure CLI-t, és jelentkezzen be az Azure-ba.
 
     ```azurecli
     az login
     ```
 
-1. Jelentkezzen be az AKS-fürtöt (cserélje le a `your-cluster-name` és `your-resource-group` a megfelelő értékekkel)
+1. Jelentkezzen be az AK-fürtbe. Cserélje `your-cluster-name` le `your-resource-group` a és a értéket a megfelelő értékekre.
 
     ```azurecli
     az aks get-credentials -n your-cluster-name -g -your-resource-group
     ```
 
-    Ez a parancs végrehajtása után jelentést készít a következőhöz hasonló üzenetet:
+    A parancs futtatása után a következőhöz hasonló üzenetet küld:
 
     ```console
     Merged "your-cluster-name" as current context in /home/username/.kube/config
     ```
 
     > [!WARNING]
-    > Ha Ön számára elérhető Azure-fiók több előfizetéssel rendelkezik, és a `az aks get-credentials` parancs hibát ad vissza, a gyakori probléma, hogy a megfelelő előfizetést használ. Egyszerűen állítsa be az Azure CLI-munkamenetet, amely az erőforrásokat a létrehozott ugyanahhoz az előfizetéshez használandó keretében, és próbálkozzon újra.
+    > Ha több előfizetése is elérhető az Azure-fiókjában, és `az aks get-credentials` a parancs hibával tér vissza, egy gyakori probléma, hogy nem megfelelő előfizetést használ. Állítsa be az Azure CLI-munkamenet kontextusát úgy, hogy ugyanazt az előfizetést használja, mint amelyet az erőforrásokhoz hozott létre, és próbálkozzon újra.
     > ```azurecli
     >  az account set -s subscription-id
     > ```
 
-1. Nyissa meg a tetszőleges szövegszerkesztőben (Ez a példa __Visual Studio Code__):
+1. Nyissa meg a választható szövegszerkesztőt. Ez a példa a Visual Studio Code-ot használja.
 
     ```azurecli
     code .
     ```
 
-1. Belül a szövegszerkesztőben hozzon létre egy új fájlt _sentiment.yaml_ és illessze be a következő yaml-kódot. Ne felejtse el a `billing/value` és `apikey/value` saját.
+1. A szövegszerkesztőben hozzon létre egy " _YAML_" nevű új fájlt, és illessze be az alábbi YAML. Ügyeljen arra, hogy `billing/value` a `apikey/value` és a saját adatait cserélje le.
 
     ```yaml
     apiVersion: apps/v1beta1
@@ -108,39 +108,39 @@ Ez az eljárás több eszközt, hogy telepítve legyen, és helyi futtatása sz�
         app: sentiment-app
     ```
 
-1. Mentse a fájlt, és zárja be a szövegszerkesztőben.
-1. Hajtsa végre a Kubernetes `apply` parancsot a _sentiment.yaml_ és a cél:
+1. Mentse a fájlt, és zárjuk be a szövegszerkesztőt.
+1. Futtassa a Kubernetes `apply` parancsot a _hangulat. YAML_ , a célként megadott módon:
 
     ```console
     kuberctl apply -f sentiment.yaml
     ```
 
-    A parancs után sikeresen alkalmazta a telepítési konfigurációt, egy üzenet a következő kimenet hasonlít:
+    Miután a parancs sikeresen alkalmazta a központi telepítési konfigurációt, a következő kimenethez hasonló üzenet jelenik meg:
 
     ```
     deployment.apps "sentiment" created
     service "sentiment" created
     ```
-1. Győződjön meg arról, hogy telepítve lett-e a POD:
+1. Ellenőrizze, hogy telepítve van-e a pod:
 
     ```console
     kubectl get pods
     ```
 
-    Ez a POD futó állapotának kimenete:
+    A pod futási állapotának kimenete:
 
     ```
     NAME                         READY     STATUS    RESTARTS   AGE
     sentiment-5c9ccdf575-mf6k5   1/1       Running   0          1m
     ```
 
-1. Győződjön meg arról, hogy a szolgáltatás elérhető, és IP-címének lekéréséhez:
+1. Győződjön meg arról, hogy a szolgáltatás elérhető, és kérje le az IP-címet.
 
     ```console
     kubectl get services
     ```
 
-    Ez futó állapotának kimenete a _vélemények_ a POD szolgáltatással:
+    Az hangulati szolgáltatás a pod-ban  futó állapotának kimenete:
 
     ```
     NAME         TYPE           CLUSTER-IP    EXTERNAL-IP      PORT(S)          AGE
@@ -148,9 +148,9 @@ Ez az eljárás több eszközt, hogy telepítve legyen, és helyi futtatása sz�
     sentiment    LoadBalancer   10.0.100.64   168.61.156.180   5000:31234/TCP   2m
     ```
 
-[!INCLUDE [Verify the Sentiment Analysis container instance](../includes/verify-sentiment-analysis-container.md)]
+[!INCLUDE [Verify the sentiment analysis container instance](../includes/verify-sentiment-analysis-container.md)]
 
 ## <a name="next-steps"></a>További lépések
 
-* Több [Cognitive Services-tárolók](../../cognitive-services-container-support.md)
-* Használja a [Szövegelemzés csatlakoztatott szolgáltatás](../vs-text-connected-service.md)
+* További [Cognitive Services tárolók](../../cognitive-services-container-support.md) használata
+* A [text Analytics csatlakoztatott szolgáltatás](../vs-text-connected-service.md) használata

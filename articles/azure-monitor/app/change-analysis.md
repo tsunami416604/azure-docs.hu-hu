@@ -1,6 +1,6 @@
 ---
-title: Az Azure Monitor módosítás Alkalmazáselemzés használatával keresse meg a webalkalmazás-problémák |} A Microsoft Docs
-description: Elemzések használata teszi alkalmazás módosítása az Azure monitorban élő webhelyeken az Azure App Service-alkalmazások hibáinak elhárítása.
+title: Alkalmazás-módosítási elemzés használata a Azure Monitor webalkalmazásokkal kapcsolatos problémák kereséséhez | Microsoft Docs
+description: Az alkalmazással kapcsolatos problémák elhárításához használja a Azure Monitor az alkalmazások változási elemzését Azure App Service.
 services: application-insights
 author: cawams
 manager: carmonm
@@ -10,91 +10,91 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 05/07/2019
 ms.author: cawa
-ms.openlocfilehash: 45df8f9e57223ea60a11c6af2187d362184cae2b
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 3efa26a1eaea8f522d9717efb0de0ec8e1682e0e
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67443350"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67875161"
 ---
-# <a name="use-application-change-analysis-preview-in-azure-monitor"></a>Alkalmazáselemzés módosítása (előzetes verzió) használata az Azure monitorban
+# <a name="use-application-change-analysis-preview-in-azure-monitor"></a>Alkalmazás-módosítási elemzés (előzetes verzió) használata Azure Monitor
 
-Amikor egy élő probléma, illetve leállás történik, való megfelelés gyors megállapítása az alapvető ok, kritikus fontosságú. Standard figyelési megoldások előfordulhat, hogy riasztást küld, a problémát. Előfordulhat, hogy még jelzik összetevő nem működik. Azonban ez a riasztás nem mindig azonnal ismertetik a hiba okát. Biztos, hogy a hely működött öt perccel ezelőtt történt, és most már rendelkezik a megszakadt. Mi változott, az utolsó öt perc alatt? Ez az a kérdés, amely Alkalmazáselemzés módosítása az Azure monitorban választ.
+Ha élő hely probléma vagy leállás történik, az alapvető ok gyors meghatározása kritikus fontosságú. A standard szintű figyelési megoldások riasztást kérhetnek a problémára. Akár azt is jelezhetik, hogy melyik összetevő meghibásodik. Ez a riasztás azonban nem mindig azonnal ismerteti a hiba okát. Tudja, hogy a hely öt perccel ezelőtt dolgozott, és most megszakadt. Mi változott az elmúlt öt percben? Ez az a kérdés, hogy az alkalmazás változásának elemzése úgy van kialakítva, hogy Azure Monitor válaszoljanak.
 
-Kialakításához hatékonyságát a [Azure Erőforrás-grafikon](https://docs.microsoft.com/azure/governance/resource-graph/overview), módosítás elemzés révén betekintést kaphat az Azure-alkalmazás módosítások observability növelheti és csökkentheti az MTTR (kijavításához középidős).
+Az [Azure Resource Graph](https://docs.microsoft.com/azure/governance/resource-graph/overview)teljesítményének növelésével a Change Analysis betekintést nyújt az Azure-alkalmazás változásaiba, hogy növelje a megfigyelt és csökkentse a MTTR (a javítási időt).
 
 > [!IMPORTANT]
-> Változás elemzési jelenleg előzetes verzióban érhető el. Ez az előnézeti verzió nélkül egy szolgáltatásiszint-szerződést biztosítunk. Ez a verzió nem ajánlott éles számítási feladatok esetében. Egyes funkciói esetleg nem támogatott, vagy előfordulhat, hogy korlátozott képességekkel. További információkért lásd: [a Microsoft Azure előzetesekre vonatkozó kiegészítő feltételek](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> A Change Analysis szolgáltatás jelenleg előzetes verzióban érhető el. Ezt az előzetes verziót szolgáltatási szintű szerződés nélkül biztosítjuk. Ez a verzió éles munkaterhelések esetén nem ajánlott. Előfordulhat, hogy egyes funkciók nem támogatottak, vagy korlátozott képességekkel rendelkeznek. További információ: a [Microsoft Azure előzetes verziójának kiegészítő használati feltételei](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="overview"></a>Áttekintés
 
-Változás Analysis észleli a módosításokat, egészen az alkalmazás központi telepítése az infrastruktúra-rétegből különböző típusú. Előfizetés-szintű Azure erőforrás-szolgáltató, amely ellenőrzi az előfizetés erőforrás-módosítások. Változás Analysis biztosít különböző diagnosztikai eszközök segítségnyújtás a felhasználóknak megérteni, milyen módosítások adatait okozott problémákat.
+A Change Analysis különböző típusú módosításokat észlel, az infrastruktúra rétegből egészen az alkalmazás üzembe helyezéséhez. Ez egy előfizetési szintű Azure-erőforrás-szolgáltató, amely ellenőrzi az erőforrás-változásokat az előfizetésben. A Change Analysis számos diagnosztikai eszközt tartalmaz, amelyek segítségével a felhasználók megismerhetik, hogy milyen változások okozták a hibákat.
 
-A következő ábra szemlélteti a módosítás analitikai architektúra:
+A következő ábra a változások elemzésének architektúráját szemlélteti:
 
-![Hogyan módosítása Analysis lekérdezi az adatok módosítása, és átadja ügyféleszközök architektúra ábrája](./media/change-analysis/overview.png)
+![Architektúra-diagram, amely bemutatja, hogyan módosulnak az elemzések, és hogyan biztosítható az ügyféleszközök számára](./media/change-analysis/overview.png)
 
-Jelenleg módosítása elemzési integrálva van a **diagnosztizálása és a problémák megoldásához** élmény az App Service web app alkalmazásban. Módosítás engedélyezése és a webalkalmazást a módosítások megtekintéséhez lásd: a *elemzési módosítsa a Web Apps szolgáltatásának* Ez a cikk későbbi szakaszában talál.
+A változások elemzése a App Service webalkalmazásban a **problémák diagnosztizálásához és megoldásához** is integrálva van. A módosítás észlelésének engedélyezéséhez és a webalkalmazás változásainak megtekintéséhez tekintse meg a cikk későbbi, a *Web Apps funkciójának változási elemzését* ismertető szakaszát.
 
-### <a name="azure-resource-manager-deployment-changes"></a>Az Azure Resource Manager-környezet módosítására
+### <a name="azure-resource-manager-deployment-changes"></a>Azure Resource Manager telepítési változások
 
-Használatával [Azure Erőforrás-grafikon](https://docs.microsoft.com/azure/governance/resource-graph/overview), módosítás elemzési biztosít egy korábbi rekordot az Azure-erőforrások, amelyek az alkalmazás hogy hogyan változnak idővel. Például az IP-konfigurációs szabályok, a felügyelt identitásokból és SSL-beállítások módosítása elemzés képes észlelni, módosítja. Tehát egy webalkalmazást egy címkét ad hozzá, ha elemzési módosítása megjelenik a módosítás. Ez az információ érhető el, amíg a `Microsoft.ChangeAnalysis` erőforrás-szolgáltató engedélyezve van az Azure-előfizetésében.
+Az [Azure Resource Graph](https://docs.microsoft.com/azure/governance/resource-graph/overview)használatával a Change Analysis egy korábbi rekordot biztosít arról, hogy az alkalmazás által üzemeltetett Azure-erőforrások mennyi idő alatt változtak. A Change Analysis képes azonosítani például az IP-konfigurációs szabályok, a felügyelt identitások és az SSL-beállítások változásait. Tehát ha egy címkét egy webalkalmazáshoz ad hozzá, az elemzés változása a változást tükrözi. Ez az információ mindaddig elérhető, amíg az `Microsoft.ChangeAnalysis` erőforrás-szolgáltató engedélyezve van az Azure-előfizetésben.
 
-### <a name="changes-in-web-app-deployment-and-configuration"></a>Webes alkalmazás üzembe helyezése és konfigurációs változásai
+### <a name="changes-in-web-app-deployment-and-configuration"></a>A webalkalmazások telepítésének és konfigurálásának változásai
 
-Változás elemzési 4 óránként alkalmazás telepítési és konfigurációs állapotát rögzíti. Azt észleli, például az alkalmazás környezeti változókat a módosításokat. Az eszköz kiszámítja a különbségeket, és megadja, hogy mi változott. Ellentétben a Resource Manager-módosítások kód telepítési adatokat nem feltétlenül azonnal elérhető az eszköz. Változás-elemzés a legutóbbi módosítások megtekintéséhez jelölje ki **vizsgálat most módosítja**.
+A Change Analysis egy alkalmazás központi telepítési és konfigurációs állapotát 4 óránként rögzíti. Képes azonosítani például az alkalmazás környezeti változóinak változásait. Az eszköz kiszámítja a különbségeket, és bemutatja, hogy mi változott. A Resource Manager változásaitól eltérően előfordulhat, hogy a programkód-telepítési változási információk nem lesznek azonnal elérhetők az eszközön. A Change Analysis legújabb változásainak megtekintéséhez válassza a **változások ellenőrzése most**lehetőséget.
 
-![Képernyőkép az "Ellenőrzés változik most" gomb](./media/change-analysis/scan-changes.png)
+![Képernyőkép a "változások ellenőrzése most" gombról](./media/change-analysis/scan-changes.png)
 
-### <a name="dependency-changes"></a>Függőségi módosítások
+### <a name="dependency-changes"></a>Függőségi változások
 
-Erőforrás-függőségek módosításai problémákat webalkalmazásban okozhat. Ha a webalkalmazás, Redis Cache-gyorsítótárhoz, például a Redis cache Termékváltozat hatással lehetnek a webes alkalmazás teljesítményét. Módosítás elemzése a függőségek észleli a módosításokat, ellenőrzi, a webalkalmazás DNS-rekord. Így a módosítások az alkalmazás összes összetevőjét, amelyek problémákat okozhatnak azonosítja.
+Az erőforrás-függőségek változásai a webalkalmazások hibáit is okozhatják. Ha például egy webalkalmazás meghívja a Redis cache-t, a Redis cache SKU hatással lehet a webalkalmazás teljesítményére. A függőségek változásainak észleléséhez a Change Analysis ellenőrzi a webalkalmazás DNS-rekordját. Így minden olyan alkalmazás-összetevő változását azonosítja, amely problémákat okozhat.
 
-## <a name="change-analysis-for-the-web-apps-feature"></a>A Web Apps szolgáltatásának elemzési módosítása
+## <a name="change-analysis-for-the-web-apps-feature"></a>Web Apps szolgáltatás elemzésének módosítása
 
-Az Azure monitorban módosítása elemzési jelenleg be van építve az önkiszolgáló **diagnosztizálása és a problémák megoldásához** tapasztalható. Ez a tapasztalat, a hozzáférés a **áttekintése** App Service-alkalmazás lapján.
+Azure Monitor a Change Analysis jelenleg az önkiszolgáló diagnosztizálása és a **problémák megoldása** terén van beépítve. Ezt a felhasználói élményt a App Service alkalmazás **Áttekintés** lapjáról érheti el.
 
-![Képernyőkép az "Áttekintés" gomb és az "diagnosztizálása és a problémák megoldása" gombra](./media/change-analysis/change-analysis.png)
+![Az "áttekintés" gomb és a "problémák diagnosztizálása és megoldása" gomb képernyőképe](./media/change-analysis/change-analysis.png)
 
-### <a name="enable-change-analysis-in-the-diagnose-and-solve-problems-tool"></a>Változás elemzéseket végezhet diagnosztizálása engedélyezése és eszközzel kapcsolatos problémák megoldásához
+### <a name="enable-change-analysis-in-the-diagnose-and-solve-problems-tool"></a>A változások elemzésének engedélyezése a problémák diagnosztizálása és megoldása eszközben
 
-1. Válassza ki **rendelkezésre állás és teljesítmény**.
+1. Válassza ki **a rendelkezésre állást és a teljesítményt**.
 
-    ![A "rendelkezésre állás és teljesítmény" hibaelhárítási lehetőségek képernyőképe](./media/change-analysis/availability-and-performance.png)
+    ![Képernyőkép a "rendelkezésre állás és teljesítmény" hibaelhárítási lehetőségeiről](./media/change-analysis/availability-and-performance.png)
 
-1. Válassza ki **alkalmazások módosítására**. Nem, amely a szolgáltatás is elérhető **alkalmazás összeomlik**.
+1. Válassza az **alkalmazás módosítása**lehetőséget. A szolgáltatás nem érhető el az **alkalmazás összeomlása**során is.
 
-   ![Képernyőkép az "Alkalmazás összeomlik" gomb](./media/change-analysis/application-changes.png)
+   ![Képernyőkép az "alkalmazás-összeomlások" gombról](./media/change-analysis/application-changes.png)
 
-1. Ahhoz, hogy a módosítás elemzés, válassza ki **engedélyezés**.
+1. A módosítási elemzés engedélyezéséhez válassza az **Engedélyezés most**lehetőséget.
 
-   ![Képernyőkép a beállítások "Alkalmazás összeomlik"](./media/change-analysis/enable-changeanalysis.png)
+   ![Képernyőkép az "alkalmazás-összeomlások" lehetőségeiről](./media/change-analysis/enable-changeanalysis.png)
 
-1. Kapcsolja be a **módosítása elemzési** válassza **mentése**.
+1. Kapcsolja be  az elemzést, és válassza a **Mentés**lehetőséget.
 
-    ![A "Change elemzése engedélyezése" felhasználói felület képernyőképe](./media/change-analysis/change-analysis-on.png)
-
-
-1. Változás elemzési eléréséhez, válassza **diagnosztizálása és a problémák megoldásához** > **rendelkezésre állás és teljesítmény** > **alkalmazás összeomlik**. Ekkor megjelenik egy grafikont is tartalmaz, ezeket a módosításokat az idő múlásával módosításainak összegzi:
-
-     ![A módosítás diff nézet képernyőképe](./media/change-analysis/change-view.png)
+    ![Képernyőfelvétel: a Change Analysis felhasználói felületének engedélyezése](./media/change-analysis/change-analysis-on.png)
 
 
-### <a name="enable-change-analysis-at-scale"></a>Nagy mennyiségű változás elemzés engedélyezése
+1. A Change Analysis szolgáltatás eléréséhez válassza a **diagnosztizálás és megoldás problémák** > **rendelkezésre állása és** > a teljesítménybeli**alkalmazások összeomlása**lehetőséget. Ekkor megjelenik egy gráf, amely összegzi a változások típusát az idő múlásával együtt a változások részleteivel együtt:
 
-Ha az előfizetés számos webes alkalmazásokat tartalmazza, nem elég hatékony engedélyezni a szolgáltatást, a web app szintjén lenne. Ebben az esetben kövesse ezeket az alternatív utasításokat.
+     ![Képernyőkép a Change diff nézetről](./media/change-analysis/change-view.png)
 
-### <a name="register-the-change-analysis-resource-provider-for-your-subscription"></a>Az előfizetéshez tartozó módosítási elemzési erőforrás-szolgáltató regisztrálása
 
-1. Regisztrálni a módosítási elemzési szolgáltatás jelző (előzetes verzió). Mivel a funkció jelölője előzetes verzióban érhető el, akkor láthatóvá az előfizetéshez regisztrálnia kell:
+### <a name="enable-change-analysis-at-scale"></a>Módosítási elemzés engedélyezése a skálán
+
+Ha az előfizetése számos webalkalmazást tartalmaz, a webalkalmazás szintjén a szolgáltatás engedélyezése nem hatékony. Ebben az esetben kövesse az alábbi alternatív utasításokat.
+
+### <a name="register-the-change-analysis-resource-provider-for-your-subscription"></a>Regisztrálja a Change Analysis erőforrás-szolgáltatót az előfizetéséhez
+
+1. Regisztrálja a Change Analysis szolgáltatás jelzőjét (előzetes verzió). Mivel a funkció jelzője előzetes verzióban érhető el, regisztrálnia kell, hogy láthatóvá tegye az előfizetését:
 
    1. Nyissa meg az [Azure Cloud Shellt](https://azure.microsoft.com/features/cloud-shell/).
 
-      ![Képernyőfelvétel a Cloud Shell módosítása](./media/change-analysis/cloud-shell.png)
+      ![Képernyőkép a változásról Cloud Shell](./media/change-analysis/cloud-shell.png)
 
-   1. Módosítsa a rendszerhéj típusát **PowerShell**.
+   1. Módosítsa a rendszerhéj típusát a **powershellre**.
 
-      ![Képernyőfelvétel a Cloud Shell módosítása](./media/change-analysis/choose-powershell.png)
+      ![Képernyőkép a változásról Cloud Shell](./media/change-analysis/choose-powershell.png)
 
    1. Futtassa az alábbi PowerShell-parancsot:
 
@@ -104,17 +104,17 @@ Ha az előfizetés számos webes alkalmazásokat tartalmazza, nem elég hatékon
         Register-AzureRmProviderFeature -FeatureName PreviewAccess -ProviderNamespace Microsoft.ChangeAnalysis #Register feature flag
         ```
 
-1. A módosítás elemzési az előfizetéshez tartozó erőforrás-szolgáltató regisztrálása.
+1. Regisztrálja a Change Analysis erőforrás-szolgáltatót az előfizetéshez.
 
-   - Lépjen a **előfizetések**, és válassza ki az előfizetést, a módosítás szolgáltatásban engedélyezni kívánja. Ezután válassza ki az erőforrás-szolgáltatók:
+   - Lépjen az előfizetések elemre, és válassza ki azt az előfizetést, amelyet engedélyezni szeretne a Change Service-ben. Ezután válassza az erőforrás-szolgáltatók elemet:
 
-        ![Képernyőfelvétel: hogyan kell a változás elemzési erőforrás-szolgáltató regisztrálása](./media/change-analysis/register-rp.png)
+        ![A Change Analysis erőforrás-szolgáltató regisztrálását bemutató képernyőkép](./media/change-analysis/register-rp.png)
 
-       - Válassza ki **Microsoft.ChangeAnalysis**. Ezután a lap tetején válassza **regisztrálása**.
+       - Válassza a **Microsoft. ChangeAnalysis**elemet. Ezután a lap tetején válassza a **regisztráció**lehetőséget.
 
-       - Az erőforrás-szolgáltató engedélyezése után beállíthatja a rejtett címke észleli a módosítást az üzembe helyezés a webalkalmazásban. Beállíthat egy rejtett címkét, kövesse az utasításokat a **nem sikerült beolvasni a módosítás elemzési adatokat**.
+       - Az erőforrás-szolgáltató engedélyezése után a webalkalmazásban beállíthat egy rejtett címkét a módosítások észleléséhez a telepítés szintjén. Rejtett címke beállításához kövesse a **nem sikerült beolvasni az elemzési adatok módosítása**című szakasz utasításait.
 
-   - Egy PowerShell-parancsprogram segítségével azt is megteheti, az erőforrás-szolgáltató regisztrálásához:
+   - Azt is megteheti, hogy egy PowerShell-parancsfájl használatával regisztrálja az erőforrás-szolgáltatót:
 
         ```PowerShell
         Get-AzureRmResourceProvider -ListAvailable | Select-Object ProviderNamespace, RegistrationState #Check if RP is ready for registration
@@ -122,7 +122,7 @@ Ha az előfizetés számos webes alkalmazásokat tartalmazza, nem elég hatékon
         Register-AzureRmResourceProvider -ProviderNamespace "Microsoft.ChangeAnalysis" #Register the Change Analysis RP
         ```
 
-        A PowerShell használatával beállíthat egy rejtett címkét egy webalkalmazás, futtassa a következő parancsot:
+        A következő parancs futtatásával a PowerShell használatával egy webalkalmazás rejtett címkéjét állíthatja be:
 
         ```powershell
         $webapp=Get-AzWebApp -Name <name_of_your_webapp>
@@ -132,9 +132,10 @@ Ha az előfizetés számos webes alkalmazásokat tartalmazza, nem elég hatékon
         ```
 
      > [!NOTE]
-     > Miután hozzáadta a rejtett címke, előfordulhat, hogy továbbra is szeretné várjon legfeljebb 4 óra, mielőtt elkezdené a változások jelent meg. Eredmények késnek, mivel változás elemzési csak 4 óránként ellenőrzi a webes alkalmazás. A 4 óra ütemezés korlátozza a vizsgálat teljesítményre gyakorolt hatás.
+     > A rejtett címke hozzáadása után előfordulhat, hogy a módosítások megkezdése előtt akár 4 órát is várnia kell. Az eredmények késleltetve lettek, mert a Change Analysis csak 4 óránként vizsgálja a webalkalmazást. A 4 órás ütemterv korlátozza a vizsgálat teljesítményére gyakorolt hatást.
 
 ## <a name="next-steps"></a>További lépések
 
-- App Service-ben figyelése, hatékonyabban [Application Insights-szolgáltatások engedélyezését](azure-web-apps.md) az Azure monitorban.
-- Tudjon meg többet [Azure Erőforrás-grafikon](https://docs.microsoft.com/azure/governance/resource-graph/overview), amely segítséget nyújt változás elemzés power.
+- Az [Azure app Services-alkalmazások](azure-web-apps.md)Application Insights engedélyezése.
+- Engedélyezze Application Insights az [Azure-beli virtuális gépek és az Azure-beli virtuálisgép-méretezési csoport IIS által üzemeltetett alkalmazásai](azure-vm-vmss-apps.md)számára.
+- További információ az [Azure Resource Graph](https://docs.microsoft.com/azure/governance/resource-graph/overview)-ról, amely segít a energiagazdálkodási változások elemzésében.

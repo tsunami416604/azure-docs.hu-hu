@@ -1,52 +1,52 @@
 ---
-title: Az Azure Cosmos DB indexelési szabályzatok kezelése
-description: Az Azure Cosmos DB indexelési szabályzatok kezelése
+title: Az indexelési szabályzatok kezelése a Azure Cosmos DBban
+description: Ismerje meg, hogyan kezelheti az indexelési szabályzatokat Azure Cosmos DB
 author: ThomasWeiss
 ms.service: cosmos-db
 ms.topic: sample
 ms.date: 06/27/2019
 ms.author: thweiss
-ms.openlocfilehash: 9fe58e9d49a46fd03a2938f2860a3a5d476813af
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 0100be7eeacdcda5b123356e95e2510a365d0f22
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67441789"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68356438"
 ---
-# <a name="manage-indexing-policies-in-azure-cosmos-db"></a>Az Azure Cosmos DB indexelési szabályzatok kezelése
+# <a name="manage-indexing-policies-in-azure-cosmos-db"></a>Az indexelési szabályzatok kezelése a Azure Cosmos DBban
 
-Azure Cosmos DB, az adatok indexelését követően [indexelési szabályzataihoz](index-policy.md) , amely az egyes tárolók definiált. Alapértelmezett indexelési szabályzat az újonnan létrehozott tárolókhoz érvényesíti a tartomány indexei bármilyen karakterlánc vagy szám, és a térbeli indexek bármely GeoJSON típusú objektumhoz és pont. Ez a szabályzat felülbírálható lesz:
+Azure Cosmos DB a rendszer az egyes tárolók számára definiált [indexelési házirendek](index-policy.md) alapján indexeli az adatkészleteket. Az újonnan létrehozott tárolók alapértelmezett indexelési házirendje kikényszeríti a tartomány indexeit bármilyen sztring vagy szám esetén, valamint térbeli indexeket minden GeoJSON objektumhoz. A szabályzat felülbírálható:
 
-- Az Azure Portalról
-- Az Azure CLI használatával
-- Az SDK-k használatával
+- a Azure Portal
+- Az Azure CLI használata
+- Az SDK-k egyikének használata
 
-Egy [indexelési házirend frissítése](index-policy.md#modifying-the-indexing-policy) elindít egy index átalakítást. Az átalakítás előrehaladását is követhetők az SDK-k.
+Az [indexelési házirend frissítése](index-policy.md#modifying-the-indexing-policy) elindítja az index átalakítását. Az átalakítás előrehaladása az SDK-k által is nyomon követhető.
 
 > [!NOTE]
-> Az SDK és -portál verziófrissítés részeként a index házirend, egy új index elrendezést, hogy rendelkezik jelennek meg új tárolók, amelyek összhangban vannak világával. Az új elrendezéssel primitív adattípusokat indexelt tartomány teljes pontossággal (-1). Ezért az index típusú, és pontossága nem jelennek meg a felhasználó többé. A jövőben a felhasználók egyszerűen hozzá az elérési útját a includedPaths szakaszban, és a pontosság és indexKinds figyelmen kívül kell. Ez a változás nem befolyásolja a teljesítményt, és továbbra is ugyanazt a szintaxist használó indexelési szabályzat frissítése. Továbbra is meglévő dokumentációnk az összes minta használatával index szabályzat frissítése.
+> Az SDK és a portál frissítésének részeként a rendszer az index-szabályzatot úgy fejleszti, hogy egy új, a tárolók számára kiépített index-elrendezéssel igazodjanak. Ezzel az új elrendezéssel az összes primitív adattípus a teljes pontosságú (-1) tartományba van indexelve. Ezért az index típusa és pontossága már nem érhető el a felhasználó számára. A jövőben a felhasználóknak egyszerűen hozzá kell adni az elérési utakat a includedPaths szakaszhoz, és figyelmen kívül kell hagyniuk a indexKinds és a pontosságot. Ez a változás nincs hatással a teljesítményre, és továbbra is frissítheti az indexelési házirendet ugyanazzal a szintaxissal. A meglévő dokumentációban lévő összes mintát továbbra is használhatja a tárgymutató-szabályzat frissítéséhez.
 
 ## <a name="use-the-azure-portal"></a>Az Azure Portal használata
 
-Azure Cosmos-tárolókat az indexelési házirendet, amely az Azure portal segítségével közvetlenül szerkesztheti JSON-dokumentumként tárolja.
+Az Azure Cosmos-tárolók az indexelési szabályzatot JSON-dokumentumként tárolják, amelyet a Azure Portal közvetlenül szerkeszthet.
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 
 1. Hozzon létre egy új Azure Cosmos-fiókot, vagy válasszon ki egy meglévő fiókot.
 
-1. Nyissa meg a **adatkezelő** ablaktáblán, és válassza ki a tárolót, hogy a használni kívánt.
+1. Nyissa meg a **adatkezelő** ablaktáblát, és válassza ki a használni kívánt tárolót.
 
-1. Kattintson a **méretezés és beállítások**.
+1. Kattintson a **méretezési & beállítások**elemre.
 
-1. Az indexelési szabályzat JSON-dokumentum módosítása (példák [alábbi](#indexing-policy-examples))
+1. Az indexelési szabályzat JSON-dokumentumának módosítása (lásd az [alábbi](#indexing-policy-examples)példákat)
 
-1. Kattintson a **mentése** Ha elkészült.
+1. Ha elkészült, kattintson a **Mentés** gombra.
 
-![Az Azure portal segítségével indexelési kezelése](./media/how-to-manage-indexing-policy/indexing-policy-portal.png)
+![Indexelés kezelése Azure Portal használatával](./media/how-to-manage-indexing-policy/indexing-policy-portal.png)
 
 ## <a name="use-the-azure-cli"></a>Az Azure parancssori felületének használata
 
-A [az, cosmos DB gyűjteményfrissítés](/cli/azure/cosmosdb/collection#az-cosmosdb-collection-update) indexelési házirendet egy tárolót a JSON-definícióját cserélje le az Azure parancssori felületen parancs segítségével:
+Az Azure CLI-ről származó [cosmosdb Collection Update](/cli/azure/cosmosdb/collection#az-cosmosdb-collection-update) parancs használatával lecserélheti egy tároló indexelési házirendjének JSON-definícióját:
 
 ```azurecli-interactive
 az cosmosdb collection update \
@@ -57,9 +57,9 @@ az cosmosdb collection update \
     --indexing-policy "{\"indexingMode\": \"consistent\", \"includedPaths\": [{ \"path\": \"/*\", \"indexes\": [{ \"dataType\": \"String\", \"kind\": \"Range\" }] }], \"excludedPaths\": [{ \"path\": \"/headquarters/employees/?\" } ]}"
 ```
 
-## <a name="use-the-net-sdk-v2"></a>A .NET SDK V2 használata
+## <a name="use-the-net-sdk-v2"></a>A .NET SDK v2 használata
 
-A `DocumentCollection` objektum a [.NET SDK-val v2](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/) (lásd: [ebben a rövid útmutatóban](create-sql-api-dotnet.md) a használattal kapcsolatos) tesz közzé egy `IndexingPolicy` tulajdonság, ahol módosíthatja a `IndexingMode` és adja hozzá, vagy távolítsa el a `IncludedPaths` és `ExcludedPaths`.
+A `DocumentCollection` [.net SDK v2](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/) -ből származó objektum ( [lásd a](create-sql-api-dotnet.md) használatáról szóló rövid útmutatót) egy `IndexingPolicy` olyan tulajdonságot tesz elérhetővé `IndexingMode` , amely `ExcludedPaths`lehetővé teszi `IncludedPaths` a módosítását, illetve a hozzáadását és eltávolítását.
 
 ```csharp
 // retrieve the container's details
@@ -72,7 +72,7 @@ containerResponse.Resource.IndexingPolicy.ExcludedPaths.Add(new ExcludedPath { P
 await client.ReplaceDocumentCollectionAsync(containerResponse.Resource);
 ```
 
-Index átalakítási folyamat nyomon követéséhez át kell adnia egy `RequestOptions` objektum, amely beállítja a `PopulateQuotaInfo` tulajdonságot `true`.
+Az index átalakítási folyamatának nyomon követéséhez `RequestOptions` adjon át egy objektumot `PopulateQuotaInfo` , amely `true`a tulajdonságot állítja be.
 
 ```csharp
 // retrieve the container's details
@@ -81,9 +81,9 @@ ResourceResponse<DocumentCollection> container = await client.ReadDocumentCollec
 long indexTransformationProgress = container.IndexTransformationProgress;
 ```
 
-## <a name="use-the-java-sdk"></a>Use the Java SDK
+## <a name="use-the-java-sdk"></a>A Java SDK használata
 
-A `DocumentCollection` objektum a [Java SDK](https://mvnrepository.com/artifact/com.microsoft.azure/azure-cosmosdb) (lásd: [ebben a rövid útmutatóban](create-sql-api-java.md) a használattal kapcsolatos) tesz közzé `getIndexingPolicy()` és `setIndexingPolicy()` módszereket. A `IndexingPolicy` azok kezelése lehetővé teszi, hogy az indexelő üzemmódjának módosítása, és adja hozzá az objektum, vagy távolítsa el és elérési utak nem.
+A `DocumentCollection` [Java SDK](https://mvnrepository.com/artifact/com.microsoft.azure/azure-cosmosdb) -ból származó objektum ( [lásd a](create-sql-api-java.md) használatról szóló rövid útmutatót) `getIndexingPolicy()` teszi `setIndexingPolicy()` elérhetővé és metódusokat. Az `IndexingPolicy` általuk manipulált objektum lehetővé teszi az indexelési mód módosítását, valamint a felvett és kizárt elérési utak hozzáadását és eltávolítását.
 
 ```java
 // retrieve the container's details
@@ -104,7 +104,7 @@ containerResponse.subscribe(result -> {
 });
 ```
 
-Egy tároló index átalakítási folyamat nyomon követéséhez át kell adnia egy `RequestOptions` objektum, amely kéri a kvótaadatok kell feltöltenie, majd az értéket lekérheti a `x-ms-documentdb-collection-index-transformation-progress` válaszfejléc.
+Ha nyomon szeretné követni az index átalakításának folyamatát egy tárolón, adjon meg egy olyan `RequestOptions` objektumot, amely kéri a kvóta-információ feltöltését, majd kérje le az értéket a `x-ms-documentdb-collection-index-transformation-progress` válasz fejlécből.
 
 ```java
 // set the RequestOptions object
@@ -118,9 +118,9 @@ containerResponse.subscribe(result -> {
 });
 ```
 
-## <a name="use-the-nodejs-sdk"></a>A Node.js SDK-val
+## <a name="use-the-nodejs-sdk"></a>A Node. js SDK használata
 
-A `ContainerDefinition` az illesztő [Node.js SDK](https://www.npmjs.com/package/@azure/cosmos) (lásd: [ebben a rövid útmutatóban](create-sql-api-nodejs.md) a használattal kapcsolatos) tesz közzé egy `indexingPolicy` tulajdonság, ahol módosíthatja a `indexingMode` és adja hozzá, vagy távolítsa el a `includedPaths` és `excludedPaths`.
+A `ContainerDefinition` [Node. js SDK](https://www.npmjs.com/package/@azure/cosmos) felülete [(lásd a](create-sql-api-nodejs.md) használattal kapcsolatos rövid útmutatót) egy olyan `indexingPolicy` tulajdonságot tesz elérhetővé, `indexingMode` amely lehetővé teszi a módosítását, illetve a és `excludedPaths`a hozzáadását, illetve eltávolítását `includedPaths` .
 
 ```javascript
 // retrieve the container's details
@@ -133,7 +133,7 @@ containerResponse.body.indexingPolicy.excludedPaths.push({ path: '/headquarters/
 const replaceResponse = await client.database('database').container('container').replace(containerResponse.body);
 ```
 
-Egy tároló index átalakítási folyamat nyomon követéséhez át kell adnia egy `RequestOptions` objektum, amely beállítja a `populateQuotaInfo` tulajdonságot `true`, majd kérje le az értéket, az a `x-ms-documentdb-collection-index-transformation-progress` válaszfejléc.
+Ha nyomon szeretné követni az index átalakításának folyamatát egy tárolón `RequestOptions` , adjon meg egy objektumot `true`, amely a `populateQuotaInfo` tulajdonságot állítja be `x-ms-documentdb-collection-index-transformation-progress` , majd kérje le az értéket a válasz fejlécből.
 
 ```javascript
 // retrieve the container's details
@@ -146,7 +146,7 @@ const indexTransformationProgress = replaceResponse.headers['x-ms-documentdb-col
 
 ## <a name="use-the-python-sdk"></a>A Python SDK használata
 
-Használatakor a [Python SDK](https://pypi.org/project/azure-cosmos/) (lásd: [ebben a rövid útmutatóban](create-sql-api-python.md) a használattal kapcsolatos), a tárolókonfigurációt felügyelt egy szótárban. Tento slovník származó az indexelési házirendet és az összes attribútum eléréséhez.
+A [PYTHON SDK](https://pypi.org/project/azure-cosmos/) használatakor (tekintse meg [ezt](create-sql-api-python.md) a rövid útmutatót a használatáról) a tároló konfigurációja szótárként van kezelve. Ebből a szótárból elérhető az indexelési házirend és annak összes attribútuma.
 
 ```python
 containerPath = 'dbs/database/colls/collection'
@@ -155,16 +155,17 @@ container = client.ReadContainer(containerPath)
 # set the indexing mode to Consistent
 container['indexingPolicy']['indexingMode'] = 'consistent'
 # add an excluded path
-container['indexingPolicy']['excludedPaths'] = [{"path" : "/headquarters/employees/?"}]
+container['indexingPolicy']['excludedPaths'] = [
+    {"path": "/headquarters/employees/?"}]
 # update the container with our changes
 response = client.ReplaceContainer(containerPath, container)
 ```
 
-## <a name="indexing-policy-examples"></a>Indexelési házirend-példák
+## <a name="indexing-policy-examples"></a>Példák indexelési házirendre
 
-Az alábbiakban néhány példa látható a JSON formátumban, azaz, hogy hogyan ki vannak téve az Azure Portalon az indexelő szabályzatokat. Ugyanazokat a paramétereket az Azure CLI vagy bármely SDK segítségével állíthatja be.
+Az alábbiakban néhány példát láthat a JSON-formátumában látható indexelési házirendekre, így azok elérhetővé válnak a Azure Portal. Ugyanezen paraméterek állíthatók be az Azure CLI-n vagy bármely SDK-n keresztül.
 
-### <a name="opt-out-policy-to-selectively-exclude-some-property-paths"></a>Az elutasítás házirendet külön-külön az egyes tulajdonság elérési utak kizárása
+### <a name="opt-out-policy-to-selectively-exclude-some-property-paths"></a>Letiltási szabályzat a tulajdonságok egyes elérési útjai szelektív kizárásához
 ```
     {
         "indexingMode": "consistent",
@@ -198,7 +199,7 @@ Az alábbiakban néhány példa látható a JSON formátumban, azaz, hogy hogyan
     }
 ```
 
-### <a name="opt-in-policy-to-selectively-include-some-property-paths"></a>Jóváhagyás házirendet külön-külön néhány tulajdonság elérési utak
+### <a name="opt-in-policy-to-selectively-include-some-property-paths"></a>Bizonyos tulajdonságok elérési útjainak szelektív kiválasztására szolgáló szabályzat
 ```
     {
         "indexingMode": "consistent",
@@ -230,9 +231,9 @@ Az alábbiakban néhány példa látható a JSON formátumban, azaz, hogy hogyan
     }
 ```
 
-Megjegyzés: Általában javasolt használni egy **lemond** indexelési szabályzat ahhoz, hogy proaktív módon az Azure Cosmos DB indexelése minden új tulajdonság, amely a modell adhatók hozzá.
+Megjegyzés: Általában ajánlott egy kijelentkezési indexelési házirend használata, amely lehetővé teszi, hogy Azure Cosmos DB proaktív módon indexelje a modellhez esetleg hozzáadott új tulajdonságokat.
 
-### <a name="using-a-spatial-index-on-a-specific-property-path-only"></a>A térbeli index használatával csak egy adott tulajdonságra elérési úton
+### <a name="using-a-spatial-index-on-a-specific-property-path-only"></a>Térbeli index használata csak adott tulajdonság elérési útján
 ```
     {
         "indexingMode": "consistent",
@@ -264,9 +265,9 @@ Megjegyzés: Általában javasolt használni egy **lemond** indexelési szabály
     }
 ```
 
-### <a name="excluding-all-property-paths-but-keeping-indexing-active"></a>Az összes tulajdonság elérési utak kizárása de megtartva indexelő aktív
+### <a name="excluding-all-property-paths-but-keeping-indexing-active"></a>Az összes tulajdonság elérési útjának kizárása, de az indexelés aktív marad
 
-Ez a szabályzat helyzetekben használható, a [idő-az-élettartam (TTL) funkció](time-to-live.md) aktív, de nem a másodlagos index megadása kötelező (Azure Cosmos DB-hez használandó egy tiszta kulcs-érték tároló).
+Ez a szabályzat olyan helyzetekben használható, ahol az élettartam [(TTL) funkció](time-to-live.md) aktív, de nincs szükség másodlagos indexre (Azure Cosmos db tiszta kulcs-érték tárolóként való használatára).
 ```
     {
         "indexingMode": "consistent",
@@ -277,18 +278,18 @@ Ez a szabályzat helyzetekben használható, a [idő-az-élettartam (TTL) funkci
     }
 ```
 
-### <a name="no-indexing"></a>Nincs indexelése
+### <a name="no-indexing"></a>Nincs indexelés
 ```
     {
         "indexingMode": "none"
     }
 ```
 
-## <a name="composite-indexing-policy-examples"></a>Összetett indexelési szabályzat példák
+## <a name="composite-indexing-policy-examples"></a>Összetett indexelési házirend – példák
 
-Mellett tartalmazza az egyes tulajdonságok útvonalai vagy, összetett index is megadhatja. Ha szeretné-e végre egy lekérdezést, amely rendelkezik egy `ORDER BY` záradék több tulajdonságot a egy [összetett index](index-policy.md#composite-indexes) azokat a tulajdonságokat kötelező megadni.
+Az egyéni tulajdonságok elérési útjának belefoglalása vagy kizárása mellett összetett index is megadható. Ha olyan lekérdezést szeretne végrehajtani, amely több tulajdonságra vonatkozó `ORDER BY` záradékot tartalmaz, az ezen tulajdonságok [összetett indexét](index-policy.md#composite-indexes) kell megadni.
 
-### <a name="composite-index-defined-for-name-asc-age-desc"></a>Összetett index (kor desc neve asc) definiálva:
+### <a name="composite-index-defined-for-name-asc-age-desc"></a>Összetett index definiálva (név ASC, Age desc):
 ```
     {  
         "automatic":true,
@@ -316,25 +317,25 @@ Mellett tartalmazza az egyes tulajdonságok útvonalai vagy, összetett index is
     }
 ```
 
-Ez az összetett index tudná a következő két lekérdezések támogatásához:
+Ez az összetett index a következő két lekérdezést képes támogatni:
 
-#1. lekérdezés:
+Lekérdezés #1:
 ```sql
     SELECT *
     FROM c
     ORDER BY name asc, age desc    
 ```
 
-#2. lekérdezés:
+Lekérdezés #2:
 ```sql
     SELECT *
     FROM c
     ORDER BY name desc, age asc
 ```
 
-### <a name="composite-index-defined-for-name-asc-age-asc-and-name-asc-age-desc"></a>Összetett index (név asc, kora asc) definiált és (asc nevet, desc kor):
+### <a name="composite-index-defined-for-name-asc-age-asc-and-name-asc-age-desc"></a>Összetett index definiálva (név ASC, Age ASC) és (név ASC, Age desc):
 
-Meghatározhat több különböző összetett indexek belül ugyanazt az indexelési házirendet. 
+Több különböző összetett index is definiálható ugyanabban az indexelési házirendben. 
 ```
     {  
         "automatic":true,
@@ -372,9 +373,9 @@ Meghatározhat több különböző összetett indexek belül ugyanazt az indexel
     }
 ```
 
-### <a name="composite-index-defined-for-name-asc-age-asc"></a>Összetett index (név asc, kora asc) definiálva:
+### <a name="composite-index-defined-for-name-asc-age-asc"></a>Összetett index definiálva (név ASC, Age ASC):
 
-Nem kötelező a sorrend megadásához. Ha nincs megadva, növekvő sorrendben.
+A sorrend megadása nem kötelező. Ha nincs megadva, a sorrend növekvő.
 ```
 {  
         "automatic":true,
@@ -402,7 +403,7 @@ Nem kötelező a sorrend megadásához. Ha nincs megadva, növekvő sorrendben.
 
 ## <a name="next-steps"></a>További lépések
 
-További információ az indexelő az alábbi cikkeket:
+Az indexeléssel kapcsolatban az alábbi cikkekben olvashat bővebben:
 
-- [Az indexelő áttekintése](index-overview.md)
+- [Indexelés – áttekintés](index-overview.md)
 - [Indexelési házirend](index-policy.md)

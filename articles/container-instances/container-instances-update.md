@@ -1,32 +1,33 @@
 ---
-title: Azure Container Instances a tárolók frissítése
-description: Ismerje meg az Azure Container Instances-tároló csoportokat a futó tárolók frissítése.
+title: Tárolók frissítése Azure Container Instances
+description: Megtudhatja, hogyan frissítheti a futó tárolókat a Azure Container Instances-tároló csoportjaiban.
 services: container-instances
 author: dlepow
+manager: gwallace
 ms.service: container-instances
 ms.topic: article
 ms.date: 08/01/2018
 ms.author: danlep
-ms.openlocfilehash: 2df6a2724cbdcd6bbb6c6ca6636256b7e399da8e
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: d555ba6b8c2b32fc6ec56d6c51dda9626b6f0cb0
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60686891"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68325551"
 ---
-# <a name="update-containers-in-azure-container-instances"></a>Azure Container Instances a tárolók frissítése
+# <a name="update-containers-in-azure-container-instances"></a>Tárolók frissítése Azure Container Instances
 
-A container Instances szolgáltatásban a szokásos működés során előfordulhat, a tárolók egy tárolócsoport frissítéséhez szükséges. Például előfordulhat, hogy szeretné frissíteni a rendszerkép verziószámát, módosítsa a DNS-név, környezeti változók vagy egy tároló, amelynek az alkalmazás-összeomlást tapasztaltak állapotának frissítése.
+A tároló példányainak normál működése során előfordulhat, hogy a tárolók csoportjában frissítenie kell a tárolókat. Előfordulhat például, hogy frissíteni szeretné a rendszerkép verzióját, módosítania kell egy DNS-nevet, frissíti a környezeti változókat, vagy frissítenie kell egy olyan tároló állapotát, amelynek az alkalmazása összeomlott.
 
-## <a name="update-a-container-group"></a>A tárolócsoport frissítése
+## <a name="update-a-container-group"></a>Tároló csoport frissítése
 
-Frissítés a tárolócsoportban a tárolók újbóli üzembe helyezés egy meglévő csoporthoz legalább egy módosított tulajdonsággal. Amikor frissít egy tárolócsoportot, a csoportban lévő összes futó tárolók újraindul helyben.
+Frissítse a tárolókat egy adott csoportba egy meglévő csoport legalább egy módosított tulajdonsággal való újbóli üzembe helyezésével. Egy tároló csoport frissítésekor a rendszer a csoportban lévő összes futó tárolót újraindítja helyben.
 
-Ismételt üzembe helyezése egy meglévő tárolócsoport kiadásával a create parancs (vagy használja az Azure Portalon), és adja meg a meglévő csoport nevét. Módosítsa a csoport legalább egy érvényes tulajdonság, az újbóli üzembe helyezés indításához a create parancs kiadásakor. Nem minden tárolócsoport tulajdonságainak jsou platné Pro újbóli üzembe helyezés. Lásd: [delete igénylő tulajdonságok](#properties-that-require-container-delete) nem támogatott tulajdonságok listáját.
+Egy meglévő tároló csoport újratelepítése a Create parancs kiadásával (vagy a Azure Portal használatával) és egy meglévő csoport nevének megadásával. Módosítsa a csoport legalább egy érvényes tulajdonságát, amikor a Create parancs kiadja az újratelepítést. Nem minden tároló csoport tulajdonságai érvényesek az újratelepítéshez. A nem támogatott tulajdonságok listáját a [törlést igénylő tulajdonságok](#properties-that-require-container-delete) között tekintheti meg.
 
-Az alábbi Azure CLI-példa egy új DNS-névcímke egy tárolócsoport frissíti. A DNS-név címke, a csoport tulajdonsága módosítanak, mert a tárolócsoport újratelepítése van, és a tárolók újraindul.
+A következő Azure CLI-példa egy új DNS-név címkével rendelkező tároló-csoportot frissít. Mivel a csoport DNS-név címkéjének tulajdonsága módosul, a rendszer újratelepíti a tároló csoportot, és a tárolói újraindulnak.
 
-Az első üzembe helyezés a DNS-névcímke *myapplication – átmeneti*:
+Kezdeti üzembe helyezés DNS-névvel feliratú *myapplication – átmeneti*:
 
 ```azurecli-interactive
 # Create container group
@@ -34,7 +35,7 @@ az container create --resource-group myResourceGroup --name mycontainer \
     --image nginx:alpine --dns-name-label myapplication-staging
 ```
 
-Egy új DNS-névcímke, frissítse a tárolócsoport *myapplication*:
+Frissítse a tároló csoportot egy új DNS-név címkével, *myapplication*:
 
 ```azurecli-interactive
 # Update container group (restarts container)
@@ -42,27 +43,27 @@ az container create --resource-group myResourceGroup --name mycontainer \
     --image nginx:alpine --dns-name-label myapplication
 ```
 
-## <a name="update-benefits"></a>Frissítés előnyei
+## <a name="update-benefits"></a>Frissítési előnyök
 
-Meglévő tároló csoport frissítési elsődleges előnye gyorsabb üzembe helyezéshez. Ha egy meglévő tárolócsoport újbóli telepítése, a tároló rendszerképek rétegeit kikerülnek azokat, a korábbi központi telepítés által gyorsítótárazott. Összes lemezkép réteg lekérése a beállításjegyzékből friss, ahogyan az az új központi, helyett csak módosított rétegek (ha vannak) kéri le.
+Egy meglévő tároló csoport frissítésének elsődleges előnye a gyorsabb üzembe helyezés. Egy meglévő tároló-csoport újratelepítésekor a tároló képrétegei a korábbi üzemelő példány által gyorsítótárazott adatokból lesznek leképezve. Ahelyett, hogy az összes képréteget a beállításjegyzékből frissen, az új központi telepítésekkel végzett, csak a módosított rétegeket (ha vannak) húzta.
 
-Nagyobb tárolórendszerképek alapján, mint a Windows Server Core jelentős fejlesztéseket tartalmaz az üzembe helyezés sebessége látható helyett frissítésekor alkalmazások törlése, és új központi telepítése.
+A nagyobb méretű tárolók rendszerképein alapuló alkalmazások, például a Windows Server Core, jelentősen javítják az üzembe helyezés sebességét, ha a törlés és az új telepítése helyett a frissítésre kerül.
 
 ## <a name="limitations"></a>Korlátozások
 
-A tárolócsoport nem minden tulajdonság támogatja a frissítést. Ha módosítani szeretné egy tárolócsoport néhány tulajdonságát, meg kell először törölje, majd telepítse újra a csoport. További információkért lásd: [tároló igénylő tulajdonságok törlése](#properties-that-require-container-delete).
+A Container Group egyik tulajdonsága sem támogatja a frissítéseket. A tárolók egyes tulajdonságainak módosításához először törölnie kell, majd újra kell telepítenie a csoportot. Részletekért lásd: [tároló törlését igénylő tulajdonságok](#properties-that-require-container-delete).
 
-A tárolócsoport összes tároló újra lesz indítva, a tárolócsoport frissítésekor. Többtárolós csoport frissítés vagy egy adott tároló helyi újraindítása nem végezhetők el.
+A tároló csoport összes tárolója újraindul a tároló csoport frissítésekor. Egy többtárolós csoporton belül nem végezheti el a megadott tároló frissítését vagy helyben történő újraindítását.
 
-Az IP-cím, egy adott tároló általában nem módosítja a frissítések között, de nem garantálta változatlan marad. Mindaddig, amíg az alapul szolgáló ugyanazon a gazdagépen a tárolócsoport telepít, a tárolócsoport megőrzi az IP-címét. Habár ritkán fordul elő, és közben az Azure Container Instances ugyanazon a gazdagépen üzembe helyezése a mindent megtesz, vannak bizonyos Azure – belső eseményeket, amelyek miatt újbóli üzembe helyezés másik gazdagépen. A probléma megoldásához mindig használja a DNS-névcímke a container Instances.
+A tárolók IP-címe általában nem változik a frissítések között, de nem garantált, hogy változatlan marad. Ha a tároló csoport ugyanarra a mögöttes gazdagépre van telepítve, a tároló csoport megőrzi az IP-címét. Bár ritka, és bár Azure Container Instances minden erőfeszítést megtesz az ugyanarra a gazdagépre való újbóli üzembe helyezésre, néhány olyan Azure-belső esemény is van, amely egy másik gazdagépre való újratelepítést okozhat. A probléma megoldásához mindig használjon DNS-név címkét a tároló példányaihoz.
 
-Leállított vagy törölt tároló csoportokat nem lehet frissíteni. Miután leállt egy tárolócsoport (szerepel a *kilépett* állapot) vagy lett törölve, a csoport üzemel, amikor új.
+A leállított vagy törölt tároló-csoportok nem frissíthetők. Ha egy tároló csoport leállt (leállított állapotban  van), vagy törölve lett, a rendszer újként telepíti a csoportot.
 
-## <a name="properties-that-require-container-delete"></a>Tároló törlése igénylő tulajdonságai
+## <a name="properties-that-require-container-delete"></a>Tároló törlését igénylő tulajdonságok
 
-Ahogy korábban említettük, nem minden tároló tulajdonságai frissíthetők. Például portok módosításához, vagy indítsa újra a csoportházirend-tároló, kell először törölje az erőforráscsoportot, majd újra létre kell hoznia.
+Ahogy korábban említettük, nem lehet frissíteni a Container Group összes tulajdonságát. Ha például egy tároló portjait vagy újraindítási szabályzatát szeretné módosítani, először törölnie kell a tároló csoportot, majd újra létre kell hoznia.
 
-Ezek a Tulajdonságok tároló csoport törlése előtt újbóli üzembe helyezés van szükség:
+Ezek a tulajdonságok a tárolók csoportjának törlését igénylik az újratelepítést megelőzően:
 
 * Operációs rendszer típusa
 * CPU
@@ -70,11 +71,11 @@ Ezek a Tulajdonságok tároló csoport törlése előtt újbóli üzembe helyez�
 * Újraindítási szabályzat
 * Portok
 
-Ha egy tárolócsoport törlése, és hozza létre újból, azt nem "újratelepítés", de létrehozott új. A beállításjegyzékből, nem a korábbi központi telepítés által gyorsítótárazott rendszer friss lekért összes rendszerképek rétegeit. Az IP-címe a tárolóhoz is egy másik alapjául szolgáló gazdagépre telepített miatt előfordulhat, hogy módosíthatja.
+Amikor töröl egy tároló csoportot, és újból létrehozza, azt nem "újból üzembe helyezi", hanem új létrehozása szükséges. Az összes képréteget a beállításjegyzékből frissen kell húzni, nem pedig a korábbi üzemelő példány által gyorsítótárazott adatokból. Előfordulhat, hogy a tároló IP-címe is változhat, mert egy másik mögöttes gazdagépre van telepítve.
 
 ## <a name="next-steps"></a>További lépések
 
-Számos alkalommal ebben a cikkben az említett a **tárolócsoport**. Minden az Azure Container Instances-tároló üzembe helyezése egy tárolócsoport és tárolócsoportok egynél több tárolót is tartalmazhatnak.
+Ebben a cikkben többször is említettük a **Container csoportot**. Azure Container Instances összes tárolója egy tároló csoportba van telepítve, és a tárolók csoportjai több tárolót is tartalmazhatnak.
 
 [Tárolócsoportok az Azure Container Instancesben](container-instances-container-groups.md)
 

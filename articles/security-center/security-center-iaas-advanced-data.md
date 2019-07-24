@@ -1,6 +1,6 @@
 ---
-title: Az IaaS az Azure Security Center által nyújtott adatbiztonság speciális |} A Microsoft Docs
-description: " Útmutató az Azure Security Center az IaaS lehetővé teszi a speciális biztonsági. "
+title: Speciális adatbiztonság a IaaS-ben a Azure Security Centerban | Microsoft Docs
+description: " Megtudhatja, hogyan engedélyezheti a speciális adatbiztonságot a IaaS a Azure Security Centerban. "
 services: security-center
 documentationcenter: na
 author: monhaber
@@ -13,156 +13,156 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/29/2019
-ms.author: monhaber
-ms.openlocfilehash: ed94b92a34e2989c9f2226c344ac4d34a279eeac
-ms.sourcegitcommit: 978e1b8cac3da254f9d6309e0195c45b38c24eb5
+ms.author: v-mohabe
+ms.openlocfilehash: 0b83575baa2221f0b502abbf919654492c7ab6cf
+ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67551836"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68295755"
 ---
-# <a name="advanced-data-security-for-sql-servers-on-azure-virtual-machines-public-preview"></a>Speciális biztonsági SQL-kiszolgálók Azure-beli virtuális gépeken (nyilvános előzetes verzió)
-Azure virtuális gépeken futó SQL-kiszolgálók speciális biztonsági egységes csomag egy tapasztalt SQL biztonsági funkciók. Felszínre hozza a és az adatbázis biztonsági réseinek csökkentése és az adatbázis fenyegetést jelezhet rendellenes tevékenységeket észleli a funkciót jelenleg (a nyilvános előzetes verzió) tartalmaz. 
+# <a name="advanced-data-security-for-sql-servers-on-azure-virtual-machines-public-preview"></a>Speciális adatbiztonság az Azure-beli SQL-kiszolgálókon Virtual Machines (nyilvános előzetes verzió)
+Az Azure Virtual Machines-beli SQL serverek speciális adatbiztonsága egy egységes csomag a fejlett SQL-alapú biztonsági funkciókhoz. Jelenleg (nyilvános előzetes verzióban) magában foglalja a felszínre és a lehetséges adatbázis-sebezhetőségek enyhítésére szolgáló funkciókat, valamint a rendellenes tevékenységek észlelését, amelyek fenyegetést jelenthetnek az adatbázisra. 
 
-Az ajánlat az Azure virtuális gépek SQL-kiszolgálók biztonsági alapul használt ugyanazon alapvető technológia a [Azure SQL Database speciális adatok biztonsági csomag](https://docs.microsoft.com/azure/sql-database/sql-database-advanced-data-security).
+Az Azure-beli virtuális gépek SQL Server-kiszolgálókkal kapcsolatos biztonsági ajánlata ugyanazokon az alapvető technológiákon alapul, mint a [Azure SQL Database Advanced Security csomagban](https://docs.microsoft.com/azure/sql-database/sql-database-advanced-data-security).
 
 
 ## <a name="overview"></a>Áttekintés
 
-Speciális biztonsági egy tapasztalt SQL biztonsági funkciókat, sebezhetőségi felmérés és a komplex veszélyforrások elleni védelem kínál.
+A speciális adatbiztonság számos fejlett SQL biztonsági képességet biztosít, amelyek a sebezhetőségi felmérést és az összetett veszélyforrások elleni védelmet foglalják magukban.
 
-* [A biztonságirés-értékelési](https://docs.microsoft.com/azure/sql-database/sql-vulnerability-assessment) egy könnyen konfigurálható szolgáltatás, amely a felderítése, nyomon követheti, és segít javítani az adatbázis biztonsági réseinek. A biztonsági állapot rálátást biztosít, és a lépéseket, a biztonsági problémák megoldása és az adatbázis fortifications tartalmazza.
-* [Komplex veszélyforrások elleni védelem](https://docs.microsoft.com/azure/sql-database/sql-database-threat-detection-overview) elérni vagy kiaknázni az SQL server szokatlan és vélhetően kárt okozó kísérleteket jelző rendellenes tevékenységek észleli. Folyamatosan figyeli a gyanús tevékenységek esetén az adatbázis és műveletorientált biztonsági riasztásokat biztosít a rendellenes adatbázis-hozzáférési mintákról. Ezek a riasztások adja meg a gyanús tevékenység részleteit, és javasolt műveletek vizsgálata és enyhítése érdekében a fenyegetés.
+* A [sebezhetőségi felmérés](https://docs.microsoft.com/azure/sql-database/sql-vulnerability-assessment) egy könnyen konfigurálható szolgáltatás, amely felderítheti, nyomon követheti és javíthatja a lehetséges adatbázis-réseket. Biztosítja a biztonsági állapot láthatóságát, és tartalmazza a biztonsági problémák megoldásához és az adatbázis-erődítmények fejlesztéséhez szükséges lépéseket.
+* A komplex [veszélyforrások elleni védelem](https://docs.microsoft.com/azure/sql-database/sql-database-threat-detection-overview) olyan rendellenes tevékenységeket észlel, amelyek szokatlan és potenciálisan ártalmas kísérleteket mutatnak az SQL Server eléréséhez vagy kiaknázásához. A szolgáltatás folyamatosan figyeli az adatbázist a gyanús tevékenységekhez, és a rendellenes adatbázis-hozzáférési mintákon biztosít műveleti alapú biztonsági riasztásokat. Ezek a riasztások biztosítják a gyanús tevékenység részleteit, valamint az ajánlott műveleteket a fenyegetés kivizsgálásához és enyhítéséhez.
 
-## <a name="get-started-with-advanced-data-security-for-sql-on-azure-vms"></a>Az Azure virtuális gépeken SQL speciális Data Security használatának első lépései
+## <a name="get-started-with-advanced-data-security-for-sql-on-azure-vms"></a>Ismerkedés az SQL Azure-beli virtuális gépeken futó speciális adatbiztonságával
 
-Az alábbi lépéseket az első lépéseket biztonságú adatokat az Azure virtuális gépek nyilvános előzetes verziója az SQL.
+Az alábbi lépések az SQL Azure-beli virtuális gépek nyilvános előzetes verziójában elérhető speciális adatbiztonsági funkcióit ismertetjük.
 
-### <a name="set-up-advanced-data-security-for-sql-on-azure-vms"></a>Azure virtuális gépeken az SQL Data biztonságú beállítása
+### <a name="set-up-advanced-data-security-for-sql-on-azure-vms"></a>Fejlett adatbiztonság beállítása az SQL-hez Azure-beli virtuális gépeken
 
-**Mielőtt elkezdené**: Szüksége van egy Log Analytics-munkaterületen tárolja a biztonsági naplók elemzése folyamatban. Ha nem rendelkezik egy, akkor a leírtak szerint könnyedén létrehozhat egyet [Log Analytics-munkaterület létrehozása az Azure Portalon](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace).
+**Kezdés előtt**: Az elemzett biztonsági naplók tárolására Log Analytics munkaterületre van szükség. Ha még nem rendelkezik ilyennel, egyszerűen létrehozhatja a [log Analytics munkaterület létrehozása a Azure Portalban](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace)című részben leírtak szerint.
 
-1. Csatlakozzon a virtuális gép a Log Analytics-munkaterületet, az SQL server szoftvert futtatja. Útmutatásért lásd: [csatlakozás Windows számítógépek számára az Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/platform/agent-windows).
+1. Kapcsolódjon az SQL Servert futtató virtuális géphez a Log Analytics munkaterülethez. Útmutatásért lásd: [Windows rendszerű számítógépek Összekapcsolásának Azure monitor](https://docs.microsoft.com/azure/azure-monitor/platform/agent-windows).
 
-1. Az Azure piactéren, nyissa meg a [SQL Advanced adatok biztonsági megoldás](https://ms.portal.azure.com/#create/Microsoft.SQLAdvancedDataSecurity).
-(Akkor is megtalálhatják azt a Marketplace-en keresési lehetőség használatával, lásd az alábbi képen.) A **SQL biztonságú adatok** lap megnyitásakor.
+1. Az Azure Marketplace-en lépjen az [SQL Advanced Security](https://ms.portal.azure.com/#create/Microsoft.SQLAdvancedDataSecurity)-megoldásra.
+(A Piactéri keresési lehetőség használatával a következő képen látható módon találhatja meg.) Megnyílik az **SQL speciális adatbiztonság** lapja.
 
-    ![Az IaaS speciális Adatbiztonság](./media/security-center-advanced-iaas-data/sql-advanced-data-security.png)
+    ![Speciális adatbiztonság a IaaS](./media/security-center-advanced-iaas-data/sql-advanced-data-security.png)
 
-1. Kattintson a **Create** (Létrehozás) gombra. A munkahelyek jelennek meg.
+1. Kattintson a **Create** (Létrehozás) gombra. Megjelennek a munkaterületek.
 
-    ![Speciális biztonsági létrehozása](./media/security-center-advanced-iaas-data/sql-advanced-data-create.png)
+    ![Speciális adatbiztonság létrehozása](./media/security-center-advanced-iaas-data/sql-advanced-data-create.png)
 
-1. Válassza ki a munkaterületet használja, és kattintson a **létrehozás**.
+1. Válassza ki a használni kívánt munkaterületet, és kattintson a **Létrehozás**gombra.
 
    ![Munkaterület kiválasztása](./media/security-center-advanced-iaas-data/sql-workspace.png)
 
-1. Indítsa újra a [virtuális gép az SQL server](https://docs.microsoft.com/sql/database-engine/configure-windows/start-stop-pause-resume-restart-sql-server-services?view=sql-server-2017).
+1. Indítsa újra a [virtuális gép SQL serverjét](https://docs.microsoft.com/sql/database-engine/configure-windows/start-stop-pause-resume-restart-sql-server-services?view=sql-server-2017).
 
 
-## <a name="explore-and-investigate-security-alerts"></a>Ismerje meg, és a biztonsági riasztások vizsgálata
+## <a name="explore-and-investigate-security-alerts"></a>Biztonsági riasztások feltárása és kivizsgálása
 
-Megtekintheti és kezelheti a jelenlegi biztonsági riasztásokat.
+Az aktuális biztonsági riasztásokat megtekintheti és kezelheti.
 
-1. Kattintson a **a Security Center** > **biztonsági riasztások**, és kattintson a riasztásra.
+1. Kattintson **Security Center** > **biztonsági riasztások**elemre, majd kattintson a riasztásra.
 
-    ![Keresse meg a riasztás](./media/security-center-advanced-iaas-data/find-alert.png)
+    ![Riasztás keresése](./media/security-center-advanced-iaas-data/find-alert.png)
 
-1. Az a **megtámadott erőforrás** oszlopot, kattintson egy erőforrásra, amely a támadás érte.
+1. A megtámadott **erőforrás** oszlopban kattintson a megtámadott erőforrásra.
 
-1. Riasztás részleteinek és az aktuális fenyegetések vizsgálata és a jövőbeli fenyegetésekkel szembeni címkezelés műveleteinek megtekintéséhez görgessen le a **általános információkat** lapot, majd a a **javítási lépések** területén kattintson a a **VIZSGÁLATI lépések** hivatkozásra.
+1. Ha meg szeretné tekinteni a riasztás részleteit és a jelenlegi fenyegetés kivizsgálására és a jövőbeli fenyegetések kezelésére vonatkozó műveleteket, görgessen le az **általános információk** oldalra, és a javítási **lépések** szakaszban kattintson a **vizsgálat lépései** hivatkozásra.
 
-    ![Javítási lépések](./media/security-center-advanced-iaas-data/remediation-steps.png)
+    ![Szervizelési lépések](./media/security-center-advanced-iaas-data/remediation-steps.png)
 
-1. A riasztás aktiválása társított a naplók megtekintéséhez lépjen a **Log analytics-munkaterületek** , és kövesse az alábbi lépéseket:
+1. A riasztás indításával társított naplók megtekintéséhez lépjen a **log Analytics** -munkaterületek elemre, és hajtsa végre a következő lépéseket:
 
      > [!NOTE]
-     > Ha **Log analytics-munkaterületek** nem jelennek meg a bal oldali menüben, kattintson a **minden szolgáltatás**, és keressen rá a **Log analytics-munkaterületek**.
+     > Ha a **log Analytics** -munkaterületek nem jelennek meg a bal oldali menüben, kattintson a **minden szolgáltatás**elemre, és keressen rá a **log Analytics**-munkaterületekre.
 
-    1. Győződjön meg az oszlopok jelennek az **tarifacsomag** és **munkaterület azonosítója** oszlopokat. (**Log analytics-munkaterületek** > **oszlopok szerkesztése**, adjon hozzá **tarifacsomag** és **munkaterület azonosítója**.)
+    1. Győződjön meg arról, hogy az oszlopok az **árképzési szintet** és a **munkaterület azonosítója** oszlopokat jelenítik meg. (**Log Analytics** > -munkaterületek:**Oszlopok szerkesztése**, **díjszabási szintek** és **munkaterület azonosítója**hozzáadása)
 
      ![Oszlopok szerkesztése](./media/security-center-advanced-iaas-data/edit-columns.png)
 
-    1. Kattintson a munkaterület, amely rendelkezik a riasztási naplókat.
+    1. Kattintson arra a munkaterületre, amelyen a riasztási naplók szerepelnek.
 
-    1. Alatt a **általános** menüben kattintson a **naplók**
+    1. Az **általános** menüben kattintson a **naplók** elemre.
 
-    1. Kattintson a Tovább gombra a szem **SQLAdvancedThreatProtection** tábla. A naplók jelennek meg.
+    1. Kattintson a **SQLAdvancedThreatProtection** tábla melletti szemre. Megjelennek a naplók.
 
      ![Naplók megtekintése](./media/security-center-advanced-iaas-data/view-logs.png)
 
-## <a name="set-up-email-notification-for-atp-alerts"></a>ATP riasztásokhoz kapcsolódó E-mail értesítések beállítása 
+## <a name="set-up-email-notification-for-atp-alerts"></a>E-mail-értesítés beállítása ATP-riasztásokhoz 
 
-Beállíthatja a címzettek felkérése az e-mailben értesítést küld az ASC miatti riasztások olyankor jönnek listáját. Az e-mail tartalmazza a riasztás az Azure Security Center az összes releváns részlet közvetlen hivatkozás. 
+Megadhatja a címzettek listáját, amely e-mailben értesítést kap az ASC-riasztások létrehozásakor. Az e-mail tartalmaz egy közvetlen hivatkozást a riasztáshoz Azure Security Center az összes releváns részletet. 
 
-1. Lépjen a **a Security Center** > **díjszabási & beállítások** , és kattintson a megfelelő előfizetésre
+1. Lépjen a **Security Center** > **díjszabás & beállítások** elemre, és kattintson a megfelelő előfizetésre.
 
-    ![Előfizetési beállítások](./media/security-center-advanced-iaas-data/subscription-settings.png)
+    ![Előfizetés beállításai](./media/security-center-advanced-iaas-data/subscription-settings.png)
 
-1. Az a **beállítások** menüben kattintson **E-mail-értesítések**. 
-1. Az a **E-mail-cím** szöveget adja meg az e-mail-címeket, értesítések fogadására. Az e-mail-címeket vesszővel (,) elválasztva adhat meg egynél több e-mail címet.  Például admin1@mycompany.com,admin2@mycompany.com,admin3@mycompany.com
+1. A **Beállítások** menüben kattintson az **e-mail-értesítések**lehetőségre. 
+1. Az **e-mail cím** szövegmezőbe írja be az e-mail-címeket az értesítések fogadásához. Több e-mail-címet is megadhat az e-mail-címek vesszővel (,) való elválasztásával.  admin1@mycompany.comPéldáuladmin2@mycompany.com:,admin3@mycompany.com
 
       ![E-mail-beállítások](./media/security-center-advanced-iaas-data/email-settings.png)
 
-1. Az a **e-mailes értesítés** beállításait, adja meg a következő beállításokat:
+1. Az **e-mail értesítések** beállításainál adja meg a következő beállításokat:
   
-    * **Magas súlyosságú riasztások az e-mail-értesítés küldése**: Ahelyett, hogy az összes riasztás e-mailek küldésekor, csak a magas súlyossági szintű riasztások küldése.
-    * **E-mail értesítések is küldhetők az előfizetés-tulajdonosokat**:  Értesítések küldése az előfizetés tulajdonosainak túl.
+    * **E-mail értesítések küldése a nagy súlyosságú riasztásokhoz**: Az e-mailek küldése helyett az összes riasztásra vonatkozóan csak a nagy súlyosságú riasztásokat küldje el.
+    * **E-mail-értesítések küldése az előfizetés tulajdonosainak**:  Értesítéseket küldhet az előfizetések tulajdonosainak.
 
-1. A felső részén a **E-mail-értesítések** kattintson **mentése**.
+1. Az **e-mail értesítések** képernyő felső részén kattintson a **Mentés**gombra.
 
   > [!NOTE]
-  > Ügyeljen arra, hogy kattintson **mentése** előtt bezárja az ablakot, vagy az új **e-mailes értesítés** beállítások nem lesznek mentve.
+  > Ügyeljen rá, hogy az ablak bezárása előtt kattintson a **Mentés** gombra, vagy az új **e-mail értesítési** beállítások nem lesznek mentve.
 
-## <a name="explore-vulnerability-assessment-reports"></a>Sebezhetőségi felmérés jelentések vizsgálata
+## <a name="explore-vulnerability-assessment-reports"></a>A sebezhetőségi felmérési jelentések megismerése
 
-A biztonságirés-értékelési irányítópult az értékelés eredményeinek áttekintést nyújt az összes adatbázis között. A terjesztési adatbázis SQL Server-verzió és-adatbázisokat, és megfelelően kockázati terjesztési ellenőrzések sikertelenek összefoglalásának sikertelen összegzése együtt megfelelően tekintheti meg.
+A sebezhetőségi felmérés irányítópultja áttekintést nyújt az összes adatbázisa értékelésének eredményeiről. Az adatbázisok eloszlását a SQL Server verziója alapján tekintheti meg, valamint összefoglalhatja a sikertelen és az átadott adatbázisok összefoglalását, valamint az ellenőrzések sikertelen végrehajtásának általános összegzését a kockázati eloszlás alapján.
 
-Megtekintheti a sebezhetőségi felmérés eredmények és a jelentéseket közvetlenül a Log Analytics.
+A sebezhetőségi felmérés eredményeit és jelentéseit közvetlenül a Log Analytics tekintheti meg.
 
-1. Keresse meg a Log Analytics-munkaterületet a speciális adatok biztonsági megoldással.
-1. Navigáljon a **megoldások** , és válassza ki a **SQL-sebezhetőségi felmérés** megoldás.
-1. Az a **összefoglalás** ablaktáblán kattintson a **összegzésének megtekintése** , és válassza ki a **SQL biztonsági réseket felmérő jelentés**.
+1. Navigáljon a Log Analytics munkaterületére a speciális adatbiztonsági megoldással.
+1. Navigáljon  a megoldásokhoz, és válassza ki az **SQL sebezhetőség** -felmérési megoldást.
+1. Az **Összefoglalás** ablaktáblán kattintson az **Összefoglalás megtekintése** elemre, és válassza ki az **SQL sebezhetőség-értékelő jelentést**.
 
-    ![Az SQL jelentés](./media/security-center-advanced-iaas-data/ads-sql-server-1.png)
+    ![SQL Assessment jelentés](./media/security-center-advanced-iaas-data/ads-sql-server-1.png)
 
-    A jelentés irányítópult tölti be. Győződjön meg arról, hogy az időtartomány van állítva, legalább az **legutóbbi 7 nap** óta a vizsgálatot a biztonsági rések értékelése az adatbázisok 7 napon egyszer a meghatározott ütemezés szerint futnak.
+    A jelentés irányítópultja betöltődik. Győződjön meg arról, hogy az időablak legalább az **elmúlt 7 napban** van beállítva, mivel a sebezhetőségi felmérések vizsgálatait a rendszer 7 naponta egyszer, rögzített ütemterv szerint futtatja az adatbázisain.
 
-    ![Állítsa be az elmúlt 7 napban](./media/security-center-advanced-iaas-data/ads-sql-server-2.png)
+    ![Az elmúlt 7 nap beállítása](./media/security-center-advanced-iaas-data/ads-sql-server-2.png)
 
-1. További részletekért, kattintson az irányítópult elemek. Példa:
+1. További részletekért kattintson az irányítópult egyik elemére. Példa:
 
-   1. Kattintson egy biztonsági rés felvételkor a **sikertelen ellenőrzi az Összegzés** szakaszt az ellenőrzés eredményét a Log Analytics táblázat megtekintéséhez az összes adatbázis között. Az azokat, amelyeket eredmények jelennek meg először.
+   1. A **sikertelen ellenőrzések összegzése** szakaszban a sebezhetőségi ellenőrzés lehetőségre kattintva megtekintheti az összes adatbázisra vonatkozóan az ellenőrzés eredményét log Analytics táblázatot. Az eredményekkel rendelkezők elsőként vannak felsorolva.
 
-   1. Kattintson a révén az egyes biztonsági réseket, beleértve a biztonsági rés leírása és a hatása, állapot, kapcsolódó kockázat és ezen az adatbázison a tényleges eredmények a részletek megtekintéséhez. Ezt a jelölőnégyzetet, és a szervizelési információk végrehajtani a biztonsági rés megoldása volt futtatva, a tényleges lekérdezést is látható.
+   1. Ezután kattintson az átmenő elemre az egyes biztonsági rések részleteinek megtekintéséhez, beleértve a sebezhetőség leírását, a hatás, az állapot, a kapcsolódó kockázat és a tényleges eredmények megjelenítését ezen az adatbázison. Az ellenőrzés elvégzéséhez futtatott tényleges lekérdezést, valamint a biztonsági rés megoldásához szükséges szervizelési információkat is megtekintheti.
 
     ![Munkaterület kiválasztása](./media/security-center-advanced-iaas-data/ads-sql-server-3.png)
 
     ![Munkaterület kiválasztása](./media/security-center-advanced-iaas-data/ads-sql-server-4.png)
 
-1. A biztonságirés-értékelési eredmények adatokon, az adatok igények szerinti szeleteléséhez és bármely Log Analytics-lekérdezéseket is futtathat.
+1. A sebezhetőségi felmérés eredményeire vonatkozó összes Log Analytics lekérdezést futtathatja, hogy az igényeinek megfelelően feldarabolja és felszámítsa az adatkockát.
 
-## <a name="advanced-threat-protection-for-sql-servers-on-azure-vms-alerts"></a>Komplex veszélyforrások elleni védelem SQL-kiszolgálók az Azure virtuális gépek riasztások
-Szokatlan és vélhetően kárt okozó kísérleteket elérni vagy kiaknázni az SQL Server-kiszolgálók által előállított riasztások. Ezeket az eseményeket is aktiválhatja a következő riasztásokat:
+## <a name="advanced-threat-protection-for-sql-servers-on-azure-vms-alerts"></a>Komplex veszélyforrások elleni védelem az Azure-beli virtuális gépeken futó SQL Server-riasztásokhoz
+A riasztásokat szokatlan és potenciálisan ártalmas kísérletek generálják az SQL Server-kiszolgálók eléréséhez vagy kiaknázásához. Ezek az események a következő riasztásokat indíthatják el:
 
-### <a name="anomalous-access-pattern-alerts-supported-in-public-preview"></a>Rendellenes hozzáférési minta riasztásokat (a támogatott nyilvános előzetes verzióban érhető el)
+### <a name="anomalous-access-pattern-alerts-supported-in-public-preview"></a>Rendellenes hozzáférési minta értesítései (nyilvános előzetes verzióban támogatott)
 
-* **Hozzáférés szokatlan helyről:** Ez a riasztás akkor aktiválódik, ha az SQL Server, amikor valaki jelentkezett be az SQL Server egy szokatlan földrajzi helyről hozzáférési mintájában változik. A lehetséges okok:
-     * Egy támadó vagy egy korábbi rosszindulatú alkalmaz érte el az SQL Serverhez.
-     * Hiteles felhasználó rendelkezik elérhető az SQL Server új helyét.
-* **Hozzáférés potenciálisan káros alkalmazás**: a riasztás akkor aktiválódik, amikor egy potenciálisan káros alkalmazást használ az adatbázis eléréséhez. A lehetséges okok:
-     * A támadó megpróbálja megsérti a gyakori támadási eszközökkel SQL.
-     * Egy megbízható behatolásvizsgálatot kell végezniük a művelet.
-* **Hozzáférés résztvevő részéről**: Ez a riasztás akkor aktiválódik, ha az SQL Server, amikor valaki jelentkezett be az SQL Server egy szokatlan résztvevő (SQL-felhasználó) használatával hozzáférési mintájában változik. A lehetséges okok:
-     * Egy támadó vagy egy korábbi rosszindulatú alkalmaz érte el az SQL Serverhez. 
-     * Egy jogosult felhasználó az SQL Server a érhető el az új egyszerű.
-* **Találgatásos támadás SQL hitelesítő adatok**: Ez a riasztás akkor aktiválódik, ha van egy rendellenes magas a különböző hitelesítő adatok használatával történő sikertelen bejelentkezések száma. A lehetséges okok:
-     * A támadó megpróbálja megsérti az SQL találgatásos támadás használatával.
-     * Egy megbízható behatolásvizsgálatot kell végezniük a művelet.
+* **Hozzáférés szokatlan helyről:** Ez a riasztás akkor aktiválódik, ha módosul az SQL Serverhez való hozzáférési minta, ahol valaki szokatlan földrajzi helyről jelentkezett be az SQL-kiszolgálóra. Lehetséges okok:
+     * Egy támadó vagy korábbi rosszindulatú alkalmazás hozzáfért a SQL Server.
+     * Egy megbízható felhasználó új helyről fér hozzá a SQL Server.
+* **Hozzáférés egy potenciálisan ártalmas alkalmazáshoz**: a riasztás akkor aktiválódik, ha egy potenciálisan ártalmas alkalmazás használja az adatbázis elérését. Lehetséges okok:
+     * Egy támadó megpróbálta megszegni az SQL-t az általános támadási eszközök használatával.
+     * A működés közbeni jogszerű behatolás tesztelése.
+* **Hozzáférés ismeretlen rendszerbiztonsági tag felől**: Ez a riasztás akkor aktiválódik, ha módosul az SQL Server hozzáférési mintája, ahol valaki szokatlan rendszerbiztonsági tag (SQL-felhasználó) használatával jelentkezett be az SQL-kiszolgálóra. Lehetséges okok:
+     * Egy támadó vagy korábbi rosszindulatú alkalmazás hozzáfért a SQL Server. 
+     * Egy megbízható felhasználó egy új rendszerbiztonsági tag számára fér hozzá a SQL Server.
+* **Találgatásos kényszerített SQL-hitelesítő adatok**: Ez a riasztás akkor aktiválódik, ha a különböző hitelesítő adatokkal rendelkező sikertelen bejelentkezések rendellenesen magas száma. Lehetséges okok:
+     * Egy támadó megpróbálta megszegni az SQL-t a találgatásos támadással.
+     * A működés közbeni jogszerű behatolás tesztelése.
 
-### <a name="potential-sql-injection-attacks-coming"></a>Potenciális SQL-injektálási támadások (érkező)
+### <a name="potential-sql-injection-attacks-coming"></a>Lehetséges SQL-injektálási támadások (Coming)
 
-* **Biztonsági rés az SQL-injektálás**: Ez a riasztás akkor aktiválódik, ha egy alkalmazás egy hibás SQL-utasítást hoz létre az adatbázis. Ez a riasztás az SQL-injektálási támadásokkal kihasználható biztonsági rést jelezhet. A lehetséges okok:
+* **Biztonsági rés az SQL-injektáláshoz**: Ez a riasztás akkor aktiválódik, ha egy alkalmazás hibás SQL-utasítást hoz létre az adatbázisban. Ez a riasztás az SQL-injektálási támadásokkal kihasználható biztonsági rést jelezhet. Lehetséges okok:
      * Egy hiba a hibás SQL-utasítást létrehozó alkalmazáskódban
      * Az alkalmazáskódok és tárolt eljárások nem ellenőrzik a felhasználói adatbevitelt a hibás SQL-utasítás létrehozásakor, amelyeket így SQL-injektálással ki lehet használni.
-* **Potenciális SQL-injektálás**: Ez a riasztás akkor aktiválódik, ha egy olyan azonosított alkalmazás biztonsági rés az SQL-injektálás elleni történik. Ez azt jelenti, hogy a támadó megpróbál kártevő SQL-utasításokat injektálni a sebezhető alkalmazáskód vagy tárolt eljárások kihasználásával.
+* **Lehetséges SQL-injektálás**: Ez a riasztás akkor aktiválódik, ha az SQL-injektálás során egy azonosított alkalmazás biztonsági résen történik egy aktív probléma. Ez azt jelenti, hogy a támadó megpróbál kártevő SQL-utasításokat injektálni a sebezhető alkalmazáskód vagy tárolt eljárások kihasználásával.

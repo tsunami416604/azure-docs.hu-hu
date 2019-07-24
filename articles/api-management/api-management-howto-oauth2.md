@@ -1,6 +1,6 @@
 ---
-title: OAuth 2.0-val az Azure API Management fejlesztői fiókok engedélyezése |} A Microsoft Docs
-description: Ismerje meg, hogyan engedélyezheti a felhasználók az API Management OAuth 2.0 használatával.
+title: Fejlesztői fiókok engedélyezése a OAuth 2,0 használatával az Azure API Managementban | Microsoft Docs
+description: Megtudhatja, hogyan engedélyezheti a felhasználóknak a OAuth 2,0-et a API Managementban.
 services: api-management
 documentationcenter: ''
 author: mikebudzynski
@@ -13,119 +13,119 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/10/2018
 ms.author: apimpm
-ms.openlocfilehash: b195271edeea6cd5ea527454ad1615ac85a32138
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: b7b003c588d7b079823bb046676a1226828fcae2
+ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60658683"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68249861"
 ---
-# <a name="how-to-authorize-developer-accounts-using-oauth-20-in-azure-api-management"></a>Hogyan lehet OAuth 2.0-val az Azure API Management fejlesztői fiókok engedélyezése
+# <a name="how-to-authorize-developer-accounts-using-oauth-20-in-azure-api-management"></a>Fejlesztői fiókok engedélyezése az Azure API Management OAuth 2,0 használatával
 
-Több API-t támogatja [OAuth 2.0](https://oauth.net/2/) biztosításához az API-t, és győződjön meg arról, hogy csak akkor érvényes, ha a felhasználók hozzáférhetnek, és csak, amelyre jogosult használt erőforrások eléréséhez. Ilyen API-k Azure API Management interaktív fejlesztői konzol használatához a szolgáltatás lehetővé teszi a service-példányt szeretne dolgozni az OAuth 2.0-s engedélyezett API konfigurálása.
+Számos API támogatja az [OAuth 2,0](https://oauth.net/2/) -et az API biztonságossá tételéhez, és gondoskodjon arról, hogy csak az érvényes felhasználók férjenek hozzá, és csak azokhoz az erőforrásokhoz férhessenek hozzá, amelyekre jogosultak. Az Azure API Management interaktív fejlesztői konzoljának az ilyen API-kkal való használatához a szolgáltatás lehetővé teszi, hogy konfigurálja a szolgáltatási példányt úgy, hogy az OAuth 2,0-kompatibilis API-val működjön.
 
 ## <a name="prerequisites"> </a>Előfeltételek
 
-Ez az útmutató bemutatja, hogyan konfigurálhatja az API Management szolgáltatáspéldányt, fejlesztői fiókok esetében az OAuth 2.0 engedélyezési használatára, de még nem jeleníti meg az OAuth 2.0-s szolgáltató konfigurálása. Minden egyes OAuth 2.0-s szolgáltató konfigurációja eltér, bár a lépések hasonlóak, és a szükséges információt az API Management szolgáltatáspéldányhoz az OAuth 2.0 konfigurálása a használt azonosak. Ez a témakör bemutatja az Azure Active Directory használatával, az OAuth 2.0-s szolgáltató példák.
+Ez az útmutató bemutatja, hogyan konfigurálhatja a API Management Service-példányt a OAuth 2,0-engedélyezés használatára a fejlesztői fiókokhoz, de nem jeleníti meg a OAuth 2,0-szolgáltató konfigurálását. Az egyes OAuth 2,0-szolgáltatók konfigurációja eltér egymástól, bár a lépések hasonlóak, és a OAuth 2,0 konfigurálásához használt szükséges információk megegyeznek a API Management Service-példányban. Ez a témakör példákat mutat be a Azure Active Directory OAuth 2,0-szolgáltatóként való használatára.
 
 > [!NOTE]
-> OAuth 2.0, az Azure Active Directory konfigurálásával kapcsolatos további információkért lásd: a [WebApp-GraphAPI-DotNet] [ WebApp-GraphAPI-DotNet] minta.
+> A OAuth 2,0 Azure Active Directory használatával történő konfigurálásával kapcsolatos további információkért tekintse meg a [WebApp-GraphAPI-DotNet][WebApp-GraphAPI-DotNet] mintát.
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
 
-## <a name="step1"> </a>Az OAuth 2.0 engedélyezési kiszolgáló konfigurálása az API Management
+## <a name="step1"> </a>OAuth 2,0 engedélyezési kiszolgáló konfigurálása API Management
 
 > [!NOTE]
-> Ha még nem hozott létre API Management szolgáltatáspéldányt, tekintse meg [az API Management szolgáltatáspéldány létrehozása][Create an API Management service instance].
+> Ha még nem hozott létre API Management Service-példányt, tekintse meg [a API Management-szolgáltatás példányának létrehozása][Create an API Management service instance]című témakört.
 
-1. Kattintson a bal oldali menüben, az OAuth 2.0-s lapon, majd kattintson a **+ Hozzáadás**.
+1. Kattintson a bal oldali menü OAuth 2,0 fülére, majd kattintson a **+ Hozzáadás**elemre.
 
-    ![OAuth 2.0-s menü](./media/api-management-howto-oauth2/oauth-01.png)
+    ![OAuth 2,0 menü](./media/api-management-howto-oauth2/oauth-01.png)
 
-2. Adjon meg egy nevet és egy leírást a **neve** és **leírás** mezőket.
+2. Adjon meg egy nevet és egy opcionális leírást a **név** és **Leírás** mezőkben.
 
     > [!NOTE]
-    > Ezek a mezők belül az aktuális API Management szolgáltatáspéldányt, az OAuth 2.0 engedélyezési kiszolgáló azonosítására szolgál, és azok értékeit az OAuth 2.0-kiszolgálóról származott.
+    > Ezek a mezők a OAuth 2,0 engedélyezési kiszolgáló azonosítására szolgálnak a jelenlegi API Management szolgáltatási példányon belül, és azok értékei nem a OAuth 2,0-kiszolgálóról származnak.
 
-3. Adja meg a **ügyfél-regisztrációs lap URL-címe**. Ez a lap, ahol a felhasználók létrehozása és a fiókjaik kezelését és az OAuth 2.0-s szolgáltató függően változik. A **ügyfél-regisztrációs lap URL-címe** mutat, a lap, amelyen a felhasználók létrehozása és konfigurálása saját fiókok, amelyek támogatják a felhasználói fiókok kezelését OAuth 2.0-s szolgáltatók számára. Egyes szervezetek ne konfigurálja, és használja ezt a funkciót, még akkor is, ha támogatja az OAuth 2.0-s szolgáltató. Ha az OAuth 2.0-s szolgáltató nem rendelkezik konfigurált fiókok felhasználói kezelését, írja be az egy helyőrző URL-címe itt például az URL-címét a vállalati vagy egy URL-címe például `https://placeholder.contoso.com`.
+3. Adja meg az **ügyfél-regisztrációs oldal URL-címét**. Ezen a lapon a felhasználók létrehozhatják és kezelhetik a fiókjaikat, és a OAuth 2,0-szolgáltatótól függően változhatnak. Az **ügyfél-regisztrációs oldal URL-címe** arra a lapra mutat, amellyel a felhasználók létrehozhatják és konfigurálhatják a saját fiókjaikat a OAuth 2,0-szolgáltatók számára, amelyek támogatják a fiókok felhasználói felügyeletét. Néhány szervezet nem konfigurálja és nem használja ezt a funkciót, még akkor sem, ha a OAuth 2,0-szolgáltató támogatja azt. Ha a OAuth 2,0-szolgáltató nem rendelkezik konfigurált fiókok felhasználói felügyeletével, adjon meg egy helyőrző URL-címet, például a vállalat URL-címét, vagy egy URL `https://placeholder.contoso.com`-címet, például:.
 
-    ![OAuth 2.0 új kiszolgálóra](./media/api-management-howto-oauth2/oauth-02.png)
+    ![OAuth 2,0 új kiszolgáló](./media/api-management-howto-oauth2/oauth-02.png)
 
-4. Az űrlap a következő szakasz tartalmazza a **engedélyezéstípusok**, **engedélyezési végpont URL-címe**, és **engedélyezési kérelmi metódus** beállításait.
+4. Az űrlap következő szakasza tartalmazza az **engedélyezési engedélyek típusát**, az **engedélyezési végpont URL-címét**és az **engedélyezési kérelem módszerének** beállításait.
 
-    Adja meg a **engedélyezéstípusok** a kívánt típusú ellenőrzésével. **Engedélyezési kód** alapértelmezés szerint van megadva.
+    Adja meg az **engedélyezési típusokat** a kívánt típusok ellenőrzésével. Az **engedélyezési kód** alapértelmezés szerint meg van adva.
 
-    Adja meg a **engedélyezési végpont URL-címe**. Az Azure Active Directory, az URL-cím a következő URL-címet, hasonló lesz ahol `<client_id>` az ügyfél-azonosítót, amely azonosítja az alkalmazást az OAuth 2.0-kiszolgáló helyére.
+    Adja meg az **engedélyezési végpont URL-címét**. Azure Active Directory esetében ez az URL-cím a következő URL-címhez hasonlóan fog `<tenant_id>` megjelenni, ahol az az Azure ad-bérlő azonosítójának helyébe lép.
 
-    `https://login.microsoftonline.com/<client_id>/oauth2/authorize`
+    `https://login.microsoftonline.com/<tenant_id>/oauth2/authorize`
 
-    A **engedélyezési kérelmi metódus** Itt adhatja meg, hogyan az engedélyezési kérést küld az OAuth 2.0-kiszolgáló. Alapértelmezés szerint **első** van kiválasztva.
+    Az **engedélyezési kérelem módszere** határozza meg, hogyan történik az engedélyezési kérelem küldése a OAuth 2,0-kiszolgálóra. Alapértelmezés szerint a **Get** beállítás van kiválasztva.
 
-5. Ezt követően **jogkivonat-végpont URL-címe**, **ügyfél-hitelesítési módszer**, **hozzáférési jogkivonatok elküldésének módja** és **alapértelmezett hatókör** kell lennie a megadott.
+5. Ezután meg kell adni a **jogkivonat-végpont URL-címét**, az **ügyfél-hitelesítési módszereket**, a **hozzáférési token küldési metódusát** és az **alapértelmezett hatókört** .
 
-    ![OAuth 2.0 új kiszolgálóra](./media/api-management-howto-oauth2/oauth-03.png)
+    ![OAuth 2,0 új kiszolgáló](./media/api-management-howto-oauth2/oauth-03.png)
 
-    Egy Azure Active Directory OAuth 2.0-kiszolgáló a **jogkivonat-végpont URL-címe** lesz a következő formátumban, ahol `<TenantID>` formátuma alább látható a `yourapp.onmicrosoft.com`.
+    Egy Azure Active Directory OAuth 2,0-kiszolgáló esetén a **jogkivonat-végpont URL-címének** formátuma a `<TenantID>` következő lesz, ahol `yourapp.onmicrosoft.com`a formátuma:.
 
     `https://login.microsoftonline.com/<TenantID>/oauth2/token`
 
-    Az alapértelmezett beállítás a **ügyfél-hitelesítési módszer** van **alapszintű**, és **hozzáférési jogkivonatok elküldésének módja** van **engedélyeztetési fejléc**. Ezeket az értékeket a történik az űrlap ebben a szakaszban a **alapértelmezett hatókör**.
+    Az **ügyfél-hitelesítési módszerek** alapértelmezett beállítása az alapszintű, a **hozzáférési jogkivonat-küldési módszer** pedig az **engedélyezési fejléc**. Ezek az értékek az űrlap ezen szakaszán, az **alapértelmezett hatókörrel**együtt konfigurálhatók.
 
-6. A **ügyfél-hitelesítő adatok** szakasz tartalmazza a **ügyfél-azonosító** és **titkos Ügyfélkód**, amely kapnak, az OAuth 2.0-kiszolgáló létrehozása és konfigurálása során . Egyszer a **ügyfél-azonosító** és **titkos Ügyfélkód** meg van adva, a **redirect_uri** számára a **engedélyezési kód** jön létre. Ez az URI segítségével konfigurálhatja a válasz-URL az OAuth 2.0-kiszolgálói konfigurációban.
+6. Az **ügyfél hitelesítő adatai** szakasz tartalmazza az **ügyfél-azonosítót** és az **ügyfél titkát**, amelyet a rendszer a OAuth 2,0-kiszolgáló létrehozása és konfigurálása során kapott. Az **ügyfél-azonosító** és az **ügyfél titkos kulcsának** megadása után létrejön az **engedélyezési kód** **redirect_uri** . Ez az URI a válasz URL-címének konfigurálására szolgál a OAuth 2,0-kiszolgáló konfigurációjában.
 
-    ![OAuth 2.0 új kiszolgálóra](./media/api-management-howto-oauth2/oauth-04.png)
+    ![OAuth 2,0 új kiszolgáló](./media/api-management-howto-oauth2/oauth-04.png)
 
-    Ha **engedélyezéstípusok** értékre van állítva **erőforrás-tulajdonos jelszava**, a **erőforrás tulajdonosának jelszavas hitelesítő adatai** szakaszban használt hitelesítő adatokat megadnia; egyéb akkor is üresen hagyhatja.
+    Ha a **hitelesítési engedélyezési típusok** erőforrás- **tulajdonosi jelszóként**vannak beállítva, az **erőforrás-tulajdonos jelszava hitelesítő adatai** szakasz a hitelesítő adatok megadására szolgál. Ellenkező esetben hagyja üresen.
 
-    Az űrlap befejeződése után kattintson a **létrehozás** az API Management az OAuth 2.0 engedélyezési kiszolgáló konfigurációjának mentéséhez. A kiszolgáló konfigurációját a mentés után konfigurálhat API-k segítségével használja ezt a konfigurációt, a következő szakaszban látható módon.
+    Miután az űrlap elkészült, kattintson a **Létrehozás** gombra a API Management OAuth 2,0 engedélyezési kiszolgáló konfigurációjának mentéséhez. A kiszolgáló konfigurációjának mentése után az API-k a következő szakaszban látható módon konfigurálhatók a konfiguráció használatára.
 
-## <a name="step2"> </a>API-t használja az OAuth 2.0-s felhasználói hitelesítés konfigurálása
+## <a name="step2"> </a>OAuth 2,0 felhasználói hitelesítés használatára szolgáló API konfigurálása
 
-1. Kattintson a **API-k** származó a **az API Management** a bal oldali menüben.
+1. Kattintson a bal oldali **API Management** menüjében az **API** -k elemre.
 
-    ![Az OAuth 2.0 API-k](./media/api-management-howto-oauth2/oauth-05.png)
+    ![OAuth 2,0 API-k](./media/api-management-howto-oauth2/oauth-05.png)
 
-2. Kattintson a kívánt API-t, majd kattintson a nevére **beállítások**. Görgessen a **biztonsági** szakaszt, és ezután jelölje be a **OAuth 2.0**.
+2. Kattintson a kívánt API nevére, majd a **Beállítások**elemre. Görgessen a **Biztonság** szakaszhoz, majd jelölje be a **OAuth 2,0**jelölőnégyzetet.
 
-    ![OAuth 2.0-beállítások](./media/api-management-howto-oauth2/oauth-06.png)
+    ![OAuth 2,0 beállítások](./media/api-management-howto-oauth2/oauth-06.png)
 
-3. Válassza ki a kívánt **az engedélyezési kiszolgáló** a legördülő listából válassza ki, majd kattintson a **mentése**.
+3. Válassza ki a kívánt **engedélyezési kiszolgálót** a legördülő listából, majd kattintson a **Mentés**gombra.
 
-    ![OAuth 2.0-beállítások](./media/api-management-howto-oauth2/oauth-07.png)
+    ![OAuth 2,0 beállítások](./media/api-management-howto-oauth2/oauth-07.png)
 
-## <a name="step3"> </a>Az OAuth 2.0 felhasználói hitelesítést tesztelése a fejlesztői portálon
+## <a name="step3"> </a>A OAuth 2,0 felhasználói hitelesítés tesztelése a fejlesztői portálon
 
-Miután beállította az OAuth 2.0 engedélyezési kiszolgáló és az API-t, hogy a kiszolgáló használatához konfigurált, tesztelheti a fejlesztői portál és az API-k hívása által.  Kattintson a **fejlesztői portál** a felső menüben, az Azure API Management-példány **áttekintése** lapot.
+Miután konfigurálta a OAuth 2,0 engedélyezési kiszolgálót, és konfigurálta az API-t a kiszolgáló használatára, tesztelheti azt a fejlesztői portálon, és meghívja az API-t.  Kattintson a **fejlesztői portál** elemre az Azure API Management példányának **Áttekintés** oldalának felső menüjében.
 
 ![Fejlesztői portál][api-management-developer-portal-menu]
 
-Kattintson a **API-k** a felső menüben, és válasszon **Echo API**.
+Kattintson az **API** -k elemre a felső menüben, majd válassza az **echo API**elemet.
 
 ![Echo API][api-management-apis-echo-api]
 
 > [!NOTE]
 > Ha csak egy API van konfigurálva, vagy csak egy API látható a fiókja számára, és rákattint az API-k elemre, az közvetlenül az API-hoz tartozó művelethez fogja vinni.
 
-Válassza ki a **GET Resource** műveletet, kattintson a **konzol megnyitása**, majd válassza ki **engedélyezési kód** a legördülő listából.
+Válassza az **erőforrás** lekérése műveletet, kattintson a **konzol megnyitása**lehetőségre, majd válassza a legördülő listából az **engedélyezési kód** lehetőséget.
 
 ![Konzol megnyitása][api-management-open-console]
 
-Amikor **engedélyezési kód** van jelölve, egy előugró ablak jelenik meg a bejelentkezési képernyőn az OAuth 2.0-s szolgáltató. Ebben a példában a bejelentkezési képernyő Azure Active Directory által biztosított.
+Ha az **engedélyezési kód** van kiválasztva, megjelenik egy előugró ablak, amely a OAuth 2,0 szolgáltató bejelentkezési formáját jeleníti meg. Ebben a példában a bejelentkezési űrlapot Azure Active Directory biztosítjuk.
 
 > [!NOTE]
-> Ha az előugró ablakok le van tiltva van kérni fogja engedélyezni kell a böngészőben. Miután engedélyezte őket, válassza ki a **engedélyezési kód** újra, és a bejelentkezési képernyőn jelennek meg.
+> Ha letiltotta az előugró ablakokat, a rendszer kérni fogja, hogy engedélyezze őket a böngészőben. Miután engedélyezte őket, válassza újra az **engedélyezési kódot** , és megjelenik a bejelentkezési űrlap.
 
 ![Bejelentkezés][api-management-oauth2-signin]
 
-Miután bejelentkezett, a **Kérésfejlécek** feltöltött egy `Authorization : Bearer` fejlécet, amely engedélyezi a kérelmet.
+Miután bejelentkezett, a kérések **fejlécei** egy `Authorization : Bearer` fejléctel lesznek feltöltve, amely engedélyezi a kérést.
 
-![Kérés fejlécében lévő biztonsági jogkivonat][api-management-request-header-token]
+![Kérelem fejlécének tokenje][api-management-request-header-token]
 
-Ezen a ponton állítsa be a kívánt értékeket a többi paraméterek, és küldje el a kérelmet.
+Ezen a ponton beállíthatja a fennmaradó paraméterek kívánt értékeit, és elküldheti a kérést.
 
 ## <a name="next-steps"></a>További lépések
 
-OAuth 2.0 és az API Management használatával kapcsolatos további információkért lásd az alábbi videó és a hozzájuk tartozó [cikk](api-management-howto-protect-backend-with-aad.md).
+További információ a OAuth 2,0 és a API Management használatáról: a következő videó és kísérő [cikk](api-management-howto-protect-backend-with-aad.md).
 
 [api-management-oauth2-signin]: ./media/api-management-howto-oauth2/api-management-oauth2-signin.png
 [api-management-request-header-token]: ./media/api-management-howto-oauth2/api-management-request-header-token.png

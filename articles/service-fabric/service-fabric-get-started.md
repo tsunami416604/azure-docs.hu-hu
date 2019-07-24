@@ -3,7 +3,7 @@ title: Az Azure mikroszolgáltatások Windows fejlesztési környezetének kiala
 description: Telepítse a futtatókörnyezetet, az SDK-t és az eszközöket, majd hozzon létre egy helyi fejlesztési fürtöt. A beállítás befejezése után készen áll az alkalmazások létrehozására Windows rendszeren.
 services: service-fabric
 documentationcenter: .net
-author: aljo-microsoft
+author: peterpogorski
 manager: chackdan
 editor: ''
 ms.assetid: b94e2d2e-435c-474a-ae34-4adecd0e6f8f
@@ -12,14 +12,14 @@ ms.devlang: dotNet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 07/03/2019
+ms.date: 07/08/2019
 ms.author: aljo
-ms.openlocfilehash: 19f5d99fe95e1290cc30dedc8b8172e234bd4642
-ms.sourcegitcommit: d2785f020e134c3680ca1c8500aa2c0211aa1e24
+ms.openlocfilehash: 0302d8950d10d2c606fad0582079ed0c77047fbf
+ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/04/2019
-ms.locfileid: "67566062"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68295529"
 ---
 # <a name="prepare-your-development-environment-on-windows"></a>A fejlesztőkörnyezet előkészítése Windowson
 > [!div class="op_single_selector"]
@@ -29,7 +29,7 @@ ms.locfileid: "67566062"
 > 
 > 
 
-Készíthet és futtathat [Azure Service Fabric-alkalmazások][1] a Windows fejlesztői gépén, telepítse a Service Fabric-futtatókörnyezet, SDK és eszközök. Továbbá [engedélyeznie kell az SDK-ban található Windows PowerShell-szkriptek](#enable-powershell-script-execution) végrehajtását.
+Az [Azure Service Fabric-alkalmazások][1] a Windows fejlesztői gépen való létrehozásához és futtatásához telepítse a Service Fabric futtatókörnyezetet, az SDK-t és az eszközöket. Továbbá [engedélyeznie kell az SDK-ban található Windows PowerShell-szkriptek](#enable-powershell-script-execution) végrehajtását.
 
 ## <a name="prerequisites"></a>Előfeltételek
 ### <a name="supported-operating-system-versions"></a>Támogatott operációsrendszer-verziók
@@ -43,18 +43,18 @@ A fejlesztéshez a következő operációsrendszer-verziók támogatottak:
 
 > [!NOTE]
 > Windows 7-támogatás:
-> - Alapértelmezés szerint a Windows 7 csak a Windows PowerShell 2.0-t tartalmazza. A Service Fabric PowerShell-parancsmagokhoz a PowerShell 3.0 vagy újabb verziója szükséges. Is [töltse le a Windows PowerShell 5.0][powershell5-download] a Microsoft Download Center webhelyről.
+> - Alapértelmezés szerint a Windows 7 csak a Windows PowerShell 2.0-t tartalmazza. A Service Fabric PowerShell-parancsmagokhoz a PowerShell 3.0 vagy újabb verziója szükséges. A [Windows PowerShell 5,0][powershell5-download] a Microsoft letöltőközpontból tölthető le.
 > - A Service Fabric fordított proxyja nem érhető el Windows 7 rendszeren.
 >
 
 ## <a name="install-the-sdk-and-tools"></a>Az SDK és az eszközök telepítése
-Webplatform-telepítő (WebPI) az SDK és eszközök telepítése a javasolt módja. Futásidejű hibák WebPI segítségével kap, ha is megtalálhatja a telepítőcsomagokat mutató közvetlen hivatkozásokat a kibocsátási megjegyzésekben egy adott Service Fabric-kiadásban. A kibocsátási megjegyzések találhatók a különböző kiadás megtalálható a [Service Fabric-csapat blogja](https://blogs.msdn.microsoft.com/azureservicefabric/).
+A webplatform-telepítő (WebPI) az SDK és az eszközök telepítésének ajánlott módja. Ha futásidejű hibákat kap a WebPI használatával, az adott Service Fabric kiadás kibocsátási megjegyzései között közvetlen hivatkozásokat is találhat a telepítőknek. A kibocsátási megjegyzések a [Service Fabric csapat blogjának](https://blogs.msdn.microsoft.com/azureservicefabric/)különböző kiadási hirdetményekben találhatók.
 
 > [!NOTE]
-> Helyi Service Fabric fejlesztési fürtöt frissítés nem támogatott.
+> A helyi Service Fabric fejlesztési fürtök frissítése nem támogatott.
 
-### <a name="to-use-visual-studio-2017"></a>A Visual Studio 2017 használata
-A Service Fabric-eszközök a Visual Studio 2017 Azure Development Workload munkafolyamatának részét képezik. A Visual Studio telepítésének részeként engedélyezze ezt a munkafolyamatot.
+### <a name="to-use-visual-studio-2017-or-2019"></a>A Visual Studio 2017 vagy a 2019 használata
+A Service Fabric-eszközök a Visual Studio 2017-es és 2019-es verziójának Azure-fejlesztési számítási feladatának részét képezik. A Visual Studio telepítésének részeként engedélyezze ezt a munkafolyamatot.
 Emellett telepítenie kell a Microsoft Azure Service Fabric SDK-t és futtatókörnyezetet is a webplatform-telepítővel.
 
 * [Telepítse a Microsoft Azure Service Fabric SDK-t][core-sdk]
@@ -70,14 +70,15 @@ Ha csak az SDK-ra van szükség, telepítse a következő csomagot:
 
 Az aktuális verziók a következők:
 * Service Fabric SDK és eszközök 3.4.641
-* Service Fabric-futtatókörnyezet 6.5.641
-* Service Fabric Tools Pro Visual Studio 2015 2.5.20615.1
-* Visual Studio 2017 15.9 tartalmazza a Service Fabric Tools for Visual Studio 2.4.11024.1 
+* Service Fabric futtatókörnyezet 6.5.641
+* Service Fabric Tools for Visual Studio 2015 2.5.20615.1
+* A Visual Studio 2017 15,9 Service Fabric Tools for Visual Studio 2.4.11024.1 tartalmaz 
+* A Visual Studio 2019 16,1 Service Fabric Tools for Visual Studio 2.5.20423.3 tartalmaz
 
-Támogatott verziók listáját lásd: [Service Fabric-verziók](service-fabric-versions.md)
+A támogatott verziók listáját lásd: [Service Fabric verziók](service-fabric-versions.md)
 
 > [!NOTE]
-> Frissíti a fürtök (beépített) nem támogatottak az alkalmazás vagy a fürt egyetlen gépen; a beépített fürtöt törölje és hozza létre újra, ha szeretné hajtsa végre a fürt frissítése, vagy problémát tapasztal az alkalmazás frissítése. 
+> Az alkalmazás-vagy fürt frissítései nem támogatják az egyetlen gépi fürtöket (beépített); törölje a beépített-fürtöt, és hozza létre újra, ha a fürt frissítését kell végrehajtania, vagy ha problémába ütközik az alkalmazások frissítésével. 
 
 ## <a name="enable-powershell-script-execution"></a>A PowerShell-parancsfájl végrehajtásának engedélyezése
 A Service Fabric Windows PowerShell-parancsfájlokat használ a helyi fejlesztési fürtök létrehozásához és az alkalmazások Visual Studióból történő üzembe helyezéséhez. Alapértelmezés szerint a Windows blokkolja ezen szkriptek futását. Az engedélyezésükhöz módosítania kell a PowerShell végrehajtási házirendjét. Nyissa meg a PowerShellt rendszergazdaként, és írja be a következő parancsot:
@@ -85,14 +86,14 @@ A Service Fabric Windows PowerShell-parancsfájlokat használ a helyi fejleszté
 ```powershell
 Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Force -Scope CurrentUser
 ```
-## <a name="install-docker-optional"></a>Telepítheti a Dockert (nem kötelező)
-[Service Fabric, amely egy tárlóvezénylővel](service-fabric-containers-overview.md) üzembe helyezésének mikroszolgáltatásokat Vezényel számítógépfürtökön. A helyi fejlesztési fürt Windows tárolóalkalmazások futtatásához először telepítenie kell a Docker for Windows. Első [Docker CE for Windows (stable)](https://store.docker.com/editions/community/docker-ce-desktop-windows?tab=description). Miután telepítette és elindította a Dockert, kattintson a jobb gombbal a tálca ikonjára, és válassza a **Switch to Windows containers** (Váltás Windows-tárolókra) lehetőséget. Ez a lépés szükséges ahhoz, hogy Windows-alapú Docker-rendszerképeket tudjon futtatni.
+## <a name="install-docker-optional"></a>A Docker telepítése (nem kötelező)
+A [Service Fabric egy tároló Orchestrator](service-fabric-containers-overview.md) , amely a gépek egy fürtön való üzembe helyezését végzi. A Windows-tároló alkalmazások helyi fejlesztési fürtön való futtatásához először telepítenie kell a Docker for Windowst. Szerezze [be a Windows rendszerhez készült Docker CE-t (stable)](https://store.docker.com/editions/community/docker-ce-desktop-windows?tab=description). Miután telepítette és elindította a Dockert, kattintson a jobb gombbal a tálca ikonjára, és válassza a **Switch to Windows containers** (Váltás Windows-tárolókra) lehetőséget. Ez a lépés szükséges ahhoz, hogy Windows-alapú Docker-rendszerképeket tudjon futtatni.
 
 ## <a name="next-steps"></a>További lépések
 Most, hogy végzett a fejlesztőkörnyezet beállításával, belefoghat az alkalmazások létrehozásába és futtatásába.
 
-* [Ismerje meg, hogyan hozzon létre, telepíthetnek és alkalmazások kezelése](service-fabric-tutorial-create-dotnet-app.md)
-* [További tudnivalók a programozási modellekről: A Reliable Services és Reliable Actors](service-fabric-choose-framework.md)
+* [Ismerje meg, hogyan hozhat létre, helyezhet üzembe és kezelhet alkalmazásokat](service-fabric-tutorial-create-dotnet-app.md)
+* [További információ a programozási modellekről: Reliable Services és Reliable Actors](service-fabric-choose-framework.md)
 * [A Service Fabric mintakódjainak megtekintése a GitHubon](https://aka.ms/servicefabricsamples)
 * [A fürt megjelenítése a Service Fabric Explorer segítségével](service-fabric-visualizing-your-cluster.md)
 * A [Service Fabric támogatási lehetőségeinek](service-fabric-support.md) ismertetése

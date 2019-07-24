@@ -1,6 +1,6 @@
 ---
-title: 'Gyors útmutató: Létrehozása, betöltése és lekérdezése az indexek Postman és a REST API-k – Azure Search használatával'
-description: Ismerje meg, hogyan hívhat meg az Azure Search REST API-k Postman és a mintaadatokat és a definíciókat.
+title: 'Gyors útmutató: Indexek létrehozása, betöltése és lekérdezése a Poster és a REST API-k használatával – Azure Search'
+description: Megtudhatja, hogyan hívhatja meg a Azure Search REST API-kat a Poster és a mintaadatok és a definíciók használatával.
 author: HeidiSteen
 manager: cgronlun
 services: search
@@ -10,14 +10,14 @@ ms.topic: quickstart
 ms.date: 07/11/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 015dd3631322978d6416041a3eea8390a72b0c17
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.openlocfilehash: 5a61f5476551d785f2db0ef52dff45554302fd07
+ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67840199"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67849811"
 ---
-# <a name="quickstart-create-an-azure-search-index-in-postman-using-rest-apis"></a>Gyors útmutató: Azure Search-index létrehozása REST API-k használatával postmanben
+# <a name="quickstart-create-an-azure-search-index-in-postman-using-rest-apis"></a>Gyors útmutató: Azure Search index létrehozása a Poster-ben REST API-k használatával
 > [!div class="op_single_selector"]
 > * [Postman](search-get-started-postman.md)
 > * [C#](search-create-index-dotnet.md)
@@ -26,74 +26,74 @@ ms.locfileid: "67840199"
 > * [PowerShell](search-howto-dotnet-sdk.md)
 >*
 
-Az egyik legegyszerűbb Fedezze fel a [Azure Search REST API-k](https://docs.microsoft.com/rest/api/searchservice) állítson össze a HTTP-kérelmekre, és vizsgálja meg a válaszok Postman vagy egy másik webes tesztelési eszköz használatával. A megfelelő eszközökkel, ezeket az útmutatásokat követve már azelőtt küldhet kéréseket, és megtekintheti a válaszokat, hogy akár egyetlen sornyi kódot is írna.
+A [Azure Search REST API](https://docs.microsoft.com/rest/api/searchservice) -k megismerésének egyik legegyszerűbb módja a Poster vagy egy másik webes tesztelési eszköz használata a HTTP-kérelmek összeállításához és a válaszok vizsgálatához. A megfelelő eszközökkel, ezeket az útmutatásokat követve már azelőtt küldhet kéréseket, és megtekintheti a válaszokat, hogy akár egyetlen sornyi kódot is írna.
 
-Ez a cikk bemutatja, hogyan határozhatja meg interaktív módon kérelmeket. Lehetőségként [töltse le és importálja a Postman-gyűjtemény](https://github.com/Azure-Samples/azure-search-postman-samples/tree/master/Quickstart) előre meghatározott kérelmek használatához.
+Ez a cikk bemutatja, hogyan lehet interaktív módon megfogalmazni a kérelmeket. Azt is megteheti, hogy [letölti és importálja a Poster](https://github.com/Azure-Samples/azure-search-postman-samples/tree/master/Quickstart) -gyűjteményt az előre meghatározott kérések használatára.
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ez a rövid útmutató a következő szolgáltatásokat és eszközöket használatosak. 
+Ehhez a rövid útmutatóhoz a következő szolgáltatások és eszközök szükségesek. 
 
-+ [Postman asztali alkalmazás](https://www.getpostman.com/) az Azure Search kérelmek küldésére szolgál.
++ A [Poster Desktop alkalmazás](https://www.getpostman.com/) a kérelmek Azure Search való küldésére szolgál.
 
-+ [Az Azure Search szolgáltatás létrehozása](search-create-service-portal.md) vagy [keresse meg a meglévő service](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) az aktuális előfizetésben. Ebben a rövid útmutatóban egy ingyenes szolgáltatás használhatja. 
++ [Hozzon létre egy Azure Search szolgáltatást](search-create-service-portal.md) , vagy [keressen egy meglévő szolgáltatást](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) a jelenlegi előfizetése alatt. Ehhez a rövid útmutatóhoz ingyenes szolgáltatást is használhat. 
 
-## <a name="get-a-key-and-url"></a>Egy kulcsot és egy URL-cím beszerzése
+## <a name="get-a-key-and-url"></a>Kulcs és URL-cím lekérése
 
 A REST-hívásokhoz minden kérésének tartalmaznia kell a szolgáltatás URL-címét és egy hozzáférési kulcsot. Mindkettőhöz létrejön egy keresési szolgáltatás, így ha hozzáadta az előfizetéséhez az Azure Searchöt, kövesse az alábbi lépéseket a szükséges információk beszerzéséhez:
 
-1. [Jelentkezzen be az Azure Portalon](https://portal.azure.com/), és a search szolgáltatás **áttekintése** lapon, az URL-cím lekéréséhez. A végpontok például a következőképpen nézhetnek ki: `https://mydemo.search.windows.net`.
+1. [Jelentkezzen be a Azure Portalba](https://portal.azure.com/), és a keresési szolgáltatás **Áttekintés** lapján töltse le az URL-címet. A végpontok például a következőképpen nézhetnek ki: `https://mydemo.search.windows.net`.
 
-1. A **beállítások** > **kulcsok**, a szolgáltatás a teljes körű rendszergazdai kulcs beszerzése. Nincsenek két felcserélhetők adminisztrációs kulcsot, az üzletmenet folytonosságának megadott abban az esetben egy vihető kell. Használható vagy az elsődleges vagy másodlagos kulcsot a kérések hozzáadása, módosítása és törlése objektumokat.
+1. A **Beállítások** > **kulcsaiban**kérjen meg egy rendszergazdai kulcsot a szolgáltatásra vonatkozó összes jogosultsághoz. Az üzletmenet folytonossága érdekében két, egymással megváltoztathatatlan rendszergazdai kulcs áll rendelkezésre. Az objektumok hozzáadására, módosítására és törlésére vonatkozó kérésekhez használhatja az elsődleges vagy a másodlagos kulcsot is.
 
-![Egy HTTP-végpontját és hozzáférési kulcs lekérése](media/search-get-started-postman/get-url-key.png "HTTP végpontját és hozzáférési kulcs beszerzése")
+![Http-végpont és elérési kulcs] beszerzése (media/search-get-started-postman/get-url-key.png "Http-végpont és elérési kulcs") beszerzése
 
-Minden kérelemhez szükséges halasztása minden kérelemnél a szolgáltatásnak küldött api-kulcsát. Érvényes kulcs birtokában kérelmenként létesíthető megbízhatósági kapcsolat a kérést küldő alkalmazás és az azt kezelő szolgáltatás között.
+Minden kérelemhez API-kulcs szükséges a szolgáltatásnak küldött összes kéréshez. Érvényes kulcs birtokában kérelmenként létesíthető megbízhatósági kapcsolat a kérést küldő alkalmazás és az azt kezelő szolgáltatás között.
 
-## <a name="connect-to-azure-search"></a>Kapcsolódás az Azure Search
+## <a name="connect-to-azure-search"></a>Kapcsolódás Azure Searchhoz
 
-Ebben a szakaszban a webes tetszőleges eszköz használatával állítsa be a kapcsolatot az Azure Search. Mindegyik eszköz megőrzi a munkamenet, ami azt jelenti, csak meg kell adnia az api-kulcs és a Content-Type egyszer fejlécadatait.
+Ebben a szakaszban a saját webes eszközével állíthatja be a Azure Search kapcsolatait. Minden eszköz megőrzi a kérelmek fejlécére vonatkozó információkat a munkamenethez, ami azt jelenti, hogy csak egyszer kell megadnia az API-kulcs és a Content-Type típust.
 
-Vagy az eszköz, kell választani egy parancsot (GET, POST, PUT és így tovább), adjon meg egy URL-végpontot, és néhány feladatot, adja meg a kérelem törzsében található JSON. Érvényes értéket cserélje le a keresési szolgáltatás neve (a SEARCH-szolgáltatás neve). Adjon hozzá `$select=name` visszaadandó csak egyes index nevét. 
+Bármelyik eszközhöz ki kell választania egy parancsot (GET, POST, PUT stb.), meg kell adnia egy URL-végpontot, és egyes feladatokhoz meg kell adni a JSON-t a kérelem törzsében. Cserélje le a keresési szolgáltatás nevét (a-SEARCH-SERVICE-NAME) érvényes értékre. A `$select=name` Hozzáadás gombra kattintva csak az egyes indexek nevét adja vissza. 
 
     https://<YOUR-SEARCH-SERVICE-NAME>.search.windows.net/indexes?api-version=2019-05-06&$select=name
 
-Figyelje meg, hogy a HTTPS-előtagot, a szolgáltatás nevét, a-objektum nevét (ebben az esetben az indexek gyűjtemény), és a [api-version](search-api-versions.md). Az api-verzió egy szükséges, a kisbetűs a karakterlánc `?api-version=2019-05-06` az aktuális verzió esetében. API-verziók a rendszeresen frissülnek. Az API-verziót minden kérelemnél adja meg, hogy teljes mértékben szabályozhassa, a rendszer mikor melyik verziót használja.  
+Figyelje meg a HTTPS-előtagot, a szolgáltatás nevét, az objektum nevét (ebben az esetben az indexek gyűjteményét) és az [API-verziót](search-api-versions.md). Az API-Version egy kötelező, kisbetűs karakterlánc, amely a `?api-version=2019-05-06` jelenlegi verzióhoz hasonlóan van megadva. Az API-verziók frissítése rendszeresen megtörténik. Az API-verziót minden kérelemnél adja meg, hogy teljes mértékben szabályozhassa, a rendszer mikor melyik verziót használja.  
 
-Kérelem fejléce tartalomtípusból két elemet, a tartalom típusa, valamint az api-kulcsot az Azure Search hitelesítéséhez használt. Cserélje le a felügyeleti API-kulcs (YOUR-AZURE-SEARCH-ADMIN-API-KEY) egy érvényes értéket. 
+A kérelem fejlécének összetétele két elemet tartalmaz: a tartalom típusát, valamint a Azure Search hitelesítéséhez használt API-kulcsot. Cserélje le a felügyeleti API-kulcsot (az-AZURE-SEARCH-ADMIN-API-KEY) érvényes értékre. 
 
     api-key: <YOUR-AZURE-SEARCH-ADMIN-API-KEY>
     Content-Type: application/json
 
-A Postman állítson össze egy kérelmet, amely a következő képernyőképhez hasonlóan néz ki. Válasszon **első** parancsot, adja meg az URL-címet, és kattintson a **küldése**. Ezzel a paranccsal összekapcsolja az Azure Search, olvassa az indexek gyűjteményt, és visszaadja a 200-as HTTP-állapotkód: a sikeres kapcsolat. Ha a szolgáltatás már rendelkezik indexekkel, a válasz is index definíciókat tartalmazza.
+A Poster-ben állítson össze egy, az alábbi képernyőképen láthatóhoz hasonló kérelmet. Válassza  a beolvasás művelet lehetőséget, adja meg az URL-címet, majd kattintson a **Küldés**gombra. Ez a parancs csatlakozik a Azure Searchhoz, beolvassa az indexek gyűjteményt, és visszaadja a 200-es HTTP-állapotkódot egy sikeres kapcsolaton. Ha a szolgáltatás már rendelkezik indexekkel, a válasz tartalmazni fog index-definíciókat is.
 
-![Postman-kérelem URL-cím és fejléc](media/search-get-started-postman/postman-url.png "Postman-kérelem URL-CÍMÉT és a fejléc")
+![Poster-kérelem URL-címe és fejléce](media/search-get-started-postman/postman-url.png "Poster-kérelem URL-címe és fejléce")
 
 ## <a name="1---create-an-index"></a>1 – Index létrehozása
 
-Az Azure Search szolgáltatásban, általában hozza létre az indexet, az adatok betöltése előtt. A [Index REST API létrehozása](https://docs.microsoft.com/rest/api/searchservice/create-index) erre a célra szolgál. 
+Azure Search általában az indexet hozza létre az adatbevitel előtt. Ehhez a feladathoz a [create Index REST API](https://docs.microsoft.com/rest/api/searchservice/create-index) van használatban. 
 
-Az URL-címet kell terjeszteni a `hotels` index neve.
+Az URL-cím kiterjeszthető, `hotels` hogy tartalmazza az index nevét.
 
-Ehhez a Postman:
+Ehhez tegye a következőket:
 
-1. Módosítsa a kívánt műveleteket **PUT**.
+1. Módosítsa a műveletet a **put**értékre.
 
-2. Másolja be az URL-cím `https://<YOUR-SEARCH-SERVICE-NAME>.search.windows.net/indexes/hotels?api-version=2019-05-06`.
+2. Másolás ebben az URL `https://<YOUR-SEARCH-SERVICE-NAME>.search.windows.net/indexes/hotels?api-version=2019-05-06`-ben.
 
-3. Adja meg az index definícióját (másolási használatra kész kód lejjebb), a kérelem törzsében.
+3. Adja meg az index definícióját (a másolásra kész kód a lenti) a kérelem törzsében.
 
 4. Kattintson a **küldése**.
 
-![A kérelem törzsében index JSON-dokumentum](media/search-get-started-postman/postman-request.png "kérelem törzsében szereplő Index JSON-dokumentum")
+![JSON-dokumentum indexelése a kérelem törzsében](media/search-get-started-postman/postman-request.png "JSON-dokumentum indexelése a kérelem törzsében")
 
 ### <a name="index-definition"></a>Index definíciója
 
-A mezők gyűjteménye határozza meg a dokumentum szerkezete. Mindegyik dokumentumnak rendelkeznie kell ezeket a mezőket, és minden mezőnek kell lennie egy adattípust. A keresésekben a sztringekat tartalmazó mezők vesznek részt, ezért a numerikus adatokat is érdemes sztringként beállítani, ha azt szeretné, hogy a keresés kiterjedjen rájuk.
+A mezők gyűjteménye határozza meg a dokumentum szerkezetét. Minden dokumentumnak tartalmaznia kell ezeket a mezőket, és minden mezőnek adattípussal kell rendelkeznie. A keresésekben a sztringekat tartalmazó mezők vesznek részt, ezért a numerikus adatokat is érdemes sztringként beállítani, ha azt szeretné, hogy a keresés kiterjedjen rájuk.
 
-Az egyes mezők attribútumai határozzák meg az engedélyezett műveleteket. A REST API-k alapértelmezés szerint számos műveletet lehetővé tesznek. Például alapértelmezés szerint minden sztring kereshető, lekérdezhető, szűrhető és kategorizálható. Gyakran csak akkor attribútumainak beállítása, amikor szüksége van egy viselkedés kikapcsolásához.
+Az egyes mezők attribútumai határozzák meg az engedélyezett műveleteket. A REST API-k alapértelmezés szerint számos műveletet lehetővé tesznek. Például alapértelmezés szerint minden sztring kereshető, lekérdezhető, szűrhető és kategorizálható. Gyakran csak akkor kell attribútumokat beállítania, ha ki kell kapcsolni a viselkedést.
 
 ```json
 {
@@ -127,23 +127,23 @@ A kérelem elküldését követően megjelenik a 201-es HTTP-válasz, amely azt 
 
 ## <a name="2---load-documents"></a>2 – dokumentumok betöltése
 
-Az index létrehozása és adatokkal való feltöltése két különböző lépés. Az Azure Searchben az index tartalmazza az összes kereshető adatot, amelyeket JSON-dokumentumok formájában adhat be. A [hozzáadása, frissítése vagy törlése a dokumentumok REST API](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents) erre a célra szolgál. 
+Az index létrehozása és adatokkal való feltöltése két különböző lépés. Az Azure Searchben az index tartalmazza az összes kereshető adatot, amelyeket JSON-dokumentumok formájában adhat be. Ehhez a feladathoz a [Hozzáadás, frissítés vagy törlés dokumentumok REST API](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents) használják. 
 
-Az URL-címet kell terjeszteni a `docs` gyűjtemények és `index` műveletet.
+Az URL-cím kiterjeszthető a `docs` gyűjtemények és `index` a művelet belefoglalására.
 
-Ehhez a Postman:
+Ehhez tegye a következőket:
 
 1. Cserélje a parancsot a **POST** parancsra.
 
-2. Másolja be az URL-cím `https://<YOUR-SEARCH-SERVICE-NAME>.search.windows.net/indexes/hotels-quickstart/docs/index?api-version=2019-05-06`.
+2. Másolás ebben az URL `https://<YOUR-SEARCH-SERVICE-NAME>.search.windows.net/indexes/hotels-quickstart/docs/index?api-version=2019-05-06`-ben.
 
-3. Adja meg a JSON-dokumentumok (a másolási használatra kész kódot alább található) a kérés törzsében.
+3. Adja meg a kérelem törzsében a JSON-dokumentumokat (a másolásra kész kód alatt).
 
 4. Kattintson a **küldése**.
 
-![A kéréstörzs JSON-dokumentumok](media/search-get-started-postman/postman-docs.png "kéréstörzs JSON-dokumentumok")
+![JSON-dokumentumok a kérelem törzsében](media/search-get-started-postman/postman-docs.png "JSON-dokumentumok a kérelem törzsében")
 
-### <a name="json-documents-to-load-into-the-index"></a>JSON-dokumentumok betöltése az indexbe
+### <a name="json-documents-to-load-into-the-index"></a>Az indexbe betöltendő JSON-dokumentumok
 
 A kérelem törzse négy, a szállodák indexéhez hozzáadandó dokumentumot tartalmaz.
 
@@ -230,7 +230,7 @@ A kérelem törzse négy, a szállodák indexéhez hozzáadandó dokumentumot ta
 }
 ```
 
-Néhány másodpercen belül megtekintheti az egy 201-es HTTP-válasz a munkamenetlistában. Ez azt jelenti, hogy a dokumentumok sikeresen létrejöttek. 
+Néhány másodpercen belül megjelenik egy HTTP 201-válasz a munkamenetek listájában. Ez azt jelenti, hogy a dokumentumok sikeresen létrejöttek. 
 
 Ha a 207-es HTTP-válasz jelenik meg, legalább egy dokumentumot nem sikerült feltölteni. Ha a 404-es válasz jelenik meg, akkor a kérelem fejlécében vagy törzsében szintaktikai hiba van: ellenőrizze, hogy valóban módosította-e a végpontot, hogy tartalmazza a `/docs/index` útvonalat.
 
@@ -240,25 +240,25 @@ Ha a 207-es HTTP-válasz jelenik meg, legalább egy dokumentumot nem sikerült f
 
 ## <a name="3---search-an-index"></a>3 – Keresés az indexekben
 
-Most, hogy az index és a dokumentumok is betöltődtek, számára küldhet lekérdezéseket az őket használó [Search dokumentumok REST API](https://docs.microsoft.com/rest/api/searchservice/search-documents).
+Most, hogy az index és a dokumentumok betöltődik, a [keresési dokumentumok REST API](https://docs.microsoft.com/rest/api/searchservice/search-documents)használatával küldhet lekérdezéseket.
 
-Az URL-cím eloszlásának, megadva a következő keresési operátor használatával terjeszteni.
+Az URL-cím kiterjesztése a keresési operátor használatával megadott lekérdezési kifejezésre.
 
-Ehhez a Postman:
+Ehhez tegye a következőket:
 
-1. Módosítsa a kívánt műveleteket **első**.
+1. Módosítsa a lekérdezni kívánt műveletet.
 
-2. Másolja be az URL-cím `https://<YOUR-SEARCH-SERVICE-NAME>.search.windows.net/indexes/hotels-quickstart/docs?search=*&$count=true&api-version=2019-05-06`.
+2. Másolás ebben az URL `https://<YOUR-SEARCH-SERVICE-NAME>.search.windows.net/indexes/hotels-quickstart/docs?search=*&$count=true&api-version=2019-05-06`-ben.
 
 3. Kattintson a **küldése**.
 
-Ez a lekérdezés egy üres, és a dokumentumok számát adja vissza a keresési eredmények között. A kérések és válaszok hasonlóan kell kinéznie az alábbi képernyőképen a Postman számára kattintás után **küldése**. Az állapotkódnak 200-nak kell lennie.
+Ez a lekérdezés üres, és a keresési eredményekben szereplő dokumentumok számát adja vissza. A kérésnek és a válasznak a Poster következő képernyőképéhez hasonlóan kell kinéznie, miután rákattintott a **Send (Küldés**) gombra. Az állapotkódnak 200-nak kell lennie.
 
- ![A keresési karakterláncot az URL-cím LEKÉRÉSE](media/search-get-started-postman/postman-query.png "a keresési karakterláncot az URL-cím beszerzése")
+ ![Keresési karakterlánc beolvasása az URL-címen](media/search-get-started-postman/postman-query.png "Keresési karakterlánc beolvasása az URL-címen")
 
-Próbálja meg néhány további lekérdezést példák betekintést nyerhet a szintaxis. Egy karakterlánc-keresés, szó $filter lekérdezések, az eredménykészletet, az adott mezők, és egyéb a keresés hatóköre korlátozza.
+Néhány további lekérdezési példát is kipróbálhat a szintaxis megszerzéséhez. Megteheti a karakterláncos keresést, a Verbatim $filter lekérdezéseket, korlátozhatja az eredmények készletét, kihasználhatja a keresést adott mezőkre, és így tovább.
 
-Lapozófájl-kapacitás ki az aktuális URL-cím olyanokra cserélni az alábbi gombra kattintva **küldése** minden alkalommal, amikor az eredmények megtekintéséhez.
+A jelenlegi URL-címet cserélje le az alábbira, majd kattintson a **Küldés** minden alkalommal elemre az eredmények megtekintéséhez.
 
 ```
 # Query example 1 - Search on restaurant and wifi
@@ -276,29 +276,29 @@ https://<YOUR-SEARCH-SERVICE>.search.windows.net/indexes/hotels-quickstart/docs?
 https://<YOUR-SEARCH-SERVICE>.search.windows.net/indexes/hotels-quickstart/docs?search=pool&$orderby=Address/City asc&$select=HotelName, Address/City, Tags, Rating&api-version=2019-05-06
 ```
 
-## <a name="get-index-properties"></a>Index tulajdonságainak lekérése
-Is [statisztika lekérése](https://docs.microsoft.com/rest/api/searchservice/get-index-statistics) , a dokumentumok számát és az indexfrissítési mérete: 
+## <a name="get-index-properties"></a>Index tulajdonságainak beolvasása
+A lekérési [statisztikákat](https://docs.microsoft.com/rest/api/searchservice/get-index-statistics) is használhatja a dokumentumok számának és az index méretének lekérdezéséhez: 
 
 ```
 https://<YOUR-SEARCH-SERVICE-NAME>.search.windows.net/indexes/hotels-quickstart/stats?api-version=2019-05-06`
 ```
 
-Hozzáadás `/stats` index tárolt információt adhatja vissza az URL-címre. A Postmanben a kérelem az alábbihoz fog hasonlítani, a válaszban pedig szerepleni fog a dokumentumok száma és a felhasznált lemezterület mérete bájtban megadva.
+Az `/stats` URL-címhez való Hozzáadás az index adatait adja vissza. A Postmanben a kérelem az alábbihoz fog hasonlítani, a válaszban pedig szerepleni fog a dokumentumok száma és a felhasznált lemezterület mérete bájtban megadva.
 
- ![Index információk](media/search-get-started-postman/postman-system-query.png "index információk lekérése")
+ ![Index információinak] lekérése (media/search-get-started-postman/postman-system-query.png "Index információinak") lekérése
 
-Figyelje meg, hogy az api-version szintaxisa eltér. Ebben a kérelemben a `?` karakterrel fűzheti hozzá az api-version paramétert. A `?` elkülöníti a lekérdezési karakterláncot az URL-címet, az & elválasztja az egyes "név = érték" párt a lekérdezési karakterláncban. Ebben a lekérdezésben az api-version az első és egyetlen lekérdezési sztring.
+Figyelje meg, hogy az api-version szintaxisa eltér. Ebben a kérelemben a `?` karakterrel fűzheti hozzá az api-version paramétert. A `?` leválasztja az URL-útvonalat a lekérdezési karakterláncból, míg & elválasztja az egyes "Name = Value" párokat a lekérdezési karakterláncban. Ebben a lekérdezésben az api-version az első és egyetlen lekérdezési sztring.
 
 ## <a name="clean-up"></a>A fölöslegessé vált elemek eltávolítása
 
-Dolgozik, a saját előfizetése, esetén célszerű egy projektet a végén, hogy azonosítani, hogy az erőforrások továbbra is kell-e létrehozott. Erőforrások bal oldali futó is költséget takaríthat meg költséget. Külön-külön törölje az erőforrást, vagy törölje az erőforráscsoportot törli az erőforrások teljes készletében.
+Ha saját előfizetésében dolgozik, a projekt végén érdemes megállapítani, hogy továbbra is szüksége van-e a létrehozott erőforrásokra. A már futó erőforrások pénzbe kerülnek. Az erőforrásokat egyenként is törölheti, vagy az erőforráscsoport törlésével törölheti a teljes erőforrás-készletet.
 
-Megkeresheti és kezelheti az erőforrásokat a portál használatával a **összes erőforrás** vagy **erőforráscsoportok** hivatkozásra a bal oldali navigációs ablaktáblán.
+A bal oldali navigációs panelen a **minden erőforrás** vagy **erőforráscsoport** hivatkozás használatával megkeresheti és kezelheti az erőforrásokat a portálon.
 
-Ha használ egy ingyenes szolgáltatás, ne feledje, hogy korlátozódnak három indexek, indexelők és adatforrások. A korlátja alatt maradjunk a portál egyes elemeire törölheti. 
+Ha ingyenes szolgáltatást használ, ne feledje, hogy Ön legfeljebb három indexet, indexelő és adatforrást használhat. A portálon törölheti az egyes elemeket, hogy a korlát alatt maradjon. 
 
 ## <a name="next-steps"></a>További lépések
 
-A REST-ügyfelek rendkívül hasznosak a rögtönzött vizsgálatokhoz, most azonban, hogy már ismeri a REST API-k működését, folytathatja a kódolást. A következő lépés tekintse meg a következő hivatkozásra:
+A REST-ügyfelek rendkívül hasznosak a rögtönzött vizsgálatokhoz, most azonban, hogy már ismeri a REST API-k működését, folytathatja a kódolást. A következő lépéshez tekintse meg a következő hivatkozást:
 
-+ [Rövid útmutató: -Index létrehozása .NET SDK használatával](search-get-started-dotnet.md)
++ [Rövid útmutató: Index létrehozása a .NET SDK használatával](search-get-started-dotnet.md)

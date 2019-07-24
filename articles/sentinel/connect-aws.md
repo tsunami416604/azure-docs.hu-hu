@@ -1,77 +1,86 @@
 ---
-title: Symantec AWS adatok csatlakozhat az Azure-on Előzetesben Sentinel-|} A Microsoft Docs
-description: Ismerje meg, hogyan kell csatlakozni a Symantec AWS adatok Azure-Sentinel.
+title: A Symantec AWS-beli adatszolgáltatások összekötése az Azure Sentinel előzetes verziójával Microsoft Docs
+description: Ismerje meg, hogyan csatlakoztatható a Symantec AWS-beli adatszolgáltatások az Azure Sentinelhez.
 services: sentinel
 documentationcenter: na
 author: rkarlin
 manager: rkarlin
 editor: ''
-ms.service: sentinel
+ms.service: azure-sentinel
+ms.subservice: azure-sentinel
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/04/2019
+ms.date: 07/10/2019
 ms.author: rkarlin
-ms.openlocfilehash: 214269bc5c854aa4d3bfd508b0adb5a53ec096df
-ms.sourcegitcommit: 80aaf27e3ad2cc4a6599a3b6af0196c6239e6918
+ms.openlocfilehash: 246d4cd7d64554ae575767cdba2e26066ad1720d
+ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67673972"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68295621"
 ---
-# <a name="connect-azure-sentinel-to-aws"></a>Csatlakozás Azure Sentinel AWS
+# <a name="connect-azure-sentinel-to-aws-cloudtrail"></a>Az Azure Sentinel összekötése AWS-CloudTrail
 
-Az AWS-összekötő használatával az AWS – CloudTrail-események streamelése az Azure-Sentinel. A kapcsolódási folyamat hozzáférést ad az AWS erőforrás naplók, az AWS CloudTrail és Sentinel-Azure közötti megbízhatósági kapcsolat létrehozása az Azure-Sentinel. Mindez AWS egy szerepkör, amely engedélyt ad az Azure az AWS-naplók eléréséhez Sentinel létrehozásával.
+Az AWS-összekötő használatával továbbíthatja az AWS-CloudTrail összes eseményét az Azure Sentinelbe. Ez a kapcsolati folyamat delegálja az Azure Sentinel hozzáférését az AWS-erőforrás naplóihoz, és megbízhatósági kapcsolatot létesít az AWS CloudTrail és az Azure Sentinel között. Ez az AWS-ben valósítható meg egy olyan szerepkör létrehozásával, amely engedélyt ad az Azure Sentinelnek az AWS-naplók elérésére.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az Azure-Sentinel-munkaterületen írási engedéllyel kell rendelkeznie.
+Írási engedéllyel kell rendelkeznie az Azure Sentinel munkaterületen.
+
+> [!NOTE]
+> Az Azure Sentinel minden régióból gyűjt CloudTrail eseményeket. Azt javasoljuk, hogy ne továbbítsa az eseményeket egyik régióból a másikba.
 
 ## <a name="connect-aws"></a>Az AWS csatlakoztatása 
+
+
+1. Az Azure Sentinelben válassza  az adatösszekötők lehetőséget, majd válassza ki az **Amazon Web Services** sort a táblázatban, majd az AWS ablaktáblán a jobb oldalon kattintson az **összekötő lap megnyitása**lehetőségre.
+
+1. A következő lépések végrehajtásával kövesse a **konfiguráció** szakasz utasításait.
  
-1.  Az Amazon Web Services konzolon alatt **Security, Identity & Compliance**, kattintson a **IAM**.
+1.  A Amazon Web Services-konzol **biztonság, identitás & megfelelőség**területén válassza a **iam**lehetőséget.
 
     ![AWS1](./media/connect-aws/aws-1.png)
 
-2.  Válasszon **szerepkörök** kattintson **szerepkör létrehozása**.
+1.  Válassza a **szerepkörök** lehetőséget, majd válassza a **szerepkör létrehozása**lehetőséget.
 
     ![AWS2](./media/connect-aws/aws-2.png)
 
-3.  Válasszon **egy másik AWS-fiók.** Az a **Fiókazonosító** mezőbe írja be a **Microsoft Fiókazonosító** (**123412341234**), amelyek az AWS-összekötő oldaláról az Sentinel-az Azure Portalon található.
+1.  Válasszon **egy másik AWS-fiókot.** A **fiókazonosító** mezőben adja meg a Microsoft- **fiók azonosítóját** (**123412341234**), amely az Azure Sentinel portál AWS-összekötő lapján található.
 
     ![AWS3](./media/connect-aws/aws-3.png)
 
-4.  Győződjön meg arról, hogy **külső azonosító szükséges** van kiválasztva, majd adja meg a külső azonosító (a munkaterület azonosítója), amelyek az AWS-összekötő oldaláról az Sentinel-az Azure Portalon tekintheti meg.
+1.  Győződjön meg arról, hogy a **külső azonosító** megkövetelése van kiválasztva, majd adja meg a külső azonosítót (munkaterület-azonosítót), amely az Azure Sentinel portál AWS-összekötő lapján található.
 
     ![AWS4](./media/connect-aws/aws-4.png)
 
-5.  A **engedélyek szabályzat csatolása** kiválasztása **AWSCloudTrailReadOnlyAccess**.
+1.  Az **engedélyek csatolása házirendben** válassza a **AWSCloudTrailReadOnlyAccess**lehetőséget.
 
     ![AWS5](./media/connect-aws/aws-5.png)
 
-6.  Adjon meg egy címkét (nem kötelező).
+1.  Adjon meg egy címkét (nem kötelező).
 
     ![AWS6](./media/connect-aws/aws-6.png)
 
-7.  Ezután írja be egy **szerepkörnév** , és kattintson a **szerepkör létrehozása** gombra.
+1.  Ezután adja meg a **szerepkör nevét** , és kattintson a **szerepkör létrehozása** gombra.
 
     ![AWS7](./media/connect-aws/aws-7.png)
 
-8.  A szerepkörök listájában válassza ki a létrehozott szerepkört.
+1.  A szerepkörök listában válassza ki a létrehozott szerepkört.
 
     ![AWS8](./media/connect-aws/aws-8.png)
 
-9.  Másolás a **szerepkör információ** és illessze be azt a **szerepkör hozzáadásához** mezőt az Azure-Sentinel-portálon.
+1.  Másolja az **ARN szerepkört**. Az Azure Sentinel portálon, a Amazon Web Services összekötő képernyőjén illessze be azt a szerepkörbe a mező **hozzáadásához** , majd kattintson a **Hozzáadás**gombra.
 
     ![AWS9](./media/connect-aws/aws-9.png)
 
-10. A megfelelő sémát használ a Log Analytics az AWS-események, keresse meg **AWSCloudTrail**.
+1. Az AWS-események Log Analytics vonatkozó sémájának használatához keresse meg a **AWSCloudTrail**.
 
 
 
 ## <a name="next-steps"></a>További lépések
-Ebben a dokumentumban megtudhatta, hogyan Sentinel-Azure AWS CloudTrail csatlakozni. Azure-Sentinel kapcsolatos további információkért tekintse meg a következő cikkeket:
-- Ismerje meg, hogyan [betekintést nyerhet az adatok és a potenciális fenyegetések](quickstart-get-visibility.md).
-- Első lépések [Azure Sentinel-fenyegetések észlelése](tutorial-detect-threats.md).
+Ebből a dokumentumból megtudhatta, hogyan csatlakoztatható az AWS CloudTrail az Azure Sentinelhez. Az Azure Sentinel szolgáltatással kapcsolatos további tudnivalókért tekintse meg a következő cikkeket:
+- Ismerje meg, hogyan tekintheti meg [az adatait, és hogyan érheti el a potenciális fenyegetéseket](quickstart-get-visibility.md).
+- Ismerje meg [a fenyegetések észlelését az Azure sentinelben](tutorial-detect-threats.md).
 

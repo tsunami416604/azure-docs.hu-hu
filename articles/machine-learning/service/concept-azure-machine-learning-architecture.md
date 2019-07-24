@@ -1,63 +1,63 @@
 ---
-title: Architektúra és alapfogalmak
+title: Architektúra & főbb fogalmak
 titleSuffix: Azure Machine Learning service
-description: Ismerje meg az architektúra, használati, fogalmak és Azure Machine Learning szolgáltatás alkotó munkafolyamat.
+description: Ismerje meg az Azure Machine Learning szolgáltatást alkotó architektúrát, használati feltételeket, fogalmakat és munkafolyamatot.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.author: larryfr
 author: Blackmist
-ms.date: 04/15/2019
+ms.date: 07/12/2019
 ms.custom: seodec18
-ms.openlocfilehash: 2196e375db582202997b838d05c902db95b3a3ad
-ms.sourcegitcommit: aa66898338a8f8c2eb7c952a8629e6d5c99d1468
+ms.openlocfilehash: 887c27c765855424dbfb9a77f0b452da0f5de647
+ms.sourcegitcommit: 10251d2a134c37c00f0ec10e0da4a3dffa436fb3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67461463"
+ms.lasthandoff: 07/13/2019
+ms.locfileid: "67868862"
 ---
-# <a name="how-azure-machine-learning-service-works-architecture-and-concepts"></a>Az Azure Machine Learning szolgáltatás működése: Architektúra és fogalmak
+# <a name="how-azure-machine-learning-service-works-architecture-and-concepts"></a>Azure Machine Learning szolgáltatás működése: Architektúra és fogalmak
 
-Ismerje meg az architektúra, fogalmak és a munkafolyamat az Azure Machine Learning szolgáltatás. A szolgáltatás és az általános munkafolyamat a szolgáltatás fő összetevőit az alábbi ábrán láthatók:
+Ismerje meg Azure Machine Learning szolgáltatás architektúráját, fogalmait és munkafolyamatát. A szolgáltatás fő összetevői és a szolgáltatás használatának általános munkafolyamata az alábbi ábrán látható:
 
-![Munkafolyamat és az Azure Machine Learning szolgáltatás architektúrája](./media/concept-azure-machine-learning-architecture/workflow.png)
+![Azure Machine Learning szolgáltatás architektúrája és munkafolyamata](./media/concept-azure-machine-learning-architecture/workflow.png)
 
 ## <a name="workflow"></a>Munkafolyamat
 
-A gépi tanulási a modell a munkafolyamat általában a következők szerint zajlik:
+A Machine learning-modell munkafolyamata általában az alábbi sorozatot követi:
 
-1. **Train**
-    + Fejlesztés a gépi tanulási parancsfájlok képzési **Python** vagy vizuális felhasználói felülettel.
+1. **Vonat**
+    + A gépi tanulási képzés parancsfájljainak  fejlesztése Pythonban vagy a vizualizáció felületén.
     + Létrehozhat és konfigurálhat egy **számítási célt**.
-    + **Küldje el a parancsfájlok** a konfigurált számítási célnak az adott környezetben való futtatásához. Során képzés, a parancsfájlok olvasni vagy írni **adattárolója**. Végrehajtás a rekordokat a rendszer menti és **fut** a a **munkaterület** és szerint csoportosított **kísérletek**.
+    + **Küldje el a parancsfájlok** a konfigurált számítási célnak az adott környezetben való futtatásához. A betanítás során a parancsfájlok beolvashatók vagy írhatók az **adattárba**. A végrehajtási rekordok a munkaterületen **futnak** , és a  **kísérletek**alatt csoportosítva lesznek.
 
-1. **Csomag** – Miután megtalálta a megfelelő futtatás, a megőrzött modellek regisztrálása a **modell beállításjegyzék**.
+1. **Csomag** – a megfelelő Futtatás után regisztrálja a megőrzött modellt a **modell beállításjegyzékében**.
 
-1. **Érvényesítése** - **lekérdezése a kísérlet** a naplózott mérőszámok az aktuális és korábbi fut a. A metrikák nem szükséges teljesítendő jelzik, ha 1. lépés, és a parancsfájlok iterálása ikonjához.
+1. **Ellenőrizze az aktuális**és a korábbi futtatásokból származó naplózott metrikák kísérletét.  -  Ha a mérőszámok nem jelzik a kívánt eredményt, lépjen vissza az 1. lépéshez, és ismételje meg a parancsfájlokat.
 
-1. **Üzembe helyezés** -fejleszthet, amelyek a modell egy pontozószkriptre és **a modell üzembe helyezése** , egy **webszolgáltatás** az Azure-ban, vagy a- **IoT Edge-eszköz**.
+1. **Üzembe helyezés** – a modellt használó pontozási szkript fejlesztése és **a modell üzembe helyezése** webszolgáltatásként az Azure-ban vagy egy **IoT Edge eszközön**.
 
-1. **A figyelő** -figyelő **adatok eltéréseket** egy üzembe helyezett modell betanítási adatkészletet tanuláshoz és következtetésekhez adatok között. Szükség esetén vissza a modell új betanítási adatok újratanítás 1. lépés: a ikonjához.
+1. **Figyelő** – figyelő a  betanítási adatkészlet és a központilag telepített modellbe tartozó adat adateltolódása között. Ha szükséges, lépjen vissza az 1. lépésre a modell új betanítási adattal való újratanításához.
 
-## <a name="tools-for-azure-machine-learning"></a>Az Azure Machine Learning eszközök 
+## <a name="tools-for-azure-machine-learning"></a>Azure Machine Learning eszközök 
 
-Használja ezeket az eszközöket az Azure Machine Learning:
+Ezeket az eszközöket Azure Machine Learning használhatja:
 
-+  A szolgáltatás bármely Python-környezetben a használata a [Azure Machine Learning SDK Pythonhoz készült](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py).
-+ A machine learning-tevékenységek a automatizálhatja a [Azure Machine Learning parancssori](https://docs.microsoft.com/azure/machine-learning/service/reference-azure-machine-learning-cli).
-+ Kód írása a Visual Studio Code- [Azure Machine Learning VS Code-bővítménnyel](how-to-vscode-tools.md) 
-+ Használja a [vizuális felhasználói felületet (előzetes verzió) az Azure Machine Learning szolgáltatás](ui-concept-visual-interface.md) kódírás nélkül a munkafolyamat lépések végrehajtásához.
++  A szolgáltatással bármilyen Python-környezetben dolgozhat a Pythonhoz készült [Azure Machine learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)-val.
++ A gépi tanulási tevékenységek automatizálása a [Azure Machine learning parancssori](https://docs.microsoft.com/azure/machine-learning/service/reference-azure-machine-learning-cli)felülettel.
++ Kód írása a Visual Studio Code-ban [Azure Machine learning vs Code bővítménnyel](how-to-vscode-tools.md) 
++ A [Visual Interface (előzetes verzió) használatával Azure Machine learning szolgáltatáshoz](ui-concept-visual-interface.md) a munkafolyamat lépéseit kód írása nélkül hajthatja végre.
 
-## <a name="glossary-of-concepts"></a>Szószedet fogalmak
+## <a name="glossary-of-concepts"></a>Fogalmak glosszáriuma
 
-+ <a href="#workspaces">Workspace</a>
++ <a href="#workspaces">Munkaterület</a>
 + <a href="#experiments">Kísérletek</a>
-+ <a href="#models">modellek</a>
-+ <a href="#run-configurations">Futtatási konfigurációt</a>
-+ <a href="#datasets-and-datastores">Adatkészlet és adattárolók</a>
-+ <a href="#compute-targets">Számítási céljainak</a>
-+ <a href="#training-scripts">Tanítási szkriptet</a>
++ <a href="#models">Modellek</a>
++ <a href="#run-configurations">Konfiguráció futtatása</a>
++ <a href="#datasets-and-datastores">Adathalmaz & adattárolók</a>
++ <a href="#compute-targets">Számítási célok</a>
++ <a href="#training-scripts">Betanítási szkript</a>
 + <a href="#runs">Futtatás</a>
 + <a href="#github-tracking-and-integration">Git-követés</a>
 + <a href="#snapshots">Snapshot</a>
@@ -65,106 +65,106 @@ Használja ezeket az eszközöket az Azure Machine Learning:
 + <a href="#images">Rendszerkép</a>
 + <a href="#deployment">Üzembe helyezés</a>
 + <a href="#web-service-deployments">Webszolgáltatások</a>
-+ <a href="#iot-module-deployments">IoT-modulok</a>
-+ <a href="#ml-pipelines">Gépi Tanulási folyamatok</a>
++ <a href="#iot-module-deployments">IoT modulok</a>
++ <a href="#ml-pipelines">ML-folyamatok</a>
 + <a href="#logging">Logging</a>
 
 > [!NOTE]
-> Bár ez a cikk az Azure Machine Learning szolgáltatás által használt kifejezések és fogalmak meghatározása, kifejezések és fogalmak az Azure platform nem definiál. Az Azure platform terminológia kapcsolatos további információkért lásd: a [Microsoft Azure szószedet](https://docs.microsoft.com/azure/azure-glossary-cloud-terminology).
+> Bár ez a cikk a Azure Machine Learning szolgáltatás által használt feltételeket és fogalmakat határozza meg, nem határozza meg az Azure platformra vonatkozó feltételeket és fogalmakat. További információ az Azure platform terminológiáról: [Microsoft Azure Szószedet](https://docs.microsoft.com/azure/azure-glossary-cloud-terminology).
 
 
 ### <a name="workspaces"></a>Munkaterületek
 
-[A munkaterület](concept-workspace.md) , hogy az Azure Machine Learning szolgáltatás legfelső szintű erőforrás. Biztosít egy központi helyen hoz létre az Azure Machine Learning szolgáltatás használatakor minden összetevő dolgozhat.
+[A munkaterület](concept-workspace.md) a Azure Machine learning szolgáltatás legfelső szintű erőforrása. Központi helyet biztosít a Azure Machine Learning szolgáltatás használatakor létrehozott összes összetevővel való együttműködéshez.
 
-A besorolás, a munkaterület az alábbi ábra mutatja be:
+A munkaterület taxonómiaét az alábbi ábra szemlélteti:
 
 [![Munkaterület besorolás](./media/concept-azure-machine-learning-architecture/azure-machine-learning-taxonomy.png)](./media/concept-azure-machine-learning-architecture/azure-machine-learning-taxonomy.png#lightbox)
 
-Munkaterületek kapcsolatos további információkért lásd: [Mi az Azure Machine Learning-munkaterület?](concept-workspace.md).
+További információ a munkaterületekről: [Mi az Azure Machine learning munkaterület?](concept-workspace.md).
 
 ### <a name="experiments"></a>Kísérletek
 
-Egy kísérlet megadott parancsfájl több futtatások csoportja. Mindig tartozik egy munkaterülethez. Ha elküldi egy futtatás, meg kell adnia egy kísérlet neve. A kísérlet keretében a Futtatás adatait tárolja. Ha futtató nyújt, és adja meg, egy kísérlet neve, amely nem létezik, a rendszer automatikusan létrehoz egy új kísérlet a újonnan megadott névvel.
+A kísérlet egy adott parancsfájlból származó számos Futtatás csoportosítása. Mindig tartozik egy munkaterülethez. Ha elküldi egy futtatás, meg kell adnia egy kísérlet neve. A kísérlet keretében a Futtatás adatait tárolja. Ha elküld egy futtatást, és megad egy kísérlet nevét, amely nem létezik, automatikusan létrejön egy új kísérlet az újonnan megadott névvel.
 
-Egy kísérlet használatának példájáért lásd [a rövid útmutató: Ismerkedés az Azure Machine Learning szolgáltatás](quickstart-run-cloud-notebook.md).
+A kísérletek használatára példát a gyors útmutató [: Ismerkedjen meg Azure Machine Learning szolgáltatással](quickstart-run-cloud-notebook.md).
 
 ### <a name="models"></a>Modellek
 
 A legegyszerűbb esetben egy modell olyan kódot, amely veszi a bemenetnek és kimenetet. Egy gépi tanulási modellek létrehozásával magában foglalja a algoritmusok kiválasztása, megadják a data és a hangolási hiperparaméterek. Képzési, amely a betanított modell, amely magában foglalja, mi a modell a betanítási folyamat során megtanult iteratív folyamat.
 
-Futtatás az Azure Machine Learning-modell elő. Egy modellt, amely be van tanítva, az Azure Machine Learning-en kívül is használhatja. Az Azure Machine Learning szolgáltatás munkaterületen egy modell regisztrálhat.
+Futtatás az Azure Machine Learning-modell elő. A Azure Machine Learningon kívül betanított modellt is használhat. A modelleket Azure Machine Learning szolgáltatás munkaterületen lehet regisztrálni.
 
-Az Azure Machine Learning szolgáltatás keretrendszer független. Amikor létrehoz egy modellt, minden olyan közkedvelt machine learning-keretrendszerek, például a Scikit-ismerje meg, XGBoost, PyTorch, tensorflow-hoz és Chainer is használhatja.
+Azure Machine Learning szolgáltatás a Framework agnosztikus. Modell létrehozásakor bármilyen népszerű Machine learning-keretrendszert használhat, például a Scikit-Learn, a XGBoost, a PyTorch, a TensorFlow és a Chainer platformot.
 
-A modell tanítása példát talál [oktatóanyag: Egy rendszerkép osztályozási modell Azure Machine Learning szolgáltatással betanításához](tutorial-train-models-with-aml.md).
+A modellek betanítására példát a következő témakörben talál [: oktatóanyag: Rendszerkép-besorolási modell betanítása](tutorial-train-models-with-aml.md)Azure Machine learning szolgáltatással.
 
-A **modell beállításjegyzék** nyomon követi az összes a modellek az Azure Machine Learning szolgáltatás munkaterületen.
+A **modell beállításjegyzéke** nyomon követi a Azure Machine learning szolgáltatás munkaterületén lévő összes modellt.
 
-Modellek nevét és verzióját azonosítja. Minden alkalommal, amikor egy modell regisztrálni a neve megegyezik egy meglévő, a beállításjegyzék azt feltételezi, hogy-e egy új verziója. A verzió értéke akkor nő, és az új modell ugyanazzal a névvel van regisztrálva.
+Modellek nevét és verzióját azonosítja. Minden alkalommal, amikor egy olyan modellt regisztrál, amelynek a neve megegyezik egy meglévővel, a beállításjegyzék feltételezi, hogy ez egy új verzió. A verzió növekményes, és az új modell ugyanazon a néven van regisztrálva.
 
-Ha regisztrálja a modellt, akkor is további metaadat-címkéket adja meg, majd a címkék modellek keresésekor.
+A modell regisztrálása esetén további metaadat-címkéket is megadhat, majd használhatja a címkéket a modellek keresésekor.
 
 > [!TIP]
-> A regisztrált modell az egy vagy több fájlt, amely a modell alkotó logikai tárolója. Például ha egy modellt, amely több fájlok tárolják, regisztrálhatja őket egy adott modellt, az Azure Machine Learning-munkaterületet. A regisztrációt követően is, majd töltse le vagy a regisztrált modell üzembe helyezése és fogadására regisztrált összes fájlt.
+> A regisztrált modell a modellt alkotó egy vagy több fájl logikai tárolója. Ha például több fájlban tárolt modell van, akkor egyetlen modellként regisztrálhatja őket a Azure Machine Learning munkaterületen. A regisztráció után letöltheti vagy telepítheti a regisztrált modellt, és megkapja az összes regisztrált fájlt.
 
-Egy aktív központi telepítés által használt regisztrált modell nem törölhető.
+Egy aktív telepítés által használt regisztrált modell nem törölhető.
 
-A modellek regisztrálása egy példa: [betanításához egy kép osztályozási modell az Azure Machine Learning](tutorial-train-models-with-aml.md).
+A modellek regisztrálására példát a képbesorolási [modell](tutorial-train-models-with-aml.md)betanítása Azure Machine Learningkal című témakörben talál.
 
-### <a name="run-configurations"></a>Futtatási beállítások
+### <a name="run-configurations"></a>Konfigurációk futtatása
 
-A futtatási konfigurációs utasításokat, amely meghatározza a parancsfájl a megadott számítási célnak futtatásának módját. A konfiguráció viselkedésének definíciókat, például hogy egy meglévő Python-környezettel vagy egy Conda-környezet, amely egy specifikációt használata széles készletét tartalmazza.
+A futtatási konfiguráció olyan utasítások összessége, amelyek meghatározzák, hogy egy parancsfájl hogyan fusson egy adott számítási célhelyen. A konfiguráció számos viselkedési definíciót tartalmaz, például azt, hogy egy meglévő Python-környezetet kíván-e használni, vagy egy specifikáció alapján létrehozott Conda-környezetet használ-e.
 
-Egy futtatási konfigurációt megőrizhetők a tanítási szkriptet tartalmazó könyvtárra belül egy fájlba, vagy is kell kialakítani, memórián belüli objektumot és egy Futtatás küldéséhez használt.
+A futtatási konfiguráció a betanítási parancsfájlt tartalmazó könyvtárban található fájlba is megtartható, vagy egy memóriában tárolt objektumként is létrehozható, és a Futtatás elküldésére használható.
 
-Például futtatási konfigurációkat, lásd: [kiválasztása és használata egy számítási célnak a modell betanításához](how-to-set-up-training-targets.md).
+A futtatási konfigurációkat például a [modell kitanítására szolgáló számítási cél kiválasztása és használata](how-to-set-up-training-targets.md)című témakörben tekintheti meg.
 
-### <a name="datasets-and-datastores"></a>Az adatkészletek és adattárolók
+### <a name="datasets-and-datastores"></a>Adatkészletek és adattárolók
 
-**Az Azure Machine Learning adatkészletek** könnyebb hozzáférés (előzetes verzió), és dolgozhat az adatokkal. Adatkészletek kezelése az adatok különböző alkalmazási helyzetekben, például a modell betanítása, folyamat-létrehozás. Az Azure Machine Learning SDK, segítségével alapjául szolgáló tároló eléréséhez, Fedezze fel és előkészíti az adatokat, különböző az adatkészlet-definíciók életciklusának kezelése, és képzési és éles környezetben használt Adatkészletekre közötti összehasonlítása.
+**Adathalmazok Azure Machine learning** (előzetes verzió) megkönnyíti az adataihoz való hozzáférést és azokkal való munkát. Az adathalmazok különböző forgatókönyvekben, például a modell betanítása és a folyamat létrehozása során kezelik az adatokat. Az Azure Machine Learning SDK-val elérheti a mögöttes tárolót, megtekintheti és előkészítheti az adatokat, kezelheti a különböző adatkészlet-definíciók életciklusát, és összehasonlíthatja a képzésben és az üzemi környezetben használt adatkészleteket.
 
-Az adatkészletek adatok legnépszerűbb formátumokhoz, például az módszert biztosít `from_delimited_files()` vagy `to_pandas_dataframe()`.
+Az adatkészletek olyan módszereket biztosítanak, amelyekkel a népszerű formátumokban `from_delimited_files()` dolgozhat `to_pandas_dataframe()`, például a vagy a használatával.
 
-További információkért lásd: [létrehozása és regisztrálása az Azure Machine Learning adatkészletek](how-to-create-register-datasets.md).  Adatkészleteket használó további példákért lásd a [notebookok minta](https://aka.ms/dataset-tutorial).
+További információ: [Azure Machine learning adatkészletek létrehozása és regisztrálása](how-to-create-register-datasets.md).  Az adatkészletek használatával kapcsolatos további példákért tekintse meg a [minta jegyzetfüzeteket](https://aka.ms/dataset-tutorial).
 
-A **adattárolója** egy tárolási absztrakciós van egy Azure storage-fiókot. Az adattár egy Azure blob-tárolóba vagy Azure-fájlmegosztások használhat a háttér-tárolóként. Az egyes munkaterületeken rendelkezik alapértelmezett adattárolót, és további adattárainak regisztrálhatja. A Python SDK API-t vagy az Azure Machine Learning parancssori felület használatával fájlok tárolásához és lekéréséhez, az adattárral.
+Az **adattár** egy Azure Storage-fiókon keresztüli adattárolási absztrakt. Az adattár egy Azure BLOB-tárolót vagy egy Azure-fájlmegosztást használhat háttérbeli tárolóként. Minden munkaterülethez tartozik egy alapértelmezett adattár, amely további adattárolókat is regisztrálhat. A Python SDK API-val vagy a Azure Machine Learning CLI-vel fájlokat tárolhat és kérhet le az adattárból.
 
 ### <a name="compute-targets"></a>Számítási céljainak
 
-A [számítási célt](concept-compute-target.md) lehetővé teszi, hogy adja meg, amelyen futtatja a tanítási szkriptet vagy a gazdagép helyezheti üzembe számítási erőforrásokat. Ezen a helyen a helyi számítógépre vagy egy olyan felhőalapú számítási erőforrásra lehet. Számítási célnak megkönnyítik a számítási környezetben módosítsa a kód módosítása nélkül. 
+A [számítási cél](concept-compute-target.md) lehetővé teszi annak a számítási erőforrásnak a megadását, amelynél futtatja a betanítási szkriptet, vagy üzemelteti a szolgáltatás központi telepítését. Ez a hely lehet a helyi számítógép vagy egy felhőalapú számítási erőforrás. A számítási célok révén a kód módosítása nélkül egyszerűen módosíthatja a számítási környezetet. 
 
-Tudjon meg többet a [képzés és a központi telepítés rendelkezésre álló számítási célnak](concept-compute-target.md). 
+További információ a [képzéshez és az üzembe helyezéshez rendelkezésre álló számítási célokról](concept-compute-target.md). 
 
 ### <a name="training-scripts"></a>Betanítási szkriptekhez
 
-A modell betanítását, meg kell adni a tanítási szkriptet és a kapcsolódó fájlokat tartalmazó könyvtárra. Is megad, egy kísérlet neve, amely a betanítás során gyűjtött adatok tárolására szolgál. Során képzés, a teljes címtárra kerül a képzési környezet (számítási célt), és a parancsfájl a futtatási konfiguráció által meghatározott elindult. A könyvtár pillanatképet is tárolja a munkaterületen a kísérlet keretében.
+A modell betanítását, meg kell adni a tanítási szkriptet és a kapcsolódó fájlokat tartalmazó könyvtárra. Megadhat egy kísérlet nevét is, amely a betanítás során összegyűjtött információk tárolására szolgál. A betanítás során a rendszer átmásolja a teljes könyvtárat a betanítási környezetre (számítási célra), a futtatási konfiguráció által megadott parancsfájlt pedig elindítják. A könyvtár pillanatképet is tárolja a munkaterületen a kísérlet keretében.
 
-Egy vonatkozó példáért lásd: [oktatóanyag: Egy rendszerkép osztályozási modell Azure Machine Learning szolgáltatással betanításához](tutorial-train-models-with-aml.md).
+Példaként tekintse [meg az oktatóanyagot: Rendszerkép-besorolási modell betanítása](tutorial-train-models-with-aml.md)Azure Machine learning szolgáltatással.
 
 ### <a name="runs"></a>Futtatások
 
 Futtatás a következő egy rekordot, amely a következő információkat tartalmazza:
 
-* A Futtatás (timestamp, időtartama és így tovább) kapcsolatos metaadatok
-* A parancsfájl által naplózott mérőszámok
-* Kimeneti fájlok, amelyek autocollected által a kísérletet, vagy explicit módon feltöltött Ön
+* A futtatással kapcsolatos metaadatok (timestamp, időtartam stb.)
+* A parancsfájl által naplózott metrikák
+* A kísérlet által összegyűjtött vagy kifejezetten az Ön által feltöltött kimeneti fájlok
 * A könyvtár, amely tartalmazza a parancsprogramok, a Futtatás előtt pillanatképét
 
-Futtatás a modell betanításához parancsfájl elküldésekor hozhat létre. Futtató rendelkezhet, nulla vagy több alárendelt futtatások. Például a legfelső szintű futtatás rendelkezhet két gyermek futtatásakor a szolgáltatás, amelyek mindegyike előfordulhat, hogy a saját gyermek futtatni.
+A futtatást akkor kell létrehoznia, ha parancsfájlt küld a modell betanításához. Futtató rendelkezhet, nulla vagy több alárendelt futtatások. Előfordulhat például, hogy a legfelső szintű Futtatás két gyermeket futtat, amelyek mindegyike rendelkezhet saját gyermekével.
 
-Egy modell által készített futtatások nem csupán egy példa: [a rövid útmutató: Ismerkedés az Azure Machine Learning szolgáltatás](quickstart-run-cloud-notebook.md).
+A modellek betanításával létrehozott futtatások megtekintésére például a gyors útmutató [: Ismerkedjen meg Azure Machine Learning szolgáltatással](quickstart-run-cloud-notebook.md).
 
-### <a name="github-tracking-and-integration"></a>GitHub nyomon követését és integráció
+### <a name="github-tracking-and-integration"></a>GitHub-követés és-integráció
 
-Amikor egy futtassa, amelyben a forráskönyvtár helyi Git-tárház képzés, a tárház kapcsolatos információkat a futtatási előzmények tárolódik. Például a tárház aktuális véglegesítési Azonosítóját kerül az előzmények részeként. Ez egy estimator, gépi Tanulási folyamatot vagy parancsfájlt futtassa használatával elküldött futtatások együttműködik. Is működik, az SDK-t vagy a Machine Learning parancssori elküldött futtatások.
+Ha olyan képzést indít el, ahol a forrás könyvtára helyi git-tárház, a rendszer a tárház adatait a futtatási előzményekben tárolja. Az adattár aktuális véglegesítő AZONOSÍTÓját például az előzmények részeként naplózza a rendszer. Ez a szolgáltatás a kalkulátor, a ML folyamat vagy a szkript futtatásával elküldött futtatásokkal működik. Az SDK-ból vagy Machine Learning parancssori felületről küldött futtatások esetén is működik.
 
 ### <a name="snapshots"></a>Pillanatképek
 
-Futtatás elküldésekor az Azure Machine Learning tömöríti a könyvtárat, amely tartalmazza a parancsfájl egy zip-fájlba, és elküldi azokat a számítási célnak. A zip-fájl majd ki kell olvasni, és a szkript futása hiba. Az Azure Machine Learning a zip-fájl is tárolja a futtatási rekord részeként pillanatképet készít. A munkaterület segítségével bárki futtatási rekord kereshetnek és a pillanatkép letöltése.
+Amikor elküld egy futtatást, Azure Machine Learning tömöríti azt a könyvtárat, amely a parancsfájlt zip-fájlként tartalmazza, és elküldi a számítási célnak. Ekkor a rendszer kibontja a zip-fájlt, és ott futtatja a parancsfájlt. Az Azure Machine Learning a zip-fájl is tárolja a futtatási rekord részeként pillanatképet készít. A munkaterület segítségével bárki futtatási rekord kereshetnek és a pillanatkép letöltése.
 
 > [!NOTE]
-> Bekerüljenek a pillanatkép a szükségtelen fájlok megakadályozása érdekében, hogy egy figyelmen kívül hagyása fájl (.gitignore vagy .amlignore). Helyezze a fájlt a pillanatkép-címtárban, és adja hozzá a fájlnevek, figyelmen kívül hagyni. A .amlignore fájlja azonos [szintaxist és a .gitignore fájlt, amelyek az](https://git-scm.com/docs/gitignore). Ha mindkét fájl létezik, a .amlignore fájl élvez elsőbbséget.
+> Ha meg szeretné akadályozni, hogy a felesleges fájlok szerepeljenek a pillanatképben, ne hagyja figyelmen kívül a fájlt (. gitignore vagy. amlignore). Helyezze el ezt a fájlt a pillanatkép-könyvtárba, és adja hozzá a fájlneveket, hogy figyelmen kívül hagyja. A. amlignore fájl ugyanazokat a [szintaxist és mintákat használja, mint a. gitignore fájl](https://git-scm.com/docs/gitignore). Ha mindkét fájl létezik, a. amlignore fájl elsőbbséget élvez.
 
 ### <a name="activities"></a>Tevékenységek
 
@@ -173,67 +173,67 @@ Egy tevékenység egy hosszú ideig futó művelet jelöli. A következő művel
 * Létrehozása vagy törlése egy számítási célnak
 * Egy parancsfájlt futtat egy számítási célnak
 
-Tevékenységek biztosíthat az SDK-t vagy a webes felhasználói felületen keresztül értesítéseket, hogy ezek a műveletek állapotát egyszerűen figyelheti.
+A tevékenységek az SDK-n vagy a webes felületen keresztül nyújthatnak értesítéseket, így könnyen nyomon követheti a műveletek előrehaladását.
 
 ### <a name="images"></a>Képek
 
-Képek hardvermódosításainak megbízhatóan helyezhet üzembe modelleket, együtt kell használni a modell az összes összetevő. Kép a következő elemeket tartalmazza:
+A lemezképek lehetővé teszik a modell megbízható üzembe helyezését, valamint a modell használatához szükséges összes összetevőt. Kép a következő elemeket tartalmazza:
 
 * A modell.
-* A pontozó szkript vagy alkalmazás. A szkript használatával a modell bemenetet átadni, és a modell a hibaüzenettel reagál.
-* A modell vagy a pontozó szkript vagy alkalmazás számára szükséges függőségek. Például előfordulhat, hogy közé tartozik egy Conda környezet fájlt, amely felsorolja a Python csomagfüggőségek.
+* A pontozó szkript vagy alkalmazás. A szkript segítségével adja át a modell bemenetét, és adja vissza a modell kimenetét.
+* A modell vagy pontozási parancsfájl vagy alkalmazás által igényelt függőségek. Például előfordulhat, hogy közé tartozik egy Conda környezet fájlt, amely felsorolja a Python csomagfüggőségek.
 
-Az Azure Machine Learning két típusú lemezképek hozhatók létre:
+Azure Machine Learning kétféle rendszerképet hozhat létre:
 
-* **FPGA-lemezkép**: Amikor üzembe helyezi a egy mezőben-programmable gate array az Azure-ban használni.
-* **Docker-rendszerkép**: Amikor üzembe helyezi a számítási céljainak eltérő FPGA használja. Példák a következők: Azure Container Instances szolgáltatásban és az Azure Kubernetes Service-ben.
+* **FPGA-rendszerkép**: Az Azure-ban egy mezőre programozható Gate tömbbe való üzembe helyezéskor használatos.
+* **Docker-rendszerkép**: Akkor használatos, ha a FPGA-től eltérő számítási célokat kíván üzembe helyezni. Ilyenek például a Azure Container Instances és az Azure Kubernetes szolgáltatás.
 
-Az Azure Machine Learning szolgáltatáshoz biztosít alapképet, amely alapértelmezés szerint használt. A saját egyéni rendszerképeit is megadhatja.
+A Azure Machine Learning szolgáltatás alapszintű rendszerképet biztosít, amelyet alapértelmezés szerint használ a rendszer. Egyéni lemezképeket is megadhat.
 
 ### <a name="image-registry"></a>Regisztrációs adatbázisba
 
-Képek a rendszer katalogizált a **regisztrációs adatbázisba** a munkaterületén. Megadhat további metaadat-címkéket a lemezkép létrehozásakor, hogy később keresse meg a lemezkép lekérdezhetők.
+A rendszerképeket a munkaterületen a **rendszerkép beállításjegyzékében** kell katalogizálni. A rendszerkép létrehozásakor további metaadatokat is megadhat, így lekérdezheti őket, hogy később is megtalálják a rendszerképet.
 
-Lemezkép létrehozása a példát talál [egy kép besorolási modell az Azure Container Instancesben üzembe](tutorial-deploy-models-with-aml.md).
+A lemezképek létrehozásával kapcsolatos példa: [lemezkép besorolási modell telepítése Azure Container Instancesban](tutorial-deploy-models-with-aml.md).
 
-Egyéni lemezkép alapján üzembe helyezéséhez egy példa: [modell üzembe helyezése egy egyéni Docker-rendszerkép használatával hogyan](how-to-deploy-custom-docker-image.md).
+Példa egy modell egyéni rendszerkép használatával történő üzembe helyezésére: [modell üzembe helyezése egyéni Docker-rendszerkép használatával](how-to-deploy-custom-docker-image.md).
 
 ### <a name="deployment"></a>Környezet
 
-Központi telepítés rendszer vagy egy webszolgáltatás, amelyet a felhőben üzemeltethető, vagy egy IoT-modul az integrált eszközök központi telepítéséhez a modell által okozott.
+Az üzembe helyezés a modell egy példánya egy webszolgáltatásba, amely a felhőben vagy egy IoT modulban üzemeltethető az integrált eszközök üzembe helyezéséhez.
 
-#### <a name="web-service-deployments"></a>Webszolgáltatások üzembe helyezéséhez
+#### <a name="web-service-deployments"></a>Webszolgáltatás üzemelő példányai
 
-Egy már üzembe helyezett webszolgáltatás az Azure Container Instances, az Azure Kubernetes Service-ben vagy az FPGA-kban. A szolgáltatás létrehozása a modell, a parancsfájl és a kapcsolódó fájlokat. Ezek a képet, amely a web service a futási idő környezetet biztosít, vannak beágyazva. A rendszerkép egy elosztott terhelésű, HTTP-végpontot, amely megkapja a pontozási a web Service küldött kérések rendelkezik.
+A központilag telepített webszolgáltatások használhatják Azure Container Instances, Azure Kubernetes Service vagy FPGA. A szolgáltatást a modellből, a parancsfájlból és a társított fájlokból hozza létre. Ezek egy rendszerképbe vannak ágyazva, amely a webszolgáltatás futtatási idejét biztosítja. A rendszerkép egy elosztott terhelésű, HTTP-végponttal rendelkezik, amely a webszolgáltatásnak küldött pontozási kérelmeket fogadja.
 
-Az Azure megkönnyíti a webszolgáltatás üzembe figyelemmel gyűjtése az Application Insights telemetria- vagy modell telemetriai adatokat, ha úgy döntött, ez a funkció engedélyezéséhez. A telemetriai adatok csak Ön számára elérhető, és az Application Insights és a tárolási fiók példányait tárolja.
+Az Azure segít a webszolgáltatás központi telepítésének figyelésében Application Insights telemetria vagy modell telemetria gyűjtésével, ha a funkció engedélyezését választotta. A telemetria adatai csak Ön számára érhetők el, és a Application Insights és a Storage-fiók példányaiban tárolódnak.
 
-Ha engedélyezte az automatikus méretezés, az Azure automatikusan méretezi a központi telepítés.
+Ha engedélyezte az automatikus skálázást, az Azure automatikusan méretezi az üzembe helyezést.
 
-Helyezi üzembe a modellt webszolgáltatásként, amely egy példa: [egy kép besorolási modell az Azure Container Instancesben üzembe](tutorial-deploy-models-with-aml.md).
+Egy modell webszolgáltatásként való üzembe helyezésére példa: [lemezkép besorolási modell telepítése Azure Container Instancesban](tutorial-deploy-models-with-aml.md).
 
-#### <a name="iot-module-deployments"></a>IoT-modul központi telepítések
+#### <a name="iot-module-deployments"></a>IoT-modul üzembe helyezése
 
-Egy üzembe helyezett IoT-modul Docker-tároló, amely tartalmazza a modellt és a társított szkript vagy alkalmazás és további függőségek. A peremhálózati eszközökön az Azure IoT Edge segítségével telepítheti ezeket a modulokat.
+A központilag telepített IoT modul egy olyan Docker-tároló, amely tartalmazza a modellt, valamint a hozzá tartozó parancsfájlt vagy alkalmazást, valamint a további függőségeket. Ezeket a modulokat a Azure IoT Edge Edge-eszközökön történő üzembe helyezésével végezheti el.
 
-Ha engedélyezte a figyelés, az Azure az Azure IoT Edge-modul lévő modell gyűjt telemetrikus adatokat. A telemetriai adatok csak Ön számára elérhető, és a storage-fiók példány található.
+Ha engedélyezte a figyelést, az Azure a modellből gyűjt telemetria adatokat a Azure IoT Edge modulban. A telemetria adatai csak Ön számára érhetők el, és a Storage-fiók példányában vannak tárolva.
 
-Az Azure IoT Edge biztosítja, hogy a modul fut, és az azt futtató eszköz figyeli.
+Azure IoT Edge biztosítja, hogy a modul fut, és figyeli az azt üzemeltető eszközt.
 
 ### <a name="ml-pipelines"></a>Gépi Tanulási folyamatok
 
-Machine learning segítségével folyamatokat hozhat létre és kezelhet a munkafolyamatok, amelyek összefűzheti a machine learning fázisait. Például egy folyamatot tartalmazhat adat-előkészítés, modell betanítása, modell-üzembehelyezés és következtetésekhez/pontozási fázisait. Az egyes fázisok is magában foglalja a több lépésből, amelyek mindegyike a különböző számítási célnak beavatkozás nélkül futtatható.
+A gépi tanulási folyamatokkal olyan munkafolyamatokat hozhat létre és kezelhet, amelyek összegyűjtik a gépi tanulási fázisokat. Egy folyamat például magában foglalhatja az adatelőkészítést, a modell betanítását, a modell üzembe helyezését és a következtetések/pontozási fázisokat. Az egyes fázisok is magában foglalja a több lépésből, amelyek mindegyike a különböző számítási célnak beavatkozás nélkül futtatható.
 
-Machine learning-folyamatokat ezzel a szolgáltatással kapcsolatos további információkért lásd: [folyamatok és az Azure Machine Learning](concept-ml-pipelines.md).
+A szolgáltatással folytatott gépi tanulási folyamatokkal kapcsolatos további információkért lásd: [folyamatok és Azure Machine learning](concept-ml-pipelines.md).
 
 ### <a name="logging"></a>Naplózás
 
-Amikor a megoldás fejlesztése, akkor a Python-szkript használata az Azure Machine Learning Python SDK tetszőleges metrikák jelentkezzen. A Futtatás után határozza meg, hogy a Futtatás által előállított számára telepíteni kívánja a modell a metrikák lekérdezése.
+A megoldás fejlesztésekor a Python-szkript Azure Machine Learning Python SDK-val tetszőleges metrikákat naplózhat. A Futtatás után a metrikák lekérdezésével állapítsa meg, hogy a Futtatás előkészítette-e a telepíteni kívánt modellt.
 
 ### <a name="next-steps"></a>További lépések
 
-Ismerkedés az Azure Machine Learning szolgáltatással, tekintse meg:
+A Azure Machine Learning szolgáltatás megkezdéséhez lásd:
 
 * [Mi az Azure Machine Learning szolgáltatás?](overview-what-is-azure-ml.md)
-* [Az Azure Machine Learning szolgáltatás munkaterület létrehozása](setup-create-workspace.md)
-* [Oktatóanyag: (1. rész): A modell tanítása](tutorial-train-models-with-aml.md)
+* [Azure Machine Learning szolgáltatás munkaterületének létrehozása](setup-create-workspace.md)
+* [Oktatóanyag (1. rész): Modell betanítása](tutorial-train-models-with-aml.md)

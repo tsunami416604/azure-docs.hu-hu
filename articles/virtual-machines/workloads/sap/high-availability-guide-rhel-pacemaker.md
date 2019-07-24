@@ -1,6 +1,6 @@
 ---
-title: A Red Hat Enterprise Linux az Azure-ban támasztja beállítása |} A Microsoft Docs
-description: A Red Hat Enterprise Linux az Azure-ban támasztja beállítása
+title: A pacemaker beállítása a Red Hat Enterprise Linux az Azure-ban | Microsoft Docs
+description: A pacemaker beállítása Red Hat Enterprise Linux az Azure-ban
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
 author: mssedusch
@@ -15,14 +15,14 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/17/2018
 ms.author: sedusch
-ms.openlocfilehash: e082afb212be46c40566eb643d01bc37eababfa6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: dc703f02ecf5dbaf5eb69e8e20918415e76ba469
+ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65992151"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "68228374"
 ---
-# <a name="setting-up-pacemaker-on-red-hat-enterprise-linux-in-azure"></a>A Red Hat Enterprise Linux az Azure-ban támasztja beállítása
+# <a name="setting-up-pacemaker-on-red-hat-enterprise-linux-in-azure"></a>A pacemaker beállítása Red Hat Enterprise Linux az Azure-ban
 
 [planning-guide]:planning-guide.md
 [deployment-guide]:deployment-guide.md
@@ -39,45 +39,46 @@ ms.locfileid: "65992151"
 
 [virtual-machines-linux-maintenance]:../../linux/maintenance-and-updates.md#maintenance-that-doesnt-require-a-reboot
 
-> [!NOTE]
-> Red Hat Enterprise Linux-alapú támasztja az Azure-időkorlát ügynök használatával fence egy fürt csomópontja, ha szükséges. Feladatátvétel akár 15 percig is eltarthat, ha egy erőforrás leállítása sikertelen, vagy a fürt csomópontjai nem tud kommunikálni amely egymáshoz többé. További információkért olvassa el [RHEL magas rendelkezésre állású fürt tagként futtató Azure virtuális gép lehet az elkülönített nagyon hosszú időt igénybe, vagy az elkerítés sikertelen / időtúllépés következik be a virtuális gép leállítása előtt](https://access.redhat.com/solutions/3408711)
+> [!TIP]
+> A pacemaker on Red Hat Enterprise Linux az Azure kerítés ügynökét használja, ha szükséges. Az Azure kerítés-ügynök új verziója érhető el, és a feladatátvétel többé nem hosszabb időt vesz igénybe, ha egy erőforrás leáll, vagy ha a fürtcsomópontok nem tudnak kommunikálni egymással. További információért olvassa el a [magas rendelkezésre állású RHEL futó Azure-beli virtuális gép bevezetését, vagy a virtuális gép leállása előtt a kerítés meghibásodása/](https://access.redhat.com/solutions/3408711) időpontját.
 
-Először olvassa el az alábbi SAP-megjegyzések és tanulmányok:
+Először olvassa el a következő SAP-megjegyzéseket és dokumentumokat:
 
-* SAP-Jegyzetnek [1928533], amely rendelkezik:
-  * A lista SAP szoftver központi telepítése által támogatott Azure-beli Virtuálisgép-méretek.
-  * Fontos kapacitási adatainak Azure Virtuálisgép-méretet.
-  * Támogatott SAP-szoftverek és operációs rendszer (OS) és adatbázis-kombinációk.
-  * Szükséges SAP kernel verziója a Windows és Linux a Microsoft Azure-ban.
-* SAP-Jegyzetnek [2015553] az Azure-beli SAP az SAP által támogatott szoftverek központi telepítéséhez szükséges előfeltételeket ismerteti.
-* SAP-Jegyzetnek [2002167] javasolt a Red Hat Enterprise Linux operációs rendszer beállításai
-* SAP-Jegyzetnek [2009879] Red Hat Enterprise Linux for SAP HANA-irányelvek rendelkezik
-* SAP-Jegyzetnek [2178632] részletes jelentett az Azure-beli SAP-figyelési metrikákat kapcsolatos információkat tartalmaz.
-* SAP-Jegyzetnek [2191498] rendelkezik a szükséges SAP gazdagép-ügynök verziója Linux az Azure-ban.
-* SAP-Jegyzetnek [2243692] SAP linuxon az Azure-beli licenceléssel kapcsolatos információkat tartalmaz.
-* SAP-Jegyzetnek [1999351] további információkat talál az Azure Enhanced Monitoring bővítményt az SAP rendelkezik.
-* [Az SAP közösségi WIKI](https://wiki.scn.sap.com/wiki/display/HOME/SAPonLinuxNotes) rendelkezik az összes szükséges SAP-megjegyzések Linux rendszeren.
-* [Az Azure virtuális gépek tervezése és megvalósítása az SAP, Linux rendszeren][planning-guide]
-* [Az Azure virtuális gépek üzembe helyezése, az SAP, Linux (Ez a cikk)][deployment-guide]
-* [Az Azure Virtual Machines DBMS üzembe helyezése, az SAP, Linux rendszeren][dbms-guide]
-* [SAP HANA rendszerreplikáció támasztja fürtben](https://access.redhat.com/articles/3004101)
-* Általános RHEL-dokumentáció
-  * [Magas rendelkezésre állású bővítmény áttekintése](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/high_availability_add-on_overview/index)
-  * [Magas rendelkezésre állású kiegészítő felügyeleti](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/high_availability_add-on_administration/index)
-  * [Magas rendelkezésre állású bővítmény referencia](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/high_availability_add-on_reference/index)
-* Az Azure egyedi RHEL dokumentációja:
-  * [RHEL magas rendelkezésre állású fürtöket – Microsoft Azure virtuális gépek a fürt tagjai terméktámogatási irányelveinek](https://access.redhat.com/articles/3131341)
-  * [Telepítése és a Microsoft Azure egy Red Hat Enterprise Linux 7.4-es (és újabb verziók) magas rendelkezésre állású fürt konfigurálása](https://access.redhat.com/articles/3252491)
+* SAP-Megjegyzés [1928533], amely a következőket tartalmazta:
+  * Az SAP-szoftverek üzembe helyezéséhez támogatott Azure-beli virtuálisgép-méretek listája.
+  * Az Azure-beli virtuális gépek méretével kapcsolatos fontos kapacitási információk.
+  * A támogatott SAP-szoftverek és operációs rendszerek (OS) és adatbázis-kombinációk.
+  * A Windows és a Linux szükséges SAP kernel-verziója Microsoft Azureon.
+* Az SAP Note [2015553] az SAP által támogatott SAP-szoftverek Azure-beli üzembe helyezésének előfeltételeit sorolja fel.
+* Az SAP Megjegyzés [2002167] ajánlott operációsrendszer-beállításokkal Red Hat Enterprise Linux
+* A [2009879] -es SAP-Megjegyzés SAP HANA irányelvek a Red Hat Enterprise Linux
+* Az [2178632] -es SAP-Megjegyzés részletes információkat tartalmaz az Azure-beli SAP-ban jelentett összes figyelési mérőszámról.
+* A [2191498] -es SAP-Megjegyzés a szükséges SAP-gazdagép ügynökének verziója az Azure-ban linuxos.
+* Az [2243692] -es SAP-Megjegyzés az Azure-beli Linuxon futó SAP-licenceléssel kapcsolatos információkat tartalmaz.
+* Az SAP Megjegyzés [1999351] további hibaelhárítási információkat tartalmaz az SAP-hez készült Azure Enhanced monitoring bővítménnyel kapcsolatban.
+* Az [SAP Community wiki](https://wiki.scn.sap.com/wiki/display/HOME/SAPonLinuxNotes) rendelkezik minden szükséges SAP-megjegyzéssel a Linux rendszerhez.
+* [Azure Virtual Machines tervezése és implementálása Linux rendszeren az SAP-ban][planning-guide]
+* [Azure Virtual Machines üzembe helyezés az SAP-hez Linux rendszeren (ez a cikk)][deployment-guide]
+* [Azure Virtual Machines adatbázis-kezelői telepítés az SAP-hez Linux rendszeren][dbms-guide]
+* [Rendszerreplikáció SAP HANA a pacemaker-fürtben](https://access.redhat.com/articles/3004101)
+* Általános RHEL dokumentáció
+  * [Magas rendelkezésre állású bővítmény – áttekintés](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/high_availability_add-on_overview/index)
+  * [Magas rendelkezésre állású bővítmények felügyelete](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/high_availability_add-on_administration/index)
+  * [Magas rendelkezésre állású bővítmények leírása](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/high_availability_add-on_reference/index)
+* Az Azure-specifikus RHEL dokumentációja:
+  * [A RHEL magas rendelkezésre állású fürtökre vonatkozó támogatási szabályzatok – Microsoft Azure Virtual Machines a fürt tagjai](https://access.redhat.com/articles/3131341)
+  * [Red Hat Enterprise Linux 7,4 (és újabb) magas rendelkezésre állású fürt telepítése és konfigurálása Microsoft Azure](https://access.redhat.com/articles/3252491)
+  * [Az SAP S/4HANA ASCS/ERS konfigurálása önálló sorba helyezni-kiszolgáló 2 (ENSA2) segítségével a pacemaker on RHEL 7,6](https://access.redhat.com/articles/3974941)
 
 ## <a name="cluster-installation"></a>Fürt telepítése
 
-![Támasztja a RHEL áttekintése](./media/high-availability-guide-rhel-pacemaker/pacemaker-rhel.png)
+![Pacemaker on RHEL – áttekintés](./media/high-availability-guide-rhel-pacemaker/pacemaker-rhel.png)
 
 A következő elemek van fűzve előtagként vagy **[A]** – az összes csomópont alkalmazandó **[1]** – 1. csomópont csak érvényes vagy **: [2]** – 2. csomópont csak érvényes.
 
-1. **[A]**  Regisztrálása
+1. **[A]** regisztráció
 
-   A virtuális gépek regisztrálását, és mellékelje egy készletet, amely tartalmazza a tárházak RHEL 7.
+   Regisztrálja a virtuális gépeket, és csatolja azt egy készlethez, amely a RHEL 7 tárházait tartalmazza.
 
    <pre><code>sudo subscription-manager register
    # List the available pools
@@ -85,27 +86,40 @@ A következő elemek van fűzve előtagként vagy **[A]** – az összes csomóp
    sudo subscription-manager attach --pool=&lt;pool id&gt;
    </code></pre>
 
-   Vegye figyelembe, hogy egy készletet egy Azure piactér PAYG RHEL-lemezkép csatolásával, fog hatékonyan a dupla számlázás az RHEL-használat: egyszer a Használatalapú lemezképet, valamint a RHEL jogosultság a készlet csatlakoztatása után. A hiba elhárítása érdekében az Azure mostantól saját RHEL lemezképet biztosít. További információk érhetők el [Itt](https://aka.ms/rhel-byos).
+   Vegye figyelembe, hogy a készletnek egy Azure Marketplace-TB RHEL-rendszerképhez való csatolásával a RHEL-használat után gyakorlatilag egyszer kell fizetnie, és egyszer kell megadnia a RHEL jogosultságot a csatolni kívánt készletben. Ennek enyhítése érdekében az Azure mostantól BYOS RHEL-lemezképeket biztosít. További információ [itt](https://aka.ms/rhel-byos)található.
 
-1. **[A]**  Engedélyezése RHEL for SAP-adattárakkal
+1. **[A]** RHEL engedélyezése az SAP-repók számára
 
-   Annak érdekében, hogy a szükséges csomagok telepítéséhez a következő tárházak engedélyezése.
+   A szükséges csomagok telepítéséhez engedélyezze a következő adattárakat.
 
    <pre><code>sudo subscription-manager repos --disable "*"
    sudo subscription-manager repos --enable=rhel-7-server-rpms
    sudo subscription-manager repos --enable=rhel-ha-for-rhel-7-server-rpms
-   sudo subscription-manager repos --enable="rhel-sap-for-rhel-7-server-rpms"
+   sudo subscription-manager repos --enable=rhel-sap-for-rhel-7-server-rpms
+   sudo subscription-manager repos --enable=rhel-ha-for-rhel-7-server-eus-rpms
    </code></pre>
 
-1. **[A]**  RHEL magas RENDELKEZÉSREÁLLÁSI bővítmény telepítése
+1. **[A]** install RHEL ha bővítmény
 
    <pre><code>sudo yum install -y pcs pacemaker fence-agents-azure-arm nmap-ncat
+   </code></pre>
+
+   > [!IMPORTANT]
+   > A következő Azure kerítés-ügynök (vagy újabb verziók) használatát javasoljuk az ügyfelek számára a gyorsabb feladatátvételi idő kihasználása érdekében, ha egy erőforrás leáll, vagy ha a fürtcsomópontok nem tudnak kommunikálni egymással:  
+   > RHEL 7,6: Fence-Agents-4.2.1 -11. el7 _ 6.8  
+   > RHEL 7,5: Fence-Agents-4.0.11 -86. el7 _ 5.8  
+   > RHEL 7,4: Fence-Agents-4.0.11 -66. el7 _ 4.12  
+   > További információ: a [magas rendelkezésre állású RHEL futó Azure-beli virtuális gép, amely nagyon hosszú időt vesz igénybe, vagy ha a virtuális gép leáll, a kerítés leáll](https://access.redhat.com/solutions/3408711)
+
+   Keresse meg az Azure kerítés ügynökének verzióját. Ha szükséges, frissítse a fent megadott vagy újabb verzióra.
+   <pre><code># Check the version of the Azure Fence Agent
+    sudo yum info fence-agents-azure-arm
    </code></pre>
 
 1. **[A]**  Állomásnév-feloldás beállítása
 
    DNS-kiszolgálót használjon, vagy módosítsa a Hosts az összes csomópontra. Ez a példa bemutatja, hogyan használhatja a Hosts fájlt.
-   Cserélje le az IP-cím és az állomásnevet, az alábbi parancsokban. A Hosts használatával előnye, hogy a fürt válik független a DNS, amely túl lehet egyetlen pont, a hibák.
+   Cserélje le az IP-cím és az állomásnevet, az alábbi parancsokban. A Hosts használatával előnye, hogy a fürt független a DNS, amely túl lehet egyetlen pont, a hibák válik.
 
    <pre><code>sudo vi /etc/hosts
    </code></pre>
@@ -123,25 +137,25 @@ A következő elemek van fűzve előtagként vagy **[A]** – az összes csomóp
    <pre><code>sudo passwd hacluster
    </code></pre>
 
-1. **[A]**  Támasztja vonatkozó tűzfalszabályok hozzáadása
+1. **[A]** tűzfalszabályok hozzáadása a pacemakerhez
 
-   Adja hozzá a következő tűzfalszabályokat az összes fürt kommunikációs a fürt csomópontjai között.
+   Adja hozzá a következő tűzfalszabályok a fürt csomópontjai közötti összes fürt kommunikációhoz.
 
    <pre><code>sudo firewall-cmd --add-service=high-availability --permanent
    sudo firewall-cmd --add-service=high-availability
    </code></pre>
 
-1. **[A]**  Alapszintű fürt szolgáltatások engedélyezése
+1. **[A]** alapszintű fürtszolgáltatások engedélyezése
 
-   Futtassa az alábbi parancsokat a támasztja szolgáltatás engedélyezését, és indítsa el.
+   Futtassa a következő parancsokat a pacemaker szolgáltatás engedélyezéséhez, és indítsa el.
 
    <pre><code>sudo systemctl start pcsd.service
    sudo systemctl enable pcsd.service
    </code></pre>
 
-1. **[1]**  Támasztja létrehozása fürtben
+1. **[1]** pacemaker-fürt létrehozása
 
-   Futtassa az alábbi parancsokat a csomópontok hitelesíteni, és a fürt létrehozásához. A token beállítása, hogy a karbantartás megőrzése memória 30000. További információkért lásd: [Ez a cikk a Linux-][virtual-machines-linux-maintenance].
+   Futtassa a következő parancsokat a csomópontok hitelesítéséhez és a fürt létrehozásához. Állítsa a tokent 30000-re, hogy a memóriát megőrizve karbantartást engedélyezzen. További információkért tekintse meg [ezt a cikket a Linux rendszerhez][virtual-machines-linux-maintenance].
 
    <pre><code>sudo pcs cluster auth <b>prod-cl1-0</b> <b>prod-cl1-1</b> -u hacluster
    sudo pcs cluster setup --name <b>nw1-azr</b> <b>prod-cl1-0</b> <b>prod-cl1-1</b> --token 30000
@@ -171,25 +185,27 @@ A következő elemek van fűzve előtagként vagy **[A]** – az összes csomóp
    #   pcsd: active/enabled
    </code></pre>
 
-1. **[A]** Set Expected Votes
+1. **[A] A** várt szavazatok beállítása
 
    <pre><code>sudo pcs quorum expected-votes 2
    </code></pre>
 
-## <a name="create-stonith-device"></a>STONITH eszköz létrehozása
+## <a name="create-stonith-device"></a>STONITH-eszköz létrehozása
 
 A STONITH eszköz hitelesítéséhez, szemben a Microsoft Azure egy egyszerű szolgáltatást használja. Kövesse az alábbi lépéseket egy szolgáltatásnév létrehozásához.
 
 1. Nyissa meg a következőt: <https://portal.azure.com>
-1. Nyissa meg az Azure Active Directory panelen válassza a tulajdonságok és írja le a címtár-azonosító. Ez a **bérlőazonosító**.
+1. Nyissa meg az Azure Active Directory panel  
+   Lépjen a Tulajdonságok részhez, és jegyezze fel a címtár-azonosító. Ez a **bérlőazonosító**.
 1. Kattintson az alkalmazásregisztrációk
-1. Kattintson az Add (Hozzáadás) parancsra
-1. Adjon meg egy nevet, válassza ki a "Web app/API" alkalmazástípus, adja meg a bejelentkezési URL-címet (például a http:\//localhost), és kattintson a Létrehozás gombra
-1. A bejelentkezési URL-címet nem használja, és bármilyen érvényes URL-cím lehet
-1. Válassza ki az új alkalmazást, és a beállítások lapon kattintson a kulcsok
-1. Adja meg egy új kulcs leírását, válassza a "Soha nem jár le", és kattintson a Mentés gombra
+1. Kattintson az új regisztráció elemre.
+1. Adjon meg egy nevet, válassza a "fiókok ebben a szervezeti címtárban" lehetőséget. 
+2. Válassza az alkalmazás típusa "web" lehetőséget, adjon meg egy bejelentkezési URL-címet (például\/http:/localhost), és kattintson a Hozzáadás gombra.  
+   A bejelentkezési URL-címet nem használja, és bármilyen érvényes URL-cím lehet
+1. Válassza a tanúsítványok és titkos kulcsok lehetőséget, majd kattintson az új ügyfél titka elemre.
+1. Adja meg az új kulcs leírását, válassza a "soha nem jár le" lehetőséget, majd kattintson a Hozzáadás gombra.
 1. Jegyezze fel az értéket. Használatban van a **jelszó** a Szolgáltatásnévhez
-1. Jegyezze fel az alkalmazás azonosítóját. A felhasználónév használatban van (**bejelentkezési azonosító** az alábbi lépéseket a) a szolgáltatásnév
+1. Válassza az Áttekintés lehetőséget. Jegyezze fel az alkalmazás azonosítóját. A felhasználónév használatban van (**bejelentkezési azonosító** az alábbi lépéseket a) a szolgáltatásnév
 
 ### <a name="1-create-a-custom-role-for-the-fence-agent"></a>**[1]**  Az időkorlát-ügynökhöz tartozó egyéni szerepkör létrehozása
 
@@ -217,7 +233,7 @@ A bemeneti fájl használja az alábbi tartalommal. Szeretne az előfizetések a
 }
 ```
 
-### <a name="a-assign-the-custom-role-to-the-service-principal"></a>**[A]**  Az egyéni szerepkör hozzárendelése a Szolgáltatásnévhez
+### <a name="a-assign-the-custom-role-to-the-service-principal"></a>**[A]** az egyéni szerepkör társítása az egyszerű szolgáltatáshoz
 
 Rendelje hozzá az egyéni szerepkör "Linux időkorlát ügynök szerepkör", amely az előző fejezetben a szolgáltatásnév sikeresen létrehozva. A tulajdonosi szerepkör ne használjon többé!
 
@@ -240,21 +256,21 @@ Miután szerkesztette az engedélyek a virtuális gépek, konfigurálhatja úgy 
 sudo pcs property set stonith-timeout=900
 </code></pre>
 
-A következő paranccsal konfigurálhatja az időkorlát eszközt.
+A kerítés eszköz konfigurálásához használja a következő parancsot.
 
 > [!NOTE]
-> A kapcsoló "pcmk_host_map" csak szükséges a parancsot, ha az RHEL állomásneveket és az Azure-csomópont neve nem azonos. Tekintse meg a parancsot a félkövérrel szedett szakaszában.
+> A "pcmk_host_map" beállítás csak akkor szükséges a parancsban, ha a RHEL és az Azure-csomópontok nevei nem azonosak. Tekintse meg az parancs félkövér szakaszát.
 
 <pre><code>sudo pcs stonith create rsc_st_azure fence_azure_arm login="<b>login ID</b>" passwd="<b>password</b>" resourceGroup="<b>resource group</b>" tenantId="<b>tenant ID</b>" subscriptionId="<b>subscription id</b>" <b>pcmk_host_map="prod-cl1-0:10.0.0.6;prod-cl1-1:10.0.0.7"</b> power_timeout=240 pcmk_reboot_timeout=900</code></pre>
 
-### <a name="1-enable-the-use-of-a-stonith-device"></a>**[1]**  STONITH eszköz használatának engedélyezése
+### <a name="1-enable-the-use-of-a-stonith-device"></a>**[1]** STONITH-eszköz használatának engedélyezése
 
 <pre><code>sudo pcs property set stonith-enabled=true
 </code></pre>
 
 ## <a name="next-steps"></a>További lépések
 
-* [Az Azure virtuális gépek tervezése és megvalósítása SAP][planning-guide]
-* [Az SAP az Azure virtuális gépek üzembe helyezése][deployment-guide]
-* [Az SAP az Azure Virtual Machines DBMS üzembe helyezése][dbms-guide]
-* Magas rendelkezésre állást és az Azure virtuális gépeken SAP Hana vész-helyreállítási terv létrehozásához, lásd: [magas rendelkezésre állás az SAP HANA Azure-beli virtuális gépeken (VM)][sap-hana-ha]
+* [Azure Virtual Machines az SAP tervezéséhez és megvalósításához][planning-guide]
+* [Azure Virtual Machines üzembe helyezés az SAP-ban][deployment-guide]
+* [Azure Virtual Machines adatbázis-kezelői telepítés az SAP-hoz][dbms-guide]
+* A magas rendelkezésre állás és a SAP HANA Azure-beli virtuális gépeken történő vész-helyreállítási tervének megismeréséhez lásd: [Az Azure-beli SAP HANA magas rendelkezésre állása Virtual Machines (VM)][sap-hana-ha]
