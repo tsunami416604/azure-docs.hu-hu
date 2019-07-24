@@ -7,7 +7,6 @@
     - name: Terminológiai változások
       href: terminology.md
 - name: Gyors útmutatók
-  expanded: true
   items:
     - name: Alkalmazások
       items:
@@ -96,9 +95,9 @@
           href: platform/personal-data-mgmt.md
         - name: 'Alkalmazásadatok gyűjtése, megőrzése és tárolása'
           href: app/data-retention-privacy.md
-    - name: Reagálás incidensekre
+    - name: Riasztások
       items:
-        - name: Riasztások
+        - name: Áttekintés
           href: platform/alerts-overview.md
         - name: Klasszikus riasztások
           href: platform/alerts-classic.overview.md
@@ -114,8 +113,6 @@
           href: platform/alerts-action-rules.md
         - name: Intelligens csoportok
           href: platform/alerts-smartgroups-overview.md
-        - name: Automatikus méretezés
-          href: platform/autoscale-overview.md
         - name: Elemzés módosítása
           href: app/change-analysis.md
     - name: Adatok vizualizációja
@@ -954,6 +951,8 @@
       items:
         - name: Automatikus méretezés
           items:
+            - name: Áttekintés
+              href: platform/autoscale-overview.md
             - name: Útmutatás
               href: platform/autoscale-get-started.md
             - name: Beállítások

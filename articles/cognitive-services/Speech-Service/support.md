@@ -1,125 +1,125 @@
 ---
-title: Támogatás és Súgó
+title: Támogatás és Súgó lehetőségek
 titlesuffix: Azure Cognitive Services
-description: Súgó és támogatja a kérdések és problémák, a Speech szolgáltatással együttműködő alkalmazásokat létrehozásakor
+description: Súgó és támogatás kérése a beszédfelismerési szolgáltatással integrált alkalmazások létrehozásakor felmerülő kérdésekhez és problémákhoz
 services: cognitive-services
-author: wolfma61
+author: jhakulin
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 07/05/2019
-ms.author: wolfma
-ms.openlocfilehash: 9e975bbdcec2b45d67f910ac1a83a71ed252ebda
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.date: 07/23/2019
+ms.author: jhakulin
+ms.openlocfilehash: 981851ab9c4bbc39a2bd5df9f97a080b4f6ea388
+ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67606257"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68404806"
 ---
-# <a name="support-and-help-options"></a>Támogatás és Súgó
+# <a name="support-and-help-options"></a>Támogatás és Súgó lehetőségek
 
-Akkor most használja először a beszédszolgáltatások működésének megismerése? Fontolgatja egy új szolgáltatást szeretne az alkalmazáshoz? Az alábbiakban ahol is kaphat segítséget a fejlesztők kapcsolatos javaslatokat.
+Most megkezdi a Speech Services funkcionalitásának megismerését? Új funkciót implementál az alkalmazásban? Itt találja azokat a javaslatokat, amelyekkel fejlesztőként kaphat segítséget.
 
 > [!div class="checklist"]
-> * Az új fejlesztések kapcsolatos tájékozott *Azure Cognitive Services*, vagy keresse meg a kapcsolódó legújabb híreket *beszédszolgáltatás*.
-> * Kibocsátási megjegyzések az összes kiadásához tartozó információkat tartalmaznak.
-> * Keresés a tekintse meg, ha a probléma megoldásához a Közösség által hozzászóló, vagy a szolgáltatás már a megvalósítani kívánt vonatkozó meglévő dokumentáció van-e.
-> * Ha nem találja a megfelelő választ, a kérdés feltevése *Stack Overflow*.
-> * Ha probléma egy mintát a Githubon találja, emelje egy *GitHub* probléma.
-> * Keresse meg a megoldást a *UserVoice fórumot*.
+> * Tájékozódjon az *Azure Cognitive Services*új fejleményeiről, vagy keresse meg a *beszédfelismerési szolgáltatással*kapcsolatos legfrissebb híreket.
+> * A kibocsátási megjegyzések tartalmazzák az összes kiadásra vonatkozó információt.
+> * A kereséssel ellenőrizze, hogy a Közösség tárgyalta-e a problémát, vagy ha már létezik a megvalósítani kívánt szolgáltatás meglévő dokumentációja.
+> * Ha nem talál kielégítő választ, tegyen fel egy kérdést *stack overflow*.
+> * Ha hibát talál a GitHubon található minták egyikével kapcsolatban, adjon meg egy *GitHub* -problémát.
+> * Keressen megoldást a *UserVoice fórumban*.
 
 ## <a name="stay-informed"></a>Naprakész lehet
 
-Cognitive Services kapcsolatos híreket az összegyűjtött a [a Cognitive Services blogja](https://azure.microsoft.com/blog/topics/cognitive-services/). A legfrissebb információkat beszédszolgáltatások, nyomon követheti a [beszédszolgáltatások blog](https://azure.microsoft.com/blog/tag/speech-service/).
+A Cognitive Servicesról szóló híreket a [Cognitive Services blogban](https://azure.microsoft.com/blog/topics/cognitive-services/)gyűjtöttük össze. A beszédfelismerési szolgáltatásokkal kapcsolatos legfrissebb információkért kövesse a [Speech Services blogját](https://azure.microsoft.com/blog/tag/speech-service/).
 
 ## <a name="release-notes"></a>Kibocsátási megjegyzések
 
-A [kibocsátási megjegyzések](https://aka.ms/csspeech/whatsnew) frissül, amint az új kiadásban érhető el. A kiegészítő információkat tartalmaznak arról új funkciók, fejlesztések és hibajavításokat tartalmaz.
+A [kibocsátási megjegyzések](https://aka.ms/csspeech/whatsnew) azonnal frissülnek, amint új kiadás érhető el. A megjegyzések az új funkciókkal, javításokkal és hibajavításokkal kapcsolatos információkat tartalmaznak.
 
 ## <a name="search"></a>Keresés
 
-Előfordulhat, hogy keresse meg a választ kell a dokumentáció, minták, vagy választ [Stack overflow-n](https://www.stackoverflow.com) kérdések vagy minták.
+Megtalálhatja a szükséges választ a dokumentációban, a mintákban, illetve választ kaphat a [stack overflow](https://www.stackoverflow.com) kérdésekre vagy a mintákra.
 
 ### <a name="scoped-search"></a>Hatókörön belüli keresés
 
-A gyorsabb eredmény érdekében a keresést a Stack overflow-n, a dokumentáció és Kódminták a következő lekérdezést a használatával a [kedvenc keresőmotor](https://bing.com):
+A gyorsabb eredmény érdekében a következő lekérdezéssel használhatja a keresést a Stack Overflowra, a dokumentációra és a kód-mintákra [:](https://bing.com)
 
 ```
 {Your Search Terms} (site:stackoverflow.com OR site:docs.microsoft.com OR site:github.com/azure-samples)
 ```
 
-Ahol *{Your keresőkifejezéseket}* van a keresési kulcsszavakat.
+Ahol *{a keresési kifejezések}* a keresési kulcsszavak.
 
 ## <a name="create-an-azure-support-request"></a>Azure-támogatási kérelem létrehozása
 
-Azure-ban létrehozhat és az Azure Portalon a támogatási kérések kezelése.
+Az Azure-ügyfelek támogatási kérelmeket hozhatnak létre és kezelhetnek a Azure Portalban.
 
 * [Azure Portal](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)
-* [Az Egyesült Államok kormányának az Azure Portalon](https://portal.azure.us)
+* [A Egyesült Államok Government Azure Portal](https://portal.azure.us)
 
-## <a name="post-a-question-to-stack-overflow"></a>Új kérdést tenne fel a Stack overflow-n
+## <a name="post-a-question-to-stack-overflow"></a>Kérdés közzététele Stack Overflow
 
-A stack Overflow az előnyben részesített csatorna fejlesztéssel kapcsolatos kérdéseket. Fontos, ahol a Közösség tagjai, és a Microsoft a csapattagok közvetlenül érintett segít a problémák megoldásában.
+Stack Overflow a fejlesztéssel kapcsolatos kérdések előnyben részesített csatornája. A Közösség tagjai és a Microsoft csapattagok közvetlenül részt vesznek a problémák megoldásában.
 
-Ha nem talál választ a problémára felvétellel, küldje el a Stack Overflow egy másik kérdést. Használja a következő címkék egyikét, ha Ön a kérdés megfogalmazásához:
+Ha nem talál választ a problémára a keresésen keresztül, küldjön új kérdést Stack Overflow. A kérdés megfogalmazásakor használja a következő címkék egyikét:
 
-|Összetevő/terület  |Tags  |
+|Összetevő/régió  |Tags  |
 |---------|---------|
 |Beszédfelismerés |[[microsoft-cognitive+speech-to-text]](https://stackoverflow.com/questions/tagged/microsoft-cognitive+speech-to-text)|
-|Beszédszintézishez |[[a microsoft-cognitive + szöveg-,-beszéd átalakítás]](https://stackoverflow.com/questions/tagged/microsoft-cognitive+text-to-speech)|
+|Beszédfelismerési szintézis |[[Microsoft-kognitív + szöveg – beszéd]](https://stackoverflow.com/questions/tagged/microsoft-cognitive+text-to-speech)|
 |Beszédfordítás |[[microsoft-cognitive+translation]](https://stackoverflow.com/questions/tagged/microsoft-cognitive+translation)|
-|Beszéd leképezés |[[a microsoft-cognitive + luis]](https://stackoverflow.com/questions/tagged/microsoft-cognitive+luis)|
-|Általános beszéd SDK |[[microsoft-cognitive+microsoft-speech-api]](https://stackoverflow.com/questions/tagged/microsoft-cognitive+microsoft-speech-api)|
-| Hang-és felhőközpontú virtuális asszisztensek (előzetes verzió) | [[microsoft-cognitive+virtual-assistant+botframework]](https://stackoverflow.com/questions/tagged/microsoft-cognitive+virtual-assistant+botframework) |
+|Beszédfelismerési szándék |[[Microsoft-kognitív + Luis]](https://stackoverflow.com/questions/tagged/microsoft-cognitive+luis)|
+|Általános beszédfelismerési SDK |[[microsoft-cognitive+microsoft-speech-api]](https://stackoverflow.com/questions/tagged/microsoft-cognitive+microsoft-speech-api)|
+| Hang – első virtuális asszisztens (előzetes verzió) | [[Microsoft-kognitív + Virtual-Assistant + botframework témakörben]](https://stackoverflow.com/questions/tagged/microsoft-cognitive+virtual-assistant+botframework) |
 
 > [!TIP]
-> A Stack overflow-n a következő bejegyzések tippekkel szolgál az űrlapon kérdések tartalmazhat, és hozzáadása a forráskódja. Ezen irányelvek betartása érdekében előfordulhat, hogy növelheti annak esélyét, hogy a Közösség tagjai mérje fel, és gyorsan válaszolni:  
-> * [Hogyan jó kérdések feltevése?](https://stackoverflow.com/help/how-to-ask)
-> * [A minimális, a teljes és a ellenőrizhető példa létrehozása](https://stackoverflow.com/help/mcve)
+> A Stack Overflow következő bejegyzései a kérdések és a forráskód hozzáadására vonatkozó tippeket tartalmaznak. Az irányelvek követésével növelheti az esélyeket, hogy a Közösség tagjai gyorsan felmérjék és reagálnak a kérdéseire:  
+> * [Hogyan kérdezzen egy jó kérdésre?](https://stackoverflow.com/help/how-to-ask)
+> * [Minimális, teljes és ellenőrizhető példa létrehozása](https://stackoverflow.com/help/mcve)
 
-## <a name="create-a-github-issue"></a>Egy GitHub-probléma létrehozása
+## <a name="create-a-github-issue"></a>GitHub-probléma létrehozása
 
-A minták gyakran feladja a nyílt forráskódú. Kérdések és problémák, hozzon létre egy *probléma* a megfelelő GitHub-adattárában. A lekéréses kérelem túl is nyújt. Az alábbi lista tartalmazza a minta tárház mutató hivatkozásokat:
+A mintákat gyakran nyílt forráskódúként közzétesszük. Kérdések és problémák esetén hozzon létre egy *problémát* a megfelelő GitHub-tárházban. Lekéréses kérelem is elküldhető. A következő lista a minta adattárakra mutató hivatkozásokat tartalmaz:
 
 * [Beszéd SDK](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues)
 * [Speech Devices SDK](https://github.com/Azure-Samples/Cognitive-Services-Speech-Devices-SDK/issues)
 
-Hozzon létre egy hibajelentéseit funkcióra vonatkozó kérést, vagy általános kérdés feltevése és megoszthatók az ajánlott eljárások. Hibajelentéseire kövesse a megadott sablon:
+Létrehozhat egy hibajelentést, egy szolgáltatási kérelmet, vagy megteheti az általános kérdéseket, és megoszthatja az ajánlott eljárásokat. Hibajelentések esetén kövesse a megadott sablont:
 
 **A hiba leírása**
 
-Világos és tömör leírása a bejelentett hiba van.
+A hiba világos és tömör leírása.
 
-**Reprodukálnia**
+**Ismételt létrehozás**
 
-Viselkedés a reprodukálás lépései:
+A viselkedés újbóli létrehozásához szükséges lépések:
 1. ...
 2. ...
 
-**Várt működése**
+**Várt viselkedés**
 
-Világos és tömör leírása várt fordulhat elő.
+A vártak világos és tömör leírása.
 
-**A Cognitive Services beszédfelismerő SDK verziója**
+**A Cognitive Services Speech SDK verziója**
 
 Az SDK melyik verzióját használja.
 
 **Platform, operációs rendszer és programozási nyelv**
 
- - Operációs rendszer: [példa: Windows, Linux, Android, iOS,...] – kérjük, az adott
- - Hardver – x64, x86, ARM...
- - Böngésző [példa: Chrome, a Safari] (ha alkalmazható) – kérjük, az adott
+ - Operációs rendszer: [pl. Windows, Linux, Android, iOS,...] – kérjük, legyen konkrét
+ - Hardver – x64, x86, ARM,...
+ - Böngésző [pl. Chrome, Safari] (ha van ilyen) – Kérjük, legyen konkrét
 
-**További környezet**
+**További kontextus**
 
- - Hibaüzenetek és naplóadatok híváslánc...
- - Ha egy adott szolgáltatás kapcsolati hibát jelenti, a munkamenet-azonosító és az időt (beleértve a időzóna), az incidensek jelentést. Összes hívás-készít biztonsági másolatot/eseményt kap a munkamenet-azonosító jelenti.
- - További adatok
+ - Hibaüzenetek, napló adatai, verem nyomkövetése,...
+ - Ha egy adott szolgáltatás-interakcióra vonatkozó hibát jelez, jelentse a jelentett incidensek munkamenet-azonosítóját és időzónáját (beleértve a timezone-et is). A munkamenet-azonosító a kapott összes hívási/eseményről jelentést küld.
+ - Egyéb további információk
 
 
-## <a name="uservoice-forum"></a>UserVoice forum
+## <a name="uservoice-forum"></a>UserVoice-fórum
 
-Ossza meg ötleteit, hogy a Cognitive Services és a hozzájuk tartozó API-k egyre jobban működnek az alkalmazások fejlesztése. Gyakori kérdésekre adott válaszok a növekvő Tudásbázisunkhoz használatával:
+Ossza meg ötleteit, hogy Cognitive Services, és a kapcsolódó API-k jobban működjenek a fejlesztett alkalmazásoknál. A növekvő Tudásbázis használatával választ kaphat a gyakori kérdésekre:
 
 [UserVoice-on](https://cognitive.uservoice.com/)

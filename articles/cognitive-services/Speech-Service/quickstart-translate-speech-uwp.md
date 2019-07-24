@@ -1,39 +1,38 @@
 ---
-title: 'Gyors útmutató: Beszéd átalakítás, lefordítása C# (UWP) – beszédszolgáltatások'
+title: 'Gyors útmutató: Beszéd fordítása C# , (UWP) – Speech Services'
 titleSuffix: Azure Cognitive Services
-description: Ebben a rövid útmutatóban fog létrehozni egy egyszerű univerzális Windows Platform (UWP) alkalmazás felhasználói speech rögzítése, azt fordítása más nyelvre, és a szöveg a parancssorba. Ez az útmutató Windows-felhasználók számára tervezték.
+description: Ebben a rövid útmutatóban egy egyszerű Univerzális Windows-platform-(UWP-) alkalmazást fog létrehozni a felhasználói beszéd rögzítéséhez, lefordítani egy másik nyelvre, és kiírja a szöveget a parancssorba. Ez az útmutató Windows-felhasználók számára készült.
 services: cognitive-services
-author: wolfma61
+author: lisaweixu
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
-ms.topic: quickstart
-ms.date: 07/05/2019
+ms.date: 07/23/2019
 ms.author: erhopf
-ms.openlocfilehash: 108edfeb7bfe24184219e0011f054c36c22c9890
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: dafcbd6bbe7f542d4eabc6b7cf858ac4871caae8
+ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67602783"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68404902"
 ---
-# <a name="quickstart-translate-speech-with-the-speech-sdk-for-c-uwp"></a>Gyors útmutató: Beszédfelismerés, beszédfelismerési SDK for fordítása C# (UWP)
+# <a name="quickstart-translate-speech-with-the-speech-sdk-for-c-uwp"></a>Gyors útmutató: Beszéd fordítása a Speech SDK for C# (UWP) használatával
 
-Rövid útmutatók érhetők el is [hang-szöveg transzformációs](quickstart-csharp-uwp.md), [szöveg-hang transzformációs](quickstart-text-to-speech-csharp-uwp.md) és [hang-és felhőközpontú virtuális asszisztensek](quickstart-virtual-assistant-csharp-uwp.md).
+A gyors üzembe helyezési lehetőség a [beszéd-szöveg](quickstart-csharp-uwp.md), a [szöveg-beszéd](quickstart-text-to-speech-csharp-uwp.md) és a [hang – első virtuális asszisztens](quickstart-virtual-assistant-csharp-uwp.md)számára is elérhető.
 
-Ebben a rövid útmutatóban fog létrehozni egy egyszerű univerzális Windows Platform (UWP) alkalmazást, amely rögzíti a felhasználó beszéd, a számítógép mikrofon, a rendszer lefordítja a beszédfelismerési és transcribes a lefordított szöveg valós időben a parancssorba. Ez az alkalmazás a 64 bites Windows rendszerhez készült, és a beépített a [beszéd SDK NuGet-csomagot](https://aka.ms/csspeech/nuget) és a Microsoft Visual Studio 2017-ben.
+Ebben a rövid útmutatóban egy egyszerű Univerzális Windows-platform (UWP) alkalmazást fog létrehozni, amely rögzíti a számítógép mikrofonjának felhasználói beszédét, lefordítja a beszédet, és valós időben írja át a lefordított szöveget a parancssorba. Ez az alkalmazás a 64 bites Windows rendszeren fut, és a [SPEECH SDK NuGet csomaggal](https://aka.ms/csspeech/nuget) és a Microsoft Visual Studio 2017-mel készült.
 
-Beszédalapú fordítási elérhető nyelvek teljes listáját lásd: [nyelvi támogatás](language-support.md).
+A beszédfelismeréshez elérhető nyelvek teljes listáját a [nyelvi támogatás](language-support.md)című témakörben tekintheti meg.
 
 > [!NOTE]
-> UWP teszi lehetővé, amely bármilyen eszközről, amely támogatja a Windows 10-es, beleértve a számítógépeket, az Xbox, Surface Hub és egyéb eszközök alkalmazásokat fejleszthet.
+> A UWP lehetővé teszi olyan alkalmazások fejlesztését, amelyek a Windows 10 rendszert támogató bármely eszközön futnak, beleértve a PC-ket, az Xboxot, a Surface Hubt és az egyéb eszközöket.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 Ehhez a rövid útmutatóhoz a következőkre van szükség:
 
 * [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/)
-* A beszédfelismerési szolgáltatás egy Azure-előfizetés kulcs. [Igényeljen ingyenesen egy](get-started.md).
+* Egy Azure-előfizetési kulcs a beszédfelismerési szolgáltatáshoz. [Szerezze be az egyiket ingyenesen](get-started.md).
 
 ## <a name="create-a-visual-studio-project"></a>Visual Studio-projekt létrehozása
 
@@ -41,7 +40,7 @@ Ehhez a rövid útmutatóhoz a következőkre van szükség:
 
 ## <a name="add-sample-code"></a>Mintakód hozzáadása
 
-1. Az alkalmazás felhasználói felületét az XAML-lel lehet definiálni. Nyissa meg a `MainPage.xaml` fájlt a Megoldáskezelőben. A Tervező XAML nézetben között az alábbi XAML-kódrészlet beszúrása `<Grid>` és `</Grid>`.
+1. Az alkalmazás felhasználói felületét az XAML-lel lehet definiálni. Nyissa meg a `MainPage.xaml` fájlt a Megoldáskezelőben. A tervező XAML nézetében szúrja be a következő XAML-kódrészletet `</Grid>`a és a közé `<Grid>` .
 
     [!code-xml[UI elements](~/samples-cognitive-services-speech-sdk/quickstart/speech-translation/csharp-uwp/helloworld/MainPage.xaml#StackPanel)]
 
@@ -76,7 +75,7 @@ Ehhez a rövid útmutatóhoz a következőkre van szükség:
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Ismerkedés a C# példák a Githubon](https://aka.ms/csspeech/samples)
+> [Minták C# feltárása a githubon](https://aka.ms/csspeech/samples)
 
 ## <a name="see-also"></a>Lásd még
 

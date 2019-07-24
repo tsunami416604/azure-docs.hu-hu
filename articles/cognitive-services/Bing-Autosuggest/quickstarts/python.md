@@ -1,6 +1,6 @@
 ---
-title: 'Gyors útmutató: Javasoljuk a keresési lekérdezések a Bing Autosuggest REST API és a Python használatával'
-titlesuffix: Azure Cognitive Services
+title: 'Gyors útmutató: Keresési lekérdezések ajánlása a Bing Autosuggest REST API és a Python'
+titleSuffix: Azure Cognitive Services
 description: Információk és kódminták segítségével ismerkedhet meg a Bing Autosuggest API használatának első lépéseivel.
 services: cognitive-services
 author: aahill
@@ -10,16 +10,16 @@ ms.subservice: bing-autosuggest
 ms.topic: quickstart
 ms.date: 02/20/2019
 ms.author: aahi
-ms.openlocfilehash: 38cc9440e3cb5492ef1f45b3907fd2c00867f350
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.openlocfilehash: 733b3a943c0699d4a3af6771c917849b0b0eb528
+ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66385010"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68405270"
 ---
-# <a name="quickstart-suggest-search-queries-with-the-bing-autosuggest-rest-api-and-python"></a>Gyors útmutató: Javasoljuk a keresési lekérdezések a Bing Autosuggest REST API és a Python használatával
+# <a name="quickstart-suggest-search-queries-with-the-bing-autosuggest-rest-api-and-python"></a>Gyors útmutató: Keresési lekérdezések ajánlása a Bing Autosuggest REST API és a Python
 
-Ez a rövid útmutató elindításához, így a Bing Autosuggest API és a JSON-válasz első meghívja használja. Az egyszerű Python-alkalmazás az API-hoz egy részleges keresési lekérdezést küld, és javaslatokat keresések adja vissza. Bár ez az alkalmazás Python nyelven lett íródott, az API egy RESTful-webszolgáltatás, azaz kompatibilis a legtöbb programnyelvvel. Ehhez a mintához forráskódja elérhető a [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/python/Search/BingAutosuggestv7.py)
+Ezzel a rövid útmutatóval megkezdheti a Bing Autosuggest API hívások kezdeményezését és a JSON-válasz beszerzését. Ez az egyszerű Python-alkalmazás részleges keresési lekérdezést küld az API-nak, és a keresésekre vonatkozó javaslatokat ad vissza. Bár ez az alkalmazás Python nyelven lett íródott, az API egy RESTful-webszolgáltatás, azaz kompatibilis a legtöbb programnyelvvel. A minta forráskódja elérhető a [githubon](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/python/Search/BingAutosuggestv7.py)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -29,13 +29,13 @@ Ez a rövid útmutató elindításához, így a Bing Autosuggest API és a JSON-
 
 ## <a name="create-a-new-application"></a>Új alkalmazás létrehozása
 
-1. Hozzon létre egy új Python-fájlt a kedvenc integrált Fejlesztőkörnyezetével vagy szerkesztőjével. Adja hozzá az alábbi importálásokat:
+1. Hozzon létre egy új Python-fájlt a kedvenc IDE vagy szerkesztőben. Adja hozzá a következő importálásokat:
 
     ```python
     import http.client, urllib.parse, json
     ```
 
-2. Változók létrehozása az API-gazdát és elérési útja, [kód piaci](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v7-reference#market-codes), és a egy részleges keresési lekérdezést.
+2. Hozzon létre változókat az API-állomás és az elérési út, a [piaci kód](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v7-reference#market-codes)és egy részleges keresési lekérdezés számára.
 
     ```python
     subscriptionKey = 'enter key here'
@@ -45,21 +45,21 @@ Ez a rövid útmutató elindításához, így a Bing Autosuggest API és a JSON-
     query = 'sail'
     ```
 
-3. Hozzon létre egy paraméterek karakterláncot a piaci kódot hozzáfűzésével a `?mkt=` paraméterhez, és a lekérdezés hozzáfűzése a `&q=` paraméter.
+3. Hozzon létre egy Parameters karakterláncot a piaci kód `?mkt=` paraméterhez való hozzáfűzésével, és a lekérdezés hozzáfűzésével a `&q=` paraméterhez.
 
     ```python
     params = '?mkt=' + mkt + '&q=' + query
     ```
 
-## <a name="create-and-send-an-api-request"></a>Hozzon létre, és a egy API-kérelem küldése
+## <a name="create-and-send-an-api-request"></a>API-kérelem létrehozása és elküldése
 
-1. Az előfizetési kulcs, adjon hozzá egy `Ocp-Apim-Subscription-Key` fejléc.
+1. Adja hozzá az előfizetési kulcsot `Ocp-Apim-Subscription-Key` egy fejléchez.
     
     ```python
     headers = {'Ocp-Apim-Subscription-Key': subscriptionKey}
     ```
 
-2. Az API használatával csatlakozhat `HTTPSConnection()`, és küldje a `GET` kérelmet, amely tartalmazza a kérelem paramétereit.
+2. Kapcsolódjon az API- `HTTPSConnection()`hoz a használatával, `GET` és küldje el a kérelem paramétereit tartalmazó kérelmet.
     
     ```python
     conn = http.client.HTTPSConnection(host)
@@ -68,14 +68,14 @@ Ez a rövid útmutató elindításához, így a Bing Autosuggest API és a JSON-
     return response.read ()
     ```
 
-3. GET, és nyomtassa ki a JSON-választ.
+3. A JSON-válasz beolvasása és nyomtatása.
 
     ```python
     result = get_suggestions ()
     print (json.dumps(json.loads(result), indent=4))
     ```
 
-## <a name="example-json-response"></a>Példa JSON-válasz
+## <a name="example-json-response"></a>Példa JSON-válaszra
 
 A rendszer JSON formátumban ad vissza egy sikeres választ a következő példában látható módon: 
 

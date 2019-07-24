@@ -1,7 +1,7 @@
 ---
-title: Keresés a Bing Entity Search API rendelkező entitások esetében
-titlesuffix: Azure Cognitive Services
-description: A Bing Entity Search API használatával csomagolja ki, majd keresse meg a vállalatok és a helyek a keresési lekérdezések.
+title: Entitások keresése a Bing Entity Search API
+titleSuffix: Azure Cognitive Services
+description: A Bing Entity Search API használatával kinyerheti és keresheti meg a keresési lekérdezések entitásait és helyét.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,16 +10,16 @@ ms.subservice: bing-entity-search
 ms.topic: overview
 ms.date: 02/01/2019
 ms.author: aahi
-ms.openlocfilehash: c205f792138ebd7e8094b3bd7cd303d54dfa8d8f
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.openlocfilehash: 54c295c353e83c5d7068c30952d1cbf125788f60
+ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66389862"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68404986"
 ---
-# <a name="searching-for-entities-with-the-bing-entity-api"></a>Keresés a Bing Entity API-val rendelkező entitások esetében
+# <a name="searching-for-entities-with-the-bing-entity-api"></a>Entitások keresése a Bing Entity API-val
 
-## <a name="suggest-search-terms-with-the-bing-autosuggest-api"></a>Javasoljuk a keresési kifejezéseket, a Bing Autosuggest API
+## <a name="suggest-search-terms-with-the-bing-autosuggest-api"></a>Keresési kifejezések ajánlása a Bing Autosuggest API
 
 Ha biztosít egy olyan keresőmezőt, ahol a felhasználók megadhatják a keresőkifejezést, a [Bing Autosuggest API](../../bing-autosuggest/get-suggested-search-terms.md) használatával kényelmesebbé teheti a felhasználói élményt. Az API javasolt lekérdezési sztringeket ad vissza a részleges keresőkifejezések alapján, miközben a felhasználó gépel.
 
@@ -36,15 +36,15 @@ Ha a keresőkifejezésben elírás van, a keresésre adott válasz tartalmaz egy
 }
 ```
 
-## <a name="the-bing-entity-search-api-response"></a>A Bing Entity Search API-válasz
+## <a name="the-bing-entity-search-api-response"></a>A Bing Entity Search API válasz
 
-Az API-válasz tartalmazza a [SearchResponse](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#searchresponse) objektum. Ha a Bing talál egy vonatkozó entitást vagy helyet, az objektum tartalmazza az `entities` mezőt, a `places` mezőt, vagy mindkettőt. Ha nem talál, akkor a válaszobjektum egyik mezőt sem tartalmazza.
+Az API-válasz [SearchResponse](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#searchresponse) objektumot tartalmaz. Ha a Bing talál egy vonatkozó entitást vagy helyet, az objektum tartalmazza az `entities` mezőt, a `places` mezőt, vagy mindkettőt. Ha nem talál, akkor a válaszobjektum egyik mezőt sem tartalmazza.
 > [!NOTE]
 > Az entitásválaszok több piacot is támogatnak, de a „helyek” típusú válaszok csak az Egyesült Államokban található vállalkozásokat támogatják. 
 
 Az `entities` mező egy [EntityAnswer](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference) objektum, amely az [Entitás](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#entity) objektumok listáját tartalmazza (lásd: `value` mező). A lista tartalmazhat egyetlen domináns entitást, több egyértelműsítő entitást, vagy mindkettőt. 
 
-Domináns entitás visszaadva, ha a Bing úgy véli, hogy legyen az egyetlen entitás, amely eleget tesz a kérelem (nincs feltárhatja, hogy mely entitás eleget tesz a kérelem félreérthetőség). Ha több entitás is megfelelhet a kérelemnek, a lista több egyértelműsítő entitást tartalmaz. Ha például a kérelem egy filmes franchise általános címét tartalmazza, a lista nagy valószínűséggel egyértelműsítő entitásokat fog tartalmazni. De ha a kérelem a franchise egyik filmjének a pontos címét adja meg, a lista valószínűleg egyetlen domináns entitásból fog állni.
+A rendszer akkor adja vissza az erőfölénnyel rendelkező entitást, ha a Bing úgy véli, hogy az egyetlen olyan entitás, amely megfelel a kérésnek (nem egyértelmű, hogy melyik entitás teljesíti a kérelmet). Ha több entitás is megfelelhet a kérelemnek, a lista több egyértelműsítő entitást tartalmaz. Ha például a kérelem egy filmes franchise általános címét tartalmazza, a lista nagy valószínűséggel egyértelműsítő entitásokat fog tartalmazni. De ha a kérelem a franchise egyik filmjének a pontos címét adja meg, a lista valószínűleg egyetlen domináns entitásból fog állni.
 
 Az entitások lehetnek közismert személyek, például énekesek, színészek, sportolók, modellek stb.; helyek és nevezetességek, például a Mount Rainier vagy a Lincoln-emlékmű; valamint dolgok, például egy banán, goldendoodle kutya, könyv- vagy filmcím. Az [entityPresentationInfo](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#entitypresentationinfo) mező tartalmazza az entitás típusát azonosító mutatókat. Meghatározza például, hogy az entitás egy személy, film, állat vagy látnivaló. A lehetséges típusok listájáért lásd az [entitások különböző típusait](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#entity-types) ismertető szakaszt.
 
@@ -174,7 +174,7 @@ Az entitásinformáció (név, leírás és kép) megjelenítésekor a `webSearc
 
 ## <a name="find-places"></a>Helyek keresése
 
-A `places` mező egy [LocalEntityAnswer](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference) listáját tartalmazó objektum [hely](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#place) objektumok (lásd a [entitástípusok](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#entity-types) további információt). A lista egy vagy több, a kérésre választ adó helyi entitást tartalmaz.
+A `places` mező egy [LocalEntityAnswer](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference) objektum, amely a [hely](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#place) objektumainak listáját tartalmazza (további információt az [entitások típusaiban](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#entity-types) talál). A lista egy vagy több, a kérésre választ adó helyi entitást tartalmaz.
 
 A helyek lehetnek éttermek, szállodák vagy különböző helyi vállalkozások. Az [entityPresentationInfo](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#entitypresentationinfo) mező tartalmazza a helyi entitás típusát azonosító mutatókat. Ilyen mutató lehet például a Place (hely), LocaLBusiness (helyi vállalkozás), Restaurant (étterem). Az egymást követő mutatók leszűkítik az entitás típusát. A lehetséges típusok listájáért lásd az [entitások különböző típusait](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#entity-types) ismertető szakaszt.
 
@@ -333,4 +333,4 @@ Amennyiben nem biztos benne, hogy egy művelet vagy szándék felfogható-e kere
 
 ## <a name="next-steps"></a>További lépések
 
-* Próbálja ki egy [rövid](../quickstarts/csharp.md) Ismerkedés a Bing Entity Search API rendelkező entitás keresése.
+* Próbáljon [ki egy rövid](../quickstarts/csharp.md) útmutatót, amellyel megkezdheti az entitások keresését a Bing Entity Search API.

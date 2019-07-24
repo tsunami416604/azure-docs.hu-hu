@@ -1,7 +1,7 @@
 ---
-title: 'Gyors útmutató: Keresési lekérdezések a Bing automatikus kiegészítés REST API-t és PHP-javaslat'
-titlesuffix: Azure Cognitive Services
-description: Ismerje meg, hogy gyorsan a keresési kifejezéseket javasol a Bing Autosuggest API valós időben.
+title: 'Gyors útmutató: Keresési lekérdezések ajánlása a Bing Autosuggest REST API és a PHP-vel'
+titleSuffix: Azure Cognitive Services
+description: Megtudhatja, hogyan kezdheti el gyorsan a keresési kifejezések feltételeit a Bing Autosuggest API valós időben.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,16 +10,16 @@ ms.subservice: bing-autosuggest
 ms.topic: quickstart
 ms.date: 02/20/2019
 ms.author: aahi
-ms.openlocfilehash: 9b93714883ca4558925ac64c360db7bc395ff8f4
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.openlocfilehash: 6bbd9e5f0f1c9f26a8af756dd3c9bce666168079
+ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66390377"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68405294"
 ---
-# <a name="quickstart-suggest-search-queries-with-the-bing-autosuggest-rest-api-and-php"></a>Gyors útmutató: Keresési lekérdezések a Bing automatikus kiegészítés REST API-t és PHP-javaslat
+# <a name="quickstart-suggest-search-queries-with-the-bing-autosuggest-rest-api-and-php"></a>Gyors útmutató: Keresési lekérdezések ajánlása a Bing Autosuggest REST API és a PHP-vel
 
-Ez a rövid útmutató elindításához, így a Bing Autosuggest API és a JSON-válasz első meghívja használja. Az egyszerű PHP-alkalmazás az API-hoz egy részleges keresési lekérdezést küld, és javaslatokat keresések adja vissza. Ezt az alkalmazást a PHP nyelven van megírva, míg a API-ját egy REST-alapú webszolgáltatás szinte bármelyik programozási nyelvével kompatibilis.
+Ezzel a rövid útmutatóval megkezdheti a Bing Autosuggest API hívások kezdeményezését és a JSON-válasz beszerzését. Ez az egyszerű PHP-alkalmazás részleges keresési lekérdezést küld az API-nak, és a keresésekre vonatkozó javaslatokat ad vissza. Az alkalmazás PHP-ben íródott, az API egy REST-alapú webszolgáltatás, amely kompatibilis a legtöbb programozási nyelvvel.
 
 ## <a name="prerequisites"></a>Előfeltételek
 

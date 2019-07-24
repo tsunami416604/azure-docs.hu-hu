@@ -1,26 +1,26 @@
 ---
-title: 'Gyors útmutató: Végezzen keresést a javával – a Bing Web Search REST API'
+title: 'Gyors útmutató: A Java használata a Bing Web Search meghívásához REST API'
 titleSuffix: Azure Cognitive Services
-description: Ez a rövid útmutató segítségével-kérelmeket küldjön a Bing Web Search REST API Java használatával, és a egy JSON-választ kap
+description: Ezzel a rövid útmutatóval kérelmeket küldhet a Bing Web Search REST API Javával, és JSON-választ kap
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-web-search
 ms.topic: quickstart
-ms.date: 03/12/2019
+ms.date: 07/22/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 8282838f778516e31080960400e5b1435f0b5673
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 469456a6893d7e220e4b3f356146dc394a75b4ea
+ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60648584"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68404851"
 ---
 # <a name="quickstart-search-the-web-using-the-bing-web-search-rest-api-and-java"></a>Gyors útmutató: Keresés a weben a Bing Web Search REST API és a Java használatával
 
-Ez a rövid útmutató segítségével a Bing Web Search API az első hívását, és a JSON-választ kapnak. A Java-alkalmazás egy keresési kérelmet küld az API-t, és bemutatja a választ. Bár ez az alkalmazás Java nyelven lett íródott, az API egy RESTful-webszolgáltatás, azaz kompatibilis a legtöbb programnyelvvel.
+Ezzel a rövid útmutatóval elvégezheti az első hívását a Bing Web Search API, és megkaphatja a JSON-választ. Ez a Java-alkalmazás egy keresési kérelmet küld az API-nak, és megjeleníti a választ. Bár ez az alkalmazás Java nyelven lett íródott, az API egy RESTful-webszolgáltatás, azaz kompatibilis a legtöbb programnyelvvel.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -73,7 +73,7 @@ public class BingWebSearch {
 
 ## <a name="define-variables"></a>Változók meghatározása
 
-Ez a kód adja meg a `subscriptionKey`, a `host`, a `path` és a `searchTerm` változót. Győződjön meg arról, hogy helyes a végpont, és cserélje le a `subscriptionKey` értékét egy érvényes előfizetői azonosítóra az Azure-fiókjából. Nyugodtan testreszabhatja a keresési lekérdezést a `searchTerm` értékének lecserélésével. Adja hozzá a kódot a vágólapra a `BingWebSearch` osztály a fent leírt módon.
+Ez a kód adja meg a `subscriptionKey`, a `host`, a `path` és a `searchTerm` változót. Győződjön meg arról, hogy helyes a végpont, és cserélje le a `subscriptionKey` értékét egy érvényes előfizetői azonosítóra az Azure-fiókjából. Nyugodtan testreszabhatja a keresési lekérdezést a `searchTerm` értékének lecserélésével. Ne felejtse el hozzáadni ezt a `BingWebSearch` kódot a osztályhoz a fentiekben leírtak szerint.
 
 ```java
 // Enter a valid subscription key.

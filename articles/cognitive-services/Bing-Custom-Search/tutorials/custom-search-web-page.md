@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: Egy weblap egyéni keresés – Bing egyéni keresés'
-titlesuffix: Azure Cognitive Services
+title: 'Oktatóanyag: Egyéni keresési weblap létrehozása – Bing Custom Search'
+titleSuffix: Azure Cognitive Services
 description: Ez a cikk ismerteti, hogyan konfigurálható és integrálható egy weboldalba egy Custom Search-példány.
 services: cognitive-services
 author: aahill
@@ -10,12 +10,12 @@ ms.subservice: bing-custom-search
 ms.topic: tutorial
 ms.date: 03/04/2019
 ms.author: aahi
-ms.openlocfilehash: 0870983fe9f0ae64090652f02c526a370064b8ab
-ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
+ms.openlocfilehash: 3a8d6a831adf24212191a103dcf356bbe74d7962
+ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65595887"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68405228"
 ---
 # <a name="tutorial-build-a-custom-search-web-page"></a>Oktatóanyag: Custom Search-webhely létrehozása
 
@@ -35,7 +35,7 @@ Az oktatóanyag az alábbi feladatokat tárgyalja:
 ## <a name="prerequisites"></a>Előfeltételek
 
 - Ahhoz, hogy követni tudja az oktatóanyagot, szüksége lesz egy előfizetői azonosítóra a Bing Custom Search API-hoz.  Az előfizetői azonosító beszerzéséhez lásd [A Cognitive Services kipróbálása](https://azure.microsoft.com/try/cognitive-services/?api=bing-custom-search) témakört.
-- Ha még nem rendelkezik Visual Studio 2017-et vagy újabb verziója van telepítve, letöltheti és használhatja a **ingyenes** [Visual Studio 2019 Community Edition](https://www.visualstudio.com/downloads/).
+- Ha még nem rendelkezik a Visual Studio 2017-es vagy újabb verziójával, letöltheti és használhatja az **ingyenes** [Visual Studio 2019 Community Edition verziót](https://www.visualstudio.com/downloads/).
 
 ## <a name="create-a-custom-search-instance"></a>Egyéni keresési példány létrehozása
 
@@ -127,10 +127,10 @@ A Custom Search üzemeltetett felhasználói felületet biztosít, amelyen megje
 
 Az üzemeltetett felhasználói felület kétféleképpen használható fel.  
 
-- Option 1: A megadott JavaScript-kódrészletet beágyazása az alkalmazásba.
-- Option 2: A megadott, használja a HTML-végpontot.
+- 1\. lehetőség: Integrálja a megadott JavaScript-kódrészletet az alkalmazásba.
+- 2\. lehetőség: Használja a megadott HTML-végpontot.
 
-Ez az oktatóanyag további részében látható **1. lehetőség: JavaScript-kódrészletet**.  
+Az oktatóanyag hátralévő része az 1. **lehetőséget mutatja be: JavaScript-** kódrészlet.  
 
 ## <a name="set-up-your-visual-studio-solution"></a>A Visual Studio-megoldás beállítása
 

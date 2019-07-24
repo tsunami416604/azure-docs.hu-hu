@@ -1,22 +1,24 @@
 ---
-title: 'Oktatóanyag: adatok másolása az Azure Data Box-lemezek |} A Microsoft Docs'
+title: Az Adatmásolás Azure Data Box Diskba való másolásának oktatóanyaga | Microsoft Docs
 description: Ebből az oktatóanyagból megtudhatja, hogyan másolhat adatokat egy Azure Data Box Diskre.
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: tutorial
-ms.date: 04/16/2019
+ms.date: 07/23/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: 70890dcd72cadc55e56410381a94ac071b248a91
-ms.sourcegitcommit: 72f1d1210980d2f75e490f879521bc73d76a17e1
+ms.openlocfilehash: 336cc7dae00d06e38e4be8671f1cb11ed73e5edc
+ms.sourcegitcommit: c556477e031f8f82022a8638ca2aec32e79f6fd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/14/2019
-ms.locfileid: "67147515"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68414640"
 ---
-# <a name="tutorial-copy-data-to-azure-data-box-disk-and-verify"></a>Oktatóanyag: Adatok másolása az Azure Data Box-lemezek és ellenőrzése
+::: zone target="docs"
+
+# <a name="tutorial-copy-data-to-azure-data-box-disk-and-verify"></a>Oktatóanyag: Adatmásolás Azure Data Box Diskre és ellenőrzés
 
 A jelen oktatóanyag ismerteti, hogyan másolhat adatokat a gazdagépről, majd hogyan hozhat létre ellenőrzőösszegeket az adatok integritásának ellenőrzéséhez.
 
@@ -29,57 +31,57 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 ## <a name="prerequisites"></a>Előfeltételek
 
 Mielőtt hozzákezd, győződjön meg az alábbiakról:
-- Befejeződött a [oktatóanyag: Telepítse és konfigurálja az Azure Data Box-lemezek](data-box-disk-deploy-set-up.md).
+- Elvégezte az [oktatóanyagot: Telepítse és konfigurálja a Azure Data Box Disk](data-box-disk-deploy-set-up.md).
 - Lemezeit feloldotta és csatlakoztatta az ügyfélszámítógéphez.
 - Az ügyfélszámítógépnek, amelyet az adatok a lemezekre történő másolásához használ, [támogatott operációs rendszert](data-box-disk-system-requirements.md##supported-operating-systems-for-clients) kell futtatnia.
 - Győződjön meg arról, hogy az adatok választott tárolótípusa egyezik valamelyik [támogatott tárolótípussal](data-box-disk-system-requirements.md#supported-storage-types-for-upload).
-- Felülvizsgálat [felügyelt Azure objektum méretbeli korlátokat a korlátok](data-box-disk-limits.md#azure-object-size-limits).
+- Tekintse át [a felügyelt lemezek korlátozásait az Azure-objektumok méretének korlátaiban](data-box-disk-limits.md#azure-object-size-limits).
 
 
 ## <a name="copy-data-to-disks"></a>Adatok másolása a lemezekre
 
-Mielőtt a lemezeket, másolja az adatokat, tekintse át az alábbiakat:
+Az adatlemezekre történő másolás előtt tekintse át az alábbi szempontokat:
 
 - Arról Önnek kell gondoskodnia, hogy az adatokat a helyes adatformátumnak megfelelő mappákba másolja. A blokkblob-adatokat például másolja a blokkbloboknak fenntartott mappába. Ha az adatok formátuma nem egyezik a megfelelő mappával (annak tárolási típusával), akkor egy későbbi lépés során az Azure-ba történő adatfeltöltés sikertelen lesz.
 - Adatok másolása közben győződjön meg arról, hogy az adatok mérete megfelel az [Azure Storage és a Data Box Disk korlátaival](data-box-disk-limits.md) foglalkozó cikkben ismertetett méretkorlátoknak.
 - Ha a Data Box Disk által éppen feltöltés alatt álló adatokat egyidejűleg egy másik alkalmazás is feltölti a Data Box Disken kívül, ez a feltöltési feladatok meghiúsulásához és az adatok meghibásodásához vezethet.
 
    > [!IMPORTANT]
-   >  Ha a felügyelt lemezek a tárolási célhely egyik rendelés létrehozása során, a következő szakaszban kell alkalmazni.
+   >  Ha a rendelés létrehozása során a felügyelt lemezeket az egyik tárolási célhelyként adta meg, akkor a következő szakasz alkalmazható.
 
-- A megadott nevű egy felügyelt lemezt egy erőforráscsoportba tartozó legfeljebb a precreated mappákat és az összes a Data Box-lemezek között. Ez azt jelenti, hogy egyedi nevük legyen a VHD-k a precreated mappák feltöltött kell. Győződjön meg arról, hogy a megadott név nem egyezik meg a olyan már meglévő felügyelt lemezről egy erőforráscsoportban. Ha virtuális merevlemezek ugyanazokat a neveket, csak egy virtuális merevlemez konvertálva van ilyen nevű felügyelt lemez. A virtuális merevlemezeket lapblobként lesz töltve a az előkészítési tárfiókból.
-- Minden esetben másolja a VHD-k egyik precreated mappát. Másolja a VHD-ken kívüli ezeket a mappákat vagy egy mappában, amelyet Ön hozott létre, ha a virtuális merevlemezeket lapblobként töltődnek fel az Azure Storage-fiókot, és nem felügyelt lemezek.
-- Csak a rögzített méretű virtuális merevlemezeket is feltölthetők a felügyelt lemez gyors létrehozásához. Dinamikus VHD-k különbséglemez VHD-k vagy VHDX-fájlok nem támogatottak.
+- Csak egy felügyelt lemez tartozhat egy adott névvel egy erőforráscsoporthoz az összes előkészített mappában és az összes Data Box Diskon. Ez azt jelenti, hogy az előlétrehozott mappákba feltöltött virtuális merevlemezeknek egyedi névvel kell rendelkezniük. Győződjön meg arról, hogy a megadott név nem egyezik egy erőforráscsoport már meglévő felügyelt lemezével. Ha a VHD-k nevei azonosak, akkor csak egy VHD-t konvertál a rendszer a névvel ellátott felügyelt lemezre. A többi virtuális merevlemezt a rendszer oldal blobként feltölti az átmeneti tárolási fiókba.
+- Mindig másolja a virtuális merevlemezeket az egyik előlétrehozott mappába. Ha a virtuális merevlemezeket ezen mappákon kívül vagy egy Ön által létrehozott mappában másolja, a virtuális merevlemezek az Azure Storage-fiókba lesznek feltöltve, és nem felügyelt lemezként.
+- A felügyelt lemezek létrehozásához csak a rögzített VHD-k tölthetők fel. A dinamikus virtuális merevlemezek, a különbséglemezek VHD-k vagy a VHDX-fájlok nem támogatottak.
 
 
 Az alábbi lépések elvégzésével csatlakoztathatja, majd másolhatja át az adatokat a Data Box Diskre.
 
-1. Tekintse meg a zárolásfeloldás után a meghajtó tartalmát. A lista precreated mappát és a meghajtó belső eltér attól függően, hogy a Data Box-lemezrendelését elhelyezésekor megadott beállítások.
+1. Tekintse meg a zárolásfeloldás után a meghajtó tartalmát. A meghajtón lévő előlétrehozott mappák és almappák listája eltér attól függően, hogy milyen beállítások vannak kiválasztva a Data Box Disk rendelés elhelyezésekor.
 
-    |Kijelölt tár célhelyként  |Tárfiók típusa|Átmeneti tárfiók típusa |Mappák és almappák  |
+    |Kijelölt tároló célhelye  |Tárfiók típusa|Előkészítési tár fióktípus |Mappák és almappák  |
     |---------|---------|---------|------------------|
-    |Tárfiók     |A GPv1- vagy GPv2                 | n/a | Egy BlockBlob <br> PageBlob <br> AzureFile        |
-    |Tárfiók     |BLOB storage-fiók         | n/a | Egy BlockBlob        |
-    |Felügyelt lemezek     |n/a | A GPv1- vagy GPv2         | ManagedDisk<ul> <li>PremiumSSD</li><li>StandardSSD</li><li>StandardHDD</li></ul>        |
-    |Tárfiók <br> Felügyelt lemezek     |A GPv1- vagy GPv2 | A GPv1- vagy GPv2         |Egy BlockBlob <br> PageBlob <br> AzureFile <br> ManagedDisk<ul> <li> PremiumSSD </li><li>StandardSSD</li><li>StandardHDD</li></ul>         |
-    |Tárfiók <br> Felügyelt lemezek    |BLOB storage-fiók | A GPv1- vagy GPv2         |Egy BlockBlob <br> ManagedDisk<ul> <li>PremiumSSD</li><li>StandardSSD</li><li>StandardHDD</li></ul>         |
+    |Tárfiók     |GPv1 vagy GPv2                 | NA | BlockBlob <br> PageBlob <br> AzureFile        |
+    |Tárfiók     |BLOB Storage-fiók         | NA | BlockBlob        |
+    |Felügyelt lemezek     |NA | GPv1 vagy GPv2         | ManagedDisk<ul> <li>PremiumSSD</li><li>StandardSSD</li><li>StandardHDD</li></ul>        |
+    |Tárfiók <br> Felügyelt lemezek     |GPv1 vagy GPv2 | GPv1 vagy GPv2         |BlockBlob <br> PageBlob <br> AzureFile <br> ManagedDisk<ul> <li> PremiumSSD </li><li>StandardSSD</li><li>StandardHDD</li></ul>         |
+    |Tárfiók <br> Felügyelt lemezek    |BLOB Storage-fiók | GPv1 vagy GPv2         |BlockBlob <br> ManagedDisk<ul> <li>PremiumSSD</li><li>StandardSSD</li><li>StandardHDD</li></ul>         |
 
-    Egy példaként szolgáló képernyőképen egy rendelést, ahol a GPv2-tárfiókra van megadva az alább látható:
+    Alább látható egy képernyőkép egy olyan rendelésről, amelyben meg van adva egy GPv2 Storage-fiók:
 
-    ![A meghajtó tartalmát](media/data-box-disk-deploy-copy-data/data-box-disk-content.png)
+    ![A lemezmeghajtó tartalma](media/data-box-disk-deploy-copy-data/data-box-disk-content.png)
  
-2. Másolja az adatokat, amelyek importálni kell a a blokkblobok formájában *BlockBlob* mappát. Hasonlóképpen, másolja az adatokat, például VHD/VHDX-re *PageBlob* mappa és az adatokat a *AzureFile* mappát.
+2. Másolja az importálni kívánt adatfájlokat a *BlockBlob* mappába. Hasonlóképpen másolja az Adatmásolás, például a VHD/VHDX *PageBlob* mappát és az *AzureFile* mappába.
 
     A rendszer a BlockBlob és a PageBlob mappa alatt található minden almappához létrehoz egy tárolót az Azure Storage-fiókban. A BlockBlob és a PageBlob mappa alatt található összes fájl az Azure Storage-fiók alatti alapértelmezett `$root` tárolóba lesz átmásolva. A `$root` tárolóban található összes fájl mindig blokkblobként lesz feltöltve.
 
-   Fájlok másolása egy mappába belül *AzureFile* mappát. Egy olyan almappa belül *AzureFile* mappát hoz létre az írást. Közvetlenül a másolt *AzureFile* mappában fellépő hibák és a feltöltött blokkblobok formájában.
+   Fájlok másolása egy mappába a *AzureFile* mappában. A *AzureFile* mappában található almappa létrehoz egy fájlmegosztás. A közvetlenül a *AzureFile* mappába másolt fájlok sikertelenek lesznek, és a rendszer blokk blobként feltölti őket.
 
     Ha vannak fájlok és mappák a gyökérkönyvtárban, akkor át kell azokat helyeznie egy másik mappába az adatok másolásának megkezdése előtt.
 
     > [!IMPORTANT]
-    > A tárolók, blobok és fájlnevek meg kell felelnie [elnevezési konvenciók Azure](data-box-disk-limits.md#azure-block-blob-page-blob-and-file-naming-conventions). Ha a szabályok nem teljesülnek, az adatok az Azure-ba való feltöltése meghiúsul.
+    > A tárolók, blobok és fájlnevek megfelelnek az [Azure elnevezési konvencióinak](data-box-disk-limits.md#azure-block-blob-page-blob-and-file-naming-conventions). Ha a szabályok nem teljesülnek, az adatok az Azure-ba való feltöltése meghiúsul.
 
-3. Amikor fájlokat másol, győződjön meg arról, hogy a fájlok nem haladhatja meg ~4.7 Tib-ra a blokkblobok, lapblobok esetében ~ 8 Tib-ra és a ~ 1 Tib-ra az Azure Files számára. 
+3. Fájlok másolásakor ügyeljen arra, hogy a fájlok ne lépjék túl a ~ 4,7 TiB-ot a blokk Blobok esetében, ~ 8 TiB a Page Blobok esetében, és ~ 1 TiB a Azure Files. 
 4. Az adatok a Fájlkezelővel és húzással is másolhatók. Használhat bármilyen SMB-kompatibilis fájlmásoló eszközt (pl.: Robocopy) is az adatok másolására. Az alábbi Robocopy-paranccsal több másolási feladat is elindítható:
 
     `Robocopy <source> <destination>  * /MT:64 /E /R:1 /W:1 /NFL /NDL /FFT /Log:c:\RobocopyLog.txt` 
@@ -88,16 +90,16 @@ Az alábbi lépések elvégzésével csatlakoztathatja, majd másolhatja át az 
     
     |Paraméterek/beállítások  |Leírás |
     |--------------------|------------|
-    |source            | Megadja a forráskönyvtár elérési útját.        |
+    |Source            | Megadja a forráskönyvtár elérési útját.        |
     |Cél       | Megadja a célkönyvtár elérési útját.        |
     |/E                  | Átmásolja az alkönyvtárakat, az üres könyvtárakkal együtt. |
     |/MT[:N]             | Többszálas másolatokat hoz létre N szállal, ahol az N egy 1 és 128 közötti egész szám. <br>Az N alapértelmezett értéke 8.        |
-    |/ R: \<N &GT;             | A meghiúsult másolások esetén indított újrapróbálkozások számát határozza meg. Az N alapértelmezett értéke 1 000 000 (egymillió újrapróbálkozás).        |
-    |/W: \<N &GT;             | Az újrapróbálkozások közötti várakozási időt határozza meg másodpercben. Az N alapértelmezett értéke 30 (30 másodperc várakozási idő).        |
+    |R \<N >             | A meghiúsult másolások esetén indított újrapróbálkozások számát határozza meg. Az N alapértelmezett értéke 1 000 000 (egymillió újrapróbálkozás).        |
+    |/W: \<N >             | Az újrapróbálkozások közötti várakozási időt határozza meg másodpercben. Az N alapértelmezett értéke 30 (30 másodperc várakozási idő).        |
     |/NFL                | Azt adja meg, hogy a fájlnevek ne legyenek naplózva.        |
     |/NDL                | Azt adja meg, hogy a könyvtárnevek ne legyenek naplózva.        |
     |/FFT                | FAT-fájlidőket feltételez (két másodperces pontosság).        |
-    |/ Log:\<naplófájl >     | Beírja az állapotkimenetet a naplófájlba (felülírja a már létező naplófájlt).         |
+    |/Log:\<naplófájl >     | Beírja az állapotkimenetet a naplófájlba (felülírja a már létező naplófájlt).         |
 
     Több lemez is használható párhuzamosan, és minden lemezen egyszerre több feladat futtatható.
 
@@ -171,24 +173,24 @@ Az alábbi lépések elvégzésével csatlakoztathatja, majd másolhatja át az 
 
     |    Platform    |    Többnyire kis méretű fájlok < 512 kB                           |    Többnyire közepes méretű fájlok 512 kB – 1 MB                      |    Többnyire nagy méretű fájlok > 1 MB                             |   
     |----------------|--------------------------------------------------------|--------------------------------------------------------|--------------------------------------------------------|
-    |    Data Box Disk        |    4 Robocopy munkamenetek * <br> 16 szál munkamenetenként    |    2 Robocopy munkamenetek * <br> 16 szál munkamenetenként    |    2 Robocopy munkamenetek * <br> 16 szál munkamenetenként    |
+    |    Data Box Disk        |    4 Robocopy-munkamenet * <br> 16 szál munkamenetenként    |    2 Robocopy-munkamenet * <br> 16 szál munkamenetenként    |    2 Robocopy-munkamenet * <br> 16 szál munkamenetenként    |
     
-    **Minden egyes Robocopy munkamenet legfeljebb 150 millió fájl és 7000 könyvtárak.*
+    **Minden Robocopy-munkamenet legfeljebb 7 000 könyvtárat és 150 000 000 fájlt tartalmazhat.*
     
     >[!NOTE]
-    > A fenti javasolt paramétereket a környezetben használt inhouse alapulnak.
+    > A fent javasolt paraméterek a házon belüli tesztelés során használt környezeten alapulnak.
     
     A Robocopy-paranccsal kapcsolatos további információért lásd [a Robocopyt és néhány példát](https://social.technet.microsoft.com/wiki/contents/articles/1073.robocopy-and-a-few-examples.aspx) bemutató témakört.
 
-6. Nyissa meg a célmappát a másolt fájlok megtekintéséhez és ellenőrzéséhez. Ha hibába ütközik a másolási folyamat során, töltse le a naplófájlokat a hibaelhárításhoz. A naplófájlok találhatók a robocopy parancs megadott módon.
+6. Nyissa meg a célmappát a másolt fájlok megtekintéséhez és ellenőrzéséhez. Ha hibába ütközik a másolási folyamat során, töltse le a naplófájlokat a hibaelhárításhoz. A naplófájlok a Robocopy parancsban megadott módon találhatók.
  
 ### <a name="split-and-copy-data-to-disks"></a>Adatok szétosztása és másolása lemezekre
 
 Ez a választható eljárás akkor lehet hasznos, ha több lemezt használ, és nagy adatkészletet kell szétosztania és átmásolnia ezekre a lemezre. A Data Box másolásfelosztó eszköze segítséget nyújt az adatok felosztásában és másolásában Windows rendszerű számítógépen.
 
 >[!IMPORTANT]
-> Data Box Split Copy eszköz adatait is ellenőrzi. Data Box Split másolása eszközzel másolhat adatokat használatakor kihagyhatja a [ellenőrzési lépés](#validate-data).
-> A felügyelt lemezekkel rendelkező split Copy eszköz nem támogatott.
+> Data Box a felosztott másolási eszköz az adatait is ellenőrzi. Ha Data Box felosztott másolási eszközt használ az adatmásoláshoz, akkor kihagyhatja az [ellenőrzési lépést](#validate-data).
+> A felosztott másolási eszköz felügyelt lemezek esetén nem támogatott.
 
 1. Ellenőrizze Windows rendszerű számítógépén, hogy a Data Box másolásfelosztó eszköze le lett-e töltve és ki lett-e csomagolva egy helyi mappába. Ezt az eszközt a windowsos Data Box Disk-eszközkészlet részeként töltötte le.
 2. Nyissa meg a Fájlkezelőt. Jegyezze fel az adatforrásként szolgáló meghajtó nevét és a Data Box Diskhez rendelt meghajtóbetűjeleket. 
@@ -204,26 +206,26 @@ Ez a választható eljárás akkor lehet hasznos, ha több lemezt használ, és 
 
          ![Felosztásos adatmásolás](media/data-box-disk-deploy-copy-data/split-copy-3.png)
  
-4. Nyissa meg azt a mappát, amelybe a szoftver ki lett csomagolva. Keresse meg a `SampleConfig.json` fájlra a mappában. Ez egy írásvédett fájl, amelyet módosíthat és menthet.
+4. Nyissa meg azt a mappát, amelybe a szoftver ki lett csomagolva. Keresse meg `SampleConfig.json` a fájlt a mappában. Ez egy írásvédett fájl, amelyet módosíthat és menthet.
 
    ![Felosztásos adatmásolás](media/data-box-disk-deploy-copy-data/split-copy-4.png)
  
 5. Módosítsa a `SampleConfig.json` fájlt.
  
    - Adja meg a feladat nevét. Ezzel létrehoz egy mappát a Data Box Diskben, amely a későbbiekben tárolóként fog szolgálni a lemezekhez társított Azure Storage-fiókban. A feladat nevének meg kell felelnie az Azure-tárolókra vonatkozó elnevezési konvencióknak. 
-   - Így jegyezze fel az elérési út formátuma a forrás elérési utat adja meg a `SampleConfigFile.json`. 
+   - Adja meg a forrás elérési útját, `SampleConfigFile.json`és jegyezze fel az elérési út formátumát. 
    - Adja meg a céllemezeknek megfelelő meghajtóbetűjeleket. Ekkor elkezdődik a forrásadatok másolása a lemezekre.
-   - Adja meg a naplófájlok elérési útvonalát. Alapértelmezés szerint az aktuális könyvtár érkezik, a `.exe` található.
+   - Adja meg a naplófájlok elérési útvonalát. Alapértelmezés szerint a rendszer az aktuális könyvtárba továbbítja, ahol a `.exe` található.
 
      ![Felosztásos adatmásolás](media/data-box-disk-deploy-copy-data/split-copy-5.png)
 
-6. Ellenőrizze a fájlformátum, lépjen a `JSONlint`. Mentse a fájlt az `ConfigFile.json`. 
+6. A fájl formátumának ellenőrzéséhez nyissa `JSONlint`meg a következőt:. Mentse a fájlt másként `ConfigFile.json`. 
 
      ![Felosztásos adatmásolás](media/data-box-disk-deploy-copy-data/split-copy-6.png)
  
 7. Nyisson meg egy parancssori ablakot. 
 
-8. Futtassa a `DataBoxDiskSplitCopy.exe`. Típus
+8. Futtassa a `DataBoxDiskSplitCopy.exe`parancsot. Type
 
     `DataBoxDiskSplitCopy.exe PrepImport /config:<Your-config-file-name.json>`
 
@@ -239,10 +241,10 @@ Ez a választható eljárás akkor lehet hasznos, ha több lemezt használ, és 
  
 11. Ellenőrizze, hogy az adatok sikeresen szét lettek-e osztva a céllemezekre. 
  
-    ![Adatok másolása felosztása](media/data-box-disk-deploy-copy-data/split-copy-10.png)
-    ![felosztási adatok másolása](media/data-box-disk-deploy-copy-data/split-copy-11.png)
+    ![Felosztott Adatmásolás](media/data-box-disk-deploy-copy-data/split-copy-10.png)
+    ![– az Adatmásolás másolása](media/data-box-disk-deploy-copy-data/split-copy-11.png)
      
-    Ha megvizsgálja a tartalmát `n:` meghajtó további, látni fogja, hogy két almappák jönnek létre a blokkblobok és lapblobok megfelelő formátumú adatokat.
+    Ha továbbra is megvizsgálja a `n:` meghajtó tartalmát, láthatja, hogy két almappa jön létre, amely a blob és az oldal blob-formátumának megfelelő formátumú.
     
      ![Felosztásos adatmásolás](media/data-box-disk-deploy-copy-data/split-copy-12.png)
 
@@ -250,14 +252,14 @@ Ez a választható eljárás akkor lehet hasznos, ha több lemezt használ, és 
 
     `DataBoxDiskSplitCopy.exe PrepImport /config:<configFile.json> /ResumeSession`
 
-Ha hibába ütközik a felosztás másolás eszköz használatával, folytassa a hogyan [Split másolási eszközzel kapcsolatos hibák elhárítása](data-box-disk-troubleshoot-data-copy.md).
+Ha a felosztott másolási eszközzel hibákat lát, lépjen a következő témakörre: a [felosztott másolási eszköz hibáinak elhárítása](data-box-disk-troubleshoot-data-copy.md).
 
-Az adatmásolás befejezése után folytathatja az adatok érvényesítéséhez. Ha a felosztás Fájlmásoló eszközt használta, kihagyhatja az érvényesítést (Split Copy eszköz ellenőrzi, valamint), és folytassa a következő oktatóanyaggal.
+Az Adatmásolás befejeződése után továbbra is ellenőrizheti az adatait. Ha a felosztott másolás eszközt használta, ugorja át az érvényesítést (a másolási eszköz érvényesítése is), és folytassa a következő oktatóanyaggal.
 
 
 ## <a name="validate-data"></a>Az adatok ellenőrzése
 
-Ha nem másol adatokat a felosztás Fájlmásoló eszközt használja, szüksége lesz az adatok érvényesítéséhez. Az adatok ellenőrzéséhez hajtsa végre a következő lépéseket.
+Ha nem az Adatmásolás másolása eszközt használta, akkor ellenőriznie kell az adatait. Az adatok ellenőrzéséhez hajtsa végre a következő lépéseket.
 
 1. Futtassa a `DataBoxDiskValidation.cmd` parancsot az ellenőrzőösszeg-érvényesítéshez a meghajtó *DataBoxDiskImport* mappájában.
     
@@ -268,12 +270,12 @@ Ha nem másol adatokat a felosztás Fájlmásoló eszközt használja, szükség
     ![Ellenőrzőösszeg kimenete](media/data-box-disk-deploy-copy-data/data-box-disk-checksum-output.png)
 
     > [!TIP]
-    > - Állítsa vissza az eszköz két futtatásai között.
-    > - 1\. lehetőséget használja, ha a nagy méretű, kis méretű fájlokat tartalmazó adatkészletet foglalkozó (~ Tudásbázis). Ezt a beállítást csak érvényesíti a fájlokat, ellenőrzőösszeg generációs nagyon hosszú időt vehet igénybe, és a teljesítmény rendkívül lassú lehet.
+    > - Az eszköz alaphelyzetbe állítása két Futtatás között.
+    > - Használja az 1. lehetőséget, ha kis méretű fájlokat (~ Tudásbázis) tartalmazó nagyméretű adathalmazt szeretne kezelni. Ez a beállítás csak a fájlokat ellenőrzi, mivel az ellenőrzőösszeg létrehozása nagyon hosszú időt vehet igénybe, és a teljesítmény nagyon lassú lehet.
 
 3. Több lemez használata esetén futtassa a parancsot minden lemezen.
 
-Ha az érvényesítés közben hibák jelennek meg, tekintse meg [érvényesítési hibák elhárítása](data-box-disk-troubleshoot.md).
+Ha az érvényesítés során hibákat lát, tekintse meg az [érvényesítési hibák elhárítása](data-box-disk-troubleshoot.md)című témakört.
 
 ## <a name="next-steps"></a>További lépések
 
@@ -287,3 +289,43 @@ A következő oktatóanyag azt ismerteti, hogyan küldheti vissza a Data Box Dis
 
 > [!div class="nextstepaction"]
 > [Az Azure Data Box visszaküldése a Microsoftnak](./data-box-disk-deploy-picked-up.md)
+
+::: zone-end
+
+::: zone target="chromeless"
+
+## <a name="copy-data-to-disks"></a>Adatok másolása a lemezekre
+
+A következő lépésekkel csatlakozhat a számítógépről, és másolhatja azokat a Data Box Diskba.
+
+1. Tekintse meg a zárolásfeloldás után a meghajtó tartalmát. A meghajtón lévő előlétrehozott mappák és almappák listája eltér attól függően, hogy milyen beállítások vannak kiválasztva a Data Box Disk rendelés elhelyezésekor.
+2. Másolja az olyan mappákba, amelyek megfelelnek a megfelelő adatformátumnak. Másolja például a strukturálatlan adat mappát a *BlockBlob* mappa, VHD vagy VHDX adat mappájába, hogy *PageBlob* a mappát és a fájlokat a *AzureFile*. Ha az adatformátum nem egyezik a megfelelő mappával (tárolási típus), akkor egy későbbi lépésben az adatok feltöltése az Azure-ba meghiúsul.
+
+    - A rendszer a BlockBlob és a PageBlob mappa alatt található minden almappához létrehoz egy tárolót az Azure Storage-fiókban. A rendszer az *BlockBlob* és a *PageBlob* mappában található összes fájlt átmásolja az Azure Storage-fiókba $root alapértelmezett tárolóba. 
+    - A $root tárolóban lévő fájlokat a rendszer mindig blokkolja blobként feltölti.
+    - Fájlok másolása egy mappába a *AzureFile* mappában. A *AzureFile* mappában található almappa létrehoz egy fájlmegosztás. A közvetlenül a *AzureFile* mappába másolt fájlok sikertelenek lesznek, és a rendszer blokk blobként feltölti őket.
+    - Ha vannak fájlok és mappák a gyökérkönyvtárban, akkor át kell azokat helyeznie egy másik mappába az adatok másolásának megkezdése előtt.
+    - Ha a megrendelés Managed Disks a tárolási célhelyek egyike, tekintse meg a felügyelt [lemezek](data-box-disk-limits.md#managed-disk-naming-conventions)elnevezési konvencióit.
+
+    > [!IMPORTANT]
+    > Minden tárolónak, blobnak és fájlnak meg kell felelnie az [Azure elnevezési konvencióinak](data-box-disk-limits.md#azure-block-blob-page-blob-and-file-naming-conventions) és az [Azure-objektumok méretének](data-box-disk-limits.md#azure-object-size-limits). Ha nem követi ezeket a szabályokat vagy korlátozásokat, az Azure-ba történő adatfeltöltés sikertelen lesz.
+
+3. A fogd és vidd paranccsal a Fájlkezelőben vagy bármely SMB-kompatibilis fájlmásolás eszközzel, például a Robocopy használatával másolhatók az adatai. A következő parancs használatával több másolási feladat is kezdeményezhető:
+
+    ```
+    Robocopy <source> <destination>  * /MT:64 /E /R:1 /W:1 /NFL /NDL /FFT /Log:c:\RobocopyLog.txt
+    ```
+4. Nyissa meg a célmappát a másolt fájlok megtekintéséhez és ellenőrzéséhez. Ha hibába ütközik a másolási folyamat során, töltse le a naplófájlokat a hibaelhárításhoz. A naplófájlok a Robocopy parancsban megadott módon találhatók.
+
+Ha több lemezt használ, használja a [felosztás és másolás](data-box-disk-deploy-copy-data.md#split-and-copy-data-to-disks) választható eljárását, és olyan nagy adatkészletet használ, amelyet az összes lemezre el kell osztani és át kell másolni.
+
+## <a name="validate-data"></a>Az adatok ellenőrzése
+
+Az alábbi lépéseket követve ellenőrizheti adatait.
+
+1. Futtassa a `DataBoxDiskValidation.cmd` parancsot az ellenőrzőösszeg-érvényesítéshez a meghajtó *DataBoxDiskImport* mappájában.
+2. A 2. lehetőség használatával ellenőrizze a fájlokat, és állítson be ellenőrzőösszegeket. Az adatok méretétől függően a lépésben írtak elvégzése hosszabb időt is igénybe vehet. Ha hiba történik az érvényesítés és az ellenőrzőösszeg létrehozása során, a rendszer értesíti, és megjelenít egy, a hibanaplóra mutató hivatkozást.
+
+    Ha az érvényesítés során hibákat lát, tekintse meg az [érvényesítési hibák elhárítása](data-box-disk-troubleshoot.md)című témakört.
+
+::: zone-end

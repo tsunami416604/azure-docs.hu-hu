@@ -7,14 +7,14 @@ author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: conceptual
-ms.date: 07/18/2019
+ms.date: 07/23/2019
 ms.author: diberry
-ms.openlocfilehash: c99e5f9b810499dd67be55d137a2e451a59be0b6
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: 15faacccfa1e0f7dd759f719c02e106918d735bb
+ms.sourcegitcommit: c556477e031f8f82022a8638ca2aec32e79f6fd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68386648"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68414686"
 ---
 # <a name="cognitive-services-and-machine-learning"></a>Cognitive Services és gépi tanulás
 
@@ -54,7 +54,7 @@ A kognitív szolgáltatás egy gépi tanulási megoldás részét képező alkat
 
 ## <a name="how-are-cognitive-services-and-azure-machine-learning-aml-similar"></a>Hogyan működik a Cognitive Services és Azure Machine Learning (pénzmosás)?
 
-Mindkettőnek célja a mesterséges intelligencia (AI) alkalmazása az üzleti műveletek javítására, bár ez a megfelelő ajánlatokban különbözik. 
+Mindkettőnek célja a mesterséges intelligencia (AI) alkalmazása az üzleti műveletek javítására, bár az egyes lehetőségek a megfelelő ajánlatokban különböznek. 
 
 A célközönségek általában különbözőek:
 
@@ -117,6 +117,10 @@ A következő adattípusok kategorizálják az egyes szolgáltatásokat, amelyek
  
 A szolgáltatás minden olyan alkalmazásban használatos, amely REST API (ka) t vagy SDK-hívásokat tesz elérhetővé. Ilyenek például a webhelyek, a robotok, a virtuális vagy a vegyes valóság, az asztali és a mobil alkalmazások. 
 
+## <a name="how-is-cognitive-search-related-to-cognitive-services"></a>Hogyan kapcsolódik a kognitív keresés a Cognitive Serviceshoz?
+
+A [Azure Search](../search/search-what-is-azure-search.md) Cognitive Services használatával biztosítja ezt a szolgáltatást. A Cognitive Services Azure Search az egyes API-kat tartalmazó [beépített képességekkel](../search/cognitive-search-predefined-skills.md) érhető el. A forgatókönyvek számára ingyenes erőforrást használhat, de megtervezheti a nagy mennyiségű [számlázható erőforrások](../search/cognitive-search-attach-cognitive-services.md) létrehozását és csatolását.
+
 ## <a name="how-can-you-use-cognitive-services"></a>Hogyan használhatja a Cognitive Services?
 
 Minden szolgáltatás információt nyújt az adatairól. A szolgáltatások összevonásával olyan megoldásokat használhat, mint például a beszédfelismerés (hang) szöveggé konvertálása, a szöveg fordítása számos nyelvre, majd a lefordított nyelvek használatával választ kaphat a Tudásbázisból. Habár a Cognitive Services használhatók saját intelligens megoldások létrehozására, a modelleket és a fejlesztési folyamatot felgyorsító hagyományos gépi tanulási projektekkel kombinálva is létrehozhatók. 
@@ -125,7 +129,7 @@ Más gépi tanulási eszközökhöz exportált modelleket biztosító Cognitive 
 
 |Cognitive Services-szolgáltatás|Modell adatai|
 |--|--|
-|Custom Vision|Exportálás az Androidhoz készült Tensorflow, CoreML for iOS11, ONNX for Windows ML|
+|[Custom Vision](./custom-vision-service/home.md)|[Exportálás](./Custom-Vision-Service/export-model-python.md) az Androidhoz készült Tensorflow, CoreML for IOS11, ONNX for Windows ml|
 
 
 ## <a name="next-steps"></a>További lépések

@@ -1,7 +1,7 @@
 ---
-title: Videók kérhet az egyéni nézet – Bing egyéni keresés
-titlesuffix: Azure Cognitive Services
-description: Összefoglaló jellegű áttekintést nyújt a videók lekérése a webes egyéni nézetének Bing Custom Search használatával.
+title: Videók letöltése egyéni nézetből – Bing Custom Search
+titleSuffix: Azure Cognitive Services
+description: Magas szintű áttekintés a Bing Custom Search használatáról a webes nézetből származó videók beszerzéséhez.
 services: cognitive-services
 author: swhite-msft
 manager: nitinme
@@ -10,18 +10,18 @@ ms.subservice: bing-custom-search
 ms.topic: conceptual
 ms.date: 09/10/2018
 ms.author: scottwhi
-ms.openlocfilehash: 9ddf89ab0c4c14743206b2baf207ec10fee033b4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 222256036a59c7df302546bbf82648c4d524d43f
+ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66390318"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68405095"
 ---
-# <a name="get-videos-from-your-custom-view"></a>Videók kérhet az egyéni nézet
+# <a name="get-videos-from-your-custom-view"></a>Videók letöltése egyéni nézetből
 
-Bing – egyéni videók keresés lehetővé teszi, hogy egyéni keresés használata során szerzett tapasztalataival videók gazdagabbá teheti. A webes találatokhoz hasonlóan az egyéni keresés a videókeresést is támogatja azokon a webhelyeken, amelyek a keresési példányhoz engedélyezve vannak. A videókat a Bing egyéni videók keresési API-val beolvasása, vagy a tárolt felhasználói felületen funkció. A felhasználói felületi üzemeltetett szolgáltatás használata könnyen használható és a keresési funkciót és röviden rendelés ajánlott. A tárolt felhasználói felület tartalmazza a videók konfigurálásával kapcsolatos további információkért lásd: [konfigurálása a központi felhasználói felület](hosted-ui.md).
+A Bing egyéni videók keresése funkcióval gazdagíthatja egyéni keresési élményét videókon. A webes találatokhoz hasonlóan az egyéni keresés a videókeresést is támogatja azokon a webhelyeken, amelyek a keresési példányhoz engedélyezve vannak. A videók a Bing egyéni videók keresési API-jával vagy az üzemeltetett felhasználói felület funkció segítségével szerezhetők be. A kihelyezett felhasználói felület funkció használata egyszerűen használható, és ajánlott a keresési élmény rövid sorrendben történő futtatásához. Az üzemeltetett felhasználói felület videókra való konfigurálásával kapcsolatos további információkért lásd: [az üzemeltetett felhasználói felületi élmény konfigurálása](hosted-ui.md).
 
-Ha szeretné jobban szabályozhatja a keresési eredményekkel, használhatja az egyéni videók keresési Bing-API. Mivel az API meghívása hasonlít a Bing Video Search API hívásakor a checkout [Bing Video Search](../Bing-Video-Search/search-the-web.md) példák az API-t hívná. Azonban mielőtt ezt megtenné, ismerje meg az a [egyéni videók keresési API-referencia](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-videos-api-v7-reference) tartalmat. A legfontosabb különbségek a következők: a támogatott lekérdezési paraméterek (meg kell adni a customConfig lekérdezési paraméter) és a végpont kéréseket küld.
+Ha nagyobb mértékben szeretné szabályozni a keresési eredmények megjelenítését, használhatja a Bing egyéni videók keresési API-ját. Mivel az API meghívása hasonló a Bing Video Search API meghívásához, az API-t hívó példákhoz a pénztár [Bing Video Search](../Bing-Video-Search/search-the-web.md) . Azonban mielőtt ezt megtenné, ismerkedjen meg az [Egyéni videók keresési API](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-videos-api-v7-reference) -referenciájának tartalmával. A fő különbségek a támogatott lekérdezési paraméterek (a customConfig lekérdezési paramétert is meg kell adni) és a végpontot, amelyhez kéréseket küld.
 
 <!--
 ## Next steps

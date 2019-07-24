@@ -156,8 +156,8 @@
         - name: API betanítása
           href: 'https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime/train'
       href: 'https://go.microsoft.com/fwlink/?linkid=2092179'
-    - name: GYIK
-      href: faqs.md
+    - name: Hibaelhárítás
+      href: troubleshooting.md
     - name: Korlátok
       href: limits.md
     - name: Szószedet

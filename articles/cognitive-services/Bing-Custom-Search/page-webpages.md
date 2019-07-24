@@ -1,7 +1,7 @@
 ---
-title: Lapozza végig elérhető weblapjait – Bing egyéni keresés
-titlesuffix: Azure Cognitive Services
-description: Bemutatja, hogyan végig az összes Bing Custom Search adhatnak vissza a weblapok lapon.
+title: Oldal elérhető weblapokon – Bing Custom Search
+titleSuffix: Azure Cognitive Services
+description: Azt mutatja be, hogyan lehet az összes olyan weboldalon átadni a lapot, amelyet Bing Custom Search visszatérhet.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,18 +10,18 @@ ms.subservice: bing-custom-search
 ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: maheshb
-ms.openlocfilehash: 3c1bf9c6f2c1b38b9cf9729b769c9198da56147a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 13b4cef624c636b8935897338badf3349f27c7f5
+ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66388582"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68405039"
 ---
-# <a name="paging-webpages"></a>Lapozófájl weblapok 
+# <a name="paging-webpages"></a>Lapozás weblapjai 
 
-A Custom Search API hívásakor a Bing eredmények listáját adja vissza. A lista egy teljes száma, amely fontos lehet a lekérdezési eredmények egy részét. Az első rendelkezésre álló válaszokat becsült teljes száma, a válasz-objektum eléréséhez [totalEstimatedMatches](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-search-api-v7-reference#totalestimatedmatches) mező.  
+A Custom Search API meghívásakor a Bing visszaadja az eredmények listáját. A lista a lekérdezéshez esetlegesen szükséges eredmények teljes részhalmaza. A rendelkezésre álló találatok becsült teljes számának beszerzéséhez nyissa meg a válasz objektum [totalEstimatedMatches](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-search-api-v7-reference#totalestimatedmatches) mezőjét.  
   
-A következő példa bemutatja a `totalEstimatedMatches` mező, amely egy webes válasz tartalmazza.  
+Az alábbi példa azt a `totalEstimatedMatches` mezőt mutatja be, amelyet a webes válasz tartalmaz.  
   
 ```  
 {
@@ -34,15 +34,15 @@ A következő példa bemutatja a `totalEstimatedMatches` mező, amely egy webes 
 }  
 ```  
   
-Oldalon keresztül a rendelkezésre álló weboldalakat, használja a [száma](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-search-api-v7-reference#count) és [eltolás](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-search-api-v7-reference#offset) lekérdezési paramétereket.  
+Az elérhető weblapokon keresztüli lapon a [Count](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-search-api-v7-reference#count) és az [eltolás](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-search-api-v7-reference#offset) lekérdezési paramétereket használhatja.  
   
-A `count` paraméter adja meg a válaszban visszaadott eredmények száma. Az eredmények, amelyek a válaszban vonatkozó kérések maximális száma érték az 50. Az alapértelmezett érték 10. A tényleges szám i lehet kisebb, mint a kért.
+A `count` paraméter határozza meg a válaszban visszaadni kívánt eredmények számát. A válaszban megadható eredmények maximális száma 50. Az alapértelmezett érték 10. A ténylegesen leszállított szám a kértnél kevesebb lehet.
 
-A `offset` paraméter adja meg a kihagyandó eredmények száma. A `offset` nulláról induló, és lehet kisebb, mint (`totalEstimatedMatches` - `count`).  
+A `offset` paraméter határozza meg a kihagyni kívánt eredmények számát. A `offset` nulla-alapú, és kisebbnek kell lennie`totalEstimatedMatches`, mint ( - `count`).  
   
-Ha azt szeretné, egy-egy lapon 15 megjelenítésénél, így állíthatja `count` 15-re és `offset` 0 beolvasni az eredmények első oldala. Minden ezt követő laphoz, akkor növelni `offset` 15 (például 15, 30).  
+Ha oldalanként 15 weboldalt szeretne megjeleníteni, a találatok első oldalának `count` lekéréséhez `offset` 15 és 0-ra értéket kell beállítani. Minden további oldalon 15 (például 15, `offset` 30) értékkel növelhető.  
   
-Az alábbiakban látható egy példa, amely a kérelmek 45 eltolástól kezdve 15 weblapok.  
+Az alábbi példa azt mutatja be, hogy 15 weboldalt kér a 45 eltolástól kezdődően.  
   
 ```  
 GET https://api.cognitive.microsoft.com/bingcustomsearch/v7.0/search?q=sailing+dinghies&count=15&offset=45&mkt=en-us&customConfig=123456 HTTP/1.1  
@@ -50,7 +50,7 @@ Ocp-Apim-Subscription-Key: <subscription ID>
 Host: api.cognitive.microsoft.com  
 ```  
 
-Ha az alapértelmezett `count` érték a megvalósítás esetében működik, csak meg kell adnia a `offset` lekérdezési paraméter.  
+Ha az alapértelmezett `count` érték a megvalósításhoz is működik, csak a `offset` lekérdezési paramétert kell megadnia.  
   
 ```  
 GET https://api.cognitive.microsoft.com/bingcustomsearch/v7.0/search?q=sailing+dinghies&offset=45&mkt=en-us&customConfig=123456 HTTP/1.1  
@@ -59,5 +59,5 @@ Host: api.cognitive.microsoft.com
 ```  
 
 > [!NOTE]
-> A `TotalEstimatedAnswers` mező elszámolás kérheti le az aktuális lekérdezés keresési eredmények teljes száma.  Ha `count` és `offset` paraméterek, a `TotalEstimatedAnswers` száma változhat. 
+> A `TotalEstimatedAnswers` mező az aktuális lekérdezéshez lekérhető keresési eredmények teljes számát adja meg.  A beállítás és `count` `offset` a paraméterek beállításakor `TotalEstimatedAnswers` a szám változhat. 
 

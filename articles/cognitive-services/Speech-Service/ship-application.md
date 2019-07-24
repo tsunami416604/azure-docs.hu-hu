@@ -3,20 +3,20 @@ title: Az SDK - beszédszolgáltatások beszédfelismerési-alkalmazások fejles
 titleSuffix: Azure Cognitive Services
 description: Ismerje meg, hogyan hozhat létre alkalmazásokat a beszédfelismerési SDK használatával.
 services: cognitive-services
-author: wolfma61
+author: jhakulin
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 07/05/2019
-ms.author: wolfma
+ms.date: 07/23/2019
+ms.author: jhakulin
 ms.custom: seodec18
-ms.openlocfilehash: 7c698abb133c14f32b60b22acbbccc37a191a02e
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: 8fc27002af4ebef0825b23c806cfedbe7adf9642
+ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67604848"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68404814"
 ---
 # <a name="ship-an-application"></a>Szállítási alkalmazás
 
@@ -28,7 +28,7 @@ A platformtól függően eltérő függőség létezik, az alkalmazás végrehaj
 
 A Cognitive Services beszédfelismerő SDK a Windows 10 és Windows Server 2016 rendszerben lett tesztelve.
 
-A Cognitive Services beszédfelismerő SDK-t igényel a [Microsoft Visual C++ terjeszthető változatát, a Visual Studio 2019](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads) a rendszeren. Letöltheti a legújabb verziójának telepítője a `Microsoft Visual C++ Redistributable for Visual Studio 2019` itt:
+A Cognitive Services Speech SDK-hoz a [Microsoft C++ Visual Studio 2019](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads) -es verziójának terjeszthető változata szükséges a rendszeren. Letöltheti a legújabb verziójának telepítője a `Microsoft Visual C++ Redistributable for Visual Studio 2019` itt:
 
 - [A Win32](https://aka.ms/vs/16/release/vc_redist.x86.exe)
 - [x64](https://aka.ms/vs/16/release/vc_redist.x64.exe)
@@ -45,29 +45,29 @@ A szükséges beszéd SDK-fájlokat is telepíthető az alkalmazás könyvtárá
 | `Microsoft.CognitiveServices.Speech.csharp.dll` | felügyelt üzembe helyezéséhez szükséges
 
 >[!NOTE]
-> A fájl a kiadás 1.3.0 kezdve `Microsoft.CognitiveServices.Speech.csharp.bindings.dll` (tartalmazza a szükséges a korábbi kiadásokban) többé nem szükséges. A funkció most már integrálva van a core SDK-t.
+> A (korábbi kiadásokban szállított) `Microsoft.CognitiveServices.Speech.csharp.bindings.dll` fájl kiadási 1.3.0 kezdve többé nem szükséges. A funkció most már integrálva van az alap SDK-val.
 
 >[!NOTE]
-> A Windows Forms-alkalmazás (.NET Framework) C# projektre, győződjön meg arról, hogy a könyvtárakat a projekthez központi telepítési beállítások szerepelnek. Ez alapján ellenőrizheti `Properties -> Publish Section`. Kattintson a `Application Files` gombra, és keresse meg a megfelelő könyvtárakat a listában görgetve. Ellenőrizze, hogy az értéke `Included`. A Visual Studio közzétett vagy üzembe helyezett projekt esetén a fájl tartalmazza.
+> A Windows Forms-alkalmazás (.NET-keretrendszer C# ) projekt esetében ellenőrizze, hogy a könyvtárak szerepelnek-e a projekt központi telepítési beállításai között. Ezt a következő szakaszban `Properties -> Publish Section`tekintheti meg:. Kattintson a `Application Files` gombra, és keresse meg a megfelelő könyvtárakat a legördülő listából. Győződjön meg arról, hogy `Included`a érték a következőre van beállítva:. A Visual Studio tartalmazni fogja a fájlt a projekt közzétételekor vagy telepítésekor.
 
 ## <a name="linux"></a>Linux
 
-A beszédfelismerés SDK jelenleg támogatja a Debian 9, Ubuntu 16.04 és Ubuntu 18.04 disztribúciókat.
+A Speech SDK jelenleg az Ubuntu 16,04, az Ubuntu 18,04 és a Debian 9 disztribúciókat támogatja.
 Egy natív alkalmazást, a beszéd SDK-könyvtár szállításra való szüksége `libMicrosoft.CognitiveServices.Speech.core.so`.
 Jelölje ki, amely megfelel az alkalmazás verziója (x86, x64). A Linux verziójától függően is szüksége lehet a következő függőségeket tartalmaznak:
 
 * A megosztott szalagtárakkal GNU C-függvénytár (beleértve a POSIX szálak programozási könyvtár `libpthreads`)
-* Az OpenSSL kódtár (`libssl.so.1.0.0` vagy `libssl.so.1.0.2`)
+* Az OpenSSL-könyvtár`libssl.so.1.0.0` ( `libssl.so.1.0.2`vagy)
 * A megosztott szalagtár ALSA alkalmazásokhoz (`libasound.so.2`)
 
-Ubuntu rendszeren a GNU C-függvénytárak már alapértelmezés szerint kell telepíteni. Az utolsó három is telepíthetők az alábbi parancsokkal:
+Ubuntu rendszeren a GNU C-kódtárakat már alapértelmezés szerint telepíteni kell. Az utolsó három is telepíthetők az alábbi parancsokkal:
 
 ```sh
 sudo apt-get update
 sudo apt-get install libssl1.0.0 libasound2
 ```
 
-A Debian 9-on az ilyen csomagok telepítéséhez:
+A Debian 9 rendszeren telepítse ezeket a csomagokat:
 
 ```sh
 sudo apt-get update

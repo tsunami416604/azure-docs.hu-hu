@@ -1,6 +1,6 @@
 ---
 title: 'Gyors útmutató: Bing Entity Search SDK, Python'
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: A Bing Entity Search SDK konzolalkalmazás beállítása.
 services: cognitive-services
 author: aahill
@@ -10,12 +10,12 @@ ms.subservice: bing-entity-search
 ms.topic: quickstart
 ms.date: 07/15/2019
 ms.author: aahi
-ms.openlocfilehash: 99bf0c155a1cd211a9cdc41d4184be716244d035
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: 9574abefc9747a0718b4d995f4efa01388aee336
+ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68358913"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68404927"
 ---
 # <a name="quickstart-bing-entity-search-sdk-with-python"></a>Gyors útmutató: Bing Entity Search SDK és Python
 

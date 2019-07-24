@@ -1,6 +1,6 @@
 ---
-title: 'Gyors útmutató: Keresési lekérdezések a Bing Autosuggest REST API és a Ruby-javaslat'
-titlesuffix: Azure Cognitive Services
+title: 'Gyors útmutató: A Bing Autosuggest REST API és a Ruby által javasolt keresési lekérdezések'
+titleSuffix: Azure Cognitive Services
 description: Információk és kódminták segítségével ismerkedhet meg a Bing Autosuggest API használatának első lépéseivel.
 services: cognitive-services
 author: aahill
@@ -10,27 +10,27 @@ ms.subservice: bing-autosuggest
 ms.topic: quickstart
 ms.date: 02/20/2019
 ms.author: aahi
-ms.openlocfilehash: 56ad71d9a746f61e724c1f3b5c5c6be0a3318452
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.openlocfilehash: 3797e8b0d200bcb7f010afbf77f57cfc5cf6b5d1
+ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66390374"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68405206"
 ---
-# <a name="quickstart-suggest-search-queries-with-the-bing-autosuggest-rest-api-and-ruby"></a>Gyors útmutató: Keresési lekérdezések a Bing Autosuggest REST API és a Ruby-javaslat
+# <a name="quickstart-suggest-search-queries-with-the-bing-autosuggest-rest-api-and-ruby"></a>Gyors útmutató: A Bing Autosuggest REST API és a Ruby által javasolt keresési lekérdezések
 
-Ez a rövid útmutató elindításához, így a Bing Autosuggest API és a JSON-válasz első meghívja használja. Ez egyszerű Ruby-alkalmazás egy részleges keresési lekérdezést küld az API-t, és keresések javaslatokat ad vissza. Bár ez az alkalmazás Ruby nyelven lett íródott, az API egy RESTful-webszolgáltatás, azaz kompatibilis a legtöbb programnyelvvel.
+Ezzel a rövid útmutatóval megkezdheti a Bing Autosuggest API hívások kezdeményezését és a JSON-válasz beszerzését. Ez az egyszerű Ruby-alkalmazás részleges keresési lekérdezést küld az API-nak, és javaslatokat ad a keresésekhez. Bár ez az alkalmazás Ruby nyelven lett íródott, az API egy RESTful-webszolgáltatás, azaz kompatibilis a legtöbb programnyelvvel.
 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* [Ruby 2.4](https://www.ruby-lang.org/en/downloads/) vagy újabb.
+* [Ruby 2,4](https://www.ruby-lang.org/en/downloads/) vagy újabb.
 
 [!INCLUDE [cognitive-services-bing-news-search-signup-requirements](../../../../includes/cognitive-services-bing-autosuggest-signup-requirements.md)]
 
 ## <a name="create-a-new-application"></a>Új alkalmazás létrehozása
 
-1. Hozzon létre egy új Ruby-fájlt a kedvenc integrált Fejlesztőkörnyezetével vagy szerkesztőjével. Adja hozzá az alábbi követelményeknek:
+1. Hozzon létre egy új Ruby-fájlt a kedvenc IDE vagy szerkesztőben. Adja hozzá a következő követelményeket:
 
     ```ruby
     require 'net/https'
@@ -38,7 +38,7 @@ Ez a rövid útmutató elindításához, így a Bing Autosuggest API és a JSON-
     require 'json'
     ```
 
-2. Változók létrehozása az API-gazdát és elérési útja, [kód piaci](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v7-reference#market-codes), részleges keresési lekérdezést.
+2. Hozzon létre változókat az API-gazdagép és elérési út, a [piaci kód](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v7-reference#market-codes), a részleges keresési lekérdezés számára.
 
     ```ruby
     subscriptionKey = 'enter your key here'
@@ -48,23 +48,23 @@ Ez a rövid útmutató elindításához, így a Bing Autosuggest API és a JSON-
     query = 'sail'
     ```
 
-3. Hozzon létre egy paraméterek karakterláncot a piaci kódot hozzáfűzésével a `?mkt=` paraméterhez, és a lekérdezés hozzáfűzése a `&q=` paraméter. Ezután hozhatnak létre a kérelem URI-t az API-gazdát, elérési út és a paraméterek karakterlánc kombinálásával.
+3. Hozzon létre egy Parameters karakterláncot a piaci kód `?mkt=` paraméterhez való hozzáfűzésével, és a lekérdezés hozzáfűzésével a `&q=` paraméterhez. Ezután hozza létre a kérelem URI-JÁT az API-állomás, az elérési út és a Parameters karakterlánc kombinálásával.
 
     ```ruby
     params = '?mkt=' + mkt + '&q=' + query
     uri = URI (host + path + params)
     ```
 
-## <a name="create-and-send-an-api-request"></a>Hozzon létre, és a egy API-kérelem küldése
+## <a name="create-and-send-an-api-request"></a>API-kérelem létrehozása és elküldése
 
-1. Az URI-azonosítójú létre, és adja hozzá az előfizetési kulcs, a `Ocp-Apim-Subscription-Key` fejléc.
+1. Hozzon létre egy kérelmet az URI-val, és adja hozzá az `Ocp-Apim-Subscription-Key` előfizetési kulcsot a fejléchez.
     
     ```ruby
     request = Net::HTTP::Get.new(uri)
     request['Ocp-Apim-Subscription-Key'] = subscriptionKey
     ```
 
-2. A kérelem elküldéséhez, és a válasz tárolása.
+2. Küldje el a kérést, és tárolja a választ.
     
     ```ruby
     response = Net::HTTP.start(uri.host, uri.port, :use_ssl => uri.scheme == 'https') do |http|
@@ -72,13 +72,13 @@ Ez a rövid útmutató elindításához, így a Bing Autosuggest API és a JSON-
     end
     ```
 
-3. Nyomtassa ki a JSON-választ.
+3. A JSON-válasz nyomtatása.
     
     ```ruby
     puts JSON::pretty_generate (JSON (response.body))
     ```
 
-## <a name="example-json-response"></a>Példa JSON-válasz
+## <a name="example-json-response"></a>Példa JSON-válaszra
 
 A rendszer JSON formátumban ad vissza egy sikeres választ a következő példában látható módon:
 
