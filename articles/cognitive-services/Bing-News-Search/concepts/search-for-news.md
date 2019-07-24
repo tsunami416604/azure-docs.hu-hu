@@ -1,7 +1,7 @@
 ---
-title: Hírkeresés a Bing News Search API
-titlesuffix: Azure Cognitive Services
-description: Ismerje meg, hogyan küldhet a keresési lekérdezések általános híreket, Népszerű-témakörök és hírek.
+title: Hírek keresése a Bing News Search API
+titleSuffix: Azure Cognitive Services
+description: Megtudhatja, hogyan küldhet keresési lekérdezéseket az általános hírek, a Kiemelt témakörök és a szalagcímek számára.
 services: cognitive-services
 author: swhite-msft
 manager: nitinme
@@ -10,26 +10,26 @@ ms.subservice: bing-news-search
 ms.topic: overview
 ms.date: 06/19/2019
 ms.author: scottwhi
-ms.openlocfilehash: da1dd68b8e155e121f26f5599207691877fbf0ca
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: b70cf50bb33ca7962116586a347c508b15abcd0c
+ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67274164"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68423878"
 ---
-# <a name="search-for-news-with-the-bing-news-search-api"></a>Hírkeresés a Bing News Search API
+# <a name="search-for-news-with-the-bing-news-search-api"></a>Hírek keresése a Bing News Search API
 
-A Bing Image Search API megkönnyíti a Bing cognitive news keresési képességek integrálása az alkalmazásokba.
+A Bing Image Search API megkönnyíti a Bing kognitív Hírek keresési funkcióinak integrálását az alkalmazásokba.
 
-Bár a Bing News Search API elsősorban talál, és adja vissza a kapcsolódó hírek, számos funkciót biztosít a intelligens és összpontosítás hírek lekéréséhez a weben.
+Noha a Bing News Search API elsődlegesen megkeresi és visszaadja a kapcsolódó híreket, számos funkciót kínál az intelligens és a célzott híreket a weben.
 
-## <a name="suggest-and-use-search-terms"></a>Javasoljuk, és használja a keresési feltételek
+## <a name="suggest-and-use-search-terms"></a>Javaslatok és kifejezések használata
 
 Ha biztosít egy olyan keresőmezőt, ahol a felhasználók megadhatják a keresőkifejezést, a [Bing Autosuggest API](../../bing-autosuggest/get-suggested-search-terms.md) használatával kényelmesebbé teheti a felhasználói élményt. Az API javasolt lekérdezési sztringeket ad vissza a részleges keresőkifejezések alapján, miközben a felhasználó gépel.
 
 Miután a felhasználó megadja a keresőkifejezést, kódolja azt URL-címként a [q](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#query) lekérdezési paraméter beállítása előtt. Ha például a felhasználó a *sailing dinghies* (kis vitorlások) kifejezésre keres, állítsa a `q` beállítást `sailing+dinghies` vagy `sailing%20dinghies` értékre.
 
-## <a name="get-general-news"></a>Általános hírek
+## <a name="get-general-news"></a>Általános hírek beszerzése
 
 A felhasználó keresőkifejezéséhez kapcsolódó, az interneten megtalálható általános hírek lekéréséhez küldje el a következő GET kérést:
 
@@ -51,7 +51,7 @@ Ha egy konkrét tartományban található híreket szeretne lekérni, használja
 GET https://api.cognitive.microsoft.com/bing/v7.0/news/search?q=sailing+dinghies+site:contososailing.com&mkt=en-us HTTP/1.1
 ```
 
-A következő JSON-minta bemutatja az előző lekérdezést a választ. Részeként a [használati és megjelenítési követelményeinek](../useanddisplayrequirements.md) a Bing search API-k esetében meg kell jelenítenie egyes hír a válaszban megadott sorrendben. Ha a cikk fürtözött cikkeket, jeleznie kell azt, hogy a kapcsolódó cikkek létezik, és megjeleníti őket a kérésre.
+A következő JSON-minta az előző lekérdezésre adott választ jeleníti meg. A Bing Search API-k [használati és megjelenítési követelményeinek](../useanddisplayrequirements.md) részeként az egyes híreket a válaszban megadott sorrendben kell megjeleníteni. Ha a cikk fürtözött cikkekkel rendelkezik, akkor jeleznie kell, hogy a kapcsolódó cikkek léteznek, és kérelem alapján jelenítik meg őket.
 
 ```json
 {
@@ -105,9 +105,9 @@ A lista minden [cikke](https://docs.microsoft.com/rest/api/cognitiveservices-bin
 
 Ha a Bing meg tudja határozni a cikk kategóriáját, a cikk tartalmazza a `category` mezőt.
 
-## <a name="get-todays-top-news"></a>Napjaink felső hírek
+## <a name="get-todays-top-news"></a>A mai legfontosabb hírek beszerzése
 
-Megkaphatja a mai híreket, is küldhet a kérésben általános hírek mint korábban, eközben a `q` adott Orientation paraméter.
+A legfrissebb hírek beszerzéséhez ugyanezt az általános híreket is elküldheti az előzőekben leírtak szerint `q` , miközben a paramétert nem lehet törölni.
 
 ```http
 GET https://api.cognitive.microsoft.com/bing/v7.0/news/search?q=&mkt=en-us HTTP/1.1
@@ -119,9 +119,9 @@ X-MSEdge-ClientID: <blobFromPriorResponseGoesHere>
 Host: api.cognitive.microsoft.com
 ```
 
-Híreket első válasz megegyezik szinte beolvasása hírek általános esetében. A `news` válasz azonban nem tartalmazza a `totalEstimatedMatches` mezőt, mivel a találatok száma meg van határozva. A legfrissebb hírek cikkeinek száma eltérő lehet a hírciklustól függően. Ügyeljen arra, hogy a `provider` mezőt, a cikk attribútum.
+A legfontosabb hírek beszerzésére adott válasz majdnem ugyanaz, mint az általános hírek beszerzése. A `news` válasz azonban nem tartalmazza a `totalEstimatedMatches` mezőt, mivel a találatok száma meg van határozva. A legfrissebb hírek cikkeinek száma eltérő lehet a hírciklustól függően. Ügyeljen arra, hogy a `provider` mezőt a cikk attribútumára használja.
 
-## <a name="get-news-by-category"></a>Beolvasása Hírek kategória szerint
+## <a name="get-news-by-category"></a>Hírek beolvasása kategóriánként
 
 A hírek kategóriák szerinti (például a legfrissebb, sporttal vagy szórakozással kapcsolatos cikkek) lekéréséhez küldje el a Bingnek a következő GET kérést:
 
@@ -139,7 +139,7 @@ A [category](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bi
 
 A hírek kategóriák szerinti lekérésére adott válasz majdnem ugyanolyan, mint az általános hírek lekérésénél. A cikkek azonban mind a megadott kategóriába tartoznak.
 
-## <a name="get-headline-news"></a>Beolvasása hírek
+## <a name="get-headline-news"></a>Headline Hírek beolvasása
 
 A fő hírek az összes hírkategóriából való lekéréséhez küldje el a Bingnek a következő GET kérést:
 
@@ -161,7 +161,7 @@ Alapértelmezés szerint a válasz legfeljebb 12 vezércikket tartalmaz. A vissz
 
 A válasz a fürtöket egy cikknek veszi. Mivel egy fürtbe számos cikk tartozhat, a válasz kategóriánként 12-nél több vezércikket és négynél több nem vezércikket is tartalmazhat.
 
-## <a name="get-trending-news"></a>Népszerű hírek
+## <a name="get-trending-news"></a>Trendek Hírek beolvasása
 
 A közösségi hálózatokon népszerű hírtémakörök lekéréséhez küldje el a Bingnek a következő GET kérést:
 
@@ -264,4 +264,4 @@ Ha egyéb cikkek is kapcsolódnak egy hírhez, a hír tartalmazhatja a [clustere
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Hogyan lapozza végig a Hírkeresési Bing-eredmények](../paging-news.md)
+> [Lapok átBing News Search eredményeinek megjelenítése](../paging-news.md)

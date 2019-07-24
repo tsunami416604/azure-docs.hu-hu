@@ -1,7 +1,7 @@
 ---
-title: 'Gyors útmutató: Képkeresés – Bing lemezkép keresése a Javához készült SDK'
-description: Ebből a rövid útmutatóból megtudhatja, hogyan hajthatja végre első képkeresését a Bing Image Search SDK használatával, amely az API burkolójaként szolgál, és ugyanazokkal a funkciókkal rendelkezik. Ez az egyszerű Java-alkalmazás elküld egy képkeresési lekérdezést, elemzi a JSON-választ, és megjeleníti az első visszaadott kép URL-címét.
+title: 'Gyors útmutató: Képek keresése – Bing Image Search Javához készült SDK'
 titleSuffix: Azure Cognitive Services
+description: Ebből a rövid útmutatóból megtudhatja, hogyan hajthatja végre első képkeresését a Bing Image Search SDK használatával, amely az API burkolójaként szolgál, és ugyanazokkal a funkciókkal rendelkezik. Ez az egyszerű Java-alkalmazás elküld egy képkeresési lekérdezést, elemzi a JSON-választ, és megjeleníti az első visszaadott kép URL-címét.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,14 +11,14 @@ ms.topic: quickstart
 ms.date: 02/12/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 991eae9a83325118caaea5c7e3fdb64c6caa1f16
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.openlocfilehash: 9b756d097f313179f4cc177a8cbe74419629317b
+ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66386617"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68423960"
 ---
-# <a name="quickstart-search-for-images-with-the-bing-image-search-sdk-for-java"></a>Gyors útmutató: A Bing kép Search SDK a Javához készült rendszerképek keresése
+# <a name="quickstart-search-for-images-with-the-bing-image-search-sdk-for-java"></a>Gyors útmutató: Képek keresése a Javához készült Bing Image Search SDK-val
 
 Ebből a rövid útmutatóból megtudhatja, hogyan hajthatja végre első képkeresését a Bing Image Search SDK használatával, amely az API burkolójaként szolgál, és ugyanazokkal a funkciókkal rendelkezik. Ez az egyszerű Java-alkalmazás elküld egy képkeresési lekérdezést, elemzi a JSON-választ, és megjeleníti az első visszaadott kép URL-címét.
 
@@ -45,7 +45,7 @@ Telepítse a Bing Image Search SDK függőségeit a Maven, a Gradle vagy más f�
 
 ## <a name="create-and-initialize-the-application"></a>Az alkalmazás létrehozása és inicializálása
 
-1. Hozzon létre egy új Java-projektet a kedvenc integrált Fejlesztőkörnyezetével vagy szerkesztőjével, és az osztály implementációját ad hozzá az alábbi importálásokat:
+1. Hozzon létre egy új Java-projektet a kedvenc IDE vagy szerkesztőben, és adja hozzá a következő importálásokat az osztály implementációhoz:
 
     ```java
     import com.microsoft.azure.cognitiveservices.search.imagesearch.BingImageSearchAPI;
@@ -63,7 +63,7 @@ Telepítse a Bing Image Search SDK függőségeit a Maven, a Gradle vagy más f�
     BingImageSearchAPI client = BingImageSearchManager.authenticate(subscriptionKey);
     ```
 
-## <a name="send-a-search-request-to-the-api"></a>Egy keresési kérelmet küld az API-hoz
+## <a name="send-a-search-request-to-the-api"></a>Keresési kérelem küldése az API-nak
 
 1. A `bingImages().search()` használatával küldjön el egy HTTP-kérést a keresési lekérdezéssel. A választ mentse `ImagesModel` néven.
 
@@ -77,7 +77,7 @@ Telepítse a Bing Image Search SDK függőségeit a Maven, a Gradle vagy más f�
 ## <a name="parse-and-view-the-result"></a>Az eredmények elemzése és megjelenítése
 
 Elemezze a válaszban visszaadott képtalálatokat.
-A válasz tartalmazza a keresési eredmények, ha az első eredmény tárolja, és nyomtassa ki a részleteket, például a Miniatűr URL-cím, az eredeti URL-CÍMÉT, teljes számával együtt adja vissza a lemezképeket.  
+Ha a válasz keresési eredményeket tartalmaz, tárolja az első eredményt, és nyomtassa ki a részleteket, például egy miniatűr URL-címet, az eredeti URL-címet, valamint a visszaadott lemezképek teljes számát.  
 
 ```java
 if (imageResults != null && imageResults.value().size() > 0) {

@@ -1,7 +1,7 @@
 ---
-title: 'Gyors útmutató: Képkeresés – Bing kép Search SDK számáraC#'
-description: Ebből a rövid útmutatóból megtudhatja, hogyan hajthatja végre első képkeresését a Bing Image Search SDK használatával, amely az API burkolójaként szolgál, és ugyanazokkal a funkciókkal rendelkezik. Ez az egyszerű C#-alkalmazás elküld egy képkeresési lekérdezést, elemzi a JSON-választ, és megjeleníti az első visszaadott kép URL-címét.
+title: 'Gyors útmutató: Képek keresése – Bing Image Search SDK a következőhöz:C#'
 titleSuffix: Azure Cognitive Services
+description: Ebből a rövid útmutatóból megtudhatja, hogyan hajthatja végre első képkeresését a Bing Image Search SDK használatával, amely az API burkolójaként szolgál, és ugyanazokkal a funkciókkal rendelkezik. Ez az egyszerű C#-alkalmazás elküld egy képkeresési lekérdezést, elemzi a JSON-választ, és megjeleníti az első visszaadott kép URL-címét.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,24 +11,24 @@ ms.topic: quickstart
 ms.date: 03/04/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 0a50ca8dfda1e51cdc27728975e40dcbf8ce6dbd
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.openlocfilehash: b45fbf551d17de499b5019e22a4b7174653d9eff
+ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66384213"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68423855"
 ---
-# <a name="quickstart-search-for-images-with-the-bing-image-search-sdk-for-c"></a>Gyors útmutató: Képkeresés a Bing-lemezkép keresési készült SDK-valC#
+# <a name="quickstart-search-for-images-with-the-bing-image-search-sdk-for-c"></a>Gyors útmutató: Képek keresése a Bing Image Search SDK-valC#
 
 Ebből a rövid útmutatóból megtudhatja, hogyan hajthatja végre első képkeresését a Bing Image Search SDK használatával, amely az API burkolójaként szolgál, és ugyanazokkal a funkciókkal rendelkezik. Ez az egyszerű C#-alkalmazás elküld egy képkeresési lekérdezést, elemzi a JSON-választ, és megjeleníti az első visszaadott kép URL-címét.
 
 A minta forráskódja további hibakezeléssel és megjegyzésekkel együtt elérhető a [GitHubon](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/BingSearchv7/BingImageSearch).
 
 ## <a name="prerequisites"></a>Előfeltételek
-* Bármely kiadása [Visual Studio 2017-es vagy újabb](https://visualstudio.microsoft.com/vs/whatsnew/).
+* A [Visual Studio 2017 vagy újabb](https://visualstudio.microsoft.com/vs/whatsnew/)verziójának bármely kiadása.
 * A [Cognitive Image Search NuGet-csomag](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Search.ImageSearch/1.2.0).
 
-A Visual Studióban a kép a Bing Search SDK telepítéséhez használja a **NuGet-csomagok kezelése** parancsát **Megoldáskezelőben**.
+Ha a Visual Studióban szeretné telepíteni a Bing Image Search SDK-t, használja az **NuGet-csomagok kezelése** lehetőséget a **megoldáskezelő**.
 
 [!INCLUDE [cognitive-services-bing-image-search-signup-requirements](../../../includes/cognitive-services-bing-image-search-signup-requirements.md)]
 

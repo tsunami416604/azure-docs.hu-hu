@@ -1,7 +1,7 @@
 ---
-title: 'Gyors útmutató: Végezzen keresést a C# – a Bing Web Search REST API'
-titlesuffix: Azure Cognitive Services
-description: Ez a rövid útmutató segítségével egy kérelmet küld a Bing News Search REST API Java használatával, és a egy JSON-választ kap.
+title: 'Gyors útmutató: Webes keresés végrehajtása a C# -Bing Web Search REST API'
+titleSuffix: Azure Cognitive Services
+description: Ezzel a rövid útmutatóval kérést küldhet a Bing News Search REST API Javával, és JSON-választ kap.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,20 +11,20 @@ ms.topic: quickstart
 ms.date: 6/18/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 351bc71046df1bdd677d8c64411b6ae09dfc1ef1
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: 414287b4a279ac76abf62d3721a51627380a8668
+ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67206124"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68423758"
 ---
-# <a name="quickstart-perform-a-news-search-using-java-and-the-bing-news-search-rest-api"></a>Gyors útmutató: Hajtsa végre a hírkeresési, Java és a Bing News Search REST API használatával
+# <a name="quickstart-perform-a-news-search-using-java-and-the-bing-news-search-rest-api"></a>Gyors útmutató: Hírek keresése a Java és a Bing News Search használatával REST API
 
-Ez a rövid útmutató segítségével a Bing News Search API az első hívását, és tekintse meg a JSON-választ. Az egyszerű Java-alkalmazás news search lekérdezést küld az API-t, és a válasz megjeleníti.
+Ezzel a rövid útmutatóval elvégezheti az első hívását a Bing News Search API, és megtekintheti a JSON-választ. Ez az egyszerű Java-alkalmazás egy Hírek keresési lekérdezést küld az API-nak, és megjeleníti a választ.
 
 Bár ez az alkalmazás Java nyelven lett íródott, az API egy RESTful-webszolgáltatás, azaz kompatibilis a legtöbb programnyelvvel.
 
-Az ehhez a mintához forráskódja elérhető [a Githubon](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/java/Search/BingNewsSearchv7.java) 
+A minta forráskódja elérhető [a githubon](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/java/Search/BingNewsSearchv7.java) 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -52,7 +52,7 @@ Lásd még: [a Cognitive Services díjszabás – keresési Bing-API](https://az
     import com.google.gson.JsonParser;
     ```
 
-2. Hozzon létre egy új osztályt, a változók a API-végpont, az előfizetési kulcs és a keresési kifejezést.
+2. Hozzon létre egy új osztályt az API-végpont, az előfizetési kulcs és a keresési kifejezés változók használatával.
 
     ```java
     public static SearchResults SearchNews (String searchQuery) throws Exception {
@@ -64,7 +64,7 @@ Lásd még: [a Cognitive Services díjszabás – keresési Bing-API](https://az
     }
     ```
 
-## <a name="construct-the-search-request-and-receive-a-json-response"></a>Hozza létre a keresési kérelmet, és a egy JSON-választ kap
+## <a name="construct-the-search-request-and-receive-a-json-response"></a>A keresési kérelem létrehozása és JSON-válasz fogadása
 
 1. Az előző lépés változóit használva formázza a keresési URL-címet az API-kérelemhez. Ne feledje, hogy a keresési kifejezésnek URL-kódolásúnak kell lennie, mielőtt a kérelemhez hozzáfűzné azt.
 
@@ -77,7 +77,7 @@ Lásd még: [a Cognitive Services díjszabás – keresési Bing-API](https://az
     }
     ```
 
-2. A JSON-válasz fogadása a Bing News Search API, és hozhat létre az eredményobjektum.
+2. Fogadja a JSON-választ a Bing News Search APIból, és hozza létre az eredmény objektumot.
 
     ```java
     // receive JSON body
@@ -89,7 +89,7 @@ Lásd még: [a Cognitive Services díjszabás – keresési Bing-API](https://az
 
 ## <a name="process-the-json-response"></a>A JSON-válasz feldolgozása
 
-1. A Bing-kapcsolódó HTTP-fejlécek JSON-törzse, egymástól, majd zárja be a streamet, és adja vissza az API-válasz.
+1. Válassza el a Binggel kapcsolatos HTTP-fejléceket a JSON-törzstől, majd a stream bezárásával és az API-válasz visszaadásával.
     ```java
     // extract Bing-related HTTP headers
     Map<String, List<String>> headers = connection.getHeaderFields();
@@ -103,7 +103,7 @@ Lásd még: [a Cognitive Services díjszabás – keresési Bing-API](https://az
     return results;
     ```
 
-2. Elemezheti és reserialize JSON metódus létrehozása
+2. Metódus létrehozása a JSON elemzéséhez és újraszerializálásához
     ```java
     // pretty-printer for JSON; uses GSON parser to parse and re-serialize
     public static String prettify(String json_text) {
@@ -114,7 +114,7 @@ Lásd még: [a Cognitive Services díjszabás – keresési Bing-API](https://az
     }
     ```
 
-3. A fő metódus az alkalmazás a keresési metódus meghívására, és megjeleníti az eredményeket.
+3. Az alkalmazás fő metódusában hívja meg a keresési módszert, és jelenítse meg az eredményeket.
     ```csharp
    public static void main (String[] args) {
        System.out.println("Searching the Web for: " + searchTerm);

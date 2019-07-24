@@ -356,7 +356,7 @@
     - name: Vállalati biztonság
       items:
         - name: Áttekintés
-          href: ../domain-joined/apache-domain-joined-introduction.md
+          href: ../domain-joined/hdinsight-security-overview.md
         - name: Vállalati szintű biztonság megtervezése
           href: ../domain-joined/apache-domain-joined-architecture.md
         - name: Vállalati biztonság konfigurálása a HDInsightban

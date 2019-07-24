@@ -1,7 +1,7 @@
 ---
 title: Kérelmek küldése a Bing Spell Check API-nak
-titlesuffix: Azure Cognitive Services
-description: További tudnivalók a Bing helyesírás-ellenőrzési mód, beállítások és az API-hoz kapcsolódó egyéb információkat.
+titleSuffix: Azure Cognitive Services
+description: Ismerje meg az API-val kapcsolatos Bing Spell Check módokat, beállításokat és egyéb információkat.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: bing-spell-check
 ms.topic: overview
 ms.date: 06/27/2019
 ms.author: aahi
-ms.openlocfilehash: 2b33c27e7af603c73bf7b7c6188bd9aef5ebc669
-ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
+ms.openlocfilehash: ef5d812b1e55713f30928582d9aa9e61bba7c7a6
+ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67542720"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68423545"
 ---
 # <a name="sending-requests-to-the-bing-spell-check-api"></a>Kérelmek küldése a Bing Spell Check API-nak
 
@@ -27,11 +27,11 @@ https://api.cognitive.microsoft.com/bing/v7.0/spellcheck
   
 A kérelemnek a HTTPS protokollt kell használnia.
 
-Javasoljuk, hogy minden kérelem egy kiszolgálóról induljon. Az azonosítónak egy ügyfélalkalmazás részeként való terjesztése több lehetőséget ad arra, hogy rosszindulatú külső felek hozzáférjenek az azonosítóhoz. A kiszolgáló is egyetlen frissítési pontot biztosít az API-t későbbi verzióiban.
+Javasoljuk, hogy minden kérelem egy kiszolgálóról induljon. Az azonosítónak egy ügyfélalkalmazás részeként való terjesztése több lehetőséget ad arra, hogy rosszindulatú külső felek hozzáférjenek az azonosítóhoz. A kiszolgálók egyetlen frissítési pontot is biztosítanak az API jövőbeli verzióihoz.
 
 A kérelemnek tartalmaznia kell a [text](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v5-reference#text) lekérdezési paramétert, amely az ellenőrzendő szöveges karakterláncot adja meg. Nem kötelező, de a kérelemnek érdemes tartalmaznia egy [mkt](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v5-reference#mkt) lekérdezési paramétert is, amely azonosítja a piacot, ahonnan eredményeket szeretnénk kapni. Az opcionális lekérdezési paraméterek (például `mode`) listáját lásd a [lekérdezési paramétereket](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v5-reference#query-parameters) ismertető cikkben. Minden lekérdezési paraméter értékének URL-kódolásúnak kell lennie.  
   
-A kérelemnek tartalmaznia kell az [Ocp-Apim-Subscription-Key](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v5-reference#subscriptionkey) fejlécet. Bár nem kötelező, csak Ön javasoljuk, hogy a következő fejléceket is megadhat. Ezek a fejlécek a Bing Spell Check API visszatérési pontosabb eredmények érdekében:  
+A kérelemnek tartalmaznia kell az [Ocp-Apim-Subscription-Key](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v5-reference#subscriptionkey) fejlécet. Bár nem kötelező, javasoljuk, hogy a következő fejléceket is megadja. Ezek a fejlécek segítenek a Bing Spell Check APInak pontosabb eredményeket adni:  
   
 -   [User-Agent](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v5-reference#useragent)  
 -   [X-MSEdge-ClientID](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v5-reference#clientid)  
@@ -40,15 +40,15 @@ A kérelemnek tartalmaznia kell az [Ocp-Apim-Subscription-Key](https://docs.micr
 
 Az összes kérelem- és válaszfejléc listáját lásd a [Fejlécek](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v5-reference#headers) cikkben.
 
-Hívja meg a Bing Spell Check API a JavaScript használatával, ha a böngésző beépített biztonsági funkciókat előfordulhat, hogy megakadályozzák a fér hozzá a következő fejlécek értékeit.
+A Bing Spell Check API JavaScript használatával való meghívásakor a böngésző beépített biztonsági funkciói megakadályozhatják a fejlécek értékének elérését.
 
-A probléma megoldásához, győződjön meg, a Bing Spell Check API-kérelem CORS proxyn keresztül. Ilyen proxyn válasza rendelkezik egy `Access-Control-Expose-Headers` fejléc adott listáinak válaszfejlécek, és elérhetővé teszi azokat a JavaScript.
+A probléma megoldásához a Bing Spell Check API kérelmet CORS-proxyn keresztül teheti meg. Az ilyen proxytól kapott válasz egy `Access-Control-Expose-Headers` fejlécet tartalmaz, amely a válasz fejléceit, és elérhetővé teszi őket a JavaScript számára.
 
-Egyszerű, hogy a CORS-proxy telepítéséhez a [oktatóanyag alkalmazása](../tutorials/spellcheck.md) eléréséhez a választható ügyféltanúsítvány-fejléceket. Első lépésként [telepítse a Node.js-t](https://nodejs.org/en/download/), ha még nem tette meg. Majd adja meg a következő parancsot a parancssorba.
+Egyszerűen telepíthet egy CORS-proxyt, amely lehetővé teszi, hogy az [oktatóanyag-alkalmazás](../tutorials/spellcheck.md) hozzáférhessen a választható ügyfél-fejlécekhez. Első lépésként [telepítse a Node.js-t](https://nodejs.org/en/download/), ha még nem tette meg. Ezután írja be a következő parancsot a parancssorba.
 
     npm install -g cors-proxy-server
 
-Ezután módosítsa a Bing Spell Check API-végpont lévő a HTML-fájl:
+Ezután módosítsa a HTML-fájlban lévő Bing Spell Check API végpontot a következőre:
 
     http://localhost:9090/https://api.cognitive.microsoft.com/bing/v7.0/spellcheck/
 
@@ -56,9 +56,9 @@ Végül indítsa el a CORS-proxyt a következő paranccsal:
 
     cors-proxy-server
 
-Ne zárja be a parancsablakot, amíg használja az oktatóalkalmazást; az ablak bezárása leállítja a proxyt. A bővíthető HTTP-fejlécek szakaszban alább a keresési eredmények között, most már megtekintheti a `X-MSEdge-ClientID` fejléc (többek között), és ellenőrizze, hogy minden egyes kérés esetében azonos.
+Ne zárja be a parancsablakot, amíg használja az oktatóalkalmazást; az ablak bezárása leállítja a proxyt. A keresési eredmények alatt a kibontható HTTP-fejlécek szakaszban láthatja a `X-MSEdge-ClientID` fejlécet (többek között), és ellenőrizheti, hogy minden kérelem esetében azonos-e.
 
-## <a name="example-api-request"></a>A példa API-kérelem
+## <a name="example-api-request"></a>Példa API-kérelemre
 
 Az alábbiakban egy olyan kérelem látható, amely az összes javasolt lekérdezési paramétert és fejlécet tartalmazza. Ha első alkalommal hívja meg bármelyik Bing API-t, ne használja az ügyfél-azonosító fejlécét. Csak akkor használja az ügyfél-azonosítót, ha korábban már meghívott egy Bing API-t, és visszakapott egy ügyfél-azonosítót a felhasználó és az eszköz kombinációjához. 
   
@@ -123,5 +123,5 @@ BingAPIs-Market: en-US
 
 ## <a name="next-steps"></a>További lépések
 
-- [Mi az a Bing Spell Check API?](../overview.md)
+- [Mi a Bing Spell Check API?](../overview.md)
 - [A Bing Spell Check API 7-es verzió referenciája](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v7-reference)

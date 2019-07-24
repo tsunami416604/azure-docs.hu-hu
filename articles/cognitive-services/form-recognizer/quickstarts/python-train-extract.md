@@ -1,7 +1,7 @@
 ---
-title: 'Gyors útmutató: A modell betanítását, és bontsa ki az űrlapadatok REST API a Pythonnal – űrlap felismerő használatával'
+title: 'Gyors útmutató: Modell betanítása és űrlap-adatok kinyerése a REST API és a Python-Form felismerő használatával'
 titleSuffix: Azure Cognitive Services
-description: Ebben a rövid útmutatóban, segítségével, az űrlap felismerő REST API a Pythonnal betanítja a modellt, és az adatok kinyerése az űrlapok.
+description: Ebben a rövid útmutatóban az űrlap-felismerő REST API a Python használatával betaníthatja a modelleket, és kinyerheti az adatok űrlapokból való kinyerését.
 author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
@@ -9,38 +9,38 @@ ms.subservice: forms-recognizer
 ms.topic: quickstart
 ms.date: 07/03/2019
 ms.author: pafarley
-ms.openlocfilehash: 63b58e5e667d03d7808973b0783ed98ab4cb5447
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: 53409769fc85422f4c34a14d22e7c44b2d5cce35
+ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67605871"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68443852"
 ---
-# <a name="quickstart-train-a-form-recognizer-model-and-extract-form-data-by-using-the-rest-api-with-python"></a>Gyors útmutató: Űrlap felismerő modellek betanítása és űrlap adatokat nyerhet ki a REST API a pythonnal
+# <a name="quickstart-train-a-form-recognizer-model-and-extract-form-data-by-using-the-rest-api-with-python"></a>Gyors útmutató: Űrlap-felismerő modell betanítása és űrlapadatok kinyerése a REST API és a Python használatával
 
-Ebben a rövid útmutatóban a betanítását és pontozását űrlapok kulcs-érték párok és táblák használni az Azure űrlap felismerő REST API a Pythonnal.
+Ebben a rövid útmutatóban az Azure űrlap-felismerő REST API a Python használatával betanítási és pontszám-űrlapok segítségével kinyerheti a kulcs-érték párokat és táblákat.
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
 ## <a name="prerequisites"></a>Előfeltételek
-Rövid útmutató elvégzéséhez kell rendelkeznie:
-- Az űrlap felismerő korlátozott hozzáférésű előzetes verzióra való hozzáférést. Töltse ki az előzetes verzió eléréséhez, és küldje el a [űrlap felismerő hozzáférési kérelem](https://aka.ms/FormRecognizerRequestAccess) űrlap.
-- [Python](https://www.python.org/downloads/) telepítve (Ha a minta futtatása helyben szeretné).
-- Az azonos típusú legalább öt űrlapok készlete. Ezeket az adatokat a modell betanításához használandó. Használhat egy [minta adatkészlet](https://go.microsoft.com/fwlink/?linkid=2090451) ebben a rövid útmutatóban. Töltse fel az adatok Azure Blob Storage-fiók gyökérmappájában.
+A rövid útmutató elvégzéséhez a következőket kell tennie:
+- Hozzáférés az űrlap-felismerő korlátozott hozzáférésének előzetes verziójához. Az előzetes verzió eléréséhez töltse ki és küldje el az [űrlap-felismerő hozzáférési kérelmének](https://aka.ms/FormRecognizerRequestAccess) űrlapját.
+- [Python](https://www.python.org/downloads/) telepítve (ha helyileg szeretné futtatni a mintát).
+- Legalább öt azonos típusú űrlap. Ezeket az adattípusokat fogja használni a modell betanításához. Ehhez a rövid útmutatóhoz [minta](https://go.microsoft.com/fwlink/?linkid=2090451) adatkészletet is használhat. Töltse fel az adatok egy blob Storage-tároló gyökerébe egy Azure Storage-fiókban.
 
-## <a name="create-a-form-recognizer-resource"></a>Űrlap felismerő erőforrás létrehozása
+## <a name="create-a-form-recognizer-resource"></a>Űrlap-felismerő erőforrás létrehozása
 
 [!INCLUDE [create resource](../includes/create-resource.md)]
 
-## <a name="train-a-form-recognizer-model"></a>Egy űrlap felismerő modell betanítása
+## <a name="train-a-form-recognizer-model"></a>Űrlap-felismerő modell betanítása
 
-Először is kell egy Azure Storage blob-tárolóban a betanítási adatok egy készletét. Rendelkeznie kell legalább öt kitöltött űrlapok (PDF-dokumentumok és/vagy képek) az azonos típusú/struktúra a fő bemeneti adatként. Vagy használhat egy egyetlen üres képernyő két ki vannak töltve űrlap. Az űrlap üres fájl nevének kell a keresőkifejezésben "üres". Lásd: [hozhat létre egy egyéni modell a tanítási adathalmazt](../build-training-data-set.md) tippeket és bármik lehetnek a betanítási adatok lehetőségei.
+Először is szüksége lesz egy Azure Storage blob-tárolóban található betanítási adathalmazra. Legalább öt kitöltött űrlapot (PDF-dokumentumot és/vagy képet) kell tartalmaznia a fő bemeneti adatokhoz hasonló típusú vagy szerkezetű űrlapokon. Vagy egyetlen üres űrlapot is használhat két kitöltött űrlap használatával. Az üres űrlap fájlnevének tartalmaznia kell a "Empty" szót. A betanítási adataival kapcsolatos tippekért és lehetőségekért tekintse meg az [Egyéni modell képzési](../build-training-data-set.md) adatkészletének létrehozása című témakört.
 
-Az Azure blob-tárolóban a dokumentumok űrlap felismerő modell betanításához hívja meg a **betanításához** API a következő python-kód futtatásával. A kód futtatásához előtt ezeket a módosításokat:
+Ha az Azure Blob-tárolóban található dokumentumokkal szeretne betanítani egy űrlap-felismerő modellt, a következő Python-kód futtatásával hívja meg a **Train** API-t. A kód futtatása előtt végezze el a következő módosításokat:
 
-1. Cserélje le `<Endpoint>` az űrlap felismerő erőforrás Azure-régióban, ahol beszerzett az előfizetési kulcsok a végpont URL-címet.
-1. Cserélje le `<Subscription key>` az előfizetés az előző lépésben kimásolt kulccsal.
-1. Cserélje le `<SAS URL>` együtt az Azure Blob storage-tároló megosztott hozzáférési jogosultságkód (SAS) URL-címe. Az SAS URL-cím lekérése, nyissa meg a Microsoft Azure Storage Explorert, kattintson a jobb gombbal a tároló és válassza ki a **Get közös hozzáférésű jogosultságkód**. Győződjön meg arról, a **olvasási** és **lista** engedélyeket a rendszer ellenőrzi a, és kattintson a **létrehozás**. Ezután másolja az értéket a **URL-cím** szakaszban. Az űrlap kell rendelkeznie: `https://<storage account>.blob.core.windows.net/<container name>?<SAS value>`.
+1. A `<Endpoint>` helyére írja be az űrlap-felismerő erőforrás végpontjának URL-címét abban az Azure-régióban, ahol az előfizetési kulcsokat beszerezte.
+1. Cserélje `<Subscription key>` le az elemet az előző lépésből másolt előfizetési kulcsra.
+1. Cserélje `<SAS URL>` le az-t az Azure Blob Storage-tároló megosztott hozzáférési aláírása (SAS) URL-címére. Az SAS URL-cím lekéréséhez nyissa meg a Microsoft Azure Storage Explorer, kattintson a jobb gombbal a tárolóra, majd válassza a **közös hozzáférésű aláírás**beolvasása elemet. Győződjön meg arról, hogy az **olvasási** és a **listázási** engedély be van jelölve, majd kattintson a **Létrehozás**gombra. Ezután másolja az értéket az **URL** szakaszban. A formátumnak a következőket kell `https://<storage account>.blob.core.windows.net/<container name>?<SAS value>`tartalmaznia:.
 
     ```python
     ########### Python Form Recognizer Train #############
@@ -63,11 +63,11 @@ Az Azure blob-tárolóban a dokumentumok űrlap felismerő modell betanításáh
     except Exception as e:
         print(str(e))
     ```
-1. Mentse a kódot egy fájlban .py kiterjesztéssel. Ha például *űrlap felismerni train.py*.
+1. Mentse a kódot egy. file kiterjesztésű fájlba. Például: *Form-Recognize-Train.py*.
 1. Nyisson meg egy parancsablakot.
 1. A parancssoron használja a `python` parancsot a minta futtatására. Például: `python form-recognize-train.py`.
 
-Kapni fog egy `200 (Success)` válaszban a JSON-kimenetet:
+Ehhez a JSON- `200 (Success)` kimenethez választ fog kapni:
 
 ```json
 {
@@ -108,16 +108,16 @@ Kapni fog egy `200 (Success)` válaszban a JSON-kimenetet:
 }
 ```
 
-Megjegyzés: a `"modelId"` értéket. Szüksége lesz rá a következő lépéseket.
+Jegyezze fel `"modelId"` az értéket. A következő lépésekhez szüksége lesz rá.
   
-## <a name="extract-key-value-pairs-and-tables-from-forms"></a>Kulcs-érték párok és táblák kinyerése űrlapok
+## <a name="extract-key-value-pairs-and-tables-from-forms"></a>Kulcs-érték párok és táblák kinyerése űrlapokból
 
-Ezután fog dokumentum elemzése és bontsa ki a kulcs-érték párok és táblák belőle. Hívja a **modell – elemzése** a következő API-t, hogy a Python-szkript futtatásával. Futtassa a parancsot, mielőtt a módosítások:
+Ezután elemezni fog egy dokumentumot, és Kinyeri a kulcs-érték párokat és táblákat. A következő Python-szkript futtatásával hívja meg a **modell-elemzés API-** t. A parancs futtatása előtt végezze el a következő módosításokat:
 
-1. Cserélje le `<Endpoint>` az űrlap felismerő előfizetési kulccsal végzett beszerzett a végponttal. Az űrlap felismerő erőforráson található **áttekintése** fülre.
-1. Cserélje le `<path to your form>` az elérési útját az űrlap (például C:\temp\file.pdf).
-1. Cserélje le `<modelID>` a modell az előző szakaszban kapott azonosítóval.
-1. Cserélje le `<file type>` az a fájl típusa. Támogatott típusok: `application/pdf`, `image/jpeg`, `image/png`.
+1. Cserélje `<Endpoint>` le az helyére az űrlapot felismerő előfizetési kulccsal beszerzett végpontot. Az űrlap-felismerő erőforrás- **Áttekintés** lapon találhatja meg.
+1. Cserélje `<path to your form>` le az értékét az űrlap fájljának elérési útjára (például C:\temp\file.pdf).
+1. Cserélje `<modelID>` le az t az előző szakaszban kapott modell-azonosítóra.
+1. Cserélje `<file type>` le a értéket a fájl típusára. Támogatott típusok: `application/pdf`, `image/jpeg`, `image/png`.
 1. A `<subscription key>` helyére írja be az előfizetési kulcsot.
 
     ```python
@@ -145,13 +145,13 @@ Ezután fog dokumentum elemzése és bontsa ki a kulcs-érték párok és tábl�
         print(str(e))
     ```
 
-1. Mentse a kódot egy fájlban .py kiterjesztéssel. Ha például *űrlap felismerni analyze.py*.
+1. Mentse a kódot egy. file kiterjesztésű fájlba. Például: *Form-Recognize-Analyze.py*.
 1. Nyisson meg egy parancsablakot.
 1. A parancssoron használja a `python` parancsot a minta futtatására. Például: `python form-recognize-analyze.py`.
 
 ### <a name="examine-the-response"></a>A válasz vizsgálata
 
-A sikeres válasz JSON-fájlban. Azt jelöli, a kulcs-érték párok és az űrlap kinyert táblázatok:
+A rendszer sikeres választ ad vissza a JSON-ban. Az űrlapból kinyert kulcs-érték párokat és táblákat jelöli:
 
 ```bash
 {
@@ -476,7 +476,7 @@ A sikeres válasz JSON-fájlban. Azt jelöli, a kulcs-érték párok és az űrl
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben a rövid útmutatóban használt az űrlap felismerő REST API a Pythonnal a modell betanítását, majd futtassa azt egy mintaforgatókönyv. Ezután megismerheti az űrlap felismerő API alaposabban is körüljárják referencia dokumentációjában talál.
+Ebben a rövid útmutatóban az űrlap-felismerő REST APIt használta a Python használatával a modell betanításához és egy minta forgatókönyvben való futtatásához. Következő lépésként tekintse meg a dokumentációt az űrlap-felismerő API részletesebb megismeréséhez.
 
 > [!div class="nextstepaction"]
-> [REST API dokumentációja](https://aka.ms/form-recognizer/api)
+> [REST API dokumentáció](https://aka.ms/form-recognizer/api)

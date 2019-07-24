@@ -4,12 +4,12 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 09/04/2018
 ms.author: glenga
-ms.openlocfilehash: c20f86fe7fdcfc7ecc940923a8c98fa1fbf4cf65
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: a2994602f857c2c8ff9f935b649a8d3e94c10dca
+ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67178895"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68444101"
 ---
 ## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 
@@ -21,4 +21,5 @@ Ha nem a Cloud Shellt használja, először be kell jelentkeznie az `az login` h
 ```azurecli-interactive
 az group create --name myResourceGroup --location westeurope
 ```
-Az erőforráscsoportot és az erőforrásokat általában a közelében található régiókban hozhatja létre. Az összes Azure App Service-csomagot támogató hely megtekintéséhez futtassa az [az appservice list-locations](/cli/azure/appservice#az-appservice-list-locations) parancsot.
+
+Az erőforráscsoportot és az erőforrásokat általában egy közeli [régióban](https://azure.microsoft.com/global-infrastructure/regions/) hozza létre. 

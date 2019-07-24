@@ -5,6 +5,7 @@
     - name: A Spatial Anchors ismertetése
       href: overview.md
 - name: Gyors útmutatók
+  expanded: true
   items:
     - name: Unity-alkalmazás létrehozása
       href: unity-overview.yml

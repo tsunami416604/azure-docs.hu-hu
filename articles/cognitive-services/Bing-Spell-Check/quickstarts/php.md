@@ -1,7 +1,7 @@
 ---
-title: 'Gyors útmutató: Helyesírás-ellenőrzés a Bing Spell Check REST API és a PHP'
-titlesuffix: Azure Cognitive Services
-description: Ismerkedés a Bing Spell Check API segítségével ellenőrizze a helyesírást és a nyelvtant.
+title: 'Gyors útmutató: Helyesírás ellenőrzése a Bing Spell Check REST API és a PHP-vel'
+titleSuffix: Azure Cognitive Services
+description: A Bing Spell Check API használatának első lépései a helyesírás és a nyelvtan ellenőrzéséhez.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,16 +10,16 @@ ms.subservice: bing-spell-check
 ms.topic: quickstart
 ms.date: 02/20/2019
 ms.author: aahi
-ms.openlocfilehash: 38ec5fcc57482928024f8a5a1cd07100db3085e6
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.openlocfilehash: 15a550321c28703c7bb4d8155ffeb7791eafedc6
+ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66390144"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68423486"
 ---
-# <a name="quickstart-check-spelling-with-the-bing-spell-check-rest-api-and-php"></a>Gyors útmutató: Helyesírás-ellenőrzés a Bing Spell Check REST API és a PHP
+# <a name="quickstart-check-spelling-with-the-bing-spell-check-rest-api-and-php"></a>Gyors útmutató: Helyesírás ellenőrzése a Bing Spell Check REST API és a PHP-vel
 
-Ez a rövid útmutató segítségével, a Bing Spell Check REST API első hívását. Az egyszerű Python-alkalmazás egy kérést küld az API-t, és javasolt javítások listáját adja vissza. Bár ez az alkalmazás Python nyelven lett íródott, az API egy RESTful-webszolgáltatás, azaz kompatibilis a legtöbb programnyelvvel.
+Ezzel a rövid útmutatóval megteheti az első hívást a Bing Spell Check REST API. Ez az egyszerű Python-alkalmazás kérelmet küld az API-nak, és a javasolt javítások listáját adja vissza. Bár ez az alkalmazás Python nyelven lett íródott, az API egy RESTful-webszolgáltatás, azaz kompatibilis a legtöbb programnyelvvel.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -134,7 +134,7 @@ A rendszer JSON formátumban ad vissza egy sikeres választ a következő péld�
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Hozzon létre egy egyoldalas webalkalmazást](../tutorials/spellcheck.md)
+> [Egyoldalas webes alkalmazás létrehozása](../tutorials/spellcheck.md)
 
-- [Mi az a Bing Spell Check API?](../overview.md)
+- [Mi a Bing Spell Check API?](../overview.md)
 - [A Bing Spell Check API 7-es verzió referenciája](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v7-reference)

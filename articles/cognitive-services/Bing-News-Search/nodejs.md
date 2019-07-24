@@ -1,7 +1,7 @@
 ---
-title: 'Gyors útmutató: Hajtsa végre a Node.js - Bing News Search REST API egy hírkeresés'
-titlesuffix: Azure Cognitive Services
-description: Ez a rövid útmutató segítségével egy kérelmet küld a Bing News Search REST API a Node.js használata, és a egy JSON-választ kap.
+title: 'Gyors útmutató: Hírek keresése a Node. js-Bing News Search REST API'
+titleSuffix: Azure Cognitive Services
+description: Ezzel a rövid útmutatóval kérelmet küldhet a Bing News Search REST API Node. js használatával, és egy JSON-választ kap.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,14 +11,14 @@ ms.topic: quickstart
 ms.date: 6/18/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 1fb2676fb1513ab4955ffa35c559b2ae36e0efd0
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: 501ae6107232287011388bb67e64a1ae3fe5f7e3
+ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67203312"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68423726"
 ---
-# <a name="quickstart-perform-a-news-search-using-nodejs-and-the-bing-news-search-rest-api"></a>Gyors útmutató: Hajtsa végre a Node.js és a Bing News Search REST API használatával hírkeresés
+# <a name="quickstart-perform-a-news-search-using-nodejs-and-the-bing-news-search-rest-api"></a>Gyors útmutató: Hírek keresése a Node. js és a Bing News Search használatával REST API
 
 Ebből a rövid útmutatóból megtudhatja, hogyan hozhatja létre az első Bing Image Search API-hívását, majd hogyan fogadhatja a JSON-választ. Ez az egyszerű JavaScript-alkalmazás keresési lekérdezést küld az API-nak, majd megjeleníti a nyers adatokat.
 
@@ -30,7 +30,7 @@ A minta forráskódja a [GitHubon](https://github.com/Azure-Samples/cognitive-se
 
 * A [Node.js](https://nodejs.org/en/download/) legújabb verziója.
 
-* A [kérelem JavaScript kódtár](https://github.com/request/request)
+* A [JavaScript-kérelem könyvtára](https://github.com/request/request)
 
 [!INCLUDE [cognitive-services-bing-news-search-signup-requirements](../../../includes/cognitive-services-bing-news-search-signup-requirements.md)]
 
@@ -71,7 +71,7 @@ Lásd még: [a Cognitive Services díjszabás – keresési Bing-API](https://az
         });
         ```
 
-    3. Ha egy **záró** jelző leállítási jelzést kapott, a JSON és a fejlécek tekinthet meg.
+    3. Ha a **végpont** jelzője be van jelezve, a JSON és a fejlécek is megtekinthetők.
 
         ```javascript
         response.on('end', function () {

@@ -1,7 +1,6 @@
 ---
 title: Windows Server biztonsági mentése az Azure-ba
 description: Ez az oktatóanyag részletesen ismerteti a helyszíni Windows Serverek helyreállítási tárba történő biztonsági mentését.
-services: backup
 author: dcurwin
 manager: carmonm
 keywords: windows server biztonsági másolat; windows server biztonsági mentése; biztonsági mentés és vészhelyreállítás
@@ -10,12 +9,12 @@ ms.topic: tutorial
 ms.date: 8/22/2018
 ms.author: dacurwin
 ms.custom: mvc
-ms.openlocfilehash: 907a10314f27428d4d4b867abb71e2046208650b
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: 0a8a4795cf35402ebecbf6838aaeb5f17768aa06
+ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67273959"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68467038"
 ---
 # <a name="back-up-windows-server-to-azure"></a>Windows Server biztonsági mentése az Azure-ba
 
@@ -26,7 +25,7 @@ Az Azure Backuppal megvédheti a Windows Servert a sérülésektől, támadások
 > [!div class="checklist"]
 > * A MARS-ügynök letöltése és beállítása
 > * A kiszolgáló biztonsági mentési időpontjainak és a másolatok megőrzési ütemezésének konfigurálása
-> * Hajtsa végre a az ad hoc biztonsági mentése
+> * Ad hoc biztonsági mentés végrehajtása
 
 
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
@@ -114,7 +113,7 @@ A Microsoft Azure Recovery Services-ügynökkel ütemezheti a Windows Server Azu
 
 4. Kattintson az **Elemek hozzáadása** gombra, és a megnyíló párbeszédpanelen válassza a **Rendszerállapot** lehetőséget, valamint a fájlokat vagy mappákat, amelyekről biztonsági másolatot kíván készíteni. Ezután kattintson az **OK** gombra.
 
-5. Kattintson a **tovább**.
+5. Kattintson a **Tovább** gombra.
 
 6. A **Biztonsági mentési ütemezés megadása (Rendszerállapot)** lapon adja meg a nap vagy a hét azon időpontját, amikor aktiválni kívánja a Rendszerállapot biztonsági mentését, majd kattintson a **Tovább** gombra.
 
@@ -128,7 +127,7 @@ A Microsoft Azure Recovery Services-ügynökkel ütemezheti a Windows Server Azu
 
 11. Miután a varázsló befejezte a biztonsági mentési ütemezés létrehozását, kattintson a **Bezárás** gombra.
 
-## <a name="perform-an-ad-hoc-back-up"></a>Hajtsa végre a az ad hoc biztonsági mentése
+## <a name="perform-an-ad-hoc-back-up"></a>Ad hoc biztonsági mentés végrehajtása
 
 Létrehozta a biztonsági mentési feladatok futtatásának ütemezését. A kiszolgálóról azonban még nem készített biztonsági másolatot. A vészhelyreállítás egyik ajánlott eljárása egy igény szerinti biztonsági mentés végrehajtása, amellyel biztosíthatja a kiszolgáló adatainak rugalmasságát.
 

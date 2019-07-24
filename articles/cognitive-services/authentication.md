@@ -7,14 +7,14 @@ author: erhopf
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: conceptual
-ms.date: 03/01/2019
+ms.date: 07/24/2019
 ms.author: erhopf
-ms.openlocfilehash: 0499b2ef25cc93615a72269bd64af689ebced01d
-ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
+ms.openlocfilehash: b69bd39e97cc97830142c8b1911f1116927643b2
+ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68333585"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68467516"
 ---
 # <a name="authenticate-requests-to-azure-cognitive-services"></a>Kérelmek hitelesítése az Azure Cognitive Services
 
@@ -23,6 +23,7 @@ Az Azure kognitív szolgáltatás minden kérésének tartalmaznia kell egy hite
 * [Hitelesítés egyetlen szolgáltatású előfizetési kulccsal](#authenticate-with-a-single-service-subscription-key)
 * [Hitelesítés több szolgáltatásból álló előfizetési kulccsal](#authenticate-with-a-multi-service-subscription-key)
 * [Hitelesítés jogkivonat használatával](#authenticate-with-an-authentication-token)
+* [Hitelesítés Azure Active Directorysal (HRE)](#authenticate-with-azure-active-directory)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -158,8 +159,10 @@ curl -X POST 'https://api.cognitive.microsofttranslator.com/translate?api-versio
 --data-raw '[{ "text": "How much for the cup of coffee?" }]' | json_pp
 ```
 
+[!INCLUDE [](../../includes/cognitive-services-azure-active-directory-authentication.md)]
+
 ## <a name="see-also"></a>Lásd még
 
 * [Mi a Cognitive Services?](welcome.md)
 * [A Cognitive Services díjszabása](https://azure.microsoft.com/pricing/details/cognitive-services/)
-* [Fiók létrehozása](cognitive-services-apis-create-account.md)
+* [Egyéni altartományok](cognitive-services-custom-subdomains.md)

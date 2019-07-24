@@ -1,7 +1,7 @@
 ---
 title: Mi az a Bing News Search API?
-titlesuffix: Azure Cognitive Services
-description: Ismerje meg, hogyan kereshet a weben aktuális hírek között, beleértve a hírek és témakörök népszerű a Bing News Search API használatával.
+titleSuffix: Azure Cognitive Services
+description: Ebből a témakörből megtudhatja, hogyan használhatja a Bing News Search API a webes keresésre az aktuális főcímek kategóriák között, beleértve a főcímeket és a Kiemelt témákat.
 services: cognitive-services
 author: swhite-msft
 manager: nitinme
@@ -11,49 +11,49 @@ ms.topic: overview
 ms.date: 06/19/2019
 ms.author: scottwhi
 ms.custom: seodec2018
-ms.openlocfilehash: d4d8c35869fbfc13220aba037a97aadd3cea01c2
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: 577ce53b4667928d7eb5a870f57ff7180caaf6f5
+ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67272712"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68423663"
 ---
 # <a name="what-is-the-bing-news-search-api"></a>Mi az a Bing News Search API?
 
-A Bing News Search API megkönnyíti a Bing cognitive news keresési képességek integrálása az alkalmazásokba. Az API-t a hasonló élményt nyújt [Bing hírek](https://www.bing.com/news), ami lehetővé teszi a keresési lekérdezéseket küldenek, és megfelelő hírcikkeket fogadásához.
+A Bing News Search API megkönnyíti a Bing kognitív Hírek keresési funkcióinak integrálását az alkalmazásokba. Az API hasonló élményt nyújt a [Bing hírekhez](https://www.bing.com/news), így lehetővé teszi a keresési lekérdezések küldését és a releváns Hírek fogadását.
 
-Vegye figyelembe, hogy a Bing News Search API hírkeresési eredményeket csak biztosít-e. Használja a [Bing Web Search API](../bing-web-search/search-the-web.md), [Video Search API](../bing-video-search/search-the-web.md) és [Image Search API](../bing-image-search/overview.md) webes tartalmat más típusú.
+Vegye figyelembe, hogy a Bing News Search API csak a Hírek keresési eredményeit jeleníti meg. Használja a [Bing Web Search API](../bing-web-search/search-the-web.md), [Video Search API](../bing-video-search/search-the-web.md) -t és a [Image Search API](../bing-image-search/overview.md) -t más típusú webes tartalomhoz.
 
-## <a name="bing-news-search-api-features"></a>A Bing News Search API-funkciók
+## <a name="bing-news-search-api-features"></a>Bing News Search API funkciók
 
-Bár a Bing News Search API elsősorban talál, és adja vissza a kapcsolódó hírek, számos funkciót biztosít a intelligens és összpontosítás hírek lekéréséhez a weben.
+Noha a Bing News Search API elsődlegesen megkeresi és visszaadja a kapcsolódó híreket, számos funkciót kínál az intelligens és a célzott híreket a weben.
 
 |Funkció  |Leírás  |
 |---------|---------|
-|[Javasolhat, és a keresési feltételek használata](concepts/search-for-news.md#suggest-and-use-search-terms)     | A keresési élmény javításához használatával a [a Bing Autosuggest API](../bing-autosuggest/get-suggested-search-terms.md) a javasolt keresési kifejezéseket, éppen gépelt megjelenítéséhez.         |
-|[Általános hírek](concepts/search-for-news.md#get-general-news)     | Hírek keresése egy keresési lekérdezést küld a Bing News Search API, és visszaállítani híreket cikkek listáját.           |
-|[A mai híreket](concepts/search-for-news.md#get-todays-top-news)      | Szerezze be a legfrissebb híreket a nap minden kategóriák között.       |
-|[Hírek kategória szerint](concepts/search-for-news.md)     | Adott kategóriákból hírek keresése.        | 
-|[Hírek](concepts/search-for-news.md)     | Keresse meg a főcímeket összes kategóriák között.         |
+|[Keresési kifejezések ajánlása és használata](concepts/search-for-news.md#suggest-and-use-search-terms)     | A [Bing AutoSuggest API](../bing-autosuggest/get-suggested-search-terms.md) használatával javíthatja a keresési élményét, ha Begépelte a javasolt keresési kifejezéseket.         |
+|[Általános hírek beszerzése](concepts/search-for-news.md#get-general-news)     | Megkeresheti a híreket úgy, hogy keresési lekérdezést küld a Bing News Search APInak, és lekérdezi a kapcsolódó híreket tartalmazó cikkeket.           |
+|[A mai legfontosabb hírek](concepts/search-for-news.md#get-todays-top-news)      | Tekintse meg az első híreket az egész napra, az összes kategóriába.       |
+|[Hírek kategóriánként](concepts/search-for-news.md)     | Hírek keresése adott kategóriákban.        | 
+|[Headline Hírek](concepts/search-for-news.md)     | Keresse meg az összes kategóriát a legnépszerűbb főcímek között.         |
 
 ## <a name="workflow"></a>Munkafolyamat
 
-A Bing News Search API egy olyan webes RESTful szolgáltatás, így könnyen hívása minden programozási nyelvet, amely HTTP-kérelmeket és JSON elemzése. Használhatja a szolgáltatást vagy a REST API-t, vagy az SDK használatával.
+A Bing News Search API egy REST-alapú webszolgáltatás, így könnyen hívható bármely programozási nyelvről, amely HTTP-kéréseket tesz elérhetővé, és értelmezi a JSON-t. A szolgáltatást a REST API vagy az SDK használatával is használhatja.
 
-1. Hozzon létre egy Cognitive Services API-fiókot a Bing Search APIs a hozzáférést. Ha nem rendelkezik Azure-előfizetéssel, akkor [-fiók létrehozása ingyen](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-news-api).
+1. Hozzon létre egy Cognitive Services API-fiókot, amely hozzáféréssel rendelkezik a Bing Search API-khoz. Ha nem rendelkezik Azure-előfizetéssel, [ingyenes fiókot is létrehozhat](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-news-api).
 
-2. Egy érvényes keresési lekérdezéssel, az API-kérés küldése.
+2. Kérelem küldése az API-nak érvényes keresési lekérdezéssel.
 
 3. Az API válaszának feldolgozásához elemezze a visszaadott JSON-üzenetet.
 
 ## <a name="next-steps"></a>További lépések
 
-Először próbálja meg a [interaktív bemutatót](https://azure.microsoft.com/services/cognitive-services/bing-news-search-api/) a Bing News Search API számára. Ez a bemutató bemutatja, hogyan lehet gyorsan keresési lekérdezés testreszabása és hírek keresése a weben.
+Először próbálja ki a Bing News Search API [interaktív bemutatóját](https://azure.microsoft.com/services/cognitive-services/bing-news-search-api/) . Ez a bemutató bemutatja, hogyan lehet gyorsan testreszabni egy keresési lekérdezést, és híreket keresni a weben.
 
-Gyorsan elsajátíthatja az első API-kérelem, próbálja meg a gyors útmutató: a [REST API](quickstart.md) vagy az egyik a [SDK-k](sdk.md).
+Az első API-kérelem gyors megkezdéséhez próbálkozzon a [REST API](quickstart.md) vagy az [SDK](sdk.md)-k egyikével.
 
 ## <a name="see-also"></a>Lásd még
 
-* A [Bing News Search API 7-es verziója](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference) referenciaszakasz tartalmaz definíciókat és a végpontok, a fejlécek, az API-válaszok és a lekérdezési paraméterek segítségével kérelem lemezkép-alapú keresési eredmények információkat.
+* A [Bing News Search API v7](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference) -hivatkozás szakasza tartalmazza a végpontok, fejlécek, API-válaszok és lekérdezési paraméterek definícióit és információit, amelyeket a képalapú keresési eredmények kérelmezéséhez használhat.
 
 * A [Bing használati és megjelenítési követelményei](./useanddisplayrequirements.md) a Bing Search API-k használatával kapott tartalmak és információk elfogadható használatát határozzák meg.

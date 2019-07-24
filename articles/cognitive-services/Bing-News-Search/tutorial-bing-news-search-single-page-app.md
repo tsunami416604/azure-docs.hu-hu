@@ -1,7 +1,7 @@
 ---
-title: 'Oktatóanyag: Hozzon létre egy egyoldalas webalkalmazást, a Bing News Search API használatával'
-titlesuffix: Azure Cognitive Services
-description: Ebben az oktatóanyagban használatával hozhat létre egy egyoldalas webalkalmazást, amely a keresési lekérdezéseket küldhet a Bing Hírkeresési API, és megjeleníti az eredményeket a képernyőn látható weblapon található.
+title: 'Oktatóanyag: Egyoldalas Webalkalmazás létrehozása a Bing News Search API használatával'
+titleSuffix: Azure Cognitive Services
+description: Ezzel az Oktatóanyaggal létrehozhat egy egyoldalas webalkalmazást, amely képes keresési lekérdezéseket küldeni a Bing News API-nak, és megjeleníti az eredményeket a weboldalon belül.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 07/12/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 10798b471012d53b5820b078b4be7c9c648d3233
-ms.sourcegitcommit: 10251d2a134c37c00f0ec10e0da4a3dffa436fb3
+ms.openlocfilehash: 424fdc9fa0f31b3de664945ff49b119939488fed
+ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/13/2019
-ms.locfileid: "67868359"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68423603"
 ---
 # <a name="tutorial-create-a-single-page-web-app"></a>Oktatóanyag: Egyoldalas webalkalmazás létrehozása
 
@@ -315,7 +315,7 @@ function renderResults(items) {
 ```
 A Bing News Search API legfeljebb négy különböző típusú kapcsolódó eredményt ad vissza, mindegyiket a saját legfelső szintű objektumában. Ezek a következők:
 
-|Kapcsolat típusa|Leírás|
+|Kapcsolat|Leírás|
 |-|-|
 |`pivotSuggestions`|Lekérdezések, amelyek az eredeti keresés egyik lecserélhető szavát egy másikra cserélik. Ha például a „piros virágok” kifejezésre keres, a „piros” egy lecserélhető szó, a „sárga virágok” pedig egy alternatív javaslat.|
 |`queryExpansions`|Lekérdezések, amelyek további kifejezések hozzáadásával szűkítik az eredeti keresést. Ha például a „Microsoft Surface” kifejezésre keres, a lekérdezés egyik lehetséges kibővítése a „Microsoft Surface Pro”.|
@@ -397,7 +397,7 @@ A böngészők biztonsági szabályzatai (CORS) megakadályozhatják, hogy a Jav
 > [!NOTE]
 > Éles webalkalmazásban kiszolgálói oldalról hajtsa végre a kérést. Ellenkező esetben a weboldalnak tartalmaznia kell a Bing Search API-kulcsot, ahol a forrást megtekintők is hozzáférhetnek. Az API előfizetési kulcsával történő összes használatért Ön fizet, még az illetéktelen felek által létrehozott kérésekért is, ezért fontos, hogy a kulcsot ne tegye elérhetővé.
 
-Fejlesztési célokból a Bing Web Search API-kérést egy CORS-proxyn keresztül is végrehajthatja. Ilyen proxyn válasza rendelkezik egy `Access-Control-Expose-Headers` fejlécet, amely lehetővé teszi, hogy a válaszfejlécek, és elérhetővé teszi azokat a JavaScript.
+Fejlesztési célokból a Bing Web Search API-kérést egy CORS-proxyn keresztül is végrehajthatja. Az ilyen proxytól kapott `Access-Control-Expose-Headers` válasz fejléce lehetővé teszi a válaszok fejléceit, és elérhetővé teszi őket a JavaScript számára.
 
 CORS-proxyt könnyedén telepíthet annak érdekében, hogy oktatóalkalmazásunk hozzáférhessen az ügyfél-azonosító fejlécéhez. Első lépésként [telepítse a Node.js-t](https://nodejs.org/en/download/), ha még nem tette meg. Ezután hajtsa végre egy parancsablakban a következő parancsot:
 

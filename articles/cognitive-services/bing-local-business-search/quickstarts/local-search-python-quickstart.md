@@ -1,7 +1,7 @@
 ---
-title: Rövid útmutató – a helyi vállalati keresési Bing-API a Pythonban lekérdezés küldése |} A Microsoft Docs
+title: Rövid útmutató – lekérdezés küldése a Bing helyi üzleti keresési API-nak a Pythonban
 titleSuffix: Azure Cognitive Services
-description: Ez a cikk segítségével Python nyelven a helyi vállalati keresési Bing-API használatának megkezdéséhez.
+description: Ebből a cikkből megkezdheti a Bing helyi üzleti keresési API használatát a Pythonban.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -9,33 +9,33 @@ ms.service: cognitive-services
 ms.topic: quickstart
 ms.date: 11/01/2018
 ms.author: rosh
-ms.openlocfilehash: cfc4bd95214c56dfbe940b7a2785d297f59105a9
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: c6da3c9a169f3b6e5885499d3a7bc5347902782e
+ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67592732"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68423325"
 ---
-# <a name="quickstart-send-a-query-to-the-bing-local-business-search-api-in-python"></a>Gyors útmutató: Egy lekérdezést küld a helyi vállalati keresési Bing-API a Pythonban
+# <a name="quickstart-send-a-query-to-the-bing-local-business-search-api-in-python"></a>Gyors útmutató: Lekérdezés küldése a Bing helyi üzleti keresési API-nak a Pythonban
 
-Ez a rövid útmutató segítségével megkezdheti a kérések küldését a Bing helyi üzleti Search API, azaz az Azure Cognitive Services-szolgáltatás. Bár ez az egyszerű alkalmazás pythonban írt, az API-t olyan kompatibilis HTTP-kérelem indítására és JSON-elemzés minden programozási nyelvet a webes RESTful szolgáltatás.
+Ezzel a rövid útmutatóval megkezdheti a kérések küldését a Bing local Business Search API számára, amely egy Azure kognitív szolgáltatás. Habár ez az egyszerű alkalmazás Pythonban íródott, az API egy REST-alapú webszolgáltatás, amely kompatibilis a HTTP-kérelmeket és a JSON-elemzést lehetővé tevő programozási nyelvekkel.
 
-Ez a példa az alkalmazás helyi érkezett válasz adatait lekérdezi az API-val, a keresési lekérdezés `hotel in Bellevue`.
+Ez a példában szereplő alkalmazás a keresési lekérdezés `hotel in Bellevue`API-ból érkező helyi válaszüzeneteket kéri le.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* [Python](https://www.python.org/) 2.x vagy 3.x
+* [Python](https://www.python.org/) 2. x vagy 3. x
  
-Rendelkeznie kell egy [Cognitive Services API-fiók](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) Bing API-kkal. Az [ingyenes próbaverzió](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api) elegendő ehhez a rövid útmutatóhoz. Az ingyenes próbaverzióra által biztosított hozzáférési kulcs használja.  Lásd még: [a Cognitive Services díjszabás – keresési Bing-API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/).
+A Bing API-kkal [Cognitive Services API](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) -fiókkal kell rendelkeznie. Az [ingyenes próbaverzió](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api) elegendő ehhez a rövid útmutatóhoz. Használja az ingyenes próbaverzió által biztosított hozzáférési kulcsot.  Lásd még: [a Cognitive Services díjszabás – keresési Bing-API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/).
 
 ## <a name="run-the-complete-application"></a>A teljes alkalmazás futtatása
 
-A következő kód lekéri a honosított eredményeket. Implementálására a következő lépésekben kerül sor:
+A következő kód honosított eredményeket kap. Implementálására a következő lépésekben kerül sor:
 1. Deklarálja a változókat a végpont gazdagép és útvonal szerinti megadásához.
-2. Adja meg a lekérdezési paraméter. 
-3. Adja meg a keresési funkció, amely a kérést hoz létre, és hozzáadja az Ocp-Apim-Subscription-Key fejléc.
-4. Állítsa be az Ocp-Apim-Subscription-Key fejléc. 
-5. Hozza létre a kapcsolatot, és küldje el a kérelmet.
+2. A lekérdezési paramétert kell megadni. 
+3. Adja meg a kérelmet létrehozó keresési függvényt, és adja meg a OCP-APIM-Subscription-Key fejlécet.
+4. Állítsa be a OCP-APIM-Subscription-Key fejlécet. 
+5. Hozza meg a kapcsolatokat, és küldje el a kérést.
 6. Megjeleníti a JSON-eredményeket.
 
 Az útmutatóban használt teljes kód a következő:
@@ -67,6 +67,6 @@ print (json.dumps(json.loads(result), indent=4))
 ```
 
 ## <a name="next-steps"></a>További lépések
-- [Helyi vállalati keresési Java rövid útmutató](local-search-java-quickstart.md)
-- [Helyi vállalati keresési C# a rövid útmutató](local-quickstart.md)
-- [Helyi vállalati keresési Node-Quickstart](local-search-node-quickstart.md)
+- [Helyi üzleti keresés – Java rövid útmutató](local-search-java-quickstart.md)
+- [Helyi üzleti keresés C# – rövid útmutató](local-quickstart.md)
+- [Helyi üzleti keresési csomópont rövid útmutatója](local-search-node-quickstart.md)

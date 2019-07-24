@@ -5,6 +5,7 @@
     - name: Az Azure Digital Twins bemutatása
       href: about-digital-twins.md
 - name: Gyors útmutatók
+  expanded: true
   items:
     - name: Szabad szobák keresése
       href: quickstart-view-occupancy-dotnet.md

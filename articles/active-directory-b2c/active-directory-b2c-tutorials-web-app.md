@@ -1,5 +1,5 @@
 ---
-title: Oktatóanyag – egy webes alkalmazásban történő hitelesítés engedélyezése – Azure Active Directory B2C |} A Microsoft Docs
+title: Oktatóanyag – hitelesítés engedélyezése webalkalmazásban – Azure Active Directory B2C | Microsoft Docs
 description: Arra vonatkozó útmutató, hogyan használhatja az Azure Active Directory B2C-t felhasználói bejelentkezés biztosításához egy ASP.NET-es webalkalmazás esetén.
 services: active-directory-b2c
 author: mmacy
@@ -10,88 +10,89 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: 041bcf32035ab6cdc3ee4df06050f75186759f5e
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.openlocfilehash: bcfd1ef02c68de7709cb8642b94f23a6884ea156
+ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67835652"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68464765"
 ---
-# <a name="tutorial-enable-authentication-in-a-web-application-using-azure-active-directory-b2c"></a>Oktatóanyag: Egy webalkalmazás, az Azure Active Directory B2C-hitelesítés engedélyezése
+# <a name="tutorial-enable-authentication-in-a-web-application-using-azure-active-directory-b2c"></a>Oktatóanyag: Hitelesítés engedélyezése webalkalmazásban Azure Active Directory B2C használatával
 
-Ez az oktatóanyag bemutatja, hogyan használhatja az Azure Active Directory (Azure AD) B2C bejelentkeztetéséhez és regisztrálásához egy ASP.NET-alkalmazás a felhasználók. Az Azure AD B2C lehetővé teszi az alkalmazások hitelesítését közösségi hálózati, vállalati fiókok és az Azure Active Directory-fiókok nyílt szabványú protokollokkal.
+Ez az oktatóanyag bemutatja, hogyan használhatja a Azure Active Directory (Azure AD) B2C-t a bejelentkezéshez, és hogyan regisztrálhat felhasználókat egy ASP.NET-webalkalmazásban. Azure AD B2C lehetővé teszi az alkalmazások számára, hogy a nyílt szabványos protokollok használatával hitelesítsék a közösségi fiókokat, a vállalati fiókokat és a Azure Active Directory fiókokat.
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
-> * Frissítse az alkalmazást az Azure AD B2C-vel
-> * A minta az alkalmazás konfigurálása
-> * Iratkozzon fel a felhasználói folyamat használata
+> * Az alkalmazás frissítése Azure AD B2C
+> * A minta beállítása az alkalmazás használatára
+> * Regisztráció a felhasználói folyamat használatával
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- [Felhasználói folyamatok létrehozása](tutorial-create-user-flows.md) ahhoz, hogy az alkalmazás felhasználói élményt.
-- Telepítse [Visual Studio 2019](https://www.visualstudio.com/downloads/) az a **ASP.NET és webfejlesztési** számítási feladatot.
+- [Felhasználói folyamatokat hozhat létre](tutorial-create-user-flows.md) , amelyekkel engedélyezheti az alkalmazás felhasználói élményét.
+- Telepítse a [Visual Studio 2019](https://www.visualstudio.com/downloads/) alkalmazást a **ASP.net és a webes fejlesztési** munkaterheléssel.
 
 ## <a name="update-the-application"></a>Az alkalmazás frissítése
 
-Az oktatóanyagban az Előfeltételek részeként végrehajtott egy webalkalmazás, Azure AD B2C-ben hozzáadott. Ebben az oktatóanyagban a minta való kommunikáció engedélyezése, hogy hozzá kell átirányítási URI-t az alkalmazáshoz az Azure AD B2C-ben.
+Az előfeltételek részeként elvégzett oktatóanyagban egy webalkalmazást adott hozzá Azure AD B2C. Az oktatóanyagban szereplő példával való kommunikáció engedélyezéséhez hozzá kell adnia egy átirányítási URI-t az alkalmazáshoz Azure AD B2C.
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 2. Győződjön meg arról, hogy használja az Azure AD B2C-bérlő kattintva tartalmazó könyvtárba a **címtár és előfizetés-szűrő** a felső menüben, és a könyvtár, amely tartalmazza a bérlő kiválasztása.
-3. Válasszon **minden szolgáltatás** az Azure Portalon, és majd keresse meg és válassza a bal felső sarkában lévő **Azure AD B2C-vel**.
-4. Válassza ki **alkalmazások**, majd válassza ki a *webapp1* alkalmazás.
-5. A **válasz URL-cím**, adjon hozzá `https://localhost:44316`.
+3. Válassza ki az **összes szolgáltatást** a Azure Portal bal felső sarkában, majd keresse meg és válassza ki a **Azure ad B2C**.
+4. Válassza az **alkalmazások**lehetőséget, majd válassza ki a *webapp1* alkalmazást.
+5. A **Válasz URL-cím**területen adja hozzá `https://localhost:44316`a címet.
 6. Kattintson a **Mentés** gombra.
-7. A Tulajdonságok lapon jegyezze fel az Alkalmazásazonosítót, amelyek a webalkalmazás konfigurálásakor fogja használni.
-8. Válassza ki **kulcsok**válassza **kulcs létrehozása**, és válassza ki **mentése**. Jegyezze fel a kulcs, amelyet a webalkalmazás konfigurálásakor fogja használni.
+7. A Tulajdonságok lapon jegyezze fel az alkalmazás AZONOSÍTÓját, amelyet a webalkalmazás konfigurálásakor használni fog.
+8. Válassza a **kulcsok**lehetőséget, válassza a **kulcs generálása**, majd a **Mentés**lehetőséget. Jegyezze fel a webalkalmazás konfigurálásakor használni kívánt kulcsot.
 
-## <a name="configure-the-sample"></a>A minta konfigurálásához
+## <a name="configure-the-sample"></a>A minta konfigurálása
 
-Ebben az oktatóanyagban a minta azt a githubról letölthető fog konfigurálni. A minta egy egyszerű feladatlista használ az ASP.NET. A példa [Microsoft OWIN köztes összetevők](https://docs.microsoft.com/aspnet/aspnet/overview/owin-and-katana/). [Töltse le a zip-fájlt](https://github.com/Azure-Samples/active-directory-b2c-dotnet-webapp-and-webapi/archive/master.zip), vagy a klónozza a GitHubon található mintát. A mintafájlt egy olyan mappába kell kibontani, ahol a teljes elérési út rövidebb, mint 260 karakter.
+Ebben az oktatóanyagban egy olyan mintát konfigurál, amelyet letöltheti a GitHubról. A minta a ASP.NET használatával egyszerű feladatlistát biztosít. A minta a [Microsoft OWIN köztes összetevőket](https://docs.microsoft.com/aspnet/aspnet/overview/owin-and-katana/)használja. [Töltse le a zip-fájlt](https://github.com/Azure-Samples/active-directory-b2c-dotnet-webapp-and-webapi/archive/master.zip), vagy a klónozza a GitHubon található mintát. A mintafájlt egy olyan mappába kell kibontani, ahol a teljes elérési út rövidebb, mint 260 karakter.
 
 ```
 git clone https://github.com/Azure-Samples/active-directory-b2c-dotnet-webapp-and-webapi.git
 ```
 
-A következő két projekt vannak a mintául szolgáló megoldásban:
+A következő két projekt szerepel a minta megoldásban:
 
-- **TaskWebApp** – létrehozása és a egy feladatlista szerkesztése. A példa a **regisztrálási vagy bejelentkezési** való regisztráció vagy bejelentkezés a felhasználói felhasználói folyamatot.
-- **TaskService** – támogatja a létrehozás, Olvasás, frissítés, és a feladatlista törlés. Az API-t az Azure AD B2C által védett és TaskWebApp hívja meg.
+- **TaskWebApp** – Feladatlista létrehozása és szerkesztése. A minta a **regisztrációs vagy bejelentkezési** felhasználói folyamat használatával regisztrálja vagy bejelentkezik a felhasználók számára.
+- **TaskService** – támogatja a Feladatlista létrehozását, olvasását, frissítését és törlését. Az API-t a Azure AD B2C és a TaskWebApp által védettnek nevezzük.
 
-Módosítja a mintát használni az alkalmazást, amely regisztrálva van a saját bérlőjében, amely magában foglalja az Alkalmazásazonosítót és a kulcs, amelyet korábban felvett. Is konfigurálhatja a felhasználói folyamatok létrehozott. A minta a konfigurációs értékeket határozza meg a beállításokat a Web.config fájlban. A beállítások módosítása:
+A mintát úgy változtathatja meg, hogy a bérlőben regisztrált alkalmazást használja, beleértve az alkalmazás AZONOSÍTÓját és a korábban rögzített kulcsot is. A létrehozott felhasználói folyamatokat is konfigurálhatja. A minta a konfigurációs értékeket a web. config fájlban megadott beállításokként határozza meg. A beállítások módosítása:
 
 1. Nyissa meg a **B2C-WebAPI-DotNet** megoldást a Visual Studióban.
-2. Az a **TaskWebApp** projektben nyissa meg a **Web.config** fájlt. Cserélje le az `ida:Tenant` értékét a létrehozott bérlő nevére. Cserélje le az `ida:ClientId` értékét a feljegyzett alkalmazásazonosítóra. Cserélje le az `ida:ClientSecret` értékét a feljegyzett kulcsra.
+2. A **TaskWebApp** projektben nyissa meg a **web. config** fájlt. Cserélje le az `ida:Tenant` értékét a létrehozott bérlő nevére. Cserélje le az `ida:ClientId` értékét a feljegyzett alkalmazásazonosítóra. Cserélje le az `ida:ClientSecret` értékét a feljegyzett kulcsra. Ahhoz, hogy hozzáadja a web. config fájlhoz, XML-kódolással kell kódolnia az ügyfél titkos kulcsát.
 3. A **Web.config** fájlban cserélje le az `ida:SignUpSignInPolicyId` értéket a `b2c_1_signupsignin1` értékre. Cserélje le az `ida:EditProfilePolicyId` értéket a `b2c_1_profileediting1` értékre. Cserélje le az `ida:ResetPasswordPolicyId` értéket a `b2c_1_passwordreset1` értékre.
+
 
 ## <a name="run-the-sample"></a>Minta futtatása
 
-1. A Megoldáskezelőben kattintson a jobb gombbal a **TaskWebApp** projektre, és kattintson a **Set as StartUp Project**.
-2. Nyomja meg **F5**. Az alapértelmezett böngésző elindítja a helyi webhely címét: `https://localhost:44316/`.
+1. Megoldáskezelő kattintson a jobb gombbal a **TaskWebApp** projektre, majd kattintson a **beállítás indítási projektként**lehetőségre.
+2. Nyomja le az **F5**billentyűt. Az alapértelmezett böngésző elindítja a helyi webhely címét: `https://localhost:44316/`.
 
 ### <a name="sign-up-using-an-email-address"></a>Regisztrálás e-mail-címmel
 
-1. Kattintson a **regisztráció / bejelentkezés** az alkalmazás felhasználói regisztráció. A **b2c_1_signupsignin1** felhasználói folyamat használja.
-2. Az Azure AD B2C megjelenít egy bejelentkezési oldalt egy regisztrációs hivatkozással. Mivel még nincs fiókja, válassza **regisztráció**. A regisztrációs munkafolyamat megjelenít egy lapot, amely a felhasználó azonosító adatait gyűjti be és ellenőrzi az e-mail-cím alapján. A munkafolyamat az a felhasználó jelszavát, és a felhasználói folyamat meghatározott attribútumokat is gyűjti.
+1. Az alkalmazás felhasználójának regisztrálásához kattintson a **regisztráció/bejelentkezés** lehetőségre. A rendszer a **b2c_1_signupsignin1** felhasználói folyamatot használja.
+2. Az Azure AD B2C megjelenít egy bejelentkezési oldalt egy regisztrációs hivatkozással. Mivel még nem rendelkezik fiókkal, válassza a **regisztráció most**lehetőséget. A regisztrációs munkafolyamat megjelenít egy lapot, amely a felhasználó azonosító adatait gyűjti be és ellenőrzi az e-mail-cím alapján. A regisztrációs munkafolyamat a felhasználó jelszavát és a felhasználói folyamatban definiált kért attribútumokat is gyűjti.
 3. Érvényes e-mail-címet használjon, és ellenőrizze az ellenőrző kód használatával. Állítson be egy jelszót. Adja meg a kért attribútumokhoz tartozó értékeket.
 
-    ![Bejelentkezés – a vagy a regisztráláshoz munkafolyamat részeként jelenik meg a regisztrációs oldalra](media/active-directory-b2c-tutorials-web-app/sign-up-workflow.PNG)
+    ![A bejelentkezési vagy bejelentkezési munkafolyamat részeként megjelenő regisztrációs oldal](media/active-directory-b2c-tutorials-web-app/sign-up-workflow.PNG)
 
 4. Kattintson a **Létrehozás** gombra egy helyi fiók létrehozására az Azure AD B2C-bérlőben.
 
-A felhasználó most már használhatja e-mail-címükkel jelentkezzen be és használják a webalkalmazást.
+Most a felhasználó e-mail-címükkel bejelentkezhet, és használhatja a webalkalmazást.
 
 ## <a name="next-steps"></a>További lépések
 
 Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 
 > [!div class="checklist"]
-> * Frissítse az alkalmazást az Azure AD B2C-vel
-> * A minta az alkalmazás konfigurálása
-> * Iratkozzon fel a felhasználói folyamat használata
+> * Az alkalmazás frissítése Azure AD B2C
+> * A minta beállítása az alkalmazás használatára
+> * Regisztráció a felhasználói folyamat használatával
 
 > [!div class="nextstepaction"]
-> [Oktatóanyag: Az Azure Active Directory B2C használata az ASP.NET webes API védelméhez](active-directory-b2c-tutorials-web-api.md)
+> [Oktatóanyag: A ASP.NET webes API-k elleni védelem Azure Active Directory B2C használata](active-directory-b2c-tutorials-web-api.md)

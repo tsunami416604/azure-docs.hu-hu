@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 01/11/2018
 ms.author: yexu
-ms.openlocfilehash: 6a9d6ec651cd365995ce63a8dff6d60c8b23dec1
-ms.sourcegitcommit: 5cb0b6645bd5dff9c1a4324793df3fdd776225e4
+ms.openlocfilehash: 52cb11b015bb231b91184a2270e333e4c9aa8303
+ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/21/2019
-ms.locfileid: "67312639"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68424294"
 ---
 # <a name="incrementally-load-data-from-an-azure-sql-database-to-azure-blob-storage"></a>Adatok növekményes betöltése egy Azure SQL-adatbázisból egy Azure Blob Storage-tárolóba
 Az oktatóanyag során egy Azure adat-előállítót hoz majd létre egy olyan folyamattal, amely módosított adatokat tölt be egy Azure SQL-adatbázisban lévő táblából egy Azure Blob Storage-tárolóba. 
@@ -147,10 +147,10 @@ WHERE [TableName] = @TableName
 END
 ```
 
-## <a name="create-a-data-factory"></a>Data factory létrehozása
+## <a name="create-a-data-factory"></a>data factory létrehozása
 
 1. Indítsa el a **Microsoft Edge** vagy a **Google Chrome** böngészőt. A Data Factory felhasználói felületének használata jelenleg csak a Microsoft Edge-ben és a Google Chrome-ban támogatott.
-1. A bal oldali menüben válassza ki a **erőforrás létrehozása** > **adatok + analitika** > **adat-előállító**: 
+1. A bal oldali menüben válassza az **erőforrás** > létrehozása**adatok és Analitika** > **Data Factory**: 
    
    ![Data Factory kiválasztása az „Új” ablaktáblán](./media/quickstart-create-data-factory-portal/new-azure-data-factory-menu.png)
 
@@ -172,7 +172,7 @@ END
 5. Válassza ki a Data Factory **helyét**. A legördülő listán csak a támogatott helyek jelennek meg. Az adat-előállítók által használt adattárak (Azure Storage, Azure SQL Database stb.) és számítási erőforrások (HDInsight stb.) más régiókban is lehetnek.
 6. Válassza a **Rögzítés az irányítópulton** lehetőséget.     
 7. Kattintson a **Create** (Létrehozás) gombra.      
-8. Az irányítópulton a következő állapotleírás látható: **Data factory üzembe helyezése**. 
+8. Az irányítópulton a következő csempe jelenik meg az állapottal: **Az adatelőállító üzembe helyezése**. 
 
     ![adat-előállító üzembe helyezése csempe](media/tutorial-incremental-copy-portal/deploying-data-factory.png)
 9. A létrehozás befejezése után a **Data Factory** lap a képen látható módon jelenik meg.
@@ -238,7 +238,7 @@ Az oktatóanyag során egy olyan folyamatot fogunk létrehozni, amelyben két ke
 
         ![Második keresési tevékenység – új adatkészlet](./media/tutorial-incremental-copy-portal/source-dataset-connection.png)
 17. A folyamatszerkesztőt úgy érheti el, ha a fenti folyamat fülre vagy a bal oldali fanézetben a folyamat nevére kattint. A **keresési** tevékenység tulajdonságainak lapján ellenőrizze, hogy a **SourceDataset** lehetőség van-e kiválasztva a **Forrásadatkészlet** mezőnél. 
-18. A **Lekérdezés használata** mezőben válassza a **Lekérdezés** lehetőséget, majd írja be a következő lekérdezést: Ön csak a **LastModifyTime** érték maximális értékét választja ki a **data_source_table** táblából. Győződjön meg arról is ellenőrzött **Fist sor csak**.
+18. A **Lekérdezés használata** mezőben válassza a **Lekérdezés** lehetőséget, majd írja be a következő lekérdezést: Ön csak a **LastModifyTime** érték maximális értékét választja ki a **data_source_table** táblából. Győződjön meg arról, hogy csak az **első sort**jelölte be.
 
     ```sql
     select MAX(LastModifytime) as NewWatermarkvalue from data_source_table
@@ -303,13 +303,13 @@ Az oktatóanyag során egy olyan folyamatot fogunk létrehozni, amelyben két ke
     ![Tárolt eljárási tevékenység – SQL-fiók](./media/tutorial-incremental-copy-portal/sp-activity-sql-account-settings.png)
 26. Váltson a **Tárolt eljárás** lapra, és végezze el az alábbi lépéseket: 
 
-    1. A **tárolt eljárás neveként**válassza **usp_write_watermark**. 
+    1. A **tárolt eljárás neve**mezőben válassza a **usp_write_watermark**lehetőséget. 
     2. A tárolt eljárás paraméterértékeinek megadásához kattintson a **Paraméter importálása** gombra, és adja meg az alábbi értékeket a paraméterekhez: 
 
-        | Name (Név) | Típus | Érték | 
+        | Name (Név) | Típus | Value | 
         | ---- | ---- | ----- | 
-        | LastModifiedtime | DateTime | @{activity('LookupNewWaterMarkActivity').output.firstRow.NewWatermarkvalue} |
-        | TableName | String | @{activity('LookupOldWaterMarkActivity').output.firstRow.TableName} |
+        | LastModifiedtime | Datetime | @{activity('LookupNewWaterMarkActivity').output.firstRow.NewWatermarkvalue} |
+        | TableName | Karakterlánc | @{activity('LookupOldWaterMarkActivity').output.firstRow.TableName} |
 
     ![Tárolt eljárási tevékenység – tárolt eljárás beállításai](./media/tutorial-incremental-copy-portal/sproc-activity-stored-procedure-settings.png)
 27. A folyamat beállításainak érvényesítéséhez kattintson az **Érvényesítés** gombra az eszköztáron. Ellenőrizze, hogy nincs-e érvényesítési hiba. A **folyamatérvényesítési jelentés** ablakának bezárásához kattintson a >> gombra.   
@@ -444,7 +444,7 @@ Az oktatóanyagban az alábbi lépéseket hajtotta végre:
 Ebben az oktatóanyagban a folyamat egy SQL-adatbázisban lévő egyetlen táblából másolt adatokat egy blobtárolóba. Folytassa a következő oktatóanyaggal, amelyben azzal ismerkedhet meg, hogyan másolhat adatokat egy helyszíni SQL Server adatbázis több táblájából egy SQL-adatbázisba. 
 
 > [!div class="nextstepaction"]
->[Adatok növekményes betöltése az SQL Server több táblájából az Azure SQL Database adatbázisba](tutorial-incremental-copy-multiple-tables-portal.md)
+>[Adatok növekményes betöltése az SQL Server több táblájából az Azure SQL-adatbázisba](tutorial-incremental-copy-multiple-tables-portal.md)
 
 
 
