@@ -27,6 +27,8 @@
       href: tutorial-azure-monitor-stream-logs-to-event-hub.md
 - name: Alapelvek
   items:
+    - name: Jelentéskészítési és monitorozási környezet tervezése
+      href: plan-monitoring-and-reporting.md
     - name: Naplók
       href: concept-audit-logs.md
     - name: Bejelentkezési naplók

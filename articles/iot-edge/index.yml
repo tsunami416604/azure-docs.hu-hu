@@ -1,108 +1,112 @@
 ### YamlMime:Landing
 title: Azure IoT Edge
-summary: 'Az Azure IoT Edge egy eszközök internetes hálózata (IoT) típusú szolgáltatás, amely az IoT Hubra épül. Ez a szolgáltatás olyan ügyfelek számára ideális, akik eszközökön, vagyis a „peremhálózatokon” szeretnék elemezni az adatokat, és nem a felhőben. A számítási feladat egy részének a peremhálózatra helyezése révén az eszközök kevesebb időt töltenek a felhőbe történő üzenetküldéssel, és gyorsabban reagálhatnak az eseményekre.'
+summary: Az Azure IoT Edge egy eszközök internetes hálózata (IoT) típusú szolgáltatás, amely az IoT Hubra épül. Ez a szolgáltatás olyan ügyfelek számára ideális, akik eszközökön, vagyis a „peremhálózatokon” szeretnék elemezni az adatokat, és nem a felhőben. A számítási feladat egy részének a peremhálózatra helyezése révén az eszközök kevesebb időt töltenek a felhőbe történő üzenetküldéssel, és gyorsabban reagálhatnak az eseményekre.
 metadata:
   ms.topic: landing-page
+  ms.openlocfilehash: 71589d66856b4f6d3a32da50252fadff564373ff
+  ms.sourcegitcommit: c556477e031f8f82022a8638ca2aec32e79f6fd9
+  ms.translationtype: HT
+  ms.contentlocale: hu-HU
+  ms.lasthandoff: 07/23/2019
+  ms.locfileid: "68414420"
 landingContent:
-  - title: Fejlesztés Linux-eszközökhöz
-    linkLists:
-      - linkListType: quickstart
-        links:
-          - text: Az első IoT Edge-modul üzembe helyezése Linux-eszközön
-            url: quickstart-linux.md
-      - linkListType: tutorial
-        links:
-          - text: IoT Edge-modulok létrehozása Linux-eszközökhöz
-            url: tutorial-develop-for-linux.md
-      - linkListType: how-to-guide
-        links:
-          - text: Modulok fejlesztése és hibakeresése a Visual Studio Code használatával
-            url: how-to-vs-code-develop-module.md
-  - title: Fejlesztés Windows-eszközökhöz
-    linkLists:
-      - linkListType: quickstart
-        links:
-          - text: Az első IoT Edge-modul üzembe helyezése Windows eszközön
-            url: quickstart.md
-      - linkListType: tutorial
-        links:
-          - text: IoT Edge-modulok létrehozása Windows-eszközökhöz
-            url: tutorial-develop-for-windows.md
-      - linkListType: how-to-guide
-        links:
-          - text: Modulok fejlesztése és hibakeresése a Visual Studio 2017 használatával
-            url: how-to-visual-studio-develop-module.md
-  - title: IoT Edge-eszközök regisztrálása
-    linkLists:
-      - linkListType: how-to-guide
-        links:
-          - text: IoT Edge telepítése x64-es Linux rendszeren
-            url: how-to-install-iot-edge-linux.md
-          - text: IoT Edge telepítése ARM32-es Linux rendszeren
-            url: how-to-install-iot-edge-linux-arm.md
-          - text: IoT Edge telepítése x64-es Windows rendszeren
-            url: how-to-install-iot-edge-windows.md
-          - text: Linux-eszközök automatikus üzembe helyezése
-            url: how-to-auto-provision-simulated-device-linux.md
-          - text: Windows-eszközök automatikus üzembe helyezése
-            url: how-to-auto-provision-simulated-device-windows.md
-  - title: Kapcsolatfelvétel a nyílt forráskódú projektekkel foglalkozó fejlesztői közösséggel
-    linkLists:
-      - linkListType: get-started
-        links:
-          - text: IoT Edge-adattár
-            url: 'https://github.com/Azure/iotedge'
-          - text: IoT Edge – GitHub-problémák
-            url: 'https://github.com/Azure/iotedge/issues'
-          - text: Legutóbbi kiadások és változásnaplók
-            url: 'https://github.com/Azure/azure-iotedge/releases'
-  - title: IoT Edge-eszközök használata átjáróként
-    linkLists:
-      - linkListType: concept
-        links:
-          - text: IoT Edge-eszköz használata átjáróként
-            url: iot-edge-as-gateway.md
-      - linkListType: how-to-guide
-        links:
-          - text: Transzparens átjáró konfigurálása
-            url: how-to-create-transparent-gateway.md
-          - text: Lefelé irányuló eszköz hitelesítése az Azure IoT Hubon
-            url: how-to-authenticate-downstream-device.md
-          - text: Lefelé irányuló eszköz csatlakoztatása átjáróhoz
-            url: how-to-connect-downstream-device.md
-  - title: Előkészületek éles forgatókönyvekhez
-    linkLists:
-      - linkListType: concept
-        links:
-          - text: Az automatikus üzembe helyezések ismertetése
-            url: module-deployment-monitoring.md
-          - text: Platformtámogatás
-            url: support.md
-          - text: Éles környezetben való üzembe helyezés feladatlistája
-            url: production-checklist.md
-          - text: IoT Edge-tanúsítványok használatának ismertetése
-            url: iot-edge-certs.md
-          - text: Az IoT Edge biztonsági szabványai
-            url: security.md
-      - linkListType: how-to-guide
-        links:
-          - text: Nagy léptékű üzembe helyezés és monitorozás az Azure CLI segítségével
-            url: how-to-deploy-monitor-cli.md
-          - text: CI/CD-folyamat létrehozása az Azure Pipelines szolgáltatással
-            url: how-to-ci-cd.md
-      - linkListType: deploy
-        links:
-          - text: REST API az IoT Hubhoz
-            url: 'https://docs.microsoft.com/rest/api/iothub/'
-  - title: Mesterséges intelligencia bevezetése a peremhálózatokon
-    linkLists:
-      - linkListType: tutorial
-        links:
-          - text: Az Azure Machine Learning üzembe helyezése IoT Edge-modulként
-            url: tutorial-deploy-machine-learning.md
-          - text: Képosztályozás végrehajtása a peremhálózaton a Custom Vision Service használatával
-            url: tutorial-deploy-custom-vision.md
-      - linkListType: deploy
-        links:
-          - text: Azure Cognitive Services-modulok keresése az Azure Marketplace-en
-            url: 'https://azuremarketplace.microsoft.com/marketplace/apps/category/internet-of-things?subcategories=iot-edge-modules&search=azure%20cognitive%20services'
+- title: Fejlesztés Linux-eszközökhöz
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Az első IoT Edge-modul üzembe helyezése Linux-eszközön
+      url: quickstart-linux.md
+  - linkListType: tutorial
+    links:
+    - text: IoT Edge-modulok létrehozása Linux-eszközökhöz
+      url: tutorial-develop-for-linux.md
+  - linkListType: how-to-guide
+    links:
+    - text: Modulok fejlesztése és hibakeresése a Visual Studio Code használatával
+      url: how-to-vs-code-develop-module.md
+- title: Fejlesztés Windows-eszközökhöz
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Az első IoT Edge-modul üzembe helyezése Windows eszközön
+      url: quickstart.md
+  - linkListType: tutorial
+    links:
+    - text: IoT Edge-modulok létrehozása Windows-eszközökhöz
+      url: tutorial-develop-for-windows.md
+  - linkListType: how-to-guide
+    links:
+    - text: Modulok fejlesztése és hibakeresése a Visual Studio 2017 használatával
+      url: how-to-visual-studio-develop-module.md
+- title: IoT Edge-eszközök regisztrálása
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: IoT Edge telepítése Linuxon
+      url: how-to-install-iot-edge-linux.md
+    - text: IoT Edge telepítése Windowson
+      url: how-to-install-iot-edge-windows.md
+    - text: Linux-eszközök automatikus üzembe helyezése
+      url: how-to-auto-provision-simulated-device-linux.md
+    - text: Windows-eszközök automatikus üzembe helyezése
+      url: how-to-auto-provision-simulated-device-windows.md
+- title: Kapcsolatfelvétel a nyílt forráskódú projektekkel foglalkozó fejlesztői közösséggel
+  linkLists:
+  - linkListType: get-started
+    links:
+    - text: IoT Edge-adattár
+      url: https://github.com/Azure/iotedge
+    - text: IoT Edge – GitHub-problémák
+      url: https://github.com/Azure/iotedge/issues
+    - text: Legutóbbi kiadások és változásnaplók
+      url: https://github.com/Azure/azure-iotedge/releases
+- title: IoT Edge-eszközök használata átjáróként
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: IoT Edge-eszköz használata átjáróként
+      url: iot-edge-as-gateway.md
+  - linkListType: how-to-guide
+    links:
+    - text: Transzparens átjáró konfigurálása
+      url: how-to-create-transparent-gateway.md
+    - text: Lefelé irányuló eszköz hitelesítése az Azure IoT Hubon
+      url: how-to-authenticate-downstream-device.md
+    - text: Lefelé irányuló eszköz csatlakoztatása átjáróhoz
+      url: how-to-connect-downstream-device.md
+- title: Előkészületek éles forgatókönyvekhez
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Az automatikus üzembe helyezések ismertetése
+      url: module-deployment-monitoring.md
+    - text: Platformtámogatás
+      url: support.md
+    - text: Éles környezetben való üzembe helyezés feladatlistája
+      url: production-checklist.md
+    - text: IoT Edge-tanúsítványok használatának ismertetése
+      url: iot-edge-certs.md
+    - text: Az IoT Edge biztonsági szabványai
+      url: security.md
+  - linkListType: how-to-guide
+    links:
+    - text: Nagy léptékű üzembe helyezés és monitorozás az Azure CLI segítségével
+      url: how-to-deploy-monitor-cli.md
+    - text: CI/CD-folyamat létrehozása az Azure Pipelines szolgáltatással
+      url: how-to-ci-cd.md
+  - linkListType: deploy
+    links:
+    - text: REST API az IoT Hubhoz
+      url: https://docs.microsoft.com/rest/api/iothub/
+- title: Mesterséges intelligencia bevezetése a peremhálózatokon
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Az Azure Machine Learning üzembe helyezése IoT Edge-modulként
+      url: tutorial-deploy-machine-learning.md
+    - text: Képosztályozás végrehajtása a peremhálózaton a Custom Vision Service használatával
+      url: tutorial-deploy-custom-vision.md
+  - linkListType: deploy
+    links:
+    - text: Azure Cognitive Services-modulok keresése az Azure Marketplace-en
+      url: https://azuremarketplace.microsoft.com/marketplace/apps/category/internet-of-things?subcategories=iot-edge-modules&search=azure%20cognitive%20services

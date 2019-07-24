@@ -74,6 +74,8 @@
           href: security-info-setup-text-msg.md
         - name: Telefonhívások beállítása
           href: security-info-setup-phone-number.md
+        - name: Biztonsági kulcs beállítása
+          href: security-info-setup-security-key.md
         - name: E-mailek beállítása
           href: security-info-setup-email.md
         - name: Biztonsági kérdések beállítása

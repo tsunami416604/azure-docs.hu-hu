@@ -373,10 +373,14 @@
       items:
         - name: HDInsight virtuális hálózati architektúra
           href: ../hdinsight-virtual-network-architecture.md
+        - name: HDInsight-alapú virtuális hálózatok tervezése
+          href: ../hdinsight-plan-virtual-network-deployment.md
+        - name: HDInsight-alapú virtuális hálózatok létrehozása
+          href: ../hdinsight-create-virtual-network.md
+        - name: NSG-khez és UDR-ekhez szükséges IP-címek
+          href: ../hdinsight-management-ip-addresses.md
         - name: Tűzfal használata a kimenő forgalom korlátozására
           href: ../hdinsight-restrict-outbound-traffic.md
-        - name: HDInsight az Azure VNetben
-          href: ../hdinsight-extend-hadoop-virtual-network.md
         - name: A HDInsight csatlakoztatása a helyszíni hálózathoz
           href: ../connect-on-premises-network.md
     - name: Monitorozás Azure Monitor-naplókkal

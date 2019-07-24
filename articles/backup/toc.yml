@@ -100,6 +100,8 @@
               href: backup-mabs-unattended-install.md
         - name: Számítási feladatok védelme
           items:
+            - name: Hyper-V virtuális gépek biztonsági mentése
+              href: back-up-hyper-v-virtual-machines-mabs.md
             - name: VMware-kiszolgáló
               href: backup-azure-backup-server-vmware.md
             - name: Exchange

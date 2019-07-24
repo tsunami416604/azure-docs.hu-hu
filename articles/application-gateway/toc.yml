@@ -122,10 +122,12 @@
               href: application-gateway-end-to-end-ssl-powershell.md
         - name: Tanúsítványok kezelése
           items:
-            - name: Tanúsítványok létrehozása az engedélyezési listához – háttérrendszer
+            - name: Háttérrendszer-tanúsítványok
               href: certificates-for-backend-authentication.md
             - name: Tanúsítványok megújítása
               href: renew-certificates.md
+            - name: Önaláírt tanúsítványok létrehozása
+              href: self-signed-certificates.md
         - name: SSL-szabályzat
           items:
             - name: Az SSL-szabályzatok konfigurálása

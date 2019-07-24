@@ -21,6 +21,8 @@
       href: compare-video-indexer-with-media-services-presets.md
     - name: Több bérlő kezelése
       href: manage-multiple-tenants.md
+    - name: Nyelvazonosítási modell
+      href: language-identification-model.md
     - name: Tartalommodellek testreszabása
       items:
         - name: Áttekintés

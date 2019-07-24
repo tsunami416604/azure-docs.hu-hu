@@ -193,6 +193,18 @@
                   href: scenario-mobile-overview.md
                 - name: Alkalmazásregisztráció
                   href: scenario-mobile-app-registration.md
+                - name: Kódkonfiguráció
+                  href: scenario-mobile-app-configuration.md
+                - name: Mobilplatform-specifikus konfiguráció
+                  items:
+                    - name: Xamarin Android
+                      href: msal-net-xamarin-android-considerations.md
+                    - name: Rendszertallózó Androidon
+                      href: msal-net-system-browser-android-considerations.md
+                    - name: Xamarin iOS
+                      href: msal-net-xamarin-ios-considerations.md
+                    - name: Univerzális Windows-platform
+                      href: msal-net-uwp-considerations.md
                 - name: Alkalmazás-jogkivonat beszerzése
                   href: scenario-mobile-acquire-token.md
                 - name: Webes API hívása
@@ -255,14 +267,6 @@
                   items:
                     - name: Webböngészők
                       href: msal-net-web-browsers.md
-                    - name: Xamarin Android
-                      href: msal-net-xamarin-android-considerations.md
-                    - name: Rendszertallózó Androidon
-                      href: msal-net-system-browser-android-considerations.md
-                    - name: Xamarin iOS
-                      href: msal-net-xamarin-ios-considerations.md
-                    - name: Univerzális Windows-platform
-                      href: msal-net-uwp-considerations.md
                 - name: MSAL.js
                   items:
                     - name: Megfontolandó szempontok az IE használata esetén

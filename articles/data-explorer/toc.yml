@@ -98,8 +98,6 @@
           href: sisense.md
     - name: Kezelés
       items:
-        - name: Adatbázis-engedélyek kezelése
-          href: manage-database-permissions.md
         - name: Fürt állapotának ellenőrzése
           href: check-cluster-health.md
         - name: Fürt virtuálisgép-termékváltozatának kiválasztása
@@ -108,6 +106,10 @@
           href: manage-cluster-horizontal-scaling.md
         - name: Fürtök vertikális skálázásának kezelése
           href: manage-cluster-vertical-scaling.md
+        - name: Fürtbiztonság kezelése
+          href: manage-cluster-security.md
+        - name: Adatbázis-engedélyek kezelése
+          href: manage-database-permissions.md
         - name: Adat törlése
           href: delete-data.md
         - name: A duplikált adatok kezelése
