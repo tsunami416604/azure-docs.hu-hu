@@ -59,7 +59,7 @@ sections:
       - type: paragraph
         text: 'Megtudhatja, hogyan állíthat be, kezelhet, állíthat össze és helyezhet üzembe egy alkalmazást az Azure Spatial Anchors segítségével.'
       - type: list
-        style: ordered
+        style: unordered
         items:
           - html: <a href="/azure/spatial-anchors/tutorials/tutorial-share-anchors-across-devices">Megosztás a Unityben.</a>
           - html: <a href="/azure/spatial-anchors/tutorials/tutorial-use-cosmos-db-to-store-anchors">Megosztás a Unityben az Azure Cosmos DB-vel.</a>

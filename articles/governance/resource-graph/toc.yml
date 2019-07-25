@@ -41,6 +41,9 @@
     - name: Erőforrás-módosítások lekérése
       displayName: 'resource, change, history, snapshot, details'
       href: ./how-to/get-resource-changes.md
+- name: Hibaelhárítás
+  displayName: 'errors, violation'
+  href: ./troubleshoot/general.md
 - name: Referencia
   items:
     - name: Azure CLI
