@@ -26,7 +26,7 @@ Noha az Azure Cosmos DB MongoDB API-kompatibilis a MongoDB átviteli protokoll (
 |---------------------|-------|--------------|-----------|
 | TooManyRequests     | 16500 | Felhasznált kérelemegységek teljes száma nagyobb, mint a gyűjteményben kiosztott kérelemegység díjaival, és megfelelően szabályozva lett. | Az átviteli sebességet egy tárolót vagy tárolók az Azure Portalról hozzárendelt megfontolni vagy is próbálja megismételni a műveletet. |
 | ExceededMemoryLimit | 16501 | A művelet több-bérlős szolgáltatás, az ügyfél memória kiosztása feletti csökkent. | Csökkentse a szigorúbb lekérdezési feltételek használatával művelet hatókörének, vagy forduljon az ügyfélszolgálathoz a a [az Azure portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade). Például: `db.getCollection('users').aggregate([{$match: {name: "Andy"}}, {$sort: {age: -1}}]))` |
-| A MongoDB átviteli verzió kapcsolatos problémák | - | MongoDB-illesztőprogramok régebbi verziói nem tudja észlelni az Azure Cosmos-fiók neve a kapcsolati karakterláncokban lévő. | Hozzáfűző *appName = @**accountName** @*  végén található a Cosmos DB API a MongoDB kapcsolati karakterláncot, ahol ***accountName*** a Cosmos DB-fiók neve . |
+| A MongoDB átviteli verzió kapcsolatos problémák | - | MongoDB-illesztőprogramok régebbi verziói nem tudja észlelni az Azure Cosmos-fiók neve a kapcsolati karakterláncokban lévő. | Hozzáfűző *appName = @**accountName**@* végén található a Cosmos DB API a MongoDB kapcsolati karakterláncot, ahol ***accountName*** a Cosmos DB-fiók neve . |
 
 
 ## <a name="next-steps"></a>További lépések

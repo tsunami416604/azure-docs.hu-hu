@@ -58,8 +58,8 @@ Az első lépés az AD FS-jogcímek konfigurálása. Két jogcímszabályt hozzo
 
 1. Nyissa meg az AD FS felügyeleti konzolt.
 2. A bal oldalon válassza a **Függő entitás megbízhatóságai** elemet.
-3. Kattintson a jobb gombbal a **a Microsoft Office 365 Identity Platform** válassza **Jogcímszabályok szerkesztése... ** 
-    ![ADFS konzol – a Jogcímszabályok szerkesztése](./media/howto-mfa-adfs/trustedip1.png)
+3. Kattintson a jobb gombbal a **a Microsoft Office 365 Identity Platform** válassza **Jogcímszabályok szerkesztése...** 
+   ![ADFS konzol – a Jogcímszabályok szerkesztése](./media/howto-mfa-adfs/trustedip1.png)
 4. A kiadás átalakítási szabályai részben kattintson **szabály hozzáadása.** 
     ![Jogcímszabály hozzáadása](./media/howto-mfa-adfs/trustedip2.png)
 5. Az Átalakítási jogcímszabály hozzáadása varázslóban válassza a **Bejövő jogcím továbbítása vagy szűrése** elemet a legördülő menüből, majd kattintson a **Tovább** gombra.
