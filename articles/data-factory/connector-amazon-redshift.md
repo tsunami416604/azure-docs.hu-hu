@@ -126,7 +126,7 @@ Adatok másolása az Amazon Redshift, állítsa be a forrás típusaként a más
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | type | A másolási tevékenység forrása type tulajdonsága értékre kell állítani: **AmazonRedshiftSource** | Igen |
-| lekérdezés |Az egyéni lekérdezés segítségével olvassa el az adatokat. Például: válassza ki * from tábla. |Nem (Ha a "tableName" adatkészlet paraméter van megadva) |
+| lekérdezés |Az egyéni lekérdezés segítségével olvassa el az adatokat. Például: select * from MyTable. |Nem (Ha a "tableName" adatkészlet paraméter van megadva) |
 | redshiftUnloadSettings | A tulajdonságcsoport Amazon Redshift eltávolítása használatakor. | Nem |
 | s3LinkedServiceName | -To-be – használja az ideiglenes tárolóként az Amazon S3 hivatkozik egy "az AmazonS3" típusú társított szolgáltatás neve megadásával. | Igen, ha a MEMÓRIÁBÓL használatával |
 | bucketName | Adja meg, az S3 gyűjtőt átmeneti adatok tárolására. Ha nincs megadva, a Data Factory szolgáltatás állít elő, akkor automatikusan.  | Igen, ha a MEMÓRIÁBÓL használatával |
