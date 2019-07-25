@@ -398,6 +398,8 @@
               items:
                 - name: Hozzáférés-vezérlés
                   href: app/resources-roles-access-control.md
+                - name: IP-címgyűjtemény
+                  href: app/ip-collection.md
                 - name: Mintavételezés
                   displayname: 'adaptive sampling, fixed rate sample, fixed sampling, ingestion sampling'
                   href: app/sampling.md

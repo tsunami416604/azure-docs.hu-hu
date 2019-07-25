@@ -13,6 +13,10 @@
   items:
     - name: A Modern olvasó indítása (Node.js)
       href: tutorial.md
+- name: Útmutató
+  items:
+    - name: Hitelesítés Azure Active Directory-fiókkal
+      href: azure-active-directory-authentication.md
 - name: Referencia
   items:
     - name: SDK-referencia

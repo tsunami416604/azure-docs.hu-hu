@@ -127,11 +127,25 @@
           href: sql-data-warehouse-overview-develop.md
         - name: Ajánlott eljárások
           href: sql-data-warehouse-best-practices-development.md
+        - name: JSON
+          items:
+            - name: JSON
+              href: /sql/t-sql/functions/json-functions-transact-sql?view=azure-sqldw-latest
+            - name: ISJSON
+              href: /sql/t-sql/functions/isjson-transact-sql?view=azure-sqldw-latest
+            - name: JSON_VALUE
+              href: /sql/t-sql/functions/json-value-transact-sql?view=azure-sqldw-latest
+            - name: JSON_QUERY
+              href: /sql/t-sql/functions/json-query-transact-sql?view=azure-sqldw-latest
+            - name: JSON_MODIFY
+              href: /sql/t-sql/functions/json-modify-transact-sql?view=azure-sqldw-latest
+            - name: OPENJSON
+              href: /sql/t-sql/functions/openjson-transact-sql?view=azure-sqldw-latest
         - name: Tényleges táblán alapuló nézet
           items:
-            - name: Create materialized view as select (Transact-SQL)
+            - name: Létrehozás
               href: /sql/t-sql/statements/create-materialized-view-as-select-transact-sql
-            - name: Alter materialized view as select (Transact-SQL)
+            - name: Módosítás
               href: /sql/t-sql/statements/alter-materialized-view-transact-sql
         - name: Eredményhalmaz gyorsítótárazása
           href: /sql/t-sql/statements/set-result-set-caching-transact-sql
@@ -281,6 +295,16 @@
           href: sql-data-warehouse-manage-monitor.md
         - name: A 2. generációs gyorsítótár monitorozása
           href: sql-data-warehouse-how-to-monitor-cache.md
+    - name: Biztonsági mentés és visszaállítás
+      items:
+        - name: Visszaállítási pontok létrehozása
+          href: sql-data-warehouse-restore-points.md
+        - name: Meglévő adattárház visszaállítása
+          href: sql-data-warehouse-restore-active-paused-dw.md
+        - name: Törölt adattárház visszaállítása
+          href: sql-data-warehouse-restore-deleted-dw.md
+        - name: Visszaállítás georedundáns biztonsági mentésből
+          href: sql-data-warehouse-restore-from-geo-backup.md
     - name: Integrálás
       items:
         - name: Gépi tanulás használata

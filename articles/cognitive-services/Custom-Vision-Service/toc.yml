@@ -6,6 +6,12 @@
       href: home.md
 - name: Gyors útmutatók
   items:
+    - name: A webes portál használata
+      items:
+        - name: Tartalombesoroló létrehozása
+          href: getting-started-build-a-classifier.md
+        - name: Objektumérzékelő készítése
+          href: get-started-build-detector.md
     - name: A .NET SDK használata
       items:
         - name: Képbesorolás
@@ -42,8 +48,6 @@
       href: logo-detector-mobile.md
 - name: Útmutatók
   items:
-    - name: Tartalombesoroló létrehozása
-      href: getting-started-build-a-classifier.md
     - name: Modell tesztelése
       href: test-your-model.md
     - name: Tartalombesoroló teljesítményének fokozása

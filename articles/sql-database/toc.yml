@@ -19,7 +19,7 @@
       href: sql-database-managed-instance-quickstart-guide.md
     - name: Létrehozás
       items:
-        - name: Önálló adatbázis – portál
+        - name: Önálló adatbázis
           href: sql-database-single-database-get-started.md
         - name: Önálló adatbázis – sablon
           displayName: 'Azure Resource Manager template, ARM'
@@ -87,14 +87,22 @@
           href: sql-database-design-first-database.md
         - name: Adatbázis tervezése a .NET használatával
           href: sql-database-design-first-database-csharp.md
-    - name: Egyedülálló adatbázis
+    - name: Önálló adatbázis
       items:
         - name: Migrálás önálló/rugalmas készletbe helyezett adatbázisba DMS használatával
           href: ../dms/tutorial-sql-server-to-azure-sql.md?toc=/azure/sql-database/toc.json
+        - name: Hozzáadás feladatátvételi csoporthoz
+          href: sql-database-single-database-failover-group-tutorial.md
         - name: Földrajzilag elosztott adatbázis implementálása
           href: sql-database-implement-geo-distributed-database.md
+        - name: Aktív georeplikáció konfigurálása
+          href: sql-database-active-geo-replication-portal.md
         - name: Az Azure SQL Data Sync beállítása
           href: sql-database-get-started-sql-data-sync.md
+    - name: Rugalmas készlet
+      items:
+        - name: Hozzáadás feladatátvételi csoporthoz
+          href: sql-database-elastic-pool-failover-group-tutorial.md
     - name: Felügyelt példány
       items:
         - name: Online migrálás DMS használatával
@@ -245,8 +253,6 @@
               href: sql-database-active-geo-replication.md
             - name: Automatikus feladatátvételi csoportok
               href: sql-database-auto-failover-group.md
-            - name: Aktív georeplikáció konfigurálása – Portál
-              href: sql-database-active-geo-replication-portal.md
             - name: Replikák biztonságának konfigurálása
               href: sql-database-geo-replication-security-config.md
         - name: Adatbázis-helyreállítási lehetőségek
@@ -516,6 +522,8 @@
           href: sql-database-managed-instance-connect-app.md
     - name: Adatok betöltése és áthelyezése
       items:
+        - name: Erőforrás áthelyezése új régióba
+          href: sql-database-move-resources-across-regions.md
         - name: Adatbázis másolása az Azure-on belül
           href: sql-database-copy.md
         - name: Adatbázis importálása BACPAC-fájlból

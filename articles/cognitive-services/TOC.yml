@@ -5,6 +5,8 @@
   items:
     - name: Mi a Cognitive Services?
       href: Welcome.md
+    - name: Egyéni altartományok a Cognitive Serviceshez
+      href: cognitive-services-custom-subdomains.md
     - name: Cognitive Services és Machine Learning
       href: cognitive-services-and-machine-learning.md
     - name: Nyelvi támogatás

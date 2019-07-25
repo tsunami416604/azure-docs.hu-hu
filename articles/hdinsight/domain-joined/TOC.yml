@@ -2,8 +2,8 @@
   href: /azure/hdinsight
 - name: Áttekintés
   items:
-    - name: Mi az az Enterprise Security Package a HDInsightban?
-      href: apache-domain-joined-introduction.md
+    - name: Mi az a vállalati biztonság a HDInsightban?
+      href: hdinsight-security-overview.md
 - name: Oktatóanyagok
   items:
     - name: Apache HBase RBAC és Apache Ranger

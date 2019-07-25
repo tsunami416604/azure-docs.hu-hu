@@ -7,18 +7,19 @@ author: nitinme
 manager: nitinme
 ms.service: cognitive-services
 ms.author: nitinme
-ms.date: 06/20/2019
+ms.date: 07/22/2019
 ms.topic: hub-page
-ms.openlocfilehash: 1e78c31c19bdbc8ea223c504a53f1df73caa5d44
-ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
+ms.openlocfilehash: ad403b58a0f6aad37e9d8d547d269b9f45566559
+ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67295386"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68442823"
 ---
 <div id="main" class="v2">
 <h1>Az Azure Cognitive Services dokumentációja</h1>
         <p style="font-size: 1.12rem;margin-bottom: 1rem;">Megtudhatja, hogyan teheti intelligens algoritmusokkal képessé az alkalmazásokat, weboldalakat és robotokat a látásra, hallásra, beszédre és megértésre, hogy azok a felhasználók természetes nyelvi kommunikációját is értelmezni tudják. Oktatóanyagokból, rövid útmutatókból, API-referenciákból és példákból ismerheti meg mindezt.</p>
+        <p> Minden szolgáltatás saját <a href="/azure/cognitive-services/language-support">nyelvi támogatással</a> és <a href="/azure/cognitive-services/cognitive-services-and-machine-learning#service-requirements-for-the-data-model">adatmodell-követelményekkel</a> rendelkezik, amely egy teljesen betanított modelltől egészen a teljes mértékben testreszabható modellig terjedhet. 
 
 
 <h2>Cognitive Services API-k</h2>
@@ -123,6 +124,25 @@ ms.locfileid: "67295386"
                             <div class="cardText">
                                 <h3>Mi a Cognitive Services?</h3>
                                 <p>Megtudhatja, hogy mi az Azure Cognitive Services, és hogyan használhatók a különböző API-k intelligens alkalmazások felépítésére.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </li>
+        <li>
+            <a href="/azure/cognitive-services/cognitive-services-and-machine-learning/">
+                <div class="cardSize">
+                    <div class="cardPadding">
+                        <div class="card">
+                            <div class="cardImageOuter">
+                                <div class="cardImage">
+                                    <img src="media/index/i_get-started.svg" alt="" />
+                                </div>
+                            </div>
+                            <div class="cardText">
+                                <h3>Cognitive Services és gépi tanulás</h3>
+                                <p>Megtudhatja, hogy az Azure Cognitive Services hogyan illik a gépi tanulással kapcsolatos egyéb Azure-ajánlatokhoz.</p>
                             </div>
                         </div>
                     </div>
