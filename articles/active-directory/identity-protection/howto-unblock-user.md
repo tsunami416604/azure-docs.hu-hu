@@ -1,64 +1,61 @@
 ---
-title: Hogyan lehet az Azure Active Directory Identity Protection felhasználók tiltásának feloldása |} A Microsoft Docs
-description: Ismerje meg, hogyan feloldása, amely egy Azure Active Directory Identity Protection-szabályzat által letiltott felhasználók.
+title: Felhasználók blokkolásának feloldása Azure Active Directory Identity Protection használatával | Microsoft Docs
+description: Megtudhatja, hogyan tilthatja le a Azure Active Directory Identity Protection szabályzat által blokkolt felhasználókat.
 services: active-directory
-keywords: az Azure active directory identity protection a következőket felhasználó blokkolásának feloldása
-documentationcenter: ''
-author: MicrosoftGuyJFlo
-manager: daveba
-ms.assetid: a953d425-a3ef-41f8-a55d-0202c3f250a7
 ms.service: active-directory
 ms.subservice: identity-protection
-ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: joflore
+author: MicrosoftGuyJFlo
+manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1d22fa7fd3964f99c426e8e21d34dcfdea6d1b36
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: c28e30b8e44b6888cdb7416b9c7b563b955a68ce
+ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60294411"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68335378"
 ---
 # <a name="how-to-unblock-users"></a>kézikönyv: Felhasználók tiltásának feloldása
 
-Az Azure Active Directory Identity Protection a házirendek felhasználók letiltását, a konfigurált feltételek teljesülése esetén konfigurálhatja. Általában egy letiltott felhasználó névjegyek segélyszolgálat lesz feloldva. Ez a cikk ismerteti a lépéseket egy letiltott felhasználó feloldásának is végezhet.
+A Azure Active Directory Identity Protection segítségével házirendeket állíthat be a felhasználók blokkolására, ha a konfigurált feltételek teljesülnek. A letiltott felhasználók általában kapcsolatba lépnek az ügyfélszolgálattal a blokkolás feloldása érdekében. Ez a cikk a letiltott felhasználók blokkolásának feloldásához szükséges lépéseket ismerteti.
 
-## <a name="determine-the-reason-for-blocking"></a>Blokkolás okának megállapításához
-Első lépésként egy felhasználó tiltásának feloldásához meg kell határoznia, hogy a felhasználó letiltotta, mert a következő lépések, attól függően, hogy a házirend típusát.
-Az Azure Active Directory Identity Protection a felhasználó vagy blokkolhatja bejelentkezési kockázati szabályzat vagy felhasználói kockázati házirendet.
+## <a name="determine-the-reason-for-blocking"></a>A blokkolás okának meghatározása
 
-Megtekintheti a szabályzatot, amely a címsor a párbeszédpanelt, amely során egy bejelentkezési kísérlet után a felhasználó számára a felhasználó letiltotta típusát:
+A felhasználó blokkolásának feloldásának első lépéseként meg kell határoznia, hogy milyen típusú házirendet blokkolt a felhasználó, mert a következő lépések attól függően változnak.
+A Azure Active Directory Identity Protection használatával a felhasználókat a bejelentkezési kockázati házirend vagy egy felhasználói kockázati házirend blokkolhatja.
 
-| Szabályzat | Felhasználói párbeszédpanel |
+A bejelentkezési kísérlet során a felhasználónak megjelenő házirend típusa letilthatja a felhasználót a párbeszédpanelen megjelenő fejlécből:
+
+| Szabályzat | Felhasználó párbeszédpanel |
 | --- | --- |
-| Bejelentkezési kockázat |![Letiltott bejelentkezési](./media/howto-unblock-user/02.png) |
+| Bejelentkezési kockázat |![Tiltott bejelentkezés](./media/howto-unblock-user/02.png) |
 | Felhasználói kockázat |![Letiltott fiók](./media/howto-unblock-user/104.png) |
 
-A felhasználó által blokkolt:
+A által blokkolt felhasználó:
 
-* A bejelentkezési kockázati házirend néven is ismert gyanús bejelentkezési.
-* Felhasználói kockázati házirendet egy néven is ismert kitett fiók
+* A bejelentkezési kockázati szabályzatot gyanús bejelentkezésnek is nevezzük
+* A felhasználói kockázati házirendeket a kockázatnak kitett fiókoknak is nevezik
 
-## <a name="unblocking-suspicious-sign-ins"></a>Gyanús blokkolásának feloldása bejelentkezések
-A gyanús bejelentkezési feloldásához a következő lehetőségek állnak rendelkezésére:
+## <a name="unblocking-suspicious-sign-ins"></a>Gyanús bejelentkezések blokkolásának feloldása
 
-1. **Jelentkezzen be a jól ismert helyről vagy eszköz** -letiltott gyanús bejelentkezési gyakori indoka bejelentkezési kísérletek ismeretlen helyről vagy eszközök. A felhasználók gyorsan megállapíthassák blokkoló ezért úgy, hogy jelentkezzen be egy ismert helyre vagy az eszközről-e.
-2. **A házirend kizárása** – Ha úgy véli, hogy a bejelentkezési szabályzat aktuális konfigurációja megadott felhasználók számára problémákat okoz, kizárhatja azokat a felhasználókat belőle. További információkért lásd: [Azure Active Directory Identity Protection](../active-directory-identityprotection.md).
-3. **Szabályzat letiltása** – Ha úgy véli, hogy a házirend-konfiguráció okozza-e problémák a felhasználók számára, hogy letilthatja a szabályzatot. További információkért lásd: [Azure Active Directory Identity Protection](../active-directory-identityprotection.md).
+A gyanús bejelentkezés feloldásához a következő lehetőségek közül választhat:
 
-## <a name="unblocking-accounts-at-risk"></a>Veszélyben blokkolásának feloldása fiókok
-Érintett fiók zárolásának feloldásához a következő lehetőségek állnak rendelkezésére:
+1. **Bejelentkezés ismerős helyről vagy eszközről** – a tiltott gyanús bejelentkezések gyakori oka az ismeretlen helyekről vagy eszközökről érkező bejelentkezési kísérletek. A felhasználók gyorsan meghatározhatják, hogy ez a blokkolás oka-e, ha egy ismerős helyről vagy eszközről próbálnak bejelentkezni.
+2. **Kizárás a szabályzatból** – ha úgy gondolja, hogy a bejelentkezési szabályzat jelenlegi konfigurációja problémákat okoz bizonyos felhasználók számára, kizárhatja a felhasználókat. További információ: [Azure Active Directory Identity Protection](../active-directory-identityprotection.md).
+3. **Házirend letiltása** – ha úgy gondolja, hogy a házirend-konfiguráció az összes felhasználónál problémát okoz, letilthatja a szabályzatot. További információ: [Azure Active Directory Identity Protection](../active-directory-identityprotection.md).
 
-1. **Jelszó alaphelyzetbe állítása** -visszaállíthatja a jelszót. 
-2. **Az összes kockázati esemény elvetését** – a felhasználó kockázati szabályzat akkor tiltja a felhasználó, ha a beállított felhasználói kockázati szint blokkolja a hozzáférést a rendszer elérte. Csökkentheti a felhasználó kockázati események jelentett kockázati szint kézzel zárja be. 
-3. **A házirend kizárása** – Ha úgy véli, hogy a bejelentkezési szabályzat aktuális konfigurációja megadott felhasználók számára problémákat okoz, kizárhatja azokat a felhasználókat belőle. További információkért lásd: [Azure Active Directory Identity Protection](../active-directory-identityprotection.md).
-4. **Szabályzat letiltása** – Ha úgy véli, hogy a házirend-konfiguráció okozza-e problémák a felhasználók számára, hogy letilthatja a szabályzatot. További információkért lásd: [Azure Active Directory Identity Protection](../active-directory-identityprotection.md).
+## <a name="unblocking-accounts-at-risk"></a>A veszélyeztetett fiókok blokkolásának feloldása
+
+A veszélyeztetett fiókok blokkolásának feloldásához a következő lehetőségek állnak rendelkezésre:
+
+1. **Jelszó** alaphelyzetbe állítása – alaphelyzetbe állíthatja a felhasználó jelszavát. 
+2. Az **összes kockázati esemény bezárása** – a felhasználói kockázati házirend letilt egy felhasználót, ha elérte a hozzáférés-blokkoló beállításhoz beállított felhasználói kockázati szintet. Csökkentheti a felhasználók kockázati szintjét a jelentett kockázati események manuális lezárásával. 
+3. **Kizárás a szabályzatból** – ha úgy gondolja, hogy a bejelentkezési szabályzat jelenlegi konfigurációja problémákat okoz bizonyos felhasználók számára, kizárhatja a felhasználókat. További információ: [Azure Active Directory Identity Protection](../active-directory-identityprotection.md).
+4. **Házirend letiltása** – ha úgy gondolja, hogy a házirend-konfiguráció az összes felhasználónál problémát okoz, letilthatja a szabályzatot. További információ: [Azure Active Directory Identity Protection](../active-directory-identityprotection.md).
 
 ## <a name="next-steps"></a>További lépések
  
-Szeretne többet megtudni az Azure AD Identity Protection? Tekintse meg [Azure Active Directory Identity Protection](../active-directory-identityprotection.md).
+Szeretne többet megtudni a Azure AD Identity Protectionról? Tekintse meg [Azure Active Directory Identity Protection](../active-directory-identityprotection.md).

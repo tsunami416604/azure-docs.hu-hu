@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/25/2019
-ms.openlocfilehash: 606cab09debf760d1b101390b2a19a1a090bb4c3
-ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
+ms.openlocfilehash: e749138cd28f7bd8faf10ca1087a73f323533a25
+ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68234563"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68335669"
 ---
 # <a name="delete-activity-in-azure-data-factory"></a>Tevékenység törlése Azure Data Factory
 
@@ -79,14 +79,14 @@ A Azure Data Factory törlés tevékenységgel törölheti a fájlokat vagy mapp
 
 ## <a name="type-properties"></a>Típus tulajdonságai
 
-| Tulajdonság | Leírás | Szükséges |
+| Tulajdonság | Leírás | Kötelező |
 | --- | --- | --- |
 | adatkészlet | Az adatkészlet hivatkozását adja meg a törlendő fájlok vagy mappák meghatározásához | Igen |
 | recursive | Azt jelzi, hogy a rendszer törli-e a fájlokat rekurzív módon az almappákból, vagy csak a megadott mappából.  | Nem. A mező alapértelmezett értéke: `false`. |
 | maxConcurrentConnections | Azon kapcsolatok száma, amelyek a Storage Store-hoz csatlakoznak egyidejűleg a mappák vagy fájlok törléséhez.   |  Nem. A mező alapértelmezett értéke: `1`. |
 | enablelogging | Azt jelzi, hogy rögzíteni kell-e a törölt mappát vagy fájlneveket. Ha az értéke TRUE (igaz), meg kell adnia egy Storage-fiókot a naplófájl mentéséhez, hogy nyomon tudja követni a törlési tevékenység viselkedését a naplófájl olvasásával. | Nem |
 | logStorageSettings | Csak akkor alkalmazható, ha a EnableLogging = True.<br/><br/>A tárolási tulajdonságok olyan csoportja, amely megadhatja, hogy hová szeretné menteni a DELETE tevékenység által törölt mappát vagy fájlneveket tartalmazó naplófájlt. | Nem |
-| linkedServiceName | Csak akkor alkalmazható, ha a EnableLogging = True.<br/><br/>Az [Azure Storage](connector-azure-blob-storage.md#linked-service-properties), [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md#linked-service-properties)vagy [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#linked-service-properties) társított szolgáltatása, amely a DELETE tevékenység által törölt mappát vagy fájlneveket tartalmazó naplófájlt tárolja. | Nem |
+| linkedServiceName | Csak akkor alkalmazható, ha a EnableLogging = True.<br/><br/>Az [Azure Storage](connector-azure-blob-storage.md#linked-service-properties), [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md#linked-service-properties)vagy [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#linked-service-properties) társított szolgáltatása, amely a DELETE tevékenység által törölt mappát vagy fájlneveket tartalmazó naplófájlt tárolja. Vegye figyelembe, hogy a fájlok törléséhez ugyanazt a Integration Runtime-típust kell konfigurálnia, mint amelyet a DELETE tevékenység használ. | Nem |
 | path | Csak akkor alkalmazható, ha a EnableLogging = True.<br/><br/>A naplófájlnak a Storage-fiókba való mentésének elérési útja. Ha nem ad meg elérési utat, a szolgáltatás létrehoz egy tárolót. | Nem |
 
 ## <a name="monitoring"></a>Figyelés
@@ -143,7 +143,7 @@ Most a DELETE tevékenységgel törli a mappát vagy a fájlokat az adatkészlet
 
 Létrehozhat egy folyamatot, amely rendszeres időközönként törli az idő particionált mappáját vagy fájljait.  A mappa szerkezete például a következőhöz hasonló: `/mycontainer/2018/12/14/*.csv`.  Az ADF rendszerváltozó kihasználható az ütemezett triggerből annak azonosításához, hogy mely mappákat vagy fájlokat kell törölni minden egyes folyamat futtatásakor. 
 
-#### <a name="sample-pipeline"></a>Mintavételezési folyamat
+#### <a name="sample-pipeline"></a>Minta feldolgozási sor
 
 ```json
 {
@@ -263,7 +263,7 @@ Létrehozhat egy folyamatot, amely rendszeres időközönként törli az idő pa
 
 Létrehozhat egy folyamatot a régi vagy a lejárt fájlok törléséhez a file Attribute szűrő használatával: "LastModified" az adatkészletben.  
 
-#### <a name="sample-pipeline"></a>Mintavételezési folyamat
+#### <a name="sample-pipeline"></a>Minta feldolgozási sor
 
 ```json
 {
@@ -328,7 +328,7 @@ Egy fájl másolási tevékenységgel helyezhető át egy fájl másolásához, 
 > [!NOTE]
 > Ha a teljes mappát a mappa elérési útját tartalmazó adatkészlet definiálásával szeretné áthelyezni, majd egy másolási tevékenységgel és a törlési tevékenységgel, hogy ugyanarra az adatkészletre hivatkozzon, amely egy mappát jelképez, nagyon Körültekintőnek kell lennie. Ennek az az oka, hogy meg kell győződnie arról, hogy a másolási művelet és a törlési művelet között nem lesznek új fájlok a mappába.  Ha a másolási tevékenység csak a másolási művelet befejezése után új fájlok érkeznek, de a törlési tevékenység nem lett kitöltve, lehetséges, hogy a törlési tevékenység törli ezt az új, a DESTINATI nem másolt beérkező fájlt. még a teljes mappa törlésével. 
 
-#### <a name="sample-pipeline"></a>Mintavételezési folyamat
+#### <a name="sample-pipeline"></a>Minta feldolgozási sor
 
 ```json
 {

@@ -1,6 +1,6 @@
 ---
-title: Az Azure Service Fabric-alkalmazások hibák szimulálása |} A Microsoft Docs
-description: Hogyan felvértezni a szolgáltatások szabályos és végbemenjen meghibásodásokkal szemben.
+title: Hibák szimulálása az Azure Service Fabric-alkalmazásokban | Microsoft Docs
+description: Szolgáltatások megerősítése a kecses és a nem zökkenőmentes hibák ellen.
 services: service-fabric
 documentationcenter: .net
 author: anmolah
@@ -14,25 +14,25 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/15/2017
 ms.author: anmola
-ms.openlocfilehash: ceb6ad1a6a1182d78c473b8b0387c365eb660065
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: bbb89b66231c949627c7ffbf99ebe9b5dd379ca2
+ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60865272"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68348723"
 ---
 # <a name="simulate-failures-during-service-workloads"></a>Hibák szimulálása a szolgáltatások számítási feladatai közben
-A testability alkalmazási helyzetek, az Azure Service Fabric lehetővé teszi a fejlesztőknek, nem kell többé vesződnie a sérült egyes hibák foglalkoznia. Vannak helyzetek, azonban, ahol explicit kihagyásos ügyfél számítási feladatok és a hibák akkor lehet szükség. Ügyfél számítási feladatok és hibák kihagyásos biztosítja, hogy a szolgáltatás ténylegesen működik valamilyen művelet során hiba történik. Adja meg a szabályozás, amely testability biztosít, ilyenek lehetnek a számítási feladatok végrehajtásának pontos időpontokban. A hibák, az alkalmazás különböző állapoton indukciós megkeresheti a hibák és minőségének javítására.
+Az Azure Service Fabric tesztelési forgatókönyvei lehetővé teszik a fejlesztők számára, hogy ne aggódjanak az egyes hibák kezelésével kapcsolatban. Vannak azonban olyan forgatókönyvek, amelyekben szükség lehet az ügyfél-munkaterhelések és a hibák explicit módon történő elvégzésére. Az ügyfél-munkaterhelések és a hibák elhagyása biztosítja, hogy a szolgáltatás ténylegesen végezzen valamilyen műveletet, ha a hiba történik. A tesztelés által biztosított szabályozás szintje miatt ezek a számítási feladatok végrehajtásának pontos pontjai lehetnek. Az alkalmazás különböző állapotában lévő hibák levonása hibákat talál, és javíthatja a minőséget.
 
-## <a name="sample-custom-scenario"></a>Egyéni mintaforgatókönyv
-Ez a vizsgálat jeleníti meg az olyan forgatókönyvekben, amelyek az üzleti számítási feladat interleaves [szabályos és végbemenjen hibák](service-fabric-testability-actions.md#graceful-vs-ungraceful-fault-actions). A hibák lehet elérni, a középső szolgáltatási műveletek vagy számítási a legjobb eredmények elérése érdekében.
+## <a name="sample-custom-scenario"></a>Példa egyéni forgatókönyvre
+Ez a teszt egy olyan forgatókönyvet mutat be, amely összekapcsolja az üzleti munkaterhelést [kecses és](service-fabric-testability-actions.md#graceful-vs-ungraceful-fault-actions)zavartalan hibákkal. A hibákat a szolgáltatási műveletek közepén vagy a legjobb eredmények érdekében kell kiszámítani.
 
-Vegyük végig egy szolgáltatás, amely négy számítási feladatokat egy példát: A, B, C és a d Minden egyes munkafolyamatok megfelel, és lehet, számítási, tárolási vagy vegyesen. Az egyszerűség kedvéért azt fogja absztrakt ki a számítási feladatok ebben a példában. Az ebben a példában végrehajtott különböző hibák a következők:
+Ismerkedjen meg egy olyan szolgáltatás példáján, amely négy munkaterhelést tesz elérhetővé: A, B, C és D. Mindegyik a munkafolyamatok egy készletének felel meg, amely lehet számítási, tárolási vagy vegyes. Az egyszerűség kedvéért a példában elküldjük a számítási feladatokat. Az ebben a példában szereplő különböző hibák a következők:
 
-* RestartNode: Végbemenjen tartalék szimulálva egy gép újraindítása.
-* RestartDeployedCodePackage: Végbemenjen hiba szimulálása a szolgáltatás gazdagép-folyamat leáll.
-* RemoveReplica: Sikeres-e hiba szimulálása a replika eltávolítását.
-* A MovePrimary: Sikeres-e hiba szimulálása a replika áthelyezését váltja ki, a Service Fabric terheléselosztó.
+* RestartNode: Hiba a gép újraindításának szimulálása során.
+* RestartDeployedCodePackage: Hiba a Service Host-folyamat összeomlásának szimulálása közben.
+* RemoveReplica: Kecses hiba a replika eltávolításának szimulálása érdekében.
+* MovePrimary A Service Fabric Load Balancer által aktivált replika-áthelyezések szimulálása esetén kecses hiba.
 
 ```csharp
 // Add a reference to System.Fabric.Testability.dll and System.Fabric.dll.
@@ -116,7 +116,7 @@ class Test
             // Run the selected random fault.
             await RunFaultAsync(applicationName, fault, replicaSelector, fabricClient);
             // Validate the health and stability of the service.
-            await fabricClient.ServiceManager.ValidateServiceAsync(serviceName, maxServiceStabilizationTime);
+            await fabricClient.TestManager.ValidateServiceAsync(serviceName, maxServiceStabilizationTime);
 
             // Wait for the workload to finish successfully.
             await workloadTask;
@@ -128,16 +128,16 @@ class Test
         switch (fault)
         {
             case ServiceFabricFaults.RestartNode:
-                await client.ClusterManager.RestartNodeAsync(selector, CompletionMode.Verify);
+                await client.FaultManager.RestartNodeAsync(selector, CompletionMode.Verify);
                 break;
             case ServiceFabricFaults.RestartCodePackage:
-                await client.ApplicationManager.RestartDeployedCodePackageAsync(applicationName, selector, CompletionMode.Verify);
+                await client.FaultManager.RestartDeployedCodePackageAsync(applicationName, selector, CompletionMode.Verify);
                 break;
             case ServiceFabricFaults.RemoveReplica:
-                await client.ServiceManager.RemoveReplicaAsync(selector, CompletionMode.Verify, false);
+                await client.FaultManager.RemoveReplicaAsync(selector, CompletionMode.Verify, false);
                 break;
             case ServiceFabricFaults.MovePrimary:
-                await client.ServiceManager.MovePrimaryAsync(selector.PartitionSelector);
+                await client.FaultManager.MovePrimaryAsync(selector.PartitionSelector);
                 break;
         }
     }

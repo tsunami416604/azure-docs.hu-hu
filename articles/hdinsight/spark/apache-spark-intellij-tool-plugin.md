@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.date: 06/26/2019
 ms.author: hrasheed
-ms.openlocfilehash: a2b6cdf9fbdb27372b089a29c1a3c5d0f1c629c9
-ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
+ms.openlocfilehash: 32f5ff2ebc9d938b1936d7f2929af83d552a543d
+ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68442111"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68489863"
 ---
 # <a name="tutorial-use-azure-toolkit-for-intellij-to-create-apache-spark-applications-for-an-hdinsight-cluster"></a>Oktatóanyag: Azure Toolkit for IntelliJ használata Apache Spark-alkalmazások HDInsight-fürthöz való létrehozásához
 
@@ -171,7 +171,7 @@ A felhasználó [bejelentkezhet az Azure](#sign-in-to-your-azure-subscription)-e
 
 ### <a name="link-a-cluster"></a>Fürt csatolása
 
-Egy HDInsight-fürtöt az Apache Ambari Managed username használatával kapcsolhat össze. Hasonlóképpen, a tartományhoz csatlakoztatott HDInsight-fürtökhöz a tartomány és a Felhasználónév használatával is kapcsolódhat, például user1@contoso.com:. Emellett a Livy Service-fürtöt is összekapcsolhatja.
+Egy HDInsight-fürtöt az Apache Ambari Managed username használatával kapcsolhat össze. Hasonlóképpen, a tartományhoz csatlakoztatott HDInsight-fürtökhöz a tartomány és a Felhasználónév használatával is kapcsolódhat, például `user1@contoso.com`:. Emellett a Livy Service-fürtöt is összekapcsolhatja.
 
 1. A menüsávban navigáljon a **Megtekintés** > eszközre a**Windows** > **Azure Explorerben**.
 
@@ -227,7 +227,7 @@ A Scala-alkalmazás létrehozása után elküldheti azt a fürtnek.
 
 3. A **konfiguráció szerkesztése** ablakban adja meg a következő értékeket, majd kattintson **az OK gombra**:
 
-    |Tulajdonság |Value |
+    |Tulajdonság |Érték |
     |----|----|
     |Spark-fürtök (csak Linux)|Válassza ki azt a HDInsight Spark-fürtöt, amelyen futtatni szeretné az alkalmazást.|
     |Válassza ki a elküldeni kívánt összetevőt|Hagyja meg az alapértelmezett beállítást.|
@@ -312,7 +312,7 @@ Győződjön meg arról, hogy meggyőződött a WINUTILS. Az EXE előfeltétele.
 
 4. Adja meg a következő értékeket, majd kattintson **az OK gombra**:
 
-    |Tulajdonság |Value |
+    |Tulajdonság |Érték |
     |----|----|
     |Job Main osztály|Az alapértelmezett érték a kijelölt fájl fő osztálya. Az osztályt a három pont ( **..** .) lehetőség kiválasztásával módosíthatja.  és válasszon másik osztályt.|
     |Környezeti változók|Győződjön meg arról, hogy a HADOOP_HOME értéke helyes.|

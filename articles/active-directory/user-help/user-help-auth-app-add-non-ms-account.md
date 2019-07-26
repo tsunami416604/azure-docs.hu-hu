@@ -1,6 +1,6 @@
 ---
-title: A nem Microsoft-fiókok hozzáadása a Microsoft Authenticator alkalmazás – az Azure Active Directory |} A Microsoft Docs
-description: Hogyan lehet hozzáadni a nem Microsoft-fiókok, például Google, Facebook vagy a GitHub kétfaktoros ellenőrzéshez a Microsoft Authenticator alkalmazást.
+title: A nem Microsoft-fiókok hozzáadása a Microsoft Authenticator app-Azure Active Directoryhoz | Microsoft Docs
+description: A nem Microsoft-fiókok (például a Google, a Facebook vagy a GitHub) felvétele a Microsoft Authenticator alkalmazásba kétfaktoros ellenőrzés esetén.
 services: active-directory
 author: eross-msft
 manager: daveba
@@ -12,182 +12,187 @@ ms.date: 01/24/2019
 ms.author: lizross
 ms.reviewer: olhaun
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e6f94ba30c06fc6975ab212c895cecefe5d383fa
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: effe48c859e711f0efc41c1a4d651e5d15d5ada9
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60473906"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68382611"
 ---
 # <a name="add-your-non-microsoft-accounts"></a>A nem Microsoft-fiókok hozzáadása
-Hozzáadása a nem Microsoft-fiókok, például Google, Facebook vagy a GitHub kétfaktoros ellenőrzéshez a Microsoft Authenticator alkalmazást. A Microsoft Authenticator alkalmazás együttműködik a kétfaktoros ellenőrzési használó alkalmazásokban, és olyan fiókot, amely támogatja az egyszeri jelszó időalapú (TOTP) előírásainak.
+
+A kétfaktoros ellenőrzéshez adja hozzá a nem Microsoft-fiókokat, például a Google, a Facebook vagy a GitHub alkalmazást a Microsoft Authenticator alkalmazáshoz. A Microsoft Authenticator alkalmazás minden olyan alkalmazással működik, amely kétfaktoros ellenőrzést használ, és minden olyan fiókot, amely támogatja az időalapú egyszeri jelszavas (TOTP) szabványokat.
 
 >[!Important]
->A fiók hozzáadása előtt le kell töltenie és telepítse a Microsoft Authenticator alkalmazást. Ha még nem tette, hogy, kövesse a [töltse le és telepítse az alkalmazást](user-help-auth-app-download-install.md) cikk.
+>A fiók hozzáadása előtt le kell töltenie és telepítenie kell a Microsoft Authenticator alkalmazást. Ha még nem tette meg, kövesse az [alkalmazás letöltése és telepítése](user-help-auth-app-download-install.md) című cikk lépéseit.
 
 ## <a name="add-personal-accounts"></a>Személyes fiókok hozzáadása
-Általában az összes személyes fiók, tegye a következőket:
 
-1. Jelentkezzen be a fiókjába, és kapcsolja be az eszköz vagy a számítógép kétfaktoros hitelesítési.
+Az összes személyes fiók esetében általában a következőket kell tennie:
 
-2. Adja hozzá a fiókot a Microsoft Authenticator alkalmazást. Előfordulhat, hogy megkérdezi, hogy QR-kód beolvasása a folyamat részeként.
+1. Jelentkezzen be a fiókjába, majd kapcsolja be a kétfaktoros ellenőrzést az eszköz vagy a számítógép használatával.
 
-A Facebook, Google, GitHub és az Amazon fiókok Itt a folyamat tudjuk biztosítani, de ez a folyamat megegyezik más alkalmazás, például az Instagramon, a Netflix vagy az Adobe.
+2. Vegye fel a fiókot a Microsoft Authenticator alkalmazásba. Előfordulhat, hogy a folyamat részeként a rendszer megkéri a QR-kód bevizsgálatát.
 
-## <a name="add-your-google-account"></a>A Google-fiók hozzáadása
-Adja hozzá a Google-fiók kétfaktoros ellenőrzési bekapcsolásával, és ezután hozzáadná a fiókot az alkalmazást.
+Itt biztosítjuk a Facebook-, Google-, GitHub-és Amazon-fiókokra vonatkozó folyamatot, de ez a folyamat ugyanaz, mint bármely más alkalmazás, például a Instagram, a Netflix vagy az Adobe.
 
-### <a name="turn-on-two-factor-verification"></a>A kétfaktoros ellenőrzés
+## <a name="add-your-google-account"></a>Google-fiók hozzáadása
 
-1. Lépjen a számítógép https://myaccount.google.com/signinoptions/two-step-verification/enroll-welcome, jelölje be **Ismerkedés**, és majd a személyazonosságát.
+A kétfaktoros ellenőrzés bekapcsolásával adja hozzá Google-fiókját, majd adja hozzá a fiókot az alkalmazáshoz.
 
-2. Kövesse az oldalon lépéseket a személyes Google-fiókját a kétlépéses ellenőrzés bekapcsolása.
+### <a name="turn-on-two-factor-verification"></a>Kétfaktoros ellenőrzés bekapcsolása
 
-### <a name="add-your-google-account-to-the-app"></a>A Google-fiók hozzáadása az alkalmazáshoz
+1. A számítógépén nyissa https://myaccount.google.com/signinoptions/two-step-verification/enroll-welcome meg a következőt:, válassza az első **lépések**lehetőséget, majd ellenőrizze az identitását.
 
-1. A Google lapon a számítógépen nyissa meg a **állítsa be a második lépésben alternatív** válassza **beállítása** származó a **hitelesítő alkalmazás** szakaszban.
+2. A személyes Google-fiókra vonatkozó kétlépéses ellenőrzés bekapcsolásához kövesse az oldalon található lépéseket.
 
-2. Az a **kódok beolvasása az Authenticator alkalmazásból** lapra, jelölje be vagy **Android** vagy **iPhone** a telefontípus alapján, és adja meg **következő**.
+### <a name="add-your-google-account-to-the-app"></a>Google-fiók hozzáadása az alkalmazáshoz
 
-    QR-kód, amely segítségével automatikusan társítsa a fiókját a Microsoft Authenticator alkalmazással felhőszolgáltatására. Ne zárja be ezt az ablakot.
+1. A számítógép Google lapján lépjen a **másodlagos második lépés beállítása** szakaszra, majd válassza a **beállítás** a hitelesítő alkalmazásból szakaszt  .
 
-3. Nyissa meg a Microsoft Authenticator alkalmazást, jelölje be **fiók hozzáadása** származó a **testreszabása és vezérlési** ikonra a jobb oldali, és adja meg a felső **egyéb fiók (Google, Facebook stb.)** .
+2. A **hitelesítő alkalmazás kódjának** beolvasása lapon válassza az **Android** vagy az **iPhone** lehetőséget a telefon típusa alapján, majd kattintson a **tovább**gombra.
 
-4. A QR-kód az eszköz kamerájának használata a **állítsa be az Authenticator** lap a számítógépen.
+    Ön kap egy QR-kódot, amellyel automatikusan társíthatja a fiókját a Microsoft Authenticator alkalmazással. Ne zárjuk be ezt az ablakot.
 
-    >[!Note]
-    >Ha a kamera nem működik megfelelően, megadhatja a QR-kódot és URL-címet manuálisan.
+3. Nyissa meg a Microsoft Authenticator alkalmazást, válassza a jobb felső sarokban található **Testreszabás és vezérlés** ikonban a **fiók hozzáadása** lehetőséget, majd válassza az **egyéb fiók (Google, Facebook stb.)** lehetőséget.
 
-5. Tekintse át a **fiókok** lapja a Microsoft Authenticator alkalmazást az eszközön, győződjön meg arról, hogy a fiók adatait el a jobb oldalon, és hogy van-e egy kapcsolódó 6 jegyű ellenőrző kódot.
-
-    A fokozott biztonság érdekében az ellenőrző kód módosítása megakadályozza, hogy valaki a kód többször használatával 30 másodpercenként.
-
-6. Válassza ki **tovább** a a **állítsa be a hitelesítő** a számítógépen lapon írja be a 6 jegyű ellenőrző kódot, a Google-fiókját az alkalmazásban megadott, és válassza ki **ellenőrizze**.
-
-7. Fiókját visszaigazolta, és kiválaszthatja **kész** gombra kattintva zárja be a **állítsa be az Authenticator** lapot.
-
-    >[!NOTE]
-    >További információ kétfaktoros hitelesítési és a Google-fiók: [2. lépés – ellenőrzés](https://support.google.com/accounts/answer/185839) és [további információ a 2. lépés ellenőrzési](https://www.google.com/landing/2step/help.html).
-
-## <a name="add-your-facebook-account"></a>Adja hozzá a Facebook-fiókban
-Adja hozzá a Facebook-fiókban kétfaktoros ellenőrzési bekapcsolásával, és ezután hozzáadná a fiókot az alkalmazást.
-
-### <a name="turn-on-two-factor-verification"></a>A kétfaktoros ellenőrzés
-
-1. A számítógépen nyissa meg a Facebook, a legördülő menüben válassza a jobb felső sarokban, és folytassa a **beállítások** > **biztonsági és a bejelentkezési**.
-
-    A **biztonsági és a bejelentkezési** lap jelenik meg.
-
-2. Menjen lejjebb a **kétfaktoros hitelesítés használata** beállítást a **Kétfaktoros hitelesítés** szakaszt, és válassza ki **szerkesztése**.
-
-    A **Kétfaktoros hitelesítés** lap jelenik meg.
-
-3. Válassza ki **bekapcsolása**.
-
-### <a name="add-your-facebook-account-to-the-app"></a>A Facebook-fiókban hozzáadása az alkalmazáshoz
-
-1. A Facebook-oldalon a számítógépen, nyissa meg a **adja hozzá a biztonsági másolat** szakaszt, és válassza a **telepítő** származó a **Authentication alkalmazás** területen.
-
-    QR-kód, amely segítségével automatikusan társítsa a fiókját a Microsoft Authenticator alkalmazással felhőszolgáltatására. Ne zárja be ezt az ablakot.
-
-2. Nyissa meg a Microsoft Authenticator alkalmazást, jelölje be **fiók hozzáadása** származó a **testreszabása és vezérlési** ikonra a jobb oldali, és adja meg a felső **egyéb fiók (Google, Facebook stb.)** .
-
-3. A QR-kód az eszköz kamerájának használata a **kéttényezős hitelesítéssel a két** lap a számítógépen.
+4. Az eszköz kamerájának használatával beszkennelheti a QR-kódot a számítógépen a **hitelesítő beállítása** lapon.
 
     >[!Note]
-    >Ha a kamera nem működik megfelelően, megadhatja a QR-kódot és URL-címet manuálisan.
+    >Ha a kamera nem működik megfelelően, a QR-kódot és az URL-címet manuálisan is megadhatja.
 
-4. Tekintse át a **fiókok** lapja a Microsoft Authenticator alkalmazást az eszközön, győződjön meg arról, hogy a fiók adatait el a jobb oldalon, és hogy van-e egy kapcsolódó 6 jegyű ellenőrző kódot.
+5. Tekintse át az eszközön a Microsoft Authenticator alkalmazás **fiókok** lapját, és győződjön meg arról, hogy a fiók adatai megfelelőek, és hogy van-e hat számjegyű ellenőrző kód.
 
-    A fokozott biztonság érdekében az ellenőrző kód módosítása megakadályozza, hogy valaki a kód többször használatával 30 másodpercenként.
+    A további biztonság érdekében az ellenőrző kód 30 másodpercenként változik, ami megakadályozza, hogy valaki többször is felhasználja a kódot.
 
-5. Válassza ki **tovább** a a **kéttényezős hitelesítéssel a két** lapon a számítógépen, és írja be a Facebook-fiókját az alkalmazásban megadott 6 jegyű ellenőrző kódot.
+6. Válassza a **tovább** lehetőséget a **hitelesítő beállítása** lapon a számítógépen, írja be a Google-fiókjához az alkalmazásban megadott hat számjegyű ellenőrző kódot, majd válassza az **ellenőrzés**lehetőséget.
 
-    Fiókját visszaigazolta, és a fiók mostantól használhatja az alkalmazást.
-
-    >[!NOTE]
-    >További információ kétfaktoros hitelesítési és a Facebook-fiókban, lásd: [mi kéttényezős hitelesítést, és hogyan működik?](https://www.facebook.com/help/148233965247823).
-
-## <a name="add-your-github-account"></a>A GitHub-fiók hozzáadása
-Adja hozzá a GitHub-fiók kétfaktoros ellenőrzési bekapcsolásával, és ezután hozzáadná a fiókot az alkalmazást.
-
-### <a name="turn-on-two-factor-verification"></a>A kétfaktoros ellenőrzés
-
-1. A számítógépen nyissa meg a GitHub, a rendszerkép kiválasztása a jobb felső sarokban, és válassza **beállítások**.
-
-    A **kétfaktoros hitelesítés** lap jelenik meg.
-
-2. Válassza ki **biztonsági** származó a **személyes beállítások** oldalsáv, és válassza ki **kétfaktoros hitelesítés engedélyezése** a a **kéttényezős hitelesítés**  területen.
-
-### <a name="add-your-github-account-to-the-app"></a>A GitHub-fiók hozzáadása az alkalmazáshoz
-
-1. Az a **kétfaktoros hitelesítés** a számítógépre, válassza a lap **beállítása egy adott alkalmazás használatát**.
-
-2. A helyreállítási kódokat mentéséhez, így vissza a fiókja visszaszerzéséhez Ha elveszíti a hozzáférést, és válassza ki **tovább**. 
-
-    Az eszköz letöltésével, egy nyomtatott nyomtatási, vagy másolja őket egy jelszó manager eszközbe, mentheti a kódokat.
-
-3. Az a **kétfaktoros hitelesítés** lapon jelölje be **beállítása egy adott alkalmazás használatát**.
-
-    A lap vált, QR-kódot. Ne zárja be ezt oldal.
-
-4. Nyissa meg a Microsoft Authenticator alkalmazást, jelölje be **fiók hozzáadása** származó a **testreszabása és vezérlési** ikonra a jobb oldali felső sarokban válassza **egyéb fiók (Google, Facebook stb.)** , majd válassza ki **adja meg a szöveg kódot** a szöveg, amely a lap tetején.
-
-    A Microsoft Authenticator alkalmazás akkor tudja beolvasni a QR-kódot, így manuálisan adja meg a kódot.
-
-5. Adjon meg egy **fióknév** (például a GitHub), és írja be a **titkos kulcs** 4. lépés, és válassza ki a **Befejezés**.
-
-4. Az a **kéttényezős hitelesítő** a számítógépen lapon írja be a GitHub-fiókját az alkalmazásban megadott 6 jegyű ellenőrző kódot, és válassza ki **engedélyezése**.
-
-    A **fiókok** az oldal az alkalmazás megjeleníti a fióknevet és a egy 6 jegyű ellenőrző kódot. A fokozott biztonság érdekében az ellenőrző kód módosítása megakadályozza, hogy valaki a kód többször használatával 30 másodpercenként.
+7. A fiók ellenőrzése megtörtént, és a **kész** gombra kattintva zárhatja be a **hitelesítő beállítása** lapot.
 
     >[!NOTE]
-    >További információ kétfaktoros hitelesítési és a GitHub-fiók: [készül a kétfaktoros hitelesítés](https://help.github.com/articles/about-two-factor-authentication/).
+    >További információ a kétfaktoros ellenőrzésről és a Google-fiókról: [a kétlépéses ellenőrzés](https://support.google.com/accounts/answer/185839) bekapcsolása és [További tudnivalók a kétlépéses ellenőrzésről](https://www.google.com/landing/2step/help.html).
 
-## <a name="add-your-amazon-account"></a>Az Amazon-fiók hozzáadása
-Adja hozzá az Amazon-fiókkal kétfaktoros ellenőrzési bekapcsolásával, és ezután hozzáadná a fiókot az alkalmazást.
+## <a name="add-your-facebook-account"></a>Facebook-fiók hozzáadása
 
-### <a name="turn-on-two-factor-verification"></a>A kétfaktoros ellenőrzés
+Adja hozzá a Facebook-fiókját a kéttényezős ellenőrzés bekapcsolásával, majd adja hozzá a fiókot az alkalmazáshoz.
 
-1. A számítógépen, nyissa meg az Amazon, válassza ki a **fiók & listák** legördülő menüből, és válassza ki **fiók**.
+### <a name="turn-on-two-factor-verification"></a>Kétfaktoros ellenőrzés bekapcsolása
 
-2. Válassza ki **bejelentkezési és a biztonság**, jelentkezzen be az Amazon-fiókkal, és válassza **szerkesztése** a a **speciális biztonsági beállítások** területen.
+1. A számítógépén nyissa meg a Facebookot, válassza a jobb felső sarokban lévő legördülő menüt, majd lépjen a **Beállítások** > **Biztonság és bejelentkezés**elemre.
 
-    A **speciális biztonsági beállítások** lap jelenik meg.
+    Megjelenik a **Biztonság és bejelentkezés** lap.
 
-3. Válassza ki **Ismerkedés**.
+2. Ugorjon a kétfaktoros hitelesítés **használata** lehetőségre a kétfaktoros **hitelesítés** szakaszban, majd válassza a **Szerkesztés**lehetőséget.
 
-4. Válassza ki **hitelesítő alkalmazás** származó a **válassza ki, hogyan fog kapni a kódok** lapot.
+    Megjelenik a kétfaktoros **hitelesítés** lap.
 
-    A lap vált, QR-kódot. Ne zárja be ezt oldal.
+3. Válassza **a**bekapcsolás lehetőséget.
 
-5. Nyissa meg a Microsoft Authenticator alkalmazást, jelölje be **fiók hozzáadása** származó a **testreszabása és vezérlési** ikonra a jobb oldali, és adja meg a felső **egyéb fiók (Google, Facebook stb.)** .
+### <a name="add-your-facebook-account-to-the-app"></a>Facebook-fiók hozzáadása az alkalmazáshoz
 
-6. A QR-kód az eszköz kamerájának használata a **válassza ki, hogyan fog kapni a kódok** lap a számítógépen.
+1. A számítógép Facebook lapján lépjen a **biztonsági mentés hozzáadása** szakaszra, majd válassza a **telepítő** elemet a **hitelesítési alkalmazás** területen.
+
+    Ön kap egy QR-kódot, amellyel automatikusan társíthatja a fiókját a Microsoft Authenticator alkalmazással. Ne zárjuk be ezt az ablakot.
+
+2. Nyissa meg a Microsoft Authenticator alkalmazást, válassza a jobb felső sarokban található **Testreszabás és vezérlés** ikonban a **fiók hozzáadása** lehetőséget, majd válassza az **egyéb fiók (Google, Facebook stb.)** lehetőséget.
+
+3. Az eszköz kamerája segítségével beszkennelheti a QR-kódot a számítógép Kéttényezős **hitelesítés** lapján.
 
     >[!Note]
-    >Ha a kamera nem működik megfelelően, megadhatja a QR-kódot és URL-címet manuálisan.
+    >Ha a kamera nem működik megfelelően, a QR-kódot és az URL-címet manuálisan is megadhatja.
 
-5. Tekintse át a **fiókok** lapja a Microsoft Authenticator alkalmazást az eszközön, győződjön meg arról, hogy a fiók adatait el a jobb oldalon, és hogy van-e egy kapcsolódó 6 jegyű ellenőrző kódot.
+4. Tekintse át az eszközön a Microsoft Authenticator alkalmazás **fiókok** lapját, és győződjön meg arról, hogy a fiók adatai megfelelőek, és hogy van-e hat számjegyű ellenőrző kód.
 
-    A fokozott biztonság érdekében az ellenőrző kód módosítása megakadályozza, hogy valaki a kód többször használatával 30 másodpercenként.
+    A további biztonság érdekében az ellenőrző kód 30 másodpercenként változik, ami megakadályozza, hogy valaki többször is felhasználja a kódot.
 
-6. Az a **válassza ki, hogyan fog kapni a kódok** a számítógépen lapon írja be az Amazon-fiókját az alkalmazásban megadott 6 jegyű ellenőrző kódot, és válassza ki **kód ellenőrzése, és továbbra is**.
+5. Válassza a **tovább** lehetőséget a számítógép Kéttényezős **hitelesítés** lapján, majd írja be a Facebook-fiókjához az alkalmazásban megadott hat számjegyű ellenőrző kódot.
 
-7. Fejezze be a regisztrációs folyamat, beleértve a szöveges üzenetben, például a biztonsági másolat ellenőrzésének metódus hozzáadása, majd **kód küldése**.
-
-8. Az a **adjon hozzá egy biztonsági mentési ellenőrzési módszert** a számítógépen lapon írja be a biztonsági mentési ellenőrzési módszert az Amazon fiók által biztosított hat számjegyű ellenőrzőkódot, és válassza ki **kód ellenőrzése, és továbbra is**.
-
-9. A a Almost lapon, hogy a számítógép megbízható eszköz, és válassza ki kell-e **rendben. Kétlépéses ellenőrzés**.
-
-    A **speciális biztonsági beállítások** megjelenítő lap jelenik meg, a frissített kétfaktoros hitelesítési adatait.
+    A fiók ellenőrzése megtörtént, és most már használhatja az alkalmazást a fiók ellenőrzéséhez.
 
     >[!NOTE]
-    >További információ kétfaktoros hitelesítési és az Amazon-fiókkal, tekintse meg [kétlépéses ellenőrzés](https://www.amazon.com/gp/help/customer/display.html?nodeId=201596330) és [bejelentkezik egy kétlépéses ellenőrzés](https://www.amazon.com/gp/help/customer/display.html?nodeId=201962440).
+    >A kétfaktoros ellenőrzéssel és a Facebook-fiókkal kapcsolatos további információkért lásd: [Mi az a kétfaktoros hitelesítés és hogyan működik?](https://www.facebook.com/help/148233965247823).
 
+## <a name="add-your-github-account"></a>GitHub-fiók hozzáadása
+
+Adja hozzá a GitHub-fiókját a kétfaktoros ellenőrzés bekapcsolásával, majd adja hozzá a fiókot az alkalmazáshoz.
+
+### <a name="turn-on-two-factor-verification"></a>Kétfaktoros ellenőrzés bekapcsolása
+
+1. A számítógépén nyissa meg a GitHub alkalmazást, válassza ki a kívánt képet a jobb felső sarokban, majd válassza a **Beállítások**lehetőséget.
+
+    Megjelenik a kétfaktoros **hitelesítés** lap.
+
+2. A **személyes beállítások** oldalsávon válassza a **Biztonság** lehetőséget, majd válassza a kétfaktoros hitelesítés **engedélyezése** lehetőséget a kétfaktoros **hitelesítési** területen.
+
+### <a name="add-your-github-account-to-the-app"></a>Adja hozzá a GitHub-fiókját az alkalmazáshoz
+
+1. A számítógép **kétfaktoros hitelesítés** lapján válassza a **beállítás egy alkalmazás használatával**lehetőséget.
+
+2. Mentse a helyreállítási kódokat, hogy visszakapja a fiókját, ha elveszti a hozzáférését, majd válassza a **tovább**lehetőséget. 
+
+    A kódokat mentheti úgy, hogy letölti őket az eszközre, a nyomtatott másolatok kinyomtatásával vagy a Password Manager-eszközbe való másolásával.
+
+3. A kétfaktoros **hitelesítés** lapon válassza a **beállítás egy alkalmazás használatával**lehetőséget.
+
+    Az oldal úgy változik, hogy megmutassa a QR-kódot. Ne zárjuk be ezt a lapot.
+
+4. Nyissa meg a Microsoft Authenticator alkalmazást, válassza a **fiók hozzáadása** lehetőséget a jobb felső sarokban található **Testreszabás és vezérlés** ikonban, majd válassza az **egyéb fiók (Google, Facebook stb.)** lehetőséget, majd jelölje be a **szöveges kód megadása** elemet a tetején lévő szövegből. a lap.
+
+    A Microsoft Authenticator alkalmazás nem tudja beolvasni a QR-kódot, ezért manuálisan kell megadnia a kódot.
+
+5. Adja meg a **fiók nevét** (például GitHub), és írja be a **titkos kulcsot** a 4. lépésből, majd válassza a **Befejezés**gombot.
+
+6. A számítógép  kétfaktoros hitelesítő lapján írja be a GitHub-fiókhoz tartozó alkalmazásban megadott hat számjegyű ellenőrző kódot, majd válassza az **Engedélyezés**lehetőséget.
+
+    Az alkalmazás **fiókok** lapján megjelenik a fiók neve és egy hat számjegyű ellenőrző kód. A további biztonság érdekében az ellenőrző kód 30 másodpercenként változik, ami megakadályozza, hogy valaki többször is felhasználja a kódot.
+
+    >[!NOTE]
+    >A kétfaktoros ellenőrzéssel és a GitHub-fiókkal kapcsolatos további információkért lásd [a kétfaktoros hitelesítésről szóló](https://help.github.com/articles/about-two-factor-authentication/)témakört.
+
+## <a name="add-your-amazon-account"></a>Amazon-fiók hozzáadása
+
+A kétfaktoros ellenőrzés bekapcsolásával adja hozzá az Amazon-fiókját, majd adja hozzá a fiókot az alkalmazáshoz.
+
+### <a name="turn-on-two-factor-verification"></a>Kétfaktoros ellenőrzés bekapcsolása
+
+1. A számítógépen nyissa meg az Amazon elemet, válassza ki a **fiók & listája** legördülő menüt, majd válassza ki **a fiókját**.
+
+2. Válassza a **bejelentkezés & biztonság**lehetőséget, jelentkezzen be az Amazon-fiókjába, majd válassza a **Szerkesztés** lehetőséget a **speciális biztonsági beállítások** területen.
+
+    Megjelenik a **speciális biztonsági beállítások** lap.
+
+3. Válassza az első **lépések**lehetőséget.
+
+4. Válassza a **hitelesítő alkalmazás** lehetőséget a **válassza ki, hogyan szeretné fogadni a kódokat** lapon.
+
+    Az oldal úgy változik, hogy megmutassa a QR-kódot. Ne zárjuk be ezt a lapot.
+
+5. Nyissa meg a Microsoft Authenticator alkalmazást, válassza a jobb felső sarokban található **Testreszabás és vezérlés** ikonban a **fiók hozzáadása** lehetőséget, majd válassza az **egyéb fiók (Google, Facebook stb.)** lehetőséget.
+
+6. Az eszköz kamerájának használatával beszkennelheti a QR-kódot a számítógépén a **kódok fogadásának kiválasztása** lapon.
+
+    >[!Note]
+    >Ha a kamera nem működik megfelelően, a QR-kódot és az URL-címet manuálisan is megadhatja.
+
+7. Tekintse át az eszközön a Microsoft Authenticator alkalmazás **fiókok** lapját, és győződjön meg arról, hogy a fiók adatai megfelelőek, és hogy van-e hat számjegyű ellenőrző kód.
+
+    A további biztonság érdekében az ellenőrző kód 30 másodpercenként változik, ami megakadályozza, hogy valaki többször is felhasználja a kódot.
+
+8. A **válassza ki a kódok fogadása** lapot a számítógépen írja be az Amazon-fiókjához az alkalmazásban megadott hat számjegyű ellenőrző kódot, majd válassza a **kód ellenőrzése és folytatás**lehetőséget.
+
+9. Fejezze be a regisztrációs folyamat hátralévő részét, beleértve a biztonsági mentési ellenőrzési módszer hozzáadását, például egy szöveges üzenetet, majd válassza a **kód küldése**lehetőséget.
+
+10. A számítógép **biztonsági mentése ellenőrzési módszer hozzáadása** lapján írja be az Amazon-fiókjához tartozó biztonsági mentési ellenőrzési módszer által megadott hat számjegyű ellenőrző kódot, majd válassza a **kód ellenőrzése és folytatás**lehetőséget.
+
+11. A **majdnem kész** lapon döntse el, hogy megbízható eszközt kíván-e készíteni a számítógépről, majd válassza **a beolvasás lehetőséget. A kétlépéses ellenőrzés**bekapcsolása.
+
+    Megjelenik a **speciális biztonsági beállítások** lap, amely a frissített kétfaktoros ellenőrzés részleteit jeleníti meg.
+
+    >[!NOTE]
+    >A kétfaktoros ellenőrzéssel és az Amazon-fiókkal kapcsolatos további információkért lásd: [a kétlépéses ellenőrzés](https://www.amazon.com/gp/help/customer/display.html?nodeId=201596330) és a bejelentkezés kétlépéses [ellenőrzéssel](https://www.amazon.com/gp/help/customer/display.html?nodeId=201962440)című szakasz.
 
 ## <a name="next-steps"></a>További lépések
 
-- Miután hozzáadta a fiókok az alkalmazáshoz, bejelentkezhet az Authenticator alkalmazás használatával az eszközén. További információkért lásd: [jelentkezzen be az alkalmazás](user-help-auth-app-sign-in.md).
+- Miután hozzáadta a fiókokat az alkalmazáshoz, bejelentkezhet a hitelesítő alkalmazás használatával az eszközön. További információ: [Bejelentkezés az alkalmazás használatával](user-help-auth-app-sign-in.md).
 
-- IOS rendszerű eszközökhöz is készíthető a fiók hitelesítő adatait, és a felhőhöz kapcsolódó alkalmazás beállításait, például a fiókok sorrendjét. További információkért lásd: [biztonsági mentés és helyreállítás a Microsoft Authenticator alkalmazás](user-help-auth-app-backup-recovery.md).
+- Az iOS rendszerű eszközökön biztonsági mentést készíthet a fiók hitelesítő adatairól és a kapcsolódó Alkalmazásbeállítások, például a fiókok sorrendjéről a felhőhöz. További információ: [biztonsági mentés és helyreállítás Microsoft Authenticator alkalmazással](user-help-auth-app-backup-recovery.md).

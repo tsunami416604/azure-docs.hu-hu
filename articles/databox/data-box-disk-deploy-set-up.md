@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: tutorial
-ms.date: 07/22/2019
+ms.date: 07/23/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: 7fd6128b9ac5a7a962d3dd6077ff88e23a83538a
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: 49f3f608ff34847905b219047af843db00da78c4
+ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68384636"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68480049"
 ---
 ::: zone target="docs"
 
@@ -307,6 +307,8 @@ A lemezek beállításával és feloldásával kapcsolatos további információ
 
 ::: zone-end
 
+::: zone target="docs"
+
 ## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban az Azure Data Box Diskkel kapcsolatos alábbi témakörökkel ismerkedett meg:
@@ -322,4 +324,6 @@ A következő oktatóanyag azt mutatja be, hogyan másolhat adatokat a Data Box 
 
 > [!div class="nextstepaction"]
 > [Adatok másolása a Data Box Diskre](./data-box-disk-deploy-copy-data.md)
+
+::: zone-end
 

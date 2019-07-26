@@ -1,5 +1,5 @@
 ---
-title: SAML egyszeri bejelentkezés a helyszíni alkalmazásokhoz Azure Active Directory Application Proxy (előzetes verzió) | Microsoft Docs
+title: SAML egyszeri bejelentkezés a helyszíni alkalmazásokhoz Azure AD alkalmazás proxyval | Microsoft Docs
 description: Ismerje meg, hogyan biztosíthat egyszeri bejelentkezést az SAML-hitelesítéssel védett helyszíni alkalmazásokhoz. Távoli hozzáférés biztosítása a helyszíni alkalmazásokhoz alkalmazásproxy használatával.
 services: active-directory
 documentationcenter: ''
@@ -16,14 +16,14 @@ ms.author: mimart
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a9f4ab79a9fc9b8fec26cce98d9a878b6fa2a0c3
-ms.sourcegitcommit: 470041c681719df2d4ee9b81c9be6104befffcea
-ms.translationtype: HT
+ms.openlocfilehash: ff5152a2d65ea3921f0fef7f3a020bcea80d1769
+ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67853760"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68421253"
 ---
-# <a name="saml-single-sign-on-for-on-premises-applications-with-application-proxy-preview"></a>SAML egyszeri bejelentkezés a helyszíni alkalmazásokhoz alkalmazásproxy (előzetes verzió) használatával
+# <a name="saml-single-sign-on-for-on-premises-applications-with-application-proxy"></a>SAML egyszeri bejelentkezés a helyszíni alkalmazásokhoz alkalmazásproxy használatával
 
 Az egyszeri bejelentkezést (SSO) az SAML-hitelesítéssel védett helyszíni alkalmazások számára is biztosíthatja, és az alkalmazás-proxyn keresztül távoli hozzáférést biztosíthat ezekhez az alkalmazásokhoz. Az SAML egyszeri bejelentkezéssel az Azure Active Directory (Azure AD) a felhasználó Azure AD-fiókjának használatával hitelesíti az alkalmazást. Azure ad-ben a bejelentkezési adatait az alkalmazás egy kapcsolat protokollon keresztül kommunikál. A felhasználókat az SAML-jogcímek által meghatározott szabályok alapján adott alkalmazási szerepkörökre is leképezheti. A SAML SSO mellett az alkalmazásproxy engedélyezésével a felhasználók külső hozzáféréssel fognak rendelkezni az alkalmazáshoz és a zökkenőmentes SSO-élményhez.
 
@@ -49,7 +49,7 @@ Az alábbi protokollok a szolgáltató által kezdeményezett (SP által kezdem�
 
 5. Válassza az **SAML** lehetőséget az egyszeri bejelentkezési módszerként.
 
-6. Először állítsa be az SAML SSO-t, hogy működjön a vállalati hálózaton. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon nyissa meg az alapszintű **SAML-konfiguráció** fejlécét, és válassza ki annak **szerkesztési** ikonját (egy ceruza). Az alkalmazás SAML-alapú hitelesítésének konfigurálásához kövesse az alapszintű [SAML-konfiguráció megadása](configure-single-sign-on-non-gallery-applications.md#saml-based-single-sign-on) című témakör lépéseit.
+6. Először állítsa be az SAML SSO-t, hogy működjön a vállalati hálózaton. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon nyissa meg az alapszintű **SAML-konfiguráció** fejlécét, és válassza ki annak **szerkesztési** ikonját (egy ceruza). Az alkalmazás SAML-alapú hitelesítésének konfigurálásához kövesse az alapszintű [SAML-konfiguráció megadása](configure-single-sign-on-non-gallery-applications.md#step-1-edit-the-basic-saml-configuration) című témakör lépéseit.
 
 7. Adjon hozzá legalább egy felhasználót az alkalmazáshoz, és győződjön meg arról, hogy a teszt fiók hozzáfér az alkalmazáshoz. Ha csatlakozik a vállalati hálózathoz, a tesztelési fiók használatával ellenőrizheti, hogy van-e egyszeri bejelentkezés az alkalmazásba. 
 

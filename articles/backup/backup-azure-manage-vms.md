@@ -1,171 +1,170 @@
 ---
-title: Kezelése és Azure virtuális gép biztonsági mentéseinek figyelése az Azure Backup szolgáltatás használatával
-description: Ismerje meg, hogyan kezelheti és Azure virtuális gép biztonsági mentéseinek figyelése az Azure Backup szolgáltatás használatával.
-services: backup
+title: Azure-beli virtuális gépek biztonsági másolatainak kezelése és figyelése az Azure Backup szolgáltatás használatával
+description: Ismerje meg, hogyan kezelheti és figyelheti az Azure-beli virtuális gépek biztonsági mentéseit a Azure Backup szolgáltatás használatával.
 author: sogup
 manager: vijayts
 ms.service: backup
 ms.topic: conceptual
 ms.date: 03/13/2019
 ms.author: sogup
-ms.openlocfilehash: add2c72535b5be0edcbc00c077dfe20a6deaa3e0
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 3a958e2397071407f6283938382ad7dd8c07bc09
+ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67434194"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68466256"
 ---
 # <a name="manage-azure-vm-backups"></a>Azure-beli virtuális gépek biztonsági mentésének kezelése
 
-Ez a cikk bemutatja, hogyan kezelheti az Azure virtuális gépeken (VM), amely készül biztonsági másolat használatával a [Azure Backup szolgáltatás](backup-overview.md). A cikk emellett összegzi a biztonsági mentési információkat talál a tároló irányítópultjának.
+Ez a cikk azt ismerteti, hogyan kezelhetők az Azure-beli virtuális gépek (VM-EK) a [Azure Backup szolgáltatással](backup-overview.md)készített biztonsági mentéssel. A cikk a tároló irányítópultján található biztonsági mentési információkat is összegzi.
 
 
-Az Azure Portalon, a Recovery Services-tároló irányítópultján információ tárba való hozzáférést biztosít többek között:
+A Azure Portal a Recovery Services-tároló irányítópultja hozzáférést biztosít a tár adataihoz, beleértve a következőket:
 
-* A legutóbbi biztonsági másolatra, amely egyben a legújabb visszaállítási pont.
+* A legújabb biztonsági mentés, amely egyben a legújabb visszaállítási pont is.
 * A biztonsági mentési szabályzat.
-* Az összes biztonságimásolat-pillanatképek mérete.
-* A virtuális gépeket, amelyek engedélyezve vannak a biztonsági mentések száma.
+* Az összes biztonsági mentési pillanatkép teljes mérete.
+* A biztonsági mentésre engedélyezett virtuális gépek száma.
 
-Biztonsági másolatok összevonással lefelé az egyes virtuális gépekhez és az irányítópult használatával kezelheti. Gépek biztonsági mentéseinek a kezdéshez nyissa meg a tároló irányítópultján.
+A biztonsági mentéseket az irányítópult használatával és az egyes virtuális gépekre történő lefúrással kezelheti. A gépek biztonsági mentésének megkezdéséhez nyissa meg a tárolót az irányítópulton.
 
-![A csúszka teljes irányítópult-nézet](./media/backup-azure-manage-vms/bottom-slider.png)
+![Teljes irányítópult nézet a csúszkával](./media/backup-azure-manage-vms/bottom-slider.png)
 
 ## <a name="view-vms-on-the-dashboard"></a>Virtuális gépek megtekintése az irányítópulton
 
-Virtuális gépek megtekintése a tároló irányítópultjának:
+Virtuális gépek megtekintése a tároló irányítópultján:
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
-2. A központ menüben válassza ki a **Tallózás**. Az erőforrások listájába írja be a következőt: **Recovery Services**. Írja be, mert a szűrt lista a bemenetet a következők alapján. Válassza ki **Recovery Services-tárolók**.
+2. A központi menüben válassza a **Tallózás**lehetőséget. Az erőforrások listájába írja be a következőt: **Recovery Services**. A beíráskor a lista a bemenet alapján szűrve lesz. Válassza ki **Recovery Services**tárolókat.
 
     ![Recovery Services-tároló létrehozása](./media/backup-azure-manage-vms/browse-to-rs-vaults.png)
 
-3. Egyszerűen használható, kattintson a jobb gombbal a tárolót, és válasszon **rögzítés az irányítópulton**.
-4. Nyissa meg a tároló irányítópultján.
+3. A könnyű használat érdekében kattintson a jobb gombbal a tárolóra, és válassza a **rögzítés az irányítópulton**lehetőséget.
+4. Nyissa meg a tároló irányítópultját.
 
-    ![Nyissa meg a tároló irányítópultjának és a beállítások panel](./media/backup-azure-manage-vms/full-view-rs-vault.png)
+    ![A tároló irányítópultjának és beállításainak paneljének megnyitása](./media/backup-azure-manage-vms/full-view-rs-vault.png)
 
-5. Az a **biztonsági másolati elemek** csempéről válassza **Azure Virtual Machines**.
+5. A **biztonsági mentési elemek** csempén válassza az **Azure Virtual Machines**elemet.
 
-    ![Nyissa meg a biztonsági másolati elemek csempét](./media/backup-azure-manage-vms/contoso-vault-1606.png)
+    ![A biztonsági mentési elemek csempe megnyitása](./media/backup-azure-manage-vms/contoso-vault-1606.png)
 
-6. Az a **biztonsági másolati elemek** panelen megtekintheti a védett virtuális gépek listáját. Ebben a példában a tároló egy virtuális gépet véd: demobackup.  
+6. A **biztonsági mentési elemek** panelen megtekintheti a védett virtuális gépek listáját. Ebben a példában a tároló egy virtuális gépet véd: demobackup.  
 
-    ![A biztonsági mentési elemek panel megjelenítése](./media/backup-azure-manage-vms/backup-items-blade-select-item.png)
+    ![A biztonsági mentési elemek panel megtekintése](./media/backup-azure-manage-vms/backup-items-blade-select-item.png)
 
-7. A tároló elem irányítópulton biztonsági mentési szabályzatok módosításához, futtassa egy igény szerinti biztonsági másolat, állítsa le vagy virtuális gépek védelmének folytatása, biztonsági mentési adatok törlése, visszaállítási pont megtekintése és futtathat visszaállítást.
+7. A tár elem irányítópultján módosítsa a biztonsági mentési szabályzatokat, futtasson egy igény szerinti biztonsági mentést, állítsa le vagy folytassa a virtuális gépek védelmét, törölje a biztonsági mentési adatok listáját, tekintse meg a visszaállítási pontokat, és futtassa a visszaállítást.
 
-    ![A biztonsági másolati elemek irányítópult és a beállítások panel](./media/backup-azure-manage-vms/item-dashboard-settings.png)
+    ![A biztonsági mentési elemek irányítópultja és a beállítások panel](./media/backup-azure-manage-vms/item-dashboard-settings.png)
 
-## <a name="manage-backup-policy-for-a-vm"></a>Virtuális gép biztonsági mentési házirend kezelése
+## <a name="manage-backup-policy-for-a-vm"></a>Virtuális gép biztonsági mentési szabályzatának kezelése
 
-Biztonsági mentési házirend kezeléséhez:
+Biztonsági mentési szabályzat kezelése:
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/). Nyissa meg a tároló irányítópultján.
-2. Az a **biztonsági másolati elemek** csempéről válassza **Azure Virtual Machines**.
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/). Nyissa meg a tároló irányítópultját.
+2. A **biztonsági mentési elemek** csempén válassza az **Azure Virtual Machines**elemet.
 
-    ![Nyissa meg a biztonsági másolati elemek csempét](./media/backup-azure-manage-vms/contoso-vault-1606.png)
+    ![A biztonsági mentési elemek csempe megnyitása](./media/backup-azure-manage-vms/contoso-vault-1606.png)
 
-3. Az a **biztonsági másolati elemek** panelen megtekintheti a védett virtuális gépek és a legújabb visszaállítási pont időpontja a legutóbbi biztonsági mentés állapota listáját.
+3. A **biztonsági mentési elemek** panelen megtekintheti a védett virtuális gépek listáját és a legutóbbi biztonsági mentési állapotot a legutóbbi visszaállítási pontok idejével.
 
-    ![A biztonsági mentési elemek panel megjelenítése](./media/backup-azure-manage-vms/backup-items-blade-select-item.png)
+    ![A biztonsági mentési elemek panel megtekintése](./media/backup-azure-manage-vms/backup-items-blade-select-item.png)
 
-4. A tároló elem irányítópulton válassza ki a biztonsági mentési szabályzat.
+4. A tároló elem irányítópultján kiválaszthatja a biztonsági mentési szabályzatot.
 
-   * Házirendek váltson. Válasszon ki egy másik szabályzatot, majd válassza ki a **mentése**. Ekkor a rendszer automatikusan alkalmazza az új házirendet a tárolón.
+   * A házirendek váltásához válasszon másik szabályzatot, majd kattintson a **Mentés**gombra. Ekkor a rendszer automatikusan alkalmazza az új házirendet a tárolón.
 
-     ![A biztonsági mentési házirend kiválasztása](./media/backup-azure-manage-vms/backup-policy-create-new.png)
+     ![Biztonsági mentési szabályzat kiválasztása](./media/backup-azure-manage-vms/backup-policy-create-new.png)
 
-## <a name="run-an-on-demand-backup"></a>Egy igény szerinti biztonsági mentés futtatása
-A virtuális gépek egy igény szerinti biztonsági mentést a védelmének beállítása után futtathatja. Tartsa szem előtt ezeket az adatokat:
+## <a name="run-an-on-demand-backup"></a>Igény szerinti biztonsági mentés futtatása
+A virtuális gép igény szerinti biztonsági mentését a védelem beállítása után is futtathatja. Tartsa szem előtt az alábbi adatokat:
 
-- Ha a kezdeti biztonsági mentés függőben, igény szerinti biztonsági mentést a Recovery Services-tárolóban hoz létre a virtuális gép teljes másolatának.
-- Ha a kezdeti biztonsági mentés befejeződött, egy igény szerinti biztonsági mentést fogja csak elküldi a módosításokat a korábbi pillanatképből a Recovery Services-tároló. Vagyis a későbbi biztonsági mentések mindig növekményes.
-- Egy igény szerinti biztonsági mentés a megőrzési tartomány megadott megőrzési értékkel, hogy mikor indít el a biztonsági mentés.
+- Ha a kezdeti biztonsági mentés függőben van, az igény szerinti biztonsági mentés a virtuális gép teljes másolatát hozza létre a Recovery Services-tárolóban.
+- Ha a kezdeti biztonsági mentés elkészült, az igény szerinti biztonsági mentés csak az előző pillanatképből származó módosításokat küldi el a Recovery Services-tárolónak. Ez a későbbi biztonsági másolatok mindig növekményes.
+- Az igény szerinti biztonsági mentés megőrzési tartománya a biztonsági mentés indításakor megadott megőrzési érték.
 
-Egy igény szerinti biztonsági mentés elindítása:
+Igény szerinti biztonsági mentés elindítása:
 
-1. Az a [tároló elem irányítópulton](#view-vms-on-the-dashboard)alatt **védett elem**válassza **biztonságimásolat-elem**.
+1. A tároló [elem irányítópultján](#view-vms-on-the-dashboard), a **védett elem**alatt válassza a **biztonsági másolat elemet**.
 
     ![A biztonsági mentés most lehetőség](./media/backup-azure-manage-vms/backup-now-button.png)
 
-2. A **biztonságimásolat-felügyeleti típussal**válassza **Azure virtuális gép**. A **biztonsági mentési elemek (Azure virtuális gép)** panel jelenik meg.
-3. Válassza ki a virtuális Gépet, majd **a biztonsági mentés** egy igény szerinti biztonsági mentés létrehozásához. A **biztonsági mentés** panel jelenik meg.
-4. Az a **megőrzése biztonsági mentési amíg** mezőben adja meg kell őrizni a biztonsági mentés dátumát.
+2. A **biztonsági mentési felügyelet típusa**területen válassza az Azure-beli **virtuális gép**lehetőséget. Megjelenik a **biztonsági mentési elem (Azure-beli virtuális gép)** panel.
+3. Válasszon ki egy virtuális gépet, és válassza a **biztonsági mentés** lehetőséget egy igény szerinti biztonsági mentés létrehozásához. Megjelenik a **biztonsági mentés** panel.
+4. A **biztonsági mentés** és a megőrzés megtartása mezőben határozza meg a biztonsági mentés dátumát.
 
-    ![A biztonsági mentés naptár](./media/backup-azure-manage-vms/backup-now-check.png)
+    ![A biztonsági mentés naptára](./media/backup-azure-manage-vms/backup-now-check.png)
 
-5. Válassza ki **OK** a biztonsági mentési feladat futtatása.
+5. A biztonsági mentési feladatok futtatásához kattintson **az OK gombra** .
 
-Nyomon követheti a feladat előrehaladását a tároló irányítópultján válassza a **biztonsági mentési feladatok** csempére.
+A feladat előrehaladásának nyomon követéséhez a tároló irányítópultján válassza a **biztonsági mentési feladatok** csempét.
 
-## <a name="stop-protecting-a-vm"></a>Virtuális gép védelmének megszüntetése
+## <a name="stop-protecting-a-vm"></a>Virtuális gép védelmének leállítása
 
-Leállítja a virtuális gép védelmét két módja van:
+A virtuális gépek védelmét kétféleképpen állíthatja le:
 
-* **Védelem leállítása és a biztonsági másolatok adatainak megőrzése**. Ez a beállítás leállítja a virtuális gép; védelmét az összes jövőbeli biztonsági mentési feladatok azonban az Azure Backup szolgáltatás megőrzi a helyreállítási pontokat biztonsági másolat készült.  Kell fizetni, hogy a helyreállítási pontok a tároló (lásd: [Azure Backup árairól](https://azure.microsoft.com/pricing/details/backup/) részletekért). Láthatja, hogy a virtuális gép visszaállítása szükség esetén. Ha úgy dönt, hogy a virtuális gép védelmének folytatása, akkor használhatja *biztonsági mentés folytatása* lehetőséget.
-* **Védelem leállítása és biztonsági mentési adatok törlése**. Ez a beállítás a virtuális gép védelmét az összes jövőbeli biztonsági mentési feladatot leállítja és törli a helyreállítási pontokat. Nem lehet visszaállítani a virtuális gép, sem használja *biztonsági mentés folytatása* lehetőséget.
+* **A védelem leállítása és a biztonsági mentési adat megőrzése**. Ez a beállítás leállítja az összes jövőbeli biztonsági mentési feladatot a virtuális gép védelmére; a Azure Backup szolgáltatás azonban megőrzi a biztonsági mentés alatt álló helyreállítási pontokat.  A helyreállítási pontok megőrzéséhez a tárolóban kell fizetnie (lásd a részletek [Azure Backup díjszabását](https://azure.microsoft.com/pricing/details/backup/) ). Szükség esetén visszaállíthatja a virtuális gépet. Ha úgy dönt, hogy folytatja a virtuális gépek védelmét, akkor a *biztonsági mentés folytatása* lehetőséget használhatja.
+* **Állítsa le a védelmet, és törölje a biztonsági másolati fájlokat**. Ez a beállítás leállítja az összes jövőbeli biztonsági mentési feladatot a virtuális gép védelmére, és törli az összes helyreállítási pontot. Nem fogja tudni visszaállítani a virtuális gépet, és nem használhatja a *biztonsági mentés folytatása* lehetőséget.
 
 >[!NOTE]
->Ha töröl egy adatforrást biztonsági mentés leállítása nélkül, akkor az új biztonsági mentések sikertelenek lesznek. Régi helyreállítási pontok érvényessége lejár a házirendnek megfelelően, de egy, a legutóbbi helyreállítási pont mindig kell tartani, amíg a biztonsági mentés leállítása, és törölheti az adatokat.
+>Ha töröl egy adatforrást a biztonsági mentések leállítása nélkül, az új biztonsági mentések sikertelenek lesznek. A régi helyreállítási pontok a szabályzatnak megfelelően lejárnak, de egy utolsó helyreállítási pont mindig megmarad, amíg le nem állítja a biztonsági mentéseket, és törli az adatokat.
 >
 
-### <a name="stop-protection-and-retain-backup-data"></a>Védelem leállítása és a biztonsági másolatok adatainak megőrzése
+### <a name="stop-protection-and-retain-backup-data"></a>A védelem leállítása és a biztonsági mentési adat megőrzése
 
-Állítsa le a védelmet, és a virtuális gépek adatainak megőrzése:
+A védelem leállítása és a virtuális gép adatának megőrzése:
 
-1. Az a [tároló elem irányítópultján](#view-vms-on-the-dashboard)válassza **biztonsági mentés leállítása**.
-2. Válasszon **biztonsági másolatok adatainak megőrzése**, és igény szerint, erősítse meg a választását. Ha azt szeretné, adjon hozzá megjegyzést. Ha nem tudja biztosan az elem nevét, a kurzort a felkiáltójel nevének megjelenítéséhez.
+1. A tár [elem irányítópultján](#view-vms-on-the-dashboard)válassza a **biztonsági mentés leállítása**lehetőséget.
+2. Válassza a **biztonsági mentési adat megőrzése**lehetőséget, és szükség szerint erősítse meg a kijelölést. Ha kívánja, adjon hozzá egy megjegyzést. Ha nem tudja biztosan az elem nevét, vigye a kurzort a felkiáltójel fölé a név megtekintéséhez.
 
-    ![Biztonsági mentési adatok megőrzése](./media/backup-azure-manage-vms/retain-backup-data.png)
+    ![Biztonsági mentési adat megőrzése](./media/backup-azure-manage-vms/retain-backup-data.png)
 
-Egy értesítés jelzi, hogy a biztonsági mentési feladatok leállított.
+Egy értesítésből megtudhatja, hogy a biztonsági mentési feladatok le lettek állítva.
 
-### <a name="stop-protection-and-delete-backup-data"></a>Védelem leállítása és biztonsági mentési adatok törlése
+### <a name="stop-protection-and-delete-backup-data"></a>Védelem leállítása és biztonsági másolatok törlése
 
-Állítsa le a védelmet, és törli az adatokat a virtuális gépek:
+A védelem leállítása és a virtuális gép adattartalmának törlése:
 
-1. Az a [tároló elem irányítópultján](#view-vms-on-the-dashboard)válassza **biztonsági mentés leállítása**.
-2. Válasszon **biztonsági másolatok adatainak törlése**, és igény szerint, erősítse meg a választását. Adja meg a biztonsági másolati elem nevét, és adjon hozzá megjegyzést, ha azt szeretné.
+1. A tár [elem irányítópultján](#view-vms-on-the-dashboard)válassza a **biztonsági mentés leállítása**lehetőséget.
+2. Válassza a **biztonsági másolati elemek törlése**lehetőséget, és szükség szerint erősítse meg a kijelölést. Adja meg a biztonsági mentési elem nevét, és adja hozzá a kívánt megjegyzést.
 
     ![Biztonsági mentési adatok törlése](./media/backup-azure-manage-vms/delete-backup-data1.png)
 
-## <a name="resume-protection-of-a-vm"></a>A virtuális gépek védelmének folytatása
+## <a name="resume-protection-of-a-vm"></a>Virtuális gép védelmének folytatása
 
-Ha választotta volna [védelem leállítása és a biztonsági másolatok adatainak megőrzése](#stop-protection-and-retain-backup-data) lehetőséget állítsa le a virtuális gép védelmét, közben, akkor **biztonsági mentés folytatása**. Ez a beállítás nem áll rendelkezésre, ha úgy dönt, [védelem leállítása és biztonsági mentési adatok törlése](#stop-protection-and-delete-backup-data) lehetőséget vagy [biztonsági mentési adatok törlése](#delete-backup-data).
+Ha úgy döntött, hogy leállítja [a védelmet, és megőrzi a biztonsági mentési](#stop-protection-and-retain-backup-data) adatvédelmet, a virtuális gép védelmének leállítása lehetőségnél használhatja a **biztonsági mentést**. Ez a beállítás nem érhető el, ha a [védelem leállítása és a biztonsági másolati](#stop-protection-and-delete-backup-data) beállítások törlése lehetőségre kattint, vagy [törli a biztonsági](#delete-backup-data)mentési adatkészletet.
 
-Virtuális gép védelmének visszaállításához:
+A virtuális gép védelmének folytatása:
 
-1. Az a [tároló elem irányítópultján](#view-vms-on-the-dashboard)válassza **biztonsági mentés folytatása**.
+1. A tár [elem irányítópultján](#view-vms-on-the-dashboard)válassza a **biztonsági mentés folytatása**lehetőséget.
 
-2. Kövesse a [biztonsági mentési házirendek kezelése](#manage-backup-policy-for-a-vm) a szabályzat hozzárendelése a virtuális gép számára. Válassza ki a virtuális gép kezdeti alkalmazásvédelmi szabályzatot nem kell.
-3. A biztonsági mentési szabályzat alkalmazása a virtuális géphez, után a következő üzenet jelenik meg:
+2. A virtuális gép szabályzatának hozzárendeléséhez kövesse a [biztonsági mentési házirendek kezelése](#manage-backup-policy-for-a-vm) című témakör lépéseit. Nem kell kiválasztania a virtuális gép kezdeti védelmi szabályzatát.
+3. Miután alkalmazta a biztonsági mentési szabályzatot a virtuális gépre, a következő üzenet jelenik meg:
 
-    ![Sikeresen megtörtént a védett virtuális gépek jelző üzenet](./media/backup-azure-manage-vms/success-message.png)
+    ![A virtuális gép sikeres védelmét jelző üzenet](./media/backup-azure-manage-vms/success-message.png)
 
 ## <a name="delete-backup-data"></a>Biztonsági mentési adatok törlése
 
-A virtuális gép biztonsági mentési adatok törlése két módja van:
+A virtuális gép biztonsági mentési adatfájljait kétféleképpen törölheti:
 
-- A tároló elem irányítópultján válassza ki a biztonsági mentés leállítása, és kövesse az utasításokat a [védelem leállítása és biztonsági mentési adatok törlése](#stop-protection-and-delete-backup-data) lehetőséget.
+- A tároló elem irányítópultján válassza a biztonsági mentés leállítása lehetőséget, és kövesse a [védelem leállítása és a biztonsági mentési adatok törlése](#stop-protection-and-delete-backup-data) beállítás utasításait.
 
-  ![Válassza ki a biztonsági mentés leállítása](./media/backup-azure-manage-vms/stop-backup-buttom.png)
+  ![Válassza a biztonsági mentés leállítása lehetőséget.](./media/backup-azure-manage-vms/stop-backup-buttom.png)
 
-- A tároló elem irányítópultján válassza ki a biztonsági mentési adatok törlése. Ez a beállítás engedélyezve van, ha úgy döntött, kellett [védelem leállítása és a biztonsági másolatok adatainak megőrzése](#stop-protection-and-retain-backup-data) lehetőség alatt állítsa le a virtuális gép védelmét
+- A tároló elem irányítópultján válassza a biztonsági másolatok adatainak törlése lehetőséget. Ez a beállítás akkor engedélyezett, ha a virtuálisgép-védelem leállításakor a [védelem leállítását és a biztonsági mentési adat megőrzése](#stop-protection-and-retain-backup-data) beállítást választotta
 
-  ![Törlés biztonsági másolat kiválasztása](./media/backup-azure-manage-vms/delete-backup-buttom.png)
+  ![Válassza a biztonsági mentés törlése lehetőséget.](./media/backup-azure-manage-vms/delete-backup-buttom.png)
 
-  - Az a [tároló elem irányítópulton](#view-vms-on-the-dashboard)válassza **biztonsági mentési adatok törlése**.
-  - Írja be a biztonsági mentési elem győződjön meg arról, hogy szeretné-e a helyreállítási pontok törlése.
+  - A tároló [elem irányítópultján](#view-vms-on-the-dashboard)válassza a **biztonsági másolati elemek törlése**lehetőséget.
+  - Írja be a biztonsági mentési tétel nevét annak megerősítéséhez, hogy törölni kívánja a helyreállítási pontokat.
 
     ![Biztonsági mentési adatok törlése](./media/backup-azure-manage-vms/delete-backup-data1.png)
 
-  - A biztonsági mentési adatok, az elem törléséhez válassza ki **törlése**. Egy értesítési üzenet jelzi, hogy a biztonsági mentési adatok törölve lett.
+  - Az elemhez tartozó biztonsági másolati elemek törléséhez válassza a **Törlés**lehetőséget. Egy értesítési üzenetből megtudhatja, hogy a biztonsági mentési információ törölve lett.
 
   > [!NOTE]
-  > Ha a biztonsági mentési adatok törlése törli az összes társított helyreállítási pontokkal. Adott helyreállítási pontok törlése nem választható.
+  > Ha törli a biztonsági mentési adatmennyiséget, az összes kapcsolódó helyreállítási pontot törli. A törlendő helyreállítási pontok nem választhatók ki.
 
 ## <a name="next-steps"></a>További lépések
-- Ismerje meg, hogyan [biztonsági mentése Azure virtuális gépek a virtuális gép beállításai közül](backup-azure-vms-first-look-arm.md).
-- Ismerje meg, hogyan [virtuális gépek visszaállítása](backup-azure-arm-restore-vms.md).
-- Ismerje meg, hogyan [Azure virtuális gép biztonsági mentéseinek figyelése](backup-azure-monitor-vms.md).
+- Ismerje meg, hogyan [készíthet biztonsági mentést az Azure-beli virtuális gépekről a virtuális gép beállításaiból](backup-azure-vms-first-look-arm.md).
+- Megtudhatja, hogyan [állíthatja vissza a virtuális gépeket](backup-azure-arm-restore-vms.md).
+- Ismerje meg, hogyan figyelheti az [Azure virtuális gépek biztonsági másolatait](backup-azure-monitor-vms.md).

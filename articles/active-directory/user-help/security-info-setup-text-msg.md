@@ -1,6 +1,6 @@
 ---
-title: Állítsa be a biztonsági adatok (előzetes verzió) használatához, szöveges üzenetküldés – Azure Active Directory |} A Microsoft Docs
-description: Hogyan állítható be a biztonsági adatok a személyazonosságát, szöveges üzenetküldés és a mobil eszköz használatával.
+title: Biztonsági adatok (előzetes verzió) beállítása szöveges üzenetküldés használatához – Azure Active Directory | Microsoft Docs
+description: A biztonsági adatok beállítása az identitás szöveges üzenetküldéssel és a mobileszköz használatával történő ellenőrzéséhez.
 services: active-directory
 author: eross-msft
 manager: daveba
@@ -12,102 +12,109 @@ ms.topic: conceptual
 ms.date: 02/13/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ea9e4ae21ecc6538b33aed1566c10ddcd22b86c7
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 7c1c6aadcf8fb247a7c2a53cef7d1ed0c85cf374
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60482255"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68382827"
 ---
-# <a name="set-up-security-info-preview-to-use-text-messaging"></a>Állítsa be a biztonsági adatok (előzetes verzió) használatához, szöveges üzenetküldés
-Ezekkel a lépésekkel adja hozzá a kétfaktoros ellenőrzést, és a jelszó alaphelyzetbe állítási metódus. Miután beállította a először, visszatérhet a **biztonsági adatok** lap hozzáadása, frissítése vagy törlése a biztonsági információkat.
+# <a name="set-up-security-info-preview-to-use-text-messaging"></a>A biztonsági adatok (előzetes verzió) beállítása szöveges üzenetküldés használatához
 
-Ha kéri, jelentkezzen be munkahelyi vagy iskolai fiókjával után azonnal beállítaniuk ezt, tekintse meg a részletes lépéseit a [állítsa be a biztonsági adatok a bejelentkezési oldal használatával](security-info-setup-signin.md) cikk.
+A kétfaktoros ellenőrzési és jelszó-visszaállítási módszerek hozzáadásához kövesse az alábbi lépéseket. Az első beállítás után visszatérhet a **biztonsági** információ lapra a biztonsági adatok hozzáadásához, frissítéséhez vagy törléséhez.
+
+Ha a rendszer a munkahelyi vagy iskolai fiókjába való bejelentkezés után azonnal beállítja ezt a beállítását, tekintse meg a [biztonsági adatok beállítása a bejelentkezési oldalról](security-info-setup-signin.md) című cikk részletes lépéseit.
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-end-user-preview-notice-security-info.md)]
 
 >[!Note]
->Ha nem látja a telefonos elrendezésre, lehetséges, hogy a szervezet nem engedélyezi, hogy az ellenőrzési telefonszám. Ebben az esetben kell válasszon egy másik módszert, vagy további segítségért forduljon a rendszergazdához.
+>Ha nem jelenik meg a telefonos lehetőség, akkor előfordulhat, hogy a szervezet nem teszi lehetővé telefonszámok használatát az ellenőrzéshez. Ebben az esetben másik módszert kell választania, vagy további segítségért forduljon a rendszergazdához.
 
-## <a name="set-up-text-messages-from-the-security-info-page"></a>A biztonsági adatok weblapját a szöveges üzenetek beállítása
-Szervezeti beállítások, attól függően fogja tudni használni a biztonsági adatok módszerekkel egyik üzenetkezelési. A szöveges üzenet lehetőséget a telefonos elrendezésre egy részét képezi, így a telefonszám mellékét értékre állítjuk mindent ugyanúgy azonos beállításokkal, de nem hívja meg a Microsoft, szöveges üzenetben használandó fogja választani.
+## <a name="set-up-text-messages-from-the-security-info-page"></a>Szöveges üzenetek beállítása a biztonsági adatok lapról
+
+A szervezet beállításaitól függően előfordulhat, hogy a szöveges üzenetküldést a biztonsági adatok egyik módszerének megfelelően használhatja. A szöveges üzenet lehetőség a telefonos lehetőség része, így minden ugyanúgy beállítható, ahogy a telefonszáma is, de ahelyett, hogy a Microsoft meghívja Önt, szöveges üzenetet fog használni.
 
 >[!Note]
->Ha szeretne kapni a telefonhívás, szöveges üzenet helyett, kövesse a [állítsa be a biztonsági adatok telefonhívásokat használandó](security-info-setup-phone-number.md) cikk.
+>Ha szöveges üzenet helyett telefonhívást szeretne kapni, kövesse a [biztonsági adatok beállítása a telefonhívások használatára](security-info-setup-phone-number.md) című cikk lépéseit.
 
-### <a name="to-set-up-text-messages"></a>SMS-EK beállítása
+### <a name="to-set-up-text-messages"></a>Szöveges üzenetek beállítása
 
-1. Jelentkezzen be munkahelyi vagy iskolai fiókjával, és keresse meg a https://myprofile.microsoft.com/ lapot.
+1. Jelentkezzen be a munkahelyi vagy iskolai fiókjába, majd lépjen a https://myprofile.microsoft.com/ lapra.
 
-    ![Saját profil lapot, amely a kijelölt biztonsági adatai hivatkozások](media/security-info/securityinfo-myprofile-page.png)
+    ![Saját profil oldal, kiemelt biztonsági információs hivatkozások megjelenítése](media/security-info/securityinfo-myprofile-page.png)
 
-2. Válassza ki **biztonsági adatok** a bal oldali navigációs ablaktáblán vagy a hivatkozás a **biztonsági adatok** letiltása, és válassza ki **metódus hozzáadása** a a **biztonsági adatai**  lapot.
+2. Válassza a bal oldali navigációs ablaktábla **biztonsági adatok** elemét, vagy a biztonsági **információ** blokkban található hivatkozásra, majd válassza a **metódus hozzáadása** elemet a **biztonsági adatok** lapon.
 
-    ![Biztonsági adatok weblapját a kiemelt Hozzáadás metódus beállítás](media/security-info/securityinfo-myprofile-addmethod-page.png)
+    ![Biztonsági adatok lap Kiemelt hozzáadási módszer lehetőséggel](media/security-info/securityinfo-myprofile-addmethod-page.png)
 
-3. Az a **adjon meg egy metódust** lapon jelölje be **Phone** a legördülő listából válassza ki, és válassza ki a **Hozzáadás**.
+3. A **metódus hozzáadása** lapon válassza a **telefon** lehetőséget a legördülő listából, majd kattintson a **Hozzáadás**gombra.
 
-    ![A kiválasztott Phone metódus mezőben hozzáadása](media/security-info/securityinfo-myprofile-addphonetext.png)
+    ![Hozzáadás a Method Box-hoz, a kiválasztott telefonnal](media/security-info/securityinfo-myprofile-addphonetext.png)
 
-4. Az a **Phone** lapon írja be a telefonszámot a mobil eszköz számára, válassza a **kódot kérek SMS**, majd válassza ki **tovább**.
+4. A **Phone (telefon** ) lapon írja be a mobileszköz telefonszámát, válassza ki a **kód szövegét**, majd kattintson a **tovább**gombra.
 
-    ![Adja hozzá a telefonszámot, és válassza ki a szöveges üzenetek](media/security-info/securityinfo-myprofile-phonetext-addnumber.png)
+    ![Telefonszám hozzáadása és szöveges üzenetek kiválasztása](media/security-info/securityinfo-myprofile-phonetext-addnumber.png)
 
-5. Írja be a kódot a mobil eszközére szöveges üzeneten keresztül kap, és válassza **tovább**.
+5. Írja be a mobileszközön a szöveges üzenetben küldött kódot, majd válassza a **tovább**lehetőséget.
 
-    ![Adja hozzá a telefonszámot, és válassza ki a szöveges üzenetek](media/security-info/securityinfo-myprofile-phonetext-entercode.png)
+    ![Telefonszám hozzáadása és szöveges üzenetek kiválasztása](media/security-info/securityinfo-myprofile-phonetext-entercode.png)
 
-    A lap vált a sikeres.
+    A lap úgy változik, hogy megmutassa a sikert.
 
-    ![Sikeres címtármódosítást jelző értesítés, a telefon csatlakozás szám, szöveg használt és az Ön fiókjának fogadhasson](media/security-info/securityinfo-myprofile-phonetext-success.png)
+    ![Sikeres értesítés, a telefonszám csatlakoztatása, a szöveges üzenetek fogadásának lehetősége és a fiók](media/security-info/securityinfo-myprofile-phonetext-success.png)
 
-    A biztonsági adatok frissítése, és használhatja a szöveges üzenetben a személyazonosságát, ha a kétlépéses ellenőrzés vagy a jelszó alaphelyzetbe állítása használatakor. Ha azt szeretné, győződjön meg arról, szöveges üzenetben az alapértelmezett módszer, olvassa el a [alapértelmezett biztonsági adatai módszerre állna](#change-your-default-security-info-method) című szakaszát.
+    A biztonsági adatok frissülnek, és szöveges üzenetküldéssel igazolhatja személyazonosságát a kétlépéses ellenőrzés vagy a jelszó alaphelyzetbe állítása során. Ha azt szeretné, hogy a szöveges üzenetküldés az alapértelmezett módszert alkalmazza, tekintse meg a jelen cikk [alapértelmezett biztonsági adatok módosítása módszerét](#change-your-default-security-info-method) ismertető szakaszát.
 
-## <a name="delete-text-messaging-from-your-security-info-methods"></a>A biztonsági adatok módszerek az üzenetkezelési törlése
-Ha már nem szeretne biztonsági adatai módszerként használhatják a szöveges üzenetek, eltávolíthatja azt a **biztonsági adatok** lapot.
+## <a name="delete-text-messaging-from-your-security-info-methods"></a>Szöveges üzenetküldés törlése a biztonsági adatok módszereiből
+
+Ha a továbbiakban nem szeretne szöveges üzeneteket használni biztonsági információs módszerként, akkor a **biztonsági adatok** lapról távolíthatja el.
 
 >[!Important]
->Ha véletlenül üzenetkezelési törli, nincs semmilyen módon nem lehet visszavonni. Kell adja hozzá újra, a módszer lépései a [állítsa be a szöveges üzenetek](#set-up-text-messages-from-the-security-info-page) című szakaszát.
+>Ha tévedésből törli a szöveges üzeneteket, a visszavonás nem vonható vissza. A metódust újra fel kell vennie a jelen cikk [szöveges üzenetek beállítása](#set-up-text-messages-from-the-security-info-page) című szakaszának lépéseit követve.
 
-### <a name="to-delete-text-messaging"></a>Szöveges üzenetküldés törlése
+### <a name="to-delete-text-messaging"></a>Szöveges üzenetek törlése
 
-1. Az a **biztonsági adatok** lapon válassza ki a **törlése** mellett kapcsolni a **Phone** lehetőséget.
+1. A **biztonsági adatok** lapon válassza a **Törlés** hivatkozást a **telefonos** beállítás mellett.
 
-    ![Törli a telefonról és az üzenetkezelési metódus a biztonsági adatok összekapcsolása](media/security-info/securityinfo-myprofile-phonetext-delete.png)
+    ![Hivatkozás a telefonos és szöveges üzenetküldési módszer törlésére a biztonsági adatokból](media/security-info/securityinfo-myprofile-phonetext-delete.png)
 
-2. Válassza ki **Igen** a megerősítés mezőben törlése a **Phone** számát. Miután törlődik a telefonszámát, a rendszer eltávolítja a biztonsági adatait és, eltűnik a **biztonsági adatok** lap. Ha **Phone** az alapértelmezett módszer az alapértelmezett értékre vált egy másik használható módszer.
+2. A **telefonszám** törléséhez válassza az **Igen** lehetőséget a megerősítő mezőben. A telefonszám törlése után a rendszer eltávolítja a biztonsági adatokból, és eltűnik a **biztonsági adatok** lapról. Ha a **telefon** az alapértelmezett módszer, akkor az alapértelmezett érték egy másik elérhető metódusra változik.
 
-## <a name="change-your-default-security-info-method"></a>Az alapértelmezett biztonsági adatai módszer megváltoztatása
-Ha azt szeretné használni, amikor bejelentkezik a munkahelyi vagy iskolai fiókjába kétfaktoros ellenőrzési, vagy a jelszó-átállítási kérelmek alapértelmezett módszernek üzenetkezelési, beállíthatja azt a **biztonsági adatok** lapot.
+## <a name="change-your-default-security-info-method"></a>Az alapértelmezett biztonsági adatok módszerének módosítása
 
-### <a name="to-change-your-default-security-info-method"></a>Az alapértelmezett biztonsági adatai módszerének módosítása
+Ha azt szeretné, hogy a szöveges üzenetkezelés alapértelmezett módszer legyen a munkahelyi vagy iskolai fiókjába való bejelentkezéskor a kétfaktoros ellenőrzés vagy a jelszó-átállítási kérelmek esetében, a **biztonsági adatok** lapon állíthatja be.
 
-1. Az a **biztonsági adatok** lapon válassza ki a **módosítása** mellett kapcsolni a **alapértelmezett bejelentkezési módszer** információkat.
+### <a name="to-change-your-default-security-info-method"></a>Az alapértelmezett biztonsági adatok módszerének módosítása
 
-    ![Módosítás hivatkozásra az alapértelmezett bejelentkezési módszer](media/security-info/securityinfo-myprofile-phonetext-defaultchange.png)
+1. A **biztonsági adatok** lapon válassza az **alapértelmezett bejelentkezési módszer** adatainak melletti **módosítás** hivatkozást.
 
-2. Válassza ki **Phone – szöveg ( *_your_phone_number_* )** elérhető módszerek, és válassza ki a legördülő listából **megerősítése**.
+    ![Az alapértelmezett bejelentkezési módszer hivatkozásának módosítása](media/security-info/securityinfo-myprofile-phonetext-defaultchange.png)
 
-    ![Az alapértelmezett bejelentkezési módszer kiválasztása](media/security-info/securityinfo-myprofile-phonetext-changeddefault.png)
+2. Válassza a **telefon-szöveg ( *_your_phone_number_* )** lehetőséget az elérhető módszerek legördülő listájában, majd válassza a **Confirm (megerősítés**) lehetőséget.
 
-    Az alapértelmezett módszer használt bejelentkezési módosítások **Phone – szöveg ( *_your_phone_number_* )** .
+    ![Válassza ki a metódust az alapértelmezett bejelentkezéshez](media/security-info/securityinfo-myprofile-phonetext-changeddefault.png)
 
-## <a name="additional-security-info-methods"></a>További biztonsági adatok módszerek
-Hogyan a szervezet névjegyeket igazolhatja személyazonosságát, akkor mi alapján szeretne ehhez további lehetősége van. A lehetőségek a következők:
+    A bejelentkezéshez használt alapértelmezett módszer a **telefonos szövegben ( *_your_phone_number_* )** .
 
-- **Hitelesítő alkalmazás.** Töltse le, és a egy hitelesítő alkalmazást használja, vagy egy jóváhagyási értesítést, vagy egy véletlenszerűen létrehozott jóváhagyási kód lekérése a kétlépéses ellenőrzés vagy a jelszó alaphelyzetbe állítása. Állítsa be és a Microsoft Authenticator alkalmazással kapcsolatos lépésenkénti útmutatót lásd: [beállítása a biztonsági adatok használata egy hitelesítő alkalmazást](security-info-setup-auth-app.md).
+## <a name="additional-security-info-methods"></a>További biztonsági információs módszerek
 
-- **Mobileszköz vagy munkahelyi telefonhívás.** Adja meg a mobileszközök számát, és telefonhívás beszerzése a kétlépéses ellenőrzés vagy a jelszó alaphelyzetbe állítása. Igazolja személyazonosságát, egy telefonszámmal kapcsolatos lépésenkénti útmutatót lásd: [állítsa be a biztonsági adatok telefonhívásokat használandó](security-info-setup-phone-number.md).
+További beállításokkal is megtudhatja, hogy a szervezet hogyan forduljon a személyazonosságának ellenőrzéséhez a you're alapján. A lehetőségek a következők:
 
-- **E-mail-cím.** Adja meg a munkahelyi vagy iskolai e-mail-címet egy e-mailt beolvasni a jelszó-visszaállításhoz. Ez a beállítás nem érhető el a kétlépéses ellenőrzéshez. Állítsa be az e-mailben kapcsolatos lépésenkénti útmutatót lásd: [biztonsági adatok beállítása az e-mailben](security-info-setup-email.md).
+- **Hitelesítő alkalmazás.** Töltse le és használjon egy hitelesítő alkalmazást a jóváhagyási értesítés vagy a véletlenszerűen generált jóváhagyási kód beszerzéséhez a kétlépéses ellenőrzéshez vagy a jelszó-visszaállításhoz. A Microsoft Authenticator alkalmazás beállításával és használatával kapcsolatos részletes utasításokért lásd: [biztonsági adatok beállítása hitelesítő alkalmazás használatára](security-info-setup-auth-app.md).
 
-- **Biztonsági kérdések.** Néhány a szervezet számára a rendszergazda által létrehozott biztonsági kérdések megválaszolása. Ez a beállítás csak akkor használható, a jelszó-visszaállításhoz, és nem a kétlépéses ellenőrzéshez. A biztonsági kérdések beállítása kapcsolatos lépésenkénti útmutatót lásd: a [beállítása a biztonsági adatok a biztonsági kérdések használata](security-info-setup-questions.md) cikk.
-    
+- **Mobileszköz vagy munkahelyi telefonhívás.** Adja meg a mobileszköz számát, és telefonhívást kap a kétlépéses ellenőrzéshez vagy a jelszó alaphelyzetbe állításához. Az identitás telefonszámmal történő ellenőrzésével kapcsolatos részletes útmutatásért lásd: [biztonsági információk beállítása telefonhívások használatához](security-info-setup-phone-number.md).
+
+- **Biztonsági kulcs.** Regisztrálja Microsoft-kompatibilis biztonsági kulcsát, és használja PIN-kóddal a kétlépéses ellenőrzéshez vagy a jelszó alaphelyzetbe állításához. Ha részletes útmutatást szeretne arról, hogyan ellenőrizheti személyazonosságát egy biztonsági kulccsal, tekintse meg a biztonsági [adatok beállítása biztonsági kulcs használatára](security-info-setup-security-key.md)című témakört.
+
+- **E-mail-cím.** Adja meg a munkahelyi vagy iskolai e-mail-címét, hogy e-mailt kapjon a jelszó alaphelyzetbe állításához. Ez a beállítás kétlépéses ellenőrzés esetén nem érhető el. Az e-mailek beállításával kapcsolatos részletes útmutatásért lásd: [biztonsági adatok beállítása e-mailek használatára](security-info-setup-email.md).
+
+- **Biztonsági kérdések.** Válaszoljon a szervezete rendszergazdája által létrehozott biztonsági kérdésekre. Ez a beállítás csak a jelszó-visszaállításhoz érhető el, és nem a kétlépéses ellenőrzéshez. A biztonsági kérdések beállításával kapcsolatos részletes utasításokért tekintse meg a biztonsági [kérdések beállítása a biztonsági kérdésekre](security-info-setup-questions.md) című cikket.
+
     >[!Note]
-    >Ha ezek a beállítások némelyike hiányzik, azt azért nagy valószínűséggel a szervezet nem engedélyezi azokat a módszereket. Ha ez a helyzet, szüksége lesz egy rendelkezésre álló módszer kiválasztásához, vagy további segítségért forduljon a rendszergazdához.
+    >Ha a lehetőségek némelyike hiányzik, valószínűleg azért, mert a szervezet nem engedélyezi ezeket a metódusokat. Ebben az esetben ki kell választania egy elérhető módszert, vagy kapcsolatba kell lépnie a rendszergazdával további segítségért.
 
 ## <a name="next-steps"></a>További lépések
 
-- A jelszó alaphelyzetbe állítása, ha elfelejti, az elveszett vagy a [jelszó-visszaállítási portál](https://passwordreset.microsoftonline.com/) vagy kövesse a a [a munkahelyi vagy iskolai jelszó visszaállítása](user-help-reset-password.md) cikk.
+- Ha elvesztette vagy elfelejtette a jelszavát, állítsa vissza a jelszót a [jelszó](https://passwordreset.microsoftonline.com/) -visszaállítási portálról, vagy kövesse a [munkahelyi vagy iskolai jelszó](user-help-reset-password.md) alaphelyzetbe állítása című cikk lépéseit.
 
-- Hibaelhárítási tippek és a bejelentkezési problémákkal kapcsolatos súgó a [nem jelentkezhet be Microsoft-fiókjába](https://support.microsoft.com/help/12429/microsoft-account-sign-in-cant) cikk.
+- Hibaelhárítási tippek és Súgó a bejelentkezési problémákhoz a [nem tud bejelentkezni a Microsoft-fiók](https://support.microsoft.com/help/12429/microsoft-account-sign-in-cant) cikkbe.

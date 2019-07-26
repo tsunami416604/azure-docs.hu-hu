@@ -1,52 +1,46 @@
 ---
-title: Az Azure Active Directory Identity Protection – gyakori kérdések |} A Microsoft Docs
-description: Az Azure AD Identity Protection kapcsolatos gyakori kérdések
+title: Azure Active Directory Identity Protection GYIK | Microsoft Docs
+description: Gyakori kérdések a Azure AD Identity Protection
 services: active-directory
-documentationcenter: ''
-author: MicrosoftGuyJFlo
-manager: daveba
-ms.assetid: 14f7fc83-f4bb-41bf-b6f1-a9bb97717c34
 ms.service: active-directory
 ms.subservice: identity-protection
-ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: troubleshooting
 ms.date: 11/03/2017
 ms.author: joflore
+author: MicrosoftGuyJFlo
+manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1bea455371938ccc4d512bdb7ffddd72eb9508da
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: cc02b8b5dccbec106e90430fc1714253df6ad847
+ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60454509"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68334016"
 ---
-# <a name="azure-active-directory-identity-protection-faq"></a>Az Azure Active Directory Identity Protection – gyakori kérdések
+# <a name="azure-active-directory-identity-protection-faq"></a>Azure Active Directory Identity Protection GYIK
 
-Ez a cikk az Azure Active Directory (Azure AD) Identity Protection kapcsolatos gyakori kérdésekre adott válaszokat tartalmazza. További információkért lásd: [Azure Active Directory Identity Protection](../active-directory-identityprotection.md). 
+Ez a cikk a Azure Active Directory (Azure AD) Identity Protection szolgáltatással kapcsolatos gyakori kérdésekre adott válaszokat tartalmazza. További információ: [Azure Active Directory Identity Protection](../active-directory-identityprotection.md). 
 
+## <a name="why-do-some-risk-events-have-closed-system-status"></a>Miért van bizonyos kockázati események "lezárt (System)" állapotban?
 
-## <a name="why-do-some-risk-events-have-closed-system-status"></a>Miért van néhány kockázati események "Lezárva (rendszer)" állapota?
-
-**V:** A kockázati eseményeket is Identity Protection által észlelt, és később zárult be, mert az események már nem vették kockázatos. Ezek az események nem számít bele a felhasználó kockázati szint felé. 
-
----
-
-## <a name="do-i-need-to-be-a-global-admin-to-use-identity-protection-in-the-azure-portal"></a>Kell egy globális rendszergazda az Identity Protection használata az Azure Portalon?
-**V:** Nem. Lehet egy biztonsági olvasó, a biztonsági rendszergazda vagy egy globális rendszergazdai Identity Protection használatára.
+**V:** Ezeket a kockázati eseményeket az Identity Protection észlelte, és később bezárták, mert az események már nem tekinthetők kockázatnak. Ezek az események nem számítanak bele a felhasználó kockázati szintjébe. 
 
 ---
 
-## <a name="how-do-i-get-identity-protection"></a>Hogyan kaphatok Identity Protection?
-
-**V:** Lásd: [Ismerkedés az Azure Active Directory Premium](../fundamentals/active-directory-get-started-premium.md) a választ a kérdésére.
+## <a name="do-i-need-to-be-a-global-admin-to-use-identity-protection-in-the-azure-portal"></a>Globális rendszergazdának kell lennie az Identity Protection használatához a Azure Portalban?
+**V:** Nem. Az Identity Protection használatához biztonsági olvasó, biztonsági rendszergazda vagy globális rendszergazda lehet.
 
 ---
 
-## <a name="how-can-i-sort-users-in-users-flagged-for-risk"></a>Hogyan rendezheti a felhasználókat a "Kockázatosként megjelölt felhasználók"?
+## <a name="how-do-i-get-identity-protection"></a>Hogyan az Identity Protection beszerzése?
 
-**V:** Töltse le a megjelölt felhasználókról szóló jelentés a kattintva **letöltése** tetején a **kockázatosként megjelölt felhasználók** lapot. Majd a letöltött adatok elérhető mezők, beleértve a legutóbbi frissítése (UTC) alapján rendezheti.
+**V:** A kérdés megválaszolásához tekintse meg a [prémium szintű Azure Active Directory első lépései](../fundamentals/active-directory-get-started-premium.md) című témakört.
+
+---
+
+## <a name="how-can-i-sort-users-in-users-flagged-for-risk"></a>Hogyan rendezhetem a felhasználókat a "kockázatra megjelölt felhasználók" kifejezésre?
+
+**V:** Töltse le a kockázati jelentésre megjelölt felhasználókat a **kockázati lapra megjelölt felhasználók** tetején a **Letöltés** gombra kattintva. Ezután a letöltött adat a rendelkezésre álló mezők alapján rendezhető, beleértve az utolsó frissítés (UTC) értékét is.
 
 ---

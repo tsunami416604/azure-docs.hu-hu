@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 11532fbae4565ec1fc3625abe60b98d2ccd26fec
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
-ms.translationtype: HT
+ms.openlocfilehash: 01a9cc4ec4788422337b77b285ed8ee440f6acd4
+ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68319746"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68346902"
 ---
 # <a name="deploy-azure-ad-password-protection"></a>Azure AD jelszóvédelem üzembe helyezése
 
@@ -135,11 +135,11 @@ Az Azure AD jelszavas védelméhez két kötelező telepítő szükséges. Ezek 
         ```
 
         > [!NOTE]
-        > Ez a mód sikertelen, ha az Azure multi-Factor Authentication szükséges. Ebben az esetben használja az előző két hitelesítési mód egyikét, vagy használja az alábbi megkerülő megoldások egyikét. Javasoljuk, hogy az MFA-követelményeket csak tesztelési célokra lehessen kihagyni.
+        > Ez a mód meghiúsul, ha az Azure multi-Factor Authentication szükséges a fiókhoz. Ebben az esetben használja az előző két hitelesítési mód egyikét, vagy használjon egy másik fiókot, amely nem igényel MFA-t.
         >
-        > Ha az Azure-fiókja kifejezetten az MFA megkövetelésére van konfigurálva, érdemes lehet egy másik fiókot használni, amely nem igényel MFA-t.
+        > Azt is megteheti, hogy az MFA szükséges, ha az Azure-eszköz regisztrációja (amelyet az Azure AD jelszavas védelem keretében használ) úgy van konfigurálva, hogy globálisan megkövetelje az MFA-t. A megkerülő megoldáshoz használhat egy másik fiókot, amely támogatja az MFA-t az előző két hitelesítési mód egyikével, vagy átmenetileg is kihasználhatja az Azure-eszköz regisztrációjának MFA-követelményét. Ehhez nyissa meg az Azure felügyeleti portálját, majd válassza a Azure Active Directory, majd az eszközök, majd az eszközbeállítások lehetőséget, majd a "többtényezős hitelesítés megkövetelése az eszközök csatlakoztatásához" beállítást. Ügyeljen rá, hogy ezt a beállítást állítsa vissza az Igen értékre, ha a regisztráció befejeződött.
         >
-        > Azt is megteheti, hogy az MFA szükséges, ha az Azure-eszköz regisztrációja (amelyet az Azure AD jelszavas védelem keretében használ) úgy van konfigurálva, hogy globálisan megkövetelje az MFA-t. Ennek megkerülő megoldásához használhat egy olyan fiókot, amely nem igényel MFA-t, vagy átmenetileg kihasználhatja az Azure-eszköz regisztrációjának MFA-követelményét. Ehhez nyissa meg az Azure felügyeleti portálját, majd válassza a Azure Active Directory, majd az eszközök, majd az eszközbeállítások lehetőséget, majd a "többtényezős hitelesítés megkövetelése az eszközök csatlakoztatásához" beállítást.  Ügyeljen rá, hogy ezt a beállítást állítsa vissza az Igen értékre, ha a regisztráció befejeződött.
+        > Javasoljuk, hogy az MFA-követelményeket csak tesztelési célokra lehessen kihagyni.
 
        Jelenleg nem kell megadnia a *-ForestCredential* paramétert, amely a jövőbeli funkciók számára van fenntartva.
 
@@ -179,11 +179,11 @@ Az Azure AD jelszavas védelméhez két kötelező telepítő szükséges. Ezek 
         ```
 
         > [!NOTE]
-        > Ez a mód sikertelen, ha az Azure multi-Factor Authentication szükséges. Ebben az esetben használja az előző két hitelesítési mód egyikét, vagy használja az alábbi megkerülő megoldások egyikét. Javasoljuk, hogy az MFA-követelményeket csak tesztelési célokra lehessen kihagyni.
+        > Ez a mód meghiúsul, ha az Azure multi-Factor Authentication szükséges a fiókhoz. Ebben az esetben használja az előző két hitelesítési mód egyikét, vagy használjon egy másik fiókot, amely nem igényel MFA-t.
         >
-        > Ha az Azure-fiókja kifejezetten az MFA megkövetelésére van konfigurálva, érdemes lehet egy másik fiókot használni, amely nem igényel MFA-t.
+        > Azt is megteheti, hogy az MFA szükséges, ha az Azure-eszköz regisztrációja (amelyet az Azure AD jelszavas védelem keretében használ) úgy van konfigurálva, hogy globálisan megkövetelje az MFA-t. A megkerülő megoldáshoz használhat egy másik fiókot, amely támogatja az MFA-t az előző két hitelesítési mód egyikével, vagy átmenetileg is kihasználhatja az Azure-eszköz regisztrációjának MFA-követelményét. Ehhez nyissa meg az Azure felügyeleti portálját, majd válassza a Azure Active Directory, majd az eszközök, majd az eszközbeállítások lehetőséget, majd a "többtényezős hitelesítés megkövetelése az eszközök csatlakoztatásához" beállítást. Ügyeljen rá, hogy ezt a beállítást állítsa vissza az Igen értékre, ha a regisztráció befejeződött.
         >
-        > Azt is megteheti, hogy az MFA szükséges, ha az Azure-eszköz regisztrációja (amelyet az Azure AD jelszavas védelem keretében használ) úgy van konfigurálva, hogy globálisan megkövetelje az MFA-t. Ennek megkerülő megoldásához használhat egy olyan fiókot, amely nem igényel MFA-t, vagy átmenetileg kihasználhatja az Azure-eszköz regisztrációjának MFA-követelményét. Ehhez nyissa meg az Azure felügyeleti portálját, majd válassza a Azure Active Directory, majd az eszközök, majd az eszközbeállítások lehetőséget, majd a "többtényezős hitelesítés megkövetelése az eszközök csatlakoztatásához" beállítást.  Ügyeljen rá, hogy ezt a beállítást állítsa vissza az Igen értékre, ha a regisztráció befejeződött.
+        > Javasoljuk, hogy az MFA-követelményeket csak tesztelési célokra lehessen kihagyni.
 
        Ezek a példák csak akkor sikeresek, ha az aktuálisan bejelentkezett felhasználó Active Directory tartományi rendszergazda is a legfelső szintű tartományhoz. Ha ez nem igaz, alternatív tartományi hitelesítő adatokat is megadhat a *-ForestCredential* paraméter használatával.
 

@@ -8,80 +8,80 @@ ms.topic: include
 ms.date: 5/30/2019
 ms.author: jingwang
 ms.custom: include file
-ms.openlocfilehash: ac0747dcff4e74363a58dc9aaf6da4dbd4c6a1c7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c92bb8b2adb3e91e691e9fd1c17a7ee43e84fd11
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66427611"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68362534"
 ---
-Az Azure Data Factory egy több-bérlős szolgáltatás, amely a következő alapértelmezett korlátokkal rendelkeznek, hogy az ügyfél-előfizetések védettek, a többi összes számítási feladatokat a helyen. A korlátok a maximális az előfizetéshez tartozó növeléséhez forduljon az ügyfélszolgálathoz.
+Azure Data Factory egy több-bérlős szolgáltatás, amely a következő alapértelmezett korlátokkal rendelkezik, hogy az ügyfél-előfizetések védve legyenek egymás munkaterhelésével szemben. Ha a korlátot az előfizetése maximumán szeretné növelni, forduljon az ügyfélszolgálathoz.
 
-### <a name="version-2"></a>2-es verzió
+### <a name="version-2"></a>2\. verzió
 
 | Resource | Alapértelmezett korlát | Felső korlát |
 | -------- | ------------- | ------------- |
-| Az Azure-előfizetés adat-előállítók | 50 | [Forduljon az ügyfélszolgálathoz](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/). |
-| Entitások, például folyamatokat, adatkészletek, eseményindítók, társított szolgáltatásokat és integrációs modulok, adat-előállító belül teljes száma | 5,000 | [Forduljon az ügyfélszolgálathoz](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/). |
-| Egy előfizetéshez tartozó Azure-SSIS integrációs modulok esetében teljes Processzormagok | 256 | [Forduljon az ügyfélszolgálathoz](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/). |
-| Egyidejű folyamatfuttatások száma, amelyet használ az összes folyamatok előállító a data factory | 10,000  | [Forduljon az ügyfélszolgálathoz](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/). |
-| Egyidejű külső tevékenységfuttatások előfizetésenként [integrációs modul Azure-régió](../articles/data-factory/concepts-integration-runtime.md#integration-runtime-location)<br><small>Külső tevékenységeket az integrációs modul felügyelt, de végrehajtani a társított szolgáltatásokat, beleértve a Databricks, a tárolt eljárást, Hdinsight és mások.</small> | 3000 | [Forduljon az ügyfélszolgálathoz](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/). |
-| Egyidejű folyamat tevékenységfuttatások előfizetésenként [integrációs modul Azure-régió](../articles/data-factory/concepts-integration-runtime.md#integration-runtime-location) <br><small>Adatcsatorna tevékenységei integrációs modulban, beleértve a Lookup, GetMetadata, hajtsa végre, és törölni. </small>| 1000 | [Forduljon az ügyfélszolgálathoz](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/). |
-| Szerzői műveletek előfizetésenként egyidejű [integrációs modul Azure-régió](../articles/data-factory/concepts-integration-runtime.md#integration-runtime-location)<br><small>Például kapcsolat tesztelése, a Tallózás a mappák listája és a tábla tekintse meg adatok. | 200 | [Forduljon az ügyfélszolgálathoz](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/). |
-| Egyidejű adategységek integrációs<sup>1</sup> előfizetésenként és felhasználási [integrációs modul Azure-régió](../articles/data-factory/concepts-integration-runtime.md#integration-runtime-location)| 1 csoport régió<sup>2</sup>: 6000<br>2\. régió csoport<sup>2</sup>: 3000<br>3\. csoport régió<sup>2</sup>: 1500 | [Forduljon az ügyfélszolgálathoz](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/). |
-| Egy folyamatot, amely tartalmazza a tárolók a belső tevékenységek maximális tevékenységek | 40 | 40 |
-| Hozható létre a saját üzemeltetésű integrációs ellen társított integrációs modulok maximális száma | 100 | [Forduljon az ügyfélszolgálathoz](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/). |
-| Egy folyamat maximális paraméterek | 50 | 50 |
-| ForEach-elemek | 100,000 | 100,000 |
+| Azure-előfizetéshez tartozó adatfeldolgozók | 50 | [Forduljon](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/)az ügyfélszolgálathoz. |
+| Egy adat-előállítón belüli entitások (például folyamatok, adathalmazok, eseményindítók, társított szolgáltatások és integrációs modulok) teljes száma | 5,000 | [Forduljon](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/)az ügyfélszolgálathoz. |
+| Azure-SSIS integrációs modulokhoz tartozó összes CPU-mag egy előfizetésben | 256 | [Forduljon](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/)az ügyfélszolgálathoz. |
+| A gyárban található összes folyamat között megosztott, egyidejű adatfeldolgozási folyamat | 10,000  | [Forduljon](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/)az ügyfélszolgálathoz. |
+| Egyidejű külső tevékenység-előfizetések száma [Azure Integration Runtime régiónként](../articles/data-factory/concepts-integration-runtime.md#integration-runtime-location)<br><small>A külső tevékenységek kezelése az integrációs modulon történik, de a társított szolgáltatásokon, például a Databricks, a tárolt eljárásokon, a Hdinsight és másokon végezhető el.</small> | 3000 | [Forduljon](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/)az ügyfélszolgálathoz. |
+| Egyidejű folyamat tevékenység-előfizetések száma [Azure Integration Runtime régiónként](../articles/data-factory/concepts-integration-runtime.md#integration-runtime-location) <br><small>A folyamat tevékenységei az integrációs modulon futnak, beleértve a keresést, a GetMetadata és a törlést is.</small>| 1000 | [Forduljon](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/)az ügyfélszolgálathoz. |
+| Előfizetések egyidejű létrehozási műveletei [Azure Integration Runtime régiónként](../articles/data-factory/concepts-integration-runtime.md#integration-runtime-location)<br><small>Többek között a kapcsolatok tesztelése, a mappák listájának és a táblázatok listájának, valamint az előzetes verziónak a megtekintése | 200 | [Forduljon](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/)az ügyfélszolgálathoz. |
+| Egyidejű adatintegrációs egységek<sup>1</sup> előfizetések száma [Azure Integration Runtime régiónként](../articles/data-factory/concepts-integration-runtime.md#integration-runtime-location)| 1\. régió<sup>2</sup>. csoport: 6000<br>2\. régió<sup>2</sup>. csoport: 3000<br>3\. régió<sup>2</sup>. csoport: 1500 | [Forduljon](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/)az ügyfélszolgálathoz. |
+| Tevékenységek maximális száma folyamaton keresztül, amely belső tevékenységeket tartalmaz a tárolók számára | 40 | 40 |
+| Egy saját üzemeltetésű integrációs modulon keresztül létrehozható összekapcsolt integrációs modulok maximális száma | 100 | [Forduljon](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/)az ügyfélszolgálathoz. |
+| Maximális paraméterek/folyamat | 50 | 50 |
+| ForEach elemek | 100,000 | 100,000 |
 | ForEach-párhuzamosság | 20 | 50 |
-| Karakterszám kifejezésenként | 8,192 | 8,192 |
-| Minimális átfedésmentes ablak eseményindító időköz | 15 perc | 15 perc |
-| Maximális időtúllépése a folyamatok tevékenységeit futtatja | 7 nap | 7 nap |
-| Bájt / folyamat objektumok objektum<sup>3</sup> | 200 KB | 200 KB |
-| Bájt / szolgáló adatkészlet-objektum és a társított szolgáltatás objektumok<sup>3</sup> | 100 KB | 2000 KB |
-| Adategységek integrációs<sup>1</sup> / másolási tevékenység futtatása | 256 | [Forduljon az ügyfélszolgálathoz](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/). |
-| API-hívások írási | 2500/óra<br/><br/> Ez korlátozva az Azure Resource Manager által, nem az Azure Data Factoryban. | [Forduljon az ügyfélszolgálathoz](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/). |
-| Elolvashatják az API-hívások | 12 500/óra<br/><br/> Ez korlátozva az Azure Resource Manager által, nem az Azure Data Factoryban. | [Forduljon az ügyfélszolgálathoz](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/). |
-| Percenkénti lekérdezések figyelése | 1,000 | [Forduljon az ügyfélszolgálathoz](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/). |
-| Entitás CRUD-műveletek száma percenként | 50 | [Forduljon az ügyfélszolgálathoz](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/). |
+| Karakter/kifejezés | 8,192 | 8,192 |
+| Minimális késleltetésű ablak-trigger időköze | 15 perc | 15 perc |
+| A folyamat által futtatott tevékenységek maximális időtúllépése | 7 nap | 7 nap |
+| Bájtok száma objektumként a (<sup>3</sup> .) folyamat objektumaihoz | 200 KB | 200 KB |
+| Bájt/objektum az adatkészlet és a társított szolgáltatási objektumok esetében<sup>3</sup> | 100 KB | 2 000 KB |
+| Adatintegrációs egységek<sup>1</sup> /másolási tevékenységének futtatása | 256 | [Forduljon](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/)az ügyfélszolgálathoz. |
+| API-hívások írása | 1200/h<br/><br/> Ezt a korlátot Azure Resource Manager, nem Azure Data Factory. | [Forduljon](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/)az ügyfélszolgálathoz. |
+| API-hívások olvasása | 12500/h<br/><br/> Ezt a korlátot Azure Resource Manager, nem Azure Data Factory. | [Forduljon](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/)az ügyfélszolgálathoz. |
+| Lekérdezések figyelése percenként | 1,000 | [Forduljon](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/)az ügyfélszolgálathoz. |
+| Entitás-SZIFILISZi műveletek percenként | 50 | [Forduljon](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/)az ügyfélszolgálathoz. |
 
-<sup>1</sup> integrációs adategység (DIU) szolgál a felhő-a-felhőbe a másolási műveletek, és ismerje meg alaposabban [adatok integrációs egység (2. verzió)](../articles/data-factory/copy-activity-performance.md#data-integration-units). Számlázási információkért lásd: [Azure Data Factory díjszabása](https://azure.microsoft.com/pricing/details/data-factory/).
+<sup>1</sup> az adatintegrációs egység (DIU) felhőből felhőbe másolási műveletben használatos, további információ az [adatintegrációs egységekről (2. verzió)](../articles/data-factory/copy-activity-performance.md#data-integration-units). További információ a számlázásról: [Azure Data Factory díjszabása](https://azure.microsoft.com/pricing/details/data-factory/).
 
-<sup>2</sup> [azure integrációs modul](../articles/data-factory/concepts-integration-runtime.md#azure-integration-runtime) van [globálisan elérhető](https://azure.microsoft.com/global-infrastructure/services/) adatok megfelelőség biztosítása érdekében hatékonyságát, és csökkentheti a hálózati kimenő forgalom költségeit. 
+<sup>2</sup> [Azure Integration Runtime](../articles/data-factory/concepts-integration-runtime.md#azure-integration-runtime) [globálisan elérhető](https://azure.microsoft.com/global-infrastructure/services/) az adatmegfelelőség, a hatékonyság és a csökkentett hálózati kimenő költségek biztosításához. 
 
-| Régió-csoport | Régiók | 
+| Régió csoport | Regions | 
 | -------- | ------ |
-| 1 csoport régió | USA középső RÉGIÓJA, USA keleti RÉGIÓJA, USA 2. keleti régiója, Észak-Európa, Nyugat-Európa, USA nyugati RÉGIÓJA, USA 2. nyugati |
-| 2\. csoport régió | Kelet-Ausztrália, Délkelet-Ausztrália, Dél-Brazília, közép-India, kelet-japán, Northcentral Egyesült Államok, déli RÉGIÓJA, Délkelet-Ázsia, USA nyugati középső RÉGIÓJA |
-| 3\. csoport régió | Canada Central, East Asia, France Central, Korea Central, UK South |
+| 1\. régió | USA középső régiója, USA keleti régiója, Kelet-RÉGIÓJA, Észak-Európa, Nyugat-Európa, USA nyugati régiója, USA 2. nyugati régiója |
+| 2\. régió | Kelet-Ausztrália, Délkelet-Ausztrália, Dél-Brazília, Közép-India, Kelet-Japán, Northcentral, USA, Southcentral, Délkelet-Ázsia, USA nyugati középső régiója |
+| 3\. régió | Közép-Kanada, Kelet-Ázsia, Közép-Németország, Közép-Korea, Egyesült Királyság déli régiója |
 
-<sup>3</sup> folyamat, adatkészlet és a társított szolgáltatás objektumok jelölik az alkalmazások és szolgáltatások logikai csoportosítása. Ezek az objektumok korlátai, áthelyezése és feldolgozása az Azure Data Factoryvel adatok mennyisége nem vonatkoznak. A Data Factory méretezhető, több petabájtnyi adat kezelésére szolgál.
+<sup>3</sup> a folyamat, az adathalmaz és a társított szolgáltatási objektumok a számítási feladatok logikai csoportosítását jelölik. Ezeknek az objektumoknak a korlátai nem kapcsolódnak a Azure Data Factory használatával áthelyezhető és feldolgozható adatmennyiséghez. Data Factory úgy van kialakítva, hogy az petabájt kezeljen.
 
-### <a name="version-1"></a>1-es verzió
+### <a name="version-1"></a>1\. verzió
 
 | **Erőforrás** | **Alapértelmezett korlát** | **Felső korlát** |
 | --- | --- | --- |
-| Az Azure-előfizetés adat-előállítók |50 |[Forduljon az ügyfélszolgálathoz](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/). |
-| Belül egy adat-előállító folyamatok |2,500 |[Forduljon az ügyfélszolgálathoz](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/). |
-| Adat-előállító belül adatkészletek |5,000 |[Forduljon az ügyfélszolgálathoz](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/). |
-| Egy adatkészlet egyidejű szeletek |10 |10 |
-| Bájt / folyamat objektumok objektum<sup>1</sup> |200 KB |200 KB |
-| Bájt / objektumra vonatkozó adatokat, és társított szolgáltatási objektumok<sup>1</sup> |100 KB |2000 KB |
-| Azure HDInsight-fürt igény szerinti magok egy előfizetésen belül<sup>2</sup> |60 |[Forduljon az ügyfélszolgálathoz](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/). |
-| A felhőbeli adatáthelyezési egységek száma a másolási tevékenység futtatási<sup>3</sup> |32 |[Forduljon az ügyfélszolgálathoz](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/). |
-| Ismételje meg a folyamattevékenység-futtatások száma |1,000 |MaxInt (32 bites) |
+| Azure-előfizetéshez tartozó adatfeldolgozók |50 |[Forduljon](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/)az ügyfélszolgálathoz. |
+| Adatfeldolgozón belüli folyamatok |2,500 |[Forduljon](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/)az ügyfélszolgálathoz. |
+| Adatkészletek az adat-előállítón belül |5,000 |[Forduljon](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/)az ügyfélszolgálathoz. |
+| Egyidejű szeletek egy adatkészletben |10 |10 |
+| Bájt/objektum a folyamat objektumaihoz<sup>1</sup> |200 KB |200 KB |
+| Adathalmaz és társított szolgáltatási objektumok bájtjainak száma (bájt/objektum<sup>) 1</sup> |100 KB |2 000 KB |
+| Azure HDInsight igény szerinti fürt magok a<sup>2</sup> . előfizetésen belül |60 |[Forduljon](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/)az ügyfélszolgálathoz. |
+| Felhőbeli adatáthelyezési egység/másolási tevékenység<sup>3</sup> . futtatása |32 |[Forduljon](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/)az ügyfélszolgálathoz. |
+| Újrapróbálkozások száma a folyamathoz tartozó tevékenységek futtatásához |1,000 |MaxInt (32 bit) |
 
-<sup>1</sup> folyamat, adatkészlet és a társított szolgáltatás objektumok jelölik az alkalmazások és szolgáltatások logikai csoportosítása. Ezek az objektumok korlátai, áthelyezése és feldolgozása az Azure Data Factoryvel adatok mennyisége nem vonatkoznak. A Data Factory méretezhető, több petabájtnyi adat kezelésére szolgál.
+<sup>1</sup> a folyamat, az adathalmaz és a társított szolgáltatás objektumok a számítási feladatok logikai csoportosítását jelölik. Ezeknek az objektumoknak a korlátai nem kapcsolódnak a Azure Data Factory használatával áthelyezhető és feldolgozható adatmennyiséghez. Data Factory úgy van kialakítva, hogy az petabájt kezeljen.
 
-<sup>2</sup> igény szerinti HDInsight-magok ki az előfizetést, amely tartalmazza az adat-előállító vannak lefoglalva. Ennek eredményeképpen a korábbi határértéke a Data Factory által kényszerített magkorlátja igény szerinti HDInsight-magok. Különbözik az Azure-előfizetéséhez társított magos korlát.
+<sup>2</sup> az igény szerinti HDInsight magok az adatelőállítót tartalmazó előfizetésből vannak kiosztva. Ennek eredményeképpen az előző korlát az igény szerinti HDInsight magok Data Factory által kényszerített alapszintű korlátja. Ez eltér az Azure-előfizetéséhez társított alapszinttől.
 
-<sup>3</sup> a felhőbeli adatáthelyezési egység (DMU) 1. verziójának egy felhő-a-felhőbe másolási művelet használja a rendszer további információkat talál a [adatáthelyezési egységek (1-es) Cloud](../articles/data-factory/v1/data-factory-copy-activity-performance.md#cloud-data-movement-units). Számlázási információkért lásd: [Azure Data Factory díjszabása](https://azure.microsoft.com/pricing/details/data-factory/).
+<sup>3</sup> az 1. verzióhoz tartozó Cloud adatáthelyezési egység (DMU) felhőből felhőbe másolási műveletben használatos, további információ a Felhőbeli adatáthelyezési [egységekről (1. verzió)](../articles/data-factory/v1/data-factory-copy-activity-performance.md#cloud-data-movement-units). További információ a számlázásról: [Azure Data Factory díjszabása](https://azure.microsoft.com/pricing/details/data-factory/).
 
-| **Erőforrás** | **Alapértelmezett alacsonyabb korlátot** | **Minimális korlát** |
+| **Erőforrás** | **Alapértelmezett alsó korlát** | **Minimális korlát** |
 | --- | --- | --- |
 | Ütemezési időköz |15 perc |15 perc |
-| Újrapróbálkozási kísérletek közötti időköz |1 másodperc |1 másodperc |
-| Ismételje meg az időtúllépés értéke |1 másodperc |1 másodperc |
+| Újrapróbálkozási kísérletek közötti intervallum |1 másodperc |1 másodperc |
+| Újrapróbálkozás időtúllépési értéke |1 másodperc |1 másodperc |
 
-#### <a name="web-service-call-limits"></a>Webes szolgáltatás hívása korlátok
-Az Azure Resource Manager API-hívások korlátokkal rendelkeznek. API-hívások belül válthatnak teheti a [Azure Resource Manager API-korlátok](../articles/azure-subscription-service-limits.md#resource-group-limits).
+#### <a name="web-service-call-limits"></a>Webszolgáltatás-hívások korlátai
+A Azure Resource Manager API-hívásokra vonatkozó korlátozásokkal rendelkezik. Az API-hívásokat a [Azure Resource Manager API korlátain](../articles/azure-subscription-service-limits.md#resource-group-limits)belül is elvégezheti.

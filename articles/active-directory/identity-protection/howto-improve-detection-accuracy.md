@@ -1,138 +1,105 @@
 ---
-title: Hogyan lehet az Azure Active Directory Identity Protection (frissítve) észlelési pontosságának |} A Microsoft Docs
-description: Tudnivalók az Azure Active Directory Identity Protection (frissítve) észlelési pontosságának.
+title: Az észlelési pontosság javítása Azure Active Directory Identity Protectionban (frissítve) | Microsoft Docs
+description: Az észlelési pontosság javítása Azure Active Directory Identity Protectionban (frissítve).
 services: active-directory
-keywords: az Azure active directory identity protection a következőket cloud app discovery szolgáltatást, alkalmazások, biztonság, kockázati, kockázati szint, biztonsági rést, biztonsági házirend kezelése
-documentationcenter: ''
-author: MicrosoftGuyJFlo
-manager: mtillman
-ms.assetid: e7434eeb-4e98-4b6b-a895-b5598a6cccf1
 ms.service: active-directory
 ms.subservice: identity-protection
-ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/31/2019
 ms.author: joflore
+author: MicrosoftGuyJFlo
+manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7724d69a9294b420ca061d5ad26ad64826372203
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 32bb8de7970fc167a6a95e9d9c3c71e4e1dc0150
+ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60453293"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68333942"
 ---
-# <a name="how-to-improve-the-detection-accuracy"></a>kézikönyv: Az észlelési pontosságának növelése 
+# <a name="how-to-improve-the-detection-accuracy"></a>kézikönyv: Az észlelés pontosságának javítása 
 
-Identitásvédelmet biztosít mechanizmus visszajelzés küldése a kockázati észlelések a környezetében az Azure ad-hez. Visszajelzést, ellenőrizheti az észlelt kockázatos felhasználó vagy a bejelentkezési események állapotát. Microsoft-felhasználók a visszajelzés a művelet végrehajtása a jelenlegi kockázati észlelések és a jövőbeli észlelési pontosságának javítása. 
+Az Identity Protection olyan mechanizmusokat biztosít, amelyekkel visszajelzést küldhet az Azure AD-nek a környezetben felderített kockázatok észlelése érdekében. A visszajelzések megadásához ellenőrizheti az észlelt kockázatos felhasználó vagy bejelentkezési esemény állapotát. A Microsoft-felhasználók ezt a visszajelzést az aktuális kockázati észlelések elvégzéséhez és a jövőbeli észlelések pontosságának javításához. 
 
+## <a name="what-is-detection"></a>Mi az észlelés?
 
-## <a name="what-is-detection"></a>Mi az észlelési?
+Az észlelés a gyanús tevékenységek azonosításának folyamata a felhasználói fiókokkal együtt. Az Azure AD által észlelt gyanús tevékenységek neve [kockázati esemény](../reports-monitoring/concept-risk-events.md). Az észlelési folyamat az adaptív gépi tanulási algoritmusokon és a heurisztikus műveleteken alapul, hogy észlelje a felhasználók kockázati eseményeit.
 
-Észlelés az a folyamat együtt a felhasználói fiókok gyanús tevékenységek azonosításához. Az Azure AD képes észlelni a gyanús tevékenységek az úgynevezett [kockázati esemény](../reports-monitoring/concept-risk-events.md). A folyamat során az adaptív gépi tanulási algoritmusok és heurisztika a felhasználók számára a kockázati események észlelése alapján történik.
+Az észlelési eredmények segítségével megállapítható, hogy a felhasználók és a bejelentkezések veszélyeztetettek-e. 
 
-Az észlelés eredménye segítségével meghatározhatja, hogy felhasználók és bejelentkezések veszélyben vannak. 
+## <a name="how-can-i-improve-the-detection-accuracy"></a>Hogyan javíthatom az észlelési pontosságot?
 
+Mivel az észlelés egy automatizált folyamat, lehetséges, hogy az Azure AD jelentések hamis pozitívak. Az észlelési pontosság javításához visszajelzéseket biztosít az Azure AD számára az észlelési eredményekkel kapcsolatban.
 
-## <a name="how-can-i-improve-the-detection-accuracy"></a>Hogyan javíthatom észlelési pontosságának?
+Az észlelési pontosságot háromféleképpen lehet javítani: a feltört bejelentkezések megerősítése, a biztonságos bejelentkezés megerősítése és a felhasználói kockázat elvetése. Ezt a következő jelentésekben végezheti el:
 
-Mivel az észlelés a egy automatizált folyamattal, lehetséges, hogy az Azure AD-jelentések vakriasztások. Visszajelzés küldése az Azure AD a észlelésének eredménye vonatkozó észlelési pontosságának javíthatja.
+- **Kockázatos bejelentkezések jelentése –** A kockázatos bejelentkezések jelentésben ellenőrizheti, hogy a bejelentkezések biztonságosak vagy feltörtek-e
+- **Kockázatos felhasználók jelentés –** A kockázatos felhasználók jelentésben elkerülheti a felhasználói kockázatot 
 
-Észlelési pontosságának növelése érdekében három módja van: sérült biztonságú bejelentkezési, comfirm biztonságos bejelentkezési erősítse meg, és a felhasználói kockázat bezárása. Ehhez az alábbi jelentések közül:
+Visszajelzését az Azure AD dolgozza fel az észlelési eredmények pontosságának javítása érdekében. Általában visszajelzést kell küldenie a felhasználói kockázat vagy a bejelentkezési kockázat vizsgálatának részeként. További információ: [a kockázatos felhasználók és bejelentkezések vizsgálata](howto-investigate-risky-users-signins.md).
 
-- **Kockázatos bejelentkezések jelentés -** a kockázatos bejelentkezések jelentés akkor is győződjön meg róla, hogy bejelentkezések csökkentett vagy sérült biztonságú
+## <a name="confirm-compromised"></a>Feltörés megerősítése
 
-- **Kockázatos felhasználók jelentés -** a kockázatos felhasználók jelentésben, bezárhatja a felhasználói kockázat 
+A bejelentkezési eseménynek az Azure AD-be feltört jeleként való megerősítése, hogy az identitás tulajdonosa nem adta meg a bejelentkezést. Ha a "feltörtek megerősítése" lehetőséget választja, az Azure AD-t
 
-A visszajelzések dolgozza fel az észlelési eredmények pontosságának javítása az Azure ad-ben. Általában visszajelzést egy felhasználói kockázat és bejelentkezési kockázat vizsgálat részeként. További információkért lásd: [kockázatos felhasználók és bejelentkezések](howto-investigate-risky-users-signins.md).
+- Növelje az érintett felhasználó felhasználói kockázatát magasra.
+- A kockázati eseményeket észlelő gépi tanulás optimalizálásának elősegítése
+- További intézkedések végrehajtása a szervezet további biztonsága érdekében
 
+Sérült bejelentkezés megerősítése:
 
-## <a name="confirm-compromised"></a>Győződjön meg róla sérült a biztonsága
+- **A kockázatos bejelentkezési jelentés** – ez a beállítás lehetővé teszi, hogy egy vagy több bejelentkezési eseménynél erősítse meg a sérült bejelentkezést.
 
-A bejelentkezési esemény megerősítése biztonsága sérült, jelzi az Azure AD, a bejelentkezés nem volt engedélyezett az identitás tulajdonosa. Amikor kiválasztja a "feltört megerősítése", az Azure AD fog
+   ![Felhasználói kockázat elvetése](./media/howto-improve-detection-accuracy/07.png)
 
-- Növelheti a felhasználói kockázat az érintett felhasználó magas.
+- A **kockázatos bejelentkezések jelentésének részletes nézete** – ez a beállítás lehetővé teszi, hogy a kockázatos bejelentkezések jelentésében megerősítse a kiválasztott bejelentkezési esemény feltört fiókját. 
 
-- A gépi tanulási, amely észleli a kockázati események optimalizálása érdekében
+   ![Felhasználói kockázat elvetése](./media/howto-improve-detection-accuracy/04.png)
  
-- Hajtsa végre a további intézkedések tovább a szervezet védelme érdekében
+## <a name="confirm-safe"></a>Megerősítés biztonságosként
 
+A bejelentkezési esemény biztonságos jelekként való megerősítése az Azure AD-ben, hogy a bejelentkezést a megfelelő identitás tulajdonosa **hagyta** jóvá. Ha a "biztonság megerősítése" lehetőséget választja, az Azure AD a következőket teszi:
 
-
-Sérült biztonságú bejelentkezési ellenőrzése:
-
-- **A kockázatos bejelentkezések jelentés** – Ez a beállítás lehetővé teszi, hogy meg kell erősítenie egy sérült biztonságú bejelentkezési egy vagy több bejelentkezési eseményeket.
-
-    ![Felhasználói kockázat bezárása](./media/howto-improve-detection-accuracy/07.png)
-
-- **A Részletek nézetben, a kockázatos bejelentkezések jelentés** – Ez a beállítás lehetővé teszi, hogy erősítse meg a kockázatos bejelentkezések jelentés a kijelölt bejelentkezési esemény egy sérült biztonságú fiókot. 
-
-    ![Felhasználói kockázat bezárása](./media/howto-improve-detection-accuracy/04.png)
-
-
+- A kiválasztott bejelentkezések felhasználói kockázati hozzájárulásának visszaállítása
+- A mögöttes kockázati események lezárása
+- A kockázati eseményeket észlelő gépi tanulás optimalizálásának elősegítése
+- További intézkedések végrehajtása a szervezet további biztonsága érdekében
  
-## <a name="confirm-safe"></a>Biztonságos megerősítése
+Biztonságos bejelentkezés megerősítése a következőben:
 
+- **A kockázatos bejelentkezési jelentés** – ez a beállítás lehetővé teszi a biztonságos bejelentkezés megerősítését egy vagy több bejelentkezési esemény esetében.
 
-Biztonságos jelek, az Azure AD-t a bejelentkezési esemény megerősítése, hogy a bejelentkezési **volt** által az adott identitás tulajdonosa. Ha "megerősítése biztonságos" lehetőséget választja, az Azure AD fog:
+   ![Felhasználói kockázat elvetése](./media/howto-improve-detection-accuracy/08.png)
 
-- Visszaállítás a felhasználói kockázat hozzájárulását a kiválasztott bejelentkezések
+- A **kockázatos bejelentkezések jelentésének részletes nézete** – ez a beállítás lehetővé teszi a biztonságos bejelentkezés megerősítését a kockázatos bejelentkezések jelentés kiválasztott bejelentkezési eseményéhez. 
 
-- Zárja be a mögöttes kockázatos eseményekről
+   ![Felhasználói kockázat elvetése](./media/howto-improve-detection-accuracy/05.png)
 
-- A gépi tanulási, amely észleli a kockázati események optimalizálása érdekében
+## <a name="dismiss-user-risk"></a>Felhasználói kockázat elvetése
 
-- Hajtsa végre a további intézkedések tovább a szervezet védelme érdekében
- 
+Ha már elvégezte a kockázatos felhasználó szervizelési műveleteit, vagy úgy gondolja, hogy hamisan vannak megjelölve, akkor elkerülheti a felhasználó kockázatát. A felhasználó kockázatának hiányában a felhasználót nem kockázatos állapotba állítja vissza. A kiválasztott felhasználóhoz tartozó összes múltbeli kockázatos bejelentkezés és kockázati esemény el lesz vetve.
 
-Egy biztonságos jelentkezzen be a ellenőrzése:
+A jelentett felhasználói kockázatot a következőket követheti el:
 
-- **A kockázatos bejelentkezések jelentés** – Ez a beállítás lehetővé teszi, hogy meg kell erősítenie a biztonságos bejelentkezés egy vagy több bejelentkezési eseményeket.
+- **A kockázatos felhasználók jelentés** – ez a beállítás lehetővé teszi, hogy egy vagy több kiválasztott felhasználónál utasítsa el a felhasználói kockázatot.
 
-    ![Felhasználói kockázat bezárása](./media/howto-improve-detection-accuracy/08.png)
+   ![Felhasználói kockázat elvetése](./media/howto-improve-detection-accuracy/02.png)
 
-- **A Részletek nézetben, a kockázatos bejelentkezések jelentés** – Ez a beállítás lehetővé teszi egy biztonságos bejelentkezési a kockázatos bejelentkezések jelentés a kijelölt bejelentkezési esemény megerősítéséhez. 
+- **A részletek nézet** – ez a beállítás lehetővé teszi, hogy utasítsa el a felhasználói kockázatot a kiválasztott felhasználó számára a felhasználói kockázat jelentésében. 
 
-    ![Felhasználói kockázat bezárása](./media/howto-improve-detection-accuracy/05.png)
-
-
-
-
-## <a name="dismiss-user-risk"></a>Felhasználói kockázat bezárása
-
-Ha már elvégzett szervizelési műveletek kockázati felhasználó számára, vagy úgy érzi, hogy tévesen jelölt meg kockázatos, bezárhatja a felhasználói kockázat. A felhasználó kockázati elvetése visszaállítja a felhasználó nem kockázatos állapotba. Összes korábbi kockázatos bejelentkezések és a kockázati események a kiválasztott felhasználó fog eltűnik.
-
-
-Bezárhatja a jelentett felhasználói kockázat:
-
-- **A kockázatos felhasználók jelentés** – Ez a beállítás lehetővé teszi, hogy a felhasználói kockázat bezárása egy vagy több kijelölt felhasználók.
-
-    ![Felhasználói kockázat bezárása](./media/howto-improve-detection-accuracy/02.png)
-
-- **A részleteket megjelenítő nézetet** – Ez a beállítás engedélyezi, hogy a felhasználó kockázati jelentés a kiválasztott felhasználó a felhasználói kockázat bezárása. 
-
-    ![Felhasználói kockázat bezárása](./media/howto-improve-detection-accuracy/01.png)
-
+   ![Felhasználói kockázat elvetése](./media/howto-improve-detection-accuracy/01.png)
 
 **Tudnivalók:**
 
-- Ez a művelet nem vonható vissza.
-
-- Ez a művelet hajtható végre, ezért érdemes nem újból elküldeni a kérést néhány percet is igénybe vehet.
-
-- Ez a művelet csak akkor végezzen, ha AD kezeli a felhasználó hitelesítő adatait. 
-
-
+- Ezt a műveletet nem lehet visszaállítani.
+- A művelet befejezéséhez néhány percet is igénybe vehet, ezért ne küldje el újra a kérelmet.
+- Ezt a műveletet csak akkor hajthatja végre, ha az AD kezeli a felhasználó hitelesítő adatait. 
 
 ## <a name="best-practices"></a>Ajánlott eljárások
 
-A felhasználó kockázati elvetése módja egy feloldásának őket, ha a felhasználói kockázati házirend által letiltott és nem lehet önmaga javítása miatt nem rendelkezik a jelszó-visszaállítás és/vagy a többtényezős hitelesítés engedélyezve van. Ebben a helyzetben érdemes biztosítása a felhasználónak ezután regisztrál a jelszó-visszaállítás és a többtényezős hitelesítés úgy tudja elérni a helyi kockázatcsökkentési műveleteket minden jövőbeli.
-
+A felhasználó kockázatának elutasítása az egyik lehetőség, ha a felhasználói kockázati házirend letiltotta őket, és nem tudja önmagát szervizelni, mert nincs engedélyezve a jelszó-visszaállítás és/vagy az MFA engedélyezése. Ebben az esetben érdemes meggyőződni arról, hogy a felhasználó ezt követően regisztrálja a jelszó-visszaállítást és az MFA-t, hogy képesek legyenek a jövőbeli kockázati események önkiszolgálására.
 
 ## <a name="next-steps"></a>További lépések
 
-Az Azure AD Identity Protection áttekintést kaphat, tekintse meg a [áttekintése az Azure AD Identity Protection](overview-v2.md).
-
-
+A Azure AD Identity Protection áttekintéséhez tekintse meg a [Azure ad Identity Protection áttekintését](overview-v2.md).

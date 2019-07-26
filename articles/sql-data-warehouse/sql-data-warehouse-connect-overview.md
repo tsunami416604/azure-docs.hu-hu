@@ -1,8 +1,8 @@
 ---
 title: Csatlakozás az Azure SQL Data Warehouse-hoz | Microsoft Docs
-description: Csatlakozhat az Azure SQL Data warehouse-bA.
+description: Csatlakozás Azure SQL Data Warehousehoz.
 services: sql-data-warehouse
-author: XiaoyuL-Preview
+author: XiaoyuMSFT
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
@@ -10,20 +10,20 @@ ms.subservice: development
 ms.date: 04/17/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: 2c937285b9c54072c6d1e1b0628c3d5fbfe786f3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 71f5c8ca56bc188c0664604a78c38a05be3c3b01
+ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65873667"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68479745"
 ---
 # <a name="connect-to-azure-sql-data-warehouse"></a>Csatlakozás az Azure SQL Data Warehouse-hoz
-Csatlakozhat az Azure SQL Data warehouse-bA.
+Csatlakozás Azure SQL Data Warehousehoz.
 
 ## <a name="find-your-server-name"></a>A kiszolgálónév lekérdezése
-A kiszolgáló nevét az alábbi példában samplesvr.Database.Windows.NET. A teljes kiszolgálónév lekérdezése:
+A kiszolgáló neve a következő példában samplesvr.database.windows.net. A teljes kiszolgálónév lekérdezése:
 
-1. Nyissa meg az [Azure Portalt][Azure portal].
+1. Nyissa meg az [Azure Portal][Azure portal].
 2. Kattintson az **SQL-adattárházak** elemre.
 3. Kattintson arra az adattárházra, amelyhez csatlakozni kíván.
 4. Keresse meg a teljes kiszolgálónevet.
@@ -31,7 +31,7 @@ A kiszolgáló nevét az alábbi példában samplesvr.Database.Windows.NET. A te
     ![Teljes kiszolgálónév][1]
 
 ## <a name="supported-drivers-and-connection-strings"></a>Támogatott illesztők és kapcsolati sztringek
-Az Azure SQL Data Warehouse a következő illesztőprogramokat támogatja: [ADO.NET][ADO.NET], [ODBC][ODBC], [PHP][PHP] és [JDBC][JDBC]. A legújabb verziók és dokumentációk megkereséséhez kattintson az egyik előző illesztőre. Automatikusan létrehozni az Ön által használt illesztőprogram kapcsolati karakterláncát az Azure Portalon, kattintson a a **adatbázis kapcsolati karakterláncainak megjelenítése** az előző példából. A következő néhány példa bemutatja, hogy néz ki a kapcsolati sztring az egyes illesztők esetében.
+Azure SQL Data Warehouse támogatja a [ADO.net][ADO.NET], [ODBC][ODBC], a [php][php]-t és a [JDBC][JDBC]-t. A legújabb verzió és dokumentáció megkereséséhez kattintson a fenti illesztőprogramok egyikére. A Azure Portal használt illesztőprogramhoz tartozó kapcsolati karakterlánc automatikus létrehozásához kattintson az előző példában az **adatbázis-kapcsolati karakterláncok megjelenítése** elemre. A következő néhány példa bemutatja, hogy néz ki a kapcsolati sztring az egyes illesztők esetében.
 
 > [!NOTE]
 > Javasoljuk, hogy a kapcsolat időkorlátjának 300 másodpercet adjon meg, hogy a kapcsolat rövid idejű kimaradások esetén is fennmaradjon.
@@ -61,15 +61,15 @@ jdbc:sqlserver://yourserver.database.windows.net:1433;database=yourdatabase;user
 ## <a name="connection-settings"></a>Kapcsolati beállítások
 Az SQL Data Warehouse szabványosít néhány beállítást a csatlakozás és az objektumlétrehozás során. Ezeket a beállításokat nem lehet felülírni, és a következők lehetnek:
 
-| Adatbázis-beállítások | Érték |
+| Adatbázis-beállítások | Value |
 |:--- |:--- |
-| [ANSI_NULLS][ANSI_NULLS] |ON |
-| [QUOTED_IDENTIFIERS][QUOTED_IDENTIFIERS] |ON |
+| [ANSI_NULLS][ANSI_NULLS] |BE |
+| [QUOTED_IDENTIFIERS][QUOTED_IDENTIFIERS] |BE |
 | [DATEFORMAT][DATEFORMAT] |hné |
 | [DATEFIRST][DATEFIRST] |7 |
 
 ## <a name="next-steps"></a>További lépések
-A Visual Studióval végzett csatlakozásról és lekérdezésről lásd: [Lekérdezés a Visual Studióval][Query with Visual Studio]. A hitelesítési lehetőségekkel kapcsolatos további információkért lásd: [Authentication to Azure SQL Data Warehouse][Authentication to Azure SQL Data Warehouse] (Hitelesítés az Azure SQL Warehouse-szal).
+A Visual Studióval való kapcsolódáshoz és lekérdezéshez lásd: [lekérdezés a Visual Studióval][Query with Visual Studio]. To learn more about authentication options, see [Authentication to Azure SQL Data Warehouse][Authentication to Azure SQL Data Warehouse].
 
 <!--Articles-->
 [Query with Visual Studio]: ./sql-data-warehouse-query-visual-studio.md

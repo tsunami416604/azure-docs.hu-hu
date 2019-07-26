@@ -1,6 +1,6 @@
 ---
-title: A Service Map-integráció a System Center Operations Manager |} A Microsoft Docs
-description: A Service Map az Azure egyik megoldása, amely automatikusan felderíti az alkalmazás-összetevőket Windows és Linux rendszereken, és feltérképezi a szolgáltatások közötti kommunikációt. Ez a cikk ismerteti a Service Map használata az Operations Manager elosztottalkalmazás-diagramok automatikus létrehozásához.
+title: Azure Monitor for VMs integráció a System Center Operations Managertal | Microsoft Docs
+description: Azure Monitor for VMs automatikusan feltérképezi az alkalmazás-összetevőket Windows-és Linux-rendszereken, és leképezi a szolgáltatások közötti kommunikációt. Ebből a cikkből megtudhatja, hogyan hozhat létre automatikusan elosztott alkalmazás-diagramokat a Operations Manager a Térkép funkcióval.
 services: azure-monitor
 documentationcenter: ''
 author: mgoedtel
@@ -11,129 +11,143 @@ ms.service: azure-monitor
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/21/2017
+ms.date: 07/12/2019
 ms.author: magoedte
-ms.openlocfilehash: 40e6d6ff6ea8748b525642e5507c80590b322b7a
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: b16505eb2c12819532b8675472cf0e6f4177f7bf
+ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60402538"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68489722"
 ---
-# <a name="service-map-integration-with-system-center-operations-manager"></a>A Service Map System Center Operations Manager-integráció
+# <a name="system-center-operations-manager-integration-with-azure-monitor-for-vms-map-feature"></a>System Center Operations Manager integráció Azure Monitor for VMs Térkép funkcióval
 
-A Szolgáltatástérkép automatikusan felderíti az alkalmazás-összetevőket Windows és Linux rendszereken, és feltérképezi a szolgáltatások közötti kommunikációt. A Service Map használatával a kiszolgálók az Ön gondol rájuk, rendszerekként, amelyek kritikus fontosságú szolgáltatásokat módon teszi lehetővé. A Service Map megmutatja a kapcsolatokat kiszolgálók, folyamatok és portok minden olyan TCP-kapcsolattal összekötött architektúrában, nem szükséges az ügynök telepítése mellett konfiguráció között. További információkért lásd: a [Szolgáltatástérkép dokumentációja]( service-map.md).
+Azure Monitor for VMs a felderített alkalmazás-összetevőket megtekintheti az Azure-ban vagy a környezetben futó Windows-és Linux-alapú virtuális gépeken (VM-EK). A Térkép funkció és a System Center Operations Manager közötti integráció révén automatikusan létrehozhat elosztott alkalmazási diagramokat a Azure Monitor for VMs dinamikus függőségi térképén alapuló Operations Manager. 
 
-Ez az integráció a Service Map és a System Center Operations Manager között a dinamikus függőségi térképek, a Service Map alapuló az Operations Manager elosztottalkalmazás-diagramok automatikusan létrehozhat.
+>[!NOTE]
+>Ha már telepítette Service Map, megtekintheti a térképeit Azure Monitor for VMsban, amely a virtuális gépek állapotának és teljesítményének figyelésére szolgáló további funkciókat is tartalmaz. A Azure Monitor for VMs Térkép funkciója a különálló Service Map megoldás cseréjére szolgál. További információ: [Azure monitor for VMS Overview (áttekintés](vminsights-overview.md)).
 
 ## <a name="prerequisites"></a>Előfeltételek
-* Az Operations Manager felügyeleti csoport (2012 R2 vagy újabb) kiszolgálók egy csoportja, amelyek kezel.
-* A Service Map szolgáltatás engedélyezve van a Log Analytics-munkaterületet.
-* Kiszolgálók (legalább egyet), amely az Operations Manager és a Service Map adatokat küldő által kezelt készlete. Windows és Linux-kiszolgálók támogatottak.
-* Egyszerű szolgáltatás a Log Analytics-munkaterülethez társított Azure-előfizetés hozzáférést. További információért ugorjon [egyszerű szolgáltatás létrehozása](#create-a-service-principal).
+
+* Egy System Center Operations Manager felügyeleti csoport (2012 R2 vagy újabb).
+* Azure Monitor for VMs támogatására konfigurált Log Analytics munkaterület.
+* Egy vagy több Windows-és Linux-alapú virtuális gép vagy fizikai számítógép, amelyet Operations Manager figyel, és adatokat küld a Log Analytics munkaterületre. A Operations Manager felügyeleti csoportnak jelentést küldő Linux-kiszolgálókat úgy kell konfigurálni, hogy közvetlenül kapcsolódjanak Azure Monitorhoz. További információkért tekintse át a naplófájlok [adatainak összegyűjtése a log Analytics ügynökkel](../platform/log-analytics-agent.md)című témakör áttekintését.
+* Az Log Analytics munkaterülethez társított Azure-előfizetéshez hozzáférő egyszerű szolgáltatás. További információ: [egyszerű szolgáltatásnév létrehozása](#create-a-service-principal).
 
 ## <a name="install-the-service-map-management-pack"></a>A Service Map felügyeleti csomag telepítése
-Az Operations Manager és a Service Map integrációjával engedélyezi a Microsoft.SystemCenter.ServiceMap felügyeleticsomag-köteg (Microsoft.SystemCenter.ServiceMap.mpb) importálásával. A felügyeleticsomag-köteg a letöltheti a [Microsoft Download Center](https://www.microsoft.com/download/details.aspx?id=55763). A csomagot a következő felügyeleti csomagokat tartalmazza:
-* Microsoft Service Map Alkalmazásnézetek
-* Microsoft System Center Service Map Internal
-* A Microsoft System Center Service Map felülbírálások
+
+A Microsoft. SystemCenter. ServiceMap felügyeleti csomag (Microsoft. SystemCenter. ServiceMap. MPB) importálásával engedélyezheti a Operations Manager és a Térkép funkció közötti integrációt. A felügyeleti csomag csomagját a [Microsoft letöltőközpontból](https://www.microsoft.com/download/details.aspx?id=55763)töltheti le. A csomag a következő felügyeleti csomagokat tartalmazza:
+
+* A Microsoft Service Map alkalmazás nézetei
+* A Microsoft System Center Service Map belső
+* A Microsoft System Center Service Map felülbírálásai
 * Microsoft System Center Service Map
 
-## <a name="configure-the-service-map-integration"></a>A Service Map-integráció konfigurálása
-Miután telepítette a Service Map felügyeleti csomagot, egy új csomópont **Service Map**, alatt jelenik meg **Operations Management Suite** a a **felügyeleti** ablaktáblán.
+## <a name="configure-integration"></a>Integráció konfigurálása
+
+Miután telepítette a Service Map felügyeleti csomagot, a Operations Manager operatív konzol **Adminisztráció** paneljén az **Operations Management Suite** alatt megjelenik egy új csomópont, **Service Map**.
 
 >[!NOTE]
->[Operations Management Suite szolgáltatások gyűjteménye nem](https://github.com/MicrosoftDocs/azure-docs-pr/pull/azure-monitor/azure-monitor-rebrand.md#retirement-of-operations-management-suite-brand) , amely tartalmazza a Log Analytics részét képező, [Azure Monitor](https://github.com/MicrosoftDocs/azure-docs-pr/pull/azure-monitor/overview.md).
+>Az [Operations Management Suite a](../terminology.md#april-2018---retirement-of-operations-management-suite-brand) log Analytics részét képező szolgáltatások gyűjteménye volt, immár [Azure monitor](../overview.md)része.
 
-A Service Map integráció konfigurálásához tegye a következőket:
+Azure Monitor for VMs Map-integráció konfigurálásához tegye a következőket:
 
-1. A konfigurációs varázsló megnyitásához a **Service Map áttekintése** ablaktáblán kattintson a **munkaterület hozzáadása**.  
+1. A konfigurációs varázsló megnyitásához a **Service Map áttekintés** ablaktáblán kattintson a **munkaterület hozzáadása**elemre.  
 
-    ![Service Map áttekintő panel](media/service-map-scom/scom-configuration.png)
+    ![Service Map áttekintés panel](media/service-map-scom/scom-configuration.png)
 
-2. Az a **kapcsolat konfigurációja** ablakban írja be a bérlő neve vagy azonosítója, azonosítója (más néven a felhasználónév vagy a clientID) és az egyszerű szolgáltatás jelszava, és kattintson **tovább**. További információkért nyissa meg a szolgáltatásnév létrehozásához.
+2. A **kapcsolatok konfigurációja** ablakban adja meg a bérlő nevét vagy azonosítóját, az alkalmazás azonosítóját (más néven Felhasználónév vagy clientID), valamint az egyszerű szolgáltatásnév jelszavát, majd kattintson a **tovább**gombra. További információ: egyszerű szolgáltatásnév létrehozása.
 
-    ![A kapcsolat konfigurációs ablaka](media/service-map-scom/scom-config-spn.png)
+    ![A kapcsolatok konfigurációs ablaka](media/service-map-scom/scom-config-spn.png)
 
-3. Az a **előfizetés kiválasztására** ablakban válassza ki az Azure-előfizetéssel, Azure-erőforráscsoportot (az egy, a Log Analytics-munkaterületet tartalmazó) és Log Analytics-munkaterületet, és kattintson **tovább**.
+3. Az **előfizetés kiválasztása** ablakban válassza ki az Azure-előfizetést, az Azure-erőforráscsoportot (amely a log Analytics munkaterületet tartalmazza) és log Analytics munkaterületet, majd kattintson a **tovább**gombra.
 
-    ![Az Operations Manager konfigurációs munkaterület](media/service-map-scom/scom-config-workspace.png)
+    ![A Operations Manager konfigurációs munkaterület](media/service-map-scom/scom-config-workspace.png)
 
-4. Az a **gép Csoportválasztás** melyik Service Map gépcsoportok szeretné szinkronizálni az Operations Manager választja az ablakban. Kattintson a **gépcsoportok hozzáadása/eltávolítása**, listájából válassza ki a csoportokat **rendelkezésre álló gépcsoportok**, és kattintson a **Hozzáadás**.  Ha befejezte a csoportok kiválasztásával, kattintson a **Ok** befejezéséhez.
+4. A **gépi csoport kiválasztása** ablakban kiválaszthatja, hogy mely Service Map a Operations Manager szinkronizálni kívánt számítógépcsoportok. Kattintson a számítógépcsoportok **hozzáadása/eltávolítása**elemre, válassza ki a csoportokat az **elérhető**számítógépcsoportok listájából, majd kattintson a **Hozzáadás**gombra.  Amikor befejezte a csoportok kijelölését, kattintson **az OK** gombra a befejezéshez.
 
-    ![Az Operations Manager konfigurációs gépcsoportok](media/service-map-scom/scom-config-machine-groups.png)
+    ![A Operations Manager konfigurációs számítógépcsoportok](media/service-map-scom/scom-config-machine-groups.png)
 
-5. Az a **kiszolgáló kiválasztása** ablakban konfigurálja a Service Map kiszolgálók csoport az Operations Manager és a Service Map közötti szinkronizálni kívánt kiszolgálón. Kattintson a **kiszolgálók hozzáadása/eltávolítása**.   
+5. A **kiszolgáló kiválasztása** ablakban a Service Map-kiszolgálók csoportot a Operations Manager és a Térkép funkció között szinkronizálni kívánt kiszolgálókkal konfigurálja. Kattintson a **kiszolgálók hozzáadása/eltávolítása**elemre.
 
-    A kiszolgáló egy elosztottalkalmazás-diagram létrehozása az integráció a kiszolgálónak kell lennie:
+    Ahhoz, hogy az integráció egy elosztott alkalmazási diagramot hozzon létre egy kiszolgálóhoz, a kiszolgálónak a következőnek kell lennie:
 
-   * Operations Manager által felügyelt
-   * A Service Map által felügyelt
-   * A Service Map kiszolgálók csoport szerepel
+   * Figyelte Operations Manager
+   * Úgy van konfigurálva, hogy az Log Analytics munkaterületre jelentsen Azure Monitor for VMs
+   * A Service Map-kiszolgálók csoportban szerepel
 
-     ![Az Operations Manager konfigurációs csoport](media/service-map-scom/scom-config-group.png)
+     ![A Operations Manager konfigurációs csoport](media/service-map-scom/scom-config-group.png)
 
-6. Nem kötelező: Válassza ki a Log Analytics kommunikálni, és kattintson a felügyeleti kiszolgálókat tartalmazó erőforráskészlet **munkaterület hozzáadása**.
+6. Nem kötelező: Válassza a minden felügyeleti kiszolgáló erőforráskészlet lehetőséget, hogy kommunikáljon Log Analyticsokkal, majd kattintson a **munkaterület hozzáadása**lehetőségre.
 
-    ![Az Operations Manager konfigurációs erőforráskészlet](media/service-map-scom/scom-config-pool.png)
+    ![A Operations Manager konfigurációs erőforráskészlet](media/service-map-scom/scom-config-pool.png)
 
-    Konfigurálása és regisztrálása a Log Analytics-munkaterületet egy percig is eltarthat. Beállítások konfigurálása után az Operations Manager a Service Map első szinkronizálás indítja el.
+    A Log Analytics munkaterület konfigurálásához és regisztrálásához egy percet is igénybe vehet. A konfigurálást követően Operations Manager elindítja az első Térkép-szinkronizálást.
 
-    ![Az Operations Manager konfigurációs erőforráskészlet](media/service-map-scom/scom-config-success.png)
+    ![A Operations Manager konfigurációs erőforráskészlet](media/service-map-scom/scom-config-success.png)
 
+## <a name="monitor-integration"></a>Integráció monitorozása
 
-## <a name="monitor-service-map"></a>A figyelő a Service Map
-Miután a Log Analytics-munkaterülethez van csatlakoztatva, egy új mappát, a Service Map, megjelenik a **figyelés** az Operations Manager-konzol ablaktáblában.
+A Log Analytics munkaterület csatlakoztatása után az Operations Manager operatív konzol **figyelés** ablaktábláján megjelenik egy új mappa, Service map.
 
-![Az Operations Manager figyelés ablaktáblán](media/service-map-scom/scom-monitoring.png)
+![Az Operations Manager figyelési panel](media/service-map-scom/scom-monitoring.png)
 
 A Service Map mappa négy csomóponttal rendelkezik:
-* **Aktív riasztások**: Az Operations Manager és a Service Map közötti kommunikáció kapcsolatos összes aktív riasztás listája.  Vegye figyelembe, hogy ezek a riasztások nem a Log Analytics-riasztások szinkronizálódik az Operations Manager.
 
-* **Kiszolgálók**: Megjeleníti a figyelt kiszolgálók konfigurált való szinkronizálása a Service Map.
+* **Aktív riasztások**: A Operations Manager és Azure Monitor közötti kommunikációval kapcsolatos összes aktív riasztást listázza.  
 
-    ![Az Operations Manager figyelési kiszolgálók panel](media/service-map-scom/scom-monitoring-servers.png)
+  >[!NOTE]
+  >Ezek a riasztások nem Log Analytics a Operations Managersal szinkronizált riasztásokat, a Service Map felügyeleti csomagban meghatározott munkafolyamatok alapján jönnek létre a felügyeleti csoportban.
 
-* **Gép függőségi Csoportnézeteket**: A Service Map szinkronizált összes számítógép-csoportok listája. Minden csoport az elosztottalkalmazás-diagram megtekintése gombra.
+* **Kiszolgálók**: Azokat a figyelt kiszolgálókat sorolja fel, amelyek a Azure Monitor for VMs Map szolgáltatásból való szinkronizálásra vannak konfigurálva.
 
-    ![Az Operations Manager elosztottalkalmazás-diagram](media/service-map-scom/scom-group-dad.png)
+    ![A Operations Manager figyelési kiszolgálók panel](media/service-map-scom/scom-monitoring-servers.png)
 
-* **Kiszolgáló függőségi nézetek**: A Service Map szinkronizált összes kiszolgálók listája. Bármely kiszolgáló az elosztottalkalmazás-diagram megtekintése gombra.
+* **Számítógép-csoport függőségeinek nézetei**: A Térkép szolgáltatásból szinkronizált összes számítógépcsoport listája. A bármely csoportra kattintva megtekintheti az elosztott alkalmazás diagramját.
 
-    ![Az Operations Manager elosztottalkalmazás-diagram](media/service-map-scom/scom-dad.png)
+    ![Az Operations Manager elosztott alkalmazás diagramja](media/service-map-scom/scom-group-dad.png)
 
-## <a name="edit-or-delete-the-workspace"></a>Szerkesztheti vagy törölheti a munkaterületet
-Ön módosíthatja és törölheti a konfigurált munkaterületével keresztül a **Service Map áttekintése** ablaktáblán (**felügyeleti** panel > **Operations Management Suite**  >  **Service Map**).
+* **Kiszolgáló függőségi nézetei**: A Térkép szolgáltatásból szinkronizált összes kiszolgáló felsorolása. A bármely kiszolgálóra kattintva megtekintheti az elosztott alkalmazás diagramját.
+
+    ![Az Operations Manager elosztott alkalmazás diagramja](media/service-map-scom/scom-dad.png)
+
+## <a name="edit-or-delete-the-workspace"></a>Munkaterület szerkesztése vagy törlése
+
+A konfigurált munkaterületet szerkesztheti vagy törölheti a **Service Map áttekintés** paneljén (**felügyeleti** ablaktábla > **Operations Management Suite** > **Service Map**).
 
 >[!NOTE]
->[Operations Management Suite szolgáltatások gyűjteménye nem](https://github.com/MicrosoftDocs/azure-docs-pr/pull/azure-monitor/azure-monitor-rebrand.md#retirement-of-operations-management-suite-brand) , amely tartalmazza a Log Analytics részét képező, [Azure Monitor](https://github.com/MicrosoftDocs/azure-docs-pr/pull/azure-monitor/overview.md).
+>Az [Operations Management Suite a](https://github.com/MicrosoftDocs/azure-docs-pr/pull/azure-monitor/azure-monitor-rebrand.md#retirement-of-operations-management-suite-brand) log Analytics részét képező szolgáltatások gyűjteménye volt, amely már [Azure monitor](https://github.com/MicrosoftDocs/azure-docs-pr/pull/azure-monitor/overview.md)része.
 
-Most beállíthatja a csak egy Log Analytics-munkaterületet.
+Ebben az aktuális kiadásban csak egy Log Analytics munkaterületet lehet konfigurálni.
 
-![Az Operations Manager szerkesztése munkaterület ablaktáblán](media/service-map-scom/scom-edit-workspace.png)
+![A munkaterület szerkesztése ablaktábla Operations Manager](media/service-map-scom/scom-edit-workspace.png)
 
 ## <a name="configure-rules-and-overrides"></a>Szabályok és felülbírálások konfigurálása
-Egy szabály _Microsoft.SystemCenter.ServiceMapImport.Rule_, rendszeres időközönként beolvasni az adatokat a Szolgáltatástérkép jön létre. Szinkronizálási időzítésüket módosításához felülbírálások a szabály konfigurálható (**szerzői műveletek** panel > **szabályok** > **Microsoft.SystemCenter.ServiceMapImport.Rule**) .
 
-![Az Operations Manager felülbírálások tulajdonságok ablak](media/service-map-scom/scom-overrides.png)
+A szabály, a *Microsoft. SystemCenter. ServiceMapImport. Rule*, rendszeres időközönként beolvassa az adatokat Azure monitor for VMS Térkép szolgáltatásból. A szinkronizálási időköz módosításához felülbírálhatja a szabályt, és módosíthatja a **IntervalMinutes**paraméter értékét.
 
-* **Engedélyezett**: Engedélyezi vagy letiltja az automatikus frissítések.
-* **IntervalMinutes**: Állítsa vissza a frissítések közötti idő. Az alapértelmezett érték egy óra. Kiszolgáló maps gyakrabban szinkronizálni szeretné, ha az értéke módosíthatja.
-* **TimeoutSeconds**: Állítsa alaphelyzetbe a mennyi ideig, mielőtt a kérés túllépi az időkorlátot.
-* **TimeWindowMinutes**: Adatok lekérdezése időtartományából alaphelyzetbe. Alapértelmezett érték 60 perces ablak. A Service Map által engedélyezett maximális értéke 60 perc.
+![A Operations Manager felülbírálások tulajdonságai ablak](media/service-map-scom/scom-overrides.png)
+
+* **Engedélyezve**: Az automatikus frissítések engedélyezése vagy letiltása.
+* **IntervalMinutes**: Megadja a frissítések közötti időt. Az alapértelmezett intervallum egy óra. Ha gyakrabban szeretné szinkronizálni a térképeket, módosíthatja az értéket.
+* **TimeoutSeconds**: Meghatározza azt az időtartamot, ameddig a kérelem időtúllépése megtörténjen.
+* **TimeWindowMinutes**: Meghatározza az adatlekérdezés időtartományát. Az alapértelmezett érték 60 perc, amely a maximálisan engedélyezett időköz.
 
 ## <a name="known-issues-and-limitations"></a>Ismert problémák és korlátozások
 
-A jelenlegi kialakítás mutat be, a következő problémák és korlátozások:
-* Csak egyetlen Log Analytics-munkaterület csatlakozni.
-* Bár a kiszolgálók a Service Map kiszolgálók csoport keresztül manuálisan is hozzáadhat a **szerzői műveletek** ablaktáblán, a maps ezekhez a kiszolgálókhoz közvetlenül nem lett szinkronizálva.  Ezek lesznek szinkronizálva a Service Map a következő szinkronizálási ciklus során.
-* Ha a felügyeleti csomag által létrehozott elosztott alkalmazás a diagramokra végezze el a módosításokat, ezek a módosítások valószínűleg felülírja a Service Map az a következő szinkronizáláskor.
+Az aktuális terv a következő problémákat és korlátozásokat mutatja be:
+
+* Csak egyetlen Log Analytics-munkaterülethez csatlakozhat.
+* Bár a **szerzői műveletek** ablaktáblán manuálisan adhat hozzá kiszolgálókat a Service Map-kiszolgálók csoportjához, a kiszolgálók leképezései nincsenek azonnal szinkronizálva. A következő szinkronizálási ciklusban szinkronizálva lesznek a Azure Monitor for VMs Térkép szolgáltatásból.
+* Ha módosítja a felügyeleti csomag által létrehozott elosztott alkalmazás-diagramokat, a módosítások valószínűleg felül lesznek írva a következő szinkronizáláskor Azure Monitor for VMs.
 
 ## <a name="create-a-service-principal"></a>Egyszerű szolgáltatás létrehozása
-Hivatalos Azure dokumentációjában az egyszerű szolgáltatás létrehozása lásd:
-* [Egyszerű szolgáltatás létrehozása a PowerShell használatával](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-authenticate-service-principal)
-* [Egyszerű szolgáltatás létrehozása az Azure CLI-vel](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-authenticate-service-principal-cli)
-* [Egyszerű szolgáltatás létrehozása az Azure portal használatával](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal)
+
+Az egyszerű szolgáltatásnév létrehozásával kapcsolatos hivatalos Azure-dokumentációért lásd:
+
+* [Egyszerű szolgáltatásnév létrehozása a PowerShell használatával](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-authenticate-service-principal)
+* [Egyszerű szolgáltatásnév létrehozása az Azure CLI használatával](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-authenticate-service-principal-cli)
+* [Egyszerű szolgáltatásnév létrehozása a Azure Portal használatával](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal)
 
 ### <a name="feedback"></a>Visszajelzés
-Van bármilyen visszajelzése szolgáltatást, mert a Service Map vagy ez a dokumentáció? Látogasson el a [User Voice lap](https://feedback.azure.com/forums/267889-log-analytics/category/184492-service-map), ahol javaslattétel szolgáltatásokra, illetve szavazhat a meglévő javaslatokat.
+Van-e visszajelzése a Azure Monitor for VMs Map szolgáltatással való integrációról vagy a dokumentációról? Látogasson el a [felhasználói hang oldalra](https://feedback.azure.com/forums/267889-log-analytics/category/184492-service-map), ahol javaslatot tehet a funkciókra, vagy szavazhat a meglévő javaslatokról.

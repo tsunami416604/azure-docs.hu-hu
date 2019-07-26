@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 05/11/2019
 ms.author: genli
-ms.openlocfilehash: a0cd2952633293bfa1d29bf3a399c67bf092d288
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
-ms.translationtype: HT
+ms.openlocfilehash: ad30bd4f77c5f4314956e39f26a30b72d72a208a
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68318323"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68361173"
 ---
 # <a name="prepare-a-windows-vhd-or-vhdx-to-upload-to-azure"></a>Windows VHD vagy VHDX előkészítése az Azure-ba való feltöltésre
 
@@ -33,7 +33,7 @@ Az Azure-beli virtuális gépek támogatási szabályzatával kapcsolatos inform
 > [!NOTE]
 > A cikkben szereplő utasítások a következőkre vonatkoznak:
 >1. A Windows Server 2008 R2 és újabb Windows Server operációs rendszerek 64 bites verziója. Az 32 bites operációs rendszerek Azure-ban való futtatásával kapcsolatos információkért lásd: [a 32 bites operációs rendszerek támogatása az Azure](https://support.microsoft.com/help/4021388/support-for-32-bit-operating-systems-in-azure-virtual-machines)-beli virtuális gépeken.
->2. Ha bármilyen vész-helyreállítási eszközt használ a munkaterhelések áttelepítéséhez, például Azure Site Recovery vagy Azure Migrate, ezt a folyamatot továbbra is meg kell tenni, és követnie kell a vendég operációs rendszert, hogy előkészítse a rendszerképet az áttelepítés előtt.
+>2. Ha a számítási feladat áttelepítéséhez vész-helyreállítási eszközt használ, például Azure Site Recovery vagy Azure Migrate, ezt a folyamatot továbbra is végre kell hajtani, és követnie kell a vendég operációs rendszert, hogy előkészítse a rendszerképet az áttelepítés előtt.
 
 ## <a name="convert-the-virtual-disk-to-a-fixed-size-and-to-vhd"></a>A virtuális lemez átalakítása rögzített méretűre és VHD-re
 
