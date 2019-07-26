@@ -6,7 +6,7 @@ metadata:
   title: 'Personalizer – Oktatóanyagok, rövid útmutatók, API-referencia'
   description: 'Megismerheti, hogyan használhatja a Personalizer szolgáltatást arra, hogy az alkalmazás a valós idejű viselkedésükből tanulva kiválassza a felhasználók számára megjelenítendő legjobb élményt.'
   author: nitinme
-  manager: cgronlun
+  manager: nitinme
   ms.service: cognitive-services
   ms.tgt_pltfrm: na
   ms.devlang: na

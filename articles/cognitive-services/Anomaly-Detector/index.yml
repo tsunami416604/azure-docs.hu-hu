@@ -6,7 +6,7 @@ metadata:
   description: 'Az Anomaly Detector API használatával gondoskodhat az adatok az idő függvényében történő figyeléséről, valamint észlelheti a gépi tanulással kapcsolatos rendellenességeket. Betekintést nyerhet adataiba, a mennyiségtől, az iparágtól vagy a forgatókönyvtől függetlenül.'
   services: cognitive-services
   author: aahill
-  manager: cgronlun
+  manager: nitinme
   layout: LandingPage
   ms.service: cognitive-services
   ms.tgt_pltfrm: na

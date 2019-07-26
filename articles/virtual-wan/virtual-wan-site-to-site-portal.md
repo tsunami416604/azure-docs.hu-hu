@@ -5,17 +5,17 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: tutorial
-ms.date: 04/23/2019
+ms.date: 07/25/2019
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to connect my local site to my VNets using Virtual WAN and I don't want to go through a Virtual WAN partner.
-ms.openlocfilehash: e8e251aa5031a8eadd2d567bff2830449c7decc3
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: e9be7ef5c4f37c66f7cbf2c6226936438b367108
+ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64689506"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68515168"
 ---
-# <a name="tutorial-create-a-site-to-site-connection-using-azure-virtual-wan"></a>Oktatóanyag: Azure virtuális WAN használatával helyek közötti kapcsolat létrehozása
+# <a name="tutorial-create-a-site-to-site-connection-using-azure-virtual-wan"></a>Oktatóanyag: Helyek közötti kapcsolat létrehozása az Azure Virtual WAN használatával
 
 Az oktatóanyag bemutatja, hogyan kapcsolódhat a Virtual WAN használatával az Azure-ban lévő erőforrásaihoz IPsec/IKE (IKEv1 és IKEv2) VPN-kapcsolaton keresztül. Az ilyen típusú kapcsolatokhoz egy helyszíni VPN-eszközre van szükség, amelyhez hozzá van rendelve egy kifelé irányuló, nyilvános IP-cím. A Virtual WAN-nal kapcsolatos további információkért lásd a [Virtual WAN áttekintését](virtual-wan-about.md).
 
@@ -32,14 +32,14 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > * Hely létrehozása
 > * Elosztó létrehozása
 > * Elosztó csatlakoztatása helyhez
-> * Kompatibilis a virtuális hálózat létrehozása (Ha még nem rendelkezik egy)
+> * Hozzon létre egy kompatibilis VNet (ha még nem rendelkezik ilyennel)
 > * Virtuális hálózat csatlakoztatása elosztóhoz
 > * A VPN-eszköz konfigurációjának letöltése és alkalmazása
 > * A virtuális WAN megtekintése
 > * Erőforrás állapotának megtekintése
 > * Kapcsolatok monitorozása
 
-## <a name="before-you-begin"></a>Előzetes teendők
+## <a name="before-you-begin"></a>Előkészületek
 
 [!INCLUDE [Before you begin](../../includes/virtual-wan-tutorial-vwan-before-include.md)]
 
@@ -57,13 +57,18 @@ Hozzon létre annyi helyet, amennyit csak szükséges a fizikai helyeknek megfel
 2. A **VPN-helyek** lapon kattintson a **+Hely létrehozása** elemre.
 3. A **Hely létrehozása** lapon töltse ki a következő mezőket:
 
-   * **Név** – tekintse meg a helyszíni hely kívánt nevét.
-   * **Nyilvános IP-cím** – a nyilvános IP-cím a VPN-eszköz, amely a helyszíni helyen található.
+   * **Név** – a név, amellyel a helyszíni helyre hivatkozni kíván.
+   * **Nyilvános IP-cím** – a helyszíni helyen található VPN-eszköz nyilvános IP-címe.
    * **Privát címtér** – Ez a helyszíni helyen található IP-címtér. Az erre a címtérre címzett forgalom át lesz irányítva a helyszíni helyre.
    * **Előfizetés** – Ellenőrizze az előfizetést.
    * **Erőforráscsoport** – A használni kívánt erőforráscsoport.
-   * **Hely**
-4. A további beállítások megtekintéséhez kattintson a **Speciális megjelenítése** gombra. Választhat **BGP** BGP, amely lehetővé teszi a BGP-funkciót ehhez a helyhez az Azure-ban létrehozott összes kapcsolatot a engedélyezéséhez. Megadhatja az **eszközökkel kapcsolatos információkat** is (opcionális mezők). Ez segíthet a környezet további optimalizálási lehetőségeit a jövőben hozzáadása és háríthatja el jobban megismerheti az Azure-csapat.
+   * **Location**
+4. A további beállítások megtekintéséhez kattintson a **Speciális megjelenítése** gombra. 
+
+   Kiválaszthatja a **BGP** -t a BGP engedélyezéséhez, amely lehetővé teszi a BGP-funkciókat az Azure-beli webhelyhez létrehozott összes kapcsolaton. A BGP virtuális WAN-on való konfigurálása egyenértékű a BGP Azure-beli VPN-átjárón való konfigurálásával. A helyszíni BGP-társ címe *nem* lehet azonos a VPN által az eszközre vagy a VPN-hely VNet-címére vonatkozó nyilvános IP-címmel. Használjon egy másik IP-címet a VPN-eszközön a BGP-társ IP-címéhez. Ez lehet egy olyan cím is, amely az eszköz visszacsatolási hálózatához van rendelve. Azonban *nem* lehet APIPA (169,254). *x*. *x*) címe. Ezt a címet a helyet jelölő megfelelő Helyi hálózati átjáróban kell megadni. A BGP-előfeltételeket lásd: [a BGP és az Azure VPN Gateway](../vpn-gateway/vpn-gateway-bgp-overview.md).
+
+   Megadhatja az **eszközökkel kapcsolatos információkat** is (opcionális mezők). Így az Azure csapata jobban megismerheti a környezetet, hogy további optimalizálási lehetőségeket adjon a jövőben, vagy segítséget nyújtson a hibák megoldásához.
+   
 5. Kattintson a **Megerősítés** gombra.
 6. Miután rákattintott a **Megerősítés** gombra, nézze meg a VPN-hely lapon a hely állapotát. A hely a **Kiépítés alatt** állapotból a**Kiépített** állapotba lép át.
 
@@ -83,7 +88,7 @@ Hozzon létre annyi helyet, amennyit csak szükséges a fizikai helyeknek megfel
 
 ## <a name="vnet"></a>5. Virtuális hálózat létrehozása
 
-Ha Ön még nem rendelkezik egy virtuális hálózathoz, gyorsan létrehozhat egy a PowerShell vagy az Azure Portalon. Ha már rendelkezik virtuális hálózattal, győződjön meg arról, hogy megfelel a követelményeknek, és nem rendelkezik virtuális hálózati átjáróval.
+Ha még nem rendelkezik VNet, gyorsan létrehozhat egyet a PowerShell vagy a Azure Portal használatával. Ha már rendelkezik virtuális hálózattal, győződjön meg arról, hogy megfelel a követelményeknek, és nem rendelkezik virtuális hálózati átjáróval.
 
 [!INCLUDE [Create a virtual network](../../includes/virtual-wan-tutorial-vnet-include.md)]
 
@@ -115,7 +120,7 @@ A VPN-eszköz konfigurációjának használatával konfigurálhatja a helyszíni
 Az eszközkonfigurációs fájl a helyszíni VPN-eszköz konfigurálása során használandó beállításokat tartalmazza. A fájl áttekintésekor a következő információkat láthatja:
 
 * **vpnSiteConfiguration** – Ez a szakasz az eszköz a virtuális WAN-ra csatlakozó helyként való telepítésére vonatkozó adatait tartalmazza. Az ágeszköz nevét és nyilvános IP-címét tartalmazza.
-* **vpnSiteConnections -** Ez a szakasz ismerteti a következő beállításokat:
+* **vpnSiteConnections –** Ez a szakasz a következő beállításokkal kapcsolatos információkat tartalmazza:
 
     * A virtuális elosztó(k) virtuális hálózatának **címtere**<br>Példa:
  
@@ -127,7 +132,7 @@ Az eszközkonfigurációs fájl a helyszíni VPN-eszköz konfigurálása során 
          ```
         "ConnectedSubnets":["10.2.0.0/16","10.30.0.0/16"]
          ```
-    * A virtuális hálózat VPN-átjárójának **IP-címei** Minden kapcsolat, a VPN-átjáró két alagút aktív-aktív konfigurációban épül fel, mert a fájlban szereplő IP-címe megjelenik. Ebben a példában mindegyik helyhez az „Instance0” és az „Instance1” van feltüntetve.<br>Példa:
+    * A virtuális hálózat VPN-átjárójának **IP-címei** Mivel a átjáróban minden egyes csatlakoztatása két alagútból áll az aktív-aktív konfigurációban, a fájlban felsorolt IP-címeket is látni fogja. Ebben a példában mindegyik helyhez az „Instance0” és az „Instance1” van feltüntetve.<br>Példa:
 
         ``` 
         "Instance0":"104.45.18.186"
@@ -270,7 +275,7 @@ Létrehozhat egy kapcsolatot az Azure-beli virtuális gépek és a távoli helye
 
 ## <a name="cleanup"></a>11. Az erőforrások eltávolítása
 
-Ha ezekre az erőforrásokra már nincs szüksége, használhatja [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) , távolítsa el az erőforráscsoportot és az összes benne található erőforrást. A „myResourceGroup” helyére írja be az erőforráscsoport nevét, és futtassa a következő PowerShell-parancsot:
+Ha már nincs szüksége ezekre az erőforrásokra, a [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) használatával távolítsa el az erőforráscsoportot és a benne található összes erőforrást. A „myResourceGroup” helyére írja be az erőforráscsoport nevét, és futtassa a következő PowerShell-parancsot:
 
 ```azurepowershell-interactive
 Remove-AzResourceGroup -Name myResourceGroup -Force

@@ -6,7 +6,7 @@ metadata:
   description: 'Megtudhatja, hogyan hozhat létre egyéni keresést a Bing Custom Search portál és API használatával'
   services: cognitive-services
   author: v-deken
-  manager: cgronlun
+  manager: nitinme
   layout: LandingPage
   ms.service: cognitive-services
   ms.tgt_pltfrm: na

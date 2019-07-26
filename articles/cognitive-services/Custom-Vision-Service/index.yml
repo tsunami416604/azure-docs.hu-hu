@@ -6,7 +6,7 @@ metadata:
   description: 'Ismerje meg, hogyan hozhat létre, helyezhet üzembe és fejleszthet egyéni képbesorolásokat a Custom Vision használatával. Az oktatóanyagok bemutatják, hogyan hozhat létre az API-t használó alkalmazásokat.'
   services: cognitive-services
   author: nitinme
-  manager: cgronlun
+  manager: nitinme
   ms.service: cognitive-services
   ms.subservice: custom-vision
   ms.tgt_pltfrm: na

@@ -6,7 +6,7 @@ metadata:
   title: 'Language Understanding (LUIS) – oktatóanyagok, rövid útmutatók és API-referencia'
   description: 'Megismerheti, hogyan használhatja a Language Understanding szolgáltatást arra, hogy egy személy a saját szavaival elmondhassa, hogy mit szeretne, és az alkalmazás megértse azt.'
   author: nitinme
-  manager: cgronlun
+  manager: nitinme
   ms.service: cognitive-services
   ms.tgt_pltfrm: na
   ms.devlang: na

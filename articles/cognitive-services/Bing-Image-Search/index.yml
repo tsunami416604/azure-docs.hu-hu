@@ -7,7 +7,7 @@ metadata:
   description: 'Megismerheti, hogyan kereshet az interneten képeket a Bing Image Search API használatával.'
   services: cognitive-services
   author: nitinme
-  manager: cgronlun
+  manager: nitinme
   ms.service: cognitive-services
   ms.subservice: bing-image-search
   ms.tgt_pltfrm: na

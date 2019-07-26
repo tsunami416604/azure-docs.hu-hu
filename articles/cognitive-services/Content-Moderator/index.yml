@@ -6,7 +6,7 @@ metadata:
   description: 'Megismerheti, hogyan használható a Content Moderator esetlegesen sértő, kockázatos vagy egyéb nem kívánt anyagok keresésére szövegekben, képeken és videókban.'
   services: cognitive-services
   author: nitinme
-  manager: cgronlun
+  manager: nitinme
   ms.service: cognitive-services
   ms.subservice: content-moderator
   ms.tgt_pltfrm: na

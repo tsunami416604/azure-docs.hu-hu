@@ -6,7 +6,7 @@ metadata:
   description: 'Ismerje meg, hogyan használható a Face API képeken szereplő arcok észlelésére és azonosítására, valamint az arcra vonatkozó információk visszaadására. Az oktatóanyagok bemutatják, hogyan hozhat létre az API-t használó alkalmazásokat.'
   services: cognitive-services
   author: PatrickFarley
-  manager: cgronlun
+  manager: nitinme
   ms.service: cognitive-services
   ms.subservice: face-api
   ms.tgt_pltfrm: na
