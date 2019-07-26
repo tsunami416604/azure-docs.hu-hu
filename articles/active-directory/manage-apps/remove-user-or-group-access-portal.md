@@ -1,6 +1,6 @@
 ---
-title: Egy felhasználó vagy csoport-hozzárendelés eltávolítása a vállalati alkalmazásokat az Azure Active Directoryban |} A Microsoft Docs
-description: A hozzáférés hozzárendelése egy felhasználó vagy csoport eltávolítása a vállalati alkalmazásokat az Azure Active Directoryban
+title: Felhasználói vagy csoportos hozzárendelések eltávolítása Azure Active Directory alkalmazásból | Microsoft Docs
+description: Felhasználó vagy csoport hozzáférési hozzárendelésének eltávolítása egy vállalati alkalmazásból Azure Active Directory
 services: active-directory
 documentationcenter: ''
 author: msmimart
@@ -16,38 +16,38 @@ ms.author: mimart
 ms.reviewer: asteen
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1b6524a757d885e95637cb05480838db8ac37259
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 380816283156969c47f45a9b47435688df91f4ca
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67701947"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68381049"
 ---
-# <a name="remove-a-user-or-group-assignment-from-an-enterprise-app-in-azure-active-directory"></a>Egy felhasználó vagy csoport-hozzárendelés eltávolítása a vállalati alkalmazásokat az Azure Active Directoryban
+# <a name="remove-a-user-or-group-assignment-from-an-enterprise-app-in-azure-active-directory"></a>Felhasználó vagy csoport hozzárendelésének eltávolítása egy vállalati alkalmazásból Azure Active Directory
 
-A vállalati alkalmazások az Azure Active Directoryban (Azure AD) egyik hozzárendelt hozzáférés egy felhasználó vagy csoport eltávolítása könnyebbé vált. A megfelelő engedélyekkel a vállalati alkalmazások kezelésére van szüksége. És a címtár globális rendszergazdának kell lennie.
+Egyszerűen eltávolíthat egy felhasználót vagy csoportot a Azure Active Directory (Azure AD) egyik vállalati alkalmazásához hozzárendelt hozzáférésből. A vállalati alkalmazás felügyeletéhez szükséges engedélyek szükségesek. Emellett globális rendszergazdai jogosultsággal kell rendelkeznie a címtárhoz.
 
 > [!NOTE]
-> A Microsoft Applications (például az Office 365-alkalmazások) a PowerShell használatával távolítsa el a felhasználók számára a vállalati alkalmazásokat.
+> Microsoft-alkalmazások (például Office 365-alkalmazások) esetén a PowerShell használatával távolítsa el a felhasználókat a vállalati alkalmazásokhoz.
 
-## <a name="how-do-i-remove-a-user-or-group-assignment-to-an-enterprise-app-in-the-azure-portal"></a>Hogyan távolíthatom el a felhasználó vagy csoport-hozzárendelést a vállalati alkalmazásokat az Azure Portalon?
+## <a name="how-do-i-remove-a-user-or-group-assignment-to-an-enterprise-app-in-the-azure-portal"></a>Hogyan eltávolít egy felhasználó vagy csoport hozzárendelését egy vállalati alkalmazáshoz a Azure Portalban?
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com) egy olyan fiókkal, amely a címtár globális rendszergazdája.
-1. Válassza ki **minden szolgáltatás**, adja meg **Azure Active Directory** a szövegmezőbe, és válassza ki a **Enter**.
-1. Az a **Azure Active Directory - *directoryname***  (azaz az Azure AD-oldalról a címtár kezelése), jelölje be **vállalati alkalmazások**.
-1. Az a **nagyvállalati alkalmazások – minden alkalmazás** lapon látni fogja a kezelhető alkalmazások listáját. Válasszon ki egy alkalmazást.
-1. Az a ***appname*** áttekintése lapon (azt jelenti, az oldal a cím a kijelölt alkalmazás nevét), jelölje ki **felhasználók és csoportok**.
-1. Az a ***appname*** **-felhasználó és csoport-hozzárendelés** oldalra, válassza ki az egyik további felhasználókat vagy csoportokat, és kattintson a **eltávolítása** parancsot. Erősítse meg a döntést, a parancssorba.
+1. Válassza a **minden szolgáltatás**lehetőséget, írja be **Azure Active Directory** a szövegmezőbe, majd válassza az **ENTER billentyűt**.
+1. A **Azure Active Directory- *könyvtárnév***  lapon (azaz a kezelt címtárhoz tartozó Azure ad-oldalon) válassza a **vállalati alkalmazások**lehetőséget.
+1. A **vállalati alkalmazások – minden alkalmazás** oldalon láthatja a felügyelhető alkalmazások listáját. Válasszon ki egy alkalmazást.
+1. A ***AppName*** – áttekintés oldalon (azaz a cím alatt a kiválasztott alkalmazás nevével rendelkező oldalon) válassza a **felhasználók & csoportok**lehetőséget.
+1. A ***AppName*** **-felhasználó & csoport hozzárendelése** lapon válassza ki a további felhasználók vagy csoportok egyikét, majd kattintson az **Eltávolítás** parancsra. Erősítse meg döntését a parancssorban.
 
-## <a name="how-do-i-remove-a-user-or-group-assignment-to-an-enterprise-app-using-powershell"></a>Hogyan távolíthatom el a felhasználó vagy csoport-hozzárendelés egy vállalati alkalmazáshoz a PowerShell használatával?
+## <a name="how-do-i-remove-a-user-or-group-assignment-to-an-enterprise-app-using-powershell"></a>Hogyan a PowerShell használatával távolítson el egy felhasználói vagy csoport-hozzárendelést egy vállalati alkalmazáshoz?
 
 1. Nyisson meg egy rendszergazda jogú Windows PowerShell-parancssort.
 
    > [!NOTE]
-   > Az Azure ad-modul telepítéséhez szüksége (a parancs használata `Install-Module -Name AzureAD`). Ha kéri, telepítse a NuGet-modult vagy az új Azure Active Directory V2 PowerShell modul, írja be az Y, és nyomja le az ENTER billentyűt.
+   > Telepítenie kell a AzureAD modult (használja a parancsot `Install-Module -Name AzureAD`). Ha a rendszer kéri, hogy telepítsen egy NuGet modult vagy az új Azure Active Directory v2 PowerShell-modult, írja be az Y értéket, és nyomja le az ENTER
 
-1. Futtatás `Connect-AzureAD` , és jelentkezzen be egy globális rendszergazdai felhasználói fiókkal.
-1. A következő parancsfájl használatával távolítsa el a felhasználó és szerepkör-alkalmazásból:
+1. Futtassa `Connect-AzureAD` a parancsot, és jelentkezzen be egy globális rendszergazdai felhasználói fiókkal.
+1. A következő parancsfájl használatával távolíthatja el a felhasználót és a szerepkört egy alkalmazásból:
 
     ```powershell
     # Store the proper parameters
@@ -66,7 +66,7 @@ A vállalati alkalmazások az Azure Active Directoryban (Azure AD) egyik hozzár
 
 ## <a name="next-steps"></a>További lépések
 
-- [Megjelenik az összes saját csoportok](../fundamentals/active-directory-groups-view-azure-portal.md)
-- [Egy felhasználó vagy csoport hozzárendelése egy vállalati alkalmazás](assign-user-or-group-access-portal.md)
-- [Tiltsa le a felhasználók bejelentkezési folyamatába egy vállalati alkalmazás](disable-user-sign-in-portal.md)
-- [A name vagy a vállalati alkalmazás emblémájának módosítása](change-name-or-logo-portal.md)
+- [Összes saját csoport megjelenítése](../fundamentals/active-directory-groups-view-azure-portal.md)
+- [Felhasználó vagy csoport társítása vállalati alkalmazáshoz](assign-user-or-group-access-portal.md)
+- [Vállalati alkalmazás felhasználói bejelentkezésének letiltása](disable-user-sign-in-portal.md)
+- [Vállalati alkalmazás nevének vagy emblémájának módosítása](change-name-or-logo-portal.md)

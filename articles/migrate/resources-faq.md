@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 07/17/2019
 ms.author: snehaa
-ms.openlocfilehash: e5b4777adfcbb5babbf5db792a10d025c79b1a8b
-ms.sourcegitcommit: af58483a9c574a10edc546f2737939a93af87b73
+ms.openlocfilehash: 0708502087ae6880d9559cf17f0ba9982b2ba040
+ms.sourcegitcommit: 57a7d4f67635212f5bf0c56e58fd87c8ec366f2c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68302373"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68372486"
 ---
 # <a name="azure-migrate---frequently-asked-questions-faq"></a>Azure Migrate – gyakran ismételt kérdések (GYIK)
 
@@ -20,20 +20,8 @@ Ez a cikk Azure Migrateokkal kapcsolatos gyakori kérdéseket tartalmaz. Ha tov�
 ## <a name="general"></a>Általános
 
 ### <a name="which-azure-geographies-are-supported-by-azure-migrate"></a>Mely Azure-földrajzi területek támogatottak Azure Migrate?
-Azure Migrate jelenleg számos földrajzi régiót támogat, amelyekben létre lehet hozni egy Azure Migrate projektet. Annak ellenére, hogy csak ezekben a földrajzi területeken hozhat létre projekteket, továbbra is felbecsülheti vagy áttelepítheti a gépeket más célhelyekre. A projekt földrajza csak a felderített metaadatok tárolására szolgál.
 
-
-**Régiócsoport** | **Metaadatok tárolási helye**
---- | ---
-Azure Government | USA-beli államigazgatás – Virginia
-Ázsia | Délkelet-Ázsia vagy Kelet-Ázsia
-Európa | Dél-Európa vagy Nyugat-Európa
-Egyesült Királyság | Egyesült Királyság déli régiója vagy Egyesült Királyság nyugati régiója
-Egyesült Államok | USA középső régiója vagy USA 2. nyugati régiója
-
-
-> [!NOTE]
-> A Azure Government támogatása jelenleg csak a Azure Migrate [régebbi verziójához](https://docs.microsoft.com/azure/migrate/migrate-services-overview#azure-migrate-versions) érhető el.
+Itt megtalálja a [VMware](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-vmware#azure-migrate-projects) listáját és a [Hyper-V-t itt](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-hyper-v#azure-migrate-projects).
 
 ### <a name="how-is-azure-migrate-different-from-azure-site-recovery"></a>Miben különbözik Azure Migrate Azure Site Recovery?
 
@@ -51,7 +39,7 @@ A Azure Migrate az Azure-ban való kommunikációhoz szükséges URL-címek és 
 
 ### <a name="can-i-harden-the-appliance-vm-i-set-up-with-the-template"></a>Megkeményítem a készüléket a sablonnal beállított virtuális gépen?
 
-A sablonhoz további összetevők (például víruskereső) is hozzáadhatók, feltéve, hogy az Azure Migrate berendezéshez szükséges kommunikációs és tűzfalszabályok újra a következővel maradnak.   
+A sablonba további összetevők (például víruskereső) is hozzáadhatók, feltéve, hogy a Azure Migrate berendezéshez szükséges kommunikációs és tűzfalszabályok a következő módon maradnak.   
 
 ### <a name="what-data-is-collected-by-azure-migrate-appliance"></a>Milyen adatokat gyűjtenek Azure Migrate készülék?
 
@@ -195,7 +183,7 @@ Nem, akár egy óráig is megjelenítheti a függőségeket. Visszatérhet az el
 ### <a name="is-dependency-visualization-supported-for-groups-with-more-than-10-vms"></a>Támogatott a több mint 10 virtuális géppel rendelkező csoportok esetében a függőségi vizualizáció?
 A legfeljebb 10 virtuális géppel rendelkező [csoportok függőségeit jelenítheti](https://docs.microsoft.com/azure/migrate/how-to-create-group-dependencies) meg. Ha több mint 10 virtuális géppel rendelkező csoporttal rendelkezik, javasoljuk, hogy ossza szét a csoportot kisebb csoportokba, majd jelenítse meg a függőségeket.
 
-## <a name="azure-migrate-server-migration"></a>Azure Migrate: Kiszolgálók migrálása
+## <a name="azure-migrate-server-migration"></a>Azure Migrate: Server Migration
 
 ### <a name="how-is-azure-migrate-server-migration-different-from-azure-site-recovery"></a>Azure Migrate: A kiszolgáló áttelepítése eltér a Azure Site Recoverytól?
 

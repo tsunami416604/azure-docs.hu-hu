@@ -1,46 +1,41 @@
 ---
-title: A folyamat egy Cloud Services-alkalmazás az Azure Diagnostics segítségével nyomon követése |} A Microsoft Docs
-description: A nyomkövetési üzeneteket hozzá Azure-alkalmazások hibakeresése, teljesítmény, figyelés, forgalomelemzéshez és egyéb mérési segítségével.
+title: A folyamat nyomon követése egy Cloud Services alkalmazásban Azure Diagnostics | Microsoft Docs
+description: Nyomkövetési üzenetek hozzáadása egy Azure-alkalmazáshoz a hibakereséshez, a teljesítmény méréséhez, a figyeléshez, a forgalom elemzéséhez és egyebekhez.
 services: cloud-services
 documentationcenter: .net
-author: jpconnock
-manager: timlt
-editor: ''
-ms.assetid: 09934772-cc07-4fd2-ba88-b224ca192f8e
+author: georgewallace
 ms.service: cloud-services
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 02/20/2016
-ms.author: jeconnoc
-ms.openlocfilehash: f597bc760a3f3825416912642ee66a53dfb91696
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: gwallace
+ms.openlocfilehash: e3e34ff9b5ce1c3a7b45468d22faddddf0c9a913
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60336864"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68359143"
 ---
-# <a name="trace-the-flow-of-a-cloud-services-application-with-azure-diagnostics"></a>A folyamat egy Cloud Services-alkalmazás az Azure Diagnostics segítségével nyomon követése
-Nyomkövetés módja, hogy az alkalmazás végrehajtását a figyelése, futás közben. Használhatja a [System.Diagnostics.Trace](/dotnet/api/system.diagnostics.trace), [System.Diagnostics.Debug](/dotnet/api/system.diagnostics.debug), és [System.Diagnostics.TraceSource](/dotnet/api/system.diagnostics.tracesource) hibák adatainak rögzítésére osztályok és alkalmazás végrehajtása a naplókat, szöveges fájlok vagy más eszközök későbbi elemzés céljából. Nyomkövetés kapcsolatos további információkért lásd: [nyomkövetés és alkalmazásokhoz való Műszerezéséről](/dotnet/framework/debug-trace-profile/tracing-and-instrumenting-applications).
+# <a name="trace-the-flow-of-a-cloud-services-application-with-azure-diagnostics"></a>Cloud Services alkalmazás folyamatának nyomon követése Azure Diagnostics
+A nyomkövetési módszer segítségével figyelheti az alkalmazás végrehajtását a futás közben. A [System. Diagnostics. Trace](/dotnet/api/system.diagnostics.trace), a [System. Diagnostics. debug](/dotnet/api/system.diagnostics.debug)és a [System. Diagnostics. TraceSource](/dotnet/api/system.diagnostics.tracesource) osztályok segítségével rögzítheti a hibákkal és az alkalmazások végrehajtásával kapcsolatos információkat a naplókban, szövegfájlokban vagy más eszközökben a későbbiekben elemzés. További információ a nyomkövetésről: [alkalmazások nyomon követése és](/dotnet/framework/debug-trace-profile/tracing-and-instrumenting-applications)kialakítása.
 
-## <a name="use-trace-statements-and-trace-switches"></a>Nyomkövetési utasításokat és nyomkövetési kapcsolók használata
-Adja hozzá a Cloud Services-alkalmazás nyomkövetési megvalósítása a [DiagnosticMonitorTraceListener](/previous-versions/azure/reference/ee758610(v=azure.100)) az alkalmazás konfigurációját és a System.Diagnostics.trace keretrendszert használja, vagy a System.Diagnostics.Debug meghívni a alkalmazáskód. A konfigurációs fájl *app.config* a feldolgozói szerepkörök és a *web.config* webes szerepkörök esetében. Amikor létrehoz egy új üzemeltetett szolgáltatást, a Visual Studio-sablon használatával, az Azure Diagnostics automatikusan hozzáadja a projekthez, és a DiagnosticMonitorTraceListener bekerül a szerepkörökhöz adja hozzá a megfelelő konfigurációs fájl.
+## <a name="use-trace-statements-and-trace-switches"></a>Nyomkövetési utasítások és nyomkövetési kapcsolók használata
+Hajtsa végre a nyomkövetést a Cloud Services alkalmazásban úgy, hogy hozzáadja a [DiagnosticMonitorTraceListener](/previous-versions/azure/reference/ee758610(v=azure.100)) az alkalmazás konfigurációjához, és hívásokat kezdeményez a System. Diagnostics. Trace vagy System. Diagnostics. debug fájlhoz az alkalmazás kódjában. Használja a Configuration file *app. config* fájlt a feldolgozói szerepkörökhöz és a web *. config* webes szerepkörökhöz. Amikor egy Visual Studio-sablonnal hoz létre egy új üzemeltetett szolgáltatást, a rendszer automatikusan hozzáadja Azure Diagnostics a projekthez, és a DiagnosticMonitorTraceListener hozzáadja a megfelelő konfigurációs fájlhoz a hozzáadott szerepkörökhöz.
 
-Információ a nyomkövetési utasításokat elhelyezése: [hogyan: Adja hozzá a nyomkövetési utasításokat alkalmazáskód](/dotnet/framework/debug-trace-profile/how-to-add-trace-statements-to-application-code).
+A nyomkövetési utasítások elhelyezésével kapcsolatos információkért [lásd: How to: Nyomkövetési utasítások hozzáadása az alkalmazás](/dotnet/framework/debug-trace-profile/how-to-add-trace-statements-to-application-code)kódjához.
 
-Elhelyezésével [nyomkövetési kapcsolók](/dotnet/framework/debug-trace-profile/trace-switches) nyomkövetés következik be, és hogyan kiterjedt szabályozhatja a kódba. Ez lehetővé teszi az alkalmazás éles környezetben állapotának monitorozásához. Ez különösen fontos a több számítógépen futó több összetevőből egy üzleti alkalmazás. További információkért lásd: [hogyan: Konfigurálja a nyomkövetési kapcsolókat](/dotnet/framework/debug-trace-profile/how-to-create-initialize-and-configure-trace-switches).
+A [nyomkövetési kapcsolók](/dotnet/framework/debug-trace-profile/trace-switches) a kódban való elhelyezésével szabályozhatja, hogy a nyomkövetés bekövetkezik-e, és hogy mennyire kiterjedt. Ez lehetővé teszi az alkalmazás állapotának figyelését éles környezetben. Ez különösen fontos egy olyan üzleti alkalmazásban, amely több számítógépen futó több összetevőt használ. További információkért lásd: [hogyan: Nyomkövetési kapcsolók](/dotnet/framework/debug-trace-profile/how-to-create-initialize-and-configure-trace-switches)konfigurálása.
 
-## <a name="configure-the-trace-listener-in-an-azure-application"></a>A nyomkövetés-figyelő konfigurálása az Azure-alkalmazások
-A nyomkövetést, a hibakeresési és TraceSource, szükséges, állítsa be a "figyelő" gyűjteni, és jegyezze fel a küldött üzenetek. Figyelők gyűjtése, tárolása és irányíthatja a nyomkövetési üzeneteket. Ezek a közvetlen a nyomkövetés egy megfelelő célt, például egy naplófájl, ablakban vagy szövegfájl. Az Azure Diagnostics használja a [DiagnosticMonitorTraceListener](/previous-versions/azure/reference/ee758610(v=azure.100)) osztály.
+## <a name="configure-the-trace-listener-in-an-azure-application"></a>Nyomkövetési figyelő konfigurálása Azure-alkalmazásokban
+Nyomkövetési, hibakeresési és TraceSource az elküldött üzenetek összegyűjtéséhez és rögzítéséhez "figyelőket" kell beállítania. A figyelők a nyomkövetési üzeneteket gyűjtik, tárolják és irányítják. A nyomkövetés kimenetét egy megfelelő célra irányítják, például egy naplóba, egy ablakba vagy szövegfájlba. Azure Diagnostics a [DiagnosticMonitorTraceListener](/previous-versions/azure/reference/ee758610(v=azure.100)) osztályt használja.
 
-Mielőtt a következő eljárással inicializálnia kell az Azure diagnosztikai figyelő. Ehhez lásd [diagnosztika engedélyezése a Microsoft Azure-ban](cloud-services-dotnet-diagnostics.md).
+Az alábbi eljárás végrehajtása előtt inicializálnia kell az Azure diagnosztikai figyelőt. Ehhez tekintse meg a [diagnosztika engedélyezése a Microsoft Azure-ben](cloud-services-dotnet-diagnostics.md)című témakört.
 
-Vegye figyelembe, hogy a Visual Studio által biztosított sablonok használatakor a figyelő a konfigurációs van hozzá automatikusan az Ön számára.
+Vegye figyelembe, hogy ha a Visual Studio által biztosított sablonokat használja, a figyelő konfigurációját a rendszer automatikusan hozzáadja Önnek.
 
-### <a name="add-a-trace-listener"></a>Adjon hozzá egy nyomkövetés-figyelő
-1. Nyissa meg a web.config vagy az app.config fájlt a szerepkörhöz.
-2. Adja hozzá a következő kódot a fájl. Módosítja annak verzióattribútumát, a hivatkozott szerelvényt verziószáma használatára. A szerelvény verziója nem feltétlenül változik az egyes Azure SDK kibocsátási, kivéve, ha frissítések érhetők el azt.
+### <a name="add-a-trace-listener"></a>Nyomkövetési figyelő hozzáadása
+1. Nyissa meg a szerepkörhöz tartozó web. config vagy app. config fájlt.
+2. Adja hozzá a következő kódot a fájlhoz. Módosítsa a Version attribútumot úgy, hogy az a szerelvény verziószámát használja, amelyre hivatkozik. A szerelvény verziója nem feltétlenül változik az egyes Azure SDK-kiadásokkal, hacsak nincs frissítés.
    
     ```
     <system.diagnostics>
@@ -59,21 +54,21 @@ Vegye figyelembe, hogy a Visual Studio által biztosított sablonok használatak
     </system.diagnostics>
     ```
    > [!IMPORTANT]
-   > Győződjön meg arról, hogy a Microsoft.WindowsAzure.Diagnostics projekt hivatkozást. A hivatkozott szerelvényt Microsoft.WindowsAzure.Diagnostics verziójának megfelelő XML-fenti verziószám frissítéséhez.
+   > Győződjön meg arról, hogy rendelkezik a Microsoft. WindowsAzure. Diagnostics szerelvényre mutató projekttel. Frissítse a fenti XML verziószámát, hogy megegyezzen a hivatkozott Microsoft. WindowsAzure. Diagnostics szerelvény verziójával.
    > 
    > 
 3. Mentse a konfigurációs fájlt.
 
-Figyelők kapcsolatos további információkért lásd: [nyomkövetési figyelői](/dotnet/framework/debug-trace-profile/trace-listeners).
+További információ a figyelőkről: nyomkövetési [figyelők](/dotnet/framework/debug-trace-profile/trace-listeners).
 
-Miután végrehajtotta a lépéseket adja hozzá a figyelőt, a kód nyomkövetési utasításokat is hozzáadhat.
+Miután elvégezte a figyelő hozzáadásának lépéseit, nyomkövetési utasításokat adhat hozzá a kódhoz.
 
-### <a name="to-add-trace-statement-to-your-code"></a>A kód híváslánc-utasítás hozzáadása
-1. Nyissa meg az alkalmazás egy forrásfájl. Ha például a \<RoleName > .cs fájlt a feldolgozói szerepkör, illetve a webes szerepkör.
-2. Adja hozzá a következő using utasítást, ha már nincs hozzáadva:
+### <a name="to-add-trace-statement-to-your-code"></a>Nyomkövetési utasítás hozzáadása a kódhoz
+1. Nyisson meg egy forrásfájlt az alkalmazáshoz. Például a \<RoleName >. cs fájlt a feldolgozói szerepkörhöz vagy a webes szerepkörhöz.
+2. Adja hozzá a következő using utasítást, ha még nincs hozzáadva:
     ```
         using System.Diagnostics;
     ```
-3. Adja hozzá a nyomkövetési utasításokat hol kívánja rögzíteni a az alkalmazás állapotával kapcsolatos információk. Többféle módszerrel használatával formázhatja a Híváslánc-utasítás kimenetét. További információkért lásd: [hogyan: Adja hozzá a nyomkövetési utasításokat alkalmazáskód](/dotnet/framework/debug-trace-profile/how-to-add-trace-statements-to-application-code).
-4. Mentse a forrásfájl.
+3. Adja meg azokat a nyomkövetési utasításokat, amelyekben adatokat szeretne rögzíteni az alkalmazás állapotáról. A nyomkövetési utasítás kimenetének formázásához többféle módszert is használhat. További információkért lásd: [hogyan: Nyomkövetési utasítások hozzáadása az alkalmazás](/dotnet/framework/debug-trace-profile/how-to-add-trace-statements-to-application-code)kódjához.
+4. Mentse a forrásfájlt.
 

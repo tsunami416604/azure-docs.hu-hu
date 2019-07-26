@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/21/2018
 ms.author: spelluru
-ms.openlocfilehash: f9f182a459f9a38c96bdf923998d1cdfee8fc3ac
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: 207f73bbf9a92d26be1791fc11ce81fe68252705
+ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68277963"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68422957"
 ---
 # <a name="azure-relay-faqs"></a>Azure Relay GYIK
 
@@ -36,7 +36,7 @@ A [Azure Relay szolgáltatás](relay-what-is-it.md) megkönnyíti a hibrid alkal
 A [névtér](relay-create-namespace-portal.md) egy hatókör-tároló, amelyet az alkalmazáson belüli továbbítási erőforrások kezelésére használhat. Létre kell hoznia egy névteret a Relay használatához. Ez a bevezetés első lépéseinek egyike.
 
 ### <a name="what-happened-to-service-bus-relay-service"></a>Mi történt a Service Bus Relay szolgáltatással?
-A korábban elnevezett Service Bus Relay szolgáltatás már [WCF Relay](relay-wcf-dotnet-get-started.md)néven is ismert. Továbbra is használhatja ezt a szolgáltatást a szokásos módon. A Hibrid kapcsolatok funkció egy olyan szolgáltatás frissített verziója, amely az Azure BizTalk Services-ból lett átültetve. WCF Relay és Hibrid kapcsolatok mindkettő továbbra is támogatott.
+A korábban elnevezett Service Bus Relay szolgáltatás már [WCF Relay](service-bus-relay-tutorial.md)néven is ismert. Továbbra is használhatja ezt a szolgáltatást a szokásos módon. A Hibrid kapcsolatok funkció egy olyan szolgáltatás frissített verziója, amely az Azure BizTalk Services-ból lett átültetve. WCF Relay és Hibrid kapcsolatok mindkettő továbbra is támogatott.
 
 ## <a name="pricing"></a>Díjszabás
 Ez a szakasz a Relay díjszabási struktúrájával kapcsolatos gyakori kérdésekre ad választ. Az Azure- [támogatási GYIK](https://azure.microsoft.com/support/faq/) az általános Azure-díjszabással kapcsolatban is látható. A Relay díjszabásával kapcsolatos információkért tekintse meg a [Service Bus díjszabási részleteit][Pricing overview].
@@ -80,7 +80,7 @@ Ha üzenetet küld egy Service Bus továbbítónak, a rendszer az üzenetet foga
 A **netTCPRelay** WCF-kötéssel megnyitott továbbítások nem önálló üzenetekként, hanem a rendszeren keresztül áramló adatfolyamként jelennek meg. Ha ezt a kötést használja, csak a küldő és a figyelő tekintheti meg az elküldött és fogadott üzenetek kialakítását. Az **netTCPRelay** -kötést használó relék esetében az összes adattal adatfolyamként kezeli a számlázandó üzenetek kiszámítását. Ebben az esetben a Service Bus 5 percenként kiszámítja az egyes továbbításokon keresztül küldött vagy fogadott adatmennyiséget. Ezt követően a 64 KB-ra osztja el az összes adatmennyiséget, hogy meghatározza a továbbításhoz tartozó számlázandó üzenetek számát az adott időszakban.
 
 ## <a name="quotas"></a>Kvóták
-| Kvóta neve | Scope |  Megjegyzések | Value |
+| Kvóta neve | Scope |  Megjegyzések | Érték |
 | --- | --- | --- | --- |
 | Párhuzamos figyelők egy továbbítón |Entitás |A további kapcsolatokra vonatkozó további kérelmeket a rendszer elutasítja, és a hívó kód kivételt kap. |25 |
 | Egyidejű továbbítási kapcsolatok egy szolgáltatási névtér összes továbbítási végpontján |Névtér |- |5,000 |

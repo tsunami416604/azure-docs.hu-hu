@@ -7,12 +7,12 @@ ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 07/14/2019
-ms.openlocfilehash: 0239111ca56dfe431a00eee83c79eedccc66c927
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
+ms.openlocfilehash: b0cf6eab86b0b932e44b6824305c23df01f35808
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68226155"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68383820"
 ---
 # <a name="select-the-correct-vm-sku-for-your-azure-data-explorer-cluster"></a>Válassza ki a megfelelő VM SKU-t az Azure Adatkezelő-fürthöz 
 
@@ -39,11 +39,11 @@ Az Azure Adatkezelő két típusú fürtöt kínál:
 
 Azure Adatkezelő-fürt létrehozásakor válassza ki az *optimális* VIRTUÁLISGÉP-SKU-t a tervezett munkaterheléshez. Az Azure Adatkezelő két SKU-családtal rendelkezik, amelyek közül választhat:
 
-* **D_V2**: A **D** SKU a kiszámításra optimalizált és két változatban van megadva.
+* **D_V2**: A D SKU a kiszámításra optimalizált és két változatban van megadva.
     * Maga a virtuális gép
     * Premium Storage-lemezekkel rendelkező virtuális gép
 
-* **LS**: Az **L** SKU a tárolásra optimalizált. Sokkal nagyobb SSD-mérettel rendelkezik, mint a hasonló árú **D** SKU.
+* **LS**: Az L SKU a tárolásra optimalizált. Sokkal nagyobb SSD-mérettel rendelkezik, mint a hasonló árú **D** SKU.
 
 Az alábbi táblázat a rendelkezésre álló SKU-típusok közötti fő különbségeket tartalmazza:
  

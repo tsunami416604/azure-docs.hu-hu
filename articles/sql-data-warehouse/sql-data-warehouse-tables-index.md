@@ -1,8 +1,8 @@
 ---
-title: Az indexelés a táblák az Azure SQL Data Warehouse |} A Microsoft Azure
-description: Javaslatok és a példák az indexelés a táblák az Azure SQL Data Warehouse.
+title: Táblázatok indexelése Azure SQL Data Warehouseban | Microsoft Azure
+description: Javaslatok és példák a táblázatok indexeléséhez Azure SQL Data Warehouseban.
 services: sql-data-warehouse
-author: XiaoyuL-Preview
+author: XiaoyuMSFT
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
@@ -11,28 +11,28 @@ ms.date: 03/18/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seoapril2019
-ms.openlocfilehash: 158b229c2c45a14ed0fd5433d1903eca92f32401
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4d51bd6906a8299a25fe50ca817b1a2b6082ab91
+ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65851644"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68479843"
 ---
-# <a name="indexing-tables-in-sql-data-warehouse"></a>Az SQL Data Warehouse az indexelő táblák
+# <a name="indexing-tables-in-sql-data-warehouse"></a>Táblázatok indexelése SQL Data Warehouse
 
-Javaslatok és a példák az indexelés a táblák az Azure SQL Data Warehouse.
+Javaslatok és példák a táblázatok indexeléséhez Azure SQL Data Warehouseban.
 
 ## <a name="index-types"></a>Indextípusok
 
-SQL Data Warehouse biztosít több indexelési lehetőségeket, ideértve a [fürtözött oszlopcentrikus indexek](/sql/relational-databases/indexes/columnstore-indexes-overview), [fürtözött indexek és fürtözetlen index](/sql/relational-databases/indexes/clustered-and-nonclustered-indexes-described), és a egy nem index lehetőséget is [halommemória ](/sql/relational-databases/indexes/heaps-tables-without-clustered-indexes).  
+SQL Data Warehouse több indexelési lehetőséget is kínál, többek között a [fürtözött oszlopcentrikus indexeket](/sql/relational-databases/indexes/columnstore-indexes-overview), a [fürtözött indexeket és](/sql/relational-databases/indexes/clustered-and-nonclustered-indexes-described)a nem fürtözött indexeket, valamint a nem indexelt lehetőséget [is.](/sql/relational-databases/indexes/heaps-tables-without-clustered-indexes)  
 
-Hozzon létre egy táblát egy index, tekintse meg a [CREATE TABLE (Azure SQL Data Warehouse)](/sql/t-sql/statements/create-table-azure-sql-data-warehouse) dokumentációját.
+Indextel rendelkező tábla létrehozásához tekintse meg a [create Table (Azure SQL Data Warehouse)](/sql/t-sql/statements/create-table-azure-sql-data-warehouse) dokumentációját.
 
-## <a name="clustered-columnstore-indexes"></a>Fürtözött oszloptár-indexek
+## <a name="clustered-columnstore-indexes"></a>Fürtözött oszlopcentrikus indexek
 
-Alapértelmezés szerint az SQL Data Warehouse nem indexbeállítások táblán megadásakor létrehoz egy fürtözött oszlopcentrikus index. Fürtözött oszlopcentrikus táblák a legmagasabb szintű az adattömörítés és is a legjobb általános lekérdezési teljesítményt nyújtanak.  Fürtözött oszlopcentrikus táblák általában teljesítményben felülmúlják az fürtözött index vagy halommemória táblát, és rendszerint a legjobb választás nagy táblák esetében.  Ebből kifolyólag a fürtözött oszlopcentrikus a legjobb hely a kezdődik, amikor biztos abban, hogy hogyan a tábla indexelése.  
+Alapértelmezés szerint a SQL Data Warehouse létrehoz egy fürtözött oszlopcentrikus-indexet, ha nincs megadva tárgymutató-beállítás a táblán. A fürtözött oszlopcentrikus táblák a legmagasabb szintű adattömörítést, valamint a legjobb összesített lekérdezési teljesítményt egyaránt tartalmazzák.  A fürtözött oszlopcentrikus táblák általában jobban teljesítik a fürtözött indexet vagy a kupac táblákat, és általában a legjobb választás a nagyméretű táblákhoz.  Ezen okok miatt a fürtözött oszlopcentrikus a legjobb kiindulópont, ha nem tudja, hogyan indexelheti a táblázatot.  
 
-Hozzon létre egy fürtözött oszlopcentrikus táblába, egyszerűen adja meg a WITH záradékkal FÜRTÖZÖTT OSZLOPCENTRIKUS INDEX, vagy hagyja meg a WITH záradékkal:
+Fürtözött oszlopcentrikus-tábla létrehozásához egyszerűen írja be a FÜRTÖZÖTT OSZLOPCENTRIKUS INDEXet a WITH záradékban, vagy hagyja ki a WITH záradékot:
 
 ```SQL
 CREATE TABLE myTable
@@ -44,19 +44,19 @@ CREATE TABLE myTable
 WITH ( CLUSTERED COLUMNSTORE INDEX );
 ```
 
-Van néhány olyan forgatókönyvek, ahol a fürtözött oszlopcentrikus nem jó választás:
+Vannak olyan helyzetek, amikor a fürtözött oszlopcentrikus esetleg nem jó megoldás:
 
-- Az Oszlopcentrikus táblák nem támogatják a varchar(max), nvarchar(max) és varbinary(max). Érdemes lehet inkább halmot vagy fürtözött index.
-- Lehet, hogy az Oszlopcentrikus táblák kevésbé hatékony, átmeneti adatokhoz. Fontolja meg a halommemória, és akár még az ideiglenes táblák.
-- Kisebb, mint 60 millió sorral kisméretű táblák. Érdemes lehet halomtáblák.
+- A oszlopcentrikus táblák nem támogatják a varchar (max), a nvarchar (max) és a varbinary (max) típust. Ehelyett vegye figyelembe a halom vagy fürtözött indexet.
+- Előfordulhat, hogy a oszlopcentrikus-táblák kevésbé hatékonyak az átmeneti adatmennyiségek esetében. Gondolja át a kupacot, és talán akár ideiglenes táblákat is.
+- Kisebb táblák, amelyek kevesebb mint 60 000 000 sorral rendelkeznek. Vegye figyelembe a halom táblákat.
 
-## <a name="heap-tables"></a>Halomtáblák
+## <a name="heap-tables"></a>Halom táblák
 
-Amikor ideiglenesen tárol adatokat az SQL Data Warehouse, előfordulhat, hogy halomtábla használata lehetővé teszi a teljes folyamatot felgyorsíthatja. Ennek az oka terhelések halommemória a rendszer gyorsabban táblákhoz és bizonyos esetekben az azt követő olvasás a gyorsítótárból teheti meg.  Ha csak az adatokat automatikusan, további átalakítások futtatása előtt tölt be, a halomtábla tábla betöltése, sokkal gyorsabb, mint egy fürtözött oszlopcentrikus táblába az adatok betöltése. Emellett az adatok betöltése egy [ideiglenes tábla](sql-data-warehouse-tables-temporary.md) betölti a gyorsabb, mint egy állandó tároló tábla betöltésekor.  
+Amikor ideiglenesen SQL Data Warehouse az adataikat, előfordulhat, hogy a halom tábla használatával a folyamat gyorsabban elvégezhető. Ennek az az oka, hogy a halomba való betöltés gyorsabb, mint a táblák indexelése, és bizonyos esetekben az ezt követő olvasás a gyorsítótárból hajtható végre.  Ha csak a további átalakítások futtatása előtt kívánja betölteni az adatgyűjtést, a tábla betöltése a halom táblába sokkal gyorsabb, mint a fürtözött oszlopcentrikus táblába való betöltés. Emellett az adatok [ideiglenes táblába](sql-data-warehouse-tables-temporary.md) való betöltése gyorsabban betöltődik, mint a tábla állandó tárterületre való betöltése.  
 
-Kis keresési táblák, kevesebb, mint 60 millió sorral, gyakran halomtáblák értelme.  Fürt oszlopcentrikus táblák megkezdése után több mint 60 millió sorral optimális tömörítési eléréséhez.
+A kisméretű keresési tábláknál, amelyek kevesebb, mint 60 000 000 sor, gyakran halom táblákat is érdemes megérteni.  A fürt oszlopcentrikus táblái megkezdik az optimális tömörítést, ha több mint 60 000 000 sor van.
 
-Hozzon létre egy halomtábla, egyszerűen adja meg HALOMMEMÓRIA a WITH záradékkal:
+Egy halom tábla létrehozásához egyszerűen írja be a KUPACot a WITH záradékban:
 
 ```SQL
 CREATE TABLE myTable
@@ -68,11 +68,11 @@ CREATE TABLE myTable
 WITH ( HEAP );
 ```
 
-## <a name="clustered-and-nonclustered-indexes"></a>Fürtözött és fürtözetlen indexeinek
+## <a name="clustered-and-nonclustered-indexes"></a>Fürtözött és nem fürtözött indexek
 
-Fürtözött indexek előfordulhat, hogy teljesítményben felülmúlják fürtözött oszlopcentrikus táblák, ha egyetlen sor gyorsan kérhető le. Fontolja meg a lekérdezések, ahol egyetlen vagy nagyon kevés sor keresési szükség, a rendkívüli gyorsasággal teljesítmény, a fürt index vagy másodlagos fürtözetlen index. A fürtözött indexszel hátránya, hogy csak azok a lekérdezések, amelyek azok, amelyekre magas szelektív szűrő használata a fürtözött index oszlopában. Szűrőt az egyéb oszlopok javítása érdekében egy fürtözetlen index más oszlopok is hozzáadhatók. Azonban adnak hozzá egy táblázat minden egyes index hozzáadása lemezterület és a feldolgozási idő terheléseket.
+A fürtözött indexek jobban teljesítik a fürtözött oszlopcentrikus táblákat, amikor egyetlen sor gyors lekérését kell lekérni. Olyan lekérdezéseknél, amelyekben egy vagy nagyon kevés sor keresésére van szükség a szélsőséges sebességű teljesítmény érdekében, érdemes lehet egy fürtözött indexet vagy nem fürtözött másodlagos indexet beállítani. A fürtözött indexek használatának hátránya, hogy csak azok a lekérdezések jelennek meg, amelyek előnyben részesülnek a fürtözött index oszlopban található, nagyon szelektív szűrő használatával. Más oszlopok szűrésének javítása érdekében a nem fürtözött indexet más oszlopokhoz is hozzáadhatja. A táblához hozzáadott összes index azonban a terheléshez is felveszi a tárhelyet és a feldolgozási időt.
 
-Hozzon létre egy fürtözött index táblát, egyszerűen adja meg a FÜRTÖZÖTT INDEX a WITH záradékkal:
+Fürtözött index tábla létrehozásához egyszerűen írja be a FÜRTÖZÖTT INDEXet a WITH záradékban:
 
 ```SQL
 CREATE TABLE myTable
@@ -84,7 +84,7 @@ CREATE TABLE myTable
 WITH ( CLUSTERED INDEX (id) );
 ```
 
-Egy tábla egy nem fürtözött index hozzáadásához használja a következő szintaxist:
+Ha nem fürtözött indexet szeretne hozzáadni egy táblához, használja a következő szintaxist:
 
 ```SQL
 CREATE INDEX zipCodeIndex ON myTable (zipCode);
@@ -92,9 +92,9 @@ CREATE INDEX zipCodeIndex ON myTable (zipCode);
 
 ## <a name="optimizing-clustered-columnstore-indexes"></a>Fürtözött oszlopcentrikus indexek optimalizálása
 
-Fürtözött oszlopcentrikus táblák vannak szervezve adatokat a szegmensek.  A szegmens magas minőségű, kritikus fontosságú egy oszlopcentrikussal az optimális lekérdezési teljesítmény eléréséhez.  Szegmens minősége a tömörített sorcsoportonként sorok száma alapján mérhető.  Szegmens minősége optimális, ahol nincsenek legalább 100 ezer sorok száma tömörített sor csoportból, és ez a legtöbb sorok tartalmazhatnak sorcsoportokat 1 048 576 sort, a sorok száma sor megközelítést számának teljesítmény kapjanak.
+A fürtözött oszlopcentrikus táblák az adatszegmensbe vannak rendezve.  A magas szegmensek minősége kritikus fontosságú a oszlopcentrikus-táblák optimális lekérdezési teljesítményének eléréséhez.  A szegmens minőségét a tömörített sorcsoport sorainak száma alapján lehet mérni.  A szegmens minősége a legalkalmasabb, ahol legalább 100 000 sor van egy tömörített sorcsoport esetében, és a teljesítményük a sorban álló sorok száma alapján 1 048 576 sor, amely a sorcsoport számára a legtöbb sort tartalmazni tudja.
 
-Az alábbi nézet létrehozhatók és a rendszer minden egyes sorára vonatkozóan a átlagos sorok csoportból, és bármely az optimálisnál rosszabb fürtözött oszlopcentrikus indexekbe azonosítása kiszámításához használt.  Az utolsó oszlopban az ebben a nézetben hoz létre egy SQL-utasítást, amely az indexek újraépítése használható.
+Az alábbi nézet létrehozható és felhasználható a rendszeren, hogy kiszámítsa az átlagos sorok/sorok csoportosítását, és azonosítsa az optimális oszlopcentrikus indexeket.  A nézet utolsó oszlopa egy SQL-utasítást hoz létre, amely az indexek újraépítéséhez használható.
 
 ```sql
 CREATE VIEW dbo.vColumnstoreDensity
@@ -143,7 +143,7 @@ GROUP BY
 ;
 ```
 
-Most, hogy létrehozta a nézetet, futtassa a lekérdezést kevesebb mint 100 ezer sorok sorcsoportok rendelkező táblák azonosítására. Természetesen érdemes 100 KB-os küszöbértéket növekszik, ha további optimális szegmensminőségének keres.
+Most, hogy létrehozta a nézetet, futtassa ezt a lekérdezést a több mint 100 000 sorból álló sorcsoport-táblák azonosításához. Természetesen előfordulhat, hogy az optimális szegmensek minőségének növeléséhez érdemes megnövelni a 100K küszöbértékét.
 
 ```sql
 SELECT    *
@@ -152,85 +152,85 @@ WHERE    COMPRESSED_rowgroup_rows_AVG < 100000
         OR INVISIBLE_rowgroup_rows_AVG < 100000
 ```
 
-Miután futtatta a lekérdezés megkezdéséhez tekintse meg az adatokat, és elemezze az eredményeket. Ez a táblázat azt ismerteti, milyen bejegyzésekre kell keresni a sor csoport elemzése.
+A lekérdezés futtatása után megkezdheti az adatgyűjtés megkeresését és az eredmények elemzését. Ez a táblázat ismerteti, hogy mit kell keresni a sorcsoport-elemzésben.
 
-| Oszlop | Ezek az adatok használata |
+| Oszlop | Az adathasználat használata |
 | --- | --- |
-| [table_partition_count] |Ha a tábla particionálva van, majd előfordulhat, hogy látja a keresett magasabb nyílt sorcsoport száma. Mindegyik partíció terjesztési elméletileg lehet egy megnyitott sorcsoport társítva. Vegye ezt az elemzési be. Kis, amely rendelkezik particionált táblák sikerült lehet optimalizálni a particionálás érvényesítette eltávolításával, ez javíthatják a tömörítést. |
-| [row_count_total] |A tábla teljes sorainak számát. Például használhatja ezt az értéket a tömörített állapotban lévő sorok százalékát kiszámításához. |
-| [row_count_per_distribution_MAX] |Ha az összes sor egyenletesen oszlanak meg ezt az értéket a sorok száma terjesztési célszáma lenne. Hasonlítsa össze ezt az értéket a compressed_rowgroup_count. |
-| [COMPRESSED_rowgroup_rows] |Oszloptár formátumba a tábla sorainak száma. |
-| [COMPRESSED_rowgroup_rows_AVG] |Ha a sorok átlagos száma jóval kisebb, mint egy sor csoportot a sorok maximális száma, vegye fontolóra az CTAS vagy ALTER INDEX REBUILD Ha újra szeretnénk tömöríteni az adatok |
-| [COMPRESSED_rowgroup_count] |Az oszloptár formátumba sorcsoportok száma. Ez a tábla viszonyítva rendkívül nagy szám esetén azt jelzi, hogy az oszlopcentrikus sűrűségű értéke alacsony. |
-| [COMPRESSED_rowgroup_rows_DELETED] |Sorok logikailag törölnek oszloptár formátumba. Szolgáltatástáblázat mérete viszonyítva nagy szám esetén fontolja meg újból létrehozni a partíció vagy az index újraépítése, fizikailag ezzel eltávolítja őket. |
-| [COMPRESSED_rowgroup_rows_MIN] |Ezzel együtt az átlagos és maximális oszlop értékeit a sorcsoportok az oszloptárindexet a típusairól. A betöltési küszöb (102,400 igazítva partíció terjesztési száma) alacsony Képszámok javasolja, hogy optimalizálási lehetőségek érhetők el az adatok betöltése |
-| [COMPRESSED_rowgroup_rows_MAX] |Ahogy fent |
-| [OPEN_rowgroup_count] |Nyitott sorcsoportok nem rendellenes. Az egyik ésszerűen elvárt / (60) a táblaelosztással nyílt sorcsoport. Túl sok javasolni Adatbetöltési partíciók között. Ellenőrizze, hogy a particionálási stratégia hang |
-| [OPEN_rowgroup_rows] |Minden egyes sorcsoport lehetnek 1 048 576 sort, a maximum. Itt megtekintheti a teljes a nyitott sorcsoportok jelenleg ez az érték használatával |
-| [OPEN_rowgroup_rows_MIN] |A csoportok menü megnyitása jelezheti adatok betöltése a táblába trickle, vagy az, hogy az előző terhelés kiömlött fennmaradó sorok sor ebbe a csoportba. A MIN, MAX használja, AVG oszlopban láthatja, hogy mennyi adatot van állt, nyissa meg a csoportok sor. A kis táblák 100 %-át az összes adatot lehet! Ebben az esetben az ALTER INDEX REBUILD oszlopcentrikus kényszerít ki az adatokat. |
-| [OPEN_rowgroup_rows_MAX] |Ahogy fent |
-| [OPEN_rowgroup_rows_AVG] |Ahogy fent |
-| [CLOSED_rowgroup_rows] |Tekintse meg a lezárt sor sorok csoportosítása megerősítést ellenőrzése. |
-| [CLOSED_rowgroup_count] |A lezárt sorcsoportok számát alacsony, ha bármelyik minden látható kell lennie. Az ALTER INDEX használatával tömörített sorcsoport lezárt sorcsoportok konvertálható... A parancs ÁTRENDEZÉSÉHEZ. Azonban ez nem kötelező általában. A lezárt csoportokat automatikusan konvertálja oszlopcentrikus sorcsoportok szerint a "rekord rekordáthelyezőnek" rétegzést. |
-| [CLOSED_rowgroup_rows_MIN] |Lezárt sorcsoportok rendelkeznie kell egy nagyon nagy kitöltés sebessége. Ha bezárt sorcsoport kitöltés díjaival alacsony, majd az oszlopcentrikus további elemzésre szükség. |
-| [CLOSED_rowgroup_rows_MAX] |Ahogy fent |
-| [CLOSED_rowgroup_rows_AVG] |Ahogy fent |
-| [Rebuild_Index_SQL] |SQL-tábla oszlopcentrikus index újraépítése |
+| [table_partition_count] |Ha a tábla particionálva van, akkor várhatóan nagyobb számú nyitott sorcsoport is látható. A terjesztés minden partíciója elméletileg rendelkezhet egy nyitott sorcsoport-csoporttal. Ezt a faktort elemezze. A particionált kis tábla optimalizálható úgy, hogy teljesen eltávolítja a particionálást, mivel ez javítaná a tömörítést. |
+| [row_count_total] |A tábla teljes sorainak száma. Ezzel az értékkel például kiszámíthatja a tömörített állapotú sorok százalékos arányát. |
+| [row_count_per_distribution_MAX] |Ha az összes sor egyenletesen van elosztva, ez az érték lesz az eloszlásban megcélzott sorok száma. Hasonlítsa össze ezt az értéket a compressed_rowgroup_count. |
+| [COMPRESSED_rowgroup_rows] |A táblához tartozó oszlopcentrikus-formátumú sorok teljes száma. |
+| [COMPRESSED_rowgroup_rows_AVG] |Ha a sorok átlagos száma jelentősen kisebb, mint a sorcsoport sorainak maximális száma, akkor érdemes lehet CTAS használni, vagy módosítani az INDEX újraépítését az adatok újratömörítéséhez |
+| [COMPRESSED_rowgroup_count] |Oszlopcentrikus formátumú sorok száma Ha ez a szám nagyon magas a táblázathoz képest, az azt jelzi, hogy a oszlopcentrikus sűrűsége alacsony. |
+| [COMPRESSED_rowgroup_rows_DELETED] |A sorok logikailag törlődnek oszlopcentrikus formátumban. Ha a szám a táblázat méretéhez képest magas, érdemes lehet újból létrehozni a partíciót vagy újraépíteni az indexet, mivel ez fizikailag eltávolítja őket. |
+| [COMPRESSED_rowgroup_rows_MIN] |Használja ezt az AVG és a MAX oszlopok együttes használatával, hogy megértse a oszlopcentrikus lévő Sorcsoportok értékeinek tartományát. A betöltési küszöbérték (102 400/partícióra igazított eloszlás) alsó száma azt jelzi, hogy az optimalizálások elérhetők az adatterhelésben |
+| [COMPRESSED_rowgroup_rows_MAX] |Mint fent |
+| [OPEN_rowgroup_count] |A sorcsoport-csoportok megnyitása normális. Az egyik a tábla eloszlása (60) szerint egy nyitott sorcsoport. A túlzott szám a partíciók közötti betöltést javasolja. Ellenőrizze a particionálási stratégiát, és győződjön meg róla, hogy a hang |
+| [OPEN_rowgroup_rows] |Az egyes sorcsoport-csoportok legfeljebb 1 048 576 sort tartalmazhatnak. Ezzel az értékkel megtekintheti, hogy a nyitott sorcsoport-csoportok jelenleg milyen teljes körűek |
+| [OPEN_rowgroup_rows_MIN] |A nyitott csoportok azt jelzik, hogy az adat folyamatban van a táblába való betöltéskor, vagy hogy az előző terhelés a fennmaradó sorok között lett kiosztva ebbe a sorcsoport-csoportba. A MIN, a MAX, az AVG oszlop használatával megtekintheti, hogy mennyi az információ a nyitott sorcsoport-csoportokban. Kis táblák esetében az összes adat 100%-a lehet! Ebben az esetben módosítsa az INDEX újraépítését, hogy az oszlopcentrikus-re kényszerítse az adatvesztést. |
+| [OPEN_rowgroup_rows_MAX] |Mint fent |
+| [OPEN_rowgroup_rows_AVG] |Mint fent |
+| [CLOSED_rowgroup_rows] |Tekintse meg a lezárt sorcsoport sorait a józan ész-vizsgálat során. |
+| [CLOSED_rowgroup_count] |A lezárt sorcsoport-csoportok számának alacsonynak kell lennie, ha egyáltalán látható. A lezárt sorcsoport a ALTER INDEX használatával konvertálható tömörített sorcsoport-csoportokra... Parancs átrendezése. Ez azonban általában nem kötelező. A lezárt csoportok automatikusan oszlopcentrikus lesznek konvertálva a "rekordot mozgató" folyamat hátterében. |
+| [CLOSED_rowgroup_rows_MIN] |A zárt sorcsoport-csoportoknak nagyon nagy kitöltési sebességgel kell rendelkezniük. Ha egy lezárt sorcsoport kitöltési sebessége alacsony, akkor a oszlopcentrikus további elemzésére van szükség. |
+| [CLOSED_rowgroup_rows_MAX] |Mint fent |
+| [CLOSED_rowgroup_rows_AVG] |Mint fent |
+| [Rebuild_Index_SQL] |SQL egy tábla oszlopcentrikus indexének újraépítéséhez |
 
-## <a name="causes-of-poor-columnstore-index-quality"></a>Oszlopcentrikus indexek gyenge minőségének okait
+## <a name="causes-of-poor-columnstore-index-quality"></a>Gyenge oszlopcentrikus indexek minőségének okai
 
-Ha azonosította a táblák a gyenge szegmens minősége, érdemes gyökerének azonosítása.  Az alábbiakban néhány egyéb gyakori okai gyenge szegmens minősége:
+Ha a szegmensek gyenge minőségével rendelkező táblákat azonosította, a kiváltó okot érdemes azonosítania.  Az alábbiakban a gyenge szegmensek minőségének leggyakoribb okai láthatók:
 
-1. Memóriaprobléma index elkészítésekor
-2. Nagy mennyiségű DML-műveletek
-3. Kis vagy trickle betöltési műveletek
+1. Memória-nyomás az index létrehozásakor
+2. Nagy mennyiségű DML-művelet
+3. Kis-vagy csepegtető terhelési műveletek
 4. Túl sok partíció
 
-Ezek a tényezők okozhat az optimális 1 millió sor sor csoportonként kisebb szeretné, hogy jelentős mértékben oszlopcentrikus index. Nyissa meg a különbözeti sor csoportot helyett egy tömörített sorcsoport sorok is okozhat.
+Ezek a tényezők azt okozhatják, hogy a oszlopcentrikus indexe jelentősen kevesebb legyen, mint az optimális 1 000 000-sorok száma. Azt is okozhatják, hogy a sorok nem egy tömörített sorcsoport helyett a különbözeti sorcsoport-csoportra lépjenek.
 
-### <a name="memory-pressure-when-index-was-built"></a>Memóriaprobléma index elkészítésekor
+### <a name="memory-pressure-when-index-was-built"></a>Memória-nyomás az index létrehozásakor
 
-Sorok száma tömörített sorcsoport száma közvetlenül kapcsolódnak a sor- és memória rendelkezésre állnak a sorcsoport szélességét.  Amikor a sorokat nagy memóriaterhelés mellett írja oszlopcentrikus táblákba, az oszlopcentrikus szegmens minősége gyengülhet.  Ezért az ajánlott eljárás, hogy adjon a munkamenetet, amely a lehető legtöbb memória oszlopcentrikus index táblák hozzáférést ír.  Mivel a memória- és egyidejűségi között, a megfelelő memóriafoglalást útmutatást függ, hogy az adatok a táblázat minden egyes sorára, a rendszer, és a párhuzamos időszeletek lefoglalt adattárházegységek segítségével biztosíthat a munkamenet amely Írja az adatokat a táblában.
+A tömörített sorcsoport sorainak száma közvetlenül kapcsolódik a sor szélességéhez és a sorcsoport feldolgozásához rendelkezésre álló memória mennyiségéhez.  Amikor a sorokat nagy memóriaterhelés mellett írja oszlopcentrikus táblákba, az oszlopcentrikus szegmens minősége gyengülhet.  Ezért az ajánlott eljárás az, hogy a munkamenetet adja meg, amely a lehető legtöbb memóriához fér hozzá a oszlopcentrikus index tábláihoz.  Mivel a memória és a Egyidejűség között kompromisszum van, a megfelelő memória kiosztására vonatkozó útmutatás a táblázat minden egyes sorában található adatoktól, a rendszer számára lefoglalt adatraktár-egységektől, valamint a munkamenethez adható, hogy milyen párhuzamossági résidőket kell megadnia. adatírás a táblába.
 
-### <a name="high-volume-of-dml-operations"></a>Nagy mennyiségű DML-műveletek
+### <a name="high-volume-of-dml-operations"></a>Nagy mennyiségű DML-művelet
 
-Nagy mennyiségű, frissíthet vagy törölhet sorokat DML-műveletek az oszloptárba megjelentetni elégtelenségekkel. Ez különösen igaz a sorokat a sorcsoportonként többsége módosításakor.
+A sorok frissítését és törlését nagy mennyiségű DML-művelet jelentheti a oszlopcentrikus. Ez különösen akkor igaz, ha egy sorcsoport sorainak többségét módosítják.
 
-- A sor logikailag csak egy sor törlése egy tömörített sorcsoport jelöli meg, mert törölték. A sor a tömörített sorcsoport marad mindaddig, amíg a partíció vagy a táblázatra újraépíti.
-- Sor beszúrása a sor hozzáadása egy különbözeti sorcsoportonként nevű belső sortárindex táblát. A beszúrt sor át nem oszlopcentrikus mindaddig, amíg a különbözeti sorcsoport megtelt, és zárva van megjelölve. Sorcsoportok elérnék a maximális kapacitását 1 048 576 sort után bezárul.
-- Az oszloptár formátumba sor frissítése egy logikai törlés és Beszúrás feldolgozása. A beszúrt sor tárolhatók a különbözeti tárolójában.
+- Ha egy sort töröl egy tömörített sorcsoport-csoportból, csak logikailag jelöli meg a sort. A sor addig marad a tömörített sorcsoport-csoportban, amíg a partíció vagy a tábla újra nem épül.
+- Egy sor beszúrása a sort egy belső sortárindex létrehozását táblázatba helyezi, amelynek neve különbözeti sorcsoport. A beszúrt sor nem konvertálható oszlopcentrikus, amíg a különbözeti sor csoport megtelt, és a jelölése lezártként van megjelölve. A sorcsoport bezárult, ha elérik a 1 048 576-es sorok maximális kapacitását.
+- A oszlopcentrikus-formátumú sorok frissítése logikai törlésként, majd beszúrásként történik. Előfordulhat, hogy a beszúrt sor a különbözeti tárolóban tárolódik.
 
-Kötegelt frissítési és 102 400 sornál kisebb sorok száma illeszkednie terjesztési tömeges küszöbértéket meghaladó beszúrási műveletek lépjen közvetlenül az oszloptár formátumba. Azonban ha az egyenletes eloszlás, kell 6.144 millió sornál nagyobbak ehhez egyetlen művelettel lehet módosítani. Ha egy adott illeszkednie terjesztési sorok száma kevesebb mint 102,400 a sorok a különbözeti Store áruházból, és van marad, amíg elegendő sorok beszúrt vagy módosított gombra kattintva zárja be a sorcsoport vagy az index újra lett építve.
+A kötegelt frissítési és beszúrási műveletek, amelyek túllépik az 102 400-es sorok tömeges kiosztását a partíciók által igazított eloszlásban, közvetlenül a oszlopcentrikus formátumra kerülnek. Azonban feltételezve, hogy még eloszlás is van, egyetlen műveletnél több mint 6 144 000 sort kell módosítania. Ha egy adott partícióhoz igazított eloszlás sorainak száma kevesebb, mint 102 400, akkor a sorok a különbözeti tárolóba kerülnek, és ott maradnak, amíg be nem szúrják vagy módosították a sort a sorcsoport bezárásához, vagy az index újraépítése megtörtént.
 
-### <a name="small-or-trickle-load-operations"></a>Kis vagy trickle betöltési műveletek
+### <a name="small-or-trickle-load-operations"></a>Kis-vagy csepegtető terhelési műveletek
 
-Kisméretű tölti be, hogy a folyamat az SQL Data Warehouse-ba is is ismertek, terhelések trickle. Folyamatban van a rendszer által betöltött adatok közel állandó adatfolyam általában képviselik. Azonban mivel a stream közel folyamatos sorok lemez nem különösen nagy. Gyakran az adatok a jelentősen oszloptár formátumba való közvetlen betöltés szükséges a küszöbérték alatti.
+A SQL Data Warehousebe beáramló kis terhelések is más néven szivárgási terhelésként is ismertek. Általában a rendszer által betöltött, közel állandó adatfolyamot jelentenek. Mivel azonban ez az adatfolyam közel folyamatos, a sorok mennyisége nem különösebben nagy. Gyakrabban, mint nem az adat jelentősen a közvetlen betöltés oszlopcentrikus formátumhoz szükséges küszöbérték alatt van.
 
-Ebben az esetben érdemes gyakran az adatok először megnyitja az Azure blob storage-ban, és biztosítani, hogy betöltés előtt összeadódhatnak. Ezzel a technikával gyakran nevezik *micro kötegelés*.
+Ezekben az esetekben általában jobb az Azure Blob Storage-ban az adatgyűjtés, és a betöltés előtt is felhalmozható. Ezt a technikát gyakran nevezik *mikro-kötegnek*.
 
 ### <a name="too-many-partitions"></a>Túl sok partíció
 
-Egy másik illesztője a fürtözött oszlopcentrikus Táblák particionálása hatását.  A particionálás, mielőtt az SQL Data Warehouse már osztja fel az adatok 60 adatbázisba.  További particionálás osztja fel az adatokat.  Ha particionálja az adatait, majd vegye figyelembe, hogy **egyes** partíciót kell legalább 1 millió sor számára, hogy a fürtözött oszlopcentrikus indexet.  Ha particionálhatja a táblát 100 partíciókra, akkor a táblában kell legalább 6 milliárd sorok számára, hogy a fürtözött oszlopcentrikus index (60 elosztás *100 partícióval* 1 millió sor). Ha a 100-partíciós tábla nem rendelkezik 6 milliárd sorral, vagy csökkentse a partíciók számát, vagy fontolja meg egy halomtábla használata esetén inkább.
+Egy másik megfontolandó dolog a fürtözött oszlopcentrikus-táblák particionálásának hatása.  A particionálás előtt a SQL Data Warehouse az adatait már 60 adatbázisra osztja.  A particionálás tovább osztja az adatait.  Ha particionálja az adatait, vegye figyelembe, hogy az **egyes** partíciók legalább 1 000 000 sort igényelnek egy fürtözött oszlopcentrikus-index kihasználása érdekében.  Ha 100 partícióra particionálja a táblázatot, a táblának legalább 6 000 000 000 sort kell használnia a fürtözött oszlopcentrikus-index (60-disztribúciók *100* -partíciók 1 000 000-sorok) kihasználása érdekében. Ha az 100-Partition tábla nem rendelkezik 6 000 000 000-sorral, csökkentse a partíciók számát, vagy használjon egy halom táblát.
 
-Miután adatokkal lettek betöltve. a táblák, a lépések végrehajtásával azonosíthatja, és építse újra az optimálisnál rosszabb rendelkező táblák fürtözött oszloptár-indexekben.
+Miután betöltötte a táblákat néhány adattal, az alábbi lépéseket követve azonosíthatja és újraépítheti a táblákat az optimális oszlopcentrikus-indexekkel.
 
-## <a name="rebuilding-indexes-to-improve-segment-quality"></a>Szegmens minőségének javítására indexek újraépítése
+## <a name="rebuilding-indexes-to-improve-segment-quality"></a>Indexek újraépítése a szegmens minőségének javítása érdekében
 
-### <a name="step-1-identify-or-create-user-which-uses-the-right-resource-class"></a>1\. lépés: Azonosítsa, vagy hozzon létre felhasználói, amely használja a megfelelő erőforrás-osztály
+### <a name="step-1-identify-or-create-user-which-uses-the-right-resource-class"></a>1\. lépés: A megfelelő erőforrás osztályt használó felhasználó azonosítása vagy létrehozása
 
-Azonnal a szegmens minősége javításának egyik gyors módja, hogy az index újraépítése.  A fenti nézetben által visszaadott SQL egy ALTER INDEX REBUILD utasítás, amely az indexek újraépítése segítségével adja vissza. Ha az indexek újraépítése, mindenképpen lefoglalni elegendő memóriát a munkamenetbe, amely újraépíti az index.  Ehhez a erőforrásosztályhoz építenie az indexet a tábla a javasolt minimális engedéllyel rendelkező felhasználó növelése.
+Egy gyors módszer a szegmens minőségének azonnali javítására az index újraépítése.  A fenti nézet által visszaadott SQL ALTER INDEX Rebuild utasítást ad vissza, amely az indexek újraépítésére használható. Az indexek újraépítésekor ügyeljen arra, hogy elegendő memóriát foglaljon le a munkamenethez, amely újraépíti az indexet.  Ehhez növelje egy olyan felhasználó erőforrás-osztályát, amely jogosult a táblázat indexének újraépítésére a javasolt minimumra.
 
-Alább egy példát egy felhasználóhoz több memóriát lefoglalni a erőforrásosztály növelésével van. Erőforrásosztályok dolgozni, lásd: [erőforrásosztályok számítási feladatok kezeléséhez](resource-classes-for-workload-management.md).
+Az alábbi példa bemutatja, hogyan oszthat ki több memóriát a felhasználók számára az erőforrás-osztályának növelésével. Az erőforrás-osztályokkal való munkavégzéshez lásd: [erőforrás-osztályok a számítási feladatok kezeléséhez](resource-classes-for-workload-management.md).
 
 ```sql
 EXEC sp_addrolemember 'xlargerc', 'LoadUser'
 ```
 
-### <a name="step-2-rebuild-clustered-columnstore-indexes-with-higher-resource-class-user"></a>2\. lépés: Magasabb szintű erőforrás osztály felhasználóval fürtözött oszlopcentrikus indexek újraépítése
+### <a name="step-2-rebuild-clustered-columnstore-indexes-with-higher-resource-class-user"></a>2\. lépés: Fürtözött oszlopcentrikus indexek újraépítése magasabb erőforrás-osztállyal rendelkező felhasználóval
 
-Jelentkezzen be, hogy a felhasználó 1. lépés (pl. LoadUser), amely mostantól egy nagyobb erőforrásosztály használata, és hajtsa végre az ALTER INDEX utasításokat. Győződjön meg arról, hogy a felhasználó rendelkezik-e az ALTER engedéllyel a táblákat, ahol az index újraépítése folyamatban van. Ezek a példák megjelenítése a teljes oszlopcentrikus index újraépítése, illetve egy adott partíció számára. A nagyméretű táblák további gyakorlati újraépítése indexeli ugyanazon a partíción egy időben.
+Jelentkezzen be felhasználóként az 1. lépésből (pl. LoadUser), amely már magasabb erőforrás-osztályt használ, és végrehajtja az ALTER INDEX utasításait. Ügyeljen arra, hogy a felhasználó megváltoztassa a táblákat, amelyeken az index újraépítése zajlik. Ezek a példák azt mutatják be, hogyan lehet újraépíteni a teljes oszlopcentrikus-indexet, illetve hogyan lehet újraépíteni egy partíciót. A nagyméretű táblákon az indexek újraépítése sokkal hatékonyabb, ha egyszerre egy partíciót hoz létre.
 
-Azt is megteheti, ahelyett, hogy az index újraépítése, sikerült másolni a tábla egy új táblát [CTAS használata](sql-data-warehouse-develop-ctas.md). Melyik legjobb módja? Nagy mennyiségű adatot a CTAS általában gyorsabb, mint a [ALTER INDEX](/sql/t-sql/statements/alter-index-transact-sql). Kisebb mennyiségű adatot ALTER INDEX használata egyszerűbb, és nem szükséges, hogy a táblázat meg felcserélni.
+Az index újraépítése helyett átmásolhatja a táblát egy új táblába a [CTAS használatával](sql-data-warehouse-develop-ctas.md). Melyik a legjobb módszer? Nagy adatmennyiségek esetén a CTAS általában gyorsabb, mint az [Alter index](/sql/t-sql/statements/alter-index-transact-sql). Kisebb adatmennyiségek esetén az ALTER INDEX könnyebben használható, és nem szükséges a tábla kicserélése.
 
 ```sql
 -- Rebuild the entire clustered index
@@ -252,15 +252,15 @@ ALTER INDEX ALL ON [dbo].[FactInternetSales] REBUILD Partition = 5 WITH (DATA_CO
 ALTER INDEX ALL ON [dbo].[FactInternetSales] REBUILD Partition = 5 WITH (DATA_COMPRESSION = COLUMNSTORE)
 ```
 
-Az SQL Data Warehouse az index újraépítése az-offline művelet.  Az indexek újraépítésével kapcsolatos további információkért tekintse meg az ALTER INDEX REBUILD szakasz [Oszlopcentrikus index töredezettségmentesítési](/sql/relational-databases/indexes/columnstore-indexes-defragmentation), és [ALTER INDEX](/sql/t-sql/statements/alter-index-transact-sql).
+SQL Data Warehouse egy indexének újraépítése offline művelet.  Az indexek újraépítésével kapcsolatos további információkért tekintse meg az indexek átállítása az [Oszlopcentrikus indexek töredezettségmentesítéséről](/sql/relational-databases/indexes/columnstore-indexes-defragmentation)című szakaszt, és [módosítsa](/sql/t-sql/statements/alter-index-transact-sql)az indexet.
 
-### <a name="step-3-verify-clustered-columnstore-segment-quality-has-improved"></a>3\. lépés: Ellenőrizze a fürtözött oszlopcentrikus szegmens minősége javult.
+### <a name="step-3-verify-clustered-columnstore-segment-quality-has-improved"></a>3\. lépés: A fürtözött oszlopcentrikus szegmens minőségének ellenőrzése javult
 
-Futtassa újból a lekérdezést a gyenge azonosított tábla szegmens minősége, és ellenőrizze a szegmens minősége javult.  Ha szegmens minősége nem javította, annak oka az lehet, hogy a sorokat a táblában nagyon nagy.  Fontolja meg egy nagyobb erőforrásosztályhoz és DWU az index újraépítésekor.
+Futtassa újra a lekérdezést, amely a gyenge szegmensek minőségével rendelkező táblázatot azonosította, és a szegmens minőségének ellenőrzése javult.  Ha a szegmens minősége nem javult, akkor előfordulhat, hogy a tábla sorainak használata extra széles.  Az indexek újraépítésekor érdemes nagyobb erőforrás-osztályt vagy DWU használni.
 
-## <a name="rebuilding-indexes-with-ctas-and-partition-switching"></a>A CTAS és a partíció közötti váltás indexek újraépítése
+## <a name="rebuilding-indexes-with-ctas-and-partition-switching"></a>Indexek újraépítése a CTAS és a partíciós váltással
 
-Ez a példa a [CREATE TABLE AS SELECT (CTAS)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse) utasítás és a egy table-partition újraépítése a partícióváltás.
+Ebben a példában a [CREATE TABLE as Select (CTAS)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse) utasítás és a partíciók váltása lehetőségre kattintva újraépíthető egy tábla-partíció.
 
 ```sql
 -- Step 1: Select the partition of data and write it out to a new table using CTAS
@@ -283,8 +283,8 @@ AND     [OrderDateKey] <  20010101
 ALTER TABLE [dbo].[FactInternetSales_20000101_20010101] SWITCH PARTITION 2 TO  [dbo].[FactInternetSales] PARTITION 2 WITH (TRUNCATE_TARGET = ON);
 ```
 
-Hozza létre újra a partíciók használatával a CTAS kapcsolatos további információkért lásd: [partíciók használatával az SQL Data Warehouse](sql-data-warehouse-tables-partition.md).
+A partíciók CTAS használatával történő ismételt létrehozásával kapcsolatos további információkért lásd: [partíciók használata a SQL Data Warehouseban](sql-data-warehouse-tables-partition.md).
 
 ## <a name="next-steps"></a>További lépések
 
-Táblák fejlesztésével kapcsolatos további információkért lásd: [fejlesztés táblák](sql-data-warehouse-tables-overview.md).
+További információ a táblázatok létrehozásáról: a [táblázatok fejlesztése](sql-data-warehouse-tables-overview.md).

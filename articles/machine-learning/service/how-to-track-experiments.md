@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 07/11/2019
 ms.custom: seodec18
-ms.openlocfilehash: 269568c172ff6c65c9877f9ad22067a11125b339
-ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
+ms.openlocfilehash: edc0da77fc1c2813c2485fca18d50952e3060db8
+ms.sourcegitcommit: c71306fb197b433f7b7d23662d013eaae269dc9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67847477"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68370473"
 ---
 # <a name="log-metrics-during-training-runs-in-azure-machine-learning"></a>A betanítási metrikák a Azure Machine Learningban való futtatásakor
 
@@ -225,8 +225,8 @@ A [tanítási futtatások indítása, figyelése és megszakítása című](how-
 
 ## <a name="view-run-details"></a>Futtatás részletei nézet
 
-### <a name="monitor-run-with-jupyter-notebook-widgets"></a>A figyelő futtatásához a Jupyter notebook widgetek
-Ha a **ScriptRunConfig** elküldéséhez metódus fut, a Futtatás, a Jupyter notebook widgettel állapotát megtekintheti. A futtatás elküldéséhez hasonlóan a vezérlő aszinkron módon működik, és 10-15 másodpercenként élő állapotfrissítést biztosít a feladat befejeződéséig.
+### <a name="monitor-run-with-jupyter-notebook-widget"></a>A monitor futtatása a Jupyter notebook widgettel
+Ha a **ScriptRunConfig** metódust használja a futtatások elküldéséhez, tekintse meg a Futtatás folyamatát egy [Jupyter widgettel](https://docs.microsoft.com/python/api/azureml-widgets/azureml.widgets?view=azure-ml-py). A futtatás elküldéséhez hasonlóan a vezérlő aszinkron módon működik, és 10-15 másodpercenként élő állapotfrissítést biztosít a feladat befejeződéséig.
 
 1. A Jupyter widget tekintse meg a Futtatás befejeződik várakozás közben.
 
@@ -236,6 +236,12 @@ Ha a **ScriptRunConfig** elküldéséhez metódus fut, a Futtatás, a Jupyter no
    ```
 
    ![Képernyőkép a Jupyter notebook widget](./media/how-to-track-experiments/run-details-widget.png)
+
+A munkaterületen megjelenő megjelenítésre mutató hivatkozást is kaphat.
+
+```python
+print(run.get_portal_url())
+```
 
 2. **[Automatikus machine learning futtatások]**  Az előző menetből a diagramok eléréséhez. Cserélje `<<experiment_name>>` le a nevet a megfelelő kísérlet nevére:
 
@@ -257,7 +263,8 @@ További részleteit a folyamat kattintson a folyamat a megtekintéséhez, amely
 ### <a name="get-log-results-upon-completion"></a>Naplóeredmények lekérése a befejezéskor
 
 Modell betanítása és figyelési fordulnak elő a háttérben, hogy a várakozás közben egyéb feladatokat is futtathat. Azt is, amíg a modell több kód futtatása előtt képzési befejeződéséig. Ha használ **ScriptRunConfig**, használható ```run.wait_for_completion(show_output = True)``` megjelenítése, ha a modell betanítása befejeződött. A ```show_output``` jelző biztosít részletes kimenet. 
-  
+
+
 ### <a name="query-run-metrics"></a>A lekérdezés futtatása a metrikák
 
 Megtekintheti a metrikákat egy betanított modell használatával ```run.get_metrics()```. Most már beszerezheti az összes naplózott határozza meg a legjobb modellt a fenti példában a metrikákat.
@@ -287,140 +294,6 @@ Különféle módon használhatja a naplózási metrikák rekord különböző t
 |Jelentkezzen egy sor 2 numerikus oszlopok ismételten|`run.log_row(name='Cosine Wave', angle=angle, cos=np.cos(angle))   sines['angle'].append(angle)      sines['sine'].append(np.sin(angle))`|Kétváltozós vonaldiagram|
 |A numerikus oszlopok 2 naplótábláját|`run.log_table(name='Sine Wave', value=sines)`|Kétváltozós vonaldiagram|
 
-<a name="auto"></a>
-## <a name="understanding-automated-ml-charts"></a>Understanding automatikus ML-diagramok
-
-Egy jegyzetfüzet egy automatizált gépi Tanulási feladat elküldése után ezek futtatások előzményei a machine learning-szolgáltatás munkaterület található. 
-
-További információk:
-+ [Diagramok és görbék képbesorolási modellek esetében](#classification)
-+ [Diagramok és grafikonok, regressziós modellek](#regression)
-+ [Modell lehetővé teszi azt ismertetik](#model-explain-ability-and-feature-importance)
-
-
-### <a name="view-the-run-charts"></a>A futtatási diagramok megtekintése
-
-1. Lépjen a munkaterülethez. 
-
-1. Válassza ki **kísérletek** a munkaterület a bal oldali panelen.
-
-   ![Kísérlet menü képernyőképe](./media/how-to-track-experiments/azure-machine-learning-auto-ml-experiment-menu.png)
-
-1. Jelölje ki az Önt érdeklő kísérletet.
-
-   ![Kísérlet listája](./media/how-to-track-experiments/azure-machine-learning-auto-ml-experiment-list.png)
-
-1. A tábla válassza ki a Futtatás száma.
-
-   ![Kísérlet futtatása](./media/how-to-track-experiments/azure-machine-learning-auto-ml-experiment-run.png)
-
-1. A tábla a modellhez, amely a kívánt vizsgálódáshoz iteráció számának kiválasztása
-
-   ![Kísérlet modell](./media/how-to-track-experiments/azure-machine-learning-auto-ml-experiment-model.png)
-
-
-
-### <a name="classification"></a>Besorolás
-
-Minden besorolás modell, amely az automatizált gépi tanulási funkciókat az Azure Machine Learning segítségével tekintheti meg a következő diagramok: 
-+ [Keveredési mátrix](#confusion-matrix)
-+ [Pontosság-visszahívási diagram](#precision-recall-chart)
-+ [Fogadó működési jellemzői (vagy ROC)](#roc)
-+ [Átemelés görbévé](#lift-curve)
-+ [Nyereség görbévé](#gains-curve)
-+ [Hitelesítési diagram](#calibration-plot)
-
-#### <a name="confusion-matrix"></a>Keveredési mátrix
-
-Egy keveredési mátrixot egy osztályozási modell teljesítményét leírására szolgál. Minden egyes sor jeleníti meg az IGAZ osztály példányait, és minden oszlop felel meg a példányok, az előrejelzett osztály. A keveredési mátrix megfelelően osztályozott címkéket és a egy adott modell hibásan besorolt címkéit jeleníti meg.
-
-Az Azure Machine Learning osztályozási problémák, automatikusan biztosít mindegyik modellt, amely egy keveredési mátrixot. Az egyes keveredési mátrixot automatizált gépi Tanulási vörös, zöld és hibásan besorolt címkékként jelennek megfelelően osztályozott címkéket. A kör mérete az adott doboz minták számát jelöli. Emellett a szomszédos sávdiagramok minden egyes előre jelzett címke és az egyes igaz címke gyakorisága száma megtalálható. 
-
-1\. példa: Gyenge pontosságú besorolási modell ![gyenge pontossággal](./media/how-to-track-experiments/azure-machine-learning-auto-ml-confusion-matrix1.png)
-
-2\. példa Nagy pontossággal (ideális) ![rendelkező besorolási modell nagy pontossággal](./media/how-to-track-experiments/azure-machine-learning-auto-ml-confusion-matrix2.png)
-
-
-#### <a name="precision-recall-chart"></a>Pontosság-visszahívási diagram
-
-Az ezen a diagramon hasonlítsa össze a pontosság-visszahívási görbék egyes modellekre meghatározni, mely a modellnek van egy elfogadható pontosság és a visszaírási az adott üzleti probléma közötti kapcsolat. A diagram bemutatja a makró átlagos pontosság-visszahívási, a Micro átlagos pontosság-visszahívási és a egy modell minden osztály társított pontosság-visszahívási.
-
-A pontosság jelöli, hogy arra, hogy az összes példány megfelelően címkézése besorolás kifejezés. Visszaírási arra, hogy az összes példányát egy adott címkét az osztályozó által igénybe vett jelöli. A pontosság-visszahívási görbe két ezek a fogalmak közötti kapcsolatot mutatja. Ideális esetben a modell kellene pontosság 100 %-os és 100 %-os pontossággal.
-
-1\. példa: Alacsony pontosságú és ![alacsony szintű visszahívásos besorolási modellt tartalmazó besorolási modell](./media/how-to-track-experiments/azure-machine-learning-auto-ml-precision-recall1.png)
-
-2\. példa Besorolási modell ~ 100% pontossággal és ~ 100% visszahívás (ideális) ![a besorolási modell nagy pontossággal és visszahívás](./media/how-to-track-experiments/azure-machine-learning-auto-ml-precision-recall2.png)
-
-#### <a name="roc"></a>ROC
-
-Jellemző (vagy ROC) működő fogadó egy diagram, a megfelelő osztályozott címkék és a egy adott modell hibásan besorolt címkéit. ROC-görbe kevesebb adatot tartalmazó lehet, amikor nagy eltérés, mivel az adatkészletek képzési modellek nem jelenik meg a hamis pozitív címkéket.
-
-1\. példa: Alacsony ![igaz címkéket és magas hamis címkéket tartalmazó besorolási modell alacsony igaz címkékkel és magas hamis címkékkel](./media/how-to-track-experiments/azure-machine-learning-auto-ml-roc-1.png)
-
-2\. példa Egy magas igaz címkével és alacsony hamis ![címkékkel rendelkező besorolási modell magas igaz címkékkel és alacsony hamis címkékkel rendelkező besorolási modellel](./media/how-to-track-experiments/azure-machine-learning-auto-ml-roc-2.png)
-
-#### <a name="lift-curve"></a>Átemelés görbévé
-
-Összehasonlíthatja a felvonó, a létrehozott modell automatikusan az Azure Machine Learning az alaptervhez annak érdekében, hogy az érték nyer, hogy az adott modell megtekintéséhez.
-
-Lift diagramok segítségével egy osztályozási modell teljesítményének értékeléséhez. Megmutatja, hogyan sokkal jobban várható, hogy a modell egy modell nélkül képest. 
-
-1\. példa: A modell rosszabb, mint egy véletlenszerű kiválasztási ![modell, amely rosszabb, mint egy véletlenszerű kiválasztási modell](./media/how-to-track-experiments/azure-machine-learning-auto-ml-lift-curve1.png)
-
-2\. példa A modell jobb, mint egy véletlenszerű kiválasztási ![modell, amely jobb teljesítményű besorolási modellt végez](./media/how-to-track-experiments/azure-machine-learning-auto-ml-lift-curve2.png)
-
-#### <a name="gains-curve"></a>Nyereség görbévé
-
-Az adatok minden egyes része egy osztályozási modell teljesítményét értékeli ki a nyereséget diagram. Az egyes PERCENTILIS mennyi jobban várható végrehajtásához egy véletlenszerű kijelölés modell összehasonlítja az adatkészlet jeleníti meg.
-
-A halmozott nyereség diagram segítségével válassza ki a besorolást megszakítási használatával, amely megfelel a modellből a kívánt nyereség százalékban. Ezt az információt biztosít egy másik módszer a megnézzük a kísérő növekedési diagramon az eredményeket.
-
-1\. példa: Egy besorolási modell minimális ![nyereséggel rendelkező besorolási modellel](./media/how-to-track-experiments/azure-machine-learning-auto-ml-gains-curve1.png)
-
-2\. példa Besorolási modell ![jelentős nyereséggel rendelkező besorolási modellel](./media/how-to-track-experiments/azure-machine-learning-auto-ml-gains-curve2.png)
-
-#### <a name="calibration-plot"></a>Hitelesítési diagram
-
-Az összes besorolási kapcsolatos problémák esetén a hitelesítési sor micro – átlag, a makró-átlagos és a egy adott prediktív modellt az egyes osztályok tekintheti meg. 
-
-Hitelesítési rajzot a prediktív modellek magabiztosan megjelenítésére szolgál. Ezt nem: Megjeleníti az előre jelzett valószínűség és a tényleges valószínűsége közötti kapcsolat, ahol "valószínűség" jelenti a valószínűsége, hogy az adott példány néhány címke alatt tartozik. Egy jól hitelesített modell igazítja az y = x sor, ahol a szolgáltatás ésszerűen abban az előrejelzéseket. Egy túlzott confident modell igazítja az y = 0 sort, amelyben az előre jelzett valószínűség megtalálható, de nem tényleges valószínűsége.
-
-1\. példa: Egy jól kalibrált modell ![ jobban kalibrált modell](./media/how-to-track-experiments/azure-machine-learning-auto-ml-calib-curve1.png)
-
-2\. példa Egy több mint ![magabiztos modell](./media/how-to-track-experiments/azure-machine-learning-auto-ml-calib-curve2.png)
-
-### <a name="regression"></a>Regresszió
-Minden regressziós modell az automatizált gépi tanulási funkciókat az Azure Machine Learning segítségével létrehozhat, a következő diagram látható: 
-+ [Előre jelzett vs. Igaz](#pvt)
-+ [Például hisztogramja](#histo)
-
-<a name="pvt"></a>
-
-#### <a name="predicted-vs-true"></a>Előre jelzett vs. True (Igaz)
-
-Előre jelzett vs. Igaz előre jelzett érték és a egy regressziós probléma a correlating IGAZ érték közötti kapcsolatot mutatja. Ez a diagram segítségével mérheti a modell teljesítményét, minél közelebb az y = x sor az előre jelzett értékek a következők, annál jobb a prediktív modell pontosságát.
-
-Minden egyes futás után megjelenik egy előre jelzett és minden egyes regressziós modell igaz grafikon. Adatok védelme érdekében értékek együtt vannak binned, és a egy oszlopdiagram a diagramterület alsó részén jelenik meg minden doboz méretét. Hiba történt a margók, ahol a modell lehet ideális megoldás értékkel megjelenítő világosabb terület árnyékolása a össze lehessen hasonlítani a prediktív modellben.
-
-1\. példa: Alacsony pontosságú regressziós modell előrejelzése ![egy regressziós modellt, amely alacsony pontossággal rendelkezik a jóslatokban](./media/how-to-track-experiments/azure-machine-learning-auto-ml-regression1.png)
-
-2\. példa Egy regressziós modell, amely nagy pontossággal ![van ellátva az előrejelzések szerint a regressziós modellben nagy pontossággal](./media/how-to-track-experiments/azure-machine-learning-auto-ml-regression2.png)
-
-<a name="histo"></a>
-
-#### <a name="histogram-of-residuals"></a>Például hisztogramja
-
-A fennmaradó megfigyelt y – az előre jelzett y jelöli. A hibahatáron az alacsony eltérés megjelenítéséhez, például a hisztogram kell alakúak lehetnek harang görbe 0 Eszközkezelőre. 
-
-1\. példa: Egy regressziós modell, amely torzítást ![tartalmaz a hibákhoz tartozó SA regressziós modellben](./media/how-to-track-experiments/azure-machine-learning-auto-ml-regression3.png)
-
-2\. példa Egy regressziós modell, amely még nagyobb mennyiségű hibát ![tartalmaz, egy regressziós modell a hibák még összetettebb eloszlásával](./media/how-to-track-experiments/azure-machine-learning-auto-ml-regression4.png)
-
-### <a name="model-explain-ability-and-feature-importance"></a>A modellekre teszi azt ismertetik, és a szolgáltatás fontosság
-
-Funkció fontosság biztosít, amely jelzi, hogy milyen értékes alapdokumentációjában volt a modell felépítése a pontszámot. A funkció fontos pontszám modell átfogó, valamint egy prediktív modellt az osztály egy tekintheti meg. Szolgáltatás / láthatja, hogyan viszonyul fontosságát, minden egyes osztály ellen, és teljes.
-
-![A szolgáltatás magyarázat képessége](./media/how-to-track-experiments/azure-machine-learning-auto-ml-feature-explain1.png)
 
 ## <a name="example-notebooks"></a>Példa notebookok
 A következő notebookok a jelen cikk fogalmait bemutatása:

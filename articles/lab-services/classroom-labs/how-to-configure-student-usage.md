@@ -1,6 +1,6 @@
 ---
-title: Osztályterem-tesztkörnyezetek az Azure Lab Services használati beállításainak konfigurálása |} A Microsoft Docs
-description: Ismerje meg, hogyan konfigurálhatja a labor létrehozása a felhasználók számát, azok regisztrálva a labor, szabályozhatja a virtuális Gépet, és további használatához órák száma.
+title: Használati beállítások konfigurálása a Azure Lab Services osztályterem Labs-ban | Microsoft Docs
+description: Megtudhatja, hogyan konfigurálhatja a laborhoz tartozó felhasználók számát, regisztrálhatja őket a laborban, meghatározhatja, hogy hány órát használhatnak a virtuális gép, és így tovább.
 services: lab-services
 documentationcenter: na
 author: spelluru
@@ -13,138 +13,138 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/11/2019
 ms.author: spelluru
-ms.openlocfilehash: 67faf268d265fd045c21b75b6f64840511a371d3
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 86f22864c416ad2a90bea09c02675d6eb3322308
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67067331"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68385627"
 ---
-# <a name="configure-usage-settings-and-policies"></a>És használati beállítások és szabályzatok konfigurálása
-Ez a cikk ismerteti a felhasználók hozzáadása a tesztkörnyezethez, azok regisztrálva a labor, szabályozhatja a virtuális Gépet, és további használatához órák száma. 
+# <a name="configure-usage-settings-and-policies"></a>Használati beállítások és szabályzatok konfigurálása
+Ez a cikk azt ismerteti, hogyan adhat hozzá felhasználókat a laborhoz, hogyan regisztrálhatja őket a laborban, hogy hány órát használhat a virtuális gép, és így tovább. 
 
 
-## <a name="add-users-to-the-lab"></a>Felhasználók hozzáadása a labor létrehozása
-Ha rendelkezik a **hozzáférés korlátozása** felhasználók (e-mail cím) beállítás engedélyezve van, adja hozzá a listához.
+## <a name="add-users-to-the-lab"></a>Felhasználók hozzáadása a laborhoz
+Ha a **hozzáférés korlátozása** engedélyezve van, vegyen fel felhasználókat (e-mail-címeket) a listára.
 
-1. Válassza ki **felhasználók** a bal oldali menüben.
-2. Válassza ki **felhasználók hozzáadása** az eszköztáron. 
+1. Válassza a bal oldali menü **felhasználók** elemét.
+2. Kattintson a **felhasználók hozzáadása** elemre az eszköztáron. 
 
-    ![Felhasználók gomb hozzáadása](../media/how-to-configure-student-usage/add-users-button.png)
-1. Az a **felhasználók hozzáadása** lap, adja meg a felhasználók e-mail címét, külön sorban, vagy egyetlen sorban, egymástól pontosvesszővel elválasztva. 
+    ![Felhasználók hozzáadása gomb](../media/how-to-configure-student-usage/add-users-button.png)
+1. A **felhasználók hozzáadása** lapon adja meg a felhasználók e-mail-címeit külön sorokban, vagy egyetlen sorban pontosvesszővel elválasztva. 
 
-    ![Adja hozzá a felhasználó e-mail-címei](../media/how-to-configure-student-usage/add-users-email-addresses.png)
-4. Kattintson a **Mentés** gombra. Láthatja, hogy a felhasználók és azok állapotát (vagy nem regisztrált) a lista e-mail címét. 
+    ![Felhasználói e-mail-címek hozzáadása](../media/how-to-configure-student-usage/add-users-email-addresses.png)
+4. Kattintson a **Mentés** gombra. A listában megjelenik a felhasználók e-mail-címe és állapota (regisztrált vagy nem). 
 
     ![Felhasználók listája](../media/how-to-configure-student-usage/users-list-new.png)
 
-## <a name="share-registration-link-with-students"></a>A diákok regisztráció hivatkozás megosztása
-A regisztrációs hivatkozást küld diákok, használja az alábbi módszerek egyikét. Az első módszer bemutatja, hogyan e-mailek küldése a regisztráció hivatkozásra, és a egy üzenetet a tanulók számára. A második módszer bemutatja, hogyan tehet szert a regisztráció hivatkozásra, amelyet megoszthat másokkal tetszés. 
+## <a name="share-registration-link-with-students"></a>Regisztrációs hivatkozás megosztása diákokkal
+A következő módszerek egyikével elküldheti a regisztrációs hivatkozást a tanulóknak. Az első módszer azt mutatja be, hogyan küldhet e-maileket a tanulóknak a regisztrációs hivatkozással és egy opcionális üzenettel. A második módszer azt mutatja be, hogyan kérheti le a másokkal megosztható regisztrációs hivatkozást a kívánt módon. 
 
-Ha a **hozzáférés korlátozása** a tesztkörnyezethez engedélyezve van, csak a felhasználók a listán szereplő felhasználók rögzítheti a regisztráció hivatkozásra a tesztkörnyezethez. Ez a beállítás alapértelmezés szerint engedélyezve van. 
+Ha a **hozzáférés korlátozása** engedélyezve van a laborban, csak a felhasználók listájában lévő felhasználók használhatják a regisztrációs hivatkozást a laborba való regisztrációhoz. Ez a beállítás alapértelmezés szerint engedélyezve van. 
 
 ### <a name="send-email-to-users"></a>E-mail küldése a felhasználóknak
-Az Azure Lab Services lehetővé teszi az oktatók labor meghívók az összes e-mail vagy e-mail-ügyfélprogram kiválasztott diákoknak szóló másikra használata nélkül. Az oktatók is vigye a mutatót az e-mailek ikon látható az egyes tanulók vagy válassza ki egy vagy több tanulók, és használja a lista egyes tanulói **meghívó küldése** az eszköztáron. Ez a szolgáltatás egy regisztrációs hivatkozást tartalmazó e-mailt küld, és az oktató által hozzáadott egy üzenetet (ha van). Miután a rendszer elküldi a meghívót, az ajánlati állapot változik **meghívó elküldve** , hogy a tanárok is nyomon követheti, mely a tanulók már megkapták a regisztráció hivatkozásra, és azt elküldésének dátuma.
+Azure Lab Services lehetővé teszi, hogy a tanárok az összes vagy a kiválasztott tanulók számára ne kelljen egy másik e-mail-ügyfélprogramot használni. A tanárok a listán szereplő egyes tanulók számára is megtekinthetik az e-mail-ikont, vagy kijelölhetnek egy vagy több tanulót, és használhatják a **Meghívás küldése** lehetőséget az eszköztáron. Ez a funkció egy regisztrációs hivatkozást tartalmazó e-mailt küld, valamint egy, a tanár által hozzáadott üzenetet (ha van). A meghívás elküldése után a Meghívási állapot meghívást **küld** , hogy a tanárok nyomon kövessék, mely tanulók már megkapták a regisztrációs hivatkozást és az elküldött dátumot.
 
-1. Váltson a **felhasználók** megtekintheti, ha nem az oldalon már. 
-2. Válassza ki a specifikus vagy minden felhasználó a listán. Meghatározott felhasználóknak kínált, jelölje be a jelölőnégyzeteket a lista első oszlopában. Minden felhasználó kijelöléséhez jelölje be az első oszlop a cím elé (**neve**), vagy válassza ki az összes felhasználó számára az összes jelölőnégyzetet a listából. Megtekintheti az állapotát a **meghívó állapot** ebben a listában.  Az alábbi ábrán a diákok számára meghívó állapot értéke **meghívó nincs elküldve**. 
+1. Váltson a **felhasználók** nézetre, ha már nincs a lapon. 
+2. Válassza a listában a megadott vagy az összes felhasználó elemet. Adott felhasználók kiválasztásához jelölje be a jelölőnégyzeteket a lista első oszlopában. Az összes felhasználó kijelöléséhez jelölje be a jelölőnégyzetet az első oszlop címe előtt, vagy jelölje beaz összes jelölőnégyzetet a listában szereplő összes felhasználónál. A Meghívási **állapot** állapota ebben a listában látható.  A következő ábrán a tanulók Meghívási állapota a **meghívás nem**lett elküldve értékre van állítva. 
 
     ![Tanulók kiválasztása](../media/tutorial-setup-classroom-lab/select-students.png)
-1. Válassza ki a **e-mail ikonra (boríték)** az egyik a sorok (vagy) válasszon **meghívó küldése** az eszköztáron. Az egér fölé az e-mailek ikon jelenik meg a listában lévő tanulói nevét is. 
+1. Válassza ki az **e-mail-ikont (borítékot)** az egyik sorban (vagy) válassza a **Meghívás küldése** lehetőséget az eszköztáron. Az e-mail-ikon megjelenítéséhez az egérmutatót egy tanuló neve fölé is helyezheti a listában. 
 
-    ![Regisztráció hivatkozás küldése e-mailben](../media/tutorial-setup-classroom-lab/send-email.png)
-4. Az a **regisztrációs-hivatkozás küldése e-mailben** lapon, kövesse az alábbi lépéseket: 
-    1. Írja be egy **üzenetet** , amely elküldi a tanulók számára. Az e-mail automatikusan a regisztrációs hivatkozást tartalmaz. 
-    2. Az a **regisztrációs-hivatkozás küldése e-mailben** lapon jelölje be **küldése**. Meghívó módosítása a következőre állapotának megtekintéséhez **meghívó küldése** majd **meghívó elküldve**. 
+    ![Regisztrációs hivatkozás küldése e-mailben](../media/tutorial-setup-classroom-lab/send-email.png)
+4. A **regisztrációs hivatkozás küldése e-mailben** lapon kövesse az alábbi lépéseket: 
+    1. Írjon be egy **opcionális üzenetet** , amelyet el szeretne küldeni a tanulóknak. Az e-mail automatikusan tartalmazza a regisztrációs hivatkozást. 
+    2. A **regisztrációs hivatkozás küldése e-mailben** lapon válassza a **Küldés**lehetőséget. Megtekintheti a meghívó küldésének  és a meghívónak **küldött**meghívások állapotát. 
         
-        ![Küldött meghívások](../media/tutorial-setup-classroom-lab/invitations-sent.png)
+        ![Meghívások elküldése](../media/tutorial-setup-classroom-lab/invitations-sent.png)
 
-## <a name="get-registration-link"></a>Regisztráció hivatkozás beszerzése
-1. Váltson a **felhasználók** nézet kiválasztásával **felhasználók** a bal oldali menüben. 
-2. Válassza ki **Get-regisztrációs hivatkozást** csempére.
+## <a name="get-registration-link"></a>Regisztrációs hivatkozás beolvasása
+1. Váltson a **felhasználók** nézetre a bal oldali menüben a **felhasználók** lehetőség kiválasztásával. 
+2. Válassza a **regisztrálási hivatkozás** beolvasása csempét.
 
     ![A diákok regisztrációs hivatkozása](../media/tutorial-setup-classroom-lab/dashboard-user-registration-link.png)
 1. A **Felhasználói regisztráció** párbeszédablakban kattintson a **Másolás** gombra. A rendszer a vágólapra másolja a hivatkozást. Illessze be egy e-mail-szerkesztőbe, majd küldje el e-mailben a diákoknak. 
 
     ![A diákok regisztrációs hivatkozása](../media/tutorial-setup-classroom-lab/registration-link.png)
 2. A **Felhasználói regisztráció** párbeszédablakban kattintson a **Bezárás** gombra. 
-4. Megosztás a **regisztrációs hivatkozást** együtt tanuló, hogy az osztály a tanulói regisztrálhatnak. 
+4. Ossza meg a **regisztrációs hivatkozást** egy tanulóval, hogy a tanuló regisztráljon az osztályra. 
 
 ## <a name="view-users-registered-with-the-lab"></a>A tesztkörnyezetben regisztrált felhasználók megtekintése
 
-Válassza ki **felhasználók** a labor létrehozása a felhasználók listája a bal oldali menü regisztrálva. 
+A bal oldali menüben válassza a **felhasználók** lehetőséget a laborban regisztrált felhasználók listájának megtekintéséhez. 
 
-![A labor regisztrált felhasználók listája](../media/how-to-configure-student-usage/users-list-new.png)
+![A laborban regisztrált felhasználók listája](../media/how-to-configure-student-usage/users-list-new.png)
 
-## <a name="set-quotas-per-user"></a>Felhasználónként kvóták beállítása
-Felhasználónként kvóták az alábbi lépéseket követve állíthatja be: 
+## <a name="set-quotas-for-users"></a>Kvóták beállítása a felhasználók számára
+A kvótákat felhasználónként is beállíthatja a következő lépésekkel: 
 
-1. Válassza ki **felhasználók** a bal oldali menüben.
-2. Válassza ki **felhasználónként kvóta:** az eszköztáron. 
-3. Az a **felhasználónként kvóta** csoportjában adja meg kíván adni, az egyes felhasználók (student) órák száma: 
-    1. **0 óra (csak ütemezés)** . Felhasználók a saját virtuális gépek csak a megadott időszakban, vagy ha a labor tulajdonosa, kapcsolja be a virtuális gépek a számukra.
+1. Ha a lap még nem aktív, válassza a bal oldali menüben a **felhasználók** lehetőséget. 
+2. Kvóta **kiválasztása felhasználónként: 10 óra** az eszköztáron. 
+3. A **kvóta felhasználónként** lapon adja meg, hogy hány órát szeretne adni az egyes felhasználóknak (tanulók): 
+    1. **A labor-órák teljes száma**felhasználónként. A felhasználók a beütemezett időponton **kívül**használhatják a virtuális gépeket a megadott számú (ebben a mezőben meghatározott) óraszámban. Ha ezt a lehetőséget választja, adja meg az **órák számát** a szövegmezőben. 
 
-        ![Nulla óra – csak az ütemezett időpont](../media/how-to-configure-student-usage/zero-hours.png)
-    1. **Felhasználónként labor órák számának**. Felhasználók virtuális gépeiken használhatják a meghatározott számú (ebben a mezőben megadott) óra **mellett az ütemezett időpont**. Ha ezt a lehetőséget választja, adja meg a **órák száma** a szövegmezőben. 
+        ![Órák száma felhasználónként](../media/how-to-configure-student-usage/number-of-hours-per-user.png). 
+    1. **0 óra (csak ütemezett)** . A felhasználók csak az ütemezett időszakban használhatják a virtuális gépeket, vagy ha a labor tulajdonosa bekapcsolja a virtuális gépeket.
 
-        ![Felhasználónként órák száma](../media/how-to-configure-student-usage/number-of-hours-per-user.png)
+        ![Nulla óra – csak ütemezett idő](../media/how-to-configure-student-usage/zero-hours.png)
     4. Kattintson a **Mentés** gombra. 
-5. Módosított értéke most már az eszköztáron látható: **Felhasználói kvóta: &lt;órák száma&gt;** . 
+5. Ekkor megjelennek a megváltozott értékek az eszköztáron: **Kvóta felhasználónként: &lt;&gt;órák száma**. 
 
-    ![Kvóta felhasználó szerint](../media/how-to-configure-student-usage/quota-per-user.png)
+    ![Kvóta felhasználónként](../media/how-to-configure-student-usage/quota-per-user.png)
 
 
 
 > [!IMPORTANT]
-> Mielőtt elküldené a regisztráció hivatkozásra a tanulók, oktatók kell az osztály az ütemezés beállítása, ha válasszon kvótája 0 óra, illetve adja meg a kvóta órák a tesztkörnyezethez.
+> Mielőtt elküldi a regisztrációs hivatkozást a tanulóknak, a tanároknak be kell állítania az osztályhoz tartozó ütemtervet, ha 0 kvótát vesznek fel, vagy meg kell adniuk a laborhoz tartozó kvótákat.
 >
-> A [ütemezett futtatási idő a virtuális gépek](how-to-create-schedules.md) nem számítanak bele a kvóta növeléséhez, a felhasználó számára engedélyezett. A kvóta pedig egy diák foglalkozik a virtuális gépek idő ütemezése kívül alkalommal. 
+> A [virtuális gépek ütemezett futási ideje](how-to-create-schedules.md) nem számít bele a felhasználó számára kiosztott kvótába. A kvóta az ütemezett órákon kívüli időre szól, amelyet a tanuló a virtuális gépeken tölt. 
 
-### <a name="add-users-by-uploading-a-csv-file"></a>Felhasználók hozzáadása egy CSV-fájl feltöltésével
-A felhasználók e-mail-címét tartalmazó CSV-fájl feltöltésével is hozzáadhat felhasználókat.
+### <a name="add-users-by-uploading-a-csv-file"></a>Felhasználók hozzáadása CSV-fájl feltöltésével
+Felhasználókat úgy is hozzáadhat, ha feltölt egy CSV-fájlt a felhasználók e-mail-címeivel.
 
-1. Hozzon létre egy CSV-fájlt egy oszlop felhasználók e-mail címét.
+1. Hozzon létre egy CSV-fájlt a felhasználók e-mail-címeivel egy oszlopban.
 
-    ![Kvóta felhasználó szerint](../media/how-to-configure-student-usage/csv-file-with-users.png)
-2. Az a **felhasználók** a labor létrehozása, válassza a lap **töltse fel a fürt megosztott kötetei szolgáltatás** az eszköztáron.
+    ![Kvóta felhasználónként](../media/how-to-configure-student-usage/csv-file-with-users.png)
+2. A labor **felhasználók** lapján válassza a CSV-fájl **feltöltése** lehetőséget az eszköztáron.
 
-    ![Töltse fel a fürt megosztott kötetei szolgáltatás gomb](../media/how-to-configure-student-usage/upload-csv-button.png)
-3. Válassza ki a felhasználó e-mail-címmel rendelkező CSV-fájlt. Ha bejelöli **nyílt** válassza ki a CSV-fájlt, lásd a következő **felhasználók hozzáadása** ablak. Az e-mail-címek listájából a CSV-fájlból az e-mail-címmel rendelkező ki van töltve. 
+    ![CSV-fájl feltöltése gomb](../media/how-to-configure-student-usage/upload-csv-button.png)
+3. Válassza ki a CSV-fájlt a felhasználói e-mail-címekkel. Ha a CSV-fájl kiválasztása után a **Megnyitás** lehetőséget választja, a következő **felhasználók hozzáadása** ablak jelenik meg. Az e-mail cím lista a CSV-fájlból származó e-mail-címekkel van kitöltve. 
 
-    ![Feltöltve a CSV-fájlból az e-mail-címmel rendelkező felhasználók ablak hozzáadása](../media/how-to-configure-student-usage/add-users-window.png)
-4. Válassza ki **mentése** a a **felhasználók hozzáadása** ablak. 
-5. Győződjön meg arról, hogy a felhasználók a listán szereplő felhasználók. 
+    ![Felhasználói ablak hozzáadása a CSV-fájlból származó e-mail-címekkel](../media/how-to-configure-student-usage/add-users-window.png)
+4. A **felhasználók hozzáadása** ablakban válassza a **Mentés** lehetőséget. 
+5. Erősítse meg, hogy a felhasználók listáját látja a felhasználók listájában. 
 
-    ![A hozzáadott felhasználók listája](../media/how-to-configure-student-usage/list-of-added-users.png)
+    ![Hozzáadott felhasználók listája](../media/how-to-configure-student-usage/list-of-added-users.png)
 
 ## <a name="manage-user-vms"></a>Felhasználói virtuális gépek kezelése
-Miután tanulók regisztrálása az Azure Lab Services segítségével a regisztráció társítani a megadott, a tanulók a hozzárendelt virtuális gépeket láthatja a **virtuális gépek** fülre. 
+Ha a tanulók az Ön számára megadott regisztrációs hivatkozással regisztrálják Azure Lab Services a-ban, a **virtuális gépek** lapon láthatja a tanulók számára hozzárendelt virtuális gépeket. 
 
-![Diákok rendelt virtuális gépek](../media/how-to-manage-classroom-labs/virtual-machines-students.png)
+![Tanulók számára rendelt virtuális gépek](../media/how-to-manage-classroom-labs/virtual-machines-students.png)
 
-A következő feladatokat a virtuális gép tanuló teheti meg: 
+Egy tanuló virtuális gépen a következő feladatokat végezheti el: 
 
-- Virtuális gép leállítása, ha a virtuális gép fut-e. 
-- Virtuális gép elindítása, ha a virtuális gép le van állítva. 
+- Állítsa le a virtuális gépet, ha a virtuális gép fut. 
+- Ha a virtuális gép le van állítva, indítsa el a virtuális gépet. 
 - Csatlakozzon a virtuális géphez. 
-- Törölje a virtuális Gépet. 
-- Megtekintheti, hogy a felhasználók a virtuális gép felhasznált órák számát. 
+- Törölje a virtuális gépet. 
+- Megtekintheti, hogy hány óra elteltével használta a felhasználók a virtuális gépet. 
 
-## <a name="update-number-of-virtual-machines-in-lab"></a>A lab-ben a virtuális gépek számának frissítése
-Ha frissíteni szeretné a laborkörnyezetben található virtuális gépek száma, az alábbi lépéseket a **virtuális gépek** lap:
+## <a name="update-number-of-virtual-machines-in-lab"></a>Virtuális gépek számának frissítése a laborban
+A laborban található virtuális gépek számának frissítéséhez hajtsa végre a következő lépéseket a **Virtual Machines** oldalon:
 
-1. Válassza ki **virtuális gépek** a bal oldali menüben. 
-2. Válassza ki **labor kapacitás: &lt;szám&gt; gépet** az eszköztáron. 
-3. Adja meg a **szám** a virtuális gépek.
+1. A bal oldali menüben válassza a **virtuális gépek** lehetőséget. 
+2. Válassza ki a **labor &lt;kapacitása&gt; : számú gép (ek)** et az eszköztáron. 
+3. Adja meg a virtuális gépek **számát** .
 4. Kattintson a **Mentés** gombra.
 
-    ![A lab-ben a virtuális gépek](../media/how-to-configure-student-usage/number-virtual-machines.png)
+    ![Virtuális gépek a laborban](../media/how-to-configure-student-usage/number-virtual-machines.png)
 
 
 ## <a name="next-steps"></a>További lépések
 Lásd az alábbi cikkeket:
 
-- [Rendszergazdaként hozzon létre, és tesztkörnyezetfiókok kezelése](how-to-manage-lab-accounts.md)
-- [Labortulajdonosként hozzon létre és laborok kezelése](how-to-manage-classroom-labs.md)
-- [Labortulajdonosként állítsa be, és a sablonok közzététele](how-to-create-manage-template.md)
-- [Labor felhasználóként osztályterem-tesztkörnyezetek elérése](how-to-use-classroom-lab.md)
+- [Rendszergazdaként, labor-fiókok létrehozása és kezelése](how-to-manage-lab-accounts.md)
+- [Labor tulajdonosaként Labs létrehozása és kezelése](how-to-manage-classroom-labs.md)
+- [A labor tulajdonosaként hozzon létre és tegyen közzé sablonokat](how-to-create-manage-template.md)
+- [Labor-felhasználóként az osztályterem Labs eléréséhez](how-to-use-classroom-lab.md)

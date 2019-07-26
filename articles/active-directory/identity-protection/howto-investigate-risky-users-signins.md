@@ -1,273 +1,197 @@
 ---
-title: Kockázatos felhasználók és bejelentkezések Azure Active Directory identity Protection (frissítve) |} A Microsoft Docs
-description: Ismerje meg a kockázatos felhasználók és bejelentkezések Azure Active Directory identity Protection (frissítve).
+title: Kockázatos felhasználók és bejelentkezések vizsgálata Azure Active Directory Identity Protectionben (frissítve) | Microsoft Docs
+description: Ismerje meg, hogyan vizsgálja ki a kockázatos felhasználókat és a bejelentkezéseket Azure Active Directory Identity Protectionben (frissítve).
 services: active-directory
-keywords: az Azure active directory identity protection a következőket cloud app discovery szolgáltatást, alkalmazások, biztonság, kockázati, kockázati szint, biztonsági rést, biztonsági házirend kezelése
-documentationcenter: ''
-author: MicrosoftGuyJFlo
-manager: mtillman
-ms.author: joflore
-ms.assetid: e7434eeb-4e98-4b6b-a895-b5598a6cccf1
 ms.service: active-directory
 ms.subservice: identity-protection
+ms.topic: conceptual
 ms.date: 01/25/2019
-ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.author: joflore
+author: MicrosoftGuyJFlo
+manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4a90195a2d0899b0a157cc67badd2f9873164987
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c89658e962654f005eaee5ceff220d5fb343e86e
+ms.sourcegitcommit: c71306fb197b433f7b7d23662d013eaae269dc9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67108953"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68370328"
 ---
 # <a name="how-to-investigate-risky-users-and-sign-ins"></a>kézikönyv: Kockázatos felhasználók és bejelentkezések vizsgálata 
 
-
-A kockázatos bejelentkezések és a kockázatos felhasználók jelentésekkel vizsgálata és kockázati folyamatnaplókkal információt szerezhet a környezetben. Lehetővé teszi az szűrését és rendezését, a kockázatos bejelentkezések és felhasználók jobban megérthetők esetleges behatolás a szervezetben. 
-
+A kockázatos bejelentkezések és a kockázatos felhasználók jelentéseit követve megvizsgálhatja és betekintést nyerhet a környezetbe. A kockázatos bejelentkezések és felhasználók szűrése és rendezése révén jobban megismerheti a potenciális behatolást a szervezetben. 
 
 ## <a name="risky-users-report"></a>Kockázatos felhasználók jelentés
 
-A kockázatos felhasználók jelentés által biztosított információkkal mint például megtalálhatja kérdésekre kaphat választ:
+A kockázatos felhasználók jelentés által biztosított információkkal a következő kérdésekre kaphat választ:
 
-- Magas kockázatú felhasználók közül ki?
-- Mely felhasználók rendelkeznek egy kockázati állapotának szervizelt?
+- Mely felhasználók számára magas a kockázat?
+- Mely felhasználók rendelkeznek szervizelési kockázattal?
 
-
-
-Ez a jelentés első belépési pontjához van a **vizsgálat** szakasz a biztonság lapon.
+A jelentés első belépési pontja a biztonság lapon lévő **vizsgálat** szakasz.
 
 ![Kockázatos felhasználók jelentés](./media/howto-investigate-risky-users-signins/01.png)
 
-
-A kockázatos felhasználók jelentés egy alapértelmezett-nézetet tartalmaz:
+A kockázatos felhasználók jelentés alapértelmezett nézete a következőket jeleníti meg:
 
 - Name (Név)
-
 - Kockázat állapota
-
 - Kockázati szint
-
-- Kockázati részletei
-
-- Utolsó frissítés kockázat
-
-- Típus
-
+- Kockázat részletei
+- Kockázat legutóbbi frissítése
+- Type
 - Állapot
- 
 
 ![Kockázatos felhasználók jelentés](./media/howto-investigate-risky-users-signins/03.png)
-
 
 A listanézetet az eszköztár **Oszlopok** elemére kattintva lehet testre szabni.
 
 ![Kockázatos felhasználók jelentés](./media/howto-investigate-risky-users-signins/04.png)
 
-Az oszlopok párbeszédpanel lehetővé teszi további mezők megjelenítéséhez, vagy eltávolíthatja a már megjelenített mezőket.
+Az oszlopok párbeszédpanel lehetővé teszi további mezők megjelenítését vagy a már megjelenített mezők eltávolítását.
 
 A listanézet egyik elemére kattintva megtekintheti az összes elérhető részletét vízszintes nézetben.
 
 ![Kockázatos felhasználók jelentés](./media/howto-investigate-risky-users-signins/05.png)
 
-
-A részletek megtekintéséhez mutat be:
+A részletek nézet a következőket jeleníti meg:
 
 - Alapvető adatok
-
 - Legutóbbi kockázatos bejelentkezések
-
-- Nincs felhasználóhoz kapcsolva, a bejelentkezési kockázati események
-
+- Bejelentkezéshez nem hozzárendelt kockázatos események
 - Kockázati előzmények
-
-
 
 Emellett a következőket teheti:
 
 ![Kockázatos felhasználók jelentés](./media/howto-investigate-risky-users-signins/08.png)
 
-- A bejelentkezések megtekintési az adott felhasználó összes bejelentkezések helyi megtekintése.
-
-- Tekintse meg az összes kockázatos bejelentkezések összes a bejelentkezés, hogy a felhasználó a kockázatosként megjelölt megtekintéséhez.
-
-- A jelszó alaphelyzetbe állítása, ha úgy véli, hogy a felhasználói identitás biztonsága sérült.
-
-- Zárja be a felhasználói kockázat, ha úgy véli, hogy egy felhasználó az aktív kockázati események-e a vakriasztások. További információkért lásd: [észlelési pontosságának növelése](howto-improve-detection-accuracy.md).
-
-
+- Az összes bejelentkezési parancsikon megtekintése az adott felhasználó bejelentkezési jelentésének megtekintéséhez.
+- Az összes kockázatos bejelentkezés megtekintéséhez tekintse meg az adott felhasználó számára kockázatnak kitett összes bejelentkezést.
+- A felhasználó jelszavának alaphelyzetbe állítása, ha úgy véli, hogy a felhasználó identitása sérült.
+- Ha úgy gondolja, hogy a felhasználó aktív kockázati eseményeinek értéke hamis, a felhasználói kockázat elvetése. További információkért tekintse [meg a Azure ad Identity Protection kockázati eseményeivel](howto-provide-risk-event-feedback.md)kapcsolatos visszajelzéseket ismertető cikket.
 
 ### <a name="filter-risky-users"></a>Kockázatos felhasználók szűrése
 
-A jelentésben lévő adatok az Ön számára megfelelő szintű szűkítéséhez, a kockázatos felhasználó adatait az alábbi alapértelmezett mezőkkel szűrheti:
+A jelentett adat leszűkíthető egy olyan szintre, amely az Ön számára működik, a következő alapértelmezett mezők használatával szűrheti a kockázatos felhasználói adataikat:
 
 - Name (Név)
-
 - Felhasználónév
-
 - Kockázat állapota
-
 - Kockázati szint
-
-- Típus
-
+- Type
 - Állapot
 
 ![Kockázatos felhasználók jelentés](./media/howto-investigate-risky-users-signins/06.png)
 
+A **név** szűrő segítségével megadhatja a felhasználó nevét vagy egyszerű felhasználónevét (UPN).
 
+A **kockázati állapot** szűrővel a következőket választhatja ki:
 
-A **neve** szűrő lehetővé teszi, hogy adja meg a nevét vagy a felhasználó egyszerű felhasználóneve (UPN) az Ön számára.
-
-
-A **állapot kockázati** szűrővel kiválasztása:
-
-- Veszélyben
+- Kockázatos
 - Kijavítva
-- Elvetett
+- Elvetve
 
-
-A **kockázati szint** szűrővel kiválasztása:
+A **kockázati szint** szűrővel a következőket választhatja ki:
 
 - Magas
 - Közepes
 - Alacsony
 
-
-A **típus** szűrővel kiválasztása:
+A **Type (típus** ) szűrő segítségével a következőket választhatja ki:
 
 - Vendég
 - Tag
 
-A **állapot** szűrővel kiválasztása:
+Az **állapot** szűrő segítségével a következőket választhatja ki:
 
 - Törölve
 - Aktív
 
+### <a name="download-risky-users-data"></a>Kockázatos felhasználókra vonatkozó adatletöltés letöltése
 
-### <a name="download-risky-users-data"></a>Kockázatos felhasználók adatok letöltése
-
-Ha azt szeretné használni az Azure Portalon kívül tölthet le a kockázatos felhasználók adatokat. Letöltés gombra kattintva létrehoz egy CSV-fájlt a legutóbbi 2500 rekordok. 
+Ha a Azure Portalon kívül szeretné használni, akkor letöltheti a kockázatos felhasználói adatmennyiséget. A letöltés gombra kattintva létrejön egy CSV-fájl a legfrissebb 2 500-rekordokból. 
 
 ![Kockázatos felhasználók jelentés](./media/howto-investigate-risky-users-signins/07.png)
 
-
-Testre szabhatja a listanézetet az eszköztár oszlopok parancsra kattintva.
+A lista nézetét az eszköztár oszlopok elemére kattintva szabhatja testre.
  
 További mezőket jeleníthet meg, vagy eltávolíthatja a már megjelenített mezőket.
  
-További tudnivalók a kockázatos felhasználó, kattintson a részletek navigációs menüben bontsa ki a
-
- 
-
-
+Ha többet szeretne megtudni a kockázatos felhasználóról, kattintson a részletek elemre a kibontásához.
 
 ## <a name="risky-sign-ins-report"></a>Kockázatos bejelentkezési jelentések
 
-A kockázatos bejelentkezések jelentés által biztosított információkkal mint például megtalálhatja kérdésekre kaphat választ:
+A kockázatos bejelentkezési jelentés által nyújtott információk alapján választ kaphat a következő kérdésekre:
 
-- Névtelen IP-kockázati események hány sikeres bejelentkezések küldtek, amely korábban a múlt héten?
+- Hány sikeres bejelentkezés történt az elmúlt hét névtelen IP-címe kockázati eseményeivel?
+- Mely felhasználókat erősítették meg az elmúlt hónapban?
+- Mely felhasználók voltak kockázatos bejelentkezések az Office 365 portálra?
 
-- Mely felhasználók voltak megerősítette sérült a biztonsága az elmúlt hónapban?
-
-- Mely felhasználók az Office 365 portálra kockázatos bejelentkezések volt?
-
-
-
-
-Ez a jelentés első belépési pontjához van a **vizsgálat** szakasz a biztonság lapon.
+A jelentés első belépési pontja a biztonság lapon lévő **vizsgálat** szakasz.
 
 ![Kockázatos bejelentkezési jelentések](./media/howto-investigate-risky-users-signins/02.png)
 
-A kockázatos bejelentkezések jelentés rendelkezik egy adott alapértelmezett nézeten:
+A kockázatos bejelentkezések jelentésének alapértelmezett nézete a következőket jeleníti meg:
 
-- Dátum
-
+- Date
 - Felhasználó
-
 - Alkalmazás
-
 - Bejelentkezési állapot
-
 - Kockázat állapota
-
-- Kockázati szint (összesítés)
-
+- Kockázati szint (aggregált)
 - Kockázati szint (valós idejű)
-
 - Feltételes hozzáférés
-
 - MFA szükséges  
- 
 
 ![Kockázatos bejelentkezési jelentések](./media/howto-investigate-risky-users-signins/09.png)
-
 
 A listanézetet az eszköztár **Oszlopok** elemére kattintva lehet testre szabni.
 
 ![Kockázatos felhasználók jelentés](./media/howto-investigate-risky-users-signins/11.png)
 
-Az oszlopok párbeszédpanel lehetővé teszi további mezők megjelenítéséhez, vagy eltávolíthatja a már megjelenített mezőket.
+Az oszlopok párbeszédpanel lehetővé teszi további mezők megjelenítését vagy a már megjelenített mezők eltávolítását.
 
 A listanézet egyik elemére kattintva megtekintheti az összes elérhető részletét vízszintes nézetben.
 
 ![Kockázatos felhasználók jelentés](./media/howto-investigate-risky-users-signins/12.png)
 
-
-A részletek megtekintéséhez mutat be:
+A részletek nézet a következőket jeleníti meg:
 
 - Alapvető adatok
-
-- Eszközinformáció
-
+- Eszközadatok
 - Kockázati adatok
-
-- MFA-információ
-
+- MFA-adatok
 - Feltételes hozzáférés
-
-
-
-
 
 Emellett a következőket teheti:
 
 ![Kockázatos felhasználók jelentés](./media/howto-investigate-risky-users-signins/13.png)
 
-- Győződjön meg róla sérült a biztonsága 
+- Feltörés megerősítése 
+- Megerősítés biztonságosként
 
-- Biztonságos megerősítése
-
-További információkért lásd: [észlelési pontosságának növelése](howto-improve-detection-accuracy.md).
-
-
-
+További információkért tekintse [meg a Azure ad Identity Protection kockázati eseményeivel](howto-provide-risk-event-feedback.md)kapcsolatos visszajelzéseket ismertető cikket.
 
 ### <a name="filter-risky-sign-ins"></a>Kockázatos bejelentkezések szűrése
 
-A jelentésben lévő adatok az Ön számára megfelelő szintű szűkítéséhez, a kockázatos felhasználó adatait az alábbi alapértelmezett mezőkkel szűrheti:
+A jelentett adat leszűkíthető egy olyan szintre, amely az Ön számára működik, a következő alapértelmezett mezők használatával szűrheti a kockázatos felhasználói adataikat:
 
 - Felhasználó
 - Alkalmazás
 - Bejelentkezési állapot
 - Kockázat állapota
-- Kockázati szint (összesítés)
+- Kockázati szint (aggregált)
 - Kockázati szint (valós idejű)
 - Feltételes hozzáférés
-- Dátum
+- Date
 - Kockázati szint típusa
 
 ![Kockázatos bejelentkezési jelentések](./media/howto-investigate-risky-users-signins/14.png)
 
+A **név** szűrő segítségével megadhatja a felhasználó nevét vagy egyszerű felhasználónevét (UPN).
 
-
-A **neve** szűrő lehetővé teszi, hogy adja meg a nevét vagy a felhasználó egyszerű felhasználóneve (UPN) az Ön számára.
-
-A **alkalmazás** szűrő lehetővé teszi, hogy adja meg a felhőalkalmazás a felhasználó megpróbált hozzáférni.
+Az **alkalmazás** szűrővel megadhatja azt a felhőalapú alkalmazást, amellyel a felhasználó megpróbált elérni.
 
 A **Bejelentkezési állapot** szűrővel az alábbi lehetőségek közül választhat:
 
@@ -275,57 +199,47 @@ A **Bejelentkezési állapot** szűrővel az alábbi lehetőségek közül vála
 - Sikeres
 - Hiba
 
+A **kockázati állapot** szűrővel a következőket választhatja ki:
 
-A **állapot kockázati** szűrővel kiválasztása:
-
-- Veszélyben
-- Megerősítette sérült a biztonsága
-- Biztonságos megerősítve
-- Elvetett
+- Kockázatos
+- Feltörés megerősítve
+- Megerősített biztonságos
+- Elvetve
 - Kijavítva
 
-
-A **kockázati szint (összesítés)** szűrővel kiválasztása:
-
-- Magas
-- Közepes
-- Alacsony
-
-A **kockázati szint (valós idejű)** szűrővel kiválasztása:
+A **kockázati szint (aggregált)** szűrő segítségével a következőket választhatja ki:
 
 - Magas
 - Közepes
 - Alacsony
 
+A **kockázati szint (valós idejű)** szűrő segítségével a következőket választhatja ki:
 
-A **feltételes hozzáférési** szűrővel kiválasztása:
+- Magas
+- Közepes
+- Alacsony
+
+A **feltételes hozzáférés** szűrővel a következőket választhatja ki:
 
 - Összes
-- Nem alkalmazott
+- Nincs alkalmazva
 - Siker
 - Hiba
 
-
 A **Dátum** szűrővel időkeretet lehet meghatározni a visszaadott adatokhoz.
-Lehetséges értékek:
+Lehetséges értékek a következők:
 
-- Elmúlt 1 hónap
-- Elmúlt 7 napban
-- Az elmúlt 24 óra
+- Az elmúlt 1 hónap
+- Az elmúlt 7 nap
+- Utolsó 24 óra
 - Egyéni időintervallum
 
+### <a name="download-risky-sign-ins-data"></a>Kockázatos bejelentkezési adatfájlok letöltése
 
-
-
-
-### <a name="download-risky-sign-ins-data"></a>Kockázatos bejelentkezések adatok letöltése
-
-Ha azt szeretné használni az Azure Portalon kívül tölthet le a kockázatos bejelentkezések adatokat. Letöltés gombra kattintva létrehoz egy CSV-fájlt a legutóbbi 2500 rekordok. 
+Ha a Azure Portalon kívül szeretné használni, akkor letöltheti a kockázatos bejelentkezési adatmennyiséget. A letöltés gombra kattintva létrejön egy CSV-fájl a legfrissebb 2 500-rekordokból. 
 
 ![Kockázatos felhasználók jelentés](./media/howto-investigate-risky-users-signins/15.png)
 
-
-
 ## <a name="next-steps"></a>További lépések
 
-Az Azure AD Identity Protection áttekintést kaphat, tekintse meg a [áttekintése az Azure AD Identity Protection](overview-v2.md).
+A Azure AD Identity Protection áttekintéséhez tekintse meg a [Azure ad Identity Protection áttekintését](overview-v2.md).

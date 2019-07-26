@@ -1,6 +1,6 @@
 ---
-title: Az Azure Notification Hubs Rich formátumú leküldés
-description: Ismerje meg, hogyan gazdag leküldéses értesítések küldése iOS-alkalmazásokba az Azure-ból. Objective-C és C# nyelven írt kódmintákat.
+title: Azure Notification Hubs Rich push
+description: Ismerje meg, hogyan küldhet részletes leküldéses értesítéseket egy iOS-alkalmazásba az Azure-ból. A Objective-C és C#a kódban írt példák
 documentationcenter: ios
 services: notification-hubs
 author: jwargo
@@ -14,48 +14,48 @@ ms.devlang: objective-c
 ms.topic: article
 ms.date: 01/04/2019
 ms.author: jowargo
-ms.openlocfilehash: dd808a04dff77388248bf7309f5ff804e6dd065c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7fcb4a1db62abfc04d2b0c60488d35393d98c57e
+ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60873086"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68348473"
 ---
-# <a name="azure-notification-hubs-rich-push"></a>Az Azure Notification Hubs Rich formátumú leküldés
+# <a name="azure-notification-hubs-rich-push"></a>Azure Notification Hubs Rich push
 
 ## <a name="overview"></a>Áttekintés
 
-Annak érdekében, hogy a felhasználók azonnali gazdag tartalmát az igényeik szerint, egy alkalmazás érdemes leküldéses túl egyszerű szöveg. Ezek az értesítések elősegítésére felhasználói interakció érdekében, valamint a tartalom URL-címek, hangok, képeket vagy kuponok és. Ebben az oktatóanyagban épül, amely a [– felhasználók értesítése](notification-hubs-aspnet-backend-ios-apple-apns-notification.md) a témakör bemutatja, hogyan küldhetők leküldéses értesítések, amelyek hasznos (például képek) és.
+Ha szeretné, hogy a felhasználók Instant Rich Content szolgáltatással legyenek elérhetők, előfordulhat, hogy egy alkalmazás az egyszerű szöveg fölé szeretné leküldeni. Ezek az értesítések népszerűsítik a felhasználói interakciókat, és olyan tartalmakat mutatnak be, mint az URL-címek, hangok, képek/kuponok stb. Ez az oktatóanyag a [felhasználók értesítése](notification-hubs-aspnet-backend-ios-apple-apns-notification.md) témakörre épül, és bemutatja, hogyan küldhet leküldéses értesítéseket a hasznos adatok (például a rendszerkép) használatával.
 
-Ez az oktatóanyag a kompatibilis az iOS 7 és a 8.
+Ez az oktatóanyag kompatibilis az iOS 7 & 8 rendszerrel.
 
   ![][IOS1]
 
-Magas szintű:
+Magas szinten:
 
-1. Az alkalmazás háttérrendszere:
-   * A gazdag hasznos adatokat tárolja (ebben az esetben kép) a háttérbeli adatbázis/helyi tárolóban
-   * Elküldi az eszköznek az gazdag értesítés azonosítója
+1. Az alkalmazás háttere:
+   * A részletes adattartalom (ebben az esetben a rendszerkép) tárolása a háttér-adatbázis/helyi tárolóban
+   * A gazdag értesítés AZONOSÍTÓjának küldése az eszközre
 2. Alkalmazás az eszközön:
-   * Kapcsolatba lép a háttérrendszer a gazdag hasznos kap azonosítójú kérése
-   * Felhasználók értesítéseket küld az eszközön, amikor az adatok beolvasása befejeződött, és bemutatja a hasznos adatokat, azonnal, amikor a felhasználók további információkért koppintson
+   * A gazdag adattartalomot kérő háttérrel kapcsolatba lép a kapott AZONOSÍTÓval
+   * A felhasználók értesítéseit küldi az eszközön, amikor az adatok beolvasása befejeződött, és azonnal megjeleníti a hasznos adatokat, amikor a felhasználók további információra koppintanak
 
-## <a name="webapi-project"></a>WebAPI-projekt
+## <a name="webapi-project"></a>WebAPI projekt
 
-1. A Visual Studióban nyissa meg a **AppBackend** a létrehozott projekt a [– felhasználók értesítése](notification-hubs-aspnet-backend-ios-apple-apns-notification.md) oktatóanyag.
-2. Szerezzen be egy képet szeretne értesíteni a felhasználókat, és helyezze egy **img** mappa a projektkönyvtárban.
-3. Kattintson a **minden fájl megjelenítése** a Megoldáskezelőben, és kattintson a jobb gombbal a mappa **tartalmazza a projekt**.
-4. A kiválasztott lemezképhez, módosítsa a Tulajdonságok ablakban, a Build Action **beágyazott erőforrás**.
+1. A Visual Studióban nyissa meg a [felhasználók értesítése](notification-hubs-aspnet-backend-ios-apple-apns-notification.md) oktatóanyagban létrehozott **AppBackend** projektet.
+2. Szerezze be azt a rendszerképet, amelyet a felhasználók értesítésére szeretne küldeni, majd a projekt könyvtára egy **IMG** mappájába helyezi.
+3. Kattintson a Megoldáskezelő **összes fájl megjelenítése** elemre, majd kattintson a jobb gombbal a **projektbe felvenni**kívánt mappára.
+4. Ha a rendszerkép be van jelölve, módosítsa a Build műveletét Tulajdonságok ablak a **beágyazott erőforrásra**.
 
     ![][IOS2]
-5. A `Notifications.cs`, adja hozzá a következő using utasítást:
+5. `Notifications.cs`A alkalmazásban adja hozzá a következő using utasítást:
 
-    ```c#
+    ```csharp
     using System.Reflection;
     ```
-6. A teljes frissítés `Notifications` osztályban az alábbi kódra. Győződjön meg arról, hogy cserélje le a helyőrzőket a notification hub hitelesítő adatok és a bináris fájl neve.
+6. Frissítse a teljes `Notifications` osztályt a következő kóddal. Ügyeljen arra, hogy a helyőrzőket cserélje le az értesítési központ hitelesítő adataival és a képfájl nevével.
 
-    ```c#
+    ```csharp
     public class Notification {
         public int Id { get; set; }
         // Initial notification message to display to users
@@ -101,11 +101,11 @@ Magas szintű:
     ```
 
    > [!NOTE]
-   > (nem kötelező) Tekintse meg [beágyazási és erőforrások eléréséhez a Vizualizáció C# ](https://support.microsoft.com/kb/319292) hogyan adhat hozzá, és szerezze be a Projekt erőforrások további tájékoztatást.
+   > választható A Project-erőforrások hozzáadásával és beszerzésével kapcsolatos további információkért tekintse meg az [erőforrások beágyazásának és elérésének C# módját a vizualizáció segítségével](https://support.microsoft.com/kb/319292) .
 
-7. A `NotificationsController.cs`, definiálja újra "NotificationsController az alábbi kódrészletek az. Ez egy kezdeti csendes gazdag értesítés azonosítója küld az eszközre, és lehetővé teszi, hogy a kép lekérésének ügyféloldali:
+7. A `NotificationsController.cs`alkalmazásban a NotificationsController az alábbi kódrészletekkel definiálja újra. Ez egy kezdeti csendesen gazdag értesítési azonosítót küld az eszköznek, és lehetővé teszi a rendszerkép ügyféloldali lekérését:
 
-    ```c#
+    ```csharp
     // Return http response with image binary
     public HttpResponseMessage Get(int id) {
         var stream = Notifications.Instance.ReadImage(id);
@@ -134,43 +134,43 @@ Magas szintű:
         return Request.CreateResponse(HttpStatusCode.OK);
     }
     ```
-8. Most már azt fogja újra az alkalmazást üzembe helyezni egy Azure-webhelyen annak érdekében, hogy minden eszközről elérhető. Kattintson jobb gombbal az **AppBackend** projektre, és válassza a **Publish** (Közzététel) lehetőséget.
-9. A közzétételi célként válassza ki Azure-webhelyen. Jelentkezzen be az Azure-fiókjával, és válassza ki egy meglévő vagy új webhely és jegyezze fel a a **cél URL-címe** tulajdonságot a **kapcsolat** fülre. Az oktatóanyag további részében erre az URL-címre fogunk hivatkozni a *háttérrendszer végpontjaként*. Kattintson a **Publish** (Közzététel) gombra.
+8. Most újra telepítjük ezt az alkalmazást egy Azure-webhelyre, hogy minden eszközről elérhetővé váljon. Kattintson jobb gombbal az **AppBackend** projektre, és válassza a **Publish** (Közzététel) lehetőséget.
+9. A közzétételi célként válassza az Azure-webhely lehetőséget. Jelentkezzen be az Azure-fiókjával, és válasszon ki egy meglévő vagy új webhelyet, és jegyezze fel a **cél URL** -tulajdonságot a **kapcsolatok** lapon. Az oktatóanyag további részében erre az URL-címre fogunk hivatkozni a *háttérrendszer végpontjaként*. Kattintson a **Publish** (Közzététel) gombra.
 
 ## <a name="modify-the-ios-project"></a>Az iOS-projekt módosítása
 
-Most, hogy módosította a háttéralkalmazás számára küldése csak a *azonosító* egy értesítés, az iOS-alkalmazás azonosítóval, és a részletes üzenetek beolvasása a háttérrendszerből változik.
+Most, hogy módosította az alkalmazás-hátteret, hogy  csak az értesítés azonosítóját küldje el, az iOS-alkalmazást fogja használni az azonosító kezeléséhez és a háttérből származó gazdag üzenet lekéréséhez.
 
-1. Nyissa meg az iOS-projektet, és nyissa meg az alkalmazás fő cél a távoli értesítések engedélyezése a **célok** szakaszban.
-2. Kattintson a **képességek**, kapcsolja be a **háttérbeli üzemmódok**, és ellenőrizze a **távoli értesítések** jelölőnégyzetet.
+1. Nyissa meg az iOS-projektet, és engedélyezze a távoli értesítéseket a **célok** szakaszának fő alkalmazási céljával.
+2. Kattintson a **képességek lehetőségre**, kapcsolja be a **háttér üzemmódot**, és jelölje be a **távoli értesítések** jelölőnégyzetet.
 
     ![][IOS3]
-3. Nyissa meg `Main.storyboard`, és ellenőrizze, hogy rendelkezik egy View-Controller (néven kezdőlap Nézetvezérlője ebben az oktatóanyagban) származó [a felhasználó értesítése](notification-hubs-aspnet-backend-ios-apple-apns-notification.md) oktatóanyag.
-4. Adjon hozzá egy **navigációs vezérlő** a storyboard fájlt definiál, és a vezérlő húzással kezdőlap nézet-vezérlő, hogy a **legfelső szintű nézet** navigáció. Győződjön meg arról, hogy a **kezdeti View-Controller van** attribútumok vizsgáló ki van jelölve, a navigációs vezérlő csak.
-5. Adjon hozzá egy **Nézetvezérlője** történet, és adja hozzá egy **kép**. Ez a felhasználók az értesítésre kattintva további kiválasztását követően jelenik meg az oldal. A storyboard fájlt definiál az alábbihoz hasonlóan kell kinéznie:
+3. Nyissa meg `Main.storyboard`a következőt:, és győződjön meg róla, hogy rendelkezik egy nézet-vezérlővel (a jelen oktatóanyag Kezdőlap nézet vezérlője) az [értesítési felhasználói](notification-hubs-aspnet-backend-ios-apple-apns-notification.md) oktatóanyagban.
+4. Vegyen fel egy **navigációs vezérlőt** a storyboardba, és a vezérlőre húzással húzza a Kezdőlap nézet vezérlőt, hogy a legfelső **szintű nézetet** adja meg a navigáláshoz. Győződjön meg arról, hogy a csak a navigációs vezérlőhöz van kiválasztva a **kezdeti nézet vezérlő** az attributes Inspector-ben.
+5. Adjon hozzá egy **nézet vezérlőt** a storyboardhoz, és adjon hozzá egy képnézetet. Ez az oldal a felhasználók számára jelenik meg, ha úgy dönt, hogy további információkat szeretne megtudni az értesítésre kattintva. A történetnek a következőképpen kell kinéznie:
 
     ![][IOS4]
-6. Kattintson a a **kezdőlap Nézetvezérlője** storyboard fájlt definiál, és ellenőrizze, hogy rendelkezik **homeViewController** , annak **egyéni osztály** és **Storyboard azonosító**az identitás vizsgáló alatt.
-7. Tegye meg ugyanezt a lemezkép View-Controller, **imageViewController**.
-8. Ezután hozzon létre egy új nézet vezérlőosztály című **imageViewController** kezelje az újonnan létrehozott felhasználói felületén.
-9. A **imageViewController.h**, adja hozzá a következő, a vezérlő felületet nyilatkozatokat. Ellenőrizze, hogy a vezérlőelem-húzza a történet lemezkép nézetből ezeket a tulajdonságokat, a kettő:
+6. Kattintson a storyboard **Kezdőlap nézet vezérlőre** , és győződjön meg róla, hogy a **homeViewController** az Identity Inspector alatt **Egyéni OSZTÁLYként** és storyboard- **azonosítóként** rendelkezik.
+7. Tegye ugyanezt a Képnézet vezérlőre **imageViewController**.
+8. Ezután hozzon létre egy új, a **imageViewController** nevű View Controller osztályt az imént létrehozott felhasználói felület kezeléséhez.
+9. A **imageViewController. h**-ben adja hozzá a következőt a vezérlő Interface deklarációjában. Ügyeljen rá, hogy a két hely összekapcsolásához húzza a storyboard képnézetből a következő tulajdonságokat:
 
     ```objc
     @property (weak, nonatomic) IBOutlet UIImageView *myImage;
     @property (strong) UIImage* imagePayload;
     ```
-10. A `imageViewController.m`, adja hozzá a következő végén `viewDidload`:
+10. A `imageViewController.m`-ben adja hozzá a következőt a `viewDidload`végén:
 
     ```objc
     // Display the UI Image in UI Image View
     [self.myImage setImage:self.imagePayload];
     ```
-11. A `AppDelegate.m`, importálja a létrehozott lemezkép vezérlő:
+11. Importálja a létrehozott rendszerkép- `AppDelegate.m`vezérlőt:
 
     ```objc
     #import "imageViewController.h"
     ```
-12. Adjon hozzá egy felület szakaszt az alábbi nyilatkozatot:
+12. Vegyen fel egy Interface szakaszt a következő deklarációval:
 
     ```objc
     @interface AppDelegate ()
@@ -187,7 +187,7 @@ Most, hogy módosította a háttéralkalmazás számára küldése csak a *azono
 
     @end
     ```
-13. A `AppDelegate`, ellenőrizze, hogy az alkalmazás regisztrál a beavatkozás nélküli értesítések `application: didFinishLaunchingWithOptions`:
+13. A `AppDelegate`ben ellenőrizze, hogy az alkalmazás regisztrálja-e a `application: didFinishLaunchingWithOptions`csendes értesítéseket a következőben:
 
     ```objc
     // Software version
@@ -231,7 +231,7 @@ Most, hogy módosította a háttéralkalmazás számára küldése csak a *azono
     return YES;
     ```
 
-14. Helyettesítse be a következő implementációban a `application:didRegisterForRemoteNotificationsWithDeviceToken` felhasználói felület figyelembe módosítja a történet tennie:
+14. A következő implementációban `application:didRegisterForRemoteNotificationsWithDeviceToken` helyettesítse be a storyboard felhasználói felületének módosítását:
 
     ```objc
     // Access navigation controller which is at the root of window
@@ -240,7 +240,7 @@ Most, hogy módosította a háttéralkalmazás számára küldése csak a *azono
     homeViewController *hvc = (homeViewController *)[nc.viewControllers objectAtIndex:0];
     hvc.deviceToken = deviceToken;
     ```
-15. Adja hozzá a következő módszerekkel `AppDelegate.m` a rendszerkép lekérése a végpont és a egy helyi értesítés küldése, ha a lekérési befejeződött. Ügyeljen arra, hogy cserélje le a helyőrző `{backend endpoint}` a háttér-végponthoz:
+15. Ezután adja hozzá a következő metódusokat `AppDelegate.m` a rendszerkép lekéréséhez a végpontból, és küldjön helyi értesítést a beolvasás befejezésekor. Ügyeljen arra, hogy a helyőrzőt `{backend endpoint}` a háttérbeli végponttal helyettesítse:
 
     ```objc
     NSString *const GetNotificationEndpoint = @"{backend endpoint}/api/notifications";
@@ -321,7 +321,7 @@ Most, hogy módosította a háttéralkalmazás számára küldése csak a *azono
         // Add "else if" here to handle more types of rich content such as url, sound files, etc.
     }
     ```
-16. A helyi értesítések fent kezelésére nyissa meg a lemezkép nézetvezérlője a mentést `AppDelegate.m` a következő módszerekkel:
+16. A fenti helyi értesítést úgy kezelheti, ha megnyitja a képnézeti vezérlőt `AppDelegate.m` a következő módszerekkel:
 
     ```objc
     // Helper: redirect users to image view controller
@@ -371,10 +371,10 @@ Most, hogy módosította a háttéralkalmazás számára küldése csak a *azono
 
 ## <a name="run-the-application"></a>Az alkalmazás futtatása
 
-1. Az xcode-ban az alkalmazás futtatása egy fizikai iOS-eszközön (leküldéses értesítések nem fog működni a szimulátor).
-2. Az iOS-alkalmazás felhasználói felületén, adja meg egy felhasználónevet és jelszót, ugyanazt az értéket a hitelesítéshez, és kattintson **bejelentkezés**.
-3. Kattintson a **küldjön leküldéses** és alkalmazáson belüli riasztást kell megjelennie. Kattintva **további**, úgy döntött, hogy az alkalmazás háttérrendszere bevonni a lemezképhez jut.
-4. Is **küldjön leküldéses** azonnal nyomja meg az eszköz home gombra. Néhány perc múlva leküldéses értesítést fog kapni. Ha, koppintson vagy kattintson a további, jut az alkalmazás és a sokrétű kép tartalmához.
+1. A XCode-ben futtassa az alkalmazást egy fizikai iOS-eszközön (a leküldéses értesítések nem fognak működni a szimulátorban).
+2. Az iOS-alkalmazás felhasználói felületén adja meg a hitelesítéshez tartozó felhasználónevet és jelszót, majd kattintson a **Bejelentkezés**elemre.
+3. Kattintson a leküldéses **Küldés** lehetőségre, és megjelenik az alkalmazáson belüli riasztás. Ha a **további**gombra kattint, a rendszer az alkalmazás-háttérbe felvenni kívánt képet fogja elhelyezni.
+4. Kattintson a leküldés **küldése** gombra, és azonnal nyomja meg az eszköz Home (Kezdőlap) gombját. Néhány pillanat múlva leküldéses értesítést fog kapni. Ha rákoppint, vagy kattintson a továbbiak lehetőségre, a rendszer az alkalmazást és a gazdag képtartalmat fogja megtekinteni.
 
 [IOS1]: ./media/notification-hubs-aspnet-backend-ios-rich-push/rich-push-ios-1.png
 [IOS2]: ./media/notification-hubs-aspnet-backend-ios-rich-push/rich-push-ios-2.png

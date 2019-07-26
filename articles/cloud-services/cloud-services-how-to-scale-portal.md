@@ -1,114 +1,107 @@
 ---
-title: Automatikus felhőszolgáltatások méretezése a portálon |} A Microsoft Docs
-description: Útmutató az automatikus méretezési szabályok egy felhőalapú szolgáltatás webes szerepkört vagy feldolgozói szerepkör konfigurálása az Azure-ban a portál használatával.
+title: Felhőalapú szolgáltatás automatikus méretezése a portálon | Microsoft Docs
+description: Ebből a témakörből megtudhatja, hogyan konfigurálhat automatikus méretezési szabályokat a Cloud Service webes szerepkör vagy feldolgozói szerepkör számára az Azure-ban a portál használatával.
 services: cloud-services
-documentationcenter: ''
-author: jpconnock
-manager: timlt
-editor: ''
-ms.assetid: 701d4404-5cc0-454b-999c-feb94c1685c0
+author: georgewallace
 ms.service: cloud-services
-ms.workload: tbd
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 05/18/2017
-ms.author: jeconnoc
-ms.openlocfilehash: f5597773b3127852481d5e14844bed889c4d6f83
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: gwallace
+ms.openlocfilehash: 7e106dbd237be79be924afadbe893669c4f3daf8
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61435316"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68359621"
 ---
-# <a name="how-to-configure-auto-scaling-for-a-cloud-service-in-the-portal"></a>Automatikus skálázást a portál egy felhőalapú szolgáltatás konfigurálása
+# <a name="how-to-configure-auto-scaling-for-a-cloud-service-in-the-portal"></a>Felhőalapú szolgáltatás automatikus skálázásának konfigurálása a portálon
 
-Feltételek beállítható egy felhőalapú szolgáltatás feldolgozói szerepkört, azt egy méretezési csoportban lévő vagy műveletet. A feltételek a szerepkör alapulhat a Processzor, lemez vagy a szerepkör a hálózati terhelés. Beállíthat egy feltételt, üzenetsor vagy valamilyen más Azure-erőforrás az Ön előfizetéséhez rendelve a metrika alapján.
+A Felhőbeli szolgáltatások feldolgozói szerepkörhöz olyan feltételek állíthatók be, amelyek egy méretezési vagy kimenő műveletet indítanak el. A szerepkör feltételei a szerepkör PROCESSZORán, lemezén vagy hálózati terhelésén alapulnak. Beállíthat egy olyan feltételt is, amely egy üzenetsor vagy egy másik, az előfizetéshez társított Azure-erőforrás metrikája alapján is megadható.
 
 > [!NOTE]
-> Ez a cikk a felhőalapú szolgáltatás webes és feldolgozói szerepkörök összpontosít. Amikor közvetlenül hoz létre egy virtuális gép (klasszikus), a cloud service-ben üzemel. A társítás méretezhetők egy standard virtuális gép egy [rendelkezésre állási csoport](../virtual-machines/windows/classic/configure-availability-classic.md) és manuálisan kapcsolja be vagy ki.
+> Ez a cikk a Cloud Service webes és feldolgozói szerepköreire koncentrál. Amikor közvetlenül hoz létre egy virtuális gépet (klasszikus), azt egy felhőalapú szolgáltatás üzemelteti. A standard szintű virtuális gépeket a [rendelkezésre állási csoportokhoz](../virtual-machines/windows/classic/configure-availability-classic.md) társíthatja, majd manuálisan be-és kikapcsolhatja őket.
 
 ## <a name="considerations"></a>Megfontolandó szempontok
-Méretezés az alkalmazás konfigurálása előtt gondolja át az alábbi adatokat:
+Az alkalmazás skálázásának konfigurálása előtt vegye figyelembe a következő információkat:
 
-* Skálázás alapvető használati érinti.
+* A skálázást az alapszintű használat befolyásolja.
 
-    Nagyobb szerepkörpéldányok több magot használja. Az előfizetéshez tartozó magok keretein belül csak egy alkalmazás skálázhatja. Például hogy előfizetése rendelkezik-e 20 magos korlát. Ha a két közepes méretű cloud services (4 mag összesen) futtatja az alkalmazást, csak méretezhetők fel más felhőszolgáltatási környezetek az előfizetésében a fennmaradó 16 maggal. -Méretekkel kapcsolatos további információkért lásd: [Felhőszolgáltatás-méretek](cloud-services-sizes-specs.md).
+    A nagyobb szerepkörű példányok több magot használnak. Az alkalmazások méretezése csak az előfizetéshez tartozó magok korlátján belül végezhető el. Tegyük fel például, hogy az előfizetése legfeljebb 20 magot tartalmaz. Ha olyan alkalmazást futtat, amely két közepes méretű felhőalapú szolgáltatást használ (összesen 4 mag), akkor a fennmaradó 16 mag esetében csak az előfizetésében lévő többi felhőalapú szolgáltatás üzemelő példányát lehet méretezni. A méretekről további információt a [Cloud Service-méretek](cloud-services-sizes-specs.md)című témakörben talál.
 
-* Méretezheti a várólista állapotüzenet küszöbértéke alapján. Üzenetsorok használatával kapcsolatos további információkért lásd: [a Queue Storage szolgáltatás használata](../storage/queues/storage-dotnet-how-to-use-queues.md).
+* A várólista-üzenetek küszöbértéke alapján méretezhető. További információ a várólisták használatáról: [a Queue Storage szolgáltatás használata](../storage/queues/storage-dotnet-how-to-use-queues.md).
 
-* Az előfizetéssel társított egyéb erőforrások is méretezheti.
+* Az előfizetéshez társított egyéb erőforrásokat is méretezheti.
 
-* Ahhoz, hogy az alkalmazás magas rendelkezésre állású, győződjön meg, hogy a két vagy több szerepkörpéldányt telepítették. További információkért lásd: [szolgáltatásiszint-szerződései](https://azure.microsoft.com/support/legal/sla/).
+* Az alkalmazás magas rendelkezésre állásának engedélyezéséhez győződjön meg arról, hogy az üzembe helyezése két vagy több szerepkör-példánnyal történik. További információ: szolgáltatói [szerződések](https://azure.microsoft.com/support/legal/sla/).
 
-* Automatikus méretezés csak akkor fordul elő, ha minden szerepkör **készen** állapota.  
+* Az automatikus méretezés csak akkor történik meg, ha minden szerepkör **kész** állapotban van.  
 
 
-## <a name="where-scale-is-located"></a>Ahol a méretezési csoport megtalálható
-Miután kiválasztotta a felhőalapú szolgáltatás, rendelkeznie kell a felhőalapú szolgáltatás panelje látható.
+## <a name="where-scale-is-located"></a>Hol található a skála
+A felhőalapú szolgáltatás kiválasztása után a Cloud Service panel látható.
 
-1. A cloud service panelen a a **szerepkörök és példányok** csempére, válassza ki a felhőszolgáltatás nevét.   
-   **FONTOS**: Ellenőrizze, hogy kattintson a cloud service szerepkörre, nem a szerepkör-példány, amely alatt a szerepkör.
+1. A Cloud Service panelen a **szerepkörök és példányok** csempén válassza ki a Cloud Service nevét.   
+   **FONTOS**: Győződjön meg arról, hogy a Cloud Service szerepkörre kattint, nem pedig a szerepkör alá tartozó szerepkör-példányra.
 
     ![](./media/cloud-services-how-to-scale-portal/roles-instances.png)
-2. Válassza ki a **méretezési** csempére.
+2. Válassza ki a **Méretezés** csempét.
 
     ![](./media/cloud-services-how-to-scale-portal/scale-tile.png)
 
-## <a name="automatic-scale"></a>Az automatikus méretezés
-A bármelyik kétféle segítségével konfigurálhat a szerepkör méretezési beállításainak **manuális** vagy **automatikus**. Manuális módon alakul, megadhatja az abszolút példányszámát. Automatikus azonban lehetővé teszi, hogy a szabályok, amelyek szabályozzák, hogy hogyan és hogyan lehet sokkal, horizontális.
+## <a name="automatic-scale"></a>Automatikus méretezés
+A két mód **manuális** vagy **automatikus**beállításával konfigurálhatja a szerepkörök méretezési beállításait. A manuális a vártnál, a példányok abszolút száma állítható be. Az automatikus beállítás lehetővé teszi, hogy olyan szabályokat állítson be, amelyek meghatározzák, hogy mennyit és milyen mértékben kell méreteznie.
 
-Állítsa be a **a skálázás** beállítást **ütemezési és teljesítményszabályok**.
+Állítsa be  a skálázási lehetőséget az **ütemezett és**a teljesítményi szabályokra.
 
-![Cloud services méretezési beállítások profil és a szabály](./media/cloud-services-how-to-scale-portal/schedule-basics.png)
+![A Cloud Services méretezési beállításai a profil és a szabály szerint](./media/cloud-services-how-to-scale-portal/schedule-basics.png)
 
-1. Egy meglévő profilt.
-2. A szülő-profilt egy szabály hozzáadásához.
-3. Adjon hozzá egy másik profilhoz.
+1. Egy meglévő profil.
+2. Adjon hozzá egy szabályt a szülő profilhoz.
+3. Adjon hozzá egy másik profilt.
 
-Válassza ki **profil hozzáadásához**. A profil határozza meg, melyik a méretezési csoport használni kívánt módot: **mindig**, **ismétlődési**, **rögzített dátum**.
+Válassza a **Profil hozzáadása**lehetőséget. A profil határozza meg, hogy melyik módot szeretné használni a skálához: **mindig**, **Ismétlődés**, **rögzített dátum**.
 
-Miután konfigurálta a profilt és szabályokat, válassza ki a **mentése** ikonra a felső.
+Miután konfigurálta a profilt és a szabályokat, válassza a felső **Mentés** ikont.
 
 #### <a name="profile"></a>Profil
-A profil beállítja a méretezési csoport, minimális és maximális példányok és is amikor ez skálatartomány aktív.
+A profil meghatározza a skála minimális és maximális példányát, valamint azt is, hogy a méretezési tartomány aktív-e.
 
 * **Mindig**
 
-    Mindig tartsa ezt a tartományt az elérhető példányok.  
+    Mindig tartsa meg az elérhető példányok számát.  
 
-    ![Felhőalapú szolgáltatás, amely mindig méretezése](./media/cloud-services-how-to-scale-portal/select-always.png)
+    ![Felhőbeli szolgáltatás, amely mindig méretezhető](./media/cloud-services-how-to-scale-portal/select-always.png)
 * **Ismétlődés**
 
-    Válasszon olyan méretezése a hét napjait.
+    Válassza ki a hét napjait a méretezéshez.
 
-    ![Cloud service méretezés ismétlődési ütemezés](./media/cloud-services-how-to-scale-portal/select-recurrence.png)
+    ![Felhőbeli szolgáltatás skálázása ismétlődési ütemtervtel](./media/cloud-services-how-to-scale-portal/select-recurrence.png)
 * **Rögzített dátum**
 
-    Rögzített dátumtartomány méretezése a szerepkört.
+    A szerepkör skálázására szolgáló rögzített dátumtartomány.
 
-    ![CLoud service méretezés egy rögzített dátumon](./media/cloud-services-how-to-scale-portal/select-fixed.png)
+    ![Felhőbeli szolgáltatás méretezése rögzített dátummal](./media/cloud-services-how-to-scale-portal/select-fixed.png)
 
-Miután konfigurálta a profil, válassza ki a **OK** gombot a profil panel alján.
+Miután konfigurálta a profilt, kattintson a profil panel alján található **OK** gombra.
 
 #### <a name="rule"></a>Szabály
-Szabályok kerülnek egy profilt, és egy feltételt, amely elindítja a méretezési csoport képviseli.
+A rendszer hozzáadja a szabályokat egy profilhoz, és egy olyan feltételt jelöl, amely elindítja a méretezést.
 
-A szabály az eseményindító alapján történik a felhőszolgáltatás (CPU-használat, lemez-tevékenység vagy hálózati tevékenység), amelyhez feltételes értéket adhat hozzá egy metrikát. Emellett akkor is az eseményindító üzenetsor vagy valamilyen más Azure-erőforrás az Ön előfizetéséhez rendelve a metrika alapján.
+A szabály triggere a Cloud Service (CPU-használat, lemez tevékenység vagy hálózati tevékenység) mérőszámán alapul, amelyhez feltételes értéket adhat hozzá. Emellett az triggert egy üzenetsor vagy egy másik, az előfizetéshez társított Azure-erőforrás metrikája alapján is elvégezheti.
 
 ![](./media/cloud-services-how-to-scale-portal/rule-settings.png)
 
-Miután konfigurálta a szabály, válassza ki a **OK** gombra a szabály panel alján.
+A szabály konfigurálása után kattintson a szabály panel alján található **OK** gombra.
 
-## <a name="back-to-manual-scale"></a>Vissza a Manuális méretezés
-Keresse meg a [beállítások méretezése](#where-scale-is-located) és állítsa be a **a skálázás** beállítást **manuálisan megadott példányszám**.
+## <a name="back-to-manual-scale"></a>Vissza a manuális méretezéshez
+Navigáljon a [méretezési beállításokhoz](#where-scale-is-located) , és állítsa a méretezési lehetőséget a **manuálisan megadott példányszámra**.
 
-![Cloud services méretezési beállítások profil és a szabály](./media/cloud-services-how-to-scale-portal/manual-basics.png)
+![A Cloud Services méretezési beállításai a profil és a szabály szerint](./media/cloud-services-how-to-scale-portal/manual-basics.png)
 
-Ez a beállítás eltávolítja a szerepkört az automatikus skálázást, és állíthat be a példányszám közvetlenül.
+Ezzel a beállítással eltávolíthatja az automatikus skálázást a szerepkörből, majd közvetlenül is beállíthatja a példányszámot.
 
-1. A méretezési csoport (Manuális vagy automatikus) lehetőséget.
-2. Egy szerepkör példány csúszkát be, hogy a példányok számára.
-3. Méretezhető, hogy a szerepkör példányai.
+1. A skála (manuális vagy automatizált) beállítás.
+2. A példányok méretezése a következőhöz: szerepkör-példány csúszkája.
+3. A szerepkör azon példányai, amelyek méretezése a következőre:.
 
-Miután konfigurálta a beállításait, válassza ki a **mentése** ikonra a felső.
+A méretezési beállítások konfigurálása után kattintson a felül található **Mentés** ikonra.

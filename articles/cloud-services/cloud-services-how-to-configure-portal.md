@@ -1,112 +1,106 @@
 ---
-title: Konfigurálása felhőszolgáltatáshoz (portál) |} A Microsoft Docs
-description: Ismerje meg, a cloud services konfigurálása az Azure-ban. Megtanulhatja, hogyan frissítéséhez a felhőszolgáltatás-konfigurációt, és konfigurálja a távelérési szerepkör-példányok. Ezekben a példákban az Azure Portalon.
+title: Felhőalapú szolgáltatás konfigurálása (portál) | Microsoft Docs
+description: Ismerje meg, hogyan konfigurálhatja a Cloud Servicest az Azure-ban. Ismerje meg, hogyan frissítheti a Cloud Service-konfigurációt, és hogyan konfigurálhat távoli hozzáférést a szerepkör-példányokhoz. Ezek a példák a Azure Portal használják.
 services: cloud-services
 documentationcenter: ''
-author: jpconnock
-manager: timlt
-editor: ''
-ms.assetid: 7308f3c0-825e-499d-bfa5-c60f86371921
+author: georgewallace
 ms.service: cloud-services
-ms.workload: tbd
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 12/07/2016
-ms.author: jeconnoc
-ms.openlocfilehash: 4d8d3b93ef2a6347076fada53932b5fc56838d20
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: gwallace
+ms.openlocfilehash: 8b60a81e06b95c69a02f88ff3275743b056c191d
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61435815"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68359652"
 ---
-# <a name="how-to-configure-cloud-services"></a>A Cloud Services konfigurálása
+# <a name="how-to-configure-cloud-services"></a>Cloud Services konfigurálása
 
-A felhőszolgáltatások leggyakrabban használt beállításai az Azure Portalon konfigurálhatja. Azok az ügyfeleink, akik közvetlenül szeretnék frissíteni a konfigurációs fájlokat, letölthetik a frissítendő szolgáltatáskonfigurációs fájlt, amelyet módosítás után feltölthetnek, így frissül a felhőszolgáltatás konfigurációja. A rendszer mindkét esetben az összes szerepkörpéldányon elvégzi a konfiguráció módosítását.
+A felhőalapú szolgáltatás leggyakrabban használt beállításait a Azure Portal is konfigurálhatja. Azok az ügyfeleink, akik közvetlenül szeretnék frissíteni a konfigurációs fájlokat, letölthetik a frissítendő szolgáltatáskonfigurációs fájlt, amelyet módosítás után feltölthetnek, így frissül a felhőszolgáltatás konfigurációja. A rendszer mindkét esetben az összes szerepkörpéldányon elvégzi a konfiguráció módosítását.
 
-A példányok be őket a felhőbeli szolgáltatási szerepkörökben vagy a távoli asztali is kezelheti.
+A felhőalapú szolgáltatás szerepköreinek példányait vagy a Távoli asztalt is kezelheti.
 
-Az Azure csak biztosítható a 99,95 %-os szolgáltatás rendelkezésre állása a konfigurációs frissítések során Ha minden egyes szerepkörhöz legalább két szerepkörpéldányt. Amely lehetővé teszi az ügyfél kérelmeket feldolgozni, míg a másik frissítése folyamatban van egy virtuális gépet. További információkért lásd: [szolgáltatásiszint-szerződései](https://azure.microsoft.com/support/legal/sla/).
+Az Azure a konfigurációs frissítések során csak a 99,95%-os rendelkezésre állást biztosíthatja, ha minden szerepkörhöz legalább két szerepkör-példány tartozik. Ez lehetővé teszi, hogy az egyik virtuális gép feldolgozza az ügyfelek kérelmeit, miközben a másik frissítése folyamatban van. További információ: szolgáltatói [szerződések](https://azure.microsoft.com/support/legal/sla/).
 
-## <a name="change-a-cloud-service"></a>Egy felhőalapú szolgáltatás módosítása
+## <a name="change-a-cloud-service"></a>Felhőalapú szolgáltatás módosítása
 
-Megnyitása után a [az Azure portal](https://portal.azure.com/), lépjen a felhőszolgáltatás. Itt kezelheti számos aspektusát.
+A [Azure Portal](https://portal.azure.com/)megnyitása után navigáljon a felhőalapú szolgáltatáshoz. Itt számos aspektusát kezelheti.
 
 ![Beállítások lap](./media/cloud-services-how-to-configure-portal/cloud-service.png)
 
-A **beállítások** vagy **minden beállítás** hivatkozások, megnyílik **beállítások** ahol módosíthatja a **tulajdonságok**, módosítsa a  **Konfigurációs**, kezelheti a **tanúsítványok**, állítsa be **riasztási szabályok**, és kezelheti a **felhasználók** akik hozzáférése a felhőalapú szolgáltatás.
+A **Beállítások** vagy **az összes beállítás** hivatkozás olyan **beállításokat** nyit meg, ahol módosíthatja a **tulajdonságokat**, módosíthatja a **konfigurációt**, kezelheti a **tanúsítványokat**, beállíthatja a riasztási **szabályokat**, és kezelheti a **felhasználókat** kik férhetnek hozzá ehhez a felhőalapú szolgáltatáshoz.
 
-![Az Azure cloud service-beállítások](./media/cloud-services-how-to-configure-portal/cs-settings-blade.png)
+![Azure Cloud Service-beállítások](./media/cloud-services-how-to-configure-portal/cs-settings-blade.png)
 
-### <a name="manage-guest-os-version"></a>Kezelheti a vendég operációs rendszer verziója
+### <a name="manage-guest-os-version"></a>Vendég operációs rendszer verziójának kezelése
 
-Alapértelmezés szerint az Azure rendszeres időközönként frissíti a vendég operációs rendszer a legújabb támogatott lemezképen belül a szolgáltatás konfigurációs (.cscfg), a megadott operációsrendszer-termékcsalád például a Windows Server 2016-ban.
+Alapértelmezés szerint az Azure rendszeresen frissíti a vendég operációs rendszert a szolgáltatás konfigurációjában (. cscfg) megadott operációsrendszer-családon belül a legújabb támogatott lemezképre, például a Windows Server 2016-re.
 
-Ha szeretne megcélozni egy adott operációsrendszer-verzió, beállíthatja **konfigurációs**.
+Ha egy adott operációsrendszer-verziót kell megcéloznia, beállíthatja a **konfigurációban**.
 
-![Operációsrendszer-verzió beállítása](./media/cloud-services-how-to-configure-portal/cs-settings-config-guestosversion.png)
+![Operációs rendszer verziójának beállítása](./media/cloud-services-how-to-configure-portal/cs-settings-config-guestosversion.png)
 
 >[!IMPORTANT]
-> Az operációs rendszer letiltja az adott operációsrendszer-verzió kiválasztása frissíti, és lehetővé teszi az Ön felelőssége javítása. Gondoskodnia kell arról, hogy a szerepkörpéldányok azért küldtük Önnek, frissítés, vagy előfordulhat, hogy elérhetővé teszi az alkalmazás biztonsági rések.
+> Egy adott operációsrendszer-verzió kiválasztásával letilthatja az operációs rendszer frissítéseinek automatikus telepítését, és javíthatja a felelősségét. Győződjön meg arról, hogy a szerepkör-példányok frissítéseket kapnak, vagy az alkalmazást biztonsági rések számára teheti elérhetővé.
 
 ## <a name="monitoring"></a>Figyelés
 
-A felhőszolgáltatások riasztásokat is hozzáadhat. Kattintson a **beállítások** > **riasztási szabályok** > **riasztás hozzáadása**.
+Riasztásokat adhat hozzá a felhőalapú szolgáltatáshoz. Kattintson a **Beállítások** > **riasztási szabályok** > riasztás**hozzáadása**elemre.
 
 ![](./media/cloud-services-how-to-configure-portal/cs-alerts.png)
 
-Itt beállíthat egy riasztást. Az a **metrika** legördülő mezőben, beállíthat egy riasztás a következő típusú adatokról.
+Itt beállíthatja a riasztást. A **metrika** legördülő lista használatával riasztást állíthat be a következő típusú adatokhoz.
 
 * Lemezolvasás
 * Lemezírás
-* A hálózati
-* Kimenő hálózati forgalom
+* bejövő hálózati forgalom
+* kimenő hálózati forgalom
 * Processzorhasználat (%)
 
 ![](./media/cloud-services-how-to-configure-portal/cs-alert-item.png)
 
-### <a name="configure-monitoring-from-a-metric-tile"></a>Metrika csempékről figyelésének konfigurálása
+### <a name="configure-monitoring-from-a-metric-tile"></a>Figyelés beállítása metrikai csempéről
 
-Használata helyett **beállítások** > **riasztási szabályok**, kattinthat a metrika csempék az egyik a **figyelés** szakasz a felhőalapú szolgáltatás.
+A **Beállítások** > **riasztási szabályainak**használata helyett a Cloud Service **figyelés** szakaszának egyik mérőszám-csempére kattinthat.
 
-![Felhőalapú szolgáltatás figyelése](./media/cloud-services-how-to-configure-portal/cs-monitoring.png)
+![Cloud Service-figyelés](./media/cloud-services-how-to-configure-portal/cs-monitoring.png)
 
-Innen testre a diagram a csempe használni, vagy adjon hozzá egy riasztási szabályt.
+Itt testreszabhatja a csempéhez használt diagramot, vagy hozzáadhat egy riasztási szabályt.
 
-## <a name="reboot-reimage-or-remote-desktop"></a>Újraindítás, rendszerkép alaphelyzetbe állítását vagy a távoli asztal
+## <a name="reboot-reimage-or-remote-desktop"></a>Újraindítás, rendszerkép vagy távoli asztal
 
-A távoli asztal segítségével beállíthatja a [(a távoli asztal beállítása) az Azure portal](cloud-services-role-enable-remote-desktop-new-portal.md), [PowerShell](cloud-services-role-enable-remote-desktop-powershell.md), vagy a Kiszolgálókezelő [Visual Studio](cloud-services-role-enable-remote-desktop-visual-studio.md).
+A Távoli asztalt beállíthatja a [Azure Portal (távoli asztal beállítása)](cloud-services-role-enable-remote-desktop-new-portal.md), a [PowerShell](cloud-services-role-enable-remote-desktop-powershell.md)vagy a [Visual Studio](cloud-services-role-enable-remote-desktop-visual-studio.md)használatával.
 
-Az újraindítás, rendszerkép alaphelyzetbe állítását, vagy távolról csatlakozzon egy felhőalapú szolgáltatás, válassza ki a felhőszolgáltatás-példányok.
+A Cloud Service-példány újraindításához, rendszerképének vagy távoli üzembe helyezéséhez válassza ki a Cloud Service-példányt.
 
-![Felhőszolgáltatás-példányok](./media/cloud-services-how-to-configure-portal/cs-instance.png)
+![Cloud Service-példány](./media/cloud-services-how-to-configure-portal/cs-instance.png)
 
-Majd indítsa el a távoli asztali kapcsolat, távolról az-példány újraindítása, vagy távolról rendszerképének alaphelyzetbe állítása (friss rendszerképpel indítás) a példányt.
+Ezután kezdeményezheti a távoli asztali kapcsolatokat, távolról újraindíthatja a példányt, vagy távolról is áthelyezheti a rendszerképet (kezdjen egy friss képpel) a példányt.
 
-![Cloud Service példány gombok](./media/cloud-services-how-to-configure-portal/cs-instance-buttons.png)
+![Cloud Service-példány gombjai](./media/cloud-services-how-to-configure-portal/cs-instance-buttons.png)
 
-## <a name="reconfigure-your-cscfg"></a>Konfigurálja újra a .cscfg
+## <a name="reconfigure-your-cscfg"></a>Konfigurálja újra a. cscfg
 
-Szükség lehet a felhőalapú szolgáltatás segítségével konfigurálja újra a [szolgáltatás konfigurációs (cscfg)](cloud-services-model-and-package.md#cscfg) fájlt. Először töltse le a .cscfg fájlban, módosítsa, majd töltse fel.
+Előfordulhat, hogy újra kell konfigurálnia a felhőalapú szolgáltatást a [Service config (cscfg)](cloud-services-model-and-package.md#cscfg) fájlon keresztül. Először le kell töltenie a. cscfg fájlt, módosítania kell, majd fel kell töltenie.
 
-1. Kattintson a a **beállítások** ikonra vagy a **minden beállítás** hivatkozás megnyitásához **beállítások**.
+1. Kattintson a **Beállítások** ikonra, vagy a **minden beállítás** hivatkozásra a **Beállítások**megnyitásához.
 
     ![Beállítások lap](./media/cloud-services-how-to-configure-portal/cloud-service.png)
-2. Kattintson a **konfigurációs** elemet.
+2. Kattintson a **konfigurációs** elemre.
 
-    ![Konfigurációs panelen](./media/cloud-services-how-to-configure-portal/cs-settings-config.png)
+    ![Konfiguráció panel](./media/cloud-services-how-to-configure-portal/cs-settings-config.png)
 3. Kattintson a **Download** (Letöltés) gombra.
 
     ![Letöltés](./media/cloud-services-how-to-configure-portal/cs-settings-config-panel-download.png)
-4. Miután frissítette a szolgáltatás konfigurációs fájlja, töltse fel, és a konfigurációs frissítések alkalmazásához:
+4. A szolgáltatás konfigurációs fájljának frissítése után töltse fel és alkalmazza a konfigurációs frissítéseket:
 
-    ![Töltsön fel](./media/cloud-services-how-to-configure-portal/cs-settings-config-panel-upload.png)
-5. Válassza ki a .cscfg-fájlt, és kattintson a **OK**.
+    ![Feltöltés](./media/cloud-services-how-to-configure-portal/cs-settings-config-panel-upload.png)
+5. Válassza ki a. cscfg fájlt, majd kattintson **az OK**gombra.
 
 ## <a name="next-steps"></a>További lépések
 
-* Ismerje meg, hogyan [egy felhőalapú szolgáltatás üzembe helyezése](cloud-services-how-to-create-deploy-portal.md).
-* Konfigurálja a [egyéni tartománynév](cloud-services-custom-domain-name-portal.md).
-* [A felhőszolgáltatások kezelése](cloud-services-how-to-manage-portal.md).
-* Konfigurálása [ssl-tanúsítványok](cloud-services-configure-ssl-certificate-portal.md).
+* Ismerje meg, hogyan [helyezhet üzembe egy felhőalapú szolgáltatást](cloud-services-how-to-create-deploy-portal.md).
+* Konfigurálja az [Egyéni tartománynevet](cloud-services-custom-domain-name-portal.md).
+* [A felhőalapú szolgáltatás kezelése](cloud-services-how-to-manage-portal.md).
+* Konfigurálja az [SSL](cloud-services-configure-ssl-certificate-portal.md)-tanúsítványokat.

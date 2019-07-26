@@ -1,6 +1,6 @@
 ---
-title: az Azure Functions – Host.JSON referencia 2.x
-description: A v2 modul az Azure Functions host.json fájlt dokumentációja.
+title: Host. JSON-hivatkozás Azure Functions 2. x rendszerhez
+description: A v2 futtatókörnyezettel rendelkező Azure Functions Host. JSON fájl dokumentációja.
 services: functions
 author: ggailey777
 manager: jeconnoc
@@ -10,31 +10,31 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 09/08/2018
 ms.author: glenga
-ms.openlocfilehash: 89c4723e83979f89721677146810abdf99fb5d11
-ms.sourcegitcommit: 5cb0b6645bd5dff9c1a4324793df3fdd776225e4
+ms.openlocfilehash: ecb2059e529347b7eff72bf6af74b82558a4c251
+ms.sourcegitcommit: 83a89c45253b0d432ce8dcd70084c18e9930b1fd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/21/2019
-ms.locfileid: "67310469"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68371691"
 ---
-# <a name="hostjson-reference-for-azure-functions-2x"></a>az Azure Functions – Host.JSON referencia 2.x  
+# <a name="hostjson-reference-for-azure-functions-2x"></a>Host. JSON-hivatkozás Azure Functions 2. x rendszerhez  
 
-> [!div class="op_single_selector" title1="Válassza ki az Azure Functions futtatókörnyezettel, használja a verzióját: "]
+> [!div class="op_single_selector" title1="Válassza ki az Ön által használt Azure Functions futtatókörnyezet verzióját: "]
 > * [1-es verzió](functions-host-json-v1.md)
 > * [2-es verzió](functions-host-json.md)
 
-A *host.json* metaadatait tartalmazó fájl tartalmaz, amelyek befolyásolják a függvényalkalmazás a függvények globális konfigurációs beállításokat. Ez a cikk felsorolja az v2 modul rendelkezésre álló beállításokat.  
+A *Host. JSON* metaadat-fájl olyan globális konfigurációs beállításokat tartalmaz, amelyek a Function app összes funkcióját érintik. Ez a cikk a v2 futtatókörnyezethez elérhető beállításokat sorolja fel.  
 
 > [!NOTE]
-> Ez a cikk az Azure Functions 2.x.  Az a funkciók host.json odkaz 1.x, lásd: [Azure Functions – host.json referencia 1.x](functions-host-json-v1.md).
+> Ez a cikk a 2. x Azure Functions.  Az a funkciók host.json odkaz 1.x, lásd: [Azure Functions – host.json referencia 1.x](functions-host-json-v1.md).
 
-A felügyelt egyéb függvény alkalmazás konfigurációs lehetőségek a [Alkalmazásbeállítások](functions-app-settings.md).
+Az [alkalmazás beállításaiban](functions-app-settings.md)az egyéb Function app konfigurációs beállításai is kezelhetők.
 
-Egyes host.json beállításai csak a helyi futtatásakor használt a [local.settings.json](functions-run-local.md#local-settings-file) fájlt.
+Néhány gazdagép. JSON-beállítás csak akkor használatos, ha helyileg fut a [Local. Settings. JSON](functions-run-local.md#local-settings-file) fájlban.
 
-## <a name="sample-hostjson-file"></a>Mintafájl host.json
+## <a name="sample-hostjson-file"></a>Példa Host. JSON fájlra
 
-Az alábbi minta *host.json* fájlok a megadott összes lehetséges lehetősége van.
+A következő minta *Host. JSON* fájlokhoz minden lehetséges beállítás van megadva.
 
 ```json
 {
@@ -88,7 +88,7 @@ Az alábbi minta *host.json* fájlok a megadott összes lehetséges lehetősége
 }
 ```
 
-Ez a cikk a következő szakaszok azt ismertetik, hogy minden felső szintű tulajdonságot. Mind a nem kötelező, ha nincs másképp.
+A cikk következő fejezetei ismertetik az egyes legfelső szintű tulajdonságokat. Ha másként nincs megadva, az összes megadása nem kötelező.
 
 ## <a name="aggregator"></a>aggregator
 
@@ -96,9 +96,9 @@ Ez a cikk a következő szakaszok azt ismertetik, hogy minden felső szintű tul
 
 ## <a name="applicationinsights"></a>applicationInsights
 
-Ez a beállítás nem gyermeke [naplózás](#logging).
+Ez a beállítás a [naplózás](#logging)gyermeke.
 
-Szabályozza a [mintavételezés funkció az Application Insights](./functions-monitoring.md#configure-sampling).
+A [Application Insights mintavételi funkcióját](./functions-monitoring.md#configure-sampling)vezérli.
 
 ```json
 {
@@ -112,32 +112,32 @@ Szabályozza a [mintavételezés funkció az Application Insights](./functions-m
 ```
 
 > [!NOTE]
-> Napló mintavételi okozhat egyes végrehajtás, nem jelenik meg az Application Insights monitor panelen.
+> A napló mintavételezése miatt előfordulhat, hogy egyes végrehajtások nem jelennek meg a Application Insights figyelő paneljén.
 
 |Tulajdonság  |Alapértelmezett | Leírás |
 |---------|---------|---------| 
-|isEnabled|true|Engedélyezi vagy letiltja a mintavétel.| 
-|maxTelemetryItemsPerSecond|5|A küszöbértéket, mely mintavételi kezdődik.| 
+|isEnabled|true|Engedélyezheti vagy letilthatja a mintavételezést.| 
+|maxTelemetryItemsPerSecond|5|A mintavételezés megkezdésének küszöbértéke.| 
 
 ## <a name="cosmosdb"></a>cosmosDb
 
-Konfigurációs beállítás található [Cosmos DB-eseményindítók és kötések](functions-bindings-cosmosdb-v2.md#host-json).
+A konfigurációs beállítás [Cosmos db eseményindítókban és kötésekben](functions-bindings-cosmosdb-v2.md#host-json)található.
 
 ## <a name="durabletask"></a>durableTask
 
-Konfigurációs beállítás található [Durable Functions-kötéseket](durable/durable-functions-bindings.md#host-json).
+A konfigurációs beállítás a [Durable functions kötéseiben](durable/durable-functions-bindings.md#host-json)található.
 
 ## <a name="eventhub"></a>eventHub
 
-Konfigurációs beállítások található [Event Hub-eseményindítók és kötések](functions-bindings-event-hubs.md#host-json). 
+A konfigurációs beállítások az [Event hub-eseményindítókban és](functions-bindings-event-hubs.md#host-json)-kötésekben találhatók. 
 
-## <a name="extensions"></a>Bővítmények
+## <a name="extensions"></a>Extensions
 
-Tulajdonság által visszaadott olyan objektum, amely tartalmazza az összes a kötés-specifikus beállítások, például [http](#http) és [eventHub](#eventhub).
+Tulajdonság, amely egy olyan objektumot ad vissza, amely tartalmazza az összes kötési beállítást, például a [http](#http) -t és a [eventHub](#eventhub).
 
-## <a name="functions"></a>functions
+## <a name="functions"></a>függvény
 
-A feladat gazdagépen futó függvények listája. Üres tömb azt jelenti, hogy a függvények futtatása. Használatra szánt csak akkor, ha [helyileg futó](functions-run-local.md). Függvény-alkalmazásokban az Azure-ban, ehelyett kövesse a lépéseket a [letiltása az Azure Functions függvények](disable-function.md) ezen beállítás használata helyett adott funkciók letiltása.
+A gazdagép által futtatott függvények listája. Az üres tömb az összes függvény futtatását jelenti. Csak [helyileg futtatott](functions-run-local.md)használatra készült. Az Azure-ban a Function apps szolgáltatásban a [függvények letiltása](disable-function.md) a Azure Functionsben című cikkben ismertetett lépéseket követve letilthatja az egyes függvényeket, és nem használhatja ezt a beállítást.
 
 ```json
 {
@@ -147,7 +147,7 @@ A feladat gazdagépen futó függvények listája. Üres tömb azt jelenti, hogy
 
 ## <a name="functiontimeout"></a>functionTimeout
 
-Azt jelzi, hogy a függvények az időtúllépési időtartama. A kiszolgáló nélküli Használatalapú csomagok esetében az érvényes értéktartomány: 1 másodperctől 10 percre, és az alapértelmezett érték 5 perc. A dedikált App Service-csomag nem általános korlátozott, és az alapértelmezett értéke 30 perc. Érték `-1` korlátlan streameken működő végrehajtását jelzi.
+Az összes függvény időtúllépési időtartamát jelzi. A kiszolgáló nélküli fogyasztási csomag esetében az érvényes tartomány 1 másodperc és 10 perc között van, az alapértelmezett érték pedig 5 perc. Egy App Service tervben nincs általános korlát, és az alapértelmezett érték a futásidejű verziótól függ. A 2. x verzióban egy App Service csomag alapértelmezett értéke 30 perc. Az 1. x verzióban az *értéke null*, amely nem jelez időtúllépést. Nem állítható be végtelenként. Ha nem kifejezetten ezt az értéket állítja be, akkor az alapértelmezett 30 perces értéket fogja megtenni.
 
 ```json
 {
@@ -157,7 +157,7 @@ Azt jelzi, hogy a függvények az időtúllépési időtartama. A kiszolgáló n
 
 ## <a name="healthmonitor"></a>healthMonitor
 
-A konfigurációs beállítások [gazdagép állapotfigyelőjét](https://github.com/Azure/azure-webjobs-sdk-script/wiki/Host-Health-Monitor).
+A [gazdagép állapotának figyelésére](https://github.com/Azure/azure-webjobs-sdk-script/wiki/Host-Health-Monitor)vonatkozó konfigurációs beállítások.
 
 ```
 {
@@ -173,21 +173,21 @@ A konfigurációs beállítások [gazdagép állapotfigyelőjét](https://github
 
 |Tulajdonság  |Alapértelmezett | Leírás |
 |---------|---------|---------| 
-|enabled|true|Itt adhatja meg, hogy engedélyezve van-e a szolgáltatás. | 
-|healthCheckInterval|10 másodperc|A háttérben történő rendszeres egészségügyi közötti időintervallum ellenőrzi. | 
-|healthCheckWindow|2 perc|Egy változó időablakban együtt használható a `healthCheckThreshold` beállítás.| 
-|healthCheckThreshold|6|Az állapot-ellenőrzés maximálisan megengedett számú meghiúsulhat a rendszer kezdeményezi a gazdagép újraindítása előtt.| 
-|counterThreshold|0.80|A küszöbérték, amely egy teljesítményszámláló minősülnek nem megfelelő állapotú.| 
+|enabled|true|Megadja, hogy engedélyezve van-e a szolgáltatás. | 
+|healthCheckInterval|10 másodperc|Az időszakos háttér állapotának ellenőrzése közötti időtartam. | 
+|healthCheckWindow|2 perc|A `healthCheckThreshold` beállítással együtt használt csúszó Time-ablak.| 
+|healthCheckThreshold|6|Az állapot-ellenőrzések maximális száma a gazdagép újraindítása előtt.| 
+|counterThreshold|0,80|Az a küszöbérték, amelynél a teljesítményszámláló a nem megfelelő állapotot veszi figyelembe.| 
 
 ## <a name="http"></a>http
 
-Konfigurációs beállítások található [http-eseményindítók és kötések](functions-bindings-http-webhook.md).
+A konfigurációs beállítások a http- [Eseményindítók és](functions-bindings-http-webhook.md)-kötések szolgáltatásban találhatók.
 
 [!INCLUDE [functions-host-json-http](../../includes/functions-host-json-http.md)]
 
-## <a name="logging"></a>Naplózás
+## <a name="logging"></a>naplózás
 
-A függvényalkalmazás, beleértve az Application Insights naplózási viselkedéseit szabályozza.
+A Function alkalmazás naplózási viselkedését szabályozza, beleértve a Application Insightst is.
 
 ```json
 "logging": {
@@ -207,14 +207,14 @@ A függvényalkalmazás, beleértve az Application Insights naplózási viselked
 
 |Tulajdonság  |Alapértelmezett | Leírás |
 |---------|---------|---------|
-|fileLoggingMode|debugOnly|Határozza meg, milyen szintű fájl naplózás engedélyezve van.  Lehetőségek a következők `never`, `always`, `debugOnly`. |
-|logLevel|n/a|A szűrés az alkalmazás a Functions naplókategória definiáló objektum. Verzió 2.x követi az ASP.NET Core-elrendezés log kategóriához szűrésre. Ez lehetővé teszi az egyes funkciók naplózási szűrő. További információkért lásd: [napló szűrése](https://docs.microsoft.com/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1#log-filtering) az ASP.NET Core dokumentációjában. |
+|fileLoggingMode|debugOnly|Meghatározza, hogy a fájlok naplózása milyen szintű legyen engedélyezve.  A lehetőségek `never`a `always` következők`debugOnly`:,. |
+|logLevel|n/a|Az alkalmazásban lévő függvények naplózási kategóriájának szűrését meghatározó objektum. A 2. x verzió a naplózási kategória szűrésének ASP.NET Core elrendezését követi. Ez lehetővé teszi adott függvények naplózásának szűrését. További információ: naplózási [szűrés](https://docs.microsoft.com/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1#log-filtering) a ASP.net Core dokumentációjában. |
 |console|n/a| A [console](#console) naplózási beállításokat. |
 |applicationInsights|n/a| A [applicationInsights](#applicationinsights) beállítás. |
 
 ## <a name="console"></a>console
 
-Ez a beállítás nem gyermeke [naplózás](#logging). Azt szabályozza, hogy a konzolon, ha nem a hibakeresési mód naplózása.
+Ez a beállítás a [naplózás](#logging)gyermeke. A konzol naplózását vezérli, ha nem hibakeresési módban van.
 
 ```json
 {
@@ -230,23 +230,23 @@ Ez a beállítás nem gyermeke [naplózás](#logging). Azt szabályozza, hogy a 
 
 |Tulajdonság  |Alapértelmezett | Leírás |
 |---------|---------|---------| 
-|isEnabled|false|Engedélyezi vagy letiltja a konzol naplózását.| 
+|isEnabled|false|Engedélyezheti vagy letilthatja a konzol naplózását.| 
 
 ## <a name="queues"></a>üzenetsorok
 
-Konfigurációs beállítások található [tárolási üzenetsor eseményindítók és kötések](functions-bindings-storage-queue.md#host-json).  
+A konfigurációs beállítások a [Storage üzenetsor-eseményindítók és](functions-bindings-storage-queue.md#host-json)-kötések szolgáltatásban találhatók.  
 
 ## <a name="sendgrid"></a>sendGrid
 
-Konfigurációs beállítás található [SendGrid eseményindítók és kötések](functions-bindings-sendgrid.md#host-json).
+A konfigurációs beállítás a SendGrid- [Eseményindítók és-kötések](functions-bindings-sendgrid.md#host-json)szolgáltatásban található.
 
 ## <a name="servicebus"></a>serviceBus
 
-Konfigurációs beállítás található [Service Bus-eseményindítók és kötések](functions-bindings-service-bus.md#host-json).
+A konfigurációs beállítás [Service Bus eseményindítókban és kötésekben](functions-bindings-service-bus.md#host-json)található.
 
-## <a name="singleton"></a>Egypéldányos
+## <a name="singleton"></a>Singleton
 
-Egyszeres zárolási viselkedés konfigurációs beállításait. További információkért lásd: [egyszeres támogatására vonatkozó GitHub-problémát](https://github.com/Azure/azure-webjobs-sdk-script/issues/912).
+Az egyszeri zárolási viselkedés konfigurációs beállításai. További információért lásd az egyszeri [támogatással kapcsolatos GitHub-problémát](https://github.com/Azure/azure-webjobs-sdk-script/issues/912).
 
 ```json
 {
@@ -262,19 +262,19 @@ Egyszeres zárolási viselkedés konfigurációs beállításait. További infor
 
 |Tulajdonság  |Alapértelmezett | Leírás |
 |---------|---------|---------| 
-|lockPeriod|00:00:15|Az időszak, amelyeket a függvény szint zárolások rendszer számára. A zárolás automatikus megújítási.| 
-|listenerLockPeriod|00:01:00|Az időszak elvégzett figyelő zárolások számára.| 
-|listenerLockRecoveryPollingInterval|00:01:00|A figyelő zárolási helyreállításhoz használt, ha egy figyelő nem zárolható indításkor időtartam alatt.| 
-|lockAcquisitionTimeout|00:01:00|Legfeljebb ennyi idő a modul megpróbálja zárolni.| 
-|lockAcquisitionPollingInterval|n/a|A zárolás adatolvasási kísérletek közötti időköz.| 
+|lockPeriod|00:00:15|Az az időszak, ameddig a rendszer a működési szintet zárolja. A zárolások automatikus megújítása.| 
+|listenerLockPeriod|00:01:00|A figyelő zárolásának időtartama.| 
+|listenerLockRecoveryPollingInterval|00:01:00|A figyelő zárolásának helyreállításához használt időintervallum, ha a figyelő zárolása nem szerezhető be indításkor.| 
+|lockAcquisitionTimeout|00:01:00|Az a maximális időtartam, ameddig a futtatókörnyezet megpróbál zárolást benyerni.| 
+|lockAcquisitionPollingInterval|n/a|A zárolási beszerzési kísérletek közötti időköz.| 
 
 ## <a name="version"></a>version
 
-A verzió-karakterlánc `"version": "2.0"` a v2 futtatókörnyezetre függvényalkalmazás megadása kötelező.
+A v2 futtatókörnyezetet megcélzó Function alkalmazás verziójának karakterláncát `"version": "2.0"` kötelező megadni.
 
 ## <a name="watchdirectories"></a>watchDirectories
 
-Egy [megosztott kód könyvtárak](functions-reference-csharp.md#watched-directories) , amely kell figyelni a módosításokat.  Biztosítja, hogy ezek a könyvtárak a kód módosításakor a változások mértékének a függvények.
+A módosításokat figyelő [megosztott kód-címtárak](functions-reference-csharp.md#watched-directories) készlete.  Gondoskodik arról, hogy a könyvtárakban lévő kódok változásakor a függvények a módosításokat is felveszik.
 
 ```json
 {
@@ -284,7 +284,7 @@ Egy [megosztott kód könyvtárak](functions-reference-csharp.md#watched-directo
 
 ## <a name="manageddependency"></a>managedDependency
 
-Felügyelt függőség, amely jelenleg előzetes verziójú funkció csak a támogatott PowerShell-alapú funkciók. Lehetővé teszi, hogy lehet a szolgáltatás automatikusan kezeli. Ha az engedélyezett tulajdonság értéke igaz, a [requirements.psd1](functions-reference-powershell.md#dependency-management) fájlt fogja feldolgozni. Bármely alverziók megjelenésekor a függőségek frissülni fog.
+A felügyelt függőség egy előzetes verziójú funkció, amely jelenleg csak a PowerShell-alapú függvények esetében támogatott. Lehetővé teszi a függőségek automatikus kezelését a szolgáltatással. Ha az enabled tulajdonság értéke TRUE (igaz), a rendszer feldolgozza a [követelmények. psd1](functions-reference-powershell.md#dependency-management) fájlt. A függőségek akkor frissülnek, ha minden másodlagos verzió megjelent.
 
 ```json
 {
@@ -297,7 +297,7 @@ Felügyelt függőség, amely jelenleg előzetes verziójú funkció csak a tám
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Ismerje meg a host.json fájl frissítése](functions-reference.md#fileupdate)
+> [Útmutató a Host. JSON fájl frissítéséhez](functions-reference.md#fileupdate)
 
 > [!div class="nextstepaction"]
-> [Tekintse meg a globális beállítások környezeti változók](functions-app-settings.md)
+> [Lásd: globális beállítások a környezeti változókban](functions-app-settings.md)

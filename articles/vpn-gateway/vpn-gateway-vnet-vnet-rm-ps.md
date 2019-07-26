@@ -1,5 +1,5 @@
 ---
-title: 'Az Azure virtuális hálózat csatlakoztatása másik virtuális hálózathoz, virtuális hálózatok közötti kapcsolat használatával: PowerShell |} A Microsoft Docs'
+title: 'Azure-beli virtuális hálózat összekapcsolása egy másik VNet egy VNet – VNet kapcsolat használatával: PowerShell | Microsoft Docs'
 description: Egymáshoz csatlakoztathatja a virtuális hálózatokat a virtuális hálózatok közötti kapcsolat és a PowerShell használatával.
 services: vpn-gateway
 author: cherylmc
@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 02/15/2019
 ms.author: cherylmc
-ms.openlocfilehash: 6ea919a4c9554584e0da79739d3465586ae43227
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: dbf59740af64bf8d403b6596a17646304c0f1eb0
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60456358"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68385790"
 ---
 # <a name="configure-a-vnet-to-vnet-vpn-gateway-connection-using-powershell"></a>Virtuális hálózatok közötti VPN Gateway-kapcsolat konfigurálása a PowerShell használatával
 
@@ -69,7 +69,7 @@ Ebben a gyakorlatban igény szerint kombinálhatja a konfigurációkat, vagy csa
 
   ![v2v ábra](./media/vpn-gateway-vnet-vnet-rm-ps/v2vrmps.png)
 
-* [Különböző előfizetésben található virtuális hálózatok](#difsub): Ez a konfiguráció lépései a TestVNet1 és testvnet5 hálózatot használják.
+* [Eltérő előfizetésekben található virtuális hálózatok](#difsub): A konfiguráció lépései a következőt használják: TestVNet1 és TestVNet5.
 
   ![v2v ábra](./media/vpn-gateway-vnet-vnet-rm-ps/v2vdiffsub.png)
 
@@ -79,9 +79,9 @@ Ebben a gyakorlatban igény szerint kombinálhatja a konfigurációkat, vagy csa
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-* Azt az átjáró létrehozása akár 45 percet vesz igénybe, mivel az Azure Cloud Shell ebben a gyakorlatban alatt rendszeresen időtúllépést eredményeznek. A Cloud Shell újraindításához kattintson a bal felső sarkában a terminálon. Ügyeljen arra, hogy minden változó redeclare, amikor újraindítja a terminálon.
+* Mivel az átjáró létrehozása akár 45 percet is igénybe vehet, Azure Cloud Shell a gyakorlat során időnként időtúllépést okoz. Cloud Shell újraindításához kattintson a terminál bal felső részén található gombra. A terminál újraindításakor mindenképpen minden változót újra deklaráljon.
 
-* Ha telepít szeretné inkább helyileg az Azure PowerShell-modul legújabb verzióját, lásd: [telepítése és konfigurálása az Azure PowerShell-lel](/powershell/azure/overview).
+* Ha a Azure PowerShell modul legújabb verzióját szeretné helyileg telepíteni, tekintse meg a [Azure PowerShell telepítése és konfigurálása](/powershell/azure/overview)című témakört.
 
 ### <a name="Step1"></a>1. lépés – Az IP-címtartományok megtervezése
 
@@ -91,41 +91,41 @@ A példákban a következő értékeket használjuk:
 
 **Értékek a TestVNet1-hez:**
 
-* Virtuális hálózat neve: A TestVNet1
+* Virtuális hálózat neve: TestVNet1
 * Erőforráscsoport: TestRG1
-* Hely: USA keleti régiója
-* A TestVNet1: 10.11.0.0/16 & 10.12.0.0/16
-* Előtérbeli: 10.11.0.0/24
-* Háttér: 10.12.0.0/24
-* Átjáró-alhálózat: 10.12.255.0/27
-* Átjáró neve: VNet1GW
-* Nyilvános IP-címe: VNet1GWIP
-* VPNType: Útvonalalapú
-* Connection(1to4): VNet1toVNet4
-* Connection(1to5): VNet1toVNet5 (virtuális hálózatok különböző előfizetésekben)
-* ConnectionType: VNet2VNet
+* Hely: East US
+* TestVNet1 10.11.0.0/16 & 10.12.0.0/16
+* FrontEnd 10.11.0.0/24
+* BackEnd 10.12.0.0/24
+* GatewaySubnet tartománya 10.12.255.0/27
+* Átjáró neve VNet1GW
+* Nyilvános IP-cím: VNet1GWIP
+* VPNType Útvonalalapú
+* Kapcsolatok (1to4): VNet1toVNet4
+* Kapcsolatok (1 – 5): VNet1toVNet5 (különböző előfizetésekben lévő virtuális hálózatok esetén)
+* ConnectionType VNet2VNet
 
 **Értékek a TestVNet4-hez:**
 
-* Virtuális hálózat neve: A TestVNet4
+* Virtuális hálózat neve: TestVNet4
 * TestVNet2: 10.41.0.0/16 & 10.42.0.0/16
-* Előtérbeli: 10.41.0.0/24
-* Háttér: 10.42.0.0/24
-* Átjáró-alhálózat: 10.42.255.0/27
+* FrontEnd 10.41.0.0/24
+* BackEnd 10.42.0.0/24
+* GatewaySubnet 10.42.255.0/27
 * Erőforráscsoport: TestRG4
 * Hely: USA nyugati régiója
-* Átjáró neve: VNet4GW
-* Nyilvános IP-címe: VNet4GWIP
-* VPNType: Útvonalalapú
+* Átjáró neve VNet4GW
+* Nyilvános IP-cím: VNet4GWIP
+* VPNType Útvonalalapú
 * Kapcsolat: VNet4toVNet1
-* ConnectionType: VNet2VNet
+* ConnectionType VNet2VNet
 
 
 ### <a name="Step2"></a>2. lépés – A TestVNet1 létrehozása és konfigurálása
 
-1. Ellenőrizze az előfizetés beállításait.
+1. Ellenőrizze az előfizetési beállításokat.
 
-   Csatlakozzon a fiókjához, ha futtatja a Powershellt helyileg a számítógépen. Ha az Azure Cloud Shellt használja, akkor automatikusan csatlakoznak.
+   Kapcsolódjon a fiókjához, ha a PowerShellt helyileg futtatja a számítógépen. Ha Azure Cloud Shell használ, a rendszer automatikusan csatlakozik.
 
    ```azurepowershell-interactive
    Connect-AzAccount
@@ -137,7 +137,7 @@ A példákban a következő értékeket használjuk:
    Get-AzSubscription
    ```
 
-   Ha több előfizetéssel rendelkezik, válassza ki a használni kívánt előfizetést.
+   Ha egynél több előfizetéssel rendelkezik, válassza ki a használni kívánt előfizetést.
 
    ```azurepowershell-interactive
    Select-AzSubscription -SubscriptionName nameofsubscription
@@ -150,7 +150,6 @@ A példákban a következő értékeket használjuk:
    $VNetName1 = "TestVNet1"
    $FESubName1 = "FrontEnd"
    $BESubName1 = "Backend"
-   $GWSubName1 = "GatewaySubnet"
    $VNetPrefix11 = "10.11.0.0/16"
    $VNetPrefix12 = "10.12.0.0/16"
    $FESubPrefix1 = "10.11.0.0/24"
@@ -167,14 +166,14 @@ A példákban a következő értékeket használjuk:
    ```azurepowershell-interactive
    New-AzResourceGroup -Name $RG1 -Location $Location1
    ```
-4. Hozza létre a TestVNet1 alhálózat-konfigurációit. Ez a példa létrehoz egy TestVNet1 nevű virtuális hálózatot és három alhálózatot, amelyek neve a következő: GatewaySubnet, FrontEnd és Backend. Az értékek behelyettesítésekor fontos, hogy az átjáróalhálózat neve mindenképp GatewaySubnet legyen. Ha ezt másként nevezi el, az átjáró létrehozása meghiúsul.
+4. Hozza létre a TestVNet1 alhálózat-konfigurációit. Ez a példa létrehoz egy TestVNet1 nevű virtuális hálózatot és három alhálózatot, amelyek neve a következő: GatewaySubnet, FrontEnd és Backend. Az értékek behelyettesítésekor fontos, hogy az átjáróalhálózat neve mindenképp GatewaySubnet legyen. Ha ezt másként nevezi el, az átjáró létrehozása meghiúsul. Ezért nem az alábbi változón keresztül van hozzárendelve.
 
    A következő példa a korábban beállított változókat használja. A példában az átjáróalhálózat /27-es alhálózatot használ. Bár lehetséges akár /29-es átjáróalhálózatot is létrehozni, javasolt egy ennél nagyobb, több címmel rendelkező alhálózatot létrehozni: legalább /28-asat vagy /27-eset. Ez elegendő címet biztosít az esetleges későbbi konfigurációkhoz.
 
    ```azurepowershell-interactive
    $fesub1 = New-AzVirtualNetworkSubnetConfig -Name $FESubName1 -AddressPrefix $FESubPrefix1
    $besub1 = New-AzVirtualNetworkSubnetConfig -Name $BESubName1 -AddressPrefix $BESubPrefix1
-   $gwsub1 = New-AzVirtualNetworkSubnetConfig -Name $GWSubName1 -AddressPrefix $GWSubPrefix1
+   $gwsub1 = New-AzVirtualNetworkSubnetConfig -Name "GatewaySubnet" -AddressPrefix $GWSubPrefix1
    ```
 5. Hozza létre a TestVNet1-et.
 
@@ -204,13 +203,13 @@ A példákban a következő értékeket használjuk:
    -VpnType RouteBased -GatewaySku VpnGw1
    ```
 
-Miután elvégezte a parancsok, az átjáró létrehozása akár 45 percet vesz igénybe. Azure Cloud Shellt használja, ha a munkamenetet. Ehhez kattintson a felső sarokban marad a Cloud Shell terminál cloud Shell újraindítása, majd a TestVNet4 konfigurálásához. Nem kell várnia, amíg befejeződik a TestVNet1-átjárót.
+A parancsok befejezése után az átjáró létrehozása akár 45 percet is igénybe vehet. Ha Azure Cloud Shell használ, a Cloud Shell terminál bal felső részén kattintson a Cloudshellben-munkamenet újraindításához, majd konfigurálja a TestVNet4. Nem kell megvárnia, amíg a TestVNet1-átjáró be nem fejeződik.
 
 ### <a name="step-3---create-and-configure-testvnet4"></a>3\. lépés – A TestVNet4 létrehozása és konfigurálása
 
 A TestVNet1 konfigurálása után a hozza létre a TestVNet4 virtuális hálózatot. Kövesse az alábbi lépéseket, az értékeket a saját értékeire cserélve.
 
-1. Csatlakozás és deklarálja a változókat. Ne felejtse el az értékeket olyanokra cserélni, amelyeket a saját konfigurációjához kíván használni.
+1. A változók összekötése és deklarálása. Ne felejtse el az értékeket olyanokra cserélni, amelyeket a saját konfigurációjához kíván használni.
 
    ```azurepowershell-interactive
    $RG4 = "TestRG4"
@@ -218,7 +217,6 @@ A TestVNet1 konfigurálása után a hozza létre a TestVNet4 virtuális hálóza
    $VnetName4 = "TestVNet4"
    $FESubName4 = "FrontEnd"
    $BESubName4 = "Backend"
-   $GWSubName4 = "GatewaySubnet"
    $VnetPrefix41 = "10.41.0.0/16"
    $VnetPrefix42 = "10.42.0.0/16"
    $FESubPrefix4 = "10.41.0.0/24"
@@ -239,7 +237,7 @@ A TestVNet1 konfigurálása után a hozza létre a TestVNet4 virtuális hálóza
    ```azurepowershell-interactive
    $fesub4 = New-AzVirtualNetworkSubnetConfig -Name $FESubName4 -AddressPrefix $FESubPrefix4
    $besub4 = New-AzVirtualNetworkSubnetConfig -Name $BESubName4 -AddressPrefix $BESubPrefix4
-   $gwsub4 = New-AzVirtualNetworkSubnetConfig -Name $GWSubName4 -AddressPrefix $GWSubPrefix4
+   $gwsub4 = New-AzVirtualNetworkSubnetConfig -Name "GatewaySubnet" -AddressPrefix $GWSubPrefix4
    ```
 4. Hozza létre a TestVNet4-et.
 
@@ -270,7 +268,7 @@ A TestVNet1 konfigurálása után a hozza létre a TestVNet4 virtuális hálóza
 
 ### <a name="step-4---create-the-connections"></a>4\. lépés – A kapcsolatok létrehozása
 
-Várjon, amíg az átjárók végezhető el. Indítsa újra az Azure Cloud Shell-munkamenetet, és másolja, és illessze be a változókat. lépés 2. és 3. lépés elején található értékek redeclare a konzolt.
+Várjon, amíg mindkét átjáró be nem fejeződik. Indítsa újra a Azure Cloud Shell-munkamenetet, és másolja és illessze be a változókat a 2. lépés és a 3. lépés elejétől a-konzolba az értékek újbóli deklarálása érdekében.
 
 1. Hozza létre a virtuális hálózati átjárókat.
 
@@ -296,11 +294,11 @@ Várjon, amíg az átjárók végezhető el. Indítsa újra az Azure Cloud Shell
 
 ## <a name="difsub"></a>Különböző előfizetésben található virtuális hálózatok összekapcsolása
 
-Ebben a forgatókönyvben csatlakoztatja a TestVNet1 és a TestVNet5 virtuális hálózatot. A TestVNet1 és TestVNet5 eltérő előfizetésben található. Az előfizetéseket nem kell társítani ugyanazzal az Active Directory bérlővel.
+Ebben a forgatókönyvben csatlakoztatja a TestVNet1 és a TestVNet5 virtuális hálózatot. A TestVNet1 és a TestVNet5 különböző előfizetésekben található. Az előfizetéseket nem kell társítani ugyanazzal az Active Directory bérlővel.
 
 A jelen és korábbi lépések közötti különbség abban áll, hogy a konfigurációs lépések egy részét külön PowerShell-munkamenetben kell elvégezni a második előfizetés környezetében. Ez különösen akkor van így, ha a két előfizetés különböző szervezetekhez tartozik.
 
-Miatt változnak az előfizetési környezet ebben a gyakorlatban, akkor előfordulhat, hogy egyszerűbb PowerShell használatával helyileg a számítógépen, inkább az Azure Cloud Shell használatával, amikor a 8. lépés.
+A gyakorlat előfizetési környezetének módosítása miatt előfordulhat, hogy könnyebben használhatja a PowerShellt helyileg a számítógépen, és nem használja a Azure Cloud Shell, ha a 8. lépésre kerül.
 
 ### <a name="step-5---create-and-configure-testvnet1"></a>5\. lépés – A TestVNet1 létrehozása és konfigurálása
 
@@ -315,15 +313,15 @@ Fontos ügyelni arra, hogy az új virtuális hálózat (TestVNet5) IP-címtere n
 * Virtuális hálózat neve: TestVNet5
 * Erőforráscsoport: TestRG5
 * Hely: Kelet-Japán
-* TestVNet5: 10.51.0.0/16 & 10.52.0.0/16
-* Előtérbeli: 10.51.0.0/24
-* Háttér: 10.52.0.0/24
-* Átjáró-alhálózat: 10.52.255.0.0/27
-* Átjáró neve: VNet5GW
-* Nyilvános IP-címe: VNet5GWIP
-* VPNType: Útvonalalapú
+* TestVNet5 10.51.0.0/16 & 10.52.0.0/16
+* FrontEnd 10.51.0.0/24
+* BackEnd 10.52.0.0/24
+* GatewaySubnet 10.52.255.0.0/27
+* Átjáró neve VNet5GW
+* Nyilvános IP-cím: VNet5GWIP
+* VPNType Útvonalalapú
 * Kapcsolat: VNet5toVNet1
-* ConnectionType: VNet2VNet
+* ConnectionType VNet2VNet
 
 ### <a name="step-7---create-and-configure-testvnet5"></a>7\. lépés – A TestVNet5 létrehozása és konfigurálása
 
@@ -408,7 +406,7 @@ Ezt a lépést az új előfizetés környezetében kell elvégezni. Ezt a részt
 
 Ebben a példában, mivel az átjárók különböző előfizetésekben találhatóak, a lépést felosztottuk két PowerShell-munkamenetre, amelyek jelölése [1. előfizetés] és [5. előfizetés].
 
-1. **[1. előfizetés]** Szerezze be az 1. előfizetés virtuális hálózati átjáróját. Jelentkezzen be, és csatlakozzon az 1. előfizetéshez az alábbi példa futtatása előtt:
+1. **[1. előfizetés]** Szerezze be az 1. előfizetés virtuális hálózati átjáróját. Jelentkezzen be, és kapcsolódjon az 1. előfizetéshez az alábbi példa futtatása előtt:
 
    ```azurepowershell-interactive
    $vnet1gw = Get-AzVirtualNetworkGateway -Name $GWName1 -ResourceGroupName $RG1
@@ -429,7 +427,7 @@ Ebben a példában, mivel az átjárók különböző előfizetésekben találha
    PS D:\> $vnet1gw.Id
    /subscriptions/b636ca99-6f88-4df4-a7c3-2f8dc4545509/resourceGroupsTestRG1/providers/Microsoft.Network/virtualNetworkGateways/VNet1GW
    ```
-2. **[5. előfizetés]** Szerezze be az 5. előfizetés virtuális hálózati átjáróját. Jelentkezzen be, és csatlakozzon az 5. előfizetéshez az alábbi példa futtatása előtt:
+2. **[5. előfizetés]** Szerezze be az 5. előfizetés virtuális hálózati átjáróját. A következő példa futtatása előtt jelentkezzen be, és kapcsolódjon az 5. előfizetéshez:
 
    ```azurepowershell-interactive
    $vnet5gw = Get-AzVirtualNetworkGateway -Name $GWName5 -ResourceGroupName $RG5

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 01/25/2019
 ms.author: aljo
-ms.openlocfilehash: 3bc67d7fdc582b6d45596b152bb5d58e41152a46
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 70dc458e341024797761262cd9a4fd1b3eb23ec3
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66428114"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68359792"
 ---
 # <a name="create-your-first-service-fabric-container-application-on-windows"></a>Az első Service Fabric-tárolóalkalmazás létrehozása Windows rendszeren
 
@@ -27,10 +27,10 @@ ms.locfileid: "66428114"
 > * [Windows](service-fabric-get-started-containers.md)
 > * [Linux](service-fabric-get-started-containers-linux.md)
 
-A meglévő alkalmazások Service Fabric-fürtökön lévő Windows-tárolókban való futtatásához nem szükséges módosítania az alkalmazást. Ez a cikk végigkalauzolja egy Docker-rendszerképet, amely tartalmazza a Python [Flask](http://flask.pocoo.org/) webes alkalmazás és a helyi gépen futó Service Fabric-fürtön való üzembe helyezése. Emellett meg is fogja osztani a tárolóalapú alkalmazást az [Azure Container Registry](/azure/container-registry/) használatával. A cikk feltételezi, hogy rendelkezik a Docker használatára vonatkozó alapvető ismeretekkel. A Docker megismeréséhez olvassa el a [Docker áttekintő ismertetését](https://docs.docker.com/engine/understanding-docker/).
+A meglévő alkalmazások Service Fabric-fürtökön lévő Windows-tárolókban való futtatásához nem szükséges módosítania az alkalmazást. Ez a cikk bemutatja, hogyan hozhat létre [egy Python-](http://flask.pocoo.org/) beli webalkalmazást tartalmazó Docker-rendszerképet, és hogyan helyezheti üzembe a helyi gépen futó Service Fabric-fürtön. Emellett meg is fogja osztani a tárolóalapú alkalmazást az [Azure Container Registry](/azure/container-registry/) használatával. A cikk feltételezi, hogy rendelkezik a Docker használatára vonatkozó alapvető ismeretekkel. A Docker megismeréséhez olvassa el a [Docker áttekintő ismertetését](https://docs.docker.com/engine/understanding-docker/).
 
 > [!NOTE]
-> Ez a cikk egy Windows fejlesztési környezetre vonatkozik.  A Service Fabric-fürt futtatókörnyezetének és a Docker-futtatókörnyezet az ugyanazon operációs rendszeren kell futnia.  Windows-tárolók a Linux-fürt nem futtatható.
+> Ez a cikk a Windows fejlesztési környezetére vonatkozik.  A Service Fabric fürt futtatókörnyezetének és a Docker-futtatókörnyezetnek ugyanazon az operációs rendszeren kell futnia.  A Windows-tárolók nem futtathatók Linux-fürtön.
 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
@@ -42,23 +42,23 @@ A meglévő alkalmazások Service Fabric-fürtökön lévő Windows-tárolókban
   * [Service Fabric SDK és -eszközök](service-fabric-get-started.md).
   *  Windows rendszerhez készült Docker. [A Docker CE for Windows (stable) letöltése](https://store.docker.com/editions/community/docker-ce-desktop-windows?tab=description). Miután telepítette és elindította a Dockert, kattintson a jobb gombbal a tálca ikonjára, és válassza a **Switch to Windows containers** (Váltás Windows-tárolókra) lehetőséget. Ez a lépés szükséges ahhoz, hogy Windows-alapú Docker-rendszerképeket tudjon futtatni.
 
-* A Windows tárolókkal rendelkező Windows Server rendszeren futó legalább három csomóponttal rendelkező fürt. 
+* Windows-fürt három vagy több olyan csomóponttal, amelyen a Windows Server tárolók futnak. 
 
-  Ebben a cikkben a tárolók a fürtcsomópontokon futó Windows Server verziója (build) meg kell egyeznie a fejlesztői gépen. Ennek az az oka a fejlesztői gépen a docker-rendszerképet hoz létre, és nincsenek kompatibilitási megkötések között a tároló az operációs rendszer verziója és a gazdagép operációs Rendszeréhez, amelyre telepítve van. További információkért lásd: [Windows Server-tárolót az operációs rendszer és a gazdagép operációsrendszer-kompatibilitás](#windows-server-container-os-and-host-os-compatibility). 
+  Ebben a cikkben a fürt csomópontjain futó Windows Server verziójának (buildének) meg kell egyeznie a fejlesztői gépen. Ennek az az oka, hogy a Docker-rendszerképet a fejlesztői gépen hozza létre, és kompatibilitási korlátok vannak a tároló operációs rendszer és a gazdagép operációs rendszerének verziói között. További információ: a [Windows Server Container operációs rendszer és a gazdagép operációs rendszerének kompatibilitása](#windows-server-container-os-and-host-os-compatibility). 
   
-A fürt szükséges tárolókkal rendelkező Windows Server verziójának megállapításához futtassa a `ver` parancsot a Windows parancssorból a fejlesztői gépen:
+A Windows Server-verziónak a fürthöz szükséges tárolókkal való meghatározásához futtassa a `ver` parancsot egy Windows-parancssorból a fejlesztői gépen:
 
-* Ha a verzió tartalmaz *x.x.14323.x*, majd *WindowsServer 2016-Datacenter-az-tárolók* az operációs rendszer amikor [fürtöt hoz létre](service-fabric-cluster-creation-via-portal.md).
-  * Ha a verzió tartalmaz *x.x.16299.x*, majd *WindowsServerSemiAnnual adatközpont-Core-1709-az-tárolók* az operációs rendszer amikor [fürtöthozlétre](service-fabric-cluster-creation-via-portal.md).
+* Ha a verzió *x. x. 14323. x*verziót tartalmaz, válassza a *windowsserver 2016-Datacenter-with-containers* elemet az operációs rendszer számára a [fürt létrehozásakor](service-fabric-cluster-creation-via-portal.md).
+  * Ha a verzió *x. x. 16299. x*verziót tartalmaz, válassza a *WindowsServerSemiAnnual Datacenter-Core-1709-with-containers* elemet az operációs rendszerhez a [fürt létrehozásakor](service-fabric-cluster-creation-via-portal.md).
 
 * Egy Azure Container Registry-beállításjegyzék – ehhez [hozzon létre egy tároló-beállításjegyzéket](../container-registry/container-registry-get-started-portal.md) Azure-előfizetésében.
 
 > [!NOTE]
-> A tárolók üzembe helyezése a Windows 10 rendszert futtató Service Fabric-fürt támogatott.  Lásd: [Ez a cikk](service-fabric-how-to-debug-windows-containers.md) információk konfigurálása a Windows 10-es Windows-tárolók futtatásához.
+> A tárolók üzembe helyezése a Windows 10 rendszerű Service Fabric-fürtökön támogatott.  [Ebből](service-fabric-how-to-debug-windows-containers.md) a cikkből megtudhatja, hogyan konfigurálhatja a Windows 10 rendszert Windows-tárolók futtatására.
 >   
 
 > [!NOTE]
-> A Service Fabric-verziók 6.2-es és újabb verziók üzembe tárolókat a Windows Server 1709-es rendszert futtató fürtöket támogatja.  
+> Service Fabric 6,2-es és újabb verziók támogatják a tárolók üzembe helyezését a Windows Server 1709-es verzióján futó fürtökön.  
 > 
 
 ## <a name="define-the-docker-container"></a>A Docker-tároló definiálása
@@ -107,10 +107,12 @@ from flask import Flask
 
 app = Flask(__name__)
 
+
 @app.route("/")
 def hello():
 
     return 'Hello World!'
+
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port=80)
@@ -156,7 +158,7 @@ Ha ez a parancs nem ad vissza semmit, futtassa a következő parancsot, majd ell
 docker inspect my-web-site
 ```
 
-Csatlakozzon a futó tárolóhoz. Nyisson meg egy webböngészőt, majd az IP-címre visszaadott, például "http:\//172.31.194.61". A „Hello World!” címsornak kell megjelennie a böngészőben.
+Csatlakozzon a futó tárolóhoz. Nyisson meg egy webböngészőt, amely a visszaadott IP-címhez mutat,\/például: "http:/172.31.194.61". A „Hello World!” címsornak kell megjelennie a böngészőben.
 
 A tároló leállításához futtassa a következő parancsot:
 
@@ -175,9 +177,9 @@ docker rm my-web-site
 
 Miután ellenőrizte, hogy a tároló fut-e a fejlesztői gépen, küldje le a rendszerképet a beállításjegyzékébe az Azure Container Registryben.
 
-Futtatás ``docker login`` a tároló-beállításjegyzékbe való bejelentkezéshez a [a tárolójegyzék hitelesítő adatainak](../container-registry/container-registry-authentication.md).
+A ``docker login`` futtatásával jelentkezzen be a tároló-beállításjegyzékbe a [beállításjegyzékbeli hitelesítő adataival](../container-registry/container-registry-authentication.md).
 
-Az alábbi példában a rendszer egy Azure Active Directory [egyszerű szolgáltatás](../active-directory/develop/app-objects-and-service-principals.md) azonosítóját és jelszavát adja át. Például lehet, hogy hozzárendelt egy egyszerű szolgáltatást a beállításjegyzékhez egy automatizálási forgatókönyvhöz. Vagy nem sikerült bejelentkezni az a beállításjegyzékhez tartozó felhasználónevével és jelszavával.
+Az alábbi példában a rendszer egy Azure Active Directory [egyszerű szolgáltatás](../active-directory/develop/app-objects-and-service-principals.md) azonosítóját és jelszavát adja át. Például lehet, hogy hozzárendelt egy egyszerű szolgáltatást a beállításjegyzékhez egy automatizálási forgatókönyvhöz. Vagy bejelentkezhet a beállításjegyzék felhasználónevével és jelszavával.
 
 ```
 docker login myregistry.azurecr.io -u xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx -p myPassword
@@ -215,7 +217,7 @@ A tárolóalapú szolgáltatáshoz szükség van egy kommunikációs végpontra.
 </Resources>
 ```
 > [!NOTE]
-> A szolgáltatás további végpontok hozzáadása is lehetséges további végpont elemek és a alkalmazni tulajdonságértékek deklarálásával. Minden Port csak deklarálhatnak több protokoll értéket.
+> A szolgáltatásokhoz további végpontok is hozzáadhatók, ha további végponti elemeket deklarálnak a megfelelő tulajdonságértékek használatával. Mindegyik port csak egy protokoll értékét deklarálhatja.
 
 Egy végpont megadásával a Service Fabric közzéteszi a végpontot az elnevezési szolgáltatásban. A fürtben futó más szolgáltatások feloldhatják ezt a tárolót. Tárolók közötti kommunikációt is folytathat a [fordított proxyval](service-fabric-reverseproxy.md). A kommunikációhoz környezeti változókként adja meg a fordított proxy HTTP-figyelő portját és azon szolgáltatások nevét, amelyekkel kommunikálni kíván.
 
@@ -261,7 +263,7 @@ Konfiguráljon egy gazdagépportot a tárolóval való kommunikációhoz. A port
 </ServiceManifestImport>
 ```
 > [!NOTE]
-> A szolgáltatás további PortBindings további PortBinding elemek és a alkalmazni tulajdonságértékek deklarálásával is hozzáadhatók.
+> A szolgáltatások további PortBindings hozzáadásához deklaráljon további PortBinding elemeket a megfelelő tulajdonságértékek használatával.
 
 ## <a name="configure-container-registry-authentication"></a>Tárolóregisztrációs adatbázis hitelesítésének konfigurálása
 
@@ -336,11 +338,11 @@ NtTvlzhk11LIlae/5kjPv95r3lw6DHmV4kXLwiCNlcWPYIWBGIuspwyG+28EWSrHmN7Dt2WqEWqeNQ==
 </ServiceManifestImport>
 ```
 
-### <a name="configure-cluster-wide-credentials"></a>Fürtre kiterjedő hitelesítő adatainak konfigurálása
+### <a name="configure-cluster-wide-credentials"></a>A fürtre kiterjedő hitelesítő adatok konfigurálása
 
-6\.3 futásidejű verziótól kezdődően a Service Fabric lehetővé teszi alkalmazások által használható alapértelmezett adattár hitelesítő fürtre kiterjedő hitelesítő adatainak konfigurálása.
+Az 6,3-es verziótól kezdve a Service Fabric lehetővé teszi a fürtre érvényes hitelesítő adatok konfigurálását, amelyek az alkalmazások alapértelmezett tárházbeli hitelesítő adataiként használhatók.
 
-Engedélyezheti vagy letilthatja a szolgáltatást a `UseDefaultRepositoryCredentials` attribútumot `ContainerHostPolicies` ApplicationManifest.xml és a egy `true` vagy `false` értéket.
+Engedélyezheti vagy letilthatja a szolgáltatást úgy, `UseDefaultRepositoryCredentials` hogy `ContainerHostPolicies` hozzáadja az attribútumot a ApplicationManifest. `true` XML `false` fájlhoz a vagy a értékkel.
 
 ```xml
 <ServiceManifestImport>
@@ -354,14 +356,14 @@ Engedélyezheti vagy letilthatja a szolgáltatást a `UseDefaultRepositoryCreden
 </ServiceManifestImport>
 ```
 
-A Service Fabric majd használja az alapértelmezett adattár hitelesítő adatait, amelyeket a clustermanifest jegyzékben alatt megadhatja az `Hosting` szakaszban.  Ha `UseDefaultRepositoryCredentials` van `true`, Service Fabric a clustermanifest jegyzékben olvassa be a következő értékeket:
+Service Fabric ezután az alapértelmezett adattár hitelesítő adatait használja, amelyet a `Hosting` szakasz ClusterManifest adhat meg.  Ha `UseDefaultRepositoryCredentials` a `true`értéke, Service Fabric beolvassa a következő értékeket a ClusterManifest:
 
 * DefaultContainerRepositoryAccountName (string)
-* DefaultContainerRepositoryPassword (string)
+* DefaultContainerRepositoryPassword (karakterlánc)
 * IsDefaultContainerRepositoryPasswordEncrypted (bool)
-* (Karakterlánc)---DefaultContainerRepositoryPasswordType támogatott 6.4-es futásidejű kezdve
+* A DefaultContainerRepositoryPasswordType (string)---a 6,4 futtatókörnyezettől kezdődően támogatott
 
-Íme egy példa belül is hozzáadhat a `Hosting` szakaszt az ClusterManifestTemplate.json fájlban. A `Hosting` szakasz hozzáadhatók a fürt létrehozásakor vagy később, a konfiguráció frissítése. További információkért lásd: [módosítása az Azure Service Fabric-fürt beállítások](service-fabric-cluster-fabric-settings.md) és [titkos alkalmazáskulcsok kezelése az Azure Service Fabric](service-fabric-application-secret-management.md)
+Íme egy példa arra, hogy mit adhat hozzá a `Hosting` ClusterManifestTemplate. JSON fájl szakaszához. A `Hosting` szakasz a fürt létrehozásakor vagy később is hozzáadható a konfiguráció frissítéséhez. További információ: az [azure Service Fabric-fürt beállításainak módosítása](service-fabric-cluster-fabric-settings.md) és az [Azure Service Fabric alkalmazás-titkok kezelése](service-fabric-application-secret-management.md)
 
 ```json
 "fabricSettings": [
@@ -395,7 +397,7 @@ A Service Fabric majd használja az alapértelmezett adattár hitelesítő adata
 ```
 
 ## <a name="configure-isolation-mode"></a>Az elkülönítési mód konfigurálása
-A Windows a tárolók két elkülönítési módját támogatja: a folyamatalapú és a Hyper-V módot. Folyamatelkülönítési módban az ugyanazon a gazdagépen futó összes tároló ugyanazt a kernelt használja, mint a gazdagép. Hyper-V elkülönítési módban az egyes Hyper-V tárolók és a tároló gazdagép kernelei elkülönülnek. Az elkülönítési mód az alkalmazásjegyzék-fájl `ContainerHostPolicies` elemében van meghatározva. A megadható elkülönítési módok a következők: `process`, `hyperv` és `default`. Az alapértelmezett érték folyamatelkülönítési mód a Windows Server-gazdagépeken. A Windows 10-gazdagépeken csak a Hyper-V elkülönítési módban támogatott, így a tároló fut a Hyper-V elkülönítési módban az elkülönítési mód beállítástól függetlenül. A következő kódrészlet azt mutatja be, hogyan van határozható meg az elkülönítési mód az alkalmazásjegyzék-fájlban.
+A Windows a tárolók két elkülönítési módját támogatja: a folyamatalapú és a Hyper-V módot. Folyamatelkülönítési módban az ugyanazon a gazdagépen futó összes tároló ugyanazt a kernelt használja, mint a gazdagép. Hyper-V elkülönítési módban az egyes Hyper-V tárolók és a tároló gazdagép kernelei elkülönülnek. Az elkülönítési mód az alkalmazásjegyzék-fájl `ContainerHostPolicies` elemében van meghatározva. A megadható elkülönítési módok a következők: `process`, `hyperv` és `default`. Az alapértelmezett érték a Windows Server rendszerű gazdagépeken futó elkülönítési mód. Windows 10 rendszerű gazdagépeken csak a Hyper-V elkülönítési mód támogatott, így a tároló a Hyper-V elkülönítési módban fut, függetlenül az elkülönítési mód beállításától. A következő kódrészlet azt mutatja be, hogyan van határozható meg az elkülönítési mód az alkalmazásjegyzék-fájlban.
 
 ```xml
 <ContainerHostPolicies CodePackageRef="Code" Isolation="hyperv">
@@ -406,7 +408,7 @@ A Windows a tárolók két elkülönítési módját támogatja: a folyamatalap�
    >
 
 ## <a name="configure-resource-governance"></a>Az erőforrás-szabályozás konfigurálása
-Az [erőforrás-szabályozás](service-fabric-resource-governance.md) korlátozza a tároló által a gazdagépen használható erőforrásokat. Az alkalmazásjegyzékben megadott `ResourceGovernancePolicy` elemmel határozhatók meg erőforráskorlátok a szolgáltatások kódcsomagjaihoz. Erőforráskorlátok állíthat be az alábbi forrásanyagokat: A memória, MemorySwap, CpuShares (CPU relatív súlya), MemoryReservationInMB, BlkioWeight (BlockIO relatív súlya). Ebben a példában a Guest1Pkg szolgáltatáscsomag egy magot kap a fürtcsomópontokon, amelyekre el van helyezve. A memóriakorlátok abszolútak, ezért a kódcsomag 1024 MB memóriára van korlátozva (és ugyanennyi a gyenge garanciás foglalás). A kódcsomagok (tárolók vagy folyamatok) nem tudnak ennél a korlátnál több memóriát lefoglalni, és ennek megkísérlése memóriahiány miatti kivételt eredményez. Az erőforráskorlát érvényesítéséhez a szolgáltatáscsomagokban lévő minden kódcsomaghoz memóriakorlátokat kell meghatároznia.
+Az [erőforrás-szabályozás](service-fabric-resource-governance.md) korlátozza a tároló által a gazdagépen használható erőforrásokat. Az alkalmazásjegyzékben megadott `ResourceGovernancePolicy` elemmel határozhatók meg erőforráskorlátok a szolgáltatások kódcsomagjaihoz. Az erőforrás-korlátok a következő erőforrásokhoz állíthatók be: Memória, MemorySwap, CpuShares (CPU relatív súlya), MemoryReservationInMB, BlkioWeight (BlockIO relatív súlya). Ebben a példában a Guest1Pkg szolgáltatáscsomag egy magot kap a fürtcsomópontokon, amelyekre el van helyezve. A memóriakorlátok abszolútak, ezért a kódcsomag 1024 MB memóriára van korlátozva (és ugyanennyi a gyenge garanciás foglalás). A kódcsomagok (tárolók vagy folyamatok) nem tudnak ennél a korlátnál több memóriát lefoglalni, és ennek megkísérlése memóriahiány miatti kivételt eredményez. Az erőforráskorlát érvényesítéséhez a szolgáltatáscsomagokban lévő minden kódcsomaghoz memóriakorlátokat kell meghatároznia.
 
 ```xml
 <ServiceManifestImport>
@@ -421,7 +423,7 @@ Az [erőforrás-szabályozás](service-fabric-resource-governance.md) korlátozz
 
 A 6.1-es verzióval kezdődően a Service Fabric automatikusan integrálja a [docker HEALTHCHECK](https://docs.docker.com/engine/reference/builder/#healthcheck) eseményeket a rendszerállapot-jelentésbe. Ez azt jelenti, hogy ha a tárolón engedélyezett a **HEALTHCHECK**, a Service Fabric jelenti az állapotát, valahányszor a tároló állapota módosul a Docker jelentése szerint. Egy **OK** állapotjelentés jelenik meg a [Service Fabric Explorerben](service-fabric-visualizing-your-cluster.md), amikor a *health_status* értéke *healthy* (megfelelő), és egy **WARNING** jelenik meg, ha a *health_status* értéke *unhealthy* (nem megfelelő). 
 
-V6.4 a legújabb frissítés kiadásával kezdődően, hogy adhat meg, hogy docker HEALTHCHECK értékelések kell jelenteni a hibát. Ha ez a beállítás engedélyezve van, egy **OK** állapotjelentés jelenik, mikor *health_status* van *kifogástalan* és **hiba** fog megjelenni, amikor *health_status* van *nem megfelelő állapotú*.
+A v 6.4 legújabb frissítésének megkezdése után lehetősége van megadnia, hogy a Docker HEALTHCHECK-értékelések hibát jelentsenek. Ha ez a beállítás engedélyezve van, a *health_status* *kifogástalan* **állapotba** kerül, és a **hiba** akkor jelenik meg, ha a *health_status* *állapota*nem megfelelő.
 
 A tároló állapotának monitorozása céljából ténylegesen elvégzett ellenőrzésre mutató **HEALTHCHECK** utasításnak szerepelnie kell a tárolórendszerkép létrehozásához használt Docker-fájlban.
 
@@ -445,11 +447,11 @@ A **HEALTHCHECK** viselkedését konfigurálhatja az egyes tárolókhoz, ha mega
     </Policies>
 </ServiceManifestImport>
 ```
-Alapértelmezés szerint *IncludeDockerHealthStatusInSystemHealthReport* értékre van állítva **igaz**, *RestartContainerOnUnhealthyDockerHealthStatus* értékre van állítva  **FALSE (hamis)** , és *TreatContainerUnhealthyStatusAsError* értékre van állítva **hamis**. 
+Alapértelmezés szerint a *IncludeDockerHealthStatusInSystemHealthReport* értéke **true (igaz**), a *RestartContainerOnUnhealthyDockerHealthStatus* értéke false ( **hamis**), és a *TreatContainerUnhealthyStatusAsError* értéke false (hamis). . 
 
 Ha a *RestartContainerOnUnhealthyDockerHealthStatus* beállítása **true**, egy újra és újra nem megfelelő állapotúnak jelentett tároló újraindul (lehetőleg más csomópontokon).
 
-Ha *TreatContainerUnhealthyStatusAsError* értékre van állítva **igaz**, **hiba** rendszerállapot-jelentések fog megjelenni, ha a tároló *health_status*van *nem megfelelő állapotú*.
+Ha a *TreatContainerUnhealthyStatusAsError* értéke **true (igaz**), akkor a **hiba** állapotáról szóló jelentések akkor jelennek meg, ha a tároló *health_status* *állapota*nem megfelelő.
 
 Ha az egész Service Fabric-fürthöz le szeretné tiltani a **HEALTHCHECK** integrációját, az [EnableDockerHealthCheckIntegration](service-fabric-cluster-fabric-settings.md) elemet **false** értékre kell állítania.
 
@@ -460,9 +462,9 @@ A **Kapcsolati végpont** területen adja meg a fürt kezelési végpontját, p�
 
 Kattintson a **Publish** (Közzététel) gombra.
 
-A [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) egy webalapú eszköz az alkalmazások és csomópontok vizsgálatához és kezeléséhez a Service Fabric-fürtökben. Nyisson meg egy böngészőt, lépjen a http://containercluster.westus2.cloudapp.azure.com:19080/Explorer/ helyre, és kövesse az alkalmazás üzembe helyezését. Az alkalmazás helyez üzembe, azonban hibaállapotban van, amíg a rendszerkép le nem töltődik a fürtcsomópontokra (ami a rendszerkép méretétől függően némi időt vehet igénybe): ![Hiba történt][1]
+A [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) egy webalapú eszköz az alkalmazások és csomópontok vizsgálatához és kezeléséhez a Service Fabric-fürtökben. Nyisson meg egy böngészőt, lépjen a http://containercluster.westus2.cloudapp.azure.com:19080/Explorer/ helyre, és kövesse az alkalmazás üzembe helyezését. Az alkalmazás üzembe helyezése azonban hiba állapotban van, amíg a lemezkép le nem töltődik a fürtcsomópontokon (ami hosszabb időt is igénybe vehet a lemezkép méretétől függően): ![Hiba][1]
 
-Az alkalmazás készen áll, amikor ```Ready``` állapota: ![Készen áll][2]
+Az alkalmazás készen áll, ha ```Ready``` állapota: ![Készen][2]
 
 Nyisson meg egy böngészőt, majd lépjen a következő helyre: http://containercluster.westus2.cloudapp.azure.com:8081. A „Hello World!” címsornak kell megjelennie a böngészőben.
 
@@ -477,34 +479,34 @@ docker rmi helloworldapp
 docker rmi myregistry.azurecr.io/samples/helloworldapp
 ```
 
-## <a name="windows-server-container-os-and-host-os-compatibility"></a>Windows Server-tárolót az operációs rendszer és a gazdagép operációsrendszer-kompatibilitás
+## <a name="windows-server-container-os-and-host-os-compatibility"></a>A Windows Server Container operációs rendszer és a gazdagép operációs rendszerének kompatibilitása
 
-A Windows Server-tárolók nem kompatibilisek a keresztül a gazda operációs rendszer összes verziójára. Példa:
+A Windows Server-tárolók nem kompatibilisek a gazdagép operációs rendszerének összes verziójával. Példa:
  
-- Windows Server-tárolók felhasználásával a Windows Server 1709-es nem működik egy Windows Server 2016 verziót futtató gazdagépen. 
-- A Windows Server 2016 használatával létrehozott Windows Server-tárolók csak a Windows Server 1709-es rendszerű gazdagépen a Hyper-V elkülönítési módban működik. 
-- A Windows Server 2016 használatával létrehozott Windows Server-tárolók szükség lehet annak érdekében, hogy a tároló az operációs rendszer és a gazdagép operációs Rendszeréhez változatát ugyanaz a Windows Server 2016 rendszerű gazdagépen folyamatelkülönítési módban való futtatáskor.
+- A Windows Server 1709-es verziójának használatával létrehozott Windows Server-tárolók nem működnek a Windows Server 2016-es verzióját futtató gazdagépeken. 
+- A Windows Server 2016 használatával létrehozott Windows Server-tárolók Hyper-V elkülönítési módban működnek, csak a Windows Server 1709-es verzióját futtató gazdagépeken. 
+- A Windows Server 2016-et használó Windows Server-tárolók esetében szükség lehet annak biztosítására, hogy a tároló operációs rendszer és a gazdagép operációs rendszerének változata azonos legyen a Windows Server 2016 rendszert futtató gazdagépen futó folyamatok elkülönítési módjában.
  
-További tudnivalókért lásd: [Windows-tárolók verzióinak kompatibilitása](https://docs.microsoft.com/virtualization/windowscontainers/deploy-containers/version-compatibility).
+További információ: a [Windows-tároló verziójának kompatibilitása](https://docs.microsoft.com/virtualization/windowscontainers/deploy-containers/version-compatibility).
 
-Fontolja meg a gazda operációs rendszer és a tároló létrehozásához, és a tárolók a Service Fabric-fürt üzembe helyezése operációs rendszer kompatibilitását. Példa:
+Vegye figyelembe a gazdagép operációs rendszerének és a tároló operációs rendszerének kompatibilitását a tárolók Service Fabric-fürtön való létrehozásakor és telepítésekor. Példa:
 
-- Ellenőrizze, hogy telepít egy operációsrendszer-kompatibilis az operációs rendszerrel rendelkező tárolók a fürtcsomópontokon.
-- Győződjön meg arról, hogy az elkülönítési mód, a tároló-alkalmazáshoz megadott konzisztensek legyenek a tároló az operációs rendszer a csomóponton, ahol azt parancsfájlműveletekkel támogatása.
-- Fontolja meg, hogyan a fürtcsomópontok vagy a tárolók operációs rendszer verziófrissítései való kompatibilitás hatással lehet. 
+- Győződjön meg arról, hogy a fürt csomópontjain lévő operációs rendszernek megfelelő operációs rendszerrel rendelkező tárolókat telepít.
+- Győződjön meg arról, hogy a tároló alkalmazáshoz megadott elkülönítési mód konzisztens a tároló operációs rendszer azon csomópontjának támogatásával, amelyen üzembe van helyezve.
+- Vegye figyelembe, hogy az operációs rendszernek a fürtcsomópontok vagy tárolók számára történő frissítése hatással lehet a kompatibilitásra. 
 
-Azt javasoljuk, hogy az alábbi eljárásokat, győződjön meg arról, hogy tárolók üzembe helyezése megfelelően a Service Fabric-fürtön:
+A következő eljárásokkal gondoskodhat arról, hogy a tárolók megfelelően legyenek telepítve a Service Fabric-fürtön:
 
-- A Docker-rendszerképeket az explicit képcímkézés használatával adja meg, amely egy tároló a Windows Server operációs rendszer verzióját. 
-- Használat [OS címkézés](#specify-os-build-specific-container-images) az Alkalmazásjegyzék-fájl, ügyeljen arra, hogy az alkalmazás kompatibilis különböző Windows Server-verziók és a frissítések a.
+- Használjon explicit képcímkézést a Docker-rendszerképekkel annak a Windows Server operációs rendszernek a verziójának megadásához, amelyből egy tároló készült. 
+- Használja az [operációsrendszer](#specify-os-build-specific-container-images) -címkézést az alkalmazás jegyzékfájljában annak biztosításához, hogy az alkalmazás kompatibilis legyen a különböző Windows Server-verziók és-frissítések között.
 
 > [!NOTE]
-> A Service Fabric 6.2-es és újabb verziók tárolók, a Windows 10 rendszerű gazdagépen helyileg a Windows Server 2016 alapján telepítheti. Windows 10-es, a tárolók futtassa a Hyper-V folyamatelkülönítési módban az elkülönítési mód az alkalmazásjegyzék beállított függetlenül. További tudnivalókért lásd: [elkülönítési mód konfigurálása](#configure-isolation-mode).   
+> A Service Fabric 6,2-es és újabb verzióiban a Windows Server 2016-alapú tárolókat helyileg telepítheti Windows 10 rendszerű gazdagépen. Windows 10 rendszeren a tárolók Hyper-V elkülönítési módban futnak, az alkalmazás jegyzékfájljában beállított elkülönítési módtól függetlenül. További információ: az [elkülönítési mód konfigurálása](#configure-isolation-mode).   
 >
  
 ## <a name="specify-os-build-specific-container-images"></a>Specifikus tárolórendszerképek megadása az operációs rendszer buildje alapján 
 
-A Windows Server-tárolók előfordulhat, hogy nem kompatibilis az operációs rendszer különböző verzióiban. Például a Windows Server 2016 használatával létrehozott Windows Server-tárolók nem működnek a Windows Server 1709-es folyamatelkülönítési módban az. Ezért ha a fürtcsomópontok frissítve lett, hogy a legújabb verzióra, az operációs rendszer korábbi verzióival létrehozott tárolószolgáltatások sikertelen lehet. Ez a és újabb, a futtatókörnyezet 6.1-es verzió megkerüli, a Service Fabric támogatja a megadásával több operációsrendszer-lemezképet, és a címkézés azokat az operációs rendszer az alkalmazásjegyzékben verzióiban. Az operációs rendszer buildverziója lekéréséhez futtassa `winver` Windows parancsot a parancssorba. Frissítse az alkalmazásjegyzékeket, és operációsrendszer-verziónként adjon meg külön rendszerkép-felülbírálásokat, mielőtt frissítené az operációs rendszert a csomópontokon. A következő kódrészlet azt mutatja be, hogyan adható meg több tároló-rendszerkép az **ApplicationManifest.xml** alkalmazásjegyzék-fájlban:
+Előfordulhat, hogy a Windows Server-tárolók nem kompatibilisek az operációs rendszer különböző verzióival. A Windows Server 2016-et használó Windows Server-tárolók például nem működnek a Windows Server 1709-es verziójában a folyamat elkülönítési üzemmódjában. Ezért ha a fürtcsomópontok a legújabb verzióra frissülnek, az operációs rendszer korábbi verzióival létrehozott Container Services sikertelen lehet. Ha meg szeretné kerülni ezt a futtatókörnyezet 6,1-es verziójával, Service Fabric támogatja a több operációsrendszer-lemezkép megadását a tárolóban, és az operációs rendszer kiépítésével megjelöli azokat az alkalmazás-jegyzékfájlban található operációsrendszer-verziókkal. Az operációs rendszer kiépítési verzióját Windows-parancssorban futtatva `winver` érheti el. Frissítse az alkalmazásjegyzékeket, és operációsrendszer-verziónként adjon meg külön rendszerkép-felülbírálásokat, mielőtt frissítené az operációs rendszert a csomópontokon. A következő kódrészlet azt mutatja be, hogyan adható meg több tároló-rendszerkép az **ApplicationManifest.xml** alkalmazásjegyzék-fájlban:
 
 
 ```xml
@@ -632,7 +634,7 @@ NtTvlzhk11LIlae/5kjPv95r3lw6DHmV4kXLwiCNlcWPYIWBGIuspwyG+28EWSrHmN7Dt2WqEWqeNQ==
 
 ## <a name="configure-time-interval-before-container-is-force-terminated"></a>A tároló kényszerített leállítását megelőző időköz beállítása
 
-Konfigurálhat egy időintervallumot a futtatókörnyezet számára, ezzel megadva, hogy az mennyit várjon a tároló eltávolítása előtt, miután megkezdődött a szolgáltatás törlése (vagy másik csomópontba áthelyezése). Az időintervallum konfigurálásával a `docker stop <time in seconds>` parancsot küldi a tárolónak.  További információ: [docker stop](https://docs.docker.com/engine/reference/commandline/stop/). A várakozási időköz a `Hosting` szakaszban van meghatározva. A `Hosting` szakasz hozzáadhatók a fürt létrehozásakor vagy később, a konfiguráció frissítése. Az alábbi fürtjegyzék kódrészlete azt mutatja be, hogyan adható meg a várakozási időköz:
+Konfigurálhat egy időintervallumot a futtatókörnyezet számára, ezzel megadva, hogy az mennyit várjon a tároló eltávolítása előtt, miután megkezdődött a szolgáltatás törlése (vagy másik csomópontba áthelyezése). Az időintervallum konfigurálásával a `docker stop <time in seconds>` parancsot küldi a tárolónak.  További információ: [docker stop](https://docs.docker.com/engine/reference/commandline/stop/). A várakozási időköz a `Hosting` szakaszban van meghatározva. A `Hosting` szakasz a fürt létrehozásakor vagy később is hozzáadható a konfiguráció frissítéséhez. Az alábbi fürtjegyzék kódrészlete azt mutatja be, hogyan adható meg a várakozási időköz:
 
 ```json
 "fabricSettings": [
@@ -654,7 +656,7 @@ Az alapértelmezett időintervallum 10 másodperc. Mivel ez egy dinamikus konfig
 
 ## <a name="configure-the-runtime-to-remove-unused-container-images"></a>Futtatókörnyezet konfigurálása a nem használt tárolórendszerképek eltávolításához
 
-A Service Fabric-fürtöt úgy is konfigurálhatja, hogy eltávolítsa a nem használt tárolórendszerképeket a csomópontról. Ez a konfiguráció lehetővé teszi a lemezterület visszanyerését, ha túl sok tárolórendszerkép található a csomóponton. Ez a funkció engedélyezéséhez frissítse a [üzemeltetési](service-fabric-cluster-fabric-settings.md#hosting) a fürtjegyzék szakasz az alábbi kódrészletben látható módon: 
+A Service Fabric-fürtöt úgy is konfigurálhatja, hogy eltávolítsa a nem használt tárolórendszerképeket a csomópontról. Ez a konfiguráció lehetővé teszi a lemezterület visszanyerését, ha túl sok tárolórendszerkép található a csomóponton. A szolgáltatás engedélyezéséhez frissítse a fürt jegyzékfájljának [üzemeltetési](service-fabric-cluster-fabric-settings.md#hosting) szakaszát az alábbi kódrészletben látható módon: 
 
 
 ```json

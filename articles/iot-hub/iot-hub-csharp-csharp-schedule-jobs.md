@@ -1,6 +1,6 @@
 ---
-title: Az Azure IoT Hub (.NET/.NET) feladatok ütemezéséhez |} A Microsoft Docs
-description: Hogyan lehet a több eszközre közvetlen metódus meghívása egy Azure IoT Hub-feladat ütemezése. Az Azure IoT eszközoldali SDK for .NET használatával valósítható meg a szimulált eszközalkalmazások és a egy service-alkalmazás a feladat futtatásához.
+title: Feladatok ütemezhetnek az Azure IoT Hub (.NET/.NET) használatával | Microsoft Docs
+description: Azure IoT Hub-feladatok ütemezésének beütemezés közvetlen metódus több eszközön való meghívásához. A .NET-hez készült Azure IoT eszközoldali SDK segítségével implementálhatja a szimulált eszköz alkalmazásait és egy szolgáltatási alkalmazást a feladatok futtatásához.
 author: robinsh
 manager: philmea
 ms.service: iot-hub
@@ -8,75 +8,71 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 03/06/2018
 ms.author: robinsh
-ms.openlocfilehash: f21f1eed6babee52f30c6eccc79f88dc7bee5d58
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: aceb90dbaf87ba621837c047eb114bc9be4b822e
+ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65864481"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68402663"
 ---
-# <a name="schedule-and-broadcast-jobs-netnet"></a>Feladatok ütemezése és kiküldése (.NET/.NET)
+# <a name="schedule-and-broadcast-jobs-netnet"></a>Feladatok ütemezett és szórása (.NET/.NET)
 
 [!INCLUDE [iot-hub-selector-schedule-jobs](../../includes/iot-hub-selector-schedule-jobs.md)]
 
-Azure IoT Hub használatával ütemezheti és nyomon követheti a feladatok, amely több millió eszköz frissítése. Feladatok használata:
+Az Azure IoT Hub használatával több millió eszközt frissítő feladatokat ütemezhet és követhet nyomon. Feladatok használata a következőhöz:
 
 * Eszköz kívánt tulajdonságainak frissítése
-* A címkék frissítése
+* Címkék frissítése
 * Közvetlen metódusok meghívása
 
-Egy feladat burkolja az alábbi műveletek egyikét, és nyomon követi a végrehajtás egy eszköz ikereszköz-lekérdezés által meghatározott eszközök készlete alapján. Például egy háttér-alkalmazás használatával egy feladat közvetlen metódus meghívása az 10 000 eszköz, amely az eszköz újraindul. Adjon meg az eszközök device twin lekérdezéssel, és a feladat futtatásához egy későbbi időpontban ütemezése. Mivel minden egyes, az eszköz előrehaladását nyomon követi kap, és hajtsa végre az újraindítás közvetlen metódus.
+A feladatok az egyik műveletet betakarják, és nyomon követik a végrehajtást az eszköz kettős lekérdezése által meghatározott eszközök készletén. Például egy háttérbeli alkalmazás felhasználhat egy közvetlen metódust az 10 000-es eszközökön, amelyek újraindítják az eszközöket. Megadhatja az eszköz dupla lekérdezéssel rendelkező eszközök készletét, és ütemezheti a feladatot, hogy a későbbiekben fusson. A feladatok nyomon követik az előrehaladást, mivel minden eszköz megkapja és végrehajtja a közvetlen újraindítási módszert.
 
-Az egyes képességek kapcsolatos további információkért lásd:
+Ha többet szeretne megtudni ezekről a képességekről, tekintse meg a következőt:
 
-* Ikereszköz és tulajdonságok: [Ikereszközök – első lépések](iot-hub-csharp-csharp-twin-getstarted.md) és [oktatóanyag: Eszköz-ikertulajdonságok használata](tutorial-device-twins.md)
+* Eszköz Twin és tulajdonságai: [Ismerkedés az eszközök ikrekkel](iot-hub-csharp-csharp-twin-getstarted.md) és [oktatóanyaggal: Az eszköz Twin tulajdonságainak használata](tutorial-device-twins.md)
 
-* Közvetlen metódusok: [Az IoT Hub fejlesztői útmutató – közvetlen metódusok](iot-hub-devguide-direct-methods.md) és [oktatóanyag: Közvetlen metódusok használata](quickstart-control-device-dotnet.md)
+* Közvetlen metódusok: [IoT hub fejlesztői útmutató – közvetlen](iot-hub-devguide-direct-methods.md) metódusok [és oktatóanyag: Közvetlen metódusok használata](quickstart-control-device-dotnet.md)
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
 Ez az oktatóanyag a következőket mutatja be:
 
-* Egy eszközalkalmazás létrehozása, amely megvalósítja a meghívott közvetlen metódusra **LockDoor** , amely a háttéralkalmazás meghívható.
+* Hozzon létre egy **LockDoor** nevű közvetlen metódust megvalósító eszközt, amely a háttérbeli alkalmazás által hívható.
 
-* Hozzon létre egy háttér-alkalmazást, amely létrehoz egy feladatot, amely hívja az **LockDoor** közvetlen metódus több eszközön. Egy másik feladat több eszközre elküldi a kívánt tulajdonság frissítéseket.
+* Hozzon létre egy háttérbeli alkalmazást, amely létrehoz egy feladatot a **LockDoor** Direct metódus több eszközön való meghívásához. Egy másik feladatot a kívánt tulajdonságok frissítései több eszközre küldenek.
 
-Ez az oktatóanyag végén két .NET (C#)-konzolalkalmazással fog rendelkezni:
+Az oktatóanyag végén két .NET (C#) konzol-alkalmazás található:
 
-**SimulateDeviceMethods** , amely csatlakozik az IoT hub és valósítja meg a **LockDoor** közvetlen metódust.
+Az IoT hub-hoz csatlakozó **SimulateDeviceMethods** és a **LockDoor** Direct metódus implementálása.
 
-**ScheduleJob** feladatok használatával, amely meghívja a **LockDoor** közvetlen metódust, és több eszközön az ikereszköz kívánt tulajdonságait frissíti.
+**ScheduleJob** , amely feladatokkal hívja meg a **LockDoor** Direct metódust, és frissíti az eszköz két kívánt tulajdonságát több eszközön.
 
 Az oktatóanyag teljesítéséhez a következőkre lesz szüksége:
 
 * Visual Studio.
-* Aktív Azure-fiók. Ha nincs fiókja, létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/pricing/free-trial/) mindössze néhány perc alatt.
+* Aktív Azure-fiók. Ha nem rendelkezik fiókkal, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/pricing/free-trial/) .
 
 ## <a name="create-an-iot-hub"></a>IoT Hub létrehozása
 
 [!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
 
-### <a name="retrieve-connection-string-for-iot-hub"></a>Az IoT hub kapcsolati karakterlánc
-
-[!INCLUDE [iot-hub-include-find-connection-string](../../includes/iot-hub-include-find-connection-string.md)]
-
-## <a name="register-a-new-device-in-the-iot-hub"></a>Új eszköz regisztrálása az IoT hubban
+## <a name="register-a-new-device-in-the-iot-hub"></a>Új eszköz regisztrálása az IoT hub-ban
 
 [!INCLUDE [iot-hub-include-create-device](../../includes/iot-hub-include-create-device.md)]
 
 ## <a name="create-a-simulated-device-app"></a>Szimulált eszközalkalmazás létrehozása
 
-Ebben a szakaszban egy .NET-konzolalkalmazást, amely teljes vissza a megoldás által meghívott közvetlen metódusra válaszol hoz létre.
+Ebben a szakaszban egy olyan .NET-konzol alkalmazást hoz létre, amely a megoldás hátterében meghívott közvetlen metódusra válaszol.
 
-1. A Visual Studióban adjon hozzá egy Visual C# nyelvű Windows klasszikus asztalialkalmazás-projektet az aktuális megoldáshoz a **Console Application** (Konzolalkalmazás) projektsablonnal. Adja a projektnek **SimulateDeviceMethods**.
+1. A Visual Studióban adjon hozzá egy Visual C# nyelvű Windows klasszikus asztalialkalmazás-projektet az aktuális megoldáshoz a **Console Application** (Konzolalkalmazás) projektsablonnal. Nevezze el a projekt **SimulateDeviceMethods**.
    
-    ![Új Visual C# Windows klasszikus eszközalkalmazás](./media/iot-hub-csharp-csharp-schedule-jobs/create-device-app.png)
+    ![Új Visual C# Windows klasszikus eszköz alkalmazás](./media/iot-hub-csharp-csharp-schedule-jobs/create-device-app.png)
     
-2. A Megoldáskezelőben kattintson a jobb gombbal a **SimulateDeviceMethods** projektre, és kattintson a **NuGet-csomagok kezelése...** .
+2. Megoldáskezelő kattintson a jobb gombbal a **SimulateDeviceMethods** projektre, majd kattintson a **NuGet-csomagok kezelése..** . elemre.
 
-3. Az a **NuGet-Csomagkezelő** ablakban válassza **Tallózás** és keressen rá a **Microsoft.Azure.Devices.Client**. Válassza ki **telepítése** telepítéséhez a **Microsoft.Azure.Devices.Client** csomagot, és fogadja el a használati feltételeket. Ez az eljárás letölti, telepíti, és hozzáad egy hivatkozást a [Azure IoT eszközoldali SDK-t](https://www.nuget.org/packages/Microsoft.Azure.Devices.Client/) NuGet csomagot és annak függőségeit.
+3. A **NuGet csomagkezelő** ablakban válassza a **Tallózás** lehetőséget, és keresse meg a **Microsoft. Azure. Devices. Client**elemet. Válassza a **telepítés** lehetőséget a **Microsoft. Azure. Devices. Client** csomag telepítéséhez, és fogadja el a használati feltételeket. Ez az eljárás letölti, telepíti és hozzáadja az [Azure IoT Device SDK](https://www.nuget.org/packages/Microsoft.Azure.Devices.Client/) NuGet csomagra és annak függőségeire mutató hivatkozást.
    
-    ![NuGet-Csomagkezelő ablak ügyfélalkalmazás](./media/iot-hub-csharp-csharp-schedule-jobs/device-app-nuget.png)
+    ![NuGet csomagkezelő ablak ügyfélalkalmazás](./media/iot-hub-csharp-csharp-schedule-jobs/device-app-nuget.png)
 
 4. Adja hozzá a következő `using` utasításokat a **Program.cs** fájl elejéhez:
    
@@ -86,14 +82,14 @@ Ebben a szakaszban egy .NET-konzolalkalmazást, amely teljes vissza a megoldás 
     using Newtonsoft.Json;
     ```
 
-5. Adja hozzá a **Program** osztályhoz a következő mezőket: A helyőrző értékét cserélje le az eszköz, amely az előző szakaszban feljegyzett kapcsolati karakterláncát:
+5. Adja hozzá a **Program** osztályhoz a következő mezőket: Cserélje le a helyőrző értékét az előző szakaszban feljegyzett eszköz-összekapcsolási sztringre:
 
     ```csharp
     static string DeviceConnectionString = "<yourDeviceConnectionString>";
     static DeviceClient Client = null;
     ```
 
-6. Adja hozzá a következő, a közvetlen metódus megvalósításához az eszközön:
+6. Adja hozzá a következőt a közvetlen metódus megvalósításához az eszközön:
 
     ```csharp
     static Task<MethodResponse> LockDoor(MethodRequest methodRequest, object userContext)
@@ -107,7 +103,7 @@ Ebben a szakaszban egy .NET-konzolalkalmazást, amely teljes vissza a megoldás 
     }
     ```
 
-7. Adja hozzá a következő, a device twins figyelő megvalósításához az eszközön:
+7. Adja hozzá a következőt az eszköz Twins-figyelő megvalósításához az eszközön:
 
     ```csharp
     private static async Task OnDesiredPropertyChanged(TwinCollection desiredProperties, 
@@ -118,7 +114,7 @@ Ebben a szakaszban egy .NET-konzolalkalmazást, amely teljes vissza a megoldás 
     }
     ```
 
-8. Végül adja hozzá a következő kódot a **fő** metódus az IoT hub-kapcsolat megnyitásához, és a metódus figyelő inicializálása:
+8. Végül adja hozzá a következő kódot a **Main** metódushoz a IoT hub-hoz való kapcsolódás megnyitásához és a metódus-figyelő inicializálásához:
    
     ```csharp
     try
@@ -145,23 +141,29 @@ Ebben a szakaszban egy .NET-konzolalkalmazást, amely teljes vissza a megoldás 
     }
     ```
         
-9. Mentse a munkáját, és a megoldás felépítéséhez.         
+9. Mentse a munkáját, és hozza létre a megoldását.         
 
 > [!NOTE]
-> Az egyszerűség kedvéért ez az oktatóanyag nem valósít meg semmilyen újrapróbálkozási házirendet. Az éles kódban újrapróbálkozási házirendeket (például az újrapróbálkozási), a cikkben leírtak implementálandó [átmeneti hibák kezelésével](/azure/architecture/best-practices/transient-faults).
+> Az egyszerűség kedvéért ez az oktatóanyag nem valósít meg semmilyen újrapróbálkozási házirendet. Az éles kódban az újrapróbálkozási házirendeket (például a kapcsolatok újrapróbálkozását) kell végrehajtania, ahogy azt a cikkben is ismertetjük, az [átmeneti hibák kezelésére](/azure/architecture/best-practices/transient-faults).
 > 
 
-## <a name="schedule-jobs-for-calling-a-direct-method-and-sending-device-twin-updates"></a>Feladatok ütemezése a közvetlen metódus meghívása, és az ikereszköz-frissítések küldéséhez
+## <a name="get-the-iot-hub-connection-string"></a>Az IoT hub-beli kapcsolatok karakterláncának beolvasása
 
-Ebben a szakaszban konzolalkalmazást hoz létre egy .NET (C# használatával), amely a feladatok használatával meghívja a **LockDoor** közvetlen metódust, és a kívánt tulajdonság frissítések küldése több eszközre.
+[!INCLUDE [iot-hub-howto-schedule-jobs-shared-access-policy-text](../../includes/iot-hub-howto-schedule-jobs-shared-access-policy-text.md)]
 
-1. A Visual Studióban adjon hozzá egy Visual C# nyelvű Windows klasszikus asztalialkalmazás-projektet az aktuális megoldáshoz a **Console Application** (Konzolalkalmazás) projektsablonnal. Adja a projektnek **ScheduleJob**.
+[!INCLUDE [iot-hub-include-find-registryrw-connection-string](../../includes/iot-hub-include-find-registryrw-connection-string.md)]
+
+## <a name="schedule-jobs-for-calling-a-direct-method-and-sending-device-twin-updates"></a>Feladatok ütemezhetnek közvetlen metódus hívására és az eszköz kettős frissítéseinek küldésére
+
+Ebben a szakaszban olyan .NET-konzol alkalmazást hoz létre (a C#használatával), amely feladatokkal hívja meg a **LockDoor** Direct metódust, és több eszközre küldi el a kívánt tulajdonság-frissítéseket.
+
+1. A Visual Studióban adjon hozzá egy Visual C# nyelvű Windows klasszikus asztalialkalmazás-projektet az aktuális megoldáshoz a **Console Application** (Konzolalkalmazás) projektsablonnal. Nevezze el a projekt **ScheduleJob**.
 
     ![Új Visual C# Windows klasszikus asztalialkalmazás-projekt](./media/iot-hub-csharp-csharp-schedule-jobs/createnetapp.png)
 
-2. A Megoldáskezelőben kattintson a jobb gombbal a **ScheduleJob** projektre, és kattintson a **NuGet-csomagok kezelése...** .
+2. Megoldáskezelő kattintson a jobb gombbal a **ScheduleJob** projektre, majd kattintson a **NuGet-csomagok kezelése..** . elemre.
 
-3. Az a **NuGet-Csomagkezelő** ablakban válassza **Tallózás**, keresse meg **Microsoft.Azure.Devices**, jelölje be **telepítése** telepítéséhez a **Microsoft.Azure.Devices** csomagot, és fogadja el a használati feltételeket. Ezzel a lépéssel letölti, telepíti, és hozzáad egy hivatkozást a [Azure IoT szolgáltatás SDK](https://www.nuget.org/packages/Microsoft.Azure.Devices/) NuGet csomagot és annak függőségeit.
+3. A **NuGet csomagkezelő** ablakban válassza a **Tallózás**lehetőséget, keresse meg a **Microsoft. Azure. Devices**elemet, válassza a **telepítés** lehetőséget a **Microsoft. Azure. Devices** csomag telepítéséhez, és fogadja el a használati feltételeket. Ez a lépés letölti, telepíti és hozzáadja az [Azure IoT Service SDK](https://www.nuget.org/packages/Microsoft.Azure.Devices/) NuGet csomagra és annak függőségeire mutató hivatkozást.
 
     ![NuGet Package Manager (NuGet-csomagkezelő) ablak](./media/iot-hub-csharp-csharp-schedule-jobs/servicesdknuget.png)
 
@@ -172,14 +174,14 @@ Ebben a szakaszban konzolalkalmazást hoz létre egy .NET (C# használatával), 
     using Microsoft.Azure.Devices.Shared;
     ```
 
-5. Adja hozzá a következő `using` utasítást, ha még nincs az alapértelmezett utasításokban.
+5. Ha még nem `using` szerepel az alapértelmezett utasításokban, adja hozzá a következő utasítást.
 
     ```csharp
     using System.Threading;
     using System.Threading.Tasks;
     ```
 
-6. Adja hozzá a **Program** osztályhoz a következő mezőket: A helyőrzőket cserélje le a hub, az előző szakaszban, és az eszköz nevét, amelyet az IoT Hub kapcsolati karakterláncára.
+6. Adja hozzá a **Program** osztályhoz a következő mezőket: Cserélje le a helyőrzőket a korábban átmásolt IoT Hub-kapcsolatok karakterláncára a [IoT hub](#get-the-iot-hub-connection-string) -beli kapcsolatok karakterláncának és az eszköz nevének lekérése elemre.
 
     ```csharp
     static JobClient jobClient;
@@ -222,7 +224,7 @@ Ebben a szakaszban konzolalkalmazást hoz létre egy .NET (C# használatával), 
     }
     ```
 
-9. Adjon meg egy másik metódust a **Program** osztály:
+9. Adjon hozzá egy másik metódust a **program** osztályhoz:
 
     ```csharp
     public static async Task StartTwinUpdateJob(string jobId)
@@ -247,7 +249,7 @@ Ebben a szakaszban konzolalkalmazást hoz létre egy .NET (C# használatával), 
     ```
 
     > [!NOTE]
-    > A lekérdezési szintaxissal kapcsolatos további információkért lásd: [IoT Hub lekérdezési nyelv](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-query-language).
+    > A lekérdezési szintaxissal kapcsolatos további információkért lásd: [IoT hub lekérdezési nyelv](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-query-language).
     > 
 
 10. Végül adja a következő sorokat a **Main** metódushoz:
@@ -273,24 +275,24 @@ Ebben a szakaszban konzolalkalmazást hoz létre egy .NET (C# használatával), 
     Console.ReadLine();
     ```
 
-11. Mentse a munkáját, és a megoldás felépítéséhez. 
+11. Mentse a munkáját, és hozza létre a megoldását. 
 
 ## <a name="run-the-apps"></a>Az alkalmazások futtatása
 
 Most már készen áll az alkalmazások futtatására.
 
-1. A Visual Studio Megoldáskezelőben kattintson a jobb gombbal a megoldás, és kattintson **összeállítása**. **Több kezdőprojekt**. Győződjön meg arról, hogy `SimulateDeviceMethods` követ a lista tetején van `ScheduleJob`. Mindkét azok művelet beállítása **Start** kattintson **OK**.
+1. A Visual Studio Megoldáskezelő kattintson a jobb gombbal a megoldásra, majd kattintson a **Létrehozás**parancsra. **Több indítási projekt**. Győződjön meg `SimulateDeviceMethods` arról, hogy a lista tetején található, `ScheduleJob`majd a. Állítsa be mindkét műveletét  a kezdéshez, majd kattintson **az OK**gombra.
 
-2. Futtassa a projektek kattintva **Start** , vagy a **hibakeresése** menüben, majd kattintson **hibakeresés indítása**.
+2. A projektek futtatásához kattintson a **Start** gombra, vagy lépjen a **hibakeresés** menüre, és kattintson a **hibakeresés indítása**parancsra.
 
-3. Az eszköz és a háttér-alkalmazások a kimenet jelenik meg.
+3. Az eszköz és a háttérbeli alkalmazások kimenete is megjelenik.
 
-    ![Feladatok ütemezése az alkalmazások futtatása](./media/iot-hub-csharp-csharp-schedule-jobs/schedulejobs.png)
+    ![Alkalmazások futtatása a feladatok ütemezett futtatásához](./media/iot-hub-csharp-csharp-schedule-jobs/schedulejobs.png)
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben az oktatóanyagban egy feladat ütemezése és eszköz az ikereszköz tulajdonságok frissítése egy közvetlen metódus használt.
+Ebben az oktatóanyagban egy olyan feladatot használt, amely egy közvetlen metódust ütemez egy eszközre, és az eszköz Twin tulajdonságainak frissítését.
 
-A folytatáshoz, a vezeték nélküli belső vezérlőprogram frissítésének keresztül Ismerkedés az IoT Hub és az eszközfelügyeleti minták például távolról, olvassa el a [oktatóanyag: Belső vezérlőprogram frissítése annak](tutorial-firmware-update.md).
+Ha továbbra is szeretné megkezdeni a IoT hub és az eszközkezelés mintáit, például a távoli belső [vezérlőprogram frissítését, olvassa el a következő oktatóanyagot: A belső vezérlőprogram frissítése](tutorial-firmware-update.md).
 
-Edge-eszközök mesterséges Intelligencia telepítése az Azure IoT Edge szolgáltatással kapcsolatos további információkért lásd: [Ismerkedés az IoT Edge szolgáltatással](../iot-edge/tutorial-simulate-device-linux.md).
+A mesterséges intelligenciát használó eszközök Azure IoT Edge használatával történő üzembe helyezésével kapcsolatos további információkért lásd: [Bevezetés a IoT Edge](../iot-edge/tutorial-simulate-device-linux.md)használatába.

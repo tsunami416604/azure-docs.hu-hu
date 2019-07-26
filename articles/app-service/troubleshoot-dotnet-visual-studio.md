@@ -1,6 +1,6 @@
 ---
-title: Visual Studio használatával – az Azure App Service-alkalmazások hibaelhárítása
-description: Ismerje meg, hogyan háríthatók el a távoli hibakeresés, a nyomkövetés és a naplózási eszközök a Visual Studio 2013 beépített App Service-alkalmazások.
+title: Alkalmazások hibakeresése a Visual Studio használatával – Azure App Service
+description: Megtudhatja, hogyan lehet elhárítani egy App Service alkalmazást a Visual Studio 2013-be beépített távoli hibakeresési, nyomkövetési és naplózási eszközök használatával.
 services: app-service
 documentationcenter: .net
 author: cephalin
@@ -15,469 +15,469 @@ ms.topic: article
 ms.date: 08/29/2016
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: cbf6a44f1a3210906ec7ab0d04eecb997bc2c470
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 13ba1ced2d14ed22c89e7df594f3b2a44eea983f
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65412814"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68359956"
 ---
-# <a name="troubleshoot-an-app-in-azure-app-service-using-visual-studio"></a>Alkalmazások hibaelhárítása az Azure App Service használatával a Visual Studio-
+# <a name="troubleshoot-an-app-in-azure-app-service-using-visual-studio"></a>Alkalmazások hibakeresése Azure App Service a Visual Studióval
 ## <a name="overview"></a>Áttekintés
-Ez az oktatóanyag bemutatja, hogyan segít az alkalmazás hibakeresése a Visual Studio-eszközök használatával [App Service-ben](https://go.microsoft.com/fwlink/?LinkId=529714),-ban történő futtatásával [hibakeresési módban](https://docs.microsoft.com/visualstudio/debugger/) távolról vagy alkalmazásnaplókat és a webkiszolgáló naplóinak megtekintésével.
+Ez az oktatóanyag azt mutatja be, hogyan használható a Visual Studio Tools a [app Service](https://go.microsoft.com/fwlink/?LinkId=529714)alkalmazás hibakeresési [módban](https://docs.microsoft.com/visualstudio/debugger/) történő futtatásával, vagy az alkalmazás-naplók és a webkiszolgáló-naplók megtekintésével.
 
 Az oktatóanyagból a következőket sajátíthatja el:
 
-* Alkalmazás-felügyeleti funkciókról a Visual Studióban érhetők el.
-* Gyors módosításokat végezhet egy távoli alkalmazás a Visual Studio távoli nézete segítségével hogyan.
-* Távolról közben a projekt hibakeresési módban futtatása az Azure-ban fut, az alkalmazás- és a webjobs-feladat.
-* Hozza létre őket alkalmazáskövetési naplók létrehozása, és megtekintheti őket, amíg az alkalmazás.
-* Megtekintése a webkiszolgáló naplófájljai, beleértve a részletes hibaüzeneteket, és a sikertelen kérelmek követésének.
-* Hogyan lehet elküldeni a diagnosztikai naplók egy Azure Storage-fiók, és megtekintheti, őket.
+* Az App Management funkciói a Visual Studióban érhetők el.
+* A Visual Studio távoli nézetének használata a gyors módosítások végrehajtásához egy távoli alkalmazásban.
+* Hibakeresési mód távoli futtatása, miközben egy projekt fut az Azure-ban, mind az alkalmazás, mind a Webjobs esetében.
+* Alkalmazás-nyomkövetési naplók létrehozása és megtekintése az alkalmazás létrehozása közben.
+* Webkiszolgáló-naplók megtekintése, beleértve a részletes hibaüzeneteket és a sikertelen kérelmek nyomkövetését.
+* Diagnosztikai naplók küldése Azure Storage-fiókba, és azok megtekintése.
 
-Ha rendelkezik a Visual Studio Ultimate, akkor is használhatja [IntelliTrace](/visualstudio/debugger/intellitrace) a hibakereséshez. IntelliTrace ebben az oktatóanyagban nem terjed ki.
+Ha rendelkezik a Visual Studio Ultimate-vel, a hibakereséshez használhatja a [IntelliTrace](/visualstudio/debugger/intellitrace) is. Ebben az oktatóanyagban nem szerepel a IntelliTrace.
 
 ## <a name="prerequisites"></a>Előfeltételek
-Ebben az oktatóanyagban működik együtt a fejlesztési környezet, a webes projekt és a beállítása az App Service-alkalmazás [egy ASP.NET-alkalmazás létrehozása az Azure App Service](app-service-web-get-started-dotnet-framework.md). A webjobs-feladatok szakaszokat kell az alkalmazást, amelyet létrehozott [az Azure WebJobs SDK használatának első lépései][GetStartedWJ].
+Ez az oktatóanyag a fejlesztői környezettel, a webes projekttel és App Service alkalmazással működik, amelyet a [ASP.NET-alkalmazás létrehozása](app-service-web-get-started-dotnet-framework.md)című cikkben állított be Azure app Service. A webjobs szakaszban szüksége lesz az [Azure WEBJOBS SDK-val][GetStartedWJ]való ismerkedéshez létrehozott alkalmazásra.
 
-Ebben az oktatóanyagban látható a Kódminták C# MVC webalkalmazás számára, de a hibaelhárítási eljárásokkal azonosak, Visual Basic és Web Forms-alkalmazások.
+Az oktatóanyagban látható mintakód egy C# MVC-webalkalmazásra mutat, de a hibaelhárítási eljárások megegyeznek a Visual Basic és Web Forms alkalmazások esetében.
 
-Az oktatóanyag feltételezi, hogy a Visual Studio 2019 használ. 
+Az oktatóanyag feltételezi, hogy a Visual Studio 2019-et használja. 
 
-Ez a funkció a folyamatos átviteli naplók csak akkor működik a .NET-keretrendszer 4-es vagy újabb készített alkalmazások.
+A folyamatos átviteli naplók funkció csak a .NET-keretrendszer 4-es vagy újabb verzióját használó alkalmazásokhoz használható.
 
 ## <a name="sitemanagement"></a>Alkalmazások konfigurálása és kezelése
-A Visual Studio az alkalmazás-felügyeleti funkciók és a konfigurációs beállításai egy részét hozzáférést biztosít a [az Azure portal](https://go.microsoft.com/fwlink/?LinkId=529715). Ebben a szakaszban láthatja, mi érhető el a **Server Explorer**. A legújabb Azure-beli integrációs szolgáltatások megtekintéséhez próbálja ki **Cloud Explorer** is. Megnyithatja a windows a **nézet** menü.
+A Visual Studio hozzáférést biztosít az alkalmazás-felügyeleti függvények és a [Azure Portal](https://go.microsoft.com/fwlink/?LinkId=529715)elérhető konfigurációs beállítások egy részhalmazához. Ebben a szakaszban láthatja, hogy mi érhető el a **Server Explorer**használatával. A legújabb Azure-integrációs funkciók megtekintéséhez próbálja ki a **Cloud Explorert** is. A **nézet** menüből is megnyithatja a Windowst.
 
-1. Ha még nem jelentkezett be az Azure-bA a Visual Studióban, kattintson a jobb gombbal **Azure** , és válassza ki a csatlakozás **Microsoft Azure-előfizetéshez** a **Server Explorer**.
+1. Ha még nem jelentkezett be az Azure-ba a Visual Studióban, kattintson a jobb gombbal az **Azure** elemre, és válassza a kapcsolódás **Microsoft Azure** előfizetéshez a **Server Explorerben**lehetőséget.
 
-    Alternatív, hogy telepítsen egy felügyeleti tanúsítványt, amely lehetővé teszi a hozzáférést a fiókjához. Ha a tanúsítvány telepítését választja, kattintson a jobb gombbal a **Azure** csomópontja **Server Explorer**, majd válassza ki **kezelése és a szűrő előfizetések** a helyi menüben. Az a **kezelése a Microsoft Azure-előfizetések** párbeszédpanelen kattintson a **tanúsítványok** fülre, majd **importálás**. Az utasítások szerint töltse le és importálja az előfizetés fájl (más néven egy *.publishsettings* fájl) Azure-fiókját.
+    Egy másik lehetőség egy olyan felügyeleti tanúsítvány telepítése, amely lehetővé teszi a fiókhoz való hozzáférést. Ha a tanúsítvány telepítését választja, kattintson a jobb gombbal az **Azure** -csomópontra a **Server Explorerben**, majd válassza az előfizetések **kezelése és szűrése** lehetőséget a helyi menüben. Az Microsoft Azure-előfizetések **kezelése** párbeszédpanelen kattintson a **tanúsítványok** lapra, majd az **Importálás**elemre. Az Azure-fiókhoz tartozó előfizetési fájl (más néven *. publishsettings* fájl) letöltéséhez és importálásához kövesse az utasításokat.
 
    > [!NOTE]
-   > Ha egy előfizetés fájlt tölt le, mentse azt egy mappát a forrás kód címtárak (például a letöltések mappában) kívül, és törölje azt az importálás befejezése után. Egy rosszindulatú felhasználó fér hozzá az előfizetés-fájl szerkesztése, létrehozása és törlése az Azure-szolgáltatások.
+   > Ha letölt egy előfizetési fájlt, mentse a forráskód-címtárakon kívüli mappába (például a letöltések mappában), majd törölje az importálás befejezése után. Az előfizetési fájl elérését elérő rosszindulatú felhasználó szerkesztheti, létrehozhatja és törölheti az Azure-szolgáltatásokat.
    >
    >
 
-    További információ a Visual studióból az Azure-erőforrások csatlakozik: [fiókok kezelése, előfizetések és rendszergazdai szerepkörök](https://go.microsoft.com/fwlink/?LinkId=324796#BKMK_AccountVCert).
-2. A **Server Explorer**, bontsa ki a **Azure** csomópontot **App Service-ben**.
-3. Bontsa ki az erőforráscsoportot, amely tartalmazza a létrehozott alkalmazás [egy ASP.NET-alkalmazás létrehozása az Azure App Service](app-service-web-get-started-dotnet-framework.md), majd kattintson a jobb gombbal az alkalmazás csomópont, és kattintson a **nézetbeállítások**.
+    További információ az Azure-erőforrásokhoz való csatlakozásról a Visual studióból: [fiókok, előfizetések és rendszergazdai szerepkörök kezelése](https://go.microsoft.com/fwlink/?LinkId=324796#BKMK_AccountVCert).
+2. A **Server Explorerben**bontsa ki az **Azure** elemet, majd bontsa ki a **app Service**elemet.
+3. Bontsa ki azt az erőforráscsoportot, amely magában foglalja a [ASP.NET-alkalmazás létrehozása Azure app Serviceban](app-service-web-get-started-dotnet-framework.md)létrehozott alkalmazást, majd kattintson a jobb gombbal az alkalmazás csomópontjára, majd kattintson a **beállítások megtekintése**elemre.
 
-    ![A Server Explorer beállítások megjelenítése](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-viewsettings.png)
+    ![Beállítások megtekintése a Server Explorerben](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-viewsettings.png)
 
-    A **Azure Web App** lap jelenik meg, és ott az alkalmazások kezelését és konfigurálását feladatai elérhető a Visual Studióban láthatja.
+    Megjelenik az **Azure** -webalkalmazás lap, amelyen láthatja, hogy a Visual Studióban milyen alkalmazás-felügyeleti és konfigurációs feladatok érhetők el.
 
-    ![Az Azure Web App ablak](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-configtab.png)
+    ![Azure-webalkalmazások ablak](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-configtab.png)
 
-    Ebben az oktatóanyagban a naplózás és nyomkövetés listákból fogja használni. Is használni kívánt távoli hibakeresés, de más módszert fogja használni az engedélyezéshez.
+    Ebben az oktatóanyagban a naplózási és nyomkövetési legördülő menüket fogjuk használni. Távoli hibakeresést is használhat, de más módszert is használhat az engedélyezéséhez.
 
-    Az alkalmazásbeállítások és a kapcsolati karakterláncok be ebben az ablakban kapcsolatos információkért lásd: [Azure App Service-ben: Hogyan alkalmazás-karakterláncok és a kapcsolati karakterláncok munkahelyi](https://azure.microsoft.com/blog/windows-azure-web-sites-how-application-strings-and-connection-strings-work/).
+    Az ebben az ablakban található Alkalmazásbeállítások és a kapcsolatok karakterlánc-mezőivel kapcsolatos információkért [lásd: Azure app Service: Az alkalmazás-karakterláncok és a](https://azure.microsoft.com/blog/windows-azure-web-sites-how-application-strings-and-connection-strings-work/)kapcsolatok karakterláncának működése
 
-    Ha szeretne egy alkalmazás feladatot, amely ebben az ablakban nem hajtható végre, kattintson a **nyissa meg a felügyeleti portálon** , nyisson meg egy böngészőablakot az Azure Portalra.
+    Ha olyan app Management-feladatot szeretne végrehajtani, amely ebben az ablakban nem hajtható végre, kattintson a **Megnyitás itt felügyeleti portál** lehetőségre egy böngészőablaknak a Azure Portal való megnyitásához.
 
-## <a name="remoteview"></a>Alkalmazás-fájlok elérése a Server Explorerben
-Általában központi telepítése a webes projektet a `customErrors` jelző beállítása a Web.config fájlban `On` vagy `RemoteOnly`, ami azt jelenti, nem kap egy hasznos hiba jelenik meg, amikor valami merül fel. Sok hiba minden kap egy oldalt, például a következő eszközök egyikét:
+## <a name="remoteview"></a>Alkalmazások fájljainak elérése a Server Explorerben
+Általában a web. config fájlban a `customErrors` jelölővel rendelkező webes projektet telepít `RemoteOnly`, amely azt jelenti `On` , hogy nem kap hasznos hibaüzenetet, ha valami hiba lép fel. Sok hiba esetén az alábbihoz hasonló oldal jelenik meg:
 
-**Kiszolgálóhiba a "/" alkalmazás:**
+**Kiszolgálóhiba a következő alkalmazásban: "/".**
 
-![Unhelpful hibalap](./media/web-sites-dotnet-troubleshoot-visual-studio/genericerror.png)
+![Nem hasznos hiba lap](./media/web-sites-dotnet-troubleshoot-visual-studio/genericerror.png)
 
 **Hiba történt:**
 
-![Unhelpful hibalap](./media/web-sites-dotnet-troubleshoot-visual-studio/genericerror1.png)
+![Nem hasznos hiba lap](./media/web-sites-dotnet-troubleshoot-visual-studio/genericerror1.png)
 
-**A webhely nem jeleníthető meg az oldal**
+**A webhely nem tudja megjeleníteni a lapot**
 
-![Unhelpful hibalap](./media/web-sites-dotnet-troubleshoot-visual-studio/genericerror2.png)
+![Nem hasznos hiba lap](./media/web-sites-dotnet-troubleshoot-visual-studio/genericerror2.png)
 
-Gyakran a legegyszerűbben úgy, hogy a hiba okát, hogy engedélyezi a részletes hibaüzeneteket, amelyek az előző képernyőfelvételeken közül az első azt ismerteti, hogyan teheti. Amely követel meg a központilag telepített Web.config fájlban. Sikerült szerkeszteni a *Web.config* fájlt a projekt és ismételt üzembe helyezése a projekthez, vagy hozzon létre egy [Web.config átalakító](https://www.asp.net/mvc/tutorials/deployment/visual-studio-web-deployment/web-config-transformations) , és hogy hibakeresési buildet telepítsen, de gyorsabban: a **megoldáskezelő** , közvetlenül megtekintheti és szerkesztheti a fájlokat a távoli alkalmazás használatával az *távoli nézet* funkció.
+A hiba okának megállapításához gyakran a legegyszerűbb módszer a részletes hibaüzenetek engedélyezése, amely az előző képernyőképek első lépéseit ismerteti. Ehhez szükség van a telepített web. config fájl módosítására. Szerkesztheti a *web. config* fájlt a projektben, és újból üzembe helyezheti a projektet, vagy létrehozhat egy [web. config átalakítót](https://www.asp.net/mvc/tutorials/deployment/visual-studio-web-deployment/web-config-transformations) , és üzembe helyezhet egy hibakeresési buildet, de gyorsabb módja van: a **megoldáskezelő**a távoli alkalmazásban közvetlenül megtekintheti és szerkesztheti a fájlokat. a *távoli nézet* funkció használatával.
 
-1. A **Server Explorer**, bontsa ki a **Azure**, bontsa ki a **App Service-ben**, és bontsa ki az erőforráscsoportot, amely az alkalmazás található, majd bontsa ki a csomópontot, az alkalmazás számára.
+1. A **Server Explorerben**bontsa ki az **Azure**elemet, bontsa ki a **app Service**elemet, bontsa ki azt az erőforráscsoportot, amelyben az alkalmazás található, majd bontsa ki a csomópontot az alkalmazáshoz.
 
-    Láthatja, csomópontot, amely hozzáférést biztosít az alkalmazás tartalomfájlok és naplófájlokat.
-2. Bontsa ki a **fájlok** csomópontot, és kattintson duplán a *Web.config* fájlt.
+    Olyan csomópontok jelennek meg, amelyek hozzáférést biztosítanak az alkalmazás tartalmi fájljaihoz és naplófájljaihoz.
+2. Bontsa ki a **fájlok** csomópontot, majd kattintson duplán a *web. config* fájlra.
 
     ![Open Web.config](./media/web-sites-dotnet-troubleshoot-visual-studio/webconfig.png)
 
-    Visual Studio a Web.config fájl megnyitása a távoli alkalmazásból, és bemutatja a [távoli] a címsorban látható a fájl neve melletti.
-3. Adja hozzá a következő sort a `system.web` elem:
+    A Visual Studio megnyitja a web. config fájlt a távoli alkalmazásból, és a címsorban a fájlnév mellett [távoli] is megjeleníti a fájl nevét.
+3. Adja hozzá a következő sort a `system.web` elemhez:
 
     `<customErrors mode="Off"></customErrors>`
 
     ![Edit Web.config](./media/web-sites-dotnet-troubleshoot-visual-studio/webconfigedit.png)
-4. Frissítse a böngészőt a unhelpful hibaüzenet jelenik, és most már például az alábbi példa egy részletes hibaüzenetet kap:
+4. Frissítse a böngészőt, amely a nem hasznos hibaüzenetet jeleníti meg, és most egy részletes hibaüzenetet kap, például a következő példát:
 
     ![Részletes hibaüzenet](./media/web-sites-dotnet-troubleshoot-visual-studio/detailederror.png)
 
-    (Adja hozzá a sort, hogy piros színnel jelenik meg a hiba létrejött *Views\Home\Index.cshtml*.)
+    (A megjelenő hiba a pirosról *Views\Home\Index.cshtml*-ra mutatott sor hozzáadásával jött létre.)
 
-A Web.config fájl szerkesztése, amely lehetővé teszi az olvasási és az App Service-alkalmazást a fájlok szerkeszthetők győződjön meg arról, hibaelhárítást forgatókönyvek csak egy példa.
+A web. config fájl szerkesztése csak egy példa arra az esetre, amikor a App Service alkalmazásban található fájlok olvasásának és szerkesztésének lehetősége megkönnyíti a hibaelhárítást.
 
-## <a name="remotedebug"></a>Távoli hibakeresés alkalmazások
-Ha a részletes hibaüzenet nem elegendő információt tartalmaznak, és nem lehet újra létrehozni a hiba helyileg, egy másik hibaelhárítása módja távoli hibakeresési módban futtatja. Állítson be töréspontokat, közvetlenül kezelheti a memória, végighaladhat a kód és a kódelérési út is módosíthatja.
+## <a name="remotedebug"></a>Távoli hibakeresési alkalmazások
+Ha a részletes hibaüzenet nem tartalmaz elegendő információt, és nem tudja helyileg létrehozni a hibát, a hibaelhárítás egy másik módja a hibakeresési mód távoli futtatása. Megadhatja a töréspontokat, megváltoztathatja a memóriát közvetlenül, beléphet a kód fölé, és akár módosíthatja is a kód elérési útját.
 
-Távoli hibakeresés a Visual Studio Express kiadásai nem működik.
+A távoli hibakeresés nem működik a Visual Studio Express kiadásaiban.
 
-Ez a szakasz bemutatja, hogyan segítségével távolról hoz létre a projekt hibakeresési [egy ASP.NET-alkalmazás létrehozása az Azure App Service](app-service-web-get-started-dotnet-framework.md).
+Ez a szakasz bemutatja, hogyan lehet távolról hibakeresést végezni a [ASP.NET-alkalmazás létrehozása Azure app Serviceban](app-service-web-get-started-dotnet-framework.md)létrehozott projekt használatával.
 
-1. Nyissa meg a létrehozott web projektet [egy ASP.NET-alkalmazás létrehozása az Azure App Service](app-service-web-get-started-dotnet-framework.md).
+1. Nyissa meg a [ASP.NET alkalmazás létrehozása Azure app Serviceban](app-service-web-get-started-dotnet-framework.md)létrehozott webes projektet.
 
-2. Nyissa meg *Controllers\HomeController.cs*.
+1. Nyissa meg a *Controllers\HomeController.cs*.
 
-3. Törölje a `About()` metódust, és insert, az alábbi kódot a helyére.
+1. Törölje a `About()` metódust, és szúrja be a következő kódot a helyére.
 
-``` c#
-public ActionResult About()
-{
-    string currentTime = DateTime.Now.ToLongTimeString();
-    ViewBag.Message = "The current time is " + currentTime;
-    return View();
-}
-```
+    ```csharp
+    public ActionResult About()
+    {
+        string currentTime = DateTime.Now.ToLongTimeString();
+        ViewBag.Message = "The current time is " + currentTime;
+        return View();
+    }
+    ```
 
-1. [Állítson be egy töréspontot](https://docs.microsoft.com/visualstudio/debugger/) a a `ViewBag.Message` sor.
+1. [Töréspont beállítása](https://docs.microsoft.com/visualstudio/debugger/) a `ViewBag.Message` sorban.
 
-1. A **Megoldáskezelőben**, kattintson a jobb gombbal a projektre, majd kattintson **közzététel**.
+1. **Megoldáskezelő**kattintson a jobb gombbal a projektre, majd kattintson a **Közzététel**elemre.
 
-1. Az a **profil** legördülő listában válassza ugyanazt a használt profil [egy ASP.NET-alkalmazás létrehozása az Azure App Service](app-service-web-get-started-dotnet-framework.md). Kattintson a beállítások.
+1. A **profil** legördülő listában válassza ki ugyanazt a profilt, amelyet a [ASP.NET-alkalmazás létrehozásakor](app-service-web-get-started-dotnet-framework.md)használt Azure app Serviceban. Ezután kattintson a beállítások elemre.
 
-1. Az a **közzététel** párbeszédpanelen kattintson a **beállítások** lapra, és módosítsa **konfigurációs** való **Debug**, és kattintson a  **Mentés**.
+1. A **Közzététel** párbeszédpanelen kattintson a **Beállítások** fülre, majd módosítsa a konfigurációt  hibakeresésre , majd kattintson a **Mentés**gombra.
 
-    ![Hibakeresési módban közzététele](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-publishdebug.png)
+    ![Közzététel hibakeresési módban](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-publishdebug.png)
 
-1. Kattintson a **Publish** (Közzététel) gombra. Üzembe helyezés után befejeződik, és a böngésző megnyitja az alkalmazás az Azure URL-címre, zárja be a böngészőt.
+1. Kattintson a **Publish** (Közzététel) gombra. Miután az üzembe helyezés befejeződött, és a böngésző megnyílik az alkalmazás Azure URL-címével, akkor zárjuk be a böngészőt.
 
-1. A **Server Explorer**, kattintson a jobb gombbal az alkalmazást, és kattintson **csatolja a hibakeresőt**.
+1. A **Server Explorerben**kattintson a jobb gombbal az alkalmazásra, majd kattintson a **hibakereső csatolása**parancsra.
 
-    ![Hibakereső csatlakoztatása](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-attachdebugger.png)
+    ![Hibakereső csatolása](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-attachdebugger.png)
 
-    A böngésző automatikusan megnyitja a kezdőlap, az Azure-ban futó. Előfordulhat, hogy 20 másodpercet várjon, amíg Azure állítja be a kiszolgáló a hibakereséshez. Ez a késleltetés akkor fordul elő az első futtatásakor hibakeresési módban egy 48 órás időszakban. Amikor újra ugyanarra az időszakra vonatkozóan a hibakeresés, nincs késleltetés.
+    A böngésző automatikusan megnyílik az Azure-ban futó kezdőlapon. Előfordulhat, hogy várnia kell 20 másodpercet, amíg az Azure beállítja a kiszolgálót a hibakereséshez. Ez a késleltetés csak akkor történik meg, amikor az első alkalommal hibakeresési módban futtatja az alkalmazást egy 48 órás időszakban. Ha ugyanezen az időszakon belül újra elindítja a hibakeresést, nincs késés.
 
     > [!NOTE] 
-    > Ha bármilyen problémája indítása a hibakeresőt, próbálja meg úgy teheti **Cloud Explorer** helyett **Server Explorer**.
+    > Ha bármilyen probléma merül fel a hibakereső indításakor, próbálja meg a **Server Explorer**helyett a **Cloud Explorer** használatával elvégezni.
     >
 
-1. Kattintson a **kapcsolatos** menüjében.
+1. A menüben kattintson a **Névjegy** elemre.
 
-    A Visual Studio leállítja a töréspontot, és a kód futtatása az Azure-ban, nem a helyi számítógépen.
+    A Visual Studio leáll a törésponton, és a kód az Azure-ban fut, nem pedig a helyi számítógépen.
 
-1. A kurzort a `currentTime` változó az idő értékének megtekintéséhez.
+1. Vigye az egérmutatót a `currentTime` változó fölé a Time érték megjelenítéséhez.
 
-    ![Azure-ban futó hibakeresési módban a nézet változó](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-debugviewinwa.png)
+    ![Változó megtekintése az Azure-ban futó hibakeresési módban](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-debugviewinwa.png)
 
-    Az idő, megjelenik az Azure-kiszolgáló ideje, lehet, mint a helyi számítógépen egy másik időzónában.
+    A megjelenő időpont az Azure-kiszolgáló ideje, amely a helyi számítógéptől eltérő időzónában lehet.
 
-1. Adjon meg új értéket a `currentTime` változó, például az "Az Azure-ban most már fut".
+1. Adjon meg egy új értéket a `currentTime` változóhoz, például: "most már fut az Azure-ban".
 
-1. Nyomja le az F5 billentyűt a folytatáshoz.
+1. Nyomja le az F5 billentyűt a Futtatás folytatásához.
 
-     Az Azure-ban futó névjegy oldal megjeleníti az új értéket, a currentTime változóhoz megadott.
+     Az Azure-ban futó About (Névjegy) oldal megjeleníti a currentTime változóban megadott új értéket.
 
-     ![Megismerkedhet az új érték](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-debugchangeinwa.png)
+     ![Az új értékkel rendelkező oldal](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-debugchangeinwa.png)
 
-## <a name="remotedebugwj"></a> Távoli hibakeresés webjobs-feladatok
-Ez a szakasz bemutatja, hogyan segítségével távolról, a projekt és a létrehozott alkalmazás hibakeresése [az Azure WebJobs SDK használatának első lépései](https://github.com/Azure/azure-webjobs-sdk/wiki).
+## <a name="remotedebugwj"></a>Webjobs-feladatok távoli hibakeresése
+Ez a szakasz azt mutatja be, hogyan lehet távolról hibakeresést végezni a projekt és az alkalmazás használatával, amelyet a [Azure WEBJOBS SDK használatának első lépéseiben](https://github.com/Azure/azure-webjobs-sdk/wiki)hozott létre.
 
-Ebben a szakaszban látható funkciókat csak Visual Studio 2013 Update 4 vagy újabb verzió érhető el.
+Az ebben a szakaszban látható funkciók csak a 4. vagy újabb frissítéssel rendelkező Visual Studio 2013-ben érhetők el.
 
-Csak a folyamatos webjobs-feladatok távoli hibakeresése működik. Ütemezett és igény szerinti WebJobs-hibakeresés nem támogatottak.
+A távoli hibakeresés csak a folyamatos webjobs-feladatok esetében működik. Az ütemezett és igény szerinti webjobs nem támogatja a hibakeresést.
 
-1. Nyissa meg a létrehozott web projektet [az Azure WebJobs SDK használatának első lépései][GetStartedWJ].
+1. Nyissa meg az [Azure WEBJOBS SDK-val][GetStartedWJ]való ismerkedéskor létrehozott webes projektet.
 
-2. A ContosoAdsWebJob projektben nyissa meg a *Functions.cs*.
+2. A ContosoAdsWebJob projektben nyissa meg a *functions.cs*.
 
-3. [Állítson be egy töréspontot](https://docs.microsoft.com/visualstudio/debugger/) meg az első utasítás a `GnerateThumbnail` metódust.
+3. [Állítsa be](https://docs.microsoft.com/visualstudio/debugger/) a töréspontot a `GnerateThumbnail` metódus első utasítására.
 
     ![Töréspont beállítása](./media/web-sites-dotnet-troubleshoot-visual-studio/wjbreakpoint.png)
 
-4. A **Megoldáskezelőben**, kattintson a jobb gombbal a webes projektre (nem a webjobs-feladat projekt), és kattintson a **közzététel**.
+4. **Megoldáskezelő**kattintson a jobb gombbal a webes projektre (ne a webjobs projektre), majd kattintson a **Közzététel**elemre.
 
-5. Az a **profil** legördülő listában válassza ugyanazt a használt profil [az Azure WebJobs SDK használatának első lépései](https://github.com/Azure/azure-webjobs-sdk/wiki).
+5. A **profil** legördülő listában válassza ki ugyanazt a profilt, amelyet az első lépések során használt [a Azure WebJobs SDK-val](https://github.com/Azure/azure-webjobs-sdk/wiki).
 
-6. Kattintson a **beállítások** lapra, és módosítsa **konfigurációs** való **Debug**, és kattintson a **közzététel**.
+6. Kattintson a **Beállítások** fülre, és módosítsa  a konfigurációt **hibakeresésre**, majd kattintson a **Közzététel**elemre.
 
-    A Visual Studio telepíti a webes és a Webjobs projekteket, és a böngésző megnyitja az alkalmazás Azure URL-CÍMÉT.
+    A Visual Studio üzembe helyezi a webes és Webjobs projekteket, és megnyílik a böngészője az alkalmazás Azure URL-címére.
 
-7. A **Server Explorer**, bontsa ki a **Azure > App Service-ben > az erőforráscsoport > az alkalmazás > webjobs-feladatok > folyamatos**, és kattintson a jobb gombbal **ContosoAdsWebJob**.
+7. A **Server Explorerben**bontsa ki az **Azure > app Service > az erőforráscsoport > az alkalmazást > webjobs > folyamatos**elemet, majd kattintson a jobb gombbal a **ContosoAdsWebJob**elemre.
 
-8. Kattintson a **Hibakereső csatlakoztatása**.
+8. Kattintson a **hibakereső csatolása**elemre.
 
-    ![Hibakereső csatlakoztatása](./media/web-sites-dotnet-troubleshoot-visual-studio/wjattach.png)
+    ![Hibakereső csatolása](./media/web-sites-dotnet-troubleshoot-visual-studio/wjattach.png)
 
-    A böngésző automatikusan megnyitja a kezdőlap, az Azure-ban futó. Előfordulhat, hogy 20 másodpercet várjon, amíg Azure állítja be a kiszolgáló a hibakereséshez. Ez a késleltetés akkor fordul elő az első futtatásakor hibakeresési módban egy 48 órás időszakban. Amikor újra ugyanarra az időszakra vonatkozóan a hibakeresés, nincs késleltetés.
+    A böngésző automatikusan megnyílik az Azure-ban futó kezdőlapon. Előfordulhat, hogy várnia kell 20 másodpercet, amíg az Azure beállítja a kiszolgálót a hibakereséshez. Ez a késleltetés csak akkor történik meg, amikor az első alkalommal hibakeresési módban futtatja az alkalmazást egy 48 órás időszakban. Ha ugyanezen az időszakon belül újra elindítja a hibakeresést, nincs késés.
 
-9. A webböngészőben, amely a Contoso Ads kezdőlap meg van nyitva hozzon létre egy új ad.
+9. Hozzon létre egy új ad-t a contoso ADS kezdőlapján megnyitott böngészőben.
 
-    Egy üzenetsor létrehozása, amely átveszi a webjobs-feladatot, és feldolgozott létrehozása egy ad okoz. Ha a WebJobs SDK meghívja a függvényt az üzenetsorban található üzenet, a kód a találatok feldolgozni a töréspont.
+    Az ad létrehozásával létrejön egy üzenetsor-üzenet, amelyet a Webjobs és a feldolgozott. Amikor a webjobs SDK meghívja a függvényt a várólista-üzenet feldolgozására, a kód eléri a töréspontot.
 
-10. Amikor a hibakeresőt működésképtelenné válik, a töréspontot, vizsgálja meg, és változó értékeinek módosítása közben a program fut a felhőben. Az alábbi ábrán a hibakeresőt a blobInfo objektum számára átadott tartalmát jeleníti meg a `GenerateThumbnail` metódust.
+10. Amikor a hibakereső megszakítja a töréspontot, megvizsgálhatja és módosíthatja a változók értékeit, miközben a program futtatja a felhőt. A következő ábrán a hibakereső a `GenerateThumbnail` metódusnak átadott blobInfo objektum tartalmát jeleníti meg.
 
-     ![a hibakereső blobInfo objektum](./media/web-sites-dotnet-troubleshoot-visual-studio/blobinfo.png)
+     ![blobInfo objektum a hibakeresőben](./media/web-sites-dotnet-troubleshoot-visual-studio/blobinfo.png)
 
-11. Nyomja le az F5 billentyűt a folytatáshoz.
+11. Nyomja le az F5 billentyűt a Futtatás folytatásához.
 
-     A `GenerateThumbnail` metódust végzett a létrehozással miniatűr.
+     A `GenerateThumbnail` metódus befejezi a miniatűr létrehozását.
 
-12. Frissítse az Index lapot a böngészőben, és a miniatűr megjelenítéséhez.
+12. A böngészőben frissítse az index oldalt, és megtekintheti a miniatűrt.
 
-13. A Visual Studióban nyomja le a SHIFT + F5 hibakeresés leállításához.
+13. A hibakeresés leállításához nyomja le a SHIFT + F5 billentyűkombinációt a Visual Studióban.
 
-14. A **Server Explorer**, kattintson a jobb gombbal a ContosoAdsWebJob csomópontot, és kattintson a **irányítópult megtekintése**.
+14. A **Server Explorerben**kattintson a jobb gombbal a ContosoAdsWebJob csomópontra, majd kattintson az **irányítópult megtekintése**elemre.
 
-15. Jelentkezzen be Azure hitelesítő adataival, majd kattintson a webjobs-feladat neve, a webjobs-feladat a lap megnyitásához.
+15. Jelentkezzen be az Azure-beli hitelesítő adataival, majd a Webjobs nevére kattintva lépjen a Webjobs oldalára.
 
      ![Kattintson a ContosoAdsWebJob](./media/web-sites-dotnet-troubleshoot-visual-studio/clickcaw.png)
 
-     Az irányítópult megjeleníti, hogy a `GenerateThumbnail` függvény végrehajtása a közelmúltban.
+     Az irányítópulton látható, `GenerateThumbnail` hogy a függvény nemrég lett végrehajtva.
 
-     (A legközelebb kattint **irányítópult megtekintése**, nem kell bejelentkezni, és a böngésző közvetlenül kerül az oldal a webjobs-feladat.)
+     (Amikor legközelebb rákattint az **irányítópult megtekintése**lehetőségre, nem kell bejelentkeznie, és a böngésző közvetlenül a webjobs lapjára lép.)
 
-16. Kattintson a függvény nevét, a függvény végrehajtási részleteinek megtekintéséhez.
+16. Kattintson a függvény nevére a függvény végrehajtásának részleteinek megtekintéséhez.
 
      ![Függvény részletei](./media/web-sites-dotnet-troubleshoot-visual-studio/funcdetails.png)
 
-Ha a függvény [okkal készítette el a naplókat](https://github.com/Azure/azure-webjobs-sdk/wiki), gombra kattintva **ToggleOutput** megtekintheti őket.
+Ha a függvény [naplókat írt](https://github.com/Azure/azure-webjobs-sdk/wiki), a **ToggleOutput** gombra kattintva megtekintheti őket.
 
-## <a name="notes-about-remote-debugging"></a>Távoli hibakeresés kapcsolatos megjegyzések
+## <a name="notes-about-remote-debugging"></a>Megjegyzések a távoli hibakereséshez
 
-* Nem javasolt éles környezetben hibakeresési módban futtatja. Ha az éles alkalmazások nem, több kiszolgálópéldány horizontálisan felskálázott, hibakeresés megakadályozza, hogy a webkiszolgáló más kérésekre válaszol. Ha a webkiszolgálói példányok több, a hibakereső csatolása rendelkezik, egy véletlenszerű példányt kap, és hogy nem lehet annak érdekében, hogy böngésző későbbi kérelmeket ugyanazon nyissa meg. Is általában nem kell telepítenie a hibakeresési build az éles környezetben, és a kiadási buildek fordító optimalizálások előfordulhat, hogy lehetetlenné mi soronként történik a forráskód megjelenítése. Éles problémák elhárításához, a legjobb erőforrás alkalmazás nyomkövetés és a web server-naplók.
-* Elkerülése érdekében hosszú leállítja a töréspontok keresése, ha a távoli hibakeresés. Az Azure kezeli a folyamat, amely a nem válaszoló folyamatként néhány percnél hosszabb ideig le van állítva, és leállítja azt.
-* Hibakeresés, során a kiszolgáló küld adatokat a Visual Studióba, amelyek hatással lehetnek a sávszélesség-költségek. Sávszélesség-használati díjat kapcsolatos információkért lásd: [Azure díjszabását](https://azure.microsoft.com/pricing/calculator/).
-* Győződjön meg arról, hogy a `debug` attribútuma a `compilation` eleme a *Web.config* fájl igaz értékre. A változó értéke igaz, amikor közzéteszi a hibakeresési build konfigurációját alapértelmezés szerint.
+* Az éles környezetben való futtatás hibakeresési módban nem ajánlott. Ha az éles alkalmazás nem méretezhető több kiszolgálópéldány számára, a hibakeresés megakadályozza, hogy a webkiszolgáló válaszoljon más kérelmekre. Ha több webkiszolgáló-példánya is van, a hibakeresőhöz való csatoláskor véletlenszerű példányt kap, és nem biztosíthatja, hogy a következő böngésző-kérelmek ugyanarra a példányra lépjenek. Azt is megteheti, hogy a hibakeresési buildet általában nem helyezi üzembe éles környezetben, és a fordítói optimalizálások nem tudták megmutatni, hogy mi történik sorban a forráskódban. Az éles környezetben felmerülő problémák elhárításához a legjobb erőforrás az alkalmazás-nyomkövetés és a webkiszolgáló-naplók.
+* A távoli hibakeresés során Kerülje a töréspontok hosszú leállását. Az Azure egy olyan folyamatot kezel, amely egy nem válaszoló folyamatnál hosszabb ideig leállt, és leállítja azt.
+* A hibakeresés során a kiszolgáló adatokat küld a Visual Studiónak, ami hatással lehet a sávszélességre. A sávszélesség díjszabásával kapcsolatos információkért lásd: az [Azure díjszabása](https://azure.microsoft.com/pricing/calculator/).
+* Győződjön meg arról, `debug` hogy a *web. config* fájlban lévő `compilation` elem attribútuma igaz értékre van állítva. A hibakeresési Build konfigurációjának közzétételekor alapértelmezés szerint igaz értékre van állítva.
 
-``` xml
-<system.web>
-  <compilation debug="true" targetFramework="4.5" />
-  <httpRuntime targetFramework="4.5" />
-</system.web>
-```
-* Ha azt tapasztalja, hogy a hibakeresőt, amelyen hibakeresést végez, a kód nem lép, előfordulhat, hogy rendelkezik a csak saját kód beállításának módosításához.  További információkért lásd: [adja meg, hogy csak a saját kód használata a Visual Studióban csak felhasználói kód hibakereséséhez](https://docs.microsoft.com/visualstudio/debugger/just-my-code).
-* A kiszolgáló időmérő elindul, amikor engedélyezi a távoli hibakeresési funkciót, és 48 óra után a szolgáltatás automatikusan ki van kapcsolva. Biztonság és teljesítmény érdekében a 48 órás korlát, készen áll. A funkció azon tetszőleges számú alkalommal próbálkozhat, egyszerűen kapcsolhatja. Azt javasoljuk, hogy hagyja azokat le van tiltva, ha nincs aktív hibakeresés.
-* A hibakereső manuálisan csatlakoztathat valamilyen folyamat, nem csak az alkalmazás folyamata (w3wp.exe). A Visual Studio hibakeresési mód használatával kapcsolatos további információkért lásd: [hibakeresés a Visual Studióban](/visualstudio/debugger/debugging-in-visual-studio).
+    ```xml
+    <system.web>
+      <compilation debug="true" targetFramework="4.5" />
+      <httpRuntime targetFramework="4.5" />
+    </system.web>
+    ```
+* Ha úgy találja, hogy a hibakereső nem lép be a hibakereséshez használni kívánt kódra, előfordulhat, hogy módosítania kell a Saját kód beállítást.  További információ: [annak megadása, hogy csak a felhasználói kódokat kell-e hibakeresést végezni a Visual studióban saját kód használatával](https://docs.microsoft.com/visualstudio/debugger/just-my-code).
+* A Távoli hibakeresési funkció engedélyezésekor egy időzítő indul el a kiszolgálón, és 48 óra elteltével a szolgáltatás automatikusan ki lesz kapcsolva. Ez a 48 órás korlát biztonsági és teljesítménybeli okokból történik. A funkció egyszerűen visszakapcsolható, ahányszor csak szeretné. Azt javasoljuk, hogy a rendszer letiltsa a letiltást, ha nem aktívan végzi a hibakeresést.
+* Manuálisan is csatlakoztathatja a hibakeresőt bármely folyamathoz, nem csak az alkalmazás folyamatához (w3wp. exe). További információ a hibakeresési mód a Visual Studióban történő használatáról: [hibakeresés a Visual Studióban](/visualstudio/debugger/debugging-in-visual-studio).
 
-## <a name="logsoverview"></a>Diagnosztikai naplók áttekintése
-ASP.NET-alkalmazás, amely futtatja az App Service-alkalmazások a következő típusú naplókat hozhat létre:
+## <a name="logsoverview"></a>Diagnosztikai naplók – áttekintés
+Egy App Service alkalmazásban futó ASP.NET-alkalmazás a következő típusú naplókat tudja létrehozni:
 
-* **Alkalmazás nyomkövetési naplók**<br/>
-  Az alkalmazás a metódusok meghívásával hozza létre ezeket a naplókat a [System.Diagnostics.Trace](/dotnet/api/system.diagnostics.trace) osztály.
-* **Webkiszolgáló-naplókkal**<br/>
-  A webkiszolgáló az alkalmazás minden HTTP-kérelem naplóbejegyzés hoz létre.
-* **Részletes hibanaplókat üzenet**<br/>
-  A webkiszolgáló egy HTML-oldalt hoz létre a sikertelen HTTP-kérelmek (állapotkód: 400 vagy nagyobb eredményező kérelmek) további információkat.
-* **Sikertelen kérelmek nyomkövetési naplók**<br/>
-  A webkiszolgáló a sikertelen HTTP-kérelmekre részletes nyomkövetési adatok XML-fájlt hoz létre. A webalkalmazás-kiszolgáló is biztosít egy XSL-fájl, formázhatja az XML-t egy böngészőben.
+* **Alkalmazás-nyomkövetési naplók**<br/>
+  Az alkalmazás létrehozza ezeket a naplókat a [System. Diagnostics. Trace](/dotnet/api/system.diagnostics.trace) osztály metódusának meghívásával.
+* **Webkiszolgáló-naplók**<br/>
+  A webkiszolgáló minden HTTP-kérelemhez létrehoz egy naplóbejegyzést az alkalmazáshoz.
+* **Részletes hibaüzenetek naplói**<br/>
+  A webkiszolgáló egy HTML-oldalt hoz létre a sikertelen HTTP-kérelmekre vonatkozó további információkkal (a 400-as vagy újabb állapotkódot eredményező kérelmek).
+* **Sikertelen kérelmek nyomkövetési naplói**<br/>
+  A webkiszolgáló létrehoz egy XML-fájlt, amely részletes nyomkövetési információkat biztosít a sikertelen HTTP-kérésekhez. A webkiszolgáló egy XSL-fájlt is biztosít az XML-fájl böngészőben való formázásához.
 
-Naplózás merül fel az alkalmazások teljesítményét, így az Azure révén az engedélyezni vagy letiltani a napló minden típusú, igény szerint. Az alkalmazásnaplók megadhatja, hogy csak egy bizonyos súlyossági szint fölé naplók kell írni. Amikor hoz létre egy új alkalmazást, alapértelmezés szerint az összes naplózás le van tiltva.
+A naplózás hatással van az alkalmazások teljesítményére, így az Azure lehetővé teszi, hogy szükség szerint engedélyezze vagy tiltsa le az egyes típusú naplókat. Az alkalmazás naplói esetében megadhatja, hogy csak bizonyos súlyossági szintű naplók legyenek megírva. Új alkalmazás létrehozásakor alapértelmezés szerint minden naplózás le van tiltva.
 
-Naplók írt fájlok a *LogFiles* mappa a fájlrendszerben, az alkalmazás és az FTP-n keresztül hozzáférhető. Webkiszolgáló-naplókkal és alkalmazásnaplókat is írható egy Azure Storage-fiókhoz. A nagyobb mennyiségű lehet a fájlrendszer, a tárfiókban lévő naplókat őrizheti meg. Most már egy legfeljebb 100 MB-naplók, a fájlrendszer használatakor. (Csak a rövid távú megőrzési fájl rendszer naplókat is. Azure törli a régi naplófájlokat, hogy az újaknak, a korlát elérése után.)  
+A naplók az alkalmazás fájlrendszerében lévő *LogFiles* mappában található fájlokra íródnak, és az FTP-n keresztül érhetők el. A webkiszolgálói naplók és az alkalmazások naplói egy Azure Storage-fiókba is írhatók. A Storage-fiókokban nagyobb mennyiségű naplót is megtarthat, mint amennyit a fájlrendszerben lehet. A fájlrendszer használata esetén legfeljebb 100 megabájt méretű naplót használhat. (A fájlrendszer naplói csak a rövid távú adatmegőrzéshez szükségesek. Az Azure törli a régi naplófájlokat, hogy a korlát elérésekor a rendszer helyet szabadítson fel újak számára.)  
 
-## <a name="apptracelogs"></a>Hozzon létre és alkalmazáskövetési naplók megtekintése
-Ebben a szakaszban a következő feladatokat végezheti el:
+## <a name="apptracelogs"></a>Alkalmazás-nyomkövetési naplók létrehozása és megtekintése
+Ebben a szakaszban a következő feladatokat hajtja végre:
 
-* Nyomkövetési utasításokat hozzáadása a webes projekthez létrehozott [Ismerkedés az Azure és az ASP.NET](app-service-web-get-started-dotnet-framework.md).
-* Tekintse át a naplókat, ha a projekt helyi futtatása.
-* Tekintse át a naplókat, amikor azok jönnek létre az Azure-ban futó alkalmazás.
+* Vegyen fel nyomkövetési utasításokat ahhoz a webes projekthez, amelyet az [Azure és a ASP.net első lépéseiben](app-service-web-get-started-dotnet-framework.md)hozott létre.
+* A naplókat a projekt helyi futtatásakor tekintheti meg.
+* Megtekintheti az Azure-ban futó alkalmazás által generált naplókat.
 
-A webjobs-feladatok naplókat alkalmazás létrehozásával kapcsolatos további információk: [használata az Azure queue storage használata a WebJobs SDK - naplókat írásával](https://github.com/Azure/azure-webjobs-sdk/wiki). Naplók megtekintése és szabályozása a tárolásuk módja az Azure-ban az alábbi utasításokat webjobs-feladatok által létrehozott alkalmazásnaplókat is vonatkozik.
+További információ az alkalmazások naplóinak a webjobs-ben való létrehozásáról: az [Azure üzenetsor-tárolás használata a Webjobs SDK használatával – naplók írása](https://github.com/Azure/azure-webjobs-sdk/wiki). A naplók megtekintésének és az Azure-ban tárolt adatok szabályozásának az alábbi lépései a webjobs által létrehozott alkalmazási naplókra is érvényesek.
 
-### <a name="add-tracing-statements-to-the-application"></a>Nyomkövetési utasításokat hozzáadni az alkalmazáshoz
-1. Nyissa meg *Controllers\HomeController.cs*, és cserélje le a `Index`, `About`, és `Contact` kódot annak érdekében, hogy adja hozzá a következő módszerek `Trace` utasítások és a egy `using` nyilatkozata `System.Diagnostics`:
+### <a name="add-tracing-statements-to-the-application"></a>Nyomkövetési utasítások hozzáadása az alkalmazáshoz
+1. Nyissa meg a *Controllers\HomeController.cs*, `Index`és `About`cserélje le `Contact` a,, és metódusokat a következő `System.Diagnostics`kódra `Trace` az utasítások és `using` a utasítások hozzáadásához:
 
-```c#
-public ActionResult Index()
-{
-    Trace.WriteLine("Entering Index method");
-    ViewBag.Message = "Modify this template to jump-start your ASP.NET MVC application.";
-    Trace.TraceInformation("Displaying the Index page at " + DateTime.Now.ToLongTimeString());
-    Trace.WriteLine("Leaving Index method");
-    return View();
-}
+    ```csharp
+    public ActionResult Index()
+    {
+        Trace.WriteLine("Entering Index method");
+        ViewBag.Message = "Modify this template to jump-start your ASP.NET MVC application.";
+        Trace.TraceInformation("Displaying the Index page at " + DateTime.Now.ToLongTimeString());
+        Trace.WriteLine("Leaving Index method");
+        return View();
+    }
+    
+    public ActionResult About()
+    {
+        Trace.WriteLine("Entering About method");
+        ViewBag.Message = "Your app description page.";
+        Trace.TraceWarning("Transient error on the About page at " + DateTime.Now.ToShortTimeString());
+        Trace.WriteLine("Leaving About method");
+        return View();
+    }
+    
+    public ActionResult Contact()
+    {
+        Trace.WriteLine("Entering Contact method");
+        ViewBag.Message = "Your contact page.";
+        Trace.TraceError("Fatal error on the Contact page at " + DateTime.Now.ToLongTimeString());
+        Trace.WriteLine("Leaving Contact method");
+        return View();
+    }        
+    ```
 
-public ActionResult About()
-{
-    Trace.WriteLine("Entering About method");
-    ViewBag.Message = "Your app description page.";
-    Trace.TraceWarning("Transient error on the About page at " + DateTime.Now.ToShortTimeString());
-    Trace.WriteLine("Leaving About method");
-    return View();
-}
+1. Adjon hozzá `using System.Diagnostics;` egy utasítást a fájl elejéhez.
 
-public ActionResult Contact()
-{
-    Trace.WriteLine("Entering Contact method");
-    ViewBag.Message = "Your contact page.";
-    Trace.TraceError("Fatal error on the Contact page at " + DateTime.Now.ToLongTimeString());
-    Trace.WriteLine("Leaving Contact method");
-    return View();
-}        
-```
+### <a name="view-the-tracing-output-locally"></a>A nyomkövetési kimenet helyi megtekintése
+1. Az alkalmazás hibakeresési módban való futtatásához nyomja le az F5 billentyűt.
 
-1. Adjon hozzá egy `using System.Diagnostics;` utasítással a fájl elejéhez.
+    Az alapértelmezett nyomkövetési figyelő a **kimeneti** ablakba írja az összes nyomkövetési kimenetet, valamint más hibakeresési kimenetet is. A következő ábrán a `Index` metódushoz hozzáadott nyomkövetési utasítások kimenete látható.
 
-### <a name="view-the-tracing-output-locally"></a>A nyomon követési kimenetet helyileg megtekintése
-1. Nyomja le az F5 billentyűt az alkalmazás hibakeresési módban futtatja.
+    ![Nyomkövetés a hibakeresési ablakban](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-debugtracing.png)
 
-    Az alapértelmezett nyomkövetés-figyelő az összes nyomkövetési ír a **kimeneti** együtt más hibakeresési kimeneti ablakban. Az alábbi ábrán a korábban hozzáadott nyomkövetési utasításokat a kimenetét a `Index` metódust.
+    A következő lépések bemutatják, hogyan tekintheti meg a nyomkövetési kimenetet egy weblapon a hibakeresési módban való fordítás nélkül.
+1. Nyissa meg az alkalmazás Web. config fájlját (amely a projekt mappájában található), `<system.diagnostics>` és adjon hozzá egy elemet a fájl végén közvetlenül a záró `</configuration>` elem előtt:
 
-    ![Hibakeresési ablakban nyomon követése](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-debugtracing.png)
+    ``` xml
+    <system.diagnostics>
+    <trace>
+      <listeners>
+        <add name="WebPageTraceListener"
+            type="System.Web.WebPageTraceListener,
+            System.Web,
+            Version=4.0.0.0,
+            Culture=neutral,
+            PublicKeyToken=b03f5f7f11d50a3a" />
+      </listeners>
+    </trace>
+    </system.diagnostics>
+    ```
 
-    A következő lépésekkel nyomkövetési megjelenítése egy weblap, a hibakeresési módban fordítása nélkül.
-2. Nyissa meg az alkalmazás Web.config fájljában (a projekt mappájában található egy), és adjon hozzá egy `<system.diagnostics>` elem csak a Bezárás előtt a fájl végén `</configuration>` elem:
+A `WebPageTraceListener` lehetővé teszi a nyomkövetési kimenet `/trace.axd`megtekintését.
+1. Vegyen fel egy <a href="https://msdn.microsoft.com/library/vstudio/6915t83k(v=vs.100).aspx">nyomkövetési elemet</a> `<system.web>` a web. config fájlban, például a következő példában:
 
-``` xml
-<system.diagnostics>
-<trace>
-  <listeners>
-    <add name="WebPageTraceListener"
-        type="System.Web.WebPageTraceListener,
-        System.Web,
-        Version=4.0.0.0,
-        Culture=neutral,
-        PublicKeyToken=b03f5f7f11d50a3a" />
-  </listeners>
-</trace>
-</system.diagnostics>
-```
-
-A `WebPageTraceListener` lehetővé teszi a megtekintését nyomkövetési kimeneti megkeresve `/trace.axd`.
-1. Adjon hozzá egy <a href="https://msdn.microsoft.com/library/vstudio/6915t83k(v=vs.100).aspx">nyomkövetési elem</a> alatt `<system.web>` a Web.config fájlban, például az alábbi példában:
-
-``` xml
-<trace enabled="true" writeToDiagnosticsTrace="true" mostRecent="true" pageOutput="false" />
-```       
+    ``` xml
+    <trace enabled="true" writeToDiagnosticsTrace="true" mostRecent="true" pageOutput="false" />
+    ```
 
 1. Az alkalmazás futtatásához nyomja le a Ctrl+F5 billentyűkombinációt.
-1. Adja hozzá a böngészőablak címsorában, *trace.axd* az URL-címet, és nyomja le az ENTER billentyűt (az URL-cím hasonlít a `http://localhost:53370/trace.axd`).
-1. Az a **Trasování Aplikace** kattintson **részleteinek megtekintése** az első sorban (nem a BrowserLink sor).
+1. A böngészőablak címsorában adja hozzá a *trace. axd* címet az URL-címhez, majd nyomja le az ENTER billentyűt (az URL- `http://localhost:53370/trace.axd`cím hasonló).
+1. Az **alkalmazás-nyomkövetés** lapon kattintson a **részletek megtekintése** elemre az első sorban (ne a BrowserLink sor).
 
-    ![Trace.axd](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-traceaxd1.png)
+    ![Trace. axd](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-traceaxd1.png)
 
-    A **kérelem részleteinek** lap jelenik meg, majd a a **nyomkövetési adatok** szakaszban láthatja a hozzáadott nyomkövetési utasításokat a kimenetét a `Index` metódus.
+    Megjelenik a **kérelem részletei** lap, és a **nyomkövetési adatok** szakaszban a `Index` metódushoz hozzáadott nyomkövetési utasítások kimenete látható.
 
-    ![Trace.axd](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-traceaxd2.png)
+    ![Trace. axd](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-traceaxd2.png)
 
-    Alapértelmezés szerint `trace.axd` csak akkor érhető el helyileg. Ha szeretett volna egy távoli alkalmazás elérhető legyen, hozzáadhat `localOnly="false"` , a `trace` eleme a *Web.config* fájljához a következő példában látható módon:
+    Alapértelmezés `trace.axd` szerint csak helyileg érhető el. Ha azt szeretné, hogy elérhető legyen egy távoli alkalmazásból, akkor a `localOnly="false"` *web. config* fájlban lévő `trace` elemhez hozzáadhatja azt a következő példában látható módon:
 
         <trace enabled="true" writeToDiagnosticsTrace="true" localOnly="false" mostRecent="true" pageOutput="false" />
 
-    Azonban engedélyezése `trace.axd` egy éles környezetben biztonsági okokból nem ajánlott alkalmazás. A következő szakaszokban láthatja megkönnyítő nyomkövetési naplófájlok az App Service-alkalmazások olvasása.
+    Az éles alkalmazásokban való engedélyezés `trace.axd` azonban biztonsági okokból nem ajánlott. A következő részekben könnyebben beolvashatja a nyomkövetési naplókat egy App Service alkalmazásban.
 
-### <a name="view-the-tracing-output-in-azure"></a>A nyomon követési kimenetet megtekintése az Azure-ban
-1. A **Megoldáskezelőben**, kattintson a jobb gombbal a webes projektre, és kattintson a **közzététel**.
-2. Az a **Publish Web** párbeszédpanelen kattintson a **közzététel**.
+### <a name="view-the-tracing-output-in-azure"></a>A nyomkövetés kimenetének megtekintése az Azure-ban
+1. **Megoldáskezelő**kattintson a jobb gombbal a webes projektre, majd kattintson a **Közzététel**elemre.
+2. A **webes közzététel** párbeszédpanelen kattintson a **Közzététel**elemre.
 
-    A Visual Studio közzéteszi a frissítést, megnyílik egy böngészőablak a kezdőlapra (feltéve, hogy nem törli **cél URL-címe** a a **kapcsolat** lap).
-3. A **Server Explorer**, kattintson a jobb gombbal az alkalmazást, és válassza ki **folyamatos átviteli naplók megtekintése**.
+    Miután a Visual Studio közzétette a frissítést, megnyílik egy böngészőablak a kezdőlapon (feltéve, hogy nem törölte a **cél URL-címet** a **Kapcsolódás** lapon).
+3. A **Server Explorerben**kattintson a jobb gombbal az alkalmazásra, és válassza a **folyamatos átviteli naplók megtekintése**lehetőséget.
 
-    ![Folyamatos átviteli naplók megtekintése a helyi menü](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-viewlogsmenu.png)
+    ![Folyamatos átviteli naplók megtekintése a helyi menüben](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-viewlogsmenu.png)
 
-    A **kimeneti** ablak mutatja, hogy a naplóstreamelési szolgáltatáshoz csatlakozik, és hozzáad egy értesítési sorban, ami megjeleníthető napló nélkül percenként.
+    A **kimeneti** ablak azt mutatja, hogy csatlakozik a naplózási szolgáltatáshoz, és minden percben olyan értesítési sort ad hozzá, amely a napló megjelenítésének hiányában leáll.
 
-    ![Folyamatos átviteli naplók megtekintése a helyi menü](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-nologsyet.png)
-4. Az alkalmazás kezdőlapját megjelenítő böngészőablakban kattintson **Contact**.
+    ![Folyamatos átviteli naplók megtekintése a helyi menüben](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-nologsyet.png)
+4. Az alkalmazás kezdőlapját megjelenítő böngészőablakban kattintson a **kapcsolat**elemre.
 
-    Néhány másodpercen belül a hibaszintet kimenete nyomkövetési amelyet hozzáadott a `Contact` metódus megjelenik a **kimeneti** ablak.
+    Néhány másodpercen belül a `Contact` metódushoz hozzáadott hiba szintű nyomkövetés kimenete megjelenik a **kimeneti** ablakban.
 
-    ![Hiba történt a nyomkövetési kimeneti ablakban](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-errortrace.png)
+    ![Hibák nyomon követése a kimeneti ablakban](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-errortrace.png)
 
-    A Visual Studio csak jelenik hibaszintet nyomkövetéseket, mert a szolgáltatás figyelésére napló engedélyezése esetén ez az alapértelmezett beállítás. Amikor létrehoz egy új App Service-alkalmazást, az összes naplózás le van tiltva alapértelmezés szerint a beállítások lapon korábban megnyitásakor, mint:
+    A Visual Studio csak a hiba szintű nyomkövetést jeleníti meg, mert ez az alapértelmezett beállítás a naplózási szolgáltatás engedélyezésekor. Amikor új App Service alkalmazást hoz létre, a rendszer alapértelmezés szerint letiltja az összes naplózást, ahogy azt a korábbi beállítások lap megnyitásakor látta el:
 
-    ![Kijelentkezés alkalmazás](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-apploggingoff.png)
+    ![Alkalmazás kijelentkezése](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-apploggingoff.png)
 
-    Azonban ha kiválasztott **folyamatos átviteli naplók megtekintése**, automatikusan megváltoztatta a Visual Studio **alkalmazás Logging(File System)** való **hiba**, ami azt jelenti, hogy hiba szintű naplók a jelentett beolvasása. Annak érdekében, hogy az összes a nyomkövetési naplók megtekintéséhez módosíthatja ezt a beállítást **részletes**. Amikor kiválaszt egy súlyossági szintje alacsonyabb, mint a hiba, az összes napló magasabb fontossági szintek is jelenti. Tehát amikor kiválasztja a részletes, is megjelenik információkat, a figyelmeztetési és a hibanaplók.  
+    Ha azonban a **folyamatos átviteli naplók megtekintése**lehetőséget választotta, a Visual Studio automatikusan megváltoztatta az **alkalmazás naplózását (fájlrendszerét)** a **hibához**, ami azt jelenti, hogy a hiba szintű naplók beolvasása megtörtént. Ha szeretné megtekinteni az összes nyomkövetési naplót, ezt a beállítást **részletesen**is megváltoztathatja. Ha a hiba alatti súlyossági szintet választja, a magasabb súlyossági szintű naplókat is jelenteni kell. Tehát a részletes beállítás kiválasztásakor az információ, a figyelmeztetés és a hibanapló is megjelenik.  
 
-5. A **Server Explorer**, kattintson a jobb gombbal az alkalmazást, és kattintson **nézetbeállítások** ahogy korábban is tette.
-6. Változás **Application Logging (fájlrendszer)** való **részletes**, és kattintson a **mentése**.
+5. A **Server Explorerben**kattintson a jobb gombbal az alkalmazásra, majd kattintson a **beállítások megtekintése** lehetőségre a korábban leírtak szerint.
+6. Módosítsa az **alkalmazás naplózását (fájlrendszerét)** a **részletesre**, majd kattintson a **Mentés**gombra.
 
-    ![Részletes nyomkövetési szint](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-applogverbose.png)
-7. A böngészőablakban, amely most már láthatók a **forduljon** kattintson **kezdőlap**, majd kattintson **kapcsolatos**, és kattintson a **forduljon**.
+    ![Nyomkövetési szint beállítása a részletes értékre](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-applogverbose.png)
+7. A megjelenő böngészőablakban kattintson a **Kezdőlap**lehetőségre, majd a Névjegy elemre , végül a **kapcsolattartó**elemre.
 
-    Néhány másodpercen belül a **kimeneti** ablak megjeleníti az összes a nyomon követési kimenetet.
+    Néhány másodpercen belül a **kimeneti** ablak megjeleníti az összes nyomkövetési kimenetet.
 
-    !["Részletes" nyomkövetési kimeneti](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-verbosetraces.png)
+    ![Részletes nyomkövetési kimenet](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-verbosetraces.png)
 
-    Ebben a szakaszban engedélyezve van, és le van tiltva a naplózási beállítások használatával. Is engedélyezése és letiltása nyomkövetési figyelői a Web.config fájl módosításával. Azonban a Web.config fájl módosítása újrahasznosítást, miközben az alkalmazáskonfigurációt keresztül naplózás engedélyezése nem végez, amely alkalmazástartomány okoz. Ha a probléma reprodukálásának, hosszú időt vesz igénybe, vagy időszakos, a alkalmazástartomány újrahasznosítási előfordulhat, hogy "javítás", és annak kikényszerítéséhez, hogy Várjon, amíg újra jelentkezik. Diagnosztika engedélyezése az Azure lehetővé teszi a hibával kapcsolatos információk azonnal rögzítés alkalmazástartomány újrahasznosítási nélkül.
+    Ebben a szakaszban engedélyezte és letiltotta a naplózást az Alkalmazásbeállítások használatával. A nyomkövetési figyelőket a web. config fájl módosításával is engedélyezheti és tilthatja le. A web. config fájl módosítása azonban azt eredményezi, hogy az alkalmazás tartománya újrahasznosítható, míg az alkalmazás-konfiguráción keresztül történő naplózás engedélyezése nem teszi ezt. Ha a probléma hosszabb időt vesz igénybe, vagy időszakosan történik, az alkalmazás-tartomány újrahasznosítása a "javítás", és a várakozási idő elteltével megvárja a műveletet. A diagnosztika engedélyezése az Azure-ban lehetővé teszi, hogy azonnal elindítsa a hibák rögzítését az alkalmazás tartományának újrahasznosítása nélkül.
 
-### <a name="output-window-features"></a>Kimeneti ablak Funkciók
-A **a Microsoft Azure-naplók** lapján a **kimeneti** ablakoknál több gombok és a egy szövegbeviteli mező:
+### <a name="output-window-features"></a>A kimeneti ablak funkciói
+A **kimeneti** ablak **Microsoft Azure naplók** lapján több gomb és egy szövegmező látható:
 
-![Naplók gombok lapra](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-icons.png)
+![Naplók lapfül gombjai](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-icons.png)
 
-Ezek hajtsa végre a következő funkciókat:
+Ezek a következő funkciókat hajtják végre:
 
-* Törölje a **kimeneti** ablak.
-* Engedélyezi vagy letiltja a sortörés.
-* Indítsa el vagy leállíthatja a figyelést a naplókat.
-* Adja meg, amely naplózza a figyelése.
-* Töltse le a naplókat.
-* A keresési karakterláncot vagy egy reguláris kifejezés alapján naplók szűrése.
-* Zárja be a **kimeneti** ablak.
+* Törölje a **kimenet** ablakot.
+* A sortörés engedélyezése vagy letiltása.
+* A figyelési naplók elindítása vagy leállítása.
+* A figyelni kívánt naplók meghatározása.
+* Naplók letöltése.
+* Naplók szűrése keresési karakterlánc vagy reguláris kifejezés alapján.
+* A **kimeneti** ablak bezárásához.
 
-Ha megad egy keresési karakterláncot vagy reguláris kifejezést, a Visual Studio szűri a naplózási információk az ügyfélen. Azt jelenti, hogy a feltételeket adhatja meg, után jelennek meg a naplókat a **kimeneti** ablakban és szűrési feltételeket módosíthatja újragenerálja a naplók nélkül.
+Ha keresési karakterláncot vagy reguláris kifejezést ír be, a Visual Studio szűrői adatokat naplóz az ügyfélen. Ez azt jelenti, hogy megadhatja a feltételeket, miután a naplók megjelennek a **kimenet** ablakban, és a szűrési feltételeket a naplók újbóli létrehozása nélkül is módosíthatja.
 
 ## <a name="webserverlogs"></a>Webkiszolgáló-naplók megtekintése
-Webkiszolgáló-naplókkal jegyezze fel az alkalmazáshoz tartozó összes HTTP-tevékenységet. Annak érdekében, hogy azok a a **kimeneti** ablakban engedélyezze azokat az alkalmazás és megadhatja a Visual Studióban, hogy szeretne-e megfigyelheti őket.
+A webkiszolgáló naplói rögzítik az alkalmazás összes HTTP-tevékenységét. Ahhoz, hogy megjelenjenek a **kimeneti** ablakban, engedélyeznie kell azokat az alkalmazáshoz, és a Visual studiót, amelyet figyelni kíván.
 
-1. Az a **Azure webalkalmazás konfigurációjának** lapon, a megnyitott **Server Explorer**, módosítsa a Web Server naplózását **a**, és kattintson a **mentése**.
+1. Az **Azure webalkalmazás-konfiguráció** lapon, amelyet a **Server Explorerben**nyitott meg, módosítsa a webkiszolgáló-naplózás beállítást **a be**értékre, majd kattintson a **Mentés**gombra.
 
-    ![Webkiszolgálói naplózás engedélyezése](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-webserverloggingon.png)
-2. Az a **kimeneti** ablakban kattintson a **adja meg, amely a Microsoft Azure figyelése** gombra.
+    ![Webkiszolgáló naplózásának engedélyezése](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-webserverloggingon.png)
+2. A **kimenet** ablakban kattintson a **figyelni kívánt Microsoft Azure naplók meghatározása** gombra.
 
-    ![Adja meg, amely az Azure figyelése](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-specifylogs.png)
-3. Az a **Microsoft Azure-naplózás lehetőségeket** párbeszédpanelen jelölje ki **webalkalmazás-naplók**, és kattintson a **OK**.
+    ![A figyelni kívánt Azure-naplók meghatározása](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-specifylogs.png)
+3. A **Microsoft Azure naplózási beállítások** párbeszédpanelen válassza a webkiszolgáló- **naplók**lehetőséget, majd kattintson **az OK**gombra.
 
-    ![A figyelő webkiszolgáló-naplókkal](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-monitorwslogson.png)
-4. Az alkalmazást megjelenítő böngészőablakban kattintson **kezdőlap**, majd kattintson a **kapcsolatos**, és kattintson a **ügyfél**.
+    ![Webkiszolgáló-naplók figyelése](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-monitorwslogson.png)
+4. Az alkalmazást megjelenítő böngészőablakban kattintson a **Kezdőlap**, majd a Névjegy elemre , majd a **Névjegy**elemre.
 
-    Az alkalmazásnaplók általában az első, a webkiszolgáló-naplókkal követ. Előfordulhat, hogy megjelenjenek a naplók várnia.
+    Az alkalmazás naplói általában először, majd a webkiszolgáló naplóiban jelennek meg. Előfordulhat, hogy a naplók megjelenítéséhez várnia kell egy ideig.
 
-    ![Webkiszolgáló naplózza a kimeneti ablakban](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-wslogs.png)
+    ![Webkiszolgáló-naplók a kimeneti ablakban](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-wslogs.png)
 
-Alapértelmezés szerint amikor webkiszolgáló-naplók engedélyezésére a Visual Studio használatával Azure írja a naplókat a fájlrendszerben. Alternatív megoldásként az Azure portal segítségével adja meg a webkiszolgáló egy blobtárolót a tárfiókban lévő naplókat kell írni.
+Alapértelmezés szerint, amikor először engedélyezi a webkiszolgálói naplók használatát a Visual Studióval, az Azure a naplófájlokat a fájlrendszerbe írja. Alternatív megoldásként használhatja a Azure Portal annak megadásához, hogy a webkiszolgálói naplókat egy Storage-fiókban lévő blob-tárolóba kell írni.
 
-Ha a portál használatával engedélyezi a naplózási egy Azure storage-fiókot a webkiszolgálón, és tiltsa le a Visual Studióban, naplózás, ha újra engedélyezi a Visual Studio-naplózás a tárfiók-beállítások visszaállnak.
+Ha a portálon engedélyezi a webkiszolgálói naplózást egy Azure Storage-fiókba, majd letiltja a naplózást a Visual Studióban, akkor a rendszer visszaállítja a Storage-fiók beállításait, amikor újra engedélyezi a naplózást a Visual Studióban.
 
-## <a name="detailederrorlogs"></a>Részletes hibanaplókat üzenet megtekintése
-Részletes hibanaplókat bizonyos HTTP-kéréseket eredményező hiba válaszkódot (400 vagy újabb) további információt nyújtanak. Annak érdekében, hogy azok a a **kimeneti** ablakban kell lehetővé teszi az alkalmazás, és mondja el a Visual Studióban, hogy szeretné-e megfigyelheti őket.
+## <a name="detailederrorlogs"></a>Részletes hibaüzenetek naplófájljainak megtekintése
+A részletes naplófájlok további információkat nyújtanak a hibakódot eredményező HTTP-kérésekről (400 vagy újabb). Ahhoz, hogy megjelenjenek a **kimeneti** ablakban, engedélyeznie kell azokat az alkalmazáshoz, és a Visual studiót, amelyet figyelni kíván.
 
-1. Az a **Azure webalkalmazás konfigurációjának** lapon, a megnyitott **Server Explorer**, módosítsa **részletes hibaüzenetek** való **a**, majd Kattintson a **mentése**.
+1. A **Server Explorer böngészőből**megnyitott **Azure webalkalmazás-konfiguráció** lapon módosítsa a **részletes** hibaüzeneteket **a be**értékre, majd kattintson a **Mentés**gombra.
 
     ![Részletes hibaüzenetek engedélyezése](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-detailedlogson.png)
 
-2. Az a **kimeneti** ablakban kattintson a **adja meg, amely a Microsoft Azure figyelése** gombra.
+2. A **kimenet** ablakban kattintson a **figyelni kívánt Microsoft Azure naplók meghatározása** gombra.
 
-3. Az a **Microsoft Azure-naplózás lehetőségeket** párbeszédpanelen kattintson a **az összes napló**, és kattintson a **OK**.
+3. A **Microsoft Azure naplózási beállítások** párbeszédpanelen kattintson a **minden napló**elemre, majd az **OK**gombra.
 
     ![Az összes napló figyelése](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-monitorall.png)
 
-4. A böngészőablak címsorában, adjon hozzá egy extra karakter 404-es hibát okozhat az URL-cím (például `http://localhost:53370/Home/Contactx`), és nyomja le az Enter billentyűt.
+4. A böngészőablakban vegyen fel egy további karaktert az URL-címre, hogy 404-as hibát okozzon (például `http://localhost:53370/Home/Contactx`:), majd nyomja le az ENTER billentyűt.
 
-    Néhány másodperc elteltével megjelenik a hibával kapcsolatos részletes napló a Visual Studio **kimeneti** ablak.
+    Néhány másodperc elteltével a részletes hibanapló a Visual Studio **kimeneti** ablakában jelenik meg.
 
-    ![Részletes hibanapló - kimeneti ablak](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-detailederrorlog.png)
+    ![Részletes hibanapló – kimeneti ablak](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-detailederrorlog.png)
 
-    Szabályozhatja, és kattintson a hivatkozásra kattintva megtekintheti a böngészőben formátumú kimenet:
+    Vezérlő + kattintson a hivatkozásra a naplófájlban a böngészőben formázott kimenet megtekintéséhez:
 
-    ![Részletes hibanapló - böngészőablakot](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-detailederrorloginbrowser.png)
+    ![Részletes hibanapló – böngészőablak](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-detailederrorloginbrowser.png)
 
-## <a name="downloadlogs"></a>Töltse le a fájl rendszernaplók
-Bármely figyelemmel kísérheti a naplók a **kimeneti** ablakban is letölthető, mint egy *.zip* fájlt.
+## <a name="downloadlogs"></a>Fájlrendszer naplófájljainak letöltése
+A **kimeneti** ablakban nyomon követhető naplók is letölthetők *. zip* -fájlként.
 
-1. Az a **kimeneti** ablakban kattintson a **folyamatos átviteli naplók letöltése**.
+1. A **kimeneti** ablakban kattintson a **streaming naplók letöltése**elemre.
 
-    ![Naplók gombok lapra](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-downloadicon.png)
+    ![Naplók lapfül gombjai](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-downloadicon.png)
 
-    Fájlkezelő megnyílik a *letölti* a letöltött fájlt a kiválasztott mappában.
+    A fájlkezelő a kiválasztott letöltött fájllal nyílik meg a *letöltések* mappájába.
 
     ![Letöltött fájl](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-downloadedfile.png)
-2. Bontsa ki a *.zip* fájlt, és tekintse meg a következő mappastruktúra:
+2. Bontsa ki a *. zip* fájlt, és láthatja a következő mappastruktúrát:
 
     ![Letöltött fájl](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-logfilefolders.png)
 
-   * Alkalmazás nyomkövetési naplók *.txt* található fájlokat a *LogFiles\Application* mappát.
-   * Webkiszolgáló-naplókkal szerepelnek *.log* található fájlokat a *LogFiles\http\RawLogs* mappát. Használhatja például egy eszköz [naplóelemző](https://www.microsoft.com/download/details.aspx?displaylang=en&id=24659) megtekintésére és kezelésére, ezeket a fájlokat.
-   * Részletes hibanaplókat üzenet szerepelnek *.html* található fájlokat a *LogFiles\DetailedErrors* mappát.
+   * Az alkalmazás-nyomkövetési naplók a *LogFiles\Application* mappában található *. txt* fájlokban találhatók.
+   * A webkiszolgálói naplók a *. log* fájlokban találhatók a *LogFiles\http\RawLogs* mappában. A fájlok megtekintéséhez és módosításához használhatja a [log Parser](https://www.microsoft.com/download/details.aspx?displaylang=en&id=24659) eszközt is.
+   * A részletes hibaüzenetek naplói a *LogFiles\DetailedErrors* mappában található *. html* fájlok.
 
-     (A *központi telepítések* mappa a következő közzétételi; verziókövetés által létrehozott fájlok nem rendelkezik a Visual Studio közzététel kapcsolódó egyik elemet sem. A *Git* mappa van a forráskezelőhöz kapcsolódó nyomok közzétételt és a log fájl adatfolyam-szolgáltatást.)  
+     (A *központi telepítések* mappa a verziókövetés közzétételekor létrehozott fájlok esetében nem tartalmaz semmit a Visual Studio Publishing szolgáltatással kapcsolatban. A *git* mappa a verziókövetés közzétételével és a naplófájl-adatfolyam-továbbítási szolgáltatással kapcsolatos nyomkövetésekhez használható.)  
 
 <!-- ## <a name="storagelogs"></a>View storage logs
 Application tracing logs can also be sent to an Azure storage account, and you can view them in Visual Studio. To do that you'll create a storage account, enable storage logs in the Azure portal, and view them in the **Logs** tab of the **Azure Web App** window.
@@ -558,140 +558,140 @@ Storage accounts offer more storage and longer-lasting retention for logs compar
 
      ![Trace table in Server Explorer](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-tracetablerow.png)
  -->
-## <a name="failedrequestlogs"></a>Sikertelen kérelmek nyomkövetési naplók megtekintése
-Sikertelen kérelmek nyomkövetési naplók hasznosak, amikor szüksége van az IIS hogyan kezeli, az URL-cím újraírását vagy hitelesítési problémák – egyéb felhasználási helyzetek egy HTTP-kérés részleteinek megismeréséhez.
+## <a name="failedrequestlogs"></a>Sikertelen kérelmek nyomkövetési naplóinak megtekintése
+A sikertelen kérelmek nyomkövetési naplói akkor hasznosak, ha meg kell ismernie, hogy az IIS hogyan kezeli a HTTP-kéréseket, például URL-Újraírási vagy hitelesítési problémák esetén.
 
-App Service-alkalmazások sikertelen kérelmek nyomkövetésének funkcióit az IIS 7.0 és újabb verziói óta használja. Nem kell az IIS-beállítások, amelyek konfigurálása, hogy mely hibákat naplózza, azonban a hozzáférést. Ha engedélyezi a sikertelen kérelmek nyomkövetése, hibákat lesznek rögzítve.
+App Service alkalmazások ugyanazt a sikertelen kérelmek nyomkövetési funkciót használják, amely az IIS 7,0-es és újabb verzióiban érhető el. Nincs hozzáférése az IIS-beállításokhoz, amelyekkel konfigurálhatja, hogy mely hibák legyenek naplózva. Ha engedélyezi a sikertelen kérelmek nyomkövetését, az összes hiba rögzítve lesz.
 
-A Visual Studio használatával engedélyezheti a sikertelen kérelmek nyomkövetése, de nem tekintheti meg őket a Visual Studióban. Ezek a naplók olyan XML-fájlok. A streamelési naplózási szolgáltatás csak olvasható egyszerű szöveges módban beállításkulcsoknak fájlok figyeli: *.txt*, *.html*, és *.log* fájlokat.
+A sikertelen kérelmek nyomkövetését a Visual Studio használatával engedélyezheti, de a Visual Studióban nem tekintheti meg őket. Ezek a naplók XML-fájlok. Az adatfolyam-naplózási szolgáltatás csak egyszerű szöveges módban olvasható fájlokat figyeli: *. txt*, *. html*és *. log* fájlok.
 
-Egy böngészőben, közvetlenül az FTP-n keresztül, vagy helyileg egy FTP-eszköz használatával töltse le azokat a helyi számítógépre után megtekintheti a sikertelen kérelmek nyomkövetési naplóit. Ebben a szakaszban fog megtekintheti őket egy böngészőben közvetlenül.
+A sikertelen kérelmek nyomkövetési naplói a böngészőben közvetlenül FTP-n keresztül vagy helyileg is megtekinthetők, miután az FTP-eszköz használatával letölti azokat a helyi számítógépre. Ebben a szakaszban közvetlenül a böngészőben tekintheti meg őket.
 
-1. Az a **konfigurációs** lapján a **Azure Web App** ablak, amely a megnyitott **Server Explorer**, módosítsa **sikertelen kérelmek nyomkövetését** , **a**, és kattintson a **mentése**.
+1. A **Server Explorerben**megnyitott **Azure Web App** -ablak **konfiguráció** lapján módosítsa a **Sikertelen kérelmek nyomkövetését** **a be**értékre, majd kattintson a **Mentés**gombra.
 
-    ![Sikertelen kérelmek követésének engedélyezése](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-failedrequeston.png)
-2. Egy extra karaktert ad hozzá az URL-címet, amely az alkalmazás látható a böngészőablak címsorában, és lenyomja az Enter billentyűt a 404-es hiba miatt.
+    ![Sikertelen kérelmek nyomkövetésének engedélyezése](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-failedrequeston.png)
+2. Az alkalmazást megjelenítő böngészőablak címsorában adjon hozzá egy további karaktert az URL-címhez, majd az ENTER billentyűt lenyomva 404-hibát eredményezhet.
 
-    Ennek hatására a sikertelen kérelmek nyomkövetési napló létrehozni, és a következő lépések bemutatják, hogyan lehet megtekinteni vagy letölteni a napló.
+    Ennek hatására létrejön a sikertelen kérelmek nyomkövetési naplója, és a következő lépések bemutatják, hogyan tekintheti meg és töltheti le a naplót.
 
-3. A Visual Studióban az a **konfigurációs** lapján a **Azure Web App** ablakban kattintson a **nyissa meg a felügyeleti portál**.
+3. A Visual Studióban, az **Azure** -webalkalmazás **konfiguráció** lapján kattintson a **Megnyitás felügyeleti portál**lehetőségre.
 
-4. A a [az Azure portal](https://portal.azure.com) **beállítások** oldalon az alkalmazás **üzembe helyezési hitelesítő adatok**, majd adja meg egy új felhasználónevet és jelszót.
+4. Az alkalmazás [Azure Portal](https://portal.azure.com) **Beállítások** lapján kattintson a **központi telepítési hitelesítő adatok**elemre, majd adjon meg egy új felhasználónevet és jelszót.
 
-    ![Új FTP-felhasználónév és jelszó](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-enterftpcredentials.png)
+    ![Új FTP-Felhasználónév és jelszó](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-enterftpcredentials.png)
 
     > [!NOTE]
-    > Amikor bejelentkezik, a felhasználónév használata az alkalmazás nevét, a következő előtaggal rendelkezik. Például ha "myid" Adjon meg egy felhasználónevet, és a hely "myexample", akkor jelentkezzen "myexample\myid".
+    > Amikor bejelentkezik, a teljes felhasználónevet kell használnia az előtaggal ellátott alkalmazás nevével. Ha például a "MyID" nevet adja meg felhasználónévként, és a hely "myexample", akkor "myexample\myid" néven kell bejelentkeznie.
     >
 
-5. Egy új böngészőablakban nyissa meg az URL-címe alatt megjelenő **FTP-gazdagépnév** vagy **FTPS-állomásnév** a a **áttekintése** az alkalmazás lapját.
+5. Egy új böngészőablakban keresse meg az **FTP-állomásnév** vagy a **FTPS hostname** alatt látható URL-címet az alkalmazás **Áttekintés** lapján.
 
-6. Jelentkezzen be a korábban (beleértve az alkalmazás-előtagja a felhasználó nevét) létrehozott FTP hitelesítő adataival.
+6. Jelentkezzen be a korábban létrehozott FTP-hitelesítő adatokkal (beleértve a Felhasználónév előtagját is).
 
-    A böngésző megjeleníti az alkalmazás gyökérmappájában.
+    A böngészőben megjelenik az alkalmazás gyökérkönyvtára.
 
-7. Nyissa meg a *LogFiles* mappát.
+7. Nyissa  meg a LogFiles mappát.
 
     ![Open LogFiles folder](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-logfilesfolder.png)
 
-8. Nyissa meg a W3SVC és a egy numerikus érték nevű mappát.
+8. Nyissa meg a W3SVC nevű mappát, valamint egy numerikus értéket.
 
-    ![Nyissa meg a W3SVC mappa](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-w3svcfolder.png)
+    ![A W3SVC mappa megnyitása](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-w3svcfolder.png)
 
-    A mappában található hibaüzeneteket, miután engedélyezte a sikertelen kérelmek nyomkövetése naplózott XML-fájlok és a egy XSL-fájl, amellyel egy böngészőben az XML formátumban tartalmazza.
+    A mappa XML-fájlokat tartalmaz a sikertelen kérelmek nyomkövetésének engedélyezése után naplózott hibákhoz, valamint egy XSL-fájlhoz, amelyet a böngésző használhat az XML formázására.
 
     ![W3SVC mappa](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-w3svcfoldercontents.png)
 
-9. Kattintson a sikertelen kérések, amelyek meg szeretné tekinteni a nyomkövetési adatok XML-fájljának.
+9. Kattintson arra a sikertelen kérelemre, amelyre vonatkozóan meg szeretné jeleníteni a nyomkövetési adatokat.
 
-    Az alábbi ábrán látható egy minta hiba történt a nyomkövetési adatok egy részét.
+    A következő ábrán egy minta hiba nyomkövetési információinak egy része látható.
 
-    ![Sikertelen kérelmek követésének böngészőben](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-failedrequestinbrowser.png)
+    ![Sikertelen kérelmek nyomkövetése a böngészőben](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-failedrequestinbrowser.png)
 
 ## <a name="nextsteps"></a>Következő lépések
-Megtudhatta, hogyan Visual Studio megkönnyíti az App Service-alkalmazás által létrehozott naplók megtekintéséhez. Az alábbi szakaszok nyújtanak további forrásokra mutató hivatkozásokat a kapcsolódó témakörök:
+Látta, hogy a Visual Studio megkönnyíti a App Service-alkalmazások által létrehozott naplók megtekintését. A következő szakaszok a kapcsolódó témakörökben található további erőforrásokra mutató hivatkozásokat tartalmaznak:
 
-* Az App Service hibaelhárítása
+* Hibaelhárítás App Service
 * Hibakeresés a Visual Studióban
-* Távoli hibakeresése az Azure-ban
-* Az ASP.NET alkalmazásokban nyomon követése
-* Webkiszolgáló-naplók elemzéséhez
-* Kérelem nyomkövetési naplók elemzése nem sikerült.
-* Felhőszolgáltatások hibakeresése
+* Távoli hibakeresés az Azure-ban
+* Nyomkövetés a ASP.NET-alkalmazásokban
+* Webkiszolgáló-naplók elemzése
+* Sikertelen kérelmek nyomkövetési naplóinak elemzése
+* Hibakeresés Cloud Services
 
-### <a name="app-service-troubleshooting"></a>Az App Service hibaelhárítása
-Az Azure App Service apps hibaelhárítással kapcsolatos további információkért lásd a következőket:
+### <a name="app-service-troubleshooting"></a>Hibaelhárítás App Service
+A Azure App Service alkalmazások hibaelhárításával kapcsolatos további információkért tekintse meg a következő forrásokat:
 
 * [Alkalmazások figyelése](web-sites-monitor.md)
-* [Az Azure App Service szolgáltatásban a Visual Studio 2013 memóriavesztés kivizsgálása](https://blogs.msdn.com/b/visualstudioalm/archive/2013/12/20/investigating-memory-leaks-in-azure-web-sites-with-visual-studio-2013.aspx). A Microsoft ALM blogbejegyzés felügyelt memória problémák elemzése a Visual Studio funkcióit.
-* [Az Azure App Service-ben online eszközök kell tudni](https://azure.microsoft.com/blog/2014/03/28/windows-azure-websites-online-tools-you-should-know-about-2/). A blogbejegyzés, Amit az Apple által.
+* [A Azure app Service a Visual Studio 2013-es memória-szivárgások](https://blogs.msdn.com/b/visualstudioalm/archive/2013/12/20/investigating-memory-leaks-in-azure-web-sites-with-visual-studio-2013.aspx)kivizsgálása. Microsoft ALM blogbejegyzés a Visual Studio funkcióiról a felügyelt memória problémáinak elemzéséhez.
+* [Azure app Service a szolgáltatással kapcsolatos online eszközöket](https://azure.microsoft.com/blog/2014/03/28/windows-azure-websites-online-tools-you-should-know-about-2/). Blogbejegyzés az Apple által.
 
-Egy adott hibaelhárítási kérdés segítség elindítani egy szálat a következő fórumok egyikében:
+Ha segítségre van egy konkrét hibaelhárítási kérdésben, indítson el egy szálat az alábbi fórumok valamelyikében:
 
-* [Az Azure-fórum az ASP.NET-hely](https://forums.asp.net/1247.aspx/1?Azure+and+ASP+NET).
-* [Az Azure-fórum az MSDN](https://social.msdn.microsoft.com/Forums/windowsazure/).
+* [Az Azure Forum a ASP.net webhelyen](https://forums.asp.net/1247.aspx/1?Azure+and+ASP+NET).
+* [Az MSDN](https://social.msdn.microsoft.com/Forums/windowsazure/)-beli Azure-fórum.
 * [StackOverflow.com](https://www.stackoverflow.com).
 
 ### <a name="debugging-in-visual-studio"></a>Hibakeresés a Visual Studióban
-A Visual Studio hibakeresési mód használatával kapcsolatos további információkért lásd: [hibakeresés a Visual Studióban](/visualstudio/debugger/debugging-in-visual-studio) és [tippek hibakeresés a Visual Studio 2010](https://weblogs.asp.net/scottgu/archive/2010/08/18/debugging-tips-with-visual-studio-2010.aspx).
+További információ a hibakeresési mód a Visual Studióban történő használatáról: [hibakeresés a Visual Studióban](/visualstudio/debugger/debugging-in-visual-studio) és a [hibakeresési tippek a Visual Studio 2010](https://weblogs.asp.net/scottgu/archive/2010/08/18/debugging-tips-with-visual-studio-2010.aspx)-ben.
 
-### <a name="remote-debugging-in-azure"></a>Távoli hibakeresése az Azure-ban
-App Service-alkalmazások és a webjobs-feladatok távoli hibakereséssel kapcsolatban további információkért lásd a következőket:
+### <a name="remote-debugging-in-azure"></a>Távoli hibakeresés az Azure-ban
+A App Service-alkalmazások és webjobs-feladatok távoli hibakeresésével kapcsolatos további információkért tekintse meg a következő forrásokat:
 
-* [Távoli hibakeresés az Azure App Service bemutatása](https://azure.microsoft.com/blog/2014/05/06/introduction-to-remote-debugging-on-azure-web-sites/).
-* [Távoli hibakeresés az Azure App Service 2. rész - távoli hibakeresés belül bemutatása](https://azure.microsoft.com/blog/2014/05/07/introduction-to-remote-debugging-azure-web-sites-part-2-inside-remote-debugging/)
-* [Az Azure App Service 3. rész - többpéldányos környezet és a GIT a távoli hibakeresés bemutatása](https://azure.microsoft.com/blog/2014/05/08/introduction-to-remote-debugging-on-azure-web-sites-part-3-multi-instance-environment-and-git/)
-* [WebJobs-hibakeresés (videó)](https://www.youtube.com/watch?v=ncQm9q5ZFZs&list=UU_SjTh-ZltPmTYzAybypB-g&index=1)
+* [Bevezetés a távoli hibakeresés Azure app Service](https://azure.microsoft.com/blog/2014/05/06/introduction-to-remote-debugging-on-azure-web-sites/).
+* [A távoli hibakeresés bemutatása Azure App Service 2. rész – távoli hibakeresés](https://azure.microsoft.com/blog/2014/05/07/introduction-to-remote-debugging-azure-web-sites-part-2-inside-remote-debugging/)
+* [A távoli hibakeresés bemutatása Azure App Service 3. rész – többpéldányos környezet és GIT](https://azure.microsoft.com/blog/2014/05/08/introduction-to-remote-debugging-on-azure-web-sites-part-3-multi-instance-environment-and-git/)
+* [Webjobs-hibakeresés (videó)](https://www.youtube.com/watch?v=ncQm9q5ZFZs&list=UU_SjTh-ZltPmTYzAybypB-g&index=1)
 
-Ha az alkalmazás egy Azure webes API-t vagy a Mobile Services háttérbeli használja, és van szükség, hibakeresés, lásd: [.NET-háttérrendszer hibakeresés a Visual Studióban](https://blogs.msdn.com/b/azuremobile/archive/2014/03/14/debugging-net-backend-in-visual-studio.aspx).
+Ha az alkalmazás egy Azure web API-t vagy Mobile Services háttér-használatot használ, és hibakeresést szeretne végezni, tekintse meg a [.net-háttér hibakeresése a Visual Studióban](https://blogs.msdn.com/b/azuremobile/archive/2014/03/14/debugging-net-backend-in-visual-studio.aspx)című témakört.
 
-### <a name="tracing-in-aspnet-applications"></a>Az ASP.NET alkalmazásokban nyomon követése
-Nincsenek nem naprakész, és alapos tudnivalókra az ASP.NET nyomkövetési elérhető az interneten. A legjobb teheti van Ismerkedés a Web Forms MVC nem még létezik, és az újabb blog kiegészíti, mert tesz közzé, amelyek a konkrét problémák írt régi bevezető anyagok. Néhány hasznos helyek a indítsa el a következő források:
+### <a name="tracing-in-aspnet-applications"></a>Nyomkövetés a ASP.NET-alkalmazásokban
+Nincsenek alapos és naprakész bevezetések az interneten elérhető ASP.NET-nyomkövetéshez. A legjobb megoldás, ha a régi bevezető anyagok a Web Formshoz lettek írva, mert az MVC még nem létezett, és kiegészíti az adott problémákra koncentráló újabb blogbejegyzéseket. Néhány jó kezdési hely a következő erőforrások:
 
-* [Monitoring és Telemetria (valós felhőalapú alkalmazások létrehozása az Azure-ral)](https://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/monitoring-and-telemetry).<br>
-  E-könyv fejezet ajánlásokkal nyomkövetés az Azure felhőalapú alkalmazásokat.
-* [Az ASP.NET nyomkövetési](/previous-versions/dotnet/articles/ms972204(v=msdn.10))<br/>
-  Régi azonban továbbra is a leghasznosabb, az alapszintű bevezetést a tulajdonosnak.
+* [Monitorozás és telemetria (valós felhőalapú alkalmazások készítése az Azure-ban)](https://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/monitoring-and-telemetry).<br>
+  E-könyv fejezet az Azure Cloud Applications nyomkövetési javaslataival.
+* [ASP.NET nyomkövetés](/previous-versions/dotnet/articles/ms972204(v=msdn.10))<br/>
+  Régi, de még mindig jó erőforrás a tárgy alapszintű bevezetéséhez.
 * [Nyomkövetési figyelők](/dotnet/framework/debug-trace-profile/trace-listeners)<br/>
-  Információ a nyomkövetési figyelői nem említik, de a [WebPageTraceListener](/dotnet/api/system.web.webpagetracelistener).
-* [Forgatókönyv: Az ASP.NET nyomkövetési integrálása System.Diagnostics nyomkövetés](/previous-versions/b0ectfxd(v=vs.140))<br/>
-  Ez a cikk is régi, de nem vonatkozik a bevezető cikkben további információkat tartalmaz.
-* [Az ASP.NET MVC Razor nézetekben nyomon követése](https://blogs.msdn.com/b/webdev/archive/2013/07/16/tracing-in-asp-net-mvc-razor-views.aspx)<br/>
-  Nyomon követését a Razor-nézetekben, amellett a hozzászólás is hozzon létre egy olyan hiba szűrőt, és minden nem kezelt kivételek naplózásához az MVC alkalmazások módját ismerteti. Minden nem kezelt kivételek jelentkezzen be egy Web Forms-alkalmazást kapcsolatos információkért lásd: Global.asax példa [hibakezelők teljes példa](/previous-versions/bb397417(v=vs.140)) az MSDN Webhelyén. MVC vagy Web Forms bizonyos kivételek naplózásához, de lehetővé teszik az alapértelmezett keretrendszer kezelése gyakorolt hatását, ha akkor is feltárhatja és újbóli kiváltásához a következő példához hasonlóan:
+  Információ a nyomkövetési figyelőkről, de nem említi a [WebPageTraceListener](/dotnet/api/system.web.webpagetracelistener).
+* [Útmutató A ASP.NET-nyomkövetés integrálása a System. Diagnostics nyomkövetésével](/previous-versions/b0ectfxd(v=vs.140))<br/>
+  Ez a cikk szintén régi, de tartalmaz néhány további információt, amelyet a bevezető cikk nem fed le.
+* [Nyomkövetés a ASP.NET MVC borotva nézeteiben](https://blogs.msdn.com/b/webdev/archive/2013/07/16/tracing-in-asp-net-mvc-razor-views.aspx)<br/>
+  A borotva nézeteinek nyomkövetése mellett a post azt is ismerteti, hogyan hozhat létre egy hibakódot, hogy naplózza az összes kezeletlen kivételt egy MVC-alkalmazásban. További információ a Web Forms alkalmazás összes kezeletlen kivételének naplózásáról: a Global. asax példa az MSDN-beli hibakódok [teljes példájában](/previous-versions/bb397417(v=vs.140)) . Ha az MVC-ben vagy a Web Formsban szeretne bizonyos kivételeket naplózni, de az alapértelmezett keretrendszer kezelése érvénybe lép, az alábbi példához hasonlóan elvégezheti és eldöntheti:
 
-``` c#
-try
-{
-   // Your code that might cause an exception to be thrown.
-}
-catch (Exception ex)
-{
-    Trace.TraceError("Exception: " + ex.ToString());
-    throw;
-}
-```
+    ```csharp
+    try
+    {
+       // Your code that might cause an exception to be thrown.
+    }
+    catch (Exception ex)
+    {
+        Trace.TraceError("Exception: " + ex.ToString());
+        throw;
+    }
+    ```
 
-* [Streamelési diagnosztikai nyomkövetési naplózása az Azure parancssori felületével (plusz ízelítőt kaphatnak abból!)](https://www.hanselman.com/blog/StreamingDiagnosticsTraceLoggingFromTheAzureCommandLinePlusGlimpse.aspx)<br/>
-  Milyen Ez az oktatóanyag elvégzéséhez a parancssor használatával a Visual Studióban végrehajtását ismerteti. [Ízelítőt kaphatnak abból](https://www.hanselman.com/blog/IfYoureNotUsingGlimpseWithASPNETForDebuggingAndProfilingYoureMissingOut.aspx) olyan eszköz, az ASP.NET-alkalmazások a hibakereséshez.
-* [Web Apps-naplózás és diagnosztika – használata David Ebbo](https://azure.microsoft.com/documentation/videos/azure-web-site-logging-and-diagnostics/) és [folyamatos átviteli naplók, a Web Apps – David Ebbo](https://azure.microsoft.com/documentation/videos/log-streaming-with-azure-web-sites/)<br>
-  Scott Hanselman és David Ebbo videókat.
+* [Stream diagnosztika nyomkövetési naplózása az Azure parancssorból (plusz pillantás!)](https://www.hanselman.com/blog/StreamingDiagnosticsTraceLoggingFromTheAzureCommandLinePlusGlimpse.aspx)<br/>
+  Útmutató az oktatóanyaghoz a Visual Studióban történő végrehajtásához a parancssor használatával. A [pillantás](https://www.hanselman.com/blog/IfYoureNotUsingGlimpseWithASPNETForDebuggingAndProfilingYoureMissingOut.aspx) egy eszköz a ASP.NET-alkalmazások hibakereséséhez.
+* [Web Apps naplózás és diagnosztika használata – David Ebbo](https://azure.microsoft.com/documentation/videos/azure-web-site-logging-and-diagnostics/) és a [streaming-naplókból a web Appsból – David Ebbo](https://azure.microsoft.com/documentation/videos/log-streaming-with-azure-web-sites/)<br>
+  Videók Scott Jancsi és David Ebbo.
 
-Hiba történt a naplózást, a saját nyomkövetési kód írása helyett egy nyílt forráskódú naplózási keretrendszer használandó [ELMAH](https://nuget.org/packages/elmah/). További információkért lásd: [házigazdája, Scott Hanselman kapcsolatos blogbejegyzéseket ELMAH](https://www.hanselman.com/blog/NuGetPackageOfTheWeek7ELMAHErrorLoggingModulesAndHandlersWithSQLServerCompact.aspx).
+A hibák naplózása érdekében a saját nyomkövetési kód megírásának alternatívája egy nyílt forráskódú naplózási keretrendszer használata, például a [ELMAH](https://nuget.org/packages/elmah/). További információ: [Scott Jancsi blog-bejegyzései a ELMAH](https://www.hanselman.com/blog/NuGetPackageOfTheWeek7ELMAHErrorLoggingModulesAndHandlersWithSQLServerCompact.aspx).
 
-Emellett nem kell használnia az ASP.NET vagy `System.Diagnostics` le adatfolyam-továbbítási nyomkövetési naplók az Azure-ból. Az App Service-alkalmazás a naplózási szolgáltatás streamelési streameli bármely *.txt*, *.html*, vagy *.log* fájlt, amely megjeleníti a *LogFiles* mappát. Ezért létrehozhatja a saját naplózási rendszerrel, amely az alkalmazás fájlrendszerében ír, és a fájl automatikusan streamelt adatok és letöltött. Ehhez csak írási alkalmazáskóddal, amelyhez a fájlokat hozza létre a *d:\home\logfiles* mappát.
+Emellett nem kell ASP.net vagy `System.Diagnostics` nyomkövetést használnia az Azure-ból származó adatfolyam-naplók beszerzéséhez. A App Service app streaming log szolgáltatás a naplófájlok mappában található bármely *. txt*, *. html*vagy *. log* fájlt továbbítja. Ezért létrehozhat egy saját naplózási rendszer, amely az alkalmazás fájlrendszerére ír, és a fájlt a rendszer automatikusan továbbítja és letölti. Mindössze annyit kell tennie, hogy írási programkódot hoz létre, amely létrehozza a fájlokat a *d:\home\logfiles* mappában.
 
-### <a name="analyzing-web-server-logs"></a>Webkiszolgáló-naplók elemzéséhez
-Webkiszolgáló-naplók elemzésével kapcsolatos további információkért lásd a következőket:
+### <a name="analyzing-web-server-logs"></a>Webkiszolgáló-naplók elemzése
+A webkiszolgáló-naplók elemzésével kapcsolatos további információkért tekintse meg a következő forrásokat:
 
 * [LogParser](https://www.microsoft.com/download/details.aspx?id=24659)<br/>
-  Egy eszköz a adatok megtekintése a webkiszolgáló-naplókkal ( *.log* fájlok).
-* [Hibaelhárítási IIS teljesítménybeli problémák vagy az alkalmazáshibák LogParser használatával](https://www.iis.net/learn/troubleshoot/performance-issues/troubleshooting-iis-performance-issues-or-application-errors-using-logparser)<br/>
-  Bevezetés a naplóelemző eszköz, amellyel webkiszolgáló-naplók elemzése.
-* [Blogbejegyzések által Robert McMurray LogParser használatával](https://blogs.msdn.com/b/robert_mcmurray/archive/tags/logparser/)<br/>
-* [Az IIS 7.0, IIS 7.5 és IIS 8.0-s HTTP-állapotkód](https://support.microsoft.com/kb/943891)
+  Egy eszköz a webkiszolgáló-naplók ( *. log* fájlok) adatmegjelenítéséhez.
+* [AZ IIS teljesítményével kapcsolatos hibák elhárítása és az LogParser-t használó alkalmazáshiba](https://www.iis.net/learn/troubleshoot/performance-issues/troubleshooting-iis-performance-issues-or-application-errors-using-logparser)<br/>
+  Bevezetés a log Parser eszközbe, amely a webkiszolgáló-naplók elemzésére használható.
+* [Blogbejegyzések: Robert McMurray on using LogParser](https://blogs.msdn.com/b/robert_mcmurray/archive/tags/logparser/)<br/>
+* [A HTTP-állapotkód az IIS 7,0-ben, az IIS 7,5-ben és az IIS 8,0-ban](https://support.microsoft.com/kb/943891)
 
-### <a name="analyzing-failed-request-tracing-logs"></a>Kérelem nyomkövetési naplók elemzése nem sikerült.
-A Microsoft TechNet webhelyen tartalmaz egy [használatával sikertelen kérelmek nyomkövetését](https://www.iis.net/learn/troubleshoot/using-failed-request-tracing) rész, amely hasznos lehet az ismertetése, hogyan használhatja ezeket a naplókat. Azonban ez a dokumentáció összpontosít főként sikertelen kérelmek nyomkövetése konfigurálása az IIS-ben, amely az Azure App Service nem hajtható végre.
+### <a name="analyzing-failed-request-tracing-logs"></a>Sikertelen kérelmek nyomkövetési naplóinak elemzése
+A Microsoft TechNet webhely tartalmaz egy [Sikertelen kérelmek nyomkövetésének használatával](https://www.iis.net/learn/troubleshoot/using-failed-request-tracing) foglalkozó szakaszt, amely hasznos lehet a naplók használatának megismeréséhez. A dokumentáció azonban elsősorban a sikertelen kérelmek nyomkövetésének konfigurálására koncentrál az IIS-ben, amelyet nem tehet meg Azure App Serviceban.
 
 [GetStarted]: app-service-web-get-started-dotnet.md
 [GetStartedWJ]: https://github.com/Azure/azure-webjobs-sdk/wiki
