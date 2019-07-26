@@ -1,6 +1,6 @@
 ---
-title: Az Azure Storage közös biztonsági attribútumok
-description: A gyakori biztonsági attribútumok értékeléséhez az Azure Storage ellenőrzőlista
+title: Az Azure Storage biztonsági attribútumai
+description: Az Azure Storage kiértékeléséhez szükséges biztonsági attribútumok ellenőrzőlistája
 services: storage
 documentationcenter: ''
 author: msmbaldwin
@@ -9,16 +9,16 @@ ms.service: storage
 ms.topic: conceptual
 ms.date: 04/16/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 922273e3805004f6af068ea748c16f5675810144
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 16ec2757955b53a8bfa73ba724100f7fa61d2867
+ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66001458"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68444300"
 ---
-# <a name="security-attributes-for-azure-storage"></a>Az Azure Storage biztonsági attribútumok
+# <a name="security-attributes-for-azure-storage"></a>Az Azure Storage biztonsági attribútumai
 
-Ez a cikk az Azure Storage-bA épített biztonsági attribútumok dokumentumok. 
+Ez a cikk az Azure Storage-ba beépített biztonsági attribútumokat dokumentálja. 
 
 [!INCLUDE [Security Attributes Header](../../../includes/security-attributes-header.md)]
 
@@ -26,44 +26,44 @@ Ez a cikk az Azure Storage-bA épített biztonsági attribútumok dokumentumok.
 
 | Biztonsági attribútum | Igen/nem | Megjegyzések |
 |---|---|--|
-| Titkosítás inaktív állapotban:<ul><li>Kiszolgálóoldali titkosítás</li><li>Kiszolgálóoldali titkosítás a felhasználó által kezelt kulcsok</li><li>Más titkosítási funkciók (például az ügyféloldali, mindig titkosított, stb.)</ul>| Igen |  |
-| Titkosítás az átvitel során:<ul><li>Express route-titkosítás</li><li>A VNet-titkosítás</li><li>Hálózatok titkosítása</ul>| Igen | Standard szintű HTTPS/TLS mechanizmusokat támogatja.  Felhasználók is titkosíthatja adatokat, mielőtt azt a szolgáltatás. |
-| Titkosítási kulcs kezelése (CMK, BYOK, stb.)| Igen | Lásd: [ügyfél által kezelt kulcsok használata az Azure Key Vaultban a Storage Service Encryption](storage-service-encryption-customer-managed-keys.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).|
-| Oszlop a blokkszintű titkosítás (az Azure Data Services)| – |  |
+| Titkosítás inaktív állapotban (például kiszolgálóoldali titkosítás, ügyfél által felügyelt kulcsokkal rendelkező kiszolgálóoldali titkosítás és egyéb titkosítási funkciók)| Igen |  |
+| Az átvitel közbeni titkosítás (például ExpressRoute titkosítás, VNet titkosítás és VNet-VNet titkosítás)| Igen | A szabványos HTTPS/TLS-mechanizmusok támogatása.  A felhasználók a szolgáltatásba való továbbítás előtt is titkosítani tudják az adatokat. |
+| Titkosítási kulcsok kezelését (CMK, BYOK stb.)| Igen | Lásd: [Storage Service encryption az ügyfél által felügyelt kulcsokkal Azure Key Vaultban](storage-service-encryption-customer-managed-keys.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).|
+| Oszlop szintű titkosítás (Azure Data Services)| – |  |
 | Titkosított API-hívások| Igen |  |
 
-## <a name="network-segmentation"></a>Hálózati szegmentálást
+## <a name="network-segmentation"></a>Hálózati szegmentálás
 
 | Biztonsági attribútum | Igen/nem | Megjegyzések |
 |---|---|--|
-| Szolgáltatási végpont támogatás| Igen |  |
-| VNet-injektálási támogatás| – |  |
-| Hálózatelkülönítés és támogatási optimalizálóként működik| Igen | |
+| Szolgáltatás végpontjának támogatása| Igen |  |
+| VNet-befecskendezés támogatása| – |  |
+| Hálózati elkülönítés és tűzfalak támogatása| Igen | |
 | Kényszerített bújtatás támogatása| – |  |
 
 ## <a name="detection"></a>Észlelés
 
 | Biztonsági attribútum | Igen/nem | Megjegyzések|
 |---|---|--|
-| Azure monitorozási támogatása (a Log analytics, az App insights, stb.)| Igen | Az Azure Monitor metrikák elérhető, naplózza a kezdeti előzetes verzió |
+| Azure monitoring-támogatás (log Analytics, alkalmazás-elemzések stb.)| Igen | Azure Monitor a metrikák mostantól elérhetők, az előzetes verziójú naplók |
 
 ## <a name="identity-and-access-management"></a>Identitás- és hozzáférés-kezelés
 
 | Biztonsági attribútum | Igen/nem | Megjegyzések|
 |---|---|--|
-| Hitelesítés| Igen | Az Azure Active Directory, a megosztott kulcsot, a megosztott hozzáférési jogkivonatot. |
-| Engedélyezés| Igen | Engedélyezés a következővel RBAC, a POSIX ACL-EK és a SAS-tokeneket támogatja |
+| Authentication| Igen | Azure Active Directory, megosztott kulcs, közös hozzáférési jogkivonat. |
+| Authorization| Igen | Támogatás engedélyezése RBAC, POSIX ACL-eken és SAS-tokeneken keresztül |
 
 
-## <a name="audit-trail"></a>Auditnapló
+## <a name="audit-trail"></a>Naplózási nyomvonal
 
 | Biztonsági attribútum | Igen/nem | Megjegyzések|
 |---|---|--|
-| Vezérlő és a felügyeleti sík naplózási és naplózása | Igen | Az Azure Resource Manager-tevékenységnapló |
-| Adatsík naplózása és naplózása| Igen | Diagnosztikai naplók szolgáltatás és az Azure Monitor Naplózás kezdési előzetes verzió  |
+| Vezérlési és felügyeleti síkok naplózása és naplózása | Igen | Azure Resource Manager tevékenység naplója |
+| Adatsíkok naplózása és naplózása| Igen | Szolgáltatás-diagnosztikai naplók és Azure Monitor naplózás indítása – előzetes verzió  |
 
 ## <a name="configuration-management"></a>Konfigurációkezelés
 
 | Biztonsági attribútum | Igen/nem | Megjegyzések|
 |---|---|--|
-| Konfiguráció kezelésével kapcsolatos támogatás (versioning konfiguráció stb.)| Igen | Támogatja az erőforrás-szolgáltató versioning Azure Resource Manager API-kon keresztül |
+| Configuration Management-támogatás (konfiguráció verziószámozása stb.)| Igen | Azure Resource Manager API-k támogatása az erőforrás-szolgáltatónál |

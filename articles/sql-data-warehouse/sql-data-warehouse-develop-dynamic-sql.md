@@ -1,8 +1,8 @@
 ---
-title: Dinamikus SQL-lel az Azure SQL Data Warehouse |} A Microsoft Docs
-description: Dinamikus SQL használatával az Azure SQL Data Warehouse-megoldások fejlesztése a tippek.
+title: Dinamikus SQL használata a Azure SQL Data Warehouseban | Microsoft Docs
+description: Tippek a dinamikus SQL használatának Azure SQL Data Warehouse a megoldások fejlesztéséhez.
 services: sql-data-warehouse
-author: XiaoyuL-Preview
+author: XiaoyuMSFT
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
@@ -10,19 +10,19 @@ ms.subservice: query
 ms.date: 04/17/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: 567637cab1c983992b08f65352ab9a92bd448c5a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4454b1d44d0be61dca8571e86c73e09a9527d1eb
+ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65861822"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68479657"
 ---
-# <a name="dynamic-sql-in-sql-data-warehouse"></a>Az SQL Data Warehouse dinamikus SQL
-Dinamikus SQL használatával az Azure SQL Data Warehouse-megoldások fejlesztése a tippek.
+# <a name="dynamic-sql-in-sql-data-warehouse"></a>Dinamikus SQL in SQL Data Warehouse
+Tippek a dinamikus SQL használatának Azure SQL Data Warehouse a megoldások fejlesztéséhez.
 
-## <a name="dynamic-sql-example"></a>Példa dinamikus SQL
+## <a name="dynamic-sql-example"></a>Dinamikus SQL-példa
 
-Az SQL Data Warehouse alkalmazáskód fejlesztésekor szükség lehet dinamikus sql segítségével rugalmas, általános és moduláris megoldások. Az SQL Data Warehouse jelenleg nem támogatja a blob adattípusokat. Nem támogatja a blob adattípusok előfordulhat, hogy korlátozza a karakterláncok méretét, mivel blob adattípusok közé tartozik a varchar(max), mind az nvarchar(max) típusú. Ha ezek a típusok hozhat létre nagy karakterláncokat az alkalmazás kódjában használta, a kód felosztása adattömbökre, és inkább az EXEC utasítás szüksége.
+A SQL Data Warehouse alkalmazás kódjának fejlesztésekor szükség lehet a dinamikus SQL használatára a rugalmas, általános és moduláris megoldások biztosításához. A SQL Data Warehouse jelenleg nem támogatja a blob-adattípusokat. A blob-adattípusok nem támogatják a karakterláncok méretét, mivel a blob-adattípusok a varchar (max) és a nvarchar (max) típusokat is tartalmazzák. Ha már használta ezeket a típusokat az alkalmazás kódjában nagyméretű karakterláncok létrehozásához, akkor a kódot a darabokra kell bontania, és ehelyett az EXEC utasítást kell használnia.
 
 Egy egyszerű példa:
 
@@ -34,13 +34,13 @@ DECLARE @sql_fragment1 VARCHAR(8000)=' SELECT name '
 EXEC( @sql_fragment1 + @sql_fragment2 + @sql_fragment3);
 ```
 
-Ha a karakterlánc rövid, használhatja [sp_executesql](/sql/relational-databases/system-stored-procedures/sp-executesql-transact-sql) szokásos módon.
+Ha a sztring rövid, a [Sp_executesql](/sql/relational-databases/system-stored-procedures/sp-executesql-transact-sql) normál módon is használhatja.
 
 > [!NOTE]
-> Dinamikus SQL végrehajtásra utasítások továbbra is az összes TSQL-ellenőrzési szabályok érvényesek lesznek.
+> A dinamikus SQLként végrehajtott utasítások továbbra is az összes TSQL-érvényesítési szabály hatálya alá esnek.
 > 
 > 
 
 ## <a name="next-steps"></a>További lépések
-További fejlesztési tippek: [fejlesztői áttekintés](sql-data-warehouse-overview-develop.md).
+További fejlesztési tippek: a [fejlesztés áttekintése](sql-data-warehouse-overview-develop.md).
 

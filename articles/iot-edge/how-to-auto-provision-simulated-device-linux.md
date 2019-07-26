@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 1a13c130c45c746a42c0acf1ec2646f3c8f9bc51
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
+ms.openlocfilehash: b48455b6ea9c1cd74e94c10d8f9f938c20512c02
+ms.sourcegitcommit: c556477e031f8f82022a8638ca2aec32e79f6fd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68227517"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68414575"
 ---
 # <a name="create-and-provision-an-iot-edge-device-with-a-virtual-tpm-on-a-linux-virtual-machine"></a>Virtuális TPM-sel rendelkező IoT Edge-eszköz létrehozása és kiépítése Linux rendszerű virtuális gépen
 
@@ -162,8 +162,7 @@ Az IoT Edge-futtatókörnyezet minden IoT Edge-eszközön üzembe van helyezve. 
 
 A DPS tudja **azonosító hatóköre** és az eszköz **regisztrációs azonosító** a cikk, amely az eszköz típusának megfelelő megkezdése előtt. Ha a például Ubuntu-kiszolgálót telepítette, használja a **x64** utasításokat. Ellenőrizze, hogy az IoT Edge-futtatókörnyezet, az automatikus, nem manuális üzembe helyezést. 
 
-* [A Azure IoT Edge Runtime telepítése Linux rendszeren (x64)](how-to-install-iot-edge-linux.md)
-* [A Azure IoT Edge Runtime telepítése Linux rendszeren (ARM32v7/armhf)](how-to-install-iot-edge-linux-arm.md)
+[A Azure IoT Edge Runtime telepítése Linux rendszeren](how-to-install-iot-edge-linux.md)
 
 ## <a name="give-iot-edge-access-to-the-tpm"></a>IoT Edge-hozzáférést biztosít a TPM-eszköz
 

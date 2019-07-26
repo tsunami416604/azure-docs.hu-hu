@@ -1,37 +1,40 @@
 ---
-title: Az Azure Data Lake az Azure az adatkezelő segítségével adatokat kérdezhet le
-description: Ismerje meg, hogyan kérdezhet le adatokat az Azure Data Lake az Azure az adatkezelő segítségével.
+title: Azure Data Lake lekérdezése az Azure-Adatkezelő használatával
+description: Megtudhatja, hogyan kérdezheti le az Azure Data Lake az Azure Adatkezelő használatával.
 author: orspod
 ms.author: orspodek
 ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: conceptual
-ms.date: 06/25/2019
-ms.openlocfilehash: d6a58d144482e17f7e4b615134115d1da46af6f0
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.date: 07/17/2019
+ms.openlocfilehash: cd53e1386d9d6f2a38beb1661554c8cc9116169d
+ms.sourcegitcommit: 5604661655840c428045eb837fb8704dca811da0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67453176"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68494866"
 ---
-# <a name="query-data-in-azure-data-lake-using-azure-data-explorer-preview"></a>Az Azure Data Lake az Azure Data Explorer (előzetes verzió) használatával adatokat lekérdezni
+# <a name="query-data-in-azure-data-lake-using-azure-data-explorer-preview"></a>Azure Data Lake lekérdezése az Azure Adatkezelő használatával (előzetes verzió)
 
-Az Azure Data Lake Storage egy hatékonyan méretezhető és költséghatékony data lake megoldás big data-elemzés. Egy nagy teljesítményű fájlrendszer, a hatalmas méret és a gazdaságosság ötvözésével segít gyorsabban hozzájutni az elemzési eredményekhez. A Data Lake Storage Gen2 túlmutat az Azure Blob Storage képességein, és elemzési feladatokra van optimalizálva.
+A Azure Data Lake Storage egy rugalmasan méretezhető és költséghatékony, big data elemzésre szolgáló adatkezelési megoldás. Egy nagy teljesítményű fájlrendszer, a hatalmas méret és a gazdaságosság ötvözésével segít gyorsabban hozzájutni az elemzési eredményekhez. A Data Lake Storage Gen2 túlmutat az Azure Blob Storage képességein, és elemzési feladatokra van optimalizálva.
  
-Az Azure Data Explorer integrálható az Azure Blob Storage és az Azure Data Lake Storage Gen2, gyors, így a gyorsítótárba, és indexeli a Lake adatokhoz való hozzáférést. Elemezheti és kérdezhet le adatokat a előzetes feltöltése az Azure Data Explorer nélküli Lake. A feldolgozott és uningested natív lake data egyszerre is lekérdezésére.  
+Az Azure Adatkezelő integrálható az Azure Blob Storage és Azure Data Lake Storage Gen2 szolgáltatással, amely gyors, gyorsítótárazott és indexelt hozzáférést biztosít a Lake-beli adatkezeléshez. Az Azure Adatkezelő-ba való előzetes betöltés nélkül elemezheti és lekérdezheti a tóban lévő adatot. Lekérdezheti a betöltött és a nem feldolgozott natív Lake-adatmennyiségeket is egyszerre.  
 
 > [!TIP]
-> A legjobb lekérdezési teljesítmény az adatok feltöltése az Azure Data Explorer szükségessé teszi. A funkció használatával adatokat lekérdezni az Azure Data Lake Storage Gen2 előzetes betöltési nélkül csak használandó előzményadatok vagy a ritkán lekérdezett adatok.
+> A legjobb lekérdezési teljesítmény az Azure Adatkezelőba való adatfeldolgozást teszi szükségessé. Az Azure Data Lake Storage Gen2 előzetes betöltés nélküli lekérdezésének képességét csak olyan múltbeli vagy a ritkán lekérdezett adatmennyiségek esetében kell használni.
  
-## <a name="optimize-query-performance-in-the-lake"></a>A Lake a lekérdezési teljesítmény optimalizálása 
+## <a name="optimize-query-performance-in-the-lake"></a>A lekérdezés teljesítményének optimalizálása a tóban 
 
-* Adatok particionálása a nagyobb teljesítmény és optimalizált lekérdezési idő.
-* Jobb teljesítmény (a legjobb tömörítési gzip, a legjobb teljesítmény érdekében lz4) adatok tömörítése.
-* Az Azure Blob Storage vagy Azure Data Lake Storage Gen2 és az Azure Data Explorer fürt ugyanabban a régióban. 
+* Adatok particionálása a jobb teljesítmény és az optimalizált lekérdezési idő tekintetében.
+* Az adatok tömörítése a jobb teljesítmény érdekében (a legjobb tömörítés érdekében a lz4 a legjobb teljesítmény érdekében).
+* Az Azure Blob Storage vagy az Azure Adatkezelő-fürttel azonos régióval Azure Data Lake Storage Gen2. 
 
 ## <a name="create-an-external-table"></a>Külső tábla létrehozása
 
-1. Használja a `.create external table` külső tábla létrehozása az Azure Data Explorer parancsot. Külső tábla további parancsok, mint `.show`, `.drop`, és `.alter` vannak dokumentálva [külső tábla parancsok](/azure/kusto/management/externaltables).
+ > [!NOTE]
+ > Jelenleg támogatott Storage-fiókok az Azure Blob Storage vagy Azure Data Lake Storage Gen2. A jelenleg támogatott adatformátumok a JSON, a CSV, a TSV és a txt.
+
+1. A `.create external table` paranccsal létrehozhat egy külső táblát az Azure Adatkezelőban. A külső táblák további parancsai, `.show`például `.drop`a, `.alter` a és a [külső táblák parancsaiban](/azure/kusto/management/externaltables)vannak dokumentálva.
 
     ```Kusto
     .create external table ArchivedProducts(
@@ -43,37 +46,69 @@ Az Azure Data Explorer integrálható az Azure Blob Storage és az Azure Data La
     with (compressed = true)  
     ```
 
-    Ez a lekérdezés hoz létre a napi partíciók *container1/yyyy/MM/dd/all_exported_blobs.csv*. Nagyobb teljesítmény várható a részletesebb particionálási. Például a napi partíciók, például a fenti, a külső táblákon végrehajtott lekérdezések jobb teljesítmény érdekében ezeket a lekérdezéseket, havi particionált táblák lesz.
+    Ez a lekérdezés a következő napi partíciókat hozza létre: *container1/éééé/hh/nn/all_exported_blobs. csv*. Nagyobb teljesítmény várható részletesebb particionálással. Többek között a napi partíciókat (például a fentieket) tartalmazó külső táblák lekérdezése jobb teljesítményt nyújt, mint a havonta particionált táblákkal rendelkező lekérdezések.
 
-    > [!NOTE]
-    > Jelenleg támogatott tárfiókok az Azure Blob Storage vagy az Azure Data Lake Storage Gen2. Jelenleg támogatott formátumok a következők: csv, tsv és txt.
+1. A külső tábla látható a webes felhasználói felület bal oldali ablaktábláján.
 
-1. A külső tábla jelenik meg a bal oldali panelen, a webes felhasználói felület
+    ![külső tábla a webes felületen](media/data-lake-query-data/external-tables-web-ui.png)
 
-    ![külső tábla a webes felhasználói felületen](media/data-lake-query-data/external-tables-web-ui.png)
+### <a name="create-an-external-table-with-json-format"></a>Külső tábla létrehozása JSON-formátummal
+
+Létrehozhat egy JSON formátumú külső táblát is. További információ: [külső táblák parancsai](/azure/kusto/management/externaltables)
+
+1. A `.create external table` parancs használatával hozzon létre egy *ExternalTableJson*nevű táblázatot:
+
+    ```kusto
+    .create external table ExternalTableJson (rownumber:int, rowguid:guid) 
+    kind=blob
+    dataformat=json
+    ( 
+       h@'http://storageaccount.blob.core.windows.net/container1;secretKey'
+    )
+    with 
+    (
+       docstring = "Docs",
+       folder = "ExternalTables",
+       namePrefix="Prefix"
+    ) 
+    ```
  
-### <a name="external-table-permissions"></a>Külső tábla engedélyek
+1. A JSON formátuma egy második lépést tesz szükségessé az oszlopok leképezésének létrehozásához az alább látható módon. A következő lekérdezésben hozzon létre egy *mappingName*nevű megadott JSON-leképezést:
+
+    ```kusto
+    .create external table ExternalTableJson json mapping "mappingName" '[{ "column" : "rownumber", "datatype" : "int", "path" : "$.rownumber"},{ "column" : "rowguid", "path" : "$.rowguid" }]' 
+    ```
+
+### <a name="external-table-permissions"></a>Külső tábla engedélyei
  
-* Az adatbázis-felhasználót egy külső táblát hozhat létre. A tábla létrehozója automatikusan lesz tábla rendszergazdája.
-* A fürt, adatbázis vagy táblázat rendszergazda szerkesztheti a meglévő tábla.
-* Bármilyen adatbázis-felhasználót vagy olvasó lekérdezheti a külső tábla.
+* Az adatbázis-felhasználó létrehozhat egy külső táblát. A tábla létrehozója automatikusan lesz a tábla rendszergazdája.
+* A fürt, az adatbázis vagy a tábla rendszergazdája szerkesztheti a meglévő táblákat.
+* Bármely adatbázis-felhasználó vagy-olvasó lekérdezheti a külső táblákat.
  
-## <a name="query-an-external-table"></a>A külső tábla lekérdezése
+## <a name="query-an-external-table"></a>Külső tábla lekérdezése
  
-A külső tábla lekérdezése, használja a `external_table()` függvényt, és adja meg a táblanevet függvény argumentumaként. A lekérdezés többi általános Kusto-lekérdezés nyelvi.
+Egy külső tábla lekérdezéséhez használja a `external_table()` függvényt, és adja meg a tábla nevét függvény argumentumként. A lekérdezés többi része a standard Kusto lekérdezési nyelv.
 
 ```Kusto
 external_table("ArchivedProducts") | take 100
 ```
 
 > [!TIP]
-> Az IntelliSense jelenleg nem támogatott a külső tábla lekérdezések.
+> Az IntelliSense jelenleg nem támogatott külső táblákon futó lekérdezésekben.
 
-## <a name="query-external-and-ingested-data-together"></a>Együtt a külső és a feldolgozott adatok lekérdezése
+### <a name="query-an-external-table-with-json-format"></a>Külső tábla lekérdezése JSON-formátummal
 
-Külső táblák és a betöltött táblák ugyanabból a lekérdezés lekérdezheti. Ön [ `join` ](/azure/kusto/query/joinoperator) vagy [ `union` ](/azure/kusto/query/unionoperator) a külső tábla az adatkezelőt az Azure, SQL Server-kiszolgálók vagy egyéb forrásokból származó további adatokkal. Használja a [ `let( ) statement` ](/azure/kusto/query/letstatement) gyorsírás nevét hozzárendelése egy külső tábla hivatkozást.
+Ha JSON formátumú külső táblát szeretne lekérdezni, használja `external_table()` a függvényt, és adja meg a tábla nevét és a hozzárendelés nevét a függvény argumentumként. Ha az alábbi lekérdezésben nincs megadva a *mappingName* , a rendszer a korábban létrehozott leképezést fogja használni.
 
-Az alábbi példában *termékek* betöltött táblázat és *ArchivedProducts* van egy külső táblát, amely az Azure Data Lake Storage Gen2 adatokat tartalmazza:
+```kusto
+external_table(‘ExternalTableJson’, ‘mappingName’)
+```
+
+## <a name="query-external-and-ingested-data-together"></a>Külső és betöltött adatmennyiség lekérdezése együtt
+
+Ugyanazon lekérdezésen belül is lekérdezheti a külső táblákat és a betöltött adattáblákat. Ön [`join`](/azure/kusto/query/joinoperator) [vagy`union`](/azure/kusto/query/unionoperator) a külső tábla, amely az Azure adatkezelő, az SQL Server vagy más forrásból származó további adatokkal rendelkezik. [`let( ) statement`](/azure/kusto/query/letstatement) A használatával rövidített nevet rendelhet egy külső tábla hivatkozásához.
+
+Az alábbi példában a *termékek* egy betöltött adattábla, a *ArchivedProducts* pedig egy külső tábla, amely a Azure Data Lake Storage Gen2ban lévő adatot tartalmaz:
 
 ```kusto
 let T1 = external_table("ArchivedProducts") |  where TimeStamp > ago(100d);
@@ -81,16 +116,16 @@ let T = Products; //T is an internal table
 T1 | join T on ProductId | take 10
 ```
 
-## <a name="query-taxirides-external-table-in-the-help-cluster"></a>Lekérdezés *TaxiRides* a súgófürtben lévő külső tábla
+## <a name="query-taxirides-external-table-in-the-help-cluster"></a>Külső tábla *TaxiRides* lekérdezése a Súgó fürtben
 
-A *TaxiRides* minta adatkészlet tartalmazza a New York City-i taxik adatait [NYC Taxi és Limousine Bizottság](https://www1.nyc.gov/site/tlc/about/tlc-trip-record-data.page).
+A *TaxiRides* -minta adatkészlete New York-i taxi-adathalmazt tartalmaz a [NYC taxi és a limuzin commissionból](https://www1.nyc.gov/site/tlc/about/tlc-trip-record-data.page).
 
-### <a name="create-external-table-taxirides"></a>Külső tábla létrehozása *TaxiRides* 
+### <a name="create-external-table-taxirides"></a>Külső tábla *TaxiRides* létrehozása 
 
 > [!NOTE]
-> Ez a szakasz a létrehozásához használt lekérdezés ábrázolja a *TaxiRides* a külső tábla a *súgó* fürt. Mivel ez a tábla már létre van hozva kihagyhatja ezt a szakaszt, és hajtsa végre [lekérdezés *TaxiRides* külső táblák adatainak](#query-taxirides-external-table-data). 
+> Ez a szakasz a *TaxiRides* külső tábla létrehozásához használt lekérdezést mutatja be a *Súgó* fürtben. Mivel ez a tábla már létrejött, kihagyhatja ezt a szakaszt, és elvégezheti a [lekérdezés *TaxiRides* külső tábla adatain](#query-taxirides-external-table-data). 
 
-1. A következő lekérdezést a külső tábla létrehozásához használt *TaxiRides* a súgófürtben lévő. 
+1. A következő lekérdezés a külső tábla *TaxiRides* létrehozására szolgál a Súgó fürtben. 
 
     ```kusto
     .create external table TaxiRides
@@ -151,20 +186,20 @@ A *TaxiRides* minta adatkészlet tartalmazza a New York City-i taxik adatait [NY
     partition by bin(pickup_datetime, 1d)
     dataformat=csv
     ( 
-    h@'https://externalkustosamples.blob.core.windows.net/taxiridesbyday?st=2019-06-18T14%3A59%3A00Z&se=2029-06-19T14%3A59%3A00Z&sp=rl&sv=2016-05-31&sr=c&sig=yEaO%2BrzFHzAq7lvd4d9PeQ%2BTi3AWnho8Rn8hGU0X30M%3D'
+        h@'http://storageaccount.blob.core.windows.net/container1;secretKey''
     )
     ```
-1. Az eredményül kapott tábla sikeresen létrehozva a *súgó* fürt:
+1. Az eredményül kapott tábla a következő *Súgó* fürtben lett létrehozva:
 
-    ![Külső tábla TaxiRides](media/data-lake-query-data/taxirides-external-table.png) 
+    ![TaxiRides külső tábla](media/data-lake-query-data/taxirides-external-table.png) 
 
-### <a name="query-taxirides-external-table-data"></a>Lekérdezés *TaxiRides* külső tábla adatait 
+### <a name="query-taxirides-external-table-data"></a>Külső *TaxiRides* lekérdezése 
 
-Jelentkezzen be a [ https://dataexplorer.azure.com/clusters/help/databases/Samples ](https://dataexplorer.azure.com/clusters/help/databases/Samples) lekérdezéshez a *TaxiRides* külső tábla. 
+A TaxiRides külső tábla lekérdezéséhez jelentkezzen be.  [https://dataexplorer.azure.com/clusters/help/databases/Samples](https://dataexplorer.azure.com/clusters/help/databases/Samples) 
 
-#### <a name="query-taxirides-external-table-without-partitioning"></a>Lekérdezés *TaxiRides* külső tábla particionálása nélkül
+#### <a name="query-taxirides-external-table-without-partitioning"></a>Külső tábla lekérdezése particionálás nélkül *TaxiRides*
 
-[A lekérdezés futtatására](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAx3LSwqAMAwFwL3gHYKreh1xL7F9YrCtElP84OEV9zM4DZo5DsZjhGt6PqWTgL1p6+qhvaTEKjeI/FqyuZbGiwJf63QAi9vEL2UbAhtMEv6jyAH6+VhS9jOr1dULfUgAm2cAAAA=) a külső tábla *TaxiRides* ábrázolhatja a hét naponként fel a teljes adatkészlet között. 
+[Futtassa ezt a lekérdezést](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAx3LSwqAMAwFwL3gHYKreh1xL7F9YrCtElP84OEV9zM4DZo5DsZjhGt6PqWTgL1p6+qhvaTEKjeI/FqyuZbGiwJf63QAi9vEL2UbAhtMEv6jyAH6+VhS9jOr1dULfUgAm2cAAAA=) a külső táblán, hogy a hét minden napján a teljes adathalmazon *TaxiRides* a túrákat. 
 
 ```kusto
 external_table("TaxiRides")
@@ -172,13 +207,13 @@ external_table("TaxiRides")
 | render columnchart
 ```
 
-Ez a lekérdezés megjeleníti a legforgalmasabb a hét napja. Az adatok nem particionált, mivel ez a lekérdezés az eredmények (akár több is perc) hosszú időt vehet igénybe.
+Ez a lekérdezés a hét legforgalmasabb napját jeleníti meg. Mivel az adatmennyiség nincs particionálva, a lekérdezés hosszú időt vehet igénybe az eredmények visszaküldéséhez (akár több percig is).
 
-![a lekérdezés nem particionált megjelenítése](media/data-lake-query-data/taxirides-no-partition.png)
+![nem particionált lekérdezés megjelenítése](media/data-lake-query-data/taxirides-no-partition.png)
 
-#### <a name="query-taxirides-external-table-with-partitioning"></a>Lekérdezés TaxiRides külső tartalmazó tábla particionálása 
+#### <a name="query-taxirides-external-table-with-partitioning"></a>TaxiRides külső táblájának lekérdezése particionálással 
 
-[A lekérdezés futtatására](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA13NQQqDMBQE0L3gHT6ukkVF3fQepXv5SQYMNWmIP6ilh68WuinM6jHMYBPkyPMobGao5s6bv3mHpdF19aZ1QgYlbx8ljY4F4gPIQFYgkvqJGrr+eun6I5ralv58OP27t5QQOPsXiOyzRFGazE6WzSh7wtnIiA75uISdOEtdfQDLWmP+ogAAAA==) a külső tábla *TaxiRides* megjelenítő taxi cab típusok (sárga vagy zöld), a 2017 január használt. 
+[Futtassa ezt a lekérdezést](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA13NQQqDMBQE0L3gHT6ukkVF3fQepXv5SQYMNWmIP6ilh68WuinM6jHMYBPkyPMobGao5s6bv3mHpdF19aZ1QgYlbx8ljY4F4gPIQFYgkvqJGrr+eun6I5ralv58OP27t5QQOPsXiOyzRFGazE6WzSh7wtnIiA75uISdOEtdfQDLWmP+ogAAAA==) a külső tábla *TaxiRides* , amely a 2017 januárjában használt taxisofőr-típusokat (sárga vagy zöld) jeleníti meg. 
 
 ```kusto
 external_table("TaxiRides")
@@ -187,12 +222,12 @@ external_table("TaxiRides")
 | render piechart
 ```
 
-Ez a lekérdezés használ a particionálás, ami optimalizálja a lekérdezési idő és teljesítmény. A lekérdezés egy particionált (pickup_datetime) oszlop alapján szűri, és pár másodpercen belül eredményeket ad vissza.
+Ez a lekérdezés particionálást használ, amely optimalizálja a lekérdezési időt és a teljesítményt. A lekérdezés szűrői egy particionált oszlopon (pickup_datetime), és néhány másodpercen belül visszaadja az eredményeket.
 
-![a particionált lekérdezés megjelenítése](media/data-lake-query-data/taxirides-with-partition.png)
+![particionált lekérdezés renderelése](media/data-lake-query-data/taxirides-with-partition.png)
   
-A külső tábla futtathatók további lekérdezéseket írhat *TaxiRides* és további információ az adatokat. 
+További lekérdezéseket is írhat a külső tábla *TaxiRides* való futtatáshoz, és további információkat tudhat meg az adatkezelésről. 
 
 ## <a name="next-steps"></a>További lépések
 
-Az Azure Data Lake az Azure az adatkezelő segítségével az adatok lekérdezése. Ismerje meg, hogyan [lekérdezéseket írni](write-queries.md) és további betekintést szeretne nyerni az adatokból.
+Az Azure Adatkezelő használatával kérdezheti le adatait a Azure Data Lake. Megtudhatja, hogyan [írhat lekérdezéseket](write-queries.md) , és hogyan hozhatja ki az adatokból származó további információkat.

@@ -1,6 +1,6 @@
 ---
-title: Az Azure Virtual Machine Scale Sets általános biztonsági attribútumai
-description: Az Azure-Virtual Machine Scale Sets kiértékeléséhez használt általános biztonsági attribútumok ellenőrzőlistája
+title: Az Azure Virtual Machine Scale Sets biztonsági attribútumai
+description: Az Azure-Virtual Machine Scale Sets értékelésére szolgáló biztonsági attribútumok ellenőrzőlistája
 services: virtual-machine-scale-sets
 ms.service: virtual-machine-scale-sets
 documentationcenter: ''
@@ -9,16 +9,16 @@ manager: barbkess
 ms.topic: conceptual
 ms.date: 06/05/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 42187ce1a3103ba037ba2e2c179c720e444ddc60
-ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
+ms.openlocfilehash: 1e96d3d8ba909afdc4bb402f95c4f482f3ddf681
+ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68296339"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68444268"
 ---
-# <a name="common-security-attributes-for-azure-virtual-machine-scale-sets"></a>Az Azure Virtual Machine Scale Sets általános biztonsági attribútumai
+# <a name="security-attributes-for-azure-virtual-machine-scale-sets"></a>Az Azure Virtual Machine Scale Sets biztonsági attribútumai
 
-Ez a cikk az Azure Virtual Machine Scale Sets beépített általános biztonsági attribútumait dokumentálja.
+Ez a cikk az Azure Virtual Machine Scale Sets beépített biztonsági attribútumait dokumentálja.
 
 [!INCLUDE [Security attributes header](../../includes/security-attributes-header.md)]
 

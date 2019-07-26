@@ -2,24 +2,15 @@
 author: msmbaldwin
 ms.service: security
 ms.topic: include
-ms.date: 04/17/2019
+ms.date: 07/23/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 762393e501475001d2af6defc563b3e489788309
-ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
+ms.openlocfilehash: 4aea8c1d1d7112ac1f9ff9042ff01d173ed986c5
+ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67795644"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68440889"
 ---
-Egy biztonsági attribútum egy minőségi vagy a szolgáltatás Azure-szolgáltatás. A szolgáltatás képes-e megelőzését, észlelését és válaszadás a biztonsági rések üzletmentében.
+A biztonsági attribútumok az Azure-szolgáltatások minősége vagy funkciói. A szolgáltatás hozzájárul a biztonsági rések megelőzésére, észlelésére és reagálására.
 
-Biztonsági attribútumok kategóriába sorolt:
-* Megelőző
-* Hálózati szegmentálást
-* Észlelés
-* Identitás és hozzáférés-kezelés támogatása
-* Auditnapló
-* Hozzáférés-vezérlés (ha van)
-* Konfigurációkezelés (ha van)
-
-Az egyes kategóriák bemutatjuk a "Yes" vagy annak jelzésére, hogy használható-e egy attribútum "No". Egyes szolgáltatások esetén a "kitöltendő mezőbe N.A." olyan attribútum, amely nem alkalmazható a bemutatjuk. Azt is biztosíthatnak, Megjegyzés, vagy további információ a attribútum mutató hivatkozást.
+Az egyes kategóriákban a "yes" vagy a "No" érték jelenik meg, amely jelzi, hogy az attribútum használatban van-e. Egyes szolgáltatások esetében "N/A" (nem alkalmazható) attribútumot mutatunk be. Egy Megjegyzés vagy egy hivatkozás is megadható, amely további információkat tartalmaz egy attribútumról.

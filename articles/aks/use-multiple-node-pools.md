@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 05/17/2019
 ms.author: mlearned
-ms.openlocfilehash: 4ba9840d745995fdf7b8b14889a0c021917f0ec3
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: 72f34d9711e1ba4658288bfdeb847632d32d0fcf
+ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68278168"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68478329"
 ---
 # <a name="preview---create-and-manage-multiple-node-pools-for-a-cluster-in-azure-kubernetes-service-aks"></a>Előzetes verzió – több Node-készlet létrehozása és kezelése az Azure Kubernetes Service-ben (ak)
 
@@ -145,7 +145,9 @@ VirtualMachineScaleSets  1        110        nodepool1   1.13.5                 
 
 ## <a name="upgrade-a-node-pool"></a>Csomópont-készlet frissítése
 
-Ha az AK-fürt az első lépésben lett létrehozva, `--kubernetes-version` a rendszer egy *1.13.5* adott meg. Frissítse a *mynodepool* az Kubernetes *1.13.7*. Az az [AK Node Pool upgrade][az-aks-nodepool-upgrade] paranccsal frissítse a csomópont-készletet, ahogy az az alábbi példában is látható:
+Ha az AK-fürt az első lépésben lett létrehozva, `--kubernetes-version` a rendszer egy *1.13.5* adott meg. Ezzel beállítja a Kubernetes verzióját a vezérlő síkja és a kezdeti csomópont-készlet esetében is. A vezérlő síkja és a Kubernetes verziójának frissítéséhez különböző parancsok tartoznak. A `az aks upgrade` parancs a vezérlési sík frissítésére szolgál, míg az `az aks nodepool upgrade` egy adott csomópont-készlet frissítésére szolgál.
+
+Frissítse a *mynodepool* az Kubernetes *1.13.7*. Az az [AK Node Pool upgrade][az-aks-nodepool-upgrade] paranccsal frissítse a csomópont-készletet, ahogy az az alábbi példában is látható:
 
 ```azurecli-interactive
 az aks nodepool upgrade \
@@ -155,6 +157,9 @@ az aks nodepool upgrade \
     --kubernetes-version 1.13.7 \
     --no-wait
 ```
+
+> [!Tip]
+> A vezérlő síkja *1.13.7*való frissítéséhez futtassa a `az aks upgrade -k 1.13.7`parancsot.
 
 Sorolja fel újra a csomópont-készletek állapotát az az [AK Node Pool List][az-aks-nodepool-list] parancs használatával. A következő példa azt mutatja, hogy a *mynodepool* a *1.13.7* *Verziófrissítési* állapotban van:
 
@@ -170,6 +175,15 @@ VirtualMachineScaleSets  1        110        nodepool1   1.13.5                 
 A csomópontok a megadott verzióra való frissítése néhány percet vesz igénybe.
 
 Ajánlott eljárásként egy AK-fürt összes csomópont-készletét ugyanarra a Kubernetes-verzióra kell frissíteni. Az egyes csomópont-készletek frissítésének lehetősége lehetővé teszi a működés közbeni frissítését, és a csomópontok közötti ütemezést az alkalmazások üzemidőének fenntartása érdekében.
+
+> [!NOTE]
+> A Kubernetes a szabványos [szemantikai verziószámozási](https://semver.org/) sémát használja. A verziószám *x. y. z*értékként van kifejezve, ahol az *x* a főverzió, az *y* az alverzió, a *z* pedig a javítás verziója. Például a *1.12.6*verzióban az 1 a főverzió, a 12 az alverzió, a 6 pedig a javítás verziója. A Kubernetes verziója, valamint a kezdeti csomópont-készlet is be van állítva a fürt létrehozásakor. Az összes további csomópont-készlet Kubernetes-verziója be van állítva a fürthöz való hozzáadásakor. A Kubernetes-verziók eltérőek lehetnek a csomópont-készletek és a csomópont-készlet és a vezérlési sík között, de a következő korlátozások érvényesek:
+> 
+> * A csomópont-készlet verziójának ugyanazzal a főverzióval kell rendelkeznie, mint a vezérlő síkja.
+> * A csomópont-készlet verziója lehet kisebb, mint a vezérlő síkja verziója.
+> * A csomópont-készlet verziója lehet bármilyen javítási verzió, ha a másik két korlátozást követik.
+> 
+> A vezérlő síkja Kubernetes-verziójának frissítéséhez használja `az aks upgrade`a következőt:. Ha a fürtnek csak egy csomópont-készlete `az aks upgrade` van, akkor a parancs a Kubernetes verzióját is frissíti.
 
 ## <a name="scale-a-node-pool"></a>Csomópont-készlet skálázása
 
@@ -271,7 +285,7 @@ aks-nodepool1-28993262-vmss000000    Ready    agent   115m    v1.13.5
 A Kubernetes-ütemező használatával megtilthatja, hogy milyen számítási feladatok futhatnak a csomópontokon.
 
 * A  rendszer egy olyan csomópontra alkalmazza a megromlást, amely azt jelzi, hogy csak bizonyos hüvelyek ütemezhetők.
-* A  rendszer egy olyan Pod-ra alkalmazza a betartást,  amely lehetővé teszi a csomópontok megromlását.
+* A **rendszer egy olyan** Pod-ra alkalmazza a betartást,  amely lehetővé teszi a csomópontok megromlását.
 
 További információ a speciális Kubernetes ütemezett funkcióinak használatáról: [ajánlott eljárások a speciális Scheduler-funkciókhoz az AK-ban][taints-tolerations]
 

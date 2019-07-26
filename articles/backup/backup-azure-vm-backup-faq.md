@@ -1,37 +1,36 @@
 ---
-title: Azure-beli virtuális gépek az Azure Backup szolgáltatással biztonsági mentésével kapcsolatos gyakori kérdések
-description: Azure-beli virtuális gépek az Azure Backup szolgáltatással biztonsági mentésével kapcsolatos gyakori kérdésekre adott válaszok.
-services: backup
+title: Gyakori kérdések az Azure-beli virtuális gépek biztonsági mentéséről Azure Backup
+description: Válaszok az Azure-beli virtuális gépek Azure Backup használatával történő biztonsági mentésével kapcsolatos gyakori kérdésekre.
 author: sogup
 manager: vijayts
 ms.service: backup
 ms.topic: conceptual
 ms.date: 06/28/2019
 ms.author: sogup
-ms.openlocfilehash: 0248e169f5d502cce8723f594f438b87ab088f3a
-ms.sourcegitcommit: 978e1b8cac3da254f9d6309e0195c45b38c24eb5
+ms.openlocfilehash: a26cc2fcdc381361912085b0980a736f040c5b0a
+ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67551614"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68465292"
 ---
-# <a name="frequently-asked-questions-back-up-azure-vms"></a>Gyakori kérdések – biztonsági mentése Azure virtuális gépek
+# <a name="frequently-asked-questions-back-up-azure-vms"></a>Gyakori kérdések – Azure-beli virtuális gépek biztonsági mentése
 
-Ez a cikk az Azure virtuális gépek biztonsági mentésével kapcsolatos gyakori kérdésekre is válaszol a [Azure Backup](backup-introduction-to-azure-backup.md) szolgáltatás.
+Ez a cikk az Azure-beli virtuális gépek [Azure Backup](backup-introduction-to-azure-backup.md) szolgáltatással történő biztonsági mentésével kapcsolatos gyakori kérdésekre ad választ.
 
 
-## <a name="backup"></a>Backup
+## <a name="backup"></a>Tartalék
 
-### <a name="which-vm-images-can-be-enabled-for-backup-when-i-create-them"></a>Melyik Virtuálisgép-rendszerképek biztonsági mentés esetén is engedélyezhető, ha hozhatok létre?
-Egy virtuális gép létrehozásakor engedélyezheti a futó virtuális gépek biztonsági mentési [támogatott operációs rendszerek](backup-support-matrix-iaas.md#supported-backup-actions)
+### <a name="which-vm-images-can-be-enabled-for-backup-when-i-create-them"></a>Milyen virtuálisgép-rendszerképeket lehet engedélyezni a biztonsági mentéshez, amikor létrehozom őket?
+Amikor létrehoz egy virtuális gépet, engedélyezheti a biztonsági mentést a [támogatott operációs rendszereket](backup-support-matrix-iaas.md#supported-backup-actions) futtató virtuális gépeken
 
-### <a name="is-the-backup-cost-included-in-the-vm-cost"></a>A virtuális gép díja magában foglalja a biztonsági mentési mennyibe kerül?
+### <a name="is-the-backup-cost-included-in-the-vm-cost"></a>A virtuális gép ára tartalmazza a biztonsági mentés költségeit?
 
-Nem. Biztonsági mentési díjakat külön, a virtuális gép költségeket. Tudjon meg többet [Azure Backup árairól](https://azure.microsoft.com/pricing/details/backup/).
+Nem. A biztonsági mentési költségek elkülönül a virtuális gép költségeitől. További információ a [Azure Backup díjszabásáról](https://azure.microsoft.com/pricing/details/backup/).
 
-### <a name="which-permissions-are-required-to-enable-backup-for-a-vm"></a>Milyen engedélyek szükségesek egy virtuális gép biztonsági mentésének engedélyezése?
+### <a name="which-permissions-are-required-to-enable-backup-for-a-vm"></a>Milyen engedélyek szükségesek a virtuális gép biztonsági mentésének engedélyezéséhez?
 
-Ha Ön egy virtuális gép közreműködő, engedélyezheti a virtuális gép biztonsági mentése. Ha egy egyéni szerepkör használata esetén szüksége a virtuális gép biztonsági mentésének engedélyezése a következő engedélyekkel:
+Ha Ön virtuálisgép-közreműködő, akkor engedélyezheti a biztonsági mentést a virtuális gépen. Ha egyéni szerepkört használ, a következő engedélyekkel engedélyezheti a biztonsági mentést a virtuális gépen:
 
 - Microsoft.RecoveryServices/Vaults/write
 - Microsoft.RecoveryServices/Vaults/read
@@ -43,99 +42,99 @@ Ha Ön egy virtuális gép közreműködő, engedélyezheti a virtuális gép bi
 - Microsoft.RecoveryServices/Vaults/backupPolicies/read
 - Microsoft.RecoveryServices/Vaults/backupPolicies/write
 
-Ha a Recovery Services-tároló és a virtuális gép eltérő erőforráscsoportokban, győződjön meg arról, van is írási engedélye a Recovery Services-tároló az erőforráscsoportban.  
+Ha a Recovery Services-tároló és a virtuális gép eltérő erőforráscsoportokat tartalmaz, győződjön meg arról, hogy rendelkezik írási engedéllyel a Recovery Services-tároló erőforráscsoporthoz.  
 
 
-### <a name="does-an-on-demand-backup-job-use-the-same-retention-schedule-as-scheduled-backups"></a>Egy igény szerinti biztonsági mentési feladat használja ugyanazt a megőrzési ütemezést, ütemezett biztonsági mentések?
-Nem. Adja meg a megőrzési tartomány egy igény szerinti biztonsági mentési feladat. Alapértelmezés szerint 30 napig őrzi meg a portálról elindításakor.
+### <a name="does-an-on-demand-backup-job-use-the-same-retention-schedule-as-scheduled-backups"></a>Az igény szerinti biztonsági mentési feladatok ugyanazt a megőrzési ütemezést használják, mint az ütemezett biztonsági mentések?
+Nem. Egy igény szerinti biztonsági mentési feladatokhoz tartozó megőrzési tartomány megadása. Alapértelmezés szerint 30 napig őrzi meg a rendszer a portálról való aktiváláskor.
 
 ### <a name="i-recently-enabled-azure-disk-encryption-on-some-vms-will-my-backups-continue-to-work"></a>Nemrég engedélyeztem az Azure Disk Encryption szolgáltatást néhány virtuális gépen. A biztonsági mentések továbbra is működni fognak?
-Key Vault elérése érdekében az Azure Backup engedélyeket biztosítanak. Adja meg az engedélyeket a PowerShellben leírtak szerint a **biztonsági mentés engedélyezése** című rész a [Azure Backup PowerShell](backup-azure-vms-automation.md) dokumentációját.
+Adja meg az Azure Backup számára a Key Vault eléréséhez szükséges engedélyeket. Az [Azure Backup PowerShell](backup-azure-vms-automation.md) dokumentációjában a **biztonsági mentés engedélyezése** című részben leírtak szerint határozza meg az engedélyeket a PowerShellben.
 
-### <a name="i-migrated-vm-disks-to-managed-disks-will-my-backups-continue-to-work"></a>Felügyelt lemezeket Virtuálisgép-lemezek szeretnék áttelepíteni. A biztonsági mentések továbbra is működni fognak?
-Igen, biztonsági mentések problémamentesen működik. Hiba esetén nem kell semmit újrakonfigurálása.
+### <a name="i-migrated-vm-disks-to-managed-disks-will-my-backups-continue-to-work"></a>Áttelepítettem a VM-lemezeket a felügyelt lemezekre. A biztonsági mentések továbbra is működni fognak?
+Igen, a biztonsági mentések zökkenőmentesen működnek. Semmit nem kell újrakonfigurálnia.
 
 ### <a name="why-cant-i-see-my-vm-in-the-configure-backup-wizard"></a>Miért nem látom a virtuális gépemet a Biztonsági mentés konfigurálása varázslóban?
-A varázsló csak sorolja fel a virtuális gépek és a tárolónak ugyanabban a régióban, és már, hogy nem készül biztonsági másolat.
+A varázsló csak azokat a virtuális gépeket sorolja fel, amelyek ugyanabban a régióban találhatók, mint a tároló, és amelyekről még nem készül biztonsági mentés.
 
-### <a name="my-vm-is-shut-down-will-an-on-demand-or-a-scheduled-backup-work"></a>Virtuális gép leállt. Egy igény szerinti vagy ütemezett biztonsági mentési munkahelyi lesz?
-Igen. Biztonsági másolatok futtassa, ha egy gép le van állítva. A helyreállítási pont van megjelölve rendszerösszeomlás egységes.
+### <a name="my-vm-is-shut-down-will-an-on-demand-or-a-scheduled-backup-work"></a>A virtuális gép le van állítva. Egy igény szerinti vagy ütemezett biztonsági mentés is működik?
+Igen. A biztonsági mentések a gép leállításakor futnak. A helyreállítási pont az összeomlás-konzisztensként van megjelölve.
 
-### <a name="can-i-cancel-an-in-progress-backup-job"></a>Egy folyamatban lévő biztonsági mentési feladat lemondható?
-Igen. A biztonsági mentési feladat megszakítható egy **véve pillanatkép** állapota. Egy feladat nem szakítható meg, ha folyamatban van a pillanatkép adatátvitel.
+### <a name="can-i-cancel-an-in-progress-backup-job"></a>Törölhetek egy folyamatban lévő biztonsági mentési feladatot?
+Igen. A biztonsági mentési feladatot megszakíthatja  a pillanatképek állapotának megkezdéséhez. Nem lehet megszakítani egy feladatot, ha a pillanatképből való adatátvitel folyamatban van.
 
-### <a name="i-enabled-lock-on-resource-group-created-by-azure-backup-service-ie-azurebackuprggeonumber-will-my-backups-continue-to-work"></a>I engedélyezve van az Azure Backup szolgáltatással (vagyis) által létrehozott erőforráscsoport zárolása `AzureBackupRG_<geo>_<number>`), a biztonsági mentések továbbra is működni fog?
-Ha zárolhatja az Azure Backup szolgáltatás által létrehozott erőforráscsoportot, biztonsági mentés sikertelen, mert legfeljebb 18 visszaállítási pontok indul el.
+### <a name="i-enabled-lock-on-resource-group-created-by-azure-backup-service-ie-azurebackuprggeonumber-will-my-backups-continue-to-work"></a>Engedélyezve van a Azure Backup szolgáltatás által létrehozott erőforráscsoport zárolása (azaz `AzureBackupRG_<geo>_<number>`a biztonsági mentések továbbra is működni fognak?
+Ha zárolja Azure Backup szolgáltatás által létrehozott erőforráscsoportot, a biztonsági mentések sikertelenek lesznek, mivel legfeljebb 18 visszaállítási pont lehet.
 
-Távolítsa el a zárolást, és törölje a jelet ebből az erőforráscsoportból a visszaállításipont-gyűjtemény annak érdekében, hogy a jövőbeni biztonsági mentések sikeres, a felhasználónak kell [kövesse az alábbi lépéseket](backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout.md#clean-up-restore-point-collection-from-azure-portal) eltávolítása a visszaállításipont-gyűjtemény.
+A felhasználónak el kell távolítania a zárolást, és törölnie kell a visszaállítási pont gyűjteményét abból a célból, hogy a biztonsági mentések sikeresek legyenek, a visszaállítási pontok gyűjteményének eltávolításához [kövesse az alábbi lépéseket](backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout.md#clean-up-restore-point-collection-from-azure-portal) .
 
 
-### <a name="does-azure-backup-support-standard-ssd-managed-disk"></a>Biztosítja az Azure támogatja a biztonsági mentést standard SSD felügyelt lemez?
-Az Azure Backup támogatja [SSD standard szintű felügyelt lemezek](https://azure.microsoft.com/blog/announcing-general-availability-of-standard-ssd-disks-for-azure-virtual-machine-workloads/). SSD-managed Disks szolgáltatásba az Azure virtuális gépek adjon meg egy új típusú tartós tárolási. SSD felügyelt lemezek támogatása megtalálható a [azonnali visszaállítása](backup-instant-restore-capability.md).
+### <a name="does-azure-backup-support-standard-ssd-managed-disk"></a>Támogatja az Azure Backup a standard SSD felügyelt lemezt?
+A Azure Backup támogatja a [standard SSD felügyelt lemezeket](https://azure.microsoft.com/blog/announcing-general-availability-of-standard-ssd-disks-for-azure-virtual-machine-workloads/). Az SSD által felügyelt lemezek új típusú tartós tárolást biztosítanak az Azure-beli virtuális gépek számára. Az SSD által felügyelt lemezek támogatása az [azonnali visszaállításban](backup-instant-restore-capability.md)érhető el.
 
-### <a name="can-we-back-up-a-vm-with-a-write-accelerator-wa-enabled-disk"></a>Hogy készíthető lemez írási gyorsító WA-kompatibilis virtuális gépek?
-Pillanatképek nem használhatók a WA-kompatibilis lemezen. Azonban az Azure Backup szolgáltatás is WA-kompatibilis lemezének kizárása a biztonsági másolatból.
+### <a name="can-we-back-up-a-vm-with-a-write-accelerator-wa-enabled-disk"></a>Tud biztonsági másolatot készíteni egy virtuális gépről írásgyorsító (WA)-kompatibilis lemezzel?
+Nem lehet pillanatképeket felvenni a WA-kompatibilis lemezre. A Azure Backup szolgáltatás azonban kizárhatja a WA-kompatibilis lemezt a biztonsági mentésből.
 
-### <a name="i-have-a-vm-with-write-accelerator-wa-disks-and-sap-hana-installed-how-do-i-back-up"></a>Írási gyorsító (CS) lemezekkel rendelkező virtuális gép van, és az SAP HANA telepítve. Hogyan készíthetek biztonsági másolatot?
-Az Azure Backup a WA-kompatibilis lemez nem készíthető, de lehet kizárni, biztonsági másolatból. Azonban a biztonsági mentés módszer nem biztosítja adatbázis-konzisztencia, mert a WA-kompatibilis lemezen lévő adatokat nem készül. Ez a konfiguráció lemezek készíthető, ha azt szeretné, operációsrendszer-lemez biztonsági mentés, és a lemezek, amelyek nem WA-kompatibilis.
+### <a name="i-have-a-vm-with-write-accelerator-wa-disks-and-sap-hana-installed-how-do-i-back-up"></a>Van egy írásgyorsító (WA) lemezzel rendelkező virtuális gép, és SAP HANA telepítve. Hogyan biztonsági mentést?
+Azure Backup nem tud biztonsági másolatot készíteni a WA-kompatibilis lemezről, de kizárhatja azt a biztonsági mentésből. A biztonsági mentés azonban nem biztosít adatbázis-konzisztenciát, mert a WA-kompatibilis lemezen található információk nem rendelkeznek biztonsági mentéssel. Ebben a konfigurációban biztonsági mentést készíthet a lemezekről, ha az operációs rendszer lemezének biztonsági mentését kívánja végezni, valamint a nem a WA-kompatibilis lemezek biztonsági mentését.
 
-Privát előzetes verzió, az SAP HANA biztonsági mentés egy 15 perces RPO-val futtatja azt. Az SQL-adatbázis biztonsági mentése hasonló módon épül, és az SAP HANA által hitelesített külső megoldások a backInt felületet használja. Ha érdekli, e-mailt küldjön `AskAzureBackupTeam@microsoft.com` témájával **regisztrálhat az Azure virtuális gépeken futó SAP HANA biztonsági mentéséhez a privát előzetes verzió**.
+Privát előzetes verzióban futtatunk egy SAP HANA biztonsági mentést 15 perces RPO. Ez az SQL-adatbázis biztonsági mentésének hasonló módja, és a backInt felületet használja az SAP HANA által tanúsított külső megoldások számára. Ha érdekli, küldjön e-mailt `AskAzureBackupTeam@microsoft.com` a tulajdonosnak a **privát előzetes verzióra az Azure-beli virtuális gépek SAP HANA biztonsági mentéséhez**.
 
-### <a name="what-is-the-maximum-delay-i-can-expect-in-backup-start-time-from-the-scheduled-backup-time-i-have-set-in-my-vm-backup-policy"></a>Mi az a maximális késleltetés kell beállítani a saját virtuális gép biztonsági mentési szabályzat ütemezett biztonsági mentésének ideje a biztonsági mentés kezdő időpontja is várható?
-Az ütemezett biztonsági mentést az ütemezett biztonsági mentés időpontja 2 órán belül aktiválódik. Az ex. Ha 100 virtuális gép 2:00 órakor ütemezett biztonsági mentés kezdő időpontja, majd szerint max. 4:00-kor összes 100VMs rendelkezik biztonságimásolat-készítő feladat folyamatban van. Ha ütemezett biztonsági mentések szünetelnek miatt a szolgáltatáskimaradás, és folytatódik és újra megpróbálja majd biztonsági mentés indításához ez 2 óra ütemezett időszakon kívül.
+### <a name="what-is-the-maximum-delay-i-can-expect-in-backup-start-time-from-the-scheduled-backup-time-i-have-set-in-my-vm-backup-policy"></a>Mi a maximális késleltetés a virtuális gép biztonsági mentési házirendjében beállított ütemezett biztonsági mentési idő alapján a biztonsági mentés kezdési idején?
+Az ütemezett biztonsági mentés az ütemezett biztonsági mentés időpontjától számított 2 órán belül aktiválódik. Pl.: Ha az 100 virtuális gép biztonsági mentésének kezdési időpontja 2:00 órakor van ütemezve, akkor a 100VMs Max 4:00 am értékkel lesz folyamatban. Ha az ütemezett biztonsági mentések leállása miatt szüneteltek, és a rendszer újrapróbálkozik, akkor a biztonsági mentés az ütemezett 2hr-ablakon kívül is elindítható.
 
-### <a name="what-is-the-minimum-allowed-retention-range-for-daily-backup-point"></a>Mi az a minimális megengedett megőrzési időtartam napi biztonsági mentési pont?
-Az Azure virtuális gép biztonsági mentési szabályzat mentése 7 nap a minimális megőrzési 9999 nap támogatja. Egy meglévő virtuális gép biztonsági mentési szabályzathoz 7 napon belül bármilyen módosítása kell egy frissítést a felel meg a minimális megőrzési időtartam 7 nap.
+### <a name="what-is-the-minimum-allowed-retention-range-for-daily-backup-point"></a>Mi a minimálisan megengedett megőrzési időtartam a napi biztonsági mentési ponthoz?
+Az Azure-beli virtuális gépek biztonsági mentési szabályzata legalább 7 napos megőrzési időtartamot támogat legfeljebb 9999 napig. A meglévő virtuális gépek biztonsági mentési házirendjének a 7 napnál rövidebb idő alatt történő módosítása egy frissítést igényel, hogy megfeleljen a minimális megőrzési időtartamnak (7 nap).
 
 ## <a name="restore"></a>Visszaállítás
 
-### <a name="how-do-i-decide-whether-to-restore-disks-only-or-a-full-vm"></a>Hogyan válasszak visszaállítása csak lemezek-e, vagy egy teljes virtuális Gépet?
-Úgy gondolja, hogy a virtuális gép visszaállítási mint gyors létrehozási lehetőséget egy Azure virtuális gép. Ez a beállítás módosítja a lemez nevét, a lemezek, a nyilvános IP-címek és a hálózati adapterek nevét által használt tárolókat. A módosítás megtartja az egyedi erőforrásokat egy virtuális gép létrehozásakor. A virtuális gép egy rendelkezésre állási csoport nem hozzá.
+### <a name="how-do-i-decide-whether-to-restore-disks-only-or-a-full-vm"></a>Hogyan eldönteni, hogy csak lemezeket vagy teljes virtuális gépet szeretne-e visszaállítani?
+Egy Azure-beli virtuális gép gyors létrehozási lehetőségeként tekintse át a virtuális gép visszaállítását. Ez a beállítás megváltoztatja a lemezeket, a nyilvános IP-címeket és a hálózati adapterek nevét. A módosítás egyedi erőforrásokat tart fenn a virtuális gépek létrehozásakor. A virtuális gép nincs felvéve egy rendelkezésre állási csoportba.
 
-A visszaállítási lemez lehetőséget is használhatja, ha azt szeretné, hogy:
-  * Testre szabhatja a virtuális gép, amely létrejön. Például módosíthatja a méretét.
-  * Adja hozzá a konfigurációs beállítások, amelyek nem létezik a biztonsági mentés idején.
-  * Vezérlő elnevezési létrehozott erőforrásokat.
-  * A virtuális gép hozzáadása egy rendelkezésre állási csoporthoz.
-  * Adja hozzá a bármely más beállítás, amely a PowerShell vagy egy sablon használatával kell konfigurálni.
+Használhatja a lemez visszaállítása lehetőséget, ha a következőket kívánja használni:
+  * Szabja testre a létrehozott virtuális gépet. Módosítsa például a méretet.
+  * Adja meg a biztonsági mentés időpontjában nem található konfigurációs beállításokat.
+  * A létrehozott erőforrások elnevezési konvenciójának szabályozása.
+  * Adja hozzá a virtuális gépet egy rendelkezésre állási csoporthoz.
+  * Adja meg az egyéb beállításokat, amelyeket a PowerShell vagy egy sablon használatával kell konfigurálni.
 
-### <a name="can-i-restore-backups-of-unmanaged-vm-disks-after-i-upgrade-to-managed-disks"></a>Vissza tudok állítani biztonsági nem felügyelt virtuális gépek lemezeinek biztonsági másolatait magasabb a managed Disks szolgáltatásba?
-Igen, használhatja a lemezek migrált felügyelt kódba előtt készített biztonsági másolatokat.
-- Alapértelmezés szerint a virtuális gép visszaállítási feladat létrehoz egy nem felügyelt virtuális gép.
-- Azonban állítsa vissza a lemezeket, és ezek segítségével felügyelt virtuális gép létrehozása.
+### <a name="can-i-restore-backups-of-unmanaged-vm-disks-after-i-upgrade-to-managed-disks"></a>Visszaállíthatom a nem felügyelt virtuális gépek biztonsági másolatait a felügyelt lemezekre való frissítés után?
+Igen, használhat olyan biztonsági másolatokat, amelyeket a lemezek a nem felügyelt állapotból felügyelt rendszerbe való migrálása előtt készítettek.
+- Alapértelmezés szerint a Restore VM-feladatok nem felügyelt virtuális gépet hoznak létre.
+- Azonban visszaállíthatja a lemezeket, és felhasználhatja őket egy felügyelt virtuális gép létrehozásához.
 
 ### <a name="how-do-i-restore-a-vm-to-a-restore-point-before-the-vm-was-migrated-to-managed-disks"></a>Hogyan lehet visszaállítani egy virtuális gépet egy, a virtuális gép felügyelt lemezekre történő migrálását megelőző visszaállítási pontra?
-Alapértelmezés szerint egy virtuális gép visszaállítási feladat nem felügyelt lemezekkel rendelkező virtuális Gépet hoz létre. A felügyelt lemezekkel rendelkező virtuális gép létrehozásához:
-1. [Nem felügyelt lemezek visszaállítása](tutorial-restore-disk.md#restore-a-vm-disk).
-2. [A visszaállított lemez átalakítása felügyelt lemezek](tutorial-restore-disk.md#convert-the-restored-disk-to-a-managed-disk).
-3. [A felügyelt lemezekkel rendelkező virtuális gép létrehozása](tutorial-restore-disk.md#create-a-vm-from-the-restored-disk).
+Alapértelmezés szerint a visszaállítási virtuálisgép-feladatok létrehoznak egy nem felügyelt lemezekkel rendelkező virtuális gépet. Virtuális gép létrehozása felügyelt lemezekkel:
+1. [Visszaállítás a](tutorial-restore-disk.md#restore-a-vm-disk)nem felügyelt lemezekre.
+2. [Konvertálja a visszaállított lemezeket](tutorial-restore-disk.md#convert-the-restored-disk-to-a-managed-disk)a felügyelt lemezekre.
+3. [Hozzon létre egy virtuális gépet a Managed Disks szolgáltatással](tutorial-restore-disk.md#create-a-vm-from-the-restored-disk).
 
-[További](backup-azure-vms-automation.md#restore-an-azure-vm) nyújt a PowerShellben.
+[További](backup-azure-vms-automation.md#restore-an-azure-vm) információ a PowerShellben való használatáról.
 
-### <a name="can-i-restore-the-vm-thats-been-deleted"></a>Vissza tudok állítani a virtuális gép, amely törölve lett?
-Igen. Akkor is, ha törli a virtuális gép, megfelelő biztonsági mentési léphet a tárolóban lévő elemet, és visszaállítása egy helyreállítási pontból.
+### <a name="can-i-restore-the-vm-thats-been-deleted"></a>Visszaállíthatom a törölt virtuális gépet?
+Igen. Még ha törli a virtuális gépet is, a tárolóban található megfelelő biztonsági mentési elemre kattintva visszaállíthatja a helyreállítási pontot.
 
-### <a name="how-to-restore-a-vm-to-the-same-availability-sets"></a>Virtuális gépek visszaállítása az egyazon rendelkezésre állási csoportok?
-Felügyelt lemez Azure virtuális gép az a rendelkezésre állási csoportok visszaállítása engedélyezve van azáltal, hogy egy beállítást a sablonban, felügyelt lemezek visszaállítása során. Ez a sablon rendelkezik a bemeneti paraméter nevű **rendelkezésre állási csoportok**.
+### <a name="how-to-restore-a-vm-to-the-same-availability-sets"></a>Virtuális gép visszaállítása ugyanazon rendelkezésre állási csoportokra
+A felügyelt lemezes Azure-beli virtuális gépek esetében a rendelkezésre állási csoportokra történő visszaállítás a felügyelt lemezként való visszaállításkor a sablonban beállítás engedélyezésével engedélyezhető. Ez a sablon tartalmazza a **rendelkezésre állási készletek**nevű bemeneti paramétert.
 
-### <a name="how-do-we-get-faster-restore-performances"></a>Hogyan be gyorsabb helyreállítási teljesítmény?
-A gyorsabb visszaállítás teljesítmény, hogy költöznek [azonnali visszaállítása](backup-instant-restore-capability.md) képesség.
+### <a name="how-do-we-get-faster-restore-performances"></a>Hogyan lehet gyorsabb visszaállítási teljesítményt kapni?
+A gyorsabb visszaállítási teljesítmény érdekében a rendszer [azonnali visszaállítási](backup-instant-restore-capability.md) képességre vált.
 
 ## <a name="manage-vm-backups"></a>Virtuális gép biztonsági mentéseinek kezelése
 
-### <a name="what-happens-if-i-modify-a-backup-policy"></a>Mi történik, ha egy biztonsági mentési szabályzat módosítani?
-A virtuális gép biztonsági másolat a módosított vagy új szabályzat ütemezése és megőrzése beállításainak használatával.
+### <a name="what-happens-if-i-modify-a-backup-policy"></a>Mi történik, ha módosítom a biztonsági mentési szabályzatot?
+A virtuális gép biztonsági mentése a módosított vagy az új szabályzatban szereplő ütemterv és adatmegőrzési beállítások használatával történik.
 
-- Ha a megőrzési időtartamot, a meglévő helyreállítási pontok megjelölve, és tartani az új szabályzatának megfelelően.
-- Ha csökkenti a megőrzési időtartamot, a helyreállítási pontokat a helyreállítási pontok a következő tisztítási feladat során törlendőként megjelölve, és törlődnek.
+- Ha a megőrzés kibővül, a meglévő helyreállítási pontok az új szabályzatnak megfelelően vannak megjelölve és tárolva.
+- Ha a megőrzés csökken, a helyreállítási pontok a következő karbantartási feladatokban törlésre vannak megjelölve, és ezt követően törlődnek.
 
-### <a name="how-do-i-move-a-vm-backed-up-by-azure-backup-to-a-different-resource-group"></a>Hogyan helyezhetek át egy virtuális gép biztonsági mentése az Azure Backup egy másik erőforráscsoportban található?
+### <a name="how-do-i-move-a-vm-backed-up-by-azure-backup-to-a-different-resource-group"></a>Hogyan egy olyan virtuális gépet, amelyről biztonsági másolatot készít Azure Backup egy másik erőforráscsoporthoz?
 
-1. Ideiglenesen állítsa le a biztonsági mentés, és a biztonsági másolatok adatainak megőrzése.
-2. A virtuális gép áthelyezése a céloldali erőforráscsoport.
-3. Az ugyanazon vagy egy új tárolóban újraengedélyezése biztonsági mentés.
+1. Átmenetileg állítsa le a biztonsági mentést, és őrizze meg a biztonsági mentési adatait.
+2. Helyezze át a virtuális gépet a célként megadott erőforrás-csoportba.
+3. A biztonsági mentés ismételt engedélyezése azonos vagy új tárolóban.
 
-A virtuális gép visszaállíthatja az áthelyezési művelet előtt létrehozott rendelkezésre álló helyreállítási pontokból.
+Visszaállíthatja a virtuális gépet az áthelyezési művelet előtt létrehozott, elérhető visszaállítási pontokból.
 
-### <a name="is-there-a-limit-on-number-of-vms-that-can-beassociated-with-a-same-backup-policy"></a>A társítható egy azonos mentési házirenddel rendelkező virtuális gépek száma korlátozva van?
-Igen, nincs a korlát 100 virtuális gép, amelyeket összekapcsolhat az azonos mentési házirenddel a portálról. Azt javasoljuk, hogy több mint 100 virtuális gép esetében, azonos ütemezéssel vagy más ütemezés több biztonsági mentési szabályzat létrehozásához.
+### <a name="is-there-a-limit-on-number-of-vms-that-can-beassociated-with-a-same-backup-policy"></a>Van korlátozva a virtuális gépek száma, amelyek ugyanahhoz a biztonsági mentési szabályzathoz társíthatók?
+Igen, legfeljebb 100 virtuális gép lehet, amely ugyanahhoz a biztonsági mentési szabályzathoz társítható a portálról. Javasoljuk, hogy több mint 100 virtuális gépen hozzon létre több biztonsági mentési szabályzatot ugyanazzal az ütemtervtel vagy eltérő ütemtervtel.

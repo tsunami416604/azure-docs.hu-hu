@@ -1,6 +1,6 @@
 ---
-title: Gyakori biztonsági attribútumok az Azure Resource Manager
-description: Egy Azure Resource Manager kiértékeléséhez közös biztonsági attribútumok ellenőrzőlista
+title: Azure Resource Manager biztonsági attribútumai
+description: A Azure Resource Manager értékelésére szolgáló biztonsági attribútumok ellenőrzőlistája
 services: azure-resource-manager
 author: msmbaldwin
 manager: barbkess
@@ -8,16 +8,16 @@ ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: mbaldwin
-ms.openlocfilehash: a771d4c2ae22b7bf149c13c80fe5286ef52a4545
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e3bfb79c54ff57adfa947f2dd0100f6c05c7af9f
+ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66002260"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68444152"
 ---
-# <a name="security-attributes-for-azure-resource-manager"></a>Az Azure Resource Manager biztonsági attribútumok
+# <a name="security-attributes-for-azure-resource-manager"></a>Azure Resource Manager biztonsági attribútumai
 
-Ez a cikk az Azure Resource Manager beépített biztonsági attribútumok dokumentumok.
+Ez a cikk a Azure Resource Manager beépített biztonsági attribútumokat dokumentálja.
 
 [!INCLUDE [Security Attributes Header](../../includes/security-attributes-header.md)]
 
@@ -25,44 +25,44 @@ Ez a cikk az Azure Resource Manager beépített biztonsági attribútumok dokume
 
 | Biztonsági attribútum | Igen/nem | Megjegyzések |
 |---|---|--|
-| Titkosítás inaktív állapotban:<ul><li>Kiszolgálóoldali titkosítás</li><li>Kiszolgálóoldali titkosítás a felhasználó által kezelt kulcsok</li><li>Más titkosítási funkciók (például az ügyféloldali, mindig titkosított, stb.)</ul>| Igen |  |
-| Titkosítás az átvitel során:<ul><li>Express route-titkosítás</li><li>A VNet-titkosítás</li><li>Hálózatok titkosítása</ul>| Igen | HTTPS/TLS. |
-| Titkosítási kulcs kezelése (CMK, BYOK, stb.)| – | Az Azure Resource Manager nincs ügyfél tartalom, csak a vezérlő adatokat tárolja. |
-| Oszlop a blokkszintű titkosítás (az Azure Data Services)| Igen | |
+| Titkosítás inaktív állapotban (például kiszolgálóoldali titkosítás, ügyfél által felügyelt kulcsokkal rendelkező kiszolgálóoldali titkosítás és egyéb titkosítási funkciók)| Igen |  |
+| Az átvitel közbeni titkosítás (például ExpressRoute titkosítás, VNet titkosítás és VNet-VNet titkosítás)| Igen | HTTPS/TLS. |
+| Titkosítási kulcsok kezelését (CMK, BYOK stb.)| – | Azure Resource Manager nem tárol felhasználói tartalmat, csak az adatokat vezérli. |
+| Oszlop szintű titkosítás (Azure Data Services)| Igen | |
 | Titkosított API-hívások| Igen | |
 
-## <a name="network-segmentation"></a>Hálózati szegmentálást
+## <a name="network-segmentation"></a>Hálózati szegmentálás
 
 | Biztonsági attribútum | Igen/nem | Megjegyzések |
 |---|---|--|
-| Szolgáltatási végpont támogatás| Nem | |
-| VNet-injektálási támogatás| Igen | |
-| Hálózatelkülönítés és támogatási optimalizálóként működik| Nem |  |
+| Szolgáltatás végpontjának támogatása| Nem | |
+| VNet-befecskendezés támogatása| Igen | |
+| Hálózati elkülönítés és tűzfalak támogatása| Nem |  |
 | Kényszerített bújtatás támogatása| Nem |  |
 
 ## <a name="detection"></a>Észlelés
 
 | Biztonsági attribútum | Igen/nem | Megjegyzések|
 |---|---|--|
-| Azure monitorozási támogatása (a Log analytics, az App insights, stb.)| Nem | |
+| Azure monitoring-támogatás (log Analytics, alkalmazás-elemzések stb.)| Nem | |
 
 ## <a name="identity-and-access-management"></a>Identitás- és hozzáférés-kezelés
 
 | Biztonsági attribútum | Igen/nem | Megjegyzések|
 |---|---|--|
-| Hitelesítés| Igen | [Az Azure Active Directory](/azure/active-directory) alapján.|
-| Engedélyezés| Igen | |
+| Authentication| Igen | [Azure Active Directory](/azure/active-directory) alapján.|
+| Authorization| Igen | |
 
 
-## <a name="audit-trail"></a>Auditnapló
+## <a name="audit-trail"></a>Naplózási nyomvonal
 
 | Biztonsági attribútum | Igen/nem | Megjegyzések|
 |---|---|--|
-| Vezérlő és a felügyeleti sík naplózási és naplózása| Igen | Tevékenységnaplók elérhetővé tétele minden írási az erőforrások; a végrehajtott műveletek (PUT, POST, DELETE) Lásd: [megtekintése az erőforrásokon végzett műveletek naplózásához tevékenységi naplóit](resource-group-audit.md). |
-| Adatsík naplózása és naplózása| – | |
+| Vezérlési és felügyeleti síkok naplózása és naplózása| Igen | A Tevékenységnaplók teszik elérhetővé az erőforrásokon végrehajtott összes írási műveletet (PUT, POST, DELETE). Lásd: [tevékenység-naplók megtekintése az erőforrásokon végzett műveletek naplózásához](resource-group-audit.md). |
+| Adatsíkok naplózása és naplózása| – | |
 
 ## <a name="configuration-management"></a>Konfigurációkezelés
 
 | Biztonsági attribútum | Igen/nem | Megjegyzések|
 |---|---|--|
-| Konfiguráció kezelésével kapcsolatos támogatás (versioning konfiguráció stb.)| Igen |  |
+| Configuration Management-támogatás (konfiguráció verziószámozása stb.)| Igen |  |

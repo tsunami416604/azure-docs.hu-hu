@@ -1,6 +1,6 @@
 ---
-title: Gyakori biztonsági attribútumok az Azure expressroute-hoz
-description: A gyakori biztonsági attribútumok Azure ExpressRoute értékelésére ellenőrzőlista
+title: Az Azure ExpressRoute biztonsági attribútumai
+description: Az Azure ExpressRoute értékelésére szolgáló biztonsági attribútumok ellenőrzőlistája
 services: expressroute
 ms.service: expressroute
 documentationcenter: ''
@@ -9,16 +9,16 @@ manager: barbkess
 ms.topic: conceptual
 ms.date: 06/05/2019
 ms.author: mbaldwin
-ms.openlocfilehash: d6156715fb87831d465197fd8eec59d245221e48
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: c9a46497c18b99ad7774036fd92e63d024b47045
+ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67083274"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68442198"
 ---
-# <a name="common-security-attributes-for-azure-expressroute"></a>Gyakori biztonsági attribútumok az Azure expressroute-hoz
+# <a name="security-attributes-for-azure-expressroute"></a>Az Azure ExpressRoute biztonsági attribútumai
 
-Biztonsági integrálva van az Azure-szolgáltatások minden szempontját. Ez a cikk a gyakori biztonsági attribútumok Azure ExpressRoute beépített dokumentumok.
+Ez a cikk az Azure ExpressRoute beépített biztonsági attribútumokat dokumentálja.
 
 [!INCLUDE [Security Attributes Header](../../includes/security-attributes-header.md)]
 
@@ -26,44 +26,44 @@ Biztonsági integrálva van az Azure-szolgáltatások minden szempontját. Ez a 
 
 | Biztonsági attribútum | Igen/nem | Megjegyzések |
 |---|---|--|
-| Titkosítás inaktív állapotban:<ul><li>Kiszolgálóoldali titkosítás</li><li>Kiszolgálóoldali titkosítás a felhasználó által kezelt kulcsok</li><li>Más titkosítási funkciók (például az ügyféloldali, mindig titkosított, stb.)</ul>|  – | Az ExpressRoute nem tárolnak ügyféladatokat. |
-| Titkosítás az átvitel során:<ul><li>Express route-titkosítás</li><li>A Vnet-titkosítás</li><li>Hálózatok titkosítása</ul>| Nem | |
-| Titkosítási kulcs kezelése (CMK, BYOK, stb.)| – |  |
-| Oszlop a blokkszintű titkosítás (az Azure Data Services)| – | |
-| Titkosított API-hívások| Igen | Keresztül [az Azure Resource Manager](../azure-resource-manager/index.yml) és a HTTPS. |
+| Titkosítás inaktív állapotban (például kiszolgálóoldali titkosítás, ügyfél által felügyelt kulcsokkal rendelkező kiszolgálóoldali titkosítás és egyéb titkosítási funkciók)|  – | A ExpressRoute nem tárolja az ügyféladatokat. |
+| Az átvitel közbeni titkosítás (például ExpressRoute titkosítás, VNet titkosítás és VNet-VNet titkosítás)| Nem | |
+| Titkosítási kulcsok kezelését (CMK, BYOK stb.)| – |  |
+| Oszlop szintű titkosítás (Azure Data Services)| – | |
+| Titkosított API-hívások| Igen | [Azure Resource Manager](../azure-resource-manager/index.yml) és HTTPS protokollon keresztül. |
 
-## <a name="network-segmentation"></a>Hálózati szegmentálást
+## <a name="network-segmentation"></a>Hálózati szegmentálás
 
 | Biztonsági attribútum | Igen/nem | Megjegyzések |
 |---|---|--|
-| Szolgáltatási végpont támogatás| – |  |
-| vNET-injektálási támogatás| – | |
-| Hálózatelkülönítés és támogatási optimalizálóként működik| Igen | Minden ügyfél saját útválasztási tartomány található, és bújtatással jut el a saját virtuális hálózaton |
-| Kényszerített bújtatás támogatása| – | Border Gateway Protocol (BGP) keresztül |
+| Szolgáltatás végpontjának támogatása| – |  |
+| VNet-befecskendezés támogatása| – | |
+| Hálózati elkülönítés és tűzfalak támogatása| Igen | Minden ügyfél saját útválasztási tartományában található, és a saját VNet bújtatott |
+| Kényszerített bújtatás támogatása| – | Border Gateway Protocol (BGP) használatával. |
 
 ## <a name="detection"></a>Észlelés
 
 | Biztonsági attribútum | Igen/nem | Megjegyzések|
 |---|---|--|
-| Azure monitorozási támogatása (a Log analytics, az App insights, stb.)| Igen | Lásd: [ExpressRoute-monitorozás, mérőszámok és riasztások](expressroute-monitoring-metrics-alerts.md).|
+| Azure monitoring-támogatás (log Analytics, alkalmazás-elemzések stb.)| Igen | Lásd: [ExpressRoute-figyelés, mérőszámok és riasztások](expressroute-monitoring-metrics-alerts.md).|
 
 ## <a name="identity-and-access-management"></a>Identitás- és hozzáférés-kezelés
 
 | Biztonsági attribútum | Igen/nem | Megjegyzések|
 |---|---|--|
-| Hitelesítés| Igen | Szolgáltatásfiók átjáróhoz a Microsoft (GWM) (vezérlő); Igény szerinti (JIT) fejlesztéshez és OP. elérése |
-| Engedélyezés|  Igen |Szolgáltatásfiók átjáróhoz a Microsoft (GWM) (vezérlő); Igény szerinti (JIT) fejlesztéshez és OP. elérése |
+| Authentication| Igen | Szolgáltatásfiók a Microsoft számára (GWM) (vezérlő); Igény szerinti (JIT) hozzáférés a dev és az OP számára. |
+| Authorization|  Igen |Szolgáltatásfiók a Microsoft számára (GWM) (vezérlő); Igény szerinti (JIT) hozzáférés a dev és az OP számára. |
 
 
-## <a name="audit-trail"></a>Auditnapló
+## <a name="audit-trail"></a>Naplózási nyomvonal
 
 | Biztonsági attribútum | Igen/nem | Megjegyzések| 
 |---|---|--|
-| Vezérlő és a felügyeleti sík naplózási és naplózása| Igen |  |
-| Adatsík naplózása és naplózása| Nem |   |
+| Vezérlési és felügyeleti síkok naplózása és naplózása| Igen |  |
+| Adatsíkok naplózása és naplózása| Nem |   |
 
 ## <a name="configuration-management"></a>Konfigurációkezelés
 
 | Biztonsági attribútum | Igen/nem | Megjegyzések|
 |---|---|--|
-| Konfiguráció kezelésével kapcsolatos támogatás (versioning konfiguráció stb.)| Igen | Keresztül a hálózati erőforrás-szolgáltató (NRP). |
+| Configuration Management-támogatás (konfiguráció verziószámozása stb.)| Igen | A hálózati erőforrás-szolgáltató (NRP) használatával. |

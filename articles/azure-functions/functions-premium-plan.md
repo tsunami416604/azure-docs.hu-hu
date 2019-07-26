@@ -1,6 +1,6 @@
 ---
-title: Az Azure Functions prémium szintű csomag (előzetes verzió) |} A Microsoft Docs
-description: Részletek és a konfigurációs beállításokat (VNet, nem hidegindítási, korlátlan végrehajtási időtartama) prémium szintű Azure Functions tervezze meg.
+title: Azure Functions Prémium csomag (előzetes verzió) | Microsoft Docs
+description: Részletek és konfigurációs beállítások (VNet, nem hideg indítás, korlátlan végrehajtási időtartam) a Azure Functions Premium csomaghoz.
 services: functions
 author: jeffhollan
 manager: jeconnoc
@@ -10,125 +10,129 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 4/11/2019
 ms.author: jehollan
-ms.openlocfilehash: dab7561db8f223bff87f41ef756605359c3478e4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8ad09550e572c98931346b44a6c6f84da29a85e4
+ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66492700"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68443960"
 ---
-# <a name="azure-functions-premium-plan-preview"></a>Az Azure Functions prémium szintű csomag (előzetes verzió)
+# <a name="azure-functions-premium-plan-preview"></a>Azure Functions Premium csomag (előzetes verzió)
 
-Az Azure Functions prémium szintű csomag üzemeltetési beállítás alkalmazások esetében. A prémium szintű csomag olyan szolgáltatások, mint a virtuális hálózatok közötti kapcsolat, nem hidegindítási és a prémium szintű hardvert biztosít.  A prémium szintű csomagot több függvényalkalmazás telepíthetők, és a csomag lehetővé teszi, hogy konfigurálja a számítási példány mérete, alapszintű csomag méretét és a csomag maximális méretét.  A prémium szintű csomag és az egyéb terv és a típusok üzemeltető összehasonlításáért lásd: [függvény méretezése és üzemeltetése beállítások](functions-scale.md).
+A Azure Functions Premium csomag egy üzemeltetési lehetőség a Function apps alkalmazásokhoz. A Prémium csomag olyan szolgáltatásokat nyújt, mint például a VNet-kapcsolat, a hidegindító és a prémium szintű hardverek.  Több Function apps is telepíthető ugyanarra a prémium csomagra, és a csomag lehetővé teszi a számítási példány méretének, az alapcsomag méretének és a maximális méretnek a konfigurálását.  A Prémium csomag és az egyéb csomag-és üzemeltetési típusok összehasonlítását lásd: a [függvények méretezési és üzemeltetési lehetőségei](functions-scale.md).
 
-> [!NOTE]
-> A Premium csomag előzetes funkciók keresztül Windows infrastruktúra a .NET, a Node vagy a Java futtató jelenleg támogatja.
-
-## <a name="create-a-premium-plan"></a>Hozzon létre egy prémium szintű csomag
+## <a name="create-a-premium-plan"></a>Prémium csomag létrehozása
 
 [!INCLUDE [functions-premium-create](../../includes/functions-premium-create.md)]
 
-Prémium szintű csomagot is létrehozhat az Azure parancssori felületen
+Prémium szintű csomagot az az [functionapp Plan Create](/cli/azure/functionapp/plan#az-functionapp-plan-create) paranccsal is létrehozhat az Azure CLI-ben. Az alábbi példa egy _rugalmas prémium 1_ szintű csomagot hoz létre:
 
 ```azurecli-interactive
-az functionapp plan create -g <resource-group> -n <plan-name> -l <region> --number-of-workers 1 --sku EP1
+az functionapp plan create --resource-group <RESOURCE_GROUP> --name <PLAN_NAME> \
+--location <REGION> --sku EP1
 ```
+
+Ebben a példában cserélje le `<RESOURCE_GROUP>` az erőforráscsoportot és `<PLAN_NAME>` az erőforráscsoport egyedi csomagjának nevére. Válasszon egy [ `<REGION>`támogatottat ](#regions). A Linuxot támogató Prémium csomag létrehozásához adja meg a `--is-linux` lehetőséget.
+
+A terv létrehozásakor az [az functionapp Create](/cli/azure/functionapp#az-functionapp-create) paranccsal hozhatja létre a Function alkalmazást. A portálon a csomag és az alkalmazás is egyszerre jön létre. 
 
 ## <a name="features"></a>Szolgáltatások
 
-A következő funkciók érhetők el a függvényalkalmazásokat üzembe helyezett egy prémium szintű csomag.
+A következő szolgáltatások használhatók a prémium csomagba telepített alkalmazások működéséhez.
 
-### <a name="pre-warmed-instances"></a>Előre fűtéssel példányok
+### <a name="pre-warmed-instances"></a>Előre bemelegítő példányok
 
-Ha nincsenek események és a végrehajtás még ma a Használatalapú csomag fel, a rendszer az alkalmazás lehetséges, hogy méretezhető nulla-példányokhoz. Amikor új események származnak, egy új példányt kell lehet kifejezetten az azon futó alkalmazását.  Specializace új példányokat az alkalmazástól függően hosszabb időt is igénybe vehet.  Erre a további késésre első hívásakor alkalmazás hidegindítási gyakran nevezik.
+Ha a használati tervben jelenleg nem fordulnak elő események és végrehajtások, az alkalmazás nulla példányra csökkentheti a méretét. Új események beolvasásakor egy új példányra van szükség a rajta futó alkalmazáshoz.  Az új példányok specializálása az alkalmazástól függően hosszabb időt is igénybe vehet.  Ezt a további késleltetést az első hívásnál gyakran az App Cold Start metódusnak nevezik.
 
-A prémium szintű csomag az alkalmazás a megadott számú példányok, a csomag minimális méretét akár előmelegíteni is rendelkezhet.  Példányok előre fűtéssel is lehetővé teszi az előre egy alkalmazást, mielőtt nagy terhelés. Az alkalmazás elvégzi a horizontális felskálázást, azt először arányban a előre fűtéssel példányok be. További példányok horizontális fel- és azonnal a következő skálázási művelet előkészítésekor a meleg puffer továbbra is. Előre fűtéssel példányok puffer sablonkonfigurációkat hatékonyan elkerülheti a hidegindítás késéseket.  Előre fűtéssel példányok csak a prémium szintű csomag, a és továbbra is szeretné legalább egy példánya fut és elérhető minden alkalommal a terv aktív.
+A prémium csomaggal előre bemelegítheti az alkalmazást egy adott számú példányra, a minimálisan szükséges méretig.  Az előre bemelegített példányok lehetővé teszik az alkalmazások előre méretezését a nagy terhelés előtt. Az alkalmazás kiskálázásakor először az előre bemelegítő példányokra méretezi a folyamatokat. A további példányok továbbra is kiállnak a pufferbe, és azonnal melegen vesznek részt a következő skálázási művelet előkészítésében. Az előre bemelegített példányok pufferével hatékonyan elkerülheti a hideg indítási késéseket.  Az előre bemelegített példányok a Prémium csomag egyik funkciója, és legalább egy példányon futnia kell, és a csomag aktív állapotban kell lennie.
 
-Előre fűtéssel példányok konfigurálhatja az Azure portál a kiválasztott a **Függvényalkalmazás**, hogy bevezetése a **Platformfunkciók** lapra, majd válassza ki a **horizontális Felskálázás**beállítások. A függvény alkalmazás szerkesztése ablakban előre fűtéssel példányok adott alkalmazásra, de a minimális és maximális példányok teljes azokat alkalmazni.
+A Azure Portal előre bemelegítő példányok számát úgy is beállíthatja, hogy kiválasztja a **függvényalkalmazás**, majd a **platform szolgáltatásai** lapra kattint, és kiválasztja a kibővíthető lehetőségeket. Az alkalmazás szerkesztése ablakban az előre felmelegedett példányok az adott alkalmazásra vonatkoznak, de a minimális és a maximális példányszám a teljes tervre vonatkozik.
 
-![Rugalmas méretezés beállításai](./media/functions-premium-plan/scale-out.png)
+![Rugalmas méretezési beállítások](./media/functions-premium-plan/scale-out.png)
 
-Az Azure CLI használatával is konfigurálhatja az alkalmazás előre fűtéssel példányok
+Az Azure CLI-vel is konfigurálhat előre bemelegített példányokat az alkalmazáshoz
 
 ```azurecli-interactive
 az resource update -g <resource_group> -n <function_app_name>/config/web --set properties.preWarmedInstanceCount=<desired_prewarmed_count> --resource-type Microsoft.Web/sites
 ```
 
-### <a name="private-network-connectivity"></a>Privát hálózati kapcsolatok
+### <a name="private-network-connectivity"></a>Magánhálózati kapcsolat
 
-Az Azure Functions üzembe helyezett egy prémium szintű csomag kihasználja [új VNet-integráció, a web apps](../app-service/web-sites-integrate-with-vnet.md).  Ha konfigurálva, az alkalmazás képes kommunikálni a virtuális hálózaton belüli erőforrásokhoz vagy Szolgáltatásvégpontok védelméről.  Az IP-korlátozások az alkalmazásnak, hogy a bejövő forgalom korlátozása is elérhetők.
+A prémium csomagra telepített Azure Functions a webalkalmazások [új VNet](../app-service/web-sites-integrate-with-vnet.md)-integrációját is kihasználja.  Ha be van állítva, az alkalmazás képes kommunikálni a VNet lévő erőforrásokkal, vagy szolgáltatási végpontokon keresztül.  Az alkalmazásban az IP-korlátozások is elérhetők a bejövő forgalom korlátozására.
 
-A függvényalkalmazás a prémium szintű csomagban lévő alhálózat hozzárendelése, amikor szüksége elegendő IP-cím az alhálózat minden lehetséges példány. Az előzetes verzió ideje alatt a példányok maximális száma eltérőek lehetnek, ha szükség van legalább 100 elérhető címekkel rendelkező olyan IP-Címblokk.
+Amikor prémium szintű csomagban rendel hozzá egy alhálózatot a Function alkalmazáshoz, szüksége van egy alhálózatra, amely minden lehetséges példányhoz elegendő IP-címmel rendelkezik. Bár az előzetes verzióban a példányok maximális száma eltérő lehet, a rendszer legalább 100 rendelkezésre álló címmel rendelkező IP-blokkot igényel.
 
-További információkat lásd: [a függvényalkalmazás integrálása egy virtuális hálózat](functions-create-vnet.md).
+További információk: [a Function app integrálása VNet](functions-create-vnet.md).
 
-### <a name="rapid-elastic-scale"></a>Gyors, rugalmas méretezéssel
+### <a name="rapid-elastic-scale"></a>Gyors rugalmas skála
 
-További számítási példányokat a rendszer automatikusan hozzáadja az alkalmazáshoz, mint a Használatalapú csomag gyors méretezési logikák felhasználásával.  Hogyan méretezési működésével kapcsolatos további információkért lásd: [függvény méretezése és üzemeltetése](./functions-scale.md#how-the-consumption-and-premium-plans-work).
+Az alkalmazáshoz további számítási példányok is automatikusan hozzáadódnak a használati tervvel megegyező gyors skálázási logikával.  Ha többet szeretne megtudni a skálázás működéséről, tekintse meg a [függvények méretezése és üzemeltetése](./functions-scale.md#how-the-consumption-and-premium-plans-work)című témakört.
 
-### <a name="unbounded-run-duration"></a>Futtatás időtartama unbounded
+### <a name="unbounded-run-duration"></a>Nem kötött Futtatás időtartama
 
-Az Azure Functions használatalapú korlátozva, egy egyetlen végrehajtási 10 perc.  A prémium csomag a Futási időtartam alapértelmezés szerint 30 percre sorozatos végrehajtások elkerülése érdekében. Azonban továbbra is [host.json konfigurációjának módosítása](./functions-host-json.md#functiontimeout) , hogy a korlátlan streameken működő, a prémium szintű csomag alkalmazások.
+A Azure Functions a használati terv egyetlen végrehajtás esetén 10 percre van korlátozva.  A Prémium csomag esetében a futtatási időtartam alapértelmezett értéke 30 perc, hogy megakadályozza a Runaway végrehajtást. [A Host. JSON-konfiguráció](./functions-host-json.md#functiontimeout) azonban módosítható úgy, hogy ez a prémium szintű csomag alkalmazásai számára is elérhető legyen.
 
-Előzetes verzióban elérhető az időtartam nem garantált, elmúlt 12 perc és 30 perc eltelte után fut, ha az alkalmazás nem átméretezi a minimális feldolgozók száma meghaladja a legjobb esélyét fog rendelkezni.
+Az előzetes verzióban az időtartam nem garantált az elmúlt 12 percben, és a lehető legkevesebb időt vesz igénybe, ha az alkalmazás nem méretezhető a feldolgozók minimális száma felett.
 
-## <a name="plan-and-sku-settings"></a>Csomag és a Termékváltozat-beállítások
+## <a name="plan-and-sku-settings"></a>Csomag-és SKU-beállítások
 
-A csomag létrehozásakor a két beállítás konfigurálása: példányok (vagy a csomag méretét) minimális számát és a maximális burst korlátot.  A minimális példányok egy prémium szintű csomagot: 1, és 20 a maximális adatlöketek, az előzetes verzió ideje alatt.  Minimális példányai fenntartott és mindig futnak.
+A terv létrehozásakor két beállítást kell beállítania: a példányok minimális száma (vagy a csomag mérete) és a maximális burst korlát.  A Prémium csomag minimális példányai 1, az előzetes verzióban pedig a maximális burst érték 20.  A minimális példányok le vannak foglalva, és mindig futnak.
 
 > [!IMPORTANT]
-> Az egyes példányok lefoglalva a minimális példányszám függetlenül ha funkciók állnak végrehajtás alatt, vagy nem terheli.
+> A rendszer minden egyes, a példányok minimális száma alatt lefoglalt példány díját terheli, függetlenül attól, hogy a függvények végrehajtása történik-e.
 
-Ha az alkalmazásának példányok mellett a csomag méretét, az továbbra is horizontális felskálázás, amíg a példányok száma eléri a maximális burst korlátot.  Számítunk fel díjat a példány túl a csomag méretét csak során fut, és az Ön bérelt.  A legjobb erőfeszítés található meg a meghatározott maximális korlátot, az alkalmazás méretezése használunk, mivel az alkalmazás a minimális csomagpéldányt garantáltan.
+Ha az alkalmazás a csomag méretétől meghaladó példányokat igényel, akkor továbbra is kibővíthető, amíg a példányok száma eléri a maximális burst korlátot.  A csomagon kívüli példányok díját csak akkor számítjuk fel, ha a rendszert futtatják és bérbe adják.  A legjobb megoldás az, ha az alkalmazást a meghatározott maximális korlátig méretezni, míg a minimálisan szükséges csomag példányai garantáltak az alkalmazás számára.
 
-Beállíthatja, hogy a csomag méretét, és maximális értékeket az Azure Portalon, a kiválasztott a **horizontális Felskálázás** a szolgáltatáscsomag vagy a csomag üzembe helyezett függvényalkalmazás beállításainak (alatt **Platformfunkciók**).
+A terv méretének és Azure Portal maximális értékének konfigurálásához válassza ki a csomag  kibővíthető lehetőségeit vagy az adott tervhez üzembe helyezett Function alkalmazást (a **platform szolgáltatásai**alatt).
 
-Növelje a hirtelen maximális korlátot, az Azure parancssori felületen:
+Az Azure CLI maximális burst korlátját is megnövelheti:
 
 ```azurecli-interactive
 az resource update -g <resource_group> -n <premium_plan_name> --set properties.maximumElasticWorkerCount=<desired_max_burst> --resource-type Microsoft.Web/serverfarms 
 ```
 
-### <a name="available-instance-skus"></a>Elérhető példányhoz termékváltozatok
+### <a name="available-instance-skus"></a>Rendelkezésre álló példányok SKU-ban
 
-Létrehozásakor, vagy a csomag méretezés, választhat, három példány méretének között.  Díjköteles a magok és a másodpercenként felhasznált memória teljes száma.  Az alkalmazás is automatikusan horizontális felskálázás több példányra igény szerint.  
+A csomag létrehozásakor vagy skálázásakor három példány mérete közül választhat.  A rendszer a másodpercenként felhasznált magok és memória teljes számát számlázza.  Az alkalmazás igény szerint automatikusan több példányra is kibővíthető.  
 
 |SKU|Processzormagok|Memory (Memória)|Storage|
 |--|--|--|--|
-|EP1|1|3,5 GB|250 GB|
+|EP1|1|3.5 GB|250 GB|
 |EP2|2|7GB|250 GB|
-|EP3|4|14GB|250 GB|
+|EP3|4|14 GB|250 GB|
 
-## <a name="regions"></a>Régiók
+## <a name="regions"></a>Regions
 
-Az alábbiakban a jelenleg támogatott régiókat a nyilvános előzetes verzió.
+Az alábbiakban a jelenleg támogatott régiók érhetők el az egyes operációs rendszerekhez tartozó nyilvános előzetes verzióhoz.
 
-|Régió|
-|--|
-|Kelet-Ausztrália|
-|Délkelet-Ausztrália|
-|Közép-Kanada|
-|USA középső régiója|
-|Kelet-Ázsia|
-|USA 2. keleti régiója|
-|Közép-Franciaország|
-|Nyugat-Japán|
-|Korea középső régiója|
-|USA északi középső régiója|
-|Észak-Európa|
-|USA déli középső régiója|
-|Dél-India|
-|Délkelet-Ázsia|
-|Az Egyesült Királyság nyugati régiója|
-|Nyugat-Európa|
-|Nyugat-India|
-|USA nyugati régiója|
+|Régió| Windows | Linux |
+|--| -- | -- |
+|Kelet-Ausztrália| ✔ | |
+|Délkelet-Ausztrália | ✔ | ✔ |
+|Közép-Kanada| ✔ |  |
+|USA középső régiója| ✔ |  |
+|Kelet-Ázsia| ✔ |  |
+|East US | | ✔ |
+|USA 2. keleti régiója| ✔ |  |
+|Közép-Franciaország| ✔ |  |
+|Kelet-Japán|  | ✔ |
+|Nyugat-Japán| ✔ | |
+|Korea középső régiója| ✔ |  |
+|USA északi középső régiója| ✔ |  |
+|Észak-Európa| ✔ | ✔ |
+|USA déli középső régiója| ✔ |  |
+|Dél-India | ✔ | |
+|Délkelet-Ázsia| ✔ | ✔ |
+|Az Egyesült Királyság nyugati régiója| ✔ |  |
+|Nyugat-Európa| ✔ | ✔ |
+|Nyugat-India| ✔ |  |
+|USA nyugati régiója| ✔ | ✔ |
 
 ## <a name="known-issues"></a>Ismert problémák
 
-Ismert problémák az állapotának nyomon követheti a [nyilvános előzetes verzióban a Githubon](https://github.com/Azure/Azure-Functions/wiki/Premium-plan-known-issues).
+Nyomon követheti a GitHubon elérhető [nyilvános előzetes](https://github.com/Azure/Azure-Functions/wiki/Premium-plan-known-issues)verzió ismert problémáinak állapotát.
 
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Az Azure Functions méretezése és üzemeltetési lehetőségeinek ismertetése](functions-scale.md)
+> [A Azure Functions méretezési és üzemeltetési lehetőségeinek megismerése](functions-scale.md)

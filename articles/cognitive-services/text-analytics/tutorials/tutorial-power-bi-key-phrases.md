@@ -1,5 +1,5 @@
 ---
-title: 'Oktatóanyag: Power BI integrálható a Text Analytics Cognitive Service'
+title: 'Oktatóanyag: Power BI integrálása a Text Analytics kognitív szolgáltatással'
 titleSuffix: Azure Cognitive Services
 description: Megismerheti, hogyan nyerhet ki kulcskifejezéseket a Power BI-ban tárolt szövegekből.
 services: cognitive-services
@@ -8,16 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: tutorial
-ms.date: 02/13/2019
+ms.date: 07/24/2019
 ms.author: aahi
-ms.openlocfilehash: 705e637235eb81be29a2ea0d7d68ccd000ea0470
-ms.sourcegitcommit: c0419208061b2b5579f6e16f78d9d45513bb7bbc
+ms.openlocfilehash: e56926b9a23e0dd649fb85347e521a6dda7863a3
+ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67626040"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68479877"
 ---
-# <a name="tutorial-integrate-power-bi-with-the-text-analytics-cognitive-service"></a>Oktatóanyag: Power BI integrálható a Text Analytics Cognitive Service
+# <a name="tutorial-integrate-power-bi-with-the-text-analytics-cognitive-service"></a>Oktatóanyag: Power BI integrálása a Text Analytics kognitív szolgáltatással
 
 A Microsoft Power BI Desktop ingyenes alkalmazás segítségével csatlakozni, átalakítani és szemléltetni is lehet az adatokat. A Microsoft Azure Cognitive Services részét képező Text Analytics természetes nyelvi feldolgozást kínál. A nyers, szerkezet nélkül megadott szövegből képes kivonatolni a legfontosabb kifejezéseket, elemzi az érzéseket és azonosítani tud olyan jól ismert dolgokat, mint a márkák. Ezekkel az eszközökkel gyors bepillantást nyerhet abba, hogy az ügyfelei miről beszélnek, és milyen érzéseket váltottak ki belőlük.
 
@@ -94,7 +94,7 @@ A Text Analytics szolgáltatás a [Key Phrases API](https://westus.dev.cognitive
 | | |
 | - | - |
 | `id`  | A dokumentum egy egyedi azonosítóját a kérésen belül. Ezt a mezőt a válasz is tartalmazza. Így több dokumentum feldolgozásakor könnyen társítani lehet a kinyert kulcskifejezéseket a dokumentummal, amelyből származnak. Az oktatóanyagban, mivel kérésenként csak egy dokumentumot dolgozunk fel, az `id` értéket fixen rögzítheti, hogy mindegyik kérésre ugyanaz legyen.|
-| `text`  | A feldolgozandó szöveg. Ennek a mezőnek az értéke az [előző részben](#PreparingData) létrehozott `Merged` oszlopból származik, amely a tárgysor és a megjegyzés kombinált szövegét tartalmazza. A kulcs kifejezések API megköveteli, hogy ezeket az adatokat nem lehet hosszabb készül 5,120 karakternél.|
+| `text`  | A feldolgozandó szöveg. Ennek a mezőnek az értéke az [előző részben](#PreparingData) létrehozott `Merged` oszlopból származik, amely a tárgysor és a megjegyzés kombinált szövegét tartalmazza. A legfontosabb kifejezések API-nak szüksége van arra, hogy az adathalmaz ne legyen hosszabb 5 120 karakternél.|
 | `language` | A dokumentum természetes nyelvét jelölő kód. A mintaadatokban minden üzenet angolul van, így a mezőre rögzítheti a `en` értéket.|
 
 ## <a name="create-a-custom-function"></a>Egyéni függvény létrehozása

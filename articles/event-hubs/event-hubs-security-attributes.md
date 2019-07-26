@@ -1,6 +1,6 @@
 ---
-title: Az Azure Event hubs közös biztonsági attribútumok
-description: A közös biztonsági attribútumok az Azure Event Hubs értékelésére ellenőrzőlista
+title: Az Azure Event Hubs biztonsági attribútumai
+description: Az Azure-Event Hubs értékelésére szolgáló biztonsági attribútumok ellenőrzőlistája
 services: event-hubs
 ms.service: event-hubs
 documentationcenter: ''
@@ -9,16 +9,16 @@ manager: barbkess
 ms.topic: conceptual
 ms.date: 05/22/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 50f19d50f211972c2042c69a1e3177ffb4a47624
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2262609de774eb2b1334215bf46968b5554ed691
+ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66247199"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68442450"
 ---
-# <a name="common-security-attributes-for-azure-event-hubs"></a>Az Azure Event hubs közös biztonsági attribútumok
+# <a name="security-attributes-for-azure-event-hubs"></a>Az Azure Event Hubs biztonsági attribútumai
 
-Ez a cikk a gyakori biztonsági attribútumok az Azure Event Hubs beépített dokumentumok.
+Ez a cikk az Azure Event Hubs beépített biztonsági attribútumait dokumentálja.
 
 [!INCLUDE [Security Attributes Header](../../includes/security-attributes-header.md)]
 
@@ -26,44 +26,44 @@ Ez a cikk a gyakori biztonsági attribútumok az Azure Event Hubs beépített do
 
 | Biztonsági attribútum | Igen/nem | Megjegyzések |
 |---|---|--|
-| Titkosítás inaktív állapotban:<ul><li>Kiszolgálóoldali titkosítás</li><li>Kiszolgálóoldali titkosítás a felhasználó által kezelt kulcsok</li><li>Más titkosítási funkciók (például az ügyféloldali, mindig titkosított, stb.)</ul>|  Igen | |
-| Titkosítás az átvitel során:<ul><li>Express route-titkosítás</li><li>A Vnet-titkosítás</li><li>Hálózatok titkosítása</ul>| Igen | |
-| Titkosítási kulcs kezelése (CMK, BYOK, stb.)| Nem |  |
-| Oszlop a blokkszintű titkosítás (az Azure Data Services)| – | |
+| Titkosítás inaktív állapotban (például kiszolgálóoldali titkosítás, ügyfél által felügyelt kulcsokkal rendelkező kiszolgálóoldali titkosítás és egyéb titkosítási funkciók)|  Igen | |
+| Az átvitel közbeni titkosítás (például ExpressRoute titkosítás, VNet titkosítás és VNet-VNet titkosítás)| Igen | |
+| Titkosítási kulcsok kezelését (CMK, BYOK stb.)| Nem |  |
+| Oszlop szintű titkosítás (Azure Data Services)| – | |
 | Titkosított API-hívások| Igen |  |
 
-## <a name="network-segmentation"></a>Hálózati szegmentálást
+## <a name="network-segmentation"></a>Hálózati szegmentálás
 
 | Biztonsági attribútum | Igen/nem | Megjegyzések |
 |---|---|--|
-| Szolgáltatási végpont támogatás| Igen |  |
-| vNET-injektálási támogatás| Nem | |
-| Hálózatelkülönítés és támogatási optimalizálóként működik| Igen |  |
+| Szolgáltatás végpontjának támogatása| Igen |  |
+| VNet-befecskendezés támogatása| Nem | |
+| Hálózati elkülönítés és tűzfalak támogatása| Igen |  |
 | Kényszerített bújtatás támogatása| Nem |  |
 
 ## <a name="detection"></a>Észlelés
 
 | Biztonsági attribútum | Igen/nem | Megjegyzések|
 |---|---|--|
-| Azure monitorozási támogatása (a Log analytics, az App insights, stb.)| Igen | |
+| Azure monitoring-támogatás (log Analytics, alkalmazás-elemzések stb.)| Igen | |
 
 ## <a name="identity-and-access-management"></a>Identitás- és hozzáférés-kezelés
 
 | Biztonsági attribútum | Igen/nem | Megjegyzések|
 |---|---|--|
-| Hitelesítés| Igen | |
-| Engedélyezés|  Igen | |
+| Authentication| Igen | |
+| Authorization|  Igen | |
 
 
-## <a name="audit-trail"></a>Auditnapló
+## <a name="audit-trail"></a>Naplózási nyomvonal
 
 | Biztonsági attribútum | Igen/nem | Megjegyzések|
 |---|---|--|
-| Vezérlő és a felügyeleti sík naplózási és naplózása| Igen |  |
-| Adatsík naplózása és naplózása| Igen |   |
+| Vezérlési és felügyeleti síkok naplózása és naplózása| Igen |  |
+| Adatsíkok naplózása és naplózása| Igen |   |
 
 ## <a name="configuration-management"></a>Konfigurációkezelés
 
 | Biztonsági attribútum | Igen/nem | Megjegyzések|
 |---|---|--|
-| Konfiguráció kezelésével kapcsolatos támogatás (versioning konfiguráció stb.)| Igen | |
+| Configuration Management-támogatás (konfiguráció verziószámozása stb.)| Igen | |

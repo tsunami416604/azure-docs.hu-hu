@@ -1,5 +1,5 @@
 ---
-title: Eszközök automatikus kiépítése a DPS használatával szimmetrikus kulcs igazolásával – Azure IoT Edge | Microsoft Docs
+title: Eszközök kiépítése a DPS használatával szimmetrikus kulcs igazolásával – Azure IoT Edge | Microsoft Docs
 description: A szimmetrikus kulcsos tanúsítványok használata a Azure IoT Edge automatikus eszköz-kiépítés teszteléséhez az eszköz kiépítési szolgáltatásával
 author: kgremban
 manager: philmea
@@ -10,16 +10,16 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: a91162271bf36e1d68e087a60723497e7fc261ec
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: 3c21c0bdce6f6a5cd3c8f634bf400600b30a8ead
+ms.sourcegitcommit: c556477e031f8f82022a8638ca2aec32e79f6fd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68275746"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68414592"
 ---
 # <a name="create-and-provision-an-iot-edge-device-using-symmetric-key-attestation"></a>IoT Edge-eszköz létrehozása és kiépítése a szimmetrikus kulcs igazolásával
 
-Az Azure IoT Edge-eszközök automatikus – helyezhetők a [Device Provisioning Service](../iot-dps/index.yml) ugyanúgy, mint az eszközök, amelyek az edge-kompatibilis nem. Ha még nem ismeri az Automatikus kiépítés folyamatát, tekintse át a [automatikus kiépítés alapfogalmait](../iot-dps/concepts-auto-provisioning.md) a folytatás előtt.
+Az Azure IoT Edge-eszközökön lehet autoprovisioned használatával a [Device Provisioning Service](../iot-dps/index.yml) ugyanúgy, mint az eszközök, amelyek az edge-kompatibilis nem. Ha még nem ismeri a autoprovisioning folyamatán, tekintse át a [autoprovisioning fogalmak](../iot-dps/concepts-auto-provisioning.md) a folytatás előtt.
 
 Ebből a cikkből megtudhatja, hogyan hozhat létre egyéni regisztrációt egy IoT Edge eszközön a szimmetrikus kulcs igazolásával egy eszköz kiépítési szolgáltatásához a következő lépések végrehajtásával:
 
@@ -165,8 +165,7 @@ Az eszköz kiépítés során a következő információkra lesz szüksége:
 
 Kövesse az eszköz architektúrájának utasításait. Ellenőrizze, hogy az IoT Edge-futtatókörnyezet, az automatikus, nem manuális üzembe helyezést.
 
-* [A Azure IoT Edge Runtime telepítése Linux rendszeren (x64)](how-to-install-iot-edge-linux.md)
-* [A Azure IoT Edge Runtime telepítése Linux rendszeren (ARM32v7/armhf)](how-to-install-iot-edge-linux-arm.md)
+[A Azure IoT Edge Runtime telepítése Linux rendszeren](how-to-install-iot-edge-linux.md)
 
 A szimmetrikus kulcs kiépítésének konfigurációs fájljának szakasza így néz ki:
 
@@ -188,7 +187,7 @@ Cserélje le a `{scope_id}`, `{registration_id}`és `{symmetric_key}` a helyőrz
 
 Az utasításokat követve telepítse a IoT Edge futtatókörnyezetet azon az eszközön, amelyhez létrehozta a származtatott eszköz kulcsát. Ellenőrizze, hogy az IoT Edge-futtatókörnyezet, az automatikus, nem manuális üzembe helyezést.
 
-[IoT Edge telepítése és automatikus kiépítése](how-to-install-iot-edge-windows.md#option-2-install-and-automatically-provision)
+[IoT Edge telepítése és automatikus kiépítése Windows rendszeren](how-to-install-iot-edge-windows.md#option-2-install-and-automatically-provision)
 
 ## <a name="verify-successful-installation"></a>A sikeres telepítésének ellenőrzése
 

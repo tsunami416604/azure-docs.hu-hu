@@ -1,7 +1,7 @@
 ---
-title: Az azureml-adatkészletek adatokhoz való hozzáférést-adatkészletek létrehozása
+title: Adatkészletek létrehozása az azureml-adatkészletekkel való hozzáféréshez
 titleSuffix: Azure Machine Learning service
-description: Ismerje meg, hogyan különböző forrásokból származó adatkészletek létrehozása, és regisztrálja a munkaterület adatkészletek
+description: Ismerje meg, hogyan hozhat létre adatkészleteket különböző forrásokból, és hogyan regisztrálhat adatkészleteket a munkaterületén
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,65 +11,63 @@ author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 05/21/2019
-ms.openlocfilehash: a879fa17244977277dab3e2e66c5888a44759764
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 765ec8291ba873c6b200cf330d82e6e2ab53357d
+ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67444030"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68423115"
 ---
-# <a name="create-and-access-datasets-preview-in-azure-machine-learning"></a>Hozzon létre, és az Azure Machine Learning (előzetes verzió) adatkészletek elérése
+# <a name="create-and-access-datasets-preview-in-azure-machine-learning"></a>Adatkészletek létrehozása és elérése (előzetes verzió) Azure Machine Learning
 
-Ebből a cikkből megismerheti, hogyan hozhat létre az Azure Machine Learning-adatkészletek (előzetes verzió) és az adatok elérése a helyi és távoli kísérletek.
+Ebből a cikkből megtudhatja, hogyan hozhat létre Azure Machine Learning adatkészleteket (előzetes verzió), és hogyan érheti el az adatokat helyi vagy távoli kísérletekből.
 
-A felügyelt adatkészletek segítségével: 
-* **Könnyen hozzáférhet az adatokhoz a modell betanítása közben** alapul szolgáló adattárak újracsatlakozás nélkül
+Azure Machine Learning adatkészletek esetében a következőket teheti: 
 
-* **Győződjön meg arról, az adatkonzisztencia és megismételhetőség** kísérletek között ugyanazon mutató használatával: notebookok, automatizált ml, a folyamatok, vizuális felhasználói felületet
+* Az adatkészletek által hivatkozott **tárolóban tárolt adatokat egyetlen példányban tárolja**
 
-* **Adatok megosztása és együttműködés** más felhasználókkal
+* **Adatgyűjtés** felderítő adatelemzéssel 
 
-* **Adatok feltárása** & adatok pillanatképeinek és verziói életciklusának kezelése
+* **Könnyedén hozzáférhet az adatmodell** -képzéshez a kapcsolati sztring vagy az adatelérési út miatti gond nélkül
 
-* **Hasonlítsa össze az adatokat** éles képzés
-
+* **Az adatmegosztás &** más felhasználókkal való együttműködéssel
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Hozhat létre és adatkészletekkel működnek együtt lesz szüksége:
+Az adatkészletek létrehozásához és működéséhez a következőkre lesz szüksége:
 
-* Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy ingyenes fiókot megkezdése előtt. Próbálja ki a [Azure Machine Learning szolgáltatás ingyenes vagy fizetős verzióját](https://aka.ms/AMLFree) még ma.
+* Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy ingyenes fiókot. Próbálja ki a [Azure Machine learning Service ingyenes vagy fizetős verzióját](https://aka.ms/AMLFree) még ma.
 
-* Egy [Azure Machine Learning szolgáltatás munkaterület](https://docs.microsoft.com/azure/machine-learning/service/setup-create-workspace)
+* Egy [Azure Machine learning szolgáltatás](https://docs.microsoft.com/azure/machine-learning/service/setup-create-workspace) munkaterülete
 
-* A [Azure Machine Learning SDK telepítve van a Pythonhoz készült](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py), amely tartalmazza az azureml-adatkészletek csomagot.
+* A [Azure Machine learning SDK for Python telepítve](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py), amely tartalmazza a azureml-adatkészletek csomagot.
 
 > [!Note]
-> Néhány adatkészlet osztályok (előzetes verzió) függőségekkel rendelkezik a [azureml-adatelőkészítés](https://docs.microsoft.com/python/api/azureml-dataprep/?view=azure-ml-py) csomag (elérhetővé tétel GA). A Linux-felhasználók ezeket az osztályokat csak a következő disztribúciók a támogatják:  Red Hat Enterprise Linux, Ubuntu, Fedora, and CentOS.
+> Egyes adatkészlet-osztályok (előzetes verzió) függőségei vannak a [azureml-adatelőkészítés](https://docs.microsoft.com/python/api/azureml-dataprep/?view=azure-ml-py) csomaggal (GA). A Linux-felhasználók esetében ezek az osztályok csak a következő disztribúciókban támogatottak:  Red Hat Enterprise Linux, Ubuntu, Fedora és CentOS.
 
-## <a name="data-formats"></a>Adatformátumok a célnyelven
+## <a name="data-formats"></a>Adatformátumok
 
-Az Azure Machine Learning-adatkészlet hozhat létre a következő adatokat:
-+ [delimited](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset#from-delimited-files-path--separator------header--promoteheadersbehavior-all-files-have-same-headers--3---encoding--fileencoding-utf8--0---quoting-false--infer-column-types-true--skip-rows-0--skip-mode--skiplinesbehavior-no-rows--0---comment-none--include-path-false--archive-options-none-)
-+ [Bináris](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py#from-binary-files-path-)
+Azure Machine Learning adatkészletet a következő formátumokból hozhat létre:
++ [tagolt](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset#from-delimited-files-path--separator------header--promoteheadersbehavior-all-files-have-same-headers--3---encoding--fileencoding-utf8--0---quoting-false--infer-column-types-true--skip-rows-0--skip-mode--skiplinesbehavior-no-rows--0---comment-none--include-path-false--archive-options-none-)
 + [json](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py#from-json-files-path--encoding--fileencoding-utf8--0---flatten-nested-arrays-false--include-path-false-)
 + [Excel](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py#from-excel-files-path--sheet-name-none--use-column-headers-false--skip-rows-0--include-path-false--infer-column-types-true-)
-+ [Parquet eszközökben](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py#from-parquet-files-path--include-path-false-)
-+ [Azure SQL Database](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py#from-sql-query-data-source--query-)
-+ [Azure Data Lake gen. 1](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py#from-sql-query-data-source--query-)
++ [Parquet](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py#from-parquet-files-path--include-path-false-)
++ [Panda DataFrame](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py#from-pandas-dataframe-dataframe--path-none--in-memory-false-)
++ [SQL-lekérdezés](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py#from-sql-query-data-source--query-)
++ [bináris](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py#from-binary-files-path-)
 
 ## <a name="create-datasets"></a>Adatkészletek létrehozása 
 
-Az azureml-adatkészletek csomaggal, az adatkészletek kezelheti a [Azure Machine Learning Python SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) és kifejezetten [a `Dataset` osztály](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset(class)?view=azure-ml-py).
+Adatkészlet létrehozásával az adatforrás helyére mutató hivatkozást, valamint a hozzá tartozó metaadatok másolatát is létrehozhatja. Az adattárolók a meglévő helyükön maradnak, így nem merülnek fel extra tárolási költségek.
 
-### <a name="create-from-local-files"></a>A helyi fájlok létrehozása
+### <a name="create-from-local-files"></a>Létrehozás helyi fájlokból
 
-A helyi gépen a fájl vagy mappa elérési út megadásával betölteni a [ `auto_read_files()` ](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset(class)?view=azure-ml-py#auto-read-files-path--include-path-false-) módszerrel a `Dataset` osztály.  Ez a módszer akkor adja meg a fájl típusa és elemzési argumentumok nélkül hajtja végre az alábbi lépéseket:
+Töltse le a fájlokat a helyi gépről úgy, hogy megadja a fájl vagy mappa elérési [`auto_read_files()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset(class)?view=azure-ml-py#auto-read-files-path--include-path-false-) útját `Dataset` a osztály metódusával.  Ez a metódus a következő lépéseket hajtja végre anélkül, hogy meg kellene adnia a fájl típusát vagy az elemzési argumentumokat:
 
-* Adatcsatornához és a kivonni kívánt beállítást.
-* Átugorja a felső részén a fájl üres rekordokat.
-* Adatcsatornához és a fejlécsor beállítást.
-* Adatcsatornához és oszlop adattípus konvertálásakor.
+* Következtetés és az elválasztó beállítása.
+* Üres rekordok kihagyása a fájl tetején.
+* Következtetés és a fejlécsor beállítása.
+* Az oszlopok adattípusának kikövetkeztetés és átalakítása.
 
 ```Python
 from azureml.core.dataset import Dataset
@@ -77,16 +75,16 @@ from azureml.core.dataset import Dataset
 dataset = Dataset.auto_read_files('./data/crime.csv')
 ```
 
-Másik lehetőségként a fájl-specifikus függvények használatával explicit módon vezérelheti a fájl elemzése. 
+Azt is megteheti, hogy a fájl-specifikus függvények segítségével explicit módon szabályozza a fájl elemzését. 
 
 
-### <a name="create-from-azure-datastores"></a>Az Azure adattárainak létrehozása
+### <a name="create-from-azure-datastores"></a>Létrehozás Azure-Adattárokból
 
-Adatkészletek létrehozása egy Azure-adattárhoz:
+Adatkészletek létrehozása Azure- [adattárból](how-to-access-data.md):
 
-* Győződjön meg arról, hogy `contributor` vagy `owner` a regisztrált Azure adattárolója való hozzáférést.
+* Ellenőrizze, hogy `contributor` van `owner` -e hozzáférése a regisztrált Azure-adattárhoz.
 
-* Importálás a [ `Workspace` ](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py) és [ `Datastore` ](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore(class)?view=azure-ml-py#definition) és `Dataset` az SDK-csomagot.
+* Az adatkészlet létrehozása az adattár egyik útvonalára való hivatkozással 
 
 ```Python
 from azureml.core.workspace import Workspace
@@ -97,30 +95,26 @@ datastore_name = 'your datastore name'
 
 # get existing workspace
 workspace = Workspace.from_config()
-```
 
- A `get()` metódus lekér egy meglévő adattárhoz a munkaterületen.
-
-```
+# retrieve an existing datastore in the workspace by name
 dstore = Datastore.get(workspace, datastore_name)
 ```
 
-Használja a `from_delimited_files()` módszer, olvassa el a tagolt fájlokat, és a egy nem regisztrált adatkészlet létrehozásához.
+A `from_delimited_files()` metódus használatával tagolt fájlokat olvashat egy [DataReference](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py), és létrehozhat egy nem regisztrált adatkészletet.
 
 ```Python
 # create an in-memory Dataset on your local machine
-datapath = dstore.path('data/src/crime.csv')
-dataset = Dataset.from_delimited_files(datapath)
+dataset = Dataset.from_delimited_files(dstore.path('data/src/crime.csv'))
 
 # returns the first 5 rows of the Dataset as a pandas Dataframe.
 dataset.head(5)
 ```
 
-## <a name="register-datasets"></a>Az adatkészletek regisztrálása
+## <a name="register-datasets"></a>Adatkészletek regisztrálása
 
-A létrehozási folyamat befejezéséhez regisztrálja az adatkészletekből munkaterület:
+A létrehozási folyamat befejezéséhez regisztrálja az adatkészleteket a munkaterületen:
 
-Használja a [ `register()` ](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py#register-workspace--name--description-none--tags-none--visible-true--exist-ok-false--update-if-exist-false-) módszer regisztrálásához adatkészletek a munkaterülethez, így azok másokkal, és újra felhasználható különböző kísérletek között.
+Az adatkészletek a munkaterületre való regisztrálásához használja a [`register()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py#register-workspace--name--description-none--tags-none--visible-true--exist-ok-false--update-if-exist-false-) metódust, hogy azok megoszthatók másokkal, és újra felhasználhatók legyenek a különböző kísérletek között.
 
 ```Python
 dataset = dataset.register(workspace = workspace,
@@ -131,23 +125,26 @@ dataset = dataset.register(workspace = workspace,
 ```
 
 >[!NOTE]
-> Ha `exist_ok = False` (alapértelmezett), és a hiba akkor fordul elő, mint egy másik, azonos nevű adatkészlet regisztrálását kísérli. Állítsa be `True` felülírja a meglévő.
+> Ha `exist_ok = False` (alapértelmezett), és egy másikkal megegyező nevű adatkészletet próbál regisztrálni, hiba történik. Állítsa a `True` beállítást a meglévő felülírásához.
 
-## <a name="access-data-in-datasets"></a>Hozzáférés az adatokhoz a adatkészletek
+## <a name="access-data-in-datasets"></a>Adatkészletekben tárolt adathozzáférés
 
-Helyileg, távolról és például az Azure Machine Learning compute számítási fürtök a regisztrált adatkészletek elérhető és értelmezhető. A regisztrált adatkészlet újbóli kísérletek között, és a számítási környezetek, az alábbi kód használatával név szerint a munkaterület és a regisztrált adatkészlet lekérése.
+A regisztrált adatkészletek helyileg és távolról is elérhetők a számítási fürtökön, például a Azure Machine Learning számítási feladatokhoz. A regisztrált adatkészletek kísérletek közötti eléréséhez használja a következő kódot a munkaterület és a regisztrált adatkészlet név szerinti beszerzéséhez.
 
 ```Python
 workspace = Workspace.from_config()
 
 # See list of datasets registered in workspace.
-Dataset.list(workspace)
+print(Dataset.list(workspace))
 
 # Get dataset by name
-dataset = workspace.datasets['dataset_crime']
+dataset = Dataset.get(workspace, 'dataset_crime')
+
+# Load data into pandas DataFrame
+dataset.to_pandas_dataframe()
 ```
 
 ## <a name="next-steps"></a>További lépések
 
-* [Ismerje meg, és adatkészletek előkészítése](how-to-explore-prepare-data.md).
-* Példa adatkészleteket használó, tekintse meg a [notebookok minta](https://aka.ms/dataset-tutorial).
+* [Az adatkészletek megismerése és előkészítése](how-to-explore-prepare-data.md).
+* Az adatkészletek használatára vonatkozó példát a [minta notebookok](https://aka.ms/dataset-tutorial)című témakörben talál.

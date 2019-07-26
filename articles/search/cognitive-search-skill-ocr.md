@@ -1,6 +1,6 @@
 ---
-title: Optikai Karakterfelismerés cognitive search szakértelem – Azure Search
-description: Szöveg kinyerése képfájlok optikai karakterfelismerés (OCR) segítségével az Azure Search-felderítési bővítést folyamatban.
+title: OCR kognitív keresési képesség – Azure Search
+description: A képfájlokból származó szöveg kinyerése az optikai karakterfelismerés (OCR) használatával Azure Search alkoholtartalom-növelési folyamatban.
 services: search
 manager: pablocas
 author: luiscabrer
@@ -12,61 +12,62 @@ ms.tgt_pltfrm: na
 ms.date: 05/02/2019
 ms.author: luisca
 ms.custom: seodec2018
-ms.openlocfilehash: 6d9b68bda2a6cff533286d9ee944abf1c92cc2bf
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 903673e2c953328e90029938a9b7446271411646
+ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65523245"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68422985"
 ---
-# <a name="ocr-cognitive-skill"></a>Optikai Karakterfelismerés cognitive szakértelem
+# <a name="ocr-cognitive-skill"></a>OCR – kognitív képesség
 
-Optikai karakterfelismerés (OCR) szakértelem felismeri a képfájlok nyomtatott és kézzel írt szöveg. Ezen a képzettségi használja a gépi tanulási modellek által biztosított [számítógépes Látástechnológiai](https://docs.microsoft.com/azure/cognitive-services/computer-vision/home) a Cognitive Services. A **OCR** szakértelem képez le a következő funkciókat:
+Az optikai karakterfelismerési (OCR) képesség felismeri a nyomtatott és a kézírásos szövegeket a képfájlokban. Ez a képesség a Cognitive Services [Computer Vision](https://docs.microsoft.com/azure/cognitive-services/computer-vision/home) által biztosított gépi tanulási modelleket használja. Az **OCR** -képesség a következő funkciókra mutat:
 
-+ Ha textExtractionAlgorithm van állítva a "kézírásos", a ["RecognizeText"](../cognitive-services/computer-vision/quickstarts-sdk/csharp-hand-text-sdk.md) funkció használható.
-+ Ha textExtractionAlgorithm van állítva a "nyomtatott", a ["OCR"](../cognitive-services/computer-vision/concept-extracting-text-ocr.md) funkció angoltól eltérő nyelvű szolgál. Az angol nyelvű tájékoztatáshoz az új ["Szöveg felismerése"](../cognitive-services/computer-vision/concept-recognizing-text.md) funkcióinak, nyomtatott szöveg szolgál.
++ Az ["OCR"](../cognitive-services/computer-vision/concept-recognizing-text.md#ocr-optical-character-recognition-api) API az angoltól eltérő nyelveken használatos. 
++ Angol nyelven az új ["READ"](../cognitive-services/computer-vision/concept-recognizing-text.md#read-api) API használatos.
 
-A **OCR** szakértelem szöveges állomány kinyerésére képfájlok. Támogatott formátumok a következők:
+Az **OCR** -képesség kigyűjti a szöveget a képfájlokból. A támogatott formátumok a következők:
 
-+ .JPEG
++ . JPEG
 + . JPG
 + .PNG
 + .BMP
-+ .GIF
-+ .TIFF
++ . GIF
++ . TIFF
 
 > [!NOTE]
-> Bontsa ki a hatókört által a feldolgozás, gyakoriságának növelése további dokumentumok hozzáadása, vagy adja hozzá a további AI-algoritmusokat, kell [számlázható Cognitive Services-erőforrás csatolása](cognitive-search-attach-cognitive-services.md). A díjakat API-k hívásakor, a Cognitive Services, valamint a lemezkép kinyerése a az Azure Search-dokumentumfeltörést fázis részeként. Nem számítunk fel díjat a szövegkinyerés dokumentumok közül.
+> Ha a hatókört a feldolgozás gyakoriságának növelésével, további dokumentumok hozzáadásával vagy további AI-algoritmusok hozzáadásával bővíti, akkor [a számlázható Cognitive Services erőforrást](cognitive-search-attach-cognitive-services.md)kell csatolnia. Az API-k Cognitive Services-ben való meghívásakor felmerülő díjak, valamint a képek kinyerése a dokumentum repedési szakaszának részeként Azure Search. A dokumentumokból való szöveg kinyerése díjmentes.
 >
-> Végrehajtási beépített képességek a meglévő díjakat [használatalapú-as-, a Cognitive Services nyissa meg az árat](https://azure.microsoft.com/pricing/details/cognitive-services/). A kép kinyerési díjszabás leírása a [díjszabását ismertető oldalt az Azure Search](https://go.microsoft.com/fwlink/?linkid=2042400).
+> A beépített készségek elvégzése a meglévő Cognitive Services utólagos elszámolású [díjszabás szerint](https://azure.microsoft.com/pricing/details/cognitive-services/)történik. A rendszerkép kibontásának díjszabását a [Azure Search díjszabási oldalán](https://go.microsoft.com/fwlink/?linkid=2042400)találja.
 
 
-## <a name="skill-parameters"></a>Ismeretek paraméterek
+## <a name="skill-parameters"></a>Szakértelem paraméterei
 
-A paraméterei a kis-és nagybetűket.
+A paraméterek megkülönböztetik a kis-és nagybetűket.
 
-| Paraméter neve     | Leírás |
+| Paraméternév     | Leírás |
 |--------------------|-------------|
-| detectOrientation | Lehetővé teszi, hogy a kép tájolásának autodetection. <br/> Érvényes értékek: true / false (hamis).|
-|defaultLanguageCode | <p>  A bemeneti szöveg nyelvkódja. A támogatott nyelvek közé tartoznak a következők: <br/> zh-Hans (ChineseSimplified) <br/> zh-Hant (ChineseTraditional) <br/>cs (Cseh) <br/>da (dán) <br/>NL (holland) <br/>en (angol nyelven) <br/>Fi (finn)  <br/>FR (francia) <br/>  Németország (németországi) <br/>el (görög) <br/> hu (magyar) <br/> azt (olasz) <br/>  japán (japán) <br/> ko (koreai) <br/> NB (norvég) <br/>   pl (lengyel) <br/> csendes-óceáni idő (portugál) <br/>  a kérelemegység (orosz) <br/>  a gen (spanyol) <br/>  sv (Swedish) <br/>  tr (török) <br/> ar (arab) <br/> ro (Románia) <br/> sr-Cyrl (SerbianCyrillic) <br/> sr-Latn (SerbianLatin) <br/>  SK (szlovák). <br/>  UNK (ismeretlen) <br/><br/> Ha a nyelvi kód nincs megadva vagy null értékű, a nyelv az angol nyelvű lesz beállítva. Ha a nyelv explicit módon "unk" értékre van állítva, a nyelv nem automatikusan észleli. </p> |
-| textExtractionAlgorithm | "nyomtatott" vagy "kézírásos". A "kézírásos" szöveg felismerése OCR algoritmus jelenleg előzetes verzióban érhető el, és csak angol nyelven. |
-|lineEnding | Az érték közötti minden egyes sor észlelhető. Lehetséges értékek: "Hely", 'CarriageReturn', "Soremelés".  Az alapértelmezett érték a "Hely" |
+| detectOrientation | Engedélyezi a képek tájolásának automatikus észlelését. <br/> Érvényes értékek: TRUE/FALSE.|
+|defaultLanguageCode | <p>  A bemeneti szöveg nyelvi kódja A támogatott nyelvek közé tartoznak a következők: <br/> zh-Hans (ChineseSimplified) <br/> zh-Hant (ChineseTraditional) <br/>cs (Cseh) <br/>da (dán) <br/>nl (holland) <br/>en (angol) <br/>Fi (finn)  <br/>fr (francia) <br/>  Németország (német) <br/>el (görög) <br/> hu (Magyar) <br/> It (olasz) <br/>  ja (Japán) <br/> Ko (koreai) <br/> NB (norvég) <br/>   pl (lengyel) <br/> PT (portugál) <br/>  ru (orosz) <br/>  es (spanyol) <br/>  SV (svéd) <br/>  TR (török) <br/> ar (arab) <br/> ro (román) <br/> sr-Cyrl (SerbianCyrillic) <br/> SR-Latn (SerbianLatin) <br/>  SK (szlovák). <br/>  unk (ismeretlen) <br/><br/> Ha a Nyelvkód nincs meghatározva vagy NULL értékű, a nyelv angolra lesz állítva. Ha a nyelv explicit módon "unk" értékre van állítva, a rendszer automatikusan észleli a nyelvet. </p> |
+|lineEnding | Az egyes észlelt sorok között használandó érték. Érvényes értékek: "Space", "CarriageReturn", "soremelés".  Az alapértelmezett érték a "space" |
 
-## <a name="skill-inputs"></a>Ismeretek bemenetek
+Korábban egy "textExtractionAlgorithm" nevű paraméter szerepel annak megadásához, hogy a képességnek ki kell-e bontania a "nyomtatott" vagy "kézzel írott" szöveget.  Ez a paraméter elavult, és már nem szükséges, mivel a legújabb olvasási API-algoritmus képes mindkét típusú szöveg kinyerésére egyszerre.  Ha a szaktudás definíciója már tartalmazza ezt a paramétert, akkor nem kell eltávolítania, de a továbbiakban nem lesz használatban, és mindkét típusú szöveg kibontásra kerül, függetlenül attól, hogy mire van beállítva.
 
-| Bemeneti név      | Leírás                                          |
+## <a name="skill-inputs"></a>Szaktudás bemenetei
+
+| Bemenet neve      | Leírás                                          |
 |---------------|------------------------------------------------------|
-| image         | Komplex típus. Az Azure Blob indexelőjével által előállított jelenleg csak akkor működik a "/ dokumentum/normalized_images" mezőt, amikor ```imageAction``` értékre van állítva egy eltérő ```none```. Tekintse meg a [minta](#sample-output) további információt.|
+| image         | Összetett típus. A jelenleg csak az Azure Blob indexelő által létrehozott "/Document/normalized_images" mezővel működik, ```imageAction``` ha a értéke nem ```none```a (z) értékre van állítva. További információért tekintse meg a [mintát](#sample-output) .|
 
 
-## <a name="skill-outputs"></a>Ismeretek kimenetek
-| Kimeneti név     | Leírás                   |
+## <a name="skill-outputs"></a>Szaktudás kimenetei
+| Kimenet neve     | Leírás                   |
 |---------------|-------------------------------|
-| szöveg          | A kép kinyert egyszerű szöveget.   |
-| layoutText    | Komplex típus, amely ismerteti a kinyert szöveg és a hely, ahol a szöveg található.|
+| text          | A képből kinyert egyszerű szöveg.   |
+| layoutText    | Összetett típus, amely leírja a kinyert szöveget, valamint azt a helyet, ahol a szöveg található.|
 
 
-## <a name="sample-definition"></a>Minta-definíció
+## <a name="sample-definition"></a>Minta definíciója
 
 ```json
 {
@@ -99,7 +100,7 @@ A paraméterei a kis-és nagybetűket.
 ```
 <a name="sample-output"></a>
 
-## <a name="sample-text-and-layouttext-output"></a>Szöveg- és layoutText kimeneti példa
+## <a name="sample-text-and-layouttext-output"></a>Minta szöveg-és layoutText kimenete
 
 ```json
 {
@@ -137,11 +138,11 @@ A paraméterei a kis-és nagybetűket.
 }
 ```
 
-## <a name="sample-merging-text-extracted-from-embedded-images-with-the-content-of-the-document"></a>Minta: Az egyesítés a dokumentum tartalma a beágyazott képek kinyert szöveget.
+## <a name="sample-merging-text-extracted-from-embedded-images-with-the-content-of-the-document"></a>Minta: A beágyazott képekből kinyert szöveg egyesítése a dokumentum tartalmával.
 
-Egy közös Szövegegyesítő funkcióban lehetővé teszi a képek (-OCR szakértelem, vagy a kép felirata szöveg) értéket képviselő szöveges alak egyesítése egy dokumentumot content mezőjének be.
+A szöveges egyesítés gyakori használati esete, hogy egyesíthető a képek szöveges ábrázolása (OCR-képességből származó szöveg vagy kép felirata) egy dokumentum tartalmi mezőjébe.
 
-A következő példa indexmezők létrehoz egy *merged_text* mező. Ez a mező szöveges tartalmát a dokumentumhoz, és a dokumentum a beágyazott képek mindegyike OCRed szöveget tartalmazza.
+A következő példa készségkészlet létrehoz egy *merged_text* mezőt. Ez a mező a dokumentum szöveges tartalmát, valamint a dokumentumban beágyazott képek OCRed szövegét tartalmazza.
 
 #### <a name="request-body-syntax"></a>Kéréstörzs szintaxisa
 ```json
@@ -193,7 +194,7 @@ A következő példa indexmezők létrehoz egy *merged_text* mező. Ez a mező s
   ]
 }
 ```
-A fenti indexmezők példa feltételezi, hogy, hogy létezik-e a normalized-lemezképek mező. Ebben a mezőben létrehozásához állítsa be a *imageAction* az indexelő meghatározását, hogy a konfigurációs *generateNormalizedImages* alább látható módon:
+A fenti készségkészlet példa azt feltételezi, hogy a normalizált lemezképek mező létezik. A mező létrehozásához állítsa a *imageAction* -konfigurációt az indexelő definíciójában a *generateNormalizedImages* értékre, ahogy az alábbi ábrán látható:
 
 ```json
 {
@@ -208,7 +209,7 @@ A fenti indexmezők példa feltételezi, hogy, hogy létezik-e a normalized-leme
 ```
 
 ## <a name="see-also"></a>Lásd még
-+ [Előre megadott képesség](cognitive-search-predefined-skills.md)
-+ [TextMerger szakértelem](cognitive-search-skill-textmerger.md)
-+ [Hogyan képességcsoport megadása](cognitive-search-defining-skillset.md)
-+ [Az indexelő (REST) létrehozása](https://docs.microsoft.com/rest/api/searchservice/create-indexer)
++ [Előre definiált képességek](cognitive-search-predefined-skills.md)
++ [TextMerger-szakértelem](cognitive-search-skill-textmerger.md)
++ [Készségkészlet definiálása](cognitive-search-defining-skillset.md)
++ [Indexelő létrehozása (REST)](https://docs.microsoft.com/rest/api/searchservice/create-indexer)

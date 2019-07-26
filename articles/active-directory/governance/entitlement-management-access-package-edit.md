@@ -1,10 +1,10 @@
 ---
-title: Szerkesztése és kezelése az Azure ad-ben tagjogosultság-kezelés (előzetes verzió) – az Azure Active Directory meglévő hozzáférési csomag
-description: Ismerje meg, hogyan szerkesztése és kezelése az Azure Active Directory tagjogosultság-kezelés (előzetes verzió) egy meglévő hozzáférési csomagot.
+title: Meglévő hozzáférési csomag szerkesztése és kezelése az Azure AD-jogosultságok kezelésében (előzetes verzió) – Azure Active Directory
+description: Megtudhatja, hogyan szerkesztheti és kezelheti a meglévő hozzáférési csomagokat a Azure Active Directory jogosultságok kezelése (előzetes verzió) szolgáltatásban.
 services: active-directory
 documentationCenter: ''
-author: rolyon
-manager: mtillman
+author: msaburnley
+manager: daveba
 editor: ''
 ms.service: active-directory
 ms.workload: identity
@@ -12,341 +12,341 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
-ms.date: 05/16/2019
-ms.author: rolyon
+ms.date: 07/23/2019
+ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 73c1717249abac30847f96073ee6daf7d98112d7
-ms.sourcegitcommit: 156b313eec59ad1b5a820fabb4d0f16b602737fc
+ms.openlocfilehash: c07f9dbcc21840bec4b4487225dfb8108586865e
+ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67190334"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68489202"
 ---
-# <a name="edit-and-manage-an-existing-access-package-in-azure-ad-entitlement-management-preview"></a>Szerkesztése és kezelése az Azure ad-ben tagjogosultság-kezelés (előzetes verzió) egy meglévő hozzáférési csomagot
+# <a name="edit-and-manage-an-existing-access-package-in-azure-ad-entitlement-management-preview"></a>Meglévő hozzáférési csomag szerkesztése és kezelése az Azure AD-jogosultságok kezelésében (előzetes verzió)
 
 > [!IMPORTANT]
-> Az Azure Active Directory (Azure AD) tagjogosultság-kezelés jelenleg nyilvános előzetes verzióban érhető el.
+> A Azure Active Directory (Azure AD) jogosultság-kezelési szolgáltatás jelenleg nyilvános előzetes verzióban érhető el.
 > Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik.
 > További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Egy hozzáférési csomag lehetővé teszi, hogy az erőforrások és a szabályzatok egy egyszeri beállítás, amely automatikusan felügyeli a hozzáférést a hozzáférés csomag élettartama. Access-Csomagkezelőt, mint az erőforrások egy hozzáférési csomag módosíthatja bármikor nem kell bajlódnunk a felhasználói hozzáférés az új erőforrások kiépítése, vagy a korábbi erőforrások eltávolítása a hozzáférésüket. Házirendek is bármikor frissíthető, azonban a házirend módosításai csak hatással új hozzáfér.
+Egy hozzáférési csomag lehetővé teszi az erőforrások és házirendek egyszeri beállítását, amely automatikusan felügyeli a hozzáférést a hozzáférési csomag élettartamához. Hozzáférés-csomagkezelőként bármikor módosíthatja egy hozzáférési csomag erőforrásait anélkül, hogy aggódnia kellene a felhasználó új erőforrásaihoz való hozzáférésének kiosztásával vagy az előző erőforrásokból való hozzáférés eltávolításával. A szabályzatok bármikor frissíthetők, azonban a házirend módosításai csak az új hozzáféréseket érintik.
 
-Ez a cikk bemutatja, hogyan szerkesztheti, és a meglévő access-csomagok kezelése.
+Ez a cikk a meglévő hozzáférési csomagok szerkesztését és kezelését ismerteti.
 
-## <a name="add-resource-roles"></a>Erőforrás-szerepkörök hozzáadása
+## <a name="add-resource-roles"></a>Erőforrás-Szerepkörök hozzáadása
 
-Egy erőforrás-szerepkör erőforrás tartozó engedélyeket gyűjteménye. Az erőforrások a felhasználók kérvényezhetik a kívánt elérhetővé tétele úgy, hogy erőforrás-szerepkörök hozzáadása a hozzáférés-csomag. Erőforrás-szerepkörökkel, a csoportokat, alkalmazásokat és SharePoint-webhelyek adhat hozzá.
+Az erőforrás-szerepkörök az erőforrásokhoz társított engedélyek gyűjteményei. Ahhoz, hogy a felhasználók számára elérhetővé tegye az erőforrásokat, erőforrás-szerepköröket adhat hozzá a hozzáférési csomaghoz. Hozzáadhat erőforrás-szerepköröket a csoportokhoz, az alkalmazásokhoz és a SharePoint-webhelyekhez.
 
-**Előfeltétel szerepkör:** Felhasználói rendszergazda, a katalógus tulajdonos vagy a hozzáférés Csomagkezelő
+**Előfeltételként szükséges szerepkör:** Felhasználói rendszergazda, katalógus tulajdonosa vagy Access Package Manager
 
-1. Az Azure Portalon kattintson a **Azure Active Directory** majd **Identitáskezelést**.
+1. A Azure Portal kattintson a **Azure Active Directory** , majd az **identitás-irányítás**elemre.
 
-1. A bal oldali menüben kattintson a **csomagok eléréséhez** , majd nyissa meg a hozzáférés-csomagot.
+1. A bal oldali menüben kattintson a **hozzáférési csomagok** elemre, majd nyissa meg a hozzáférési csomagot.
 
-1. A bal oldali menüben kattintson a **erőforrás-szerepkörökkel**.
+1. A bal oldali menüben kattintson az **erőforrás-szerepkörök**elemre.
 
-1. Kattintson a **erőforrás-szerepkörök hozzáadása** erőforrás szerepkör hozzáadása csomag lap eléréséhez megnyitásához.
+1. Kattintson az **erőforrás-Szerepkörök hozzáadása** elemre, hogy megnyissa az erőforrás-Szerepkörök hozzáadása a csomaghoz lapot.
 
-    ![Csomag eléréséhez – erőforrás-szerepkörök hozzáadása](./media/entitlement-management-access-package-edit/resource-roles-add.png)
+    ![Hozzáférési csomag – erőforrás-Szerepkörök hozzáadása](./media/entitlement-management-access-package-edit/resource-roles-add.png)
 
-1. Attól függően, hogy egy csoport, az alkalmazás vagy a SharePoint-webhely hozzáadása hajtsa végre a lépéseket erőforrás szerepkör az alábbi szakaszokban.
+1. Attól függően, hogy szeretne-e csoportot, alkalmazást vagy SharePoint-webhelyet felvenni, hajtsa végre a következő erőforrás-szerepköri szakaszban található lépéseket.
 
-### <a name="add-a-group-resource-role"></a>Egy csoport erőforrás szerepkör hozzáadása
+### <a name="add-a-group-resource-role"></a>Csoport típusú erőforrás-szerepkör hozzáadása
 
-Tagjogosultság-kezelés felhasználóinak automatikus hozzáadása egy csoporthoz való hozzárendelése esetén egy hozzáférés-csomagot is. 
+A jogosultságok kezelése lehetőséggel automatikusan hozzáadhat felhasználókat egy csoporthoz, amikor hozzáférési csomagot rendelnek hozzájuk. 
 
-- Ha egy csoport része, egy hozzáférés-csomagot és a egy felhasználó hozzá van rendelve hozzáférés csomagot, a felhasználó adja hozzá a csoporthoz, ha még nem létezik.
-- Amikor egy felhasználó hozzáférési csomagok hozzárendelésével lejár, eltávolítja a csoportból, kivéve, ha jelenleg rendelkezik egy másik hozzáférési csomag, amely tartalmazza a csoportot, a hozzárendelés.
+- Ha egy csoport egy hozzáférési csomag részét képezi, és a felhasználó hozzá van rendelve az adott hozzáférési csomaghoz, akkor a felhasználó a csoportba kerül, ha még nincs jelen.
+- Ha egy felhasználó hozzáférési csomagjának hozzárendelése lejár, akkor a rendszer eltávolítja azokat a csoportból, kivéve, ha jelenleg egy másik, ugyanezt a csoportot tartalmazó hozzáférési csomaghoz rendel hozzá hozzárendelést.
 
-Kiválaszthatja, hogy bármilyen Office 365-csoport vagy az Azure AD biztonsági csoportot.  A Rendszergazdák csoportnak sem a katalógus; adhat hozzá katalógus tulajdonosok adhat hozzá a katalógus minden olyan csoportot, ha azok a csoport tulajdonosa. Egy csoport kiválasztásakor vegye figyelembe a következő Azure AD-korlátozások:
+Bármelyik Office 365-csoport vagy Azure AD-biztonsági csoport közül választhat.  A rendszergazdák hozzáadhatnak bármely csoportot egy katalógushoz; a katalógus tulajdonosai bármelyik csoportot hozzáadhatják a katalógushoz, ha a csoport tulajdonosai. A csoportok kiválasztásakor tartsa szem előtt az alábbi Azure AD-korlátozásokat:
 
-- A felhasználó hozzáadásakor, többek között a Vendég tagként egy csoporthoz, megjelenik az adott csoport összes tagjával.
-- Az Azure AD egy csoportot, amely a rendszer szinkronizálta tagsága nem módosítható a Windows Server Active Directory Azure AD Connect használatával.  
-- Dinamikus csoportok tagsága nem lehet frissíteni a hozzáadásával vagy eltávolításával a tagja, így a dinamikus csoporttagságok nem alkalmasak a tagjogosultság-kezelés segítségével.
+- Ha egy felhasználó, a vendéget is beleértve, a csoport tagjaként van hozzáadva, akkor a csoport többi tagja is megjelenik.
+- Az Azure AD nem tudja módosítani a Windows Server Active Directoryról szinkronizált csoport tagságát Azure AD Connect használatával.  
+- A dinamikus csoportok tagsága nem frissíthető egy tag hozzáadásával vagy eltávolításával, így a dinamikus csoporttagságok nem alkalmasak a jogosultsági felügyelettel való használatra.
 
-1. Az a **csomag el az erőforrás-szerepkörök hozzáadása** kattintson **csoportok** a válassza ki a csoportokat panel megnyitásához.
+1. Az **erőforrás-szerepkörök felvétele** a csomagba lapon kattintson a **csoportok** elemre a csoportok kiválasztása panel megnyitásához.
 
-1. Válassza ki a csoportokat, a hozzáférés csomaghoz.
+1. Válassza ki azokat a csoportokat, amelyeket bele szeretne foglalni a hozzáférési csomagba.
 
-    ![Csomag eléréséhez – erőforrás-szerepkörök – válassza ki a csoportokat hozzáadása](./media/entitlement-management-access-package-edit/group-select.png)
-
-1. Kattintson a **Kiválasztás** gombra.
-
-1. Az a **szerepkör** listáról válassza ki **tulajdonosa** vagy **tag**.
-
-    Általában válassza ki a szerepét. Ha a tulajdonos szerepkör, amely lehetővé teszi a felhasználók számára más tagok vagy a tulajdonosok hozzáadása vagy eltávolítása.
-
-    ![Hozzáférés a csomagot,-erőforrás szerepkör, csoport hozzáadása](./media/entitlement-management-access-package-edit/group-role.png)
-
-1. Kattintson a **Hozzáadás**lehetőségre.
-
-    Azok a felhasználók a hozzáférés csomaghoz meglévő hozzárendelések automatikusan ennek a csoportnak a tagjai válnak, amikor felveszik.
-
-### <a name="add-an-application-resource-role"></a>Egy alkalmazás erőforrás-szerepkör hozzáadása
-
-Az Azure AD automatikusan felhasználók hozzáférés hozzárendelése egy Azure AD vállalati alkalmazást, beleértve a SaaS-alkalmazásokhoz és a szervezete azon alkalmazásairól az Azure AD, ha egy felhasználó hozzá van rendelve egy hozzáférési csomag összevont rendelkezhet. Amelyekbe beépül az Azure AD összevont egyszeri bejelentkezés révén az alkalmazások az Azure AD összevonási jogkivonatok az alkalmazáshoz hozzárendelt felhasználók állít ki.
-
-Alkalmazások több szerepkört is rendelkezhetnek. Alkalmazás hozzáadásakor hozzáférés csomagjára, ha az alkalmazás több szerepköre van, szüksége lesz a adja meg a megfelelő szerepkört a felhasználókhoz.  Ha alkalmazásokat fejleszt, áttekintheti, több hogyan ezen szerepkörök biztosítják az alkalmazások a cikk útmutatást [a SAML-jogkivonatban kiadott szerepkörjogcím konfigurálása](../develop/active-directory-enterprise-app-role-management.md).
-
-Ha egy alkalmazás-szerepkör része egy hozzáférés-csomagot:
-
-- Amikor egy felhasználó hozzá van rendelve, hogy hozzáférési csomag, a felhasználó adnak hozzá, hogy az alkalmazás-szerepkörökhöz, ha még nem létezik.
-- Amikor egy felhasználó hozzáférési csomagok hozzárendelésével lejár, hozzáférésüket törlődni fog az alkalmazásból, kivéve, ha egy másik hozzáférési csomag, amely tartalmazza az adott alkalmazás szerepkör-hozzárendelés rendelkeznek.
-
-Egy alkalmazás kiválasztásakor az alábbiakban néhány szempontot:
-
-- Alkalmazások hozzárendelve a szerepkörökhöz, valamint csoportok is rendelkezhetnek.  Dönthet úgy, hogy egy alkalmazás-szerepkör helyett csoport azonban egy hozzáférési csomag hozzáadása, majd az alkalmazás nem lesz látható a felhasználó a saját Access Portalon a hozzáférési csomag részeként.
-
-1. Az a **csomag el az erőforrás-szerepkörök hozzáadása** kattintson **alkalmazások** a Select alkalmazások panel megnyitásához.
-
-1. Válassza ki a kívánt alkalmazásokat, a hozzáférés csomaghoz.
-
-    ![Csomag eléréséhez – erőforrás-szerepkörök – Select alkalmazások hozzáadása](./media/entitlement-management-access-package-edit/application-select.png)
+    ![Hozzáférési csomag – erőforrás-Szerepkörök hozzáadása – csoportok kiválasztása](./media/entitlement-management-access-package-edit/group-select.png)
 
 1. Kattintson a **Kiválasztás** gombra.
 
-1. Az a **szerepkör** listájához, válassza ki az alkalmazás-szerepkörhöz.
+1. A **szerepkör** listából válassza a **tulajdonos** vagy a **tag**elemet.
 
-    ![Hozzáférés a csomagot,-alkalmazás erőforrás-szerepkör hozzáadása](./media/entitlement-management-access-package-edit/application-role.png)
+    Általában kiválasztja a tag szerepkört. Ha a tulajdonos szerepkört választja, a felhasználók más tagokat vagy tulajdonosokat is hozzáadhatnak vagy eltávolíthatnak.
+
+    ![Hozzáférési csomag – erőforrás-szerepkör hozzáadása egy csoporthoz](./media/entitlement-management-access-package-edit/group-role.png)
 
 1. Kattintson a **Hozzáadás**lehetőségre.
 
-    Azok a felhasználók a hozzáférés csomaghoz meglévő hozzárendelések automatikusan kap hozzáférést az alkalmazáshoz, amikor felveszik.
+    A hozzáférési csomaghoz meglévő hozzárendelésekkel rendelkező felhasználók automatikusan ennek a csoportnak a tagjai lesznek, amikor hozzáadják őket.
 
-### <a name="add-a-sharepoint-site-resource-role"></a>Adjon hozzá egy SharePoint erőforráshoz helyszerepkör
+### <a name="add-an-application-resource-role"></a>Alkalmazás-erőforrás szerepkör hozzáadása
 
-Az Azure AD automatikusan tud hozzárendelni felhasználók hozzáférés egy SharePoint Online-webhelyen vagy a SharePoint online-hoz helygyűjtemény, ha hozzá vannak rendelve egy hozzáférés-csomagot.
+Az Azure AD automatikusan hozzárendelheti a felhasználókat egy Azure AD vállalati alkalmazáshoz, beleértve az SaaS-alkalmazásokat és a szervezet Azure AD-ba összevont alkalmazásait is, amikor egy felhasználó hozzáférési csomagot kap. Az összevont egyszeri bejelentkezésen keresztül az Azure AD-vel integrált alkalmazások esetében az Azure AD összevonási jogkivonatokat állít ki az alkalmazáshoz hozzárendelt felhasználók számára.
 
-1. Az a **csomag el az erőforrás-szerepkörök hozzáadása** kattintson **SharePoint-webhelyek** a jelölje ki a SharePoint Online helyek panel megnyitásához.
+Az alkalmazások több szerepkörrel rendelkezhetnek. Ha egy alkalmazás egy hozzáférési csomaghoz van hozzáadva, ha az alkalmazásnak egynél több szerepköre van, meg kell adnia a megfelelő szerepkört a felhasználók számára.  Ha alkalmazásokat fejleszt, többet is megtudhat arról, hogyan biztosíthatja ezeket a szerepköröket az alkalmazásaihoz az [SAML-jogkivonatban kiadott szerepkör-jogcím konfigurálásának](../develop/active-directory-enterprise-app-role-management.md)módjában.
 
-1. Válassza ki a SharePoint Online-webhelyhez fel szeretne venni a hozzáférés-csomagban.
+Ha egy alkalmazás-szerepkör egy hozzáférési csomag része:
 
-    ![Csomag eléréséhez – erőforrás-szerepkörök – válassza ki a SharePoint Online-webhelyek hozzáadása](./media/entitlement-management-access-package-edit/sharepoint-site-select.png)
+- Ha egy felhasználó hozzá van rendelve a hozzáférési csomaghoz, a felhasználó hozzá lesz adva az adott alkalmazási szerepkörhöz, ha még nem létezik.
+- Ha a felhasználó hozzáférési csomagjának hozzárendelése lejár, a hozzáférésük el lesz távolítva az alkalmazásból, kivéve, ha az adott alkalmazási szerepkört tartalmazó másik hozzáférési csomaghoz vannak hozzárendelve.
+
+Az alkalmazások kiválasztásakor a következő szempontokat érdemes figyelembe venni:
+
+- Az alkalmazások is rendelkezhetnek a szerepkörökhöz hozzárendelt csoportokkal is.  Lehetőség van arra is, hogy egy hozzáférési csomagban vegyen fel egy csoportot egy alkalmazási szerepkör helyett, de az alkalmazás nem lesz látható a felhasználó számára a hozzáférési portál hozzáférési csomagjának részeként.
+
+1. Az **erőforrás-Szerepkörök hozzáadása** a csomaghoz lapon kattintson az **alkalmazások** elemre az alkalmazások kiválasztása panel megnyitásához.
+
+1. Válassza ki a hozzáférési csomagban szerepeltetni kívánt alkalmazásokat.
+
+    ![Hozzáférési csomag – erőforrás-Szerepkörök hozzáadása – alkalmazások kiválasztása](./media/entitlement-management-access-package-edit/application-select.png)
 
 1. Kattintson a **Kiválasztás** gombra.
 
-1. Az a **szerepkör** listájához, válassza ki a SharePoint online-hoz helyrendszerszerepkör.
+1. A **szerepkör** listából válassza ki az alkalmazás szerepkört.
 
-    ![Hozzáférés a csomagot,-erőforrás szerepkör egy SharePoint Online-webhely hozzáadása](./media/entitlement-management-access-package-edit/sharepoint-site-role.png)
+    ![Hozzáférési csomag – erőforrás-szerepkör hozzáadása egy alkalmazáshoz](./media/entitlement-management-access-package-edit/application-role.png)
 
 1. Kattintson a **Hozzáadás**lehetőségre.
 
-    Azok a felhasználók a hozzáférés csomaghoz meglévő hozzárendelések automatikusan kap hozzáférést a SharePoint Online helyre, amikor felveszik.
+    A hozzáférési csomaghoz meglévő hozzárendelésekkel rendelkező felhasználók automatikusan hozzáférhetnek ehhez az alkalmazáshoz, amikor az hozzá van adva.
 
-## <a name="remove-resource-roles"></a>Távolítsa el az erőforrás-szerepkörökkel
+### <a name="add-a-sharepoint-site-resource-role"></a>SharePoint-webhely erőforrás-szerepkörének hozzáadása
 
-**Előfeltétel szerepkör:** Felhasználói rendszergazda, a katalógus tulajdonos vagy a hozzáférés Csomagkezelő
+Az Azure AD automatikusan hozzá tud rendelni felhasználókat a SharePoint Online-webhelyekhez vagy a SharePoint Online-webhelycsoportok eléréséhez, ha hozzáférési csomagot rendelnek hozzájuk.
 
-1. Az Azure Portalon kattintson a **Azure Active Directory** majd **Identitáskezelést**.
+1. Az **erőforrás-szerepkörök felvétele** a csomagba lapon kattintson a **SharePoint-helyek** elemre a SharePoint Online-webhelyek kiválasztása panel megnyitásához.
 
-1. A bal oldali menüben kattintson a **csomagok eléréséhez** , majd nyissa meg a hozzáférés-csomagot.
+1. Válassza ki azokat a SharePoint Online-webhelyeket, amelyeket fel szeretne venni a hozzáférési csomagba.
 
-1. A bal oldali menüben kattintson a **erőforrás-szerepkörökkel**.
+    ![Hozzáférési csomag – erőforrás-Szerepkörök hozzáadása – SharePoint Online-webhelyek kiválasztása](./media/entitlement-management-access-package-edit/sharepoint-site-select.png)
 
-1. Az erőforrás-szerepkörökkel listájában keresse meg az erőforrás-szerepkör el kívánja távolítani.
+1. Kattintson a **Kiválasztás** gombra.
 
-1. Kattintson a három pont ( **...** ) majd **Remove erőforrás szerepkör**.
+1. A **szerepkör** listából válassza ki a SharePoint Online-webhely szerepkört.
 
-    Azok a felhasználók a hozzáférés csomaghoz meglévő hozzárendelések automatikusan lesz a hozzáférését visszavonták erőforrás ehhez a szerepkörhöz, amikor a rendszer eltávolítja.
+    ![Hozzáférési csomag – erőforrás-szerepkör hozzáadása egy SharePoint Online-webhelyhez](./media/entitlement-management-access-package-edit/sharepoint-site-role.png)
 
-## <a name="add-a-new-policy"></a>Új szabályzat hozzáadása
+1. Kattintson a **Hozzáadás**lehetőségre.
 
-A, adja meg, akik kérhet egy hozzáférési csomagot úgy, hogy hozzon létre egy házirendet. Egyetlen hozzáférési csomag több szabályzatokat hozhat létre, ha azt szeretné, hogy a felhasználók különböző jóváhagyási és a lejárati beállítások hozzárendelések nyújtott más-más részhalmazához. Egyetlen szabályzatban csak akkor használható belső és külső felhasználók hozzárendelése ugyanaz a hozzáférés-csomag. Azonban létrehozhat két szabályzat hozzáférési egyazon csomag – egy belső felhasználók, egy, a külső felhasználók számára. Ha több szabályzat is vonatkozik egy felhasználóhoz, kérni fogja a kérésüket, hogy válassza ki a szabályzatot hozzá kell rendelni szeretnék idején.
+    A hozzáférési csomaghoz meglévő hozzárendelésekkel rendelkező felhasználók automatikusan hozzáférhetnek ehhez a SharePoint Online-webhelyhez, amikor az hozzá van adva.
 
-Az alábbi ábrán egy meglévő hozzáférési csomaghoz szabályzat létrehozása magas szintű folyamata látható.
+## <a name="remove-resource-roles"></a>Erőforrás-szerepkörök eltávolítása
 
-![A házirend folyamat létrehozása](./media/entitlement-management-access-package-edit/policy-process.png)
+**Előfeltételként szükséges szerepkör:** Felhasználói rendszergazda, katalógus tulajdonosa vagy Access Package Manager
 
-**Előfeltétel szerepkör:** Felhasználói rendszergazda, a katalógus tulajdonos vagy a hozzáférés Csomagkezelő
+1. A Azure Portal kattintson a **Azure Active Directory** , majd az **identitás-irányítás**elemre.
 
-1. Az Azure Portalon kattintson a **Azure Active Directory** majd **Identitáskezelést**.
+1. A bal oldali menüben kattintson a **hozzáférési csomagok** elemre, majd nyissa meg a hozzáférési csomagot.
 
-1. A bal oldali menüben kattintson a **csomagok eléréséhez** , majd nyissa meg a hozzáférés-csomagot.
+1. A bal oldali menüben kattintson az **erőforrás-szerepkörök**elemre.
 
-1. Kattintson a **házirendek** , majd **szabályzat hozzáadása**.
+1. Az erőforrás-szerepkörök listájában keresse meg az eltávolítani kívánt erőforrás-szerepkört.
 
-1. Írjon be egy nevet és egy leírást a szabályzathoz.
+1. Kattintson a három pontra ( **..** .), majd az **erőforrás-szerepkör eltávolítása**elemre.
 
-    ![Hozzon létre házirendet neve és leírása](./media/entitlement-management-access-package-edit/policy-name-description.png)
+    A hozzáférési csomaghoz meglévő hozzárendelésekkel rendelkező felhasználók számára a rendszer automatikusan visszavonja a hozzáférését erre az erőforrás-szerepkörre, ha az eltávolításra kerül.
 
-1. Az adatgyűjtésre vonatkozó felhasználói alapján **felhasználók, akik hozzáférést**, hajtsa végre a lépéseket a következő házirend-szakaszok egyikét.
+## <a name="add-a-new-policy"></a>Új szabályzat felvétele
+
+A hozzáférési csomag igénylésének megadásának módja egy szabályzat létrehozása. Egyetlen hozzáférési csomaghoz több szabályzat is létrehozható, ha engedélyezni szeretné, hogy a különböző felhasználók a különböző jóváhagyási és lejárati beállításokkal rendelkező hozzárendeléseket kapjanak. Egyetlen házirend nem használható belső és külső felhasználók ugyanahhoz a hozzáférési csomaghoz való hozzárendeléséhez. Ugyanakkor két házirendet is létrehozhat ugyanabban a hozzáférési csomagban – egyet a belső felhasználókhoz, egyet pedig a külső felhasználókhoz. Ha több házirend is érvényes a felhasználóra, a rendszer a kérésük időpontjában kérni fogja, hogy válassza ki azt a szabályzatot, amelyet hozzá szeretne rendelni.
+
+Az alábbi ábrán egy meglévő hozzáférési csomagra vonatkozó házirend létrehozásának magas szintű folyamata látható.
+
+![Házirend-folyamat létrehozása](./media/entitlement-management-access-package-edit/policy-process.png)
+
+**Előfeltételként szükséges szerepkör:** Felhasználói rendszergazda, katalógus tulajdonosa vagy Access Package Manager
+
+1. A Azure Portal kattintson a **Azure Active Directory** , majd az **identitás-irányítás**elemre.
+
+1. A bal oldali menüben kattintson a **hozzáférési csomagok** elemre, majd nyissa meg a hozzáférési csomagot.
+
+1. Kattintson a **házirendek** , majd a **házirend hozzáadása**elemre.
+
+1. Adja meg a szabályzat nevét és leírását.
+
+    ![Szabályzat létrehozása névvel és leírással](./media/entitlement-management-access-package-edit/policy-name-description.png)
+
+1. A **hozzáférést kérő felhasználók**kiválasztása alapján hajtsa végre a következő szabályzatok egyikének lépéseit.
 
 [!INCLUDE [Entitlement management policy](../../../includes/active-directory-entitlement-management-policy.md)]
 
-## <a name="edit-an-existing-policy"></a>Meglévő házirend szerkesztése
+## <a name="edit-an-existing-policy"></a>Meglévő szabályzat szerkesztése
 
-Szabályzatot bármikor módosíthatják. Ha módosítja a lejárati dátum, házirend, a lejárati dátum, amely már eleve a függőben lévő jóváhagyási állapot jóváhagyott kérelmek esetén nem változik.
+Bármikor szerkesztheti a szabályzatokat. Ha módosítja egy házirend lejárati dátumát, a függőben lévő jóváhagyás vagy jóváhagyott állapotú kérelmek lejárati dátuma nem változik.
 
-**Előfeltétel szerepkör:** Felhasználói rendszergazda, a katalógus tulajdonos vagy a hozzáférés Csomagkezelő
+**Előfeltételként szükséges szerepkör:** Felhasználói rendszergazda, katalógus tulajdonosa vagy Access Package Manager
 
-1. Az Azure Portalon kattintson a **Azure Active Directory** majd **Identitáskezelést**.
+1. A Azure Portal kattintson a **Azure Active Directory** , majd az **identitás-irányítás**elemre.
 
-1. A bal oldali menüben kattintson a **csomagok eléréséhez** , majd nyissa meg a hozzáférés-csomagot.
+1. A bal oldali menüben kattintson a **hozzáférési csomagok** elemre, majd nyissa meg a hozzáférési csomagot.
 
-1. Kattintson a **házirendek** és kattintson a szerkeszteni kívánt szabályzatot.
+1. Kattintson a **házirendek** elemre, majd kattintson a szerkeszteni kívánt szabályzatra.
 
-    A **szabályzat adatainak** panel megnyílik a lap alján.
+    Megnyílik a **szabályzat részletei** ablaktábla az oldal alján.
 
-    ![Access-package - házirend részletei ablaktábla](./media/entitlement-management-access-package-edit/policy-details.png)
+    ![Hozzáférési csomag – szabályzat részletei ablaktábla](./media/entitlement-management-access-package-edit/policy-details.png)
 
-1. Kattintson a **szerkesztése** a szabályzat szerkesztéséhez.
+1. A szabályzat szerkesztéséhez kattintson a **Szerkesztés** gombra.
 
-    ![Access-package - házirend módosítása](./media/entitlement-management-access-package-edit/policy-edit.png)
+    ![Hozzáférési csomag – szabályzat szerkesztése](./media/entitlement-management-access-package-edit/policy-edit.png)
 
-1. Ha befejezte, kattintson a **frissítés**.
+1. Ha elkészült, kattintson a **frissítés**gombra.
 
-## <a name="directly-assign-a-user"></a>Közvetlenül a felhasználó hozzárendelése
+## <a name="directly-assign-a-user"></a>Felhasználó közvetlen kiosztása
 
-Bizonyos esetekben érdemes lehet, hogy közvetlenül adott felhasználók hozzárendelése egy hozzáférés-csomagot, hogy a felhasználók nem kérhetnek a hozzáféréssel csomag a folyamatot. Felhasználók hozzárendelése közvetlenül, a hozzáférés-csomag egy szabályzatot, amely lehetővé teszi, hogy a rendszergazdai hozzárendelések közvetlen kell rendelkeznie.
+Bizonyos esetekben előfordulhat, hogy közvetlenül egy adott felhasználót szeretne hozzárendelni egy hozzáférési csomaghoz, hogy a felhasználóknak ne kelljen átesniük a hozzáférési csomag igénylésének folyamatán. A felhasználók közvetlen hozzárendeléséhez a hozzáférési csomagnak rendelkeznie kell egy olyan házirenddel, amely lehetővé teszi a közvetlen rendszergazdai hozzárendeléseket.
 
-**Előfeltétel szerepkör:** Felhasználói rendszergazda, a katalógus tulajdonos vagy a hozzáférés Csomagkezelő
+**Előfeltételként szükséges szerepkör:** Felhasználói rendszergazda, katalógus tulajdonosa vagy Access Package Manager
 
-1. Az Azure Portalon kattintson a **Azure Active Directory** majd **Identitáskezelést**.
+1. A Azure Portal kattintson a **Azure Active Directory** , majd az **identitás-irányítás**elemre.
 
-1. A bal oldali menüben kattintson a **csomagok eléréséhez** , majd nyissa meg a hozzáférés-csomagot.
+1. A bal oldali menüben kattintson a **hozzáférési csomagok** elemre, majd nyissa meg a hozzáférési csomagot.
 
-1. A bal oldali menüben kattintson a **hozzárendelések**.
+1. A bal oldali menüben kattintson a **hozzárendelések**elemre.
 
-1. Kattintson a **új hozzárendelés** felhasználó hozzáadása a hozzáférési csomag megnyitásához.
+1. Kattintson az **új hozzárendelés** lehetőségre a felhasználó hozzáadása a csomaghoz lehetőség megnyitásához.
 
-    ![Adja hozzá a-hozzárendelések – felhasználói hozzáférés-csomaghoz](./media/entitlement-management-access-package-edit/assignments-add-user.png)
+    ![Hozzárendelések – felhasználó hozzáadása a csomag eléréséhez](./media/entitlement-management-access-package-edit/assignments-add-user.png)
 
-1. Kattintson a **felhasználók hozzáadása** az access-csomagot a hozzárendelni kívánt felhasználók.
+1. Kattintson a **felhasználók hozzáadása** elemre azon felhasználók kiválasztásához, akiknek a hozzáférési csomagot hozzá szeretné rendelni.
 
-1. Az a **válassza ki a szabályzat** listán válassza ki a házirendet, amely rendelkezik a [None (rendszergazdai közvetlen hozzárendelések csak)](#policy-none-administrator-direct-assignments-only) beállítás.
+1. A **házirend kiválasztása** listából válassza ki azt a szabályzatot, amelynek [nincs (csak a rendszergazda közvetlen hozzárendelései)](#policy-none-administrator-direct-assignments-only) beállítása.
 
-    Ha a hozzáférés-csomag nem tartalmaz ilyen típusú szabályzat, kattintson **hozzon létre új szabályzatot** kattintva felvehet egyet.
+    Ha ez a hozzáférési csomag nem rendelkezik ilyen típusú házirenddel, kattintson az **új házirend létrehozása** lehetőségre, ha hozzá szeretne adni egyet.
 
-1. Állítsa be azt szeretné, hogy a kijelölt felhasználók hozzárendelés kezdő és záró dátuma és időpontja. A befejező dátum nem áll rendelkezésre, ha a házirend-lejárati beállítások használható.
+1. Adja meg azt a dátumot és időpontot, ameddig a kiválasztott felhasználók hozzárendelésének kezdési és befejezési időpontja. Ha nincs megadva záró dátum, a rendszer a szabályzat lejárati beállításait fogja használni.
 
-1. A közvetlen hozzárendelés rögzítésére egy indokolniuk igény szerint.
+1. Igény szerint megadhatja a közvetlen hozzárendelését a rekordok megőrzése érdekében.
 
-1. Kattintson a **Hozzáadás** közvetlenül hozzárendelése a kiválasztott felhasználók a hozzáférés-csomagot.
+1. A **Hozzáadás** gombra kattintva közvetlenül hozzárendelheti a kiválasztott felhasználókat a hozzáférési csomaghoz.
 
-    Néhány pillanat múlva kattintson **frissítése** , tekintse meg a felhasználók a hozzárendelések listájában.
+    Néhány pillanat elteltével kattintson a **frissítés** gombra, hogy megjelenjenek a felhasználók a hozzárendelések listájában.
 
-## <a name="view-who-has-an-assignment"></a>Felhasználó-hozzárendeléssel rendelkezik megtekintése
+## <a name="view-who-has-an-assignment"></a>Hozzárendelést használó nézet megtekintése
 
-**Előfeltétel szerepkör:** Felhasználói rendszergazda, a katalógus tulajdonos vagy a hozzáférés Csomagkezelő
+**Előfeltételként szükséges szerepkör:** Felhasználói rendszergazda, katalógus tulajdonosa vagy Access Package Manager
 
-1. Az Azure Portalon kattintson a **Azure Active Directory** majd **Identitáskezelést**.
+1. A Azure Portal kattintson a **Azure Active Directory** , majd az **identitás-irányítás**elemre.
 
-1. A bal oldali menüben kattintson a **csomagok eléréséhez** , majd nyissa meg a hozzáférés-csomagot.
+1. A bal oldali menüben kattintson a **hozzáférési csomagok** elemre, majd nyissa meg a hozzáférési csomagot.
 
-1. Kattintson a **hozzárendelések** egy aktív hozzárendelések listájának megtekintéséhez.
+1. Kattintson  a hozzárendelések elemre az aktív hozzárendelések listájának megtekintéséhez.
 
-1. Kattintson egy adott hozzárendelés további részletek megtekintéséhez.
+1. A további részletek megtekintéséhez kattintson egy konkrét hozzárendelésre.
 
-1. Nincs megfelelően kiépített összes erőforrás szerepkör-hozzárendelés listájának megtekintéséhez kattintson a szűrő állapota, és válassza ki **kézbesítése**.
+1. Ha meg szeretné tekinteni azoknak a hozzárendeléseknek a listáját, amelyeken nincs megfelelően kiépítve az összes erőforrás-szerepkör, kattintson a szűrő állapotára, és válassza a **kézbesítés**lehetőséget.
 
-    Megtekintéséhez további részleteket kézbesítési hiba esetén a megfelelő kérést a felhasználó megkeresése a **kérelmek** lapot.
+    A kézbesítési hibákkal kapcsolatos további részletekért tekintse meg a felhasználó megfelelő kérését a **kérelmek** lapon.
 
-1. Lejárt hozzárendelések megtekintéséhez kattintson a szűrő állapota, és válassza ki **lejárt**.
+1. A lejárt hozzárendelések megjelenítéséhez kattintson a szűrő állapotára, és válassza a **lejárt**lehetőséget.
 
-1. A szűrt lista CSV-fájl letöltésére, kattintson a **letöltése**.
+1. A szűrt lista CSV-fájljának letöltéséhez kattintson a **Letöltés**gombra.
 
 ## <a name="view-requests"></a>Kérelmek megtekintése
 
-**Előfeltétel szerepkör:** Felhasználói rendszergazda, a katalógus tulajdonos vagy a hozzáférés Csomagkezelő
+**Előfeltételként szükséges szerepkör:** Felhasználói rendszergazda, katalógus tulajdonosa vagy Access Package Manager
 
-1. Az Azure Portalon kattintson a **Azure Active Directory** majd **Identitáskezelést**.
+1. A Azure Portal kattintson a **Azure Active Directory** , majd az **identitás-irányítás**elemre.
 
-1. A bal oldali menüben kattintson a **csomagok eléréséhez** , majd nyissa meg a hozzáférés-csomagot.
+1. A bal oldali menüben kattintson a **hozzáférési csomagok** elemre, majd nyissa meg a hozzáférési csomagot.
 
-1. Kattintson a **kérelmek**.
+1. Kattintson a **kérelmek**elemre.
 
-1. Kattintson egy adott kérés további részletek megtekintéséhez.
+1. A további részletek megtekintéséhez kattintson egy adott kérésre.
 
-## <a name="view-a-requests-delivery-errors"></a>Egy kérelem kézbesítési hibák megtekintése
+## <a name="view-a-requests-delivery-errors"></a>Kérelem kézbesítési hibáinak megtekintése
 
-**Előfeltétel szerepkör:** Felhasználói rendszergazda, a katalógus tulajdonos vagy a hozzáférés Csomagkezelő
+**Előfeltételként szükséges szerepkör:** Felhasználói rendszergazda, katalógus tulajdonosa vagy Access Package Manager
 
-1. Az Azure Portalon kattintson a **Azure Active Directory** majd **Identitáskezelést**.
+1. A Azure Portal kattintson a **Azure Active Directory** , majd az **identitás-irányítás**elemre.
 
-1. A bal oldali menüben kattintson a **csomagok eléréséhez** , majd nyissa meg a hozzáférés-csomagot.
+1. A bal oldali menüben kattintson a **hozzáférési csomagok** elemre, majd nyissa meg a hozzáférési csomagot.
 
-1. Kattintson a **kérelmek**.
+1. Kattintson a **kérelmek**elemre.
 
-1. Válassza ki a megtekinteni kívánt kérést.
+1. Válassza ki a megtekinteni kívánt kérelmet.
 
-    Ha a kérés kézbesítési hibákat, a kérelem állapotának lesz **Undelivered** és a részállapot lesz **részlegesen i**.
+    Ha a kérelem kézbesítési hibával rendelkezik, a rendszer nem **kézbesíti** a kérés állapotát, és a rendszer **részlegesen kézbesíti**az alállapotot.
 
-    Ha a kérelem részletei panelen kézbesítési hibáit, szállítási hibák számát lesz.
+    Ha kézbesítési hibák merülnek fel, a kérelem részleteit tartalmazó ablaktáblán a kézbesítési hibák száma jelenik meg.
 
-1. Kattintson a kérés kézbesítési hibák összes száma.
+1. Kattintson a számra az összes kérelem kézbesítési hibájának megjelenítéséhez.
 
 ## <a name="cancel-a-pending-request"></a>Függőben lévő kérelem megszakítása
 
-Csak lemondhatja a szolgáltatásokat, amelyek még nem lett kézbesítve függőben lévő kérelem.
+Csak olyan függőben lévő kérést lehet megszakítani, amely még nem lett leküldve.
 
-**Előfeltétel szerepkör:** Felhasználói rendszergazda, a katalógus tulajdonos vagy a hozzáférés Csomagkezelő
+**Előfeltételként szükséges szerepkör:** Felhasználói rendszergazda, katalógus tulajdonosa vagy Access Package Manager
 
-1. Az Azure Portalon kattintson a **Azure Active Directory** majd **Identitáskezelést**.
+1. A Azure Portal kattintson a **Azure Active Directory** , majd az **identitás-irányítás**elemre.
 
-1. A bal oldali menüben kattintson a **csomagok eléréséhez** , majd nyissa meg a hozzáférés-csomagot.
+1. A bal oldali menüben kattintson a **hozzáférési csomagok** elemre, majd nyissa meg a hozzáférési csomagot.
 
-1. Kattintson a **kérelmek**.
+1. Kattintson a **kérelmek**elemre.
 
-1. Kattintson a megszakítja a kérelmet
+1. Kattintson a megszakítani kívánt kérelemre
 
-1. A kérelem részleteket tartalmazó ablaktáblán kattintson a **megszakítási kérés**.
+1. A kérelem részletei ablaktáblán kattintson a **kérelem megszakítása**elemre.
 
-## <a name="copy-my-access-portal-link"></a>Saját hozzáférési portál hivatkozás másolása
+## <a name="copy-my-access-portal-link"></a>Hozzáférési portál hivatkozásának másolása
 
-A címtárban szereplő legtöbb felhasználó is jelentkezzen be a saját hozzáférés-portálra, és automatikusan a igényelhetik a hozzáférési csomagok listájának megtekintéséhez. Azonban a külső üzleti partner felhasználók számára, amely még nem szerepelnek a címtárban, szüksége lesz egy hivatkozás, amely a kérelem egy hozzáférés-csomagot, hogy el őket. Mindaddig, amíg a hozzáférés csomag külső felhasználók számára érhető el, és a egy szabályzatot a külső felhasználó, a külső felhasználó használhatja a saját hozzáférési portál hivatkozása a hozzáférés csomag kéréséhez.
+A címtár legtöbb felhasználója bejelentkezhet a saját hozzáférési portálra, és automatikusan megtekintheti az általa kérhető hozzáférési csomagok listáját. Ha azonban a külső üzleti partnerek olyan felhasználói, akik még nem szerepelnek a címtárban, el kell küldeni nekik egy hivatkozást, amely a hozzáférési csomag igénylésére használható. Ha a hozzáférési csomag engedélyezve van a külső felhasználók számára, és a külső felhasználó címtárának van szabályzata, a külső felhasználó a saját hozzáférési portál hivatkozásra kattintva kérheti le a hozzáférési csomagot.
 
-**Előfeltétel szerepkör:** Felhasználói rendszergazda, a katalógus tulajdonos vagy a hozzáférés Csomagkezelő
+**Előfeltételként szükséges szerepkör:** Felhasználói rendszergazda, katalógus tulajdonosa vagy Access Package Manager
 
-1. Az Azure Portalon kattintson a **Azure Active Directory** majd **Identitáskezelést**.
+1. A Azure Portal kattintson a **Azure Active Directory** , majd az **identitás-irányítás**elemre.
 
-1. A bal oldali menüben kattintson a **csomagok eléréséhez** , majd nyissa meg a hozzáférés-csomagot.
+1. A bal oldali menüben kattintson a **hozzáférési csomagok** elemre, majd nyissa meg a hozzáférési csomagot.
 
-1. Az Áttekintés oldalon másolja az **saját hozzáférési portál hivatkozása**.
+1. Az Áttekintés lapon másolja a **saját hozzáférési portál hivatkozást**.
 
-    ![Hozzáférés-csomag – áttekintés – saját hozzáférési portál hivatkozása](./media/entitlement-management-shared/my-access-portal-link.png)
+    ![Hozzáférési csomag áttekintése – saját hozzáférési portál hivatkozása](./media/entitlement-management-shared/my-access-portal-link.png)
 
-1. E-mailben, vagy küldje el a hivatkozást, a külső üzleti partnerek. Azok a felhasználók a hozzáférés csomag kérése a hivatkozást megoszthatja.
+1. Küldjön e-mailt, vagy küldje el a külső üzleti partnerének mutató hivatkozást. Megoszthatják a hivatkozást a felhasználókkal a hozzáférési csomag igényléséhez.
 
-## <a name="change-the-hidden-setting"></a>A rejtett beállításának módosítása
+## <a name="change-the-hidden-setting"></a>A rejtett beállítás módosítása
 
-Access-csomagokat is felderíthető alapértelmezés szerint. Ez azt jelenti, hogy ha egy szabályzat lehetővé teszi a felhasználóknak a hozzáférés csomag kérelem, automatikusan jelenik meg a listában pedig a saját hozzáférés-portálon hozzáférési csomag.
+A hozzáférési csomagok alapértelmezés szerint felderíthetők. Ez azt jelenti, hogy ha egy házirend lehetővé teszi a felhasználó számára a hozzáférési csomag kérését, automatikusan a saját hozzáférési portálon megjelenő hozzáférési csomagot fogják látni.
 
-**Előfeltétel szerepkör:** Felhasználói rendszergazda, a katalógus tulajdonos vagy a hozzáférés Csomagkezelő
+**Előfeltételként szükséges szerepkör:** Felhasználói rendszergazda, katalógus tulajdonosa vagy Access Package Manager
 
-1. Az Azure Portalon kattintson a **Azure Active Directory** majd **Identitáskezelést**.
+1. A Azure Portal kattintson a **Azure Active Directory** , majd az **identitás-irányítás**elemre.
 
-1. A bal oldali menüben kattintson a **csomagok eléréséhez** , majd nyissa meg a hozzáférés-csomagot.
+1. A bal oldali menüben kattintson a **hozzáférési csomagok** elemre, majd nyissa meg a hozzáférési csomagot.
 
-1. Az Áttekintés oldalon kattintson a **szerkesztése**.
+1. Az Áttekintés lapon kattintson a **Szerkesztés**elemre.
 
-1. Állítsa be a **rejtett** beállítás.
+1. Állítsa be a **rejtett** beállítást.
 
-    Ha beállítása **nem**, a hozzáférés csomag jelenik meg a felhasználó saját hozzáférési portál.
+    Ha a **nem**értékre van állítva, a hozzáférési csomag a felhasználó saját hozzáférési portálján jelenik meg.
 
-    Ha beállítása **Igen**, a hozzáférés-csomag nem szerepel a felhasználó saját hozzáférési portál. Egy felhasználó megtekintheti a hozzáférési csomag egyetlen módja, ha rendelkeznek közvetlen **saját hozzáférési portál hivatkozása** az access-csomaghoz.
+    Ha az **Igen**értékre van állítva, a hozzáférési csomag nem jelenik meg a felhasználó saját hozzáférési portálján. Az egyetlen mód, amikor a felhasználó megtekintheti a hozzáférési csomagot, ha a közvetlen hozzáférési portál a hozzáférési csomagra **mutató hivatkozást** tartalmaz.
 
 ## <a name="delete"></a>Törlés
 
-Egy hozzáférés-csomag csak akkor lehet törölni, ha azt nem rendelkezik aktív felhasználói hozzárendelésekkel.
+Hozzáférési csomag csak akkor törölhető, ha nem rendelkezik aktív felhasználói hozzárendelésekkel.
 
-**Előfeltétel szerepkör:** Felhasználói rendszergazda, a katalógus tulajdonos vagy a hozzáférés Csomagkezelő
+**Előfeltételként szükséges szerepkör:** Felhasználói rendszergazda, katalógus tulajdonosa vagy Access Package Manager
 
-1. Az Azure Portalon kattintson a **Azure Active Directory** majd **Identitáskezelést**.
+1. A Azure Portal kattintson a **Azure Active Directory** , majd az **identitás-irányítás**elemre.
 
-1. A bal oldali menüben kattintson a **csomagok eléréséhez** , majd nyissa meg a hozzáférés-csomagot.
+1. A bal oldali menüben kattintson a **hozzáférési csomagok** elemre, majd nyissa meg a hozzáférési csomagot.
 
-1. A bal oldali menüben kattintson a **hozzárendelések** , és távolítsa el az összes felhasználó számára hozzáférést.
+1. A bal oldali menüben kattintson a **hozzárendelések** elemre, és távolítsa el az összes felhasználó hozzáférését.
 
-1. A bal oldali menüben kattintson a **áttekintése** majd **törlése**.
+1. A bal oldali menüben kattintson az **Áttekintés** , majd a **Törlés**elemre.
 
-1. Kattintson a törlés megjelenő, **Igen**.
+1. A megjelenő törlési üzenetben kattintson az **Igen**gombra.
 
-## <a name="when-are-changes-applied"></a>Amikor alkalmazza a módosításokat
+## <a name="when-are-changes-applied"></a>A módosítások alkalmazása esetén
 
-Tagjogosultság-kezelés, az Azure ad-ben a dolgozza fel a hozzárendelési és a hozzáférési csomagok erőforrások tömeges módosítása a naponta többször. Ezért, ha a hozzárendelés, vagy módosítsa az erőforrás-szerepkörökkel, a hozzáférés csomagja, a változás az Azure AD-ben végrehajtott lehet akár 24 órát is igénybe vehet, idő plusz, ezek a módosítások, más Microsoft Online Services propagálásához szükséges vagy csatlakoztatott SaaS-alkalmazás s. Ha a módosítás néhány objektumok érinti, a módosítás valószínűleg csak percet vesz igénybe néhány a alkalmazni az Azure AD-ben utána más Azure AD-összetevők majd észlelni fogja, hogy módosítsa, és frissítse a SaaS-alkalmazásokhoz. Ha a módosítás hatással van a több ezer objektumot tartalmaz, akkor a módosítás hosszabb ideig tart. Például ha 2 alkalmazásokkal és 100 felhasználó hozzárendelését egy hozzáférési csomaggal rendelkezik, és úgy dönt, hogy a hozzáférés-csomaghoz hozzáadni egy SharePoint-hely szerepköre, valószínűleg késleltetés mindaddig, amíg az összes olyan felhasználót, hogy a SharePoint webhely szerepkör részét képezik. Az Azure AD-naplókban, az Azure ad-ben kiépítési napló és a SharePoint-webhely auditnaplók részén figyelheti.
+A jogosultságok kezelése során az Azure AD naponta többször dolgozza fel a hozzáférési csomagok hozzárendeléseinek és erőforrásainak tömeges módosításait. Így ha hozzárendelést végez, vagy megváltoztatja a hozzáférési csomag erőforrás-szerepköreit, akár 24 órát is igénybe vehet az Azure AD-ben, valamint azt, hogy mennyi időt vesz igénybe a módosítások más Microsoft Online szolgáltatásokba vagy csatlakoztatott SaaS-alkalmazásba való propagálása. s. Ha a változás csupán néhány objektumot érint, a változás valószínűleg csak néhány percet vesz igénybe az Azure AD-ben, amely után a többi Azure AD-összetevő ezt követően észleli az SaaS-alkalmazások módosítását és frissítését. Ha a változás több ezer objektumot érint, akkor a módosítás hosszabb ideig tart. Ha például egy 2 alkalmazásból és egy 100 felhasználói hozzárendelésből álló hozzáférési csomaggal rendelkezik, és úgy dönt, hogy egy SharePoint-webhely szerepkört ad hozzá a hozzáférési csomaghoz, akkor előfordulhat, hogy az összes felhasználó a SharePoint-webhely szerepkörbe való belefoglalása után késésben van. Nyomon követheti az előrehaladást az Azure AD-naplóban, az Azure AD-kiépítési naplóban és a SharePoint-webhely naplófájljaiban.
 
 ## <a name="next-steps"></a>További lépések
 
-- [Adjon hozzá egy katalógus tulajdonosa vagy egy hozzáférési Csomagkezelő](entitlement-management-delegate.md#add-a-catalog-owner-or-an-access-package-manager)
-- [Folyamat és az e-mailes értesítések kérése](entitlement-management-process.md)
+- [Katalógus tulajdonosának vagy egy Access Package Managernek a hozzáadása](entitlement-management-delegate.md#add-a-catalog-owner-or-an-access-package-manager)
+- [Kérelmek feldolgozása és e-mail-értesítések](entitlement-management-process.md)

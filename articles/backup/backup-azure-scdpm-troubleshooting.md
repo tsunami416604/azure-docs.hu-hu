@@ -1,92 +1,91 @@
 ---
-title: A System Center Data Protection Manager az Azure Backup hibaelhárítása
-description: A System Center Data Protection Manager hibák elhárítása.
-services: backup
+title: A System Center Data Protection Manager és a Azure Backup hibáinak megoldása
+description: A System Center Data Protection Manager hibáinak elhárítása.
 author: kasinh
 manager: vvithal
 ms.service: backup
 ms.topic: conceptual
 ms.date: 01/30/2019
 ms.author: kasinh
-ms.openlocfilehash: 4108616e3ae41e2c88b74bb08d5f846c0035101f
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 5e4aa113eda6ea53c520e6de52e4fa17d75f4095
+ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60236198"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68465376"
 ---
 # <a name="troubleshoot-system-center-data-protection-manager"></a>A System Center Data Protection Manager hibaelhárítása
 
-Ez a cikk ismerteti a Data Protection Manager használata során előforduló problémák megoldásait.
+Ez a cikk a Data Protection Manager használata során felmerülő problémák megoldásait ismerteti.
 
-A legújabb kibocsátási megjegyzések a System Center Data Protection Manager tekintse meg a [a System Center dokumentációja](https://docs.microsoft.com/system-center/dpm/dpm-release-notes?view=sc-dpm-2016). A Data Protection Manager a támogatással kapcsolatos többet is megtudhat [Ez a mátrix](https://docs.microsoft.com/system-center/dpm/dpm-protection-matrix?view=sc-dpm-2016).
+A System Center Data Protection Manager legújabb kibocsátási megjegyzései a [System Center dokumentációjában](https://docs.microsoft.com/system-center/dpm/dpm-release-notes?view=sc-dpm-2016)olvashatók. További információ a Data Protection Manager támogatásáról [ebben](https://docs.microsoft.com/system-center/dpm/dpm-protection-matrix?view=sc-dpm-2016)a mátrixban.
 
 
-## <a name="error-replica-is-inconsistent"></a>Hiba: A replika inkonzisztens
+## <a name="error-replica-is-inconsistent"></a>Hiba: Inkonzisztens replika
 
-A replika inkonzisztens lehet a következő okok miatt:
-- A replika-létrehozási feladata meghiúsul.
-- A módosítási napló probléma adódik.
-- A kötet oldalszintű szűrő bitkép hibákat tartalmaz.
-- A forrásgép váratlanul leáll.
-- A szinkronizálási napló túlcsordulás.
-- Valóban inkonzisztens replika esetén.
-
-A probléma megoldásához hajtsa végre a következő műveleteket:
-- Az inkonzisztens állapotát eltávolíthatja, manuálisan futtassa a konzisztencia-ellenőrzés vagy napi konzisztencia-ellenőrzés ütemezése.
-- Győződjön meg arról, hogy használ-e a Microsoft Azure Backup Server és a Data Protection Manager legújabb verziójára.
-- Ügyeljen arra, hogy a **automatikus konzisztencia** beállítás engedélyezve van.
-- Próbálja meg újraindítani a szolgáltatások, a parancssor használatával. Használja a `net stop dpmra` parancsot, majd `net start dpmra`.
-- Győződjön meg arról, hogy teljesíti-e még a hálózati kapcsolatot és a sávszélesség-követelmények.
-- Ellenőrizze, hogy ha a forrásgép leállt váratlanul.
-- Győződjön meg arról, hogy a lemez állapota megfelelő, és hogy van-e elegendő szabad terület a replikát.
-- Győződjön meg arról, hogy nincsenek-e ismétlődő biztonsági mentési feladatok, amelyek egy időben futnak.
-
-## <a name="error-online-recovery-point-creation-failed"></a>Hiba: Online helyreállítási pont létrehozása nem sikerült
+A replika a következő okok miatt inkonzisztens lehet:
+- A replika-létrehozási feladatok meghiúsulnak.
+- Problémák léptek fel a módosítási naplóban.
+- A kötet szintű szűrő bitképe hibákat tartalmaz.
+- A forrásoldali gép váratlanul leáll.
+- A szinkronizálási napló túlcsordul.
+- A replika valóban inkonzisztens.
 
 A probléma megoldásához hajtsa végre a következő műveleteket:
-- Győződjön meg arról, hogy használ-e az Azure Backup szolgáltatás ügynökének legújabb verzióját.
-- Próbálja meg manuálisan az a védelem feladatterületen található helyreállítási pont létrehozása.
-- Győződjön meg arról, hogy az adatforrás konzisztencia-ellenőrzést futtatja.
-- Győződjön meg arról, hogy teljesíti-e még a hálózati kapcsolatot és a sávszélesség-követelmények.
-- Inkonzisztens állapotban van, a replika adatait, ha az adatforrás lemez helyreállítási pont létrehozása.
-- Győződjön meg arról, hogy a replika jelen, és nem hiányzik-e.
-- Győződjön meg arról, hogy rendelkezik-e elegendő hely a frissítés feladatütemezési száma (USN) naplót szeretne létrehozni a replikát.
+- A inkonzisztens állapot eltávolításához futtassa manuálisan a konzisztencia-ellenőrzést, vagy ütemezzen egy napi konzisztencia-ellenőrzést.
+- Győződjön meg arról, hogy a Microsoft Azure Backup Server és Data Protection Manager legújabb verzióját használja.
+- Győződjön meg arról, hogy az **automatikus konzisztencia** -beállítás engedélyezve van.
+- Próbálja meg újraindítani a szolgáltatásokat a parancssorból. Használja a `net stop dpmra` parancsot, `net start dpmra`majd a parancsot.
+- Győződjön meg arról, hogy a hálózati kapcsolatra és a sávszélességre vonatkozó követelmények teljesítése folyamatban van.
+- Ellenőrizze, hogy a forrásszámítógép leállítása váratlanul megszakadt-e.
+- Győződjön meg arról, hogy a lemez kifogástalan állapotban van, és hogy van-e elegendő hely a replikához.
+- Győződjön meg arról, hogy nincsenek párhuzamosan futó biztonsági mentési feladatok.
 
-## <a name="error-unable-to-configure-protection"></a>Hiba: Nem sikerült beállítani a védelmet
-
-Ez a hiba akkor fordul elő, ha a Data Protection Manager-kiszolgáló nem tud csatlakozni a védett kiszolgálón. 
+## <a name="error-online-recovery-point-creation-failed"></a>Hiba: Az online helyreállítási pont létrehozása sikertelen volt.
 
 A probléma megoldásához hajtsa végre a következő műveleteket:
-- Győződjön meg arról, hogy használ-e az Azure Backup szolgáltatás ügynökének legújabb verzióját.
-- Győződjön meg arról, hogy nincs-e kapcsolat (hálózati/tűzfal vagy proxy) a Data Protection Manager-kiszolgáló és a védett kiszolgáló között.
-- Ha egy SQL-kiszolgáló védi, győződjön meg arról, hogy a **bejelentkezési tulajdonságok** > **NT AUTHORITY\SYSTEM** tulajdonság mutat be a **SysAdmin (rendszergazda)** beállítás engedélyezve van.
+- Győződjön meg arról, hogy a Azure Backup ügynök legújabb verzióját használja.
+- Próbáljon meg manuálisan létrehozni egy helyreállítási pontot a védelmi feladat területén.
+- Győződjön meg arról, hogy az adatforráson konzisztencia-ellenőrzés fut.
+- Győződjön meg arról, hogy a hálózati kapcsolatra és a sávszélességre vonatkozó követelmények teljesítése folyamatban van.
+- Ha a replika-adatmennyiség inkonzisztens állapotban van, hozzon létre egy lemez-helyreállítási pontot ebből az adatforrásból.
+- Győződjön meg arról, hogy a replika létezik, és nem hiányzik.
+- Győződjön meg arról, hogy a replika elegendő lemezterülettel rendelkezik a frissítési sorszám (USN) napló létrehozásához.
 
-## <a name="error-server-not-registered-as-specified-in-vault-credential-file"></a>Hiba: A kiszolgáló nincs regisztrálva a megadott módon a tároló hitelesítőadat-fájlja
+## <a name="error-unable-to-configure-protection"></a>Hiba: Nem sikerült beállítani a védelmet.
 
-Ez a hiba akkor fordul elő, a Data Protection Manager vagy az Azure Backup server-adatok helyreállítási folyamat során. A Recovery Services-tároló a Data Protection Manager vagy az Azure Backup-kiszolgáló nem tartozik a tároló hitelesítőadat-fájlja a helyreállítási folyamat során használt.
+Ez a hiba akkor fordul elő, ha a Data Protection Manager-kiszolgáló nem tud kapcsolatba lépni a védett kiszolgálóval. 
+
+A probléma megoldásához hajtsa végre a következő műveleteket:
+- Győződjön meg arról, hogy a Azure Backup ügynök legújabb verzióját használja.
+- Ellenőrizze, hogy van-e kapcsolat (hálózati/tűzfal/proxy) a Data Protection Manager-kiszolgáló és a védett kiszolgáló között.
+- Ha az SQL Servert védi, győződjön meg arról, hogy a **bejelentkezési tulajdonságok** > **NT AUTHORITY\SYSTEM** tulajdonság a **sysadmin (rendszergazda** ) beállítást engedélyezi.
+
+## <a name="error-server-not-registered-as-specified-in-vault-credential-file"></a>Hiba: A kiszolgáló nincs regisztrálva a tár hitelesítőadat-fájljában megadott módon
+
+Ez a hiba a Data Protection Manager/Azure Backup Server-adatbázis helyreállítási folyamata során fordul elő. A helyreállítási folyamatban használt tár hitelesítőadat-fájl nem tartozik a Data Protection Manager/Azure Backup kiszolgáló Recovery Services-tárolójához.
 
 A probléma megoldásához hajtsa végre az alábbi lépéseket:
-1. A Recovery Services-tároló, amely a Data Protection Manager vagy az Azure Backup-kiszolgáló regisztrálva van, töltse le a tároló hitelesítőadat-fájlja.
-2. Próbálja meg regisztrálni a kiszolgálót a tárolóban a legutóbb letöltött tárolói hitelesítő adatok fájlját használatával.
+1. Töltse le a tároló hitelesítőadat-fájlját a Recovery Services tárolóból, amelyhez a Data Protection Manager/Azure Backup-kiszolgáló regisztrálva van.
+2. Próbálja meg regisztrálni a kiszolgálót a tárolóhoz a legutóbb letöltött tár hitelesítőadat-fájl használatával.
 
-## <a name="error-no-recoverable-data-or-selected-server-not-a-data-protection-manager-server"></a>Hiba: Nincsenek helyreállítható adatok vagy a kiválasztott kiszolgáló nem a Data Protection Manager-kiszolgáló
+## <a name="error-no-recoverable-data-or-selected-server-not-a-data-protection-manager-server"></a>Hiba: A helyreállítható vagy a kijelölt kiszolgáló nem Data Protection Manager kiszolgáló
 
-Ez a hiba akkor fordul elő, a következő okok miatt:
-- Egyéb Data Protection Manager vagy az Azure Backup kiszolgálók regisztrálva vannak a Recovery Services-tároló.
-- A kiszolgálók még még nem töltött fel a metaadatokat.
-- A kiválasztott kiszolgáló nem a Data Protection Manager vagy az Azure Backup server.
+Ez a hiba a következő okok miatt fordul elő:
+- Nincs más Data Protection Manager/Azure Backup-kiszolgáló regisztrálva a Recovery Services-tárolóban.
+- A kiszolgálók még nem töltötték fel a metaadatokat.
+- A kiválasztott kiszolgáló nem Data Protection Manager/Azure Backup-kiszolgáló.
 
-Ha a többi Data Protection Manager vagy az Azure Backup-kiszolgáló regisztrálva van a Recovery Services-tároló, hajtsa végre ezeket a lépéseket a probléma megoldásához:
-1. Győződjön meg arról, hogy a legújabb Azure Backup-ügynök telepítve van-e.
-2. Miután meggyőződött arról, hogy telepítve van-e a legújabb ügynököt, várjon egy nap, a helyreállítási folyamat megkezdése előtt. A biztonsági mentési feladat a metaadatokat az összes védett biztonsági mentés a felhőbe tölt fel. A biztonsági mentési adatok helyreállítási majd érhető el.
+Ha más Data Protection Manager/Azure Backup-kiszolgáló regisztrálva van a Recovery Services-tárolóban, hajtsa végre a következő lépéseket a probléma megoldásához:
+1. Győződjön meg arról, hogy a legújabb Azure Backup ügynök telepítve van.
+2. Miután megtörtént a legújabb ügynök telepítésének ellenőrzése, várjon egy nappal a helyreállítási folyamat elindítása előtt. Az éjszakai biztonsági mentési feladatok feltöltik az összes védett biztonsági mentés metaadatait a felhőbe. Ezután a biztonsági mentési állapotok elérhetők a helyreállításhoz.
 
-## <a name="error-provided-encryption-passphrase-doesnt-match-passphrase-for-server"></a>Hiba: A megadott titkosítási jelszó nem felel meg a kiszolgáló jelszava
+## <a name="error-provided-encryption-passphrase-doesnt-match-passphrase-for-server"></a>Hiba: A megadott titkosítási jelszó nem egyezik meg a kiszolgáló jelszavával
 
-Ez a hiba a folyamat során fordul elő, ha a Data Protection Manager vagy az Azure Backup server adatainak helyreállítása. A helyreállítási folyamat során használt titkosítási jelszó nem felel meg a kiszolgáló titkosítási jelszava. Ennek eredményeképpen az ügynök nem tudja visszafejteni az adatokat, és a helyreállítás sikertelen lesz.
+Ez a hiba akkor fordul elő, ha a titkosítási folyamat során Data Protection Manager/Azure Backup Server-adatbázis helyreállítását hajtja végre. A helyreállítási folyamatban használt titkosítási jelszó nem egyezik a kiszolgáló titkosítási jelszavával. Ennek eredményeképpen az ügynök nem tudja visszafejteni az adattitkosítást, és a helyreállítás meghiúsul.
 
 > [!IMPORTANT]
-> Ha elfelejti a titkosítási jelszót, nincsenek más módszer az adatok helyreállításához. Az egyetlen lehetőség, hogy újragenerálja a hozzáférési kódot. Az új jelszót használja a jövőbeli biztonsági mentési adatok titkosításához.
+> Ha elfelejti vagy elveszíti a titkosítási jelszót, az adat helyreállítására nincs más módszer. Az egyetlen lehetőség a jelszó újbóli előállítása. Az új jelszó használatával titkosíthatja a jövőbeli biztonsági másolati adataikat.
 >
-> Adatok végzi a helyreállítást, mindig adja meg a Data Protection Manager vagy az Azure Backup server társított ugyanolyan titkosítási jelszava. 
+> Amikor helyreállítja az adatgyűjtést, mindig ugyanazt a titkosítási jelszót adja meg, amely a Data Protection Manager/Azure Backup kiszolgálóhoz van társítva. 
 >

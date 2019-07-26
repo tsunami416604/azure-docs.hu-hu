@@ -272,6 +272,8 @@
         - name: Szerepköralapú hozzáférés-vezérlés
           displayName: rbac
           href: role-based-access-control.md
+        - href: cosmos-db-advanced-threat-protection.md
+          name: Speciális fenyegetésvédelem
         - name: Biztonsági attribútumok
           href: cosmos-db-security-attributes.md
     - name: Alkalmasság vállalati használatra
