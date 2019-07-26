@@ -1,24 +1,24 @@
 ---
-title: Kompromisszumot kínál a különböző konzisztenciaszintet az Azure Cosmos DB rendelkezésre állás és teljesítmény
-description: Az Azure Cosmos DB különböző konzisztenciaszintet rendelkezésre állás és teljesítmény kompromisszumot.
+title: Rendelkezésre állási és teljesítménybeli kompromisszumok a Azure Cosmos DB különböző konzisztenciáji szintjeihez
+description: Rendelkezésre állási és teljesítménybeli kompromisszumok a Azure Cosmos DB különböző konzisztenciáji szintjeihez.
 author: rimman
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/21/2019
+ms.date: 07/23/2019
 ms.author: rimman
 ms.reviewer: sngun
-ms.openlocfilehash: 09777a9980e4576a5d00123516e33696e845dcac
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2d80e291b3c054fec92b169c8a216a7189e24b79
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65990229"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68384196"
 ---
 # <a name="consistency-availability-and-performance-tradeoffs"></a>Kompromisszumok a konzisztencia, a rendelkezésre állás és a teljesítmény között 
 
-Elosztott adatbázisok magas rendelkezésre állás, alacsony késleltetésű, illetve mindkettőt replikációs támaszkodó kell kompromisszumokat kötni. A kompromisszumot kínál a olvasás következetes és rendelkezésre állás, a késés és az átviteli sebesség között kell lennie.
+A magas rendelkezésre állást, az alacsony késést vagy mindkettőt a replikálásra támaszkodó elosztott adatbázisoknak kompromisszumokat kell tenniük. A kompromisszumok az olvasási konzisztencia és a rendelkezésre állás, a késés és az átviteli sebesség között vannak.
 
-Az Azure Cosmos DB választási lehetőségek egy átfogó, az adatkonzisztencia közelíti meg. Ez a megközelítés magában foglalja a több lehetőség a két szélsőséges erős és végleges konzisztencia. A konzisztencia spektrum öt jól definiált modellek közül választhat. A leggyengébb, felé a modellek a következők:
+A Azure Cosmos DB az adatkonzisztencia a választási lehetőségek spektrumát közelíti meg. Ez a megközelítés több lehetőséget is kínál, mint az erős és a végleges konzisztencia két véglete. Öt jól definiált modell közül választhat a konzisztencia-spektrumon. A modellek a legerősebbtól a leggyengébbig a következők:
 
 - *Erős*
 - *Korlátozott frissesség*
@@ -26,47 +26,47 @@ Az Azure Cosmos DB választási lehetőségek egy átfogó, az adatkonzisztencia
 - *Konzisztens előtag*
 - *Végleges*
 
-Minden modell biztosítja a rendelkezésre állás és teljesítmény kompromisszumot kínál, és átfogó SLA-k használatával.
+Az egyes modellek rendelkezésre állási és teljesítménybeli kompromisszumokat biztosítanak, és átfogó SLA-kat támogatnak.
 
-## <a name="consistency-levels-and-latency"></a>Konzisztenciaszintek és késés
+## <a name="consistency-levels-and-latency"></a>Konzisztencia-szintek és késés
 
-Az olvasási késés az összes konzisztenciaszintek mindig garantáltan 99 százalékon legfeljebb 10 ezredmásodperc. Az olvasási késés alapját a szolgáltatói szerződés. Az átlagos olvasási késés, az 50. percentilis, a rendszer általában 2 ezredmásodperc vagy kisebb. Az Azure Cosmos-fiókok, amelyek span számos régióban, és megtörténik az erős konzisztencia a garancia kivételt jelentenek.
+Az összes konzisztencia-érték olvasási késése mindig garantáltan 10 ezredmásodpercnél kisebb a esetek 99% percentilis esetében. Ezt az olvasási késést az SLA támogatja. Az átlagos olvasási késés az 50%-os százalékos értéknél általában 2 ezredmásodperc vagy kevesebb. A számos régióra kiterjedő Azure Cosmos-fiókok, amelyek erős konzisztencia-konfigurációval rendelkeznek, kivételt jelentenek ez a garancia.
 
-A írási késése, az összes konzisztenciaszintek mindig garantáltan 99 százalékon legfeljebb 10 ezredmásodperc. Az SLA biztonsági Ez írási késése. Az átlagos írási késése, az 50. percentilis, akkor általában 5 ezredmásodperc vagy kisebb.
+Az összes konzisztencia-érték írási késése mindig garantáltan 10 ezredmásodpercnél kisebb a esetek 99% percentilis esetében. Ezt az írási késést az SLA támogatja. Az átlagos írási késleltetés 50%-os százalékban általában 5 ezredmásodperc vagy kevesebb.
 
-Azure Cosmos-több régióban az erős konzisztencia konfigurált fiókok esetében az írási késése garantáltan legalább két alkalommal üzenetváltási időt (RTT) a két legtávolabbi régiók, valamint 10 ezredmásodperc 99 százalékon között.
+Az olyan Azure Cosmos-fiókok esetében, amelyeknek több régióval való erős konzisztencia van beállítva, az írási késés garantált, hogy a két legtávolabbi régió bármelyike, illetve 10 ezredmásodperc alatt a esetek 99% percentilis esetében kevesebb, mint kétszerese (RTT).
 
-A pontos Körbejárási késés a jelzőfény sebesség távolság függvénye és az Azure hálózati topológia. Az Azure-hálózatok nem biztosít bármely késés SLA-k számára a két Azure-régiók közötti Körbejárási. Az Azure Cosmos-fiókja replikáció késése jelennek meg az Azure Portalon. Az Azure Portalon (Ugrás a metrikák paneljén) használatával figyelheti a replikáció késése, amely az Azure Cosmos-fiókhoz társított különböző régiók között.
+A pontos RTT késés a fénysebességi távolság és az Azure hálózati topológia függvénye. Az Azure Networking nem biztosít késési SLA-kat a két Azure-régió közötti RTT. Az Azure Cosmos-fiók esetében a replikációs késések megjelennek a Azure Portal. A Azure Portal (ugrás a metrikák panelre) segítségével figyelheti az Azure Cosmos-fiókjához társított különböző régiók közötti replikációs késéseket.
 
-## <a name="consistency-levels-and-throughput"></a>Konzisztenciaszintek és az átviteli sebesség
+## <a name="consistency-levels-and-throughput"></a>Konzisztencia-szintek és átviteli sebesség
 
-- Kérelemegység azonos számú a munkamenet, konzisztens előtag és végleges konzisztencia szintek adja meg körülbelül kétszer az olvasás átviteli sebességét az erős és a korlátozott frissesség képest.
+- Azonos számú kérelem esetén a munkamenet, a konzisztens előtag és a végleges konzisztencia-szintek az olvasási sebességnek az erős és a határos elavulás összevetésével való összevetéséhez képest két alkalommal is elérhetők.
 
-- Egy adott típusú írási művelet, például az insert, replace, upsert és törlése a lemezírás teljesítménye, a kérelemegységek megegyezik az összes konzisztenciaszintek.
+- Egy adott írási művelet (például INSERT, replace, upsert és DELETE) esetében az írási sebesség a kérelmek egységeinek esetében azonos minden konzisztencia-szinten.
 
-## <a id="rto"></a>Konzisztencia-szintek és az adatok tartóssága
+## <a id="rto"></a>A konzisztencia szintjei és az adattartósság
 
-Egy globálisan elosztott adatbázis-környezeten belül nincs közvetlen kapcsolat folytonosságát egy régióra kiterjedő szolgáltatáskimaradás konzisztencia szint és az adatok tartósságának között. Az üzletmenet folytonosságát biztosító terve kidolgozásakor kell tudni, mielőtt az alkalmazás a zavaró eseményeket követő teljes helyreállításának maximális elfogadható idő. Az alkalmazás teljes helyreállításához szükséges idő az úgynevezett **helyreállítási időre vonatkozó célkitűzés** (**RTO**). Emellett ismernie kell a leghosszabb az alkalmazás működését, Adatfrissítés elvesztése zavaró eseményeket követő helyreállítása során. Az adott időszakban, előfordulhat, hogy elfogadható frissítések más néven **helyreállításipont-célkitűzés** (**RPO**).
+Egy globálisan elosztott adatbázis-környezeten belül közvetlen kapcsolat áll fenn a konzisztencia szintje és az adattartósság között egy adott régióra kiterjedő leállás esetén. Az üzletmenet-folytonossági terv kidolgozása során meg kell ismernie a maximális elfogadható időtartamot, mielőtt az alkalmazás teljesen helyreállít egy zavaró esemény után. Az alkalmazás teljes helyreállításához szükséges idő a **helyreállítási időre vonatkozó célkitűzés** (**RTO**). Azt is meg kell ismernie, hogy a legutóbbi adatfrissítések maximális időtartama alatt az alkalmazás elveszítheti a zavaró események utáni helyreállítást. A frissítések elvesztésének időpontját a **helyreállítási pont célkitűzésének** (**RPO**) nevezzük.
 
-Az alábbi táblázat a konzisztencia modellek és az adatok tartóssága régió széles körű leállás zajok mellett közötti kapcsolat határozza meg. Fontos megjegyezni, hogy az elosztott rendszerekben, még akkor is, erős konzisztencia, nem lehet nulla miatt a CAP-tétel RTO és RPO elosztott adatbázist. Miért kapcsolatos további információkért lásd: [Azure Cosmos DB-ben konzisztenciaszintek](consistency-levels.md).
+Az alábbi táblázat a konzisztencia-modell és az adattartósság közötti kapcsolatot határozza meg a régiók széles kimaradásának jelenlétében. Fontos megjegyezni, hogy egy elosztott rendszeren, még erős konzisztencia esetén is előfordulhat, hogy a CAP-tétel miatt nem lehet RPO és nulla RTO rendelkező elosztott adatbázis. Ha többet szeretne megtudni arról, hogy miért, tekintse meg [a Azure Cosmos db egységességi szintjei](consistency-levels.md)című témakört.
 
-|**Régió(k)**|**Replikációs mód**|**Konzisztenciaszint**|**RPO**|**RTO**|
+|**Régió (k)**|**Replikálási mód**|**Konzisztenciaszint**|**RPO**|**RTO**|
 |---------|---------|---------|---------|---------|
-|1|Egy vagy több főkiszolgálós|Bármely Konzisztenciaszint|< 240 perc|< 1 hét|
-|>1|Single Master|Session, Consistent Prefix, Eventual|< 15 perc|< 15 perc|
-|>1|Single Master|Kötött elavulás|*K* & *T*|< 15 perc|
-|>1|Single Master|Erős|0|< 15 perc|
-|>1|Multi-Master|Session, Consistent Prefix, Eventual|< 15 perc|0|
+|1|Egy vagy több főkiszolgáló|Bármely konzisztencia-szint|< 240 perc|< 1 hét|
+|>1|Egyetlen főkiszolgáló|Munkamenet, konzisztens előtag, végleges|< 15 perc|< 15 perc|
+|>1|Egyetlen főkiszolgáló|Kötött elavulás|*K* & *T*|< 15 perc|
+|>1|Egyetlen főkiszolgáló|Erős|0|< 15 perc|
+|>1|Multi-Master|Munkamenet, konzisztens előtag, végleges|< 15 perc|0|
 |>1|Multi-Master|Kötött elavulás|*K* & *T*|0|
 
-*K* száma = *"K"* elem (azaz a frissítések) verzióit.
+*K* = egy elem *"k"* verziója (azaz frissítései) száma.
 
-*T* időintervallum = *"T"* a legutóbbi frissítés óta.
+*T* = a legutóbbi frissítés óta eltelt idő *"t"* .
 
 ## <a name="next-steps"></a>További lépések
 
-További információ a globális terjesztés, és kompromisszumot kínál a konzisztencia általános elosztott rendszerek. Lásd az alábbi cikkeket:
+Tudjon meg többet az elosztott rendszerek globális eloszlásáról és az általános konzisztencia-kompromisszumokról. Lásd az alábbi cikkeket:
 
-- [Konzisztencia kompromisszumot kínál a modern elosztott adatbázis-rendszerek terve](https://www.computer.org/csdl/magazine/co/2012/02/mco2012020037/13rRUxjyX7k)
+- [Konzisztencia-kompromisszumok a modern elosztott adatbázis-rendszerek kialakításában](https://www.computer.org/csdl/magazine/co/2012/02/mco2012020037/13rRUxjyX7k)
 - [Magas rendelkezésre állás](high-availability.md)
 - [Azure Cosmos DB SLA](https://azure.microsoft.com/support/legal/sla/cosmos-db/v1_2/)

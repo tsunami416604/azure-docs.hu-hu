@@ -1,6 +1,6 @@
 ---
-title: PaaS web- és mobilalkalmazások az Azure App Service használatával védelme |} A Microsoft Docs
-description: 'Ismerje meg az Azure App Service-biztonság ajánlott eljárások a PaaS webes és mobilalkalmazások védelme. '
+title: A Pásti web-és Mobile-alkalmazások biztonságossá tétele a Azure App Service használatával | Microsoft Docs
+description: 'Ismerkedjen meg Azure App Service biztonsági bevált gyakorlattal a Pásti web-és Mobile-alkalmazások biztonságossá tételéhez. '
 services: security
 documentationcenter: na
 author: techlake
@@ -12,35 +12,38 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/28/2018
+ms.date: 07/18/2019
 ms.author: terrylan
-ms.openlocfilehash: 6e5034d0ff8f14a9fc381f6fd1a214a91ad4d1ed
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 9e81a7daad8ae565d177fc06970f06fe2c6b3829
+ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60444401"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68335772"
 ---
-# <a name="best-practices-for-securing-paas-web-and-mobile-applications-using-azure-app-service"></a>PaaS web- és mobilalkalmazások az Azure App Service használatával biztonságossá tételének ajánlott eljárásait
+# <a name="best-practices-for-securing-paas-web-and-mobile-applications-using-azure-app-service"></a>Ajánlott eljárások a Pásti webes és mobil alkalmazások biztonságossá tételéhez Azure App Service használatával
 
-Ebben a cikkben bemutatjuk, gyűjteménye [Azure App Service](../app-service/overview.md) kapcsolódó ajánlott biztonsági eljárások a PaaS webes és mobilalkalmazások védelme. Ajánlott eljárások az funkciót az Azure-ral és a az ügyfelek, például a saját maga származik.
+Ebben a cikkben [Azure app Service](../app-service/overview.md) biztonsági bevált eljárások gyűjteményét tárgyaljuk a Pásti web-és Mobile-alkalmazások biztonságossá tételéhez. Ezek az ajánlott eljárások az Azure tapasztalataiból és az ügyfelek, például saját tapasztalataiból származnak.
 
-Az Azure App Service-platform--szolgáltatásként (PaaS) ajánlat, amely lehetővé teszi webes és mobilalkalmazásokat bármilyen platformra vagy eszközre létrehozását, és bárhol kapcsolódhatnak az adatokhoz, a felhőben vagy helyszíni. App Service-ben a webes és mobil funkciókkal, amelyeket a rendszer korábban külön-külön tartalmazott Azure-webhelyek és Azure Mobile Services tartalmazza. Ezenkívül új lehetőségek is elérhetők az üzleti folyamatok automatizálásához és felhőalapú API-k üzemeltetéséhez. Egyetlen integrált szolgáltatásként az App Service lehetőségek gazdag tárházaként segíti a lehetőségeket a webes, mobil és integrációs feladatokhoz.
+A Azure App Service egy szolgáltatásként nyújtott platform (Pásti), amely lehetővé teszi webes és mobil alkalmazások létrehozását bármilyen platformra vagy eszközre, és bárhol, a felhőben vagy a helyszínen csatlakozik az adatforrásokhoz. A App Service tartalmazza azokat a webes és mobil képességeket, amelyeket korábban az Azure websites és az Azure Mobile Services külön szállítottak el. Ezenkívül új lehetőségek is elérhetők az üzleti folyamatok automatizálásához és felhőalapú API-k üzemeltetéséhez. Egyetlen integrált szolgáltatásként a App Service számos lehetőséget kínál webes, mobil-és integrációs forgatókönyvek kialakítására.
 
-## <a name="authenticate-through-azure-active-directory-ad"></a>Hitelesítés az Azure Active Directory (AD) révén
-App Service-ben az identitásszolgáltató az OAuth 2.0 szolgáltatást biztosít. OAuth 2.0 ügyfél fejlesztői egyszerűség művelet során gondoskodik a webalkalmazások, asztali alkalmazások és mobiltelefonon adott engedélyezési folyamatok tárgyalja. Az Azure AD OAuth 2.0 használja ahhoz, hogy engedélyezze a hozzáférést mobil- és webalkalmazásokat. További tudnivalókért lásd: [hitelesítése és engedélyezése Azure App Service-ben](../app-service/overview-authentication-authorization.md).
+## <a name="authenticate-through-azure-active-directory-ad"></a>Hitelesítés Azure Active Directory (AD) használatával
+A App Service OAuth 2,0 szolgáltatást biztosít az identitás-szolgáltató számára. A OAuth 2,0 a webalkalmazások, asztali alkalmazások és mobiltelefonok speciális engedélyezési folyamatainak biztosítása mellett az ügyfelek fejlesztői egyszerűségére koncentrál. Az Azure AD OAuth 2,0-et használ a mobil-és webalkalmazásokhoz való hozzáférés engedélyezéséhez. További információ: [hitelesítés és engedélyezés Azure app Serviceban](../app-service/overview-authentication-authorization.md).
 
-## <a name="restrict-access-based-on-role"></a>A szerepkör alapú hozzáférés korlátozása 
-Hozzáférés korlátozása elengedhetetlen, szervezetek által adatok elérésére vonatkozó biztonsági szabályzatok kikényszerítéséhez. Szerepköralapú hozzáférés-vezérlés (RBAC) segítségével engedélyek hozzárendelése a felhasználók, csoportok és alkalmazások egy bizonyos hatókörben kell tudnia és a legalacsonyabb jogosultsági biztonsági alapelveket például. Felhasználók alkalmazásokhoz való hozzáférésének engedélyezésére vonatkozó további tudnivalókért lásd: [Mi a szerepköralapú hozzáférés-vezérlés](../role-based-access-control/overview.md).
+## <a name="restrict-access-based-on-role"></a>Hozzáférés korlátozása a szerepkör alapján
+A hozzáférés korlátozása elengedhetetlen azon szervezetek számára, akik biztonsági házirendeket kívánnak kikényszeríteni az adateléréshez. A szerepköralapú hozzáférés-vezérlés (RBAC) segítségével engedélyeket rendelhet hozzá a felhasználókhoz, csoportokhoz és alkalmazásokhoz egy bizonyos hatókörben, például a szükséges ismeretet és a legalacsonyabb szintű biztonsági alapelveket. Ha többet szeretne megtudni a felhasználók alkalmazásokhoz való hozzáférésének biztosításáról, tekintse meg a [Mi a szerepköralapú hozzáférés-vezérlés](../role-based-access-control/overview.md)című témakört.
 
-## <a name="protect-your-keys"></a>Ön kulcsainak védelmét
-Nem számít, hogy milyen jó van a biztonság az előfizetési kulcsok elvesztése esetén. Az Azure Key Vault segít a felhőalapú alkalmazások és szolgáltatások által használt titkosítási kulcsok és titkos kulcsok védelmében. A Key Vault titkosíthatók az kulcsok és titkos kulcsokat (például hitelesítési kulcsokat, a tárfiók kulcsait, az adattitkosítási kulcsokat. PFX-fájlok és jelszavak) hardveres biztonsági modulokban (HSM) által védett kulcsok használatával. A még nagyobb biztonság érdekében lehetőség van arra is, hogy kulcsokat importáljon és generáljon a hardveres biztonsági modulokban. A Key Vault használatával kezelheti a TLS-tanúsítványok az automatikus megújítás. Lásd: [Mi az Azure Key Vault](../key-vault/key-vault-whatis.md) további. 
+## <a name="protect-your-keys"></a>A kulcsok megóvása
+Nem számít, hogy mennyire jó a biztonsága, ha elveszíti az előfizetési kulcsokat. Az Azure Key Vault segít a felhőalapú alkalmazások és szolgáltatások által használt titkosítási kulcsok és titkos kulcsok védelmében. A Key Vault segítségével titkosíthatja a kulcsokat és a titkos kulcsokat (például a hitelesítési kulcsokat, a Storage-fiók kulcsait, az adattitkosítási kulcsokat). PFX-fájlok és jelszavak) a hardveres biztonsági modulok (HSM-EK) által védett kulcsok használatával. A még nagyobb biztonság érdekében lehetőség van arra is, hogy kulcsokat importáljon és generáljon a hardveres biztonsági modulokban. A TLS-tanúsítványok automatikus megújítással történő kezeléséhez Key Vault is használhatja. További információ: [Mi a Azure Key Vault](../key-vault/key-vault-whatis.md) .
 
-## <a name="restrict-incoming-source-ip-addresses"></a>Bejövő forrás IP-címek korlátozása
-[App Service Environment-környezetek](../app-service/environment/intro.md) rendelkezik, amely segítséget nyújt a bejövő forrás IP-címek a hálózati biztonsági csoportok (NSG-k) korlátozása virtuális hálózati integráció funkcióval. Ha ismeri az Azure-beli virtuális hálózatok (Vnetek), akkor egy olyan funkció, amely lehetővé teszi, hogy ki férhet hozzá az internet, az irányítható hálózatban helyezze számos, az Azure-erőforrások. További tudnivalókért lásd: [az alkalmazás integrálása az Azure Virtual Network](../app-service/web-sites-integrate-with-vnet.md).
+## <a name="restrict-incoming-source-ip-addresses"></a>Bejövő forrás IP-címeinek korlátozása
+[App Service környezetek](../app-service/environment/intro.md) virtuális hálózati integrációs funkciója segítségével a bejövő forrás IP-címeket hálózati biztonsági csoportokkal (NSG) korlátozhatja. Ha nem ismeri az Azure Virtual Networks (virtuális hálózatok) szolgáltatást, ez egy olyan képesség, amely lehetővé teszi, hogy számos Azure-erőforrást egy nem internetes, átirányítható hálózaton helyezzen el, amely a hozzáférését szabályozza. További információ: [az alkalmazás integrálása Azure](../app-service/web-sites-integrate-with-vnet.md)-Virtual Networkokkal.
+
+A Windows App Service esetében a web. config fájl konfigurálásával dinamikusan is korlátozhatja az IP-címeket. További információ: [dinamikus IP-biztonság](https://docs.microsoft.com/iis/configuration/system.webServer/security/dynamicIpSecurity/).
+
 
 ## <a name="next-steps"></a>További lépések
-Ebben a cikkben megismerkedhetett a App Service-ben ajánlott biztonsági eljárások a PaaS webes és mobilalkalmazások védelme gyűjteménye. A PaaS üzemelő példányok védelmével kapcsolatos további tudnivalókért lásd:
+Ez a cikk App Service biztonsági bevált eljárások gyűjteményét mutatta be a Pásti web-és Mobile-alkalmazások biztonságossá tételéhez. További információ a Pásti-telepítések biztonságossá tételéről:
 
 - [PaaS-környezetek védelme](security-paas-deployments.md)
-- [Az Azure PaaS-adatbázisok védelme](security-paas-applications-using-sql.md)
+- [A Péter-adatbázisok védelme az Azure-ban](security-paas-applications-using-sql.md)

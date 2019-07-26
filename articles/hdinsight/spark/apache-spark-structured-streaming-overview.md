@@ -1,66 +1,66 @@
 ---
-title: A Spark strukturált Stream az Azure HDInsight
-description: Alkalmazások a Spark strukturált Stream használata a HDInsight Spark-fürtön.
-author: maxluk
+title: Spark strukturált streaming az Azure HDInsight
+description: Spark strukturált adatfolyam-alkalmazások használata a HDInsight Spark-fürtökön.
+author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/05/2018
-ms.author: maxluk
-ms.openlocfilehash: 0e9d87e5b344b7091a2a0cf41d6f7fa3484dfcf3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: hrasheed
+ms.openlocfilehash: 0aaca127fec82d35da0ba943e97221834c2e42ed
+ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64711323"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68441911"
 ---
-# <a name="overview-of-apache-spark-structured-streaming"></a>Az Apache Spark strukturált Stream áttekintése
+# <a name="overview-of-apache-spark-structured-streaming"></a>Strukturált streaming Apache Spark áttekintése
 
-[Az Apache Spark](https://spark.apache.org/) strukturált Stream lehetővé teszi, hogy a data-adatfolyamok feldolgozására, skálázható, nagy átviteli sebességű és hibatűrő alkalmazások megvalósításához. Strukturált Streamelés a Spark SQL-motor épül, és javítja a származó Spark SQL adatkeretek szerkezeteket és adatkészletek, streamelési lekérdezése ugyanúgy, írhat, kötegelt / volna írni.  
+[Apache Spark](https://spark.apache.org/) A strukturált streaming lehetővé teszi méretezhető, nagy átviteli sebességű, hibatűrő alkalmazások megvalósítását az adatfolyamok feldolgozásához. A strukturált adatfolyam a Spark SQL-motorra épül, és a Spark SQL-adatkeretek és-adatkészletek szerkezeteit fejleszti, így ugyanúgy írhat adatfolyam-lekérdezéseket, mint például a Batch-lekérdezések írására.  
 
-Structured Streaming-alkalmazások HDInsight Spark-fürtökön futó, és csatlakozzon a streamadatok [Apache Kafka](https://kafka.apache.org/), egy TCP szoftvercsatorna (a hibakeresési célra), az Azure Storage vagy az Azure Data Lake Storage. Az utóbbi két lehetőség, külső tárolási szolgáltatások támaszkodik, amely lehetővé teszi, tekintse meg a storage-bA hozzáadott új fájlok és feldolgozása azok tartalmát, mintha továbbítva lettek. 
+A strukturált adatfolyam-alkalmazások HDInsight Spark-fürtökön futnak, és a [Apache Kafka](https://kafka.apache.org/), a TCP-szoftvercsatorna (hibakeresési célú), az Azure Storage vagy a Azure Data Lake Storage adatátviteli szolgáltatásához kapcsolódnak. Az utóbbi két lehetőség, amely a külső tárolási szolgáltatásokra támaszkodik, lehetővé teszi a tároláshoz hozzáadott új fájlok megtekintését, valamint a tartalom feldolgozását úgy, mintha az adatfolyamot továbbították volna. 
 
-Strukturált Streamelés óraszáma műveleteket alkalmaz a bemeneti adatok, például a kijelölés, leképezése, összesítési, ablakkezelési és a streamelési DataFrame hivatkozással DataFrames csatlakoztatása hosszan futó lekérdezést hoz létre. Következő lépésként, az eredményeket a file storage (Azure Storage Blobsba vagy a Data Lake Storage) vagy minden adattárhoz egyéni kódot (például SQL-adatbázis vagy a Power BI) használatával. Strukturált Streamelés a helyi hibakeresési konzolt, és egy memórián belüli tábla kimeneti is biztosít, így láthatja a létrehozott HDInsight a hibakeresési adatokat. 
+A strukturált adatfolyam egy hosszú ideig futó lekérdezést hoz létre, amely során a rendszer a bemeneti adatokra alkalmazza a műveleteket, például a kijelölést, a kivetítést, az összesítést, az ablakot, és összekapcsolja a streaming DataFrame a Reference DataFrames. Ezután az eredményeket a file Storage (Azure Storage Blobs vagy Data Lake Storage) vagy bármely adattár számára egyéni kód (például SQL Database vagy Power BI) használatával kell kiadnia. A strukturált streaming emellett kimenetet biztosít a konzol számára a helyi hibakereséshez és a memóriában tárolt táblákhoz, így a hibakereséshez generált adatokat láthatja a HDInsight-ben. 
 
-![A Stream feldolgozása a HDInsight és a Spark strukturált Stream](./media/apache-spark-structured-streaming-overview/hdinsight-spark-structured-streaming.png)
+![Stream feldolgozása a HDInsight és a Spark strukturált streaming segítségével](./media/apache-spark-structured-streaming-overview/hdinsight-spark-structured-streaming.png)
 
 > [!NOTE]  
-> A Spark strukturált Stream lecseréli a Spark Streaming (DStreams). Továbbítja, strukturált Stream kap megjelent fejlesztéseit és a karbantartás, amíg DStreams lesz csak a karbantartási módban. Strukturált Streamelés jelenleg nem, a szolgáltatás teljes körű DStreams, az adatforrásokhoz, és hogy támogatja a beépített fogadók, ezért a választani a megfelelő Spark stream feldolgozási beállítás kapcsolatos követelmények kiértékeléséhez. 
+> A Spark strukturált streaming a Spark streaminget (DStreams) váltja fel. A folyamatos átvitel érdekében a strukturált streaming a fejlesztéseket és a karbantartást is megkapja, míg a DStreams csak karbantartási módba kerül. A strukturált adatfolyam jelenleg nem a DStreams, hanem az általa támogatott források és nyelők számára, ezért a követelmények kiértékelésével kiválaszthatja a megfelelő Spark stream-feldolgozási lehetőséget. 
 
-## <a name="streams-as-tables"></a>Streamek táblákként
+## <a name="streams-as-tables"></a>Adatfolyamok táblázatként
 
-Egy adatfolyam Spark strukturált Stream jelöli, amely korlátlan streameken működő mélyebben táblaként, a tábla, amely azt jelenti, hogy továbbra is nő, ahogy az új adatok érkeznek. Ez *bemeneti tábla* folyamatosan dolgoz fel egy hosszan futó lekérdezést, és elküldi az eredményeket egy *eredménytábla*:
+A Spark strukturált streaming olyan adatstreamet jelöl, amely nem megfelelő mélységű, azaz a tábla folyamatosan növekszik, ahogy az új adat érkezik. Ezt a *bemeneti táblázatot* egy hosszan futó lekérdezés folyamatosan dolgozza fel, és egy *kimeneti táblába*küldi az eredményeket:
 
-![Strukturált Streamelés a koncepció](./media/apache-spark-structured-streaming-overview/hdinsight-spark-structured-streaming-concept.png)
+![Strukturált adatfolyam-koncepció](./media/apache-spark-structured-streaming-overview/hdinsight-spark-structured-streaming-concept.png)
 
-Strukturált Streamelés adatok szolgáltatáshoz érkezik, a rendszer, és azonnal egy bemeneti táblát be lett töltve. (Az adathalmaz és az adatkészlet API-k használatával), amelyek a bemeneti tábla kapcsolatos művelet-végrehajtási hajtanak végre lekérdezéseket írhat. A lekérdezés kimenet egy másik tábla a *eredmények táblázatában*. Az eredmények tábla, amelyből rajzoljon egy külső adattár, például egy relációs adatbázis adatait, a lekérdezés eredményeit tartalmazza. Amikor az adatok feldolgozása a bemeneti táblázat időzítése vezérli a *eseményindító időköz*. Alapértelmezés szerint a trigger időköz nulla, így strukturált Stream megpróbálja feldolgozni az adatokat, amint megérkeznek. A gyakorlatban ez azt jelenti, hogy, amint strukturált Stream történik elindítja a Futtatás az előző lekérdezés feldolgozása, egy másik feldolgozó futtatása az újonnan érkezett adatokon. Konfigurálhatja az eseményindító, futtatását, hogy, úgy, hogy a streamadatok feldolgozása időalapú kötegekben. 
+A strukturált adatfolyamban az adatok beérkeznek a rendszerbe, és azonnal bekerülnek egy bemeneti táblába. Olyan lekérdezéseket írhat (a DataFrame és az adatkészlet API-k használatával), amelyek a bemeneti táblán műveleteket hajtanak végre. A lekérdezés kimenete egy másik táblát, az *eredmények táblát*eredményezi. A Results (eredmények) tábla a lekérdezés eredményét tartalmazza, amelyből egy külső adattárra, például egy, a kapcsolódó adatbázisra vonatkozó adatok rajzolása végezhető el. Az adatok bemeneti táblából való feldolgozásának időzítését az *aktiválási intervallum*vezérli. Alapértelmezés szerint az trigger intervalluma nulla, így a strukturált adatfolyam a megérkezése után azonnal feldolgozza az adatfeldolgozást. A gyakorlatban ez azt jelenti, hogy amint a strukturált adatfolyam feldolgozása befejeződött az előző lekérdezés futtatásával, egy másik feldolgozást indít el az újonnan fogadott összes adattal. Az indítást beállíthatja úgy, hogy intervallumban fusson, hogy a folyamatos átviteli adatkötegek feldolgozása időalapú kötegekben történjen. 
 
-Az adatok a táblák tartalmazhat, csak az utolsó óta új adatok idő a lekérdezés eredményében fel lettek dolgozva (*hozzáfűzéssel*), vagy a tábla minden alkalommal, amikor nincs új adat, így a tábla tartalmazza az összes kimeneti adatokat lehet teljesen frissítve a streamelési lekérdezés kezdete óta (*teljes mód*).
+Az eredmények táblázatában szereplő adatokat csak a lekérdezés legutóbbi feldolgozása óta új adatokat (*hozzáfűzési mód*) tartalmazhatják, vagy a tábla minden új adatmennyiség esetén teljesen frissül, így a tábla az összes kimeneti adatokat tartalmazza, mivel a streaming q a h megkezdődött (*teljes mód*).
 
-### <a name="append-mode"></a>Hozzáfűzéssel
+### <a name="append-mode"></a>Hozzáfűzési mód
 
-A hozzáfűző módban csak a sor a legutóbbi lekérdezés futtatása az eredmények táblázatában találhatók az eredmények táblázatában hozzáadott és a külső tárhelyen. Például a legegyszerűbb lekérdezés csak az összes adatokat másol a bemeneti tábla változatlan eredmények táblázatában. Minden alkalommal, amikor egy trigger időtartam, az új adatok feldolgozása, és az új adatokat képviselő sora megjelenjen eredmények táblázatában. 
+A hozzáfűzési módban csak az eredményeket tartalmazó táblázatba felvett sorok jelennek meg az eredmények táblában, és a külső tárolóba íródnak. A legegyszerűbb lekérdezés például csak az összes adatot másolja át a bemeneti táblából az eredmények táblába változatlanul. Minden alkalommal, amikor az aktiválási időköz eltelik, az új adatfeldolgozás történik, és az új adatmennyiséget jelképező sorok megjelennek az eredmények táblázatban. 
 
-Példaként vegyünk egy forgatókönyvet, ahol olyan feldolgozási hőmérséklet-érzékelő, például egy thermostat származó telemetriai adatok. Tegyük fel, az első eseményindító egy esemény feldolgozása idő 00:01 1 eszköz és a egy hőmérséklet-érték 95 fokban. A lekérdezés az első eseményindító csak az idő 00:01-sor jelenik meg az eredmények táblázatában. Idő 00:02-es időpontnál egy másik eseményt érkezésekor a csak az új sor a sor az idő 00:02, és így a eredmények táblázatában csak, egy sort tartalmaznia.
+Vegyünk egy olyan forgatókönyvet, ahol a telemetria a hőmérséklet-érzékelők, például egy termosztát alapján dolgozza fel. Tegyük fel, hogy az első eseményindító feldolgozott egy eseményt az 1. számú, 95 fokos hőmérséklet-olvasási értékű 00:01-es időpontban. A lekérdezés első triggerében csak a 00:01 időponttal rendelkező sor jelenik meg az eredmények táblázatban. Ha egy másik esemény érkezésekor 00:02, az egyetlen új sor az a sor, amely a 00:02-as időpontot jelöli, így az eredmények tábla csak ezt az egy sort fogja tartalmazni.
 
-![Strukturált Streamelés hozzáfűzéssel](./media/apache-spark-structured-streaming-overview/hdinsight-spark-structured-streaming-append-mode.png)
+![Strukturált adatfolyam-hozzáfűzési mód](./media/apache-spark-structured-streaming-overview/hdinsight-spark-structured-streaming-append-mode.png)
 
-Amikor használatával hozzáfűzéssel, a lekérdezés kellene lennie alkalmazása leképezések (azt ügyel oszlopok kiválasztásával), szűrés (kiadási csak bizonyos feltételek egyező sorok) vagy a csatlakozás (az adatok egy statikus keresési táblázat származó adatokkal kiegészítve). Könnyen a releváns új adatok leküldése mutat külső tárolási mód teszi hozzáfűzése.
+Hozzáfűzési mód használatakor a lekérdezés kivetítéseket alkalmaz (kijelöli a hozzá tartozó oszlopokat), a szűrést (csak bizonyos feltételeknek megfelelő sorok kiválasztását) vagy a csatlakozást (az adatok kibővítését egy statikus keresési táblázatból származó adatokkal). A hozzáfűzési mód lehetővé teszi, hogy csak a megfelelő új adatokat küldje el a külső tárterületre.
 
 ### <a name="complete-mode"></a>Teljes mód
 
-Fontolja meg ugyanezt a forgatókönyvet, ezúttal teljes mód használatával. A teljes kimeneti tábla teljes módban frissül az minden eseményindító, a tábla nem csak a legutóbbi eseményindító-futtatás, azonban minden Futtatás adatait tartalmazza. Másolja az adatokat a bemeneti táblázat az eredmények táblázatában változatlan formában használhatja teljes mód. Az összes aktivált futtatását az új sorok együtt a korábbi sorok jelennek meg. A kimeneti eredmények tábla lesz végül összegyűjteni, mert a lekérdezés kezdete, és végül futtatná nincs elég memória a adatok tárolásához. Teljes módban az összesítő lekérdezés, amely valamilyen módon a bejövő adatok összegzése használatra szánt, és így tovább minden trigger eredmények táblázatában frissül az új összegzését. 
+Vegye figyelembe ugyanezt a forgatókönyvet, ezúttal a teljes üzemmódot használva. Teljes módban a teljes kimeneti tábla frissül minden triggeren, így a tábla nem csupán a legutóbbi trigger-futtatásból, hanem minden futtatásból is tartalmaz adatokat. A teljes módot használhatja az adatoknak a bemeneti táblából a Results táblába való másolásának megváltoztatásához. Minden aktivált futtatáskor az új eredmény sorok az összes korábbi sorral együtt jelennek meg. A kimeneti eredmények táblázata végül a lekérdezés kezdete óta gyűjtött összes összegyűjtött adatokat tárolja, és végül elfogyott a memória. A teljes üzemmód olyan összesített lekérdezésekkel használható, amelyek valamilyen módon összegzik a bejövő adatokat, és így minden egyes triggernél új összegzéssel frissülnek az eredmények táblázata. 
 
-Feltételezik, amennyiben vannak a öt másodperc alatt az adatok feldolgozása már, az adatok feldolgozása a hatodik második ideje. A bemeneti tábla események idő 00:01 és idő 00:03 rendelkezik. Ez a példa lekérdezés célja, hogy az eszköz az átlaghőmérséklet öt másodpercenként. Ez a lekérdezés végrehajtásának aggregátum, amely az értékei, minden egyes 5 másodperces időtartamon belül esik, akkor számítja ki a hőmérséklet és hoz létre egy sort az átlaghőmérséklet adott időszakra vonatkozik. Az első 5 másodperces ablak végén a rendszer két: (00:01, 1, 95) és (00:03, 1, 98). Tehát az ablak 00:00 – 00:05 az összesítés 96.5 fok átlagos hőmérsékletét a rekordot hoz létre. A következő 5 másodperces ablak nincs csak egyetlen adatpont: 00:06 / idő, így az eredményül kapott átlaghőmérséklet 98 fok. Idő 00:10, teljes körű mód használata esetén az eredmények található táblázat soraiban a tartozó mindkét windows 00:00 – 00:05 és 00:05 – 00:10, mert a lekérdezés megjeleníti az összes összesített sor, nem csak az újakat. Ezért az eredmények táblázatában továbbra is nő, ahogy új windows kerülnek.    
+Tegyük fel, hogy eddig öt másodperc van a már feldolgozott adatmennyiség, és ideje feldolgozni az adatot a hatodik másodpercben. A bemeneti tábla a 00:01-as és a 00:03-os időponthoz tartozó eseményeket tartalmazza. A példában szereplő lekérdezés célja, hogy öt másodpercenként adja meg az eszköz átlagos hőmérsékletét. A lekérdezés megvalósítása olyan összesítést alkalmaz, amely az egyes 5 másodperces ablakban lévő összes értéket végrehajtja, a hőmérsékletet, és egy sort hoz létre az adott intervallumban mért átlagos hőmérséklethez képest. Az első 5 másodperces ablak végén két rekordok létezik: (00:01, 1, 95) és (00:03, 1, 98). Tehát a 00:00-00:05-es ablak esetében az Összesítés egy olyan rekordot állít elő, amely a 96,5 fok átlagos hőmérsékletét eredményezi. A következő 5 másodperces ablakban csak egy adatpont érhető el a 00:06-es időpontban, így az eredményül kapott átlagos hőmérséklet 98 fok. Az 00:10-es időpontban a teljes mód használata esetén a Results tábla a Windows 00:00-00:05 és a 00:05-00:10 sorait is tartalmazza, mivel a lekérdezés az összes összesített sort megjeleníti, nem csak az újakat. Ezért az eredmények táblázata továbbra is nő, ahogy az új ablakok hozzáadódnak.    
 
-![Strukturált Streamelés kész mód](./media/apache-spark-structured-streaming-overview/hdinsight-spark-structured-streaming-complete-mode.png)
+![Strukturált folyamatos átvitel teljes módja](./media/apache-spark-structured-streaming-overview/hdinsight-spark-structured-streaming-complete-mode.png)
 
-Nem minden lekérdezések teljes mód használata miatt korlátok nélkül növelheti a tábla.  Érdemes lehet az előző példában, amely helyett átlagolási időtartam által a hőmérséklet, ehelyett átlagolt által eszközazonosító. Az eredményként kapott tábla rögzített számú sort (egy eszközönként) az átlaghőmérséklet az eszköz az adott eszközről fogadott összes adatpont között tartalmazza. Új hőmérsékletek érkezik, az eredmények táblázatában frissül, hogy a táblázatban az átlagokat mindig naprakészek. 
+Nem minden teljes üzemmódot használó lekérdezés fogja eredményezni, hogy a tábla határok nélkül nő.  Vegye figyelembe az előző példában, hogy a hőmérsékletet nem a Time-ablak átlaga alapján, hanem az eszköz azonosítója alapján átlagosan. Az eredmény tábla rögzített számú sort tartalmaz (egy eszközönként), az eszköz átlagos hőmérsékletét az eszköztől kapott összes adatpontra vonatkozóan. Az új hőmérsékletek fogadásakor a rendszer frissíti az eredményeket tartalmazó táblázatot, hogy a táblázatban szereplő átlagok mindig naprakészek legyenek. 
 
-## <a name="components-of-a-spark-structured-streaming-application"></a>A Spark strukturált Stream alkalmazások összetevői
+## <a name="components-of-a-spark-structured-streaming-application"></a>A Spark strukturált adatfolyam-alkalmazás összetevői
 
-Egy egyszerű példa lekérdezés is összesíteni a hőmérséklet olvasmányok hour-long Windows. Ebben az esetben az adatok JSON-fájlok (a HDInsight-fürt alapértelmezett tárolóként csatolt) Azure Storage-ban tárolja:
+Egy egyszerű példa lekérdezés a hőmérséklet-beolvasásokat óránkénti Windows-alapú összesítéssel összegzi. Ebben az esetben a rendszer az Azure Storage-ban található JSON-fájlokban tárolja az adatfájlokat (a HDInsight-fürt alapértelmezett tárolóként van csatolva):
 
     {"time":1469501107,"temp":"95"}
     {"time":1469501147,"temp":"95"}
@@ -68,11 +68,11 @@ Egy egyszerű példa lekérdezés is összesíteni a hőmérséklet olvasmányok
     {"time":1469501219,"temp":"95"}
     {"time":1469501225,"temp":"95"}
 
-Ezek a JSON-fájlok tárolják a `temps` alatt a HDInsight-fürt tároló almappába. 
+Ezeket a JSON-fájlokat a HDInsight `temps` -fürt tárolója alatti almappában tárolja a rendszer. 
 
 ### <a name="define-the-input-source"></a>A bemeneti forrás megadása
 
-Először állítsa be, amely leírja az adatokat, és a beállításokat, amelyeket az adatforrás szükséges forrását DataFrame. Ebben a példában megrajzolja a JSON-fájlokból az Azure Storage-ban, és alkalmazza a séma hozzájuk olvasási időpontban.
+Először állítson be egy DataFrame, amely leírja az adatforrást, valamint a forrás által igényelt beállításokat. Ez a példa az Azure Storage-ban található JSON-fájlokból származik, és egy sémát alkalmaz rájuk olvasási időpontban.
 
     import org.apache.spark.sql.types._
     import org.apache.spark.sql.functions._
@@ -86,59 +86,59 @@ Először állítsa be, amely leírja az adatokat, és a beállításokat, amely
     //Create a Streaming DataFrame by calling readStream and configuring it with the schema and path
     val streamingInputDF = spark.readStream.schema(jsonSchema).json(inputPath) 
 
-#### <a name="apply-the-query"></a>A lekérdezés a alkalmazni
+#### <a name="apply-the-query"></a>A lekérdezés alkalmazása
 
-Ezután a alkalmazni egy lekérdezést, amely tartalmazza a kívánt műveleteket az adatfolyam-adathalmaz ellen. Ebben az esetben egy összesítést a csoportok összes sorát, 1 óra Windows, és majd kiszámítja, hogy 1 óra ablakban a minimális átlagos és maximális hőmérsékleteket.
+Ezután alkalmazzon egy olyan lekérdezést, amely a kívánt műveleteket tartalmazza a folyamatos átviteli DataFrame. Ebben az esetben egy összesítés csoportosítja az összes sort az 1 órás Windowsba, majd kiszámítja az 1 órás időszak minimális, átlagos és maximális hőmérsékletét.
 
     val streamingAggDF = streamingInputDF.groupBy(window($"time", "1 hour")).agg(min($"temp"), avg($"temp"), max($"temp"))
 
 ### <a name="define-the-output-sink"></a>A kimeneti fogadó megadása
 
-Ezt követően adja meg a cél a sorok, az eredmények táblázatában hozzáadott minden trigger intervallumon belül. Ebben a példában csak egy memórián belüli tábla minden sort adja vissza `temps` , hogy később lekérdezheti a sparksql-hez. Teljes kimenő mód biztosítja, hogy az összes sort az összes Windows kimeneti minden alkalommal.
+Ezután adja meg az egyes triggerek intervallumában az eredmények táblához hozzáadott sorok célját. Ebben a példában az összes sort egy memóriában lévő táblába `temps` helyezi, amelyet később a SparkSQL-sel lehet lekérdezni. A teljes kimeneti mód biztosítja, hogy minden Windows-sor minden alkalommal kimenetet végezzen.
 
     val streamingOutDF = streamingAggDF.writeStream.format("memory").queryName("temps").outputMode("complete") 
 
-### <a name="start-the-query"></a>Indítsa el a lekérdezést
+### <a name="start-the-query"></a>A lekérdezés elindítása
 
-Indítsa el a streamelési lekérdezést, és futtassa addig, amíg egy lezáró jel érkezik. 
+Indítsa el az adatfolyam-lekérdezést, és futtassa a parancsot, amíg meg nem érkezik a megszakítási jel. 
 
     val query = streamingOutDF.start()  
 
 ### <a name="view-the-results"></a>Eredmények megtekintése
 
-A lekérdezés fut, az azonos SparkSession, míg a sparksql-hez lekérdezést futtathatja a `temps` tábla a lekérdezés eredményeinek tárolására. 
+Amíg a lekérdezés fut, ugyanabban a SparkSession futtathat egy SparkSQL-lekérdezést azon a `temps` táblán, amelyen a lekérdezési eredményeket tárolják. 
 
     select * from temps
 
-Ez a lekérdezés poskytne eredmények a következőhöz hasonló:
+A lekérdezés a következőhöz hasonló eredményeket eredményez:
 
 
-| ablak |  Min(Temp) | avg(temp) | max(temp) |
+| ablak |  minimális (Temp) | átlag (Temp) | Max (Temp) |
 | --- | --- | --- | --- |
-|{u'start ": u" 2016-07-26T02:00:00.000Z ", u'end"... |    95 |    95.231579 | 99 |
-|{u'start ": u" 2016-07-26T03:00:00.000Z ", u'end"...  |95 |   96.023048 | 99 |
-|{u'start ": u" 2016-07-26T04:00:00.000Z ", u'end"...  |95 |   96.797133 | 99 |
-|{u'start ": u" 2016-07-26T05:00:00.000Z ", u'end"...  |95 |   96.984639 | 99 |
-|{u'start ": u" 2016-07-26T06:00:00.000Z ", u'end"...  |95 |   97.014749 | 99 |
-|{u'start ": u" 2016-07-26T07:00:00.000Z ", u'end"...  |95 |   96.980971 | 99 |
-|{u'start ": u" 2016-07-26T08:00:00.000Z ", u'end"...  |95 |   96.965997 | 99 |  
+|{u'start ': u ' 2016-07-26T02:00:00.000 Z ', u'end '... |    95 |    95.231579 | 99 |
+|{u'start ': u ' 2016-07-26T03:00:00.000 Z ', u'end '...  |95 |   96.023048 | 99 |
+|{u'start ': u ' 2016-07-26T04:00:00.000 Z ', u'end '...  |95 |   96.797133 | 99 |
+|{u'start ': u ' 2016-07-26T05:00:00.000 Z ', u'end '...  |95 |   96,984639 | 99 |
+|{u'start ': u ' 2016-07-26T06:00:00.000 Z ', u'end '...  |95 |   97.014749 | 99 |
+|{u'start ': u ' 2016-07-26T07:00:00.000 Z ', u'end '...  |95 |   96.980971 | 99 |
+|{u'start ': u ' 2016-07-26T08:00:00.000 Z ', u'end '...  |95 |   96.965997 | 99 |  
 
-A Spark strukturált Stream API részleteiért, a bemeneti adatokkal együtt forrásokból, a műveletek és a kimeneti fogadók azt támogatja, lásd: [Apache Spark strukturált Streamelés programozási útmutatója](https://spark.apache.org/docs/2.1.0/structured-streaming-programming-guide.html).
+A Spark strukturált stream API-val, valamint az általa támogatott bemeneti adatforrásokkal, műveletekkel és kimeneti tárolókkal kapcsolatos részletekért lásd: [Apache Spark strukturált streaming programozási útmutató](https://spark.apache.org/docs/2.1.0/structured-streaming-programming-guide.html).
 
-## <a name="checkpointing-and-write-ahead-logs"></a>Ellenőrzőpontok létrehozása és előre írási naplók
+## <a name="checkpointing-and-write-ahead-logs"></a>Ellenőrzőpontok és írási naplók
 
-Rugalmasság és a hibatűrés biztosításához, strukturált Stream támaszkodik *ellenőrzőpontok* , győződjön meg arról, hogy a stream feldolgozása még a csomóponthibák megszakításmentes folytatásához. A HDInsight Spark tartós tárolási, az Azure Storage vagy a Data Lake Storage ellenőrzőpontok hoz létre. Ezek az ellenőrzőpontok a streamelési lekérdezés folyamatban adatainak tárolására. Emellett strukturált Stream használ egy *írási előre log* (WAL). A WAL beérkezett, de még nem feldolgozott lekérdezések által betöltött adatokat rögzíti. Ha hiba lép fel, és a WAL feldolgozási újraindul, bármilyen forrásból fogadott események nem vesznek el.
+A rugalmasság és a hibatűrés biztosításához a strukturált adatfolyam-ellenőrzés  az ellenőrzőponton alapul, hogy a stream feldolgozása továbbra is zavartalan maradjon, még a csomópont meghibásodása esetén is. A HDInsight-ben a Spark az Azure Storage vagy a Data Lake Storage használatával hoz létre ellenőrzőpontokat a tartós tároláshoz. Ezek az ellenőrzőpontok az adatfolyam-lekérdezés előrehaladási adatait tárolják. A strukturált adatfolyam továbbá egy *írási idejű naplót* (Wal) használ. A WAL rögzíti a beérkezett, de a lekérdezés által még nem feldolgozott adatot. Ha hiba történik, és a rendszer újraindította a feldolgozást a WAL-ből, a forrástól kapott események nem vesznek el.
 
-## <a name="deploying-spark-streaming-applications"></a>Spark Streaming-alkalmazások üzembe helyezéséhez
+## <a name="deploying-spark-streaming-applications"></a>Spark streaming-alkalmazások üzembe helyezése
 
-Általában a helyileg egy JAR-fájlba a Spark Streaming-alkalmazás létrehozása, és ezután telepítheti az a Spark on HDInsight a JAR-fájlt másolja a csatlakoztatott és a HDInsight-fürt alapértelmezett tárolója. Az alkalmazás megkezdése a [Apache Livy](https://livy.incubator.apache.org/) REST API-k a fürtről, a POST művelettel érhető el. A bejegyzés törzse tartalmazza a JSON-dokumentumot, az elérési utat biztosít a JAR, amelynek fő metódus határozza meg, és az adatfolyam-továbbítási alkalmazást, és szükség esetén az erőforrás-igényű (például végrehajtóval, a memória és magok száma) a feladat fut az osztály neve , és minden olyan konfigurációs beállítást az alkalmazás kódjában igényel.
+Általában egy Spark streaming-alkalmazást készít egy JAR-fájlba, majd üzembe helyezheti a Spark on HDInsight. ehhez másolja a JAR-fájlt a HDInsight-fürthöz csatolt alapértelmezett tárolóba. Az alkalmazást a fürtön elérhető [Apache Livy](https://livy.incubator.apache.org/) REST API-k használatával kezdheti meg a post művelettel. A POST törzse tartalmaz egy JSON-dokumentumot, amely megadja a JAR elérési útját, annak az osztálynak a nevét, amelynek a fő metódusa definiálja és futtatja a folyamatos átviteli alkalmazást, valamint opcionálisan a feladathoz tartozó erőforrás-követelményeket (például a végrehajtók, a memória és a magok számát). és az alkalmazás kódjához szükséges konfigurációs beállítások.
 
-![A Spark Streaming-alkalmazás üzembe helyezése](./media/apache-spark-streaming-overview/hdinsight-spark-streaming-livy.png)
+![Spark streaming-alkalmazás üzembe helyezése](./media/apache-spark-streaming-overview/hdinsight-spark-streaming-livy.png)
 
-Az összes alkalmazás állapotát egy GET kérelmet a LIVY-végpont az is ellenőrizhető. Végül a futó alkalmazás leállíthatja a LIVY végponthoz törlési kérelem elküldése. További információ a LIVY API: [távoli feladatok a LIVYVEL Apache](apache-spark-livy-rest-interface.md)
+Az összes alkalmazás állapota a GET kérelemmel is ellenőrizhető egy LIVY-végponton. Végül a LIVY-végpontra vonatkozó TÖRLÉSi kérelem kibocsátásával leállíthatja a futó alkalmazást. A LIVY API-val kapcsolatos részletekért lásd: [távoli feladatok Apache LIVY](apache-spark-livy-rest-interface.md)
 
 ## <a name="next-steps"></a>További lépések
 
-* [A HDInsight egy Apache Spark-fürt létrehozása](../hdinsight-hadoop-create-linux-clusters-portal.md)
-* [Az Apache Spark-Structured Streaming programozási útmutatója](https://spark.apache.org/docs/2.1.0/structured-streaming-programming-guide.html)
-* [Indítsa el az Apache Spark-feladatok távoli a Apache LIVYVEL](apache-spark-livy-rest-interface.md)
+* [Apache Spark-fürt létrehozása a HDInsight-ben](../hdinsight-hadoop-create-linux-clusters-portal.md)
+* [Apache Spark strukturált streaming programozási útmutató](https://spark.apache.org/docs/2.1.0/structured-streaming-programming-guide.html)
+* [Apache Spark feladatok távoli elindítása az Apache LIVY](apache-spark-livy-rest-interface.md)

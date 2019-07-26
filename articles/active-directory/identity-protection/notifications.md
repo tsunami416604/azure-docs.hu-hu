@@ -1,87 +1,72 @@
 ---
-title: Az Azure Active Directory Identity Protection-értesítések |} A Microsoft Docs
-description: Ismerje meg, hogyan támogatják a különböző értesítések a vizsgálati tevékenységet.
+title: Azure Active Directory Identity Protection értesítések | Microsoft Docs
+description: Ismerje meg, hogy az értesítések hogyan támogatják a vizsgálati tevékenységeket.
 services: active-directory
-keywords: az Azure active directory identity protection a következőket cloud app discovery szolgáltatást, alkalmazások, biztonság, kockázati, kockázati szint, biztonsági rést, biztonsági házirend kezelése
-documentationcenter: ''
-author: MicrosoftGuyJFlo
-manager: daveba
-editor: ''
-ms.assetid: 65ca79b9-4da1-4d5b-bebd-eda776cc32c7
 ms.service: active-directory
 ms.subservice: identity-protection
-ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 12/07/2017
 ms.author: joflore
+author: MicrosoftGuyJFlo
+manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0065ec03695ee977133ae2ec43aafba7d5bfff78
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3dcc7d2d03b3c4a3f4c8c772f38aa3785080d986
+ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65784348"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68335361"
 ---
-# <a name="azure-active-directory-identity-protection-notifications"></a>Az Azure Active Directory Identity Protection-értesítések
+# <a name="azure-active-directory-identity-protection-notifications"></a>Értesítések Azure Active Directory Identity Protection
 
-Az Azure AD Identity Protection küld automatizált értesítő e-mailek, amelyek segítségével kezelheti a felhasználói kockázat és a kockázati események két típusa:
+A Azure AD Identity Protection kétféle automatizált értesítő e-mailt küld a felhasználói kockázatok és kockázati események kezeléséhez:
 
-- Érintett felhasználók e-mail észlelt
-- Heti összefoglaló e-mail
+- Veszélyeztetett felhasználók észlelt e-mail-címe
+- Heti kivonatoló e-mail
 
-Ez a cikk mindkét értesítő e-mailek áttekintést nyújt.
+Ez a cikk az értesítő e-mailek áttekintését tartalmazza.
 
+## <a name="users-at-risk-detected-email"></a>Veszélyeztetett felhasználók észlelt e-mail-címe
 
-## <a name="users-at-risk-detected-email"></a>Érintett felhasználók e-mail észlelt
+A veszélyeztetett észlelt fiókra adott válaszként Azure AD Identity Protection e-mail-riasztást hoz létre a **veszélyeztetett felhasználókkal** kapcsolatban. Az e-mail tartalmazza a kockázati jelentésre **[megjelölt felhasználókra](../reports-monitoring/concept-user-at-risk.md)** mutató hivatkozást. Ajánlott eljárásként azonnal vizsgálja meg a veszélyeztetett felhasználókat.
 
-Egy észlelt kockázati-fiókot választ, az Azure AD Identity Protection az e-mailek riasztást állít elő **észlelt kockázatos felhasználókat** tulajdonosaként. Az e-mail tartalmaz egy hivatkozást a **[kockázatosként megjelölt felhasználók](../reports-monitoring/concept-user-at-risk.md)** jelentést. Ajánlott eljárásként azonnal kell vizsgálni az érintett felhasználók.
+Ennek a riasztásnak a konfigurációja lehetővé teszi, hogy meghatározza, milyen felhasználói kockázati szinten szeretné létrehozni a riasztást. A rendszer akkor hozza létre az e-mailt, ha a felhasználó kockázati szintje eléri a megadott értéket; a felhasználó számára azonban nem fogja tudni észlelni az e-mail-riasztásokat, miután erre a felhasználói kockázati szintre költöztek. Ha például úgy állítja be a házirendet, hogy közepes felhasználói kockázattal figyelmeztessen, és a felhasználó John közepes kockázatra vált, a veszélyeztetett felhasználókat a rendszer az észlelt e-mail-címre fogja kapni John számára. Ha azonban John ezt követően nagy kockázatra vált, vagy további kockázati eseményekre van szüksége, nem fog észlelni veszélyt jelentő második felhasználót.
 
-Ez a riasztás konfigurációját adja meg, milyen felhasználói kockázati szinten a riasztást generáló teszi lehetővé. Az e-mailt fog készülni, amikor a felhasználó kockázati szint eléri a mi megadott; azonban nem fog kapni, a felhasználó esetében észlelt kockázati e-mailes riasztásokhoz új felhasználók azokat a felhasználói kockázat szintjének való áthelyezése után. Például ha a riasztást a közepes felhasználói kockázat és John Közepes kockázatot jelentő helyezi át a felhasználói házirend, kapni fog e-mail észlelt kockázattal érintett felhasználókról John a. Azonban nem észlelt kockázati a riasztás egy második felhasználókról fog kapni, ha John majd magas kockázatú helyezi át, vagy további kockázati események.
-
-![Érintett felhasználók e-mail észlelt](./media/notifications/01.png)
-
+![Veszélyeztetett felhasználók észlelt e-mail-címe](./media/notifications/01.png)
 
 ### <a name="configuration"></a>Konfiguráció
 
-A rendszergazdák állíthatja be:
+Rendszergazdaként a következőket állíthatja be:
 
-- **A felhasználói kockázat szintje, amely az e-mailt generációja** – alapértelmezés szerint a kockázati szintje "Nagy" kockázatot.
-- **Ez az e-mail címzettjeinek** – alapértelmezés szerint a címzettek minden globális rendszergazdát tartalmazza. A globális rendszergazdák más a globális rendszergazdák, biztonsági rendszergazdák, biztonsági olvasók, a címzettek is hozzáadhat.  
+- **Az e-mailek generációját kiváltó felhasználói kockázati szint** alapértelmezés szerint a kockázati szint "magas" kockázatra van állítva.
+- **Az e-mail címzettjei** – alapértelmezés szerint a címzettek az összes globális rendszergazdát tartalmazzák. A globális rendszergazdák további globális rendszergazdákat, biztonsági rendszergazdákat és biztonsági olvasókat is hozzáadhatnak címzettként.  
 
+A kapcsolódó párbeszédpanel megnyitásához kattintson a **riasztások** elemre az **Identity Protection** oldal **Beállítások** szakaszában.
 
-A kapcsolódó párbeszédpanel megnyitásához kattintson a **riasztások** a a **beállítások** szakaszában a **Identity Protection** lapot.
+![Veszélyeztetett felhasználók észlelt e-mail-címe](./media/notifications/05.png)
 
-![Érintett felhasználók e-mail észlelt](./media/notifications/05.png)
+## <a name="weekly-digest-email"></a>Heti kivonatoló e-mail
 
+A heti kivonatoló e-mail tartalmazza az új kockázati események összegzését.  
+A következőket tartalmazza:
 
-## <a name="weekly-digest-email"></a>Heti összefoglaló e-mail
-
-Heti összefoglaló e-mail új kockázati események összegzését tartalmazza.  
-Ezek a következők:
-
-- Veszélyeztetett felhasználók
-
-- Gyanús tevékenységek feldolgozása
-
+- Érintett felhasználók
+- Gyanús tevékenységek
 - Észlelt biztonsági rések
+- Az Identity Protection kapcsolódó jelentéseire mutató hivatkozások
 
-- A vonatkozó jelentéseket az Identity Protection mutató hivatkozások
-
-    ![Szervizelési](./media/notifications/400.png "szervizelés")
+    ![Szervizelés](./media/notifications/400.png "Szervizelés")
 
 ### <a name="configuration"></a>Konfiguráció
 
-A rendszergazdák válthat egy heti összefoglaló e-mail küldése.
+Rendszergazdaként a heti kivonatoló e-mailek küldését is átválthatja.
 
-![Felhasználói kockázat](./media/notifications/62.png "felhasználói kockázat")
+![Felhasználói kockázatok](./media/notifications/62.png "Felhasználói kockázatok")
 
-A kapcsolódó párbeszédpanel megnyitásához kattintson a **Heti összefoglaló** a a **beállítások** szakaszában a **Identity Protection** lapot.
+A kapcsolódó párbeszédpanel megnyitásához kattintson az **Identity Protection** oldal **Beállítások** szakaszában a **heti kivonatoló** elemre.
 
-![Érintett felhasználók e-mail észlelt](./media/notifications/04.png)
-
+![Veszélyeztetett felhasználók észlelt e-mail-címe](./media/notifications/04.png)
 
 ## <a name="see-also"></a>Lásd még
 

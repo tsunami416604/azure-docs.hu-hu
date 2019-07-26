@@ -11,14 +11,14 @@ ms.service: azure-monitor
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 07/12/2019
+ms.date: 07/22/2019
 ms.author: magoedte
-ms.openlocfilehash: dc55e4999a09c45463ae75b05d610b290f5ff526
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: bbfc8cc61571de8b76ef1f7f0216501ef6d2cdee
+ms.sourcegitcommit: b49431b29a53efaa5b82f9be0f8a714f668c38ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68248313"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68377470"
 ---
 # <a name="understand-aks-cluster-performance-with-azure-monitor-for-containers"></a>Az AKS fürtteljesítmény és az Azure Monitor-tárolókhoz ismertetése 
 Az Azure monitorral tárolók segítségével a teljesítmény diagramokat és az állapot az Azure Kubernetes Service (AKS)-fürtök két perspektíva adatai, közvetlenül az AKS-fürt vagy az Azure-ból összes AKS-fürt az előfizetéshez, a számítási feladat figyeléséhez Ez a figyelő. Megtekintése az Azure Container Instances (ACI) esetén is lehetséges egy adott AKS-fürt monitorozására.
@@ -38,9 +38,11 @@ A Windows Server-fürtök egy Linux-fürthöz képest Azure Monitorekkel való f
 - Az előzetes kiadásban legfeljebb 30 Windows Server-tároló támogatott. Ez a korlátozás nem vonatkozik a Linux-tárolók esetében.  
 
 ## <a name="sign-in-to-the-azure-portal"></a>Jelentkezzen be az Azure Portalra
+
 Jelentkezzen be az [Azure Portalra](https://portal.azure.com). 
 
-## <a name="multi-cluster-view-from-azure-monitor"></a>Az Azure Monitor több fürt megtekintése 
+## <a name="multi-cluster-view-from-azure-monitor"></a>Az Azure Monitor több fürt megtekintése
+
 Üzembe helyezett összes AKS-fürt állapotának megtekintéséhez válassza **figyelő** a bal oldali ablaktáblán, az Azure Portalon.  Alatt a **Insights** szakaszban jelölje be **tárolók**.  
 
 ![Az Azure Monitor több fürt irányítópultja – példa](./media/container-insights-analyze/azmon-containers-multiview.png)
@@ -89,6 +91,7 @@ A következő táblázat nyújt információkat a számítás, a figyelt fürt a
 Fürtök listájában, akkor nyissa a **fürt** lapra kattintva a fürt nevét, a **csomópontok** teljesítmény lapra kattintva a kumulatív frissítést a csomópontok a **csomópontok** oszlopot adott fürtben, vagy a feltárásához az **tartományvezérlők** teljesítmény lapon kattintson az összegző a **felhasználói podok** vagy **rendszer podok**oszlop.   
 
 ## <a name="view-performance-directly-from-an-aks-cluster"></a>AKS-fürt közvetlenül a teljesítmény megtekintése
+
 Az Azure Monitor-tárolókhoz is elérhető közvetlenül egy AKS-fürtöt a kiválasztásával **Insights** a bal oldali panelen. Az AKS-fürt adatainak megtekintése a következő szakaszokba négy szempont:
 
 - Fürt
@@ -112,6 +115,7 @@ A bal/jobb nyílbillentyűk használatával a diagramon az egyes adatpontokon ke
 A tárolók Azure Monitor támogatja a Azure Monitor [metrikák Explorert](../platform/metrics-getting-started.md)is, ahol saját diagramokat hozhat létre, összekapcsolhatja és megvizsgálhatja a trendeket, és rögzítheti az irányítópultokat. A mérőszámok Intézőből a metrikák egy [metrika-alapú riasztási szabály](../platform/alerts-metric.md)alapján történő megjelenítéséhez beállított feltételeket is használhatja.  
 
 ## <a name="view-container-metrics-in-metrics-explorer"></a>Tároló metrikáinak megtekintése a metrikák Explorerben
+
 A metrikák Explorerben megtekintheti az összesített csomópont-és Pod-kihasználtsági metrikákat Azure Monitor a tárolók számára. A következő táblázat összefoglalja a részleteket, amelyekkel megismerheti, Hogyan jeleníthető meg a metrikai diagramok a tároló metrikáinak megjelenítéséhez.
 
 |Névtér | Metrika |
@@ -129,7 +133,7 @@ A metrikák Explorerben megtekintheti az összesített csomópont-és Pod-kihasz
 
 Alkalmazhat egy mérőszám [felosztását](../platform/metrics-charts.md#apply-splitting-to-a-chart) úgy, hogy megtekintse azt dimenzió alapján, és megjelenítse, hogy a különböző szegmensek hogyan hasonlítanak egymáshoz. Csomópont esetében a diagramot a *gazdagép* dimenziója alapján, a pod-ból pedig a következő dimenziók szerint szegmentálhatja:
 
-* Tartományvezérlő
+* Vezérlő
 * Kubernetes-névtér
 * Csomópont
 * Fázis
@@ -273,20 +277,36 @@ Az állapot mezőben az ikonok jelzi a podok, online válik, az alábbi tábláz
 | ![Elbocsátott állapotikon](./media/container-insights-analyze/containers-terminated-icon.png) | Sikeresen leállt vagy nem sikerült leállítani a|  
 | ![Sikertelen állapotikon](./media/container-insights-analyze/containers-failed-icon.png) | Hibás állapotban |  
 
-## <a name="disk-capacity-workbook"></a>Lemez kapacitása munkafüzet
+## <a name="workbooks"></a>Munkafüzetek
+
 A munkafüzetek szövegeket, [naplókat](../log-query/query-language.md), [metrikákat](../platform/data-platform-metrics.md)és paramétereket egyesítenek gazdag interaktív jelentésekben. A munkafüzetek szerkeszthető más csapattagok számára, akik ugyanahhoz az Azure-erőforrásokhoz férnek hozzá.
 
-A tárolók Azure Monitor tartalmaz egy munkafüzetet az elinduláshoz, a **lemez kapacitásához**.  Ez a munkafüzet interaktív lemez-használati diagramokat jelenít meg a tárolóban a csomóponton a következő perspektívák által bemutatott lemezekhez:
+A tárolók Azure Monitor négy munkafüzetet tartalmaznak az első lépések elkezdéséhez:
 
-- Lemez kihasználtsága (%) az összes lemez esetében
-- Szabad lemezterület az összes lemez számára
-- Egy táblázat, amely az egyes csomópontok lemezeit, a felhasznált%-ot, a felhasznált lemezterület%-át, a szabad lemezterületet (GiB) és a szabad lemezterület (GiB) trendjét mutatja. Ha a táblázatban egy sor van kiválasztva, akkor a (z)% felhasznált terület és a szabad lemezterület (GiB) alább látható. 
+- **Lemez kapacitása**: Interaktív lemezhasználat-diagramokat jelenít meg a tárolóban a csomóponton a következő perspektívák által bemutatott lemezekhez:
 
-Ezt a munkafüzetet úgy érheti el, ha kiválasztja a **lemez kapacitása** lehetőséget a **munkafüzetek megtekintése** legördülő listából.  
+    - Lemez kihasználtsága (%) az összes lemez esetében
+    - Szabad lemezterület az összes lemez számára
+    - Az egyes csomópontok lemezei, a felhasznált terület százalékos aránya, a felhasznált terület százalékos aránya, a szabad lemezterület (GiB) és a szabad lemezterület (GiB) trendje. Ha a táblázatban egy sor van kiválasztva, akkor a (z)% felhasznált terület és a szabad lemezterület (GiB) alább látható. 
+
+- **Lemez i/o**: Interaktív lemez-kihasználtsági diagramokat jelenít meg a tárolóban a csomóponton a következő perspektívák által bemutatott lemezekhez:
+
+    - Lemez I/O összegzése az összes lemezről olvasási sebesség (bájt/s), bájt/mp írás, olvasási és írási sebesség (bájt/mp) trendek 
+    - Nyolc teljesítményű diagram látható a fő teljesítménymutatókkal a lemezek I/O-szűk keresztmetszetének méréséhez és azonosításához.
+
+- **Kubelet**: A két rácsot tartalmaz, amelyek a fő csomópont működési statisztikáit mutatják:
+
+    - A Node Grid áttekintés a teljes művelet, a teljes hibák és a sikeres műveletek összesítésével összegzi az egyes csomópontok százalékát és trendjét.
+    - Az áttekintés a műveleti típus szerint összefoglalja a teljes művelet, az összes hiba és a sikeres műveletek százalékos és trend szerinti műveleteit.
+
+- **Hálózat**: Interaktív hálózati kihasználtsági diagramokat jelenít meg az egyes csomópontok hálózati adapterei számára, valamint a fő teljesítménymutatókat bemutató rácsot a hálózati adapterek teljesítményének mérése érdekében.  
+
+Ezeket a munkafüzeteket úgy érheti el, ha kiválasztja a **munkafüzetek megtekintése** legördülő listát.  
 
 ![Munkafüzetek megtekintése legördülő lista](./media/container-insights-analyze/view-workbooks-dropdown-list.png)
 
-
 ## <a name="next-steps"></a>További lépések
+
 - Tekintse át a [teljesítménnyel kapcsolatos riasztások létrehozása a Azure monitor for containers](container-insights-alerts.md) szolgáltatással című témakört, amelyből megtudhatja, hogyan hozhat létre riasztásokat magas CPU-és memóriahasználat esetén a DevOps vagy működési folyamatok és eljárások támogatása 
+
 - Megtekintheti a [napló lekérdezési példáit](container-insights-log-search.md#search-logs-to-analyze-data) , amelyekkel előre definiált lekérdezéseket és példákat tekinthet meg a fürtök riasztásának, megjelenítésének vagy elemzésének kiértékeléséhez és testreszabásához.

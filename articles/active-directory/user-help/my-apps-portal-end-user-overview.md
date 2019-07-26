@@ -1,6 +1,6 @@
 ---
 title: A Saját alkalmazások portál áttekintése – Azure Active Directory | Microsoft Docs
-description: Egy magas szintű áttekintése és a saját alkalmazások portál és a szolgáltatásokkal kapcsolatos további információkat megjelenítő hivatkozások megtekintéséhez.
+description: Magas szintű áttekintés és hivatkozások a saját alkalmazások portál és annak szolgáltatásaival kapcsolatos további információkra.
 services: active-directory
 author: eross-msft
 manager: daveba
@@ -13,30 +13,30 @@ ms.date: 05/08/2019
 ms.author: lizross
 ms.custom: user-help
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e8948040ac338a855c55e2ff44536c900adea7f6
-ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
+ms.openlocfilehash: a8827119d591ee1e3f12d0e8d8dcfc7ab88ce987
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65470712"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68383055"
 ---
 # <a name="what-is-the-my-apps-portal"></a>Mi az a Saját alkalmazások portál?
 
-A munkahelyi vagy iskolai fiók használata a web-alapú **saját alkalmazások** portálon megtekintheti, és indítsa el a számos szervezet felhőalapú alkalmazásokat, a profil és fiók információk megjelenítéséhez frissíteni, a **csoportok** információkat, és végrehajtásához **hozzáférési felülvizsgálatokkal** az alkalmazások és a csoportokat. Ha nem rendelkezik hozzáféréssel a **saját alkalmazások** portál, forduljon a Segélyszolgálathoz engedélyt.
+Használhatja munkahelyi vagy iskolai fiókját a webalapú **saját alkalmazások** portálján, hogy megtekintse és elindítsa a szervezete felhőalapú alkalmazásait, hogy frissítse a profilját és a fiókadatok adatait, és megtekintse a **csoportok** adatait, és elvégezze a következő műveleteket **:** alkalmazások és csoportok hozzáférési felülvizsgálatai. Ha nem rendelkezik hozzáféréssel a **saját alkalmazások** portálhoz, kérjen engedélyt az ügyfélszolgálattól.
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-end-user-my-apps-portal.md)]
 
 >[!Important]
->Ezek az anyagok felhasználók számára készültek. Ha Ön rendszergazda, és a felhőalapú alkalmazások kezelése a további tájékoztatást talál a [Alkalmazásfelügyelet dokumentációja](https://docs.microsoft.com/azure/active-directory/manage-apps).
+>Ezek az anyagok felhasználók számára készültek. Ha Ön rendszergazda, további információt talál arról, hogyan állíthatja be és kezelheti felhőalapú alkalmazásait az [alkalmazás-felügyeleti dokumentációban](https://docs.microsoft.com/azure/active-directory/manage-apps).
 
-## <a name="my-apps-portal-articles"></a>Saját alkalmazások portál cikkek
+## <a name="my-apps-portal-articles"></a>My apps portál cikkei
 
-A részletes információkat és útmutatást érhető el a **saját alkalmazások** portal, a következő cikkekben talál:
+Részletes információkat és útmutatást a **saját alkalmazások** portálján elérhető információkról a következő cikkekben talál:
 
 |Cikk |Leírás |
 |------|------------|
-|[A Saját alkalmazások portál elérése és használata](my-apps-portal-end-user-access.md)|Útmutatást, hogy eléri és használja a **saját alkalmazások** webportálon megtekintheti, és indítsa el a szervezet felhőalapú alkalmazásokat az eszközön.|
-|[Profil- és fiókadatok frissítése](my-apps-portal-end-user-update-profile.md)|Személyes adatait, amely akkor jelenik meg frissítésével kapcsolatos utasításokat a **profil** lapján a **saját alkalmazások** portálon.|
-|[A csoportok adatainak frissítése](my-apps-portal-end-user-groups.md)|Megtekintése és kezelése a csoportok kapcsolatos információkat a leírja a **csoportok** lapján a **saját alkalmazások** portálon.|
-|[Saját hozzáférés felülvizsgálatainak elvégzése](my-apps-portal-end-user-access-reviews.md)|Útmutatást, és végezhet el **hozzáférési felülvizsgálatokkal** vagy a felhasználó vagy csoport, a munkahelyi alkalmazásokhoz való hozzáférés megtagadásához a **hozzáférési felülvizsgálatok** lapján a **saját alkalmazások** portál.|
-|[A saját alkalmazások portál hibaelhárítása](my-apps-portal-end-user-troubleshoot.md)|Tekintse át az egyes kapcsolatos problémák esetére hibaelhárítási javaslatokat a **saját alkalmazások** portál, mielőtt, segítségért forduljon a Segélyszolgálathoz.|
+| [A Saját alkalmazások portál elérése és használata](my-apps-portal-end-user-access.md) | Útmutatás a **saját alkalmazások** webportál eléréséről és használatáról a szervezet felhőalapú alkalmazásainak az eszközön alapuló megtekintéséhez és elindításához. |
+| [Profil- és fiókadatok frissítése](my-apps-portal-end-user-update-profile.md) |Útmutató a **saját alkalmazások** portál **profil** lapján megjelenő személyes adatok frissítéséhez. |
+| [A csoportok adatainak frissítése](my-apps-portal-end-user-groups.md)|A csoportokkal kapcsolatos információk megtekintésének és kezelésének lépései a **saját alkalmazások** portál **csoportok** lapján. |
+| [Saját hozzáférés felülvizsgálatainak elvégzése](my-apps-portal-end-user-access-reviews.md) |Útmutató a **hozzáférési felülvizsgálatok** megtekintéséhez és végrehajtásához, hogy a felhasználók vagy csoportok hozzáférjenek a szervezet alkalmazásaihoz a **saját alkalmazások** portál **hozzáférési felülvizsgálatok** lapján. |
+| [A My apps portál hibáinak megoldása](my-apps-portal-end-user-troubleshoot.md) |Ha segítségre van szüksége, tekintse át a hibaelhárítási javaslatokat a **saját alkalmazások** portálon felmerülő problémákkal kapcsolatban. |

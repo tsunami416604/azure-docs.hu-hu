@@ -1,58 +1,58 @@
 ---
-title: Az Azure Cosmos DB az Azure Active Directory ügyféltanúsítvány-alapú hitelesítés
-description: Útmutató a tárelérési kulcsok a tanúsítványalapú hitelesítéshez az Azure AD identitás beállítása az Azure Cosmos DB-ből.
+title: Tanúsítványalapú hitelesítés Azure Active Directory Azure Cosmos DB
+description: Megtudhatja, hogyan konfigurálhat egy Azure AD-identitást tanúsítványalapú hitelesítésre a kulcsok Azure Cosmos DBból való eléréséhez.
 author: voellm
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 06/11/2019
 ms.author: tvoellm
 ms.reviewer: sngun
-ms.openlocfilehash: cc39cc09259c1ae681e1fee070777575e2788323
-ms.sourcegitcommit: 441e59b8657a1eb1538c848b9b78c2e9e1b6cfd5
+ms.openlocfilehash: 9d06cf334f08ba6ec9c47450d21d33733900ebe5
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67827846"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68356573"
 ---
-# <a name="certificate-based-authentication-for-an-azure-ad-identity-to-access-keys-from-an-azure-cosmos-db-account"></a>Tanúsítvány alapú hitelesítést egy Azure AD identitás, a tárelérési kulcsok az Azure Cosmos DB-fiók
+# <a name="certificate-based-authentication-for-an-azure-ad-identity-to-access-keys-from-an-azure-cosmos-db-account"></a>Tanúsítványalapú hitelesítés Azure AD-identitáshoz Azure Cosmos DB-fiók kulcsainak eléréséhez
 
-Ügyféltanúsítvány-alapú hitelesítés lehetővé teszi, hogy az ügyfélalkalmazás az Azure Active Directory (Azure AD) használatával hitelesíteni ügyféltanúsítvánnyal. Tanúsítvány alapú hitelesítést végezhet egy gépen, ahol meg kell identitást, például egy helyszíni gépre vagy virtuális gép az Azure-ban. Az alkalmazás ezután olvashatja az Azure Cosmos DB-kulcsok közvetlenül az alkalmazás a kulcsok nélkül. Ez a cikk bemutatja, hogyan hozzon létre egy minta Azure AD-alkalmazást, konfigurálja a tanúsítványalapú hitelesítéshez, jelentkezzen be Azure-ban az új alkalmazásazonosító, és ezután lekéri a kulcsok az Azure Cosmos-fiókjából. Ez a cikk az identitás beállítása az Azure Powershellt, és biztosít egy C# mintaalkalmazást, amely hitelesíti, és az Azure Cosmos-fiók kulcsok keresztül fér hozzá.  
+A tanúsítványalapú hitelesítés lehetővé teszi az ügyfélalkalmazás hitelesítését Azure Active Directory (Azure AD) és egy ügyféltanúsítvány használatával. A tanúsítványalapú hitelesítést olyan gépen is elvégezheti, amelyre szüksége van egy identitásra, például egy helyszíni gépre vagy egy Azure-beli virtuális gépre. Az alkalmazás elolvashatja Azure Cosmos DB kulcsait anélkül, hogy a kulcsokat közvetlenül az alkalmazásban kelljen volna beolvasnia. Ez a cikk bemutatja, hogyan hozhat létre egy minta Azure AD-alkalmazást, hogyan konfigurálhatja tanúsítványalapú hitelesítésre, bejelentkezhet az Azure-ba az új alkalmazás-identitás használatával, majd lekéri a kulcsokat az Azure Cosmos-fiókból. Ez a cikk a Azure PowerShell használatával állítja be az identitásokat, és C# egy minta alkalmazást biztosít, amely hitelesíti és hozzáfér a kulcsokhoz az Azure Cosmos-fiókból.  
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Telepítse a [legújabb verzió](/powershell/azure/install-az-ps) az Azure PowerShell.
+* Telepítse a Azure PowerShell [legújabb verzióját](/powershell/azure/install-az-ps) .
 
-* Ha nem rendelkezik egy [Azure-előfizetés](https://docs.microsoft.com/azure/guides/developer/azure-developer-guide#understanding-accounts-subscriptions-and-billing), hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) megkezdése előtt.
+* Ha nem rendelkezik [Azure](https://docs.microsoft.com/azure/guides/developer/azure-developer-guide#understanding-accounts-subscriptions-and-billing)-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) .
 
-## <a name="register-an-app-in-azure-ad"></a>Alkalmazás regisztrálása az Azure ad-ben
+## <a name="register-an-app-in-azure-ad"></a>Alkalmazás regisztrálása az Azure AD-ben
 
-Ebben a lépésben a minta-webalkalmazáshoz regisztrálni fogja az Azure AD-fiókjával. Ez az alkalmazás újabb segítségével olvassa el a kulcsokat az Azure Cosmos DB-fiókból. Használja az alábbi lépéseket kell regisztrálni egy alkalmazást: 
+Ebben a lépésben egy minta webalkalmazást fog regisztrálni az Azure AD-fiókjában. Ezt az alkalmazást később a rendszer a Azure Cosmos DB-fiók kulcsainak olvasásához használja. Egy alkalmazás regisztrálásához kövesse az alábbi lépéseket: 
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 
-1. Nyissa meg az Azure **Active Directory** panelen lépjen alkalmazás regisztrációk panelre, és válassza a **új regisztrációs**. 
+1. Nyissa meg az Azure **Active Directory** panelt, lépjen a Alkalmazásregisztrációk panelre, és válassza az **új regisztráció**lehetőséget. 
 
-   ![Új alkalmazás regisztrálása az Active Directoryban](./media/certificate-based-authentication/new-app-registration.png)
+   ![Új alkalmazás regisztrálása Active Directory](./media/certificate-based-authentication/new-app-registration.png)
 
-1. Töltse ki a **alkalmazás regisztrálása** űrlapját a következő adatokat:  
+1. Töltse ki az **alkalmazás regisztrálása** űrlapot a következő részletekkel:  
 
-   * **Név** – adjon meg egy nevet az alkalmazásnak, bármilyen nevet, például: "mintaalkalmazás" lehet.
-   * **Támogatott fióktípusok** – válasszon **fiókok csak a szervezeti könyvtárban adhatja meg (alapértelmezett könyvtár)** erőforrások engedélyezéséhez az alkalmazás eléréséhez az aktuális könyvtárban található. 
-   * **Átirányítási URL-cím** – válassza ki az alkalmazás típusú **webes** , és adjon meg egy URL-címet, ahol az alkalmazás üzemel, bármely URL-cím lehet. Például megadhat egy tesztcélú URL-cím például `https://sampleApp.com` nem probléma, még akkor is, ha az alkalmazás nem létezik.
+   * **Név** – adja meg az alkalmazás nevét, amely lehet bármilyen név, például "PéldaAlkalmazás".
+   * **Támogatott fióktípus** – **csak ebben a szervezeti könyvtárban** válassza a fiókok lehetőséget, hogy az aktuális könyvtárban lévő erőforrások hozzáférjenek ehhez az alkalmazáshoz. 
+   * **Átirányítási URL-cím** – válassza a **web** típusú alkalmazást, és adjon meg egy URL-címet, ahol az alkalmazás üzemeltetve van, bármilyen URL-cím lehet. Ebben a példában egy teszt URL-címet is megadhat, `https://sampleApp.com` például akkor is, ha az alkalmazás nem létezik.
 
-   ![Egy mintául szolgáló webalkalmazás regisztrációja](./media/certificate-based-authentication/register-sample-web-app.png)
+   ![Minta webalkalmazás regisztrálása](./media/certificate-based-authentication/register-sample-web-app.png)
 
-1. Válassza ki **regisztrálása** az űrlap kitöltése után.
+1. Az űrlap kitöltése után válassza a **regisztráció** lehetőséget.
 
-1. Az alkalmazás regisztrálása után jegyezze fel a **Application(client) azonosító** és **Objektumazonosító**, használhatja ezeket az adatokat a következő lépésben. 
+1. Ha az alkalmazás regisztrálva van, jegyezze fel az **alkalmazás (ügyfél) azonosítóját** és az **objektumazonosítót**, majd a következő lépésekben fogja használni ezeket az adatokat. 
 
-   ![Az alkalmazás és az objektum azonosítók beszerzése](./media/certificate-based-authentication/get-app-object-ids.png)
+   ![Az alkalmazás és az objektum azonosítóinak beolvasása](./media/certificate-based-authentication/get-app-object-ids.png)
 
-## <a name="install-the-azuread-module"></a>Az Azure ad-modul telepítése
+## <a name="install-the-azuread-module"></a>A AzureAD modul telepítése
 
-Ebben a lépésben az Azure AD PowerShell modul telepíteni fogja. Ez a modul az előző lépésben regisztrált alkalmazás Azonosítójának lekéréséhez, és rendelje hozzá, amelyek egy önaláírt tanúsítvány szükséges. 
+Ebben a lépésben telepíteni fogja az Azure AD PowerShell-modult. Ez a modul az előző lépésben regisztrált alkalmazás AZONOSÍTÓjának lekéréséhez és egy önaláírt tanúsítvány az alkalmazáshoz való hozzárendeléséhez szükséges. 
 
-1. Nyissa meg a Windows PowerShell ISE-ben rendszergazdai jogosultságokkal. Ha még nem tette meg, AZ PowerShell-modul telepítéséhez, és csatlakozzon az előfizetéséhez. Ha több előfizetéssel rendelkezik, a környezet aktuális előfizetésben beállíthatja, ahogyan az az alábbi parancsokat:
+1. Windows PowerShell integrált parancsprogram-kezelési környezet megnyitása rendszergazdai jogosultságokkal. Ha még nem tette meg, telepítse az az PowerShell-modult, és kapcsolódjon az előfizetéséhez. Ha több előfizetéssel rendelkezik, beállíthatja az aktuális előfizetés környezetét az alábbi parancsokban látható módon:
 
    ```powershell
 
@@ -64,16 +64,16 @@ Ebben a lépésben az Azure AD PowerShell modul telepíteni fogja. Ez a modul az
    Set-AzContext $context 
    ```
 
-1. Telepítse és importálja a [AzureAD](/powershell/module/azuread/?view=azureadps-2.0) modul
+1. A [AzureAD](/powershell/module/azuread/?view=azureadps-2.0) modul telepítése és importálása
 
    ```powershell
    Install-Module AzureAD
    Import-Module AzureAD 
    ```
 
-## <a name="sign-into-your-azure-ad"></a>Bejelentkezés az Azure AD-bA
+## <a name="sign-into-your-azure-ad"></a>Jelentkezzen be az Azure AD-be
 
-Jelentkezzen be az Azure AD, ahol regisztrálta az alkalmazást. A Connect-AzureAD paranccsal jelentkezzen be a fiókjába, adja meg az Azure-fiók hitelesítő adatait az előugró ablakban. 
+Jelentkezzen be az Azure AD-ba, ahol regisztrálta az alkalmazást. A AzureAD parancs használatával jelentkezzen be a fiókjába, és adja meg az Azure-fiókja hitelesítő adatait az előugró ablakban. 
 
 ```powershell
 Connect-AzureAD 
@@ -81,16 +81,16 @@ Connect-AzureAD
 
 ## <a name="create-a-self-signed-certificate"></a>Önaláírt tanúsítvány létrehozása
 
-Nyissa meg a Windows PowerShell ISE-t egy másik példányát, és hozzon létre egy önaláírt tanúsítványt, és olvassa el a tanúsítvány a kulcs a következő parancsokat:
+Nyissa meg a Windows PowerShell integrált parancsprogram-kezelési környezet egy másik példányát, és futtassa a következő parancsokat egy önaláírt tanúsítvány létrehozásához és a tanúsítványhoz tartozó kulcs beolvasásához:
 
 ```powershell
 $cert = New-SelfSignedCertificate -CertStoreLocation "Cert:\CurrentUser\My" -Subject "CN=sampleAppCert" -KeySpec KeyExchange
 $keyValue = [System.Convert]::ToBase64String($cert.GetRawCertData()) 
 ```
 
-## <a name="create-the-certificate-based-credential"></a>A tanúsítványalapú hitelesítő adat létrehozása 
+## <a name="create-the-certificate-based-credential"></a>Tanúsítvány alapú hitelesítő adat létrehozása 
 
-Ezután futtassa az alábbi parancsokat az alkalmazás objektum Azonosítójának lekéréséhez és a tanúsítványalapú hitelesítő adat létrehozása. Ebben a példában egy év után lejár a tanúsítvány beállított, beállíthatja bármely szükséges záró dátum.
+Ezután futtassa a következő parancsokat az alkalmazás objektum-AZONOSÍTÓjának lekéréséhez és a tanúsítványalapú hitelesítő adatok létrehozásához. Ebben a példában a tanúsítványt egy év után kell lejárni, beállíthatja a szükséges befejezési dátumra.
 
 ```powershell
 $application = Get-AzureADApplication -ObjectId <Object_ID_of_Your_Application>
@@ -98,34 +98,34 @@ $application = Get-AzureADApplication -ObjectId <Object_ID_of_Your_Application>
 New-AzureADApplicationKeyCredential -ObjectId $application.ObjectId -CustomKeyIdentifier "Key1" -Type AsymmetricX509Cert -Usage Verify -Value $keyValue -EndDate "2020-01-01"
 ```
 
-A fenti parancs az alábbi képernyőfelvételhez hasonlóan a kimenetet eredményezi:
+A fenti parancs az alábbi képernyőképhez hasonló kimenetet eredményez:
 
-![Tanúsítványalapú hitelesítő adat létrehozása kimenet](./media/certificate-based-authentication/certificate-based-credential-output.png)
+![Tanúsítványalapú hitelesítő adatok létrehozási kimenete](./media/certificate-based-authentication/certificate-based-credential-output.png)
 
-## <a name="configure-your-azure-cosmos-account-to-use-the-new-identity"></a>Az új identitás használatára az Azure Cosmos-fiókok konfigurálása
+## <a name="configure-your-azure-cosmos-account-to-use-the-new-identity"></a>Az Azure Cosmos-fiók konfigurálása az új identitás használatára
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 
-1. Lépjen az Azure Cosmos-fiókjába, nyissa meg a **hozzáférés-vezérlés (IAM)** panelen.
+1. Navigáljon az Azure Cosmos-fiókjához, és nyissa meg a **hozzáférés-vezérlés (iam) panelt** .
 
-1. Válassza ki **Hozzáadás** és **szerepkör-hozzárendelés hozzáadása**. Adja hozzá a PéldaAlkalmazás az előző lépésben létrehozott **közreműködői** szerepkör az alábbi képernyőképen látható módon:
+1. Válassza a **Hozzáadás** és a **szerepkör-hozzárendelés hozzáadása**lehetőséget. Adja hozzá az előző lépésben a **közreműködő** szerepkörrel létrehozott PéldaAlkalmazás az alábbi képernyőképen látható módon:
 
-   ![Az új identitás használatára az Azure Cosmos-fiókok konfigurálása](./media/certificate-based-authentication/configure-cosmos-account-with-identify.png)
+   ![Az Azure Cosmos-fiók konfigurálása az új identitás használatára](./media/certificate-based-authentication/configure-cosmos-account-with-identify.png)
 
-1. Válassza ki **mentése** után töltse ki az űrlapot
+1. Az űrlap kitöltése után válassza a **Mentés** lehetőséget.
 
 
-## <a name="access-the-keys-from-powershell"></a>A hívóbetűk powershellből
+## <a name="access-the-keys-from-powershell"></a>A kulcsok elérése a PowerShellből
 
-Ebben a lépésben jelentkezzen be az Azure az alkalmazás és a tanúsítvány létrehozása és a hozzáférési kulcsok az Azure Cosmos-fiók használatával. 
+Ebben a lépésben be kell jelentkeznie az Azure-ba az alkalmazás és a létrehozott tanúsítvány használatával, és elérheti az Azure Cosmos-fiókja kulcsait. 
 
-1. Először törölje az Azure-fiók hitelesítő adatai segítségével jelentkezzen be a fiókjába. Hitelesítő adatok a következő paranccsal törölheti:
+1. Először törölje a fiókba való bejelentkezéshez használt Azure-fiók hitelesítő adatait. A hitelesítő adatok a következő paranccsal törölhetők:
 
    ```powershell
    Disconnect-AzAccount -Username <Your_Azure_account_email_id> 
    ```
 
-1. Ezután ellenőrizze, hogy az alkalmazás hitelesítő adataival jelentkezzen be Azure Portalra, és az Azure Cosmos DB hívóbetűk:
+1. Ezt követően ellenőrizze, hogy be tud-e jelentkezni Azure Portal az alkalmazás hitelesítő adataival, és hozzáfér a Azure Cosmos DB kulcsokhoz:
 
    ```powershell
    Login-AzAccount -ApplicationId <Your_Application_ID> -CertificateThumbprint $cert.Thumbprint -ServicePrincipal -Tenant <Tenant_ID_of_your_application>
@@ -133,14 +133,14 @@ Ebben a lépésben jelentkezzen be az Azure az alkalmazás és a tanúsítvány 
    Invoke-AzResourceAction -Action listKeys -ResourceType "Microsoft.DocumentDB/databaseAccounts" -ApiVersion "2015-04-08" -ResourceGroupName <Resource_Group_Name_of_your_Azure_Cosmos_account> -ResourceName <Your_Azure_Cosmos_Account_Name> 
    ```
 
-Az előző parancs megjeleníti az elsődleges és másodlagos főkulcsok az Azure Cosmos-fiók. Az Azure Cosmos-fiókot, hogy ellenőrizze, hogy a get-kulcsok kérelem sikeres volt, és a "PéldaAlkalmazás" alkalmazás az eseményt kezdeményezett tevékenységnaplójának tekintheti meg. 
+Az előző parancs megjeleníti az Azure Cosmos-fiók elsődleges és másodlagos főkulcsait. Megtekintheti az Azure Cosmos-fiók tevékenységi naplóját annak ellenőrzéséhez, hogy a kulcsok beolvasása kérelem sikeres volt-e, és hogy az eseményt a "PéldaAlkalmazás" alkalmazás kezdeményezte-e. 
  
-![Az Azure AD-ben a get-kulcsok hívás ellenőrzése](./media/certificate-based-authentication/activity-log-validate-results.png)
+![A kulcsok beolvasása hívás ellenőrzése az Azure AD-ben](./media/certificate-based-authentication/activity-log-validate-results.png)
 
 
-## <a name="access-the-keys-from-a-c-application"></a>A kulcsának egy C# alkalmazás 
+## <a name="access-the-keys-from-a-c-application"></a>Kulcsok elérése C# alkalmazásból 
 
-Ez a forgatókönyv-kulcsok elérésével is ellenőrizheti a C# alkalmazás. A következő C# Konzolalkalmazás, amely az Azure Cosmos DB-kulcsok férhetnek hozzá az alkalmazást, regisztrálni az Active Directory használatával. Ne feledje frissíteni a bérlő azonosítója, clientID, certName, erőforráscsoport neve, előfizetés-Azonosítójára, az Azure Cosmos-fiók neve részletei a kód futtatása előtt. 
+Ezt a forgatókönyvet egy C# alkalmazás kulcsaihoz való hozzáféréssel is ellenőrizheti. A következő C# konzol alkalmazás, amely Azure Cosmos db kulcsokhoz fér hozzá a Active Directory regisztrált alkalmazás használatával. A kód futtatása előtt frissítse a tenantId, a clientID, a certName, az erőforráscsoport nevét, az előfizetés AZONOSÍTÓját, az Azure Cosmos-fiók nevét. 
 
 ```csharp
 using System;
@@ -197,7 +197,6 @@ namespace TodoListDaemonWithCert
             Console.WriteLine("Got result {0} and keys {1}", response.StatusCode.ToString(), response.Content.ReadAsStringAsync().Result);
         }
  
- 
         /// <summary>
         /// Reads the certificate
         /// </summary>
@@ -219,65 +218,19 @@ namespace TodoListDaemonWithCert
             store.Close();
             return cert;
         }
- 
- 
-        /// <summary>
-        /// Get an access token from Azure AD using client credentials.
-        /// If the attempt to get a token fails because the server is unavailable, retry twice after 3 seconds each
-        /// </summary>
-        private static async Task<AuthenticationResult> GetAccessToken(AuthenticationContext authContext, string resourceUri, ClientAssertionCertificate cert)
-        {
-            //
-            // Get an access token from Azure AD using client credentials.
-            // If the attempt to get a token fails because the server is unavailable, retry twice after 3 seconds each.
-            //
-            AuthenticationResult result = null;
-            int retryCount = 0;
-            bool retry = false;
- 
-            do
-            {
-                retry = false;
-                errorCode = 0;
- 
-                try
-                {
-                    result = await authContext.AcquireTokenAsync(resourceUri, cert);
-                }
-                catch (AdalException ex)
-                {
-                    if (ex.ErrorCode == "temporarily_unavailable")
-                    {
-                        retry = true;
-                        retryCount++;
-                        Thread.Sleep(3000);
-                    }
- 
-                    Console.WriteLine(
-                        String.Format("An error occurred while acquiring a token\nTime: {0}\nError: {1}\nRetry: {2}\n",
-                        DateTime.Now.ToString(),
-                        ex.ToString(),
-                        retry.ToString()));
- 
-                    errorCode = -1;
-                }
- 
-            } while ((retry == true) && (retryCount < 3));
-            return result;
-        }
     }
 }
 ```
 
-Ez a parancsfájl kimenete az elsődleges és másodlagos főkulcsok, az alábbi képernyőképen látható módon:
+Ez a parancsfájl az elsődleges és a másodlagos főkulcsokat az alábbi képernyőképen mutatja:
 
 ![csharp-alkalmazás kimenete](./media/certificate-based-authentication/csharp-application-output.png)
 
-Az előző szakaszban hasonlóan megtekintheti a tevékenységnapló ellenőrzése, hogy a get-kulcsok kérelem eseményt kezdeményezett a(z) a "PéldaAlkalmazás" alkalmazás az Azure Cosmos-fiók. 
+Az előző szakaszhoz hasonlóan megtekintheti az Azure Cosmos-fiókhoz tartozó műveletnapló adatait annak ellenőrzéséhez, hogy a "PéldaAlkalmazás" alkalmazás kezdeményezte-e a kulcsok kérése eseményt. 
 
 
 ## <a name="next-steps"></a>További lépések
 
-* [Biztonságos Azure Key Vault használatával az Azure Cosmos-kulcsok](access-secrets-from-keyvault.md)
+* [Azure Cosmos-kulcsok biztonságossá tétele Azure Key Vault használatával](access-secrets-from-keyvault.md)
 
 * [Biztonsági attribútumok az Azure Cosmos DB-hez](cosmos-db-security-attributes.md)

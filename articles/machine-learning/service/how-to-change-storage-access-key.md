@@ -1,7 +1,7 @@
 ---
-title: Tárfiók hozzáférési kulcsainak módosítása
+title: A Storage-fiók hozzáférési kulcsainak módosítása
 titleSuffix: Azure Machine Learning service
-description: Megtudhatja, hogyan módosíthatja a munkaterület által használt Azure Storage-fiók hozzáférési kulcsait. Az Azure Machine Learning szolgáltatás egy Azure Storage-fiókot használ, adatok és modellek. A tárfiók elérési kulcsának újragenerálásakor, frissítenie kell az Azure Machine Learning szolgáltatás új kulcsok használatához.
+description: Megtudhatja, hogyan módosíthatja a munkaterület által használt Azure Storage-fiók elérési kulcsait. Azure Machine Learning szolgáltatás egy Azure Storage-fiókot használ az adattároláshoz és a modellekhez. A Storage-fiók elérési kulcsának újragenerálása után frissítenie kell a Azure Machine Learning szolgáltatást az új kulcsok használatára.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,37 +10,37 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 05/17/2019
-ms.openlocfilehash: 488a032e177897caf2897ba6335f4e7f64dc0e4d
-ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
+ms.openlocfilehash: 0721542811709e9b938fea3f31bc2a0a28ecdc74
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67543833"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68358772"
 ---
-# <a name="regenerate-storage-account-access-keys"></a>Tárfiók hozzáférési kulcsainak újragenerálása
+# <a name="regenerate-storage-account-access-keys"></a>A Storage-fiók elérési kulcsainak újragenerálása
 
-Megtudhatja, hogyan módosíthatja az Azure Machine Learning szolgáltatás által használt Azure Storage-tárfiókok hozzáférési kulcsait. Az Azure Machine Learning a storage-fiókok segítségével tárolja az adatokat vagy a betanított modellek.
+Megtudhatja, hogyan módosíthatja a Azure Machine Learning szolgáltatás által használt Azure Storage-fiókok hozzáférési kulcsait. Azure Machine Learning használhatja a Storage-fiókokat az adattároláshoz vagy a betanított modellekhez.
 
-Biztonsági okokból szükség lehet módosítani az Azure Storage-fiók hozzáférési kulcsait. Amikor újragenerálja a hozzáférési kulcsot, az Azure Machine Learning frissíteni kell az új kulcs használatára. Az Azure Machine Learning használja a tárfiók mindkét modellt, és mint adattárolót.
+Biztonsági okokból előfordulhat, hogy módosítania kell egy Azure Storage-fiók hozzáférési kulcsait. A hozzáférési kulcs újralétrehozásakor a Azure Machine Learning frissíteni kell az új kulcs használatához. A Azure Machine Learning a Storage-fiókot is használhatja mind a Model Storage, mind pedig adattárként.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Az Azure Machine Learning szolgáltatás munkaterületén. További információkért lásd: a [hozzon létre egy munkaterületet](setup-create-workspace.md) cikk.
+* Az Azure Machine Learning szolgáltatás munkaterületén. További információt a [Munkaterület létrehozása](setup-create-workspace.md) című cikkben talál.
 
-* A [az Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py).
+* A [Azure Machine learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py).
 
-* A [Azure Machine Learning parancssori bővítmény](reference-azure-machine-learning-cli.md).
+* A [Azure Machine learning CLI-bővítmény](reference-azure-machine-learning-cli.md).
 
 <a id="whattoupdate"></a> 
 
-## <a name="what-needs-to-be-updated"></a>Frissíteni kell
+## <a name="what-needs-to-be-updated"></a>Mit kell frissíteni
 
-Storage-fiókok használható az Azure Machine Learning szolgáltatás a munkaterület (tárolja a naplókat, a modellek, a pillanatképek, stb.) és a egy adattár. A munkaterület frissítése a folyamat egyetlen Azure CLI-parancsot, és a tárfiók kulcsát frissítése után tudja futtatni. Adattárolók frissítési folyamatának bonyolultabb, és milyen adattárainak jelenleg használja a tárfiók felderítése, és újból regisztrálja a őket igényel.
+A Storage-fiókokat a Azure Machine Learning szolgáltatás munkaterülete (naplók, modellek, Pillanatképek stb.) és adattárként használhatja. A munkaterület frissítésének folyamata egyetlen Azure CLI-parancs, amely a Storage-kulcs frissítése után futtatható. Az adattárolók frissítésének folyamata nagyobb szerepet játszik, és azt igényli, hogy mely adattárakat használja jelenleg a Storage-fiók, majd regisztrálja újra azokat.
 
 > [!IMPORTANT]
-> Frissítse a munkaterületet, az Azure CLI és a pythonnal egyszerre adattárainak használatával. Csak az egyik vagy másik frissítése nem elegendő, és mindkettő frissítéséig hibát okozhat.
+> Frissítse a munkaterületet az Azure CLI-vel és az adattárolókkal egy időben a Python használatával. Csak az egyik vagy a másik frissítése nem elegendő, és hibákhoz vezethet, amíg mindkettő nem frissül.
 
-Az adattárolók által használt tárfiókok felderítése, a következő kód használatával:
+Az adattárolók által használt Storage-fiókok felderítéséhez használja a következő kódot:
 
 ```python
 import azureml.core
@@ -49,54 +49,56 @@ from azureml.core import Workspace, Datastore
 ws = Workspace.from_config()
 
 default_ds = ws.get_default_datastore()
-print("Default datstore: " + default_ds.name + ", storage account name: " + default_ds.account_name + ", container name: " + ds.container_name)
+print("Default datstore: " + default_ds.name + ", storage account name: " +
+      default_ds.account_name + ", container name: " + ds.container_name)
 
 datastores = ws.datastores
 for name, ds in datastores.items():
     if ds.datastore_type == "AzureBlob" or ds.datastore_type == "AzureFile":
-        print("datastore name: " + name + ", storage account name: " + ds.account_name + ", container name: " + ds.container_name)
+        print("datastore name: " + name + ", storage account name: " +
+              ds.account_name + ", container name: " + ds.container_name)
 ```
 
-Ez a kód bármilyen regisztrált adattárolók, amelyek használják az Azure Storage keres, és felsorolja a következő információkat:
+Ez a kód az Azure Storage-t használó regisztrált adattárakat keres, és felsorolja a következő információkat:
 
-* Adattár neve: A storage-fiókot regisztrálták az adattárolót neve.
+* Adattár neve: Annak az adattárnak a neve, amelyhez a Storage-fiók regisztrálva van.
 * Tárfiók neve: Az Azure Storage-fiók neve.
-* Tároló: A tároló a tárfiókban, amelyet a regisztrációt.
+* Tároló A regisztráció során használt Storage-fiókban található tároló.
 
-Ha a bejegyzés létezik a tárfiók elérési kulcsainak újragenerálása tervezi, mentse a adattárnevet, a tárfiók nevét és a tároló neve.
+Ha létezik egy bejegyzés ahhoz a Storage-fiókhoz, amelyet a hozzáférési kulcsok újragenerálásához tervez, mentse az adattár nevét, a Storage-fiók nevét és a tároló nevét.
 
 ## <a name="update-the-access-key"></a>Az elérési kulcs frissítése
 
-Frissítése az Azure Machine Learning szolgáltatás az új kulcsot használja, kövesse az alábbi lépéseket:
+Ha Azure Machine Learning szolgáltatást szeretné frissíteni az új kulcs használatára, kövesse az alábbi lépéseket:
 
 > [!IMPORTANT]
-> Hajtsa végre a lépéseket, a parancssori felület és a Python használatával adattárainak a munkaterület frissítése is. Csak az egyik vagy másik frissítése hibákat okozhat, amíg mindkettő frissülnek.
+> Hajtsa végre az összes lépést, és frissítse a munkaterületet a parancssori felület és az adattárolók használatával a Python használatával. A csak az egyik vagy a másik frissítése hibákhoz vezethet, amíg mindkettő nem frissül.
 
-1. A kulcs újragenerálása. A hozzáférési kulcs újragenerálása információkért lásd: a [kezelése a storage-fiók](/azure/storage/common/storage-account-manage#access-keys) cikk. Az új kulcs mentéséhez.
+1. A kulcs újbóli előállítása. A hozzáférési kulcsok újragenerálásával kapcsolatos információkért lásd a [Storage-fiók kezelése](/azure/storage/common/storage-account-manage#access-keys) című cikket. Mentse az új kulcsot.
 
-1. A munkaterület használata az új kulcs frissítéséhez használja az alábbi lépéseket:
+1. Ha frissíteni szeretné a munkaterületet az új kulcs használatára, kövesse az alábbi lépéseket:
 
-    1. Való bejelentkezéshez az Azure-előfizetést, amely tartalmazza a munkaterület a következő Azure CLI-parancs használatával:
+    1. Ha be szeretné jelentkezni a munkaterületet tartalmazó Azure-előfizetésbe az alábbi Azure CLI-paranccsal:
 
         ```azurecli-interactive
         az login
         ```
 
-    1. Az Azure Machine Learning-bővítményének telepítése használja a következő parancsot:
+    1. A Azure Machine Learning bővítmény telepítéséhez használja a következő parancsot:
 
         ```azurecli-interactive
         az extension add -n azure-cli-ml 
         ```
 
-    1. A munkaterület használata az új kulccsal frissíti, használja a következő parancsot. Cserélje le `myworkspace` az Azure Machine Learning-munkaterület neve, és cserélje le a `myresourcegroup` az Azure-erőforráscsoportot, amely tartalmazza a munkaterület nevét.
+    1. Ha a munkaterületet az új kulcs használatára szeretné frissíteni, használja a következő parancsot. Cserélje `myworkspace` le a nevet a Azure Machine learning-munkaterület nevére `myresourcegroup` , és a helyére írja be a munkaterületet tartalmazó Azure-erőforráscsoport nevét.
 
         ```azurecli-interactive
         az ml workspace sync-keys -w myworkspace -g myresourcegroup
         ```
 
-        Ez a parancs automatikusan szinkronizálja az új kulcsokat a munkaterület által használt Azure storage-fiókban.
+        Ez a parancs automatikusan szinkronizálja a munkaterület által használt Azure Storage-fiók új kulcsait.
 
-1. Regisztrálja újra a tárfiókot használó datastore(s), használja az értékeket a [frissíteni kell](#whattoupdate) szakaszt, és a kulcs 1. lépésben a következő kóddal:
+1. A Storage-fiókot használó adattár (ok) újbóli regisztrálásához használja a [mit kell frissíteni](#whattoupdate) és az 1. lépésben szereplő kulcsot a következő kóddal:
 
     ```python
     ds = Datastore.register_azure_blob_container(workspace=ws, 
@@ -107,8 +109,8 @@ Frissítése az Azure Machine Learning szolgáltatás az új kulcsot használja,
                                               overwrite=True)
     ```
 
-    Mivel `overwrite=True` van megadva, ez a kód felülírja a meglévő regisztrációt, és úgy, hogy használja az új kulccsal frissíti.
+    Mivel `overwrite=True` a meg van adva, ez a kód felülírja a meglévő regisztrációt, és frissíti azt az új kulcs használatára.
 
 ## <a name="next-steps"></a>További lépések
 
-A regisztrálás adattárainak további információkért lásd: a [ `Datastore` ](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore(class)?view=azure-ml-py) referencia osztály.
+Az adattárolók regisztrálásával kapcsolatos további információkért tekintse [`Datastore`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore(class)?view=azure-ml-py) meg az osztály referenciáját.

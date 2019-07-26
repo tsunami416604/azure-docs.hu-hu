@@ -1,114 +1,109 @@
 ---
-title: Bejelentkezési élmény az Azure AD Identity Protection |} A Microsoft Docs
-description: A felhasználói élmény áttekintést nyújt, ha az Identity Protection problémák elhárításáról vagy szervizelni egy felhasználó, vagy ha a multi-factor authentication szolgáltatás egy házirend által igényelt.
+title: Bejelentkezési élmény a Azure AD Identity Protectionkal | Microsoft Docs
+description: Áttekintést nyújt azokról a felhasználói élményekről, amikor az Identity Protection enyhített vagy szervizelt egy felhasználót, vagy ha egy házirendhez többtényezős hitelesítés szükséges.
 services: active-directory
-keywords: az Azure active directory identity protection a következőket cloud app discovery szolgáltatást, alkalmazások, biztonság, kockázati, kockázati szint, biztonsági rést, biztonsági házirend kezelése
-documentationcenter: ''
-author: MicrosoftGuyJFlo
-manager: daveba
-ms.assetid: de5bf637-75a7-4104-b6d8-03686372a319
 ms.service: active-directory
 ms.subservice: identity-protection
-ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/15/2018
 ms.author: joflore
+author: MicrosoftGuyJFlo
+manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 449f808e98c4e0db2972071e160f5335153a88f2
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 1e513027eed44ec7649f41f8786882aed8511bc6
+ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60295302"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68335496"
 ---
-# <a name="sign-in-experiences-with-azure-ad-identity-protection"></a>Az Azure AD Identity Protection a bejelentkezési élmény
-Az Azure Active Directory Identity Protection a következőket teheti:
+# <a name="sign-in-experiences-with-azure-ad-identity-protection"></a>Bejelentkezési élmény Azure AD Identity Protection
 
-* felhasználók regisztráljanak a többtényezős hitelesítés megkövetelése
-* kockázatos bejelentkezések és felhasználók feltört
+A Azure Active Directory Identity Protection a következőket teheti:
 
-Ezeket a problémákat a rendszer a választ a felhasználó bejelentkezési élményére hatással van, mert közvetlen bejelentkezés felhasználói név megadásával, és a jelszó nem lehet többé. További lépések szükségesek, amikor a felhasználó biztonságosan lekérése business programba.
+* a többtényezős hitelesítés regisztrálásának megkövetelése a felhasználóktól
+* kockázatos bejelentkezések és feltört felhasználók kezelése
 
-Ez a cikk áttekintést, a felhasználó bejelentkezési élményére minden olyan esetben, amely akkor fordulhat elő.
+Ha a rendszer ezekre a problémákra reagál, hatással van a felhasználó bejelentkezési felületére, mivel a felhasználó nevének megadásával közvetlenül bejelentkezik, és a jelszó nem lesz többé lehetséges. További lépések szükségesek ahhoz, hogy a felhasználó biztonságosan visszakerüljön a vállalatba.
+
+Ez a cikk áttekintést nyújt a felhasználó bejelentkezési élményéről minden olyan esetben, amely előfordulhat.
 
 **Többtényezős hitelesítés**
 
-* A multi-factor authentication regisztráció
+* Multi-Factor Authentication-regisztráció
 
-**Bejelentkezési kockázati:**
+**Kockázatos bejelentkezés**
 
-* Kockázatos bejelentkezési helyreállítási
-* Kockázatos bejelentkezés blokkolva
-* A multi-factor authentication regisztrációs kockázatos bejelentkezés során
+* Kockázatos bejelentkezések helyreállítása
+* Kockázatos bejelentkezés letiltva
+* Multi-Factor Authentication-regisztráció a kockázatos bejelentkezés során
 
-**Veszélyeztetett felhasználók**
+**Veszélyeztetett felhasználó**
 
-* Sérült biztonságú fiók helyreállítása
-* Sérült biztonságú fiók blokkolása
+* Sérült fiók helyreállítása
+* Sérült fiók blokkolva
 
-## <a name="multi-factor-authentication-registration"></a>A multi-factor authentication regisztráció
-A legjobb felhasználói élmény is, a feltört fiók helyreállítási folyamat és a kockázatos bejelentkezési folyamata, akkor, ha a helyi helyreállíthatja a felhasználó. Ha a felhasználók a multi-factor authentication van regisztrálva, már van egy biztonsági kihívások átadására használható fiókjával társított telefonszám. Nincs súgó segélyszolgálathoz vagy a rendszergazda bevonása fiók sérülésétől helyre van szükség. Ezért erősen ajánlott utasítani a felhasználókat a multi-factor authentication regisztrált. 
+## <a name="multi-factor-authentication-registration"></a>Multi-Factor Authentication-regisztráció
+A feltört fiók-helyreállítási folyamat és a kockázatos bejelentkezési folyamat legjobb felhasználói élménye az, amikor a felhasználó saját maga állíthatja helyre. Ha a felhasználók regisztrálva vannak a többtényezős hitelesítéshez, akkor már rendelkezik egy, a fiókjához társított telefonszámmal, amely biztonsági kihívásokat adhat át. Nem szükséges ügyfélszolgálati vagy rendszergazdai beavatkozás a fiókok biztonságának helyreállításához. Ezért javasoljuk, hogy a felhasználók a többtényezős hitelesítéshez legyenek regisztrálva. 
 
-A rendszergazdák olyan szabályzatot, amely megköveteli a felhasználóktól a fiókjaikat a további biztonsági ellenőrzés beállításához állíthatja be. Ez a szabályzat lehetővé teszi a felhasználóknak a többtényezős hitelesítési regisztráció kihagyását 14 napig. A 14 napos türelmi időszakban érték nem módosítható.
+A rendszergazdák beállíthat egy szabályzatot, amely megköveteli, hogy a felhasználók a fiókokat a további biztonsági ellenőrzéshez állítsa be. Ez a szabályzat lehetővé teszi a felhasználók számára, hogy legfeljebb 14 napig kihagyják a többtényezős hitelesítés regisztrációját. A 14 napos türelmi időszak nem konfigurálható.
 
-**A többtényezős hitelesítési regisztráció három lépésből áll:**
+**A multi-Factor Authentication-regisztráció három lépésből áll:**
 
-1. Az első lépésben a felhasználó élvezheti a fiók regisztrálásához a multi-factor authentication szolgáltatás beállítása a követelménnyel kapcsolatban értesítést. 
+1. Az első lépésben a felhasználó értesítést kap arról, hogy milyen követelmény a fiók beállítása a többtényezős hitelesítéshez. 
    
-    ![Szervizelési](./media/flows/140.png "szervizelés")
-2. Többtényezős hitelesítés beállításához, meg kell, hogy a rendszer tudja, hogyan szeretné elvégezni.
+    ![Szervizelés](./media/flows/140.png "Szervizelés")
+2. A többtényezős hitelesítés beállításához meg kell adnia, hogy a felhasználó hogyan kíván kapcsolatba lépni.
    
-    ![Szervizelési](./media/flows/141.png "szervizelés")
-3. A rendszer elküldi a vonatkozó kérdést állít be, és meg kell válaszolni.
+    ![Szervizelés](./media/flows/141.png "Szervizelés")
+3. A rendszer elküld egy kihívást Önnek, és Önnek kell válaszolnia.
    
-    ![Szervizelési](./media/flows/142.png "szervizelés")
+    ![Szervizelés](./media/flows/142.png "Szervizelés")
 
-## <a name="risky-sign-in-recovery"></a>Kockázatos bejelentkezési helyreállítási
-Amikor egy rendszergazda úgy konfigurálta egy házirendet a bejelentkezési kockázat, az érintett felhasználók megpróbálnak bejelentkezni, amikor értesítést kap. 
+## <a name="risky-sign-in-recovery"></a>Kockázatos bejelentkezések helyreállítása
+Ha egy rendszergazda szabályzatot konfigurált a bejelentkezési kockázatokhoz, az érintett felhasználók értesítést kapnak, amikor megpróbálnak bejelentkezni. 
 
 **A kockázatos bejelentkezési folyamat két lépésből áll:** 
 
-1. A felhasználó értesítést kap, hogy szokatlan körülményt kapcsolatban a bejelentkezés, például egy új helyről, eszközről vagy alkalmazásból jelentkezik be észlelt. 
+1. A felhasználó értesítést kap arról, hogy valami szokatlant észlelt a bejelentkezéssel kapcsolatban, például egy új helyről, eszközről vagy alkalmazásból való bejelentkezést. 
    
-    ![Szervizelési](./media/flows/120.png "szervizelés")
-2. A felhasználó személyazonossága igazolására egy biztonsági kérdéssel megoldására van szükség. Ha a felhasználó regisztrálva a többtényezős hitelesítéshez kell kerekíteni kivételre egy biztonsági kódot a telefonszámát. Mivel ez csak egy kockázatos bejelentkezéseket, és nem egy sérült biztonságú fiókot, a felhasználó nem kell módosítani a jelszót a folyamatban. 
+    ![Szervizelés](./media/flows/120.png "Szervizelés")
+2. A felhasználónak meg kell bizonyítania személyazonosságát egy biztonsági kérdés megoldásával. Ha a felhasználó regisztrálva van a többtényezős hitelesítéshez, meg kell adnia egy biztonsági kódot a telefonszámára. Mivel ez csak egy kockázatos bejelentkezés, és nem sérült fiók, a felhasználónak nem kell módosítania a jelszót ebben a folyamatban. 
    
-    ![Szervizelési](./media/flows/121.png "szervizelés")
+    ![Szervizelés](./media/flows/121.png "Szervizelés")
 
-## <a name="risky-sign-in-blocked"></a>Kockázatos bejelentkezés blokkolva
-A rendszergazdák a bejelentkezési kockázati szabályzat beállítása után jelentkezzen be a kockázati szint függően felhasználók számára is beállíthatja. Le nem tiltott lekéréséhez a végfelhasználóknak kapcsolatba kell lépnie az egy rendszergazda vagy a segélyszolgálathoz vagy megpróbálnak egy jól ismert helyről és eszközről jelentkezik be. Önálló megoldása a multi-factor authentication által helyreállítása lehetőség nem ebben az esetben.
+## <a name="risky-sign-in-blocked"></a>Kockázatos bejelentkezés letiltva
+A rendszergazdák emellett dönthetnek úgy is, hogy bejelentkezési kockázati házirendet állítanak be, amely letiltja a felhasználókat a kockázati szinttől függően. A zárolás feloldásához a végfelhasználóknak kapcsolatba kell lépniük egy rendszergazdával vagy ügyfélszolgálattal, vagy megpróbálnak bejelentkezni ismerős helyről vagy eszközről. Ebben az esetben a többtényezős hitelesítés megoldásával történő önálló helyreállítás nem lehetséges.
 
-![Szervizelési](./media/flows/200.png "szervizelés")
+![Szervizelés](./media/flows/200.png "Szervizelés")
 
-## <a name="compromised-account-recovery"></a>Sérült biztonságú fiók helyreállítása
-Felhasználói kockázati biztonsági szabályzat van konfigurálva, amikor a felhasználók, akik megfelelnek a felhasználó kockázati a házirendben megadott szint (és így feltételezik biztonsága sérült) haladjon végig a felhasználói biztonsági sérülés helyreállítási folyamatot, mielőtt bejelentkeznének. 
+## <a name="compromised-account-recovery"></a>Sérült fiók helyreállítása
+Ha a felhasználó biztonsági házirendje konfigurálva van, a házirendben megadott felhasználói kockázati szintnek megfelelő felhasználók a bejelentkezés előtt el kell mennek a felhasználói kompromisszumos helyreállítási folyamaton. 
 
-**A felhasználó biztonsági sérülés helyreállítási folyamat három lépésből áll:**
+**A felhasználó által feltört helyreállítási folyamat három lépésből áll:**
 
-1. A felhasználó értesítést kap, hogy a fiók biztonsági gyanús tevékenység miatt veszélyben van, vagy a kiszivárgott hitelesítő adatok.
+1. A rendszer értesíti a felhasználót, hogy a fiók biztonsága gyanús tevékenység vagy kiszivárgott hitelesítő adatok miatt veszélyben van.
    
-    ![Szervizelési](./media/flows/101.png "szervizelés")
-2. A felhasználó személyazonossága igazolására egy biztonsági kérdéssel megoldására van szükség. Ha a felhasználó regisztrálva van a multi-factor authentication önálló helyreállítását végezhetik illetéktelen kezekbe kerüljenek. Akkor kell round kivételre telefonszámán egy biztonsági kódot. 
+    ![Szervizelés](./media/flows/101.png "Szervizelés")
+2. A felhasználónak meg kell bizonyítania személyazonosságát egy biztonsági kérdés megoldásával. Ha a felhasználó a többtényezős hitelesítéshez van regisztrálva, akkor a biztonsága illetéktelen lehet. Egy biztonsági kódot kell átadni a telefonszámra. 
    
-   ![Szervizelési](./media/flows/110.png "szervizelés")
-3. Végül a felhasználónak kötelező jelszó módosítására, mivel valaki más volna hozzáférést a fiókjához. 
-   Ez a tapasztalat Pillanatképeiért alatt van.
+   ![Szervizelés](./media/flows/110.png "Szervizelés")
+3. Végül a felhasználónak meg kell változtatnia a jelszavát, mert valaki más is hozzáférhet a fiókjához. 
+   A jelen élmény képernyőképei alább találhatók.
    
-   ![Szervizelési](./media/flows/111.png "szervizelés")
+   ![Szervizelés](./media/flows/111.png "Szervizelés")
 
-## <a name="compromised-account-blocked"></a>Sérült biztonságú fiók blokkolása
-A felhasználó által feloldva felhasználói kockázati biztonsági házirendet letiltott lekéréséhez a felhasználónak kell forduljon a rendszergazdához, vagy a segélyszolgálathoz. Önálló megoldása a multi-factor authentication által helyreállítása lehetőség nem ebben az esetben.
+## <a name="compromised-account-blocked"></a>Sérült fiók blokkolva
+Ha olyan felhasználót szeretne beolvasni, amelyet a felhasználói kockázat biztonsági szabályzata blokkolt, akkor a felhasználónak kapcsolatba kell lépnie a rendszergazdával vagy az ügyfélszolgálattal. Ebben az esetben a többtényezős hitelesítés megoldásával történő önálló helyreállítás nem lehetséges.
 
-![Szervizelési](./media/flows/104.png "szervizelés")
+![Szervizelés](./media/flows/104.png "Szervizelés")
 
 ## <a name="reset-password"></a>Másik jelszó kérése
-Feltört felhasználók hozzáférése a bejelentkezés, ha a rendszergazda ideiglenes jelszót hozhat létre számukra. A felhasználóknak kell módosítania kell a jelszavát a következő bejelentkezés során.
+Ha a feltört felhasználók nem tudnak bejelentkezni, a rendszergazda ideiglenes jelszót hozhat hozzájuk. A felhasználóknak a következő bejelentkezéskor módosítaniuk kell a jelszavukat.
 
-![Szervizelési](./media/flows/160.png "szervizelés")
+![Szervizelés](./media/flows/160.png "Szervizelés")
 
 ## <a name="see-also"></a>Lásd még
-* [Azure Active Directory Identity Protection](../active-directory-identityprotection.md) 
 
+* [Azure Active Directory Identity Protection](../active-directory-identityprotection.md) 

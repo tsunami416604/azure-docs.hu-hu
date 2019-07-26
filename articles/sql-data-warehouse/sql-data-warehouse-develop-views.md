@@ -1,8 +1,8 @@
 ---
-title: T-SQL-nézetek használata az Azure SQL Data Warehouse |} A Microsoft Docs
-description: Tippek a T-SQL-nézetek használata az Azure SQL Data Warehouse használható megoldások fejlesztéséhez.
+title: T-SQL-nézetek használata a Azure SQL Data Warehouseban | Microsoft Docs
+description: Tippek a Azure SQL Data Warehouse T-SQL-nézeteinek használatához a megoldások fejlesztéséhez.
 services: sql-data-warehouse
-author: XiaoyuL-Preview
+author: XiaoyuMSFT
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
@@ -10,34 +10,34 @@ ms.subservice: development
 ms.date: 04/17/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: e8d516cfd764f947bd2fe7fc25f6394c313c0d9a
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: 8a770e66120e69271744942899186ece39b2a3c3
+ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67595498"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68479521"
 ---
-# <a name="views-in-azure-sql-data-warehouse"></a>Az Azure SQL Data Warehouse nézetek
-Tippek a T-SQL-nézetek használata az Azure SQL Data Warehouse használható megoldások fejlesztéséhez. 
+# <a name="views-in-azure-sql-data-warehouse"></a>A Azure SQL Data Warehouse nézetei
+Tippek a Azure SQL Data Warehouse T-SQL-nézeteinek használatához a megoldások fejlesztéséhez. 
 
-## <a name="why-use-views"></a>Nézetek miért érdemes használni?
-Nézetek használható számos különböző módon, hogy a megoldás minőségének javítása érdekében.  Ez a cikk bemutatja, hogyan bővítheti megoldását-nézetek, valamint a korlátozásokat, amelyek figyelembe kell venni néhány példa emeli ki.
+## <a name="why-use-views"></a>Miért érdemes a nézeteket használni?
+A nézetek számos különböző módon használhatók a megoldás minőségének javítására.  Ez a cikk néhány példát mutat be arra, hogyan gazdagíthatja a megoldásait a nézetekkel, valamint a szükséges korlátozásokat.
 
 
 > [!IMPORTANT]
-> A materializált nézet új szintaxisának [létrehozása tényleges táblán alapuló NÉZET AS SELECT](/sql/t-sql/statements/create-materialized-view-as-select-transact-sql?view=azure-sqldw-latest).  További információkért lásd: a [kibocsátási megjegyzések](/azure/sql-data-warehouse/release-notes-10-0-10106-0).
+> Tekintse meg az új, az anyagra vonatkozó nézet szintaxisát a kiválasztható [anyag létrehozása nézetben](/sql/t-sql/statements/create-materialized-view-as-select-transact-sql?view=azure-sqldw-latest).  További információ: [kibocsátási megjegyzések](/azure/sql-data-warehouse/release-notes-10-0-10106-0).
 >
 
 
 > [!NOTE]
-> A CREATE VIEW szintaxisa nem a cikkben leírtak szerint. További információkért lásd: a [NÉZET létrehozása](/sql/t-sql/statements/create-view-transact-sql) dokumentációját.
+> Ez a cikk nem tárgyalja a létrehozás nézet szintaxisát. További információ: [create View](/sql/t-sql/statements/create-view-transact-sql) dokumentáció.
 > 
 
-## <a name="architectural-abstraction"></a>Architekturális absztrakciós
+## <a name="architectural-abstraction"></a>Építészeti absztrakció
 
-Gyakori alkalmazásminta az táblák használatával hozzon létre TABLE AS SELECT (CTAS) egy objektum minta átnevezése, miközben az adatok betöltése után hozza létre újból.
+Gyakori alkalmazási minta a táblázatok újbóli létrehozása a CREATE TABLE AS SELECT (CTAS) használatával, amelyet egy objektum átnevezési mintája követ, az adatbetöltések során.
 
-A következő példa új dátumrekord hozzáadja a dátum dimenzió. Vegye figyelembe, hogyan DimDate_New, új tábla létrehozásakor és majd lecseréli az eredeti verzió a tábla neve.
+A következő példa új dátum rekordokat vesz fel egy dátum dimenzióba. Figyelje meg, hogy a rendszer először hozza létre az új táblát, a DimDate_New, majd átnevezi a tábla eredeti verziójának helyére.
 
 ```sql
 CREATE TABLE dbo.DimDate_New
@@ -57,19 +57,19 @@ RENAME OBJECT DimDate_New TO DimDate;
 
 ```
 
-Ez a megközelítés azonban eredményezhet táblák jelennek meg, és a egy felhasználó megtekintése, valamint a "tábla nem létezik" hibaüzenet eltűnik. Nézetek segítségével biztosíthatja a felhasználók számára egy egységes megjelenítési réteg végrehajtása közben a rendszer átnevezi a mögöttes objektumokat. Azáltal, hogy a nézetek adatokhoz való hozzáférését, a felhasználóknak nem kell az alapul szolgáló táblák láthatóságát. Ez a réteg egységes felhasználói élmény biztosítása, hogy az adatraktár tervezők tovább lehessen fejleszteni az adatmodell biztosít. Képes való összpontosításnak köszönhetően az alapul szolgáló táblák azt jelenti, hogy a tervezők a CTAS segítségével maximalizálhatja a teljesítményt az Adatbetöltési folyamat során.   
+Ez a megközelítés azonban azt eredményezheti, hogy a táblák megjelenhetnek, és nem jelennek meg a felhasználó nézetében, valamint a "táblázat nem létezik" hibaüzenetek. A nézetek segítségével konzisztens megjelenítési réteget biztosíthat a felhasználók számára, miközben az alapul szolgáló objektumokat átnevezi. Azáltal, hogy a nézetekben hozzáférést biztosít az adathozzáféréshez, a felhasználóknak nincs szükségük a mögöttes táblák láthatóságára. Ez a réteg egységes felhasználói élményt nyújt, és gondoskodik arról, hogy az adatraktár-tervezők is fejlődjön az adatmodellben. Az alapul szolgáló táblák fejlesztése azt jelenti, hogy a tervezők a CTAS használatával maximalizálják a teljesítményt az betöltési folyamat során.   
 
 ## <a name="performance-optimization"></a>Teljesítmény optimalizálása
-Nézetek kényszerítéséhez teljesítményre optimalizált illesztések táblák között is fel lehet használni. Ha például nézet beépítheti a redundáns terjesztési kulcs adatáthelyezés minimalizálása érdekében a csatlakozó feltétel részeként. Egy másik előnye, hogy a nézet egy adott lekérdezés vagy csatlakozó mutató kényszerített lehet. Nézetek használata ezen a módon kikapcsolja az garantálja, hogy összekapcsolások mindig megtörténik a felhasználók számára ne felejtse el a megfelelő szerkezet számára az illesztések nem kell optimális el.
+A nézetek a táblázatok közötti, teljesítményre optimalizált illesztések betartatására is használhatók. Egy nézet például belefoglalhatja a redundáns terjesztési kulcsot a csatlakozás feltételeinek részeként az adatáthelyezés csökkentése érdekében. A nézetek egy másik előnye, hogy egy adott lekérdezést kényszerítenek, vagy a tipphez csatlakoznak. A nézetek ily módon történő használata garantálja, hogy az összekapcsolások mindig optimális módon történnek, elkerülve a felhasználóknak az illesztések helyes szerkezetének megemlékezését.
 
 ## <a name="limitations"></a>Korlátozások
-Az SQL Data Warehouse nézetek csak a metaadatokat, tárolódnak. Ennek következtében a következő beállítások nem érhetők el:
+A SQL Data Warehouse nézetei csak metaadatokként vannak tárolva. Ennek következtében a következő beállítások nem érhetők el:
 
-* Nem kötelező beállítani a séma
-* Alaptáblát nem lehet frissíteni a nézeten keresztül
-* Nézetek nem hozható létre az ideiglenes táblák
-* Nem támogatott a a KIBONTÁS / NOEXPAND mutató
-* Nincsenek nem indexelt nézetek az SQL Data warehouse-bA
+* Nincs séma-kötési beállítás
+* Az alaptáblák nem frissíthetők a nézeten keresztül
+* Ideiglenes táblákon nem hozhatók létre nézetek
+* A kibontási/kibontási útmutatók nem támogatottak
+* Nincsenek indexelt nézetek a SQL Data Warehouse
 
 ## <a name="next-steps"></a>További lépések
 További fejlesztési tippek: [SQL Data Warehouse fejlesztői áttekintés](sql-data-warehouse-overview-develop.md).

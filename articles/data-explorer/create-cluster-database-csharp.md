@@ -1,20 +1,20 @@
 ---
-title: Hozzon létre egy Azure Data Explorer fürt és -adatbázis használatávalC#
-description: Ismerje meg, hogyan hozhat létre Azure Data Explorer fürt és -adatbázis használatával aC#
+title: Azure Adatkezelő-fürt és-adatbázis létrehozása a használatávalC#
+description: Ismerje meg, hogyan hozhat létre Azure Adatkezelő-fürtöt és-adatbázist a használatávalC#
 author: oflipman
 ms.author: oflipman
 ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 06/03/2019
-ms.openlocfilehash: e51551d4ce8061122fce52b05e68e102b71c27a8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 64f16c2ad6fdeeb47b747eab24587b43f3df5130
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66494608"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68355954"
 ---
-# <a name="create-an-azure-data-explorer-cluster-and-database-by-using-c"></a>Hozzon létre egy Azure Data Explorer fürt és -adatbázis használatávalC#
+# <a name="create-an-azure-data-explorer-cluster-and-database-by-using-c"></a>Azure Adatkezelő-fürt és-adatbázis létrehozása a használatávalC#
 
 > [!div class="op_single_selector"]
 > * [Portál](create-cluster-database-portal.md)
@@ -22,103 +22,102 @@ ms.locfileid: "66494608"
 > * [PowerShell](create-cluster-database-powershell.md)
 > * [C#](create-cluster-database-csharp.md)
 > * [Python](create-cluster-database-python.md)
->  
 
-Az Azure Data Explorer egy gyors, teljes mértékben felügyelt adatelemző szolgáltatás, amellyel valós idejű elemzést végezhet többek között alkalmazások, webhelyek és IoT-eszközök nagy mennyiségű adatfolyamain. Az Azure Data Explorer használatához, először hozzon létre egy fürtöt, és az adott fürt egy vagy több adatbázis létrehozása. Ezután (betöltés) adatokat az adatbázisba fogadására, így vonatkozóan, lekérdezéseket futtathat. Ebben a cikkben létrehozhat egy fürtöt, és a egy adatbázis használatával C#.
+Az Azure Data Explorer egy gyors, teljes mértékben felügyelt adatelemző szolgáltatás, amellyel valós idejű elemzést végezhet többek között alkalmazások, webhelyek és IoT-eszközök nagy mennyiségű adatfolyamain. Az Azure Adatkezelő használatához először létre kell hoznia egy fürtöt, és létre kell hoznia egy vagy több adatbázist a fürtben. Ezután betöltheti az adatterhelést egy adatbázisba, így lekérdezéseket futtathat. Ebben a cikkben egy fürtöt és egy adatbázist hoz létre a használatával C#.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Ha még nincs telepítve a Visual Studio 2019, letöltheti és használhatja a **ingyenes** [Visual Studio 2019 Community Edition](https://www.visualstudio.com/downloads/). Ügyeljen arra, hogy engedélyezze az **Azure Development** használatát a Visual Studio telepítése során.
+* Ha nincs telepítve a Visual Studio 2019, letöltheti és használhatja az **ingyenes** [Visual Studio 2019 Community Edition verziót](https://www.visualstudio.com/downloads/). Ügyeljen arra, hogy engedélyezze az **Azure Development** használatát a Visual Studio telepítése során.
 
 * Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes Azure-fiókot](https://azure.microsoft.com/free/) a virtuális gép létrehozásának megkezdése előtt.
 
-## <a name="install-c-nuget"></a>Telepítés C# nuget
+## <a name="install-c-nuget"></a>A C# Nuget telepítése
 
-1. Telepítse a [Azure Data Explorer (Kusto) nuget-csomag](https://www.nuget.org/packages/Microsoft.Azure.Management.Kusto/).
+1. Telepítse az [Azure adatkezelő (Kusto) nuget-csomagot](https://www.nuget.org/packages/Microsoft.Azure.Management.Kusto/).
 
-1. Telepítse a [Microsoft.IdentityModel.Clients.ActiveDirectory nuget-csomag](https://www.nuget.org/packages/Microsoft.IdentityModel.Clients.ActiveDirectory/) a hitelesítéshez.
+1. Telepítse a [Microsoft. IdentityModel. clients. ActiveDirectory nuget-csomagot](https://www.nuget.org/packages/Microsoft.IdentityModel.Clients.ActiveDirectory/) a hitelesítéshez.
 
-## <a name="create-the-azure-data-explorer-cluster"></a>Az Azure Data Explorer-fürt létrehozása
+## <a name="create-the-azure-data-explorer-cluster"></a>Az Azure Adatkezelő-fürt létrehozása
 
-1. A fürt létrehozása a következő kód használatával:
+1. Hozza létre a fürtöt a következő kód használatával:
 
-    ```C#-interactive
-    string resourceGroupName = "testrg";    
-    string clusterName = "mykustocluster";
-    string location = "Central US";
-    AzureSku sku = new AzureSku("D13_v2", 5);
-    Cluster cluster = new Cluster(location, sku);
-    
+    ```csharp
+    var resourceGroupName = "testrg";
+    var clusterName = "mykustocluster";
+    var location = "Central US";
+    var sku = new AzureSku("D13_v2", 5);
+    var cluster = new Cluster(location, sku);
+
     var authenticationContext = new AuthenticationContext("https://login.windows.net/{tenantName}");
     var credential = new ClientCredential(clientId: "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx", clientSecret: "xxxxxxxxxxxxxx");
-    var result = authenticationContext.AcquireTokenAsync(resource: "https://management.core.windows.net/", clientCredential: credential).Result;
-    
+    var result = await authenticationContext.AcquireTokenAsync(resource: "https://management.core.windows.net/", clientCredential: credential);
+
     var credentials = new TokenCredentials(result.AccessToken, result.AccessTokenType);
-     
-    KustoManagementClient KustoManagementClient = new KustoManagementClient(credentials)
+
+    var kustoManagementClient = new KustoManagementClient(credentials)
     {
         SubscriptionId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx"
     };
 
-    KustoManagementClient.Clusters.CreateOrUpdate(resourceGroupName, clusterName, cluster);
+    kustoManagementClient.Clusters.CreateOrUpdate(resourceGroupName, clusterName, cluster);
     ```
 
    |**Beállítás** | **Ajánlott érték** | **Mező leírása**|
    |---|---|---|
-   | clusterName | *mykustocluster* | A fürt kívánt nevét.|
-   | sku | *D13_v2* | A Termékváltozat a fürthöz használt. |
-   | resourceGroupName | *testrg* | Az erőforrás csoport neve, ahol a fürt létrejön. |
+   | clusterName | *mykustocluster* | A fürt kívánt neve.|
+   | sku | *D13_v2* | A fürthöz használni kívánt SKU. |
+   | resourceGroupName | *testrg* | Az erőforráscsoport neve, amelyben a fürt létre lesz hozva. |
 
-    Nincsenek további nem kötelező paraméterek, amelyet használhat, például a fürt kapacitásának.
+    További választható paramétereket is használhat, például a fürt kapacitását.
 
-1. Állítsa be [a hitelesítő adatok](https://docs.microsoft.com/dotnet/azure/dotnet-sdk-azure-authenticate?view=azure-dotnet)
+1. [Hitelesítő adatok](https://docs.microsoft.com/dotnet/azure/dotnet-sdk-azure-authenticate?view=azure-dotnet) beállítása
 
-1. A következő paranccsal ellenőrizze, hogy a fürt létrehozása sikeresen megtörtént:
+1. A következő parancs futtatásával győződjön meg arról, hogy a fürt létrehozása sikeres volt-e:
 
-    ```C#-interactive
-    KustoManagementClient.Clusters.Get(resourceGroupName, clusterName);
+    ```csharp
+    kustoManagementClient.Clusters.Get(resourceGroupName, clusterName);
     ```
 
-Ha az eredmény tartalmazza `ProvisioningState` együtt a `Succeeded` érték, akkor a fürt sikeresen létrejött.
+Ha az eredmény tartalmazza `ProvisioningState` az `Succeeded` értéket, a fürt létrehozása sikeresen megtörtént.
 
-## <a name="create-the-database-in-the-azure-data-explorer-cluster"></a>Az adatbázis létrehozása az Azure Data Explorer fürtben
+## <a name="create-the-database-in-the-azure-data-explorer-cluster"></a>Az adatbázis létrehozása az Azure Adatkezelő-fürtben
 
-1. Az adatbázis létrehozása a következő kód használatával:
+1. Hozza létre az adatbázist a következő kód használatával:
 
-    ```c#-interactive
-    TimeSpan hotCachePeriod = new TimeSpan(3650, 0, 0, 0);
-    TimeSpan softDeletePeriod = new TimeSpan(3650, 0, 0, 0);
-    string databaseName = "mykustodatabase";
-    Database database = new Database(location: location, softDeletePeriod: softDeletePeriod, hotCachePeriod: hotCachePeriod);
-    
-    KustoManagementClient.Databases.CreateOrUpdate(resourceGroupName, clusterName, databaseName, database);
+    ```csharp
+    var hotCachePeriod = new TimeSpan(3650, 0, 0, 0);
+    var softDeletePeriod = new TimeSpan(3650, 0, 0, 0);
+    var databaseName = "mykustodatabase";
+    var database = new Database(location: location, softDeletePeriod: softDeletePeriod, hotCachePeriod: hotCachePeriod);
+
+    kustoManagementClient.Databases.CreateOrUpdate(resourceGroupName, clusterName, databaseName, database);
     ```
 
    |**Beállítás** | **Ajánlott érték** | **Mező leírása**|
    |---|---|---|
-   | clusterName | *mykustocluster* | A fürt, ahol létrejön az adatbázis neve.|
+   | clusterName | *mykustocluster* | Annak a fürtnek a neve, ahová az adatbázist létre kívánja hozni.|
    | databaseName | *mykustodatabase* | Az adatbázis neve.|
-   | resourceGroupName | *testrg* | Az erőforrás csoport neve, ahol a fürt létrejön. |
-   | softDeletePeriod | *3650:00:00:00* | Mennyi ideig megtartott adatok lekérdezhetők. |
-   | hotCachePeriod | *3650:00:00:00* | Mennyi ideig megtartott adatok a gyorsítótárban. |
+   | resourceGroupName | *testrg* | Az erőforráscsoport neve, amelyben a fürt létre lesz hozva. |
+   | softDeletePeriod | *3650:00:00:00* | Az az időtartam, ameddig az adat a lekérdezés számára elérhető marad. |
+   | hotCachePeriod | *3650:00:00:00* | Az az időtartam, ameddig az adat a gyorsítótárban lesz tárolva. |
 
-2. A következő paranccsal tekintse meg az Ön által létrehozott adatbázist:
+2. Futtassa a következő parancsot a létrehozott adatbázis megtekintéséhez:
 
-    ```c#-interactive
-    KustoManagementClient.Databases.Get(resourceGroupName, clusterName, databaseName);
+    ```csharp
+    kustoManagementClient.Databases.Get(resourceGroupName, clusterName, databaseName);
     ```
 
-Most már egy fürt és a egy adatbázist.
+Most már rendelkezik egy fürttel és egy adatbázissal.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-* Ha azt tervezi, hajtsa végre a más cikkeket, megtarthatja a létrehozott erőforrásokat.
-* Erőforrások törléséhez törölje a fürtöt. Ha töröl egy fürtöt, benne az adatbázisokat is törli. A következő paranccsal törölje a fürtöt:
+* Ha azt tervezi, hogy követi a többi cikket, tartsa meg a létrehozott erőforrásokat.
+* Az erőforrások törléséhez törölje a fürtöt. Ha töröl egy fürtöt, az az összes adatbázisát is törli. A fürt törléséhez használja a következő parancsot:
 
-    ```C#-interactive
-    KustoManagementClient.Clusters.Delete(resourceGroupName, clusterName);
+    ```csharp
+    kustoManagementClient.Clusters.Delete(resourceGroupName, clusterName);
     ```
 
 ## <a name="next-steps"></a>További lépések
 
-* [Adatokat az Azure SDK-val Data Explorer .NET Standard (előzetes verzió)](net-standard-ingest-data.md)
+* [Adatbevitel az Azure Adatkezelő .NET Standard SDK-val (előzetes verzió)](net-standard-ingest-data.md)

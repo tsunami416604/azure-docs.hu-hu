@@ -1,6 +1,6 @@
 ---
 title: fájl belefoglalása
-description: az előfeltétel-fájlját
+description: az előfeltételeket tartalmazó fájl belefoglalása
 services: active-directory-ds
 documentationcenter: ''
 author: mahesh-unnikrishnan
@@ -16,16 +16,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/22/2018
 ms.author: maheshu
-ms.openlocfilehash: 1fba8cc9ae40cf5539016bbd73de65f557a64136
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: f7b1b294e9500ef9e0aadd24cfe3cd4e61fddda1
+ms.sourcegitcommit: c556477e031f8f82022a8638ca2aec32e79f6fd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67179701"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68426899"
 ---
 > [!IMPORTANT]
-> **Az Azure AD tartományi szolgáltatásokra, Jelszókivonat-szinkronizálás engedélyezése, a cikkben leírt feladatok végrehajtása előtt.**
+> **Az ebben a cikkben foglalt feladatok végrehajtása előtt engedélyezze a jelszó-kivonatok szinkronizálását Azure AD Domain Services.**
 >
-> Az Azure AD-címtárban található felhasználók típusától függően az alábbi utasításokat követve. Végezze el mindkét, ha többféle, csak felhőalapú és szinkronizált felhasználói fiókok Azure AD-címtárát. Nem lehet a következő műveletek végrehajtására, abban az esetben próbált B2B Vendég fiókkal (például a gmail vagy egy másik identitásszolgáltatót, amely lehetővé tesszük az MSA) használata, mivel ezek a felhasználók szinkronizálása a felügyelt tartományhoz ezeket a jelszavát nem tudjuk a címtárban lévő vendégfiókok vannak. Ezeket a fiókokat, beleértve a jelszavukat a teljes körű információkat lenne az Azure AD-en kívül, és ahogy ezt az információt nem szerepel az Azure AD ezért azt nem még lekérése szinkronizálva a felügyelt tartományhoz. 
-> - [Csak felhőalapú felhasználói fiókokra vonatkozó utasítások](../articles/active-directory-domain-services/active-directory-ds-getting-started-password-sync.md)
+> Kövesse az alábbi utasításokat az Azure AD-címtárban lévő felhasználók típusától függően. Ha az Azure AD-címtárban a csak felhőalapú és szinkronizált felhasználói fiókokat kombinálja, hajtsa végre mindkét útmutatót. Előfordulhat, hogy nem tudja végrehajtani a következő műveleteket abban az esetben, ha B2B vendég fiókot szeretne használni (például a Gmail vagy a MSA egy másik, az általunk engedélyezett identitás-szolgáltatótól), mert nem rendelkezünk jelszavával a felügyelt tartományra szinkronizált felhasználók számára a címtárban található vendég fiókok. Ezeknek a fiókoknak a teljes információi, köztük a jelszavuk az Azure AD-n kívül esnek, és mivel ezek az információk nem az Azure AD-ben jelennek meg, így nem is szinkronizálható a felügyelt tartományba. 
+> - [A csak felhőalapú felhasználói fiókokra vonatkozó utasítások](../articles/active-directory-domain-services/active-directory-ds-getting-started-password-sync.md)
 > - [A helyszíni címtárból szinkronizált felhasználói fiókokra vonatkozó utasítások](../articles/active-directory-domain-services/active-directory-ds-getting-started-password-sync-synced-tenant.md)

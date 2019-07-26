@@ -1,5 +1,5 @@
 ---
-title: A Kerberos általi korlátozott delegálás konfigurációi alkalmazásproxy hibaelhárítása |} A Microsoft Docs
+title: Az App proxy Kerberos által korlátozott delegálási konfigurációinak hibáinak megoldása | Microsoft Docs
 description: A Kerberos által korlátozott delegálás konfigurációi alkalmazásproxy hibaelhárítása
 services: active-directory
 documentationcenter: ''
@@ -16,12 +16,12 @@ ms.date: 04/23/2019
 ms.author: mimart
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c758b473dcdf36456bcc3569c18849488ad14983
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 3ca50cfb8697fdbb8c71054c5a6b4d5e23792eb5
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67702659"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68381520"
 ---
 # <a name="troubleshoot-kerberos-constrained-delegation-configurations-for-application-proxy"></a>A Kerberos általi korlátozott delegálás konfigurációi alkalmazásproxy hibaelhárítása
 
@@ -46,7 +46,7 @@ Emiatt tanácsos győződjön meg arról, hogy megfelel-e az összes előfeltét
 
 - Már nem ritka, hogy egy tartományi tagkiszolgáló, egy adott tartományvezérlővel (DC) a biztonságos csatornához párbeszédpanel megnyitásához. A kiszolgáló előfordulhat, hogy helyezze át egy másik párbeszédpanelen egy adott időpontban. Így az összekötő gazdagépek nem korlátozott csak bizonyos helyi hely DCs folytatott kommunikációra.
 - Tartományok közötti forgatókönyvek támaszkodik, amely egy összekötő gazdagépet a tartományvezérlőket, lehet, hogy a helyi hálózat pereme kívül közvetlen hivatkozásokat. Ezekben az esetekben fontos egyaránt is küldeni a forgalmat kezdve a tartományvezérlők, amelyek a saját tartományához. Ha nem, a delegálás nem sikerül.
-- Ahol lehetséges, helyez minden aktív IP-CÍMEK vagy az Azonosítók eszközök összekötő állomások és a tartományvezérlők között. Ezek az eszközök néha túl zavaró és zavarják a core RPC-adatforgalmat.
+- Ahol lehetséges, helyez minden aktív IP-CÍMEK vagy az Azonosítók eszközök összekötő állomások és a tartományvezérlők között. Ezek az eszközök időnként túlságosan zavaróak és akadályozzák az alapvető RPC-forgalmat.
 
 Delegálás vizsgálat egyszerű forgatókönyvhöz. A több változót használ, előfordulhat, hogy minél ugyanazért a kell. Időt takaríthat meg, a tesztelés egy összekötőt korlátozza. További összekötők hozzáadása a probléma megoldása után.
 
@@ -60,7 +60,7 @@ Mi látható KCD probléma? Nincsenek számos gyakori megjelölések KCD SSO nem
 
 ![Példa: Nem sikerült, mert nem rendelkezik engedéllyel engedélyezési](./media/application-proxy-back-end-kerberos-constrained-delegation-how-to/graphic2.png)
 
-Az azonos tünet mindkét ezeket a lemezképeket megjelenítése: Egyszeri bejelentkezés sikertelen. Az alkalmazás felhasználói hozzáférés megtagadva.
+Mindkét rendszerkép ugyanazt a tünetet jeleníti meg: Egyszeri bejelentkezés sikertelen. Az alkalmazás felhasználói hozzáférés megtagadva.
 
 ## <a name="troubleshooting"></a>Hibaelhárítás
 
@@ -129,7 +129,7 @@ A fogyasztó az összekötő által biztosított Kerberos jegy. Ezen a ponton v�
 
      *Microsoft AAD alkalmazásproxy-összekötő nem tudja hitelesíteni a felhasználót, mert a háttérkiszolgáló válaszol egy HTTP 401-es hiba miatt a Kerberos hitelesítési kísérleteket.*
 
-      ![HTTTP 401-es tiltott hibaüzenetet jeleníti meg](./media/application-proxy-back-end-kerberos-constrained-delegation-how-to/graphic8.png)
+      ![A HTTTP 401 tiltott hibáját mutatja](./media/application-proxy-back-end-kerberos-constrained-delegation-how-to/graphic8.png)
 
    - Ellenőrizze az IIS-alkalmazás. Győződjön meg arról, hogy a konfigurált alkalmazáshoz a készletet és az egyszerű szolgáltatásnév használatára vannak konfigurálva ugyanazt a fiókot az Azure ad-ben. Keresse meg az IIS-ben, az alábbi ábrán látható módon:
 
@@ -137,7 +137,7 @@ A fogyasztó az összekötő által biztosított Kerberos jegy. Ezen a ponton v�
 
       Ha már tudja, hogy az identitás, ellenőrizze, hogy ennek a fióknak az egyszerű szolgáltatásnév van konfigurálva. Például: `setspn –q http/spn.wacketywack.com`. Adja meg a következő szöveget a parancsot a parancssorba:
 
-      ![A SetSPN parancssori ablakban jeleníti meg](./media/application-proxy-back-end-kerberos-constrained-delegation-how-to/graphic10.png)
+      ![A SetSPN parancssori ablak megjelenítése](./media/application-proxy-back-end-kerberos-constrained-delegation-how-to/graphic10.png)
 
    - Ellenőrizze az egyszerű Szolgáltatásnevet, az alkalmazás beállításait a portálon képest van meghatározva. Győződjön meg arról, hogy az azonos SPN-t a következő célon: Azure AD-fiókot konfigurálni az alkalmazáskészlet alkalmazás használja.
 
@@ -165,8 +165,8 @@ Ha még nem lehet a folyamatban, a Microsoft ügyfélszolgálatához a segítsé
 
 ## <a name="other-scenarios"></a>Egyéb forgatókönyvek
 
-- Az Azure Application Proxy egy Kerberos-jegyet kérelmek egy alkalmazáshoz a kérelem elküldése előtt. Bizonyos külső alkalmazások nem tetszik a rendszerhitelesítési módszert. Ezek az alkalmazások várhatóan a hagyományosabb tárgyalások kerül sor. Az első kérelem szolgáltatás névtelen, amely lehetővé teszi, hogy az alkalmazás számára, hogy a 401-es keresztül támogatja a hitelesítési típusok elhárítását.
-- Többugrásos hitelesítési gyakran olyan forgatókönyvekben használatos, a alkalmazás rétegzett, háttér és kezelőfelület, ahol mindkettő hitelesítő adatokat kér, például az SQL Server Reporting Services. A többszörös ugrásos forgatókönyvet, lásd: támogatási cikk [Kerberos által korlátozott delegálás lehet szükséges Protokollátmenet Többugrásos forgatókönyvekben](https://support.microsoft.com/help/2005838/kerberos-constrained-delegation-may-require-protocol-transition-in-mul).
+- Az Azure Application Proxy egy Kerberos-jegyet kérelmek egy alkalmazáshoz a kérelem elküldése előtt. Egyes harmadik féltől származó alkalmazások nem szeretik ezt a hitelesítési módszert. Ezek az alkalmazások várhatóan a hagyományosabb tárgyalások kerül sor. Az első kérelem szolgáltatás névtelen, amely lehetővé teszi, hogy az alkalmazás számára, hogy a 401-es keresztül támogatja a hitelesítési típusok elhárítását.
+- Többugrásos hitelesítési gyakran olyan forgatókönyvekben használatos, a alkalmazás rétegzett, háttér és kezelőfelület, ahol mindkettő hitelesítő adatokat kér, például az SQL Server Reporting Services. A Többugrásos forgatókönyv konfigurálását lásd: a Kerberos által korlátozott delegálás támogatását ismertető cikk a [több ugrásos forgatókönyvekben történő protokoll-áttérést is szükségessé teheti](https://support.microsoft.com/help/2005838/kerberos-constrained-delegation-may-require-protocol-transition-in-mul).
 
 ## <a name="next-steps"></a>További lépések
 

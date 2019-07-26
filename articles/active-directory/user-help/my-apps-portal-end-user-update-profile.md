@@ -1,6 +1,6 @@
 ---
-title: A profil és fiók adatait, a saját alkalmazások portál – Azure Active Directory frissítése |} A Microsoft Docs
-description: Ismerje meg, hogyan frissítse a profilját, és a munkahelyi vagy iskolai fiók adatait, beleértve a jelszómódosítás, ne tudják bekapcsolni a jelszó-visszaállítás, a biztonsági ellenőrzési módszerek frissítése, a use utasítás a szervezet használati megtekintése és kijelentkezés mindenhol, amelybe bejelentkezett munkahelyi vagy iskolai fiókjával.
+title: A profil és a fiókadatok frissítése a saját alkalmazások portálján – Azure Active Directory | Microsoft Docs
+description: Megtudhatja, hogyan frissítheti a profilját és munkahelyi vagy iskolai fiókjának adatait, beleértve a jelszó módosítását, a jelszó-visszaállítás bekapcsolását, a biztonsági ellenőrzési módszerek frissítését, a szervezet használati feltételeinek megállapítását, és kijelentkezését bárhol bejelentkezett munkahelyi vagy iskolai fiókjával.
 services: active-directory
 author: eross-msft
 manager: daveba
@@ -13,118 +13,131 @@ ms.author: lizross
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cf8484cdadcdb368c00351ca68e42652b475a7d4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 14146be73de309a7119f5c7b416c4e02f3bb4285
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66305419"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68383082"
 ---
-# <a name="update-your-profile-and-account-info-from-the-my-apps-portal"></a>A profil és fiók adatait, a saját alkalmazások portál frissítése
-A munkahelyi vagy iskolai fiók használata a web-alapú **saját alkalmazások** portálon megtekintheti, és indítsa el a számos szervezet felhőalapú alkalmazásokat, a profil és fiók információk megjelenítéséhez frissíteni, a **csoportok** információkat, és végrehajtásához **hozzáférési felülvizsgálatokkal** az alkalmazások és a csoportokat. Ha nem rendelkezik hozzáféréssel a **saját alkalmazások** portál, forduljon a Segélyszolgálathoz engedélyt.
+# <a name="update-your-profile-and-account-info-from-the-my-apps-portal"></a>A profil és a fiókadatok frissítése a saját alkalmazások portálján
+
+Használhatja munkahelyi vagy iskolai fiókját a webalapú **saját alkalmazások** portálján, hogy megtekintse és elindítsa a szervezete felhőalapú alkalmazásait, hogy frissítse a profilját és a fiókadatok adatait, és megtekintse a **csoportok** adatait, és elvégezze a következő műveleteket **:** alkalmazások és csoportok hozzáférési felülvizsgálatai. Ha nincs hozzáférése a **saját alkalmazások** portálhoz, akkor engedélyt kell adnia az ügyfélszolgálatnak.
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-end-user-my-apps-portal.md)]
 
 >[!Important]
->Ezek az anyagok felhasználók számára készültek. Ha Ön rendszergazda, és a felhőalapú alkalmazások kezelése a további tájékoztatást talál a [Alkalmazásfelügyelet dokumentációja](https://docs.microsoft.com/azure/active-directory/manage-apps).
+>Ezek az anyagok felhasználók számára készültek. Ha Ön rendszergazda, további információt talál arról, hogyan állíthatja be és kezelheti felhőalapú alkalmazásait az [alkalmazás-felügyeleti dokumentációban](https://docs.microsoft.com/azure/active-directory/manage-apps).
 
-## <a name="view-your-organization-related-profile-information"></a>A szervezet kapcsolatos Profiladatok megtekintése
-Attól függően, mi a szervezet úgy döntött, hogy az tartalmazza a **profil** lapján a **saját alkalmazások** portál, láthatja a munkával kapcsolatos részletes, az eszközök és a tevékenység, és bármelyik együtt egyéb szervezetek, amelyekhez tartoznak.
+## <a name="view-your-organization-related-profile-information"></a>A szervezettel kapcsolatos profil adatainak megtekintése
 
-### <a name="to-view-your-profile-information"></a>A profiladatok megtekintése
-1.  Jelentkezzen be munkahelyi vagy iskolai fiókjával [nyissa meg a **saját alkalmazások** portál](my-apps-portal-end-user-access.md).
+Attól függően, hogy a szervezet mit választott a **saját alkalmazások** portál **profil** oldalán, megtekintheti az adott munkával kapcsolatos részleteket, valamint az eszközöket és a tevékenységeket, valamint minden további szervezetet, amelyhez Ön is tartozik.
 
-2. Az a **alkalmazások** lapon, válassza ki a profilhoz tartozó fotó a jobb felső sarokban, ahol ugyanakkor a nevét és a szervezet, majd válassza ki **profil**.
+### <a name="to-view-your-profile-information"></a>A profil adatainak megtekintése
 
-    A **profil** megjelenítő lap jelenik meg, a profiladatait.
+1. Jelentkezzen be munkahelyi vagy iskolai fiókjába, [lépjen a **saját alkalmazások** portálra](my-apps-portal-end-user-access.md).
 
-    ![Profil oldal, amely az összes rendelkezésre álló információt](media/my-apps-portal/my-apps-portal-profile-page.png)
+2. Az **alkalmazások** lapon válassza ki a profil képét a jobb felső sarokban, ahol a nevét és a szervezetét, majd válassza a **profil**lehetőséget.
 
-3. Az a **profil** lapon is:
+    Megjelenik a **profil lap,** amely megjeleníti a profil adatait.
 
-    - **Tekintse át a szervezet kapcsolatos részleteket.** A fénykép, név, cím, társított e-mail-címeket és office információk megtekintése. Ez az információ a szervezet által felügyelt és nem tudja majd módosítani. Ha hibaüzenet jelenik meg, forduljon a Segélyszolgálathoz.
+    ![Profil lap, amely az összes rendelkezésre álló információt megjeleníti](media/my-apps-portal/my-apps-portal-profile-page.png)
 
-    - **Tekintse át az eszközök és tevékenységek**. Ellenőrizze, hogy minden eszköz ismer, vagy a szervezet megfelelően csatlakozik. Ha egy eszköz nem ismeri fel, válassza ki a **letiltása eszköz** , távolítsa el a társítást a fiókjához. Ha letilt egy eszközt, a rendszer eltávolítja ezt oldal.
+3. A **profil** lapon a következőket teheti:
 
-    - **Tekintse át a szervezetek számára.** Győződjön meg arról, hogy továbbra is dolgozik a megadott szervezetek mindegyike. Ha már nem dolgozik, az adott szervezetnél, javasoljuk, hogy bejelölte **jelentkezzen be a szervezet**. Ha elhagyja a szervezetet, ezen a lapon a rendszer eltávolítja.
+    - **Tekintse át a szervezettel kapcsolatos részleteket.** Megtekintheti a fényképet, a nevet, a címet, a társított e-mail-címeket és az Office-információkat. Ezeket az információkat a szervezet felügyeli, és nem fogja tudni módosítani. Ha hibát tapasztal, forduljon az ügyfélszolgálathoz.
 
-## <a name="manage-your-work-or-school-account-information"></a>Kezelheti a munkahelyi vagy iskolai fiók adatait
-Frissítse és kezelni a munkahelyi vagy az iskolai felhasználóifiók-adatokat a **profil** lapján a **saját alkalmazások** portálon. Ez az oldal nyújt segítséget:
+    - **Tekintse át az eszközöket & tevékenységgel**. Győződjön meg arról, hogy minden eszköz ismerős és megfelelően van csatlakoztatva a szervezethez. Ha nem ismeri fel az eszközt, válassza az **eszköz letiltása** elemet a fiókkal való társítás eltávolításához. Miután letiltotta az eszközt, a rendszer eltávolítja az oldalról.
 
-- Módosítsa a munkahelyi vagy iskolai fiók jelszava.
+    - **Tekintse át a szervezeteket.** Győződjön meg arról, hogy továbbra is együttműködik a megadott szervezetekkel. Ha már nem dolgozik szervezettel, javasoljuk, hogy válassza a **bejelentkezés lehetőséget a szervezet elhagyásához**. A szervezet elhagyása után a rendszer eltávolítja az oldalról.
 
-- Kapcsolja be a jelszó-visszaállítás (Ha a rendszergazda bekapcsolta ezt a szolgáltatást).
+## <a name="manage-your-work-or-school-account-information"></a>Munkahelyi vagy iskolai fiók adatainak kezelése
 
-- Adja meg a további biztonsági ellenőrzési információkat.
+Frissítse és kezelje munkahelyi vagy iskolai fiókja adatait a **saját alkalmazások** portál **profil** lapján. Ez az oldal a következőket segíti:
+
+- Módosítsa munkahelyi vagy iskolai fiókja jelszavát.
+
+- Jelszó-visszaállítás bekapcsolása (ha a rendszergazda bekapcsolta ezt a funkciót).
+
+- További biztonsági ellenőrzési információk megadása.
 
 - Tekintse át a szervezet használati feltételeit.
 
-- Kijelentkezés mindenhol.
+- Jelentkezzen ki mindenhol.
 
-## <a name="change-your-password"></a>A jelszó módosítása
-Ha a munkahelyi vagy iskolai fiók jelszavát módosítani szeretné, kiválaszthatja **jelszó módosítása** származó a **fiók kezelése** területén a **profil** lap.
+## <a name="change-your-password"></a>Jelszó módosítása
+
+Ha módosítani szeretné a munkahelyi vagy iskolai fiókjához tartozó jelszót, akkor a **profil** **kezelése lap fiók** területén válassza a **jelszó módosítása** lehetőséget.
 
 ### <a name="to-change-your-password"></a>A jelszó módosítása
-1. Az a **fiók kezelése** területén a **profil** lapon jelölje be **jelszó módosítása**.
 
-2. Az a **jelszó módosítása** lapon ellenőrizze, hogy helyesek-e a felhasználói Azonosítóját, és írja be a régi jelszót és az új jelszót a megfelelő mezőbe.
+1. A profil **kezelése lap fiók** területén válassza  a **jelszó módosítása**lehetőséget.
 
-    ![Módosítsa a jelszófrissítési lap](media/my-apps-portal/my-apps-portal-change-password-page.png)
+2. A **jelszó módosítása** lapon ellenőrizze, hogy helyes-e a felhasználói azonosító, majd írja be a régi jelszót és az új jelszót a mezőkbe.
+
+    ![Jelszó módosítása lap](media/my-apps-portal/my-apps-portal-change-password-page.png)
 
 3. Válassza ki **elküldése**.
 
-    A jelszava megváltozott. Jelentkezzen be minden alkalmazás, amelybe korábban bejelentkezett a munkahelyi vagy iskolai fiókkal kell fogja.
+    A jelszó módosítása megtörténik. Be kell jelentkeznie minden olyan alkalmazásba, amelyre korábban bejelentkezett a munkahelyi vagy iskolai fiókjával.
 
-## <a name="set-up-and-use-password-reset"></a>Állítsa be, és használja a jelszó-visszaállítás
-Ha elfelejtette a jelszavát, soha nem lett egy, a céges ügyfélszolgálattól, vagy használja ki a fiók zárolva van, visszaállíthatja a saját jelszavát.
+## <a name="set-up-and-use-password-reset"></a>Jelszó-visszaállítás beállítása és használata
+
+Ha elfelejtette a jelszavát, soha nem kapta meg a cég informatikai támogatási szolgálatát, vagy a fiókját kizárták, visszaállíthatja a saját jelszavát.
 
 >[!Important]
->A rendszergazdának be kell kapcsolni, ez a funkció a, és regisztrálnia kell az való részvételre. Regisztrálása és a jelszó alaphelyzetbe állítása kapcsolatos részletekért lásd: [regisztrálása önkiszolgáló jelszó-visszaállítás](active-directory-passwords-reset-register.md) és [a munkahelyi vagy iskolai jelszó visszaállítása](user-help-reset-password.md).
+>A rendszergazdának be kell kapcsolnia ezt a funkciót, és regisztrálnia kell a részvételhez. A jelszó regisztrálásával és alaphelyzetbe állításával kapcsolatos további információkért lásd: [regisztráció az önkiszolgáló jelszó](active-directory-passwords-reset-register.md) -visszaállításhoz és [a munkahelyi vagy iskolai jelszavának](user-help-reset-password.md)alaphelyzetbe állítása.
 
-## <a name="change-your-security-verification-information"></a>A biztonsági ellenőrzés adatainak módosítása
-Ha a szervezet megköveteli, hogy használjon kétfaktoros ellenőrzési, meg is hozzáadása, frissítése és törlése a társított biztonsági adatait a **további biztonsági ellenőrzés** lapot.
+## <a name="change-your-security-verification-information"></a>Biztonsági ellenőrzési információk módosítása
 
-Kéttényezős hitelesítési előírja, hogy kétféle hitelesítési adatai, például egy jelszó és a egy PIN-kód, mielőtt lekérné a fiók vagy a szervezet adatait. További információ a kétfaktoros ellenőrzési, lásd: [a kétlépéses ellenőrzéshez a fiók beállítása](multi-factor-authentication-end-user-first-time.md).
+Ha a szervezete megköveteli a kétfaktoros ellenőrzés használatát, a **további biztonsági ellenőrzés** lapon hozzáadhatja, frissítheti és törölheti a kapcsolódó biztonsági információkat.
 
-### <a name="to-change-your-security-information"></a>Saját biztonsági adatok módosítása
-1. Az a **fiók kezelése** területén a **profil** lapon jelölje be **további biztonsági ellenőrzés**.
+A kétfaktoros ellenőrzéshez két ellenőrzési adatot, például jelszót és PIN-kódot kell használnia, mielőtt beolvassa a fiókját vagy a szervezete adatait. A kétfaktoros ellenőrzéssel kapcsolatos további információkért lásd: [saját fiók beállítása](multi-factor-authentication-end-user-first-time.md)kétlépéses ellenőrzéshez.
 
-    ![További biztonsági ellenőrzési lapot](media/my-apps-portal/my-apps-portal-additional-verification-page.png)
+### <a name="to-change-your-security-information"></a>Biztonsági adatok módosítása
 
-2. Az a **további biztonsági ellenőrzés** lapon hozzáadhatja, módosíthatja, vagy törli a következő információkat:
+1. A **profil** lapon a **kezelés fiók** területen válassza a **további biztonsági ellenőrzés**lehetőséget.
 
-    - **Alapértelmezett ellenőrzési módszerrel.** Válassza ki az alapértelmezett másodlagos módszer a kétfaktoros ellenőrzéshez használni. Ez a módszer automatikusan bármikor kétfaktoros ellenőrzési szükség, miután megadta a felhasználónevét és jelszavát használja.
+    ![További biztonsági ellenőrzés oldal](media/my-apps-portal/my-apps-portal-additional-verification-page.png)
 
-    - **Hozzáadása, frissítése vagy eltávolítása, ellenőrzési módszerek sorát.** Hozzáadhat új, frissítse a meglévő, vagy törli a régi adatokat, amelyek már nem érvényes.
+2. A **további biztonsági ellenőrzés** oldalon a következő információkat adhatja hozzá, módosíthatja vagy törölheti:
 
-    - **Állítsa be a Microsoft Authenticator alkalmazást.** Ha szeretné, állítsa be a Microsoft Authenticator alkalmazást a ellenőrzési módszerként. A Microsoft Authenticator alkalmazással kapcsolatos további információkért lásd: [Mi az a Microsoft Authenticator alkalmazást?](user-help-auth-app-overview.md)
+    - **Alapértelmezett ellenőrzési beállítás.** Válassza ki a kétfaktoros ellenőrzéshez használandó alapértelmezett másodlagos módszert. Ezt a módszert automatikusan használja a rendszer, amikor a Felhasználónév és a jelszó megadását követően a kétfaktoros ellenőrzésre van szükség.
+
+    - **Ellenőrzési módszerek hozzáadása, frissítése vagy eltávolítása.** Hozzáadhat új, meglévő frissítést, vagy törölhet régi adatokat, amelyek már nem érvényesek.
+
+    - **A Microsoft Authenticator alkalmazás beállítása.** Beállíthatja, hogy a Microsoft Authenticator alkalmazás az ellenőrzési módszerként működjön. További információ a Microsoft Authenticator alkalmazásról: [Mi a Microsoft Authenticator alkalmazás?](user-help-auth-app-overview.md)
 
 3. Válassza ki **mentése** a módosítások mentéséhez.
 
-## <a name="review-your-organizations-terms-of-use-statement"></a>A use utasítás a munkahelyi feltételek áttekintése
-Ha szeretné, tekintse át a szervezet használati utasítás használatát, ha rendelkezésre áll.
+## <a name="review-your-organizations-terms-of-use-statement"></a>Tekintse át a szervezet használati feltételeinek utasításait
 
-1. Az a **fiók kezelése** területén a **profil** lapon jelölje be **használati feltételek áttekintése**.
+Dönthet úgy, hogy megtekinti a szervezet használati feltételeinek nyilatkozatát, ha az elérhető.
 
-2. Tekintse át a szervezet használati feltételeit, és válassza ki **elfogadás** ellenőrizze, hogy olvassa el, és megértette a használati feltételeket a szervezet számára.
+1. A profil **kezelése lap fiók** területén válassza  a **használati feltételek áttekintése**elemet.
 
-    ![A saját alkalmazások portál használata lapot feltételeit](media/my-apps-portal/my-apps-portal-tou-page.png)
+2. Tekintse át a szervezet használati feltételeit, és válassza az **elfogadás** lehetőséget, és erősítse meg, hogy elolvasta és megértette a szervezet használati feltételeit.
 
-    Ha a szervezete nem rendelkezik a használati feltételeket, válassza **kész** térjen vissza a **profil** lapot.
+    ![Használati feltételek lap a saját alkalmazások portálján](media/my-apps-portal/my-apps-portal-tou-page.png)
+
+    Ha a szervezet nem rendelkezik használati feltételekkel, akkor a **kész** gombra kattintva térhet vissza a **profil** laphoz.
 
 ## <a name="sign-out-of-everywhere"></a>Kijelentkezés mindenhol
-Kijelentkezés mindenhol van jelenleg bejelentkezve, a munkahelyi vagy iskolai fiókjával választhat. Ez magában foglalja az összes alkalmazásait és eszközeit.
 
-### <a name="to-sign-out-of-everywhere"></a>A Kijelentkezés mindenhol
-1. Az a **fiók kezelése** területén a **profil** lapon jelölje be **kijelentkezés mindenhol**.
+Dönthet úgy is, hogy kijelentkezik a saját munkahelyi vagy iskolai fiókjával. Ebbe beletartozik az összes alkalmazás és eszköz.
 
-2. Az a **kijelentkezés mindenhol** megerősítése mező mellett válassza **Igen** annak ellenőrzéséhez, hogy szeretné-e jelentkezzen ki a munkamenetek és eszközök. Válassza ki **nem** Ha megváltoztatja döntését.
+### <a name="to-sign-out-of-everywhere"></a>Kijelentkezés mindenhol
+
+1. A **profil** lap **kezelés fiók** területén válassza a **kijelentkezés mindenhol**lehetőséget.
+
+2. A **kijelentkezés bárhová** megerősítő mezőben válassza az **Igen** lehetőséget annak megerősítéséhez, hogy ki szeretné jelentkezni az összes munkamenetből és eszközről. Ha meggondolja magát, válassza a **nem** lehetőséget.
 
 ## <a name="next-steps"></a>További lépések
-A frissítések a befejezése után a **profil** lapon is:
 
-- [Elérheti és használni az alkalmazásokat a saját alkalmazások portál](my-apps-portal-end-user-access.md).
+Miután befejezte a frissítéseket a **profil** lapon, a következőket teheti:
 
-- [Megtekintése és módosítása a csoportok kapcsolatos információkat](my-apps-portal-end-user-groups.md).
+- [Alkalmazások elérése és használata a saját alkalmazások portálon](my-apps-portal-end-user-access.md).
 
-- [Hajtsa végre a saját hozzáférési felülvizsgálatok](my-apps-portal-end-user-access-reviews.md).
+- [A csoportok kapcsolódó információinak megtekintése és frissítése](my-apps-portal-end-user-groups.md).
+
+- [Saját hozzáférési felülvizsgálatok végrehajtása](my-apps-portal-end-user-access-reviews.md).

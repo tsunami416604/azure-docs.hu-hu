@@ -1,5 +1,5 @@
 ---
-title: Közzététel külön hálózatokon és helyeket összekötő csoportokat használnak az Azure AD-alkalmazásproxyval |} A Microsoft Docs
+title: Alkalmazások közzététele különálló hálózatokon Azure AD alkalmazás proxy-összekötő csoportjaival | Microsoft Docs
 description: A cikk ismerteti, hogyan csoportok az Azure AD-alkalmazásproxy-összekötők létrehozásához és kezeléséhez.
 services: active-directory
 author: msmimart
@@ -14,12 +14,12 @@ ms.date: 11/08/2018
 ms.author: mimart
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 574ce6def407f302439f6c53356fe69259240b2e
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: dae4eea3e08818d43482c995595cc9fbc3f91910
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67702476"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68381482"
 ---
 # <a name="publish-applications-on-separate-networks-and-locations-using-connector-groups"></a>Külön hálózatok és helyek összekötőcsoportok használatával az alkalmazások közzététele
 
@@ -44,7 +44,7 @@ Ezen lépések összekötő csoportok létrehozásához.
 1. Válassza ki **Azure Active Directory** > **vállalati alkalmazások** > **alkalmazásproxy**.
 1. Válassza ki **új összekötőcsoport**. Az új Összekötőcsoport panel jelenik meg.
 
-   ![Megjeleníti a képernyőt egy új összekötőcsoport](./media/application-proxy-connector-groups/new-group.png)
+   ![Megjeleníti az új összekötő csoport kiválasztására szolgáló képernyőt](./media/application-proxy-connector-groups/new-group.png)
 
 1. Adja meg az új összekötő csoport nevét, majd használja a legördülő menüből válassza ki, mely összekötők az ebbe a csoportba tartoznak.
 1. Kattintson a **Mentés** gombra.
@@ -77,11 +77,11 @@ Alkalmazások hálózatokban, amelyek nem részei a fő vállalati hálózat leh
 
 Igénybe vehet egy olyan szervezet, amely több, saját IaaS csatlakozó virtuális gépek virtuális hálózati üzemeltetett példaként. Ahhoz, hogy az alkalmazottak ezek az alkalmazások használatát, e magánhálózatok site-to-site VPN használatát a vállalati hálózathoz csatlakozik. Jó élményt biztosít az alkalmazottak, amelyek a helyszínen található. Azonban nem lehet ideális megoldás a távoli alkalmazottak számára, mert a szükséges további helyszíni infrastruktúra irányíthatja a hozzáférést, ahogy az az alábbi ábrán látható:
 
-![Az Azure AD IaaS hálózati bemutató ábra](./media/application-proxy-connector-groups/application-proxy-iaas-network.png)
+![Az Azure AD IaaS-hálózatot bemutató diagram](./media/application-proxy-connector-groups/application-proxy-iaas-network.png)
   
 Az Azure AD Application Proxy connector csoportok egy közös szolgáltatást, hogy az alkalmazások biztonságos elérését minden további függőség létrehozása a vállalati hálózaton nélkül engedélyezheti:
 
-![Az Azure AD IaaS több Felhőszolgáltatóknak](./media/application-proxy-connector-groups/application-proxy-multiple-cloud-vendors.png)
+![Több felhőalapú gyártó Azure AD-IaaS](./media/application-proxy-connector-groups/application-proxy-multiple-cloud-vendors.png)
 
 ### <a name="multi-forest--different-connector-groups-for-each-forest"></a>Többerdős – különböző összekötőcsoportok az egyes erdőkhöz
 
@@ -108,7 +108,7 @@ Amely valósítható meg, például a következő összekötő-csoportokat.
 
 Összekötőcsoportok nem használja, ha a konfiguráció következő lenne:
 
-![Példa az Azure AD nem Összekötőcsoportok](./media/application-proxy-connector-groups/application-proxy-sample-config-1.png)
+![Példa az Azure AD-re – nincs összekötő-csoport](./media/application-proxy-connector-groups/application-proxy-sample-config-1.png)
 
 Ebben a konfigurációban is használhatók a kisebb telepítésekhez és a teszteket. Jól, ha a szervezet rendelkezik egy egybesimított hálózati topológia fog működni.
 
@@ -116,7 +116,7 @@ Ebben a konfigurációban is használhatók a kisebb telepítésekhez és a tesz
 
 Ez a konfiguráció az alapértelmezett értéktől, amelyben van egy adott alkalmazás, például az IaaS virtuális hálózat egy elkülönített hálózaton futó továbbfejlesztett változata:
 
-![Példa az Azure AD nem Összekötőcsoportok és a egy elkülönített hálózat](./media/application-proxy-connector-groups/application-proxy-sample-config-2.png)
+![Példa az Azure AD-ben nincs összekötő-csoport és egy elkülönített hálózat](./media/application-proxy-connector-groups/application-proxy-sample-config-2.png)
 
 ### <a name="recommended-configuration--several-specific-groups-and-a-default-group-for-idle"></a>Ajánlott konfiguráció – több adott csoportok és a egy alapértelmezett csoport üresjárati
 
@@ -124,7 +124,7 @@ Az ajánlott konfiguráció nagy és összetett szervezetek számára, hogy az a
 
 Az alábbi példában a vállalat rendelkezik két adatközpontban, A és B való két összekötőt, amely minden hely szolgálnak. Minden hely rendelkezik rajta futó különböző alkalmazásokhoz.
 
-![Vállalati 2 adatközpontok és a 2-összekötők – példa](./media/application-proxy-connector-groups/application-proxy-sample-config-3.png)
+![Példa 2 adatközpontot és 2 összekötőt tartalmazó vállalatra](./media/application-proxy-connector-groups/application-proxy-sample-config-3.png)
 
 ## <a name="next-steps"></a>További lépések
 

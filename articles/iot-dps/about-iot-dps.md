@@ -3,17 +3,17 @@ title: Az Azure IoT Hub Device Provisioning Service áttekintése | Microsoft Do
 description: A Device Provisioning Service és az IoT Hub használatával az Azure-ban történő eszközregisztrációt írja le.
 author: nberdy
 ms.author: nberdy
-ms.date: 12/05/2017
+ms.date: 04/04/2019
 ms.topic: overview
 ms.service: iot-dps
 services: iot-dps
 manager: briz
-ms.openlocfilehash: 89e0b6b5bedf36c89bf3a54f4baf42f7019625c0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 8331161cde9e7717834dabd2228848de40f7be23
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60746075"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68360292"
 ---
 # <a name="provisioning-devices-with-azure-iot-hub-device-provisioning-service"></a>Eszközregisztráció az Azure IoT Hub Device Provisioning Service használatával
 A Microsoft Azure integrált nyilvános felhőszolgáltatások széles skáláját biztosítja, az IoT-megoldásokkal kapcsolatos igények teljes körű kielégítése céljából. Az IoT Hub Device Provisioning Service az IoT Hub segítő szolgáltatása, amely emberi beavatkozás nélkül teszi lehetővé a megfelelő IoT Hubon való érintésmentes, igény szerinti üzembe helyezést, így az ügyfelek eszközök millióit építhetik ki biztonságos és méretezhető módon.
@@ -96,7 +96,7 @@ A Device Provisioning Service, akárcsak az összes Azure IoT-szolgáltatás, sz
 
 A Device Provisioning Service csak HTTPS-kapcsolatokat támogat szolgáltatási műveletekhez.
 
-## <a name="regions"></a>Régiók
+## <a name="regions"></a>Regions
 Device Provisioning Service számos régióban elérhető. A meglévő és újonnan bejelentett régiók naprakész listája minden szolgáltatáshoz megtalálható az [Azure-régióknál](https://azure.microsoft.com/regions/). A Device Provisioning Service elérhetőségét az [Azure állapota](https://azure.microsoft.com/status/) lapon tekintheti meg.
 
 > [!NOTE]
@@ -108,8 +108,9 @@ A Device Provisioning Service-hez 99,9%-os szolgáltatói szerződés érhető e
 ## <a name="quotas"></a>Kvóták
 Minden Azure-előfizetésre alapértelmezett kvótakorlátozások vonatkoznak, és ezek a korlátozások hatással lehetnek az IoT-megoldás hatókörére. A jelenlegi határérték előfizetésenként 10 Device Provisioning Service.
 
-További információ a kvótakorlátozásokról:
+[!INCLUDE [azure-iotdps-limits](../../includes/iot-dps-limits.md)]
 
+További információ a kvótakorlátozásokról:
 * [Az Azure-előfizetés szolgáltatásokra vonatkozó korlátozásai](../azure-subscription-service-limits.md)
 
 ## <a name="related-azure-components"></a>Kapcsolódó Azure-összetevők

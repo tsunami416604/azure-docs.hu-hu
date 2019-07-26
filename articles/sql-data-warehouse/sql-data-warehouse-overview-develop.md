@@ -1,8 +1,8 @@
 ---
-title: Az Azure-beli adattárház fejlesztéséhez használható forrásanyagok |} A Microsoft Docs
-description: Fejlesztői fogalmak, tervezési döntéseket, javaslatokat és az SQL Data Warehouse programozási technikákat.
+title: Erőforrások az Azure-beli adattárház fejlesztéséhez | Microsoft Docs
+description: Fejlesztési fogalmak, tervezési döntések, javaslatok és kódolási technikák a SQL Data Warehouse.
 services: sql-data-warehouse
-author: XiaoyuL-Preview
+author: XiaoyuMSFT
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
@@ -10,43 +10,43 @@ ms.subservice: development
 ms.date: 08/29/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: 613bcb05dab993989a2ae00b71fef95794953ab8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a78d78618a4cd9bf8d2aaebbd0c0da13697549bc
+ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65850734"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68479472"
 ---
-# <a name="design-decisions-and-coding-techniques-for-sql-data-warehouse"></a>Tervezési döntéseket és a kódolási módszereket az SQL Data warehouse-hoz
-Figyelje a fejlesztéssel kapcsolatos cikket jobb megértése érdekében hozott kulcsfontosságú, a javaslatokat és a kódolási módszereket az SQL Data Warehouse segítségével.
+# <a name="design-decisions-and-coding-techniques-for-sql-data-warehouse"></a>Tervezési döntések és kódolási technikák a SQL Data Warehouse
+Tekintse át ezeket a fejlesztési cikkeket, hogy jobban megértse a legfontosabb tervezési döntéseket, ajánlásokat és kódolási technikákat SQL Data Warehouse.
 
-## <a name="key-design-decisions"></a>Fő tervezési döntéseket hozhat
-A következő cikkek jelölje ki a fogalmakat és a egy elosztott data warehouse az SQL Data Warehouse fejlesztéséhez tervezési döntéseket:
+## <a name="key-design-decisions"></a>Kulcsfontosságú tervezési döntések
+A következő cikkek kiemelik az elosztott adattárház SQL Data Warehouse használatával történő fejlesztésével kapcsolatos fogalmakat és kialakítási döntéseket:
 
-* [Kapcsolatok][connections]
-* [concurrency][concurrency]
-* [Tranzakciók][transactions]
+* [kapcsolatok][connections]
+* [Egyidejűség][concurrency]
+* [tranzakciók][transactions]
 * [felhasználó által definiált sémák][user-defined schemas]
-* [a táblaelosztással][table distribution]
-* [táblaindexekkel][table indexes]
-* [Táblapartíciók][table partitions]
+* [tábla eloszlása][table distribution]
+* [tábla indexei][table indexes]
+* [tábla partíciói][table partitions]
 * [CTAS][CTAS]
 * [statisztika][statistics]
 
-## <a name="development-recommendations-and-coding-techniques"></a>Javaslatok és a kódolási módszereket
-Ezek a cikkek jelöljön ki adott programozási technikákat, tippeket és javaslatokat az SQL Data Warehouse fejlesztéséhez:
+## <a name="development-recommendations-and-coding-techniques"></a>Fejlesztési javaslatok és kódolási technikák
+Ezek a cikkek konkrét kódolási technikákat, tippeket és javaslatokat mutatnak a SQL Data Warehouse fejlesztéséhez:
 
-* [Tárolt eljárások][stored procedures]
-* [labels][labels]
-* [Nézetek][views]
-* [Az ideiglenes táblák][temporary tables]
-* [dynamic SQL][dynamic SQL]
+* [tárolt eljárások][stored procedures]
+* [Címkék][labels]
+* [kilátással][views]
+* [ideiglenes táblák][temporary tables]
+* [dinamikus SQL][dynamic SQL]
 * [hurkolás][looping]
-* [Csoportosítás beállítások szerint][group by options]
+* [csoportosítási beállítások][group by options]
 * [változó-hozzárendelés][variable assignment]
 
 ## <a name="next-steps"></a>További lépések
-Hivatkozás kapcsolatos további információkért lásd: [SQL Data Warehouse a T-SQL utasításokkal](sql-data-warehouse-reference-tsql-statements.md).
+További információ: [SQL Data Warehouse T-SQL-utasítások](sql-data-warehouse-reference-tsql-statements.md).
 
 <!--Image references-->
 

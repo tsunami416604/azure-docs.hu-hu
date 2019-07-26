@@ -15,12 +15,12 @@ ms.date: 07/16/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 15c12aebccf34957db8442034ebbcd6ac7c107e1
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: 2ad995908ff20d123a77b511d127652aa17c4634
+ms.sourcegitcommit: 5604661655840c428045eb837fb8704dca811da0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68276729"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68494524"
 ---
 # <a name="web-app-that-calls-web-apis---code-configuration"></a>Webes API-kat meghívó webalkalmazás – kód konfigurálása
 
@@ -29,6 +29,12 @@ Ahogy az a [webalkalmazás-bejelentkezési felhasználók](scenario-web-app-sign
 - Engedélyezheti a ASP.NET vagy a ASP.NET Core kérelmének engedélyezési kódját. Ezzel a ASP.NET/ASP.NET mag lehetővé teszi, hogy a felhasználó bejelentkezzen és beleegyezik,
 - A webalkalmazás az engedélyezési kód fogadására fog előfizetni.
 - Az Auth kód fogadásakor a MSAL-kódtárak használatával válthatja be a kódot és az eredményül kapott hozzáférési jogkivonatokat, valamint a tokenek gyorsítótárában található frissítési tokeneket. Ettől kezdve a gyorsítótár az alkalmazás más részeiben is használható, hogy csendesen szerezzen más jogkivonatokat.
+
+> [!NOTE]
+> A cikkben szereplő kódrészletek a következő mintákból származnak a GitHubon, amelyek teljes mértékben működőképesek:
+>
+> - [ASP.NET Core Web App növekményes oktatóanyaga](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/2-WebApp-graph-user/2-1-Call-MSGraph)
+> - [ASP.NET webalkalmazás minta](https://github.com/Azure-Samples/ms-identity-aspnet-webapp-openidconnect)
 
 ## <a name="libraries-supporting-web-app-scenarios"></a>Webalkalmazás-forgatókönyveket támogató könyvtárak
 
@@ -42,7 +48,12 @@ A Web Apps engedélyezési kódját támogató kódtárak a következők:
 
 ## <a name="aspnet-core-configuration"></a>ASP.NET Core konfiguráció
 
-ASP.net Core a dolgok a `Startup.cs` fájlban történnek. Elő kell fizetnie az `OnAuthorizationCodeReceived` Open ID csatlakozási eseményre, és ebből az eseményből hívja meg a MSAL. A net metódusa `AcquireTokenFromAuthorizationCode` , amely a jogkivonat-gyorsítótárban való tárolást, a kért hatókörök hozzáférési jogkivonatát, valamint egy frissítési jogkivonatot tartalmaz, amelyet a hozzáférési jogkivonat frissítéséhez fog használni a lejárati időponthoz képest, vagy ha egy jogkivonatot kap ugyanazon felhasználó nevében , de egy másik erőforráshoz.
+ASP.net Core a dolgok a `Startup.cs` fájlban történnek. Elő kell fizetnie az `OnAuthorizationCodeReceived` Open ID csatlakozási eseményre, és ebből az eseményből hívja meg a MSAL. A net metódusa `AcquireTokenFromAuthorizationCode` , amely a jogkivonat-gyorsítótárban való tárolást, a kért `scopes`hozzáférési jogkivonatot, valamint egy frissítési tokent tartalmaz, amelyet a hozzáférési token frissítéséhez fog használni a lejárati időponthoz képest, vagy ha egy jogkivonatot kap ugyanazon felhasználó nevében , de egy másik erőforráshoz.
+
+```CSharp
+string[] scopes = new string[]{ "user.read" };
+string[] scopesRequestedByMsalNet = new string[]{ "openid", "profile", "offline_access" };
+```
 
 Az alábbi kódban szereplő megjegyzések segítenek megérteni a MSAL.NET és a ASP.NET Core szövésének néhány trükkös aspektusát. Részletes információk a [ASP.net Core Web App növekményes oktatóanyagában, 2. fejezet](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/2-WebApp-graph-user/2-1-Call-MSGraph)
 
@@ -56,7 +67,7 @@ Az alábbi kódban szereplő megjegyzések segítenek megérteni a MSAL.NET és 
    // their Microsoft personal accounts
    // (it's required by MSAL.NET and automatically provided by Azure AD when users
    // sign in with work or school accounts, but not with their Microsoft personal accounts)
-   options.Scope.Add(OidcConstants.ScopeOfflineAccess);
+   options.Scope.Add("offline_access");
    options.Scope.Add("user.read"); // for instance
 
    // Handling the auth redemption by MSAL.NET so that a token is available in the token cache
@@ -88,7 +99,12 @@ Az alábbi kódban szereplő megjegyzések segítenek megérteni a MSAL.NET és 
    };
 ```
 
-ASP.NET Core a bizalmas ügyfélalkalmazás felépítése a HttpContext található információkat használja. Ez a HttpContext ismeri a webalkalmazás URL-címét és a bejelentkezett felhasználót (a-ben `ClaimsPrincipal`). A ASP.net Core konfigurációt is használja, amely "AzureAD" szakasszal rendelkezik, és amely az `_applicationOptions` adatstruktúrához van kötve. Végül az alkalmazásnak meg kell őriznie a jogkivonat-gyorsítótárat.
+ASP.NET Core a bizalmas ügyfélalkalmazás felépítése a HttpContext található információkat használja. Ez `HttpContext` a webalkalmazás URL-címével és a bejelentkezett felhasználóval kapcsolatos tudnivalókat `ClaimsPrincipal`is ismeri. 
+
+Emellett a ASP.NET Core konfigurációt is használja, amelynek "AzureAD" szakasza van, és amely a következőhöz van kötve:
+
+- a `_applicationOptions` [ConfidentialClientApplicationOptions](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.confidentialclientapplicationoptions?view=azure-dotnet) típusú adatstruktúra
+- a `azureAdOptions` ASP.net Coreben `Authentication.AzureAD.UI`definiált [AzureAdOptions](https://github.com/aspnet/AspNetCore/blob/master/src/Azure/AzureAD/Authentication.AzureAD.UI/src/AzureADOptions.cs) típusú példány. Végül az alkalmazásnak meg kell őriznie a jogkivonat-gyorsítótárat.
 
 ```CSharp
 /// <summary>
@@ -102,7 +118,7 @@ private IConfidentialClientApplication BuildConfidentialClientApplication(HttpCo
  var request = httpContext.Request;
 
  // Find the URI of the application)
- string currentUri = UriHelper.BuildAbsolute(request.Scheme, request.Host, request.PathBase, azureAdOptions.CallbackPath ?? string.Empty);
+ string currentUri = UriHelper.BuildAbsolute(request.Scheme, request.Host, request.PathBase, _applicationOptions.CallbackPath ?? string.Empty);
 
  // Updates the authority from the instance (including national clouds) and the tenant
  string authority = $"{azureAdOptions.Instance}{azureAdOptions.TenantId}/";
@@ -116,19 +132,22 @@ private IConfidentialClientApplication BuildConfidentialClientApplication(HttpCo
  // Initialize token cache providers. In the case of Web applications, there must be one
  // token cache per user (here the key of the token cache is in the claimsPrincipal which
  // contains the identity of the signed-in user)
- if (this.UserTokenCacheProvider != null)
+ if (UserTokenCacheProvider != null)
  {
-  this.UserTokenCacheProvider.Initialize(app.UserTokenCache, httpContext, claimsPrincipal);
+  UserTokenCacheProvider.Initialize(app.UserTokenCache, httpContext, claimsPrincipal);
  }
- if (this.AppTokenCacheProvider != null)
+ if (AppTokenCacheProvider != null)
  {
-  this.AppTokenCacheProvider.Initialize(app.AppTokenCache, httpContext);
+  AppTokenCacheProvider.Initialize(app.AppTokenCache, httpContext);
  }
  return app;
 }
 ```
 
-`AcquireTokenByAuthorizationCode`valóban beváltja a ASP.NET által kért hitelesítési kódot, és beolvassa a MSAL.NET felhasználói jogkivonat-gyorsítótárhoz hozzáadott jogkivonatokat. Innentől kezdve a ASP.NET Core vezérlőkben lesznek használatban.
+A jogkivonat-gyorsítótár-szolgáltatókkal kapcsolatos részletekért tekintse meg a [ASP.net Core Web App oktatóanyagokat | Jogkivonat](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/455d32f09f4f6647b066ebee583f1a708376b12f/2-WebApp-graph-user/2-2-TokenCache) -gyorsítótárak
+
+> [!NOTE]
+> `AcquireTokenByAuthorizationCode`valóban beváltja a ASP.NET által kért hitelesítési kódot, és beolvassa a MSAL.NET felhasználói jogkivonat-gyorsítótárhoz hozzáadott jogkivonatokat. Innentől kezdve a ASP.NET Core vezérlőkben lesznek használatban.
 
 ## <a name="aspnet-configuration"></a>ASP.NET-konfiguráció
 

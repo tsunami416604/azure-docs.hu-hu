@@ -1,19 +1,18 @@
 ---
 title: Hibák elhárítása SAP HANA adatbázisok Azure Backup használatával történő biztonsági mentése során | Microsoft Docs
 description: Leírja, hogy miként lehet elhárítani a SAP HANA-adatbázisok biztonsági mentésekor Azure Backup használata során előforduló gyakori hibákat.
-services: backup
 author: pvrk
 manager: vijayts
 ms.service: backup
 ms.topic: conceptual
-ms.date: 06/28/2019
+ms.date: 07/22/2019
 ms.author: pullabhk
-ms.openlocfilehash: 32e814ea83f30b48af5ce507ce250f37a34390da
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: 221b669c141681749709d6a5a406c78499f21032
+ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68249490"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68465478"
 ---
 # <a name="troubleshoot-backup-of-sap-hana-databases-on-azure"></a>SAP HANA-adatbázisok Azure-beli biztonsági mentésének hibáinak megoldása
 
@@ -61,12 +60,12 @@ Miután kiválasztott egy adatbázist a biztonsági mentéshez, a Azure Backup s
 
 ### <a name="usererrorinopeninghanaodbcconnection"></a>UserErrorInOpeningHanaOdbcConnection
 
-data| Hibaüzenet | Lehetséges okok | Javasolt művelet |
+data| Hibaüzenet | A lehetséges okok | Javasolt művelet |
 |---|---|---|
 | Nem sikerült csatlakozni a HANA rendszerhez. Ellenőrizze, hogy a rendszer működik-e.| A Azure Backup szolgáltatás nem tud csatlakozni a HANA-hoz, mert a HANA-adatbázis nem működik. Vagy a HANA fut, de nem engedélyezi a Azure Backup szolgáltatás kapcsolódását. | Győződjön meg arról, hogy a HANA-adatbázis vagy-szolgáltatás nem áll le. Ha a HANA-adatbázis vagy-szolgáltatás fut, ellenőrizze, hogy az [összes engedély be](#setting-up-permissions)van-e állítva. Ha a kulcs hiányzik, futtassa újra az előregisztrációi parancsfájlt egy új kulcs létrehozásához. |
 
 ### <a name="usererrorinvalidbackintconfiguration"></a>UserErrorInvalidBackintConfiguration
 
-| Hibaüzenet | Lehetséges okok | Javasolt művelet |
+| Hibaüzenet | A lehetséges okok | Javasolt művelet |
 |---|---|---|
 | A rendszer érvénytelen Backint-konfigurációt észlelt. Állítsa le a védelmet, és konfigurálja újra az adatbázist.| A backInt paraméterek helytelenül vannak megadva a Azure Backuphoz. | Győződjön [meg arról, hogy a paraméterek be vannak állítva](#setting-up-backint-parameters). Ha backInt paraméterek találhatók a GAZDAGÉPen, távolítsa el őket. Ha a paraméterek nem találhatók meg a GAZDAGÉP szintjén, de az adatbázis szintjén manuálisan lettek módosítva, állítsa azokat a megfelelő értékekre a korábban leírtak szerint. Vagy futtassa a **védelem leállítása és a biztonsági mentési adatok megőrzése** a Azure Portal, majd válassza a **biztonsági mentés folytatása**lehetőséget.|

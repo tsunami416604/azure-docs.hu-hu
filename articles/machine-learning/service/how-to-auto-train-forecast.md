@@ -1,7 +1,7 @@
 ---
-title: Automatikus – train idősorozat-előrejelzési modell
+title: Idősorozat-előrejelzési modell automatikus betanítása
 titleSuffix: Azure Machine Learning service
-description: Ismerje meg, hogyan használja az Azure Machine Learning szolgáltatás egy idősorozat-előrejelzési regressziós modell használatával automatikus gépi tanulás.
+description: Ismerje meg, hogyan használható a Azure Machine Learning szolgáltatás egy idősorozat-előrejelzési regressziós modell automatikus gépi tanulással történő betanításához.
 services: machine-learning
 author: trevorbye
 ms.author: trbye
@@ -10,39 +10,39 @@ ms.subservice: core
 ms.reviewer: trbye
 ms.topic: conceptual
 ms.date: 06/20/2019
-ms.openlocfilehash: 4a3ab9094080ab257a885bb7a745fc83948327c2
-ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
+ms.openlocfilehash: 34902aa23339b62920f918ae19b410a99e226a0e
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/22/2019
-ms.locfileid: "67331682"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68358812"
 ---
-# <a name="auto-train-a-time-series-forecast-model"></a>Automatikus – train idősorozat-előrejelzési modell
+# <a name="auto-train-a-time-series-forecast-model"></a>Idősorozat-előrejelzési modell automatikus betanítása
 
-Ebből a cikkből elsajátíthatja egy idősorozat-előrejelzési regressziós modell betanításához automatizált a machine learning szolgáltatásban Azure Machine Learning használatával. Előrejelzési modell konfigurálása állít be egy automatizált machine learning segítségével standard regressziós modell hasonló, de bizonyos konfigurációs beállításokat és előfeldolgozásához lépéseket léteznek idősorozat-adatok használata. Az alábbi példák bemutatják, hogyan való:
+Ebből a cikkből megtudhatja, hogyan végezheti el az idősorozat-előrejelzési regressziós modell betanítását a Azure Machine Learning szolgáltatásban található automatikus gépi tanulás használatával. Az előrejelzési modell konfigurálása hasonló ahhoz, hogy szabványos regressziós modellt állítson be automatizált gépi tanulással, de bizonyos konfigurációs beállítások és előfeldolgozási lépések léteznek az idősorozat-információkkal való munkavégzéshez. Az alábbi példák a következőket mutatják be:
 
-* A time series modellezési adatok előkészítése
-* Az adott idősorozat-paramétereinek konfigurálása egy [ `AutoMLConfig` ](/python/api/azureml-train-automl/azureml.train.automl.automlconfig) objektum
-* Futtassa az előrejelzések idősorozat adatokhoz
+* Az idősorozat-modellezéssel kapcsolatos adatelőkészítés
+* Adott idősorozat-paraméterek konfigurálása egy [`AutoMLConfig`](/python/api/azureml-train-automl/azureml.train.automl.automlconfig) objektumban
+* Előrejelzések futtatása idősoros adattal
 
 > [!VIDEO https://www.microsoft.com/videoplayer/embed/RE2X1GW]
 
-Automatizált gépi tanulás segítségével technikák és módszerek és a egy ajánlott, magas minőségű idősorozat-előrejelzés beolvasása. Automatizált idősorozat-kísérlet többváltozós regresszió probléma számít. Elmúlt idősorozat-értékek vannak "problémakörrel" a regressor más előrejelzőket együtt erre a további méretek válik. 
+Az automatikus ML-vel kombinálhatja a technikákat és a megközelítéseket, és egy ajánlott, magas színvonalú idősorozat-előrejelzést is igénybe vehet. Az automatikus idősorozat-kísérletet többváltozós regressziós problémaként kezeli a rendszer. A korábbi idősorozat-értékek "Pivotal", hogy további dimenziókat regressor a többi előrejelzővel együtt. 
 
-Ezzel a módszerrel eltérően klasszikus idő adatsorozat módok, természetesen magában foglaló, több környezeti változók és azok egy másik betanítás során előnye van. A való életből vett előrejelzési alkalmazások számos tényező befolyásolhatja az előrejelzést. Értékesítési előrejelzések, ha a korábbi trendek, árfolyam és a díj az összes kapcsolati például közösen meghajtó az értékesítési serkenti az eredményt. További előnye, hogy az összes legújabb fejlesztéseit a regressziós modellek azonnal érvénybe lépnek előrejelzését.
+Ez a klasszikus idősorozat-módszerekkel ellentétben az egyik előnye, hogy természetesen több kontextusos változót is magában foglal, és a képzés során egymáshoz fűződő kapcsolataikat. A valós idejű előrejelzési alkalmazásokban több tényező is befolyásolhatja az előrejelzést. Például az értékesítések előrejelzése, a múltbeli trendek, az árfolyam és az ár interakciója együttesen hajtja végre az értékesítés eredményét. További előny, hogy a regressziós modellek legújabb innovációi azonnal érvénybe kerülnek az előrejelzések alapján.
 
-Is [konfigurálása](#config) milyen az elkövetkező az előrejelzés ki kell (a előrejelzési közeljövőre), valamint késedelmes jelentések és egyebek. Automatizált gépi tanulás képes megtanulni az adatkészlet és előrejelzési szintek az összes cikkhez egyetlen, de gyakran belső elágazó modell. Több adatot Modellparaméterek megbecsülni így érhető el, és nem látható adatsorozat általánossá lehetségessé válik. 
+Megadhatja [, hogy a](#config) jövőben milyen mértékben kell kiterjesztenie az előrejelzést (az előrejelzési horizontot), valamint a késéseket és egyebeket. Az automatizált ML egyetlen, de gyakran belsőleg elágazó modellt tanul az adatkészlet összes eleméhez és előrejelzési horizontokhoz. Így több adat érhető el a modell paramétereinek becsléséhez és az általánosításhoz, hogy a láthatatlan adatsorozatok elérhetővé válnak. 
 
-A betanítási adatok kinyert szolgáltatások kritikus szerepet játszanak. És automatizált ML standard előfeldolgozási lépéseket hajtja végre, és további idősorozat-funkciók szezonális hatások rögzítése, és maximalizálhatják prediktív pontossága állít elő. 
+A betanítási adatokból kinyert funkciók kritikus szerepet játszanak. Az automatizált ML standard előfeldolgozási lépéseket hajt végre, és további idősorozat-funkciókat hoz létre az idényjellegű hatások rögzítése és a prediktív pontosság maximalizálása érdekében. 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Az Azure Machine Learning szolgáltatás munkaterületén. A munkaterület létrehozásához lásd: [hozzon létre egy Azure Machine Learning szolgáltatás munkaterület](setup-create-workspace.md).
-* Ez a cikk egy automatizált machine learning-kísérlet beállítása alapszintű ismeretét feltételezi. Kövesse a [oktatóanyag](tutorial-auto-train-models.md) vagy [útmutató](how-to-configure-auto-train.md) az alapvető automatikus machine learning-kísérlet tervezési minták megtekintéséhez.
+* Az Azure Machine Learning szolgáltatás munkaterületén. A munkaterület létrehozásával kapcsolatban tekintse meg a [Azure Machine learning szolgáltatás munkaterületének létrehozása](setup-create-workspace.md)című témakört.
+* Ez a cikk azt feltételezi, hogy alapszintű ismerettel rendelkezik egy automatizált gépi tanulási kísérlet beállításával. Kövesse az [oktatóanyagot](tutorial-auto-train-models.md) , vagy az [útmutató](how-to-configure-auto-train.md) segítségével tekintse meg az alapszintű gépi tanulási kísérlet tervezési mintáit.
 
-## <a name="preparing-data"></a>Adatok előkészítése
+## <a name="preparing-data"></a>Az adatelőkészítés
 
-A legfontosabb különbség a között egy előrejelzési regressziós feladattípus és regressziós feladattípus belüli automatikus gépi tanulási közé a következők tartoznak egyik funkciója, amely érvényes az idősor lépésközi jelöli az adatok. Rendszeres idősorozat tartalmaz egy jól definiált és konzisztens gyakoriság és egy értéket egy folyamatos azt az időtartományt a minta pontjára. Fontolja meg egy fájl a következő pillanatkép `sample.csv`.
+Az előrejelzési regressziós feladattípusok és a regressziós feladattípusok közötti legfontosabb különbség az automatizált Machine Learningen belül, beleértve az adatok egy érvényes idősorozatot jelölő funkcióját. A rendszeres idősorozatok jól definiált és konzisztens gyakorisággal rendelkeznek, és minden mintavételi ponton egy értékkel rendelkeznek, amely folyamatos időtartományban van. Vegye figyelembe a fájl `sample.csv`következő pillanatképét.
 
     day_datetime,store,sales_quantity,week_of_year
     9/3/2018,A,2000,36
@@ -56,7 +56,7 @@ A legfontosabb különbség a között egy előrejelzési regressziós feladatt�
     9/7/2018,A,2450,36
     9/7/2018,B,650,36
 
-Ez az adatkészlet napi értékesítési adatok egy vállalat, amely rendelkezik a és B. emellett két különböző tárolók egyszerű példát, van egy funkció `week_of_year` , amely lehetővé teszi a modell heti szezonalitás észleléséhez. A mező `day_datetime` jelenti egy tiszta idősorozat napi gyakorisággal, és a mező `sales_quantity` a futó előrejelzések a céloszlop van. Az adatok olvasása a Pandas dataframe-be, majd használja a `to_datetime` függvényt, hogy az idősorozat-e, egy `datetime` típusa.
+Ez az adathalmaz egy egyszerű példa arra, hogy egy vállalat napi értékesítési adatforgalma két különböző üzlettel rendelkezik, a és a B. Emellett a funkció `week_of_year` lehetővé teszi, hogy a modell képes legyen a heti szezonális felderíteni. A mező `day_datetime` a napi gyakoriságú tiszta idősorozatot jelöli, a `sales_quantity` mező pedig az előrejelzések futtatásának cél oszlopa. Olvassa el az adatait egy Panda dataframe, majd használja `to_datetime` a függvényt az idősorozat `datetime` típusának biztosításához.
 
 ```python
 import pandas as pd
@@ -64,7 +64,7 @@ data = pd.read_csv("sample.csv")
 data["day_datetime"] = pd.to_datetime(data["day_datetime"])
 ```
 
-Ebben az esetben az adatok lett rendezve az idő mező szerint növekvő `day_datetime`. Ugyanakkor kísérlet beállításakor biztosítják a kívánt időre oszlop növekvő sorrendben hozhat létre egy érvényes idősorozat van rendezve. Feltételezik, hogy az adatok 1000 rekordot tartalmaz, és adja meg a determinisztikus felosztása a képzés és az adatkészletek az adatokat. A célmező majd külön `sales_quantity` hozhat létre, az előrejelzési tanítási és tesztelési állítja be.
+Ebben az esetben az idő mező `day_datetime`alapján az adatgyűjtés már növekvő sorrendbe van rendezve. A kísérlet beállításakor azonban győződjön meg arról, hogy a kívánt idő oszlop növekvő sorrendben van rendezve egy érvényes idősorozat létrehozásához. Tegyük fel, hogy az adatok 1 000-es rekordokat tartalmaznak, és az adatok alapján determinisztikus az adatkészletek képzéséhez és teszteléséhez. Ezután válassza el a cél `sales_quantity` mezőt az előrejelzési vonat és a tesztelési készletek létrehozásához.
 
 ```python
 X_train = data.iloc[:950]
@@ -75,30 +75,30 @@ y_test = X_test.pop("sales_quantity").values
 ```
 
 > [!NOTE]
-> Az értékeket későbbi előrejelzési modell betanításakor ügyeljen rá, hogy a használt képzési szolgáltatásai használhatók az importálni kívánt horizon adatokat futtatásakor. Például egy kereslet-előrejelzési létrehozásakor, beleértve az aktuális tőzsdei árfolyam funkció nagy mértékben megnövelheti képzési pontosságát. Azonban ha azt tervezi, a hosszú horizon előrejelzést, nem lehet előre pontosan a jövőbeli idősorozat-pontok megfelelő jövőbeli tőzsdei értékeket, és modellpontosságból volt tapasztalható.
+> A jövőbeli értékek előrejelzésére szolgáló modell betanításakor győződjön meg arról, hogy a képzésben használt összes funkció használható a kívánt horizonthoz tartozó előrejelzések futtatásakor. Például, ha egy igény-előrejelzést hoz létre, beleértve a jelenlegi tőzsdei árfolyam szolgáltatását is, jelentősen növelheti a képzés pontosságát. Ha azonban hosszú horizontot szeretne előre jelezni, akkor előfordulhat, hogy nem tudja pontosan megjósolni a jövőbeli idősorozat-pontoknak megfelelő készletek értékeit, és a modell pontossága romolhat.
 
 <a name="config"></a>
-## <a name="configure-and-run-experiment"></a>Konfigurálja és a kísérlet futtatásához
+## <a name="configure-and-run-experiment"></a>Kísérlet konfigurálása és futtatása
 
-Automatizált gépi tanulási feladatok előrejelzés, használja az idősorozat-adatok adott előzetes feldolgozása és költségbecslési lépéseket. A következő előfeldolgozási lépéseket fogja végrehajtani:
+Az előrejelzési feladatokhoz az automatizált gépi tanulás az idősorozat-adatokra vonatkozó előzetes feldolgozási és becslési lépéseket használja. A rendszer a következő előfeldolgozási lépéseket hajtja végre:
 
-* Idősorozat-mintavétel gyakorisága (például óránként, naponta, hetente), és új rekordok hiányzó idő pontot, hogy az a sorozat folyamatos létrehozása észleli.
-* A cél (keresztül előre ki) és a szolgáltatás oszlopok (középérték oszlop értékeinek használatával) a hiányzó értékeket imputálására
-* Időfelbontási szint-alapú funkciók engedélyezéséhez rögzített hatások különböző adatsorozatainak létrehozása
-* Időalapú funkciók elsajátításához szezonális minták létrehozása
-* Numerikus mennyiségek kategorikus változókat kódolása
+* Az idősorozat mintavételi gyakoriságának (például óránkénti, napi, heti) észlelése, és új rekordok létrehozása a hiányzó időpontokhoz, hogy a sorozat folyamatos legyen.
+* Hiányzó értékek bevonása a célhelyből (továbbítási kitöltéssel) és a funkció oszlopai (medián Column Values használatával)
+* Gabona-alapú szolgáltatások létrehozása a rögzített hatások engedélyezéséhez a különböző adatsorozatok között
+* Időalapú szolgáltatások létrehozása a szezonális minták tanulásának segítésére
+* Kategorikus változók kódolása numerikus mennyiségre
 
-A `AutoMLConfig` objektuma határozza meg a beállításokat és a egy automatizált machine learning feladatot a szükséges adatokat. Regressziós problémaként hasonlóan megadhat standard képzési paraméterek tevékenység típusa, a betanítási adatok, az ismétlések száma és a kereszt-ellenőrzés száma. Az előrejelzési feladatok, nincsenek további paramétereket kell megadni, amelyek befolyásolják a kísérletet. A következő táblázat az egyes paraméterek és azok használatát ismerteti.
+Az `AutoMLConfig` objektum meghatározza az automatizált gépi tanulási feladatokhoz szükséges beállításokat és adatmennyiséget. A regressziós problémákhoz hasonlóan szabványos betanítási paramétereket is definiálhat, például a feladattípust, az ismétlések számát, a betanítási adatok számát és az eltérő érvényességi értéket. Az előrejelzési feladatokhoz további paramétereket kell megadni, amelyek hatással vannak a kísérletre. Az alábbi táblázat az egyes paramétereket és azok használatát ismerteti.
 
-| Param | Leírás | Szükséges |
+| Param | Leírás | Kötelező |
 |-------|-------|-------|
-|`time_column_name`|Itt adhatja meg a dátum/idő oszlop a bemeneti adatok az idősor és annak gyakoriságát adatcsatornához.|✓|
-|`grain_column_names`|Az egyes adatsorozat-csoportok meghatározása a bemeneti adatok neve. Időfelbontási szint nincs definiálva, ha az adatkészlet adatforrásmérete egy idősorozat.||
-|`max_horizon`|Meghatározza a legnagyobb, kívánt előrejelzési közeljövőre idősorozat-gyakoriság egysége. Egységek alapja az időintervallum, a betanítási adatok, például havi, hetente, hogy a forecaster meg kell találnia.|✓|
-|`target_lags`|*n* előre eltolódást időszakok célértéket modell betanítása előtt.||
-|`target_rolling_window_size`|*n* előre jelzett értékek generálásához használt korábbi időszakok < = képzési mérete. Ha nincs megadva, *n* értéke a teljes képzési méretét.||
+|`time_column_name`|A dátum-és idősorozatok létrehozásához használt bemeneti adatok datetime oszlopának megadására szolgál.|✓|
+|`grain_column_names`|Az egyes adatsorozat-csoportokat meghatározó nevek a bemeneti adatokban. Ha a gabona nincs meghatározva, a rendszer az adathalmazt egy idősorozatra feltételezi.||
+|`max_horizon`|Meghatározza a maximálisan kívánatos előrejelzési horizontot a Time-sorozat gyakoriságának egységében. Az egységek a betanítási adatokat tartalmazó időintervallumon alapulnak, például havonta, heti rendszerességgel, amelyet az előrejelzésnek meg kell jósolnia.|✓|
+|`target_lags`|*n* időszakok – a modell betanítása előtt továbbítson késési célként megadott értékeket.||
+|`target_rolling_window_size`|*n* korábbi időszakok, amelyeket az előre jelzett értékek előállítására használhat, < = betanítási készlet mérete. Ha nincs megadva, az *n* a teljes betanítási készlet mérete.||
 
-Hozzon létre egy szótárobjektum az idősorozat-beállításokat. Állítsa be a `time_column_name` , a `day_datetime` mezőt az adatkészlet. Adja meg a `grain_column_names` annak érdekében, hogy a paraméter **két különálló idősorozat-csoportok** jönnek létre az adatok; az egyik az áruházban A, b végül beállítása a `max_horizon` 50 annak érdekében, hogy előre jelezni a teljes vizsgálat beállítása. Előrejelzési időszak megadása az 10 időszakokra `target_rolling_window_size`, és a célként megadott értékek 2 időszak sikerét lag a `target_lags` paraméter.
+Hozzon létre egy idősorozat-beállításokat szótár objektumként. Állítsa az `time_column_name` `day_datetime` értékét a mezőre az adatkészletben. Adja meg `grain_column_names` a paramétert annak biztosításához, hogy **két különálló idősorozat-csoport** legyen létrehozva az adathalmazhoz, egy pedig az a és a `max_horizon` B tárolóhoz. Végül állítsa a 50-re a teljes tesztelési csoport előrejelzéséhez. Állítsa be az előrejelzési ablakot 10 időszakra `target_rolling_window_size`, és a megjelenő értékeket a `target_lags` paraméterrel megelőzően 2 időszakra késlelteti.
 
 ```python
 time_series_settings = {
@@ -110,7 +110,7 @@ time_series_settings = {
 }
 ```
 
-Most hozzon létre egy standard `AutoMLConfig` objektumot, adja meg a `forecasting` típusú feladat, és a kísérlet elküldése. A modell befejezését követően beolvasni a legjobb Futtatás iteráció.
+Most hozzon létre `AutoMLConfig` egy standard objektumot, adja `forecasting` meg a feladattípust, és küldje el a kísérletet. A modell befejeződése után kérje le a legjobb futtatási iterációt.
 
 ```python
 from azureml.core.workspace import Workspace
@@ -135,42 +135,43 @@ best_run, fitted_model = local_run.get_output()
 ```
 
 > [!NOTE]
-> A kereszt-ellenőrzés (CV) eljárás idősorozat-adatok is megsértik a canonical K lépésből kereszt-ellenőrzési stratégia az alapvető statisztikai feltételezéseket, automatizált machine learning megvalósítja a működés közbeni forrás érvényesítési eljárás létrehozása kereszt-ellenőrzési modellrész idősorozat-adatok. Ez az eljárás használatához adja meg a `n_cross_validations` paramétert a `AutoMLConfig` objektum. Érvényesítési és használja a saját érvényesítési beállítja a lehetséges kikerülni a `X_valid` és `y_valid` paramétereket.
+> Az önellenőrzési (CV) eljárás esetében az idősoros adatok megsértik a Canonical K-fold – több ellenőrzési stratégia alapszintű statisztikai feltételezéseit, így az automatizált gépi tanulás egy gördülő eredetű ellenőrzési eljárást valósít meg a létrehozáshoz az idősoros adatsorozatok több érvényesítéssel is rendelkeznek. Az eljárás használatához a `n_cross_validations` paramétert az `AutoMLConfig` objektumban kell megadni. Megkerülheti az `X_valid` érvényesítést, és a és `y_valid` a paraméterekkel saját ellenőrzési készleteket is használhat.
 
-### <a name="view-feature-engineering-summary"></a>A szolgáltatás mérnöki összegzésének megtekintése
+### <a name="view-feature-engineering-summary"></a>Szolgáltatások mérnöki összefoglalásának megtekintése
 
-Idősorozat-feladat esetében az automatikus machine learning a szolgáltatás műszaki folyamat részleteit megtekintheti. A következő kód bemutatja az egyes nyers szolgáltatások mellett a következő attribútumokat:
+Az automatikus gépi tanulásban az idősoros feladattípusok esetében a funkciók mérnöki folyamatának adatait tekintheti meg. A következő kód az összes nyers funkciót megjeleníti, valamint a következő attribútumokat:
 
 * Nyers szolgáltatás neve
-* Formázott ki ezt a nyers szolgáltatást visszafejtett szolgáltatások száma
-* Észlelt típusa
-* E funkció el lett dobva
-* A nyers szolgáltatásának funkció átalakítások listája
+* A nyers szolgáltatásból kialakult mérnöki funkciók száma
+* Típus észlelhető
+* Azt, hogy a szolgáltatás el lett-e dobva
+* A nyers szolgáltatáshoz tartozó szolgáltatás-átalakítások listája
 
 ```python
 fitted_model.named_steps['timeseriestransformer'].get_featurization_summary()
 ```
 
-## <a name="forecasting-with-best-model"></a>A legjobb modellt előrejelzés
+## <a name="forecasting-with-best-model"></a>Előrejelzés a legjobb modellel
 
-A legjobb modellt az iteráció használatával előre jelzett értékek a tesztelési adatkészletnél.
+Használja a legjobb modell iterációt a tesztelési adatkészletre vonatkozó előrejelzési értékekhez.
 
 ```python
 y_predict = fitted_model.predict(X_test)
 y_actual = y_test.flatten()
 ```
 
-Másik lehetőségként használhatja a `forecast()` helyett `predict()`, ami lehetővé teszi az előrejelzések indításának időpontját előírásainak. A következő példában, első lépésként cserélje le az összes értéket `y_pred` a `NaN`. Az előrejelzési forrása lesz betanítási adatok végén található ebben az esetben normális esetben lenne használatakor `predict()`. Azonban ha csak a második felében lecserélte `y_pred` a `NaN`, a függvény azt jelentené a numerikus értékek első fele módosítás nélküli, de előrejelzési a `NaN` második fele értékeket. A függvény az előre jelzett értékek és a szolgáltatások igazított adja vissza.
+Azt is megteheti, `forecast()` hogy a függvényt használja a `predict()`helyett, amely lehetővé teszi a specifikációk használatát a jóslatok elindításához. A következő példában először az összes értéket `y_pred` `NaN`kell lecserélnie a alkalmazásban. Az előrejelzés forrása ebben az esetben a betanítási adatgyűjtési időszak végén lesz, mivel általában a használatakor `predict()`lenne. Ha azonban csak a második felét `y_pred` `NaN`cserélte le, a függvény a numerikus értékeket az első fél változatlanul hagyja, de a második félidőben is `NaN` megbecsüli az értékeket. A függvény az előre jelzett értékeket és az igazított funkciókat is visszaadja.
 
-Is használhatja a `forecast_destination` paramétert a `forecast()` értékeket a megadott dátum másnapi előrejelzés függvényt.
+A `forecast_destination` `forecast()` függvény paraméterét is használhatja az értékek előrejelzésére a megadott dátumig.
 
 ```python
 y_query = y_test.copy().astype(np.float)
 y_query.fill(np.nan)
-y_fcst, X_trans = fitted_pipeline.forecast(X_test, y_query, forecast_destination=pd.Timestamp(2019, 1, 8))
+y_fcst, X_trans = fitted_pipeline.forecast(
+    X_test, y_query, forecast_destination=pd.Timestamp(2019, 1, 8))
 ```
 
-Gyökátlagos kiszámítása (root mean-készlet négyzet hiba) között a `y_test` tényleges értékek és az előre jelzett értékek `y_pred`.
+Kiszámítja a gyökátlagos (a legfelső szintű négyzetes hibát) a `y_test` tényleges értékek és az előre jelzett `y_pred`értékek között.
 
 ```python
 from sklearn.metrics import mean_squared_error
@@ -180,18 +181,18 @@ rmse = sqrt(mean_squared_error(y_actual, y_predict))
 rmse
 ```
 
-Most, hogy a teljes modellpontosságból meghatározása, a legtöbb valósághű következő lépés az, hogy a modell használatával előrejelzést ismeretlen jövőbeli értékek. Egyszerűen adja meg a teszt beállított ugyanebben a formátumban adatkészlet `X_test` , de a jövőbeli időpontok és az eredményül kapott előrejelzési beállítása az előre jelzett értékek mindegyik idősorozat-lépéshez. Tegyük fel, a az adatkészlet utolsó idősorozat-rekordokat is 12/31/2018. A következő nap iránti kereslet előrejelzése (vagy az előrejelzéshez az igény szerint annyi időt, < = `max_horizon`), hozzon létre egy sorozat rekord időt az egyes üzletek 01/01/2019 esetében.
+Most, hogy a modell teljes pontossága meg lett határozva, a legreálisabb következő lépés a modell használata az ismeretlen jövőbeli értékek előrejelzésére. Egyszerűen adjon meg egy adatkészletet a tesztelési készlettel `X_test` megegyező formátumban, de a jövőbeli dátum és idő értékekkel, és az eredményül kapott előrejelzési készlet az egyes idősorozat-lépések előre jelzett értékei. Tegyük fel, hogy az adatkészletben az utolsó idősorozat rekord a 12/31/2018-es értékre van állítva. Ha a következő napra (vagy az előrejelzéshez szükséges számos időszakra, < = `max_horizon`) szeretne előrejelzést készíteni, hozzon létre egy egyidejű adatsorozat-rekordot a 01/01/2019-es tárolóhoz.
 
     day_datetime,store,week_of_year
     01/01/2019,A,1
     01/01/2019,A,1
 
-Ismételje meg a szükséges lépéseket, majd futtassa a jövőbeli adatok betöltése az dataframe `best_run.predict(X_test)` előre jelezni a jövőbeli értékeket.
+Ismételje meg a szükséges lépéseket a jövőbeli adatok egy dataframe való betöltéséhez `best_run.predict(X_test)` , majd futtassa a parancsot a jövőbeli értékek előrejelzéséhez.
 
 > [!NOTE]
-> Nagyobb, mint időszakok száma, az értékek nem becsülhető a `max_horizon`. A modell az előre jelezni a jövőbeli érték meghaladja a jelenlegi közeljövőre egy nagyobb horizon újra betanított kell lennie.
+> Nem lehet előre jelezni az értéknél nagyobb `max_horizon`időszakok számát. A modellt újra be kell tanítani, hogy az aktuális horizonton túli jövőbeli értékek előrejelzése nagyobb horizonton történjen.
 
 ## <a name="next-steps"></a>További lépések
 
-* Kövesse a [oktatóanyag](tutorial-auto-train-models.md) automatikus machine learning-kísérletek létrehozása.
-* Nézet a [Azure Machine Learning SDK Pythonhoz készült](https://aka.ms/aml-sdk) referenciák dokumentációiba.
+* Kövesse az [oktatóanyagot](tutorial-auto-train-models.md) , amelyből megtudhatja, hogyan hozhat létre kísérleteket automatizált gépi tanulással.
+* Tekintse meg a [Azure Machine learning SDK for Python](https://aka.ms/aml-sdk) dokumentációját.

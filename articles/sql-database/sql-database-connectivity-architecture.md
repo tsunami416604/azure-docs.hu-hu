@@ -12,12 +12,12 @@ ms.author: rohitna
 ms.reviewer: carlrab, vanto
 manager: craigg
 ms.date: 07/02/2019
-ms.openlocfilehash: 951481a7dd7d7a9cfd8c88f2cd8bbcaaec4df685
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 9dfc22be45b68ba4ff59d88810435db35bafc8b6
+ms.sourcegitcommit: 5604661655840c428045eb837fb8704dca811da0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68320627"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68494970"
 ---
 # <a name="azure-sql-connectivity-architecture"></a>Azure SQL-kapcsolat architektúrája
 
@@ -27,7 +27,7 @@ Ez a cikk ismerteti a Azure SQL Database és SQL Data Warehouse kapcsolati archi
 
 Az alábbi ábra a Azure SQL Database kapcsolati architektúrájának áttekintését nyújtja.
 
-![Architektúra – áttekintés](./media/sql-database-connectivity-architecture/connectivity-overview.png)
+![architektúra – áttekintés](./media/sql-database-connectivity-architecture/connectivity-overview.png)
 
 A következő lépések azt ismertetik, hogyan történik a kapcsolatok létrehozása egy Azure SQL Database-adatbázisba:
 
@@ -47,13 +47,13 @@ A Azure SQL Database a következő három lehetőséget támogatja egy SQL Datab
 
 Ha az Azure-on belülről csatlakozik, a kapcsolatokhoz alapértelmezés `Redirect` szerint csatlakozási házirend tartozik. `Redirect` Az azt jelenti, hogy a TCP-munkamenet az Azure SQL Database-adatbázishoz való létrehozása után a rendszer átirányítja az ügyfél-munkamenetet a megfelelő adatbázis-fürtre, és a célként megadott virtuális IP-címet a Azure SQL Database átjárótól a fürt. Ezt követően az összes további csomag közvetlenül a fürtre áramlik, és megkerüli a Azure SQL Database-átjárót. A következő ábra szemlélteti ezt a forgalmat.
 
-![Architektúra – áttekintés](./media/sql-database-connectivity-architecture/connectivity-azure.png)
+![architektúra – áttekintés](./media/sql-database-connectivity-architecture/connectivity-azure.png)
 
 ## <a name="connectivity-from-outside-of-azure"></a>Kapcsolódás az Azure-on kívülről
 
 Ha az Azure-on kívülről csatlakozik, a kapcsolatok alapértelmezés `Proxy` szerint csatlakozási házirendtel rendelkeznek. A szabályzat `Proxy` azt jelenti, hogy a TCP-munkamenet a Azure SQL Database átjárón és az összes további, az átjárón keresztüli adatcsomagon keresztül jön. A következő ábra szemlélteti ezt a forgalmat.
 
-![Architektúra – áttekintés](./media/sql-database-connectivity-architecture/connectivity-onprem.png)
+![architektúra – áttekintés](./media/sql-database-connectivity-architecture/connectivity-onprem.png)
 
 ## <a name="azure-sql-database-gateway-ip-addresses"></a>Átjáró IP-címeinek Azure SQL Database
 
@@ -72,12 +72,12 @@ A továbbiakban további átjárókat fogunk hozzáadni az egyes régiókban, é
 | Közép-Kanada       | 40.85.224.249      |                 | |
 | Kelet-Kanada          | 40.86.226.166      |                 | |
 | USA középső régiója           | 13.67.215.62, 52.182.137.15 | 23.99.160.139 | 2019. szeptember 1. után nincsenek kapcsolatok |
-| Kelet-Kína 1         | 139.219.130.35     |                 | |
+| Kelet-Kína           | 139.219.130.35     |                 | |
 | Kelet-Kína 2         | 40.73.82.1         |                 | |
-| Észak-Kína 1        | 139.219.15.17      |                 | |
+| Észak-Kína          | 139.219.15.17      |                 | |
 | Észak-Kína 2        | 40.73.50.0         |                 | |
 | Kelet-Ázsia            | 191.234.2.139, 52.175.33.150 |       | |
-| USA keleti régiója 1            | 40.121.158.30, 40.79.153.12 | 191.238.6.43 | 2019. szeptember 1. után nincsenek kapcsolatok |
+| East US              | 40.121.158.30, 40.79.153.12 | 191.238.6.43 | 2019. szeptember 1. után nincsenek kapcsolatok |
 | USA 2. keleti régiója            | 40.79.84.180, 52.177.185.181, 52.167.104.0 | 191.239.224.107    | 2019. szeptember 1. után nincsenek kapcsolatok |
 | Közép-Franciaország       | 40.79.137.0, 40.79.129.1 |           | |
 | Közép-Németország      | 51.4.144.100       |                 | |
@@ -95,13 +95,13 @@ A továbbiakban további átjárókat fogunk hozzáadni az egyes régiókban, é
 | Dél-Afrika nyugati régiója    | 102.133.24.0       |                 | |
 | USA déli középső régiója     | 13.66.62.124       | 23.98.162.75    | 2019. szeptember 1. után nincsenek kapcsolatok |
 | Délkelet-Ázsia      | 104.43.15.0        | 23.100.117.95   | 2019. szeptember 1. után nincsenek kapcsolatok |
-| Az Egyesült Arab Emírségek középső régiója          | 20.37.72.64        |                 | |
-| Az Egyesült Arab Emírségek északi régiója            | 65.52.248.0        |                 | |
+| Egyesült Arab Emírségek középső régiója          | 20.37.72.64        |                 | |
+| Egyesült Arab Emírségek északi régiója            | 65.52.248.0        |                 | |
 | Az Egyesült Királyság déli régiója             | 51.140.184.11      |                 | |
 | Az Egyesült Királyság nyugati régiója              | 51.141.8.11        |                 | |
 | USA nyugati középső régiója      | 13.78.145.25       |                 | |
-| Nyugat-Európa          | 191.237.232.75, 40.68.37.158 |       | |
-| USA nyugati régiója 1            | 23.99.34.75, 104.42.238.205 |        | |
+| Nyugat-Európa          | 40.68.37.158       | 191.237.232.75  | 2019. szeptember 1. után nincsenek kapcsolatok |
+| USA nyugati régiója              | 104.42.238.205     | 23.99.34.75     | 2019. szeptember 1. után nincsenek kapcsolatok |
 | USA nyugati régiója, 2.            | 13.66.226.202      |                 | |
 |                      |                    |                 | |
 

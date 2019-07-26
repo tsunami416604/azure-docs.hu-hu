@@ -1,6 +1,6 @@
 ---
-title: Biztonsági adatok (előzetes verzió) beállítása telefonhívásokat – Azure Active Directory használatára |} A Microsoft Docs
-description: Hogyan állítható be a biztonsági adatok használatával telefonhívásokat a személyazonosságát.
+title: A biztonsági adatok (előzetes verzió) beállítása telefonhívások használatához – Azure Active Directory | Microsoft Docs
+description: A biztonsági adatok beállítása az identitás telefonos hívásokkal való ellenőrzéséhez.
 services: active-directory
 author: eross-msft
 manager: daveba
@@ -12,102 +12,109 @@ ms.topic: conceptual
 ms.date: 02/13/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9c1620be30d8cdf3a592ab0fc118938783579689
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: fbac4f364dedc28f7d5f3e100481a56bde70b4d3
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60474993"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68382924"
 ---
-# <a name="set-up-security-info-preview-to-use-phone-calls"></a>Biztonsági adatok (előzetes verzió) beállítása telefonhívásokat használatára
-Ezekkel a lépésekkel adja hozzá a kétfaktoros ellenőrzést, és a jelszó alaphelyzetbe állítási metódus. Miután beállította a először, visszatérhet a **biztonsági adatok** lap hozzáadása, frissítése vagy törlése a biztonsági információkat.
+# <a name="set-up-security-info-preview-to-use-phone-calls"></a>A biztonsági adatok (előzetes verzió) beállítása telefonhívások használatához
 
-Ha kéri, jelentkezzen be munkahelyi vagy iskolai fiókjával után azonnal beállítaniuk ezt, tekintse meg a részletes lépéseit a [állítsa be a biztonsági adatok a bejelentkezési oldal használatával](security-info-setup-signin.md) cikk.
+A kétfaktoros ellenőrzési és jelszó-visszaállítási módszerek hozzáadásához kövesse az alábbi lépéseket. Az első beállítás után visszatérhet a **biztonsági** információ lapra a biztonsági adatok hozzáadásához, frissítéséhez vagy törléséhez.
+
+Ha a rendszer a munkahelyi vagy iskolai fiókjába való bejelentkezés után azonnal beállítja ezt a beállítását, tekintse meg a [biztonsági adatok beállítása a bejelentkezési oldalról](security-info-setup-signin.md) című cikk részletes lépéseit.
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-end-user-preview-notice-security-info.md)]
 
 > [!Note]
-> Biztonsági adatok használatával telefonos mellékek nem támogatja. Akkor is, ha a megfelelő formátumban ad hozzá, + 1 4255551234 X 12345, a bővítmények törlődnek, mielőtt a hívást kezdeményeznek.
-> 
-> Ha nem látja a telefonos elrendezésre, lehetséges, hogy a szervezet nem engedélyezi, hogy az ellenőrzési telefonszám. Ebben az esetben kell válasszon egy másik módszert, vagy további segítségért forduljon a rendszergazdához.
+> A biztonsági adatok nem támogatják a telefonos bővítmények használatát. Ha a megfelelő formátumot (+ 1 4255551234X12345) adja hozzá, a bővítmények el lesznek távolítva a hívás elhelyezése előtt.
+>
+> Ha nem jelenik meg a telefonos lehetőség, akkor előfordulhat, hogy a szervezet nem teszi lehetővé telefonszámok használatát az ellenőrzéshez. Ebben az esetben másik módszert kell választania, vagy további segítségért forduljon a rendszergazdához.
 
-## <a name="set-up-phone-calls-from-the-security-info-page"></a>A biztonsági adatok weblapját a telefonhívások beállítása
-Szervezeti beállítások, attól függően fogja tudni használni a telefonhívások, a biztonsági adatok módszerek közül az.
+## <a name="set-up-phone-calls-from-the-security-info-page"></a>Telefonhívások beállítása a biztonsági adatok lapról
+
+A szervezet beállításaitól függően előfordulhat, hogy telefonos hívásokat is használhat a biztonsági adatok egyik módjaként.
 
 >[!Note]
->Ha azt szeretné, telefonhívás helyett szöveges üzenetet fogadni, kövesse a [beállítása a biztonsági adatok használatára, szöveges üzenetküldés](security-info-setup-text-msg.md) cikk.
+>Ha telefonhívás helyett SMS-üzenetet szeretne kapni, kövesse a [biztonsági információ beállítása a szöveges üzenetküldéshez](security-info-setup-text-msg.md) című cikk lépéseit.
 
-### <a name="to-set-up-phone-calls"></a>Hogy telefonhívásokat beállítása
+### <a name="to-set-up-phone-calls"></a>Telefonhívások beállítása
 
-1. Jelentkezzen be munkahelyi vagy iskolai fiókjával, és keresse meg a https://myprofile.microsoft.com/ lapot.
+1. Jelentkezzen be a munkahelyi vagy iskolai fiókjába, majd lépjen a https://myprofile.microsoft.com/ lapra.
 
-    ![Saját profil lapot, amely a kijelölt biztonsági adatai hivatkozások](media/security-info/securityinfo-myprofile-page.png)
+    ![Saját profil oldal, kiemelt biztonsági információs hivatkozások megjelenítése](media/security-info/securityinfo-myprofile-page.png)
 
-2. Válassza ki **biztonsági adatok** a bal oldali navigációs ablaktáblán vagy a hivatkozás a **biztonsági adatok** letiltása, és válassza ki **metódus hozzáadása** a a **biztonsági adatai**  lapot.
+2. Válassza a bal oldali navigációs ablaktábla **biztonsági adatok** elemét, vagy a biztonsági **információ** blokkban található hivatkozásra, majd válassza a **metódus hozzáadása** elemet a **biztonsági adatok** lapon.
 
-    ![Biztonsági adatok weblapját a kiemelt Hozzáadás metódus beállítás](media/security-info/securityinfo-myprofile-addmethod-page.png)
+    ![Biztonsági adatok lap Kiemelt hozzáadási módszer lehetőséggel](media/security-info/securityinfo-myprofile-addmethod-page.png)
 
-3. Az a **adjon meg egy metódust** lapon jelölje be **Phone** a legördülő listából válassza ki, és válassza ki a **Hozzáadás**.
+3. A **metódus hozzáadása** lapon válassza a **telefon** lehetőséget a legördülő listából, majd kattintson a **Hozzáadás**gombra.
 
-    ![A kiválasztott Phone metódus mezőben hozzáadása](media/security-info/securityinfo-myprofile-addphonetext.png)
+    ![Hozzáadás a Method Box-hoz, a kiválasztott telefonnal](media/security-info/securityinfo-myprofile-addphonetext.png)
 
-4. Az a **Phone** lapon írja be a telefonszámot a mobil eszköz számára, válassza a **hívást kérek**, majd válassza ki **tovább**.
+4. A **telefon** lapon írja be a mobileszköz telefonszámát, válassza a Hívjon meg lehetőséget, majd kattintson a **tovább**gombra.
 
-    ![Telefonszám hozzáadása, és válassza ki a telefonhívások](media/security-info/securityinfo-myprofile-phonecall-addnumber.png)
+    ![Telefonszám hozzáadása és telefonhívások kiválasztása](media/security-info/securityinfo-myprofile-phonecall-addnumber.png)
 
-5. Az ellenőrzési telefonhívás, a beírt telefonszám küldött választ, és kövesse az utasításokat.
+5. Válaszolja meg az ellenőrző telefonhívást, amelyet a megadott telefonszámra továbbít, és kövesse az utasításokat.
 
-    A lap vált a sikeres.
+    A lap úgy változik, hogy megmutassa a sikert.
 
-    ![Sikeres címtármódosítást jelző értesítés, csatlakozás a telefon száma, fogadhasson telefonhívásokat, és a egy fiókot](media/security-info/securityinfo-myprofile-phonetext-success.png)
+    ![Sikeres értesítés, a telefonszám csatlakoztatása, a telefonhívások fogadásának lehetősége és a fiók](media/security-info/securityinfo-myprofile-phonetext-success.png)
 
-    A biztonsági adatok frissítése, és telefonhívásokat segítségével igazolhatja a személyazonosságát a kétlépéses ellenőrzés vagy a jelszó alaphelyzetbe állítása használatakor. Ha azt szeretné, hogy telefonhívásokat az alapértelmezett módszer, olvassa el a [alapértelmezett biztonsági adatai módszerre állna](#change-your-default-security-info-method) című szakaszát.
+    A biztonsági adatok frissülnek, és telefonhívások segítségével ellenőrizheti az identitást, ha kétlépéses ellenőrzést vagy jelszó-visszaállítást használ. Ha telefonhívást szeretne készíteni az alapértelmezett módszerről, tekintse meg a jelen cikk [alapértelmezett biztonsági adatok módosítása módszerét](#change-your-default-security-info-method) ismertető szakaszát.
 
-## <a name="delete-phone-calls-from-your-security-info-methods"></a>A biztonsági adatok módszerek telefonhívásokat törlése
-Ha már nem szeretne biztonsági adatai módszerként használhatják a telefonhívások, eltávolíthatja azt a **biztonsági adatok** lapot.
+## <a name="delete-phone-calls-from-your-security-info-methods"></a>Telefonhívások törlése a biztonsági adatok módszereiből
+
+Ha a továbbiakban nem szeretné használni a telefonhívásokat biztonsági információként szolgáló módszerként, akkor a **biztonsági adatok** lapról távolíthatja el.
 
 >[!Important]
->Ha véletlenül törli a telefonhívások, nincs semmilyen módon nem lehet visszavonni. Kell adja hozzá újra, a módszer lépései a [állítsa be a telefonhívások](#set-up-phone-calls-from-the-security-info-page) című szakaszát.
+>Ha a telefonhívásokat tévedésből törli, a visszavonás nem vonható vissza. A metódust újra fel kell vennie a jelen cikk [telefonhívások beállítása](#set-up-phone-calls-from-the-security-info-page) című részében ismertetett lépéseket követve.
 
-### <a name="to-delete-phone-calls"></a>Törli a telefonhívásokhoz
+### <a name="to-delete-phone-calls"></a>Telefonhívások törlése
 
-1. Az a **biztonsági adatok** lapon válassza ki a **törlése** mellett kapcsolni a **Phone** lehetőséget.
+1. A **biztonsági adatok** lapon válassza a **Törlés** hivatkozást a **telefonos** beállítás mellett.
 
-    ![A telefonos metódus törölni a biztonsági adatok összekapcsolása](media/security-info/securityinfo-myprofile-phonetext-delete.png)
+    ![Hivatkozás a telefonos módszer törlésére a biztonsági adatokból](media/security-info/securityinfo-myprofile-phonetext-delete.png)
 
-2. Válassza ki **Igen** a megerősítés mezőben törlése a **Phone** számát. Miután törlődik a telefonszámát, a rendszer eltávolítja a biztonsági adatait és, eltűnik a **biztonsági adatok** lap. Ha **Phone** az alapértelmezett módszer az alapértelmezett értékre vált egy másik használható módszer.
-    
-## <a name="change-your-default-security-info-method"></a>Az alapértelmezett biztonsági adatai módszer megváltoztatása
-Ha azt szeretné, hogy telefonhívásokat kell az alapértelmezett módszer használatos, amikor bejelentkezik a munkahelyi vagy iskolai fiókjába kétfaktoros ellenőrzési, vagy a jelszó-átállítási kérelmek, beállíthatja azt a **biztonsági adatok** lapot.
+2. A **telefonszám** törléséhez válassza az **Igen** lehetőséget a megerősítő mezőben. A telefonszám törlése után a rendszer eltávolítja a biztonsági adatokból, és eltűnik a **biztonsági adatok** lapról. Ha a **telefon** az alapértelmezett módszer, akkor az alapértelmezett érték egy másik elérhető metódusra változik.
 
-### <a name="to-change-your-default-security-info-method"></a>Az alapértelmezett biztonsági adatai módszerének módosítása
+## <a name="change-your-default-security-info-method"></a>Az alapértelmezett biztonsági adatok módszerének módosítása
 
-1. Az a **biztonsági adatok** lapon válassza ki a **módosítása** mellett kapcsolni a **alapértelmezett bejelentkezési módszer** információkat.
+Ha azt szeretné, hogy a telefonhívások alapértelmezett módszerként legyenek használatban a munkahelyi vagy iskolai fiókba való bejelentkezéskor a kétfaktoros ellenőrzés vagy a jelszó-átállítási kérelmek esetében, a **biztonsági adatok** lapon állíthatja be.
 
-    ![Módosítás hivatkozásra az alapértelmezett bejelentkezési módszer](media/security-info/securityinfo-myprofile-phonetext-defaultchange.png)
+### <a name="to-change-your-default-security-info-method"></a>Az alapértelmezett biztonsági adatok módszerének módosítása
 
-2. Válassza ki **telefon - hívás ( *_your_phone_number_* )** elérhető módszerek, és válassza ki a legördülő listából **megerősítése**.
+1. A **biztonsági adatok** lapon válassza az **alapértelmezett bejelentkezési módszer** adatainak melletti **módosítás** hivatkozást.
 
-    ![Az alapértelmezett bejelentkezési módszer kiválasztása](media/security-info/securityinfo-myprofile-phonecall-changeddefault.png)
+    ![Az alapértelmezett bejelentkezési módszer hivatkozásának módosítása](media/security-info/securityinfo-myprofile-phonetext-defaultchange.png)
 
-    Az alapértelmezett módszer használt bejelentkezési módosítások **telefon - hívás ( *_your_phone_number_* )** .
+2. Válassza a **telefonhívás ( *_your_phone_number_* )** lehetőséget az elérhető módszerek legördülő listájában, majd válassza a Confirm ( **megerősítés**) lehetőséget.
 
-## <a name="additional-security-info-methods"></a>További biztonsági adatok módszerek
-Hogyan a szervezet névjegyeket igazolhatja személyazonosságát, akkor mi alapján szeretne ehhez további lehetősége van. A lehetőségek a következők:
+    ![Válassza ki a metódust az alapértelmezett bejelentkezéshez](media/security-info/securityinfo-myprofile-phonecall-changeddefault.png)
 
-- **Hitelesítő alkalmazás.** Töltse le, és a egy hitelesítő alkalmazást használja, vagy egy jóváhagyási értesítést, vagy egy véletlenszerűen létrehozott jóváhagyási kód lekérése a kétlépéses ellenőrzés vagy a jelszó alaphelyzetbe állítása. Állítsa be és a Microsoft Authenticator alkalmazással kapcsolatos lépésenkénti útmutatót lásd: [beállítása a biztonsági adatok használata egy hitelesítő alkalmazást](security-info-setup-auth-app.md).
+    A bejelentkezéshez használt alapértelmezett módszer a **telefonos híváshoz ( *_your_phone_number_* )** .
 
-- **Mobileszköz szöveg.** Adja meg a mobileszközök számát, és értesítés SMS-ben egy kódot fogja használni a kétlépéses ellenőrzés vagy a jelszó alaphelyzetbe állítása. Ellenőrizze identitását az szöveges üzenet (SMS) kapcsolatos lépésenkénti útmutatót lásd: [beállítása a biztonsági adatok használata a szöveges üzenetben (SMS)](security-info-setup-text-msg.md).
+## <a name="additional-security-info-methods"></a>További biztonsági információs módszerek
 
-- **E-mail-cím.** Adja meg a munkahelyi vagy iskolai e-mail-címet egy e-mailt beolvasni a jelszó-visszaállításhoz. Ez a beállítás nem érhető el a kétlépéses ellenőrzéshez. Állítsa be az e-mailben kapcsolatos lépésenkénti útmutatót lásd: [biztonsági adatok beállítása az e-mailben](security-info-setup-email.md).
+További beállításokkal is megtudhatja, hogy a szervezet hogyan forduljon a személyazonosságának ellenőrzéséhez a you're alapján. A lehetőségek a következők:
 
-- **Biztonsági kérdések.** Néhány a szervezet számára a rendszergazda által létrehozott biztonsági kérdések megválaszolása. Ez a beállítás csak akkor használható, a jelszó-visszaállításhoz, és nem a kétlépéses ellenőrzéshez. A biztonsági kérdések beállítása kapcsolatos lépésenkénti útmutatót lásd: a [beállítása a biztonsági adatok a biztonsági kérdések használata](security-info-setup-questions.md) cikk.
-    
+- **Hitelesítő alkalmazás.** Töltse le és használjon egy hitelesítő alkalmazást a jóváhagyási értesítés vagy a véletlenszerűen generált jóváhagyási kód beszerzéséhez a kétlépéses ellenőrzéshez vagy a jelszó-visszaállításhoz. A Microsoft Authenticator alkalmazás beállításával és használatával kapcsolatos részletes utasításokért lásd: [biztonsági adatok beállítása hitelesítő alkalmazás használatára](security-info-setup-auth-app.md).
+
+- **Mobileszköz szövege.** Adja meg a mobileszköz számát, és szerezzen be egy, a kétlépéses ellenőrzéshez vagy a jelszó-visszaállításhoz használni kívánt kódot. Az identitás szöveges üzenettel (SMS) való ellenőrzésével kapcsolatos részletes utasításokért lásd: [biztonsági információk beállítása szöveges üzenetküldés (SMS) használatára](security-info-setup-text-msg.md).
+
+- **Biztonsági kulcs.** Regisztrálja Microsoft-kompatibilis biztonsági kulcsát, és használja PIN-kóddal a kétlépéses ellenőrzéshez vagy a jelszó alaphelyzetbe állításához. Ha részletes útmutatást szeretne arról, hogyan ellenőrizheti személyazonosságát egy biztonsági kulccsal, tekintse meg a biztonsági [adatok beállítása biztonsági kulcs használatára](security-info-setup-security-key.md)című témakört.
+
+- **E-mail-cím.** Adja meg a munkahelyi vagy iskolai e-mail-címét, hogy e-mailt kapjon a jelszó alaphelyzetbe állításához. Ez a beállítás kétlépéses ellenőrzés esetén nem érhető el. Az e-mailek beállításával kapcsolatos részletes útmutatásért lásd: [biztonsági adatok beállítása e-mailek használatára](security-info-setup-email.md).
+
+- **Biztonsági kérdések.** Válaszoljon a szervezete rendszergazdája által létrehozott biztonsági kérdésekre. Ez a beállítás csak a jelszó-visszaállításhoz érhető el, és nem a kétlépéses ellenőrzéshez. A biztonsági kérdések beállításával kapcsolatos részletes utasításokért tekintse meg a biztonsági [kérdések beállítása a biztonsági kérdésekre](security-info-setup-questions.md) című cikket.
+
     >[!Note]
-    >Ha ezek a beállítások némelyike hiányzik, azt azért nagy valószínűséggel a szervezet nem engedélyezi azokat a módszereket. Ha ez a helyzet, szüksége lesz egy rendelkezésre álló módszer kiválasztásához, vagy további segítségért forduljon a rendszergazdához.
+    >Ha a lehetőségek némelyike hiányzik, valószínűleg azért, mert a szervezet nem engedélyezi ezeket a metódusokat. Ebben az esetben ki kell választania egy elérhető módszert, vagy kapcsolatba kell lépnie a rendszergazdával további segítségért.
 
 ## <a name="next-steps"></a>További lépések
 
-- A jelszó alaphelyzetbe állítása, ha elfelejti, az elveszett vagy a [jelszó-visszaállítási portál](https://passwordreset.microsoftonline.com/) vagy kövesse a a [a munkahelyi vagy iskolai jelszó visszaállítása](user-help-reset-password.md) cikk.
+- Ha elvesztette vagy elfelejtette a jelszavát, állítsa vissza a jelszót a [jelszó](https://passwordreset.microsoftonline.com/) -visszaállítási portálról, vagy kövesse a [munkahelyi vagy iskolai jelszó](user-help-reset-password.md) alaphelyzetbe állítása című cikk lépéseit.
 
-- Hibaelhárítási tippek és a bejelentkezési problémákkal kapcsolatos súgó a [nem jelentkezhet be Microsoft-fiókjába](https://support.microsoft.com/help/12429/microsoft-account-sign-in-cant) cikk.
+- Hibaelhárítási tippek és Súgó a bejelentkezési problémákhoz a [nem tud bejelentkezni a Microsoft-fiók](https://support.microsoft.com/help/12429/microsoft-account-sign-in-cant) cikkbe.

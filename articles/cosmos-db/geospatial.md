@@ -4,14 +4,14 @@ description: Megtudhatja, hogyan hozhat létre, index és az Azure Cosmos DB és
 author: SnehaGunda
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/23/2019
+ms.date: 07/23/2019
 ms.author: sngun
-ms.openlocfilehash: d0571608e154915a473145374ce007854aaa57f1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1654ccabab751896fcbbab09d112080ccc2f67b6
+ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66480120"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68467713"
 ---
 # <a name="use-geospatial-and-geojson-location-data-with-azure-cosmos-db-sql-api-account"></a>Térinformatikai és GeoJSON helyadatok használata az Azure Cosmos DB SQL API-fiók
 
@@ -142,7 +142,7 @@ await client.CreateDocumentAsync(
     });
 ```
 
-Ha nem rendelkezik a szélességi és hosszúsági adatokat, de a fizikai címeket vagy a hely neve, mint például a város és ország/régió, kereshet a tényleges koordináták egy geokódolási szolgáltatásokat, például a Bing Maps REST-szolgáltatások használatával. További tudnivalók a Bing térképek geokódolás [Itt](https://msdn.microsoft.com/library/ff701713.aspx).
+Ha nem rendelkezik a szélességi és a hosszúsági adatokkal, de a fizikai címeket vagy a hely nevét, például a várost vagy az országot/régiót, megkeresheti a tényleges koordinátákat egy olyan helymeghatározáshoz-szolgáltatás használatával, mint a Bing Maps REST Services. További tudnivalók a Bing térképek geokódolás [Itt](https://msdn.microsoft.com/library/ff701713.aspx).
 
 ## <a name="querying-spatial-types"></a>Térbeli típusok lekérdezése
 Most, hogy készített egy pillantást a földrajzi adatok beszúrása, vessünk egy pillantást az Azure Cosmos DB SQL és a LINQ használatával az adatok lekérdezésére.

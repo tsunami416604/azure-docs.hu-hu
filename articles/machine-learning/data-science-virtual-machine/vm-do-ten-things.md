@@ -17,12 +17,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: gokuma
-ms.openlocfilehash: f30c241feced3031d9ed9791c27c6bb1e1e99efb
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: e1e59b9a34d075002e8129fe1588c95e207f8273
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60365979"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68359026"
 ---
 # <a name="ten-things-you-can-do-on-the-windows-data-science-virtual-machine"></a>Tíz dolog, amire alkalmas a Windows Data Science virtuális gépen
 
@@ -106,7 +106,7 @@ Ha Ön a modell, az Azure Machine Learning üzembe helyezése, egy webszolgálta
 A következő kódrészlettel, amely egy Python Jupyter Notebookot, amely egy egyszerű modellt, a SciKit-további kódtár használatával fejlesztett.
 
 ```python
-#IRIS classification
+# IRIS classification
 from sklearn import datasets
 from sklearn import svm
 clf = svm.SVC()
@@ -120,10 +120,12 @@ A használt központi telepítése a python-modellek Azure Machine Learning burk
 ```python
 from azureml import services
 @services.publish(workspaceid, auth_token)
-@services.types(sep_l = float, sep_w = float, pet_l=float, pet_w=float)
-@services.returns(int) #0, or 1, or 2
+@services.types(sep_l=float, sep_w=float, pet_l=float, pet_w=float)
+@services.returns(int)  # 0, or 1, or 2
 def predictIris(sep_l, sep_w, pet_l, pet_w):
     inputArray = [sep_l, sep_w, pet_l, pet_w]
+
+
 return clf.predict(inputArray)
 ```
 
@@ -265,9 +267,9 @@ A kód letöltése a GitHub-adattárból, használhatja a ```git clone``` paranc
 
     git clone https://github.com/Azure/DataScienceVM.git
 
-A Visual Studióban érdemes ugyanazt a Klónozási műveletet. Az alábbi képernyőfelvételen a Git és a GitHub, a Visual Studio eszközök elérése.
+A Visual Studióban érdemes ugyanazt a Klónozási műveletet. Az alábbi képernyőfelvételen a git-és GitHub-eszközök a Visual Studióban való elérését bemutató képernyőkép látható.
 
-![A Visual Studio képernyőképe a megjelenített GitHub-kapcsolattal](./media/vm-do-ten-things/VSGit.PNG)
+![A Visual Studio képernyőképe a megjelenő GitHub-kapcsolatban](./media/vm-do-ten-things/VSGit.PNG)
 
 További információ a Git segítségével dolgozhat a GitHub-adattárban több erőforrás elérhető a github.com találja. A [adatlap](https://services.github.com/on-demand/downloads/github-git-cheat-sheet.pdf) hasznos hivatkozás.
 
@@ -286,7 +288,7 @@ Az Azure blob egy megbízható, gazdaságos felhőalapú tárolás, a kis- és b
 
 ![Képernyőkép az Azure Storage Explorer egy Storage-fiók elérése során](./media/vm-do-ten-things/AzureStorageExplorer_v4.png)
 
-**Adatok áthelyezése az Azure-Blobba virtuális gépről: AzCopy**
+**Adatok áthelyezése a virtuális gépről az Azure Blobba: AzCopy**
 
 Adatok áthelyezése a helyi fájlok és a blob storage között, használhatja az AzCopy parancssori vagy a PowerShell használatával:
 
@@ -311,20 +313,20 @@ Az Azure-blobba másolja az AzCopy-parancs futtatása után láthatja a fájl me
 
 ![Képernyőkép a tárfiók, a feltöltött CSV-fájl megjelenítése](./media/vm-do-ten-things/AzCopy_run_finshed_Storage_Explorer_v3.png)
 
-**Adatok áthelyezése az Azure-Blobba virtuális gépről: Azure Storage Explorer**
+**Adatok áthelyezése a virtuális gépről az Azure Blobba: Azure Storage Explorer**
 
 A virtuális gépen az Azure Storage Explorer használatával is feltölthetők a helyi fájlokból való adatokat:
 
 * Adatok feltöltése a tárolóba, válassza ki a céltárolót, és kattintson a **feltöltése** gomb.![ Képernyőkép az Azure Storage Explorer a feltöltés gombot](./media/vm-do-ten-things/storage-accounts.png)
 * Kattintson a **...**  jobb oldalán a **fájlok** jelölje ki egy vagy több fájlokat a fájlrendszerből, és kattintson a **feltöltése** a fájlok feltöltése a kezdéshez.![ Fájlok feltöltése párbeszédpanel képernyőképe](./media/vm-do-ten-things/upload-files-to-blob.png)
 
-**Olvassa el az adatokat az Azure-Blobból: Machine Learning-olvasó modul**
+**Adatok beolvasása az Azure Blobból: Machine Learning olvasó modul**
 
 Az Azure Machine Learning Studióban, használhat egy **adatok importálása modullal** adatokat olvasni a blobot.
 
 ![Képernyőkép a Machine Learning studióban az adatok importálása modullal](./media/vm-do-ten-things/AML_ReaderBlob_Module_v3.png)
 
-**Olvassa el az adatokat az Azure-Blobból: Python ODBC**
+**Adatok beolvasása az Azure Blobból: Python ODBC**
 
 Használhat **BlobService** könyvtár adatolvasási közvetlenül a Jupyter Notebook vagy a Python program található blob.
 
@@ -389,7 +391,7 @@ Az Azure Data Lake Storage egy nagy kapacitású adattár a big data-elemzési s
 
 ![Képernyőkép a Data Lake Tools a Visual Studióban](./media/vm-do-ten-things/Azure_Data_Lake_PlugIn_v2.PNG)
 
-**Adatok áthelyezése a Data Lake-virtuális gépről: Azure Data Lake Explorer**
+**Adatok áthelyezése a virtuális gépről Data Lakeba: Azure Data Lake Explorer**
 
 Használhat **Azure Data Lake Explorerrel** feltölthet adatokat a helyi fájlokat a virtuális gépen a Data Lake storage.
 
@@ -397,7 +399,7 @@ Használhat **Azure Data Lake Explorerrel** feltölthet adatokat a helyi fájlok
 
 Egy adatfolyamat üzembe helyezés az adatmozgás, vagy az Azure Data Lake használatával is létrehozható a [Azure Data Factory(ADF)](https://azure.microsoft.com/services/data-factory/). Ebben [cikk](https://azure.microsoft.com/blog/creating-big-data-pipelines-using-azure-data-lake-and-azure-data-factory/) folyamatok végigvezeti az adatok létrehozásának lépésein.
 
-**Adatok olvasása az Azure-Blobokból a Data Lake: U-SQL**
+**Adatok beolvasása az Azure Blobból a Data Lakeba: U-SQL**
 
 Ha az adatok Azure Blob storage-ban található, is közvetlenül beolvashatja az adatokat az Azure storage-blobból az U-SQL-lekérdezésben. A U-SQL-lekérdezések összeállítása, előtt ellenőrizze, a blob storage-fiók az Azure Data Lake van csatolva. Lépjen a **az Azure portal**, keresse meg az Azure Data Lake Analytics-irányítópultot, kattintson a **adatforrás hozzáadása**, válassza ki a tárolási típust **Azure Storage** és a beépülő modul az Azure Storage-fiók Nevére és kulcsára. Ezután megtörténik a storage-fiókban tárolt adatokra hivatkoznak.
 
@@ -453,7 +455,7 @@ A lekérdezés elküldésekor a kiszolgálóhoz, miután a feladat állapota bem
 
 ![A feladatállapot párbeszédpanel képernyőképe](./media/vm-do-ten-things/USQL_Job_Status.PNG)
 
-**A Data Lake adatokat kérdezhet le: U-SQL**
+**Adatlekérdezés Data Lakeban: U-SQL**
 
 Miután az adatkészlet az Azure Data Lake be lett töltve, [U-SQL nyelv](../../data-lake-analytics/data-lake-analytics-u-sql-get-started.md) a lekérdezésre és vizsgálódásra az adatokat. U-SQL nyelv hasonlít a T-SQL, de egyesíti az egyes szolgáltatásokat a C#, hogy a felhasználók írhat, testre szabott modulok, a felhasználó által definiált függvények és stb. Az előző lépésben a parancsfájlokat használhat.
 
@@ -495,7 +497,7 @@ Az Azure HDInsight egy felügyelt Apache Hadoop, Spark, HBase és Storm szolgál
 * IPython Notebook használata az adatok feltöltése. Először importálja a szükséges csomagokat, hitelesítő adatok beépülő modul, egy adatbázis létrehozása a tárfiókban található, majd betölteni az adatokat a HDI-fürt.
 
 ```python
-#Import required Packages
+# Import required Packages
 import pyodbc
 import time as time
 import json
@@ -510,12 +512,12 @@ from azure.storage.blob import BlobService
 warnings.filterwarnings("ignore", category=UserWarning, module='urllib2')
 
 
-#Create the connection to Hive using ODBC
-SERVER_NAME='xxx.azurehdinsight.net'
-DATABASE_NAME='nyctaxidb'
-USERID='xxx'
-PASSWORD='xxxx'
-DB_DRIVER='Microsoft Hive ODBC Driver'
+# Create the connection to Hive using ODBC
+SERVER_NAME = 'xxx.azurehdinsight.net'
+DATABASE_NAME = 'nyctaxidb'
+USERID = 'xxx'
+PASSWORD = 'xxxx'
+DB_DRIVER = 'Microsoft Hive ODBC Driver'
 driver = 'DRIVER={' + DB_DRIVER + '}'
 server = 'Host=' + SERVER_NAME + ';Port=443'
 database = 'Schema=' + DATABASE_NAME
@@ -523,12 +525,13 @@ hiveserv = 'HiveServerType=2'
 auth = 'AuthMech=6'
 uid = 'UID=' + USERID
 pwd = 'PWD=' + PASSWORD
-CONNECTION_STRING = ';'.join([driver,server,database,hiveserv,auth,uid,pwd])
+CONNECTION_STRING = ';'.join(
+    [driver, server, database, hiveserv, auth, uid, pwd])
 connection = pyodbc.connect(CONNECTION_STRING, autocommit=True)
-cursor=connection.cursor()
+cursor = connection.cursor()
 
 
-#Create Hive database and tables
+# Create Hive database and tables
 queryString = "create database if not exists nyctaxidb;"
 cursor.execute(queryString)
 
@@ -576,11 +579,13 @@ queryString = """
 cursor.execute(queryString)
 
 
-#Upload data from blob storage to HDI cluster
-for i in range(1,13):
-    queryString = "LOAD DATA INPATH 'wasb:///nyctaxitripraw2/trip_data_%d.csv' INTO TABLE nyctaxidb2.trip PARTITION (month=%d);"%(i,i)
+# Upload data from blob storage to HDI cluster
+for i in range(1, 13):
+    queryString = "LOAD DATA INPATH 'wasb:///nyctaxitripraw2/trip_data_%d.csv' INTO TABLE nyctaxidb2.trip PARTITION (month=%d);" % (
+        i, i)
     cursor.execute(queryString)
-    queryString = "LOAD DATA INPATH 'wasb:///nyctaxifareraw2/trip_fare_%d.csv' INTO TABLE nyctaxidb2.fare PARTITION (month=%d);"%(i,i)  
+    queryString = "LOAD DATA INPATH 'wasb:///nyctaxifareraw2/trip_fare_%d.csv' INTO TABLE nyctaxidb2.fare PARTITION (month=%d);" % (
+        i, i)
     cursor.execute(queryString)
 ```
 
@@ -592,7 +597,7 @@ for i in range(1,13):
 
 Miután az adatok betöltése a HDI-fürt, ellenőrizheti az adatok az Azure Storage Explorerben. És a egy HDI-fürt létrehozott adatbázis nyctaxidb rendelkezik.
 
-**Az adatok feltárása: Python Hive-lekérdezések**
+**Adatelemzés: Struktúra-lekérdezések a Pythonban**
 
 Mivel az adatokat a Hadoop-fürtöt, a Hive használatával feltárása és jellemzőkiemelés Hadoop-fürtök és a lekérdezés adatbázishoz való csatlakozáshoz használhatja a pyodbc csomagot. A létező táblák az előfeltételként szükséges lépésben létrehozott tekintheti meg.
 
@@ -600,7 +605,7 @@ Mivel az adatokat a Hadoop-fürtöt, a Hive használatával feltárása és jell
 queryString = """
     show tables in nyctaxidb2;
     """
-pd.read_sql(queryString,connection)
+pd.read_sql(queryString, connection)
 ```
 
 ![Meglévő táblák megtekintése](./media/vm-do-ten-things/Python_View_Existing_Tables_Hive_v3.PNG)
@@ -633,7 +638,7 @@ queryString = """
     )tc
     GROUP BY tipped;
     """
-results = pd.read_sql(queryString,connection)
+results = pd.read_sql(queryString, connection)
 
 results.columns = ['tipped', 'trip_count']
 df = results.copy()
@@ -661,7 +666,7 @@ queryString = """
                         and dropoff_longitude between -90 and -30
                         and dropoff_latitude between 30 and 90;
             """
-results = pd.read_sql(queryString,connection)
+results = pd.read_sql(queryString, connection)
 results.head(5)
 ```
 
@@ -669,9 +674,9 @@ results.head(5)
 
 ```python
 results.columns = ['pickup_longitude', 'pickup_latitude', 'dropoff_longitude',
-                    'dropoff_latitude', 'trip_distance', 'trip_time_in_secs', 'direct_distance']
-df = results.loc[results['trip_distance']<=100] #remove outliers
-df = df.loc[df['direct_distance']<=100] #remove outliers
+                   'dropoff_latitude', 'trip_distance', 'trip_time_in_secs', 'direct_distance']
+df = results.loc[results['trip_distance'] <= 100]  # remove outliers
+df = df.loc[df['direct_distance'] <= 100]  # remove outliers
 plt.scatter(df['direct_distance'], df['trip_distance'])
 ```
 
@@ -717,7 +722,7 @@ stored as textfile;
 cursor.execute(queryString)
 ```
 
-Most már a join tartalmát az előző belső táblába beszúrandó
+Most szúrja be az illesztés tartalmát az előző belső táblába
 
 ```python
 queryString = """
@@ -812,7 +817,7 @@ queryString = """
     select * from nyctaxi_downsampled_dataset limit 10;
     """
 cursor.execute(queryString)
-pd.read_sql(queryString,connection)
+pd.read_sql(queryString, connection)
 ```
 
 ![Az adatok a tábla első sorok](./media/vm-do-ten-things/DownSample_Data_For_Modeling_v2.PNG)

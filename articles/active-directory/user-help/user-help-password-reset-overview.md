@@ -1,6 +1,6 @@
 ---
-title: Alaphelyzetbe állítása a saját munkahelyi vagy iskolai jelszó áttekintése – Azure Active Directory |} A Microsoft Docs
-description: Regisztráljon, és rendszergazdai segítség nélkül a munkahelyi vagy iskolai jelszó visszaállítása vonatkozó cikkek hivatkozásainak listája.
+title: Saját munkahelyi vagy iskolai jelszavának átállítása – Azure Active Directory | Microsoft Docs
+description: A munkahelyi vagy iskolai jelszavának rendszergazdai segítség nélküli regisztrálására és alaphelyzetbe állítására vonatkozó cikkekre mutató hivatkozások listája.
 services: active-directory
 author: eross-msft
 manager: daveba
@@ -12,27 +12,27 @@ ms.topic: overview
 ms.date: 05/15/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f1dae1b8577c4f90211c3b377dbf88efe6907326
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 66cb7218b5217565529e1e15d875c23dff10e06f
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66243892"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68382271"
 ---
-# <a name="reset-your-own-work-or-school-password-overview"></a>Alaphelyzetbe állítása a saját munkahelyi vagy iskolai jelszó áttekintése
+# <a name="reset-your-own-work-or-school-password-overview"></a>Saját munkahelyi vagy iskolai jelszó átállítása – áttekintés
 
-Ha elfelejtette a munkahelyi vagy iskolai jelszó, soha nem lett jelszó a szervezet, vagy ki a fiók zárolva van, a biztonsági adatok és a mobil eszközére használhatja a munkahelyi vagy iskolai jelszó.
+Ha elfelejtette a munkahelyi vagy iskolai jelszavát, soha nem kapott jelszót a szervezettől, vagy kizárták a fiókjából, a biztonsági adatok és a mobileszköz segítségével alaphelyzetbe állíthatja a munkahelyi vagy iskolai jelszavát.
 
-A rendszergazdának be kell kapcsolnia ezt a szolgáltatást, hogy regisztrálják az adatokat, és saját jelszó visszaállítása. Ha nem látja a **elfelejtettem a jelszavamat** beállítást, az azt jelenti, hogy a rendszergazda még nem kapcsolva a funkció a szervezet számára. Ha úgy érzi, ezt a nem megfelelő, forduljon a segélyszolgálathoz segítségért.
+A rendszergazdának be kell kapcsolnia ezt a funkciót, hogy regisztrálni tudja az adatait, és visszaállítson egy saját jelszót. Ha nem látja az elfelejtettem a **jelszavam** beállítást, az azt jelenti, hogy a rendszergazda nem kapcsolta be a szolgáltatást a szervezete számára. Ha úgy véli, hogy ez helytelen, segítségért forduljon az ügyfélszolgálathoz.
 
 >[!Important]
 >Ezek az anyagok felhasználók számára készültek. Amennyiben Ön rendszergazda, az Azure Active Directory- (Azure AD-) környezet beállításával és kezelésével kapcsolatosan további információt az [Azure Active Directory dokumentációjában](https://docs.microsoft.com/azure/active-directory) talál.
 
-## <a name="reset-your-own-work-or-school-password-related-articles"></a>Alaphelyzetbe állítása a saját munkahelyi vagy iskolai jelszó kapcsolatos cikkek
+## <a name="reset-your-own-work-or-school-password-related-articles"></a>Saját munkahelyi vagy iskolai jelszóval kapcsolatos cikkek alaphelyzetbe állítása
 
-Részletes információk és útmutatás regisztrálásáról a fiók, jelszó-visszaállítás és a jelszó alaphelyzetbe állítása a következő cikkekben talál:
+A jelszó-visszaállításhoz és a jelszó alaphelyzetbe állításához szükséges Fiók regisztrálásával kapcsolatos részletes információkat és útmutatást a következő cikkekben talál:
 
 |Cikk |Leírás |
 |------|------------|
-|[Regisztráció önkiszolgáló jelszó-visszaállításra](active-directory-passwords-reset-register.md)| Útmutatást ellenőrzi, hogy a hitelesítési módszereket, és jelentkezzen be az önkiszolgáló jelszó-visszaállítás, visszaállíthatja a saját jelszavát.|
-|[Új jelszó kérése](user-help-reset-password.md)| Útmutatás segítségével történő visszaállítása vagy zárolásának feloldása munkahelyi vagy iskolai fiók jelszavát.|
+| [Regisztrálás az önkiszolgáló jelszó](active-directory-passwords-reset-register.md) -visszaállításhoz] Útmutatás a hitelesítési módszerek ellenőrzéséhez és az önkiszolgáló jelszó-visszaállításhoz való regisztrációhoz, hogy visszaállítsa a saját jelszavát.|
+| [Jelszó](user-help-reset-password.md) alaphelyzetbe állítása] Útmutató a munkahelyi vagy iskolai fiók jelszavának alaphelyzetbe állításához vagy feloldásához.|

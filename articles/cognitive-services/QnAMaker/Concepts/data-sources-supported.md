@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 03/26/2019
+ms.date: 07/25/2019
 ms.author: diberry
-ms.openlocfilehash: efb2524b430935e6c74415efe850b69835825bc7
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 156b2cf7c8042699f70e4bc3ec0b8944ac59a364
+ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67447686"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68501178"
 ---
 # <a name="data-sources-for-qna-maker-content"></a>A tartalmat a QnA Maker adatforrások
 
@@ -25,22 +25,22 @@ Az alábbi táblázat foglalja össze a tartalmat és fájlformátumot, QnA Make
 
 |Source Type (Forrás típusa)|Tartalomtípus| Példák|
 |--|--|--|
-|URL-cím|Gyakori kérdések<br> (Átalánydíjjal, szakaszok vagy témaköröket kezdőlapja)<br>Támogatási oldal <br> (Egyoldalas útmutatókat, hibaelhárítási cikkek stb.)|[Egyszerű – gyakori kérdések](https://docs.microsoft.com/azure/cognitive-services/qnamaker/faqs), <br>[Hivatkozások – gyakori kérdések](https://www.microsoft.com/software-download/faq),<br> [A témakörök kezdőlap – gyakori kérdések](https://www.microsoft.com/Licensing/servicecenter/Help/Faq.aspx)<br>[Támogatási cikk](https://docs.microsoft.com/azure/cognitive-services/qnamaker/concepts/best-practices)|
-|PDF / DOC|Gyakori kérdések,<br> A termék kézi,<br> Brosúrák,<br> A papír<br> A házirend szórólap<br> Az útmutató támogatás,<br> A QnA strukturált,<br> Stb.|[Strukturált QnA.doc](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/semi-structured.docx),<br> [A termék Manual.pdf minta](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/product-manual.pdf),<br> [Félig-structured.doc minta](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/semi-structured.docx),<br> [Példa a fehér paper.pdf](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/white-paper.pdf)|
-|Excel|Strukturált QnA fájl<br> (beleértve a RTF, HTML támogatja)|[Minta QnA FAQ.xls](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/QnA%20Maker%20Sample%20FAQ.xlsx)|
+|URL|Gyakori kérdések<br> (Lapos, szakaszok vagy témakörök kezdőlapja)<br>Támogatási lapok <br> (Egyoldalas útmutató cikkek, hibaelhárítási cikkek stb.)|[Egyszerű gyakori kérdések](https://docs.microsoft.com/azure/cognitive-services/qnamaker/faqs) <br>[Gyakori kérdések a hivatkozásokkal kapcsolatban](https://www.microsoft.com/software-download/faq)<br> [GYIK a témakörök kezdőlapján](https://www.microsoft.com/Licensing/servicecenter/Help/Faq.aspx)<br>[Támogatási cikk](https://docs.microsoft.com/azure/cognitive-services/qnamaker/concepts/best-practices)|
+|PDF / DOC|GYIK<br> Termék kézi,<br> Brosúrák<br> Tanulmány<br> Szórólap-szabályzat,<br> Támogatási útmutató,<br> Strukturált QnA,<br> stb.|[Strukturált QnA. doc](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/semi-structured.docx),<br> [Minta termék kézi. pdf](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/product-manual.pdf),<br> [Példa: Semi-Structured. doc](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/semi-structured.docx),<br> [Minta: tanulmány. pdf](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/white-paper.pdf)|
+|Excel|Strukturált QnA fájl<br> (többek között az RTF, a HTML-támogatás)|[Minta QnA FAQ.xls](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/QnA%20Maker%20Sample%20FAQ.xlsx)|
 |TXT/TSV|Strukturált QnA fájl|[Minta chit-chat.tsv](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/Scenario_Responses_Friendly.tsv)|
 
 ## <a name="data-source-locations"></a>Adatforrás helye
 
-A legtöbb adatforrás helyének meg kell adnia a nyilvános URL-címeket vagy -fájlokat, amelyek nem igényelnek a hitelesítést. 
+A legtöbb adatforrás-helynek nyilvános URL-címeket vagy fájlokat kell megadnia, amelyek nem igényelnek hitelesítést. 
 
-[A SharePoint-adatforrás helyek](../How-to/add-sharepoint-datasources.md) biztosít hitelesített fájlok engedélyezettek. SharePoint-erőforrások fájlok, nem a weblapok kell lennie. 
+A [SharePoint-adatforrás helyei](../How-to/add-sharepoint-datasources.md) számára engedélyezett a hitelesített fájlok biztosítása. A SharePoint-erőforrásoknak fájlokat, nem weblapokat kell tartalmazniuk. 
 
-Ha egy hitelesített fájlba vagy URL-címe van, egy másik lehetőség, hogy töltse le a fájlt a hitelesített helyről a helyi számítógépen, majd adja hozzá a helyi számítógépet, hogy a Tudásbázis. 
+Ha hitelesített fájllal vagy URL-címmel rendelkezik, Alternatív megoldásként töltse le a fájlt a hitelesített helyről a helyi számítógépre, majd adja hozzá a fájlt a helyi számítógépről a tudásbázishoz. 
 
 ## <a name="faq-urls"></a>Gyakori kérdések URL-címek
 
-A QnA Maker – gyakori kérdések weblapok támogathat 3 különböző képernyőkön: Egyszerű gyakori kérdéseket tartalmazó oldalak, a gyakori kérdéseket tartalmazó oldalak mutató hivatkozásokat tartalmaz, a témakörök kezdőlapja a gyakori kérdéseket tartalmazó oldalak.
+A QnA Maker 3 különböző formában támogathatja a gyakori kérdések weblapjait: Egyszerű GYIK-lapok, GYIK-oldalak hivatkozásokkal, GYIK-oldalak a témakörök kezdőlapján.
 
 ### <a name="plain-faq-pages"></a>Egyszerű gyakori kérdéseket tartalmazó oldalak
 
@@ -69,14 +69,14 @@ Alább egyik példája egy gyakori kérdések lapra, ahol témakörök kezdőlap
  ![Tudásbázis lapon példa áruházra mutató mélyhivatkozás – gyakori kérdések](../media/qnamaker-concepts-datasources/topics-faq.png) 
 
 
-### <a name="support-urls"></a>Támogatja az URL-címek
+### <a name="support-urls"></a>Támogatási URL-címek
 
-A QnA Maker félig strukturált támogatási weblapok, például webes cikkeket, hogy egy adott feladat végrehajtása, diagnosztizálása és a egy adott probléma megoldásához és a egy adott folyamathoz ajánlott eljárások tud feldolgozni. Kibontási hierarchikus fejlécekkel egyértelmű struktúra, amelyik a legjobban használható.
+A QnA Maker képes feldolgozni a részben strukturált támogatási weblapokat, például a webcikkeket, amelyek leírják, hogyan hajthat végre egy adott feladatot, hogyan diagnosztizálhatja és elháríthatja az adott problémát, és hogy mi az ajánlott eljárás az adott folyamathoz. A kinyerés a legjobb olyan tartalmaknál működik, amelyek hierarchikus fejlécekkel rendelkező tiszta struktúrával rendelkeznek.
 
 > [!NOTE]
-> A támogatással kapcsolatos cikkek kinyerési új szolgáltatása, és korai szakaszában van. Leginkább egyszerű weblapok esetében, amelyek jól strukturált, és nem tartalmaz összetett fejlécek és láblécek.
+> A támogatási cikkek kinyerése egy új szolgáltatás, amely korai fázisban van. A legmegfelelőbb az egyszerű lapokhoz, amelyek jól strukturáltak, és nem tartalmaznak összetett fejléceket/élőlábakat.
 
-![A QnA Maker támogatja a részben strukturált weblapok, ahol egy egyértelmű struktúra hierarchikus fejlécekkel egyike jelenik meg a kinyerés](../media/qnamaker-concepts-datasources/support-web-pages-with-heirarchical-structure.png)
+![QnA Maker támogatja a félig strukturált weblapok kinyerését, ahol a világos struktúra hierarchikus fejlécekkel van megjelenítve](../media/qnamaker-concepts-datasources/support-web-pages-with-heirarchical-structure.png)
 
 
 ## <a name="pdf-doc-files"></a>PDF / DOC fájlok
@@ -98,7 +98,7 @@ Alább egy példát egy index lapot, és a hierarchikus tartalom manuális van
 
 ### <a name="brochures-guidelines-papers-and-other-files"></a>Brosúrák, irányelvek, tanulmányok és egyéb fájlokat
 
-Dokumentumok sok más típusú is lehet feldolgozni QA párok, létrehozásához megadott egy egyértelmű elrendezése és rendelkeznek. Ezek a következők: Brosúrák, irányelvek, jelentések, tanulmányok, tudományos dolgozatok, szabályzatok, könyveket, stb. Látható egy példa [Itt](https://qnamakerstore.blob.core.windows.net/qnamakerdata/docs/Manage%20Azure%20Blob%20Storage.docx).
+Dokumentumok sok más típusú is lehet feldolgozni QA párok, létrehozásához megadott egy egyértelmű elrendezése és rendelkeznek. Ezek a következők: Prospektusok, irányelvek, jelentések, tanulmányok, tudományos dokumentumok, szabályzatok, könyvek stb. Látható egy példa [Itt](https://qnamakerstore.blob.core.windows.net/qnamakerdata/docs/Manage%20Azure%20Blob%20Storage.docx).
 
 Az alábbi, egy félig strukturált doc, anélkül, hogy az index egy példát:
 
@@ -139,9 +139,9 @@ Az alábbi példában a strukturált QnA, *.xls* fájlt, HTML-tartalom:
 
 ## <a name="structured-data-format-through-import"></a>Strukturált adatok formátumát importálása
 
-Tudásbázis importálása lecseréli a meglévő Tudásbázis tartalmát. Importálás a strukturált .tsv adatforrás adatait tartalmazó fájl szükséges. Ez az információ segít a QnA Maker, kérdés-válasz párt csoportot, és azokat egy adott adatforrást attribútumot.
+Tudásbázis importálása lecseréli a meglévő Tudásbázis tartalmát. Importálás a strukturált .tsv adatforrás adatait tartalmazó fájl szükséges. Ez az információ segít QnA Maker csoportosítani a kérdés-válasz párokat, és azokat egy adott adatforráshoz rendelni.
 
-| Kérdés  | Válasz  | source| Metaadatok (1 kulcs: 1 érték) |          
+| Kérdés  | Válasz  | Source| Metaadatok (1 kulcs: 1 érték) |          
 |-----------|---------|----|---------------------|
 | Question1 | Answer1 | Url1 | <code>Key1:Value1 &#124; Key2:Value2</code> |
 | Question2 | Answer2 | Szerkesztői|    `Key:Value`       |
@@ -150,26 +150,46 @@ Tudásbázis importálása lecseréli a meglévő Tudásbázis tartalmát. Impor
 
 Ha nem rendelkezik már meglévő tartalom feltöltéséhez a Tudásbázis, hozzáadhat QnA-tudásbázisok besorolást a QnA Maker Knowledge base. Ismerje meg, hogyan frissíthető a Tudásbázis [Itt](../How-To/edit-knowledge-base.md).
 
+<a href="#formatting-considerations"></a>
+
 ## <a name="formatting-considerations"></a>Formázási kapcsolatos szempontok
 
-Egy fájlba vagy URL-cím az importálás után konvertálva a Markdown és a formátumban tárolja. Ha az átalakítási folyamat nem megfelelően konvertálása a fájl-és URL-címeket hivatkozásokkal, szerkesztenie kell a kérdések és válaszok a a **szerkesztése** lapot. 
+Fájl vagy URL importálása után QnA Maker átalakítja és tárolja a tartalmat a [Markdown formátumban](https://en.wikipedia.org/wiki/Markdown). Az átalakítási folyamat új sorokat szúr be a szövegbe, `\n\n`például:. A Markdown formátum ismerete segít megérteni a konvertált tartalmat, és felügyelni a Tudásbázis tartalmát. 
 
-|Formátum|Cél|
-|--|--|
-|`\n\n`| Új sor|
-|`\n*`|Egy rendezett listához pont listajele|
+Ha közvetlenül a Tudásbázisban adja hozzá vagy szerkeszti a tartalmat, a **Markdown formázás** használatával Rich Text tartalmat hozhat létre, vagy módosíthatja a Markdown formátum tartalmát, amely már szerepel a válaszban. QnA Maker támogatja a Markdown-formátum nagy részét, hogy Rich Text képességeket biztosítson a tartalomhoz. Előfordulhat azonban, hogy az ügyfélalkalmazás, például a csevegési robot nem támogatja ugyanazt a Markdown-formátumot. Fontos, hogy tesztelje az ügyfélalkalmazás válaszait. 
 
-## <a name="editing-your-knowledge-base-locally"></a>Helyileg a Tudásbázis szerkesztése
+Az alábbiakban a QnA Maker használható Markdown-formátumok listája látható: 
 
-Tudásbázis létrehozása után javasoljuk, hogy Ön módosíthatja is a Tudásbázis szöveget a [QnA Maker portal](https://qnamaker.ai), exportálása és a helyi fájlok között importintézkedésekkel helyett. Előfordulhat azonban, hogy helyileg Tudásbázis szerkeszteni szeretné. 
+|Cél|Formátum|Példa Markdown|Renderelés<br>a csevegési robotban megjelenő módon|
+|--|--|--|--|
+Egy új sor két mondat között.|`\n\n`|`How can I create a bot with \n\n QnA Maker?`|![új sor formázása két mondat között](../media/qnamaker-concepts-datasources/format-newline.png)|
+|A H1-től a H6-ig terjedő `#` fejlécek száma, amely a fejlécet jelöli. 1 `#` a H1.|`\n# text \n## text \n### text \n####text \n#####text` |`## Creating a bot \n ...text.... \n### Important news\n ...text... \n### Related Information\n ....text...`<br><br>`\n# my h1 \n## my h2\n### my h3 \n#### my h4 \n##### my h5`|![formátum Markdown-fejlécekkel](../media/qnamaker-concepts-datasources/format-headers.png)<br>![formátum Markdown fejlécekkel H1 – H5](../media/qnamaker-concepts-datasources/format-h1-h5.png)|
+|Dőlt |`*text*`|`How do I create a bot with *QnA Maker*?`|![formázás dőlt betűvel](../media/qnamaker-concepts-datasources/format-italics.png)|
+|Karakterlánc (félkövér)|`**text**`|`How do I create a bot with **QnA Maker**?`|![formázás erős jelöléssel félkövérre](../media/qnamaker-concepts-datasources/format-strong.png)|
+|Hivatkozás URL-címe|`[text](https://www.my.com)`|`How do I create a bot with [QnA Maker](https://www.qnamaker.ai)?`|![URL-cím (hiperhivatkozás) formátuma](../media/qnamaker-concepts-datasources/format-url.png)|
+|\* Nyilvános rendszerkép URL-címe|`![text](https://www.my.com/image.png)`|`How can I create a bot with ![QnAMaker](https://review.docs.microsoft.com/en-us/azure/cognitive-services/qnamaker/media/qnamaker-how-to-key-management/qnamaker-resource-list.png)`|![nyilvános rendszerkép URL-címének formátuma ](../media/qnamaker-concepts-datasources/format-image-url.png)|
+|Áthúzás|`~~text~~`|`some ~~questoins~~ questions need to be asked`|![áthúzás formátuma](../media/qnamaker-concepts-datasources/format-strikethrough.png)|
+|Félkövér és dőlt|`***text***`|`How can I create a ***QnA Maker*** bot?`|![félkövér és dőlt formázás](../media/qnamaker-concepts-datasources/format-bold-italics.png)|
+|Hivatkozás félkövér URL-címe|`[**text**](https://www.my.com)`|`How do I create a bot with [**QnA Maker**](https://www.qnamaker.ai)?`|![félkövér URL-cím formázása](../media/qnamaker-concepts-datasources/format-bold-url.png)|
+|Dőlt betűs URL a hivatkozáshoz|`[*text*](https://www.my.com)`|`How do I create a bot with [*QnA Maker*](https://www.qnamaker.ai)?`|![dőlt betűs URL formátuma](../media/qnamaker-concepts-datasources/format-url-italics.png)|
+|Escape Markdown szimbólumok|`\*text\*`|`How do I create a bot with \*QnA Maker\*?`|![dőlt betűs URL formátuma](../media/qnamaker-concepts-datasources/format-escape-markdown-symbols.png)|
+|Rendezett lista|`\n 1. item1 \n 1. item2`|`This is an ordered list: \n 1. List item 1 \n 1. List item 2`<br>Az előző példában a Markdown beépített automatikus számozást használ.<br>`This is an ordered list: \n 1. List item 1 \n 2. List item 2`<br>Az előző példa explicit számozást használ.|![rendezett lista formátuma](../media/qnamaker-concepts-datasources/format-ordered-list.png)|
+|Rendezetlen lista|`\n * item1 \n * item2`<br>vagy<br>`\n - item1 \n - item2`|`This is an ordered list: \n * List item 1 \n * List item 2`|![Rendezetlen lista formátuma](../media/qnamaker-concepts-datasources/format-unordered-list.png)|
+|Beágyazott felsorolások|`\n * Parent1 \n\t * Child1 \n\t * Child2 \n * Parent2`<br><br>`\n * Parent1 \n\t 1. Child1 \n\t * Child2 \n 1. Parent2`<br><br>A rendezett és rendezetlen listák együtt is ágyazhatók egymásba. A lap `\t`a gyermek elem behúzási szintjét jelzi.|`This is an unordered list: \n * List item 1 \n\t * Child1 \n\t * Child2 \n * List item 2`<br><br>`This is an ordered nested list: \n 1. Parent1 \n\t 1. Child1 \n\t 1. Child2 \n 1. Parent2`|![beágyazott Rendezetlen lista formátuma](../media/qnamaker-concepts-datasources/format-nested-unordered-list.png)<br>![beágyazott rendezett lista formátuma](../media/qnamaker-concepts-datasources/format-nested-ordered-list.png)|
 
-A Tudásbázis a exportálása a **beállítások** lapon, majd szerkessze a Tudásbázis következő, a Microsoft Excel használatával. Ha egy másik alkalmazás használja az exportált TSV-fájl szerkesztése lehetőséget választja, az alkalmazás szintaktikai hibák vezethet be, mivel nem teljes mértékben megfelelő TSV. A Microsoft Excel TSV fájlok általában nem vezetnek be esetleges formázási hibákat. 
+\* QnA Maker semmilyen módon nem dolgozza fel a rendszerképet. Ez az ügyfélalkalmazás szerepe a rendszerkép megjelenítéséhez. 
 
-Ha elkészült, a módosítások, importálja újra a TSV-fájlt a **beállítások** lap. Ez lesz a jelenlegi Tudásbázis teljes mértékben lecserélheti a importált Tudásbázis segítségével. 
+## <a name="editing-your-knowledge-base-locally"></a>A Tudásbázis helyi szerkesztése
+
+A Tudásbázis létrehozása után javasolt a [QnA Maker](https://qnamaker.ai)-portálon lévő Tudásbázis szövegének szerkesztése a helyi fájlok exportálása és újraimportálása helyett. Előfordulhat azonban, hogy a tudásbázist helyileg kell szerkesztenie. 
+
+Exportálja a tudásbázist a **Beállítások** lapról, majd szerkessze a tudásbázist a Microsoft Excelben. Ha úgy dönt, hogy egy másik alkalmazást használ az exportált TSV-fájl szerkesztéséhez, az alkalmazás szintaktikai hibákat eredményezhet, mert az nem teljes TSV-kompatibilis. A Microsoft Excel TSV-fájljai általában nem vezetnek be formázási hibákat. 
+
+Miután végzett a szerkesztéssel, importálja újra a TSV-fájlt a **Beállítások** lapról. Ez teljes mértékben lecseréli az aktuális tudásbázist az importált tudásbázisba. 
 
 ## <a name="testing-your-markdown"></a>A Markdown tesztelése
 
-Használja a **[CommonMark](https://commonmark.org/help/tutorial/index.html)** az oktatóanyag a Markdown ellenőrzése. Rendelkezik az oktatóanyag egy **kipróbálás** szolgáltatás gyors, másolási és beillesztési ellenőrzés céljából. 
+A Markdown ellenőrzéséhez használja a **[CommonMark](https://commonmark.org/help/tutorial/index.html)** oktatóanyagot. Az oktatóanyag egy **kipróbálási** funkcióval rendelkezik a gyors másolási/beillesztési ellenőrzéshez. 
 
 ## <a name="next-steps"></a>További lépések
 

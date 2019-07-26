@@ -1,6 +1,6 @@
 ---
-title: Összevont egyszeri bejelentkezés az Azure AD katalógusából származó alkalmazás konfigurálása során |} A Microsoft Docs
-description: Cikksorozatnak a gyakori problémák jelentkezhetnek, ha konfigurálása összevont egyszeri bejelentkezéses SAML használatával az alkalmazásokat, amelyek szerepelnek az Azure AD Alkalmazáskatalógusában
+title: Problémák az összevont egyszeri bejelentkezés konfigurálásával az Azure AD Gallery-alkalmazásokhoz | Microsoft Docs
+description: Az összevont egyszeri bejelentkezés az SAML használatával való konfigurálásakor előforduló gyakori problémák némelyike az Azure AD Application Galleryben felsorolt alkalmazások esetében
 services: active-directory
 documentationcenter: ''
 author: msmimart
@@ -15,100 +15,100 @@ ms.topic: conceptual
 ms.date: 07/11/2017
 ms.author: mimart
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 554fb73ea7bf4f866eda3e9f3d629f871cb5e582
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6f4e690b440604a312ddfa8cd320ac200c0f40cf
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65781169"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68381221"
 ---
-# <a name="problem-configuring-federated-single-sign-on-for-an-azure-ad-gallery-application"></a>Összevont egyszeri bejelentkezés az Azure AD katalógusából származó alkalmazás konfigurálása során
+# <a name="problem-configuring-federated-single-sign-on-for-an-azure-ad-gallery-application"></a>Probléma van az összevont egyszeri bejelentkezés konfigurálásával egy Azure AD Gallery-alkalmazáshoz
 
-Ha problémát tapasztal az alkalmazás konfigurálásakor. Ellenőrizze, hogy követte a lépéseket az oktatóanyag során az alkalmazáshoz. Az alkalmazást, a beágyazott dokumentáció az alkalmazás konfigurálásával van. Emellett hozzáférhet a [SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája](https://azure.microsoft.com/documentation/articles/active-directory-saas-tutorial-list/) egy részletes részletes útmutatást.
+Ha probléma merül fel az alkalmazás konfigurálásakor. Győződjön meg arról, hogy követte az alkalmazáshoz tartozó oktatóanyag összes lépését. Az alkalmazás konfigurációjában az alkalmazás konfigurálásával kapcsolatos dokumentációban talál további tájékoztatást. Azt is megteheti, hogy elérhetővé teszi az [oktatóanyagok listáját az SaaS-alkalmazások Azure Active Directory](https://azure.microsoft.com/documentation/articles/active-directory-saas-tutorial-list/) -nal való integrálásához, részletes útmutatást nyújtva.
 
-## <a name="cant-add-another-instance-of-the-application"></a>Az alkalmazás egy másik példánya nem vehető fel.
+## <a name="cant-add-another-instance-of-the-application"></a>Nem lehet felvenni az alkalmazás egy másik példányát.
 
-Adjon hozzá egy második példányt egy alkalmazást, meg kell tudni:
+Egy alkalmazás második példányának hozzáadásához a következőket kell tudnia:
 
--   Állítsa be a második példány egyedi azonosítója. Ön nem lehet konfigurálni az első példánynál használt ugyanezzel az azonosítóval.
+-   Konfigurálja a második példány egyedi azonosítóját. Az első példányhoz használt azonosító nem konfigurálható.
 
--   Az első példánynál használttól eltérő tanúsítvány konfigurálása.
+-   Állítson be egy másik tanúsítványt, mint az első példánynál használt tanúsítvány.
 
-Ha az alkalmazás nem támogatja a fentiek közül. Ezt követően nem tudja konfigurálni a egy második példányt.
+Ha az alkalmazás nem támogatja a fentiek egyikét sem. Ezt követően nem fog tudni konfigurálni egy második példányt.
 
-## <a name="cant-add-the-identifier-or-the-reply-url"></a>Nem vehető fel az azonosítót vagy a válasz URL-címe
+## <a name="cant-add-the-identifier-or-the-reply-url"></a>Nem adható hozzá az azonosító vagy a válasz URL-címe
 
-Ha Ön nem adhat meg az azonosítót vagy a válasz URL-cím, erősítse meg az azonosítót és a válasz URL-cím értékek megegyeznek az alkalmazás előre konfigurálva a minták.
+Ha nem tudja konfigurálni az azonosítót vagy a válasz URL-címét, erősítse meg, hogy az azonosító és a válasz URL-értékei megegyeznek az alkalmazáshoz előre konfigurált mintákkal.
 
-Tudni, hogy az alkalmazás előre konfigurálva a minták:
+Az alkalmazáshoz előre konfigurált mintázatok ismerete:
 
-1. Nyissa meg a [ **az Azure portal** ](https://portal.azure.com/) , és jelentkezzen be egy **globális rendszergazdai** vagy **Társadminisztrátorként.** Ugorjon a 7. Ha Ön már az alkalmazás konfigurálása panel az Azure ad-ben.
+1. Nyissa meg a [**Azure Portal**](https://portal.azure.com/) , és jelentkezzen be **globális rendszergazdaként** vagy **társ-** rendszergazdaként. Ugorjon a 7. lépésre. Ha már szerepel az Azure AD alkalmazás-konfiguráció paneljén.
 
-2. Nyissa meg a **Azure Active Directory-bővítmény** kattintva **minden szolgáltatás** a fő bal oldali navigációs menü tetején.
+2. Nyissa meg a **Azure Active Directory bővítményt** a bal oldali navigációs menü tetején található **összes szolgáltatás** elemre kattintva.
 
 3. Írja be a **"Azure Active Directory**" szöveget a szűrő keresőmezőbe, és válassza a **Azure Active Directory** elemet.
 
-4. Kattintson a **vállalati alkalmazások** az Azure Active Directory bal oldali navigációs menüjében.
+4. kattintson a **vállalati alkalmazások** lehetőségre a bal oldali navigációs menü Azure Active Directory.
 
 5. Kattintson a **minden alkalmazás** az alkalmazások listájának megtekintéséhez.
 
    * Ha azt szeretné, hogy itt jelennek meg az alkalmazás nem látja, használja a **szűrő** vezérlőelem felső részén a **minden alkalmazás lista** és állítsa be a **megjelenítése** beállítást **összes Az alkalmazások.**
 
-6. Válassza ki az alkalmazás egyszeri bejelentkezéshez konfigurálandó.
+6. Válassza ki azt az alkalmazást, amelyhez az egyszeri bejelentkezést konfigurálni kívánja.
 
-7. Ha az alkalmazás betöltött, kattintson a **egyszeri bejelentkezési** az alkalmazás bal oldali navigációs menüjében.
+7. Az alkalmazás betöltése után kattintson az **egyszeri bejelentkezésre** az alkalmazás bal oldali navigációs menüjében.
 
-8. Válassza ki **SAML-alapú bejelentkezés** származó a **mód** legördülő listából.
+8. Válassza ki az **SAML-alapú bejelentkezés** lehetőséget a **mód** legördülő listából.
 
-9. Nyissa meg a **azonosító** vagy **válasz URL-cím** szövegmező alatt a **tartomány és URL-címek szakaszt.**
+9. Lépjen az **azonosító** vagy a **Válasz URL-címe** szövegmezőbe a **tartomány és URL-címek szakaszban.**
 
-10. Tudnivalók a támogatott minták az alkalmazás három módja van:
+10. Az alkalmazás által támogatott minták háromféle módon ismertek:
 
-    * A szövegmező, megtekintheti a támogatott példány szükséges helyettesíti *példa:* <https://contoso.com>.
+    * A szövegmezőben a támogatott mintázat (ok) helyőrző példaként jelenik meg *:* <https://contoso.com>.
 
-    * a mintázat nem támogatott, ha egy piros felkiáltójel láthatja a szövegmezőbe írja be az értéket megkísérlésekor. Ha az egérmutatóval rámutat a vörös felkiáltójelből, a támogatott minták jelenik meg.
+    * Ha a minta nem támogatott, piros felkiáltójel jelenik meg, amikor megpróbálja beírni az értéket a szövegmezőbe. Ha az egérmutatót a piros felkiáltójel fölé viszi, a támogatott minták láthatók.
 
-    * Az oktatóanyag az alkalmazáshoz a támogatott minták kapcsolatos információkat is kaphat. Alatt a **konfigurálása az Azure AD egyszeri bejelentkezés** szakaszban. Az értékek alapján konfigurálva ugorjon a **tartomány és URL-címek** szakaszban.
+    * Az alkalmazás oktatóanyagában a támogatott mintákkal kapcsolatos információkat is lekérheti. Az **Azure ad egyszeri bejelentkezés konfigurálása** szakaszban talál. Ugorjon a **tartomány és URL-címek** szakaszban található értékek konfigurálására szolgáló lépésre.
 
-Ha az értékek nem egyeznek meg az előre konfigurált Azure ad-ben a minták. A következőket teheti:
+Ha az értékek nem egyeznek az Azure AD-ben előre konfigurált mintákkal. A következőket teheti:
 
--   Az alkalmazás gyártójától használatával lekérjük az értékeket, amely megfelel a mintának, előre konfigurált Azure ad használata
+-   Az alkalmazás gyártójának használata az Azure AD-ben előre konfigurált mintának megfelelő értékek beolvasásához
 
--   Vagy felveheti a kapcsolatot az Azure AD csapata <aadapprequest@microsoft.com> vagy az oktatóanyagban kérni a frissítést az alkalmazás támogatott mintáit Megjegyzés írása
+-   Vagy megadhatja az Azure ad-csapatot <aadapprequest@microsoft.com> az oktatóanyagban, vagy elhagyhat egy megjegyzést az alkalmazás által támogatott minták frissítésének igényléséhez
 
-## <a name="where-do-i-set-the-entityid-user-identifier-format"></a>Ahol állítsa be a EntityID (felhasználóazonosító) formátum
+## <a name="where-do-i-set-the-entityid-user-identifier-format"></a>Hol állítható be a EntityID (felhasználói azonosító) formátuma
 
-A EntityID (felhasználóazonosító) formátum, amely az Azure AD felhasználói hitelesítés után az alkalmazás a válaszban küld ki fogunk.
+Nem lehet kijelölni azt a EntityID (felhasználóazonosító), amelyet az Azure AD az alkalmazásnak a felhasználó hitelesítése utáni válaszban küld.
 
-Kiválasztott Azure AD válassza ki a formátumot a NameID-attribútum (felhasználóazonosító) érték alapján, vagy formátumát az SAML AuthRequest az alkalmazás által kért. További részletekért látogasson el a cikk [egyszeri bejelentkezéses SAML-protokoll](https://docs.microsoft.com/azure/active-directory/develop/active-directory-single-sign-on-protocol-reference#authnrequest) NameIDPolicy, területen
+Az Azure AD kiválasztja a NameID attribútum (felhasználói azonosító) formátumát a kiválasztott érték vagy az alkalmazás által az SAML-AuthRequest kért formátum alapján. További információkért tekintse meg az [egyszeri bejelentkezés SAML protokollját](https://docs.microsoft.com/azure/active-directory/develop/active-directory-single-sign-on-protocol-reference#authnrequest) a NameIDPolicy szakaszban.
 
-## <a name="cant-find-the-azure-ad-metadata-to-complete-the-configuration-with-the-application"></a>Az Azure ad-ben metaadatok elvégezni a konfigurálást az alkalmazással nem található.
+## <a name="cant-find-the-azure-ad-metadata-to-complete-the-configuration-with-the-application"></a>Nem található az Azure AD-metaadatok a konfiguráció végrehajtásához az alkalmazással
 
-Az Azure ad-ből az alkalmazás metaadatait, vagy a tanúsítvány letöltéséhez kövesse az alábbi lépéseket:
+Az alkalmazás metaadatainak vagy tanúsítványának az Azure AD-ből való letöltéséhez kövesse az alábbi lépéseket:
 
-1. Nyissa meg a [ **az Azure portal** ](https://portal.azure.com/) , és jelentkezzen be egy **globális rendszergazdai** vagy **Társadminisztrátorként.**
+1. Nyissa meg a [**Azure Portal**](https://portal.azure.com/) , és jelentkezzen be **globális rendszergazdaként** vagy **társ-** rendszergazdaként.
 
-2. Nyissa meg a **Azure Active Directory-bővítmény** kattintva **minden szolgáltatás** a fő bal oldali navigációs menü tetején.
+2. Nyissa meg a **Azure Active Directory bővítményt** a bal oldali navigációs menü tetején található **összes szolgáltatás** elemre kattintva.
 
 3. Írja be a **"Azure Active Directory**" szöveget a szűrő keresőmezőbe, és válassza a **Azure Active Directory** elemet.
 
-4. Kattintson a **vállalati alkalmazások** az Azure Active Directory bal oldali navigációs menüjében.
+4. kattintson a **vállalati alkalmazások** lehetőségre a bal oldali navigációs menü Azure Active Directory.
 
 5. Kattintson a **minden alkalmazás** az alkalmazások listájának megtekintéséhez.
 
    * Ha azt szeretné, hogy itt jelennek meg az alkalmazás nem látja, használja a **szűrő** vezérlőelem felső részén a **minden alkalmazás lista** és állítsa be a **megjelenítése** beállítást **összes Az alkalmazások.**
 
-6. Válassza ki az alkalmazás egyszeri bejelentkezésre konfigurálta.
+6. Válassza ki azt az alkalmazást, amelyhez konfigurálta az egyszeri bejelentkezést.
 
-7. Ha az alkalmazás betöltött, kattintson a **egyszeri bejelentkezési** az alkalmazás bal oldali navigációs menüjében.
+7. Az alkalmazás betöltése után kattintson az **egyszeri bejelentkezésre** az alkalmazás bal oldali navigációs menüjében.
 
-8. Lépjen a **SAML-aláíró tanúsítvány** területen, majd kattintson a **letöltése** oszlop értékét. Attól függően, melyik az alkalmazás van szüksége, az egyszeri bejelentkezés konfigurálása láthatja az metaadatainak XML-fájl letöltése lehetőséget, vagy a tanúsítványt.
+8. Nyissa meg az **SAML aláíró tanúsítvány** szakaszt, majd kattintson az oszlop értékének **letöltése** elemre. Attól függően, hogy az alkalmazásnak hogyan kell konfigurálnia az egyszeri bejelentkezést, megjelenik a metaadatok XML-fájljának vagy a tanúsítványnak a letöltésére szolgáló lehetőség.
 
-Az Azure AD nem biztosít a metaadatok beolvasása egy URL-címe. A metaadatok is csak olvasható be XML-fájlként.
+Az Azure AD nem biztosít URL-címet a metaadatok beszerzéséhez. A metaadatokat csak XML-fájlként lehet beolvasni.
 
-## <a name="dont-know-how-to-customize-saml-claims-sent-to-an-application"></a>Nem tudom, hogyan kérelmet küldött SAML-jogcímek testreszabása
+## <a name="dont-know-how-to-customize-saml-claims-sent-to-an-application"></a>Nem tudom, hogyan szabhatja testre az alkalmazásnak eljuttatott SAML-jogcímeket
 
-A SAML-attribútum jogcímek, az alkalmazás testreszabásával kapcsolatban lásd: [Jogcímtársítások az Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-claims-mapping) további információt.
+Ha meg szeretné tudni, hogyan szabhatja testre az alkalmazásnak eljuttatott SAML-attribútumok jogcímeit, tekintse meg a következő témakört: [jogcím-hozzárendelés Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-claims-mapping)
 
 ## <a name="next-steps"></a>További lépések
 [Alkalmazások kezelése az Azure Active Directoryval](what-is-application-management.md)

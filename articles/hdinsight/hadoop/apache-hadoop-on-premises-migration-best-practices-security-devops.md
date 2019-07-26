@@ -1,6 +1,6 @@
 ---
-title: Azure HDInsight – biztonság és a fejlesztési és üzemeltetési eljárások helyszíni Apache Hadoop-fürtök áttelepítése
-description: Ismerje meg, biztonsági és a fejlesztési és üzemeltetési áttelepítése a helyszíni Hadoop-fürtöket az Azure HDInsight ajánlott eljárásait.
+title: Helyszíni Apache Hadoop-fürtök migrálása az Azure HDInsight – biztonsági és DevOps – ajánlott eljárások
+description: Ismerje meg a biztonsági és DevOps ajánlott eljárásokat a helyszíni Hadoop-fürtök Azure-HDInsight való áttelepítéséhez.
 author: hrasheed-msft
 ms.reviewer: ashishth
 ms.service: hdinsight
@@ -8,120 +8,120 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/25/2018
 ms.author: hrasheed
-ms.openlocfilehash: 1d13b52d253562a24946e6df2fc069f41b485fef
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0e7db970bee44d40831c05e8911b72841d027211
+ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64707887"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68442093"
 ---
-# <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---security-and-devops-best-practices"></a>Azure HDInsight – biztonság és a fejlesztési és üzemeltetési eljárások helyszíni Apache Hadoop-fürtök áttelepítése
+# <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---security-and-devops-best-practices"></a>Helyszíni Apache Hadoop-fürtök migrálása az Azure HDInsight – biztonsági és DevOps – ajánlott eljárások
 
-Ez a cikk az Azure HDInsight rendszerben javaslatok a biztonsági és a fejlesztési és üzemeltetési biztosít. Ez azt egy olyan sorozat részét, amely ajánlott eljárásokat, amelyek segítik az Azure HDInsight áttelepítése a helyszíni Apache Hadoop-rendszerekhez biztosít.
+Ez a cikk az Azure HDInsight Systems biztonsági és DevOps kapcsolatos javaslatait ismerteti. Egy sorozat része, amely ajánlott eljárásokat biztosít a helyszíni Apache Hadoop rendszerek Azure HDInsight való áttelepítésének segítésére.
 
-## <a name="secure-and-govern-cluster-with-enterprise-security-package"></a>Biztonságos, és szabályozhatja a fürtön vállalati biztonsági csomaggal
+## <a name="secure-and-govern-cluster-with-enterprise-security-package"></a>Fürt biztonságossá tétele és szabályozása Enterprise Security Package
 
-A vállalati biztonsági csomag (ESP) támogatja az Active Directory-alapú hitelesítés, a több felhasználó támogatása és a szerepköralapú hozzáférés-vezérlés. A választott ESP beállítással a HDInsight-fürt az Active Directory-tartományhoz csatlakozik, és a vállalati rendszergazda konfigurálhatja a szerepköralapú hozzáférés-vezérlés (RBAC) az Apache Hive-biztonsághoz az Apache Ranger segítségével. A rendszergazda is naplózhatja az alkalmazottak és bármely változtatást a hozzáférés-vezérlési házirendeket adatelérési.
+A Enterprise Security Package (ESP) támogatja a Active Directory-alapú hitelesítést, a többfelhasználós támogatást és a szerepköralapú hozzáférés-vezérlést. Ha a kiválasztott ESP lehetőséget választja, a HDInsight-fürt csatlakozik a Active Directory tartományhoz, és a vállalati rendszergazda szerepköralapú hozzáférés-vezérlést (RBAC) konfigurálhat Apache Hive biztonsághoz az Apache Ranger használatával. A rendszergazda is naplózhatja az alkalmazottak és a hozzáférés-vezérlési szabályzatok által végzett módosításokat.
 
-A következő fürttípusokat ESP érhető el: Az Apache Hadoop, az Apache Spark, az Apache HBase, Apache Kafka és az interaktív lekérdezések (Hive LLAP). 
+Az ESP a következő típusú fürtökön érhető el: Apache Hadoop, Apache Spark, Apache HBase, Apache Kafka és interaktív lekérdezés (kaptár LLAP). 
 
-Használja az alábbi lépéseket a tartományhoz csatlakoztatott HDInsight-fürt üzembe helyezéséhez:
+A tartományhoz csatlakoztatott HDInsight-fürt üzembe helyezéséhez kövesse az alábbi lépéseket:
 
-- A tartománynév átadásával, üzembe helyezése az Azure Active Directory (AAD).
-- Az Azure Active Directory Domain Services (AAD-DS) telepítése.
-- Hozzon létre a szükséges virtuális hálózatot és alhálózatot.
-- AAD DS kezelheti a virtuális hálózat egy virtuális gép üzembe helyezése.
-- A virtuális gép csatlakoztatása a tartományhoz.
-- Telepítse az AD és a DNS-eszközök.
-- Kérje meg az AAD Tartományi rendszergazdát, hozzon létre egy szervezeti egység (OU).
-- LDAPS-t engedélyezése AAD Tartományi.
-- Hozzon létre egy szolgáltatásfiókot az Azure Active Directoryban a delegált olvasási és írási rendszergazdai engedéllyel a szervezeti Egységhez való, hogy képes kezelni. Ez a szolgáltatás fiók ezután gépek csatlakoztatása a tartományhoz, és helyezze el a gép rendszerbiztonsági tagok belül a szervezeti Egységhez. Azt is létrehozhat egyszerű szolgáltatást lekéri a szervezeti Egységet a fürt létrehozásakor megadott.
+- Azure Active Directory (HRE) üzembe helyezése a tartománynév átadásával.
+- Azure Active Directory Domain Services üzembe helyezése (HRE DS).
+- Hozza létre a szükséges Virtual Network és alhálózatot.
+- Helyezzen üzembe egy virtuális gépet a Virtual Network a HRE DS felügyeletéhez.
+- Csatlakoztassa a virtuális gépet a tartományhoz.
+- Telepítse az AD és a DNS-eszközöket.
+- A HRE DS rendszergazdája hozzon létre egy szervezeti egységet (OU).
+- Engedélyezze az LDAPs szolgáltatást a HRE DS-hez.
+- Hozzon létre egy Azure Active Directory-beli szolgáltatásfiókot a meghatalmazott olvasási & írási rendszergazdai engedéllyel a szervezeti egységhez, hogy az képes legyen. Ez a szolgáltatásfiók ezután csatlakoztathatja a gépeket a tartományhoz, és elhelyezheti a számítógépeket a szervezeti egységen belül. Emellett a fürt létrehozása során megadott szervezeti egységen belül is létrehozhat egyszerű szolgáltatásokat.
 
 
     > [!Note]
-    > A szolgáltatásfiók nem kell az AD tartományi rendszergazdai fiókot.
+    > A szolgáltatásfiók nem feltétlenül AD tartományi rendszergazdai fióknak kell lennie.
 
 
-- Az alábbi paraméterek beállításával a HDInsight ESP-fürt üzembe helyezése:
-    - **Tartománynév**: A tartománynév, a társított Azure Active Directory tartományi Szolgáltatásokban.
-    - **Tartományi felhasználónév**: A fiók, amelyet az előző szakaszban, például az Azure AD DS-tartományvezérlő által felügyelt tartományban: `hdiadmin@contoso.onmicrosoft.com`. A tartományi felhasználó a rendszergazda a HDInsight-fürt lesz.
+- A következő paraméterek megadásával telepítse a HDInsight ESP-fürtöt:
+    - **Tartománynév**: Az Azure AD DShoz társított tartománynév.
+    - **Tartományi Felhasználónév**: Az előző szakaszban létrehozott Azure AD DS DC által felügyelt tartományhoz tartozó szolgáltatásfiók, például: `hdiadmin@contoso.onmicrosoft.com`. Ez a tartományi felhasználó lesz a HDInsight-fürt rendszergazdája.
     - **Tartományi jelszó**: A szolgáltatásfiók jelszava.
-    - **Szervezeti egység**: A például a HDInsight-fürt a használni kívánt szervezeti egység megkülönböztető nevét: `OU=HDInsightOU,DC=contoso,DC=onmicrosoft,DC=com`. Ha a szervezeti egység nem létezik, a HDInsight-fürt próbál létrehozni a szervezeti Egységet a jogosultságokat a szolgáltatási fiók használatával.
+    - **Szervezeti egység**: A HDInsight-fürthöz használni kívánt szervezeti egység megkülönböztető neve, például: `OU=HDInsightOU,DC=contoso,DC=onmicrosoft,DC=com`. Ha ez a szervezeti egység nem létezik, a HDInsight-fürt megpróbálja létrehozni a szervezeti egységet a szolgáltatásfiók jogosultságainak használatával.
     - **LDAPS URL-cím**: például `ldaps://contoso.onmicrosoft.com:636`.
-    - **Hozzáférési felhasználói csoport**: A biztonsági csoportok, amelynek felhasználói szeretné szinkronizálni a fürthöz, például: `HiveUsers`. Ha meg szeretné határozni a több felhasználói csoportot, válassza el őket pontosvesszővel (;). A csoport a címtárban az ESP-fürt létrehozása előtt léteznie kell.
+    - **Hozzáférés felhasználói csoport**: Azok a biztonsági csoportok, amelyek felhasználóit szinkronizálni szeretné a fürttel, például `HiveUsers`:. Ha több felhasználói csoportot szeretne megadni, pontosvesszővel válassza el őket egymástól. Az ESP-fürt létrehozása előtt a csoport (ok) nak léteznie kell a címtárban.
 
 További információkért tekintse át a következő cikkeket:
 
-- [Apache Hadoop-biztonság használatába a tartományhoz csatlakoztatott HDInsight-fürtök bemutatása](../domain-joined/apache-domain-joined-introduction.md)
+- [Bevezetés a Apache Hadoop biztonságba a tartományhoz csatlakoztatott HDInsight-fürtökkel](../domain-joined/hdinsight-security-overview.md)
 
-- [Az Azure-tartományhoz az Apache Hadoop-fürtök tervezése a HDInsight](../domain-joined/apache-domain-joined-architecture.md)
-- [A tartományhoz csatlakoztatott HDInsight-fürt konfigurálása Azure Active Directory Domain Services használatával](../domain-joined/apache-domain-joined-configure-using-azure-adds.md)
-- [Egy HDInsight-fürtön az Azure Active Directory-felhasználók szinkronizálása](../hdinsight-sync-aad-users-to-cluster.md)
-- [Az Apache Hive-házirendek konfigurálása a tartományhoz csatlakoztatott HDInsight](../domain-joined/apache-domain-joined-run-hive.md)
-- [Az Apache Oozie futtathat a tartományhoz csatlakoztatott HDInsight Hadoop-fürtöket](../domain-joined/hdinsight-use-oozie-domain-joined-clusters.md)
+- [Azure-tartományhoz csatlakoztatott Apache Hadoop-fürtök tervezése a HDInsight-ben](../domain-joined/apache-domain-joined-architecture.md)
+- [Tartományhoz csatlakoztatott HDInsight-fürt konfigurálása Azure Active Directory Domain Services használatával](../domain-joined/apache-domain-joined-configure-using-azure-adds.md)
+- [Azure Active Directory-felhasználók szinkronizálása HDInsight-fürttel](../hdinsight-sync-aad-users-to-cluster.md)
+- [Apache Hive házirendek konfigurálása a tartományhoz csatlakoztatott HDInsight](../domain-joined/apache-domain-joined-run-hive.md)
+- [Apache Oozie futtatása tartományhoz csatlakoztatott HDInsight Hadoop-fürtökben](../domain-joined/hdinsight-use-oozie-domain-joined-clusters.md)
 
-## <a name="implement-end-to-end-enterprise-security"></a>Teljes körű vállalati biztonság
+## <a name="implement-end-to-end-enterprise-security"></a>Végpontok közötti vállalati biztonság megvalósítása
 
-A végpontok közötti vállalati biztonsági hajthatók végre a következő vezérlőknek a használatát:
+A végpontok közötti vállalati biztonság a következő vezérlők használatával érhető el:
 
-- **A magán- és védett adatfolyamat (szegélyhálózat-alapú biztonság)**
-    - Szegélyhálózat-alapú szintű biztonság Azure-beli virtuális hálózatok, hálózati biztonsági csoportok és az átjárószolgáltatás keresztül érhető el.
+- **Magán-és védett adatfolyamatok (peremhálózat-szintű biztonság)**
+    - A szegélyhálózati biztonság az Azure Virtual Networks, a hálózati biztonsági csoportok és az átjáró szolgáltatás használatával érhető el.
 
-- **Hitelesítés és engedélyezés az adatok eléréséhez**
-    - Hozzon létre az Azure Active Directory Domain Services tartományhoz csatlakoztatott HDInsight-fürtön. (Vállalati biztonsági csomag).
-    - Adja meg a fürt erőforrásai szerepkörön alapuló hozzáférés AD-felhasználók az Ambari használatával.
-    - Az Apache Ranger segítségével értékre beállított hozzáférési Alkalmazásvezérlési házirendeket a Hive a tábla vagy oszlop / sorszinthez.
-    - A fürthöz SSH-hozzáférés csak a rendszergazda korlátozható.
+- **Az adathozzáférés hitelesítése és engedélyezése**
+    - Tartományhoz csatlakoztatott HDInsight-fürt létrehozása Azure Active Directory Domain Services használatával. (Enterprise Security Package).
+    - A Ambari használatával szerepköralapú hozzáférést biztosíthat a fürt erőforrásaihoz az AD-felhasználók számára.
+    - Az Apache Ranger használatával beállíthatja a struktúra hozzáférés-vezérlési házirendjeit a tábla/oszlop/sor szintjén.
+    - A fürthöz való SSH-hozzáférés csak a rendszergazdára korlátozható.
 
 - **Naplózás**
-    - Megtekintheti és jelentheti az összes hozzáférést a HDInsight-fürt erőforrásainak és az adatokat.
-    - Megtekintheti és jelentheti a hozzáférés-vezérlési házirendeket összes módosítást.
+    - Megtekintheti és bejelentheti a HDInsight-fürt erőforrásaihoz és az adatforrásokhoz való hozzáférést.
+    - Megtekintheti és bejelentheti a hozzáférés-vezérlési szabályzatok összes módosítását.
 
 - **Titkosítás**
-    - Transzparens kiszolgálóoldali titkosítás, a Microsoft által kezelt kulcsok vagy felhasználó által kezelt kulcsok használata.
-    - Az átvitel során titkosítás ügyféloldali titkosítás, a https és a TLS használatával.
+    - Transzparens kiszolgálóoldali titkosítás Microsoft által felügyelt kulcsokkal vagy az ügyfél által felügyelt kulcsokkal.
+    - Az átviteli titkosítás ügyféloldali titkosítással, HTTPS és TLS használatával.
 
 További információkért tekintse át a következő cikkeket:
 
-- [Az Azure virtuális hálózatok áttekintése](../../virtual-network/virtual-networks-overview.md)
-- [Az Azure hálózati biztonsági csoportok áttekintése](../../virtual-network/security-overview.md)
-- [Az Azure virtuális hálózatok közötti társviszony](../../virtual-network/virtual-network-peering-overview.md)
-- [Az Azure storage biztonsági útmutatóját](../../storage/common/storage-security-guide.md)
-- [Az Azure Storage Service Encryption inaktív](../../storage/common/storage-service-encryption.md)
+- [Azure Virtual Networks – áttekintés](../../virtual-network/virtual-networks-overview.md)
+- [Azure hálózati biztonsági csoportok – áttekintés](../../virtual-network/security-overview.md)
+- [Azure Virtual Network-társítás](../../virtual-network/virtual-network-peering-overview.md)
+- [Az Azure Storage biztonsági útmutatója](../../storage/common/storage-security-guide.md)
+- [Azure Storage Service Encryption a nyugalmi állapotban](../../storage/common/storage-service-encryption.md)
 
-## <a name="use-monitoring--alerting"></a>Használja a monitorozás és riasztások
+## <a name="use-monitoring--alerting"></a>Figyelési & riasztások használata
 
-További információkért tekintse meg a cikket:
+További információt a következő cikkben talál:
 
 [Azure Monitor – áttekintés](../../azure-monitor/overview.md)
 
 ## <a name="upgrade-clusters"></a>Fürtök frissítése
 
-A HDInsight legújabb a legújabb funkciók előnyeinek kihasználása érdekében rendszeresen frissíteni. A következő lépések segítségével a fürt frissítése a legújabb verzióra:
+Rendszeresen frissítsen a legújabb HDInsight-verzióra, hogy kihasználhassa a legújabb funkciókat. A következő lépéseket követve frissítheti a fürtöt a legújabb verzióra:
 
-1. Hozzon létre egy új tesztelési HDInsight-fürtöt, a legújabb elérhető HDInsight-verzió használatával.
-1. Tesztelje az új fürtön, győződjön meg arról, hogy a feladatok és a számítási feladatok a várt módon működik.
-1. Feladatok vagy alkalmazások vagy munkaterhelések szükség szerint módosítsa.
-1. Készítsen biztonsági másolatot a fürtcsomópontokon helyileg tárolt átmeneti adatok.
-1. Törölje a meglévő fürtből.
-1. A legújabb verziójú HDInsight-fürt létrehozása a ugyanazon virtuális hálózat alhálózat, mint az előző fürtben alapértelmezett adat- és metaadat-tároló használatával.
-1. Átmeneti az adatok, amelyek készült biztonsági másolat importálása.
-1. Indítási feladatok/folytatni a használatával az új fürtön.
+1. Hozzon létre egy új teszt HDInsight-fürtöt a legújabb elérhető HDInsight-verzió használatával.
+1. Tesztelje az új fürtöt, és győződjön meg arról, hogy a feladatok és a munkaterhelések a várt módon működnek.
+1. Szükség szerint módosítsa a feladatokat vagy alkalmazásokat vagy munkaterheléseket.
+1. A fürt csomópontjain helyileg tárolt átmeneti adattárolás biztonsági mentése.
+1. Törölje a meglévő fürtöt.
+1. Hozzon létre egy fürtöt a legújabb HDInsight-verzióban ugyanabban az VNET-alhálózatban, ugyanazzal az alapértelmezett adattal és meta-tárolóval, mint az előző fürttel.
+1. Importálja a biztonsági mentés alatt álló átmeneti adatfájlokat.
+1. Feladatok indítása/a feldolgozás folytatása az új fürt használatával.
 
-További információkért tekintse meg a cikket: [Új verzió frissítési HDInsight-fürt](../hdinsight-upgrade-cluster.md).
+További információt a következő cikkben talál: [Frissítse a HDInsight-fürtöt egy új verzióra](../hdinsight-upgrade-cluster.md).
 
-## <a name="patch-cluster-operating-systems"></a>Javítás az operációs rendszerek fürtbe
+## <a name="patch-cluster-operating-systems"></a>Fürt operációs rendszereinek javítása
 
-Felügyelt Hadoop-szolgáltatás HDInsight gondoskodik az operációs rendszer, a HDInsight-fürtök által használt virtuális gépek javítása.
+Felügyelt Hadoop szolgáltatásként a HDInsight gondoskodik a HDInsight-fürtök által használt virtuális gépek operációs rendszerének javításáról.
 
-További információkért tekintse meg a cikket: [Az operációs rendszer javításai a HDInsight](../hdinsight-os-patching.md).
+További információt a következő cikkben talál: [Operációsrendszer-javítás a HDInsight-hez](../hdinsight-os-patching.md).
 
 ## <a name="post-migration"></a>Áttelepítés utáni
 
-1. **Javíthatja az alkalmazások** – iteratív végezze el a szükséges módosításokat a feladatok, folyamatok és parancsprogramok.
-2. **Tesztek végrehajtása** – iteratív működési Futtatás és a teljesítmény teszteket.
-3. **Optimalizálja** - teljesítmény problémák elhárítása a fenti teszt eredményei alapján, és erősítse meg a teljesítménnyel kapcsolatos fejlesztések, majd tesztelje újra.
+1. **Alkalmazások szervizelése** – a iteratív végezze el a feladatok, a folyamatok és a parancsfájlok szükséges módosításait.
+2. **Tesztek végrehajtása** – a iteratív funkcionális és teljesítményteszteket futtathat.
+3. **Optimalizálás** – javítsa ki a teljesítménnyel kapcsolatos problémákat a fenti tesztek eredményei alapján, majd ellenőrizze a teljesítmény fejlesztését.
 
 ## <a name="next-steps"></a>További lépések
 
-- Tudjon meg többet [HDInsight 4.0](https://docs.microsoft.com/azure/hdinsight/hadoop/apache-hadoop-introduction).
+- További információ a [HDInsight 4,0](https://docs.microsoft.com/azure/hdinsight/hadoop/apache-hadoop-introduction)-ről.

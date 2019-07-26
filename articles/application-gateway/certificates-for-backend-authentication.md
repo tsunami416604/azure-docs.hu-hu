@@ -1,41 +1,41 @@
 ---
-title: Az Azure Application Gateway engedélyezési háttérrendszereket szükséges tanúsítványok
-description: Ez a cikk példákat hogyan SSL-tanúsítvány lehet alakítani hitelesítési tanúsítvány és a megbízható legfelső szintű tanúsítványt az engedélyezési háttérbeli példányok az Azure Application Gateway szükséges
+title: Az Azure-ban Application Gateway
+description: Ez a cikk példákat mutat be arra, hogy az SSL-tanúsítványok hogyan alakíthatók át hitelesítési tanúsítványra és megbízható főtanúsítványra, amelyek szükségesek az Azure-beli háttérbeli példányok engedélyezési feltételéhez Application Gateway
 services: application-gateway
-author: abshamsft
+author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 3/14/2019
+ms.date: 07/23/2019
 ms.author: absha
-ms.openlocfilehash: 72ee9123ad959c0c7240d4f7a906adc1a4dd1a93
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2d808548ef91ed416f27b0dbb3e3e93d79ade30c
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60831723"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68382057"
 ---
-# <a name="create-certificates-for-whitelisting-backend-with-azure-application-gateway"></a>Engedélyezési háttér-tanúsítványok létrehozása az Azure Application Gateway segítségével
+# <a name="create-certificates-to-allow-the-backend-with-azure-application-gateway"></a>Tanúsítványok létrehozása a háttér Azure Application Gateway való engedélyezéséhez
 
-Teljes körű SSL végrehajtásához az application gateway az engedélyezési listára kell hitelesítést/megbízható legfelső szintű tanúsítványok feltöltésével háttérpéldányokkal igényel. A V1 termékváltozat esetében hitelesítési tanúsítványokra, míg a V2 termékváltozat esetében megbízható főtanúsítványokra van szükség a tanúsítványok engedélyezési listára való felvételéhez.
+A végpontok közötti SSL végrehajtásához Application Gateway szükséges a háttérbeli példányok engedélyezése a hitelesítés/megbízható főtanúsítványok feltöltésével. A v1 SKU esetében hitelesítési tanúsítványokra van szükség, de a v2 SKU megbízható főtanúsítványokhoz a tanúsítványok engedélyezéséhez van szükség.
 
 Ebben a cikkben az alábbiakkal ismerkedhet meg:
 
 > [!div class="checklist"]
 >
-> - Hitelesítési tanúsítvány (a v1 Termékváltozatot) a háttérkiszolgáló-tanúsítvány exportálása
-> - Megbízható főtanúsítvány exportálása a háttérkiszolgáló-tanúsítvány (a v2 szintű Termékváltozatot)
+> - Hitelesítési tanúsítvány exportálása háttérbeli tanúsítványból (v1 SKU esetében)
+> - Megbízható főtanúsítvány exportálása háttérbeli tanúsítványból (v2 SKU)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Háttérbeli meglévő tanúsítvány használatával hozzon létre a hitelesítési tanúsítványokat vagy engedélyezési háttérpéldányokkal az application gatewayen a szükséges megbízható főtanúsítványok van szüksége. A háttérkiszolgáló-tanúsítvány ugyanaz, mint az SSL-tanúsítvány vagy a fokozott biztonság eltérő lehet. Az Application gateway nem biztosít minden olyan mechanizmus, amellyel vagy a vételi SSL-tanúsítvány. Tesztelési célokra is létrehozhat egy önaláírt tanúsítványt, de ne használja azt a termelési számítási feladatokhoz. 
+Meglévő háttér-tanúsítvány szükséges ahhoz, hogy a Application Gateway használó backend-példányok engedélyezéséhez szükséges hitelesítési tanúsítványok vagy megbízható főtanúsítványok előállítása megtörténjen. A háttérbeli tanúsítvány megegyező lehet az SSL-tanúsítvánnyal, vagy eltérő a további biztonsághoz. A Application Gateway nem biztosít SSL-tanúsítvány létrehozásához vagy megvásárlásához szükséges mechanizmusokat. Tesztelési célból létrehozhat egy önaláírt tanúsítványt, de nem használhatja éles számítási feladatokhoz. 
 
-## <a name="export-authentication-certificate-for-v1-sku"></a>Export-hitelesítési tanúsítvány (a v1 Termékváltozatot)
+## <a name="export-authentication-certificate-for-v1-sku"></a>Hitelesítési tanúsítvány exportálása (v1 SKU esetében)
 
-Hitelesítési tanúsítványra szükség az application gateway v1-ben engedélyezési lista háttérpéldányokkal Termékváltozat. Hitelesítési tanúsítvány, a nyilvános kulcsot a háttérkiszolgáló-tanúsítvány a Base-64 kódolású X.509 (. CER) formátumban. Ebben a példában azt egy SSL-tanúsítványt használja a háttérkiszolgáló-tanúsítvány, és a használható hitelesítési tanúsítvány nyilvános kulcsának exportálásához. Emellett ebben a példában használjuk a Tanúsítványkezelő Windows-eszköz exportálása a szükséges tanúsítványokat. Ha szeretné, a felhasználók kényelme érdekében megfelelően más eszköz használata.
+A Application Gateway v1 SKU-ban a háttérbeli példányok engedélyezéséhez hitelesítési tanúsítvány szükséges. A hitelesítési tanúsítvány a háttér-kiszolgálói tanúsítványok nyilvános kulcsa a Base-64 kódolású X. 509 (. CER) formátum. Ebben a példában egy SSL-tanúsítványt fog használni a háttér-tanúsítványhoz, és exportálja a nyilvános kulcsát hitelesítési tanúsítványként való használatra. Emellett ebben a példában a Windows tanúsítványkezelő eszköz használatával exportálja a szükséges tanúsítványokat. Dönthet úgy is, hogy bármilyen más, kényelmes eszközt használ.
 
-Az SSL-tanúsítvány a exportálja a nyilvános kulcs .cer fájlt (ne a titkos kulcsot). Az alábbi lépések segítségével a .cer fájl Base-64 kódolású X.509 (. A tanúsítvány CER) formátuma:
+Az SSL-tanúsítványból exportálja a nyilvános kulcsú. cer fájlt (ne a titkos kulcsot). Az alábbi lépések segítségével exportálhatja a. cer fájlt a Base-64 kódolású X. 509 fájlba (. CER) formátum a tanúsítványhoz:
 
-1. A .cer fájl tanúsítványból történő beszerzéséhez nyissa meg a **Felhasználói tanúsítványok kezelése** elemet. Keresse meg a tanúsítványt, általában a "Tanúsítványok – aktuális felhasználó\személyes\tanúsítványok", és kattintson a jobb gombbal. Kattintson a **Minden feladat**, majd az **Exportálás** elemre. Megnyílik a **Tanúsítványexportáló varázsló**. Ha nem találja a tanúsítványt aktuális felhasználó\személyes\tanúsítványok útvonalon, előfordulhat, hogy véletlenül nyitotta "Tanúsítványok – helyi számítógép", "Tanúsítványok – aktuális felhasználó" helyett). Ha meg szeretné nyitni a Certificate Manager PowerShell-lel, adja meg jelenlegi felhasználó hatókörében *certmgr* a konzolablakban.
+1. A .cer fájl tanúsítványból történő beszerzéséhez nyissa meg a **Felhasználói tanúsítványok kezelése** elemet. Keresse meg a tanúsítványt, amely jellemzően a "Certificates-current User\Personal\Certificates" elemben található, és kattintson a jobb gombbal. Kattintson a **Minden feladat**, majd az **Exportálás** elemre. Megnyílik a **Tanúsítványexportáló varázsló**. Ha nem találja a tanúsítványt a jelenlegi User\Personal\Certificates alatt, előfordulhat, hogy véletlenül megnyitotta a "tanúsítványok – helyi számítógép" kifejezést, és nem a "tanúsítványok – aktuális felhasználó" beállítást. Ha a Tanúsítványkezelőt a jelenlegi felhasználói hatókörben szeretné megnyitni a PowerShell használatával, írja be a *certmgr* a konzol ablakba.
 
    ![Exportálás](./media/certificates-for-backend-authentication/export.png)
 
@@ -45,13 +45,13 @@ Az SSL-tanúsítvány a exportálja a nyilvános kulcs .cer fájlt (ne a titkos 
 
 3. Válassza a **Nem, nem akarom exportálni a titkos kulcsomat** lehetőséget, majd kattintson a **Tovább** gombra.
 
-   ![Nem akarom exportálni a titkos kulcs](./media/certificates-for-backend-authentication/notprivatekey.png)
+   ![Ne exportálja a titkos kulcsot](./media/certificates-for-backend-authentication/notprivatekey.png)
 
 4. Az **Exportfájlformátum** lapon válassza a **Base-64 kódolású X.509 (.CER)** lehetőséget, majd kattintson a **Tovább** gombra.
 
    ![Base-64 kódolású](./media/certificates-for-backend-authentication/base64.png)
 
-5. A **exportálandó fájl**, **Tallózás** arra a helyre, amelyhez exportálja a tanúsítványt. A **Fájlnév** mezőben nevezze el a tanúsítványfájlt. Ezután kattintson a **Tovább** gombra.
+5. A **fájl exportálásához** **tallózással keresse** meg azt a helyet, ahová exportálni kívánja a tanúsítványt. A **Fájlnév** mezőben nevezze el a tanúsítványfájlt. Ezután kattintson a **Tovább** gombra.
 
    ![Tallózás](./media/certificates-for-backend-authentication/browse.png)
 
@@ -63,46 +63,46 @@ Az SSL-tanúsítvány a exportálja a nyilvános kulcs .cer fájlt (ne a titkos 
 
    ![Siker](./media/certificates-for-backend-authentication/success.png)
 
-   Az exportált tanúsítványt ehhez hasonlóan néz ki:
+   Az exportált tanúsítvány ehhez hasonlóan néz ki:
 
-   ![Exportált](./media/certificates-for-backend-authentication/exported.png)
+   ![Exportálva](./media/certificates-for-backend-authentication/exported.png)
 
-8. Nyissa meg a Jegyzettömbben az exportált tanúsítványt, ha valami hasonló ebben a példában láthatja. A kék szakaszában az application gateway feltöltött adatokat tartalmazza. A Jegyzettömb alkalmazásban nyissa meg a tanúsítványt, és nem tűnik ehhez hasonló, általában ez azt jelenti, hogy nem exportált, használja a Base-64 kódolású X.509 (. CER) formátumban. Emellett ha egy másik szöveges szerkesztő használni kívánt, ismerje meg, hogy egyes szerkesztők megjelentetni nem kívánt formázása a háttérben. Ez problémákat, ha ezt a tanúsítványt a szöveget az Azure-bA feltöltött hozhat létre.
+8. Ha a Jegyzettömb használatával nyitja meg az exportált tanúsítványt, az ehhez hasonló példához hasonlóan jelenik meg. A kék szakasz az Application Gateway szolgáltatásba feltöltött információkat tartalmazza. Ha a tanúsítványt a Jegyzettömbben nyitja meg, és nem hasonlít ehhez, ez általában azt jelenti, hogy nem exportálta az alap-64 kódolású X. 509 (. CER) formátum. Emellett, ha egy másik szövegszerkesztőt szeretne használni, ismerkedjen meg azzal, hogy egyes szerkesztők nem kívánt formázást tudnak bevezetni a háttérben. Ez problémákat okozhat a tanúsítvány szövegének az Azure-ba való feltöltésekor.
 
-   ![Nyissa meg a Jegyzettömbben](./media/certificates-for-backend-authentication/format.png)
+   ![Megnyitás a Jegyzettömbvel](./media/certificates-for-backend-authentication/format.png)
 
-## <a name="export-trusted-root-certificate-for-v2-sku"></a>Exportálja a megbízható legfelső szintű tanúsítványt (a v2 szintű Termékváltozatot)
+## <a name="export-trusted-root-certificate-for-v2-sku"></a>Megbízható főtanúsítvány exportálása (v2 SKU)
 
-Megbízható legfelső szintű tanúsítványra szükség, az engedélyezési lista háttérpéldányokkal az application gateway v2 Termékváltozat. A legfelső szintű tanúsítvány egy Base-64 kódolású X.509 (. CER) formátumú legfelső szintű tanúsítványt a háttérkiszolgáló-tanúsítvány. Ebben a példában azt fogja SSL-tanúsítvány használata a háttérkiszolgáló-tanúsítvány, a nyilvános kulcsának exportálásához és majd a nyilvános kulcsot base64-kódolású formátumban a megbízható legfelső szintű tanúsítvány exportálása a legfelső szintű tanúsítványt a megbízható hitelesítésszolgáltató. 
+Application Gateway v2 SKU-ban a háttérbeli példányok engedélyezéséhez megbízható főtanúsítvány szükséges. A főtanúsítvány egy Base-64 kódolású X. 509 (. CER) a főtanúsítvány formázása a háttér-kiszolgálói tanúsítványok alapján. Ebben a példában egy SSL-tanúsítványt fog használni a háttérbeli tanúsítványhoz, és exportálja a nyilvános kulcsát. Ezután exportálja a megbízható HITELESÍTÉSSZOLGÁLTATÓ főtanúsítványát a nyilvános kulcsból Base64 kódolású formátumban a megbízható legfelső szintű tanúsítvány beszerzéséhez. 
 
-A következő lépések segítenek a tanúsítvány .cer fájlját:
+Az alábbi lépések segítségével exportálhatja a tanúsítványhoz tartozó. cer fájlt:
 
-1. Az 1 – 9 a szakaszban ismertetett lépésekkel **exportálási hitelesítési tanúsítvány egy tanúsítványból háttér (v1 Termékváltozatot)** fenti nyilvános kulcs exportálása a háttér-tanúsítványból.
+1. Használja a fentiekben említett 1-9 lépéseket a **hitelesítési tanúsítvány exportálása a háttér-tanúsítványból (a v1 SKU-hoz)** című részben a nyilvános kulcs háttérbeli tanúsítványból való exportálásához.
 
-2. A nyilvános kulcs exportálása után nyissa meg a fájlt.
+2. A nyilvános kulcs exportálását követően nyissa meg a fájlt.
 
-   ![Nyissa meg a hitelesítési tanúsítvány](./media/certificates-for-backend-authentication/openAuthcert.png)
+   ![Engedélyezési tanúsítvány megnyitása](./media/certificates-for-backend-authentication/openAuthcert.png)
 
-   ![tanúsítvány információ](./media/certificates-for-backend-authentication/general.png)
+   ![tudnivalók a tanúsítványról](./media/certificates-for-backend-authentication/general.png)
 
-3. Helyezze át a tanúsítványláncban nézetet, megtekintheti a hitelesítésszolgáltató.
+3. A hitelesítésszolgáltató megtekintéséhez váltson a tanúsítvány elérési útja nézetre.
 
    ![tanúsítvány részletei](./media/certificates-for-backend-authentication/certdetails.png)
 
-4. Válassza ki a legfelső szintű tanúsítványt, majd kattintson a **tanúsítvány megtekintése**.
+4. Válassza ki a főtanúsítványt, és kattintson a **Tanúsítvány megtekintése**elemre.
 
    ![tanúsítvány elérési útja](./media/certificates-for-backend-authentication/rootcert.png)
 
-   Meg kell tudni a legfelső szintű tanúsítvány részleteinek megtekintéséhez.
+   Ekkor meg kell jelennie a főtanúsítvány adatainak.
 
-   ![tanúsítvány információ](./media/certificates-for-backend-authentication/rootcertdetails.png)
+   ![tanúsítvány adatai](./media/certificates-for-backend-authentication/rootcertdetails.png)
 
-5. Helyezze át a **részletek** megtekintheti, és kattintson a **Másolás fájlba...**
+5. Lépjen a **részletek** nézetre, és kattintson a **Másolás fájlba..** . elemre.
 
-   ![másolási root-cert](./media/certificates-for-backend-authentication/rootcertcopytofile.png)
+   ![legfelső szintű tanúsítvány másolása](./media/certificates-for-backend-authentication/rootcertcopytofile.png)
 
-6. Ezen a ponton kicsomagolta a legfelső szintű tanúsítvány adatait a háttérkiszolgáló-tanúsítvány. Látni fogja a **Tanúsítványexportáló varázsló**. Most használja 2 – 9 a szakaszban ismertetett lépések **exportálási hitelesítési tanúsítvány egy tanúsítványból háttér (v1 Termékváltozatot)** fent, exportálja a megbízható legfelső szintű tanúsítvány Base-64 kódolású X.509 (. CER) formátumban.
+6. Ekkor kibontotta a főtanúsítvány részleteit a háttér-tanúsítványból. Ekkor megjelenik a **Tanúsítvány exportálása varázsló**. Ezután használja a fentiekben említett 2-9 lépéseket a **hitelesítési tanúsítvány exportálása a háttér-tanúsítványból (a v1 SKU** -hoz) című szakaszban, hogy exportálja a megbízható főtanúsítványt az alap-64 kódolású X. 509 (. CER) formátum.
 
 ## <a name="next-steps"></a>További lépések
 
-Most már rendelkezik a hitelesítési tanúsítvány/megbízható legfelső szintű tanúsítvány Base-64 kódolású X.509 (. CER) formátumban. Is hozzáadhat Ez az engedélyezési listára az application gateway a végpontok közötti SSL-titkosítást a háttérkiszolgálókhoz. Lásd: [végpontok közötti SSL-titkosítás konfigurálása](https://docs.microsoft.com/azure/application-gateway/application-gateway-end-to-end-ssl-powershell).
+Most már rendelkezik a hitelesítési tanúsítvánnyal/megbízható főtanúsítvánnyal a Base-64 kódolású X. 509 (. CER) formátum. Az Application gatewayhez hozzáadhatja, hogy a háttér-kiszolgálók teljes körű SSL-titkosítást engedélyezzenek. Lásd: [a végpontok közötti SSL-titkosítás konfigurálása](https://docs.microsoft.com/azure/application-gateway/application-gateway-end-to-end-ssl-powershell).

@@ -1,7 +1,7 @@
 ---
-title: Konfigurálja a Windows a Java-alkalmazások – az Azure App Service |} A Microsoft Docs
-description: Ismerje meg, hogyan konfigurálhatja az alapértelmezett Windows-példányok az Azure App Service-ben futó Java alkalmazások.
-keywords: az Azure app Service-ben, a web app, a windows, a nyílt forráskódú, a java
+title: Windows Java-alkalmazások konfigurálása – Azure App Service | Microsoft Docs
+description: Megtudhatja, hogyan konfigurálhat Java-alkalmazásokat a Azure App Service alapértelmezett Windows-példányain való futtatáshoz.
+keywords: Azure app Service, webalkalmazás, Windows, OSS, Java
 services: app-service
 author: jasonfreeberg
 manager: jeconnock
@@ -14,64 +14,64 @@ ms.date: 04/12/2019
 ms.author: jafreebe
 ms.reviewer: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 25434360bcc0155411451dbac065e0b7fad9c3bf
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: c1ea306d8a6b5c1876ac6a9288820e1592dbfda6
+ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67617470"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68498516"
 ---
-# <a name="configure-a-windows-java-app-for-azure-app-service"></a>Konfigurálja a Windows Azure App Service-Java-alkalmazás
+# <a name="configure-a-windows-java-app-for-azure-app-service"></a>Windows Java-alkalmazás konfigurálása Azure App Servicehoz
 
-Azure App Service használatával gyorsan elkészítheti, telepítheti és méretezheti a Tomcat a Java-fejlesztőknek vagy a Java Standard Edition (SE) alkalmazáscsomag-webalkalmazásokat az olyan teljes körűen felügyelt Windows-szolgáltatás. A parancssorból vagy a-szerkesztők, mint például az intellij-vel, az Eclipse vagy a Visual Studio Code Maven beépülő modulok az alkalmazások központi telepítése.
+Azure App Service lehetővé teszi a Java-fejlesztők számára, hogy a Tomcat vagy Java Standard Edition (SE) csomagban csomagolt webalkalmazásokat a teljes körűen felügyelt, Windows-alapú szolgáltatáson keresztül gyorsan építsék, telepítsék és méretezheti. Alkalmazásokat telepíthet a Maven beépülő modulokból a parancssorból vagy olyan szerkesztőkből, mint például a IntelliJ, az Eclipse vagy a Visual Studio code.
 
-Ez az útmutató a főbb fogalmakat és használata App Service-ben Java-fejlesztőknek készült utasításokat tartalmaz. Ha korábban nem használta az Azure App Service, olvassa végig a [Java rövid](app-service-web-get-started-java.md) első. Általános kérdések az App Service használatával kapcsolatban, amelyek nem a Java fejlesztési adott válaszok a [App Service Windows – gyakori kérdések](faq-configuration-and-management.md).
+Ez az útmutató a Java-fejlesztőknek a App Service-ban való használatával kapcsolatos főbb fogalmakat és útmutatást tartalmazza. Ha még soha nem használta a Azure App Servicet, először olvassa el a [Java](app-service-web-get-started-java.md) rövid útmutatóját. A Java-fejlesztésre nem jellemző App Service használatára vonatkozó általános kérdéseket a [Windows app Service gyakori](faq-configuration-and-management.md)kérdések című szakaszban találja.
 
 > [!NOTE]
-> Nem találja, amit keres? Tekintse át a [Windows nyílt Forráskódú – gyakori kérdések](faq-configuration-and-management.md) vagy a [Linuxos Java-beállítási útmutató](containers/configure-language-java.md) üzembe helyezése és a Java-alkalmazás biztonságossá tétele kapcsolatos információkat.
+> Nem találja, amit keres? A Java-alkalmazás üzembe helyezésével és védelmével kapcsolatos információkért tekintse meg a [Windows OSS GYIK](faq-configuration-and-management.md) vagy a [Java Linux konfigurációs útmutatót](containers/configure-language-java.md) .
 
-## <a name="configuring-tomcat"></a>Tomcat konfigurálása
+## <a name="configuring-tomcat"></a>A Tomcat konfigurálása
 
-Tomcat szerkesztése `server.xml` vagy más konfigurációs fájlokat, először jegyezze fel az a Tomcat főverzió a portálon.
+A Tomcat `server.xml` vagy más konfigurációs fájlok szerkesztéséhez először jegyezze fel a Tomcat főverzióját a portálon.
 
-1. Keresse meg a Tomcat kezdőkönyvtár-verzióra vonatkozó futtatásával a `env` parancsot. Keresse meg a környezeti változó, amely a következővel kezdődik: `AZURE_TOMCAT`és a főverzió megfelel-e. Ha például `AZURE_TOMCAT85_HOME` a Tomcat 8.5 a Tomcat könyvtárra mutat.
-1. Miután azonosította a Tomcat kezdőkönyvtár-verzióra vonatkozó, másolja a konfigurációs könyvtár `D:\home`. Például ha `AZURE_TOMCAT85_HOME` érték volt `D:\Program Files (x86)\apache-tomcat-8.5.37`, a másolt konfigurációs könyvtár teljes elérési útja lehet `D:\home\tomcat\conf`.
+1. A `env` parancs futtatásával keresse meg a verzióhoz tartozó tomcat-kezdőkönyvtárat. Keresse meg azt a környezeti változót, `AZURE_TOMCAT`amely a-val kezdődik, és megfelel a főverziónak. Például a Tomcat `AZURE_TOMCAT85_HOME` 8,5-es tomcat-könyvtárába mutat.
+1. Miután azonosította a-verzióhoz tartozó tomcat-kezdőkönyvtárat, másolja a konfigurációs könyvtárat `D:\home`a következőre:. Ha `AZURE_TOMCAT85_HOME` például a `D:\Program Files (x86)\apache-tomcat-8.5.37`értéke volt, a másolt könyvtár új elérési útja a következő lesz `D:\home\apache-tomcat-8.5.37`:.
 
-Végezetül indítsa újra az App Service. Az üzemelő példányokat kell Ugrás `D:\home\site\wwwroot\webapps` ugyanúgy, mint korábban.
+Végezetül indítsa újra a App Service. A központi telepítéseknek ugyanúgy kell `D:\home\site\wwwroot\webapps` megjelenniük, mint korábban.
 
-## <a name="java-runtime-statement-of-support"></a>Java runtime rendszerállapot-támogatás
+## <a name="java-runtime-statement-of-support"></a>A Java futtatókörnyezet támogatási nyilatkozata
 
-### <a name="jdk-versions-and-maintenance"></a>JDK-verziók és karbantartás
+### <a name="jdk-versions-and-maintenance"></a>JDK-verziók és-karbantartás
 
-Az Azure támogatott Java fejlesztői készlet (JDK) van [Zulu](https://www.azul.com/downloads/azure-only/zulu/) keresztül [Azul Systems](https://www.azul.com/).
+Az Azure által támogatott Java Development Kit (JDK) a [Azul Systems](https://www.azul.com/)által biztosított [Zulu](https://www.azul.com/downloads/azure-only/zulu/) .
 
-Főverzió-frissítései a Windows Azure App Service-ben új futásidejű beállítások keresztül biztosítunk. Ügyfelek frissítése a Java ezen újabb verziói az alkalmazásszolgáltatás üzemelő példányának konfigurálásával, és felelős tesztelése, és biztosítja a fő frissítés megfelel az igényeiknek.
+A főverzió frissítései a Windows Azure App Service új futtatókörnyezeti lehetőségein keresztül lesznek elérhetők. Az ügyfelek a Java újabb verzióit frissítik a App Service üzembe helyezésének konfigurálásával, és felelősek a fő frissítés megfelelőségének teszteléséhez és biztosításához.
 
-Támogatott segítségével negyedévente automatikusan javítani a januárban, áprilisban, júliusban és minden év október a.
+A támogatott JDK minden év januárjában, áprilisban, júliusban és októberben automatikusan megtörténik.
 
 ### <a name="security-updates"></a>Biztonsági frissítések
 
-Javítások és javításokat tartalmaz olyan súlyos biztonsági réseket elérhető lesz, amint az Azul Systems elérhetővé válnak. "Nagyobb" biztonsági rés alapján pontot 9.0-s vagy újabb a [NIST közös biztonsági rés pontozási rendszert, 2. verzió](https://nvd.nist.gov/cvss.cfm).
+A főbb biztonsági rések javításait és javításait a rendszer azonnal felszabadítja, amint azok elérhetők lesznek a Azul Systems-től. A "fő" biztonsági rést az 9,0-es vagy újabb alappontszám határozza meg a [NIST Common sebezhetőségi pontozási rendszer 2](https://nvd.nist.gov/cvss.cfm). verziójában.
 
-### <a name="deprecation-and-retirement"></a>És a használatból való kivonást egyaránt
+### <a name="deprecation-and-retirement"></a>Elavulás és nyugdíjazás
 
-Ha egy támogatott Java-futtatókörnyezet megszűnik, az érintett modul használatával Azure-fejlesztők számára kap elavulással kapcsolatos figyelmeztetés legalább hat hónapos előtt a futtatókörnyezet kivonják a forgalomból.
+Ha egy támogatott Java-futtatókörnyezet megszűnik, az érintett futtatókörnyezetet használó Azure-fejlesztők elavult értesítést kapnak a futtatókörnyezet kivonása előtt legalább hat hónappal.
 
 ### <a name="local-development"></a>Helyi fejlesztés
 
-A fejlesztők is letölthetik a éles kiadása az Azul Zulu Enterprise JDK a helyi fejlesztési [Azul a letöltési hely](https://www.azul.com/downloads/azure-only/zulu/).
+A fejlesztők letölthetik az Azul Zulu Enterprise JDK éles kiadását helyi fejlesztésre az [Azul letöltési](https://www.azul.com/downloads/azure-only/zulu/)webhelyéről.
 
-### <a name="development-support"></a>Fejlesztés támogatása
+### <a name="development-support"></a>Fejlesztési támogatás
 
-Terméktámogatási a [Azure által támogatott Azul Zulu JDK](https://www.azul.com/downloads/azure-only/zulu/) Microsoft érhető el, az Azure fejlesztésének vagy [Azure Stack](https://azure.microsoft.com/overview/azure-stack/) az egy [minősített Azure-támogatási csomag](https://azure.microsoft.com/support/plans/).
+Az Azure [által támogatott Azul ZULU JDK-](https://www.azul.com/downloads/azure-only/zulu/) vel kapcsolatos terméktámogatás a Microsofton keresztül érhető el az Azure-hoz való fejlesztéshez, illetve a [Azure stack](https://azure.microsoft.com/overview/azure-stack/) egy [minősített Azure-támogatási csomaggal](https://azure.microsoft.com/support/plans/).
 
 ### <a name="runtime-support"></a>Podpora modulu Runtime
 
-A fejlesztők is [nyissa meg a probléma](/azure/azure-supportability/how-to-create-azure-support-request) az Azure-támogatási, ha rendelkezik a Azul Zulu segítségével egy [minősített támogatási csomag](https://azure.microsoft.com/support/plans/).
+A fejlesztők az Azure-támogatással megnyithatják az Azul Zulu JDK [kapcsolatos problémákat](/azure/azure-supportability/how-to-create-azure-support-request) , ha rendelkeznek [minősített támogatási csomaggal](https://azure.microsoft.com/support/plans/).
 
 ## <a name="next-steps"></a>További lépések
 
-Ez a témakör a Java-futtatókörnyezet utasítást az Azure App Service-támogatás a Windows.
+Ez a témakör a Java Runtime Azure App Service Windows rendszeren történő támogatására vonatkozó utasításait ismerteti.
 
-- További információ az Azure App Service tekintse meg a webalkalmazás üzemeltetéséhez [App Service-ben – áttekintés](overview.md).
-- További információ a Java az Azure-fejlesztési: [Azure Java fejlesztői központ a](https://docs.microsoft.com/java/azure/?view=azure-java-stable).
+- Ha többet szeretne megtudni a webalkalmazások Azure App Serviceről való üzemeltetéséről, tekintse meg a [app Service áttekintését](overview.md).
+- További információ az Azure-beli Java-fejlesztésről: [Azure for Java fejlesztői központ](https://docs.microsoft.com/java/azure/?view=azure-java-stable).

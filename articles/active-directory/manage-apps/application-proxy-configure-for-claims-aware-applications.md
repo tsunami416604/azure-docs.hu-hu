@@ -15,12 +15,12 @@ ms.date: 11/08/2018
 ms.author: mimart
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c97729cf7d88ebdeefb44c83eb571bb6d7ebd0ed
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: cbc5c356ea5a542fdc12b11aff236c56b146b3d5
+ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65825596"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68477240"
 ---
 # <a name="working-with-claims-aware-apps-in-application-proxy"></a>Az alkalmazásproxy jogcímbarát alkalmazások használata
 [Jogcímbarát alkalmazások](https://msdn.microsoft.com/library/windows/desktop/bb736227.aspx) hajtsa végre egy átirányítási a biztonsági jogkivonat szolgáltatás (STS). Az STS engedélyezések egy jogkivonatot a felhasználó kéri a hitelesítő adatokat, és ezután átirányítja a felhasználót az alkalmazáshoz. Néhány módon engedélyezze az alkalmazásproxyt ezek átirányítások dolgozhat. Ez a cikk segítségével konfigurálhatja a központi telepítés, jogcímeket használó alkalmazásokhoz. 
@@ -38,11 +38,11 @@ Győződjön meg arról, hogy az STS-re, a jogcímeket figyelembe vevő alkalmaz
 
 Konfigurálhatja az AD FS jogcímeket figyelembe vevő alkalmazásokkal való használatával két módszer egyikével. Az első az egyéni tartományok használatával. A második pedig a WS-Federation. 
 
-### <a name="option-1-custom-domains"></a>Option 1: Egyéni tartományok
+### <a name="option-1-custom-domains"></a>1\. lehetőség: Egyéni tartományok
 
 Ha a belső URL-címeket az alkalmazások összes teljesen minősített tartománynevek (FQDN), majd konfigurálhatja [egyéni tartományok](application-proxy-configure-custom-domain.md) alkalmazásai számára. Az egyéni tartományok használatával hozzon létre a külső URL-címek, ugyanazok, mint a belső URL-címeket. A külső URL-címek a belső URL-címek egyeznek, majd az STS-átirányítások működik-e a felhasználók a helyi vagy távoli is. 
 
-### <a name="option-2-ws-federation"></a>Option 2: WS-Federation
+### <a name="option-2-ws-federation"></a>2\. lehetőség: WS-Federation
 
 1. Nyissa meg az AD FS kezelése.
 2. Lépjen a **függő entitás Megbízhatóságai**, kattintson a jobb gombbal az alkalmazásproxy használatával tesz közzé az alkalmazást, és válassza a **tulajdonságok**.  
@@ -55,7 +55,7 @@ Ha a belső URL-címeket az alkalmazások összes teljesen minősített tartomá
    ![Adja hozzá a végpont - állítsa be a megbízható URL-érték – képernyőkép](./media/application-proxy-configure-for-claims-aware-applications/appproxyendpointtrustedurl.png)  
 
 ## <a name="next-steps"></a>További lépések
-* [Az egyszeri bejelentkezés engedélyezése](configure-single-sign-on-portal.md) , amelyek nem jogcímbarát alkalmazások
+* [Az egyszeri bejelentkezés engedélyezése](configure-single-sign-on-non-gallery-applications.md) , amelyek nem jogcímbarát alkalmazások
 * [Együttműködhet a proxy-alkalmazások natív ügyfélalkalmazások engedélyezése](application-proxy-configure-native-client-application.md)
 
 

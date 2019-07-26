@@ -1,6 +1,6 @@
 ---
-title: A személyes Microsoft-fiókok hozzáadása a Microsoft Authenticator alkalmazás – az Azure Active Directory |} A Microsoft Docs
-description: Hogyan lehet hozzáadni a személyes Microsoft-fiókok, például az Outlook.com- vagy Xbox LIVE kétfaktoros ellenőrzéshez a Microsoft Authenticator alkalmazást.
+title: Személyes Microsoft-fiókjainak hozzáadása a Microsoft Authenticator app-Azure Active Directoryhoz | Microsoft Docs
+description: Személyes Microsoft-fiókjainak hozzáadása (például Outlook.com vagy Xbox LIVE) a Microsoft Authenticator alkalmazáshoz kétfaktoros ellenőrzés esetén.
 services: active-directory
 author: eross-msft
 manager: daveba
@@ -12,62 +12,64 @@ ms.date: 01/24/2019
 ms.author: lizross
 ms.reviewer: olhaun
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bcb49048fa9200b8970f37a4f187ca995d208cc2
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 502407bbf1cdb47fc8105ed0220babcd9f292faa
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60474092"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68382693"
 ---
-# <a name="add-your-personal-microsoft-accounts"></a>A személyes Microsoft-fiókok hozzáadása
-Adja hozzá a személyes Microsoft-fiókok esetében például Outlook.com-os és az Xbox LIVE, a Microsoft Authenticator alkalmazás a szokásos kétfaktoros ellenőrzési folyamata és a bejelentkezési módszer beállításának phone.
+# <a name="add-your-personal-microsoft-accounts"></a>Személyes Microsoft-fiókok hozzáadása
 
-- **Standard szintű kétfaktoros-ellenőrzési módszert.** Írja be a felhasználónevét és jelszavát jelentkeztethetik az eszközre éppen bejelentkezett, és válassza akár a Microsoft Authenticator alkalmazás értesítést küld, vagy ha szeretne-e a társított ellenőrző kód másolása a **fiókok** képernyőjén a Microsoft Authenticator alkalmazást.
+Adja hozzá a személyes Microsoft-fiókjait, például a Outlook.com és az Xbox LIVE-t a Microsoft Authenticator alkalmazáshoz mind a standard Kéttényezős ellenőrzési folyamat, mind a jelszó nélküli telefonos bejelentkezési módszer használatával.
 
-- **Beállításának bejelentkezési módszerrel.** A felhasználónevét írja be az eszköz személyes Microsoft-fiókja van bejelentkezik, és a mobileszköz használatával győződjön meg arról, hogy az ujjlenyomat-alapú, a face vagy a PIN-kód használatával. Ezzel a módszerrel nem kell a jelszavát adja meg.
+- **Standard kétfaktoros ellenőrzési módszer.** Írja be a felhasználónevét és jelszavát arra az eszközre, amelyhez be van jelentkezve, majd válassza ki, hogy a Microsoft Authenticator alkalmazás küldjön-e értesítést, vagy ha szeretné átmásolni a  társított ellenőrző kódot a Microsoft fiókjainak képernyőjéről. Hitelesítő alkalmazás.
+
+- **Jelszó nélküli bejelentkezési módszer.** Írja be a felhasználónevét az eszközre, amelyet be szeretne jelentkezni a személyes Microsoft-fiókba, majd a mobileszköz használatával ellenőrizze, hogy az ujjlenyomatát, arcát vagy PIN-kódját használja-e. Ennél a módszernél nem kell megadnia a jelszavát.
 
 >[!Important]
->A fiók hozzáadása előtt le kell töltenie és telepítse a Microsoft Authenticator alkalmazást. Ha még nem tette, hogy, kövesse a [töltse le és telepítse az alkalmazást](user-help-auth-app-download-install.md) cikk.
+>A fiók hozzáadása előtt le kell töltenie és telepítenie kell a Microsoft Authenticator alkalmazást. Ha még nem tette meg, kövesse az [alkalmazás letöltése és telepítése](user-help-auth-app-download-install.md) című cikk lépéseit.
 
-## <a name="add-your-personal-microsoft-account"></a>A személyes Microsoft-fiók hozzáadása
-A személyes Microsoft-fiókjával is hozzáadhat, kétfaktoros ellenőrzési első bekapcsolásával, majd adja hozzá a fiókot az alkalmazáshoz.
+## <a name="add-your-personal-microsoft-account"></a>Személyes Microsoft-fiók hozzáadása
+
+Személyes Microsoft-fiók a kétfaktoros ellenőrzés bekapcsolásával, majd a fióknak az alkalmazáshoz való hozzáadásával adhat hozzá.
 
 >[!Note]
->Ha azt tervezi, a személyes Microsoft-fiók beállításának telefonos bejelentkezés csak használja, nem kell a kétfaktoros ellenőrzés. Javasoljuk azonban, a fokozott biztonság, kapcsolja be a kétfaktoros ellenőrzése.
+>Ha úgy tervezi, hogy a személyes Microsoft-fiók jelszó nélküli telefonos bejelentkezést használ, nem kell bekapcsolnia a kétfaktoros ellenőrzést. A fiók biztonsága érdekében azonban javasoljuk, hogy kapcsolja be a kétfaktoros ellenőrzést.
 
-### <a name="turn-on-two-factor-verification"></a>A kétfaktoros ellenőrzés
+### <a name="turn-on-two-factor-verification"></a>Kétfaktoros ellenőrzés bekapcsolása
 
-1. A számítógépen nyissa meg a [biztonsággal kapcsolatos alapok](https://account.microsoft.com/security) lapon, és jelentkezzen be személyes Microsoft-fiókjával. Például: alain@outlook.com.
+1. A számítógépen lépjen a [Biztonság alapjai](https://account.microsoft.com/security) lapra, és jelentkezzen be a személyes Microsoft-fiók használatával. Például: alain@outlook.com.
 
-2. Alsó részén a **biztonsággal kapcsolatos alapok** lappján válassza a **további biztonsági beállítások** hivatkozásra.
+2. A **Biztonság alapjai** lap alján válassza a **további biztonsági beállítások** hivatkozást.
 
-    ![Biztonsági alapvető beállítások lapról a "további biztonsági beállítások" hivatkozás kiemelésével](./media/user-help-auth-app-add-personal-ms-account/more-security-options-link.png)
+    ![Biztonsági alapismeretek oldal a "további biztonsági beállítások" hivatkozás kiemelve](./media/user-help-auth-app-add-personal-ms-account/more-security-options-link.png)
 
-3. Nyissa meg a **kétlépéses ellenőrzés** szakaszt, és válassza ki a szolgáltatás **a**. Is kikapcsolhatja, itt Ha már nem szeretné használni, a személyes fiókjával.
+3. Lépjen a kétlépéses **ellenőrzés** szakaszra, és válassza **a funkció**bekapcsolását. Kikapcsolhatja azt is, ha már nem szeretné használni a személyes fiókjával.
 
-### <a name="add-your-microsoft-account-to-the-app"></a>A Microsoft-fiók hozzáadása az alkalmazáshoz
+### <a name="add-your-microsoft-account-to-the-app"></a>Microsoft-fiók hozzáadása az alkalmazáshoz
 
-1. Nyissa meg a Microsoft Authenticator alkalmazást a mobileszközén.
+1. Nyissa meg a Microsoft Authenticator alkalmazást a mobileszközön.
 
-2. Válassza ki **fiók hozzáadása** származó a **testreszabása és vezérlési** a jobb felső sarokban lévő ikonra.
+2. Válassza a **fiók hozzáadása** lehetőséget a **Testreszabás és vezérlés** ikon jobb felső sarkában.
 
-    ![Fiókok oldala, amelyen a Testreszabás és ellenőrzési ikonja kiemelve](./media/user-help-auth-app-add-personal-ms-account/customize-and-control-icon.png)
+    ![Fiókok lap, a Testreszabás és vezérlés ikon kiemelve](./media/user-help-auth-app-add-personal-ms-account/customize-and-control-icon.png)
 
-3. Az a **fiók hozzáadása** lapon a **személyes fiók**.
+3. A **fiók hozzáadása** lapon válassza a **személyes fiók**lehetőséget.
 
-4. Jelentkezzen be a személyes fiók, a megfelelő e-mail-címmel (például alain@outlook.com), majd **tovább**.
+4. Jelentkezzen be a személyes fiókjába a megfelelő e-mail-cím ( alain@outlook.compéldául) használatával, majd válassza a **tovább**lehetőséget.
 
     >[!Note]
-    >Ha a személyes Microsoft-fiók nem rendelkezik, akkor hozzon létre egyet, itt.
+    >Ha nincs személyes Microsoft-fiók, itt hozhat létre egyet.
 
-5. Adja meg a jelszót, és válassza **jelentkezzen be a**.
+5. Adja meg a jelszót, majd válassza a **Bejelentkezés**lehetőséget.
 
-    A személyes fiók hozzáadódik a Microsoft Authenticator alkalmazást.
+    A rendszer hozzáadja a személyes fiókját a Microsoft Authenticator alkalmazáshoz.
 
 ## <a name="next-steps"></a>További lépések
 
-- Miután hozzáadta a fiókok az alkalmazáshoz, bejelentkezhet az Authenticator alkalmazás használatával az eszközén. További információkért lásd: [jelentkezzen be az alkalmazás](user-help-auth-app-sign-in.md).
+- Miután hozzáadta a fiókokat az alkalmazáshoz, bejelentkezhet a hitelesítő alkalmazás használatával az eszközön. További információ: [Bejelentkezés az alkalmazás használatával](user-help-auth-app-sign-in.md).
 
-- Ha problémába ütközik az ellenőrző kód beolvasása a személyes Microsoft-fiókkal, tekintse meg a **ellenőrző kód kapcsolatos hibák elhárítása** szakaszában a [Microsoft-fiók biztonsági adatai & k ellenőrzése kódok](https://support.microsoft.com/en-us/help/12428/microsoft-account-security-info-verification-codes) cikk.
+- Ha nem sikerül beszereznie a személyes Microsoft-fiók ellenőrzési kódját, tekintse meg az **ellenőrző** kód problémáinak elhárítása című szakaszt a [Microsoft-fiók biztonsági adatok & ellenőrző kódok](https://support.microsoft.com/en-us/help/12428/microsoft-account-security-info-verification-codes) című cikkben.
 
-- IOS rendszerű eszközökhöz is készíthető a fiók hitelesítő adatait, és a felhőhöz kapcsolódó alkalmazás beállításait, például a fiókok sorrendjét. További információkért lásd: [biztonsági mentés és helyreállítás a Microsoft Authenticator alkalmazás](user-help-auth-app-backup-recovery.md).
+- Az iOS rendszerű eszközökön biztonsági mentést készíthet a fiók hitelesítő adatairól és a kapcsolódó Alkalmazásbeállítások, például a fiókok sorrendjéről a felhőhöz. További információ: [biztonsági mentés és helyreállítás Microsoft Authenticator alkalmazással](user-help-auth-app-backup-recovery.md).

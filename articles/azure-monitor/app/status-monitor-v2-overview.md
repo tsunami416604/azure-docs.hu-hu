@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: tilee
-ms.openlocfilehash: 38359858d16a20f73cf845fa547899bdc5ee7fd3
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 0264cf3a972c35edb3ad6dc600ca39bdaa076dfd
+ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68326234"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68333685"
 ---
 # <a name="status-monitor-v2"></a>Állapotmonitor v2
 
@@ -33,7 +33,7 @@ A rendszer elküldje a telemetria a Azure Portalba, ahol [nyomon](https://docs.m
 ![PowerShell-galéria](https://img.shields.io/powershellgallery/v/Az.ApplicationMonitor.svg?color=Blue&label=Current%20Version&logo=PowerShell&style=for-the-badge)
 
 
-## <a name="instructions"></a>Utasítások
+## <a name="instructions"></a>Útmutatás
 - Tekintse meg az [első lépéseket ismertető útmutatót](status-monitor-v2-get-started.md) , amelyből megtudhatja, hogyan kezdheti el a rövid kód mintáit.
 - Tekintse meg az első lépések [részletes leírását](status-monitor-v2-detailed-instructions.md) .
 
@@ -62,13 +62,13 @@ Ezeket a beállításokat a [részletes utasítások](status-monitor-v2-detailed
   
 - Hogyan ellenőrizze, hogy az engedélyezés sikeres volt-e?
 
-   Az engedélyezés sikerességének ellenőrzéséhez nincs parancsmag.
-Javasoljuk, hogy [élő metrikák](https://docs.microsoft.com/azure/azure-monitor/app/live-stream) használatával gyorsan megállapítsa, hogy az alkalmazás telemetria küld-e.
+  - A [Get-ApplicationInsightsMonitoringStatus](status-monitor-v2-api-get-status.md) parancsmag használatával ellenőrizheti, hogy az engedélyezés sikeres volt-e.
+  - Javasoljuk, hogy [élő metrikák](https://docs.microsoft.com/azure/azure-monitor/app/live-stream) használatával gyorsan megállapítsa, hogy az alkalmazás telemetria küld-e.
 
-   A [log Analytics](../log-query/get-started-portal.md) használatával is listázhatja az összes jelenleg telemetria küldő felhőalapú szerepkört:
-   ```Kusto
-   union * | summarize count() by cloud_RoleName, cloud_RoleInstance
-   ```
+  - A [log Analytics](../log-query/get-started-portal.md) használatával is listázhatja az összes jelenleg telemetria küldő felhőalapú szerepkört:
+      ```Kusto
+      union * | summarize count() by cloud_RoleName, cloud_RoleInstance
+      ```
 
 ## <a name="next-steps"></a>További lépések
 

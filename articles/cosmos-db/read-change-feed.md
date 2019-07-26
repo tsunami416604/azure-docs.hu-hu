@@ -1,42 +1,42 @@
 ---
-title: Az Azure Cosmos DB Azure Cosmos DB elérése a módosítási hírcsatorna
-description: Ez a cikk ismerteti a különböző lehetőségekről, és az Azure Cosmos DB Azure Cosmos DB változáscsatorna eléréséről.
+title: A változási hírcsatorna elérése Azure Cosmos DB Azure Cosmos DB
+description: Ez a cikk a Azure Cosmos DB-Azure Cosmos DB az olvasási és hozzáférés-módosítási adatcsatornák különböző lehetőségeit ismerteti.
 author: rimman
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/21/2019
+ms.date: 07/23/2019
 ms.author: rimman
-ms.openlocfilehash: e008b44ee2859f319d0250658d7c2beb190af1c2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3d52ba1abc22aae6121ea6a36f943851dfcca7a0
+ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65967176"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68467670"
 ---
-# <a name="reading-azure-cosmos-db-change-feed"></a>Információk az Azure Cosmos DB-módosítási hírcsatorna
+# <a name="reading-azure-cosmos-db-change-feed"></a>Azure Cosmos DB változási csatorna olvasása
 
-Az Azure Cosmos DB módosítási hírcsatorna használatával a következő lehetőségek bármelyikét használhatja:
+A következő lehetőségek bármelyikével dolgozhat a Azure Cosmos DB változási hírcsatornával:
 
-* Az Azure Functions használatával
-* Használatával a módosítási hírcsatorna feldolgozói kódtára
-* Az Azure Cosmos DB SQL API SDK használatával
+* Azure Functions használata
+* A hírcsatorna-feldolgozó függvénytárának módosítása
+* A Azure Cosmos DB SQL API SDK használata
 
-## <a name="using-azure-functions"></a>Az Azure Functions használatával
+## <a name="using-azure-functions"></a>Azure Functions használata
 
-Az Azure Functions, a legegyszerűbb és ajánlott lehetőség. Ha egy Azure Functions-alkalmazást hoz létre egy Azure Cosmos DB-eseményindítóval, kiválaszthatja, hogy a tárolóhoz való csatlakozáshoz, és az Azure-függvény beolvassa aktivált, minden alkalommal, amikor megváltozik a tárolóhoz. Eseményindítók az Azure Functions portálon, az Azure Cosmos DB-portál használatával vagy programozott módon az SDK-k hozható létre. A Visual Studio és a VS Code nyújtanak támogatást az Azure Functions írása, és használhatja az Azure Functions CLI a platformfüggetlen fejlesztésekhez. Írási és a kódok hibakeresése az Ön asztalán, és telepíteni a függvény egyetlen kattintással. Lásd: [az Azure Functions szolgáltatással kiszolgáló nélküli adatbázis-használat](serverless-computing-database.md) és [az Azure Functions használatával módosítási hírcsatorna](change-feed-functions.md)) további cikkek.
+Azure Functions a legegyszerűbb és ajánlott lehetőség. Ha Cosmos DBhoz hoz létre Azure Functions-triggert, kiválaszthatja a csatlakoztatni kívánt tárolót, és az Azure-függvény akkor aktiválódik, amikor módosul a tároló. Az eseményindítók a Azure Functions portál, a Azure Cosmos DB portál vagy az SDK-k programozott használatával hozhatók létre. A Visual Studio és a VS Code támogatást nyújt a Azure Functions írásához, és az Azure Functions CLI-t is használhatja a platformok közötti fejlesztéshez. A kódot megírhatja és hibakeresést végezhet az asztalon, majd egyetlen kattintással telepítheti a függvényt. További információért tekintse meg a [kiszolgáló nélküli adatbázis-számítástechnika Azure functions](serverless-computing-database.md) és a [change feed with Azure functions](change-feed-functions.md)) cikkeket.
 
-## <a name="using-the-change-feed-processor-library"></a>Használatával a módosítási hírcsatorna feldolgozói kódtára
+## <a name="using-the-change-feed-processor-library"></a>A hírcsatorna-feldolgozó függvénytárának módosítása
 
-A változáscsatorna feldolgozói kódtára elrejti az összetettséget, és továbbra is a változáscsatorna, egy teljes körű felügyeletet biztosít. A könyvtár megfigyelő mintát követi, ahol a feldolgozási függvényt hívja meg, a könyvtárban. Ha egy nagy átviteli sebességű változáscsatorna, olvassa el a módosítási hírcsatorna több ügyféllel példányosítható. A változáscsatorna feldolgozói kódtára használja, mert azt automatikusan felosztja a terhelést a különböző ügyfelek között anélkül, hogy kellene a logikát alkalmazzák. A könyvtár összes összetettsége kezeli. Ha saját terheléselosztóját legyen, majd valósíthat meg `IPartitionLoadBalancingStrategy` egy egyéni partíció stratégia feldolgozni a módosítási hírcsatorna. További tudnivalókért lásd: [használatával módosítási hírcsatorna feldolgozói kódtára](change-feed-processor.md).
+A módosítási hírcsatorna processzor-könyvtára elrejti az összetettséget, és továbbra is teljes körű irányítást biztosít a változási hírcsatornában. A könyvtár a megfigyelő mintát követi, ahol a feldolgozó függvényt a könyvtár hívja meg. Ha nagy átviteli sebességű változási csatornával rendelkezik, több ügyfelet is létrehozhat, hogy beolvassa a változási csatornát. Mivel a Change feed Processor Library-t használja, az automatikusan elosztja a terhelést a különböző ügyfelek között anélkül, hogy ezt a logikát kellene megvalósítani. Az összes összetettséget a könyvtár kezeli. Ha azt szeretné, hogy saját terheléselosztó legyen, akkor `IPartitionLoadBalancingStrategy` a módosítási adatcsatorna feldolgozásához egyéni partíciós stratégiát alkalmazhat. További információ: [a hírcsatorna-feldolgozó függvénytárának módosítása](change-feed-processor.md).
 
-## <a name="using-the-azure-cosmos-db-sql-api-sdk"></a>Az Azure Cosmos DB SQL API SDK használatával
+## <a name="using-the-azure-cosmos-db-sql-api-sdk"></a>A Azure Cosmos DB SQL API SDK használata
 
-Az SDK-val kap a változáscsatorna alacsony szintű irányítását. Az ellenőrzőpont kezelése, eléréséhez egy adott logikai partíciós kulcs, stb. Ha több olvasók, használhat `ChangeFeedOptions` a olvasási terheléselosztásban, különböző szálakon vagy különböző ügyfelek részére. 
+Az SDK-val a változási hírcsatorna alacsony szintű vezérlését kapja meg. Kezelheti az ellenőrzőpontot, elérheti az adott logikai partíció kulcsát stb. Ha több olvasóval rendelkezik, a használatával `ChangeFeedOptions` terjesztheti az olvasási terhelést különböző szálak vagy különböző ügyfelek számára. 
 
 ## <a name="next-steps"></a>További lépések
 
 Folytassa további információ a változáscsatorna az alábbi cikkeket:
 
-* [Módosítási hírcsatorna áttekintése](change-feed.md)
+* [A hírcsatorna változásának áttekintése](change-feed.md)
 * [Az Azure Functions használatával módosítási hírcsatorna](change-feed-functions.md)
 * [Feldolgozói kódtára használatával módosítási hírcsatorna](change-feed-processor.md)

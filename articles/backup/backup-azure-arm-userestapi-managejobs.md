@@ -1,29 +1,28 @@
 ---
-title: 'Azure Backup: A REST API használatával a biztonsági mentési feladatok kezelése'
-description: biztonsági mentés kezelhetik és visszaállíthatják a feladatokat az Azure Backup – REST API használatával
-services: backup
+title: 'Azure Backup: Biztonsági mentési feladatok kezelése REST API használatával'
+description: Azure Backup biztonsági mentési és visszaállítási feladatainak kezelése REST API használatával
 author: pvrk
 manager: shivamg
-keywords: REST API-JA; Az Azure virtuális gép biztonsági mentése; Az Azure virtuális gép visszaállítási;
+keywords: REST API; Azure-beli virtuális gép biztonsági mentése; Azure-beli virtuális gép visszaállítása;
 ms.service: backup
 ms.topic: conceptual
 ms.date: 08/03/2018
 ms.author: pullabhk
 ms.assetid: b234533e-ac51-4482-9452-d97444f98b38
-ms.openlocfilehash: eb8b7dc77d180eb56c2585e93e60a36742f6c84c
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: d497fc714e0ad5f61873d4c1f95ab35837532646
+ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60646622"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68466766"
 ---
-# <a name="track-backup-and-restore-jobs-using-rest-api"></a>Nyomon követheti a biztonsági mentési és helyreállítási feladatok REST API használatával
+# <a name="track-backup-and-restore-jobs-using-rest-api"></a>Biztonsági mentési és visszaállítási feladatok nyomon követése REST API használatával
 
-Az Azure Backup szolgáltatás aktiválása, feladatok, amelyek különböző alkalmazási helyzetekben, például a biztonsági mentésének elindítása a háttérben működtethető, visszaállítási műveletek, biztonsági mentés letiltása. Ezek a feladatok azonosítók alapján követhető nyomon.
+Azure Backup szolgáltatás elindítja a háttérben futó feladatokat olyan különböző forgatókönyvekben, mint például a biztonsági mentés elindítása, a visszaállítási műveletek, a biztonsági mentés letiltása. Ezek a feladatok az azonosítóik használatával követhetők nyomon.
 
-## <a name="fetch-job-information-from-operations"></a>Kéri le a feladat adatait a műveletek
+## <a name="fetch-job-information-from-operations"></a>Feladatok adatainak beolvasása a műveletből
 
-Egy művelet, például a biztonsági mentésének elindítása egy jobID mindig ad vissza. A példa: Utolsó válasza egy [aktiválja a biztonsági mentési REST API-művelet](backup-azure-arm-userestapi-backupazurevms.md#example-responses-3) a következő:
+Egy művelet, például a biztonsági mentés elindítása mindig jobID ad vissza. Például: A [trigger biztonsági mentési REST API műveletének](backup-azure-arm-userestapi-backupazurevms.md#example-responses-3) utolsó válasza a következő:
 
 ```http
 {
@@ -39,15 +38,15 @@ Egy művelet, például a biztonsági mentésének elindítása egy jobID mindig
 }
 ```
 
-Az Azure virtuális gép biztonsági mentési feladat "jobId" mező azonosíthatók és említettek szerint nyomon követhetők [Itt](https://docs.microsoft.com/rest/api/backup/jobdetails/) használatával egy egyszerű *első* kérelmet.
+Az Azure virtuális gép biztonsági mentési feladatainak azonosítása a "jobId" mező alapján történik, és az [itt](https://docs.microsoft.com/rest/api/backup/jobdetails/) leírtak szerint nyomon követhető egy egyszerű *Get* kérelem használatával.
 
-## <a name="tracking-the-job"></a>A feladat követése
+## <a name="tracking-the-job"></a>A feladatok nyomon követése
 
 ```http
 GET https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupJobs/{jobName}?api-version=2017-07-01
 ```
 
-A `{jobName}` "jobId" fent említett. A válasz mindig 200 OK gombra a "status" mezőt a feladat aktuális állapotát jelzi. Ha az "Befejezve" vagy "CompletedWithWarnings", "extendedInfo" szakasz a feladat részleteinek tárja fel.
+A `{jobName}` a fent említett "jobId". A válasz mindig 200 OK az "állapot" mezővel, amely a feladatok aktuális állapotát jelzi. Ha "befejezett" vagy "CompletedWithWarnings", a "extendedInfo" szakasz a feladattal kapcsolatos további részleteket mutatja be.
 
 ### <a name="response"></a>Válasz
 
@@ -57,7 +56,7 @@ A `{jobName}` "jobId" fent említett. A válasz mindig 200 OK gombra a "status" 
 
 #### <a name="example-response"></a>Példaválasz
 
-Miután a *első* URI azonosító elküldve, 200 (OK) választ ad vissza.
+Miután elküldte a *Get* URI-t, a rendszer egy 200 (ok) választ ad vissza.
 
 ```http
 HTTP/1.1 200 OK

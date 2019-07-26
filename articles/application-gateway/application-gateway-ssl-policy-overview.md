@@ -1,6 +1,6 @@
 ---
-title: Az Azure Application Gateway SSL-házirend áttekintése |} A Microsoft Docs
-description: Ismerje meg hogyan Azure Application Gateway lehetővé teszi, hogy az SSL-szabályzat konfigurálása
+title: Az Azure Application Gateway SSL-szabályzatának áttekintése | Microsoft Docs
+description: Ismerje meg, hogyan konfigurálhatja az Azure Application Gateway az SSL-szabályzatok konfigurálását
 services: application gateway
 documentationcenter: na
 author: amsriva
@@ -14,35 +14,35 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure services
 ms.date: 08/03/2017
 ms.author: amsriva
-ms.openlocfilehash: 46a823e4e230656b53a93a97f195d0879fd08bf2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1710635f145136e564a2bad48d539f242c9bc228
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62122234"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68359912"
 ---
 # <a name="application-gateway-ssl-policy-overview"></a>Application Gateway SSL-házirend áttekintése
 
-Az Azure Application Gateway segítségével központosíthatja az SSL-tanúsítványok kezelését és a egy háttér-kiszolgálófarm titkosítási és visszafejtési terhelés csökkentése. A központi SSL kezelésére is lehetővé teszi egy központi SSL-szabályzat, amely a szervezeti biztonsági követelményeknek megfelelő megadását. Ez segíthet megfelelni a megfelelőségi követelményeket, valamint a szolgáltatásra vonatkozó biztonsági irányelvek és ajánlott eljárásokat.
+Az Azure Application Gateway segítségével központosíthatja az SSL-tanúsítványok kezelését, és csökkentheti a háttérbeli kiszolgálófarm titkosítási és visszafejtési terhelését. Ez a központosított SSL-kezelési szolgáltatás azt is lehetővé teszi, hogy megadhat egy központi SSL-házirendet, amely megfelel a szervezeti biztonsági követelményeknek. Ez segít a megfelelőségi követelmények, valamint a biztonsági irányelvek és a javasolt eljárások teljesítésében.
 
-Az SSL-szabályzat magában foglalja az SSL protokoll verziója, valamint a titkosító csomagok és a sorrend, amelyben Rejtjelek egy SSL-kézfogás során használt irányítását. Az Application Gateway kétféle SSL-szabályzat való kínál. Használhat előre definiált szabályzattal vagy egyéni szabályzatot.
+Az SSL-szabályzat magában foglalja az SSL protokoll verziószámát, valamint a titkosítási csomagokat, valamint azt is, hogy az SSL-kézfogás során milyen sorrendben használják a titkosítási csomagokat. Application Gateway két módszert kínál az SSL-házirendek szabályozására. Használhat előre definiált szabályzatot vagy egyéni szabályzatot is.
 
-## <a name="predefined-ssl-policy"></a>Előre definiált SSL-szabályzat
+## <a name="predefined-ssl-policy"></a>Előre definiált SSL-házirend
 
-Application Gateway-átjárókhoz három előre meghatározott biztonsági szabályzat. Ezek a szabályzatok beolvasni a megfelelő szintű biztonságot bármelyikével konfigurálhatja úgy az átjáró. A szabályzat nevét az év és hónap, amelyben megadott konfiguráció szerint vannak feliratozva. Minden egyes házirend ajánlatok különböző SSL protokoll verziója és a titkosító csomagok. Azt javasoljuk, hogy a legújabb SSL-szabályzatok használatával biztosítása érdekében ajánlott az SSL-biztonság.
+Application Gateway három előre definiált biztonsági házirenddel rendelkezik. Ezen szabályzatok bármelyikével konfigurálhatja az átjárót a megfelelő szintű biztonság eléréséhez. A szabályzatok neveit az év és a hónap, amelyben konfigurálták. Az egyes házirendek különböző SSL protokoll-és titkosítási csomagokat biztosítanak. Javasoljuk, hogy a legújabb SSL-házirendeket használja a legjobb SSL-biztonság biztosításához.
 
 ### <a name="appgwsslpolicy20150501"></a>AppGwSslPolicy20150501
 
-|Tulajdonság  |Érték  |
+|Tulajdonság  |Value  |
 |---|---|
 |Name (Név)     | AppGwSslPolicy20150501        |
 |MinProtocolVersion     | TLSv1_0        |
-|Alapértelmezett| TRUE (Ha nincs előre definiált szabályzattal van megadva) |
+|Alapértelmezett| True (ha nincs megadva előre definiált házirend) |
 |CipherSuites     |TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384<br>TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256<br>TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384<br>TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256<br>TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA<br>TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA<br>TLS_DHE_RSA_WITH_AES_256_GCM_SHA384<br>TLS_DHE_RSA_WITH_AES_128_GCM_SHA256<br>TLS_DHE_RSA_WITH_AES_256_CBC_SHA<br>TLS_DHE_RSA_WITH_AES_128_CBC_SHA<br>TLS_RSA_WITH_AES_256_GCM_SHA384<br>TLS_RSA_WITH_AES_128_GCM_SHA256<br>TLS_RSA_WITH_AES_256_CBC_SHA256<br>TLS_RSA_WITH_AES_128_CBC_SHA256<br>TLS_RSA_WITH_AES_256_CBC_SHA<br>TLS_RSA_WITH_AES_128_CBC_SHA<br>TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384<br>TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256<br>TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384<br>TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256<br>TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA<br>TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA<br>TLS_DHE_DSS_WITH_AES_256_CBC_SHA256<br>TLS_DHE_DSS_WITH_AES_128_CBC_SHA256<br>TLS_DHE_DSS_WITH_AES_256_CBC_SHA<br>TLS_DHE_DSS_WITH_AES_128_CBC_SHA<br>TLS_RSA_WITH_3DES_EDE_CBC_SHA<br>TLS_DHE_DSS_WITH_3DES_EDE_CBC_SHA |
   
 ### <a name="appgwsslpolicy20170401"></a>AppGwSslPolicy20170401
   
-|Tulajdonság  |Érték  |
+|Tulajdonság  |Value  |
 |   ---      |  ---       |
 |Name (Név)     | AppGwSslPolicy20170401        |
 |MinProtocolVersion     | TLSv1_1        |
@@ -51,26 +51,26 @@ Application Gateway-átjárókhoz három előre meghatározott biztonsági szab�
   
 ### <a name="appgwsslpolicy20170401s"></a>AppGwSslPolicy20170401S
 
-|Tulajdonság  |Érték  |
+|Tulajdonság  |Value  |
 |---|---|
 |Name (Név)     | AppGwSslPolicy20170401S        |
 |MinProtocolVersion     | TLSv1_2        |
 |Alapértelmezett| False (Hamis) |
 |CipherSuites     |TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256 <br>    TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384 <br>    TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA <br>TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA <br>TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256<br>TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384<br>TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384<br>TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256<br>TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA<br>TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA<br>TLS_RSA_WITH_AES_256_GCM_SHA384<br>TLS_RSA_WITH_AES_128_GCM_SHA256<br>TLS_RSA_WITH_AES_256_CBC_SHA256<br>TLS_RSA_WITH_AES_128_CBC_SHA256<br>TLS_RSA_WITH_AES_256_CBC_SHA<br>TLS_RSA_WITH_AES_128_CBC_SHA<br> |
 
-## <a name="custom-ssl-policy"></a>Egyéni SSL-szabályzat
+## <a name="custom-ssl-policy"></a>Egyéni SSL-házirend
 
-Ha az igényeinek megfelelően konfigurálni kell egy előre meghatározott SSL-szabályzat, meg kell adnia a saját egyéni SSL-szabályzat. Egyéni SSL-szabályzat rendelkező teljes körű, a minimális SSL protokoll verziója támogatást, valamint a támogatott titkosítócsomagok és a prioritásuk szerinti sorrendben történik.
+Ha előre definiált SSL-szabályzatot kell konfigurálnia a követelményekhez, meg kell határoznia a saját egyéni SSL-szabályzatát. Egyéni SSL-szabályzattal teljes mértékben szabályozhatja az SSL protokoll minimális verziójának támogatását, valamint a támogatott titkosítási csomagokat és azok prioritási sorrendjét.
  
-### <a name="ssl-protocol-versions"></a>Az SSL protokoll verziója
+### <a name="ssl-protocol-versions"></a>SSL protokoll verziói
 
-* Az SSL 2.0 és 3.0 le vannak tiltva minden Alkalmazásátjáró számára alapértelmezés szerint. Ezeket a protokoll-verziókat, amelyek nem konfigurálhatók.
-* Egyéni SSL-szabályzat lehetővé teszi az átjáró minimális SSL protokoll verziója jelölje ki a következő három protokoll bármelyikének: TLSv1_0, TLSv1_1, and TLSv1_2.
-* Ha nincs SSL-szabályzat megadva, az összes három protokoll (TLSv1_0, TLSv1_1 és TLSv1_2) engedélyezett.
+* Az SSL 2,0 és a 3,0 alapértelmezés szerint le van tiltva az összes Application Gateway átjáró esetében. A protokollok verziószáma nem konfigurálható.
+* Az egyéni SSL-házirend lehetőséget ad a következő három protokoll valamelyikének kiválasztására az átjáró minimális SSL protokoll-verziójaként: TLSv1_0, TLSv1_1 és TLSv1_2.
+* Ha nincs SSL-házirend meghatározva, mindhárom protokoll (TLSv1_0, TLSv1_1 és TLSv1_2) engedélyezve van.
 
-### <a name="cipher-suites"></a>Titkosító csomagok
+### <a name="cipher-suites"></a>Titkosítási csomagok
 
-Az Application Gateway támogatja a következő, amelyből kiválaszthatja az egyéni házirend titkosító csomagok. A titkosító csomag sorrendje határozza meg a prioritásuk szerinti sorrendben történik SSL-egyeztetést során.
+Application Gateway a következő titkosítási csomagokat támogatja, amelyekről kiválaszthatja az egyéni házirendet. A titkosítási csomagok sorrendje határozza meg a prioritási sorrendet az SSL-egyeztetés során.
 
 
 - TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
@@ -102,6 +102,9 @@ Az Application Gateway támogatja a következő, amelyből kiválaszthatja az eg
 - TLS_RSA_WITH_3DES_EDE_CBC_SHA
 - TLS_DHE_DSS_WITH_3DES_EDE_CBC_SHA
 
+> [!NOTE]
+> A kapcsolathoz használt SSL-titkosítási csomagok a használt tanúsítvány típusától függően is érvényesek. Az ügyfél és az Application Gateway közötti kapcsolatok esetében a használt titkosítási csomagok az Application Gateway-figyelő kiszolgálói tanúsítványainak típusán alapulnak. Az Application Gateway és a háttérrendszer-készlet kapcsolatai között a használt titkosítási csomagok a háttérrendszer kiszolgálói tanúsítványainak típusától függenek.
+
 ## <a name="next-steps"></a>További lépések
 
-Ha szeretné megtanulni egy SSL-szabályzat konfigurálása, lásd: [egy application gateway konfigurálása SSL-szabályzat](application-gateway-configure-ssl-policy-powershell.md).
+Ha meg szeretné ismerni az SSL-szabályzatok konfigurálását, tekintse meg az [SSL-házirend konfigurálása Application gatewayen](application-gateway-configure-ssl-policy-powershell.md)című témakört.

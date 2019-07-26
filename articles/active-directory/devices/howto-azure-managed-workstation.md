@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: frasim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 90687d0229d3ad74c287bb4aff4885dc26932e40
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
-ms.translationtype: HT
+ms.openlocfilehash: be9e6374d92fbb7bb1c4b5a2a9e154119c5baf87
+ms.sourcegitcommit: b49431b29a53efaa5b82f9be0f8a714f668c38ab
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68227270"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68377487"
 ---
 # <a name="deploy-a-secure-azure-managed-workstation"></a>Biztonságos, Azure által felügyelt munkaállomás üzembe helyezése
 
@@ -28,7 +28,7 @@ A megoldás üzembe helyezése előtt ki kell választania egy profilt. Egyszerr
 > [!NOTE]
 > Igény szerint alkalmazza a profilok bármelyikét. Az Intune-ban való hozzárendeléssel másik profilba is áthelyezheti.
 
-| Profil | Alacsony | Továbbfejlesztett | Magas | Specializált | Biztosított | Izolált |
+| Profil | Alacsony | Továbbfejlesztett | Magas | Specializált | Biztonságos | Izolált |
 | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
 | Felhasználó az Azure AD-ben | Igen | Igen | Igen | Igen | Igen | Igen |
 | Intune-managed | Igen | Igen | Igen | Igen | Igen | Igen |
@@ -134,7 +134,7 @@ Feltételes hozzáférés konfigurálása a Azure Portalról:
        * Include- **Users és groups** – válassza ki a korábban létrehozott **biztonságos munkaállomás-felhasználók** csoportot.
        * Kizárás – **felhasználók és csoportok** – válassza ki a szervezet vészhelyzeti hozzáférési fiókjait.
      * **Cloud apps** – **minden felhőalapú alkalmazás**belefoglalása.
-    * Hozzáférés-vezérlés
+    * Hozzáférés-szabályozás
       * **Engedélyezés** – válassza a **hozzáférési választógomb megadása** gombot.
         * **Többtényezős hitelesítés**megkövetelése.
         * Az **eszköz megfelelőként való**megjelölésének megkövetelése.
@@ -229,14 +229,14 @@ További információ: a [Windows Defender komplex veszélyforrások elleni véd
 
 A megoldás megerősítésének sikeres befejezéséhez töltse le és hajtsa végre a megfelelő parancsfájlt. Keresse meg a letöltési hivatkozásokat a kívánt **profil szintjéhez**:
 
-| Profil | Letöltési hely | Filename |
+| Profil | Letöltési hely | Fájlnév |
 | --- | --- | --- |
 | Alacsony biztonság | – |  – |
 | Fokozott biztonság | https://aka.ms/securedworkstationgit | Enhanced-Workstation-Windows10-(1809).ps1 |
 | Magas biztonság  | https://aka.ms/securedworkstationgit | HighSecurityWorkstation-Windows10-(1809). ps1 |
 | Specializált | https://github.com/pelarsen/IntunePowerShellAutomation | DeviceConfiguration_NCSC-Windows10 (1803) SecurityBaseline. ps1 |
 | Speciális megfelelőség * | https://aka.ms/securedworkstationgit | DeviceCompliance_NCSC-Windows10(1803).ps1 |
-| Biztosított | https://aka.ms/securedworkstationgit | Secure-Workstation-Windows10-(1809)-SecurityBaseline.ps1 |
+| Biztonságos | https://aka.ms/securedworkstationgit | Secure-Workstation-Windows10-(1809)-SecurityBaseline.ps1 |
 
 \*A speciális megfelelőség egy olyan parancsfájl, amely kikényszeríti a NCSC Windows10 SecurityBaseline megadott speciális konfigurációt.
 
@@ -245,7 +245,7 @@ A szkript sikeres végrehajtása után frissítheti a profilokat és a szabályz
 * Itt találja a parancsfájlok által létrehozott Intune-eszköz konfigurációs profilokat: **Azure Portal** **Microsoft Intune eszköz**konfigurációsprofiljai > . >  > 
 * Itt találja a parancsfájlok által létrehozott Intune-eszközök megfelelőségi szabályzatait: **Azure Portal**Microsoft Intune eszközmegfelelőségi > szabályzatai. >  > 
 
-A parancsfájlok által végzett módosítások áttekintéséhez exportálhatja a profilokat. Így meghatározhat további megerősítést, amely a SECCON dokumentációjában ismertetett módon szükséges.
+A parancsfájlok által végzett módosítások áttekintéséhez exportálhatja a profilokat. Így meghatározhat további megerősítést, amely a [SECCON dokumentációjában](https://docs.microsoft.com/windows/security/threat-protection/windows-security-configuration-framework/windows-security-configuration-framework)ismertetett módon szükséges.
 
 Futtassa az Intune-adatexportálási parancsfájlt `DeviceConfiguration_Export.ps1` a [DeviceConfiguration GiuHub adattárból](https://github.com/microsoftgraph/powershell-intune-samples/tree/master/DeviceConfiguration) az összes aktuális Intune-profil exportálásához.
 

@@ -1,230 +1,229 @@
 ---
-title: A SharePoint-farmok biztonsági mentéséhez az Azure-bA az Azure Backup server használatával
-description: Az Azure Backup Server használatával biztonsági mentése és visszaállítása a SharePoint-adatok. Ez a cikk az információkat a SharePoint-farm konfigurálásához, hogy a kívánt adatokat tárolhatja az Azure-ban. Visszaállíthatja a védett SharePoint-adatok a lemezről, vagy az Azure-ból.
-services: backup
+title: SharePoint-farm biztonsági mentése az Azure-ba Azure Backup kiszolgáló használatával
+description: A SharePoint-adatai biztonsági mentését és visszaállítását Azure Backup Server használatával végezheti el. Ez a cikk ismerteti a SharePoint-farm konfigurálásához szükséges információkat, hogy a kívánt adatok az Azure-ban is tárolhatók legyenek. A védett SharePoint-adatok a lemezről vagy az Azure-ból is visszaállíthatók.
 author: kasinh
 manager: vvithal
 ms.service: backup
 ms.topic: conceptual
 ms.date: 6/8/2018
 ms.author: kasinh
-ms.openlocfilehash: 7c0a39ab09a52d61e51d297c5018eac6b00d7ad4
-ms.sourcegitcommit: c0419208061b2b5579f6e16f78d9d45513bb7bbc
+ms.openlocfilehash: cc7a5f6703d8d6fcec800071e75b7ca42c8f1cef
+ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67625164"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68466702"
 ---
 # <a name="back-up-a-sharepoint-farm-to-azure"></a>SharePoint-farm biztonsági mentése az Azure-ba
-Készítsen biztonsági másolatot egy SharePoint-farm a Microsoft Azure-ba, hogy készítsen biztonsági mentést más adatforrásokhoz ugyanolyan módon a Microsoft Azure Backup Server (MABS) használatával. Az Azure Backup rugalmasan hozhat létre naponta a biztonsági mentési ütemezés, heti, havi vagy éves biztonsági mentési mutat, és különböző biztonsági mentési pontok megőrzése házirend lehetőséget kínál fel. Azt is lehetővé teszi a helyi lemez másolatot pedig gyors helyreállítási idő célkitűzései (RTO) tárolására, és tárolja a másolatokat az Azure-bA gazdaságos, hosszú távú megőrzésének.
+A SharePoint-farmok biztonsági mentését úgy végezheti el, hogy a Microsoft Azure Backup Server (MABS) használatával ugyanúgy Microsoft Azure a biztonsági mentést, mint az egyéb adatforrások. Azure Backup rugalmasságot biztosít a biztonsági mentési ütemezésben napi, heti, havi vagy éves biztonsági mentési pontok létrehozásához, és adatmegőrzési házirend-beállításokat biztosít a különböző biztonsági mentési pontokhoz. Lehetővé teszi továbbá a helyi lemezek másolását a gyors helyreállítási idejű célkitűzések (RTO) számára, valamint a másolatok Azure-ba történő tárolását gazdaságos, hosszú távú adatmegőrzés céljából.
 
-## <a name="sharepoint-supported-versions-and-related-protection-scenarios"></a>A SharePoint támogatott verziója, és a kapcsolódó védelmi forgatókönyvek
-Az Azure Backup a DPM a következő eseteket támogatja:
+## <a name="sharepoint-supported-versions-and-related-protection-scenarios"></a>A SharePoint által támogatott verziók és kapcsolódó védelmi forgatókönyvek
+A DPM Azure Backup a következő forgatókönyveket támogatja:
 
-| Számítási feladat | Version | A SharePoint-környezet | Védelem és helyreállítás |
+| Számítási feladat | Version | SharePoint-telepítés | Védelem és helyreállítás |
 | --- | --- | --- | --- |
-| SharePoint |SharePoint 2016, SharePoint 2013, SharePoint 2010, SharePoint 2007, SharePoint 3.0 |Fizikai kiszolgálóként vagy Hyper-V vagy VMware virtuális gép üzembe helyezett SharePoint <br> -------------- <br> SQL AlwaysOn | Helyreállítási beállítások SharePoint-Farm védelme: Helyreállítási farm, adatbázis és a lemez-helyreállítási pontokból fájl vagy listaelem.  Helyreállítási farm, adatbázis és az Azure helyreállítási pontokból. |
+| SharePoint |SharePoint 2016, SharePoint 2013, SharePoint 2010, SharePoint 2007, SharePoint 3,0 |Fizikai kiszolgálóként vagy Hyper-V/VMware virtuális gépen üzembe helyezett SharePoint <br> -------------- <br> SQL AlwaysOn | A SharePoint-farm helyreállítási lehetőségeinek biztosítása: Helyreállítási Farm, adatbázis és fájl vagy listaelem a lemezes helyreállítási pontokból.  Farm-és adatbázis-helyreállítás az Azure helyreállítási pontjairól. |
 
 ## <a name="before-you-start"></a>Előkészületek
-Néhány dolgot meg kell erősítenie előtt készítsen biztonsági másolatot a SharePoint-farmok Azure-bA.
+A SharePoint-farmok Azure-ba történő biztonsági mentése előtt néhány dolgot meg kell erősítenie.
 
 ### <a name="prerequisites"></a>Előfeltételek
-Mielőtt folytatná, győződjön meg arról, hogy rendelkezik-e [telepítve van, és az Azure Backup Server készített](backup-azure-microsoft-azure-backup.md) munkaterhelések védelme érdekében.
+A folytatás előtt győződjön meg arról, hogy [telepítette és felkészítette a Azure Backup Server](backup-azure-microsoft-azure-backup.md) a munkaterhelések elleni védelem érdekében.
 
 ### <a name="protection-agent"></a>Védelmi ügynök
-Az Azure Backup ügynököt telepíteni kell a kiszolgálón, amelyen fut a SharePoint, SQL Server szolgáltatást futtató kiszolgálók és egyéb a SharePoint-farm részét képező kiszolgálók. A védelmi ügynök beállítása kapcsolatos további információkért lásd: [telepítő védelmi ügynök](https://technet.microsoft.com/library/hh758034\(v=sc.12\).aspx).  Az egyetlen kivétel, hogy telepítenie kell az ügynök csak egy egyetlen webes kezelőfelület (WFE) kiszolgálón. Az Azure Backup Server van szüksége az ügynök egy ELŐTÉR-webkiszolgálón csak a védelem belépési pontként szolgál.
+A Azure Backup ügynöknek telepítve kell lennie a SharePoint rendszert futtató kiszolgálón, a SQL Server futtató kiszolgálókon, valamint a SharePoint-farm részét képező összes többi kiszolgálón. A védelmi ügynök beállításával kapcsolatos további információkért lásd: a [védelmi ügynök](https://technet.microsoft.com/library/hh758034\(v=sc.12\).aspx)beállítása.  Az egyetlen kivétel az, hogy csak egyetlen webes előtér-(WFE-) kiszolgálón telepíti az ügynököt. Azure Backup Server csak egy WFE-kiszolgálón lévő ügynökre van szüksége, hogy a védelemhez belépési pontként szolgáljon.
 
 ### <a name="sharepoint-farm"></a>SharePoint-farm
-A farm minden 10 millió eleme legalább 2 GB területet a köteten, ahol megtalálható a MABS mappában kell lennie. Ez a terület a katalógus előállításához szükség. A MABS helyreállítása elemeit (webhelycsoportok, webhelyek, listák, dokumentumtárak, mappák, egyes dokumentumok és listaelemek) a katalógus-előállítás létrehoz az egyes tartalom-adatbázisokban tárolt URL-címek listáját. Az URL-címek listáját a helyreállítható elemek ablaktábláján tekintheti a **helyreállítási** MABS felügyeleti konzol feladatterületén.
+A farm minden 10 000 000 eleméhez legalább 2 GB szabad területnek kell lennie azon a köteten, ahol a MABS mappa található. Ez a terület a katalógus létrehozásához szükséges. Az adott elemek (webhelycsoportok, webhelyek, listák, dokumentumtárak, mappák, egyes dokumentumok és listaelemek) helyreállításához a MABS létrehoz egy listát az egyes tartalom-adatbázisokban található URL-címekről. Az URL-címek listáját a helyreállítható elem ablaktáblán tekintheti meg a MABS felügyeleti konzol **helyreállítási** feladat területén.
 
 ### <a name="sql-server"></a>SQL Server
-Az Azure Backup Server LocalSystem fiókként fut. Az SQL Server-adatbázisok biztonsági mentéséhez a MABS az SQL Servert futtató kiszolgáló fiók rendszergazdai jogosultságokkal kell rendelkeznie. NT AUTHORITY\SYSTEM beállítása *SysAdmin (rendszergazda)* a kiszolgálón, amelyen fut az SQL Server előtt készítsen biztonsági másolatot.
+Azure Backup Server LocalSystem fiókként fut. SQL Server adatbázisok biztonsági mentéséhez a MABS rendszergazdai jogosultságokkal kell rendelkeznie az adott fiókhoz a SQL Server rendszert futtató kiszolgálón. A biztonsági mentés előtt állítsa be az NT AUTHORITY\SYSTEM-t a *sysadmin* értékre azon a kiszolgálón, amelyen a SQL Server fut.
 
-Ha a SharePoint-farm konfigurált SQL Server-aliasokkal megadott SQL Server-adatbázisok, telepítse az SQL Server ügyféloldali összetevőit az előtér-webkiszolgálón, amely védeni fogja a MABS.
+Ha a SharePoint-farm SQL Server SQL Server aliasokkal konfigurált adatbázisokkal rendelkezik, akkor telepítse a SQL Server ügyféloldali összetevőit azon az előtér-webkiszolgálón, amelyet a MABS véd.
 
 ### <a name="sharepoint-server"></a>SharePoint Server
-Bár a teljesítmény számos tényezőtől, például a SharePoint-farm mérete attól függ, általános útmutatásként egy MABS is 25 TB SharePoint-farm védelméhez.
+Míg a teljesítmény számos tényezőtől függ, például a SharePoint-farm méretétől, általános útmutatásként az egyik MABS a 25 TB-os SharePoint-farmot is képes védelemmel ellátni.
 
 ### <a name="whats-not-supported"></a>Nem támogatott műveletek
-* MABS, amely védelmet nyújt a SharePoint-farm nem nyújt védelmet a keresési indexek vagy az alkalmazásszolgáltatás-adatbázisok. Ezeknek az adatbázisoknak a védelmét külön konfigurálni kell.
-* MABS-fájlmegosztásokon kibővíthető fájlkiszolgálófürt (SOFS) nem biztosít üzemeltetett SharePoint SQL Server-adatbázisok biztonsági mentése.
+* A SharePoint-farmokat védő MABS nem védik a keresési indexeket vagy az Application Service-adatbázisokat. Ezen adatbázisok védelmét külön kell konfigurálnia.
+* A MABS nem biztosít biztonsági mentést a SharePoint SQL Server-adatbázisokról, amelyek a kibővített fájlkiszolgáló (SOFS) megosztásokon futnak.
 
-## <a name="configure-sharepoint-protection"></a>A SharePoint védelmének konfigurálása
-MABS védelme a SharePoint használata előtt konfigurálnia kell a SharePoint VSS-író szolgáltatását (WSS-író szolgáltatás) használatával **ConfigureSharePoint.exe**.
+## <a name="configure-sharepoint-protection"></a>A SharePoint-védelem konfigurálása
+Ahhoz, hogy a MABS-t a SharePoint számára is használhassa, konfigurálnia kell a SharePoint VSS-író szolgáltatást (WSS-író szolgáltatás) a **ConfigureSharePoint. exe**használatával.
 
-Annak **ConfigureSharePoint.exe** az előtér-webkiszolgálón a [MABS telepítési elérési út] \bin mappában. Ezt az eszközt kínál a SharePoint-farm hitelesítő adatait a védelmi ügynököt. Egyetlen ELŐTÉR-webkiszolgálón futtassa. Ha több ELŐTÉR-webkiszolgáló, csak egyet válasszon ki egy védelmi csoport konfigurálásakor.
+A **ConfigureSharePoint. exe** a [MABS telepítési útvonala] \bin mappában található az előtér-webkiszolgálón. Ez az eszköz biztosítja a védelmi ügynököt a SharePoint-farm hitelesítő adataival. Egyetlen WFE-kiszolgálón futtatja azt. Ha több WFE-kiszolgálóval rendelkezik, válassza a csak egyet a védelmi csoportok konfigurálásakor.
 
 ### <a name="to-configure-the-sharepoint-vss-writer-service"></a>A SharePoint VSS-író szolgáltatás konfigurálása
-1. Az ELŐTÉR-webkiszolgálón, a parancssort lépjen [MABS telepítési hely] \bin\
-2. Adja meg a ConfigureSharePoint - EnableSharePointProtection.
-3. Adja meg a farm rendszergazdai hitelesítő adatait. Ez a fiók az ELŐTÉR-webkiszolgálón a helyi Rendszergazdák csoport tagjának kell lennie. Ha a farm rendszergazdája nem helyi rendszergazda, adja meg a következő engedélyeket az ELŐTÉR-webkiszolgálón:
-   * A WSS_Admin_WPG csoportnak teljes hozzáférést a DPM-mappa (% Program Files%\Microsoft Azure Backup\DPM).
-   * A WSS_Admin_WPG csoportnak olvasási engedélyt a DPM beállításkulcsához (HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Microsoft Data Protection Manager).
+1. A WFE-kiszolgálón a parancssorban lépjen a [MABS telepítési hely] \bin\ mappát
+2. Adja meg a ConfigureSharePoint-EnableSharePointProtection értéket.
+3. Adja meg a farm rendszergazdai hitelesítő adatait. Ennek a fióknak a helyi rendszergazda csoport tagjának kell lennie a WFE-kiszolgálón. Ha a farm rendszergazdája nem helyi rendszergazda, a következő engedélyeket kell megadnia a WFE-kiszolgálón:
+   * Adja meg a WSS_Admin_WPG csoport teljes hozzáférését a DPM mappához (% Program Files%\Microsoft Azure Backup\DPM).
+   * Adjon olvasási hozzáférést a WSS_Admin_WPG csoportnak a DPM beállításkulcs (HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Microsoft Data Protection Manager) számára.
 
 > [!NOTE]
-> Futtassa a ConfigureSharePoint.exe, amikor megváltozik a SharePoint-farm rendszergazdai hitelesítő adatai kell.
+> Ha a SharePoint-farm rendszergazdai hitelesítő adatai módosulnak, újra kell futtatnia a ConfigureSharePoint. exe fájlt.
 >
 >
 
-## <a name="back-up-a-sharepoint-farm-by-using-mabs"></a>Biztonsági mentése egy SharePoint-farm MABS használatával
-Miután konfigurálta a MABS és a korábbiakban leírtak a SharePoint-farm, SharePoint MABS is védi.
+## <a name="back-up-a-sharepoint-farm-by-using-mabs"></a>SharePoint-farm biztonsági mentése a MABS használatával
+Miután a korábban ismertetett módon konfigurálta a MABS-t és a SharePoint-farmot, a SharePoint védelme a MABS használatával lehetséges.
 
-### <a name="to-protect-a-sharepoint-farm"></a>Egy SharePoint-farm védelme céljából
-1. Az a **védelmi** fülre a MABS felügyeleti konzol, kattintson a **új**.
-    ![Védelem új lap](./media/backup-azure-backup-sharepoint/dpm-new-protection-tab.png)
-2. Az a **védelmi csoport típusának kiválasztása** lapján a **új védelmi csoport létrehozása** varázsló, jelölje be **kiszolgálók**, és kattintson a **tovább**.
+### <a name="to-protect-a-sharepoint-farm"></a>SharePoint-farmok megóvása
+1. A MABS felügyeleti konzol **védelem** lapján kattintson az **új**elemre.
+    ![Új védelem lap](./media/backup-azure-backup-sharepoint/dpm-new-protection-tab.png)
+2. Az **új védelmi csoport létrehozása** varázsló **védelmi csoport típusának kiválasztása** lapján válassza a **kiszolgálók**elemet, majd kattintson a **tovább**gombra.
 
-    ![Válassza ki a védelmi csoport típusa](./media/backup-azure-backup-sharepoint/select-protection-group-type.png)
-3. Az a **csoporttagok kiválasztása** lapon jelölje be a SharePoint-kiszolgáló védelmére, és kattintson a kívánt **tovább**.
+    ![Védelmi csoport típusának kiválasztása](./media/backup-azure-backup-sharepoint/select-protection-group-type.png)
+3. A **csoporttagok kiválasztása** képernyőn jelölje be a védelemmel ellátni kívánt SharePoint-kiszolgáló jelölőnégyzetét, majd kattintson a **tovább**gombra.
 
     ![Csoporttagok kiválasztása](./media/backup-azure-backup-sharepoint/select-group-members2.png)
 
    > [!NOTE]
-   > A védelmi ügynök telepítve a varázsló a kiszolgáló látható. MABS mutatja a struktúráját is. Futtatta a ConfigureSharePoint.exe, mert a MABS kommunikál a SharePoint VSS-író szolgáltatás és a megfelelő SQL Server-adatbázisok és, és a SharePoint-farm struktúráját, a kapcsolódó tartalom-adatbázisokhoz és megfelelő elemeket.
+   > Ha telepítve van a védelmi ügynök, a kiszolgáló megjelenik a varázslóban. A MABS a szerkezetét is megjeleníti. Mivel a ConfigureSharePoint. exe fájlt futtatta, a MABS kommunikál a SharePoint VSS-író szolgáltatással és a hozzá tartozó SQL Server adatbázisokkal, és felismeri a SharePoint-farm struktúráját, a társított tartalom-adatbázisokat és a hozzájuk tartozó elemeket.
    >
    >
-4. Az a **adatvédelmi módszer kiválasztása** lap, adja meg a nevét a **védelmi csoport**, és válassza ki a kívánt *védelmi módszerek*. Kattintson a **Tovább** gombra.
+4. Az **adatvédelmi módszer kiválasztása** lapon adja meg a **védelmi csoport**nevét, és válassza ki az előnyben részesített *védelmi módszereket*. Kattintson a **Tovább** gombra.
 
     ![Adatvédelmi módszer kiválasztása](./media/backup-azure-backup-sharepoint/select-data-protection-method1.png)
 
    > [!NOTE]
-   > A lemez védelmi módszert segítségével rövid idő helyreállítási célok eléréséhez.
+   > A lemezes védelmi módszer segíti a rövid helyreállítási idejű célkitűzések teljesítését.
    >
    >
-5. Az a **rövid távú célok megadása** lapon, válassza ki a kívánt **megőrzési** és azonosítását, ha azt szeretné, hogy a biztonsági mentések.
+5. A **rövid távú célok megadása** oldalon válassza ki az előnyben részesített **megőrzési tartományt** , és határozza meg, hogy mikor történjen a biztonsági mentés.
 
     ![Rövid távú célok megadása](./media/backup-azure-backup-sharepoint/specify-short-term-goals2.png)
 
    > [!NOTE]
-   > Helyreállítási általában kevesebb mint öt napnál régebbi adatok szükség, mert azt lemezen öt napnyi megőrzési kiválasztva, és biztosítani, hogy történik-e a biztonsági mentés során nem éles óra, ebben a példában.
+   > Mivel a helyreállítás leggyakrabban az öt napnál régebbi adatok esetében szükséges, a lemezen lévő megőrzési időtartamot választottuk, és gondoskodunk arról, hogy a biztonsági mentés a nem üzemi időszakban történjen, ebben a példában.
    >
    >
-6. Tekintse át a tárolókészletet a védelmi csoport számára lefoglalt lemezterület, majd kattintson **tovább**.
-7. Minden egyes védelmi csoporthoz tartozó MABS tárolhatja és kezelheti a replikák lemezterületet foglal le. Ezen a ponton MABS létre kell hoznia egy másolatot a kijelölt adatokat. Válassza ki, hogyan és mikor kívánja elvégezni a létrehozott replika, majd kattintson a **tovább**.
+6. Tekintse át a védelmi csoport számára lefoglalt tárterület-lemezterületet, majd kattintson a **tovább**gombra.
+7. Minden védelmi csoport esetében a MABS lemezterületet foglal le a replikák tárolásához és kezeléséhez. Ekkor a MABS-nek létre kell hoznia a kijelölt adatmennyiség másolatát. Válassza ki, hogyan és mikor szeretné létrehozni a replikát, majd kattintson a **tovább**gombra.
 
     ![Replika-létrehozási módszer kiválasztása](./media/backup-azure-backup-sharepoint/choose-replica-creation-method.png)
 
    > [!NOTE]
-   > Győződjön meg arról, hogy a hálózati forgalom nem befolyásolja, válassza ki a megfelelő üzemi óra kívül.
+   > Annak érdekében, hogy a hálózati forgalom ne legyen hatással, válasszon ki egy időpontot az üzemi órákon kívül.
    >
    >
-8. MABS a replika konzisztencia-ellenőrzések végrehajtásával biztosíthatja az adatok integritását. Két elérhető lehetőség van. Meghatározhatja a konzisztencia-ellenőrzések futtatása ütemezés szerint, vagy a DPM futtatható a replikán automatikusan konzisztencia-ellenőrzéseket, amikor inkonzisztenssé válik. Válassza ki a kívánt beállítást, és kattintson a **tovább**.
+8. A MABS biztosítja az adatok integritását, ha konzisztencia-ellenőrzéseket végez a replikán. Két lehetőség közül választhat. Megadhat egy ütemtervet a konzisztencia-ellenőrzések futtatásához, vagy a DPM automatikusan futtathat konzisztencia-ellenőrzéseket a replikán, ha az inkonzisztens lesz. Válassza ki a kívánt lehetőséget, majd kattintson a **tovább**gombra.
 
     ![Konzisztencia-ellenőrzés](./media/backup-azure-backup-sharepoint/consistency-check.png)
-9. Az a **Online védelem adatainak megadása** lapra, jelölje be a SharePoint-farm védelmét, és kattintson a kívánt **tovább**.
+9. Az **online védelem adatainak megadása** lapon válassza ki a védelemmel ellátni kívánt SharePoint-farmot, majd kattintson a **tovább**gombra.
 
-    ![A DPM SharePoint Protection1](./media/backup-azure-backup-sharepoint/select-online-protection1.png)
-10. Az a **Online biztonsági mentési ütemezés megadása** lapon válassza ki a kívánt ütemezést, és kattintson a **tovább**.
+    ![DPM SharePoint-Protection1](./media/backup-azure-backup-sharepoint/select-online-protection1.png)
+10. Az **online biztonsági mentési ütemterv megadása** lapon válassza ki az előnyben részesített ütemtervet, majd kattintson a **tovább**gombra.
 
     ![Online_backup_schedule](./media/backup-azure-backup-sharepoint/specify-online-backup-schedule.png)
 
     > [!NOTE]
-    > MABS egy legfeljebb két napi biztonsági mentést biztosít majd elérhető legújabb lemez biztonsági mentési pont az Azure-bA. Az Azure Backup használatával használható biztonsági másolatok a csúcsidőre és a csúcsidőn a WAN sávszélesség mennyiségét is szabályozhatja [Azure Backup hálózati sávszélesség-szabályozás](https://azure.microsoft.com/documentation/articles/backup-configure-vault/#enable-network-throttling).
+    > A MABS legfeljebb két napi biztonsági mentést biztosít az Azure-hoz a később elérhető legújabb lemezes biztonsági mentési pontról. A Azure Backup az [Azure Backup hálózati sávszélesség-szabályozás](https://azure.microsoft.com/documentation/articles/backup-configure-vault/#enable-network-throttling)használatával is szabályozhatja azt a WAN-sávszélességet, amelyet a biztonsági mentéshez használhat a csúcs-és a távolsági órákban.
     >
     >
-11. A kiválasztott, a biztonsági mentési ütemezés függően a **Online adatmegőrzési szabály megadása** lapra, jelölje be a megtartási házirend napi, heti, havi és éves biztonsági mentési ponthoz.
+11. A kiválasztott biztonsági mentési ütemezéstől függően az online adatmegőrzési **szabály megadása** lapon válassza ki a napi, heti, havi és éves biztonsági mentési pontok megőrzési szabályát.
 
     ![Online_retention_policy](./media/backup-azure-backup-sharepoint/specify-online-retention.png)
 
     > [!NOTE]
-    > MABS a nagyapa-apa-fiú megőrzési séma, amelyben a különböző adatmegőrzési megadásához használja a különböző biztonsági mentési pontok.
+    > A MABS egy nagyapa-apa-Son adatmegőrzési sémát használ, amelyben eltérő adatmegőrzési szabályt lehet kiválasztani a különböző biztonsági mentési pontokhoz.
     >
     >
-12. Lemez hasonlóan egy kezdeti hivatkozási pont replika kell létrehozni az Azure-ban. Válassza ki a kívánt beállítást, hozzon létre egy kezdeti biztonsági másolatot az Azure-ba, és kattintson a **tovább**.
+12. A lemezhez hasonlóan a kezdeti hivatkozási pont replikáját is létre kell hozni az Azure-ban. Válassza ki a kívánt lehetőséget egy kezdeti biztonsági másolat Azure-ba való létrehozásához, majd kattintson a **tovább**gombra.
 
     ![Online_replica](./media/backup-azure-backup-sharepoint/online-replication.png)
-13. Tekintse át a beállításokat a a **összefoglalás** lapon, és kattintson a **csoport létrehozása**. A védelmi csoport létrehozása után látni fogja a sikert jelző üzenet.
+13. Tekintse át a kiválasztott beállításokat az **Összefoglalás** lapon, majd kattintson a **csoport létrehozása**elemre. A védelmi csoport létrehozása után sikert jelző üzenet jelenik meg.
 
     ![Összegzés](./media/backup-azure-backup-sharepoint/summary.png)
 
-## <a name="restore-a-sharepoint-item-from-disk-by-using-mabs"></a>Állítsa vissza a SharePoint-elem lemezről MABS használatával
-A következő példában a *helyreállítás SharePoint-elem* véletlenül törölve lett, és kell helyreállítani.
+## <a name="restore-a-sharepoint-item-from-disk-by-using-mabs"></a>SharePoint-elem visszaállítása a lemezről a MABS használatával
+A következő példában a SharePoint- *elem helyreállítása* véletlenül törölve lett, és vissza kell állítani.
 ![MABS SharePoint Protection4](./media/backup-azure-backup-sharepoint/dpm-sharepoint-protection5.png)
 
-1. Nyissa meg a **DPM felügyeleti konzol**. Minden DPM által védett SharePoint-farmok jelennek meg a **védelmi** fülre.
+1. Nyissa meg a **DPM felügyeleti konzol**. A DPM által védett SharePoint-farmok a **védelem** lapon jelennek meg.
 
-    ![MABS SharePoint Protection3](./media/backup-azure-backup-sharepoint/dpm-sharepoint-protection4.png)
-2. Az elem helyreállítása első lépésként válassza ki a **helyreállítási** fülre.
+    ![MABS SharePoint-Protection3](./media/backup-azure-backup-sharepoint/dpm-sharepoint-protection4.png)
+2. Az elem helyreállításának megkezdéséhez válassza a **helyreállítás** lapot.
 
     ![MABS SharePoint Protection5](./media/backup-azure-backup-sharepoint/dpm-sharepoint-protection6.png)
-3. Kereshet a SharePoint *helyreállítás SharePoint-elem* kereséssel egy helyettesítő karakteres alapú belül egy helyreállítási pont a tartományon.
+3. A SharePointban a *SharePoint-elem* helyreállítása a helyreállítási pont tartományán belüli helyettesítő karakteres keresés használatával végezhető el.
 
-    ![MABS SharePoint Protection6](./media/backup-azure-backup-sharepoint/dpm-sharepoint-protection7.png)
-4. Válassza ki a megfelelő helyreállítási pontot a keresési eredmények között, kattintson a jobb gombbal a cikket, és válassza **helyreállítása**.
-5. Böngészhet a különböző helyreállítási pontok is, és válasszon ki egy adatbázist vagy elemek helyreállítása. Válassza ki **dátum > helyreállítási idő**, és válassza ki a megfelelő **adatbázis > SharePoint-farm > helyreállítási pont > elem**.
+    ![MABS SharePoint-Protection6](./media/backup-azure-backup-sharepoint/dpm-sharepoint-protection7.png)
+4. Válassza ki a megfelelő helyreállítási pontot a keresési eredmények közül, kattintson a jobb gombbal az elemre, majd válassza a **helyreállítás**lehetőséget.
+5. A helyreállításhoz különböző helyreállítási pontokat is megkereshet, és kiválaszthatja a helyreállítani kívánt adatbázist vagy elemet. Válassza a **dátum > a helyreállítási idő**lehetőséget, majd válassza ki a megfelelő **adatbázist > SharePoint-farm > helyreállítási pont > elem**.
 
-    ![MABS SharePoint Protection7](./media/backup-azure-backup-sharepoint/dpm-sharepoint-protection8.png)
-6. Kattintson jobb gombbal az elemre, és válassza **helyreállítása** megnyitásához a **helyreállítási varázsló**. Kattintson a **Tovább** gombra.
+    ![MABS SharePoint-Protection7](./media/backup-azure-backup-sharepoint/dpm-sharepoint-protection8.png)
+6. Kattintson a jobb gombbal az elemre, majd **válassza a** helyreállítás elemet a **helyreállítási varázsló**megnyitásához. Kattintson a **Tovább** gombra.
 
-    ![Helyreállítási beállítások áttekintése](./media/backup-azure-backup-sharepoint/review-recovery-selection.png)
-7. Válasszon végrehajtani, és kattintson a kívánt helyreállítási **tovább**.
+    ![Visszaállítási kijelölés áttekintése](./media/backup-azure-backup-sharepoint/review-recovery-selection.png)
+7. Válassza ki a végrehajtani kívánt helyreállítás típusát, majd kattintson a **tovább**gombra.
 
     ![Helyreállítási típus](./media/backup-azure-backup-sharepoint/select-recovery-type.png)
 
    > [!NOTE]
-   > A kijelölt **helyreállítás az eredeti** példában állítja helyre az elemet az eredeti SharePoint-webhelyre.
+   > A példában az **eredeti helyre történő helyreállítás** a következő helyre visszaállítja az elemet az eredeti SharePoint-webhelyre.
    >
    >
-8. Válassza ki a **helyreállítási folyamat** , amelyet használni szeretne.
+8. Válassza ki a használni kívánt **helyreállítási folyamatot** .
 
-   * Válassza ki **helyreállítás helyreállítási farm nélkül** Ha a SharePoint-farm nem változott, és ugyanaz, mint a helyreállítási pont kerül.
-   * Válassza ki **helyreállításához a helyreállítási farm** Ha a SharePoint-farm megváltozott, a helyreállítási pont létrehozása óta.
+   * Ha a SharePoint-farm nem módosult, és megegyezik a visszaállítani kívánt helyreállítási ponttal, válassza a helyreállítás a **helyreállítási Farm használata nélkül** lehetőséget.
+   * Ha a SharePoint-farm megváltozott a helyreállítási pont létrehozása óta, válassza **a helyreállítás a helyreállítási Farm használatával** lehetőséget.
 
-     ![A helyreállítási folyamat](./media/backup-azure-backup-sharepoint/recovery-process.png)
-9. Adjon meg egy átmeneti SQL Server példány helyet ideiglenesen állítsa helyre az adatbázist, és adja meg a átmeneti fájlmegosztást a MABS és a SharePoint, az elem helyreállítása futtató kiszolgálón.
+     ![Helyreállítási folyamat](./media/backup-azure-backup-sharepoint/recovery-process.png)
+9. Adja meg az átmeneti SQL Server példány helyét az adatbázis ideiglenes helyreállításához, és adjon meg egy átmeneti fájlmegosztást a MABS és a SharePoint rendszert futtató kiszolgálón az elem helyreállításához.
 
-    ![Átmeneti Location1](./media/backup-azure-backup-sharepoint/staging-location1.png)
+    ![Előkészítési Location1](./media/backup-azure-backup-sharepoint/staging-location1.png)
 
-    MABS csatolja a tartalom-adatbázist, amelyen a SharePoint-elem az ideiglenes SQL Server-példányra. A tartalom-adatbázist, az azt állítja helyre az elemet, és helyezi az átmeneti tárolási helye a MABS. A helyreállított elem, amely az átmeneti helyen mostantól exportálható a SharePoint-farm átmeneti tárolási helye van szüksége.
+    A MABS csatolja a SharePoint-elemeket futtató tartalom-adatbázist az ideiglenes SQL Server példányhoz. A tartalom-adatbázisból helyreállítja az elemet, és áthelyezi az átmeneti fájl helyére a MABS. Az átmeneti helyen található helyreállított elem most exportálva lesz a SharePoint-farm átmeneti helyére.
 
-    ![Átmeneti Location2](./media/backup-azure-backup-sharepoint/staging-location2.png)
-10. Válassza ki **helyreállítási beállítások megadása**, és a alkalmazni a SharePoint-farm biztonsági beállításokat, vagy a helyreállítási pont biztonsági beállításainak alkalmazása. Kattintson a **Tovább** gombra.
+    ![Előkészítési Location2](./media/backup-azure-backup-sharepoint/staging-location2.png)
+10. Válassza a **helyreállítási beállítások megadása lehetőséget**, majd alkalmazza a biztonsági beállításokat a SharePoint-farmra, vagy alkalmazza a helyreállítási pont biztonsági beállításait. Kattintson a **Tovább** gombra.
 
     ![Helyreállítási beállítások](./media/backup-azure-backup-sharepoint/recovery-options.png)
 
     > [!NOTE]
-    > Ha szeretné, a hálózati sávszélesség használatának szabályozását. Ez minimalizálja az üzemi kiszolgálót, éles órában.
+    > Megadhatja a hálózati sávszélesség használatának szabályozását. Ez a művelet a termelési idő alatt a termelési kiszolgálóra is hatással van.
     >
     >
-11. Tekintse át az összefoglaló adatokat, és kattintson a **helyreállítása** megkezdéséhez a fájl helyreállítását.
+11. Tekintse át az összegző információkat, majd kattintson a **helyreállítás** gombra a fájl helyreállításának megkezdéséhez.
 
-    ![A helyreállítási összegzése](./media/backup-azure-backup-sharepoint/recovery-summary.png)
-12. Most válassza ki a **figyelés** lapján a **MABS felügyeleti konzol** megtekintéséhez a **állapot** a helyreállítási.
+    ![Helyreállítási összefoglalás](./media/backup-azure-backup-sharepoint/recovery-summary.png)
+12. Most válassza a **figyelés** fület a **MABS felügyeleti konzol** a helyreállítás **állapotának** megtekintéséhez.
 
-    ![Helyreállítás állapota](./media/backup-azure-backup-sharepoint/recovery-monitoring.png)
+    ![Helyreállítási állapot](./media/backup-azure-backup-sharepoint/recovery-monitoring.png)
 
     > [!NOTE]
-    > A fájl most helyreáll. A SharePoint-webhelyen ellenőrizheti a visszaállított fájl is frissítheti.
+    > A fájl most vissza lett állítva. Frissítheti a SharePoint-webhelyet a visszaállított fájl vizsgálatához.
     >
     >
 
 ## <a name="restore-a-sharepoint-database-from-azure-by-using-dpm"></a>SharePoint-adatbázis visszaállítása az Azure-ból a DPM használatával
-1. Egy SharePoint tartalom-adatbázis helyreállításához, böngészhet a különböző helyreállítási pontok (ahogyan korábban), és válassza ki a visszaállítani kívánt helyreállítási pontot.
+1. SharePoint tartalom-adatbázis helyreállításához tallózzon a különböző helyreállítási pontok között (ahogy az előzőekben látható), és válassza ki a visszaállítani kívánt helyreállítási pontot.
 
-    ![MABS SharePoint Protection8](./media/backup-azure-backup-sharepoint/dpm-sharepoint-protection9.png)
-2. Kattintson duplán a SharePoint helyreállítási pont megjelenítése a rendelkezésre álló SharePoint-katalógus adatait.
+    ![MABS SharePoint-Protection8](./media/backup-azure-backup-sharepoint/dpm-sharepoint-protection9.png)
+2. A SharePoint-katalógus elérhető adatainak megjelenítéséhez kattintson duplán a SharePoint helyreállítási pontra.
 
    > [!NOTE]
-   > A SharePoint-farm védelme az Azure-ban hosszú távú megőrzésének, mert nem katalógus (metadata) áll rendelkezésre információ a MABS. Ennek eredményeképpen minden alkalommal, amikor egy időponthoz – SharePoint tartalom-adatbázist kell állítható helyre, kell újra a katalógus a SharePoint-farm.
+   > Mivel a SharePoint-farm védelme hosszú távú adatmegőrzést biztosít az Azure-ban, a MABS nem érhető el katalógus-információ (metadata). Ennek eredményeképpen, amikor egy időponthoz tartozó SharePoint tartalmi adatbázist helyre kell állítani, újra kell katalogizálni a SharePoint-farmot.
    >
    >
-3. Kattintson a **katalogizálja újra**.
+3. Kattintson az újrakatalogizálás elemre.
 
-    ![MABS SharePoint Protection10](./media/backup-azure-backup-sharepoint/dpm-sharepoint-protection12.png)
+    ![MABS SharePoint-Protection10](./media/backup-azure-backup-sharepoint/dpm-sharepoint-protection12.png)
 
-    A **felhőalapú újrakatalogizálása** állapot ablak nyílik meg.
+    Megnyílik a **felhő** -újrakatalogizálás állapota ablak.
 
-    ![MABS SharePoint Protection11](./media/backup-azure-backup-sharepoint/dpm-sharepoint-protection13.png)
+    ![MABS SharePoint-Protection11](./media/backup-azure-backup-sharepoint/dpm-sharepoint-protection13.png)
 
-    Katalogizálása befejezése után a állapota *sikeres*. Kattintson a **Bezárás** gombra.
+    A katalogizálás befejezése után az állapot Sikeresre változik . Kattintson a **Bezárás** gombra.
 
-    ![MABS SharePoint Protection12](./media/backup-azure-backup-sharepoint/dpm-sharepoint-protection14.png)
-4. Kattintson a SharePoint-objektum látható a MABS **helyreállítási** fülre, és a tartalom-adatbázist struktúra beolvasása. Kattintson jobb gombbal az elemre, és kattintson a **helyreállítása**.
+    ![MABS SharePoint-Protection12](./media/backup-azure-backup-sharepoint/dpm-sharepoint-protection14.png)
+4. Kattintson a MABS- **helyreállítás** lapon látható SharePoint-objektumra a tartalom-adatbázis struktúrájának lekéréséhez. Kattintson a jobb gombbal az elemre, majd kattintson a **helyreállítás**elemre.
 
     ![MABS SharePoint Protection13](./media/backup-azure-backup-sharepoint/dpm-sharepoint-protection15.png)
-5. Ezen a ponton kövesse a cikkben a lemezről való helyreállításhoz egy SharePoint tartalom-adatbázist a helyreállítási lépéseket.
+5. Ezen a ponton kövesse a cikkben korábban ismertetett helyreállítási lépéseket a SharePoint tartalmi adatbázis lemezről történő helyreállításához.
 
 ## <a name="next-steps"></a>További lépések
 
-Tekintse meg a [biztonsági mentése az Exchange server](backup-azure-exchange-mabs.md) cikk.
-Tekintse meg a [készítsen biztonsági másolatot az SQL Server](backup-azure-sql-mabs.md) cikk.
+Lásd az [Exchange Server biztonsági mentése](backup-azure-exchange-mabs.md) című cikket.
+Tekintse meg a [SQL Server biztonsági mentése](backup-azure-sql-mabs.md) című cikket.
