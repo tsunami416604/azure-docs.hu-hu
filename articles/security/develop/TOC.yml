@@ -1,5 +1,10 @@
 - name: A biztonságos fejlesztés dokumentációja
   href: index.yml
+- name: Mintaalkalmazások
+  expanded: true
+  items:
+    - name: Webalkalmazás egy Linux-tárolóban
+      href: secure-web-app.md
 - name: Alapelvek
   expanded: true
   items:

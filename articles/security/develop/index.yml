@@ -34,6 +34,13 @@ sections:
             image:
               src: /media/common/i_learn-about.svg
             title: Fejlessze a készségeit a Microsoft Learnnel
+  - title: Biztonságos mintaalkalmazások
+    items:
+      - type: list
+        style: unordered
+        className: spaced noBullet
+        items:
+          - html: <a href="/azure/security/develop/secure-web-app">Webalkalmazás egy Linux-tárolóban</a>
   - title: Alapelvek
     items:
       - type: list

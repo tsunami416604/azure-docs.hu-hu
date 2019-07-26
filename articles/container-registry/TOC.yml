@@ -101,6 +101,8 @@
           href: container-registry-tasks-scheduled.md
         - name: Többlépéses feladatok
           href: container-registry-tasks-multi-step.md
+        - name: Rendszerkép összeállítása buildcsomagokkal (előzetes verzió)
+          href: container-registry-tasks-pack-build.md
         - name: Használat felügyelt identitással
           href: container-registry-tasks-authentication-managed-identity.md
     - name: Regisztrációs adatbázisok és más Azure-szolgáltatások

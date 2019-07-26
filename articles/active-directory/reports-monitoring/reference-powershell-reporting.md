@@ -17,21 +17,18 @@ ms.date: 07/12/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 27fa3d7be5238527f86e9dfde3be70ae09259d69
-ms.sourcegitcommit: af58483a9c574a10edc546f2737939a93af87b73
+ms.openlocfilehash: 2d9d5fdb9091d51c67fd5d778bac189c08647741
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68302740"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68359749"
 ---
 # <a name="azure-ad-powershell-cmdlets-for-reporting"></a>Az Azure AD PowerShell-parancsmagjai jelentéskészítéshez
 
-A Azure Active Directory-(Azure AD-) jelentésekkel megtekintheti a környezete működésének meghatározásához szükséges információkat. A jelentések adatai a jelentéskészítéshez használható Azure AD PowerShell-parancsmagok használatával olvashatók be.
+A Azure Active Directory-(Azure AD-) jelentésekkel részletes információkat kaphat az összes írási műveletről (napló) és a hitelesítési adatokról (bejelentkezési naplók). Bár az adatok az MS Graph API használatával érhetők el, mostantól az Azure AD PowerShell-parancsmagokkal is lekérheti ugyanezeket az adatokat a jelentéskészítéshez.
 
-Ez a cikk áttekintést nyújt a parancsmagról.
-
-
-
+Ez a cikk áttekintést nyújt a naplókhoz és a bejelentkezési naplókhoz használandó PowerShell-parancsmagokról.
 
 ## <a name="audit-logs"></a>Naplók
 
@@ -63,7 +60,7 @@ A bejelentkezési naplókhoz a Get-AzureADAuditSignInLogs parancsmag használat�
 
 | Forgatókönyv                      | PowerShell-parancs |
 | :--                           | :--                |
-| Felhasználó megjelenítendő neve             | Get-AzureADAuditSignInLogs-Filter "userDisplayName EQ" Timothy Perkins "" |
+| Felhasználó megjelenített neve             | Get-AzureADAuditSignInLogs-Filter "userDisplayName EQ" Timothy Perkins "" |
 | Létrehozás dátuma és időpontja              | Get-AzureADAuditSignInLogs-Filter "createdDateTime gt 2019-04-18T17:30:00.0 Z" (mindent a 4/18-as 5:30-kor) |
 | Állapot                        | Get-AzureADAuditSignInLogs-Filter "Status/errorCode EQ 50105" |
 | Alkalmazás megjelenítendő neve      | Get-AzureADAuditSignInLogs-Filter "appDisplayName EQ" StoreFrontStudio [wsfed engedélyezve] "" |
