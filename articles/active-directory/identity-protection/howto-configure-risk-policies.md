@@ -1,222 +1,163 @@
 ---
-title: Kockázati szabályzatainak konfigurálása az Azure Active Directory identity protection (frissítve) |} A Microsoft Docs
-description: Hogyan kockázati szabályzatainak konfigurálása az Azure Active Directory identity protection (frissítve).
+title: Kockázatkezelési szabályzatok konfigurálása Azure Active Directory Identity Protectionben (frissítve) | Microsoft Docs
+description: Kockázatkezelési szabályzatok konfigurálása Azure Active Directory Identity Protectionben (frissítve).
 services: active-directory
-keywords: az Azure active directory identity protection a következőket cloud app discovery szolgáltatást, alkalmazások, biztonság, kockázati, kockázati szint, biztonsági rést, biztonsági házirend kezelése
-documentationcenter: ''
-author: MicrosoftGuyJFlo
-manager: mtillman
-ms.assetid: e7434eeb-4e98-4b6b-a895-b5598a6cccf1
 ms.service: active-directory
 ms.subservice: identity-protection
-ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/07/2019
 ms.author: joflore
+author: MicrosoftGuyJFlo
+manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cc6f822f20da55488c559c081129c3f177367123
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9ce4e2958978de9339f4340755e3740730025a5f
+ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67108976"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68334029"
 ---
-# <a name="how-to-configure-risk-policies-in-azure-active-directory-identity-protection-refreshed"></a>kézikönyv: Kockázati szabályzatainak konfigurálása az Azure Active Directory identity protection (frissítve)
+# <a name="how-to-configure-risk-policies-in-azure-active-directory-identity-protection-refreshed"></a>kézikönyv: Kockázatkezelési szabályzatok konfigurálása Azure Active Directory Identity Protectionben (frissítve)
 
+Az Azure AD olyan kockázati eseményeket észlel, amelyek az esetlegesen feltört identitásokra mutató mutatók. A kockázati szabályzatok konfigurálásával automatizált válaszokat adhat meg az észlelési eredményekre:
 
-Az Azure AD észleli a kockázati események, amelyek vélhetően feltört identitásokat jelzőit. Kockázati szabályzatainak konfigurálásával meghatározhatja az automatikus válaszok az észlelés eredménye:
-
-- A bejelentkezési kockázati házirend konfigurálhatja a felhasználói bejelentkezés során észlelt valós idejű kockázati események választ. 
-- A felhasználói kockázati házirend minden aktív felhasználói kockázat, hogy egy felhasználó idővel észlelt válasz konfigurálhatja.  
+- A bejelentkezési kockázati házirenddel a felhasználók bejelentkezését követően észlelt valós idejű kockázati eseményekre adott válasz állítható be. 
+- A felhasználói kockázati házirend segítségével választ kaphat a felhasználó által az idő múlásával észlelt összes aktív felhasználói kockázatra.  
 
 > [!VIDEO https://www.youtube.com/embed/zEsbbik-BTE]
 
+## <a name="what-is-the-sign-in-risk-policy"></a>Mi a bejelentkezési kockázati házirend?
 
-## <a name="what-is-the-sign-in-risk-policy"></a>Mi az a bejelentkezési kockázati házirend?
+Az Azure AD elemzi a felhasználók minden egyes bejelentkezését. Az elemzés célja, hogy észlelje a bejelentkezéshez kapcsolódó gyanús műveleteket. Például a bejelentkezés névtelen IP-cím használatával történik, vagy ismeretlen helyről kezdeményezett bejelentkezés? Az Azure AD-ben a rendszer által észlelt gyanús műveletek is ismert kockázati események. A bejelentkezés során észlelt kockázati események alapján az Azure AD kiszámítja az értéket. Az érték azt a valószínűséget (alacsony, közepes, magas) jelöli, amelyet a bejelentkezés nem a legitim felhasználó hajt végre. A valószínűség neve **bejelentkezési kockázati szint**.
 
-Azure ad-ben elemzi az egyes bejelentkezési felhasználói. Az elemzés célja, észleli a gyanús tevékenységeket és a bejelentkezési származnak. Ha például a bejelentkezési kész névtelen IP-cím használatával, vagy egy ismeretlen helyről kezdeményezett bejelentkezési? Az Azure ad-ben a rendszer képes észlelni a gyanús tevékenységeket is ismertek kockázati események. A kockázati események, amely az észlelt a bejelentkezés során, az Azure AD kiszámítja egy érték alapján. Az érték a valószínűség (alacsony, közepes, magas), hogy a bejelentkezés nem történik meg a jogos felhasználója jelöli. A neve annak a valószínűsége **bejelentkezési kockázati szint**.
+A bejelentkezési kockázati szabályzat egy adott bejelentkezési kockázati szinthez beállítható automatizált válasz. Válaszában letilthatja az erőforrásokhoz való hozzáférést, vagy megkövetelheti a többtényezős hitelesítés (MFA) kihívásának elérését.
 
-A bejelentkezési kockázati házirend egy automatikus válasz egy konkrét bejelentkezési kockázati szint konfigurálható. A válaszban az erőforrásokhoz való hozzáférés letiltása, vagy átadja a többtényezős hitelesítés (MFA) kihívást eléréséhez szükséges.
+Amikor egy felhasználó sikeresen befejezte a bejelentkezési kockázati házirend által aktivált MFA-kérést, visszajelzést küld az Identity Protectionnek, hogy a bejelentkezés a legitim felhasználótól származik. Így az MFA-kérést kiváltó bejelentkezési kockázati esemény automatikusan be lesz zárva, és az Identity Protection megakadályozza, hogy ez az esemény hozzájáruljon a felhasználói kockázat megszerzéséhez. A bejelentkezési kockázati házirend engedélyezése csökkentheti a kockázatos bejelentkezések noisiness, mivel lehetővé teszi a felhasználók számára, hogy az MFA-ra való felszólításkor és a kapcsolódó kockázatos bejelentkezést követően automatikusan lezárja a felhasználókat.
 
-Amikor egy felhasználó sikeresen elvégzi az MFA-kérést a bejelentkezési kockázati szabályzat által aktivált, Identity Protection által a bejelentkezéshez származik-e a megbízható felhasználói visszajelzéseket biztosít. Így a bejelentkezési kockázati esemény, amely kiváltotta a többtényezős hitelesítés használatával automatikusan lezárul, és Identity Protection megakadályozza, hogy ez az esemény hozzájárul a jogok kiterjesztését felhasználó kockázati. A bejelentkezési kockázati házirend engedélyezése csökkentheti a kockázatos bejelentkezések nézetben noisiness önálló javítása, amikor a rendszer kéri a multi-factor Authentication a felhasználók, és ezt követően automatikusan bezárja a társított kockázatos bejelentkezés.
-
-## <a name="how-do-i-access-the-sign-in-risk-policy"></a>Hogyan érhetem el a bejelentkezési kockázati házirend?
+## <a name="how-do-i-access-the-sign-in-risk-policy"></a>Hogyan hozzáférni a bejelentkezési kockázati szabályzathoz?
    
-A bejelentkezési kockázati házirend van a **konfigurálása** szakaszában a [Azure AD Identity Protection lapról](https://portal.azure.com/#blade/Microsoft_AAD_ProtectionCenter/IdentitySecurityDashboardMenuBlade/SignInPolicy).
+A bejelentkezési kockázati házirend a [Azure ad Identity Protection lap](https://portal.azure.com/#blade/Microsoft_AAD_ProtectionCenter/IdentitySecurityDashboardMenuBlade/SignInPolicy) **Konfigurálás** szakaszában található.
    
-![Bejelentkezési kockázati házirend](./media/howto-configure-risk-policies/1014.png "bejelentkezési kockázati házirend")
+![Bejelentkezési kockázati házirend](./media/howto-configure-risk-policies/1014.png "Bejelentkezési kockázati házirend")
 
+## <a name="sign-in-risk-policy-settings"></a>Bejelentkezési kockázati házirend beállításai
 
-## <a name="sign-in-risk-policy-settings"></a>Bejelentkezési kockázati házirend-beállítások
+A bejelentkezési kockázati házirend konfigurálásakor a következőket kell megadnia:
 
-A bejelentkezési kockázati házirend konfigurálásakor kell beállítani:
+- Azok a felhasználók és csoportok, amelyekre a szabályzat vonatkozik:
 
-- A felhasználók és csoportok, a szabályzat vonatkozik:
+   ![Felhasználók és csoportok](./media/howto-configure-risk-policies/11.png)
 
-    ![Felhasználók és csoportok](./media/howto-configure-risk-policies/11.png)
+- A házirendet kiváltó bejelentkezési kockázati szint:
 
-- A bejelentkezési kockázati szintet, amely elindítja a szabályzat:
+   ![Bejelentkezés kockázati szintje](./media/howto-configure-risk-policies/12.png)
 
-    ![Bejelentkezési kockázati szint](./media/howto-configure-risk-policies/12.png)
+- A bejelentkezési kockázati szint teljesülése esetén érvényesíteni kívánt hozzáférés típusa:  
 
-- Milyen típusú hozzáférést szeretne kényszeríti ki a bejelentkezési kockázati szint teljesülésekor:  
+   ![Access](./media/howto-configure-risk-policies/13.png)
 
-    ![Access](./media/howto-configure-risk-policies/13.png)
+- A szabályzat állapota:
 
-- A szabályzat állapotát:
+   ![Szabályzat érvénybe léptetése](./media/howto-configure-risk-policies/14.png)
 
-    ![Szabályzat kényszerítése](./media/howto-configure-risk-policies/14.png)
-
-
-A szabályzat konfigurációs párbeszédpanel újrakonfigurálás hatásának megbecsüléséhez lehetőséget biztosít.
+A házirend konfigurálása párbeszédpanelen lehetősége van az újrakonfigurálás hatásának becslésére.
 
 ![Becsült hatás](./media/howto-configure-risk-policies/15.png)
 
-## <a name="what-you-should-know-about-sign-in-risk-policies"></a>Mit kell tudni a bejelentkezési kockázati házirend
+## <a name="what-you-should-know-about-sign-in-risk-policies"></a>Tudnivalók a bejelentkezési kockázati házirendekről
 
-Konfigurálhatja a bejelentkezési kockázat biztonsági házirend többtényezős hitelesítés megkövetelése:
+A bejelentkezési kockázatokra vonatkozó biztonsági szabályzatot az MFA megköveteléséhez is konfigurálhatja:
 
 ![MFA megkövetelése](./media/howto-configure-risk-policies/16.png)
 
-Azonban biztonsági okokból a beállítás csak akkor működik, amely a multi-factor Authentication regisztrált felhasználók számára. Identity protection a többtényezős hitelesítés követelménye rendelkező felhasználók letiltja a nem regisztrált multi-factor Authentication még.
+Biztonsági okokból azonban ez a beállítás csak olyan felhasználók esetében működik, akik már regisztráltak az MFA-hoz. Az Identity Protection az MFA-követelményekkel rendelkező felhasználókat blokkolja, ha még nincsenek regisztrálva az MFA-ban.
 
-Ha azt szeretné, a többtényezős hitelesítés megkövetelése a kockázatos bejelentkezések, a következőket kell elvégeznie:
+Ha a kockázatos bejelentkezésekhez az MFA-t szeretné megkövetelni, a következőket kell tennie:
 
-1. Az érintett felhasználók a többtényezős hitelesítési regisztrációs házirend engedélyezése.
+1. Engedélyezze a multi-Factor Authentication regisztrációs szabályzatot az érintett felhasználók számára.
+2. Annak megkövetelése, hogy az érintett felhasználók nem kockázatos munkamenetben jelentkezzenek be MFA-regisztráció elvégzéséhez.
 
-2. Az érintett felhasználók a bejelentkezéshez szükséges az MFA-regisztráció végrehajtásához nem kockázatos munkamenetben.
+A lépések elvégzésével biztosíthatja, hogy a többtényezős hitelesítésre van szükség a kockázatos bejelentkezéshez.
 
-Ezen lépések elvégzése biztosítja, hogy a többtényezős hitelesítés szükséges a kockázatos bejelentkezés.
+A bejelentkezési kockázati szabályzat a következőket eredményezi:
 
-A bejelentkezési kockázati házirend van:
+- A rendszer az összes böngésző-forgalomra és bejelentkezésre alkalmazza a modern hitelesítést használva.
+- Nem lett alkalmazva a régebbi biztonsági protokollokat használó alkalmazásokra, ha letiltja a WS-Trust végpontot az összevont IDENTITÁSSZOLGÁLTATÓ, például az ADFS-t.
 
-- Böngésző forgalom és a modern hitelesítést használó bejelentkezések alkalmazza.
+A kapcsolódó felhasználói élmény áttekintését lásd:
 
-- Tiltsa le a WS-Trust végpont a következő az összevont Identitásszolgáltató, például az AD FS korábbi biztonsági protokollokat használó alkalmazások nem alkalmazza.
+* [Kockázatos bejelentkezések helyreállítása](flows.md#risky-sign-in-recovery)
+* [Kockázatos bejelentkezés letiltva](flows.md#risky-sign-in-blocked)  
+* [Bejelentkezési élmény Azure AD Identity Protection](flows.md)  
 
+## <a name="what-is-a-user-risk-policy"></a>Mi az a felhasználói kockázati házirend?
 
-A kapcsolódó felhasználói szolgáltatások áttekintését lásd:
+Az Azure AD elemzi a felhasználók minden egyes bejelentkezését. Az elemzés célja, hogy észlelje a bejelentkezéshez kapcsolódó gyanús műveleteket. Az Azure AD-ben a rendszer által észlelt gyanús műveletek is ismert kockázati események. Néhány kockázati eseményt valós időben lehet észlelni, több időt igénylő kockázati események is vannak. Ha például szokatlan helyekre való lehetetlen utazást szeretne felderíteni, a rendszernek egy 14 napos kezdeti tanulási időszakot kell megadnia a felhasználó szokásos működésének megismeréséhez. Több lehetőség is van az észlelt kockázati események feloldására. Például az egyes kockázati események manuálisan is feloldhatók, vagy a bejelentkezési kockázat vagy a felhasználói kockázat feltételes hozzáférési szabályzata alapján megoldhatók.
 
-* [Kockázatos bejelentkezési helyreállítási](flows.md#risky-sign-in-recovery)
-* [Kockázatos bejelentkezés blokkolva](flows.md#risky-sign-in-blocked)  
-* [Az Azure AD Identity Protection a bejelentkezési élmény](flows.md)  
+A felhasználó számára észlelt és nem feloldott összes kockázati eseményt aktív kockázati eseménynek nevezzük. A felhasználóhoz társított aktív kockázati eseményeket felhasználói kockázatnak nevezzük. A felhasználói kockázat alapján az Azure AD kiszámítja azt a valószínűséget (alacsony, közepes, magas), amelyet a felhasználó feltört. A valószínűség neve felhasználói kockázati szint.
 
+![Felhasználói kockázatok](./media/howto-configure-risk-policies/11031.png)
 
+A felhasználói kockázati házirend egy adott felhasználói kockázati szinthez beállítható automatizált válasz. A felhasználói kockázati házirend segítségével letilthatja a hozzáférést az erőforrásokhoz, vagy jelszó-módosítást igényelhet a felhasználói fiók tiszta állapotba való visszaállításához.
 
-
-
-
-
-
-
-## <a name="what-is-a-user-risk-policy"></a>Mi az felhasználói kockázati házirendet?
-
-Azure ad-ben elemzi az egyes bejelentkezési felhasználói. Az elemzés célja, észleli a gyanús tevékenységeket és a bejelentkezési származnak. Az Azure ad-ben a rendszer képes észlelni a gyanús tevékenységeket is ismertek kockázati események. Miközben néhány kockázati események valós idejű észlelése, még nincsenek több időt igénylő kockázati események. Például egy bejelentkezés szokatlan helyekről való lehetetlen utazás észlelése, a rendszer egy normál felhasználói viselkedés megismeréséhez 14 napos betanulási időszakra igényel. Többféle módon oldja meg az észlelt kockázati eseményeket. Például egyes kockázati események manuális oldható meg, vagy megtekintheti a bejelentkezési kockázat vagy egy felhasználói kockázat feltételes hozzáférési szabályzat használatával oldja fel őket.
-
-Az összes kockázati események, amelyek az észlelt felhasználó számára, és nem megfogalmazott aktív kockázati események nevezzük. Az aktív kockázati események, amelyek a felhasználóval társított felhasználói kockázat nevezzük. A felhasználói kockázat alapján, az Azure ad-ben a valószínűség (alacsony, közepes, magas), hogy feltörték-e egy felhasználó számítja ki. A valószínűsége annak a felhasználói kockázati szint neve.
-
-![Felhasználói kockázat](./media/howto-configure-risk-policies/11031.png)
-
-A felhasználói kockázati házirend egy automatikus válasz konfigurálhatja egy adott felhasználói kockázati szint. Felhasználói kockázati házirendet az erőforrásokhoz való hozzáférés letiltása, vagy egy felhasználói fiók visszaszerzéséhez tiszta állapotot jelszómódosítás megkövetelése.
-
-
-## <a name="how-do-i-access-the-user-risk-policy"></a>Hogyan férhetek hozzá a felhasználói kockázati házirend?
+## <a name="how-do-i-access-the-user-risk-policy"></a>Hogyan hozzáférni a felhasználói kockázati házirendhez?
    
-A felhasználói kockázati házirend szerepel a **konfigurálása** szakaszában a [Azure AD Identity Protection lapról](https://portal.azure.com/#blade/Microsoft_AAD_ProtectionCenter/IdentitySecurityDashboardMenuBlade/SignInPolicy).
+A felhasználói kockázati házirend a [Azure ad Identity Protection lap](https://portal.azure.com/#blade/Microsoft_AAD_ProtectionCenter/IdentitySecurityDashboardMenuBlade/SignInPolicy) **configure (Konfigurálás** ) szakaszában található.
    
 ![Felhasználói kockázati házirend](./media/howto-configure-risk-policies/11014.png)
 
+## <a name="user-risk-policy-settings"></a>Felhasználói kockázati házirend beállításai
 
+A felhasználói kockázati házirend konfigurálásakor a következőket kell megadnia:
 
-## <a name="user-risk-policy-settings"></a>Felhasználói kockázati házirend-beállítások
+- Azok a felhasználók és csoportok, amelyekre a szabályzat vonatkozik:
 
-A felhasználói kockázati házirend konfigurálásakor kell beállítani:
+   ![Felhasználók és csoportok](./media/howto-configure-risk-policies/111.png)
 
-- A felhasználók és csoportok, a szabályzat vonatkozik:
+- A házirendet kiváltó bejelentkezési kockázati szint:
 
-    ![Felhasználók és csoportok](./media/howto-configure-risk-policies/111.png)
+   ![Felhasználói kockázati szint](./media/howto-configure-risk-policies/112.png)
 
-- A bejelentkezési kockázati szintet, amely elindítja a szabályzat:
+- A bejelentkezési kockázati szint teljesülése esetén érvényesíteni kívánt hozzáférés típusa:  
 
-    ![Felhasználói kockázati szint](./media/howto-configure-risk-policies/112.png)
+   ![Access](./media/howto-configure-risk-policies/113.png)
 
-- Milyen típusú hozzáférést szeretne kényszeríti ki a bejelentkezési kockázati szint teljesülésekor:  
+- A szabályzat állapota:
 
-    ![Access](./media/howto-configure-risk-policies/113.png)
+   ![Szabályzat érvénybe léptetése](./media/howto-configure-risk-policies/114.png)
 
-- A szabályzat állapotát:
-
-    ![Szabályzat kényszerítése](./media/howto-configure-risk-policies/114.png)
-
-A szabályzat konfigurációs párbeszédpanel a konfiguráció hatásának megbecsüléséhez lehetőséget biztosít.
+A házirend konfigurálása párbeszédpanelen lehetősége van a konfiguráció hatásának becslésére.
 
 ![Becsült hatás](./media/howto-configure-risk-policies/115.png)
 
-## <a name="what-you-should-know-about-user-risk-polices"></a>Mit kell tudni a felhasználói kockázat szabályzatok
+## <a name="what-you-should-know-about-user-risk-polices"></a>Tudnivalók a felhasználói kockázati házirendekről
 
-Biztonsági szabályzat felhasználói kockázat és bejelentkezési függően a kockázati szint esetén a felhasználók megadható.
+Megadhat egy felhasználói kockázati biztonsági házirendet, amely letiltja a felhasználók bejelentkezését a kockázati szinttől függően.
 
 ![Blokkolás](./media/howto-configure-risk-policies/116.png)
 
+Bejelentkezés letiltása:
 
-A bejelentkezés blokkolása:
-
-* Megakadályozza a létrehozását az új felhasználói kockázati események az érintett felhasználók
-* Lehetővé teszi a rendszergazdáknak manuálisan kockázatcsökkentési műveleteket az hatással lenne a felhasználó identitását, és állítsa vissza azt egy biztonságos állapotba
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+* Megakadályozza az új felhasználói kockázati események létrehozását az érintett felhasználó számára
+* Lehetővé teszi a rendszergazdáknak a felhasználó identitását befolyásoló kockázati események manuális szervizelését és biztonságos állapotba való visszaállítását.
 
 ## <a name="best-practices"></a>Ajánlott eljárások
 
-Kiválasztása egy **magas** küszöbérték csökkenti a szabályzat akkor aktiválódik, és minimalizálja a felhasználók számát.  
+A **magas** küszöbérték kiválasztása csökkenti a szabályzatok indításának számát, és minimálisra csökkenti a felhasználókra gyakorolt hatást.  
 
-Azonban nem tartalmazza **alacsony** és **Közepes** a szabályzatot, amely esetleg blokkolja egy támadó a sérült biztonságú identitás kihasználhassa a kockázatosként megjelölt bejelentkezések.
+Azonban nem zárja ki a kockázatnak kitett alacsony és **közepes** **szintű** bejelentkezéseket a szabályzatból, ami esetleg nem blokkolja a támadók számára a sérült identitások kihasználását.
 
-A házirend beállításakor
+A szabályzat beállításakor
 
-- Felhasználók, akik nem / nem lehet többtényezős hitelesítés kihagyása
+- A többtényezős hitelesítéssel nem rendelkező felhasználók kizárása
+- A területi beállításokban lévő felhasználók kizárása, ahol a szabályzat engedélyezése nem praktikus (például nem fér hozzá az ügyfélszolgálathoz)
+- Olyan felhasználók kizárása, akik valószínűleg sok hamis pozitívat (fejlesztőket, biztonsági elemzőket) hoznak
+- Használjon **magas** küszöbértéket a kezdeti házirend kiépítése során, vagy ha minimálisra kell csökkentenie a végfelhasználók által tapasztalt kihívásokat.
+- Ha a szervezet nagyobb biztonságot igényel, **alacsony** küszöbértéket használjon. Az **alacsony** küszöbérték kiválasztásával további felhasználói bejelentkezési kihívásokat is megadhat, de nagyobb biztonságot is jelent.
 
-- Zárja ki a területi beállításokat, amennyiben a szabályzat engedélyezése nem célszerű a felhasználók (például segélyszolgálat nincs hozzáférés)
-
-- Zárja ki a felhasználók, akik várhatóan sok vakriasztások (a fejlesztők, adatbiztonsági elemzők) létrehozása
-
-- Használja a **magas** küszöbérték kezdeti szabályzat bevezetés során, vagy ha kell minimálisra csökkenthető a végfelhasználók által látott kihívásokat.
-
-- Használja a **alacsony** küszöbértéket, ha a szervezet megköveteli a nagyobb biztonság. Válassza a **alacsony** küszöbérték vezet be a további felhasználói bejelentkezési kihívásokat, de a nagyobb biztonság.
-
-A legtöbb szervezet számára ajánlott alapértelmezés szerint a rendszer a szabály konfigurálása egy **Közepes** küszöbérték egyensúlyozni használhatósági és a biztonság között.
-
-
-
-
+A legtöbb szervezet számára ajánlott alapértelmezett beállítás egy **közepes** küszöbértékre vonatkozó szabály konfigurálása, amely egyensúlyt teremt a használhatóság és a biztonság között.
 
 ## <a name="next-steps"></a>További lépések
 
- [Channel 9-on: Az Azure AD és az identitás megjelenítése: Identity Protection előzetes verziója](https://channel9.msdn.com/Series/Azure-AD-Identity/Azure-AD-and-Identity-Show-Identity-Protection-Preview)
-
+ [Channel 9: Azure AD-és identitás-megjelenítés: Identity Protection – előzetes verzió](https://channel9.msdn.com/Series/Azure-AD-Identity/Azure-AD-and-Identity-Show-Identity-Protection-Preview)

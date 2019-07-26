@@ -1,6 +1,6 @@
 ---
-title: MSAL.js és ADAL.js közötti különbségek |} Az Azure
-description: További információ a JavaScript (MSAL.js) és az Azure AD Authentication Library for JavaScript (ADAL.js) és a kiválasztása, hogy melyiket kívánja használni a Microsoft-hitelesítési tár közötti különbségeket.
+title: A MSAL. js és a ADAL. js közötti különbségek | Azure
+description: Ismerje meg a Microsoft Authentication Library for JavaScript (MSAL. js) és az Azure AD Authentication Library for JavaScript (ADAL. js) közötti különbségeket, valamint azt, hogy melyiket válassza ki.
 services: active-directory
 documentationcenter: dev-center-name
 author: navyasric
@@ -17,55 +17,55 @@ ms.author: nacanuma
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 10b5169d3f06e265b3effa3ec18ad8e4f69959d3
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: 328db116cebda5eb288f04cc89e2c85550c38083
+ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66121958"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68421194"
 ---
-# <a name="differences-between-msal-js-and-adal-js"></a>Az MSAL JS és ADAL JS közötti különbségek
+# <a name="differences-between-msal-js-and-adal-js"></a>A MSAL JS és a ADAL JS közötti különbségek
 
-A Microsoft Authentication Library for JavaScript rendszerhez (MSAL.js) és az Azure AD Authentication Library for JavaScript (ADAL.js) is szolgálnak jogkivonatokat kérhet az Azure AD és az Azure AD-entitások hitelesítéséhez. Eddig nagyon a legtöbb fejlesztő már használta az Azure ad-ben (munkahelyi és iskolai fiókok esetében) az Azure AD-identitások hitelesítésére adal-t használó tokenek igénylésével (1.0-s verzió) fejlesztők számára. Most MSAL.js használatával, hitelesítheti a Microsoft identitások (Azure AD-identitások és a Microsoft-fiókok és közösségi és a helyi fiókok Azure AD B2C segítségével) a Microsoft identity platform (2.0-s verzió) révén szélesebb készletét használja.
+A javascripthez készült Microsoft Authentication Library (MSAL. js) és az Azure AD Authentication Library for JavaScript (ADAL. js) is használható az Azure AD-entitások hitelesítésére és az Azure AD-jogkivonatok igénylésére. Eddig a legtöbb fejlesztő dolgozott együtt az Azure ad for Developers (v 1.0) használatával az Azure AD-identitások (munkahelyi és iskolai fiókok) hitelesítéséhez a ADAL-t használó jogkivonatok igénylésével. Mostantól a MSAL. js használatával a Microsoft Identity platform (v 2.0) segítségével a Microsoft-identitások (Azure AD-identitások és Microsoft-fiókok, valamint közösségi és helyi Azure AD B2C fiókok) szélesebb körét is hitelesítheti.
 
-Ez a cikk ismerteti, hogyan lehet a Microsoft-hitelesítési tár (MSAL.js) JavaScript- és az Azure AD Authentication Library for JavaScript (ADAL.js) közül választhat, és összehasonlítja a két kódtárakat.
+Ez a cikk a javascripthez készült Microsoft Authentication Library (MSAL. js) és az Azure AD Authentication Library for JavaScript (ADAL. js) közötti választást ismerteti, és összehasonlítja a két könyvtárat.
 
-## <a name="choosing-between-adaljs-and-msaljs"></a>ADAL.js és az MSAL.js közötti választáshoz
+## <a name="choosing-between-adaljs-and-msaljs"></a>Kiválasztás a ADAL. js és a MSAL. js között
 
-A legtöbb esetben a Microsoft identity platform és az MSAL.js használni kívánt azaz a Microsoft hitelesítési kódtárainak legújabb generációja. MSAL.js használatával, akkor szerzi be a jogkivonatokat a felhasználók számára a bejelentkezés az alkalmazásba az Azure ad-ben (munkahelyi és iskolai fiókok esetében), a Microsoft (személyes) fiókok (MSA), vagy az Azure AD B2C-t.
+A legtöbb esetben a Microsoft Identity platformot és a MSAL. js fájlt szeretné használni, amely a Microsoft hitelesítési kódtárainak legújabb generációja. A MSAL. js használatával az Azure AD-vel (munkahelyi és iskolai fiókokkal), a Microsoft (személyes) fiókokkal (MSA) vagy a Azure AD B2Cekkel bejelentkezett felhasználók számára tokeneket kell beszerezni az alkalmazásba.
 
-Már ismeri az 1.0-s verziójú végpont (és a ADAL.js), előfordulhat, hogy szeretné-e olvasni [Mi a v2.0-végpont?](active-directory-v2-compare.md).
+Ha már ismeri a v 1.0-végpontot (és a ADAL. js fájlt), érdemes elolvasnia, hogy [Mi a különbség a v 2.0-végpontról?](active-directory-v2-compare.md).
 
-Azonban továbbra is szeretné használni a ADAL.js, ha az alkalmazásnak a felhasználók a korábbi [Active Directory összevonási szolgáltatások (ADFS)](/windows-server/identity/active-directory-federation-services).
+Azonban továbbra is a ADAL. js fájlt kell használnia, ha az alkalmazásnak a [Active Directory összevonási szolgáltatások (AD FS) (ADFS)](/windows-server/identity/active-directory-federation-services)korábbi verzióival kell bejelentkeznie a felhasználókba.
 
-## <a name="key-differences-in-authentication-with-msaljs"></a>Hitelesítés az MSAL.js fontos eltérés
+## <a name="key-differences-in-authentication-with-msaljs"></a>A MSAL. js-sel való hitelesítés főbb eltérései
 
-### <a name="core-api"></a>Core API
+### <a name="core-api"></a>Alapszintű API
 
-* ADAL.js használ [AuthenticationContext](https://github.com/AzureAD/azure-activedirectory-library-for-js/wiki/Config-authentication-context#authenticationcontext) , az alkalmazás által létesített kapcsolatban identitásszolgáltató keresztül-szolgáltató URL-CÍMÉT vagy az engedélyezési kiszolgáló példányának reprezentációja. Ezzel szemben, MSAL.js API a felhasználói ügynök ügyfélalkalmazás köré (nyilvános, amelyben az Ügyfélkód hajtja végre a felhasználó például egy webes böngésző ügynök egy ügyfélalkalmazás egy űrlap). Biztosítja a `UserAgentApplication` osztály egy példányát az alkalmazás hitelesítési környezetet az engedélyezési kiszolgálón jelölésére. További részletekért lásd: [inicializálása MSAL.js használatával](msal-js-initializing-client-applications.md).
+* A ADAL. js a [AuthenticationContext](https://github.com/AzureAD/azure-activedirectory-library-for-js/wiki/Config-authentication-context#authenticationcontext) -t használja az alkalmazás egy példányának az engedélyezési kiszolgálóhoz vagy az identitás-szolgáltatóhoz való ábrázolásához egy szolgáltatói URL-címen keresztül. Éppen ellenkezőleg, a MSAL. js API-t a felhasználói ügynök ügyfélalkalmazás (a nyilvános ügyfélalkalmazás olyan formája) alapján tervezték meg, amelyben az ügyfél kódját egy felhasználói ügynök, például egy webböngésző hajtja végre. Ez biztosítja azt `UserAgentApplication` az osztályt, amely az alkalmazás hitelesítési környezetének egy példányát jelöli az engedélyezési kiszolgálóval. További részletek: inicializálás a [MSAL. js használatával](msal-js-initializing-client-applications.md).
 
-* A ADAL.js, a jogkivonatok beszerzéséhez módszerek hozzárendelve egyetlen hatóság beállítása az a `AuthenticationContext`. MSAL.js, a beolvasási jogkivonat-kérelmeket időt is igénybe vehet, mi van beállítva, másik szolgáltató értékeket a `UserAgentApplication`. Ez lehetővé teszi az MSAL.js beszerezni, és a jogkivonatok külön-külön gyorsítótár több bérlők és felhasználói fiókok ugyanabban az alkalmazásban.
+* A ADAL. js fájlban a jogkivonatok beszerzésének módszerei társítva vannak egy, a `AuthenticationContext`alkalmazásban beállított egyetlen szolgáltatóhoz. A MSAL. js fájlban a jogkivonatok beszerzésére irányuló kérések eltérő jogosultságokat hozhatnak létre, mint a `UserAgentApplication`. Ez lehetővé teszi a MSAL. js számára a tokenek beszerzését és gyorsítótárazását ugyanazon alkalmazás több bérlője és felhasználói fiókja számára.
 
-* A módszert szeretné beszerezni és a felhasználó értesítése nélkül csendes újítsa meg a jogkivonatok nevű `acquireToken` ADAL.js a. MSAL.js, ez a módszer neve `acquireTokenSilent` a funkció kifejezőbb is.
+* A tokenek csendes beszerzésének és megújításának módszere a felhasználók `acquireToken` értesítése nélkül, a ADAL. js fájlban. A MSAL. js fájlban ezt a metódust `acquireTokenSilent` úgy kell megnevezni, hogy az a funkció részletesebb leírását adja.
 
-### <a name="authority-value-common"></a>Szolgáltató érték `common`
+### <a name="authority-value-common"></a>Hitelesítésszolgáltató értéke`common`
 
-Az 1.0-s verziójú használja a `https://login.microsoftonline.com/common` szolgáltató lehetővé teszi a felhasználók számára, hogy jelentkezzen be minden olyan Azure AD-fiókot (bármely szervezet).
+A 2.0-s verzióban `https://login.microsoftonline.com/common` a szolgáltató használatával a felhasználók bármely Azure ad-fiókkal bejelentkezhetnek (bármely szervezet esetében).
 
-A 2.0-s verziójú használja a `https://login.microsoftonline.com/common` szolgáltatóként, lehetővé teszi a felhasználók számára történő bejelentkezést bármely szervezet Azure AD-fiókot vagy egy személyes Microsoft-fiókkal (MSA). Csak a bejelentkezési csak az Azure AD-fiókok (ugyanez a viselkedés, a ADAL.js), kell használnia `https://login.microsoftonline.com/organizations`. További információkért lásd: a `authority` konfigurációs lehetőség [inicializálása MSAL.js használatával](msal-js-initializing-client-applications.md).
+A 2.0-s verziójában `https://login.microsoftonline.com/common` a szolgáltató lehetővé teszi, hogy a felhasználók bármely Azure ad-szervezeti fiókkal vagy egy személyes Microsoft-fiókkal (MSA) jelentkezzenek be. Ha a bejelentkezést csak az Azure AD-fiókokra kívánja korlátozni (ugyanúgy, mint a ADAL. js- `https://login.microsoftonline.com/organizations`hez), akkor a-t kell használnia. Részletekért tekintse meg `authority` az inicializálás konfigurációs beállítását a [MSAL. js használatával](msal-js-initializing-client-applications.md).
 
-### <a name="scopes-for-acquiring-tokens"></a>Hatókör-jogkivonatok beszerzésének
-* Hatókör-resource paramétert a hitelesítési kérések jogkivonatok beszerzésére helyett
+### <a name="scopes-for-acquiring-tokens"></a>Jogkivonatok beszerzésének hatókörei
+* A tokenek beszerzésére irányuló hitelesítési kérelmekben szereplő erőforrás-paraméter helyett a hatókör
 
-    v2.0 protokoll helyett erőforrás felé küldött kérésekben a hatóköröket. Más szóval az alkalmazásnak kell egy erőforrás, például az MS Graph engedélyekkel rendelkező jogkivonatokat kérhet, amikor a különbség a hitelesítésikönyvtár-metódusok átadott értékek a következőképpen történik:
+    a v 2.0 protokoll hatóköröket használ a kérelmekben lévő erőforrások helyett. Más szóval, amikor az alkalmazásnak olyan jogkivonatokat kell igényelnie, amelyekhez engedélyek szükségesek egy adott erőforráshoz (például MS Graph), a függvénytár-metódusoknak átadott értékek különbsége a következő:
 
-    1.0-s verzió: erőforrás =https://graph.microsoft.com
+    1\.0-s verzió: erőforrás\:= HTTPS//Graph.microsoft.com
 
-    2.0-s verzió: hatókör = https://graph.microsoft.com/User.Read
+    v 2.0: hatókör = HTTPS\://Graph.microsoft.com/user.Read
 
-    Kérheti, hogy valamelyik erőforrás URI-ját az API-t használja a következő formátumban API hatóköreinek: appidURI/hatókörben, például: https:\//mytenant.onmicrosoft.com/myapi/api.read
+    Az API URI-ja használatával bármilyen erőforrás-API-ra kérhet hatóköröket az alábbi formátumban: appidURI/scope például: https:\//mytenant.onmicrosoft.com/myapi/API.Read
 
-    Az MS Graph API, a hatókör értéke csak a `user.read` képez le https://graph.microsoft.com/User.Read és felcserélhetők.
+    Csak az MS Graph API esetében a hatókör-érték `user.read` https://graph.microsoft.com/User.Read leképezése a következőre:, és használható szinonimaként.
 
     ```javascript
     var request = {
@@ -75,9 +75,9 @@ A 2.0-s verziójú használja a `https://login.microsoftonline.com/common` szolg
     acquireTokenPopup(request);   
     ```
 
-* A hatókörök dinamikus növekményes beleegyezést.
+* Dinamikus hatókörök a növekményes belehozatalhoz.
 
-    1.0-s verziójú használó alkalmazások létrehozását, akkor a teljes körű engedélyeket (statikus hatóköröket), hogy engedélyt adjanak az bejelentkezés alkalmával a felhasználó az alkalmazás által igényelt regisztrációjához szükséges. A 2.0-s verziójú a hatókör-paramétert használhatja, ha az engedélyek kéréséhez a időpontban szeretné azokat. Ezek az úgynevezett dinamikus hatókörök. Ez lehetővé teszi a felhasználónak meg kell adnia a hatókörök növekményes hozzájárulást. Ezért ha elején szeretne a felhasználót, hogy jelentkezzen be az alkalmazást, és nincs szükség bármilyen hozzáférés, megteheti. Ha később kell tudnia kell olvasni a felhasználó a naptár, a naptár hatókör acquireToken módszerek kérelem és a felhasználó beleegyezését kérő. Példa:
+    Ha a 1.0-s verzióval hoz létre alkalmazásokat, regisztrálnia kell az alkalmazás által a bejelentkezéskor a felhasználó számára szükséges engedélyek (statikus hatókörök) teljes készletét. A 2.0-s verzióban a hatókör paraméterrel kérheti le az engedélyeket a kívánt időpontban. Ezeket dinamikus hatóköröknek nevezzük. Ez lehetővé teszi, hogy a felhasználó növekményes beleegyezett a hatókörökbe. Tehát ha az elején csak azt szeretné, hogy a felhasználó bejelentkezzen az alkalmazásba, és nincs szüksége semmilyen hozzáférésre, ezt megteheti. Ha később szükség van a felhasználó naptárának olvasására, a acquireToken metódusokban kérheti le a naptár hatókörét, és beolvashatja a felhasználó belefoglalását. Példa:
 
     ```javascript
     var request = {
@@ -87,9 +87,9 @@ A 2.0-s verziójú használja a `https://login.microsoftonline.com/common` szolg
     acquireTokenPopup(request);   
     ```
 
-* Az 1.0-s verziójú API-k hatókörök
+* Hatókörök a V 1.0 API-khoz
 
-    Amikor MSAL.js használatával 1.0-s verziójú API-jogkivonatok lekérésének lépéseiről, kérheti a hozzáfűzésével az API-t regisztrált összes statikus hatókör `.default` , az Alkalmazásazonosító URI-t az API hatóköreként. Példa:
+    Ha a MSAL. js használatával a v 1.0 API-kra vonatkozó jogkivonatokat kap, akkor az API-ban regisztrált összes statikus hatókört az API hatókörként `.default` való hozzáfűzésével kérheti le. Példa:
 
     ```javascript
     var request = {
@@ -100,4 +100,4 @@ A 2.0-s verziójú használja a `https://login.microsoftonline.com/common` szolg
     ```
 
 ## <a name="next-steps"></a>További lépések
-További információkért tekintse meg [1.0-s és 2.0-s verzió összehasonlítása](active-directory-v2-compare.md).
+További információkért tekintse meg a [1.0-s és a 2.0-s verzió összehasonlítását](active-directory-v2-compare.md)ismertető témakört.

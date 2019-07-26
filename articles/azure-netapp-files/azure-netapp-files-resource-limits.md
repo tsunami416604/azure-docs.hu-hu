@@ -1,6 +1,6 @@
 ---
-title: Erőforráskorlátok NetApp Azure-fájlok |} A Microsoft Docs
-description: A NetApp fájlokat az Azure-erőforrások, többek között a NetApp fiókok, kapacitás készletek, kötetek, pillanatképeket és a delegált alhálózatra vonatkozó korlátok korlátozásait ismerteti.
+title: A Azure NetApp Files erőforrás-korlátai | Microsoft Docs
+description: A Azure NetApp Files erőforrások korlátozásait ismerteti, beleértve a NetApp-fiókok, a kapacitás-készletek, a kötetek, a pillanatképek és a delegált alhálózat korlátait.
 services: azure-netapp-files
 documentationcenter: ''
 author: b-juche
@@ -14,65 +14,65 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: b-juche
-ms.openlocfilehash: b55467d77beb8f97b8e392b72682268ae0407e54
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: fe8d46c897ef68563f2e0e5a1da106174ae504c5
+ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65826375"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68424085"
 ---
 # <a name="resource-limits-for-azure-netapp-files"></a>Az Azure NetApp Files erőforráskorlátai
 
-Erőforráskorlátok ismertetése a NetApp Azure-fájlok segítségével kezelheti a köteteket.
+A Azure NetApp Files erőforrás-korlátainak megismerése segíti a kötetek kezelését.
 
 ## <a name="resource-limits"></a>Erőforráskorlátok
 
-A következő táblázat ismerteti a erőforráskorlátok NetApp Azure-fájlok:
+Az alábbi táblázat a Azure NetApp Files erőforrás-korlátozásait ismerteti:
 
-|  Resource  |  Alapértelmezett korlát  |  Támogatási kérelem útján állítható  |
+|  Resource  |  Alapértelmezett korlát  |  A támogatási kérelem alapján állítható  |
 |----------------|---------------------|--------------------------------------|
-|  Azure-előfizetésenként NetApp fiókok száma   |  10    |  Igen   |
-|  NetApp fiókonként kapacitás készletek száma   |    25     |   Igen   |
-|  Kapacitás készletenként kötetek száma     |    500   |    Igen     |
-|  Kötetenként pillanatképek számát       |    255     |    Nem        |
-|  Delegálva az Azure NetApp fájlok (Microsoft.NetApp/volumes) az Azure virtuális hálózat / alhálózatok száma    |   1   |    Nem    |
-|  Virtuális gépek maximális száma (tartalmazza a virtuális társhálózatba tartozó virtuális hálózatok), amely kapcsolódhat egy kötet     |    1000   |    Nem   |
-|  Minimális méretének egyetlen kapacitás   |  4 TiB     |    Nem  |
-|  Egy egyetlen kapacitás a készlet maximális mérete    |  500 TiB   |   Nem   |
+|  Egy Azure-előfizetéshez tartozó NetApp-fiókok száma   |  10    |  Igen   |
+|  Kapacitási készletek száma NetApp-fiókban   |    25     |   Igen   |
+|  Kötetek száma kapacitási készlet szerint     |    500   |    Igen     |
+|  Pillanatképek másodpercenkénti száma       |    255     |    Nem        |
+|  Azure NetApp Files (Microsoft. NetApp/kötetek) számára az Azure-ban delegált alhálózatok száma Virtual Network    |   1   |    Nem    |
+|  A VNet használt IP-címek maximális száma (beleértve a virtuális hálózatok is) a következővel: Azure NetApp Files    |    1000   |    Nem   |
+|  Egyetlen kapacitású készlet minimális mérete   |  4 TiB     |    Nem  |
+|  Egyetlen kapacitású készlet maximális mérete    |  500 TiB   |   Nem   |
 |  Egyetlen kötet minimális mérete    |    100 GiB    |    Nem    |
-|  Maximális hozzárendelt kvóta egyetlen köteten *   |   92 TiB   |    Nem   |
-|  Egyetlen köteten * maximális mérete     |    100 TiB    |    Nem       |
+|  Egyetlen kötet maximálisan hozzárendelt kvótája *   |   92 TiB   |    Nem   |
+|  Egyetlen kötet maximális mérete *     |    100 TiB    |    Nem       |
 
-\* A kötet manuálisan létrehozott vagy átméretezett standardként 92 Tib-ra. Azonban a kötet legfeljebb 100 TiB-keretet túllépő forgatókönyvben növelhető. Lásd: [Azure NetApp fájlok költségmodell](azure-netapp-files-cost-model.md) kapacitás kerettúllépés részleteiért. 
+\* A köteteket manuálisan lehet létrehozni vagy átméretezni a maximális 92 TiB-ra. Egy kötet azonban akár 100 TiB-t is felhasználhat egy túlhasználatos forgatókönyvben. A kapacitás túlterhelésével kapcsolatos részletekért lásd: [Azure NetApp Files](azure-netapp-files-cost-model.md) . 
 
-## <a name="request-limit-increase"></a>Kérje a korlát növelését. 
+## <a name="request-limit-increase"></a>Kérelmek korlátjának növekedése 
 
-Létrehozhat egy Azure-támogatási kérést a fenti táblázatból állítható határértékek növelését. 
+Létrehozhat egy Azure-támogatási kérelmet, amellyel növelheti az állítható korlátokat a fenti táblázatból. 
 
-Az Azure portal navigációs felületben rejlő előnyöket: 
+Azure Portal navigációs síkon: 
 
-1. Kattintson a **súgó + támogatás**.
-2. Kattintson a **+ új támogatási kérelem**.
-3. Az alapismeretek lapon adja meg a következő információkat: 
-    1. Probléma típusa: Válassza ki **szolgáltatás és az előfizetések korlátai (kvóták)** .
-    2. Előfizetések: Válassza ki az előfizetést, az erőforrás kvótáját szükséges.
-    3. Kvóta típusa: Válassza ki **tároló: Korlátozza a NetApp Azure Files**.
-    4. Kattintson a **tovább: Megoldások**.
-4. A részletek lapon:
-    1. A Leírás mezőben adja meg a megfelelő erőforrás-típus a következő információkat:
+1. Kattintson a **Súgó és támogatás**elemre.
+2. Kattintson az **+ új támogatási kérelem**elemre.
+3. Az alapvető beállítások lapon adja meg a következő információkat: 
+    1. Probléma típusa: Válassza **a szolgáltatás-és előfizetési korlátok (kvóták)** lehetőséget.
+    2. Előfizetések: Válassza ki az erőforráshoz tartozó előfizetést, amelyre szüksége van a kvóta növeléséhez.
+    3. Kvóta típusa: Tároló **kiválasztása: Azure NetApp Files korlátok**.
+    4. Kattintson **a Tovább gombra: Megoldások**.
+4. A Részletek lapon:
+    1. A Leírás mezőben adja meg a következő információkat a megfelelő erőforrástípus számára:
 
-        |  Resource  |    Szülő erőforrások      |    A kért új korlátok     |    Kvótanövelést oka       |
+        |  Resource  |    Szülő erőforrások      |    Kért új korlátok     |    A kvóta növelésének oka       |
         |----------------|------------------------------|---------------------------------|------------------------------------------|
-        |  Fiók |  *előfizetés-azonosító*   |  *Kért új maximális **fiók** száma*    |  *Milyen forgatókönyvet vagy használati eset kéri a kérelmet?*  |
-        |  Készlet    |  *Előfizetés-azonosító, a fiók URI*  |  *Kért új maximális **készlet** száma*   |  *Milyen forgatókönyvet vagy használati eset kéri a kérelmet?*  |
-        |  Kötet  |  *Előfizetés-azonosító, a fiók URI-t, készlet URI*   |  *Kért új maximális **kötet** száma*     |  *Milyen forgatókönyvet vagy használati eset kéri a kérelmet?*  |
+        |  Fiók |  *Előfizetés azonosítója*   |  *Kért új maximális **fiók** száma*    |  *Milyen forgatókönyv vagy használati eset kéri a kérést?*  |
+        |  Készlet    |  *Előfizetés azonosítója, fiók URI azonosítója*  |  *Kért új **készlet** maximális száma*   |  *Milyen forgatókönyv vagy használati eset kéri a kérést?*  |
+        |  Kötet  |  *Előfizetés azonosítója, fiók URI azonosítója, készlet URI azonosítója*   |  *Kért új maximális **kötet** száma*     |  *Milyen forgatókönyv vagy használati eset kéri a kérést?*  |
 
-    2. Adja meg a megfelelő módszert támogatja, és adja meg a szerződés adatait.
+    2. Adja meg a megfelelő támogatási módszert, és adja meg a szerződésre vonatkozó információkat.
 
-    3. Kattintson a **tovább: Felülvizsgálat + létrehozás** a kérelem létrehozásához. 
+    3. Kattintson **a Tovább gombra: A kérelem létrehozásához tekintse át a + létrehozás** lehetőséget. 
 
 
 ## <a name="next-steps"></a>További lépések  
 
-- [Megismerheti a NetApp Azure-fájlok hierarchiája](azure-netapp-files-understand-storage-hierarchy.md)
-- [Azure NetApp fájlok költségű modell](azure-netapp-files-cost-model.md)
+- [A Azure NetApp Files tárolási hierarchiájának megismerése](azure-netapp-files-understand-storage-hierarchy.md)
+- [Azure NetApp Filesi Cost Model](azure-netapp-files-cost-model.md)

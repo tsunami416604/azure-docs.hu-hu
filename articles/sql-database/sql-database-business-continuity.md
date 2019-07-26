@@ -13,12 +13,12 @@ ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
 ms.date: 06/25/2019
-ms.openlocfilehash: 26b31781ae0056999eb222981b2eea3eb4595041
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
+ms.openlocfilehash: 361613c52c00b7a7e468eccbb52bf113b6adb434
+ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68228049"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68444514"
 ---
 # <a name="overview-of-business-continuity-with-azure-sql-database"></a>Az Azure SQL Database üzletmenet-folytonossági funkcióinak áttekintése
 
@@ -58,7 +58,23 @@ Az adatbázis automatikus biztonsági mentései segítségével visszaállíthat
 
 Ha az időponthoz kötött visszaállításhoz (PITR) tartozó maximálisan támogatott biztonsági mentési megőrzési időtartam nem elegendő az alkalmazáshoz, kiterjesztheti azt egy hosszú távú adatmegőrzési (LTR) házirend konfigurálásával az adatbázis (ok) hoz. További információ: a [biztonsági másolatok hosszú távú megőrzése](sql-database-long-term-retention.md).
 
-## <a name="recover-a-database-to-another-azure-region"></a>Adatbázis helyreállítása egy másik Azure-régióba
+## <a name="compare-geo-replication-with-failover-groups"></a>Geo-replikáció összehasonlítása a feladatátvételi csoportokkal
+
+Az [automatikus feladatátvételi csoportok](sql-database-auto-failover-group.md#auto-failover-group-terminology-and-capabilities) egyszerűbbé teszik a [geo-replikáció](sql-database-active-geo-replication.md) üzembe helyezését és használatát, valamint a további képességek hozzáadását az alábbi táblázatban leírtak szerint:
+
+|                                              | Georeplikáció | Feladatátvételi csoportok  |
+|:---------------------------------------------| :-------------- | :----------------|
+| Automatikus feladatátvétel                           |     Nem          |      Igen         |
+| Több adatbázis feladatátvétele egyszerre  |     Nem          |      Igen         |
+| A kapcsolatok karakterláncának frissítése a feladatátvétel után      |     Igen         |      Nem          |
+| Felügyelt példány támogatott                   |     Nem          |      Igen         |
+| Ugyanabban a régióban lehet, mint az elsődleges             |     Igen         |      Nem          |
+| Több replika                            |     Igen         |      Nem          |
+| Olvasási méretezés támogatása                          |     Igen         |      Igen         |
+| &nbsp; | &nbsp; | &nbsp; |
+
+
+## <a name="recover-a-database-to-the-existing-server"></a>Adatbázis helyreállítása a meglévő kiszolgálóra
 
 Bár ritka, mégis előfordulhat, hogy valamelyik Azure-adatközpont leáll. Leállás esetén az üzletmenet esetleg csak néhány percre, de akár több órára is megszakadhat.
 
@@ -70,7 +86,7 @@ Az üzletmenet-folytonossági terv kidolgozása során meg kell állapítania az
 
 A különböző helyreállítási módszerek különböző szintű RPO és RTO biztosítanak. Kiválaszthat egy adott helyreállítási módszert, vagy használhat metódusok kombinációját a teljes alkalmazás-helyreállítás eléréséhez. A következő táblázat összehasonlítja az egyes helyreállítási lehetőségek RPO és RTO. Az automatikus feladatátvételi csoportok egyszerűbbé teszik a Geo-replikáció üzembe helyezését és használatát, és hozzáadja a további képességeket az alábbi táblázatban leírtak szerint.
 
-| Helyreállítási módszer | RTO | RPO |
+| Helyreállítási módszer | RTO | Helyreállítási időkorlát |
 | --- | --- | --- | 
 | Geo-visszaállítás földrajzilag replikált biztonsági másolatokból | 12 óra | 1 óra |
 | Automatikus feladatátvételi csoportok | 1 óra | 5 s |

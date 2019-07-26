@@ -12,12 +12,12 @@ ms.topic: overview
 ms.date: 07/30/2018
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 48a38b91cd17e2107fe85bfc77da8ead86196173
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: d33a18aaca923bd49858671546ab053cf3fb21a3
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60472764"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68382132"
 ---
 # <a name="two-step-verification-overview"></a>Kétlépéses ellenőrzés áttekintése
 
@@ -30,9 +30,9 @@ A kétlépéses ellenőrzés azért biztonságosabb, mint egy egyszerű jelszó,
 
 |Cikk |Leírás |
 |------|------------|
-|[Beállítási felület](multi-factor-authentication-end-user-first-time.md) |A kétlépéses ellenőrzés első beállítását ismerteti.|
-|[Bevezetés a kétlépéses ellenőrzés használatába](multi-factor-authentication-end-user.md)|A kétlépéses ellenőrzés Ön számára fontos aspektusait ismerteti.| 
-|[A bejelentkezés menete](user-help-sign-in.md)|A megadott hitelesítési módszerrel való bejelentkezést ismerteti.|
-|[A beállítások módosítása](multi-factor-authentication-end-user-manage-settings.md) |A beállítások, például a telefonszám vagy az előnyben részesített beléptetési módszer módosítását ismerteti.|
-|[Segítség a kétlépéses ellenőrzéshez](multi-factor-authentication-end-user-troubleshoot.md) |A kétlépéses ellenőrzéssel kapcsolatban felmerülő gyakori problémák hibaelhárítását ismerteti.|
-|[Alkalmazásjelszavak kezelése](multi-factor-authentication-end-user-app-passwords.md) |Az alkalmazásjelszavak létrehozását és használatát ismerteti.|
+| [Beállítási felület](multi-factor-authentication-end-user-first-time.md) |A kétlépéses ellenőrzés első beállítását ismerteti.|
+| Első [lépések a](multi-factor-authentication-end-user.md) kétlépéses ellenőrzéssel] Leírja, hogy mit jelent a kétlépéses ellenőrzés.| 
+| [Bejelentkezés](user-help-sign-in.md) ] Leírja, hogyan lehet bejelentkezni a megadott ellenőrzési módszer használatával.|
+| [A beállítások módosítása](multi-factor-authentication-end-user-manage-settings.md) |A beállítások, például a telefonszám vagy az előnyben részesített beléptetési módszer módosítását ismerteti.|
+| [Segítség a kétlépéses ellenőrzéshez](multi-factor-authentication-end-user-troubleshoot.md) |A kétlépéses ellenőrzéssel kapcsolatban felmerülő gyakori problémák hibaelhárítását ismerteti.|
+| [Alkalmazásjelszavak kezelése](multi-factor-authentication-end-user-app-passwords.md) |Az alkalmazásjelszavak létrehozását és használatát ismerteti.|

@@ -9,12 +9,12 @@ ms.author: robreed
 ms.topic: conceptual
 ms.date: 08/08/2018
 manager: carmonm
-ms.openlocfilehash: ca53d85a09727b75f68da8d049ac3fcd6723a041
-ms.sourcegitcommit: af58483a9c574a10edc546f2737939a93af87b73
+ms.openlocfilehash: b003c0cc6480c5d03c3755e7c57785ab2026194b
+ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68302275"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68498408"
 ---
 # <a name="onboarding-machines-for-management-by-azure-automation-state-configuration"></a>Bevezetési gépek Azure Automation állapot-konfiguráció általi felügyelethez
 
@@ -58,7 +58,7 @@ Ha a gépen nincs telepítve a PowerShell desired State bővítmény, és a táp
 
 A **regisztráció**területen adja meg a használni kívánt [PowerShell DSC helyi Configuration Manager értékeket](/powershell/dsc/managing-nodes/metaconfig) , és opcionálisan a virtuális géphez hozzárendelni kívánt csomópont-konfigurációt.
 
-![Bevezetési](./media/automation-dsc-onboarding/DSC_Onboarding_6.png)
+![bevezetési](./media/automation-dsc-onboarding/DSC_Onboarding_6.png)
 
 ### <a name="azure-resource-manager-templates"></a>Azure Resource Manager-sablonok
 
@@ -67,7 +67,7 @@ Ha virtuálisgép-méretezési készletet kezel, tekintse meg a [Azure Automatio
 
 ### <a name="powershell"></a>PowerShell
 
-A [Register-AzureRmAutomationDscNode](/powershell/module/azurerm.automation/register-azurermautomationdscnode) parancsmag használatával a PowerShell használatával a Azure Portal virtuális gépeket helyezhet üzembe.
+A [Register-AzAutomationDscNode](/powershell/module/az.automation/register-azautomationdscnode) parancsmag használatával a PowerShell használatával a Azure Portal virtuális gépeket helyezhet üzembe.
 
 ### <a name="registering-virtual-machines-across-azure-subscriptions"></a>Virtuális gépek regisztrálása Azure-előfizetések között
 
@@ -269,11 +269,11 @@ Ahhoz, hogy Azure Automation állapot konfigurációjában a gépeket általáno
 Ha a PowerShell DSC helyi Configuration Manager alapértelmezett beállításai megfelelnek a használati esetnek, és olyan gépeket kíván bevezetni, amelyeknek a lekérése és jelentése is Azure Automation az állapot-konfigurációra, a Azure Automation-parancsmagok egyszerűsített módszert biztosítanak a létrehozáshoz a DSC-metaconfigurations szükséges:
 
 1. Nyissa meg a PowerShell-konzolt vagy a VSCode rendszergazdaként a helyi környezetben lévő számítógépeken.
-2. Kapcsolódás Azure Resource Manager használatával`Connect-AzureRmAccount`
+2. Kapcsolódás Azure Resource Manager használatával`Connect-AzAccount`
 3. Töltse le a PowerShell DSC-metaconfigurations azon gépekhez, amelyeket az Automation-fiókból kíván bevezetni, amelybe be szeretné állítani a csomópontokat:
 
    ```powershell
-   # Define the parameters for Get-AzureRmAutomationDscOnboardingMetaconfig using PowerShell Splatting
+   # Define the parameters for Get-AzAutomationDscOnboardingMetaconfig using PowerShell Splatting
    $Params = @{
        ResourceGroupName = 'ContosoResources'; # The name of the Resource Group that contains your Azure Automation Account
        AutomationAccountName = 'ContosoAutomation'; # The name of the Azure Automation Account where you want a node on-boarded to
@@ -282,7 +282,7 @@ Ha a PowerShell DSC helyi Configuration Manager alapértelmezett beállításai 
    }
    # Use PowerShell splatting to pass parameters to the Azure Automation cmdlet being invoked
    # For more info about splatting, run: Get-Help -Name about_Splatting
-   Get-AzureRmAutomationDscOnboardingMetaconfig @Params
+   Get-AzAutomationDscOnboardingMetaconfig @Params
    ```
 
 1. Most már rendelkeznie kell egy ***DscMetaConfigs***nevű mappával, amely a PowerShell DSC-metaconfigurations tartalmazza a gépekhez a bevezetéshez (rendszergazdaként):
@@ -326,6 +326,6 @@ Az Újraregisztrálás ugyanúgy végezhető el, ahogy először regisztrálta a
 
 - Első lépésként tekintse meg [az Azure Automation állapot konfigurációjának megismerése](automation-dsc-getting-started.md) című témakört.
 - A DSC-konfigurációk fordításának megismeréséhez, hogy hozzá lehessen rendelni azokat a célcsoportokhoz, tekintse meg a [konfigurációk fordítása Azure Automation állapot konfigurációjában](automation-dsc-compile.md) című témakört.
-- A PowerShell-parancsmagok ismertetése: [Azure Automation állapot-konfigurációs parancsmagok](/powershell/module/azurerm.automation/#automation)
+- A PowerShell-parancsmagok ismertetése: [Azure Automation állapot-konfigurációs parancsmagok](/powershell/module/az.automation#automation)
 - A díjszabással kapcsolatos információkért lásd: [Azure Automation állapot konfigurációjának díjszabása](https://azure.microsoft.com/pricing/details/automation/)
 - Ha szeretné megtekinteni a Azure Automation állapot konfigurációjának folyamatos üzembe helyezési folyamatban való használatát, tekintse meg a [folyamatos üzembe helyezést a Azure Automation állapot-konfiguráció és a csokoládés használatával](automation-dsc-cd-chocolatey.md) .

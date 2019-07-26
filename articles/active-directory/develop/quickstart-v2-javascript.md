@@ -16,12 +16,12 @@ ms.workload: identity
 ms.date: 04/11/2019
 ms.author: nacanuma
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 20b8780ae0c24ca2b037211f7cb977f0cacee0f9
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
-ms.translationtype: HT
+ms.openlocfilehash: 3ca7e7f282d63160cd1f729fba00f6d7d7704270
+ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68325370"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68334132"
 ---
 # <a name="quickstart-sign-in-users-and-acquire-an-access-token-from-a-javascript-single-page-application"></a>Gyors útmutató: Bejelentkezés a felhasználókba és hozzáférési jogkivonat beszerzése egy JavaScript egyoldalas alkalmazásból
 
@@ -180,7 +180,7 @@ var msalConfig = {
 var myMSALObj = new Msal.UserAgentApplication(msalConfig);
 ```
 
-> |Ahol  |  |
+> |Ahol (a(z)  |  |
 > |---------|---------|
 > |`ClientId`     | A Azure Portalban regisztrált alkalmazás alkalmazás-azonosítója.|
 > |`authority`    | Választható A fiók típusát támogató szolgáltatói URL-cím, a konfiguráció szakaszban korábban leírtak szerint. Az alapértelmezett szolgáltató `https://login.microsoftonline.com/common`:. |
@@ -205,7 +205,7 @@ myMSALObj.loginPopup(requestObj).then(function (loginResponse) {
 });
 ```
 
-> |Ahol  |  |
+> |Ahol (a(z)  |  |
 > |---------|---------|
 > | `scopes`   | Választható Olyan hatóköröket tartalmaz, amelyeket a rendszer a bejelentkezési időben a felhasználói beleküldéshez kér. Például `[ "user.read" ]` Microsoft Graph vagy `[ "<Application ID URL>/scope" ]` egyéni webes `api://<Application ID>/access_as_user`API-khoz (azaz). |
 
@@ -233,7 +233,7 @@ myMSALObj.acquireTokenSilent(requestObj).then(function (tokenResponse) {
 });
 ```
 
-> |Ahol  |  |
+> |Ahol (a(z)  |  |
 > |---------|---------|
 > | `scopes`   | Az API hozzáférési jogkivonatában visszaadott hatóköröket tartalmaz. Például `[ "user.read" ]` Microsoft Graph vagy `[ "<Application ID URL>/scope" ]` egyéni webes `api://<Application ID>/access_as_user`API-khoz (azaz).|
 
@@ -275,3 +275,8 @@ A MSAL-tárházban a dokumentáció, a gyakori kérdések és a problémák megt
 
 > [!div class="nextstepaction"]
 > [MSAL. js GitHub-tárház](https://github.com/AzureAD/microsoft-authentication-library-for-js)
+
+Segítsen nekünk a Microsoft Identity platform fejlesztésében. Mondja el, mit gondol egy rövid, kétkérdéses felmérés végrehajtásával.
+
+> [!div class="nextstepaction"]
+> [Microsoft Identity platform-felmérés](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRyKrNDMV_xBIiPGgSvnbQZdUQjFIUUFGUE1SMEVFTkdaVU5YT0EyOEtJVi4u)

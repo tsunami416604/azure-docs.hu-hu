@@ -15,12 +15,12 @@ ms.workload: multiple
 ms.date: 06/20/2017
 ms.author: lahugh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 489a3935605432b485f7b0866668f6dbfaac686b
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 431212b2b0ac7bba209130e511e3510e3008a6c4
+ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68323751"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68500037"
 ---
 # <a name="create-an-automatic-scaling-formula-for-scaling-compute-nodes-in-a-batch-pool"></a>Automatikus méretezési képlet létrehozása a számítási csomópontok méretezéséhez egy batch-készletben
 
@@ -40,7 +40,7 @@ Ez a cikk az autoskálázási képleteket alkotó különböző entitásokat ism
 >
 
 ## <a name="automatic-scaling-formulas"></a>Automatikus méretezési képletek
-Az automatikus skálázási képlet egy definiált karakterlánc-érték, amely egy vagy több utasítást tartalmaz. Az autoskálázási képlet a készlet [autoScaleFormula][rest_autoscaleformula] element (Batch REST) or [CloudPool.AutoScaleFormula][net_cloudpool_autoscaleformula] tulajdonságához van rendelve (Batch .net). A Batch szolgáltatás a képlet segítségével határozza meg a készletben lévő számítási csomópontok megcélzott számát a feldolgozás következő időszakában. A képlet karakterlánca nem haladhatja meg a 8 KB-ot, legfeljebb 100, pontosvesszővel elválasztott utasítást tartalmazhat, és tartalmazhat sortöréseket és megjegyzéseket.
+Az automatikus skálázási képlet egy definiált karakterlánc-érték, amely egy vagy több utasítást tartalmaz. Az autoskálázási képlet a készlet [autoScaleFormula][rest_autoscaleformula] eleméhez (batch REST) vagy a [CloudPool. autoScaleFormula][net_cloudpool_autoscaleformula] tulajdonsághoz (Batch .net) van rendelve. A Batch szolgáltatás a képlet segítségével határozza meg a készletben lévő számítási csomópontok megcélzott számát a feldolgozás következő időszakában. A képlet karakterlánca nem haladhatja meg a 8 KB-ot, legfeljebb 100, pontosvesszővel elválasztott utasítást tartalmazhat, és tartalmazhat sortöréseket és megjegyzéseket.
 
 A képletek automatikus méretezése kötegelt automatikus méretezési "nyelv" lehet. A képlet-utasítások olyan szabadon formázott kifejezések, amelyek a szolgáltatás által definiált változókat (a Batch szolgáltatás által definiált változókat) és a felhasználó által definiált változókat (a definiált változókat) is tartalmazhatják. A beépített típusok, operátorok és függvények használatával különböző műveleteket végezhetnek ezeken az értékeken. Egy utasítás például a következő formát veheti fel:
 
@@ -132,13 +132,13 @@ A szolgáltatás által definiált változók értékének beszerzésével a Bat
 >
 >
 
-## <a name="types"></a>Típusú
+## <a name="types"></a>Típusok
 Ezek a típusok a következő képletekben támogatottak:
 
 * double
 * doubleVec
 * doubleVecList
-* Karakterlánc
+* sztring
 * időbélyeg – a timestamp egy összetett struktúra, amely a következő tagokat tartalmazza:
 
   * év
@@ -185,7 +185,7 @@ Ezek a műveletek az előző szakaszban felsorolt típusoknál engedélyezettek.
 
 Ternáris operátorral (`double ? statement1 : statement2`) való dupla tesztelés esetén a nem nulla érték **igaz**, és a nulla **hamis**.
 
-## <a name="functions"></a>Functions
+## <a name="functions"></a>Funkciók
 Ezek az előre definiált **függvények** használhatók az automatikus skálázási képlet definiálásához.
 
 | Függvény | Visszatérési típus | Leírás |
@@ -364,15 +364,19 @@ $totalDedicatedNodes =
 $TargetDedicatedNodes = min(400, $totalDedicatedNodes)
 ```
 
-## <a name="create-an-autoscale-enabled-pool-with-net"></a>A .NET-tel rendelkező, autoskálázásra képes készlet létrehozása
+## <a name="create-an-autoscale-enabled-pool-with-batch-sdks"></a>A Batch SDK-val rendelkező, automéretezést támogató készlet létrehozása
+
+A készlet automatikus skálázása a Batch [SDK](batch-apis-tools.md#azure-accounts-for-batch-development)-k, a Batch [REST API](https://docs.microsoft.com/rest/api/batchservice/) a Batch [PowerShell](batch-powershell-cmdlets-get-started.md)-parancsmagok és a [Batch CLI](batch-cli-get-started.md)használatával konfigurálható. Ebben a szakaszban a .NET és a Python esetében is láthat példákat.
+
+### <a name="net"></a>.NET
 
 A .NET-ben engedélyezett automatikus skálázással rendelkező készlet létrehozásához kövesse az alábbi lépéseket:
 
 1. Hozza létre a készletet a [BatchClient. PoolOperations. CreatePool](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.pooloperations.createpool).
-2. Állítsa a [CloudPool. AutoScaleEnabled](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.cloudpool.autoscaleenabled) tulajdonságot `true`a következőre:.
-3. Állítsa be az [CloudPool. AutoScaleFormula](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.cloudpool.autoscaleformula) tulajdonságot az autoscale képlettel.
-4. Választható A [CloudPool. AutoScaleEvaluationInterval](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.cloudpool.autoscaleevaluationinterval) tulajdonság beállítása (az alapértelmezett érték 15 perc).
-5. Véglegesítse a készletet a [CloudPool. commit](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.cloudpool.commit) vagy a [CommitAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.cloudpool.commitasync).
+1. Állítsa a [CloudPool. AutoScaleEnabled](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.cloudpool.autoscaleenabled) tulajdonságot `true`a következőre:.
+1. Állítsa be az [CloudPool. AutoScaleFormula](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.cloudpool.autoscaleformula) tulajdonságot az autoscale képlettel.
+1. Választható A [CloudPool. AutoScaleEvaluationInterval](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.cloudpool.autoscaleevaluationinterval) tulajdonság beállítása (az alapértelmezett érték 15 perc).
+1. Véglegesítse a készletet a [CloudPool. commit](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.cloudpool.commit) vagy a [CommitAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.cloudpool.commitasync).
 
 Az alábbi kódrészlet egy automatikusan méretezhető, .NET-alapú készletet hoz létre. A készlet autoskálázási képlete a dedikált csomópontok megcélzott számát 5 – hétfő értékre állítja, a hét minden más napján pedig 1 értéket. Az [automatikus skálázási időköz](#automatic-scaling-interval) 30 percre van beállítva. A jelen cikkben `myBatchClient` szereplő többi C# kódrészlet a [BatchClient][net_batchclient] osztály megfelelően inicializált példánya.
 
@@ -392,10 +396,8 @@ await pool.CommitAsync();
 >
 >
 
-A Batch .NET mellett a többi [Batch SDK](batch-apis-tools.md#azure-accounts-for-batch-development), a [Batch Rest](https://docs.microsoft.com/rest/api/batchservice/), a [Batch PowerShell](batch-powershell-cmdlets-get-started.md)-parancsmagok és a [Batch CLI](batch-cli-get-started.md) is használható az automatikus skálázás konfigurálásához.
+#### <a name="automatic-scaling-interval"></a>Automatikus skálázási időköz
 
-
-### <a name="automatic-scaling-interval"></a>Automatikus skálázási időköz
 Alapértelmezés szerint a Batch szolgáltatás 15 percenként úgy állítja be a készlet méretét, hogy az automatikusan méretezi a képletet. Ez az intervallum a következő készlet tulajdonságainak használatával konfigurálható:
 
 * [CloudPool. AutoScaleEvaluationInterval][net_cloudpool_autoscaleevalinterval] (Batch .net)
@@ -405,6 +407,50 @@ A minimális időköz öt perc, a maximális érték 168 óra. Ha a tartományon
 
 > [!NOTE]
 > Az automatikus skálázás jelenleg nem arra szolgál, hogy egy percnél rövidebb ideig válaszoljon a változásokra, ehelyett a számítási feladatok futtatásakor fokozatosan módosítania kell a készlet méretét.
+>
+>
+
+### <a name="python"></a>Python
+
+Ehhez hasonlóan a Python SDK-val is létrehozhat egy autoskálázási képességgel rendelkező készletet:
+
+1. Hozzon létre egy készletet, és határozza meg annak konfigurációját.
+1. Adja hozzá a készletet a szolgáltatás ügyfeléhez.
+1. Az autoskálázás engedélyezése a készleten egy írásos képlettel.
+
+```python
+# Create a pool; specify configuration
+new_pool = batch.models.PoolAddParameter(
+    id="autoscale-enabled-pool",
+    virtual_machine_configuration=batchmodels.VirtualMachineConfiguration(
+        image_reference=batchmodels.ImageReference(
+          publisher="Canonical",
+          offer="UbuntuServer",
+          sku="18.04-LTS",
+          version="latest"
+            ),
+        node_agent_sku_id="batch.node.ubuntu 18.04"),
+    vm_size="STANDARD_D1_v2",
+    target_dedicated_nodes=0,
+    target_low_priority_nodes=0
+)
+batch_service_client.pool.add(new_pool) # Add the pool to the service client
+
+formula = """$curTime = time();
+             $workHours = $curTime.hour >= 8 && $curTime.hour < 18; 
+             $isWeekday = $curTime.weekday >= 1 && $curTime.weekday <= 5; 
+             $isWorkingWeekdayHour = $workHours && $isWeekday; 
+             $TargetDedicated = $isWorkingWeekdayHour ? 20:10;""";
+
+# Enable autoscale; specify the formula
+response = batch_service_client.pool.enable_auto_scale(pool_id, auto_scale_formula=formula,
+                                            auto_scale_evaluation_interval=datetime.timedelta(minutes=10), 
+                                            pool_enable_auto_scale_options=None, 
+                                            custom_headers=None, raw=False)
+```
+
+> [!TIP]
+> A Python SDK használatával kapcsolatban további példákat talál a [Batch Python](https://github.com/Azure-Samples/batch-python-quickstart) rövid útmutatójában a githubon.
 >
 >
 

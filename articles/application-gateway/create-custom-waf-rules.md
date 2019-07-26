@@ -1,35 +1,35 @@
 ---
-title: Létrehozhat és használhat Azure webalkalmazási tűzfal (WAF) v2 egyéni szabályok
-description: Ez a cikk információt nyújt az Azure Application Gateway webalkalmazási tűzfala (WAF) v2 egyéni szabályok létrehozásához.
+title: Azure Web Application Firewall (WAF) v2 egyéni szabályok létrehozása és használata
+description: Ez a cikk azt ismerteti, hogyan hozható létre a webalkalmazási tűzfal (WAF) v2 egyéni szabályai az Azure Application Gatewayban.
 services: application-gateway
 ms.topic: article
 author: vhorne
 ms.service: application-gateway
 ms.date: 6/18/2019
 ms.author: victorh
-ms.openlocfilehash: 86ddb0b608cd17814cbcbb902f0b2905fe61094a
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: dcfdec0a746406296616456f6e6b8c0eabddf4b5
+ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67164678"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68478587"
 ---
-# <a name="create-and-use-web-application-firewall-v2-custom-rules"></a>Hozzon létre és webalkalmazási tűzfal v2 egyéni szabályok használata
+# <a name="create-and-use-web-application-firewall-v2-custom-rules"></a>Web Application Firewall v2 egyéni szabályok létrehozása és használata
 
-Az Azure Application Gateway webes alkalmazás tűzfal (WAF) v2 védelmet kínál a webes alkalmazásokhoz. Ez a védelem által az Open Web Application Security Project (OWASP) Core szabály beállítása (CRS) biztosítunk. Bizonyos esetekben szükség lehet a saját igényeinek megfelelően egyedi szabályokat hoz létre. WAF egyéni szabályokkal kapcsolatos további információkért lásd: [egyéni webalkalmazás-tűzfal szabályok áttekintése](custom-waf-rules-overview.md).
+Az Azure Application Gateway webalkalmazási tűzfal (WAF) v2 védelmet biztosít a webalkalmazások számára. Ezt a védelmet az Open Web Application Security Project (OWASP) alapszintű szabálykészlet (CRS) adja meg. Bizonyos esetekben előfordulhat, hogy saját egyéni szabályokat kell létrehoznia az adott igények kielégítése érdekében. További információ az egyéni WAF-szabályokról: [Egyéni webalkalmazási tűzfalszabályok – áttekintés](custom-waf-rules-overview.md).
 
-Ez a cikk bemutatja, néhány példa egyéni szabályokat hozhat létre és a v2 WAF használata. Ismerje meg, hogyan helyezhet üzembe egy WAF Azure PowerShell-lel egyéni szabállyal, lásd: [webalkalmazási tűzfal konfigurálása az Azure PowerShell használatával egyéni szabályok](configure-waf-custom-rules.md).
+Ez a cikk néhány példát mutat be a v2-WAF létrehozásához és használatához használható egyéni szabályokról. Ha szeretné megtudni, hogyan helyezhet üzembe egy WAF egyéni szabállyal Azure PowerShell használatával, tekintse meg a webalkalmazási [tűzfal egyéni szabályainak konfigurálása a Azure PowerShell használatával](configure-waf-custom-rules.md)című témakört.
 
 >[!NOTE]
-> Ha az application gateway nem használja a WAF-csomag, az application gateway WAF-szintre frissítheti a jobb oldali ablaktáblán jelenik meg.
+> Ha az Application Gateway nem a WAF szintet használja, akkor a jobb oldali ablaktáblán megjelenik az Application Gateway WAF szintre való frissítésének lehetősége.
 
 ![WAF engedélyezése][fig1]
 
 ## <a name="example-1"></a>1\. példa
 
-Tudja, hogy van egy robot nevű *evilbot* , hogy szeretné-e a webhely bejárás letiltására. Ebben az esetben lesz a felhasználói ügynök letiltása *evilbot* a kérelem fejlécében.
+Tudja, hogy van egy *evilbot* nevű robot, amelyet le szeretne tiltani a webhely bejárásával. Ebben az esetben letiltja a felhasználói ügynök *evilbot* a kérések fejlécében.
 
-Logikai: p
+Logic: p
 
 ```azurepowershell
 $variable = New-AzApplicationGatewayFirewallMatchVariable `
@@ -51,7 +51,7 @@ $rule = New-AzApplicationGatewayFirewallCustomRule `
    -Action Block
 ```
 
-Ez pedig a megfelelő JSON:
+És itt a megfelelő JSON:
 
 ```json
   {
@@ -75,11 +75,11 @@ Ez pedig a megfelelő JSON:
   }
 ```
 
-Információk az egyéni szabály használatával üzembe helyezett WAF-: [konfigurálása az Azure PowerShell-lel a webalkalmazási tűzfal egyéni szabályt](configure-waf-custom-rules.md).
+Az egyéni szabállyal telepített WAF megtekintéséhez lásd: webalkalmazási [tűzfal egyéni szabályának konfigurálása a Azure PowerShell használatával](configure-waf-custom-rules.md).
 
-### <a name="example-1a"></a>Példa 1a.
+### <a name="example-1a"></a>1\. példa
 
-Ugyanaz a reguláris kifejezés használatával végezheti el:
+Ugyanazt a dolgot egy reguláris kifejezés használatával is végrehajthatja:
 
 ```azurepowershell
 $variable = New-AzApplicationGatewayFirewallMatchVariable `
@@ -127,11 +127,11 @@ $rule = New-AzApplicationGatewayFirewallCustomRule `
 
 ## <a name="example-2"></a>2\. példa
 
-A tartomány 198.168.5.4/24 az IP-címekről érkező összes kérés szeretné.
+Az IP-címekről érkező összes kérést le szeretné tiltani a 198.168.5.4/24 tartományon belül.
 
-Ebben a példában az IP-címtartományát érkező összes forgalmat fog letiltja. A szabály neve *tartozó SajátSzabály1* és a prioritás értéke 100.
+Ebben a példában az IP-címtartomány összes forgalmát letiltja. A szabály neve *SajátSzabály1* , és a prioritás értéke 100.
 
-Logikai: p
+Logic: p
 
 ```azurepowershell
 $variable1 = New-AzApplicationGatewayFirewallMatchVariable `
@@ -175,13 +175,13 @@ Itt látható a megfelelő JSON:
   }
 ```
 
-Megfelelő CRS szabály: `SecRule REMOTE_ADDR "@ipMatch 192.168.5.4/24" "id:7001,deny"`
+Megfelelő CRS-szabály:`SecRule REMOTE_ADDR "@ipMatch 192.168.5.4/24" "id:7001,deny"`
 
 ## <a name="example-3"></a>3\. példa
 
-Ebben a példában a felhasználói ügynök letiltani kívánt *evilbot*, és a tartomány 192.168.5.4/24 a forgalmat. Ehhez hozzon létre két külön egyezési feltételei, és helyezze őket mindkét ugyanaz a szabály. Ez biztosítja mindkét *evilbot* a felhasználói ügynök fejlécében **és** IP-címeket a tartomány 192.168.5.4/24 le vannak tiltva.
+Ebben a példában le szeretné tiltani a felhasználói ügynök *evilbot*, valamint a 192.168.5.4/24 tartomány forgalmát. Ennek elvégzéséhez két különálló egyeztetési feltételt hozhat létre, és mindkettőt ugyanabban a szabályban helyezheti el. Ez biztosítja, hogy a *evilbot* a felhasználói ügynök fejlécében **és** a 192.168.5.4/24 tartományból származó IP-címek is le legyenek tiltva.
 
-Logikai: p **és** q
+Logic: p **és** q
 
 ```azurepowershell
 $variable1 = New-AzApplicationGatewayFirewallMatchVariable `
@@ -251,9 +251,9 @@ Itt látható a megfelelő JSON:
 
 ## <a name="example-4"></a>4\. példa
 
-Ebben a példában a letiltása, ha a kérés kívül esik az IP-címtartományt szeretne *192.168.5.4/24*, vagy a böngészőazonosító sztring nem *chrome* (azaz a felhasználó nem használja a Chrome böngészőben). Mivel a logikai használ **vagy**, a két feltétel külön szabályok vannak, az alábbi példában látható módon. *tartozó SajátSzabály1* és *SajátSzabály2 szabály alkalmazására* egyaránt meg kell egyeznie az adatforgalmat.
+Ebben a példában le szeretné tiltani, hogy a kérelem vagy a *192.168.5.4/24*IP-címtartomány kívül esik-e, vagy a felhasználói ügynök karakterlánca nem a *Chrome* (azaz a felhasználó nem használja a Chrome böngészőt). Mivel ez a logika **vagy**a-t használja, a két feltétel külön szabályokban szerepel, ahogy az alábbi példában is látható. a *SajátSzabály1* és a *SajátSzabály2* egyaránt meg kell egyezniük a forgalom blokkolásával.
 
-Logikai: **nem** (p **és** q) = **nem** p **vagy nem** q.
+Logika: **nem** (p **és** q) = **nem** p **vagy nem** q.
 
 ```azurepowershell
 $variable1 = New-AzApplicationGatewayFirewallMatchVariable `
@@ -338,9 +338,9 @@ $rule2 = New-AzApplicationGatewayFirewallCustomRule `
 
 ## <a name="example-5"></a>5\. példa
 
-Egyéni SQLI letiltani kívánt. Azon logika óta Íme **vagy**, és minden érték a a *RequestUri*, minden, a *MatchValues* is lehet vesszővel elválasztott listáját.
+Le szeretné tiltani az egyéni SQLI. Mivel az itt használt logika **vagy**, és az összes érték a *RequestUri*található, az összes *MatchValues* vesszővel tagolt listában lehet.
 
-Logikai: p **vagy** q **vagy** r
+Logic: p **vagy** q **vagy** r
 
 ```azurepowershell
 $variable1 = New-AzApplicationGatewayFirewallMatchVariable `
@@ -385,7 +385,7 @@ Megfelelő JSON:
   }
 ```
 
-Alternatív Azure PowerShell-lel:
+Alternatív Azure PowerShell:
 
 ```azurepowershell
 $variable1 = New-AzApplicationGatewayFirewallMatchVariable `
@@ -493,16 +493,8 @@ Megfelelő JSON:
   }
 ```
 
-Modsecurity-hez tartozó szabályt:
-
-`SecRule REQUEST_URI "@contains 1-1" "id:7001,deny"`
-
-`SecRule REQUEST_URI "@contains --" "id:7001,deny"`
-
-`SecRule REQUEST_URI "@contains drop tables" "id:7001,deny"`
-
 ## <a name="next-steps"></a>További lépések
 
-Miután létrehozta az egyéni szabályok, megismerheti a WAF-naplók megtekintéséhez. További információkért lásd: [Application Gateway-diagnosztika](application-gateway-diagnostics.md#diagnostic-logging).
+Az egyéni szabályok létrehozása után megtudhatja, hogyan tekintheti meg a WAF-naplókat. További információ: [Application Gateway diagnosztika](application-gateway-diagnostics.md#diagnostic-logging).
 
 [fig1]: ./media/application-gateway-customize-waf-rules-portal/1.png

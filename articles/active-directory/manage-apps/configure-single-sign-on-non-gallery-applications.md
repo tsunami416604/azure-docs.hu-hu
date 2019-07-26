@@ -1,6 +1,6 @@
 ---
-title: Egyszeri bejelentkezés – katalógusban nem szereplő alkalmazások – a Microsoft identity platform |} A Microsoft Docs
-description: A Microsoft identity platform (Azure AD) a katalógusban nem szereplő alkalmazásokhoz való egyszeri bejelentkezés (SSO) konfigurálása
+title: SAML egyszeri bejelentkezés – nem katalógusbeli alkalmazások – Microsoft Identity platform | Microsoft Docs
+description: Egyszeri bejelentkezés (SSO) konfigurálása a nem katalógusbeli alkalmazásokhoz a Microsoft Identity platformon (Azure AD)
 services: active-directory
 author: msmimart
 manager: CelesteDG
@@ -8,252 +8,159 @@ ms.service: active-directory
 ms.subservice: app-mgmt
 ms.topic: article
 ms.workload: identity
-ms.date: 05/08/2019
+ms.date: 07/19/2019
 ms.author: celested
 ms.reviewer: arvinh,luleon
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a72cb7bc7feeba984d568a0465d4f23a494496e8
-ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
+ms.openlocfilehash: 057fa4dc9080ea0216765d89fa6f9d54c60ccec1
+ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67807657"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68422795"
 ---
-# <a name="configure-single-sign-on-to-non-gallery-applications-in-microsoft-identity-platform"></a>Egyszeri bejelentkezés nem katalógusból származó alkalmazásokhoz a Microsoft identity platform konfigurálása
+# <a name="configure-saml-based-single-sign-on-to-non-gallery-applications"></a>SAML-alapú egyszeri bejelentkezés konfigurálása a nem katalógusbeli alkalmazásokhoz
 
-Ez a cikk egy szolgáltatás, amely lehetővé teszi a rendszergazdák egyszeri bejelentkezés alkalmazásokhoz a Microsoft identity platform alkalmazásgyűjtemény hiányzó tárgya *kódírás nélkül*.
-
-Ha inkább az egyéni alkalmazások integrálása az Azure AD-kódon keresztül: Fejlesztői útmutató keres, tekintse meg [hitelesítési forgatókönyvek az Azure ad-ben](../develop/authentication-scenarios.md).
-
-A Microsoft identity platform alkalmazáskatalógusában felsorolja a alkalmazások ismert támogatja az egyszeri bejelentkezés a Microsoft identity platform révén az űrlap leírtak szerint [Ez a cikk](what-is-single-sign-on.md). Ha (a egy informatikai specialistája vagy támaszkodva a szervezetben) megtalálta az alkalmazást, amelyhez csatlakozni, az egyszeri bejelentkezés engedélyezése az Azure Portalon megjelenő részletes utasításokat követve kezdheti.
-
-Az alábbi képességek is elérhetők, a licencszerződésben. További tájékoztatás a [díjszabási lapon](https://azure.microsoft.com/pricing/details/active-directory/) olvasható.
-
-- Például egy modern protokollt használó alkalmazás önkiszolgáló integrációja [OpenId Connect vagy OAuth](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-protocols) annak a felhasználók hitelesítéséhez és a jogkivonatok lekérésére [Microsoft Graph](https://graph.microsoft.com).
-- Bármely alkalmazás, amely támogatja az önkiszolgáló integrációja [Security Assertion Markup Language (SAML) 2.0-s](https://wikipedia.org/wiki/SAML_2.0) Identitásszolgáltatók (SP által kezdeményezett vagy identitásszolgáltató által kezdeményezett)
-- Bármely, amely rendelkezik egy a bejelentkezési oldal HTML-alapú webes alkalmazás önkiszolgáló integrációja [jelszóalapú egyszeri bejelentkezés](what-is-single-sign-on.md#password-based-sso)
-- Önkiszolgáló kapcsolatot használó alkalmazások a [tartományok közötti Identity Management (SCIM) protokoll a felhasználók átadásának rendszer](use-scim-to-provision-users-and-groups.md)
-- Lehetővé teszi, hogy minden olyan alkalmazáshoz, a hivatkozások a [Office 365 appindítóban](https://www.microsoft.com/microsoft-365/blog/2014/10/16/organize-office-365-new-app-launcher-2/) vagy a [Azure AD hozzáférési panel](what-is-single-sign-on.md#linked-sign-on)
-
-Ezeket a képességeket tartalmazhatnak önkiszolgáló integrációja a szoftver (SaaS-) alkalmazás, amely használja, akkor is, ha senkinek nem előkészítve az alkalmazást az Azure AD alkalmazáskatalógusában még. Egy másik szolgáltatás érhető el, amelyek azt szabályozzák, a felhőben vagy a helyszíni kiszolgálók alkalmazva van a szervezet más gyártók webes alkalmazás önkiszolgáló integrációja.
-
-Más néven *integrációs alkalmazássablonok*, ezek a képességek szabványokon alapuló kapcsolódási pontok adja meg az alkalmazásokat, amelyek támogatják a SAML, SCIM vagy űrlap alapú hitelesítéssel. A képességek közé tartoznak a rugalmas lehetőségek és beállítások széles körű számos alkalmazásban való kompatibilitás érdekében.
-
-## <a name="adding-an-unlisted-application"></a>Egy listán nem szereplő alkalmazás hozzáadása
-
-A Microsoft identity platform az alkalmazásregisztrációt két mechanizmust biztosít.
-
-Például egy modern protokollt használó alkalmazás [OpenId Connect vagy OAuth](../develop/active-directory-v2-protocols.md) , a felhasználók hitelesítésére van regisztrálva használatával a [alkalmazásregisztrációs portálon](../develop/quickstart-register-app.md).
-
-Az alkalmazásregisztrációt segítségével bármilyen típusú [támogatott hitelesítési mechanizmusok](what-is-single-sign-on.md), például a [SAML](../develop/single-sign-on-saml-protocol.md) protokollt, használja a **vállalati alkalmazások** panelen való csatlakozáshoz azokat a Microsoft identity platform használatával.
-
-Egy listán nem szereplő alkalmazást egy alkalmazás-integráció sablon használatával csatlakozhat, hajtsa végre ezeket a lépéseket:
-
-1. Jelentkezzen be a [Azure Active Directory portálon](https://aad.portal.azure.com/) a Microsoft identity platform rendszergazdai fiók használatával.
-1. Válassza ki **vállalati alkalmazások** > **új alkalmazás**.
-1. (Nem kötelező, de ajánlott) Az a **Hozzáadás a katalógusból** keresőmezőbe, írja be az alkalmazás megjelenítendő neve. Ha az alkalmazás megjelenik a keresési eredmények között, válassza ki, és hagyja ki ezt az eljárást az.
-1. Válassza ki **katalógusban nem szereplő alkalmazás**. A **saját alkalmazás hozzáadása** lap jelenik meg.
-
-   ![A Hozzáadás a saját alkalmazás lapját jeleníti meg](./media/configure-single-sign-on-non-gallery-applications/add-your-own-application.png)
-
-1. Adja meg az új alkalmazás megjelenített neve.
-1. Válassza a **Hozzáadás** lehetőséget.
-
-Az alkalmazás így hozzáadásával előre integrált alkalmazások, elérhető egy hasonló élményt biztosítani. Először válasszon **egyszeri bejelentkezési** való az alkalmazás oldalsávon. A következő oldalon (**egyszeri bejelentkezési módszer**) kapcsolódhatnak az egyszeri bejelentkezés konfigurálásához:
-
-- **SAML**
-- **Jelszóalapú**
-- **A csatolt**
-
-![Válassza a egyszeri bejelentkezési módszer oldalt jelenít meg](./media/configure-single-sign-on-non-gallery-applications/select-a-single-sign-on-method.png)
-
-Ezek a beállítások kapcsolatos további információkért tekintse meg a következő szakaszok a jelen cikk.
-
-## <a name="saml-based-single-sign-on"></a>SAML-alapú egyszeri bejelentkezés
-
-Válassza ki a **SAML** beállítást, konfigurálhat a SAML-alapú hitelesítést az alkalmazáshoz. (Ez utóbbi lehetőség megköveteli, hogy az alkalmazás támogatja-e a SAML 2.0-s.) A **állítsa be egyszeri bejelentkezést az SAML** lap jelenik meg.
-
-![Megjeleníti az egyszeri bejelentkezéshez a SAML lap beállítása](./media/configure-single-sign-on-non-gallery-applications/set-up-single-sign-on-with-saml.png)
-
-Ezen a lapon öt különböző fejlécek rendelkezik:
-
-| Címsor száma | Fejléc neve | Ezt a címsort összefoglalását lásd: |
-| --- | --- | --- |
-| 1 | **Alapszintű SAML-konfigurációja** | [Adja meg az alapszintű SAML-konfigurációja](#enter-basic-saml-configuration) |
-| 2 | **Felhasználói attribútumok és jogcímek** | [Tekintse át, vagy a SAML-jogkivonatban kiadott jogcímek testreszabása](#review-or-customize-the-claims-issued-in-the-saml-token) |
-| 3 | **SAML-aláíró tanúsítvány** | [Felülvizsgálat tanúsítvány lejárati dátum, állapot és e-mail-értesítés](#review-certificate-expiration-data-status-and-email-notification) |
-| 4 | **Állítsa be a \<alkalmazás neve >** | [Cél-alkalmazás beállítása](#set-up-target-application) |
-| 5 | **Egyszeri bejelentkezés az tesztelése \<alkalmazás neve >** | [Az SAML-alkalmazás tesztelése](#test-the-saml-application) |
-
-Most már gyűjt adatokat a folytatás előtt az alkalmazás SAML funkcióinak használatát. Hajtsa végre az alábbi szakaszok az egyszeri bejelentkezés konfigurálása az alkalmazás és az Azure AD között.
-
-### <a name="enter-basic-saml-configuration"></a>Adja meg az alapszintű SAML-konfigurációja
-
-Az Azure AD beállításához, nyissa meg a **alapszintű SAML-konfigurációja** címsor, és válassza ki a **szerkesztése** ikon (a Ceruza). Manuálisan adja meg az értékeket, vagy a mező értékének kinyerése-metaadatfájl feltöltésére.
-
-![Az alapszintű SAML konfigurációs lapját jeleníti meg](./media/configure-single-sign-on-non-gallery-applications/basic-saml-configuration.png)
-
-Az alábbi két mező szükség:
-
-- **Azonosító**. Ez az érték egyedileg kell azonosítania az alkalmazást, amelyhez egyszeri bejelentkezés konfigurálása történik. Ezt az értéket annak a **kibocsátó** eleme a **AuthnRequest** (SAML-kérelem) az alkalmazás által küldött. Ez az érték is frissült: a **Entitásazonosító** a az alkalmazás által biztosított bármely SAML-metaadatokat. Ellenőrizze az alkalmazás SAML dokumentációjában, a részletek a **Entitásazonosító** vagy **célközönség** érték.
-
-  A következő kód bemutatja a **azonosító** vagy **kibocsátó** az SAML-kérelmet, amely az Azure AD elküldi az alkalmazás jelenik meg:
-
-  ```xml
-  <samlp:AuthnRequest
-  xmlns="urn:oasis:names:tc:SAML:2.0:metadata"
-  ID="id6c1c178c166d486687be4aaf5e482730"
-  Version="2.0" IssueInstant="2013-03-18T03:28:54.1839884Z"
-  xmlns:samlp="urn:oasis:names:tc:SAML:2.0:protocol">
-    <Issuer xmlns="urn:oasis:names:tc:SAML:2.0:assertion">https://www.contoso.com</Issuer>
-  </samlp:AuthnRequest>
-  ```
-
-- **Válasz URL-cím**. A válasz URL-címe, ahol az alkalmazás megjelenik az SAML-jogkivonat vár. Az URL-címet is nevezzük a helyességi feltétel fogyasztói szolgáltatás (ACS) URL-CÍMÉT. Ellenőrizze az alkalmazás SAML dokumentációjában, a SAML token válasz URL-cím vagy ACS URL-CÍMÉT.
-
-  Több válasz URL-címek konfigurálásához használhatja a következő PowerShell-parancsfájlt.
-
-  ```powershell
-  $sp = Get-AzureADServicePrincipal -SearchString "<Exact app name>"
-  $app = Get-AzureADApplication -SearchString "<Exact app name>"
-  $urllist = New-Object "System.Collections.Generic.List[String]"
-  $urllist.Add("<reply URL 1>")
-  $urllist.Add("<reply URL 2>")
-  $urllist.Add("<reply URL 3>")
-  Set-AzureADApplication -ObjectId $app.ObjectId -ReplyUrls $urllist
-  Set-AzureADServicePrincipal -ObjectId $sp.ObjectId -ReplyUrls $urllist
-  ```
-
-A következő három mezőt nem kötelező:
-
-- **Bejelentkezési URL-cím (SP által kezdeményezett csak)** . Ez azt jelzi, hogy a felhasználó itt, jelentkezzen be az alkalmazás. Ha az alkalmazás által végrehajtott SP által kezdeményezett egyszeri Bejelentkezést, majd amikor a felhasználók az URL-címet, az SP elvégzi szükséges átirányítást az Azure AD-hitelesítést, és jelentkezzen be a felhasználó. Ha megadja ezt a mezőt, az Azure AD az URL-cím használatával indítsa el az alkalmazást, az Office 365 és az Azure AD hozzáférési Panel. Ha kihagyja ezt a mezőt, az Azure AD inkább hajt végre identitásszolgáltató által kezdeményezett bejelentkezési – Office 365-höz, az Azure AD hozzáférési Panel vagy az Azure AD egyszeri bejelentkezési URL-címet az alkalmazás elindítása során (amely másolhatja a **irányítópult** lap).
-
-- **Továbbítási állapot**. A továbbítási állapot SAML-arra utasítani az alkalmazás hol irányítsa át a felhasználókat a hitelesítés után is megadhat. Az értéke általában egy URL-címe vagy URL-cím elérési útja, amely egy adott helyen az alkalmazáson belül.
-
-- **Kijelentkezési URL-címe**. Ez az érték szolgál az alkalmazásnak kijelentkezési SAML-válasz küldése.
-
-További információkért lásd: [egyszeri bejelentkezéses SAML-protokoll](../develop/single-sign-on-saml-protocol.md).
-
-### <a name="review-or-customize-the-claims-issued-in-the-saml-token"></a>Tekintse át, vagy a SAML-jogkivonatban kiadott jogcímek testreszabása
-
-Amikor egy felhasználó hitelesíti magát az alkalmazást, az Azure AD kibocsát az alkalmazás SAML-jogkivonat az adatokat (vagy jogcímek), amely egyedileg azonosítja a felhasználóról. Alapértelmezés szerint ezt az információt tartalmazza, a felhasználó felhasználónevét, e-mail címét, Utónév és Vezetéknév.
-
-Megtekintését és szerkesztését a jogcímek küldése az alkalmazásnak az SAML-jogkivonat:
-
-- Nyissa meg a **felhasználói attribútumok & jogcímek** címsor, és válassza ki a **szerkesztése** ikonra. A **felhasználói attribútumok & jogcímek** lap jelenik meg.
-
-![A felhasználói attribútumokról és jogcímekről lapját jeleníti meg](./media/configure-single-sign-on-non-gallery-applications/user-attributes-and-claims.png)
-
-A két okból az SAML-jogkivonatban kiadott jogcímek szerkesztése lehet szükség:
-
-- Az alkalmazáshoz szükséges különböző jogcím-URI-k vagy a jogcímértékek.
-- Az alkalmazás által kért a **azonosító értékét nevet** jogcím-verziójáétól eltérő a felhasználónév (más néven az egyszerű felhasználónév), a Microsoft identity platform tárolja.
-
-További információkért lásd: [hogyan: Vállalati alkalmazásokhoz SAML-jogkivonatban kiadott jogcímek testreszabása](../develop/active-directory-saml-claims-customization.md).
-
-### <a name="review-certificate-expiration-data-status-and-email-notification"></a>Felülvizsgálat tanúsítvány lejárati dátum, állapot és e-mail-értesítés
-
-Egy katalógusban vagy egy katalógusban nem szereplő alkalmazást hoz létre, amikor az Azure AD-alkalmazás-specifikus tanúsítvány, amely a létrehozás dátumától számítva három év lejár hoz létre. Ez a tanúsítvány beállítása az Azure AD közötti megbízhatósági kapcsolat van szüksége, és az alkalmazás. A tanúsítvány formátuma részletes ismertetéséért tekintse meg az alkalmazás SAML dokumentációját.
-
-Az Azure ad-ből, töltse le az aktív tanúsítvány Base64 vagy Raw formátumban közvetlenül a fő **állítsa be egyszeri bejelentkezést az SAML** lapot. Azt is megteheti beszerezheti az aktív tanúsítvány az alkalmazás metaadatainak XML-fájl letöltése vagy az alkalmazás összevonási metaadatainak URL-cím használatával.
-
-Megtekintéséhez, létrehozásához, vagy töltse le a tanúsítványokat (aktív vagy inaktív), nyissa meg a **SAML-aláíró tanúsítvány** címsor, és válassza ki a **szerkesztése** ikonra. A **SAML-aláíró tanúsítvány** jelenik meg.
-
-![Az SAML aláírási tanúsítvány oldal megjelenítése](./media/configure-single-sign-on-non-gallery-applications/saml-signing-certificate.png)
-
-Ellenőrizze a tanúsítvány rendelkezik-e:
-
-- *A kívánt lejárati dátuma.* Az elkövetkező konfigurálhatja úgy a lejárati dátum legfeljebb három évig.
-- *A kívánt tanúsítvány aktív állapotú.* Ha az állapot **inaktív**, állítsa a állapotát **aktív**. Ha módosítani szeretné az állapot, kattintson a jobb gombbal a kívánt tanúsítvány sor, és válassza ki **tanúsítvány aktívvá**.
-- *A helyes aláírási beállítás és algoritmus.*
-- *A megfelelő értesítési e-mail-címeit.* Ha az aktív tanúsítvány a lejárati dátum közelében, az Azure AD értesítést küld az ebben a mezőben beállított e-mail-cím.  
-
-További információkért lásd: [összevont egyszeri bejelentkezés tanúsítványai kezelése](manage-certificates-for-federated-single-sign-on.md) és [speciális tanúsítvány-aláírás a SAML-jogkivonat beállítások](certificate-signing-options.md).
-
-### <a name="set-up-target-application"></a>Cél-alkalmazás beállítása
-
-Adja meg az alkalmazás egyszeri bejelentkezéshez, keresse meg az alkalmazás dokumentációját. A dokumentációban találja, a **beállítása \<alkalmazásnév >** címsor, és válassza ki **részletes útmutató megtekintéséhez**. Megjelenik a dokumentáció a **bejelentkezés konfigurálása** lapot. Az oldal végigvezeti Önt a kitöltött a **bejelentkezési URL-cím**, **az Azure AD-azonosító**, és **kijelentkezési URL-címe** lévő értékeknek a **beállítása \<alkalmazás neve >** fejléc.
-
-A szükséges értékeket az alkalmazás függően változnak. Részletekért tekintse meg az alkalmazás SAML dokumentációját. A **bejelentkezési URL-cím** és **kijelentkezési URL-címe** értékek mindkettő egyazon végpont, amely a SAML-kérelem-kezelési végpont esetében az Azure AD példányával feloldani. A **az Azure AD-azonosító** értéke a **kibocsátó** az alkalmazás számára kibocsátott SAML-jogkivonatban.
-
-### <a name="assign-users-and-groups-to-your-saml-application"></a>Felhasználók és csoportok hozzárendelése az SAML-alkalmazáshoz
-
-Miután konfigurálta az alkalmazás használhatja az Azure AD SAML-alapú identitás-szolgáltatóként, csaknem készen áll teszteléséhez. Biztonsági vezérlőként az Azure AD csak kiad egy jogkivonatot, lehetővé téve a felhasználót, hogy jelentkezzen be az alkalmazást, ha az Azure AD hozzáférést a felhasználó számára engedélyezett. Felhasználók közvetlenül vagy egy csoport tagsága is elérhet.
-
-Az alkalmazás egy új felhasználó vagy csoport hozzárendelése:
-
-1. Az alkalmazás oldalsávon válassza **felhasználók és csoportok**. A  **\<alkalmazás neve >-felhasználók és csoportok** lap, amely hozzárendelt felhasználók és csoportok aktuális listáját jeleníti meg.
-1. Válassza ki **felhasználók hozzáadása**. A **hozzáadása hozzárendelések** lap jelenik meg.
-1. Válassza ki **felhasználók és csoportok (\<szám > kijelölt)** . A **felhasználók és csoportok** elérhető felhasználók és csoportok listáját tartalmazó lap jelenik meg,.
-1. Típus vagy görgessen lefelé, keresse meg a felhasználót vagy csoportot szeretne hozzárendelni a listából.
-1. Válassza ki a felhasználó vagy csoport, amelyet szeretne hozzáadni, és válassza ki a **kiválasztása** gombra. A **felhasználók és csoportok** lap eltűnik.
-1. Az a **hozzáadása hozzárendelések** lapon jelölje be **hozzárendelése**. A  **\<alkalmazás neve >-felhasználók és csoportok** lap jelenik meg a listában szereplő további felhasználóival.
-
-   ![Az alkalmazás felhasználók és csoportok lapját jeleníti meg](./media/configure-single-sign-on-non-gallery-applications/application-users-and-groups.png)
-
-Ebből a listából a következőket teheti:
-
-- Felhasználó eltávolítása.
-- A szerepkör szerkesztéséhez.
-- Frissítse a hitelesítő adataikat (felhasználónév és jelszó), úgy, hogy a felhasználó hitelesíthető az alkalmazás a felhasználó hozzáférési panelen végezzenek.
-
-Előfordulhat, hogy szerkesztheti, vagy egyszerre több felhasználó vagy csoport eltávolítása.
-
-Felhasználó hozzárendelése lehetővé teszi, hogy az Azure AD a felhasználói jogkivonatok kiállítása. Ez az alkalmazás a felhasználó hozzáférési panelen jelennek meg a csempe is okoz. Egy alkalmazás-csempét is megjelenik az Office 365 alkalmazásindítójában, ha a felhasználó Office 365-höz használ.
+Ha [egy Gallery-alkalmazást](add-gallery-app.md) vagy egy [nem Gallery-](add-non-gallery-app.md) webalkalmazást AD hozzá az Azure ad vállalati alkalmazásaihoz, az egyik elérhető egyszeri bejelentkezési lehetőség az [SAML-alapú egyszeri bejelentkezés](what-is-single-sign-on.md#saml-sso). Ha lehetséges, az SAML-protokollok egyikével hitelesítő alkalmazások esetében válassza az SAML lehetőséget. Az SAML egyszeri bejelentkezéssel az Azure AD hitelesíti az alkalmazást a felhasználó Azure AD-fiókjának használatával. Azure ad-ben a bejelentkezési adatait az alkalmazás egy kapcsolat protokollon keresztül kommunikál. A felhasználókat az SAML-jogcímek által meghatározott szabályok alapján rendelheti hozzá adott alkalmazási szerepkörökhöz. Ez a cikk azt ismerteti, hogyan konfigurálhatja az SAML-alapú egyszeri bejelentkezést egy nem katalógusbeli alkalmazáshoz. 
 
 > [!NOTE]
-> Feltöltheti az alkalmazást a csempe emblémájának a **embléma feltöltése** gombot a **konfigurálása** az alkalmazás lapon.
+> Gallery-alkalmazás hozzáadása? A [SaaS app oktatóanyagok listájában](../saas-apps/tutorial-list.md) részletes beállítási utasításokat talál
 
-### <a name="test-the-saml-application"></a>Az SAML-alkalmazás tesztelése
+Ha az SAML egyszeri bejelentkezést egy nem katalógusbeli alkalmazáshoz szeretné beállítani kód írása nélkül, előfizetéssel vagy prémium szintű Azure AD kell rendelkeznie, és az alkalmazásnak támogatnia kell az SAML 2,0-et. Az Azure AD-verziókkal kapcsolatos további információkért látogasson el az [Azure ad díjszabására](https://azure.microsoft.com/pricing/details/active-directory/).
 
-Az SAML-alkalmazás tesztelése, előtt kell már az Azure AD-alkalmazás beállítása és az alkalmazás hozzárendelt felhasználók vagy csoportok. Az SAML-alkalmazás teszteléséhez válassza **egyszeri bejelentkezési**, ad vissza, hogy a **SAML-alapú bejelentkezés** lapot. (Ha más egyszeri bejelentkezési módszert volt érvényben, válassza ki a **egyszeri bejelentkezési mód módosítása** > **SAML** túl.) Ezt a a **egyszeri bejelentkezéssel való teszteléséhez \<alkalmazásnév >** szakaszban kattintson **teszt**. További információkért lásd: [Debug SAML-alapú egyszeri bejelentkezés alkalmazásokhoz az Azure Active Directoryban](../develop/howto-v1-debug-saml-sso-issues.md).
+## <a name="before-you-begin"></a>Előkészületek
 
-## <a name="password-single-sign-on"></a>Jelszavas egyszeri bejelentkezés
+Ha az alkalmazás nem lett hozzáadva az Azure AD-bérlőhöz, tekintse meg [a nem Gallery-alkalmazás hozzáadása](add-non-gallery-app.md)című témakört.
 
-Válassza ezt a beállítást, konfigurálhat [jelszóalapú egyszeri bejelentkezés](what-is-single-sign-on.md) egy bejelentkezési lap HTML-webalkalmazás számára. Jelszavas egyszeri Bejelentkezést, jelszó vaulting, engedélyezi a kezelheti a felhasználói hozzáférés és a jelszavakat a webes alkalmazások, amelyek nem támogatják az identitás-összevonást is hivatkoznak. Emellett akkor is hasznos, ahol több felhasználó kell megosztani egyetlen fiókban, mint például a szervezet közösségi alkalmazás fiókok forgatókönyvekhez.
+## <a name="step-1-edit-the-basic-saml-configuration"></a>1\.lépés Az alapszintű SAML-konfiguráció szerkesztése
 
-Miután kiválasztotta **jelszóalapú**, adja meg az alkalmazás webes bejelentkezési oldal URL-CÍMÉT kéri.
+1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com) Felhőbeli alkalmazás-rendszergazdaként vagy az Azure ad-bérlőhöz tartozó alkalmazás-rendszergazdaként.
 
-![Bejelentkezési URL-címet a bejelentkezési URL-lapját jeleníti meg](./media/configure-single-sign-on-non-gallery-applications/password-based-sso.png)
+2. Navigáljon **Azure Active Directory** > **vállalati alkalmazások** elemre, és válassza ki az alkalmazást a listából. 
+   
+   - Az alkalmazás kereséséhez az **alkalmazás típusa** menüben válassza a **minden alkalmazás**lehetőséget, majd kattintson az **alkalmaz**gombra. Adja meg az alkalmazás nevét a keresőmezőbe, majd válassza ki az alkalmazást az eredmények közül.
 
-Majd hajtsa végre az alábbi lépéseket:
+3. A **kezelés** szakaszban válassza az **egyszeri bejelentkezés**lehetőséget. 
 
-1. Adja meg az URL-címet. Ez a karakterlánc a lapon, a felhasználónév beviteli mezőt kell lennie.
-1. Kattintson a **Mentés** gombra. Az Azure AD megpróbálja elemezni a bejelentkezési lapon adjon meg egy felhasználónevet és jelszót adjon meg.
-1. Ha az Azure ad-ben a elemzési kísérlet sikertelen lesz, válassza ki a **konfigurálása \<alkalmazásnév > jelszó egyszeri bejelentkezési beállításainak** megjelenítéséhez a **bejelentkezés konfigurálása** lap. (Ha a próbálkozás sikerre vezet, figyelmen kívül hagyhatja ezt az eljárást a többi.)
-1. Válassza ki **bejelentkezési mezők manuális észlelése**. A bejelentkezési mezők manuális észlelése további utasítások jelennek meg.
+4. Válassza az **SAML**lehetőséget. Megjelenik az **egyszeri bejelentkezés beállítása az SAML-** előnézettel oldalon.
 
-   ![A jelszóalapú egyszeri bejelentkezés manuális konfigurálása](./media/configure-single-sign-on-non-gallery-applications/password-configure-sign-on.png)
+   ![1\. lépés az alapszintű SAML-konfiguráció szerkesztése](media/configure-single-sign-on-non-gallery-applications/step-one-basic-saml-config.png)
 
-1. Válassza ki **bejelentkezési mezők rögzítése**. Egy rögzítési állapot oldal: az üzenet egy új lapon nyílik meg **metaadatok rögzítése folyamatban van**.
-1. Ha a **hozzáférési Panel bővítmény szükséges** mező megjelenik egy új lapon válassza ki **telepítés most** telepítéséhez a **saját alkalmazások biztonságos bejelentkezési bővítménye** webböngésző-bővítmény. (A webböngésző-bővítmény használatához a Microsoft Edge, Chrome és a Firefox.) Majd telepítse, indítsa el, és engedélyezi a bővítményt, és frissíti a rögzítési állapot lapot.
+5. Az alapszintű SAML-konfigurációs beállítások szerkesztéséhez kattintson a **szerkesztési** ikonra (egy ceruza) az alapszintű SAML- **konfigurációs** szakasz jobb felső sarkában.
 
-   A webböngésző-bővítmény majd megnyílik egy másik lapra, amely megjeleníti a megadott URL-címe.
+1. Adja meg az alábbi beállításokat. Az alkalmazás gyártójától kell beolvasnia az értékeket. Manuálisan is megadhatja az értékeket, vagy feltöltheti a metaadatokat a mezők értékének kinyeréséhez.
 
-1. A megadott URL-CÍMÉT tartalmazó lapra keresse meg a bejelentkezési folyamatot. Töltse ki a felhasználónév és jelszó megadására, és próbáljon meg bejelentkezni. (Nem kell a helyes jelszót adja meg.)
+    | Alapszintű SAML konfigurációs beállítás | SP által kezdeményezve | Identitásszolgáltató által kezdeményezve | Leírás |
+    |:--|:--|:--|:--|
+    | **Azonosító (entitás azonosítója)** | Néhány alkalmazáshoz szükséges | Néhány alkalmazáshoz szükséges | Egyedileg azonosítja az alkalmazást. Az Azure AD elküldi az azonosítót az alkalmazásnak az SAML-jogkivonat célközönségi paramétereként. Az alkalmazásnak el kell érvényesíteni. Ez az érték az alkalmazás által megadott SAML-metaadatok entitásazonosítójaként is megjelenik. *Ezt az értéket megkeresheti az alkalmazás által elküldhető **AuthnRequest** (SAML-kérelem) **kiállító** elemeként.* |
+    | **Válasz URL-cím** | Választható | Kötelező | Megadja, hogy az alkalmazás hová várja az SAML-jogkivonatot. A válasz URL-címet más néven a tényfeldolgozó szolgáltatás (Assertion Consumer Service, ACS) URL-címének hívják. A további válasz URL-címek mezővel több válasz URL-címet is megadhat. Előfordulhat például, hogy több altartományhoz is szüksége van további válasz URL-címekre. Vagy tesztelési célból egyszerre több válasz URL-címet (helyi gazdagépet és nyilvános URL-címeket) is megadhat. |
+    | **Bejelentkezési URL** | Kötelező | Nincs megadva | Amikor egy felhasználó megnyitja ezt az URL-címet, a szolgáltató átirányítja az Azure AD-re a felhasználó hitelesítése és beléptetése érdekében. Az Azure AD az URL-cím használatával indítja el az alkalmazást az Office 365 vagy az Azure AD hozzáférési paneljén. Ha üres, az Azure AD identitásszolgáltató-alapú bejelentkezést hajt végre, amikor egy felhasználó elindítja az alkalmazást az Office 365, az Azure AD hozzáférési paneljén vagy az Azure AD SSO URL-címén.|
+    | **Továbbítás állapota** | Választható | Választható | Megadja az alkalmazásnak, hogy hová irányítsa át a felhasználót a hitelesítés befejezése után. Az érték általában az alkalmazás érvényes URL-címe. Néhány alkalmazás azonban eltérő módon használja ezt a mezőt. További információt az alkalmazás forgalmazójától kérhet.
+    | **Kijelentkezési URL-cím** | Választható | Választható | Az SAML-kijelentkezési válaszok visszaküldésére szolgál az alkalmazásnak.
 
-   Kérdés megkérdezi, hogy mentse a rögzített bejelentkezési mezők.
+További információ: [egyszeri bejelentkezéses SAML protokoll](../develop/single-sign-on-saml-protocol.md).
 
-1. Kattintson az **OK** gombra. Bezárja a lapot, a webböngésző-bővítmény a rögzítési állapotlapon frissíti az üzenet **metaadatok frissítve lett az alkalmazás**, és a böngésző lapon is bezárul.
-1. Az Azure AD-ben **bejelentkezés konfigurálása** lapon jelölje be **rendben, sikerült jelentkezzen be az alkalmazás sikeresen**.
-1. Kattintson az **OK** gombra.
+## <a name="step-2-configure-user-attributes-and-claims"></a>2\.lépés Felhasználói attribútumok és jogcímek konfigurálása 
 
-Után a bejelentkezési oldalon a rögzítési, felhasználók és csoportok lehet hozzárendelni, és beállíthatja a hitelesítőadat-szabályzatok, csakúgy, mint a normál [jelszó egyszeri bejelentkezési alkalmazások](what-is-single-sign-on.md).
+Amikor egy felhasználó hitelesíti magát az alkalmazásban, az Azure AD egy SAML-jogkivonatot bocsát ki a felhasználótól, amely egyedileg azonosítja azokat. Alapértelmezés szerint ez az információ tartalmazza a felhasználó felhasználónevét, e-mail-címét, utónevét és vezetéknevét. Előfordulhat, hogy testre kell szabnia ezeket a jogcímeket, ha például az alkalmazásnak konkrét jogcím-értékeket vagy a felhasználónévtől eltérő **nevet** kell megadni. A Gallery-alkalmazásokra vonatkozó követelményeket az [alkalmazásspecifikus oktatóanyagok](../saas-apps/tutorial-list.md)ismertetik, vagy megkérheti az alkalmazás gyártóját is. A felhasználói attribútumok és jogcímek konfigurálásának általános lépései alább olvashatók.
 
-> [!NOTE]
-> Feltöltheti az alkalmazást a csempe emblémájának a **embléma feltöltése** gombot a **konfigurálása** az alkalmazás lapon.
+1. A **felhasználói attribútumok és** jogcímek szakaszban válassza a jobb felső sarokban található **Szerkesztés** ikont (ceruza).
 
-## <a name="existing-single-sign-on"></a>Meglévő egyszeri bejelentkezés
+   ![2\. lépés – felhasználói attribútumok és jogcímek konfigurálása](media/configure-single-sign-on-non-gallery-applications/step-two-user-attributes-claims.png)
 
-Válassza ki ezt a beállítást, hivatkozás hozzáadása az alkalmazáshoz a szervezet Azure AD hozzáférési Panel vagy az Office 365 portálon. Ez a módszer segítségével, amelyek jelenleg használják az Active Directory összevonási szolgáltatások (vagy más összevonási szolgáltatásból) egyéni webes alkalmazásokra mutató hivatkozások hozzáadása az Azure AD-hitelesítés helyett. Vagy mélyhivatkozással hozzáadása adott SharePoint-oldalakba vagy más weblapokat csak át szeretné megjeleníteni a felhasználók hozzáférési Paneljein.
+2. Ellenőrizze a **név azonosító értékét**. Az alapértelmezett érték a *User. egyszerű név*. A felhasználói azonosító egyedi módon azonosítja az alkalmazás egyes felhasználóit. Ha például az e-mail-cím a felhasználónév és az egyedi azonosító is egyben, állítsa be a *user.mail* értéket.
 
-Miután kiválasztotta **társított**, kéri, hogy az alkalmazás összekapcsolása az URL-címét. Írja be az URL-címet, és válassza ki **mentése**. Felhasználók és csoportok az alkalmazásról, így jelenik meg az alkalmazás engedményezheti a [Office 365 appindítóban](https://blogs.office.com/2014/10/16/organize-office-365-new-app-launcher-2/) vagy a [Azure AD hozzáférési panel](end-user-experiences.md) azoknak a felhasználóknak.
+3. A **név azonosító értékének**módosításához válassza a **név-azonosító érték** mező **Szerkesztés** ikonját (ceruza). Szükség szerint végezze el a megfelelő módosításokat az azonosító formátumán és a forráson. Részletekért lásd: [NameId szerkesztése](https://docs.microsoft.com/azure/active-directory//develop/active-directory-saml-claims-customization#editing-nameid). Mentse a módosításokat, ha elkészült. 
+ 
+4. A csoportos jogcímek konfigurálásához válassza a jogcím mezőben **visszaadott csoportok** **Szerkesztés** ikonját. Részletekért lásd: [csoportos jogcímek konfigurálása](../hybrid/how-to-connect-fed-group-claims.md).
 
-> [!NOTE]
-> Feltöltheti az alkalmazást a csempe emblémájának a **embléma feltöltése** gombot a **konfigurálása** az alkalmazás lapon.
+5. Jogcímek hozzáadásához válassza az **új jogcím hozzáadása** lehetőséget az oldal tetején. Adja meg a **nevet** , és válassza ki a megfelelő forrást. Ha kiválasztja az **attribútum** forrását, ki kell választania a használni kívánt **forrás** -attribútumot. Ha kiválasztja a **fordítási** forrást, ki kell választania a használni kívánt átalakítást és **1. paramétert** . Részletekért lásd: [alkalmazásspecifikus jogcímek hozzáadása](https://docs.microsoft.com/azure/active-directory//develop/active-directory-saml-claims-customization#adding-application-specific-claims). Mentse a módosításokat, ha elkészült. 
 
-## <a name="related-articles"></a>Kapcsolódó cikkek
+6. Kattintson a **Mentés** gombra. Az új jogcím megjelenik a táblában.
 
-- [Útmutató: Vállalati alkalmazásokhoz SAML-jogkivonatban kiadott jogcímek testreszabása](../develop/active-directory-saml-claims-customization.md)
-- [SAML-alapú egyszeri bejelentkezés az Azure Active Directory-alkalmazások hibakeresése](../develop/howto-v1-debug-saml-sso-issues.md)
-- [A Microsoft identity platform (korábbi nevén Azure Active Directory fejlesztők számára)](../develop/index.yml)
+   > [!NOTE]
+   > Az SAML-token Azure AD-ből az alkalmazásba való testreszabásának további módjaiért lásd az alábbi forrásokat.
+   >- Ha egyéni szerepköröket szeretne létrehozni a Azure Portal keresztül, tekintse meg a szerepkör-jogcímek [konfigurálása](../develop/active-directory-enterprise-app-role-management.md)című részt.
+   >- A jogcímek PowerShell használatával történő testreszabásával kapcsolatban lásd: jogcímek [testreszabása – PowerShell](../develop/active-directory-claims-mapping.md).
+   >- Ha módosítani szeretné az alkalmazás jegyzékfájlját az alkalmazás választható jogcímeinek konfigurálásához, tekintse meg a [választható jogcímek konfigurálása](../develop/active-directory-optional-claims.md)című témakört.
+   >- A jogkivonat élettartamára vonatkozó szabályzatok frissítési jogkivonatok, hozzáférési tokenek, munkamenet-tokenek és azonosító tokenek beállításával kapcsolatban lásd: [jogkivonat-élettartamok konfigurálása](../develop/active-directory-configurable-token-lifetimes.md). Ha az Azure AD feltételes hozzáférés használatával szeretné korlátozni a hitelesítési munkameneteket, tekintse meg a [hitelesítési munkamenetek kezelési képességeit](https://go.microsoft.com/fwlink/?linkid=2083106).
+
+## <a name="step-3-manage-the-saml-signing-certificate"></a>3\. lépés. Az SAML aláíró tanúsítvány kezelése
+
+Az Azure AD egy tanúsítványt használ az alkalmazásnak küldött SAML-tokenek aláírásához. Erre a tanúsítványra van szüksége az Azure AD és az alkalmazás közötti megbízhatósági kapcsolat beállításához. A tanúsítvány formátumával kapcsolatos részletekért tekintse meg az alkalmazás SAML-dokumentációját. További információ: [tanúsítványok kezelése összevont egyszeri bejelentkezéshez](manage-certificates-for-federated-single-sign-on.md) és [speciális tanúsítvány-aláírási beállítások az SAML-](certificate-signing-options.md)jogkivonatban.
+
+Az Azure AD-ből az aktív tanúsítvány Base64 vagy RAW formátumban tölthető le közvetlenül az **SAML-t tartalmazó fő set egyszeri bejelentkezéssel** . Azt is megteheti, hogy az aktív tanúsítványt letölti az alkalmazás metaadatainak XML-fájljából, vagy az alkalmazás-összevonási metaadatok URL-címét használja. Ha szeretné megtekinteni, létrehozni vagy letölteni a tanúsítványokat (aktív vagy inaktív), kövesse az alábbi lépéseket.
+
+1. Nyissa meg az **SAML aláíró tanúsítvány** szakaszt. 
+
+   ![3\. lépés az SAML aláíró tanúsítvány kezelése](./media/configure-single-sign-on-non-gallery-applications/step-three-certificate.png)
+
+2. Ellenőrizze, hogy a tanúsítvány rendelkezik-e:
+
+   - *A kívánt lejárati dátum.* A lejárati dátumot akár három évig is beállíthatja a jövőbe.
+   - *A kívánt tanúsítvány aktív állapotának állapota.* Ha az állapot **inaktív**, módosítsa az állapotot **aktív**értékre. Az állapot módosításához kattintson a jobb gombbal a kívánt tanúsítvány sorára, majd válassza a **tanúsítvány aktívvá tétele**lehetőséget.
+   - *A helyes aláírási beállítás és algoritmus.*
+   - *A helyes értesítő e-mail-cím (ek).* Ha az aktív tanúsítvány közel van a lejárati dátumhoz, az Azure AD értesítést küld az ebben a mezőben konfigurált e-mail-címre.
+
+2. A tanúsítvány letöltéséhez válassza ki a Base64 formátum, a nyers formátum vagy az összevonási metaadatok XML-fájljának egyik lehetőségét. Az Azure AD az alkalmazás- **összevonási metaadatok URL-címét** is tartalmazza, ahol az alkalmazáshoz tartozó metaadatokat a `https://login.microsoftonline.com/<Directory ID>/federationmetadata/2007-06/federationmetadata.xml?appid=<Application ID>`következő formátumban érheti el:.
+
+3. A tanúsítványok kezeléséhez, létrehozásához vagy importálásához válassza az **SAML aláíró tanúsítvány** szakasz jobb felső sarkában található **Szerkesztés** ikont (ceruza).
+
+   ![SAML-aláíró tanúsítvány](./media/configure-single-sign-on-non-gallery-applications/saml-signing-certificate.png)
+
+
+   Végezze el az alábbi műveletek bármelyikét:
+
+   - Új tanúsítvány létrehozásához válassza az **új tanúsítvány**lehetőséget, válassza ki a lejárati **dátumot**, majd kattintson a **Mentés**gombra. A tanúsítvány aktiválásához válassza a helyi menüt ( **...** ), majd válassza a **tanúsítvány aktívvá tétele**lehetőséget.
+   - Titkos kulccsal és pfx hitelesítő adatokkal rendelkező tanúsítvány feltöltéséhez válassza a **tanúsítvány importálása** lehetőséget, és keresse meg a tanúsítványt. Adja meg a **pfx-jelszót**, majd kattintson a **Hozzáadás**gombra.  
+   - A speciális tanúsítvány-aláírási beállítások konfigurálásához használja a következő beállításokat. Ezen beállítások leírását a [speciális tanúsítvány-aláírási beállítások](certificate-signing-options.md) című cikkben találja.
+      - Az aláírási lehetőség legördülő listában válassza az **SAML-válasz aláírása**, az **SAML-érvényesítés**aláírása vagy az **SAML-válasz és-állítás aláírása** **lehetőséget** .
+      - Az **aláírási algoritmus** legördülő listában válassza az **SHA-1** vagy az **SHA-256**elemet.
+   - Ha további személyeket szeretne értesíteni, amikor az aktív tanúsítvány a lejárati dátum közelében van, adja meg az e-mail címeket az **értesítő e-mail címek** mezőben.
+
+4. Ha módosította a módosításokat, válassza a **Mentés** lehetőséget az **SAML aláíró tanúsítványa** szakasz tetején. 
+
+## <a name="step-4-set-up-the-application-to-use-azure-ad"></a>4\. lépés. Az alkalmazás beállítása az Azure AD használatára
+
+Az  **\<applicationName > beállítása** szakasz azokat az értékeket sorolja fel, amelyeket az alkalmazásban kell konfigurálni, hogy az Azure ad-t SAML-identitás-szolgáltatóként fogja használni. A szükséges értékek az alkalmazástól függően változnak. Részletekért tekintse meg az alkalmazás SAML-dokumentációját. A dokumentáció megkereséséhez nyissa meg az  **\<alkalmazásnév beállítása >** fejlécet, és válassza a **részletes utasítások megtekintése**lehetőséget. A dokumentáció a bejelentkezési oldal **konfigurálása** lapon jelenik meg. Ezen a lapon megtekintheti a **bejelentkezési URL-cím**, az **Azure ad-azonosító**és a kijelentkezési **URL-**  **\<** értékek kitöltését az alkalmazás nevének beállítása > fejlécben.
+
+1. Görgessen le az  **\<applicationName > beállítása** szakaszhoz. 
+   
+   ![4\. lépés az alkalmazás beállítása](media/configure-single-sign-on-non-gallery-applications/step-four-app-config.png)
+
+1. Szükség szerint másolja a szakasz egyes sorainak értékét, és kövesse az alkalmazáshoz tartozó érték hozzáadására vonatkozó alkalmazásspecifikus útmutatást. A Gallery-alkalmazások esetében megtekintheti a dokumentációt a **részletes utasítások megtekintése**lehetőség kiválasztásával. 
+   - A **bejelentkezési URL-cím** és a kijelentkezési **URL-cím** mindkét esetben ugyanazt a végpontot oldja fel, amely az Azure ad-példány SAML-kérelmének kezelési végpontja. 
+   - Az **Azure ad-azonosító** az alkalmazás számára kiállított SAML-token **kiállítójának** értéke.
+2. Amikor beillesztette az összes értéket a megfelelő mezőkbe, válassza a **Mentés**lehetőséget.
+
+## <a name="step-5-validate-single-sign-on"></a>5\. lépés. Egyszeri bejelentkezés ellenőrzése
+
+Ha úgy konfigurálta az alkalmazást, hogy az Azure AD-t SAML-alapú identitás-szolgáltatóként használja, a beállítások tesztelésével ellenőrizheti, hogy az egyszeri bejelentkezés működik-e a fiókjával. 
+
+2. Görgessen az **egyszeri bejelentkezés <applicationName> ellenőrzése** szakaszhoz.
+
+   ![5\. lépés: az egyszeri bejelentkezés ellenőrzése](media/configure-single-sign-on-non-gallery-applications/step-five-validate.png)
+
+3. Válassza az **Érvényesítés** lehetőséget. Megjelennek a tesztelési beállítások.
+
+4. Válassza **a bejelentkezés aktuális felhasználóként**lehetőséget. 
+
+Ha a bejelentkezés sikeres, készen áll a felhasználók és csoportok hozzárendelésére az SAML-alkalmazáshoz.
+Ha hibaüzenet jelenik meg, hajtsa végre a következő lépéseket:
+
+1. Másolja ki és illessze be a részleteket a **hiba részleteit ismertető** mezőbe.
+
+    ![Feloldási útmutatás beolvasása](media/configure-single-sign-on-portal/error-guidance.png)
+
+2. Válassza a **megoldás**lekérése útmutatást. Megjelenik az alapvető ok és a megoldási útmutató.  Ebben a példában a felhasználó nem lett hozzárendelve az alkalmazáshoz.
+
+3. Olvassa el a megoldási útmutatót, és ha lehetséges, javítsa ki a problémát.
+
+4. Futtassa ismét a tesztet, amíg sikeresnek nem bizonyul.
+
+További információ: [SAML-alapú egyszeri bejelentkezés hibakeresése Azure Active Directory-alkalmazásokban](../develop/howto-v1-debug-saml-sso-issues.md).
+
+## <a name="next-steps"></a>További lépések
+
+- [Felhasználók vagy csoportok társítása az alkalmazáshoz](methods-for-assigning-users-and-groups.md)
+- [A felhasználói fiókok automatikus üzembe helyezésének konfigurálása](configure-automatic-user-provisioning-portal.md)

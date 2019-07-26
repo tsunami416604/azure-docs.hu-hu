@@ -8,12 +8,12 @@ ms.service: container-registry
 ms.topic: quickstart
 ms.date: 05/06/2019
 ms.author: danlep
-ms.openlocfilehash: 9cd2965e64806dded0e5c688b70d07dfcd763f46
-ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
-ms.translationtype: HT
+ms.openlocfilehash: d2132f060076aefe6ae0eccb6d5300c78c96ece5
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68309741"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68356549"
 ---
 # <a name="content-trust-in-azure-container-registry"></a>A tartalmak megbízhatósága az Azure Container Registryben
 
@@ -174,7 +174,7 @@ Az első megbízható rendszerkép leküldésekor a `docker push` kimenetében t
 ~/.docker/trust/private
 ```
 
-A legfelső szintű és az adattárkulcsokat tömörítse archívumba, és tárolja biztonságosan offline (például egy USB-tárolóeszközön). Például a Bashben:
+A gyökér-és adattár-kulcsok biztonsági mentéséhez tömörítse őket egy archívumban, és tárolja biztonságos helyen. Például a Bashben:
 
 ```bash
 umask 077; tar -zcvf docker_private_keys_backup.tar.gz ~/.docker/trust/private; umask 022
@@ -195,7 +195,9 @@ A tartalommegbízhatóság az adatbázisban való letiltásához lépjen az adat
 
 ## <a name="next-steps"></a>További lépések
 
-A tartalom megbízhatóságával kapcsolatos további információkért tekintse meg a [tartalom megbízhatósága a Docker-ben][docker-content-trust] című témakört. Bár több lényeges pontot is érintettünk ebben a cikkben, a tartalommegbízhatóság egy kiterjedtebb téma, amellyel részletesebben a Docker dokumentációja foglalkozik.
+* A tartalom megbízhatóságával kapcsolatos további információkért tekintse meg a [tartalom megbízhatósága a Docker-ben][docker-content-trust] című témakört. Bár több lényeges pontot is érintettünk ebben a cikkben, a tartalommegbízhatóság egy kiterjedtebb téma, amellyel részletesebben a Docker dokumentációja foglalkozik.
+
+* A Docker-rendszerkép létrehozásakor és leküldésekor tekintse meg az [Azure-folyamatok](/azure/devops/pipelines/build/content-trust) dokumentációját.
 
 <!-- IMAGES> -->
 [content-trust-01-portal]: ./media/container-registry-content-trust/content-trust-01-portal.png

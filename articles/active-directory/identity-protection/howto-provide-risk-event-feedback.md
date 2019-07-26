@@ -1,63 +1,63 @@
 ---
-title: Visszajelzés küldése az Azure AD Identity Protection – Azure Active Directory kockázati események
-description: Hogyan és miért érdemes, visszajelzést az Identity Protection kockázati események.
+title: Visszajelzés küldése Azure AD Identity Protection-Azure Active Directory kockázati eseményeiről
+description: Hogyan és miért érdemes visszajelzést adni az Identity Protection kockázati eseményeiről.
 services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
 ms.topic: conceptual
-ms.date: 05/13/2019
+ms.date: 07/19/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 66d53590e89afb1a903b22ff60e32871a1502ada
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6bd0984a78860192f507323491952e895c8de8bf
+ms.sourcegitcommit: c71306fb197b433f7b7d23662d013eaae269dc9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65827905"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68370205"
 ---
-# <a name="how-to-give-risk-feedback-in-azure-ad-identity-protection"></a>kézikönyv: Az Azure AD Identity Protection kockázati visszajelzés
+# <a name="how-to-give-risk-feedback-in-azure-ad-identity-protection"></a>kézikönyv: Kockázati visszajelzés küldése Azure AD Identity Protection
 
-Az Azure AD Identity Protection lehetővé teszi a visszajelzés küldése a saját kockázatértékelésén alapul. A következő dokumentum azokat a forgatókönyveket, hol szeretné visszajelzés küldése az Azure AD Identity Protection kockázatértékelés és hogyan tudjuk tartalmazzák.
+Azure AD Identity Protection lehetővé teszi, hogy visszajelzést nyújtson a kockázatértékelésről. A következő dokumentum felsorolja azokat a forgatókönyveket, amelyekkel visszajelzést szeretne küldeni a Azure AD Identity Protection kockázatértékeléséről és azok beépítéséről.
 
-## <a name="what-is-a-detection"></a>Mi az, egy észlelési?
+## <a name="what-is-a-detection"></a>Mi az észlelés?
 
-Az Identity Protection észlelés a azt jelzi, hogy gyanús tevékenységek identitás kockázati szempontból. Ezek a gyanús tevékenységek kockázati események nevezzük. Az azonosító-alapú észlelések heurisztika alapulhat, gépi tanulás, vagy partner termékek származhatnak. Ezek az észlelések segítségével meghatározhatja a bejelentkezési kockázat és felhasználói kockázat,
+Az Identity Protection-észlelés egy gyanús tevékenységnek az identitás kockázati perspektívájában való jelzése. Ezeket a gyanús tevékenységeket kockázati eseményeknek nevezzük. Ezek az identitás-alapú észlelések heurisztikus, gépi tanulás vagy partner termékekből származhatnak. Ezek az észlelések a bejelentkezési kockázat és a felhasználói kockázat meghatározására szolgálnak.
 
-* Felhasználói kockázat jelöli annak a valószínűsége, az identitás biztonsága sérült.
-* Bejelentkezési kockázati annak a valószínűsége, egy bejelentkezési biztonsága sérül jelöli (például a bejelentkezés nem engedélyezett az identitás tulajdonosa).
+* A felhasználói kockázat azt jelenti, hogy az identitás sérült.
+* A bejelentkezési kockázat azt jelenti, hogy a bejelentkezés valószínűsége sérült (például a bejelentkezést nem az identitás tulajdonosa engedélyezi).
 
-## <a name="why-should-i-give-risk-feedback-to-azure-ads-risk-assessments"></a>Miért kell adni az Azure AD kockázatfelmérések kockázati visszajelzés? 
+## <a name="why-should-i-give-risk-feedback-to-azure-ads-risk-assessments"></a>Miért érdemes kockázati visszajelzést adni az Azure AD kockázatértékeléséhez? 
 
-Miért az Azure AD kockázati visszajelzés adjon több oka is van:
+Az Azure AD kockázati visszajelzésének több oka is van:
 
-1. **Az Azure AD-felhasználó vagy a bejelentkezési kockázatértékelés helytelen található**. Például a "Kockázatos bejelentkezések" jelentésben szereplő bejelentkezési volt jóindulatú, és az, hogy jelentkezzen be minden észlelés téves volt.
-1. **Azt ellenőrzi, hogy az Azure AD-felhasználó, vagy jelentkezzen be a hitelkockázat értékelése megfelelő**. Például a "Kockázatos bejelentkezések" jelentésben szereplő bejelentkezés volt valóban rosszindulatú, és szeretné tudni, hogy az adott bejelentkezési minden észlelés valódi pozitívok volt-e az Azure AD.
-1. **Akkor javítja a kockázat, hogy a felhasználó Azure AD Identity Protection kívül a** és azt szeretné, hogy a felhasználó kockázati szint frissíteni kell.
+- Az **Azure ad felhasználói vagy bejelentkezési kockázatbecslését helytelenül találta**. Például a "kockázatos bejelentkezések" jelentésben látható Bejelentkezés jóindulatú volt, és a bejelentkezéshez tartozó összes észlelés hamis pozitív volt.
+- **Ellenőrizte, hogy az Azure ad felhasználói vagy bejelentkezési kockázatfelmérése helyes volt**. Például a "kockázatos bejelentkezések" jelentésben látható Bejelentkezés valóban rosszindulatú, és azt szeretné, hogy az Azure AD tudja, hogy a bejelentkezés összes észlelése igaz pozitív volt.
+- Kijavította **a kockázatot** a Azure ad Identity Protectionon kívüli felhasználónál, és szeretné frissíteni a felhasználó kockázati szintjét.
 
-## <a name="how-does-azure-ad-use-my-risk-feedback"></a>Milyen Azure AD a kockázati visszajelzés használni?
+## <a name="how-does-azure-ad-use-my-risk-feedback"></a>Hogyan használja az Azure AD a kockázatos visszajelzést?
 
-Az Azure AD visszajelzést használ az alapul szolgáló felhasználói és/vagy bejelentkezési kockázatát frissítéséhez. A visszajelzés biztonságossá tehető a végfelhasználó számára. Például Miután meggyőződött a bejelentkezési biztonsága sérül, közvetlenül az Azure AD növeli a felhasználói kockázat és bejelentkezési a összesített kockázati (nem a valós idejű kockázati) a magas. Ez a felhasználó szerepel a felhasználói kockázati házirend kényszerítése a magas kockázatú felhasználók biztonságosan új jelszót kérjenek, ha a felhasználó automatikusan kijavítja magát a következő alkalommal be.
+Az Azure AD a Visszajelzésével frissíti az alapul szolgáló felhasználó és/vagy bejelentkezés kockázatát, valamint az események pontosságát. Ez a visszajelzés segít a végfelhasználó biztonságossá tételében. Ha például a rendszer megerősíti a bejelentkezést, az Azure AD azonnal növeli a felhasználó kockázatát és a bejelentkezés összesített kockázatát (nem valós idejű kockázat) magasra. Ha ez a felhasználó a felhasználói kockázati házirendben szerepel, hogy a magas kockázatú felhasználókat kényszerítse a jelszavak biztonságos alaphelyzetbe állítására, a felhasználó a következő bejelentkezéskor automatikusan szervizelni fogja magát.
 
-## <a name="how-should-i-give-risk-feedback-and-what-happens-under-the-hood"></a>Hogyan kell adnia kockázati visszajelzést, és mi történik a motorháztető alatt?
+## <a name="how-should-i-give-risk-feedback-and-what-happens-under-the-hood"></a>Hogyan adhatok ki kockázati visszajelzést, és mi történik a motorháztető alatt?
 
-Az alábbiakban a forgatókönyveket és a kockázati visszajelzés küldése az Azure AD-mechanizmus.
+Az alábbi forgatókönyvek és mechanizmusok az Azure AD-re vonatkozó kockázati visszajelzéseket biztosítanak.
 
-| Forgatókönyv | Hogyan visszajelzés? | Mi történik, a motorháztető alatt? | Megjegyzések |
+| Forgatókönyv | Hogyan adhat visszajelzést? | Mi történik a motorháztető alatt? | Megjegyzések |
 | --- | --- | --- | --- |
-| **Jelentkezzen be nem sérült a biztonsága (hamis pozitív)** <br> "Kockázatos bejelentkezések" a jelentés jeleníti meg a kockázatos besorolású bejelentkezési [állapot kockázati veszélyben =] azonban, hogy a bejelentkezés nem feltörték. | Válassza ki a bejelentkezéshez, és kattintson a "Megerősítése be biztonságos". | Azure ad-ben a bejelentkezési összesített kockázati áthelyezi a nincs [kockázati állapot = biztonságos; megerősítve Kockázati szint (összesítés) =-] és a hatása visszafordítja a felhasználói kockázat. | A "Megerősítése be biztonságos" lehetőség jelenleg csak elérhető "Kockázatos bejelentkezések" jelentésben. |
-| **Jelentkezzen be sérült a biztonsága (valódi pozitív)** <br> "Kockázatos bejelentkezések" a jelentés jeleníti meg a kockázatos besorolású bejelentkezési [állapot kockázati veszélyben =] kevés kockázattal rendelkező [kockázati szint (összesítés) = alacsony] és a bejelentkezési valóban feltörték. | Válassza ki a bejelentkezéshez, és kattintson a "Megerősítése bejelentkezési megsérül". | Az Azure AD helyezi át a bejelentkezési összesített kockázati és a felhasználói kockázat nagy [kockázati állapot = biztonsága sérült; megerősítve Kockázati szint = magas]. | A "megerősítése bejelentkezési megsérül" lehetőség jelenleg csak elérhető "Kockázatos bejelentkezések" jelentésben. |
-| **Feltört felhasználói (valódi pozitív)** <br> "Kockázatos felhasználók" a jelentés jeleníti meg a kockázatos besorolású felhasználóként [állapot kockázati veszélyben =] kevés kockázattal rendelkező [kockázati szint = alacsony] és, hogy a felhasználó valóban feltörték. | Válassza ki a felhasználót, majd kattintson a "Feltört megerősítése felhasználó". | Az Azure AD át a felhasználói kockázat nagy [állapot kockázati = biztonsága sérült; megerősítve Kockázati szint = magas] és hozzáad egy új észlelése "Megerősített feltört felhasználói rendszergazda". | A "Feltört megerősítése felhasználó" lehetőség jelenleg "Kockázatos felhasználók" jelentésben csak érhető el. <br> Az észlelés a "Nincs felhasználóhoz kapcsolva, a bejelentkezési kockázati események" lapon a "Kockázatos felhasználók" jelentés "Megerősített feltört felhasználói rendszergazda" látható. |
-| **Az Azure AD Identity Protection (valódi pozitív + Remediated) kívül szervizelt felhasználói** <br> "Kockázatos felhasználók" a jelentés jeleníti meg a kockázatos besorolású felhasználóként, és ezt követően I rendelkezik javítja a felhasználó Azure AD Identity Protection kívül. | 1. Válassza ki a felhasználót, és kattintson a "Feltört megerősítése felhasználó". (Ez a folyamat megerősíti, hogy az Azure ad-hez, hogy a felhasználó valóban feltörték.) <br> 2. Várjon, amíg a felhasználó "kockázati szintje: magas ugorhat. (Ez idő lehetőséget biztosít az Azure AD szükséges idő a fenti visszajelzés figyelembe a kockázat motoron.) <br> 3. Válassza ki a felhasználót, és kattintson a "Felhasználói kockázat elvetése" gombra. (Ez a folyamat megerősíti, hogy az Azure ad-hez, hogy a felhasználó már nem sérül.) |  Az Azure AD a felhasználói kockázat áthelyezi a nincs [állapot kockázati Dismissed; = Kockázati szint =-], és bezárja az összes meglévő bejelentkezés aktív kockázati kellene a kockázatokat. | "Elvetés felhasználói kockázat" gombra kattintva bezáródik a minden kockázat a felhasználóra és múltbeli bejelentkezések. Ez a művelet nem vonható vissza. |
-| **Felhasználó nem sérült a biztonsága (hamis pozitív)** <br> "Kockázatos felhasználók" a jelentés jeleníti meg a kockázatos besorolású felhasználó, de a felhasználó nem sérül. | Válassza ki a felhasználót, és kattintson a "Felhasználói kockázat elvetése" gombra. (Ez a folyamat megerősíti, hogy az Azure ad-hez, hogy a felhasználó nem sérül.) | Az Azure AD a felhasználói kockázat áthelyezi a nincs [állapot kockázati Dismissed; = Kockázati szint =-]. | "Elvetés felhasználói kockázat" gombra kattintva bezáródik a minden kockázat a felhasználóra és múltbeli bejelentkezések. Ez a művelet nem vonható vissza. |
-| Zárja be a felhasználói kockázat szeretnék, de nem biztos, hogy a felhasználó feltört / biztonságos-e. | Válassza ki a felhasználót, és kattintson a "Felhasználói kockázat elvetése" gombra. (Ez a folyamat megerősíti, hogy az Azure ad-hez, hogy a felhasználó már nem sérül.) | Az Azure AD a felhasználói kockázat áthelyezi a nincs [állapot kockázati Dismissed; = Kockázati szint =-]. | "Elvetés felhasználói kockázat" gombra kattintva bezáródik a minden kockázat a felhasználóra és múltbeli bejelentkezések. Ez a művelet nem vonható vissza. Javasoljuk, hogy javítsa a felhasználó a "Jelszó alaphelyzetbe állítása" gombra kattintva, vagy a felhasználó biztonságosan alaphelyzetbe állítása és módosítása a hitelesítő adatok igényléséhez. |
+| **Bejelentkezés nem sérült (hamis pozitív)** <br> A "kockázatos bejelentkezések" jelentésben a kockázatos bejelentkezés [kockázati állapot = veszélyeztetett] látható, de a bejelentkezés nem sérült meg. | Válassza ki a bejelentkezést, és kattintson a "Bejelentkezés biztonságos megerősítése" elemre. | Az Azure AD áthelyezi a bejelentkezés összesített kockázatát, hogy egyik sem [kockázati állapot = megerősített biztonság; Kockázati szint (aggregált) =-], és megfordítja a felhasználói kockázatra gyakorolt hatását. | Jelenleg a "bejelentkezési biztonság megerősítése" beállítás csak a "kockázatos bejelentkezések" jelentésben érhető el. |
+| **Bejelentkezés feltört (igaz pozitív)** <br> A "kockázatos bejelentkezések" jelentés a kockázatos bejelentkezési [kockázati állapot = kockázat] értéket jeleníti meg, alacsony kockázatú [kockázati szint (aggregált) = alacsony], és a bejelentkezés valóban sérült. | Válassza ki a bejelentkezést, és kattintson a "Bejelentkezés megerősítése – feltört" elemre. | Az Azure AD áthelyezi a bejelentkezés összesített kockázatát, és a kockázat a magas [kockázat állapot = megerősítve: sérült; Kockázati szint = magas]. | Jelenleg a "megerősítő bejelentkezés megerősítése" beállítás csak a "kockázatos bejelentkezések" jelentésben érhető el. |
+| **Felhasználó által megsérült (igaz pozitív)** <br> A "kockázatos felhasználók" jelentés a kockázatos [kockázati állapot = kockázat] kockázati tényezőt jeleníti meg, amely alacsony kockázatú [kockázati szint = alacsony], és a felhasználót valóban feltörték. | Válassza ki a felhasználót, és kattintson a "felhasználó megerősítve" lehetőségre. | Az Azure AD áthelyezi a felhasználói kockázatot a magas [kockázati állapot = megerősített sérült; Kockázati szint = magas] és felvesz egy új észlelési "rendszergazda által megerősített felhasználó sérült". | Jelenleg a "felhasználói biztonság megerősítése" beállítás csak a "kockázatos felhasználók" jelentésben érhető el. <br> A "rendszergazda által megerősített felhasználó által megsérült" észlelés a "kockázatos felhasználók" jelentés "bejelentkezéshez nem kapcsolódó" lapján jelenik meg. |
+| **A Azure AD Identity Protectionon kívüli szervizelt felhasználó (valódi pozitív és szervizelt)** <br> A "kockázatos felhasználók" jelentés egy veszélyeztetett felhasználót mutat be, és a későbbiekben a Azure AD Identity Protectionon kívül szervizelem a felhasználót. | 1. Válassza ki a felhasználót, és kattintson a "felhasználó által feltörtek megerősítése" gombra. (Ez a folyamat megerősíti az Azure AD-t, hogy a felhasználó valóban sérült.) <br> 2. Várjon, amíg a felhasználó "kockázati szintje" magasra mutat. (Ezúttal az Azure AD számára szükséges időt biztosít a fenti visszajelzések elvégzéséhez a kockázati motornak.) <br> 3. Válassza ki a felhasználót, és kattintson a "felhasználói kockázat elvetése" gombra. (Ez a folyamat megerősíti az Azure AD-t, hogy a felhasználó már nem sérült.) |  Az Azure AD a következő kockázatokat helyezi át a felhasználónak: nincs [kockázati állapot = elutasítva; Kockázati szint =-], és az aktív kockázattal rendelkező összes meglévő bejelentkezés kockázatának kizárja. | Ha a "felhasználói kockázat elvetése" gombra kattint, a rendszer bezárja a felhasználó és a korábbi bejelentkezések összes kockázatát. A művelet nem vonható vissza. |
+| **A felhasználó nem sérült (hamis pozitív)** <br> A "kockázatos felhasználók" jelentés a veszélyeztetett felhasználónál jelenik meg, de a felhasználó nem sérül. | Válassza ki a felhasználót, és kattintson a "felhasználói kockázat elvetése" gombra. (Ez a folyamat megerősíti az Azure AD-t, hogy a felhasználó nem sérült.) | Az Azure AD a következő kockázatokat helyezi át a felhasználónak: nincs [kockázati állapot = elutasítva; Kockázati szint =-]. | Ha a "felhasználói kockázat elvetése" gombra kattint, a rendszer bezárja a felhasználó és a korábbi bejelentkezések összes kockázatát. A művelet nem vonható vissza. |
+| Le szeretném állítani a felhasználói kockázatot, de nem vagyok biztos benne, hogy a felhasználó biztonságban van-e. | Válassza ki a felhasználót, és kattintson a "felhasználói kockázat elvetése" gombra. (Ez a folyamat megerősíti az Azure AD-t, hogy a felhasználó már nem sérült.) | Az Azure AD a következő kockázatokat helyezi át a felhasználónak: nincs [kockázati állapot = elutasítva; Kockázati szint =-]. | Ha a "felhasználói kockázat elvetése" gombra kattint, a rendszer bezárja a felhasználó és a korábbi bejelentkezések összes kockázatát. A művelet nem vonható vissza. Javasoljuk, hogy a "jelszó alaphelyzetbe állítása" gombra kattintva javítsa a felhasználót, vagy kérje meg a felhasználótól a hitelesítő adatok biztonságos visszaállítását/módosítását. |
 
-Felhasználói kockázati események az Identity Protection a visszajelzés feldolgozása kapcsolat nélküli módban, és frissítése hosszabb időt is igénybe vehet. A kockázat állam oszlop feldolgozása biztosít a visszajelzés feldolgozása aktuális állapotát.
+A rendszer offline állapotba dolgozza fel a felhasználói kockázati eseményekre vonatkozó visszajelzéseket, és eltarthat egy ideig a frissítéshez. A kockázat-feldolgozási állapot oszlop a visszajelzések feldolgozásának aktuális állapotát fogja biztosítani.
 
-![Kockázati kockázatos felhasználói jelentés feldolgozási állapota](./media/howto-provide-risk-event-feedback/risky-users-provide-feedback.png)
+![Kockázat-feldolgozási állapot a kockázatos felhasználói jelentéshez](./media/howto-provide-risk-event-feedback/risky-users-provide-feedback.png)
 
 ## <a name="next-steps"></a>További lépések
 
-[Az Azure Active Directory Identity Protection kockázati események leírása](risk-events-reference.md)
+[Azure Active Directory Identity Protection kockázati események referenciája](risk-events-reference.md)

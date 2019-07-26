@@ -63,6 +63,8 @@
           href: how-vs-code-works-with-dev-spaces.md
     - name: Útmutató
       items:
+        - name: Az Azure Dev Spaces telepítése
+          href: how-to/install-dev-spaces.md
         - name: Kubernetes-fürt létrehozása az Azure Cloud Shell-lel
           href: how-to/create-cluster-cloud-shell.md
         - name: Azure Dev Spaces megosztása
@@ -81,5 +83,7 @@
           href: ../jenkins/tutorial-jenkins-dev-spaces.md
         - name: Üzletmenet-folytonosság és vészhelyreállítás az Azure Dev Spaceshez
           href: how-to/dev-spaces-business-continuity.md
+        - name: Windows-tárolók használata
+          href: how-to/run-dev-spaces-windows-containers.md
     - name: Hibaelhárítás
       href: troubleshooting.md

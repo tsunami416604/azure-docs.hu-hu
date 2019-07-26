@@ -1,6 +1,6 @@
 ---
-title: Tekintse át az Azure-előfizetés elszámolási adatok REST API-val |} A Microsoft Docs
-description: Ismerje meg, tekintse át az előfizetés számlázási adatait az Azure REST API-k használatával.
+title: Az Azure-előfizetés számlázási adatainak áttekintése a REST APIkal | Microsoft Docs
+description: Ismerje meg, hogyan tekintheti át az előfizetés számlázási adatait az Azure REST API-k használatával.
 services: billing
 documentationcenter: na
 author: lleonard-msft
@@ -13,21 +13,21 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/06/2018
-ms.author: erikre
-ms.openlocfilehash: 0a73462b7fdbaf6386a3051a72da755f31ff8dd2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: banders
+ms.openlocfilehash: 8cfa429b18fb282f5c1f85d2fd1637704653b855
+ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65192135"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68443052"
 ---
-# <a name="review-subscription-billing-using-rest-apis"></a>Tekintse át az előfizetés számlázási REST API-k használatával
+# <a name="review-subscription-billing-using-rest-apis"></a>Előfizetés számlázásának áttekintése REST API-k használatával
 
-Az Azure Reporting API-k segítségével tekintse át és az Azure-költségek kezeléséhez.
+Az Azure Reporting API-k segítik az Azure-költségek áttekintését és kezelését.
 
-Szűrők segítségével testre szabhatja az eredményeket, hogy az igényeinek.
+A szűrők segítségével testre szabhatja az eredményeket, hogy megfeleljen az igényeinek.
 
-Itt megtudhatja, egy REST API használatával adja vissza az előfizetés számlázási adatait a megadott dátumtartományban.
+Itt megtudhatja, hogy egy REST API használatával adja vissza az előfizetés számlázási adatait egy adott Dátumtartomány alapján.
 
 ``` http
 GET https://management.azure.com/subscriptions/${subscriptionID}/providers/Microsoft.Billing/billingPeriods/${billingPeriod}/providers/Microsoft.Consumption/usageDetails?$filter=properties/usageEnd ge '${startDate}' AND properties/usageEnd le '${endDate}'
@@ -37,22 +37,22 @@ Authorization: Bearer
 
 ## <a name="build-the-request"></a>A kérelem létrehozása
 
-A `{subscriptionID}` paraméter megadása kötelező, és azonosítja a cél előfizetésben.
+A `{subscriptionID}` paraméter megadása kötelező, és azonosítja a célként megadott előfizetést.
 
-A `{billingPeriod}` paraméter megadása kötelező, és adja meg az aktuális [számlázási időszak](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-billing-periods).
+A `{billingPeriod}` paraméter megadása kötelező, és az aktuális [Számlázási időszakot](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-billing-periods)határozza meg.
 
-A `${startDate}` és `${endDate}` paraméterei ebben a példában megadása kötelező, de a végpont nem kötelező. A dátumtartomány karakterláncként, éééé-hh-nn formátumban kell adnia (példák: `'20180501'` és `'20180615'`).
+Ehhez `${startDate}` a `${endDate}` példához a és a paraméterek szükségesek, de a végponthoz nem kötelező megadni. A dátumtartományt az éééé-hh-nn (például: `'20180501'` és `'20180615'`) formátumú karakterláncok formájában határozzák meg.
 
-A következő fejléceket szükség:
+A következő fejlécek szükségesek:
 
 |Kérelem fejléce|Leírás|
 |--------------------|-----------------|
-|*Content-Type:*|Kötelező. Állítsa be `application/json`.|
-|*Authorization:*|Kötelező. Egy érvényes értékre `Bearer` [hozzáférési jogkivonat](https://docs.microsoft.com/rest/api/azure/#authorization-code-grant-interactive-clients). |
+|*Content-Type:*|Kötelező. Állítsa a `application/json`következőre:.|
+|*Authorization:*|Kötelező. Érvényes `Bearer` [hozzáférési](https://docs.microsoft.com/rest/api/azure/#authorization-code-grant-interactive-clients)jogkivonatra van beállítva. |
 
 ## <a name="response"></a>Válasz
 
-Állapotkód: 200 (OK) adja vissza a sikeres válasz, amely a fiók költségeinek részletes listáját tartalmazza.
+Sikeres válasz esetén a 200-as (OK) állapotkódot adja vissza a rendszer, amely a fiók részletes költségeinek listáját tartalmazza.
 
 ``` json
 {
@@ -79,22 +79,22 @@ A következő fejléceket szükség:
 }
 ```
 
-Egyes elemeiről **érték** egy szolgáltatás használatával kapcsolatos részletes adatait jelenti:
+Az **érték** minden eleme a szolgáltatás használatára vonatkozó részleteket jelöl:
 
 |Válasz tulajdonság|Leírás|
 |----------------|----------|
 |**subscriptionGuid** | Az előfizetés globálisan egyedi azonosítója. |
-|**Kezdődátum** | Dátum lépések használatát. |
-|**endDate** | Dátum ért használatát. |
+|**startDate** | A használat megkezdésének dátuma. |
+|**endDate** | A használat befejezésének dátuma. |
 |**useageQuantity** | Felhasznált mennyiség. |
-|**billableQuantity** | Mennyiség ténylegesen számlázzuk. |
-|**pretaxCost** | Számlázott, mielőtt adót költsége. |
-|**meterDetails** | Részletes információk a használatát. |
-|**nextLink**| Ha a beállítás, a részletek a következő "lap" URL-címet. Ha az oldal az utolsót üres. |
+|**billableQuantity** | Ténylegesen számlázott mennyiség. |
+|**pretaxCost** | A számlázott költségeket a vonatkozó adók előtt kell fizetni. |
+|**meterDetails** | Részletes információk a használatáról. |
+|**nextLink**| Ha be van állítva, a részletek a következő "oldal" URL-címét adja meg. Üres, ha a lap az utolsó. |
 
-Ebben a példában a rendszer rövidítéseket tartalmaz; Lásd: [listázása a használat részleteiről](https://docs.microsoft.com/rest/api/consumption/usagedetails/list#usagedetailslistforbillingperiod) minden válasz mező teljes leírását.
+Ez a példa rövidítve van; a válasz mezőinek teljes leírását lásd: a [használati adatok listázása](https://docs.microsoft.com/rest/api/consumption/usagedetails/list#usagedetailslistforbillingperiod) .
 
-Más állapotkódok hibaállapotok jelzik. Ezekben az esetekben a Válaszobjektum azt ismerteti, miért érdemes a kérelem sikertelen volt.
+Más állapotkódok a hibák feltételeit jelölik. Ezekben az esetekben a válasz objektum megmagyarázza, miért nem sikerült a kérelem végrehajtása.
 
 ``` json
 {
@@ -108,6 +108,6 @@ Más állapotkódok hibaállapotok jelzik. Ezekben az esetekben a Válaszobjektu
 ```
 
 ## <a name="next-steps"></a>További lépések
-- Felülvizsgálat [Enterprise reporting áttekintése](https://docs.microsoft.com/azure/billing/billing-enterprise-api)
-- Vizsgálja meg [vállalati számlázási REST API](https://docs.microsoft.com/rest/api/billing/)
-- [Azure REST API használatának első lépései](https://docs.microsoft.com/rest/api/azure/)
+- A [vállalati jelentéskészítés áttekintésének áttekintése](https://docs.microsoft.com/azure/billing/billing-enterprise-api)
+- [Vállalati számlázási REST API](https://docs.microsoft.com/rest/api/billing/) vizsgálata
+- [Ismerkedés az Azure REST API](https://docs.microsoft.com/rest/api/azure/)

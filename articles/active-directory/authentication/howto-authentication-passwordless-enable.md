@@ -11,19 +11,19 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 79f5eba18e34f65f7bc8a625babca92b86e06b4c
-ms.sourcegitcommit: 10251d2a134c37c00f0ec10e0da4a3dffa436fb3
+ms.openlocfilehash: ad2f25aac7f74c74eb63fd4666c5184ae751ec1f
+ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/13/2019
-ms.locfileid: "67867321"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68499936"
 ---
 # <a name="enable-passwordless-sign-in-for-azure-ad-preview"></a>Jelszó nélküli bejelentkezés engedélyezése az Azure AD-ben (előzetes verzió)
 
 ## <a name="requirements"></a>Követelmények
 
 * Azure Multi-Factor Authentication
-* A kombinált regisztráció előzetes verziója
+* Kombinált regisztráció előzetes verziója a SSPR engedélyezett felhasználók számára
 * A FIDO2 biztonsági kulcs előzetes verziójának kompatibilis FIDO2 biztonsági kulcsokra van szüksége
 * A WebAuthN használatához a Microsoft Edge szükséges a Windows 10 1809-es vagy újabb verziójához
 * A FIDO2-alapú Windows-bejelentkezéshez az Azure AD-hez csatlakoztatott Windows 10 1809-es vagy újabb verziójára van szükség
@@ -59,7 +59,7 @@ A hitelesítő adatok szolgáltatójának engedélyezéséhez a következő egy�
       1. Név: A Windows-bejelentkezéshez tartozó a biztonsági kulcsok bekapcsolása
       1. OMA-URI:./Device/Vendor/MSFT/PassportForWork/SecurityKey/UseSecurityKeyForSignin
       1. Adattípus: Egész szám
-      1. Érték 1 
+      1. Érték: 1 
 1. Ezt a házirendet meghatározott felhasználókhoz, eszközökhöz vagy csoportokhoz lehet hozzárendelni. További információt a következő cikkben talál: [Microsoft Intune felhasználói és eszköz profiljának társítása](https://docs.microsoft.com/intune/device-profile-assign).
 
 ![Egyéni Intune-eszköz konfigurációs szabályzatának létrehozása](./media/howto-authentication-passwordless-enable/intune-custom-profile.png)

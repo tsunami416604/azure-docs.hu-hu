@@ -1,7 +1,7 @@
 ---
-title: Keresési kérések küldését a Bing Videókeresési API
-titlesuffix: Azure Cognitive Services
-description: Ismerje meg a keresési lekérdezéseket küld a Bing Videókeresési API.
+title: Keresési kérelmek küldése a Bing Video Search APInak
+titleSuffix: Azure Cognitive Services
+description: További információ a keresési lekérdezések küldéséről a Bing Video Search API.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,16 +10,16 @@ ms.subservice: bing-video-search
 ms.topic: overview
 ms.date: 06/24/2019
 ms.author: aahi
-ms.openlocfilehash: bf0f74fe76ec7a83e0ce23ca83141276a677a5df
-ms.sourcegitcommit: 10251d2a134c37c00f0ec10e0da4a3dffa436fb3
+ms.openlocfilehash: f1d433dd7d919aa5d11f2f59b74a5e3f2dca0b59
+ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/13/2019
-ms.locfileid: "67868087"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68500285"
 ---
-# <a name="search-for-videos-with-the-bing-video-search-api"></a>Keressen videókat a Bing Videókeresési API
+# <a name="search-for-videos-with-the-bing-video-search-api"></a>Videók keresése a Bing Video Search API
 
-A Bing Videókeresési API megkönnyíti a Bing cognitive news keresési képességek integrálása az alkalmazásokba. Bár az API-t elsősorban megkeresi és releváns videókat a weben adja vissza, számos funkciót kínál intelligens és összpontosítás videó lekéréséhez a weben.
+A Bing Video Search API megkönnyíti a Bing kognitív Hírek keresési funkcióinak integrálását az alkalmazásokba. Habár az API elsősorban a Web-ről keres és ad vissza releváns videókat, számos funkciót kínál az intelligens és a célzott videó-lekéréshez a weben.
 
 ## <a name="getting-videos"></a>Videók lekérése
 
@@ -96,9 +96,9 @@ A válasz tartalmaz egy [Videos](https://docs.microsoft.com/rest/api/cognitivese
 }
 ```
 
-## <a name="video-thumbnails"></a>Videóminiatűrök
+## <a name="video-thumbnails"></a>Videós miniatűrök
 
-Megjelenítheti az összes, vagy a Bing Video Search API által visszaadott a videóminiatűrök egy részét. Ha csak a miniatűrök egy részét jeleníti meg, biztosítson lehetőséget a felhasználónak a többi videó megtekintésére. a Bing API részeként [használja, és megjelenítési követelményeihez](../UseAndDisplayRequirements.md), meg kell jelenítenie a videók a válaszban megadott sorrendben. A miniatűrök átméretezésével kapcsolatos információkért lásd a [miniatűrök átméretezésével és körülvágásával](../../bing-web-search/resize-and-crop-thumbnails.md) foglalkozó szakaszt. 
+Megjelenítheti az Bing Video Search API által visszaadott videó-miniatűrök összes elemét vagy egy részhalmazát. Ha csak a miniatűrök egy részét jeleníti meg, biztosítson lehetőséget a felhasználónak a többi videó megtekintésére. a Bing API [használati és megjelenítési követelményeinek](../UseAndDisplayRequirements.md)részeként a videókat a válaszban megadott sorrendben kell megjeleníteni. A miniatűrök átméretezésével kapcsolatos információkért lásd a [miniatűrök átméretezésével és körülvágásával](../../bing-web-search/resize-and-crop-thumbnails.md) foglalkozó szakaszt. 
 
 A [motionThumbnailUrl](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#video-motionthumbnailurl) használatával beállíthatja, hogy ha a felhasználó a miniatűr fölé viszi a mutatót, akkor elinduljon a videó miniatűr verziójának lejátszása. Ügyeljen arra, hogy megjelenítse a mozgó miniatűr forrását.
 
@@ -106,7 +106,7 @@ A [motionThumbnailUrl](https://docs.microsoft.com/rest/api/cognitiveservices-bin
 ![Motion thumbnail of a video](../bing-web-search/media/cognitive-services-bing-web-api/bing-web-video-motion-thumbnail.PNG)
 -->
 
-A miniatűr kattintáskor három lehetőség áll rendelkezésre a videó megtekintése:
+Ha egy miniatűrre kattint, három lehetőség van a videó megtekintésére:
 
 - [hostPageUrl](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#video-hostpageurl) használata esetén a videó az eredeti webhelyen (például a YouTube-on) tekinthető meg;
 - [webSearchUrl](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#video-websearchurl) használata esetén a videó a Bing videóböngészőjében tekinthető meg;
@@ -144,7 +144,7 @@ Host: api.cognitive.microsoft.com
 
 ## <a name="expanding-the-query"></a>A lekérdezés bővítése
 
-Ha a Bing ki tudja bővíteni a lekérdezést az eredeti keresés szűkítéséhez, a [Videos](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#videos) objektumban szerepelni fog a `queryExpansions` mező. Például, ha a lekérdezés a(z) *tisztítás ekkor*, lehet, hogy a kibontott lekérdezéseket: Kötésmargó tisztítás **eszközök**, ekkor tisztítás **egészen az alapoktól**, kötésmargó tisztítás **gép**, és **könnyen** kötésmargó tisztítás.
+Ha a Bing ki tudja bővíteni a lekérdezést az eredeti keresés szűkítéséhez, a [Videos](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#videos) objektumban szerepelni fog a `queryExpansions` mező. Ha például a lekérdezés a *csatornák tisztítását*használta, a kibontott lekérdezések a következőket tehetik: A ereszcsatorna tisztító **eszközei**, **a lemez**tisztítása, a **ereszcsatorna tisztítása**és az **Easy** ereszcsatorna tisztítása.
 
 Az alábbi példában a *Cleaning Gutters* bővített lekérdezései láthatók.
 

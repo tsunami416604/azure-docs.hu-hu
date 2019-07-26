@@ -1,6 +1,6 @@
 ---
-title: Biztonsági adatok (előzetes verzió) beállítása a biztonsági kérdések – Azure Active Directory használatára |} A Microsoft Docs
-description: Hogyan állítható be a biztonsági adatok ellenőrzése az identitás használatával előre definiált biztonsági kérdések.
+title: Biztonsági kérdések (előzetes verzió) beállítása biztonsági kérdések használatára – Azure Active Directory | Microsoft Docs
+description: A biztonsági adatok beállítása a személyazonosság ellenőrzéséhez előre definiált biztonsági kérdések használatával.
 services: active-directory
 author: eross-msft
 manager: daveba
@@ -12,82 +12,88 @@ ms.topic: conceptual
 ms.date: 02/13/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3e5d1546c658631911f25c43e94275f00c7a5140
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: f1c375b64d93662ec50923078549c4f2153fba0a
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60474590"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68382812"
 ---
-# <a name="set-up-security-info-preview-to-use-security-questions"></a>Biztonsági adatok (előzetes verzió) beállítása a biztonsági kérdések használata
-Követheti a következő lépésekkel adhatja hozzá a jelszó-visszaállítási mód. Miután beállította a először, visszatérhet a **biztonsági adatok** lap hozzáadása, frissítése vagy törlése a biztonsági információkat.
+# <a name="set-up-security-info-preview-to-use-security-questions"></a>Biztonsági kérdések (előzetes verzió) beállítása biztonsági kérdések használatára
 
-Miután beállította a jelszó-visszaállítási mód, is be kell állítania a kétfaktoros hitelesítési módszer, használatával egy [hitelesítő alkalmazás](security-info-setup-auth-app.md), [szöveges üzenetküldés](security-info-setup-text-msg.md), vagy egy [telefonhívás](security-info-setup-phone-number.md).
+A jelszó-visszaállítási módszer hozzáadásához kövesse az alábbi lépéseket. Az első beállítás után visszatérhet a **biztonsági** információ lapra a biztonsági adatok hozzáadásához, frissítéséhez vagy törléséhez.
+
+A jelszó-visszaállítási módszer beállítása után a kétfaktoros ellenőrzési módszert is be kell állítania a [hitelesítő alkalmazás](security-info-setup-auth-app.md), a [szöveges üzenetküldés](security-info-setup-text-msg.md)vagy egy [telefonhívás](security-info-setup-phone-number.md)használatával.
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-end-user-preview-notice-security-info.md)]
 
-## <a name="set-up-your-security-questions-from-the-security-info-page"></a>A biztonsági adatok weblapját a biztonsági kérdések beállítása
-Attól függően, a szervezet beállításait válassza ki, és néhány biztonsági kérdések megválaszolása, a biztonsági adatok módszerek egyike előfordulhat, hogy lehet. A rendszergazda állítja be, hogy válassza ki, és válaszoljon a biztonsági kérdések számát.
+## <a name="set-up-your-security-questions-from-the-security-info-page"></a>Biztonsági kérdések beállítása a biztonsági adatok lapról
 
-Biztonsági kérdések használatakor javasoljuk egy másik módszerrel együtt használja őket. Biztonsági kérdések kevésbé biztonságos, mint más módszerekkel lehet, mivel vannak, akik előfordulhat, hogy a kérdésekre adott válaszokat.
+A szervezet beállításaitól függően lehetséges, hogy néhány biztonsági kérdést választ ki és válaszol a biztonsági adatok egyik módszerei közül. A rendszergazda beállítja a kiválasztáshoz és a válaszadáshoz szükséges biztonsági kérdések számát.
+
+Ha biztonsági kérdéseket használ, azt javasoljuk, hogy más módszerekkel együtt használja őket. A biztonsági kérdések kevésbé biztonságosak, mint a többi módszer, mert egyesek tudomásul veszik a kérdéseire adott válaszokat.
 
 > [!Note]
-> Biztonsági kérdések a címtárban lévő felhasználói objektum a privát módon és biztonságosan tárolja, és csak választ, a regisztráció során. Nincs lehetőség a olvasni vagy módosítani a kérdések és válaszok a rendszergazdának.
-> 
-> Ha a biztonsági kérdések beállítás nem jelenik meg, lehetséges, hogy a szervezet nem engedélyezi, hogy az ellenőrző biztonsági kérdéseket. Ha ez a helyzet, szüksége lesz egy másik módszer kiválasztásához, vagy további segítségért forduljon a rendszergazdához.
-> 
-> Rendszergazdai fiókok nem engedélyezettek a biztonsági kérdések használatára, mert a jelszó-létrehozási módszer. Ha egy rendszergazda szintű fiókkal van bejelentkezve nem láthatja el ezeket a beállításokat.
+> A biztonsági kérdéseket a címtárban lévő felhasználói objektumon tárolja a rendszer, és a szolgáltatás csak a regisztráció során válaszol. A rendszergazda semmilyen módon nem tudja elolvasni vagy módosítani a kérdéseit és válaszait.
+>
+> Ha nem jelenik meg a biztonsági kérdések lehetőség, akkor előfordulhat, hogy a szervezet nem teszi lehetővé biztonsági kérdések használatát az ellenőrzéshez. Ebben az esetben másik módszert kell választania, vagy további segítségért forduljon a rendszergazdához.
+>
+> A rendszergazdai fiókok nem jogosultak biztonsági kérdések használatára jelszó-visszaállítási módszerként. Ha rendszergazdai szintű fiókkal jelentkezett be, ezeket a beállításokat nem fogja látni.
 
-### <a name="to-set-up-your-security-questions"></a>A biztonsági kérdések beállítása
+### <a name="to-set-up-your-security-questions"></a>Biztonsági kérdések beállítása
 
-1. Jelentkezzen be munkahelyi vagy iskolai fiókjával, és keresse meg a https://myprofile.microsoft.com/ lapot.
+1. Jelentkezzen be a munkahelyi vagy iskolai fiókjába, majd lépjen a https://myprofile.microsoft.com/ lapra.
 
-    ![Saját profil lapot, amely a kijelölt biztonsági adatai hivatkozások](media/security-info/securityinfo-myprofile-page.png)
+    ![Saját profil oldal, kiemelt biztonsági információs hivatkozások megjelenítése](media/security-info/securityinfo-myprofile-page.png)
 
-2. Válassza ki **biztonsági adatok** a bal oldali navigációs ablaktáblán vagy a hivatkozás a **biztonsági adatok** letiltása, és válassza ki **metódus hozzáadása** a a **biztonsági adatai**  lapot.
+2. Válassza a bal oldali navigációs ablaktábla **biztonsági adatok** elemét, vagy a biztonsági **információ** blokkban található hivatkozásra, majd válassza a **metódus hozzáadása** elemet a **biztonsági adatok** lapon.
 
-    ![Biztonsági adatok weblapját a kiemelt Hozzáadás metódus beállítás](media/security-info/securityinfo-myprofile-addmethod-page.png)
+    ![Biztonsági adatok lap Kiemelt hozzáadási módszer lehetőséggel](media/security-info/securityinfo-myprofile-addmethod-page.png)
 
-3. Az a **adjon meg egy metódust** lapon jelölje be **biztonsági kérdések** a legördülő listából válassza ki, és válassza ki a **Hozzáadás**.
+3. A **metódus hozzáadása** lapon válassza a **biztonsági kérdések** elemet a legördülő listából, majd válassza a **Hozzáadás**lehetőséget.
 
-    ![Adja hozzá a metódus be, a biztonsági kérdés kijelölve](media/security-info/securityinfo-myprofile-addquestions.png)
+    ![Hozzáadás a Method Box-hoz, biztonsági kérdésekkel kiválasztva](media/security-info/securityinfo-myprofile-addquestions.png)
 
-4. Az a **biztonsági kérdések** lapon válassza ki, és a biztonsági kérdések megválaszolása, és válassza ki **mentése**.
+4. A **biztonsági kérdések** lapon válassza ki és válaszolja meg a biztonsági kérdéseit, majd válassza a **Mentés**lehetőséget.
 
-    ![Telefonszám hozzáadása, és válassza ki a telefonhívások](media/security-info/securityinfo-myprofile-securityquestions.png)
+    ![Telefonszám hozzáadása és telefonhívások kiválasztása](media/security-info/securityinfo-myprofile-securityquestions.png)
 
-    A biztonsági adatok frissítése, és a biztonsági kérdések segítségével igazolhatja a személyazonosságát, jelszó-visszaállítás használata esetén.
+    A biztonsági adatai frissülnek, és biztonsági kérdéseivel ellenőrizheti, hogy a jelszó-visszaállítást használja-e.
 
-## <a name="delete-security-questions-from-your-security-info-methods"></a>A biztonsági adatok módszerek a biztonsági kérdések törlése
-Ha már nem szeretné a biztonsági kérdések security info módszerként használhatják, eltávolíthatja azokat a **biztonsági adatok** lapot.
+## <a name="delete-security-questions-from-your-security-info-methods"></a>Biztonsági kérdések törlése a biztonsági adatok módszereiből
+
+Ha a biztonsági kérdéseket már nem szeretné biztonsági információs módszerként használni, távolítsa el őket a **biztonsági adatok** lapról.
 
 >[!Important]
->Ha véletlenül törli a biztonsági kérdések, nincs semmilyen módon nem lehet visszavonni. Kell adja hozzá újra, a módszer lépései a [a biztonsági kérdések beállítása](#set-up-your-security-questions-from-the-security-info-page) című szakaszát.
+>Ha tévedésből törli a biztonsági kérdéseket, a visszavonás nem vonható vissza. A módszert újra fel kell vennie a jelen cikk [biztonsági kérdések beállítása](#set-up-your-security-questions-from-the-security-info-page) című szakaszának lépéseit követve.
 
-### <a name="to-delete-your-security-questions"></a>A biztonsági kérdések törlése
+### <a name="to-delete-your-security-questions"></a>Biztonsági kérdések törlése
 
-1. Az a **biztonsági adatok** lapon válassza ki a **törlése** mellett kapcsolni a **biztonsági kérdések** lehetőséget.
+1. A **biztonsági adatok** lapon válassza a **Törlés** hivatkozást a **biztonsági kérdések** lehetőség mellett.
 
-    ![A telefonos metódus törölni a biztonsági adatok összekapcsolása](media/security-info/securityinfo-myprofile-questionsdelete.png)
+    ![Hivatkozás a telefonos módszer törlésére a biztonsági adatokból](media/security-info/securityinfo-myprofile-questionsdelete.png)
 
-2. Válassza ki **Igen** a megerősítés mezőben törlése a **biztonsági kérdések**. Miután a biztonsági kérdések törlése, a metódus eltávolítják a biztonsági adatok és, eltűnik a **biztonsági adatok** lapot.
+2. A **biztonsági kérdések**törléséhez válassza az **Igen** lehetőséget a megerősítő mezőben. A biztonsági kérdések törlése után a rendszer eltávolítja a metódust a biztonsági adatokból, és eltűnik a **biztonsági adatok** lapról.
 
-## <a name="additional-security-info-methods"></a>További biztonsági adatok módszerek
-Hogyan a szervezet névjegyeket igazolhatja személyazonosságát, akkor mi alapján szeretne ehhez további lehetősége van. A lehetőségek a következők:
+## <a name="additional-security-info-methods"></a>További biztonsági információs módszerek
 
-- **Hitelesítő alkalmazás.** Töltse le, és a egy hitelesítő alkalmazást használja, vagy egy jóváhagyási értesítést, vagy egy véletlenszerűen létrehozott jóváhagyási kód lekérése a kétlépéses ellenőrzés vagy a jelszó alaphelyzetbe állítása. Állítsa be és a Microsoft Authenticator alkalmazással kapcsolatos lépésenkénti útmutatót lásd: [beállítása a biztonsági adatok használata egy hitelesítő alkalmazást](security-info-setup-auth-app.md).
+További beállításokkal is megtudhatja, hogy a szervezet hogyan forduljon a személyazonosságának ellenőrzéséhez a you're alapján. A lehetőségek a következők:
 
-- **Mobileszköz szöveg.** Adja meg a mobileszközök számát, és értesítés SMS-ben egy kódot fogja használni a kétlépéses ellenőrzés vagy a jelszó alaphelyzetbe állítása. Ellenőrizze identitását az szöveges üzenet (SMS) kapcsolatos lépésenkénti útmutatót lásd: [beállítása a biztonsági adatok használata a szöveges üzenetben (SMS)](security-info-setup-text-msg.md).
+- **Hitelesítő alkalmazás.** Töltse le és használjon egy hitelesítő alkalmazást a jóváhagyási értesítés vagy a véletlenszerűen generált jóváhagyási kód beszerzéséhez a kétlépéses ellenőrzéshez vagy a jelszó-visszaállításhoz. A Microsoft Authenticator alkalmazás beállításával és használatával kapcsolatos részletes utasításokért lásd: [biztonsági adatok beállítása hitelesítő alkalmazás használatára](security-info-setup-auth-app.md).
 
-- **Mobileszköz vagy munkahelyi telefonhívás.** Adja meg a mobileszközök számát, és telefonhívás beszerzése a kétlépéses ellenőrzés vagy a jelszó alaphelyzetbe állítása. Igazolja személyazonosságát, egy telefonszámmal kapcsolatos lépésenkénti útmutatót lásd: [állítsa be a biztonsági adatok telefonhívásokat használandó](security-info-setup-phone-number.md).
+- **Mobileszköz szövege.** Adja meg a mobileszköz számát, és szerezzen be egy, a kétlépéses ellenőrzéshez vagy a jelszó-visszaállításhoz használni kívánt kódot. Az identitás szöveges üzenettel (SMS) való ellenőrzésével kapcsolatos részletes utasításokért lásd: [biztonsági információk beállítása szöveges üzenetküldés (SMS) használatára](security-info-setup-text-msg.md).
 
-- **E-mail-cím.** Adja meg a munkahelyi vagy iskolai e-mail-címet egy e-mailt beolvasni a jelszó-visszaállításhoz. Ez a beállítás nem érhető el a kétlépéses ellenőrzéshez. Állítsa be az e-mailben kapcsolatos lépésenkénti útmutatót lásd: [biztonsági adatok beállítása az e-mailben](security-info-setup-email.md).
-   
+- **Mobileszköz vagy munkahelyi telefonhívás.** Adja meg a mobileszköz számát, és telefonhívást kap a kétlépéses ellenőrzéshez vagy a jelszó alaphelyzetbe állításához. Az identitás telefonszámmal történő ellenőrzésével kapcsolatos részletes útmutatásért lásd: [biztonsági információk beállítása telefonhívások használatához](security-info-setup-phone-number.md).
+
+- **Biztonsági kulcs.** Regisztrálja Microsoft-kompatibilis biztonsági kulcsát, és használja PIN-kóddal a kétlépéses ellenőrzéshez vagy a jelszó alaphelyzetbe állításához. Ha részletes útmutatást szeretne arról, hogyan ellenőrizheti személyazonosságát egy biztonsági kulccsal, tekintse meg a biztonsági [adatok beállítása biztonsági kulcs használatára](security-info-setup-security-key.md)című témakört.
+
+- **E-mail-cím.** Adja meg a munkahelyi vagy iskolai e-mail-címét, hogy e-mailt kapjon a jelszó alaphelyzetbe állításához. Ez a beállítás kétlépéses ellenőrzés esetén nem érhető el. Az e-mailek beállításával kapcsolatos részletes útmutatásért lásd: [biztonsági adatok beállítása e-mailek használatára](security-info-setup-email.md).
+
     >[!Note]
-    >Ha ezek a beállítások némelyike hiányzik, azt azért nagy valószínűséggel a szervezet nem engedélyezi azokat a módszereket. Ha ez a helyzet, szüksége lesz egy rendelkezésre álló módszer kiválasztásához, vagy további segítségért forduljon a rendszergazdához.
+    >Ha a lehetőségek némelyike hiányzik, valószínűleg azért, mert a szervezet nem engedélyezi ezeket a metódusokat. Ebben az esetben ki kell választania egy elérhető módszert, vagy kapcsolatba kell lépnie a rendszergazdával további segítségért.
 
 ## <a name="next-steps"></a>További lépések
 
-- A jelszó alaphelyzetbe állítása, ha elfelejti, az elveszett vagy a [jelszó-visszaállítási portál](https://passwordreset.microsoftonline.com/) vagy kövesse a a [a munkahelyi vagy iskolai jelszó visszaállítása](user-help-reset-password.md) cikk.
+- Ha elvesztette vagy elfelejtette a jelszavát, állítsa vissza a jelszót a [jelszó](https://passwordreset.microsoftonline.com/) -visszaállítási portálról, vagy kövesse a [munkahelyi vagy iskolai jelszó](user-help-reset-password.md) alaphelyzetbe állítása című cikk lépéseit.
 
-- Hibaelhárítási tippek és a bejelentkezési problémákkal kapcsolatos súgó a [nem jelentkezhet be Microsoft-fiókjába](https://support.microsoft.com/help/12429/microsoft-account-sign-in-cant) cikk.
+- Hibaelhárítási tippek és Súgó a bejelentkezési problémákhoz a [nem tud bejelentkezni a Microsoft-fiók](https://support.microsoft.com/help/12429/microsoft-account-sign-in-cant) cikkbe.

@@ -1,5 +1,5 @@
 ---
-title: A Microsoft Identity Platformon regisztrált alkalmazás által támogatott fiókok módosítása | Azure
+title: A Microsoft IDENTIFY platform-alkalmazás fiókjainak módosítása | Azure
 description: A Microsoft Identity Platformon regisztrált alkalmazás konfigurálásával módosíthatja, hogy kik, illetve mely fiókok érhetik el az alkalmazást.
 services: active-directory
 documentationcenter: ''
@@ -17,14 +17,14 @@ ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: aragra, lenalepa, sureshja
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 00d99ae48abfcb3e4d4abc0d63565994df45f746
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.openlocfilehash: be62dabc01e00465fa5227c5531fa18a16cf10a9
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65545729"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68380774"
 ---
-# <a name="quickstart-modify-the-accounts-supported-by-an-application"></a>Gyors útmutató: Az alkalmazás által támogatott fiókok módosítása
+# <a name="quickstart-modify-the-accounts-supported-by-an-application"></a>Gyors útmutató: Egy alkalmazás által támogatott fiókok módosítása
 
 Az alkalmazások Microsoft Identity Platformon való regisztrálásakor esetenként az a cél, hogy az alkalmazást csak a szervezethez tartozó felhasználók érhessék el. Előfordulhat az is, hogy az alkalmazást olyan felhasználók számára is szeretné elérhetővé tenni, akik külső szervezetekhez tartoznak, vagy nem feltétlenül tartoznak valamely szervezethez (a személyes fiókok).
 
@@ -44,7 +44,7 @@ Mielőtt konfigurálhatná az alkalmazást, végre kell hajtania az alábbi lép
 
 1. Jelentkezzen be [Azure Portalra](https://portal.azure.com) munkahelyi vagy iskolai fiókkal, illetve személyes Microsoft-fiókjával.
 1. Ha a fiókja több bérlőhöz is biztosít hozzáférést, válassza ki a fiókot az oldal jobb felső sarkában, és állítsa a portálmunkamenetét a kívánt Azure AD-bérlőre.
-1. A bal oldali navigációs panelen válassza ki a **Azure Active Directory** szolgáltatást, majd **alkalmazásregisztrációk**.
+1. A bal oldali navigációs ablaktáblán válassza ki a **Azure Active Directory** szolgáltatást, majd válassza a **Alkalmazásregisztrációk**lehetőséget.
 1. Keresse meg és jelölje ki a konfigurálni kívánt alkalmazást. Miután kijelölte az alkalmazást, az alkalmazás **Áttekintés** lapja vagy regisztrációs főoldala jelenik meg.
 1. A lépéseket követve [módosítsa az alkalmazásregisztrációt különböző fiókok támogatásának engedélyezéséhez](#change-the-application-registration-to-support-different-accounts).
 1. Ha egyoldalas alkalmazása van, [engedélyezze az OAuth 2.0 implicit engedély használatát](#enable-oauth-20-implicit-grant-for-single-page-applications).

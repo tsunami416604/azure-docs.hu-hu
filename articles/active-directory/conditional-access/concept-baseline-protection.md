@@ -1,6 +1,6 @@
 ---
-title: Feltételes hozzáférés alapkonfiguráció alkalmazásvédelmi szabályzatok – Azure Active Directory
-description: Alapkonfiguráció feltételes hozzáférési szabályzatok védelme érdekében a szervezet a gyakori támadásoktól
+title: A feltételes hozzáférési alapkonfiguráció védelmi házirendjei – Azure Active Directory
+description: Alapkonfiguráció feltételes hozzáférési szabályzatok a szervezetek számára a gyakori támadásokkal szembeni védelem érdekében
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
@@ -11,92 +11,95 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 970fdaba1870097e253b51c70e523e399bc88dfc
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: c2fc552211ed55239259ce84d84584c451733d70
+ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67440769"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68499861"
 ---
-# <a name="what-are-baseline-policies"></a>Mik azok az eredeti szabályzatok?
+# <a name="what-are-baseline-policies"></a>Mik azok az alapkonfigurációs házirendek?
 
-Alapkonfiguráció-házirendek olyan előre definiált házirendjei, amelyek segítségével a szervezetek sok gyakori támadások elleni védelmét. Ezek a gyakori támadásoktól jelszó megfelelő, a visszajátszás és adathalász is tartalmazhat. Alapkonfiguráció házirendek az Azure AD összes kiadásában érhetők el. A Microsoft, hogy így ezek alapkonfiguráció alkalmazásvédelmi szabályzatok érhető el mindenki számára, mert a azonosító-alapú támadások voltak az elmúlt néhány évben fellendülőben. Ezek a szabályzatok célja, győződjön meg arról, hogy minden olyan szervezetnek nincs engedélyezve a biztonsági alapkonfiguráció szinttel rendelkeznek, külön költségek.  
+Az alapkonfigurációs házirendek olyan előre definiált szabályzatok, amelyek számos gyakori támadás elleni védelmet nyújtanak a szervezeteknek. Ezek a gyakori támadások például a jelszó-és a visszajátszást, valamint az adathalászatot is tartalmazhatják. Az alapkonfiguráció házirendjei az Azure AD összes kiadásában elérhetők. A Microsoft ezen alapkonfiguráció-védelmi szabályzatokat mindenki számára elérhetővé teszi, mivel az identitás-alapú támadások az elmúlt néhány évben növekedtek. Ennek a négy házirendnek a célja annak biztosítása, hogy az összes szervezet külön költség nélkül engedélyezze az alapszintű biztonsági szintet.  
 
-Egyéni feltételes hozzáférési szabályzatok kezelése egy prémium szintű Azure AD-licenc szükséges.
+A testreszabott feltételes hozzáférési szabályzatok kezeléséhez prémium szintű Azure AD licenc szükséges.
 
 ## <a name="baseline-policies"></a>Alapvető szabályzatok
 
-![Feltételes hozzáférés alapkonfiguráció szabályzatokat az Azure Portalon](./media/concept-baseline-protection/conditional-access-baseline-policies.png)
+![A feltételes hozzáférési alapszabályzatok a Azure Portal](./media/concept-baseline-protection/conditional-access-baseline-policies.png)
 
-Nincsenek négy alapvető szabályzatok, ami lehetővé teszi a szervezetek számára:
+A szervezetek négy alapszabályzattal rendelkezhetnek, amelyek lehetővé teszik a következőket:
 
-* [Többtényezős hitelesítés megkövetelése a rendszergazdák (előzetes verzió)](howto-baseline-protect-administrators.md)
-* [Végfelhasználói protection (előzetes verzió)](howto-baseline-protect-end-users.md)
-* [Az örökölt hitelesítés letiltása (előzetes verzió)](howto-baseline-protect-legacy-auth.md)
-* [Többtényezős hitelesítés a service management (előzetes verzió)](howto-baseline-protect-azure.md)
+* [MFA megkövetelése a rendszergazdák számára (előzetes verzió)](howto-baseline-protect-administrators.md)
+* [Végfelhasználói védelem (előzetes verzió)](howto-baseline-protect-end-users.md)
+* [Örökölt hitelesítés blokkolása (előzetes verzió)](howto-baseline-protect-legacy-auth.md)
+* [MFA megkövetelése a Service Management szolgáltatáshoz (előzetes verzió)](howto-baseline-protect-azure.md)
 
-Ezek a szabályzatok mind a négy örökölt hitelesítési folyamatok például a POP, IMAP és régebbi Office asztali ügyfelek negatív hatással lesz.
+Ezeknek a szabályzatoknak mind a négye befolyásolja az örökölt hitelesítési folyamatokat, például a POP-, az IMAP-és a régebbi Office asztali ügyfeleket.
 
-### <a name="require-mfa-for-admins-preview"></a>Többtényezős hitelesítés megkövetelése a rendszergazdák (előzetes verzió)
+### <a name="require-mfa-for-admins-preview"></a>MFA megkövetelése a rendszergazdák számára (előzetes verzió)
 
-A power és így hozzáférhet a rendszergazdai fiókok, mert kezelje őket gondosan. Egy közös módszerrel történő kiemelt jogosultságú fiókok védelméhez, hogy egy erősebb formája fiókhitelesítés szükséges való bejelentkezéshez használt. Az Azure Active Directoryban azzal, hogy a rendszergazdák számára, hogy a regisztrálása és használata az Azure multi-factor Authentication szolgáltatás egy erősebb fiókhitelesítés kaphat.
+A rendszergazdai fiókok teljesítményének és hozzáférésének köszönhetően különleges gondossággal kezelheti őket. A rendszerjogosultságú fiókok védelmének egyik gyakori módszere, ha a bejelentkezéshez a fiókok ellenőrzésének erősebb formáját igényli. Azure Active Directory az Azure multi-Factor Authentication regisztrálásához és használatához a rendszergazdának be kell szereznie egy erősebb fiók ellenőrzését.
 
-[Többtényezős hitelesítés (előzetes verzió) rendszergazdák](howto-baseline-protect-administrators.md) van alapkonfiguráció szabályzata előírja a többtényezős hitelesítés (MFA) a következő-címtárbeli szerepkörökhöz tartozó, a rendszer a legtöbb emelt szintű Azure AD-szerepkörök:
+[Az MFA a rendszergazdák számára (előzetes verzió)](howto-baseline-protect-administrators.md) olyan alapszintű szabályzat, amely a következő címtárbeli szerepkörökhöz szükséges többtényezős hitelesítést (MFA) igényli, amely a legalkalmasabb Azure ad-szerepköröknek tekintendő:
 
 * Globális rendszergazda
 * SharePoint-rendszergazda
 * Exchange-rendszergazda
-* Feltételes hozzáférésű rendszergazda
+* Feltételes hozzáférési rendszergazda
 * Biztonsági rendszergazda
-* Ügyfélszolgálati adminisztrátor / rendszergazdai jelszó
-* Számlázási rendszergazda
+* Segélyszolgálat rendszergazdája/jelszó-rendszergazda
+* Számlázási adminisztrátor
 * Felhasználói adminisztrátor
 
-Ha a szervezete ezeket a fiókokat a parancsfájlokban vagy a kódot használja, fontolja meg, és cserélje le őket az [felügyelt identitások](../managed-identities-azure-resources/overview.md).
+Ha a szervezete ezeket a fiókokat parancsfájlokban vagy kódban használja, érdemes lehet a [felügyelt identitásokkal](../managed-identities-azure-resources/overview.md)helyettesíteni őket.
 
-### <a name="end-user-protection-preview"></a>Végfelhasználói protection (előzetes verzió)
+### <a name="end-user-protection-preview"></a>Végfelhasználói védelem (előzetes verzió)
 
-Magas szintű jogosultsággal rendelkező rendszergazdák nem csak nekik van a támadások célként. Kártékony elemek általában a normál felhasználók számára. Hozzáfér, ezeket is kérhet hozzáférést az információk az eredeti fióktulajdonos nevében, vagy töltse le a teljes címtárra és hajtsa végre a adathalász támadások, a teljes cég számára a. Egy közös védelmét az összes felhasználó számára, hogy egy fiókhitelesítés erősebb formája kérése, ha az észlelt kockázatos bejelentkezés.
+A magas jogosultsági szintű rendszergazdák nem csupán a támadásokat célozzák meg. A hibás szereplők általában a normál felhasználókat célozzák meg. A hozzáférés megszerzése után ezek a rossz szereplők az eredeti fiók tulajdonosának nevében igényelhetnek hozzáférést a privilegizált információhoz, vagy le is tölthetik a teljes könyvtárat, és elvégezhetik az adathalászat elleni támadást a teljes szervezetben. Az egyik gyakori módszer az, hogy javítsa az összes felhasználó védelmét, ha a rendszer kockázatos bejelentkezést észlel, a fiókok ellenőrzésének erősebb formája szükséges.
 
-**Végfelhasználói protection (előzetes verzió)** egy alapkonfiguráció szabályzat, amely védelmet nyújt a címtárban szereplő összes felhasználó. A szabályzat engedélyezése szükséges regisztrálni az Azure multi-factor Authentication 14 napon belül minden felhasználó. Miután regisztrált, felhasználók felszólítást kapnak a multi-factor Authentication csak a kockázatos bejelentkezési kísérlet során. Feltört felhasználói fiókok le lesznek tiltva, amíg a jelszó alaphelyzetbe állítása és kockázati elbocsátása.
+A **végfelhasználói védelem (előzetes verzió)** egy alapkonfigurációs szabályzat, amely a címtár összes felhasználóját védi. Ennek a szabályzatnak az engedélyezéséhez az összes felhasználónak 14 napon belül regisztrálnia kell az Azure multi-Factor Authentication szolgáltatásban. A regisztrációt követően a rendszer csak a kockázatos bejelentkezési kísérletek során kéri a felhasználókat az MFA-ra. A rendszer letiltja a feltört felhasználói fiókokat, amíg a jelszó alaphelyzetbe nem áll, és a kockázat elbocsátás 
 
-### <a name="block-legacy-authentication-preview"></a>Az örökölt hitelesítés letiltása (előzetes verzió)
+[!NOTE]
+A korábban a kockázatra megjelölt felhasználókat a rendszer letiltja, amíg a jelszó alaphelyzetbe állítása és a kockázat elbocsátása a házirend aktiválása után megtörténik
 
-Az örökölt hitelesítési protokollok (például: IMAP, SMTP, POP3) olyan protokollok, általában használt régebbi levelezési ügyfelek hitelesítéséhez. Örökölt protokollok nem támogatják a többtényezős hitelesítést. Ha már rendelkezik multi-factor authentication szolgáltatás a címtáron szabályzat, kiderítsék hitelesítheti a ezek az örökölt protokollok egyikével és multi-factor authentication kihagyásához.
+### <a name="block-legacy-authentication-preview"></a>Örökölt hitelesítés blokkolása (előzetes verzió)
 
-A legjobb módszer a rosszindulatú hitelesítési kérést hoz létre örökölt protokollok fiókja védelme érdekében, hogy letiltja őket.
+Örökölt hitelesítési protokollok (pl.: Az IMAP, az SMTP, a POP3) az a protokoll, amelyet általában a régebbi levelezési ügyfelek használnak a hitelesítéshez. Az örökölt protokollok nem támogatják a többtényezős hitelesítést. Ha a címtárhoz többtényezős hitelesítést igénylő szabályzat is tartozik, a rossz színész a következő örökölt protokollok egyikével képes hitelesíteni a többtényezős hitelesítést.
 
-A **örökölt hitelesítés letiltása (előzetes verzió)** alapkonfiguráció szabályzat letiltja a hitelesítési kérelmek örökölt protokollok használatával. Sikeresen jelentkezzen be az összes felhasználó számára a modern hitelesítést kell használni. A referenciakonfiguráció házirendek együtt használja, régebbi protokollokra érkező kérések le lesz tiltva. Emellett minden felhasználó lesz szükség a többtényezős hitelesítés minden alkalommal, amikor szükséges. Ez a szabályzat nem tiltja le az Exchange ActiveSync.
+A legjobb módszer, ha a fiókját az örökölt protokollok által kezdeményezett rosszindulatú hitelesítési kérésekkel szeretné védelemmel ellátni.
 
-### <a name="require-mfa-for-service-management-preview"></a>Többtényezős hitelesítés a service management (előzetes verzió)
+Az **örökölt hitelesítés (előzetes verzió)** alapkonfiguráció házirendje blokkolja az örökölt protokollok használatával létrehozott hitelesítési kérelmeket. A modern hitelesítést minden felhasználó számára sikeres bejelentkezéshez kell használni. A többi alapszabályzattal együtt használva a rendszer letiltja az örökölt protokolloktól érkező kérelmeket. Emellett minden felhasználónak szüksége lesz az MFA-ra, amikor szükséges. Ez a szabályzat nem blokkolja az Exchange ActiveSync szolgáltatást.
 
-Szervezetek számára az Azure-szolgáltatások különböző használja, és azok kezelését az Azure Resource Manager-alapú eszközök, mint például:
+### <a name="require-mfa-for-service-management-preview"></a>MFA megkövetelése a Service Management szolgáltatáshoz (előzetes verzió)
+
+A szervezetek különböző Azure-szolgáltatásokat használnak és felügyelik azokat Azure Resource Manager-alapú eszközökről, például:
 
 * Azure Portal
 * Azure PowerShell
 * Azure CLI
 
-Felsorolt eszközök bármelyikével hajtsa végre az erőforrás-kezelés használata esetén a magas jogosultsági szintű műveletet. Ezek az eszközök előfizetéshez kiterjedő konfigurációhoz, például a szolgáltatás beállításainak és az előfizetés számlázási is módosítható.
+Ezen eszközök bármelyikének használata az erőforrás-kezelés végrehajtásához magas jogosultsági szintű művelet. Ezek az eszközök megváltoztathatják az előfizetésre kiterjedő konfigurációkat, például a szolgáltatás beállításait és az előfizetés számlázását.
 
-Privilegizált műveletek védelme érdekében ez **service management (előzetes verzió) a többtényezős hitelesítés megkövetelése** házirendet kell a multi-factor authentication szolgáltatás bármely felhasználó fér hozzá az Azure Portalon, az Azure PowerShell vagy az Azure CLI.
+Az emelt szintű jogosultságok elleni védelem érdekében az MFA-t **a Service Management (előzetes verzió)** szabályzatához a többtényezős hitelesítés megkövetelése minden olyan felhasználó számára, aki hozzáfér Azure Portalhoz, Azure PowerShellhoz vagy Azure CLI-hez.
 
-## <a name="enable-a-baseline-policy"></a>Egy alapkonfiguráció házirend engedélyezése
+## <a name="enable-a-baseline-policy"></a>Alapterv engedélyezése
 
-Egy alapkonfiguráció-házirend engedélyezése:
+Alapházirend engedélyezése:
 
-1. Jelentkezzen be a **az Azure portal** globális rendszergazdai, biztonsági rendszergazdai vagy feltételes hozzáférésű rendszergazda.
-1. Keresse meg a **az Azure Active Directory** > **feltételes hozzáférési**.
-1. A házirendek listájában válassza ki egy alapvető házirendet, amelyet engedélyezni szeretne.
-1. Állítsa be **házirend engedélyezése** való **a**.
+1. Jelentkezzen be a **Azure Portal** globális rendszergazdaként, biztonsági rendszergazdaként vagy feltételes hozzáférést biztosító rendszergazdaként.
+1. Keresse meg **Azure Active Directory** > a**feltételes hozzáférést**.
+1. A szabályzatok listájában válassza ki az engedélyezni kívánt alaptervet.
+1. **Engedélyezze a házirend engedélyezése beállítást** **a**következőre:.
 1. Kattintson a Mentés gombra.
 
 ## <a name="next-steps"></a>További lépések
 
 További információkért lásd:
 
-* [Öt lépést a személyazonosság-infrastruktúra védelme](../../security/azure-ad-secure-steps.md)
-* [Mi az az Azure Active Directory feltételes hozzáférés?](overview.md)
-* [Többtényezős hitelesítés megkövetelése a rendszergazdák (előzetes verzió)](howto-baseline-protect-administrators.md)
-* [Végfelhasználói protection (előzetes verzió)](howto-baseline-protect-end-users.md)
-* [Az örökölt hitelesítés letiltása (előzetes verzió)](howto-baseline-protect-legacy-auth.md)
-* [Többtényezős hitelesítés a service management (előzetes verzió)](howto-baseline-protect-azure.md)
+* [Öt lépés a személyazonossági infrastruktúra biztonságossá tételéhez](../../security/azure-ad-secure-steps.md)
+* [Mi a feltételes hozzáférés a Azure Active Directory?](overview.md)
+* [MFA megkövetelése a rendszergazdák számára (előzetes verzió)](howto-baseline-protect-administrators.md)
+* [Végfelhasználói védelem (előzetes verzió)](howto-baseline-protect-end-users.md)
+* [Örökölt hitelesítés blokkolása (előzetes verzió)](howto-baseline-protect-legacy-auth.md)
+* [MFA megkövetelése a Service Management szolgáltatáshoz (előzetes verzió)](howto-baseline-protect-azure.md)

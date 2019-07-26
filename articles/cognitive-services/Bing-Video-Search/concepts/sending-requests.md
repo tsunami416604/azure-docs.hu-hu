@@ -1,7 +1,7 @@
 ---
-title: Keresési kérések küldését a Bing Videókeresési API
-titlesuffix: Azure Cognitive Services
-description: Ismerje meg a keresési lekérdezéseket küld a Bing Videókeresési API.
+title: Keresési kérelmek küldése a Bing Video Search APInak
+titleSuffix: Azure Cognitive Services
+description: További információ a keresési lekérdezések küldéséről a Bing Video Search API.
 services: cognitive-services
 author: aahi
 manager: nitinme
@@ -10,26 +10,26 @@ ms.subservice: bing-video-search
 ms.topic: quickstart
 ms.date: 06/27/2019
 ms.author: aahill
-ms.openlocfilehash: 93c2a5f9cd9fb3141e79559429ae69c0c42a96c1
-ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
+ms.openlocfilehash: 892220a08480b6b6b1b246967f225422c8c5a105
+ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67542673"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68500744"
 ---
-# <a name="sending-search-requests-to-the-bing-video-search-api"></a>Keresési kérések küldését a Bing Videókeresési API
+# <a name="sending-search-requests-to-the-bing-video-search-api"></a>Keresési kérelmek küldése a Bing Video Search APInak
 
-Ez a cikk ismerteti a paramétereket és attribútumokat adja vissza, a Bing Video Search API, valamint a JSON-válasz objektum küldött kérelmeket. 
+Ez a cikk ismerteti a Bing Video Search API küldött kérések paramétereit és attribútumait, valamint a visszaadott JSON-válasz objektumot. 
 
 [!INCLUDE [cognitive-services-bing-video-search-signup-requirements](../../../../includes/cognitive-services-bing-video-search-signup-requirements.md)]
 
-## <a name="suggest-search-terms-with-the-bing-autosuggest-api"></a>Javasoljuk a keresési kifejezéseket, a Bing Autosuggest API
+## <a name="suggest-search-terms-with-the-bing-autosuggest-api"></a>Keresési kifejezések ajánlása a Bing Autosuggest API
 
 Ha biztosít egy olyan keresőmezőt, ahol a felhasználók megadhatják a keresőkifejezést, a [Bing Autosuggest API](../../bing-autosuggest/get-suggested-search-terms.md) használatával kényelmesebbé teheti a felhasználói élményt. Az API javasolt lekérdezési sztringeket ad vissza a részleges keresőkifejezések alapján, miközben a felhasználó gépel.
 
-Miután a felhasználó beírja a keresési kifejezést, URL-kódolása, mielőtt a beállítás a [q](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#query) lekérdezési paraméter. Ha például a felhasználó a *sailing dinghies* (kis vitorlások) kifejezésre keres, állítsa a `q` beállítást `sailing+dinghies` vagy `sailing%20dinghies` értékre.
+Miután a felhasználó beírja a keresési kifejezést, URL-kódolással kódolja a [q](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#query) lekérdezési paraméter beállítása előtt. Ha például a felhasználó a *sailing dinghies* (kis vitorlások) kifejezésre keres, állítsa a `q` beállítást `sailing+dinghies` vagy `sailing%20dinghies` értékre.
 
-## <a name="sending-a-request"></a>Egy kérelem küldése
+## <a name="sending-a-request"></a>Kérelem küldése
 
 A videókeresés eredményeinek lekéréséhez egy GET kérelmet kell küldeni a következő végpontra:  
   
@@ -39,7 +39,7 @@ https://api.cognitive.microsoft.com/bing/v7.0/videos/search
    
 A kérelemnek a HTTPS protokollt kell használnia.
 
-Javasoljuk, hogy minden kérelem egy kiszolgálóról induljon. Az azonosítónak egy ügyfélalkalmazás részeként való terjesztése több lehetőséget ad arra, hogy rosszindulatú külső felek hozzáférjenek az azonosítóhoz. Egyetlen frissítési pont is küldhet hívásokat kiszolgálóról biztosít későbbi verzióiban az API-t.
+Javasoljuk, hogy minden kérelem egy kiszolgálóról induljon. Az azonosítónak egy ügyfélalkalmazás részeként való terjesztése több lehetőséget ad arra, hogy rosszindulatú külső felek hozzáférjenek az azonosítóhoz. A kiszolgálókon kezdeményezett hívások egyetlen frissítési pontot is biztosítanak az API jövőbeli verzióihoz.
 
   
 A kérelemnek tartalmaznia kell a [q](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#query) lekérdezési paramétert, amely a felhasználó keresési kifejezését adja meg. Nem kötelező, de a kérelemnek érdemes tartalmaznia egy [mkt](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#mkt) lekérdezési paramétert is, amely azonosítja a piacot, ahonnan eredményeket szeretnénk kapni. Az opcionális lekérdezési paraméterek (például `pricing`) listáját lásd a [lekérdezési paramétereket](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#query-parameters) ismertető cikkben. Minden lekérdezési paraméter értékének URL-kódolásúnak kell lennie.  
@@ -55,7 +55,7 @@ Az ügyfél IP-címe és helye fontos a helyfüggő tartalmak visszaadása szemp
 
 Az összes kérelem- és válaszfejléc listáját lásd a [Fejlécek](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#headers) cikkben.
 
-## <a name="example-search-request"></a>Keresési kérelem (példa)
+## <a name="example-search-request"></a>Példa keresési kérelemre
 
 Az alábbiakban egy olyan keresési kérelem látható, amely az összes javasolt lekérdezési paramétert és fejlécet tartalmazza. Ha első alkalommal hívja meg bármelyik Bing API-t, ne használja az ügyfél-azonosító fejlécét. Csak akkor használja az ügyfél-azonosítót, ha korábban már meghívott egy Bing API-t, és visszakapott egy ügyfél-azonosítót a felhasználó és az eszköz kombinációjához. 
   
@@ -69,7 +69,7 @@ X-MSEdge-ClientID: <blobFromPriorResponseGoesHere>
 Host: api.cognitive.microsoft.com  
 ```  
 
-## <a name="example-json-response"></a>Példa JSON-válasz
+## <a name="example-json-response"></a>Példa JSON-válaszra
 
 Az alábbiakban az előző kérelemre adott válasz látható. A példában a Bing-specifikus válaszfejlécek is láthatók.
 

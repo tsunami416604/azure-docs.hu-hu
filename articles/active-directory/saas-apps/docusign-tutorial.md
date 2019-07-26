@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: Az Azure Active Directory-integráció, a DocuSign |} A Microsoft Docs'
-description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés az Azure Active Directory és a DocuSign között.
+title: 'Oktatóanyag: Azure Active Directory integráció a DocuSign-szel | Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést Azure Active Directory és DocuSign között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -15,51 +15,51 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/01/2019
 ms.author: jeedes
-ms.openlocfilehash: 607e5aded52375190878de6b48ffa4aa2ab49767
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5c7d6116ed2925e57f094a67f27a11f9e2d61831
+ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67104084"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68499246"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-docusign"></a>Oktatóanyag: A DocuSign az Azure Active Directory-integráció
+# <a name="tutorial-azure-active-directory-integration-with-docusign"></a>Oktatóanyag: Azure Active Directory integráció a DocuSign
 
-Ebben az oktatóanyagban megismerheti, hogyan integrálható a DocuSign az Azure Active Directory (Azure AD).
-Az Azure AD integrálása a DocuSign nyújt a következő előnyökkel jár:
+Ebből az oktatóanyagból megtudhatja, hogyan integrálhatja a DocuSign a Azure Active Directory (Azure AD) szolgáltatással.
+A DocuSign és az Azure AD integrálásával a következő előnyöket nyújtja:
 
-* Szabályozhatja, ki férhet hozzá a DocuSign az Azure AD-ben.
-* Engedélyezheti a felhasználóknak, hogy lehet automatikusan bejelentkezett a DocuSign (egyszeri bejelentkezés) az Azure AD-fiókjukat.
+* Az Azure AD-ben beállíthatja, hogy ki férhet hozzá a DocuSign.
+* Lehetővé teheti a felhasználók számára, hogy automatikusan bejelentkezzenek a DocuSign (egyszeri bejelentkezés) az Azure AD-fiókokkal.
 * A fiókok egyetlen központi helyen – az Azure Portalon kezelheti.
 
-Ha meg szeretné ismerni a SaaS-alkalmazás integráció az Azure ad-vel kapcsolatos további részletekért, lásd: [Mi az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse [meg a mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directorykal](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)című témakört.
 Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az Azure AD-integráció konfigurálása a DocuSign, a következőkre van szükség:
+Az Azure AD-integráció DocuSign való konfigurálásához a következő elemek szükségesek:
 
-* Az Azure AD-előfizetés. Ha nem rendelkezik egy Azure AD-környezetet, beszerezheti a [ingyenes fiókkal](https://azure.microsoft.com/free/)
-* DocuSign egyszeri bejelentkezés engedélyezve van az előfizetés
+* Egy Azure AD-előfizetés. Ha nem rendelkezik Azure AD-környezettel, [ingyenes fiókot](https://azure.microsoft.com/free/) szerezhet be
+* DocuSign egyszeri bejelentkezésre engedélyezett előfizetés
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
 
-Ebben az oktatóanyagban, tesztelése és konfigurálása az Azure AD egyszeri bejelentkezés egy tesztkörnyezetben.
+Ebben az oktatóanyagban egy tesztkörnyezetben konfigurálja és teszteli az Azure AD egyszeri bejelentkezést.
 
-* Támogatja a DocuSign **SP** által kezdeményezett egyszeri bejelentkezés
+* A DocuSign támogatja az **SP** által KEZDEMÉNYEZett SSO-t
 
-* Támogatja a DocuSign **igény szerinti** felhasználók átadása
+* A DocuSign támogatja az [automatikus felhasználó](https://docs.microsoft.com/azure/active-directory/saas-apps/dropboxforbusiness-provisioning-tutorial) -kiépítés használatát
 
-## <a name="adding-docusign-from-the-gallery"></a>Hozzáadás a katalógusból, DocuSign
+## <a name="adding-docusign-from-the-gallery"></a>DocuSign hozzáadása a gyűjteményből
 
-Konfigurálhatja az Azure AD integrálása a DocuSign, hozzá kell DocuSign a galériából a felügyelt SaaS-alkalmazások listájára.
+A DocuSign Azure AD-be való integrálásának konfigurálásához hozzá kell adnia a DocuSign a katalógusból a felügyelt SaaS-alkalmazások listájához.
 
-**DocuSign hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
+**Ha DocuSign szeretne hozzáadni a katalógusból, hajtsa végre a következő lépéseket:**
 
 1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
     ![Az Azure Active Directory gomb](common/select-azuread.png)
 
-2. Navigáljon a **vállalati alkalmazások** majd válassza ki a **minden alkalmazás** lehetőséget.
+2. Navigáljon a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás** lehetőséget.
 
     ![A vállalati alkalmazások panelen](common/enterprise-applications.png)
 
@@ -67,60 +67,60 @@ Konfigurálhatja az Azure AD integrálása a DocuSign, hozzá kell DocuSign a ga
 
     ![Az új alkalmazás gomb](common/add-new-app.png)
 
-4. A Keresés mezőbe írja be a **DocuSign**válassza **DocuSign** eredmény panelen kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
+4. A keresőmezőbe írja be a **DocuSign**kifejezést, válassza a **DocuSign** elemet az eredmény panelen, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
 
-     ![DocuSign, a találatok listájában](common/search-new-app.png)
+     ![DocuSign az eredmények listájában](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés tesztelése és konfigurálása
 
-Ebben a szakaszban, tesztelése és konfigurálása az Azure AD egyszeri bejelentkezés alapján nevű tesztfelhasználó DocuSign- **Britta Simon**.
-Az egyszeri bejelentkezés működjön egy Azure AD-felhasználót és a kapcsolódó felhasználó a Docusignban hivatkozás kapcsolata kell létrehozni.
+Ebben a szakaszban az Azure AD egyszeri bejelentkezést az DocuSign-mel konfigurálja és teszteli a **Britta Simon**nevű tesztelési felhasználó alapján.
+Az egyszeri bejelentkezés működéséhez az Azure AD-felhasználó és a DocuSign kapcsolódó felhasználó közötti kapcsolat létesítésére van szükség.
 
-Az Azure AD egyszeri bejelentkezés a DocuSign tesztelése és konfigurálása, hajtsa végre a következő építőelemeit kell:
+Az Azure AD egyszeri bejelentkezés DocuSign való konfigurálásához és teszteléséhez a következő építőelemeket kell végrehajtania:
 
 1. **[Az Azure AD egyszeri bejelentkezés konfigurálása](#configure-azure-ad-single-sign-on)**  – ahhoz, hogy ez a funkció használatát a felhasználók számára.
-2. **[DocuSign egyszeri bejelentkezés konfigurálása](#configure-docusign-single-sign-on)**  – az alkalmazás oldalán az egyszeri bejelentkezés beállításainak konfigurálása.
+2. **[DocuSign egyszeri bejelentkezés konfigurálása](#configure-docusign-single-sign-on)** – az egyszeri bejelentkezés beállításainak konfigurálása az alkalmazás oldalán.
 3. **[Hozzon létre egy Azure ad-ben tesztfelhasználót](#create-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
 4. **[Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assign-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
-5. **[Hozzon létre DocuSign tesztfelhasználót](#create-docusign-test-user)**  – van egy Britta Simon megfelelője a DocuSign, amely kapcsolódik az Azure AD felhasználói ábrázolása.
+5. **[Hozzon létre DocuSign-teszt felhasználót](#create-docusign-test-user)** – hogy a DocuSign Britta, a felhasználó Azure ad-képviseletéhez kapcsolódó partnerrel rendelkezzen.
 6. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
 
-Ebben a szakaszban engedélyeznie kell az Azure AD egyszeri bejelentkezés az Azure Portalon.
+Ebben a szakaszban engedélyezheti az Azure AD egyszeri bejelentkezést a Azure Portal.
 
-Konfigurálja az Azure AD egyszeri bejelentkezés, a DocuSign, hajtsa végre az alábbi lépéseket:
+Az Azure AD egyszeri bejelentkezés DocuSign való konfigurálásához hajtsa végre a következő lépéseket:
 
-1. Az a [az Azure portal](https://portal.azure.com/), az a **DocuSign** alkalmazás integráció lapon jelölje be **egyszeri bejelentkezés**.
+1. A [Azure Portal](https://portal.azure.com/) **DocuSign** alkalmazás-integráció lapján válassza az **egyszeri bejelentkezés**lehetőséget.
 
     ![Egyszeri bejelentkezési hivatkozás konfigurálása](common/select-sso.png)
 
-2. Az a **egyszeri bejelentkezési módszer** párbeszédpanelen válassza **SAML/WS-Fed** módot az egyszeri bejelentkezés engedélyezése.
+2. Az egyszeri bejelentkezés **módszerének kiválasztása** párbeszédpanelen válassza az **SAML/ws-fed** üzemmód lehetőséget az egyszeri bejelentkezés engedélyezéséhez.
 
-    ![Egyszeri bejelentkezés kijelölési mód bekapcsolása](common/select-saml-option.png)
+    ![Egyszeri bejelentkezési mód kiválasztása](common/select-saml-option.png)
 
 3. Az a **állítsa be egyszeri bejelentkezést az SAML** kattintson **szerkesztése** ikonra kattintva nyissa meg a **alapszintű SAML-konfigurációja** párbeszédpanel.
 
     ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
-4. Az a **alapszintű SAML-konfigurációja** szakaszban, hajtsa végre az alábbi lépéseket:
+4. Az alapszintű **SAML-konfiguráció** szakaszban hajtsa végre a következő lépéseket:
 
-    ![DocuSign-tartomány és URL-címeket egyetlen bejelentkezési adatait](common/sp-identifier.png)
+    ![DocuSign tartomány és URL-címek egyszeri bejelentkezési adatai](common/sp-identifier.png)
 
-    a. Az a **bejelentkezési URL-cím** szövegmezőbe írja be a következő minta használatával URL-cím: `https://<subdomain>.docusign.com/organizations/<OrganizationID>/saml2/login/sp/<IDPID>`
+    a. A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://<subdomain>.docusign.com/organizations/<OrganizationID>/saml2/login/sp/<IDPID>`
 
-    b. Az a **azonosító (entityid)** szövegmezőbe írja be a következő minta használatával URL-cím: `https://<subdomain>.docusign.com/organizations/<OrganizationID>/saml2`
+    b. Az **azonosító (Entity ID)** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://<subdomain>.docusign.com/organizations/<OrganizationID>/saml2`
 
     > [!NOTE]
-    > Ezek a értékei nem valódi. Az értékeket módosítsa a tényleges bejelentkezési URL-és a később ismertetett azonosító **SAML 2.0-s végpontok megtekintése** rész a jelen oktatóanyagban.
+    > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges bejelentkezési URL-címmel és azonosítóval, amely a jelen oktatóanyagban az **SAML 2,0** -végpontok című szakaszban található meg.
 
-5. Az a **állítsa be egyszeri bejelentkezést az SAML** lap a **SAML-aláíró tanúsítvány** területén kattintson **letöltése** letöltéséhez a **tanúsítvány (Base64)** a megadott lehetőségek közül a követelmény alapján, majd mentse el a számítógépen.
+5. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a **Letöltés** gombra a **tanúsítvány (Base64)** letöltéséhez a megadott beállítások alapján, és mentse a számítógépre.
 
     ![A tanúsítvány letöltési hivatkozás](common/certificatebase64.png)
 
-6. Az a **állítsa be a DocuSign** területén másolja megfelelően a követelmény a megfelelő URL-címe.
+6. A **DocuSign beállítása** szakaszban másolja ki a megfelelő URL-címeket a követelmények szerint.
 
-    ![Másolja a konfigurációs URL-címek](common/copy-configuration-urls.png)
+    ![Konfigurációs URL-címek másolása](common/copy-configuration-urls.png)
 
     a. Bejelentkezési URL
 
@@ -130,78 +130,78 @@ Konfigurálja az Azure AD egyszeri bejelentkezés, a DocuSign, hajtsa végre az 
 
 ### <a name="configure-docusign-single-sign-on"></a>DocuSign egyszeri bejelentkezés konfigurálása
 
-1. Bejelentkezés egy másik böngészőablakban, a **DocuSign felügyeleti portál** rendszergazdaként.
+1. Egy másik böngészőablakban jelentkezzen be a **DocuSign felügyeleti portálra** rendszergazdaként.
 
-2. A felső a lap jobb oldalán kattintson a profil **embléma** majd kattintson a **nyissa meg rendszergazda**.
+2. Az oldal jobb felső részén kattintson a profil **emblémára** , majd a **Ugrás a rendszergazdára**elemre.
   
     ![Egyszeri bejelentkezés konfigurálása][51]
 
-3. A tartomány megoldások lapon kattintson a **tartományok**
+3. A tartományi megoldások lapon kattintson a **tartományok** elemre.
 
     ![Egyszeri bejelentkezés konfigurálása][50]
 
-4. Alatt a **tartományok** területén kattintson **JOGCÍM tartomány**.
+4. A **tartományok** szakaszban kattintson a **jogcím tartomány**elemre.
 
     ![Egyszeri bejelentkezés konfigurálása][52]
 
-5. Az a **jogcím egy tartomány** párbeszédpanelen, a a **tartománynév** szövegmezőbe írja be a vállalati tartományhoz, és kattintson **JOGCÍM**. Győződjön meg arról, hogy a tartomány ellenőrzéséhez és az állapot aktív.
+5. A **jogcím a tartományhoz** párbeszédpanelen a **tartománynév** szövegmezőbe írja be a vállalati tartományt, majd kattintson a **jogcím**elemre. Győződjön meg arról, hogy a tartomány ellenőrzése megtörténik, és az állapota aktív.
 
     ![Egyszeri bejelentkezés konfigurálása][53]
 
-6. Kattintson a tartomány megoldások lap **Identitásszolgáltatók**.
+6. A tartományi megoldások lapon kattintson az **identitás-szolgáltatók**elemre.
   
     ![Egyszeri bejelentkezés konfigurálása][54]
 
-7. A **Identitásszolgáltatók** területén kattintson **IDENTITÁSSZOLGÁLTATÓ hozzáadása**. 
+7. Az **identitás-szolgáltatók** szakaszban kattintson az **Identity Provider hozzáadása**elemre. 
 
     ![Egyszeri bejelentkezés konfigurálása][55]
 
-8. Az a **identitás Szolgáltatóbeállítások** lapon, a következő lépésekkel:
+8. Az **Identity Provider beállításai** lapon hajtsa végre a következő lépéseket:
 
     ![Egyszeri bejelentkezés konfigurálása][56]
 
-    a. Az a **neve** szövegmezőbe írja be egy egyedi nevet a konfigurációnak. Ne használjon szóközöket.
+    a. A **név** szövegmezőbe írja be a konfiguráció egyedi nevét. Ne használjon szóközt.
 
-    b. Az a **identitásszolgáltató kibocsátója szövegmező**, illessze be az értéket a **az Azure AD-azonosító**, az Azure Portalról másolt.
+    b. Az **Identity Provider kiállító szövegmezőben**illessze be az **Azure ad-azonosító**értékét, amelyet a Azure Portalból másolt.
 
-    c. Az a **Identity Provider bejelentkezési URL-cím** szövegmezőbe, illessze be az értéket a **bejelentkezési URL-cím**, az Azure Portalról másolt.
+    c. Az **Identity Provider bejelentkezési URL-címe** szövegmezőbe illessze be a **bejelentkezési URL-cím**értékét, amelyet a Azure Portalból másolt.
 
-    d. A a **Identity Provider kijelentkezési URL-címe** szövegmezőjébe illessze be az értéket, **kijelentkezési URL-címe**, az Azure Portalról másolt.
+    d. Az **Identitáskezelő kijelentkezési URL-címe** szövegmezőbe illessze be a kijelentkezési **URL-címet**, amelyet a Azure Portalból másolt.
 
-    e. Válassza ki **AuthN bejelentkezési kérelem**.
+    e. Válassza a **AuthN-kérelem aláírása**lehetőséget.
 
-    f. Mint **kérelmének küldése AuthN**válassza **POST**.
+    f. A **AuthN-kérelem küldéséhez**válassza a **post**lehetőséget.
 
-    g. Mint **küldési kijelentkezési kérés által**válassza **első**.
+    g. Mint a kijelentkezési **kérelem küldése a alapján**, válassza a beolvasás lehetőséget.
 
-    h. Az a **egyéni attribútumleképzés** területén kattintson a **új HOZZÁRENDELÉS hozzáadása**.
+    h. Az **Egyéni attribútumok leképezése** szakaszban kattintson az **Új leképezés hozzáadása**lehetőségre.
 
     ![Egyszeri bejelentkezés konfigurálása][62]
 
-    i. Válassza ki a mezőt hozzá kívánja rendelni az Azure AD jogcímet. Ebben a példában a **emailaddress** jogcím van leképezve a következő értékkel: **http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress** . Az alapértelmezett jogcím név, e-mail követelés, majd kattintson az Azure AD-ből **mentése**.
+    i. Válassza ki azt a mezőt, amelyet le szeretne képezni az Azure AD-jogcím alapján. Ebben a példában az **EmailAddress** jogcím a következő értékkel **http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress** van leképezve:. Ez az alapértelmezett jogcím neve az Azure AD-től az e-mail-jogcímhez, majd kattintson a **Save (Mentés**) gombra.
 
     ![Egyszeri bejelentkezés konfigurálása][57]
 
     > [!NOTE]
-    > Használja a megfelelő **felhasználóazonosító** hozzárendelni a felhasználó Azure AD-ből, a DocuSign felhasználó-hozzárendelés. Válassza ki a megfelelő mezőt, és adja meg a megfelelő értéket, a szervezet beállítások alapján.
+    > A megfelelő **felhasználói azonosító** használatával rendelje hozzá a felhasználót az Azure ad-ből DocuSign felhasználói leképezéshez. Válassza ki a megfelelő mezőt, és adja meg a megfelelő értéket a szervezeti beállítások alapján.
 
-    j. Az a **identitás szolgáltatói tanúsítványok** területén kattintson **tanúsítvány hozzáadása**, majd töltse fel az Azure AD-portálról letöltött, majd kattintson a tanúsítvány **mentése**.
+    j. Az **Identity Provider-tanúsítványok** szakaszban kattintson a **tanúsítvány hozzáadása**elemre, majd töltse fel az Azure ad-portálról letöltött tanúsítványt, és kattintson a **Mentés**gombra.
 
     ![Egyszeri bejelentkezés konfigurálása][58]
 
-    k. Az a **Identitásszolgáltatók** területén kattintson **műveletek**, és kattintson a **végpontok**.
+    k. Az **Identity Providers** szakaszban kattintson a **műveletek**, majd a **végpontok**elemre.
 
     ![Egyszeri bejelentkezés konfigurálása][59]
 
-    l. Az a **SAML 2.0-s végpontok megtekintése** szakaszában **DocuSign felügyeleti portálon**, hajtsa végre az alábbi lépéseket:
+    l. A **DocuSign felügyeleti portál** **SAML 2,0-végpontok megtekintése** szakaszában hajtsa végre a következő lépéseket:
 
     ![Egyszeri bejelentkezés konfigurálása][60]
 
-    * Másolás a **szolgáltató kibocsátó URL-címe**, és illessze be azt a **azonosító** szövegmezőjébe **alapszintű SAML-konfigurációja** szakaszban az Azure Portalon.
+    * Másolja a **szolgáltatói kiállító URL-címét**, majd illessze be a Azure Portal alapszintű **SAML-konfiguráció** szakaszának **azonosító** szövegmezőbe.
 
-    * Másolás a **szolgáltató bejelentkezési URL-címe**, és illessze be azt a **bejelentkezési URL-** szövegmezőjébe **alapszintű SAML-konfigurációja** szakaszban az Azure Portalon.
+    * Másolja a **szolgáltatói bejelentkezési URL-címet**, majd illessze be a **bejelentkezési URL** szövegmezőbe a Azure Portal alapszintű **SAML-konfiguráció** szakaszában.
 
-    * Kattintson a **bezárása**
+    * Kattintson a **Bezárás** gombra
 
 ### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára 
 
@@ -219,52 +219,52 @@ Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy teszt
 
     ![A felhasználó párbeszédpanel](common/user-properties.png)
 
-    a. Az a **neve** mezőbe írja be **BrittaSimon**.
+    a. A név mezőbe írja be a **BrittaSimon** **nevet** .
   
-    b. Az a **felhasználónév** mezőbe írja be brittasimon@yourcompanydomain.extension. Például: BrittaSimon@contoso.com
+    b. A **Felhasználónév** mezőbe írja be brittasimon@yourcompanydomain.extensiona nevet. Például: BrittaSimon@contoso.com
 
-    c. Válassza ki **Show jelszó** jelölje be a jelölőnégyzetet, és jegyezze fel az értékkel, a jelszó mező jelenik meg.
+    c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
     d. Kattintson a **Create** (Létrehozás) gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
 
-Ebben a szakaszban engedélyezze Britta Simon DocuSign, a hozzáférés biztosításával Azure egyszeri bejelentkezés használatára.
+Ebben a szakaszban a Britta Simon használatával engedélyezheti az Azure egyszeri bejelentkezést a DocuSign hozzáférésének biztosításával.
 
-1. Az Azure Portalon válassza ki a **vállalati alkalmazások**, jelölje be **minden alkalmazás**, majd **DocuSign**.
+1. A Azure Portal válassza a **vállalati alkalmazások**lehetőséget, válassza a **minden alkalmazás**lehetőséget, majd válassza a **DocuSign**lehetőséget.
 
-    ![Vállalati alkalmazások panelen](common/enterprise-applications.png)
+    ![Vállalati alkalmazások panel](common/enterprise-applications.png)
 
-2. Az alkalmazások listájában jelölje ki a **DocuSign**.
+2. Az alkalmazások listában válassza a **DocuSign**lehetőséget.
 
-    ![Az alkalmazások listáját a DocuSign hivatkozásra](common/all-applications.png)
+    ![Az DocuSign hivatkozás az alkalmazások listájában](common/all-applications.png)
 
-3. A bal oldali menüben válassza **felhasználók és csoportok**.
+3. A bal oldali menüben válassza a **felhasználók és csoportok**lehetőséget.
 
     ![A "Felhasználók és csoportok" hivatkozásra](common/users-groups-blade.png)
 
-4. Kattintson a **felhasználó hozzáadása** gombra, majd válassza **felhasználók és csoportok** a a **hozzárendelés hozzáadása** párbeszédpanel.
+4. Kattintson a **felhasználó hozzáadása** gombra, majd válassza a **felhasználók és csoportok** lehetőséget a **hozzárendelés hozzáadása** párbeszédpanelen.
 
     ![A hozzárendelés hozzáadása panel](common/add-assign-user.png)
 
 5. Az a **felhasználók és csoportok** párbeszédpanelen válassza **Britta Simon** a felhasználók listában, majd kattintson a **kiválasztása** gombra a képernyő alján.
 
-6. Ha minden szerepkör értéket várt a a SAML helyességi feltétel, majd a a **Szerepkörválasztás** párbeszédpanelen válassza ki a megfelelő szerepkört a felhasználó a listából, majd kattintson a **kiválasztása** gombra a képernyő alján.
+6. Ha az SAML-kijelentésben az egyik szerepkör értékét várja, akkor a **szerepkör kiválasztása** párbeszédpanelen válassza ki a megfelelő szerepkört a felhasználó számára a listából, majd kattintson a képernyő alján található **kiválasztás** gombra.
 
-7. Az a **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelése** gombra.
+7. A **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelés** gombra.
 
-### <a name="create-docusign-test-user"></a>DocuSign-tesztfelhasználó létrehozása
+### <a name="create-docusign-test-user"></a>DocuSign-tesztelési felhasználó létrehozása
 
-Ebben a szakaszban egy Britta Simon nevű felhasználó a Docusignban jön létre. DocuSign támogatja a just-in-time-felhasználók létrehozásának, amely alapértelmezés szerint engedélyezve van. Nincs meg ebben a szakaszban a művelet elem. Ha a felhasználó még nem létezik, a DocuSign, a hitelesítés után egy új jön létre.
+Ebben a szakaszban egy Britta Simon nevű felhasználó jön létre a DocuSign-ben. A DocuSign támogatja az igény szerinti felhasználói üzembe helyezést, amely alapértelmezés szerint engedélyezve van. Ez a szakasz nem tartalmaz műveleti elemeket. Ha egy felhasználó még nem létezik a DocuSign-ben, a rendszer egy újat hoz létre a hitelesítés után.
 
 >[!Note]
->Ha manuálisan hozzon létre egy felhasználót van szüksége, forduljon a [DocuSign-ügyfélszolgálathoz](https://support.docusign.com/).
+>Ha manuálisan kell létrehoznia egy felhasználót, lépjen kapcsolatba a [DocuSign támogatási csapatával](https://support.docusign.com/).
 
 ### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése 
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 
-Ha a hozzáférési panelen a DocuSign csempére kattint, akkor kell automatikusan megtörténik a, a DocuSign, amelynek beállítása egyszeri Bejelentkezést. A hozzáférési panelen kapcsolatos további információkért lásd: [Bevezetés a hozzáférési Panel használatába](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Ha a hozzáférési panelen a DocuSign csempére kattint, automatikusan be kell jelentkeznie arra a DocuSign, amelyhez be szeretné állítani az egyszeri bejelentkezést. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>További források
 
@@ -272,7 +272,7 @@ Ha a hozzáférési panelen a DocuSign csempére kattint, akkor kell automatikus
 
 - [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Mi az az Azure Active Directory feltételes hozzáférés?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Mi a feltételes hozzáférés a Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
 <!--Image references-->
 

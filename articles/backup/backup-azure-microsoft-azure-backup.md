@@ -1,19 +1,18 @@
 ---
 title: A számítási feladatok biztonsági mentésének Azure Backup Server használata az Azure-ba
 description: A munkaterhelések Azure Portal való ellátásához használja a Azure Backup Server.
-services: backup
 author: kasinh
 manager: vvithal
 ms.service: backup
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: kasinh
-ms.openlocfilehash: 12ec1ce4a774178be621d7d8626ead7f1b106189
-ms.sourcegitcommit: 20bb149fe74459e59b648361235324b0674fe55b
+ms.openlocfilehash: bf0e964c46088947fa50d1eadbcc12b78978251f
+ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68298531"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68466380"
 ---
 # <a name="install-and-upgrade-azure-backup-server"></a>Azure Backup Server telepítése és frissítése
 > [!div class="op_single_selector"]
@@ -51,11 +50,11 @@ Ha nem szeretné futtatni az alapkiszolgálót az Azure-ban, akkor futtathatja a
 
 | Operációs rendszer | Platform | SKU |
 |:--- | --- |:--- |
-| A Windows Server 2019 |64 bit |Standard, Datacenter, Essentials (MABS v3 és újabb verziók) |
-| Windows Server 2016 és legújabb SPs |64 bit |Standard, Datacenter, Essentials (MABS v2 és újabb verziók) |
-| Windows Server 2012 R2 és a legújabb szervizcsomagok |64 bit |Standard, Datacenter, Foundation |
+| A Windows Server 2019 |64 bites |Standard, Datacenter, Essentials (MABS v3 és újabb verziók) |
+| Windows Server 2016 és legújabb SPs |64 bites |Standard, Datacenter, Essentials (MABS v2 és újabb verziók) |
+| Windows Server 2012 R2 és a legújabb szervizcsomagok |64 bites |Standard, Datacenter, Foundation |
 | Windows Storage Server 2012 R2 és a legújabb szervizcsomagok |64 bit |Standard, Workgroup |
-| Windows Storage Server 2012 és a legújabb szervizcsomagok |64 bit |Standard, Workgroup |
+| Windows Storage Server 2012 és a legújabb szervizcsomagok |64 bites |Standard, Workgroup |
 
 A DPM-tárolót a Windows Server deduplikálása használatával lehet deduplikálni. További információ arról, hogyan működik együtt a [DPM és](https://technet.microsoft.com/library/dn891438.aspx) a deduplikálás a Hyper-V virtuális gépeken való üzembe helyezés során.
 
@@ -127,7 +126,7 @@ A tárreplikációs beállítás szerkesztése:
 
     ![Első lépések varázsló módosítása](./media/backup-azure-microsoft-azure-backup/getting-started-prep-infra.png)
 
-6. A megnyíló **infrastruktúra előkészítése** panelen kattintson a telepítési  Azure Backup Server és a tár hitelesítő adatainak letöltése hivatkozásra. A tároló hitelesítő adatait a Azure Backup Server regisztrációja során használja a Recovery Services-tárolóba. A hivatkozások arra a letöltőközpontból állnak, ahová a szoftvercsomag letölthető.
+6. A megnyíló **infrastruktúra előkészítése** panelen **kattintson a telepítési** Azure Backup Server és a tár hitelesítő adatainak letöltése hivatkozásra. A tároló hitelesítő adatait a Azure Backup Server regisztrációja során használja a Recovery Services-tárolóba. A hivatkozások arra a letöltőközpontból állnak, ahová a szoftvercsomag letölthető.
 
     ![Infrastruktúra előkészítése Azure Backup Server számára](./media/backup-azure-microsoft-azure-backup/azure-backup-server-prep-infra.png)
 

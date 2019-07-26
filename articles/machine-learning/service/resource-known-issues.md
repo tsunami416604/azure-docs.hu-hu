@@ -1,5 +1,5 @@
 ---
-title: Ismert problémák és hibaelhárítás
+title: Ismert problémák & hibaelhárítás során
 titleSuffix: Azure Machine Learning service
 description: Az ismert problémák kerülő listáját és az Azure Machine Learning szolgáltatás hibaelhárítása.
 services: machine-learning
@@ -11,39 +11,39 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 04/30/2019
 ms.custom: seodec18
-ms.openlocfilehash: 80bb7af0f7ed20336ab08d4f3ca9639057b9c67f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 206a8d9ba45dcb948dfffff86bab17b58a33e464
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65149756"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68358614"
 ---
 # <a name="known-issues-and-troubleshooting-azure-machine-learning-service"></a>Ismert problémák és hibaelhárítás az Azure Machine Learning szolgáltatás
 
 Ez a cikk segít keresse meg és javítsa ki a hibákat vagy hibákat észlelt, amikor az Azure Machine Learning szolgáltatás használatával.
 
-## <a name="visual-interface-issues"></a>Vizuális felhasználói felületet kapcsolatos problémák
+## <a name="visual-interface-issues"></a>Vizuális felülettel kapcsolatos problémák
 
-Vizuális felhasználói felületet a machine learning szolgáltatással kapcsolatos problémák.
+Vizuális felület a Machine learning szolgáltatással kapcsolatos problémákhoz.
 
 ### <a name="long-compute-preparation-time"></a>Hosszú számítási előkészítési idő
 
-Hozzon létre új számítási vagy eljárásokhoz elhagyni számítási idő szükséges idő, előfordulhat, hogy néhány percet vagy akár hosszabb. A csoport az optimalizálás dolgozik.
+Hozzon létre új számítást, vagy idézzen elő számítási időt, akár néhány percet is igénybe vehet. A csapat az optimalizáláshoz dolgozik.
 
 
-### <a name="cannot-run-an-experiment-only-contains-dataset"></a>Nem lehet egy kísérlet futtatása csak tartalmaz adatkészlet 
+### <a name="cannot-run-an-experiment-only-contains-dataset"></a>Nem lehet futtatni egy kísérletet, amely csak adatkészletet tartalmaz 
 
-Érdemes futtatni egy kísérlet csak olyan adatkészlet az adatkészlet megjelenítése. Azonban nem engedélyezett futtatásához kísérlet csak a jelenleg adatkészlet tartalmazza. Mi a probléma aktívan javítása.
+Előfordulhat, hogy egy kísérletet csak olyan adatkészletet szeretne futtatni, amely megjeleníti az adatkészletet. Azonban a kísérletek futtatása nem engedélyezett, csak az adatkészletet tartalmazza. Aktívan kijavítottuk ezt a problémát.
  
-A javítás, mielőtt az adatkészlet csatlakozhat a data transformation modult (Select Columns in Dataset, metaadatok szerkesztéséhez, Split Data stb.), és futtathatja a kísérletet. Ezután jelenítheti meg az adatkészlet. 
+A javítás előtt összekapcsolhatjuk az adatkészletet bármely Adatátalakítási modulhoz (oszlop kijelölése az adatkészletben, a metaadatok szerkesztése, adatok felosztása stb.), és futtathatja a kísérletet. Ezután megjelenítheti az adatkészletet. 
 
-Alább hogyan kép azt mutatja be: ![visulize-adatok](./media/resource-known-issues/aml-visualize-data.png)
+Az alábbi képen látható, ![hogyan: visulize-adatok](./media/resource-known-issues/aml-visualize-data.png)
 
 ## <a name="sdk-installation-issues"></a>SDK telepítésével kapcsolatos problémák
 
-**Hibaüzenet: Nem lehet eltávolítani a "PyYAML"**
+**Hibaüzenet: A "PyYAML" nem távolítható el.**
 
-Az Azure Machine Learning SDK Pythonhoz készült: PyYAML érhető el distutils telepített. Ezért azt nem tudja pontosan meghatározni mely fájlok tartoznak, egy részleges eltávolítás esetén. Az SDK telepítése során a rendszer figyelmen kívül hagyja ezt a hibát a folytatáshoz használja:
+A Pythonhoz készült Azure Machine Learning SDK: A PyYAML egy distutils telepített projekt. Ezért nem tudjuk pontosan meghatározni, hogy mely fájlok tartoznak hozzá, ha részleges eltávolítás van. Az SDK telepítése során a rendszer figyelmen kívül hagyja ezt a hibát a folytatáshoz használja:
 
 ```Python
 pip install --upgrade azureml-sdk[notebooks,automl] --ignore-installed PyYAML
@@ -57,9 +57,9 @@ Nincs ritka előfordulhat, hogy néhány az általánosan elérhető kiadás el�
 
 Kép készítése hiba a webszolgáltatás üzembe helyezésekor. Megkerülő megoldás az, hogy hozzáadása "pynacl 1.2.1-es ==" Conda-fájlba a rendszerkép-konfiguráció pip függőségként.
 
-## <a name="deployment-failure"></a>Központi telepítési problémái
+## <a name="deployment-failure"></a>Üzembe helyezési hiba
 
-Ha az erőforrásigények `['DaskOnBatch:context_managers.DaskOnBatch', 'setup.py']' died with <Signals.SIGKILL: 9>`, a Termékváltozat módosítása a virtuális gépek, hogy a rendszer több memória áll rendelkezésre a központi telepítésben használja.
+Ha betartja `['DaskOnBatch:context_managers.DaskOnBatch', 'setup.py']' died with <Signals.SIGKILL: 9>`, módosítsa az üzemelő példányban használt virtuális gépek SKU-jának méretét, amely több memóriával rendelkezik.
 
 ## <a name="fpgas"></a>FPGA-kban
 
@@ -67,64 +67,72 @@ Nem lesz képes FPGA-kban a modellek üzembe helyezése, amíg nem kérte, és a
 
 ## <a name="automated-machine-learning"></a>Automatizált gépi tanulás
 
-Tensor Flow automatikus machine learning jelenleg nem támogatja a tensor flow verzió 1.13. Ez a verzió telepítése miatt nem működik a csomagfüggőségek. Dolgozunk a probléma megoldásához egy későbbi kiadásban. 
+A tenser flow automatikus gépi tanulása jelenleg nem támogatja a 1,13-es kétsebességű flow-verziót. Ennek a verziónak a telepítése a csomagok függőségeinek leállását eredményezi. Dolgozunk a probléma megoldásán egy későbbi kiadásban. 
 
-### <a name="experiment-charts"></a>Kísérlet diagram
+### <a name="experiment-charts"></a>Kísérleti diagramok
 
-Bináris osztályozás diagramok (pontosság-visszahívási, ROC, így a görbe stb.) automatikus gépi Tanulási kísérlet ismétléseinek látható nem tartoznak felhasználói felületén renderelési corectly óta 4/12. Diagram grafikon jelenleg más néven inverz eredményeket megjelenítő, ahol az alsó eredmények jobb teljesítményű modell megjelenik. A megoldás vizsgálat alatt áll.
+A bináris besorolású diagramok (precíziós visszahívás, ROC, a nyereség görbe stb.) az automatizált ML-kísérletek ismétlései között nem jelennek meg a felhasználói felületen a 4/12 óta. A diagram ábrázolása jelenleg inverz eredményeket mutat, ahol a jobb teljesítményű modellek alacsonyabb eredményekkel jelennek meg. Egy megoldás a vizsgálat alatt áll.
 
 ## <a name="databricks"></a>Databricks
 
 Databricks és az Azure Machine Learning problémákat.
 
-### <a name="failure-when-installing-packages"></a>Ha a csomagok telepítése sikertelen
+### <a name="failure-when-installing-packages"></a>Hiba a csomagok telepítésekor
 
-Az Azure databricks szolgáltatásban Azure Machine Learning SDK telepítése sikertelen lesz, ha további csomagok telepítése. Egyes csomagokat, mint például `psutil`, ütközéseket okozhat. Telepítési hibák elkerülése érdekében telepítse csomagok fagy a tár verzióját. A probléma a databricks és az Azure Machine Learning szolgáltatás SDK-t, nem kapcsolódik. A probléma, további kódtárak túl Ön is szembesülhet. Példa:
+Azure Machine Learning SDK telepítése sikertelen Azure Databricks Ha további csomagok vannak telepítve. Egyes csomagokat, mint például `psutil`, ütközéseket okozhat. A telepítési hibák elkerülése érdekében telepítse a csomagokat a könyvtár verziószámának lefagyasztásával. Ez a probléma a Databricks és nem a Azure Machine Learning Service SDK-val kapcsolatos. Előfordulhat, hogy ezt a problémát más kódtárak is megtapasztalják. Példa:
 
 ```python
 psutil cryptography==1.5 pyopenssl==16.0.0 ipython==2.2.0
 ```
 
-Azt is megteheti parancsprogramokkal init Ha, tartsa telepítési problémák Python-kódtárakat. Ez a megközelítés hivatalosan nem támogatott. További információkért lásd: [fürthatókörös init parancsfájlok](https://docs.azuredatabricks.net/user-guide/clusters/init-scripts.html#cluster-scoped-init-scripts).
+Azt is megteheti, hogy init-parancsfájlokat használ, ha a Python-kódtárakkal együtt tartja a telepítési problémákat. Ez a megközelítés nem támogatott hivatalosan. További információ: fürtökre kiterjedő [init-parancsfájlok](https://docs.azuredatabricks.net/user-guide/clusters/init-scripts.html#cluster-scoped-init-scripts).
 
-### <a name="cancel-an-automated-machine-learning-run"></a>Egy automatizált machine learning-Futtatás megszakítása
+### <a name="cancel-an-automated-machine-learning-run"></a>Gépi tanulás automatikus futtatásának megszakítása
 
-Automatizált machine learning-funkciók az Azure Databricks használata esetén egy Futtatás megszakítása, és futtatja, új kísérlet indításához indítsa újra az Azure Databricks-fürt.
+Ha Azure Databrickson automatikus gépi tanulási képességeket használ a Futtatás megszakításához és az új kísérlet futtatásának elindításához, indítsa újra a Azure Databricks-fürtöt.
 
-### <a name="10-iterations-for-automated-machine-learning"></a>> 10 ismétlések automatizált machine Learning
+### <a name="10-iterations-for-automated-machine-learning"></a>> 10 iteráció az automatizált gépi tanuláshoz
 
-Automatizált machine learning beállításait, ha több mint 10 ismétlések állítsa `show_output` való `False` amikor közzétételre küld be a Futtatás.
+Ha több mint 10 iterációja van, akkor az automatizált gépi tanulás beállításainál állítsa `show_output` `False` be a parancsot a futtatáskor.
 
-### <a name="widget-for-the-azure-machine-learning-sdkautomated-machine-learning"></a>Az Azure Machine Learning SDK/automatikus gépi tanulási widget
+### <a name="widget-for-the-azure-machine-learning-sdkautomated-machine-learning"></a>Widget a Azure Machine Learning SDK/automatikus gépi tanuláshoz
 
-Az Azure Machine Learning SDK widget nem támogatott a Databricks-jegyzetfüzet, mert a notebookok nem tudja értelmezni a HTML-widgetek. A widget a portálon tekintheti meg az Azure Databricks-jegyzetfüzet cella a Python-kód használatával:
+A Azure Machine Learning SDK widget nem támogatott Databricks-jegyzetfüzetekben, mert a jegyzetfüzetek nem tudják elemezni a HTML widgeteket. A widgetet a portálon tekintheti meg a Azure Databricks notebook-cellában található Python-kód használatával:
 
 ```
 displayHTML("<a href={} target='_blank'>Azure Portal: {}</a>".format(local_run.get_portal_url(), local_run.id))
 ```
 
-### <a name="import-error-no-module-named-pandascoreindexes"></a>Importálási hiba: Nincs "pandas.core.indexes" nevű modul
+### <a name="import-error-no-module-named-pandascoreindexes"></a>Importálási hiba: Nincs "pandák. Core. indexek" nevű modul
 
-Ha ezt a hibaüzenetet használatakor automatikus gépi tanulás:
+Ha ezt a hibaüzenetet látja, amikor automatikus gépi tanulást használ:
 
-1. Két csomag telepítése az Azure Databricks-fürt a következő parancs futtatásával: 
+1. Futtassa ezt a parancsot két csomag telepítéséhez a Azure Databricks-fürtön: 
 
    ```
    scikit-learn==0.19.1
    pandas==0.22.0
    ```
 
-1. Válassza le, és mellékelje a notebookot a fürt. 
+1. Válassza le, majd csatlakoztassa újra a fürtöt a jegyzetfüzethez. 
 
-Ha ezeket a lépéseket a probléma nem oldódik meg, próbálja újraindítani a fürtöt.
+Ha ezek a lépések nem oldják meg a problémát, próbálja meg újraindítani a fürtöt.
+
+### <a name="failtosendfeather"></a>FailToSendFeather
+
+Ha Azure Databricks-fürtön lévő adatolvasáskor `FailToSendFeather` hibaüzenet jelenik meg, tekintse át a következő megoldásokat:
+
+* A `azureml-sdk[automl_databricks]` csomag frissítése a legújabb verzióra.
+* Adja `azure-dataprep` hozzá a 1.1.8 vagy újabb verziót.
+* Adja `pyarrow` hozzá a 0,11-es vagy újabb verziót.
 
 ## <a name="azure-portal"></a>Azure Portal
 
-Ha közvetlenül a munkaterületet egy megosztás hivatkozás az SDK-t vagy a portálon megtekintheti, nem kell az előfizetési adatok normál Áttekintés lapján megtekintheti a bővítmény a. Még nem tud váltani egy másik munkaterületre. Megtekintheti egy másik munkaterülethez van szüksége, a megoldás-e közvetlenül a [az Azure portal](https://portal.azure.com) , és keresse meg a munkaterület nevét.
+Ha közvetlenül a munkaterületet egy megosztás hivatkozás az SDK-t vagy a portálon megtekintheti, nem kell az előfizetési adatok normál Áttekintés lapján megtekintheti a bővítmény a. Még nem tud váltani egy másik munkaterületre. Ha meg kell tekintenie egy másik munkaterületet, a megkerülő megoldással közvetlenül a [Azure Portal](https://portal.azure.com) léphet, és megkeresheti a munkaterület nevét.
 
 ## <a name="diagnostic-logs"></a>Diagnosztikai naplók
 
-Egyes esetekben hasznos lehet, ha a diagnosztikai adatok segítség kérése során megadhatja. Néhány a naplók megtekintéséhez keresse fel [az Azure portal](https://portal.azure.com) és nyissa meg a munkaterületet, és kattintson **munkaterület > kísérlet > Futtatás > Naplók**.
+Egyes esetekben hasznos lehet, ha a diagnosztikai adatok segítség kérése során megadhatja. Ha meg szeretne tekinteni néhány naplót, látogasson el [Azure Portal](https://portal.azure.com) és lépjen a munkaterületre, és válassza ki a munkaterületet **> a kísérlet > > naplók futtatása**
 
 ## <a name="resource-quotas"></a>Erőforráskvóták
 
@@ -132,7 +140,7 @@ További információ a [erőforráskvóták](how-to-manage-quotas.md) az Azure 
 
 ## <a name="authentication-errors"></a>Hitelesítési hibák
 
-Ha egy felügyeleti műveletet egy számítási célnak a távoli feladatokat hajt végre, kapni fog a hibák a következők egyikét:
+Ha egy távoli feladatból származó számítási célra hajt végre felügyeleti műveletet, a következő hibák valamelyikét fogja kapni:
 
 ```json
 {"code":"Unauthorized","statusCode":401,"message":"Unauthorized","details":[{"code":"InvalidOrExpiredToken","message":"The request token was either invalid or expired. Please try again with a valid token."}]}
@@ -142,4 +150,4 @@ Ha egy felügyeleti műveletet egy számítási célnak a távoli feladatokat ha
 {"error":{"code":"AuthenticationFailed","message":"Authentication failed."}}
 ```
 
-Például egy hibaüzenetet fog kapni, ha megpróbálja hozzon létre vagy csatlakoztasson egy számítási célnak, egy gépi Tanulási folyamatot, amely a távoli végrehajtás céljából elküldésekor.
+Ha például megpróbál létrehozni vagy csatolni egy számítási célt egy olyan ML-folyamatból, amely távoli végrehajtásra van elküldve, a rendszer hibaüzenetet küld.

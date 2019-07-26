@@ -17,12 +17,12 @@ ms.date: 07/16/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9955ea434f7a0e48f2d1f81d2a1f57cc3cd67dcb
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
-ms.translationtype: HT
+ms.openlocfilehash: 0b89bd3992bd6249e0acd576fee7e1556968ad65
+ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68277884"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68334184"
 ---
 # <a name="quickstart-call-the-microsoft-graph-api-from-a-universal-windows-platform-uwp-application"></a>Gyors útmutató: A Microsoft Graph API meghívása Univerzális Windows-platform- (UWP-) alkalmazásból
 
@@ -93,7 +93,7 @@ Ez a rövid útmutató egy olyan kódrészletet tartalmaz, amely bemutatja, hogy
 > > [!TIP]
 > > Az *alkalmazás-azonosító*értékének megkereséséhez nyissa meg a portál **Áttekintés** szakaszát.
 
-#### <a name="step-4-run-your-application"></a>4\. lépés: Az alkalmazás futtatása
+#### <a name="step-4-run-your-application"></a>4\. lépés: Alkalmazás futtatása
 
 Ha a Windowsos gépen szeretné kipróbálni a gyors útmutatót:
 
@@ -179,3 +179,8 @@ Próbálja ki az asztali Windowshoz készült oktatóanyagot, amelyben teljes k�
 
 > [!div class="nextstepaction"]
 > [UWP: A Graph API meghívása – oktatóanyag](tutorial-v2-windows-uwp.md)
+
+Segítsen nekünk a Microsoft Identity platform fejlesztésében. Mondja el, mit gondol egy rövid, kétkérdéses felmérés végrehajtásával.
+
+> [!div class="nextstepaction"]
+> [Microsoft Identity platform-felmérés](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRyKrNDMV_xBIiPGgSvnbQZdUQjFIUUFGUE1SMEVFTkdaVU5YT0EyOEtJVi4u)

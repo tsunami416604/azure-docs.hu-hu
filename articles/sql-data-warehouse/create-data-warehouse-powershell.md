@@ -1,8 +1,8 @@
 ---
-title: 'Gyors útmutató: Hozzon létre egy Azure SQL Data Warehouse – Azure PowerShell-lel |} A Microsoft Docs'
-description: Gyorsan létrehozhat egy SQL Database logikai kiszolgálót, kiszolgálószintű tűzfalszabály és data warehouse-bA az Azure PowerShell használatával.
+title: 'Gyors útmutató: Azure SQL Data Warehouse létrehozása – Azure PowerShell | Microsoft Docs'
+description: Gyorsan létrehozhat egy SQL Database logikai kiszolgálót, a kiszolgálói szintű tűzfalszabályok és az adattárházat Azure PowerShell használatával.
 services: sql-data-warehouse
-author: XiaoyuL-Preview
+author: XiaoyuMSFT
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: quickstart
@@ -10,16 +10,16 @@ ms.subservice: development
 ms.date: 4/11/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: cdaa932a4996d559b5974e39e20cf75acd6571c5
-ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
+ms.openlocfilehash: 1f800ade5c5122f0891c9122f6698b6550048c67
+ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65873776"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68479343"
 ---
-# <a name="quickstart-create-and-query-an-azure-sql-data-warehouse-with-azure-powershell"></a>Gyors útmutató: Létrehozása és lekérdezése az Azure SQL data warehouse az Azure PowerShell használatával
+# <a name="quickstart-create-and-query-an-azure-sql-data-warehouse-with-azure-powershell"></a>Gyors útmutató: Azure SQL-adattárház létrehozása és lekérdezése Azure PowerShell
 
-Gyorsan létrehozhat egy Azure SQL data warehouse, Azure PowerShell-lel.
+Gyorsan létrehozhat egy Azure SQL-adattárházat Azure PowerShell használatával.
 
 Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány perc alatt létrehozhat egy [ingyenes](https://azure.microsoft.com/free/) fiókot.
 
@@ -30,19 +30,19 @@ Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány
 
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 
-Az Azure-előfizetés használatával jelentkezzen be a [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) paranccsal, és kövesse a képernyőn megjelenő utasításokat.
+Jelentkezzen be az Azure-előfizetésbe a [AzAccount](/powershell/module/az.accounts/connect-azaccount) parancs használatával, és kövesse a képernyőn megjelenő utasításokat.
 
 ```powershell
 Connect-AzAccount
 ```
 
-Tekintse meg, hogy melyik előfizetéssel használja, futtassa [Get-AzSubscription](/powershell/module/az.accounts/get-azsubscription).
+A [Get-AzSubscription](/powershell/module/az.accounts/get-azsubscription)futtatásával megtekintheti, hogy melyik előfizetést használja.
 
 ```powershell
 Get-AzSubscription
 ```
 
-Ha szeretne egy másik előfizetést, mint az alapértelmezett, futtassa [Set-AzContext](/powershell/module/az.accounts/set-azcontext).
+Ha az alapértelmezettnél eltérő előfizetést kell használnia, futtassa a [set-AzContext](/powershell/module/az.accounts/set-azcontext)parancsot.
 
 ```powershell
 Set-AzContext -SubscriptionName "MySubscription"
@@ -72,14 +72,14 @@ $databasename = "mySampleDataWarehosue"
 
 ## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 
-Hozzon létre egy [Azure-erőforráscsoport](../azure-resource-manager/resource-group-overview.md) használatával a [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) parancsot. Az erőforráscsoport olyan logikai tároló, amelyben a rendszer üzembe helyezi és csoportként kezeli az Azure-erőforrásokat. A következő példában létrehozunk egy `westeurope` nevű erőforráscsoportot a `myResourceGroup` helyen.
+Hozzon létre egy [Azure-erőforráscsoportot](../azure-resource-manager/resource-group-overview.md) a [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) parancs használatával. Az erőforráscsoport olyan logikai tároló, amelyben a rendszer üzembe helyezi és csoportként kezeli az Azure-erőforrásokat. A következő példában létrehozunk egy `westeurope` nevű erőforráscsoportot a `myResourceGroup` helyen.
 
 ```powershell
 New-AzResourceGroup -Name $resourcegroupname -Location $location
 ```
 ## <a name="create-a-logical-server"></a>Hozzon létre egy logikai kiszolgálót
 
-Hozzon létre egy [Azure SQL logikai kiszolgáló](../sql-database/sql-database-logical-servers.md) használatával a [New-AzSqlServer](/powershell/module/az.sql/new-azsqlserver) parancsot. A logikai kiszolgálók adatbázisok egy csoportját tartalmazzák, amelyeket a rendszer egy csoportként kezel. A következő példában létrehozunk egy véletlenszerűen elnevezett kiszolgálót az erőforráscsoportban nevű rendszergazda felhasználó `ServerAdmin` jelszóval `ChangeYourAdminPassword1`. Igény szerint cserélje le ezeket az előre meghatározott értékeket.
+Hozzon létre egy [Azure SQL logikai kiszolgálót](../sql-database/sql-database-logical-servers.md) a [New-AzSqlServer](/powershell/module/az.sql/new-azsqlserver) parancs használatával. A logikai kiszolgálók adatbázisok egy csoportját tartalmazzák, amelyeket a rendszer egy csoportként kezel. Az alábbi példa egy véletlenszerűen megnevezett kiszolgálót hoz létre az erőforráscsoporthoz egy nevű `ServerAdmin` rendszergazdai felhasználóval és egy `ChangeYourAdminPassword1`jelszóval. Igény szerint cserélje le ezeket az előre meghatározott értékeket.
 
 ```powershell
 New-AzSqlServer -ResourceGroupName $resourcegroupname `
@@ -90,7 +90,7 @@ New-AzSqlServer -ResourceGroupName $resourcegroupname `
 
 ## <a name="configure-a-server-firewall-rule"></a>Konfiguráljon egy kiszolgálói tűzfalszabályt
 
-Hozzon létre egy [Azure SQL kiszolgálószintű tűzfalszabály](../sql-database/sql-database-firewall-configure.md) használatával a [New-AzSqlServerFirewallRule](/powershell/module/az.sql/new-azsqlserverfirewallrule) parancsot. Kiszolgálószintű tűzfalszabály lehetővé teszi, hogy a külső alkalmazások, például az SQL Server Management Studio vagy az SQLCMD segédprogram szeretne csatlakozni az SQL data warehouse az SQL Data Warehouse szolgáltatás tűzfalán keresztül. A következő példában a tűzfal csak más Azure-erőforrások számára van nyitva. A külső csatlakozási lehetőségek engedélyezéséhez módosítsa az IP-címet egy, az Ön környezetének megfelelő címre. Az összes IP-cím megnyitásához használja a 0.0.0.0 címet kezdő IP-címként és a 255.255.255.255 címet zárócímként.
+Hozzon létre egy [Azure SQL Server-szintű tűzfalszabályok](../sql-database/sql-database-firewall-configure.md) a [New-AzSqlServerFirewallRule](/powershell/module/az.sql/new-azsqlserverfirewallrule) parancs használatával. A kiszolgálói szintű tűzfalszabályok lehetővé teszik egy külső alkalmazás, például a SQL Server Management Studio vagy a SQLCMD segédprogram számára az SQL-adattárházhoz való kapcsolódást az SQL Data Warehouse szolgáltatás tűzfalan keresztül. A következő példában a tűzfal csak más Azure-erőforrások számára van nyitva. A külső csatlakozási lehetőségek engedélyezéséhez módosítsa az IP-címet egy, az Ön környezetének megfelelő címre. Az összes IP-cím megnyitásához használja a 0.0.0.0 címet kezdő IP-címként és a 255.255.255.255 címet zárócímként.
 
 ```powershell
 New-AzSqlServerFirewallRule -ResourceGroupName $resourcegroupname `
@@ -99,12 +99,12 @@ New-AzSqlServerFirewallRule -ResourceGroupName $resourcegroupname `
 ```
 
 > [!NOTE]
-> SQL Database és az SQL Data Warehouse az 1433-as porton keresztül kommunikálnak. Csatlakozás a vállalati hálózaton belülről próbál, ha a hálózati tűzfal előfordulhat, hogy nem engedélyezett a kimenő forgalmat az 1433-as porton keresztül. Ha igen, nem tud csatlakozni az Azure SQL Serverhez, kivéve, ha az informatikai részleg megnyitja az 1433-as porton.
+> SQL Database és SQL Data Warehouse kommunikáció az 1433-as porton keresztül. Ha vállalati hálózaton belülről próbál csatlakozni, lehetséges, hogy a hálózati tűzfal nem engedélyezi a kimenő forgalmat az 1433-as porton keresztül. Ha igen, akkor nem fog tudni csatlakozni az Azure SQL Server-kiszolgálóhoz, ha az informatikai részleg nem nyitja meg a 1433-es portot.
 >
 
 
 ## <a name="create-a-data-warehouse"></a>Adattárház létrehozása
-Ez a példa létrehoz egy data warehouse használatával a korábban definiált változókat.  Azt határozza meg a szolgáltatási cél DW100c, amely egy alacsonyabb költségű kiindulási pont, a data warehouse-hoz. 
+Ez a példa egy adattárházat hoz létre a korábban definiált változók használatával.  Meghatározza a szolgáltatás célját DW100c, amely az adattárház alacsonyabb díjas kiindulási pontja. 
 
 ```Powershell
 New-AzSqlDatabase `
@@ -119,18 +119,18 @@ New-AzSqlDatabase `
 
 A szükséges paraméterek a következők:
 
-* **RequestedServiceObjectiveName**: Mennyisége [adattárházegységek](what-is-a-data-warehouse-unit-dwu-cdwu.md) , a kért. Ez a mennyiség növelése növeli a számítási költségeket. A támogatott értékek listáját lásd: [memória- és egyidejűségi korlátok](memory-and-concurrency-limits.md).
-* **DatabaseName**: A létrehozandó SQL Data Warehouse neve.
-* **Kiszolgálónév**: A létrehozásához használt kiszolgáló neve.
-* **ResourceGroupName**: Az erőforráscsoportot használja. Az előfizetésben elérhető erőforráscsoportok kereséséhez használja a Get-AzureResource parancsot.
-* **Kiadás**: "Datawarehouse értéket" kell lennie az SQL Data Warehouse létrehozása.
+* **RequestedServiceObjectiveName**: A kért adatraktár- [egységek](what-is-a-data-warehouse-unit-dwu-cdwu.md) mennyisége. Az érték növelése növeli a számítási költségeket. A támogatott értékek listáját a [memória és a Egyidejűség korlátai](memory-and-concurrency-limits.md)című részben tekintheti meg.
+* **Databasename**: A létrehozandó SQL Data Warehouse neve.
+* **Kiszolgálónév**: A létrehozáshoz használt kiszolgáló neve.
+* **ResourceGroupName**: Az Ön által használt erőforráscsoport. Az előfizetésben elérhető erőforráscsoportok kereséséhez használja a Get-AzureResource parancsot.
+* **Kiadás**: SQL Data Warehouse létrehozásához "DataWarehouse" értéknek kell lennie.
 
 A választható paraméterek a következők:
 
-- **CollationName**: Ha nincs megadva alapértelmezett rendezése az sql_latin1_general_cp1_ci_as rendezést alkalmazza. Rendezés nem módosítható az adatbázisok.
-- **MaxSizeBytes**: Egy adatbázis alapértelmezett maximális mérete 240TB. A maximális méret sortárindex adatok korlátozza. Nincs korlátlan Oszlopalapú tárolás.
+- **CollationName**: Ha nincs megadva, az alapértelmezett rendezés SQL_Latin1_General_CP1_CI_AS. A rendezés nem módosítható egy adatbázison.
+- **MaxSizeBytes**: Az adatbázis alapértelmezett maximális mérete 240TB. A maximális méret korlátozza a sortárindex létrehozását-adatmennyiséget. Az oszlopos adatmennyiségek korlátlan tárhelyet biztosítanak.
 
-A paraméterbeállításokkal további információkért lásd: [New-AzSqlDatabase](/powershell/module/az.sql/new-azsqldatabase).
+A paraméter beállításairól további információt a [New-AzSqlDatabase](/powershell/module/az.sql/new-azsqldatabase)című témakörben talál.
 
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
@@ -138,7 +138,7 @@ A paraméterbeállításokkal további információkért lásd: [New-AzSqlDataba
 A gyűjtemény részét képező többi rövid útmutató erre a rövid útmutatóra épül. 
 
 > [!TIP]
-> Ha azt tervezi, hogy a rövid útmutató későbbi oktatóanyagokkal dolgozik tovább, ne törölje az erőforrásokat létrehozott ebben a rövid útmutatóban. Ha nem szeretné folytatni, használja az alábbi lépéseket az Azure Portalon a rövid útmutatóhoz létrehozott összes erőforrást törli.
+> Ha azt tervezi, hogy továbbra is a későbbi gyors útmutatók használatával dolgozik, ne törölje az ebben a rövid útmutatóban létrehozott erőforrásokat. Ha nem folytatja a műveletet, a következő lépésekkel törölheti a rövid útmutatóban létrehozott összes erőforrást a Azure Portal.
 >
 
 ```powershell
@@ -147,6 +147,6 @@ Remove-AzResourceGroup -ResourceGroupName $resourcegroupname
 
 ## <a name="next-steps"></a>További lépések
 
-Sikeresen létrehozott egy adattárházat, és létrehozott egy tűzfalszabályt, csatlakozott az data warehouse-ba, és futtatott néhány lekérdezést. Ha bővebb információra van szüksége az Azure SQL Data Warehouse-zal kapcsolatban, folytassa az adatok betöltésével foglalkozó oktatóanyaggal.
+Létrehozott egy adattárházat, létrehozott egy tűzfalszabályot, kapcsolódott az adattárházhoz, és futtat néhány lekérdezést. Ha bővebb információra van szüksége az Azure SQL Data Warehouse-zal kapcsolatban, folytassa az adatok betöltésével foglalkozó oktatóanyaggal.
 > [!div class="nextstepaction"]
 >[Adatok betöltése az SQL Data Warehouse-okba](load-data-from-azure-blob-storage-using-polybase.md)

@@ -1,6 +1,6 @@
 ---
-title: Az Azure Service Fabric általános biztonsági attribútumok
-description: Az Azure Service Fabric értékelésére közös biztonsági attribútumok ellenőrzőlista
+title: Az Azure Service Fabric biztonsági attribútumai
+description: Az Azure-Service Fabric értékelésére szolgáló biztonsági attribútumok ellenőrzőlistája
 services: service-fabric
 documentationcenter: ''
 author: msmbaldwin
@@ -9,16 +9,16 @@ ms.service: service-fabric
 ms.topic: conceptual
 ms.date: 04/16/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 7c1718298c3f7c3fea28fa0b18569085f071696f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 23c7f8bdcf67d59ccdd5cd0b00bc0e0960ba1d8f
+ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66003061"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68443859"
 ---
-# <a name="security-attributes-for-azure-service-fabric"></a>Az Azure Service Fabric biztonsági attribútumok
+# <a name="security-attributes-for-azure-service-fabric"></a>Az Azure Service Fabric biztonsági attribútumai
 
-Ez a cikk az Azure Service Fabric beépített biztonsági attribútumok dokumentumok. 
+Ez a cikk az Azure Service Fabric beépített biztonsági attribútumait dokumentálja. 
 
 [!INCLUDE [Security Attributes Header](../../includes/security-attributes-header.md)]
 
@@ -26,44 +26,44 @@ Ez a cikk az Azure Service Fabric beépített biztonsági attribútumok dokument
 
 | Biztonsági attribútum | Igen/nem | Megjegyzések |
 |---|---|--|
-| Titkosítás inaktív állapotban:<ul><li>Kiszolgálóoldali titkosítás</li><li>Kiszolgálóoldali titkosítás a felhasználó által kezelt kulcsok</li><li>Más titkosítási funkciók (például az ügyféloldali, mindig titkosított, stb.)</ul>| Igen | Az ügyfél a fürt és a fürt beépített beállítani a virtuálisgép-méretezési csoport tulajdonosa. A virtuálisgép-méretezési csoportot az Azure disk encryption is engedélyezhetők. |
-| Titkosítás az átvitel során:<ul><li>Express route-titkosítás</li><li>A VNet-titkosítás</li><li>Hálózatok titkosítása</ul>| Igen |  |
-| Titkosítási kulcs kezelése (CMK, BYOK, stb.)| Igen | Az ügyfél a fürt és a fürt beépített beállítani a virtuálisgép-méretezési csoport tulajdonosa. A virtuálisgép-méretezési csoportot az Azure disk encryption is engedélyezhetők. |
-| Oszlop a blokkszintű titkosítás (az Azure Data Services)| – |  |
-| Titkosított API-hívások| Igen | Service Fabric API-hívások Azure Resource Manageren keresztül történik. Egy érvényes JSON webes jogkivonat (JWT) megadása kötelező. |
+| Titkosítás inaktív állapotban (például kiszolgálóoldali titkosítás, ügyfél által felügyelt kulcsokkal rendelkező kiszolgálóoldali titkosítás és egyéb titkosítási funkciók)| Igen | Az ügyfél tulajdonosa a fürt és a virtuálisgép-méretezési csoport, amelyen a fürt épül. Az Azure Disk Encryption szolgáltatás a virtuálisgép-méretezési csoporton engedélyezhető. |
+| Az átvitel közbeni titkosítás (például ExpressRoute titkosítás, VNet titkosítás és VNet-VNet titkosítás)| Igen |  |
+| Titkosítási kulcsok kezelését (CMK, BYOK stb.)| Igen | Az ügyfél tulajdonosa a fürt és a virtuálisgép-méretezési csoport, amelyen a fürt épül. Az Azure Disk Encryption szolgáltatás a virtuálisgép-méretezési csoporton engedélyezhető. |
+| Oszlop szintű titkosítás (Azure Data Services)| – |  |
+| Titkosított API-hívások| Igen | Service Fabric API-hívások Azure Resource Manageron keresztül történnek. Érvényes JSON webes jogkivonat (JWT) szükséges. |
 
-## <a name="network-segmentation"></a>Hálózati szegmentálást
+## <a name="network-segmentation"></a>Hálózati szegmentálás
 
 | Biztonsági attribútum | Igen/nem | Megjegyzések |
 |---|---|--|
-| Szolgáltatási végpont támogatás| Igen |  |
-| VNet-injektálási támogatás| Igen |  |
-| Hálózatelkülönítés és támogatási optimalizálóként működik| Igen | Hálózati biztonsági csoportok (NSG) használatával. |
-| Kényszerített bújtatás támogatása| Igen | Azure-hálózatok biztosítják a kényszerített bújtatás. |
+| Szolgáltatás végpontjának támogatása| Igen |  |
+| VNet-befecskendezés támogatása| Igen |  |
+| Hálózati elkülönítés és tűzfalak támogatása| Igen | Hálózati biztonsági csoportok (NSG) használata. |
+| Kényszerített bújtatás támogatása| Igen | Az Azure Networking kényszerített bújtatást biztosít. |
 
 ## <a name="detection"></a>Észlelés
 
 | Biztonsági attribútum | Igen/nem | Megjegyzések|
 |---|---|--|
-| Azure monitorozási támogatása (a Log analytics, az App insights, stb.)| Igen | Figyelés és külső támogatást az Azure használatával. |
+| Azure monitoring-támogatás (log Analytics, alkalmazás-elemzések stb.)| Igen | Az Azure monitoring támogatás és a harmadik féltől származó támogatás használata. |
 
 ## <a name="identity-and-access-management"></a>Identitás- és hozzáférés-kezelés
 
 | Biztonsági attribútum | Igen/nem | Megjegyzések|
 |---|---|--|
-| Hitelesítés| Igen | Hitelesítés az Azure Active Directoryn keresztül. |
-| Engedélyezés| Igen | Identitás és hozzáférés-kezelés (IAM) keresztül SFRP-hívásokhoz. Közvetlenül a fürt végpontja hívások két szerepkör támogatja: Felhasználó és rendszergazda. Az ügyfél leképezheti az API-k bármelyik szerepkörhöz. |
+| Authentication| Igen | A hitelesítés Azure Active Directoryon keresztül történik. |
+| Authorization| Igen | Az identitás-és hozzáférés-kezelés (IAM) a SFRP-on keresztüli hívásokhoz. A közvetlenül a fürt végpontja felé irányuló hívások két szerepkört támogatnak: Felhasználó és rendszergazda. Az ügyfél bármely szerepkörhöz hozzárendelheti az API-kat. |
 
 
-## <a name="audit-trail"></a>Auditnapló
+## <a name="audit-trail"></a>Naplózási nyomvonal
 
 | Biztonsági attribútum | Igen/nem | Megjegyzések|
 |---|---|--|
-| Vezérlő és a felügyeleti sík naplózási és naplózása| Igen | Az összes vezérlési síkjával végzett műveletek haladjon végig a naplózási és jóváhagyási folyamatok. |
-| Adatsík naplózása és naplózása| – | Ügyfél a tulajdonosa a fürtöt.  |
+| Vezérlési és felügyeleti síkok naplózása és naplózása| Igen | A vezérlési sík műveletei a naplózási és jóváhagyási folyamatokon keresztül futnak. |
+| Adatsíkok naplózása és naplózása| – | Az ügyfél tulajdonosa a fürt.  |
 
 ## <a name="configuration-management"></a>Konfigurációkezelés
 
 | Biztonsági attribútum | Igen/nem | Megjegyzések|
 |---|---|--|
-| Konfiguráció kezelésével kapcsolatos támogatás (versioning konfiguráció stb.)| Igen | |
+| Configuration Management-támogatás (konfiguráció verziószámozása stb.)| Igen | |

@@ -10,27 +10,27 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 0c461da44d3d9075d66a68fe8994a4e970288fca
-ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
+ms.openlocfilehash: b6b4cd38ce5f591d43f27f735a48993cc1a1ab63
+ms.sourcegitcommit: c556477e031f8f82022a8638ca2aec32e79f6fd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67543747"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68414449"
 ---
 # <a name="update-the-iot-edge-security-daemon-and-runtime"></a>Az IoT Edge biztonsági démon és a futtatókörnyezet frissítése
 
-Amint az IoT Edge szolgáltatás kiadja az új verziók, érdemes frissíteni az IoT Edge-eszközökön a legújabb funkciókról és a biztonsági fejlesztések. Ez a cikk ismerteti az IoT Edge-eszközök frissítése, ha új verzió érhető el. 
+Mivel a IoT Edge szolgáltatás új verziókat szabadít fel, frissítenie kell a IoT Edge eszközöket a legújabb funkciókkal és biztonsági frissítésekkel. Ez a cikk ismerteti az IoT Edge-eszközök frissítése, ha új verzió érhető el. 
 
-IoT Edge-eszköz két összetevőből, ha újabb verzióra szeretne frissíteni kell. Az első az a biztonsági démont, amely futtatja az eszközön, és a futásidejű modulok kezdődik, amikor az eszköz elindul. Jelenleg a biztonsági démon csak frissíthetők magáról az eszközről. A másodperc összetevőt a futtatókörnyezet, az IoT Edge hub és az IoT Edge-ügynök modulok. Az üzembe helyezés felépítésében függően a futtatókörnyezet frissíthetők az eszközről, vagy távolról. 
+IoT Edge-eszköz két összetevőből, ha újabb verzióra szeretne frissíteni kell. Az első a biztonsági démon, amely az eszközön fut, és elindítja a futásidejű modulokat az eszköz indításakor. Jelenleg a biztonsági démon csak frissíthetők magáról az eszközről. A második összetevő a futtatókörnyezet, amely az IoT Edge hub és a IoT Edge Agent moduljaiból tevődik fel. Az üzembe helyezés felépítésében függően a futtatókörnyezet frissíthetők az eszközről, vagy távolról. 
 
 Az Azure IoT Edge legújabb verzióját, lásd: [Azure IoT Edge-kiadások](https://github.com/Azure/azure-iotedge/releases).
 
 >[!IMPORTANT]
->Az Azure IoT Edge futtat egy Windows-eszközön, ha nem frissítik verzióra 1.0.5 Ha az eszköz vonatkozik a következők egyikét: 
->* Az eszköz nem frissített a Windows build 17763. 1\.0.5 nem támogatja a Windows IoT Edge-verzió régebbi, mint 17763 épít fel.
->* A Java vagy Node.js-modulok futtatása Windows-eszközén. Hagyja ki 1.0.5 verzió, még akkor is, ha a Windows-eszköz frissítése a legújabb buildre. 
+>Ha Windows rendszerű eszközön futtat Azure IoT Edge, ne frissítsen a verzió 1.0.5, ha a következők egyike az eszközre vonatkozik: 
+>* Nem frissítette az eszközt a Windows Build 17763-re. IoT Edge 1.0.5-verzió nem támogatja a 17763-nál régebbi Windows-buildek használatát.
+>* Java-vagy Node. js-modulokat futtat a Windows-eszközön. A verzió 1.0.5 akkor is kihagyhatja, ha frissítette a Windows-eszközt a legújabb buildre. 
 >
->IoT Edge verzió 1.0.5 kapcsolatos további információkért lásd: [1.0.5 kibocsátási megjegyzések](https://github.com/Azure/azure-iotedge/releases/tag/1.0.5). Megakadályozza, hogy a fejlesztői eszközöket a legújabb verzióra frissítésével kapcsolatos további információkért lásd: [az IoT-fejlesztői blog](https://devblogs.microsoft.com/iotdev/).
+>További információ a IoT Edge 1.0.5: [1.0.5 kibocsátási megjegyzések](https://github.com/Azure/azure-iotedge/releases/tag/1.0.5). A fejlesztői eszközök legújabb verzióra történő frissítésével kapcsolatos további információkért tekintse meg [a IoT fejlesztői blogját](https://devblogs.microsoft.com/iotdev/).
 
 
 ## <a name="update-the-security-daemon"></a>A biztonsági démon frissítése
@@ -41,47 +41,47 @@ Ellenőrizze a verziót a biztonsági démon a paranccsal az eszközön futó `i
 
 ### <a name="linux-devices"></a>Linux rendszerű eszközök
 
-Linux x64 eszközökön apt-get paranccsal vagy a megfelelő Csomagkezelő frissítésére használni a biztonsági démon. 
+Linux x64 rendszerű eszközökön használja az apt-get vagy a megfelelő csomagkezelő eszközt a biztonsági démon frissítéséhez. 
 
 ```bash
 apt-get update
 apt-get install libiothsm iotedge
 ```
 
-Linux ARM32 eszközökön szereplő lépések segítségével [(ARM32v7/armhf) Linux rendszeren telepítse az Azure IoT Edge-futtatókörnyezet](how-to-install-iot-edge-linux-arm.md) a biztonsági démon legújabb verziójának telepítéséhez. 
+Linux ARM32-eszközökön a biztonsági démon legújabb verziójának telepítéséhez hajtsa végre a következő témakört: [install Azure IoT Edge Runtime for Linux (ARM32v7/armhf)](how-to-install-iot-edge-linux-arm.md) . 
 
 ### <a name="windows-devices"></a>Windows-eszközök
 
-A Windows-eszközökön a PowerShell-parancsprogram használatával frissítse a biztonsági démon. A parancsfájl automatikusan lekéri a biztonsági démon legújabb verzióját. 
+Windows-eszközökön a PowerShell-parancsfájl használatával frissítse a biztonsági démont. A parancsfájl automatikusan lekéri a biztonsági démon legújabb verzióját. 
 
 ```powershell
 . {Invoke-WebRequest -useb aka.ms/iotedge-win} | Invoke-Expression; Update-IoTEdge -ContainerOs <Windows or Linux>
 ```
 
-A biztonsági démon az Update-IoTEdge parancs futtatása eltávolítja az eszközről, a modul két tárolórendszerképeket együtt. A config.yaml fájl másolatok az eszközt, valamint a Moby tároló motor adatait (Ha a Windows-tárolókat használ). A konfigurációs információk azt jelenti, hogy adja meg a kapcsolati karakterlánc vagy a frissítési folyamat során újra az eszköz Device Provisioning Service-információk nem kell tartani. 
+Az Update-IoTEdge parancs futtatásával távolítsa el a biztonsági démont az eszközről, a két futásidejű tároló lemezképével együtt. A config. YAML fájlt a rendszer az eszközön tárolja, valamint a Moby Container Engine-ből származó adatokkal (ha Windows-tárolókat használ). A konfigurációs adatok megőrzése azt jelenti, hogy a frissítési folyamat során nem kell megadnia a kapcsolódási karakterlánc vagy az eszköz kiépítési szolgáltatásának adatait az eszközhöz. 
 
-Ha szeretné a biztonsági démon egy adott verzióját telepítse, töltse le a megfelelő Microsoft-Azure-IoTEdge.cab fájlt [IoT Edge-kiadások](https://github.com/Azure/azure-iotedge/releases). Ezután használja a `-OfflineInstallationPath` paraméter, a fájl helyére mutasson. További információkért lásd: [kapcsolat nélküli telepítés](how-to-install-iot-edge-windows.md#offline-installation).
+Ha a biztonsági démon egy adott verzióját szeretné telepíteni, töltse le a megfelelő Microsoft-Azure-IoTEdge. cab-fájlt [IoT Edge kiadásokból](https://github.com/Azure/azure-iotedge/releases). Ezután a `-OfflineInstallationPath` paraméter használatával mutasson a fájl helyére. További információ: [Offline telepítés](how-to-install-iot-edge-windows.md#offline-installation).
 
 ## <a name="update-the-runtime-containers"></a>A futtatókörnyezet tárolóiból frissítése
 
-Frissítse az IoT Edge-ügynök és az IoT Edge hubot tárolók módja attól függ, hogy használhat működés közbeni címkéket (például az 1.0-s) vagy adott címkék (például 1.0.7) a központi telepítésben. 
+A IoT Edge-ügynök és a IoT Edge hub-tárolók frissítésének módja attól függ, hogy a működés közbeni címkéket (például 1,0) vagy az adott címkéket (például 1.0.7) használja-e a telepítésben. 
 
-Az IoT Edge-ügynök és az IoT Edge hub-modulok jelenleg az eszközön a parancsokkal verziójának ellenőrzése `iotedge logs edgeAgent` vagy `iotedge logs edgeHub`. 
+A parancsok `iotedge logs edgeAgent` vagy `iotedge logs edgeHub`a segítségével keresse meg az eszközön a IoT Edge-ügynök és IoT Edge hub-modulok verzióját. 
 
   ![A naplókat tároló verzió azonosításához](./media/how-to-update-iot-edge/container-version.png)
 
 ### <a name="understand-iot-edge-tags"></a>IoT Edge-címkék ismertetése
 
-Az IoT Edge-ügynök és az IoT Edge hubot lemezképek címkével vannak ellátva, amely a velük társított IoT Edge-verzióval. Címkék használata a futtatókörnyezet képekkel két különböző módja van: 
+A IoT Edge-ügynök és a IoT Edge hub-lemezképek a IoT Edge azon verziójával vannak címkézve, amelyhez társítva vannak. Címkék használata a futtatókörnyezet képekkel két különböző módja van: 
 
 * **A működés közbeni címkék** – csak az első két értékeket a verziószám használatával a legújabb rendszerképet, amely megfelel ezen számjegy. Például 1.0 frissül, amikor nincs az új kiadás, mutasson a legújabb 1.0.x verziót. Ha a tároló-futtatókörnyezet az IoT Edge-eszközön újra lekéri a rendszerképet, a futásidejű modulok a legújabb verzióra frissíti. Ez a módszer javasolt fejlesztési célokra. A működés közbeni címkéket az Azure portal alapértelmezett telepítések. 
-* **Adott címkék** -explicit módon állítsa be a rendszerkép verziószámát a verziószám mindhárom értéket használja. Ha például 1.0.7 eredeti kiadás után nem fognak változni. Ha készen áll frissíteni eszközhöz adhat meg egy új verziószámot a manifest nasazení. Ez a megközelítés termelési célra ajánlott.
+* **Adott címkék** -explicit módon állítsa be a rendszerkép verziószámát a verziószám mindhárom értéket használja. A 1.0.7 például nem változik a kezdeti kiadás után. Ha készen áll frissíteni eszközhöz adhat meg egy új verziószámot a manifest nasazení. Ez a megközelítés termelési célra ajánlott.
 
 ### <a name="update-a-rolling-tag-image"></a>A működés közbeni címke-lemezkép frissítése
 
 Ha a központi telepítésben használja működés közbeni címkék (például mcr.microsoft.com/azureiotedge-hub:**1.0-s**) a tároló-futtatókörnyezet kényszerítése az eszközön, hogy a rendszerkép legújabb verzióját kell majd. 
 
-Törölje a rendszerkép helyi verzióját az IoT Edge-eszköz. Windows-gépeken a biztonsági démon is eltávolítása a futtatókörnyezet képek, így nem kell újra figyelembe ezt a lépést. 
+Törölje a rendszerkép helyi verzióját az IoT Edge-eszköz. Windows rendszerű gépeken a biztonsági démon eltávolítása eltávolítja a futtatókörnyezet lemezképeit is, így nem kell újból végrehajtania ezt a lépést. 
 
 ```bash
 docker rmi mcr.microsoft.com/azureiotedge-hub:1.0
@@ -94,11 +94,11 @@ Az IoT Edge szolgáltatás kérje le a legújabb verzióra a futtatókörnyezet 
 
 ### <a name="update-a-specific-tag-image"></a>Egy adott címkével lemezkép frissítése
 
-Ha adott címkék a központi telepítésben használja (például mcr.microsoft.com/azureiotedge-hub:**1.0.7**) akkor meg kell frissíteni a címkét az üzembe helyezés jegyzékfájlban és a módosításokat alkalmazza az eszközre. 
+Ha adott címkéket használ a központi telepítésben (például mcr.microsoft.com/azureiotedge-hub:**1.0.7**), akkor mindössze annyit kell tennie, hogy frissíti a címkét a telepítési jegyzékben, és alkalmazza a módosításokat az eszközön. 
 
 Az Azure Portalon, a modul telepítési lemezképeket a deklarált a **speciális Edge-futtatókörnyezet-beállítások konfigurálása** szakaszban. 
 
-![Speciális edge-futtatókörnyezet beállítások konfigurálása](./media/how-to-update-iot-edge/configure-runtime.png)
+![Speciális Edge-futtatókörnyezet beállításainak konfigurálása](./media/how-to-update-iot-edge/configure-runtime.png)
 
 A JSON manifest nasazení, frissítse a modulban lévő rendszerképek az **systemModules** szakaszban. 
 
@@ -123,20 +123,19 @@ A JSON manifest nasazení, frissítse a modulban lévő rendszerképek az **syst
 },
 ```
 
-## <a name="update-to-a-release-candidate-version"></a>A kiadásra jelölt verziójához való frissítéséhez
+## <a name="update-to-a-release-candidate-version"></a>Frissítés a Release Candidate verzióra
 
-Az Azure IoT Edge rendszeresen kiadja az IoT Edge szolgáltatás új verzióit. Minden egyes stabil kiadás előtt nincs egy vagy több release candidate (RC) verziója. RC VERZIÓJÚ verziók a kiadás minden tervezett funkciókat tartalmaznak, de továbbra is egy stabil kiadása szükséges a tesztelés és ellenőrzés folyamatokon keresztül történik. Ha azt szeretné, egy új funkció teszteléséhez korai, telepítse az RC verzióra, és visszajelzés a Githubon keresztül. 
+Azure IoT Edge rendszeresen felszabadítja a IoT Edge szolgáltatás új verzióit. Az egyes stabil kiadások előtt egy vagy több Release Candidate (RC) verzió található. Az RC-verziók tartalmazzák a kiadás tervezett funkcióit, de továbbra is a stabil kiadáshoz szükséges tesztelési és érvényesítési folyamatokon mennek keresztül. Ha korábban új funkciót szeretne tesztelni, telepítheti az RC verziót, és visszajelzést küldhet a GitHubon keresztül. 
 
-Release candidate verziók azonos számozási konvenciókat követnek a kiadások, de rendelkezik **-rc** plusz egy növekményes szám végén lesz hozzáfűzve. Láthatja, hogy ugyanazt a kiadási jelentkezők [Azure IoT Edge-kiadások](https://github.com/Azure/azure-iotedge/releases) a stabil verzióként. Például **1.0.7-rc1** és **1.0.7-rc2**, a két kiadási pályázók tartalomcsomagokból előtt **1.0.7**. Láthatja, hogy RC VERZIÓJÚ verziók lesznek megjelölve **kiadás előtti** címkéket. 
+A kiadásra jelölt verziók ugyanazt a számozási konvenciót követik, mint a Releases, de a **-RC** és egy növekményes szám is a végéhez fűzve. A kiadási jelölteket megtekintheti a stabil verzióként megjelenő [Azure IoT Edge kiadások](https://github.com/Azure/azure-iotedge/releases) listájában. Keresse meg például a **1.0.7-RC1** és a **1.0.7-RC2**, a **1.0.7**előtti két kiadási jelöltet. Azt is láthatja, hogy az RC-verziók **előzetes** címkékkel vannak megjelölve. 
 
-Mintaként, release candidate verziók nem része a legújabb verzióra, amely a rendszeres telepítők cél. Ehelyett kell manuálisan a RC verzióját szeretné tesztelni az eszközök lehetőséget. Az IoT Edge eszköz operációs rendszerének megfelelően a következő részekben az IoT Edge egy meghatározott verzióra való frissítéséhez:
+Előzetes verzióként a Release Candidate verziók nem szerepelnek a normál telepítők által megcélzott legújabb verzióban. Ehelyett manuálisan kell megcéloznia a tesztelni kívánt RC-verzióhoz tartozó eszközöket. A IoT Edge eszköz operációs rendszertől függően a következő fejezetek segítségével frissítheti a IoT Edget egy adott verzióra:
 
-* [Linux X64](how-to-install-iot-edge-linux.md#install-a-specific-version)
-* [Linux ARM32](how-to-install-iot-edge-linux-arm.md#install-a-specific-version)
+* [Linux](how-to-install-iot-edge-linux.md#install-a-specific-runtime-version)
 * [Windows](how-to-install-iot-edge-windows.md#offline-installation)
 
 ## <a name="next-steps"></a>További lépések
 
 Megtekintheti a legfrissebb [Azure IoT Edge-kiadások](https://github.com/Azure/azure-iotedge/releases).
 
-A legújabb frissítések és a bejelentés naprakész a [IOT-blog](https://azure.microsoft.com/blog/topics/internet-of-things/) 
+Naprakészen tarthatja a legújabb frissítéseket és bejelentéseket a [eszközök internetes hálózata blogban](https://azure.microsoft.com/blog/topics/internet-of-things/) 

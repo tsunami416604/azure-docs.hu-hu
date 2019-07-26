@@ -255,6 +255,8 @@
               href: devtest-lab-guidance-prescriptive-adoption.md
             - name: Referenciaarchitektúra
               href: devtest-lab-reference-architecture.md
+            - name: Koncepció igazolásának biztosítása
+              href: deliver-proof-concept.md
             - name: A DevTest Labs üzemelő példányának vertikális felskálázása
               href: devtest-lab-guidance-scale.md
             - name: A DevTest Labs implementálásának levezénylése

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 7/18/2019
 ms.author: raiye
-ms.openlocfilehash: edf120fa7997cf2d0381dcb7cd3ee0d4e16dd72b
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
-ms.translationtype: HT
+ms.openlocfilehash: 2dac76ef0d0d71c11291e63fdb3a7ce307638b50
+ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68321409"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68405553"
 ---
 # <a name="azure-guest-os-releases-and-sdk-compatibility-matrix"></a>Azure vendég operációs rendszerek kiadásai és SDK-kompatibilitási mátrix
 Naprakész információkat biztosít a Cloud Services legújabb Azure Guest OS-kiadásairól. Ez az információ segít megtervezni a frissítési útvonalat, mielőtt a vendég operációs rendszer le lenne tiltva. Ha úgy konfigurálja a szerepköröket, hogy az *automatikus* vendég operációs rendszer frissítéseit használják az [Azure vendég operációs rendszer frissítési beállításai][Azure Guest OS Update Settings]részében leírtak szerint, nem létfontosságú, hogy elolvassa ezt a lapot.
@@ -96,7 +96,7 @@ A szeptemberi vendég operációs rendszer megjelent.
 >
 
 
-| Konfigurációs sztring | Kiadási dátum | Dátum letiltása |
+| Konfigurációs sztring | Kiadás dátuma | Dátum letiltása |
 | --- | --- | --- |
 | WA-GUEST-OS-6.8_201906-01 |2019. július 8. |6,10 post |
 | WA-GUEST-OS-6.7_201905-01 |2019. június 6. |6,9 post |
@@ -110,14 +110,14 @@ A szeptemberi vendég operációs rendszer megjelent.
 ## <a name="family-5-releases"></a>5\. család kiadásai
 **Windows Server 2016**
 
-.NET-keretrendszer telepítve: 3,5, 4.6.2, 4.7.2
+.NET-keretrendszer telepítve: 3,5, 4,6
 
 > [!NOTE]
 > Az operációsrendszer-család 5-ös verziójának RDP-jelszavának legalább 10 karakterből kell állnia.
 >
 
 
-| Konfigurációs sztring | Kiadási dátum | Dátum letiltása |
+| Konfigurációs sztring | Kiadás dátuma | Dátum letiltása |
 | --- | --- | --- |
 | WA-GUEST-OS-5.32_201906-01 |2019. július 8. |5,34 post |
 | WA-GUEST-OS-5.31_201905-01 |2019. június 6. |5,33 post |
@@ -127,7 +127,7 @@ A szeptemberi vendég operációs rendszer megjelent.
 |~~WA-GUEST-OS-5.27_201901-01~~ |Február 5., 2019 |Március 26., 2019 |
 |~~WA-GUEST-OS-5.26_201812-01~~ |2019. január 7. |2019. március 12. |
 |~~WA-GUEST-OS-5.25_201811-01~~ |December 14., 2018 |Február 5., 2019 |
-|~~WA-GUEST-OS-5.24_201810-01~~ |November 8., 2018 |2019. január 7. |
+|~~WA-GUEST-OS-5.24_201810-01~~ |2018. november 8. |2019. január 7. |
 |~~WA-GUEST-OS-5.23_201809-01~~ |2018. október 12. |December 14., 2018 |
 
 ## <a name="family-4-releases"></a>4\. család kiadásai
@@ -135,7 +135,7 @@ A szeptemberi vendég operációs rendszer megjelent.
 
 .NET-keretrendszer telepítve: 3,5, 4.5.1, 4.5.2
 
-| Konfigurációs sztring | Kiadási dátum | Dátum letiltása |
+| Konfigurációs sztring | Kiadás dátuma | Dátum letiltása |
 | --- | --- | --- |
 | WA-GUEST-OS-4.67_201906-01 |2019. július 8. |4,69 post |
 | WA-GUEST-OS-4.66_201905-01 |2019. június 6. |4,68 post |
@@ -145,7 +145,7 @@ A szeptemberi vendég operációs rendszer megjelent.
 |~~WA-GUEST-OS-4.62_201901-01~~ |Február 5., 2019 |Március 26., 2019 |
 |~~WA-GUEST-OS-4.61_201812-01~~ |2019. január 7. |2019. március 12. |
 |~~WA-GUEST-OS-4.60_201811-01~~ |December 14., 2018 |Február 5., 2019 |
-|~~WA-GUEST-OS-4.59_201810-01~~ |November 8., 2018 |2019. január 7. |
+|~~WA-GUEST-OS-4.59_201810-01~~ |2018. november 8. |2019. január 7. |
 |~~WA-GUEST-OS-4.58_201809-01~~ |2018. október 12. |December 14., 2018 |
 
 ## <a name="family-3-releases"></a>3\. család – kiadások
@@ -153,7 +153,7 @@ A szeptemberi vendég operációs rendszer megjelent.
 
 .NET-keretrendszer telepítve: 3,5, 4,5
 
-| Konfigurációs sztring | Kiadási dátum | Dátum letiltása |
+| Konfigurációs sztring | Kiadás dátuma | Dátum letiltása |
 | --- | --- | --- |
 | WA-GUEST-OS-3.74_201906-01 |2019. július 8. |3,76 post |
 | WA-GUEST-OS-3.73_201905-01 |2019. június 6. |3,75 post |
@@ -163,7 +163,7 @@ A szeptemberi vendég operációs rendszer megjelent.
 |~~WA-GUEST-OS-3.69_201901-01~~ |Február 5., 2019 |Március 26., 2019 |
 |~~WA-GUEST-OS-3.68_201812-01~~ |2019. január 7. |2019. március 12. |
 |~~WA-GUEST-OS-3.67_201811-01~~ |December 14., 2018 |Február 5., 2019 |
-|~~WA-GUEST-OS-3.66_201810-01~~ |November 8., 2018 |2019. január 7. |
+|~~WA-GUEST-OS-3.66_201810-01~~ |2018. november 8. |2019. január 7. |
 |~~WA-GUEST-OS-3.65_201809-01~~ |2018. október 12. |December 14., 2018 |
 
 ## <a name="family-2-releases"></a>2\. család kiadásai
@@ -171,7 +171,7 @@ A szeptemberi vendég operációs rendszer megjelent.
 
 .NET-keretrendszer telepítve: 3,5 (tartalmazza a 2,0 és 3,0), 4,5
 
-| Konfigurációs sztring | Kiadási dátum | Dátum letiltása |
+| Konfigurációs sztring | Kiadás dátuma | Dátum letiltása |
 | --- | --- | --- |
 | WA-GUEST-OS-2.87_201906-01 |2019. július 8. |2,89 post |
 | WA-GUEST-OS-2.86_201905-01 |2019. június 6. |2,88 post |
@@ -181,7 +181,7 @@ A szeptemberi vendég operációs rendszer megjelent.
 |~~WA-GUEST-OS-2.82_201901-01~~ |Február 5., 2019 |Március 26., 2019 |
 |~~WA-GUEST-OS-2.81_201812-01~~ |2019. január 7. |2019. március 12. |
 |~~WA-GUEST-OS-2.80_201811-01~~ |December 14., 2018 |Február 5., 2019 |
-|~~WA-GUEST-OS-2.79_201810-01~~ |November 8., 2018 |2019. január 7. |
+|~~WA-GUEST-OS-2.79_201810-01~~ |2018. november 8. |2019. január 7. |
 |~~WA-GUEST-OS-2.78_201809-01~~ |2018. október 12. |December 14., 2018 |
 
 ## <a name="msrc-patch-updates"></a>MSRC-javítások frissítései

@@ -1,6 +1,6 @@
 ---
-title: Üzembe helyezés stratégiákat és ajánlott eljárások a teljesítmény – Azure Search optimalizálása
-description: Ismerje meg a technikák és ajánlott eljárások az Azure Search teljesítményének hangolása és optimális méretezési csoport konfigurálása.
+title: Központi telepítési stratégiák és ajánlott eljárások a teljesítmény optimalizálása érdekében – Azure Search
+description: Ismerje meg az Azure Search teljesítményének finomhangolásához és az optimális méretezés konfigurálásához szükséges technikákat és ajánlott eljárásokat.
 author: LiamCavanagh
 manager: jlembicz
 services: search
@@ -10,102 +10,102 @@ ms.topic: conceptual
 ms.date: 03/02/2019
 ms.author: liamca
 ms.custom: seodec2018
-ms.openlocfilehash: 32352a857f0a74dc008dc1ad76b4a5951a36b956
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a4578e26df5a6c29e80a0bbd2e0a30725e3733ee
+ms.sourcegitcommit: c71306fb197b433f7b7d23662d013eaae269dc9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65024551"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68370641"
 ---
-# <a name="deployment-strategies-and-best-practices-for-optimizing-performance-on-azure-search"></a>Üzembe helyezés stratégiákat és ajánlott eljárások az Azure Search teljesítményének optimalizálása
+# <a name="deployment-strategies-and-best-practices-for-optimizing-performance-on-azure-search"></a>Központi telepítési stratégiák és ajánlott eljárások a teljesítmény optimalizálásához Azure Search
 
-Ez a cikk ismerteti a skálázhatóság és rendelkezésre állás kifinomult követelményei speciális forgatókönyvek esetén ajánlott eljárásokat. 
+Ez a cikk az ajánlott eljárásokat mutatja be a méretezhetőség és a rendelkezésre állás kifinomult követelményeit biztosító speciális forgatókönyvek esetében. 
 
-## <a name="develop-baseline-numbers"></a>Alapkonfiguráció számok fejlesztése
-A keresés teljesítmény optimalizálása, kell összpontosítania lekérdezés végrehajtási idő csökkentése. Ehhez egy tipikus lekérdezési terhelése néz ismernie kell. Az alábbi irányelvek segítségével eredeti lekérdezés számok érkeznek.
+## <a name="develop-baseline-numbers"></a>Alapterv-számok fejlesztése
+A keresési teljesítmény optimalizálásakor a lekérdezés végrehajtási idejének csökkentését kell összpontosítania. Ehhez ismernie kell, hogy egy tipikus lekérdezési terhelés hogyan néz ki. Az alábbi irányelvek segítséget nyújtanak az alapkonfiguráció-lekérdezési számok megérkezéséhez.
 
-1. Válasszon egy cél késés (vagy maximális időtartama), amely egy tipikus keresési kérelem végrehajtásához vesz igénybe.
-2. Hozzon létre és tesztelheti a számítási feladatok valódi ellen a keresési szolgáltatás egy realisztikus adatkészlet késés díjszabása méréséhez.
-3. Indítsa el a lekérdezések másodpercenkénti (lekérdezési QPS) száma kevés, és a fokozatosan növelje a számot, a teszt végrehajtása, csak a meghatározott célhoz késés alá csökken a Lekérdezések késése. Ez a fontos számításiteljesítmény-mérési megtervezéséhez a méretezhető az alkalmazás növekedésével a használat.
-4. Amikor csak lehetséges, újból felhasználhatja a HTTP-kapcsolatoknál. Ha az Azure Search .NET SDK használ, ez azt jelenti, egy példány szabad újra, vagy [SearchIndexClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchindexclient) példány, és a REST API-t használja, ha egyetlen HttpClient kell újra felhasználhatja.
-5. Lekérdezési kérelmek az anyag eltérőek, ezért az index különböző részeinek keresztül történik, hogy a keresés. Változat fontos, mert ha folyamatosan hajtsa végre az azonos keresési kéréseket, az adatok gyorsítótárazása indul el, hogy a hely jobb, mint, több különböző lekérdezéssel be teljesítmény.
-6. Eltérő lehet a lekérdezésekre vonatkozó kérelmek szerkezete, annak érdekében, hogy különböző típusú lekérdezések. Nem minden keresési lekérdezést hajt végre ugyanazon a szinten. Például egy dokumentum lookup vagy keresési javaslat, általában gyorsabb, mint egy lekérdezés jelentős számú értékkorlátozással és szűrőket. Teszt összeállítás ki kell terjednie több olyan lekérdezést, nagyjából azonos arány, éles környezetben alakul.  
+1. Válassza ki a cél késését (vagy a maximális időtartamot), amelyet egy tipikus keresési kérelem végrehajtásához el kell végezni.
+2. Valós számítási feladatok létrehozása és tesztelése reális adatkészlettel a keresési szolgáltatáshoz a késési arányok méréséhez.
+3. Kezdje a másodpercenkénti lekérdezésekkel (QPS), és fokozatosan növelje a tesztben végrehajtott számot, amíg a lekérdezés késése a megadott cél késés alá nem csökken. Ez egy fontos viszonyítási alap, amely segít a méretezés megtervezésében, mivel alkalmazása növekszik a használat során.
+4. Ahol csak lehet, használja újra a HTTP-kapcsolatokat. Ha a Azure Search .NET SDK-t használja, ez azt jelenti, hogy fel kell használni egy példány-vagy [SearchIndexClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchindexclient) -példányt, és ha a REST API használja, akkor egyetlen HttpClient kell felhasználnia.
+5. A lekérdezési kérések lényegének változása, hogy a Keresés az index különböző részein történjen. A változás azért fontos, mert ha folyamatosan hajtja végre ugyanazokat a keresési kéréseket, az adatgyorsítótárazás megkezdi, hogy a teljesítmény jobban nézzen ki, mint a több különböző lekérdezési készlet.
+6. A lekérdezési kérelmek szerkezete változó, hogy különböző típusú lekérdezéseket kapjon. Nem minden keresési lekérdezés ugyanazon a szinten végezhető el. Például egy dokumentum keresési vagy keresési javaslata általában gyorsabb, mint egy jelentős számú dimenzióval és szűrőkkel rendelkező lekérdezés. A tesztelési összeállításnak különböző lekérdezéseket kell tartalmaznia, nagyjából azonos arányban, ahogy az éles környezetben várható.  
 
-Ezek létrehozása során tesztelheti a számítási feladatokat, vannak bizonyos figyelembe kell venni az Azure Search jellemzői:
+A tesztelési feladatok létrehozásakor a Azure Search néhány jellemzője van:
 
-+ Lehet túlterhelni a szolgáltatás túl sok keresési lekérdezések egy időben küldésével. Ha ez történik, látni fogja a HTTP 503-as válaszkódot. Egy 503-as elkerülheti a tesztelés során, kezdje meg a keresési kérelmek megtekintéséhez késés árfolyamok különbségeket, hozzáadhat további keresési kérelmek számának különféle tartományok.
++ A szolgáltatás túlterhelést okoz, ha egyszerre több keresési lekérdezést küld. Ebben az esetben a HTTP 503-válasz kódokat fogja látni. Ha a tesztelés során a 503-es számú keresési kérést szeretné elkerülni, a különböző keresési kérelmekkel kapcsolatos különbségeket a késési arányok között tekintheti meg.
 
-+ Az Azure Search nem futtatható az indexelési feladatok a háttérben. Ha a szolgáltatás elvégzi a lekérdezés és a számítási feladatok indexeléséhez egyidejűleg, vegye figyelembe ezt vagy bemutatása indexelési feladatokat, a lekérdezés teszteket, vagy a csúcsidőn kívüli során az indexelési feladatok futó opciók megismerését.
++ Azure Search nem futtat indexelési feladatokat a háttérben. Ha a szolgáltatás párhuzamosan kezeli a lekérdezési és indexelési feladatokat, ezt vegye figyelembe az indexelési feladatok bevezetésével a lekérdezési tesztekben, vagy az indexelési feladatok futtatásának időpontjában való futási lehetőségek feltárásával.
 
 > [!NOTE]
-> [A Visual Studio Load Testing](https://www.visualstudio.com/docs/test/performance-testing/run-performance-tests-app-before-release) a teljesítményteszt végrehajtásához nagyon jó lehetőséget teszteli, mert Ön a HTTP-kérések végrehajtásához, az Azure Search-lekérdezéseket végrehajtó esetén lenne szükség, és lehetővé teszi a párhuzamos feldolgozás kérelmek.
+> A [Visual Studio Load Testing](https://www.visualstudio.com/docs/test/performance-testing/run-performance-tests-app-before-release) egy igazán jó módszer a teljesítményteszt-tesztek végrehajtásához, mivel lehetővé teszi a HTTP-kérések végrehajtását, ahogy a Azure Search és a kérelmek párhuzamos való végrehajtásához szükség lenne.
 > 
 > 
 
-## <a name="scaling-for-high-query-volume-and-throttled-requests"></a>A lekérdezési kötet méretezése és szabályozott kérelmeinek száma
-Amikor azért küldtük Önnek, túl sok szabályozott kérelmeinek száma, illetve a cél késés tarifa szerint egy nagyobb lekérdezési terhelése meghaladja, megtekintheti a két módszer egyikével mértékű késés csökkentése:
+## <a name="scaling-for-high-query-volume-and-throttled-requests"></a>Nagy mennyiségű lekérdezési és szabályozott kérelmek skálázása
+Ha túl sok szabályozott kérelmet kap, vagy túllépi a megnövelt lekérdezési késési arányt, a késleltetési arányt a következő két módszer egyikével lehet csökkenteni:
 
-1. **Növelje a replikák:**  A replika olyan, mint az adatokat, így eloszthatja a kérelmeket a több példányban ellen az Azure Search egy példányát.  Az összes terheléselosztási funkciók és az Azure Search által kezelt replikák közötti adatreplikáció, és megváltoztathatja a hozzárendelt a szolgáltatáshoz bármikor replikák száma.  A szabványos keresőszolgáltatásokba 12 replikákat és a egy egyszerű keresés szolgáltatásban 3 replika legfeljebb foglalhat le. Replikák lehet beállítani az a [az Azure portal](search-create-service-portal.md) vagy [PowerShell](search-manage-powershell.md).
-2. **Növelje a keresés szint:**  Az Azure Search érhető el egy [rétegek száma](https://azure.microsoft.com/pricing/details/search/) és az egyes szintek különböző teljesítményszintet is garantálja.  Bizonyos esetekben előfordulhat, hogy az a szint nem adhatók meg a kellően közel valós idejű díjait számítjuk fel akkor is, ha a replikák vannak maximumot sok lekérdezéseket. Ebben az esetben érdemes figyelembe venni, kihasználva az Azure Search S3 szint, amely jól használható a dokumentumokat és a rendkívül nagy lekérdezési számítási feladatok nagy számú forgatókönyvek például a magasabb szintű keresési csomagok valamelyikére.
+1. **Replikák bővítése:**  A replika olyan, mint az adatai másolata, amely lehetővé teszi, hogy a Azure Search a több példányra irányuló kérelmek terheléselosztását.  A rendszer a replikák közötti összes terheléselosztást és replikálást Azure Search felügyeli, és a szolgáltatáshoz lefoglalt replikák számát bármikor módosíthatja.  Egy standard keresési szolgáltatásban legfeljebb 12 replikát, egy alapszintű keresési szolgáltatásban pedig 3 replikát foglalhat le. A replikák a [Azure Portal](search-create-service-portal.md) vagy a [PowerShell](search-manage-powershell.md)használatával módosíthatók.
+2. **Keresési szintek bővítése:**  Azure Search [számos rétegben](https://azure.microsoft.com/pricing/details/search/) érhető el, és ezek a szintek különböző szintű teljesítményt biztosítanak.  Bizonyos esetekben előfordulhat, hogy annyi lekérdezése van, hogy az Ön által használt szintje nem tud megfelelően alacsony késési sebességet biztosítani, még akkor is, ha a replikák maxed ki. Ebben az esetben érdemes fontolóra venni az egyik magasabb szintű keresési szintet, például a Azure Search S3 szintet, amely nagy mennyiségű dokumentummal és rendkívül nagy lekérdezési számítási feladatokkal rendelkező forgatókönyvekhez alkalmas.
 
-## <a name="scaling-for-slow-individual-queries"></a>Lassú az egyes lekérdezések méretezése
-Nagy késésű díjszabás egy másik oka egy egyetlen lekérdezés túl sokáig tart. Replikák hozzáadásával ebben az esetben nem segít. Két lehetőség lehetőségeket, melyek segíthetnek a következők:
+## <a name="scaling-for-slow-individual-queries"></a>Méretezés lassú egyéni lekérdezésekhez
+A nagy késési arányok egy másik oka, hogy egy lekérdezés túl sok időt vesz igénybe. Ebben az esetben a replikák hozzáadása nem fog segíteni. Két lehetséges lehetőség, amely segíthet a következőkben:
 
-1. **Növelje a partíciók** partíció egy mechanizmust vágását meghatározó az adatok között további erőforrásokat. A második partíció hozzáadása felosztja a adatok két, a harmadik partíció osztja fel a három, és így tovább. Egy pozitív mellékhatása, hogy lassabb lekérdezések néha gyorsabban párhuzamos számítások miatt. Hogy észrevették ezerszer alacsony szelektivitás lekérdezéseknél, például a lekérdezések, amelyek megfelelnek a sok dokumentumok vagy értékkorlátozással counts biztosít a nagy számú dokumentumot keresztül. Mivel jelentős számítási szükséges a dokumentumok alkalmazhatóságát pontszám, vagy a dokumentumok, további partíciók hozzáadásával számok száma segít a lekérdezések gyorsabb befejezéséhez.  
+1. **Partíciók bővítése** A partíciók olyan mechanizmusok, amelyekkel az adatait további erőforrásokon keresztül feloszthatja. Egy második partíció hozzáadása két értékre osztja fel az adatfelosztást, egy harmadik partíció három, és így tovább osztja fel őket. Az egyik pozitív mellékhatás az, hogy a lassabb lekérdezések időnként gyorsabban futnak párhuzamos számítástechnika miatt. Megjegyezték, hogy az alacsony szelektivitású lekérdezések, például a sok dokumentumnak megfelelő lekérdezések, illetve a nagy számú dokumentumra vonatkozó párhuzamos. Mivel a dokumentumok relevanciájának kiszámításához, illetve a dokumentumok számának megszámlálásához jelentős számítási követelmény szükséges, a további partíciók hozzáadásával a lekérdezések gyorsabban elvégezhető.  
    
-   A szabványos keresőszolgáltatásokba 12 partícióra maximum és az egyszerű keresés szolgáltatás 1 partíció lehet.  A partíciók lehet beállítani az a [az Azure portal](search-create-service-portal.md) vagy [PowerShell](search-manage-powershell.md).
+   A standard keresési szolgáltatásban legfeljebb 12 partíció lehet, az alapszintű keresési szolgáltatásban pedig 1 partíció található.  A partíciók a [Azure Portal](search-create-service-portal.md) vagy a [PowerShell](search-manage-powershell.md)használatával módosíthatók.
 
-2. **Korlát nagy Számosságú mezők:** Egy nagy számosságú mező áll egy kategorizálható vagy szűrhető mező, amely jelentős mennyiségű egyedi értékkel rendelkezik, és ennek eredményeképpen eredmények kiszámításakor jelentős erőforrásokat használ fel. Például termék azonosító vagy leírás mező szűrhető és kategorizálható beállítása számolja nagy számosságú, mivel a legtöbb dokumentumot a dokumentumból értékek egyediek. Amikor csak lehetséges, korlátozza a nagy számosságú mezők számát.
+2. **Magas kardinális mezők korlátozása:** A magas kardinális mező egy olyan, jól látható vagy szűrhető mezőből áll, amely jelentős számú egyedi értékkel rendelkezik, és ennek eredményeképpen jelentős erőforrásokat használ a számítási eredmények alapján. Például ha a termék-azonosító vagy a Description mező úgy van beállítva, hogy a felszűrhető/szűrhető, a dokumentum a dokumentumból származó értékek nagy részét egyedinek számítja. Ahol csak lehetséges, korlátozza a magas kardinális mezők számát.
 
-3. **Növelje a keresés szint:**  Akár áthelyezése Azure Search a magasabb szintű lehet egy másik módja a lassú lekérdezések teljesítményének javítása érdekében. Minden egyes magasabb szintre biztosít gyorsabb processzorokat és memóriát és, amelyek pozitív hatással a lekérdezési teljesítmény.
+3. **Keresési szintek bővítése:**  A lassú lekérdezések teljesítményének növelése érdekében akár magasabb Azure Searchi szintet is megadhat. Minden magasabb szinten gyorsabb processzorok és több memória áll rendelkezésre, mindkettőnek pozitív hatása van a lekérdezési teljesítményre.
 
-## <a name="scaling-for-availability"></a>Méretezés a rendelkezésre állás érdekében
-Replikák nem csak lekérdezési késés csökkentése érdekében, de lehetővé teszi a magas rendelkezésre állás érdekében. Egyetlen replikával számíthat rendszeres leállás miatt a kiszolgáló újraindítása után a szoftverfrissítések vagy más, amelyet a rendszer karbantartási események esetében.  Ennek eredményeképpen fontos figyelembe venni, ha az alkalmazás magas rendelkezésre állású kereséseinek (lekérdezések) igényel, valamint írási műveletek (indexelési események). Az Azure Search a következő attribútumokkal keresési fizetős ajánlatok a különféle SLA-lehetőségeket kínálja:
+## <a name="scaling-for-availability"></a>Méretezés a rendelkezésre álláshoz
+A replikák nem csupán csökkentik a lekérdezési késést, de lehetővé teszik a magas rendelkezésre állást is. Egyetlen replika esetén rendszeres állásidőt kell várnia, mert a kiszolgáló újraindul a szoftverfrissítések vagy egyéb karbantartási események után.  Ennek eredményeképpen fontos figyelembe venni, hogy az alkalmazás magas rendelkezésre állást igényel-e a keresésekhez (lekérdezésekhez) és írásokhoz (az indexelési eseményekhez). A Azure Search a következő attribútumokkal rendelkező összes fizetős keresési ajánlat SLA-beállításait kínálja:
 
-* a magas rendelkezésre állás csak olvasható munkaterhelések (lekérdezések) 2 replika
-* a magas rendelkezésre állású olvasási és írási számítási feladatok (lekérdezések és az indexelés) 3 vagy több replikával
+* 2 replika a csak olvasási terhelések magas rendelkezésre állásához (lekérdezések)
+* 3 vagy több replika az írási és olvasási feladatok (lekérdezések és indexelés) magas rendelkezésre állásához
 
-Ezzel kapcsolatban további információért látogasson el a [Azure Search szolgáltatásiszint-szerződés](https://azure.microsoft.com/support/legal/sla/search/v1_0/).
+További részletekért látogasson el a [Azure Search szolgáltatói szerződésre](https://azure.microsoft.com/support/legal/sla/search/v1_0/).
 
-Mivel a replikákat az adatok másolatát, több replikával rendelkező lehetővé teszi, hogy az Azure újraindítások és a egy replika elleni karbantartási machine, miközben lehetővé teszi más replikákon folytatja a lekérdezés végrehajtása. Ezzel szemben ha azonnal replikákat, fog díjak lekérdezési teljesítmény romlását, feltéve, hogy ezeket a replikákat egy kevésbé használt erőforrások is.
+Mivel a replikák az adatai másolatai, több replikával Azure Search a számítógép újraindítását és karbantartását egy replikával, miközben lehetővé teszi a lekérdezés végrehajtásának folytatását más replikák esetében. Ezzel szemben, ha elvégzi a replikákat, a lekérdezési teljesítmény romlása merül fel, feltéve, hogy ezek a replikák egy kihasználatlan erőforrás.
 
-## <a name="scaling-for-geo-distributed-workloads-and-geo-redundancy"></a>Földrajzilag elosztott számítási feladatok és a georedundancia skálázása
-Földrajzilag elosztott számítási feladatokhoz a felhasználók, akik az Azure Search üzemeltető adatközpont távol található magasabb késés érvényes lesz. Egy megoldás, hogy ezek a felhasználók szorosabb közelében régiókban több keresési szolgáltatások kiépítése. Az Azure Search jelenleg nem biztosít egy automatizált módszer az Azure Search-indexek geo-replikálása régiók között, de vannak az egyes módszereket, amelyek segítségével, amely megkönnyíti a folyamat egyszerű megvalósítása és kezelése. Ezek a következő néhány szakaszban leírt.
+## <a name="scaling-for-geo-distributed-workloads-and-geo-redundancy"></a>Méretezés a földrajzilag elosztott számítási feladatokhoz és a Geo-redundancia
+Földrajzilag elosztott számítási feladatokhoz a Azure Search adatközpont-üzemeltetőtől távol lévő felhasználóknak magasabb a késési aránya. Az egyik megoldás az, hogy több keresési szolgáltatást kell kiépíteni a régiókban, és ezek a felhasználók közelebb vannak egymáshoz. A Azure Search jelenleg nem biztosít automatizált módszert a régiók közötti Azure Search indexek földrajzi replikálására, de vannak olyan technikák, amelyek segítségével egyszerűen megvalósítható és kezelhető. Ezeket a következő néhány szakaszban ismertetjük.
 
-A keresési szolgáltatások egy földrajzilag elosztott halmaza célja, hogy van két vagy több index elérhető két vagy több régióban, ahol a felhasználó irányítja a rendszer az Azure Search-szolgáltatás, amely a legkisebb késéssel biztosít az ebben a példában látható módon:
+A földrajzi eloszlású keresési szolgáltatások célja, hogy legalább két, két vagy több olyan régióban legyen elérhető index, amelyben a felhasználó a Azure Search szolgáltatáshoz van irányítva, amely a legkisebb késést biztosítja a jelen példában látható módon:
 
-   ![Kereszt-szolgáltatások régió szerint lapján][1]
+   ![Szolgáltatások közötti, régiónként][1]
 
-### <a name="keeping-data-in-sync-across-multiple-azure-search-services"></a>Több Azure Search szolgáltatás gondoskodik az adatok szinkronizálása
-Az elosztott keresési szolgáltatások szinkronban figyelőkből segítségével gondoskodik a két lehetőség van a [Azure Search-indexelő](search-indexer-overview.md) vagy a Push API (más néven a [Azure Search REST API](https://docs.microsoft.com/rest/api/searchservice/)).  
+### <a name="keeping-data-in-sync-across-multiple-azure-search-services"></a>Az adatszinkronizálás több Azure Search szolgáltatás között
+Két lehetőség van az elosztott keresési szolgáltatások szinkronizálására, amely a [Azure Search indexelő](search-indexer-overview.md) vagy a leküldéses API (más néven a [Azure Search REST API](https://docs.microsoft.com/rest/api/searchservice/)) használatát jelenti.  
 
-### <a name="use-indexers-for-updating-content-on-multiple-services"></a>Indexelők használata több szolgáltatást a tartalom frissítése
+### <a name="use-indexers-for-updating-content-on-multiple-services"></a>Indexelő használata több szolgáltatás tartalmának frissítéséhez
 
-Ha már használja egy szolgáltatás indexelő, konfigurálhatja egy második indexelő egy második szolgáltatást, hogy az ugyanazon adatforrás-objektum, használja a kiindulásként adatokat ugyanarról a helyről. Az egyes régiókban mindegyikük rendelkezik a saját indexelő és a egy célindex (a search-index nem megosztott, ami azt jelenti, hogy adatok duplikálódnak), azonban minden indexelő hivatkozik ugyanazon az adatforráson.
+Ha már használja az indexelő az egyik szolgáltatáson, a második indexelő is konfigurálható egy másik szolgáltatáson, hogy ugyanazt az adatforrás-objektumot használja, az adatok ugyanabból a helyről való kihúzásával. Az egyes régiókban található szolgáltatások saját indexelő és egy célként megadott indextel rendelkeznek (a keresési index nincs megosztva, ami azt jelenti, hogy az adatok duplikálva vannak), de minden indexelő ugyanarra az adatforrásra hivatkozik.
 
-Íme egy magas szintű vizualizációt, mi az architektúra módon jelenik meg.
+Itt látható egy magas szintű vizualizáció, hogy az architektúra milyen módon fog kinézni.
 
-   ![Egyetlen adatforrást, és elosztott indexelő szolgáltatás kombinációk][2]
+   ![Egyetlen adatforrás elosztott indexelő és szolgáltatási kombinációkkal][2]
 
-### <a name="use-rest-apis-for-pushing-content-updates-on-multiple-services"></a>Több szolgáltatást a tartalom frissítések terjesztése a REST API-k használata
-Ha az Azure Search REST API-t használ [tartalom leküldése az Azure Search-index](https://docs.microsoft.com/rest/api/searchservice/update-index), megtarthatja a különféle keresési szolgáltatásokat szinkronban módosítások összes keresőszolgáltatást küldésével, minden alkalommal, amikor szükség egy frissítésre. A kódban ügyeljen arra, hogy esetekben, amikor egy keresési szolgáltatás frissítése nem sikerül, de más keresési szolgáltatásokat nem tud kezelni.
+### <a name="use-rest-apis-for-pushing-content-updates-on-multiple-services"></a>A REST API-k használata a tartalmi frissítések több szolgáltatásban való leküldéséhez
+Ha a Azure Search REST APIt használja a [Azure Search indexben lévő tartalom](https://docs.microsoft.com/rest/api/searchservice/update-index)leküldéséhez, a különböző keresési szolgáltatásokat szinkronizálhatja, ha az összes keresési szolgáltatás módosítását kéri, amikor frissítésre van szükség. Ügyeljen arra, hogy a kódban olyan eseteket kezeljen, amelyekben az egyik keresési szolgáltatás frissítése meghiúsul, de a többi keresési szolgáltatás sikeres.
 
-## <a name="leverage-azure-traffic-manager"></a>Használja ki az Azure Traffic Manager
-[Az Azure Traffic Manager](../traffic-manager/traffic-manager-overview.md) lehetővé teszi, hogy több földrajzi található webhelyeket, amelyeket majd élvezik több Azure Search szolgáltatás átirányíthatja a kéréseket. Egy, a Traffic Manager előnye, hogy akkor is elérhető legyen, és más keresési szolgáltatások üzemszünet irányíthatja a felhasználókat az Azure Search mintavételi. Emellett keresési kérelmek keresztül az Azure webhelyek vannak útválasztás, ha az Azure Traffic Manager lehetővé teszi, hogy egyenleg esetben, ha a webhely mentése kapcsolódó, de nem az Azure Search. Íme egy példa, mely az architektúra, amely a Traffic Manager.
+## <a name="leverage-azure-traffic-manager"></a>Az Azure Traffic Manager kihasználása
+Az [Azure Traffic Manager](../traffic-manager/traffic-manager-overview.md) lehetővé teszi, hogy több Azure Search-szolgáltatás által támogatott, több földrajzi helyen lévő webhelyre irányítsa át a kérelmeket. Az Traffic Manager az egyik előnye, hogy képes Azure Search a mintavételre, hogy elérhető legyen, és átirányítsa a felhasználókat az alternatív keresési szolgáltatásokra leállás esetén. Emellett, ha az Azure-webhelyeken keresztül irányítja a keresési kérelmeket, az Azure Traffic Manager lehetővé teszi a terheléselosztási esetek terhelését, ha a webhely nem Azure Search. Íme egy példa arra, hogy milyen architektúrát használ a Traffic Manager.
 
-   ![Kereszt-lapján-szolgáltatások régiónként, központi Traffic Managerrel][3]
+   ![Szolgáltatások – régiók közötti, központi Traffic Manager][3]
 
 ## <a name="monitor-performance"></a>Teljesítmény figyelése
-Az Azure Search lehetőséget biztosít az elemezheti és figyelheti a teljesítmény, a szolgáltatás keretében [forgalmi elemzések keresése](search-traffic-analytics.md). Ha engedélyezi ezt a funkciót, és az ügyfélalkalmazás üzemállapot-, igény szerint bejelentkezhet az egyéni keresési műveletek, valamint az összesített mérőszámok majd elemzés érdekében dolgoz fel vagy webalkalmazásban jelennek meg a Power bi-ban az Azure Storage-fiókba. Ezzel a módszerrel metrikák rögzíti adja meg a teljesítmény statisztikáit, például a lekérdezések vagy a lekérdezések válaszidejét átlagos száma. Emellett a művelet naplózási lehetővé teszi a keresési műveletek részletek feltárásához.
+Azure Search lehetővé teszi a szolgáltatás teljesítményének elemzését és figyelését a [Search Traffic Analytics](search-traffic-analytics.md)használatával. Ha engedélyezi ezt a funkciót, és felveszi a rendszerállapotot az ügyfélalkalmazás számára, megadhatja az egyes keresési műveleteket, valamint az összesített mérőszámokat egy olyan Azure Storage-fiókba, amely az elemzéshez és a Power BIban való megjelenítéshez használható fel. A metrikák ily módon rögzítik a teljesítménnyel kapcsolatos statisztikákat, például a lekérdezések átlagos számát vagy a lekérdezési válaszidőt. Emellett a művelet naplózása lehetővé teszi az adott keresési műveletek részleteinek részletezését.
 
-A TRAFFIC analytics hasznos annak megértéséhez, késés díjakat az adott Azure Search szempontjából. A lekérdezési teljesítmény-mérőszámok naplózott egy lekérdezést az Azure Search szolgáltatásban (az az idő, amikor küldésük kérik fel) teljes feldolgozást idő alapulnak, mivel is tudja annak meghatározására, hogy amennyiben késési problémák az Azure Search szolgáltatás oldalán vagy a tudni használja ezt Ide-vel a szolgáltatást, például hálózati késés.  
+A Traffic Analytics hasznos a késési arányok Azure Search perspektívából való megismeréséhez. Mivel a lekérdezési teljesítmény mérőszámai azon időpontokon alapulnak, amikor egy lekérdezés teljes feldolgozásra kerül Azure Searchban (a kérelem elküldésekor szükséges idő alapján), ezzel megállapíthatja, hogy a késéssel kapcsolatos problémák a Azure Search szolgáltatás oldaláról vagy kimenetéről származnak-e. a szolgáltatás ide, például a hálózati késéstől.  
 
 ## <a name="next-steps"></a>További lépések
-Árképzési szintek és a szolgáltatások korlátait kapcsolatos további tudnivalókért mindegyik lásd [korlátozások az Azure Search szolgáltatás](search-limits-quotas-capacity.md).
+Ha többet szeretne megtudni a díjszabási csomagokról és a szolgáltatásokra vonatkozó korlátozásokról, tekintse meg a [Azure Search szolgáltatási korlátozásait](search-limits-quotas-capacity.md).
 
-Látogasson el [kapacitástervezés](search-capacity-planning.md) partíció és a replika kombinációk tájékozódhat.
+A particionálási és a replika-kombinációkkal kapcsolatos további információkért látogasson el a [kapacitás](search-capacity-planning.md) megtervezésére.
 
-További részletezést, a teljesítményre, és ebben a cikkben tárgyalt optimalizálásokat megvalósításának egyes bemutatók megtekintéséhez tekintse meg a következő videót:
+Ha többet szeretne megtudni a teljesítményről és a jelen cikkben ismertetett optimalizációk megvalósításával kapcsolatos néhány bemutatóról, tekintse meg a következő videót:
 
 > [!VIDEO https://channel9.msdn.com/Events/Microsoft-Azure/AzureCon-2015/ACON319/player]
 > 

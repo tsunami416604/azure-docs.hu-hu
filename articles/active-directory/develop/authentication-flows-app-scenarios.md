@@ -13,16 +13,16 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 07/15/2019
+ms.date: 07/25/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3d50019e8de1daf3d69342dcaf9eeecfba493a83
-ms.sourcegitcommit: af58483a9c574a10edc546f2737939a93af87b73
-ms.translationtype: HT
+ms.openlocfilehash: c3d9f96f0b61129a0f881c8fe8676bd5df7376ad
+ms.sourcegitcommit: 5604661655840c428045eb837fb8704dca811da0
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68302428"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68494582"
 ---
 # <a name="authentication-flows-and-application-scenarios"></a>Hitelesítési folyamatok és alkalmazási helyzetek
 
@@ -80,6 +80,14 @@ A biztonsági jogkivonatok számos különböző típusú alkalmazásból szerez
 
 A Microsoft Identity platform végpont számos alkalmazás-architektúrához támogatja a hitelesítést: egylapos alkalmazások, webalkalmazások, webes API-k, mobil-és natív alkalmazások, valamint démonok és kiszolgálóoldali alkalmazások.  Az alkalmazások a különböző hitelesítési folyamatokat használják a felhasználói bejelentkezéshez és a jogkivonatok lekéréséhez a védett API-k meghívásához.
 
+### <a name="single-page-application"></a>Egyoldalas alkalmazás
+
+Számos modern webalkalmazás úgy van kialakítva, mint a JavaScript vagy egy SPA-keretrendszer, például a szögletes, a Vue. js és a reakciós. js segítségével írt ügyféloldali egyoldalas alkalmazások. Ezek az alkalmazások webböngészőben futnak, és különböző hitelesítési jellemzőkkel rendelkeznek, mint a hagyományos kiszolgálóoldali webes alkalmazások. A Microsoft Identity platform lehetővé teszi, hogy az egyoldalas alkalmazások bejelentkezzenek a felhasználókba, és jogkivonatokat kapjanak a háttér-szolgáltatások vagy webes API-k eléréséhez
+
+![Egyoldalas alkalmazás](media/scenarios/spa-app.svg)
+
+További információért olvassa el az [egylapos alkalmazások](scenario-spa-overview.md)című témakört.
+
 ### <a name="web-application-signing-in-a-user"></a>Webalkalmazás-aláírás – felhasználó
 
 ![Webalkalmazás-jelek a felhasználókban](media/scenarios/scenario-webapp-signs-in-users.svg)
@@ -90,51 +98,54 @@ Ha **egy** webalkalmazást szeretne védelemmel ellátni (a felhasználó bejele
 
 - Ha a Node. js-ben fejleszt fejlesztést, a Passport. js fájlt fogja használni.
 
-Részletekért tekintse meg a webalkalmazást [, amely bejelentkezik a felhasználóknak](scenario-web-app-sign-user-overview.md)
+További információért olvassa el a következő webalkalmazást: [Sign-in Users](scenario-web-app-sign-user-overview.md).
 
 ### <a name="web-application-signing-in-a-user-and-calling-a-web-api-on-behalf-of-the-user"></a>Webalkalmazás-aláírás – felhasználó és webes API meghívása a felhasználó nevében
 
 ![Webalkalmazás-hívások webes API-k](media/scenarios/web-app.svg)
 
-A webalkalmazásból a **webes API** a felhasználó nevében történő meghívásához a MSAL `ConfidentialClientApplication`-t fogja használni. Az engedélyezési kód folyamatát fogja használni, a beszerzett tokent a jogkivonat-gyorsítótárban tárolja. Ezt követően a vezérlő a gyorsítótárból csendesen szerzi be a jogkivonatokat, amikor szükséges. Ha szükséges, a MSAL frissíti a tokent.
+A webalkalmazásból a **webes API** meghívásához a felhasználó nevében használja a MSAL `ConfidentialClientApplication`. Az engedélyezési kód folyamatát fogja használni, a beszerzett tokent a jogkivonat-gyorsítótárban tárolja. Ezt követően a vezérlő a gyorsítótárból csendesen szerzi be a jogkivonatokat, amikor szükséges. Ha szükséges, a MSAL frissíti a tokent.
 
-Részletekért lásd: [Web App calls web API](scenario-web-app-call-api-overview.md) -k
+További információért olvassa el a [Web App calls web API](scenario-web-app-call-api-overview.md)-k című témakört.
 
 ### <a name="desktop-application-calling-a-web-api-on-behalf-of-the-signed-in-user"></a>A bejelentkezett felhasználó nevében webes API-t hívó asztali alkalmazás
 
-Ha egy webes API-t szeretne meghívni egy olyan asztali alkalmazásból, amely bejelentkezik a felhasználók számára, használja a MSAL PublicClientApplication's Interactive token beszerzési módszereit. Ezek az interaktív módszerek lehetővé teszik a bejelentkezési felhasználói felületi élmény szabályozását. A kapcsolat engedélyezéséhez a MSAL kihasznál egy webböngészőt
+Ha egy webes API-t szeretne meghívni egy olyan asztali alkalmazásból, amely a felhasználók számára jelentkezik be, használja a MSAL PublicClientApplication's Interactive token beszerzési módszereit. Ezek az interaktív módszerek lehetővé teszik a bejelentkezési felhasználói felületi élmény szabályozását. A kapcsolat engedélyezéséhez a MSAL kihasznál egy webböngészőt.
 
 ![Asztali](media/scenarios/desktop-app.svg)
 
-A Windows-tartományhoz vagy HRE csatlakoztatott számítógépeken futó Windows rendszerű alkalmazásokhoz egy másik lehetőség is rendelkezésre áll. Az [integrált Windows-hitelesítés](https://aka.ms/msal-net-iwa) használatával csendesen vásárolhatnak tokent
+A Windows-tartományhoz vagy HRE csatlakoztatott számítógépeken futó Windows rendszerű alkalmazásokhoz egy másik lehetőség is rendelkezésre áll. Ezek az alkalmazások az [integrált Windows-hitelesítés](https://aka.ms/msal-net-iwa)használatával csendes úton vásárolhatnak jogkivonatot.
 
 A böngésző nélküli eszközön futó alkalmazások továbbra is meghívhatják az API-t egy felhasználó nevében. A hitelesítéshez a felhasználónak be kell jelentkeznie egy másik, webböngészővel rendelkező eszközre. A forgatókönyv engedélyezéséhez az [eszköz kódjának folyamatát](https://aka.ms/msal-net-device-code-flow) kell használnia.
 
-![Eszköz kódjának folyamata](media/scenarios/device-code-flow-app.svg)
+![Eszközkód folyamata](media/scenarios/device-code-flow-app.svg)
 
-Végül, és bár nem ajánlott, a felhasználónevet és a [jelszót](https://aka.ms/msal-net-up) is használhatja a nyilvános ügyfélalkalmazások számára. Erre a folyamatra továbbra is szükség van bizonyos helyzetekben (például DevOps), de ügyeljen arra, hogy a használatával korlátozásokat fog alkalmazni az alkalmazására. Például az ezt a folyamatot használó alkalmazások nem tudnak bejelentkezni a többtényezős hitelesítést (feltételes hozzáférés) végző felhasználót. Az alkalmazás nem teszi lehetővé az egyszeri bejelentkezés előnyeit. Emellett a modern hitelesítés alapelvei is megtalálhatók, és csak az örökölt okok miatt biztosítható.
+Végül, bár nem ajánlott, használhatja a [felhasználónevet és a jelszót](https://aka.ms/msal-net-up) a nyilvános ügyfélalkalmazások számára. Erre a folyamatra továbbra is szükség van bizonyos helyzetekben (például DevOps), de ügyeljen arra, hogy a használatával korlátozásokat fog alkalmazni az alkalmazására. Előfordulhat például, hogy a folyamatot használó alkalmazások nem tudnak bejelentkezni a többtényezős hitelesítést (feltételes hozzáférés) végrehajtó felhasználó számára. Az alkalmazás nem teszi lehetővé az egyszeri bejelentkezés előnyeit. A felhasználónévvel/jelszóval történő hitelesítés a modern hitelesítés alapelvei alapján történik, és csak az örökölt okok miatt biztosítható.
 
 Asztali alkalmazásokban, ha azt szeretné, hogy a jogkivonat-gyorsítótár állandó legyen, [testre kell szabnia a jogkivonat-gyorsítótár szerializálását](https://aka.ms/msal-net-token-cache-serialization). A [kettős jogkivonat-gyorsítótár szerializálásának](https://aka.ms/msal-net-dual-cache-serialization)megvalósításával engedélyezheti a visszafelé és a továbbítással kompatibilis jogkivonat-gyorsítótárak használatát a hitelesítési kódtárak korábbi generációi (ADAL.net 3. x és 4. x) használatával is.
 
-A részletekért tekintse meg a [webes API-kat meghívó asztali alkalmazást](scenario-desktop-overview.md) .
+További információkért olvassa el a [webes API-kat meghívó asztali alkalmazás](scenario-desktop-overview.md)olvasása című témakört.
 
 ### <a name="mobile-application-calling-a-web-api-on-behalf-of-the-user-whos-signed-in-interactively"></a>A mobil alkalmazás a webes API-t hívja interaktív módon bejelentkezett felhasználó nevében
 
+Az asztali alkalmazásokhoz hasonlóan a mobileszközök a MSAL PublicClientApplication's Interactive token beszerzési módszereit használják a webes API-k meghívására szolgáló token beszerzéséhez.
+
 ![mobil](media/scenarios/mobile-app.svg)
 
-Az asztali alkalmazásokhoz hasonlóan, ha a tokent egy webes API meghívásához szeretné beszerezni, a MSAL a PublicClientApplication's interaktív jogkivonat-gyűjtési módszereit fogja használni. Az iOS és az Android rendszeren a MSAL alapértelmezés szerint a rendszerböngészőt használja. A beágyazott webes nézetet azonban közvetlenül is használhatja. A mobil platformtól függően vannak sajátosságok: (UWP, iOS, Android).
+Az iOS és a MSAL Android MSAL alapértelmezés szerint a rendszer webböngészőjét használja. Azt is megteheti, hogy a beágyazott webes nézetet is használhatja. A mobil platformtól függően vannak sajátosságok: (UWP, iOS, Android).
+
 Bizonyos forgatókönyvek, amelyek az eszköz azonosítójával kapcsolatos feltételes hozzáférést, vagy egy beléptetett eszközt igényelnek, a [közvetítőt](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/leveraging-brokers-on-Android-and-iOS) egy eszközre kell telepíteni. A brókerek példái a Microsoft vállalati portál (Androidon), Microsoft Authenticator (Android és iOS). A MSAL mostantól képes a brókerekkel való interakcióra.
 
 > [!NOTE]
 > A mobil alkalmazás (a MSAL. iOS és a MSAL használatával. Az Android-vagy MSAL.NET/Xamarin-alapú alkalmazások esetében az alkalmazás-védelmi szabályzatok alkalmazhatók (például megakadályozhatja, hogy a felhasználó egy bizonyos védett szöveget másoljon). Ezt az [Intune kezeli](https://docs.microsoft.com/intune/app-sdk) , és az Intune felügyelt alkalmazásként ismeri fel. Az [INTUNE SDK](https://docs.microsoft.com/intune/app-sdk-get-started) különálló a MSAL-könyvtáraktól, és saját HRE beszél.
 
-A részletekért tekintse meg a [webes API-kat meghívó mobil alkalmazást](scenario-mobile-overview.md) .
+További információkért olvassa el a [webes API-kat meghívó Mobile App](scenario-mobile-overview.md)című témakört.
 
 ### <a name="protected-web-api"></a>Védett webes API
 
 A Microsoft Identity platform végpontján keresztül biztonságossá teheti a webszolgáltatásokat, például az alkalmazás REST-alapú webes API-ját. Egy védett webes API-t egy hozzáférési jogkivonattal kell meghívni az adatai biztonságossá tételéhez és a bejövő kérések hitelesítéséhez. Egy webes API hívója hozzáfűz egy hozzáférési jogkivonatot egy HTTP-kérelem engedélyezési fejlécében. Ha védelemmel szeretné ellátni a ASP.NET vagy ASP.NET Core webes API-t, érvényesíteni kell a hozzáférési jogkivonatot. Ehhez a ASP.NET JWT middleware-t fogja használni. A motorháztető alatt az érvényesítést a [.net Library IdentityModel bővítményei](https://github.com/AzureAD/azure-activedirectory-identitymodel-extensions-for-dotnet/wiki) végzik, nem MSAL.net
 
-Részletekért lásd a [védett webes API](scenario-protected-web-api-overview.md) -t.
+További információért olvassa el a [védett webes API](scenario-protected-web-api-overview.md)-t.
 
 ### <a name="web-api-calling-another-downstream-web-api-on-behalf-of-the-user-for-whom-it-was-called"></a>Webes API egy másik alsóbb rétegbeli webes API-t hív meg azon felhasználó nevében, akivel meghívták
 
@@ -143,14 +154,16 @@ A többi webes API-t meghívó webes API-k egyéni gyorsítótár-szerializálá
 
   ![Webes API](media/scenarios/web-api.svg)
 
-A webes API-kat meghívja a részletekért lásd: [webes API](scenario-web-api-call-api-overview.md)
+További információért olvassa el a webes API- [kat meghívó webes API](scenario-web-api-call-api-overview.md)-t.
 
 ### <a name="desktopservice-or-web-daemon-application-calling-web-api-without-a-user-in-its-own-name"></a>Asztali/szolgáltatás vagy webes démon alkalmazás, amely felhasználó nélkül hívja meg a webes API-t (a saját nevében)
 
-A hosszan futó folyamatokkal rendelkező vagy a felhasználóval való interakció nélkül működő alkalmazások esetében is szükség van a biztonságos webes API-k elérésére. Ezek az alkalmazások hitelesítik és lekérhetik a jogkivonatokat az alkalmazás identitásával, és nem a felhasználó delegált identitását. Az identitást az ügyfél titkos vagy tanúsítványa alapján bizonyítják.
+A hosszan futó folyamatokkal rendelkező vagy felhasználói interakció nélkül működő alkalmazásokhoz is szükség van a biztonságos webes API-k elérésére. Ezek az alkalmazások hitelesítik és lekérhetik a jogkivonatokat az alkalmazás identitásával, és nem a felhasználó delegált identitását. Az identitást az ügyfél titkos vagy tanúsítványa alapján bizonyítják.
 A MSAL ConfidentialClientApplication's- [ügyfél hitelesítő adatainak](https://aka.ms/msal-net-client-credentials) beszerzési módszereit használva megírhatja az alkalmazások (Daemon-alkalmazás) tokenjét az alkalmazáshoz. Ezek azt feltételezik, hogy az alkalmazás korábban már regisztrált egy titkos kulcsot (az alkalmazás jelszava vagy a tanúsítvány vagy az ügyfél kijelentését) az Azure AD-vel, amelyet aztán megosztanak ezzel a hívással.
 
 ![Démonalkalmazások](media/scenarios/daemon-app.svg)
+
+További információkért olvassa el a [webes API-kat meghívó Daemon-alkalmazás](scenario-daemon-overview.md)című témakört.
 
 ## <a name="scenarios-and-supported-authentication-flows"></a>Forgatókönyvek és támogatott hitelesítési folyamatok
 
@@ -164,7 +177,7 @@ A jogkivonatok beszerzését érintő forgatókönyvek a [Microsoft Identity pla
 | [![Webes API-kat meghívó asztali alkalmazás](media/scenarios/desktop-app.svg)](scenario-desktop-overview.md) | [Webes API-kat hívó asztali alkalmazás](scenario-desktop-overview.md)| Interaktív ([engedélyezési kód](v2-oauth2-auth-code-flow.md) PKCE-mel) | Munkahelyi vagy iskolai fiókok és személyes fiókok, B2C |
 | | | Integrált Windows | Munkahelyi vagy iskolai fiókok |
 | | | [Erőforrás-tulajdonos jelszava](v2-oauth-ropc.md)  | Munkahelyi vagy iskolai fiókok, B2C |
-| ![Eszköz kódjának folyamata](media/scenarios/device-code-flow-app.svg)| [Webes API-kat hívó asztali alkalmazás](scenario-desktop-overview.md) | [Eszköz kódja](v2-oauth2-device-code.md)  | Munkahelyi vagy iskolai fiókok * |
+| ![Eszközkód folyamata](media/scenarios/device-code-flow-app.svg)| [Webes API-kat hívó asztali alkalmazás](scenario-desktop-overview.md) | [Eszköz kódja](v2-oauth2-device-code.md)  | Munkahelyi vagy iskolai fiókok * |
 | [![Webes API-kat meghívó mobil alkalmazás](media/scenarios/mobile-app.svg)](scenario-mobile-overview.md) | [Webes API-kat meghívó mobil alkalmazás](scenario-mobile-overview.md) | Interaktív ([engedélyezési kód](v2-oauth2-auth-code-flow.md) PKCE-mel)  |   Munkahelyi vagy iskolai fiókok és személyes fiókok, B2C
 | | | Erőforrás-tulajdonos jelszava  | Munkahelyi vagy iskolai fiókok, B2C |
 | [![Daemon-alkalmazás](media/scenarios/daemon-app.svg)](scenario-daemon-overview.md) | [Daemon-alkalmazás](scenario-daemon-overview.md) | [Ügyfél-hitelesítő adatok](v2-oauth2-client-creds-grant-flow.md)  |   Az alkalmazás csak a HRE-szervezetekre vonatkozó engedélyeket (nincs felhasználó)
@@ -177,12 +190,14 @@ Nem minden alkalmazás-típus érhető el minden platformon. Az alkalmazások l�
 |Forgatókönyv  | Windows | Linux | Mac | iOS | Android
 |--|--|--|--|--|--|--|
 | [Egyoldalas alkalmazás](scenario-spa-overview.md) <br/>[![Egyoldalas alkalmazás](media/scenarios/spa-app.svg)](scenario-spa-overview.md) | ![MSAL.js](media/sample-v2-code/logo_js.png) MSAL.js | ![MSAL.js](media/sample-v2-code/logo_js.png) MSAL.js | ![MSAL.js](media/sample-v2-code/logo_js.png) MSAL.js | ![MSAL.js](media/sample-v2-code/logo_js.png) MSAL.js | ![MSAL.js](media/sample-v2-code/logo_js.png) MSAL.js
-| [Felhasználókba bejelentkező webes alkalmazás](scenario-web-app-sign-user-overview.md) <br/>[![Webes alkalmazás, amely bejelentkezik a felhasználók számára](media/scenarios/scenario-webapp-signs-in-users.svg)](scenario-web-app-sign-user-overview.md) | ![ASP.NET](media/sample-v2-code/logo_NET.png)</br> ASP.NET ![ASP.NET-mag](media/sample-v2-code/logo_NETcore.png)ASP.NET-mag | ![ASP.NET-mag](media/sample-v2-code/logo_NETcore.png)ASP.NET-mag | ![ASP.NET-mag](media/sample-v2-code/logo_NETcore.png)ASP.NET-mag
-| [Webes API-kat meghívó webalkalmazás](scenario-web-app-call-api-overview.md) <br/> [![Webes API-kat meghívó webalkalmazás](media/scenarios/web-app.svg)](scenario-web-app-call-api-overview.md) | ![ASP.NET](media/sample-v2-code/logo_NET.png) </br> ASP.NET + MSAL.NET </br> ![ASP.NET-mag](media/sample-v2-code/logo_NETcore.png)ASP.NET Core + MSAL.NET ![MSAL Java](media/sample-v2-code/logo_java.png) msal4j ![MSAL Python](media/sample-v2-code/logo_python.png) Lombik + MSAL Python| ![ASP.NET-mag](media/sample-v2-code/logo_NETcore.png)ASP.NET Core + MSAL.NET ![MSAL Java](media/sample-v2-code/logo_java.png) msal4j ![MSAL Python](media/sample-v2-code/logo_python.png) Lombik + MSAL Python| ![ASP.NET-mag](media/sample-v2-code/logo_NETcore.png)ASP.NET Core + MSAL.NET ![MSAL Java](media/sample-v2-code/logo_java.png) msal4j ![MSAL Python](media/sample-v2-code/logo_python.png) Lombik + MSAL Python
+| [Felhasználókba bejelentkező webes alkalmazás](scenario-web-app-sign-user-overview.md) <br/>[![Webes alkalmazás, amely bejelentkezik a felhasználók számára](media/scenarios/scenario-webapp-signs-in-users.svg)](scenario-web-app-sign-user-overview.md) | ![ASP.NET](media/sample-v2-code/logo_NET.png)</br> ASP.NET ![ASP.NET Core](media/sample-v2-code/logo_NETcore.png)ASP.NET Core | ![ASP.NET Core](media/sample-v2-code/logo_NETcore.png)ASP.NET Core | ![ASP.NET Core](media/sample-v2-code/logo_NETcore.png)ASP.NET Core
+| [Webes API-kat meghívó webalkalmazás](scenario-web-app-call-api-overview.md) <br/> [![Webes API-kat meghívó webalkalmazás](media/scenarios/web-app.svg)](scenario-web-app-call-api-overview.md) | ![ASP.NET](media/sample-v2-code/logo_NET.png) </br> ASP.NET + MSAL.NET </br> ![ASP.NET Core](media/sample-v2-code/logo_NETcore.png)ASP.NET Core + MSAL.NET ![MSAL Java](media/sample-v2-code/logo_java.png) msal4j ![MSAL Python](media/sample-v2-code/logo_python.png) Lombik + MSAL Python| ![ASP.NET Core](media/sample-v2-code/logo_NETcore.png)ASP.NET Core + MSAL.NET ![MSAL Java](media/sample-v2-code/logo_java.png) msal4j ![MSAL Python](media/sample-v2-code/logo_python.png) Lombik + MSAL Python| ![ASP.NET Core](media/sample-v2-code/logo_NETcore.png)ASP.NET Core + MSAL.NET ![MSAL Java](media/sample-v2-code/logo_java.png) msal4j ![MSAL Python](media/sample-v2-code/logo_python.png) Lombik + MSAL Python
 | [Webes API-kat hívó asztali alkalmazás](scenario-desktop-overview.md) <br/> A webes API![-k eszköz kódját [meghívó asztali alkalmazás ![](media/scenarios/desktop-app.svg)](scenario-desktop-overview.md)](media/scenarios/device-code-flow-app.svg) | ![MSAL.NET](media/sample-v2-code/logo_NET.png)  MSAL.NET ![.NET Core](media/sample-v2-code/logo_NETcore.png) MSAL.NET ![MSAL Java](media/sample-v2-code/logo_java.png) msal4j ![MSAL Python](media/sample-v2-code/logo_python.png) MSAL Python| ![.NET Core](media/sample-v2-code/logo_NETcore.png)MSAL.NET ![MSAL Java](media/sample-v2-code/logo_java.png) msal4j ![MSAL Python](media/sample-v2-code/logo_python.png) MSAL Python| ![.NET Core](media/sample-v2-code/logo_NETcore.png) MSAL.NET ![MSAL Java](media/sample-v2-code/logo_java.png) msal4j ![MSAL Python](media/sample-v2-code/logo_python.png) MSAL Python
 | [Webes API-kat meghívó mobil alkalmazás](scenario-mobile-overview.md) <br/> [![Webes API-kat meghívó mobil alkalmazás](media/scenarios/mobile-app.svg)](scenario-mobile-overview.md) | ![UWP](media/sample-v2-code/logo_windows.png) MSAL.NET ![Xamarin](media/sample-v2-code/logo_xamarin.png) MSAL.NET | | | ![iOS/Objective C vagy SWIFT](media/sample-v2-code/logo_iOS.png) MSAL. iOS | ![Android](media/sample-v2-code/logo_Android.png) MSAL. Android
 | [Daemon-alkalmazás](scenario-daemon-overview.md) <br/> [![Daemon-alkalmazás](media/scenarios/daemon-app.svg)](scenario-daemon-overview.md) | ![.NET](media/sample-v2-code/logo_NET.png) MSAL.NET ![.NET Core](media/sample-v2-code/logo_NETcore.png)MSAL.NET ![MSAL Java](media/sample-v2-code/logo_java.png) msal4j ![MSAL Python](media/sample-v2-code/logo_python.png) MSAL Python| ![.NET Core](media/sample-v2-code/logo_NETcore.png) MSAL.NET ![MSAL Java](media/sample-v2-code/logo_java.png) msal4j ![MSAL Python](media/sample-v2-code/logo_python.png) MSAL Python| ![.NET Core](media/sample-v2-code/logo_NETcore.png)MSAL.NET ![MSAL Java](media/sample-v2-code/logo_java.png) msal4j ![MSAL Python](media/sample-v2-code/logo_python.png) MSAL Python
 | [Webes API-kat meghívó webes API](scenario-web-api-call-api-overview.md) <br/> [![Webes API-kat meghívó webes API](media/scenarios/web-api.svg)](scenario-web-api-call-api-overview.md) | ![.NET](media/sample-v2-code/logo_NET.png) <br/> ASP.NET + MSAL.NET ![.NET Core](media/sample-v2-code/logo_NETcore.png) <br/> ASP.NET Core + MSAL.NET| ![.NET Core](media/sample-v2-code/logo_NETcore.png) <br/> ASP.NET Core + MSAL.NET| ![.NET Core](media/sample-v2-code/logo_NETcore.png)<br/> ASP.NET Core + MSAL.NET
+
+Lásd még: [Microsoft által támogatott könyvtárak operációs rendszer/nyelv szerint](reference-v2-libraries.md#microsoft-supported-libraries-by-os--language)
 
 ## <a name="next-steps"></a>További lépések
 További információ a [hitelesítés alapjairól](authentication-scenarios.md) és a [hozzáférési](access-tokens.md)jogkivonatokról.

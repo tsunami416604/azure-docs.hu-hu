@@ -1,67 +1,67 @@
 ---
-title: Adatbázis-tranzakciók és az Azure Cosmos DB az optimista egyidejűség-vezérléssel
-description: Ez a cikk ismerteti az adatbázis-tranzakciók és az Azure Cosmos DB az optimista egyidejűség-vezérléssel
+title: Adatbázis-tranzakciók és optimista Egyidejűség-vezérlés a Azure Cosmos DBban
+description: Ez a cikk az adatbázis-tranzakciókat és az optimista Egyidejűség-vezérlést ismerteti Azure Cosmos DB
 author: rimman
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/21/2019
+ms.date: 07/23/2019
 ms.author: rimman
 ms.reviewer: sngun
-ms.openlocfilehash: 1da5dabad04d72c903072a33dfb7b0229f99c62d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b58255aa471fe78c84b5f6a7432c0f3d402f0875
+ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65978992"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68467911"
 ---
 # <a name="transactions-and-optimistic-concurrency-control"></a>Tranzakciók és optimista egyidejűség vezérlése
 
-Adatbázis-tranzakciók adjon meg egy biztonságos és kiszámítható programozási modell segítségével az adatok egyidejű módosításait foglalkozik. Hagyományos relációs adatbázisoktól, például az SQL Server lehetővé teszi, hogy a használatával, és/vagy a tárolt eljárások, eseményindítók üzleti logika írását küldje el a kiszolgálónak a végrehajtási közvetlenül az adatbázismotor belül. A hagyományos relációs adatbázisoktól szükségesek kezelésére két különböző programozási nyelvekhez programozási nyelvet, például a JavaScript, Python, a (nem tranzakciós) alkalmazás C#, Java és az egyéb és a tranzakciós programozási nyelvet () például a T-SQL), amely natív módon által végrehajtott az adatbázisban.
+Az adatbázis-tranzakciók biztonságos és kiszámítható programozási modellt biztosítanak, amely az adatokat egyidejűleg módosítja. A hagyományos, a SQL Serverhoz hasonló, az üzleti logikát a tárolt eljárásokkal és/vagy triggerekkel írhatja át, így közvetlenül az adatbázis-motoron keresztül küldheti el a kiszolgálót. A hagyományos kapcsolatok adatbázisaival két különböző programozási nyelvet kell kezelni a (nem tranzakciós) programozási nyelv (például JavaScript, Python, C#, Java stb.) és a tranzakciós programozási nyelv ( például T-SQL), amelyet az adatbázis natív módon hajt végre.
 
-Az adatbázismotor, az Azure Cosmos DB támogatja a teljes ACID (atomitást, konzisztencia, elkülönítés, tartósság) megfelelő tranzakciót a pillanatkép-elkülönítés. Minden az adatbázis-műveletek a hatókörön belül egy adott tároló [logikai partíció](partition-data.md) tranzakciós szempontból tevékenységében az adatbázismotor által a partícióhoz tartozó replika futtatott. Ezek a műveletek is tartalmazza (a logikai partíció található egy vagy több elem frissítése) írási és olvasási műveletek. Az alábbi táblázatban látható, különböző műveleteket és tranzakciótípusok:
+Azure Cosmos DB adatbázis-motorja támogatja a teljes sav (atomi, konzisztencia, elkülönítés, tartósság) megfelelő tranzakciókat a pillanatkép-elkülönítéssel. A tároló [logikai partíciójának](partition-data.md) hatókörén belüli összes adatbázis-művelet tranzakciós végrehajtást végez a partíció replikája által üzemeltetett adatbázis-motoron belül. Ezek a műveletek magukban foglalják az írást (a logikai partíción belüli egy vagy több elem frissítése) és az olvasási műveleteket. A következő táblázat a különböző művelet-és tranzakciótípusok szemlélteti:
 
-| **Művelet**  | **Művelet típusa** | **Egyetlen vagy több elem tranzakció** |
+| **Művelet**  | **Művelet típusa** | **Egy vagy több elem tranzakciója** |
 |---------|---------|---------|
-| (Nélkül előkészítő/utólagos eseményindító) beszúrása | Írás | Egyetlen elem tranzakció |
-| (Egy eseményindítóval előkészítő/utólagos) beszúrása | Írási és olvasási | Több elem tranzakció |
-| Cserélje le (nélkül előkészítő/utólagos eseményindító) | Írás | Egyetlen elem tranzakció |
-| Cserélje le (előkészítő/utólagos eseményindító) | Írási és olvasási | Több elem tranzakció |
-| Az Upsert (nélkül előkészítő/utólagos eseményindító) | Írás | Egyetlen elem tranzakció |
-| Az Upsert (egy eseményindítóval előkészítő/utólagos) | Írási és olvasási | Több elem tranzakció |
-| Törlés (nélkül előkészítő/utólagos eseményindító) | Írás | Egyetlen elem tranzakció |
-| (Egy eseményindítóval előkészítő/utólagos) törlése | Írási és olvasási | Több elem tranzakció |
-| Tárolt eljárás végrehajtása | Írási és olvasási | Több elem tranzakció |
-| Rendszer által kezdeményezett egy merge eljárás végrehajtása | Írás | Több elem tranzakció |
-| Rendszer által kezdeményezett végrehajtása egy elem lejáratának (TTL) alapján elemek törlése | Írás | Több elem tranzakció |
-| Olvasás | Olvasás | Egyetlen elemből tranzakció |
-| Változáscsatorna | Olvasás | Több elem tranzakció |
-| Többoldalas olvasása | Olvasás | Több elem tranzakció |
-| Többoldalas lekérdezések | Olvasás | Több elem tranzakció |
-| Hajtsa végre a többoldalas lekérdezés részeként UDF | Olvasás | Több elem tranzakció |
+| Beszúrás (Pre/post trigger nélkül) | Írás | Egyetlen elem tranzakciója |
+| Beszúrás (előzetes/post triggerrel) | Írás és olvasás | Több tételből álló tranzakció |
+| Csere (Pre/post trigger nélkül) | Írás | Egyetlen elem tranzakciója |
+| Lecserélés (egy előzetes/utáni triggerrel) | Írás és olvasás | Több tételből álló tranzakció |
+| Upsert (Pre/post trigger nélkül) | Írás | Egyetlen elem tranzakciója |
+| Upsert (Pre/post triggerrel) | Írás és olvasás | Több tételből álló tranzakció |
+| Törlés (Pre/post trigger nélkül) | Írás | Egyetlen elem tranzakciója |
+| Törlés (előzetes/post triggerrel) | Írás és olvasás | Több tételből álló tranzakció |
+| Tárolt eljárás végrehajtása | Írás és olvasás | Több tételből álló tranzakció |
+| Egyesítési eljárás rendszer által kezdeményezett végrehajtása | Írás | Több tételből álló tranzakció |
+| Elemek törlésének rendszer által kezdeményezett végrehajtása egy elem lejárta (TTL) alapján | Írás | Több tételből álló tranzakció |
+| Olvasás | Olvasás | Egy elem tranzakciója |
+| Változáscsatorna | Olvasás | Több tételből álló tranzakció |
+| Oldalszámozott olvasás | Olvasás | Több tételből álló tranzakció |
+| Többoldalas lekérdezés | Olvasás | Több tételből álló tranzakció |
+| Az UDF végrehajtása a többoldalas lekérdezés részeként | Olvasás | Több tételből álló tranzakció |
 
-## <a name="multi-item-transactions"></a>Több elem tranzakciók
+## <a name="multi-item-transactions"></a>Több tételből álló tranzakciók
 
-Az Azure Cosmos DB lehetővé teszi, hogy írási [tárolt eljárások, előkészítő/utólagos eseményindítók, felhasználó által definiált-funkciókat (UDF)](stored-procedures-triggers-udfs.md) és egyesíti az egyes eljárások a JavaScript. Az Azure Cosmos DB natív módon támogatja a JavaScript végrehajtása az adatbázis motorjában. Tárolt eljárások regisztrálhatja, az előkészítő/utólagos eseményindítók, a felhasználói--függvények (UDF) és a egy tárolót, és később egyesítési eljárások végre őket tranzakciós szempontból az Azure Cosmos database engine belül. A JavaScript alkalmazáslogikát írása lehetővé teszi a természetes kifejezési módja átvitelvezérlés, változó hatókörkezeléséhez kapcsolódó, hozzárendelése és integrációs kivételkezelési primitívek belül az adatbázis-tranzakciók közvetlenül a JavaScript nyelven.
+A Azure Cosmos DB lehetővé teszi [tárolt eljárások írását, az eseményindítók előtti/utáni triggerek, a felhasználó által definiált függvények (UDF)](stored-procedures-triggers-udfs.md) és a JavaScript egyesítési eljárásainak írását. Azure Cosmos DB natív módon támogatja a JavaScript-végrehajtást az adatbázis-motorján belül. A tárolt eljárások, az eseményindítók, a felhasználó által definiált függvények (UDF-EK) és az egyesítési eljárások regisztrálása egy tárolón, később pedig tranzakciós műveleteket hajthat végre az Azure Cosmos adatbázis-motorján belül. Az alkalmazás logikájának a JavaScriptben való írása lehetővé teszi a vezérlési folyamat természetes kifejezését, a változók hatókörét, hozzárendelését és az adatbázis-tranzakciókban lévő primitívek kezelését a JavaScript nyelven közvetlenül.
 
-A JavaScript-alapú tárolt eljárások, eseményindítók, felhasználói függvényeket és egyesítés eljárások vannak tördelve a pillanatkép-elkülönítés egy környezeti ACID tranzakción belül minden elem a logikai partíción belül. A végrehajtása során a JavaScript program kivételt jelez, ha a teljes tranzakció megszakad, és helyzetben előzőre. Az eredményül kapott programozási modell használata egyszerű mégis hatékony. JavaScript-fejlesztőinek közben továbbra is használja a jól ismert nyelv utasításaival tartós programozási modell és a könyvtár primitívek első.
+A JavaScript-alapú tárolt eljárások, eseményindítók, UDF és egyesítési eljárások egy környezeti sav-tranzakción belül vannak becsomagolva, a logikai partíción belüli összes elem pillanatkép-elkülönítésével. Ha a JavaScript-program kivételt jelez, a végrehajtás során a rendszer megszakítja és visszaállítja a teljes tranzakciót. Az eredményül kapott programozási modell egyszerű, mégis hatékony. A JavaScript-fejlesztők tartós programozási modellt kapnak, miközben továbbra is az ismerős nyelvi konstrukciókat és a könyvtárbeli primitíveket használják.
 
-A JavaScript végrehajtására közvetlenül az adatbázismotor belül biztosít teljesítmény és a tároló elemek kapcsolatos művelet-végrehajtási adatbázis-tranzakciós végrehajtásához. Továbbá mivel az Azure Cosmos database engine natív módon támogatja a JSON és a JavaScript, nincs semmilyen impedanica-eltérés a típus rendszerek, alkalmazások és az adatbázis között.
+A JavaScript közvetlen végrehajtása az adatbázismotor keretében az adatbázis-műveletek teljesítményének és tranzakciós végrehajtásának lehetővé tétele egy tároló elemein. Emellett mivel az Azure Cosmos adatbázismotor natív módon támogatja a JSON-t és a JavaScriptet, az alkalmazás és az adatbázis típusa nem felel meg az egyes alkalmazások és az adatbázisok típusának.
 
-## <a name="optimistic-concurrency-control"></a>Az optimista egyidejűség-vezérlés 
+## <a name="optimistic-concurrency-control"></a>Optimista Egyidejűség-vezérlés 
 
-Az optimista egyidejűség-vezérlés lehetővé teszi, hogy megakadályozza az elveszett frissítések, és törli. A normál pesszimista zárolással az adatbázismotor, a logikai partíciót az elemet birtokló által üzemeltetett vetik egyidejű, ütköző művelet. Amikor két egyidejű művelet próbálja meg frissíteni a logikai partíció található elem a legújabb verzióra, az egyiket legyőzi, és a másik sikertelenek lesznek. Azonban próbál meg egyszerre az azonos elem frissítése egy vagy két művelet korábban rendelkezett olvasási egy régebbi elem értékét, az adatbázis nem tudja, ha korábban olvasott érték bármelyik vagy mindkettő az ütköző művelet volt valóban az elem a legújabb értékeket. Szerencsére a ebben a helyzetben a észlelhető a **optimista egyidejűség-vezérlés (OCC)** előtt látni a két művelet írja be a tranzakció határ az adatbázis motorjában. OCC felülírják a mások által elvégzett módosítások védi az adatokat. Azt is megakadályozza, hogy mások véletlenül a saját módosítások felülírása.
+Az optimista Egyidejűség-vezérlés lehetővé teszi az elveszett frissítések és törlések elkerülését. Az egyidejű, ütköző műveleteket a rendszer az adott összetevőt birtokló logikai partíció által üzemeltetett adatbázismotor rendszeres pesszimista zárolásának aláveti. Ha két egyidejű művelet kísérli meg egy elem legújabb verziójának frissítését egy logikai partíción belül, az egyiket a rendszer megnyeri, a másik pedig sikertelen lesz. Ha azonban egy vagy két művelet párhuzamosan frissíti ugyanazt az elemeket, korábban már beolvasta az elem egy régebbi értékét, akkor az adatbázis nem tudja, hogy a korábban olvasott érték vagy akár mindkét ütköző művelet valóban az elem legújabb értéke volt-e. Szerencsére ezt a helyzetet az **optimista Egyidejűség-vezérléssel (OCC)** lehet észlelni, mielőtt a két művelet a tranzakció határát adja meg az adatbázismotor belsejében. A OCC megvédi adatait a mások által végrehajtott, véletlenül felülírt módosításokkal szemben. Azt is megakadályozza, hogy mások véletlenül felülírják a saját módosításait.
 
-Egy elemet egyidejű frissítése az Azure Cosmos DB kommunikációs protokoll réteg által a OCC vannak kitéve. Az Azure Cosmos database biztosítja, hogy az elem frissítése (vagy törlése) ügyféloldali verziója ugyanaz, mint a verzió a cikk az Azure Cosmos-tárolóban. Ez garantálja, hogy az írási mások, és ez fordítva is igaz az írások véletlenül felülírásra védettek. Többfelhasználós környezetben az optimista egyidejűség-vezérlés megóvja a véletlen törlését, vagy helytelen verziójára figyelmeztet elem frissítése. Emiatt a elemek védve legyenek a infamous "elveszett update" vagy "elveszett törlés" problémákat.
+Az elemek egyidejű frissítését Azure Cosmos DB kommunikációs protokoll rétege OCC alá. Az Azure Cosmos Database biztosítja, hogy a frissíteni kívánt elem (vagy törlés) ügyféloldali verziója ugyanaz, mint az Azure Cosmos-tárolóban lévő elem verziója. Ez garantálja, hogy az írásokat a mások írásai véletlenül felülírják, és fordítva. Többfelhasználós környezetben az optimista Egyidejűség-vezérlés megvédi az elemek hibás verziójának véletlen törlését vagy frissítését. Ennek megfelelően az elemek védve vannak a hírhedt "elveszett frissítés" vagy "elveszett Törlés" problémával szemben.
 
-Minden Azure-Cosmos-tárolóban tárolt elemnek egy rendszer által meghatározott `_etag` tulajdonság. Értékét a `_etag` automatikusan létrehozza és frissíti a kiszolgáló minden alkalommal, amikor az elem frissítése. `_etag` az ügyfél által megadott használható `if-match` kérelemfejlécből, hogy a kiszolgáló eldönteni, hogy egy elem feltételesen frissíthetők. Értékét a `if-match` fejléc értéke megegyezik a `_etag` a kiszolgálón, majd frissül az elemet. Ha az értéke a `if-match` kérelem fejléce már nem aktuális, a kiszolgáló elutasítja a műveletet egy "HTTP 412 sikertelen előfeltétel" válaszüzenet. Az ügyfél ezután is újra beolvasni az elem a kiszolgáló aktuális verziójának beszerzéséhez és nem írhatók felül a cikk a kiszolgáló a saját verzióját az elemet `_etag` az elem értékét. Emellett `_etag` együtt a `if-none-match` meghatározni, hogy szükség van-e egy adott erőforrás egy refetch fejléc. 
+Egy Azure Cosmos-tárolóban tárolt minden egyes tétel rendelkezik egy `_etag` rendszer által definiált tulajdonsággal. `_etag` A rendszer automatikusan generálja és frissíti a kiszolgálót a kiszolgáló minden frissítésekor. `_etag`az ügyfél által megadott `if-match` kérelem fejlécével használható, így a kiszolgáló eldöntheti, hogy lehet-e feltételesen frissíteni egy adott tételt. A `if-match` fejléc értéke megegyezik a kiszolgáló értékével `_etag` , az elem pedig frissül. Ha a `if-match` kérelem fejlécének értéke már nem aktuális, a kiszolgáló elutasítja a műveletet "http 412 előfeltételi hiba" üzenettel. Az ügyfél ezután újra beolvashatja az elemeket, hogy megszerezze az elem aktuális verzióját a kiszolgálón, vagy felülbírálja a kiszolgálón lévő elem verzióját az elemhez `_etag` tartozó saját értékkel. Emellett a `_etag` `if-none-match` fejléc használatával is meghatározhatja, hogy szükség van-e egy erőforrás ismételt lekérésére. 
 
-Az elem `_etag` érték változik, minden alkalommal, amikor az elem frissítése. A Csere elem műveletek `if-match` kell explicit módon megadni a kérelem beállítások részeként. Egy vonatkozó példáért tekintse meg a mintakód a [GitHub](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/DocumentManagement/Program.cs#L398-L446). `_etag` értékeket implicit módon ellenőrzi csinált semmit a tárolt eljárás minden írásos elemet. Ha bármely ütközést észlel, a tárolt eljárás állítsa vissza a tranzakciót, és kivételt. Ezzel a módszerrel a tárolt eljárás minden vagy nincs írási szolgáltatásfrissítést érvényesek. Ez a jel, az alkalmazás újból alkalmazni a frissítéseket, és ismételje meg az eredeti ügyfél kérelmet.
+Az elemek `_etag` értéke minden alkalommal megváltozik, amikor az adott tételt frissíti. Az elemek cseréje műveletekhez `if-match` explicit módon meg kell adni a kérés beállításainak részét. Példaként tekintse meg a mintakód a [githubban](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/DocumentManagement/Program.cs#L398-L446)című témakört. `_etag`az értékek implicit módon vannak bejelölve a tárolt eljárás által érintett összes írásos elemnél. Ha ütközés észlelhető, a tárolt eljárás visszaállítja a tranzakciót, és kivételt vet fel. Ezzel a módszerrel a tárolt eljáráson belül az összes vagy a nem írt írást is alkalmazza a rendszer. Ez egy jel az alkalmazásnak a frissítések újraalkalmazására, majd próbálja megismételni az eredeti ügyfél-kérelmet.
 
 ## <a name="next-steps"></a>További lépések
 
-További információ adatbázis-tranzakciók és az optimista egyidejűség-vezérléssel az alábbi cikkeket:
+További információ az adatbázis-tranzakciókkal és az optimista Egyidejűség-vezérléssel kapcsolatban a következő cikkekben található:
 
-- [Az Azure Cosmos-adatbázisok, tárolók és elemek használata](databases-containers-items.md)
-- [Konzisztenciaszint](consistency-levels.md)
-- [Ütközés típusa és a névfeloldási házirend](conflict-resolution-policies.md)
+- [Azure Cosmos-adatbázisok,-tárolók és-elemek használata](databases-containers-items.md)
+- [Konzisztencia szintjei](consistency-levels.md)
+- [Ütközési típusok és megoldási szabályzatok](conflict-resolution-policies.md)
 - [Tárolt eljárások, eseményindítók és felhasználó által definiált függvények](stored-procedures-triggers-udfs.md)

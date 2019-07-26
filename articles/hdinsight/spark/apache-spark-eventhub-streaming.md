@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive,mvc
 ms.topic: tutorial
 ms.date: 05/24/2019
-ms.openlocfilehash: e121568ce4841e884dddc7c5adff89830a883e93
-ms.sourcegitcommit: b49431b29a53efaa5b82f9be0f8a714f668c38ab
+ms.openlocfilehash: fef551c254eb4fa212333a55bde3d642645a16b6
+ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68377449"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68489809"
 ---
 # <a name="tutorial-process-tweets-using-azure-event-hubs-and-apache-spark-in-hdinsight"></a>Oktatóanyag: Tweetek feldolgozása az Azure Event Hubs és a HDInsight-Apache Spark használatával
 
@@ -48,7 +48,7 @@ A valós idejű tweetstream fogadásához létre kell hoznia egy alkalmazást a 
     |---|---|
     |Name (Név)|Adja meg az alkalmazás nevét. Az oktatóanyaghoz használt érték a **HDISparkStreamApp0423**. A névnek egyedi névnek kell lennie.|
     |Leírás|Adja meg az alkalmazás rövid leírását. Az oktatóanyaghoz használt érték **egy egyszerű HDInsight Spark streaming-alkalmazás**.|
-    |Webhely|Adja meg az alkalmazás webhelyét. Nem kell érvényes webhelynek lennie.  Az oktatóanyaghoz használt érték **http:\//www.contoso.com**.|
+    |Webhely|Adja meg az alkalmazás webhelyét. Nem kell érvényes webhelynek lennie.  Az oktatóanyaghoz `http://www.contoso.com`használt érték.|
     |Visszahívási URL|Üresen hagyhatja.|
 
 1. Válassza **az igen, elolvastam és elfogadom a Twitter fejlesztői szerződést**, majd válassza a **Twitter-alkalmazás létrehozása**lehetőséget.

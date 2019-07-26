@@ -1,7 +1,6 @@
 ---
-title: Azure rövid útmutató – Resource Manager-sablonnal rendelkező virtuális gép biztonsági mentése
-description: Ismerje meg, hogyan készíthet biztonsági mentést virtuális gépeiről az Azure Resource Manager-sablon
-services: backup
+title: Azure rövid útmutató – virtuális gép biztonsági mentése Resource Manager-sablonnal
+description: Ismerje meg, hogyan készíthet biztonsági mentést a virtuális gépekről Azure Resource Manager sablonnal
 author: rayne-wiselman
 manager: carmonm
 ms.service: backup
@@ -10,26 +9,26 @@ ms.topic: quickstart
 ms.date: 05/14/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: b144d7509562b8ca0bca6299caee4a7ce292f4a6
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: 643ae23ef566cb433bd3890e6ab2f38050cb1f47
+ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66481368"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68467139"
 ---
-# <a name="back-up-a-virtual-machine-in-azure-with-resource-manager-template"></a>Resource Manager-sablonnal az Azure-beli virtuális gép biztonsági mentése
+# <a name="back-up-a-virtual-machine-in-azure-with-resource-manager-template"></a>Virtuális gépek biztonsági mentése az Azure-ban Resource Manager-sablonnal
 
-[Az Azure Backup](backup-overview.md) a helyszíni gépek és az alkalmazások és az Azure virtuális gépek biztonsági mentését. Ez a cikk bemutatja, hogyan készíthet biztonsági másolatot a Resource Manager-sablon Azure virtuális Gépekhez és az Azure PowerShell. Ez a rövid útmutató helyreállítása Services-tároló létrehozása a Resource Manager-sablonnal üzembe helyezését tárgyalja. A Resource Manager-sablonok fejlesztéséhez további információkért lásd: [Resource Manager dokumentációja](/azure/azure-resource-manager/) és a [sablonreferenciája](/azure/templates/microsoft.recoveryservices/allversions).
+[Azure Backup](backup-overview.md) biztonsági mentést készít a helyszíni gépekről és alkalmazásokról, valamint az Azure-beli virtuális gépekről. Ebből a cikkből megtudhatja, hogyan készíthet biztonsági mentést egy Azure-beli virtuális gépről Resource Manager-sablonnal és Azure PowerShell. Ebben a rövid útmutatóban egy Resource Manager-sablon üzembe helyezésének folyamatára koncentrálunk a helyreállítási tár létrehozásához. A Resource Manager-sablonok fejlesztésével kapcsolatos további információkért tekintse meg a [Resource Manager dokumentációját](/azure/azure-resource-manager/) és a sablonra vonatkozó [referenciát](/azure/templates/microsoft.recoveryservices/allversions).
 
-Másik megoldásként készíthet biztonsági mentést egy virtuális gépet [Azure PowerShell-lel](./quick-backup-vm-powershell.md), a [Azure CLI-vel](quick-backup-vm-cli.md), vagy a a [az Azure portal](quick-backup-vm-portal.md).
+Azt is megteheti, hogy a virtuális gép biztonsági mentését [Azure PowerShell](./quick-backup-vm-powershell.md), az [Azure CLI](quick-backup-vm-cli.md)vagy a [Azure Portal](quick-backup-vm-portal.md)használatával végezheti el.
 
-## <a name="create-a-vm-and-recovery-services-vault"></a>Hozzon létre egy virtuális Gépet, és a Recovery Services-tároló
+## <a name="create-a-vm-and-recovery-services-vault"></a>Virtuális gép és Recovery Services-tároló létrehozása
 
-A [Recovery Services-tároló](backup-azure-recovery-services-vault-overview.md) olyan logikai tároló, amely tárolja a védett erőforrások, például az Azure virtuális gépek biztonsági másolati adatait. Amikor egy biztonsági mentési feladat fut, a Recovery Services-tároló belül egy helyreállítási pontot hoz létre. Ezt követően ezen helyreállítási pontok egyikével állíthatja vissza az adatokat egy adott időpontra.
+A [Recovery Services](backup-azure-recovery-services-vault-overview.md) -tár egy logikai tároló, amely a védett erőforrások, például az Azure-beli virtuális gépek biztonsági mentési szolgáltatásait tárolja. A biztonsági mentési feladatok futtatásakor egy helyreállítási pontot hoz létre a Recovery Services-tárolón belül. Ezt követően ezen helyreállítási pontok egyikével állíthatja vissza az adatokat egy adott időpontra.
 
-A rendszer a rövid útmutatóban használt sablon [Azure gyorsindítási sablonok](https://azure.microsoft.com/resources/templates/101-recovery-services-create-vm-and-configure-backup/). Ez a sablon lehetővé teszi egyszerű Windows virtuális gép és a DefaultPolicy védelemre konfigurált a Recovery Services-tároló üzembe helyezése.
+Az ebben a rövid útmutatóban használt sablon az [Azure Gyorsindítás sablonjaiból](https://azure.microsoft.com/resources/templates/101-recovery-services-create-vm-and-configure-backup/)származik. Ez a sablon lehetővé teszi, hogy egyszerű Windows-alapú virtuális gépet és Recovery Services-tárolót helyezzen üzembe, amely a DefaultPolicy-védelemmel van konfigurálva.
 
-A sablon üzembe helyezéséhez válassza **kipróbálás** nyissa meg az Azure Cloud shellt, és illessze be a következő PowerShell-parancsfájlt a shell ablakába. Illessze be a kódot, kattintson a jobb gombbal a rendszerhéj ablakát, és jelölje ki **illessze be**.
+A sablon üzembe helyezéséhez válassza a **kipróbálás** lehetőséget az Azure Cloud Shell megnyitásához, majd illessze be a következő PowerShell-szkriptet a rendszerhéj ablakába. A kód beillesztéséhez kattintson a jobb gombbal a rendszerhéj-ablakra, majd válassza a **Beillesztés**lehetőséget.
 
 ```azurepowershell-interactive
 $projectName = Read-Host -Prompt "Enter a project name (limited to eight characters) that is used to generate Azure resource names"
@@ -45,24 +44,24 @@ New-AzResourceGroup -Name $resourceGroupName -Location $location
 New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateUri $templateUri -projectName $projectName -adminUsername $adminUsername -adminPassword $adminPassword -dnsLabelPrefix $dnsPrefix
 ```
 
-Ebben a rövid útmutatóban a Resource Manager-sablon üzembe helyezése az Azure PowerShell segítségével. A [az Azure portal](../azure-resource-manager/resource-group-template-deploy-portal.md), [Azure CLI-vel](../azure-resource-manager/resource-group-template-deploy-cli.md), és [Rest API-val](../azure-resource-manager/resource-group-template-deploy-rest.md) üzembe helyezheti a sablonokat is használható.
+A Azure PowerShell a Resource Manager-sablon üzembe helyezéséhez használható ebben a rövid útmutatóban. A [Azure Portal](../azure-resource-manager/resource-group-template-deploy-portal.md), az [Azure CLI](../azure-resource-manager/resource-group-template-deploy-cli.md)és a [REST API](../azure-resource-manager/resource-group-template-deploy-rest.md) is használható sablonok telepítéséhez.
 
 ## <a name="start-a-backup-job"></a>Biztonsági mentési feladat indítása
 
-A sablon létrehoz egy virtuális Gépet, és lehetővé teszi, hogy vissza a virtuális gépen. A sablon üzembe helyezéséhez, miután kell a biztonsági mentési feladat elindításához. További információkért lásd: [indítsa el a biztonsági mentési feladat](./quick-backup-vm-powershell.md#start-a-backup-job).
+A sablon létrehoz egy virtuális gépet, és lehetővé teszi a virtuális gép visszaállítását. A sablon üzembe helyezése után el kell indítania egy biztonsági mentési feladatot. További információkért lásd: [biztonsági mentési feladatok elindítása](./quick-backup-vm-powershell.md#start-a-backup-job).
 
 ## <a name="monitor-the-backup-job"></a>A biztonsági mentési feladat monitorozása
 
-A biztonsági mentési feladat monitorozása: [a biztonsági mentési feladat monitorozása](./quick-backup-vm-powershell.md#monitor-the-backup-job).
+A biztonsági mentési feladatok figyeléséhez tekintse meg [a biztonsági mentési feladatok figyelése](./quick-backup-vm-powershell.md#monitor-the-backup-job)című témakört.
 
-## <a name="clean-up-the-deployment"></a>Az üzemelő példány eltávolítása
+## <a name="clean-up-the-deployment"></a>Az üzemelő példány tisztítása
 
-Ha már nincs szüksége a biztonsági másolatot készíteni a virtuális Gépet, akkor távolíthatja el.
+Ha már nincs szüksége a virtuális gép biztonsági mentésére, törölheti azt.
 
-- Ha azt szeretné, és próbálja ki a virtuális gép visszaállítása, hagyja ki a tiszta fel.
-- Ha egy meglévő virtuális Gépet használt, eltekinthet a végső [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) megtarthatja az erőforráscsoportot és a virtuális gép helyen.
+- Ha ki szeretné próbálni a virtuális gép visszaállítását, ugorja át a tisztítást.
+- Ha meglévő virtuális gépet használt, akkor kihagyhatja a végleges [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) parancsmagot, hogy az erőforráscsoport és a virtuális gép ne legyen a helyén.
 
-Tiltsa le a védelmet, távolítsa el a helyreállítási pontokat és a tárolót. Törölje az erőforráscsoportot és a társított virtuális gép erőforrásait, a következő:
+Tiltsa le a védelmet, távolítsa el a visszaállítási pontokat és a tárolót. Ezután törölje az erőforráscsoportot és a kapcsolódó virtuálisgép-erőforrásokat az alábbiak szerint:
 
 ```powershell
 Disable-AzRecoveryServicesBackupProtection -Item $item -RemoveRecoveryPoints
@@ -75,5 +74,5 @@ Remove-AzResourceGroup -Name "myResourceGroup"
 
 A rövid útmutató során létrehozott egy Recovery Services-tárolót, engedélyezte a védelmet a virtuális gépen, valamint létrehozta a kezdeti helyreállítási pontot.
 
-- [Ismerje meg, hogyan](tutorial-backup-vm-at-scale.md) a virtuális gépek biztonsági mentése az Azure Portalon.
-- [Ismerje meg, hogyan](tutorial-restore-disk.md) gyorsan a virtuális gép visszaállítása
+- Megtudhatja, [Hogyan](tutorial-backup-vm-at-scale.md) készíthet biztonsági mentést a virtuális gépekről a Azure Portalban.
+- Megtudhatja, [Hogyan](tutorial-restore-disk.md) állíthatja be gyorsan a virtuális gépeket

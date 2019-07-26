@@ -11,16 +11,18 @@ manager: daveba
 ms.author: joflore
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: aeef0886bcfe12cf4e67bbbccec1dde7fe47c69d
-ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
-ms.translationtype: HT
+ms.openlocfilehash: 27ff7512bb3f9422ed4c8edd7ab50fce23f0ed07
+ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68335421"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68499564"
 ---
 # <a name="how-to-configure-the-azure-multi-factor-authentication-registration-policy"></a>kézikönyv: Az Azure multi-Factor Authentication regisztrációs szabályzatának konfigurálása
 
-A Azure AD Identity Protection segítségével felügyelheti a többtényezős hitelesítés (MFA) regisztrációját úgy, hogy a feltételes hozzáférési szabályzatot úgy konfigurálja, hogy az MFA-regisztráció megkövetelése nélkül milyen alkalmazást szeretne bejelentkezni. Ez a cikk bemutatja, hogyan használható a szabályzat, és hogyan konfigurálható.
+A Azure AD Identity Protection segítségével a többtényezős hitelesítés (MFA) regisztrációját úgy kezelheti, hogy a feltételes hozzáférési szabályzatot úgy konfigurálja, hogy az MFA-regisztráció megkövetelése nélkül milyen modern hitelesítési alkalmazást szeretne bejelentkezni. Ez a cikk bemutatja, hogyan használható a szabályzat, és hogyan konfigurálható.
+
+
 
 ## <a name="what-is-the-azure-multi-factor-authentication-registration-policy"></a>Mi az Azure multi-Factor Authentication regisztrációs szabályzata?
 
@@ -58,6 +60,8 @@ Az MFA regisztrációs szabályzatának konfigurálásakor a következő konfigu
 - Szabályzat **mentése**
 
 ## <a name="user-experience"></a>Felhasználói élmény
+
+Azure Active Directory Identity Protection fogja kérni a felhasználókat, hogy regisztrálják magukat a következő alkalommal, amikor interaktív módon jelentkeznek be.
 
 A kapcsolódó felhasználói élmény áttekintését lásd:
 

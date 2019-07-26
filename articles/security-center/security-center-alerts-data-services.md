@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 7/02/2019
+ms.date: 7/24/2019
 ms.author: v-mohabe
-ms.openlocfilehash: 1cafd8a3c766e57aed67634d7da8498c9a6ee120
-ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
+ms.openlocfilehash: f33b69ac443a1bb8f6b7d6e1b19f2f077bf38f58
+ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68295826"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68501484"
 ---
 # <a name="threat-detection-for-data-services-in-azure-security-center"></a>Veszélyforrások észlelése a Azure Security Center adatszolgáltatásaiban
 
@@ -27,6 +27,7 @@ ms.locfileid: "68295826"
 
 * [Azure SQL Database és SQL Data Warehouse](#data-sql)
 * [Azure Storage](#azure-storage)
+* [Cosmos DB](#cosmos-db)
 
 ## Azure SQL Database és SQL Data Warehouse<a name="data-sql"></a>
 
@@ -46,7 +47,7 @@ További információ az SQL Threat észlelési riasztásokról:[Azure SQL Datab
 ## Azure Storage<a name="azure-storage"></a>
 
 >[!NOTE]
-> Az Azure Storage komplex veszélyforrások elleni védelme jelenleg csak Blob Storage érhető el. 
+> Az Azure Storage komplex veszélyforrások elleni védelme jelenleg csak Blob Storage érhető el.
 
 Az Azure Storage-hoz nyújtott komplex veszélyforrások elleni védelem egy további biztonságiintelligencia-réteget ad, amely észleli a tárfiókok elérésére és felhasználására tett szokatlan és feltehetően ártalmas kísérleteket. Ez a védelmi réteg lehetővé teszi a fenyegetések kezelését anélkül, hogy biztonsági szakértőnek kellene lennie, és a biztonsági figyelő rendszereket kell kezelnie.
 
@@ -70,3 +71,14 @@ Security Center elemzi az olvasási, írási és törlési kérelmeket a blob St
 >Az Azure Storage komplex veszélyforrások elleni védelme jelenleg nem érhető el az Azure governmentben és a szuverén Felhőbeli régiókban.
 
 További információ a tárolási riasztásokról: az [Azure Storage komplex veszélyforrások elleni védelme](https://docs.microsoft.com/azure/storage/common/storage-advanced-threat-protection) , valamint a védelmi riasztások szakasz áttekintése.
+
+## Cosmos DB<a name="cosmos-db"></a>
+
+A következő riasztásokat szokatlan és potenciálisan ártalmas kísérletek generálják Azure Cosmos DB fiókok eléréséhez vagy kiaknázásához:
+
+|Riasztás|Leírás|
+|---|---|
+|**Hozzáférés szokatlan helyről**|Azt jelzi, hogy a hozzáférési minta módosult egy Cosmos DB-fiókra. Valaki a legutóbbi tevékenységhez képest ismeretlen IP-címről kapta ezt a fiókot. Vagy egy támadó hozzáfért egy Cosmos DB fiókhoz, vagy egy megbízható felhasználó egy új és szokatlan földrajzi helyről fér hozzá a Cosmos DB fiókhoz. Például: új alkalmazás vagy fejlesztői karbantartás távoli számítógépről.|
+|**Szokatlan adatkiszűrése**|Azt jelzi, hogy módosult egy Cosmos DB-fiók adatkiemelési mintája. Valaki a legutóbbi tevékenységhez képest szokatlan mennyiségű adattal kibontotta. Egy támadó nagy mennyiségű adattal kibontotta Cosmos DB adatbázisát. Például: az adatok kiszűrése/szivárgása, az adatok jogosulatlan átvitele. Vagy egy megbízható felhasználó vagy alkalmazás szokatlan mennyiségű adattal kibontotta a tárolót. Például: karbantartási biztonsági mentési tevékenység.|
+
+További információ: [a Azure Cosmos db komplex veszélyforrások elleni védelme](../cosmos-db/cosmos-db-advanced-threat-protection.md).

@@ -1,5 +1,5 @@
 ---
-title: Security Center integráció az Azure Security-termékekkel | Microsoft Docs
+title: Az Azure biztonsági termékek integrálása a Azure Security Centerban | Microsoft Docs
 description: Ez a témakör a Azure Security Center integrált Azure biztonsági termékeket mutatja be.
 services: security-center
 documentationcenter: na
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 7/02/2019
 ms.author: v-mohabe
-ms.openlocfilehash: 64a636cc4452de1ef4a2d0e94629e7d8e3a5878d
-ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
+ms.openlocfilehash: 847748d1c56221119d8f74a2aee716ee08448e28
+ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68295733"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68335816"
 ---
-# <a name="security-center-integration-with-azure-security-products-in-asc"></a>Security Center integráció az Azure Security-termékekkel az ASC-ben
+# <a name="integration-of-azure-security-products-in-azure-security-center"></a>Az Azure biztonsági termékek integrálása a Azure Security Centerban
 
 A Security Center további Microsoft-licencekkel rendelkező ügyfeleket kínál a megállapításaik bevezetéséhez Security Center és megtekintheti őket konszolidált módon.
 

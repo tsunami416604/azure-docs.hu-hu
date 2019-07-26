@@ -1,6 +1,6 @@
 ---
-title: A szolgáltatások modul – az Azure Maps használata |} A Microsoft Docs
-description: Ismerje meg, hogyan használható az Azure Maps szolgáltatások modul.
+title: A Services modul használata – Azure Maps | Microsoft Docs
+description: Ismerje meg, hogyan használhatja a Azure Maps Services modult.
 author: rbrundritt
 ms.author: richbrun
 ms.date: 03/25/2019
@@ -8,40 +8,40 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendleton
-ms.openlocfilehash: b56191bc93a91f944bb313b4ab9ad602da17dcf0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e7baacd3bb64ad234e478d4c1f75e793c46ec321
+ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66357641"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68476771"
 ---
-# <a name="use-the-azure-maps-services-module"></a>Az Azure Maps services modullal
+# <a name="use-the-azure-maps-services-module"></a>A Azure Maps Services modul használata
 
-Az Azure Maps Web SDK biztosít egy *szolgáltatások modul*. Ez a modul egy segédkódtárba helyezni, amely megkönnyíti az Azure Maps REST szolgáltatások web- vagy Node.js-alkalmazások használata JavaScript- vagy TypeScript használatával.
+A Azure Maps web SDK egy *Services modult*biztosít. Ez a modul egy segítő könyvtár, amely megkönnyíti a Azure Maps REST-szolgáltatások használatát a web-vagy Node. js-alkalmazásokban JavaScript vagy írógéppel használatával.
 
-## <a name="use-the-services-module-in-a-webpage"></a>Egy weblap services modullal
+## <a name="use-the-services-module-in-a-webpage"></a>Weblapon található szolgáltatások modul használata
 
 1. Hozzon létre egy új HTML-fájlt.
-1. Az Azure Maps szolgáltatások modul betöltése. Betöltheti azokat a két módszer egyikével:
-    - Az Azure Maps szolgáltatások modul globálisan üzemeltetett Azure Content Delivery Network verzióját használja. Vegyen fel egy parancsfájl hivatkozást a `<head>` elem a fájl:
+1. Töltse be a Azure Maps Services modult. Kétféleképpen is betöltheti:
+    - Használja az Azure Maps Services modul globálisan üzemeltetett, Azure Content Delivery Network verzióját. Adjon hozzá egy parancsfájl- `<head>` hivatkozást a fájl eleméhez:
 
         ```html
-        <script src="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas-service.min.js"></script>
+        <script src="https://atlas.microsoft.com/sdk/javascript/service/2/atlas-service.min.js"></script>
         ```
 
-    - Azt is megteheti, betöltheti az Azure Maps Web SDK forráskódját helyileg a a [azure maps-inaktív](https://www.npmjs.com/package/azure-maps-rest) npm csomagot, majd ezután üzemeltetni az alkalmazást. Ez a csomag is TypeScript definíciókat tartalmazza. Használja ezt a parancsot:
+    - Azt is megteheti, hogy helyileg tölti be a Azure Maps web SDK forráskódját az [Azure-Maps-Rest](https://www.npmjs.com/package/azure-maps-rest) NPM csomag használatával, majd üzemelteti azt az alkalmazással. Ez a csomag írógéppel kapcsolatos definíciókat is tartalmaz. Használja ezt a parancsot:
     
-        > **az npm telepítése azure-térképek – rest**
+        > **NPM telepítése Azure-Maps-Rest**
     
-        Ezután vegyen fel egy parancsfájl hivatkozást a `<head>` elem a fájl:
+        Ezután adjon hozzá egy parancsfájl- `<head>` hivatkozást a fájl eleméhez:
 
          ```html
         <script src="node_modules/azure-maps-rest/dist/js/atlas-service.min.js"></script>
          ```
 
-1. Hozzon létre egy hitelesítési folyamatot. Akkor is Szolgáltatásvégpont URL-cím ügyfél inicializálása előtt létre kell hoznia a folyamatot. A saját Azure Maps-fiók kulcsára vagy Azure Active Directory (Azure AD) hitelesítő adatok használatával az Azure Maps Search szolgáltatás ügyfelek hitelesítéséhez. Ebben a példában a Search szolgáltatás URL-cím ügyfél létrejön. 
+1. Hitelesítési folyamat létrehozása. A szolgáltatás URL-címének ügyféloldali végpontjának inicializálásához létre kell hoznia a folyamatot. A Azure Maps keresési szolgáltatás ügyfelének hitelesítéséhez használja a saját Azure Maps fiókjának kulcsát vagy Azure Active Directory (Azure AD) hitelesítő adatait. Ebben a példában a keresési szolgáltatás URL-ügyfele lesz létrehozva. 
 
-    Ha egy előfizetési kulcsot használ a hitelesítéshez:
+    Ha előfizetés-kulcsot használ a hitelesítéshez:
 
     ```javascript
     // Get an Azure Maps key at https://azure.com/maps.
@@ -59,7 +59,7 @@ Az Azure Maps Web SDK biztosít egy *szolgáltatások modul*. Ez a modul egy seg
     var searchURL = new atlas.service.SearchURL(pipeline);
     ```
 
-    Az Azure AD használatakor a hitelesítéshez:
+    Ha az Azure AD-t használja a hitelesítéshez:
 
     ```javascript
     // Enter your Azure AD client ID.
@@ -122,9 +122,9 @@ Az Azure Maps Web SDK biztosít egy *szolgáltatások modul*. Ez a modul egy seg
     }
     ```
 
-    További információkért lásd: [hitelesítés az Azure Maps](azure-maps-authentication.md).
+    További információ: [hitelesítés Azure Mapssal](azure-maps-authentication.md).
 
-1. A következő kódot az újonnan létrehozott Azure Search szolgáltatás URL-cím ügyfél a geocode-címet használja: "1 Microsoft Way, Redmond, WA". A kód a `searchAddress` funkciót, és megjeleníti az eredményeket az oldal törzsében táblázatként.
+1. A következő kód az újonnan létrehozott Azure Search szolgáltatás URL-ügyfelét használja geocode egy cím megadásához: "1 Microsoft Way, Redmond, WA". A kód a `searchAddress` függvényt használja, és az eredményeket táblázatként jeleníti meg az oldal törzsében.
 
     ```javascript
     // Search for "1 microsoft way, redmond, wa".
@@ -154,17 +154,17 @@ Az Azure Maps Web SDK biztosít egy *szolgáltatások modul*. Ez a modul egy seg
     });
     ```
 
-    Itt látható a teljes kódmintát fut:
+    Itt látható a teljes, futó kód minta:
 
 <br/>
 
-<iframe height="500" style="width: 100%;" scrolling="no" title="A szolgáltatások modul használatával" src="//codepen.io/azuremaps/embed/zbXGMR/?height=500&theme-id=0&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
-Tekintse meg a toll típusú <a href='https://codepen.io/azuremaps/pen/zbXGMR/'>az Services modullal</a> által az Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) a <a href='https://codepen.io'>CodePen</a>.
+<iframe height="500" style="width: 100%;" scrolling="no" title="A szolgáltatások modul használata" src="//codepen.io/azuremaps/embed/zbXGMR/?height=500&theme-id=0&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+Tekintse meg a tollat a <a href='https://codepen.io/azuremaps/pen/zbXGMR/'>szolgáltatások modullal</a> Azure Maps<a href='https://codepen.io/azuremaps'>@azuremaps</a>() használatával a <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
 ## <a name="next-steps"></a>További lépések
 
-További információ az osztályok és módszerek a cikk ezt használja:
+További információ a cikkben használt osztályokról és módszerekről:
 
 > [!div class="nextstepaction"]
 > [MapsURL](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.mapsurl?view=azure-maps-typescript-latest)
@@ -181,13 +181,13 @@ További információ az osztályok és módszerek a cikk ezt használja:
 > [!div class="nextstepaction"]
 > [TokenCredential](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.tokencredential?view=azure-maps-typescript-latest)
 
-A szolgáltatások a modul további Kódminták tanulmányozza a következő cikkeket:
+A szolgáltatások modult használó további példákért tekintse meg a következő cikkeket:
 
 > [!div class="nextstepaction"]
-> [A térképen a keresési eredmények megjelenítése](./map-search-location.md)
+> [Keresési eredmények megjelenítése a térképen](./map-search-location.md)
 
 > [!div class="nextstepaction"]
-> [Koordináta információinak lekérése](./map-get-information-from-coordinate.md)
+> [Adatok lekérése egy koordinátaből](./map-get-information-from-coordinate.md)
 
 > [!div class="nextstepaction"]
-> [Útvonal megjelenítése a-b](./map-route.md)
+> [Irányok megjelenítése a-tól B-be](./map-route.md)

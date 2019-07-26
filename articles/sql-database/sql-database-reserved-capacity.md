@@ -11,13 +11,13 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: sstein, carlrab
 manager: craigg
-ms.date: 07/15/2019
-ms.openlocfilehash: fa64177dfa5bfadad5db4116224b94ffac2fadc0
-ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
+ms.date: 07/19/2019
+ms.openlocfilehash: 1cc8828f5a936b130480c2c7516d00b8bee6760f
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68233052"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68357280"
 ---
 # <a name="prepay-for-sql-database-compute-resources-with-azure-sql-database-reserved-capacity"></a>Előre fizetés SQL Database számítási erőforrásokhoz Azure SQL Database fenntartott kapacitással
 
@@ -66,9 +66,9 @@ A következő táblázat a kötelező mezőket ismerteti.
 
 ## <a name="cancellations-and-exchanges"></a>Megszakítások és cserék
 
-Ha meg kell szakítania a SQL Database fenntartott kapacitás foglalását, akkor 12%-os korai lemondási díj lehet. A visszatérítést a rendszer a vételár vagy a foglalás jelenlegi ára közül az alacsonyabb összeg alapján számolja. A visszatérítések felső korlátja évi 50 000 dollár. A kapott visszatérítés tehát a fennmaradó, arányosított egyenleg és a 12%-os korai felmondási díj különbsége lesz. A lemondás lekéréséhez lépjen a Azure Portal foglalására, és válassza a **visszatérítés** lehetőséget a támogatási kérelem létrehozásához.
+Ha meg kell szakítania a SQL Database fenntartott kapacitás foglalását, akkor 12%-os korai lemondási díj lehet. A visszatérítést a rendszer a vételár vagy a foglalás jelenlegi ára közül az alacsonyabb összeg alapján számolja. A visszatérítések felső korlátja évi 50 000 dollár. A kapott visszatérítés tehát a fennmaradó, arányosított egyenleg és a 12%-os korai felmondási díj különbsége lesz. A megszakításhoz nyissa meg a Azure Portal foglalását, és válassza a **visszatérítés**lehetőséget.
 
-Ha a fenntartott Azure SQL Database-kapacitás lefoglalását egy másik régióra, üzembe helyezési típusra, teljesítményszintre vagy eltérő feltételekre kell módosítania, akkor kicserélheti a foglalást egy azonos vagy magasabb értékűre. Az új foglalási időszak kezdő dátuma nem kerül át a lecserélt foglalásból. Az 1 vagy 3 éves időszak az új foglalás létrehozásakor indul. Az Exchange igényléséhez lépjen a foglalás a Azure Portal, majd válassza az **Exchange** elemet a támogatási kérelem létrehozásához.
+Ha a fenntartott Azure SQL Database-kapacitás lefoglalását egy másik régióra, üzembe helyezési típusra, teljesítményszintre vagy eltérő feltételekre kell módosítania, akkor kicserélheti a foglalást egy azonos vagy magasabb értékűre. Az új foglalási időszak kezdő dátuma nem kerül át a lecserélt foglalásból. Az 1 vagy 3 éves időszak az új foglalás létrehozásakor indul. Az Exchange-hez lépjen a Azure Portal található foglaláshoz, és válassza az **Exchange**lehetőséget.
 
 A foglalások cseréjével és visszatérítésével kapcsolatos további információkért lásd: a [foglalási cserék és](../billing/billing-azure-reservations-self-service-exchange-and-refund.md)a visszafizetések.
 

@@ -87,11 +87,11 @@
               href: billing-reservation-discount-app-service-isolated-stamp.md
             - name: Azure-szoftvercsomagok
               href: billing-understand-suse-reservation-charges.md
-        - name: A szoftverköltségeket nem tartalmazza
+        - name: A Windows és az SQL költségeit nem tartalmazza
           href: billing-reserved-instance-windows-software-costs.md
-        - name: Használat egyéni előfizetések esetén
+        - name: Használati adatok egyéni előfizetések esetén
           href: billing-understand-reserved-instance-usage.md
-        - name: Vállalati használat
+        - name: Használati adatok vállalati ügyfelek esetén
           href: billing-understand-reserved-instance-usage-ea.md
         - name: Foglalások cseréje és visszatérítése
           href: billing-azure-reservations-self-service-exchange-and-refund.md

@@ -1,6 +1,6 @@
 ---
-title: Megismerheti, és az Azure AD Application Proxy CORS hiba elhárításához nyújthatnak segítséget
-description: Itt a CORS-t az Azure AD-alkalmazásproxy és CORS problémák azonosítását és megoldását annak megértését.
+title: Az Azure AD Application Proxy CORS kapcsolatos problémák megismerése és megoldása
+description: Az Azure AD Application Proxy CORS megismerése, valamint a CORS kapcsolatos problémák azonosítása és megoldása.
 services: active-directory
 author: jeevanbisht
 manager: mtillman
@@ -11,110 +11,110 @@ ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: celested
 ms.reviewer: japere
-ms.openlocfilehash: afc0bb990f69521efb2557a6a086c0de5126f82c
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 265458066a528246cbfa7876bf61b02a0382581b
+ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67440420"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68499607"
 ---
-# <a name="understand-and-solve-azure-active-directory-application-proxy-cors-issues"></a>Megismerheti, és az Azure Active Directory Application Proxy CORS hiba elhárításához nyújthatnak segítséget
+# <a name="understand-and-solve-azure-active-directory-application-proxy-cors-issues"></a>Azure Active Directory Application Proxy CORS kapcsolatos problémák megismerése és megoldása
 
-[Eltérő eredetű erőforrások megosztása (CORS)](https://www.w3.org/TR/cors/) néha kihívást az alkalmazások és API-k az Azure Active Directory Application Proxy-n keresztül közzétett. Ez a cikk ismerteti az Azure AD Application Proxy CORS problémákat és megoldásokat.
+[A több eredetű erőforrás-megosztás (CORS)](https://www.w3.org/TR/cors/) időnként kihívást jelenthet a Azure Active Directory Application Proxyon közzétett alkalmazások és API-k számára. Ez a cikk az Azure AD Application Proxy CORS kapcsolatos problémákat és megoldásokat ismerteti.
 
-A böngésző biztonsági általában megakadályozható, hogy egy weblap AJAX-kérelmeket küldjön egy másik tartományhoz. Ez a korlátozás nevezzük a *azonoseredet-* , és megakadályozza, hogy egy rosszindulatú webhely érzékeny adatok olvasása a másik helyről. Előfordulhat azonban, hogy ahhoz, hogy a webes API hívása más helyekre. A CORS egy W3C szabvány, amely lehetővé teszi, hogy egy kiszolgáló enyhíteni az azonos eredethez házirendet, és néhány eltérő eredetű kérések engedélyezése elutasítása mellett más.
+A böngésző biztonsága általában megakadályozza, hogy a weblapok AJAX-kérelmeket hozzanak egy másik tartományba. Ezt a korlátozást *azonos eredetű házirendnek*nevezzük, és megakadályozza, hogy egy rosszindulatú hely bizalmas adatokat olvasson be egy másik helyről. Előfordulhat azonban, hogy más helyekre is meg szeretné hívni a webes API-t. A CORS egy W3C-szabvány, amely lehetővé teszi, hogy a kiszolgálók megpihenjenek az azonos eredetű házirendben, és egyes eltérő eredetű kérelmeket is engedélyezzenek, míg mások elutasítását.
 
-## <a name="understand-and-identify-cors-issues"></a>Megismerheti és azonosíthatja azokat a CORS-problémák
+## <a name="understand-and-identify-cors-issues"></a>CORS kapcsolatos problémák ismertetése és azonosítása
 
-Két URL-címet azonos származási rendelkezik, ha rendelkeznek azonos sémák, a gazdagépek és a portok ([RFC 6454](https://tools.ietf.org/html/rfc6454)), például:
+Két URL-cím azonos eredetű, ha azonos sémákkal, gazdagépekkel és portokkal rendelkeznek ([RFC 6454](https://tools.ietf.org/html/rfc6454)), például:
 
 -   http:\//contoso.com/foo.html
--   http:\//contoso.com/bar.html
+-   http:\//contoso.com/Bar.html
 
-A következő URL-címekkel rendelkezik a különböző források, mint az előző két:
+A következő URL-címek eltérő eredetűek, mint az előző kettő:
 
--   http:\//contoso.net - másik tartományba
--   http:\//contoso.com:9000/foo.html - másik portot
--   https:\//contoso.com/foo.html - különböző séma
--   http:\//www.contoso.com/foo.html – különböző altartomány
+-   http:\//contoso.net – különböző tartomány
+-   http:\//contoso.com:9000/foo.html – különböző port
+-   https:\//contoso.com/foo.html – eltérő séma
+-   http:\//www.contoso.com/foo.html – eltérő altartomány
 
-Azonoseredet-letiltja az alkalmazások erőforrásokhoz való hozzáférés a más források egyedül a megfelelő hozzáférés-vezérlő fejléceket. Ha a CORS fejlécek hiányzik vagy hibás, eltérő eredetű kérelmek sikertelenek. 
+Az azonos eredetű házirend megakadályozza, hogy az alkalmazások más eredetű forrásokból férhessenek hozzá az erőforrásokhoz, kivéve, ha a megfelelő hozzáférés-vezérlési fejléceket használják. Ha a CORS fejlécei hiányoznak vagy helytelenek, az adatforrások közötti kérelmek meghiúsulnak. 
 
-CORS-problémák böngésző hibakereső eszközeivel határozza meg:
+A CORS problémák a böngésző hibakeresési eszközeivel azonosíthatók:
 
 1. Indítsa el a böngészőt, és keresse meg a webalkalmazást.
-1. Nyomja meg **F12** viszi, megjelenik a hibakeresési konzolt.
-1. Próbálja meg reprodukálni a tranzakciót, és tekintse át a konzol üzenetet. A CORS megsértése forrás egy konzol hibaüzenetet eredményez.
+1. Nyomja meg az **F12** billentyűt a hibakeresési konzol létrehozásához.
+1. Próbálja megismételni a tranzakciót, és tekintse át a konzol üzenetét. A CORS megsértése konzolos hibát eredményez a forrásról.
 
-Az alábbi képernyőképen kiválasztása a **Kipróbálom** gomb okozza a CORS hibaüzenet, hogy https:\//corswebclient-contoso.msappproxy.net az Access-Control-Allow-Origin fejléc nem található.
+A következő képernyőképen a **kipróbálás** gomb kiválasztásával egy CORS hibaüzenetet okozott, amely szerint\/a https:/corswebclient-contoso.msappproxy.net nem található a hozzáférés-vezérlés – engedélyezés-eredet fejlécben.
 
-![CORS-probléma](./media/application-proxy-understand-cors-issues/image3.png)
+![CORS probléma](./media/application-proxy-understand-cors-issues/image3.png)
 
-## <a name="cors-challenges-with-application-proxy"></a>Az alkalmazásproxy használatával a CORS kihívásai
+## <a name="cors-challenges-with-application-proxy"></a>CORS kapcsolatos kihívások az alkalmazásproxy esetében
 
-A következő példa mutatja egy jellemző az Azure AD Application Proxy CORS forgatókönyv. A belső gazdagépek egy **CORSWebService** webes API-vezérlő, és a egy **CORSWebClient** meghív **CORSWebService**. Van egy AJAX kérelme **CORSWebClient** való **CORSWebService**.
+Az alábbi példa egy tipikus Azure AD Application Proxy CORS forgatókönyvet mutat be. A belső kiszolgáló egy **CORSWebService** web API-vezérlőt és egy **CORSWebService**meghívására szolgáló **CORSWebClient** üzemeltet. Van egy AJAX-kérés a **CORSWebClient** és a **CORSWebService**között.
 
-![A helyszíni azonos eredethez kérelem](./media/application-proxy-understand-cors-issues/image1.png)
+![Helyszíni azonos eredetű kérelem](./media/application-proxy-understand-cors-issues/image1.png)
 
-A CORSWebClient alkalmazás üzemeltetése, a helyszínen, de betöltése sikertelen, vagy hibák, amikor az Azure AD-alkalmazásproxyn keresztül közzétett működik. Ha közzé a CORSWebClient és CORSWebService alkalmazások külön-külön proxyn keresztül történő alkalmazás különböző alkalmazásokat, a két alkalmazás üzemeltetett eltérő tartományokban. Az AJAX kérelem CORSWebClient CORSWebService eltérő eredetű kérelem, és ez nem sikerül.
+A CORSWebClient alkalmazás akkor működik, ha a helyszínen üzemelteti, de az Azure AD Application Proxy-n keresztül történő közzétételkor nem sikerül betölteni vagy hibákba ütközik. Ha a CORSWebClient és a CORSWebService alkalmazásokat külön, különböző alkalmazásokként közzétette az alkalmazásproxy használatával, a két alkalmazás különböző tartományokban üzemel. A CORSWebClient-ből a CORSWebService-re irányuló AJAX-kérelem egy kereszthivatkozási kérelem, amely nem sikerül.
 
-![Application Proxy CORS kérése](./media/application-proxy-understand-cors-issues/image2.png)
+![Alkalmazásproxy-CORS kérelem](./media/application-proxy-understand-cors-issues/image2.png)
 
-## <a name="solutions-for-application-proxy-cors-issues"></a>Application Proxy CORS problémák megoldásait
+## <a name="solutions-for-application-proxy-cors-issues"></a>Az alkalmazásproxy CORS kapcsolatos problémák megoldása
 
-Számos módon bármelyike az előző CORS probléma is fel tudja oldani.
+A fenti CORS probléma többféleképpen is feloldható.
 
-### <a name="option-1-set-up-a-custom-domain"></a>Option 1: Egyéni tartomány beállítása
+### <a name="option-1-set-up-a-custom-domain"></a>1\. lehetőség: Egyéni tartomány beállítása
 
-Használja az Azure AD-alkalmazásproxy [egyéni tartomány](https://docs.microsoft.com/azure/active-directory/active-directory-application-proxy-custom-domains) közzététele az azonos forrásból semmilyen módosítást alkalmazás források, kódok vagy fejlécek nélkül. 
+Egy Azure-AD Application Proxy [egyéni tartomány](https://docs.microsoft.com/azure/active-directory/active-directory-application-proxy-custom-domains) használatával tehet közzé ugyanabból a forrásból, anélkül, hogy módosítania kellene az alkalmazás eredetét, kódját vagy fejlécét. 
 
-### <a name="option-2-publish-the-parent-directory"></a>Option 2: A szülőkönyvtárhoz közzététele
+### <a name="option-2-publish-the-parent-directory"></a>2\. lehetőség: A szülő könyvtár közzététele
 
-Tegye közzé szülőkönyvtára mindkét alkalmazást. A megoldás együttműködik különösen jól, ha csak két alkalmazásokat a webkiszolgálón. Ahelyett, hogy minden alkalmazáshoz külön-külön közzététel, a közös szülőkönyvtárában, ami azonos származási teheti közzé.
+Mindkét alkalmazás szülő könyvtárának közzététele. Ez a megoldás különösen jól működik, ha csak két alkalmazással rendelkezik a webkiszolgálón. Az egyes alkalmazások külön közzététele helyett közzéteheti a közös szülő könyvtárat, amely ugyanezt a forrást eredményezi.
 
-Az alábbi példák bemutatják a portálon az CORSWebClient alkalmazás Azure AD-alkalmazásproxy lapját.  Ha a **belső URL-cím** értékre van állítva *contoso.com/CORSWebClient*, az alkalmazás nem hajtható végre, a sikeres kérések a *contoso.com/CORSWebService* könyvtár, mert eltérő eredetű zajlik. 
+Az alábbi példák a portál Azure AD Application Proxy lapját mutatják be a CORSWebClient alkalmazáshoz.  Ha a **belső URL-cím** a *contoso.com/CORSWebClient*értékre van állítva, az alkalmazás nem tud sikeres kéréseket készíteni a *contoso.com/CORSWebService* könyvtárára, mert azok több eredetűek. 
 
-![Egyenként tegye közzé az alkalmazást](./media/application-proxy-understand-cors-issues/image4.png)
+![Alkalmazás közzététele egyenként](./media/application-proxy-understand-cors-issues/image4.png)
 
-Ehelyett állítsa be a **belső URL-cím** közzététele a szülő könyvtár, amely egyaránt tartalmazza a *CORSWebClient* és *CORSWebService* könyvtárak:
+Ehelyett állítsa be a **belső URL-címet** a szülő könyvtár közzétételéhez, amely magában foglalja a *CORSWebClient* és a *CORSWebService* könyvtárakat is:
 
-![Közzététel a szülőkönyvtárhoz](./media/application-proxy-understand-cors-issues/image5.png)
+![Szülő könyvtár közzététele](./media/application-proxy-understand-cors-issues/image5.png)
 
-Az eredményül kapott alkalmazás URL-címeket hatékonyan feloldani a CORS-hiba:
+Az eredményül kapott alkalmazás URL-címei hatékonyan oldják meg a CORS problémát:
 
 - https:\//corswebclient-contoso.msappproxy.net/CORSWebService
 - https:\//corswebclient-contoso.msappproxy.net/CORSWebClient
 
 ### <a name="option-3-update-http-headers"></a>3\. lehetőség: HTTP-fejlécek frissítése
 
-Egyéni HTTP-válaszfejléc hozzáadása az eltérő eredetű kérés megfelelően a web service. Webhely Internet Information Services (IIS), az IIS-kezelő használatával módosítsa a fejléc:
+Adjon hozzá egy egyéni HTTP-válasz fejlécet a webszolgáltatáshoz, hogy az megfeleljen a forrás kérelmének. Internet Information Services (IIS) szolgáltatásban futó webhelyek esetén az IIS-kezelővel módosítsa a fejlécet:
 
-![Egyéni válaszfejléc hozzáadása az IIS-kezelőben](./media/application-proxy-understand-cors-issues/image6.png)
+![Egyéni válasz fejlécének hozzáadása az IIS-kezelőben](./media/application-proxy-understand-cors-issues/image6.png)
 
-Ez a módosítás nem szükséges kódot módosítania. A Fiddler-nyomkövetés ellenőrizheti:
+Ehhez a módosításhoz nincs szükség kód módosítására. A Hegedűs nyomkövetései között a következőket ellenőrizheti:
 
-**POST fejléc hozzáadása**\
-HTTP/1.1 200 OK\
-A Cache-Control: nem-cache\
-Direktiva Pragma: nem-cache\
-Content-Type: text/plain; charset = utf-8\
-Lejárat:-1\
-Eltérőek: Fogadja el Encoding\
-Kiszolgáló: A Microsoft-az IIS/8.5 Microsoft-HTTPAPI/2.0\
-**Access-Control-Allow-Origin: https://corswebclient-contoso.msappproxy.net** \
-X-AspNet-Version: 4.0.30319\
+**A fejléc közzétételének hozzáadása**\
+HTTP/1.1 200 OK \
+Cache-Control: no-cache \
+Sorpragmákat: no-cache \
+Content-Type: text/plain; charset = UTF-8 \
+Lejárat:-1 \
+Változhat Elfogadás – Encoding \
+Kiszolgáló: Microsoft-IIS/8.5 Microsoft-HTTPAPI/2.0 \
+**Hozzáférés-vezérlés engedélyezése – forrás: https\://corswebclient-contoso.msappproxy.net**\
+X-AspNet-Version: 4.0.30319 elemet
 X-Powered-By: ASP.NET\
 Content-Length: 17
 
 ### <a name="option-4-modify-the-app"></a>4\. lehetőség: Az alkalmazás módosítása
 
-Módosíthatja az alkalmazások a CORS támogatására az Access-Control-Allow-Origin fejléc, a megfelelő értékekre hozzáadásával. A fejléc hozzáadása módja függ az alkalmazás nyelv. A kód megváltoztatása lehetőség legalább ajánlott, mivel a legtöbb beavatkozást igényel.
+A CORS támogatásához módosíthatja az alkalmazást úgy, hogy a megfelelő értékekkel hozzáadja a hozzáférés-vezérlés – Allow-Origin fejlécet. A fejléc hozzáadásának módja az alkalmazás kódjának nyelvétől függ. A kód módosítása a legkevésbé ajánlott lehetőség, mert a legnagyobb erőfeszítést igényli.
 
-### <a name="option-5-extend-the-lifetime-of-the-access-token"></a>5\. lehetőség: A hozzáférési jogkivonat élettartama kiterjesztése
+### <a name="option-5-extend-the-lifetime-of-the-access-token"></a>5\. lehetőség: A hozzáférési jogkivonat élettartamának meghosszabbítása
 
-CORS-problémák nem oldható fel, például ha az alkalmazás átirányítja a felhasználókat az *login.microsoftonline.com* hitelesítést, és a hozzáférési jogkivonat lejár. A CORS hívja, akkor sikertelen lesz. Ebben a forgatókönyvben a megoldás az, nehogy azt a felhasználói munkamenet során lejár, a hozzáférési jogkivonat élettartama kiterjesztése. Ezzel kapcsolatos további információkért lásd: [konfigurálható jogkivonatok élettartamának, az Azure ad-ben](../develop/active-directory-configurable-token-lifetimes.md).
+Bizonyos CORS problémák nem oldhatók fel, például amikor az alkalmazás átirányítja a *login.microsoftonline.com* a hitelesítésre, és a hozzáférési jogkivonat lejár. A CORS hívása sikertelen lesz. A forgatókönyv áthidaló megoldása a hozzáférési jogkivonat élettartamának meghosszabbítása annak megakadályozása érdekében, hogy a felhasználó munkamenete közben lejárjon. Ennek módjáról további információt a [konfigurálható jogkivonat-élettartamok az Azure ad-ben](../develop/active-directory-configurable-token-lifetimes.md)című témakörben talál.
 
 ## <a name="see-also"></a>Lásd még
-- [Oktatóanyag: A távoli hozzáféréshez alkalmazásproxyn keresztül a helyszíni alkalmazás hozzáadása az Azure Active Directoryban](application-proxy-add-on-premises-application.md) 
-- [Az Azure AD-alkalmazásproxy központi telepítésének megtervezése](application-proxy-deployment-plan.md) 
-- [Az Azure Active Directory Application Proxy keresztül a helyszíni alkalmazások távoli elérését](application-proxy.md) 
+- [Oktatóanyag: Helyszíni alkalmazás hozzáadása a távoli eléréshez az alkalmazásproxy használatával Azure Active Directory](application-proxy-add-on-premises-application.md) 
+- [Azure AD Application Proxy üzemelő példány megtervezése](application-proxy-deployment-plan.md) 
+- [Helyi alkalmazásokhoz való távoli hozzáférés Azure Active Directory Application Proxy](application-proxy.md) 

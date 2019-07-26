@@ -1,6 +1,6 @@
 ---
-title: Biztonsági adatok (előzetes verzió) beállítása az e-mail-cím – Azure Active Directory használatára |} A Microsoft Docs
-description: Hogyan állítható be a biztonsági adatok a személyazonosságát, e-mail-címét.
+title: Biztonsági adatok (előzetes verzió) beállítása az e-mail-cím használatára – Azure Active Directory | Microsoft Docs
+description: A biztonsági adatok beállítása a személyazonosságának ellenőrzéséhez az e-mail-cím használatával.
 services: active-directory
 author: eross-msft
 manager: daveba
@@ -12,83 +12,89 @@ ms.topic: conceptual
 ms.date: 02/13/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 720aafac79a67f64b0974dba0dd60c6aa24a8c54
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: ec93574a8da051b5cf77a37af1030d0c22dfc4a9
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60480593"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68382895"
 ---
-# <a name="set-up-security-info-preview-to-use-your-email-address"></a>Állítsa be a biztonsági adatok (előzetes verzió) az e-mail cím használata
-Követheti a következő lépésekkel adhatja hozzá a jelszó-visszaállítási mód. Miután beállította a először, visszatérhet a **biztonsági adatok** lap hozzáadása, frissítése vagy törlése a biztonsági információkat.
+# <a name="set-up-security-info-preview-to-use-your-email-address"></a>A biztonsági adatok (előzetes verzió) beállítása az e-mail-cím használatára
 
-Miután beállította a jelszó-visszaállítási mód, is be kell állítania a kétfaktoros hitelesítési módszer, használatával egy [hitelesítő alkalmazás](security-info-setup-auth-app.md), [szöveges üzenetküldés](security-info-setup-text-msg.md), vagy egy [telefonhívás](security-info-setup-phone-number.md).
+A jelszó-visszaállítási módszer hozzáadásához kövesse az alábbi lépéseket. Az első beállítás után visszatérhet a **biztonsági** információ lapra a biztonsági adatok hozzáadásához, frissítéséhez vagy törléséhez.
+
+A jelszó-visszaállítási módszer beállítása után a kétfaktoros ellenőrzési módszert is be kell állítania a [hitelesítő alkalmazás](security-info-setup-auth-app.md), a [szöveges üzenetküldés](security-info-setup-text-msg.md)vagy egy [telefonhívás](security-info-setup-phone-number.md)használatával.
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-end-user-preview-notice-security-info.md)]
 
-## <a name="set-up-your-email-address-from-the-security-info-page"></a>Állítsa be az e-mail-címét a biztonsági adatok lapján
-Szervezeti beállítások, attól függően fogja tudni használni az e-mail-címét a biztonsági adatok módszerekkel egyik.
+## <a name="set-up-your-email-address-from-the-security-info-page"></a>Az e-mail-cím beállítása a biztonsági adatok lapról
+
+A szervezet beállításaitól függően előfordulhat, hogy az e-mail-címét a biztonsági adatok egyik módszerének megfelelően fogja tudni használni.
 
 >[!Note]
->Azt javasoljuk, hogy az e-mail-cím, amely nem igényel a hálózati jelszót eléréséhez. Ha nem látja az e-mailt a beállítást, lehetséges, hogy a szervezet nem engedélyezi, hogy az ellenőrző e-mailt. Ha ez a helyzet, szüksége lesz egy másik módszer kiválasztásához, vagy további segítségért forduljon a rendszergazdához.
+>Javasoljuk, hogy olyan e-mail-címet használjon, amely nem igényli a hálózati jelszó elérését. Ha nem látja az e-mail-címet, lehetséges, hogy a szervezet nem teszi lehetővé e-mailek használatát az ellenőrzéshez. Ebben az esetben másik módszert kell választania, vagy további segítségért forduljon a rendszergazdához.
 
-### <a name="to-set-up-your-email-address"></a>Az e-mail cím beállítása
+### <a name="to-set-up-your-email-address"></a>Az e-mail-cím beállítása
 
-1. Jelentkezzen be munkahelyi vagy iskolai fiókjával, és keresse meg a https://myprofile.microsoft.com/ lapot.
+1. Jelentkezzen be a munkahelyi vagy iskolai fiókjába, majd lépjen a https://myprofile.microsoft.com/ lapra.
 
-    ![Saját profil lapot, amely a kijelölt biztonsági adatai hivatkozások](media/security-info/securityinfo-myprofile-page.png)
+    ![Saját profil oldal, kiemelt biztonsági információs hivatkozások megjelenítése](media/security-info/securityinfo-myprofile-page.png)
 
-2. Válassza ki **biztonsági adatok** a bal oldali navigációs ablaktáblán vagy a hivatkozás a **biztonsági adatok** letiltása, és válassza ki **metódus hozzáadása** a a **biztonsági adatai**  lapot.
+2. Válassza a bal oldali navigációs ablaktábla **biztonsági adatok** elemét, vagy a biztonsági **információ** blokkban található hivatkozásra, majd válassza a **metódus hozzáadása** elemet a **biztonsági adatok** lapon.
 
-    ![Biztonsági adatok weblapját a kiemelt Hozzáadás metódus beállítás](media/security-info/securityinfo-myprofile-addmethod-page.png)
+    ![Biztonsági adatok lap Kiemelt hozzáadási módszer lehetőséggel](media/security-info/securityinfo-myprofile-addmethod-page.png)
 
-3. Az a **adjon meg egy metódust** lapon jelölje be **E-mail** a legördülő listából válassza ki, és válassza ki a **Hozzáadás**.
+3. A **metódus hozzáadása** lapon válassza az **e-mail** lehetőséget a legördülő listából, majd kattintson a **Hozzáadás**gombra.
 
-    ![Adja hozzá a metódus mezőben kiválasztott e-mail-címmel](media/security-info/securityinfo-myprofile-addemail.png)
+    ![Hozzáadási mód mező, e-mailben kiválasztva](media/security-info/securityinfo-myprofile-addemail.png)
 
-4. Az a **E-mail** írja be az e-mail-címét (például alain@gmail.com), majd válassza ki **tovább**.
+4. Az **e-mail** lapon írja be az e-mail-címét (például alain@gmail.com:), majd kattintson a **tovább**gombra.
 
-    ![Telefonszám hozzáadása, és válassza ki a telefonhívások](media/security-info/securityinfo-myprofile-emailaddress.png)
+    ![Telefonszám hozzáadása és telefonhívások kiválasztása](media/security-info/securityinfo-myprofile-emailaddress.png)
 
     >[!Important]
-    >Ez az e-mail cím nem lehet a munkahelyi vagy iskolai e-mail címét.
+    >Ez az e-mail-cím nem lehet a munkahelyi vagy iskolai e-mail-címe.
 
-5. Írja be a kódot, a megadott e-mail címre, és válassza **tovább**.
+5. Írja be a megadott e-mail-címre küldött kódot, majd kattintson a **tovább**gombra.
 
-    ![Adja hozzá a telefonszámot, és válassza ki a szöveges üzenetek](media/security-info/securityinfo-myprofile-emailcode.png)
+    ![Telefonszám hozzáadása és szöveges üzenetek kiválasztása](media/security-info/securityinfo-myprofile-emailcode.png)
 
-    A biztonsági adatok frissítése, és az e-mail-cím segítségével igazolhatja a személyazonosságát, jelszó-visszaállítás használata esetén.
+    A biztonsági adatai frissülnek, és az e-mail-címe alapján ellenőrizheti az identitását a jelszó-visszaállítás használatakor.
 
-## <a name="delete-your-email-address-from-your-security-info-methods"></a>Törölje a biztonsági adatok módszerek az e-mail-címét
-Ha már nem szeretné az e-mail-címét használja a biztonsági adatok módszerként, eltávolíthatja azt a **biztonsági adatok** lapot.
+## <a name="delete-your-email-address-from-your-security-info-methods"></a>Az e-mail-cím törlése a biztonsági adatok módszereiből
+
+Ha már nem szeretné használni az e-mail-címet biztonsági információként szolgáló módszerként, akkor a **biztonsági adatok** lapról távolíthatja el.
 
 >[!Important]
->Ha véletlenül törli az e-mail-címét, nincs semmilyen módon nem lehet visszavonni. Kell adja hozzá újra, a módszer lépései a [állítsa be az e-mail-címét](#set-up-your-email-address-from-the-security-info-page) című szakaszát.
+>Ha tévedésből törli az e-mail-címét, a visszavonás nem vonható vissza. A metódust újra fel kell vennie a jelen cikk [e-mail-cím beállítása](#set-up-your-email-address-from-the-security-info-page) című szakaszának lépéseit követve.
 
-### <a name="to-delete-your-email-address"></a>Az e-mail-cím törlése
+### <a name="to-delete-your-email-address"></a>E-mail-cím törlése
 
-1. Az a **biztonsági adatok** lapon válassza ki a **törlése** mellett kapcsolni a **E-mail** lehetőséget.
+1. A **biztonsági adatok** lapon válassza a **Törlés** hivatkozást az **e-mail** beállítás mellett.
 
-    ![A telefonos metódus törölni a biztonsági adatok összekapcsolása](media/security-info/securityinfo-myprofile-emaildelete.png)
+    ![Hivatkozás a telefonos módszer törlésére a biztonsági adatokból](media/security-info/securityinfo-myprofile-emaildelete.png)
 
-2. Válassza ki **Igen** a megerősítés mezőben törlése a **E-mail** fiókot. Miután az e-mail-fiókot törölték, a rendszer eltávolítja a biztonsági adatait és, eltűnik a **biztonsági adatok** lap.
+2. Az **e-mail-** fiók törléséhez válassza az **Igen** lehetőséget a megerősítő mezőben. Az e-mail fiók törlése után a rendszer eltávolítja a biztonsági adatokat, és eltűnik a **biztonsági adatok** lapról.
 
-## <a name="additional-security-info-methods"></a>További biztonsági adatok módszerek
-Hogyan a szervezet névjegyeket igazolhatja személyazonosságát, akkor mi alapján szeretne ehhez további lehetősége van. A lehetőségek a következők:
+## <a name="additional-security-info-methods"></a>További biztonsági információs módszerek
 
-- **Hitelesítő alkalmazás.** Töltse le, és a egy hitelesítő alkalmazást használja, vagy egy jóváhagyási értesítést, vagy egy véletlenszerűen létrehozott jóváhagyási kód lekérése a kétlépéses ellenőrzés vagy a jelszó alaphelyzetbe állítása. Állítsa be és a Microsoft Authenticator alkalmazással kapcsolatos lépésenkénti útmutatót lásd: [beállítása a biztonsági adatok használata egy hitelesítő alkalmazást](security-info-setup-auth-app.md).
+További beállításokkal is megtudhatja, hogy a szervezet hogyan forduljon a személyazonosságának ellenőrzéséhez a you're alapján. A lehetőségek a következők:
 
-- **Mobileszköz szöveg.** Adja meg a mobileszközök számát, és értesítés SMS-ben egy kódot fogja használni a kétlépéses ellenőrzés vagy a jelszó alaphelyzetbe állítása. Ellenőrizze identitását az szöveges üzenet (SMS) kapcsolatos lépésenkénti útmutatót lásd: [beállítása a biztonsági adatok használata a szöveges üzenetben (SMS)](security-info-setup-text-msg.md).
+- **Hitelesítő alkalmazás.** Töltse le és használjon egy hitelesítő alkalmazást a jóváhagyási értesítés vagy a véletlenszerűen generált jóváhagyási kód beszerzéséhez a kétlépéses ellenőrzéshez vagy a jelszó-visszaállításhoz. A Microsoft Authenticator alkalmazás beállításával és használatával kapcsolatos részletes utasításokért lásd: [biztonsági adatok beállítása hitelesítő alkalmazás használatára](security-info-setup-auth-app.md).
 
-- **Mobileszköz vagy munkahelyi telefonhívás.** Adja meg a mobileszközök számát, és telefonhívás beszerzése a kétlépéses ellenőrzés vagy a jelszó alaphelyzetbe állítása. Igazolja személyazonosságát, egy telefonszámmal kapcsolatos lépésenkénti útmutatót lásd: [állítsa be a biztonsági adatok telefonhívásokat használandó](security-info-setup-phone-number.md).
+- **Mobileszköz szövege.** Adja meg a mobileszköz számát, és szerezzen be egy, a kétlépéses ellenőrzéshez vagy a jelszó-visszaállításhoz használni kívánt kódot. Az identitás szöveges üzenettel (SMS) való ellenőrzésével kapcsolatos részletes utasításokért lásd: [biztonsági információk beállítása szöveges üzenetküldés (SMS) használatára](security-info-setup-text-msg.md).
 
-- **Biztonsági kérdések.** Néhány a szervezet számára a rendszergazda által létrehozott biztonsági kérdések megválaszolása. Ez a beállítás csak akkor használható, a jelszó-visszaállításhoz, és nem a kétlépéses ellenőrzéshez. A biztonsági kérdések beállítása kapcsolatos lépésenkénti útmutatót lásd: a [beállítása a biztonsági adatok a biztonsági kérdések használata](security-info-setup-questions.md) cikk.
-    
+- **Mobileszköz vagy munkahelyi telefonhívás.** Adja meg a mobileszköz számát, és telefonhívást kap a kétlépéses ellenőrzéshez vagy a jelszó alaphelyzetbe állításához. Az identitás telefonszámmal történő ellenőrzésével kapcsolatos részletes útmutatásért lásd: [biztonsági információk beállítása telefonhívások használatához](security-info-setup-phone-number.md).
+
+- **Biztonsági kulcs.** Regisztrálja Microsoft-kompatibilis biztonsági kulcsát, és használja PIN-kóddal a kétlépéses ellenőrzéshez vagy a jelszó alaphelyzetbe állításához. Ha részletes útmutatást szeretne arról, hogyan ellenőrizheti személyazonosságát egy biztonsági kulccsal, tekintse meg a biztonsági [adatok beállítása biztonsági kulcs használatára](security-info-setup-security-key.md)című témakört.
+
+- **Biztonsági kérdések.** Válaszoljon a szervezete rendszergazdája által létrehozott biztonsági kérdésekre. Ez a beállítás csak a jelszó-visszaállításhoz érhető el, és nem a kétlépéses ellenőrzéshez. A biztonsági kérdések beállításával kapcsolatos részletes utasításokért tekintse meg a biztonsági [kérdések beállítása a biztonsági kérdésekre](security-info-setup-questions.md) című cikket.
+
     >[!Note]
-    >Ha ezek a beállítások némelyike hiányzik, azt azért nagy valószínűséggel a szervezet nem engedélyezi azokat a módszereket. Ha ez a helyzet, szüksége lesz egy rendelkezésre álló módszer kiválasztásához, vagy további segítségért forduljon a rendszergazdához.
+    >Ha a lehetőségek némelyike hiányzik, valószínűleg azért, mert a szervezet nem engedélyezi ezeket a metódusokat. Ebben az esetben ki kell választania egy elérhető módszert, vagy kapcsolatba kell lépnie a rendszergazdával további segítségért.
 
 ## <a name="next-steps"></a>További lépések
 
-- A jelszó alaphelyzetbe állítása, ha elfelejti, az elveszett vagy a [jelszó-visszaállítási portál](https://passwordreset.microsoftonline.com/) vagy kövesse a a [a munkahelyi vagy iskolai jelszó visszaállítása](user-help-reset-password.md) cikk.
+- Ha elvesztette vagy elfelejtette a jelszavát, állítsa vissza a jelszót a [jelszó](https://passwordreset.microsoftonline.com/) -visszaállítási portálról, vagy kövesse a [munkahelyi vagy iskolai jelszó](user-help-reset-password.md) alaphelyzetbe állítása című cikk lépéseit.
 
-- Hibaelhárítási tippek és a bejelentkezési problémákkal kapcsolatos súgó a [nem jelentkezhet be Microsoft-fiókjába](https://support.microsoft.com/help/12429/microsoft-account-sign-in-cant) cikk.
+- Hibaelhárítási tippek és Súgó a bejelentkezési problémákhoz a [nem tud bejelentkezni a Microsoft-fiók](https://support.microsoft.com/help/12429/microsoft-account-sign-in-cant) cikkbe.

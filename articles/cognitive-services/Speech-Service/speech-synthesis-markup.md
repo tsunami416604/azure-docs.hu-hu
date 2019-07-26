@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: dd535f96c60a3f9259a108f3e8aff643eed1870d
-ms.sourcegitcommit: c556477e031f8f82022a8638ca2aec32e79f6fd9
+ms.openlocfilehash: e2b1e02a622dfe4ae488e372e44c8440f20d7034
+ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68414715"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68501148"
 ---
 # <a name="speech-synthesis-markup-language-ssml"></a>Beszédszintézis-jelölőnyelv (SSML)
 
@@ -285,7 +285,7 @@ Mivel a prosodic-attribútumok értékei a széles skálán változhatnak, a bes
 
 | Attribútum | Leírás | Kötelező / választható |
 |-----------|-------------|---------------------|
-| betűközű | Megadja a szöveg alappályáját. A szurok a következőképpen fejezhető ki:<ul><li>Abszolút érték, amelyet a szám a "Hz" (Hertz) kifejezéssel jelez. Például: 600 Hz.</li><li>Egy relatív érték, amelyet a rendszer a "+" vagy "-" előtaggal, majd a "Hz" vagy "St" előtaggal jelöl, amely a szurok módosításához szükséges összeget határozza meg. Például: + 80Hz vagy-2st. A "Szent" érték azt jelzi, hogy a változási egység semitone-e, amely a normál diatonikus-skálán lévő hang (fél lépés) fele.</li><li>Állandó érték:<ul><li>x – alacsony</li><li>alacsony</li><li>közepes</li><li>Magas</li><li>x – magas</li><li>alapértelmezett</li></ul></li></ul>. | Választható |
+| betűközű | Megadja a szöveg alappályáját. A szurok a következőképpen fejezhető ki:<ul><li>Abszolút érték, amelyet a szám a "Hz" (Hertz) kifejezéssel jelez. Például: 600 Hz.</li><li>Egy relatív érték, amelyet a rendszer a "+" vagy "-" előtaggal, majd a "Hz" vagy "St" előtaggal jelöl, amely a szurok módosításához szükséges összeget határozza meg. Például: + 80Hz vagy-2st. A "Szent" érték azt jelzi, hogy a változási egység semitone-e, amely a normál diatonikus-skálán lévő hang (fél lépés) fele.</li><li>Állandó érték:<ul><li>x – alacsony</li><li>alacsony</li><li>közepes</li><li>magas</li><li>x – magas</li><li>alapértelmezett</li></ul></li></ul>. | Választható |
 | kontúr | A kontúr nem támogatott a neurális hangok esetében. A kontúr a hangfelvétel tartalmának változásait jelöli a célok tömbje a beszédfelismerési kimenetben megadott időpontokban. Az egyes célkitűzéseket paraméter párok halmaza határozza meg. Példa: <br/><br/>`<prosody contour="(0%,+20Hz) (10%,-2st) (40%,+10Hz)">`<br/><br/>Az egyes paraméterekben az első érték határozza meg a szurok változásának helyét a szöveg időtartamának százalékában. A második érték határozza meg a szurok növelésének vagy csökkentésének mértékét, egy relatív érték vagy a szurok enumerálási értéke alapján ( `pitch`lásd:). | Választható |
 | tartomány  | Egy érték, amely a szövegben lévő szurok tartományát jelöli. A leíráshoz `range` `pitch`megadhatja az azonos abszolút értékeket, relatív értékeket vagy enumerálási értékeket. | Választható |
 | sebessége  | Megadja a szöveg beszédi arányát. A következőképpen lehet `rate` kifejezni:<ul><li>Egy relatív érték, amely az alapértelmezett érték szorzóként funkcionál. Az *1* érték például nem változik a díjszabásban. A *.5* értéke a ráta felére csökkentése. A *3* érték a ráta beutazását eredményezi.</li><li>Állandó érték:<ul><li>x – lassú</li><li>lassú</li><li>közepes</li><li>gyors</li><li>x – gyors</li><li>alapértelmezett</li></ul></li></ul> | Választható |
@@ -351,6 +351,78 @@ A szurok módosítása a Word vagy a mondat szintjén is alkalmazható a standar
         <prosody contour="(80%,+20%) (90%,+30%)" >
             Good morning.
         </prosody>
+    </voice>
+</speak>
+```
+
+## <a name="add-recorded-audio"></a>Rögzített hang hozzáadása
+
+`audio`egy opcionális elem, amely lehetővé teszi, hogy MP3-hangfelvételt helyezzen be egy SSML-dokumentumba. A hangelem törzse tartalmazhat egyszerű szöveges vagy SSML jelölést, amely akkor beszél, ha a hangfájl nem érhető el, vagy nem játszható le. Emellett `audio` az elem tartalmazhat szöveget és a következő elemeket: `phoneme` `p` `s` `audio` `break` `sub`, ,,,`say-as`,, és. `prosody`
+
+A SSML-dokumentumban szereplő összes hangnak meg kell felelnie a következő követelményeknek:
+
+* Az MP3-t egy internetről elérhető HTTPS-végponton kell üzemeltetni. HTTPS szükséges, és az MP3-fájlt üzemeltető tartománynak érvényes, megbízható SSL-tanúsítványt kell tartalmaznia.
+* Az MP3-fájlnak érvényes MP3-fájlként (MPEG v2) kell lennie.
+* A bitsűrűségnek 48 kbps-nak kell lennie.
+* A mintavételi sebességnek 16000 Hz-nek kell lennie.
+* Az egyetlen válaszban lévő összes szöveges és hangfájl együttes teljes ideje nem lehet nagyobb, mint 90 (90) másodperc.
+* Az MP3 nem tartalmazhat ügyfél-specifikus vagy más bizalmas információt.
+
+**Syntax**
+
+```xml
+<audio src="string"/></audio>
+```
+
+**Attribútumok**
+
+| Attribútum | Leírás | Kötelező / választható |
+|-----------|-------------|---------------------|
+| src | Megadja a hangfájl helyét/URL-címét. | Kötelező, ha a hangelemet használja a SSML-dokumentumban. |
+
+**Példa**
+
+```xml
+<speak version="1.0" xmlns="https://www.w3.org/2001/10/synthesis" xml:lang="en-US">
+    <p>
+        <audio src="https://contoso.com/opinionprompt.wav"/>
+        Thanks for offering your opinion. Please begin speaking after the beep.
+        <audio src="https://contoso.com/beep.wav">
+        Could not play the beep, please voice your opinion now. </audio>
+    </p>
+</speak>
+```
+
+## <a name="add-background-audio"></a>Háttérbeli hang hozzáadása
+
+Az `mstts:backgroundaudio` elem lehetővé teszi a háttérbeli hang hozzáadását a SSML-dokumentumokhoz (vagy szöveg-beszéd típusú hangfájlt keverve). `mstts:backgroundaudio` A háttérbeli hangfájlok a háttérben, a szöveg és a beszéd elején elhalványulnak, és a szöveg és a beszéd végén elhalványulnak.
+
+Ha a megadott háttérbeli hang rövidebb, mint a szöveg-beszéd vagy a Halványítás, a rendszer hurokba kerül. Ha a szöveg-beszédnél hosszabb, akkor leáll, amikor befejeződött a Halványítás.
+
+SSML-dokumentumok esetében csak egy háttér-hangfájl engedélyezett. `audio` Az`voice` elemen belüli címkéket azonban intersperse is felvehet, ha további hanganyagot szeretne hozzáadni a SSML-dokumentumhoz.
+
+**Syntax**
+
+```XML
+<mstts:backgroundaudio src="string" volume="string" fadein="string" fadeout="string"/>
+```
+
+**Attribútumok**
+
+| Attribútum | Leírás | Kötelező / választható |
+|-----------|-------------|---------------------|
+| src | Megadja a háttér hangfájljának helyét/URL-címét. | Kötelező, ha a SSML-dokumentumban háttér hang van használatban. |
+| kötet | Meghatározza a háttér-hangfájl kötetét. **Elfogadott értékek**: `0` a `100` bezárólag. Az alapértelmezett érték `1`. | Választható |
+| fadein | Meghatározza a háttérbeli hang halványításának időtartamát a ben. **Elfogadott értékek**: `0` a `10000` bezárólag.  | Választható |
+| fadeout | Meghatározza a háttérbeli hang kihalványításának időtartamát. **Elfogadott értékek**: `0` a `10000` bezárólag.  | Választható |
+
+**Példa**
+
+```xml
+<speak version="1.0" xml:lang="en-US" xmlns:mstts="http://www.w3.org/2001/mstts">
+    <mstts:backgroundaudio src="https://contoso.com/sample.wav" volume="0.7" fadein="3000" fadeout="4000"/>
+    <voice name="Microsoft Server Speech Text to Speech Voice (en-US, Jessa24kRUS)">
+        The text provided in this document will be spoken over the background audio.
     </voice>
 </speak>
 ```

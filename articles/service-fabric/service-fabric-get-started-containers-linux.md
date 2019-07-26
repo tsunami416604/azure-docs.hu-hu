@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 1/4/2019
 ms.author: aljo
-ms.openlocfilehash: 58af752d8b7fcec5c681e2b8975d109a0f731878
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 16f117e7c5291216b5716aee40995e6f224705fa
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66302276"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68359366"
 ---
 # <a name="create-your-first-service-fabric-container-application-on-linux"></a>Az első Service Fabric-tárolóalkalmazás létrehozása Linux rendszeren
 > [!div class="op_single_selector"]
@@ -29,7 +29,7 @@ ms.locfileid: "66302276"
 A meglévő alkalmazások Service Fabric-fürtökön lévő Linux-tárolókban való futtatásához nem szükséges módosítania az alkalmazást. Ez a cikk ismerteti a Python [Flask](http://flask.pocoo.org/)-webalkalmazást tartalmazó Docker-rendszerképek létrehozását, illetve egy Service Fabric-fürtön való üzembe helyezését. Emellett meg is fogja osztani a tárolóalapú alkalmazást az [Azure Container Registry](/azure/container-registry/) használatával. A cikk feltételezi, hogy rendelkezik a Docker használatára vonatkozó alapvető ismeretekkel. A Docker megismeréséhez olvassa el a [Docker áttekintő ismertetését](https://docs.docker.com/engine/understanding-docker/).
 
 > [!NOTE]
-> Ebben a cikkben egy Linux-fejlesztési környezetre vonatkozik.  A Service Fabric-fürt futtatókörnyezetének és a Docker-futtatókörnyezet az ugyanazon operációs rendszeren kell futnia.  Linux-tárolók nem futtatható a Windows-fürtön.
+> Ez a cikk egy linuxos fejlesztési környezetre vonatkozik.  A Service Fabric fürt futtatókörnyezetének és a Docker-futtatókörnyezetnek ugyanazon az operációs rendszeren kell futnia.  A Linux-tárolók nem futtathatók Windows-fürtön.
 
 ## <a name="prerequisites"></a>Előfeltételek
 * Egy fejlesztői számítógép, amelyen a következők futnak:
@@ -84,10 +84,12 @@ from flask import Flask
 
 app = Flask(__name__)
 
+
 @app.route("/")
 def hello():
-    
+
     return 'Hello World!'
+
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port=80)
@@ -122,7 +124,7 @@ docker run -d -p 4000:80 --name my-web-site helloworldapp
 
 A *name* nevet ad a futtató tárolónak (a tárolóazonosító helyett).
 
-Csatlakozzon a futó tárolóhoz. Nyisson meg egy webböngészőt, majd IP-címhez visszaadott 4000-es, porton például "http:\//localhost:4000". A „Hello World!” címsornak kell megjelennie a böngészőben.
+Csatlakozzon a futó tárolóhoz. Nyisson meg egy, az 4000-es porton visszaadott IP-címet mutató webböngészőt\/, például "http:/localhost: 4000". A „Hello World!” címsornak kell megjelennie a böngészőben.
 
 ![Hello World!][hello-world]
 
@@ -141,9 +143,9 @@ docker rm my-web-site
 ## <a name="push-the-image-to-the-container-registry"></a>A rendszerkép leküldése a tároló-beállításjegyzékbe
 Miután ellenőrizte, hogy az alkalmazás fut-e a Dockerben, küldje le a rendszerképet a regisztrációs adatbázisba az Azure Container Registryben.
 
-Futtatás `docker login` a tároló-beállításjegyzékbe való bejelentkezéshez a [a tárolójegyzék hitelesítő adatainak](../container-registry/container-registry-authentication.md).
+A `docker login` futtatásával jelentkezzen be a tároló-beállításjegyzékbe a [beállításjegyzékbeli hitelesítő adataival](../container-registry/container-registry-authentication.md).
 
-Az alábbi példában a rendszer egy Azure Active Directory [egyszerű szolgáltatás](../active-directory/develop/app-objects-and-service-principals.md) azonosítóját és jelszavát adja át. Például lehet, hogy hozzárendelt egy egyszerű szolgáltatást a beállításjegyzékhez egy automatizálási forgatókönyvhöz. Vagy nem sikerült bejelentkezni az a beállításjegyzékhez tartozó felhasználónevével és jelszavával.
+Az alábbi példában a rendszer egy Azure Active Directory [egyszerű szolgáltatás](../active-directory/develop/app-objects-and-service-principals.md) azonosítóját és jelszavát adja át. Például lehet, hogy hozzárendelt egy egyszerű szolgáltatást a beállításjegyzékhez egy automatizálási forgatókönyvhöz. Vagy bejelentkezhet a beállításjegyzék felhasználónevével és jelszavával.
 
 ```bash
 docker login myregistry.azurecr.io -u xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx -p myPassword
@@ -174,11 +176,11 @@ Mivel ez a rendszerkép meghatározott számításifeladat-belépési ponttal re
 
 Adja meg az „1” példányszámát.
 
-A megfelelő formátumban adja meg a portleképezést. Ez a cikk meg kell adnia ```80:4000``` a port-hozzárendeléséhez. Ezzel konfigurálta, hogy minden olyan bejövő kérések várható a 4000-es portot a gazdagépen a rendszer átirányítja a tárolón a 80-as porton.
+A port megfeleltetését a megfelelő formátumban kell megadni. Ehhez a cikkhez port-hozzárendelést ```80:4000``` kell megadni. Ezzel úgy konfigurálta, hogy a gazdagépen a 4000-es portra érkező bejövő kérelmeket a rendszer a tárolón lévő 80-es portra irányítja át.
 
 ![Tárolókhoz készült Service Fabric Yeoman-generátor][sf-yeoman]
 
-## <a name="configure-container-repository-authentication"></a>Tároló tárolóadattár hitelesítésének konfigurálása
+## <a name="configure-container-repository-authentication"></a>Tároló-adattár hitelesítésének konfigurálása
  Ha a tárolót hitelesíteni kell egy magántárolóval, adja hozzá a `RepositoryCredentials` elemet. Ebben a cikkben a myregistry.azurecr.io tárolóregisztrációs adatbázis fióknevét és jelszavát adja meg. Ügyeljen arra, hogy a szabályzat hozzá legyen adva a „ServiceManifestImport” címke alatt, és a megfelelő szervizcsomagra vonatkozzon.
 
 ```xml
@@ -193,14 +195,14 @@ A megfelelő formátumban adja meg a portleképezést. Ez a cikk meg kell adnia 
    </ServiceManifestImport>
 ``` 
 
-Azt javasoljuk, hogy titkosítsa az adattár jelszavát. Tekintse meg [ kezelése a Service Fabric-alkalmazásokat a titkosított titkos kulcsok](service-fabric-application-secret-management.md) útmutatást.
+Javasoljuk, hogy titkosítsa az adattár jelszavát. Útmutatásért tekintse meg a [titkosított titkok kezelése Service Fabric alkalmazásokban](service-fabric-application-secret-management.md) című témakört.
 
-### <a name="configure-cluster-wide-credentials"></a>Fürtre kiterjedő hitelesítő adatainak konfigurálása
-Tekintse meg [itt található dokumentáció](
+### <a name="configure-cluster-wide-credentials"></a>A fürtre kiterjedő hitelesítő adatok konfigurálása
+Tekintse [meg a dokumentációt](
 service-fabric-get-started-containers.md#configure-cluster-wide-credentials)
 
 ## <a name="configure-isolation-mode"></a>Az elkülönítési mód konfigurálása
-A 6.3 runtime kiadása, virtuális gépek elkülönítés Linux-tárolók, ezáltal támogatása a tárolók két elkülönítési módok esetén támogatott: folyamata, és a Hyper-v. A Hyper-v folyamatelkülönítési módban az kernelei elkülönülnek a tárolók és a tároló gazdagép között. A Hyper-v-elkülönítés használatával lett megvalósítva [egyértelmű tárolók](https://software.intel.com/en-us/articles/intel-clear-containers-2-using-clear-containers-with-docker). Az elkülönítési mód van megadva, a Linux-fürtök a `ServicePackageContainerPolicy` eleme az Alkalmazásjegyzék-fájl. A megadható elkülönítési módok a következők: `process`, `hyperv` és `default`. Az alapértelmezett érték folyamatelkülönítési módban. A következő kódrészlet azt mutatja be, hogyan van határozható meg az elkülönítési mód az alkalmazásjegyzék-fájlban.
+Az 6,3 Runtime kiadásával a virtuális gépek elkülönítése Linux-tárolók esetén támogatott, így két elkülönítési módot támogat a tárolók számára: folyamat-és HyperV. A HyperV elkülönítési módban a kernelek el vannak különítve az egyes tárolók és a tárolók között. A HyperV elkülönítése [tiszta tárolók](https://software.intel.com/en-us/articles/intel-clear-containers-2-using-clear-containers-with-docker)használatával valósul meg. Az elkülönítési mód a Linux- `ServicePackageContainerPolicy` fürtökhöz van megadva az alkalmazás jegyzékfájljában található elemben. A megadható elkülönítési módok a következők: `process`, `hyperv` és `default`. Az alapértelmezett érték a Process elkülönítési mód. A következő kódrészlet azt mutatja be, hogyan van határozható meg az elkülönítési mód az alkalmazásjegyzék-fájlban.
 
 ```xml
 <ServiceManifestImport>
@@ -215,7 +217,7 @@ A 6.3 runtime kiadása, virtuális gépek elkülönítés Linux-tárolók, ezál
 
 
 ## <a name="configure-resource-governance"></a>Az erőforrás-szabályozás konfigurálása
-Az [erőforrás-szabályozás](service-fabric-resource-governance.md) korlátozza a tároló által a gazdagépen használható erőforrásokat. Az alkalmazásjegyzékben megadott `ResourceGovernancePolicy` elemmel határozhatók meg erőforráskorlátok a szolgáltatások kódcsomagjaihoz. Erőforráskorlátok állíthat be az alábbi forrásanyagokat: A memória, MemorySwap, CpuShares (CPU relatív súlya), MemoryReservationInMB, BlkioWeight (BlockIO relatív súlya). Ebben a példában a Guest1Pkg szolgáltatáscsomag egy magot kap a fürtcsomópontokon, amelyekre el van helyezve. A memóriakorlátok abszolútak, ezért a kódcsomag 1024 MB memóriára van korlátozva (és ugyanennyi a gyenge garanciás foglalás). A kódcsomagok (tárolók vagy folyamatok) nem tudnak ennél a korlátnál több memóriát lefoglalni, és ennek megkísérlése memóriahiány miatti kivételt eredményez. Az erőforráskorlát érvényesítéséhez a szolgáltatáscsomagokban lévő minden kódcsomaghoz memóriakorlátokat kell meghatároznia.
+Az [erőforrás-szabályozás](service-fabric-resource-governance.md) korlátozza a tároló által a gazdagépen használható erőforrásokat. Az alkalmazásjegyzékben megadott `ResourceGovernancePolicy` elemmel határozhatók meg erőforráskorlátok a szolgáltatások kódcsomagjaihoz. Az erőforrás-korlátok a következő erőforrásokhoz állíthatók be: Memória, MemorySwap, CpuShares (CPU relatív súlya), MemoryReservationInMB, BlkioWeight (BlockIO relatív súlya). Ebben a példában a Guest1Pkg szolgáltatáscsomag egy magot kap a fürtcsomópontokon, amelyekre el van helyezve. A memóriakorlátok abszolútak, ezért a kódcsomag 1024 MB memóriára van korlátozva (és ugyanennyi a gyenge garanciás foglalás). A kódcsomagok (tárolók vagy folyamatok) nem tudnak ennél a korlátnál több memóriát lefoglalni, és ennek megkísérlése memóriahiány miatti kivételt eredményez. Az erőforráskorlát érvényesítéséhez a szolgáltatáscsomagokban lévő minden kódcsomaghoz memóriakorlátokat kell meghatároznia.
 
 ```xml
 <ServiceManifestImport>
@@ -234,7 +236,7 @@ Az [erőforrás-szabályozás](service-fabric-resource-governance.md) korlátozz
 
 A 6.1-es verzióval kezdődően a Service Fabric automatikusan integrálja a [docker HEALTHCHECK](https://docs.docker.com/engine/reference/builder/#healthcheck) eseményeket a rendszerállapot-jelentésbe. Ez azt jelenti, hogy ha a tárolón engedélyezett a **HEALTHCHECK**, a Service Fabric jelenti az állapotát, valahányszor a tároló állapota módosul a Docker jelentése szerint. Egy **OK** állapotjelentés jelenik meg a [Service Fabric Explorerben](service-fabric-visualizing-your-cluster.md), amikor a *health_status* értéke *healthy* (megfelelő), és egy **WARNING** jelenik meg, ha a *health_status* értéke *unhealthy* (nem megfelelő). 
 
-V6.4 a legújabb frissítés kiadásával kezdődően, hogy adhat meg, hogy docker HEALTHCHECK értékelések kell jelenteni a hibát. Ha ez a beállítás engedélyezve van, egy **OK** állapotjelentés jelenik, mikor *health_status* van *kifogástalan* és **hiba** fog megjelenni, amikor *health_status* van *nem megfelelő állapotú*.
+A v 6.4 legújabb frissítésének megkezdése után lehetősége van megadnia, hogy a Docker HEALTHCHECK-értékelések hibát jelentsenek. Ha ez a beállítás engedélyezve van, a *health_status* *kifogástalan* **állapotba** kerül, és a **hiba** akkor jelenik meg, ha a *health_status* *állapota*nem megfelelő.
 
 A tároló állapotának monitorozása céljából ténylegesen elvégzett ellenőrzésre mutató **HEALTHCHECK** utasításnak szerepelnie kell a tárolórendszerkép létrehozásához használt Docker-fájlban.
 
@@ -258,11 +260,11 @@ A **HEALTHCHECK** viselkedését konfigurálhatja az egyes tárolókhoz, ha mega
     </Policies>
 </ServiceManifestImport>
 ```
-Alapértelmezés szerint *IncludeDockerHealthStatusInSystemHealthReport* értékre van állítva **igaz**, *RestartContainerOnUnhealthyDockerHealthStatus* értékre van állítva  **FALSE (hamis)** , és *TreatContainerUnhealthyStatusAsError* értékre van állítva **hamis**. 
+Alapértelmezés szerint a *IncludeDockerHealthStatusInSystemHealthReport* értéke **true (igaz**), a *RestartContainerOnUnhealthyDockerHealthStatus* értéke false ( **hamis**), és a *TreatContainerUnhealthyStatusAsError* értéke false (hamis). . 
 
 Ha a *RestartContainerOnUnhealthyDockerHealthStatus* beállítása **true**, egy újra és újra nem megfelelő állapotúnak jelentett tároló újraindul (lehetőleg más csomópontokon).
 
-Ha *TreatContainerUnhealthyStatusAsError* értékre van állítva **igaz**, **hiba** rendszerállapot-jelentések fog megjelenni, ha a tároló *health_status*van *nem megfelelő állapotú*.
+Ha a *TreatContainerUnhealthyStatusAsError* értéke **true (igaz**), akkor a **hiba** állapotáról szóló jelentések akkor jelennek meg, ha a tároló *health_status* *állapota*nem megfelelő.
 
 Ha az egész Service Fabric-fürthöz le szeretné tiltani a **HEALTHCHECK** integrációját, az [EnableDockerHealthCheckIntegration](service-fabric-cluster-fabric-settings.md) elemet **false** értékre kell állítania.
 
@@ -275,18 +277,18 @@ Csatlakozzon a helyi Service Fabric-fürthöz.
 sfctl cluster select --endpoint http://localhost:19080
 ```
 
-Használja a sablonban megadott telepítési szkriptet https://github.com/Azure-Samples/service-fabric-containers/ az alkalmazáscsomag a fürt lemezképtárolójába való másolásához, regisztrálja az alkalmazás típusát, és hozza létre az alkalmazás egy példányát.
+A sablonokban https://github.com/Azure-Samples/service-fabric-containers/ megadott telepítési parancsfájllal másolja az alkalmazáscsomag a fürt rendszerkép-tárolójába, regisztrálja az alkalmazás típusát, és hozza létre az alkalmazás egy példányát.
 
 
 ```bash
 ./install.sh
 ```
 
-Nyisson meg egy böngészőt, és keresse fel a Service Fabric Explorer http:\//localhost:19080 / Explorer (a localhost magánhálózati IP-címét a virtuális gép használata a Vagrant Mac OS x). Bontsa ki az Alkalmazások csomópontot, és figyelje meg, hogy most már megjelenik benne egy bejegyzés az alkalmazása típusához, és egy másik a típus első példányához.
+Nyisson meg egy böngészőt, és navigáljon a\/Service Fabric Explorer a http:/localhost: 19080/Explorer (a localhost a virtuális gép magánhálózati IP-címével, ha a Mac OS X-ben a Csavargót használja). Bontsa ki az Alkalmazások csomópontot, és figyelje meg, hogy most már megjelenik benne egy bejegyzés az alkalmazása típusához, és egy másik a típus első példányához.
 
-Csatlakozzon a futó tárolóhoz. Nyisson meg egy webböngészőt, majd IP-címhez visszaadott 4000-es, porton például "http:\//localhost:4000". A „Hello World!” címsornak kell megjelennie a böngészőben.
+Csatlakozzon a futó tárolóhoz. Nyisson meg egy, az 4000-es porton visszaadott IP-címet mutató webböngészőt\/, például "http:/localhost: 4000". A „Hello World!” címsornak kell megjelennie a böngészőben.
 
-![Hello World!][hello-world]
+![Helló világ!][hello-world]
 
 
 ## <a name="clean-up"></a>A fölöslegessé vált elemek eltávolítása

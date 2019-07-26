@@ -13,17 +13,17 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/08/2019
+ms.date: 07/04/2019
 ms.author: ryanwi
 ms.reviewer: elisol, bryanla
 ms.custom: aaddev, seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7e1b0ea2f808c982a587392edbe57eb75c532ee2
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 0198e5f5df3d25ef825248ff78db95326dc755c2
+ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68324707"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68477065"
 ---
 # <a name="how-to-list-your-application-in-the-azure-active-directory-application-gallery"></a>Útmutató: Az alkalmazás szerepeltetése az Azure Active Directory alkalmazáskatalógusában
 
@@ -49,6 +49,8 @@ Ez a cikk bemutatja, hogyan listázhat egy alkalmazást az Azure AD-alkalmazás-
 - A jelszó egyszeri bejelentkezéséhez győződjön meg arról, hogy az alkalmazás támogatja az űrlapos hitelesítést, hogy a jelszó-tárolók a várt módon működjenek az egyszeri bejelentkezéshez.
 
 - Az automatikus felhasználó-kiépítési kérelmek esetében az alkalmazásnak szerepelnie kell a katalógusban a SAML 2.0/WS-fed használatával engedélyezett egyszeri bejelentkezés funkcióval. Ha még nem szerepel a portálon, kérheti az egyszeri bejelentkezést és a felhasználók kiépítését a portálon.
+
+- Állandó fiókra van szükség a 2. atleast regisztrált felhasználóval való teszteléshez.
 
 >[!NOTE]
 >Nagy számú SCIM-összekötő kéréssel dolgozunk, így új kérelmeket állítottunk be a portálon. További értesítésig tartsa a kéréseit. Elnézést kérünk erre a késésre, és bármilyen kényelmetlenséget okozhattak.
@@ -123,7 +125,7 @@ Alább látható az ügyfél által kért alkalmazások folyamata –
 
 ![Az ügyfél által kért alkalmazások folyamatát jeleníti meg](./media/howto-app-gallery-listing/customer-request.png)
 
-## <a name="timelines"></a>Ütemtervek
+## <a name="timelines"></a>Idősorok
 
 Az SAML 2,0 vagy a WS-fed alkalmazás a katalógusban való listázásának ütemterve 7-10 munkanap.
 

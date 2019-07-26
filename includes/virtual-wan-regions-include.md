@@ -8,14 +8,14 @@ ms.topic: include
 ms.date: 03/30/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 8ec5c39342f0477bd2b529da38fd4d1292476c93
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: e8ae2fd99ee57062a0bf99f0550e58a5bb4857a3
+ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67179025"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68426897"
 ---
-A következő táblázat felsorolja a rendelkezésre álló támogatott régiók általánosan elérhető szolgáltatások
+A következő táblázat a GA-funkciók támogatott régióit sorolja fel.
 
 |Geopolitikai régió | Azure-régiók|
 |---|---|
@@ -25,10 +25,9 @@ A következő táblázat felsorolja a rendelkezésre álló támogatott régiók
 | Ázsia | Kelet-Ázsia, Délkelet-Ázsia |
 | Japán  | Nyugat-Japán, Kelet-Japán |
 | Ausztrália | Délkelet-Ausztrália, Kelet-Ausztrália | 
-| Ausztrál kormányzati | Ausztrália középső régiója, Ausztrália 2. középső régiója |
+| Ausztrália kormánya | Ausztrália középső régiója, Ausztrália 2. középső régiója |
 | India | Nyugat-India, Közép-India, Dél-India |
 | Dél-Korea | Korea középső régiója, Korea déli régiója |
 | Dél-Afrika | Dél-Afrika északi régiója, Dél-Afrika nyugati régiója |
 
-* Az ExpressRoute előzetes kapcsolatos információkért lásd: [virtuális WAN és az ExpressRoute - előzetes verzió](../articles/virtual-wan/virtual-wan-expressroute-portal.md#register).
-* A pont – hely előzetes kapcsolatos információkért lásd: [virtuális WAN és pont – hely – az előzetes verziójú](../articles/virtual-wan/virtual-wan-point-to-site-portal.md#register).
+* További információ a ExpressRoute előzetes verziójáról: [Virtual WAN és ExpressRoute-Preview](../articles/virtual-wan/virtual-wan-expressroute-portal.md#register).

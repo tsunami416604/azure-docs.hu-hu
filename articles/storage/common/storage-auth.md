@@ -1,6 +1,6 @@
 ---
-title: Az Azure Storage-hozzáférés engedélyezése |} A Microsoft Docs
-description: Ismerje meg, hogy engedélyezze a hozzáférést az Azure Storage, beleértve az Azure Active Directory, a megosztott kulcsos hitelesítés vagy a közös hozzáférésű jogosultságkódok különböző lehetőségeket.
+title: Hozzáférés engedélyezése az Azure Storage-hoz | Microsoft Docs
+description: Ismerje meg az Azure Storage-hoz való hozzáférés engedélyezésének különböző módjait, beleértve a Azure Active Directory, a megosztott kulcsos hitelesítést vagy a közös hozzáférési aláírásokat.
 services: storage
 author: tamram
 ms.service: storage
@@ -9,23 +9,35 @@ ms.date: 03/21/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 9e8c9755c444ca7b81891f5f83164bc51aa694eb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a0717785f4f9c1c21a18d081d157a6cdc8c12f18
+ms.sourcegitcommit: c71306fb197b433f7b7d23662d013eaae269dc9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65147069"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68371183"
 ---
-# <a name="authorizing-access-to-azure-storage"></a>Az Azure Storage-hozzáférés engedélyezése
+# <a name="authorizing-access-to-azure-storage"></a>Hozzáférés engedélyezése az Azure Storage-hoz
 
-Minden alkalommal, amikor a tárfiókban lévő adatelérés az ügyfél kérést küld a HTTP/HTTPS-kapcsolaton keresztül az Azure Storage. Minden kérés biztonságos erőforrás kell engedélyezni, úgy, hogy a szolgáltatás biztosítja, hogy az ügyfél az adatok eléréséhez szükséges engedélyekkel. Az Azure Storage kínál, ezek a beállítások, amelyek engedélyezik a hozzáférést az erőforrások védelme:
+Minden alkalommal, amikor hozzáfér a Storage-fiókban lévő összes adathoz, az ügyfél HTTP/HTTPS-alapú kérést tesz elérhetővé az Azure Storage-ban. A biztonságos erőforrásokra vonatkozó minden kérést engedélyezni kell, hogy a szolgáltatás biztosítsa, hogy az ügyfél rendelkezik az adathozzáféréshez szükséges engedélyekkel.
 
-- **Az Azure Active Directory (Azure AD) integrálása** a blobok és üzenetsorok. Az Azure AD kínál részletesen szabályozhatja az ügyfél hozzáférés a tárfiókban lévő erőforrásokhoz való szerepköralapú hozzáférés-vezérlés (RBAC). További információkért lásd: [Azure Storage, Azure Active Directory használatával irányuló kérelmek hitelesítéséhez](storage-auth-aad.md).
-- **Megosztott kulcs engedélyezési** blobok, fájlok, üzenetsorok és táblák esetében. Egy megosztott kulcsot használó ügyfél átadja egy fejlécet minden kéréssel, amely a tárfiók hozzáférési kulcsát használatával van aláírva. További információkért lásd: [a megosztott kulcsos hitelesítés](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-shared-key/).
-- **A közös hozzáférésű jogosultságkódot** blobok, fájlok, üzenetsorok és táblák esetében. Közös hozzáférésű jogosultságkódok (SAS) csak korlátozott delegált erőforráshoz nyújtanak hozzáférést a storage-fiókban. Megjelenik a megkötések az időintervallum esetében, amely az aláírás érvényes, illetve engedélyeket ad a hozzáférés-kezelés rugalmasságot biztosít. További információkért lásd: [a közös hozzáférésű jogosultságkód (SAS)](storage-dotnet-shared-access-signature-part-1.md).
-- **Névtelen nyilvános olvasási hozzáférés** tárolók és blobok. Engedélyezési, nem szükséges. További információkért lás a [tárolók és blobok névtelen olvasási hozzáférésének kezelésével](../blobs/storage-manage-access-to-resources.md) foglalkozó témakört.  
+Az alábbi táblázat azokat a lehetőségeket ismerteti, amelyeket az Azure Storage biztosít az erőforrásokhoz való hozzáférés engedélyezéséhez:
 
-Alapértelmezés szerint az Azure Storage-ban minden erőforrás biztonságosak, és csak a fiók tulajdonosa számára érhető el. Bár az ügyfelek a tárfiókban lévő erőforrásokhoz való hozzáférés biztosítása a fent vázolt engedélyezési stratégiák bármelyike használható, Microsoft Azure AD használatát javasolja amikor csak lehetséges, a maximális biztonság és a könnyű használatra. 
+|  |Megosztott kulcs (Storage-fiók kulcsa)  |Közös hozzáférésű jogosultságkód (SAS)  |Azure Active Directory (Azure AD)  |Névtelen nyilvános olvasási hozzáférés  |
+|---------|---------|---------|---------|---------|
+|Azure Blobs     |[Támogatott](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-shared-key/)         |[Támogatott](storage-dotnet-shared-access-signature-part-1.md)         |[Támogatott](storage-auth-aad.md)         |[Támogatott](../blobs/storage-manage-access-to-resources.md)         |
+|Azure Files (SMB)     |[Támogatott](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-shared-key/)         |Nem támogatott         |[Támogatott, csak a HRE tartományi szolgáltatásokkal](../files/storage-files-active-directory-overview.md)         |Nem támogatott         |
+|Azure Files (REST)     |[Támogatott](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-shared-key/)         |[Támogatott](storage-dotnet-shared-access-signature-part-1.md)         |Nem támogatott         |Nem támogatott         |
+|Azure-üzenetsorok     |[Támogatott](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-shared-key/)         |[Támogatott](storage-dotnet-shared-access-signature-part-1.md)         |[Támogatott](storage-auth-aad.md)         |Nem támogatott         |
+|Azure-táblák     |[Támogatott](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-shared-key/)         |[Támogatott](storage-dotnet-shared-access-signature-part-1.md)         |Nem támogatott         |Nem támogatott         |
 
+Az egyes engedélyezési beállítások rövid ismertetését az alábbiakban találja:
 
+- **Azure Active Directory (Azure ad) integráció** a blobokhoz és a várólistákhoz. Az Azure AD szerepköralapú hozzáférés-vezérlést (RBAC) biztosít, amely részletesen szabályozza az ügyfelek hozzáférését egy Storage-fiók erőforrásaihoz. A blobok és várólisták Azure AD-integrálásával kapcsolatos további információkért lásd: [kérelmek hitelesítése az Azure Storage](storage-auth-aad.md)-ba a Azure Active Directory használatával.
 
+- A fájlok **Azure ad Domain Services (DS) integrációja (előzetes verzió)** . Azure Files támogatja az identitás-alapú hitelesítést az Azure AD DS keresztül az SMB protokollon keresztül. Ezzel a RBAC részletesen szabályozhatja az ügyfelek hozzáférését egy Storage-fiók erőforrásaihoz. További információ az Azure AD-integrációról a tartományi szolgáltatásokkal való fájlokhoz: [Azure Files Azure Active Directory tartományi szolgáltatás (HRE DS) hitelesítési támogatásának áttekintése az SMB-hozzáféréshez (előzetes verzió)](../files/storage-files-active-directory-overview.md).
+
+- A Blobok, a fájlok, a várólisták és a táblák **megosztott kulcsos hitelesítése** . A megosztott kulcsot használó ügyfelek minden, a Storage-fiók elérési kulcsával aláírt kérelemmel továbbítanak egy fejlécet. További információ: [Engedélyezés megosztott kulccsal](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-shared-key/).
+- A blobokhoz, fájlokhoz, várólistákhoz és táblákhoz tartozó **közös hozzáférésű aláírások** . A közös hozzáférésű aláírások (SAS) korlátozott delegált hozzáférést biztosítanak egy Storage-fiók erőforrásaihoz. Korlátozásokat adhat hozzá az aláírás érvényességi időintervallumához vagy az általa biztosított engedélyekhez, és rugalmasságot biztosít a hozzáférés kezelésében. További információ: Shared [Access Signatures (SAS) használata](storage-dotnet-shared-access-signature-part-1.md).
+- **Névtelen nyilvános olvasási hozzáférés** tárolók és Blobok számára. Az engedélyezés nem szükséges. További információkért lás a [tárolók és blobok névtelen olvasási hozzáférésének kezelésével](../blobs/storage-manage-access-to-resources.md) foglalkozó témakört.  
+
+Alapértelmezés szerint az Azure Storage összes erőforrása védett, és csak a fiók tulajdonosa számára érhető el. Habár a fentiekben ismertetett engedélyezési stratégiák bármelyikét felhasználhatja az ügyfelek számára a Storage-fiók erőforrásaihoz való hozzáférés biztosítására, a Microsoft az Azure AD használatát javasolja, ha lehetséges a maximális biztonság és a könnyű használat. 

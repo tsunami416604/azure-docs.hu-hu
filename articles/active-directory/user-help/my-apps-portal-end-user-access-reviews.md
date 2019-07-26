@@ -1,6 +1,6 @@
 ---
-title: Hajtsa végre a saját alkalmazások portál – Azure Active Directory hozzáférési felülvizsgálatok |} A Microsoft Docs
-description: Ismerje meg, hogyan tekintheti meg és kezelheti a szervezet alkalmazásokat és a csoportok biztonsági hozzáférési.
+title: Hozzáférési felülvizsgálat végrehajtása a saját alkalmazások portálján – Azure Active Directory | Microsoft Docs
+description: Megtudhatja, hogyan tekintheti meg és kezelheti a szervezet alkalmazásai és csoportjai biztonsági hozzáférését.
 services: active-directory
 author: eross-msft
 manager: daveba
@@ -13,67 +13,69 @@ ms.author: lizross
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 551bbe4e994e15688c59fd395ab762e14927dfda
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 6681720fc7c0fe04c99bf7957be14865c663dd67
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60482852"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68383150"
 ---
-# <a name="perform-an-access-review-from-the-my-apps-portal"></a>A saját alkalmazások portál a hozzáférési felülvizsgálat végrehajtása
-A munkahelyi vagy iskolai fiók használata a web-alapú **saját alkalmazások** portálon megtekintheti, és indítsa el a számos szervezet felhőalapú alkalmazásokat, a profil és fiók információk megjelenítéséhez frissíteni, a **csoportok** információkat, és végrehajtásához **hozzáférési felülvizsgálatokkal** az alkalmazások és a csoportokat. Ha nem rendelkezik hozzáféréssel a **saját alkalmazások** portál, forduljon a Segélyszolgálathoz engedélyt.
+# <a name="perform-an-access-review-from-the-my-apps-portal"></a>Hozzáférési felülvizsgálat végrehajtása a saját alkalmazások portálján
+
+Használhatja munkahelyi vagy iskolai fiókját a webalapú **saját alkalmazások** portálján, hogy megtekintse és elindítsa a szervezete felhőalapú alkalmazásait, hogy frissítse a profilját és a fiókadatok adatait, és megtekintse a **csoportok** adatait, és elvégezze a következő műveleteket **:** alkalmazások és csoportok hozzáférési felülvizsgálatai. Ha nincs hozzáférése a **saját alkalmazások** portálhoz, akkor engedélyt kell adnia az ügyfélszolgálatnak.
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-end-user-my-apps-portal.md)]
 
 >[!Important]
->Ezek az anyagok felhasználók számára készültek. Ha Ön rendszergazda, és a felhőalapú alkalmazások kezelése a további tájékoztatást talál a [Alkalmazásfelügyelet dokumentációja](https://docs.microsoft.com/azure/active-directory/manage-apps).
+>Ezek az anyagok felhasználók számára készültek. Ha Ön rendszergazda, további információt talál arról, hogyan állíthatja be és kezelheti felhőalapú alkalmazásait az [alkalmazás-felügyeleti dokumentációban](https://docs.microsoft.com/azure/active-directory/manage-apps).
 
-## <a name="manage-access-reviews"></a>A hozzáférési felülvizsgálatok kezelése
-Ha a rendszergazda engedélyt adott a saját hozzáférési felülvizsgálatok végrehajtásához, kezelheti a csoportokhoz vagy alkalmazásokhoz való hozzáférés a **hozzáférési felülvizsgálatokkal** csempét a **saját alkalmazások** portáloldalán.
+## <a name="manage-access-reviews"></a>Hozzáférési felülvizsgálatok kezelése
+
+Ha a rendszergazda engedélyezte a saját hozzáférési felülvizsgálatok elvégzését, a saját **alkalmazások** portál lapon a **hozzáférési felülvizsgálatok** csempén kezelheti a csoportokat vagy az alkalmazásokat.
 
 >[!Note]
->Ha nem látja a **hozzáférési felülvizsgálatokkal** csempére, vagy azt jelenti, hogy nincs engedélye a hozzáférési felülvizsgálatok végrehajtásához, vagy az, hogy nincs függőben lévő értékelések várjuk a jóváhagyását. Ha úgy gondolja, a csempe hozzáféréséhez kell, forduljon a segélyszolgálathoz segítségért.
+>Ha nem látja a **hozzáférési felülvizsgálatok** csempét, akkor az azt jelenti, hogy nincs engedélye a hozzáférési felülvizsgálatok elvégzésére, vagy ha nincs függőben lévő felülvizsgálat, amely a jóváhagyásra vár. Ha úgy gondolja, hogy hozzáféréssel kell rendelkeznie a csempéhez, segítségért forduljon az ügyfélszolgálathoz.
 
-### <a name="to-perform-your-access-reviews"></a>A hozzáférési felülvizsgálatok végrehajtásához
+### <a name="to-perform-your-access-reviews"></a>A hozzáférési felülvizsgálatok végrehajtása
 
-1.  Jelentkezzen be munkahelyi vagy iskolai fiókjával.
+1. Jelentkezzen be a munkahelyi vagy iskolai fiókjába.
 
-2.  Nyissa meg a webböngészőjét, és nyissa meg https://myapps.microsoft.com, vagy használja a szervezet által biztosított hivatkozást. Például akkor lehet, hogy átirányítja egy testre szabott lap a szervezete számára például https://myapps.microsoft.com/contoso.com.
+2. Nyissa meg a webböngészőjét https://myapps.microsoft.com, és lépjen a webhelyre, vagy használja a szervezete által biztosított hivatkozást. Előfordulhat például, hogy a szervezete testreszabott lapjára irányítja át, például https://myapps.microsoft.com/contoso.com:.
 
-    A **alkalmazások** lap jelenik meg, a felhőalapú alkalmazások megjelenítése, a szervezet tulajdonában és elérhető a használatra.
+    Megjelenik az **alkalmazások** lap, amely megjeleníti a szervezete tulajdonában lévő összes felhőalapú alkalmazást, és elérhető a használatra.
 
-    ![Saját alkalmazások portál alkalmazások lapján](media/my-apps-portal/my-apps-portal-apps-page-access-review-tile.png)
+    ![Alkalmazások lap a saját alkalmazások portálon](media/my-apps-portal/my-apps-portal-apps-page-access-review-tile.png)
 
-3. Válassza ki a **hozzáférési felülvizsgálatokkal** csempe megtekintéséhez egy hozzáférési felülvizsgálatok jóváhagyásra vár.
+3. Válassza a **hozzáférési felülvizsgálatok** csempét a jóváhagyásra váró hozzáférési felülvizsgálatok listájának megtekintéséhez.
 
-    ![Hozzáférési felülvizsgálatok lapot a függőben lévő hozzáférési felülvizsgálatok a szervezet számára](media/my-apps-portal/my-apps-portal-access-reviews-page.png)
+    ![Hozzáférési felülvizsgálatok lap a szervezetre vonatkozó függőben lévő hozzáférési felülvizsgálatokkal](media/my-apps-portal/my-apps-portal-access-reviews-page.png)
 
-4. Válassza ki **felülvizsgálat megkezdése** a hozzáférési felülvizsgálat indítása.
+4. A hozzáférési felülvizsgálat elindításához válassza az **Áttekintés** megkezdése lehetőséget.
 
-5. A hozzáférés felülvizsgálata, és vizsgálja, hogy továbbra is szükséges.
+5. Tekintse át a hozzáférését, és döntse el, hogy továbbra is szükséges-e.
 
-    ![Hozzáférési felülvizsgálat oldaláról, a felülvizsgálat részletei](media/my-apps-portal/my-apps-portal-perform-access-reviews-page.png)
+    ![Hozzáférési felülvizsgálati oldal, amely az Áttekintés részleteit jeleníti meg](media/my-apps-portal/my-apps-portal-perform-access-reviews-page.png)
 
     >[!Note]
-    >Ha rendszergazdája, és tekintse át a szervezetének hozzáférését a csoportok és alkalmazások számára engedélyezett, megjelenik egy másik oldalon. Csoportokat vagy alkalmazásokat a szervezet megtekintésével kapcsolatos további információkért lásd: [csoportokat vagy alkalmazásokat az Azure AD hozzáférési felülvizsgálatokkal történő hozzáférés felülvizsgálata](https://docs.microsoft.com/azure/active-directory/governance/perform-access-review).
+    >Ha Ön rendszergazda, és lehetővé teszi, hogy áttekintse a szervezet hozzáférését a csoportokhoz és alkalmazásokhoz, egy másik oldal jelenik meg. A csoportok és alkalmazások szervezethez való áttekintésével kapcsolatos további információkért lásd: [hozzáférés ellenőrzése csoportokhoz vagy alkalmazásokhoz az Azure ad hozzáférési felülvizsgálatokban](https://docs.microsoft.com/azure/active-directory/governance/perform-access-review).
 
-6. Válassza ki **Igen** , hogy a hozzáférés vagy **nem** a hozzáférést.
+6. Válassza az **Igen** lehetőséget a hozzáférésének megtartásához, vagy a **nem** gombra a hozzáférés eltávolításához.
 
-    Ha **Igen**, adja meg az indoklást szüksége lehet a **OK** mezőbe.
+    Ha az **Igen**lehetőséget választja, lehet, hogy meg kell adnia egy indoklást az **OK** mezőben.
 
-    ![Hozzáférés tekintse át az oldalról, mintaszöveggel a OK mezőbe](media/my-apps-portal/my-apps-portal-perform-access-reviews-reason-box.png)
+    ![Hozzáférési felülvizsgálati oldal, amely az OK mezőt mutatja a minta szöveggel](media/my-apps-portal/my-apps-portal-perform-access-reviews-reason-box.png)
 
 7. Válassza ki **elküldése**.
 
-    A hozzáférési felülvizsgálat befejeződött, és visszatér a **saját alkalmazások** portálon.
+    A hozzáférési felülvizsgálat elkészült, és visszatér a **saját alkalmazások** portálra.
 
     >[!Note]
-    >A hozzáférés mindaddig, amíg a hozzáférés tekintse át az időszak vége bármikor módosíthatja. Ha eltávolítja a hozzáférés egy alkalmazás vagy csoport, akkor nem törlődnek azonnal. Az eltávolítás akkor fordul elő, ha a hozzáférési tekintse át az időszak vége, vagy egy rendszergazda bezárása után a felülvizsgálati. 
+    >A hozzáférését bármikor módosíthatja, amíg a hozzáférési felülvizsgálati időszak véget nem ér. Ha eltávolít egy alkalmazáshoz vagy csoporthoz való hozzáférését, azt nem távolítja el azonnal. Az eltávolítás akkor történik meg, amikor a hozzáférési felülvizsgálati időszak véget ér, vagy amikor a rendszergazda bezárja a felülvizsgálatot.
 
 ## <a name="next-steps"></a>További lépések
 
-- [Elérheti és használni az alkalmazásokat a saját alkalmazások portál](my-apps-portal-end-user-access.md).
+- [Alkalmazások elérése és használata a saját alkalmazások portálon](my-apps-portal-end-user-access.md).
 
-- [Módosítsa a profiladatok](my-apps-portal-end-user-update-profile.md).
+- [Módosítsa a profil adatait](my-apps-portal-end-user-update-profile.md).
 
-- [Megtekintése és módosítása a csoportok kapcsolatos információkat](my-apps-portal-end-user-groups.md).
+- [A csoportok kapcsolódó információinak megtekintése és frissítése](my-apps-portal-end-user-groups.md).

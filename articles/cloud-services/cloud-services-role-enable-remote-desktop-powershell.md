@@ -1,64 +1,58 @@
 ---
-title: Távoli asztali kapcsolat engedélyezése egy szerepkörhöz az Azure Cloud Services szolgáltatással a PowerShell használatával
-description: A távoli asztali kapcsolatok engedélyezése a PowerShell segítségével az azure cloud service-alkalmazás konfigurálása
+title: Távoli asztali kapcsolat engedélyezése az Azure Cloud Services szerepkörhöz a PowerShell használatával
+description: Azure Cloud Service-alkalmazás konfigurálása a PowerShell használatával a távoli asztali kapcsolatok engedélyezéséhez
 services: cloud-services
 documentationcenter: ''
-author: jpconnock
-manager: timlt
-editor: ''
-ms.assetid: bf2f70a4-20dc-4302-a91a-38cd7a2baa62
+author: georgewallace
 ms.service: cloud-services
-ms.workload: tbd
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2017
-ms.author: jeconnoc
-ms.openlocfilehash: 43ccc8e53c30219630ad10ee66a4db38656818e6
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: gwallace
+ms.openlocfilehash: b466cb866889edcdc2bd02373a5567a7b53ae18d
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60525377"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68358992"
 ---
-# <a name="enable-remote-desktop-connection-for-a-role-in-azure-cloud-services-using-powershell"></a>Távoli asztali kapcsolat engedélyezése egy szerepkörhöz az Azure Cloud Services szolgáltatással a PowerShell használatával
+# <a name="enable-remote-desktop-connection-for-a-role-in-azure-cloud-services-using-powershell"></a>Távoli asztali kapcsolat engedélyezése az Azure Cloud Services szerepkörhöz a PowerShell használatával
 
 > [!div class="op_single_selector"]
 > * [Azure Portal](cloud-services-role-enable-remote-desktop-new-portal.md)
 > * [PowerShell](cloud-services-role-enable-remote-desktop-powershell.md)
 > * [Visual Studio](cloud-services-role-enable-remote-desktop-visual-studio.md)
 
-A távoli asztal segítségével elérheti az Azure-ban futó szerepkörök asztalát. Az alkalmazással kapcsolatos problémák diagnosztizálására futás közben és használhatja a távoli asztali kapcsolatot.
+Távoli asztal lehetővé teszi az Azure-ban futó szerepkör asztalának elérését. Az alkalmazással kapcsolatos problémák elhárításához és diagnosztizálásához Távoli asztal-kapcsolatban is használhatja a szolgáltatást.
 
-Ez a cikk ismerteti a távoli asztal engedélyezése a PowerShell használatával a Felhőszolgáltatás szerepköreit. Lásd: [telepítése és konfigurálása az Azure PowerShell-lel](/powershell/azure/overview) esetében ez a cikk szükséges előfeltételeket. PowerShell a távoli asztal bővítményt használja, a távoli asztal, ahol engedélyezheti, az alkalmazás üzembe helyezése után.
+Ez a cikk azt ismerteti, hogyan engedélyezhető a távoli asztal a Cloud Service-szerepkörökön a PowerShell használatával. Tekintse meg, [hogyan telepítheti és konfigurálhatja a Azure PowerShell](/powershell/azure/overview) a cikkhez szükséges előfeltételekhez. A PowerShell a Távoli asztal bővítményt használja, így Távoli asztal az alkalmazás telepítése után engedélyezheti.
 
-## <a name="configure-remote-desktop-from-powershell"></a>A PowerShellben a távoli asztal konfigurálása
-A [Set-AzureServiceRemoteDesktopExtension](/powershell/module/servicemanagement/azure/set-azureserviceremotedesktopextension?view=azuresmps-3.7.0) parancsmag lehetővé teszi a távoli asztal engedélyezése a megadott szerepkörök vagy a felhőszolgáltatás üzembe helyezésének összes szerepkörének. A parancsmag segítségével adja meg a felhasználónevet és jelszót a távoli asztali felhasználó leállította a *Credential* paraméter, amely fogad egy PSCredential objektumot.
+## <a name="configure-remote-desktop-from-powershell"></a>Távoli asztal konfigurálása a PowerShellből
+A [set-AzureServiceRemoteDesktopExtension](/powershell/module/servicemanagement/azure/set-azureserviceremotedesktopextension?view=azuresmps-3.7.0) parancsmag lehetővé teszi, hogy az távoli asztal a megadott szerepkörökön vagy a Cloud Service-telepítés összes szerepkörén engedélyezze. A parancsmag segítségével megadhatja a távoli asztal felhasználójának felhasználónevét és jelszavát a *hitelesítő adatok* paraméterrel, amely elfogadja a PSCredential objektumot.
 
-Ha PowerShell interaktív módon használja, egyszerűen beállíthatja a PSCredential objektum meghívásával a [Get-Credentials](https://technet.microsoft.com/library/hh849815.aspx) parancsmagot.
+Ha interaktívan használja a PowerShellt, a [Get-hitelesítőadats](https://technet.microsoft.com/library/hh849815.aspx) parancsmag meghívásával egyszerűen beállíthatja a PSCredential objektumot.
 
 ```powershell
 $remoteusercredentials = Get-Credential
 ```
 
-Ez a parancs egy párbeszédpanel, lehetővé téve, hogy adja meg a felhasználónevet és jelszót a távoli felhasználó biztonságos módon jeleníti meg.
+Ez a parancs egy párbeszédpanelt jelenít meg, amely lehetővé teszi, hogy biztonságos módon adja meg a távoli felhasználó felhasználónevét és jelszavát.
 
-Mivel a PowerShell segítségével az automation-forgatókönyvek, is beállíthat a **PSCredential** objektumot úgy, hogy nincs szükség felhasználói beavatkozásra. Először egy biztonságos jelszó beállításához. Kezdje egy egyszerű szöveges jelszó alakíthatja át egy biztonságos karakterláncra az megadása [ConvertTo-SecureString](https://technet.microsoft.com/library/hh849818.aspx). Ezután egy titkosított szabványos karakterláncok használatával konvertálja a biztonságos karakterláncot kell [ConvertFrom-SecureString](https://technet.microsoft.com/library/hh849814.aspx). Most egy fájl segítségével mentheti a titkosított szabványos karakterláncok [Set-tartalom](https://technet.microsoft.com/library/ee176959.aspx).
+Mivel a PowerShell segítséget nyújt az automatizálási forgatókönyvekben, a **PSCredential** objektumot úgy is beállíthatja, hogy ne kelljen felhasználói beavatkozást végeznie. Először be kell állítania egy biztonságos jelszót. Egy egyszerű szöveges jelszó megadásával kezdődik a [ConvertTo-SecureString](https://technet.microsoft.com/library/hh849818.aspx)használatával történő biztonságos karakterláncra konvertálása. Ezután a biztonságos karakterláncot egy titkosított szabványos karakterlánccá kell konvertálnia a [ConvertFrom-SecureString](https://technet.microsoft.com/library/hh849814.aspx)használatával. Most már mentheti a titkosított szabványos karakterláncot egy fájlra a [set-Content](https://technet.microsoft.com/library/ee176959.aspx)paranccsal.
 
-Egy biztonságos jelszó fájlt is létrehozhat, így nem kell minden alkalommal meg a jelszót. Biztonságos jelszó fájl is jobb, mint az egyszerű szöveges fájlt. A következő PowerShell segítségével hozzon létre egy biztonságos jelszó fájlt:
+Létrehozhat egy biztonságos jelszavas fájlt is, így nem kell minden alkalommal beírnia a jelszót. Emellett a biztonságos jelszavas fájl is jobb, mint egy egyszerű szövegfájl. A következő PowerShell használatával hozzon létre egy biztonságos jelszavas fájlt:
 
 ```powershell
 ConvertTo-SecureString -String "Password123" -AsPlainText -Force | ConvertFrom-SecureString | Set-Content "password.txt"
 ```
 
 > [!IMPORTANT]
-> Amikor a jelszó beállítását, győződjön meg arról, hogy megfelel a [összetettségi követelményeknek](https://technet.microsoft.com/library/cc786468.aspx).
+> A jelszó beállításakor győződjön meg arról, hogy megfelel az [összetettségi követelményeknek](https://technet.microsoft.com/library/cc786468.aspx).
 
-Hozza létre a hitelesítő objektumot a biztonságos jelszó-fájlból, kell olvasni a fájl tartalmát, és konvertálja azokat egy biztonságos karakterláncra az [ConvertTo-SecureString](https://technet.microsoft.com/library/hh849818.aspx).
+Ahhoz, hogy a hitelesítő adatokat a biztonságos jelszó fájlból hozza létre, el kell olvasnia a fájl tartalmát, és vissza kell alakítania azokat egy biztonságos karakterláncra az [ConvertTo-SecureString](https://technet.microsoft.com/library/hh849818.aspx)használatával.
 
-A [Set-AzureServiceRemoteDesktopExtension](/powershell/module/servicemanagement/azure/set-azureserviceremotedesktopextension?view=azuresmps-3.7.0) parancsmag is fogad egy *lejárati* paramétert, amely meghatározza egy **DateTime** , amely a felhasználói fiók lejár. Ha például sikerült beállítani a fiók lejár az aktuális dátum és idő néhány nap.
+A [set-AzureServiceRemoteDesktopExtension](/powershell/module/servicemanagement/azure/set-azureserviceremotedesktopextension?view=azuresmps-3.7.0) parancsmag egy lejárati paramétert is elfogad, amely meghatározza azt a **dátumot** és időpontot, amikor a felhasználói fiók lejár. Például beállíthatja, hogy a fiók az aktuális dátumtól és időponttól néhány napig lejárjon.
 
-Ez a PowerShell-példa bemutatja, hogyan állíthatja be a távoli asztali bővítmény egy felhőszolgáltatáson:
+Ez a PowerShell-példa bemutatja, hogyan állíthatja be a Távoli asztal-bővítményt egy felhőalapú szolgáltatásban:
 
 ```powershell
 $servicename = "cloudservice"
@@ -68,40 +62,40 @@ $expiry = $(Get-Date).AddDays(1)
 $credential = New-Object System.Management.Automation.PSCredential $username,$securepassword
 Set-AzureServiceRemoteDesktopExtension -ServiceName $servicename -Credential $credential -Expiration $expiry
 ```
-Üzembe helyezési pont és a távoli asztal engedélyezése a kívánt szerepkörök is megadható. Ha ezek a paraméterek nincsenek megadva, a parancsmag lehetővé teszi, hogy az összes szerepkört a távoli asztal a **éles** üzembe helyezési pont.
+Igény szerint megadhatja az üzembe helyezési tárolóhelyet és a Távoli asztalt engedélyező szerepköröket is. Ha ezek a paraméterek nincsenek megadva, a parancsmag lehetővé teszi a távoli asztal használatát az **éles** üzembe helyezési pont összes szerepkörén.
 
-A távoli asztali bővítmény társítva egy központi telepítést. Ha a szolgáltatás új központi telepítést hoz létre, azok távoli asztal engedélyezése a a telepítés. Ha mindig szeretne a távoli asztal engedélyezve van, majd vegye figyelembe a PowerShell-parancsfájlok integrálása a telepítési munkafolyamat.
+A Távoli asztal bővítmény társítva van egy központi telepítéshez. Ha új központi telepítést hoz létre a szolgáltatáshoz, engedélyeznie kell a Távoli asztalt az adott központi telepítésben. Ha mindig engedélyezni szeretné a távoli asztal használatát, érdemes megfontolnia a PowerShell-parancsfájlok integrálását a telepítési munkafolyamatba.
 
-## <a name="remote-desktop-into-a-role-instance"></a>Egy szerepkörpéldány távoli asztal
+## <a name="remote-desktop-into-a-role-instance"></a>Távoli asztal egy szerepkör-példányba
 
-A [Get-AzureRemoteDesktopFile](/powershell/module/servicemanagement/azure/get-azureremotedesktopfile?view=azuresmps-3.7.0) parancsmag egy adott szerepkörpéldány a felhőszolgáltatás használatban a távoli asztal. Használhatja a *LocalPath* paraméter használatával töltse le az RDP fájlt helyileg. Vagy használhatja a *indítsa el a* közvetlenül indítsa el a távoli asztali kapcsolat párbeszédpanel eléréséhez a felhőszolgáltatás szerepkörpéldánya paramétert.
+A [Get-AzureRemoteDesktopFile](/powershell/module/servicemanagement/azure/get-azureremotedesktopfile?view=azuresmps-3.7.0) parancsmag használatával a távoli asztal a felhőalapú szolgáltatás egy adott szerepkör-példányában található. Az RDP-fájl helyi letöltéséhez használhatja a *LocalPath* paramétert. Vagy a *Launch* paraméterrel közvetlenül is elindíthatja a távoli asztali kapcsolat párbeszédpanelt a Cloud Service szerepkör-példány eléréséhez.
 
 ```powershell
 Get-AzureRemoteDesktopFile -ServiceName $servicename -Name "WorkerRole1_IN_0" -Launch
 ```
 
-## <a name="check-if-remote-desktop-extension-is-enabled-on-a-service"></a>Ellenőrizze, hogy engedélyezve van-e a távoli asztal bővítmény egy szolgáltatásban
+## <a name="check-if-remote-desktop-extension-is-enabled-on-a-service"></a>Ellenőrizze, hogy a Távoli asztal-bővítmény engedélyezve van-e a szolgáltatáson
 
-A [Get-AzureServiceRemoteDesktopExtension](/powershell/module/servicemanagement/azure/get-azureremotedesktopfile?view=azuresmps-3.7.0) parancsmag megjeleníti, hogy a távoli asztal engedélyezve van-e a szolgáltatások üzembe helyezéséhez. A parancsmag visszaadja a felhasználónév, a távoli asztali felhasználói és a szerepköröket, amelyek a távoli asztali bővítmény engedélyezve van. Alapértelmezés szerint ez az üzembe helyezési pont történik, és Ön kiválaszthatja, használja helyette az előkészítési pontot.
+A [Get-AzureServiceRemoteDesktopExtension](/powershell/module/servicemanagement/azure/get-azureremotedesktopfile?view=azuresmps-3.7.0) parancsmag azt jeleníti meg, hogy a távoli asztal engedélyezve van vagy le van tiltva egy szolgáltatás központi telepítésén. A parancsmag visszaadja a távoli asztal felhasználójának felhasználónevét, valamint azokat a szerepköröket, amelyekhez a távoli asztal bővítmény engedélyezve van. Alapértelmezés szerint ez az üzembe helyezési ponton történik, és az átmeneti tárolóhely használata is megadható.
 
 ```powershell
 Get-AzureServiceRemoteDesktopExtension -ServiceName $servicename
 ```
 
-## <a name="remove-remote-desktop-extension-from-a-service"></a>Egy szolgáltatás a távoli asztal bővítmény eltávolítása
+## <a name="remove-remote-desktop-extension-from-a-service"></a>Távoli asztal bővítmény eltávolítása a szolgáltatásból
 
-Ha már engedélyezve van a távoli asztali futtatására szolgáló bővítmény egy központi telepítést, és frissítenie kell a távoli asztal beállításait, először távolítsa el a bővítményt. Majd engedélyezze újra az új beállításokkal. Ha például szeretné állítani a távoli felhasználói fiók egy új jelszót, vagy a fiók lejárt. Ez meglévő üzemelő példányok esetében, amelyeken engedélyezve van a távoli asztali bővítmény szükséges. Az új központi telepítéseknél egyszerűen alkalmazhat a bővítmény közvetlenül.
+Ha már engedélyezte a távoli asztal bővítményt egy központi telepítésben, és frissítenie kell a távoli asztal beállításait, először távolítsa el a bővítményt. És engedélyezze újra az új beállításokkal. Ha például új jelszót szeretne beállítani a távoli felhasználói fiókhoz, vagy lejárt a fiók. Ehhez szükség van a távoli asztal bővítményt használó meglévő központi telepítések esetén. Új központi telepítések esetén egyszerűen közvetlenül is alkalmazhatja a bővítményt.
 
-A távoli asztali bővítmény eltávolítása a központi telepítést, használhatja a [Remove-AzureServiceRemoteDesktopExtension](/powershell/module/servicemanagement/azure/remove-azureserviceremotedesktopextension?view=azuresmps-3.7.0) parancsmagot. Opcionálisan megadhatja az üzembe helyezési pont és a szerepkör, amelyből el kívánja távolítani a távoli asztali bővítmény.
+A távoli asztali bővítmény a telepítésből való eltávolításához használhatja a Remove [-AzureServiceRemoteDesktopExtension](/powershell/module/servicemanagement/azure/remove-azureserviceremotedesktopextension?view=azuresmps-3.7.0) parancsmagot. Igény szerint megadhatja azt a telepítési tárolóhelyet és szerepkört is, amelyből el szeretné távolítani a távoli asztali bővítményt.
 
 ```powershell
 Remove-AzureServiceRemoteDesktopExtension -ServiceName $servicename -UninstallConfiguration
 ```
 
 > [!NOTE]
-> A bővítmény konfigurációja teljes eltávolításához, meg kell hívnia a *eltávolítása* parancsmagot a **UninstallConfiguration** paraméter.
+> A bővítmény konfigurációjának teljes eltávolításához hívja meg a *Remove* parancsmagot a **UninstallConfiguration** paraméterrel.
 >
-> A **UninstallConfiguration** paraméter eltávolítja a bővítmény-konfigurációra, amely a szolgáltatás érvényes. Minden bővítmény konfigurációs társítva a szolgáltatás konfigurációját. Hívása a *eltávolítása* nélkül parancsmag **UninstallConfiguration** disassociates a <mark>üzembe helyezési</mark> a bővítmény-konfigurációból, így hatékonyan eltávolítása a bővítmény. Azonban a bővítmény konfigurációja továbbra is társítva a szolgáltatáshoz.
+> A **UninstallConfiguration** paraméter eltávolítja a szolgáltatásra alkalmazott bővítmények konfigurációját. Minden bővítmény-konfiguráció a szolgáltatás konfigurációjával van társítva. A *Remove* parancsmag meghívása anélkül, hogy a **UninstallConfiguration** leválasztja a <mark>központi telepítést</mark> a bővítmény konfigurációjától, így gyakorlatilag eltávolítja a bővítményt. A bővítmény konfigurációja azonban továbbra is hozzá van rendelve a szolgáltatáshoz.
 
 ## <a name="additional-resources"></a>További források
 

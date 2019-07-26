@@ -4,21 +4,23 @@ description: Ismerje meg, melyik operációs rendszerek futtathatók az Azure Io
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 06/12/2019
+ms.date: 07/22/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 178cbf930c946170834eb1f7de17e6d5bc0dda48
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 62b8ed553e3b4cec3750dae4f0426b6f0dd38855
+ms.sourcegitcommit: c556477e031f8f82022a8638ca2aec32e79f6fd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67058291"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68414384"
 ---
 # <a name="azure-iot-edge-supported-systems"></a>Az Azure IoT Edge által támogatott rendszerek
 
-Nincsenek többféle módon, hogy az Azure IoT Edge-termék támogatása.
+Ez a cikk részletesen ismerteti, hogy mely rendszerek és összetevők támogatottak a IoT Edge, akár hivatalosan, akár előzetes verzióban. 
+
+Ha a Azure IoT Edge szolgáltatás használata során problémákba ütközik, többféleképpen is kérhet támogatást. Próbálja ki a következő csatornák egyikét a támogatáshoz:
 
 **Hibák Reporting** – a legtöbb fejlesztési, amely az Azure IoT Edge-termék hiányzóra történik, az IoT Edge nyílt forráskódú projekt. A hibák jelenteni lehet a [problémák lap](https://github.com/azure/iotedge/issues) a projekt. Javítások gyorsan eljutnak a projektből a termékfrissítéseket.
 
@@ -27,84 +29,90 @@ Nincsenek többféle módon, hogy az Azure IoT Edge-termék támogatása.
 **Kérelmek funkció** – az Azure IoT Edge-termék nyomon követi a szolgáltatással kapcsolatos kéréseit a termék keresztül [User Voice lap](https://feedback.azure.com/forums/907045-azure-iot-edge).
 
 ## <a name="container-engines"></a>Tároló-motorok
-Az Azure IoT Edge szüksége van egy tároló-motor modulok elindításához, mivel azok tárolókként vannak megvalósítva. A Microsoft biztosít egy tároló motor moby-motor, ez a követelmény teljesítéséhez. A Moby nyílt forráskódú projekt alapul. A docker CE és a Docker EE más népszerű motorokkal. Ezek is alapján a Moby nyílt forráskódú projekt, és kompatibilis az Azure IoT Edge segítségével. A Microsoft biztosít a elérhető legjobb lehetőség támogatásával rendszerekben a tároló motorok; használatával a Microsoft azonban nem rendelkezik az LHS.Gold.Multi.B4 őket hibák javításait teszi. Ebből kifolyólag a Microsoft azt javasolja, az éles rendszereket moby-motor használatával.
+
+Azure IoT Edge-modulok tárolóként vannak megvalósítva, ezért IoT Edge a tároló motorjának kell elindítania azokat. A Microsoft biztosít egy tároló motor moby-motor, ez a követelmény teljesítéséhez. Ez a tároló motor a Moby nyílt forráskódú projekten alapul. A docker CE és a Docker EE más népszerű motorokkal. Emellett a nyílt forráskódú Moby-projekten alapulnak, és kompatibilisek Azure IoT Edgeokkal. A Microsoft a tároló-motorokat használó rendszerek esetében nyújt legjobb támogatást. a Microsoft azonban nem tudja kiszolgálni a javításokat a bennük felmerülő problémák miatt. Ebből kifolyólag a Microsoft azt javasolja, az éles rendszereket moby-motor használatával.
 
 <br>
 <center>
 
-![Container modul, Moby](./media/support/only-moby-for-production.png)
+![Moby as Container Runtime](./media/support/only-moby-for-production.png)
 </center>
 
 ## <a name="operating-systems"></a>Operációs rendszerek
-Az Azure IoT Edge, amelyek futtathatók tárolók; a legtöbb operációs rendszeren fut. azonban ezek a rendszerek nem egyaránt támogatottak. Operációs rendszerek számíthatnak támogatás szintjét képviselő szinten vannak csoportosítva.
-* 1\. rétegbeli rendszerek tekinthető, hivatalosan támogatott. 1\. rétegbeli rendszerek esetében a Microsoft:
-    * Ez az operációs rendszer automatizált teszteket rendelkezik
+Azure IoT Edge a tárolók futtatására képes legtöbb operációs rendszeren fut; Ezek a rendszerek azonban nem egyformán támogatottak. Operációs rendszerek számíthatnak támogatás szintjét képviselő szinten vannak csoportosítva.
+* Az 1. szintű rendszerek támogatottak. Az 1. szintű rendszerek esetében a Microsoft:
+    * az operációs rendszer automatikus tesztek
     * biztosít a számukra a telepítési csomagok
-* 2\. rétegbeli rendszerek szerint kompatibilis az Azure IoT Edge segítségével olyan, és viszonylag könnyen használható. 2\. rétegbeli rendszerek esetén:
-    * A Microsoft alkalmi tesztelése a platformon végzett, vagy tudja, hogy sikeresen rendszeren történő futtatása az Azure IoT Edge egy partner
+* A 2. szintű rendszerek kompatibilisek Azure IoT Edgeekkel, és viszonylag könnyen használhatók. 2\. szintű rendszerek esetén:
+    * A Microsoft ad hoc tesztelést végez a platformokon, vagy tudja, hogy egy partner sikeresen futtatott Azure IoT Edge a platformon
     * Más platformok telepítőcsomagok ezeken a platformokon is működhet.
     
-A operációsrendszer-család a gazda operációs rendszer mindig meg kell egyeznie a vendég operációs rendszer egy modul tárolóban használt összessége. Más szóval csak használhatja a linuxon futó Linux-tárolók és a Windows-tárolók Windows. Windows, elkülönített tárolókban támogatottak, egyetlen folyamat használata esetén nem Hyper-V elkülönített tárolókat.  
+A gazda operációs rendszer családjának mindig egyeznie kell a modul tárolójában használt vendég operációs rendszer családjának. Ez azt jelenti, hogy a Linux-tárolókat csak Linux-és Windows-tárolókban használhatja Windows rendszeren. A Windows használata esetén csak az elkülönített tárolók feldolgozása támogatott, a Hyper-V elkülönített tárolók nem.  
 
 <br>
 <center>
 
-![Gazda operációs rendszer megfelel a vendég operációs rendszer](./media/support/edge-on-device.png)
+![A gazdagép operációs rendszere megfelel a vendég operációs rendszernek](./media/support/edge-on-device.png)
 </center>
 
 ### <a name="tier-1"></a>1\. szint
-Általánosan elérhető
 
-| Operációs rendszer | AMD64 | ARM32v7 |
-| ---------------- | ----- | ----- |
-| A stretch Raspbian | Nem | Igen|
-| Ubuntu Server 16.04 | Igen | Nem |
-| Ubuntu Server 18.04 | Igen | Nem |
-| A Windows 10 IoT Enterprise, a build 17763 | Igen | Nem |
-| A Windows Server 2019, build 17763 | Igen | Nem |
-| A Windows Server IoT 2019, build 17763 | Igen | Nem |
+A Microsoft a következő táblázatban felsorolt rendszereket támogatja: általánosan elérhető vagy nyilvános előzetes verzióban, és minden új kiadással tesztelve van. 
 
-Nyilvános előzetes verzió
-
-| Operációs rendszer | AMD64 | ARM32v7 |
-| ---------------- | ----- | ----- |
-| Windows 10 IoT Core, build 17763 | Igen | Nem |
+| Operációs rendszer | AMD64 | ARM32v7 | ARM64 |
+| ---------------- | ----- | ------- | ----- |
+| A stretch Raspbian |  | ![Raspbian stretch + ARM32v7](./media/tutorial-c-module/green-check.png) | Nyilvános előzetes |
+| Ubuntu Server 16.04 | ![Ubuntu Server 16,04 + AMD64](./media/tutorial-c-module/green-check.png) |  |  |
+| Ubuntu Server 18.04 | ![Ubuntu Server 18,04 + AMD64](./media/tutorial-c-module/green-check.png) |  |  |
+| Windows 10 IoT Enterprise, Build 17763 | ![Windows 10 IoT Enterprise + AMD64](./media/tutorial-c-module/green-check.png) |  |  |
+| Windows Server 2019, 17763-es Build | ![Windows Server 2019 + AMD64](./media/tutorial-c-module/green-check.png) |  |  |
+| Windows Server IoT 2019, Build 17763 | ![Windows Server IoT 2019 + AMD64](./media/tutorial-c-module/green-check.png) |  |  |
+| Windows 10 IoT Core, Build 17763 | Nyilvános előzetes |  |  |
 
 
-A Windows operációs rendszerek fent felsorolt Windows-tárolók a Windows rendszerű eszközök követelmények vonatkoznak. Ez a konfiguráció az egyetlen támogatott konfigurációkra vonatkozó üzemi. Windows Azure IoT Edge-telepítőcsomagok Windows; a Linux-tárolók használatának engedélyezése azonban ez a konfiguráció kizárólag fejlesztési és tesztelési szól. A Windows Linux-tárolók használata nem támogatott konfiguráció éles üzemi környezetek részei. Az alkalmazásfejlesztési forgatókönyvet bármilyen Windows 10-es build 14393 vagy újabb verzió és a Windows Server 2016-os vagy újabb verzió használható.
+A fent felsorolt Windows operációs rendszerek a Windows-tárolókat futtató eszközökre vonatkozó követelmények. Ez a konfiguráció az egyetlen támogatott konfiguráció az éles környezetben. A Windows Azure IoT Edge telepítési csomagjai lehetővé teszik a Linux-tárolók használatát Windows rendszeren; Ez a konfiguráció azonban csak fejlesztési és tesztelési célokra használható. A Linux-tárolók használata a Windows rendszeren nem támogatott konfiguráció az éles környezetben. Ehhez a fejlesztési forgatókönyvhöz a Windows 10 Build 14393-es vagy újabb verziója, valamint a Windows Server 2016-es vagy újabb verziói is használhatók.
 
 ### <a name="tier-2"></a>2\. szint
 
-| Operációs rendszer | AMD64 | ARM32v7 |
-| ---------------- | ----- | ----- |
-| CentOS 7.5 | Igen | Igen |
-| Debian 8 | Igen | Igen |
-| Debian 9 | Igen | Igen |
-| RHEL 7.5 | Igen | Igen |
-| Ubuntu 18.04 | Igen | Igen |
-| Ubuntu 16.04 | Igen | Igen |
-| A szél folyó 8 | Igen | Nem |
-| Yocto | Igen | Nem |
+Az alábbi táblázatban felsorolt rendszerek kompatibilisek Azure IoT Edgeekkel, de aktívan nem tesztelik és nem tartják karban őket. 
 
+| Operációs rendszer | AMD64 | ARM32v7 | ARM64 |
+| ---------------- | ----- | ------- | ----- |
+| CentOS 7.5 | ![CentOS + AMD64](./media/tutorial-c-module/green-check.png) | ![CentOS + ARM32v7](./media/tutorial-c-module/green-check.png) | ![CentOS + ARM64](./media/tutorial-c-module/green-check.png) |
+| Debian 8 | ![Debian 8 + AMD64](./media/tutorial-c-module/green-check.png) | ![Debian 8 + ARM32v7](./media/tutorial-c-module/green-check.png) | ![Debian 8 + ARM64](./media/tutorial-c-module/green-check.png) |
+| Debian 9 | ![Debian 9 + AMD64](./media/tutorial-c-module/green-check.png) | ![Debian 9 + ARM32v7](./media/tutorial-c-module/green-check.png) | ![Debian 9 + ARM64](./media/tutorial-c-module/green-check.png) |
+| Debian 10<sup>1</sup> | ![Debian 10 + AMD64](./media/tutorial-c-module/green-check.png) | ![Debian 10 + ARM32v7](./media/tutorial-c-module/green-check.png) | ![Debian 10 + ARM64](./media/tutorial-c-module/green-check.png) |
+| RHEL 7.5 | ![RHEL 7,5 + AMD64](./media/tutorial-c-module/green-check.png) | ![RHEL 7,5 + ARM32v7](./media/tutorial-c-module/green-check.png) | ![RHEL 7,5 + ARM64](./media/tutorial-c-module/green-check.png) |
+| Ubuntu 16.04 | ![Ubuntu 16,04 + AMD64](./media/tutorial-c-module/green-check.png) | ![Ubuntu 16,04 + ARM32v7](./media/tutorial-c-module/green-check.png) | ![Ubuntu 16,04 + ARM64](./media/tutorial-c-module/green-check.png) |
+| Ubuntu 18.04 | ![Ubuntu 18,04 + AMD64](./media/tutorial-c-module/green-check.png) | ![Ubuntu 18,04 + ARM32v7](./media/tutorial-c-module/green-check.png) | ![Ubuntu 18,04 + ARM64](./media/tutorial-c-module/green-check.png) |
+| A szél folyó 8 | ![A Wind River 8 + AMD64](./media/tutorial-c-module/green-check.png) |  |  |
+| Yocto | ![Yocto + AMD64](./media/tutorial-c-module/green-check.png) | ![Yocto + ARM32v7](./media/tutorial-c-module/green-check.png) | ![Yocto + ARM64](./media/tutorial-c-module/green-check.png) |
+| Raspbian Buster<sup>1</sup> |  | ![Raspbian Buster + ARM32v7](./media/tutorial-c-module/green-check.png) | ![Raspbian Buster + ARM64](./media/tutorial-c-module/green-check.png) |
+
+<sup>1</sup> a Debian 10 rendszer, köztük a Raspian Buster, az OpenSSL olyan verzióját használja, IoT Edge nem támogatja. A következő parancs használatával telepítsen egy korábbi verziót a IoT Edge telepítése előtt: 
+
+```bash
+sudo apt-get install libssl1.0.2
+```
 
 ## <a name="virtual-machines"></a>Virtuális gépek
-Az Azure IoT Edge virtuális gépeken is futtatható. Virtuális gép, egy IoT Edge használatával eszköz esetén gyakori, mivel megvédi a peremhálózati intelligencia a meglévő infrastruktúra ügyfelei szeretnék. Az a gazdagép virtuális gép operációsrendszer-család egyeznie kell a vendég operációs rendszer egy modul tárolóban használt összessége. Ez a követelmény nem ugyanaz, mint az Azure IoT Edge futtatásakor közvetlenül az eszközön. Az Azure IoT Edge független a mögöttes virtualizációs technológia, és működteti, platformokon, például a Hyper-V- és vSphere-beli virtuális gépeken működik.
+A Azure IoT Edge virtuális gépeken is futtathatók. A virtuális gépek IoT Edge eszközként való használata gyakori, ha az ügyfelek a meglévő infrastruktúrát szeretnék kibővíteni a peremhálózati intelligenciával. A gazda VM operációs rendszer családjának meg kell egyeznie a modul tárolójában használt vendég operációs rendszer családjának. Ez a követelmény ugyanaz, mint amikor a Azure IoT Edge közvetlenül egy eszközön fut. Azure IoT Edge a mögöttes virtualizációs technológia, és olyan platformokon működik, mint például a Hyper-V és a vSphere.
 
 <br>
 <center>
 
-![Az Azure IoT Edge egy virtuális gépen](./media/support/edge-on-vm.png)
+![Azure IoT Edge egy virtuális gépen](./media/support/edge-on-vm.png)
 </center>
 
-## <a name="minimum-system-requirements"></a>Minimális rendszerkövetelményei
-Az Azure IoT Edge kiválóan működjön az eszközök egy Raspberry Pi3 legyen a kiszolgáló szintű hardverre. A forgatókönyvnek megfelelő hardver kiválasztása attól függ, hogy a futtatni kívánt számítási feladatokat. Végső eszköz megugró lehet bonyolult; a hagyományos hordozható vagy asztali azonban prototípus-megoldás könnyedén elindíthatja.
+## <a name="minimum-system-requirements"></a>Minimális rendszerkövetelmények
+A Azure IoT Edge nagyszerűen fut az eszközökön, mint a Pi3 a kiszolgálói minőségű hardverek számára. Ha kiválasztja a megfelelő hardvert a forgatókönyvhöz, a futtatni kívánt munkaterheléstől függ. Az eszköz végső döntése bonyolult lehet; a hagyományos laptopokon és asztali számítógépeken azonban könnyedén elindíthatja a prototípust.
 
-Felhasználói élményt, amíg prototípus-készítés végső eszköz választását útmutató segítségével. Érdemes lehet kérdések a következők: 
+A prototípus-készítés során a rendszer segít a végső eszköz kiválasztásában. Vegye figyelembe a következőket: 
 
-* Hány modult az alkalmazások és szolgáltatások vannak?
-* Hány rétegek tegye meg a modulok tárolókat?
-* Milyen nyelven írták el a modulok? 
-* Mekkora mennyiségű adatot fog a modulok feldolgozni?
-* A modulok szükség van a speciális hardvereket felgyorsítása a számítási feladatok esetében?
-* Mik azok a kívánt teljesítményt nyújt, hogy a megoldás?
-* Mi az a hardver költségvetést?
+* Hány modul van a munkaterhelésben?
+* Hány réteget osztanak meg a modulok tárolói?
+* Milyen nyelven íródott modulok? 
+* Mennyi adattal fog dolgozni a modulok feldolgozása?
+* Szükség van-e a modulok speciális hardverre a számítási feladatok felgyorsításához?
+* Mik a megoldás kívánt teljesítménybeli jellemzői?
+* Mi a hardveres költségkeret?

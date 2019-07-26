@@ -1,20 +1,20 @@
 ---
-title: 'Az Azure Cosmos DB-oktatóanyag: Létrehozása, lekérdezése és gráfbejárás az Apache TinkerPops Gremlin-konzol'
+title: 'Azure Cosmos DB oktatóanyag: Az Apache TinkerPops Gremlin-konzoljának létrehozása, lekérdezése és bejárása'
 description: Az Azure Cosmos DB rövid útmutatója csúcsok, élek és lekérdezések az Azure Cosmos DB Gremlin API-val történő létrehozásához.
 author: luisbosquez
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
 ms.topic: quickstart
-ms.date: 01/08/2019
+ms.date: 07/23/2019
 ms.author: lbosq
-ms.openlocfilehash: 277755641047bf311e06d17de5fe9d39bcc3b74b
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: cd5408e9a40177fb2c8b029673b96994c6928313
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66480581"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68384328"
 ---
-# <a name="quickstart-create-query-and-traverse-an-azure-cosmos-db-graph-database-using-the-gremlin-console"></a>Gyors útmutató: Létrehozása, lekérdezése és bejárása a Gremlin-konzol használatával egy Azure Cosmos DB-gráfadatbázis
+# <a name="quickstart-create-query-and-traverse-an-azure-cosmos-db-graph-database-using-the-gremlin-console"></a>Gyors útmutató: Azure Cosmos DB Graph-adatbázis létrehozása, lekérdezése és bejárása a Gremlin-konzol használatával
 
 > [!div class="op_single_selector"]
 > * [Gremlin-konzol](create-graph-gremlin-console.md)
@@ -62,9 +62,9 @@ Emellett a [Gremlin-konzolnak](https://tinkerpop.apache.org/) telepítve kell le
     kapcsolatkészlet|{enableSsl: true}|A kapcsolatkészletre vonatkozó beállítás az SSL-hez.
     szerializáló|{ className: org.apache.tinkerpop.gremlin.<br>driver.ser.GraphSONMessageSerializerV1d0,<br> config: { serializeResultToString: true }}|Állítsa be ezt az értéket, és törölje a `\n` sortöréseket az érték beillesztésekor.
 
-    A gazdagépek értékéhez másolja a **Gremlin URI** értéket a **áttekintése** oldalon: ![Az Azure Portal Áttekintés lapján található Gremlin URI érték megtekintése és másolása](./media/create-graph-gremlin-console/gremlin-uri.png)
+    A gazdagépek értékéhez másolja a **GREMLIN URI** értékét az **Áttekintés** lapról: ![Az Azure Portal Áttekintés lapján található Gremlin URI érték megtekintése és másolása](./media/create-graph-gremlin-console/gremlin-uri.png)
 
-    A jelszó értékéhez másolja a **elsődleges kulcs** származó a **kulcsok** oldalon: ![Megtekintése és másolása az elsődleges kulcsot az Azure portal kulcsok oldalán](./media/create-graph-gremlin-console/keys.png)
+    A jelszó értékéhez másolja az **elsődleges kulcsot** a **kulcsok** lapról: ![Az elsődleges kulcs megtekintése és másolása a Azure Portal, kulcsok lapon](./media/create-graph-gremlin-console/keys.png)
 
 A remote-secure.yaml fájlnak így kell kinéznie:
 
@@ -79,7 +79,7 @@ connectionPool: {
 serializer: { className: org.apache.tinkerpop.gremlin.driver.ser.GraphSONMessageSerializerV1d0, config: { serializeResultToString: true }}
 ```
 
-Ellenőrizze, hogy burkolása belül szögletes gazdagépek paraméter értékét. 
+Ügyeljen arra, hogy a gazdagépek paraméter értékét a szögletes zárójelben ([]) belül betakarja. 
 
 1. A terminálban futtassa a `bin/gremlin.bat` vagy a `bin/gremlin.sh` parancsot a [Gremlin-konzol](https://tinkerpop.apache.org/docs/3.2.5/tutorials/getting-started/) elindításához.
 1. A terminálban futtassa a `:remote connect tinkerpop.server conf/remote-secure.yaml` parancsot az alkalmazásszolgáltatáshoz való csatlakozáshoz.
@@ -302,7 +302,7 @@ g.E().drop()
 g.V().drop()
 ```
 
-Gratulálunk! Ön teljesítette az Azure Cosmos DB: Gremlin API-oktatóanyag!
+Gratulálunk! Ezt a Azure Cosmos DB végrehajtotta: Gremlin API-oktatóanyag!
 
 ## <a name="review-slas-in-the-azure-portal"></a>Az SLA-k áttekintése az Azure Portalon
 

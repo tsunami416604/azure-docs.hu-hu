@@ -1,235 +1,158 @@
 ---
-title: Mi az Azure Active Directory Identity Protection (frissíthetők)? | Microsoft Docs
-description: Mi az Azure Active Directory Identity Protection (frissíthetők)?
+title: Mi a Azure Active Directory Identity Protection (frissítve)? | Microsoft Docs
+description: Mi a Azure Active Directory Identity Protection (frissítve)?
 services: active-directory
-keywords: az Azure active directory identity protection a következőket cloud app discovery szolgáltatást, alkalmazások, biztonság, kockázati, kockázati szint, biztonsági rést, biztonsági házirend kezelése
-documentationcenter: ''
-author: MicrosoftGuyJFlo
-manager: mtillman
-ms.assetid: e7434eeb-4e98-4b6b-a895-b5598a6cccf1
 ms.service: active-directory
 ms.subservice: identity-protection
-ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: overview
 ms.date: 10/03/2018
 ms.author: joflore
+author: MicrosoftGuyJFlo
+manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0f6c2f36e1061243851b37da47659aaf7a18e8d6
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: a5d82f665cc837e5dbd2d7efbf16c7ae94e1b2b7
+ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67673004"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68333919"
 ---
-# <a name="what-is-azure-active-directory-identity-protection-refreshed"></a>Mi az Azure Active Directory Identity Protection (frissíthetők)?
+# <a name="what-is-azure-active-directory-identity-protection-refreshed"></a>Mi a Azure Active Directory Identity Protection (frissítve)?
 
-Az Identity Protection élmény frissítve lett, amelyekkel jobban megvédheti a szervezet identitásait. A frissített felhasználói élményt nyújtja:
+Az Identity Protection-élmény frissült a szervezet identitásának jobb védelme érdekében. Ez a frissített élmény a következőket biztosítja:
 
-- Újratervezett felügyeleti felület, amely a kockázat you¬-felhasználói kockázat és bejelentkezési kockázat számára leginkább releváns identitásáról
+- Az átalakított felügyeleti felület, amely a leginkább fontos kockázati tényező körül forog – a felhasználói kockázat és a bejelentkezés kockázata
+- Hatékony vizsgálatok a szűrési, rendezési és intelligens letöltések támogatásával
+- Továbbfejlesztett felhasználói kockázati számítás, amely segít rangsorolni a nagy valószínűséggel veszélyeztetett felhasználókra vonatkozó erőfeszítéseket
+- Új API-támogatás a kockázati adatszolgáltatásokhoz való programozott hozzáférés engedélyezéséhez
+- Egyszerűsített rendszergazdai visszajelzési folyamat, amely lehetővé teszi a felhasználók azonnali védelemmel való ellátását
+- Új felügyelt gépi tanulás a kockázatértékelések pontosságának javításához
 
-- Hatékony vizsgálatokhoz tapasztalatát a szűrési, rendezési és intelligens letöltések támogatása
+A biztonság kiemelten fontos a szervezetek számára. A biztonsági rések többsége akkor kerül sor, amikor a támadók a felhasználó identitásának ellopásával hozzáférnek a környezetekhez. Az évek során a támadók egyre hatékonyabban hasznosítják a harmadik féltől származó szabálysértéseket és kifinomult adathalászat-támadásokat használnak. Amint a támadók még alacsony jogosultsági szintű felhasználói fiókokhoz férnek hozzá, viszonylag könnyen hozzáférhetnek a fontos vállalati erőforrásokhoz az oldalirányú mozgással. 
 
-- Továbbfejlesztett felhasználói kockázat számítása segítséget nyújtanak, amelyek a legnagyobb valószínűséggel sérülhet a felhasználók felé irányuló rangsorolására
+A fenyegetésekre való reagáláshoz Azure AD Identity Protection a következőket teszi lehetővé: 
 
-- Új API-támogatást kockázati adatok programozott hozzáférés engedélyezése
+- Proaktív módon megakadályozhatja a feltört identitások visszaélését 
+- A kockázat automatikus csökkentése a gyanús tevékenységek észlelésekor 
+- Kockázatos felhasználók és bejelentkezések vizsgálata a lehetséges sebezhetőségek orvoslására  
+- Riasztást kap, ha egy felhasználó kockázata eléri a megadott küszöbértéket 
 
-- Egyszerűsített felügyeleti visszajelzés folyamat, amely lehetővé teszi a felhasználók azonnal védelmét
-
-- Új felügyelt gépi tanulás útján kockázatfelmérések pontosságának javítása
-
-
-
-Biztonsági a mai nap legfontosabb szempont a szervezet számára. Biztonsági szabályok megsértése esetén alkalmazandók igénybe a legtöbb helyezze el, ha a támadók próbál a jeggyel hozzáférést egy környezethez lopásának megjelölése a felhasználó identitását. Az évek során a támadók egyre inkább hatékony kihasználva külső illetéktelen behatolásokat és adathalászati támadások használatával váltak. Amint a támadók alacsony jogosultsági szintű felhasználó fiókok is elérhet, viszonylag egyszerű, az oldalirányú mozgás keresztül fontos vállalati erőforrásokhoz való hozzáférést nyerhetnek a hozzájuk. 
-
-Azure AD Identity Protection válaszolni a fenyegetések, lehetővé teszi, hogy: 
-
-- Proaktív módon megakadályozza, hogy feltört identitásokat visszaélt folyamatban 
-
-- Ha gyanús tevékenységet észlel automatikusan kockázatok 
-
-- Kockázatos felhasználók és bejelentkezések cím potenciális biztonsági rések vizsgálata  
-
-- Figyelmeztetést kapni, ha a felhasználó kockázati elér egy megadott küszöbértéket 
-
- 
-
-Az Azure AD Identity Protection az Azure Active Directory Premium P2, amely lehetővé teszi, hogy a házirendek úgy, hogy automatikusan válaszol, amikor a felhasználó identitásáról biztonsága sérül egyik szolgáltatása, vagy ha valaki más, mint a fiók tulajdonosa próbál jelentkezzen be a saját identitás. Ezek a szabályzatok mellett más feltételes hozzáférés-vezérlés az Azure AD által biztosított automatikusan vagy blokkolhatja hozzáférés vagy kezdeményezési kockázatcsökkentési műveleteket, például a jelszó-visszaállítás vagy a többtényezős hitelesítés kényszerítése. Identity Protection emellett figyelési és jelentéskészítési lehetőségeket a mélyebb betekintést nyerhet a kockázatokat és a szervezet esetleges támadások. 
+Azure AD Identity Protection a prémium szintű Azure Active Directory P2 egyik funkciója, amely lehetővé teszi, hogy a szabályzatok konfigurálásával automatikusan válaszoljanak a felhasználó személyazonosságának sérülése esetén, vagy ha a fiók tulajdonosán kívül más személy is megpróbál bejelentkezni identitás. Ezek a szabályzatok az Azure AD által biztosított egyéb feltételes hozzáférés-vezérlések mellett automatikusan letilthatják a hozzáférést vagy enyhítő műveleteket kezdeményeznek, például a jelszó-visszaállítást vagy a többtényezős hitelesítés kényszerítését. Emellett a személyazonosság védelme olyan figyelési és jelentéskészítési képességeket biztosít, amelyek mélyebb betekintést nyújtanak a szervezeten belüli kockázatokra és potenciális veszélyekre. 
 
 >[!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RWsS6Q]
 
-
 ## <a name="risk-events"></a>Kockázati események
 
-Az Azure AD Identity Protection észleli az alábbi kockázati események: 
-
- 
+Azure AD Identity Protection észleli a következő kockázati eseményeket: 
 
 | Kockázati esemény típusa | Leírás | Észlelés típusa |
-| ---             | ---         | ---            |
-| Bejelentkezés szokatlan utazás | Jelentkezzen be a felhasználó legutóbbi bejelentkezések alapján szokatlan helyről. | Offline |
-| Anonymous IP address | Bejelentkezés névtelen IP-címről (például: Tor böngésző, anonymizer VPN-eket). | Valós idejű |
-| Ismeretlen bejelentkezési tulajdonságok | Jelentkezzen be tulajdonságai nem volt utoljára az adott felhasználó. | Valós idejű |
-| Kártevő szoftver társított IP-cím | Jelentkezzen be a kártevő szoftverek társított IP-címről | Offline |
-| Kiszivárogtatott hitelesítő adatokkal | A kockázati esemény azt jelzi, hogy a felhasználó érvényes hitelesítő adatokkal rendelkezik lett kiszivárgott | Offline |
+| --- | --- | --- |
+| Szokatlan útvonal | Jelentkezzen be egy atipikus helyről a felhasználó legutóbbi bejelentkezései alapján. | Offline |
+| Névtelen IP cím | Bejelentkezés névtelen IP-címről (például: Tor-böngésző, névtelenül VPN-ek). | Valós idejű |
+| Szokatlan bejelentkezési tulajdonságok | Jelentkezzen be a nemrégiben nem látott tulajdonságokkal az adott felhasználó számára. | Valós idejű |
+| Kártevő szoftverrel összekapcsolt IP-cím | Bejelentkezés kártevővel összekapcsolt IP-címről | Offline |
+| Kiszivárgott hitelesítő adatok | Ez a kockázati esemény azt jelzi, hogy a felhasználó érvényes hitelesítő adatai kiszivárogtak | Offline |
 
+## <a name="types-of-risk"></a>Kockázati típusok 
 
-
-
-
-## <a name="types-of-risk"></a>A kockázat típusa 
-
-Identity Protection kockázati két típusú alapul:
+Az Identity Protection két típusú kockázati tényezőn alapul:
 
 - Bejelentkezési kockázat
-
 - Felhasználói kockázat
 
 ### <a name="sign-in-risk"></a>Bejelentkezési kockázat
 
-A bejelentkezési kockázat jelöli annak a valószínűsége, hogy egy adott hitelesítési kérelem identitás tulajdonosa nem engedélyezett.
+A bejelentkezési kockázat azt jelzi, hogy egy adott hitelesítési kérelem nem jogosult az identitás tulajdonosa számára.
 
-Nincsenek bejelentkezésikockázat-két értékelést: 
+A bejelentkezési kockázat két értékelésből áll: 
 
-- **Bejelentkezési kockázati (valós idejű)** – a bejelentkezési kockázat (valós idejű) alapján a valós idejű észlelések az feldolgozásakor a bejelentkezési eseményindító.  
-
-- **Bejelentkezési kockázati (összesítés)** – a bejelentkezési kockázat (összesítés) egy bejelentkezési teljes kockázatát. A machine learning-modell, amely úgy ítéli meg kiszámítása történik:
-
-    - Valós idejű észlelések (lásd fent)
-    
-    - A kapcsolat nélküli észlelések (olyan esetekre, a bejelentkezés végrehajtása után) 
-    
-    - Minden más szolgáltatását a bejelentkezés
-
+- **Bejelentkezési kockázat (valós idejű)** – a bejelentkezési kockázat (valós idejű) az összes olyan valós idejű észlelésen alapul, amely a bejelentkezés feldolgozásakor aktiválódik.  
+- **Bejelentkezési kockázat (aggregált)** – a bejelentkezési kockázat (aggregált) a bejelentkezés teljes kockázata. Ezt a gépi tanulási modell számítja ki, amely a következőket veszi figyelembe:
+   - Valós idejű észlelések (fent leírt)
+   - Offline észlelések (a bejelentkezést követően a tűz) 
+   - A bejelentkezés minden egyéb funkciója
 
 ### <a name="user-risk"></a>Felhasználói kockázat
 
-A felhasználói kockázat jelöli annak a valószínűsége, hogy egy adott identitás biztonsága sérült. 
+A felhasználói kockázat azt jelzi, hogy egy adott identitás biztonsága sérült. 
 
-A felhasználói kockázat figyelembe véve a felhasználóhoz társított összes kockázat alapján számítjuk ki:
+A felhasználói kockázat kiszámítása a felhasználóval kapcsolatos összes kockázat figyelembevételével történik:
 
-- Minden kockázatos bejelentkezések
-- Az összes, nem kapcsolódik egy bejelentkezési kockázati események
+- Minden kockázatos bejelentkezés
+- A bejelentkezéshez nem kapcsolódó összes kockázati esemény
 - Az aktuális felhasználói kockázat
-- Kockázati szervizelési vagy elbocsátása végrehajtott összes műveletet a felhasználóra, dátum:
+- A felhasználó által a dátumig végrehajtott összes kockázati szervizelési vagy elbocsátási művelet
 
+## <a name="how-identity-protection-detects-risk"></a>Az Identity Protection által észlelt kockázat  
 
+Az Azure AD gépi tanulással észleli a rendellenességeket és a gyanús tevékenységeket, a bejelentkezések során valós időben észlelt mindkét jelet, valamint a felhasználókhoz és a bejelentkezési tevékenységekhez kapcsolódó nem valós idejű jelzéseket. Ezeknek az adatoknak a használatával az Identity Protection minden alkalommal, amikor egy felhasználó hitelesíti magát, kiszámítja a valós idejű bejelentkezési kockázatokat, valamint meghatározza az egyes felhasználók általános felhasználói kockázati szintjét. Az Identity Protection lehetővé teszi, hogy automatikusan végrehajtsa a kockázatok észlelését az Identity Protection felhasználói kockázatok és a bejelentkezési kockázati házirendek konfigurálásával.  
 
-## <a name="how-identity-protection-detects-risk"></a>Hogyan észleli az Identity Protection a kockázat  
-
-Azure ad-ben a gépi tanulási észlelheti a rendellenességeket és gyanús tevékenységek, mindkét észlelhető a jelek használata valós idejű bejelentkezések, valamint során nem valós idejű jeleket, kapcsolódó felhasználókat, és jelentkezzen be tevékenységeik. Ezen adatok alapján Identity Protection kiszámítja egy valós idejű bejelentkezési kockázat minden alkalommal, amikor egy felhasználó hitelesíti magát, valamint minden felhasználó egy általános felhasználói kockázati szint meghatározása. Identity Protection automatikusan reagálhat az kockázati észlelések konfigurálása Identity Protection felhasználói kockázat és bejelentkezési kockázati házirend teszi lehetővé.  
-
- 
-
-Szeretné megtudni, hogyan észleli az Identity Protection a kockázat, két fontos szempontot: felhasználói kockázat és bejelentkezési kockázat. Bejelentkezési kockázati tükrözi a valószínűsége annak, hogy egy adott hitelesítési kérelem identitás tulajdonosa nem engedélyezett. Bejelentkezési kockázat két típusa van: valós idejű és teljes. Valós idejű bejelentkezési kockázat észlelve (például a bejelentkezések névtelen IP-címekről) megadott bejelentkezési kísérlet alkalmával. Összes bejelentkezési kockázat az összesítése észlelt valós idejű bejelentkezési kockázatát, valamint bármely ezt követő nem valós idejű kockázati eseményeket a felhasználóhoz társított bejelentkezések (például a lehetetlen utazás). Felhasználói kockázat jeleníti meg, hogy kiderítsék feltört egy adott identitás összesített valószínűségét. Felhasználói kockázat tartalmaz egy adott felhasználó az összes kockázati tevékenység többek között:
+Annak megismeréséhez, hogy az Identity Protection Hogyan észleli a kockázatokat, két fontos fogalom létezik: a felhasználói kockázat és a bejelentkezési kockázat. A bejelentkezési kockázat azt jelzi, hogy egy adott hitelesítési kérelem nem jogosult az identitás tulajdonosa számára. A bejelentkezési kockázatok két típusa létezik: valós idejű és teljes. A rendszer a megadott bejelentkezési kísérlet idején (például a névtelen IP-címekről érkező bejelentkezések) a valós idejű bejelentkezési kockázatot észleli. A teljes bejelentkezési kockázat az észlelt valós idejű bejelentkezési kockázatok összesített száma, valamint a felhasználó bejelentkezési moduljaihoz (például a lehetetlen utazáshoz) kapcsolódó, nem valós idejű kockázati események összessége. A felhasználói kockázat azt a teljes valószínűséget tükrözi, hogy egy rossz szereplő egy adott identitást feltört. A felhasználói kockázat egy adott felhasználó összes kockázati tevékenységét tartalmazza, beleértve a következőket:
 
 - Valós idejű bejelentkezési kockázat
-- További bejelentkezési kockázat
-- Kockázatos felhasználó észleléseket.   
+- Későbbi bejelentkezési kockázat
+- Kockázatos felhasználói észlelések.   
 
- 
-
- 
  ![Folyamat](./media/overview-v2/01.png)
- 
 
- 
-
-Az Identity Protection kockázatészlelés alapkonfiguráció folyamat-bármely adott bejelentkezéshez válasz összegzése a fenti ábrán.  
-
- 
-
- 
-
- 
+A fenti ábrán összefoglaljuk az Identitáskezelés kockázatának észlelésére és az adott bejelentkezésre adott válaszra vonatkozó alapfolyamatot.  
 
 ## <a name="common-scenarios"></a>Gyakori forgatókönyvek 
 
-A példában a Contoso-alkalmazott, nézzük meg. 
+Nézzük meg a contoso alkalmazottjának példáját. 
 
-1. Egy alkalmazott próbál bejelentkezni az Exchange online-hoz a Tor böngészőből. Bejelentkezés időben az Azure AD észleli a valós idejű kockázati események. 
+1. Egy alkalmazott megpróbál bejelentkezni az Exchange Online-ba a Tor-böngészőből. A bejelentkezés időpontjában az Azure AD valós idejű kockázati eseményeket észlel. 
+2. Az Azure AD észleli, hogy az alkalmazott névtelen IP-címről jelentkezik be, és egy közepes bejelentkezési kockázati szintet indít el. 
+3. Az alkalmazottat egy MFA-kérés kéri, mert a contoso rendszergazdája konfigurálta az Identity Protection bejelentkezési kockázat feltételes hozzáférési szabályzatát. A szabályzat megköveteli az MFA használatát közepes vagy magasabb bejelentkezési kockázat esetén. 
+4. Az alkalmazott átadja az MFA-kérést, és hozzáfér az Exchange Online-hoz, és a felhasználói kockázati szintje nem módosul. 
 
-2. Az Azure AD észleli, hogy az alkalmazott jelentkezik be egy névtelen IP-cím, egy közepes méretű bejelentkezési kockázati szint elindítása. 
+Mi történt a színfalak mögött? A Tor-böngésző bejelentkezési kísérlete valós idejű bejelentkezési kockázatot váltott ki az Azure AD-ben a névtelen IP-címekhez. Ahogy az Azure AD feldolgozta a kérést, alkalmazta a bejelentkezési kockázati házirendet az Identity Protectionben, mert az alkalmazott bejelentkezési kockázati szintje megfelel a küszöbértéknek (közepes). Mivel az alkalmazott korábban már regisztrált az MFA-ra, képesek voltak válaszolni az MFA-kihívásra, és továbbadni azokat. Az Azure AD-nek küldött MFA-kihívás sikeres átadásának képessége, amely valószínűleg a jogos identitás tulajdonosa volt, és a felhasználói kockázati szintje nem növekszik. 
 
-3. Az alkalmazott van próbálnak futtatni rajta egy MFA rendszer, mert a Contoso rendszergazda beállította az Identity Protection bejelentkezési kockázat feltételes hozzáférési szabályzat. A házirend többtényezős Hitelesítést követel meg a bejelentkezést a kockázata, közepes vagy nagyobb. 
+Mi a teendő, ha az alkalmazott nem volt az, aki bejelentkezik? 
 
-4. Az alkalmazott továbbítja a többtényezős hitelesítés használatával, és fér hozzá az Exchange online-hoz, és azok felhasználói kockázati szint nem módosulnak. 
+1. Az alkalmazott hitelesítő adataival rendelkező rosszindulatú színész megpróbál bejelentkezni az Exchange Online-fiókjába a Tor-böngészőből, mert megpróbálják elrejteni az IP-címüket. 
+2. Az Azure AD észleli, hogy a bejelentkezési kísérlet névtelen IP-címről származik, és valós idejű bejelentkezési kockázatot váltott ki. 
+3. A kártékony szereplőt egy MFA-kérés megkérdőjelezi, mivel a contoso rendszergazdája konfigurálta az Identity Protection bejelentkezési kockázat feltételes hozzáférési szabályzatát, hogy az MFA megkövetelése, ha a bejelentkezési kockázat közepes vagy magasabb. 
+4. A rosszindulatú színész nem tudja elérni az MFA-feladatot, és nem fér hozzá az alkalmazott Exchange Online-fiókjához. 
+5. A sikertelen MFA-kérés elindított egy kockázati eseményt, amely felveszi a felhasználót a jövőbeli bejelentkezésekhez. 
 
-Mi történt a háttérben? A bejelentkezési kísérlet a Tor böngészőből egy valós idejű bejelentkezési kockázat névtelen IP-cím az Azure AD-ben indul el. Az Azure AD dolgozza fel a kérelmet, alkalmazza a a bejelentkezési kockázati szabályzat konfigurálva az Identity Protection az alkalmazott bejelentkezési kockázati szint telepítve a küszöbérték (közepes). Mivel az alkalmazott volt korábban regisztrálva az MFA-hoz, a felhasználók sikeresen válaszolni, és adja át az MFA-hitelesítést. Sikeresen adja át az MFA-hitelesítést képesek jelzést az Azure AD, hogy voltak valószínűleg azonosságát törvényes tulajdonosa, és azok felhasználói kockázati szint nem növekszik. 
+Most, hogy egy rosszindulatú színész megpróbálta elérni Sarah fiókját, lássuk, mi történik a következő alkalommal, amikor az alkalmazott megpróbál bejelentkezni. 
 
+1. Az alkalmazott megpróbál bejelentkezni az Exchange Online-ba az Outlookból. A bejelentkezés időpontjában az Azure AD valós idejű kockázati eseményeket észlel, valamint minden korábbi felhasználói kockázatot. 
+2. Az Azure AD nem észleli a valós idejű bejelentkezési kockázatokat, de az előző helyzetekben fennálló kockázatos tevékenység miatt magas felhasználói kockázatot észlel.  
+3. Az alkalmazottat a jelszó-visszaállítási kérdés kéri, mert a contoso rendszergazdája úgy konfigurálta az Identity Protection felhasználói kockázati házirendjét, hogy a jelszó megváltoztatására van szükség, amikor a felhasználó magas kockázatú naplókkal rendelkezik. 
+4. Mivel az alkalmazott regisztrálva van a SSPR és az MFA számára, sikeresen visszaállították a jelszavukat. 
+5. A jelszó alaphelyzetbe állításával az alkalmazott hitelesítő adatai már nem sérülnek, és az identitásuk egy biztonságos állapotba tér vissza. 
+6. Az alkalmazott korábbi kockázati eseményei megoldódott, és a felhasználói kockázati szint automatikusan visszaáll a hitelesítő adatok biztonságának enyhítésére adott válaszként. 
 
-De mi történik, ha az alkalmazott volt, egy megpróbál bejelentkezni? 
+## <a name="how-do-i-configure-identity-protection"></a>Hogyan konfigurálja az Identitáskezelés védelmét? 
 
-1. Jelentkezzen be az Exchange Online-fiókot a Tor böngészőből, mivel az IP-címüket elrejteni kívánt megkísérli egy rosszindulatú aktor az alkalmazott hitelesítő adatokkal. 
+Az Identitáskezelés megkezdéséhez először be kell állítania egy felhasználói kockázati házirendet és egy bejelentkezési kockázati házirendet. Miután konfigurálta és alkalmazta ezeket a házirendeket egy tesztelési csoportra, szimulálhatja a kockázati eseményeket, hogy megtudja, hogyan válaszol az Identity Protection a környezetében. Az alábbi rövid útmutatók útmutatást nyújtanak a fent említett szabályzatok és tesztelés beállításához a környezetben. 
 
-2. Az Azure AD észleli, hogy a bejelentkezési kísérlet egy névtelen IP-címről, egy valós idejű bejelentkezési kockázat elindítása. 
+Az Identity Protection három szerepkört támogat az Azure AD-ben az üzembe helyezéshez kapcsolódó felügyeleti tevékenységek kiegyensúlyozásához: 
 
-3. A rosszindulatú aktor van próbálnak futtatni rajta egy MFA rendszer, mivel a Contoso rendszergazda beállította az Identity Protection bejelentkezési kockázati feltételes hozzáférési szabályzatot az többtényezős hitelesítés esetén a bejelentkezési kockázat közepes vagy nagyobb. 
-
-4. A rosszindulatú aktor meghiúsul az MFA-hitelesítést, és nem tudja elérni az alkalmazott Exchange Online-fiókját. 
-
-5. A sikertelen többtényezős hitelesítés kérése által aktivált egy kockázati esemény rögzítését, a felhasználói kockázat a későbbi bejelentkezések előléptetése. 
-
-Most, hogy egy rosszindulatú aktor próbált Sarah a fiókjába, lássuk, mi történik, a következő alkalommal, amikor az alkalmazott megpróbál bejelentkezni. 
-
-1. Az alkalmazott próbál bejelentkezni az Exchange online-hoz az Outlookban. Bejelentkezés időben az Azure AD észleli a valós idejű kockázati események, valamint bármely korábbi felhasználói kockázat. 
-
-2. Az Azure AD nem észleli a bármely valós idejű bejelentkezési kockázat, de a felhasználó magas kockázati miatt a múltbeli kockázatos tevékenység észleli a korábbi helyzetekben.  
-
-3. Az alkalmazott merül fel a jelszó alaphelyzetbe állítására szerint, mert a Contoso a rendszergazda beállította az Identity Protection felhasználói kockázati házirend a jelszómódosítás megkövetelése, ha a magas kockázatú felhasználók. 
-
-4. Az alkalmazott SSPR és az MFA regisztrálva van, mivel azok sikeresen alaphelyzetbe állítja a jelszavát. 
-
-5. Ehhez állítsa alaphelyzetbe a jelszavát, az alkalmazott hitelesítő adatok már nem sérült a biztonsága és -azonosítót fog kérni biztonságos állapotba tér vissza. 
-
-6. Az alkalmazott előző kockázati események elhárulnak, és a saját felhasználói kockázat szintjének csökkentése a hitelesítő adatok biztonsági sérülés válaszul automatikusan alaphelyzetbe áll. 
-
-## <a name="how-do-i-configure-identity-protection"></a>Hogyan konfigurálhatom az Identity Protection? 
-
-Az Identity Protection használatának megkezdéséhez először konfigurálja egy felhasználói kockázati házirend és a egy bejelentkezési kockázati házirend. Ezek a szabályzatok konfigurálva, és a egy teszt alkalmazott, szimulálhatja a kockázati események megérteni, hogyan fog válaszolni az Identity Protection a környezetben. Az alábbi rövid útmutatókban bemutató a fent említett házirendeket állíthat be és tesztelje a környezetben. 
-
- 
-
-Identity Protection 3 szerepkört a felügyeleti tevékenységek, az üzemelő példány körüli elosztása érdekében az Azure AD-ben támogatja: 
-
-| Role | Teheti meg | Nem hajtható végre |
+| Role | Elvégezhető | Nem hajtható végre |
 | --- | --- | --- |
-| Globális rendszergazda | Teljes hozzáférés az Identity Protection előkészítése Identity Protection | |
-| Biztonsági rendszergazda | Teljes hozzáférés az Identity Protection | Identity Protection előkészítése, a felhasználó a jelszavak alaphelyzetbe állítása |
-| Biztonsági olvasó | Csak olvasási hozzáférés az Identity Protection | Identity Protection előkészítése, felhasználók szervizelése, a szabályzatok konfigurálására, jelszavak alaphelyzetbe állítása| 
+| Globális rendszergazda | Teljes hozzáférés az Identity Protection szolgáltatáshoz, a személyazonosság védelme | |
+| Biztonsági rendszergazda | Teljes hozzáférés az Identity Protection szolgáltatáshoz | A felhasználók jelszavainak alaphelyzetbe állítása |
+| Biztonsági olvasó | Írásvédett hozzáférés az Identity Protectionhez | A személyazonosság védelme, a felhasználók szervizelése, a házirendek konfigurálása, a jelszavak alaphelyzetbe állítása| 
 
-További részletekért lásd: [rendszergazdai szerepkörök hozzárendelése az Azure Active Directory](../users-groups-roles/directory-assign-admin-roles.md)
-
+További információ: [rendszergazdai szerepkörök hozzárendelésének Azure Active Directory](../users-groups-roles/directory-assign-admin-roles.md)
  
-## <a name="licensing"></a>Licencek
+## <a name="licensing"></a>Licencelés
 
 >[!NOTE]
-> Az Identity Protection (frissítés) a nyilvános előzetes verzióban csak a prémium szintű Azure AD P2-ügyfeleknek lesz hozzáférése a kockázatos felhasználók jelentéshez és a kockázatos bejelentkezések jelentés.
+> Az Identity Protection (frissítve) nyilvános előzetese során csak prémium szintű Azure AD P2-ügyfelek férhetnek hozzá a kockázatos felhasználók jelentéséhez és a kockázatos bejelentkezések jelentéséhez.
 
-
-
-| Képesség | Prémium szintű Azure AD P2 | Prémium szintű Azure AD P1 | Az Azure AD Basic vagy ingyenes |
+| Képesség | Azure AD Premium P2 | Azure AD Premium P1 | Alapszintű Azure AD/ingyenes |
 | --- | --- | --- | --- |
 | Felhasználói kockázati házirend | Igen | Nem | Nem |
 | Bejelentkezési kockázati házirend | Igen | Nem | Nem |
-| Kockázatos felhasználók jelentés | Teljes hozzáférés | Korlátozott mennyiségű információt | Korlátozott mennyiségű információt |
-| Kockázatos bejelentkezési jelentések | Teljes hozzáférés | Korlátozott mennyiségű információt | Korlátozott mennyiségű információt |
-| Az MFA regisztrációs szabályzatának | Igen | Nem | Nem |
-
-
-
-
-
-
+| Kockázatos felhasználók jelentés | Teljes hozzáférés | Korlátozott információ | Korlátozott információ |
+| Kockázatos bejelentkezési jelentések | Teljes hozzáférés | Korlátozott információ | Korlátozott információ |
+| MFA-regisztrációs szabályzat | Igen | Nem | Nem |
 
 ## <a name="next-steps"></a>További lépések 
 
-Az Identity Protection használatának megkezdéséhez lásd [bejelentkezési kockázati házirend konfigurálása](quickstart-sign-in-risk-policy.md). 
-
-
-
-
-
-
+Az Identity Protection megismeréséhez tekintse meg a [bejelentkezési kockázati házirend konfigurálása](quickstart-sign-in-risk-policy.md)című témakört. 

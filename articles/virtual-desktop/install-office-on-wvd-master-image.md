@@ -1,69 +1,69 @@
 ---
-title: Az Office telepíteni egy fő VHD-rendszerképet – Azure
-description: Hogyan telepítse és szabja testre az Office egy Windows virtuális asztal előzetes fő képre az Azure-bA.
+title: Az Office telepítése fő VHD-lemezképre – Azure
+description: Az Office telepítése és testreszabása a Windows rendszerű virtuális asztali előnézeti fő rendszerképben az Azure-ban.
 services: virtual-desktop
 author: ChJenk
 ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: v-chjenk
-ms.openlocfilehash: 0e89d37011ccdfc3acdace5b45faa8e9a64e4d3e
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 9243b3e6ae9e164930373960757109ae8a4512e4
+ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67620470"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68501192"
 ---
 # <a name="install-office-on-a-master-vhd-image"></a>Az Office telepítése egy fő virtuálisgép-rendszerképre
 
-Ez a cikk bemutatja, hogyan telepítse az Office 365 ProPlus, a onedrive vállalati verzió és az egyéb gyakori alkalmazások-fő virtuális merevlemez (VHD) Rendszerkép feltöltése az Azure-bA. Ha bizonyos sor üzletági (LOB) alkalmazások a felhasználók kell, javasoljuk a jelen cikkben lévő utasítások végrehajtása után telepítse őket.
+Ebből a cikkből megtudhatja, hogyan telepítheti az Office 365 ProPlus, OneDrive és más gyakori alkalmazásokat egy fő virtuális merevlemezre (VHD) szolgáló lemezképre az Azure-ba való feltöltéshez. Ha a felhasználóknak bizonyos üzletági (LOB) alkalmazásokat kell elérniük, azt javasoljuk, hogy a jelen cikkben szereplő utasítások elvégzése után telepítse őket.
 
-Ez a cikk feltételezi, hogy már létrehozott egy virtuális gépet (VM). Ha nincs engedélyezve, [előkészítése és a egy fő VHD-lemezkép testreszabása](set-up-customize-master-image.md#create-a-vm)
+Ez a cikk azt feltételezi, hogy már létrehozott egy virtuális gépet (VM). Ha nem, tekintse meg [a fő VHD-lemezkép előkészítése és testreszabása](set-up-customize-master-image.md#create-a-vm) című témakört.
 
-Ez a cikk is feltételezi, hogy emelt szintű hozzáférés a virtuális gépen, hogy annak kiépítése az Azure vagy Hyper-V kezelőjét. Ha nincs engedélyezve, [jogosultságszintjének emelése az összes Azure előfizetéssel, és a felügyeleti csoportok kezelése](https://docs.microsoft.com/azure/role-based-access-control/elevate-access-global-admin).
+A cikk azt is feltételezi, hogy emelt szintű hozzáféréssel rendelkezik a virtuális gépen, függetlenül attól, hogy az Azure-ban vagy a Hyper-V kezelőjében van-e kiépítve. Ha nem, tekintse [meg az Azure-előfizetések és-felügyeleti csoportok kezelésének megemelt hozzáférési](https://docs.microsoft.com/azure/role-based-access-control/elevate-access-global-admin)jogosultságát.
 
 >[!NOTE]
->Ezeket az utasításokat, amelyek a szervezet meglévő folyamatok használható Windows virtuális asztal előzetes jellemző konfiguráció esetén is.
+>Ezek az utasítások a szervezet meglévő folyamataival használható, a Windows rendszerű virtuális asztali előzetes verzióra jellemző konfigurációra vonatkoznak.
 
-## <a name="install-office-in-shared-computer-activation-mode"></a>Telepítse az Office megosztott számítógép aktiválási módban
+## <a name="install-office-in-shared-computer-activation-mode"></a>Az Office telepítése megosztott számítógép-aktiválási módban
 
-Megosztott aktiválás lehetővé teszi, hogy egy számítógépre a szervezet több felhasználó által az Office 365 ProPlus üzembe helyezése. További információ a megosztott aktiválás: [Office 365 Proplus megosztott aktiválás áttekintése](https://docs.microsoft.com/DeployOffice/overview-of-shared-computer-activation-for-office-365-proplus).
+A megosztott számítógép aktiválása lehetővé teszi az Office 365 ProPlus üzembe helyezését a szervezet egyik számítógépén, amelyet több felhasználó is elérhet. A megosztott számítógép aktiválásával kapcsolatos további információkért lásd: [az Office 365 ProPlus megosztott számítógép-aktiválásának áttekintése](https://docs.microsoft.com/DeployOffice/overview-of-shared-computer-activation-for-office-365-proplus).
 
-Használja a [Office-telepítő eszköz](https://www.microsoft.com/download/details.aspx?id=49117) Office telepítéséhez. Windows 10 Enterprise több munkamenet csak az Office következő verzióit támogatja:
+Az Office telepítéséhez használja az [Office üzembehelyezési eszközét](https://www.microsoft.com/download/details.aspx?id=49117) . A Windows 10 Enterprise multi-session csak az Office következő verzióit támogatja:
 - Office 365 ProPlus
-- A Microsoft 365 üzleti előfizetési az Office 365 üzleti
+- Microsoft 365 Vállalati verzió-előfizetéssel rendelkező Office 365 Business
 
-Az Office-telepítő eszköz egy konfigurációs XML-fájl szükséges. Testre szabhatja a következő mintát, tekintse meg a [beállítási lehetőségei az Office-telepítő eszköz](https://docs.microsoft.com/deployoffice/configuration-options-for-the-office-2016-deployment-tool).
+Az Office-telepítő eszköznek konfigurációs XML-fájlt kell megadnia. Az alábbi minta testreszabásához tekintse meg az [Office-telepítési eszköz konfigurációs beállításait](https://docs.microsoft.com/deployoffice/configuration-options-for-the-office-2016-deployment-tool).
 
-Megadtuk az XML konfigurációs rendszer tegye a következőket:
+A példaként megadott konfigurációs XML-fájl a következő műveleteket végzi el:
 
-- A Insiders csatornáról telepíti az Office, és juttathatja a Insiders csatornáról vagyunk végrehajtásakor.
-- Használja a x64 architektúra.
-- Az automatikus frissítések letiltásához.
-- A Visio és a projekt telepítése.
-- Távolítsa el minden meglévő telepítéseit, Office, és azok a beállítások áttelepítéséhez.
-- Megosztott aktiválás engedélyezése.
-
->[!NOTE]
->A Visio programban rajzsablonon keresési funkció nem működik Windows virtuális asztali előzetes konfigurálása során.
-
-Itt nem ez a minta XML konfiguráció nem:
-
-- Telepítse a Skype for Business
-- Onedrive vállalati verzió telepítését felhasználónkénti módban. További tudnivalókért lásd: [onedrive vállalati verzió telepítéséhez a gépenkénti módban](#install-onedrive-in-per-machine-mode).
+- Telepítse az Office-t a bennfentesek csatornáról, és továbbítsa a frissítéseket a bennfentesek csatornáról, amikor azok végrehajtása folyamatban van.
+- Használja az x64 architektúrát.
+- Az automatikus frissítések letiltása.
+- Telepítse a Visio és a Project programot.
+- Távolítsa el az Office meglévő példányait, és telepítse át a beállításait.
+- A megosztott számítógép aktiválásának engedélyezése.
 
 >[!NOTE]
->Megosztott aktiválás csoportházirend-objektumok (GPO) vagy a beállításjegyzék-beállítások állíthat be. A csoportházirend-objektum a következő helyen található **számítógép konfigurációja\\házirendek\\felügyeleti sablonok\\a Microsoft Office 2016 (számítógép)\\licencelési beállítások**
+>A Visio rajzsablon-keresési funkciója nem működik a Windows rendszerű virtuális asztalon az előzetes verzió konfigurálása során.
 
-Az Office-telepítő eszköz setup.exe tartalmazza. Office telepítéséhez futtassa a következő parancsot a parancssorban:
+A minta konfigurációs XML-fájl nem fog megjelenni:
+
+- A Skype vállalati verzió telepítése
+- Telepítse a OneDrive-t felhasználónkénti módban. További információ: [a OneDrive telepítése számítógépenkénti módban](#install-onedrive-in-per-machine-mode).
+
+>[!NOTE]
+>A megosztott számítógép aktiválása Csoportházirend objektumok (GPO-k) vagy beállításjegyzék-beállítások használatával állítható be. A csoportházirend-objektum a **számítógép-\\konfigurációs\\szabályzatok felügyeleti sablonok\\Microsoft Office 2016 (\\gép) licencelési beállításai** között található.
+
+Az Office-telepítő eszköz tartalmazza a Setup. exe fájlt. Az Office telepítéséhez futtassa a következő parancsot egy parancssorban:
 
 ```batch
 Setup.exe /configure configuration.xml
 ```
 
-#### <a name="sample-configurationxml"></a>Sample configuration.xml
+#### <a name="sample-configurationxml"></a>Példa a Configuration. XML fájlra
 
-A következő XML-minta telepíti az Insider-kiadás.
+A következő XML-minta telepíti a bennfentesek kiadását.
 
 ```xml
 <Configuration>
@@ -101,9 +101,9 @@ A következő XML-minta telepíti az Insider-kiadás.
 ```
 
 >[!NOTE]
->Az Office-csapattól érkezik a 64 bites telepítése használatát javasolja a **OfficeClientEdition** paraméter.
+>Az Office-csapat a 64 bites telepítés használatát javasolja a **OfficeClientEdition** paraméterhez.
 
-Miután telepítette az Office, Office alapértelmezés frissítheti. Futtassa az alábbi parancsokat egyenként, vagy frissíteni a viselkedés fájlt egy kötegfájlban.
+Az Office telepítése után frissítheti az alapértelmezett Office-viselkedést. Futtassa a következő parancsokat egyenként, vagy egy batch-fájlban a viselkedés frissítéséhez.
 
 ```batch
 rem Mount the default user registry hive
@@ -124,56 +124,56 @@ reg add HKLM\SOFTWARE\Policies\Microsoft\office\16.0\common\officeupdate /v hide
 reg add HKLM\SOFTWARE\Policies\Microsoft\office\16.0\common\officeupdate /v hideenabledisableupdates /t REG_DWORD /d 1 /f
 ```
 
-## <a name="install-onedrive-in-per-machine-mode"></a>Onedrive vállalati verzió telepítését a gépenkénti módban
+## <a name="install-onedrive-in-per-machine-mode"></a>A OneDrive telepítése számítógépenkénti módban
 
-Onedrive vállalati verzió felhasználónként megfelelően telepítve. Ebben a környezetben kell lennie a gépenkénti telepítve.
+A OneDrive telepítése általában felhasználónként történik. Ebben a környezetben telepíteni kell egy gépenként.
 
-Íme a onedrive vállalati verzió telepítését a gépenkénti módban:
+A következőképpen telepítheti a OneDrive-t gépi módban:
 
-1. Először hozzon létre egy helyet a onedrive vállalati verzió telepítő előkészítéséhez. Egy helyi mappát vagy [\\\\unc] (file://unc) helye nem okoz gondot.
+1. Először hozzon létre egy helyet a OneDrive-telepítő előkészítéséhez. A helyi lemez mappája vagy\\az [\\UNC] (file://UNC) hely rendben van.
 
-2. Töltse le a OneDriveSetup.exe a manuálisan előkészített helyre a következő hivatkozást: <https://aka.ms/OneDriveWVD-Installer>
+2. Töltse le a OneDriveSetup. exe fájlt a szakaszos helyre a következő hivatkozással:<https://aka.ms/OneDriveWVD-Installer>
 
-3. Ha az office a onedrive vállalati verziója, kihagyva  **\<ExcludeApp ID = "Onedrive vállalati verzió" /\>** , távolítsa el az összes meglévő onedrive vállalati verzió felhasználói telepítés a következő futtatásával egy rendszergazda jogú parancssorból a parancs:
+3. Ha az Office-t a OneDrive  **\<-mel telepítette, akkor a ExcludeApp ID\>= "OneDrive" vagy**a következő parancs futtatásával távolítsa el a meglévő OneDrive felhasználónkénti telepítéseit egy emelt szintű parancssorból:
     
     ```batch
     "[staged location]\OneDriveSetup.exe" /uninstall
     ```
 
-4. Futtassa a következő parancsot egy rendszergazda jogú parancssorból beállítása a **AllUsersInstall** beállításazonosító:
+4. Futtassa ezt a parancsot egy rendszergazda jogú parancssorból a **AllUsersInstall** beállításjegyzék értékének megadásához:
 
     ```batch
     REG ADD "HKLM\Software\Microsoft\OneDrive" /v "AllUsersInstall" /t REG_DWORD /d 1 /reg:64
     ```
 
-5. Onedrive vállalati verzió telepítését a gépenkénti módban a következő parancs futtatásával:
+5. Futtassa ezt a parancsot a OneDrive telepítéséhez számítógépenkénti módban:
 
     ```batch
     Run "[staged location]\OneDriveSetup.exe" /allusers
     ```
 
-6. Konfigurálása a onedrive vállalati verzió indítás bejelentkezés az összes felhasználó számára a következő parancs futtatásával:
+6. Futtassa ezt a parancsot a OneDrive konfigurálásához az összes felhasználó bejelentkezésének megkezdéséhez:
 
     ```batch
     REG ADD "HKLM\Software\Microsoft\Windows\CurrentVersion\Run" /v OneDrive /t REG_SZ /d "C:\Program Files (x86)\Microsoft OneDrive\OneDrive.exe /background" /f
     ```
 
-7. Engedélyezése **csendes módban a felhasználói fiók konfigurálása** a következő parancs futtatásával.
+7. A következő parancs futtatásával engedélyezze a **felhasználói fiók csendes konfigurálását** .
 
     ```batch
     REG ADD "HKLM\SOFTWARE\Policies\Microsoft\OneDrive" /v "SilentAccountConfig" /t REG_DWORD /d 1 /f
     ```
 
-8. Átirányítási, és helyezze át a Windows ismert mappák a onedrive-ra a következő parancs futtatásával.
+8. A következő parancs futtatásával átirányíthatja és áthelyezheti a Windows ismert mappáit a OneDrive.
 
     ```batch
     REG ADD "HKLM\SOFTWARE\Policies\Microsoft\OneDrive" /v "KFMSilentOptIn" /t REG_SZ /d "<your-AzureAdTenantId>" /f
     ```
 
-## <a name="teams-and-skype"></a>Csoportok és Skype
+## <a name="teams-and-skype"></a>Csapatok és Skype
 
-Windows virtuális asztal nem támogatja a Skype, az üzleti és a csapatok számára.
+A Windows rendszerű virtuális asztal nem támogatja a Skype vállalati és munkacsoportok használatát.
 
 ## <a name="next-steps"></a>További lépések
 
-Most, hogy az Office a lemezképhez hozzáadott, továbbra is a fő VHD-lemezkép testreszabását. Lásd: [előkészítése és a egy fő VHD-rendszerképet testreszabása](set-up-customize-master-image.md).
+Most, hogy hozzáadta az Office-t a lemezképhez, továbbra is testreszabhatja a fő VHD-lemezképet. Lásd: [a fő VHD-lemezkép előkészítése és testreszabása](set-up-customize-master-image.md).

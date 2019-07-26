@@ -1,6 +1,6 @@
 ---
-title: Gyakori biztonsági attribútumok az Azure Service Bus Relay használatával
-description: A gyakori biztonsági attribútumok értékeléséhez az Azure Service Bus Relay ellenőrzőlista
+title: Azure Service Bus Relay biztonsági attribútumai
+description: A Azure Service Bus Relay kiértékeléséhez szükséges biztonsági attribútumok ellenőrzőlistája
 services: service-bus-relay
 ms.service: service-bus-relay
 documentationcenter: ''
@@ -9,16 +9,16 @@ manager: barbkess
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: mbaldwin
-ms.openlocfilehash: d8ce3c995e8e0f20ed6d694f481cc5fc9fde4fa7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2047f64914d4a286e6de38b7b2c8524d98eba562
+ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66000147"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68443887"
 ---
-# <a name="security-attributes-for-azure-service-bus-relay"></a>Az Azure Service Bus Relay biztonsági attribútumok
+# <a name="security-attributes-for-azure-service-bus-relay"></a>Azure Service Bus Relay biztonsági attribútumai
 
-Ez a cikk az Azure Service Bus Relay beépített biztonsági attribútumok dokumentumok.
+Ez a cikk a Azure Service Bus Relaybe beépített biztonsági attribútumokat dokumentálja.
 
 [!INCLUDE [Security Attributes Header](../../includes/security-attributes-header.md)]
 
@@ -26,43 +26,43 @@ Ez a cikk az Azure Service Bus Relay beépített biztonsági attribútumok dokum
 
 | Biztonsági attribútum | Igen/nem | Megjegyzések |
 |---|---|--|
-| Titkosítás inaktív állapotban:<ul><li>Kiszolgálóoldali titkosítás</li><li>Kiszolgálóoldali titkosítás a felhasználó által kezelt kulcsok</li><li>Más titkosítási funkciók (például az ügyféloldali, mindig titkosított, stb.)</ul>|  – | Relay egy web socket, és nem marad meg adatokat. |
-| Titkosítás az átvitel során:<ul><li>Express route-titkosítás</li><li>A VNet-titkosítás</li><li>Hálózatok titkosítása</ul>| Igen | Szolgáltatás szükséges a TLS. |
-| Titkosítási kulcs kezelése (CMK, BYOK, stb.)| Nem | Csak a Microsoft a TLS-tanúsítványokat használ.  |
-| Oszlop a blokkszintű titkosítás (az Azure Data Services)| – | |
+| Titkosítás inaktív állapotban (például kiszolgálóoldali titkosítás, ügyfél által felügyelt kulcsokkal rendelkező kiszolgálóoldali titkosítás és egyéb titkosítási funkciók)|  – | A Relay egy webes szoftvercsatorna, és nem őrzi meg az adatmegőrzési időt. |
+| Az átvitel közbeni titkosítás (például ExpressRoute titkosítás, VNet titkosítás és VNet-VNet titkosítás)| Igen | A szolgáltatáshoz TLS szükséges. |
+| Titkosítási kulcsok kezelését (CMK, BYOK stb.)| Nem | Csak a Microsoft TLS-tanúsítványokat használja.  |
+| Oszlop szintű titkosítás (Azure Data Services)| – | |
 | Titkosított API-hívások| Igen | HTTPS. |
 
-## <a name="network-segmentation"></a>Hálózati szegmentálást
+## <a name="network-segmentation"></a>Hálózati szegmentálás
 
 | Biztonsági attribútum | Igen/nem | Megjegyzések |
 |---|---|--|
-| Szolgáltatási végpont támogatás| Nem |  |
-| Hálózatelkülönítés és támogatási optimalizálóként működik| Nem |  |
-| Kényszerített bújtatás támogatása| – | -Továbbító egy olyan, a TLS-alagút  |
+| Szolgáltatás végpontjának támogatása| Nem |  |
+| Hálózati elkülönítés és tűzfalak támogatása| Nem |  |
+| Kényszerített bújtatás támogatása| – | A Relay a TLS-alagút  |
 
 ## <a name="detection"></a>Észlelés
 
 | Biztonsági attribútum | Igen/nem | Megjegyzések|
 |---|---|--|
-| Azure monitorozási támogatása (a Log analytics, az App insights, stb.)| Igen | |
+| Azure monitoring-támogatás (log Analytics, alkalmazás-elemzések stb.)| Igen | |
 
 ## <a name="identity-and-access-management"></a>Identitás- és hozzáférés-kezelés
 
 | Biztonsági attribútum | Igen/nem | Megjegyzések|
 |---|---|--|
-| Hitelesítés| Igen | Via SAS. |
-| Engedélyezés|  Igen | Via SAS. |
+| Authentication| Igen | SAS-n keresztül. |
+| Authorization|  Igen | SAS-n keresztül. |
 
 
-## <a name="audit-trail"></a>Auditnapló
+## <a name="audit-trail"></a>Naplózási nyomvonal
 
 | Biztonsági attribútum | Igen/nem | Megjegyzések|
 |---|---|--|
-| Vezérlő és a felügyeleti sík naplózási és naplózása| Igen | Keresztül [az Azure Resource Manager](../azure-resource-manager/index.yml). |
-| Adatsík naplózása és naplózása| Igen | Kapcsolat sikeres / sikertelen és a hibák és a naplóba.  |
+| Vezérlési és felügyeleti síkok naplózása és naplózása| Igen | [Azure Resource Manageron](../azure-resource-manager/index.yml)keresztül. |
+| Adatsíkok naplózása és naplózása| Igen | A sikeres és sikertelen kapcsolatok, valamint a naplózott hibák.  |
 
 ## <a name="configuration-management"></a>Konfigurációkezelés
 
 | Biztonsági attribútum | Igen/nem | Megjegyzések|
 |---|---|--|
-| Konfiguráció kezelésével kapcsolatos támogatás (versioning konfiguráció stb.)| Igen | Keresztül [az Azure Resource Manager](../azure-resource-manager/index.yml).|
+| Configuration Management-támogatás (konfiguráció verziószámozása stb.)| Igen | [Azure Resource Manageron](../azure-resource-manager/index.yml)keresztül.|

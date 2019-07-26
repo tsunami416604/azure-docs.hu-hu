@@ -1,7 +1,7 @@
 ---
-title: 'Gyors útmutató: Ellenőrizze a helyesírást, a Bing helyesírás-ellenőrzése SDK forC#'
-titlesuffix: Azure Cognitive Services
-description: Ismerkedés a Bing Spell Check REST API használatával a helyesírás-és nyelvtani.
+title: 'Gyors útmutató: Helyesírás ellenőrzése a Bing Spell Check SDK-valC#'
+titleSuffix: Azure Cognitive Services
+description: Az Bing Spell Check REST API használatának első lépései a helyesírás és a nyelvtan ellenőrzéséhez.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,23 +10,23 @@ ms.subservice: bing-spell-check
 ms.topic: quickstart
 ms.date: 02/20/2019
 ms.author: aahi
-ms.openlocfilehash: adbb60c7ddbc72b8b7e5cb31c6909117ce3a10cb
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: d98d00275cbd89702e4bae0c93aa262805617e59
+ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65798365"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68500785"
 ---
-# <a name="quickstart-check-spelling-with-the-bing-spell-check-sdk-for-c"></a>Gyors útmutató: Ellenőrizze a helyesírást, a Bing helyesírás-ellenőrzése SDK forC#
+# <a name="quickstart-check-spelling-with-the-bing-spell-check-sdk-for-c"></a>Gyors útmutató: Helyesírás ellenőrzése a Bing Spell Check SDK-valC#
 
-Ez a rövid útmutató segítségével megkezdheti a helyesírás-ellenőrzést, a Bing helyesírás-ellenőrzése SDK for C#. Míg a Bing Spell Check REST API-val kompatibilis szinte bármelyik programozási nyelvével, az SDK biztosít egy egyszerű módja annak, hogy a szolgáltatás integrálása az alkalmazásokba. Ez a minta forráskódja találhatók [GitHub](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/samples/SpellCheck).
+Ezzel a rövid útmutatóval megkezdheti a helyesírás-ellenőrzést C#a Bing Spell Check SDK-val. Habár a Bing Spell Check REST API kompatibilis a legtöbb programozási nyelvvel, az SDK egyszerű módszert kínál a szolgáltatás integrálására az alkalmazásokba. A minta forráskódja a [githubon](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/samples/SpellCheck)található.
 
 ## <a name="application-dependencies"></a>Alkalmazásfüggőségek
 
-* Bármely kiadása [Visual Studio 2017-es vagy újabb](https://visualstudio.microsoft.com/downloads/).
-* A Bing Spell Check [NuGet-csomag](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Language.SpellCheck)
+* A [Visual Studio 2017 vagy újabb](https://visualstudio.microsoft.com/downloads/)verziójának bármely kiadása.
+* A Bing Spell Check [NuGet csomag](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Language.SpellCheck)
 
-A Bing helyesírás-ellenőrzése SDK hozzáadása a projekthez, válassza ki a **NuGet-csomagok kezelése** a **Megoldáskezelőben** a Visual Studióban. Vegye fel a `Microsoft.Azure.CognitiveServices.Language.SpellCheck` csomagot. A csomag is települ a következő függőségeket:
+Ha hozzá szeretné adni a Bing Spell Check SDK-t a projekthez, válassza a **NuGet-csomagok kezelése** **megoldáskezelő** a Visual Studióban lehetőséget. Vegye fel a `Microsoft.Azure.CognitiveServices.Language.SpellCheck` csomagot. A csomag a következő függőségeket is telepíti:
 
 * Microsoft.Rest.ClientRuntime
 * Microsoft.Rest.ClientRuntime.Azure
@@ -36,7 +36,7 @@ A Bing helyesírás-ellenőrzése SDK hozzáadása a projekthez, válassza ki a 
 
 ## <a name="create-and-initialize-the-application"></a>Az alkalmazás létrehozása és inicializálása
 
-1. Hozzon létre egy új C# konzol megoldást a Visual Studióban. Ezután adja hozzá a következő `using` utasítást.
+1. Hozzon létre C# egy új konzolos megoldást a Visual Studióban. Ezután adja hozzá a `using` következő utasítást.
     
     ```csharp
     using System;
@@ -46,9 +46,9 @@ A Bing helyesírás-ellenőrzése SDK hozzáadása a projekthez, válassza ki a 
     using Microsoft.Azure.CognitiveServices.Language.SpellCheck.Models;
     ```
 
-2. Hozzon létre egy új osztályt. Ezután hozzon létre egy aszinkron a hívott függvény `SpellCheckCorrection()` , amely vesz igénybe egy előfizetési kulcsot, és a helyesírás-ellenőrzési kérést küld.
+2. Hozzon létre egy új osztályt. Ezután hozzon létre egy nevű `SpellCheckCorrection()` aszinkron függvényt, amely egy előfizetési kulcsot fogad, és elküldi a helyesírás-ellenőrzési kérést.
 
-3. Hozza létre az ügyfél hozzon létre egy új `ApiKeyServiceClientCredentials` objektum. 
+3. Új `ApiKeyServiceClientCredentials` objektum létrehozásával hozza létre az ügyfelet. 
 
     ```csharp
     public static class SpellCheckSample{
@@ -59,15 +59,15 @@ A Bing helyesírás-ellenőrzése SDK hozzáadása a projekthez, válassza ki a 
     }
     ```
 
-## <a name="send-the-request-and-read-the-response"></a>A kérelem elküldéséhez és a válasz olvasása
+## <a name="send-the-request-and-read-the-response"></a>A kérelem elküldése és a válasz elolvasása
 
-1. A fent létrehozott függvényben hajtsa végre az alábbi lépéseket. A az ügyféllel helyesírás-ellenőrzés kérés küldése. Adja hozzá a szöveget a telepítőprogram ellenőrzi, hogy a `text` paramétert, és állítsa a módot `proof`.  
+1. A fent létrehozott függvényben hajtsa végre a következő lépéseket. Küldje el a helyesírás-ellenőrzési kérelmet az ügyféllel. Adja hozzá a `text` paraméterhez ellenőrizendő szöveget, és állítsa be a `proof`módot a következőre:.  
     
     ```csharp
     var result = await client.SpellCheckerWithHttpMessagesAsync(text: "Bill Gatas", mode: "proof");
     ```
 
-2. Első helyesírás-ellenőrzés eredménye akkor kaphat, ha van ilyen. Nyomtatás az első helytelenül írt szó (token) adott vissza, a jogkivonat típusa és javaslatok számát.
+2. Az első helyesírás-ellenőrzés eredményének beolvasása, ha van ilyen. Nyomtassa ki a visszaadott első hibásan beírt szót (tokent), a jogkivonat típusát és a javaslatok számát.
 
     ```csharp
     if (firstspellCheckResult != null){
@@ -80,7 +80,7 @@ A Bing helyesírás-ellenőrzése SDK hozzáadása a projekthez, válassza ki a 
     }
     ```
 
-3. Az első javasolt javítás kaphat, ha van ilyen. Nyomtassa ki a javaslat pontszám, és a javasolt szóra. 
+3. Kérje le az első javasolt javítást, ha van ilyen. Nyomtassa ki a javaslat pontszámát és a javasolt szót. 
 
     ```csharp
             var suggestions = firstspellCheckResult.Suggestions;

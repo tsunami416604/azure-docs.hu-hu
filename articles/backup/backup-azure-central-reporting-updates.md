@@ -1,42 +1,41 @@
 ---
-title: Az Azure Backup központi jelentéskészítési tartalomcsomag frissítése
-description: Az Azure Backup tartalom frissítésekkel kapcsolatos információk csomag a Power bi-ban
-services: backup
+title: A Azure Backup központi jelentési tartalomkezelő csomag frissítése
+description: Információk a Azure Backup Content Pack frissítéseiről Power BI
 author: kasinh
 manager: vvithal
 ms.service: backup
 ms.topic: conceptual
 ms.date: 01/30/2019
 ms.author: kasinh
-ms.openlocfilehash: 87bc7ed3bb59266484858f534080fa87a7230981
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 984f87a514aa55fc18a92c6912145bc65cf21f4c
+ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60641921"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68466602"
 ---
-# <a name="update-the-azure-backup-central-reporting-content-pack"></a>Az Azure Backup központi jelentéskészítési tartalomcsomag frissítése 
+# <a name="update-the-azure-backup-central-reporting-content-pack"></a>A Azure Backup központi jelentési tartalomkezelő csomag frissítése 
 
-A [Azure Backup tartalomcsomag](https://docs.microsoft.com/azure/backup/backup-azure-configure-reports#view-reports-in-power-bi) központi biztonsági mentéssel kapcsolatos jelentések megtekintéséhez használható. A tartalomcsomag a további funkciók hozzáadása és hibajavítás rendszeresen frissül. Ez a cikk bemutatja, hogyan frissítse a tartalomcsomagot. Azt is bemutatja, hogyan lehet elhalasztani a frissítést, és az idő függvényében végzett frissítéseket.
+A [Azure Backup Content Pack](https://docs.microsoft.com/azure/backup/backup-azure-configure-reports#view-reports-in-power-bi) használatával megtekintheti a központi biztonsági mentéssel kapcsolatos jelentéseket. A Content Pack frissítése rendszeresen megtörténik a további funkciók hozzáadásához és a hibák javításához. Ebből a cikkből megtudhatja, hogyan frissítheti a Content Pack csomagot. Emellett azt is bemutatja, hogyan elhalaszthatja a frissítést, és megtekintheti a frissítések időbeli változásait.
 
-## <a name="get-updates-to-the-content-pack"></a>A tartalomcsomag frissítése
+## <a name="get-updates-to-the-content-pack"></a>A Content Pack frissítéseinek beolvasása
 
-### <a name="get-the-updated-content-pack"></a>A frissített tartalomcsomag beszerzése
-Ha még nem végzett módosításokat a tartalomcsomag példányának, automatikusan frissül. Ha módosítja a tartalomcsomagot, a Power BI és az e-mailben értesítést kap értesítést. Ha szeretné, a frissített tartalomcsomag beszerzése saját igényei. 
+### <a name="get-the-updated-content-pack"></a>A frissített tartalomkezelő csomag beszerzése
+Ha nem módosította a Content Pack másolatát, az automatikusan frissül. A Content Pack változásakor értesítést kap Power BI és egy e-mailes értesítést. Megadhatja, hogy a frissített Content Pack legyen az Ön kényelme. 
 
 ### <a name="postpone-the-update"></a>A frissítés elhalasztása
-Az ajánlott eljárás szerint a rendszer importálja a tartalomcsomagot, egy [egyéni munkaterület](https://youtu.be/26zyOtyHPJM?t=1m57s). Most már szerkesztheti a jelentéseket.
-Ahogy korábban említettük Ha módosítja a tartalomcsomagot, megjelenik egy értesítés a Power bi-ban. Ha szeretné, a tartalomcsomag újabb beolvasása. 
+Az ajánlott eljárás az, ha a Content Pack csomagot egy [Egyéni](https://youtu.be/26zyOtyHPJM?t=1m57s)munkaterületre importálja. Most már szerkesztheti a jelentéseket.
+Ahogy korábban említettük, a Content Pack változásakor megjelenik egy értesítés a Power BI. Később is kiválaszthatja, hogy melyik csomagot szeretné beszerezni. 
 
 ## <a name="coming-soon"></a>Hamarosan
    
-Az Azure Backup-tartalomcsomaghoz további számítási feladatok frissül. Számítási feladat például az Azure SQL Database IaaS VM biztonsági mentése és a System Center Data Protection Manager. Ez a támogatás hozzáadása az aktuális támogatása az Azure backup és az Azure virtuális gép biztonsági mentéseinek. Ez a támogatás azt jelenti, hogy megtekintheti és elemezheti a biztonsági mentési adatok egy központi helyen. [Jelentések is testreszabható](https://youtu.be/26zyOtyHPJM) a szervezet igényeinek megfelelően.
+A Azure Backup Content Pack a további számítási feladatok támogatásához frissül. A számítási feladatok közé tartozik Azure SQL Database a IaaS VM Backup és a System Center Data Protection Manager. Ez a támogatás hozzáadja az Azure Backup és az Azure virtuális gépek biztonsági mentésének aktuális támogatását. Ez a támogatás azt jelenti, hogy az összes biztonsági mentési adatait egyetlen központi helyen tekintheti meg és elemezheti. A [jelentések emellett testreszabhatók](https://youtu.be/26zyOtyHPJM) a szervezet igényeinek megfelelően.
 
-Az előre konfigurált jelentéseket, amelyek az Azure Backup-tartalomcsomaghoz kapható változnak. A módosításokat a jelentések kifejezőbb számítási feladatokhoz. A jelentések közelgő beállítva lehetőségekbe itt érhető el.
+A Azure Backup Content Pack csomaghoz tartozó előre konfigurált jelentések változnak. A módosítások a munkaterhelések között jobban értelmezik a jelentéseket. Itt találja a közelgő jelentések betekintését.
 
-### <a name="summary"></a>Összefoglalás
+### <a name="summary"></a>Összegzés
    
-![Összefoglalás](./media/backup-azure-central-reporting/AzBackup-Central-Reporting-Summary.png)
+![Összegzés](./media/backup-azure-central-reporting/AzBackup-Central-Reporting-Summary.png)
 
 ### <a name="billing"></a>Számlázás
 
@@ -64,5 +63,5 @@ Az előre konfigurált jelentéseket, amelyek az Azure Backup-tartalomcsomaghoz 
 
 ## <a name="next-steps"></a>További lépések
 
-* [Jelentések megosztása a szervezetben](https://youtu.be/26zyOtyHPJM)
-* [Az Azure Backup – gyakori kérdések](backup-azure-backup-faq.md)
+* [Jelentések megosztása a szervezeten belül](https://youtu.be/26zyOtyHPJM)
+* [Azure Backup GYIK](backup-azure-backup-faq.md)

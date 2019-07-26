@@ -1,146 +1,146 @@
 ---
-title: Leképezés adatfolyam teljesítmény és finomhangolási útmutató az Azure Data Factoryban |} A Microsoft Docs
-description: További információ az adatfolyamok leképezés használata esetén az Azure Data Factoryban adatfolyamok teljesítményét befolyásoló legfontosabb tényezők.
+title: Az adatfolyam teljesítményének és hangolási útmutatójának leképezése Azure Data Factoryban | Microsoft Docs
+description: Ismerje meg azokat a főbb tényezőket, amelyek hatással vannak a Azure Data Factory adatforgalmának teljesítményére a leképezési adatfolyamatok használatakor.
 author: kromerm
 ms.topic: conceptual
 ms.author: makromer
 ms.service: data-factory
 ms.date: 05/16/2019
-ms.openlocfilehash: 1ee266d7d9846a357dce613817affdb0cde5bfdc
-ms.sourcegitcommit: e6cb7ca206a125c05acfd431b5a64391a8dcc6b3
+ms.openlocfilehash: 090c229c5e97ede8eb7a397ce8f4d13d8735a346
+ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67569026"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68404608"
 ---
-# <a name="mapping-data-flows-performance-and-tuning-guide"></a>Leképezési adatok folyamatok teljesítmény és finomhangolás – útmutató
+# <a name="mapping-data-flows-performance-and-tuning-guide"></a>Adatfolyamatok teljesítményének és hangolási útmutatójának leképezése
 
 [!INCLUDE [notes](../../includes/data-factory-data-flow-preview.md)]
 
-Az Azure Data Factory leképezési adatfolyamok adja meg egy böngészőben kódmentes felületen megtervezésére, üzembe helyezése és összehangolására adatátalakítások ipari méretekben.
+A Azure Data Factory leképezési adatfolyamatok egy kód nélküli böngésző felületet biztosítanak az adatátalakítások méretezéséhez, üzembe helyezéséhez és előkészítéséhez.
 
 > [!NOTE]
-> Ha nem ismeri a ADF-leképezés adatfolyamok általánosságban, lásd: [az adatok elkezdenek beérkezni áttekintése](concepts-data-flow-overview.md) Ez a cikk elolvasása előtt.
+> Ha nem ismeri az ADF-leképezési adatfolyamatok általános adatait, tekintse meg a jelen cikk elolvasása előtt [az adatfolyamatok áttekintése](concepts-data-flow-overview.md) című témakört.
 >
 
 > [!NOTE]
-> Amikor tervezésekor és tesztelése a ADF felhasználói felületről adatfolyamok, ügyeljen arra, hogy kapcsolja be a hibakeresési kapcsolót, hogy a data folyamatok hajthat végre valós idejű ízelítőt kapott egy fürt várakozás nélkül.
+> Ha az ADF felhasználói felületéről fejleszti és teszteli az adatfolyamatokat, ügyeljen arra, hogy a hibakeresési kapcsolót kapcsolja be úgy, hogy valós időben tudja végrehajtani az adatfolyamatokat anélkül, hogy a fürt bemelegítésére kellene várnia.
 >
 
-![Hibakeresési gomb](media/data-flow/debugb1.png "hibakeresése")
+![Hibakeresés gomb](media/data-flow/debugb1.png "Hibakeresés")
 
-## <a name="monitor-data-flow-performance"></a>Data flow teljesítményének monitorozása
+## <a name="monitor-data-flow-performance"></a>Adatfolyamok teljesítményének figyelése
 
-Tervezése a társítási adatok elkezdenek beérkezni a böngészőben, miközben test jednotky minden egyes átalakítás kattintva választhat az adatok előzetes lapon az egyes átalakítási beállítások alsó ablaktábláján. A következő lépéssel, figyelembe kell venni, hogy a folyamattervezőben az adatokat a folyamat-végpont tesztelése. Adatok folyamat végrehajtása tevékenység hozzáadása és az adatfolyam teljesítményének tesztelése a hibakeresési gomb használatával. A folyamat ablak alsó ablaktábláján az "actions" eyeglass ikon jelenik meg:
+A leképezési adatfolyamatok a böngészőben történő tervezésekor az egyes átalakításokat az egyes átalakítások alsó beállítások paneljének adatelőnézet fülére kattintva is kipróbálhatja. A következő lépés az, hogy az adatfolyamatot teljes körűen tesztelje a folyamat-tervezőben. Vegyen fel egy végrehajtási adatfolyam-tevékenységet, és használja a hibakeresés gombot az adatfolyam teljesítményének teszteléséhez. A folyamat ablakának alsó ablaktábláján egy szemüveg ikon jelenik meg a "műveletek" alatt:
 
-![Adatfolyam-figyelő](media/data-flow/mon002.png "adatfolyam figyelő 2")
+![Adatfolyam-figyelő](media/data-flow/mon002.png "Adatfolyam-figyelő 2")
 
-Kattintson erre az ikonra a végrehajtási terv és a későbbi teljesítményprofilját a adatfolyama jeleníti meg. Ezen információk használatával az adatfolyama elleni különböző méretű adatforrások teljesítményének. Vegye figyelembe, hogy az általános teljesítmény számítások a fürt feladat végrehajtási telepítési idő 1 perc akkor feltételezheti, és ha az alapértelmezett Azure integrációs modult használ, előfordulhat, hogy hozzá kell, valamint a fürt léptetéses felfelé időt 5 perc.
+Erre az ikonra kattintva megjelenik az adatfolyam végrehajtási terve és az azt követő teljesítmény profilja. Ezekkel az adatokkal megbecsülheti az adatáramlás teljesítményét a különböző méretű adatforrások esetében. Vegye figyelembe, hogy az általános teljesítmény-számításokban 1 percet is igénybe vehet a fürt feladatának végrehajtásához szükséges idő, és ha az alapértelmezett Azure Integration Runtime használja, előfordulhat, hogy 5 percet kell felvennie a fürt Felpörgetési idejére is.
 
-![Data Flow figyelési](media/data-flow/mon003.png "adatfolyam figyelő 3")
+![Adatfolyam-figyelés](media/data-flow/mon003.png "Adatfolyam-figyelő 3")
 
-## <a name="optimizing-for-azure-sql-database-and-azure-sql-data-warehouse"></a>Az Azure SQL Database és az Azure SQL Data warehouse-bA optimalizálása
+## <a name="optimizing-for-azure-sql-database-and-azure-sql-data-warehouse"></a>Optimalizálás Azure SQL Database és Azure SQL Data Warehouse
 
-![Forrás-rész](media/data-flow/sourcepart3.png "rész forrás")
+![Forrás része](media/data-flow/sourcepart3.png "Forrás része")
 
-### <a name="partition-your-source-data"></a>Az adatforrás-adatok particionálása
+### <a name="partition-your-source-data"></a>A forrásadatok particionálása
 
-* Nyissa meg "Optimalizálása", és válassza a "Forrás". Egy adott tábla oszlop vagy egy típus beállítása a lekérdezésben.
-* Ha "oszlop" lehetőséget választja, majd válassza ki a partíciós oszlopa.
-* A kapcsolatok maximális számát is, állítsa be az Azure SQL DB-hez. Magasabb a beállítás az adatbázis kapcsolatait párhuzamos szerezhet próbálhatja ki. Bizonyos esetekben azonban csak korlátozott számú kapcsolatok gyorsabb működés eredményezhet.
-* A forrás adatbázistáblák nem lehet particionálni kell.
-* Beállítása egy lekérdezést a forrás-átalakítást, amely megfelel az adatbázis-táblázat a particionálási séma lehetővé teszi a forrás-adatbázismotor partíció eltávolítási kihasználhatja.
-* Ha a forrás már nincs particionálva, ADF továbbra is a Spark átalakítási környezetben a forrás átalakításában szerepel a kiválasztott kulcs alapján adatparticionálási fogja használni.
+* Lépjen az "optimalizálás" elemre, és válassza a "forrás" lehetőséget. Állítsa be egy adott tábla oszlopát vagy típusát egy lekérdezésben.
+* Ha az "oszlop" lehetőséget választotta, válassza ki a partíció oszlopot.
+* Állítsa be az Azure SQL-ADATBÁZISsal létesített kapcsolatok maximális számát is. Nagyobb beállítást is kipróbálhat, ha párhuzamos kapcsolatot szeretne létesíteni az adatbázissal. Bizonyos esetekben azonban előfordulhat, hogy a gyorsabb teljesítmény korlátozott számú kapcsolattal jár.
+* A forrás-adatbázis táblái nem szükségesek particionálni.
+* Ha olyan lekérdezést állít be a forrás-átalakításban, amely megfelel az adatbázis-táblázat particionálási sémájának, lehetővé teszi, hogy a forrás-adatbázis motorja kihasználja a partíciók eltávolítását.
+* Ha a forrás még nincs particionálva, az ADF továbbra is az adatparticionálást fogja használni a Spark átalakítási környezetben a forrás-átalakításban kiválasztott kulcs alapján.
 
-### <a name="set-batch-size-and-query-on-source"></a>Köteg mérete és a lekérdezések a forráson
+### <a name="set-batch-size-and-query-on-source"></a>Köteg méretének és lekérdezésének beállítása a forráson
 
-![Forrás](media/data-flow/source4.png "forrás")
+![Forrás](media/data-flow/source4.png "Forrás")
 
-* Köteg mérete beállítás utasítja az ADF adatok tárolása a memóriában helyett soronként-csoportok. Egy választható beállítás, és előfordulhat, hogy elfogynak a számítási csomópontokon, ha azok nem megfelelően mérete.
-* Egy lekérdezési beállítás sorok jobb forrásban szűrését, mielőtt még vizsgálatát az adatfolyam-feldolgozási, így gyorsabb kezdeti adatgyűjtés is engedélyezheti.
-* Ha egy lekérdezést használ, az Azure SQL DB, azaz READ UNCOMMITTED adhat hozzá opcionális lekérdezési javaslatok
+* A köteg méretének beállítása arra utasítja az ADF-et, hogy sorok szerint tárolja az adatkészletekben tárolt adatkészleteket a memóriában. Ez egy választható beállítás, és a számítási csomópontokon kifogyhat az erőforrások, ha azok nem megfelelő méretűek.
+* A lekérdezés beállítása lehetővé teszi a sorok szűrését a forrásnál, még mielőtt a rendszer megkezdi az adatforgalom feldolgozását, ami gyorsabbá teheti a kezdeti adatgyűjtést.
+* Ha lekérdezést használ, hozzáadhat opcionális lekérdezési tippeket az Azure SQL-ADATBÁZIShoz, például a nem véglegesített OLVASÁSI művelethez.
 
-### <a name="set-isolation-level-on-source-transformation-settings-for-sql-datasets"></a>Átalakítási beállítások forrás SQL-adatkészletek esetében a elkülönítési szint beállítása
+### <a name="set-isolation-level-on-source-transformation-settings-for-sql-datasets"></a>Az SQL-adatkészletek forrás-átalakítási beállításainak elkülönítési szintjének beállítása
 
-* Olvassa el a nem véglegesített biztosít gyorsabb lekérdezés eredményeit az adatforrás-átalakítás
+* A nem véglegesített olvasási művelet gyorsabb lekérdezési eredményeket biztosít a forrás átalakításakor
 
-![Elkülönítési szintet](media/data-flow/isolationlevel.png "elkülönítési szint")
+![Elkülönítési szint](media/data-flow/isolationlevel.png "Elkülönítési szint")
 
-### <a name="set-sink-batch-size"></a>Állítsa be a fogadó kötegmérete
+### <a name="set-sink-batch-size"></a>Fogadó köteg méretének beállítása
 
-![Fogadó](media/data-flow/sink4.png "fogadó")
+![] Fogadó (media/data-flow/sink4.png "") Fogadó
 
-* Annak érdekében, hogy az adatfolyamok sor soronként feldolgozása, állítsa be a "Batch"mérete a fogadó Azure SQL DB beállításaiban. Ez jelzi az ADF folyamat adatbázisba írja az megadott mérete alapján, és kötegekben.
+* Az adatfolyamatok soron belüli feldolgozásának elkerülése érdekében állítsa be a "batch size" kifejezést az Azure SQL DB fogadó beállításainál. Ez azt jelzi, hogy az ADF az adatbázis-írásokat kötegekben dolgozza fel a megadott méret alapján.
 
-### <a name="set-partitioning-options-on-your-sink"></a>Állítsa be a beállítások a fogadón particionálás
+### <a name="set-partitioning-options-on-your-sink"></a>Particionálási beállítások megadása a fogadón
 
-* Akkor is, ha nem rendelkezik a cél Azure SQL Database tábláiban particionált adatokkal, nyissa meg az optimalizálás lapot, és állítsa be a particionálást.
-* Nagyon gyakran egyszerűen mondanunk ADF ciklikus időszeletelés helyett kényszerítése minden kapcsolat egyetlen partícióról csomópont/sokkal gyorsabb Adatbetöltési eredményez a végrehajtási Spark-fürtökön futó particionálás használata.
+* Akkor is, ha a cél Azure SQL DB-táblákban nem particionálja az adatait, lépjen az optimalizálás lapra, és állítsa be a particionálást.
+* Nagyon gyakran, egyszerűen azt mondja, hogy az ADF a Spark-végrehajtási fürtök ciklikus multiplexelés-particionálását használja, és nem kényszeríti ki az összes kapcsolatot egyetlen csomópontból vagy partícióból.
 
-### <a name="increase-size-of-your-compute-engine-in-azure-integration-runtime"></a>Az Azure integrációs modul számítási motor méretének növelése
+### <a name="increase-size-of-your-compute-engine-in-azure-integration-runtime"></a>A számítási motor méretének növeléséhez Azure Integration Runtime
 
-![Új integrációs modul](media/data-flow/ir-new.png "új integrációs modul")
+![Új IR](media/data-flow/ir-new.png "Új IR")
 
-* Növelje a magok számát, amely növeli a csomópontok számát, és nyújt további feldolgozási teljesítmény, lekérdezéséhez és az Azure SQL DB-hez.
-* Próbálja ki a "Compute-optimalizált" és "Memóriahasználatra optimalizált" további erőforrásokat a számítási csomópontok vonatkozó beállításokat.
+* Növelje a magok számát, ami növeli a csomópontok számát, és nagyobb feldolgozási teljesítményt biztosít az Azure SQL-adatbázis lekérdezéséhez és írásához.
+* Próbálja ki a "számításra optimalizált" és a "memória optimalizálása" lehetőséget, hogy több erőforrást alkalmazzon a számítási csomópontokra.
 
-### <a name="unit-test-and-performance-test-with-debug"></a>Test jednotky és hibakeresési a teljesítményteszt
+### <a name="unit-test-and-performance-test-with-debug"></a>Az egység tesztelése és a teljesítmény tesztelése hibakereséssel
 
-* Ha egység tesztelési adatfolyam-gyűjteményre, a "Data Flow Debug" gomb beállítása ON.
-* Az adatfolyam-tervezőben belül az átalakítások a Adatelőnézet lap segítségével az Adatátalakítási logikát eredményeinek megtekintése.
-* Az adatáramlás a folyamattervezőben helyez el egy adatfolyam-tevékenységet a folyamat tervezési egységtesztet vászonalapú, és a "Debug" gomb segítségével tesztelheti.
-* Hibakeresési módban tesztelése egy élő fűtéssel fürt környezetre, várjon, amíg egy just-in-time-fürt léptetéses mentése nélkül fog működni.
+* Amikor az egység teszteli az adatforgalmat, állítsa be az "adatfolyam-hibakeresés" gombot a következőre:.
+* Az adatáramlás-tervezőn belül az átalakítások adatelőnézet lapján megtekintheti az átalakítási logika eredményét.
+* Az egység tesztelése az adatfolyamatokat a folyamat-tervezőből egy adatfolyamati tevékenységnek a folyamat tervezési vásznon való elhelyezésével, és a "hibakeresés" gomb használatával tesztelheti.
+* A hibakeresési módban végzett tesztelés egy élő, melegen futó fürt környezetében fog működni, anélkül, hogy meg kellene várnia egy igény szerinti fürt üzembe helyezését.
 
-### <a name="disable-indexes-on-write"></a>Tiltsa le az indexeket írás
-* Az ADF folyamat tárolt eljárási tevékenység előtt az adatfolyam-tevékenység, amely letiltja a célként megadott táblákhoz, a fogadó az éppen írt indexei használja.
-* Az adatfolyam tevékenység után adjon hozzá egy másik tárolt eljárás tevékenység, amely ezeket az indexeket engedélyezve van.
+### <a name="disable-indexes-on-write"></a>Indexek letiltása íráskor
+* Használjon egy ADF-feldolgozási folyamat tárolt eljárási tevékenységét az adatfolyam tevékenysége előtt, amely letiltja a fogadón lévő, a fogadó táblán írt indexeket.
+* Az adatfolyam tevékenysége után adjon hozzá egy másik tárolt proc-tevékenységet, amely lehetővé tette az indexek használatát.
 
-### <a name="increase-the-size-of-your-azure-sql-db"></a>Az Azure SQL Database méretének növelése
-* Ütemezhet egy átméretezése a forrás és fogadó Azure SQL Database a folyamatban, hogy az átviteli sebesség növelése és a minimalizálása érdekében, ha dtu-k Azure szabályozás korlátozza a futtatása előtt.
-* A folyamat-végrehajtás befejezése után az adatbázisokat, térjen vissza a normál futtatási díjszabás méretezheti.
+### <a name="increase-the-size-of-your-azure-sql-db"></a>Növelje az Azure SQL-adatbázis méretét
+* Ütemezze a forrás átméretezését, és az Azure SQL DB-t a folyamat futtatása előtt állítsa be, hogy növelje az átviteli sebességet, és csökkentse az Azure-szabályozást, ha eléri a DTU határértékeket.
+* A folyamat befejezését követően átméretezheti az adatbázisokat a normál futtatási sebességre.
 
-## <a name="optimizing-for-azure-sql-data-warehouse"></a>Az Azure SQL Data warehouse optimalizálása
+## <a name="optimizing-for-azure-sql-data-warehouse"></a>Azure SQL Data Warehouse optimalizálása
 
-### <a name="use-staging-to-load-data-in-bulk-via-polybase"></a>A polybase tömeges adatok betöltése az átmeneti segítségével
+### <a name="use-staging-to-load-data-in-bulk-via-polybase"></a>Adatok tömeges betöltésének használata az átmeneti használatával
 
-* Annak érdekében, hogy az adatfolyamok sor soronként feldolgozása, megadva a "Tesztelés" lehetőséget az fogadó között, így a ADF kihasználhatják a Polybase elkerülése érdekében a sor-sor beszúrása a DW-be. Ez fel fog szólítania a polybase szolgáltatást akkor használja, hogy az adatok tömeges tölthetők az ADF.
-* Az adatokat a folyamat tevékenységet végrehajtása esetén egy folyamatot, az átmeneti tárolás engedélyezve van, válassza ki az átmeneti adatok tömeges betöltése a Blob tároló helyét kell.
+* Az adatfolyamatok soron belüli feldolgozásának elkerülése érdekében állítsa be a fogadó beállításaiban az "átmeneti" lehetőséget, hogy az ADF kihasználja a-alapú adatsorokat a DW-be. Ez arra utasítja az ADF-t, hogy használjon egy albase-t, hogy az adatok tömegesen is betölthetők legyenek.
+* Amikor egy folyamatból hajtja végre az adatfolyam-tevékenységet, és az előkészítés be van kapcsolva, a tömeges betöltéshez ki kell választania az átmeneti adatok blob-tárolójának helyét.
 
-### <a name="increase-the-size-of-your-azure-sql-dw"></a>Az Azure SQL DW méretének növelése
+### <a name="increase-the-size-of-your-azure-sql-dw"></a>Az Azure SQL DW méretének növelésével
 
-* Ütemezhet egy átméretezése a forrás és fogadó Azure SQL dw-vel, a folyamatban, hogy az átviteli sebesség növelése és a minimalizálása érdekében az Azure szabályozás, ha DWU korlátok futtatása előtt.
+* A folyamat futtatása előtt ütemezze a forrás és a fogadó Azure SQL DW átméretezését, hogy növelje az átviteli sebességet, és csökkentse az Azure-szabályozást a DWU korlátainak elérése után.
 
-* A folyamat-végrehajtás befejezése után az adatbázisokat, térjen vissza a normál futtatási díjszabás méretezheti.
+* A folyamat befejezését követően átméretezheti az adatbázisokat a normál futtatási sebességre.
 
-## <a name="optimize-for-files"></a>A fájlok optimalizálása
+## <a name="optimize-for-files"></a>Fájlok optimalizálása
 
-* Szabályozhatja, hogy hány ADF-t használó partíciókat. Minden forrás és fogadó átalakítás, valamint minden egyes átalakítás beállíthatja a particionálási séma kidolgozásához. A kisebb fájlok azt tapasztalhatja, "Egypartíciós" is néha működik jobb és gyorsabb, mint a Spark a kisméretű fájlok particionálásához kéri.
-* Ha a forrásadatok nem rendelkezik elegendő információt, válassza a "Ciklikus időszeletelés" particionálás és állítsa be a partíciók számát.
-* Ha feltárhatja az adatait, és hogy rendelkezik-e, hogy megfelelő kivonatoló kulcsok oszlopokat, használja a kivonatot particionálás lehetőséget.
+* Megadhatja, hogy az ADF hány partíciót fog használni. Az egyes forrásokon & a fogadó transzformációk, valamint az egyes átalakítások esetében beállíthatja a particionálási sémát. Kisebb fájlok esetében előfordulhat, hogy a "single Partition" (egyetlen partíció) lehetőség kiválasztásával jobb és gyorsabb lehet a kis méretű fájlok particionálását kérő Spark használata.
+* Ha nem rendelkezik elegendő információval a forrás adatairól, válassza a "ciklikus multiplexelés" particionálás lehetőséget, és állítsa be a partíciók számát.
+* Ha megkeresi az adatokat, és úgy találja, hogy van olyan oszlopa, amely jó kivonatoló kulcs lehet, használja a kivonatoló particionálási lehetőséget.
 
-### <a name="file-naming-options"></a>Fájlelnevezési beállításai
+### <a name="file-naming-options"></a>Fájl elnevezési beállításai
 
-* Az átalakított adatok írása az ADF-leképezés adatfolyamok alapértelmezett jellege, hogy egy adatkészletet, amely egy Blob vagy ADLS társított szolgáltatás rendelkezik írni. Az adatkészlet egy mappa vagy a tároló, nem egy megnevezett fájljának átirányítása kell beállítania.
-* Data flow használata az Azure Databricks Spark végrehajtásra, ami azt jelenti, hogy a kimeneti osztani több fájl alapján vagy a Spark, a particionálás alapértelmezett vagy a particionálási séma, amikor explicit módon választotta.
-* Egy nagyon gyakori művelet az ADF adatfolyamok, hogy válassza a "Kimeneti egyetlen fájl a" úgy, hogy az összes kimeneti rész fájl egy egyetlen kimeneti fájl egyesített együtt.
-* Ez a művelet azonban megköveteli, hogy a kimenet egy adott partíció egy egyetlen fürtcsomóponton csökkenti.
-* Ne feledje, ha a népszerű ezt a lehetőséget választja. Ha sok nagy forrásfájlok összefűzhet vannak egy kimeneti fájl partíció csomópont fürterőforrások kívül futtathatja.
-* Elkerülése érdekében számítási csomópont erőforrásokat, ne az alapértelmezett vagy explicit particionálási sémát ADF, amely optimalizálja a teljesítmény, és vegye fel a kimeneti mappa fájljainak egy későbbi másolási tevékenység, amely egyesíti az összes, a rész a folyamat új egyetlen a fájl. Ezzel a technikával alapvetően elkülöníti a művelet a fájl egyesítése átalakítás, és csak "kimenet egyetlen fájl a" ugyanazt az eredményt éri el.
+* Az átalakított adatokat az ADF-leképezési adatfolyamatokban való írásának alapértelmezett jellege egy blob vagy ADLS társított szolgáltatással rendelkező adatkészletbe írás. Ezt az adatkészletet úgy kell beállítani, hogy egy mappára vagy tárolóra mutasson, nem egy elnevezett fájlra.
+* Az adatfolyamatok a Azure Databricks Sparkot használják a végrehajtáshoz, ami azt jelenti, hogy a kimenet több fájlra lesz felosztva az alapértelmezett Spark-particionálás vagy a explicit módon kiválasztott particionálási séma alapján.
+* Az ADF adatforgalmának nagyon gyakori művelete, hogy a "kimenet egyetlen fájlba" lehetőséget választja, hogy az összes kimeneti rész fájljai egyesítve legyenek egyetlen kimeneti fájlba.
+* Ez a művelet azonban megköveteli, hogy a kimenet egyetlen fürtcsomópont egyetlen partícióján legyen csökkentve.
+* Tartsa szem előtt ezt a népszerű lehetőséget választva. Kifogyhat a fürtcsomópontok erőforrásai, ha sok nagyméretű forrásfájlt egyesít egyetlen kimeneti fájlba.
+* A számítási csomópont-erőforrások kimerítésének elkerülése érdekében az ADF-ben megtarthatja az alapértelmezett vagy explicit particionálási sémát, amely optimalizálja a teljesítményt, majd hozzáad egy későbbi másolási tevékenységet a kimeneti mappából egy új, egyetlen fájl. Ez a technika lényegében elkülöníti a fájlok egyesítésének műveletét, és ugyanazt az eredményt éri el, mint a "kimenet egyetlen fájlba" beállítás.
 
-### <a name="looping-through-file-lists"></a>Fájl listák ismétlése
+### <a name="looping-through-file-lists"></a>Áthurkolás a fájlok listájáról
 
-A legtöbb esetben az ADF-ben adatfolyamok fogja végrehajtani egy folyamatot, amely lehetővé teszi, hogy a Flow adatforrás-átalakítás újrafuttathatja több fájlra a jobb. Más szóval helyettesítő karakterek használata előnyben, vagy fájl listák belül az adatok a forrás folyamatot, amely nagy azon fájlok listáját a folyamat-végrehajtás adatfolyam hívása minden egyes ismétléskor foreach ciklus használatával ciklustevékenység. Az adatfolyam folyamat azáltal, hogy az adatfolyam belül előforduló hurkolás gyorsabban hajtja végre.
+A legtöbb esetben az ADF-ben lévő adatfolyamatok hatékonyabban futnak egy folyamattal, amely lehetővé teszi, hogy az adatfolyam forrásának átalakítása több fájlra is megismételhető legyen. Más szóval a forrásban lévő helyettesítő karakterek vagy fájllista használata javasolt az adatforgalomban, mint a fájlok nagy listájának megismétlése a folyamat ForEach használatával, amely minden egyes iteráción végrehajt egy végrehajtási adatfolyamatot. Az adatfolyam folyamata gyorsabban elvégezhető, mivel lehetővé teszi, hogy a hurok az adatfolyamaton belül is megtörténjen.
 
-Például ha egy Blob Storage-mappát a feldolgozni kívánt adatok július 2019 fájlok listája, lenne több nagy teljesítményű, a folyamat csak egyszer hívja meg adatok folyamat végrehajtása tevékenység, és a egy helyettesítő karakter használata az ehhez hasonló a forrás :
+Ha például az 2019-es számú adatfájlok listáját szeretném feldolgozni egy Blob Storage mappában, akkor nagyobb teljesítményre lehet szükség a folyamat végrehajtásához, és egy olyan helyettesítő karaktert kell használnia a forrásban, mint az alábbi. :
 
 ```DateFiles/*_201907*.txt```
 
-Ez javítja a teljesítményt, mint a Keresés a Blob Store, az egy folyamatot, amely majd között egy foreach ciklus használatával belül hajtsa végre a adatfolyam tevékenység megfeleltetett fájlokon végiglépkedve ellen.
+Ez jobb teljesítményt nyújt, mint a blob Store-ban egy olyan folyamat, amely az összes egyező fájlon megismétli az összes megfeleltetett fájlt egy olyan ForEach használatával, amelyen belül végrehajtja az adatfolyam-tevékenységet.
 
 ## <a name="next-steps"></a>További lépések
 
-Tekintse meg a többi adatfolyam cikkeket a teljesítménnyel kapcsolatos:
+Tekintse meg a teljesítménnyel kapcsolatos egyéb adatfolyam-cikkeket:
 
-- [Adatfolyamok optimalizálása lap](concepts-data-flow-optimize-tab.md)
-- [Data Flow tevékenység](control-flow-execute-data-flow-activity.md)
-- [Az adatfolyam teljesítményének figyelése](concepts-data-flow-monitoring.md)
+- [Adatfolyam optimalizálása lap](concepts-data-flow-optimize-tab.md)
+- [Adatfolyam-tevékenység](control-flow-execute-data-flow-activity.md)
+- [Adatfolyamok teljesítményének figyelése](concepts-data-flow-monitoring.md)

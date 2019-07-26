@@ -1,10 +1,10 @@
 ---
-title: Hagyja jóvá vagy utasítsa a az Azure ad-ben tagjogosultság-kezelés (előzetes verzió) – az Azure Active Directory hozzáférési kérelmek
-description: Ismerje meg, hogyan használhatja a saját hozzáférési portál jóváhagyja vagy elutasítja a kérelmeket az access-csomag az Azure Active Directory tagjogosultság-kezelés (előzetes verzió).
+title: Hozzáférési kérelmek jóváhagyása vagy megtagadása az Azure AD-jogosultságok kezelésében (előzetes verzió) – Azure Active Directory
+description: Megtudhatja, hogyan engedélyezheti vagy tagadhatja meg a hozzáférési csomagra irányuló kéréseket a Azure Active Directory jogosultságok kezelése (előzetes verzió) szolgáltatásban.
 services: active-directory
 documentationCenter: ''
-author: rolyon
-manager: mtillman
+author: msaburnley
+manager: daveba
 editor: mamtakumar
 ms.service: active-directory
 ms.workload: identity
@@ -13,72 +13,72 @@ ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
 ms.date: 04/18/2019
-ms.author: rolyon
+ms.author: ajburnle
 ms.reviewer: mamkumar
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1b2d07638f6c6f153ee3640273fbee5e56df0ab2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 78243f02cbbe3d06b94ee52d6193865dbfa27121
+ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64541525"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68489001"
 ---
-# <a name="approve-or-deny-access-requests-in-azure-ad-entitlement-management-preview"></a>Hagyja jóvá vagy utasítsa a hozzáférési kérelmeket az Azure ad-ben tagjogosultság-kezelés (előzetes verzió)
+# <a name="approve-or-deny-access-requests-in-azure-ad-entitlement-management-preview"></a>Hozzáférési kérelmek jóváhagyása vagy megtagadása az Azure AD-jogosultságok kezelésében (előzetes verzió)
 
 > [!IMPORTANT]
-> Az Azure Active Directory (Azure AD) tagjogosultság-kezelés jelenleg nyilvános előzetes verzióban érhető el.
+> A Azure Active Directory (Azure AD) jogosultság-kezelési szolgáltatás jelenleg nyilvános előzetes verzióban érhető el.
 > Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik.
 > További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Tagjogosultság-kezelés az Azure AD-jóváhagyás megkövetelése a hozzáférési csomagok házirendeket konfigurálhat, és válasszon egy vagy több jóváhagyó. Ez a cikk azt ismerteti, hogyan kijelölt jóváhagyókat jóváhagyhatják vagy megtagadhatják a hozzáférési csomagok vonatkozó kéréseket.
+Az Azure AD-jogosultságok kezelésével házirendeket állíthat be a hozzáférési csomagok jóváhagyásának megköveteléséhez, és egy vagy több jóváhagyót is választhat. Ez a cikk azt ismerteti, hogyan hagyhatják jóvá vagy tagadhatják meg a kijelölt jóváhagyók a hozzáférési csomagok kérelmeit.
 
-## <a name="open-request"></a>Nyissa meg a kérelem
+## <a name="open-request"></a>Kérelem megnyitása
 
-Az első lépés jóváhagyja vagy elutasítja a hozzáférési kérelmeket, hogy keresse meg és nyissa meg a hozzáférési kérelem jóváhagyásra vár. Nyissa meg a hozzáférési kérelem két módon lehet.
+A hozzáférési kérelmek jóváhagyásának vagy megtagadásának első lépéseként meg kell keresni és meg kell nyitni a hozzáférési kérelmet függőben lévő jóváhagyást. A hozzáférési kérelem két módon nyitható meg.
 
-**Előfeltétel szerepkör:** Jóváhagyó
+**Előfeltételként szükséges szerepkör:** Jóváhagyó
 
-1. Keresse meg e-mailt, amely rákérdez, hogy elfogadja vagy elutasítja a kérelmet a Microsoft Azure-ból. Íme egy példa e-mailt:
+1. Keressen olyan Microsoft Azure e-mailt, amely arra kéri, hogy hagyja jóvá vagy tagadja meg a kérést. Példa erre az e-mail címre:
 
-    ![Csomag e-mailek elérését kérelem jóváhagyása](./media/entitlement-management-shared/email-approve-request.png)
+    ![Hozzáférési kérelem jóváhagyása a csomag e-mail-címéhez](./media/entitlement-management-shared/email-approve-request.png)
 
-1. Kattintson a **jóváhagyás vagy megtagadja a kérelmet** nyissa meg a hozzáférési kérelem mutató hivatkozást.
+1. A hozzáférési kérelem megnyitásához kattintson a **jóváhagyás vagy a Megtagadás kérelem** hivatkozásra.
 
-1. Jelentkezzen be a saját hozzáférés-portálon.
+1. Jelentkezzen be a saját hozzáférési portálra.
 
-Ha nem rendelkezik az e-mailt, megtalálhatja a hozzáférési kérelmeket jóváhagyásra váró az alábbi lépéseket.
+Ha nem rendelkezik az e-mail-címmel, a következő lépésekkel megtalálhatja a jóváhagyásra váró hozzáférési kérelmeket.
 
-1. Jelentkezzen be a saját Access Portalra [ https://myaccess.microsoft.com ](https://myaccess.microsoft.com).
+1. Jelentkezzen be a saját hozzáférési portálján a [https://myaccess.microsoft.com](https://myaccess.microsoft.com)következő címen:.
 
-1. A bal oldali menüben kattintson a **jóváhagyások** hozzáférési kérelmeket jóváhagyásra váró listájának megtekintéséhez.
+1. A bal oldali menüben kattintson a **jóváhagyások** elemre, hogy megtekintse a hozzáférési kérelmek függőben lévő jóváhagyásának listáját.
 
-1. Az a **függőben lévő** lapra, keresse meg a kérelmet.
+1. A **függőben** lévő lapon keresse meg a kérelmet.
 
-## <a name="approve-or-deny-request"></a>Hagyja jóvá vagy utasítsa a kérelem
+## <a name="approve-or-deny-request"></a>Kérelem jóváhagyása vagy elutasítása
 
-Miután megnyitotta a hozzáférési kérelem jóváhagyásra, láthatja, győződjön meg arról, egy jóváhagyás vagy megtagadhatja a döntés segítő részletek.
+Miután megnyitotta a hozzáférési kérelmek jóváhagyását, megtekintheti azokat a részleteket, amelyek segítségével jóváhagyhatja vagy megtagadhatja a döntést.
 
-**Előfeltétel szerepkör:** Jóváhagyó
+**Előfeltételként szükséges szerepkör:** Jóváhagyó
 
 1. Kattintson a **nézet** hivatkozásra a hozzáférési kérés panel megnyitásához.
 
-1. Kattintson a **részletek** a hozzáférési kérés részleteinek megtekintéséhez.
+1. A hozzáférési kérelem részleteinek megtekintéséhez kattintson a **részletek** gombra.
 
-    A részletek közé tartozik a felhasználó nevét, a szervezet, eléréséhez a kezdő és záró dátumát, ha meg van adva, üzleti indoklás, amikor a kérelem el lett küldve, és amikor a kérelem lejár.
+    A részletek tartalmazzák a felhasználó nevét, szervezetét, a hozzáférési kezdési és befejezési dátumát, ha van ilyen, az üzleti indoklás, a kérelem elküldésekor, valamint a kérelem érvényességének lejárta után.
 
-1. Kattintson a **jóváhagyása** vagy **megtagadása**.
+1. Kattintson a **jóváhagyás** vagy a **Megtagadás**gombra.
 
-1. Ha szükséges, adja meg az okot.
+1. Szükség esetén adjon meg egy okot.
 
-    ![A hozzáférési portál – a hozzáférési kérelem](./media/entitlement-management-shared/my-access-approve-request.png)
+    ![Hozzáférési portál – hozzáférési kérelem](./media/entitlement-management-shared/my-access-approve-request.png)
 
-1. Kattintson a **küldés** döntéseiben elküldéséhez.
+1. A döntés elküldéséhez kattintson a **Submit (Küldés** ) gombra.
 
-    Ha egy szabályzat van konfigurálva több jóváhagyóval, csak egy jóváhagyó kell a függőben lévő jóváhagyási kapcsolatos döntéseket. Miután a jóváhagyó azok a hozzáférési kérés döntési küldött, a kérelem befejeződött, és már nem érhető el a jóváhagyó jóváhagyja vagy elutasítja a kérelmet. A többi jóváhagyók láthatja a kérelem döntést és döntéshozóként pedig a saját hozzáférés-portálon. Jelenleg csak egyetlen lépésből álló jóváhagyás támogatott.
+    Ha egy házirend több jóváhagyóval van konfigurálva, csak egy jóváhagyónak kell döntenie a függőben lévő jóváhagyásról. Miután egy jóváhagyó elküldte döntését a hozzáférési kérésnek, a kérés befejeződött, és már nem érhető el a többi jóváhagyó számára a kérelem jóváhagyásához vagy elutasításához. A többi jóváhagyó láthatja a kérelemre vonatkozó döntést és a döntéshozót a saját hozzáférési portálján. Jelenleg csak egy egyfázisú jóváhagyás támogatott.
 
-    A konfigurált jóváhagyók sem tudja jóváhagyja vagy elutasítja a hozzáférési kérést, ha a kérelem után a konfigurált kérés időtartama lejár. Lekérdezi a felhasználó értesítést kap, hogy a hozzáférési kérelem lejárt, és küldje el újra a hozzáférési kérelem szükséges.
+    Ha a konfigurált jóváhagyók egyike sem tudja jóváhagyni vagy megtagadni a hozzáférési kérelmet, a kérelem érvényessége a konfigurált kérelem időtartama után lejár. A felhasználó értesítést kap arról, hogy a hozzáférési kérelem lejárt, és újra el kell küldenie a hozzáférési kérést.
 
 ## <a name="next-steps"></a>További lépések
 
-- [Hozzáférés csomagjára hozzáférés kérése](entitlement-management-request-access.md)
-- [Folyamat és az e-mailes értesítések kérése](entitlement-management-process.md)
+- [Hozzáférési csomaghoz való hozzáférés kérése](entitlement-management-request-access.md)
+- [Kérelmek feldolgozása és e-mail-értesítések](entitlement-management-process.md)
