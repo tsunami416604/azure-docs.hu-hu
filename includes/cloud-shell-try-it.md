@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 06/13/2019
 ms.author: sttramer
 ms.openlocfilehash: 8b2a9561a0933e435649c81334706481531c9ce9
-ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
+ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/25/2019
+ms.lasthandoff: 07/26/2019
 ms.locfileid: "67836880"
 ---
 ## <a name="use-azure-cloud-shell"></a>Az Azure Cloud Shell használata
