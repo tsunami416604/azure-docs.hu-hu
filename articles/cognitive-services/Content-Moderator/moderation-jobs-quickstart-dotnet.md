@@ -1,7 +1,7 @@
 ---
-title: .NET - Content Moderator használatával moderálás feladatok használata
-titlesuffix: Azure Cognitive Services
-description: A tartalom Moderator .NET SDK használatával kezdeményez vagy szöveges tartalom az Azure Content Moderator teljes körű tartalom-jóváhagyás feladatok.
+title: Moderálási feladatok használata a .NET-Content Moderator használatával
+titleSuffix: Azure Cognitive Services
+description: A Content Moderator .NET SDK-val teljes tartalom-moderálási feladatokat indíthat el a képekhez vagy szöveges tartalmakhoz az Azure Content Moderatorban.
 services: cognitive-services
 author: sanjeev3
 manager: nitinme
@@ -10,25 +10,25 @@ ms.subservice: content-moderator
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: sajagtap
-ms.openlocfilehash: 24d5483cf3b418cada3c5b7f03eedbff13cc36d6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d98c88a6e1d6dfa23f53c32c85c013b4cf2c468d
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62113868"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68565595"
 ---
-# <a name="define-and-use-moderation-jobs-net"></a>Definiálja és moderálás feladatok (.NET)
+# <a name="define-and-use-moderation-jobs-net"></a>Moderálási feladatok definiálása és használata (.NET)
 
-A moderálás feladat egy burkoló a tartalom-jóváhagyás, munkafolyamatok és értékelések funkciójának típusú funkcionál. Ez az útmutató ismerteti, és kódminták segítségével történő használatának első lépései a [Content Moderator SDK for .NET](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) való:
+A moderálási feladatok egyfajta burkolóként szolgálnak a tartalom moderálása, a munkafolyamatok és a felülvizsgálatok működéséhez. Ez az útmutató információkat és kódokat tartalmaz a [.net-hez készült Content MODERATOR SDK](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) használatának megkezdéséhez a következőhöz:
 
 - Moderálási feladat indítása, amely lehetővé teszi az emberi moderátorok általi vizsgálatot és felülvizsgálatok létrehozását
 - Függőben lévő felülvizsgálat állapotának lekérése
 - Felülvizsgálat nyomon követése és a végső eredmény lekérése
-- Küldje el a visszahívási URL-címre a felülvizsgálati eredmények
+- A felülvizsgálati eredmények elküldése a visszahívási URL-címre
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Jelentkezzen be, vagy hozzon létre egy fiókot a Content Moderator [vizsgálóeszköz](https://contentmoderator.cognitive.microsoft.com/) hely.
+- Jelentkezzen be, vagy hozzon létre egy fiókot a Content Moderator [felülvizsgálati eszköz](https://contentmoderator.cognitive.microsoft.com/) webhelyén.
 
 ## <a name="ensure-your-api-key-can-call-the-review-api-for-review-creation"></a>Arról való gondoskodás, hogy az API-kulcs meg tudja hívni a felülvizsgálati API-t a felülvizsgálat létrehozásához
 

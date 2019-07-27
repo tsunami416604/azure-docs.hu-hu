@@ -1,6 +1,6 @@
 ---
-title: 'Gyors útmutató: Hozzon létre egy objektum észlelési projektet az egyéni Látástechnológiai SDK Pythonhoz készült'
-titlesuffix: Azure Cognitive Services
+title: 'Gyors útmutató: Objektum-észlelési projekt létrehozása a Pythonhoz készült Custom Vision SDK-val'
+titleSuffix: Azure Cognitive Services
 description: Projekt létrehozása, címkék hozzáadása, képek feltöltése, projekt betanítása és objektumok észlelése a Python SDK használatával.
 services: cognitive-services
 author: areddish
@@ -10,16 +10,16 @@ ms.subservice: custom-vision
 ms.topic: quickstart
 ms.date: 07/03/2019
 ms.author: areddish
-ms.openlocfilehash: 623bf0b054544d2c25f3542043afe20d778fdd24
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: 2994d696f463c32ed05fd42b694f29fa2035b9d2
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67603495"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68564150"
 ---
-# <a name="quickstart-create-an-object-detection-project-with-the-custom-vision-python-sdk"></a>Gyors útmutató: A Custom Vision Python SDK-val objektum észlelési projekt létrehozása
+# <a name="quickstart-create-an-object-detection-project-with-the-custom-vision-python-sdk"></a>Gyors útmutató: Objektum-észlelési projekt létrehozása a Custom Vision Python SDK-val
 
-Ez a cikk ahhoz biztosít információt és mintakódot, hogy megismerkedhessen a Custom Vision SDK és a Python együttes használatával egy objektumészlelési modell létrehozása céljából. A létrehozást követően, akkor is címkézett régiók hozzáadása, tölthet fel képeket, betanítását a projekt, a projekt közzétett előrejelzési végponti URL-cím beszerzése és ezt a végpont programozott módon képet. Használja sablonként a példát a saját Python-alkalmazása létrehozásához.
+Ez a cikk ahhoz biztosít információt és mintakódot, hogy megismerkedhessen a Custom Vision SDK és a Python együttes használatával egy objektumészlelési modell létrehozása céljából. A létrehozást követően címkézett régiókat adhat hozzá, képeket tölthet fel, betaníthatja a projektet, beolvashatja a projekt közzétett előrejelzési végpontjának URL-címét, és a végpont használatával programozott módon tesztelheti a lemezképeket. Használja sablonként a példát a saját Python-alkalmazása létrehozásához.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -46,7 +46,7 @@ Hozzon létre egy új fájlt *sample.py* néven a használni kívánt projektkö
 
 ### <a name="create-the-custom-vision-service-project"></a>A Custom Vision Service-projekt létrehozása
 
-Adja hozzá a következő kódot a szkripthez egy új Custom Vision Service-projekt létrehozásához. Illessze be az előfizetői azonosítókat a megfelelő definíciókba. A különbség, hogy objektum észlelése és a lemezkép besorolási projekt létrehozása a megadott tartományhoz, a **create_project** hívja.
+Adja hozzá a következő kódot a szkripthez egy új Custom Vision Service-projekt létrehozásához. Illessze be az előfizetői azonosítókat a megfelelő definíciókba. Az objektum-észlelés és a képbesorolási projekt létrehozása közötti különbség a **create_project** -hívásban megadott tartomány.
 
 ```Python
 from azure.cognitiveservices.vision.customvision.training import CustomVisionTrainingClient
@@ -73,7 +73,7 @@ project = trainer.create_project("My Detection Project", domain_id=obj_detection
 
 ### <a name="create-tags-in-the-project"></a>Címkék létrehozása a projektben
 
-Objektum címkék a projekt létrehozásához adja hozzá a következő kód végéhez *sample.py*:
+Ha a projektben szeretné létrehozni az objektum címkéit, adja hozzá a következő kódot a *sample.py*végéhez:
 
 ```Python
 # Make two tags in the new project
@@ -85,7 +85,7 @@ scissors_tag = trainer.create_tag(project.id, "scissors")
 
 Ha képeket címkéz meg az objektumészlelési projektekben, meg kell adnia a címkével ellátott objektumok régióját a normalizált koordináták használatával.
 
-A képek, címkék és régiók projekthez való hozzáadásához szúrja be az alábbi kódot a címke létrehozása után. Ebben az oktatóanyagban a-régiók olyan szoftveresen kötött beágyazott kóddal. A régiók normalizált koordinátákban adják meg a határolókeretet, és a következő sorrendben adják meg a koordinátákat: bal oldali, felső, szélesség, magasság.
+A képek, címkék és régiók projekthez való hozzáadásához szúrja be az alábbi kódot a címke létrehozása után. Ebben az oktatóanyagban a régiók a kóddal hardcoded. A régiók normalizált koordinátákban adják meg a határolókeretet, és a következő sorrendben adják meg a koordinátákat: bal oldali, felső, szélesség, magasság.
 
 ```Python
 fork_image_regions = {
@@ -167,9 +167,9 @@ if not upload_result.is_batch_successful:
     exit(-1)
 ```
 
-### <a name="train-the-project-and-publish"></a>A projekt betanítás, közzététel
+### <a name="train-the-project-and-publish"></a>A projekt betanítása és közzététel
 
-Ez a kód a projektet hoz létre az első példányát, és majd az előrejelzési végpontot tesz közzé, hogy az iteráció. Név, a közzétett iteráció előrejelzési kérelmek küldésére használható. Egy iteráció nem áll rendelkezésre előrejelzési végpontját, amíg közzé van téve.
+Ez a kód létrehozza az első iterációt a projektben, majd közzéteszi az iterációt az előrejelzési végponton. A közzétett iterációhoz megadott név felhasználható az előrejelzési kérelmek küldésére. Egy iteráció nem érhető el az előrejelzési végponton, amíg közzé nem teszi.
 
 ```Python
 import time
@@ -186,7 +186,7 @@ trainer.publish_iteration(project.id, iteration.id, publish_iteration_name, pred
 print ("Done!")
 ```
 
-### <a name="get-and-use-the-published-iteration-on-the-prediction-endpoint"></a>Letöltheti a közzétett ismétléseinek előrejelzési végpont
+### <a name="get-and-use-the-published-iteration-on-the-prediction-endpoint"></a>A közzétett iteráció lekérése és használata az előrejelzési végponton
 
 A képek előrejelzési végpontra való küldéséhez és az előrejelzés lekéréséhez adja hozzá a következő kódot a fájl végéhez:
 

@@ -1,19 +1,18 @@
 ---
-title: Azure CLI-vel az első lekérdezés futtatása
+title: Az első lekérdezés futtatása az Azure CLI használatával
 description: Ez a cikk végigvezeti az Azure CLI-hez szükséges Resource Graph bővítmény aktiválásának lépésein és az első lekérdezése futtatásán.
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 10/22/2018
+ms.date: 07/26/2019
 ms.topic: quickstart
 ms.service: resource-graph
 manager: carmonm
-ms.custom: seodec18
-ms.openlocfilehash: 592b2c611888623c2753d7c4abc9fe57c28af30e
-ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
+ms.openlocfilehash: afe32c197b5eab24ba298395bb2c9e83f847d6c5
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65823160"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68562581"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-azure-cli"></a>Gyors útmutató: Az első Resource Graph-lekérdezés futtatása az Azure CLI használatával
 
@@ -36,7 +35,7 @@ Ahhoz, hogy az Azure CLI lekérdezhesse az Azure Resource Graph-ot, el kell vég
    az extension add --name resource-graph
    ```
 
-1. Ellenőrizze, hogy a bővítmény telepítve van-e, és a várt verziójú-e (legalább **0.1.7-es**):
+1. Ellenőrizze, hogy a bővítmény telepítve van-e, és a várt verzió-e (legalább **0.1.11**):
 
    ```azurecli-interactive
    # Check the extension list (note that you may have other extensions installed)
@@ -89,9 +88,6 @@ Ha el szeretné távolítani a Resource Graph bővítményt az Azure CLI környe
 # Remove the Resource Graph extension from the Azure CLI environment
 az extension remove -n resource-graph
 ```
-
-> [!NOTE]
-> Ezzel nem törli a korábban letöltött bővítményfájlt, csak eltávolítja a futó Azure CLI-környezetből.
 
 ## <a name="next-steps"></a>További lépések
 

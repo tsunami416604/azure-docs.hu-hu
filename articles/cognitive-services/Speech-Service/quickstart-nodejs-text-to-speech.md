@@ -1,7 +1,7 @@
 ---
-title: 'Gyors útmutató: Szöveg-beszéd átalakítás, node.js-szel – beszédszolgáltatások konvertálása'
+title: 'Gyors útmutató: Szöveg-beszéd átalakítás, Node. js-Speech szolgáltatás konvertálása'
 titleSuffix: Azure Cognitive Services
-description: Ebből a gyorsútmutatóból megtudhatja, hogyan átalakítandó szöveg-hang transzformációs Node.js és a szöveg-hang transzformációs REST API használatával. A jelen útmutatóban szereplő minta szöveg van felépítve, beszéd összefoglaló Markup Language (SSML). Ez lehetővé teszi, hogy válassza ki a beszédfelismerési és nyelvi beszédfelismerési válasz.
+description: Ebből a rövid útmutatóból megtudhatja, hogyan alakíthatja át a szöveg – beszéd szöveget a Node. js és a szöveg – beszéd REST API használatával. A jelen útmutatóban szereplő minta szöveg van felépítve, beszéd összefoglaló Markup Language (SSML). Ez lehetővé teszi, hogy válassza ki a beszédfelismerési és nyelvi beszédfelismerési válasz.
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -10,18 +10,18 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: 5a218db0527a5e1d5642cb485b75df894a275764
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: 72be99ec666bb9e04ffca6e14ab4fcafa889ae68
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67605005"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68553936"
 ---
-# <a name="quickstart-convert-text-to-speech-using-nodejs"></a>Gyors útmutató: Átalakítás szöveg-hang transzformációs Node.js használatával
+# <a name="quickstart-convert-text-to-speech-using-nodejs"></a>Gyors útmutató: Szöveg-beszéd átalakítás a Node. js használatával
 
-Ebből a gyorsútmutatóból megtudhatja, hogyan átalakítandó szöveg-hang transzformációs Node.js és a szöveg-hang transzformációs REST API használatával. Ebben az útmutatóban a kérelem törzsében van strukturálva, [Speech összefoglaló Markup Language (SSML)](speech-synthesis-markup.md), amely lehetővé teszi, hogy a válasz nyelv és válassza ki.
+Ebből a rövid útmutatóból megtudhatja, hogyan alakíthatja át a szöveg – beszéd szöveget a Node. js és a szöveg – beszéd REST API használatával. Ebben az útmutatóban a kérelem törzsében van strukturálva, [Speech összefoglaló Markup Language (SSML)](speech-synthesis-markup.md), amely lehetővé teszi, hogy a válasz nyelv és válassza ki.
 
-Ez a rövid útmutatóhoz egy [Azure Cognitive Services-fiók](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) beszédszolgáltatások erőforrással. Ha nincs fiókja, használhatja az ingyenes [próbaidőszakot](get-started.md) egy előfizetői azonosító beszerzéséhez.
+Ehhez a rövid útmutatóhoz egy Speech Services-erőforrással rendelkező [Azure Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) -fiókra van szükség. Ha nincs fiókja, használhatja az ingyenes [próbaidőszakot](get-started.md) egy előfizetői azonosító beszerzéséhez.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -29,11 +29,11 @@ Ehhez a rövid útmutatóhoz a következőkre van szükség:
 
 * [Node 8.12.x vagy újabb](https://nodejs.org/en/)
 * [A Visual Studio](https://visualstudio.microsoft.com/downloads/), [Visual Studio Code](https://code.visualstudio.com/download), vagy kedvenc szövegszerkesztőjével
-* Egy Azure-előfizetést a beszédszolgáltatások kulcs. [Itt igényelhet ingyenesen! ](get-started.md).
+* Egy Azure-előfizetési kulcs a Speech Serviceshez. [Szerezze be ingyen!](get-started.md)
 
-## <a name="create-a-project-and-require-dependencies"></a>Hozzon létre egy projektet, és a szükséges függőségek
+## <a name="create-a-project-and-require-dependencies"></a>Projekt létrehozása és függőségek megkövetelése
 
-Hozzon létre egy új Node.js-projektet, a kedvenc integrált Fejlesztőkörnyezetével vagy szerkesztőjével használatával. Ezután másolja a következő kódrészletet egy `tts.js` nevű fájlba a projektjében.
+Hozzon létre egy új Node. js-projektet a kedvenc IDE vagy szerkesztő használatával. Ezután másolja a következő kódrészletet egy `tts.js` nevű fájlba a projektjében.
 
 ```javascript
 // Requires request and request-promise for HTTP requests
@@ -52,9 +52,9 @@ const xmlbuilder = require('xmlbuilder');
 
 ## <a name="get-an-access-token"></a>Hozzáférési jogkivonat lekérése
 
-A szöveg-hang transzformációs REST API egy hozzáférési jogkivonatot a hitelesítéshez szükséges. A hozzáférési jogkivonatot kapjon egy exchange szükség. Ez a függvény kicserél egy hozzáférési token használatával beszédszolgáltatások előfizetői azonosítóját a `issueToken` végpont.
+A szöveg-hang transzformációs REST API egy hozzáférési jogkivonatot a hitelesítéshez szükséges. A hozzáférési jogkivonatot kapjon egy exchange szükség. Ez a függvény a Speech Services előfizetési kulcsát egy hozzáférési jogkivonat számára `issueToken` a végpont használatával cseréli le.
 
-Ez a minta azt feltételezi, hogy a Speech Services-előfizetés az USA nyugati régiójában. Ha egy másik régiót használ, módosítsa a `uri`. A teljes listát lásd: [régiók](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#rest-apis).
+Ez a példa feltételezi, hogy a Speech Services-előfizetése az USA nyugati régiójában található. Ha egy másik régiót használ, módosítsa a `uri`. A teljes listát lásd: [régiók](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#rest-apis).
 
 Másolja a projektbe a következő kódot:
 
@@ -73,13 +73,13 @@ function getAccessToken(subscriptionKey) {
 ```
 
 > [!NOTE]
-> A hitelesítés további információkért lásd: [hitelesítés hozzáférési jogkivonatot a](https://docs.microsoft.com/azure/cognitive-services/authentication#authenticate-with-an-authentication-token).
+> A hitelesítéssel kapcsolatos további információkért lásd: [hitelesítés hozzáférési](https://docs.microsoft.com/azure/cognitive-services/authentication#authenticate-with-an-authentication-token)jogkivonattal.
 
-A következő szakaszban a függvény, amely az szöveg-hang transzformációs API-t, és mentse a szintetizált válasz hozunk létre.
+A következő szakaszban létrehozjuk a függvényt a szöveg-beszéd API meghívásához és a szintetizált beszéd válasz mentéséhez.
 
 ## <a name="make-a-request-and-save-the-response"></a>Kérés és a válasz mentése
 
-Ide fog a kérést a szöveg-hang transzformációs API és a speech válasz mentése. Ez a példa feltételezi, hogy az USA nyugati RÉGIÓJA végpont használata. Ha az erőforrás egy másik régióba regisztrálva van, ellenőrizze, hogy frissíti a `uri`. További információkért lásd: [beszédszolgáltatások régiók](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#text-to-speech).
+Itt hozza létre a kérést a szöveg-beszéd API-hoz, és mentse a beszédfelismerési választ. Ez a példa feltételezi, hogy az USA nyugati RÉGIÓJA végpont használata. Ha az erőforrás egy másik régióba regisztrálva van, ellenőrizze, hogy frissíti a `uri`. További információ: [Speech Services-régiók](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#text-to-speech).
 
 Következő lépésként hozzá kell a kéréshez szükséges fejlécek. Győződjön meg arról, hogy frissítenie `User-Agent` az erőforrás (az Azure Portalon található), és a készlet nevére `X-Microsoft-OutputFormat` , az előnyben részesített hangkimeneti. Kimeneti formátumok teljes listáját lásd: [hang kimenete](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis).
 
@@ -89,7 +89,7 @@ Ezután hozhat létre a kérelem törzsében Speech összefoglaló Markup Langua
 > Ebben a példában a `JessaRUS` hangtípusú. A Microsoft teljes listáját adott beszédhangot/nyelvek, lásd: [nyelvi támogatás](language-support.md).
 > Ha érdekli a saját márkáját egy egyedi, könnyen felismerhető névre hangalapú létrehozása, [létrehozása egyéni hangtípust](how-to-customize-voice-font.md).
 
-Végül paritásadatok egy kérelmet a szolgáltatáshoz. Ha a kérelem sikeres, és egy 200 állapotkódot adott vissza, a beszéd válasz kiírt `TTSOutput.wav`.
+Végül paritásadatok egy kérelmet a szolgáltatáshoz. Ha a kérelem sikeres, és a rendszer egy 200 állapotkódot ad vissza, a beszédfelismerési válasz a következő `TTSOutput.wav`lesz:.
 
 ```javascript
 // Make sure to update User-Agent with the name of your resource.
@@ -135,9 +135,9 @@ function textToSpeech(accessToken, text) {
 
 ## <a name="put-it-all-together"></a>Az alkalmazás összeállítása
 
-Már majdnem kész. Az utolsó lépés, hogy hozzon létre egy aszinkron függvényt. Ez a függvény az előfizetési kulcs fogja beolvasni egy környezeti változóból, Rákérdezés a szöveg, egy token beszerzéséhez, várja meg a kérés befejezéséhez, majd a szöveg-beszéd átalakítás, és mentse a hanganyag egy .wav.
+Már majdnem kész. Az utolsó lépés egy aszinkron függvény létrehozása. Ez a függvény beolvassa az előfizetési kulcsot egy környezeti változóból, megkéri a szöveget, lekérdezi a jogkivonatot, megvárja a kérés befejeződését, majd átalakítja a szöveget a beszédre, és mentse a hangot. wav néven.
 
-Ha még nem használta a környezeti változókat, vagy inkább az előfizetési kulcs szoftveresen kötött karakterláncként tesztelése, cserélje le a `process.env.SPEECH_SERVICE_KEY` karakterláncként az előfizetési kulccsal végzett.
+Ha nem ismeri a környezeti változókat, vagy inkább egy karakterláncként szeretné tesztelni az előfizetési kulcs hardcoded, `process.env.SPEECH_SERVICE_KEY` cserélje le az előfizetési kulcsot karakterláncként.
 
 ```javascript
 // Use async and await to get the token before attempting
@@ -182,7 +182,7 @@ Ellenőrizze, hogy a bizalmas adatok eltávolítása a mintaalkalmazás forrásk
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Ismerkedés a Node.js-minták a Githubon](https://github.com/Azure-Samples/Cognitive-Speech-TTS/tree/master/Samples-Http/NodeJS)
+> [A Node. js-minták megismerése a GitHubon](https://github.com/Azure-Samples/Cognitive-Speech-TTS/tree/master/Samples-Http/NodeJS)
 
 ## <a name="see-also"></a>Lásd még
 

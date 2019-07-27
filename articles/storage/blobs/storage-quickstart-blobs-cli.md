@@ -9,16 +9,18 @@ ms.topic: quickstart
 ms.date: 11/14/2018
 ms.author: tamram
 ms.reviewer: seguler
-ms.openlocfilehash: 0b74876d153a775993678ad50ed311c524480f76
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 6a0aef9b2fc7a99183ebd6991691245731e00200
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65149599"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68565956"
 ---
-# <a name="quickstart-upload-download-and-list-blobs-using-the-azure-cli"></a>Gyors útmutató: Blobok feltöltése, letöltése, és listát az Azure CLI használatával
+# <a name="quickstart-upload-download-and-list-blobs-using-the-azure-cli"></a>Gyors útmutató: Blobok feltöltése, letöltése és listázása az Azure CLI használatával
 
 Az Azure CLI az Azure parancssori felülete, amely Azure-erőforrások kezelésére szolgál. Használhatja a böngészőjében az Azure Cloud Shell-lel. Vagy telepítheti macOS, Linux és Windows rendszeren, és futtathatja a parancssorból. Ebből a rövid útmutatóból megtudhatja, hogyan lehet az Azure CLI használatával adatokat fel- és letölteni az Azure Blob Storage-be.
+
+[!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -117,4 +119,4 @@ az group delete --name myResourceGroup
 Ennek a rövid útmutatónak a segítségével elsajátította a fájlok a helyi lemez és az Azure Blob Storage valamely tárolója közötti átvitelét. Ha bővebb információra van szüksége a blobok Azure Storage-beli használatával kapcsolatban, lépjen tovább az Azure Blob Storage használatáról szóló oktatóanyagra.
 
 > [!div class="nextstepaction"]
-> [Útmutató: BLOB storage-műveletek az Azure CLI-vel](storage-how-to-use-blobs-cli.md)
+> [Útmutató: BLOB Storage-műveletek az Azure CLI-vel](storage-how-to-use-blobs-cli.md)

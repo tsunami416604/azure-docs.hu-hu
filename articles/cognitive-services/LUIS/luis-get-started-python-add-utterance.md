@@ -1,6 +1,6 @@
 ---
-title: Módosíthatja, alkalmazást, a Python betanítása
-titleSuffix: Language Understanding - Azure Cognitive Services
+title: Módosítás, betanítási alkalmazás, Python-LUIS
+titleSuffix: Azure Cognitive Services
 description: Ebben a rövid Python-útmutatóban kimondott példaszövegeket ad egy otthonautomatizálási alkalmazáshoz, és betanítja az alkalmazást.
 services: cognitive-services
 author: diberry
@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: quickstart
 ms.date: 05/29/2019
 ms.author: diberry
-ms.openlocfilehash: 517f9f89d7733aaa066c3fb2b487be0a67994d4e
-ms.sourcegitcommit: 8e76be591034b618f5c11f4e66668f48c090ddfd
+ms.openlocfilehash: 96f4d251b0ccc76ef33c86f6661cc9b94098a967
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66357101"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68560542"
 ---
 # <a name="quickstart-change-model-using-python"></a>Gyors útmutató: Modell módosítása a Python használatával
 

@@ -1,6 +1,6 @@
 ---
-title: Tudásbázis következő, a REST, a Node.js közzététele
-titleSuffix: QnA Maker - Azure Cognitive Services
+title: 'Gyors útmutató: Tudásbázis közzététele, REST, Node. js – QnA Maker'
+titleSuffix: Azure Cognitive Services
 description: A Node.js rövid útmutató végigvezeti programozott módon közzététele (KB). A közzététel leküldi a tudásbázis legújabb verzióját egy dedikált Azure Search-indexre, és létrehoz egy, az alkalmazásban vagy csevegőrobotban meghívható végpontot.
 services: cognitive-services
 author: diberry
@@ -11,14 +11,14 @@ ms.subservice: qna-maker
 ms.topic: quickstart
 ms.date: 02/28/2019
 ms.author: diberry
-ms.openlocfilehash: 915d5223b99f530978ade41f69420766cf591021
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: d47359f92a2cebef10514b3746fbf32f7e952132
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65787904"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68562914"
 ---
-# <a name="quickstart-publish-a-knowledge-base-in-qna-maker-using-nodejs"></a>Gyors útmutató: Tudásbázis közzététele a QnA Maker Node.js használatával
+# <a name="quickstart-publish-a-knowledge-base-in-qna-maker-using-nodejs"></a>Gyors útmutató: Tudásbázis közzététele QnA Maker a Node. js használatával
 
 A REST-alapú rövid útmutató végigvezeti programozott módon közzététele (KB). A közzététel leküldi a tudásbázis legújabb verzióját egy dedikált Azure Search-indexre, és létrehoz egy, az alkalmazásban vagy csevegőrobotban meghívható végpontot.
 
@@ -33,11 +33,11 @@ Ebben a rövid útmutatóban QnA Maker API-kat hívunk meg:
 
     ![QnA Maker tudásbázis-azonosító](../media/qnamaker-quickstart-kb/qna-maker-id.png)
 
-    Ha például egy Tudásbázis még nem rendelkezik, a minta használata ebben a rövid útmutatóban egy hozhat létre: [Hozzon létre egy új Tudásbázis](create-new-kb-nodejs.md).
+    Ha még nem rendelkezik tudásbázissal, létrehozhat egy, az ehhez a rövid útmutatóhoz használandó mintát: [Hozzon létre egy új tudásbázist](create-new-kb-nodejs.md).
 
 
 > [!NOTE] 
-> A teljes megoldás fájl(ok) érhetők el a [ **Azure-Samples/cognitive-services-qnamaker-nodejs** GitHub-adattár](https://github.com/Azure-Samples/cognitive-services-qnamaker-nodejs/tree/master/documentation-samples/quickstarts/publish-knowledge-base-short).
+> A teljes megoldás fájl (ok) az [ **Azure-Samples/kognitív-Services-qnamaker-NodeJS** GitHub](https://github.com/Azure-Samples/cognitive-services-qnamaker-nodejs/tree/master/documentation-samples/quickstarts/publish-knowledge-base-short)-adattárból érhetők el.
 
 ## <a name="create-a-knowledge-base-nodejs-file"></a>Node.js-tudásbázisfájl létrehozása
 

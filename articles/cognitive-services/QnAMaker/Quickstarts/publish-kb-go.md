@@ -1,6 +1,6 @@
 ---
-title: REST, nyissa meg a Tudásbázis közzététele
-titleSuffix: QnA Maker - Azure Cognitive Services
+title: 'Gyors útmutató: Tudásbázis közzététele, REST, go-QnA Maker'
+titleSuffix: Azure Cognitive Services
 description: Nyissa meg REST-alapú rövid útmutató végigvezeti közzététele, amely egy dedikált Azure Search-index a közzétett Tudásbázis jelölő leküldi a tesztelt Tudásbázis legújabb verzióját. Egy végpontot is létre fog hozni, amelyet az alkalmazásban vagy a csevegőrobot meg tud hívni.
 services: cognitive-services
 author: diberry
@@ -11,14 +11,14 @@ ms.subservice: qna-maker
 ms.topic: quickstart
 ms.date: 02/28/2019
 ms.author: diberry
-ms.openlocfilehash: 5c0d3c5d33d41ddd01b9d0c0ccf4f468d52f6a9e
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: c752a0ef4a908ba9a3771a0e0fb4f5f034f97707
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65790798"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68562951"
 ---
-# <a name="quickstart-publish-a-knowledge-base-in-qna-maker-using-go"></a>Gyors útmutató: Tudásbázis közzététele a QnA Maker Go használatával
+# <a name="quickstart-publish-a-knowledge-base-in-qna-maker-using-go"></a>Gyors útmutató: Tudásbázis közzététele QnA Maker a go használatával
 
 A REST-alapú rövid útmutató végigvezeti programozott módon közzététele (KB). A közzététel leküldi a tudásbázis legújabb verzióját egy dedikált Azure Search-indexre, és létrehoz egy, az alkalmazásban vagy csevegőrobotban meghívható végpontot.
 
@@ -34,10 +34,10 @@ Ebben a rövid útmutatóban QnA Maker API-kat hívunk meg:
 
     ![QnA Maker tudásbázis-azonosító](../media/qnamaker-quickstart-kb/qna-maker-id.png)
 
-    Ha például egy Tudásbázis még nem rendelkezik, a minta használata ebben a rövid útmutatóban egy hozhat létre: [Hozzon létre egy új Tudásbázis](create-new-kb-csharp.md).
+    Ha még nem rendelkezik tudásbázissal, létrehozhat egy, az ehhez a rövid útmutatóhoz használandó mintát: [Hozzon létre egy új tudásbázist](create-new-kb-csharp.md).
 
 > [!NOTE] 
-> A teljes megoldás fájl(ok) érhetők el a [ **Azure-Samples/cognitive-services-qnamaker-go** GitHub-adattár](https://github.com/Azure-Samples/cognitive-services-qnamaker-go/tree/master/documentation-samples/quickstarts/publish-knowledge-base).
+> A teljes megoldás fájl (ok) az [ **Azure-Samples/kognitív-Services-qnamaker-go** GitHub](https://github.com/Azure-Samples/cognitive-services-qnamaker-go/tree/master/documentation-samples/quickstarts/publish-knowledge-base)-tárházból érhetők el.
 
 ## <a name="create-a-go-file"></a>Go-fájl létrehozása
 
