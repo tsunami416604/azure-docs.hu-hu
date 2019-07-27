@@ -1,6 +1,6 @@
 ---
-title: Kötegelt tesztelés
-titleSuffix: Language Understanding - Azure Cognitive Services
+title: Batch-tesztelés – LUIS
+titleSuffix: Azure Cognitive Services
 description: Tesztelés a batch segítségével folyamatosan dolgozunk azon, pontosítsa és javítható a beszédfelismerés annak az alkalmazás.
 services: cognitive-services
 author: diberry
@@ -11,14 +11,14 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 03/29/2019
 ms.author: diberry
-ms.openlocfilehash: acb561970b6a8576d1219fc15758e21a3032c9e5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a9a6e7ae48a51ab10e6ba2e5d3996e61938c6f3a
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60813286"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68560840"
 ---
-# <a name="batch-testing-with-1000-utterances-in-luis-portal"></a>A LUIS-portál 1000 utterances tesztelésével Batch
+# <a name="batch-testing-with-1000-utterances-in-luis-portal"></a>Batch-tesztelés a 1000 hosszúságú kimondott szöveg a LUIS portálon
 
 Batch tesztelés érvényesíti a [aktív](luis-concept-version.md#active-version) betanított modell méréséhez az előrejelzés pontosságát. Az egyes szándékot és entitás pontosságát megtekintése a diagramon az aktuális betanított modell egy batch-teszt segítségével. Tekintse át a batch-vizsgálati eredmények pontosságának, például további példa beszédmódok hozzáadása megjelölésű, ha az alkalmazás gyakran nem tudja azonosítani a helyes cél növelése érdekében a megfelelő műveletet.
 
@@ -48,7 +48,7 @@ A modellben az egyéni entitások jelennek meg a batch teszt entitások szűrő 
 
 A kötegfájl utterances áll. Minden kimondásakor rendelkeznie kell egy várt szándék előrejelzési együtt bármely [gép megismert entitások](luis-concept-entity-types.md#types-of-entities) várhatóan észlelhető. 
 
-## <a name="batch-syntax-template-for-intents-with-entities"></a>A Batch szintaxis sablon szándékok és entitások
+## <a name="batch-syntax-template-for-intents-with-entities"></a>Batch-szintaxis sablon az entitásokkal való leképezéshez
 
 Az alábbi sablon használatával indítsa el a parancsfájlba:
 
@@ -78,9 +78,9 @@ A szkript a **startPos** és **endPos** megjegyezni elején és végén egy enti
 
 [!INCLUDE [Entity roles in batch testing - currently not supported](../../../includes/cognitive-services-luis-roles-not-supported-in-batch-testing.md)]
 
-## <a name="batch-syntax-template-for-intents-without-entities"></a>A Batch szintaxis sablon nélkül entitások leképezések
+## <a name="batch-syntax-template-for-intents-without-entities"></a>Batch-szintaxis sablon az entitások nélküli leképezésekhez
 
-Az alábbi sablon használatával indítsa el a kötegfájlt entitások nélkül:
+A következő sablonnal elindíthatja a batch-fájlt entitások nélkül:
 
 ```JSON
 [
@@ -92,7 +92,7 @@ Az alábbi sablon használatával indítsa el a kötegfájlt entitások nélkül
 ]
 ```
 
-Ha nem szeretné tesztelni az entitások, például a `entities` tulajdonságot, és állítsa be az üres tömbként `[]`.
+Ha nem szeretne entitásokat tesztelni, foglalja bele a `entities` tulajdonságot, és állítsa üres `[]`tömbként az értéket.
 
 
 ## <a name="common-errors-importing-a-batch"></a>Gyakori hibák a batch importálása

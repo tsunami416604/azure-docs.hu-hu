@@ -1,5 +1,5 @@
 ---
-title: Módosíthatja, a Node.js alkalmazás betanítása
+title: Módosítás, betanítási alkalmazás, Node. js-LUIS
 titleSuffix: Azure Cognitive Services
 description: Ebben a rövid Node.js-útmutatóban kimondott példaszövegeket ad egy otthonautomatizálási alkalmazáshoz, és betanítja az alkalmazást.
 services: cognitive-services
@@ -11,14 +11,14 @@ ms.subservice: language-understanding
 ms.topic: quickstart
 ms.date: 05/29/2019
 ms.author: diberry
-ms.openlocfilehash: 13ce1706a2184075155b2bbc4dca5753be391ceb
-ms.sourcegitcommit: 8e76be591034b618f5c11f4e66668f48c090ddfd
+ms.openlocfilehash: 6f0b19c1ba8d4a72ced19e74a3807c3962989e5d
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66357124"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68560566"
 ---
-# <a name="quickstart-change-model-using-nodejs"></a>Gyors útmutató: Modell módosítása a Node.js használatával
+# <a name="quickstart-change-model-using-nodejs"></a>Gyors útmutató: Modell módosítása a Node. js használatával
 
 [!INCLUDE [Quickstart prerequisites for changing model](../../../includes/cognitive-services-luis-qs-change-model-intro-para.md)]
 

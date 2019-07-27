@@ -1,7 +1,7 @@
 ---
-title: A beszédfelismerés SDK – beszédszolgáltatások több résztvevő beszélgetések alapuló átírás
+title: Több résztvevős beszélgetések átírása a Speech SDK-Speech szolgáltatással
 titleSuffix: Azure Cognitive Services
-description: Ismerje meg, hogyan beszélgetés Beszédátírási használata a Speech SDK-val. Elérhető C++, C#, és a Java használatával.
+description: Megtudhatja, hogyan használhatja a Speech SDK-val a társalgási átírást. Elérhető a C++, C#, és Javához.
 services: cognitive-services
 author: jhakulin
 manager: nitinme
@@ -10,40 +10,40 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: jhakulin
-ms.openlocfilehash: 215209a5b8e3ed46b25fbfa492c305785a9a0070
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: 8c4ecc017d058900297f2220173e064700e7051b
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67606468"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68559464"
 ---
-# <a name="transcribe-multi-participant-conversations-with-the-speech-sdk"></a>A beszédfelismerés SDK-val több résztvevő beszélgetések alapuló átírás
+# <a name="transcribe-multi-participant-conversations-with-the-speech-sdk"></a>Több résztvevős beszélgetések átírása a Speech SDK-val
 
-A beszédfelismerés SDK **ConversationTranscriber** API lehetővé teszi lehetővé teszi az hozzáadása, eltávolítása és azonosíthatja a résztvevők a beszédszolgáltatások történő hang streamelési értekezletek/beszélgetések lefényképezze `PullStream` vagy `PushStream`.
+A Speech SDK **ConversationTranscriber** API-jával olyan értekezleteket és beszélgetéseket lehet átírni, amelyek lehetővé teszik a résztvevők `PullStream` `PushStream`hozzáadását, eltávolítását és azonosítását.
 
 ## <a name="limitations"></a>Korlátozások
 
-* Beszélgetés transcriber támogatott C++, C#, és a Java, a Windows, Linux- és Android.
-* A ROOBO DevKit a támogatott hardveres környezetet biztosít, amellyel. kör alakú több mikrofon tárolótömbök hatékonyan számára a beszélő felismerése beszélgetés beszédátírás készítéséhez. [További információkért tekintse meg a beszédfelismerés Devices SDK-val](speech-devices-sdk.md).
-* Beszéd SDK támogatása beszélgetés beszédátírási hang lekéréses felhasználása, és küldje le a 16 bites 16 kHz PCM hanganyagra nyolc csatornák mód Streamek korlátozódik.
-* Beszélgetés Beszédátírási jelenleg nyelveken is elérhető "en-US" és "zh-CN" a következő régiókban: centralus és eastasia.
+* A beszélgetési átirat a C++, C#a és a Java Windows, Linux és Android rendszereken támogatott.
+* A ROOBO fejlesztői készlet a támogatott hardveres környezet a beszélgetési átiratok létrehozásához, amely körkörös, több mikrofonos tömböt biztosít, amely hatékonyan használható a hangszórók azonosításához. [További információ: Speech Devices SDK](speech-devices-sdk.md).
+* Az átírást bemutató beszédfelismerési SDK-támogatás a hangos lekéréses és leküldéses üzemmódú streamek, valamint a 16 bites 16 kHz-es PCM-hang nyolc csatornájának használatára korlátozódik.
+* A beszélgetés átírása jelenleg az "en-US" és a "zh-CN" nyelveken érhető el a következő régiókban: CentralUS és eastasia.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* [Ismerje meg, hogyan használja a hang-szöveg transzformációs beszéd SDK-val.](quickstart-csharp-dotnet-windows.md)
-* [A beszédfelismerés próba-előfizetés beszerzése.](https://azure.microsoft.com/try/cognitive-services/)
-* Beszéd SDK 1.5.1 verzió vagy újabb verzió szükséges.
+* [Megtudhatja, hogyan használhatja a beszédfelismerést a beszédfelismerési SDK-val.](quickstart-csharp-dotnet-windows.md)
+* [A beszédfelismerési próbaverziós előfizetés beszerzése.](https://azure.microsoft.com/try/cognitive-services/)
+* A Speech SDK 1.5.1-es vagy újabb verziója szükséges.
 
-## <a name="create-voice-signatures-for-participants"></a>A résztvevők hangalapú aláírások létrehozása
+## <a name="create-voice-signatures-for-participants"></a>Hangaláírások létrehozása a résztvevők számára
 
-Az első lépéseként a beszélgetés résztvevők hangalapú aláírások létrehozásához. Hangalapú aláírások létrehozásához kötelező megadni a hatékony beszélő felismerése.
+Első lépésként létre kell hoznia a beszélgetés résztvevőinek hang-aláírásait. A hatékony hangfelismeréshez hangaláírások létrehozására van szükség.
 
-### <a name="requirements-for-input-wave-file"></a>A bemeneti hangfájl követelményei
+### <a name="requirements-for-input-wave-file"></a>A bemeneti Wave-fájlra vonatkozó követelmények
 
-* A bemeneti audio hangfájl hangalapú aláírások létrehozásához a 16 bites minták, 16 kHz mintavételi gyakoriság és a egy egyetlen csatornát (Mono) formátumot kell.
-* Az ajánlott minden egyes hang minta hossza 30 másodperc és két perc között.
+* A hangaláírások létrehozásához használt bemeneti hanghullám-fájlnak 16 bites mintákban, 16 kHz-es mintavételi sebességgel és egy egycsatornás (monó) formátumban kell lennie.
+* Az egyes hangmintákhoz javasolt hossz 30 másodperc és két perc között lehet.
 
-Az alábbi példa szerint voice-aláírás létrehozásához két különböző módszert mutat be [a REST API-val](https://aka.ms/cts/signaturegenservice) a C#:
+Az alábbi példa két különböző módszert mutat be a hangaláírások létrehozásához [a REST API használatával](https://aka.ms/cts/signaturegenservice) C#:
 
 ```csharp
 class Program
@@ -85,11 +85,11 @@ class Program
 }
 ```
 
-## <a name="transcribing-conversations"></a>Beszélgetések átírás
+## <a name="transcribing-conversations"></a>Beszélgetések átirata
 
-Lefényképezze több résztvevők beszélgetést, hozzon létre a `ConversationTranscriber` objektum, amely társítva van a `AudioConfig` a beszélgetés munkamenet és a stream hang használatával létrehozott objektum `PullAudioInputStream` vagy `PushAudioInputStream`.
+A több résztvevővel folytatott beszélgetések átírásához `ConversationTranscriber` hozza létre a beszélgetési munkamenethez létrehozott objektumhoz társított `AudioConfig` objektumot, illetve a vagy `PullAudioInputStream` `PushAudioInputStream`a használatával továbbított hanganyagot.
 
-Tegyük fel, hogy rendelkezik-e nevű ConversationTranscriber osztály `MyConversationTranscriber`. A kód előfordulhat, hogy néznek ki:
+Tegyük fel, hogy rendelkezik egy nevű `MyConversationTranscriber`ConversationTranscriber osztállyal. A kód így néz ki:
 
 ```csharp
 using Microsoft.CognitiveServices.Speech;
@@ -191,4 +191,4 @@ public class MyConversationTranscriber
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Ismerje meg a minták a Githubon](https://aka.ms/csspeech/samples)
+> [A GitHubon található minták megismerése](https://aka.ms/csspeech/samples)

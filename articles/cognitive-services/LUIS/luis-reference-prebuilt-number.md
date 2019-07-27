@@ -1,6 +1,6 @@
 ---
-title: Előre összeállított entitások száma
-titleSuffix: Azure
+title: Előre elkészített entitások száma – LUIS
+titleSuffix: Azure Cognitive Services
 description: Ez a cikk előre összeállított entitások információ a Language Understanding (LUIS) tartalmazza.
 services: cognitive-services
 author: diberry
@@ -11,18 +11,18 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 05/07/2019
 ms.author: diberry
-ms.openlocfilehash: d4f707d4bf9bac5e2208eadb94983af368b9f521
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 88f36fb6d73e2ec88940e7eb53d982824e194074
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65072261"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68560199"
 ---
-# <a name="number-prebuilt-entity-for-a-luis-app"></a>A LUIS-alkalmazásokon előre összeállított entitások száma
+# <a name="number-prebuilt-entity-for-a-luis-app"></a>A LUIS-alkalmazáshoz tartozó előre összeépített entitások száma
 Számos módon, amelyben a numerikus értékek összeszámolása, express, és írja le az adatokat használják. Ez a cikk ismerteti a lehetséges példa csak néhányat. A LUIS a változások, a felhasználó utterances értelmezi, és egységes numerikus értéket adja vissza. Az entitás már be van tanítva, mert nem kell az alkalmazás leképezések számot tartalmazó példa beszédmódok hozzáadása. 
 
 ## <a name="types-of-number"></a>Szám típusú
-Szám felügyelje a [felismerő szöveges](https://github.com/Microsoft/Recognizers-Text/blob/master/Patterns/English/English-Numbers.yaml) GitHub-adattár
+A számot a rendszer a [felismerők – Text GitHub-](https://github.com/Microsoft/Recognizers-Text/blob/master/Patterns/English/English-Numbers.yaml) adattárból kezeli
 
 ## <a name="examples-of-number-resolution"></a>Példák a szám felbontás
 
@@ -43,7 +43,7 @@ LUIS tartalmazza a felismert értékét egy **`builtin.number`** az entitás a `
 ## <a name="resolution-for-prebuilt-number"></a>Feloldási előre összeállított maximális száma
 
 
-### <a name="api-version-2x"></a>API-verzió 2.x
+### <a name="api-version-2x"></a>API 2. x verziója
 
 Az alábbi példa bemutatja, amely tartalmazza a felbontást az utterance (kifejezés) "két tucat" értékének 24, LUIS, a JSON-választ.
 
@@ -83,9 +83,9 @@ Az alábbi példa bemutatja, amely tartalmazza a felbontást az utterance (kifej
 }
 ```
 
-### <a name="preview-api-version-3x"></a>Az előzetes API verzió 3.x
+### <a name="preview-api-version-3x"></a>Előzetes verziójú API 3. x
 
-A következő JSON-ja az a `verbose` paraméter beállítása `false`:
+A következő JSON `verbose` a paraméter `false`értéke:
 
 ```json
 {
@@ -107,7 +107,7 @@ A következő JSON-ja az a `verbose` paraméter beállítása `false`:
 }
 ```
 
-A következő JSON-ja az a `verbose` paraméter beállítása `true`:
+A következő JSON `verbose` a paraméter `true`értéke:
 
 ```json
 {

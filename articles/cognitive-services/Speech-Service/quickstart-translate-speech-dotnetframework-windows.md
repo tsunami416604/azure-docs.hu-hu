@@ -1,7 +1,7 @@
 ---
-title: 'Gyors útmutató: Beszéd átalakítás, lefordítása C# (.NET Framework Windows) – beszédszolgáltatások'
+title: 'Gyors útmutató: Beszéd fordítása C# , (.NET-keretrendszer Windows) – beszédfelismerési szolgáltatás'
 titleSuffix: Azure Cognitive Services
-description: Ebben a rövid útmutatóban fog létrehozni egy egyszerű .NET-keretrendszer alkalmazás rögzítése felhasználói speech, azt fordítása más nyelvre és a szöveg a parancssorba. Ez az útmutató Windows-felhasználók számára tervezték.
+description: Ebben a rövid útmutatóban egy egyszerű .NET-keretrendszerbeli alkalmazást hoz létre a felhasználói beszéd rögzítéséhez, lefordítani egy másik nyelvre, és a szöveget a parancssorba írja. Ez az útmutató Windows-felhasználók számára készült.
 services: cognitive-services
 author: wolfma61
 manager: nitinme
@@ -10,27 +10,27 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: b81aac4779570f39fcbacda867fe27d902322bc5
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: e62756ab428135ca3d5d9107f37e61813097d21f
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67602820"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68553466"
 ---
-# <a name="quickstart-translate-speech-with-the-speech-sdk-for-net-framework"></a>Gyors útmutató: Lefordítja a beszéd, a beszéd SDK-val .NET-keretrendszer
+# <a name="quickstart-translate-speech-with-the-speech-sdk-for-net-framework"></a>Gyors útmutató: Beszéd fordítása a .NET-keretrendszerhez készült Speech SDK-val
 
-Rövid útmutatók érhetők el is [hang-szöveg transzformációs](quickstart-csharp-dotnet-windows.md) és [szöveg-hang transzformációs](quickstart-text-to-speech-dotnet-windows.md).
+A gyors üzembe helyezési útmutató a [szöveg](quickstart-csharp-dotnet-windows.md) és a [beszéd](quickstart-text-to-speech-dotnet-windows.md)közötti kommunikációhoz is elérhető.
 
-Ebben a rövid útmutatóban fog létrehozni egy egyszerű .NET-keretrendszer alkalmazás rögzíti a felhasználó beszéd, a számítógép mikrofon, a rendszer lefordítja a beszédfelismerési és transcribes a lefordított szöveg valós időben a parancssorba. Ez az alkalmazás a 64 bites Windows rendszerhez készült, és a beépített a [beszéd SDK NuGet-csomagot](https://aka.ms/csspeech/nuget) és a Microsoft Visual Studio 2017-ben.
+Ebben a rövid útmutatóban egy egyszerű .NET-keretrendszerbeli alkalmazást fog létrehozni, amely rögzíti a felhasználói beszédet a számítógép mikrofonjában, lefordítja a beszédet, és valós időben írja le a lefordított szöveget a parancssorba. Ez az alkalmazás a 64 bites Windows rendszeren fut, és a [SPEECH SDK NuGet csomaggal](https://aka.ms/csspeech/nuget) és a Microsoft Visual Studio 2017-mel készült.
 
-Beszédalapú fordítási elérhető nyelvek teljes listáját lásd: [nyelvi támogatás](language-support.md).
+A beszédfelismeréshez elérhető nyelvek teljes listáját a [nyelvi támogatás](language-support.md)című témakörben tekintheti meg.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 Ehhez a rövid útmutatóhoz a következőkre van szükség:
 
 * [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/)
-* A beszédfelismerési szolgáltatás egy Azure-előfizetés kulcs. [Igényeljen ingyenesen egy](get-started.md).
+* Egy Azure-előfizetési kulcs a beszédfelismerési szolgáltatáshoz. [Szerezze be az egyiket ingyenesen](get-started.md).
 
 ## <a name="create-a-visual-studio-project"></a>Visual Studio-projekt létrehozása
 
@@ -58,16 +58,16 @@ Ehhez a rövid útmutatóhoz a következőkre van szükség:
 
     ![A Visual Studio képernyőképe, amelyen ki van emelve a Hibakeresés indítása lehetőség](media/sdk/qs-csharp-dotnetcore-windows-06-start-debugging.png "Hibakeresés indítása az alkalmazáson")
 
-1. Megjelenik egy konzolablak, amely arra kéri Önt, hogy mondjon valamit. Mondjon ki egy angol nyelvű kifejezést vagy mondatot. A beszéd a Speech továbbításakor, lefordított, és megjelenített érzéseket szöveg, amely ugyanabban az ablakban jelenik meg.
+1. Megjelenik egy konzolablak, amely arra kéri Önt, hogy mondjon valamit. Mondjon ki egy angol nyelvű kifejezést vagy mondatot. A beszédet a beszédfelismerési szolgáltatás továbbítja, lefordítva és szövegbe átirata, amely ugyanabban az ablakban jelenik meg.
 
-    ![Képernyőfelvétel a konzol kimenete a sikeres fordítás után](media/sdk/qs-translate-csharp-dotnetcore-windows-output.png "Konzolkimenetet sikeres fordítás után")
+    ![A sikeres fordítás után a konzol kimenetének képernyőképe](media/sdk/qs-translate-csharp-dotnetcore-windows-output.png "Konzol kimenete sikeres fordítás után")
 
 ## <a name="next-steps"></a>További lépések
 
-További példákat, beszéd olvasni hangfájl, és a lefordított szöveg szintetizált, mint például a Githubon érhetők el.
+További minták, mint például a hangfájlok beszédének beolvasása és a lefordított szöveg szintetizált beszédként való kiírása, a GitHubon érhetők el.
 
 > [!div class="nextstepaction"]
-> [Ismerkedés a C# példák a Githubon](https://aka.ms/csspeech/samples)
+> [Minták C# feltárása a githubon](https://aka.ms/csspeech/samples)
 
 ## <a name="see-also"></a>Lásd még
 

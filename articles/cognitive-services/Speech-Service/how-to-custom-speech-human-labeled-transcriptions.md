@@ -1,7 +1,7 @@
 ---
-title: Emberi címkével beszédátírás irányelvek – beszédszolgáltatások
-titlesuffix: Azure Cognitive Services
-description: Ha pontosságát, különösen szavak törölt vagy nem megfelelően helyettesített, okozó problémák javítása érdekében érdemes beszédátírás emberi címkével a hang adatokkal együtt használja. Mik azok az emberi címkével beszédátírás? Ez nem probléma, a word-word, a szó beszédátírás hangfájl azok.
+title: Emberi feliratú átírási irányelvek – beszédfelismerési szolgáltatás
+titleSuffix: Azure Cognitive Services
+description: Ha szeretné javítani az elismerés pontosságát, különösen azokat a problémákat, amelyek a szavak törlésekor vagy helytelen helyettesítése miatt következnek, az emberi címkével ellátott átírásokat érdemes használni a hangadatokkal együtt. Mik az emberi feliratú átiratok? Ez egyszerűen, egy hangfájl szó szerinti Word-átirata.
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -10,162 +10,162 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: 1fca2a21758a060dbfdc4acb2123a59fcae585fd
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: 1645e97e5648032a1281e7cb410c42f0a28b6767
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67606546"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68559657"
 ---
-# <a name="how-to-create-human-labeled-transcriptions"></a>Emberi címkével beszédátírás létrehozása
+# <a name="how-to-create-human-labeled-transcriptions"></a>Emberi címkével ellátott átiratok létrehozása
 
-Ha pontosságát, különösen szavak törölt vagy nem megfelelően helyettesített, okozó problémák javítása érdekében érdemes beszédátírás emberi címkével a hang adatokkal együtt használja. Mik azok az emberi címkével beszédátírás? Ez nem probléma, a word-word, a szó beszédátírás hangfájl azok.
+Ha szeretné javítani az elismerés pontosságát, különösen azokat a problémákat, amelyek a szavak törlésekor vagy helytelen helyettesítése miatt következnek, az emberi címkével ellátott átírásokat érdemes használni a hangadatokkal együtt. Mik az emberi feliratú átiratok? Ez egyszerűen, egy hangfájl szó szerinti Word-átirata.
 
-Az átírási adatok nagy minta felismerés javítása szükséges, javasoljuk, hogy beszédátírási adatok 1000, és 10 óra közötti biztosít. Ezen a lapon áttekintheti az irányelveket, amelyek segítségével hozhat létre kiváló minőségű beszédátírás. Ez az útmutató a területi beállítást, az angol, Mandarin kínai és német szakaszok van osztva.
+Az elismerés javításához nagy minta szükséges az átírási adatgyűjtéshez, javasoljuk, hogy 10 és 1 000 órányi átírást adjon meg. Ezen az oldalon áttekintjük a kiváló minőségű átírások létrehozásához kialakított irányelveket. Ez az útmutató területi beállítással van elválasztva, és az angol, a mandarin kínai és a német nyelvű szakaszt is tartalmazza.
 
-## <a name="us-english-en-us"></a>Amerikai angol (en-US)
+## <a name="us-english-en-us"></a>USA angol (en-US)
 
-Angol nyelvű Audio emberi címkével beszédátírás csak az ASCII-karakterek használatával egyszerű szövegként kell adni. Kerülje a Latin 1 vagy Unicode írásjeleket használatát. Ezek a karakterek gyakran véletlenül kerülnek, ha szöveget másol szövegszerkesztőből vagy automatizované získávání dat weblapokról származó adatok. Ha ezek a karakterek is szerepelnek, ügyeljen arra, hogy frissítse azokat a megfelelő ASCII-helyettesítés.
+Az angol hanganyaghoz tartozó emberi feliratú átírásokat egyszerű szövegként kell megadni, csak ASCII-karakterek használatával. Kerülje a Latin-1 vagy a Unicode írásjelek használatát. Ezeket a karaktereket gyakran véletlenül felveszi a rendszer a Word-feldolgozó alkalmazásból vagy a weblapokből származó adatokkal történő másoláskor. Ha ezek a karakterek jelennek meg, győződjön meg arról, hogy a megfelelő ASCII-helyettesítéssel frissíti őket.
 
 Íme, néhány példa:
 
-| Karakterek elkerülése érdekében | Helyettesítés | Megjegyzések |
+| Kerülendő karakterek | Helyettesítés | Megjegyzések |
 |---------------------|--------------|-------|
-| "Hello world" | "Hello world" | A nyitó és záró idézőjelet rendelkezik gondolatjelek a megfelelő ASCII-karaktereket. |
-| János napja | János napja | A megfelelő ASCII-karaktert az aposztróf lett kijelölve. |
-| jó volt – nem, nagyszerű volt! | jó--volt nem, mert nagyszerű! | A gondolatjelet helyettesítette két kötőjellel. |
+| "Helló világ" | "Helló világ" | A nyitó és záró idézőjelek a megfelelő ASCII-karakterekkel lettek helyettesítve. |
+| John 's Day | John 's Day | Az aposztróf a megfelelő ASCII-karakterrel lett helyettesítve. |
+| jó volt – nem, nagyszerű volt! | jó volt – nem, nagyszerű volt! | Az em Dash két kötőjeltel lett helyettesítve. |
 
-### <a name="text-normalization-for-us-english"></a>Az angol szöveget normalizálási
+### <a name="text-normalization-for-us-english"></a>Szöveg normalizálása az USA angol nyelvén
 
-Szöveg normalizálás használt modell betanításakor konzisztens formátum szó az átalakítást. Néhány normalizálási szabályok érvényesek szöveg automatikusan, azonban azt javasoljuk, ezeket az irányelveket, előkészíti az emberi címkével beszédátírási adatokat:
+A szöveg normalizálása a szavak átalakítása a modell betanításakor használt konzisztens formátumba. Bizonyos normalizálás szabályok automatikusan érvényesek a szövegre, de javasoljuk, hogy az emberi címkével ellátott átírási adatai előkészítéséhez használja ezeket az irányelveket:
 
-* Írható ki rövidítések a szavakat.
-* Kiírni a nem szabványos numerikus karakterláncokat (például számlázási feltételek) szavakat.
-* Nem alfanumerikus karakterek vagy vegyes alfanumerikus karaktereket, ejtsd kell kért.
-* Rövidítéseket, amelyek a rendszer ejtsd: szavakat (például "a mérlegeli", "lézernyomtatási", "RAM" vagy "NATO") nem szerkeszthető.
-* Írási ki rövidítéseket, amelyek a rendszer ejtsd: külön tartalmazhat, minden betű, szóközzel elválasztva.
+* Szavak kiírása rövidítések.
+* Nem szabványos numerikus karakterláncok (például a könyvelési kifejezések) kiírása.
+* A nem alfabetikus karaktereket vagy a kevert alfanumerikus karaktereket az "ejtsd" értékre kell írni.
+* A szavakként kimutatott rövidítések nem szerkeszthetők (például "radar", "Laser", "RAM" vagy "NATO").
+* A kiugró rövidítések, amelyeket szóközzel elválasztva külön betűnek kell kiírni.
 
-Íme néhány példa a normalizálási az átírási a végre kell hajtania:
+Íme néhány példa arra, hogy milyen normalizálás után kell elvégezni az átírást:
 
-| Eredeti szöveg | Normalizálási utáni szöveg |
+| Eredeti szöveg | Szöveg a normalizálás után |
 |---------------|--------------------------|
-| Dr. Bruce szalagcím | Orvos Bruce szalagcím |
-| James Bond, 007 | James Bond, duplán hoppá hét |
+| Dr. Bruce-szalagcím | Orvos Bruce-banner |
+| James Bond, 007 | James Bond, dupla Oh Seven |
 | Ke$ha | Kesha |
-| Mennyi ideig tart a 2 x 4 | Mennyi ideig tart a két négy |
-| Az értekezlet kerül az 1-3 pm | Az értekezlet kerül egy és három pm |
-| saját vér típus O + | Saját vér típus pozitív O |
-| víz H20 | víz H 2 O |
-| által Van Halen OU812 lejátszása | O U 8 1-2 szerint Van Halen lejátszása |
-| UTF-8 az Anyagjegyzék | U T F 8 az Anyagjegyzék |
+| Mennyi ideig tart a 2x4 | Meddig a kettő négy |
+| Az értekezlet 1 – 15 óra | Az értekezlet egy-három PM-ből kerül |
+| A vérem típusa O + | A vérem típusa O pozitív |
+| A víz H20 | A víz H 2 O |
+| Play OU812 by van Halen | O U 8 1 2 lejátszási mód: Van Halen |
+| UTF-8 az AJ-vel | U T F 8 az AJ-vel |
 
-Az alábbi normalizálási szabályok beszédátírás automatikusan érvényesek:
+A következő normalizálás szabályok automatikusan érvényesek az átírásokra:
 
-* Kisbetűk használata.
-* Távolítsa el a szavak belül aposztrófot kivételével az összes absztrakt.
-* Bontsa ki a számok szavakat/beszélt űrlapra, például összegeket.
+* Használjon kisbetűs karaktereket.
+* Távolítsa el az összes írásjelet, kivéve az aposztrófokat a szavakon belül.
+* A számok kibontása szavak/beszéd alakba, például dollárba.
 
-Íme néhány példa a normalizálási az átírási automatikusan végre:
+Íme néhány példa az átíráshoz automatikusan végrehajtott normalizálás esetén:
 
-| Eredeti szöveg | Normalizálási utáni szöveg |
+| Eredeti szöveg | Szöveg a normalizálás után |
 |---------------|--------------------------|
-| "Szent vonatkozó!" említett Batman. | Szent vonatkozó mondta batman |
-| "Mi?" említett Batman sidekick, a terheléselosztást. | milyen említett batman sidekick multiplexelés |
-| Nyissa meg a get - em! | Nyissa meg a get-em |
-| Double-jointed vagyok | Kettős jointed vagyok |
-| 104 utca utca. | egy hoppá négy utca utca. |
-| A 102.7 hangolása | Állítson be egy hoppá két hét |
-| A pi készül 3,14 | a pi körülbelül három pont egy négy |
-$3,14 költségei| három tizennégy költségei |
+| "Szent tehén!" mondta Batman. | Szent tehén mondta Batman |
+| "Mi?" mondta Batman társa, Robin. | Mi mondta a Batman pajtás Robin |
+| Go Get-em! | Go Get em |
+| Dupla közös | Dupla közös |
+| 104 Elm utca | 1 0 4 Elm utca |
+| Hangolás a 102,7-re | hangolás a 1 0 2 7-re |
+| A PI körülbelül 3,14 | a PI körülbelül három pontot 1 4 |
+Informatikai költségek $3,14| informatikai költségek 3 14 |
 
 ## <a name="mandarin-chinese-zh-cn"></a>Mandarin kínai (zh-CN)
 
-Mandarin kínai Audio emberi címkével beszédátírás UTF-8 kódolású a bájtsorrendjelző mutató kell lennie. Kerülje a teljes szélességű írásjelek karakterek használatát. Ezek a karakterek szerepelhetnek véletlenül a az adatelőkészítés szövegszerkesztő programokban vagy scrape weblapokról származó adatokat. Ha ezek a karakterek is szerepelnek, ügyeljen arra, hogy frissítse azokat a megfelelő teljes szélességű helyettesítés.
+A mandarin kínai hang emberi címkével ellátott átírásait UTF-8 kódolással kell ellátni, bájt-Order jelölővel. Kerülje a félszélességű írásjelek használatának elkerülését. Ezek a karakterek felvehetők véletlenül, amikor felkészíti az adatfeldolgozást egy szövegszerkesztő programba, vagy a weblapokról adatokkal látja el a fájlokat. Ha ezek a karakterek jelennek meg, ügyeljen arra, hogy a megfelelő teljes szélességű helyettesítéssel frissítse őket.
 
 Íme, néhány példa:
 
-| Karakterek elkerülése érdekében | Helyettesítés | Megjegyzések |
+| Kerülendő karakterek | Helyettesítés | Megjegyzések |
 |---------------------|--------------|-------|
-| "你好" | "你好" | A nyitó és záró idézőjelet rendelkezik gondolatjelek megfelelő karakterrel. |
-| 需要什么帮助? | 需要什么帮助？ | A kérdőjel a megfelelő karakterrel lett kijelölve. |
+| "你好" | "你好" | A nyitó és záró idézőjelek a megfelelő karakterekkel lettek helyettesítve. |
+| 需要什么帮助? | 需要什么帮助？ | A kérdőjel a megfelelő karakterrel lett helyettesítve. |
 
-### <a name="text-normalization-for-mandarin-chinese"></a>A kínai Mandarin szöveg normalizálási
+### <a name="text-normalization-for-mandarin-chinese"></a>A mandarin kínai szövegének normalizálása
 
-Szöveg normalizálás használt modell betanításakor konzisztens formátum szó az átalakítást. Néhány normalizálási szabályok érvényesek szöveg automatikusan, azonban azt javasoljuk, ezeket az irányelveket, előkészíti az emberi címkével beszédátírási adatokat:
+A szöveg normalizálása a szavak átalakítása a modell betanításakor használt konzisztens formátumba. Bizonyos normalizálás szabályok automatikusan érvényesek a szövegre, de javasoljuk, hogy az emberi címkével ellátott átírási adatai előkészítéséhez használja ezeket az irányelveket:
 
-* Írható ki rövidítések a szavakat.
-* Használja a beszélt formában numerikus karakterláncok kiírni.
+* Szavak kiírása rövidítések.
+* Numerikus karakterláncok kiírása szóbeli formában.
 
-Íme néhány példa a normalizálási az átírási a végre kell hajtania:
+Íme néhány példa arra, hogy milyen normalizálás után kell elvégezni az átírást:
 
-| Eredeti szöveg | Normalizálási utáni szöveg |
+| Eredeti szöveg | Szöveg a normalizálás után |
 |---------------|--------------------------|
 | 我今年21 | 我今年二十一 |
 | 3号楼504 | 三号 楼 五 零 四 |
 
-Az alábbi normalizálási szabályok beszédátírás automatikusan érvényesek:
+A következő normalizálás szabályok automatikusan érvényesek az átírásokra:
 
-* Távolítsa el az összes írásjelek
-* Bontsa ki a számokat a kimondott űrlap
-* Kétbájtos karaktereket átalakítása félig karaktereket
-* Nagybetűk használata az összes angol szavakat
+* Az összes írásjel eltávolítása
+* Számok kibontása a szóbeli űrlapra
+* Teljes szélességű betűk átalakítása félszélességű betűkre
+* Nagybetűk használata az összes angol kifejezéshez
 
-Íme néhány példa a normalizálási az átírási automatikusan végre:
+Íme néhány példa az átíráshoz automatikusan végrehajtott normalizálás esetén:
 
-| Eredeti szöveg | Normalizálási utáni szöveg |
+| Eredeti szöveg | Szöveg a normalizálás után |
 |---------------|--------------------------|
-| 3.1415 | 三 点 一 四 一 五 |
-| ￥3.5 | 三 元 五 角 |
+| 3,1415 | 三 点 一 四 一 五 |
+| ¥3,5 | 三 元 五 角 |
 | w f y z |W F Y Z |
 | 1992年8月8日 | 一 九 九 二 年 八 月 八 日 |
 | 你吃饭了吗? | 你 吃饭 了 吗 |
-| 下午5:00的航班 | 下午 五点 的 航班 |
-| 我今年21岁 | 我 今年 二十 一 岁 |
+| 下午 5:00 的航班 | 下午 五点 的 航班 |
+| 我今年 21 岁 | 我 今年 二十 一 岁 |
 
-## <a name="german-de-de-and-other-languages"></a>Német (de-DE) és más nyelveken
+## <a name="german-de-de-and-other-languages"></a>Német (de-DE) és egyéb nyelvek
 
-Emberi címkével beszédátírás német hang (és más nem angol nyelvű vagy Mandarin kínai nyelvek) UTF-8 kódolású a bájtsorrendjelző mutató kell lennie. Egy emberi címkével átiratok hang fájl esetében kell megadni.
+A német hangra (és más, nem angol vagy mandarin kínai nyelvekre) származó, emberi címkével ellátott átírásokat UTF-8 kódolással kell ellátni egy byte-Order jelölővel. Minden hangfájlhoz meg kell adni egy emberi címkével ellátott átiratot.
 
-### <a name="text-normalization-for-german"></a>Szöveg normalizálási német
+### <a name="text-normalization-for-german"></a>Szöveg normalizálása német nyelven
 
-Szöveg normalizálás használt modell betanításakor konzisztens formátum szó az átalakítást. Néhány normalizálási szabályok érvényesek szöveg automatikusan, azonban azt javasoljuk, ezeket az irányelveket, előkészíti az emberi címkével beszédátírási adatokat:
+A szöveg normalizálása a szavak átalakítása a modell betanításakor használt konzisztens formátumba. Bizonyos normalizálás szabályok automatikusan érvényesek a szövegre, de javasoljuk, hogy az emberi címkével ellátott átírási adatai előkészítéséhez használja ezeket az irányelveket:
 
-*   Tizedes tört pontot is írhat ","és nem".".
-*   Írási elválasztója mint ":"és nem"." (például: 12:00 Uhr).
-*   Rövidítéseket, például a "ca". nem cserélhető le. Azt javasoljuk, hogy használja-e teljes kimondott formájában.
-*   A négy fő matematikai operátorokat (+, -, \*, és /) el lesznek távolítva. Azt javasoljuk, és cserélje le őket az írásos formába: "plusz," "mínusz," "kártevő" és "geteilt."
-*   Törlődnek az összehasonlítási operátor (=, <, és >). Azt javasoljuk, és cserélje le őket "gleich", "kleiner als," és "grösser als."
-*   Az írásos formába percenkénti egységeinek törtrészeként 3/4-es, mint például írási (például: "drei viertel" 3/4 helyett).
-*   Cserélje le a """szimbólumra az írásos formába"Euró."
+*   A tizedesjegyek írása "," és nem ".".
+*   Írási elválasztók ":" és nem "" karakterrel (például: 12:00 UHR).
+*   Rövidítések, például "CA" nincs lecserélve. Javasoljuk, hogy használja a teljes szóbeli űrlapot.
+*   A négy fő matematikai operátor (+,-, \*és/) el lesz távolítva. Javasoljuk, hogy a "Plus", a "mínusz", a "mal" és a "geteilt" írásos formában cserélje le őket.
+*   Az összehasonlító operátorok el lesznek távolítva (=, < és >). Azt javasoljuk, hogy cserélje le őket "Gleich", "Kleiner ALS" és "grösser ALS" értékre.
+*   Írjon a törtek, például a 3/4 írásos formában (például: "Drei Viertel", 3/4 helyett).
+*   Cserélje le a "EUR" szimbólumot az "euro" írott formában.
 
-Íme néhány példa a normalizálási az átírási a végre kell hajtania:
+Íme néhány példa arra, hogy milyen normalizálás után kell elvégezni az átírást:
 
-| Eredeti szöveg | Felhasználói normalizálási utáni szöveg | Rendszer normalizálási utáni szöveg |
+| Eredeti szöveg | Felhasználói normalizálás utáni szöveg | A rendszernormalizálás utáni szöveg |
 |---------------|-------------------------------|---------------------------------|
-| Es Izraeli normál idő szerint 12.23 Uhr | Es Izraeli normál idő szerint 12:23 Uhr | es ist zwölf uhr drei und zwanzig uhr |
-| {12.45} | {12,45} | zwölf komma vier fünf |
-| 2 + 3 - 4 | 2 és 3-4 mínusz | zwei plusz -mínusz vier drei |
+| Es ist 12,23 UHR | Es ist 12:23 UHR | es ist zwölf UHR Drei und Zwanzig UHR |
+| {12,45} | {12,45} | zwölf komma vier fünf |
+| 2 + 3-4 | 2 plusz 3 mínusz 4 | Zwei Plus Drei, mínusz Vier |
 
-Az alábbi normalizálási szabályok beszédátírás automatikusan érvényesek:
+A következő normalizálás szabályok automatikusan érvényesek az átírásokra:
 
-* Kisbetűk használata a teljes szöveg.
-* Távolítsa el az összes írásjelek, beleértve a különböző típusú idézőjelek ("teszt", "teszt", "teszt" és "teszt" megengedettek).
-* Ez a különleges karaktereket tartalmazó sorok elvetéséhez: ˘ ¤ y ¦ § © ª ¬® ° ± ² µ x y Ø¬¬.
-* Bontsa ki a számot használja a beszélt űrlaphoz, beleértve a dollár vagy összegek.
-* Fogadja el a umlautokat csak az a, b, és meg. Mások "th" váltja fel, vagy lehet elvetni.
+* Használjon kisbetűs karaktereket az összes szöveghez.
+* Távolítsa el az összes írásjelet, többek között a különböző típusú idézőjeleket ("test", "test", "test" és "test").
+* Sorok elvetése bármilyen speciális karakterből ebből a készletből: ¢ ¤ ¥ ¦ § © ª ¬® ° ± ² μ × ÿ Ø ¬ ¬.
+* Kibonthatja a szóbeli formát, beleértve a dollár vagy az euro összegét.
+* Csak a, o és Ön esetében fogadja el a beírni kívánt értéket. Másokat a "th" kifejezés váltja fel, vagy a rendszer elveti.
 
-Íme néhány példa a normalizálási az átírási automatikusan végre:
+Íme néhány példa az átíráshoz automatikusan végrehajtott normalizálás esetén:
 
-| Eredeti szöveg | Normalizálási utáni szöveg |
+| Eredeti szöveg | Szöveg a normalizálás után |
 |---------------|--------------------------|
-| Frankfurter kör | Frankfurter kör |
-| ¡Eine Frage! | eine frage |
-| WIR, haben | WIR haben |
+| Frankfurter Ring | Frankfurter Ring |
+| ¡ Eine Frag! | Eine-Frag |
+| Wir, a Hegedűs | Wir-Hegedűs |
 
 ## <a name="next-steps"></a>További lépések
 
-* [Készítse elő és az adatok tesztelése](how-to-custom-speech-test-data.md)
-* [Az adatok vizsgálata](how-to-custom-speech-inspect-data.md)
-* [Az adatok](how-to-custom-speech-evaluate-data.md)
-* [A modell tanítása](how-to-custom-speech-train-model.md)
+* [Az adatfeldolgozás előkészítése és tesztelése](how-to-custom-speech-test-data.md)
+* [Az adatai ellenőrzése](how-to-custom-speech-inspect-data.md)
+* [Az adatai kiértékelése](how-to-custom-speech-evaluate-data.md)
+* [A modell betanítása](how-to-custom-speech-train-model.md)
 * [A modell üzembe helyezése](how-to-custom-speech-deploy-model.md)

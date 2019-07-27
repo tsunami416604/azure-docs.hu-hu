@@ -1,6 +1,6 @@
 ---
-title: 'Gyors útmutató: alkalmazás létrehozása'
-titleSuffix: Language Understanding - Azure Cognitive Services
+title: 'Gyors útmutató: alkalmazás létrehozása – LUIS'
+titleSuffix: Azure Cognitive Services
 description: Hozzon létre egy LUIS-alkalmazást, amely az előre összeállított `HomeAutomation` tartományt használja a világítás és a berendezések be- és kikapcsolásához. Ez az előre összeállított tartomány szándékokat, entitásokat és kimondott szövegek példáit tartalmazza. Amikor végzett, egy felhőben futó LUIS-végponttal fog rendelkezni.
 services: cognitive-services
 author: diberry
@@ -11,14 +11,14 @@ ms.subservice: language-understanding
 ms.topic: quickstart
 ms.date: 05/07/2019
 ms.author: diberry
-ms.openlocfilehash: 6d3b4d23ae1ad04142b0dec01a1abccbd2f81942
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: e53f8d6e08b345d417ce54deacd658275cb1cd00
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65150271"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68563914"
 ---
-# <a name="quickstart-use-prebuilt-home-automation-app"></a>Gyors útmutató: Előre összeállított kezdőlap automation alkalmazás használata
+# <a name="quickstart-use-prebuilt-home-automation-app"></a>Gyors útmutató: Előre elkészített Home Automation-alkalmazás használata
 
 Ebben a rövid útmutatóban egy LUIS-alkalmazást hoz létre, amely az előre összeállított `HomeAutomation` tartományt használja a világítás és a berendezések be- és kikapcsolásához. Ez az előre összeállított tartomány szándékokat, entitásokat és kimondott szövegek példáit tartalmazza. Amikor végzett, egy felhőben futó LUIS-végponttal fog rendelkezni.
 
@@ -58,7 +58,7 @@ A tartomány sikeres hozzáadása után az előre összeállított tartomány me
 
 A bal oldali navigációs ablaktáblán válassza az **Intents** (Szándékok) elemet a Home Automation-tartomány leképezéseinek megtekintéséhez. Minden szándék kimondottszöveg-mintákkal rendelkezik.
 
-![Képernyőkép a HomeAutomation leképezések lista](media/luis-quickstart-new-app/home-automation-intents.png "képernyőképe a HomeAutomation leképezések lista")]
+![Képernyőkép a HomeAutomation] -leképezések listájáról (media/luis-quickstart-new-app/home-automation-intents.png "Képernyőkép a HomeAutomation")-leképezések listájáról]
 
 > [!NOTE]
 > A **None** (Nincs) az összes LUIS-alkalmazásban szereplő szándék. Olyan kimondott szövegek kezelésére szolgál, amelyek nem felelnek meg az alkalmazás által nyújtott funkcióknak. 

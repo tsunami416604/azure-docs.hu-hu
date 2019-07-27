@@ -1,5 +1,5 @@
 ---
-title: Azure PowerShell-lel az első lekérdezés futtatása
+title: Az első lekérdezés futtatása a Azure PowerShell használatával
 description: Ez a cikk végigvezeti az Azure PowerShellhez szükséges Resource Graph modul aktiválásának lépésein és az első lekérdezése futtatásán.
 author: DCtheGeek
 ms.author: dacoulte
@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: resource-graph
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 76771a7dfcc323cca6ea52366195c895ee510701
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 6c58528aba29cbbc81694112815534a8fc525b8a
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67165597"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68565382"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-azure-powershell"></a>Gyors útmutató: Az első Resource Graph-lekérdezés futtatása az Azure PowerShell használatával
 
@@ -27,28 +27,28 @@ Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány
 
 ## <a name="add-the-resource-graph-module"></a>A Resource Graph modul hozzáadása
 
-Ahhoz, hogy az Azure PowerShell lekérdezhesse az Azure Resource Graphot, el kell végezni a modul hozzáadását. Ez a modul használható a helyileg telepített PowerShell [Azure Cloud Shell](https://shell.azure.com), vagy a [Azure PowerShell Docker-rendszerkép](https://hub.docker.com/r/azuresdk/azure-powershell/).
+Ahhoz, hogy az Azure PowerShell lekérdezhesse az Azure Resource Graphot, el kell végezni a modul hozzáadását. Ez a modul helyileg telepített PowerShell-lel, [Azure Cloud Shell](https://shell.azure.com)vagy a Azure PowerShell Docker- [lemezképpel](https://hub.docker.com/r/azuresdk/azure-powershell/)használható.
 
 ### <a name="base-requirements"></a>Alapszintű követelmények
 
 Az Azure Resource Graph modulhoz az alábbi szoftverek szükségesek:
 
-- Az Azure PowerShell 1.0.0 vagy újabb verziója. Ha még nincs telepítve, kövesse [ezeket az utasításokat](/powershell/azure/install-az-ps).
+- Azure PowerShell 1.0.0 vagy újabb. Ha még nincs telepítve, kövesse [ezeket az utasításokat](/powershell/azure/install-az-ps).
 
 - PowerShellGet 2.0.1-es vagy újabb verzió. Ha nincs telepítve vagy frissítve, kövesse [ezeket az utasításokat](/powershell/gallery/installing-psget).
 
 ### <a name="install-the-module"></a>A modul telepítése
 
-Az Erőforrás-grafikon a modul PowerShell **Az.ResourceGraph**.
+A PowerShellhez készült Resource Graph-modul az **az. ResourceGraph**.
 
-1. Az egy **felügyeleti** PowerShell-parancssorban futtassa a következő parancsot:
+1. **Rendszergazdai** PowerShell-parancssorból futtassa a következő parancsot:
 
    ```azurepowershell-interactive
    # Install the Resource Graph module from PowerShell Gallery
    Install-Module -Name Az.ResourceGraph
    ```
 
-1. Ellenőrizze, hogy a modul importálása, és a megfelelő verziójú (0.7.1):
+1. Ellenőrizze, hogy a modul importálása megtörtént-e, és a megfelelő verzió-e (0.7.3):
 
    ```azurepowershell-interactive
    # Get a list of commands for the imported Az.ResourceGraph module
@@ -91,7 +91,7 @@ Miután az Azure PowerShell modul hozzá lett adva a választott környezethez, 
 Miután a végső lekérdezés többször is futott, és feltéve, hogy a környezetben semmi sem változik, a visszaadott találatok konzisztensek és a vártnak megfelelőek lesznek – a **Name** tulajdonság szerint lesznek rendezve, és csak az első öt eredmény jelenik meg.
 
 > [!NOTE]
-> Ha a lekérdezés nem ad vissza eredményt előfizetésből már rendelkezik hozzáféréssel, majd vegye figyelembe, hogy `Search-AzGraph` parancsmag alapértelmezés szerint az alapértelmezett környezetben előfizetések. Az előfizetés megtekintéséhez az alapértelmezett környezet részét képező azonosítók fusson ez `(Get-AzContext).Account.ExtendedProperties.Subscriptions` hozzáfér az összes előfizetés keresni kíván, ha egy állíthatja be a PSDefaultParameterValues a `Search-AzGraph` parancsmag futtatásával `$PSDefaultParameterValues=@{"Search-AzGraph:Subscription"= $(Get-AzSubscription).ID }`
+> Ha a lekérdezés nem ad vissza olyan előfizetésből származó eredményeket, amelyhez már van hozzáférése, `Search-AzGraph` akkor vegye figyelembe, hogy a parancsmag alapértelmezett környezetében az előfizetések alapértelmezés szerint szerepelnek. `(Get-AzContext).Account.ExtendedProperties.Subscriptions` Ha szeretné megtekinteni az alapértelmezett környezet részét képező előfizetési azonosítók listáját, akkor az összes Ön által elérhető előfizetésben megadhatja a `Search-AzGraph` PSDefaultParameterValues a parancsmag futtatásával.`$PSDefaultParameterValues=@{"Search-AzGraph:Subscription"= $(Get-AzSubscription).ID}`
    
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 

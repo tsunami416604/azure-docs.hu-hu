@@ -1,7 +1,7 @@
 ---
-title: 'Gyors útmutató: Az egyéni Látástechnológiai SDK-val objektum észlelési projekt létrehozása a node.js-ben'
-titlesuffix: Azure Cognitive Services
-description: Hozzon létre egy projektet, adja hozzá a címkéket, tölthet fel képeket, a projekt betanítását és a Node.js SDK-val objektumok észlelése.
+title: 'Gyors útmutató: Objektum-észlelési projekt létrehozása a Node. js-hez készült Custom Vision SDK-val'
+titleSuffix: Azure Cognitive Services
+description: Létrehozhat egy projektet, címkéket adhat hozzá, képeket tölthet fel, betaníthatja a projektet, és felderítheti az objektumokat a Node. js SDK használatával.
 services: cognitive-services
 author: areddish
 manager: daauld
@@ -10,32 +10,32 @@ ms.subservice: custom-vision
 ms.topic: quickstart
 ms.date: 07/15/2019
 ms.author: areddish
-ms.openlocfilehash: 45fce7a8b02f8613b666ed08d4755b0deb46cbca
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: 306f812ab10c0ef247fdc1201e7df2a23b949a54
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68276453"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68564173"
 ---
-# <a name="quickstart-create-an-object-detection-project-with-the-custom-vision-nodejs-sdk"></a>Gyors útmutató: A Custom Vision Node.js SDK-val objektum észlelési projekt létrehozása
+# <a name="quickstart-create-an-object-detection-project-with-the-custom-vision-nodejs-sdk"></a>Gyors útmutató: Objektum-észlelési projekt létrehozása a Custom Vision Node. js SDK-val
 
-Ez a cikk ismerteti, információt és segítséget nyújtanak a mintakódot SDK használatának első lépései az egyéni Látástechnológiai a node.js használatával hozhat létre egy észlelési objektummodellt. A létrehozást követően, akkor is címkézett régiók hozzáadása, tölthet fel képeket, betanítását a projekt, a projekt közzétett előrejelzési végponti URL-cím beszerzése és ezt a végpont programozott módon képet. Ez a példa sablonként használni a saját Node.js-alkalmazás létrehozásához.
+Ez a cikk a Custom Vision SDK és a Node. js használatával való ismerkedéshez nyújt segítséget az objektum-észlelési modell létrehozásához. A létrehozást követően címkézett régiókat adhat hozzá, képeket tölthet fel, betaníthatja a projektet, beolvashatja a projekt közzétett előrejelzési végpontjának URL-címét, és a végpont használatával programozott módon tesztelheti a lemezképeket. Ez a példa sablonként használható a saját Node. js-alkalmazás létrehozásához.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- [NODE.js 8](https://www.nodejs.org/en/download/) vagy újabb verziója szükséges.
-- [az npm](https://www.npmjs.com/) telepítve.
+- A [Node. js 8](https://www.nodejs.org/en/download/) vagy újabb verziója telepítve van.
+- a [NPM](https://www.npmjs.com/) telepítve van.
 
 ## <a name="install-the-custom-vision-sdk"></a>A Custom Vision SDK telepítése
 
-A Custom Vision service SDK-k használata a Node.js telepítéséhez futtassa a következő parancsokat:
+A Node. js-hez készült Custom Vision Service SDK-k telepítéséhez futtassa a következő parancsokat:
 
 ```shell
 npm install @azure/cognitiveservices-customvision-training
 npm install @azure/cognitiveservices-customvision-prediction
 ```
 
-Letöltheti a képek a [Node.js-minták](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples).
+A képeket a [Node. js-minták](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples)használatával töltheti le.
 
 [!INCLUDE [get-keys](includes/get-keys.md)]
 
@@ -43,7 +43,7 @@ Letöltheti a képek a [Node.js-minták](https://github.com/Azure-Samples/cognit
 
 ## <a name="add-the-code"></a>A kód hozzáadása
 
-Hozzon létre egy új fájlt *sample.js* az előnyben részesített projekt könyvtárában.
+Hozzon létre egy *sample. js* nevű új fájlt a kívánt Project-címtárban.
 
 ### <a name="create-the-custom-vision-service-project"></a>A Custom Vision Service-projekt létrehozása
 
@@ -76,7 +76,7 @@ const trainer = new TrainingApi.TrainingAPIClient(trainingKey, endPoint);
 
 ### <a name="create-tags-in-the-project"></a>Címkék létrehozása a projektben
 
-Besorolási címkéket, hogy a projekt létrehozásához adja hozzá a következő kódot a végéig *sample.js*:
+Ha besorolási címkéket szeretne létrehozni a projekthez, adja hozzá a következő kódot a *sample. js*végéhez:
 
 ```javascript
     const forkTag = await trainer.createTag(sampleProject.id, "Fork");
@@ -184,9 +184,9 @@ scissorsFiles.forEach(file => {
 await Promise.all(fileUploadPromises);
 ```
 
-### <a name="train-the-project-and-publish"></a>A projekt betanítás, közzététel
+### <a name="train-the-project-and-publish"></a>A projekt betanítása és közzététel
 
-Ez a kód a projektet hoz létre az első példányát, és majd az előrejelzési végpontot tesz közzé, hogy az iteráció. Név, a közzétett iteráció előrejelzési kérelmek küldésére használható. Egy iteráció nem áll rendelkezésre előrejelzési végpontját, amíg közzé van téve.
+Ez a kód létrehozza az első iterációt a projektben, majd közzéteszi az iterációt az előrejelzési végponton. A közzétett iterációhoz megadott név felhasználható az előrejelzési kérelmek küldésére. Egy iteráció nem érhető el az előrejelzési végponton, amíg közzé nem teszi.
 
 ```javascript
 console.log("Training...");
@@ -205,7 +205,7 @@ console.log("Training status: " + trainingIteration.status);
 await trainer.publishIteration(sampleProject.id, trainingIteration.id, publishIterationName, predictionResourceId);
 ```
 
-### <a name="get-and-use-the-published-iteration-on-the-prediction-endpoint"></a>Letöltheti a közzétett ismétléseinek előrejelzési végpont
+### <a name="get-and-use-the-published-iteration-on-the-prediction-endpoint"></a>A közzétett iteráció lekérése és használata az előrejelzési végponton
 
 A képek előrejelzési végpontra való küldéséhez és az előrejelzés lekéréséhez adja hozzá a következő kódot a fájl végéhez:
 
@@ -225,7 +225,7 @@ A képek előrejelzési végpontra való küldéséhez és az előrejelzés lek�
 
 ## <a name="run-the-application"></a>Az alkalmazás futtatása
 
-Futtatás *sample.js*.
+Futtassa a *sample. js fájlt*.
 
 ```shell
 node sample.js

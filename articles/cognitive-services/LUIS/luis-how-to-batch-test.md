@@ -1,6 +1,6 @@
 ---
-title: Batch-teszt
-titleSuffix: Language Understanding - Azure Cognitive Services
+title: Batch test – LUIS
+titleSuffix: Azure Cognitive Services
 description: Tesztelési Language Understanding (LUIS) batch használatával kereshet a helytelen szándékok és entitások kimondott szöveg.
 services: cognitive-services
 author: diberry
@@ -11,16 +11,16 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 03/29/2019
 ms.author: diberry
-ms.openlocfilehash: d615eb2a23b953bad5e41859357d9ae9e9be2ba6
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: bd0910fedc9fd27af198f6a2b94b34daf57c050f
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60197698"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68563678"
 ---
 # <a name="batch-testing-with-a-set-of-example-utterances"></a>A Batch példa utterances vannak beállítva tesztelése
 
- A LUIS a teljesítmény méréséhez az aktuális betanított modell egy átfogó teszt Batch tesztelés. A batch-tesztelési célokra használható adatkészletek nem tartalmaznia kell példa kimondott szöveg a leképezések vagy az előrejelzési futásidejű végpontról érkezett kimondott szöveg. 
+ A LUIS a teljesítmény méréséhez az aktuális betanított modell egy átfogó teszt Batch tesztelés. A Batch-teszteléshez használt adatkészletek nem tartalmazhatnak példaként megadott hosszúságú kimondott szöveg az előrejelzési futtatókörnyezet végpontján kapott szándékokban vagy hosszúságú kimondott szöveg. 
 
 <a name="batch-testing"></a>
 

@@ -1,6 +1,6 @@
 ---
 title: Tudásbázis – QnA Maker tesztelése
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: A QnA Maker Tudásbázis tesztelése egy, a visszaadott válaszokat pontosságának javítása iteratív folyamat fontos részét képezi. A Tudásbázis is lehetővé teszi a Szerkesztés továbbfejlesztett Csevegés felületen tesztelheti.
 services: cognitive-services
 author: diberry
@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 05/08/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: 4d9c00c4ea7fd0494d00551dc37b186e1a357037
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 6a512098d5dfda47b7755e24b286aabf83aa7e69
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67439728"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68563070"
 ---
 # <a name="test-your-knowledge-base-interactively-in-qna-maker"></a>A QnA Maker interaktív módon a Tudásbázis tesztelése
 
@@ -24,28 +24,28 @@ A QnA Maker Tudásbázis tesztelése egy, a visszaadott válaszokat pontosságá
 
 ## <a name="test-answer-matching"></a>Válasz megfelelő tesztelése
 
-1. A Tudásbázis eléréséhez válassza a neve a a **saját tudásbázisok** lapot.
-1. A teszt dia kibővített panel eléréséhez, válassza ki a **teszt** az alkalmazás tetején található.
+1. A Tudásbázisban a saját **Tudásbázis** lapján megjelenő név kiválasztásával férhet hozzá.
+1. A teszt kivetítése panel eléréséhez válassza a **tesztelés** lehetőséget az alkalmazás felső paneljén.
 1. Adjon meg egy lekérdezést a szövegmezőbe, és nyomja le az Enter.
 1. A Tudásbázis a legjobban megfelelő választ ad vissza, a válaszban.
 
 ## <a name="clear-test-panel"></a>Egyértelmű teszt panel
 
-Törölje az összes megadott teszt lekérdezés és a test-konzolról eredményeit, válassza ki a **újrakezdés** a teszt panel bal felső sarkában.
+Ha törölni szeretné az összes megadott tesztelési lekérdezést és azok eredményeit a tesztelési konzolról, válassza az **Indítás** lehetőséget a teszt panel bal felső sarkában.
 
 ## <a name="close-test-panel"></a>Zárja be a teszt panel
 
-A teszt panel bezárásához kattintson a **teszt** újra gombra. Miközben a teszt panel meg nyitva, már nem szerkesztheti a Tudásbázis-tartalmat.
+A teszt panel bezárásához kattintson újra a **teszt** gombra. Miközben a teszt panel meg nyitva, már nem szerkesztheti a Tudásbázis-tartalmat.
 
 ## <a name="inspect-score"></a>Vizsgálja meg a pontszám
 
-Nézze meg a teszt eredménye a vizsgálat panelen részleteit.
+A teszt eredményének részleteit a vizsgálat panelen tekintheti meg.
 
-1.  A panelen nyissa meg a teszt dia kibővített, válassza ki a **vizsgálat** a válasszal kapcsolatos további részletekért.
+1.  Nyissa meg a teszt kivetítése panelt, **és válassza a** vizsgálat lehetőséget a válasz további részleteinek megtekintéséhez.
 
     ![Vizsgálja meg a válaszok](../media/qnamaker-how-to-test-kb/inspect.png)
 
-2.  A Hálózatvizsgáló panelen jelenik meg. A panel felső pontozási szándékot, valamint a azonosított entitások tartalmazza. A panelen a kiválasztott utterance (kifejezés) eredménye látható.
+2.  Megjelenik a vizsgálat panel. A panel felső pontozási szándékot, valamint a azonosított entitások tartalmazza. A panelen a kiválasztott utterance (kifejezés) eredménye látható.
 
 ## <a name="correct-the-top-scoring-answer"></a>Javítsa ki az első válasz a pontozás
 
@@ -63,7 +63,7 @@ Egy adott válasz egy kérdést alternatív formáját is hozzáadhat. Írja be 
 
 Új válasz is hozzáadhat, ha minden meglévő választ egyezést mutató helytelen, vagy a válasz nem szerepel a Tudásbázis (nem jó egyezés található a KB-ban). 
 
-A válaszok lista alján a szövegmező használatával adjon meg egy új válasz, és nyomja le az enter hozzáadáshoz. 
+A válaszok lista alján található szövegmezővel adjon meg egy új választ, és az ENTER billentyű lenyomásával adja hozzá. 
 
 Válassza ki **mentéséhez és a vonat** segítségével őrzi meg a választ. Kérdés-válasz párokat már hozzá van adva a tudásbázist. 
 
@@ -72,9 +72,9 @@ Válassza ki **mentéséhez és a vonat** segítségével őrzi meg a választ. 
 
 ## <a name="test-the-published-knowledge-base"></a>A közzétett Tudásbázis tesztelése
 
-A közzétett verziót a Tudásbázis tesztelheti a teszt panelt. Miután közzétette a KB, válassza ki a **közzétett KB** mezőbe, és lekérdezi az adatait a közzétett KB.
+A Tudásbázis közzétett verzióját tesztelheti a teszt ablaktáblán. Miután közzétette a KB-ot, válassza ki a **közzétett tudásbázist** , és küldjön egy lekérdezést a közzétett Tudásbázis eredményeinek lekéréséhez.
 
-![Egy közzétett KB-os elleni tesztelése](../media/qnamaker-how-to-test-kb/test-against-published-kb.png)
+![Tesztelés egy közzétett TUDÁSBÁZISban](../media/qnamaker-how-to-test-kb/test-against-published-kb.png)
 
 ## <a name="next-steps"></a>További lépések
 

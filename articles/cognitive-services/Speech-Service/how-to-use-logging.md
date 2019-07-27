@@ -1,7 +1,7 @@
 ---
-title: Beszéd SDK-naplózás – beszédszolgáltatások
+title: Beszédfelismerési SDK naplózása – beszédfelismerési szolgáltatás
 titleSuffix: Azure Cognitive Services
-description: A beszédfelismerés SDK naplózásának engedélyezése.
+description: Engedélyezze a naplózást a Speech SDK-ban.
 services: cognitive-services
 author: amitkumarshukla
 manager: nitinme
@@ -10,23 +10,23 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: amishu
-ms.openlocfilehash: 6179634bb949dbb9da8475e87494eef0f145f13b
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: 31ff21e33860f75d91d01e80e3ee77bd7192f780
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67605075"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68559478"
 ---
-# <a name="enable-logging-in-the-speech-sdk"></a>A beszédfelismerés SDK naplózásának engedélyezése
+# <a name="enable-logging-in-the-speech-sdk"></a>Naplózás engedélyezése a Speech SDK-ban
 
-Naplózás fájlt egy olyan opcionális szolgáltatás, beszédfelismerés SDK. A fejlesztés során naplózás további információkat és diagnosztikához kínál megoldást, a beszéd SDK alapvető összetevői. A tulajdonság beállításával engedélyezheti `Speech_LogFilename` speech-konfigurációs objektum a hely és a naplófájl nevét. Naplózás aktiválódik globálisan egy felismerő konfigurációtól való létrehozása után, és ezt követően nem lehet letiltani. A naplófájl neve nem módosítható egy futó naplózási munkamenet során.
+A fájlba való naplózás a Speech SDK választható funkciója. A fejlesztési naplózás során további információkat és diagnosztikát biztosít a Speech SDK alapvető összetevőiből. Ezt úgy engedélyezheti, ha egy beszéd `Speech_LogFilename` konfigurációs objektum tulajdonságát a naplófájl helyére és nevére állítja be. A naplózást a rendszer globálisan aktiválja, ha a rendszer létrehoz egy felismerőt ebből a konfigurációból, és ezt követően nem lehet letiltani. A naplófájlok neve nem módosítható egy futó naplózási munkamenet során.
 
 > [!NOTE]
-> Naplózási érhető el, mivel beszéd SDK 1.4.0-s verzióját az összes támogatott programozási nyelvek, kivéve a JavaScript beszéd SDK.
+> A naplózás elérhető a Speech SDK verziójának 1.4.0 az összes támogatott Speech SDK programozási nyelvben, a JavaScript kivételével.
 
-## <a name="sample"></a>Sample
+## <a name="sample"></a>Minta
 
-A naplófájl nevét egy konfigurációs objektumot van megadva. Véve a `SpeechConfig` például és feltételezve, hogy létrehozott egy példányt nevű `config`:
+A naplófájl neve egy konfigurációs objektumon van megadva. Tekintse `SpeechConfig` át a példát, és feltételezve, hogy létrehozott egy nevű `config`példányt:
 
 ```csharp
 config.SetProperty(PropertyId.Speech_LogFilename, "LogfilePathAndName");
@@ -48,18 +48,18 @@ config.set_property(speechsdk.PropertyId.Speech_LogFilename, "LogfilePathAndName
 [config setPropertyTo:@"LogfilePathAndName" byId:SPXSpeechLogFilename];
 ```
 
-A konfigurációs objektum egy felismerő hozhat létre. Ez lehetővé teszi az összes felismerő naplózását.
+A konfigurációs objektumból létrehozhat egy felismerőt. Ez lehetővé teszi az összes felismerő naplózását.
 
 > [!NOTE]
-> Ha létrehoz egy `SpeechSynthesizer` a konfigurációs objektum, program nem engedélyezi a naplózást. Naplózás engedélyezve van, ha a rendszer, ha a diagnosztikai is kap a `SpeechSynthesizer`.
+> Ha a `SpeechSynthesizer` -t a konfigurációs objektumból hozza létre, az nem teszi lehetővé a naplózást. Ha a naplózás engedélyezve van, akkor a-től is megkapja a `SpeechSynthesizer`diagnosztikát.
 
-## <a name="create-a-log-file-on-different-platforms"></a>Különböző platformokon naplófájl létrehozása
+## <a name="create-a-log-file-on-different-platforms"></a>Naplófájl létrehozása különböző platformokon
 
-Windows vagy Linux esetén lehet a naplófájl minden olyan elérési utat, a felhasználó rendelkezik írási engedéllyel. Más operációs rendszerekben fájlrendszerbeli helyeken írási jogosultságot korlátozható vagy korlátozott alapértelmezés szerint.
+Windows vagy Linux esetén a naplófájl bármilyen elérési úton lehet, amelyhez a felhasználó rendelkezik írási engedéllyel. Az írási engedélyek más operációs rendszerekben a fájlrendszer helyeire korlátozhatók vagy alapértelmezés szerint korlátozottak lehetnek.
 
-### <a name="universal-windows-platform-uwp"></a>Univerzális Windows Platform (UWP)
+### <a name="universal-windows-platform-uwp"></a>Univerzális Windows-platform (UWP)
 
-UWP-alkalmazások kell lennie a helyek naplófájlokat az alkalmazás adatokat (helyi, központi vagy ideiglenes) helyen. Egy naplófájlt is hozhatók létre az alkalmazás helyi mappában:
+A UWP-alkalmazásoknak naplófájlokat kell megadniuk az alkalmazásadatok egyik helyén (helyi, barangoló vagy ideiglenes). Naplófájl hozható létre a helyi alkalmazás mappájában:
 
 ```csharp
 StorageFolder storageFolder = ApplicationData.Current.LocalFolder;
@@ -67,11 +67,11 @@ StorageFile logFile = await storageFolder.CreateFileAsync("logfile.txt", Creatio
 config.SetProperty(PropertyId.Speech_LogFilename, logFile.Path);
 ```
 
-Több fájl hozzáférés UWP-alkalmazások engedély érhető el [Itt](https://docs.microsoft.com/windows/uwp/files/file-access-permissions).
+További információ a UWP-alkalmazásokkal kapcsolatos fájl-hozzáférési engedélyekről [itt](https://docs.microsoft.com/windows/uwp/files/file-access-permissions)érhető el.
 
 ### <a name="android"></a>Android
 
-Belső tárhely, a külső tárhelyen, vagy a gyorsítótár könyvtárához mentheti egy naplófájlt. Fájlok létrehozása a belső tárolóban, vagy az alkalmazás a saját gyorsítótár könyvtárát. Célszerű a naplófájl létrehozása a külső tárhelyen található.
+A naplófájlok menthetők a belső tárolóba, a külső tárolóba vagy a gyorsítótár könyvtárába. A belső tárolóban vagy a gyorsítótár könyvtárában létrehozott fájlok magánjellegűek az alkalmazás számára. Érdemes lehet naplófájlt létrehozni a külső tárolóban.
 
 ```java
 File dir = context.getExternalFilesDir(null);
@@ -79,9 +79,9 @@ File logFile = new File(dir, "logfile.txt");
 config.setProperty(PropertyId.Speech_LogFilename, logFile.getAbsolutePath());
 ```
 
-A fenti kód egy naplófájl menti a külső tárolóeszközről az alkalmazásspecifikus címtár gyökerében. Egy felhasználó hozzáférhessen a fájlt a Fájlkezelőben az (általában `Android/data/ApplicationName/logfile.txt`). A fájl törlődik, ha az alkalmazás el lesz távolítva.
+A fenti kód egy alkalmazásspecifikus könyvtár gyökerében lévő külső tárolóba menti a naplófájlt. A felhasználók a fájlkezelővel (általában `Android/data/ApplicationName/logfile.txt`a verzióban) férhetnek hozzá a fájlhoz. A rendszer törli a fájlt az alkalmazás eltávolításakor.
 
-Emellett meg kell kérnie `WRITE_EXTERNAL_STORAGE` engedéllyel a jegyzékfájlban:
+A jegyzékfájlban is engedélyt `WRITE_EXTERNAL_STORAGE` kell kérnie:
 
 ```xml
 <manifest xmlns:android="http://schemas.android.com/apk/res/android" package="...">
@@ -91,11 +91,11 @@ Emellett meg kell kérnie `WRITE_EXTERNAL_STORAGE` engedéllyel a jegyzékfájlb
 </manifest>
 ```
 
-További információ az adat- és Android-alkalmazásokhoz érhető el tárhely [Itt](https://developer.android.com/guide/topics/data/data-storage.html).
+Az Android-alkalmazások adatainak és file Storage szolgáltatásával kapcsolatos további információk [itt](https://developer.android.com/guide/topics/data/data-storage.html)érhetők el.
 
 #### <a name="ios"></a>iOS
 
-Csak az alkalmazás tesztkörnyezetben belül könyvtárak érhetők el. Fájlok a dokumentumok, könyvtár és ideiglenes könyvtárakat hozható létre. A Dokumentumok könyvtárban található fájlok rendelkezésre álljon egy felhasználó számára. Az alábbi kódrészlet látható az alkalmazás dokumentumok könyvtárába naplófájl létrehozása:
+Csak az alkalmazás-Sandboxon belüli könyvtárak érhetők el. A fájlok a dokumentumok, a könyvtár és a temp könyvtárakban hozhatók létre. A dokumentumok könyvtárban lévő fájlok elérhetővé tehetők a felhasználók számára. A következő kódrészlet a naplófájlok létrehozását mutatja be az alkalmazási dokumentum könyvtárába:
 
 ```objc
 NSString *filePath = [
@@ -104,7 +104,7 @@ NSString *filePath = [
 [speechConfig setPropertyTo:filePath byId:SPXSpeechLogFilename];
 ```
 
-Egy létrehozott fájl hozzáférése, adja hozzá az alábbi tulajdonságokat a `Info.plist` az alkalmazás tulajdonságlista:
+Egy létrehozott fájl eléréséhez adja hozzá az alábbi tulajdonságokat `Info.plist` az alkalmazás tulajdonságainak listájához:
 
 ```xml
 <key>UIFileSharingEnabled</key>
@@ -113,9 +113,9 @@ Egy létrehozott fájl hozzáférése, adja hozzá az alábbi tulajdonságokat a
 <true/>
 ```
 
-További információk az eszközöknek fájlrendszer érhető el [Itt](https://developer.apple.com/library/archive/documentation/FileManagement/Conceptual/FileSystemProgrammingGuide/FileSystemOverview/FileSystemOverview.html).
+További információ az iOS fájlrendszerről [itt](https://developer.apple.com/library/archive/documentation/FileManagement/Conceptual/FileSystemProgrammingGuide/FileSystemOverview/FileSystemOverview.html)érhető el.
 
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Ismerje meg a minták a Githubon](https://aka.ms/csspeech/samples)
+> [A GitHubon található minták megismerése](https://aka.ms/csspeech/samples)

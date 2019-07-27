@@ -1,7 +1,7 @@
 ---
-title: Egyszerű entitás, kifejezéslista
+title: Egyszerű entitás, kifejezések listája – LUIS
 titleSuffix: Azure Cognitive Services
-description: Ebben az oktatóanyagban adatok kinyerése az gép megismerte az alkalmazási projekt neve az utterance (kifejezés) használatával az egyszerű entitás. A kinyerés pontosságának növeléséhez adjon hozzá egy kifejezéslistát az egyszerű entitásra jellemző kifejezésekről.
+description: Ebben az oktatóanyagban az egyszerű entitás használatával kinyerheti a feldolgozói feladatokból származó, a vállalat által megtanult adatok nevét. A kinyerés pontosságának növeléséhez adjon hozzá egy kifejezéslistát az egyszerű entitásra jellemző kifejezésekről.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -11,14 +11,14 @@ ms.subservice: language-understanding
 ms.topic: tutorial
 ms.date: 07/16/2019
 ms.author: diberry
-ms.openlocfilehash: a03a1224451411617f38c8cecafbef008aa08916
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: 786c5725046885a0321696e95703c53081e96979
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68276211"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68560325"
 ---
-# <a name="tutorial-extract-names-with-simple-entity-and-a-phrase-list"></a>Oktatóanyag: Az egyszerű entitás és egy kifejezés lista nevének kinyerése
+# <a name="tutorial-extract-names-with-simple-entity-and-a-phrase-list"></a>Oktatóanyag: Nevek kinyerése egyszerű entitással és egy kifejezés listával
 
 Ebben az oktatóanyagban egy állás nevével kapcsolatos gépi tanulással létrejött adatokat nyer ki egy kimondott szövegből az **Egyszerű** entitás használatával. A kinyerés pontosságának növeléséhez adjon hozzá egy kifejezéslistát az egyszerű entitásra jellemző kifejezésekről.
 
@@ -28,9 +28,9 @@ Az egyszerű entitás egyetlen, szavakban vagy kifejezésekben szereplő adatfog
 
 <!-- green checkmark -->
 > [!div class="checklist"]
-> * Példa-alkalmazás importálása
+> * Alkalmazás importálása – példa
 > * Egyszerű entitás hozzáadása 
-> * Adja hozzá a kifejezéslista jel szavak növelése érdekében
+> * Kifejezések listájának hozzáadása a jel szavainak növeléséhez
 > * Betanítás 
 > * Közzététel 
 > * Szándék és entitások lekérése a végpontról
@@ -48,7 +48,7 @@ Az egyszerű entitás megfelelő választás az ilyen típusú adatok esetén, a
 * Az adatok nincsenek helyesen formázva, mint a reguláris kifejezések.
 * Az adatok nem általánosak, mint a telefonszámok vagy adatok előre összeállított entitásai.
 * Az adatok nem kapcsolódnak ismert szavak listájához, mint a listaentitások.
-* Adatok nem tartalmaz más adatelemeket, például egy összetett entitást vagy a környezeti szerepköröket.
+* Az adatok nem tartalmaznak más adatelemeket, például összetett entitásokat vagy környezetfüggő szerepköröket.
 
 Vegyük például egy csevegőrobot által kimondott következő szövegeket:
 
@@ -77,15 +77,15 @@ Ez a LUIS-alkalmazás számos szándékban rendelkezik állásnevekkel. Ezen sza
 
 Miután megjelöli az entitásokat a példaszövegekben, fontos lépés a kifejezéslista hozzáadása. Ez a lista felerősíti az egyszerű entitás jelét. A kifejezéslistát a rendszer **nem** pontos egyezésként használja, így nem szükséges benne megadni az összes várható értéket. 
 
-## <a name="import-example-app"></a>Példa-alkalmazás importálása
+## <a name="import-example-app"></a>Alkalmazás importálása – példa
 
-1.  Töltse le és mentse a [alkalmazás JSON-fájlt](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/tutorials/build-app/intentonly.json) az leképezések oktatóanyag.
+1.  Töltse le és mentse az [alkalmazás JSON](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/tutorials/build-app/intentonly.json) -fájlját a szándékok oktatóanyagból.
 
 2. Importálja a JSON-t egy új alkalmazásba.
 
 3. A **Manage** (Kezelés) szakasz **Versions** (Verziók) lapján klónozza a verziót, és adja neki a `simple` nevet. A klónozás nagyszerű mód, hogy kísérletezhessen a különböző LUIS-funkciókkal anélkül, hogy az az eredeti verzióra hatással lenne. Mivel a verzió neve az URL-útvonal részét képezi, a név nem tartalmazhat olyan karaktert, amely URL-címben nem érvényes.
 
-## <a name="mark-entities-in-example-utterances-of-an-intent"></a>Megjelölés entitások példa utterances-leképezés
+## <a name="mark-entities-in-example-utterances-of-an-intent"></a>Entitások megjelölése például egy szándék hosszúságú kimondott szöveg
 
 1. [!INCLUDE [Start in Build section](../../../includes/cognitive-services-luis-tutorial-build-section.md)]
 
@@ -99,14 +99,14 @@ Miután megjelöli az entitásokat a példaszövegekben, fontos lépés a kifeje
 
     ![Job (állás) nevű és simple (egyszerű) típusú egyszerű entitás modális előugró párbeszédpaneljének létrehozása](media/luis-quickstart-primary-and-secondary-data/hr-create-simple-entity-popup.png)
 
-1. A fennmaradó megcímkézzen, jelölje meg a feladathoz kapcsolódó szavak **feladat** szó vagy kifejezés, majd kiválasztja az entitás **feladat** az előugró menüben. 
+1. A fennmaradó hosszúságú kimondott szöveg jelölje meg a feladattal kapcsolatos szavakat a  feladattal együtt a szó vagy kifejezés kiválasztásával, majd a felugró menüből válassza a feladat lehetőséget. 
 
     [![Képernyőkép a LUIS kiemelt feladat entitás címkézés](media/luis-quickstart-primary-and-secondary-data/hr-label-simple-entity.png "képernyőképe, a LUIS címkézés feladat entitás kiemelésével")](media/luis-quickstart-primary-and-secondary-data/hr-label-simple-entity.png#lightbox)
 
 
-## <a name="add-more-example-utterances-and-mark-entity"></a>További példa beszédmódok hozzáadása, és jelölje meg az entitás
+## <a name="add-more-example-utterances-and-mark-entity"></a>További példa a hosszúságú kimondott szöveg és az entitás megjelölésére
 
-Egyszerű entitások példákat szükség van egy előrejelzési megbízhatónak fogja tekinteni. 
+Az egyszerű entitásoknak számos példát kell megadniuk ahhoz, hogy magas szintű előrejelzéssel rendelkezzenek. 
  
 1. Adjon hozzá további kimondott szövegeket, és jelölje meg az állással kapcsolatos szavakat vagy kifejezéseket **Állás** entitásként. 
 
@@ -129,25 +129,25 @@ Egyszerű entitások példákat szükség van egy előrejelzési megbízhatónak
     |Csatoltam az önéletrajzom a biológiaprofesszori álláshoz.|biológiaprofesszor|
     |Szeretnék jelentkezni a fényképészi állásra.|fényképész|
 
-## <a name="mark-job-entity-in-other-intents"></a>Megjelölés feladat entitás más leképezések
+## <a name="mark-job-entity-in-other-intents"></a>Feladatok entitásának megjelölése más szándékokban
 
 1. A bal oldali menüben válassza az **Intents** (Szándékok) lehetőséget.
 
 1. A szándékok listájából válassza ki a **GetJobInformation** elemet. 
 
-1. A feladatok a példa kimondott szöveg a címkét
+1. A példában szereplő hosszúságú kimondott szöveg feladatok címkézése
 
-    Vannak további példa utterances egy szándékot, mint egy másik szándékot, ha az adott szándékot, hogy a legmagasabb előre jelzett intext nagyobb valószínűséggel rendelkezik. 
+    Ha a hosszúságú kimondott szöveg több példája van, mint egy másik szándék, akkor ez a szándék nagyobb valószínűséggel van a legmagasabb előre jelzett szövegben. 
 
-## <a name="train-the-app-so-the-changes-to-the-intent-can-be-tested"></a>Az alkalmazás betanításához, így a módosítások a leképezés tesztelhető legyen 
+## <a name="train-the-app-so-the-changes-to-the-intent-can-be-tested"></a>Az alkalmazás betanítása, hogy tesztelni lehessen a szándék változásait 
 
 [!INCLUDE [LUIS How to Train steps](../../../includes/cognitive-services-luis-tutorial-how-to-train.md)]
 
-## <a name="publish-the-app-so-the-trained-model-is-queryable-from-the-endpoint"></a>Tegye közzé az alkalmazást, így a betanított modell lekérdezhető a végpontról
+## <a name="publish-the-app-so-the-trained-model-is-queryable-from-the-endpoint"></a>Tegye közzé az alkalmazást, hogy a betanított modell lekérdezhető legyen a végpontról.
 
 [!INCLUDE [LUIS How to Publish steps](../../../includes/cognitive-services-luis-tutorial-how-to-publish.md)]
 
-## <a name="get-intent-and-entity-prediction-from-endpoint"></a>Leképezés és egyéb entitások előrejelzés beolvasása végpont 
+## <a name="get-intent-and-entity-prediction-from-endpoint"></a>Cél-és entitás-előrejelzés beolvasása a végpontról 
 
 1. [!INCLUDE [LUIS How to get endpoint first step](../../../includes/cognitive-services-luis-tutorial-how-to-get-endpoint.md)]
 
@@ -221,9 +221,9 @@ A következő JSON-ben, a LUIS a megfelelő szándékkal (`lead welder`) válasz
 
 Mivel a név bármi lehet, a LUIS pontosabban jósolja meg az entitásokat, ha rendelkezik egy szavakból álló kifejezéslistával a jel erősítéséhez.
 
-## <a name="to-boost-signal-of-the-job-related-words-add-a-phrase-list-of-job-related-words"></a>A feladathoz kapcsolódó szó boost jelet adjon hozzá szavak feladatokkal kapcsolatos kifejezések listája
+## <a name="to-boost-signal-of-the-job-related-words-add-a-phrase-list-of-job-related-words"></a>A feladattal kapcsolatos szavak jelzésének növeléséhez vegyen fel egy, a feladattal kapcsolatos szavakat tartalmazó kifejezést.
 
-Nyissa meg a [feladatok-kifejezés-list.csv](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/quickstarts/job-phrase-list.csv) az Azure-minták GitHub-adattárból. A lista több mint 1000 feladatot szavak és kifejezések. Keressen a listában olyan állással kapcsolatos szavakat, amelyek hasznosak Önnek. Ha a keresett szavak vagy kifejezések nincsenek a listán, adja hozzá őket.
+Nyissa meg a [Jobs-phrase-list. csv](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/quickstarts/job-phrase-list.csv) fájlt az Azure-Samples GitHub-adattárból. A lista a 1 000-as feladathoz tartozó szavakat és kifejezéseket tartalmazza. Keressen a listában olyan állással kapcsolatos szavakat, amelyek hasznosak Önnek. Ha a keresett szavak vagy kifejezések nincsenek a listán, adja hozzá őket.
 
 1. A LUIS-alkalmazás **Build** (Létrehozás) szakaszában válassza a **Phrase lists** (Kifejezéslisták) lehetőséget az **Improve app performance** (Az alkalmazás teljesítményének növelése) menüben.
 
@@ -233,15 +233,15 @@ Nyissa meg a [feladatok-kifejezés-list.csv](https://github.com/Azure-Samples/co
 
     [![Képernyőkép a hozzon létre új kifejezést tartalmazó párbeszédpanelen előugró](media/luis-quickstart-primary-and-secondary-data/hr-create-phrase-list-1.png "Képernyőkép az új kifejezést tartalmazó párbeszédpanelen előugró létrehozása")](media/luis-quickstart-primary-and-secondary-data/hr-create-phrase-list-1.png#lightbox)
 
-    Ha több olyan szót, kifejezést listájához hozzáadni, jelölje be **Recommand** tekintse át az új **kapcsolódó értékek** , és adja hozzá bármelyik szempontjából releváns. 
+    Ha további szavakat szeretne felvenni a kifejezés listára, válassza az újraellenőrzés **lehetőséget,** majd tekintse át az új **kapcsolódó értékeket** , és adja hozzá a megfelelőt. 
 
-    Győződjön meg arról, hogy a **ezeket az értékeket felcserélhetők** be van jelölve, mert ezeket az értékeket minden kell kezelni a szinonimák feladatok. További tudnivalók a cserélhető és noninterchangeable [kifejezést a lista fogalmak](luis-concept-feature.md#how-to-use-phrase-lists).
+    Ügyeljen arra, hogy az **alábbi értékek** legyenek felcserélhetők, mert ezeket az értékeket mind a feladatok szinonimájának kell tekinteni. További információ a megváltoztathatatlan és nem cserélhető [kifejezések listájának fogalmakról](luis-concept-feature.md#how-to-use-phrase-lists).
 
-1. Válassza ki **kész** a kifejezéslista aktiválásához.
+1. Kattintson a **kész** gombra a kifejezések listájának aktiválásához.
 
     [![Képernyőkép a hozzon létre új kifejezést tartalmazó párbeszédpanelen előugró szavakat tartalmaznak az értékek listában kifejezés](media/luis-quickstart-primary-and-secondary-data/hr-create-phrase-list-2.png "képernyőkép hozzon létre új kifejezést tartalmazó párbeszédpanelen előugró szavakat tartalmaznak az értékek listában kifejezés")](media/luis-quickstart-primary-and-secondary-data/hr-create-phrase-list-2.png#lightbox)
 
-1. Betanítása, és tegye közzé újra a kifejezés helyett szerepel a listában az alkalmazást.
+1. A kifejezések listájának használatához betaníthatja és közzéteheti az alkalmazást.
 
 1. Végezzen újra lekérdezést ugyanazzal a kimondott szöveggel: `This is the lead welder paperwork.`
 
@@ -286,12 +286,12 @@ Nyissa meg a [feladatok-kifejezés-list.csv](https://github.com/Azure-Samples/co
 
 ## <a name="related-information"></a>Kapcsolódó információk
 
-* [Leképezések entitások oktatóanyag nélkül](luis-quickstart-intents-only.md)
-* [Egyszerű entitás](luis-concept-entity-types.md) elméleti információk
-* [Kifejezéslista](luis-concept-feature.md) elméleti információk
-* [Hogyan betanítása](luis-how-to-train.md)
+* [Entitások nélküli leképezések – oktatóanyag](luis-quickstart-intents-only.md)
+* [Egyszerű entitás](luis-concept-entity-types.md) fogalmi információi
+* [Kifejezési lista](luis-concept-feature.md) fogalmi adatai
+* [Betanítás](luis-how-to-train.md)
 * [Közzétételi útmutató](luis-how-to-publish-app.md)
-* [A LUIS-portál tesztelése](luis-interactive-test.md)
+* [Tesztelés a LUIS portálon](luis-interactive-test.md)
 
 
 ## <a name="next-steps"></a>További lépések

@@ -1,7 +1,7 @@
 ---
-title: Egyéni hang-és felhőközpontú virtuális asszisztensek (előzetes verzió) – beszédszolgáltatások
+title: Egyéni hang – első virtuális asszisztensek (előzetes verzió) – beszédfelismerési szolgáltatás
 titleSuffix: Azure Cognitive Services
-description: A Funkciók, funkciókat és korlátozásokat egyéni hang-és felhőközpontú virtuális asszisztensek használatával a közvetlen vonal beszédfelismerő csatornát a Bot Framework és a Cognitive Services beszédfelismerő szoftver Development Kit (SDK) áttekintése.
+description: Az egyéni hangsegédek funkcióinak, képességeinek és korlátozásainak áttekintése, a bot Framework közvetlen vonalas hangcsatornájának használatával és a Cognitive Services Speech szoftverfejlesztői készlettel (SDK).
 services: cognitive-services
 author: trrwilson
 manager: nitinme
@@ -10,47 +10,47 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: travisw
-ms.openlocfilehash: c9b85895e701ff74e025d6f7895bc32513bc29a1
-ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
+ms.openlocfilehash: 8a12c9e5d569092440552958554681c0b1d79590
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67806900"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68552540"
 ---
-# <a name="about-custom-voice-first-virtual-assistants-preview"></a>Egyéni hang-és felhőközpontú virtuális asszisztensek előzetes tudnivalók
+# <a name="about-custom-voice-first-virtual-assistants-preview"></a>Az egyéni hang – első virtuális asszisztensek előzetes verziója
 
-Az Azure Speech Services segítségével egyéni virtuális asszisztensek amelyekkel a fejlesztők természetes, emberi intelligenciára hasonlító párbeszédfelületeket a saját alkalmazások és az elemek létrehozásához. A Bot Framework közvetlen vonal beszédfelismerő csatornát ezeket a képességeket egy összehangolt, előkészített belépési pontot egy kompatibilis robot, amely lehetővé teszi a beszéd a hangalapú, alacsony késéssel és magas megbízhatósággal-szal való megadásával növeli. E robotok természetes nyelvi interakció használhatja a Microsoft Language Understanding (LUIS). A közvetlen vonal Speech eszközök, a beszéd Software Development Kit (SDK) használatával érhető el.
+Az Azure Speech Servicest használó egyéni virtuális asszisztensek lehetővé teszik a fejlesztők számára, hogy természetes, emberi jellegű társalgási felületet hozzanak létre alkalmazásaikban és tapasztalataikban. A bot Framework közvetlen vonalas beszédének csatornája a következő funkciókat biztosítja: egy koordinált, összehangolt belépési pont egy olyan kompatibilis robot számára, amely lehetővé teszi a hangfelismerést, az alacsony késéssel és a magas megbízhatósággal való interakciót. Ezek a robotok a Microsoft Language Understanding (LUIS) nyelvét használhatják a természetes nyelvi interakcióhoz. A Direct line Speech szolgáltatást a Speech szoftverfejlesztői készletet (SDK) használó eszközök érhetik el.
 
-   ![A közvetlen vonal speech vezénylési szolgáltatás flow fogalmi diagramja](media/voice-first-virtual-assistants/overview.png "a beszédfelismerő csatornát folyamat")
-
-
-A közvetlen vonal beszéd- és a kapcsolódó funkciók működését, hang-és felhőközpontú egyéni virtuális asszisztensek az ideális kiegészítés a [virtuális Segéd megoldás és a vállalati sablon](https://docs.microsoft.com/azure/bot-service/bot-builder-enterprise-template-overview). Közvetlen vonal Speech dolgozhat bármilyen kompatibilis robot, bár ezeket az erőforrásokat biztosítanak magas színvonalú természetes nyelvi felhasználói környezet, valamint a közös támogató képességek és a modellek az első lépések gyorsan alapkonfigurációt újrafelhasználhatók.
+   ![A közvetlen vonalas beszédfelismerési szolgáltatás folyamatának fogalmi diagramja](media/voice-first-virtual-assistants/overview.png "A beszédfelismerési csatorna folyamata")
 
 
-## <a name="core-features"></a>Alapfunkciók
+A közvetlen vonalas beszéd és a hozzá tartozó funkciók az egyéni hangalapú virtuális asszisztensekhez ideális kiegészítést jelentenek a [virtuális asszisztensi megoldás és a vállalati sablon](https://docs.microsoft.com/azure/bot-service/bot-builder-enterprise-template-overview)számára. Habár a közvetlen vonalas beszéd bármilyen kompatibilis robottal működhet, ezek az erőforrások újrafelhasználható alapkonfigurációt biztosítanak a kiváló minőségű beszélgetési élményekhez, valamint a gyors kezdéshez szükséges általános támogatási képességeket és modelleket.
+
+
+## <a name="core-features"></a>Alapvető funkciók
 
 | Category | Szolgáltatások |
 |----------|----------|
-|[Egyéni ébresztési word](speech-devices-sdk-create-kws.md) | Engedélyezheti a felhasználóknak beszélgetések kezdődniük robotokat egy egyéni kulcsszóval, például a "Hey Contoso." A feladat végrehajtását a Speech SDK-ban, amely egy egyéni ébresztési word a konfigurálható egyéni ébresztési word motorral [, itt is létrehozhat](speech-devices-sdk-create-kws.md). A közvetlen vonal beszédfelismerő csatornát magában foglalja a Szolgáltatásoldali ébresztési word annak ellenőrzése, hogy az ébresztési word aktiválás és az eszköz önálló javul.
-|[Beszédfelismerés](speech-to-text.md) | A közvetlen vonal beszédfelismerő csatornát tartalmazza a felismert szöveget egy hang-, valós idejű beszédátírási [hang-szöveg transzformációs](speech-to-text.md) Azure Speech Services. Ezt a szöveget a robot, mind az ügyfélalkalmazás számára érhető el, ahogy azt a megjelenített érzéseket.
-|[Szövegfelolvasás](text-to-speech.md) | A robot szöveges parancsválaszait fog synthesized használatával [szöveg-hang transzformációs](text-to-speech.md) Azure Speech Services. Az összefoglaló ezután lesz elérhető az ügyfélalkalmazásnak a audio-adatfolyamokat. A Microsoft kínál, így a saját egyéni, magas minőségű Neurális beszédfelismerő, amely hozzáférést biztosít a hangot a márka, további [lépjen kapcsolatba velünk](mailto:mstts@microsoft.com).
-|[Közvetlen vonal beszéd](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech) | Csatornán belül a Bot Framework közvetlen vonal beszédfelismerés lehetővé teszi, hogy az ügyfélalkalmazás kompatibilis bot és az Azure Speech Services képességeit zökkenőmentes kapcsolatát. A robot a közvetlen vonal beszédfelismerő csatornát használja konfigurálásáról további információért lásd: [az oldal a Bot Framework dokumentációjában](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech).
+|[Egyéni ébresztési szó](speech-devices-sdk-create-kws.md) | Lehetővé teheti a felhasználók számára, hogy egy egyéni kulcsszóval, például a "Hey contoso"-val kezdjenek beszélgetésekbe. Ez a feladat a Speech SDK egyéni ébresztési motorjának használatával érhető el, amely az [itt létrehozható](speech-devices-sdk-create-kws.md)egyéni ébresztési Szóval konfigurálható. A közvetlen vonalas beszéd csatorna olyan szolgáltatás-oldali ébresztési ellenőrzést tartalmaz, amely javítja az ébresztési szó aktiválásának és az eszköznek a pontosságát.
+|[Beszéd szövege](speech-to-text.md) | A közvetlen vonalas hangcsatorna valós idejű átírást tartalmaz a hanganyagból az felismert szövegbe az Azure Speech Servicesből származó [beszéd – szöveg](speech-to-text.md) használatával. Ez a szöveg a robot és az ügyfélalkalmazás számára is elérhető, ahogy azt az átirata is.
+|[Szöveg – beszéd](text-to-speech.md) | A robotból érkező szöveges válaszokat az Azure Speech Servicesből származó [szöveg-beszéd](text-to-speech.md) használatával készíti elő. Ezt a szintézist ezután az ügyfélalkalmazás fogja elérhetővé tenni egy hangadatfolyamként. A Microsoft lehetőséget nyújt saját, kiváló minőségű neurális TTS-hang létrehozására, amely hangvételt biztosít a márka számára, hogy további kapcsolatfelvételt tudjon meg [velünk](mailto:mstts@microsoft.com).
+|[Közvetlen vonalas beszéd](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech) | A bot Framework csatornán belül a közvetlen vonalas beszéd zökkenőmentes és zökkenőmentes kapcsolatot biztosít az ügyfélalkalmazás, a kompatibilis robot és az Azure Speech Services képességei között. A bot Direct line Speech Channel használatára való konfigurálásával kapcsolatos további információkért tekintse meg [az oldalát a bot Framework dokumentációjában](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech).
 
 ## <a name="sample-code"></a>Mintakód
 
-Mintakód egy hang-és felhőközpontú virtuális asszisztensek létrehozása a Githubon érhető el. Ezek a minták a robot a számos olyan népszerű programozási nyelvet való kapcsolódáshoz az ügyfélalkalmazás terjed ki.
+A hang-első virtuális asszisztens létrehozásához használt mintakód a GitHubon érhető el. Ezek a minták lefedik az ügyfélalkalmazás számára a robothoz való csatlakozást számos népszerű programozási nyelven.
 
-* [Hang-és felhőközpontú virtuális asszisztensek minták (SDK)](https://aka.ms/csspeech/samples)
-* [Gyors útmutató: hang-és felhőközpontú virtuális asszisztensek (C#)](quickstart-virtual-assistant-csharp-uwp.md)
-* [Gyors útmutató: hang-és felhőközpontú virtuális asszisztensek (Java)](quickstart-virtual-assistant-java-jre.md)
-* [A közvetlen vonal Speech ügyfél (C#, WPF)](https://github.com/Azure-Samples/Cognitive-Services-Direct-Line-Speech-Client)
+* [Hang – első virtuális asszisztensi minták (SDK)](https://aka.ms/csspeech/samples)
+* [Gyors útmutató: hang – első virtuális asszisztens (C#)](quickstart-virtual-assistant-csharp-uwp.md)
+* [Gyors útmutató: hang – első virtuális asszisztens (Java)](quickstart-virtual-assistant-java-jre.md)
+* [Közvetlen vonalas beszédfelismerési ügyfélC#(, WPF)](https://github.com/Azure-Samples/Cognitive-Services-Direct-Line-Speech-Client)
 
 ## <a name="customization"></a>Testreszabás
 
-Hang-és felhőközpontú Azure Speech Services használatával létrehozott virtuális asszisztensek használható a rendelkezésre álló testreszabási lehetőségek széles [hang-szöveg transzformációs](speech-to-text.md), [szöveg-hang transzformációs](text-to-speech.md), és [egyéni kulcsszó Kijelölés](speech-devices-sdk-create-kws.md).
+Az Azure Speech Services használatával létrehozott első virtuális asszisztensek teljes körű testreszabási lehetőségeket használhatnak a [beszéd-szöveg](speech-to-text.md), a [szöveg-beszéd](text-to-speech.md)és az [Egyéni kulcsszavak](speech-devices-sdk-create-kws.md)kiválasztásához.
 
 > [!NOTE]
-> Testreszabási lehetőségek minden nyelvi és területi beállítása szerint (lásd: [támogatott nyelvek](supported-languages.md)).
+> A testreszabási lehetőségek nyelv/területi beállítás szerint változnak (lásd a [támogatott nyelveket](supported-languages.md)).
 
 ## <a name="reference-docs"></a>Segédanyagok
 
@@ -59,7 +59,7 @@ Hang-és felhőközpontú Azure Speech Services használatával létrehozott vir
 
 ## <a name="next-steps"></a>További lépések
 
-* [Ingyenes beszédszolgáltatások előfizetési kulcs lekérése](get-started.md)
-* [A beszédfelismerés SDK beszerzése](speech-sdk.md)
+* [Ingyenes Speech Services-előfizetési kulcs beszerzése](get-started.md)
+* [A Speech SDK beszerzése](speech-sdk.md)
 * [Alapszintű robot létrehozása és üzembe helyezése](https://docs.microsoft.com/azure/bot-service/bot-builder-tutorial-basic-deploy?view=azure-bot-service-4.0)
-* [A virtuális Segéd megoldás és a vállalati sablon](https://github.com/Microsoft/AI)
+* [A virtuális asszisztens megoldás és a vállalati sablon beszerzése](https://github.com/Microsoft/AI)

@@ -1,7 +1,7 @@
 ---
-title: 'Gyors útmutató: Futtassa a Speech eszközök SDK Android rendszeren – beszédszolgáltatások'
+title: 'Gyors útmutató: A Speech Devices SDK futtatása Android-Speech Service-ben'
 titleSuffix: Azure Cognitive Services
-description: Előfeltételek és a egy beszéd eszközök Android SDK – első lépések utasítások.
+description: Előfeltételek és utasítások az Android Speech Devices SDK használatának első lépéseihez.
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -10,36 +10,36 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: 7eea978456ed565f8fc58647dc548d1a7bc76b27
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: f7039b525cf0d52670b8d76a24d8ec3ea5115772
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67606365"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68559105"
 ---
-# <a name="quickstart-run-the-speech-devices-sdk-sample-app-on-android"></a>Gyors útmutató: A beszédfelismerés Devices SDK-val mintaalkalmazás futtatásának androidon
+# <a name="quickstart-run-the-speech-devices-sdk-sample-app-on-android"></a>Gyors útmutató: A Speech Devices SDK-minta alkalmazás futtatása Androidon
 
-Ezt a gyorsútmutatót követve elsajátíthatja a beszédfeldolgozó termék, illetve használja, mint a beszédfelismerés eszközök Androidhoz készült SDK használata egy [beszélgetés Beszédátírási](conversation-transcription-service.md) eszköz.
+Ebből a rövid útmutatóból megtudhatja, hogyan használhatja az Androidhoz készült Speech Devices SDK-t, hogy beszédfelismerésre alkalmas terméket hozzon létre, vagy [beszélgetéses](conversation-transcription-service.md) átírási eszközként használja azt.
 
-Ehhez az Útmutatóhoz egy [Azure Cognitive Services](get-started.md) beszédszolgáltatások erőforrás rendelkező fiókot. Ha nincs fiókja, használhatja az ingyenes [próbaidőszakot](https://azure.microsoft.com/try/cognitive-services/) egy előfizetői azonosító beszerzéséhez.
+Ehhez az útmutatóhoz egy Speech Services-erőforrással rendelkező [Azure Cognitive Services](get-started.md) -fiókra van szükség. Ha nincs fiókja, használhatja az ingyenes [próbaidőszakot](https://azure.microsoft.com/try/cognitive-services/) egy előfizetői azonosító beszerzéséhez.
 
 A mintaalkalmazás forráskódja megtalálható a Speech Devices SDK-val. Is [elérhető a Githubon](https://github.com/Azure-Samples/Cognitive-Services-Speech-Devices-SDK).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A beszédfelismerés eszközök SDK használata előtt kell:
+A Speech Devices SDK használatának megkezdése előtt a következőket kell tennie:
 
-* Kövesse az utasításokat a [development Kitet](get-speech-devices-sdk.md) az eszköz bekapcsolásához.
+* Kövesse a [fejlesztői csomag](get-speech-devices-sdk.md) utasításait az eszköz bekapcsolásához.
 
-* Töltse le a legújabb verzióját a [Speech Devices SDK-val](https://aka.ms/sdsdk-download), és bontsa ki a .zip lépjen a munkakönyvtárba.
+* Töltse le a [Speech Devices SDK](https://aka.ms/sdsdk-download)legújabb verzióját, és bontsa ki a. zip fájlt a munkakönyvtárba.
    > [!NOTE]
-   > Az Android-minta-Release.zip fájlbeágyazások mintaalkalmazás Android, és ez a rövid útmutató azt feltételezi, hogy az alkalmazás C:\SDSDK\Android-Sample-Release kicsomagolta
+   > A Android-Sample-Release. zip fájl tartalmazza az Android minta alkalmazást, és ez a rövid útmutató azt feltételezi, hogy az alkalmazás ki van kinyerve a C:\SDSDK\Android-Sample-Release
 
-* Az első egy [beszédszolgáltatások Azure-előfizetés kulcsa](get-started.md)
+* Azure-előfizetési kulcs beszerzése [a Speech Serviceshez](get-started.md)
 
-* Ha szeretné használni a beszélgetés Beszédátírási kell használnia egy [. kör alakú mikrofon eszköz](get-speech-devices-sdk.md) , és ez a funkció jelenleg csak az "en-US" és "zh-CN" régiókban, "centralus" és "eastasia" érhető el. Ezen beszélgetés Beszédátírási használandó régiók egyikében speech kulccsal kell rendelkeznie.
+* Ha azt tervezi, hogy a beszélgetés átírását használja, [körkörös mikrofonos eszközt](get-speech-devices-sdk.md) kell használnia, és ez a funkció jelenleg csak az "en-us" és a "zh-CN" esetében érhető el a (z) "CentralUS" és a "eastasia" régióban. A beszélgetés átírásának használatához az egyik régióban kell lennie egy beszédfelismerési kulcsnak.
 
-* Ha azt tervezi, használja a beszédszolgáltatások azonosítása céljából leképezések (műveletek) a felhasználó utterances, szüksége lesz egy [intelligens hangfelismerési szolgáltatás (LUIS)](https://docs.microsoft.com/azure/cognitive-services/luis/azureibizasubscription) előfizetés. A LUIS és szándékfelismerés kapcsolatos további tudnivalókért lásd: [ismeri fel a LUIS, beszédfelismerés leképezések C# ](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-recognize-intents-from-speech-csharp).
+* Ha azt tervezi, hogy a Speech Services segítségével azonosítja a szándékokat (vagy műveleteket) a felhasználói hosszúságú kimondott szöveg, szüksége lesz egy [Language Understanding Service (Luis)](https://docs.microsoft.com/azure/cognitive-services/luis/azureibizasubscription) előfizetésre. Ha többet szeretne megtudni a LUIS és a szándék felismeréséről, olvassa el a [beszédfelismerési szándékok C#FELISMERÉSe a Luis ](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-recognize-intents-from-speech-csharp)használatával című témakört.
 
     Is [hozzon létre egy egyszerű LUIS-modellnek](https://docs.microsoft.com/azure/cognitive-services/luis/) vagy használja a LUIS-modell, a LUIS-example.json mintát. A LUIS-modell érhető el minta a [Speech eszközök SDK letöltési hely](https://aka.ms/sdsdk-luis). Feltölteni a JSON-fájlt is a modell a [LUIS portál](https://www.luis.ai/home), jelölje be **importálása új alkalmazás**, majd válassza ki a JSON-fájlt.
 
@@ -72,7 +72,7 @@ A beszédfelismerés eszközök SDK használata előtt kell:
 
 ## <a name="run-the-sample-application"></a>A mintaalkalmazás futtatása
 
-Az development kit konfigurációjának ellenőrzése, hozza létre és telepítse a mintaalkalmazást:
+A fejlesztői csomag telepítésének ellenőrzéséhez hozza létre és telepítse a minta alkalmazást:
 
 1. Indítsa el az Android Studio.
 
@@ -82,9 +82,9 @@ Az development kit konfigurációjának ellenőrzése, hozza létre és telepít
 
 1. Ugrás a C:\SDSDK\Android-Sample-Release\example. Válassza ki **OK** a példaprojekt megnyitásához.
 
-1. A beszédfelismerés előfizetési kulcs hozzáadása a forráskódban. Ha azt szeretné, próbálkozhat szándékának felismerése, is hozzáadhat a [hangfelismerési szolgáltatás](https://azure.microsoft.com/services/cognitive-services/language-understanding-intelligent-service/) előfizetési kulcs és az alkalmazás azonosítóját.
+1. Adja hozzá a beszédfelismerési előfizetéshez tartozó kulcsot a forráskódhoz. Ha azt szeretné, próbálkozhat szándékának felismerése, is hozzáadhat a [hangfelismerési szolgáltatás](https://azure.microsoft.com/services/cognitive-services/language-understanding-intelligent-service/) előfizetési kulcs és az alkalmazás azonosítóját.
 
-   A beszéd- és LUIS adatait MainActivity.java hiányzóra:
+   A Speech and LUIS esetében az adatai a MainActivity. Java-ba kerülnek:
 
    ```java
     // Subscription
@@ -95,7 +95,7 @@ Az development kit konfigurációjának ellenőrzése, hozza létre és telepít
     private static String LuisAppId = "<enter your LUIS AppId>";
    ```
 
-    Beszélgetés beszédátírási használja, ha a speech kulcs és a régió adatait conversation.java is szükséges:
+    Ha a beszélgetési átiratot használja, a beszédfelismerési kulcs és a régió információi is szükségesek a beszélgetésben. Java:
 
    ```java
     private static final String CTSKey = "<Conversation Transcription Service Key>";
@@ -107,10 +107,10 @@ Az development kit konfigurációjának ellenőrzése, hozza létre és telepít
    > [!TIP]
    > Emellett [hozzon létre egy egyéni ébresztési szó](speech-devices-sdk-create-kws.md).
 
-    Új ébresztési szó használatához frissítse az alábbi két sort a `MainActivity.java`, és másolja a hálózati ébresztési word csomagot az alkalmazásban. Például használja az ébresztési szót "Machine" szó a hálózati ébresztési csomag kws-machine.zip:
+    Új Felébresztési szó használatához frissítse a következő két sort `MainActivity.java`a alkalmazásban, és másolja a Wake Word-csomagot az alkalmazásba. Ha például a "Machine" szót szeretné használni a Wake Word csomag KWS-Machine. zip fájljában:
 
-   * Másolja a hálózati ébresztési word csomagot abba a mappába "C:\SDSDK\Android-Sample-Release\example\app\src\main\assets\".
-   * Frissítés a `MainActivity.java` kulcsszó és a csomag neve:
+   * Másolja a Wake Word-csomagot a "C:\SDSDK\Android-Sample-Release\example\app\src\main\assets\" mappába.
+   * Frissítse a `MainActivity.java` kulcsszót és a csomag nevét:
 
      ```java
      private static final String Keyword = "Machine";
@@ -124,7 +124,7 @@ Az development kit konfigurációjának ellenőrzése, hozza létre és telepít
    private static final String SelectedGeometry = "Circular6+1";
    ```
 
-   Ez a táblázat felsorolja a támogatott értékek:
+   Ez a táblázat a támogatott értékeket sorolja fel:
 
    |Változó|Jelentés|Elérhető értékek|
    |--------|-------|----------------|
@@ -145,24 +145,24 @@ Az development kit konfigurációjának ellenőrzése, hozza létre és telepít
 
    ![Beszéd Devices SDK-val példa mintaalkalmazás és beállítások](media/speech-devices-sdk/qsg-8.png)
 
-1. Próbálja ki az új beszélgetés Beszédátírási bemutatót. Indítsa el a munkamenet indítása átírás. Alapértelmezés szerint a Vendég a mindenki számára. Azonban ha résztvevő hangalapú aláírásokat, elhelyezheti egy fájlba `/video/participants.properties` az eszközön. A beszédfelismerési aláírást létrehozni, tekintse meg [beszélgetések (SDK) alapuló átírás](how-to-use-conversation-transcription-service.md).
+1. Próbálja ki az új beszélgetés átiratának bemutatóját. A "kezdési munkamenet" megkezdése. Alapértelmezés szerint mindenki a vendég. Ha azonban a résztvevő hang-aláírása is van, akkor az eszközön található fájlba `/video/participants.properties` helyezhetők. A hangaláírás létrehozásához tekintse meg a beszélgetések átírása [(SDK)](how-to-use-conversation-transcription-service.md)című témakört.
 
-   ![Beszélgetés Beszédátírási bemutatóalkalmazást](media/speech-devices-sdk/qsg-15.png)
+   ![Bemutató beszélgetés átirata alkalmazás](media/speech-devices-sdk/qsg-15.png)
 
 1. Kísérlet!
 
 ## <a name="troubleshooting"></a>Hibaelhárítás
 
-   Ha nem sikerül, a beszéd-eszközre. Írja be a következő parancsot egy parancssori ablakot. Az eszközök listáját adja vissza:
+   Ha nem tud csatlakozni a beszédfelismerési eszközhöz. Írja be a következő parancsot egy parancssori ablakba. Az eszköz az eszközök listáját fogja visszaadni:
 
    ```powershell
     adb devices
    ```
 
    > [!NOTE]
-   > Ez a parancs használ az Android-hibakeresési híd `adb.exe`, amely az Android Studio telepítést része. Ez az eszköz található C:\Users\[felhasználónév] \AppData\Local\Android\Sdk\platform-eszközöket. Ebben a címtárban is hozzáadhat az elérési úthoz, hogy kényelmesebbé meghívásához `adb`. Ellenkező esetben meg kell adnia a teljes elérési útja a telepített minden parancshoz, amely meghívja a adb.exe `adb`.
+   > Ez a parancs az androidos hibakeresési `adb.exe`hidat használja, amely a Android Studio telepítésének része. Ez az eszköz található C:\Users\[felhasználónév] \AppData\Local\Android\Sdk\platform-eszközöket. Ebben a címtárban is hozzáadhat az elérési úthoz, hogy kényelmesebbé meghívásához `adb`. Ellenkező esetben meg kell adnia a teljes elérési útja a telepített minden parancshoz, amely meghívja a adb.exe `adb`.
    >
-   > Ha hibaüzenet jelenik meg `no devices/emulators found` majd ellenőrizze, hogy az USB-kábel csatlakoztatva van, és győződjön meg arról, kiváló minőségű kábel szolgál.
+   > Ha hibaüzenet `no devices/emulators found` jelenik meg, ellenőrizze, hogy az USB-kábel csatlakoztatva van-e, és hogy a rendszer kiváló minőségű kábelt használ-e.
    >
 
 ## <a name="next-steps"></a>További lépések

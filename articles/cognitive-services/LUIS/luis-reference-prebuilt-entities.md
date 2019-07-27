@@ -1,5 +1,5 @@
 ---
-title: Az összes előre összeállított entitások
+title: Az összes előre összeépített entitás – LUIS
 titleSuffix: Azure Cognitive Services
 description: Ez a cikk az előre összeállított entitások, a Language Understanding (LUIS) részét képező tartalmaz.
 services: cognitive-services
@@ -11,14 +11,14 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 06/25/2019
 ms.author: diberry
-ms.openlocfilehash: 082ebaef9a2497899cf91c24435dea6e626f0041
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: 9ce6d33f6f8be844877067163630e5a7909183f6
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67485150"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68563436"
 ---
-# <a name="entities-per-culture-in-your-luis-model"></a>Entitás / kulturális környezetet a LUIS-modell
+# <a name="entities-per-culture-in-your-luis-model"></a>Entitások/kulturális elemek a LUIS-modellben
 
 Language Understanding (LUIS) biztosít az előre összeállított entitások. Ha az alkalmazás tartalmaz egy előre összeállított entitások, LUIS a kapcsolódó entitás előrejelzési a végpont-válasz tartalmazza. Valamennyi példa utterances is az a entitás vannak ellátva. Előre összeállított entitások viselkedését **nem** módosítható. Ha nincs másképp jelölve, előre összeállított entitások érhető el minden, a LUIS alkalmazás területi beállítások (kulturális környezetek). Az alábbi táblázat az előre összeállított entitások minden kulturális környezet által támogatott.
 
@@ -34,7 +34,7 @@ Language Understanding (LUIS) biztosít az előre összeállított entitások. H
 |koreai|[ko-KR](#korean-entity-support)||
 |portugál|[pt-BR (Brazília)](#portuguese-brazil-entity-support)||
 |spanyol|[es-ES (Spanyolország)](#spanish-spain-entity-support), [gen-MX (Mexikó)](#spanish-mexico-entity-support)||
-|török|[török](#turkish-entity-support)|Nem támogatott a török előre összeállított entitások|
+|török|[török](#turkish-entity-support)|Nem támogatott előre elkészített entitások a török nyelven|
 
 ## <a name="chinese-entity-support"></a>Kínai entitás támogatása
 
@@ -304,9 +304,9 @@ Tekintse meg a megjegyzéseit a [elavult előre összeállított entitások](lui
 
 Nem áll rendelkezésre, portugál (brazíliai) – összes tápfolyadékok cseréjét KeyPhrase ```pt-BR```.
 
-## <a name="turkish-entity-support"></a>Török entitás támogatása
+## <a name="turkish-entity-support"></a>Török entitások támogatása
 
-**Nincsenek támogatja a török előre összeállított entitások.** 
+**A török rendszer nem támogatja az előre elkészített entitásokat.** 
 
 <!--
 

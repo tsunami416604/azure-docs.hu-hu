@@ -1,6 +1,6 @@
 ---
-title: Amikor együttműködő biztonsági
-titleSuffix: Language Understanding - Azure Cognitive Services
+title: Biztonság az együttműködés során – LUIS
+titleSuffix: Azure Cognitive Services
 description: Authoring hozzáférés tulajdonosok és a közreműködők érhető el. Saját alkalmazások esetén végponti hozzáférés tulajdonosai és a közreműködők érhető el.
 services: cognitive-services
 author: diberry
@@ -11,15 +11,15 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 06/12/2019
 ms.author: diberry
-ms.openlocfilehash: b52b0fffe9c32ab14600a3e296852faa626d794d
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 25f6b675846f028b4ba9d49cce9e075bc79eece9
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67058532"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68560679"
 ---
 # <a name="authoring-and-endpoint-user-access"></a>Létrehozási és -végpont felhasználói hozzáférés
-Authoring hozzáférés tulajdonosok és a közreműködők érhető el. Saját alkalmazások esetén végponti hozzáférés tulajdonosai és a közreműködők érhető el. Egy nyilvános alkalmazás végponti hozzáférés érhető el mindenki számára, amely rendelkezik a saját Azure [Cognitive Service](../cognitive-services-apis-create-account.md) vagy [LUIS](luis-how-to-azure-subscription.md#create-prediction-endpoint-runtime-resource-in-the-azure-portal) erőforrás, és a nyilvános alkalmazás-azonosítóval rendelkezik. 
+Authoring hozzáférés tulajdonosok és a közreműködők érhető el. Saját alkalmazások esetén végponti hozzáférés tulajdonosai és a közreműködők érhető el. Nyilvános alkalmazások esetén a végponti hozzáférés mindenki számára elérhető, aki saját Azure [kognitív szolgáltatással](../cognitive-services-apis-create-account.md) vagy [Luis](luis-how-to-azure-subscription.md#create-prediction-endpoint-runtime-resource-in-the-azure-portal) erőforrással rendelkezik, és rendelkezik a nyilvános alkalmazás azonosítójával. 
 
 ## <a name="access-to-authoring"></a>Az authoring hozzáférés
 Az alkalmazáshoz való hozzáférést a [LUIS](luis-reference-regions.md#luis-website) webhely vagy a [API-k készítése](https://go.microsoft.com/fwlink/?linkid=2092087) vezérlik az alkalmazás tulajdonosának. 

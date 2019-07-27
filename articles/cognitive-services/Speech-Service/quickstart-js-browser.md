@@ -1,7 +1,7 @@
 ---
-title: 'Gyors útmutató: Beszédfelismerést, JavaScript (böngésző) – beszédszolgáltatások'
+title: 'Gyors útmutató: Beszédfelismerés felismerése, JavaScript (böngésző) – Speech Service'
 titleSuffix: Azure Cognitive Services
-description: Ismerje meg, hogyan beszédfelismerést a JavaScript egy böngészőben, a beszéd SDK-val
+description: Megtudhatja, hogyan ismerheti fel a beszédfelismerést a JavaScriptben egy böngészőben a Speech SDK használatával
 services: cognitive-services
 author: fmegen
 manager: nitinme
@@ -10,26 +10,26 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 07/05/2019
 ms.author: fmegen
-ms.openlocfilehash: a2884b43268b4c067e6e739f67d2253f8c45a408
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: 69ec6062d0dba1f1044f9a7dcfbe75924887d2b4
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67603052"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68559415"
 ---
-# <a name="quickstart-recognize-speech-in-javascript-in-a-browser-using-the-speech-sdk"></a>Gyors útmutató: A JavaScript beszédfelismerést egy böngészőben, a beszéd SDK-val
+# <a name="quickstart-recognize-speech-in-javascript-in-a-browser-using-the-speech-sdk"></a>Gyors útmutató: Beszédfelismerés a JavaScriptben egy böngészőben a Speech SDK használatával
 
 [!INCLUDE [Selector](../../../includes/cognitive-services-speech-service-quickstart-selector.md)]
 
 Ez a cikk azt mutatja be, hogyan hozhat létre egy webhelyet, amely a Cognitive Services Speech SDK JavaScript-kötésével írja át a beszédet szöveggé.
-Az alkalmazás JavaScript alapul a Speech SDK ([letöltési verzióra 1.5.0](https://aka.ms/csspeech/jsbrowserpackage)).
+Az alkalmazás a JavaScripthez készült Speech SDK-val (az 1.5.0-es[verzió letöltésével](https://aka.ms/csspeech/jsbrowserpackage)) függ.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Előfizetői azonosító a Speech Service-hez. Lásd: [próbálja ki ingyenesen a beszédszolgáltatások](get-started.md).
+* Előfizetői azonosító a Speech Service-hez. Lásd: [ingyenes kipróbálás a Speech Services szolgáltatásban](get-started.md).
 * Egy PC vagy Mac számítógép egy működő mikrofonnal.
 * Egy szövegszerkesztő.
-* Chrome, a Microsoft Edge vagy a Safari aktuális verzióját.
+* A Chrome, a Microsoft Edge vagy a Safari aktuális verziója.
 * Egy webkiszolgáló, amely támogatja a PHP-szkriptek futtatását (nem kötelező).
 
 ## <a name="create-a-new-website-folder"></a>Új webhelymappa létrehozása
@@ -40,8 +40,8 @@ Hozzon létre egy új, üres mappát. Abban az esetben, ha a mintát egy webkisz
 
 [!INCLUDE [License Notice](../../../includes/cognitive-services-speech-service-license-notice.md)]
 
-Töltse le a Speech SDK-t [.zip-csomagként](https://aka.ms/csspeech/jsbrowserpackage), és csomagolja ki az újonnan létrehozott mappába. Ennek hatására a mappastruktúrájának kicsomagolása zajlik, két fájlokat `microsoft.cognitiveservices.speech.sdk.bundle.js` és `microsoft.cognitiveservices.speech.sdk.bundle.js.map`.
-Az utóbbi fájl nem kötelező, és akkor hasznos, ha az SDK-kódjába hibakeresés.
+Töltse le a Speech SDK-t [.zip-csomagként](https://aka.ms/csspeech/jsbrowserpackage), és csomagolja ki az újonnan létrehozott mappába. Ennek eredményeképpen a rendszer két fájlt csomagol ki, `microsoft.cognitiveservices.speech.sdk.bundle.js` és. `microsoft.cognitiveservices.speech.sdk.bundle.js.map`
+Az utóbbi fájl nem kötelező, és az SDK-kódban való hibakereséshez hasznos.
 
 ## <a name="create-an-indexhtml-page"></a>Az index.html lap létrehozása
 
@@ -74,7 +74,7 @@ Hozzon létre egy új fájlt a mappában `index.html` néven, és nyissa meg a f
 
    [!code-html[](~/samples-cognitive-services-speech-sdk/quickstart/js-browser/index.html#speechsdkref)]
 
-1. A felismerés gomb, felismerés eredményét és előfizetéshez kapcsolódó mezőket a felhasználói felület kód által meghatározott kezelőkkel beállítani:
+1. A felhasználói felület kódjában definiált felismerési gomb, felismerési eredmény és előfizetéshez kapcsolódó mezők huzal-kezelői:
 
    [!code-html[](~/samples-cognitive-services-speech-sdk/quickstart/js-browser/index.html#quickstartcode)]
 
@@ -100,8 +100,8 @@ Ha egy webkiszolgálón szeretné futtatni a weblapot, opcionálisan megadhat eg
 Az alkalmazás elindításához kattintson duplán az index.html fájlra, vagy nyissa meg az index.html fájlt kedvenc webböngészőjében. Egy egyszerű grafikus felhasználói felület fog megjelenni, amelyen megadhatja az előfizetői azonosítót és a [régiót](regions.md), majd a mikrofon használatával aktiválhatja a felismerést.
 
 > [!NOTE]
-> Ez a módszer a Safari böngészőben nem működik.
-> A Safari a minta weboldal kell üzemeltetését a webkiszolgálón; A Safari nem teszi lehetővé a mikrofon használatára egy helyi fájlból betöltött webhelyeket.
+> Ez a metódus nem működik a Safari böngészőben.
+> A Safari webhelyen a minta weblapot webkiszolgálón kell üzemeltetni; A Safari nem teszi lehetővé a helyi fájlokból betöltött webhelyek használatát a mikrofon használatához.
 
 ## <a name="build-and-run-the-sample-via-a-web-server"></a>A minta buildelése és futtatása webkiszolgáló használatával
 
@@ -110,4 +110,4 @@ Az alkalmazás elindításához nyissa meg kedvenc webböngészőjét, és mutas
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [JavaScript-minták megtekintése a Githubon](https://aka.ms/csspeech/samples)
+> [Ismerje meg a JavaScript-mintákat a GitHubon](https://aka.ms/csspeech/samples)

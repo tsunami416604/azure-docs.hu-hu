@@ -1,7 +1,7 @@
 ---
-title: 'Gyors útmutató: Szintetizálásához beszéd átalakítás, .NET-keretrendszer (Windows) – beszédszolgáltatások'
+title: 'Gyors útmutató: Beszédszintetizátor beszéd, .NET-keretrendszer (Windows) – Speech Service'
 titleSuffix: Azure Cognitive Services
-description: Ez az útmutató segítségével hozzon létre egy szöveg-hang transzformációs konzolalkalmazást a Windows és a Speech SDK a .NET-keretrendszer használatával. Amikor végzett, beszéd szövegből szintetizálásához, és hallgassa meg a beszéd valós időben a beszélő a.
+description: Ez az útmutató egy szöveg-beszédes konzol alkalmazás létrehozására használható a .NET-keretrendszer for Windows és a Speech SDK használatával. Ha elkészült, a beszédet a szövegből is szintetizálhatja, és valós időben hallhatja a beszédet a beszélőn.
 services: cognitive-services
 author: yinhew
 manager: nitinme
@@ -10,30 +10,30 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 07/05/2019
 ms.author: yinhew
-ms.openlocfilehash: 352d3f5f34bd46d8ee1ba2ed45dcc28af2b430ef
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: 3c925e0160a4c57f7e43c3463fc1db7098a6e606
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67605029"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68553604"
 ---
-# <a name="quickstart-synthesize-speech-with-the-speech-sdk-for-net-framework-windows"></a>Gyors útmutató: Beszédfelismerés, beszédfelismerési SDK-val szintetizálásához Pro rozhraní .NET Framework (Windows)
+# <a name="quickstart-synthesize-speech-with-the-speech-sdk-for-net-framework-windows"></a>Gyors útmutató: Beszéd szintézise a .NET-keretrendszerhez készült Speech SDK (Windows) használatával
 
-Rövid útmutatók érhetők el is [beszédfelismerés](quickstart-csharp-dotnet-windows.md) és [tolmácsolás –](quickstart-translate-speech-dotnetframework-windows.md).
+A gyors útmutatók a [beszédfelismerés](quickstart-csharp-dotnet-windows.md) és a [beszédfelismerés](quickstart-translate-speech-dotnetframework-windows.md)számára is elérhetők.
 
-Ez az útmutató segítségével hozzon létre egy szöveg-hang transzformációs konzolalkalmazást a Windows és a Speech SDK a .NET-keretrendszer használatával. Amikor végzett, beszéd szövegből szintetizálásához, és hallgassa meg a beszéd valós időben a beszélő a.
+Ez az útmutató egy szöveg-beszédes konzol alkalmazás létrehozására használható a .NET-keretrendszer for Windows és a Speech SDK használatával. Ha elkészült, a beszédet a szövegből is szintetizálhatja, és valós időben hallhatja a beszédet a beszélőn.
 
-A gyors bemutató (nélkül létrehozása a Visual Studio-projekt magát az alább látható módon):
+Egy gyors bemutatóhoz (a Visual Studio-projekt létrehozása nélkül, az alábbi ábrán látható módon):
 
-A legújabb verzió beszerzéséhez [Cognitive Services beszédfelismerő SDK-minták](https://github.com/Azure-Samples/cognitive-services-speech-sdk) a Githubról.
+Szerezze be a legfrissebb [Cognitive Services SPEECH SDK-mintákat](https://github.com/Azure-Samples/cognitive-services-speech-sdk) a githubról.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 A projekt teljesítéséhez a következők szükségesek:
 
 * [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/)
-* A beszédfelismerési szolgáltatás egy előfizetési kulcsot. [Igényeljen ingyenesen egy](get-started.md).
-* A speaker (vagy mikrofonos) érhető el.
+* A beszédfelismerési szolgáltatáshoz tartozó előfizetési kulcs. [Szerezze be az egyiket ingyenesen](get-started.md).
+* Egy beszélő (vagy fülhallgató) érhető el.
 
 ## <a name="create-a-visual-studio-project"></a>Visual Studio-projekt létrehozása
 
@@ -45,7 +45,7 @@ A projekt teljesítéséhez a következők szükségesek:
 
     [!code-csharp[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/text-to-speech/csharp-dotnet-windows/helloworld/Program.cs#code)]
 
-1. Keresse meg és cserélje le a karakterláncot `YourSubscriptionKey` az beszédszolgáltatások előfizetési kulccsal végzett.
+1. Keresse meg és cserélje le `YourSubscriptionKey` a karakterláncot a Speech Services előfizetési kulcsával.
 
 1. Keresse meg és cserélje le a `YourServiceRegion` sztringet az előfizetéséhez társított [régióra](regions.md). Ha például az ingyenes próbaverziót használja, akkor a régió a `westus`.
 
@@ -61,16 +61,16 @@ A projekt teljesítéséhez a következők szükségesek:
 
     ![A Visual Studio képernyőképe, amelyen ki van emelve a Hibakeresés indítása lehetőség](media/sdk/qs-csharp-dotnet-windows-09-start-debugging.png "Hibakeresés indítása az alkalmazáson")
 
-1. A konzolablakban megjelenik, írjon be valamilyen szöveget, és felszólítja. Írjon be néhány szavakat és a egy mondatot. A beírt szöveget a beszédszolgáltatások továbbítani, és a Speech, amely a a hangfelismerő játszik synthesized.
+1. Ekkor megjelenik egy konzolablak, amely felszólítja, hogy írjon be egy szöveget. Írjon be néhány szót vagy mondatot. A beírt szöveg továbbítva lesz a Speech Servicesnek, és a beszédbe lett szintetizálva, amely a beszélőn játszik.
 
     ![Képernyőkép a konzolról a sikeres felismerést követően](media/sdk/qs-tts-csharp-dotnet-windows-console-output.png "A konzol a sikeres felismerést követően")
 
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Ismerkedés a C# példák a Githubon](https://aka.ms/csspeech/samples)
+> [Minták C# feltárása a githubon](https://aka.ms/csspeech/samples)
 
 ## <a name="see-also"></a>Lásd még
 
-- [Hangtípust testreszabása](how-to-customize-voice-font.md)
-- [Rekord voice-minták](record-custom-voice-samples.md)
+- [Hangbetűkészletek testreszabása](how-to-customize-voice-font.md)
+- [Hangminták rögzítése](record-custom-voice-samples.md)

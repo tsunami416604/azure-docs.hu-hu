@@ -1,6 +1,6 @@
 ---
-title: Keyphrase előre összeállított entitások
-titleSuffix: Azure
+title: Keyphrase előre elkészített entitás – LUIS
+titleSuffix: Azure Cognitive Services
 description: Ez a cikk tartalmaz keyphrase előre összeállított entitások információ a Language Understanding (LUIS).
 services: cognitive-services
 author: diberry
@@ -11,19 +11,19 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 05/07/2019
 ms.author: diberry
-ms.openlocfilehash: 988609f411ad405b0f1dc244b23fb6db446136a2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d7ecb579305cb17525e220bc16be430c77d25080
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65072003"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68563434"
 ---
-# <a name="keyphrase-prebuilt-entity-for-a-luis-app"></a>keyPhrase előre összeállított entitások a LUIS-alkalmazások
+# <a name="keyphrase-prebuilt-entity-for-a-luis-app"></a>keyPhrase előre összeépített entitása egy LUIS-alkalmazáshoz
 keyPhrase kulcskifejezéseket különböző kigyűjti az utterance (kifejezés). Nem kell az alkalmazás keyPhrase tartalmazó példa beszédmódok hozzáadása. támogatott keyPhrase entitás [számos országban](luis-language-support.md#languages-supported) részeként a [szövegelemzés](../text-analytics/overview.md) funkciókat. 
 
 ## <a name="resolution-for-prebuilt-keyphrase-entity"></a>Előre összeállított keyPhrase entitás feloldása
 
-### <a name="api-version-2x"></a>API-verzió 2.x
+### <a name="api-version-2x"></a>API 2. x verziója
 
 Az alábbi példa bemutatja a feloldása a **builtin.keyPhrase** entitás.
 

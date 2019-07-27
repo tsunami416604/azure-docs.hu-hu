@@ -1,6 +1,6 @@
 ---
-title: Hozzon létre Tudásbázis – RESTC#
-titlesuffix: QnA Maker- Azure Cognitive Services
+title: 'Gyors útmutató: Tudásbázis létrehozása – REST, C# -QnA Maker'
+titleSuffix: Azure Cognitive Services
 description: Ez a C# REST-alapú rövid útmutató végigvezeti egy olyan minta QnA Maker-tudásbázis programozott módon történő létrehozásán, amely a Cognitive Services API-fiók Azure-irányítópultján fog megjelenni.
 services: cognitive-services
 author: diberry
@@ -11,14 +11,14 @@ ms.subservice: qna-maker
 ms.topic: quickstart
 ms.date: 07/16/2019
 ms.author: diberry
-ms.openlocfilehash: 130f14f1a377c6ee580b207a62fd47d9dd818dcb
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: 8947baba9212fecab8c67eaf679380a2517ed63d
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68249696"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68559909"
 ---
-# <a name="quickstart-create-a-knowledge-base-in-qna-maker-using-c"></a>Gyors útmutató: Tudásbázis létrehozása a QnA Maker használatávalC#
+# <a name="quickstart-create-a-knowledge-base-in-qna-maker-using-c"></a>Gyors útmutató: Tudásbázis létrehozása QnA Maker használatávalC#
 
 Ez a rövid útmutató végigvezeti egy minta QnA Maker-tudásbázis programozott módon való létrehozásán és közzétételén. A QnA Maker automatikusan nyer ki kérdéseket és válaszokat a félig strukturált tartalmak, például a gyakori kérdések közül, az [adatforrásokból](../Concepts/data-sources-supported.md). A tudásbázis modelljét az API-kérés törzsében küldött JSON definiálja. 
 
@@ -33,7 +33,7 @@ Ebben a rövid útmutatóban QnA Maker API-kat hívunk meg:
 * Rendelkeznie kell [QnA Maker-szolgáltatással](../How-To/set-up-qnamaker-service-azure.md) is. A kulcs lekéréséhez válassza az irányítópulton az **Erőforrás-kezelés** területen lévő **Kulcsok** lehetőséget. 
 
 > [!NOTE] 
-> A teljes megoldás fájl(ok) érhetők el a [ **Azure-Samples/cognitive-services-qnamaker-csharp** GitHub-adattár](https://github.com/Azure-Samples/cognitive-services-qnamaker-csharp).
+> A teljes megoldás fájl (ok) az [ **Azure-Samples/kognitív-Services-qnamaker-csharp** GitHub](https://github.com/Azure-Samples/cognitive-services-qnamaker-csharp)-adattárból érhetők el.
 
 ## <a name="create-a-knowledge-base-project"></a>Tudásbázisprojekt létrehozása
 

@@ -1,6 +1,6 @@
 ---
-title: Az SQL Database az Azure Resource Manager-sablonokkal |} A Microsoft Docs
-description: Használja az Azure Resource Manager-sablonok létrehozása és konfigurálása az Azure SQL Database.
+title: SQL Database Azure Resource Manager sablonjai | Microsoft Docs
+description: Azure SQL Database létrehozásához és konfigurálásához használjon Azure Resource Manager sablonokat.
 services: sql-database
 ms.service: sql-database
 ms.subservice: service
@@ -10,45 +10,44 @@ ms.topic: sample
 author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein
-manager: craigg
 ms.date: 02/04/2019
-ms.openlocfilehash: b967dc872529ec8b045df81542eec4c555b17a6c
-ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
+ms.openlocfilehash: 81f3e4beb29f21f1b752a876827e9b35856c713a
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66418435"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68566885"
 ---
-# <a name="azure-resource-manager-templates-for-azure-sql-database"></a>Az Azure SQL Database az Azure Resource Manager-sablonok
+# <a name="azure-resource-manager-templates-for-azure-sql-database"></a>Azure SQL Database Azure Resource Manager sablonjai
 
-Az Azure Resource Manager-sablonok lehetővé teszik határozza meg az infrastruktúra mint kód és a megoldások üzembe helyezése az Azure felhőben.
+Azure Resource Manager sablonok lehetővé teszik az infrastruktúra kódként való definiálását és a megoldások üzembe helyezését az Azure-felhőben.
 
-## <a name="single-database--elastic-pool"></a>Önálló adatbázis és rugalmas készlet
+## <a name="single-database--elastic-pool"></a>Önálló adatbázis & rugalmas készlet
 
-A következő táblázat az Azure SQL Database az Azure Resource Manager-sablonokra mutató hivatkozásokat tartalmaz.
+Az alábbi táblázat a Azure SQL Database Azure Resource Manager sablonjaira mutató hivatkozásokat tartalmaz.
 
 | |  |
 |---|---|
-| [Önálló adatbázis](https://github.com/Azure/azure-quickstart-templates/tree/master/201-sql-database-transparent-encryption-create) | Az Azure Resource Manager-sablonnal hoz létre egy Azure SQL Database logikai kiszolgáló, és konfigurálja a tűzfalszabályokat. |
-| [A logikai kiszolgáló](https://github.com/Azure/azure-quickstart-templates/tree/master/101-sql-logical-server) | Az Azure Resource Manager-sablon az Azure SQL Database létrehoz egy logikai kiszolgálót. |
-| [Rugalmas készlet](https://github.com/Azure/azure-quickstart-templates/tree/master/101-sql-elastic-pool-create) | Ez a sablon lehetővé teszi az új társított SQL-kiszolgáló és az új SQL-adatbázisok, rendelje hozzá egy új rugalmas készlet üzembe helyezését. |
-| [Feladatátvételi csoportok](https://github.com/Azure/azure-quickstart-templates/tree/master/101-sql-with-failover-group) | Ez a sablon létrehoz két Azure SQL logikai kiszolgálók, az SQL-adatbázis és a egy feladatátvételi csoportot.|
-| [Fenyegetések észlelése](https://github.com/Azure/azure-quickstart-templates/tree/master/201-sql-threat-detection-db-policy-multiple-databases) | Ez a sablon üzembe helyezése az Azure SQL logikai kiszolgáló és a Fenyegetésészlelés engedélyezve van, a riasztásokat az egyes adatbázisok egy e-mail címet az Azure SQL Database számos teszi lehetővé. Fenyegetésészlelés az SQL komplex veszélyforrások elleni védelem (ATP) ajánlat része, és reagáljon a lehetséges fenyegetések SQL Server-kiszolgálók és adatbázisok biztonsági réteget biztosít.|
-| [Az Azure Blob Storage-naplózás](https://github.com/Azure/azure-quickstart-templates/tree/master/201-sql-auditing-server-policy-to-blob-storage) | Ez a sablon lehetővé teszi, hogy üzembe helyezés az Azure SQL logikai kiszolgáló a naplózás engedélyezve van a vizsgálati naplók írni egy blob storage-bA. Azure SQL Database Auditing szolgáltatása nyomon követi az adatbázisok eseményeit, és az Azure storage-fiókot, OMS-munkaterület vagy az Event Hubs helyezhető auditálási naplóba írja őket.|
-| [Naplózás az Azure Event Hubs segítségével](https://github.com/Azure/azure-quickstart-templates/tree/master/201-sql-auditing-server-policy-to-eventhub) | Ez a sablon üzembe helyezése egy Azure SQL server-naplózás engedélyezve van a vizsgálati naplók írni egy létező Eseményközpont teszi lehetővé. Annak érdekében, hogy a naplózási események küldése eseményközpontba, állítsa be a naplózási beállítások a `Enabled` `State` és `IsAzureMonitorTargetEnabled` , `true`. A diagnosztikai beállítások konfigurálása is, `SQLSecurityAuditEvents` diagnosztikai naplók kategóriában található a `master` adatbázis (az szolgálnak szintű naplózás). Az Azure SQL Database és az SQL Data Warehouse naplózás nyomon követi az adatbázisok eseményeit, és az Azure storage-fiókot, OMS-munkaterület vagy az Event Hubs helyezhető auditálási naplóba írja őket.|
-| [Azure-webalkalmazást az SQL Database szolgáltatással](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-sql-database) | Ez a példa létrehoz egy ingyenes Azure-webalkalmazás és SQL Database az "Alapszintű" szolgáltatási szinten.|
-| [Azure-webalkalmazás és Redis Cache az SQL Database szolgáltatással](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-redis-cache-sql-database) | Ezzel a sablonnal hoz létre egy webalkalmazás, Redis Cache és SQL Database ugyanazt az erőforráscsoportot, és az SQL Database és a Redis Cache a webalkalmazás két kapcsolati karakterláncok hoz létre.|
-| [Adatok importálása az ADF v2 verzió használata blob storage-ból](https://github.com/Azure/azure-quickstart-templates/tree/master/101-data-factory-v2-blob-to-sql-copy) | Az Azure Resource Manager-sablont hoz létre Azure Data Factory V2, amely adatokat másol az Azure Blob Storage, SQL Database.|
-| [HDInsight-fürt SQL Database-adatbázissal](https://github.com/Azure/azure-quickstart-templates/tree/master/101-hdinsight-linux-with-sql-database) | Ez a sablon lehetővé teszi, hogy hozzon létre egy HDInsight-fürtöt, egy SQL Database-kiszolgáló, SQL-adatbázis és a két táblázat. Ez a sablon használják a [használata Sqoop, a cikk a HDInsight Hadoop-keretrendszerrel](https://docs.microsoft.com/azure/hdinsight/hadoop/hdinsight-use-sqoop) |
-| [Az Azure olyan logikai alkalmazást, amely egy SQL tárolt eljárás ütemezés szerint fut](https://github.com/Azure/azure-quickstart-templates/tree/master/101-logic-app-sql-proc) | Ez a sablon lehetővé teszi, hogy hozzon létre egy logikai alkalmazást, amely egy SQL tárolt eljárás fog futni, ütemezés szerint. Az eljáráshoz tartozó argumentumokat is az elhelyezhető, hogy a sablon törzsét szakaszában.|
+| [Önálló adatbázis](https://github.com/Azure/azure-quickstart-templates/tree/master/201-sql-database-transparent-encryption-create) | Ez a Azure Resource Manager sablon egyetlen Azure SQL Database hoz létre a logikai kiszolgálóval, és konfigurálja a tűzfalszabályok beállításait. |
+| [Logikai kiszolgáló](https://github.com/Azure/azure-quickstart-templates/tree/master/101-sql-logical-server) | Ez a Azure Resource Manager-sablon logikai kiszolgálót hoz létre a Azure SQL Databasehoz. |
+| [Rugalmas készlet](https://github.com/Azure/azure-quickstart-templates/tree/master/101-sql-elastic-pool-create) | Ez a sablon lehetővé teszi egy új rugalmas készlet üzembe helyezését az új társított SQL Server és az új SQL-adatbázisok hozzárendelésével. |
+| [Feladatátvételi csoportok](https://github.com/Azure/azure-quickstart-templates/tree/master/101-sql-with-failover-group) | Ez a sablon két Azure SQL logikai kiszolgálót, egy SQL-adatbázist és egy feladatátvételi csoportot hoz létre.|
+| [Fenyegetések észlelése](https://github.com/Azure/azure-quickstart-templates/tree/master/201-sql-threat-detection-db-policy-multiple-databases) | Ez a sablon lehetővé teszi egy Azure SQL logikai kiszolgáló és egy olyan Azure SQL Database-adatbázis üzembe helyezését, amelyen engedélyezve van a veszélyforrások észlelése, és e-mail-címmel kell rendelkeznie az egyes adatbázisokra vonatkozó riasztásokhoz. A veszélyforrások észlelése az SQL Advanced Threat Protection (ATP) ajánlat része, és olyan biztonsági réteget biztosít, amely az SQL-kiszolgálókon és-adatbázisokon keresztül lehetséges fenyegetésekre reagál.|
+| [Naplózás az Azure Blob Storage](https://github.com/Azure/azure-quickstart-templates/tree/master/201-sql-auditing-server-policy-to-blob-storage) | Ez a sablon lehetővé teszi, hogy olyan Azure SQL logikai kiszolgálót helyezzen üzembe, amelyen engedélyezve van a naplózás, hogy a naplók egy blob Storage-tárolóba írjanak. A Azure SQL Database naplózása nyomon követi az adatbázis eseményeit, és az Azure Storage-fiókba, OMS-munkaterületbe vagy Event Hubsba helyezhető naplófájlba írja azokat.|
+| [Naplózás az Azure Event hub-ba](https://github.com/Azure/azure-quickstart-templates/tree/master/201-sql-auditing-server-policy-to-eventhub) | Ez a sablon lehetővé teszi, hogy egy olyan Azure SQL Servert helyezzen üzembe, amelyen engedélyezve van a naplózás, hogy naplókat írjon a kilépő Event hubhoz. A naplózási események az Event hubhoz való küldéséhez állítsa be a naplózási beállításokat `IsAzureMonitorTargetEnabled` a `true` `Enabled` `State` és a beállításként. Továbbá konfigurálja a diagnosztikai beállításokat `SQLSecurityAuditEvents` a diagnosztikai naplók kategóriával az `master` adatbázisban (a kiszolgálás szintjének naplózásához). A Azure SQL Database és SQL Data Warehouse naplózása nyomon követi az adatbázis-eseményeket, és az Azure Storage-fiókba, a OMS-munkaterületbe vagy a Event Hubsba helyezhető naplófájlba írja azokat.|
+| [Azure-webalkalmazás és SQL Database](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-sql-database) | Ez a példa egy ingyenes Azure-webalkalmazást hoz létre, és SQL Database az "alapszintű" szolgáltatási szinten.|
+| [Azure-webalkalmazás és Redis Cache a következővel SQL Database](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-redis-cache-sql-database) | Ez a sablon létrehoz egy webalkalmazást, Redis Cache és SQL Database ugyanabban az erőforráscsoportban, és két kapcsolati karakterláncot hoz létre a webalkalmazásban a SQL Database és Redis Cache.|
+| [Adatok importálása a blob Storage-ból az ADF V2 használatával](https://github.com/Azure/azure-quickstart-templates/tree/master/101-data-factory-v2-blob-to-sql-copy) | Ez a Azure Resource Manager sablon Azure Data Factory v2-et hoz létre, amely az Blob Storage Azure-ból származó adatok SQL Databaseba való másolását végzi.|
+| [HDInsight-fürt SQL Database](https://github.com/Azure/azure-quickstart-templates/tree/master/101-hdinsight-linux-with-sql-database) | Ez a sablon lehetővé teszi egy HDInsight-fürt, egy SQL Database-kiszolgáló, egy SQL Database és két tábla létrehozását. Ezt a sablont [használja a Sqoop használata a Hadoop-ben a HDInsight cikkben](https://docs.microsoft.com/azure/hdinsight/hadoop/hdinsight-use-sqoop) |
+| [Az Azure logikai alkalmazás, amely egy ütemezett SQL tárolt eljárást futtat](https://github.com/Azure/azure-quickstart-templates/tree/master/101-logic-app-sql-proc) | Ez a sablon lehetővé teszi, hogy olyan logikai alkalmazást hozzon létre, amely egy ütemezett SQL tárolt eljárást fog futtatni. Az eljáráshoz tartozó argumentumok a sablon törzs szakaszába helyezhetők.|
 
 ## <a name="managed-instance"></a>Felügyelt példány
 
-A következő táblázat az Azure SQL Database – felügyelt példány az Azure Resource Manager-sablonokra mutató hivatkozásokat tartalmaz.
+Az alábbi táblázat a Azure SQL Database által felügyelt példányokra Azure Resource Manager sablonokra mutató hivatkozásokat tartalmaz.
 
 | |  |
 |---|---|
-| [Felügyelt példány egy új virtuális hálózat](https://github.com/Azure/azure-quickstart-templates/tree/master/101-sqlmi-new-vnet) | Az Azure Resource Manager-sablon a virtuális hálózatban hoz létre egy új konfigurált Azure virtuális hálózat és a felügyelt példány. |
-| [Hálózati környezet a felügyelt példány](https://github.com/Azure/azure-quickstart-templates/tree/master/101-sql-managed-instance-azure-environment) | A központi telepítés hoz létre konfigurált Azure virtuális hálózat két alhálózattal – egy másikkal, amelyik számára a felügyelt példányok dedikált lesz, és a egy másik helyezheti el más erőforrásokat (például virtuális gépek, App Service Environment-környezetek, stb.). Ez a sablon létrehoz egy megfelelően konfigurált hálózati környezetben, ahol felügyelt példány is üzemeltethető. |
-| [Felügyelt példány P2S-kapcsolattal](https://github.com/Azure/azure-quickstart-templates/tree/master/201-sqlmi-new-vnet-w-point-to-site-vpn) | A központi telepítés rendszer egy Azure virtuális hálózat létrehozása két alhálózattal `ManagedInstance` és `GatewaySubnet`. Felügyelt példány ManagedInstance alhálózat lesz telepítve. Virtuális hálózati átjáró jön létre a `GatewaySubnet` alhálózat és a pont – hely VPN-kapcsolathoz konfigurálva. |
-| [A virtuális gép felügyelt példány](https://github.com/Azure/azure-quickstart-templates/tree/master/201-sqlmi-new-vnet-w-jumpbox) | A központi telepítés rendszer egy Azure virtuális hálózat létrehozása két alhálózattal `ManagedInstance` és `Management`. Felügyelt példány lesz telepítve, `ManagedInstance` alhálózat. Virtuális gép az SQL Server Management Studio (SSMS) legújabb verziójával lesz telepítve, `Management` alhálózat. |
+| [Felügyelt példány egy új VNet](https://github.com/Azure/azure-quickstart-templates/tree/master/101-sqlmi-new-vnet) | Ez a Azure Resource Manager sablon létrehoz egy új, konfigurált Azure VNet és felügyelt példányt a VNet. |
+| [A felügyelt példány hálózati környezete](https://github.com/Azure/azure-quickstart-templates/tree/master/101-sql-managed-instance-azure-environment) | Ez az üzembe helyezés egy konfigurált Azure-Virtual Network hoz létre két alhálózattal – az egyiket a felügyelt példányok számára, és egy másikat, ahol más erőforrásokat (például virtuális gépeket, App Service környezeteket stb.) helyezhet el. Ez a sablon egy megfelelően konfigurált hálózati környezetet hoz létre, ahol felügyelt példányokat helyezhet üzembe. |
+| [Felügyelt példány P2S-kapcsolatban](https://github.com/Azure/azure-quickstart-templates/tree/master/201-sqlmi-new-vnet-w-point-to-site-vpn) | Ez az üzembe helyezés egy Azure `ManagedInstance` -Virtual Network hoz létre két alhálózattal és. `GatewaySubnet` A felügyelt példány a ManagedInstance-alhálózatban lesz telepítve. A rendszer létrehozza a virtuális hálózati átjárót az `GatewaySubnet` alhálózatban, és a pont – hely VPN-kapcsolathoz van konfigurálva. |
+| [Felügyelt példány virtuális géppel](https://github.com/Azure/azure-quickstart-templates/tree/master/201-sqlmi-new-vnet-w-jumpbox) | Ez az üzembe helyezés egy Azure `ManagedInstance` -Virtual Network hoz létre két alhálózattal és. `Management` A felügyelt példány az `ManagedInstance` alhálózaton lesz telepítve. A SQL Server Management Studio (SSMS) legújabb verzióját tartalmazó virtuális gép az `Management` alhálózaton lesz telepítve. |

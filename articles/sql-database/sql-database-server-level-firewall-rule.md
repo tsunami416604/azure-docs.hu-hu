@@ -1,6 +1,6 @@
 ---
-title: Hozzon létre egy kiszolgálószintű tűzfalszabályt – Azure SQL Database |} A Microsoft Docs
-description: Hozzon létre egy SQL Database kiszolgálószintű tűzfalszabályt egyetlen vagy készletezett adatbázisok
+title: Kiszolgálói szintű tűzfalszabály létrehozása – Azure SQL Database | Microsoft Docs
+description: SQL Database kiszolgálói szintű tűzfalszabály létrehozása egyetlen és készletezett adatbázisokhoz
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
@@ -10,66 +10,65 @@ ms.topic: quickstart
 author: sachinpMSFT
 ms.author: sachinp
 ms.reviewer: vanto, carlrab
-manager: craigg
 ms.date: 02/11/2019
-ms.openlocfilehash: f708e5a3cd5bc0f11f8b0cfe79a791347c7a7a2b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 7adced4088b1e155d6776f71e8f23a9eceae2297
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60709241"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68566783"
 ---
-# <a name="quickstart-create-a-server-level-firewall-rule-for-single-and-pooled-databases-using-the-azure-portal"></a>Gyors útmutató: Hozzon létre egy kiszolgálószintű tűzfalszabályt egyetlen vagy készletezett adatbázisok az Azure portal használatával
+# <a name="quickstart-create-a-server-level-firewall-rule-for-single-and-pooled-databases-using-the-azure-portal"></a>Gyors útmutató: Kiszolgáló szintű tűzfalszabály létrehozása az önálló és a készletezett adatbázisokhoz a Azure Portal használatával
 
-Ez a rövid útmutató végigvezeti azon, hogyan hozhat létre egy [kiszolgálószintű tűzfalszabály](sql-database-firewall-configure.md) egyetlen vagy készletezett adatbázisok az Azure SQL Database adatbázis-kiszolgálókhoz való csatlakozást teszi lehetővé az Azure portal használatával, az önálló adatbázisok és rugalmas készletek és az adatbázisok. Egy tűzfalszabály szükség, más Azure-erőforrások és a helyszíni erőforrásokhoz kapcsolódni.
+Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre egy [kiszolgálói szintű tűzfalszabály](sql-database-firewall-configure.md) a Azure SQL Database az önálló és a készletezett adatbázisokhoz a Azure Portal segítségével, amely lehetővé teszi az adatbázis-kiszolgálókhoz, önálló adatbázisokhoz és rugalmas készletekhez és azok adatbázisaihoz való kapcsolódást. A más Azure-erőforrásokból és a helyszíni erőforrásokból való kapcsolódáshoz tűzfalszabály szükséges.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ebben a rövid útmutatóban létrehozott erőforrásokat használja [hozzon létre egy önálló adatbázis az Azure portal használatával](sql-database-single-database-get-started.md) kiindulási pontként.
+Ez a rövid útmutató az [önálló adatbázis létrehozása a Azure Portal a](sql-database-single-database-get-started.md) kiindulási pontként létrehozott erőforrásokat használja.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Jelentkezzen be az Azure Portalra
 
 Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 
-## <a name="create-a-server-level-ip-firewall-rule"></a>IP-kiszolgálószintű tűzfalszabály létrehozása
+## <a name="create-a-server-level-ip-firewall-rule"></a>Kiszolgálói szintű IP-tűzfalszabály létrehozása
 
-Az SQL Database szolgáltatás egyetlen vagy készletezett adatbázisok adatbázis-kiszolgáló szintjén hoz létre tűzfalat. Ez a tűzfal megakadályozza, hogy csatlakozzanak a kiszolgálóhoz vagy az önálló vagy készletezett adatbázisok bármelyikét, ha nem hoz létre egy IP-tűzfalszabály, megnyitja a tűzfalat ügyfélalkalmazások számára. Azure-on kívülről IP-címről érkező kapcsolatot hozzon létre egy tűzfalszabályt egy adott IP-címet vagy címtartományt, amelyet szeretne csatlakozni. További információ a kiszolgálószintű és adatbázisszintű IP-tűzfalszabályainak: [SQL Database kiszolgálószintű és adatbázisszintű IP-tűzfalszabályainak](sql-database-firewall-configure.md).
+A SQL Database szolgáltatás egy tűzfalat hoz létre az adatbázis-kiszolgáló szintjén az önálló és a készletezett adatbázisokhoz. Ez a tűzfal megakadályozza, hogy az ügyfélalkalmazások csatlakozzanak a kiszolgálóhoz vagy az önálló vagy készletezett adatbázisokhoz, kivéve, ha a tűzfal megnyitásához létrehoz egy IP-tűzfalszabály-szabályt. Az Azure-on kívüli IP-címről létesített kapcsolathoz hozzon létre egy tűzfalszabály egy adott IP-cím vagy címtartomány számára, amelyhez csatlakozni szeretne. A kiszolgálói szintű és az adatbázis szintű IP-tűzfalszabályok részletes ismertetését lásd: [SQL Database kiszolgálói szintű és adatbázis-szintű IP-tűzfalszabályok](sql-database-firewall-configure.md).
 
 > [!NOTE]
-> Az SQL Database az 1433-as porton kommunikál. Csatlakozás a vállalati hálózaton belülről próbál, ha a hálózati tűzfal előfordulhat, hogy nem engedélyezett a kimenő forgalmat az 1433-as porton keresztül. Ha igen, nem lehet csatlakoztatni az Azure SQL Database-kiszolgálóhoz, ha az informatikai részleg megnyitja az 1433-as porton.
+> Az SQL Database az 1433-as porton kommunikál. Ha vállalati hálózaton belülről próbál csatlakozni, előfordulhat, hogy a hálózati tűzfal nem engedélyezi a kimenő forgalmat az 1433-as porton keresztül. Ha igen, nem tud csatlakozni a Azure SQL Database-kiszolgálóhoz, ha az informatikai részleg nem nyitja meg a 1433-es portot.
 > [!IMPORTANT]
-> 0.0.0.0 tűzfalszabály lehetővé teszi, hogy az Azure-szolgáltatásokhoz való továbbítása a kiszolgálószintű tűzfalszabályt, és megpróbál csatlakozni egy önálló vagy készletezett adatbázis-kiszolgálón keresztül. A virtuális hálózati szabályok használatával kapcsolatos további információkért lásd: [virtuális hálózati szabályok IP szabályok alternatívájaként](sql-database-firewall-configure.md#virtual-network-rules-as-alternatives-to-ip-rules).
+> A 0.0.0.0 tűzfalszabály lehetővé teszi, hogy az összes Azure-szolgáltatás áthaladjon a kiszolgálói szintű tűzfalszabályok között, és megpróbáljon csatlakozni egyetlen vagy készletezett adatbázishoz a kiszolgálón keresztül. A virtuális hálózati szabályok használatával kapcsolatos további tudnivalókért lásd: [virtuális hálózati szabályok az IP-szabályok alternatívájaként](sql-database-firewall-configure.md#virtual-network-rules-as-alternatives-to-ip-rules).
 
-Kövesse az alábbi lépéseket az ügyfél IP-címe a kiszolgálószintű IP tűzfalszabály létrehozása, és engedélyezheti a külső kapcsolatokat csak az IP-cím az SQL Database-tűzfalon keresztül.
+Kövesse az alábbi lépéseket egy kiszolgálói szintű IP-tűzfalszabály létrehozásához az ügyfél IP-címéhez, és engedélyezze a külső kapcsolatot a SQL Database tűzfalon keresztül csak az IP-címéhez.
 
-1. Után az [előfeltételként szükséges Azure SQL database](#prerequisites) üzembe helyezés befejeződött, válassza a **SQL-adatbázisok** elemet a bal oldali menüben, és válassza a **mySampleDatabase** a a **SQL-adatbázisok** lapot. Megnyílik az adatbázis áttekintő oldala, amelyen látható a teljes kiszolgálónév (például: **mynewserver-20170824.database.windows.net**), valamint a további konfigurálható beállítások.
+1. Az [Azure SQL Database](#prerequisites) üzembe helyezésének előfeltétele után válassza ki az **SQL-adatbázisok** elemet a bal oldali menüben, majd válassza a **mySampleDatabase** lehetőséget az **SQL-adatbázisok** lapon. Megnyílik az adatbázis áttekintő oldala, amelyen látható a teljes kiszolgálónév (például: **mynewserver-20170824.database.windows.net**), valamint a további konfigurálható beállítások.
 
-2. Másolja ki a teljes kiszolgálónévre a kiszolgálóhoz és a többi rövid útmutató az adatbázisokhoz való csatlakozáskor használandó.
+2. Másolja ezt a teljes kiszolgálónevet, amelyet a kiszolgálóhoz és az adatbázisaihoz való csatlakozáskor használni szeretne más gyors útmutatókban.
 
    ![kiszolgáló neve](./media/sql-database-get-started-portal/server-name.png)
 
-3. Válassza ki **kiszolgálótűzfal beállítása** az eszköztáron. A **tűzfalbeállítások** megnyílik az adatbázis-kiszolgáló.
+3. Válassza a **kiszolgáló tűzfal beállítása** lehetőséget az eszköztáron. Megnyílik az adatbázis-kiszolgáló **tűzfalbeállítások** lapja.
 
-   ![kiszolgálószintű IP-tűzfalszabály](./media/sql-database-get-started-portal/server-firewall-rule.png)
+   ![kiszolgálói szintű IP-tűzfalszabály](./media/sql-database-get-started-portal/server-firewall-rule.png)
 
-4. Válasszon **ügyfél IP-cím hozzáadása** az aktuális IP-cím hozzáadása egy új kiszolgálószintű IP-tűzfalszabály az eszköztáron. IP-kiszolgálószintű tűzfalszabály egyetlen IP-címet vagy egy IP-címtartományt az 1433-as port is megnyithatja.
+4. Válassza az **ügyfél IP-** címének hozzáadása lehetőséget az eszköztáron, és adja hozzá az aktuális IP-címet egy új kiszolgálói szintű IP-tűzfalszabály eléréséhez. A kiszolgálói szintű IP-tűzfalszabály egyetlen IP-cím vagy egy IP-címtartomány 1433-as portját nyithatja meg.
 
    > [!IMPORTANT]
-   > Alapértelmezés szerint az összes Azure-szolgáltatás számára engedélyezett a hozzáférés az SQL Database tűzfalán keresztül. Válasszon **OFF** ezen az oldalon letiltása az Azure-szolgáltatásokhoz.
+   > Alapértelmezés szerint az összes Azure-szolgáltatás számára engedélyezett a hozzáférés az SQL Database tűzfalán keresztül. Válassza **ki** ezen a lapon az összes Azure-szolgáltatás letiltásához.
    >
 
-5. Kattintson a **Mentés** gombra. Egy IP-kiszolgálószintű tűzfalszabályt az aktuális IP-címhez, az SQL Database-kiszolgálóhoz az 1433-as port megnyitása jön létre.
+5. Kattintson a **Mentés** gombra. A rendszer létrehoz egy kiszolgálói szintű IP-tűzfalszabály-szabályt az aktuális IP-címhez, amely az 1433-es portot nyitja meg a SQL Database kiszolgálón.
 
-6. Zárja be a **tűzfalbeállítások** lapot.
+6. A **tűzfalbeállítások** oldalának lezárása.
 
-SQL Server Management Studio vagy más választott eszköz használatával, mostantól csatlakozhat az SQL Database-kiszolgáló és az adatbázisokhoz az IP-címet a korábban létrehozott kiszolgálói rendszergazdai fiók használatával.
+Ha SQL Server Management Studio vagy egy másik eszközt használ, mostantól csatlakozhat a SQL Database-kiszolgálóhoz és annak adatbázisaihoz a korábban létrehozott kiszolgálói rendszergazdai fiók használatával.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Mentse ezeket az erőforrásokat, ha a [Következő lépésekre](#next-steps) szeretne lépni, és meg szeretné tudni, hogyan milyen módokon csatlakozhat az adatbázishoz és végezhet róla lekérdezéseket. Ha azonban törölni szeretné az ebben a rövid útmutatóban létrehozott erőforrásokat, használja az alábbi lépéseket.
+Mentse ezeket az erőforrásokat, ha a [Következő lépésekre](#next-steps) szeretne lépni, és meg szeretné tudni, hogyan milyen módokon csatlakozhat az adatbázishoz és végezhet róla lekérdezéseket. Ha azonban törölni szeretné az ebben a rövid útmutatóban létrehozott erőforrásokat, kövesse az alábbi lépéseket.
 
-1. A bal oldali menüben az Azure Portalon, válassza ki a **erőforráscsoportok** majd **myResourceGroup**.
-2. Az erőforráscsoport lapján, válassza ki a **törlése**, típus **myResourceGroup** a szövegmezőbe, és válassza ki a **törlése**.
+1. A Azure Portal bal oldali menüjében válassza az **erőforráscsoportok** lehetőséget, majd válassza a **myResourceGroup**lehetőséget.
+2. Az erőforráscsoport lapon válassza a **Törlés**lehetőséget, írja be a **myResourceGroup** szöveget a szövegmezőbe, majd válassza a **Törlés**lehetőséget.
 
 ## <a name="next-steps"></a>További lépések
 
@@ -77,5 +76,5 @@ Mentse ezeket az erőforrásokat, ha a [Következő lépésekre](#next-steps) sz
   - [Kapcsolódás és lekérdezés az SQL Server Management Studióval](sql-database-connect-query-ssms.md)
   - [Kapcsolódás és lekérdezés az Azure Data Studióval](/sql/azure-data-studio/quickstart-sql-database?toc=/azure/sql-database/toc.json)
 - Az első adatbázis megtervezésével, a táblák létrehozásával és az adatok beszúrásával kapcsolatos információkért tekintse meg az alábbi oktatóanyagok egyikét:
-  - [Az első önálló adatbázis az SSMS használatával Azure SQL Database megtervezése](sql-database-design-first-database.md)
-  - [Az Azure SQL Database egy adatbázis tervezése és csatlakozás az C# és az ADO.NET](sql-database-design-first-database-csharp.md)
+  - [Az első önálló adatbázis megtervezése Azure SQL Database a SSMS használatával](sql-database-design-first-database.md)
+  - [Egyetlen adatbázis tervezése Azure SQL Databaseban és a és a C# ADO.net összekötése](sql-database-design-first-database-csharp.md)

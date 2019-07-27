@@ -1,6 +1,6 @@
 ---
-title: DatetimeV2 előre összeállított entitások
-titleSuffix: Azure
+title: DatetimeV2-előkészített entitások – LUIS
+titleSuffix: Azure Cognitive Services
 description: Ez a cikk datetimeV2 rendelkezik előre összeállított entitások információ a Language Understanding (LUIS).
 services: cognitive-services
 author: diberry
@@ -11,19 +11,19 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 05/07/2019
 ms.author: diberry
-ms.openlocfilehash: e7577dcf4859b1192121fe0406d0efb63a9f5990
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1a19ab6e02249bad689f1a05c5761150b7a817df
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65148638"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68560274"
 ---
-# <a name="datetimev2-prebuilt-entity-for-a-luis-app"></a>DatetimeV2 előre összeállított entitások a LUIS-alkalmazások
+# <a name="datetimev2-prebuilt-entity-for-a-luis-app"></a>DatetimeV2 előre összeépített entitása egy LUIS-alkalmazáshoz
 
 A **datetimeV2** előre összeállított entitások kibontja a dátum és idő értékét. Ezek az értékek ügyfélprogramok használhat szabványos formában oldható fel. Amikor az utterance (kifejezés) dátum és idő, amely még nem fejeződött be, a LUIS tartalmaz _múltbeli és a jövőbeli értékek_ a végpont-válaszban. Az entitás már be van tanítva, mert nem kell való az alkalmazás leképezések datetimeV2 tartalmazó példa beszédmódok hozzáadása. 
 
 ## <a name="types-of-datetimev2"></a>DatetimeV2 típusai
-DatetimeV2 felügyelje a [felismerő szöveges](https://github.com/Microsoft/Recognizers-Text/blob/master/Patterns/English/English-DateTime.yaml) GitHub-adattár
+A DatetimeV2 a felismerők [– text GitHub-](https://github.com/Microsoft/Recognizers-Text/blob/master/Patterns/English/English-DateTime.yaml) adattárból kezelhető
 
 ## <a name="example-json"></a>Példa JSON-ban 
 Az alábbi példa JSON-válasz egy `datetimeV2` altípusa entitás `datetime`. Más típusú datetimeV2 entitások példákért lásd [datetimeV2 az altípus](#subtypes-of-datetimev2)</a>.
@@ -82,7 +82,7 @@ Egyes elemeinek a `values` tömb előfordulhat, hogy a következő mezőket:
 |Tulajdonság neve|Tulajdonságleírás|
 |--|--|
 |Timex|idő, dátum vagy dátumtartomány TIMEX formátuma a következő kifejezett a [ISO 8601 szabványnak](https://en.wikipedia.org/wiki/ISO_8601) és TimeML jazyce jegyzet TIMEX3 attribútumait. A jegyzet leírt a [TIMEX irányelvek](http://www.timeml.org/tempeval2/tempeval2-trial/guidelines/timex3guidelines-072009.pdf).|
-|type|Az altípus, amely lehet a következő lehetőségek közül: `datetime`, `date`, `time`, `daterange`, `timerange`, `datetimerange`, `duration`, `set`.|
+|type|Az `datetime`altípus, amely a következő elemek egyike lehet: `date` `time`, `daterange`,, `timerange`, `datetimerange`,, `duration`, `set`.|
 |value|**Nem kötelező.** Egy óó (idő) yyyy:MM:dd óó (datetime) formátumban yyyy:MM:dd (dátum), dátum és idő-objektumában. Ha `type` van `duration`, hány másodpercig (időtartam) értéke <br/> Csak akkor használható, ha `type` van `datetime` vagy `date`, `time`, vagy a "időtartama.|
 
 ## <a name="valid-date-values"></a>Érvényes dátumértéket
@@ -91,7 +91,7 @@ A **datetimeV2** dátumok között a következő tartományokra támogatja:
 
 | Min | Max |
 |----------|-------------|
-| 1900\. január 1-től.   | 2099\. December 31-én. |
+| 1900. január 1-től.   | 2099. December 31-én. |
 
 ## <a name="ambiguous-dates"></a>Nem egyértelmű dátumok
 
@@ -206,15 +206,15 @@ Az alábbi példa bemutatja, hogyan használja a LUIS **datetimeV2** feloldani a
   ]
 ```
 
-## <a name="preview-api-version-3x"></a>Az előzetes API verzió 3.x
+## <a name="preview-api-version-3x"></a>Előzetes verziójú API 3. x
 
-Az API v3-as DatetimeV2 JSON-válasz változott. 
+DatetimeV2 JSON-válasz módosult az API v3-ben. 
 
-A API V2 módosításai:
-* `datetimeV2.timex.type` tulajdonság már nem ad vissza, mert ezt adja vissza a szülőszinten `datetimev2.type`. 
-* A `datetimeV2.timex` tevékenységének neve megváltozott hogy `datetimeV2.value`.
+Változások az API v2-ből:
+* `datetimeV2.timex.type`a tulajdonságot a rendszer már nem adja vissza, `datetimev2.type`mert a szülő szinten adja vissza. 
+* A `datetimeV2.timex` tulajdonság át `datetimeV2.value`lett nevezve a következőre:.
 
-Az utterance (kifejezés) a `8am on may 2nd 2017`, DatetimeV2 v3-as verziója:
+A Kimondás `8am on may 2nd 2017`érdekében a DatetimeV2 v3 verziója a következő:
 
 ```JSON
 {
@@ -244,7 +244,7 @@ Az utterance (kifejezés) a `8am on may 2nd 2017`, DatetimeV2 v3-as verziója:
 }
 ```
 
-A következő JSON-ja az a `verbose` paraméter beállítása `false`:
+A következő JSON `verbose` a paraméter `false`értéke:
 
 ```json
 {

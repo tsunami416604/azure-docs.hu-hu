@@ -1,7 +1,7 @@
 ---
-title: Tekintse át a felhasználói kimondott szöveg
-titleSuffix: Language Understanding - Azure Cognitive Services
-description: Aktív tanulás végpont lekérdezések rögzíti, és kiválasztja, hogy nem tudja, hogy a felhasználó endpoint kimondott szöveg. Tekintse át ezeket utterances válassza ki a leképezést, és jelölje be az entitások esetében ezek olvasási vett kimondott szöveg. Fogadja el a példa utterances be ezeket a módosításokat, majd betanítás, közzététel. A LUIS majd azonosítja a kimondott szöveg pontosabb geokódolást.
+title: Felhasználói hosszúságú kimondott szöveg áttekintése – LUIS
+titleSuffix: Azure Cognitive Services
+description: Az aktív tanulás rögzíti a végponti lekérdezéseket, és kiválasztja a felhasználó végpontjának hosszúságú kimondott szöveg, hogy az nem biztos benne. Ezeket a hosszúságú kimondott szöveg áttekintve kiválaszthatja a szándékot, és megjelölheti az entitásokat ezen olvasási-globális hosszúságú kimondott szöveg. Fogadja el ezeket a módosításokat a hosszúságú kimondott szöveg, majd végezze el a betanítást és a közzétételt. A LUIS ezután pontosabban azonosítja a hosszúságú kimondott szöveg.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -11,25 +11,25 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 03/25/2019
 ms.author: diberry
-ms.openlocfilehash: 8fac360682ef11c438cdec333fac21d6f8cfc117
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: c2f49d4bf573cc2dc2e1a3b8fc13413a738df8ba
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60195126"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68560445"
 ---
-# <a name="how-to-review-endpoint-utterances-in-luis-portal-for-active-learning"></a>A LUIS-portál aktív tanulás végpont utterances felülvizsgálata
+# <a name="how-to-review-endpoint-utterances-in-luis-portal-for-active-learning"></a>Az Endpoint hosszúságú kimondott szöveg áttekintése a LUIS portálon az aktív tanuláshoz
 
-[Aktív tanulás](luis-concept-review-endpoint-utterances.md) végpont lekérdezések rögzíti, és kiválasztja, hogy nem tudja, hogy a felhasználó endpoint kimondott szöveg. Tekintse át ezeket utterances válassza ki a leképezést, és jelölje be az entitások esetében ezek olvasási vett kimondott szöveg. Fogadja el a példa utterances be ezeket a módosításokat, majd betanítás, közzététel. A LUIS majd azonosítja a kimondott szöveg pontosabb geokódolást.
+Az [aktív tanulás](luis-concept-review-endpoint-utterances.md) rögzíti a végponti lekérdezéseket, és kiválasztja a felhasználó végpontjának hosszúságú kimondott szöveg, hogy az nem biztos benne. Ezeket a hosszúságú kimondott szöveg áttekintve kiválaszthatja a szándékot, és megjelölheti az entitásokat ezen olvasási-globális hosszúságú kimondott szöveg. Fogadja el ezeket a módosításokat a hosszúságú kimondott szöveg, majd végezze el a betanítást és a közzétételt. A LUIS ezután pontosabban azonosítja a hosszúságú kimondott szöveg.
 
 
 ## <a name="enable-active-learning"></a>Aktív tanulás engedélyezése
 
-Ahhoz, hogy az aktív tanulás, a felhasználói lekérdezések naplózását. Mindez azzal a [végpont lekérdezés](luis-get-started-create-app.md#query-the-endpoint-with-a-different-utterance) az a `log=true` lekérdezési karakterlánc paraméter és érték.
+Az aktív tanulás engedélyezéséhez jelentkezzen be a felhasználói lekérdezésekre. Ezt úgy érheti el, ha a [végpont-lekérdezést](luis-get-started-create-app.md#query-the-endpoint-with-a-different-utterance) a `log=true` querystring paraméterrel és értékkel állítja be.
 
 ## <a name="disable-active-learning"></a>Aktív tanulás letiltása
 
-Aktív tanulás letiltásához ne naplózza a felhasználói lekérdezések. Mindez azzal a [végpont lekérdezés](luis-get-started-create-app.md#query-the-endpoint-with-a-different-utterance) az a `log=false` lekérdezési karakterlánc paraméter és érték.
+Az aktív tanulás letiltásához ne naplózza a felhasználói lekérdezéseket. Ezt úgy érheti el, ha a [végpont-lekérdezést](luis-get-started-create-app.md#query-the-endpoint-with-a-different-utterance) a `log=false` querystring paraméterrel és értékkel állítja be.
 
 ## <a name="filter-utterances"></a>Szűrő kimondott szöveg
 

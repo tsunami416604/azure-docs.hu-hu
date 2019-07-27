@@ -1,5 +1,5 @@
 ---
-title: 'SSMS: Csatlakozás és adatlekérdezés egy Azure SQL database-ben |} A Microsoft Docs'
+title: 'SSMS: Egy Azure SQL Database-adatbázisban lévő adatkapcsolat és-lekérdezés | Microsoft Docs'
 description: Ebből a cikkből megtudhatja, hogyan csatlakozhat az SQL Database-hez az Azure-ban az SQL Server Management Studio (SSMS) használatával. Ezután futtasson Transact-SQL (T-SQL) utasításokat az adatok lekérdezéséhez és szerkesztéséhez.
 keywords: csatlakozás sql database-hez,sql server management studio
 services: sql-database
@@ -11,56 +11,55 @@ ms.topic: quickstart
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
-manager: craigg
 ms.date: 03/25/2019
-ms.openlocfilehash: b060c971218561f285dbd2292529e01a0069d357
-ms.sourcegitcommit: 72f1d1210980d2f75e490f879521bc73d76a17e1
+ms.openlocfilehash: 0a08ee9d38065b0dff13f68a7b5473aa93787cf5
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/14/2019
-ms.locfileid: "67147741"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68569181"
 ---
-# <a name="quickstart-use-sql-server-management-studio-to-connect-and-query-an-azure-sql-database"></a>Gyors útmutató: SQL Server Management Studio használatával csatlakozhat, és az Azure SQL Database-adatbázis lekérdezéséhez
+# <a name="quickstart-use-sql-server-management-studio-to-connect-and-query-an-azure-sql-database"></a>Gyors útmutató: SQL Server Management Studio használata Azure SQL Database-adatbázishoz való kapcsolódáshoz és lekérdezéshez
 
-Ez a rövid útmutatóban használni kívánt [SQL Server Management Studio] [ ssms-install-latest-84g] (SSMS) egy Azure SQL Database-adatbázishoz csatlakozhat. Ezután futtassa a Transact-SQL-utasítások használatával lekérdezni, beszúrni, frissítése és adatok törlése. SSMS segítségével bármilyen SQL infrastruktúra kezelésére az SQL Servertől az SQL Database a Microsoft Windows.  
+Ebben a rövid útmutatóban [SQL Server Management Studio][ssms-install-latest-84g] (SSMS) használatával csatlakozhat egy Azure SQL Database-adatbázishoz. Ezután a Transact-SQL-utasításokkal adatokat kell lekérdezni, beszúrni, frissíteni és törölni. A SSMS segítségével bármilyen SQL-infrastruktúrát kezelhet, SQL Server a Microsoft Windows SQL Databasehoz.  
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Azure SQL-adatbázis. Az alábbi rövid útmutatókban hozhat létre, és válassza az Azure SQL Database egy adatbázis is használja:
+Azure SQL-adatbázis. Az alábbi rövid útmutatók segítségével hozhat létre és konfigurálhat egy adatbázist Azure SQL Databaseban:
 
   || Önálló adatbázis | Felügyelt példány |
   |:--- |:--- |:---|
   | Hozzon létre| [Portál](sql-database-single-database-get-started.md) | [Portál](sql-database-managed-instance-get-started.md) |
   || [Parancssori felület](scripts/sql-database-create-and-configure-database-cli.md) | [Parancssori felület](https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44) |
   || [PowerShell](scripts/sql-database-create-and-configure-database-powershell.md) | [PowerShell](scripts/sql-database-create-configure-managed-instance-powershell.md) |
-  | Konfigurálás | [kiszolgálószintű IP-tűzfalszabály](sql-database-server-level-firewall-rule.md)| [Kapcsolat egy virtuális gépről](sql-database-managed-instance-configure-vm.md)|
-  |||[Helyszíni kapcsolat](sql-database-managed-instance-configure-p2s.md)
-  |Adatok betöltése|Az Adventure Works betöltött száma a rövid útmutató|[Állítsa vissza a Wide World Importers](sql-database-managed-instance-get-started-restore.md)
-  |||Állítsa vissza vagy importálása az Adventure Works [BACPAC](sql-database-import.md) fájlt [GitHub](https://github.com/Microsoft/sql-server-samples/tree/master/samples/databases/adventure-works)|
+  | Konfigurálás | [Kiszolgálói szintű IP-tűzfalszabály](sql-database-server-level-firewall-rule.md)| [Kapcsolódás virtuális gépről](sql-database-managed-instance-configure-vm.md)|
+  |||[Kapcsolódás a webhelyről](sql-database-managed-instance-configure-p2s.md)
+  |Adatok betöltése|Adventure Works betöltve|[Széles körű globális importőrök visszaállítása](sql-database-managed-instance-get-started-restore.md)
+  |||Adventure Works visszaállítása vagy importálása a [BACPAC](sql-database-import.md) -fájlból a [githubról](https://github.com/Microsoft/sql-server-samples/tree/master/samples/databases/adventure-works)|
 
   > [!IMPORTANT]
-  > Ebben a cikkben a parancsfájlok az Adventure Works adatbázisa használatához készültek. Felügyelt példánnyal Ha az Adventure Works adatbázisa importálása-példány adatbázis, vagy módosítsa a parancsfájlokat ebben a cikkben a Wide World Importers-adatbázis használatára.
+  > A cikkben található parancsfájlok az Adventure Works-adatbázis használatára íródnak. Felügyelt példány esetén importálnia kell az Adventure Works-adatbázist egy példány-adatbázisba, vagy módosítania kell a jelen cikkben szereplő parancsfájlokat a Wide World Importálós adatbázis használatára.
 
 ## <a name="install-the-latest-ssms"></a>Az SSMS legújabb verziójának telepítése
 
 Mielőtt elkezdené, győződjön meg arról, hogy telepítette a legújabb [SSMS][ssms-install-latest-84g].
 
-## <a name="get-sql-server-connection-information"></a>Az SQL server-kapcsolati adatok lekéréséhez
+## <a name="get-sql-server-connection-information"></a>SQL Server-kapcsolatok adatainak beolvasása
 
-Az Azure SQL-adatbázishoz való csatlakozáshoz szükséges kapcsolati információkat kaphat. A következő eljárások szüksége a kiszolgáló teljes nevét vagy a gazdagépnév, az adatbázis neve és a bejelentkezési adatait.
+Az Azure SQL Database-adatbázishoz való kapcsolódáshoz szükséges kapcsolati adatok beolvasása. A közelgő eljárásokhoz szüksége lesz a teljes kiszolgálónévre vagy az állomásnévre, az adatbázis nevére és a bejelentkezési adatokra.
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 
-2. Keresse meg a **SQL-adatbázisok** vagy **SQL felügyelt példányai** lapot.
+2. Navigáljon az **SQL-adatbázisok** vagy az **SQL-felügyelt példányok** lapra.
 
-3. A a **áttekintése** lapon, tekintse át a teljes kiszolgálónevet melletti **kiszolgálónév** egy önálló adatbázis vagy a kiszolgáló teljes neve melletti **gazdagép** számára egy felügyelt a példány. Másolja ki a kiszolgáló nevét vagy az állomásnevet, rámutatnak, és válassza a **másolási** ikonra.
+3. Az **Áttekintés** lapon tekintse át a teljes kiszolgálónevet a **kiszolgáló neve** mellett egyetlen adatbázishoz vagy a felügyelt példányhoz tartozó **gazdagép** melletti teljes kiszolgálónévhez. A kiszolgálónév vagy az állomásnév másolásához vigye a kurzort a fölé, és válassza a **Másolás** ikont.
 
 ## <a name="connect-to-your-database"></a>Csatlakozás az adatbázishoz
 
 Az SMSS csatlakozzon az Azure SQL Database-kiszolgálóhoz.
 
 > [!IMPORTANT]
-> Egy Azure SQL Database server a 1433-as portot figyeli. A céges tűzfal mögül egy SQL Database-kiszolgálóhoz csatlakozni, a tűzfal nyissa meg ezt a portot kell rendelkeznie.
+> Az Azure SQL Database-kiszolgáló a 1433-es portot figyeli. Ha SQL Database-kiszolgálóhoz szeretne csatlakozni a vállalati tűzfal mögött, a tűzfalnak nyitva kell lennie a porton.
 >
 
 1. Nyissa meg az SSMS-t. A **Connect to Server** (Kapcsolódás a kiszolgálóhoz) párbeszédpanel jelenik meg.
@@ -90,9 +89,9 @@ Az SMSS csatlakozzon az Azure SQL Database-kiszolgálóhoz.
 
 ## <a name="query-data"></a>Adatok lekérdezése
 
-Futtassa a következő parancsot [kiválasztása](https://msdn.microsoft.com/library/ms189499.aspx) Transact-SQL kód használatával lekérdezheti kategóriánként az első 20 terméket.
+Futtassa ezt a [Select](https://msdn.microsoft.com/library/ms189499.aspx) Transact-SQL-kódot az első 20 termék kategóriánkénti lekérdezéséhez.
 
-1. Az Object Explorerben kattintson a jobb gombbal **mySampleDatabase** válassza **új lekérdezés**. Megnyílik egy új, az adatbázishoz kapcsolódó lekérdezési ablakot.
+1. Az Object Explorerben kattintson a jobb gombbal **mySampleDatabase** válassza **új lekérdezés**. Megnyílik az adatbázishoz csatlakoztatott új lekérdezési ablak.
 
 2. A lekérdezési ablakban illessze be az SQL-lekérdezést.
 
@@ -105,11 +104,11 @@ Futtassa a következő parancsot [kiválasztása](https://msdn.microsoft.com/lib
 
 3. Válassza az eszköztár **Execute** be adatokat a `Product` és `ProductCategory` táblákat.
 
-    ![tábla Product és ProductCategory adatok lekérése](./media/sql-database-connect-query-ssms/query2.png)
+    ![lekérdezés a tábla termék-és ProductCategory adatainak lekéréséhez](./media/sql-database-connect-query-ssms/query2.png)
 
 ## <a name="insert-data"></a>Adat beszúrása
 
-Futtassa a következő parancsot [BESZÚRÁSA](https://msdn.microsoft.com/library/ms174335.aspx) hozhat létre egy új terméket a Transact-SQL-kódot a `SalesLT.Product` tábla.
+Futtassa ezt a [Insert](https://msdn.microsoft.com/library/ms174335.aspx) Transact-SQL-kódot egy új termék létrehozásához `SalesLT.Product` a táblában.
 
 1. Ehhez cserélje le az előző lekérdezést.
 
@@ -132,7 +131,7 @@ Futtassa a következő parancsot [BESZÚRÁSA](https://msdn.microsoft.com/librar
            ,GETDATE() );
    ```
 
-2. Válassza ki **Execute** az új sor beszúrásához a `Product` tábla. A **üzenetek** ablaktáblán megjelennek azok **(1 sort érint)** .
+2. Válassza a **végrehajtás** elemet egy új sor `Product` táblázatba való beszúrásához. A **üzenetek** ablaktáblán megjelennek azok **(1 sort érint)** .
 
 ## <a name="view-the-result"></a>Az eredmény megtekintéséhez
 
@@ -143,13 +142,13 @@ Futtassa a következő parancsot [BESZÚRÁSA](https://msdn.microsoft.com/librar
    WHERE Name='myNewProduct'
    ```
 
-2. Válassza a **Végrehajtás** lehetőséget. Az alábbi eredmény jelenik meg.
+2. Válassza a **Végrehajtás** lehetőséget. A következő eredmény jelenik meg.
 
-   ![a termék table lekérdezés eredménye](./media/sql-database-connect-query-ssms/result.png)
+   ![a Product Table lekérdezés eredménye](./media/sql-database-connect-query-ssms/result.png)
 
 ## <a name="update-data"></a>Adatok frissítése
 
-Futtassa a következő parancsot [frissítés](https://msdn.microsoft.com/library/ms177523.aspx) módosíthatja az új termék Transact-SQL-kódot.
+Futtassa ezt a [frissítési](https://msdn.microsoft.com/library/ms177523.aspx) Transact-SQL-kódot az új termék módosításához.
 
 1. Ehhez cserélje le az előző lekérdezést.
 
@@ -159,11 +158,11 @@ Futtassa a következő parancsot [frissítés](https://msdn.microsoft.com/librar
    WHERE Name = 'myNewProduct';
    ```
 
-2. Válassza ki **Execute** egy megadott sorának frissítéséhez a `Product` tábla. A **üzenetek** ablaktáblán megjelennek azok **(1 sort érint)** .
+2. Válassza a **végrehajtás** lehetőséget a `Product` tábla megadott sorának frissítéséhez. A **üzenetek** ablaktáblán megjelennek azok **(1 sort érint)** .
 
 ## <a name="delete-data"></a>Adat törlése
 
-Futtassa a következő parancsot [törlése](https://msdn.microsoft.com/library/ms189835.aspx) Transact-SQL-kódot az új termék eltávolítása.
+Futtassa ezt a [delete](https://msdn.microsoft.com/library/ms189835.aspx) Transact-SQL-kódot az új termék eltávolításához.
 
 1. Ehhez cserélje le az előző lekérdezést.
 
@@ -172,7 +171,7 @@ Futtassa a következő parancsot [törlése](https://msdn.microsoft.com/library/
    WHERE Name = 'myNewProduct';
    ```
 
-2. Válassza ki **Execute** egy megadott sorának törléséhez a `Product` tábla. A **üzenetek** ablaktáblán megjelennek azok **(1 sort érint)** .
+2. Válassza a **végrehajtás** lehetőséget a `Product` tábla megadott sorának törléséhez. A **üzenetek** ablaktáblán megjelennek azok **(1 sort érint)** .
 
 ## <a name="next-steps"></a>További lépések
 

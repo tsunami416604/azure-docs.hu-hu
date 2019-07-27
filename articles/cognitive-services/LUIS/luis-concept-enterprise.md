@@ -1,6 +1,6 @@
 ---
-title: A vállalati kapcsolatos fogalmak
-titleSuffix: Language Understanding - Azure Cognitive Services
+title: Vállalati fogalmak – LUIS
+titleSuffix: Azure Cognitive Services
 description: Nagy LUIS vagy a több olyan alkalmazásokat, beleértve a LUIS és a QnA Maker együtt tervezési fogalmak ismertetése.
 services: cognitive-services
 author: diberry
@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 01/09/2019
 ms.author: diberry
-ms.openlocfilehash: e5d7e2bfe1ee4e3ca248f40701aa65e757fc4d74
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0d51778473dc033bce3c58b1572f1e514a8b6327
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60812851"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68560775"
 ---
 # <a name="enterprise-strategies-for-a-luis-app"></a>Vállalati stratégiák a LUIS-alkalmazások
 Tekintse át ezeket a vállalati alkalmazások tervezési stratégiák.
@@ -42,13 +42,13 @@ Ha az alkalmazás számos különböző felhasználói utterances előrejelzése
 Egy rendszeres ütemezés [végpont kimondott szöveg felülvizsgálata](luis-how-to-review-endpoint-utterances.md) aktív tanulás, például kéthetente, majd újbóli betanítás után tegye közzé újra. 
 
 ## <a name="when-you-need-to-have-more-than-500-intents"></a>Ha szüksége van a több mint 500 szándékot
-Például tegyük fel, amely több mint 500 szándékot rendelkezik office asszisztens fejleszt. 200 leképezések értekezleteit vonatkoznak, ha emlékeztetők készül a 200-as, 200-as készül a munkatársai, kapcsolatos információk lekérése és e-mailt küld a rendszer 200-as, csoport szándékot, hogy minden csoport egyetlen alkalmazást, majd hozzon létre egy legfelső szintű alkalmazást, amely tartalmazza minden egyes szándékot. Használja a [csatolva az eszköz és architektúra](#dispatch-tool-and-model) hozhat létre a legfelső szintű alkalmazást. Módosítsa a robot a lépcsőzetes hívást használja, mint a show a [dispatch oktatóanyag][dispatcher-application-tutorial]. 
+Például tegyük fel, amely több mint 500 szándékot rendelkezik office asszisztens fejleszt. 200 leképezések értekezleteit vonatkoznak, ha emlékeztetők készül a 200-as, 200-as készül a munkatársai, kapcsolatos információk lekérése és e-mailt küld a rendszer 200-as, csoport szándékot, hogy minden csoport egyetlen alkalmazást, majd hozzon létre egy legfelső szintű alkalmazást, amely tartalmazza minden egyes szándékot. Használja a [csatolva az eszköz és architektúra](#dispatch-tool-and-model) hozhat létre a legfelső szintű alkalmazást. Ezután módosítsa a robotot úgy, hogy a lépcsőzetes hívást a küldési [oktatóanyagban][dispatcher-application-tutorial]látható módon használja. 
 
 ## <a name="when-you-need-to-combine-several-luis-and-qna-maker-apps"></a>Mikor kell egyesíteni több LUIS és a QnA maker alkalmazások
-Ha több LUIS és a QnA maker alkalmazásokkal rendelkezik, kell válaszolnia-robot esetén használja a [küldő eszköz](#dispatch-tool-and-model) hozhat létre a legfelső szintű alkalmazást. Módosítsa a robot a lépcsőzetes hívást használja, mint a show a [dispatch oktatóanyag][dispatcher-application-tutorial]. 
+Ha több LUIS és a QnA maker alkalmazásokkal rendelkezik, kell válaszolnia-robot esetén használja a [küldő eszköz](#dispatch-tool-and-model) hozhat létre a legfelső szintű alkalmazást. Ezután módosítsa a robotot úgy, hogy a lépcsőzetes hívást a küldési [oktatóanyagban][dispatcher-application-tutorial]látható módon használja. 
 
 ## <a name="dispatch-tool-and-model"></a>Küldő eszköz és a modell
-Használja a [Dispatch] [ dispatch-tool] parancssori eszköz, található [BotBuilder-eszközök](https://github.com/Microsoft/botbuilder-tools) úgy, hogy több LUIS és/vagy a QnA Maker alkalmazásokat a LUIS alkalmazás szülő összevonásával. Ez a megközelítés lehetővé teszi a szülőtartományban, többek között a tulajdonosok és a különböző alárendelt területek önálló alkalmazásokban. 
+A [botbuilder témakörben-eszközökben](https://github.com/Microsoft/botbuilder-tools) található [küldő][dispatch-tool] parancssori eszköz használatával több Luis-és/vagy QnA Maker-alkalmazást egyesítheti egy szülő Luis-alkalmazásba. Ez a megközelítés lehetővé teszi a szülőtartományban, többek között a tulajdonosok és a különböző alárendelt területek önálló alkalmazásokban. 
 
 ![Küldési architektúra fogalmi képe](./media/luis-concept-enterprise/dispatch-architecture.png)
 
@@ -56,7 +56,7 @@ A szülőtartomány LUIS nevű verzióját megadó `Dispatch` az alkalmazáslist
 
 A csevegőrobot kap az utterance (kifejezés), majd elküldi a szülő előrejelzéshez LUIS-alkalmazás. A szülő alkalmazásból felső előre jelzett célja határozza meg, melyik gyermek LUIS-alkalmazás neve mellett. A csevegőrobot küld az alárendelt alkalmazás pontosabb előrejelzéshez az utterance (kifejezés).
 
-Megismerheti, hogyan szeretné tenni ezt a hierarchiát a hívások, a Bot Builder v4 [dispatcher-alkalmazás-tutorial][dispatcher-application-tutorial].  
+Ismerje meg, hogy a rendszer hogyan hívja meg ezt a hierarchiát a Bot Builder v4 [diszpécser-Application-oktatóanyagból][dispatcher-application-tutorial].  
 
 ### <a name="intent-limits-in-dispatch-model"></a>A feladó modellben szándék korlátok
 A küldő alkalmazás 500 dispatch forrásokból, egyenértékű 500 szándékot, mint a maximális rendelkezik. 

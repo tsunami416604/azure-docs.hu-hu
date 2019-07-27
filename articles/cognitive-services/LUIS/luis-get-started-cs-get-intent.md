@@ -1,6 +1,6 @@
 ---
-title: Első szándékkal,C#
-titleSuffix: Language Understanding - Azure Cognitive Services
+title: Cél – C# Luis
+titleSuffix: Azure Cognitive Services
 description: A jelen C# a rövid útmutatóban elérhető nyilvános LUIS alkalmazás segítségével meghatározhatja, a felhasználó szándékának természetes nyelvi szövegből.
 services: cognitive-services
 author: diberry
@@ -11,14 +11,14 @@ ms.subservice: language-understanding
 ms.topic: quickstart
 ms.date: 07/16/2019
 ms.author: diberry
-ms.openlocfilehash: 73dba63c464ee31dd24fe0fdf97e948a5b6004fc
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: 92f74174d35a58e54ae0078f146f86dbfc7aa709
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68276274"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68563845"
 ---
-# <a name="quickstart-get-intent-using-c"></a>Gyors útmutató: Leképezés használata elsőC#
+# <a name="quickstart-get-intent-using-c"></a>Gyors útmutató: Szándék beszerzése a használatávalC#
 
 [!INCLUDE [Quickstart introduction for endpoint](../../../includes/cognitive-services-luis-qs-endpoint-intro-para.md)]
 
@@ -47,11 +47,11 @@ Ha C# nyelven lekérdezi a GET [API](https://westus.dev.cognitive.microsoft.com/
 
 1. Hozzon létre egy új konzolalkalmazást a Visual Studióban. 
 
-    ![Hozzon létre egy új konzolalkalmazást a Visual Studióban](media/luis-get-started-cs-get-intent/visual-studio-console-app.png)
+    ![Új Console-alkalmazás létrehozása a Visual Studióban](media/luis-get-started-cs-get-intent/visual-studio-console-app.png)
 
 2. A Visual Studio projekt Megoldáskezelő ablakában válassza az **Add reference** (Referencia hozzáadása) elemet, majd válassza a **System.Web** lehetőséget az Assemblies (Szerelvények) lapon.
 
-    ![Válassza a Hozzáadás hivatkozás, majd jelölje ki a System.Web a szerelvények lapról](media/luis-get-started-cs-get-intent/add-system-dot-web-to-project.png)
+    ![Válassza a hivatkozás hozzáadása lehetőséget, majd válassza a System. Web elemet a szerelvények lapon.](media/luis-get-started-cs-get-intent/add-system-dot-web-to-project.png)
 
 3. Írja felül a Program.cs fájlt a következő kóddal:
     

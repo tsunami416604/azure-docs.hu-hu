@@ -1,5 +1,5 @@
 ---
-title: Reguláris kifejezést entitás
+title: Reguláris kifejezésű entitás – LUIS
 titleSuffix: Azure Cognitive Services
 description: Konzisztensen formázott adatok kinyerése kimondott szövegből a Reguláris kifejezés entitással.
 services: cognitive-services
@@ -11,15 +11,15 @@ ms.subservice: language-understanding
 ms.topic: tutorial
 ms.date: 06/03/2019
 ms.author: diberry
-ms.openlocfilehash: 5e79de8dc8b4e81f427925b6e3d662bd4931804d
-ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
+ms.openlocfilehash: 958d880829e9524389a25f029415786231644c04
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66497023"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68563598"
 ---
-# <a name="tutorial-get-well-formatted-data-from-the-utterance"></a>Oktatóanyag: Helyes formátumú adatokat kérhet le az utterance (kifejezés)
-Ebben az oktatóanyagban az utterance (kifejezés) használatával konzisztens módon formázott adatok kinyerését alkalmazás létrehozása a **reguláris kifejezés** entitás.
+# <a name="tutorial-get-well-formatted-data-from-the-utterance"></a>Oktatóanyag: Jól formázott adatok beolvasása a teljes területről
+Ebben az oktatóanyagban hozzon létre egy alkalmazást a konzisztens formátumú adatok kinyeréséhez a **reguláris kifejezés** entitás használatával.
 
 **Ebben az oktatóanyagban az alábbiakkal fog megismerkedni:**
 
@@ -34,17 +34,17 @@ Ebben az oktatóanyagban az utterance (kifejezés) használatával konzisztens m
 
 [!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
 
-## <a name="regular-expression-entities"></a>Reguláris kifejezés entitások
+## <a name="regular-expression-entities"></a>Reguláris kifejezések entitásai
 
-Ez az alkalmazás a reguláris kifejezésnek entitás használata is, emberi erőforrások (HR) az utterance (kifejezés) a helyes formátumú űrlap számokat. Bár a kimondott szöveg szándékát mindig gépi tanulás határozza meg, ez az entitástípus nem gép által tanult. 
+Ez az alkalmazás a reguláris kifejezés entitást használja a jól formázott emberi erőforrások (HR) formátumú számok kikapcsolására. Bár a kimondott szöveg szándékát mindig gépi tanulás határozza meg, ez az entitástípus nem gép által tanult. 
 
 **Példák kimondott szövegekre:**
 
 |Példák kimondott szövegekre|
 |--|
-|Hol található HRF-123456?|
-|Ki lett létrehozva HRF-123234?|
-|HRF-456098 francia nyelvű közzé lett téve?|
+|Hol található a HRF-123456?|
+|Ki szerzője HRF-123234?|
+|A HRF-456098 francia nyelven van közzétéve?|
 |HRF-456098|
 |HRF-456098 dátum?|
  
@@ -57,7 +57,7 @@ A reguláris kifejezés megfelelő választás az ilyen típusú adatok esetén,
 
 [!INCLUDE [Follow these steps to create a new LUIS app](../../../includes/cognitive-services-luis-create-new-app-steps.md)]
 
-## <a name="create-intent-for-finding-form"></a>Űrlap kereséséhez leképezésének létrehozása
+## <a name="create-intent-for-finding-form"></a>Szándék létrehozása az űrlap kereséséhez
 
 1. [!INCLUDE [Start in Build section](../../../includes/cognitive-services-luis-tutorial-build-section.md)]
 
@@ -75,18 +75,18 @@ A reguláris kifejezés megfelelő választás az ilyen típusú adatok esetén,
     |Hol van a hrf-345678?|
     |Mikor frissült a hrf-456098?|
     |Frissítette Kovács János múlt héten a hrf-234639 űrlapot?|
-    |Hány verziói hrf-345123 vannak-e?|
+    |Hány HRF-345123-verzió létezik?|
     |Kinek kell jóváhagynia a hrf-123456 űrlapot?|
     |Hány személynek kell jóváhagynia a hrf-345678 űrlapot?|
     |A hrf-234123 dátuma?|
     |A hrf-546234 szerzője?|
     |A hrf-456234 címe?|
 
-    [![Képernyőkép a leképezés oldala, amelyen kiemelve új kimondott szöveg](./media/luis-quickstart-intents-regex-entity/findform-intent.png)](./media/luis-quickstart-intents-regex-entity/findform-intent.png#lightbox)
+    [![Képernyőkép a cél oldalról az új hosszúságú kimondott szöveg kiemelve](./media/luis-quickstart-intents-regex-entity/findform-intent.png)](./media/luis-quickstart-intents-regex-entity/findform-intent.png#lightbox)
 
     [!INCLUDE [Do not use too few utterances](../../../includes/cognitive-services-luis-too-few-example-utterances.md)]  
 
-## <a name="use-the-regular-expression-entity-for-well-formatted-data"></a>A reguláris kifejezésnek entitás használja a megfelelően formázott adatok
+## <a name="use-the-regular-expression-entity-for-well-formatted-data"></a>A reguláris kifejezés entitás használata jól formázott adathoz
 A reguláriskifejezés-entitás, amelyet meg kell feleltetni az űrlapszámnak: `hrf-[0-9]{6}`. Ez a reguláriskifejezés-entitás megfelelteti egymásnak a `hrf-` karaktereket, de figyelmen kívül hagyja, hogy kis- vagy nagybetűvel szerepelnek-e, illetve a kulturális változatokat. Megfelelteti egymásnak a számjegyeket 0-tól 9-ig, pontosan 6 számjegyet.
 
 A HRF a következőt jelöli: `human resources form`.
@@ -107,25 +107,25 @@ A következő lépésekkel hozzon létre egy reguláriskifejezés-entitást, ame
 
     [![Képernyőkép a Label (Címke) kimondott szövegről létező entitás és regex mintával](./media/luis-quickstart-intents-regex-entity/labeled-utterances-for-entity.png)](./media/luis-quickstart-intents-regex-entity/labeled-utterances-for-entity.png#lightbox)
 
-    Mivel az entitás nem egy gép megtanult entitást, az entitás alkalmazza a kimondott szöveg és a LUIS-webhely megjelenik, amint létrejön.
+    Mivel az entitás nem egy géppel megtanult entitás, az entitás a hosszúságú kimondott szöveg lesz alkalmazva, és a LUIS webhelyen jelenik meg, amint létrejött.
 
-## <a name="add-example-utterances-to-the-none-intent"></a>A none szándék példa beszédmódok hozzáadása 
+## <a name="add-example-utterances-to-the-none-intent"></a>Példa hosszúságú kimondott szöveg hozzáadása a none szándékhoz 
 
 [!INCLUDE [Follow these steps to add the None intent to the app](../../../includes/cognitive-services-luis-create-the-none-intent.md)]
 
-## <a name="train-the-app-before-testing-or-publishing"></a>Az alkalmazás betanításához tesztelési vagy közzététele előtt
+## <a name="train-the-app-before-testing-or-publishing"></a>Az alkalmazás betanítása tesztelés vagy közzététel előtt
 
 [!INCLUDE [LUIS How to Train steps](../../../includes/cognitive-services-luis-tutorial-how-to-train.md)]
 
-## <a name="publish-the-app-to-query-from-the-endpoint"></a>Az alkalmazás közzététele a végpontról lekérdezés
+## <a name="publish-the-app-to-query-from-the-endpoint"></a>Az alkalmazás közzététele a végpontról történő lekérdezéshez
 
 [!INCLUDE [LUIS How to Publish steps](../../../includes/cognitive-services-luis-tutorial-how-to-publish.md)]
 
-## <a name="get-intent-and-entity-prediction-from-endpoint"></a>Leképezés és egyéb entitások előrejelzés beolvasása végpont
+## <a name="get-intent-and-entity-prediction-from-endpoint"></a>Cél-és entitás-előrejelzés beolvasása a végpontról
 
 1. [!INCLUDE [LUIS How to get endpoint first step](../../../includes/cognitive-services-luis-tutorial-how-to-get-endpoint.md)]
 
-2. Nyissa meg a végfelhasználók az URL-címét, és írja be a következő utterance (kifejezés):
+2. Nyissa meg a címet az URL-cím végére, és adja meg a következő értéket:
 
     `When were HRF-123456 and hrf-234567 published in the last year?`
 
@@ -174,10 +174,10 @@ A következő lépésekkel hozzon létre egy reguláriskifejezés-entitást, ame
 
 ## <a name="related-information"></a>Kapcsolódó információk
 
-* [Reguláris kifejezés](luis-concept-entity-types.md#regular-expression-entity) entitás fogalmak
-* [Hogyan betanítása](luis-how-to-train.md)
+* [Reguláris kifejezéssel](luis-concept-entity-types.md#regular-expression-entity) rendelkező entitások fogalmai
+* [Betanítás](luis-how-to-train.md)
 * [Közzétételi útmutató](luis-how-to-publish-app.md)
-* [A LUIS-portál tesztelése](luis-interactive-test.md)
+* [Tesztelés a LUIS portálon](luis-interactive-test.md)
 
 ## <a name="next-steps"></a>További lépések
 Ez az oktatóanyag létrehozott egy új szándékot, példaszándékokat adott hozzá, majd létrehozott egy reguláriskifejezés-entitást a helyesen formázott adatok kimondott szövegből történő kinyerésének céljából. Az alkalmazás betanítása és közzététele után egy végpontlekérdezés azonosította a szándékot, és visszaadta a kinyert adatokat.

@@ -10,10 +10,10 @@ author: wmengmsft
 ms.author: wmeng
 ms.reviewer: sngun
 ms.openlocfilehash: 0f0acc721fd8888953d80976234b431943985ebf
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/19/2019
+ms.lasthandoff: 07/26/2019
 ms.locfileid: "68356266"
 ---
 # <a name="get-started-with-azure-table-storage-and-the-azure-cosmos-db-table-api-using-python"></a>Bevezetés az Azure Table Storage és az Azure Cosmos DB Table API Pythonnal való használatával
@@ -56,7 +56,7 @@ A Storage-fiók létrehozása után a következő lépés az [Azure Cosmos DB Ta
 
 ## <a name="import-the-tableservice-and-entity-classes"></a>A TableService és az Entity osztály importálása
 
-Ha az Azure Table serviceban lévő entitásokkal szeretne dolgozni a Pythonban, használja a [TableService][py_TableService] and [Entity][py_Entity] osztályt. Adja hozzá ezt a kódot a Python-fájl elejéhez mindkét osztály importálásához:
+Az Azure Table service Pythonban található entitásokkal való együttműködéshez a [TableService][py_TableService] és az [Entity][py_Entity] osztályokat kell használnia. Adja hozzá ezt a kódot a Python-fájl elejéhez mindkét osztály importálásához:
 
 ```python
 from azure.cosmosdb.table.tableservice import TableService
@@ -89,7 +89,7 @@ table_service.create_table('tasktable')
 
 ## <a name="add-an-entity-to-a-table"></a>Entitás hozzáadása a táblához
 
-Entitás hozzáadásához először létre kell hoznia az entitást képviselő objektumot, majd át kell adni az objektumot az [TableService. insert_entity metódusnak][py_TableService]. The entity object can be a dictionary or an object of type [Entity][py_Entity], és meg kell határoznia az entitás tulajdonságainak nevét és értékeit. Minden entitásnak tartalmaznia kell a szükséges [PartitionKey és RowKey](#partitionkey-and-rowkey) tulajdonságot, az entitás számára meghatározott egyéb tulajdonságokon kívül.
+Entitás hozzáadásához először létre kell hoznia az entitást képviselő objektumot, majd át kell adni az objektumot az [TableService. insert_entity metódusnak][py_TableService]. Az Entity (entitás) objektum lehet egy szótár vagy egy [entitás][py_Entity]típusú objektum, amely meghatározza az entitás tulajdonságainak nevét és értékeit. Minden entitásnak tartalmaznia kell a szükséges [PartitionKey és RowKey](#partitionkey-and-rowkey) tulajdonságot, az entitás számára meghatározott egyéb tulajdonságokon kívül.
 
 Ez a példa egy entitást jelképező szótár objektumot hoz létre, majd átadja a [insert_entity][py_insert_entity] metódusnak, hogy hozzáadja a táblához:
 
@@ -99,7 +99,7 @@ task = {'PartitionKey': 'tasksSeattle', 'RowKey': '001',
 table_service.insert_entity('tasktable', task)
 ```
 
-Ez a példa egy [entitás][py_Entity] object, then passes it to the [insert_entity][py_insert_entity] -metódust hoz létre a táblához való hozzáadáshoz:
+Ez a példa egy [Entity][py_Entity] objektumot hoz létre, majd átadja a [insert_entity][py_insert_entity] metódusnak, hogy hozzáadja a táblához:
 
 ```python
 task = Entity()

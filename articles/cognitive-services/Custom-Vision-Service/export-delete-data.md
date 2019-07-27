@@ -1,7 +1,7 @@
 ---
-title: Exportálhatók és nem törli az adatokat – Custom Vision Service
-titlesuffix: Azure Cognitive Services
-description: Ismerje meg, hogyan exportálhatja, vagy a Custom Vision Service-adatok törlése.
+title: Exportálja vagy törölje az adatait – Custom Vision Service
+titleSuffix: Azure Cognitive Services
+description: Ismerje meg, hogyan exportálhatja vagy törölheti az adatait a Custom Vision Serviceban.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -10,28 +10,28 @@ ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 03/21/2019
 ms.author: pafarley
-ms.openlocfilehash: e662e61a9df45cf3d57d5698337a26b7b8fc55a3
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: b885f359d9416fbc5f778b094610260342a75f65
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60605475"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68564225"
 ---
-# <a name="export-or-delete-user-data-in-custom-vision"></a>Exportálhatók és nem törli a felhasználói adatokat a Custom Vision
+# <a name="export-or-delete-user-data-in-custom-vision"></a>Felhasználói adatexportálás vagy-törlés Custom Vision
 
-A szolgáltatás felhasználói adatokat gyűjti össze a Custom Vision, de az ügyfél rendelkezik teljes hozzáféréssel megtekintése, exportálását és törlését a használatával a Custom Vision [képzési API-k](https://go.microsoft.com/fwlink/?linkid=865446).
+Custom Vision gyűjti a felhasználói adatokat a szolgáltatás működtetéséhez, de az ügyfelek az Custom Vision betanítási [API](https://go.microsoft.com/fwlink/?linkid=865446)-kkal teljes mértékben szabályozzák az adatok megtekintését, exportálását és törlését.
 
 [!INCLUDE [GDPR-related guidance](../../../includes/gdpr-intro-sentence.md)]
 
-Megtudhatja, hogyan exportálhatja, és törli a felhasználói adatokat a Custom Vision, lásd az alábbi táblázatot.
+Az alábbi táblázatból megtudhatja, hogyan exportálhat és törölhet felhasználói információkat Custom Visionban.
 
-| Adatok | Az exportálási művelet | Törlési művelet |
+| Data | Exportálási művelet | Törlési művelet |
 | ---- | ---------------- | ---------------- |
-| Fiók adatai (előfizetési kulcsok) | [GetAccountInfo](https://go.microsoft.com/fwlink/?linkid=865446) | Törölje az Azure Portalon (az Azure-előfizetések). Vagy a "Saját fiók törlése" gomb segítségével CustomVision.ai beállítások oldalán (Microsoft-fiók előfizetés) | 
+| Fiókadatok (előfizetési kulcsok) | [GetAccountInfo](https://go.microsoft.com/fwlink/?linkid=865446) | Törlés a Azure Portal használatával (Azure-előfizetések). Vagy használja a "fiók törlése" gombot a CustomVision.ai-beállítások lapon (Microsoft-fiók előfizetések) | 
 | Iteráció részletei | [GetIteration](https://go.microsoft.com/fwlink/?linkid=865446) | [DeleteIteration](https://go.microsoft.com/fwlink/?linkid=865446) |
-| Iteráció teljesítmény részletei | [GetIterationPerformance](https://go.microsoft.com/fwlink/?linkid=865446) | [DeleteIteration](https://go.microsoft.com/fwlink/?linkid=865446) | 
-| Az ismétlések listája | [GetIterations](https://go.microsoft.com/fwlink/?linkid=865446) | [DeleteIteration](https://go.microsoft.com/fwlink/?linkid=865446) |
-| Projektek és a projekt részletei | [GetProject](https://go.microsoft.com/fwlink/?linkid=865446) és [GetProjects](https://go.microsoft.com/fwlink/?linkid=865446) | [DeleteProject](https://go.microsoft.com/fwlink/?linkid=865446) | 
-| Címkéket | [GetTag](https://go.microsoft.com/fwlink/?linkid=865446) és [GetTags](https://go.microsoft.com/fwlink/?linkid=865446) | [DeleteTag](https://go.microsoft.com/fwlink/?linkid=865446) | 
-| Képek | [GetTaggedImages](https://go.microsoft.com/fwlink/?linkid=865446) (URI-t biztosít a lemezkép letöltése) és [GetUntaggedImages](https://go.microsoft.com/fwlink/?linkid=865446) (URI-t biztosít a lemezkép letöltése) | [DeleteImages](https://go.microsoft.com/fwlink/?linkid=865446) | 
-| Exportált modellek | [GetExports](https://go.microsoft.com/fwlink/?linkid=865446) | Törölt fiók törlése során |
+| Iterációs teljesítmény részletei | [GetIterationPerformance](https://go.microsoft.com/fwlink/?linkid=865446) | [DeleteIteration](https://go.microsoft.com/fwlink/?linkid=865446) | 
+| Iterációk listája | [GetIterations](https://go.microsoft.com/fwlink/?linkid=865446) | [DeleteIteration](https://go.microsoft.com/fwlink/?linkid=865446) |
+| Projektek és projekt részletei | [GetProject](https://go.microsoft.com/fwlink/?linkid=865446) és [GetProjects](https://go.microsoft.com/fwlink/?linkid=865446) | [DeleteProject](https://go.microsoft.com/fwlink/?linkid=865446) | 
+| Képcímkék | [GetTag](https://go.microsoft.com/fwlink/?linkid=865446) és [GetTags](https://go.microsoft.com/fwlink/?linkid=865446) | [DeleteTag](https://go.microsoft.com/fwlink/?linkid=865446) | 
+| Képek | [GetTaggedImages](https://go.microsoft.com/fwlink/?linkid=865446) (megadja a képletöltés URI-ját) és a [GetUntaggedImages](https://go.microsoft.com/fwlink/?linkid=865446) (URI-t biztosít a rendszerképek letöltéséhez) | [DeleteImages](https://go.microsoft.com/fwlink/?linkid=865446) | 
+| Exportált modellek | [GetExports](https://go.microsoft.com/fwlink/?linkid=865446) | Fiók törlésekor törölve |

@@ -1,7 +1,7 @@
 ---
-title: Swagger-dokumentáció – beszédszolgáltatások
+title: Hencegő dokumentáció – beszédfelismerési szolgáltatás
 titleSuffix: Azure Cognitive Services
-description: A Swagger-dokumentáció használható SDK-k számos programozási nyelvet a automatikus létrehozása. A Swagger által támogatott összes műveletet a szolgáltatásban
+description: A kivágási dokumentáció használatával számos programozási nyelvhez automatikusan létrehozhat SDK-kat. A szolgáltatás minden műveletét a hencegés támogatja
 services: cognitive-services
 author: PanosPeriorellis
 manager: nitinme
@@ -10,41 +10,41 @@ ms.subservice: speech-service
 ms.topic: reference
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: f6420ea8918816f7356e567ec48cb0f7456065e0
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: 232435a424d2461bce4598356a986473cb1d3644
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67604770"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68552576"
 ---
 # <a name="swagger-documentation"></a>A Swagger dokumentációja
 
-A beszédfelismerési szolgáltatás olyan való kommunikációhoz használt adatok importálása, modelleket hozhat létre, tesztelheti a pontosság, egyéni végpontok létrehozása, várólistára helyezését batch beszédátírás és -előfizetések kezelése a REST API-k és a Swagger-specifikációra. A Custom Speech-portál elérhető a legtöbb műveletek programozott módon az API-k használatával elvégezhető.
+A Speech Services olyan hencegő specifikációt kínál, amely az adatok importálásához, a modellek létrehozásához, a modell pontosságához, az egyéni végpontok létrehozásához, a kötegelt átírások végrehajtásához és az előfizetések kezeléséhez használt REST API-k használatával kommunikál. A Custom Speech-portálon keresztül elérhető legtöbb művelet programozott módon is elvégezhető az API-k használatával.
 
 > [!NOTE]
-> Hang-szöveg és a szöveg-hang transzformációs műveletek támogatottak elérhető REST API-k, amelyek viszont a Swagger-specifikációra vannak dokumentálva.
+> A beszéd-szöveg és a szövegről beszédre irányuló műveletek egyaránt elérhetők REST API-kként, amelyek viszont a hencegés specifikációjában vannak dokumentálva.
 
-## <a name="generating-code-from-the-swagger-specification"></a>A Swagger-specifikációra származó kód generálása
+## <a name="generating-code-from-the-swagger-specification"></a>Kód generálása a hencegés specifikációból
 
-A [Swagger-specifikációja](https://cris.ai/swagger/ui/index) lehetőséget is kínál, amelyek lehetővé teszik, hogy gyorsan tesztelheti az különböző elérési utak. Azonban néha kívánatos görbékhez létrehozása egy egyetlen kódtár, hogy alapján szeretne létrehozni a jövőbeli megoldások a kódot. Vessünk egy pillantást egy Python-kódtár létrehozni a folyamatot.
+A [hencegés specifikációja](https://cris.ai/swagger/ui/index) olyan lehetőségeket kínál, amelyekkel gyorsan tesztelheti a különböző útvonalakat. Előfordulhat azonban, hogy minden elérési útra vonatkozóan létre kell hoznia egy kódot, így egyetlen, a jövőbeli megoldások alapjául szolgáló hívásokat hozhat létre. Vessünk egy pillantást a Python-könyvtár létrehozási folyamatára.
 
-Swagger beállítása és a beszédfelismerési szolgáltatás előfizetésében ugyanabban a régióban kell. Az Azure Portalon a régió alatt az beszédszolgáltatások erőforrás ellenőrizheti. Támogatott régiók teljes listáját lásd: [régiók](regions.md).
+Be kell állítania a hencegő szolgáltatást ugyanahhoz a régióhoz, mint a beszédfelismerési szolgáltatás előfizetése. A régiót a Speech Services-erőforrás alatt lévő Azure Portal ellenőrizheti. A támogatott régiók teljes listájáért lásd: [régiók](regions.md).
 
 1. Nyissa meg a következőt: https://editor.swagger.io
-2. Kattintson a **fájl**, majd kattintson a **importálása**
-3. Adja meg a swagger URL-címet, a régió beszédszolgáltatások előfizetése `https://<your-region>.cris.ai/docs/v2.0/swagger`
-4. Kattintson a **készítése ügyfél** , és válassza ki a Python
+2. Kattintson a **fájl**, majd az **Importálás** elemre.
+3. Adja meg a felvágási URL-címet, beleértve a Speech Services-előfizetés régióját`https://<your-region>.cris.ai/docs/v2.0/swagger`
+4. Kattintson az **ügyfél** előállítása és a Python elemre.
 5. Az ügyféloldali kódtár mentése
 
-Használhatja a Python-kódtár, amely akkor hozza létre a [beszédszolgáltatások példák a Githubon](https://aka.ms/csspeech/samples).
+Használhatja a GitHubon a [Speech Services](https://aka.ms/csspeech/samples)-mintákkal generált Python-könyvtárat.
 
 ## <a name="reference-docs"></a>Segédanyagok
 
-* [REST (Swagger): A Batch beszédátírási és testreszabás](https://westus.cris.ai/swagger/ui/index)
+* [REST (hencegés): Kötegelt átírás és testreszabás](https://westus.cris.ai/swagger/ui/index)
 * [REST API: Speech-to-text](rest-speech-to-text.md)
-* [REST API: Szöveg-hang transzformációs](rest-text-to-speech.md)
+* [REST API: Szöveg – beszéd](rest-text-to-speech.md)
 
 ## <a name="next-steps"></a>További lépések
 
-* [Speech Services-minták a Githubon](https://aka.ms/csspeech/samples).
-* [Ingyenes beszédszolgáltatások előfizetési kulcs lekérése](get-started.md)
+* [Speech Services-minták a githubon](https://aka.ms/csspeech/samples).
+* [Ingyenes Speech Services-előfizetési kulcs beszerzése](get-started.md)

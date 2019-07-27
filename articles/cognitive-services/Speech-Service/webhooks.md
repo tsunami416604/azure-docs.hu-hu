@@ -1,7 +1,7 @@
 ---
-title: Webhookok – beszédszolgáltatások
-titlesuffix: Azure Cognitive Services
-description: Webhookok a megoldás optimalizálásához, hosszú esetén ideális HTTP-visszahívások futó folyamatok importálja, betanítás, pontossági tesztek vagy hosszú ideig futó fájlok beszédátírás hasonlóan.
+title: Webhookok – beszédfelismerési szolgáltatás
+titleSuffix: Azure Cognitive Services
+description: A webhookok a HTTP-hívás ideális megoldást jelentenek a hosszú ideig futó folyamatok, például importálások, adaptációk, pontossági tesztek vagy hosszú ideig futó fájlok átirata esetén.
 services: cognitive-services
 author: PanosPeriorellis
 manager: nitinme
@@ -10,20 +10,20 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: panosper
-ms.openlocfilehash: a100049ddfc9d4859e303546c1b10e814cf96ebb
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: 3d07e540bf88c956f61b5d3b2a98702cad616985
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67606211"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68558800"
 ---
-# <a name="webhooks-for-speech-services"></a>Webhookok az beszédszolgáltatások
+# <a name="webhooks-for-speech-services"></a>Webhookok a Speech Serviceshez
 
-Webhookok hasonlóak a HTTP-visszahívásokat nevezzük, amelyek lehetővé teszik az alkalmazás a beszédszolgáltatások adatokat fogad, mikor válik elérhetővé. Webhookok segítségével optimalizálhatja a REST API-k használatát nem kell folyamatosan lekérdezésére választ. A következő néhány szakaszban megismerheti a webhookok használata a beszédszolgáltatások lesz.
+A webhookok olyanok, mint a HTTP-visszahívások, amelyek lehetővé teszik az alkalmazás számára az adatok elfogadását a Speech Servicesből, amikor elérhetővé válik. A webhookok használatával optimalizálhatja a REST API-k használatát azáltal, hogy nem kell folyamatosan lekérdezni a választ. A következő néhány szakaszban megtudhatja, hogyan használhatók a webhookok a Speech Services használatával.
 
 ## <a name="supported-operations"></a>Támogatott műveletek
 
-A beszédszolgáltatások webhookok támogatása az összes hosszú ideig futó műveletek. Az alábbi műveletek mindegyike egy HTTP-visszahívás befejezése után is indíthat.
+A Speech Services támogatja a webhookokat a hosszú ideig futó műveletekhez. Az alább felsorolt műveletek mindegyike elindíthat egy HTTP-visszahívást a befejezés után.
 
 * DataImportCompletion
 * ModelAdaptationCompletion
@@ -32,15 +32,15 @@ A beszédszolgáltatások webhookok támogatása az összes hosszú ideig futó 
 * EndpointDeploymentCompletion
 * EndpointDataCollectionCompletion
 
-Következő lépésként hozzunk létre egy webhook.
+Most hozzon létre egy webhookot.
 
-## <a name="create-a-webhook"></a>A webhook létrehozása
+## <a name="create-a-webhook"></a>Webhook létrehozása
 
-Hozzunk létre egy webhookot az-offline beszédátírási. A forgatókönyv: egy felhasználó egy hosszú ideig futó hangfájl, amelyek szeretnék lefényképezze aszinkron módon történik a Batch Beszédátírási API-val rendelkezik.
+Hozzon létre egy webhookot az offline átíráshoz. A forgatókönyv: a felhasználó hosszú ideig futó hangfájlt használ, amelyet aszinkron módon kell átírni a Batch-átírási API-val.
 
-Egy POST kérést a https:// Webhookokat hozhat létre\<régió\>.cris.ai/api/speechtotext/v2.1/transcriptions/hooks.
+Webhookok létrehozásához post-kérést kell létrehozni a https://\<region\>. Cris.ai/API/speechtotext/v2.1/transcriptions/Hooks.
 
-A kérelem konfigurációs paramétereket JSON-fájlként áll rendelkezésre:
+A kérelem konfigurációs paraméterei JSON-ként vannak megadva:
 
 ```json
 {
@@ -60,17 +60,17 @@ A kérelem konfigurációs paramétereket JSON-fájlként áll rendelkezésre:
 
 }
 ```
-A Batch Beszédátírási API minden POST kérelemhez szükséges egy `name`. A `description` és `properties` paraméter megadása nem kötelező.
+A Batch átírási API-nak küldött összes `name`post kérelemhez a szükséges. A `description` és`properties` paraméterek megadása nem kötelező.
 
-A `Active` tulajdonság a Váltás hívása vissza az URL-CÍMÉT, kapcsolja ki, törölje és hozza létre újból a webhook-regisztráció nélkül használható. Ha csak szeretné a visszahívási egyszer a folyamat, amelyet követően befejeződött, törölje a webhook és a kapcsoló a `Active` FALSE tulajdonságot.
+A `Active` tulajdonsággal visszakapcsolhatja a visszahívást az URL-be és ki a webhook-Regisztráció törlése és újbóli létrehozása nélkül. Ha a folyamat befejeződése után csak egyszer kell visszahívnia, törölje a webhookot, és állítsa a `Active` tulajdonságot false (hamis) értékre.
 
-Az esemény típusa `TranscriptionCompletion` megtalálható-e az események tömb. Bude volat vissza a végpontra, amikor egy beszédátírási bekerült egy állapotot (`Succeeded` vagy `Failed`). Hívja meg ismét a regisztrált URL-címre, amikor a kérelem fogja tartalmazni az `X-MicrosoftSpeechServices-Event` a regisztrált esemény típusú tartalmazó fejléc. Nincs regisztrált esemény típus szerint egy kérelmet.
+Az esemény típusát `TranscriptionCompletion` az Events (események) tömbben kell megadnia. A rendszer visszahívja a végpontot, amikor egy átirat egy terminál állapotba kerül`Succeeded` ( `Failed`vagy). A regisztrált URL-címre való visszahíváskor a kérelemben szerepelni `X-MicrosoftSpeechServices-Event` fog egy olyan fejléc, amely tartalmazza a regisztrált események egyikét. Regisztrált eseménytípus esetében egy kérelem van.
 
-Nincs több esemény típusa, amely nem lehet előfizetni. Ez a `Ping` eseménytípus. Az ilyen típusú kérelmet küld az URL-címet, ha befejeződött a webhook létrehozása, ha a pingelés URL-cím (lásd alább) használatával.  
+Létezik egy eseménytípus, amelyre nem lehet előfizetni. Ez az `Ping` esemény típusa. A rendszer elküldi az ilyen típusú kérelmet az URL-címre, amikor a ping URL-cím használatakor befejezte a webhook létrehozását (lásd alább).  
 
-A konfigurációban a `url` tulajdonságot kötelező megadni. POST kéréseket az URL-címet kapnak. A `secret` hozzon létre egy SHA256-kivonat, a tartalom a titkos kulcsot egy HMAC-val kulcsaként szolgál. A kivonata be van állítva a `X-MicrosoftSpeechServices-Signature` fejléc vissza a regisztrált URL-cím hívása során. Ez a fejléc Base64-kódolású.
+A konfigurációban a `url` tulajdonság megadása kötelező. A rendszer elküldi a POST kérelmeket erre az URL-címre. A `secret` a hasznos adatok sha256-kivonatának létrehozásához használható a titkos kulcs HMAC. A kivonat a regisztrált URL- `X-MicrosoftSpeechServices-Signature` címre való visszahíváskor fejlécként van beállítva. Ez a fejléc Base64 kódolású.
 
-Ez a példa bemutatja, hogyan érvényesítheti egy hasznos funkciójával C#:
+Ez a példa azt szemlélteti, hogyan lehet érvényesíteni C#a hasznos adatokat a következő használatával:
 
 ```csharp
 
@@ -110,32 +110,32 @@ public async Task<IActionResult> PostAsync([FromHeader(Name = EventTypeHeaderNam
 }
 
 ```
-Ez a kódrészlet a a `secret` dekódolni, és ellenőrzi. Azt is láthatja, hogy a webhook-esemény típusa lett átadva. Jelenleg nincs befejezett beszédátírási egy eseményt. A kód központosítását előtt minden esemény (egy másodperces késleltetéssel) ötször újrapróbálkozik.
+Ebben a kódrészletben a `secret` dekódolása és ellenőrzése megtörtént. Azt is megfigyelheti, hogy a webhook eseménytípus be lett kapcsolva. Jelenleg van egy esemény egy befejezett átírással. A kód minden eseménynél ötször újrapróbálkozik (egy másodperc késleltetéssel), mielőtt feladja.
 
 ### <a name="other-webhook-operations"></a>Egyéb webhook-műveletek
 
-Regisztrált összes webhookok lekérése: GET https://westus.cris.ai/api/speechtotext/v2.1/transcriptions/hooks
+Az összes regisztrált webhook beszerzése: GET https://westus.cris.ai/api/speechtotext/v2.1/transcriptions/hooks
 
-Egy adott webhook beolvasása: GET https://westus.cris.ai/api/speechtotext/v2.1/transcriptions/hooks/:id
+Egy adott webhook beszerzése: GET https://westus.cris.ai/api/speechtotext/v2.1/transcriptions/hooks/:id
 
 Egy adott webhook eltávolítása: TÖRLÉSE https://westus.cris.ai/api/speechtotext/v2.1/transcriptions/hooks/:id
 
 > [!Note]
-> A fenti példában a régióban 'westus'. Ez az a régió, ahol az Azure Portalon létrehozta a beszédszolgáltatások erőforrás kell helyettesíteni.
+> A fenti példában a régió a következő: "westus". Ezt arra a régióra kell cserélni, amelyben létrehozta a Speech Services-erőforrást a Azure Portal.
 
-POST https://westus.cris.ai/api/speechtotext/v2.1/transcriptions/hooks/:id/ping törzse: üres
+Post https://westus.cris.ai/api/speechtotext/v2.1/transcriptions/hooks/:id/ping törzs: üres
 
-Egy POST kérést küld a regisztrált URL-CÍMÉT. A kérés tartalmaz egy `X-MicrosoftSpeechServices-Event` egy érték ping-fejléc. Ha a webhook regisztrálva lett az egy titkos kulcsot, tartalmazni fog egy `X-MicrosoftSpeechServices-Signature` a titkos kulcs HMAC-val rendelkező SHA256-kivonata egy fejlécet. A kivonatot a Base64-kódolású.
+POST-kérés küldése a regisztrált URL-címre. A kérelemben egy `X-MicrosoftSpeechServices-Event` ping értékű fejléc szerepel. Ha a webhook egy titkos kulccsal lett regisztrálva, akkor az tartalmaz `X-MicrosoftSpeechServices-Signature` egy fejlécet, amely az adattartalom sha256-kivonatát tartalmazza a titkos kulcs HMAC kulcsaként. A kivonat Base64 kódolású.
 
-POST https://westus.cris.ai/api/speechtotext/v2.1/transcriptions/hooks/:id/test törzse: üres
+Post https://westus.cris.ai/api/speechtotext/v2.1/transcriptions/hooks/:id/test törzs: üres
 
-Egy POST kérést küld a regisztrált URL-címet, ha az előfizetett esemény típusa (beszédátírási) entitás szerepel a rendszerben, és a megfelelő állapotban van. A hasznos lenne meghívása a webhook utolsó entitásból jön létre. Ha nem entitás nem található, a bejegyzés a 204 válaszol. Egy tesztelési kérelem lehet tenni, ha a 200-as válaszol. A kérelem törzse nem ugyanaz az alakzat, mint a GET kérelemre adott entitáshoz tartozó a webhook (például beszédátírási) az előfizetett. A kérelem fog rendelkezni a `X-MicrosoftSpeechServices-Event` és `X-MicrosoftSpeechServices-Signature` fejlécek előtt leírtak szerint.
+POST-kérelmet küld a regisztrált URL-címre, ha az előfizetett eseménytípus (átirat) entitása megtalálható a rendszeren, és a megfelelő állapotban van. A rendszer a webhookot meghívó utolsó entitásból hozza létre a hasznos adatokat. Ha egyetlen entitás sincs jelen, a bejegyzés a 204-as számú üzenettel fog válaszolni. Ha tesztelési kérelem is elvégezhető, akkor a 200-as számú választ ad. A kérés törzse ugyanolyan alakú, mint a GET kérelem egy adott entitáshoz, amelyhez a webhook előfizetett (például átirat). A kérelemben szereplő `X-MicrosoftSpeechServices-Event` és `X-MicrosoftSpeechServices-Signature` fejlécek a következő módon lesznek leírva:.
 
-### <a name="run-a-test"></a>Egy teszt futtatása
+### <a name="run-a-test"></a>Teszt futtatása
 
-Gyors teszteléséhez teheti meg az webhelyen https://bin.webhookrelay.com. Innen szerezheti be hívás URL-címek paraméterként átadni egy webhookot, a dokumentum a korábban ismertetett létrehozásához a HTTP POST használatával biztonsági másolatot.
+A webhely https://bin.webhookrelay.com használatával gyorsan elvégezhető a tesztelés. Innen lekérheti a visszahívási URL-címeket, hogy paraméterként adja át a HTTP-BEJEGYZÉST a dokumentumban korábban ismertetett webhook létrehozásához.
 
-Kattintson a gyűjtő létrehozása, és kövesse a képernyőn megjelenő egy hook beszerzésére vonatkozó utasításokat. Ezen a lapon található információk segítségével regisztrálja a hook a Speech szolgáltatással. A továbbítási üzenet – válasz egy beszédátírási megvalósításának – hasznos a következőképpen néz ki:
+Kattintson a Create Bucket (gyűjtő létrehozása) elemre, és kövesse a képernyőn megjelenő utasításokat a Hook beszerzéséhez. Ezután az ezen a lapon található információk segítségével regisztrálja a hookot a Speech Service-ben. Egy továbbító üzenet hasznos adatai – a transzkripció befejezésére válaszul a következőképpen néz ki:
 
 ```json
 {
@@ -177,7 +177,7 @@ Kattintson a gyűjtő létrehozása, és kövesse a képernyőn megjelenő egy h
     }
 }
 ```
-Az üzenet a rögzítés URL-cím és a modellek segítségével, hogy felvételt lefényképezze tartalmaz.
+Az üzenet tartalmazza a rögzítés átírásához használt rögzítési URL-címet és modelleket.
 
 ## <a name="next-steps"></a>További lépések
 

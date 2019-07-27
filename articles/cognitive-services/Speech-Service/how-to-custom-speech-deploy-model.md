@@ -1,7 +1,7 @@
 ---
-title: Modell üzembe helyezése a Custom Speech - beszédszolgáltatások
-titlesuffix: Azure Cognitive Services
-description: Ebből a dokumentumból megismerheti, hogyan hozhat létre és telepíthet egy végpontot a Custom Speech-portál használatával fogja.
+title: Modell üzembe helyezése Custom Speech-Speech Service-hez
+titleSuffix: Azure Cognitive Services
+description: Ebből a dokumentumból megtudhatja, hogyan hozhat létre és helyezhet üzembe egy végpontot a Custom Speech portál használatával.
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -10,44 +10,44 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: f2b69bf3e5d536e7e813ef4a7c36b2937141fd43
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: 15e2ce437a746d15622dc4e093a63c87448f100d
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67606626"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68559668"
 ---
 # <a name="deploy-a-custom-model"></a>Egyéni modell üzembe helyezése
 
-Feltöltött és adatok megvizsgálni, kiértékelése pontossága, és egy egyéni modell betanított, után telepíthet egy egyéni végpont használata az alkalmazásokat, eszközöket és termékeket. Ebből a dokumentumból megismerheti, hogyan hozhat létre és telepíthet egy végpontot a Custom Speech-portál használatával fogja.
+Miután feltöltötte és megvizsgálta az adatait, értékelte a pontosságot, és betanított egy egyéni modellt, üzembe helyezhet egy egyéni végpontot az alkalmazásaival, eszközeivel és termékeivel való használatra. Ebből a dokumentumból megtudhatja, hogyan hozhat létre és helyezhet üzembe egy végpontot a Custom Speech portál használatával.
 
 ## <a name="create-a-custom-endpoint"></a>Egyéni végpont létrehozása
 
-Új egyéni végpont létrehozásához válassza **üzembe helyezési** az oldal tetején a Custom Speech menüből. Ha ez az első alkalommal történő futtatásakor, láthatja, hogy nincsenek-e a táblázatban felsorolt végpontok. Miután létrehozott egy végpontot, minden egyes telepített végpontjától nyomon kell ezen a lapon.
+Új egyéni végpont létrehozásához válassza az oldal tetején található Custom Speech menüjének **központi telepítés** elemét. Ha először futtatja, láthatja, hogy nincsenek a táblázatban felsorolt végpontok. Miután létrehozott egy végpontot, ezen a lapon követheti nyomon az egyes telepített végpontokat.
 
-Majd **végpont hozzáadása** , és adja meg egy **neve** és **leírás** a egyéni végponthoz. Ezután válassza ki az egyéni modell, amely ezt a végpontot társítani szeretné. Ezen az oldalon is engedélyezheti a naplózást. Naplózás végpont forgalom figyelését teszi lehetővé. Ha le van tiltva, a forgalom nem tárolja.
+Ezután válassza a **végpont hozzáadása** lehetőséget, és adja meg az egyéni végpont **nevét** és **leírását** . Ezután válassza ki azt az egyéni modellt, amelyet hozzá szeretne rendelni ehhez a végponthoz. Ezen a lapon engedélyezheti a naplózást is. A naplózás lehetővé teszi a végponti forgalom figyelését. Ha le van tiltva, a rendszer nem tárolja a forgalmat.
 
-![A modell üzembe helyezése](./media/custom-speech/custom-speech-deploy-model.png)
+![Modell üzembe helyezése](./media/custom-speech/custom-speech-deploy-model.png)
 
 > [!NOTE]
-> Ne felejtse el fogadja el a használati feltételeit és díjszabásáról.
+> Ne felejtse el elfogadni a használati feltételeket és a díjszabási adatokat.
 
-Majd **létrehozás**. Ez a művelet visszaadja, hogy a **üzembe helyezési** lapot. A táblázat most már tartalmaz egy bejegyzést, amely megfelel az egyéni végponthoz. A végpont állapotát jeleníti meg a jelenlegi állapotában. Egyéni modellek használatával új végpont vezérlőként akár 30 percet is igénybe vehet. Mikor változik a központi telepítés állapotát **Complete**, a végpont készen áll a használatra.
+Ezután válassza a **Létrehozás**lehetőséget. Ez a művelet visszaadja az **üzembe helyezési** lapot. A tábla mostantól egy olyan bejegyzést tartalmaz, amely megfelel az egyéni végpontnak. A végpont állapota megjeleníti a jelenlegi állapotát. Akár 30 percet is igénybe vehet, ha új végpontot hoz létre az egyéni modellek használatával. Ha a központi telepítés állapota befejezettre változik , a végpont készen áll a használatra.
 
-A végpont telepítése után a végpont neve hivatkozásként jelenik meg. Kattintson a hivatkozásra, adott információk megjelenítéséhez a végpontra, például a végponti kulcs, a végpont URL-címe és a mintakódot.
+A végpont üzembe helyezése után a végpont neve hivatkozásként jelenik meg. Kattintson a hivatkozásra a végpontra jellemző információk megjelenítéséhez, például a végponti kulcs, a végpont URL-címe és a mintakód számára.
 
-## <a name="view-logging-data"></a>Naplózási adatok megtekintése
+## <a name="view-logging-data"></a>Naplózási adatgyűjtés megtekintése
 
-Naplózási adatok érhető el a letöltési **végpont > részletek**.
+A naplózási adatok letölthetők a **Endpoint > részletei**területen.
 
 ## <a name="next-steps"></a>További lépések
 
-* Az egyéni végpontjára használja a [beszéd SDK](speech-sdk.md)
+* Egyéni végpont használata a [SPEECH SDK](speech-sdk.md) -val
 
 ## <a name="additional-resources"></a>További források
 
-* [Készítse elő és az adatok tesztelése](how-to-custom-speech-test-data.md)
-* [Az adatok vizsgálata](how-to-custom-speech-inspect-data.md)
-* [Az adatok](how-to-custom-speech-evaluate-data.md)
-* [A modell tanítása](how-to-custom-speech-train-model.md)
+* [Az adatfeldolgozás előkészítése és tesztelése](how-to-custom-speech-test-data.md)
+* [Az adatai ellenőrzése](how-to-custom-speech-inspect-data.md)
+* [Az adatai kiértékelése](how-to-custom-speech-evaluate-data.md)
+* [A modell betanítása](how-to-custom-speech-train-model.md)
 * [A modell üzembe helyezése](how-to-custom-speech-deploy-model.md)

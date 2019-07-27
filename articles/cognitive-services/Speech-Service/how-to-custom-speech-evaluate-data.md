@@ -1,7 +1,7 @@
 ---
-title: Egyéni beszédfelismerés – beszédszolgáltatások pontossága kiértékeléséhez
-titlesuffix: Azure Cognitive Services
-description: Ez a dokumentum lesz mutatja kvantitatív mérhető a Microsoft hang-szöveg transzformációs modellt vagy az egyéni modell minőségét. Hang + emberi címkével beszédátírási adatok pontossága teszteléséhez szükséges, és 30 percen át 5 óra reprezentatív hanganyagra meg kell adni.
+title: Custom Speech beszédfelismerési szolgáltatás pontosságának kiértékelése
+titleSuffix: Azure Cognitive Services
+description: Ebből a dokumentumból megtudhatja, hogyan mérhető a beszédfelismerési modell vagy az egyéni modell minősége. A hang-és az emberi-címkével ellátott átírási adatoknak a pontosság teszteléséhez, valamint 30 perc és 5 órányi reprezentatív hang megadása szükséges.
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -10,65 +10,65 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: 2e9818fad9a0b5d04cc50a293b16d838c319dd86
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: bd8bbc28247ecd924db25cb4b916d1d466065606
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67606573"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68562872"
 ---
-# <a name="evaluate-custom-speech-accuracy"></a>Egyéni beszédfelismerés pontossága kiértékelése
+# <a name="evaluate-custom-speech-accuracy"></a>Custom Speech pontosságának kiértékelése
 
-Ebben a dokumentumban, fog megtudhatja, hogyan kvantitatív mérhető a Microsoft hang-szöveg transzformációs modellt vagy az egyéni modell minőségét. Hang + emberi címkével beszédátírási adatok pontossága teszteléséhez szükséges, és 30 percen át 5 óra reprezentatív hanganyagra meg kell adni.
+Ebből a dokumentumból megtudhatja, hogyan mérhető a Microsoft beszédfelismerési modellje és az egyéni modell minősége. A hang-és az emberi-címkével ellátott átírási adatoknak a pontosság teszteléséhez, valamint 30 perc és 5 órányi reprezentatív hang megadása szükséges.
 
-## <a name="what-is-word-error-rate-wer"></a>Mi az a Word hiba sebessége (WER)?
+## <a name="what-is-word-error-rate-wer"></a>Mi az a Word Error Rate (WER)?
 
-Az iparági szabvány modellpontosságból mérésére *Word Hibaarány* (WER). A WER megszámolja a helytelen szavak felismerése során meghatározott, majd szó az emberi címkével a szövegben ismertetett teljes száma alapján osztja fel. Végül, hogy a rendszer megszorozza 100 %-os kiszámításához a WER programban.
+A modell pontosságának méréséhez használt iparági szabvány a *Word Error Rate* (WER). A WER megszámolja az elismerés során azonosított helytelen szavak számát, majd az emberi címkével ellátott átiratban szereplő szavak teljes számával elosztja. Végezetül ezt a számot 100%-kal kell megszorozni a WER kiszámításához.
 
-![A WER képlet](./media/custom-speech/custom-speech-wer-formula.png)
+![WER-képlet](./media/custom-speech/custom-speech-wer-formula.png)
 
-Helytelenül azonosított szavak fall három kategóriába sorolhatók:
+A helytelenül azonosított szavak három kategóriába sorolhatók:
 
-* Az beszúrási (I): Az elmélet átiratot az helytelenül hozzáadott szavakat
-* Törlés (D): A rendszer nem észleli az elmélet átiratot a szavakat
-* Helyettesítés (S): Referencia- és elmélet közötti helyettesített szavakat
+* Beszúrás (I): A hipotézis átiratában helytelenül hozzáadott szavak
+* Törlés (D): A hipotézis átiratában nem észlelhető szavak
+* Helyettesítő (k): A hivatkozás és a hipotézis között helyettesített szavak
 
 Például:
 
 ![Helytelenül azonosított szavak – példa](./media/custom-speech/custom-speech-dis-words.png)
 
-## <a name="resolve-errors-and-improve-wer"></a>Ki a hibákat, és javíthatja a WER használatára
+## <a name="resolve-errors-and-improve-wer"></a>Hibák elhárítása és a WER fejlesztése
 
-Az a gép felismerési eredményeket a WER segítségével kiértékelheti a modellt használ az alkalmazás, az eszköz vagy a termék minőségének. A WER 5 – 10 %-os jó minőségű tekinthető, és készen áll a használatra. A WER 20 %-os elfogadható,, de érdemes figyelembe venni a további. A WER legalább 30 %-os gyenge minőség a jeleket, és testreszabási és képzési igényel.
+Az alkalmazással, eszközzel vagy termékkel használt modell minőségének kiértékeléséhez a számítógép-felismerési eredményekből használhatja a WERt. Az 5%-10%-os WER jó minőségűnek számít, és készen áll a használatra. 20%-os WER elfogadható, azonban érdemes lehet további képzést is megfontolni. A WER 30%-os vagy újabb gyenge minőséggel rendelkezik, és testreszabást és képzést igényel.
 
-Fontos, hogyan oszlanak meg a hibákat. Számos törlési hiba történik, esetén általában a gyenge hang jel erőssége miatt. A probléma megoldásához kell közelebb hangadatokat gyűjthet a forrás. Beszúrási hiba jelenti azt, hogy a hanganyag lett rögzítve zajos környezetben, és belevág jelen lehet okozó problémák felismerése. Helyettesítés gyakran hiba történik egy megfelelő minta a tartomány-specifikus feltételek szerint vagy emberi címkével beszédátírás megadott vagy kapcsolatos szöveget.
+Fontos a hibák elosztása. Ha a rendszer sok törlési hibát észlel, általában a gyenge hangjelek erőssége miatt. A probléma megoldásához a hangadatokat közelebb kell gyűjteni a forráshoz. A beillesztési hibák azt jelentik, hogy a hang zajos környezetben lett rögzítve, és lehetséges, hogy az áthallási problémákat okoz. A helyettesítési hibák akkor fordulnak elő, ha a tartományhoz tartozó feltételek nem elégséges mintája emberi feliratú átiratként vagy kapcsolódó szövegként van megadva.
 
-Egyes fájlok adatainak elemzésével, megadhatja, hogy milyen típusú hibákat létezik, és mely hibák egyediek-e egy bizonyos fájlhoz. A fájlok szintjén ismertetése problémákat segít javítását célozza.
+Az egyes fájlok elemzésével meghatározhatja, hogy milyen típusú hibák léteznek, és mely hibák egyediek egy adott fájlra vonatkozóan. A fájlok szintjén megjelenő problémák segítenek megcélozni a fejlesztési funkciókat.
 
-## <a name="create-a-test"></a>Hozzon létre egy tesztet
+## <a name="create-a-test"></a>Teszt létrehozása
 
-Ha szeretné a Microsoft baseline hang-szöveg transzformációs modell vagy egy egyéni modell számára betanított minőségének ellenőrzéséhez két modell pontossága kiértékelheti, hogy össze lehessen hasonlítani. Az összehasonlítás WER és felismerési eredményeket is tartalmaz. Általában egy egyéni modell a rendszer összehasonlítja a Microsoft baseline modellel.
+Ha szeretné kipróbálni a Microsoft beszéd-szöveg típusú alapmodelljét vagy egy Ön által betanított egyéni modellt, összehasonlíthatja a két modellt egymás mellett, hogy kiértékelje a pontosságot. Az összehasonlítás magában foglalja a WER és a felismerés eredményeit. Az egyéni modelleket általában a Microsoft alapmodellje hasonlítja össze.
 
-Modelleket szeretne értékelni egymás mellett:
+Modellek kiértékelése egymás mellett:
 
-1. Navigáljon a **hang-szöveg transzformációs > Custom Speech > tesztelés**.
-2. Kattintson a **teszt hozzáadása**.
-3. Válassza ki **pontossága kiértékelése**. Adja meg a teszt nevét, leírását, és válassza ki az audio- és emberi címkével beszédátírási adatkészlet.
-4. Válassza ki a tesztelni kívánt legfeljebb két modellek.
+1. Navigáljon a **beszéd-szöveg > Custom Speech > teszteléshez**.
+2. Kattintson a **teszt hozzáadása**gombra.
+3. Válassza ki a **pontosság**kiértékelése elemet. Adja meg a teszt nevét, leírását, és válassza ki a hang + emberi-címkével ellátott átírási adatkészletet.
+4. Válasszon legfeljebb két modellt, amelyeket szeretne tesztelni.
 5. Kattintson a **Create** (Létrehozás) gombra.
 
 A teszt sikeres létrehozása után összehasonlíthatja az eredményeket egymás mellett.
 
-## <a name="side-by-side-comparison"></a>Egymás melletti összehasonlítása
+## <a name="side-by-side-comparison"></a>Párhuzamos összehasonlítás
 
-A teszt befejeződése után az állapot módosítása által jelzett *sikeres*, megtalálhatja a WER szám mind a két modellben szereplő a tesztet. Kattintson a teszt neve, a tesztelési részletei lap megtekintéséhez. A Részletek lap felsorolja az adatkészlet, a két modell mellett az elküldött adatkészletből a beszédátírási felismerés eredményét jelző kimondott szöveg. Az egymás melletti összehasonlítás vizsgálata érdekében különböző alkalmazáshiba-típusok, beleértve a beszúrási, törlési és helyettesítési válthat. A hanganyag figyeli, és az egyes oszlopokban, amely megjeleníti az emberi címkével beszédátírási felismerési eredményeket és az eredményeket a hang-szöveg transzformációs két modell összehasonlítása, eldöntheti, melyik modellben az igényeinek, és amelyeknél további és fejlesztései szükséges.
+A teszt befejezése után az állapot változása *sikeres*volt, a tesztben szereplő mindkét modellhez meg kell adni egy wer-számot. Kattintson a teszt nevére a tesztelési részletek oldal megtekintéséhez. Ez a részletes lap felsorolja az adatkészlet összes hosszúságú kimondott szöveg, amely a két modell felismerési eredményét jelzi a beküldött adatkészlet átírása mellett. Az egymás melletti összehasonlítások megvizsgálása érdekében különböző típusú hibákat válthat ki, beleértve a beszúrást, a törlést és a helyettesítést is. Ha az egyes oszlopokban figyeli a hangfelismerési eredményeket, és összehasonlítja az összes olyan oszlopot, amely az emberi címkével ellátott átírást és az eredményeket mutatja két beszéd – szöveg modell esetében, eldöntheti, hogy melyik modell felel meg az igényeinek, és hogy a további képzések és Újdonságok szükséges.
 
 ## <a name="next-steps"></a>További lépések
 
-* [A modell tanítása](how-to-custom-speech-train-model.md)
+* [A modell betanítása](how-to-custom-speech-train-model.md)
 * [A modell üzembe helyezése](how-to-custom-speech-deploy-model.md)
 
 ## <a name="additional-resources"></a>További források
 
-* [Készítse elő és az adatok tesztelése](how-to-custom-speech-test-data.md)
-* [Az adatok vizsgálata](how-to-custom-speech-inspect-data.md)
+* [Az adatfeldolgozás előkészítése és tesztelése](how-to-custom-speech-test-data.md)
+* [Az adatai ellenőrzése](how-to-custom-speech-inspect-data.md)

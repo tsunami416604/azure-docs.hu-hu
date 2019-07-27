@@ -1,5 +1,5 @@
 ---
-title: Előre összeállított entitások
+title: Előre elkészített entitások a Language Understandinghoz
 titleSuffix: Azure Cognitive Services
 description: LUIS az általános típusú adatok, például a dátumok, időpontok, számok, mértékek és pénznem FELISMERVE előre összeállított entitások egy készletét tartalmazza. Előre összeállított entitások támogatása a LUIS-alkalmazás kulturális környezete eltérő.
 services: cognitive-services
@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 03/11/2019
 ms.author: diberry
-ms.openlocfilehash: 0cfc4ff58cfeb65f80f9ac5ce2dd532defde5ef8
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: db0fb8962030b536b6ea73f4141da551434cd528
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60596118"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68560345"
 ---
 # <a name="prebuilt-entities-to-recognize-common-data-types"></a>Előre összeállított entitások felismerésére általános adattípusok
 
@@ -60,7 +60,7 @@ Teszt új célja a végponton által hozzáadott értéket a **q** paraméter. H
 
  Jelölje meg a jogkivonatot, ahol egy része már meg van jelölve az előre összeállított entitások, az ilyen típusú távolítsa el az előre összeállított entitások a LUIS-alkalmazásból. Nem kell az alkalmazás betanításához. Ezután jelölje meg a jogkivonatot a saját egyéni entitást. Ezután adja hozzá az előre összeállított entitások vissza a LUIS-alkalmazás.
 
- Egy másik példa vegye figyelembe az utterance (kifejezés), osztály beállítások listája: `I want first year spanish, second year calculus, and fourth year english lit.` Ha a Prebuild sorszámot ad hozzá, a LUIS alkalmazás `first`, `second`, és `fourth` a sorszámok már lesz megjelölve. Ha szeretné rögzíteni azt a sorszámot, és az osztályt, összetett entitás létrehozása, és tegye azokat az előre összeállított sorszámnál és az egyéni entitás osztály neveként.
+ Egy másik példaként tekintse meg az osztály beállításai listáját: `I want first year spanish, second year calculus, and fourth year english lit.`Ha a Luis-alkalmazáshoz az előépítés sorszáma `second`van hozzáadva `first`, a, és `fourth` a már sorszámmal van megjelölve. Ha szeretné rögzíteni azt a sorszámot, és az osztályt, összetett entitás létrehozása, és tegye azokat az előre összeállított sorszámnál és az egyéni entitás osztály neveként.
 
 ## <a name="next-steps"></a>További lépések
 > [!div class="nextstepaction"]

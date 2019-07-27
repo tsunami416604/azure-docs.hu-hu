@@ -1,6 +1,6 @@
 ---
-title: Hajtsa végre a lemezkép műveletek – Java
-titlesuffix: Azure Cognitive Services
+title: Rendszerkép-műveletek végrehajtása – Java
+titleSuffix: Azure Cognitive Services
 description: Ismerkedés egy alapszintű Java Swing-alkalmazással, amely a Computer Vision API-t használja az Azure Cognitive Services szolgáltatásban. OCR végrehajtása, miniatűrök létrehozása és képek vizuális jellemzőinek használata.
 services: cognitive-services
 author: KellyDF
@@ -11,14 +11,14 @@ ms.topic: conceptual
 ms.author: kefre
 ms.custom: seodec18
 ms.date: 04/30/2019
-ms.openlocfilehash: a22308e0c7ff924205f715692d011a4572b2bdb8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 16f75095c7e4461c84a1fea28cc620c49b6c5bca
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65232631"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68565690"
 ---
-# <a name="use-computer-vision-features-with-the-rest-api-and-java"></a>Számítógépes Látástechnológia funkciók a REST API-t és a Java használata
+# <a name="use-computer-vision-features-with-the-rest-api-and-java"></a>Computer Vision funkcióinak használata a REST API és a Java használatával
 
 Ez az oktatóanyag az Azure Cognitive Services Computer Vision REST API funkcióit mutatja be.
 
@@ -34,7 +34,7 @@ Az oktatóanyag a Computer Vision következő használati területeit ismerteti:
 > * Képeken látható nyomtatott szöveg felolvasása
 > * Képeken látható, kézzel írott szöveg felolvasása
 
-Az űrlap Java párhuzamos alkalmazás már meg lett írva, de nincs funkcióval rendelkezik. Ebben az oktatóanyagban a Computer Vision REST API kódját hozzáadva látja el funkciókkal az alkalmazást.
+A Java Swing Form alkalmazás már meg van írva, de nem rendelkezik funkcionalitással. Ebben az oktatóanyagban a Computer Vision REST API kódját hozzáadva látja el funkciókkal az alkalmazást.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -44,11 +44,11 @@ Ezt az oktatóanyagot a NetBeans IDE használatával hoztuk létre. Egészen pon
 
 ### <a name="subscribe-to-computer-vision-api-and-get-a-subscription-key"></a>Előfizetés a Computer Vision API-ra és egy előfizetési kulcs beszerzése
 
-Mielőtt létrehozná a példa, elő kell fizetnie a Computer Vision API, Azure Cognitive Services részét képező. Az előfizetésről és a kulcskezelésről további információt az [Előfizetések](https://azure.microsoft.com/try/cognitive-services/) című témakörben találhat. Ebben az oktatóanyagban az elsődleges és másodlagos kulcsok is használhatók.
+A példa létrehozása előtt elő kell fizetnie az Azure Cognitive Services részét képező Computer Vision APIra. Az előfizetésről és a kulcskezelésről további információt az [Előfizetések](https://azure.microsoft.com/try/cognitive-services/) című témakörben találhat. Ebben az oktatóanyagban az elsődleges és másodlagos kulcsok is használhatók.
 
-## <a name="acquire-incomplete-tutorial-project"></a>Hiányos oktatóanyag projektjének szerezni.
+## <a name="acquire-incomplete-tutorial-project"></a>Hiányos oktatóanyag-projekt beolvasása
 
-### <a name="download-the-project"></a>Töltse le a projekt
+### <a name="download-the-project"></a>A projekt letöltése
 
 1. Lépjen a [Cognitive Services Java Computer Vision – oktatóanyag](https://github.com/Azure-Samples/cognitive-services-java-computer-vision-tutorial) tárházra.
 1. Kattintson a **Klónozás vagy letöltés** lehetőségre.
@@ -78,7 +78,7 @@ Importálja a **cognitive-services-java-computer-vision-tutorial-master.zip** f�
 
 1. Lépjen ki az oktatóalkalmazásból.
 
-## <a name="add-tutorial-code-to-the-project"></a>Az oktatóanyag kód hozzáadása a projekthez
+## <a name="add-tutorial-code-to-the-project"></a>Oktatóanyag-kód hozzáadása a projekthez
 
 A Java Swing-alkalmazásban hat lap található. Mindegyik lap más-más Computer Vision-funkciót ismertet (elemzés, OCR és hasonlók). Az oktatóanyag hat szakasza nem függ egymástól, így hozzáadhatja csak az egyiket, mind a hatot vagy bármely részhalmazt is. A szakaszokat bármilyen sorrendben hozzáadhatja.
 
@@ -88,7 +88,7 @@ A Computer Vision Elemzés funkciója több mint 2000 felismerhető tárgy, él�
 
 Az oktatóalkalmazás Elemzés funkciójának végrehajtásához tegye a következőket:
 
-#### <a name="add-the-event-handler-code-for-the-analyze-button"></a>Elemzés gomb az esemény kezelő kód hozzáadása
+#### <a name="add-the-event-handler-code-for-the-analyze-button"></a>Az elemzés gomb eseménykezelő kódjának hozzáadása
 
 Az **analyzeImageButtonActionPerformed** eseménykezelő metódus törli az űrlapot, megjeleníti az URL-címben megadott képet, majd meghívja az **AnalyzeImage** metódust a kép elemzéséhez. Amikor az **AnalyzeImage** elkészül, a metódus megjeleníti a formázott JSON-választ a **Válasz** szövegterületen, kinyeri az első feliratot a **JSONObject** fájlból, és megjeleníti a feliratot, valamint az annak helyességére vonatkozó konfidenciaszintet.
 
@@ -326,7 +326,7 @@ Illessze be a **LandmarkImage** metódust a **landmarkImageButtonActionPerformed
     }
 ```
 
-#### <a name="run-the-landmark-function"></a>A környezet függvény futtatása
+#### <a name="run-the-landmark-function"></a>A Landmark függvény futtatása
 
 Az alkalmazás futtatásához nyomja le az **F6** billentyűt. Helyezze el az előfizetési kulcsot az **Előfizetési kulcs** mezőben, majd ellenőrizze, hogy a megfelelő régió van-e beállítva az **Előfizetési régió** mezőben. Kattintson a **Nevezetesség** lapra, adja meg egy elemzendő nevezetesség URL-címét, majd kattintson a **Kép elemzése** gombra a kép elemzéséhez és az eredmény megjelenítéséhez.
 
@@ -336,7 +336,7 @@ A Computer Vision Hírességek funkciója hírességek alapján elemez egy képe
 
 Az oktatóalkalmazás Hírességek funkciójának végrehajtásához tegye a következőket:
 
-#### <a name="add-the-event-handler-code-for-the-celebrities-button"></a>Adja hozzá a hírességek gomb kezelő kód události
+#### <a name="add-the-event-handler-code-for-the-celebrities-button"></a>Adja hozzá az eseménykezelő kódját a hírességek gombhoz
 
 A **celebritiesImageButtonActionPerformed** eseménykezelő metódus törli az űrlapot, megjeleníti az URL-címben megadott képet, majd meghívja az **CelebritiesImage** metódust a kép elemzéséhez. Amikor a **CelebritiesImage** elkészül, a metódus megjeleníti a formázott JSON-választ a **Válasz** szövegterületen, kinyeri az első hírességet a **JSONObject** fájlból, és megjeleníti az ablakon a helyes azonosításra vonatkozó konfidenciaszinttel együtt.
 
@@ -450,7 +450,7 @@ Illessze be a **CelebritiesImage** metódust a **celebritiesImageButtonActionPer
     }
 ```
 
-#### <a name="run-the-celebrities-function"></a>A hírességek függvény futtatása
+#### <a name="run-the-celebrities-function"></a>A hírességek funkció futtatása
 
 Az alkalmazás futtatásához nyomja le az **F6** billentyűt. Helyezze el az előfizetési kulcsot az **Előfizetési kulcs** mezőben, majd ellenőrizze, hogy a megfelelő régió van-e beállítva az **Előfizetési régió** mezőben. Kattintson a **Hírességek** lapra, adja meg egy elemzendő híresség URL-címét, majd kattintson a **Kép elemzése** gombra a kép elemzéséhez és az eredmény megjelenítéséhez.
 
@@ -460,7 +460,7 @@ A Computer Vision Miniatűr funkciója miniatűrt készít egy képből. Az **in
 
 Az oktatóalkalmazás Miniatűr funkciójának végrehajtásához tegye a következőket:
 
-#### <a name="add-the-event-handler-code-for-the-thumbnail-button"></a>Adja hozzá a miniatűr gomb kezelő kód události
+#### <a name="add-the-event-handler-code-for-the-thumbnail-button"></a>Adja hozzá az eseménykezelő kódját a miniatűr gombhoz
 
 A **thumbnailImageButtonActionPerformed** eseménykezelő metódus törli az űrlapot, megjeleníti az URL-címben megadott képet, majd meghívja az **getThumbnailImage** metódust a miniatűr létrehozásához. Amikor a **getThumbnailImage** lefut, a metódus megjeleníti a létrehozott miniatűrt.
 
@@ -583,7 +583,7 @@ A Computer Vision optikai karakterfelismerés (OCR) funkciója nyomtatott szöve
 
 Az oktatóalkalmazás OCR funkciójának végrehajtásához tegye a következőket:
 
-#### <a name="add-the-event-handler-code-for-the-ocr-button"></a>Az esemény kezelő kód OCR gomb hozzáadása
+#### <a name="add-the-event-handler-code-for-the-ocr-button"></a>Adja hozzá az eseménykezelő kódját az OCR gombhoz
 
 Az **ocrImageButtonActionPerformed** eseménykezelő metódus törli az űrlapot, megjeleníti az URL-címben megadott képet, majd meghívja az **OcrImage** metódust a kép elemzéséhez. Amikor az **OcrImage** lefut, a metódus formázott JSON-ként jeleníti meg az észlelt szöveget a **Válasz** szövegterületen.
 
@@ -684,7 +684,7 @@ Illessze be az **OcrImage** metódust az **ocrImageButtonActionPerformed** alá.
     }
 ```
 
-#### <a name="run-the-ocr-function"></a>Az optikai Karakterfelismerés függvény futtatása
+#### <a name="run-the-ocr-function"></a>Az OCR-függvény futtatása
 
 Az alkalmazás futtatásához nyomja le az **F6** billentyűt. Helyezze el az előfizetési kulcsot az **Előfizetési kulcs** mezőben, majd ellenőrizze, hogy a megfelelő régió van-e beállítva az **Előfizetési régió** mezőben. Kattintson az **OCR** lapra, adja meg egy nyomtatott szöveget tartalmazó kép URL-címét, majd kattintson a **Kép felolvasása** gombra a kép elemzéséhez és az eredmény megjelenítéséhez.
 
@@ -694,7 +694,7 @@ A Computer Vision kézírás-felismerés funkciója kézzel írt szöveget tarta
 
 Az oktatóalkalmazás kézírás-felismerés funkciójának végrehajtásához tegye a következőket:
 
-#### <a name="add-the-event-handler-code-for-the-handwriting-button"></a>Adja hozzá a kézírás-felismerés gomb kezelő kód události
+#### <a name="add-the-event-handler-code-for-the-handwriting-button"></a>Az eseménykezelő kódjának hozzáadása a kézírás gombhoz
 
 A **handwritingImageButtonActionPerformed** eseménykezelő metódus törli az űrlapot, megjeleníti az URL-címben megadott képet, majd meghívja a **HandwritingImage** metódust a kép elemzéséhez. Amikor a **HandwritingImage** lefut, a metódus formázott JSON-ként jeleníti meg az észlelt szöveget a **Válasz** szövegterületen.
 
@@ -842,12 +842,12 @@ Illessze be a **HandwritingImage** metódust a **handwritingImageButtonActionPer
     }
 ```
 
-#### <a name="run-the-handwriting-function"></a>A kézírás-felismerés függvény futtatása
+#### <a name="run-the-handwriting-function"></a>A kézírás függvény futtatása
 
 Az alkalmazás futtatásához nyomja le az **F6** billentyűt. Helyezze el az előfizetési kulcsot az **Előfizetési kulcs** mezőben, majd ellenőrizze, hogy a megfelelő régió van-e beállítva az **Előfizetési régió** mezőben. Kattintson a **Kézzel írott szöveg felolvasása** lapra, adja meg egy kézzel írott szöveget tartalmazó kép URL-címét, majd kattintson a **Kép felolvasása** gombra a kép elemzéséhez és az eredmény megjelenítéséhez.
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben az útmutatóban, a Computer Vision REST API javával tesztelésére használatos elérhető rendszerképet elemzési funkciók nagy része. Ezután tekintse meg a hivatkozás dokumentációban talál további információt az API-k vesz részt.
+Ebben az útmutatóban a Java-Computer Vision REST APIt használta az elérhető képelemzési funkciók számos elemének tesztelésére. Következő lépésként tekintse meg a dokumentációt, ahol többet tudhat meg az API-król.
 
-- [Computer Vision API – REST](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa)
+- [Computer Vision REST API](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa)

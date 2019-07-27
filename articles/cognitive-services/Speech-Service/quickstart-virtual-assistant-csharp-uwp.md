@@ -1,7 +1,7 @@
 ---
-title: 'Gyors útmutató: Egyéni hang-és felhőközpontú (előzetes verzió), virtuális asszisztensek C# (UWP) – beszédszolgáltatások'
+title: 'Gyors útmutató: Egyéni hang – első virtuális asszisztens (előzetes verzió) C# , (UWP) – beszédfelismerési szolgáltatás'
 titleSuffix: Azure Cognitive Services
-description: Ebben a cikkben létrehoz egy C# univerzális Windows Platform (UWP-) alkalmazások a Cognitive Services beszédfelismerő szoftver Development Kit (SDK) használatával. Csatlakozás az ügyfélalkalmazás egy korábban létrehozott Bot Framework robot, a közvetlen vonal beszédfelismerő csatornát használatára konfigurálva. Az alkalmazást a létrehozása a Speech SDK NuGet-csomagot és a Microsoft Visual Studio 2017-ben.
+description: Ebben a cikkben egy C# univerzális Windows-platform-(UWP-) alkalmazást hoz létre a Cognitive Services Speech szoftverfejlesztői készlet (SDK) használatával. Az ügyfélalkalmazás egy korábban létrehozott, a Direct line Speech Channel használatára konfigurált robot-keretrendszerhez csatlakozik. Az alkalmazást a létrehozása a Speech SDK NuGet-csomagot és a Microsoft Visual Studio 2017-ben.
 services: cognitive-services
 author: trrwilson
 manager: nitinme
@@ -10,18 +10,18 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 07/05/2019
 ms.author: travisw
-ms.openlocfilehash: 22c18b573e7107163f858c79956ca6f5380f6834
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: d61040e740c06fc336e3764a0d972640443a6de5
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67604977"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68553386"
 ---
-# <a name="quickstart-create-a-voice-first-virtual-assistant-with-the-speech-sdk-uwp"></a>Gyors útmutató: Hozzon létre egy hang-és felhőközpontú virtuális asszisztensek UWP Speech-SDK-val
+# <a name="quickstart-create-a-voice-first-virtual-assistant-with-the-speech-sdk-uwp"></a>Gyors útmutató: Hozzon létre egy hang-első virtuális asszisztenst a Speech SDK-val, UWP
 
-Rövid útmutatók érhetők el is [hang-szöveg transzformációs](quickstart-csharp-uwp.md), [szöveg-hang transzformációs](quickstart-text-to-speech-csharp-uwp.md) és [tolmácsolás –](quickstart-translate-speech-uwp.md).
+A gyors üzembe helyezési útmutató a [szöveg](quickstart-csharp-uwp.md)és a beszéd közötti [kommunikációhoz, valamint](quickstart-text-to-speech-csharp-uwp.md) a beszéd-és [fordításhoz](quickstart-translate-speech-uwp.md)is elérhető.
 
-Ebben a cikkben dolgoznia egy C# univerzális Windows Platform (UWP) alkalmazás használatával az [beszéd SDK](speech-sdk.md). A program egy korábban létrehozott és beállított bot ahhoz, hogy egy hang-és felhőközpontú virtuális asszisztensek élmény az ügyfélalkalmazás fog csatlakozni. Az alkalmazást a [Speech SDK NuGet-csomaggal](https://aka.ms/csspeech/nuget) és a Microsoft Visual Studio 2017-tel (annak bármely kiadásával) lehet összeállítani.
+Ebben a cikkben a [SPEECH SDK](speech-sdk.md)használatával fejleszt C# egy univerzális Windows-platform-(UWP-) alkalmazást. A program egy korábban létrehozott és konfigurált robothoz fog csatlakozni, hogy az ügyfélalkalmazás első virtuális asszisztensi élményét engedélyezze. Az alkalmazást a [Speech SDK NuGet-csomaggal](https://aka.ms/csspeech/nuget) és a Microsoft Visual Studio 2017-tel (annak bármely kiadásával) lehet összeállítani.
 
 > [!NOTE]
 > A Universal Windows Platformon olyan alkalmazásokat fejleszthet, amelyek a Windows 10-et támogató minden eszközön futtathatók: PC-n, Xboxon, Surface Hubon stb.
@@ -31,15 +31,15 @@ Ebben a cikkben dolgoznia egy C# univerzális Windows Platform (UWP) alkalmazás
 Ehhez a rövid útmutatóhoz a következőkre van szükség:
 
 * [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/)
-* Egy Azure-előfizetés beszédszolgáltatások kulcs. [Igényeljen ingyenesen egy](get-started.md) vagy hozza létre a [az Azure portal](https://portal.azure.com).
-* Egy korábban létrehozott bot konfigurálva a [közvetlen vonal beszédfelismerő csatornát](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech)
+* Egy Azure-előfizetési kulcs a Speech Serviceshez. [Szerezze be ingyen](get-started.md) , vagy hozza létre a [Azure Portal](https://portal.azure.com).
+* Korábban létrehozott, a [közvetlen vonalas beszéd csatornával](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech) konfigurált robot
 
     > [!NOTE]
-    > A közvetlen vonal Speech (előzetes verzió) egy részhalmazát beszédszolgáltatások régiók jelenleg érhető el. Tekintse meg [hang-és felhőközpontú virtuális asszisztensek támogatott régiók listáját](regions.md#voice-first-virtual-assistants) és ellenőrizze, hogy az erőforrások üzembe ezen régiók egyikében.
+    > A közvetlen vonalas beszéd (előzetes verzió) jelenleg a Speech Services-régiók egy részhalmazában érhető el. Tekintse meg [a támogatott régiók listáját a hangvezérelt virtuális asszisztensekhez](regions.md#voice-first-virtual-assistants) , és gondoskodjon arról, hogy az erőforrások az egyik régióban legyenek telepítve.
 
-## <a name="optional-get-started-fast"></a>Nem kötelező: A gyors kezdéshez
+## <a name="optional-get-started-fast"></a>Nem kötelező: Gyors első lépések
 
-Ez a rövid útmutató azt ismerteti, lépésről lépésre, hogyan, hogy egy egyszerű ügyfélalkalmazás beszédfeldolgozó robotjait csatlakozni. Ha inkább megvásárolná, a rövid útmutatóban használt teljes körű, készen áll-fordítási forráskód érhető el a [beszéd SDK-minták](https://aka.ms/csspeech/samples) alatt a `quickstart` mappát.
+Ez a rövid útmutató részletesen leírja, hogyan lehet egy egyszerű ügyfélalkalmazás számára csatlakozni a beszédfelismerést támogató robothoz. Ha inkább a betöltést választja, az ebben a rövid útmutatóban használt teljes, a fordításra kész forráskód a `quickstart` mappában található [Speech SDK-mintákban](https://aka.ms/csspeech/samples) érhető el.
 
 ## <a name="create-a-visual-studio-project"></a>Visual Studio-projekt létrehozása
 
@@ -47,7 +47,7 @@ Ez a rövid útmutató azt ismerteti, lépésről lépésre, hogyan, hogy egy eg
 
 ## <a name="add-sample-code"></a>Mintakód hozzáadása
 
-1. Az alkalmazás felhasználói felületét az XAML-lel lehet definiálni. Nyissa meg a `MainPage.xaml` fájlt a Megoldáskezelőben. A Tervező XAML nézet, cserélje le a teljes tartalma az alábbiakban.
+1. Az alkalmazás felhasználói felületét az XAML-lel lehet definiálni. Nyissa meg a `MainPage.xaml` fájlt a Megoldáskezelőben. A tervező XAML nézetében cserélje le a teljes tartalmat az alábbira.
 
     ```xml
     <Page
@@ -80,14 +80,14 @@ Ez a rövid útmutató azt ismerteti, lépésről lépésre, hogyan, hogy egy eg
     </Page>
     ```
 
-1. Nyissa meg a háttérkód forrásfájl `MainPage.xaml.cs`. Megtalálhatja azt alatta `MainPage.xaml`. Cserélje le a tartalmát az alábbi kódot. Itt van ez a minta ismerteti:
+1. Nyissa meg a forráskód mögötti `MainPage.xaml.cs`forrásfájlt. A csoport a alatt `MainPage.xaml`található. Cserélje le a tartalmát az alábbi kódra. Ez a példa a következőt fedi le:
 
-    * Using utasításokat a beszéd- és Speech.Dialog névtér
-    * Egy gomb kezelőnek vezetékes mikrofon-hozzáférés biztosításához egy egyszerű megvalósítása
-    * Az üzenetek és a hibák szerepelnek az alkalmazás alapszintű felhasználói felület segítők
-    * Egy alkotóelemeit pont a inicializálási kódot elérési útja, amely később lesz kitöltve
-    * A segítő lejátszása vissza szöveg-hang transzformációs (nem támogatott az adatfolyam)
-    * Egy üres gomb kezelő megkezdeni a figyelést, amely később lesz kitöltve
+    * Utasítások használata a beszédfelismeréshez és a beszédekhez. a párbeszédablak névterei
+    * Egyszerű implementáció a mikrofon elérésének biztosításához, amely a gomb kezelőjéhez van kötve
+    * Alapvető felhasználói felületi segítők az alkalmazásban lévő üzenetek és hibák megjelenítéséhez
+    * Az inicializálási kód elérési útjának kiinduló pontja, amelyet később fel kell tölteni
+    * A szöveg és a beszéd visszajátszására szolgáló segítő (folyamatos átvitel támogatása nélkül)
+    * Egy üres gomb kezelője a figyelés megkezdéséhez, amely később fel lesz töltve
 
     ```csharp
     using Microsoft.CognitiveServices.Speech;
@@ -239,13 +239,13 @@ Ez a rövid útmutató azt ismerteti, lépésről lépésre, hogyan, hogy egy eg
     }
     ```
 
-1. Ezután létre fog hozni a `DialogServiceConnector` az előfizetés adatait. Adja hozzá a következő metódus törzsét `InitializeDialogServiceConnector`, kicserélve a karakterláncokat `YourChannelSecret`, `YourSpeechSubscriptionKey`, és `YourServiceRegion` robotja, beszéd-előfizetéssel, a saját értékeire és [régió](regions.md).
+1. Ezután hozza létre az `DialogServiceConnector` előfizetési adatait. Adja hozzá a következőt a metódus törzséhez `InitializeDialogServiceConnector`, és cserélje le a `YourSpeechSubscriptionKey`karakterláncokat `YourChannelSecret`, és `YourServiceRegion` a saját értékeit a robot, a beszéd előfizetése és a [régió](regions.md)számára.
 
     > [!NOTE]
-    > A közvetlen vonal Speech (előzetes verzió) egy részhalmazát beszédszolgáltatások régiók jelenleg érhető el. Tekintse meg [hang-és felhőközpontú virtuális asszisztensek támogatott régiók listáját](regions.md#voice-first-virtual-assistants) és ellenőrizze, hogy az erőforrások üzembe ezen régiók egyikében.
+    > A közvetlen vonalas beszéd (előzetes verzió) jelenleg a Speech Services-régiók egy részhalmazában érhető el. Tekintse meg [a támogatott régiók listáját a hangvezérelt virtuális asszisztensekhez](regions.md#voice-first-virtual-assistants) , és gondoskodjon arról, hogy az erőforrások az egyik régióban legyenek telepítve.
 
     > [!NOTE]
-    > A robot konfigurálása és lekérése egy csatorna kapcsolatos tudnivalókat lásd: a Bot Framework dokumentációjában [a közvetlen vonal beszédfelismerő csatornát](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech).
+    > A robot konfigurálásával és a csatorna titkos kódjának beolvasásával kapcsolatos információkért tekintse meg a [Direct line Speech Channel](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech)robot Framework dokumentációját.
 
     ```csharp
     // create a DialogServiceConfig by providing a bot secret key and Cognitive Services subscription key
@@ -259,7 +259,7 @@ Ez a rövid útmutató azt ismerteti, lépésről lépésre, hogyan, hogy egy eg
     connector = new DialogServiceConnector(botConfig);
     ```
 
-1. `DialogServiceConnector` a robot tevékenységei, speech recognition eredmények és más információkat több eseményt támaszkodik. Adja hozzá ezeket az eseményeket, Hozzáfűzés, a következő metódus törzsét végén kezelők `InitializeDialogServiceConnector`.
+1. `DialogServiceConnector`számos eseményre támaszkodik, hogy a robot tevékenységeit, beszédfelismerési eredményeit és egyéb információit tájékoztassa. Adja hozzá az események kezelőit, és illessze be a következőt a metódus törzsének `InitializeDialogServiceConnector`végére.
 
     ```csharp
     // ActivityReceived is the main way your bot will communicate with the client and uses bot framework activities
@@ -303,7 +303,7 @@ Ez a rövid útmutató azt ismerteti, lépésről lépésre, hogyan, hogy egy eg
     };
     ```
 
-1. A létrehozott konfigurációt, és az eseménykezelőket, regisztrálva a `DialogServiceConnector` most már ugyanúgy kell figyelnie. Adja hozzá a következő törzse a `ListenButton_ButtonClicked` metódus az a `MainPage` osztály.
+1. A létrehozott konfiguráció és az eseménykezelők regisztrálása után a `DialogServiceConnector` most már csak figyelni kell. Adja hozzá a következőt a `ListenButton_ButtonClicked` metódus `MainPage` törzséhez a osztályban.
 
     ```csharp
     private async void ListenButton_ButtonClicked(object sender, RoutedEventArgs e)
@@ -336,31 +336,31 @@ Ez a rövid útmutató azt ismerteti, lépésről lépésre, hogyan, hogy egy eg
 
 ## <a name="build-and-run-the-app"></a>Az alkalmazás létrehozása és futtatása
 
-1. Hozza létre az alkalmazást. A a menü sáv a Visual Studióban válassza **összeállítása** > **megoldás fordítása**. A kód fordításának hiba nélkül végbe kell mennie.
+1. Hozza létre az alkalmazást. A Visual Studio menüsávján válassza a **Build** > **Build megoldás**elemet. A kód fordításának hiba nélkül végbe kell mennie.
 
     ![A Visual Studio képernyőképe, amelyen ki van emelve a Megoldás fordítása lehetőség](media/sdk/qs-csharp-uwp-08-build.png "Sikeres létrehozás")
 
-1. Indítsa el az alkalmazást. A a menü sáv a Visual Studióban válassza **Debug** > **Start Debugging**, vagy nyomja le az **F5**.
+1. Indítsa el az alkalmazást. A Visual Studio menüsávján válassza a hibakeresés**Indítás hibakeresése** **lehetőséget** > , vagy nyomja le az **F5**billentyűt.
 
     ![A Visual Studio képernyőképe, amelyen ki van emelve a Hibakeresés indítása lehetőség](media/sdk/qs-csharp-uwp-09-start-debugging.png "Hibakeresés indítása az alkalmazáson")
 
-1. Felugrik egy ablak. Az alkalmazásban, válassza ki a **engedélyezése mikrofon**, és a jogosultsági kérés felugró elfogadni.
+1. Felugrik egy ablak. Az alkalmazásban válassza a **mikrofon engedélyezése**lehetőséget, és fogadja el az előugró engedélyezési kérelmet.
 
     ![Az engedélykérés képernyőképe](media/sdk/qs-csharp-uwp-10-access-prompt.png "Hibakeresés indítása az alkalmazáson")
 
-1. Válassza ki **kommunikáljon a robot**, és a egy angol nyelvű kifejezést vagy mondat beszéljen az eszköz mikrofonját. A beszéd továbbított adatok köre a közvetlen vonal beszédfelismerő csatornát, és a megjelenített érzéseket szöveg, amely megjelenik az ablakban.
+1. Válassza **a beszélgetés**a robottal lehetőséget, és beszéljen egy angol kifejezéssel vagy mondattal az eszköz mikrofonjában. A beszéd a közvetlen vonalas beszéd csatornába kerül, és szövegbe kerül, amely az ablakban jelenik meg.
 
-    ![Képernyőkép a sikeres bot kapcsolja](media/voice-first-virtual-assistants/quickstart-cs-uwp-bot-successful-turn.png "egy sikeres bot bekapcsolása")
+    ![Képernyőkép a sikeres bot turnről](media/voice-first-virtual-assistants/quickstart-cs-uwp-bot-successful-turn.png "Sikeres bot-turn")
 
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Létrehozni és üzembe helyezni egy alapszintű robot](https://docs.microsoft.com/azure/bot-service/bot-builder-tutorial-basic-deploy?view=azure-bot-service-4.0)
+> [Alapszintű robot létrehozása és üzembe helyezése](https://docs.microsoft.com/azure/bot-service/bot-builder-tutorial-basic-deploy?view=azure-bot-service-4.0)
 
 ## <a name="see-also"></a>Lásd még
 
-- [Hang-és felhőközpontú virtuális asszisztensek kapcsolatban](voice-first-virtual-assistants.md)
-- [Ingyenes beszédszolgáltatások előfizetési kulcs lekérése](get-started.md)
-- [Egyéni ébresztési szavakat](speech-devices-sdk-create-kws.md)
-- [A közvetlen vonal Speech csatlakozni a robot](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech)
-- [Ismerkedés a C# példák a Githubon](https://aka.ms/csspeech/samples)
+- [A Voice – First virtuális asszisztensek ismertetése](voice-first-virtual-assistants.md)
+- [Ingyenes Speech Services-előfizetési kulcs beszerzése](get-started.md)
+- [Egyéni ébresztési szavak](speech-devices-sdk-create-kws.md)
+- [Közvetlen vonalas beszéd összekötése a robottal](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech)
+- [Minták C# feltárása a githubon](https://aka.ms/csspeech/samples)

@@ -1,7 +1,7 @@
 ---
-title: SDK - beszédszolgáltatások beszédfelismerési eszközök hibaelhárítása
+title: A Speech Devices SDK – Speech szolgáltatás hibáinak megoldása
 titleSuffix: Azure Cognitive Services
-description: Ez a cikk a Speech eszközök SDK használata során esetlegesen jelentkező problémák megoldásához információkat nyújt.
+description: Ez a cikk a Speech Devices SDK használatakor felmerülő problémák megoldásához nyújt segítséget.
 services: cognitive-services
 author: mswellsi
 manager: nitinme
@@ -10,20 +10,20 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: wellsi
-ms.openlocfilehash: f55171a177dfcbebb9bc6df5ce125a8f29494946
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: 9a757402360b4b69e760315a809482be9b4e04d4
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67606299"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68558910"
 ---
 # <a name="troubleshoot-the-speech-devices-sdk"></a>A Beszédeszközök SDK hibaelhárítása
 
-Ez a cikk a Speech eszközök SDK használata során esetlegesen jelentkező problémák megoldásához információkat nyújt.
+Ez a cikk a Speech Devices SDK használatakor felmerülő problémák megoldásához nyújt segítséget.
 
 ## <a name="certificate-failures"></a>Tanúsítványhibák
 
-Ha tanúsítványhibák a Speech Services használata közben, győződjön meg arról, hogy az eszköz rendelkezik-e a helyes dátum és idő:
+Ha a beszédfelismerési szolgáltatások használatakor hibaüzenetet kap, győződjön meg arról, hogy az eszköz rendelkezik a megfelelő dátummal és időponttal:
 
 1. Lépjen a **beállítások**. A **rendszer**válassza **dátum és idő**.
 

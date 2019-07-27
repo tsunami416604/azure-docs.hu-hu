@@ -1,34 +1,34 @@
 ---
-title: 'Gyors útmutató: A Bing Custom Search-végpontot a hívás a C# SDK |} A Microsoft Docs'
+title: 'Gyors útmutató: A Bing Custom Search végpont meghívása C# az SDK használatával | Microsoft Docs'
 titleSuffix: Azure Cognitive Services
-description: A Bing egyéni keresés SDK használata C# az egyéni keresőpéldányok kereséséhez.
+description: Ezzel a rövid útmutatóval megkezdheti a Bing Custom Search példány keresési eredményeinek C# kérését az SDK használatával.
 services: cognitive-services
 author: swhite-msft
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-custom-search
 ms.topic: quickstart
-ms.date: 06/18/2019
+ms.date: 07/26/2019
 ms.author: scottwhi
-ms.openlocfilehash: 0381df439d0c0904e8741bb1f31b179566c72ec5
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: c7ac6d051c8333a6329a3c2ed238d78fb9da4a30
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67206179"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68565715"
 ---
-# <a name="quickstart-call-your-bing-custom-search-endpoint-using-the-c-sdk"></a>Gyors útmutató: A Bing Custom Search-végpontot a hívás a C# SDK 
+# <a name="quickstart-call-your-bing-custom-search-endpoint-using-the-c-sdk"></a>Gyors útmutató: Bing Custom Search végpont meghívása az C# SDK használatával 
 
-Ez a rövid útmutató segítségével megkezdheti a keresési eredmények kér a Bing Custom Search példány használatával az C# SDK-t. Míg a Bing Custom Search REST API-val kompatibilis szinte bármelyik programozási nyelvével, a Bing Custom Search SDK biztosít egy egyszerű módja annak, hogy a szolgáltatás integrálása az alkalmazásokba. Ez a minta forráskódja találhatók [GitHub](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/BingSearchv7/BingCustomWebSearch).
+Ezzel a rövid útmutatóval megkezdheti a Bing Custom Search-példány keresési eredményeinek C# kérelmezését az SDK használatával. Habár a Bing Custom Search REST API kompatibilis a legtöbb programozási nyelvvel, a Bing Custom Search SDK egyszerű módszert kínál a szolgáltatás integrálására az alkalmazásokba. A minta forráskódja a [githubon](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/BingSearchv7/BingCustomWebSearch)található.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Bing Custom Search-példány. Lásd: [a rövid útmutató: Az első Bing Custom Search-példány létrehozása](quick-start.md) további információt.
-- Microsoft [.NET Core](https://www.microsoft.com/net/download/core)
-- Bármely kiadása [Visual Studio 2017-es vagy újabb](https://www.visualstudio.com/downloads/)
+- Egy Bing Custom Search példány. Lásd [: gyors útmutató: További információért hozza létre az](quick-start.md) első Bing Custom Search-példányát.
+- Microsoft [.net Core](https://www.microsoft.com/net/download/core)
+- A [Visual Studio 2017-es vagy újabb](https://www.visualstudio.com/downloads/) verziójának bármely kiadása
 - Linux/MacOS rendszer esetében az alkalmazás a [Monóval](https://www.mono-project.com/) futtatható.
-- A [Bing Custom Search](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Search.CustomSearch/1.2.0) NuGet-csomagot. 
-    - A **Megoldáskezelőben** a Visual Studióban kattintson jobb gombbal a projektre, és válassza ki **NuGet-csomagok kezelése** a menüből. Telepítse az `Microsoft.Azure.CognitiveServices.Search.CustomSearch` csomagot. A NuGet Custom Search csomag telepítésekor a következő szerelvények is települnek:
+- A [Bing Custom Search](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Search.CustomSearch/1.2.0) NuGet-csomag. 
+    - **Megoldáskezelő** a Visual Studióban kattintson a jobb gombbal a projektre, és válassza a **NuGet-csomagok kezelése** menüpontot a menüből. Telepítse az `Microsoft.Azure.CognitiveServices.Search.CustomSearch` csomagot. A NuGet Custom Search csomag telepítésekor a következő szerelvények is települnek:
         - Microsoft.Rest.ClientRuntime
         - Microsoft.Rest.ClientRuntime.Azure
         - Newtonsoft.Json
@@ -38,7 +38,7 @@ Ez a rövid útmutató segítségével megkezdheti a keresési eredmények kér 
 
 ## <a name="create-and-initialize-the-application"></a>Az alkalmazás létrehozása és inicializálása
 
-1. Hozzon létre egy új C# konzolalkalmazást a Visual Studióban. Ez után adja hozzá a projekthez az alábbi csomagokat.
+1. Hozzon létre C# egy új Console-alkalmazást a Visual Studióban. Ez után adja hozzá a projekthez az alábbi csomagokat.
 
     ```csharp
     using System;
@@ -46,22 +46,22 @@ Ez a rövid útmutató segítségével megkezdheti a keresési eredmények kér 
     using Microsoft.Azure.CognitiveServices.Search.CustomSearch;
     ```
 
-2. A fő metódus az alkalmazást hozza létre a search-ügyfél az API-kulccsal.
+2. Az alkalmazás fő metódusában hozza létre a keresési ügyfelet az API-kulccsal.
 
     ```csharp
     var client = new CustomSearchAPI(new ApiKeyServiceClientCredentials("YOUR-SUBSCRIPTION-KEY"));
     ```
 
-## <a name="send-the-search-request-and-receive-a-response"></a>A keresési kéréseket küldeni és fogadni a választ
+## <a name="send-the-search-request-and-receive-a-response"></a>A keresési kérelem elküldése és válasz fogadása
     
-1. Az ügyfél keresési lekérdezés küldése `SearchAsync()` metódust, és mentse a választ. Ne felejtse el a `YOUR-CUSTOM-CONFIG-ID` a példány konfigurációs azonosítóval (az azonosítója annak az [Bing Custom Search portál](https://www.customsearch.ai/)). Ebben a példában a "Xbox" keres.
+1. Küldjön egy keresési lekérdezést az ügyfél `SearchAsync()` metódusának használatával, és mentse a választ. Ne felejtse el lecserélni `YOUR-CUSTOM-CONFIG-ID` a példánya konfigurációs azonosítóját (az azonosítót a [Bing Custom Search portálon](https://www.customsearch.ai/)találja). Ez a példa az "Xbox" kifejezést keresi.
 
     ```csharp
     // This will look up a single query (Xbox).
     var webData = client.CustomInstance.SearchAsync(query: "Xbox", customConfig: Int32.Parse("YOUR-CUSTOM-CONFIG-ID")).Result;
     ```
 
-2. A `SearchAsync()` metódus egy `WebData` objektumot ad vissza. Az objektum segítségével bármely iterálódnak `WebPages` , amely találhatók. Ez a kód megtalálja az első weboldal eredményt, és megjeleníti a weboldal `Name` és `URL` tulajdonságát.
+2. A `SearchAsync()` metódus egy `WebData` objektumot ad vissza. Az objektum használatával megismételheti `WebPages` a talált objektumokat. Ez a kód megtalálja az első weboldal eredményt, és megjeleníti a weboldal `Name` és `URL` tulajdonságát.
 
     ```csharp
     if (webData?.WebPages?.Value?.Count > 0)

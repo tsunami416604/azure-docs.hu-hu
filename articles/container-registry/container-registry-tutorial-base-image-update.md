@@ -10,10 +10,10 @@ ms.date: 06/12/2019
 ms.author: danlep
 ms.custom: seodec18, mvc
 ms.openlocfilehash: 496aa065b3b10eac546dbe41f5a2650acc112d29
-ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/18/2019
+ms.lasthandoff: 07/26/2019
 ms.locfileid: "68310520"
 ---
 # <a name="tutorial-automate-container-image-builds-when-a-base-image-is-updated-in-an-azure-container-registry"></a>Oktatóanyag: A tároló rendszerképének automatizálása, ha alaprendszerkép frissül egy Azure Container registryben 
@@ -62,7 +62,7 @@ GIT_PAT=<personal-access-token> # The PAT you generated in the second tutorial
 
 ## <a name="base-images"></a>Alapként szolgáló rendszerképek
 
-A tárolórendszerképek többségét definiáló Docker-fájlok megadnak egy szülőrendszerképet, amely a rendszerképek alapjául szolgál – ezt gyakran *alapként szolgáló rendszerképnek* nevezik. Az alaplemezképek jellemzően tartalmazzák az operációs rendszert, például az [alpesi Linux][base-alpine] or [Windows Nano Server][base-windows]-t, amelyeken a tároló rétegeinek további részei lesznek alkalmazva. Lehetnek olyan alkalmazás-keretrendszerek is, mint például a [Node. js][Base-Node] vagy a [.net Core][base-dotnet].
+A tárolórendszerképek többségét definiáló Docker-fájlok megadnak egy szülőrendszerképet, amely a rendszerképek alapjául szolgál – ezt gyakran *alapként szolgáló rendszerképnek* nevezik. Az alaplemezképek általában az operációs rendszert tartalmazzák, például az [alpesi Linux][base-alpine] vagy a [Windows Nano Server][base-windows], amelyeken a tároló rétegeinek további részei lesznek alkalmazva. Lehetnek olyan alkalmazás-keretrendszerek is, mint a [Node. js][base-node] vagy a [.net Core][base-dotnet].
 
 ### <a name="base-image-updates"></a>Az alapként szolgáló rendszerképek frissítése
 

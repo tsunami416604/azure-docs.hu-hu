@@ -1,7 +1,7 @@
 ---
-title: Fiók és kulcsok kezelése
-titleSuffix: Language Understanding - Azure Cognitive Services
-description: A két kulcsfontosságú adatokat egy LUIS-fiók olyan felhasználói fiók és az Authoring Tool kulcs. A bejelentkezési adatait az account.microsoft.com webhelyen kezeli. Az Authoring Tool kulcs kezelik a LUIS portál beállítások lapján.
+title: Fiók és kulcsok kezelése – LUIS
+titleSuffix: Azure Cognitive Services
+description: A két kulcsfontosságú adatokat egy LUIS-fiók olyan felhasználói fiók és az Authoring Tool kulcs. Bejelentkezési adatait a account.microsoft.com címen kezelheti. A szerzői kulcsot a LUIS portál beállítások lapján kezelheti.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -11,20 +11,20 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 03/11/2019
 ms.author: diberry
-ms.openlocfilehash: d5a1d7ee3b8b16631f7b919f3aece0848d662e62
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9164c94886488ac7dcadeb7894453daad5d8b322
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65523521"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68560483"
 ---
 # <a name="manage-account-and-authoring-key"></a>Fiók és a kulcs létrehozási kezelése
 
-A két kulcsfontosságú adatokat egy LUIS-fiók olyan felhasználói fiók és az Authoring Tool kulcs. A bejelentkezési adatait felügyelt [account.microsoft.com](https://account.microsoft.com). Az Authoring Tool kulcs felügyelje a [LUIS](luis-reference-regions.md) portál **beállítások** lapot.
+A két kulcsfontosságú adatokat egy LUIS-fiók olyan felhasználói fiók és az Authoring Tool kulcs. A bejelentkezési adatait felügyelt [account.microsoft.com](https://account.microsoft.com). A szerzői kulcsot a [Luis](luis-reference-regions.md) portál **Beállítások** lapján kezelheti.
 
 ## <a name="authoring-key"></a>Kulcs létrehozási
 
-Ez egyetlen, régióspecifikus szerzői a kulcs a **beállítások** lap lehetővé teszi, hogy az összes alkalmazás készítése a [LUIS](luis-reference-regions.md) portál, valamint a [API-k készítése](https://go.microsoft.com/fwlink/?linkid=2092087). Könnyebb áttekinthetőség érdekében győződjön meg arról, hogy az Authoring Tool kulcs engedélyezett egy [korlátozott](luis-boundaries.md) végpont száma havonta kérdezi le.
+Ez az egyetlen, régióspecifikus szerzői kulcs a **Beállítások** lapon lehetővé teszi, hogy az összes alkalmazást a [Luis](luis-reference-regions.md) portálról, valamint a [szerzői API](https://go.microsoft.com/fwlink/?linkid=2092087)-król is elkészítse. Könnyebb áttekinthetőség érdekében győződjön meg arról, hogy az Authoring Tool kulcs engedélyezett egy [korlátozott](luis-boundaries.md) végpont száma havonta kérdezi le.
 
 [![A LUIS-beállítások lap](./media/luis-how-to-account-settings/account-settings.png)](./media/luis-how-to-account-settings/account-settings.png#lightbox)
 
@@ -36,7 +36,7 @@ Az Authoring Tool kulcs csak a [szerzői műveletek terület](luis-reference-reg
 
 ## <a name="reset-authoring-key"></a>Szerzői kulcs visszaállítása
 
-Ha az Authoring Tool kulcs biztonsága sérül, alaphelyzetbe állítja a kulcsot. A kulcs alaphelyzetbe áll az alkalmazások a [LUIS](luis-reference-regions.md) portálon. Ha az Authoring Tool API-kon keresztül az alkalmazások készítésének, értékét módosítani szeretné `Ocp-Apim-Subscription-Key` az új kulccsal.
+Ha az Authoring Tool kulcs biztonsága sérül, alaphelyzetbe állítja a kulcsot. A kulcs alaphelyzetbe áll a [Luis](luis-reference-regions.md) -portál összes alkalmazásán. Ha az Authoring Tool API-kon keresztül az alkalmazások készítésének, értékét módosítani szeretné `Ocp-Apim-Subscription-Key` az új kulccsal.
 
 ## <a name="delete-account"></a>Fiók törlése
 

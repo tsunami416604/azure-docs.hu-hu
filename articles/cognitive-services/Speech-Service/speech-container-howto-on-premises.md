@@ -1,5 +1,5 @@
 ---
-title: Használat Kubernetesszel és Helmmel
+title: Használat a Kubernetes és a Helm-Speech szolgáltatással
 titleSuffix: Azure Cognitive Services
 description: A Kubernetes és a Helm használatával határozza meg a beszéd-szöveg és a szöveg – beszéd tároló rendszerképeit, és létrehozunk egy Kubernetes-csomagot. Ez a csomag egy helyszíni Kubernetes-fürtön lesz üzembe helyezve.
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 7/16/2019
 ms.author: dapine
-ms.openlocfilehash: ba292a7d3bdf58ff78764bc2095fdf4a8c486070
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 06f2db708385c4c3fbf8d005b701b633ac52776a
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68326209"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68559144"
 ---
 # <a name="use-with-kubernetes-and-helm"></a>Használat Kubernetesszel és Helmmel
 
@@ -25,12 +25,12 @@ A helyszíni beszédfelismerési tárolók kezelésének egyik lehetősége a Ku
 
 A következő előfeltételek a helyszíni beszédfelismerési tárolók használata előtt:
 
-|Szükséges|Cél|
+|Kötelező|Cél|
 |--|--|
 | Azure-fiók | Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot][free-azure-account] a virtuális gép létrehozásának megkezdése előtt. |
 | Container Registry hozzáférés | Ahhoz, hogy a Kubernetes lekérje a Docker-rendszerképeket a fürtre, hozzá kell férnie a tároló-beállításjegyzékhez. Először be kell [kérnie a tároló beállításjegyzékének elérését][speech-preview-access] . |
 | Kubernetes CLI | A megosztott hitelesítő adatok a tároló-beállításjegyzékből való kezeléséhez a [KUBERNETES CLI][kubernetes-cli] szükséges. A Kubernetes a Helm előtt is szükséges, amely a Kubernetes csomagkezelő. |
-| Helm parancssori felület | A [Helm parancssori][helm-install] install, you'll also need to initialize Helm, which will install [Tiller][tiller-install]felületének részeként. |
+| Helm parancssori felület | A [Helm CLI][helm-install] telepítésének részeként el kell végeznie a Helm inicializálását is, amely a [kormányrúdat][tiller-install]fogja telepíteni. |
 |Beszédfelismerési erőforrás |A tárolók használatához a következőket kell tennie:<br><br>Egy _Speech_ Azure-erőforrás a társított számlázási kulcs és a számlázási végpont URI azonosítójának lekéréséhez. Mindkét érték elérhető a Azure Portal beszédének áttekintése  és a kulcsok oldalain, és a tároló elindításához szükséges.<br><br>**{API_KEY}** : erőforrás-kulcs<br><br>**{ENDPOINT_URI}** : végpont URI-ja például:`https://westus.api.cognitive.microsoft.com/sts/v1.0`|
 
 ## <a name="the-recommended-host-computer-configuration"></a>Az ajánlott gazdagép-Számítógép konfigurációja
@@ -40,7 +40,7 @@ Hivatkozásként tekintse meg a [beszédfelismerési szolgáltatás tárolóján
 | Szolgáltatás | PROCESSZOR/tároló | Memória/tároló |
 |--|--|--|
 | **Beszéd – szöveg** | egy dekóderhez legalább 1 150 millicores szükséges. Ha az `optimizedForAudioFile` engedélyezve van, akkor a 1 950 millicores megadása kötelező. (alapértelmezett: két dekóder) | Szükséges 2 GB<br>Korlátozott  4 GB |
-| **Szöveg – beszéd** | egy egyidejű kérelemhez legalább 500 millicores szükséges. Ha az `optimizeForTurboMode` engedélyezve van, akkor a 1 000 millicores megadása kötelező. (alapértelmezés: két egyidejű kérelem) | Szükséges 1 GB<br> Korlátozott 2 GB |
+| **Szöveg – beszéd** | egy egyidejű kérelemhez legalább 500 millicores szükséges. Ha az `optimizeForTurboMode` engedélyezve van, akkor a 1 000 millicores megadása kötelező. (alapértelmezés: két egyidejű kérelem) | Szükséges 1 GB<br> Korlátozott 2 GB |
 
 ## <a name="connect-to-the-kubernetes-cluster"></a>Kapcsolódás a Kubernetes-fürthöz
 

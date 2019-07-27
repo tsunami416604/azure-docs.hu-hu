@@ -1,5 +1,5 @@
 ---
-title: Földrajzi hely V2 előre összeállított entitások
+title: Földrajz v2 előre elkészített entitás – LUIS
 titleSuffix: Azure Cognitive Services
 description: Ez a cikk tartalmaz geographyV2 előre összeállított entitások információ a Language Understanding (LUIS).
 services: cognitive-services
@@ -11,14 +11,14 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 05/07/2019
 ms.author: diberry
-ms.openlocfilehash: 5b9ace8a2402d96c4bb54864eb59a56b46d04067
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2628dd30e09f4c52517ccb0a284cda235fb0c33f
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65071970"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68560227"
 ---
-# <a name="geographyv2-prebuilt-entity-for-a-luis-app"></a>GeographyV2 előre összeállított entitások a LUIS-alkalmazások
+# <a name="geographyv2-prebuilt-entity-for-a-luis-app"></a>GeographyV2 előre összeépített entitása egy LUIS-alkalmazáshoz
 Az előre összeállított geographyV2 entitás helyek észleli. Az entitás már be van tanítva, mert nem kell az alkalmazás leképezések GeographyV2 tartalmazó példa beszédmódok hozzáadása. Angol nyelven támogatott GeographyV2 entitás [kulturális környezet](luis-reference-prebuilt-entities.md).
 
 ## <a name="subtypes"></a>Altípus
@@ -35,7 +35,7 @@ A földrajzi helyeket altípus rendelkezik:
 
 ## <a name="resolution-for-geographyv2-entity"></a>GeographyV2 entitás feloldása
 
-### <a name="api-version-2x"></a>API-verzió 2.x
+### <a name="api-version-2x"></a>API 2. x verziója
 
 Az alábbi példa bemutatja a feloldása a **builtin.geographyV2** entitás.
 
@@ -93,9 +93,9 @@ Az alábbi példa bemutatja a feloldása a **builtin.geographyV2** entitás.
 } 
 ```
 
-### <a name="preview-api-version-3x"></a>Az előzetes API verzió 3.x
+### <a name="preview-api-version-3x"></a>Előzetes verziójú API 3. x
 
-A következő JSON-ja az a `verbose` paraméter beállítása `false`:
+A következő JSON `verbose` a paraméter `false`értéke:
 
 ```json
 {
@@ -121,7 +121,7 @@ A következő JSON-ja az a `verbose` paraméter beállítása `false`:
 }
 ```
 
-A következő JSON-ja az a `verbose` paraméter beállítása `true`:
+A következő JSON `verbose` a paraméter `true`értéke:
 
 ```json
 {

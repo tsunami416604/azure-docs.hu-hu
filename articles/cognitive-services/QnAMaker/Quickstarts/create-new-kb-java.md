@@ -1,6 +1,6 @@
 ---
-title: 'Gyors útmutató: Hozzon létre a Tudásbázis - REST, a Java - QnA Maker'
-titlesuffix: Azure Cognitive Services
+title: 'Gyors útmutató: Tudásbázis létrehozása – REST, Java – QnA Maker'
+titleSuffix: Azure Cognitive Services
 description: Ez a Java REST-alapú rövid útmutató végigvezeti egy olyan minta QnA Maker-tudásbázis programozott módon történő létrehozásán, amely a Cognitive Services API-fiók Azure-irányítópultján fog megjelenni.
 services: cognitive-services
 author: diberry
@@ -10,14 +10,14 @@ ms.subservice: qna-maker
 ms.topic: quickstart
 ms.date: 07/16/2019
 ms.author: diberry
-ms.openlocfilehash: 298f7e90bb6848d7b0af032bdaff8724a69c227f
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: 767866fd6768237c4d3a0d7ea422521254414fb3
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68249658"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68559871"
 ---
-# <a name="quickstart-create-a-knowledge-base-in-qna-maker-using-java"></a>Gyors útmutató: Tudásbázis létrehozása a QnA Maker Java használatával
+# <a name="quickstart-create-a-knowledge-base-in-qna-maker-using-java"></a>Gyors útmutató: Tudásbázis létrehozása QnA Maker Java használatával
 
 Ez a rövid útmutató végigvezeti egy minta QnA Maker-tudásbázis programozott módon való létrehozásán. A QnA Maker automatikusan nyer ki kérdéseket és válaszokat a félig strukturált tartalmak, például a gyakori kérdések közül, az [adatforrásokból](../Concepts/data-sources-supported.md). A tudásbázis modelljét az API-kérés törzsében küldött JSON definiálja.
 
@@ -100,7 +100,7 @@ Ismételje a hívást, amíg nem sikerül vagy meg nem hiúsul:
 ```
 
 ## <a name="add-a-main-method"></a>Fő metódus hozzáadása
-A fő metódus létrehozza a tudásbázist, és kérést indít az állapotellenőrzéshez. A művelet azonosítója a fejléc mezőben bejegyzés választ adja vissza **hely**, majd használja az útvonal a GET kérelem részeként. A `while` hurok állapota újrapróbálkozik, ha nem végzi el.
+A fő metódus létrehozza a tudásbázist, és kérést indít az állapotellenőrzéshez. A rendszer visszaadja a művelet AZONOSÍTÓját a POST Response **fejléc mezőjében**, majd az útvonal részeként használja a Get kérelemben. A `while` hurok újrapróbálkozik az állapottal, ha az nem fejeződött be.
 
 [!code-java[Add main method](~/samples-qnamaker-java/documentation-samples/quickstarts/create-knowledge-base/CreateKB.java?range=152-191 "Add main method")]
 

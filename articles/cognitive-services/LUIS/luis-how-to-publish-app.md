@@ -1,5 +1,5 @@
 ---
-title: Alkalmazás közzététele
+title: Alkalmazás közzététele – LUIS
 titleSuffix: Azure Cognitive Services
 description: Ha befejezte a elkészítését és tesztelését a LUIS alkalmazás aktív, tegye elérhetővé számára az ügyfélalkalmazás közzétesszük azt a végpontot.
 services: cognitive-services
@@ -11,14 +11,14 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 01/08/2019
 ms.author: diberry
-ms.openlocfilehash: 22bed877d853c7023f8efe6bfb3dd21b4aa4c8df
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: fdbdb2cd13d131019c4230aa369af31240d25f0d
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60194427"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68563650"
 ---
-# <a name="publish-your-active-trained-app-to-a-staging-or-production-endpoint"></a>Tegye közzé az aktív, betanított alkalmazást egy átmeneti és éles végpontot
+# <a name="publish-your-active-trained-app-to-a-staging-or-production-endpoint"></a>Aktív, betanított alkalmazás közzététele átmeneti vagy éles végponton
 
 Ha befejezte a elkészítését és tesztelését a LUIS alkalmazás aktív, tegye elérhetővé számára az ügyfélalkalmazás közzétesszük azt a végpontot. 
 
@@ -38,7 +38,7 @@ Az alkalmazás közzé van téve a LUIS erőforrások a LUIS portálon hozzá t�
 
 Ha az alkalmazás sikeresen közzé lett téve, egy zöld, sikeres értesítés jelenik meg, a böngésző tetején. A zöld értesítési sáv a végpontok egy hivatkozást is tartalmaz. 
 
-![Közzétételi előugró ablak, és hivatkozás a végpont](./media/luis-how-to-publish-app/publish-success.png)
+![Előugró ablak közzététele a végpontra mutató hivatkozással](./media/luis-how-to-publish-app/publish-success.png)
 
 Ha a végpont URL-címe van szüksége, válassza ki a hivatkozást. Is érheti el a végponti URL-címek kiválasztásával **kezelés** a felső menüben, majd válassza ki **kulcsokat és a végpontok** a bal oldali menüben. 
 
@@ -56,7 +56,7 @@ Hangulatelemzés lehetővé teszi, hogy a LUIS integrálása [Szövegelemzés](h
 
 Nem kell adnia a Text Analytics kulcsot, és nem jár költségekkel számlázási ezt a szolgáltatást az Azure-fiókjába. Ha bejelöli ezt a beállítást, az állandó. 
 
-Véleményadatok egy 1 és 0 a pozitív jelző közötti pontszámot (közelebb 1) vagy negatív (0 közelebb) az adatok a róluk szóló véleményeket. Vélemények címkéjének `positive`, `neutral`, és `negative` támogatott kulturális környezet történik. Jelenleg csak angol nyelvű támogatja a vélemény címkék. 
+Véleményadatok egy 1 és 0 a pozitív jelző közötti pontszámot (közelebb 1) vagy negatív (0 közelebb) az adatok a róluk szóló véleményeket. `positive`A, `neutral`a, a és `negative` a a által támogatott kulturális környezet. Jelenleg csak az angol támogatja a hangulati címkéket. 
 
 A JSON-végpont választ véleményelemzéssel kapcsolatos további információkért lásd: [hangulatelemzés](luis-concept-data-extraction.md#sentiment-analysis)
 

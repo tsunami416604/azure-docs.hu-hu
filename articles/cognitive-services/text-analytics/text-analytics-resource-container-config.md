@@ -1,6 +1,6 @@
 ---
-title: Tárolók konfigurálása
-titlesuffix: Text Analytics - Azure Cognitive Services
+title: Tárolók konfigurálása – Text Analytics
+titleSuffix: Azure Cognitive Services
 description: Szövegelemzés biztosít az egyes tárolók és a egy közös keretrendszer konfigurációs, egyszerűen konfigurálása és kezelése a storage, a naplózás és a telemetriai adatok és a biztonsági beállítások a tárolókhoz.
 services: cognitive-services
 author: IEvangelist
@@ -11,12 +11,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 06/20/2019
 ms.author: dapine
-ms.openlocfilehash: 2a9b9ce5109315d940d6dcadf395489612faddec
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: 65d88e6c201f633a260e31544444341e636e9941
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68356935"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68552259"
 ---
 # <a name="configure-text-analytics-docker-containers"></a>Text Analytics Docker-tárolók konfigurálása
 
@@ -49,9 +49,9 @@ Ez a beállítás a következő helyen érhető el:
 
 * Azure Portal: **Text Analytics** A címkével ellátott áttekintés`Endpoint`
 
-|Szükséges| Name (Név) | Adattípus | Leírás |
+|Kötelező| Name (Név) | Adattípus | Leírás |
 |--|------|-----------|-------------|
-|Igen| `Billing` | Karakterlánc | A kötelező számlázási végpont URI-ja |
+|Igen| `Billing` | Sztring | A kötelező számlázási végpont URI-ja |
 
 ## <a name="eula-setting"></a>Licencfeltételek beállítása
 
@@ -77,10 +77,10 @@ A Text Analytics tárolók nem használnak bemeneti vagy kimeneti csatlakoztatá
 
 A gazdagép csatlakoztatási helye a pontos szintaxisa a gazdagép operációs rendszere függően változik. Ezenkívül a [gazdaszámítógép](how-tos/text-analytics-how-to-install-containers.md#the-host-computer)a csatlakoztatási helye nem lehet elérni a docker szolgáltatás fiókja által használt engedélyek közötti ütközés miatt, és a gazdagép csatlakoztatásához hely engedélyeket. 
 
-|Optional| Name (Név) | Adattípus | Leírás |
+|Választható| Name (Név) | Adattípus | Leírás |
 |-------|------|-----------|-------------|
 |Nem engedélyezett| `Input` | Karakterlánc | Text Analytics tárolók nem használják ezt.|
-|Optional| `Output` | Sztring | A kimeneti csatlakoztatási célját. Az alapértelmezett érték `/output`. Ez az a hely a naplófájlok. Ez magában foglalja a tároló naplóit. <br><br>Példa:<br>`--mount type=bind,src=c:\output,target=/output`|
+|Választható| `Output` | Sztring | A kimeneti csatlakoztatási célját. Az alapértelmezett érték `/output`. Ez az a hely a naplófájlok. Ez magában foglalja a tároló naplóit. <br><br>Példa:<br>`--mount type=bind,src=c:\output,target=/output`|
 
 ## <a name="example-docker-run-commands"></a>Példa docker-parancsok futtatása 
 

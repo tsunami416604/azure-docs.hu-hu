@@ -9,16 +9,18 @@ ms.topic: quickstart
 ms.date: 11/14/2018
 ms.author: mhopkins
 ms.reviewer: seguler
-ms.openlocfilehash: 96da1f8903896f932fa63aa8497eaff69f893559
-ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
+ms.openlocfilehash: 12507ba87148bef6378542feb4ebde3b1c291a72
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68489665"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68565920"
 ---
 # <a name="quickstart-upload-download-and-list-blobs-by-using-the-java-storage-sdk-v10"></a>Gyors útmutató: Blobok feltöltése, letöltése és listázása a Java Storage SDK v10 használatával
 
 A rövid útmutató azt ismerteti, hogyan használható az új Java Storage SDK blokkblobok feltöltésére, letöltésére és listázására egy, az Azure Blob Storage-ben található tárolóban. Az új Java SDK a reaktív programozási modellt használja az RxJavával, amely aszinkron műveleteket biztosít. További tudnivalókat az RxJaváról [a Java virtuális gépekhez készült reaktív bővítményeket](https://github.com/ReactiveX/RxJava) ismertető cikkben olvashat. 
+
+[!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
 
 ## <a name="prerequisites"></a>Előfeltételek
 

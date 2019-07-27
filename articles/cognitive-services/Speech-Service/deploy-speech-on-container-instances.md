@@ -1,7 +1,7 @@
 ---
-title: Futtassa az Azure Container Instances szolgáltatásban
+title: Azure Container Instances-Speech szolgáltatás futtatása
 titleSuffix: Azure Cognitive Services
-description: A Speech Service-tároló üzembe helyezése az Azure-Tárolópéldányon, és tesztelje a szolgáltatást egy webböngészőben.
+description: Üzembe helyezheti a Speech Service-tárolót egy Azure Container-példányon, és tesztelheti egy böngészőben.
 services: cognitive-services
 author: IEvangelist
 manager: nitinme
@@ -10,22 +10,22 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 7/5/2019
 ms.author: dapine
-ms.openlocfilehash: 062765be22135b12abb29ff6f7ce8a772c67adae
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 41589a12f16f330188e2971e3069eb715d1a7163
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67711515"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68559715"
 ---
-# <a name="deploy-the-speech-service-container-to-azure-container-instances"></a>A Speech Service-tároló üzembe helyezése az Azure Container Instances szolgáltatásban
+# <a name="deploy-the-speech-service-container-to-azure-container-instances"></a>A Speech Service-tároló üzembe helyezése Azure Container Instances
 
-Ismerje meg, hogyan helyezhet üzembe a Cognitive Services [beszédszolgáltatás](speech-container-howto.md) tárolót az Azure-bA [Container Instances](https://docs.microsoft.com/azure/container-instances/). Ez az eljárás bemutatja egy Azure Speech Service-erőforrás létrehozása. Majd bemutatjuk, hogy a társított tároló rendszerképének lekérése. Végül azt jelölje ki a azon képessége, hogy a böngésző a két vezénylését. Tárolók használatával is shift figyelmét a fejlesztők számára az alkalmazásfejlesztés inkább összpontosító infrastruktúra kezelése.
+Megtudhatja, hogyan helyezheti üzembe a Cognitive Services [Speech Service](speech-container-howto.md) -tárolót az Azure [Container Instancesban](https://docs.microsoft.com/azure/container-instances/). Ez az eljárás az Azure Speech Service-erőforrások létrehozását mutatja be. Ezután megbeszéljük a társított tároló-rendszerkép kihúzását. Végezetül kiemeljük a két böngészőből való összehangolás lehetőségét. A tárolók használatával az alkalmazások fejlesztésére összpontosíthat a fejlesztők figyelmét arra, hogy az infrastruktúra kezelése helyett.
 
 [!INCLUDE [Prerequisites](../containers/includes/container-preview-prerequisites.md)]
 
-## <a name="request-access-to-the-container-registry"></a>A tároló-beállításjegyzék hozzáférés kérése
+## <a name="request-access-to-the-container-registry"></a>Hozzáférés kérése a tároló beállításjegyzékéhez
 
-Először végezze el, és küldje el a [Cognitive Services beszéd tárolók űrlapot](https://aka.ms/speechcontainerspreview/) hozzáférés kéréséhez a tárolóhoz. 
+Először be kell fejeznie és el kell küldenie a [Cognitive Services Speech containers kérelem űrlapját](https://aka.ms/speechcontainerspreview/) , hogy hozzáférést Kérjen a tárolóhoz. 
 
 [!INCLUDE [Request access to the container registry](../../../includes/cognitive-services-containers-request-access-only.md)]
 

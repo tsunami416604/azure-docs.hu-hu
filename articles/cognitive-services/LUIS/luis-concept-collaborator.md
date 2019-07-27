@@ -1,6 +1,6 @@
 ---
-title: Együttműködés
-titleSuffix: Language Understanding - Azure Cognitive Services
+title: Együttműködés – LUIS
+titleSuffix: Azure Cognitive Services
 description: A LUIS-alkalmazások egyetlen tulajdonosnak és a választható közreműködők, így egyetlen alkalmazást hozzon létre több személy van szükség.
 services: cognitive-services
 author: diberry
@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 06/03/2019
 ms.author: diberry
-ms.openlocfilehash: 294905ccfd0ce8db6da8737277b0ce978ba837ea
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e53ba9f24e40837a823e6012340358113d490f46
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66473512"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68560796"
 ---
 # <a name="collaborating-with-other-authors"></a>A többi szerzőjének közreműködő
 
@@ -31,7 +31,7 @@ Lásd: [Azure Active Directory-bérlő felhasználói](luis-how-to-collaborate.m
 
 ## <a name="luis-app-owner"></a>A LUIS alkalmazás tulajdonosa
 
-A fiók, amely létrehoz egy alkalmazást a tulajdonosa, és minden alkalmazás rendelkezik egy egyetlen tulajdonosa. Az alkalmazás megjelenik a tulajdonos **[beállítások](luis-how-to-collaborate.md)** lapot. A tulajdonos e-mailt kap, a végpont kvóta elérésekor 75 %-a havi korlátot. 
+Az alkalmazást létrehozó fiók a tulajdonos, és minden alkalmazás egyetlen tulajdonossal rendelkezik. A tulajdonos az **[Alkalmazásbeállítások](luis-how-to-collaborate.md)** lapon jelenik meg. A tulajdonos e-mailt kap, ha a végponti kvóta eléri a havi korlát 75%-át. 
 
 ## <a name="authorization-roles"></a>Engedély szerepkörök
 A LUIS tulajdonosok és a egy kivétellel közreműködők nem támogatja a különböző szerepköröket. Az egyetlen fiók, amely törölheti az alkalmazás tulajdonosa.
@@ -52,7 +52,7 @@ A [LUIS](luis-reference-regions.md#luis-website) webhely jelenleg nem biztosít 
 ## <a name="manage-multiple-versions-inside-the-same-app"></a>Alkalmazáson belül több verziók kezelése
 Első lépésként [Klónozás](luis-how-to-manage-versions.md#clone-a-version), a kiindulási verzióról, mindegyik szerző számára. 
 
-Mindegyik Szerző módosítást hajt végre az alkalmazás saját verzióját. Ha mindegyik Szerző elégedett a modellel, JSON-fájlok exportálása az új verziókat.  
+Minden szerző módosítja az alkalmazás saját verzióját. Ha mindegyik Szerző elégedett a modellel, JSON-fájlok exportálása az új verziókat.  
 
 Exportált alkalmazások olyan JSON-formátumú fájlokat, amelyek a módosítások hasonlítható. A fájlokat, és hozzon létre egy egyetlen JSON-fájlt az új verzió össze. Módosítsa a **versionId** tulajdonság a JSON az új, egyesített verzió jelölésére. Importálja azt a verziót az eredeti alkalmazásba. 
 
@@ -63,9 +63,9 @@ Ez a módszer lehetővé teszi, hogy egy aktív verzióját, egy szakasz és egy
 
 Exportált alkalmazások olyan JSON-formátumú fájlokat, amelyek a módosítások az alap exportálás összehasonlíthatók. A fájlokat, és hozzon létre egy egyetlen JSON-fájlt az új verzió össze. Módosítsa a **versionId** tulajdonság a JSON az új, egyesített verzió jelölésére. Importálja azt a verziót az eredeti alkalmazásba.
 
-## <a name="collaborator-roles-vs-entity-roles"></a>A közreműködő szerepkört vs entitás szerepkörök
+## <a name="collaborator-roles-vs-entity-roles"></a>Közreműködő szerepkörök vs entitás szerepkörei
 
-[Entitás szerepkörök](luis-concept-roles.md) a alkalmazni az adatmodellbe, a LUIS alkalmazás. A közreműködő szerepkört authoring hozzáférés szintjei érvényesek. 
+Az [entitás szerepkörei](luis-concept-roles.md) a Luis alkalmazás adatmodelljére vonatkoznak. A közreműködő szerepkörök a szerzői hozzáférés szintjeire vonatkoznak. 
 
 ## <a name="next-steps"></a>További lépések
 

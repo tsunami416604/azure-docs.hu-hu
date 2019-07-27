@@ -1,6 +1,6 @@
 ---
-title: PHP használata Azure SQL-adatbázis lekérdezéséhez |} A Microsoft Docs
-description: Hogyan használható a PHP egy olyan program létrehozásához, amely egy Azure SQL Database-adatbázishoz kapcsolódik, és T-SQL-utasítások használatával lekérdezni.
+title: A PHP használata az Azure SQL Database lekérdezéséhez | Microsoft Docs
+description: Hogyan használható a PHP egy olyan program létrehozásához, amely egy Azure SQL Database-adatbázishoz csatlakozik, és T-SQL-utasítások használatával kérdezi le.
 services: sql-database
 ms.service: sql-database
 ms.subservice: development
@@ -9,62 +9,61 @@ ms.topic: quickstart
 author: stevestein
 ms.author: sstein
 ms.reviewer: v-masebo
-manager: craigg
 ms.date: 02/12/2019
-ms.openlocfilehash: c1ecd298afb7b4e955ec1633fc19162917ee8726
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: a7da65438ffd7db6c43cf2ede7cc52378af056f1
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65792160"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68569214"
 ---
 # <a name="quickstart-use-php-to-query-an-azure-sql-database"></a>Gyors útmutató: PHP használata Azure SQL-adatbázis lekérdezéséhez
 
-Ez a cikk bemutatja, hogyan használható [PHP](https://php.net/manual/en/intro-whatis.php) csatlakozni egy Azure SQL Database-adatbázishoz. Ezután használhatja a T-SQL-utasítások használatával adatokat lekérdezni.
+Ez a cikk bemutatja, hogyan használható a [php](https://php.net/manual/en/intro-whatis.php) egy Azure SQL Database-adatbázishoz való kapcsolódáshoz. Ezután a T-SQL-utasítások segítségével adatokat lehet lekérdezni.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ez a minta, győződjön meg arról, hogy rendelkezik a következő előfeltételek vonatkoznak:
+A minta elvégzéséhez győződjön meg arról, hogy rendelkezik a következő előfeltételekkel:
 
-- Azure SQL-adatbázis. Az alábbi rövid útmutatókban hozhat létre, és válassza az Azure SQL Database egy adatbázis is használja:
+- Azure SQL-adatbázis. Az alábbi rövid útmutatók segítségével hozhat létre és konfigurálhat egy adatbázist Azure SQL Databaseban:
 
   || Önálló adatbázis | Felügyelt példány |
   |:--- |:--- |:---|
-  | Létrehozás| [Portál](sql-database-single-database-get-started.md) | [Portál](sql-database-managed-instance-get-started.md) |
+  | Hozzon létre| [Portál](sql-database-single-database-get-started.md) | [Portál](sql-database-managed-instance-get-started.md) |
   || [Parancssori felület](scripts/sql-database-create-and-configure-database-cli.md) | [Parancssori felület](https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44) |
   || [PowerShell](scripts/sql-database-create-and-configure-database-powershell.md) | [PowerShell](scripts/sql-database-create-configure-managed-instance-powershell.md) |
-  | Konfigurálás | [kiszolgálószintű IP-tűzfalszabály](sql-database-server-level-firewall-rule.md)| [Kapcsolat egy virtuális gépről](sql-database-managed-instance-configure-vm.md)|
-  |||[Helyszíni kapcsolat](sql-database-managed-instance-configure-p2s.md)
-  |Adatok betöltése|Az Adventure Works betöltött száma a rövid útmutató|[Állítsa vissza a Wide World Importers](sql-database-managed-instance-get-started-restore.md)
-  |||Állítsa vissza vagy importálása az Adventure Works [BACPAC](sql-database-import.md) fájlt [GitHub](https://github.com/Microsoft/sql-server-samples/tree/master/samples/databases/adventure-works)|
+  | Konfigurálás | [Kiszolgálói szintű IP-tűzfalszabály](sql-database-server-level-firewall-rule.md)| [Kapcsolódás virtuális gépről](sql-database-managed-instance-configure-vm.md)|
+  |||[Kapcsolódás a webhelyről](sql-database-managed-instance-configure-p2s.md)
+  |Adatok betöltése|Adventure Works betöltve|[Széles körű globális importőrök visszaállítása](sql-database-managed-instance-get-started-restore.md)
+  |||Adventure Works visszaállítása vagy importálása a [BACPAC](sql-database-import.md) -fájlból a [githubról](https://github.com/Microsoft/sql-server-samples/tree/master/samples/databases/adventure-works)|
   |||
 
   > [!IMPORTANT]
-  > Ebben a cikkben a parancsfájlok az Adventure Works adatbázisa használatához készültek. Felügyelt példánnyal Ha az Adventure Works adatbázisa importálása-példány adatbázis, vagy módosítsa a parancsfájlokat ebben a cikkben a Wide World Importers-adatbázis használatára.
+  > A cikkben található parancsfájlok az Adventure Works-adatbázis használatára íródnak. Felügyelt példány esetén importálnia kell az Adventure Works-adatbázist egy példány-adatbázisba, vagy módosítania kell a jelen cikkben szereplő parancsfájlokat a Wide World Importálós adatbázis használatára.
 
-- PHP-kapcsolódó szoftverek az operációs rendszer telepítve:
+- Az operációs rendszerhez telepített PHP-vel kapcsolatos szoftverek:
 
-  - **MacOS**, telepítse a PHP, az ODBC-illesztőprogramját, majd telepítse a PHP-illesztőprogram SQL Serverhez készült. Lásd: [1, 2 és 3. lépés](/sql/connect/php/installation-tutorial-linux-mac).
+  - **MacOS**, telepítse a PHP-t, az ODBC-illesztőt, majd telepítse a PHP-illesztőprogramot a SQL Serverhoz. Lásd: [1., 2. és 3. lépés](/sql/connect/php/installation-tutorial-linux-mac).
 
-  - **Linux**, telepítse a PHP, az ODBC-illesztőprogramját, majd telepítse a PHP-illesztőprogram SQL Serverhez készült. Lásd: [1, 2 és 3. lépés](/sql/connect/php/installation-tutorial-linux-mac).
+  - **Linux**, telepítse a PHP-t, az ODBC-illesztőt, majd telepítse a PHP-illesztőprogramot a SQL Serverhoz. Lásd: [1., 2. és 3. lépés](/sql/connect/php/installation-tutorial-linux-mac).
 
-  - **Windows**, a PHP telepítése az IIS Express és a chocolatey-t, majd telepítse az ODBC-illesztőt és az Sqlcmd-t. Lásd az [1.2 és 1.3 lépést](https://www.microsoft.com/sql-server/developer-get-started/php/windows/).
+  - **Windows**, telepítse a PHP-t IIS Express és a chocolatey-t, majd telepítse az ODBC-illesztőt és a Sqlcmd. Lásd az [1.2 és 1.3 lépést](https://www.microsoft.com/sql-server/developer-get-started/php/windows/).
 
-## <a name="get-sql-server-connection-information"></a>Az SQL server-kapcsolati adatok lekéréséhez
+## <a name="get-sql-server-connection-information"></a>SQL Server-kapcsolatok adatainak beolvasása
 
-Az Azure SQL-adatbázishoz való csatlakozáshoz szükséges kapcsolati információkat kaphat. A következő eljárások szüksége a kiszolgáló teljes nevét vagy a gazdagépnév, az adatbázis neve és a bejelentkezési adatait.
+Az Azure SQL Database-adatbázishoz való kapcsolódáshoz szükséges kapcsolati adatok beolvasása. A közelgő eljárásokhoz szüksége lesz a teljes kiszolgálónévre vagy az állomásnévre, az adatbázis nevére és a bejelentkezési adatokra.
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 
-2. Keresse meg a **SQL-adatbázisok** vagy **SQL felügyelt példányai** lapot.
+2. Navigáljon az **SQL-adatbázisok** vagy az **SQL-felügyelt példányok** lapra.
 
-3. A a **áttekintése** lapon, tekintse át a teljes kiszolgálónevet melletti **kiszolgálónév** egy önálló adatbázis vagy a kiszolgáló teljes neve melletti **gazdagép** számára egy felügyelt a példány. Másolja ki a kiszolgáló nevét vagy az állomásnevet, rámutatnak, és válassza a **másolási** ikonra.
+3. Az **Áttekintés** lapon tekintse át a teljes kiszolgálónevet a **kiszolgáló neve** mellett egyetlen adatbázishoz vagy a felügyelt példányhoz tartozó **gazdagép** melletti teljes kiszolgálónévhez. A kiszolgálónév vagy az állomásnév másolásához vigye a kurzort a fölé, és válassza a **Másolás** ikont.
 
-## <a name="add-code-to-query-database"></a>Adja hozzá a kódot az adatbázis lekérdezése
+## <a name="add-code-to-query-database"></a>Kód hozzáadása az adatbázis lekérdezéséhez
 
 1. Egy tetszőleges szövegszerkesztőben hozza létre a *sqltest.php* nevű új fájlt.  
 
-1. Cserélje le annak tartalmát az alábbira. Majd adja hozzá a megfelelő értékeket a kiszolgáló, adatbázis, a felhasználó és a jelszavát.
+1. Cserélje le a tartalmát a következő kódra. Ezután adja hozzá a kiszolgáló, az adatbázis, a felhasználó és a jelszó megfelelő értékeit.
 
    ```PHP
    <?php
@@ -99,7 +98,7 @@ Az Azure SQL-adatbázishoz való csatlakozáshoz szükséges kapcsolati informá
    php sqltest.php
    ```
 
-1. Ellenőrizze az első 20 sort adja vissza, és az alkalmazás ablak bezárásához.
+1. Ellenőrizze, hogy az első 20 sor vissza lett-e jelenítve, és az alkalmazás ablakának lezárása.
 
 ## <a name="next-steps"></a>További lépések
 
@@ -109,4 +108,4 @@ Az Azure SQL-adatbázishoz való csatlakozáshoz szükséges kapcsolati informá
 
 - [Problémák jelentése és kérdezés](https://github.com/Microsoft/msphpsql/issues)
 
-- [Példa újrapróbálkozási: Az SQL-PHP logikára csatlakoztatása](/sql/connect/php/step-4-connect-resiliently-to-sql-with-php)
+- [Újrapróbálkozási logika példája: Rugalmas csatlakozás az SQL-hez a PHP-vel](/sql/connect/php/step-4-connect-resiliently-to-sql-with-php)

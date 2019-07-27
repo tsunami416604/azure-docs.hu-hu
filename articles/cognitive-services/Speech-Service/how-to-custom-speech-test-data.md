@@ -1,7 +1,7 @@
 ---
-title: Egyéni beszédfelismerés – beszédszolgáltatások a Tesztadatok előkészítéséhez
-titlesuffix: Azure Cognitive Services
-description: Tesztel, hogy hogyan pontos Microsoft beszédfelismerés megtekintéséhez vagy saját modellek betanítása, kell adatokat (a hang-és/vagy szöveg formájában). Ezen a lapon bemutatjuk, milyen típusú adatokat, azok használata és kezelésük módjával.
+title: Custom Speech beszédfelismerési szolgáltatás tesztelési célú feldolgozásának előkészítése
+titleSuffix: Azure Cognitive Services
+description: Függetlenül attól, hogy a Microsoft beszédfelismerés pontos felismerése vagy a saját modelljeinek betanítása milyen módon történik, szüksége lesz az adatokra (hang és/vagy szöveg formájában). Ezen az oldalon bemutatjuk az adattípusokat, azok használatát, valamint a kezelésük módját.
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -10,80 +10,80 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: 6e1ffa11456fc6a021e370d674624d297463ac73
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: 8821ce46c65ac8bca36f006ef77bcaf475b0573d
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67603182"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68559618"
 ---
-# <a name="prepare-data-for-custom-speech"></a>Adatok előkészítése az egyéni beszéd
+# <a name="prepare-data-for-custom-speech"></a>Custom Speechi adatfeldolgozás előkészítése
 
-Tesztel, hogy hogyan pontos Microsoft beszédfelismerés megtekintéséhez vagy hang- és szöveg formájában adatokat kell a saját modellek betanítása. Ezen a lapon bemutatjuk, milyen típusú adatokat, azok használata és kezelésük módjával.
+Függetlenül attól, hogy a Microsoft beszédfelismerés pontos felismerése vagy a saját modelljeinek betanítása milyen módon történik, hang és szöveg formájában kell megadnia az adatokhoz. Ezen az oldalon bemutatjuk az adattípusokat, azok használatát, valamint a kezelésük módját.
 
 ## <a name="data-types"></a>Adattípusok
 
-Ez a táblázat felsorolja az elfogadott adattípusok, ha adatokat kell használni, és az ajánlott mennyiség. Nem minden adattípus egy modell létrehozásához szükséges. Adatok változhatnak attól függően, hogy egy teszt létrehozásakor és a modell tanítása.
+Ez a táblázat felsorolja az elfogadott adattípusokat, valamint az egyes adattípusok használatát, valamint az ajánlott mennyiséget. Nem minden adattípus szükséges a modell létrehozásához. Az adatkövetelmények attól függően változnak, hogy szeretne-e tesztet létrehozni vagy egy modellt betanítani.
 
-| Adattípus | A tesztelési használt | Mennyiség | Használt képzéshez | Mennyiség |
+| Adattípus | Tesztelési módszer | Mennyiség | Képzéshez használatos | Mennyiség |
 |-----------|-----------------|----------|-------------------|----------|
-| [Audio](#audio-data-for-testing) | Igen<br>Használt vizuális ellenőrzése | 5 + hangfájlok | Nem | N/a |
-| [Hang + emberi címkével szövegekben](#audio--human-labeled-transcript-data-for-testingtraining) | Igen<br>Pontosság értékeli ki, hogy | 0,5 -, hang 5 óra | Igen | 1 - audio 1000 órányi |
-| [Kapcsolódó szöveg](##related-text-data-for-training) | Nem | N/a | Igen | 1 – 200 MB kapcsolódó szöveg |
+| [Audio](#audio-data-for-testing) | Igen<br>Vizuális vizsgálathoz használatos | 5 + hangfájl | Nem | N/a |
+| [Hang + emberi – címkézett átiratok](#audio--human-labeled-transcript-data-for-testingtraining) | Igen<br>A pontosság kiértékeléséhez használatos | 0,5 – 5 órányi hang | Igen | 1 – 1 000 órányi hang |
+| [Kapcsolódó szöveg](##related-text-data-for-training) | Nem | N/a | Igen | 1-200 MB kapcsolódó szöveg |
 
-Fájlok kell egy adatkészletbe típusa szerint csoportosítva és feltöltött zip-fájlként. Egyes adatkészletek csak egyetlen adattípushoz tartalmazhat.
+A fájlokat típus szerint kell csoportosítani egy adatkészletbe, és zip-fájlként kell feltölteni. Az egyes adatkészletek csak egyetlen adattípust tartalmazhatnak.
 
 ## <a name="upload-data"></a>Adatok feltöltése
 
-Amikor készen áll az adatok feltöltéséhez, kattintson az **adatfeltöltés** indítsa el a varázslót, és az első adatkészlet létrehozásához. A rendszer felszólítja az adatkészlet egy beszéd adattípus kiválasztása lehetővé teszi az adatok feltöltése előtt.
+Amikor készen áll az adatok feltöltésére, kattintson az **adatok feltöltése** gombra a varázsló indításához és az első adatkészlet létrehozásához. Az adatok feltöltésének engedélyezése előtt meg kell adnia, hogy ki kell választania egy beszédfelismerési adattípust az adatkészlethez.
 
-![Válassza ki a hangot a Speech portálról](./media/custom-speech/custom-speech-select-audio.png)
+![Hang kiválasztása a Speech Portalon](./media/custom-speech/custom-speech-select-audio.png)
 
-Minden egyes feltöltött adatkészlet meg kell felelnie az Ön által választott adattípus követelményeinek. Fontos megfelelően formázza az adatokat, mielőtt fel lesz töltve. Ez biztosítja, hogy az adatok pontos általi feldolgozásának a Custom Speech service. A következő szakaszokban felsorolt követelmények.
+A feltöltött adatkészleteknek meg kell felelniük a választott adattípusra vonatkozó követelményeknek. Fontos, hogy a feltöltés előtt megfelelően formázza az adatait. Ez biztosítja, hogy az Custom Speech szolgáltatás pontosan dolgozza fel az adatfeldolgozást. A követelmények a következő részekben találhatók.
 
-Miután feltöltötte az adatkészlet, több lehetőség közül választhat:
+Az adatkészlet feltöltése után néhány lehetőség közül választhat:
 
-* Navigálhat a **tesztelés** lapra, és vizuálisan megvizsgálják a csak az audio- és audio- és emberi címkével beszédátírási adatokat.
-* Navigálhat a **képzési** lapra, és hang + emberi beszédátírási adatok és a kapcsolódó szöveges adatok használata egy egyéni modell betanításához.
+* Navigáljon a Testing ( **tesztelés** ) lapra, és vizuálisan vizsgálja meg a csak hang-és hang-és emberi-címkézett átírási adatok.
+* Az egyéni modell betanításához navigáljon a **betanítás** lapra, és használja a hang + emberi átírási adatok vagy a kapcsolódó szöveges adatok használatát.
 
-## <a name="audio-data-for-testing"></a>Tesztelési hívásaiból
+## <a name="audio-data-for-testing"></a>Hangadatok teszteléshez
 
-Hang adata optimális a Microsoft baseline hang-szöveg transzformációs modell vagy egy egyéni modell pontosságának ellenőrzésére. Tartsa szem előtt, hívásaiból vizsgálhatja meg a beszédfelismerés egy adott modell teljesítményének tartományállapot pontosságát szolgál. Ha a modell pontosságát számszerűsítése keres, használja a [hang + emberi címkével beszédátírási adatok](#audio--human-labeled-transcript-data-for-testingtraining).
+A hangadatok optimálisan tesztelik a Microsoft alapvető beszédfelismerési modelljét vagy egyéni modelljét. Ne feledje, hogy a hangadatok segítségével megvizsgálhatja a beszéd pontosságát egy adott modell teljesítményének tekintetében. Ha számszerűsíteni szeretné a modell pontosságát, használja a [hang + emberi feliratú átírási adatok](#audio--human-labeled-transcript-data-for-testingtraining)lehetőséget.
 
-Ez a táblázat segítségével győződjön meg arról, hogy a hangfájlok a segítségével egyéni beszédfelismerési megfelelően formázott:
+Ezzel a táblázattal ellenőrizheti, hogy a hangfájlok formátuma helyesen van-e formázva a Custom Speech használatával:
 
 | Tulajdonság | Érték |
 |----------|-------|
-| Fájlformátum | RIFF (WAV) |
-| Mintavételi frekvencia | 8000 Hz vagy 16 000 Hz |
+| Fájl formátuma | RIFF (WAV) |
+| Mintavételi frekvencia | 8 000 Hz vagy 16 000 Hz |
 | Csatornák | 1 (mono) |
-| Hang maximális hossza | 2 óra |
-| Minta formátumával | A PCM, 16-bit |
+| Maximális hossz/hang | 2 óra |
+| Minta formátuma | PCM, 16 bites |
 | Archív formátum | .zip |
-| Maximális archívum mérete | 2 GB |
+| Archiválás maximális mérete | 2 GB |
 
-Ha a hang nem elégíti ki ezeket a tulajdonságokat, vagy ellenőrizze, hogy ha nem szeretné, javasoljuk, hogy letöltése [sox](http://sox.sourceforge.net) ellenőrzéséhez vagy a hanganyag konvertálni. Az alábbiakban néhány példát, hogyan ezeket a tevékenységeket mindegyike végezhető el a parancssorban:
+Ha a hang nem elégíti ki ezeket a tulajdonságokat, vagy ha igen, akkor javasoljuk, hogy a rendszer a hanganyagot [a letöltéshez](http://sox.sourceforge.net) . Az alábbiakban néhány példát láthat arra, hogyan végezheti el ezeket a tevékenységeket a parancssorból:
 
-| Tevékenység | Leírás | SOx parancs |
+| Tevékenység | Leírás | SOx-parancs |
 |----------|-------------|-------------|
-| Formát zvuku ellenőrzése | Ez a parancs használatával ellenőrizze a hangfájl formátuma. | `sox --i <filename>` |
-| Formát zvuku konvertálása | Használja ezt a parancsot egy csatornát, 16 bites, a hangfájl átalakítása 16 KHz. | `sox <input> -b 16 -e signed-integer -c 1 -r 16k -t wav <output>.wav` |
+| Hangformátum keresése | Ezzel a paranccsal ellenőrizhető a hangfájl formátuma. | `sox --i <filename>` |
+| Hangformátum konvertálása | Ezzel a paranccsal a hangfájlt egyetlen csatornára, 16 bites, 16 KHz-re konvertálhatja. | `sox <input> -b 16 -e signed-integer -c 1 -r 16k -t wav <output>.wav` |
 
-## <a name="audio--human-labeled-transcript-data-for-testingtraining"></a>Hang + emberi címkével szöveges adatok tesztelés/képzés
+## <a name="audio--human-labeled-transcript-data-for-testingtraining"></a>Hang + emberi-feliratú átirati adatok tesztelési/betanítási célokra
 
-Azoknak a Microsoft hang-szöveg transzformációs pontossága pontosságának, a zenei fájlok feldolgozása során, meg kell adnia az emberi címkével beszédátírás (a word-szavanként) az összehasonlítása. Noha az emberi címkével beszédátírási gyakran időigényes, szükség kiértékelni a pontosság és a használati esetek a modell betanításához. Tartsa szem előtt, felismerés fejlesztések csak akkor olyan jól, mint a megadott adatokat. Éppen ezért fontos, hogy csak a magas színvonalú szövegekben lesznek feltöltve.  
+Ha a Microsoft beszéd-szöveg pontosságát szeretné mérni a hangfájlok feldolgozásakor, az összehasonlításhoz meg kell adnia az emberi címkével ellátott átírásokat (Word-by-Word). Míg az emberi címkével ellátott átírás gyakran időigényes, a pontosság kiértékelése és a modell betanítása szükséges a használati esetekhez. Ne feledje, hogy az elismerés fejlesztése csak a megadott adatszolgáltatások esetében lesz megfelelő. Ezért fontos, hogy csak a kiváló minőségű átiratok legyenek feltöltve.  
 
-| Tulajdonság | Érték |
+| Tulajdonság | Value |
 |----------|-------|
-| Fájlformátum | RIFF (WAV) |
-| Mintavételi frekvencia | 8000 Hz vagy 16 000 Hz |
+| Fájl formátuma | RIFF (WAV) |
+| Mintavételi frekvencia | 8 000 Hz vagy 16 000 Hz |
 | Csatornák | 1 (mono) |
-| Hang maximális hossza | 60 s |
-| Minta formátumával | A PCM, 16-bit |
+| Maximális hossz/hang | 60 s |
+| Minta formátuma | PCM, 16 bites |
 | Archív formátum | .zip |
-| Zip maximális mérete | 2 GB |
+| Maximális zip-méret | 2 GB |
 
-Problémák elhárításához, mint a word törlése vagy helyettesítő, jelentős mennyiségű adat van szükség a felismerés javítása. Általában azt javasoljuk, hogy adja meg a word-word beszédátírás hang nagyjából 10, 1000 órányi. Az összes WAV fájl átiratát egyetlen, egyszerű szöveges fájlnak kell tartalmaznia. Az átiratfájl minden sorának egy hangfájl nevét és az annak megfelelő átiratot kell tartalmaznia. A fájlnevet és az átiratot tabulátorral (\t) kell elválasztani.
+A Word törlési vagy helyettesítési problémák megoldásához jelentős mennyiségű adattal kell foglalkoznia az elismerés javítása érdekében. Általánosságban elmondható, hogy nagyjából 10 – 1 000 órányi hanganyagot biztosít a Word-by-Word típusú átírásoknak. Az összes WAV fájl átiratát egyetlen, egyszerű szöveges fájlnak kell tartalmaznia. Az átiratfájl minden sorának egy hangfájl nevét és az annak megfelelő átiratot kell tartalmaznia. A fájlnevet és az átiratot tabulátorral (\t) kell elválasztani.
 
   Példa:
 ```
@@ -94,28 +94,28 @@ Problémák elhárításához, mint a word törlése vagy helyettesítő, jelent
 > [!NOTE]
 > Az átiratnak UTF-8 BOM (bájtsorrendjelzés) kódolásúnak kell lennie.
 
-Az átiratokat a rendszer normalizálja, hogy fel tudja őket dolgozni. Bizonyos fontosabb normalizálási tevékenységeket azonban a felhasználónak kell végrehajtania az adatok a Custom Speech Service szolgáltatásba való feltöltése _előtt_. A megfelelő nyelvet, amikor előkészíti a beszédátírás használatára, lásd: [egy emberi címkével beszédátírási létrehozása](how-to-custom-speech-human-labeled-transcriptions.md)
+Az átiratokat a rendszer normalizálja, hogy fel tudja őket dolgozni. Bizonyos fontosabb normalizálási tevékenységeket azonban a felhasználónak kell végrehajtania az adatok a Custom Speech Service szolgáltatásba való feltöltése _előtt_. Az átírások előkészítésekor használandó megfelelő nyelvet lásd: [Human-címkével ellátott átirat létrehozása](how-to-custom-speech-human-labeled-transcriptions.md)
 
-Összegyűjtött a zenei fájlok és a megfelelő beszédátírás, miután azok kell csomagolható egyetlen .zip-fájlként előtt a Custom Speech-portálra való feltöltését. Ez a három hangfájlok és a egy emberi címkével beszédátírási fájl egy példa adatkészlet:
+A hangfájlok és a megfelelő átírások gyűjtése után egyetlen. zip-fájlként kell őket becsomagolni a Custom Speech portálra való feltöltés előtt. Ez egy példaként szolgáló adatkészlet három hangfájllal és egy emberi címkével ellátott átírási fájllal:
 
-![Válassza ki a hangot a Speech portálról](./media/custom-speech/custom-speech-audio-transcript-pairs.png)
+![Hang kiválasztása a Speech Portalon](./media/custom-speech/custom-speech-audio-transcript-pairs.png)
 
-## <a name="related-text-data-for-training"></a>Kapcsolódó szöveges adatok képzéshez
+## <a name="related-text-data-for-training"></a>Kapcsolódó szöveges adat a betanításhoz
 
-Ha termékneveket vagy egyedi funkciókat, és azt szeretné, hogy helyesen ismeri, fontos képzéshez kapcsolódó szöveges adatokat. Kapcsolódó szöveges adatok kétféle felismerés javításának adható meg:
+Ha olyan terméknév vagy szolgáltatás van, amely egyedi, és szeretné meggyőződni arról, hogy helyesen vannak-e felismerhetőek, fontos, hogy a kapcsolódó szöveges információkat is tartalmazza a betanításhoz. A következő két típusú kapcsolódó szöveges adat adható meg az elismerés javítása érdekében:
 
-| Adattípus | Hogyan növeli az ezeket az adatokat a felismerés |
+| Adattípus | Az adatfelismerés javítása |
 |-----------|------------------------------------|
-| Beszédmódok, illetve mondatok | Ezek is javítják a pontossága FELISMERVE terméknevekhez vagy iparág-specifikus szószedet mondatok kontextusában. |
-| Kiejtés | Ezek nem szokványos feltételek, betűszavakat vagy más szavakat nem definiált kiejtés írásmódja javíthatja. |
+| Hosszúságú kimondott szöveg és/vagy mondatok | Ezek a termékek neveinak felismerése, illetve az iparágra jellemző Szószedet a mondatok kontextusában javíthatják a pontosságot. |
+| Kiejtés | Ezek a meghatározatlan kifejezések, mozaikszavak vagy más szavak kiejtését javítják a nem definiált kiejtésekkel. |
 
-Beszédmódok is meg kell adni egy vagy több szöveges fájlok. Minél közelebb a szöveges adatokat, hogy mi lesz beszélt, annál nagyobb a valószínűségét, hogy a pontosság növelése. Egyetlen szöveges fájlból kiejtés meg kell adni. Minden egyetlen zip-fájlként csomagolva és feltöltött a Custom Speech-portál.
+A hosszúságú kimondott szöveg egyetlen vagy több szövegfájlként is megadhatók. Minél közelebb van a szöveges adatokhoz, hogy mi lesz a beszéd, annál nagyobb a valószínűsége annak, hogy javul a pontosság. A kiejtéseket egyetlen szövegfájlként kell megadni. Minden egyes zip-fájlként becsomagolható, és a Custom Speech portálra tölthető fel.
 
-### <a name="guidelines-to-create-an-utterances-file"></a>A szabályokat, utterances fájl létrehozása
+### <a name="guidelines-to-create-an-utterances-file"></a>Útmutató hosszúságú kimondott szöveg-fájl létrehozásához
 
-Szeretne létrehozni egy egyéni modell használatával kapcsolatos szöveget, kell adhatja meg, a minta kimondott szöveg. Ezeket a kimondott szöveg teljes mondatokból vagy nyelvtanilag javítsa nem szükséges, de kell pontosan tükrözik a kimondott bemeneti várt éles környezetben. Ha azt szeretné, hogy bizonyos feltételek súly növekedett, a kapcsolódó adatfájlt, amely tartalmazza ezeket a feltételeket több mondatok is hozzáadhat.
+Ha kapcsolódó szöveggel szeretne egyéni modellt létrehozni, meg kell adnia a minta hosszúságú kimondott szöveg listáját. Ezeknek a hosszúságú kimondott szöveg nem kell teljes mondatot vagy nyelvtanilag helyesnek lenniük, de pontosan tükröznie kell az éles környezetben várhatóan megjelenő adatokat. Ha azt szeretné, hogy bizonyos kifejezések nagyobb súlyt adjanak, több mondatot is hozzáadhat a kapcsolódó adatfájlhoz, amely tartalmazza ezeket az adott feltételeket.
 
-Ez a táblázat segítségével győződjön meg arról, hogy a kapcsolódó adatfájlt kimondott szöveg formátuma helytelen:
+Ezzel a táblázattal ellenőrizheti, hogy a hosszúságú kimondott szöveg kapcsolódó adatfájlja helyesen van-e formázva:
 
 | Tulajdonság | Érték |
 |----------|-------|
@@ -123,47 +123,47 @@ Ez a táblázat segítségével győződjön meg arról, hogy a kapcsolódó ada
 | Kimondott szövegek száma soronként | 1 |
 | Maximális fájlméret | 200 MB |
 
-Emellett érdemes figyelembe a következő korlátozásokkal:
+Emellett a következő korlátozásokat is érdemes figyelembe vennie:
 
-* Kerülje a ismétlődő karaktereket tartalmaz a több mint négy alkalommal. Például: "aaaa" vagy "uuuu".
-* Ne használja a speciális karakterek vagy UTF-8 karakter U + 00A1 felett.
-* URI-k a rendszer elutasítja.
+* Ne ismételje meg a karaktereket négyszer. Például: "AAAA" vagy "uuuu".
+* Ne használjon speciális karaktereket és UTF-8 karaktereket az U + 00A1 fölé.
+* Az URI-k el lesznek utasítva.
 
-### <a name="guidelines-to-create-a-pronunciation-file"></a>Irányelvek írásmódja fájl létrehozása
+### <a name="guidelines-to-create-a-pronunciation-file"></a>A kiejtési fájl létrehozásához szükséges irányelvek
 
-Standard kiejtés, a felhasználók lép fel vagy használata nélkül nem szokványos feltételek esetén megadhat egy egyéni írásmódja fájl felismerés javítása érdekében.
+Ha nem általános feltételek vannak a felhasználók által tapasztalt vagy használt általános kiejtés nélkül, megadhat egy egyéni kiejtési fájlt, amely javítja az elismerést.
 
 > [!IMPORTANT]
-> A funkció használatához a gyakori szavakat írásmódja módosítása nem ajánlott.
+> A szolgáltatás használata nem ajánlott a gyakori szavak kiejtésének megváltoztatására.
 
-Az egyes példák a kimondott utterance (kifejezés) és a egy egyéni kiejtés Ez tartalmazza:
+Ide tartoznak a kimondott kifejezésekre vonatkozó példák, valamint a következő egyéni kiejtések:
 
-| Felismert/megjelenített képernyő | Használja a beszélt űrlap |
+| Felismert/megjelenített űrlap | Használja a beszélt űrlap |
 |--------------|--------------------------|
 | 3CPO | három c p o |  
 | CNTK | c n t k |
-| IEEE | i háromszoros e |
+| IEEE | i Triple e |
 
-A beszédből kinyert képernyő az a betűvel fonetikus során. Betűvel, szavak, szótagokat határoznak vagy mindhárom kombinációja állhat.
+A kimondott űrlap a fonetikus sorszám. Betűből, szóból, szótagból vagy mindhárom kombinációból állhat.
 
-Testre szabott írásmódja (en-US) angol és német (de-DE) érhető el. Ez a táblázat bemutatja a támogatott karakterek nyelv szerint:
+A testreszabott kiejtés angol (en-US) és német (de-DE) nyelven érhető el. Ez a táblázat a támogatott karaktereket mutatja nyelv szerint:
 
 | Nyelv | Területi beállítás | Karakterek |
 |----------|--------|------------|
 | Angol | en-US | a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, w, x, y, z |
 | német | de-DE | ä, ö, ü, a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, w, x, y, z |
 
-Ez a táblázat segítségével győződjön meg arról, hogy a kapcsolódó adatfájlt kiejtés megfelelően van formázva. Írásmódja fájlok kicsik, és nem lehet hosszabb néhány Tudásbázis.
+Ezzel a táblázattal ellenőrizheti, hogy a kiejtésekhez kapcsolódó adatfájl megfelelően van-e formázva. A kiejtési fájlok kicsik, és nem léphetnek túl néhány Tudásbázis.
 
 | Tulajdonság | Érték |
 |----------|-------|
-| Szövegkódolás | UTF-8 Anyagjegyzék (ANSI is támogatott angol nyelven) |
-| minden sorában kiejtés száma | 1 |
-| Maximális fájlméret | 1 MB (ingyenes szint 1 KB) |
+| Szövegkódolás | UTF-8 AJ (ANSI is támogatott angol nyelven) |
+| kiejtések száma soronként | 1 |
+| Maximális fájlméret | 1 MB (1 KB ingyenes szinten) |
 
 ## <a name="next-steps"></a>További lépések
 
-* [Az adatok vizsgálata](how-to-custom-speech-inspect-data.md)
-* [Az adatok](how-to-custom-speech-evaluate-data.md)
-* [A modell tanítása](how-to-custom-speech-train-model.md)
+* [Az adatai ellenőrzése](how-to-custom-speech-inspect-data.md)
+* [Az adatai kiértékelése](how-to-custom-speech-evaluate-data.md)
+* [A modell betanítása](how-to-custom-speech-train-model.md)
 * [A modell üzembe helyezése](how-to-custom-speech-deploy-model.md)

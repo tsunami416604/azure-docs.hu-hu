@@ -1,7 +1,7 @@
 ---
-title: Hang-szöveg transzformációs API-referencia (REST) – beszédszolgáltatások
+title: Beszéd és szöveg közötti API-referenciák (REST) – beszédfelismerési szolgáltatás
 titleSuffix: Azure Cognitive Services
-description: Ismerje meg, hogyan használja a hang-szöveg transzformációs REST API-t. Ebben a cikkben megismerkedhet engedélyezési beállítások, a lekérdezési beállítások, struktúra kérést és választ kapnak.
+description: Megtudhatja, hogyan használhatja a beszéd – szöveg REST API. Ebben a cikkben megismerkedhet engedélyezési beállítások, a lekérdezési beállítások, struktúra kérést és választ kapnak.
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -10,19 +10,19 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: 9d967fa4d5ba54e4470dadc5e797067454e1769a
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: 6324c00d9b85a13ef6e69185e3b380b20f761f3b
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67606358"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68552974"
 ---
-# <a name="speech-to-text-rest-api"></a>Hang-szöveg transzformációs REST API-val
+# <a name="speech-to-text-rest-api"></a>Beszéd – szöveg REST API
 
-Alternatív megoldásként a [beszéd SDK](speech-sdk.md), beszédszolgáltatások engedélyezése alakíthatja át a hang-szöveg transzformációs egy REST API használatával. Minden elérhető végpontot nem egy régió tartozik. Az alkalmazás egy előfizetési kulcsot szeretné használni a végpont szükséges.
+A Speech [SDK](speech-sdk.md)a beszédfelismerési szolgáltatás alternatívájaként lehetővé teszi, hogy REST API használatával alakítsa át a beszédfelismerést a szöveggé. Minden elérhető végpontot nem egy régió tartozik. Az alkalmazás egy előfizetési kulcsot szeretné használni a végpont szükséges.
 
-A hang-szöveg transzformációs REST API-val, mielőtt megismerése:
-* A REST API-kérelmeket csak hang 10 másodperces tartalmazhat.
+A beszéd – szöveg REST API használata előtt értse fel a következőket:
+* A REST API használó kérelmek csak a rögzített hang 10 másodpercét tartalmazhatják.
 * A hang-szöveg transzformációs REST API-t csak végső eredményt adja vissza. Részleges eredményeket nem tartozik.
 
 Küldenek, hosszabb hang esetében az alkalmazás követelmény, fontolja meg a [beszéd SDK](speech-sdk.md) vagy [beszédátírási batch](batch-transcription.md).
@@ -51,12 +51,12 @@ Ez a táblázat felsorolja a szükséges és választható fejlécek a hang-szö
 
 |Fejléc| Leírás | Kötelező / választható |
 |------|-------------|---------------------|
-| `Ocp-Apim-Subscription-Key` | Az előfizetési kulcs beszédszolgáltatások. | Vagy a fejléc vagy `Authorization` megadása kötelező. |
+| `Ocp-Apim-Subscription-Key` | A Speech Services-előfizetési kulcs. | Vagy a fejléc vagy `Authorization` megadása kötelező. |
 | `Authorization` | Egy engedélyezési jogkivonatot előzi meg a word `Bearer`. További információért lásd: [Hitelesítés](#authentication). | Vagy a fejléc vagy `Ocp-Apim-Subscription-Key` megadása kötelező. |
 | `Content-type` | A formátum és a megadott hang adatok kodek ismerteti. Elfogadott értékek a következők `audio/wav; codecs=audio/pcm; samplerate=16000` és `audio/ogg; codecs=opus`. | Szükséges |
 | `Transfer-Encoding` | Megadja, hogy darabolt hang adatot küld, ahelyett, hogy egyetlen fájlt. Csak akkor használja ezt a fejlécet, ha hang adatokat. | Optional |
-| `Expect` | Ha használja a darabolásos átvitel, küldjön `Expect: 100-continue`. A beszédszolgáltatások igazolja a kiindulási kérelemhez, és további adatokat várja.| Szükséges darabolt hang adatot küldenek. |
-| `Accept` | Ha meg van adva, kell lennie `application/json`. A beszédszolgáltatásai JSON eredményez. Bizonyos webes kérés keretrendszereket, adjon meg egy nem kompatibilis alapértelmezett értéket, ha nincs megadva, így az mindig célszerű tartalmazzák `Accept`. | Nem kötelező, de ajánlott. |
+| `Expect` | Ha használja a darabolásos átvitel, küldjön `Expect: 100-continue`. A Speech Services tudomásul veszi a kezdeti kérést, és további adatra vár.| Szükséges darabolt hang adatot küldenek. |
+| `Accept` | Ha meg van adva, kell lennie `application/json`. A Speech Services az eredményeket JSON-formátumban adja meg. Bizonyos webes kérés keretrendszereket, adjon meg egy nem kompatibilis alapértelmezett értéket, ha nincs megadva, így az mindig célszerű tartalmazzák `Accept`. | Nem kötelező, de ajánlott. |
 
 ## <a name="audio-formats"></a>Hangformátumok
 
@@ -68,7 +68,7 @@ Hang küldése a HTTP törzsében `POST` kérelmet. A jelen táblázatban lévő
 | OGG | OPUS | 16-bit | 16 kHz, mono |
 
 >[!NOTE]
->A fenti formátumok REST API-t és a Speech Services WebSocket támogatottak. A [beszéd SDK](speech-sdk.md) jelenleg csak támogatja a WAV PCM kodekkel formázása.
+>A fenti formátumok a Speech Services REST API és WebSocket szolgáltatásán keresztül támogatottak. A [beszéd SDK](speech-sdk.md) jelenleg csak támogatja a WAV PCM kodekkel formázása.
 
 ## <a name="sample-request"></a>Mintakérelem
 
@@ -98,7 +98,7 @@ A HTTP-állapotkód: minden válasz azt jelzi, hogy a sikeres vagy gyakori hibá
 
 ## <a name="chunked-transfer"></a>Darabolásos átvitel
 
-Darabolásos átvitel (`Transfer-Encoding: chunked`) segít minimálisra csökkenteni a felismerés késés, mert lehetővé teszi a beszédszolgáltatások feldolgozza a hangfájl folyamatban átvitel közben. A REST API-t nem biztosít részleges vagy köztes eredményeket. Ez a beállítás kizárólag növelni a válaszkészséget a funkcionalitást.
+A darabolásos átvitel`Transfer-Encoding: chunked`() segítségével csökkentheti az elismerés késését, mivel lehetővé teszi, hogy a Speech Services megkezdje a hangfájl feldolgozását az átvitel közben. A REST API-t nem biztosít részleges vagy köztes eredményeket. Ez a beállítás kizárólag növelni a válaszkészséget a funkcionalitást.
 
 A mintakód bemutatja, hogyan hang tömbökben küldése. Csak az első adatrészletben kell tartalmaznia a hangfájl fejléc. `request` egy HTTPWebRequest objektumot a megfelelő REST-végponthoz csatlakozik. `audioFile` a hangfájl lemezen út.
 
@@ -163,7 +163,7 @@ A `RecognitionStatus` mező tartalmazza ezeket az értékeket:
 > [!NOTE]
 > Ha a hanganyag csak káromkodás tartalmaz, és a `profanity` lekérdezési paraméter értéke `remove`, a szolgáltatás nem ad vissza egy beszéd eredményt.
 
-A `detailed` formátuma azonos adatokat tartalmaz a `simple` formájában, valamint a `NBest`, felismerés ugyanaz az eredmény az alternatív értelmezések listáját. Ezeket az eredményeket a legkisebb valószínűséggel rangsora a legnagyobb valószínűséggel. Az első bejegyzés ugyanaz, mint a fő felismerés eredményét.  Használatakor a `detailed` formátumban, `DisplayText` verzióként `Display` az egyes eredményez a `NBest` listája.
+A `detailed` formátum ugyanazokat az adatfájlokat tartalmazza `simple` , mint a formátum `NBest`, valamint az azonos felismerési eredmény alternatív értelmezéseit tartalmazó lista. Ezek az eredmények a legvalószínűbbtől a legkevésbé valószínűtől lesznek rangsorolva. Az első bejegyzés ugyanaz, mint a fő felismerési eredmény.  Használatakor a `detailed` formátumban, `DisplayText` verzióként `Display` az egyes eredményez a `NBest` listája.
 
 Az egyes objektumok a `NBest` lista a következőket tartalmazza:
 

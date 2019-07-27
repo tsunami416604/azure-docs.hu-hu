@@ -1,6 +1,6 @@
 ---
-title: Telefon száma előre összeállított entitások
-titleSuffix: Azure
+title: Előre összeépített telefonszámok – LUIS
+titleSuffix: Azure Cognitive Services
 description: Ez a cikk a telefonszám előre összeállított entitások-információ a Language Understanding (LUIS) tartalmazza.
 services: cognitive-services
 author: diberry
@@ -11,22 +11,22 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 05/07/2019
 ms.author: diberry
-ms.openlocfilehash: 43d0b855c25ed10b074d99b247ee56dc2ba7769b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a640412fb98fb1d4215bd34c205d4fba253cd7e0
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65146178"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68560167"
 ---
-# <a name="phone-number-prebuilt-entity-for-a-luis-app"></a>Telefonos számú előre elkészített entitás LUIS-alkalmazások
+# <a name="phone-number-prebuilt-entity-for-a-luis-app"></a>A LUIS-alkalmazáshoz tartozó előre összeépített entitás
 A `phonenumber` entitás kinyeri a telefonszámokat, beleértve az országkódot különböző. Az entitás már be van tanítva, mert nem kell példa beszédmódok hozzáadása az alkalmazáshoz. A `phonenumber` entitás támogatott `en-us` culture csak. 
 
 ## <a name="types-of-a-phone-number"></a>A telefonszám típusa
-`Phonenumber` felügyelje a [felismerő szöveges](https://github.com/Microsoft/Recognizers-Text/blob/master/Patterns/Base-PhoneNumbers.yaml) GitHub-adattár
+`Phonenumber`felügyelt a [felismerők – Text GitHub-](https://github.com/Microsoft/Recognizers-Text/blob/master/Patterns/Base-PhoneNumbers.yaml) adattárból
 
-## <a name="resolution-for-this-prebuilt-entity"></a>Az előre létrehozott entitás feloldása
+## <a name="resolution-for-this-prebuilt-entity"></a>Az előre elkészített entitás feloldása
 
-### <a name="api-version-2x"></a>API-verzió 2.x
+### <a name="api-version-2x"></a>API 2. x verziója
 
 Az alábbi példa bemutatja a feloldása a **builtin.phonenumber** entitás.
 
@@ -58,9 +58,9 @@ Az alábbi példa bemutatja a feloldása a **builtin.phonenumber** entitás.
 }
 ```
 
-### <a name="preview-api-version-3x"></a>Az előzetes API verzió 3.x
+### <a name="preview-api-version-3x"></a>Előzetes verziójú API 3. x
 
-A következő JSON-ja az a `verbose` paraméter beállítása `false`:
+A következő JSON `verbose` a paraméter `false`értéke:
 
 ```json
 {
@@ -82,7 +82,7 @@ A következő JSON-ja az a `verbose` paraméter beállítása `false`:
 }
 ```
 
-A következő JSON-ja az a `verbose` paraméter beállítása `true`:
+A következő JSON `verbose` a paraméter `true`értéke:
 
 ```json
 {

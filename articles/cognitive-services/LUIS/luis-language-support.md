@@ -1,5 +1,5 @@
 ---
-title: Nyelvi támogatás
+title: Nyelvi támogatás – LUIS
 titleSuffix: Azure Cognitive Services
 description: A LUIS különféle funkciókat a szolgáltatáson belül van. Nem minden funkciója el az azonos nyelven elérhetőek. Ellenőrizze, hogy a nyelvi kulturális környezet céloz meg az Önt érdeklő funkciók támogatottak. LUIS-alkalmazásokon kulturális környezet-specifikus, és nem módosítható, hogy be van állítva.
 services: cognitive-services
@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 03/19/2019
 ms.author: diberry
-ms.openlocfilehash: 8f067bc005c4de9ddc87ed598b1717f8fbb29a6a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 26127f9f6ed718e33a77b986f2edb0d2dc81b2c1
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65072380"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68563557"
 ---
 # <a name="language-and-region-support-for-luis"></a>A LUIS nyelvéhez és régiójához támogatása
 
@@ -30,7 +30,7 @@ Ha például egy csevegőrobotot többnyelvű LUIS ügyfélalkalmazás van szük
 
 A LUIS tisztában van azzal a kimondott szöveg a következő nyelveken:
 
-| Nyelv |Területi beállítás  |  Előre összeállított tartomány | Előre összeállított entitások | A kifejezés lista javaslatok | **[Szövegelemzés](https://docs.microsoft.com/azure/cognitive-services/text-analytics/text-analytics-supported-languages)<br>(Vélemények és<br>A kulcsszavak)|
+| Nyelv |Területi beállítás  |  Előre összeállított tartomány | Előre összeállított entitások | Kifejezések listája – javaslatok | **[Szövegelemzés](https://docs.microsoft.com/azure/cognitive-services/text-analytics/text-analytics-supported-languages)<br>(Vélemények és<br>A kulcsszavak)|
 |--|--|:--:|:--:|:--:|:--:|
 | Amerikai angol |`en-US` | ✔ | ✔  |✔|✔|
 | *[kínai](#chinese-support-notes) |`zh-CN` | ✔ | ✔ |✔|-|
@@ -44,7 +44,7 @@ A LUIS tisztában van azzal a kimondott szöveg a következő nyelveken:
 | portugál (brazíliai) |`pt-BR` |-| ✔ |✔ |nem minden alárendelt kulturális környezetek|
 | spanyol (spanyolországi) |`es-ES` |-| ✔ |✔|✔|
 | spanyol (Mexikó)|`es-MX` |-|  -   |✔|✔|
-| török | `tr-TR` |-|-|-|Csak a vélemények|
+| török | `tr-TR` |-|-|-|Csak hangulat|
 
 
 Nyelvi támogatás esetében eltérő [előre összeállított entitások](luis-reference-prebuilt-entities.md) és [előre összeállított tartományok](luis-reference-prebuilt-domains.md).
@@ -53,7 +53,7 @@ Nyelvi támogatás esetében eltérő [előre összeállított entitások](luis-
 
  - Az a `zh-cn` kulturális környezet, LUIS vár helyett a hagyományos karakterkészlet egyszerűsített kínai karakterkészlet.
  - Leképezések, az entitások, a funkciók és a reguláris kifejezések nevei a kínai vagy latin karaktereket lehet.
- - Tekintse meg a [előre összeállított tartományok referencia](luis-reference-prebuilt-domains.md) , amelyen előre összeállított tartományok használata támogatott, az információ a `zh-cn` kulturális környezet.
+ - Tekintse meg az előre elkészített [tartományok hivatkozását](luis-reference-prebuilt-domains.md) , amely alapján az előre elkészített `zh-cn` tartományok a kulturális környezetekben támogatottak.
 <!--- When writing regular expressions in Chinese, do not insert whitespace between Chinese characters.-->
 
 ### <a name="japanese-support-notes"></a>\* Japán támogatja a jegyzeteket
@@ -95,16 +95,16 @@ Machine learning alkalmazásához, LUIS bontja az utterance (kifejezés) [jogkiv
 |Spanyol (es-ES)|✔||||
 |Spanyol (es – MX)|✔||||
 
-### <a name="custom-tokenizer-versions"></a>Egyéni jogkivonatokat létrehozó verziók
+### <a name="custom-tokenizer-versions"></a>Egyéni tokenizer-verziók
 
-A következő kulturális környezetek egyéni tokenizer verziójával rendelkezik:
+A következő kultúrákban egyéni tokenizer verziók szerepelnek:
 
 |Kulturális környezet|Version|Cél|
 |--|--|--|
-|német<br>`de-de`|1.0.0|Szavak tokenizes halmazra őket egy machine learning-alapú jogkivonatokat létrehozó, amely próbál meg bontja a egyetlen összetevőből összetett szavak használatával.<br>Ha a felhasználó `Ich fahre einen krankenwagen` az utterance (kifejezés), mint szolgáltatás engedélyezve van `Ich fahre einen kranken wagen`. A jelölés, így `kranken` és `wagen` különböző entitásokként egymástól függetlenül.|
-|német<br>`de-de`|1.0.2|A tárolóhelyek halmazra tokenizes a szavakat.<br> Ha a felhasználó `Ich fahre einen krankenwagen` utterance (kifejezés) egy, az egyes marad. Így `krankenwagen` egyetlen entitás van megjelölve. |
+|német<br>`de-de`|1.0.0|A szavakat Tokenizes egy gépi tanuláson alapuló tokenizer, amely az összetett szavakat egyetlen összetevőjére próbálja bontani.<br>Ha a felhasználó Kimondás lép `Ich fahre einen krankenwagen` fel, a rendszer a következőre `Ich fahre einen kranken wagen`vált:. A `kranken` és`wagen` a különböző entitások egymástól függetlenül történő megjelölésének engedélyezése.|
+|német<br>`de-de`|1.0.2|Tokenizes a szavakat a szóközök felosztásával.<br> Ha egy felhasználó Kimondás lép `Ich fahre einen krankenwagen` fel, akkor egyetlen token marad. Így `krankenwagen` egyetlen entitásként van megjelölve. |
 
-### <a name="migrating-between-tokenizer-versions"></a>Jogkivonatokat létrehozó verziók közötti migrálás
+### <a name="migrating-between-tokenizer-versions"></a>Áttelepítés tokenizer-verziók között
 <!--
 Your first choice is to change the tokenizer version in the app file, then import the version. This action changes how the utterances are tokenized but allows you to keep the same app ID. 
 
@@ -207,6 +207,6 @@ Tokenizer JSON for version 1.0.1. Notice the property value for  `tokenizerVersi
 ```
 -->
 
-A jogkivonatok az alkalmazás szintjén történik. A rendszer nem támogatja, a verzió-szintű a jogkivonatok. 
+A jogkivonatok létrehozása az alkalmazás szintjén történik. A verzió szintű jogkivonatok létrehozása nem támogatott. 
 
-[Importálja a fájlt új alkalmazásként](luis-how-to-start-new-app.md#import-an-app-from-file), egy verzió helyett. Ez a művelet azt jelenti, az új alkalmazás egy másik alkalmazás Azonosítóval rendelkezik, de a fájlban megadott jogkivonatokat létrehozó verzióját használja. 
+[Importálja a fájlt új alkalmazásként](luis-how-to-start-new-app.md#import-an-app-from-file)a verzió helyett. Ez a művelet azt jelenti, hogy az új alkalmazáshoz egy másik alkalmazás-azonosító tartozik, de a fájlban megadott tokenizer-verziót használja. 

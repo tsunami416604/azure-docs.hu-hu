@@ -1,7 +1,7 @@
 ---
-title: Adatok előkészítése az egyéni beszédfelismerési – beszédszolgáltatások
-titlesuffix: Azure Cognitive Services
-description: Hozzon létre egy egyéni beszédfelismerési saját márkáját az Azure Speech Services. Studio-felvételt, és a kapcsolódó parancsprogramokat ad meg, a szolgáltatás használatára vannak konfigurálva a rögzített hangalapú egyéni modell állít elő. Használja ezt a hangot beszéd, a termékek, eszközök és alkalmazások szintetizálásához.
+title: Az egyéni hangvezérelt szolgáltatáshoz tartozó adatelőkészítés
+titleSuffix: Azure Cognitive Services
+description: Hozzon létre egy egyéni hangot a márka számára a Speech Service szolgáltatással. A Studio-felvételek és a hozzájuk tartozó parancsfájlok megadásával a szolgáltatás egy egyedi hangmodellt hoz létre a rögzített hangra hangolva. Ezzel a hanggal megtaníthatja termékeit, eszközeit és alkalmazásait.
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -10,146 +10,146 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: 4b49e7453079b848a273aa8c1c706b2d00fff921
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: 6a29117ff6e5173063bc2aced87f08f1a6aea425
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67606542"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68559585"
 ---
-# <a name="prepare-data-to-create-a-custom-voice"></a>Hozzon létre egy egyéni beszédfelismerési adatok előkészítése
+# <a name="prepare-data-to-create-a-custom-voice"></a>Az adatelőkészítés egyéni hang létrehozásához
 
-Ha készen áll az alkalmazás egy egyéni szövegfelolvasás létrehozásához, az első lépés az gyűjtse össze a hanganyag és a kapcsolódó parancsprogramokat elindításához a hangalapú modell betanításához. A szolgáltatás az adatok használatával hozzon létre egy egyedi hang, a beszéd, a felvételt a megfelelő lehetőségeire. Miután a hangalapú már betanított, indítsa el az alkalmazásokat a beszédfelismerési szintetizáló.
+Ha készen áll egy egyéni szöveg-beszéd hang létrehozására az alkalmazáshoz, az első lépés a hangfelvételek és a hozzájuk tartozó parancsfájlok összegyűjtése a hangmodell betanításának megkezdéséhez. A szolgáltatás ezeket az adatkészleteket használja egy egyedi hanghangolás létrehozásához, amely megfelel a hangfelvételek hangjának. A hang betanítása után elindíthatja a beszédfelismerést az alkalmazásaiban.
 
-Az egy kisebb mennyiségű adatot hozhat létre a koncepció igazolása megkezdése. Azonban minél több adatot, Ön által megadott, a további természetes az egyéni beszédfelismerési hang lesz. Mielőtt a saját szövegfelolvasás modell betanításához hanganyag és a hozzá tartozó szöveg beszédátírás lesz szüksége. Ezen a lapon áttekintheti az adattípusokat, miként használják, és hogyan kezelhetők.
+Kis mennyiségű adattal kezdheti meg a koncepció igazolását. Azonban minél több adattal rendelkezik, annál természetesebb lesz az egyéni hang. A saját szöveg-beszéd hangmodell tanítása előtt hangfelvételekre és a kapcsolódó szöveges átírásokra lesz szüksége. Ezen az oldalon áttekintjük az adattípusokat, azok használatát, valamint az egyes eszközök kezelését.
 
 ## <a name="data-types"></a>Adattípusok
 
-Hangalapú betanítási adatkészletet hanganyag és a kapcsolódó beszédátírás tartalmazó szövegfájl tartalmaz. Mindegyik hangfájlt kell tartalmaznia egy egyetlen utterance (kifejezés) (egyetlen mondatban vagy egyetlen kapcsolja párbeszédpanel rendszer esetén), és kevesebb mint 15 másodperc hosszúságú lehet.
+A hangalapú betanítási adatkészlet hangfelvételeket, valamint a hozzájuk tartozó átírásokat tartalmazó szövegfájlt tartalmaz. Minden hangfájlnak tartalmaznia kell egyetlen részletet (egyetlen mondattal vagy egy párbeszédpanelrendszer egyetlen bekapcsolásával), és 15 másodpercnél rövidebbnek kell lennie.
 
-Bizonyos esetekben előfordulhat, hogy nem rendelkezik a megfelelő adatkészlet készen áll, és érdemes teszteléséhez az egyéni beszédfelismerési képzési elérhető hangfájlok, rövid vagy hosszú, vagy anélkül szövegekben. Eszközök (bétaverzió) segítségével a hang oszthatja be kimondott szöveg és készítse elő az átiratok használatával biztosítunk a [Batch Beszédátírási API](batch-transcription.md).
+Bizonyos esetekben előfordulhat, hogy nem áll készen a megfelelő adatkészletre, és tesztelni szeretné az egyéni hangképzést a rendelkezésre álló hangfájlokkal, illetve rövid vagy hosszú, átiratokkal vagy anélkül. Olyan eszközöket biztosítunk (bétaverzió), amelyek segítenek a hang hosszúságú kimondott szöveg való szegmentálásában és átiratok előkészítésében a Batch-átírási [API](batch-transcription.md)használatával.
 
-Ez a táblázat felsorolja az adattípusokat, és hogyan egyes használja egy egyéni szövegfelolvasás modell létrehozásához.
+Ez a táblázat felsorolja az adattípusokat, valamint azt, hogy miként lehet egyéni szöveg-beszéd hangmodelleket létrehozni.
 
-| Adattípus | Leírás | A következő esetekben használja | További szolgáltatás szükséges | A modell betanításához mennyiség | Locale(s) |
+| Adattípus | Leírás | A következő esetekben használja | További szolgáltatás szükséges | A modell betanításához szükséges mennyiség | Területi beállítás (ok) |
 | --------- | ----------- | ----------- | --------------------------- | ----------------------------- | --------- |
-| **Az egyes utterances + egyező átiratok** | Gyűjteménye (.zip) hangfájlok (.wav), egyes kimondott szöveg. Mindegyik hangfájlt 15 másodperc vagy annál rövidebb, egy formázott szöveges (.txt) párosítva kell lennie. | Az átiratok egyező szakmai felvételek | Készen áll a betanításhoz. | En-US és zh-CN nem szigorú követelmény. Több mint 2000 más területi beállításokhoz for különböző kimondott szöveg. | Minden egyéni beszédfelismerési területi beállítások |
-| **Hosszú hang + a szövegben (bétaverzió)** | Hosszú, szegmentálatlan hangfájlok (legfeljebb 20 másodperc), (.zip) gyűjteménye, amely tartalmazza az összes kimondott szavakat szöveges (.txt) párban. | Hangfájlok és egyező szövegekben rendelkezik, de azok vannak nem szegmentált be kimondott szöveg. | A Szegmentálás (kötegelt beszédátírási használatával).<br>Formát zvuku átalakítási ahol szükséges. | En-US és zh-CN nem szigorú követelmény. | `en-US` és `zh-CN` |
-| **Csak hang (bétaverzió)** | Gyűjteménye (.zip) anélkül, hogy egy szöveges hangfájlok. | Csak akkor hangfájlok átiratok nélkül elérhető. | Szegmentálás + átiratok. generációs (kötegelt beszédátírási használatával).<br>Formát zvuku átalakítási ahol szükséges.| Nem rögzített követelmény `en-US` és `zh-CN`. | `en-US` és `zh-CN` |
+| **Egyéni hosszúságú kimondott szöveg + egyező átirat** | A hangfájlok (. wav) gyűjteménye (. zip) egyéni hosszúságú kimondott szöveg. Az egyes hangfájloknak 15 másodpercnél rövidebbnek kell lenniük, és formázott átirattal (. txt) kell párosítani. | Professzionális felvételek a megfelelő átiratokkal | Képzésre kész. | Nem szükséges szigorú követelmény az en-US és a zh-CN számára. Több mint 2000 különböző hosszúságú kimondott szöveg más területi beállításokhoz. | Minden egyéni hang területi beállítása |
+| **Hosszú hang + átirat (bétaverzió)** | Hosszú, nem szegmentált hangfájlok (20 másodpercnél hosszabb) gyűjteménye (. txt), amely az összes szóbeli szót tartalmazza. | Vannak hangfájlok és a hozzájuk tartozó átiratok, de nem a hosszúságú kimondott szöveg-ba vannak tagolva. | Szegmentálás (a Batch-átírással).<br>A hangformátum átalakítása, ahol szükséges. | Nem szükséges szigorú követelmény az en-US és a zh-CN számára. | `en-US` és `zh-CN` |
+| **Csak hang (bétaverzió)** | Átirat nélküli hangfájlok gyűjteménye (. zip). | Csak hangfájlok érhetők el, átiratok nélkül. | Szegmentálás + átirat létrehozása (batch-átírással).<br>A hangformátum átalakítása, ahol szükséges.| A és `en-US` `zh-CN`a esetében nem szükséges nehéz követelmény. | `en-US` és `zh-CN` |
 
-Fájlok kell egy adatkészletbe típusa szerint csoportosítva és feltöltött zip-fájlként. Egyes adatkészletek csak egyetlen adattípushoz tartalmazhat.
+A fájlokat típus szerint kell csoportosítani egy adatkészletbe, és zip-fájlként kell feltölteni. Az egyes adatkészletek csak egyetlen adattípust tartalmazhatnak.
 
 > [!NOTE]
-> Az adatkészletek importálhatók előfizetésenként engedélyezett maximális számát (F0) előfizetés felhasználóinak és a standard szintű előfizetés (S0) felhasználói 500 10 .zip fájlokat ingyenes.
+> Az előfizetések által importálandó adatkészletek maximális száma 10. zip-fájl az ingyenes előfizetés (F0) felhasználóinak és a 500 a standard előfizetés (S0) felhasználói számára.
 
-## <a name="individual-utterances--matching-transcript"></a>Az egyes utterances + egyező átiratok
+## <a name="individual-utterances--matching-transcript"></a>Egyéni hosszúságú kimondott szöveg + egyező átirat
 
-Egyes kimondott szöveg és a megfelelő átiratok kétféleképpen felvételek készítheti elő. Írjon egy parancsfájlt, és a egy hang szakembereket olvassa vagy használja a nyilvánosan elérhető hang és lefényképezze azt a szöveget. Az utóbbi esetben az audio fájlokból, például a "um" és egyéb kitöltő hangok, akadozik, mumbled szavakat vagy mispronunciations disfluencies szerkesztése
+Az egyes hosszúságú kimondott szöveg és a megfelelő átiratot kétféleképpen is előkészítheti. Írjon egy parancsfájlt, és olvassa el a hangvételt, vagy használja a nyilvánosan elérhető hangot, és írja át a szöveget. Ha ezt teszi, szerkessze a disfluencies a hangfájlokból, például az "UM" és más kitöltő hangokat, akadozik, motyogott szavakat vagy a kiejtéseket.
 
-Egy jó hangtípusú előállításához, hozzon létre csendes szoba magas színvonalú mikrofon a felvételt. Egységes kötet, és beszéljen sebességét, beszéd térközt és kifejező mannerisms beszéd elengedhetetlenek.
+Jó hangbetűkészlet létrehozásához hozzon létre egy csendes helyen, magas színvonalú mikrofonnal. Elengedhetetlen a konzisztens kötet, a beszéd arány, a beszélő szurok és a beszéd kifejező jellege.
 
 > [!TIP]
-> Hozzon létre egy hang éles környezetben, azt javasoljuk egy professzionális felvétel studio és a hangalapú szakembereket használja. További információkért lásd: [hogyan rögzítése a voice-minták az egyéni beszédfelismerési](record-custom-voice-samples.md).
+> Azt javasoljuk, hogy hozzon létre egy hangfelvételt az éles környezethez, és használja a Professional Recording studiót és a hangtehetséget. További információ: hangminták [rögzítése egyéni hanghoz](record-custom-voice-samples.md).
 
 ### <a name="audio-files"></a>Hangfájlok
 
-Mindegyik hangfájlt tartalmaznia kell egy egyetlen utterance (kifejezés) (egyetlen mondatban vagy egyetlen kapcsolja be a rendszer párbeszédpanel), legfeljebb 15 másodperc hosszúságú. Minden fájl ugyanazt a beszélt nyelvet kell lennie. Egyéni szövegfelolvasás hangok többnyelvű nem támogatottak, a bi-nyelv az angol nyelvű kínai kivételével. Mindegyik hangfájlt rendelkeznie kell egy egyedi numerikus filename .wav a fájlnevet kiterjesztéssel együtt.
+Minden hangfájlnak tartalmaznia kell egy teljes (egyetlen mondatot vagy egy párbeszédpanelrendszer egyetlen bekapcsolását), amely kevesebb, mint 15 másodperc. Minden fájlnak ugyanabban a kimondott nyelven kell lennie. A többnyelvű egyéni szöveg-beszéd hangok nem támogatottak, kivéve a kínai – angol nyelveket. Minden hangfájlnak egyedi numerikus fájlnevet kell tartalmaznia, a fájlnév kiterjesztésével. wav.
 
-Kövesse ezeket az irányelveket, hang előkészítésekor.
+A hang előkészítésekor kövesse az alábbi irányelveket.
 
-| Tulajdonság | Érték |
+| Tulajdonság | Value |
 | -------- | ----- |
-| Fájlformátum | Egy .zip-fájlban vannak csoportosítva RIFF (.wav), |
-| Mintavételi ráta | legalább 16 000 Hz |
-| Minta formátumával | A PCM, 16-bit |
-| Fájlnév | Numerikus, .wav kiterjesztéssel. Nincsenek engedélyezett ismétlődő nevek. |
-| Hang hossza | Rövidebb, mint 15 másodperc |
+| Fájl formátuma | RIFF (. wav), egy. zip fájlba csoportosítva |
+| Mintavételezési arány | Legalább 16 000 Hz |
+| Minta formátuma | PCM, 16 bites |
+| Fájlnév | Numerikus,. wav kiterjesztéssel. Nem engedélyezettek az ismétlődő fájlnevek. |
+| Hang hossza | 15 másodpercnél rövidebb |
 | Archív formátum | .zip |
-| Maximális archívum mérete | 200 MB |
+| Archiválás maximális mérete | 200 MB |
 
 > [!NOTE]
-> mintavételi sebessége alacsonyabb, mint 16000 Hz .wav fájlokat a rendszer elutasítja. Egy .zip-fájlban található különböző mintavételezés .wav fájlokat, ha csak adott egyenlő vagy nagyobb, mint 16000 Hz fog kiterjedni. A portál jelenleg import .zip archívumok akár 200 MB. Azonban több archívumot is tölthető fel.
+> a 16 000 Hz-nél kisebb mintavételi sebességgel rendelkező. wav-fájlokat a rendszer elutasítja. Ha a. zip fájl különböző mintavételi sebességű. wav-fájlokat tartalmaz, a rendszer csak a 16 000 Hz-es vagy annál újabb értékkel rendelkezőket importálja. A portál jelenleg a. zip archívumot akár 200 MB-ra is importálja. Azonban több Archívum is feltölthető.
 
-### <a name="transcripts"></a>Szövegekben
+### <a name="transcripts"></a>Átiratát
 
-Az átírási fájl egyszerű szöveges fájlt. Ezeket az irányelveket a beszédátírás segítségével.
+Az átírási fájl egy egyszerű szövegfájl. Ezeket az irányelveket az átírások előkészítéséhez használhatja.
 
-| Tulajdonság | Érték |
+| Tulajdonság | Value |
 | -------- | ----- |
-| Fájlformátum | Egyszerű szövegfájlt (.txt) |
-| Kódolási formátum | ANSI/ASCII, UTF-8, UTF-8-BOM, UTF-16-LE, or UTF-16-BE. Zh-CN, az ANSI/ASCII és az UTF-8 kódolást nem támogatottak. |
-| Kimondott szövegek száma soronként | **Egy** – a beszédátírási fájl minden sorának tartalmaznia kell egy hang fájlt, majd a megfelelő beszédátírási nevére. A fájlnevet és az átiratot tabulátorral (\t) kell elválasztani. |
+| Fájl formátuma | Egyszerű szöveg (. txt) |
+| Kódolási formátum | ANSI/ASCII, UTF-8, UTF-8-BOM, UTF-16-LE vagy UTF-16-BE. A zh-CN, az ANSI/ASCII és az UTF-8 kódolások nem támogatottak. |
+| Kimondott szövegek száma soronként | **Egy** – az átírási fájl minden sorának tartalmaznia kell az egyik hangfájl nevét, amelyet a megfelelő átírás követ. A fájlnevet és az átiratot tabulátorral (\t) kell elválasztani. |
 | Maximális fájlméret | 50 MB |
 
-Alább egy példát, hogyan az átiratok vannak rendszerezve utterance (kifejezés) által utterance (kifejezés) egy .txt fájlban a következő:
+Az alábbi példa bemutatja, hogyan rendezi a rendszer az átiratokat egy. txt fájlban:
 
 ```
 0000000001[tab] This is the waistline, and it's falling.
 0000000002[tab] We have trouble scoring.
 0000000003[tab] It was Janet Maslin.
 ```
-Fontos, hogy az átiratok-e a megfelelő hanganyag hosszának végéig a 100 %-os pontos beszédátírás. Hibák az átiratok a minőségi adatveszteség vezet be a betanítás során.
+Fontos, hogy az átiratok a megfelelő hang 100%-os pontos átiratával legyenek. Az átiratokban előforduló hibák a képzés során a minőség elvesztését mutatják be.
 
 > [!TIP]
-> Éles létrehozását, szöveg-hang transzformációs beszédhangot, válassza ki a kimondott szöveg (vagy parancsfájlokat), amelyek figyelembe kell venni a fiók fonetikus lefedettség és a hatékonyságot. Az eredmények problémákat okoz a következőket szeretne? [Lépjen kapcsolatba az egyéni beszédfelismerési](mailto:speechsupport@microsoft.com) csapat található ki kellene USA kapcsolatos további részletekért.
+> Éles szöveg-beszéd hangok kiépítésekor válassza a hosszúságú kimondott szöveg (vagy a parancsfájlok írása) lehetőséget, amelyek figyelembe veszik a fonetikus lefedettséget és a hatékonyságot. Gondjai vannak a kívánt eredmények beszerzésével? Ha többet szeretne megtudni, [forduljon az egyéni](mailto:speechsupport@microsoft.com) hangcsapathoz.
 
-## <a name="long-audio--transcript-beta"></a>Hosszú hang + a szövegben (bétaverzió)
+## <a name="long-audio--transcript-beta"></a>Hosszú hang + átirat (bétaverzió)
 
-Bizonyos esetekben előfordulhat, hogy nem több szegmensből álló hang érhető el. A service (bétaverzió) segítségével hosszú hangfájlok szegmentálására és beszédátírás létrehozása az egyéni beszédfelismerési portálon keresztül biztosítunk. Tartsa szem előtt, ez a szolgáltatás díjat kell kifizetni a hang-szöveg transzformációs előfizetés használata.
+Bizonyos esetekben előfordulhat, hogy nem érhető el szegmentált hang. Az egyéni hangportálon keresztül biztosítunk egy szolgáltatást (bétaverziót), amely segít a hosszú hangfájlok szegmentálásában és a transzkripciók létrehozásában. Vegye figyelembe, hogy a szolgáltatás a beszédfelismerés és a szöveges előfizetés használatának feltételeit terheli.
 
 > [!NOTE]
-> A hosszú – hang Szegmentálás szolgáltatás hang-szöveg, amely csak a standard szintű előfizetés (S0) felhasználói támogatja a kötegelt beszédátírási funkcióját használja. A Szegmentálás feldolgozása során a zenei fájlok és az átiratok is kapnak a Custom Speech service, amellyel pontosíthatja a modell, így az adatok a pontosság javítása érdekében. Adatok nem lesznek megőrizve a folyamat során. Miután elkészült a szegmentálást, szegmentált megcímkézzen és azok leképezés szövegekben tárolja a letöltés és képzési.
+> A hosszú hangú szegmentálási szolgáltatás kihasználja a beszéd és a szöveg batch-átírási funkcióját, amely csak a szabványos előfizetés (S0) felhasználóit támogatja. A szegmentálás feldolgozása során a rendszer a hangfájlokat és az átiratokat is elküldi a Custom Speech szolgáltatásnak az adatfelismerési modell pontosítása érdekében, hogy az adatok pontossága is javuljon. A folyamat során a rendszer nem őrzi meg az adatmegőrzési időszakot. A szegmentálás befejezése után a rendszer csak a szegmentált hosszúságú kimondott szöveg és a leképezési átiratokat fogja tárolni a letöltéshez és a képzéshez.
 
 ### <a name="audio-files"></a>Hangfájlok
 
-Kövesse ezeket az irányelveket, szegmentálását audio előkészítésekor.
+Kövesse az alábbi irányelveket a hanganyagok szegmentálására való felkészülés során.
 
 | Tulajdonság | Érték |
 | -------- | ----- |
-| Fájlformátum | Mintavételi arány PCM vagy .mp3 khz-16-bit legalább 16 bites arány legalább 256 KB/s, egy .zip-fájlban vannak csoportosítva (.wav) RIFF |
-| Fájlnév | Csak ASCII-karaktereket. Sikertelen lesz, a név az Unicode-karaktereket (például a kínai karakterek vagy szimbólumok, mint például "–"). Nincs engedélyezett ismétlődő nevek. |
-| Hang hossza | Hosszabb 20 másodperc |
+| Fájl formátuma | A RIFF (. wav) mintavételezési sebessége legalább 16 kHz – 16 bit a PCM vagy a. mp3 esetében legalább 256 KBps, a. zip fájlba csoportosítva |
+| Fájlnév | Csak ASCII-karakterek. A névben található Unicode-karakterek sikertelenek lesznek (például a kínai karakterek, vagy a "–" szimbólum). Nem engedélyezettek az ismétlődő nevek. |
+| Hang hossza | 20 másodpercnél hosszabb |
 | Archív formátum | .zip |
-| Maximális archívum mérete | 200 MB |
+| Archiválás maximális mérete | 200 MB |
 
-Az összes hangfájlok szerint kell csoportosítani a zip-fájlban. Rendben, elhelyezi egy hang zip .wav és .mp3-fájlokat, de nem almappa engedélyezve van-e a zip-fájlt. Például feltölthet egy hangfájlt "kingstory.wav", a hosszú második 45 és a egy másik egy elnevezett "queenstory.mp3", 200-második-long, bármely almappák nélkül nevű tartalmazó zip-fájlt. Az összes .mp3-fájlokat feldolgozása után a .wav formátumra lesz átalakítva.
+Az összes hangfájlt zip-fájlba kell csoportosítani. A. wav fájlok és az. mp3 fájlok egyetlen hangzip-fájlba helyezhetők, de a zip-fájlban nem engedélyezettek az almappa. Feltölthet például egy "kingstory. wav" nevű hangfájlt tartalmazó zip-fájlt, 45-másodpercet, egy másikat pedig "queenstory. mp3", 200-Second-Long, almappák nélkül. A rendszer az összes. MP3 fájlt a feldolgozás után. wav formátumúvá alakítja át.
 
-### <a name="transcripts"></a>Szövegekben
+### <a name="transcripts"></a>Átiratát
 
-Az alábbi táblázat tartalmazza a specifikációknak szövegekben kell készíteni. Egy szöveges mindegyik hangfájlt kell egyeztetését.
+Az átiratokat fel kell készülnie az ebben a táblázatban szereplő specifikációba. Minden hangfájlnak meg kell egyeznie egy átirattal.
 
 | Tulajdonság | Érték |
 | -------- | ----- |
-| Fájlformátum | Egyszerű szövegfájlt (.txt), egy .zip csoportosítva |
-| Fájlnév | Használja ugyanazt a nevet a megfelelő audio-fájlként |
-| Kódolási formátum | UTF-8-AJ csak |
+| Fájl formátuma | Egyszerű szöveg (. txt), egy. zip-fájlba csoportosítva |
+| Fájlnév | Ugyanazt a nevet használja, mint a megfelelő hangfájl |
+| Kódolási formátum | UTF-8 – csak ANYAGJEGYZÉK |
 | Kimondott szövegek száma soronként | Korlátlan |
 | Maximális fájlméret | 50M |
 
-Ez az adattípus az összes szövegekben fájl szerint kell csoportosítani a zip-fájlban. A zip-fájl nem almappa használata engedélyezett. Például egy hangfájlt "kingstory.wav", 45 másodperc hosszúságú nevű tartalmazó zip-fájlt töltött fel, és egy másik egy elnevezett "queenstory.mp3", 200 másodperc mennyi ideig. Szüksége lesz egy másik két szövegekben, egy elnevezett "kingstory.txt", a másik egy "queenstory.txt" tartalmazó zip-fájl feltöltése. Minden egyszerű szöveges fájlba Ön biztosítja a megfelelő Audio a teljes megfelelő beszédátírási.
+Az adattípusban található összes átirat fájlnak egy zip-fájlba kell csoportosítva lennie. A zip-fájlban nem szerepelhet almappa. Például feltöltött egy "kingstory. wav" nevű hangfájlt tartalmazó zip-fájlt, a 45 másodpercet, és egy másikat, a "queenstory. mp3" nevet, 200 másodpercet. Fel kell töltenie egy másik, két átiratot tartalmazó zip-fájlt, amely egy "kingstory. txt" nevű, a másik pedig "queenstory. txt". Minden egyszerű szövegfájlon belül meg kell adnia a megfelelő hang teljes átírását.
 
-Után az adatkészlet sikeresen feltöltve, segítünk Önnek a hangfájlt oszthatja be a megadott szöveges alapján kimondott szöveg. Töltse le az adatkészlet szegmentált megcímkézzen és a megfelelő szövegekben ellenőrizheti. Egyedi azonosítót rendel a szegmentált utterances automatikusan. Fontos győződjön meg arról, hogy megadta az átiratok 100 %-os pontos. Hibák az átiratok a pontossága csökkenthető szegmentálását audio során, és további bevezetni a betanítási fázisban, amelyek később minőségi adatvesztés.
+Az adatkészlet sikeres feltöltése után segítséget nyújtunk a hangfájlnak a megadott átirat alapján történő hosszúságú kimondott szöveg. Az adatkészlet letöltésével a szegmentált hosszúságú kimondott szöveg és a megfelelő átiratokat is megtekintheti. A szegmentált hosszúságú kimondott szöveg automatikusan egyedi azonosítók lesznek hozzárendelve. Fontos, hogy az Ön által megadott átiratok 100%-ban pontosak legyenek. Az átiratokban előforduló hibák csökkenthetik a hangszegmentálási pontosságot, és továbbra is bevezethetik a minőség elvesztését a betanítási fázisban, amely később következik be.
 
 ## <a name="audio-only-beta"></a>Csak hang (bétaverzió)
 
-Ha beszédátírás nincs számára audiotartalmak felvételeit, használja a **csak hang** az adatok feltöltését. A rendszer segítségével szegmentálást, a hangfájlokat lefényképezze. Ne feledje, ez a szolgáltatás beleszámít a hang-szöveg transzformációs előfizetés használata.
+Ha nem rendelkezik átírásokkal a hangfelvételekhez, az adatok feltöltéséhez használja a **csak hang** lehetőséget. A rendszer segíthet a hangfájlok szegmentálásában és átírásában. Vegye figyelembe, hogy ez a szolgáltatás a beszédfelismerés és a szöveg közötti előfizetés használatát veszi figyelembe.
 
-Kövesse ezeket az irányelveket, hang előkészítésekor.
+A hang előkészítésekor kövesse az alábbi irányelveket.
 
 > [!NOTE]
-> A hosszú – hang Szegmentálás szolgáltatás hang-szöveg, amely csak a standard szintű előfizetés (S0) felhasználói támogatja a kötegelt beszédátírási funkcióját használja.
+> A hosszú hangú szegmentálási szolgáltatás kihasználja a beszéd és a szöveg batch-átírási funkcióját, amely csak a szabványos előfizetés (S0) felhasználóit támogatja.
 
-| Tulajdonság | Érték |
+| Tulajdonság | Value |
 | -------- | ----- |
-| Fájlformátum | Mintavételi arány PCM vagy .mp3 khz-16-bit legalább 16 bites arány legalább 256 KB/s, egy .zip-fájlban vannak csoportosítva (.wav) RIFF |
-| Fájlnév | Csak ASCII-karaktereket. Sikertelen lesz, a név az Unicode-karaktereket (például a kínai karakterek vagy szimbólumok, mint például "–"). Nincs engedélyezett ismétlődő név. |
-| Hang hossza | Hosszabb 20 másodperc |
+| Fájl formátuma | A RIFF (. wav) mintavételezési sebessége legalább 16 kHz – 16 bit a PCM vagy a. mp3 esetében legalább 256 KBps, a. zip fájlba csoportosítva |
+| Fájlnév | Csak ASCII-karakterek. A névben található Unicode-karakterek sikertelenek lesznek (például a kínai karakterek, vagy a "–" szimbólum). Nem engedélyezett a duplikált név. |
+| Hang hossza | 20 másodpercnél hosszabb |
 | Archív formátum | .zip |
-| Maximális archívum mérete | 200 MB |
+| Archiválás maximális mérete | 200 MB |
 
-Az összes hangfájlok szerint kell csoportosítani a zip-fájlban. A zip-fájl nem almappa használata engedélyezett. Miután sikeresen feltöltötte az adatkészlet, segítünk Önnek a hangfájl oszthatja be a batch beszédátírási beszédszolgáltatás alapján kimondott szöveg. Egyedi azonosítót rendel a szegmentált utterances automatikusan. Egyező átiratok beszédfelismerés jön létre. Az összes .mp3-fájlokat feldolgozása után a .wav formátumra lesz átalakítva. Töltse le az adatkészlet szegmentált megcímkézzen és a megfelelő szövegekben ellenőrizheti.
+Az összes hangfájlt zip-fájlba kell csoportosítani. A zip-fájlban nem szerepelhet almappa. Miután sikeresen feltöltötte az adatkészletet, segítünk a hangfájl szegmentálásában a hosszúságú kimondott szöveg a Speech batch transzkripciós szolgáltatás alapján. A szegmentált hosszúságú kimondott szöveg automatikusan egyedi azonosítók lesznek hozzárendelve. A beszédfelismerés során a rendszer a megfelelő átiratokat hozza létre. A rendszer az összes. MP3 fájlt a feldolgozás után. wav formátumúvá alakítja át. Az adatkészlet letöltésével a szegmentált hosszúságú kimondott szöveg és a megfelelő átiratokat is megtekintheti.
 
 ## <a name="next-steps"></a>További lépések
 
-- [Hozzon létre egy egyéni beszédfelismerési](how-to-custom-voice-create-voice.md)
-- [Útmutató: Rögzítése a voice-minták](record-custom-voice-samples.md)
+- [Egyéni hang létrehozása](how-to-custom-voice-create-voice.md)
+- [Útmutató Hangminták rögzítése](record-custom-voice-samples.md)

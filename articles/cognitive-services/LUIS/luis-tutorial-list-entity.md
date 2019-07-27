@@ -1,21 +1,21 @@
 ---
-title: A kivonatot szöveg egyezés entitások
+title: Extact-szöveg egyeztetése entitások – LUIS
+titleSuffix: Azure Cognitive Services
 description: Ismerje meg, hogy egy lista entitás segítségével egy szót vagy kifejezést a LUIS-címke változatok hozzáadása.
 services: cognitive-services
 author: diberry
-titleSuffix: Azure
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
 ms.date: 01/23/2019
 ms.author: diberry
-ms.openlocfilehash: 929dc7a86d141446a2070b046c6febfda4a07f0f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 60364e864a8b35cf5f39bb8c0a0f86ae611a3c70
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62117448"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68563264"
 ---
 # <a name="use-a-list-entity-to-increase-entity-detection"></a>Egy lista entitás használatával növelheti az entitás észlelése 
 Ez az oktatóanyag bemutatja, hogy egy [entitás listában](luis-concept-entity-types.md) entitás észlelési növelése érdekében. Lista entitások nem kell címkével ellátott, mivel ezek a feltételek pontosan egyeznie kell.  
@@ -37,7 +37,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > [!Tip]
 > Ha Ön még nem rendelkezik előfizetéssel, regisztrálhat egy [ingyenes fiókot](https://azure.microsoft.com/free/).
 
-Ebben az oktatóanyagban kódja megtalálható a [Azure-minták GitHub-adattár](https://github.com/Azure-Samples/cognitive-services-language-understanding/tree/master/documentation-samples/tutorial-list-entity). 
+Az oktatóanyagban szereplő összes kód az [Azure-Samples GitHub-tárházban](https://github.com/Azure-Samples/cognitive-services-language-understanding/tree/master/documentation-samples/tutorial-list-entity)érhető el. 
 
 ## <a name="use-homeautomation-app"></a>HomeAutomation alkalmazás használata
 Meghatározhatja az eszközök, például lámpa, szórakoztató rendszerek és a környezet azt szabályozza, például fűtés és hűtéssel HomeAutomation alkalmazás lehetőséget biztosít. Ezek a rendszerek rendelkeznie több különböző gyártó neveket, beceneveinek, Betűszavak és szleng kifejezéseket is tartalmazhat. 

@@ -5,18 +5,18 @@ ms.subservice: forms-recognizer
 ms.topic: include
 ms.date: 06/27/2019
 ms.author: pafarley
-ms.openlocfilehash: 73a7795629a94395b43bfca191cec7b2c4773611
-ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
+ms.openlocfilehash: 17dc32f8948387b90229d3c4c07102cff98e3018
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68481464"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68562682"
 ---
 Az űrlap-felismerő a következő követelményeknek megfelelő bemeneti dokumentumokon működik:
 
 * A formátumnak JPG, PNG vagy PDF formátumúnak kell lennie (szöveges vagy beolvasott). A Text-Embedded PDF-fájlok a legjobbak, mert nem lehetséges a hibák kinyerése és helye.
 * Ha a PDF-fájlok jelszóval vannak zárolva, a küldés előtt el kell távolítania a zárolást.
-* A fájlméretnek 4 megabájtnál (MB) kisebbnek kell lennie.
+* A fájlméretnek 4 MB-nál kisebbnek kell lennie.
 * Képek esetén a méretek 50 x 50 képpont és 4200 x 4200 képpont közé kell, hogy legyenek.
 * Ha papíralapú dokumentumokból olvas be dokumentumokat, az űrlapoknak kiváló minőségű vizsgálatokat kell ellátniuk.
 * A szövegnek a latin ábécét (angol karakter) kell használnia.

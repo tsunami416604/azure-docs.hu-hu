@@ -1,7 +1,7 @@
 ---
-title: Az API-konzol - Content Moderator mérsékelt rendszerképek
-titlesuffix: Azure Cognitive Services
-description: A kép moderálási API-t használja az Azure Content Moderator kép tartalmához munkafolyamatainak vizsgálat és felülvizsgálati jóváhagyás kezdeményezése.
+title: Közepes méretű rendszerképek az API-konzollal – Content Moderator
+titleSuffix: Azure Cognitive Services
+description: Az Azure Content Moderatorban a képmoderálási API használatával kezdeményezheti a képtartalomhoz tartozó vizsgálati és felülvizsgálati moderálási munkafolyamatokat.
 services: cognitive-services
 author: sanjeev3
 manager: nitinme
@@ -10,96 +10,96 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: sajagtap
-ms.openlocfilehash: 1e4efa5e06525194bfdc7d1932fcfec5ec9f8c6b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 20353d488cba255925d21017b77d1def2d06b30b
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60607488"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68561243"
 ---
-# <a name="moderate-images-from-the-api-console"></a>Az API-konzolról mérsékelt képek
+# <a name="moderate-images-from-the-api-console"></a>Mérsékelt rendszerképek az API-konzolról
 
-Használja a [Image moderálási API](https://westus.dev.cognitive.microsoft.com/docs/services/57cf753a3f9b070c105bd2c1/operations/57cf753a3f9b070868a1f66c) az Azure Content Moderator kezdeményezni, ellenőrzés és áttekintés moderálás munkafolyamatokat a kép tartalmához. A moderálás feladat megkeresi a trágárság cenzúrázása a tartalmat, és megosztott és az egyéni feketelistákkal összevetett.
+Az Azure Content Moderatorban a képmoderálási [API](https://westus.dev.cognitive.microsoft.com/docs/services/57cf753a3f9b070c105bd2c1/operations/57cf753a3f9b070868a1f66c) használatával kezdeményezheti a képtartalomhoz tartozó vizsgálati és felülvizsgálati moderálási munkafolyamatokat. A moderálási feladatokban megvizsgálhatja a tartalmat a káromkodáshoz, és összehasonlítja az egyéni és a közös feketelistákkal.
 
 ## <a name="use-the-api-console"></a>Az API-konzol használata
-Az API az online konzolon is próbálhatják ki őket, meg kell az előfizetési kulcs. Ez található a **beállítások** lap a **Ocp-Apim-Subscription-Key** mezőbe. További információkért lásd az [Áttekintést](overview.md).
+Mielőtt tesztelni tudja az API-t az online konzolon, szüksége lesz az előfizetési kulcsra. Ez a **Beállítások** lap **OCP-APIM-előfizetés-Key** mezőjében található. További információkért lásd az [Áttekintést](overview.md).
 
-1. Lépjen a [kép moderálási API-referencia](https://westus.dev.cognitive.microsoft.com/docs/services/57cf753a3f9b070c105bd2c1/operations/57cf753a3f9b070868a1f66c).
+1. Ugrás a [Képmoderálási API](https://westus.dev.cognitive.microsoft.com/docs/services/57cf753a3f9b070c105bd2c1/operations/57cf753a3f9b070868a1f66c)-referenciára.
 
-   A **kép – kiértékelése** kép moderálás oldal megnyílik.
+   Megnyílik a **rendszerkép-** kiértékelési képmoderálás lap.
 
-2. A **Open API tesztelési konzollal**, válassza ki a régiót, amelyben leginkább a tartózkodási ismerteti. 
+2. Az **Open API Testing Console**esetében válassza ki azt a régiót, amely a legszorosabban leírja a helyét. 
 
-   ![Próbálja meg a lemezkép - kiértékelése lap régió kiválasztása](images/test-drive-region.png)
+   ![Rendszerkép kipróbálása – kiértékelési oldal régiójának kiválasztása](images/test-drive-region.png)
   
-   A **kép – kiértékelése** API-konzol megnyitása.
+   Megnyílik a **rendszerkép-kiértékelés API-** konzol.
 
-3. Az a **Ocp-Apim-Subscription-Key** adja meg az előfizetési kulcs.
+3. Az **OCP-APIM-Subscription-Key** mezőbe írja be az előfizetési kulcsot.
 
-   ![Próbálja meg a lemezkép - konzol az előfizetői kiértékelése](images/try-image-api-1.PNG)
+   ![A rendszerkép kiértékelése – a konzol előfizetési kulcsa](images/try-image-api-1.PNG)
 
-4. Az a **kérelem törzse** mezőben használja az alapértelmezett képet, vagy adja meg a lemezkép beolvasása. Küldhet magának a kép bináris adatok bit, vagy adja meg a kép egy nyilvánosan elérhető URL-címet. 
+4. A **kérelem törzse** mezőben használja az alapértelmezett minta rendszerképet, vagy válasszon egy beolvasandó képet. A képet bináris bites adatokként is elküldheti, vagy megadhat egy képhez nyilvánosan elérhető URL-címet. 
 
-   Ebben a példában használja a megadott elérési úton a **kérelem törzse** mezőbe, majd válassza ki **küldése**. 
+   Ehhez a példához használja a **kérelem törzse** mezőben megadott elérési utat, majd válassza a **Küldés**lehetőséget. 
 
-   ![Próbálja meg a lemezkép - konzol kéréstörzs kiértékelése](images/try-image-api-2.PNG)
+   ![Rendszerkép kiértékelése – a konzol kérésének törzse](images/try-image-api-2.PNG)
 
-   Ez az a képet a megadott URL-címen:
+   Ez az URL-cím képe:
 
-   ![Próbálja meg a lemezkép - konzol képet kiértékelése](images/sample-image.jpg) 
+   ![A rendszerkép kiértékelése – példa képe](images/sample-image.jpg) 
 
 5. Kattintson a **Küldés** gombra.
 
-6. Az API-t a valószínűségi pontszámának létrehozásához minden egyes adja vissza. Emellett meghatározására, hogy a lemezkép megfelel-e a adja vissza (**igaz** vagy **hamis**). 
+6. Az API az egyes besorolások valószínűségi pontszámát adja vissza. Azt is megadja, hogy a rendszerkép megfelel-e a feltételeknek (**igaz** vagy **hamis**). 
 
-   ![Próbálja meg a lemezkép - konzol valószínűségi pontszámának kiértékelése és feltételek meghatározása](images/try-image-api-3.PNG)
+   ![A rendszerkép kiértékelése – a konzol valószínűségi pontszáma és a feltétel meghatározása](images/try-image-api-3.PNG)
 
 ## <a name="face-detection"></a>Arcfelismerés
 
-A kép moderálási API segítségével keresse meg az arcok a képen. Ez a beállítás akkor hasznos, ha adatvédelmi aggályokat, és szeretné, hogy egy adott arc csökkentheti a közzétett platformon. 
+A képmoderálási API használatával megkeresheti az arcokat a képen. Ez a beállítás akkor lehet hasznos, ha adatvédelmi problémák merülnek fel, és meg szeretné akadályozni, hogy egy adott arc ne legyen közzétéve a platformon. 
 
-1. Az a [kép moderálási API-referencia](https://westus.dev.cognitive.microsoft.com/docs/services/57cf753a3f9b070c105bd2c1/operations/57cf753a3f9b070868a1f66c), a bal oldali menüben alatt **kép**, jelölje be **található arcokat**. 
+1. A képmoderálási [API](https://westus.dev.cognitive.microsoft.com/docs/services/57cf753a3f9b070c105bd2c1/operations/57cf753a3f9b070868a1f66c)-referenciában, a bal oldali menüben, a **rendszerkép**területen válassza az **arcok keresése**lehetőséget. 
 
-   A **kép – keresés arcokat** lap megnyitásakor.
+   Megnyílik a **rendszerkép-Find Faces** oldal.
 
-2. A **Open API tesztelési konzollal**, válassza ki a régiót, amelyben leginkább a tartózkodási ismerteti. 
+2. Az **Open API Testing Console**esetében válassza ki azt a régiót, amely a legszorosabban leírja a helyét. 
 
-   ![Próbálja ki a kép – keresse meg az arcok lap régió kiválasztása](images/test-drive-region.png)
+   ![Próbálja ki a képkeresési arcok oldal régiójának kijelölését](images/test-drive-region.png)
 
-   A **kép – keresés arcokat** API-konzol megnyitása.
+   Ekkor megnyílik a **rendszerkép-Find Faces API-** konzol.
 
-3. Adja meg a lemezkép beolvasása. Maga a kép bináris küldhet adatokat bit, vagy egy nyilvánosan elérhető-e egy képre mutató URL-címet. Ez a példa egy CNN történetet használt kép mutató hivatkozásokat tartalmaz.
+3. Itt adhatja meg a beolvasandó képet. A képet bináris bites adatként is elküldheti, vagy megadhat egy nyilvánosan elérhető URL-címet a képhez. Ez a példa egy CNN-történetben használt képre mutat.
 
-   ![Próbálja meg a lemezkép - képet arcok keresése](images/try-image-api-face-image.jpg)
+   ![Rendszerkép keresése – minta képe](images/try-image-api-face-image.jpg)
 
-   ![Próbálja meg a lemezkép - mintakérelem arcok keresése](images/try-image-api-face-request.png)
+   ![Rendszerkép keresése – példa kérésre](images/try-image-api-face-request.png)
 
-4. Kattintson a **Küldés** gombra. Ebben a példában az API-t két arc keresése, és adja vissza a koordináták a képen.
+4. Kattintson a **Küldés** gombra. Ebben a példában az API két arcot keres, és visszaadja a képen látható koordinátákat.
 
-   ![Próbálja meg a lemezkép - arcok minta válasz tartalmú panelen található](images/try-image-api-face-response.png)
+   ![Próbálja ki a képkeresési példákat](images/try-image-api-face-response.png)
 
-## <a name="text-detection-via-ocr-capability"></a>Optikai Karakterfelismerés képességeivel szöveg észlelése
+## <a name="text-detection-via-ocr-capability"></a>Szöveg észlelése OCR-képesség használatával
 
-A Content Moderator optikai Karakterfelismerés funkció segítségével a képeken található rendszerképek szöveget.
+A képekben lévő szöveg észleléséhez használhatja a Content Moderator OCR funkciót.
 
-1. Az a [kép moderálási API-referencia](https://westus.dev.cognitive.microsoft.com/docs/services/57cf753a3f9b070c105bd2c1/operations/57cf753a3f9b070868a1f66c), a bal oldali menüben alatt **kép**, jelölje be **OCR**. 
+1. A képmoderálási [API](https://westus.dev.cognitive.microsoft.com/docs/services/57cf753a3f9b070c105bd2c1/operations/57cf753a3f9b070868a1f66c)-referenciában, a bal oldali menüben, a **rendszerkép**területen válassza az **OCR**elemet. 
 
-   A **lemezkép - OCR** lap megnyitásakor.
+   Megnyílik a **rendszerkép – OCR** oldal.
 
-2. A **Open API tesztelési konzollal**, válassza ki a régiót, amelyben leginkább a tartózkodási ismerteti. 
+2. Az **Open API Testing Console**esetében válassza ki azt a régiót, amely a legszorosabban leírja a helyét. 
 
-   ![Lemezkép - OCR lap régió kiválasztása](images/test-drive-region.png)
+   ![Rendszerkép – OCR-oldal régiójának kiválasztása](images/test-drive-region.png)
 
-   A **lemezkép - OCR** API-konzol megnyitása.
+   Megnyílik a **rendszerkép – OCR API-** konzol.
 
-3. Az a **Ocp-Apim-Subscription-Key** adja meg az előfizetési kulcs.
+3. Az **OCP-APIM-Subscription-Key** mezőbe írja be az előfizetési kulcsot.
 
-4. Az a **kérelem törzse** használja az alapértelmezett képet. Ez az az előző szakaszban használt ugyanazt a lemezképet.
+4. A **kérelem törzse** mezőben használja az alapértelmezett minta képét. Ez ugyanaz a rendszerkép, amelyet az előző szakaszban is használni kell.
 
-5. Kattintson a **Küldés** gombra. A JSON-ban a kinyert szöveg jelenik meg:
+5. Kattintson a **Küldés** gombra. A kinyert szöveg a JSON-ban jelenik meg:
 
-   ![Lemezkép - OCR minta válasz tartalmú panelen](images/try-image-api-ocr.PNG)
+   ![Rendszerkép – OCR-minta válaszának tartalma mező](images/try-image-api-ocr.PNG)
 
 ## <a name="next-steps"></a>További lépések
 
-A REST API használata a kódban, vagy kezdje a [kép moderálás .NET – rövid útmutató](image-moderation-quickstart-dotnet.md) integrálhatja az alkalmazást.
+Használja az REST API a kódban, vagy Kezdje a képmoderálási [.net](image-moderation-quickstart-dotnet.md) gyors útmutatóval az alkalmazással való integrációhoz.

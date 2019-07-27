@@ -1,7 +1,7 @@
 ---
-title: 'Gyors útmutató: A cURL - űrlap felismerő használatával beérkezési adatokat nyerhet ki'
+title: 'Gyors útmutató: Bevételezési adatok kinyerése a cURL-Form felismerővel'
 titleSuffix: Azure Cognitive Services
-description: Ez a rövid útmutatóban az űrlap felismerő REST API-t fogjuk a curl használatával adatokat nyerhet ki képekből, értékesítési Nyugtával rendelkezik.
+description: Ebben a rövid útmutatóban az űrlap-felismerő REST API és a cURL használatával gyűjtheti össze az adatok adatait az értékesítési nyugták képeiből.
 author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
@@ -9,52 +9,52 @@ ms.subservice: forms-recognizer
 ms.topic: quickstart
 ms.date: 07/01/2019
 ms.author: pafarley
-ms.openlocfilehash: 0178e53e6a7fde54b988e710a1cabbb7ded69b22
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: f8edb27e52d843d9a765aed8da9b75417cf357d1
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67592582"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68552563"
 ---
-# <a name="quickstart-extract-receipt-data-using-the-form-recognizer-rest-api-with-curl"></a>Gyors útmutató: A képernyő felismerő REST API használatával a curl használatával beérkezési adatokat nyerhet ki
+# <a name="quickstart-extract-receipt-data-using-the-form-recognizer-rest-api-with-curl"></a>Gyors útmutató: Bevételezési adatok kinyerése az űrlap-felismerő REST API és a cURL használatával
 
-Ez a rövid útmutatóban való használni kívánt Azure űrlap felismerő REST API a curl használatával csomagolja ki, és határozza meg az értékesítési Nyugtával rendelkezik releváns adatokat.
+Ebben a rövid útmutatóban az Azure űrlap-felismerő REST API a cURL használatával kinyerheti és azonosíthatja a kapcsolódó információkat az értékesítési nyugtákban.
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
 ## <a name="prerequisites"></a>Előfeltételek
-Rövid útmutató elvégzéséhez kell rendelkeznie:
-- Az űrlap felismerő korlátozott hozzáférésű előzetes verzióra való hozzáférést. Töltse ki az előzetes verzió eléréséhez, és küldje el a [űrlap felismerő hozzáférési kérelem](https://aka.ms/FormRecognizerRequestAccess) űrlap.
-- [cURL](https://curl.haxx.se/windows/) telepítve.
-- Visszaigazolás kép URL-címe. Használhat egy [képet](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/curl/form-recognizer/contoso-receipt.png?raw=true) ebben a rövid útmutatóban.
+A rövid útmutató elvégzéséhez a következőket kell tennie:
+- Hozzáférés az űrlap-felismerő korlátozott hozzáférésének előzetes verziójához. Az előzetes verzió eléréséhez töltse ki és küldje el az [űrlap-felismerő hozzáférési kérelmének](https://aka.ms/FormRecognizerRequestAccess) űrlapját.
+- a [fürt](https://curl.haxx.se/windows/) telepítve van.
+- Egy nyugtát ábrázoló rendszerkép URL-címe. Ehhez a rövid útmutatóhoz [minta képet](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/curl/form-recognizer/contoso-receipt.png?raw=true) is használhat.
 
-## <a name="create-a-form-recognizer-resource"></a>Űrlap felismerő erőforrás létrehozása
+## <a name="create-a-form-recognizer-resource"></a>Űrlap-felismerő erőforrás létrehozása
 
 [!INCLUDE [create resource](../includes/create-resource.md)]
 
 ## <a name="analyze-a-receipt"></a>Visszaigazolás elemzése
 
-Visszaigazolás elemzése elindításához hívja a **elemzése beérkezési** API-t az alábbi cURL-parancs használatával. Futtassa a parancsot, mielőtt a módosítások:
+A nyugták elemzésének megkezdéséhez hívja meg az **elemzés** visszaigazolása API-t az alábbi curl-parancs használatával. A parancs futtatása előtt végezze el a következő módosításokat:
 
-1. Cserélje le `<Endpoint>` az űrlap felismerő előfizetési kulcs beszerzett a végponttal. Az űrlap felismerő erőforráson található **áttekintése** fülre.
-1. Cserélje le `<your receipt URL>` a nyugta kép URL-cím.
-1. Cserélje le `<subscription key>` az előfizetés az előző lépésben kimásolt kulccsal.
+1. Cserélje `<Endpoint>` le az elemet az űrlap-felismerő előfizetési kulcsból beszerzett végpontra. Az űrlap-felismerő erőforrás- **Áttekintés** lapon találhatja meg.
+1. Cserélje `<your receipt URL>` le a értékét egy nyugtát ábrázoló rendszerkép URL-címére.
+1. Cserélje `<subscription key>` le az elemet az előző lépésből másolt előfizetési kulcsra.
 
 ```bash
 curl -i -X POST "https://<Endpoint>/formrecognizer/v1.0-preview/prebuilt/receipt/asyncBatchAnalyze" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: <subscription key>" --data-ascii "{ \"url\": \"<your receipt URL>\"}"
 ```
 
-Kapni fog egy `202 (Success)` választ, amely tartalmaz egy **művelet helymeghatározás** fejléc. A fejléc értéke tartalmaz egy művelet azonosítója, amellyel a művelet állapotának lekérdezése, és az eredmények eléréséhez. A következő példában a karakterlánc után `operations/` a művelet azonosítója.
+Egy `202 (Success)` olyan választ fog kapni, amely tartalmazza a **műveleti hely** fejlécét. A fejléc értéke olyan műveleti azonosítót tartalmaz, amelynek segítségével lekérdezheti a művelet állapotát, és lekérheti az eredményeket. A következő példában az azt követő `operations/` karakterlánc a művelet azonosítója.
 
 ```console
 https://cognitiveservice/formrecognizer/v1.0-preview/prebuilt/receipt/operations/54f0b076-4e38-43e5-81bd-b85b8835fdfb
 ```
 
-## <a name="get-the-receipt-results"></a>A nyugta eredményeinek beolvasása
+## <a name="get-the-receipt-results"></a>A Bevételezés eredményeinek beolvasása
 
-Po, hogy a **elemzése beérkezési** API-hívás a **beérkezési eredmény beolvasása** API állapotát a művelet és a kinyert adatok segítségével.
+Az elemzési beérkezési  API meghívása után hívja meg a **Get beérkezési eredmény** API-t a művelet és a kinyert adatmennyiség állapotának lekéréséhez.
 
-1. Cserélje le `<operationId>` az az előző lépésben a művelet azonosítója.
+1. Cserélje `<operationId>` le az elemet az előző lépésben szereplő műveleti azonosítóra.
 1. A `<subscription key>` helyére írja be az előfizetési kulcsot.
 
 ```bash
@@ -63,11 +63,11 @@ curl -X GET "https://<Endpoint>/formrecognizer/v1.0-preview/prebuilt/receipt/ope
 
 ### <a name="examine-the-response"></a>A válasz vizsgálata
 
-Kapni fog egy `200 (Success)` JSON-kimeneteket a válaszban. Az első mező `"status"`, a művelet állapotát jelzi. Ha a művelet befejeződött, a `"recognitionResults"` mező tartalmazza, amelyek a nyugta kivonták minden sort és a `"understandingResults"` mező legfontosabb részeit fogadását kulcs/érték adatait tartalmazza. Ha a művelet nem fejeződött be, az értékét `"status"` lesz `"Running"` vagy `"NotStarted"`, és ismét meghívja az API-t manuálisan vagy egy parancsfájl segítségével. Azt javasoljuk, hogy legalább egy másodperc közötti hívások időközt.
+A rendszer a `200 (Success)` JSON-kimenettel kapcsolatos választ küld. Az első mező `"status"`jelzi a művelet állapotát. Ha a művelet befejeződött, a `"recognitionResults"` mező a beérkezésből kinyert szöveg minden sorát tartalmazza, és a `"understandingResults"` mező a Bevételezés legfontosabb részeinek kulcs/érték információit tartalmazza. Ha a művelet nem fejeződött be, a `"status"` `"Running"` vagy `"NotStarted"`a érték lesz, és az API-t manuálisan vagy parancsfájlon keresztül kell meghívni. Javasoljuk, hogy a hívások között egy másodperc vagy több intervallum legyen.
 
-Lásd az alábbi képen fogadását, és a megfelelő JSON kimeneti. A kimenet az olvashatóság érdekében csonkult.
+Tekintse meg az alábbi beérkezési képet és a hozzá tartozó JSON-kimenetet. A kimenet le lett rövidítve az olvashatóság érdekében.
 
-![Contoso áruházból visszaigazolás](../media/contoso-receipt.png)
+![A contoso áruházból érkezett visszaigazolás](../media/contoso-receipt.png)
 
 ```json
 {
@@ -182,7 +182,7 @@ Lásd az alábbi képen fogadását, és a megfelelő JSON kimeneti. A kimenet a
 
 ## <a name="next-steps"></a>További lépések
 
-Ez a rövid útmutatóban használt az űrlap felismerő REST API-t a curl használatával értékesítési nyugta tartalmának kibontásához. Ezután megismerheti az űrlap felismerő API alaposabban is körüljárják referencia dokumentációjában talál.
+Ebben a rövid útmutatóban az űrlap-felismerő REST APIt használta a cURL használatával egy értékesítési visszaigazolás tartalmának kinyeréséhez. Következő lépésként tekintse meg a dokumentációt az űrlap-felismerő API részletesebb megismeréséhez.
 
 > [!div class="nextstepaction"]
-> [REST API dokumentációja](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api/operations/AnalyzeReceipt)
+> [REST API dokumentáció](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api/operations/AnalyzeReceipt)

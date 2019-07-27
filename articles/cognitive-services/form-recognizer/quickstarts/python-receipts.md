@@ -1,7 +1,7 @@
 ---
-title: 'Gyors útmutató: Python - űrlap felismerő használatával beérkezési adatokat nyerhet ki'
+title: 'Gyors útmutató: Bevételezési adatok kinyerése a Python-Form felismerő használatával'
 titleSuffix: Azure Cognitive Services
-description: Ebben a rövid útmutatóban az űrlap felismerő REST API-t fogjuk pythonnal adatokat nyerhet ki képekből, értékesítési Nyugtával rendelkezik.
+description: Ebben a rövid útmutatóban az űrlap-felismerő REST API és a Python használatával gyűjti össze az adatokból az értékesítési nyugták lemezképeit.
 author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
@@ -9,36 +9,36 @@ ms.subservice: forms-recognizer
 ms.topic: quickstart
 ms.date: 07/01/2019
 ms.author: pafarley
-ms.openlocfilehash: 8bd4d441859df6dbb36f594d8423eefd84274ec4
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: e3c5583f38f7a7f5a3654bfdd27620593175cf58
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67592545"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68562664"
 ---
-# <a name="quickstart-extract-receipt-data-using-the-form-recognizer-rest-api-with-python"></a>Gyors útmutató: A képernyő felismerő REST API használatával a Pythonnal beérkezési adatokat nyerhet ki
+# <a name="quickstart-extract-receipt-data-using-the-form-recognizer-rest-api-with-python"></a>Gyors útmutató: Bevételezési adatok kinyerése az űrlap-felismerő REST API és a Python használatával
 
-Ez a rövid útmutatóban való használni kívánt Azure űrlap felismerő REST API a Pythonnal csomagolja ki, és azonosítsa az értékesítési Nyugtával rendelkezik releváns információkat.
+Ebben a rövid útmutatóban az Azure űrlap-felismerő REST API a Python használatával kinyerheti és azonosíthatja a kapcsolódó információkat az értékesítési nyugtákban.
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
 ## <a name="prerequisites"></a>Előfeltételek
-Rövid útmutató elvégzéséhez kell rendelkeznie:
-- Az űrlap felismerő korlátozott hozzáférésű előzetes verzióra való hozzáférést. Töltse ki az előzetes verzió eléréséhez, és küldje el a [űrlap felismerő hozzáférési kérelem](https://aka.ms/FormRecognizerRequestAccess) űrlap.
-- [Python](https://www.python.org/downloads/) telepítve (Ha a minta futtatása helyben szeretné).
-- Visszaigazolás kép URL-címe. Használhat egy [képet](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/curl/form-recognizer/contoso-receipt.png?raw=true) ebben a rövid útmutatóban.
+A rövid útmutató elvégzéséhez a következőket kell tennie:
+- Hozzáférés az űrlap-felismerő korlátozott hozzáférésének előzetes verziójához. Az előzetes verzió eléréséhez töltse ki és küldje el az [űrlap-felismerő hozzáférési kérelmének](https://aka.ms/FormRecognizerRequestAccess) űrlapját.
+- [Python](https://www.python.org/downloads/) telepítve (ha helyileg szeretné futtatni a mintát).
+- Egy nyugtát ábrázoló rendszerkép URL-címe. Ehhez a rövid útmutatóhoz [minta képet](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/curl/form-recognizer/contoso-receipt.png?raw=true) is használhat.
 
-## <a name="create-a-form-recognizer-resource"></a>Űrlap felismerő erőforrás létrehozása
+## <a name="create-a-form-recognizer-resource"></a>Űrlap-felismerő erőforrás létrehozása
 
 [!INCLUDE [create resource](../includes/create-resource.md)]
 
 ## <a name="analyze-a-receipt"></a>Visszaigazolás elemzése
 
-Visszaigazolás elemzése elindításához hívja a **elemzése beérkezési** API-t a Python-szkriptet az alábbi. A szkript futtatása előtt győződjön meg arról, ezeket a módosításokat:
+A visszaigazolás elemzésének megkezdéséhez az alábbi Python-szkripttel hívja meg az **elemzés** visszaigazolása API-t. A szkript futtatása előtt végezze el a következő módosításokat:
 
-1. Cserélje le `<Endpoint>` az űrlap felismerő előfizetési kulcs beszerzett a végponttal. Az űrlap felismerő erőforráson található **áttekintése** fülre.
-1. Cserélje le `<your receipt URL>` a nyugta kép URL-cím.
-1. Cserélje le `<subscription key>` az előfizetés az előző lépésben kimásolt kulccsal.
+1. Cserélje `<Endpoint>` le az elemet az űrlap-felismerő előfizetési kulcsból beszerzett végpontra. Az űrlap-felismerő erőforrás- **Áttekintés** lapon találhatja meg.
+1. Cserélje `<your receipt URL>` le a értékét egy nyugtát ábrázoló rendszerkép URL-címére.
+1. Cserélje `<subscription key>` le az elemet az előző lépésből másolt előfizetési kulcsra.
 
     ```python
     import http.client, urllib.request, urllib.parse, urllib.error, base64
@@ -66,19 +66,19 @@ Visszaigazolás elemzése elindításához hívja a **elemzése beérkezési** A
         exit()
     ```
 
-1. Mentse a kódot egy fájlban .py kiterjesztéssel. Ha például *űrlap-felismerő-receipts.py*.
+1. Mentse a kódot egy. file kiterjesztésű fájlba. Például: *Form-Recognizer-receipts.py*.
 1. Nyisson meg egy parancsablakot.
 1. A parancssoron használja a `python` parancsot a minta futtatására. Például: `python form-recognizer-receipts.py`.
 
-Kap egy `202 (Success)` választ, amely tartalmaz egy **művelet helymeghatározás** fejléc, amely kiírja a parancsfájl a konzolhoz. Ezt a fejlécet, amellyel a művelet állapotának lekérdezése, és az elemzés eredményeinek beolvasása művelettel-Azonosítót tartalmaz. Az alábbi példa érték, a karakterlánc után `operations/` a művelet azonosítója.
+Egy `202 (Success)` olyan választ fog kapni, amely egy **művelet – hely** fejlécet tartalmaz, amelyet a szkript a konzolra fog nyomtatni. Ez a fejléc egy műveleti azonosítót tartalmaz, amelynek segítségével lekérdezheti a művelet állapotát, és beolvashatja az elemzési eredményeket. A következő példában szereplő sztring `operations/` a művelet azonosítója.
 
 ```console
 https://cognitiveservice/formrecognizer/v1.0-preview/prebuilt/receipt/operations/54f0b076-4e38-43e5-81bd-b85b8835fdfb
 ```
 
-## <a name="get-the-receipt-results"></a>A nyugta eredményeinek beolvasása
+## <a name="get-the-receipt-results"></a>A Bevételezés eredményeinek beolvasása
 
-Po, hogy a **elemzése beérkezési** API-hívás a **beérkezési eredmény beolvasása** API állapotát a művelet és a kinyert adatok segítségével. Adja hozzá a következő kódot a Python-szkript alján. Ez a művelet azonosító értéket, és átadja egy új API-hívással. A művelet aszinkron,, ezért ez a szkript rendszeres időközönként meghívja az API-t, mindaddig, amíg az eredmények érhetők el. Azt javasoljuk, hogy legalább egy második időközt.
+Az elemzési beérkezési  API meghívása után hívja meg a **Get beérkezési eredmény** API-t a művelet és a kinyert adatmennyiség állapotának lekéréséhez. Adja hozzá a következő kódot a Python-szkript aljához. Ezzel kibontja a műveleti azonosító értékét, és átadja egy új API-hívásnak. A művelet aszinkron, így a parancsfájl rendszeres időközönként meghívja az API-t, amíg az eredmények elérhetővé nem válnak. Javasoljuk, hogy egy vagy több másodperces intervallumot válasszon.
 
 ```python
 operationId = operationURL.split("operations/")[1]
@@ -100,15 +100,15 @@ while True:
 ```
 
 1. Mentse a parancsfájlt.
-1. Újra használni a `python` parancsot a minta futtatásához. Például: `python form-recognize-analyze.py`.
+1. Ismét a paranccsal futtassa a mintát. `python` Például: `python form-recognize-analyze.py`.
 
 ### <a name="examine-the-response"></a>A válasz vizsgálata
 
-A parancsfájl a konzol válaszokat nyomtatja ki addig, amíg az elemzés művelet befejeződik. Ezt követően nyomtatja ki a kinyert szöveg adatokat JSON formátumban. A `"recognitionResults"` mező tartalmazza, amelyek a nyugta kivonták minden sort és a `"understandingResults"` mező legfontosabb részeit fogadását kulcs/érték adatait tartalmazza.
+A parancsfájl addig kinyomtatja a válaszokat a konzolra, amíg az elemzési művelet be nem fejeződik. Ezután JSON formátumban fogja kinyomtatni a kinyert szöveges adatfájlokat. A `"recognitionResults"` mező a beérkezésből kinyert szöveg minden sorát tartalmazza, a `"understandingResults"` mező pedig a Bevételezés legfontosabb részeinek kulcs/érték információit tartalmazza.
 
-Lásd az alábbi képen fogadását, és a megfelelő JSON kimeneti. A kimenet az olvashatóság érdekében csonkult.
+Tekintse meg az alábbi beérkezési képet és a hozzá tartozó JSON-kimenetet. A kimenet le lett rövidítve az olvashatóság érdekében.
 
-![Contoso áruházból visszaigazolás](../media/contoso-receipt.png)
+![A contoso áruházból érkezett visszaigazolás](../media/contoso-receipt.png)
 
 ```json
 {
@@ -223,7 +223,7 @@ Lásd az alábbi képen fogadását, és a megfelelő JSON kimeneti. A kimenet a
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben a rövid útmutatóban használt az űrlap felismerő REST API a Pythonnal a modell betanítását, majd futtassa azt egy mintaforgatókönyv. Ezután megismerheti az űrlap felismerő API alaposabban is körüljárják referencia dokumentációjában talál.
+Ebben a rövid útmutatóban az űrlap-felismerő REST APIt használta a Python használatával a modell betanításához és egy minta forgatókönyvben való futtatásához. Következő lépésként tekintse meg a dokumentációt az űrlap-felismerő API részletesebb megismeréséhez.
 
 > [!div class="nextstepaction"]
-> [REST API dokumentációja](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api/operations/AnalyzeReceipt)
+> [REST API dokumentáció](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api/operations/AnalyzeReceipt)

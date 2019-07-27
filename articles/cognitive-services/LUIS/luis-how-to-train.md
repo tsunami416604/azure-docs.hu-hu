@@ -1,6 +1,6 @@
 ---
-title: Alkalmazás betanítása
-titleSuffix: Language Understanding - Azure Cognitive Services
+title: Alkalmazás betanítása – LUIS
+titleSuffix: Azure Cognitive Services
 description: Képzési az a folyamat, a Language Understanding (LUIS) Alkalmazásverzió javítása a beszédfelismerés oktatási. A LUIS-alkalmazás betanításához például hozzáadása, szerkesztése, címkézés vagy entitásokat, a leképezések és a kimondott szöveg törlése a modellhez való frissítés után.
 services: cognitive-services
 author: diberry
@@ -11,14 +11,14 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 04/07/2019
 ms.author: diberry
-ms.openlocfilehash: ba0db22437961a33b0b415ec7cb60ad3df12821c
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 70c29769da2ec092b2b27b83f2f83200d4e727af
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60195851"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68560361"
 ---
-# <a name="train-your-active-version-of-the-luis-app"></a>A LUIS-alkalmazás az aktív Ön betanítása 
+# <a name="train-your-active-version-of-the-luis-app"></a>A LUIS-alkalmazás aktív verziójának betanítása 
 
 Képzési az a folyamat, a Language Understanding (LUIS) alkalmazásával a beszédfelismerés oktatási. A LUIS-alkalmazás betanításához például hozzáadása, szerkesztése, címkézés vagy entitásokat, a leképezések és a kimondott szöveg törlése a modellhez való frissítés után. 
 
@@ -44,9 +44,9 @@ A iteratív folyamat a [LUIS portál](https://www.luis.ai), először létre kel
 >[!NOTE]
 >Ha egy vagy több leképezések az alkalmazás, amely nem tartalmaz példa utterances, az alkalmazás nem betanításához. Az összes a leképezések beszédmódok hozzáadása. További információkért lásd: [példa beszédmódok hozzáadása](luis-how-to-add-example-utterances.md).
 
-## <a name="training-date-and-time"></a>Képzési dátuma és időpontja
+## <a name="training-date-and-time"></a>Képzés dátuma és időpontja
 
-Képzési dátum és idő GMT + 2. 
+A betanítás dátuma és időpontja GMT + 2. 
 
 ## <a name="train-with-all-data"></a>Az összes adat betanítása
 

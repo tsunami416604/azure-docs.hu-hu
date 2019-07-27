@@ -1,7 +1,7 @@
 ---
-title: A minta-szerepkörök
+title: Minta szerepkörei – LUIS
 titleSuffix: Azure Cognitive Services
-description: Minták adatok kinyerése a helyes formátumú sablon kimondott szöveg. A kimondottszöveg-sablonok egy egyszerű entitás és szerepkörök segítségével nyernek ki olyan kapcsolódó adatokat, mint például a kiindulási hely és a célhely.
+description: A minták a jól formázott sablon hosszúságú kimondott szöveg kinyerik az adatforrásokat. A kimondottszöveg-sablonok egy egyszerű entitás és szerepkörök segítségével nyernek ki olyan kapcsolódó adatokat, mint például a kiindulási hely és a célhely.
 ms.custom: seodec18
 services: cognitive-services
 author: diberry
@@ -11,22 +11,22 @@ ms.subservice: language-understanding
 ms.topic: tutorial
 ms.date: 07/16/2019
 ms.author: diberry
-ms.openlocfilehash: c0e3ac1d53cda2afb2184b92b0fd0afd662101bb
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: 7586a81eac95a2e4a08b045b3a2826132d9919f7
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68277504"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68560025"
 ---
-# <a name="tutorial-extract-contextually-related-patterns-using-roles"></a>Oktatóanyag: Bontsa ki a szerepkörök használatával kontextusban kapcsolódó minták
+# <a name="tutorial-extract-contextually-related-patterns-using-roles"></a>Oktatóanyag: Kontextussal kapcsolatos minták kinyerése szerepkörök használatával
 
-Ebben az oktatóanyagban egy minta segítségével adatokat nyerhet ki a helyesen formázott kimondottszöveg-sablonokból. A sablon utterance (kifejezés) használ a [egyszerű entitás](luis-concept-entity-types.md#simple-entity) és [szerepkörök](luis-concept-roles.md) például a feladás helyét és a célhely kapcsolódó adatokat szeretne kinyerni.  A minták használatakor kevesebb kimondottszöveg-példára van szükség egy adott szándékhoz.
+Ebben az oktatóanyagban egy minta segítségével adatokat nyerhet ki a helyesen formázott kimondottszöveg-sablonokból. A sablon kimondása [egyszerű entitást](luis-concept-entity-types.md#simple-entity) és [szerepköröket](luis-concept-roles.md) használ a kapcsolódó adatok, például a forrás helye és a célhely kinyeréséhez.  A minták használatakor kevesebb kimondottszöveg-példára van szükség egy adott szándékhoz.
 
 
 **Ebben az oktatóanyagban az alábbiakkal fog megismerkedni:**
 
 > [!div class="checklist"]
-> * Példa-alkalmazás importálása
+> * Alkalmazás importálása – példa
 > * Új entitások létrehozása
 > * Új szándék létrehozása
 > * Betanítás
@@ -38,16 +38,16 @@ Ebben az oktatóanyagban egy minta segítségével adatokat nyerhet ki a helyese
 
 [!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
 
-## <a name="using-roles-in-patterns"></a>A minták szerepkörök használata
+## <a name="using-roles-in-patterns"></a>Szerepkörök használata a mintákban
 
-A szerepkörök célja, hogy az utterance (kifejezés) kontextusban kapcsolódó entitások kinyeréséhez. A `Move new employee Robert Williams from Sacramento and San Francisco` kimondott szövegben a kiindulási város és a célváros értékek kapcsolódnak egymáshoz, és köznyelven jelölik az egyes helyeket. 
+A szerepkörök célja, hogy kinyerje a kontextusban kapcsolódó entitásokat egy teljes tartalommal. A `Move new employee Robert Williams from Sacramento and San Francisco` kimondott szövegben a kiindulási város és a célváros értékek kapcsolódnak egymáshoz, és köznyelven jelölik az egyes helyeket. 
 
 
 Az új alkalmazott, Billy Patterson neve egyelőre nem része az **Alkalmazott** listaentitásnak. Először az új alkalmazott nevét kell kinyerni, hogy aztán elküldjük egy külső rendszerre a vállalati hitelesítő adatok létrehozásához. A vállalati hitelesítő adatok létrehozása után az alkalmazott hitelesítő adatai bekerülnek az **Alkalmazott** listaentitásba.
 
 Az új alkalmazottat át kell költöztetni a jelenlegi városból abba a városba, ahol a kitalált vállalat található. Mivel az új alkalmazottak bármely városból származhatnak, a helyeket fel kell deríteni. Egy készletlista, például egy listaentitás azért nem működne, mert ekkor csak a listában szereplő városokat lehetne kinyerni.
 
-A kiindulási és célvárosokhoz tartozó szerepkörneveknek egyedinek kell lenniük az összes entitás körében. A szerepkörök egyedisége könnyedén biztosítható, ha a tartalmazó entitáshoz kötjük őket egy elnevezési stratégia alkalmazásával. A **NewEmployeeRelocation** entitás, egy egyszerű entitás kétféle szerepkörben működnek: **NewEmployeeReloOrigin** és **NewEmployeeReloDestination**. A „Relo” a relocation (áthelyezés) szó rövidítése.
+A kiindulási és célvárosokhoz tartozó szerepkörneveknek egyedinek kell lenniük az összes entitás körében. A szerepkörök egyedisége könnyedén biztosítható, ha a tartalmazó entitáshoz kötjük őket egy elnevezési stratégia alkalmazásával. A **NewEmployeeRelocation** entitás egy egyszerű entitás két szerepkörrel: **NewEmployeeReloOrigin** és **NewEmployeeReloDestination**. A „Relo” a relocation (áthelyezés) szó rövidítése.
 
 Mivel a `Move new employee Robert Williams from Sacramento and San Francisco` példa kimondott szöveg csak gép által tanult entitásokkal rendelkezik, fontos, hogy elegendő példaszöveget adjunk meg az adott szándékhoz, hogy a rendszer észlelje az entitásokat.  
 
@@ -55,7 +55,7 @@ Mivel a `Move new employee Robert Williams from Sacramento and San Francisco` p�
 
 Ha problémája van egy egyszerű entitás észlelésével, mert az egy név (például egy városé), érdemes megadni egy hasonló értékeket tartalmazó kifejezéslistát. Ez segíti a város nevének észlelését, mivel egy újabb jelet ad a LUIS számára az adott típusú szóra vagy kifejezésre vonatkozóan. A kifejezéslisták a mintának csak az entitások észlelésében segítenek, ami azonban szükséges ahhoz, hogy a minta megfeleltethető legyen. 
 
-## <a name="import-example-app"></a>Példa-alkalmazás importálása
+## <a name="import-example-app"></a>Alkalmazás importálása – példa
 Folytassa az előző oktatóanyagban létrehozott **EmberiErőforrások** nevű alkalmazással. 
 
 Ehhez a következő lépések szükségesek:

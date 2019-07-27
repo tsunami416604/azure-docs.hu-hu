@@ -1,5 +1,5 @@
 ---
-title: Hozzon létre egy egyéni ébresztési szó – beszédszolgáltatások
+title: Egyéni ébresztési Word-Speech szolgáltatás létrehozása
 titleSuffix: Azure Cognitive Services
 description: Az eszköz mindig figyeli a hálózati ébresztési szó (vagy kifejezés). Amikor a felhasználó szöveget az ébresztési a word, az eszköz küld minden későbbi hang a felhőbe, mindaddig, amíg a felhasználó leállítja a különféle. Hatékony módja az eszköz megkülönböztetéséhez és erősítse a márkajelzési beállításokat az ébresztési word testreszabása.
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: f43cbedc633b26a3a7fcbfb5f6a75da514bf0c45
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: 2bc1a6cbbf1e0d790326849a41b0788e332daa31
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67604866"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68553102"
 ---
 # <a name="create-a-custom-wake-word-by-using-the-speech-service"></a>Hozzon létre egy egyéni ébresztési szót a Speech szolgáltatással
 
@@ -46,26 +46,26 @@ Ha úgy dönt, hogy ébresztési szót, ügyeljen a következőkre:
 
 ## <a name="create-your-wake-word"></a>Az ébresztési word létrehozása
 
-Egy egyéni ébresztési szót az eszköz használata előtt szüksége, hozzon létre egy ébresztési szót a Microsoft egyéni ébresztési Word generációs szolgáltatással. Miután megadta a ébresztési word-, a szolgáltatás állít elő a fájlnevet, amely a szoftverfejlesztői készlet ahhoz, hogy az ébresztési word, az eszközön telepítheti.
+Ahhoz, hogy az eszközhöz egyéni ébresztési szót lehessen használni, létre kell hoznia egy felébresztő szót a Microsoft Custom Wake Word generálási szolgáltatásával. Az ébresztési szó megadása után a szolgáltatás létrehoz egy fájlt, amelyet központilag telepít a fejlesztői csomagba, hogy engedélyezze az ébresztési szót az eszközön.
 
-1. Nyissa meg a [Custom Speech Service-portál](https://aka.ms/sdsdk-speechportal) és **jelentkezzen be a** vagy, ha nem rendelkezik válassza a speech előfizetés [ **előfizetés létrehozása**](https://go.microsoft.com/fwlink/?linkid=2086754)
+1. Lépjen a [Custom Speech Service portálra](https://aka.ms/sdsdk-speechportal) , és **Jelentkezzen be** , vagy ha nem rendelkezik beszédfelismerési előfizetéssel, válassza az [**előfizetés létrehozása**](https://go.microsoft.com/fwlink/?linkid=2086754) lehetőséget.
 
-    ![A Custom Speech Service-portál](media/speech-devices-sdk/wake-word-4.png)
+    ![A Custom Speech Service portál](media/speech-devices-sdk/wake-word-4.png)
 
-1. Jelenleg a [egyéni ébresztési Word](https://aka.ms/sdsdk-wakewordportal) , és kattintson a hálózati ébresztési szót írja be **ébresztési szó hozzáadása**. Van néhány [irányelvek](#choose-an-effective-wake-word) segítség egy hatékony kulcsszó kiválasztásához. Csak jelenleg en-US nyelven.
+1. Az [Egyéni ébresztési szó](https://aka.ms/sdsdk-wakewordportal) lapon írja be az Ön által választott ébresztés szót, és kattintson az **ébresztési szó hozzáadása**lehetőségre. Van néhány [irányelvünk](#choose-an-effective-wake-word) , amely segítséget nyújt egy hatékony kulcsszó kiválasztásához. Jelenleg csak az en-US nyelvet támogatjuk.
 
     ![Adja meg az ébresztési word](media/speech-devices-sdk/wake-word-5.png)
 
-1. Az ébresztési szó három egyéb kiejtés jön létre. Választhat, adja meg az összes kiejtés. Válassza ki **küldés** ébresztési szó létrehozásához. Ha módosítani szeretné az ébresztési szó. Távolítsa el a meglévőt először a írásmódja sor jelenik meg a Törlés ikonra rámutatáskor.
+1. Az ébresztési szó három alternatív kiejtését fogja létrehozni. Kiválaszthatja az összes hasonló kiejtést. Ezután válassza a **Submit (Küldés** ) lehetőséget az ébresztési szó létrehozásához. Ha módosítani szeretné az ébresztési szót, először távolítsa el a meglévőt, amikor a kiejtési sorban megjelenik a Delete (Törlés) ikon.
 
-    ![Tekintse át az ébresztési word](media/speech-devices-sdk/wake-word-6.png)
+    ![Az ébresztési szó áttekintése](media/speech-devices-sdk/wake-word-6.png)
 
-1. A modell létrehozását legfeljebb egy percig is eltarthat. A rendszer kéri le a fájlt.
+1. A modell létrehozása akár egy percet is igénybe vehet. A rendszer kérni fogja a fájl letöltését.
 
-    ![Az ébresztési word letöltése](media/speech-devices-sdk/wake-word-7.png)
+    ![Az ébresztési szó letöltése](media/speech-devices-sdk/wake-word-7.png)
 
-1. Mentse a .zip-fájlt a számítógépre. Ezt a fájlt az egyéni ébresztési word üzembe development Kit kell.
+1. Mentse a .zip-fájlt a számítógépre. Erre a fájlra lesz szüksége, hogy az egyéni ébresztést a fejlesztői csomagba telepítse.
 
 ## <a name="next-steps"></a>További lépések
 
-Tesztelje az egyéni ébresztési word- [Speech eszközök SDK rövid](https://aka.ms/sdsdk-quickstart).
+Tesztelje az egyéni ébresztési szót a [Speech Devices SDK](https://aka.ms/sdsdk-quickstart)gyors útmutatójában.

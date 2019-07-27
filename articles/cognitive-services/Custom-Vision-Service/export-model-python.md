@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: TensorFlow-modell futtatása a Pythonnal – Custom Vision Service'
-titlesuffix: Azure Cognitive Services
+title: 'Oktatóanyag: TensorFlow-modell futtatása a Pythonban – Custom Vision Service'
+titleSuffix: Azure Cognitive Services
 description: TensorFlow-modell futtatása Python nyelven.
 services: cognitive-services
 author: areddish
@@ -10,19 +10,19 @@ ms.subservice: custom-vision
 ms.topic: tutorial
 ms.date: 07/03/2019
 ms.author: areddish
-ms.openlocfilehash: ba8cf3392ac2bd3d371e5e1910c6671feba9dedf
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: c6e7cf770e5f1639e676d232564809121a8c4e4b
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67606882"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68561089"
 ---
 # <a name="tutorial-run-tensorflow-model-in-python"></a>Oktatóanyag: A TensorFlow modell futtatása a Pythonban
 
 Miután [exportálta a TensorFlow-modellt](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/export-your-model) a Custom Vision Service-ből, ez a rövid útmutató azt fogja bemutatni, hogyan használhatja a modellt képek helyi besorolására.
 
 > [!NOTE]
-> Ebben az oktatóanyagban csak a modellek exportál lemezképet besorolási projektek vonatkozik.
+> Ez az oktatóanyag csak a képbesorolási projektekben exportált modellekre vonatkozik.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -31,7 +31,7 @@ Az oktatóanyag használatához a következőket kell tennie:
 - Telepítse a Python 2.7 vagy újabb, illetve a Python 3.5 vagy újabb verzióját.
 - Telepítse a pipet.
 
-Ezután szüksége lesz a következő csomagok telepítéséhez:
+Ezután telepítenie kell a következő csomagokat:
 
 ```
 pip install tensorflow
@@ -88,7 +88,7 @@ image = update_orientation(image)
 image = convert_to_opencv(image)
 ```
 
-### <a name="handle-images-with-a-dimension-1600"></a>Egy dimenzió-lemezképek kezeléséhez > 1600
+### <a name="handle-images-with-a-dimension-1600"></a>Képek kezelése > 1600 dimenzióval
 
 ```Python
 # If the image has either w or h greater than 1600 we resize it down respecting
@@ -172,7 +172,7 @@ def update_orientation(image):
 
 ## <a name="predict-an-image"></a>Kép előrejelzése
 
-A lemezképet, a tensor előkészítése után azt az előrejelzési modell keresztül küldheti:
+Miután a képet felkészítette a tenser-ként, elküldheti azt a modellen keresztül az előrejelzéshez:
 
 ```Python
 
@@ -210,7 +210,7 @@ A képtenzor modellen történő átfuttatásának eredményeit ezután ismét m
 
 ## <a name="next-steps"></a>További lépések
 
-Ezután megtudhatja, hogyan burkolhatja a modell, egy mobilalkalmazás:
+Következő lépésként megtudhatja, hogyan csomagolhatja be a modellt egy mobil alkalmazásba:
 * [Az exportált TensorFlow-modell használata Android-alkalmazásban](https://github.com/Azure-Samples/cognitive-services-android-customvision-sample)
 * [Az exportált CoreML-modell használata Swift nyelvű iOS-alkalmazásban](https://go.microsoft.com/fwlink/?linkid=857726)
 * [Az exportált CoreML-modell használata iOs-alkalmazásban a Xamarinnal](https://github.com/xamarin/ios-samples/tree/master/ios11/CoreMLAzureModel)

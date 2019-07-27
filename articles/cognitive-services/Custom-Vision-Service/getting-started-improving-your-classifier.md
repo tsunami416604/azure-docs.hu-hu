@@ -1,7 +1,7 @@
 ---
-title: Az osztályozót – Custom Vision Service
-titlesuffix: Azure Cognitive Services
-description: Útmutató az osztályozó által igénybe vett minőségének javítására.
+title: Az osztályozó javítása – Custom Vision Service
+titleSuffix: Azure Cognitive Services
+description: Ismerje meg, hogy miként javítható az osztályozó minősége.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -10,105 +10,105 @@ ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 03/21/2019
 ms.author: pafarley
-ms.openlocfilehash: 35f83832b0ceb7507b39095e9cc974d82a480c69
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: d71c750185589fd488df70b63fd48e9e674ee3dc
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60606944"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68561054"
 ---
-# <a name="how-to-improve-your-classifier"></a>Tartalombesoroló teljesítményének hogyan
+# <a name="how-to-improve-your-classifier"></a>Az osztályozó javítása
 
-Ebben az útmutatóban, megtudhatja, hogyan a Custom Vision Service osztályozó minőségének javítása érdekében. Az osztályozó által igénybe vett minőségét az összeg, minőségi és a címkézett adatokkal, adja meg, és hogyan elosztott terhelésű van a teljes adatkészlet különböző függ. Egy jó osztályozó Mi a rendszer elküldi az osztályozó által igénybe vett, amely kiegyensúlyozott betanítási adatkészletet tartalmaz. A folyamat létrehozásának ilyen besorolás meghatározási; szokás igénybe vehet néhány kerekít képzési várt eredmény eléréséhez.
+Ebből az útmutatóból megtudhatja, hogyan javíthatja Custom Vision Service osztályozó minőségét. Az osztályozó minősége a megadott címkével ellátott adatok mennyiségétől, minőségétől és számától függ, és hogy mennyire kiegyensúlyozott a teljes adatkészlet. A megfelelő osztályozó kiegyensúlyozott betanítási adatkészlettel rendelkezik, amely az osztályozó által elküldött adatokat reprezentálja. Az ilyen osztályozók létrehozásának folyamata iterációs jellegű. gyakori, hogy eltarthat néhány kört a képzéstől a várt eredmények eléréséhez.
 
-Az alábbiakban látható egy általános mintája segítséget pontosabb tartalombesoroló létrehozása:
+A következőkben egy általános minta található, amely segít a pontosabb osztályozó létrehozásában:
 
-1. Első-ciklikus képzés
-1. További rendszerképeket és adatok; hozzáadása újratanítás
-1. A különböző háttér, világító, objektum mérete, kamera szög és stílus; lemezképek hozzáadása újratanítás
-1. Új lemezkép segítségével előrejelzési tesztelése
-1. Előrejelzési eredményeket meglévő betanítási adatok módosítása
+1. Első köros képzés
+1. További lemezképek és egyenlegek hozzáadása; újratanítása
+1. Különböző háttérrel, világítással, objektum méretével, kamera látószögével és stílusával adhat hozzá képeket. újratanítása
+1. Új rendszerkép (ek) használata az előrejelzés teszteléséhez
+1. Meglévő betanítási adatmennyiség módosítása az előrejelzési eredmények alapján
 
-## <a name="prevent-overfitting"></a>Overfitting megakadályozása
+## <a name="prevent-overfitting"></a>Túlilleszkedés megakadályozása
 
-Egyes esetekben besorolás megtudhatja, hogy előrejelzéseket végezzen tetszőleges, amelyek a rendszerképek a közös jellemzők alapján. Például ha alma citrusfélékről és a egy osztályozó hoz létre, és a használt rendszerképek citrus tagoknál alma és fehér lemezeken, az osztályozó által igénybe vett adhat alma és citrusfélékről helyett a teljes és a lemezek indokolatlan fontosságát.
+Időnként az osztályozó megtudhatja, hogy az előrejelzések a képek által közösen használt sajátosságok alapján legyenek elérhetők. Ha például az alma és a Citrus számára hoz létre egy osztályozó, és az alma a kezében és a Citrus on fehér lemezeken is használta a képeket, az osztályozó az alma és a Citrus helyett aránytalanul nagy jelentőséget biztosíthat a kezek és a lemezek számára.
 
-![Váratlan besorolási képe](./media/getting-started-improving-your-classifier/unexpected.png)
+![Nem várt besorolású rendszerkép](./media/getting-started-improving-your-classifier/unexpected.png)
 
-A probléma megoldásához, használja az alábbi útmutatót képzési több különböző rendszerképek: Adja meg a képeket a különböző szögek, háttér, objektumméret, csoportok és egyéb változatok.
+A probléma megoldásához kövesse az alábbi útmutatást a többváltozós képekkel való képzéshez: különböző nézőpontokkal, háttérrel, objektum méretével, csoportokkal és egyéb változatokkal rendelkező lemezképeket biztosíthat.
 
-## <a name="data-quantity"></a>Adatok mennyisége
+## <a name="data-quantity"></a>Adatmennyiség
 
-Betanító kép a szám a legfontosabb tényező. Kiindulási pontként címke legalább 50 képenként használatát javasoljuk. Kevesebb képekkel overfitting magasabb kockázata, és a teljesítmény számok javasolhat jó minőségű, míg a modell valós adatokkal előfordulhat, hogy-kihívást jelent. 
+A betanítási lemezképek száma a legfontosabb tényező. Javasolt kiindulási pontként legalább 50 lemezképet használni címkén. Kevesebb képpel nagyobb a terhelés, és míg a teljesítménybeli számok jó minőségűek lehetnek, a modell valós adatokkal járhat. 
 
-## <a name="data-balance"></a>Adatok terheléselosztása
+## <a name="data-balance"></a>Adategyensúly
 
-Fontos is érdemes figyelembe venni a relatív a betanítási adatok mennyisége. Például egy címke és a egy másik címke 50 képek 500 rendszerképekből teszi egy imbalanced betanítási adatkészletet. Ennek hatására a modell több címkére, mint a többi előrejelzésére pontosítani fogjuk. Ön valószínűleg jobb eredmények megtekintéséhez, ha legalább egy 1:2 aránya a címke a legkevesebb képekkel és a címkét a legtöbb képekkel megmaradjanak. Ha a címke a legtöbb képekkel 500 lemezképet tartalmaz, például a címke a legkevésbé képekkel rendelkeznie kell legalább 250 képek a betanításhoz.
+Fontos figyelembe venni a betanítási adataihoz tartozó relatív mennyiségeket is. Például a 500 lemezképek használata egy címkéhez és a 50-lemezképek egy másik címkéhez egy kiegyensúlyozatlan betanítási adatkészletet tesz lehetővé. Ez azt eredményezi, hogy a modell pontosabban fog megjelenni egy címke előrejelzésében. Valószínűleg jobb eredményeket tapasztal, ha legalább 1:2 arányban tartja a címkét a legkevesebb képpel és a legtöbb képpel rendelkező címkével. Ha például a legtöbb lemezképtel rendelkező címke 500-es képet tartalmaz, a legkevésbé képképekkel rendelkező címkének legalább 250 lemezképet kell tartalmaznia a betanításhoz.
 
-## <a name="data-variety"></a>Adatok különböző
+## <a name="data-variety"></a>Adatválaszték
 
-Győződjön meg arról, mi a rendszer elküldi az osztályozó által igénybe vett a normál használat során képviselője rendszerképek használata. Ellenkező esetben az osztályozó által igénybe vett sikerült megtudhatja, hogy előrejelzéseket végezzen tetszőleges, amelyek a rendszerképek a közös jellemzők alapján. Például ha alma citrusfélékről és a egy osztályozó hoz létre, és a használt rendszerképek citrus tagoknál alma és fehér lemezeken, az osztályozó által igénybe vett adhat alma és citrusfélékről helyett a teljes és a lemezek indokolatlan fontosságát.
+Ügyeljen arra, hogy a normál használat során az osztályozó által beküldött képeket is használják. Ellenkező esetben az osztályozó megtudhatja, hogy az előrejelzések a képek által közösen használt sajátosságok alapján legyenek elérhetők. Ha például az alma és a Citrus számára hoz létre egy osztályozó, és az alma a kezében és a Citrus on fehér lemezeken is használta a képeket, az osztályozó az alma és a Citrus helyett aránytalanul nagy jelentőséget biztosíthat a kezek és a lemezek számára.
 
-![Váratlan besorolási képe](./media/getting-started-improving-your-classifier/unexpected.png)
+![Nem várt besorolású rendszerkép](./media/getting-started-improving-your-classifier/unexpected.png)
 
-A probléma megoldásához, annak érdekében, hogy az osztályozó által igénybe vett lemezképeket számos is generalize is. Az alábbiakban néhány módszert is választja ki a tanítási állítottak több különböző:
+A probléma megoldásához több rendszerkép is használható, amelyek biztosítják, hogy az osztályozó is általánosítható legyen. Az alábbi módokon teheti meg, hogy a képzési lehetőségek sokrétűek legyenek:
 
-* __Háttér:__ Adja meg a képeket az objektum, másik háttér előtt. Fényképek természetes környezetekben is jobb, mint a fényképek semleges háttér előtt, az osztályozó által igénybe vett további információkat nyújtanak.
+* __Háttér__ A különböző hátterek előtt adja meg az objektum képeit. A természetes környezetekben található fényképek jobbak, mint a semleges hátterű fényképek, mivel további információkat biztosítanak az osztályozó számára.
 
-    ![Háttér-minták képe](./media/getting-started-improving-your-classifier/background.png)
+    ![Háttérbeli minták képe](./media/getting-started-improving-your-classifier/background.png)
 
-* __Megvilágítási:__ Adja meg a képeket a változatos világítás (készített, a flash, magas kitettség), és így tovább, különösen akkor, ha az előrejelzéshez használt rendszerképek különböző megvilágítási rendelkezik. Is hasznos lehet a különböző színtelítettség, hue és fényerő-rendszerképek használatához.
+* __Világítás__ A képeket különböző világítással (a Flash, a magas expozícióval stb.), különösen akkor, ha az előrejelzéshez használt képek eltérő megvilágítással rendelkeznek. Az is hasznos, ha a képeket különböző telítettséggel, árnyalattal és fényerővel szeretné használni.
 
-    ![Világítás minták képe](./media/getting-started-improving-your-classifier/lighting.png)
+    ![Világító minták képe](./media/getting-started-improving-your-classifier/lighting.png)
 
-* __Objektum mérete:__ Adja meg, amelyben az objektumok eltérőek lehetnek a méretét és rendszerképeket (például egy fényképet kötegek származó és az egyetlen banán közelképe). Különböző méretezési segít jobban generalize az osztályozó által igénybe vett.
+* __Objektum mérete:__ Adja meg azokat a lemezképeket, amelyekben az objektumok mérete és száma (például a banán fürtökből származó képek és egy egyetlen banánból álló Vértes) változó. A különböző méretezés segíti az osztályozó általánosítás jobb kiválasztását.
 
-    ![A minták mérete képe](./media/getting-started-improving-your-classifier/size.png)
+    ![Méret minták képe](./media/getting-started-improving-your-classifier/size.png)
 
-* __Kamera szöge:__ Adjon meg másik kamera szögek képekből. Azt is megteheti, ha az összes fényképet rögzített kamera (például a térfigyelő kamerák) kell tenni, ügyeljen arra, hogy egy másik címkét rendel minden overfitting elkerülése érdekében rendszeresen előforduló objektum&mdash;értelmezése nem kapcsolódó objektumok (például lampposts) a kulcs szolgáltatásban.
+* __Kamera szöge:__ Különböző kamera-szögek által készített lemezképek megadása. Ha az összes fényképet rögzített kamerákkal (például a térfigyelő kamerákkal) kell elvégezni, ügyeljen arra, hogy egy másik címkét rendeljen minden rendszeresen előforduló objektumhoz a nem kapcsolódó objektumok&mdash;(például Lámpaoszlopok) értelmezésének elkerülése érdekében. a legfontosabb szolgáltatásként.
 
     ![Szög minták képe](./media/getting-started-improving-your-classifier/angle.png)
 
-* __Stílusa:__ Adja meg a képeket, különböző stílust ugyanahhoz az osztályhoz (például a azonos gyümölcs különböző fajtáinak). Javasoljuk azonban, ha (például Mickey egér és a egy valós beszédhelyzetek egér) mutatkozhatnak stílusok objektummal rendelkezik, akkor címkézze különálló osztályt jobban a különböző funkciói.
+* __Stílusa__ Adja meg ugyanazt az osztály különböző stílusainak képeit (például az azonos gyümölcs különböző fajtáit). Ha azonban a különböző stílusok (például a Mickey Mouse és a valós egér) objektumai vannak, akkor azt javasoljuk, hogy külön osztályokként címkézse őket, hogy jobban képviseljék a különböző funkcióit.
 
-    ![Style-minták képe](./media/getting-started-improving-your-classifier/style.png)
+    ![Stílusú minták képe](./media/getting-started-improving-your-classifier/style.png)
 
 ## <a name="negative-images"></a>Negatív képek
 
-A projekt valamely pontján, előfordulhat, hogy hozzá kell _minták negatív_ annak érdekében, pontosabb az osztályozó által igénybe vett. Negatív minták azokat, amelyek a nem megfelelő más címkék. Ezek a lemezképek feltöltésekor a alkalmazni a speciális **negatív** címke működnek.
+Előfordulhat, hogy a projekt egy bizonyos pontján _negatív mintákat_ kell hozzáadnia, hogy az osztályozó pontosabb legyen. A negatív minták olyanok, amelyek nem egyeznek a többi címkével. Ha feltölti ezeket a képeket, alkalmazza rájuk a speciális **negatív** címkét.
 
 > [!NOTE]
-> A Custom Vision Service néhány automatikus negatív kép kezelését támogatja. Például és banán osztályozó szőlőmustnak épít, és a egy cipő előrejelzéshez kép küldése, ha az osztályozó által igénybe vett kell pontszám a lemezképet, 0 % közelében szőlőmust és banán is.
+> A Custom Vision Service támogatja a negatív rendszerképek automatikus kezelését. Ha például a szőlő és a banán besorolását készíti elő, és a cipőt az előrejelzéshez beküldi, akkor az osztályozó az adott képet a szőlő és a banán esetében is a 0%-os értékkel közelíti meg.
 > 
-> Másrészről azokban az esetekben, ahol a negatív rendszerképekkel képzés használt rendszerképek egy változata, akkor valószínű, hogy a modell lesz a negatív képek besorolása, a nagyszerű Hasonlóságok miatt címkézett osztály. Például ha grépfrút osztályozó és a egy narancssárga rendelkezik, és a egy clementine képe, csatorna, előfordulhat, hogy pontszám a clementine egy narancs számos funkcióját a clementine csúcsos narancs, mert. Ha a negatív képek az ilyen jellegű, azt javasoljuk, létrehozhat egy vagy több további címkéket (például **más**) és a negatív képek a címkével ellátott címkét, hogy ezeket az osztályokat jobban megkülönböztetni a modell betanítása közben .
+> Ha azonban a negatív rendszerképek csak a betanítás során használt rendszerképek variációi, akkor valószínű, hogy a modell a nagy hasonlóságok miatt a negatív képeket címkézett osztályként fogja osztályozni. Ha például egy narancssárga és a grapefruit besorolással rendelkezik, és egy clementine-képet is megadsz, akkor a clementine narancssárgaként jelenhet meg, mivel a clementine számos funkciója hasonlít a narancssárga értékekre. Ha a negatív képek ilyen jellegűek, javasoljuk, hogy hozzon létre egy vagy több további címkét ( például a többiet), és címkézze a negatív képeket ezzel a címkével a képzés során, hogy a modell jobban megkülönböztetse ezeket az osztályokat.
 
-## <a name="use-prediction-images-for-further-training"></a>További oktatási előrejelzési képek használata
+## <a name="use-prediction-images-for-further-training"></a>Előrejelzési lemezképek használata a további képzéshez
 
-Amikor használja, vagy a kép osztályozó tesztelése az előrejelzési végpont lemezképek elküldésével, a Custom Vision service tárolja ezeket a képeket. Ezután használhatja őket a modell továbbfejlesztése.
+Ha a lemezképet az előrejelzési végpontra küldi el, vagy a rendszerkép besorolását használja, akkor a Custom Vision szolgáltatás tárolja ezeket a lemezképeket. Ezután a modell fejlesztéséhez használhatja őket.
 
-1. Az osztályozó által igénybe vett elküldött rendszerképek megtekintéséhez nyissa meg a [Custom Vision weblap](https://customvision.ai)nyissa meg a projektet, és válassza ki a __előrejelzéseket__ fülre. Az alapértelmezett nézet a jelenlegi verzió továbbfejlesztésében képeit jeleníti meg. Használhatja a __iteráció__ legördülő menüre kattintva megtekintheti az előző lépés során küldött kép.
+1. Az osztályozó által küldött képek megtekintéséhez nyissa meg a [Custom Vision weblapot](https://customvision.ai), lépjen a projektbe, és válassza a __jóslatok__ fület. Az alapértelmezett nézet az aktuális iteráció képeit jeleníti meg. A korábbi iterációk során elküldött képek megtekintéséhez használhatja az __iteráció__ legördülő menüt.
 
-    ![Képernyőkép az előrejelzés a lap képeket tartalmazó nézet](./media/getting-started-improving-your-classifier/predictions.png)
+    ![képernyőkép a jóslatok lapról a képek nézetben](./media/getting-started-improving-your-classifier/predictions.png)
 
-2. Kép az osztályozó által előrejelzett is címkéinek megtekintéséhez mutasson. Képek vannak rendezve, hogy a kapcsolatok, amivel jelentős az osztályozó által igénybe vett fejlesztései a legtöbb felsorolt tetején. Egy másik rendezési módszer használatához válasszon ki egy a __rendezési__ szakaszban. 
+2. Vigye az egérmutatót egy képre az osztályozó által előre jelzett címkék megtekintéséhez. A képek rendezése úgy történik, hogy azok, amelyek az osztályozó legtöbb tökéletesítését lehetővé teszik, megjelennek a tetején. Ha másik rendezési módszert szeretne használni, válasszon ki egy kijelölést a __Rendezés__ szakaszban. 
 
-    Kép felvétele a meglévő betanítási adatok, válassza ki a lemezképet, állítsa be a megfelelő kód(ok), és kattintson __mentse és zárja be__. A kép eltűnik __előrejelzéseket__ és képzési képkészlet hozzáadni. Kiválasztásával megtekintheti a __betanító kép__ fülre.
+    Ha képet szeretne adni a meglévő betanítási adatokhoz, válassza ki a képet, állítsa be a megfelelő címkét, majd kattintson a __Mentés és bezárás__gombra. A rendszer eltávolítja a lemezképet az __előrejelzések__ közül, és hozzáadja a betanítási lemezképek készletéhez. A betanítási __képek__ lapon tekintheti meg.
 
-    ![A címkézési lapjának képe](./media/getting-started-improving-your-classifier/tag.png)
+    ![A címkézési lap képe](./media/getting-started-improving-your-classifier/tag.png)
 
-3. Ezután a __Train__ újratanítás PowerShell osztályozó gombra.
+3. Ezután a __vonat__ gomb használatával Újrataníthatja az osztályozó.
 
-## <a name="visually-inspect-predictions"></a>Vizuálisan megvizsgálják az előrejelzések
+## <a name="visually-inspect-predictions"></a>Előrejelzések vizuális vizsgálata
 
-Vizsgálhatja meg a lemezkép-előrejelzéseket, nyissa meg a __betanító kép__ lapra, válassza ki az előző képzési iterációját a **iteráció** legördülő menüből, és a egy vagy több címke alapján ellenőrizze a **címkék** szakaszban. A nézet most kell megjelenítenie a piros Keretes minden, a képek, amelynek a modell nem sikerült megfelelően előre jelezni az adott címke.
+A képelőrejelzések vizsgálatához lépjen a __betanítási képek__ lapra, válassza ki az előző tanítási iterációt az **iteráció** legördülő menüben, és ellenőrizze a **címkék** szakaszban található címkéket. A nézetnek ekkor egy piros téglalapot kell megjelenítenie minden olyan rendszerkép körül, amelyhez a modell nem tudta megfelelően megjósolni a megadott címkét.
 
-![Az ismétlés előzmények képe](./media/getting-started-improving-your-classifier/iteration.png)
+![Az iteráció előzményeinek képe](./media/getting-started-improving-your-classifier/iteration.png)
 
-Néha egy vizuális ellenőrzése azonosíthatja a mintákat, amelyek ezután kijavíthatja a további betanítási adatok hozzáadásával vagy módosításával a meglévő betanítási adatok. Például alma Lime és a egy osztályozó helytelenül említik összes zöld alma Lime szerint. Majd hozzáadását, és zöld alma megcímkézett képeket tartalmazó betanítási adatok megadásával javítsa ki a probléma.
+Előfordulhat, hogy a vizuális vizsgálat olyan mintákat azonosít, amelyeket később további betanítási adatok hozzáadásával vagy a meglévő betanítási adatok módosításával lehet kijavítani. Például az Apples és a Limes-osztályozók nem megfelelően címkézik az összes zöld almát. Ezt a problémát a zöld alma címkézett képeit tartalmazó betanítási adatok hozzáadásával és biztosításával orvosolhatja.
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben az útmutatóban megismerhette, hogy az egyéni rendszerkép osztályozási modell pontosabb különböző módszereket vetnek. Ezután megtudhatja, hogyan lemezképek programozott módon teszteléséhez az előrejelzési API-nak elküldésével.
+Ebben az útmutatóban számos technikát tanult meg az egyéni képbesorolási modell pontosabb elvégzéséhez. Következő lépésként megtudhatja, hogyan tesztelheti a képeket programozott módon az előrejelzési API-ba való küldéssel.
 
 > [!div class="nextstepaction"]
-> [Előrejelzési API használata](use-prediction-api.md)
+> [Az előrejelzési API használata](use-prediction-api.md)

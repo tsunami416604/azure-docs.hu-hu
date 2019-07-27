@@ -1,6 +1,6 @@
 ---
-title: API HTTP-válaszkódot
-titleSuffix: Azure
+title: API HTTP-reagálási kódok – LUIS
+titleSuffix: Azure Cognitive Services
 description: Mely HTTP-válaszkódot kapott a LUIS szerzői és végponti API-k ismertetése
 services: cognitive-services
 author: diberry
@@ -11,14 +11,14 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 03/04/2019
 ms.author: diberry
-ms.openlocfilehash: f6742bf64ce26e6cce93dfcdfd06756f3c340d9e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c92bcf55b571c37efa308d9121ee4aee714e684a
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65522966"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68560070"
 ---
-# <a name="common-api-response-codes-and-their-meaning"></a>Gyakori API válaszkódok és azok jelentése
+# <a name="common-api-response-codes-and-their-meaning"></a>Általános API-válaszok kódjai és azok jelentése
 
 A [szerzői](https://go.microsoft.com/fwlink/?linkid=2092087) és [végpont](https://go.microsoft.com/fwlink/?linkid=2092356) API-k HTTP-válaszkódot adja vissza. Parancsválasz-üzeneteket egy kérelem-re vonatkozó információk közé tartozik, míg a HTTP-válaszként kapott állapotkód általános. 
 
@@ -42,4 +42,4 @@ Az alábbi táblázat a leggyakoribb HTTP-válasz állapota kódokat a némelyik
 
 ## <a name="next-steps"></a>További lépések
 
-* REST API-val [szerzői](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c2f) és [végpont](https://westus.dev.cognitive.microsoft.com/docs/services/5819c76f40a6350ce09de1ac/operations/5819c77140a63516d81aee78) dokumentációja
+* A [szerzői](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c2f) és [végponti](https://westus.dev.cognitive.microsoft.com/docs/services/5819c76f40a6350ce09de1ac/operations/5819c77140a63516d81aee78) dokumentáció REST API

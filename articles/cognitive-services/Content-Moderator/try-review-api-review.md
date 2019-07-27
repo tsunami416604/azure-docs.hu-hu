@@ -1,7 +1,7 @@
 ---
-title: Jóváhagyás felülvizsgálatok létrehozása a REST API-konzol - Content Moderator
-titlesuffix: Azure Cognitive Services
-description: Az Azure Content Moderator felülvizsgálati API-k használatával hozzon létre vagy szöveges felülvizsgálatának emberi moderálás.
+title: Moderálási felülvizsgálatok létrehozása REST API-konzollal – Content Moderator
+titleSuffix: Azure Cognitive Services
+description: Az Azure Content Moderator Review API-k használatával képeket vagy szöveges értékeléseket hozhat létre az emberi moderáláshoz.
 services: cognitive-services
 author: sanjeev3
 manager: nitinme
@@ -10,44 +10,44 @@ ms.subservice: content-moderator
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: sajagtap
-ms.openlocfilehash: 254269ccedc92b9dfc164cc4665a8a8513682773
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 581ab488337cfecae3f5dd97610c7f92c75af8b5
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60607501"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68564349"
 ---
-# <a name="create-human-reviews-rest"></a>Hozzon létre az emberi ellenőrzések (REST)
+# <a name="create-human-reviews-rest"></a>Emberi értékelések létrehozása (REST)
 
-[Értékelések](./review-api.md#reviews) tárolja, és az emberi moderátorok mérje fel a tartalom megjelenítése. Amikor egy felhasználó a felülvizsgálat befejeződött, az eredményeket egy megadott visszahívási végpont érkeznek. Ebben az útmutatóban megismerheti, hogyan állítható be a felülvizsgálatot REST API-k segítségével az API-konzol használatával felülvizsgálatok lesz. Miután megismerkedett az API-k szerkezete, egyszerűen az bármely REST-kompatibilis platform hívásokat a portot is.
+A [értékelések](./review-api.md#reviews) az emberi moderátorok számára az értékelés céljából tárolják és jelenítik meg a tartalmakat. Amikor a felhasználó elvégez egy felülvizsgálatot, az eredményeket egy megadott visszahívási végpontra küldi a rendszer. Ebből az útmutatóból megtudhatja, hogyan állíthat be felülvizsgálatokat a REST API-k segítségével az API-konzolon. Miután megértette az API-k szerkezetét, könnyedén elvégezheti ezeket a hívásokat a REST-kompatibilis platformokra.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Jelentkezzen be, vagy hozzon létre egy fiókot a Content Moderator [vizsgálóeszköz](https://contentmoderator.cognitive.microsoft.com/) hely.
+- Jelentkezzen be, vagy hozzon létre egy fiókot a Content Moderator [felülvizsgálati eszköz](https://contentmoderator.cognitive.microsoft.com/) webhelyén.
 
 ## <a name="create-a-review"></a>Felülvizsgálat létrehozása
 
-Felülvizsgálat létrehozása, nyissa meg a **[áttekintése – létrehozása](https://westus2.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/580519483f9b0709fc47f9c4)** API lapra hivatkozik, és válassza ki a gombot a kulcsfontosságú terület (található ez a végpont URL-címe a a **hitelesítő adatok** lap az a [vizsgálóeszköz](https://contentmoderator.cognitive.microsoft.com/)). Ezzel elindítja az API-konzol, ahol egyszerűen hozhat létre és futtassa a REST API-hívások.
+A felülvizsgálat létrehozásához nyissa meg a **[felülvizsgálat – API-hivatkozás létrehozása](https://westus2.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/580519483f9b0709fc47f9c4)** lapot, és válassza ki a kulcs régiójához tartozó gombot (ezt a végpont URL-címében találja a [felülvizsgálati eszköz](https://contentmoderator.cognitive.microsoft.com/) **hitelesítő adatok** lapján). Ezzel elindítja az API-konzolt, ahol könnyedén hozhat létre és futtathat REST API hívásokat.
 
-![Felülvizsgálat - Get-régió kiválasztása](images/test-drive-region.png)
+![Áttekintés – régió kiválasztásának beolvasása](images/test-drive-region.png)
 
-### <a name="enter-rest-call-parameters"></a>Adja meg REST-hívás paramétereit
+### <a name="enter-rest-call-parameters"></a>Adja meg a REST-hívás paramétereit
 
-Adjon meg értéket a **teamName**, és **Ocp-Apim-Subscription-Key**:
+Adja meg a **csapatnév**és a **OCP-APIM-Subscription-Key**értékeket:
 
-- **teamName**: A csoport azonosítója, amely beállításakor létrehozott a [vizsgálóeszköz](https://contentmoderator.cognitive.microsoft.com/) fiók (található a **azonosító** mezőt a vizsgálóeszköz hitelesítő adatok képernyőn).
-- **Ocp-Apim-Subscription-Key**: A Content Moderator kulcs. A megtalálhatja a **beállítások** lapján a [vizsgálóeszköz](https://contentmoderator.cognitive.microsoft.com).
+- **csapatnév**: A [felülvizsgálati eszköz](https://contentmoderator.cognitive.microsoft.com/) fiókjának beállításakor létrehozott csoport azonosítója (a felülvizsgálati eszköz hitelesítő adatai képernyő **azonosító** mezőjében található).
+- **Ocp-Apim-Subscription-Key**: Az Content Moderator kulcsa. Ez a [felülvizsgálati eszköz](https://contentmoderator.cognitive.microsoft.com) **Beállítások** lapján található.
 
-### <a name="enter-a-review-definition"></a>Adja meg a felülvizsgálati definíciója
+### <a name="enter-a-review-definition"></a>Adja meg a felülvizsgálati definíciót
 
-Szerkessze a **kérelem törzse** mezőben adja meg a JSON-kérelem a következő mezőket:
+Szerkessze a **kérelem törzsét** , és adja meg a JSON-kérést a következő mezőkkel:
 
-- **metaadatok**: Egyéni kulcs-érték párokat kell visszaadni a visszahívás-végpontra. Ha a kulcs-e egy meghatározott rövid kód a [felülvizsgálati eszköz](https://contentmoderator.cognitive.microsoft.com), egy címke jelenik meg.
-- **Tartalom**: Képi és videótartalmak esetében ez az egy URL-karakterlánc, a tartalom mutat. Szöveges tartalom esetén ez nem a tényleges szöveges karakterlánc.
-- **ContentId**: Egyéni azonosító karakterláncot. Ez a karakterlánc az API-nak átadott és a visszahívás keresztül visszaadott. Ez hasznos belső azonosítók vagy metaadat társít egy moderálás feladat eredményét.
-- **CallbackEndpoint**: (Nem kötelező) Visszahívás információk fogadását, a felülvizsgálat befejezésekor az URL-címe.
+- **Metaadatok**: Egyéni kulcs-érték párok, amelyeket vissza kell adni a visszahívási végpontnak. Ha a kulcs egy rövid kód, amely a [felülvizsgálati eszközben](https://contentmoderator.cognitive.microsoft.com)van meghatározva, a címkeként jelenik meg.
+- **Tartalom**: Képek és videók tartalma esetén ez egy URL-karakterlánc, amely a tartalomra mutat. Szöveges tartalom esetén ez a tényleges szöveges karakterlánc.
+- **ContentId**: Egyéni azonosító sztring. Ezt a karakterláncot a rendszer átadja az API-nak, és visszaküldi a visszahívást. Hasznos lehet belső azonosítók vagy metaadatok társítására egy moderálási feladatok eredményeivel.
+- **CallbackEndpoint**: Választható A visszahívási információk fogadására szolgáló URL-cím a felülvizsgálat befejezésekor.
 
-Az alapértelmezett kéréstörzs felülvizsgálatok hozhat létre a különböző típusú példákat mutat be:
+Az alapértelmezett kérelem törzse példákat mutat be a létrehozható különböző típusú felülvizsgálatokra:
 
 ```json
 [Image]
@@ -127,29 +127,29 @@ Az alapértelmezett kéréstörzs felülvizsgálatok hozhat létre a különböz
 ]
 ```
 
-### <a name="submit-your-request"></a>A kérelem beküldése
+### <a name="submit-your-request"></a>Kérelem elküldése
   
-Kattintson a **Küldés** gombra. Ha a művelet sikeres, a **válasz állapota** van `200 OK`, és a **válasz tartalma** jelenít meg a felülvizsgálati Azonosítóját. Másolja ezt az Azonosítót a következő lépésekben használni.
+Kattintson a **Küldés** gombra. Ha a művelet sikeres, a **Válasz állapota** `200 OK`, a **válasz tartalma** mező pedig a felülvizsgálat azonosítóját jeleníti meg. Másolja ezt az azonosítót a következő lépésekben való használatra.
 
-![Tekintse át,-konzol válasz content jelenít meg a felülvizsgálati azonosító létrehozása](images/test-drive-review-2.PNG)
+![Felülvizsgálat – a konzol válaszának létrehozása mező megjeleníti a felülvizsgálati azonosítót](images/test-drive-review-2.PNG)
 
-### <a name="examine-the-new-review"></a>Vizsgálja meg az új felülvizsgálat
+### <a name="examine-the-new-review"></a>Vizsgálja meg az új felülvizsgálatot
 
-Az a [felülvizsgálati eszköz](https://contentmoderator.cognitive.microsoft.com), jelölje be **felülvizsgálati** > **kép**/**szöveg** / **Videó** (attól függően, milyen tartalmat használta). A feltöltött tartalmat meg kell jelennie, készen áll a emberi vizsgálóeszközt.
+/A [felülvizsgálati eszközben](https://contentmoderator.cognitive.microsoft.com)válassza a képszöveg  > /videó ellenőrzése lehetőséget (a használt tartalomtól függően). A feltöltött tartalomnak szerepelnie kell az emberi felülvizsgálatra készen.
 
-![Tekintse át a foci golyó eszköz képe](images/test-drive-review-5.PNG)
+![A Soccer Ball-eszköz képének áttekintése](images/test-drive-review-5.PNG)
 
-## <a name="get-review-details"></a>Felülvizsgálati részletek
+## <a name="get-review-details"></a>Áttekintés részleteinek beolvasása
 
-Egy meglévő áttekintése részleteinek beolvasása, lépjen a [áttekintése – lekérése](https://westus2.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/580519483f9b0709fc47f9c2) API lapra hivatkozik, és válassza ki a gombot az Ön régiójában (a régiót, amelyben a kulcsát felügyelete).
+Egy meglévő felülvizsgálat részleteinek lekéréséhez nyissa meg a [Review-Get API-](https://westus2.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/580519483f9b0709fc47f9c2) referenciát, és válassza ki a régióhoz tartozó gombot (a régiót, amelyben a kulcsot felügyeli).
 
-![A munkafolyamat - Get-régió kiválasztása](images/test-drive-region.png)
+![Munkafolyamat – régió kiválasztásának beolvasása](images/test-drive-region.png)
 
-Adja meg a REST-hívás paramétereket, mint a fenti szakaszban. Ehhez a lépéshez **reviewId** a felülvizsgálat létrehozásakor kapott egyedi azonosító karakterlánc.
+Adja meg a REST-hívás paramétereit a fenti szakaszban leírtak szerint. Ebben a lépésben a **reviewId** a felülvizsgálat létrehozásakor kapott egyedi azonosító sztring.
 
-![Tekintse át – a Get-eredményeket hozhatnak létre a konzol](images/test-drive-review-3.PNG)
+![Ellenőrzés – a konzol létrehozási eredményeinek létrehozása](images/test-drive-review-3.PNG)
   
-Kattintson a **Küldés** gombra. Ha a művelet sikeres, a **válasz állapota** van `200 OK`, és a **válasz tartalma** box JSON formátumban, például a következőképpen felülvizsgálati részleteit jeleníti meg:
+Kattintson a **Küldés** gombra. Ha a művelet sikeres, a **Válasz állapota** `200 OK`, a **válasz tartalma** pedig JSON formátumban jeleníti meg a felülvizsgálati adatokat, például a következőkhöz:
 
 ```json
 {  
@@ -184,12 +184,12 @@ Kattintson a **Küldés** gombra. Ha a művelet sikeres, a **válasz állapota**
 }
 ```
 
-Jegyezze fel a válasz a következő mezőket:
+Jegyezze fel a válaszban a következő mezőket:
 
 - **status**
-- **reviewerResultTags**: Ez jelenik meg, ha bármely címke manuálisan lettek hozzáadva az emberi ellenőrző csapat (látható a **createdBy** mezőben).
-- **metaadatok**: Ez azt mutatja, hogy kezdetben a felülvizsgálatot, az emberi ellenőrző csapat végzett módosítások előtti verzióban lettek hozzáadva a címkék.
+- **reviewerResultTags**: Ez akkor jelenik meg, ha az emberi felülvizsgálati csapat manuálisan hozzáadta a címkéket (a **createdBy** mező látható).
+- **metaadatok**: Itt láthatók azok a címkék, amelyeket először a felülvizsgálatban adtak hozzá, mielőtt az emberi felülvizsgálati csapat megváltoztatta volna a módosításokat.
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben az útmutatóban megtanulta, hogyan hozhat létre a tartalom-jóváhagyás felülvizsgálatok a REST API használatával. Ezután integrálása felülvizsgálatok egy teljes körű moderálás forgatókönyvben például a [E-kereskedelmi moderálás](./ecommerce-retail-catalog-moderation.md) oktatóanyag.
+Ebben az útmutatóban megtanulta, hogyan hozhat létre a tartalom-moderálási felülvizsgálatokat a REST API használatával. Ezután integrálja a felülvizsgálatokat egy végpontok közötti moderálási forgatókönyvbe, például az [E-kereskedelmi moderálási](./ecommerce-retail-catalog-moderation.md) oktatóanyagba.

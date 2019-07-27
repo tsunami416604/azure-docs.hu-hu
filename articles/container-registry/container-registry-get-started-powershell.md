@@ -10,10 +10,10 @@ ms.date: 01/22/2019
 ms.author: danlep
 ms.custom: seodec18, mvc
 ms.openlocfilehash: f99b4ee6dd11a109d1c563c84debc2157cb03337
-ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/18/2019
+ms.lasthandoff: 07/26/2019
 ms.locfileid: "68309498"
 ---
 # <a name="quickstart-create-a-private-container-registry-using-azure-powershell"></a>Gyors útmutató: Privát tároló beállításjegyzékének létrehozása Azure PowerShell használatával
@@ -26,7 +26,7 @@ Az Azure Container Registry egy felügyelt, privát Docker-tárolóregisztráci�
 
 Ehhez a rövid útmutatóhoz Azure PowerShell modul szükséges. Futtassa a `Get-Module -ListAvailable Az` parancsot a telepített verzió meghatározásához. Ha telepíteni vagy frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-az-ps) ismertető cikket.
 
-A Dockert is telepítenie kell helyileg. A Docker csomagokat biztosít a [MacOS][docker-mac], [Windows][docker-windows]és a [Linux][Docker-Linux] rendszerekhez.
+A Dockert is telepítenie kell helyileg. A Docker csomagokat biztosít a [MacOS][docker-mac], a [Windows][docker-windows]és a [Linux][docker-linux] rendszerekhez.
 
 Mivel az Azure Cloud Shell nem tartalmazza az összes szükséges Docker-összetevőt (a `dockerd`-démont), ehhez a rövid útmutatóhoz nem használható a Cloud Shell.
 

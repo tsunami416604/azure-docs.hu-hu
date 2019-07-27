@@ -1,6 +1,6 @@
 ---
-title: Rövid útmutató – Unity Android-alkalmazás létrehozása az Azure térbeli horgonyok |} A Microsoft Docs
-description: Ebben a rövid útmutatóban megismerheti, hogyan hozhat létre Android-alkalmazás a Unity térbeli horgonyok használatával.
+title: Rövid útmutató – Unity Android-alkalmazás létrehozása az Azure térbeli Horgonyokkal | Microsoft Docs
+description: Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre a térbeli Horgonyokkal rendelkező Android-alkalmazást az Unity használatával.
 author: craigktreasure
 manager: aliemami
 services: azure-spatial-anchors
@@ -8,26 +8,25 @@ ms.author: crtreasu
 ms.date: 02/24/2019
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 642abfb99b40d67802b7194ad225ebcd2872a72b
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 24a3424a73fb21530f3cde227aa9f05f16bd6ad0
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "67135120"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68562458"
 ---
-# <a name="quickstart-create-a-unity-android-app-with-azure-spatial-anchors"></a>Gyors útmutató: Unity Android-alkalmazás létrehozása az Azure térbeli horgonyok
+# <a name="quickstart-create-a-unity-android-app-with-azure-spatial-anchors"></a>Gyors útmutató: Unity Android-alkalmazás létrehozása Azure térbeli Horgonyokkal
 
-Ez a rövid útmutató bemutatja, hogyan hozzon létre egy Unity Android-alkalmazás az [Azure térbeli horgonyok](../overview.md). Az Azure térbeli horgonyok platformfüggetlen fejlesztői szolgáltatása lehetővé teszi, hogy a vegyes valóság élmény helyükre kivonatuk eszközök idővel-objektumok segítségével. Ha elkészült, a Unity, menthet és egy térbeli kapcsolati alapot visszahívása használatával létrehozott ARCore Android alkalmazás lesz.
+Ez a rövid útmutató ismerteti, hogyan hozhat létre egy Unity Android-alkalmazást az [Azure térbeli horgonyok](../overview.md)használatával. Az Azure térbeli horgonyok egy többplatformos fejlesztői szolgáltatás, amely lehetővé teszi, hogy vegyes valóságot hozzon létre olyan objektumok használatával, amelyek az adott helyen maradnak a helyükön az egyes eszközökön. Ha elkészült, egy olyan egységgel rendelkező ARCore Android-alkalmazás fog rendelkezni, amely képes a térbeli horgonyok mentésére és visszahívására.
 
 A következőket fogja megtanulni:
 
 > [!div class="checklist"]
 > * Térbeli horgonyok fiók létrehozása
-> * Készítse elő a Unity-létrehozási beállítások
-> * Töltse le és importálja a ARCore SDK for Unity
-> * A térbeli horgonyok fiók azonosítóját és a fiókkulcsot konfigurálása
-> * Az Android Studio project exportálása
-> * Üzembe helyezése és futtatása az Android-eszközökön
+> * Az egység létrehozási beállításainak előkészítése
+> * A térbeli horgonyok fiókazonosító és a fiók kulcsának konfigurálása
+> * A Android Studio projekt exportálása
+> * Üzembe helyezés és Futtatás Android-eszközön
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
@@ -35,15 +34,14 @@ A következőket fogja megtanulni:
 
 A rövid útmutató elvégzéséhez győződjön meg arról, hogy rendelkezik az alábbiakkal:
 
-- A gép egy Windows vagy MacOS rendszerű <a href="https://unity3d.com/get-unity/download" target="_blank">Unity 2018.3 +</a> és <a href="https://developer.android.com/studio/" target="_blank">Android Studio 3.3-as</a>.
-  - Ha fut a Windows, is kell <a href="https://git-scm.com/download/win" target="_blank">Git for Windows</a>.
-  - Ha macOS rendszeren fut, első keresztül a homebrew-val telepített Git. Adja meg a következő parancs a terminál egyetlen sorba: `/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"`. Ezután futtassa `brew install git`.
-- A <a href="https://developer.android.com/studio/debug/dev-options" target="_blank">engedélyezve fejlesztői</a> és <a href="https://developers.google.com/ar/discover/supported-devices" target="_blank">képes ARCore</a> Android-eszközön.
-- Az alkalmazás verziót kell használnia **1.7-es** ARCore SDK for Unity.
+- Egy Windows vagy macOS rendszerű számítógép, amely <a href="https://unity3d.com/get-unity/download" target="_blank">Unity 2019.1 +</a> , beleértve az Android-Build támogatását és az Android SDK-t & NDK Tools modulokat és <a href="https://developer.android.com/studio/" target="_blank">Android Studio 3.4 +</a>-t.
+  - Ha Windows rendszeren fut, szüksége lesz <a href="https://git-scm.com/download/win" target="_blank">a git for Windowsra</a>is.
+  - Ha macOS rendszeren fut, a git a HomeBrew használatával telepíthető. Írja be a következő parancsot a terminál egyetlen sorába: `/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"`. Ezután futtassa a `brew install git`parancsot.
+- A <a href="https://developer.android.com/studio/debug/dev-options" target="_blank">fejlesztők számára engedélyezett</a> és <a href="https://developers.google.com/ar/discover/supported-devices" target="_blank">ARCore alkalmas</a> Android-eszköz.
 
 [!INCLUDE [Create Spatial Anchors resource](../../../includes/spatial-anchors-get-started-create-resource.md)]
 
-## <a name="download-and-open-the-unity-sample-project"></a>Töltse le és nyissa meg a Unity mintaprojektet
+## <a name="download-and-open-the-unity-sample-project"></a>Az Unity Sample projekt letöltése és megnyitása
 
 [!INCLUDE [Clone Sample Repo](../../../includes/spatial-anchors-clone-sample-repository.md)]
 
@@ -51,28 +49,29 @@ A rövid útmutató elvégzéséhez győződjön meg arról, hogy rendelkezik az
 
 [!INCLUDE [Android Unity Build Settings](../../../includes/spatial-anchors-unity-android-build-settings.md)]
 
-## <a name="configure-account-identifier-and-key"></a>Fiókazonosító és kulcsának konfigurálása
+## <a name="configure-account-identifier-and-key"></a>Fiók azonosítójának és kulcsának konfigurálása
 
-Az a **projekt** ablaktáblán keresse meg `Assets/AzureSpatialAnchorsPlugin/Examples` , és nyissa meg a `AzureSpatialAnchorsBasicDemo.unity` jelenetfájl.
+A **projekt** ablaktáblán navigáljon `Assets/AzureSpatialAnchors.Examples/Scenes` , és nyissa `AzureSpatialAnchorsBasicDemo.unity` meg a jelenet fájlt.
 
 [!INCLUDE [Configure Unity Scene](../../../includes/spatial-anchors-unity-configure-scene.md)]
 
-Mentse a jelenet kiválasztásával **fájl** -> **mentése**.
+Mentse a jelenetet a **fájl** -> **mentése**lehetőség kiválasztásával.
 
-## <a name="export-the-android-studio-project"></a>Az Android Studio project exportálása
+## <a name="export-the-android-studio-project"></a>A Android Studio projekt exportálása
 
 [!INCLUDE [Export Unity Project](../../../includes/spatial-anchors-unity-export-project-snip.md)]
 
-Győződjön meg, hogy a **exportálása projekt** jelölőnégyzet nem rendelkezik a jelölőnégyzet be van jelölve. Kattintson a **létrehozásához és futtatásához**. Meg kell adnia menteni a `.apk` fájlt bármilyen nevet, kiválaszthatja.
+Válassza ki az eszközt az **eszköz futtatása** területen, majd kattintson a **Létrehozás és Futtatás**elemre. A rendszer megkéri, hogy mentsen egy `.apk` fájlt, amelyben bármilyen nevet kiválaszthat.
 
-Kövesse az utasításokat az alkalmazásban kívánja helyezni horgonyra visszaírásához.
+A horgonyok elhelyezéséhez és felidézéséhez kövesse az alkalmazás utasításait.
 
-> [!NOTE]
-> Az alkalmazás futtatásakor, ha nem látja a kamerát a háttérben (a példányt egy üres, kék helyette tekintse meg vagy más textúrákhoz), majd valószínűleg újra importálnia kell a Unity-nél eszközök. Állítsa le az alkalmazást. Válassza a felső menüben, a Unity-nél, **eszközök -> minden újraimportálása**. Ezután futtassa újra az alkalmazást.
+## <a name="troubleshooting"></a>Hibaelhárítás
+
+Ha az alkalmazás futtatásakor nem látja a kamerát háttérként (például üres, kék vagy más textúrákat lát), akkor valószínűleg újra kell importálnia az eszközöket az Unity-ben. Állítsa le az alkalmazást. Az egység felső menüjében válassza az **eszközök – > az összes újraimportálása**elemet. Ezután futtassa újra az alkalmazást.
 
 [!INCLUDE [Clean-up section](../../../includes/clean-up-section-portal.md)]
 
 [!INCLUDE [Next steps](../../../includes/spatial-anchors-quickstarts-nextsteps.md)]
 
 > [!div class="nextstepaction"]
-> [Oktatóanyag: Megosztás térbeli horgonyok eszközök között](../tutorials/tutorial-share-anchors-across-devices.md)
+> [Oktatóanyag: Térbeli horgonyok megosztása az eszközök között](../tutorials/tutorial-share-anchors-across-devices.md)

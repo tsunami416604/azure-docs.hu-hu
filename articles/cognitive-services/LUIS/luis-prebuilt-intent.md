@@ -1,5 +1,5 @@
 ---
-title: Előre összeállított leképezések
+title: Előre összeépített leképezések Language Understanding
 titleSuffix: Azure Cognitive Services
 description: A LUIS gyorsan hozzáadásához a közös, természetes nyelvi felhasználói esetek előre összeállított leképezések készletét tartalmazza.
 services: cognitive-services
@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 01/24/2019
 ms.author: diberry
-ms.openlocfilehash: 8e11b6d5a9c9df10e789c8e0be3a90d94ecf3d23
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: b3cac3f173cadc8fc24df50f51771d248ab85b2e
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60505676"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68563531"
 ---
 # <a name="add-prebuilt-intents-for-common-intents"></a>A közös leképezések előre összeállított leképezések hozzáadása 
 

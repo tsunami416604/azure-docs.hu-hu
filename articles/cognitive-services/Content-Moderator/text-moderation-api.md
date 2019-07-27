@@ -1,6 +1,7 @@
 ---
-title: Szövegmoderálás – a Content Moderator
-description: Szövegmoderálás használni lehetséges nemkívánatos szöveg, személyazonosításra alkalmas adatok, és az egyéni kifejezések.
+title: Szöveges moderálás – Content Moderator
+titleSuffix: Azure Cognitive Services
+description: Szöveges moderálás használata a lehetséges nemkívánatos szövegekhez, a személyes adatokhoz és a kifejezések egyéni listájához.
 services: cognitive-services
 author: sanjeev3
 manager: nitinme
@@ -9,31 +10,31 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: sajagtap
-ms.openlocfilehash: 5a1007f2408b48c96f5eeaf585b94c8caa7ceb45
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: e1d5224d8dc86c82624613b0d2a984ceef3ae5bf
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60607128"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68564371"
 ---
-# <a name="learn-text-moderation-concepts"></a>Ismerje meg a szöveg moderálása fogalmak
+# <a name="learn-text-moderation-concepts"></a>A szöveg moderálásával kapcsolatos fogalmak megismerése
 
-Használja a Content Moderator szöveg gépi támogatású moderálása és [emberi vizsgálóeszközt](Review-Tool-User-Guide/human-in-the-loop.md) képességek közepes szöveges tartalommal.
+Használjon Content Moderator gépi támogatású szöveg-moderálást és [emberi felülvizsgálati](Review-Tool-User-Guide/human-in-the-loop.md) képességeket a szöveges tartalomhoz.
 
-Blokkolása, jóváhagyása vagy tekintse át a tartalmat, a házirendek és a küszöbértékek alapján. Használja azt, mivel megvédi a környezetek emberi moderálás, partnerek, az alkalmazottak és a fogyasztók készítése a szöveges tartalom. Ezek közé tartozik, csevegőszobák, vitafórumok, látás, e-kereskedelmi katalógusok és dokumentumokat. 
+A szabályzatok és a küszöbértékek alapján blokkolhatja, jóváhagyhatja vagy áttekintheti a tartalmat. Ezzel kibővítheti a környezetek emberi moderálását, ahol a partnerek, az alkalmazottak és a felhasználók szöveges tartalmat hoznak. Ezek közé tartoznak a csevegő termek, a vitafórumok, a csevegőrobotok, az e-kereskedelmi katalógusok és a dokumentumok. 
 
-A szolgáltatás válasza az alábbi információkat tartalmazza:
+A szolgáltatás válasza a következő információkat tartalmazza:
 
-- Káromkodás: kifejezés alapú egyezéseit profán feltételek különböző nyelvű beépített listája
-- : Besorolási három kategóriába sorolhatók gépi támogatású besorolás
-- Személyes adatok
-- Automatikusan kijavíthatók szöveg
+- Káromkodás: a kifejezésen alapuló egyeztetés a különböző nyelveken található, a profán kifejezések beépített listájával
+- Besorolás: gépi támogatású besorolás három kategóriába
+- Személyes adattárolás
+- Automatikusan kijavított szöveg
 - Eredeti szöveg
 - Nyelv
 
-## <a name="profanity"></a>Káromkodás
+## <a name="profanity"></a>Vulgáris
 
-Ha az API-t profán vonatkozó használati feltételek észlel valamelyik a [támogatott nyelvek](Text-Moderation-API-Languages.md), ezeket a kifejezéseket szerepelnek a választ. A válasz is tartalmaz a helyükre (`Index`) az eredeti szöveg. A `ListId` JSON található feltételeket hivatkozik az alábbi minta [egyéni kifejezéslisták](try-terms-list-api.md) ha rendelkezésre áll.
+Ha az API bármely [támogatott nyelven](Text-Moderation-API-Languages.md)észleli a profán kifejezéseket, a válasz tartalmazza ezeket a kifejezéseket. A válasz az eredeti szöveg helyét (`Index`) is tartalmazza. A `ListId` következő példában szereplő JSON az [Egyéni kifejezési listában](try-terms-list-api.md) található kifejezésekre vonatkozik, ha vannak ilyenek.
 
     "Terms": [
     {
@@ -44,15 +45,15 @@ Ha az API-t profán vonatkozó használati feltételek észlel valamelyik a [tá
     }
 
 > [!NOTE]
-> A a **nyelvi** paraméter hozzárendelése `eng` , vagy hagyja üresen, hogy a gépi támogatású **besorolási** válasz (előzetes verziójú funkció). **Ez a funkció támogatja csak angol nyelven**.
+> A **Language** paraméterhez rendelje `eng` hozzá, vagy hagyja üresen, hogy megjelenjen a gép  által támogatott besorolási válasz (előzetes verzió funkció). **Ez a funkció csak az angol nyelvet támogatja**.
 >
-> A **cenzúrázása feltételek** észlelése, használja a [ISO 639-3 kód](http://www-01.sil.org/iso639-3/codes.asp) ezen a támogatott nyelvek a cikket, vagy hagyja üresen.
+> A **trágár kifejezések** észleléséhez használja a cikkben felsorolt támogatott nyelvek [ISO 639-3 kódját](http://www-01.sil.org/iso639-3/codes.asp) , vagy hagyja üresen.
 
 ## <a name="classification"></a>Besorolás
 
-A Content Moderator a gépi támogatású **szöveg besorolási funkció** támogatja **csak angol nyelven**, és megkönnyíti a nehezen észlelhető potenciálisan nem kívánt tartalmat. A megjelölt tartalom megjelölése kifogásolhatóként környezettől függően előfordulhat, hogy kell értékelni. Ez közvetíti az egyes kategóriák valószínűségét, és javasolhatja egy emberi vizsgálóeszközt. A szolgáltatás a betanított modell azonosíthatja a lehetséges sértő, különbözeti vagy megkülönböztető nyelvet használja. Ez magában foglalja a szleng felismerését, rövidített szavak, tekintse át a sértő és szándékosan kijavítsa a hibásan leírt szavakat. 
+Content Moderator géppel támogatott **szöveg besorolási funkciója** **csak az angol nyelvet**támogatja, és segít felderíteni a vélhetően nemkívánatos tartalmakat. A megjelölt tartalmat a környezettől függően nem megfelelőként lehet értékelni. Ez az egyes kategóriák valószínűségét közvetíti, és az emberi felülvizsgálatot is javasolhatja. A szolgáltatás egy betanított modellt használ a lehetséges visszaélésszerű, különbözeti vagy diszkriminatív nyelv azonosítására. Ez magában foglalja a szlenget, a rövidített szavakat, a sértőt és a szándékosan hibásan írt szavakat véleményezésre. 
 
-A következő kivonatot a JSON-kivonat látható egy példa a kimenetre:
+A JSON-kivonat következő kivonata egy példa kimenetet mutat be:
 
     "Classification": {
         "ReviewRecommended": true,
@@ -69,24 +70,24 @@ A következő kivonatot a JSON-kivonat látható egy példa a kimenetre:
 
 ### <a name="explanation"></a>Magyarázat
 
-- `Category1` nyelv, amely nyíltan explicit vagy felnőtt bizonyos esetekben előfordulhat, hogy tekinteni a lehetséges jelenléte hivatkozik.
-- `Category2` nyelv, amely nyíltan kétértelmű vagy érett bizonyos esetekben előfordulhat, hogy tekinteni a lehetséges jelenléte hivatkozik.
-- `Category3` nyelv, amely bizonyos helyzetekben bántónak tekinthető lehetséges jelenléte hivatkozik.
-- `Score` 0 és 1 között van. Minél nagyobb a pontszám, annál nagyobb a modell becslése, hogy a kategóriához lehet alkalmazni. Ez a szolgáltatás manuálisan kódolt kimenetek helyett egy statisztikai modellt használ. Azt javasoljuk, hogy a saját határozza meg, hogyan az egyes kategóriák az igényeinek megfelelően igazítja a tartalmat a teszteléshez.
-- `ReviewRecommended` IGAZ vagy hamis attól függően, a belső pontszám küszöbértékek. Ügyfelek fel kell mérnie, hogy e használja ezt az értéket, vagy hozza meg, a tartalom házirendek alapján egyedi küszöbértékeket.
+- `Category1`olyan nyelv lehetséges jelenlétét jelenti, amely bizonyos helyzetekben szexuálisan explicit vagy felnőttnek tekinthető.
+- `Category2`olyan nyelv lehetséges jelenlétére utal, amely bizonyos helyzetekben szexuálisan szuggesztív vagy érett lehet.
+- `Category3`olyan nyelv lehetséges jelenlétére utal, amely bizonyos helyzetekben sértőnek minősülhet.
+- `Score`0 és 1 között van. Minél magasabb a pontszám, annál nagyobb a modell, ami azt jelzi, hogy a kategória is alkalmazható. Ez a funkció egy statisztikai modellre támaszkodik, nem pedig manuálisan kódolt eredményeket. Javasoljuk, hogy tesztelje a saját tartalmait annak meghatározásához, hogy az egyes kategóriák hogyan illeszkednek a követelményekhez.
+- `ReviewRecommended`értéke igaz vagy hamis, a belső pontszám küszöbértékének függvényében. Az ügyfeleknek fel kell mérniük, hogy ezt az értéket használják-e, vagy egyéni küszöbértékeket határoznak meg a tartalmi szabályzatok alapján.
 
-## <a name="personal-data"></a>Személyes adatok
+## <a name="personal-data"></a>Személyes adattárolás
 
-A személyazonosításra alkalmas adatok funkció észleli a potenciális jelenléte ezt az információt:
+A személyes adatok szolgáltatása a következő információk lehetséges jelenlétét észleli:
 
 - E-mail-cím
-- Egyesült Államok levelezési címe
+- USA levelezési címe
 - IP-cím
-- Egyesült Államokbeli telefonszámok esetén
-- Egyesült Királyság telefonszám
+- Egyesült államokbeli telefonszám
+- Egyesült Királyság telefonszáma
 - Társadalombiztosítási szám (SSN)
 
-Az alábbi példa bemutatja egy mintaválasz:
+A következő példa egy példaként szolgáló választ mutat be:
 
     "PII": {
         "Email": [{
@@ -136,23 +137,23 @@ Az alábbi példa bemutatja egy mintaválasz:
 
 ## <a name="auto-correction"></a>Automatikus javítás
 
-Tegyük fel, hogy a bemeneti szöveg (a "lzay" és "f0x" szándékosak):
+Tegyük fel, hogy a bemeneti szöveg (a "lzay" és a "f0x" szándékos):
 
     The qu!ck brown f0x jumps over the lzay dog.
 
-Ha az automatikus javítás, a válaszban a szöveg a javított verzió:
+Ha automatikus javítást kér, a válasz tartalmazza a szöveg javított verzióját:
 
     The quick brown fox jumps over the lazy dog.
 
-## <a name="creating-and-managing-your-custom-lists-of-terms"></a>Létrehozásába és kezelésébe az egyedi listákkal feltételek
+## <a name="creating-and-managing-your-custom-lists-of-terms"></a>A kifejezések egyéni listájainak létrehozása és kezelése
 
-Bár az alapértelmezett, globális neveinek listáját a legtöbb esetben működik jól, érdemes ellen, amelyek az üzleti igényeinek megfelelő feltételek képernyőn. Például érdemes a bejegyzések a felhasználók bármilyen versenyképes márkanevek szűréséhez.
+Habár a kifejezések alapértelmezett globális listája a legtöbb esetben remekül működik, érdemes lehet az üzleti igényeknek megfelelő kifejezéseket használni. Előfordulhat például, hogy a felhasználók által létrehozott bejegyzésekből ki szeretné szűrni a versenytárs márkaneveit.
 
 > [!NOTE]
 > A maximális korlát **5 kifejezéslista**, amelyek egyenként **nem haladhatják meg a 10 000 kifejezést**.
 >
 
-Az alábbi példa bemutatja a megfelelő lista azonosítója:
+A következő példa a megfelelő lista AZONOSÍTÓját mutatja be:
 
     "Terms": [
     {
@@ -162,8 +163,8 @@ Az alábbi példa bemutatja a megfelelő lista azonosítója:
         "Term": "crap"
     }
 
-A Content Moderator biztosít egy [kifejezés lista API](https://westus.dev.cognitive.microsoft.com/docs/services/57cf755e3f9b070c105bd2c2/operations/57cf755e3f9b070868a1f67f) egyéni kifejezés kezelésével kapcsolatos műveleteket sorolja fel. Kezdje a [kifejezés sorolja fel API-konzol](try-terms-list-api.md) , és a REST API-Kódminták. Emellett olvassa el a [kifejezés megjeleníti .NET – rövid útmutató](term-lists-quickstart-dotnet.md) Ha ismeri a Visual Studio és C#.
+A Content Moderator egy [kifejezés-lista API](https://westus.dev.cognitive.microsoft.com/docs/services/57cf755e3f9b070c105bd2c2/operations/57cf755e3f9b070868a1f67f) -t biztosít az egyéni kifejezések listáinak kezelésére szolgáló műveletekkel. Kezdje a [kifejezést a lists API](try-terms-list-api.md) -konzolra, és használja a REST API kódot. Tekintse meg a [.net rövid](term-lists-quickstart-dotnet.md) útmutatót is, ha ismeri a Visual studiót és C#a-t.
 
 ## <a name="next-steps"></a>További lépések
 
-Próbálja ki a [moderálási API konzolablakba](try-text-api.md) , és a REST API-Kódminták. Emellett olvassa el a [szöveg moderálása .NET – rövid útmutató](text-moderation-quickstart-dotnet.md) Ha ismeri a Visual Studio és C#.
+Tesztelje a [text moderációs API-konzolt](try-text-api.md) , és használja a REST API-kód mintáit. Ha már ismeri a Visual studiót és a- C#t, tekintse meg a [szöveges moderálási .net](text-moderation-quickstart-dotnet.md) gyors útmutatóját is.

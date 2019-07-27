@@ -1,7 +1,7 @@
 ---
-title: 'Gyors útmutató: Beszéd, a C++ (Windows) – beszédszolgáltatások szintetizálásához'
+title: 'Gyors útmutató: Beszédszintetizátor-beszéd, C++ (Windows) – beszédfelismerési szolgáltatás'
 titleSuffix: Azure Cognitive Services
-description: Ismerje meg, hogyan beszéd, a Windows asztalon C++ szintetizálásához a Speech SDK-val
+description: Megtudhatja, hogyan szintetizálhatja C++ a beszédfelismerést a Windows asztalon a Speech SDK használatával
 services: cognitive-services
 author: yinhew
 manager: nitinme
@@ -10,26 +10,26 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 07/05/2019
 ms.author: yinhew
-ms.openlocfilehash: dfad425d6da2e3dabec138ef4f108957ebea7ee9
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: 6936d8f93221402fca9b250d09a842ce753e0e12
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67602921"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68559317"
 ---
-# <a name="quickstart-synthesize-speech-in-c-on-windows-by-using-the-speech-sdk"></a>Gyors útmutató: Beszéd, a C++, a Windows szintetizálásához a Speech SDK-val
+# <a name="quickstart-synthesize-speech-in-c-on-windows-by-using-the-speech-sdk"></a>Gyors útmutató: Beszédfelismerés a Windows C++ rendszeren a Speech SDK használatával
 
-Rövid útmutatók érhetők el is [beszédfelismerés](quickstart-cpp-windows.md) és [tolmácsolás –](quickstart-translate-speech-cpp-windows.md).
+A gyors útmutatók a [beszédfelismerés](quickstart-cpp-windows.md) és a [beszédfelismerés](quickstart-translate-speech-cpp-windows.md)számára is elérhetők.
 
-Ebben az útmutatóban egy C++ konzolalkalmazást fog létrehozni a Windowshoz. A Cognitive Services használata [beszéd SDK](speech-sdk.md) szintetizálásához beszéd valós idejű szöveg és a speech játsszon a PC-hangszóró. Az alkalmazást a [Speech SDK NuGet-csomaggal](https://aka.ms/csspeech/nuget) és a Microsoft Visual Studio 2017-tel (annak bármely kiadásával) lehet összeállítani.
+Ebben az útmutatóban egy C++ konzolalkalmazást fog létrehozni a Windowshoz. A Cognitive Services [SPEECH SDK](speech-sdk.md) segítségével valós időben szintetizálhatja a beszédet a szövegből, és lejátszhatja a beszédet a számítógép hangszóróján. Az alkalmazást a [Speech SDK NuGet-csomaggal](https://aka.ms/csspeech/nuget) és a Microsoft Visual Studio 2017-tel (annak bármely kiadásával) lehet összeállítani.
 
-Az ebben a cikkben leírt szolgáltatás érhető el [beszéd SDK 1.5.0](https://www.nuget.org/packages/Microsoft.CognitiveServices.Speech/1.5.0).
+A cikkben ismertetett funkció a [SPEECH SDK 1.5.0](https://www.nuget.org/packages/Microsoft.CognitiveServices.Speech/1.5.0)-ből érhető el.
 
-A beszédszintézishez elérhető nyelvek/beszédhangot teljes listáját lásd: [nyelvi támogatás](language-support.md#text-to-speech).
+A beszédfelismeréshez elérhető nyelvek és hangok teljes listáját lásd: [nyelvi támogatás](language-support.md#text-to-speech).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A rövid útmutató elvégzéséhez beszédszolgáltatások előfizetési kulcs szükséges. amelyet ingyenesen is beszerezhet. Lásd: [próbálja ki ingyenesen a beszédszolgáltatások](get-started.md) részleteiről.
+A rövid útmutató elvégzéséhez szüksége lesz egy Speech Services-előfizetési kulcsra. amelyet ingyenesen is beszerezhet. További részletekért tekintse [meg a Speech Services ingyenes kipróbálása](get-started.md) című témakört.
 
 ## <a name="create-a-visual-studio-project"></a>Visual Studio-projekt létrehozása
 
@@ -57,18 +57,18 @@ A rövid útmutató elvégzéséhez beszédszolgáltatások előfizetési kulcs 
 
    ![A Visual Studio képernyőképe, amelyen ki van emelve a Hibakeresés indítása lehetőség](media/sdk/qs-cpp-windows-07-start-debugging.png)
 
-1. A konzolablakban megjelenik, írjon be valamilyen szöveget, és felszólítja. Írjon be néhány szavakat és a egy mondatot. A beírt szöveget a beszédszolgáltatások továbbítani, és a Speech, amely a a hangfelismerő játszik synthesized.
+1. Megjelenik egy konzolablak, amely felszólítja, hogy írjon be egy szöveget. Írjon be néhány szót vagy mondatot. A beírt szöveg továbbítva lesz a Speech Servicesnek, és a beszédbe lett szintetizálva, amely a beszélőn játszik.
 
-   ![Képernyőfelvétel a konzol kimenete a sikeres összefoglaló után](media/sdk/qs-tts-cpp-windows-console-output.png)
+   ![A sikeres szintézis után a konzol kimenetének képernyőképe](media/sdk/qs-tts-cpp-windows-console-output.png)
 
 ## <a name="next-steps"></a>További lépések
 
-További példákat, például a következőkkel speech hangfájl, mentse a Githubon érhetők el.
+A GitHubon további példákat is megtudhat, például hogyan mentheti a beszédet egy hangfájlba.
 
 > [!div class="nextstepaction"]
-> [Ismerkedés a C++-mintákat a Githubon](https://aka.ms/csspeech/samples)
+> [Minták C++ feltárása a githubon](https://aka.ms/csspeech/samples)
 
 ## <a name="see-also"></a>Lásd még
 
-- [Hangtípust testreszabása](how-to-customize-voice-font.md)
-- [Rekord voice-minták](record-custom-voice-samples.md)
+- [Hangbetűkészletek testreszabása](how-to-customize-voice-font.md)
+- [Hangminták rögzítése](record-custom-voice-samples.md)

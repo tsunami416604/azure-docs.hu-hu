@@ -1,7 +1,7 @@
 ---
-title: A kifejezés listákat – beszédszolgáltatások
-titlesuffix: Azure Cognitive Services
-description: Ismerje meg, hogyan a beszédszolgáltatások egy kifejezést lista használatával adja meg a `PhraseListGrammar` objektum hang-szöveg transzformációs felismerési eredményeket javítása érdekében.
+title: Kifejezések listája – beszédfelismerési szolgáltatás
+titleSuffix: Azure Cognitive Services
+description: Megtudhatja, hogyan biztosíthatja a beszédfelismerési szolgáltatásokat egy kifejezési listával az objektum használatával a `PhraseListGrammar` beszédfelismerési eredmények szövegének felismeréséhez.
 services: cognitive-services
 author: rhurey
 manager: nitinme
@@ -10,27 +10,27 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: rhurey
-ms.openlocfilehash: d73a63a8f58e14149121d0860268fc23930001bf
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
+ms.openlocfilehash: 0e552d502184d1b537263c2c1f6b2a8562cdf791
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68226350"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68562787"
 ---
-# <a name="phrase-lists-for-speech-to-text"></a>Hang-szöveg transzformációs listák kifejezés
+# <a name="phrase-lists-for-speech-to-text"></a>A beszédfelismerés szövegéhez tartozó kifejezések listája
 
-Azáltal, hogy a beszédszolgáltatások kifejezések listájával, beszédfelismerés pontosságának javítása érdekében. A kifejezés listák hang adatok, például egy személy neve vagy egy adott helyen az ismert kifejezések azonosítására szolgál.
+Ha a beszédfelismerési szolgáltatásokat egy kifejezési listával látja el, akkor javíthatja a beszédfelismerés pontosságát. A kifejezések listája a hangadatokban található ismert kifejezések azonosítására szolgál, például egy személy nevéhez vagy egy adott helyhez.
 
-Például, ha egy parancs "-re", "Ward", előfordulhat, hogy beszélt, lehetséges célja a "Ward való áthelyezése" bejegyzést adhat hozzá. Kifejezés hozzáadása növeli a valószínűsége annak, amikor a hangot felismer, hogy "Ward való áthelyezése" helyett "Áthelyezési felé" ismerhető fel.
+Ha például a "Move to" parancs és a "Ward" lehetséges célpontja látható, akkor hozzáadhat egy "Áthelyezés a kórterembe" bejegyzést. Egy kifejezés hozzáadásával nő a valószínűsége annak, hogy ha a Hangfelismerés felismerte, hogy az "Áthelyezés a kórterembe" lehetőség fel lesz Ismerve az "áthelyezés felé" helyett.
 
-Önálló szavak vagy kifejezések teljes listáját a kifejezés lehet hozzáadni. Során recognition található meg egy kifejezést használja, ha pontosan egyezik a hanganyag szerepel. Ha a kifejezés a lista tartalmazza a "Ward való áthelyezése" és a rögzített kifejezést az előző példa készítése "Áthelyezése felé lassan", majd a felismerés eredményét lesz az "Ugrás Ward lassan".
+Az egyes szavak vagy teljes kifejezések hozzáadhatók egy kifejezési listához. Az elismerés során a rendszer egy kifejezési listán szereplő bejegyzést használ, ha pontos egyezést tartalmaz a hang. Az előző példára építve, ha a kifejezés lista "Áthelyezés a kórterembe" értékre mutat, és a rögzített kifejezés "lassan halad a középpontban", akkor a felismerési eredmény "Move to lassan" lesz.
 
 >[!Note]
-> Jelenleg kifejezés sorolja fel csak angol nyelvet támogatja a hang-szöveg transzformációs.
+> A kifejezések listája jelenleg csak az angol nyelvet támogatja a beszédfelismerés és a szöveg között.
 
-## <a name="how-to-use-phrase-lists"></a>Felsorolja a kifejezés használata
+## <a name="how-to-use-phrase-lists"></a>Kifejezések Listájainak használata
 
-Az alábbi példák bemutatják, hogyan hozhat létre egy kifejezést lista használatával a `PhraseListGrammar` objektum.
+Az alábbi példák bemutatják, hogyan hozhat létre egy kifejezés- `PhraseListGrammar` listát az objektum használatával.
 
 ```C++
 auto phraselist = PhraseListGrammar::FromRecognizer(recognizer);
@@ -68,9 +68,9 @@ phraseListGrammar.addPhrase("Move to Ted");
 ```
 
 >[!Note]
-> Kifejezés tartalmazza a beszédfelismerési szolgáltatás által használt megfelelő beszédfelismerési legfeljebb 1024 kifejezések.
+> A beszédfelismerési szolgáltatás által az 1024 mondatok egyeztetéséhez használt kifejezések maximális száma.
 
-A társított kifejezéseket is törölheti a `PhraseListGrammar` hívó clear() szerint.
+A `PhraseListGrammar` Clear () metódus meghívásával törölheti is a hozzájuk társított kifejezéseket.
 
 ```C++
 phraselist->Clear();
@@ -93,8 +93,8 @@ phraseListGrammar.clear();
 ```
 
 > [!NOTE]
-> Módosítja egy `PhraseListGrammar` végezze el a hatása a következő felismerése vagy a visszacsatlakozást a Speech Services a következő objektum.
+> `PhraseListGrammar` Az objektum módosításai hatással lesznek a következő felismerésre, vagy a beszédfelismerési szolgáltatásokhoz való Újrakapcsolódás után.
 
 ## <a name="next-steps"></a>További lépések
 
-* [Beszéd SDK dokumentációja](speech-sdk.md)
+* [A Speech SDK dokumentációja](speech-sdk.md)

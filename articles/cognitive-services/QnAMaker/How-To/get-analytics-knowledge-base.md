@@ -1,5 +1,5 @@
 ---
-title: Elemzés a Tudásbázisban
+title: Elemzés a Tudásbázisban – QnA Maker
 titleSuffix: Azure Cognitive Services
 description: QnA Maker az összes csevegési naplót és más telemetria tárolja, ha az QnA Maker szolgáltatás létrehozása során engedélyezte az alkalmazás elemzését. Futtassa a lekérdezéseket, hogy beolvassa a csevegési naplókat az App ininsights szolgáltatásból.
 services: cognitive-services
@@ -11,12 +11,12 @@ ms.subservice: qna-maker
 ms.topic: article
 ms.date: 07/16/2019
 ms.author: diberry
-ms.openlocfilehash: 5fc473fb1a1b1af84b0966bde4ecf02f4f221bf1
-ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
+ms.openlocfilehash: 5c729065076f5dc9f25189632f42ed565a72df8a
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68296406"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68563104"
 ---
 # <a name="get-analytics-on-your-knowledge-base"></a>Tudásbázis elemzésének lekérése
 
@@ -48,7 +48,7 @@ QnA Maker az összes csevegési naplót és más telemetria tárolja, ha az [QnA
 
     A lekérdezés futtatásához válassza a **Futtatás** lehetőséget.
 
-    ![A lekérdezés futtatása](../media/qnamaker-how-to-analytics-kb/run-query.png)
+    ![Lekérdezés futtatása](../media/qnamaker-how-to-analytics-kb/run-query.png)
 
 ## <a name="run-queries-for-other-analytics-on-your-qna-maker-knowledge-base"></a>Lekérdezések futtatása a QnA Maker Tudásbázis egyéb elemzési adataihoz
 

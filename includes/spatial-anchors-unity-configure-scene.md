@@ -4,13 +4,13 @@ ms.service: azure-spatial-anchors
 ms.topic: include
 ms.date: 1/2/2019
 ms.author: crtreasu
-ms.openlocfilehash: e796e836a8250c665ac09b66b51ed32380e56723
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 96046e63c896817a2af78b2a11af34af24565608
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67178805"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68561414"
 ---
-A következő lépés, hogy a fiók azonosítóját és kulcsát az alkalmazás konfigurálása. Másolja őket egy szövegszerkesztőbe, amikor [beállítása a térbeli horgonyok erőforrás](#create-a-spatial-anchors-resource).
+A következő lépés az alkalmazás konfigurálása a fiók azonosítójának és a fiók kulcsának használatára. [A térbeli horgonyok erőforrásának beállításakor](#create-a-spatial-anchors-resource)egy szövegszerkesztőbe másolta őket.
 
-Az a **projekt** ablaktáblán keresse meg `Assets\AzureSpatialAnchorsPlugin\Examples\Resources`. Válassza a(z) `AzureSpatialAnchorsDemoConfig` lehetőséget. Ezt követően a a **vizsgáló** panelen adja meg a `Account Key` értékeként `Spatial Anchors Account Key` és a `Account ID` értékeként `Spatial Anchors Account Id`.
+A **projekt** ablaktáblán navigáljon `Assets\AzureSpatialAnchors.SDK\Resources`a következőhöz:. Válassza a(z) `SpatialAnchorConfig` lehetőséget. Ezután a **felügyelő** ablaktáblán adja meg a `Account Key` értéket `Spatial Anchors Account Key` a és a `Account ID` értékként a következőhöz `Spatial Anchors Account Id`:.

@@ -1,6 +1,6 @@
 ---
-title: Szándékkal, a Node.js beolvasása
-titleSuffix: Language Understanding - Azure Cognitive Services
+title: Cél, Node. js – LUIS
+titleSuffix: Azure Cognitive Services
 description: Ebben a rövid útmutatóban elérhető nyilvános LUIS-alkalmazással határozza meg egy felhasználó szándékát egy beszélgetés szövegéből. Node.js nyelven küldje el szövegként a felhasználó szándékát a nyilvános alkalmazás HTTP-előrejelzési végpontjára.
 services: cognitive-services
 author: diberry
@@ -11,14 +11,14 @@ ms.subservice: language-understanding
 ms.topic: quickstart
 ms.date: 07/16/2019
 ms.author: diberry
-ms.openlocfilehash: 51ba4935afc2713fb0dc92ebbf6ca31f7c60355a
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: 084d717c1001604a7fb8ed60518777f956dec8b9
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68276090"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68563800"
 ---
-# <a name="quickstart-get-intent-using-nodejs"></a>Gyors útmutató: Get-leképezés Node.js használatával
+# <a name="quickstart-get-intent-using-nodejs"></a>Gyors útmutató: Szándék beszerzése a Node. js használatával
 
 [!INCLUDE [Quickstart introduction for endpoint](../../../includes/cognitive-services-luis-qs-endpoint-intro-para.md)]
 
@@ -32,7 +32,7 @@ ms.locfileid: "68276090"
 
 
 > [!NOTE] 
-> A teljes Node.js-megoldás érhető el a [ **Azure-minták** GitHub-adattár](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/quickstarts/analyze-text/node).
+> A teljes Node. js-megoldás az [ **Azure-Samples GitHub-** tárházból](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/quickstarts/analyze-text/node)érhető el.
 
 ## <a name="get-luis-key"></a>LUIS-kulcs lekérése
 

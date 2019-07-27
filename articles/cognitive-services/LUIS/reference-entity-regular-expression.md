@@ -1,6 +1,6 @@
 ---
-title: Reguláris kifejezés típusú entitás típusa
-titleSuffix: Language Understanding - Azure Cognitive Services
+title: Reguláris kifejezés típusú entitás – LUIS
+titleSuffix: Azure Cognitive Services
 description: A reguláris kifejezés a legjobb a nyers szövegekhez. Figyelmen kívül hagyja az esetet, és figyelmen kívül hagyja a kulturális változat.  Reguláris kifejezések egyeztetésének szinten karaktert, nem a token szint helyesírás-ellenőrzésének átalakítás után alkalmazza.
 services: cognitive-services
 author: diberry
@@ -10,12 +10,12 @@ ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 07/24/2019
 ms.author: diberry
-ms.openlocfilehash: dfffea26ccd8dfcecea2c6a2e07234f3ab27f72b
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.openlocfilehash: 82cce359f2161800c53ccce7cdb0342bba759d43
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68480230"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68559940"
 ---
 # <a name="regular-expression-entity"></a>Reguláriskifejezés-entitás 
 

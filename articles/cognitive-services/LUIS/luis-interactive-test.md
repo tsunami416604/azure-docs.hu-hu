@@ -1,6 +1,6 @@
 ---
 title: A LUIS-portál alkalmazást
-titleSuffix: Language Understanding - Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: Folyamatosan dolgozunk azon, pontosítsa és javítható a beszédfelismerés annak az alkalmazás a Language Understanding (LUIS) használatával.
 services: cognitive-services
 author: diberry
@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 01/23/2019
 ms.author: diberry
-ms.openlocfilehash: 51c6a58567b35c9b8486d8634b0bed1af7218994
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: c1a0afc909aa7ef16fa54b931e1601c2ce7304cc
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60199071"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68560420"
 ---
 # <a name="test-your-luis-app-in-the-luis-portal"></a>A LUIS-alkalmazás tesztelése a LUIS-portálon
 <a name="train-your-app"></a>
@@ -47,7 +47,7 @@ A teszteredmények részletek nézze meg a **vizsgálat** panel.
  
 1. Az a **teszt** dia kibővített panel meg van nyitva, válassza ki **vizsgálat** az utterance (kifejezés) kívánja. 
 
-    ![Válassza ki a vizsgálat gombra kattintva további részleteket tudhat a vizsgálati eredmények](./media/luis-how-to-interactive-test/inspect.png)
+    ![A vizsgálati eredmények további részleteinek megtekintéséhez kattintson a vizsgálat gombra.](./media/luis-how-to-interactive-test/inspect.png)
 
 2. A **ellenőrzési** panel jelenik meg. A panel felső pontozási szándékot, valamint a azonosított entitások tartalmazza. A panelen a kiválasztott utterance (kifejezés) eredménye látható.
 

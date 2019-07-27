@@ -1,5 +1,5 @@
 ---
-title: Pontos egyezés egyeztetése
+title: Pontos szöveges egyezés – LUIS
 titleSuffix: Azure Cognitive Services
 description: Elemek előre meghatározott listájával egyező adatok lekérése. A lista minden elemének lehetnek pontosan megegyező szinonimái
 services: cognitive-services
@@ -11,16 +11,16 @@ ms.subservice: language-understanding
 ms.topic: tutorial
 ms.date: 05/07/2019
 ms.author: diberry
-ms.openlocfilehash: df37e7aad2420d0bc280121634d49675ae29ee5a
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: a5aeeb74d26ce633beb0e9feef20a2315bc0ff1d
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65236421"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68560403"
 ---
-# <a name="tutorial-get-exact-text-matched-data-from-an-utterance"></a>Oktatóanyag: Pontos szövege egyezik-adatokat kérhet le az utterance (kifejezés)
+# <a name="tutorial-get-exact-text-matched-data-from-an-utterance"></a>Oktatóanyag: Pontos szöveggel egyező adatok beolvasása a teljes használatból
 
-Ebből az oktatóanyagból megtudhatja, hogyan Entitásadatok, amely megegyezik az előre meghatározott elemek listájának beolvasása. 
+Ebből az oktatóanyagból megtudhatja, hogyan kérhet le olyan entitás-adatokat, amelyek megfelelnek az előre meghatározott elemek listájának. 
 
 **Ebben az oktatóanyagban az alábbiakkal fog megismerkedni:**
 
@@ -35,25 +35,25 @@ Ebből az oktatóanyagból megtudhatja, hogyan Entitásadatok, amely megegyezik 
 
 [!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
 
-## <a name="what-is-a-list-entity"></a>Mi az a lista entitást?
+## <a name="what-is-a-list-entity"></a>Mi a lista entitás?
 
-Egy lista entitás egy pontos szövege egyezik az utterance (kifejezés) szavakat. 
+A lista entitások pontos szövegnek felelnek meg a kifejezésben szereplő szavaknak. 
 
-A lista minden eleme tartalmazhatja szinonimák egy listáját. Az emberi erőforrások alkalmazás vállalati részleg több kulcsfontosságú adatokat, például egy hivatalos nevét, a köznapi mozaikszavak és a számlázási részleg kódok segítségével azonosítható. 
+A lista minden eleme tartalmazhatja szinonimák egy listáját. A Human Resources alkalmazás esetében a vállalati részlegek több fontos információval azonosíthatók, például a hivatalos név, a közös betűszók és a számlázási részleg kódjai. 
 
-Az emberi erőforrások alkalmazáson kell meghatározni a részleg egy alkalmazott átvitele. 
+Az emberi erőforrások alkalmazásnak meg kell határoznia azt az osztályt, amelyre az alkalmazott át lett ruházva. 
 
 A listaentitás megfelelő választás az ilyen típusú adatok esetén, amikor:
 
 * Az adatok értékei egy ismert készletbe tartoznak.
 * A készlet nem haladja meg a LUIS maximális [határait](luis-boundaries.md) ezen entitástípus esetében.
-* A kimondott szöveg egy része pontosan megegyezik egy szinonimával vagy a kanonikus névvel. A LUIS túli szöveg pontos egyezés a lista nem használ. Amely szerint elnevezéseket és egyéb változatok csak adott entitással listában nincs feloldva. Kezelheti a változatok, fontolja meg egy [minta](luis-concept-patterns.md#syntax-to-mark-optional-text-in-a-template-utterance) választható szöveg szintaxissal. 
+* A kimondott szöveg egy része pontosan megegyezik egy szinonimával vagy a kanonikus névvel. LUIS nem használja a listát a pontos szöveges egyezéseken felül. A kivezetés, a többes szám és más változat nem oldható fel egyetlen listával rendelkező entitással. A változatok kezeléséhez érdemes [mintát](luis-concept-patterns.md#syntax-to-mark-optional-text-in-a-template-utterance) használni a választható szöveges szintaxissal. 
 
 ## <a name="create-a-new-app"></a>Új alkalmazás létrehozása
 
 [!INCLUDE [Follow these steps to create a new LUIS app](../../../includes/cognitive-services-luis-create-new-app-steps.md)]
 
-## <a name="create-an-intent-to-transfer-employees-to-a-different-department"></a>Az alkalmazottak át egy másik részleghez leképezésének létrehozása
+## <a name="create-an-intent-to-transfer-employees-to-a-different-department"></a>Hozzon létre egy szándékot, hogy az alkalmazottakat egy másik részlegbe vigye át
 
 1. [!INCLUDE [Start in Build section](../../../includes/cognitive-services-luis-tutorial-build-section.md)]
 
@@ -67,36 +67,36 @@ A listaentitás megfelelő választás az ilyen típusú adatok esetén, amikor:
 
     |Példák kimondott szövegekre|
     |--|
-    |Helyezze át a könyvelési részleg W. Kovács János|
-    |R & D Jill Jones, a átvitele|
-    |Részleg 1234 rendelkezik számlázási Bradstreettől nevű új tag|
-    |John Jackson helyezze a mérnöki csapathoz |
-    |Helyezze át Perényi Doughtery belüli értékesítések|
-    |mV Jill Jones, informatikai|
-    |SHIFT Alice Anderson devops|
-    |A pénzügyi Carl Chamerlin|
-    |Steve Standish az 1234|
-    |A 3456 Tanner Thompson|
+    |John W. Smith áthelyezése a nyilvántartási részlegbe|
+    |Jill Jones átvitele az R & D-re|
+    |A dept 1234 nevű új tag a Bill Bradstreettől|
+    |John Jackson elhelyezése a mérnöki tudományok területén |
+    |Debra Doughtery áthelyezése a belső értékesítésbe|
+    |MV Jill Jones|
+    |Alice Anderson áthelyezése a DevOps|
+    |Carl Chamerlin – Pénzügy|
+    |Steve Standish – 1234|
+    |Tanner Thompson – 3456|
 
-    [![Képernyőkép a leképezést és példa utterances](media/luis-quickstart-intent-and-list-entity/intent-transfer-employee-to-department.png "leképezést és példa utterances képernyőképe")](media/luis-quickstart-intent-and-list-entity/intent-transfer-employee-to-department.png#lightbox)
+    [![Képernyőkép – példa hosszúságú kimondott szöveg](media/luis-quickstart-intent-and-list-entity/intent-transfer-employee-to-department.png "Képernyőkép – példa hosszúságú kimondott szöveg")](media/luis-quickstart-intent-and-list-entity/intent-transfer-employee-to-department.png#lightbox)
 
     [!INCLUDE [Do not use too few utterances](../../../includes/cognitive-services-luis-too-few-example-utterances.md)]  
 
-## <a name="department-list-entity"></a>Részleg lista entitás
+## <a name="department-list-entity"></a>Részlegek listája entitás
 
-Most, hogy a **TransferEmployeeToDepartment** szándékot példa utterances, a LUIS meg kell ismernie, mi az a szervezeti egység. 
+Most, hogy a **TransferEmployeeToDepartment** szándéka például a hosszúságú kimondott szöveg, Luis meg kell ismernie, mi az a részleg. 
 
-Az elsődleges _kanonikus_nevű minden elem van a részleg nevét. A szinonimák minden egyes canonical név példák: 
+Az egyes elemek elsődleges, _kanonikus_és neve a részleg neve. Az egyes kanonikus nevek szinonimái például a következők: 
 
 |Kanonikus név|Szinonimák|
 |--|--|
-|Könyvelés|Acct<br>accting<br>3456|
+|Könyvelés|Acct<br>Acct<br>3456|
 |Fejlesztési műveletek|Fejlesztés és üzemeltetés<br>4949|
-|Mérnöki tudományok|angol<br>naplófeladat<br>4567|
+|Mérnöki tudományok|ENG<br>naplófeladat<br>4567|
 |Pénzügy|Pénzügy<br>2020|
-|Információtechnológiai|IT<br>2323|
-|Belső értékesítés|isale<br>insale<br>1414|
-|Kutatás-fejlesztés|R &AMP; D<br>1234|
+|Információs technológia|IT<br>2323|
+|Értékesítésen belül|isale<br>nem értékesíthető<br>1414|
+|Kutatás és fejlesztés|R & D<br>1234|
 
 1. Válassza az **Entities** (Entitások) elemet a bal oldali ablaktáblán.
 
@@ -106,25 +106,25 @@ Az elsődleges _kanonikus_nevű minden elem van a részleg nevét. A szinonimák
 
     [![Új entitás felugró párbeszédpanel létrehozásának képernyőképe](media/luis-quickstart-intent-and-list-entity/create-new-list-entity-named-department.png "létrehozása új entitás felugró párbeszédpanel képernyőképe")](media/luis-quickstart-intent-and-list-entity/create-new-list-entity-named-department.png#lightbox)
 
-1. A részleg entitás oldalán `Accounting` új értéket.
+1. Az részleg entitása lapon adja meg `Accounting` az új értéket.
 
-1. A szinonimák a szinonimák felvétele a korábbi táblából.
+1. Szinonimák esetében adja hozzá az előző táblázat szinonimáit.
 
-1. Továbbra is a canonical nevek és a szinonimák hozzáadásával. 
+1. Folytassa az összes kanonikus név és a hozzá tartozó szinonimák hozzáadásával. 
 
-## <a name="add-example-utterances-to-the-none-intent"></a>A none szándék példa beszédmódok hozzáadása 
+## <a name="add-example-utterances-to-the-none-intent"></a>Példa hosszúságú kimondott szöveg hozzáadása a none szándékhoz 
 
 [!INCLUDE [Follow these steps to add the None intent to the app](../../../includes/cognitive-services-luis-create-the-none-intent.md)]
 
-## <a name="train-the-app-so-the-changes-to-the-intent-can-be-tested"></a>Az alkalmazás betanításához, így a módosítások a leképezés tesztelhető legyen 
+## <a name="train-the-app-so-the-changes-to-the-intent-can-be-tested"></a>Az alkalmazás betanítása, hogy tesztelni lehessen a szándék változásait 
 
 [!INCLUDE [LUIS How to Train steps](../../../includes/cognitive-services-luis-tutorial-how-to-train.md)]
 
-## <a name="publish-the-app-so-the-trained-model-is-queryable-from-the-endpoint"></a>Tegye közzé az alkalmazást, így a betanított modell lekérdezhető a végpontról
+## <a name="publish-the-app-so-the-trained-model-is-queryable-from-the-endpoint"></a>Tegye közzé az alkalmazást, hogy a betanított modell lekérdezhető legyen a végpontról.
 
 [!INCLUDE [LUIS How to Publish steps](../../../includes/cognitive-services-luis-tutorial-how-to-publish.md)]
 
-## <a name="get-intent-and-entity-prediction-from-endpoint"></a>Leképezés és egyéb entitások előrejelzés beolvasása végpont
+## <a name="get-intent-and-entity-prediction-from-endpoint"></a>Cél-és entitás-előrejelzés beolvasása a végpontról
 
 1. [!INCLUDE [LUIS How to get endpoint first step](../../../includes/cognitive-services-luis-tutorial-how-to-get-endpoint.md)] 
 
@@ -169,17 +169,17 @@ Az elsődleges _kanonikus_nevű minden elem van a részleg nevét. A szinonimák
 
 ## <a name="related-information"></a>Kapcsolódó információk
 
-* [Entitás listában](luis-concept-entity-types.md#list-entity) elméleti információk
-* [Hogyan betanítása](luis-how-to-train.md)
+* [Entitás](luis-concept-entity-types.md#list-entity) fogalmi információinak listázása
+* [Betanítás](luis-how-to-train.md)
 * [Közzétételi útmutató](luis-how-to-publish-app.md)
-* [A LUIS-portál tesztelése](luis-interactive-test.md)
+* [Tesztelés a LUIS portálon](luis-interactive-test.md)
 
 
 ## <a name="next-steps"></a>További lépések
 Ez az oktatóanyag létrehozott egy új szándékot, kimondottszöveg-példákat adott hozzá, majd létrehozott egy listaentitást a pontos szövegegyezések kimondott szövegből történő kinyerése céljából. Az alkalmazás betanítása és közzététele után egy végpontlekérdezés azonosította a szándékot, és visszaadta a kinyert adatokat.
 
-Ez az alkalmazás folytatásához [hozzáadása egy összetett entitást](luis-tutorial-composite-entity.md).
+Folytassa az alkalmazással, és [adjon hozzá egy összetett entitást](luis-tutorial-composite-entity.md).
 
 > [!div class="nextstepaction"]
-> [Előre összeállított entitások szerepkörrel hozzáadása az alkalmazáshoz](tutorial-entity-roles.md)
+> [Előre összeépített entitás hozzáadása az alkalmazáshoz tartozó szerepkörrel](tutorial-entity-roles.md)
 

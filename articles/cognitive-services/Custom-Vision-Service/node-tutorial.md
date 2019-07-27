@@ -1,7 +1,7 @@
 ---
-title: 'Gyors útmutató: Hozzon létre egy rendszerképet besorolási projektet az egyéni Látástechnológiai SDK-val a node.js-ben'
-titlesuffix: Azure Cognitive Services
-description: Hozzon létre egy projektet, adja hozzá a címkéket, tölthet fel képeket, a projekt betanítását és a Node.js SDK használatával előrejelzést.
+title: 'Gyors útmutató: Rendszerkép-besorolási projekt létrehozása a Node. js-hez készült Custom Vision SDK-val'
+titleSuffix: Azure Cognitive Services
+description: Létrehozhat egy projektet, címkéket adhat hozzá, képeket tölthet fel, betaníthatja a projektet, és elvégezheti az előrejelzést a Node. js SDK használatával.
 services: cognitive-services
 author: areddish
 manager: daauld
@@ -10,25 +10,25 @@ ms.subservice: custom-vision
 ms.topic: quickstart
 ms.date: 07/15/2019
 ms.author: areddish
-ms.openlocfilehash: 92713fe16e482a3ed65b9593581749270b67a487
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: 2fe02bd48097b6e051f0203b4615c8c5683224cd
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68277589"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68560980"
 ---
-# <a name="quickstart-create-an-image-classification-project-with-the-custom-vision-nodejs-sdk"></a>Gyors útmutató: A Custom Vision Node.js SDK-val kép besorolási projekt létrehozása
+# <a name="quickstart-create-an-image-classification-project-with-the-custom-vision-nodejs-sdk"></a>Gyors útmutató: Rendszerkép-besorolási projekt létrehozása a Custom Vision Node. js SDK-val
 
-Ez a cikk ismerteti, információt és segítséget nyújtanak a mintakódot SDK használatának első lépései a Custom Vision a node.js használatával hozhat létre egy rendszerképet osztályozási modell. A létrehozást követően, akkor is címkéket adhat hozzá, tölthet fel képeket, betanítását a projekt, a projekt közzétett előrejelzési végponti URL-cím beszerzése és ezt a végpont programozott módon képet. Ez a példa sablonként használni a saját Node.js-alkalmazás létrehozásához. Ha az osztályozási modell létrehozásának és használatának folyamatán kód használata _nélkül_ szeretne végighaladni, tekintse meg a [böngészőalapú módszer útmutatóját](getting-started-build-a-classifier.md).
+Ez a cikk az Custom Vision SDK és a Node. js használatával való ismerkedéshez nyújt segítséget a képbesorolási modell létrehozásához. A létrehozást követően címkéket adhat hozzá, képeket tölthet fel, betaníthatja a projektet, beolvashatja a projekt közzétett előrejelzési végpontjának URL-címét, és a végpont használatával programozott módon tesztelheti a lemezképeket. Ez a példa sablonként használható a saját Node. js-alkalmazás létrehozásához. Ha az osztályozási modell létrehozásának és használatának folyamatán kód használata _nélkül_ szeretne végighaladni, tekintse meg a [böngészőalapú módszer útmutatóját](getting-started-build-a-classifier.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- [NODE.js 8](https://www.nodejs.org/en/download/) vagy újabb verziója szükséges.
-- [az npm](https://www.npmjs.com/) telepítve.
+- A [Node. js 8](https://www.nodejs.org/en/download/) vagy újabb verziója telepítve van.
+- a [NPM](https://www.npmjs.com/) telepítve van.
 
 ## <a name="install-the-custom-vision-sdk"></a>A Custom Vision SDK telepítése
 
-A Custom Vision service SDK a Node.js telepítéséhez futtassa a következő parancsot a PowerShellben:
+A Node. js-hez készült Custom Vision Service SDK telepítéséhez futtassa a következő parancsot a PowerShellben:
 
 ```shell
 npm install @azure/cognitiveservices-customvision-training
@@ -41,7 +41,7 @@ npm install @azure/cognitiveservices-customvision-prediction
 
 ## <a name="add-the-code"></a>A kód hozzáadása
 
-Hozzon létre egy új fájlt *sample.js* az előnyben részesített projekt könyvtárában.
+Hozzon létre egy *sample. js* nevű új fájlt a kívánt Project-címtárban.
 
 ### <a name="create-the-custom-vision-service-project"></a>A Custom Vision Service-projekt létrehozása
 
@@ -73,7 +73,7 @@ const trainer = new TrainingApiClient(trainingKey, endPoint);
 
 ### <a name="create-tags-in-the-project"></a>Címkék létrehozása a projektben
 
-Besorolási címkéket, hogy a projekt létrehozásához adja hozzá a következő kódot a végéig *sample.js*:
+Ha besorolási címkéket szeretne létrehozni a projekthez, adja hozzá a következő kódot a *sample. js*végéhez:
 
 ```javascript
 const hemlockTag = await trainer.createTag(sampleProject.id, "Hemlock");
@@ -82,10 +82,10 @@ const cherryTag = await trainer.createTag(sampleProject.id, "Japanese Cherry");
 
 ### <a name="upload-and-tag-images"></a>Képek feltöltése és címkézése
 
-A minta képek projekthez adásához, helyezze el a következő kódot a címke létrehozása után. Ez a kód a képeket a hozzájuk tartozó címkékkel együtt tölti fel. Adja meg az alaplemezkép elérési útja, amelybe letöltötte a Cognitive Services Node.js SDK-minták projekt alapján kell.
+A minta képek projekthez adásához, helyezze el a következő kódot a címke létrehozása után. Ez a kód a képeket a hozzájuk tartozó címkékkel együtt tölti fel. Az alapképfájl elérési útját a Cognitive Services Node. js SDK Samples projekt letöltése alapján kell megadnia.
 
 > [!NOTE]
-> Módosítani kell *sampleDataRoot* , amelybe letöltötte a Cognitive Services Node.js SDK-minták alapján a képek elérési projektet korábban.
+> A *sampleDataRoot* a lemezképek elérési útjára kell váltania, attól függően, hogy a Cognitive Services Node. js SDK Samples projektet korábban letöltötte.
 
 ```javascript
 console.log("Adding images...");
@@ -106,9 +106,9 @@ japaneseCherryFiles.forEach(file => {
 await Promise.all(fileUploadPromises);
 ```
 
-### <a name="train-the-classifier-and-publish"></a>Az osztályozó által igénybe vett betanítás, közzététel
+### <a name="train-the-classifier-and-publish"></a>Az osztályozó és a közzététel betanítása
 
-Ez a kód a projektet hoz létre az első példányát, és majd az előrejelzési végpontot tesz közzé, hogy az iteráció. Név, a közzétett iteráció előrejelzési kérelmek küldésére használható. Egy iteráció nem áll rendelkezésre előrejelzési végpontját, amíg közzé van téve.
+Ez a kód létrehozza az első iterációt a projektben, majd közzéteszi az iterációt az előrejelzési végponton. A közzétett iterációhoz megadott név felhasználható az előrejelzési kérelmek küldésére. Egy iteráció nem érhető el az előrejelzési végponton, amíg közzé nem teszi.
 
 ```javascript
 console.log("Training...");
@@ -127,7 +127,7 @@ console.log("Training status: " + trainingIteration.status);
 await trainer.publishIteration(sampleProject.id, trainingIteration.id, publishIterationName, predictionResourceId);
 ```
 
-### <a name="get-and-use-the-published-iteration-on-the-prediction-endpoint"></a>Letöltheti a közzétett ismétléseinek előrejelzési végpont
+### <a name="get-and-use-the-published-iteration-on-the-prediction-endpoint"></a>A közzétett iteráció lekérése és használata az előrejelzési végponton
 
 A képek előrejelzési végpontra való küldéséhez és az előrejelzés lekéréséhez adja hozzá a következő kódot a fájl végéhez:
 
@@ -147,7 +147,7 @@ A képek előrejelzési végpontra való küldéséhez és az előrejelzés lek�
 
 ## <a name="run-the-application"></a>Az alkalmazás futtatása
 
-Futtatás *sample.js*.
+Futtassa a *sample. js fájlt*.
 
 ```shell
 node sample.js

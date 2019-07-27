@@ -1,7 +1,7 @@
 ---
-title: Stream kodek tömörített hang-, beszéd SDK – beszédszolgáltatások
+title: Stream codec tömörített hang a Speech SDK-Speech szolgáltatással
 titleSuffix: Azure Cognitive Services
-description: Ismerje meg, hogyan streamelhet tömörített hang Azure beszédszolgáltatások beszédfelismerési SDK-val való. C++, a rendelkezésre álló C#, és a Linux rendszeren Java használatával.
+description: Ismerje meg, hogyan továbbíthatja az Azure Speech Services tömörített hangját a Speech SDK-val. Elérhető for C++, C#, és Java for Linux.
 services: cognitive-services
 author: amitkumarshukla
 manager: nitinme
@@ -10,39 +10,39 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: amishu
-ms.openlocfilehash: d23190dc8f7980cb8a94ba295f45ae67fc7d4678
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: b29b42dea9522526d49c1bda017a522855946def
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67605090"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68559547"
 ---
-# <a name="using-codec-compressed-audio-input-with-the-speech-sdk"></a>A beszédfelismerés SDK-val hangbemenet kodekkel tömörített
+# <a name="using-codec-compressed-audio-input-with-the-speech-sdk"></a>A codec tömörített hangbemenetének használata a Speech SDK-val
 
-A beszédfelismerés SDK **tömörített hang bemeneti Stream** API lehetővé teszi a tömörített hangot a beszédfelismerési szolgáltatás adatfolyam PullStream vagy PushStream használatával.
+A Speech SDK **tömörített hangbemeneti stream** API-val a PullStream vagy a PushStream segítségével továbbíthatja a tömörített hangokat a beszédfelismerési szolgáltatásba.
 
 > [!IMPORTANT]
-> Tömörített hang streamelési csak a támogatott C++, C#, és a Java használatával linuxon (Ubuntu 16.04, Ubuntu 18.04, Debian 9).
-> Beszéd SDK 1.4.0-s verzió vagy újabb verziója szükséges.
+> A streaming tömörített hang csak a C++, C#a és a Java Linux rendszeren (Ubuntu 16,04, Ubuntu 18,04, Debian 9) támogatott.
+> A Speech SDK 1.4.0 vagy újabb verziója szükséges.
 
-A PCM/wav a által speech dokumentációjában talál.  Wav/PCM, kívül a következő kodek tömörített bemeneti formátumokat támogatja:
+A WAV/PCM esetében tekintse meg a fővonal beszédének dokumentációját.  A WAV/PCM-en kívül a következő codec tömörített bemeneti formátumok támogatottak:
 
 - MP3
 - OPUS/OGG
 
-## <a name="prerequisites-to-using-codec-compressed-audio-input"></a>Előfeltételek kodekkel tömörített hangbemenet
+## <a name="prerequisites-to-using-codec-compressed-audio-input"></a>A kodek tömörített hangbemenetének használatának előfeltételei
 
-A tömörített hangbemenet használata a Speech SDK linuxhoz további függőségek telepítése:
+Ezeket a további függőségeket a Linux Speech SDK-val tömörített hangbemenetek használatával telepítheti:
 
 ```sh
 sudo apt install libgstreamer1.0-0 gstreamer1.0-plugins-base gstreamer1.0-plugins-good gstreamer1.0-plugins-bad gstreamer1.0-plugins-ugly
 ```
 
-## <a name="example-code-using-codec-compressed-audio-input"></a>Kódpéldákat kodekkel tömörített hangbemenet
+## <a name="example-code-using-codec-compressed-audio-input"></a>Kód tömörített hangbemenetet használó programkód
 
-A Speech Services hang tömörített stream, hozzon létre `PullAudioInputStream` vagy `PushAudioInputStream`. Ezután hozzon létre egy `AudioConfig` a stream osztály egy példányát a adja meg a Stream a tömörítési formátumot.
+Ha tömörített hangformátumot szeretne továbbítani a Speech servicesbe, hozzon `PushAudioInputStream`létre `PullAudioInputStream` vagy. Ezután hozzon létre `AudioConfig` egy példányt a stream osztály egy példányáról, és adja meg az adatfolyam tömörítési formátumát.
 
-Tegyük fel, hogy rendelkezik-e egy bemeneti stream nevű osztályt `myPushStream` és OPUS/OGG használják. A kód előfordulhat, hogy néznek ki:
+Tegyük fel, hogy rendelkezik egy nevű `myPushStream` bemeneti stream-osztállyal, és az Opus/OGG-t használja. A kód így néz ki:
 
 ```csharp
 using Microsoft.CognitiveServices.Speech;

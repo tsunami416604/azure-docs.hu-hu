@@ -1,24 +1,23 @@
 ---
 title: Kódminták – Content Moderator, C#
-titlesuffix: Azure Cognitive Services
-description: Használja a Content Moderator a REST API-hívások révén az alkalmazások.
+titleSuffix: Azure Cognitive Services
+description: Az alkalmazásokban lévő Content Moderatoreket REST API hívásokkal használhatja.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: sample
-origin.date: 01/10/2019
-ms.date: 02/20/2019
-ms.author: v-junlch
-ms.openlocfilehash: 9448cb2279b78143007f460c17427d91dfa397c7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 01/10/2019
+ms.author: pafarley
+ms.openlocfilehash: bfd61e2eef799f1e43d35a5686f022bd89490480
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60609766"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68565538"
 ---
-# <a name="content-moderator-rest-samples-in-c"></a>A Content Moderator REST-mintákC#
+# <a name="content-moderator-rest-samples-in-c"></a>Content Moderator REST-minták aC#
 
 Az alábbi felsorolásban az Azure Content Moderator API használatával létrehozott kódmintákra mutató hivatkozások szerepelnek.
 
@@ -29,5 +28,3 @@ Az alábbi felsorolásban az Azure Content Moderator API használatával létreh
 - [Képekkel kapcsolatos feladatok](https://github.com/MicrosoftContentModerator/ContentModerator-API-Samples/tree/master/ImageJob)
 
 A minták útmutatóinak eléréséhez tekintse meg az [igény szerinti webináriumot](https://info.microsoft.com/cognitive-services-content-moderator-ondemand.html).
-
-<!-- Update_Description: wording update -->

@@ -1,6 +1,6 @@
 ---
 title: 'Oktatóanyag: Az Azure-szolgáltatások felismerése egyéni embléma-Kiderítő használatával – Custom Vision'
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: Ebben az oktatóanyagban egy, az Azure Custom Visiont használó minta alkalmazást fog áttekinteni egy embléma-észlelési forgatókönyv részeként. Megtudhatja, hogyan használhatók a Custom Vision a többi összetevővel egy végpontok közötti alkalmazás továbbításához.
 services: cognitive-services
 author: PatrickFarley
@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: tutorial
 ms.date: 07/03/2019
 ms.author: pafarley
-ms.openlocfilehash: ab3dc89b90636c90564803c6a91350a75c3181cd
-ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
+ms.openlocfilehash: b0a5b110951d7b13110fab935d5ca1333f7f8c1e
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 07/26/2019
-ms.locfileid: "68517085"
+ms.locfileid: "68564213"
 ---
 # <a name="tutorial-recognize-azure-service-logos-in-camera-pictures"></a>Oktatóanyag: Azure-szolgáltatás emblémáinak felismerése kamera-képekben
 

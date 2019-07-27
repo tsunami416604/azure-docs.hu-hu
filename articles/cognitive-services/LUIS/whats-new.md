@@ -1,7 +1,7 @@
 ---
-title: Újdonságok – beszédfelismerés
+title: Újdonságok – Language Understanding (LUIS)
 titleSuffix: Azure Cognitive Services
-description: Ez a cikk tartalmazza a Language Understanding kapcsolatos híreket.
+description: Ez a cikk a Language Understandingával kapcsolatos híreket tartalmaz.
 author: diberry
 manager: nitinme
 ms.custom: experiment-luis-0519
@@ -11,43 +11,43 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 06/25/2019
 ms.author: diberry
-ms.openlocfilehash: 2efc48df906117a8d01ea8c309f001d2f623444f
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: 63a898bd807b168ae17ec90e442c6ee6c001c715
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67485076"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68559889"
 ---
-# <a name="whats-new-in-language-understanding"></a>Language Understanding újdonságai
+# <a name="whats-new-in-language-understanding"></a>A Language Understanding újdonságai
 
-Ismerje meg, hogy a szolgáltatás újdonságai. Ezek az elemek előfordulhat, hogy kibocsátási megjegyzései, videók, blogbejegyzések és egyéb információk. Ezen a lapon, hogy naprakészen követhesse a szolgáltatás a könyvjelzők közé.  
+Ismerje meg a szolgáltatás újdonságait. Ezek az elemek megjegyzések, videók, blogbejegyzések és más típusú információk kiadását is tartalmazhatják. A lapon lévő könyvjelzővel naprakészen tarthatja a szolgáltatást.  
 
 ## <a name="release-notes"></a>Kibocsátási megjegyzések 
 
-### <a name="june-24-2019"></a>2019. június 24.
+### <a name="june-24-2019"></a>Június 24., 2019
 
-* [OrdinalV2 előre összeállított entitások](luis-reference-prebuilt-ordinal-v2.md) támogatása mellett, például rendezés korábbi, és az utolsó. Csak angol kulturális.
+* A [OrdinalV2 előre elkészített entitást](luis-reference-prebuilt-ordinal-v2.md) támogat, például a következő, az előző és az utolsó sorrendet. Csak angol kultúra.
 
-### <a name="may-6-2019---build-conference"></a>Május 6 2019 - //Build konferencián
+### <a name="may-6-2019---build-conference"></a>Május 6., 2019 – Build konferencia
 
-A következő funkciók jelentek meg a Build 2019 konferencián:
+A Build 2019 konferencián a következő funkciók jelentek meg:
 
-* [V3 API áttelepítési útmutató az előzetes verzió](luis-migration-api-v3.md)
-* [Továbbfejlesztett analytics-irányítópult](luis-how-to-use-dashboard.md)
-* [Továbbfejlesztett előre összeállított tartományok](luis-reference-prebuilt-domains.md) 
-* [Dinamikus entitások](luis-migration-api-v3.md#dynamic-lists-passed-in-at-prediction-time)
+* [A V3 API áttelepítési útmutatójának előzetes verziója](luis-migration-api-v3.md)
+* [Továbbfejlesztett elemzési irányítópult](luis-how-to-use-dashboard.md)
+* [Továbbfejlesztett előre összeépített tartományok](luis-reference-prebuilt-domains.md) 
+* [Dinamikus lista entitásai](luis-migration-api-v3.md#dynamic-lists-passed-in-at-prediction-time)
 * [Külső entitások](luis-migration-api-v3.md#external-entities-passed-in-at-prediction-time)
 
 ## <a name="blogs"></a>Blogok
 
-[Bot Framework](https://blog.botframework.com/)
+[Bot-keretrendszer](https://blog.botframework.com/)
 
 ## <a name="videos"></a>Videók
 
-### <a name="2019-build-videos"></a>2019 build-videók
+### <a name="2019-build-videos"></a>2019 videók készítése
 
-[A következő generációs az üzleti folyamatok skálázásával Azure természetes nyelvi mesterséges Intelligencia használatával](https://www.youtube.com/watch?v=_k97jd-csuk&feature=youtu.be)
+[Az Azure társalgási AI használata az üzlet méretezésére a következő generáció számára](https://www.youtube.com/watch?v=_k97jd-csuk&feature=youtu.be)
 
 ## <a name="service-updates"></a>Szolgáltatási hírek
 
-[Az Azure frissítési közlemények a Cognitive Services számára](https://azure.microsoft.com/updates/?product=cognitive-services)
+[Cognitive Services Azure Update-hirdetmények](https://azure.microsoft.com/updates/?product=cognitive-services)

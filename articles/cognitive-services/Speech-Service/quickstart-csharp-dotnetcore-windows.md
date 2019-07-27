@@ -1,7 +1,7 @@
 ---
-title: 'Gyors útmutató: A beszédfelismerést, C# (.NET Core) – beszédszolgáltatások'
+title: 'Gyors útmutató: Beszédfelismerés felismerése C# (.net Core) – Speech Service'
 titleSuffix: Azure Cognitive Services
-description: Ismerje meg, hogyan a beszédfelismerést C# alatt a .NET Core Windows vagy MacOS rendszeren, a beszéd SDK-val
+description: Ismerje meg, hogyan ismerheti C# fel a beszédfelismerést a .net Core alatt Windows vagy MacOS rendszeren a Speech SDK használatával
 services: cognitive-services
 author: wolfma61
 manager: nitinme
@@ -10,26 +10,26 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 07/05/2019
 ms.author: wolfma
-ms.openlocfilehash: 9c445ea685518cec77089ce644a79305ff7f3e9e
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: 3ba82f2bb3d8325b7cf77f357471dc4f25382ff6
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67606586"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68559524"
 ---
-# <a name="quickstart-recognize-speech-with-the-speech-sdk-for-net-core"></a>Gyors útmutató: A .NET Core beszédfelismerést a Speech SDK-val
+# <a name="quickstart-recognize-speech-with-the-speech-sdk-for-net-core"></a>Gyors útmutató: Beszéd felismerése a .NET Core-hoz készült Speech SDK-val
 
-Rövid útmutatók érhetők el is [szöveg-hang transzformációs](quickstart-text-to-speech-dotnetcore.md) és [tolmácsolás –](quickstart-translate-speech-dotnetcore-windows.md).
+A gyors útmutató a [szöveg-beszéd](quickstart-text-to-speech-dotnetcore.md) és a [beszéd fordításához](quickstart-translate-speech-dotnetcore-windows.md)is elérhető.
 
-Szükség esetén válasszon egy másik programozási nyelvet és/vagy a környezetben:<br/>
+Ha szükséges, válasszon másik programozási nyelvet és/vagy környezetet:<br/>
 [!INCLUDE [Selector](../../../includes/cognitive-services-speech-service-quickstart-selector.md)]
 
-Ebben a cikkben létrehoz egy C# a Cognitive Services használatával a Windows vagy macOS rendszeren a .NET Core Konzolalkalmazás [beszéd SDK](speech-sdk.md). A számítógép mikrofonjába beszélve valós időben konvertálhat át beszédet szöveggé. Az alkalmazást a [Speech SDK NuGet-csomaggal](https://aka.ms/csspeech/nuget) és a Microsoft Visual Studio 2017-tel (annak bármely kiadásával) lehet összeállítani.
+Ebben a cikkben a .NET Core- C# hoz készült Console-alkalmazást Windows vagy MacOS rendszeren hozza létre a Cognitive Services [Speech SDK](speech-sdk.md)használatával. A számítógép mikrofonjába beszélve valós időben konvertálhat át beszédet szöveggé. Az alkalmazást a [Speech SDK NuGet-csomaggal](https://aka.ms/csspeech/nuget) és a Microsoft Visual Studio 2017-tel (annak bármely kiadásával) lehet összeállítani.
 
 > [!NOTE]
 > A .NET Core egy nyílt forráskódú, platformfüggetlen .NET-platform, amely implementálja a [.NET Standard](https://docs.microsoft.com/dotnet/standard/net-standard) specifikációt.
 
-A rövid útmutató elvégzéséhez beszédszolgáltatások előfizetési kulcs szükséges. amelyet ingyenesen is beszerezhet. Lásd: [próbálja ki ingyenesen a beszédszolgáltatások](get-started.md) részleteiről.
+A rövid útmutató elvégzéséhez szüksége lesz egy Speech Services-előfizetési kulcsra. amelyet ingyenesen is beszerezhet. További részletekért tekintse [meg a Speech Services ingyenes kipróbálása](get-started.md) című témakört.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -37,7 +37,7 @@ Ehhez a rövid útmutatóhoz a következőkre van szükség:
 
 * [.NET Core SDK](https://dotnet.microsoft.com/download)
 * [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/)
-* A beszédfelismerési szolgáltatás egy Azure-előfizetés kulcs. [Igényeljen ingyenesen egy](get-started.md).
+* Egy Azure-előfizetési kulcs a beszédfelismerési szolgáltatáshoz. [Szerezze be az egyiket ingyenesen](get-started.md).
 
 ## <a name="create-a-visual-studio-project"></a>Visual Studio-projekt létrehozása
 
@@ -65,16 +65,16 @@ Ehhez a rövid útmutatóhoz a következőkre van szükség:
 
     ![A Visual Studio képernyőképe, amelyen ki van emelve a Hibakeresés indítása lehetőség](media/sdk/qs-csharp-dotnetcore-windows-06-start-debugging.png "Hibakeresés indítása az alkalmazáson")
 
-1. Megjelenik egy konzolablak, amely arra kéri Önt, hogy mondjon valamit. Mondjon ki egy angol nyelvű kifejezést vagy mondatot. A beszéd továbbítani a beszédszolgáltatások, és a megjelenített érzéseket szöveg, amely ugyanabban az ablakban jelenik meg.
+1. Megjelenik egy konzolablak, amely arra kéri Önt, hogy mondjon valamit. Mondjon ki egy angol nyelvű kifejezést vagy mondatot. A beszéd a beszédfelismerési szolgáltatásokhoz lett továbbítva, és szövegbe kerül, amely ugyanabban az ablakban jelenik meg.
 
     ![Képernyőkép a konzolról a sikeres felismerést követően](media/sdk/qs-csharp-dotnetcore-windows-07-console-output.png "A konzol a sikeres felismerést követően")
 
 ## <a name="next-steps"></a>További lépések
 
-További példákat, például a beszéd beolvasása egy hangfájlt a Githubon érhetők el.
+A GitHubon további minták is elérhetők, például a hangfájlok beszédének olvasása.
 
 > [!div class="nextstepaction"]
-> [Ismerkedés a C# példák a Githubon](https://aka.ms/csspeech/samples)
+> [Minták C# feltárása a githubon](https://aka.ms/csspeech/samples)
 
 ## <a name="see-also"></a>Lásd még
 

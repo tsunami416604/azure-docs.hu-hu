@@ -1,28 +1,28 @@
 ---
-title: Rövid útmutató megtekintéséhez a csoportok és tagok – Azure Active Directory |} A Microsoft Docs
+title: Gyors útmutató a csoportok és a tagok megtekintéséhez – Azure Active Directory | Microsoft Docs
 description: Keresse meg, és megtekintheti a szervezet és a hozzárendelt tagjaik kapcsolatos utasításokat.
 services: active-directory
-author: eross-msft
+author: msaburnley
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: fundamentals
 ms.topic: quickstart
 ms.date: 09/24/2018
-ms.author: lizross
+ms.author: ajburnle
 ms.custom: it-pro, seodec18, seo-update-azuread-jan
 ms.reviewer: krbain
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8eef6f7a363fe7b020a3ef18ae26799d7d5452ed
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: bd3719e63b19066d61647b90ccae03ed841f3c6c
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60249392"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68561903"
 ---
 <!--As a brand-new Azure AD administrator, I need to view my organization’s groups along with the assigned members, so I can manage permissions to apps and services for people in my organization-->
 
-# <a name="quickstart-view-your-organizations-groups-and-members-in-azure-active-directory"></a>Gyors útmutató: A munkahelyi csoportok és tagok megtekintése az Azure Active Directoryban
+# <a name="quickstart-view-your-organizations-groups-and-members-in-azure-active-directory"></a>Gyors útmutató: Megtekintheti a szervezete csoportait és tagjait Azure Active Directory
 Megtekintheti a vállalat meglévő csoportjait és csoporttagjait az Azure Portalon. A csoportok az olyan felhasználók (tagok) kezelésére szolgálnak, akiknek azonos hozzáférés és azonos engedélyek szükségesek potenciálisan korlátozott alkalmazásokhoz és szolgáltatásokhoz.
 
 Ebben a rövid útmutatóban megtekinti a vállalat összes meglévő csoportját és az azokhoz rendelt tagokat.
@@ -44,11 +44,11 @@ Hozzon létre egy _MDM policy – West_ nevű új csoportot. Csoportok létrehoz
 
 2. Töltse ki a **Csoport** lapot:
     
-    - **Csoport típusa:** Válassza ki **biztonsági**
+    - **Csoport típusa:** **Biztonság** kiválasztása
     
-    - **Csoport neve:** Típus _mobileszköz-kezelési szabályzat – Nyugat-India_
+    - **Csoport neve:** Írja be a _Mdm Policy-West_
     
-    - **Tagság típusa:** Válassza ki **hozzárendelt**.
+    - **Tagság típusa:** Válassza a **hozzárendelés**lehetőséget.
 
 3. Kattintson a **Létrehozás** gombra.
 
@@ -59,9 +59,9 @@ Hozzon létre egy _Alain Charon_ nevű új felhasználót. A felhasználóknak m
 
 2. Töltse ki a **Felhasználó** lapot:
 
-    - **név:** Típus _Alain Charon_.
+    - **név:** Írja be az _Alain Charon_.
 
-    - **Felhasználónév:** Típus *alain\@contoso.com*.
+    - **Felhasználónév:** Írja be az *Alain\@contoso.com*.
 
 3. Másolja a **Jelszó** mezőben szereplő, automatikusan előállított jelszót, majd válassza a **Létrehozás** lehetőséget.
 

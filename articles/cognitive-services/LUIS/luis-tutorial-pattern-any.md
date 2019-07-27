@@ -1,5 +1,5 @@
 ---
-title: Pattern.any entitás
+title: Minta. bármely entitás – LUIS
 titleSuffix: Azure Cognitive Services
 description: A pattern.any entitás használata az adatok kimondott szövegekből való kinyeréséhez olyankor, amikor a kimondott szövegek helyesen formázottak, és az adatok vége könnyen összekeverhető a kimondott szöveg fennmaradó szavaival.
 services: cognitive-services
@@ -11,21 +11,21 @@ ms.subservice: language-understanding
 ms.topic: tutorial
 ms.date: 06/12/2019
 ms.author: diberry
-ms.openlocfilehash: 6007f88af4d1049a87851b3808c66693173a648a
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 165163d0a889e0bd5f1faef8d7f6a17d28c2b4f7
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67069246"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68563274"
 ---
-# <a name="tutorial-extract-free-form-data-with-patternany-entity"></a>Oktatóanyag: Az entitás Pattern.any szabad formátumú adatokat nyerhet ki
+# <a name="tutorial-extract-free-form-data-with-patternany-entity"></a>Oktatóanyag: Szabad formátumú adatok kinyerése mintázattal. bármely entitás
 
 Ebben az oktatóanyagban a pattern.any entitást használja az adatok kimondott szövegekből való kinyeréséhez olyankor, amikor a kimondott szövegek helyesen formázottak, és az adatok vége könnyen összekeverhető a kimondott szöveg fennmaradó szavaival. 
 
 **Ebben az oktatóanyagban az alábbiakkal fog megismerkedni:**
 
 > [!div class="checklist"]
-> * Példa-alkalmazás importálása
+> * Alkalmazás importálása – példa
 > * Példa kimondott szöveg hozzáadása meglévő entitáshoz
 > * Pattern.any entitás létrehozása
 > * Minta létrehozása
@@ -34,7 +34,7 @@ Ebben az oktatóanyagban a pattern.any entitást használja az adatok kimondott 
 
 [!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
 
-## <a name="using-patternany-entity"></a>Pattern.any entitást használó
+## <a name="using-patternany-entity"></a>Minta. bármely entitás használata
 
 A pattern.any entitás lehetővé teszi szabad formátumú adatok keresését olyankor, amikor az entitás szövegezése nehézzé teszi az entitás végének a kimondott szöveg fennmaradó részétől való elkülönítését. 
 
@@ -64,11 +64,11 @@ A változó hosszúságú szöveg olyan szavakat tartalmaz, amelyek megnehezíti
 |Ki a szerzője ennek: {FormName}[?]|
 |A {FormName} űrlap francia nyelven lett közzétéve[?]|
 
-## <a name="import-example-app"></a>Példa-alkalmazás importálása
+## <a name="import-example-app"></a>Alkalmazás importálása – példa
 
 1. Töltse le és mentse az [alkalmazás JSON-fájlját](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/tutorials/custom-domain-pattern-roles-HumanResources.json).
 
-1. Az a [LUIS portál](https://www.luis.ai), az a **saját alkalmazások** lapon, a JSON importálja egy új alkalmazást.
+1. A [Luis portál](https://www.luis.ai) **saját alkalmazások** LAPJÁN importálja a JSON-t egy új alkalmazásba.
 
 1. A **Manage** (Kezelés) szakasz **Versions** (Verziók) lapján klónozza a verziót, és adja neki a `patt-any` nevet. A klónozás nagyszerű mód, hogy kísérletezhessen a különböző LUIS-funkciókkal anélkül, hogy az az eredeti verzióra hatással lenne. Mivel a verzió neve az URL-útvonal részét képezi, a név nem tartalmazhat olyan karaktert, amely URL-címben nem érvényes.
 
@@ -96,7 +96,7 @@ A Pattern.any entitás változó hosszúságú entitások kinyerését végzi. C
 
 1. Válassza a **Create new entity** (Új entitás létrehozása) elemet, adja meg a `FormName` nevet, és típusként válassza ki a **Pattern.any** lehetőséget. Válassza a **Done** (Kész) lehetőséget. 
 
-    Az entitás-leképezés példa utterances nem címkét, mert egy Pattern.any csak akkor érvényes a mintát. 
+    Az entitás nem címkézhető példa hosszúságú kimondott szöveg, mert egy minta. any csak egy mintában érvényes. 
 
     Ha a kivont adatokat olyan más entitásokba szeretné belefoglalni, mint a szám vagy a datetimeV2, létre kell hoznia egy összetett entitást, amely a Pattern.any entitást, valamint a számot és a datetimeV2-t is tartalmazza.
 
@@ -134,7 +134,7 @@ A Pattern.any entitás változó hosszúságú entitások kinyerését végzi. C
 
 1. A felső navigációs sáv **Test** gombjával zárja be a tesztelési panelt.
 
-## <a name="using-an-explicit-list"></a>-Explicit lista
+## <a name="using-an-explicit-list"></a>Explicit lista használata
 
 Ha azt tapasztalja, hogy a Pattern.any entitást tartalmazó minta nem megfelelően vonja ki az entitásokat, egy [explicit lista](luis-concept-patterns.md#explicit-lists) megoldhatja a problémát.
 

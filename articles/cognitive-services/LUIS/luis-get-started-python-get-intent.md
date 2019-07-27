@@ -1,6 +1,6 @@
 ---
-title: Szándékkal, a Python beolvasása
-titleSuffix: Language Understanding - Azure Cognitive Services
+title: Cél, Python-LUIS
+titleSuffix: Azure Cognitive Services
 description: Ebben a rövid útmutatóban átadhat kimondott szövegeket egy LUIS-végpontnak, majd visszakaphatja a szándékot és az entitásokat.
 services: cognitive-services
 author: diberry
@@ -11,14 +11,14 @@ ms.subservice: language-understanding
 ms.topic: quickstart
 ms.date: 07/16/2019
 ms.author: diberry
-ms.openlocfilehash: 559b934194fa9aa160f4e7c5fe65610063181223
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: defcb6713516952e56e6cca2d63a99ee61f5b868
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68276110"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68563783"
 ---
-# <a name="quickstart-get-intent-using-python"></a>Gyors útmutató: Get-leképezés Python használatával
+# <a name="quickstart-get-intent-using-python"></a>Gyors útmutató: Szándék beolvasása a Python használatával
 Ebben a rövid útmutatóban átadhat kimondott szövegeket egy LUIS-végpontnak, majd visszakaphatja a szándékot és az entitásokat.
 
 [!INCLUDE [Quickstart introduction for endpoint](../../../includes/cognitive-services-luis-qs-endpoint-intro-para.md)]

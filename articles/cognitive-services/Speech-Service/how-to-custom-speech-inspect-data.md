@@ -1,7 +1,7 @@
 ---
-title: A Custom Speech - beszédszolgáltatások adatminőség vizsgálata
-titlesuffix: Azure Cognitive Services
-description: Egyéni Beszédmodell eszközöket biztosít, amelyek lehetővé teszik vizuálisan megvizsgálják a modell minőségét felismerése a felismerés ennek megfelelő eredményt hívásaiból összehasonlításával. A Custom Speech-portál, a feltöltött hang lejátszása, és megvizsgálja, hogy a megadott felismerés eredményét helyes-e.  Ez az eszköz gyors vizsgálata a Microsoft baseline hang-szöveg transzformációs modellt vagy egyéni betanított modell minőségét bármely hívásaiból lefényképezze nélkül teszi lehetővé.
+title: Az Custom Speech-Speech szolgáltatás adatminőségének vizsgálata
+titleSuffix: Azure Cognitive Services
+description: A Custom Speech olyan eszközöket biztosít, amelyekkel vizuálisan ellenőrizheti a modell felismerési minőségét a hangadatoknak a megfelelő felismerési eredménnyel való összehasonlításával. A Custom Speech-portálon lejátszhatja a feltöltött hangot, és megállapíthatja, hogy a megadott felismerési eredmény helyes-e.  Ez az eszköz lehetővé teszi az alapszintű beszéd – szöveg modell vagy egy betanított egyéni modell minőségének gyors vizsgálatát anélkül, hogy bármilyen hangadatokat kellene átírnia.
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -10,50 +10,50 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: 900d9b032b4ed121589d904a8ad18059b3283661
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: b58f9c17995128091b5c4badd228356dbacc6ae9
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67603133"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68562844"
 ---
-# <a name="inspect-custom-speech-data"></a>Egyéni beszédfelismerés adatok vizsgálata
+# <a name="inspect-custom-speech-data"></a>Custom Speech-adatellenőrzés
 
 > [!NOTE]
-> Ezen a lapon azt feltételezi, hogy elolvasta [előkészítése tesztadatai a Custom Speech](how-to-custom-speech-test-data.md) és feltöltött egy adatkészletet ellenőrzés.
+> Ez az oldal azt feltételezi, hogy elolvasta a [Custom Speechi tesztelési adatokat](how-to-custom-speech-test-data.md) , és feltöltött egy adatkészletet a vizsgálathoz.
 
-Egyéni Beszédmodell eszközöket biztosít, amelyek lehetővé teszik vizuálisan megvizsgálják a modell minőségét felismerése a felismerés ennek megfelelő eredményt hívásaiból összehasonlításával. A Custom Speech-portál, a feltöltött hang lejátszása, és megvizsgálja, hogy a megadott felismerés eredményét helyes-e. Ez az eszköz gyors vizsgálata a Microsoft baseline hang-szöveg transzformációs modellt vagy egyéni betanított modell minőségét bármely hívásaiból lefényképezze nélkül teszi lehetővé.
+A Custom Speech olyan eszközöket biztosít, amelyekkel vizuálisan ellenőrizheti a modell felismerési minőségét a hangadatoknak a megfelelő felismerési eredménnyel való összehasonlításával. A Custom Speech-portálon lejátszhatja a feltöltött hangot, és megállapíthatja, hogy a megadott felismerési eredmény helyes-e. Ezzel az eszközzel gyorsan megvizsgálhatja a Microsoft alapvető beszédfelismerési modelljét vagy egy betanított egyéni modellt, anélkül, hogy hangadatokat kellene átírnia.
 
-Ebből a dokumentumból megismerheti, hogyan vizuálisan megvizsgálják a betanítási adatok korábban feltöltött használó modell minőségét, lesz.
+Ebből a dokumentumból megtudhatja, hogyan vizsgálhatja meg a modell minőségét a korábban feltöltött betanítási adatmennyiség használatával.
 
-Ezen az oldalon megtudhatja, hogyan vizuálisan vizsgálhatja meg a Microsoft baseline hang-szöveg transzformációs modell és/vagy egy egyéni modell számára betanított minőségét. A feltöltött adatokat fogja használni a **adatok** tesztelési lapot.
+Ezen az oldalon megtudhatja, hogyan vizsgálhatja meg a Microsoft alapvető beszédfelismerési modelljét és/vagy a már betanított egyéni modellt. A teszteléshez az **adatlapra feltöltött** adatlapokat fogja használni.
 
-## <a name="create-a-test"></a>Hozzon létre egy tesztet
+## <a name="create-a-test"></a>Teszt létrehozása
 
-Kövesse ezeket az utasításokat egy teszt létrehozása:
+Teszt létrehozásához kövesse az alábbi utasításokat:
 
-1. Navigáljon a **hang-szöveg transzformációs > Custom Speech > tesztelés**.
-2. Kattintson a **teszt hozzáadása**.
-3. Válassza ki **vizsgálata (csak hang-adatok) minőségi**. Adja meg a teszt nevét, leírását, és válassza ki az audio adatkészlet.
-4. Válassza ki a tesztelni kívánt legfeljebb két modellek.
+1. Navigáljon a **beszéd-szöveg > Custom Speech > teszteléshez**.
+2. Kattintson a **teszt hozzáadása**gombra.
+3. Válassza a **minőség vizsgálata (csak hangalapú adatok)** lehetőséget. Adja meg a teszt nevét, leírását, és válassza ki a hangkészletet.
+4. Válasszon legfeljebb két modellt, amelyeket szeretne tesztelni.
 5. Kattintson a **Create** (Létrehozás) gombra.
 
-Egy teszt sikeres létrehozása után összehasonlíthatja a modellek egymás mellett.
+A tesztek sikeres létrehozása után összehasonlíthatja a modelleket egymás mellett.
 
-## <a name="side-by-side-model-comparisons"></a>Egymás melletti modell összehasonlítása
+## <a name="side-by-side-model-comparisons"></a>Párhuzamos modell-összehasonlítások
 
-Ha a vizsgálat állapota *sikeres*, kattintson a részletek a teszt teszt cikk-neve. A Részletek lap felsorolja az adatkészlet, a két modell mellett az elküldött adatkészletből a beszédátírási felismerés eredményét jelző kimondott szöveg.
+Ha a teszt állapota *sikeres*, kattintson a teszt elem nevére a teszt részleteinek megtekintéséhez. Ez a részletes lap felsorolja az adatkészlet összes hosszúságú kimondott szöveg, amely a két modell felismerési eredményét jelzi a beküldött adatkészlet átírása mellett.
 
-Az egymás melletti összehasonlítás vizsgálata érdekében különböző alkalmazáshiba-típusok, beleértve a beszúrási, törlési és helyettesítési válthat. A hanganyag figyeli, és összehasonlítja az egyes oszlopok (emberi címkével beszédátírási és hang-szöveg transzformációs két modell eredményeinek megjelenítése) felismerési eredményeket, megadhatja, hogy melyik modellben az igényeinek, és ahol fejlesztései van szükség.
+Az egymás melletti összehasonlítások megvizsgálása érdekében különböző típusú hibákat válthat ki, beleértve a beszúrást, a törlést és a helyettesítést is. Ha az egyes oszlopokban figyeli a hangot, és összehasonlítja a felismerés eredményét (megjelenítve az emberi címkével ellátott átírást és a két beszéd – szöveg modell eredményét), eldöntheti, hogy melyik modell megfelel az igényeinek, és hogy hol szükségesek a tökéletesítések.
 
-Minőségi teszteléséhez vizsgálatával hasznos minőségének beszédfelismerő végpontokat szolgáltatás elegendő egy alkalmazáshoz.  Kövesse az utasításokat, található igénylő átírt hang-, objektív mérték pontosságának, [kiértékelése pontossága](how-to-custom-speech-evaluate-data.md).
+A minőségi tesztelés vizsgálata hasznos annak ellenőrzéséhez, hogy egy beszédfelismerési végpont minősége elég-e az alkalmazáshoz.  Az átmásolt hangra vonatkozó objektív pontosság érdekében kövesse a [pontosság](how-to-custom-speech-evaluate-data.md)kiértékelése című részben található utasításokat.
 
 ## <a name="next-steps"></a>További lépések
 
-* [Az adatok](how-to-custom-speech-evaluate-data.md)
-* [A modell tanítása](how-to-custom-speech-train-model.md)
+* [Az adatai kiértékelése](how-to-custom-speech-evaluate-data.md)
+* [A modell betanítása](how-to-custom-speech-train-model.md)
 * [A modell üzembe helyezése](how-to-custom-speech-deploy-model.md)
 
 ## <a name="additional-resources"></a>További források
 
-* [Tesztadatok előkészítéséhez egyéni beszéd](how-to-custom-speech-test-data.md)
+* [Custom Speech tesztelési célú adatfeldolgozása](how-to-custom-speech-test-data.md)

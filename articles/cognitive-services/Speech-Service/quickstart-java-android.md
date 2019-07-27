@@ -1,7 +1,7 @@
 ---
-title: 'Gyors útmutató: Recognize speech, Java (Android) - Speech Services'
+title: 'Gyors útmutató: Beszédfelismerés felismerése, Java (Android) – Speech Service'
 titleSuffix: Azure Cognitive Services
-description: Ismerje meg, hogyan beszédfelismerést a Java Android rendszeren a Speech SDK-val
+description: Ismerje meg, hogyan ismerheti fel a beszédfelismerést Java nyelven Androidon a Speech SDK használatával
 services: cognitive-services
 author: fmegen
 manager: nitinme
@@ -10,19 +10,19 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 07/05/2019
 ms.author: wolfma
-ms.openlocfilehash: 22970eb58dc244405e522d46fcaa380151076062
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: c9b63685ae73fb4e056c72a640d6c4049e98b8b8
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67603100"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68559493"
 ---
-# <a name="quickstart-recognize-speech-in-java-on-android-by-using-the-speech-sdk"></a>Gyors útmutató: Beszédfelismerést a Java Android rendszeren a Speech SDK-val
+# <a name="quickstart-recognize-speech-in-java-on-android-by-using-the-speech-sdk"></a>Gyors útmutató: Az Androidon futó beszédfelismerés felismerése a Speech SDK használatával
 
 [!INCLUDE [Selector](../../../includes/cognitive-services-speech-service-quickstart-selector.md)]
 
-Ebből a cikkből elsajátíthatja fogja, hogyan hozhat létre egy Java-alkalmazást az Android a Cognitive Services beszédfelismerő SDK a beszédfelismerés lefényképezze.
-Az alkalmazás a Speech SDK Maven-csomag, az 1.6.0-s verziójának és az Android Studio 3.3-as alapul.
+Ebből a cikkből megtudhatja, hogyan fejleszthet Java-alkalmazásokat az Androidhoz a Cognitive Services Speech SDK-val a beszéd szövegbe való átírásához.
+Az alkalmazás a Speech SDK Maven-csomagon, a 1.6.0 és a Android Studio 3,3-as verzión alapul.
 A Speech SDK jelenleg a 32/64 bites ARM, vagy Intel x86/x64 processzorokat használó Android-eszközökkel kompatibilis.
 
 > [!NOTE]
@@ -30,7 +30,7 @@ A Speech SDK jelenleg a 32/64 bites ARM, vagy Intel x86/x64 processzorokat haszn
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A rövid útmutató elvégzéséhez beszédszolgáltatások előfizetési kulcs szükséges. amelyet ingyenesen is beszerezhet. Lásd: [próbálja ki ingyenesen a beszédszolgáltatások](get-started.md) részleteiről.
+A rövid útmutató elvégzéséhez szüksége lesz egy Speech Services-előfizetési kulcsra. amelyet ingyenesen is beszerezhet. További részletekért tekintse [meg a Speech Services ingyenes kipróbálása](get-started.md) című témakört.
 
 ## <a name="create-and-configure-a-project"></a>Projekt létrehozása és konfigurálása
 
@@ -38,7 +38,7 @@ A rövid útmutató elvégzéséhez beszédszolgáltatások előfizetési kulcs 
 
 ## <a name="create-user-interface"></a>A felhasználói felület létrehozása
 
-Létrehozunk egy alapvető felhasználói felületet az alkalmazáshoz. Kezdje el szerkeszteni a fő tevékenység (`activity_main.xml`) elrendezését. Kezdetben az elrendezés az alkalmazás nevével és a egy "Hello World!" szöveget tartalmazza TextView címsor magában foglalja.
+Létrehozunk egy alapvető felhasználói felületet az alkalmazáshoz. Kezdje el szerkeszteni a fő tevékenység (`activity_main.xml`) elrendezését. Kezdetben az elrendezés tartalmaz egy címsort az alkalmazás nevével, valamint egy olyan TextView, amely a ""Helló világ!"alkalmazás!" szöveget tartalmazza.
 
 * Kattintson a TextView elemre. Módosítsa a jobb felső sarokban található ID (azonosító) attribútumot a következőre: `hello`.
 
@@ -50,7 +50,7 @@ Létrehozunk egy alapvető felhasználói felületet az alkalmazáshoz. Kezdje e
 
   ![A varázspálca ikon képernyőképe](media/sdk/qs-java-android-10-infer-layout-constraints.png)
 
-A szöveg és a felhasználói felületének grafikus ábrázolása kell kinéznie:
+A felhasználói felület szöveg-és grafikus ábrázolásának ekkor a következőképpen kell kinéznie:
 
 ![](media/sdk/qs-java-android-11-gui.png)
 
@@ -82,14 +82,14 @@ A szöveg és a felhasználói felületének grafikus ábrázolása kell kinézn
 
    ![A Select Deployment Target (Üzembehelyezési cél kiválasztása) ablak képernyőképe](media/sdk/qs-java-android-12-deploy.png)
 
-Nyomja meg az alkalmazásban található gombot a szövegfelismerés aktiválásához. A következő, angol nyelvű beszéd 15 másodperc lesz a Speech szolgáltatásoknak küldött, és megjelenített érzéseket. Az eredmény az Android-alkalmazásban és az Android Studio logcat ablakában jelenik meg.
+Nyomja meg az alkalmazásban található gombot a szövegfelismerés aktiválásához. A rendszer a következő 15 másodperces angol nyelvű beszédet küldi el a Speech Servicesnek, és átmásolja őket. Az eredmény az Android-alkalmazásban és az Android Studio logcat ablakában jelenik meg.
 
 ![Az Android-alkalmazás képernyőképe](media/sdk/qs-java-android-13-gui-on-device.png)
 
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Ismerkedés a Java-példák a Githubon](https://aka.ms/csspeech/samples)
+> [A Java-minták megismerése a GitHubon](https://aka.ms/csspeech/samples)
 
 ## <a name="see-also"></a>Lásd még
 

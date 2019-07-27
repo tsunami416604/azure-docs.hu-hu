@@ -1,6 +1,6 @@
 ---
-title: .NET - Content Moderator használatával felülvizsgálatok létrehozása
-titlesuffix: Azure Cognitive Services
+title: Felülvizsgálatok létrehozása a .NET-Content Moderator használatával
+titleSuffix: Azure Cognitive Services
 description: Felülvizsgálatok létrehozása a .NET-hez készült Azure Content Moderator SDK-val.
 services: cognitive-services
 author: sanjeev3
@@ -10,23 +10,23 @@ ms.subservice: content-moderator
 ms.topic: article
 ms.date: 03/19/2019
 ms.author: sajagtap
-ms.openlocfilehash: 153d42bf4ce4322536d6837be3058d1f9bfb49a2
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 9938c79c2ba1b2f80c8f147fafe6ce79e247df43
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60607194"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68564459"
 ---
-# <a name="create-human-reviews-net"></a>Hozzon létre az emberi ellenőrzések (.NET)
+# <a name="create-human-reviews-net"></a>Emberi értékelések létrehozása (.NET)
 
-Értékelések tárolja, és az emberi moderátorok mérje fel a tartalom megjelenítése. Amikor egy felhasználó a felülvizsgálat befejeződött, az eredményeket egy megadott visszahívási végpont érkeznek. Ez az útmutató ismerteti, és kódminták segítségével történő használatának első lépései a [Content Moderator SDK for .NET](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) való:
+A értékelések az emberi moderátorok számára az értékelés céljából tárolják és jelenítik meg a tartalmakat. Amikor a felhasználó elvégez egy felülvizsgálatot, az eredményeket egy megadott visszahívási végpontra küldi a rendszer. Ez az útmutató információkat és kódokat tartalmaz a [.net-hez készült Content MODERATOR SDK](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) használatának megkezdéséhez a következőhöz:
 
 - Felülvizsgálati készlet létrehozása emberi moderátorok számára
 - Meglévő felülvizsgálatok állapotának lekérése emberi moderátorok számára
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Jelentkezzen be, vagy hozzon létre egy fiókot a Content Moderator [vizsgálóeszköz](https://contentmoderator.cognitive.microsoft.com/) hely.
+- Jelentkezzen be, vagy hozzon létre egy fiókot a Content Moderator [felülvizsgálati eszköz](https://contentmoderator.cognitive.microsoft.com/) webhelyén.
 
 ## <a name="ensure-your-api-key-can-call-the-review-api-for-review-creation"></a>Arról való gondoskodás, hogy az API-kulcs meg tudja hívni a felülvizsgálati API-t a felülvizsgálat létrehozásához
 
@@ -159,7 +159,7 @@ Adja hozzá a következő osztályt a **Program** osztályhoz. Az osztály haszn
 >
 > Az ingyenes szint kulcsának a sebességkorlátja egy RPS.
 
-#### <a name="add-the-following-constants-to-the-program-class-in-programcs"></a>Adja hozzá a következő állandókat a **Program** osztály a program.cs fájlban
+#### <a name="add-the-following-constants-to-the-program-class-in-programcs"></a>Adja hozzá a következő konstansokat a **program** osztályhoz a program.cs-ben.
 
 ```csharp
 /// <summary>
@@ -181,7 +181,7 @@ Adja hozzá a következő osztályt a **Program** osztályhoz. Az osztály haszn
     private const string OutputFile = "OutputLog.txt";
 ```
 
-#### <a name="add-the-following-constants-and-static-fields-to-the-program-class-in-programcs"></a>Adja hozzá a következő állandókat és a statikus mezők a **Program** osztály a program.cs fájlban
+#### <a name="add-the-following-constants-and-static-fields-to-the-program-class-in-programcs"></a>Adja hozzá a következő állandókat és statikus mezőket a **program** osztályhoz a program.cs-ben.
 
 Frissítse ezeket az értékeket, hogy tartalmazzák az előfizetés és a csapat adatait.
 
@@ -238,7 +238,7 @@ private const string MetadataKey = "sc";
 private const string MetadataValue = "true";
 ```
 
-#### <a name="add-the-following-static-fields-to-the-program-class-in-programcs"></a>Adja hozzá a következő statikus mezőket a **Program** osztály a program.cs fájlban
+#### <a name="add-the-following-static-fields-to-the-program-class-in-programcs"></a>Adja hozzá a következő statikus mezőket a **program** osztályhoz a program.cs-ben.
 
 Ezeket a mezőket az alkalmazás állapotának nyomon követésére használhatja.
 
@@ -382,7 +382,7 @@ Adja hozzá a **Program** osztályhoz a következő metódust.
 
 Adja hozzá az alábbi kódot a **Main** metódushoz.
 
-Ez a kód sok olyan műveletet szimulál, amelyet a lista definiálásakor és kezelésekor, illetve a lista képek vizsgálatához történő használatakor hajt végre. A naplózási szolgáltatások lehetővé teszi a válaszobjektumok hozta a tartalom mModerator Service SDK-hívásokat.
+Ez a kód sok olyan műveletet szimulál, amelyet a lista definiálásakor és kezelésekor, illetve a lista képek vizsgálatához történő használatakor hajt végre. A naplózási funkciók lehetővé teszik, hogy megtekintse az SDK-hívások által a Content mModerator szolgáltatáshoz generált válasz objektumokat.
 
 ```csharp
 using (TextWriter outputWriter = new StreamWriter(OutputFile, false))
@@ -536,4 +536,4 @@ A következő példához hasonló választ fog látni:
 
 ## <a name="next-steps"></a>További lépések
 
-Első a [Content Moderator .NET SDK-val](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) , és töltse le a [Visual Studio-megoldás](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/ContentModerator) ennél és a többi a Content Moderator rövid útmutató a .NET-hez, és az integrációval kapcsolatos első lépések.
+Szerezze be a [Content moderator .net SDK](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) -t, és töltse le a [Visual Studio-megoldást](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/ContentModerator) ehhez és a .net-hez készült más Content moderator gyors útmutatóhoz, és ismerkedjen meg az integrációval.

@@ -1,7 +1,7 @@
 ---
-title: 'Gyors útmutató: Beszéd átalakítás, szintetizálásához C# (.NET Core) – beszédszolgáltatások'
+title: 'Gyors útmutató: Beszédszintetizátor-beszéd C# (.net Core) – Speech Service'
 titleSuffix: Azure Cognitive Services
-description: Ismerje meg, hogyan videofájlokban lévő szintetizálásához C# alatt a .NET Core, a Windows, a beszéd SDK-val
+description: Megtudhatja, hogyan szintetizálhat C# beszédet a .net Core alatt a Windowson a Speech SDK használatával
 services: cognitive-services
 author: yinhew
 manager: nitinme
@@ -10,23 +10,23 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 6/24/2019
 ms.author: yinhew
-ms.openlocfilehash: 7b4a018e38ca625e38dc1658a95d3ce0e677f711
-ms.sourcegitcommit: c63e5031aed4992d5adf45639addcef07c166224
+ms.openlocfilehash: b298e66674753e33a28fb3404e36e63b5baa8dff
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67467424"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68559240"
 ---
-# <a name="quickstart-synthesize-speech-with-the-speech-sdk-for-net-core"></a>Gyors útmutató: A .NET Core szintetizálásához a beszéd, a beszéd SDK-val
+# <a name="quickstart-synthesize-speech-with-the-speech-sdk-for-net-core"></a>Gyors útmutató: Beszéd szintetizálása a .NET Core Speech SDK-val
 
-Rövid útmutatók érhetők el is [beszédfelismerés](quickstart-csharp-dotnetcore-windows.md) és [tolmácsolás –](quickstart-translate-speech-dotnetcore-windows.md).
+A gyors útmutatók a [beszédfelismerés](quickstart-csharp-dotnetcore-windows.md) és a [beszédfelismerés](quickstart-translate-speech-dotnetcore-windows.md)számára is elérhetők.
 
-Ebben a cikkben létre fog hozni a Windowson egy C# konzolalkalmazást a .NET Core-hoz a Cognitive Services [Speech SDK](speech-sdk.md) használatával. A PC-hangszóró szöveg valós idejű hang, szintetizálásához. Az alkalmazást a [Speech SDK NuGet-csomaggal](https://aka.ms/csspeech/nuget) és a Microsoft Visual Studio 2017-tel (annak bármely kiadásával) lehet összeállítani.
+Ebben a cikkben létre fog hozni a Windowson egy C# konzolalkalmazást a .NET Core-hoz a Cognitive Services [Speech SDK](speech-sdk.md) használatával. A beszédet valós időben szintetizálhatja a számítógép hangszóróján. Az alkalmazást a [Speech SDK NuGet-csomaggal](https://aka.ms/csspeech/nuget) és a Microsoft Visual Studio 2017-tel (annak bármely kiadásával) lehet összeállítani.
 
 > [!NOTE]
 > A .NET Core egy nyílt forráskódú, platformfüggetlen .NET-platform, amely implementálja a [.NET Standard](https://docs.microsoft.com/dotnet/standard/net-standard) specifikációt.
 
-A rövid útmutató elvégzéséhez beszédszolgáltatások előfizetési kulcs szükséges. amelyet ingyenesen is beszerezhet. Lásd: [próbálja ki ingyenesen a beszédszolgáltatások](get-started.md) részleteiről.
+A rövid útmutató elvégzéséhez szüksége lesz egy Speech Services-előfizetési kulcsra. amelyet ingyenesen is beszerezhet. További részletekért tekintse [meg a Speech Services ingyenes kipróbálása](get-started.md) című témakört.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -34,7 +34,7 @@ Ehhez a rövid útmutatóhoz a következőkre van szükség:
 
 * [.NET Core SDK](https://dotnet.microsoft.com/download)
 * [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/)
-* A beszédfelismerési szolgáltatás egy Azure-előfizetés kulcs. [Igényeljen ingyenesen egy](get-started.md).
+* Egy Azure-előfizetési kulcs a beszédfelismerési szolgáltatáshoz. [Szerezze be az egyiket ingyenesen](get-started.md).
 
 ## <a name="create-a-visual-studio-project"></a>Visual Studio-projekt létrehozása
 
@@ -62,18 +62,18 @@ Ehhez a rövid útmutatóhoz a következőkre van szükség:
 
     ![A Visual Studio képernyőképe, amelyen ki van emelve a Hibakeresés indítása lehetőség](media/sdk/qs-csharp-dotnetcore-windows-06-start-debugging.png "Hibakeresés indítása az alkalmazáson")
 
-1. A konzolablakban megjelenik, írjon be valamilyen szöveget, és felszólítja. Írjon be néhány szavakat és a egy mondatot. A beírt szöveget a beszédszolgáltatások továbbítani, és a Speech, amely a a hangfelismerő játszik synthesized.
+1. Megjelenik egy konzolablak, amely felszólítja, hogy írjon be egy szöveget. Írjon be néhány szót vagy mondatot. A beírt szöveg továbbítva lesz a Speech Servicesnek, és a beszédbe lett szintetizálva, amely a beszélőn játszik.
 
-    ![Képernyőfelvétel a konzol kimenete a sikeres összefoglaló után](media/sdk/qs-tts-csharp-dotnet-windows-console-output.png "Konzolkimenetet követően sikeres összefoglaló")
+    ![A sikeres szintézis után a konzol kimenetének képernyőképe] A (media/sdk/qs-tts-csharp-dotnet-windows-console-output.png "sikeres szintézis után a konzol kimenete")
 
 ## <a name="next-steps"></a>További lépések
 
-További példákat, például a következőkkel hangfájl, beszédfelismerés szintetizálásához a Githubon érhetők el.
+A GitHubon további minták is elérhetők, például hogyan lehet beszédet szintetizálni egy hangfájlba.
 
 > [!div class="nextstepaction"]
-> [Ismerkedés a C# példák a Githubon](https://aka.ms/csspeech/samples)
+> [Minták C# feltárása a githubon](https://aka.ms/csspeech/samples)
 
 ## <a name="see-also"></a>Lásd még
 
-- [Hangtípust testreszabása](how-to-customize-voice-font.md)
-- [Rekord voice-minták](record-custom-voice-samples.md)
+- [Hangbetűkészletek testreszabása](how-to-customize-voice-font.md)
+- [Hangminták rögzítése](record-custom-voice-samples.md)

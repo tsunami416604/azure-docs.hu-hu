@@ -1,5 +1,5 @@
 ---
-title: 'Gyors útmutató: Beszédfelismerési szolgáltatás felismerése, egység – beszéd szolgáltatások'
+title: 'Gyors útmutató: Beszédfelismerési szolgáltatás felismerése, egység – beszéd'
 titleSuffix: Azure Cognitive Services
 description: Ezzel az útmutatóval létrehozhat egy beszéd – szöveg alkalmazást az Unity és az Unity (Beta) rendszerhez készült Speech SDK használatával. Ha elkészült, a számítógép mikrofonjával valós időben konvertálhat át beszédet szöveggé.
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 07/23/2019
 ms.author: jhakulin
-ms.openlocfilehash: 425cacb22865e64a996c653477120a5f7f410c9a
-ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
+ms.openlocfilehash: 06831fa933c04827c966e8f6e12aa817f5008b88
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68405940"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68554148"
 ---
 # <a name="quickstart-recognize-speech-with-the-speech-sdk-for-unity-beta"></a>Gyors útmutató: Beszéd felismerése az Unity (béta) Speech SDK-val
 

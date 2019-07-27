@@ -1,5 +1,5 @@
 ---
-title: Az SDK - beszédszolgáltatások beszédfelismerési hibaelhárítása
+title: A Speech SDK – Speech szolgáltatás hibáinak megoldása
 titleSuffix: Azure Cognitive Services
 description: Ez a cikk a Speech SDK használata során felmerülő problémák megoldásához nyújt segítséget.
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/23/2019
 ms.author: jhakulin
-ms.openlocfilehash: 99cb23afcdb40f74485a7dcec34435a46d0e7476
-ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
+ms.openlocfilehash: 3beda852b3e711ee969b7f80f8f326285cc2cad6
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68405905"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68558887"
 ---
 # <a name="troubleshoot-the-speech-sdk"></a>A Speech SDK hibaelhárítása
 

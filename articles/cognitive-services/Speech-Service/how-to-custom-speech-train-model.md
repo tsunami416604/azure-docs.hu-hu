@@ -1,7 +1,7 @@
 ---
-title: A modell betanítását egyéni beszéd – beszédszolgáltatások
-titlesuffix: Azure Cognitive Services
-description: Egy hang-szöveg transzformációs képzési szükség, mindkét a Microsoft baseline modell, vagy szeretné létrehozni egy egyéni modell pontosságának javítása érdekében. A modell tanítása emberi címkével beszédátírás és a kapcsolódó szövegmezőbe. Ezek az adatkészletek korábban feltöltött hívásaiból, valamint pontosíthatja vagy szavak, kifejezések, betűszavakat, nevek és más termékkel kapcsolatos használati felismerni a hang-szöveg transzformációs modell betanítását szolgálnak.
+title: Modell tanítása Custom Speech-Speech Service-hez
+titleSuffix: Azure Cognitive Services
+description: A Microsoft alapmodelljének vagy a létrehozni kívánt egyéni modellnek a felismerési pontosságának javítása érdekében a beszédfelismerési szöveg betanítása szükséges. A modell emberi címkével ellátott átírásokkal és kapcsolódó szöveggel van betanítva. Ezek az adatkészletek a korábban feltöltött hangadatokkal együtt a beszéd-szöveg modell pontosítására és betanítására szolgálnak, hogy felismerjék a szavakat, kifejezéseket, betűszókat, neveket és más termékspecifikus kifejezéseket.
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -10,52 +10,52 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: 49195efa54c8e6eca9186a9e2fc33da84ff34413
-ms.sourcegitcommit: c0419208061b2b5579f6e16f78d9d45513bb7bbc
+ms.openlocfilehash: b5893b4f07444b07bf142971a5df4776e549d307
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67625386"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68562813"
 ---
-# <a name="train-a-model-for-custom-speech"></a>A modell betanítását egyéni beszéd
+# <a name="train-a-model-for-custom-speech"></a>Custom Speech modell betanítása
 
-Egy hang-szöveg transzformációs képzési szükség, mindkét a Microsoft baseline modell, vagy szeretné létrehozni egy egyéni modell pontosságának javítása érdekében. A modell tanítása emberi címkével beszédátírás és a kapcsolódó szövegmezőbe. Ezek az adatkészletek korábban feltöltött hívásaiból, valamint pontosíthatja vagy szavak, kifejezések, betűszavakat, nevek és más termékkel kapcsolatos használati felismerni a hang-szöveg transzformációs modell betanítását szolgálnak. A több-tartományban található adatkészleteknek biztosító (kapcsolódó adatok felhasználók tudatja, és várhatóan felismerni), a pontosabb a modell lesz, továbbfejlesztett felismerés eredményez. Ne feledje, hogy számból kapcsolódó adatok egyetlen, a képzés, csökkentheti vagy csökkentheti a modell pontosságát.
+A Microsoft alapmodelljének vagy a létrehozni kívánt egyéni modellnek a felismerési pontosságának javítása érdekében a beszédfelismerési szöveg betanítása szükséges. A modell emberi címkével ellátott átírásokkal és kapcsolódó szöveggel van betanítva. Ezek az adatkészletek a korábban feltöltött hangadatokkal együtt a beszéd-szöveg modell pontosítására és betanítására szolgálnak, hogy felismerjék a szavakat, kifejezéseket, betűszókat, neveket és más termékspecifikus kifejezéseket. Minél több tartományi adatkészletet ad meg (amelyek a felhasználók által kimondott és a várhatóan felismert adatokkal kapcsolatosak), annál pontosabbak lesznek a modell, ami jobb felismerést eredményez. Ne feledje, hogy a nem kapcsolódó adatoknak a képzésbe való etetésével csökkentheti vagy megsértheti a modell pontosságát.
 
-## <a name="use-training-to-resolve-accuracy-issues"></a>Használja a betanítási pontossága problémák megoldása
+## <a name="use-training-to-resolve-accuracy-issues"></a>A pontossággal kapcsolatos problémák megoldása a képzés használatával
 
-Ha lépnek problémák felismerése a modellt, emberi címkével használatával szövegekben és további kapcsolódó adatok segítségével pontosságának növelése érdekében. Ez a táblázat segítségével mely adatkészlet használatával oldja meg a probléma meghatározásához:
+Ha a modell felismerésével kapcsolatos problémákat tapasztal, az emberi címkével ellátott átiratok és a további képzéshez kapcsolódó adatok használatával javíthatja a pontosságot. A táblázat segítségével meghatározhatja, hogy melyik adatkészletet használja a probléma (ok) kezelésére:
 
 | Használati eset | Adattípus |
 |----------|-----------|
-| Iparág-specifikus szóhasználatának és nyelvtani, például terminológiát vagy informatikai szakkifejezéseivel pontosságának javítása | Kapcsolódó szöveg (mondatokat/utterances) |
-| Adja meg szó vagy kifejezés, amely rendelkezik a nem szabványos írásmódja, például termékneveket vagy betűszavakat fonetikus és megjelenített formájában. | Kapcsolódó szöveg (írásmódja) |
-| A stílusok, akcentusokhoz vagy adott háttér egy olyan, és beszéljen pontosságának fokozása | Hang + emberi címkével szövegekben |
+| Az iparág specifikus szókincsének és nyelvhelyességének, például az orvosi terminológia vagy az informatikai szakzsargonnak az ismertségének javítása | Kapcsolódó szöveg (mondat/hosszúságú kimondott szöveg) |
+| Definiálja egy olyan szó vagy kifejezés fonetikus és megjelenített formáját, amely nem szabványos kiejtéssel rendelkezik, például Terméknév vagy betűszó. | Kapcsolódó szöveg (kiejtés) |
+| Az elismerés pontosságának javítása a beszélő stílusok, hangsúlyozások vagy konkrét háttérzajok esetén | Hang + emberi – címkézett átiratok |
 > [!IMPORTANT]
-> Ha még nem töltött fel egy adatkészletet, tekintse meg [előkészítése és a Tesztadatok](how-to-custom-speech-test-data.md). Ez a dokumentum útmutatást fel az adatokat, és kiváló minőségű adatkészleteket létrehozására vonatkozó irányelveket.
+> Ha még nem töltött fel adathalmazt, olvassa el [az adatelőkészítés és-tesztelés](how-to-custom-speech-test-data.md)című témakört. Ez a dokumentum útmutatást nyújt az adatfeltöltéshez és a kiváló minőségű adatkészletek létrehozásához szükséges irányelvekhez.
 
-## <a name="train-and-evaluate-a-model"></a>Betanítása és kiértékelése modell
+## <a name="train-and-evaluate-a-model"></a>Modell betanítása és kiértékelése
 
-A modell betanításához az első lépés, hogy töltse fel a betanítási adatok. Használja [előkészítése és a Tesztadatok](how-to-custom-speech-test-data.md) a részletes készíti elő az emberi címkével beszédátírás és a kapcsolódó szöveges (utterances és kiejtés). Betanítási adatok feltöltése után indítsa el a modell tanítása az alábbi lépésekkel:
+A modellek betanításának első lépése a betanítási adatok feltöltése. Az emberi címkével ellátott átiratok és a kapcsolódó szövegek (hosszúságú kimondott szöveg és kiejtések) előkészítéséhez használja az [előkészítés és a tesztelés](how-to-custom-speech-test-data.md) részletes útmutatását. A betanítási adatai feltöltése után kövesse az alábbi utasításokat a modell képzésének megkezdéséhez:
 
-1. Navigáljon a **hang-szöveg transzformációs > Custom Speech > képzési**.
-2. Kattintson a **tanítási modell**.
-3. Ezután adjon a tanítási egy **neve** és **leírás**.
-4. Az a **a forgatókönyv és a Referenciakonfiguráció modell** legördülő menüben válassza ki a forgatókönyvet, amely legjobban megfelel a tartományban. Ha biztos benne, hogy mely forgatókönyv kiválasztása, válassza ki a **általános**. A modell szolgál kiindulópontként a betanításhoz. Ha nem rendelkezik megfelelő módot, a legújabb is használhatja.
-5. Az a **válassza ki a betanítási adatok** lapon a betanítási használni kívánt egy vagy több hang + emberi címkével beszédátírási adatkészletek.
-6. A betanítási befejeződése után lehet váltani, hajtsa végre a tesztelést az újonnan betanított modell pontossága. Ez a lépés nem kötelező.
-7. Válassza ki **létrehozás** a egyéni modell létrehozásához.
+1. Navigáljon a **beszéd-szöveg > Custom Speech > képzésre**.
+2. Kattintson a **tanítási modell**elemre.
+3. Ezután adja meg a betanítás **nevét** és **leírását**.
+4. A **forgatókönyv és az alapterv modell** legördülő menüben válassza ki a tartományhoz legjobban illő forgatókönyvet. Ha nem biztos abban, hogy melyik forgatókönyvet szeretné kiválasztani, válassza az **általános**lehetőséget. Az alapmodell a betanítás kiindulási pontja. Ha nem rendelkezik a beállításokkal, a legújabbat használhatja.
+5. A betanítási **adatok kiválasztása** lapon válasszon ki egy vagy több hang + emberi címkével ellátott átírási adatkészletet, amelyeket képzésre szeretne használni.
+6. A képzés befejezését követően dönthet úgy, hogy pontossági tesztelést végez az újonnan betanított modellen. Ez a lépés nem kötelező.
+7. Válassza a **Létrehozás** lehetőséget az egyéni modell kiépítéséhez.
 
-A képzési tábla egy új bejegyzést, amely megfelel az újonnan létrehozott modell jeleníti meg. A tábla állapota is látható:  Feldolgozás, a sikeres, sikertelen.
+A betanítási táblázat egy új bejegyzést jelenít meg, amely megfelel az újonnan létrehozott modellnek. A tábla az állapotot is megjeleníti:  A feldolgozás, sikeres, sikertelen.
 
-## <a name="evaluate-the-accuracy-of-a-trained-model"></a>A betanított modell pontosságát kiértékelése
+## <a name="evaluate-the-accuracy-of-a-trained-model"></a>Betanított modell pontosságának kiértékelése
 
-Vizsgálja meg az adatokat, és használja ezeket a dokumentumokat modellpontosságból kiértékelése:
+Az adatok megvizsgálása és a modell pontosságának kiértékelése a következő dokumentumokkal végezhető el:
 
-* [Az adatok vizsgálata](how-to-custom-speech-inspect-data.md)
-* [Az adatok](how-to-custom-speech-evaluate-data.md)
+* [Az adatai ellenőrzése](how-to-custom-speech-inspect-data.md)
+* [Az adatai kiértékelése](how-to-custom-speech-evaluate-data.md)
 
 
-Ha úgy döntött, hogy tesztelje a pontosság, fontos egy eltérő valósághű megtapasztalhatja a modell teljesítményét, hogy a modell használt akusztikai adatkészlet kiválasztása.
+Ha a pontosság tesztelését választotta, fontos, hogy olyan akusztikai adatkészletet válasszon ki, amely eltér a modell teljesítményének reális értelmezéséhez.
 
 ## <a name="next-steps"></a>További lépések
 
@@ -63,7 +63,7 @@ Ha úgy döntött, hogy tesztelje a pontosság, fontos egy eltérő valósághű
 
 ## <a name="additional-resources"></a>További források
 
-* [Készítse elő és az adatok tesztelése](how-to-custom-speech-test-data.md)
-* [Az adatok vizsgálata](how-to-custom-speech-inspect-data.md)
-* [Az adatok](how-to-custom-speech-evaluate-data.md)
-* [A modell tanítása](how-to-custom-speech-train-model.md)
+* [Az adatfeldolgozás előkészítése és tesztelése](how-to-custom-speech-test-data.md)
+* [Az adatai ellenőrzése](how-to-custom-speech-inspect-data.md)
+* [Az adatai kiértékelése](how-to-custom-speech-evaluate-data.md)
+* [A modell betanítása](how-to-custom-speech-train-model.md)

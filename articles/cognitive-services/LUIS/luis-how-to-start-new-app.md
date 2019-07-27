@@ -1,6 +1,6 @@
 ---
-title: Új alkalmazás létrehozása
-titleSuffix: Language Understanding - Azure Cognitive Services
+title: Új alkalmazás létrehozása – LUIS
+titleSuffix: Azure Cognitive Services
 description: Létrehozhat és kezelhet az alkalmazások, a Language Understanding (LUIS) weblapon.
 services: cognitive-services
 author: diberry
@@ -11,14 +11,14 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 05/07/2019
 ms.author: diberry
-ms.openlocfilehash: b8b0cebf4ba47f875caacfcfbf89b84551b41333
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.openlocfilehash: 7f9809fde088a03d4b20b5c739253f446c7a84b6
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67341860"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68563605"
 ---
-# <a name="create-a-new-luis-app-in-the-luis-portal"></a>A LUIS-portálon új LUIS-alkalmazás létrehozása
+# <a name="create-a-new-luis-app-in-the-luis-portal"></a>Új LUIS-alkalmazás létrehozása a LUIS portálon
 Nincsenek többféle módon LUIS-alkalmazások létrehozásához. A LUIS-alkalmazásokon hozhat létre a [LUIS](https://www.luis.ai) portál, vagy a LUIS szerzői [API-k](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c2f).
 
 ## <a name="using-the-luis-portal"></a>A LUIS-portál használatával
@@ -58,34 +58,34 @@ Az Authoring Tool API-khoz többféle módon hozhat létre egy új alkalmazást:
 
 ## <a name="import-an-app-from-file"></a>Alkalmazás importálása fájlból
 
-1. A **saját alkalmazások** lapon jelölje be **importálása új alkalmazás**.
-1. Az előugró párbeszédpanelen egy érvényes JSON-fájlt, majd válassza ki és **kész**.
+1. **Az alkalmazások** lapon válassza az **új alkalmazás importálása**lehetőséget.
+1. Az előugró párbeszédpanelen válasszon ki egy érvényes JSON-fájlt, majd válassza a **kész**lehetőséget.
 
-### <a name="import-errors"></a>Importálási hiba
+### <a name="import-errors"></a>Importálási hibák
 
-Hibák a következők: 
+Lehetséges hibák: 
 
-* Már létezik ilyen nevű alkalmazás. A probléma megoldásához importálja újra az alkalmazást, és állítsa be a **nem kötelező neve** egy új nevet. 
+* Már létezik ilyen nevű alkalmazás. A probléma megoldásához importálja újra az alkalmazást, és adja meg a **választható nevet** egy új névre. 
 
-## <a name="export-app-for-backup"></a>Biztonsági mentés készült alkalmazás exportálása
+## <a name="export-app-for-backup"></a>Alkalmazás exportálása biztonsági mentésre
 
-1. A **saját alkalmazások** lapon jelölje be **exportálása**.
-1. Válassza ki **JSON-fájlként exportálja**. A böngésző letölti az alkalmazás aktív verzióját.
-1. Ez a fájl hozzáadása a biztonsági mentési rendszer archiválása a modellt.
+1. **Az alkalmazások** lapon válassza az **Exportálás**lehetőséget.
+1. Válassza **az EXPORTÁLÁS JSON-ként**lehetőséget. A böngésző letölti az alkalmazás aktív verzióját.
+1. Adja hozzá ezt a fájlt a biztonsági mentési rendszeren a modell archiválásához.
 
-## <a name="export-app-for-containers"></a>Exportálás app for containers szolgáltatásban
+## <a name="export-app-for-containers"></a>Alkalmazás exportálása tárolók számára
 
-1. A **saját alkalmazások** lapon jelölje be **exportálása**.
-1. Válassza ki **tárolóként exportálása** majd válassza ki az exportálni kívánt mely közzétett tárolóhely (éles vagy fázis).
-1. Ezzel a fájllal együtt a [LUIS tároló](luis-container-howto.md). 
+1. **Az alkalmazások** lapon válassza az **Exportálás**lehetőséget.
+1. Válassza az **Exportálás tárolóként** lehetőséget, majd válassza ki, hogy melyik közzétett tárolóhelyet (éles vagy fázis) szeretné exportálni.
+1. Ezt a fájlt a [Luis](luis-container-howto.md)-tárolóval használhatja. 
 
-    Ha érdekli exportálása egy betanított viszont nem, de a közzétett modell használata a LUIS-tároló, folytassa a **verziók** lapon, és exportálni onnan. 
+    Ha olyan betanított, de még nem közzétett modellt szeretne exportálni a LUIS-tárolóval való használatra, nyissa meg a **verziók** lapot, és onnan exportálja. 
 
 ## <a name="delete-app"></a>Alkalmazás törlése
 
-1. A **saját alkalmazások** lapra, jelölje be az alkalmazások sor végén található három pontra (...).
-1. Válassza ki **törlése** a menüből.
-1. Válassza ki **Ok** a megerősítési ablakban.
+1. A **saját alkalmazások** oldalon válassza az alkalmazás sor végén található három pontot (...).
+1. A menüből válassza a **Törlés** lehetőséget.
+1. A megerősítő ablakban kattintson az **OK gombra** .
 
 ## <a name="next-steps"></a>További lépések
 

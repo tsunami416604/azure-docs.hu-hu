@@ -1,6 +1,6 @@
 ---
-title: 'Gyors útmutató: Hozzon létre Tudásbázis -, REST és Python – QnA Maker'
-titlesuffix: Azure Cognitive Services
+title: 'Gyors útmutató: Tudásbázis létrehozása – REST, Python – QnA Maker'
+titleSuffix: Azure Cognitive Services
 description: Ez a Python REST-alapú rövid útmutató végigvezeti egy olyan minta QnA Maker-tudásbázis programozott módon történő létrehozásán, amely a Cognitive Services API-fiók Azure-irányítópultján fog megjelenni.
 services: cognitive-services
 author: diberry
@@ -10,14 +10,14 @@ ms.subservice: qna-maker
 ms.topic: quickstart
 ms.date: 07/16/2019
 ms.author: diberry
-ms.openlocfilehash: 27471f07438bac7f40e6047306aac7d2658ee519
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: 43ae6e7100efd923c81a0f9b94867a9101549d9b
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68249683"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68559852"
 ---
-# <a name="quickstart-create-a-knowledge-base-in-qna-maker-using-python"></a>Gyors útmutató: Tudásbázis létrehozása a Python használata a QnA Maker
+# <a name="quickstart-create-a-knowledge-base-in-qna-maker-using-python"></a>Gyors útmutató: Tudásbázis létrehozása QnA Maker a Python használatával
 
 Ez a rövid útmutató végigvezeti egy minta QnA Maker-tudásbázis programozott módon való létrehozásán és közzétételén. A QnA Maker automatikusan nyer ki kérdéseket és válaszokat a félig strukturált tartalmak, például a gyakori kérdések közül, az [adatforrásokból](../Concepts/data-sources-supported.md). A tudásbázis modelljét az API-kérés törzsében küldött JSON definiálja. 
 

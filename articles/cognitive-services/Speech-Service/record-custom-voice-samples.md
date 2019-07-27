@@ -1,5 +1,5 @@
 ---
-title: Jegyezze fel az egyéni beszédfelismerési-minták – beszédszolgáltatások
+title: Egyéni hangminták rögzítése – beszédfelismerési szolgáltatás
 titleSuffix: Azure Cognitive Services
 description: Győződjön meg arról, a gyártási minőségű egyéni beszédfelismerési robusztus parancsfájl előkészítése, mindegyik hangalapú jó szakembereket és professzionális rögzítése.
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: ad2a3cd73fe97415f0d6835d70e15bf90349696c
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: 47e1f8bf178723a5d4be323f24724214a67499e2
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67604909"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68559197"
 ---
 # <a name="record-voice-samples-to-create-a-custom-voice"></a>Hozzon létre egy egyéni beszédfelismerési rekord hangalapú minták
 
@@ -52,7 +52,7 @@ Válassza ki a hangalapú szakembereket, amelynek a természetes hangtípus, pé
 
 Az egyik legfontosabb tényező hangalapú szakembereket kiválasztására vonatkozó konzisztencia. A felvételek kell az összes hang-, módosította őket ugyanarra a napra ugyanabban a helyiségben. Ez ideális jó felvétel eljárások és mérnöki keretében is készíthető elő.
 
-A szóbeli szakembereket a másik fele a egyenlet. Azok az egységes sebesség, a kötetek szintjén, a lényegét és a képviselő hangvételét mérnökeinkkel képesnek kell lennie. Egyértelmű diction kell. A szakembereket is képesnek kell lennie a szigorúan ellenőrzik a saját projektjeire variation, érzelmi hatással és speech mannerisms.
+A szóbeli szakembereket a másik fele a egyenlet. Képesnek kell lenniük az állandó, a hangerő, a szurok és a tónus megszólalása érdekében. Egyértelmű diction kell. A tehetségnek emellett képesnek kell lennie szigorúan szabályozni a szurok változatát, az érzelmi befolyásolást és a beszéd stílust.
 
 Egyedi Hangüzenetek minták rögzítése több fatiguing, mint más hangalapú munka lehet. A legtöbb hangalapú szakembereket napi két vagy három órán vehet fel. Ha lehetséges korlátozza a munkamenetek három vagy négy egy hét naponta köztes ki.
 
@@ -108,7 +108,7 @@ Szerencsére a lehetőség a problémák teljes egészében elkerülése érdek�
 |-|-|
 |[CMU tavi forrásgyűjteményébe](http://festvox.org/cmu_arctic/)|Kifejezetten a speech összefoglaló projektekben használható out-az-szerzői jogok a kiválasztott készül 1100 mondatokat. Egy remek kiindulási pont.|
 |Már nem működik.<br>a szerzői jogi|Általában works 1923 előtt közzé. Az angol nyelvű tájékoztatáshoz [projekt Gutenberg](https://www.gutenberg.org/) kínál több ezer, az ilyen működik. Előfordulhat, hogy szeretné, a nyelv modern angol közelebb lesz újabb works összpontosíthat.|
-|Kormányzati&nbsp;működik|Az Egyesült Államok kormánya által létrehozott működése nem szerzői jogvédelem alatt állnak az Egyesült Államokban, ha a kormányzat igényelhet a szerzői jog más országokból/régiókból elérhető.|
+|Kormányzati&nbsp;működik|A Egyesült Államok kormányzat által létrehozott alkotások nem tartoznak a Egyesült Államokra, bár a kormány más országokban/régiókban is igényelhet szerzői jogokat.|
 |Nyilvános tartományt|Melyik copyright explicit módon biztosítják, illetve, hogy működik a nyilvános tartomány rendelkezik lett kijelölve. Nem lehet elengedni néhány jogi szabályozásainak teljes egészében a szerzői jog lehetséges.|
 |Permissively licenccel rendelkező működése|Például a Creative Commons licencet, vagy a GNU ingyenes dokumentáció licenc (GFDL) forgalmazva működik. Wikipedia a GFDL használ. Néhány licenccel, azonban előfordulhat, hogy korlátozásokat alkalmazzanak a teljesítmény, a licencelt tartalom, amely hatással lehet egy egyéni beszédfelismerési modell létrehozását, olvassa el a licencet.|
 
@@ -116,7 +116,7 @@ Szerencsére a lehetőség a problémák teljes egészében elkerülése érdek�
 
 Jegyezze fel a található szakmai felvétel stúdióban, amely a szkriptet az hangalapú során. A rögzítés érzékelőadatainak, a megfelelő eszközök és működjön, a megfelelő személyeknek rendelkeznek. Nem, a rögzítés mulassza fizet.
 
-A projekt tárgyalják a studio felvétel szakértővel, és figyeli a Tanácsot. A felvétel alig vagy egyáltalán nem dinamikus tartományának tömörítés (legfeljebb 4:1) kell rendelkeznie. Rendkívül fontos, hogy a hanganyag konzisztens kötet és a egy magas jel zaj arány rendelkezik ugyanakkor nemkívánatos hangok ingyenes.
+Beszéljen a projektről a Studio rögzítési mérnökével, és hallgassa meg a véleményét. A felvétel alig vagy egyáltalán nem dinamikus tartományának tömörítés (legfeljebb 4:1) kell rendelkeznie. Rendkívül fontos, hogy a hanganyag konzisztens kötet és a egy magas jel zaj arány rendelkezik ugyanakkor nemkívánatos hangok ingyenes.
 
 ### <a name="do-it-yourself"></a>Ön megteheti
 
@@ -130,7 +130,7 @@ Egy analóg mikrofon is használhatja. Számos bérleti házak "szüreti" mikrof
 
 Telepítse a mikrofon egy önálló vagy bumm, és telepítése előtt a mikrofon "plosive" mássalhangzók, például a "p" és "b". a háttérzaj kiküszöbölése pop szűrő Néhány mikrofonok, amely elkülöníti azokat a rezgés bővíteni, ami hasznos lehet a felfüggesztés csatlakoztatási kapható.
 
-A szóbeli szakembereket a mikrofon konzisztens távolságra kell maradnia. Az emelet a szalag használatával, üzembe kell megjelölni. Szeretném a szakembereket részesíti előnyben, különös gondot mic távolság figyelése, és elkerülheti az elnöki zaj igénybe vehet.
+A szóbeli szakembereket a mikrofon konzisztens távolságra kell maradnia. A padlón lévő szalag használatával megjelölheti, hol kell állnia. Szeretném a szakembereket részesíti előnyben, különös gondot mic távolság figyelése, és elkerülheti az elnöki zaj igénybe vehet.
 
 Használjon a parancsfájl tárolásához. Kerülje a horgászat bővíteni, hogy tükrözzék, hang, mikrofon felé.
 
@@ -157,12 +157,12 @@ A szerepkörök igazgató, a visszafejtés és szakembereket szolgálja ki a kü
 
 ### <a name="before-the-session"></a>Mielőtt a munkamenet
 
-Elkerülése érdekében, ami pazarolja a studio idő, futtassa a parancsfájlt a hangalapú szakembereket keresztül a rögzítési munkamenet előtt. A beszédfelismerési szakembereket válik a szöveg jól ismert, amíg azok jól átláthatók a kiejtés bármely ismeretlen szavak.
+Elkerülése érdekében, ami pazarolja a studio idő, futtassa a parancsfájlt a hangalapú szakembereket keresztül a rögzítési munkamenet előtt. Míg a hangtehetségek megismerik a szöveget, megtekinthetik az ismeretlen szavak kiejtését.
 
 > [!NOTE]
 > A legtöbb felvétel studios elektronikus megjelenítését a rögzítés érzékelőadatainak parancsfájlok kínálnak. Ebben az esetben a run-through megjegyzések közvetlenül írja be a parancsfájl-dokumentumot. Érdemes a papír másolatot feljegyzéseket a munkamenet során azonban továbbra is. A legtöbb mérnökök túl érdemes egy merevlemez másolása. És továbbra is gondoskodni a harmadik a szakembereket a biztonsági nyomtatott példány, abban az esetben, ha a számítógép nem működik.
 
-A beszédfelismerési szakembereket megcélzó (az "operatív szót") az utterance (kifejezés) szeretné word kérheti. Mondja el neki, hogy szeretné-e egy természetes olvasó nem adott kiemeléssel. Kiemelés speech synthesized van; Ha adhatók hozzá nem lehet az eredeti felvétel részét.
+A beszédfelismerési szakembereket megcélzó (az "operatív szót") az utterance (kifejezés) szeretné word kérheti. Mondja el nekik, hogy természetes olvasásra van szüksége, amely nem különösebb hangsúlyt mutat. Kiemelés speech synthesized van; Ha adhatók hozzá nem lehet az eredeti felvétel részét.
 
 Közvetlenül a szakembereket a jelszórészek mondjuk ki szavakat. A parancsfájl minden szó kell lennie ejtsd formában. Hangok nem szabad nincs megadva vagy slurred, gyakori az alkalmi-beszéd átalakítás, együttesen *, kivéve, ha azok alkalmazáskonfigurációjának ezzel a módszerrel a szkriptben*.
 
@@ -195,7 +195,7 @@ Szorosan, figyelési, fejhallgatót a hangalapú szakembereket teljesítménye. 
 
 Megjegyzés: a lekérési szám, vagy minden kimondásakor, amikor a parancsfájlt a kódot. Kérje meg a felvételt metaadatok vagy köteg lap, valamint minden kimondásakor megjelölni a mérnök.
 
-Rendszeres oldaltörések igénybe vehet, és adjon meg egy ital érdekében a hangalapú szakembereket beszéddel fenntartható a jó minősége.
+Készítsen rendszeres szüneteket, és adjon meg egy olyan italt, amely segít a hangtehetségnek jó formában megtartani a hangját.
 
 ### <a name="after-the-session"></a>A munkamenet után
 
