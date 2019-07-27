@@ -5,6 +5,7 @@
     - name: Mi az Azure Maps?
       href: about-azure-maps.md
 - name: Gyors útmutatók
+  expanded: true
   items:
     - name: Webalkalmazás létrehozása
       href: quick-demo-map-app.md
