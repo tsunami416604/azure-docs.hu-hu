@@ -5,14 +5,12 @@ metadata:
   title: A Batch dokumentációja – oktatóanyagok és API-referencia | Microsoft Docs
   description: 'A Batch használatával hatékonyan futtathat nagy méretű párhuzamos és nagy teljesítményű feldolgozási (high-performance computing, HPC) alkalmazásokat a felhőben. Definiálhat olyan Azure számítási erőforrásokat, amelyek manuális konfigurálás vagy infrastruktúra-kezelés nélkül is párhuzamosan vagy a megfelelő léptékben futtatják az alkalmazásokat. Beütemezhet nagy számítási igényű feladatokat, és dinamikusan, a pillanatnyi szükségletek alapján adhat hozzá vagy távolíthat el számítási erőforrásokat. Gyors útmutatóink, oktatóanyagaink és a felhozott példák segítségével megismerkedhet az Azure Batch használatával.'
   services: batch
-  author: czeumault
-  manager: carolz
+  author: georgewallace
+  manager: gwallace
   ms.service: batch
-  ms.tgt_pltfrm: na
-  ms.devlang: na
   ms.topic: landing-page
   ms.date: 11/30/2017
-  ms.author: carolz
+  ms.author: gwallace
 abstract:
   description: 'A Batch használatával hatékonyan futtathat nagy méretű párhuzamos és nagy teljesítményű feldolgozási (high-performance computing, HPC) alkalmazásokat a felhőben. Definiálhat olyan Azure számítási erőforrásokat, amelyek manuális konfigurálás vagy infrastruktúra-kezelés nélkül is párhuzamosan vagy a megfelelő léptékben futtatják az alkalmazásokat. Beütemezhet nagy számítási igényű feladatokat, és dinamikusan, a pillanatnyi szükségletek alapján adhat hozzá vagy távolíthat el számítási erőforrásokat. Gyors útmutatóink, oktatóanyagaink és a felhozott példák segítségével megismerkedhet az Azure Batch használatával.'
 sections:

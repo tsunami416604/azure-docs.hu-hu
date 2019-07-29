@@ -1,68 +1,68 @@
 ---
-title: Keresés, Szerkesztés, és projekt – egyéni a fordítót törlése
+title: Projekt keresése, szerkesztése és törlése – egyéni fordító
 titleSuffix: Azure Cognitive Services
-description: Egyéni a fordítót különböző módon kezelheti a projektjeit hatékony módon biztosítja. Létrehozhat több projektek, a Keresés a megadott feltételek alapján a projektek módosítása. Egy projekt törlése az is lehetséges az egyéni a fordítót.
+description: Az egyéni Translator számos módszert kínál a projektek hatékony kezelésére. Több projektet is létrehozhat, a feltételek alapján kereshet, és szerkesztheti a projekteket. Egy projekt törlése az egyéni fordítóban is lehetséges.
 author: swmachan
-manager: christw
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.date: 02/21/2019
 ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: 3a19feb76b5f5e65f891dc9f4e9dbfbd642d15b6
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 9432ac390b7677b3dea5aebc84cf23ef6e45db92
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67447942"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68595719"
 ---
-# <a name="search-edit-and-delete-projects"></a>Keresés, szerkesztése és törlése a projektek
+# <a name="search-edit-and-delete-projects"></a>Projektek keresése, szerkesztése és törlése
 
-Egyéni a fordítót a hatékony módon kezelheti a projektjeit több módot is biztosít. Projektek közül sok hozhat létre, a Keresés a feltétel alapján, és szerkessze a projektek. Egy projekt törlése az is lehetséges az egyéni a fordítót.  
+Az egyéni Translator számos módszert kínál a projektek hatékony kezelésére. Több projektet is létrehozhat, a feltételek alapján kereshet, és szerkesztheti a projekteket. Egy projekt törlése az egyéni fordítóban is lehetséges.  
 
-## <a name="search-and-filter-projects"></a>Keresés és szűrés projektek
+## <a name="search-and-filter-projects"></a>Projektek keresése és szűrése
 
-A szűrő eszköz lehetővé teszi a különböző szűrési feltételek projekteket kereshet. Például a projekt nevét, állapotát, forrás és a Célnyelv és a projekt kategória szűri.
+A szűrő eszköz lehetővé teszi a projektek különböző szűrési feltételek szerinti keresését. Az informatikai szűrők, például a projekt neve, állapota, a forrás és a cél nyelve, valamint a projekt kategóriája.
 
 1.  Kattintson a szűrő gombra.
 
-    ![Keresés projekt](media/how-to/how-to-search-project.png)
+    ![Keresési projekt](media/how-to/how-to-search-project.png)
 
-1.  A következő mezőket bármely (vagy az összes) szerint szűrheti: a projekt nevét, állapotát, Forrásnyelv, Célnyelv és kategória.
+1.  A szűrést a következő mezők bármelyike (vagy mindegyike) alapján végezheti el: projekt neve, állapot, forrás nyelve, célnyelv és kategória.
 
-2.  Kattintson a alkalmazni.
+2.  Kattintson az Alkalmaz gombra.
 
-    ![Keresési szűrő Projektbeállítások](media/how-to/how-to-search-project-filters.png)
+    ![Keresési projekt szűrési beállításai](media/how-to/how-to-search-project-filters.png)
 
-3.  Összes projekt megtekintéséhez koppintson a "Jelet" a szűrő törléséhez.
+3.  Törölje a szűrőt az összes projekt megtekintéséhez a "Törlés" gombra koppintva.
 
 
 ## <a name="edit-a-project"></a>Projekt szerkesztése
 
-Egyéni a fordítót lehetővé teszi a nevét és leírását a projekt módosítása. Más projekt metaadatokat, például a kategória, Forrásnyelv és Célnyelv nem érhetők el a szerkesztése. Az alábbi lépések ismertetik a projekt szerkesztése.
+Az egyéni fordító lehetővé teszi a projekt nevének és leírásának szerkesztését. Más projekt-metaadatok, például a kategória, a forrás nyelv és a célnyelv nem érhetők el szerkesztésre. Az alábbi lépések a projektek szerkesztésének módját ismertetik.
 
-1.  Kattintson a ceruza ikonra, amely akkor jelenik meg, ha az egérmutatót egy projektet.
+1.  Kattintson a ceruza ikonra, amely akkor jelenik meg, amikor egy projekt fölé viszi a kurzort.
 
     ![Projekt szerkesztése](media/how-to/how-to-edit-project.png)
 
-2.  A párbeszédpanelen módosíthatja a projekt neve vagy a projekt leírása, de a projekt címke, kategória vagy nyelvi pár nem módosítható.
+2.  A párbeszédpanelen módosíthatja a projekt nevét vagy a projekt leírását, de a projekt felirata, kategóriája vagy nyelvi párja nem módosítható.
 
-    ![(Projekt) párbeszédpanelén szerkesztése](media/how-to/how-to-edit-project-dialog.png)
+    ![Projekt szerkesztése párbeszédpanel](media/how-to/how-to-edit-project-dialog.png)
 
 3.  Kattintson a szűrő gombra.
 
-## <a name="delete-a-project"></a>Egy projekt törlése
+## <a name="delete-a-project"></a>Projekt törlése
 
-A projekt már nincs szükség esetén törölheti. Az alábbi lépéseket ismertetik egy projekt törlése.
+Ha már nincs szüksége rá, törölheti a projektet. Az alábbi lépések bemutatják a projektek törlésének módját.
 
-1. Vigye a mutatót a projekt rekordot, és kattintson a Kuka ikonra.
+1. Vigye a kurzort bármelyik projekt rekordra, és kattintson a Kuka ikonra.
 
    ![Projekt törlése](media/how-to/how-to-delete-project.png)
 
-2. Megerősíti a törlést. Egy projekt törlése eltávolítja a projekten belül létrehozott összes modellt. Projekt törlése nem érinti a dokumentumokat.
+2. Erősítse meg a törlést. Egy projekt törlésével a projekten belül létrehozott összes modell törlődni fog. A projekt törlése nem befolyásolja a dokumentumokat.
 
-   ![Törölje a megerősítési párbeszédpanelen](media/how-to/how-to-delete-project-confirm.png)
+   ![Megerősítő párbeszédpanel törlése](media/how-to/how-to-delete-project-confirm.png)
 
 ## <a name="next-steps"></a>További lépések
 
-- [Dokumentumok feltöltése](how-to-upload-document.md) elkezdheti az egyéni fordítási modellben.
+- [Dokumentumok feltöltése](how-to-upload-document.md) az egyéni fordítási modell létrehozásához.

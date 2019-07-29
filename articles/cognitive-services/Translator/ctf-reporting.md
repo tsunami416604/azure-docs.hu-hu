@@ -1,7 +1,7 @@
 ---
-title: Együttműködésen alapuló fordítás Framework (CTF) jelentéskészítés – Translator Text API
-titlesuffix: Azure Cognitive Services
-description: Hogyan használható a reporting által biztosított együttműködési környezettel Translation Framework (CTF).
+title: Kollaboratív fordítási keretrendszer (CTF) jelentése – Translator Text API
+titleSuffix: Azure Cognitive Services
+description: Az együttműködési célú fordítási keretrendszer (CTF) jelentéskészítésének használata.
 services: cognitive-services
 author: swmachan
 manager: nitinme
@@ -10,46 +10,46 @@ ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 12/14/2017
 ms.author: swmachan
-ms.openlocfilehash: 79a645b0b41f200c384c165f244efa679be65171
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 6a197095d97e67f7548e60375148cff57e47b797
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67443458"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68595936"
 ---
 # <a name="how-to-use-collaborative-translation-framework-ctf-reporting"></a>A Collaborative Translation Framework (CTF) jelentéskészítés használata
 
 > [!NOTE]
-> Tato metoda se zamítá. Nem érhető a 3.0-s verzió, a Translator Text API.
+> Ez a metódus elavult. A Translator Text API 3.0-s verziójában nem érhető el.
 > 
-> Az együttműködésen alapuló fordítások Framework (CTF), 2.0-s verziójú, a Translator Text API, a korábban elérhető volt elavult 2018. február 1. A AddTranslation és AddTranslationArray funkciók lehetővé teszik a felhasználók engedélyezhetik a javításokat az együttműködésen alapuló fordítás keretrendszeren keresztül. 2018. január 31. után két függvényekhez nem fogadta el új mondat jelentkezés, és a felhasználók hibaüzenetet kapnak. Ezek a függvények visszavontuk, és nem pótolhatók.
+> A korábban a Translator Text API V 2.0-s verziójában már elérhető együttműködési fordítási keretrendszer (csoportmunka) a 2018. február 1-től elavult. A AddTranslation és a AddTranslationArray függvények lehetővé teszik a felhasználók számára, hogy az együttműködési fordítási keretrendszeren keresztül engedélyezzék a javítást. 2018. január 31-ig ez a két függvény nem fogadta el az új mondatok beküldését, és a felhasználók hibaüzenetet kapnak. Ezek a függvények ki lettek vonva, és nem lesznek lecserélve.
 
-Az együttműködési Translation Framework (CTF) Reporting API CTF áruházbeli statisztikák és a tényleges tartalmat adja vissza. Ez az API eltér a GetTranslations() metódus mert azt:
-* A fordított tartalomban és a számuk csak a fiókból (appId vagy az Azure Marketplace-fiók) adja vissza.
-* A fordított tartalomban és a számuk anélkül, hogy a forrás mondat egyezést adja vissza.
-* Az automatikus fordítás (gépi fordítás) nem ad vissza.
+Az együttműködési célú fordítási keretrendszer (CTF) jelentéskészítési API visszaadja a statisztikát és a tényleges tartalmat a CTF-tárolóban. Ez az API különbözik a GetTranslations () metódustól, mert:
+* A lefordított tartalmat és a teljes darabszámot adja vissza kizárólag a fiókjából (appId vagy Azure Marketplace-fiók).
+* A lefordított tartalmat és a teljes darabszámot adja vissza anélkül, hogy meg kellene egyeznie a forrás mondatával.
+* A nem ad vissza automatikus fordítást (gépi fordítás).
 
 ## <a name="endpoint"></a>Végpont
-A CTF Reporting API-végpont https://api.microsofttranslator.com/v2/beta/ctfreporting.svc
+A CTF jelentési API végpontja https://api.microsofttranslator.com/v2/beta/ctfreporting.svc
 
 
 ## <a name="methods"></a>Metódusok
 | Name (Név) |    Leírás|
 |:---|:---|
-| GetUserTranslationCounts Method | A megjelenő fordításokat, a felhasználó által létrehozott számát beolvasása. |
-| GetUserTranslations Method | A megjelenő fordításokat, a felhasználó által létrehozott kérdezi le. |
+| GetUserTranslationCounts metódus | A felhasználó által létrehozott fordítások számának beolvasása. |
+| GetUserTranslations metódus | A felhasználó által létrehozott fordítások beolvasása. |
 
-Ezek a metódusok lehetővé teszi:
-* Felhasználói fordítások és javításokat a Letöltés most a Fiókazonosítójával teljes készletének beolvasása.
-* Szerezze be a rendszeres közreműködők listáját. Győződjön meg arról, hogy a megfelelő felhasználónév AddTranslation() megtalálható-e.
-* Korlátozni a helyet, az URI-előtag alapján egy része, amely lehetővé teszi a megbízható felhasználók számára az összes rendelkezésre álló jelöltek, szükség esetén felhasználói felület (UI) létrehozása.
+Ezek a módszerek lehetővé teszik a következőket:
+* Kérje le a felhasználói fordítások és javítások teljes készletét a fiókja AZONOSÍTÓjának letöltéséhez.
+* Szerezze be a gyakori közreműködők listáját. Győződjön meg arról, hogy a megfelelő Felhasználónév van megadva a AddTranslation () alkalmazásban.
+* Hozzon létre egy felhasználói felületet (UI), amely lehetővé teszi, hogy a megbízható felhasználók az összes rendelkezésre álló pályázót lássák, ha szükséges, a hely egy részéhez, az URI-előtag alapján.
 
 > [!NOTE]
-> Mindkét a módszereket viszonylag lassú és drága feladat. Javasoljuk, hogy azok takarékosan használatát.
+> Mindkét módszer viszonylag lassú és költséges. Ajánlott ezeket takarékosan használni.
 
 ## <a name="getusertranslationcounts-method"></a>GetUserTranslationCounts metódus
 
-Ez a módszer lekérdezi a felhasználó által létrehozott fordításainak száma. A fordítási számát a uriPrefix szerint csoportosítva, a felhasználó minRating és maxRating kérelem paramétereinek listáját biztosít.
+Ez a metódus lekéri a felhasználó által létrehozott fordítások számát. Megjeleníti a fordítások listáját a uriPrefix, a, a, a felhasználó, a minRating és a maxRating kérelmek paramétereinek csoportosításával.
 
 **Syntax**
 
@@ -74,53 +74,53 @@ Ez a módszer lekérdezi a felhasználó által létrehozott fordításainak sz�
 
 | Paraméter | Leírás |
 |:---|:---|
-| appId | **Szükséges** az engedélyezési fejléc használata esetén a appid mezőt üresen hagyja más esetben adja meg egy karakterlánc, amely tartalmazza a "Tulajdonos" + "" + a hozzáférési jogkivonatot.|
-| uriPrefix | **Nem kötelező** URI-ját a fordítás előtagot tartalmazó karakterlánc.|
-| from | **Nem kötelező** egy karakterlánc, amely a fordítandó szöveg nyelvkódja. |
-| erre: | **Nem kötelező** karakterláncként lefordítani a szöveget a nyelvi kódot.|
-| minRating| **Nem kötelező** a minőségi besorolása a lefordított szöveg jelölő egész szám. Az érvényes érték -10- és 10 között. Az alapértelmezett érték az 1.|
-| maxRating| **Nem kötelező** a legmagasabb minőségű besorolása a lefordított szöveg jelölő egész szám. Az érvényes érték -10- és 10 között. Az alapértelmezett érték az 1.|
-| Felhasználó | **Nem kötelező** egy karakterlánc, amellyel szűrheti az eredményeket a Küldés létrehozója alapján. |
-| category| **Nem kötelező** a kategóriát vagy a tartomány a fordítás tartalmazó karakterlánc. Ez a paraméter csak az alapértelmezett beállítás általános támogatja.|
-| minDateUtc| **Nem kötelező** a dátum, amikor szeretné beolvasni a fordításokat. A dátum az UTC formátumban kell lennie. |
-| maxDateUtc| **Nem kötelező** : Ha szeretné a fordítások beolvasni a dátumot. A dátum az UTC formátumban kell lennie. |
-| Kihagyás| **Nem kötelező** oldalon hagyja ki a kívánt eredmények száma. Például ha azt szeretné, a kihagyása a első 20 sort az eredmények és a 21-én eredményrekord nézetet, adja meg az ehhez a paraméterhez 20. Ez a paraméter alapértelmezett értéke 0.|
-| hajtsa végre a megfelelő | **Nem kötelező** a lekérni kívánt eredmények számát. Az egyes kérelmek maximális száma pedig a 100. Az alapértelmezett érték 100.|
+| appId | **Kötelező megadni** Ha az engedélyezési fejlécet használja, hagyja üresen a AppID mezőt, és írjon be egy olyan karakterláncot, amely tartalmazza a "tulajdonos" + "+" hozzáférési tokent.|
+| uriPrefix | Nem **kötelező** A fordítás URI-azonosítóját tartalmazó karakterlánc.|
+| from | Nem **kötelező** A fordítási szöveg nyelvi kódját jelölő sztring. |
+| to | Nem **kötelező** A szöveg fordítására szolgáló nyelvkód jelölő sztring.|
+| minRating| Nem **kötelező** Egy egész szám, amely a lefordított szöveg minimális minőségi minősítését jelképezi. Az érvényes érték:-10 és 10. Az alapértelmezett érték az 1.|
+| maxRating| Nem **kötelező** Egy egész szám, amely a lefordított szöveg maximális minőségi minősítését jelképezi. Az érvényes érték:-10 és 10. Az alapértelmezett érték az 1.|
+| Felhasználó | Nem **kötelező** Egy karakterlánc, amely az eredménynek a Küldés kezdeményezője alapján történő szűrésére szolgál. |
+| category| Nem **kötelező** A fordítás kategóriáját vagy tartományát tartalmazó karakterlánc. Ez a paraméter csak az alapértelmezett általános beállítást támogatja.|
+| minDateUtc| Nem **kötelező** Az a dátum, amikor a fordításokat le szeretné kérni. A dátumnak UTC formátumúnak kell lennie. |
+| maxDateUtc| Nem **kötelező** Az a dátum, ameddig a fordításokat le szeretné kérni. A dátumnak UTC formátumúnak kell lennie. |
+| kihagyás| Nem **kötelező** Az oldalon kihagyni kívánt eredmények száma. Ha például azt szeretné, hogy az eredmények és a nézet első 20 sora a huszonegyedik eredmény rekordban legyen, a 20 érték megadása ehhez a paraméterhez. A paraméter alapértelmezett értéke 0.|
+| take | Nem **kötelező** A lekérdezni kívánt eredmények száma. Az egyes kérések maximális száma 100. Az alapértelmezett érték a 100.|
 
 > [!NOTE]
-> A Kihagyás gombra, és végezze el a kérelem paramétereinek nagy számú rekordot a tördelés engedélyezése.
+> A skip és a Take kérelem paraméterek nagy számú eredményhalmaz esetében lehetővé teszik a tördelést.
 
-**Vrácená hodnota**
+**Visszatérési érték**
 
-Az eredményhalmaz tömbjét tartalmazza a **UserTranslationCount**. Minden egyes UserTranslationCount a következő elemekből áll:
+Az eredményhalmaz a **UserTranslationCount**tömbjét tartalmazza. Minden UserTranslationCount a következő elemekből áll:
 
 | Mező | Leírás |
 |:---|:---|
-| Darabszám| Beolvasott eredmények száma|
-| Forrás | A Forrásnyelv|
-| Minősítés| A minősítés az alkalmazott a küldőtől AddTranslation() metódushívás|
-| Cél| A Célnyelv|
-| URI-t| Az URI-t a AddTranslation() metódus meghívása a alkalmazni|
-| Felhasználó| A felhasználó neve|
+| Count| A beolvasott eredmények száma|
+| Forrás | A forrás nyelve|
+| Minősítés| A küldő által a AddTranslation () metódus hívásakor alkalmazott minősítés|
+| Cél| A cél nyelve|
+| URI| A AddTranslation () metódus hívásakor alkalmazott URI|
+| Felhasználó| A Felhasználónév|
 
 **Kivételek**
 
 | Kivétel | Message | Feltételek |
 |:---|:---|:---|
-| ArgumentOutOfRangeException | A paraméter "**maxDateUtc**"kell lennie, nagyobb vagy egyenlő"**minDateUtc**".| A paraméter értékének **maxDateUtc** kisebb, mint a paraméter értékének **minDateUtc**.|
-| TranslateApiException | IP-cím része fölé a kvótát.| <ul><li>Percenkénti kérések száma a határérték elérése.</li><li>A kérelem mérete legfeljebb 10000 karakter marad.</li><li>Óránként történik, és a egy napi kvóta korlátozza, amely elfogadja a Microsoft Translator API karakterek száma.</li></ul>|
-| TranslateApiException | Identifikátor AppId kvóta felett van.| Az Alkalmazásazonosítót meghaladta az óránkénti vagy napi kvótáját.|
+| ArgumentOutOfRangeException | A "**maxDateUtc**" paraméternek nagyobbnak vagy egyenlőnek kell lennie, mint "**minDateUtc**".| A **maxDateUtc** paraméter értéke kisebb, mint a **minDateUtc**paraméter értéke.|
+| TranslateApiException | Az IP-cím meghaladja a kvótát.| <ul><li>A kérések száma percenként elérte a korlátot.</li><li>A kérelem mérete 10000 karakternél továbbra is korlátozott.</li><li>Az óránkénti és a napi kvóta korlátozza a Microsoft Translator API által elfogadott karakterek számát.</li></ul>|
+| TranslateApiException | A AppId a kvóta felett van.| Az alkalmazás azonosítója túllépte az óránkénti vagy a napi kvótát.|
 
 > [!NOTE]
-> A kvóta növeléséhez, győződjön meg, hogy a szolgáltatás az összes felhasználó használ igazságos lehetőség.
+> A kvóta úgy módosul, hogy a szolgáltatás minden felhasználója számára igazságos legyen.
 
-**A GitHib hitelesítésikód-Példák megtekintése**
+**Példák a GitHib**
 * [C#](https://github.com/MicrosoftTranslator/Documentation-Code-TextAPI/blob/master/ctf/ctf-getusertranslationcounts-example-csharp.md)
 * [PHP](https://github.com/MicrosoftTranslator/Documentation-Code-TextAPI/blob/master/ctf/ctf-getusertranslationcounts-example-php.md)
 
 ## <a name="getusertranslations-method"></a>GetUserTranslations metódus
 
-Ez a módszer a fordítások, a felhasználó által létrehozott kérdezi le. A fordítások szerint csoportosítva a uriPrefix, to, felhasználói, és minRating és maxRating kérelem paramétereket biztosít.
+Ezzel a módszerrel a felhasználó által létrehozott fordítások olvashatók be. A fordítást a uriPrefix, a, a, a felhasználó és a minRating, valamint a maxRating-kérelmek paramétereinek csoportosításával biztosítja.
 
 **Syntax**
 
@@ -145,48 +145,48 @@ Ez a módszer a fordítások, a felhasználó által létrehozott kérdezi le. A
 
 | Paraméter | Leírás |
 |:---|:---|
-| appId | **Szükséges** az engedélyezési fejléc használata esetén a appid mezőt üresen hagyja más esetben adja meg egy karakterlánc, amely tartalmazza a "Tulajdonos" + "" + a hozzáférési jogkivonatot.|
-| uriPrefix| **Nem kötelező** URI-ját a fordítás előtagot tartalmazó karakterlánc.|
-| from| **Nem kötelező** egy karakterlánc, amely a fordítandó szöveg nyelvkódja.|
-| erre:| **Nem kötelező** karakterláncként lefordítani a szöveget a nyelvi kódot.|
-| minRating| **Nem kötelező** a minőségi besorolása a lefordított szöveg jelölő egész szám. Az érvényes érték -10- és 10 között. Az alapértelmezett érték az 1.|
-| maxRating| **Nem kötelező** a legmagasabb minőségű besorolása a lefordított szöveg jelölő egész szám. Az érvényes érték -10- és 10 között. Az alapértelmezett érték az 1.|
-| Felhasználó| **Nem kötelező. Egy karakterlánc, amellyel szűrheti az eredményeket a Küldés létrehozója alapján**|
-| category| **Nem kötelező** a kategóriát vagy a tartomány a fordítás tartalmazó karakterlánc. Ez a paraméter csak az alapértelmezett beállítás általános támogatja.|
-| minDateUtc| **Nem kötelező** a dátum, amikor szeretné beolvasni a fordításokat. A dátum az UTC formátumban kell lennie.|
-| maxDateUtc| **Nem kötelező** : Ha szeretné a fordítások beolvasni a dátumot. A dátum az UTC formátumban kell lennie.|
-| Kihagyás| **Nem kötelező** oldalon hagyja ki a kívánt eredmények száma. Például ha azt szeretné, a kihagyása a első 20 sort az eredmények és a 21-én eredményrekord nézetet, adja meg az ehhez a paraméterhez 20. Ez a paraméter alapértelmezett értéke 0.|
-| hajtsa végre a megfelelő| **Nem kötelező** a lekérni kívánt eredmények számát. Az egyes kérelmek maximális száma pedig a 100. Az alapértelmezett érték 50.|
+| appId | **Kötelező megadni** Ha az engedélyezési fejlécet használja, hagyja üresen a AppID mezőt, és írjon be egy olyan karakterláncot, amely tartalmazza a "tulajdonos" + "+" hozzáférési tokent.|
+| uriPrefix| Nem **kötelező** A fordítás URI-azonosítóját tartalmazó karakterlánc.|
+| from| Nem **kötelező** A fordítási szöveg nyelvi kódját jelölő sztring.|
+| to| Nem **kötelező** A szöveg fordítására szolgáló nyelvkód jelölő sztring.|
+| minRating| Nem **kötelező** Egy egész szám, amely a lefordított szöveg minimális minőségi minősítését jelképezi. Az érvényes érték:-10 és 10. Az alapértelmezett érték az 1.|
+| maxRating| Nem **kötelező** Egy egész szám, amely a lefordított szöveg maximális minőségi minősítését jelképezi. Az érvényes érték:-10 és 10. Az alapértelmezett érték az 1.|
+| Felhasználó| **Választható. Egy karakterlánc, amely az eredmény szűrésére szolgál a Küldés kezdeményezője alapján**|
+| category| Nem **kötelező** A fordítás kategóriáját vagy tartományát tartalmazó karakterlánc. Ez a paraméter csak az alapértelmezett általános beállítást támogatja.|
+| minDateUtc| Nem **kötelező** Az a dátum, amikor a fordításokat le szeretné kérni. A dátumnak UTC formátumúnak kell lennie.|
+| maxDateUtc| Nem **kötelező** Az a dátum, ameddig a fordításokat le szeretné kérni. A dátumnak UTC formátumúnak kell lennie.|
+| kihagyás| Nem **kötelező** Az oldalon kihagyni kívánt eredmények száma. Ha például azt szeretné, hogy az eredmények és a nézet első 20 sora a huszonegyedik eredmény rekordban legyen, a 20 érték megadása ehhez a paraméterhez. A paraméter alapértelmezett értéke 0.|
+| take| Nem **kötelező** A lekérdezni kívánt eredmények száma. Az egyes kérések maximális száma 100. Az alapértelmezett érték a 50.|
 
 > [!NOTE]
-> A Kihagyás gombra, és végezze el a kérelem paramétereinek nagy számú rekordot a tördelés engedélyezése.
+> A skip és a Take kérelem paraméterek nagy számú eredményhalmaz esetében lehetővé teszik a tördelést.
 
-**Vrácená hodnota**
+**Visszatérési érték**
 
-Az eredményhalmaz tömbjét tartalmazza a **UserTranslation**. Minden egyes UserTranslation a következő elemekből áll:
+Az eredményhalmaz a **UserTranslation**tömbjét tartalmazza. Minden UserTranslation a következő elemekből áll:
 
 | Mező | Leírás |
 |:---|:---|
-| CreatedDateUtc| A létrehozást, a bejegyzés AddTranslation() használatával|
-| Forrás| A Forrásnyelv|
-| OriginalText| A Forrásnyelv szöveget a kérelem elküldésekor használt|
-|Minősítés |A minősítés az alkalmazott a küldőtől AddTranslation() metódushívás|
-|Cél|    A Célnyelv|
-|TranslatedText|    A fordítás küldött AddTranslation() metódushívás|
-|URI-t|   Az URI-t a AddTranslation() metódus meghívása a alkalmazni|
-|Felhasználó   |A felhasználó neve|
+| CreatedDateUtc| A bejegyzés létrehozásának dátuma a AddTranslation () használatával|
+| Forrás| A forrás nyelve|
+| OriginalText| A kérelem elküldésekor használt forrás nyelvi szövege|
+|Minősítés |A küldő által a AddTranslation () metódus hívásakor alkalmazott minősítés|
+|Cél|    A cél nyelve|
+|TranslatedText|    A AddTranslation () metódus hívása által beküldött fordítás|
+|URI|   A AddTranslation () metódus hívásakor alkalmazott URI|
+|Felhasználó   |A Felhasználónév|
 
 **Kivételek**
 
 | Kivétel | Message | Feltételek |
 |:---|:---|:---|
-| ArgumentOutOfRangeException | A paraméter "**maxDateUtc**"kell lennie, nagyobb vagy egyenlő"**minDateUtc**".| A paraméter értékének **maxDateUtc** kisebb, mint a paraméter értékének **minDateUtc**.|
-| TranslateApiException | IP-cím része fölé a kvótát.| <ul><li>Percenkénti kérések száma a határérték elérése.</li><li>A kérelem mérete legfeljebb 10000 karakter marad.</li><li>Óránként történik, és a egy napi kvóta korlátozza, amely elfogadja a Microsoft Translator API karakterek száma.</li></ul>|
-| TranslateApiException | Identifikátor AppId kvóta felett van.| Az Alkalmazásazonosítót meghaladta az óránkénti vagy napi kvótáját.|
+| ArgumentOutOfRangeException | A "**maxDateUtc**" paraméternek nagyobbnak vagy egyenlőnek kell lennie, mint "**minDateUtc**".| A **maxDateUtc** paraméter értéke kisebb, mint a **minDateUtc**paraméter értéke.|
+| TranslateApiException | Az IP-cím meghaladja a kvótát.| <ul><li>A kérések száma percenként elérte a korlátot.</li><li>A kérelem mérete 10000 karakternél továbbra is korlátozott.</li><li>Az óránkénti és a napi kvóta korlátozza a Microsoft Translator API által elfogadott karakterek számát.</li></ul>|
+| TranslateApiException | A AppId a kvóta felett van.| Az alkalmazás azonosítója túllépte az óránkénti vagy a napi kvótát.|
 
 > [!NOTE]
-> A kvóta növeléséhez, győződjön meg, hogy a szolgáltatás az összes felhasználó használ igazságos lehetőség.
+> A kvóta úgy módosul, hogy a szolgáltatás minden felhasználója számára igazságos legyen.
 
-**A GitHib hitelesítésikód-Példák megtekintése**
+**Példák a GitHib**
 * [C#](https://github.com/MicrosoftTranslator/Documentation-Code-TextAPI/blob/master/ctf/ctf-getusertranslations-example-csharp.md)
 * [PHP](https://github.com/MicrosoftTranslator/Documentation-Code-TextAPI/blob/master/ctf/ctf-getusertranslations-example-php.md)

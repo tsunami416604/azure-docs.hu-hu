@@ -5,14 +5,12 @@ metadata:
   title: Az Azure Container Registry dokumentációja – oktatóanyagok | Microsoft Docs
   description: 'Az Azure Container Registry rendszerképek kiépítését, tárolását és kezelését teszi lehetővé a tárolók minden típusú üzemelő példányához. Rövid útmutatóink, oktatóanyagaink és példáink segítségével megismerkedhet az Azure Container Registry használatával.'
   services: container-registry
-  author: czeumault
-  manager: carolz
+  author: georgewallace
+  manager: gwallace
   ms.service: container-registry
-  ms.tgt_pltfrm: na
-  ms.devlang: na
   ms.topic: landing-page
   ms.date: 07/26/2017
-  ms.author: carolz
+  ms.author: gwallace
 abstract:
   description: 'Az Azure Container Registry rendszerképek kiépítését, tárolását és kezelését teszi lehetővé a tárolók minden típusú üzemelő példányához. Rövid útmutatóink, oktatóanyagaink és példáink segítségével megismerkedhet az Azure Container Registry használatával.'
 sections:

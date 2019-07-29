@@ -15,12 +15,12 @@ ms.topic: overview
 ms.custom: mvc
 ms.date: 04/30/2019
 ms.author: jowargo
-ms.openlocfilehash: 03d4c269f76a89c43dec253367d07f3bf71a06d8
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 1ee50603886f76b0a54cee940e7644c401804078
+ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65141215"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68610021"
 ---
 # <a name="what-is-azure-notification-hubs"></a>Mi az az Azure Notification Hubs?
 
@@ -35,9 +35,9 @@ Az Azure Notification Hubs egy egyszerűen használható és kibővített lekül
 
 ## <a name="what-are-push-notifications"></a>Mik azok a leküldéses értesítések?
 
-Leküldéses értesítések az alkalmazás közötti felhasználó kommunikációs egy képernyő, ahol bizonyos kívánt információ általában a előugró üzenet vagy párbeszédpanel a mobileszközökön a mobile apps felhasználóinak értesítést kap. Felhasználók megtekintéséhez, vagy hagyja figyelmen kívül az üzenetet; általában kiválasztása az előbbi megnyílik a mobilalkalmazásban, amely az értesítés közölt kiválasztása. Egyes értesítéseket nem rendelkeznek – az alkalmazás a háttérben dolgozza fel, és döntse el, mi a teendő a háttérben-i.
+A leküldéses értesítések az alkalmazások közötti kommunikáció egyik formája, ahol a Mobile apps felhasználói értesítést kapnak bizonyos szükséges információkról, általában egy előugró ablakban vagy egy mobileszközön. A felhasználók általában az üzenet megtekintésére vagy elvetésére választanak; az előbbi megnyithatja az értesítést küldő mobil alkalmazást. Egyes értesítéseket a háttérben az alkalmazásnak a jelenetek mögötti feldolgozásához és a teendők eldöntéséhez kell elvégeznie.
 
-A leküldéses értesítések fontos részei a végfelhasználói alkalmazásoknak az alkalmazással kapcsolatos marketingtevékenységek elősegítésében és az alkalmazáshasználat növelésében, illetve a vállalati alkalmazásoknak a naprakész üzleti információk kommunikálásában. A legjobb alkalmazást és a felhasználók kommunikáció, mert energiahatékony mobileszközök esetén az értesítések feladói, rugalmas és érhető el, ha a kapcsolódó alkalmazások nem aktívak.
+A leküldéses értesítések fontos részei a végfelhasználói alkalmazásoknak az alkalmazással kapcsolatos marketingtevékenységek elősegítésében és az alkalmazáshasználat növelésében, illetve a vállalati alkalmazásoknak a naprakész üzleti információk kommunikálásában. Ez a legjobb alkalmazás-felhasználó kommunikáció, mivel ez energiahatékony a mobileszközök számára, rugalmasan használható az értesítések küldéséhez, és akkor érhető el, ha a megfelelő alkalmazások nem aktívak.
 
 Az alábbi témakörökben tekinthet meg további információt a leküldéses értesítésekkel kapcsolatban néhány népszerű platform esetén:
 
@@ -47,13 +47,13 @@ Az alábbi témakörökben tekinthet meg további információt a leküldéses �
 
 ## <a name="how-push-notifications-work"></a>Hogyan működnek a leküldéses értesítések?
 
-A leküldéses értesítéseket a rendszerek platformspecifikus, *Platform Notification System* (PNS) nevű infrastruktúrákon keresztül küldik el. Ezek az infrastruktúrák lecsupaszított leküldéses funkciókat kínálnak, amelyekkel üzeneteket kézbesítenek egy adott leíróval rendelkező eszközöknek, és nem biztosítanak közös felületet. Értesítés küldése minden ügyfél számára az Android, iOS és az alkalmazás Windows verziói között, a fejlesztői együttműködve kell az Apple Push Notification Service(APNS), a Firebase Cloud Messaging(FCM) és a Windows értesítési Service(WNS) külön-külön.
+A leküldéses értesítéseket a rendszerek platformspecifikus, *Platform Notification System* (PNS) nevű infrastruktúrákon keresztül küldik el. Ezek az infrastruktúrák lecsupaszított leküldéses funkciókat kínálnak, amelyekkel üzeneteket kézbesítenek egy adott leíróval rendelkező eszközöknek, és nem biztosítanak közös felületet. Ha értesítést szeretne küldeni minden ügyfélnek az alkalmazások Android-, iOS-és Windows-verzióiban, a fejlesztőnek külön kell működnie Apple Push Notification Service (APNS), a Firebase Cloud Messaging (FCM) és a Windows Notification Service (WNS) szolgáltatással.
 
 A leküldés lényegében a következőképpen működik:
 
-1. Egy alkalmazás úgy dönt, hogy értesítést szeretne kapni, így azt PNS kapcsolatba lép a célplatformhoz, ahol az alkalmazás fut, és a egy egyedi és ideiglenes leküldéses leíró kérelmek szeretné. A leíró típusa a rendszertől függ (például WNS használ URI-k közben APNS tokeneket használ).
-2. Az ügyfélalkalmazás ezt az azonosítót a háttéralkalmazás vagy a szolgáltató tárolja.
-3. Leküldéses értesítés küldése, az alkalmazási háttérrendszer kapcsolatba lép a PNS-leírójának célja egy adott ügyfél-alkalmazás használatával.
+1. Egy alkalmazás úgy dönt, hogy szeretne értesítést kapni, így kapcsolatba lép a PNS, ahol az alkalmazás fut, és egyedi és ideiglenes leküldéses leírót kér. A leíró típusa a rendszertől függ (például a WNS URI-ket használ, míg a APNS tokeneket használ).
+2. Az ügyfélalkalmazás ezt a leírót az alkalmazás-háttér vagy a szolgáltató tárolja.
+3. Leküldéses értesítés küldéséhez az alkalmazás háttere a leíró használatával kapcsolatba lép a PNS egy adott ügyfélalkalmazás megcélzásához.
 4. A PNS továbbküldi az értesítést a leíróban meghatározott eszközre.
 
 ![A leküldéses értesítés munkafolyamata](./media/notification-hubs-overview/registration-diagram.png)
@@ -65,16 +65,16 @@ A PNS-ek hatékonyak. Számos teendőt hagynak ugyanakkor az alkalmazásfejleszt
 Az értesítések leküldéséhez összetett infrastruktúrára van szükség, amely nem kapcsolódik az alkalmazás fő üzleti logikájához. Néhány infrastrukturális kihívás:
 
 - **Platformfüggőség**
-  - A háttérrendszer szükséges összetett és nehezen fenntartható platformfüggő logikai értesítések küldéséhez, PNSes vannak nem egységes eszközöket a különböző platformokon.
+  - A háttérrendszer összetett és nehezen kezelhető platformtól függő logikát igényel, hogy az értesítéseket különböző platformokon lévő eszközökre küldje el, mivel a PNSes nem egységesek.
 - **Méretezés**
-  - A PNS-irányelvek szerint az eszközök jogkivonatait az alkalmazás minden indításakor frissíteni kell. A háttérben a nagy mennyiségű forgalmat és az adatbázis a hozzáférést csak a tokenek naprakészen foglalkozik. Az eszközök száma nő, több száz, több ezer vagy több millió, a költség, létrehozását és az infrastruktúra karbantartását esetén nagy.
+  - A PNS-irányelvek szerint az eszközök jogkivonatait az alkalmazás minden indításakor frissíteni kell. A háttérrendszer nagy mennyiségű forgalmat és adatbázis-hozzáférést biztosít a tokenek naprakészen tartásához. Ha az eszközök száma több száz, ezres vagy millióra nő, az infrastruktúra létrehozásának és fenntartásának díja nagy.
   - A legtöbb PNS nem támogatja a több eszközre küldött szórásos küldést. Egy millió eszközre való szórásos küldés egy millió, PNS-ekre küldött hívást eredményez. Ekkora forgalomra való méretezés minimális késéssel egyáltalán nem egyszerű feladat.
 - **Útválasztás**
   - Jóllehet a PNS-ekkel küldhet értesítéseket az eszközökre, a legtöbb alkalmazás értesítéseinek célpontjai felhasználók vagy érdeklődési körök. A háttérrendszernek nyilvántartás kell fenntartania, hogy az eszközöket érdeklődési körökhöz, felhasználókhoz, tulajdonságokhoz stb. társítsa. Ez a terhelés hozzáadódik az alkalmazások piacra kerülési idejéhez és fenntartási költségeihez.
 
 ## <a name="why-use-azure-notification-hubs"></a>Miért érdemes az Azure Notification Hubs szolgáltatást használni?
 
-A Notification Hubs megszünteti az értesítések leküldése a saját alkalmazását a háttérrendszer társított összes hagyhatják. A szolgáltatás többplatformos, kibővített leküldéses értesítési infrastruktúrája csökkenti a leküldéses értesítésekkel kapcsolatos kódolást, valamint egyszerűsíti a háttérrendszert. A Notification Hubs segítségével az eszközök csak a PNS-leíróknak egy központban való regisztrálásáért, a háttérrendszer pedig az üzenetek felhasználóknak vagy érdekcsoportoknak való elküldéséért felelős, ahogy az alábbi ábrán is látható:
+Notification Hubs kiküszöböli a saját alkalmazás-háttérbeli értesítések küldéséhez kapcsolódó összes bonyolultságot. A szolgáltatás többplatformos, kibővített leküldéses értesítési infrastruktúrája csökkenti a leküldéses értesítésekkel kapcsolatos kódolást, valamint egyszerűsíti a háttérrendszert. A Notification Hubs segítségével az eszközök csak a PNS-leíróknak egy központban való regisztrálásáért, a háttérrendszer pedig az üzenetek felhasználóknak vagy érdekcsoportoknak való elküldéséért felelős, ahogy az alábbi ábrán is látható:
 
 ![Értesítési központ ábrája](./media/notification-hubs-overview/notification-hub-diagram.png)
 
@@ -86,17 +86,17 @@ A Notification Hubs egy használatra kész leküldéses értesítési alrendszer
   - Eszközleírók kezelése egy helyen.
 - **Háttérrendszertől független**
   - Felhőalapú vagy helyszíni.
-  - .NET, Node.js, Java stb.
+  - .NET, Node. js, Java, Python stb.
 - **Sokféle kézbesítési minta**
-  - Egy vagy több platformon szórás: Azonnal elküldheti eszközök millióira egyetlen API hívással platformon.
-  - Továbbítsa az eszköz: Megcélozhatja azokat az egyes eszközökre értesítéseket.
-  - Küldje le a felhasználó számára: Címkékkel és sablonokkal funkciók segítenek elérni egy felhasználó összes többplatformos eszközei.
-  - Küldje le a szegmens megjelölhető dinamikus címkékkel: Címkék szolgáltatás segítségével, szükség szerint leküldéses őket és szegmens-eszközök egy szegmens vagy egy kifejezés a szegmenseket (például aktív és életét Seattle nem új felhasználó) küld-e. Mivel nincs a közzétételi-feliratkozási (pub-sub) modellre lenne korlátozva, az eszközcímkéket bárhol és bármikor frissítheti.
-  - Leküldéses: Sablonok funkció segítségével honosítási elérése a háttérkód módosítása nélkül.
-  - Csendes leküldéses: Beavatkozás nélküli értesítések küldését az eszközeire és aktiválása bizonyos lekéri vagy a műveletek befejeződnek, engedélyezheti a leküldéses minta.
-  - Ütemezett leküldés: Bármikor küldjön értesítéseket is ütemezhető.
-  - Közvetlen lehívás: A Notification Hubs szolgáltatással való regisztrálásáról eszközök kihagyhatja, és közvetlenül batch-leküldéses eszközleírók listájára.
-  - Személyre szabott leküldéses: Eszköz leküldéses változók segítségével küld az eszközre vonatkozó személyre szabott leküldéses értesítések az egyéni kulcs-érték párokat.
+  - Közvetítés egy vagy több platformra: Egyetlen API-hívással azonnal továbbíthat több millió eszközre több platformon.
+  - Leküldés az eszközre: Az értesítéseket az egyes eszközökre is megcélozhatja.
+  - Leküldés a felhasználónak: A címkék és sablonok funkció segítségével elérheti a felhasználók összes platformfüggetlen eszközét.
+  - Leküldéses szegmens dinamikus címkékkel: A címkék funkció segítséget nyújt az eszközök szegmentálásához és az igényeknek megfelelő leküldéshez, függetlenül attól, hogy egy szegmensre vagy szegmensek kifejezésére küld (például aktív és Seattle-ben nem új felhasználó). Mivel nincs a közzétételi-feliratkozási (pub-sub) modellre lenne korlátozva, az eszközcímkéket bárhol és bármikor frissítheti.
+  - Honosított leküldés: A sablonok funkcióval a háttérrendszer-kód befolyásolása nélkül érheti el a honosítást.
+  - Csendes leküldés: Engedélyezheti a leküldéses lekéréses mintát, ha csendes értesítéseket küld az eszközökre, és elindítja őket bizonyos lekérések vagy műveletek végrehajtásához.
+  - Ütemezett leküldés: A beütemezett értesítéseket bármikor elküldheti.
+  - Közvetlen leküldés: Kihagyhatja az eszközök regisztrálását a Notification Hubs szolgáltatással, és közvetlenül a Batch leküldheti az eszközökön lévő fogópontok listáját.
+  - Személyre szabott leküldés: Az eszköz leküldéses változói lehetővé teszik, hogy az eszközre jellemző személyre szabott leküldéses értesítéseket egyedi kulcs-érték párokkal küldje
 - **Részletes telemetria**
   - Az általános leküldési, eszköz-, hiba- és műveleti telemetria az Azure Portalon és szoftveresen is elérhető.
   - Az üzenetszintű telemetriai adatok nyomon követik az összes leküldést a kezdeti kérelemhívástól a Notification Hubs szolgáltatás általi sikeres kötegelt leküldésig.
@@ -108,7 +108,7 @@ A Notification Hubs egy használatra kész leküldéses értesítési alrendszer
 
 ## <a name="next-steps"></a>További lépések
 
-Ismerkedés a létrehozása és a egy értesítési központ használatával a következő a [oktatóanyag: Leküldéses értesítések küldése a mobilalkalmazások](notification-hubs-android-push-notification-google-fcm-get-started.md).
+Ismerkedés az értesítési központ létrehozásával és használatával a [következő oktatóanyag segítségével: Leküldéses értesítések küldése](notification-hubs-android-push-notification-google-fcm-get-started.md)a Mobile Applications-nek.
 
 [0]: ./media/notification-hubs-overview/registration-diagram.png
 [1]: ./media/notification-hubs-overview/notification-hub-diagram.png

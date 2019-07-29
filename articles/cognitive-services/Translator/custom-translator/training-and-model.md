@@ -1,56 +1,56 @@
 ---
-title: Mi az képzés és a modell? -Egyéni a fordítót
+title: Mi az a képzés és a modell? -Egyéni a fordítót
 titleSuffix: Azure Cognitive Services
-description: Egy modell, a rendszer, amely egy adott nyelven párhoz fordítási biztosít. A sikeres képzési eredménye egy modellt. A modell betanításakor három egymást kölcsönösen kizáró adatkészletek szükségesek betanítási adatkészletet, adatkészlet hangolása és tesztelés az adatkészletet.
+description: A modell a rendszer, amely egy adott nyelvi pár fordítását biztosítja. A sikeres képzés eredménye egy modell. A modellek betanításakor a három egymást kölcsönösen kizáró adatkészlet kötelező betanítási adatkészletet, hangolási adatkészletet és tesztelési adatkészletet.
 author: swmachan
-manager: christw
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 02/21/2019
 ms.author: swmachan
-ms.openlocfilehash: 5d82baf3e7458a42429df9dafc9c8d5e16744716
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: af3f795dc5036b23b82562e7af4582bd90b44f47
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67436121"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68595436"
 ---
-# <a name="what-are-trainings-and-models"></a>Mik a betanítások és modellek?
+# <a name="what-are-trainings-and-models"></a>Mik azok a tréningek és modellek?
 
-Egy modell, a rendszer, amely egy adott nyelven párhoz fordítási biztosít.
-A sikeres képzési eredménye egy modellt. A modell betanításakor három egymást kölcsönösen kizáró adatkészletek szükség: betanítási adatkészletet, adatkészlet és a tesztelés adatkészlet. Szótár adatokat is megadható.
+A modell a rendszer, amely egy adott nyelvi pár fordítását biztosítja.
+A sikeres képzés eredménye egy modell. A modellek betanításakor három kölcsönösen kizáró adatkészletre van szükség: az adatkészletek betanítása, az adatkészlet hangolása és a tesztelési adatkészlet. A szótárakhoz tartozó információk is megadhatók.
 
-Ha csak az üzenetsor-kezelési képzési biztosított betanítási adatok, a egyéni a fordítót automatikusan összeállíthat finomhangolása és egy tesztelési. Ez 5000 mondatokat kizárása a betanítási adatok, és minden egyes összegyűjtése, a hangolási 2500 és tesztelési csoportok.
+Ha a képzések kiszolgálása során csak képzési adatokat adnak meg, az egyéni fordító automatikusan összeállítja a hangolási és tesztelési adatkészleteket. Kizárja az 5 000 mondatokat a betanítási adatokból, és az 2 500-et használja a hangolási és tesztelési készletek összeállításához.
 
-## <a name="training-dataset-for-custom-translator"></a>Betanítási adatkészletet egyéni a fordítót a
+## <a name="training-dataset-for-custom-translator"></a>Egyéni fordító betanítási adatkészlete
 
-Dokumentumok betanítási készlete által használt az egyéni a fordítót alapjaként a modell létrehozásához. Betanítási futtatás során ezeket a dokumentumokat a mondatok vannak igazítva (vagy párosított). Szabadságjogokkal összeállítása a betanítási dokumentumok köre a is igénybe vehet. Megadhat egy modell érintőlegesen relevancia vannak, amely Ön szerint dokumentumok. Újra kizárja őket egy másik-azonosítókra gyakorolt hatást a [(kétnyelvű értékelési Understudy) BLEU pontszám](what-is-bleu-score.md). Mindaddig, amíg megőrzi a hangolási beállítása és a teszt set állandó, nyugodtan kísérletezhet a gyakorlókészlethez felépítését. Ez a megközelítés akkor módosítsa a fordítási rendszer minőségét hatékony módszert.
+A betanítási csoportba tartozó dokumentumokat az egyéni fordító használja a modell kialakításának alapjául. A betanítás végrehajtása során a dokumentumokban található mondatok vannak igazítva (vagy párosítva). A betanítási dokumentumok összeállítása során a szabadságjogokat is elvégezheti. Belefoglalhatja, hogy az Ön által elkövetett dokumentumok egy modellben legyenek érintő jelentőséggel bírnak. Ismét zárja ki őket egy másikban, és tekintse meg a [Bleu (kétnyelvű kiértékelési tanulmány) pontszámának](what-is-bleu-score.md)hatását. Ha megtartja a hangolási készletet és a test set Constant, nyugodtan kísérletezhet a betanítási csoport összeállításával. Ez a megközelítés hatékony módszer a fordítási rendszer minőségének módosítására.
 
-A projekten belül több betanítások futtathat, és hasonlítsa össze a [BLEU pontszámok](what-is-bleu-score.md) összes betanítási futtatás során. Az összehasonlítás több betanítások futtatja, amikor ugyanazon hangolása érdekében / Tesztadatok minden alkalommal van megadva. Ügyeljen arra, hogy az eredmények manuálisan is vizsgálata a ["Tesztelés"](how-to-view-system-test-results.md) fülre.
+Több betanítást is futtathat egy projekten belül, és összehasonlíthatja a [Bleu pontszámait](what-is-bleu-score.md) az összes betanítási futtatás során. Ha több tanítást is futtat az összehasonlításhoz, győződjön meg arról, hogy az egyes időpontokban ugyanaz a hangolási/tesztelési érték van megadva. Győződjön meg arról is, hogy az eredményeket manuálisan is megvizsgálja a ["tesztelés"](how-to-view-system-test-results.md) lapon.
 
-## <a name="tuning-dataset-for-custom-translator"></a>Egyéni a fordítót adatkészlet hangolása
+## <a name="tuning-dataset-for-custom-translator"></a>Adathalmaz finomhangolása egyéni fordítóhoz
 
-Ebben a készletben szereplő párhuzamos dokumentumok használják az egyéni a fordítót az optimális eredmények elérése érdekében a fordítási rendszer finomhangolása.
+A készletben található párhuzamos dokumentumokat az egyéni fordító használja az optimális eredmények érdekében a fordítási rendszer finomhangolásához.
 
-A beállítási csoport a betanítás során hangolására szolgálnak az összes paramétereket és a fordítási rendszer optimális értékek súlyozását. Válassza ki, a hangolási óvatosan állítsa be: a beállítási csoportot kell modelleznie, a dokumentumok tartalmát, a szeretne lefordítani a jövőben. A beállítási csoport állítja elő a fordítások minőségét egy jelentős hatással van. Hangolási lehetővé teszi, hogy a fordítási rendszerét a fordítások legközelebbi a mintákat, a hangolási adatkészlet meg. Nem kell több mint 2500 mondatokat, hangolása beállítása. Az optimális a fordítás minősége ajánlott a mondatok legfontosabb választott kiválasztásával manuálisan válassza ki a hangolási beállítása.
+A hangolási készlet az oktatás során használatos a fordítási rendszer összes paraméterének és súlyozásának az optimális értékre való beállításához. Válassza ki a finomhangolási készletet: a hangolási készletnek reprezentatívnak kell lennie a jövőben lefordítani kívánt dokumentumok tartalmára vonatkozóan. A hangolási csoport jelentős hatással van a létrehozott fordítások minőségére. A finomhangolás lehetővé teszi, hogy a fordítási rendszer olyan fordításokat nyújtson, amelyek az Ön által a hangolási adatkészletben megadott mintákhoz legközelebb vannak. Nem szükséges több mint 2500 mondatot beállítani hangolási készletként. Az optimális fordítási minőség érdekében javasoljuk, hogy a mondatok legjellemzőbb kiválasztásának kiválasztásával manuálisan válassza ki a hangolási készletet.
 
-A beállítási csoport létrehozásakor válassza ki a mondatokat, amelyek a jövőbeli mondatok fordítása várhatóan beállítás után sokatmondóbbak és reprezentatív hosszát. Szavak és kifejezések fordítása, amely a jövőbeni fordítások várt hozzávetőleges terjesztési kívánt rendelkező mondatok is kell választania. A gyakorlatban egy mondatban hossza 8 – 18 szavak eredményez a legjobb eredmények elérése érdekében, mert ezek a mondatok elegendő környezeti nincsenek megjelenítéséhez, és adja meg, amely jelentős, anélkül, hogy túl összetett kifejezést hossza tartalmaz.
+A hangolási készlet létrehozásakor válassza a mondatokat, amelyek a lefordítani kívánt jövőbeli mondatok kifejező és reprezentatív hossza. Olyan mondatokat is érdemes kiválasztania, amelyek olyan szavakat és kifejezéseket tartalmaz, amelyeket a jövőbeli fordításokban várható becsült eloszlásban szeretne lefordítani. A gyakorlatban a 8 és 18 karakter közötti mondat a legjobb eredményeket fogja eredményezni, mivel ezek a mondatok elég kontextust tartalmaznak az inflexiós megjelenítéséhez, és olyan kifejezési hosszúságot biztosítanak, amely jelentős, anélkül, hogy túlságosan összetett lenne.
 
-Kiderül, hogy a mondatok hangolási készletében használandó típusát a prose: tényleges fluent mondatokat. Nem cellák, nem poems, nem listája azokról a dolgokról, csak nem absztrakt, vagy számokat egy mondatban - rendszeres nyelv.
+A hangolási készletben használni kívánt mondatok típusának jó leírása a próza: tényleges, Fluent mondatok. Nem táblázatos cellák, nem pedig versek, nem csak a mondatok és a számok a normál nyelven.
 
-Ha manuálisan végrehajtja a hangolási adatkészlet, ha nem rendelkezhet azonos a mondatok, mint a képzés és tesztelési adatokat bármely. A beállítási csoport jelentős hatást gyakorol a fordítások minőségének - gondosan válassza ki a mondatok.
+Ha manuálisan kiválasztja a hangolási adatkészletet, akkor nem rendelkezhet ugyanazzal a mondattal, mint a betanítási és tesztelési adatai. A hangolási csoport jelentős hatással van a fordítások minőségére – a mondatokat körültekintően válassza ki.
 
-Ha nem biztos melyik a megfelelő, a hangolási van állítva, csak a betanítási készletének kiválasztása, és lehetővé teszik egyéni Translator, a hangolási készletének kiválasztása. Ha engedélyezi az egyéni Translator, válassza ki a hangolási beállítása automatikusan, kétnyelvű képzési dokumentumaiból mondatokat véletlenszerűen kiválasztott részhalmazát használja, és ezeket a mondatok kizárása a képzési anyagokat magát.
+Ha nem tudja, mit kell választania a hangolási készlethez, csak válassza ki a betanítási készletet, és hagyja, hogy az egyéni fordító válassza ki a hangolási készletet. Ha az egyéni fordító automatikusan kiválasztja a hangolási készletet, akkor a mondatok véletlenszerű részhalmazát fogja használni a kétnyelvű betanítási dokumentumokból, és kizárja ezeket a mondatokat a betanítási anyagból.
 
-## <a name="testing-dataset-for-custom-translator"></a>Egyéni a fordítót adatkészlet tesztelése
+## <a name="testing-dataset-for-custom-translator"></a>Egyéni fordítói adatkészlet tesztelése
 
-A tesztelési készlethez párhuzamos dokumentumok a BLEU (kétnyelvű értékelési Understudy) pontszám számítási szolgálnak. Ezt az értéket a fordítási rendszer minőségének jelzi. Ezt az értéket ténylegesen bemutatja, hogyan végezhető el a fordítási rendszer képzést keletkezett a fordítások illeszkedjenek a hivatkozási mondatokat, a teszt adatkészletben.
+A tesztelési csoportba tartozó párhuzamos dokumentumok a BLEU (kétnyelvű kiértékelési tanulmány) pontszámának kiszámítására szolgálnak. Ez a pontszám a fordítási rendszerek minőségét jelzi. Ez a pontszám azt mutatja meg, hogy az ebből a képzésből származó fordítási rendszer által végzett fordítások milyen mértékben egyeznek meg a tesztelési adatkészletben szereplő hivatkozási mondatokkal.
 
-A BLEU pontszám, egy mérték, a különbözeti az automatikus fordítás és a referencia-fordítás között. Az érték értéke 0 és 100. A pontszám a 0 azt jelzi, hogy a hivatkozás egyetlen szó nem látható a fordítás. A pontszám: 100 azt jelzi, hogy az automatikus fordítás pontosan megegyezik-e a hivatkozás: ugyanazon szó szerepel a pontos ugyanazon a helyen. A pontszámot kap az összes mondatokat, a tesztelési készlethez BLEU pontszám átlaga.
+A BLEU pontszám az automatikus fordítás és a hivatkozás fordítása közötti különbözet mérése. Az értéke 0 és 100 között van. A 0 pontszám azt jelzi, hogy a hivatkozás egyetlen szava sem jelenik meg a fordításban. A 100-es pontszám azt jelzi, hogy az automatikus fordítás pontosan megfelel a hivatkozásnak: ugyanaz a szó pontosan ugyanazon a helyen van. A kapott pontszám a Testing set összes mondatának átlaga.
 
-A teszt csoportot tartalmaznia kell a legcélszerűbb fordításokat, a párok a megfelelő adatforrás nyelvi mondatokat, amelyeknél a Célnyelv mondatok párhuzamos dokumentumokat. Előfordulhat, hogy szeretné használni, amellyel a hangolási set compose ugyanezeket a feltételeket. A tesztelési készlethez azonban nem befolyásolja a fordítási rendszer minőségének felett van. A kizárólag a BLEU pontszám készítése, az Ön számára, valamint a semmi más szolgál.
+A tesztelési készletnek olyan párhuzamos dokumentumokat kell tartalmaznia, amelyekben a célként megadott nyelv mondatok a megfelelő nyelvi mondatok legkívánatosabb Fordításai a párosban. Érdemes lehet ugyanazokat a feltételeket használni, amelyeket a hangolási csoport összeállításához használt. A tesztelési készlet azonban nem befolyásolja a fordítási rendszerek minőségét. Kizárólag a BLEU-pontszám előállítására szolgál, és semmi más.
 
-Több mint 2500 mondatokat, a tesztelési készlethez nincs szükség. Ha hagyja, hogy a rendszer automatikusan válassza ki a tesztelési készlethez, azt fogja használja kétnyelvű képzési dokumentumaiból mondatokat véletlenszerűen kiválasztott részhalmazát, és ezeket a mondatok kizárása a képzési anyagokat magát.
+Tesztelési csoportként legfeljebb 2 500 mondatnak kell lennie. Ha a rendszer automatikusan kiválasztja a tesztelési készletet, akkor a mondatok véletlenszerű részhalmazát fogja használni a kétnyelvű betanítási dokumentumokból, és kizárja ezeket a mondatokat a betanítási anyagból.
 
-Megtekintheti a tesztelési készlethez egyéni fordításait, és hasonlítsa össze a fordítások a tesztelési készlethez megadott nyissa meg a tesztelési lapot a modellen belül.
+Megtekintheti a tesztelési csoport egyéni fordításait, és összehasonlíthatja azokat a tesztelési készletben található fordításokkal, ha a modellen belül a teszt lapra navigál.

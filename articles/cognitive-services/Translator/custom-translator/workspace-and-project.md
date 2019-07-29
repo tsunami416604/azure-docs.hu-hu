@@ -1,50 +1,50 @@
 ---
-title: Mi egy munkaterületet, és a projektet? -Egyéni a fordítót
+title: Mi az a munkaterület és a projekt? -Egyéni a fordítót
 titleSuffix: Azure Cognitive Services
-description: A munkaterület egy munkaterület létrehozása és az egyéni fordítási rendszerek kiépítésének. Munkaterület több projektek, a modellek és a dokumentumok tartalmazhatnak. Egy projektet egy modellt, a dokumentumok és a teszteket egy burkoló. Minden projekt automatikusan összes dokumentumot, amely a rendszer feltölti a munkaterülethez, amelyek rendelkeznek a megfelelő nyelvű pár tartalmaz.
+description: A munkaterület az egyéni fordítási rendszer összeállításához és létrehozásához használható munkaterület. A munkaterületek több projektet, modellt és dokumentumot is tartalmazhatnak. A projekt egy modell, dokumentum és teszt burkolója. Minden projekt automatikusan tartalmazza az adott munkaterületre feltöltött összes dokumentumot, amely a megfelelő nyelvi párral rendelkezik.
 services: cognitive-services
 author: swmachan
-manager: christw
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.date: 02/21/2019
 ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: c35f3911b591a0d9adccdc48dbdc17f8afb5ea00
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 23db27ba7b51b0f5a312498dbcb1d0f2741245bb
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67447343"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68595343"
 ---
-# <a name="what-is-a-custom-translator-workspace"></a>Mi az egyéni a fordítót munkaterület?
+# <a name="what-is-a-custom-translator-workspace"></a>Mi az egyéni Translator-munkaterület?
 
-A munkaterület egy munkaterület létrehozása és az egyéni fordítási rendszerek kiépítésének. Munkaterület több projektek, a modellek és a dokumentumok tartalmazhatnak. Az egyéni Translator mégis munka egy adott munkaterületen belül van.
+A munkaterület az egyéni fordítási rendszer összeállításához és létrehozásához használható munkaterület. A munkaterületek több projektet, modellt és dokumentumot is tartalmazhatnak. Az egyéni fordítóban végzett összes művelet egy adott munkaterületen belül van.
 
-Munkaterület csak az Ön és a személyek, hogy meghívja a egyszerűen a munkaterületre. Uninvited személyek nem rendelkezik a munkaterületet a tartalmakhoz való hozzáférést. Tetszőleges számú személyek szerint, például egyszerűen a munkaterületre, és módosítja vagy hozzáférésüket bármikor küldhetnek meghívót. Egy új munkaterületet is létrehozhat. Alapértelmezés szerint a munkaterület nem tartalmaznak minden olyan projektek vagy a munkaterületeken, amelyek.
+A munkaterület saját maga és a munkaterületen meghívott személyek számára. A nem meghívott személyek nem férhetnek hozzá a munkaterület tartalmához. Tetszőleges számú személyt meghívhat a munkaterületre, és bármikor módosíthatja vagy eltávolíthatja a hozzáférését. Új munkaterületet is létrehozhat. Alapértelmezés szerint a munkaterület nem tartalmaz olyan projektet vagy dokumentumot, amely a többi munkaterületen belül található.
 
-## <a name="what-is-a-custom-translator-project"></a>Mi az, hogy egy egyéni a fordítót projektet?
+## <a name="what-is-a-custom-translator-project"></a>Mi az egyéni fordítói projekt?
 
-Egy projektet egy modellt, a dokumentumok és a teszteket egy burkoló. Minden projekt automatikusan összes dokumentumot, amely a rendszer feltölti a munkaterülethez, amelyek rendelkeznek a megfelelő nyelvű pár tartalmaz. Például ha egy angol, spanyol projekthez és a egy angol nyelvű projekthez spanyol, ugyanazokat a dokumentumokat fog szerepelni mindkét projekt. Minden projekthez van társítva CategoryID lekérdezésekor használt a [V3 API](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate?tabs=curl) fordítások. CategoryID az egyéni a fordítót a használatával létrehozott testreszabott rendszer fordítások beszerzéséhez használt paraméter.
+A projekt egy modell, dokumentum és teszt burkolója. Minden projekt automatikusan tartalmazza az adott munkaterületre feltöltött összes dokumentumot, amely a megfelelő nyelvi párral rendelkezik. Ha például egy angol – spanyol és egy spanyol – angol projekt is van, akkor mindkét projektben ugyanazokat a dokumentumokat fogja tartalmazni. Minden projekthez hozzá van rendelve egy Kategóriakód, amely a [V3 API](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate?tabs=curl) fordításokhoz való lekérdezéséhez használatos. A Kategóriakód a Custom Translatortel létrehozott, testreszabott rendszerből származó fordítások beolvasására szolgáló paraméter.
 
-## <a name="project-categories"></a>Projekt kategóriák
+## <a name="project-categories"></a>Projektek kategóriái
 
-A kategória a tartomány – a terminológia és stílus a használni kívánt terület – azonosítja a projekthez. Válassza ki a dokumentumok igényeinek legjobban megfelelő kategóriát. Bizonyos esetekben a kategória a többféle közvetlenül befolyásolja az egyéni a fordítót viselkedését.
+A kategória azonosítja a tartományt – a használni kívánt terminológia és stílus területét – a projekthez. Válassza ki a dokumentumokhoz leginkább illő kategóriát. Bizonyos esetekben a kategória választása közvetlenül befolyásolja az egyéni fordító viselkedését.
 
-Kiindulási modelleket alkalmazhatnak két csoportjára van. Azok az általános és a technológia. Ha a kategória **technológia** van kijelölve, a technológia kiindulási modelleket alkalmazhatnak fogja használni. Bármely más kategória kiválasztásra az általános kiindulási modelleket alkalmazhatnak szolgálnak. A technológia modell nem jól technológia tartományhoz, de mutatja alsó minőség, ha a mondatok fordítása használt nem esik a technológia tartományhoz. Javasoljuk, hogy az ügyfelek számára, válassza ki a kategóriát technológia, csak akkor, ha a mondatok szigorúan a technológia tartományhoz tartoznak.
+Két alapmodellből álló készletünk van. Általános és technológiai. Ha a kategória **technológiája** be van jelölve, a rendszer a technológiai alapmodelleket fogja használni. Bármely más kategória kiválasztásakor a rendszer az általános alapmodelleket használja. A technológiai alapmodell jól működik a technológiai tartományban, de alacsonyabb minőséget mutat, ha a fordításhoz használt mondatok nem tartoznak a technológiai tartományba. Javasoljuk, hogy az ügyfelek csak akkor válasszanak a kategória technológiát, ha a mondatok szigorúan a technológiai tartományon belül esnek.
 
-Ugyanazon a munkaterületen projektek ugyanarra a nyelv két különböző kategóriákban is létrehozhat. Egyéni a fordítót megakadályozza, hogy az azonos nyelv párokból és kategória az ismétlődő-projektek létrehozása. Egy címke alkalmazása a projekthez lehetővé teszi, hogy ez a korlátozás ne. Ne használja a címkéket, kivéve, ha több, mint a projekt egyedi címkék jelennek meg a projektek CategoryID hozzáadása az ügyfelek a fordítási rendszerek fejleszt.
+Ugyanebben a munkaterületen különböző kategóriákban hozhat létre projekteket ugyanahhoz a nyelvi párosításhoz. Az egyéni fordító meggátolja egy ismétlődő projekt létrehozását ugyanazzal a nyelvi párral és kategóriával. Ha a címkét a projektre alkalmazza, ezzel elkerülhető a korlátozás. Ne használjon feliratokat, kivéve, ha több ügyfél számára készít fordítási rendszereket, mivel a projekthez tartozó egyedi címke hozzáadása a projektek Kategóriakód-ban jelenik meg.
 
-## <a name="project-labels"></a>Projekt címkék
+## <a name="project-labels"></a>Projekt feliratai
 
-Egyéni a fordítót lehetővé teszi, hogy a projekt-címke hozzárendelése a projekthez. A projekt címke megkülönbözteti az azonos nyelv párokból és kategória több projektet. Ajánlott eljárásként, kerülje a projekt címkék, kivéve, ha szükséges.
+Az egyéni fordító lehetővé teszi a projekthez tartozó címke hozzárendelését. A projekt felirata megkülönbözteti a több projekt között ugyanazzal a nyelvi párral és kategóriával. Ajánlott eljárásként lehetőleg kerülje a címkék használatát, ha szükséges.
 
-A projekt címke a CategoryID részeként használatos. Ha a projekt címke adott Orientation marad, vagy a projektek között azonosan van beállítva, majd az ugyanazon kategória projektek és *különböző* nyelvi párok meg fogja osztani a azonos CategoryID. Ez a megközelítés akkor előnyös, mivel lehetővé teszi az Ön vagy az ügyfél a Translator Text API használatakor nem kell bajlódnunk a CategoryID minden projekt egyedi nyelvet szeretne váltani.
+A projekt címkéje a Kategóriakód részeként van használatban. Ha a projekt felirata balra van állítva, vagy azonos módon van beállítva a projektek között, akkor az azonos kategóriájú és *különböző* nyelvi párokkal rendelkező projektek ugyanazt a Kategóriakód-t fogják megosztani. Ez a megközelítés azért előnyös, mert lehetővé teszi, hogy az Ön vagy az ügyfele átváltson a nyelvek között a szöveges Translator API használata nélkül anélkül, hogy az egyes projektekre jellemző Kategóriakód-t kellene aggódnia.
 
-Például ha bármit szeretnék csinálni, engedélyezze a technológia tartomány angol, francia és francia az angol nyelvű fordításokat, I kell létrehoznia a két projekt: egyet az angol nyelvű tájékoztatáshoz -\> francia és a egy francia – a\> angol nyelven. Ehhez adja meg az azonos kategóriába (technológia) egyaránt és hagyja üresen a projekt címkét. Megfelel a CategoryID mindkét projekt esetében, így sikerült lekérdezni az API az angol és francia is fordítások az Outlook saját CategoryID módosítása nélkül.
+Ha például azt szeretném, hogy a technológiai tartomány fordításait angolról franciára vagy franciáról angolra szeretném engedélyezni, hozzon létre két projektet: egy az\> angol – francia nyelven, egy pedig\> francia – angol nyelven. Ugyanazt a kategóriát (technológiát) szeretném megadni, és a projekt címkéjét üresen hagyják. A két projekthez tartozó Kategóriakód is egyezik, ezért a Kategóriakód módosítása nélkül is lekérhetem az API-t angol és francia nyelvű fordításra.
 
-Nyelvi szolgáltatást kínál, és több ügyfelet szolgál a különböző modell, amely megőrzi a kategóriába, és a nyelvi pár szeretne, ha a projekt címkék segítségével ügyfeleink megkülönböztetéséhez lenne ésszerű döntés.
+Ha Ön nyelvi szolgáltató, és több olyan ügyfelet szeretne kiszolgálni, akik különböző modellekkel rendelkeznek, és megtartják ugyanazt a kategóriát és nyelvi párt, akkor a projekt címkéje az ügyfelek közötti különbségtételhez bölcs döntés lenne.
 
 ## <a name="next-steps"></a>További lépések
 
-- További információ [képzés és a modell](training-and-model.md) tudnia, hogyan lehet hatékonyan létrehozni egy fordítási modellben.
+- Tájékozódjon a betanításról és a modellről, [és](training-and-model.md) Ismerje meg, hogyan hozhat létre hatékony fordítási modellt.

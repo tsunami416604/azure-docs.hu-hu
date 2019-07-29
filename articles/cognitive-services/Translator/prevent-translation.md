@@ -1,7 +1,7 @@
 ---
-title: Megakadályozza a tartalom fordítási – Translator Text API
-titlesuffix: Azure Cognitive Services
-description: Megakadályozza a tartalom a Translator Text API-jának.
+title: Tartalom fordításának megakadályozása – Translator Text API
+titleSuffix: Azure Cognitive Services
+description: A tartalom fordításának megakadályozása a Translator Text API.
 services: cognitive-services
 author: swmachan
 manager: nitinme
@@ -10,21 +10,21 @@ ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 06/04/2019
 ms.author: swmachan
-ms.openlocfilehash: 02c4e90879b81e29f3972d262f36d5c6b6d8e841
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: f9b48b094713f6ee141c5c15d5636ca965ad61b9
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67448281"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68595228"
 ---
-# <a name="how-to-prevent-translation-of-content-with-the-translator-text-api"></a>Tartalom a Translator Text API-jának megakadályozása
+# <a name="how-to-prevent-translation-of-content-with-the-translator-text-api"></a>A tartalom fordításának megakadályozása a Translator Text API
 
-A Translator Text API lehetővé teszi a címke tartalmat úgy, hogy nem a lefordított. Például érdemes címkézése a kódot, márkanév vagy a szó vagy kifejezés, amely nem érthető, ha honosítva legyen.
+A Translator Text API lehetővé teszi a tartalom címkézését, hogy az ne legyen lefordítva. Előfordulhat például, hogy meg szeretné címkézni a kódot, a márkanevet vagy egy olyan szót vagy kifejezést, amely nincs értelme a honosított értéknél.
 
-## <a name="methods-for-preventing-translation"></a>A fordítási módszerek
-1. Escape-Twitter címkére @somethingtopassthrough vagy #somethingtopassthrough. Megszünteti – escape-fordítás után.
+## <a name="methods-for-preventing-translation"></a>A fordítás megakadályozásának módszerei
+1. Escape to a Twitter- @somethingtopassthrough címke vagy #somethingtopassthrough. Kilépés a fordítás után.
 
-2. Tartalom megjelölése `notranslate`.
+2. A tartalom címkézése `notranslate`a alkalmazással.
 
    Példa:
 
@@ -33,13 +33,13 @@ A Translator Text API lehetővé teszi a címke tartalmat úgy, hogy nem a lefor
    <div>This will be translated. </div>
    ```
 
-3. Használja a [dinamikus szótár](dynamic-dictionary.md) határozza meg a meghatározott fordítását.
+3. A [dinamikus szótár](dynamic-dictionary.md) használatával egy adott fordítást írhat elő.
 
-4. A karakterlánc nem adja át a Translator Text API a fordítás.
+4. Ne adja át a karakterláncot a fordítási Translator Text APInak.
 
-5. Egyéni a fordítót: Használja a [egyéni a fordítót a szótár](custom-translator/what-is-dictionary.md) 100 %-os valószínűséget az határozza meg a kifejezések fordítása.
+5. Egyéni fordító: Használjon egy [szótárt egyéni fordítóban](custom-translator/what-is-dictionary.md) egy kifejezés fordításának megírásához 100%-os valószínűséggel.
 
 
 ## <a name="next-steps"></a>További lépések
 > [!div class="nextstepaction"]
-> [A Translator API-hívás a fordítási elkerülése](reference/v3-0-translate.md)
+> [Kerülje a fordítást a Translator API-hívásban](reference/v3-0-translate.md)

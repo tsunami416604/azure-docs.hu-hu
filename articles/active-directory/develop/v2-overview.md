@@ -1,6 +1,6 @@
 ---
-title: A Microsoft identity platform (2.0-s verzió) áttekintése – Azure
-description: További tudnivalók a Microsoft identity platform (2.0-s verzió) endpoint és platform.
+title: Microsoft Identity platform (v 2.0) – áttekintés – Azure
+description: Ismerje meg a Microsoft Identity platform (v 2.0) végpontját és platformját.
 services: active-directory
 documentationcenter: dev-center-name
 author: rwike77
@@ -17,66 +17,67 @@ ms.author: ryanwi
 ms.reviewer: agirling, saeeda, benv
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 93e4337f0593933a4e877f391df8132a9b2cd4af
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 12027581ae62588550407c8350f3b74f1e743561
+ms.sourcegitcommit: 15f7b641a67f3d6cf4fb4b4c11eaee18cf335923
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67702686"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68601825"
 ---
-# <a name="microsoft-identity-platform-v20-overview"></a>A Microsoft identity platform (2.0-s verzió) – áttekintés
+# <a name="microsoft-identity-platform-v20-overview"></a>Microsoft Identity platform (v 2.0) – áttekintés
 
-A Microsoft identitásplatformja az Azure Active Directory (Azure AD) fejlesztői platform fejlődésének eredménye. Lehetővé teszi a fejlesztőknek, hogy jelentkezzen be az összes Microsoft-identitások és a Microsoft APIs, például a Microsoft Graph vagy fejlesztők számára készült API-k hívásához jogkivonatok megkapásához alkalmazásokat hozhat létre. A Microsoft identity platform áll:
+A Microsoft identitásplatformja az Azure Active Directory (Azure AD) fejlesztői platform fejlődésének eredménye. Lehetővé teszi a fejlesztők számára, hogy olyan alkalmazásokat hozzanak létre, amelyek az összes Microsoft-identitást bejelentkeznek, és a Microsoft API-k, például Microsoft Graph vagy a fejlesztők által készített API-k hívását kérik. A Microsoft Identity platform a következőkből áll:
 
-- **OAuth 2.0 és OpenID Connect standard megfelelő hitelesítési szolgáltatás** , amely lehetővé teszi a fejlesztők számára a hitelesítés bármely Microsoft identity többek között:
-  - Munkahelyi vagy iskolai fiókkal (Azure AD-n keresztül kiosztott)
-  - Személyes Microsoft-fiókok (például a Skype, Xbox és Outlook.com-os)
-  - Közösségi vagy helyi fiókot (keresztül az Azure AD B2C-vel)
-- **Nyílt forráskódú könyvtáraink**: A Microsoft hitelesítési tárak (MSAL) és az egyéb szabványokkal kompatibilis szalagtárak támogatása
-- **Alkalmazás-felügyeleti portálon**: Az Azure Portalon, a többi Azure kezelési lehetőségek mellett a beépített regisztrálása és konfigurálása élményt.
-- **Alkalmazás-konfigurációs API-t és a PowerShell**: amely lehetővé teszi az alkalmazások REST API-t (a Microsoft Graph és az Azure Active Directory Graph 1.6-os) és a Powershellen keresztül programozható konfigurációja, a fejlesztési és üzemeltetési feladatok automatizálásához.
-- **Fejlesztői tartalom**: elméleti és dokumentáció, a rövid útmutató minták, Kódminták, oktatóanyagok és útmutatók hivatkoznak.
+- **OAuth 2,0 és OpenID Connect standard-kompatibilis hitelesítési szolgáltatás** , amely lehetővé teszi a fejlesztők számára bármely Microsoft-identitás hitelesítését, beleértve a következőket:
+  - Munkahelyi vagy iskolai fiókok (az Azure AD-n keresztül kiépítve)
+  - Személyes Microsoft-fiókok (például Skype, Xbox és Outlook.com)
+  - Közösségi vagy helyi fiókok (Azure AD B2Con keresztül)
+- **Nyílt forráskódú kódtárak**: Microsoft Authentication librarys (MSAL) és más szabványoknak megfelelő kódtárak támogatása
+- **Alkalmazás-felügyeleti portál**: A Azure Portal beépített regisztrációs és konfigurációs élmény, valamint az összes többi Azure-felügyeleti lehetőség.
+- Az **Application CONFIGURATION API és a PowerShell**: lehetővé teszi az alkalmazások programozott konfigurálását REST API (Microsoft Graph és Azure Active Directory gráf 1,6) és a PowerShell segítségével, így automatizálhatja a DevOps-feladatokat.
+- **Fejlesztői tartalom**: elméleti és hivatkozási dokumentáció, gyors üzembe helyezési minták, mintakód-minták, oktatóanyagok és útmutatók.
 
-A fejlesztők számára a Microsoft identity platform biztosít az identitás- és biztonsági helyre, például a beállításának hitelesítési step-up hitelesítési és feltételes hozzáférési innovációkat való zökkenőmentes integráció.  Nem kell saját kezűleg funkció végrehajtásához: alkalmazások natív módon integrálva van a Microsoft identity platform kihasználása ilyen.
+A fejlesztők számára a Microsoft Identity platform zökkenőmentesen integrálható az identitások és a biztonság terén, például a jelszó nélküli hitelesítéssel, a lépésenkénti hitelesítéssel és a feltételes hozzáféréssel.  Nincs szükség ilyen funkciók megvalósítására: a Microsoft Identity platformmal integrált alkalmazások natív módon kihasználhatják ezeket az innovációkat.
 
-A Microsoft identity platform révén kód megírását, és minden felhasználót elérhet. Alkalmazás létrehozása után, és nincs sok platformok közötti használathoz, vagy létrehozhat egy alkalmazást, amely egy ügyfelet, valamint az erőforrás-alkalmazás (API) működik.
+A Microsoft Identity platformmal egyszer is írhat kódot, és elérheti a felhasználókat. Egyszerre létrehozhat egy alkalmazást, és több platformon is dolgozhat, vagy olyan alkalmazást hozhat létre, amely ügyfélként, valamint erőforrás-alkalmazásként (API) működik.
 
 ## <a name="getting-started"></a>Első lépések
 
-Nem kell, hogy az identitások használata nehéz legyen. Válassza ki a forgatókönyv érvényes Önre – minden egyes forgatókönyv elérési útja a gyors üzembe helyezés és áttekintő oldala, percek alatt ütembe helyezheti az első rendelkezik:
+Nem kell, hogy az identitások használata nehéz legyen. Válasszon egy olyan [forgatókönyvet](authentication-flows-app-scenarios.md) , amely Önre vonatkozik – az egyes forgatókönyvek elérési útja egy rövid útmutató és egy áttekintő oldal, amellyel percek alatt elvégezheti a működést:
 
-- [Egyoldalas alkalmazás készítése](scenario-spa-overview.md)
-- [-Webalkalmazás létrehozása, amely képes bejelentkeztetni a felhasználókat](scenario-web-app-sign-user-overview.md)
-- [-Webalkalmazás létrehozása, amely meghívja a webes API-k](scenario-web-app-call-api-overview.md)
-- [Egy védett webes API készítése](scenario-protected-web-api-overview.md)
-- [Webes API, amely meghívja a webes API-k készítése](scenario-web-api-call-api-overview.md)
-- [Egy asztali alkalmazás készítése](scenario-desktop-overview.md)
-- [Démon alkalmazás készítése](scenario-daemon-overview.md)
-- [Egy olyan mobilalkalmazás készítését](scenario-mobile-overview.md)
+- [Egyoldalas alkalmazás létrehozása](scenario-spa-overview.md)
+- [Felhasználók számára bejelentkező Webalkalmazás létrehozása](scenario-web-app-sign-user-overview.md)
+- [Webes API-kat meghívó Webalkalmazás létrehozása](scenario-web-app-call-api-overview.md)
+- [Védett webes API létrehozása](scenario-protected-web-api-overview.md)
+- [Webes API-kat meghívó webes API létrehozása](scenario-web-api-call-api-overview.md)
+- [Asztali alkalmazás készítése](scenario-desktop-overview.md)
+- [Daemon-alkalmazás létrehozása](scenario-daemon-overview.md)
+- [Mobile-alkalmazás létrehozása](scenario-mobile-overview.md)
 
-Az alábbi táblázat ismerteti az általános hitelesítési forgatókönyvek, – használja hivatkozásként van listázva, amikor a Microsoft identity platform integrálják az alkalmazást.
+Az alábbi táblázat a gyakori hitelesítési alkalmazási forgatókönyveket ismerteti – a Microsoft Identity platform és az alkalmazás integrálására szolgáló hivatkozásként használja.
 
-[![Alkalmazás-forgatókönyvek a Microsoft identity platform](./media/v2-overview/application-scenarios-identity-platform.png)](./media/v2-overview/application-scenarios-identity-platform.svg#lightbox)
+[![Alkalmazás-forgatókönyvek a Microsoft Identity platformon](./media/v2-overview/application-scenarios-identity-platform.png)](./media/v2-overview/application-scenarios-identity-platform.svg#lightbox)
 
 ## <a name="next-steps"></a>További lépések
 
-Ha szeretne további kapcsolatos alapfogalmakat hitelesítési, javasoljuk, először a következő témakörökben:
+Ha többet szeretne megtudni az alapvető hitelesítési fogalmakról, javasoljuk, hogy kezdje a következő témakörökkel:
 
+- [Hitelesítési folyamatok és alkalmazási helyzetek](authentication-flows-app-scenarios.md)
 - [Hitelesítési alapok](authentication-scenarios.md)
-- [Alkalmazás- és az egyszerű szolgáltatások](app-objects-and-service-principals.md)
-- [Célközönség](v2-supported-account-types.md)
-- [Engedélyek és jóváhagyás](v2-permissions-and-consent.md)
-- [Azonosító-jogkivonatokat](id-tokens.md) és [hozzáférési jogkivonatokat](access-tokens.md)
+- [Alkalmazás-és egyszerű szolgáltatások](app-objects-and-service-principals.md)
+- [Közönség](v2-supported-account-types.md)
+- [Engedélyek és beleegyezik](v2-permissions-and-consent.md)
+- [Azonosító](id-tokens.md) jogkivonatok és [hozzáférési](access-tokens.md) jogkivonatok
 
-Meghívó adatokban gazdag-alkalmazás létrehozása [Microsoft Graph](https://docs.microsoft.com/graph/overview).
+Hozzon létre egy olyan adatgazdag alkalmazást, amely meghívja az [Microsoft Graph](https://docs.microsoft.com/graph/overview).
 
-Amikor készen áll, az alkalmazás indításához egy **éles környezetben**, tekintse át az ajánlott eljárások:
+Ha készen áll az alkalmazás **éles környezetbe**való elindítására, tekintse át az alábbi ajánlott eljárásokat:
 
-- [Naplózás engedélyezése](msal-logging.md) az alkalmazásban.
-- Engedélyezze a telemetriai adatok az alkalmazásban.
-- Engedélyezése [proxyk és testre szabhatja a HTTP-ügyfelek](msal-net-provide-httpclient.md).
-- Az integráció teszteléséhez a következő a [a Microsoft identity platform integrációs ellenőrzőlista](identity-platform-integration-checklist.md).
+- [Engedélyezze](msal-logging.md) a naplózást az alkalmazásban.
+- Telemetria engedélyezése az alkalmazásban.
+- Proxyk engedélyezése [és a http-ügyfelek testreszabása](msal-net-provide-httpclient.md).
+- Tesztelje az integrációt a [Microsoft Identity platform Integration ellenőrzőlista](identity-platform-integration-checklist.md)követésével.
 
-## <a name="learn-more"></a>Részletek
+## <a name="learn-more"></a>Tudnivalók a modellalapú alkalmazások létrehozásáról
 
-Ha egy ügyfél felé irányuló-alkalmazások, amelyeket a közösségi és a helyi identitások, bejelentkezik a [áttekintése az Azure AD B2C-vel](https://docs.microsoft.com/azure/active-directory-b2c/tutorial-add-identity-providers).
+Ha olyan ügyfél-alkalmazást szeretne létrehozni, amely a közösségi és a helyi identitásokban jelentkezik be, tekintse meg a [Azure ad B2C áttekintést](https://docs.microsoft.com/azure/active-directory-b2c/tutorial-add-identity-providers).

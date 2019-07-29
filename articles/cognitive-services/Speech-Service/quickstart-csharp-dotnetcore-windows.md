@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 07/05/2019
 ms.author: wolfma
-ms.openlocfilehash: 3ba82f2bb3d8325b7cf77f357471dc4f25382ff6
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 341f173e399196e32ab59f44db4302b1b1a195e6
+ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68559524"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68607741"
 ---
 # <a name="quickstart-recognize-speech-with-the-speech-sdk-for-net-core"></a>Gyors útmutató: Beszéd felismerése a .NET Core-hoz készült Speech SDK-val
 
@@ -24,7 +24,7 @@ A gyors útmutató a [szöveg-beszéd](quickstart-text-to-speech-dotnetcore.md) 
 Ha szükséges, válasszon másik programozási nyelvet és/vagy környezetet:<br/>
 [!INCLUDE [Selector](../../../includes/cognitive-services-speech-service-quickstart-selector.md)]
 
-Ebben a cikkben a .NET Core- C# hoz készült Console-alkalmazást Windows vagy MacOS rendszeren hozza létre a Cognitive Services [Speech SDK](speech-sdk.md)használatával. A számítógép mikrofonjába beszélve valós időben konvertálhat át beszédet szöveggé. Az alkalmazást a [Speech SDK NuGet-csomaggal](https://aka.ms/csspeech/nuget) és a Microsoft Visual Studio 2017-tel (annak bármely kiadásával) lehet összeállítani.
+Ebben a cikkben a .NET Core- C# hoz készült Console-alkalmazást Windows vagy MacOS rendszeren hozza létre a Cognitive Services [Speech SDK](speech-sdk.md)használatával. A számítógép mikrofonjába beszélve valós időben konvertálhat át beszédet szöveggé. Az alkalmazás a [SPEECH SDK NuGet csomagjával](https://aka.ms/csspeech/nuget) és a Microsoft Visual Studio 2017-es vagy újabb verziójával (bármely kiadással) készült.
 
 > [!NOTE]
 > A .NET Core egy nyílt forráskódú, platformfüggetlen .NET-platform, amely implementálja a [.NET Standard](https://docs.microsoft.com/dotnet/standard/net-standard) specifikációt.
@@ -36,7 +36,7 @@ A rövid útmutató elvégzéséhez szüksége lesz egy Speech Services-előfize
 Ehhez a rövid útmutatóhoz a következőkre van szükség:
 
 * [.NET Core SDK](https://dotnet.microsoft.com/download)
-* [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/)
+* [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/) vagy újabb
 * Egy Azure-előfizetési kulcs a beszédfelismerési szolgáltatáshoz. [Szerezze be az egyiket ingyenesen](get-started.md).
 
 ## <a name="create-a-visual-studio-project"></a>Visual Studio-projekt létrehozása

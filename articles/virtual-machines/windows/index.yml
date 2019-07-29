@@ -6,14 +6,12 @@ metadata:
   title: Az Azure Windows Virtual Machines dokumentációja – oktatóanyagok és API-referencia
   meta.description: 'Learn how to create Windows virtual machines. Documentation helps you plan, deploy, and manage a virtual machine computing environment in the cloud.'
   services: virtual-machines\windows
-  author: czeumault
-  manager: carolz
+  author: georgewallace
+  manager: gwallace
   ms.service: virtual-machines-windows
-  ms.tgt_pltfrm: na
-  ms.devlang: na
   ms.topic: landing-page
   ms.date: 01/23/2017
-  ms.author: carolz
+  ms.author: gwallace
 abstract:
   description: 'Az Azure Windows virtuális gépek igény szerinti, nagy léptékben méretezhető, biztonságos virtualizált infrastruktúrát biztosítanak Windows Server használatával. Ismerje meg, hogyan hozhat létre, konfigurálhat, felügyelhet és méretezhet Windows virtuális gépeket a gyors útmutatóink, oktatóanyagaink és példáink segítségével.'
   aside:

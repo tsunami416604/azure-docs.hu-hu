@@ -1,6 +1,6 @@
 ---
 title: Cognitive Services-erőforrás létrehozása az Azure CLI használatával
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: Az Azure Cognitive Services használatának első lépései az Azure parancssori felülettel létrehozott és előfizetéssel ellátott erőforrásokra való feliratkozással.
 services: cognitive-services
 author: aahill
@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 07/17/2019
 ms.author: aahi
-ms.openlocfilehash: 05b679fd969dc766d697070979416312c3bad622
-ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
+ms.openlocfilehash: c0a89a61f50d245389c9cdbd8a0aa9ba09eec004
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68334272"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68594610"
 ---
 # <a name="create-a-cognitive-services-resource-using-the-azure-command-line-interfacecli"></a>Cognitive Services-erőforrás létrehozása az Azure parancssori felületének (CLI) használatával
 
@@ -79,47 +79,47 @@ az group create \
 
 ### <a name="vision"></a>Látás
 
-| Szolgáltatás                    | Típusú                      |
+| Szolgáltatás                    | Jelleg                      |
 |----------------------------|---------------------------|
-| Számítógépes látástechnológia            | `ComputerVision`          |
+| Computer Vision            | `ComputerVision`          |
 | Custom Vision – előrejelzés | `CustomVision.Prediction` |
 | Custom Vision – képzés   | `CustomVision.Training`   |
-| Face API                   | `Face`                    |
+| Arcfelismerési API                   | `Face`                    |
 | Form Recognizer            | `FormRecognizer`          |
 | Ink Recognizer             | `InkRecognizer`           |
 
 ### <a name="search"></a>Keresés
 
-| Szolgáltatás            | Típusú                  |
+| Szolgáltatás            | Jelleg                  |
 |--------------------|-----------------------|
-| Bing – Automatikus kiegészítés   | `Bing.Autosuggest.v7` |
+| Bing Autosuggest   | `Bing.Autosuggest.v7` |
 | Bing – Egyéni keresés | `Bing.CustomSearch`   |
-| Bing – Entitáskeresés | `Bing.EntitySearch`   |
+| Bing Entity Search | `Bing.EntitySearch`   |
 | Bing kereső        | `Bing.Search.v7`      |
-| Bing – Helyesírás-ellenőrzés   | `Bing.SpellCheck.v7`  |
+| Bing Spell Check   | `Bing.SpellCheck.v7`  |
 
 ### <a name="speech"></a>Beszéd
 
-| Szolgáltatás            | Típusú                 |
+| Szolgáltatás            | Jelleg                 |
 |--------------------|----------------------|
 | Beszédszolgáltatások    | `SpeechServices`     |
 | Beszédfelismerés | `SpeakerRecognition` |
 
 ### <a name="language"></a>Nyelv
 
-| Szolgáltatás            | Típusú                |
+| Szolgáltatás            | Jelleg                |
 |--------------------|---------------------|
 | Űrlap megértése | `FormUnderstanding` |
 | LUIS               | `LUIS`              |
 | QnA Maker          | `QnAMaker`          |
-| Szövegelemzés     | `TextAnalytics`     |
-| Szövegfordítás   | `TextTranslation`   |
+| Szövegelemzések     | `TextAnalytics`     |
+| Text Translation   | `TextTranslation`   |
 
 ### <a name="decision"></a>Döntés
 
-| Szolgáltatás           | Típusú               |
+| Szolgáltatás           | Jelleg               |
 |-------------------|--------------------|
-| Anomaly Detector  | `AnomalyDetector`  |
+| Anomáliadetektor  | `AnomalyDetector`  |
 | Tartalommoderátor | `ContentModerator` |
 | Personalizer      | `Personalizer`     |
 

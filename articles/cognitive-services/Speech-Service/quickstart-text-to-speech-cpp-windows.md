@@ -10,18 +10,18 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 07/05/2019
 ms.author: yinhew
-ms.openlocfilehash: 6936d8f93221402fca9b250d09a842ce753e0e12
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: fdc5e540dd7e84d47aa139768fbfc2614f38b376
+ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68559317"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68607711"
 ---
 # <a name="quickstart-synthesize-speech-in-c-on-windows-by-using-the-speech-sdk"></a>Gyors útmutató: Beszédfelismerés a Windows C++ rendszeren a Speech SDK használatával
 
 A gyors útmutatók a [beszédfelismerés](quickstart-cpp-windows.md) és a [beszédfelismerés](quickstart-translate-speech-cpp-windows.md)számára is elérhetők.
 
-Ebben az útmutatóban egy C++ konzolalkalmazást fog létrehozni a Windowshoz. A Cognitive Services [SPEECH SDK](speech-sdk.md) segítségével valós időben szintetizálhatja a beszédet a szövegből, és lejátszhatja a beszédet a számítógép hangszóróján. Az alkalmazást a [Speech SDK NuGet-csomaggal](https://aka.ms/csspeech/nuget) és a Microsoft Visual Studio 2017-tel (annak bármely kiadásával) lehet összeállítani.
+Ebben az útmutatóban egy C++ konzolalkalmazást fog létrehozni a Windowshoz. A Cognitive Services [SPEECH SDK](speech-sdk.md) segítségével valós időben szintetizálhatja a beszédet a szövegből, és lejátszhatja a beszédet a számítógép hangszóróján. Az alkalmazás a [SPEECH SDK NuGet csomagjával](https://aka.ms/csspeech/nuget) és a Microsoft Visual Studio 2017-es vagy újabb verziójával (bármely kiadással) készült.
 
 A cikkben ismertetett funkció a [SPEECH SDK 1.5.0](https://www.nuget.org/packages/Microsoft.CognitiveServices.Speech/1.5.0)-ből érhető el.
 

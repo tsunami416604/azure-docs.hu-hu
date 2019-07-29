@@ -1,10 +1,10 @@
 ---
-title: Bevezetés a Mélytanulási virtuális gép – Azure |} A Microsoft Docs
-description: Alapvető elemzési helyzetek és összetevők Deep Learning virtuális gépek.
-keywords: deep learning, AI, beépített adatelemzési eszközzel, adatelemző virtuális gép, eszközök adatelemzéshez, linux adatelemzés
+title: Bevezetés a Deep learning virtuális gépre – Azure | Microsoft Docs
+description: Főbb elemzési forgatókönyvek és összetevők a Deep learning Virtual Machineshoz.
+keywords: Deep learning, AI, adatelemzési eszközök, adatelemzési virtuális gép, adatelemzési eszközök, Linux-adatelemzés
 services: machine-learning
 documentationcenter: ''
-author: gopitk
+author: vijetajo
 manager: cgronlun
 ms.assetid: d4f91270-dbd2-4290-ab2b-b7bfad0b2703
 ms.service: machine-learning
@@ -12,30 +12,30 @@ ms.subservice: data-science-vm
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: overview
 ms.date: 03/16/2018
-ms.author: gokuma
-ms.openlocfilehash: 879f5939f110fb841ad160bf09f597edcdd86d31
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: vijetaj
+ms.openlocfilehash: ddf1169d94c3e71b92e8b1835040ab5738bf94b8
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60502193"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68591893"
 ---
-# <a name="introduction-to-the-deep-learning-virtual-machine"></a>A Mélytanulási virtuális gép bemutatása
+# <a name="introduction-to-the-deep-learning-virtual-machine"></a>A Deep learning virtuális gép bemutatása
 
-## <a name="why-deep-learning-virtual-machine"></a>Miért Deep Learning virtuális gép? 
+## <a name="why-deep-learning-virtual-machine"></a>Miért érdemes a Deep learning virtuális gépet? 
 
-Egyre, a mély tanulási algoritmus / Neurális hálózatok egyre, számos machine learning problémák alkalmazott népszerű módszerek egyikét. Azok a különösen jó gép észlelés feladatokat, mint a kép-, szöveg-, hang/kép gyakran hamarosan eléri a nagy méretű adatkészlet modelleket taníthat be a néhány speciális Neurális hálózati architektúrák és hozzáféréssel rendelkező adott tartományban lévő emberi cognitive szintek ismertetése. Deep learning szükséges nagy mennyiségű számítási teljesítmény ezek nagy adatkészletekkel modelleket taníthat be. A felhő és a grafikus feldolgozása (GPU) rendelkezésre állásának válik lehetővé teszi a kifinomult hasznosítva architektúrákat hozhat létre, és a nagy teljesítményű számítási infrastruktúrát a felhőben egy nagyméretű adathalmazon betanítja őket.  A [adatelemző virtuális gép](overview.md) adat-előkészítés, a gépi tanulási és deep learning nyújtott széles választékának eszközök és példáink segítségével. Azonban a felhasználók által a kihívásokra egyik, hogy az eszközök felderítése és bizonyos forgatókönyvek esetén, mint a deep learning-minták egyszerűen és is könnyebben kiépítése GPU-alapú Virtuálisgép-példányok. A Deep Learning virtuális gép (DLVM) ezek kihívásaira. 
+Egyre többek között a mélyreható tanulási algoritmusok és a mélyreható neurális hálózatok a gépi tanulási problémák számos népszerű módszerének egyike lesz. Ezek különösen a gépi megismerési feladatok, például a képek, a szövegek, a hang-és videó-felismerések, amelyek gyakran megközelítik az emberi kognitív szinteket bizonyos tartományokban a fejlett mély neurális hálózati architektúrákkal, és nagy mennyiségű adathoz férnek hozzá a modellek betanításához. A Deep learning nagy mennyiségű számítási teljesítményt igényel a modellek ezen nagyméretű adatkészletekkel való betanításához. A grafikus feldolgozási egységek (GPU-k) felhővel és rendelkezésre állásával olyan kifinomult mély neurális architektúrák hozhatók létre, amelyek nagy mennyiségű, a felhőben található hatékony számítástechnikai infrastruktúrában vannak betanítva.  A [Data Science Virtual Machine](overview.md) eszközök és minták széles választékát adta meg az adatelőkészítéshez, a gépi tanuláshoz és a mély tanuláshoz. A felhasználók által felmerülő kihívások egyike azonban az, hogy felfedezzék az eszközöket és a mintákat olyan konkrét forgatókönyvekhez, mint például a Deep learning, és a GPU-alapú virtuálisgép-példányok könnyebben is üzembe helyezhetők. Ez a Deep learning virtuális gép (DLVM) ezeket a kihívásokat kezeli. 
 
-## <a name="what-is-deep-learning-virtual-machine"></a>Mi a Deep Learning virtuális gép? 
-A Deep Learning virtuális gép egy speciálisan konfigurált változata a [adatelemző virtuális gép](overview.md) , hogy egyszerűbb használata a GPU-alapú virtuális gép (DSVM)-példányok deep learning-modellek betanításához. A Windows 2016 és az Ubuntu adatelemző virtuális gép támogatott.  Az ugyanazon alapvető Virtuálisgép-lemezképek közös (és így a gazdag eszközkészletet) t a DSVM deep learning könnyebben van konfigurálva, de. Is biztosítunk teljes körű kódmintákat lemezkép és a szöveges ismertetése, több valós életbeli AI forgatókönyvek széles körben érvényes. A deep learning virtuális gép megpróbál, hogy az eszközök és a minták széles skáláját a dsvm-hez a könnyebben felfedezhetővé felszínre hozza a katalógust az eszközöket és a minták a virtuális gépen. Az eszközkészlet tekintetében a a Deep Learning virtuális gép nyújt számos népszerű deep learning-keretrendszerek, eszközök beszerzésére és előfeldolgozási lemezképet, a szöveges adatokat. Eszközök átfogó listáját, olvassa el a [Data Science virtuális gép Áttekintőlapján](overview.md#whats-included-in-the-data-science-vm). 
+## <a name="what-is-deep-learning-virtual-machine"></a>Mi a Deep learning virtuális gép? 
+A Deep learning virtuális gép a [Data Science Virtual Machine](overview.md) (DSVM) egy speciálisan konfigurált változata, amely megkönnyíti a GPU-alapú virtuálisgép-példányok használatát a Deep learning-modellek betanításához. Ez a Windows 2016 és az Ubuntu Data Science Virtual Machine esetén támogatott.  Ugyanazokat az alapvető virtuálisgép-rendszerképeket (és így az összes gazdag eszközkészletet) megosztja a DSVM, de úgy van beállítva, hogy a mélyebb tanulást is megkönnyítse. A képek és a szövegek megismerése érdekében teljes körű mintákat is biztosítunk, amelyek számos valós idejű AI-forgatókönyvre alkalmazhatók. A Deep learning virtuális gép emellett a DSVM található eszközök és minták gazdag készletét is könnyebben felderíthetővé teszi a virtuális gépen lévő eszközök és minták katalógusával. Az eszközök kiszolgálása szempontjából a Deep learning virtuális gép számos népszerű Deep learning-keretrendszert kínál, valamint eszközöket biztosít a képek és a szöveges adatok előzetes feldolgozásához. Az eszközök átfogó listáját a [Data Science Virtual Machine áttekintés lapjára](overview.md#whats-included-in-the-data-science-vm)kattintva tekintheti meg. 
 
 ## <a name="next-steps"></a>További lépések
 
-Ismerkedés a a Deep Learning virtuális gép az alábbi lépéseket követve:
+Ismerkedés a Deep learning virtuális géppel a következő lépésekkel:
 
-* [Deep Learning virtuális gép kiépítése](provision-deep-learning-dsvm.md)
-* [A Mélytanulási virtuális gép használata](use-deep-learning-dsvm.md)
-* [Eszköz-referencia](dsvm-deep-learning-ai-frameworks.md)
+* [Mély tanulási virtuális gép kiépítése](provision-deep-learning-dsvm.md)
+* [A Deep learning virtuális gép használata](use-deep-learning-dsvm.md)
+* [Eszköz leírása](dsvm-deep-learning-ai-frameworks.md)
 * [Példák](dsvm-samples-and-walkthroughs.md)

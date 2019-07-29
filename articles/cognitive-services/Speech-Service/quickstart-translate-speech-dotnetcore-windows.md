@@ -10,18 +10,18 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: fa2601ea80a0d875724126f8e6cb2bd65cf5ec3a
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 81e652e6456b049c2f4fca938d02d1b0724f2ffd
+ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68559235"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68609672"
 ---
 # <a name="quickstart-translate-speech-with-the-speech-sdk-for-net-core"></a>Gyors útmutató: Beszéd fordítása a .NET Core-hoz készült Speech SDK-val
 
 A gyors üzembe helyezési útmutató a [szöveg](quickstart-csharp-dotnet-windows.md) és a [beszéd](quickstart-text-to-speech-dotnetcore.md)közötti kommunikációhoz is elérhető.
 
-Ebben a rövid útmutatóban egy egyszerű .NET Core-alkalmazást fog létrehozni, amely rögzíti a felhasználói beszédet a számítógép mikrofonjában, lefordítja a beszédet, és valós időben írja át a lefordított szöveget a parancssorba. Ez az alkalmazás a 64 bites Windows rendszeren fut, és a [SPEECH SDK NuGet csomaggal](https://aka.ms/csspeech/nuget) és a Microsoft Visual Studio 2017-mel készült.
+Ebben a rövid útmutatóban egy egyszerű .NET Core-alkalmazást fog létrehozni, amely rögzíti a felhasználói beszédet a számítógép mikrofonjában, lefordítja a beszédet, és valós időben írja át a lefordított szöveget a parancssorba. Ez az alkalmazás a 64 bites Windows rendszeren fut, és a [SPEECH SDK NuGet csomaggal](https://aka.ms/csspeech/nuget) és a Microsoft Visual Studio 2017-es vagy újabb verziójával készült.
 
 A beszédfelismeréshez elérhető nyelvek teljes listáját a [nyelvi támogatás](language-support.md)című témakörben tekintheti meg.
 
@@ -30,7 +30,7 @@ A beszédfelismeréshez elérhető nyelvek teljes listáját a [nyelvi támogat�
 Ehhez a rövid útmutatóhoz a következőkre van szükség:
 
 * [.NET Core SDK](https://dotnet.microsoft.com/download)
-* [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/)
+* [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/) vagy újabb
 * Egy Azure-előfizetési kulcs a beszédfelismerési szolgáltatáshoz. [Szerezze be az egyiket ingyenesen](get-started.md).
 
 ## <a name="create-a-visual-studio-project"></a>Visual Studio-projekt létrehozása

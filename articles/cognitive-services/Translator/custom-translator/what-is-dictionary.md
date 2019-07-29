@@ -1,47 +1,47 @@
 ---
-title: Mi az, hogy egy szótárban? -Egyéni a fordítót
+title: Mi az a szótár? -Egyéni a fordítót
 titleSuffix: Azure Cognitive Services
-description: Egy szótárban az igazított dokumentum, amely felsorolja a kifejezések vagy mondatokat (és a kapcsolódó fordítások), amelyeket szeretne lefordítani, ugyanúgy, mint a Microsoft Translator mindig. A szótárak szószedeteket vagy kifejezés bázisok néha is nevezik.
+description: A szótár egy igazított dokumentum, amely megadja a mondatok vagy mondatok (és azok fordításai) listáját, amelyeket mindig a Microsoft Translatornek kell lefordítani. A szótárakat más néven szószedeteknek vagy terminusoknak is nevezik.
 author: swmachan
-manager: christw
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.date: 02/21/2019
 ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: c837399778723b0b084c26422b7bea762f0e7709
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 5103526956b5041771a1d8e4abb5e8800b971059
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67447362"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68595384"
 ---
-# <a name="what-is-a-dictionary"></a>Mi az, hogy egy szótárban?
+# <a name="what-is-a-dictionary"></a>Mi az a szótár?
 
-Egy szótárban igazított párjának dokumentumok, amely felsorolja a kifejezések vagy mondatok és a kapcsolódó fordítások. Használja egy szótárban a tanítási, ha azt szeretné, a Microsoft Translator mindig lefordítani a forrás kifejezés vagy mondat, példányai a fordítás a megadott a szótár segítségével. A szótárak szószedeteket vagy kifejezés bázisok is nevezik. A szótár, egy találgatásos "másolása és cserélje le a" minden használati lista is felfoghatók.
+A szótár olyan igazított pár dokumentum, amely a mondatok vagy mondatok listáját és a hozzájuk tartozó fordításokat határozza meg. Használjon szótárt a képzésben, ha azt szeretné, hogy a Microsoft Translator mindig lefordítsa a forrás kifejezés vagy mondat bármely példányát a szótárban megadott fordítás használatával. A szótárakat más néven szószedeteknek vagy kifejezéseknek nevezzük. A szótárt a lista összes feltételének "másolás és csere" kifejezésével lehet meggondolni.
 
-Szótárak csak működik, amely egy teljes körűen támogatott a Microsoft Neurális gépi fordítás (NMT) rendszer mögöttük nyelvi címpárral projektekhez. [A nyelvek teljes listáját megtekintheti](https://docs.microsoft.com/azure/cognitive-services/translator/language-support#customization).
+A szótárak csak olyan nyelvi párokban működő projektekhez működnek, amelyek teljes mértékben támogatottak a Microsoft neurális gépi fordítási (NMT) rendszer mögött. [Tekintse meg a nyelvek teljes listáját](https://docs.microsoft.com/azure/cognitive-services/translator/language-support#customization).
 
-## <a name="phrase-dictionary"></a>A kifejezés szótár
-Amikor egy kifejezést szótár szerepel a modell tanítása, szót vagy kifejezést, megjelenik a megadott módon le. A többi a mondat a szokásos módon van lefordítva. Egy kifejezés szótár segítségével adja meg a kifejezések, amelyek azáltal, hogy a forrás és cél fájlban a szótár azonos jelez a nem konvertált kifejezés nem fordítható.
+## <a name="phrase-dictionary"></a>Szótár kifejezése
+Ha egy kifejezés szótárt is tartalmaz a modell tanításához, a felsorolt szavak vagy kifejezések a megadott módon vannak lefordítva. A mondat többi része a szokásos módon lesz lefordítva. A kifejezéseket tartalmazó szótár segítségével megadhatja azokat a kifejezéseket, amelyek nem fordíthatók le a szótárban található forrás-és célfájl azonos fordított kifejezésének megadásával.
 
 ## <a name="sentence-dictionary"></a>Mondat szótár
-A mondat szótár egy pontos cél forrás mondatok fordítása megadását teszi lehetővé. Egy mondatban szótár egyezéssel fordulhat elő a teljes elküldött mondat meg kell egyeznie a forrás dictionary-bejegyzés.  Ha csak a mondat egy része megegyezik-e a bejegyzés nem egyeznek.  Találat esetén elvégez, ha a cél-bejegyzés a mondat szótár lesz visszaadva.
+A mondat szótár lehetővé teszi, hogy pontos cél fordítást határozzon meg a forrás mondathoz. A mondatok szótárának egyeztetéséhez a teljes elküldött mondatnak meg kell egyeznie a forrás szótár bejegyzésével.  Ha a mondatnak csak egy része egyezik, a bejegyzés nem egyezik.  Ha a rendszer egyezést észlel, a rendszer visszaadja a mondathoz tartozó szótár cél bejegyzését.
 
-## <a name="dictionary-only-trainings"></a>Csak szótár betanítások
-Csak a szótár-adatokat használó modell betaníthatja. Ehhez válassza ki a csak a szótár dokumentumok (vagy több szótár dokumentum), amelyeket meg szeretne közé tartozik, és koppintson a modell létrehozása. Mivel ez egy csak szótár képzés, nincs nincs képzési mondatokat szükséges minimális számát. A modell általában befejezi a betanítási sokkal gyorsabb, mint egy normál képzési.  Az eredményül kapott modellek fogja használni a Microsoft baseline modellek fordítási hozzáadta a szótárak igény szerinti hozzáadásával.  Nem kap egy Tesztjelentés.
+## <a name="dictionary-only-trainings"></a>Csak szótári képzések
+A modelleket csak a szótárak adatai alapján lehet betanítani. Ehhez válassza ki a használni kívánt szótári dokumentumot (vagy több szótárt tartalmazó dokumentumot), majd koppintson a modell létrehozása lehetőségre. Mivel ez egy csak szótárban bekövetkező képzés, nem szükségesek minimális számú tanítási mondat. A modell általában sokkal gyorsabb képzést tesz lehetővé, mint a szokásos képzések.  Az eredményül kapott modellek a Microsoft alapmodelleket használják a fordításhoz a hozzáadott szótárak hozzáadásával.  Nem fog teszt jelentést kapni.
 
 >[!Note]
->Egyéni a fordítót nem Mondatkezdő igazítása szótár fájlokat, ezért fontos, hogy nincsenek-e forrás- és kifejezések azonos számú / a szótár sentences dokumentumokat, és hogy azok pontosan elhelyezve.
+>Az egyéni fordító nem mondattal igazítja a szótárakat, ezért fontos, hogy a szótár dokumentumaiban azonos számú forrás-és cél-kifejezés/mondat legyen, és hogy pontosan legyenek igazítva.
 
 ## <a name="recommendations"></a>Javaslatok
 
-- Szótárak nem lesznek a betanított modell a betanítási adatok helyett.  A szótárak lényegében keresés és csere szavakat vagy mondatokat.  Így a rendszer az oktatóanyag teljes mondatokban tanuljon alapvetően jobb megoldás, mint egy szótár segítségével.
-- A kifejezés szótár takarékosan. Egy kifejezés mondaton belül váltja fel, ha az adott mondaton belül környezet elveszett vagy fordíthatók le mindkét irányba a mondat részeinek korlátozott. Az eredmény, hogy közben a kifejezést vagy word, az adott mondaton belül lefordítja a kifejezés szótár megfelelően, a fordítási minőség a mondat gyakran romlani fog.
-- A kifejezés szótár jól főnevek például termékneveket ("Microsoft SQL Server"), a megfelelő neveket ("város Hamburg") vagy a szolgáltatások a termék ("kimutatás") működik. Nem működik egyaránt jól műveletek vagy melléknevek, mert ezek vannak általában magas ragozott a forrás vagy cél nyelven. A kifejezés dictionary bejegyzései a főnevek csak elkerülése érdekében.
-- Egy szótárban használatakor a kis-és nagybetűk, és a fordítások írásjelek jelenik meg a kis-és nagybetűk, és a célként megadott fájlban megadott absztrakt. Írásjelek és a kis-és nagybetűk figyelmen kívül hagyja azonosíthatja a bemeneti mondatot, és a szótár fájlban a forrás mondatok megegyezzen tett kísérlet során. Például tegyük fel, hogy betanított egy angol, spanyol rendszerre, amely egy szótárban használt, a megadott "város Hamburg" a forrásfájl és a cél fájlban "Ciudad Németország hamburg". Amely tartalmazza a "város Hamburg" kifejezést a mondatok fordítása kérésre majd "város Hamburg" megfelel a szótár-fájlt a következő bejegyzést: "Hamburg város", és szeretné leképezése "Ciudad Németország hamburg" saját végső fordítási problémái vannak.
-- Egy szó egy szótár fájl egynél többször jelenik meg, ha a rendszer mindig az utolsó bejegyzés megadott fogja használni. A szótár nem tartalmazhat több fordítások ugyanazon szó.
+- A szótárak nem helyettesíthetik a betanított modellt a betanítási adattal.  A szótárak alapvetően szavakat vagy mondatokat találnak és cserélnek.  Ha úgy dönt, hogy a rendszer a teljes mondatok alapján tanulja meg a képzési anyagokat, általában jobb választás, mint a szótár használata.
+- A kifejezés szótárát takarékosan kell használni. Ha a mondaton belüli kifejezést lecserélik, a mondaton belüli környezet elveszett vagy korlátozott a mondat hátralévő részének lefordítása érdekében. Ennek az az oka, hogy a mondaton belüli kifejezés vagy szó a kifejezés szótárának megfelelően lesz lefordítva, a mondat teljes fordítási minősége gyakran fog szenvedni.
+- A kifejezés szótára jól működik az olyan összetett nevek esetében, mint például a Terméknév ("Microsoft SQL Server"), a megfelelő nevek ("Hamburg városa") vagy a termék funkciói ("pivot Table"). Nem működik együtt a műveletekhez és a melléknevekhez, mert ezek általában erősen ragozott a forrásban vagy a célként megadott nyelven. Kerülje a szótár bejegyzéseinek kifejezését az összetett nevekhez.
+- Ha szótárt használ, a fordításban a kihasználás és a központozás a megcélzott fájlban megadott tőkésítés és írásjelek alapján jelenik meg. A rendszer figyelmen kívül hagyja a nagybetűket és a központozást, ha a bemeneti mondat és a szótárban lévő mondatok közötti egyezések azonosítására tesz kísérletet. Tegyük fel például, hogy egy angolról a spanyol rendszerre tanította a "Hamburg városa" nevű szótárt a forrásfájlban, a "Ciudad de Hamburg" kifejezést pedig a célfájl "a" fájljában. Ha egy olyan mondat fordítását kértem, amely tartalmazza a "Hamburg városa" kifejezést, akkor a "Hamburg városa" kifejezés megfelel a "Hamburg városa" bejegyzéshez tartozó "" Ciudad de Hamburg "szövegnek, és a végső fordításban a" Ciudad de Hamburg "értékre lesz leképezve.
+- Ha egy szó többször is megjelenik egy szótárban, a rendszer mindig a megadott utolsó bejegyzést fogja használni. A szótár nem tartalmazhat ugyanazon szó több fordítását.
 
 ## <a name="next-steps"></a>További lépések
 
-- További információ [irányelvek a dokumentum formátumok](document-formats-naming-convention.md).
+- Olvassa el [a dokumentumok formátumait ismertető útmutatót](document-formats-naming-convention.md).

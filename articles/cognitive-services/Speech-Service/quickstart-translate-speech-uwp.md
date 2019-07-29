@@ -9,18 +9,18 @@ ms.service: cognitive-services
 ms.subservice: speech-service
 ms.date: 07/23/2019
 ms.author: erhopf
-ms.openlocfilehash: e73f15525aa679a3ba0242dab897adf999fe7e09
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 71f8ecfaa11538cf43284d2aafff61cbf9655c0e
+ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68559268"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68607764"
 ---
 # <a name="quickstart-translate-speech-with-the-speech-sdk-for-c-uwp"></a>Gyors útmutató: Beszéd fordítása a Speech SDK for C# (UWP) használatával
 
 A gyors üzembe helyezési lehetőség a [beszéd-szöveg](quickstart-csharp-uwp.md), a [szöveg-beszéd](quickstart-text-to-speech-csharp-uwp.md) és a [hang – első virtuális asszisztens](quickstart-virtual-assistant-csharp-uwp.md)számára is elérhető.
 
-Ebben a rövid útmutatóban egy egyszerű Univerzális Windows-platform (UWP) alkalmazást fog létrehozni, amely rögzíti a számítógép mikrofonjának felhasználói beszédét, lefordítja a beszédet, és valós időben írja át a lefordított szöveget a parancssorba. Ez az alkalmazás a 64 bites Windows rendszeren fut, és a [SPEECH SDK NuGet csomaggal](https://aka.ms/csspeech/nuget) és a Microsoft Visual Studio 2017-mel készült.
+Ebben a rövid útmutatóban egy egyszerű Univerzális Windows-platform (UWP) alkalmazást fog létrehozni, amely rögzíti a számítógép mikrofonjának felhasználói beszédét, lefordítja a beszédet, és valós időben írja át a lefordított szöveget a parancssorba. Ez az alkalmazás a 64 bites Windows rendszeren fut, és a [SPEECH SDK NuGet csomaggal](https://aka.ms/csspeech/nuget) és a Microsoft Visual Studio 2017-es vagy újabb verziójával készült.
 
 A beszédfelismeréshez elérhető nyelvek teljes listáját a [nyelvi támogatás](language-support.md)című témakörben tekintheti meg.
 
@@ -31,7 +31,7 @@ A beszédfelismeréshez elérhető nyelvek teljes listáját a [nyelvi támogat�
 
 Ehhez a rövid útmutatóhoz a következőkre van szükség:
 
-* [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/)
+* [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/) vagy újabb
 * Egy Azure-előfizetési kulcs a beszédfelismerési szolgáltatáshoz. [Szerezze be az egyiket ingyenesen](get-started.md).
 
 ## <a name="create-a-visual-studio-project"></a>Visual Studio-projekt létrehozása

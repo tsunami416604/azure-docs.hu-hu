@@ -1,7 +1,7 @@
 ---
-title: A dinamikus szótár – Translator Text API
-titlesuffix: Azure Cognitive Services
-description: Tudnivalók a Translator Text API dinamikus szótár funkcióját használja.
+title: Dinamikus szótár – Translator Text API
+titleSuffix: Azure Cognitive Services
+description: A Translator Text API dinamikus szótár funkciójának használata.
 services: cognitive-services
 author: swmachan
 manager: nitinme
@@ -10,32 +10,32 @@ ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 06/04/2019
 ms.author: swmachan
-ms.openlocfilehash: a815434cb8797acf6b92a8fe4a4f1ff69508975d
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.openlocfilehash: f586702350b38c6d546767f64a8e2f6115b59817
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67839220"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68595289"
 ---
-# <a name="how-to-use-a-dynamic-dictionary"></a>A dinamikus szótár használata
+# <a name="how-to-use-a-dynamic-dictionary"></a>Dinamikus szótár használata
 
-Ha már ismeri a fordítást egy szót vagy kifejezést a alkalmazni szeretné, adja meg, mint belül a kérelem markup. A dinamikus szótár csak eszköze biztonságosan főnevek, mint például a megfelelő és a termék nevét.
+Ha már tudja, hogy milyen fordítást szeretne alkalmazni egy szóhoz vagy kifejezésre, a kérelemben megjelölheti azt. A dinamikus szótár csak olyan összetett nevek esetén biztonságos, mint a megfelelő nevek és a termékek neve.
 
-**Szintaxis:**
+**Szintaxis**
 
-< mstrans:dictionary fordítási = "kifejezés helyett szerepel fordítási" > kifejezést < / mstrans:dictionary >
+< msTrans: szótár fordítása = "kifejezés fordítása" > mondat </msTrans: szótár >
 
-**Követelmények:**
+**Követelmények**
 
-* A `From` és `To` nyelvek eltérőnek kell lennie. 
-* Meg kell adni a `From` paramétert az API-fordítási kérelem a auto-detect funkció használata helyett. 
+* A `From` és`To` a nyelvnek eltérőnek kell lennie. 
+* Az automatikus észlelés funkció `From` használata helyett az API-fordítási kérelemben meg kell adnia a paramétert. 
 
 **Példa: en-de:**
 
-Forrás bemenet: A word < mstrans:dictionary fordítási =\"wordomatic\"> szó vagy kifejezés < / mstrans:dictionary > dictionary-bejegyzés.
+Forrás bemenet: A Word < msTrans: Dictionary Translation =\"wordomatic\"> Word vagy kifejezés </msTrans: Dictionary > egy szótár bejegyzés.
 
-Kimenet: Das Wort "wordomatic" Izraeli normál idő szerint ein Wörterbucheintrag.
+Cél kimenete: Das orbáncfű "wordomatic" ist Ein Wörterbucheintrag.
 
-Ez a funkció rendelkező és anélküli HTML mód ugyanúgy működik.
+Ez a funkció ugyanúgy működik, mint a HTML-módban és anélkül.
 
-A szolgáltatás takarékosan. A megfelelő, és sokkal jobb megoldás a fordítás testreszabása módja egyéni Translator használatával. Egyéni a fordítót lehetővé teszi a környezetet és statisztikai valószínűségek teljes használatát. Ha van, vagy hozhat létre a betanítási adatok, amely megjeleníti a munkahelyi vagy az a kifejezés a környezetben, sokkal jobb eredményeket kap. További információ az egyéni Translator, annak [ https://aka.ms/CustomTranslator ](https://aka.ms/CustomTranslator).
+A szolgáltatást takarékosan kell használni. A fordítás testreszabásának megfelelő és sokkal jobb módja az egyéni fordító használata. Az egyéni fordító a kontextus és statisztikai valószínűségek teljes körű kihasználását teszi lehetővé. Ha olyan képzési adatait is létrehozhat, amelyek kontextusban mutatják be a munkát vagy kifejezést, sokkal jobb eredményeket érhet el. Az egyéni fordítóval kapcsolatos további információkért tekintse [https://aka.ms/CustomTranslator](https://aka.ms/CustomTranslator)meg a következő témakört:.

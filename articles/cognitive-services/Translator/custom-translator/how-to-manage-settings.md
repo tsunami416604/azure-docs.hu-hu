@@ -1,106 +1,106 @@
 ---
-title: Hogyan kezelheti a beállításokat? -Egyéni a fordítót
+title: A beállítások kezelése -Egyéni a fordítót
 titleSuffix: Azure Cognitive Services
-description: Hogyan beállítások kezelése, hozzon létre munkaterületet, munkaterület megosztása és egyéni a fordítót az előfizetési kulcs kezelése.
+description: Beállítások kezelése, munkaterület létrehozása, munkaterület megosztása és előfizetési kulcs kezelése egyéni fordítóban.
 author: swmachan
-manager: christw
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.date: 02/21/2019
 ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: d141b5dea8b0b12889559e6c80770379a6afac63
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: f90ada6b6cd1760b3b779010625f252533fa611d
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67448344"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68595771"
 ---
 # <a name="how-to-manage-settings"></a>Beállítások kezelése
 
-A Translator egyéni beállítások lapon akkor is hozzon létre egy új munkaterületet, a munkaterületi megosztás és hozzáadása vagy módosítása a Microsoft Translation előfizetési kulcs.
+Az egyéni fordítói beállítások lapon létrehozhat egy új munkaterületet, megoszthatja a munkaterületet, és hozzáadhatja vagy módosíthatja a Microsoft fordítási előfizetési kulcsát.
 
-A beállítások lapon elérése:
+A beállítások lap elérése:
 
-1. Jelentkezzen be a [egyéni a fordítót](https://portal.customtranslator.azure.ai/) portálon.
-2. Egyéni a fordítót portál kattintson a fogaskerék ikonra az oldalsávon.
+1. Jelentkezzen be az [Egyéni Translator](https://portal.customtranslator.azure.ai/) portálra.
+2. Az egyéni Translator Portalon kattintson a fogaskerék ikonra az oldalsávon.
 
     ![Hivatkozás beállítása](media/how-to/how-to-settings.png)
 
-## <a name="associating-microsoft-translator-subscription"></a>A Microsoft Translator-előfizetés társítása
+## <a name="associating-microsoft-translator-subscription"></a>Microsoft Translator-előfizetés társítása
 
-Szüksége lesz egy Microsoft Translator Text API-előfizetés használatával betanítani vagy modellek üzembe helyezése a munkaterülethez társított kulcs.
+A munkaterülethez társított Microsoft Translator Text API előfizetési kulccsal kell rendelkeznie a modellek betanításához vagy üzembe helyezéséhez.
 
 Ha nem rendelkezik előfizetéssel, kövesse az alábbi lépéseket:
 
-1. Fizessen elő a Microsoft Translator Text API-t. Ez a cikk bemutatja, hogyan lehet előfizetni a Microsoft Translator Text API számára.
-2. Vegye figyelembe a translator kulcsában. A Key1 és Key2 bármelyike elfogadható.
-3. Lépjen vissza az egyéni a fordítót portálon.
+1. Fizessen elő a Microsoft Translator Text APIra. Ez a cikk bemutatja, hogyan fizethet elő a Microsoft Translator Text APIra.
+2. Jegyezze fel a fordítói előfizetés kulcsát. A Key1 vagy a Key2 egyike elfogadható.
+3. Váltson vissza az egyéni Translator portálra.
 
 ### <a name="add-existing-key"></a>Meglévő kulcs hozzáadása
 
-1.  Keresse meg a munkaterület a "Beállítások" lap.
-2.  Kattintson a kulcs hozzáadása
+1.  Navigáljon a munkaterület "beállítások" lapjára.
+2.  Kattintson a kulcs hozzáadása lehetőségre.
 
     ![Előfizetési kulcs hozzáadása](media/how-to/how-to-add-subscription-key.png)
 
-3. A párbeszédpanelen adja meg a translator-előfizetéséhez tartozó kulcsot, majd kattintson a "Hozzáadás" gombra.
+3. A párbeszédpanelen adja meg a fordító-előfizetés kulcsát, majd kattintson a Hozzáadás gombra.
 
     ![Előfizetési kulcs hozzáadása](media/how-to/how-to-add-subscription-key-dialog.png)
-4.  Miután hozzáadott egy kulcsot, módosíthatja vagy törölheti a kulcsot a tetszőleges időpontban.
+4.  A kulcs hozzáadása után bármikor módosíthatja vagy törölheti a kulcsot.
 
-    ![Előfizetési kulcs hozzáadása](media/how-to/subscription-key-after-add.png)
+    ![Előfizetés kulcsa a Hozzáadás után](media/how-to/subscription-key-after-add.png)
 
-## <a name="manage-your-workspace"></a>A munkaterület kezelése
+## <a name="manage-your-workspace"></a>Munkaterület kezelése
 
-A munkaterület egy munkaterület létrehozása és az egyéni fordítási rendszerek kiépítésének. Munkaterület több projektek, a modellek és a dokumentumok tartalmazhatnak.
+A munkaterület az egyéni fordítási rendszer összeállításához és létrehozásához használható munkaterület. A munkaterületek több projektet, modellt és dokumentumot is tartalmazhatnak.
 
-Ha másik része a munkahelyi kell megosztani a különböző emberek, majd a több munkaterület létrehozása akkor lehet hasznos.
+Ha a munka különböző részeit különböző személyekkel kell megosztani, akkor lehet, hogy több munkaterület létrehozása is hasznos lehet.
 
 ## <a name="create-a-new-workspace"></a>Új munkaterület létrehozása
 
-1.  Keresse meg a munkaterület "Beállítások" lap.
-2.  Kattintson a "új munkaterület" gombra az "Új munkaterület létrehozása" szakaszban.
+1.  Navigáljon a munkaterület "beállítások" lapjára.
+2.  Az "új munkaterület létrehozása" szakaszban kattintson az "új munkaterület" gombra.
 
     ![Új munkaterület létrehozása](media/how-to/create-new-workspace.png)
 
 4.  A párbeszédpanelen adja meg az új munkaterület nevét.
-5.  Kattintson a "Create".
+5.  Kattintson a Létrehozás gombra.
 
-    ![Új munkaterület-párbeszédpanel létrehozása](media/how-to/create-new-workspace-dialog.png)
+    ![Új munkaterület létrehozása párbeszédpanel](media/how-to/create-new-workspace-dialog.png)
 
-## <a name="share-your-workspace"></a>A munkaterület megosztása
+## <a name="share-your-workspace"></a>Munkaterület megosztása
 
-Az egyéni a fordítót megoszthatja a munkaterület másokkal, ha másik része a munkahelyi oszthatók meg a különböző emberek igényeinek.
+Az egyéni fordítóban megoszthatja a munkaterületet másokkal, ha a munka különböző részeit különböző személyekkel kell megosztani.
 
-1.  Keresse meg a munkaterület "Beállítások" lap.
-2.  A "Megosztás" gombra a "Megosztási beállítások" szakaszban.
+1.  Navigáljon a munkaterület "beállítások" lapjára.
+2.  Kattintson a megosztás gombra a "megosztási beállítások" szakaszban.
 
     ![Munkaterület megosztása](media/how-to/share-workspace.png)
 
-3.  A párbeszédpanelen adja meg azt szeretné, hogy ez a munkaterület megosztott e-mail-címek vesszővel elválasztott listáját. Ellenőrizze, hogy a megosztott e-mail-címmel rendelkező személy jelentkezzen be az egyéni Translator használatával. Ezután válassza ki a megfelelő szintű megosztási engedéllyel.
+3.  A párbeszédpanelen adja meg a munkaterület által megosztott e-mail-címek vesszővel tagolt listáját. Győződjön meg arról, hogy a személy által az egyéni Fordítóba való bejelentkezéshez használt e-mail-címet használja. Ezután válassza ki a megfelelő szintű megosztási engedélyt.
 
-4.  A munkaterület még az alapértelmezett neve "Saját munkaterület", ha szükséges, módosítsa a munkaterület megosztása előtt.
-5.  Kattintson a "Mentés" gombra.
+4.  Ha a munkaterület még a "saját munkaterület" nevű alapértelmezett névvel rendelkezik, a munkaterület megosztása előtt módosítania kell azt.
+5.  Kattintson a Save (Mentés) gombra.
 
 ## <a name="sharing-permissions"></a>Megosztási engedélyek
 
-1.  **Olvasó:** A munkaterület egy olvasó lesz a munkaterület összes adatot megtekintheti.
+1.  **Olvasó** A munkaterület olvasói megtekinthetik a munkaterület összes adatát.
 
-2.  **Editor:** A munkaterület-szerkesztő tudják dokumentumok hozzáadása, modelleket taníthat be és törölje a dokumentumok és projektek. Adjon hozzá egy előfizetési kulcsot, de nem módosíthatja a munkaterület megosztó, a munkaterület törlése, vagy módosítsa a munkaterület nevét.
+2.  **Szerkesztő** A munkaterületen lévő szerkesztők hozzáadhatnak dokumentumokat, betanítási modelleket és törölhetnek dokumentumokat és projekteket. Hozzáadhatnak egy előfizetési kulcsot, de nem módosíthatják, hogy a munkaterület hogyan legyen megosztva, törölje a munkaterületet, vagy módosítsa a munkaterület nevét.
 
-3.  **Tulajdonos:** Egy olyan tulajdonost teljes körű engedélyekkel rendelkezik a munkaterületre.
+3.  **Tulajdonosa** A tulajdonos teljes hozzáféréssel rendelkezik a munkaterülethez.
 
-## <a name="change-sharing-permission"></a>Megosztási engedélyek módosítása
+## <a name="change-sharing-permission"></a>Megosztási engedély módosítása
 
-Munkaterület meg van osztva, a "Megosztási beállítások" című jelenít meg a munkaterület meg van osztva az összes e-mail-címek. Módosíthatja a meglévő megosztási engedélyt az összes e-mail-cím, ha tulajdonosi hozzáféréssel rendelkezik a munkaterületre.
+Ha egy munkaterület meg van osztva, a "megosztási beállítások" szakasz megjeleníti az összes e-mail-címet, amelyet a munkaterület megosztva használ. Ha tulajdonosi hozzáféréssel rendelkezik a munkaterülethez, módosíthatja az egyes e-mail-címek meglévő megosztási engedélyeit.
 
-1.  Mindegyik e-mail "Megosztási beállítások" szakaszban egy legördülő menü mutatja az aktuális jogosultsági szint.
+1.  Az egyes e-mailek "megosztási beállítások" szakaszában a legördülő menü megjeleníti az aktuális jogosultsági szintet.
 
-2.  Kattintson a legördülő menüből, és válassza ki az e-mail-címmel a hozzárendelni kívánt új jogosultsági szint.
+2.  Kattintson a legördülő menüre, és válassza ki az új jogosultsági szintet, amelyet hozzá szeretne rendelni ehhez az e-mail-címéhez.
 
-    ![Megosztási engedélyek beállításait](media/how-to/sharing-permission-settings.png)
+    ![Megosztási engedély beállításai](media/how-to/sharing-permission-settings.png)
 
 ## <a name="next-steps"></a>További lépések
 
-- Ismerje meg, [migrálása a munkaterület és a projekt](how-to-migrate.md) a [Microsoft Translator Hub](https://hub.microsofttranslator.com)
+- Ismerje meg [, hogyan telepítheti át munkaterületét és projektjét](how-to-migrate.md) a [Microsoft Translator hub](https://hub.microsofttranslator.com) használatával

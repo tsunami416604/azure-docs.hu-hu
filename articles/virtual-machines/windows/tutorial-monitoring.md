@@ -16,14 +16,14 @@ ms.workload: infrastructure
 ms.date: 12/05/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 05fd9f06bec2a68455d42bfd460f0a5a419a255e
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 25160c50cd4844fdb5b3a3454213b2067ef91d01
+ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67708041"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68608022"
 ---
-# <a name="tutorial-monitor-and-update-a-windows-virtual-machine-in-azure"></a>Oktatóanyag: Figyelheti és frissítheti a Windows virtuális gép az Azure-ban
+# <a name="tutorial-monitor-and-update-a-windows-virtual-machine-in-azure"></a>Oktatóanyag: Windows rendszerű virtuális gép figyelése és frissítése az Azure-ban
 
 Az Azure-monitorozás ügynökökkel gyűjti a rendszerindítási és teljesítményadatokat az Azure-beli virtuális gépekről, tárolja ezeket az adatokat az Azure Storage-ban, valamint hozzáférést nyújt a portálon, az Azure PowerShell modulon és az Azure CLI-n keresztül. A frissítéskezeléssel kezelheti az Azure-beli Windows rendszerű virtuális gépek frissítéseit és javításait.
 
@@ -54,7 +54,7 @@ Ebben az oktatóanyagban az Azure-monitorozás és a frissítéskezelés konfigu
 $cred = Get-Credential
 ```
 
-Most hozzon létre a virtuális Gépet a [New-azvm parancsmag](https://docs.microsoft.com/powershell/module/az.compute/new-azvm). Az alábbi példában egy *myVM* nevű virtuális gépet hozunk létre az *USA keleti régiója* helyen. Ha még nem létezik, létrejön a *myResourceGroupMonitorMonitor* nevű erőforráscsoport a támogató hálózati erőforrásokkal együtt:
+Most hozza létre a virtuális gépet a [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm). Az alábbi példában egy *myVM* nevű virtuális gépet hozunk létre az *USA keleti régiója* helyen. Ha még nem létezik, létrejön a *myResourceGroupMonitorMonitor* nevű erőforráscsoport a támogató hálózati erőforrásokkal együtt:
 
 ```azurepowershell-interactive
 New-AzVm `
@@ -68,7 +68,7 @@ Az erőforrások és a virtuális gép létrehozása néhány percig tart.
 
 ## <a name="view-boot-diagnostics"></a>Rendszerindítási diagnosztika megtekintése
 
-A Windows rendszerű virtuális gépek rendszerindítása után a rendszerindítási diagnosztikai ügynök rögzíti a képernyőkimenetet, amelyet hibaelhárítási célokra lehet felhasználni. Ez a képesség alapértelmezés szerint engedélyezve van. A rögzített képernyőképek vannak tárolva az Azure storage-fiókkal, amely alapértelmezés szerint is létrejön.
+A Windows rendszerű virtuális gépek rendszerindítása után a rendszerindítási diagnosztikai ügynök rögzíti a képernyőkimenetet, amelyet hibaelhárítási célokra lehet felhasználni. Ez a képesség alapértelmezés szerint engedélyezve van. A rögzített képernyőképeket egy Azure Storage-fiók tárolja, amelyet a rendszer alapértelmezés szerint is létrehoz.
 
 A rendszerindítási diagnosztika adatait a [Get-AzureRmVMBootDiagnosticsData](https://docs.microsoft.com/powershell/module/az.compute/get-azvmbootdiagnosticsdata) paranccsal kérheti le. A következő példában a rendszerindítási diagnosztika a *c:\* meghajtó gyökérkönyvtárába töltődik le.
 
@@ -142,7 +142,7 @@ A frissítést igénylő virtuális gépeken további műveletek elvégzése ér
 Az ellenőrzési folyamat arra is kiterjed, hogy a virtuális gépen működik-e a Microsoft Monitoring Agent (MMA) és az Automation hibrid runbook-feldolgozó.
 Ez az ügynök kommunikál a virtuális géppel, továbbá begyűjti a frissítési állapottal kapcsolatos információkat.
 
-Válassza ki a Log Analytics-munkaterületet és automation-fiók, és kattintson a **engedélyezése** a megoldás engedélyezéséhez. A megoldás engedélyezése akár 15 percet is igénybe vehet.
+Válassza ki az Log Analytics munkaterületet és Automation-fiókot, majd kattintson az **Engedélyezés** gombra a megoldás engedélyezéséhez. A megoldás engedélyezése akár 15 percet is igénybe vehet.
 
 Ha az előkészítés közben az alábbi előfeltételek bármelyike hiányzik, a rendszer automatikusan hozzáadja azt:
 
@@ -150,11 +150,11 @@ Ha az előkészítés közben az alábbi előfeltételek bármelyike hiányzik, 
 * [Automatizálás](../../automation/automation-offering-get-started.md)
 * Engedélyezett [hibrid runbook-feldolgozó](../../automation/automation-hybrid-runbook-worker.md) a virtuális gépen
 
-Megnyílik az **Update Management** képernyő. Konfigurálja a helyet, Log Analytics-munkaterületet és Automation-fiókot, és kattintson az **engedélyezése**. Ha a mezők szürkén jelennek meg, az azt jelenti, hogy egy másik automatizálási megoldás már engedélyezve van a virtuális gépen, ezért az ahhoz tartozó munkaterületet és Automation-fiókot kell használnia.
+Megnyílik az **Update Management** képernyő. Konfigurálja a használni kívánt helyet, Log Analytics munkaterületet és Automation-fiókot, majd kattintson az **Engedélyezés**gombra. Ha a mezők szürkén jelennek meg, az azt jelenti, hogy egy másik automatizálási megoldás már engedélyezve van a virtuális gépen, ezért az ahhoz tartozó munkaterületet és Automation-fiókot kell használnia.
 
 ![Az Update Management megoldás engedélyezése](./media/tutorial-monitoring/manageupdates-update-enable.png)
 
-A megoldás engedélyezése akár 15 percet is igénybe vehet. Ez idő alatt ne zárja be a böngészőablakot. A megoldás engedélyezését követően hiányzó a virtuális gép frissítéseivel kapcsolatos adatok elkezdenek beérkezni a Azure Monitor naplóira. Az adatok legalább 30 perc és legfeljebb 6 óra múlva állnak készen az elemzésre.
+A megoldás engedélyezése akár 15 percet is igénybe vehet. Ez idő alatt ne zárja be a böngészőablakot. A megoldás engedélyezését követően a virtuális gép hiányzó frissítéseivel kapcsolatos információk Azure Monitor naplókra áramlanak. Az adatok legalább 30 perc és legfeljebb 6 óra múlva állnak készen az elemzésre.
 
 ### <a name="view-update-assessment"></a>A frissítésfelmérés megtekintése
 
@@ -168,22 +168,22 @@ A frissítések telepítéséhez ütemezzen egy olyan telepítést, amely megfel
 
 Ütemezzen egy új frissítéstelepítést a virtuális géphez. Ehhez kattintson a **Frissítéskezelés** képernyő felső részén található **Frissítések központi telepítésének ütemezése** elemre. Az **Új frissítéstelepítés** képernyőn adja meg a következő információkat:
 
-Hozzon létre egy új frissítéstelepítést, jelölje be **frissítések központi telepítésének ütemezése**. A **új frissítéstelepítés** lap megnyitásakor. Adja meg az értékeket az alábbi táblázatban leírt tulajdonságokkal, és kattintson a **létrehozás**:
+Új frissítés központi telepítésének létrehozásához válassza a **frissítés központi telepítésének ütemezett**beállítást. Megnyílik az **új frissítés központi telepítése** oldal. Adja meg az alábbi táblázatban leírt tulajdonságok értékeit, majd kattintson a **Létrehozás**gombra:
 
 | Tulajdonság | Description |
 | --- | --- |
 | Name (Név) |A frissítéstelepítést beazonosító egyedi név. |
 |Operációs rendszer| Linux vagy Windows|
-| Csoport frissítése |Azure-beli gépek előfizetés, erőforráscsoport, helyek és címkék felvenni az üzembe helyezés az Azure-beli virtuális dinamikus csoportot hozhat létre kombinációja alapján lekérdezés definiálása. </br></br>A nem Azure-gépek esetében válassza ki a meglévő mentett keresést jelöljön ki egy csoportot a nem Azure-beli gépek tartalmazza a központi telepítésben lévő. </br></br>További tudnivalókért lásd: [dinamikus csoportok](../../automation/automation-update-management.md#using-dynamic-groups)|
-| Frissítendő gépek |Válassza ki, mentett keresést, importált csoporthoz, vagy a legördülő listából válassza ki a gépet, és válassza ki az egyes gépek. Ha a **Gépek** lehetőséget választotta, a gép állapota az **ÜGYNÖK KÉSZÜLTSÉGÉNEK FRISSÍTÉSE** oszlopban látható.</br> Számítógépcsoportok létrehozását az Azure Monitor naplóira különböző módszereivel kapcsolatos további információkért lásd: [számítógépcsoportokat az Azure Monitor naplóira](../../azure-monitor/platform/computer-groups.md) |
-|Frissítési besorolások|Válassza ki az összes szükséges|
-|Frissítések belefoglalása vagy kizárása|Ekkor megnyílik a **beszámítása vagy kihagyása** lapot. A belefoglalandó vagy kizárandó frissítések külön lapokon jelennek meg. A belefoglalási kezelésének további információkért lásd: [belefoglalási viselkedés](../../automation/automation-update-management.md#inclusion-behavior) |
-|Ütemezési beállítások|Válassza ki az időpontot, elindításához, és válassza ki bármelyik egyszer, vagy az ismétlődés ismétlődés|
-| Előkészítő parancsfájljainak + utáni szkriptek|Válassza ki a parancsfájlok futtatása előtt és után a központi telepítés|
-| Karbantartási időszak |Frissítések beállított percek száma. Az érték nem lehet kisebb, mint 30 perc és legfeljebb 6 óra |
-| Vezérlő újraindítása| Azt határozza meg, hogyan újraindítások kell kezelni. Az elérhető lehetőségek:</br>Újraindítás szükség esetén (alapértelmezett beállítás)</br>Mindig induljon újra</br>Soha ne induljon újra</br>Csak újraindítás – frissítések nem lesznek telepítve|
+| Frissítendő csoportok |Azure-gépek esetén az előfizetés, az erőforráscsoportok, a helyszínek és a címkék kombinációja alapján hozzon létre egy lekérdezést az üzembe helyezéshez felvenni kívánt Azure-beli virtuális gépek dinamikus csoportjának létrehozásához. </br></br>Nem Azure-beli gépek esetén válasszon ki egy meglévő mentett keresést, és válasszon ki egy olyan csoportot, amely nem Azure-beli gépeket tartalmaz az üzembe helyezéshez. </br></br>További információ: [dinamikus csoportok](../../automation/automation-update-management.md#using-dynamic-groups)|
+| Frissítendő gépek |Válasszon ki egy mentett keresést, importált csoportot, vagy válasszon gépet a legördülő listából, és válassza az egyes gépek lehetőséget. Ha a **Gépek** lehetőséget választotta, a gép állapota az **ÜGYNÖK KÉSZÜLTSÉGÉNEK FRISSÍTÉSE** oszlopban látható.</br> A számítógépcsoportok Azure Monitor-naplókban való létrehozásának különböző módszereiről a következő témakörben talál további információt: [számítógépcsoportok Azure monitor-naplókban](../../azure-monitor/platform/computer-groups.md) |
+|Frissítési besorolások|Válassza ki az összes szükséges frissítési besorolást|
+|Frissítések belefoglalása/kizárása|Ekkor megnyílik a **Belefoglalás/kizárás** oldal. A belefoglalandó vagy kizárandó frissítések külön lapokon jelennek meg. További információ a bevonások kezeléséről: a [beilleszkedési viselkedés](../../automation/automation-update-management.md#inclusion-behavior) |
+|Ütemezési beállítások|Válassza ki a kezdéshez szükséges időt, és válasszon egyszer vagy ismétlődő lehetőséget az ismétlődéshez|
+| Parancsfájlok előtti + parancsfájlok utáni|Válassza ki az üzembe helyezés előtt és után futtatandó parancsfájlokat|
+| Karbantartási időszak |A frissítések számára beállított percek száma. Az érték nem lehet kevesebb, mint 30 perc, legfeljebb 6 óra |
+| Vezérlő újraindítása| Meghatározza az újraindítások kezelését. Az elérhető lehetőségek:</br>Újraindítás szükség esetén (alapértelmezett beállítás)</br>Mindig induljon újra</br>Soha ne induljon újra</br>Csak újraindítás – frissítések nem lesznek telepítve|
 
-Frissítéstelepítések programozott módon is létrehozhatók. Frissítéstelepítés létrehozása a REST API-val kapcsolatban lásd: [Update - konfigurációkat létrehozni](/rest/api/automation/softwareupdateconfigurations/create). Emellett van egy heti központi telepítés létrehozásához használható példa runbook. Ez a forgatókönyv kapcsolatos további információkért lásd: [egy heti központi telepítés létrehozása egy erőforráscsoportba tartozó egy vagy több virtuális](https://gallery.technet.microsoft.com/scriptcenter/Create-a-weekly-update-2ad359a1).
+A frissítési központi telepítések programozott módon is létrehozhatók. Ha meg szeretné tudni, hogyan hozhat létre frissítési központi telepítést a REST API, tekintse meg a [szoftverfrissítési konfigurációk – létrehozás](/rest/api/automation/softwareupdateconfigurations/create)című témakört. Létezik egy minta runbook is, amely a heti frissítés központi telepítésének létrehozására használható. További információ erről a runbook: [heti frissítési telepítés létrehozása egy vagy több virtuális géphez egy erőforráscsoport esetében](https://gallery.technet.microsoft.com/scriptcenter/Create-a-weekly-update-2ad359a1).
 
 Ha befejezte az ütemezés konfigurálását, kattintson a **Létrehozás** gombra. Ezután visszalép az állapot-irányítópultra.
 Ekkor az **Ütemezett** táblázatban már látható az Ön által létrehozott telepítésütemezés.
@@ -222,7 +222,7 @@ A változás- és leltárkezelés engedélyezése a virtuális géphez:
 2. Válasszon ki egy virtuális gépet a listából.
 3. A virtuális gép képernyőjének **Műveletek** szakaszában kattintson az **Inventory** vagy a **Change tracking** elemre. Megnyílik **A Change Tracking and Inventory engedélyezése** képernyő.
 
-Konfigurálja a helyet, Log Analytics-munkaterületet és Automation-fiókot, és kattintson az **engedélyezése**. Ha a mezők szürkén jelennek meg, az azt jelenti, hogy egy másik automatizálási megoldás már engedélyezve van a virtuális gépen, ezért az ahhoz tartozó munkaterületet és Automation-fiókot kell használnia. Bár a megoldások elkülönülve jelennek meg a menüben, ugyanarról a megoldásról van szó. Ha engedélyezi az egyiket, a virtuális gépen mindkét megoldás engedélyezve lesz.
+Konfigurálja a használni kívánt helyet, Log Analytics munkaterületet és Automation-fiókot, majd kattintson az **Engedélyezés**gombra. Ha a mezők szürkén jelennek meg, az azt jelenti, hogy egy másik automatizálási megoldás már engedélyezve van a virtuális gépen, ezért az ahhoz tartozó munkaterületet és Automation-fiókot kell használnia. Bár a megoldások elkülönülve jelennek meg a menüben, ugyanarról a megoldásról van szó. Ha engedélyezi az egyiket, a virtuális gépen mindkét megoldás engedélyezve lesz.
 
 ![A változások és a leltár követésének engedélyezése](./media/tutorial-monitoring/manage-inventory-enable.png)
 
@@ -259,7 +259,7 @@ A diagram az eltelt idő alatt bekövetkezett változásokat mutatja. A Tevéken
 
 Az [Azure Automation](../../automation/automation-intro.md) által kínált Update Management és Change and Inventory használatával fejlettebb virtuálisgép-monitorozási megoldásokat is alkalmazhat.
 
-Ha rendelkezik hozzáféréssel a Log Analytics-munkaterülethez, a munkaterület kulcsát és azonosítóját a **BEÁLLÍTÁSOK** terület **Speciális beállítások** elemére kattintva találja meg. Használja a [Set-AzVMExtension](https://docs.microsoft.com/powershell/module/az.compute/set-azvmextension) parancs használatával adja hozzá a Microsoft Monitoring agent bővítményt a virtuális géphez. Frissítse az alábbi minta változóértékeit a saját Log Analytics-munkaterületkulcsával és munkaterület-azonosítójával.
+Ha rendelkezik hozzáféréssel a Log Analytics-munkaterülethez, a munkaterület kulcsát és azonosítóját a **BEÁLLÍTÁSOK** terület **Speciális beállítások** elemére kattintva találja meg. A [set-AzVMExtension](https://docs.microsoft.com/powershell/module/az.compute/set-azvmextension) parancs használatával adja hozzá a Microsoft monitoring Agent bővítményt a virtuális géphez. Frissítse az alábbi minta változóértékeit a saját Log Analytics-munkaterületkulcsával és munkaterület-azonosítójával.
 
 ```powershell
 $workspaceId = "<Replace with your workspace Id>"
@@ -278,7 +278,7 @@ Set-AzVMExtension -ResourceGroupName "myResourceGroupMonitor" `
 
 Pár perccel később meg kell jelennie az új virtuális gépnek a Log Analytics-munkaterületen.
 
-![Log Analytics-munkaterület paneljére](./media/tutorial-monitoring/tutorial-monitor-oms.png)
+![Log Analytics munkaterület panel](./media/tutorial-monitoring/tutorial-monitor-oms.png)
 
 ## <a name="next-steps"></a>További lépések
 
@@ -300,4 +300,4 @@ Ebben az oktatóanyagban konfigurálta és áttekintette a virtuális gépeket a
 Folytassa a következő oktatóanyaggal, amely az Azure Security Center használatát ismerteti.
 
 > [!div class="nextstepaction"]
-> [A virtuális gépek biztonságának kezelése](./tutorial-azure-security.md)
+> [A virtuális gépek biztonságának kezelése](../../security/fundamentals/overview.md)

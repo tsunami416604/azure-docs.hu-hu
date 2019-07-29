@@ -1,6 +1,6 @@
 ---
-title: Azure Security Center egyéni riasztások létrehozása az IoT-előzetes verzió |} A Microsoft Docs
-description: Hozzon létre, és rendelje hozzá az Azure Security Center egyéni eszköz riasztásainak az IoT.
+title: Egyéni riasztások létrehozása a IoT-hez Azure Security Centerhoz | Microsoft Docs
+description: Egyéni eszközökhöz tartozó riasztások létrehozása és társítása a IoT-hez Azure Security Center.
 services: asc-for-iot
 ms.service: asc-for-iot
 documentationcenter: na
@@ -13,81 +13,102 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/19/2019
+ms.date: 07/23/2019
 ms.author: mlottner
-ms.openlocfilehash: 12559af013d49e557ba0132bef24867867745c16
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: ed10cbf89f878f8d27b43476d26ac93dd373ed66
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67618026"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68597010"
 ---
 # <a name="quickstart-create-custom-alerts"></a>Gyors útmutató: Egyéni riasztások létrehozása
 
-> [!IMPORTANT]
-> Az Azure Security Center az IoT jelenleg nyilvános előzetes verzióban érhető el.
-> Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Egyéni biztonsági csoportok és a riasztások révén kihasználhatja a teljes körű biztonsági információkat és a kategorikus eszköz Tudásbázis annak biztosítására, a nagyobb biztonság az IoT-megoldás között. 
+Az egyéni biztonsági csoportok és riasztások használata révén teljes mértékben kihasználhatja a teljes körű biztonsági információkat és a kategorikus eszköz ismereteit, így biztosítva a jobb biztonságot a IoT-megoldáson belül. 
 
-## <a name="why-use-custom-alerts"></a>Egyéni riasztások miért érdemes használni? 
+## <a name="why-use-custom-alerts"></a>Miért érdemes egyéni riasztásokat használni? 
 
-Akkor tudja, hogy a legjobb IoT-eszközeit.
+Ismeri a IoT-eszközeit a legjobban.
 
-Ügyfelek esetében, akik reklámkattintásokat várt eszköz viselkedésük az Azure Security Center (ASC) az IoT lehetővé teszi, hogy az eszköz viselkedésének szabályzatba ismertetése fordítása, és bármilyen eltérés riasztás várt, normál működés.
+Azon ügyfelek esetében, akik teljes mértékben értik a várt eszköz viselkedését, Azure Security Center a IoT lehetővé teszi, hogy az eszköz viselkedési házirendjében és a várttól, a normál működéstől való eltéréstől függően lefordítsa ezt az értelmezést.
 
 ## <a name="security-groups"></a>Biztonsági csoportok
 
-Biztonsági csoportok lehetővé teszik az eszközök logikai csoportok meghatározása és a egy központosított módon kezelheti a biztonsági állapotuk.
+A biztonsági csoportok lehetővé teszik, hogy az eszközök logikai csoportjait definiálja, és központi módon kezelhesse a biztonsági állapotukat.
 
-Ezek a csoportok adott hardverekhez, az eszközök üzembe helyezett egy bizonyos helyét, vagy bármely más saját igényeinek megfelelő csoport az eszközök hozhat létre.
+Ezek a csoportok az adott hardverrel rendelkező eszközöket, az adott helyen üzembe helyezett eszközöket, vagy bármely más, az adott igényeknek megfelelő csoportot jelenthetnek.
 
-Biztonsági modul ikereszköz címke nevű tulajdonság által meghatározott biztonsági csoportok **SecurityGroup**. Ez az eszköz biztonsági csoport tulajdonság értékének módosítása  
+A biztonsági csoportokat a **SecurityGroup**nevű Device Twin tag tulajdonság határozza meg. Alapértelmezés szerint a IoT Hub minden IoT-megoldása egy **alapértelmezett**nevű biztonsági csoporttal rendelkezik. Módosítsa a **SecurityGroup** tulajdonság értékét egy eszköz biztonsági csoportjának megváltoztatásához.
+ 
+Példa:
 
-Alapértelmezés szerint minden egyes IoT-megoldás az IoT hub rendelkezik nevű biztonsági csoportot **alapértelmezett**.
+```
+{
+  "deviceId": "VM-Contoso12",
+  "etag": "AAAAAAAAAAM=",
+  "deviceEtag": "ODA1BzA5QjM2",
+  "status": "enabled",
+  "statusUpdateTime": "0001-01-01T00:00:00",
+  "connectionState": "Disconnected",
+  "lastActivityTime": "0001-01-01T00:00:00",
+  "cloudToDeviceMessageCount": 0,
+  "authenticationType": "sas",
+  "x509Thumbprint": {
+    "primaryThumbprint": null,
+    "secondaryThumbprint": null
+  },
+  "version": 4,
+  "tags": {
+    "SecurityGroup": "default"
+  }, 
+```
 
-Biztonsági csoportok segítségével az eszközök csoport logikai kategóriákba. Miután létrehozta a csoportokat, hozzárendelheti azokat a választott, a leghatékonyabb teljes körű megoldás az egyéni riasztások. 
+Biztonsági csoportok használatával csoportosíthatja az eszközöket logikai kategóriákba. A csoportok létrehozása után hozzárendelheti azokat a választott egyéni riasztásokhoz a leghatékonyabb végpontok közötti IoT biztonsági megoldáshoz. 
 
 ## <a name="customize-an-alert"></a>Riasztás testreszabása
 
-1. Nyissa meg az IoT hubnak. 
-2. Kattintson a **egyéni riasztások** a a **biztonsági** szakaszban. 
-3. Válassza ki egy biztonsági csoportot a testreszabása a alkalmazni kíván. 
-4. Kattintson a **egy egyéni riasztás hozzáadása** 
-5. A legördülő listából válassza ki egy egyéni riasztás viselkedése. 
-6. A szükséges tulajdonságait szerkesztheti, és kattintson a **OK**.
-7. Győződjön meg arról, hogy kattintson **mentése**. Nem mentette az új riasztás, a riasztás a következő alkalommal, zárja be az IoT Hub törlődnek.
+1. Nyissa meg a IoT Hub. 
+2. Kattintson az **egyéni riasztások** elemre a **Biztonság** szakaszban. 
+3. Válassza ki azt a biztonsági csoportot, amelyre alkalmazni kívánja a testreszabást. 
+4. Kattintson **az egyéni riasztás hozzáadása**lehetőségre.
+5. Válasszon ki egy egyéni riasztást a legördülő listából. 
+6. Szerkessze a szükséges tulajdonságokat, majd kattintson **az OK**gombra.
+7. Győződjön meg arról, hogy a **Mentés**gombra kattint. Az új riasztás mentése nélkül a rendszer törli a riasztást, amikor legközelebb IoT Hub.
 
  
-## <a name="alerts-available-for-customization"></a>Elérhető a testreszabáshoz riasztások
+## <a name="alerts-available-for-customization"></a>Testreszabáshoz elérhető riasztások
 
 Az alábbi táblázat a testreszabáshoz elérhető riasztások összegzését tartalmazza.
 
-| Severity | Name (Név)                                                                                                    | Adatforrás | Leírás                                                                                                                                     |
-|----------|---------------------------------------------------------------------------------------------------------|-------------|-------------------------------------------------------------------------------------------------------------------------------------------------|
-| Alacsony      | Egyéni riasztási - felhőszolgáltatás eszköz üzenetek az AMQP protokollt nem szerepel a megengedett tartományon          | IoT Hub     | A felhő eszköz üzeneteit (AMQP protokoll) egy olyan időkeretet mennyisége nem szerepel a megengedett tartományon beállított                                  |
-| Alacsony      | Egyéni riasztási – elutasított felhőszolgáltatás eszköz üzenetek az AMQP protokollt nem szerepel a megengedett tartományon | IoT Hub     | A felhőbe való eszközüzenetek (AMQP protokoll) egy olyan időkeretet az eszköz által elutasított mennyisége nem szerepel a megengedett tartományon beállított |
-| Alacsony      | Egyéni riasztási - eszközt a felhőbe irányuló üzenetek AMQP protokoll száma nem szerepel a megengedett tartományon          | IoT Hub     | A felhőbe irányuló üzenetek (AMQP protokoll) egy olyan időkeretet az eszköz mennyisége nem szerepel a megengedett tartományon beállított                                  |
-| Alacsony      | Egyéni riasztási - száma közvetlen metódus meghívása nem szerepel a megengedett tartományon                              | IoT Hub     | Közvetlen metódus mennyisége elindítja az ablak nem szerepel a megengedett tartományon beállított idő                                                     |
-| Alacsony      | Egyéni riasztási - fájlfeltöltések száma nem szerepel a megengedett tartományon                                       | IoT Hub     | Fájlok feltöltése egy időtartományban mennyisége nem szerepel a megengedett tartományon beállított                                                              |
-| Alacsony      | Egyéni riasztás – a HTTP protokoll eszközüzenetek felhő száma nem szerepel a megengedett tartományon          | IoT Hub     | A felhő eszköz üzeneteit (HTTP-protokoll) egy olyan időkeretet mennyisége nem szerepel a megengedett tartományon beállított                                  |
-| Alacsony      | Egyéni riasztási – elutasított felhőszolgáltatás eszköz üzeneteit a HTTP protokollt nem szerepel a megengedett tartományon | IoT Hub     | A felhőbe való eszközüzenetek (HTTP-protokoll) egy olyan időkeretet az eszköz által elutasított mennyisége nem szerepel a megengedett tartományon beállított |
-| Alacsony      | Egyéni riasztási – HTTP-protokoll az üzenetek felhőből eszközre száma nem szerepel a megengedett tartományon          | IoT Hub     | A felhőbe irányuló üzenetek (HTTP-protokoll) egy olyan időkeretet az eszköz mennyisége nem szerepel a megengedett tartományon beállított                                  |
-| Alacsony      | Egyéni riasztási - felhőszolgáltatás az MQTT protokoll eszköz üzenetek nem szerepel a megengedett tartományon          | IoT Hub     | A felhő eszköz üzeneteit (MQTT protokoll) egy olyan időkeretet mennyisége nem szerepel a megengedett tartományon beállított                                  |
-| Alacsony      | Egyéni riasztási – elutasított felhőszolgáltatás eszköz üzenetek az MQTT protokoll nem szerepel a megengedett tartományon | IoT Hub     | A felhőbe való eszközüzenetek (MQTT protokoll) egy olyan időkeretet az eszköz által elutasított mennyisége nem szerepel a megengedett tartományon beállított |
-| Alacsony      | Egyéni riasztási - MQTT protokoll az üzenetek felhőből eszközre száma nem szerepel a megengedett tartományon          | IoT Hub     | A felhőbe irányuló üzenetek (MQTT protokoll) egy olyan időkeretet az eszköz mennyisége nem szerepel a megengedett tartományon beállított                                  |
-| Alacsony      | Egyéni riasztási - parancs várólista pon száma nem szerepel a megengedett tartományon                               | IoT Hub     | A parancs várólista mennyisége kiürítése ablak nem szerepel a megengedett tartományon beállított idő                                                      |
-| Alacsony      | Egyéni riasztási - ikereszköz-frissítések száma nem szerepel a megengedett tartományon                                       | IoT Hub     | Egy olyan időkeretet az ikereszköz-frissítések mennyisége nem szerepel a megengedett tartományon beállított                                                              |
-| Alacsony      | Egyéni riasztási – nem engedélyezett műveletek számát nem szerepel a megengedett tartományon                            | IoT Hub     | Egy olyan időkeretet jogosulatlan műveletek mennyisége nem szerepel a megengedett tartományon beállított                                                   |
-| Alacsony      | Egyéni riasztási – aktív kapcsolatok nem a megengedett tartományon                                        | Ügynök       | Egy olyan időkeretet aktív kapcsolat mennyisége nem szerepel a megengedett tartományon beállított                                                        |
-| Alacsony      | Egyéni riasztási - IP-címet, amely nem engedélyezett kimenő kapcsolat létrejött                              | Ügynök       | Egy kimenő kapcsolatot, amely nem engedélyezett egy IP-cím létrehozása                                                                                  |
-| Alacsony      | Egyéni riasztás – helyi sikertelen bejelentkezések száma nem szerepel a megengedett tartományon                                | Ügynök       | Egy olyan időkeretet sikertelen helyi bejelentkezési mennyisége nem szerepel a megengedett tartományon beállított                                                       |
-| Alacsony      | Egyéni riasztási – nem engedélyezett felhasználó bejelentkezési                                                      | Ügynök       | Az eszköz bejelentkezett egy helyi felhasználót, hogy nem engedélyezett                                                                                        |
-| Alacsony      | Egyéni riasztási – nem engedélyezett egy folyamat végrehajtása                                               | Ügynök       | Egy folyamat, amely nem engedélyezett végre lett hajtva az eszközön |          |
+
+| severity | Name (Név) | Adatforrás | Leírás | Javasolt szervizelés|
+|---|---|---|---|---|
+| Alacsony      | Egyéni riasztás – az AMQP-protokollban található, Felhőbeli üzenetek száma kívül esik az engedélyezett tartományon.          | IoT Hub     | A megadott időtartományon belüli felhőből az eszközre irányuló üzenetek (AMQP protokoll) száma a jelenleg konfigurált és engedélyezett tartományon kívül esik.||
+| Alacsony      | Egyéni riasztás – az elutasított Felhőbeli üzenetek száma az AMQP protokollon kívül esik az engedélyezett tartományon. | IoT Hub     | Az eszköz által visszautasított Felhőbeli üzenetek (AMQP protokoll) száma egy adott időszakon belül a jelenleg konfigurált és engedélyezett tartományon kívül esik.||
+| Alacsony      | Egyéni riasztás – az eszköz Felhőbeli üzeneteinek száma az AMQP protokollon kívül esik az engedélyezett tartományon.      | IoT Hub     | Az eszközről a felhőbe irányuló üzenetek (AMQP protokoll) egy adott időintervallumon belül a jelenleg konfigurált és engedélyezett tartományon kívül esnek.|   |
+| Alacsony      | Egyéni riasztás – a közvetlen metódus meghívásának száma kívül esik az engedélyezett tartományon. | IoT Hub     | A megadott időszakon belül meghívott közvetlen metódusok mennyisége a jelenleg konfigurált és engedélyezett tartományon kívül esik.||
+| Alacsony      | Egyéni riasztás – a fájlfeltöltés száma kívül esik az engedélyezett tartományon. | IoT Hub     | Egy adott időtartományon belüli fájlfeltöltés mennyisége a jelenleg konfigurált és engedélyezett tartományon kívül esik.| |
+| Alacsony      | Egyéni riasztás – a HTTP-protokollban lévő üzenetek Felhőbeli üzeneteinek száma a megengedett tartományon kívül esik | IoT Hub     | Egy időablakban a felhőből az eszközre irányuló üzenetek (HTTP-protokoll) mennyisége nem a konfigurált engedélyezett tartományba esik.                                  |
+| Alacsony      | Egyéni riasztás – az elutasított Felhőbeli üzenetek száma a HTTP protokollban nem a megengedett tartományba esik. | IoT Hub     | A megadott időintervallumon belül a felhőből az eszközre irányuló üzenetek (HTTP-protokoll) mennyisége a jelenleg konfigurált és engedélyezett tartományon kívül esik. |
+| Alacsony      | Egyéni riasztás – az eszköz Felhőbeli üzeneteinek száma a HTTP protokollon kívül esik az engedélyezett tartományon. | IoT Hub| Egy adott időintervallumon belül a Felhőbeli üzenetek (HTTP-protokoll) mennyisége a jelenleg konfigurált és engedélyezett tartományon kívül esik.|    |
+| Alacsony      | Egyéni riasztás – az MQTT-protokollban található, Felhőbeli üzenetek száma kívül esik az engedélyezett tartományon. | IoT Hub     | Egy adott időszakon belül a felhőből az eszközre irányuló üzenetek (MQTT protokoll) mennyisége a jelenleg konfigurált és engedélyezett tartományon kívül esik.|   |
+| Alacsony      | Egyéni riasztás – az elutasított Felhőbeli üzenetek száma az MQTT protokollon kívül esik az engedélyezett tartományon. | IoT Hub     | Az eszköz által az adott időszakon belül visszautasított felhő-eszköz üzenetek (MQTT protokoll) mennyisége a jelenleg konfigurált és engedélyezett tartományon kívül esik. |
+| Alacsony      | Egyéni riasztás – az eszköz Felhőbeli üzeneteinek száma az MQTT protokollon kívül esik az engedélyezett tartományon.          | IoT Hub     | Az eszközről a felhőbe irányuló üzenetek (MQTT protokoll) egy adott időintervallumon belül a jelenleg konfigurált és engedélyezett tartományon kívül esnek.|
+| Alacsony      | Egyéni riasztás – a parancssori törlések száma kívül esik az engedélyezett tartományon.                               | IoT Hub     | Egy adott időszakon belül a parancssori törlések mennyisége a jelenleg konfigurált és engedélyezett tartományon kívül esik.||
+| Alacsony      | Egyéni riasztás – a modul különálló frissítéseinek száma kívül esik az engedélyezett tartományon.                                       | IoT Hub     | Egy adott időszakon belül a modulhoz tartozó dupla frissítések mennyisége a jelenleg konfigurált és engedélyezett tartományon kívül esik.|
+| Alacsony      | Egyéni riasztás – a jogosulatlan műveletek száma kívül esik az engedélyezett tartományon.  | IoT Hub     | Egy adott időszakon belül nem engedélyezett műveletek mennyisége a jelenleg konfigurált és engedélyezett tartományon kívül esik.|
+| Alacsony      | Egyéni riasztás – az aktív kapcsolatok száma kívül esik az engedélyezett tartományon.  | Ügynök       | A megadott időszakon belüli aktív kapcsolatok száma a jelenleg konfigurált és engedélyezett tartományon kívül esik.|  Vizsgálja meg az eszköz naplóit. Ismerje meg, hogy a kapcsolatok honnan származnak, és hogy milyen jóindulatú vagy rosszindulatú. Ha rosszindulatú, távolítsa el a lehetséges kártevőket, és értse a forrást. Ha jóindulatú, adja hozzá a forrást az engedélyezett kapcsolatok listájához.  |
+| Alacsony      | Egyéni riasztás – a kimenő kapcsolatok olyan IP-címhez lettek létrehozva, amely nem engedélyezett                             | Ügynök       | Egy kimenő kapcsolat egy olyan IP-címhez lett létrehozva, amely kívül esik az engedélyezett IP-listán. |Vizsgálja meg az eszköz naplóit. Ismerje meg, hogy a kapcsolatok honnan származnak, és hogy milyen jóindulatú vagy rosszindulatú. Ha rosszindulatú, távolítsa el a lehetséges kártevőket, és értse a forrást. Ha jóindulatú, adja hozzá a forrást az engedélyezett IP-listához.                        |
+| Alacsony      | Egyéni riasztás – a sikertelen helyi bejelentkezések száma kívül esik az engedélyezett tartományon.                               | Ügynök       | Egy adott időszakon belül sikertelen helyi bejelentkezések mennyisége a jelenleg konfigurált és engedélyezett tartományon kívül esik. |   |
+| Alacsony      | Egyéni riasztás – olyan felhasználó bejelentkezése, amely nem szerepel az engedélyezett felhasználók listáján | Ügynök       | Az engedélyezett felhasználók listáján kívüli helyi felhasználó, amely be van jelentkezve az eszközre.|  Nyers adatmentéskor keresse meg a log Analytics-fiókját, és az adataival vizsgálja meg az eszközt, azonosítsa a forrást, majd javítsa ki az engedélyezési/tiltási listát ezekhez a beállításokhoz. Ha jelenleg nem menti a nyers adatmentést, nyissa meg az eszközt, és javítsa ki az engedélyezési/tiltási listát ezekhez a beállításokhoz.|
+| Alacsony      | Egyéni riasztás – a folyamat végrehajtása nem engedélyezett | Ügynök       | Nem engedélyezett folyamat lett végrehajtva az eszközön. |Nyers adatmentéskor keresse meg a log Analytics-fiókját, és az adataival vizsgálja meg az eszközt, azonosítsa a forrást, majd javítsa ki az engedélyezési/tiltási listát ezekhez a beállításokhoz. Ha jelenleg nem menti a nyers adatmentést, nyissa meg az eszközt, és javítsa ki az engedélyezési/tiltási listát ezekhez a beállításokhoz.  |
+|
+
 
 ## <a name="next-steps"></a>További lépések
 
-Folytassa a következő cikkben talál a biztonsági ügynök telepítése...
+A következő cikkből megtudhatja, hogyan telepíthet biztonsági ügynököt...
 
 > [!div class="nextstepaction"]
-> [A biztonsági ügynök telepítése](how-to-deploy-agent.md)
+> [Biztonsági ügynök üzembe helyezése](how-to-deploy-agent.md)

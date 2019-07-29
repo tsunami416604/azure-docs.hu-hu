@@ -10,18 +10,18 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 07/05/2019
 ms.author: travisw
-ms.openlocfilehash: d61040e740c06fc336e3764a0d972640443a6de5
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 6d88bcc6d9d2c2e46ef3a3cb841c9268a544e37c
+ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68553386"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68609688"
 ---
 # <a name="quickstart-create-a-voice-first-virtual-assistant-with-the-speech-sdk-uwp"></a>Gyors útmutató: Hozzon létre egy hang-első virtuális asszisztenst a Speech SDK-val, UWP
 
 A gyors üzembe helyezési útmutató a [szöveg](quickstart-csharp-uwp.md)és a beszéd közötti [kommunikációhoz, valamint](quickstart-text-to-speech-csharp-uwp.md) a beszéd-és [fordításhoz](quickstart-translate-speech-uwp.md)is elérhető.
 
-Ebben a cikkben a [SPEECH SDK](speech-sdk.md)használatával fejleszt C# egy univerzális Windows-platform-(UWP-) alkalmazást. A program egy korábban létrehozott és konfigurált robothoz fog csatlakozni, hogy az ügyfélalkalmazás első virtuális asszisztensi élményét engedélyezze. Az alkalmazást a [Speech SDK NuGet-csomaggal](https://aka.ms/csspeech/nuget) és a Microsoft Visual Studio 2017-tel (annak bármely kiadásával) lehet összeállítani.
+Ebben a cikkben a [SPEECH SDK](speech-sdk.md)használatával fejleszt C# egy univerzális Windows-platform-(UWP-) alkalmazást. A program egy korábban létrehozott és konfigurált robothoz fog csatlakozni, hogy az ügyfélalkalmazás első virtuális asszisztensi élményét engedélyezze. Az alkalmazás a [SPEECH SDK NuGet csomagjával](https://aka.ms/csspeech/nuget) és a Microsoft Visual Studio 2017-es vagy újabb verziójával (bármely kiadással) készült.
 
 > [!NOTE]
 > A Universal Windows Platformon olyan alkalmazásokat fejleszthet, amelyek a Windows 10-et támogató minden eszközön futtathatók: PC-n, Xboxon, Surface Hubon stb.
@@ -30,7 +30,7 @@ Ebben a cikkben a [SPEECH SDK](speech-sdk.md)használatával fejleszt C# egy uni
 
 Ehhez a rövid útmutatóhoz a következőkre van szükség:
 
-* [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/)
+* [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/) vagy újabb
 * Egy Azure-előfizetési kulcs a Speech Serviceshez. [Szerezze be ingyen](get-started.md) , vagy hozza létre a [Azure Portal](https://portal.azure.com).
 * Korábban létrehozott, a [közvetlen vonalas beszéd csatornával](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech) konfigurált robot
 

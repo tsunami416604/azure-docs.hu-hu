@@ -1,90 +1,90 @@
 ---
-title: A dokumentum - egyéni a fordítót feltöltése
+title: Dokumentum feltöltése – egyéni fordító
 titleSuffix: Azure Cognitive Services
-description: A dokumentum a feltöltési funkcióval a betanítások a párhuzamos dokumentum is feltölthet. Párhuzamos dokumentumok párjai dokumentumok ahol egyik, a másik a fordítás. A pár egyik dokumentum tartalmaz a Forrásnyelv mondatok és a többi dokumentum tartalmazza ezeket a Célnyelv fordítja mondatokat.
+description: A dokumentum feltöltése funkcióval párhuzamos dokumentumot tölthet fel a képzések számára. A párhuzamos dokumentumok olyan dokumentumok, amelyekben az egyik a másik fordítása. A pár egyik dokumentuma mondatokat tartalmaz a forrás nyelvén, a másik dokumentum pedig ezeket a mondatokat a célként megadott nyelvre lefordítva tartalmazza.
 author: swmachan
-manager: christw
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.date: 02/21/2019
 ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: 948c9628147ae8cf869046b283601b939d35b290
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: f2bd6103c27d455265ee967554fb27513f78a472
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67447930"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68595645"
 ---
 # <a name="upload-a-document"></a>Dokumentum feltöltése
 
-A [egyéni a fordítót](https://portal.customtranslator.azure.ai), a fordítási modelleket taníthat be párhuzamos dokumentumokat feltölthet. [Dokumentumok párhuzamos](what-are-parallel-documents.md) párjai dokumentumok egy fordítását, a másik helyére. A pár egyik dokumentum tartalmaz a Forrásnyelv mondatok és a többi dokumentum tartalmazza ezeket a Célnyelv fordítja mondatokat.
+Az [Egyéni fordítóban](https://portal.customtranslator.azure.ai)párhuzamos dokumentumok tölthetők fel a fordítási modellek betanításához. A [párhuzamos dokumentumok](what-are-parallel-documents.md) olyan dokumentumok, amelyekben az egyik a másik fordítása. A pár egyik dokumentuma mondatokat tartalmaz a forrás nyelvén, a másik dokumentum pedig ezeket a mondatokat a célként megadott nyelvre lefordítva tartalmazza.
 
-Mielőtt feltöltené a dokumentumok, tekintse át a [dokumentum-formátumok és -elnevezési konvenciót útmutatást](document-formats-naming-convention.md) , győződjön meg arról, hogy a fájl formátuma támogatott egyéni a fordítót.
+A dokumentumok feltöltése előtt tekintse át a [dokumentum formátumait és az elnevezési konvenció útmutatását, és](document-formats-naming-convention.md) győződjön meg arról, hogy a fájlformátum támogatott az egyéni fordítóban.
 
-## <a name="how-to-upload-document"></a>Dokumentum feltöltése hogyan?
+## <a name="how-to-upload-document"></a>Hogyan tölthetők fel a dokumentumok?
 
-A [egyéni a fordítót](https://portal.customtranslator.azure.ai) portálon kattintson a "Dokumentumok" lapon dokumentumok lap megnyitásához.
+A [Custom Translator](https://portal.customtranslator.azure.ai) Portalon kattintson a dokumentumok fülre a dokumentumok lapon.
 
-![Dokumentum feltöltése hivatkozása](media/how-to/how-to-upload-1.png)
+![Dokumentum feltöltési hivatkozása](media/how-to/how-to-upload-1.png)
 
 
-1.  Kattintson a feltöltés fájlok gombra a dokumentumok oldalon.
+1.  Kattintson a fájlok feltöltése gombra a dokumentumok lapon.
 
-    ![Töltse fel a dokumentum lap](media/how-to/how-to-upload-2.png)
+    ![Dokumentum feltöltése lap](media/how-to/how-to-upload-2.png)
 
-2.  Töltse ki az alábbi adatokat a párbeszédpanelen:
+2.  A párbeszédpanelen adja meg a következő információkat:
 
-    a.  A dokumentum típusa:
+    a.  Dokumentum típusa:
 
-    -  Betanítás: E dokumentum használandó betanítási készlete.
-    -  Hangolási: E dokumentum set finomhangoláshoz használható.
-    -  Tesztelés: Ezek dokumentum(ok) set teszteléséhez használható.
-    -  A kifejezés szótár: Ezek dokumentum(ok) használandó kifejezést szótárban.
-    -  Mondat szótár: E dokumentum jelzi a mondat szótár
+    -  Betanítás: A rendszer ezeket a dokumentumokat fogja használni a betanítási készlethez.
+    -  Tuning A rendszer ezeket a dokumentumokat fogja használni a hangolási készlethez.
+    -  Vizsgálat A rendszer ezeket a dokumentumokat fogja használni a tesztelési készlethez.
+    -  Szótár kifejezése: A rendszer ezeket a dokumentumokat fogja használni a szótár kifejezéséhez.
+    -  Mondat szótár: A rendszer ezeket a dokumentumokat fogja használni a mondat szótárához
 
     b.  Nyelvi pár
 
-    c.  Dokumentum felülírása, ha létezik: Akkor válassza ezt a jelölőnégyzetet, ha felülírja a meglévő dokumentumok ugyanazzal a névvel.
+    c.  Felülbírálási dokumentum, ha létezik: Jelölje be ezt a jelölőnégyzetet, ha felül szeretné írni az azonos nevű meglévő dokumentumokat.
 
-    d.  Töltse ki a megfelelő szakaszban párhuzamos vagy kombinált adatok.
+    d.  Adja meg a megfelelő szakaszt párhuzamos vagy kombinált adattípushoz.
 
-    -  Párhuzamos adatok:
-        -  Forrásfájl: Válassza ki az adatforrás nyelvi fájlt a helyi számítógépről.
-        -  Célfájl: Válassza ki a célnyelvet fájlt a helyi számítógépről.
-        -  Dokumentum neve: Csak akkor, ha a feltöltendő párhuzamos fájlokat használja.
+    -  Párhuzamos adatértékek:
+        -  Forrásfájl: Válassza ki a forrás nyelvi fájl elemet a helyi számítógépről.
+        -  Célfájl: Válassza ki a célként megadott nyelvi fájlt a helyi számítógépről.
+        -  Dokumentum neve: Csak akkor használható, ha párhuzamos fájlokat tölt fel.
 
-    - Kombinált adatok:
-        -  Kombinált fájlt: Válassza ki a kombinált fájlt a helyi számítógépről. A kombinált fájlban vannak, mind a forrás és cél nyelvi mondatokat. [Elnevezési szabályainak](document-formats-naming-convention.md) kombinált fájlok számára fontos.
+    - Kombinált adatkészletek:
+        -  Kombinált fájl: Válassza ki a kombinált fájlt a helyi számítógépről. A kombinált fájl a forrás-és a cél nyelvi mondatokkal is rendelkezik. Az [elnevezési konvenció](document-formats-naming-convention.md) a kombinált fájlok esetében fontos.
 
     e.  Kattintson a feltöltés
 
-    ![Töltse fel a dokumentum párbeszédpanel](media/how-to/how-to-upload-dialog.png)
+    ![Dokumentum feltöltése párbeszédpanel](media/how-to/how-to-upload-dialog.png)
 
-3.  Ezen a ponton folyamatban van a dokumentumok feldolgozása és kinyerése a mondatok tett kísérlet. "View feltöltése folyamatban" gombra kattint, azok feldolgozni a dokumentumok állapotának ellenőrzéséhez.
+3.  Ezen a ponton dolgozunk fel dokumentumokat, és megpróbáljuk kinyerni a mondatokat. A "feltöltési folyamat megtekintése" lehetőségre kattintva megtekintheti a dokumentumok állapotát a folyamat során.
 
-    ![Töltse fel a dokumentum feldolgozási párbeszédpanel](media/how-to/how-to-upload-processing-dialog.png)
+    ![Dokumentum-feldolgozás feltöltése párbeszédpanel](media/how-to/how-to-upload-processing-dialog.png)
 
-4.  Ezt oldal jelenik meg, az állapota, és az esetleges hibákat a feltöltés belül minden fájlhoz. Megtekintheti korábbi feltöltési állapotot bármikor a "Feltöltése előzmények" fülre kattintva.
+4.  Ezen a lapon látható az állapot, valamint a feltöltésen belüli egyes fájlok hibái. A korábbi feltöltési állapotot bármikor megtekintheti, ha a "feltöltési előzmények" lapra kattint.
 
-    ![Töltse fel a dokumentum korábbi párbeszédpanel](media/how-to/how-to-upload-document-history.png)
+    ![Dokumentum előzményeinek feltöltése párbeszédpanel](media/how-to/how-to-upload-document-history.png)
 
 
-## <a name="view-upload-history"></a>Feltöltés előzményeinek megtekintése
+## <a name="view-upload-history"></a>Feltöltési előzmények megtekintése
 
-Feltöltés Előzmények lapon megtekintheti a részleteket, például az összes dokumentum feltöltések előzményeit a dokumentum típusa, nyelvi pár, feltöltése stb. állapotát.
+A feltöltési Előzmények lapon megtekintheti az összes dokumentum feltöltésének előzményeit, például a dokumentum típusát, a nyelvi párokat, a feltöltési állapotot stb.
 
-1. Az a [egyéni a fordítót](https://portal.customtranslator.azure.ai) portálon feltöltése Előzmények lapon előzményeinek megtekintése.
+1. Az [Egyéni Translator](https://portal.customtranslator.azure.ai) portálon kattintson az Előzmények lap feltöltés elemére az előzmények megtekintéséhez.
 
-    ![Töltse fel az Előzmények lapon](media/how-to/how-to-upload-history-1.png)
+    ![Feltöltési Előzmények lap](media/how-to/how-to-upload-history-1.png)
 
-2. Ezen a lapon minden az elmúlt feltöltések állapotát jeleníti meg. Feltöltések megjeleníti a legutóbbi, a legrégebbi. Minden feltöltött azt mutatja be, a dokumentum neve, feltöltési állapotot, a feltöltés dátuma, a feltöltött fájlok száma, feltöltött fájl típusa és a fájl a nyelvi pár.
+2. Ezen a lapon látható az összes korábbi feltöltés állapota. A legújabbtól a legkorábbiig terjedő feltöltéseket jeleníti meg. Minden feltöltésnél megjelenik a dokumentum neve, a feltöltés állapota, a feltöltés dátuma, a feltöltött fájlok száma, a feltöltött fájl típusa és a fájl nyelvi párja.
 
-    ![Töltse fel az Előzmények lapon](media/how-to/how-to-document-history-2.png)
+    ![Feltöltési Előzmények lap](media/how-to/how-to-document-history-2.png)
 
-3. Kattintson bármely feltöltési előzményrekordot. Feltöltés előzmények részletei lapon megtekintheti a fájlok feltöltése a feltöltés, a fájl, a fájl- és hiba üzenet (ha hiba történik a feltöltés) nyelvi feltöltött állapotát részeként.
+3. Kattintson a feltöltési előzmények rekordra. A feltöltési előzmények részletei lapon megtekintheti a fájl feltöltése, feltöltött állapotának részeként feltöltött fájlokat, a fájl nyelvét és a hibaüzenetet (ha bármilyen hiba van a feltöltés során).
 
 ## <a name="next-steps"></a>További lépések
 
-- Használja a [dokumentum Részletek lap](how-to-view-document-details.md) kinyert mondatokat listájának áttekintéséhez.
-- [A modell betanításához hogyan](how-to-train-model.md).
+- A kinyert mondatok listájának áttekintéséhez használja a [dokumentum részletei lapot](how-to-view-document-details.md) .
+- [Modell](how-to-train-model.md)betanítása.

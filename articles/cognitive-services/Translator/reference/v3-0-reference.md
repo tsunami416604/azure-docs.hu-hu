@@ -1,7 +1,7 @@
 ---
-title: Translator Text API 3.0-referencia
-titlesuffix: Azure Cognitive Services
-description: A Translator Text API 3.0 dokumentációja.
+title: Translator Text API V 3.0 – dokumentáció
+titleSuffix: Azure Cognitive Services
+description: A Translator Text API V 3.0 dokumentációja.
 services: cognitive-services
 author: swmachan
 manager: nitinme
@@ -10,40 +10,40 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 03/29/2018
 ms.author: swmachan
-ms.openlocfilehash: 8956aff86777e2a2570c6a555a9bd0882f328a77
-ms.sourcegitcommit: 10251d2a134c37c00f0ec10e0da4a3dffa436fb3
+ms.openlocfilehash: ad619ad965cf4b7d94b781818c658152f71250a7
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/13/2019
-ms.locfileid: "67868413"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68595002"
 ---
-# <a name="translator-text-api-v30"></a>Translator Text API 3.0-s verzió
+# <a name="translator-text-api-v30"></a>Translator Text API v 3.0
 
 ## <a name="whats-new"></a>Újdonságok
 
-3-as verziója a Translator Text API modern JSON-alapú webes API-t biztosít. Ez növeli a használhatóság és teljesítményét a meglévő funkciók konszolidálása kevesebb műveletek és, olyan új funkciókat biztosít.
+A Translator Text API 3. verziója modern JSON-alapú webes API-t biztosít. Javítja a használhatóságot és a teljesítményt azáltal, hogy a meglévő funkciókat kevesebb műveletre összevonja, és új funkciókat biztosít.
 
- * Egy parancsprogram az egyik nyelven szöveg átalakítása egy másik parancsprogramra átbetűzésű.
- * Fordítási egyetlen kérelem több nyelvhez.
- * Nyelv észlelése, a fordítási és átbetűzésű egy kérelem.
- * A kifejezés található biztonsági-fordítások és a példákat a környezetben használt kifejezések keresési felkínálásával szótár.
- * Konkrétabb nyelvi észlelésének eredménye.
+ * A nyelv átalakítása egy parancsfájlból egy másik parancsfájlba.
+ * Fordítás több nyelvre egy kérelemben.
+ * Nyelvfelismerés, fordítás és írás egyetlen kérelemben.
+ * Szótár a kifejezés alternatív fordításának kereséséhez, hogy megkeresse a háttér-fordításokat és példákat a kontextusban használt kifejezések megjelenítéséhez.
+ * További informatív nyelvfelismerés eredményei.
 
 ## <a name="base-urls"></a>Alap URL-címek
 
-A Microsoft Translator van szolgálja ki több adatközpontban. Jelenleg találhatók a 10 [Azure régiócsoportjairól](https://azure.microsoft.com/global-infrastructure/regions):
+A Microsoft Translator több adatközpont-helyből is kiszolgálható. Jelenleg 10 [Azure](https://azure.microsoft.com/global-infrastructure/regions)-régióban találhatók:
 
-* **Dél-Amerika:** USA keleti RÉGIÓJA, USA déli középső RÉGIÓJA, USA nyugati középső RÉGIÓJA és USA 2. nyugati 
-* **Ázsia Csendes-óceáni:** Korea déli régiója, kelet-japán, Ázsia és Kelet-Ausztrália
-* **Európa:** Észak-Európában és Nyugat-Európa
+* **Amerika** USA keleti régiója, USA déli középső régiója, az USA nyugati középső régiója és az USA 2. nyugati régiója 
+* **Ázsia és a Csendes-óceáni térség:** Dél-Korea, Kelet-Japán, Délkelet-Ázsia és Kelet-Ausztrália
+* **Európa** Észak-Európa és Nyugat-Európa
 
-A Microsoft Translator Text API kérelmek vannak a legtöbb esetben az adatközpont, ahol adja meg a kérelem legközelebb eső kezeli. Adatközpont-meghibásodás a kérelmek átirányíthatók földrajzi Azure-on kívül.
+A Microsoft Translator Text APIra irányuló kérelmeket a legtöbb esetben az adatközpont kezeli, amely a kérelem helyétől legközelebb található. Adatközpont meghibásodása esetén a kérést az Azure földrajzán kívül is át lehet irányítani.
 
-Hogy a kérelem egy adott Azure földrajzi kell kezelnie, módosítsa a kívánt területi végpont a globális végpont az API-kérelem:
+Ha szeretné kényszeríteni a kérést, hogy az adott Azure földrajza kezelhető legyen, módosítsa az API-kérés globális végpontját a kívánt regionális végpontra:
 
-|Leírás|Az Azure földrajzi hely|Alap URL-címe|
+|Leírás|Az Azure földrajza|Alap URL-cím|
 |:--|:--|:--|
-|Azure|Globális (nem régióhoz kötött)|   api.cognitive.microsofttranslator.com|
+|Azure|Globális (nem regionális)|   api.cognitive.microsofttranslator.com|
 |Azure|Egyesült Államok|   api-nam.cognitive.microsofttranslator.com|
 |Azure|Európa|  api-eur.cognitive.microsofttranslator.com|
 |Azure|Ázsia és a Csendes-óceáni térség|    api-apc.cognitive.microsofttranslator.com|
@@ -51,27 +51,27 @@ Hogy a kérelem egy adott Azure földrajzi kell kezelnie, módosítsa a kívánt
 
 ## <a name="authentication"></a>Authentication
 
-Fizessen elő a Translator Text API vagy [Cognitive Services több szolgáltatás](https://azure.microsoft.com/pricing/details/cognitive-services/) Microsoft Cognitive Services, és az előfizetés key (az Azure Portalon érhető el) hitelesítést használni. 
+Fizessen elő Translator Text API vagy [Cognitive Services több szolgáltatásra](https://azure.microsoft.com/pricing/details/cognitive-services/) a Microsoft Cognitive Services-ben, és használja az előfizetési kulcsot (amely a Azure Portalban érhető el) a hitelesítéshez. 
 
-Három fejlécek előfizetését hitelesítés használatával. A táblázat az egyes használatát ismerteti:
+Az előfizetés hitelesítéséhez három fejléc használható. Ez a táblázat leírja, hogyan használják a rendszer a következőket:
 
 |Fejlécek|Leírás|
 |:----|:----|
-|OCP-Apim-Subscription-Key|*Cognitive Services-előfizetés használata, a titkos kulcs átadásakor*.<br/>A Translator Text API-előfizetéséhez tartozó Azure titkos kulcs értéke.|
-|Authorization|*Cognitive Services-előfizetés használata egy hitelesítési tokent átadásakor.*<br/>A tulajdonosi jogkivonat értéke: `Bearer <token>`.|
-|Ocp-Apim-Subscription-Region|*Használat a Cognitive Services több szolgáltatásos előfizetéssel egy több szolgáltatást a titkos kulcs átadásakor.*<br/>A régió, több szolgáltatásos előfizetés értéke. Ezt az értéket nem kötelező, ha nem használ egy több szolgáltatásos előfizetést.|
+|OCP-Apim-Subscription-Key|*Ha a titkos kulcsot átadja, használja Cognitive Services*-előfizetéssel.<br/>Az érték a Translator Text API előfizetéséhez tartozó Azure titkos kulcs.|
+|Authorization|*Ha hitelesítési tokent továbbít, használja Cognitive Services-előfizetést.*<br/>Az érték a tulajdonosi jogkivonat: `Bearer <token>`.|
+|Ocp-Apim-Subscription-Region|*Ha több szolgáltatásból álló titkos kulcsot továbbít, használja a Cognitive Services Multi-Service előfizetést.*<br/>Az érték a Multi-Service előfizetés régiója. Ez az érték nem kötelező, ha nem használ több szolgáltatást használó előfizetést.|
 
-###  <a name="secret-key"></a>A titkos kulcs
-Az első lehetőség az, hogy hitelesítést végezni a `Ocp-Apim-Subscription-Key` fejléc. Egyszerűen adja meg a `Ocp-Apim-Subscription-Key: <YOUR_SECRET_KEY>` fejlécet a kérelemhez.
+###  <a name="secret-key"></a>Titkos kulcs
+Az első lehetőség a `Ocp-Apim-Subscription-Key` fejléc használatával történő hitelesítés. Egyszerűen adja hozzá `Ocp-Apim-Subscription-Key: <YOUR_SECRET_KEY>` a fejlécet a kérelemhez.
 
 ### <a name="authorization-token"></a>Engedélyezési jogkivonat
-Másik lehetőségként tudjon cserélni a titkos kulcs hozzáférési jogkivonat helyeként. Ez a token részét képezi, minden egyes kérelemmel a `Authorization` fejléc. Egy engedélyezési jogkivonatot beszerezni, győződjön meg arról, egy `POST` kérelem a következő URL-CÍMRE:
+Azt is megteheti, hogy kicseréli a titkos kulcsot egy hozzáférési jogkivonatra. Ezt a `Authorization` tokent az egyes kérések fejlécként tartalmazzák. Az engedélyezési jogkivonat beszerzéséhez tegyen fel `POST` egy kérelmet a következő URL-címre:
 
 | Környezet     | Hitelesítési szolgáltatás URL-címe                                |
 |-----------------|-----------------------------------------------------------|
 | Azure           | `https://api.cognitive.microsoft.com/sts/v1.0/issueToken` |
 
-Az alábbiakban például kérelmek egy adott titkos kulcs token beszerzése:
+Az alábbi példa egy titkos kulcsot tartalmazó jogkivonat beszerzésére vonatkozó kérelmeket mutat be:
 
 ```
 // Pass secret key using header
@@ -81,40 +81,40 @@ curl --header 'Ocp-Apim-Subscription-Key: <your-key>' --data "" 'https://api.cog
 curl --data "" 'https://api.cognitive.microsoft.com/sts/v1.0/issueToken?Subscription-Key=<your-key>'
 ```
 
-A kérelem sikeres a kódolt hozzáférési jogkivonatot a válasz törzsében egyszerű szövegként adja vissza. Az érvényes token az engedélyt a tulajdonosi jogkivonattal, a Translator szolgáltatás kerülnek.
+Egy sikeres kérelem visszaadja a kódolt hozzáférési tokent egyszerű szövegként a válasz törzsében. Az érvényes jogkivonatot tulajdonosi jogkivonatként adja át a fordító szolgáltatásnak az engedélyezésben.
 
 ```
 Authorization: Bearer <Base64-access_token>
 ```
 
-Egy hitelesítési tokent a 10 percig érvényes. A jogkivonat a Translator API-k több hívása esetén kell újra felhasználni. Azonban ha a program kéréseket hajt végre a Translator API egy kiterjesztett időszakon belül, majd a program kell kérnie egy új hozzáférési jogkivonat rendszeres időközönként (például: 8 percenként).
+A hitelesítési jogkivonat 10 percig érvényes. A tokent újra fel kell használni, amikor több hívást végez a fordítói API-kon. Ha azonban a program hosszabb időn keresztül kezdeményezi a kérelmeket a Translator API-nak, akkor a programnak rendszeres időközönként új hozzáférési jogkivonatot kell igényelnie (például 8 percenként).
 
-### <a name="multi-service-subscription"></a>Több szolgáltatásos előfizetés
+### <a name="multi-service-subscription"></a>Több szolgáltatásra kiterjedő előfizetés
 
-A legutóbbi hitelesítési lehetőség, hogy a Cognitive Services-szolgáltatás több szolgáltatásos előfizetést használ. Ez lehetővé teszi, hogy egyetlen titkos kulcs több szolgáltatás-kérelmek hitelesítéséhez. 
+Az utolsó hitelesítési lehetőség a kognitív szolgáltatás többszolgáltatásos előfizetésének használata. Ez lehetővé teszi, hogy egyetlen titkos kulcsot használjon a kérelmek több szolgáltatáshoz való hitelesítéséhez. 
 
-Titkos kulcs több szolgáltatásos használatakor meg kell adnia két hitelesítési fejléceket a kérelmét. Az első továbbítja a titkos kulcsot, a második adja meg a régiót, az Ön előfizetéséhez rendelve. 
+Több szolgáltatásból álló titkos kulcs használata esetén két hitelesítési fejlécet kell tartalmaznia a kérelemmel. Első lépésként a titkos kulcsot adja meg, a második az előfizetéshez társított régiót határozza meg. 
 * `Ocp-Apim-Subscription-Key`
 * `Ocp-Apim-Subscription-Region`
 
-Régió megadása kötelező a több szolgáltatásos Text API-előfizetésre. A választott régió az egyedüli olyan régió, amely a több szolgáltatásos előfizetési kulcs használatakor szövegfordítás használható, és az Azure Portalon keresztül több szolgáltatásos előfizetéséhez való regisztráció során kiválasztott ugyanabban a régióban kell lennie.
+A Multi-Service Text API-előfizetéshez régió szükséges. A kiválasztott régió az egyetlen olyan régió, amelyet a többszolgáltatásos előfizetési kulcs használatakor használhat a szöveges fordításhoz, és a Azure Portalon keresztül a többszolgáltatásos előfizetésre való feliratkozáskor választott régiónak kell lennie.
 
-Választható régiók a következők `australiaeast`, `brazilsouth`, `canadacentral`, `centralindia`, `centraluseuap`, `eastasia`, `eastus`, `eastus2`, `japaneast`, `northeurope`, `southcentralus`, `southeastasia`, `uksouth`, `westcentralus`, `westeurope`, `westus`, és `westus2`.
+Az elérhető régiók `australiaeast`a `brazilsouth`következők `canadacentral`, `centralindia` `centraluseuap` `eastasia` ,,`eastus2`,,,,,,,,, `eastus` `japaneast` `northeurope` `southcentralus` `southeastasia` ,`uksouth`,,és .`westus2` `westcentralus` `westeurope` `westus`
 
-Ha a titkos kulcsot adja át a lekérdezési karakterlánc paraméterrel `Subscription-Key`, majd a lekérdezési paramétert meg kell adnia a régiót `Subscription-Region`.
+Ha a lekérdezési sztringben megadja a titkos kulcsot a paraméterrel `Subscription-Key`, akkor a régiót a lekérdezési paraméterrel `Subscription-Region`kell megadnia.
 
-Ha tulajdonosi jogkivonattal használ, be kell szereznie a jogkivonatot a régió végpontról: `https://<your-region>.api.cognitive.microsoft.com/sts/v1.0/issueToken`.
+Ha tulajdonosi jogkivonatot használ, be kell szereznie a tokent a régió végpontján: `https://<your-region>.api.cognitive.microsoft.com/sts/v1.0/issueToken`.
 
 
 ## <a name="errors"></a>Hibák
 
-Standard hiba választ a név-érték pár nevű JSON-objektum `error`. Az érték akkor is egy JSON-tulajdonságokkal rendelkező objektum:
+A standard hibaérték a name/Value pár nevű `error`JSON-objektum. Az érték egy JSON-objektum is, amely tulajdonságokkal rendelkezik:
 
-  * `code`: Kiszolgáló által meghatározott hibakód.
+  * `code`: Kiszolgáló által definiált hibakód.
 
-  * `message`: Egy karakterlánc, így a hiba emberek számára olvasható reprezentációját.
+  * `message`: Egy karakterlánc, amely a hiba ember által olvasható ábrázolását adja meg.
 
-Ha például egy ingyenes próba-előfizetéssel rendelkező ügyfél lenne a következő hibaüzenet után az ingyenes kvótát kimerül:
+Az ingyenes próbaverziós előfizetéssel rendelkező ügyfelek például a következő hibaüzenetet kapják meg az ingyenes kvóta kimerülése után:
 
 ```
 {
@@ -124,46 +124,46 @@ Ha például egy ingyenes próba-előfizetéssel rendelkező ügyfél lenne a k�
     }
 }
 ```
-A hibakód egy 6 jegyű számot csoportba foglalása 3 számjegyből HTTP-állapotkód további követ és 3-jegyű szám kategorizálása a hibát. Gyakori hibakódok a következők:
+A hibakód egy 6 számjegyből álló szám, amely a 3 számjegyből álló HTTP-állapotkódot kombinálja, majd egy 3 számjegyű számot, amely további kategorizálja a hibát. Gyakori hibakódok:
 
 | Kód | Leírás |
 |:----|:-----|
-| 400000| A kérelem bemenetek egyike érvénytelen.|
-| 400001| A "hatókör" paraméter érvénytelen.|
-| 400002| A "category" paraméter érvénytelen.|
-| 400003| A nyelvi típusmegadása hiányzik vagy érvénytelen.|
-| 400004| A célként megadott parancsfájl formátumú ("a parancsfájl") nem található vagy érvénytelen.|
-| 400005| Egy bemeneti szöveg nem található vagy érvénytelen.|
-| 400006| A nyelvi és parancsfájl kombinációja érvénytelen, nem.|
-| 400018| Egy adatforrás parancsfájl formátumú ("a parancsfájl") nem található vagy érvénytelen.|
-| 400019| Egyet a megadott nyelv nem támogatott.|
-| 400020| A bemeneti szöveg a tömbben található elemek egyike érvénytelen.|
-| 400021| Az API verzió paramétere hiányzik vagy érvénytelen.|
-| 400023| A megadott nyelvre a pár egyik není platná.|
-| 400035| A Forrásnyelv ("feladó" mező) nem érvényes.|
-| 400036| A célként megadott nyelv ("" mező) nem található vagy érvénytelen.|
-| 400042| A beállítások megadott ("Beállítások" mező) egyike nem érvényes.|
-| 400043| Az ügyfél-nyomkövetési Azonosítót (ClientTraceId mező vagy X-ClientTranceId fejléc) nem található vagy érvénytelen.|
-| 400050| A bemeneti szöveg neve túl hosszú. Nézet [kérelmekre vonatkozó korlátok](../request-limits.md).|
-| 400064| A "fordítási" paramétere hiányzik vagy érvénytelen.|
-| 400070| A célként megadott parancsprogramok (ToScript paraméter) száma nem egyezik meg a cél nyelvek (, paraméterben) száma.|
-| 400071| Az érték érvénytelen TextType.|
-| 400072| A bemeneti szöveg a tömb túl sok elemet tartalmaz.|
-| 400073| A parancsfájl paraméter nem érvényes.|
+| 400000| Az egyik kérelem bemenete érvénytelen.|
+| 400001| A "scope" paraméter érvénytelen.|
+| 400002| A "Category" paraméter érvénytelen.|
+| 400003| A nyelv megadása hiányzik vagy érvénytelen.|
+| 400004| A célként megadott parancsfájl-megadó ("to script") hiányzik vagy érvénytelen.|
+| 400005| Egy bemeneti szöveg hiányzik vagy érvénytelen.|
+| 400006| A nyelv és a szkript kombinációja érvénytelen.|
+| 400018| A forrás parancsfájl-megadása ("from script") hiányzik vagy érvénytelen.|
+| 400019| A megadott nyelv egyike nem támogatott.|
+| 400020| A bemeneti szöveg tömb egyik eleme nem érvényes.|
+| 400021| Az API-verzió paramétere hiányzik vagy érvénytelen.|
+| 400023| A megadott nyelvi párok egyike érvénytelen.|
+| 400035| A forrás nyelve ("from" mező) érvénytelen.|
+| 400036| A célként megadott nyelv ("to" mező) hiányzik vagy érvénytelen.|
+| 400042| A megadott beállítások egyike ("beállítások" mező) érvénytelen.|
+| 400043| Az ügyfél nyomkövetési azonosítója (ClientTraceId mező vagy X-ClientTranceId fejléc) hiányzik vagy érvénytelen.|
+| 400050| A bemeneti szöveg túl hosszú. [Kérelmek korlátozásának](../request-limits.md)megtekintése.|
+| 400064| A "Translation" paraméter hiányzik vagy érvénytelen.|
+| 400070| A cél-parancsfájlok (ToScript paraméter) száma nem egyezik meg a célként megadott nyelvek számával (a paraméterrel).|
+| 400071| Az érték nem érvényes a TextType.|
+| 400072| A bemeneti szöveg tömbje túl sok elemet tartalmaz.|
+| 400073| A parancsfájl paramétere érvénytelen.|
 | 400074| A kérelem törzse nem érvényes JSON.|
-| 400075| A nyelvi pár és kategória kombináció nem lesz érvényes.|
-| 400077| Kérelem maximális mérete túl lett lépve. Nézet [kérelmekre vonatkozó korlátok](../request-limits.md).|
-| 400079| Az egyéni rendszer közötti fordítás és nyelv közül a kért nem létezik.|
-| 400080| A nyelv vagy a parancsfájl nem támogatott átbetűzésű.|
-| 401000| A kérelem nem engedélyezett, mert hitelesítő adatok hiányoznak vagy érvénytelen.|
-| 401015| "A megadott hitelesítő adatok vannak a beszédfelismerő API-hoz. A kérelem hitelesítő adatok szükségesek a szöveges API-hoz. Használja a Translator Text API-előfizetés."|
+| 400075| A nyelvi pár és a kategória kombináció érvénytelen.|
+| 400077| Túllépte a kérések maximális méretét. [Kérelmek korlátozásának](../request-limits.md)megtekintése.|
+| 400079| A és a nyelv közötti fordításra kért egyéni rendszer nem létezik.|
+| 400080| A nyelv vagy a parancsfájl nem támogatja az írást.|
+| 401000| A kérés nincs engedélyezve, mert a hitelesítő adatok hiányoznak vagy érvénytelenek.|
+| 401015| "A megadott hitelesítő adatok a Speech API-hoz tartoznak. Ehhez a kérelemhez a Text API hitelesítő adatai szükségesek. Használja az előfizetést Translator Text API. "|
 | 403000| A művelet nem engedélyezett.|
 | 403001| A művelet nem engedélyezett, mert az előfizetés túllépte az ingyenes kvótát.|
-| 405000| Kérelmi metódus nem támogatott a kért erőforrás.|
-| 408001| A kért fordítási rendszer előkészítésére. Próbálkozzon újra néhány perc múlva.|
-| 408002| A kérelem túllépte az időkorlátot a beérkező streamben vár. Az ügyfél nem küldött kérés a kiszolgáló előkészített várakozási idő alatt. Az ügyfél újabb bármikor előfordulhat, hogy ismételje meg a kérelem módosítások nélkül.|
-| 415000| A Content-Type fejléc nem található vagy érvénytelen.|
-| 429000, 429001, 429002| A kiszolgáló elutasította a kérelmet, mert az ügyfél túllépte a kérelmekre vonatkozó korlátok.|
-| 500000| Váratlan hiba történt. Ha a hiba továbbra is fennáll, jelentse be a dátum/idő hiba, kérjen azonosító X-RequestId: válaszfejléc, és a kérelem fejlécében X-ClientTraceId ügyfél-azonosítója.|
-| 503000| Szolgáltatás átmenetileg nem érhető el. Próbálkozzon újra. Ha a hiba továbbra is fennáll, jelentse be a dátum/idő hiba, kérjen azonosító X-RequestId: válaszfejléc, és a kérelem fejlécében X-ClientTraceId ügyfél-azonosítója.|
+| 405000| A kért erőforrás nem támogatja a kérelem metódusát.|
+| 408001| A kért fordítási rendszer előkészítése folyamatban van. Próbálkozzon újra néhány perc múlva.|
+| 408002| A kérelem időtúllépést várt a bejövő adatfolyamra való várakozás közben. Az ügyfél nem hozott létre kérelmet a kiszolgáló várakozási ideje alatt. Az ügyfél bármikor megismételheti a kérést anélkül, hogy később módosításokat kellene megismételnie.|
+| 415000| A Content-Type fejléc hiányzik vagy érvénytelen.|
+| 429000, 429001, 429002| A kiszolgáló elutasította a kérelmet, mert az ügyfél túllépte a kérelmek korlátait.|
+| 500000| Váratlan hiba történt. Ha a hiba továbbra is fennáll, jelentse a hibát dátum/idő szerint, a válasz fejléce X-kérelemazonosító, valamint az ügyfél-azonosítót az X-ClientTraceId kérelem fejlécében.|
+| 503000| Szolgáltatás átmenetileg nem érhető el. Próbálkozzon újra. Ha a hiba továbbra is fennáll, jelentse a hibát dátum/idő szerint, a válasz fejléce X-kérelemazonosító, valamint az ügyfél-azonosítót az X-ClientTraceId kérelem fejlécében.|
 

@@ -1,6 +1,6 @@
 ---
-title: Az Azure Security Center az IoT-megoldás előzetes konfigurálása |} A Microsoft Docs
-description: Ismerje meg, hogyan konfigurálhatja az Azure Security Center használata az IoT teljes körű IoT-megoldás.
+title: A Azure Security Center konfigurálása a IoT-megoldáshoz | Microsoft Docs
+description: Megtudhatja, hogyan konfigurálhatja a teljes körű IoT-megoldást a IoT Azure Security Center használatával.
 services: asc-for-iot
 ms.service: asc-for-iot
 documentationcenter: na
@@ -13,53 +13,49 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/26/2019
+ms.date: 07/23/2019
 ms.author: mlottner
-ms.openlocfilehash: 7f90dba899651b677740e9ceb88bdd579ebb073c
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 15c8aabbcb19d009bb202d111dc7f80da4cebff1
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67616647"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68597028"
 ---
-# <a name="quickstart-configure-your-iot-solution"></a>Gyors útmutató: Az IoT-megoldás konfigurálása
+# <a name="quickstart-configure-your-iot-solution"></a>Gyors útmutató: A IoT-megoldás konfigurálása
 
-> [!IMPORTANT]
-> Az Azure Security Center az IoT jelenleg nyilvános előzetes verzióban érhető el.
-> Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+Ez a cikk azt ismerteti, hogyan hajthatja végre a IoT biztonsági megoldás kezdeti konfigurációját a IoT Azure Security Center használatával. 
 
-Ez a cikk bemutatja, hogyan kezdeti konfigurálása az ASC használva az IoT biztonsági megoldásokat magyarázattal szolgál. 
+## <a name="azure-security-center-for-iot"></a>Azure Security Center for IoT
 
-## <a name="azure-security-center-asc-for-iot"></a>Az Azure Security Center (ASC) az IoT
+A IoT Azure Security Center teljes körű biztonságot nyújt az Azure-alapú IoT-megoldásokhoz.
 
-ASC az IoT Azure-alapú IoT-megoldások átfogó teljes körű biztonsági biztosít.
+A IoT Azure Security Center segítségével egyetlen irányítópulton figyelheti a teljes IoT-megoldást, felhasználva az összes IoT-eszközt, IoT platformot és háttér-erőforrást az Azure-ban.
 
-Az IoT ASC figyelheti a teljes IoT-megoldás egy irányítópult, felszínre hozza a minden IoT-eszközök, IoT-platformokhoz és háttérbeli erőforrásokhoz az Azure-ban.
+Ha engedélyezte a IoT Hub, a IoT Azure Security Center automatikusan azonosítja a többi Azure-szolgáltatást is, amely az IoT hubhoz csatlakozik, és kapcsolódik a IoT-megoldáshoz.
 
-Engedélyezve van az IoT hub, IOT ASC automatikusan azonosítja más Azure-szolgáltatásokhoz is csatlakozik az IoT hub és az IoT-megoldás kapcsolatos.
+Az automatikus kapcsolat észlelése mellett kiválaszthatja és kiválaszthatja, hogy mely egyéb Azure-erőforráscsoportok legyenek felcímkézve a IoT-megoldás részeként.
 
-Automatikus kapcsolatok észlelése, mellett válasszon and választhatja mely más Azure-erőforrások címke az IoT-megoldás részeként.
-A választott beállításokat adhat hozzá a teljes előfizetések, erőforráscsoportok vagy egyetlen erőforrás.
+A kiválasztott lehetőségek lehetővé teszik teljes előfizetések, erőforráscsoportok vagy önálló erőforrások hozzáadását.
 
-Után az összes erőforrás kapcsolat definiálása, ASC az IoT használ az Azure Security Center használatával biztosítanak a biztonsági javaslatokra és riasztásokra ezeket az erőforrásokat.
+Az összes erőforrás-kapcsolat meghatározása után a IoT Azure Security Center a Azure Security Center, hogy biztonsági javaslatokat és riasztásokat nyújtson ezekhez az erőforrásokhoz.
 
-## <a name="add-azure-resources-to-your-iot-solution"></a>Az IoT-megoldás Azure-erőforrások hozzáadása
+## <a name="add-azure-resources-to-your-iot-solution"></a>Azure-erőforrások hozzáadása a IoT-megoldáshoz
 
-Az IoT-megoldás új erőforráscsoport hozzáadásához tegye a következőket: 
+Ha új erőforrást szeretne hozzáadni a IoT-megoldáshoz, tegye a következőket: 
 
-1. Nyissa meg a **az IoT Hub** az Azure Portalon. 
-2. Válassza ki, és nyissa meg a **erőforrások** alatt **biztonsági** a bal oldali menüből. 
-3. Válassza ki **erőforrások hozzáadása**.
-4. Válassza ki az IoT-megoldás tartozó erőforrásokat.
+1. Nyissa  meg a IoT Hubt Azure Portal. 
+2. Válassza ki és nyissa meg a bal oldali menüben a **Biztonság** területen található **erőforrások** elemet. 
+3. Válassza a **Szerkesztés** lehetőséget, és válassza ki a IoT-megoldáshoz tartozó erőforrásokat.
 5. Kattintson a **Hozzáadás**lehetőségre. 
 
-Gratulálunk! Az IoT-megoldás történő hozzáadása egy új erőforrást.
+Gratulálunk! Új erőforráscsoportot adott hozzá a IoT-megoldáshoz.
 
-Az ASC IOT most figyelők Ön újonnan hozzáadott erőforrásokat, és felület releváns biztonsági javaslatok és riasztások az IoT-megoldás részeként.
+A IoT-hez készült Azure Security Center mostantól figyeli az újonnan hozzáadott erőforráscsoportokat, és a IoT-megoldás részeként felfedi a megfelelő biztonsági javaslatokat és riasztásokat.
 
 ## <a name="next-steps"></a>További lépések
 
-Folytassa a következő cikkben megtudhatja, hogyan hozhat létre biztonsági modulok...
+A következő cikkből megtudhatja, hogyan hozhat létre biztonsági modulokat...
 
 > [!div class="nextstepaction"]
 > [Biztonsági modulok létrehozása](quickstart-create-security-twin.md)

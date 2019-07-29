@@ -1,7 +1,7 @@
 ---
-title: V3 – Translator Text API áttelepítése
-titlesuffix: Azure Cognitive Services
-description: Ismerje meg, hogyan V2 át a Translator Text API v3-as.
+title: Migrálás v3-Translator Text API
+titleSuffix: Azure Cognitive Services
+description: Megtudhatja, hogyan telepíthet át a v2-ről a Translator Text APIre.
 services: cognitive-services
 author: swmachan
 manager: nitinme
@@ -10,38 +10,38 @@ ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 02/01/2019
 ms.author: swmachan
-ms.openlocfilehash: 8a2530a4eb4365a022ab11279b344a5d2852430b
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 9ce9dc330ec1b0c32ce045437fadb5d8c191529e
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67448303"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68595245"
 ---
-# <a name="translator-text-api-v2-to-v3-migration"></a>Translator Text API V2 V3 áttelepítése
+# <a name="translator-text-api-v2-to-v3-migration"></a>Translator Text API v2 – v3 Migrálás
 
 > [!NOTE]
-> 2018. április 30. v2 kivezettük. Telepítse át az alkalmazások V3 kizárólag a v3-as elérhető új funkciók előnyeinek kihasználásához.
+> A v2 2018. április 30-ig elavult. Telepítse át az alkalmazásait a v3-ra, hogy kihasználhassa a kizárólag a v3 verzióban elérhető új funkciókat.
 > 
-> A Microsoft Translator Hub jén kivonjuk a forgalomból 2019. május 17. [Fontos állapotTelepítési információit és a dátumok](https://www.microsoft.com/translator/business/hub/).  
+> A Microsoft Translator hub 2019. május 17-én megszűnik. [Tekintse meg a fontos áttelepítési információkat és dátumokat](https://www.microsoft.com/translator/business/hub/).  
 
-A Microsoft Translator csapat kiadott 3-as verziójú (V3), a Translator Text API. Ebben a kiadásban új funkciók, a elavult módszerek és a egy új formátum küld és fogad adatokat a Microsoft Translator szolgáltatás tartalmaz. Ez a dokumentum módosítása alkalmazások általi használatát a v3-as információkat szolgáltat. 
+A Microsoft Translator csapata a Translator Text API 3. verzióját (v3) adta ki. Ez a kiadás új szolgáltatásokat, elavult metódusokat és új formátumot tartalmaz a Microsoft Translator Service-ből történő küldéshez és adatok fogadásához. Ebből a dokumentumból megtudhatja, hogyan módosíthatja az alkalmazások a v3-es verzió használatát. 
 
-Ez a dokumentum végén, hogy további hasznos hivatkozásokat tartalmaz.
+A dokumentum vége hasznos hivatkozásokat tartalmaz, amelyekről további információt talál.
 
-## <a name="summary-of-features"></a>Szolgáltatások összefoglalása
+## <a name="summary-of-features"></a>Funkciók összefoglalása
 
-* Nincs nyomkövetés - a v3-as nyomkövetés-mellőzési minden tarifacsomagja az Azure Portalon vonatkozik. Ez a szolgáltatás azt jelenti, hogy az V3 API-nak elküldött szöveg nélkül menti a rendszer a Microsoft által.
-* JSON - XML JSON váltotta fel. A szolgáltatásnak küldött és az szolgáltatásból származó összes adat JSON formátumban van.
-* Egyetlen kérelem - a fordítására metódust a támogatott nyelveket cél több "to" nyelv fordítási egyetlen kérésbe fogad el. Egyetlen kérelem lehet például a "from" angol és a "to" német, spanyol és japán nyelven vagy bármely más csoport nyelveken.
-* Kétnyelvű szótár - kétnyelvű szótár metódus az API-ra bővült. Ez a módszer "keresési" és "mintái" tartalmazza.
-* Átbetűzés - transliterate metódus az API-ra bővült. Ez a módszer átalakítja a szavak és a egy parancsfájl (pl. a mondatok Arab) egy másik parancsfájlba (például: Latin betűs).
-* Nyelvek – egy új "nyelv" módszer nyelvi információk ennek a JSON formátumban, a 'fordítása', "szótár" és a "átbetűzés" való használatra.
-* Új fordítás – az új képességekkel bővült a "fordítása" metódus támogatja, amelyek korábban a V2 API külön módszerként funkcióit. Ez például akkor TranslateArray.
-* Beszéljen metódus – szöveg-beszéd átalakítás funkció már nem támogatott a Microsoft Translator API-t. Szöveg-beszéd átalakítás funkció érhető el a [Microsoft Speech Service](https://docs.microsoft.com/azure/cognitive-services/speech-service/text-to-speech).
+* Nincs nyomkövetési v3 – a nyomkövetés nem vonatkozik a Azure Portal összes díjszabási szintjére. Ez a funkció azt jelenti, hogy a V3 API-nak nem küldött szöveg a Microsoft által lesz mentve.
+* A JSON-XML-t a JSON váltja fel. A szolgáltatásnak küldött és a szolgáltatástól kapott összes adatok JSON formátumúak.
+* Több célnyelv egyetlen kérelemben – a fordítási módszer több "to" nyelvet is elfogad egyetlen kérelemben való fordításhoz. Egy kérés például lehet "from" angol és "–" német, spanyol, Japán vagy más nyelvi csoport.
+* Kétnyelvű szótár – egy kétnyelvű szótári metódus lett hozzáadva az API-hoz. Ez a metódus a "lookup" és a "példák" kifejezéseket tartalmazza.
+* Átbetűzés – átbetűzés metódus lett hozzáadva az API-hoz. Ez a metódus a szavakat és a mondatokat egy parancsfájlban konvertálja (például Arab) egy másik parancsfájlba (például Latin betűs).
+* Nyelvek – az új "languages" metódus JSON formátumú nyelvi információkat biztosít a "Translate", a "Dictionary" és a "átbetűzés" metódusokkal való használathoz.
+* Új fordítás – új képességek lettek hozzáadva a "Translate" metódushoz, amely a v2 API különböző funkcióit külön módszerként támogatja. Ilyen például a TranslateArray.
+* A beszédfelismerési funkció a Microsoft Translator API-ban már nem támogatott. A beszédfelismerési funkció a [Microsoft Speech Service](https://docs.microsoft.com/azure/cognitive-services/speech-service/text-to-speech)-ben érhető el.
 
-Az alábbi listában szereplő V2 és V3 módszerek a v3-as módszerek és API-kat biztosít a funkciót, melyet a V2 azonosítja.
+A v2 és v3 metódusok következő listája a v2-vel kapott funkciókat biztosító v3 metódusokat és API-kat azonosítja.
 
-| V2 API-metódus   | V3 API-kompatibilitás |
+| V2 API-módszer   | V3 API-kompatibilitás |
 |:----------- |:-------------|
 | `Translate`     | [Fordítása](reference/v3-0-translate.md)          |
 | `TranslateArray`      | [Fordítása](reference/v3-0-translate.md)        |
@@ -49,38 +49,38 @@ Az alábbi listában szereplő V2 és V3 módszerek a v3-as módszerek és API-k
 | `GetLanguagesForTranslate`     | [Nyelvek](reference/v3-0-languages.md)       |
 | `GetLanguagesForSpeak`      | [Microsoft Speech Service](https://docs.microsoft.com/azure/cognitive-services/speech-service/language-support#text-to-speech)         |
 | `Speak`     | [Microsoft Speech Service](https://docs.microsoft.com/azure/cognitive-services/speech-service/text-to-speech)          |
-| `Detect`     | [Észlelése](reference/v3-0-detect.md)         |
-| `DetectArray`     | [Észlelése](reference/v3-0-detect.md)         |
-| `AddTranslation`     | A szolgáltatás már nem támogatott.       |
-| `AddTranslationArray`    | A szolgáltatás már nem támogatott.          |
+| `Detect`     | [Kinyomoz](reference/v3-0-detect.md)         |
+| `DetectArray`     | [Kinyomoz](reference/v3-0-detect.md)         |
+| `AddTranslation`     | A szolgáltatás már nem támogatott       |
+| `AddTranslationArray`    | A szolgáltatás már nem támogatott          |
 | `BreakSentences`      | [BreakSentence](reference/v3-0-break-sentence.md)       |
-| `GetTranslations`      | A szolgáltatás már nem támogatott.         |
-| `GetTranslationsArray`      | A szolgáltatás már nem támogatott.         |
+| `GetTranslations`      | A szolgáltatás már nem támogatott         |
+| `GetTranslationsArray`      | A szolgáltatás már nem támogatott         |
 
-## <a name="move-to-json-format"></a>Helyezze át, JSON-formátumban
+## <a name="move-to-json-format"></a>Áthelyezés JSON formátumba
 
-A Microsoft Translator Text fordítási V2 az elfogadott és XML-formátumú adatokat adott vissza. V3 API használatával küldött és fogadott összes adatot JSON formátumban vannak. XML már elfogad vagy V3 adja vissza.
+A Microsoft Translator Text Translation v2 XML formátumban fogadta el és adta vissza az értékeket. A v3-as verzióban az API használatával küldött és fogadott összes adatfájl JSON formátumban van. Az XML-fájl már nem fogadható el, vagy nem ad vissza a v3-as verzióban.
 
-Ez a módosítás érinti a V2 szöveg fordítási API-hoz írt alkalmazások számos aspektusát. Példa: A nyelvek API szövegfordítás, átbetűzésű és a két szótár módszerek nyelvi adatait adja vissza. Az összes módszer egyetlen hívásával kapcsolatos összes nyelv kérheti, vagy külön-külön tanúsítványkérelmeket.
+Ez a módosítás a v2 Text Translation API-hoz írt alkalmazások számos aspektusát érinti. Példa: A languages API nyelvi adatokat ad vissza a szöveg fordításához, az íráshoz és a két szótári módszerhez. Egy hívásban az összes metódushoz kérheti az összes nyelvi információt, vagy egyenként is megkérheti őket.
 
-A nyelvek metódus nem igényel hitelesítést; a következő hivatkozásra kattintva a v3-as JSON összes nyelvi információk jelennek meg:
+A languages metódus nem igényel hitelesítést; a következő hivatkozásra kattintva megtekintheti az összes nyelvi információt a (z) v3 verziójában a JSON-ban:
 
-[https://api.cognitive.microsofttranslator.com/languages?api-version=3.0&scope=translation, szótár, átbetűzésű](https://api.cognitive.microsofttranslator.com/languages?api-version=3.0&scope=translation,dictionary,transliteration)
+[https://api.cognitive.microsofttranslator.com/languages?api-version=3.0&scope=translation, szótár, angol nyelven](https://api.cognitive.microsofttranslator.com/languages?api-version=3.0&scope=translation,dictionary,transliteration)
 
 ## <a name="authentication-key"></a>Hitelesítési kulcs
 
-A hitelesítési kulcs a v2-ben használja a v3-as fogadható el. Nem kell egy új előfizetést. Akkor fog tudni V2 és V3 kombinálhatók az alkalmazásokban az yearlong áttelepítés idején megkönnyíti, hogy új verzióira, miközben továbbra is végzi az áttelepítést a V2-XML V3-JSON.
+A v2-hez használt hitelesítési kulcs a v3-as verzióhoz lesz elfogadva. Nem kell új előfizetést beszereznie. Az egész évben-áttelepítési időszak során a v2 és a v3 kombinációt is használhatja az alkalmazásaiban, így könnyebben szabadíthat fel új verziókat, miközben továbbra is a v2-XML-ről v3-JSON-ra végez áttelepítést.
 
 ## <a name="pricing-model"></a>Díjszabási modell
 
-A Microsoft Translator V3 V2 díjszabása volt; ugyanúgy díjszabása karakterenként beleértve a szóközöket. Az új szolgáltatások a v3-as hajtson végre néhány módosítást karakterek vannak számlázásban is megjelenik.
+A Microsoft Translator v3 díjszabása megegyezik a v2 díjszabással. /karakter, a szóközöket is beleértve. A v3 új funkciói bizonyos változtatásokat hajtanak végre a számlázási számításokban.
 
-| V3 metódus   | Karakterek számlázásban is megjelenik |
+| V3 módszer   | A számlázáshoz megszámolt karakterek |
 |:----------- |:-------------|
-| `Languages`     | Egyetlen elküldött karakter, nincs számításba, díjmentesen.          |
-| `Translate`     | Száma alapján hány karaktert elküldése fordítás, és hány nyelvek a karakterek fordítja. elküldött 50 karakter hosszú lehet, és 5 nyelvek kért 50 x 5.           |
-| `Transliterate`     | Számoljuk el átbetűzésű-karakterek száma.         |
-| `Dictionary lookup & example`     | Számoljuk el szótár keresés és a példák-karakterek száma.         |
+| `Languages`     | Nincs elküldött karakter, nincs megszámolva, díjmentes.          |
+| `Translate`     | A Count függvény azon alapszik, hogy hány karaktert küld a rendszer a fordításhoz, és hogy hány nyelvet fordítanak le a rendszer. 50 karakter elküldve, a kért 5 nyelv pedig 50x5.           |
+| `Transliterate`     | Az írásra elküldött karakterek száma.         |
+| `Dictionary lookup & example`     | A Szótárbeli kereséshez elküldött karakterek száma és a példák száma.         |
 | `BreakSentence`     | Díjmentes.       |
 | `Detect`     | Díjmentes.      |
 
@@ -90,7 +90,7 @@ Globális
 
 * api.cognitive.microsofttranslator.com
 
-## <a name="v3-api-text-translations-methods"></a>V3 API szöveg fordítások módszerek
+## <a name="v3-api-text-translations-methods"></a>V3 API Text translations metódusok
 
 [`Languages`](reference/v3-0-languages.md)
 
@@ -106,44 +106,44 @@ Globális
 
 [`Dictionary/example`](reference/v3-0-dictionary-examples.md)
 
-## <a name="compatibility-and-customization"></a>Kompatibilitási és testreszabás
+## <a name="compatibility-and-customization"></a>Kompatibilitás és testreszabás
 
 > [!NOTE]
 > 
-> A Microsoft Translator Hub jén kivonjuk a forgalomból 2019. május 17. [Fontos állapotTelepítési információit és a dátumok](https://www.microsoft.com/translator/business/hub/).   
+> A Microsoft Translator hub 2019. május 17-én megszűnik. [Tekintse meg a fontos áttelepítési információkat és dátumokat](https://www.microsoft.com/translator/business/hub/).   
 
-A Microsoft Translator V3 Neurális gépi fordítás alapértelmezés szerint használ. Ezért nem használható a Microsoft Translator hubbal. A Translator Hub csak az örökölt statisztikai gépi fordítási támogatja. Neurális fordítással testreszabásának már elérhető az egyéni translatorral. [További tudnivalók a Neurális gépi fordítás testreszabása](custom-translator/overview.md)
+A Microsoft Translator v3 alapértelmezés szerint neurális gépi fordítást használ. Ezért nem használható a Microsoft Translator hub használatával. A Translator hub csak az örökölt statisztikai gépi fordítást támogatja. Az neurális fordítás testreszabása mostantól a Custom Translator használatával érhető el. [További információ a neurális gépi fordítás testreszabásáról](custom-translator/overview.md)
 
-API v3-as szöveggel Neurális fordítással nem támogatja a standard szintű kategóriák (SMT, beszédfelismerés, technológiai, generalnn) használatát.
+A v3 Text API-val való neurális fordítás nem támogatja a szabványos kategóriák használatát (SMT, Speech, Tech, generalnn).
 
-| |Végpont|    GDPR-megfelelőség processzor|  Use Translator Hub| Egyéni Translator (előzetes verzió) használata|
+| |Végpont|    GDPR processzor megfelelősége|  Translator hub használata| Egyéni fordító használata (előzetes verzió)|
 |:-----|:-----|:-----|:-----|:-----|
-|Translator Text API-Version 2| api.microsofttranslator.com|    Nem  |Igen    |Nem|
-|Translator Text API-verzió 3| api.cognitive.microsofttranslator.com|  Igen|    Nem| Igen|
+|Translator Text API 2. verzió| api.microsofttranslator.com|    Nem  |Igen    |Nem|
+|Translator Text API 3. verzió| api.cognitive.microsofttranslator.com|  Igen|    Nem| Igen|
 
-**Translator Text API-verzió 3**
-* Az általánosan elérhető és teljes mértékben támogatott.
-* GDPR-kompatibilis, a processzor, amely eleget tesz ISO 20001 és 20018, valamint SOC 3 minősítési követelményeinek. 
-* Lehetővé teszi a Neurális hálózat fordítási rendszerek egyéni Translator (előzetes verzió), az új Translator NMT testreszabási funkcióról a testreszabott meghívásához. 
-* Nem biztosít a Microsoft Translator Hub használatával létrehozott egyéni fordítási rendszerekhez való hozzáférést.
+**Translator Text API 3. verzió**
+* Általánosan elérhető és teljes mértékben támogatott.
+* A GDPR megfelelő, és megfelel az ISO 20001-es és 20018-es, valamint a SOC 3 minősítési követelményeknek. 
+* Lehetővé teszi az egyéni Translator (előzetes verzió) használatával testreszabott neurális hálózati fordítói rendszerek meghívását, az új Translator NMT testreszabási funkcióját. 
+* A nem biztosít hozzáférést a Microsoft Translator hub használatával létrehozott egyéni fordítási rendszerekhez.
 
-A Translator Text API 3-as verziójához használja a api.cognitive.microsofttranslator.com végpont használata.
+Ha a api.cognitive.microsofttranslator.com-végpontot használja, a Translator Text API 3. verzióját használja.
 
-**Translator Text API-Version 2**
-* Nem felel meg az összes ISO 20001,20018 és a SOC 3 hardvertanúsítvány követelményeit. 
-* Nem teszi lehetővé a Neurális hálózat fordítási rendszerek a Translator testreszabási funkcióval testreszabott meghívásához.
-* A Microsoft Translator Hub használatával létrehozott egyéni fordítási rendszerekhez való hozzáférést biztosít.
-* A Translator Text API 2-es verzióját használja a api.microsofttranslator.com végpont használata.
+**Translator Text API 2. verzió**
+* Nem felel meg az összes ISO-20001, 20018 és SOC 3 minősítési követelménynek. 
+* A nem teszi lehetővé a fordítói testreszabási funkcióval testreszabott neurális hálózati fordítói rendszerek meghívását.
+* Hozzáférést biztosít a Microsoft Translator hub használatával létrehozott egyéni fordítási rendszerekhez.
+* Ha a api.microsofttranslator.com-végpontot használja, a Translator Text API 2-es verzióját használja.
 
-Nincs a fordító API-verzió létrehoz egy rekordot a fordítások. A fordítások soha nem bárkivel vannak megosztva. További információ a [Translator nyomkövetés-mellőzési](https://www.aka.ms/NoTrace) weblapon.
+A Translator API egyik verziója sem hoz létre egy rekordot a fordításokról. A fordítások soha nem oszthatók meg senkivel. További információ a [Translator No-Trace](https://www.aka.ms/NoTrace) weboldaláról.
 
 ## <a name="links"></a>Hivatkozások
 
 * [A Microsoft adatvédelmi szabályzata](https://privacy.microsoft.com/privacystatement)
-* [A Microsoft Azure – jogi információk](https://azure.microsoft.com/support/legal)
-* [Online Services Terms](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=31)
+* [Jogi információk Microsoft Azure](https://azure.microsoft.com/support/legal)
+* [Online szolgáltatások használati feltételei](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=31)
 
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [V3.0 dokumentáció megtekintése](reference/v3-0-reference.md)
+> [A V 3.0 dokumentációjának megtekintése](reference/v3-0-reference.md)

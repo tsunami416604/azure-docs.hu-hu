@@ -1,54 +1,54 @@
 ---
-title: Gyakori kérdések – egyéni a fordítót
+title: Gyakori kérdések – egyéni fordító
 titleSuffix: Azure Cognitive Services
-description: Az egyéni a fordítót kapcsolatos gyakori kérdésekre adott válaszokat biztosít.
+description: Választ ad az egyéni fordítóval kapcsolatos gyakori kérdésekre.
 author: swmachan
-manager: christw
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.date: 02/21/2019
 ms.author: swmachan
 ms.topic: reference
-ms.openlocfilehash: 00921eeb9f966ed62d1a2d7605419432a9fa50f5
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 25b7e7015b32609356eb138c86fbe537a87a7a22
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67443405"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68595823"
 ---
 # <a name="frequently-asked-questions"></a>Gyakori kérdések
 
-Ez a cikk gyakori kérdésekre adott válaszokat tartalmazza kapcsolatos [egyéni a fordítót](https://portal.customtranslator.azure.ai).
+Ez a cikk az [Egyéni fordítóval](https://portal.customtranslator.azure.ai)kapcsolatos gyakran feltett kérdésekre adott válaszokat tartalmazza.
 
-## <a name="what-are-the-current-restrictions-in-custom-translator"></a>Mik azok az egyéni a fordítót a jelenlegi korlátozások?
+## <a name="what-are-the-current-restrictions-in-custom-translator"></a>Mik a jelenlegi korlátozások az egyéni fordítóban?
 
-Nincsenek korlátozások és a fájlméret, a modell betanítása és a modell-üzembehelyezés korlátok. Ne feledje ezeket a korlátozásokat állítson be a tanítási modell létrehozása az egyéni a fordítót a.
+A fájlméretre, a modell betanítására és a modell üzembe helyezésére vonatkozó korlátozások és korlátok vonatkoznak. Tartsa szem előtt ezeket a korlátozásokat, amikor beállít egy modellt az egyéni fordítóban.
 
-- Elküldött fájlok mérete 100 MB-nál kisebbnek kell lennie.
-- Monolingual adatok nem támogatott.
+- Az elküldött fájlok mérete nem haladhatja meg a 100 MB-ot.
+- Az egynyelvű adathalmazok nem támogatottak.
 
-## <a name="when-should-i-request-deployment-for-a-translation-system-that-has-been-trained"></a>Amikor igényeljen egy fordítási rendszer, amely rendelkezik betanítva üzembe?
+## <a name="when-should-i-request-deployment-for-a-translation-system-that-has-been-trained"></a>Mikor kell kérelmet benyújtani a betanított fordítási rendszerhez?
 
-Az optimális fordítási rendszerét a projekt létrehozásához több betanítások eltarthat. Előfordulhat, hogy szeretné próbálni a további betanítási adatok vagy több gondosan a szűrt adatokat, ha a BLEU pontszám és / vagy a vizsgálati eredmények nem kielégítő. Szigorú kell és gondos kialakítani a beállítási csoportot és a teszt állítsa be, teljes körűen reprezentatívnak a terminológia és fordítandó anyag stílusát. Kell több szabad a összeállítása a betanítási adatok, és kísérletezzen a különböző lehetőségeket. Központi telepítés rendszer kérése, ha elégedett a fordítások a rendszer vizsgálati eredmények között, a képzés a betanított rendszer javítása érdekében hozzá további adatokat nem, és szeretné elérni a betanított modell API-kon keresztül.
+Több tanítást is igénybe vehet a projekt optimális fordítási rendszerének létrehozásához. Érdemes lehet több betanítási vagy alaposabban szűrt adatmennyiséget használni, ha a BLEU pontszám és/vagy a teszt eredménye nem kielégítő. Szigorú és körültekintően kell megtervezni a hangolási készletet és a tesztelési készletet, hogy teljes mértékben reprezentatív legyen a lefordítani kívánt anyagok terminológiája és stílusa. A betanítási adatait több liberálisban is megtekintheti, és különböző lehetőségekkel kísérletezheti. A rendszer központi telepítésének kérése, ha elégedett a Rendszerteszt eredményeivel, nem kell több olyan adattal bővíteni a képzést, amely fejleszti a betanított rendszerét, és API-kon keresztül szeretné elérni a betanított modellt.
 
-## <a name="how-many-trained-systems-can-be-deployed-in-a-project"></a>Hány betanított rendszereket is telepíthető egy projektet?
+## <a name="how-many-trained-systems-can-be-deployed-in-a-project"></a>Hány betanítható rendszer helyezhető üzembe egy projektben?
 
-Csak egy betanított rendszer projektenként is telepíthető. A projektnek megfelelő fordítási rendszer létrehozása több betanítások eltarthat, és azt javasoljuk, hogy a központi telepítését, amely biztosítja a legjobb eredmény képzési kérése. A betanítási minőségét segítségével meghatározhatja a BLEU pontszám által (nagyobb érték jobb), és annak eldöntésében, hogy a fordítások minőségét ideális választás a központi telepítés előtt a elbírálóival consulting által.
+Projektenként csak egy képzett rendszer helyezhető üzembe. Több tanítást is igénybe vehet, hogy létrehoz egy megfelelő fordítási rendszer a projekthez, és javasoljuk, hogy a lehető legjobb eredményt biztosító képzés üzembe helyezését kérje. Megtekintheti a BLEU pontszám (nagyobb jobb) és a véleményezők által folytatott képzés minőségét, mielőtt azt döntene, hogy a fordítások minősége megfelelő az üzembe helyezéshez.
 
-## <a name="when-can-i-expect-my-trainings-to-be-deployed"></a>Mikor várható saját betanítások üzembe helyezni?
+## <a name="when-can-i-expect-my-trainings-to-be-deployed"></a>Mikor várhatom el a Betanítások üzembe helyezését?
 
-Az üzembe helyezés általában egy óránál rövidebb ideig tart.
+Az üzemelő példány általában kevesebb mint egy órát vesz igénybe.
 
-## <a name="how-do-you-access-a-deployed-system"></a>Hogyan el a telepített rendszer?
+## <a name="how-do-you-access-a-deployed-system"></a>Hogyan férhet hozzá egy telepített rendszerhez?
 
-Telepített rendszerek a CategoryID megadásával elérhetők a Microsoft Translator Text API V3-n keresztül. A Translator Text API további információ található a [API-referencia](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference) weblapon.
+A központilag telepített rendszerek a Kategóriakód megadásával érhetők el a Microsoft Translator Text API v3 segítségével. A Translator Text APIról további információt az [API](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference) -referenciák weblapján találhat.
 
-## <a name="how-do-i-skip-alignment-and-sentence-breaking-if-my-data-is-already-sentence-aligned"></a>Hogyan kihagyása igazítás és használhatatlanná tévő, ha az adatok már igazítva mondat mondat?
+## <a name="how-do-i-skip-alignment-and-sentence-breaking-if-my-data-is-already-sentence-aligned"></a>Hogyan kihagyhatja az igazítást és a mondatot, ha az adataim már a mondattal összhangban vannak?
 
-Az egyéni a fordítót kihagyja a mondat igazítás és mondat kompatibilitástörő TMX fájlokat és a szöveges fájlokat a `.align` bővítmény. `.align` fájlok felhasználóknak engedélyezi a használhatatlanná tévő egyéni a fordítót mondat és igazítási folyamat, amely tökéletesen igazított, és nincs további feldolgozás szükséges fájlok kihagyása lehetőség. Azt javasoljuk, `.align` csak olyan fájlok, tökéletesen igazított kiterjesztése.
+Az egyéni fordító kihagyja a mondatok igazítását és a mondatot a TMX-fájlokra `.align` és a kiterjesztésű szövegfájlokra. `.align`a fájlok lehetővé teszi a felhasználók számára, hogy kihagyják az egyéni fordító mondatának feltörési és igazítási folyamatát, és nem igényelnek további feldolgozást. Javasoljuk, hogy `.align` csak a tökéletesen igazított fájlokhoz használjon bővítményt.
 
-Kinyert mondatokat száma nem egyezik a két fájlt alap ugyanazzal a névvel, ha egyéni a fordítót továbbra is futtatni fogják a mondat aligner `.align` fájlokat.
+Ha a kinyert mondatok száma nem egyezik meg `.align` az azonos alapnévvel rendelkező két fájllal, az egyéni fordító továbbra is a mondatok igazítását fogja futtatni a fájlokon.
 
-## <a name="i-tried-uploading-my-tmx-but-it-says-document-processing-failed"></a>Megpróbáltam saját TMX feltöltése, de ugyanakkor "dokumentumfeldolgozást sikertelen".
+## <a name="i-tried-uploading-my-tmx-but-it-says-document-processing-failed"></a>Megpróbáltam feltölteni a TMX, de azt mondja, hogy a "dokumentum feldolgozása sikertelen".
 
-Győződjön meg arról, hogy megfelel-e a TMX a TMX 1.4b specifikációt az <https://www.gala-global.org/tmx-14b>.
+Győződjön meg arról, hogy a TMX megfelel a TMX 1.4 b specifikációjának <https://www.gala-global.org/tmx-14b>.
