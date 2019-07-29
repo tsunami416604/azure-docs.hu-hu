@@ -148,6 +148,8 @@
               href: stream-analytics-scale-jobs.md
         - name: Skálázás Machine Learning-függvényekkel
           href: stream-analytics-scale-with-machine-learning-functions.md
+        - name: Skálázás újraparticionálással
+          href: repartition.md
     - name: Automatizálás
       items:
         - name: A .NET SDK használata
