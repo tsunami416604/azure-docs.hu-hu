@@ -308,7 +308,13 @@
               displayname: 'live, quickpulse, quick pulse, live metrics'
               href: app/live-stream.md
             - name: Mérőszámok
-              href: app/metrics-explorer.md
+              items:
+                - name: Naplóalapú és előre összesített metrikák
+                  href: app/pre-aggregated-metrics-log-metrics.md
+                - name: Naplóalapú metrikák definíciói
+                  href: platform/app-insights-metrics.md
+                - name: Klasszikus Metrikaböngésző
+                  href: app/metrics-explorer.md
             - name: Keresés
               href: app/diagnostic-search.md
             - name: Profilkészítő
@@ -425,8 +431,6 @@
                   href: app/asp-net-dependencies.md
                 - name: ApplicationInsights.config
                   href: app/configuration-with-applicationinsights-config.md
-                - name: Naplóalapú és előre összesített metrikák
-                  href: app/pre-aggregated-metrics-log-metrics.md
                 - name: Tranzakció diagnosztikája
                   href: app/transaction-diagnostics.md
                 - name: Egyéni adatforrások egyeztetése
@@ -659,15 +663,13 @@
                 - name: Gyűjtés naplókban
                   href: platform/diagnostic-logs-stream-log-store.md
                 - name: Gyűjtés az Azure Storage-ból
-                  href: platform/collect-azure-metrics-logs.md
+                  href: platform/azure-storage-iis-table.md
                 - name: Archiválás a tárolóba
                   href: platform/archive-diagnostic-logs.md
                 - name: Adatok streamelése az Event Hubsra
                   href: platform/diagnostic-logs-stream-event-hubs.md
                 - name: Engedélyezés Resource Manager-sablonokkal
                   href: platform/diagnostic-logs-stream-template.md
-                - name: Szolgáltatásnaplók és -metrikák
-                  href: platform/azure-storage-iis-table.md
             - name: Adatok streamelése az Event Hubsra
               href: platform/stream-monitoring-data-event-hubs.md
             - name: Key Vault-elemzés
@@ -736,8 +738,8 @@
               href: platform/metrics-getting-started.md
             - name: A Metrikaböngésző speciális funkciói
               href: platform/metrics-charts.md
-            - name: Naplóalapú metrikák
-              href: platform/app-insights-metrics.md
+            - name: Példák metrikadiagramokra
+              href: platform/metric-chart-samples.md
             - name: Metrikadiagramok hibaelhárítása
               href: platform/metrics-troubleshoot.md
         - name: Naplók

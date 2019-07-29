@@ -238,7 +238,7 @@ Az IoT Hub nem lett migrálva az a [metrikák az Azure monitorban](/azure/azure-
 
 5. Most már egy másik riasztás beállítása a *használt üzenetek teljes száma*. Ez a metrika akkor hasznos, ha azt szeretné, küldjön egy riasztást, ha a használt üzenetek száma majdnem elérte a kvótát, az IoT hub – lehetővé teszi, hogy a hubot hamarosan megkezdi üzenetek elutasítása.
 
-   Az a **klasszikus riasztások megtekintése** kattintson **metrikariasztás hozzáadása (klasszikus)**, majd adja meg ezeket a mezőket a a **szabály felvétele** ablaktáblán.
+   Az a **klasszikus riasztások megtekintése** kattintson **metrikariasztás hozzáadása (klasszikus)** , majd adja meg ezeket a mezőket a a **szabály felvétele** ablaktáblán.
 
    **Név**: Adja meg például a riasztási szabály nevét *szám,-üzenetek-használt*.
 

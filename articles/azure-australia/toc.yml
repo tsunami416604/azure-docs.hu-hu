@@ -1,0 +1,54 @@
+- name: Azure Australia-dokumentáció
+  href: index.yml
+- name: Áttekintés
+  items:
+    - name: Mi az az Azure Australia?
+      href: australia-overview.md
+- name: Alapelvek
+  items:
+    - name: Biztonság az Azure Australiában
+      items:
+        - name: Adatbiztonság
+          href: secure-your-data.md
+        - name: Azure VPN Gateway-konfiguráció
+          href: vpn-gateway.md
+        - name: Azure Key Vault
+          href: azure-key-vault.md
+        - name: Identitás-összevonás
+          href: identity-federation.md
+        - name: RBAC és PIM
+          href: role-privileged.md
+        - name: Site Recovery és Backup az Essential 8-hoz
+          href: recovery-backup.md
+        - name: Azure rendszer-monitorozás
+          href: system-monitor.md
+        - name: Azure Policy és Azure Blueprints
+          href: azure-policy.md
+    - name: Átjárók az Azure Australiában
+      items:
+        - name: 'Átjárónaplózás, naplózás és láthatóság'
+          href: gateway-log-audit-visibility.md
+        - name: Átjáró biztonságos távfelügyelete
+          href: gateway-secure-remote-administration.md
+        - name: Átjáró bejövő adatforgalmának vezérlője
+          href: gateway-ingress-traffic.md
+        - name: Átjáró kimenő adatforgalmának vezérlője
+          href: gateway-egress-traffic.md
+- name: További források
+  items:
+    - name: Az Azure Australia biztonságának ismertetése
+      href: security-explained.md
+    - name: Azure Australia – további forrásanyagok
+      href: reference-library.md
+    - name: Az Australian Cyber Security Centre (ACSC) webhelye
+      href: 'https://cyber.gov.au/'
+    - name: 'Minősített ausztrál felhőszolgáltatások listája (Australian Certified Cloud Services List, CCSL)'
+      href: 'https://acsc.gov.au/infosec/irap/certified_clouds.htm'
+    - name: A Microsoft szolgáltatásmegbízhatósági portáljának ausztráliai oldala
+      href: 'https://aka.ms/au-irap'
+    - name: VÉDETT ausztráliai tervek az IaaS- és PaaS-webalkalmazásokhoz
+      href: 'https://aka.ms/au-protected'
+    - name: Díjszabás
+      href: 'https://azure.microsoft.com/pricing/'
+    - name: Díjkalkulátor
+      href: 'https://azure.microsoft.com/pricing/calculator/'

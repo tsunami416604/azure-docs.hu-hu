@@ -555,6 +555,20 @@
       items:
         - name: Adatelemzés a Databricksszel
           href: ../blobs/data-lake-storage-quickstart-create-databricks-account.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+        - name: Blobok kezelése kód nélkül
+          items:
+            - name: PowerShell
+              href: storage-quickstart-blobs-powershell.md
+            - name: parancssori felület
+              href: storage-quickstart-blobs-cli.md
+        - name: Fejlesztés blobok használatával
+          items:
+            - name: .NET
+              href: storage-quickstart-blobs-dotnet.md
+            - name: Java
+              href: storage-quickstart-blobs-java-v10.md
+            - name: Python
+              href: storage-quickstart-blobs-python.md
     - name: Oktatóanyagok
       items:
         - name: 'Adatok kinyerése, átalakítása és betöltése az Azure Databricks használatával'
@@ -667,6 +681,12 @@
               href: ../blobs/data-lake-storage-performance-tuning-mapreduce.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: A HDInsight-alapú Storm optimalizálása
               href: ../blobs/data-lake-storage-performance-tuning-storm.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+        - name: Fájlok kezelése (blobok)
+          items:
+            - name: PowerShell
+              href: /powershell/module/azure.storage
+            - name: Azure CLI
+              href: ../common/storage-azure-cli.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: Adatok áttelepítése
           items:
             - name: Frissítés a Data Lake Storage Gen1-ből
@@ -675,8 +695,37 @@
               href: ../blobs/data-lake-storage-migrate-on-premises-HDFS-cluster.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
     - name: Referencia
       items:
+        - name: PowerShell
+          href: /powershell/module/azure.storage
+        - name: Azure CLI
+          href: /cli/azure/storage
+        - name: .NET
+          items:
+            - name: 'Blobok, üzenetsorok, táblák és fájlok'
+              href: 'https://docs.microsoft.com/dotnet/api/overview/azure/storage/client'
+            - name: Adatáthelyezés
+              href: /dotnet/api/microsoft.azure.storage.datamovement
+            - name: Resource Manager
+              href: 'https://docs.microsoft.com/dotnet/api/overview/azure/storage/management'
+        - name: Java
+          items:
+            - name: 'Blobok, üzenetsorok, táblák és fájlok (7-es verzió)'
+              href: 'https://docs.microsoft.com/java/api/overview/azure/storage/client?view=azure-java-stable'
+            - name: Blob SDK (10-es verzió)
+              href: 'https://docs.microsoft.com/java/api/overview/azure/storage/client?view=azure-java-preview'
         - name: REST
-          href: 'https://docs.microsoft.com/rest/api/storageservices/data-lake-storage-gen2'
+          items:
+            - name: 'Blobok, üzenetsorok, táblák és fájlok'
+              href: /rest/api/storageservices
+            - name: 2. generációs Data Lake Storage
+              href: 'https://docs.microsoft.com/rest/api/storageservices/data-lake-storage-gen2'
+            - name: Erőforrás-szolgáltató
+              href: /rest/api/storagerp
+            - name: Import/Export
+              href: /rest/api/storageimportexport
+        - name: Resource Manager-sablon
+          displayName: ARM
+          href: /azure/templates/microsoft.storage/allversions
     - name: További források
       items:
         - name: Ismert problémák

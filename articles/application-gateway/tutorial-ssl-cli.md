@@ -165,7 +165,7 @@ az network public-ip show \
   --output tsv
 ```
 
-Másolja a nyilvános IP-címet, majd illessze be a böngésző címsorába. Ebben a példában az URL-cím a következő: **https://52.170.203.149**.
+Másolja a nyilvános IP-címet, majd illessze be a böngésző címsorába. Ebben a példában az URL-cím a következő: **https://52.170.203.149** .
 
 ![Biztonsági figyelmeztetés](./media/tutorial-ssl-cli/application-gateway-secure.png)
 

@@ -54,7 +54,7 @@ Az alábbi szakaszok ismertetik a szükséges lépések elvégzésének módját
 3. Eseményközpont létrehozása.
 
 > [!NOTE]
-> Minden szkript tartalmaz olyan beállított változókat, amelyekre az oktatóanyag későbbi részében szükség lesz. Ezek közé tartozik az erőforráscsoport neve ($resourceGroup), az Event Hubs-névtér (**$eventHubNamespace**) és az eseményközpont neve (**$eventHubName**). A cikk későbbi részében ezek dollárjel ($) előtaggal fognak szerepelni, így tudni fogja, hogy a szkriptben lettek beállítva.
+> Minden szkript tartalmaz olyan beállított változókat, amelyekre az oktatóanyag későbbi részében szükség lesz. Ezek közé tartozik az erőforráscsoport neve ($resourceGroup), az Event Hubs-névtér ( **$eventHubNamespace**) és az eseményközpont neve ( **$eventHubName**). A cikk későbbi részében ezek dollárjel ($) előtaggal fognak szerepelni, így tudni fogja, hogy a szkriptben lettek beállítva.
 
 <!-- some day they will approve the tab control; 
   When that happens, put CLI and PSH in tabs. -->

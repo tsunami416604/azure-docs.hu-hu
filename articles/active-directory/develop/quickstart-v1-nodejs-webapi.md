@@ -108,7 +108,7 @@ Az egyéni konfigurációs beállításokról a [passport-azure-ad](https://gith
 
 A [passport-azure-ad](https://github.com/AzureAD/passport-azure-ad#5-usage) modul két hitelesítési stratégiák funkciók: [OIDC](https://github.com/AzureAD/passport-azure-ad#51-oidcstrategy) és [tulajdonosi](https://github.com/AzureAD/passport-azure-ad#52-bearerstrategy) stratégiák. A cikkben megvalósított kiszolgáló a tulajdonosi stratégiát használja az API-végpont védelmére.
 
-### <a name="step-1-import-dependencies"></a>1. lépés: Importálja a függőségeket
+### <a name="step-1-import-dependencies"></a>1\. lépés: Importálja a függőségeket
 
 Hozzon létre egy új fájlt `app.js` néven, és illessze be a következő szöveget:
 
@@ -132,7 +132,7 @@ Ebben a kódszakaszban:
 - A rendszer létrehoz egy tömböt az `authenticatedUserTokens` számára, amely a felhasználói jogkivonatokat tárolja a védett végpontoknak való átadáskor.
 - A `serverPort` a feldolgozó környezet portjából vagy a konfigurációs fájlból lesz meghatározva.
 
-### <a name="step-2-instantiate-an-authentication-strategy"></a>2. lépés: Hitelesítési stratégia vezérlőként
+### <a name="step-2-instantiate-an-authentication-strategy"></a>2\. lépés: Hitelesítési stratégia vezérlőként
 
 Amikor beállítja egy végpont védelmét, meg kell adnia egy stratégiát, amely meghatározza, hogy a jelenlegi kérés hitelesített felhasználótól származik-e. Az `authenticatonStrategy` változó itt a `passport-azure-ad` `BearerStrategy` osztályának egyik példánya. Adja hozzá a következő kódot a `require` utasítások után.
 
@@ -161,7 +161,7 @@ Ha létrejön a stratégia egy új példánya, továbbítsa a Passportnak a `use
 passport.use(authenticationStrategy);
 ```
 
-### <a name="step-3-server-configuration"></a>3. lépés: Kiszolgálókonfiguráció
+### <a name="step-3-server-configuration"></a>3\. lépés: Kiszolgálókonfiguráció
 
 Ha meghatározta a hitelesítési stratégiát, beállíthatja a Restify kiszolgálót néhány alapvető beállítással, és azt is beállíthatja, hogy a Passportot használja a védelemhez.
 
@@ -173,7 +173,7 @@ server.use(passport.session());
 ```
 Ez a kiszolgáló inicializálva van, és úgy konfigurálták, hogy elemezze az engedélyeztetési fejléceket, majd beállítsa a Passport használatát.
 
-### <a name="step-4-define-routes"></a>4. lépés: Útvonalak megadása
+### <a name="step-4-define-routes"></a>4\. lépés: Útvonalak megadása
 
 Most már meghatározhat útvonalakat, és eldöntheti, hogy melyeket védje az Azure AD-vel. Ez a projekt két olyan útvonalat tartalmaz, ahol a gyökérszint nyitva van, az `/api` útvonal pedig úgy van beállítva, hogy hitelesítést igényeljen.
 

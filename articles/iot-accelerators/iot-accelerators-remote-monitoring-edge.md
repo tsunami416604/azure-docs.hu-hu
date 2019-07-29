@@ -165,7 +165,7 @@ A Stream Analytics-feladat a portálra csomagolására, mint az Edge-modul előt
     | Erőforráscsoport | IoTEdgeDevices |
     | Location egység | USA keleti régiója |
     | Üzemeltetési környezet | Edge |
-    | Streamelési egységek | 1. |
+    | Streamelési egységek | 1\. |
 
 1. Nyissa meg a **EdgeDeviceJob** Stream Analytics feladat látható a portálon, majd bemenetei között, és adjon hozzá egy **Edge hubot** nevű bemeneti adatfolyam **telemetriai**.
 
