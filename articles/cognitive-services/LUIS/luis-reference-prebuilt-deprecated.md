@@ -1,6 +1,6 @@
 ---
-title: Elavult előre összeállított entitások
-titleSuffix: Azure
+title: Elavult előre összeépített entitások – LUIS
+titleSuffix: Azure Cognitive Services
 description: Ez a cikk a Language Understanding (LUIS) elavult előre összeállított entitások információkat tartalmaz.
 services: cognitive-services
 author: diberry
@@ -11,19 +11,19 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 02/28/2019
 ms.author: diberry
-ms.openlocfilehash: 653fbd65e5ccfbc65781f2332b35d10237f718d5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 17693b7dff1df1d538f2f4a180be025e0de67c82
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60712780"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68563473"
 ---
-# <a name="deprecated-prebuilt-entities-in-a-luis-app"></a>A LUIS-alkalmazásokon elavult előre összeállított entitások
+# <a name="deprecated-prebuilt-entities-in-a-luis-app"></a>Egy LUIS-alkalmazás elavult, előre összeépített entitásai
 A következő előre összeállított entitások elavultak, és nem adható hozzá új LUIS-alkalmazások.
 
-* **Dátum és idő**: Használó meglévő LUIS-alkalmazások **datetime** áttelepítendő **datetimeV2**, noha a dátum és idő entitás továbbra is működik, a már meglévő alkalmazások, amelyek használják azt.
-* **Földrajzi hely**: Használó meglévő LUIS-alkalmazások **földrajzi** 2018. December támogatott.
-* **Enciklopédiájában**: Használó meglévő LUIS-alkalmazások **enciklopédiájában** 2018. December támogatott.
+* **Dátum**és idő: A **datetime** -t használó meglévő Luis-alkalmazásokat át kell telepíteni a **datetimeV2**-be, bár a DateTime entitás továbbra is a meglévő, az azt használó alkalmazásokban működik.
+* **Földrajzi**hely: A földrajzot használó meglévő  Luis-alkalmazások a 2018. decemberig támogatottak.
+* **Enciklopédia**: Az **Encyclopedia** -t használó meglévő Luis-alkalmazások a 2018. decemberig támogatottak.
 
 ## <a name="geography-culture"></a>Földrajzi hely kulturális környezet
 **Földrajzi hely** csak érhető el a `en-us` területi beállítás.
@@ -43,7 +43,7 @@ Előre összeállított entitások   |   Példa kimondott szöveg   |   JSON
 **Enciklopédiájában** csak érhető el a `en-US` területi beállítás.
 
 #### <a name="encyclopedia-subtypes"></a>Enciklopédiájában altípus
-Enciklopédiájában beépített entitás több mint 100 altípusok a következő táblázat tartalmazza: Emellett enciklopédiájában entitások gyakran leképezése több típust. Ha például a lekérdezés Ronald reagan elnök eredményez: 
+Az Encyclopedia beépített entitása több mint 100 altípust tartalmaz a következő táblázatban: Emellett az entitások gyakran több típusra is leképezhetők. Ha például a lekérdezés Ronald reagan elnök eredményez: 
 
 ```json
 {

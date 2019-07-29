@@ -1,7 +1,7 @@
 ---
-title: Értékelések, munkafolyamatok, és a feladatok alapelvei – a Content Moderator
-titlesuffix: Azure Cognitive Services
-description: Ellenőrzések, a munkafolyamatok és a feladatok ismertetése
+title: Felülvizsgálatok, munkafolyamatok és feladatok – fogalmak Content Moderator
+titleSuffix: Azure Cognitive Services
+description: További információ a felülvizsgálatokról, munkafolyamatokról és feladatokról
 services: cognitive-services
 author: sanjeev3
 manager: nitinme
@@ -10,36 +10,36 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 03/14/2019
 ms.author: sajagtap
-ms.openlocfilehash: c1d4ef640e2ae072dacba7a665b6689e3224c55c
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: a77b93c46c9989181cf4473e8b908571a3df2f20
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60607254"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68565540"
 ---
-# <a name="content-moderation-reviews-workflows-and-jobs"></a>Tartalom-jóváhagyás ellenőrzések, a munkafolyamatok és a feladatok
+# <a name="content-moderation-reviews-workflows-and-jobs"></a>Tartalom-moderálási felülvizsgálatok, munkafolyamatok és feladatok
 
-A Content Moderator a gépi támogatású moderálását az emberi hurok-képességeivel létrehozhat egy optimális moderálási folyamat a valós életből vett egyesíti. A felhő alapú keresztül teszi ezt [vizsgálóeszköz](https://contentmoderator.cognitive.microsoft.com). Ez az útmutató azt ismerteti, a felülvizsgálati eszköz alapfogalmakat: ellenőrzések, a munkafolyamatok és a feladatok.
+Content Moderator kombinálja a gépi támogatással rendelkező moderálást emberi-in-the-loop képességekkel, hogy optimális moderálási folyamatot hozzon létre a valós forgatókönyvek esetében. Ez a felhőalapú [felülvizsgálati eszközön](https://contentmoderator.cognitive.microsoft.com)keresztül történik. Ebben az útmutatóban megismerheti a felülvizsgálati eszköz alapvető fogalmait: értékelések, munkafolyamatok és feladatok.
 
-## <a name="reviews"></a>Felülvizsgálatok
+## <a name="reviews"></a>Értékelések
 
-Tekintsük át a tartalmat töltenek fel a vizsgálóeszközt és alatt jelenik meg a **tekintse át** fülre. Itt a felhasználók az alkalmazott címkék alter és a saját egyéni címkével lát, szükség szerint. Amikor egy felhasználó beküld egy, az eredményeket egy megadott visszahívási végpont érkeznek, és a tartalmat a webhely törlődik.
+A felülvizsgálat során a rendszer feltölti a tartalmat a felülvizsgálati eszközre, és a **felülvizsgálat** lapon jelenik meg. Innen a felhasználók módosíthatják az alkalmazott címkéket, és szükség szerint alkalmazhatják a saját egyéni címkéit. Amikor egy felhasználó elküld egy felülvizsgálatot, az eredményeket egy megadott visszahívási végpontra küldi a rendszer, és eltávolítja a tartalmat a helyről.
 
-![Felülvizsgálati eszköz webhely nyisson meg egy böngészőben a áttekintése lapon](./Review-Tool-user-Guide/images/image-workflow-review.png)
+![Tekintse meg az eszköz webhelyét böngészőben, a felülvizsgálat lapon](./Review-Tool-user-Guide/images/image-workflow-review.png)
 
-Lásd: a [felülvizsgálati eszköz útmutató](./review-tool-user-guide/review-moderated-images.md) felülvizsgálatok létrehozásának első lépései, vagy tekintse meg a [REST API-útmutató](./try-review-api-review.md) megtudhatja, hogyan ehhez programozott módon.
+Az áttekintések létrehozásával kapcsolatos lépésekért tekintse meg a [felülvizsgálati eszköz útmutatót](./review-tool-user-guide/review-moderated-images.md) , vagy tekintse meg a [REST API útmutatót](./try-review-api-review.md) , amelyből megtudhatja, hogyan teheti meg a programozott módon.
 
-## <a name="workflows"></a>A munkafolyamatok
+## <a name="workflows"></a>Workflows
 
-Egy munkafolyamat, felhőalapú testre szabott szűrheti a tartalom. A munkafolyamatok számos különböző módon tartalom szűrése és a megfelelő a megfelelő műveletet szolgáltatás képes csatlakozni. A Content Moderator összekötőjével munkafolyamat automatikusan moderálás címkékkel és hozhat létre értékelések elküldött tartalommal.
+A munkafolyamat egy felhőalapú, testreszabott szűrő a tartalomhoz. A munkafolyamatok számos szolgáltatáshoz kapcsolódhatnak, hogy különböző módokon szűrje a tartalmakat, majd a megfelelő műveletet hajtsa végre. A Content Moderator-összekötővel a munkafolyamatok automatikusan alkalmazhatnak moderálási címkéket, és az elküldött tartalommal hozhatnak létre értékeléseket.
 
-### <a name="view-workflows"></a>A munkafolyamatok megtekintése
+### <a name="view-workflows"></a>Munkafolyamatok megtekintése
 
-A meglévő munkafolyamatokba megtekintéséhez nyissa meg a [vizsgálóeszköz](https://contentmoderator.cognitive.microsoft.com/) válassza **beállítások** > **munkafolyamatok**.
+A meglévő munkafolyamatok megtekintéséhez nyissa meg a [felülvizsgálati eszközt](https://contentmoderator.cognitive.microsoft.com/) , és válassza a **Beállítások** > munkafolyamatok lehetőséget.
 
 ![Alapértelmezett munkafolyamat](images/default-workflow-listed.PNG)
 
-A munkafolyamatok JSON karakterláncként, ami lehetővé teszi számukra elérhető programozott módon teljesen leírását is. Ha a **szerkesztése** a munkafolyamathoz lehetőséget, majd válassza ki a **JSON** lapon látni fog egy JSON-kifejezést a következőhöz hasonló:
+A munkafolyamatokat JSON-karakterláncként lehet teljes mértékben leképezni, ami programozott módon elérhetővé teszi őket. Ha a munkafolyamat **szerkesztési** lehetőségét választja, majd kiválasztja a **JSON** fület, akkor egy JSON-kifejezés jelenik meg, például az alábbiak szerint:
 
 ```json
 {
@@ -64,16 +64,16 @@ A munkafolyamatok JSON karakterláncként, ami lehetővé teszi számukra elérh
 }
 ```
 
-Lásd: a [felülvizsgálati eszköz útmutató](./review-tool-user-guide/workflows.md) munkafolyamatok létrehozása és használata első lépései, vagy tekintse meg a [REST API-útmutató](./try-review-api-workflow.md) megtudhatja, hogyan ehhez programozott módon.
+A munkafolyamatok létrehozásának és használatának megkezdéséhez tekintse meg az [eszköz áttekintése útmutatót](./review-tool-user-guide/workflows.md) , vagy tekintse meg a [REST API útmutatót](./try-review-api-workflow.md) , amelyből megtudhatja, hogyan teheti meg a programozott módon.
 
 ## <a name="jobs"></a>Feladatok
 
-A moderálás feladat egy burkoló a tartalom-jóváhagyás, munkafolyamatok és értékelések funkciójának típusú funkcionál. A feladat megvizsgálja a tartalom a Content Moderator képmoderálás API-t vagy szöveges moderálási API-t, és azután ellenőrzi a kijelölt munkafolyamat ellen. A munkafolyamat eredményei alapján lehet, hogy vagy a tartalom vonatkozó felülvizsgálat nem hozható létre a [vizsgálóeszköz](./review-tool-user-guide/human-in-the-loop.md). Értékelések és a munkafolyamatok lehet létrehozni és konfigurálni a megfelelő API-k, amíg a feladat API megszerzését teszi lehetővé egy részletes jelentés a teljes folyamat (amely küldhető a megadott visszahívás-végponthoz).
+A moderálási feladatok egyfajta burkolóként szolgálnak a tartalom moderálása, a munkafolyamatok és a felülvizsgálatok működéséhez. A feladat átvizsgálja a tartalmat a Content Moderator képmoderálás API-val vagy szöveges moderálási API-val, majd ellenőrzi a kijelölt munkafolyamattal. A munkafolyamat eredményei alapján előfordulhat, hogy nem hozza létre a felülvizsgálati [eszköz](./review-tool-user-guide/human-in-the-loop.md)tartalmának felülvizsgálatát. Noha mind a felülvizsgálatok, mind a munkafolyamatok létrehozhatók és konfigurálhatók a megfelelő API-kkal, a feladatok API lehetővé teszi a teljes folyamat részletes jelentésének beszerzését (amely a megadott visszahívási végpontnak küldhető el).
 
-Tekintse meg a [REST API-val útmutató](./try-review-api-job.md) feladatok használatának megkezdéséhez.
+A feladatok használatának megkezdéséhez tekintse meg a [REST API útmutatót](./try-review-api-job.md) .
 
 ## <a name="next-steps"></a>További lépések
 
-* Próbálja ki a [feladat API-konzol](try-review-api-job.md), és használja a REST API-Kódminták. Ha ismeri a Visual Studio és C#, is tekintse meg a [feladatok .NET – rövid útmutató](moderation-jobs-quickstart-dotnet.md). 
-* Az értékelések, használatának első lépései a [felülvizsgálati API-konzol](try-review-api-review.md), és használja a REST API-Kódminták. Ekkor megjelenik a [felülvizsgálatok .NET – rövid útmutató](moderation-reviews-quickstart-dotnet.md).
-* A videót felülvizsgálatok, használja a [tekintse át a rövid videó](video-reviews-quickstart-dotnet.md), és ismerje meg, hogyan [átiratok a videó felülvizsgálat hozzáadása](video-transcript-reviews-quickstart-dotnet.md).
+* Tesztelje a [feladatok API](try-review-api-job.md)-konzolját, és használja a REST API-kód mintáit. Ha már ismeri a Visual studiót és C#a-t, tekintse meg a [Jobs .net](moderation-jobs-quickstart-dotnet.md)gyors útmutatóját is. 
+* Felülvizsgálatok esetén Ismerkedjen meg a [felülvizsgálati API-konzollal](try-review-api-review.md), és használja a REST API-kód mintáit. Ezután tekintse meg a [.net](moderation-reviews-quickstart-dotnet.md)gyors útmutatója című témakört.
+* Videós felülvizsgálatok esetén használja a [videó-felülvizsgálati](video-reviews-quickstart-dotnet.md)útmutatót, és Ismerje meg, hogyan [adhat hozzá átiratokat a videó felülvizsgálatához](video-transcript-reviews-quickstart-dotnet.md).

@@ -1,6 +1,6 @@
 ---
-title: Egyszerű entitás típusa
-titleSuffix: Language Understanding - Azure Cognitive Services
+title: Egyszerű entitás típusa – LUIS
+titleSuffix: Azure Cognitive Services
 description: Az egyszerű entitások olyan általános entitások, amelyek egyetlen fogalmat ismertetnek, és a gép által megtanult környezetből származnak. Mivel az egyszerű entitások általában nevek, például a cégnevek, a terméknév vagy más kategóriájú nevek, akkor adjon meg egy kifejezési listát, ha egyszerű entitást használ a használt nevek jelzésének növelésére.
 services: cognitive-services
 author: diberry
@@ -10,12 +10,12 @@ ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 07/24/2019
 ms.author: diberry
-ms.openlocfilehash: 3f03b33f685bb5c7c9ba8f2267b8556c5dadade4
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.openlocfilehash: c1514b6cd512924a162a524d11e888055fa06514
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68480219"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68563213"
 ---
 # <a name="simple-entity"></a>Egyszerű entitás 
 

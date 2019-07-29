@@ -1,6 +1,6 @@
 ---
-title: Közzététel a Tudásbázis következő, a REST, a Python
-titleSuffix: QnA Maker - Azure Cognitive Services
+title: 'Gyors útmutató: Tudásbázis közzététele, REST, Python-QnA Maker'
+titleSuffix: Azure Cognitive Services
 description: A Python REST-alapú rövid útmutató végigvezeti közzététele, amely egy dedikált Azure Search-index a közzétett Tudásbázis jelölő leküldi a tesztelt Tudásbázis legújabb verzióját. Egy végpontot is létre fog hozni, amelyet az alkalmazásban vagy a csevegőrobot meg tud hívni.
 services: cognitive-services
 author: diberry
@@ -11,14 +11,14 @@ ms.subservice: qna-maker
 ms.topic: quickstart
 ms.date: 02/28/2019
 ms.author: diberry
-ms.openlocfilehash: 60c5e24baf9062f6d7da3bf6f477c2b64101670e
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: a2db22334bace43cd29584c5931a5a7d08afaf78
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65787882"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68559758"
 ---
-# <a name="quickstart-publish-a-knowledge-base-in-qna-maker-using-python"></a>Gyors útmutató: Tudásbázis közzététele a QnA Maker Python használatával
+# <a name="quickstart-publish-a-knowledge-base-in-qna-maker-using-python"></a>Gyors útmutató: Tudásbázis közzététele QnA Maker a Python használatával
 
 A REST-alapú rövid útmutató végigvezeti programozott módon közzététele (KB). A közzététel leküldi a tudásbázis legújabb verzióját egy dedikált Azure Search-indexre, és létrehoz egy, az alkalmazásban vagy csevegőrobotban meghívható végpontot.
 
@@ -33,10 +33,10 @@ Ebben a rövid útmutatóban QnA Maker API-kat hívunk meg:
 
     ![QnA Maker tudásbázis-azonosító](../media/qnamaker-quickstart-kb/qna-maker-id.png)
 
-    Ha például egy Tudásbázis még nem rendelkezik, a minta használata ebben a rövid útmutatóban egy hozhat létre: [Hozzon létre egy új Tudásbázis](create-new-kb-nodejs.md).
+    Ha még nem rendelkezik tudásbázissal, létrehozhat egy, az ehhez a rövid útmutatóhoz használandó mintát: [Hozzon létre egy új tudásbázist](create-new-kb-nodejs.md).
 
 > [!NOTE] 
-> A teljes megoldás fájl(ok) érhetők el a [ **Azure-minták/cognitive-services-qnamaker – python** GitHub-adattár](https://github.com/Azure-Samples/cognitive-services-qnamaker-python/tree/master/documentation-samples/quickstarts/publish-knowledge-base).
+> A teljes megoldás fájl (ok) az [ **Azure-Samples/kognitív-Services-qnamaker-Python** GitHub](https://github.com/Azure-Samples/cognitive-services-qnamaker-python/tree/master/documentation-samples/quickstarts/publish-knowledge-base)-tárházból érhetők el.
 
 ## <a name="create-a-knowledge-base-python-file"></a>A tudásbázis Python-fájljának létrehozása
 

@@ -1,7 +1,7 @@
 ---
-title: Beszélgetés Beszédátírási – beszédszolgáltatások
+title: Beszélgetés átirata – beszédfelismerési szolgáltatás
 titleSuffix: Azure Cognitive Services
-description: Beszélgetés Beszédátírási egy speciális funkció, amely valós idejű beszédfelismerés beszélő felismerése és diarization ötvözi a beszédszolgáltatások. Beszélgetés Beszédátírási tökéletes átírás személyesen értekezletek, lehetővé teszi az előadók megkülönböztetni, lehetővé teszi, hogy tudja, akik mondta, mit és mikor, ami lehetővé teszi résztvevők, hogy arra koncentrálhasson, az értekezlet, és gyorsan nyomon követheti a következő lépések. Ez a funkció javítja a kisegítő lehetőségek is. Az átírási Várjuk visszajelzését látási résztvevő aktívan léphet.
+description: A beszélgetés átírása a beszédfelismerési szolgáltatások olyan speciális funkciója, amely ötvözi a valós idejű beszédfelismerést, a hangszórók azonosítását és a diarization. A beszélgetés átirata tökéletes megoldás a személyes értekezletek átírására, és lehetővé teszi a beszélők megkülönböztetését, és megtudhatja, hogy ki mit és mikor, így a résztvevők az értekezletre összpontosítanak, és gyorsan követhetik a következő lépéseket. Ez a funkció a kisegítő lehetőségeket is javítja. Az átirattal aktívan részt vehet a résztvevőkkel a tárgyaláson.
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -10,70 +10,70 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: 18de3e52d61afd8e1ef20f80c020c8b7d96b9757
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: acbf82335523ee226f4b899180f0f22cb94cca5e
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67603254"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68562877"
 ---
-# <a name="what-is-conversation-transcription"></a>Mit jelent a beszélgetés Beszédátírási?
+# <a name="what-is-conversation-transcription"></a>Mi a beszélgetés átirata?
 
-Beszélgetés Beszédátírási egy speciális funkció, amely valós idejű beszédfelismerés beszélő felismerése és diarization ötvözi a beszédszolgáltatások. Beszélgetés Beszédátírási tökéletes átírás személyesen értekezletek, lehetővé teszi az előadók megkülönböztetni, lehetővé teszi, hogy tudja, akik mondta, mit és mikor, ami lehetővé teszi résztvevők, hogy arra koncentrálhasson, az értekezlet, és gyorsan nyomon követheti a következő lépések. Ez a funkció javítja a kisegítő lehetőségek is. Az átírási Várjuk visszajelzését látási résztvevő aktívan léphet.   
+A beszélgetés átírása a beszédfelismerési szolgáltatások olyan speciális funkciója, amely ötvözi a valós idejű beszédfelismerést, a hangszórók azonosítását és a diarization. A beszélgetés átirata tökéletes megoldás a személyes értekezletek átírására, és lehetővé teszi a beszélők megkülönböztetését, és megtudhatja, hogy ki mit és mikor, így a résztvevők az értekezletre összpontosítanak, és gyorsan követhetik a következő lépéseket. Ez a funkció a kisegítő lehetőségeket is javítja. Az átirattal aktívan részt vehet a résztvevőkkel a tárgyaláson.   
 
-Beszélgetés Beszédátírási tesz lehetővé a pontos recognition, amely az iparági és a vállalatra jellemző szókincsből eredőket testre szabhatja testre szabható beszédfelismerés modellel. Emellett meg is párosítsa beszélgetés Beszédátírási a több mikrofon eszközök nyújtotta felhasználói élmény optimalizálása, a beszéd eszközök SDK-val.
+A társalgási átiratok pontos felismerést biztosítanak a testreszabható beszédfelismerési modellekkel, amelyek az iparág és a vállalatra jellemző szókincs megismerésére alkalmasak. Emellett a beszédfelismerési eszközök SDK-val is párosíthatja a beszélgetéseket, így optimalizálhatja a több mikrofonos eszközökön tapasztalható élményt.
 
 >[!NOTE]
-> Jelenleg a beszélgetés Beszédátírási kis értekezletek esetén ajánlott. Ha szeretné kiterjeszteni a nagy mennyiségű nagy méretű értekezletek esetén a beszélgetés Beszédátírási, lépjen kapcsolatba velünk a következő címen.
+> A beszélgetés átírása jelenleg kis értekezletek esetében ajánlott. Ha szeretné kiterjeszteni a beszélgetés átírását nagy méretű értekezletek esetén, vegye fel velünk a kapcsolatot.
 
-Az ábra azt mutatja, hardver-, szoftver és szolgáltatások, amelyek a beszélgetés Beszédátírási együttműködjenek.
+Ez az ábra azokat a hardvereket, szoftvereket és szolgáltatásokat mutatja be, amelyek együttműködnek a beszélgetés átírásával.
 
-![Az importálás beszélgetés Beszédátírási diagramja](media/scenarios/conversation-transcription-service.png)
+![Az importálási beszélgetés átiratának diagramja](media/scenarios/conversation-transcription-service.png)
 
 >[!IMPORTANT]
-> Egy körkörös hét mikrofon tömb a megadott geometriai konfigurációs szükség. Specifikáció és tervezési tudnivalókat tartalmaz [Microsoft Speech eszköz SDK mikrofon](https://aka.ms/cts/microphone). További információkért, vagy vásároljon egy fejlesztői készletet, lásd: [beolvasása a Microsoft beszédfelismerési eszközoldali SDK](https://aka.ms/cts/getsdk).
+> A megadott geometriai konfigurációval rendelkező kör alakú, hét mikrofonos tömböt kell megadni. A specifikációk és a kialakítás részleteiért lásd: [Microsoft Speech Device SDK mikrofon](https://aka.ms/cts/microphone). További információért vagy a fejlesztői csomag megvásárlásához lásd: [Microsoft Speech Device SDK](https://aka.ms/cts/getsdk)beszerzése.
 
-## <a name="get-started-with-conversation-transcription"></a>Beszélgetés Beszédátírási használatának első lépései
+## <a name="get-started-with-conversation-transcription"></a>Ismerkedés a társalgási átirattal
 
-Nincsenek három lépést kell tennie a beszélgetés Beszédátírási használatának első lépései.
+Három lépésben kell megkezdenie a beszélgetés átírását.
 
-1. Hangalapú minták gyűjteni a felhasználók.
-2. Hozzon létre felhasználói profilok felhasználói voice-példák használata
-3. A beszédfelismerés SDK segítségével azonosítsa azokat a felhasználókat (előadói), és átvezeti beszéd
+1. Hangmintákat gyűjthet a felhasználóktól.
+2. Felhasználói profilok előállítása a felhasználói hangminták használatával
+3. A beszédfelismerési SDK használata a felhasználók (hangszórók) azonosítására és a beszéd átírására
 
-## <a name="collect-user-voice-samples"></a>Felhasználói hangalapú mintákat gyűjtsön
+## <a name="collect-user-voice-samples"></a>Felhasználói hangminták gyűjtése
 
-Az első lépéseként a hanganyag gyűjtésére minden felhasználóhoz. Felhasználói speech háttérzaj nélkül csendes környezetben kell rögzíteni. Az ajánlott minden egyes hang minta hossza 30 másodperc és két perc között. Előadók hosszabb hangmintát eredményez pontosság jobb legyen. Hang 16 KHz minta arány monó csatornát kell lennie.
+Az első lépés a hangfelvételek összegyűjtése minden felhasználótól. A felhasználói beszédet csendes környezetben, háttérzaj nélkül kell rögzíteni. Az egyes hangmintákhoz javasolt hossz 30 másodperc és két perc között lehet. A több hangminta nagyobb pontosságot eredményez a hangszórók azonosítása során. A hangnak monó csatornának kell lennie, 16 KHz-es mintavételi sebességgel.
 
-A fent említett útmutatást túli hang rögzíti, valamint tárolt van –, akár egy biztonságos adatbázisban ajánlott. A következő szakaszban először áttekintjük, hogyan a hang előadói felismerni a Speech SDK-val használható felhasználói profilok létrehozására szolgál.
+A fent említett útmutatáson túl a hangrögzítés és a tárolt adatok tárolása is megtörténik – egy biztonságos adatbázis ajánlott. A következő szakaszban áttekintjük, hogyan használható a hang a Speech SDK-val a beszélők felismeréséhez használt felhasználói profilok létrehozásához.
 
-## <a name="generate-user-profiles"></a>Felhasználói profilok létrehozása
+## <a name="generate-user-profiles"></a>Felhasználói profilok előállítása
 
-Ezt követően kell küldeni a hangfelvételeket érvényesítéséhez a hang és a felhasználói profilok létrehozása a aláírási generációs szolgáltatás összegyűjtött. A [aláírását létrehozó szolgáltatások](https://aka.ms/cts/signaturegenservice) REST API-k, amelyek lehetővé teszik, és felhasználói profilok lekéréséről készlete.
+Ezután el kell küldenie az összegyűjtött hangfelvételeket az aláírás-létrehozási szolgáltatásba, hogy érvényesítse a hanganyagot, és létrehozza a felhasználói profilokat. Az [aláírás-létrehozási szolgáltatás](https://aka.ms/cts/signaturegenservice) olyan REST API-k összessége, amelyek lehetővé teszik felhasználói profilok létrehozását és lekérését.
 
-Felhasználói profil létrehozása kell használni a `GenerateVoiceSignature` API-t. Specifikáció részleteit és a mintakódot érhetők el:
+Felhasználói profil létrehozásához az `GenerateVoiceSignature` API-t kell használnia. A specifikáció részletei és a mintakód elérhető:
 
 > [!NOTE]
-> Beszélgetés Beszédátírási jelenleg "en-US" és "zh-CN" parancsot az alábbi régiókban érhető el: `centralus` és `eastasia`.
+> A beszélgetés átírása jelenleg az "en-us" és a "zh-CN" nyelven érhető el `centralus` a `eastasia`következő régiókban: és.
 
 * [REST-specifikáció](https://aka.ms/cts/signaturegenservice)
-* [Beszélgetés Beszédátírási használata](https://aka.ms/cts/howto)
+* [A beszélgetés átiratának használata](https://aka.ms/cts/howto)
 
-## <a name="transcribe-and-identify-speakers"></a>Alapuló átírás és azonosíthatja a beszélőket
+## <a name="transcribe-and-identify-speakers"></a>Hangszórók átírása és azonosítása
 
-Beszélgetés Beszédátírási többcsatornás audiostreamek lejátszásával, és a felhasználói profilok vár bemenetként beszédátírás létrehozni, és azonosíthatja a beszélőket. Audio- és felhasználói profil adatainak küldése a beszélgetés Beszédátírási szolgáltatás Speech eszköz SDK-val. Ahogy korábban említettük egy kör alakú hét mikrofon tömb és a Speech Devices SDK-val beszélgetés Beszédátírási használatára van szükség.
+A társalgási átirat a többcsatornás hangadatfolyamokat és a felhasználói profilokat bemenetként adja át átiratok létrehozásához és a hangszórók azonosításához. A hang-és felhasználói profilok adatai a beszélgetési átirat szolgáltatásba kerülnek a Speech Devices SDK használatával. Ahogy korábban említettük, egy kör alakú Seven mikrofon-tömb és a Speech Devices SDK szükséges a beszélgetési átirat használatához.
 
 >[!NOTE]
-> Specifikáció és tervezési tudnivalókat tartalmaz [Microsoft Speech eszköz SDK mikrofon](https://aka.ms/cts/microphone). További információkért, vagy vásároljon egy fejlesztői készletet, lásd: [beolvasása a Microsoft beszédfelismerési eszközoldali SDK](https://aka.ms/cts/getsdk).
+> A specifikációk és a kialakítás részleteiért lásd: [Microsoft Speech Device SDK mikrofon](https://aka.ms/cts/microphone). További információért vagy a fejlesztői csomag megvásárlásához lásd: [Microsoft Speech Device SDK](https://aka.ms/cts/getsdk)beszerzése.
 
-Beszélgetés Beszédátírási használata a Speech Devices SDK-val kapcsolatban lásd: [beszélgetés beszédátírási használata](https://aka.ms/cts/howto).
+Ha szeretné megtudni, hogyan használhatja a beszédfelismerést a Speech Devices SDK-val, olvassa el a következő témakört: a [beszélgetés átírásának használata](https://aka.ms/cts/howto).
 
 
-## <a name="quick-start-with-a-sample-app"></a>– Első lépések a mintaalkalmazás
+## <a name="quick-start-with-a-sample-app"></a>gyorskonfigurálás egy minta alkalmazással
 
-Microsoft Speech eszközoldali SDK tartalmaz egy gyors üzembe helyezési mintaalkalmazást az összes eszköz kapcsolódó minták. Beszélgetés Beszédátírási az egyik közülük. Annak a [Speech eszközoldali SDK android rövid](https://aka.ms/sdsdk-quickstart) mintaalkalmazás és a forráskód referenciaként.
+A Microsoft Speech Device SDK egy gyors üzembe helyezési minta alkalmazást tartalmaz az összes eszközhöz kapcsolódó mintához. A beszélgetés átírása az egyik. A dokumentációban megtalálja a [beszédfelismerési eszköz SDK Android](https://aka.ms/sdsdk-quickstart) -útmutatójában a minta alkalmazást és annak forráskódját.
 
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [További információ a Speech Devices SDK-val](speech-devices-sdk.md)
+> [További információ a Speech Devices SDK-ról](speech-devices-sdk.md)

@@ -10,10 +10,10 @@ ms.date: 01/22/2019
 ms.author: danlep
 ms.custom: seodec18, H1Hack27Feb2017, mvc
 ms.openlocfilehash: 6c511c56ab8df14cc6ea81363772ae0fd6d61272
-ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/18/2019
+ms.lasthandoff: 07/26/2019
 ms.locfileid: "68309536"
 ---
 # <a name="quickstart-create-a-private-container-registry-using-the-azure-cli"></a>Gyors útmutató: Privát tároló-beállításjegyzék létrehozása az Azure CLI használatával
@@ -22,7 +22,7 @@ Az Azure Container Registry egy felügyelt Docker-tárolóregisztrációs adatb�
 
 Ehhez a rövid útmutatóhoz az Azure CLI-t (2.0.55 vagy újabb verzió ajánlott) kell futtatnia. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése][azure-cli].
 
-A Dockert is telepítenie kell helyileg. A Docker olyan csomagokat biztosít, amelyekkel egyszerűen konfigurálható a Docker bármely [MacOS][docker-mac], [Windows][docker-windows]vagy [Linux]rendszerű[Docker-Linux] rendszeren.
+A Dockert is telepítenie kell helyileg. A Docker olyan csomagokat biztosít, amelyekkel egyszerűen konfigurálható a Docker bármely [MacOS][docker-mac]-, [Windows][docker-windows]-vagy [Linux][docker-linux] -rendszeren.
 
 Mivel az Azure Cloud Shell nem tartalmazza az összes szükséges Docker-összetevőt (a `dockerd`-démont), ehhez a rövid útmutatóhoz nem használható a Cloud Shell.
 
