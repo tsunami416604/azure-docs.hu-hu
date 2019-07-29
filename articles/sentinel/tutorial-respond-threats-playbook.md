@@ -1,6 +1,6 @@
 ---
-title: Forgatókönyv futtatása az Azure-Sentinel-Előzetesében |} A Microsoft Docs
-description: Ez a cikk ismerteti az Azure Sentinel-forgatókönyv futtatása.
+title: Forgatókönyv futtatása az Azure Sentinel Preview-ban | Microsoft Docs
+description: Ez a cikk bemutatja, hogyan futtathat forgatókönyveket az Azure Sentinelben.
 services: sentinel
 documentationcenter: na
 author: rkarlin
@@ -14,90 +14,111 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 2/28/2019
+ms.date: 7/25/2019
 ms.author: rkarlin
-ms.openlocfilehash: 52346e2ff9c47e58f2bd040582bee29eaf08bb13
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: cdfe22b67585221e2d7e17f47c6a09ba929d68ef
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67621196"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68599012"
 ---
-# <a name="tutorial-set-up-automated-threat-responses-in-azure-sentinel-preview"></a>Oktatóanyag: Automatizált threat válaszok az Azure-on Előzetesben Sentinel-beállítása
+# <a name="tutorial-set-up-automated-threat-responses-in-azure-sentinel-preview"></a>Oktatóanyag: Automatizált veszélyforrásokkal kapcsolatos válaszok beállítása az Azure Sentinel Preview-ban
 
 > [!IMPORTANT]
 > Az Azure Sentinel jelenleg nyilvános előzetes verzióban érhető el.
 > Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Ez az oktatóanyag segít az biztonsági forgatókönyvek az Azure-Sentinel beállítása Azure-Sentinel által észlelt biztonsági problémák automatikus threat válaszokat.
+Ez az oktatóanyag segítséget nyújt a biztonsági forgatókönyvek az Azure Sentinelben való használatához az Azure Sentinel által észlelt biztonsági problémákra vonatkozó automatizált veszélyforrási válaszok beállításához.
 
 
 > [!div class="checklist"]
 > * Forgatókönyvek ismertetése
-> * Egy forgatókönyv létrehozása
+> * Forgatókönyv létrehozása
 > * Forgatókönyv futtatása
+> * Fenyegetési válaszok automatizálása
 
 
-## <a name="what-is-a-security-playbook-in-azure-sentinel"></a>Mi az a biztonsági forgatókönyvek az Azure-Sentinel?
+## <a name="what-is-a-security-playbook-in-azure-sentinel"></a>Mi az az Azure Sentinel biztonsági forgatókönyve?
 
-Egy biztonsági forgatókönyv eljárások egy riasztásra adott válaszként az Azure-Sentinel futtatható gyűjteménye. A biztonsági forgatókönyvek segítségével automatizálható és összehangolható a válaszadás és futtatható manuálisan, illetve beállítása automatikusan futnak, amikor adott figyelmeztetéseket. Biztonsági forgatókönyvek az Azure-Sentinel alapuló [Azure Logic Apps](https://docs.microsoft.com/azure/logic-apps/logic-apps-what-are-logic-apps), ami azt jelenti, hogy a teljesítmény, testreszabhatóság és Logic Apps beépített sablonokkal beolvasása. Minden egyes forgatókönyv jön létre az adott előfizetés mellett dönt, de ha megnézi a forgatókönyvek oldalon, látni fogja az összes forgatókönyvek bármely kiválasztott előfizetések között.
+A biztonsági forgatókönyvek olyan eljárások gyűjteményei, amelyek az Azure Sentinelből egy riasztásra reagálva futtathatók. A biztonsági forgatókönyvek segítségével automatizálhatja és összehangolhatja a válaszát, és az adott riasztások aktiválásakor manuálisan is futtatható, vagy beállíthatja, hogy automatikusan fusson. Az Azure Sentinelben a biztonsági forgatókönyvek a [Azure Logic Appson](https://docs.microsoft.com/azure/logic-apps/logic-apps-what-are-logic-apps)alapulnak, ami azt jelenti, hogy a Logic apps összes energiagazdálkodási, testreszabható és beépített sablonja elérhető. Az egyes forgatókönyvek a kiválasztott előfizetéshez jönnek létre, de ha megtekinti a forgatókönyvek lapot, megjelenik az összes forgatókönyv a kijelölt előfizetések között.
 
 > [!NOTE]
-> Forgatókönyvek kihasználhatja az Azure Logic Apps, amiért díjat kell fizetni. További részletekért látogasson el az [Azure Logic Apps](https://azure.microsoft.com/pricing/details/logic-apps/) árképzését ismertető oldalra.
+> A forgatókönyvek kihasználják Azure Logic Apps, ezért a díjak érvényesek. További részletekért látogasson el az [Azure Logic Apps](https://azure.microsoft.com/pricing/details/logic-apps/) árképzését ismertető oldalra.
 
-Például Ha aggódik a rosszindulatú támadók a hálózati erőforrások eléréséhez, beállíthat egy riasztást, mely figyeli a nem kártékony IP-címek, a hálózat eléréséhez. Ezután hozhat létre egy forgatókönyv, amely a következőket hajtja végre:
-1. A riasztás akkor aktiválódik, ha a ServiceNow vagy bármely más informatikai jegykiadó rendszer nyissa meg egy jegyet.
-2. Üzenet küldése a biztonsági műveletek csatorna a Microsoft Teams vagy a Slack, hogy az incidens tisztában a biztonsági elemzőknek.
-3. A riasztásban szereplő összes információt küld a vezető hálózati rendszergazda és biztonsági rendszergazdával. Az e-mail-üzenetet is magában foglalja a két felhasználói választógomb **blokk** vagy **figyelmen kívül hagyása**.
-4. A forgatókönyv futtatása után a válasz érkezik a rendszergazdák továbbra is.
-5. Ha a rendszergazdák **blokk**, az IP-cím le van tiltva, a tűzfal és a felhasználó le van tiltva, az Azure ad-ben.
-6. Ha a rendszergazdák **figyelmen kívül hagyása**, a riasztás le van zárva, az Azure-Sentinel, és az incidens le van zárva, a ServiceNow.
+Ha például a hálózati erőforrásokhoz hozzáférő rosszindulatú támadók miatt aggódik, beállíthat egy riasztást, amely a hálózathoz hozzáférő kártékony IP-címeket keresi. Ezután létrehozhat egy forgatókönyvet, amely a következő műveleteket végzi el:
+1. Ha a riasztás aktiválva van, nyisson meg egy jegyet a ServiceNow-ben vagy más IT-szolgáltatói rendszeren.
+2. Küldjön üzenetet a biztonsági operatív csatornának a Microsoft Teams vagy a Slack szolgáltatásban, és győződjön meg arról, hogy a biztonsági elemzők tisztában vannak az incidenssel.
+3. Küldje el a riasztásban található összes információt a vezető hálózati rendszergazdai és biztonsági rendszergazdának. Az e-mail-üzenetben két felhasználói  gomb is blokkolható vagy **figyelmen kívül hagyható**.
+4. A forgatókönyv továbbra is fut a rendszergazdáktól kapott válasz után.
+5. Ha a rendszergazdák a **Letiltás**lehetőséget választják, az IP-cím blokkolva lesz a tűzfalon, és a felhasználó le van tiltva az Azure ad-ben.
+6. Ha a rendszergazdák úgy döntenek, hogy **figyelmen kívül hagyják**, a riasztás bezárult az Azure sentinelben, és az incidens bezárult a ServiceNow.
 
-Biztonsági forgatókönyvek futtathatja manuálisan vagy automatikusan. Manuális futtatása, az azt jelenti, hogy amikor riasztást kap, választhat a forgatókönyv igény szerinti futtatásához a kiválasztott riasztásra adott válaszként. Automatikusan rendszert futtató, az azt jelenti, hogy a korrelációs szabály meggondolni beállíthatja, hogy automatikusan futtasson egy vagy több forgatókönyvek, a riasztás akkor aktiválódik, amikor.
+A biztonsági forgatókönyvek manuálisan vagy automatikusan is futtathatók. A manuális Futtatás azt jelenti, hogy ha riasztást kap, dönthet úgy, hogy a kiválasztott riasztásra adott válaszként futtat egy igény szerinti forgatókönyvet. Az automatikus futtatás azt jelenti, hogy a korrelációs szabály létrehozásakor a rendszer automatikusan futtat egy vagy több forgatókönyvet a riasztás indításakor.
 
 
-## <a name="create-a-security-playbook"></a>A biztonsági forgatókönyvek létrehozása
+## <a name="create-a-security-playbook"></a>Biztonsági forgatókönyv létrehozása
 
-Kövesse az alábbi lépéseket egy új biztonsági forgatókönyv létrehozása az Azure-Sentinel:
+Kövesse az alábbi lépéseket egy új biztonsági forgatókönyv létrehozásához az Azure Sentinelben:
 
-1. Nyissa meg a **Azure Sentinel-** irányítópultot.
-2. A **felügyeleti**válassza **forgatókönyvek**.
+1. Nyissa meg az **Azure Sentinel** irányítópultját.
+2. A **kezelés** **területen válassza a**forgatókönyvek lehetőséget.
 
-   ![Logikai alkalmazás](./media/tutorial-respond-threats-playbook/playbookimg.png)
+   ![Logic App](./media/tutorial-respond-threats-playbook/playbookimg.png)
 
-3. Az a **Sentinel-Azure - forgatókönyvek (előzetes verzió)** kattintson **Hozzáadás** gombra.
+3. Az **Azure Sentinel-forgatókönyvek (előzetes verzió)** lapon kattintson a **Hozzáadás** gombra.
 
    ![Logikai alkalmazás létrehozása](./media/tutorial-respond-threats-playbook/create-playbook.png) 
 
-4. Az a **logikai alkalmazás létrehozása** írja be az új logikai alkalmazás létrehozásához, majd kattintson a kért információ **létrehozás**. 
+4. A **logikai alkalmazás létrehozása** lapon írja be a kért adatokat az új logikai alkalmazás létrehozásához, majd kattintson a **Létrehozás**gombra. 
 
-5. Az a [ **Logikaialkalmazás-Tervező**](../logic-apps/logic-apps-overview.md), válassza ki a használni kívánt sablont. Ha egy sablon, amely hitelesítő adatokat, akkor adja meg azokat. Másik megoldásként létrehozhat egy új üres forgatókönyv előzmények. Válassza ki **üres logikai alkalmazás**. 
+5. A [**Logic app Designerben**](../logic-apps/logic-apps-overview.md)válassza ki a használni kívánt sablont. Ha olyan sablont választ, amelynek a hitelesítő adatokat kell megadnia, meg kell adnia őket. Alternatív megoldásként létrehozhat egy új, üres forgatókönyvet is. Válassza az **üres logikai alkalmazás**lehetőséget. 
 
    ![Logikaialkalmazás-tervező](./media/tutorial-respond-threats-playbook/playbook-template.png)
 
-6. Ekkor megnyílik a Logikaialkalmazás-Tervező, vagy új hozhat létre és szerkesztheti a sablont. Egy forgatókönyv-létrehozásával kapcsolatos további információkért a [Logic Apps](../logic-apps/logic-apps-create-logic-apps-from-templates.md).
+6. A Logic app Designerben hozhat létre új vagy szerkeszthető sablont. További információ a forgatókönyvek [Logic apps](../logic-apps/logic-apps-create-logic-apps-from-templates.md)-vel való létrehozásáról.
 
-7. Létrehozásakor egy üres forgatókönyv a a **keresés az összes összekötő és trigger között** mezőbe írja be a *Azure Sentinel-* , és válassza ki **aktiváltegyAzureSentinel-riasztásraadottválaszesetén**. <br>Miután elkészült, az új forgatókönyv megjelenik a **forgatókönyvek** listája. Ha nem jelenik meg, kattintson a **frissítése**. 
+7. Ha üres forgatókönyvet hoz létre, a Keresés az **összes összekötő és eseményindító** mezőben írja be az *Azure Sentinel*kifejezést, és válassza ki, **hogy mikor aktiválódik az Azure Sentinel-riasztásra adott válasz**. <br>A létrehozást követően az új forgatókönyv megjelenik a forgatókönyvek **listájában** . Ha nem jelenik meg, kattintson a **frissítés**gombra. 
 
-7. Most meghatározhatja, mi történjen a forgatókönyv aktiválásakor. Hozzáadhat egy műveletet, logikai feltételeket, kapcsolóeset-feltételeket vagy hurkokat.
+7. Most meghatározhatja, mi történjen a forgatókönyv aktiválásakor. Hozzáadhat egy műveletet, egy logikai feltételt, a váltási eset feltételeit vagy a hurkokat.
 
    ![Logikaialkalmazás-tervező](./media/tutorial-respond-threats-playbook/logic-app.png)
 
-## <a name="how-to-run-a-security-playbook"></a>A biztonsági forgatókönyvek futtatása
+## <a name="how-to-run-a-security-playbook"></a>Biztonsági forgatókönyv futtatása
 
-Egy forgatókönyv igény szerint futtathatja.
+Igény szerint futtathat forgatókönyveket.
 
-A forgatókönyv igény szerinti futtatása:
+Igény szerinti forgatókönyv futtatása:
 
-1. Az a **esetek** lapon válasszon egy esetet, és kattintson a **részletes információk megtekintéséhez**.
+1. Az **esetek** lapon válasszon ki egy esetet, és kattintson a **teljes részletek megtekintése**elemre.
 
-2. Az a **riasztások** lapra, kattintson a futtatni a forgatókönyvet a kívánt riasztást, és görgessen egészen a jobb oldalon, majd kattintson a **forgatókönyvek megtekintése** , és válassza ki a forgatókönyv a **futtassa** a a Az előfizetésben elérhető forgatókönyvek listája. 
+2. A **riasztások** lapon kattintson arra a riasztásra, amelyen futtatni szeretné a forgatókönyvét, és görgessen végig a jobb oldalon, majd kattintson a forgatókönyvek **megtekintése** lehetőségre, és válassza ki az előfizetésben elérhető forgatókönyvek listájából **futtatandó** forgatókönyvet. 
+
+
+
+## <a name="automate-threat-responses"></a>Fenyegetési válaszok automatizálása
+
+SIEM/SOC-csapatok rendszeres időközönként biztonsági riasztásokkal is elárasztható. A generált riasztások mennyisége annyira nagy, hogy a rendelkezésre álló biztonsági rendszergazdák túlterheltek. Ez az eredmény túl gyakran olyan helyzetekben, amikor sok riasztást nem lehet megvizsgálni, így a szervezet sebezhetővé válik a nem felmerülő támadásokkal szemben. 
+
+A riasztások többsége – ha nem a legtöbb esetben – megfelel az ismétlődő mintázatoknak, amelyeket meghatározott és meghatározott szervizelési műveletek kezelhetnek. Az Azure Sentinel már lehetővé teszi a szervizelés megadását a forgatókönyvekben. Azt is megteheti, hogy valós idejű automatizálást állít be a forgatókönyv-definíció részeként, így lehetővé teszi, hogy a meghatározott biztonsági riasztásokra adott válasz teljes mértékben automatizálható legyen. A valós idejű automatizálással a válaszokkal rendelkező csapatok jelentősen csökkenthetik a számítási feladatokat azáltal, hogy teljes mértékben automatizálják a rendszeres válaszokat a riasztások ismétlődő típusaira, így többek között az egyedi riasztásokra koncentrálhat, elemezheti a mintákat, a veszélyforrások elleni vadászatot és egyebeket.
+
+Válaszok automatizálása:
+
+1. Válassza ki azt a riasztást, amelynek a válaszát automatizálni szeretné.
+1. Az Azure Sentinel munkaterület navigációs menüjében válassza az **elemzés**lehetőséget.
+1. Válassza ki az automatizálni kívánt riasztást. 
+1. A **riasztási szabály szerkesztése** lap **valós idejű automatizálás**területén válassza ki azt az **aktivált** forgatókönyvet, amelyet futtatni szeretne a riasztási szabály egyeztetése során.
+1. Kattintson a **Mentés** gombra.
+
+   ![valós idejű automatizálás](./media/tutorial-detect-threats/rt-configuration.png)
+
+
 
 
 
 
 ## <a name="next-steps"></a>További lépések
-Ebben a cikkben megismerkedhetett az Azure Sentinel-forgatókönyv futtatása. Azure-Sentinel kapcsolatos további információkért tekintse meg a következő cikkeket: Ebben az oktatóanyagban megtanulta, hogyan forgatókönyv futtatása az Azure-Sentinel. Továbbra is a [hogyan fenyegetések proaktív módon hunt](hunting.md) Azure Sentinel-használatával.
-> [!div class="nextstepaction"]
-> [A fenyegetések Hunt](hunting.md) proaktív módon a hálózaton a fenyegetéseket található.
+
+Ebben az oktatóanyagban megtanulta, hogyan futtathat egy forgatókönyvet az Azure Sentinelben. Folytassa a [fenyegetések proaktív módon történő vadászatát](hunting.md) az Azure Sentinel használatával.
+
 

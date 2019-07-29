@@ -3,16 +3,16 @@ title: 'GYIK: Azure Files biztonsági mentése'
 description: A cikk részletesen ismerteti az Azure-fájlmegosztások védelmének módját.
 author: dcurwin
 ms.author: dacurwin
-ms.date: 01/31/2019
+ms.date: 07/29/2019
 ms.topic: tutorial
 ms.service: backup
 manager: carmonm
-ms.openlocfilehash: e3f94badb3af2e3f26a857f27f0b68a78338db92
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.openlocfilehash: 35a41abb156326612c2d60829980f73457cde881
+ms.sourcegitcommit: 15f7b641a67f3d6cf4fb4b4c11eaee18cf335923
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68466311"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68601763"
 ---
 # <a name="questions-about-backing-up-azure-files"></a>Kérdések az Azure Files biztonsági mentéséről
 Ez a cikk az Azure Files biztonsági mentésével kapcsolatos általános kérdéseket válaszol meg. Egyes válaszokban részletes információkat tartalmazó cikkekre mutató hivatkozások találhatók. Emellett egy fórumbejegyzésben is feltehet kérdéseket az Azure Backup szolgáltatással kapcsolatban a [vitafórumon](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazureonlinebackup).
@@ -33,7 +33,7 @@ Igen. A szinkronizált csoportokhoz csatlakoztatott Azure-fájlmegosztások véd
 ### <a name="when-trying-to-back-up-file-shares-i-clicked-on-a-storage-account-for-discovering-the-file-shares-in-it-however-i-did-not-protect-them-how-do-i-protect-these-file-shares-with-any-other-vault"></a>Amikor fájlmegosztásokról próbáltam biztonsági másolatot készíteni, egy Storage-fiókra kattintottam a benne lévő fájlmegosztások felderítése érdekében. Azonban nem biztosítottam számukra védelmet. Hogyan védhetem meg ezeket a fájlmegosztásokat másik tárolóval?
 Ha biztonsági mentéskor egy Storage-fiókra kattint az abban lévő fájlmegosztások felderítése érdekében, a Storage-fiókot abból a tárolóról regisztrálja, amelyről ezt végzi. Ha úgy dönt, hogy egy másik tárolóval védi meg a fájlmegosztásokat, [szüntesse meg](troubleshoot-azure-files.md#configuring-backup) a kiválasztott Storage-fiók regisztrációját a tárolóból.
 
-### <a name="can-i-change-the-vault-to-which-i-backup-my-file-shares"></a>Módosíthatom a tárolót, amelybe biztonsági mentést készítek a fájlmegosztásaimról?
+### <a name="can-i-change-the-vault-to-which-i-back-up-my-file-shares"></a>Módosíthatom azt a tárolót, amelyre biztonsági másolatot készítek a fájlmegosztást?
 Igen. Azonban [le kell állítania a védelmet](backup-azure-files.md#stop-protecting-an-azure-file-share) a csatlakoztatott tárolóból, [meg kell szüntetnie a Storage-fiók regisztrációját](troubleshoot-azure-files.md#configuring-backup), majd egy másik tárolóból kell védelmet biztosítania számára.
 
 ### <a name="in-which-geos-can-i-back-up-azure-file-shares-br"></a>Milyen földrajzi helyeken készíthetek biztonsági mentést Azure-fájlmegosztásaimról <br/>
@@ -75,7 +75,10 @@ Az előzetes verzióban táranként legfeljebb 50 tárfiók Azure-fájlmegosztá
 ### <a name="can-i-protect-two-different-file-shares-from-the-same-storage-account-to-different-vaults"></a>Biztosíthatok védelmet két különböző fájlmegosztás számára ugyanabból a Storage-fiókból különböző tárolókba?
 Nem. A Storage-fiókban lévő összes fájlmegosztás számára csak ugyanazzal a tárolóval biztosítható védelem.
 
-## <a name="backup"></a>Backup
+## <a name="backup"></a>Tartalék
+
+### <a name="how-many-scheduled-backups-can-i-configure-per-file-share"></a>Hány ütemezett biztonsági mentést állíthatok be fájlmegosztás esetén?
+A Azure Backup jelenleg az Azure-fájlmegosztás napi biztonsági mentésének ütemezését támogatja. 
 
 ### <a name="how-many-on-demand-backups-can-i-take-per-file-share-br"></a>Hány igény szerinti biztonsági mentést készíthetek fájlmegosztásonként? <br/>
 Egy tetszőleges időpontban legfeljebb 200 pillanatkép készíthető fájlmegosztásonként. A korlátba a szabályzatban meghatározottak szerint beletartoznak az Azure Backup által készített pillanatképek is. Ha biztonsági mentései kezdenek meghiúsulni ezen korlát elérése után, akkor töröljön néhány igény szerinti visszaállítási pontot a jövőbeli sikeres biztonsági mentések érdekében.

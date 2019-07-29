@@ -3,7 +3,7 @@ title: .NET-alkalmazás létrehozása a Service Fabricben az Azure-ban | Microso
 description: Ez az oktatóanyag azt ismerteti, hogyan hozhat létre egy alkalmazást az ASP.NET Core kezelőfelülete és egy megbízható állapotalapú háttérszolgáltatás segítségével, majd hogyan helyezheti üzembe az alkalmazást egy fürtön.
 services: service-fabric
 documentationcenter: .net
-author: aljo-microsoft
+author: athinanthny
 manager: chackdan
 editor: ''
 ms.assetid: ''
@@ -13,20 +13,20 @@ ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 07/10/2019
-ms.author: aljo
+ms.author: atsenthi
 ms.custom: mvc
-ms.openlocfilehash: 4c73fe170d0b2cb6f12534de2ccc43bfc7b530f0
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
+ms.openlocfilehash: b5acee47a13e0faa538c5d8464835297088d03e8
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68228174"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68598911"
 ---
 # <a name="tutorial-create-and-deploy-an-application-with-an-aspnet-core-web-api-front-end-service-and-a-stateful-back-end-service"></a>Oktatóanyag: Alkalmazás létrehozása és üzembe helyezése egy ASP.NET Core Web API kezelőfelületi szolgáltatás és egy állapotalapú háttérszolgáltatás segítségével
 
 Ez az oktatóanyag egy sorozat első része.  Megtudhatja, hogyan hozhat létre egy Azure Service Fabric-alkalmazást egy ASP.NET Core Web API kezelőfelületi és egy állapotalapú háttérszolgáltatás segítségével az adatok tárolásához. Az útmutató elvégzése után rendelkezni fog egy ASP.NET Core webes kezelőfelületes szavazóalkalmazással, amely egy, a fürtben található állapotalapú háttérszolgáltatásba menti a szavazati adatokat. Ha nem szeretné manuálisan létrehozni a szavazóalkalmazást, akkor [letöltheti a forráskódot](https://github.com/Azure-Samples/service-fabric-dotnet-quickstart/) a kész alkalmazáshoz, és folytathatja a [mintául szolgáló szavazóalkalmazás bemutatásával](#walkthrough_anchor).  Ha szeretné, megtekintheti az oktatóanyag [útmutató videóját](https://channel9.msdn.com/Events/Connect/2017/E100).
 
-![AngularJS+ASP.NET API előtér, a Service Fabric állapotalapú háttérszolgáltatás csatlakozik](./media/service-fabric-tutorial-create-dotnet-app/application-diagram.png)
+![AngularJS + ASP. NET API előtér, Service Fabric-beli állapot-nyilvántartó háttér-szolgáltatáshoz való csatlakozás](./media/service-fabric-tutorial-create-dotnet-app/application-diagram.png)
 
 A sorozat első részében a következőkkel ismerkedhet meg:
 
@@ -47,7 +47,7 @@ Ebben az oktatóanyag-sorozatban az alábbiakkal ismerkedhet meg:
 
 Az oktatóanyag elkezdése előtt:
 * Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-* [Telepítse a Visual Studio 2019](https://www.visualstudio.com/) 15.5-ös vagy újabb verzióját a **Azure-fejlesztési** és **ASP.NET és webfejlesztési** számítási feladatokhoz.
+* [Telepítse a Visual Studio 2019](https://www.visualstudio.com/) 15,5-es vagy újabb verzióját az **Azure fejlesztési** és **ASP.net, valamint a webes fejlesztési** számítási feladatokkal.
 * [A Service Fabric SDK telepítése](service-fabric-get-started.md)
 
 ## <a name="create-an-aspnet-web-api-service-as-a-reliable-service"></a>ASP.NET Web API-szolgáltatás létrehozása megbízható szolgáltatásként
@@ -452,7 +452,7 @@ A következő lépésben két szolgáltatást fog összekapcsolni, majd beállí
 
 A Service Fabric teljes rugalmasságot biztosít a megbízható szolgáltatásokkal folytatott kommunikáció terén. Egy alkalmazáson belül előfordulhat, hogy TCP-n keresztül elérhető szolgáltatások vannak. Elképzelhető, hogy más szolgáltatások egy HTTP REST API-n keresztül, megint más szolgáltatások pedig webes szoftvercsatornákon keresztül érhetők el. A rendelkezésre álló lehetőségekről és azok kompromisszumairól a [szolgáltatásokkal folytatott kommunikációt](service-fabric-connect-and-communicate-with-services.md) ismertető részben találhat további információt.
 
-Ez az oktatóanyag az [ASP.NET Core Web API-t](service-fabric-reliable-services-communication-aspnetcore.md) és a [Service Fabric fordított proxyt](service-fabric-reverseproxy.md) használja, hogy a VotingWeb webes kezelőfelületi szolgáltatás kommunikálhasson a háttérbeli VotingData szolgáltatással. A fordított proxy alapértelmezés szerint a 19081-es port használatára van konfigurálva, és alkalmasnak kell lennie ehhez az oktatóanyaghoz. A fordított proxy portjával állítja be az Azure Resource Manager-sablon a fürt beállításához használt. A használt portot a **Microsoft.ServiceFabric/clusters** erőforrás fürtsablonblonjában tudja megkeresni: 
+Ez az oktatóanyag az [ASP.NET Core Web API-t](service-fabric-reliable-services-communication-aspnetcore.md) és a [Service Fabric fordított proxyt](service-fabric-reverseproxy.md) használja, hogy a VotingWeb webes kezelőfelületi szolgáltatás kommunikálhasson a háttérbeli VotingData szolgáltatással. A fordított proxy alapértelmezés szerint a 19081-es port használatára van konfigurálva, és alkalmasnak kell lennie ehhez az oktatóanyaghoz. A fordított proxy portja a fürt beállításához használt Azure Resource Manager sablonban van beállítva. A használt portot a **Microsoft.ServiceFabric/clusters** erőforrás fürtsablonblonjában tudja megkeresni: 
 
 ```json
 "nodeTypes": [
@@ -465,9 +465,9 @@ Ez az oktatóanyag az [ASP.NET Core Web API-t](service-fabric-reliable-services-
           }
         ],
 ```
-Keresse meg a fordított proxy portjával, a helyi fejlesztési fürt használja, tekintse meg a **HttpApplicationGatewayEndpoint** elem található a helyi Service Fabric-fürt jegyzékfájl:
-1. Nyisson meg egy böngészőablakot, és keresse meg a http:\//localhost:19080 a Service Fabric Explorer eszköz megnyitásához.
-2. Válassza ki **fürt -> Manifest**.
+A helyi fejlesztési fürtben használt fordított proxy port megkereséséhez tekintse meg a **HttpApplicationGatewayEndpoint** elemet a helyi Service Fabric-fürt jegyzékfájljában:
+1. Nyisson meg egy böngészőablakot, és navigáljon\/a http:/localhost: 19080 elemre a Service Fabric Explorer eszköz megnyitásához.
+2. Válassza ki a **cluster-> jegyzékfájlt**.
 3. Jegyezze fel a HttpApplicationGatewayEndpoint elem portját. Ez alapértelmezés szerint a 19081-es port. Ha mégsem az, akkor módosítania kell a portot a következő VotesController.cs kód GetProxyAddress metódusában.
 
 <a id="updatevotecontroller" name="updatevotecontroller_anchor"></a>
@@ -612,9 +612,9 @@ A Visual Studióban történő hibakeresés során egy helyi Service Fabric fejl
 
 Ha szeretné megtekinteni, hogy mi történik a kódban, hajtsa végre a következő lépéseket:
 
-1. Nyissa meg a **VotingWeb\VotesController.cs** fájlt, és állítson be egy töréspontot a webes API-k **Put** metódus (72. sor).
+1. Nyissa meg a **VotingWeb\VotesController.cs** fájlt, és állítson be egy töréspontot a webes API **put** metódusában (72. sor).
 
-2. Nyissa meg a **VotingData\VoteDataController.cs** fájlt, és állítson be egy töréspontot a webes API-k **Put** metódus (54. sor).
+2. Nyissa meg a **VotingData\VoteDataController.cs** fájlt, és állítson be egy töréspontot a webes API **put** metódusában (54. sor).
 
 3. Nyomja le az **F5** billentyűt az alkalmazás hibakeresési módban való elindításához.
 

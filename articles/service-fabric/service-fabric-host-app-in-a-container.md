@@ -3,7 +3,7 @@ title: Tárolóban lévő .NET-alkalmazás telepítése Azure Service Fabricre |
 description: Megtudhatja, hogyan helyezhet tárolóba egy meglévő .NET-alkalmazást a Visual Studio segítségével, illetve hogyan végezhet helyi hibakeresést a Service Fabric szolgáltatásbeli tárolókon. A tárolóba helyezett alkalmazást a rendszer Azure-tárolóregisztrációs adatbázisba küldi, és üzembe helyezi egy Service Fabric-fürtben. Az Azure-ban való üzembe helyezéskor az alkalmazás Azure SQL-adatbázist használ adatmegőrzéshez.
 services: service-fabric
 documentationcenter: .net
-author: aljo-microsoft
+author: athinanthny
 manager: chackdan
 editor: ''
 ms.assetid: ''
@@ -13,13 +13,13 @@ ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 07/08/2019
-ms.author: aljo
-ms.openlocfilehash: 6c479553dcb6debe47a2b37ef85b6f3930e135c8
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
+ms.author: atsenthi
+ms.openlocfilehash: 66d668821c47854d006f2efa425d38f9bf1df7d0
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68228122"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68599515"
 ---
 # <a name="tutorial-deploy-a-net-application-in-a-windows-container-to-azure-service-fabric"></a>Oktatóanyag: Windows-tárolóban lévő .NET-alkalmazás telepítése Azure Service Fabricre
 
@@ -41,14 +41,14 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 1. Ha nem rendelkezik Azure-előfizetéssel, [létrehozhat egy ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 2. A [Docker CE for Windows](https://store.docker.com/editions/community/docker-ce-desktop-windows?tab=description) telepítése tárolók Windows 10 rendszeren való futtatásához.
 3. Telepítse a [Service Fabric futtatókörnyezet 6.2-es](service-fabric-get-started.md) vagy újabb verzióját és a [Service Fabric SDK 3.1-es](service-fabric-get-started.md) vagy újabb verzióját.
-4. Telepítse [Visual Studio 2019 verzió 16.1](https://www.visualstudio.com/) vagy újabb verzió a **Azure-fejlesztési** és **ASP.NET és webfejlesztési** számítási feladatokhoz.
-5. Telepítés [Azure PowerShell-lel][link-azure-powershell-install]
+4. Telepítse a [Visual Studio 2019 16,1](https://www.visualstudio.com/) -es vagy újabb verzióját az **Azure fejlesztési** és **ASP.net, valamint a webes fejlesztési** számítási feladatokkal.
+5. [Azure PowerShell][link-azure-powershell-install] telepítése
  
 
 ## <a name="download-and-run-fabrikam-fiber-callcenter"></a>A Fabrikam Fiber CallCenter letöltése és futtatása
-Töltse le a [Fabrikam Fiber CallCenter][link-fabrikam-github] mintaalkalmazást.  Kattintson a **download archive** (archívum letöltése) hivatkozásra.  A *fabrikam.zip* fájl *sourceCode* mappájából bontsa ki a *sourceCode.zip* fájlt, majd bontsa ki abból a *VS2015* könyvtárat a számítógépére.
+Töltse le a [Fabrikam Fiber callcenter][link-fabrikam-github] minta alkalmazást.  Kattintson a **download archive** (archívum letöltése) hivatkozásra.  A *fabrikam.zip* fájl *sourceCode* mappájából bontsa ki a *sourceCode.zip* fájlt, majd bontsa ki abból a *VS2015* könyvtárat a számítógépére.
 
-Győződjön meg róla, hogy a Fabrikam Fiber CallCenter alkalmazás hiba nélkül buildelhető és futtatható.  Indítsa el a Visual Studiót egy **rendszergazda** , és nyissa meg a [FabrikamFiber.CallCenter.sln][link-fabrikam-github] fájlt.  Nyomja le az F5 billentyűt az alkalmazás debugolásához és futtatásához.
+Győződjön meg róla, hogy a Fabrikam Fiber CallCenter alkalmazás hiba nélkül buildelhető és futtatható.  Indítsa el a Visual studiót **rendszergazdaként** , és nyissa meg a [FabrikamFiber. callcenter. SLN][link-fabrikam-github] fájlt.  Nyomja le az F5 billentyűt az alkalmazás debugolásához és futtatásához.
 
 ![A Fabrikam mintaalkalmazás webes felülete][fabrikam-web-page]
 
@@ -64,7 +64,7 @@ A tároló készen áll a Service Fabric-alkalmazásban való létrehozásra és
 ## <a name="create-an-azure-sql-db"></a>Azure SQL-adatbázis létrehozása
 A Fabrikam Fiber CallCenter alkalmazás éles futtatásakor az adatokat egy adatbázisban kell tárolni. Jelenleg nincs mód az állandó adatok biztosítására egy tárolóban, ezért nem tárolhat éles adatokat az SQL Serveren egy tárolóban.
 
-Javasoljuk, hogy használjon egy [Azure SQL-adatbázist](/azure/sql-database/sql-database-get-started-powershell). Egy felügyelt SQL Server-adatbázis Azure-ban való létrehozásához és futtatásához hajtsa végre az alábbi szkriptet.  Szükség esetén módosítsa a szkript változóit. A *clientIP* a fejlesztői számítógépe IP-címe. Jegyezze fel a kiszolgáló, a parancsfájl által használt kimeneti adattípus neve. 
+Javasoljuk, hogy használjon egy [Azure SQL-adatbázist](/azure/sql-database/sql-database-get-started-powershell). Egy felügyelt SQL Server-adatbázis Azure-ban való létrehozásához és futtatásához hajtsa végre az alábbi szkriptet.  Szükség esetén módosítsa a szkript változóit. A *clientIP* a fejlesztői számítógépe IP-címe. Jegyezze fel a parancsfájl által kiszolgált kiszolgáló nevét. 
 
 ```powershell
 $subscriptionID="<subscription ID>"
@@ -116,7 +116,7 @@ Write-Host "Server name is $servername"
 > Ha vállalati tűzfal mögött dolgozik, akkor előfordulhat, hogy a fejlesztői számítógépe IP-címe nem érhető el az internetről. Annak ellenőrzéséhez, hogy az adatbázis a megfelelő IP-címmel rendelkezik a tűzfalszabályhoz, keresse meg az adatbázist az [Azure Portal](https://portal.azure.com) SQL-adatbázisok szakaszában. Kattintson a nevére, majd az Áttekintés szakaszban kattintson a „Kiszolgálótűzfal beállítása” elemre. Az „Ügyfél IP-címe” a fejlesztői gép IP-címe. Győződjön meg arról, hogy megegyezik az „AllowClient” szabályban lévő IP-címmel.
 
 ## <a name="update-the-web-config"></a>A webes konfiguráció frissítése
-Lépjen vissza a **FabrikamFiber.Web** projektre, frissítse a kapcsolati sztringet a **web.config** fájlban, hogy az a tárolóban lévő SQL Serverre mutasson.  Frissítés a *kiszolgáló* részének kell lennie a kiszolgáló hozta létre az előző parancsfájlt a kapcsolati karakterláncot. "Szövet-fiber-751718376.database.windows.net" hasonlót kell lennie.
+Lépjen vissza a **FabrikamFiber.Web** projektre, frissítse a kapcsolati sztringet a **web.config** fájlban, hogy az a tárolóban lévő SQL Serverre mutasson.  Frissítse a kapcsolati karakterlánc *kiszolgálói* részét az előző szkript által létrehozott kiszolgálónévre. Ehhez hasonlónak kell lennie: "fab-fiber-751718376.database.windows.net".
 
 ```xml
 <add name="FabrikamFiber-Express" connectionString="Server=<server name>,1433;Initial Catalog=call-center-db;Persist Security Info=False;User ID=ServerAdmin;Password=Password@123;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;" providerName="System.Data.SqlClient" />
@@ -145,7 +145,7 @@ $registry = New-AzContainerRegistry -ResourceGroupName $acrresourcegroupname -Na
 ```
 
 ## <a name="create-a-service-fabric-cluster-on-azure"></a>Service Fabric-fürt létrehozása az Azure-ban
-A Service Fabric-alkalmazások egy fürtön, azaz virtuális vagy fizikai gépek hálózaton keresztül csatlakozó halmazán futnak.  Az Azure-ban az alkalmazás központi telepítése, hozzon létre egy Service Fabric-fürt az Azure-ban.
+A Service Fabric-alkalmazások egy fürtön, azaz virtuális vagy fizikai gépek hálózaton keresztül csatlakozó halmazán futnak.  Mielőtt üzembe helyezné az alkalmazást az Azure-ban, hozzon létre egy Service Fabric-fürtöt az Azure-ban.
 
 A következőket teheti:
 - Hozzon létre egy tesztfürtöt a Visual Studióból. Ez lehetővé teszi, hogy közvetlenül a Visual Studióból hozzon létre egy biztonságos fürtöt a választott konfigurációval. 
@@ -153,7 +153,7 @@ A következőket teheti:
 
 Ez az oktatóanyag a fürt Visual Studióból való létrehozását ismerteti, mely ideális megoldás tesztelési forgatókönyvekhez. Ha más módon hoz létre fürtöt, vagy ha már rendelkezik fürttel, akkor átmásolhatja a kapcsolati végpontját, vagy kiválaszthatja azt az előfizetéséből. 
 
-Kezdő, nyissa meg FabrikamFiber.Web előtt -> PackageRoot -> a ServiceManifest.xml a Megoldáskezelőben. Jegyezze fel a portot a webes előtér szereplő **végpont**. 
+A Kezdés előtt nyissa meg a FabrikamFiber. Web-> PackageRoot-> ServiceManifest. xml fájlt a Megoldáskezelő. Jegyezze fel a **végpontban**felsorolt webes kezelőfelület portját. 
 
 A fürt létrehozásakor 
 
@@ -165,7 +165,7 @@ A fürt létrehozásakor
         
 4. A **Fürt létrehozása** párbeszédpanelen módosítsa az alábbi beállításokat:
 
-    a. Adja meg a fürtje nevét a **Fürt neve** mezőben, valamint a használni kívánt előfizetést és helyet. Jegyezze fel a fürt erőforráscsoportja nevét.
+    a. Adja meg a fürtje nevét a **Fürt neve** mezőben, valamint a használni kívánt előfizetést és helyet. Jegyezze fel a fürterőforrás-csoport nevét.
 
     b. Nem kötelező: Módosíthatja a csomópontok számát. Alapértelmezés szerint három csomópont van. Ez a Service Fabric-forgatókönyvek teszteléséhez szükséges minimális érték.
 
@@ -174,16 +174,16 @@ A fürt létrehozásakor
     d. Válassza a **Virtuális gép részletei** lapot. Adja meg a jelszót, amelyet a fürtöt alkotó virtuális gépekhez kíván használni. A felhasználónév és jelszó használatával távolról csatlakozhat a virtuális gépekhez. A virtuális gép méretét is ki kell választania és ha szükséges, módosíthatja a virtuális gép rendszerképét is. 
 
     > [!IMPORTANT]
-    >Válassza ki a tárolók futtatását támogató Termékváltozatot. A fürtcsomópontjain található Windows Server operációs rendszernek kompatibilisnek kell lennie a tárolóján futó Windows Server operációs rendszerével. További tudnivalókat a [Windows Server tároló operációs rendszerének és a gazdagép operációs rendszerének kompatibilitását ismertető cikket](service-fabric-get-started-containers.md#windows-server-container-os-and-host-os-compatibility). Alapértelmezés szerint ez az oktatóanyag létrehoz egy Docker-rendszerképet, amely a Windows Server 2016 LTSC-re épül. Az erre a képre épülő tárolók a tárolókkal rendelkező Windows Server 2016 Datacenterrel létrehozott fürtökön fognak futni. Ha azonban létrehoz egy fürtöt, vagy már egy létező a tárolókkal rendelkező Windows Server Datacenter Core 1709 rendszerre épülő fürtöt használ, meg kell változtatnia azt a Windows Server operációs rendszerképet, amelyre a tároló épül. Nyissa meg a **Dockerfile** fájlt a **FabrikamFiber.Web** projektben, tegye megjegyzésbe a létező `FROM` utasítást (`windowsservercore-ltsc` alapján), és törölje a `windowsservercore-1709` alapú `FROM` utasítás elöl a megjegyzésjelölőt. 
+    >Válasszon olyan SKU-t, amely támogatja a futó tárolókat. A fürtcsomópontjain található Windows Server operációs rendszernek kompatibilisnek kell lennie a tárolóján futó Windows Server operációs rendszerével. További tudnivalókat a [Windows Server tároló operációs rendszerének és a gazdagép operációs rendszerének kompatibilitását ismertető cikket](service-fabric-get-started-containers.md#windows-server-container-os-and-host-os-compatibility). Alapértelmezés szerint ez az oktatóanyag létrehoz egy Docker-rendszerképet, amely a Windows Server 2016 LTSC-re épül. Az erre a képre épülő tárolók a tárolókkal rendelkező Windows Server 2016 Datacenterrel létrehozott fürtökön fognak futni. Ha azonban létrehoz egy fürtöt, vagy már egy létező a tárolókkal rendelkező Windows Server Datacenter Core 1709 rendszerre épülő fürtöt használ, meg kell változtatnia azt a Windows Server operációs rendszerképet, amelyre a tároló épül. Nyissa meg a **Dockerfile** fájlt a **FabrikamFiber.Web** projektben, tegye megjegyzésbe a létező `FROM` utasítást (`windowsservercore-ltsc` alapján), és törölje a `windowsservercore-1709` alapú `FROM` utasítás elöl a megjegyzésjelölőt. 
 
-    e. A **Speciális** lapon adja meg, hogy mely alkalmazásport legyen megnyitva a terheléselosztón a fürt üzembe helyezésekor. Ez az a port tudomásul vette a fürt létrehozása előtt. Hozzáadhat egy meglévő Application Insights-kulcsot is, amelyet az alkalmazás naplófájljainak útválasztásához használhat.
+    e. A **Speciális** lapon adja meg, hogy mely alkalmazásport legyen megnyitva a terheléselosztón a fürt üzembe helyezésekor. Ezt a portot vette figyelembe a fürt létrehozása előtt. Hozzáadhat egy meglévő Application Insights-kulcsot is, amelyet az alkalmazás naplófájljainak útválasztásához használhat.
 
     f. Ha végzett a beállítások módosításával, kattintson a **Létrehozás** gombra. 
 1. A létrehozás több percig is eltarthat, és a kimeneti ablak jelzi, ha a fürt teljesen elkészült.
     
 
 ## <a name="allow-your-application-running-in-azure-to-access-the-sql-db"></a>SQL-adatbázis elérésének engedélyezése az Azure-ban futó alkalmazásnak
-Korábban egy SQL-tűzfalszabály létrehozásával engedélyezte a hozzáférést a helyi gépen futtatott alkalmazásnak.  Most az Azure-ban futó alkalmazásnak kell engedélyeznie az SQL-adatbázis elérését.  Hozzon létre egy [virtuális hálózati szolgáltatásvégpontot](/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview) a Service Fabric-fürtnek, majd hozzon létre egy szabályt, mely engedélyezi az adott végpontnak az SQL-adatbázis elérését. Mindenképpen adja meg a fürt resource csoport változó tudomásul vette a fürt létrehozásakor. 
+Korábban egy SQL-tűzfalszabály létrehozásával engedélyezte a hozzáférést a helyi gépen futtatott alkalmazásnak.  Most az Azure-ban futó alkalmazásnak kell engedélyeznie az SQL-adatbázis elérését.  Hozzon létre egy [virtuális hálózati szolgáltatásvégpontot](/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview) a Service Fabric-fürtnek, majd hozzon létre egy szabályt, mely engedélyezi az adott végpontnak az SQL-adatbázis elérését. Ügyeljen arra, hogy a fürt létrehozásakor figyelembe vett fürterőforrás-csoport változót is megadhatja. 
 
 ```powershell
 # Create a virtual network service endpoint
@@ -235,12 +235,12 @@ Most, hogy az alkalmazása kész, üzembe helyezheti az Azure-beli fürtben köz
 
 ![Az alkalmazás közzététele][publish-app]
 
-Az üzembe helyezés folyamatát a kimeneti ablakban követheti nyomon.  Ha az alkalmazás üzembe helyezése befejeződött, nyisson meg egy böngészőablakot, és írja be a fürt címét és az alkalmazásportot. Ha például a http:\//fabrikamfibercallcenter.southcentralus.cloudapp.azure.com:8659/.
+Az üzembe helyezés folyamatát a kimeneti ablakban követheti nyomon.  Ha az alkalmazás üzembe helyezése befejeződött, nyisson meg egy böngészőablakot, és írja be a fürt címét és az alkalmazásportot. Például http:\//fabrikamfibercallcenter.southcentralus.cloudapp.Azure.com:8659/.
 
 ![A Fabrikam mintaalkalmazás webes felülete][fabrikam-web-page-deployed]
 
 ## <a name="set-up-continuous-integration-and-deployment-cicd-with-a-service-fabric-cluster"></a>Folyamatos integráció és üzembe helyezés (CI/CD) beállítása Service Fabric-fürttel
-Service Fabric-fürtön CI/CD-alkalmazástelepítés konfigurálása az Azure DevOps használatával kapcsolatban lásd: [oktatóanyag: CI/CD-alkalmazás üzembe helyezése a Service Fabric-fürtön](service-fabric-tutorial-deploy-app-with-cicd-vsts.md). Az oktatóanyagban ismertetett folyamat ugyanaz ehhez a (FabrikamFiber) projekthez, csak hagyja ki a szavazási minta letöltését, és a szavazás helyett a FabrikamFiber nevet írja be az adattár neveként.
+Ha szeretné megtudni, hogyan konfigurálhatja az Azure DevOps a CI/CD-alkalmazások központi telepítését Service Fabric fürtre, tekintse [meg az oktatóanyagot: Alkalmazás üzembe helyezése CI/CD-vel Service Fabric-](service-fabric-tutorial-deploy-app-with-cicd-vsts.md)fürtön. Az oktatóanyagban ismertetett folyamat ugyanaz ehhez a (FabrikamFiber) projekthez, csak hagyja ki a szavazási minta letöltését, és a szavazás helyett a FabrikamFiber nevet írja be az adattár neveként.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 Ha végzett, ne felejtse el eltávolítani a létrehozott erőforrásokat.  Ennek legegyszerűbb módja az, ha törli azt az erőforráscsoportot, amely tartalmazza a Service Fabric-fürtöt, az Azure SQL-adatbázist és az Azure Container Registry-adatbázist.

@@ -1,9 +1,9 @@
 ---
-title: Azure PowerShell-Példaszkript – egy hálózati biztonsági csoportra vonatkozó szabályt hozzáadása |} A Microsoft Docs
-description: Az Azure PowerShell-Példaszkript – egy adott porton bejövő adatforgalom engedélyezésére hálózati biztonsági csoport hozzáadása.
+title: Azure PowerShell parancsfájl-minta – hálózati biztonsági csoport szabályának hozzáadása | Microsoft Docs
+description: Azure PowerShell parancsfájl-minta – egy hálózati biztonsági csoport hozzáadásával engedélyezi a bejövő forgalmat egy adott porton.
 services: service-fabric
 documentationcenter: ''
-author: aljo-microsoft
+author: athinanthny
 manager: chackdan
 editor: ''
 tags: azure-service-management
@@ -13,22 +13,22 @@ ms.workload: multiple
 ms.devlang: na
 ms.topic: sample
 ms.date: 11/28/2017
-ms.author: aljo
+ms.author: atsenthi
 ms.custom: mvc
-ms.openlocfilehash: 92efd6c4e63959b6098829892c5cbbaeeabe9f83
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 1418b85bfa2579ed2dee5211a79a75adf14f1547
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66159978"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68592280"
 ---
-# <a name="add-an-inbound-network-security-group-rule"></a>Adjon hozzá egy bejövő hálózati biztonságicsoport-szabályt
+# <a name="add-an-inbound-network-security-group-rule"></a>Bejövő hálózati biztonsági csoport szabályának hozzáadása
 
-Ez a példaszkript létrehoz egy hálózati biztonsági csoportra vonatkozó szabályt engedélyezéséhez 8081-es porton bejövő forgalmat.  A szkript lekéri a `Microsoft.Network/networkSecurityGroups` , amely a fürtben található, erőforráshoz egy új hálózati biztonsági konfiguráció szabályt hoz létre, és frissíti a hálózati biztonsági csoport. Szabja testre a paramétereket szükség szerint.
+Ez a példa egy hálózati biztonsági csoportra vonatkozó szabályt hoz létre, amely engedélyezi a bejövő forgalmat a 8081-as porton.  A parancsfájl lekéri `Microsoft.Network/networkSecurityGroups` az erőforrást, amelyben a fürt található, létrehoz egy új hálózati biztonsági konfigurációs szabályt, és frissíti a hálózati biztonsági csoportot. Szabja testre a paramétereket szükség szerint.
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-Ha szükséges, telepítse az Azure Powershellt utasításait a [Azure PowerShell útmutatójának](/powershell/azure/overview). 
+Ha szükséges, telepítse a Azure PowerShellt a [Azure PowerShell útmutatóban](/powershell/azure/overview)található utasítások alapján. 
 
 ## <a name="sample-script"></a>Példaszkript
 
@@ -41,9 +41,9 @@ A szkript a következő parancsokat használja. A táblázatban lévő összes p
 | Parancs | Megjegyzések |
 |---|---|
 | [Get-AzResource](/powershell/module/az.resources/get-azresource) | Lekéri a `Microsoft.Network/networkSecurityGroups` erőforrást. |
-|[Get-AzNetworkSecurityGroup](/powershell/module/az.network/get-aznetworksecuritygroup)| Lekéri a hálózati biztonsági csoport nevét.|
-|[Add-AzNetworkSecurityRuleConfig](/powershell/module/az.network/add-aznetworksecurityruleconfig)| Egy hálózati biztonsági szabály konfigurációjának hozzáadása egy hálózati biztonsági csoportot. |
-|[Set-AzNetworkSecurityGroup](/powershell/module/az.network/set-aznetworksecuritygroup)| Beállítja a hálózati biztonsági csoport célállapotát.|
+|[Get-AzNetworkSecurityGroup](/powershell/module/az.network/get-aznetworksecuritygroup)| Lekéri a hálózati biztonsági csoportot név szerint.|
+|[Add-AzNetworkSecurityRuleConfig](/powershell/module/az.network/add-aznetworksecurityruleconfig)| Hálózati biztonsági szabály konfigurációját adja hozzá egy hálózati biztonsági csoporthoz. |
+|[Set-AzNetworkSecurityGroup](/powershell/module/az.network/set-aznetworksecuritygroup)| Beállítja egy hálózati biztonsági csoport céljának állapotát.|
 
 ## <a name="next-steps"></a>További lépések
 

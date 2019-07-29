@@ -1,30 +1,30 @@
 ---
-title: 'Gyors útmutató: Első mondat visszaadni, nyissa meg – Translator Text API'
+title: 'Gyors útmutató: Mondat hosszának beolvasása, go-Translator Text API'
 titleSuffix: Azure Cognitive Services
 description: Ebben a rövid útmutatóban kideríti egy szövegben a mondatok hosszát a Translator Text API és a Go segítségével.
 services: cognitive-services
 author: swmachan
-manager: erhopf
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: quickstart
 ms.date: 06/04/2019
 ms.author: swmachan
-ms.openlocfilehash: 574f70f8f091e0f0df65f7d52df5ca73ac00b2c0
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: a71e0859d7d677865cbacbf24de8b0e17861a192
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67704540"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68595177"
 ---
-# <a name="quickstart-use-the-translator-text-api-to-determine-sentence-length-using-go"></a>Gyors útmutató: A Translator Text API segítségével határozza meg a Go használatával mondat hossza
+# <a name="quickstart-use-the-translator-text-api-to-determine-sentence-length-using-go"></a>Gyors útmutató: A Translator Text API használata a mondat hosszának meghatározásához a go használatával
 
-Ebben a rövid útmutatóban fog elsajátíthatja meghatározása a mondat karakterszámát () a Go és a Translator Text REST API használatával.
+Ebből a rövid útmutatóból megtudhatja, hogyan határozhatja meg a mondatok hosszát (karakterekben) a Go és a Translator Text REST API használatával.
 
 Ehhez a rövid útmutatóhoz szükség van egy [Azure Cognitive Services-fiókra](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account), amely tartalmaz egy Translator Text-erőforrást. Ha nincs fiókja, használhatja az ingyenes [próbaidőszakot](https://azure.microsoft.com/try/cognitive-services/) egy előfizetői azonosító beszerzéséhez.
 
 >[!TIP]
-> Ha szeretné egyszerre az összes kód megtekintéséhez, ehhez a mintához forráskódja elérhető a [GitHub](https://github.com/MicrosoftTranslator/Text-Translation-API-V3-Go).
+> Ha az összes kódot egyszerre szeretné látni, a minta forráskódja elérhető a [githubon](https://github.com/MicrosoftTranslator/Text-Translation-API-V3-Go).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -35,7 +35,7 @@ Ehhez a rövid útmutatóhoz a következőkre van szükség:
 
 ## <a name="create-a-project-and-import-required-modules"></a>Projekt létrehozása és a szükséges modulok importálása
 
-A kedvenc integrált Fejlesztőkörnyezetével vagy szerkesztőjével használatával új Go-projekt létrehozása. Ezután másolja a következő kódrészletet egy `sentence-length.go` nevű fájlba a projektjében.
+Hozzon létre egy új go-projektet a kedvenc IDE vagy szerkesztő használatával. Ezután másolja a következő kódrészletet egy `sentence-length.go` nevű fájlba a projektjében.
 
 ```go
 package main
@@ -78,9 +78,9 @@ func main() {
 }
 ```
 
-## <a name="create-a-function-to-determine-sentence-length"></a>Mondat hossz megállapításához függvény létrehozása
+## <a name="create-a-function-to-determine-sentence-length"></a>Függvény létrehozása a mondat hosszának meghatározásához
 
-Hozzunk létre egy függvényt, amely mondat hossza határozza meg. Ez a funkció a Translator Text előfizetési kulcs egyetlen argumentumot vesz igénybe.
+Hozzunk létre egy függvényt a mondat hosszának meghatározásához. Ez a függvény egyetlen argumentumot, a Translator Text előfizetési kulcsot fogja megtenni.
 
 ```go
 func breakSentence(subscriptionKey string) {
@@ -91,9 +91,9 @@ func breakSentence(subscriptionKey string) {
 }
 ```
 
-Következő lépésként hozzunk létre az URL-címet. Az URL-címe használatával lett összeállítva a `Parse()` és `Query()` módszereket. Láthatja, hogy a hozzáadott paraméter a `Add()` metódust.
+Ezután hozzon létre egy URL-címet. Az URL-cím a és `Parse()` `Query()` a metódusok használatával készült. Figyelje meg, hogy a paramétereket a metódussal `Add()` együtt adja hozzá a rendszer.
 
-Másolja be ezt a kódot a `breakSentence` függvény.
+Másolja ezt a kódot a `breakSentence` függvénybe.
 
 ```go
 // Build the request URL. See: https://golang.org/pkg/net/url/#example_URL_Parse
@@ -104,11 +104,11 @@ u.RawQuery = q.Encode()
 ```
 
 >[!NOTE]
-> Végpontok, útvonalak és a kérelem paramétereinek kapcsolatos további információkért lásd: [Translator Text API 3.0: BreakSentence](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-break-sentence).
+> További információ a végpontokról, az útvonalakról és a kérelmek paraméteréről [: Translator Text API 3,0: BreakSentence](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-break-sentence).
 
-## <a name="create-a-struct-for-your-request-body"></a>Egy struct a kérés törzsének létrehozása
+## <a name="create-a-struct-for-your-request-body"></a>Struct létrehozása a kérés törzséhez
 
-Ezután hozzon létre egy névtelen struktúráját a kérelem törzsében, és a JSON-ként kódolni, `json.Marshal()`. Adja hozzá a kódot a `breakSentence` függvény.
+Ezután hozzon létre egy névtelen struktúrát a kérelem törzse számára, és kódolja `json.Marshal()`JSON-ként a következővel:. Adja hozzá ezt a kódot `breakSentence` a függvényhez.
 
 ```go
 // Create an anonymous struct for your request body and encode it to JSON
@@ -122,7 +122,7 @@ b, _ := json.Marshal(body)
 
 ## <a name="build-the-request"></a>A kérelem létrehozása
 
-Most, hogy a kéréstörzs JSON-fájlként már kódolva, a POST-kérés hozhat létre, és a Translator Text API hívása.
+Most, hogy kódolta a kérés törzsét JSON-ként, felépítheti a POST-kérést, és meghívhatja a Translator Text API.
 
 ```go
 // Build the HTTP POST request
@@ -141,11 +141,11 @@ if err != nil {
 }
 ```
 
-Ha egy több szolgáltatást a Cognitive Services-előfizetést használ, akkor is tartalmaznia kell a `Ocp-Apim-Subscription-Region` az a kérelem paramétereit. [További információ a több szolgáltatásos előfizetéshez való hitelesítés közben](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication).
+Ha Cognitive Services több szolgáltatásra kiterjedő előfizetést használ, akkor a kérés paramétereinek `Ocp-Apim-Subscription-Region` is szerepelnie kell. [További információ a többszolgáltatásos előfizetés hitelesítéséről](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication).
 
-## <a name="handle-and-print-the-response"></a>Kezelni, és a válasz
+## <a name="handle-and-print-the-response"></a>A válasz kezelése és nyomtatása
 
-Adja hozzá a kódot a `breakSentence` függvény dekódolni a JSON-válasz, majd formázza és nyomtassa ki az eredményt.
+Adja hozzá ezt a kódot `breakSentence` a függvényhez a JSON-válasz dekódolásához, majd formázza és nyomtassa ki az eredményt.
 
 ```go
 // Decode the JSON response
@@ -188,14 +188,14 @@ Ha szeretné összevetni a saját kódját a miénkkel, a teljes mintakódot meg
 
 ## <a name="next-steps"></a>További lépések
 
-Vessen egy pillantást az API-referencia az elvégezhető műveletek a Translator Text API ismertetése.
+Tekintse meg az API-referenciát, amely mindent megtudhat a Translator Text API.
 
 > [!div class="nextstepaction"]
 > [API-leírások](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference)
 
 ## <a name="see-also"></a>Lásd még
 
-Ismerje meg, hogyan használható a Translator Text API-t:
+Ismerje meg, hogyan használhatja a Translator Text API a következőhöz:
 
 * [Szöveg lefordítása](quickstart-go-translate.md)
 * [Szöveg átírása](quickstart-go-transliterate.md)

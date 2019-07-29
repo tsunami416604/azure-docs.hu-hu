@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: Az Oracle Felhőbeli infrastruktúra-konzol az Azure Active Directory-integráció |} A Microsoft Docs'
-description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés az Azure Active Directory és az Oracle Felhőbeli infrastruktúra-konzol közötti.
+title: 'Oktatóanyag: Azure Active Directory integráció Oracle Cloud Infrastructure-konzollal | Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést a Azure Active Directory és az Oracle felhőalapú infrastruktúra konzolja között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,103 +13,103 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 06/10/2019
+ms.date: 07/26/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 456c984e577e3427ce8cd62d6f63987118f2c8ed
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: e0725988ff88baea2458f0a5e459440874e66088
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67164149"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68596441"
 ---
-# <a name="tutorial-integrate-oracle-cloud-infrastructure-console-with-azure-active-directory"></a>Oktatóanyag: Oracle Felhőbeli infrastruktúra konzolon integrálása az Azure Active Directoryval
+# <a name="tutorial-integrate-oracle-cloud-infrastructure-console-with-azure-active-directory"></a>Oktatóanyag: Az Oracle felhőalapú infrastruktúra-konzol integrálása Azure Active Directory
 
-Ebben az oktatóanyagban elsajátíthatja a Oracle Felhőbeli infrastruktúra konzolon integrálása az Azure Active Directory (Azure AD) lesz. Oracle Felhőbeli infrastruktúra-konzol és az Azure AD integrálása, akkor a következőket teheti:
+Ebből az oktatóanyagból megtudhatja, hogyan integrálhatja az Oracle Cloud Infrastructure-konzolt Azure Active Directory (Azure AD) használatával. Ha az Azure AD-vel integrálja az Oracle Cloud Infrastructure-konzolt, a következőket teheti:
 
-* Szabályozza, ki férhet hozzá az Oracle Felhőbeli infrastruktúra-konzol Azure AD-ben.
-* Engedélyezze a felhasználóknak, hogy lehet automatikusan bejelentkezett Oracle Felhőbeli infrastruktúra-konzol az Azure AD-fiókjukat.
-* A fiókok egyetlen központi helyen – az Azure Portalon kezelheti.
+* Az Oracle Cloud Infrastructure-konzolhoz hozzáférő Azure AD-beli vezérlés.
+* Lehetővé teheti, hogy a felhasználók automatikusan bejelentkezzenek az Oracle Cloud Infrastructure-konzolba az Azure AD-fiókkal.
+* A fiókokat egyetlen központi helyen kezelheti – a Azure Portal.
 
-SaaS-alkalmazás integráció az Azure ad-vel kapcsolatos további információkért lásd: [Mi az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse meg a [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés Azure Active Directorykal](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)című témakört.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Első lépésként szüksége van a következő elemek:
+Első lépésként a következő elemeket kell megadnia:
 
-* Az Azure AD-előfizetés. Ha nem rendelkezik előfizetéssel, hozzájuthat egy [ingyenes fiókot](https://azure.microsoft.com/free/).
-* Oracle Felhőbeli infrastruktúra konzolon egyszeri bejelentkezés (SSO) engedélyezve van az előfizetésben.
+* Egy Azure AD-előfizetés. Ha nem rendelkezik előfizetéssel, [ingyenes fiókot](https://azure.microsoft.com/free/)kérhet.
+* Az Oracle felhőalapú infrastruktúra konzoljának egyszeri bejelentkezéses (SSO) engedélyezett előfizetése.
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
 
-Ebben az oktatóanyagban, tesztelése és konfigurálása az Azure AD SSO-t egy tesztkörnyezetben. Oracle Felhőbeli infrastruktúra konzolon **SP** által kezdeményezett egyszeri bejelentkezés.
+Ebben az oktatóanyagban az Azure AD SSO konfigurálását és tesztelését teszteli a tesztkörnyezetben. Az Oracle felhőalapú infrastruktúra konzolja támogatja az **SP** által kezdeményezett egyszeri bejelentkezést.
 
-## <a name="adding-oracle-cloud-infrastructure-console-from-the-gallery"></a>Oracle Felhőbeli infrastruktúra konzolon hozzáadása a katalógusból
+## <a name="adding-oracle-cloud-infrastructure-console-from-the-gallery"></a>Oracle Cloud Infrastructure-konzol hozzáadása a katalógusból
 
-Az Azure AD integrálása a Oracle Felhőbeli infrastruktúra-konzol konfigurálása, hozzá kell Oracle Felhőbeli infrastruktúra-konzol a galériából a felügyelt SaaS-alkalmazások listájára.
+Az Oracle Cloud Infrastructure-konzol Azure AD-be való integrálásának konfigurálásához hozzá kell adnia az Oracle Cloud Infrastructure-konzolt a katalógusból a felügyelt SaaS-alkalmazások listájához.
 
 1. Jelentkezzen be egy munkahelyi vagy iskolai fiókkal vagy a személyes Microsoft-fiókjával az [Azure Portalra](https://portal.azure.com).
-1. A bal oldali navigációs ablaktáblán válassza ki a **Azure Active Directory** szolgáltatás.
-1. Navigáljon a **vállalati alkalmazások** majd **minden alkalmazás**.
-1. Új alkalmazás hozzáadásához válassza **új alkalmazás**.
-1. Az a **Hozzáadás a katalógusból** területén írja be a **Oracle Felhőbeli infrastruktúra konzolon** kifejezést a keresőmezőbe.
-1. Válassza ki **Oracle Felhőbeli infrastruktúra konzolon** az eredmények panelen, és vegye fel az alkalmazást. Várjon néhány másodpercet, amíg az alkalmazás bekerül a bérlőn.
+1. A bal oldali navigációs panelen válassza ki a **Azure Active Directory** szolgáltatást.
+1. Navigáljon a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás**lehetőséget.
+1. Új alkalmazás hozzáadásához válassza az **új alkalmazás**lehetőséget.
+1. A **Hozzáadás a** katalógusból szakaszban írja be az **Oracle Cloud Infrastructure Console** kifejezést a keresőmezőbe.
+1. Válassza ki az **Oracle Cloud Infrastructure-konzolt** az eredmények panelen, majd adja hozzá az alkalmazást. Várjon néhány másodpercet, amíg az alkalmazás bekerül a bérlőbe.
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés tesztelése és konfigurálása
 
-Konfigurálás és tesztelés az Azure AD SSO-Oracle Felhőbeli infrastruktúra konzol segítségével egy teszt nevű felhasználó **b Simon**. Az SSO működjön kell egy Azure AD-felhasználót és a kapcsolódó felhasználó közötti kapcsolat kapcsolatot hozhat létre az Oracle Felhőbeli infrastruktúra-konzolon.
+Konfigurálja és tesztelje az Azure AD SSO-t az Oracle felhőalapú infrastruktúra-konzollal egy **B. Simon**nevű teszt felhasználó használatával. Az egyszeri bejelentkezés működéséhez létre kell hoznia egy kapcsolati kapcsolatot egy Azure AD-felhasználó és a kapcsolódó felhasználó között az Oracle Cloud Infrastructure-konzolon.
 
-Az Azure AD SSO-Oracle Felhőbeli infrastruktúra-konzol tesztelése és konfigurálása, hajtsa végre a következő építőelemeket:
+Az Azure AD SSO és az Oracle felhőalapú infrastruktúra konzoljának konfigurálásához és teszteléséhez hajtsa végre a következő építőelemeket:
 
-1. **[Az Azure AD SSO konfigurálása](#configure-azure-ad-sso)**  ahhoz, hogy ez a funkció használatát a felhasználók számára.
-1. **[Oracle Felhőbeli infrastruktúra-konzol konfigurálása az](#configure-oracle-cloud-infrastructure-console)**  alkalmazás oldalán az egyszeri bejelentkezési beállításainak konfigurálására.
-1. **[Hozzon létre egy Azure ad-ben tesztfelhasználót](#create-an-azure-ad-test-user)**  az Azure AD egyszeri bejelentkezés a b Simon teszteléséhez.
-1. **[Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assign-the-azure-ad-test-user)**  b Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
-1. **[Hozzon létre Oracle Felhőbeli infrastruktúra konzolon tesztfelhasználót](#create-oracle-cloud-infrastructure-console-test-user)**  szeretné, hogy egy megfelelője a b Simon Oracle Felhőbeli infrastruktúra-konzolon, amely kapcsolódik az Azure AD felhasználói ábrázolása.
-1. **[Egyszeri bejelentkezés tesztelése](#test-sso)**  ellenőrzése, hogy működik-e a konfiguráció.
+1. **[Konfigurálja az Azure ad SSO](#configure-azure-ad-sso)** -t, hogy a felhasználók használhatják ezt a funkciót.
+1. Az **[Oracle felhőalapú infrastruktúra konzoljának konfigurálása](#configure-oracle-cloud-infrastructure-console)** az egyszeri bejelentkezés beállításainak konfigurálásához az alkalmazás oldalán.
+1. **[Hozzon létre egy Azure ad-tesztelési felhasználót](#create-an-azure-ad-test-user)** az Azure ad egyszeri bejelentkezés teszteléséhez B. Simon használatával.
+1. **[Rendelje hozzá az Azure ad-teszt felhasználót](#assign-the-azure-ad-test-user)** , hogy B. Simon engedélyezze az Azure ad egyszeri bejelentkezést.
+1. **[Hozzon létre egy Oracle felhőalapú infrastruktúra-konzolt a felhasználónak](#create-oracle-cloud-infrastructure-console-test-user)** , hogy az a felhasználó Azure ad-képviseletéhez kapcsolódó B. Simon-ügyféllel rendelkezzen.
+1. Ellenőrizze az **[SSO](#test-sso)** -t annak ellenőrzéséhez, hogy a konfiguráció működik-e.
 
-### <a name="configure-azure-ad-sso"></a>Azure AD SSO konfigurálása
+### <a name="configure-azure-ad-sso"></a>Az Azure AD SSO konfigurálása
 
-Kövesse az alábbi lépéseket az Azure AD egyszeri bejelentkezés engedélyezése az Azure Portalon.
+Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a Azure Portalban.
 
-1. Az a [az Azure portal](https://portal.azure.com/), a a **Oracle Felhőbeli infrastruktúra konzolon** alkalmazás integráció lapon keresse meg a **kezelése** szakaszt, és válassza **egyetlen bejelentkezés**.
-1. Az a **egyszeri bejelentkezési módszer** lapra, jelölje be **SAML**.
-1. Az a **állítsa be egyszeri bejelentkezést az SAML** lap, kattintson a Szerkesztés/toll ikonra a **alapszintű SAML-konfigurációja** beállításait módosíthatja.
+1. A [Azure Portal](https://portal.azure.com/)az **Oracle Cloud Infrastructure Console** Application Integration oldalon keresse meg a **kezelés** szakaszt, és válassza az **egyszeri bejelentkezés**lehetőséget.
+1. Az **egyszeri bejelentkezési módszer kiválasztása** lapon válassza az **SAML**lehetőséget.
+1. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson az alapszintű **SAML-konfiguráció** szerkesztés/toll ikonjára a beállítások szerkesztéséhez.
 
    ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
-1. Az a **alapszintű SAML-konfigurációja** lap, adja meg az értékeket a következő mezőket:
+1. Az alapszintű **SAML-konfiguráció** lapon adja meg a következő mezők értékeit:
 
    > [!NOTE]
-   > A szolgáltató származó metaadatfájl kap a **konfigurálása Oracle Felhőbeli infrastruktúra konzolon egyszeri bejelentkezés** az oktatóanyag szakaszában.
+   > A szolgáltatói metaadatokat az oktatóanyag **Oracle felhő-infrastruktúra konfigurálása konzoljának egyszeri bejelentkezés** szakaszában találja.
     
    1. Kattintson a **metaadatfájl feltöltése**.
 
    1. Kattintson a **mappa embléma** válassza ki a metaadat-fájlt, és kattintson a **feltöltése**.
 
-   1. A metaadatfájl sikeres feltöltését követően a **azonosító** és **válasz URL-cím** értékeket automatikusan az első **alapszintű SAML-konfigurációja** szakasz szövegmezőbe.
+   1. A metaadat-fájl feltöltése után az **azonosító** és a **Válasz URL-** értékei automatikusan fel lesznek töltve az **SAML alapszintű konfigurációs** szakasz szövegmezőben.
     
       > [!NOTE]
-      > Ha a **azonosító** és **válasz URL-cím** értékek nem automatikus polulated lekérése, majd adja meg az értékeket manuálisan a követelmény alapján.
+      > Ha az **azonosító** és a **Válasz URL-címe** nem kap automatikus polulated, akkor a követelménynek megfelelően adja meg manuálisan az értékeket.
 
-      Az a **bejelentkezési URL-** szövegmezőbe írja be a következő minta használatával URL-cím: `https://console.<REGIONNAME>.oraclecloud.com/`
+      A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://console.<REGIONNAME>.oraclecloud.com/`
 
       > [!NOTE]
-      > Az érték nem valódi. Frissítse az értéket a tényleges bejelentkezési URL-CÍMÉT. Kapcsolattartó [Oracle Felhőbeli infrastruktúra-konzol ügyfél-támogatási csapatának](https://www.oracle.com/support/advanced-customer-support/products/cloud.html) a gépkulcsengedélyek értékének. Emellett olvassa el a minták látható a **alapszintű SAML-konfigurációja** szakaszban az Azure Portalon.
+      > Az érték nem valódi. Frissítse az értéket a tényleges bejelentkezési URL-címmel. Az érték beszerzéséhez vegye fel a kapcsolatot az [Oracle Cloud Infrastructure-konzol ügyfél-támogatási csapatával](https://www.oracle.com/support/advanced-customer-support/products/cloud.html) . Az Azure Portal alapszintű **SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
 
-1. A a **állítsa be egyszeri bejelentkezést az SAML** lap a **SAML-aláíró tanúsítvány** területén található **összevonási metaadatainak XML** válassza **letöltése** töltse le a tanúsítványt, és menti azt a számítógépet.
+1. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban keresse meg az **összevonási metaadatok XML** -fájlját, és válassza a **Letöltés** lehetőséget a tanúsítvány letöltéséhez és a számítógépre mentéséhez.
 
    ![A tanúsítvány letöltési hivatkozás](common/metadataxml.png)
 
-1. Oracle Felhőbeli infrastruktúra konzolalkalmazást a SAML helyességi feltételek vár egy megadott formátumban, amely megköveteli, hogy egyéni attribútum-leképezéshez az SAML-jogkivonat attribútumai konfigurációja. Az alábbi képernyőképen az alapértelmezett attribútumok listáját jeleníti meg. Kattintson a **szerkesztése** ikonra kattintva nyissa meg a felhasználói attribútumok párbeszédpanel.
+1. Az Oracle Cloud Infrastructure Console alkalmazás megadott formátumban várja az SAML-jogcímeket, így egyéni attribútum-hozzárendeléseket kell hozzáadnia az SAML-jogkivonat attribútumainak konfigurációjához. Az alábbi képernyőképen az alapértelmezett attribútumok listája látható. Kattintson a **Szerkesztés** ikonra a felhasználói attribútumok párbeszédpanel megnyitásához.
 
    ![image](common/edit-attribute.png)
 
-1. Emellett a fent Oracle Felhőbeli infrastruktúra Konzolalkalmazás vár néhány további attribútumok vissza SAML-válasz átadni. Az a **felhasználói attribútumok & jogcímek** szakaszában a **csoportjogcímek (előzetes verzió)**  párbeszédpanelen hajtsa végre az alábbi lépéseket:
+1. A fentieken kívül az Oracle Cloud Infrastructure Console alkalmazás néhány további attribútumot vár az SAML-válaszba való visszatéréshez. A **csoport jogcímek (előzetes verzió)**  párbeszédpanel **felhasználói attribútumok &**  jogcímek szakaszában hajtsa végre a következő lépéseket:
 
-   1. Kattintson a **toll** melletti **azonosító értékét nevet**.
+   1. Kattintson a  **név azonosító érték**melletti tollra.
 
-   1. Válassza ki **állandó** , **válasszon azonosító formátuma**.
+   1. Válassza az **állandó** lehetőséget a **név azonosító formátumának**kiválasztása lehetőségnél.
  
    1. Kattintson a **Save** (Mentés) gombra.
 
@@ -117,97 +117,97 @@ Kövesse az alábbi lépéseket az Azure AD egyszeri bejelentkezés engedélyez�
     
       ![image](./media/oracle-cloud-tutorial/config11.png)
 
-   1. Kattintson a **toll** melletti **csoportok visszaküldött jogcímek**.
+   1. Kattintson a **kérelemben visszaadott csoportok**melletti **tollra** .
 
-   1. Válassza ki **biztonsági csoportok** választógomb listájából.
+   1. Válassza a **biztonsági csoportok** lehetőséget a választógombok listából.
 
-   1. Válassza ki **forrásattribútumának Attribútumhierarchiája** , **csoportazonosító**.
+   1. Válassza ki a **csoport azonosítója** **forrás attribútumát** .
 
-   1. Ellenőrizze **testreszabása a csoportos jogcímet neve**.
+   1. Győződjön meg arról, hogy testreszabja a **csoportjogcím nevét**.
 
-   1. Az a **neve** szövegmezőben **groupName**.
+   1. A **név** szövegmezőbe írja be a következőt: **Csoportnév**.
 
-   1. Az a **Namespace (nem kötelező)** szövegmezőben `https://auth.oraclecloud.com/saml/claims`.
+   1. A **névtér (nem kötelező)** szövegmezőbe írja be `https://auth.oraclecloud.com/saml/claims`a következőt:.
 
    1. Kattintson a **Save** (Mentés) gombra.
 
       ![image](./media/oracle-cloud-tutorial/config08.png)
 
-1. Az a **Oracle Felhőbeli infrastruktúra konzolon beállítása** területén másolja a megfelelő URL-címe szerint.
+1. Az **Oracle Cloud Infrastructure konzol beállítása** szakaszban másolja ki a megfelelő URL-címeket a követelmények alapján.
 
-   ![Másolja a konfigurációs URL-címek](common/copy-configuration-urls.png)
+   ![Konfigurációs URL-címek másolása](common/copy-configuration-urls.png)
 
-### <a name="configure-oracle-cloud-infrastructure-console"></a>Oracle Felhőbeli infrastruktúra-konzol konfigurálása
+### <a name="configure-oracle-cloud-infrastructure-console"></a>Az Oracle felhőalapú infrastruktúra konzoljának konfigurálása
 
-1. Egy másik böngészőablakban jelentkezzen be Oracle Felhőbeli infrastruktúra-konzolt rendszergazdaként.
+1. Egy másik böngészőablakban jelentkezzen be rendszergazdaként az Oracle Cloud Infrastructure-konzolra.
 
-1. Kattintson a bal oldali menüben, majd kattintson a **identitás** majd keresse meg a **összevonási**.
+1. Kattintson a menü bal oldalára, majd kattintson az **identitás** elemre, majd navigáljon az összevonáshoz.
 
    ![Konfiguráció](./media/oracle-cloud-tutorial/config01.png)
 
-1. Mentse a **szolgáltató metaadatait tartalmazó fájl** kattintva a **töltse le a jelen dokumentum** hivatkozásra, és töltse fel azt a **alapszintű SAML-konfigurációja** szakaszában az Azure portal, majd Kattintson a **identitásszolgáltató hozzáadása**.
+1. Mentse a **szolgáltatói metaadat-fájlt** a **dokumentum letöltése** hivatkozásra kattintva, és töltse fel a Azure Portal **alapszintű SAML-konfiguráció** szakaszára, majd kattintson az **Identity Provider hozzáadása**elemre.
 
    ![Konfiguráció](./media/oracle-cloud-tutorial/config02.png)
 
-1. Az a **identitásszolgáltató hozzáadása** előugró ablakban hajtsa végre az alábbi lépéseket:
+1. Az **identitás-szolgáltató hozzáadása** előugró ablakban végezze el a következő lépéseket:
 
    ![Konfiguráció](./media/oracle-cloud-tutorial/config03.png)
 
-   1. Az a **neve** szöveg mezőben adja meg a nevet.
+   1. A **név** szövegmezőbe írja be a nevét.
 
-   1. Az a **leírás** szöveg mezőbe írja be a leírást.
+   1. A **Leírás** szövegmezőbe írja be a leírást.
 
-   1. Válassza ki **MICROSOFT ACTIVE DIRECTORY ÖSSZEVONÁSI szolgáltatással (AD FS) vagy a SAML 2.0-s szabványnak megfelelő IDENTITÁSSZOLGÁLTATÓ** , **típus**.
+   1. Válassza a **Microsoft Active Directory ÖSSZEVONÁSI szolgáltatás (ADFS) vagy az SAML 2,0-kompatibilis identitás-szolgáltató** **típusként**lehetőséget.
 
-   1. Kattintson a **Tallózás** feltöltése az Azure Portalról letöltött összevonási metaadatainak XML.
+   1. Kattintson a **Tallózás** gombra, és töltse fel az összevonási metaadatok XML-fájlját, amelyet a Azure Portalról töltött le.
 
-   1. Kattintson a **Folytatás** és az a **identitásszolgáltató szerkesztése** szakaszban a következő lépésekkel:
+   1. Kattintson a **Folytatás** gombra, és az **Identitáskezelő szerkesztése** szakaszban hajtsa végre a következő lépéseket:
 
       ![Konfiguráció](./media/oracle-cloud-tutorial/config09.png)
 
-   1. A **IDENTITY PROVIDER csoport** mezőknél adja meg a csoport nevének és a csoport azonosítója, amely az Azure Portal webhelyen állíthatja be. A csoport képezhető le a megfelelő csoporthoz kell **OCI csoport** mező.
+   1. Az **identitás-szolgáltató csoportot** egyéni csoportként kell kiválasztani. A csoport AZONOSÍTÓjának a csoport GUID azonosítójának kell lennie Azure Active Directoryból. A csoportot hozzá kell rendelni a megfelelő csoporthoz a **OCI csoport** mezőben.
 
-   1. A beállításnak az Azure portal és a szervezet kell több csoportot leképezheti. Kattintson a **+ leképezés hozzáadása** igény szerint annyi csoportokat szeretne hozzáadni.
+   1. A Azure Portal és a szervezet igényeinek megfelelően több csoportot is leképezheti a telepítéshez. Kattintson a **+ leképezés hozzáadása** lehetőségre, hogy minél több csoportot adjon hozzá, mint amennyire szüksége van.
 
    1. Kattintson a **Submit** (Küldés) gombra.
 
 ### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára
 
-Ebben a szakaszban az Azure Portalon b Simon nevű tesztfelhasználó fog létrehozni.
+Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. Simon néven.
 
-1. Az Azure Portal bal oldali panelén válassza **Azure Active Directory**válassza **felhasználók**, majd válassza ki **minden felhasználó**.
+1. A Azure Portal bal oldali paneljén válassza a **Azure Active Directory**lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó**lehetőséget.
 1. Válassza ki **új felhasználó** a képernyő tetején.
-1. Az a **felhasználói** tulajdonságok, kövesse az alábbi lépéseket:
+1. A **felhasználó** tulajdonságaiban hajtsa végre az alábbi lépéseket:
    1. A **Név** mezőbe írja a következőt: `B. Simon`.  
-   1. Az a **felhasználónév** mezőbe írja be a username@companydomain.extension. Például: `B. Simon@contoso.com`.
-   1. Válassza ki a **Show jelszó** jelölje be a jelölőnégyzetet, és jegyezze fel a megjelenített érték a **jelszó** mezőbe.
+   1. A **Felhasználónév** mezőben adja meg a username@companydomain.extensionnevet. Például: `B. Simon@contoso.com`.
+   1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
    1. Kattintson a **Create** (Létrehozás) gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
 
-Ebben a szakaszban a hozzáférés biztosításával Oracle Felhőbeli infrastruktúra-konzol Azure egyszeri bejelentkezés használatára b Simon engedélyeznie kell.
+Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri bejelentkezést az Oracle Cloud Infrastructure-konzolhoz való hozzáférés biztosításával.
 
-1. Az Azure Portalon válassza ki a **vállalati alkalmazások**, majd válassza ki **minden alkalmazás**.
-1. Az alkalmazások listájában jelölje ki a **Oracle Felhőbeli infrastruktúra konzolon**.
-1. Az alkalmazás áttekintése lapon keresse meg a **kezelés** szakaszt, és válassza **felhasználók és csoportok**.
+1. A Azure Portal válassza a **vállalati alkalmazások**lehetőséget, majd válassza a **minden alkalmazás**lehetőséget.
+1. Az alkalmazások listában válassza az **Oracle Cloud Infrastructure Console**elemet.
+1. Az alkalmazás áttekintés lapján keresse meg a **kezelés** szakaszt, és válassza a **felhasználók és csoportok**lehetőséget.
 
    ![A "Felhasználók és csoportok" hivatkozásra](common/users-groups-blade.png)
 
-1. Válassza ki **felhasználó hozzáadása**, majd **felhasználók és csoportok** a a **hozzárendelés hozzáadása** párbeszédpanel.
+1. Válassza a **felhasználó hozzáadása**lehetőséget, majd a **hozzárendelés hozzáadása** párbeszédpanelen válassza a **felhasználók és csoportok** lehetőséget.
 
    ![A felhasználó hozzáadása hivatkozás](common/add-assign-user.png)
 
-1. Az a **felhasználók és csoportok** párbeszédablakban válassza **b Simon** a felhasználók listájából, majd kattintson a **kiválasztása** gombra a képernyő alján.
-1. Ha a SAML helyességi feltétel, a szerepkör értéket vár a **szerepkör kiválasztása** párbeszédpanelen válassza ki a megfelelő szerepkört a felhasználóhoz a listából, és kattintson a **kiválasztása** gombra a képernyő alján.
-1. Az a **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelése** gombra.
+1. A **felhasználók és csoportok** párbeszédpanelen válassza a felhasználók listából a **B. Simon** lehetőséget, majd kattintson a képernyő alján található **kiválasztás** gombra.
+1. Ha az SAML-állításban bármilyen szerepkörre számíthat, a **szerepkör kiválasztása** párbeszédpanelen válassza ki a megfelelő szerepkört a felhasználó számára a listából, majd kattintson a képernyő alján található **kiválasztás** gombra.
+1. A **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelés** gombra.
 
-### <a name="create-oracle-cloud-infrastructure-console-test-user"></a>Oracle Felhőbeli infrastruktúra konzolon tesztfelhasználó létrehozása
+### <a name="create-oracle-cloud-infrastructure-console-test-user"></a>Oracle felhőalapú infrastruktúra-konzol tesztelési felhasználójának létrehozása
 
- Oracle Felhőbeli infrastruktúra-konzol támogatja a just-in-time-kiépítés, amely alapértelmezés szerint ki van. Nincs meg ebben a szakaszban a művelet elem. Új felhasználó létrehozása nem hozzáférési és hozhat létre a felhasználó még nincs szükség tett kísérlet során.
+ Az Oracle felhő-infrastruktúra konzolja az igény szerinti üzembe helyezést is támogatja, ami alapértelmezés szerint megtörténik. Ez a szakasz nem tartalmaz műveleti elemeket. Egy új felhasználó nem jön létre az elérési kísérlet során, és nem kell létrehoznia a felhasználót.
 
 ### <a name="test-sso"></a>Egyszeri bejelentkezés tesztelése
 
-Az Oracle Felhőbeli infrastruktúra konzolon csempe kiválasztásakor a hozzáférési panelen, a rendszer átirányítja az Oracle Felhőbeli infrastruktúra konzolon bejelentkezési oldal. Válassza ki a **IDENTITÁSSZOLGÁLTATÓ** a legördülő menüből, majd kattintson a **Folytatás** bejelentkezni az alább látható módon. A hozzáférési panelen kapcsolatos további információkért lásd: [Bevezetés a hozzáférési Panel használatába](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Ha a hozzáférési panelen kiválasztja az Oracle Cloud Infrastructure Console csempét, a rendszer átirányítja az Oracle Cloud Infrastructure Console bejelentkezési oldalára. Válassza ki az **Identitáskezelő** elemet a legördülő menüből, majd kattintson a **Folytatás** lehetőségre, amint az alább látható a bejelentkezéshez. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ![Konfiguráció](./media/oracle-cloud-tutorial/config10.png)
 
@@ -217,4 +217,4 @@ Az Oracle Felhőbeli infrastruktúra konzolon csempe kiválasztásakor a hozzáf
 
 - [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Mi az az Azure Active Directory feltételes hozzáférés?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Mi a feltételes hozzáférés a Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

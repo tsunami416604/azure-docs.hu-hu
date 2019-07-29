@@ -1,18 +1,18 @@
 ---
 title: Azure-fájlmegosztások biztonsági mentése
 description: Ez a cikk ismerteti az Azure-fájlmegosztások biztonsági mentésének és visszaállításának módját, valamint a felügyeleti feladatokat.
-author: rayne-wiselman
-ms.author: raynew
-ms.date: 01/31/2019
+author: dcurwin
+ms.author: dacurwin
+ms.date: 07/29/2019
 ms.topic: tutorial
 ms.service: backup
 manager: carmonm
-ms.openlocfilehash: 7233db1e685c3edcdbd6a97bc2ae23706ad6f767
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.openlocfilehash: 9cb0150efcb4860af98b47aa5da4cfd24d2e9de9
+ms.sourcegitcommit: 15f7b641a67f3d6cf4fb4b4c11eaee18cf335923
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68466548"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68602016"
 ---
 # <a name="back-up-azure-file-shares"></a>Azure-fájlmegosztások biztonsági mentése
 Ez a cikk azt ismerteti, hogyan használhatja az Azure Portalt az [Azure-fájlmegosztások](../storage/files/storage-files-introduction.md) biztonsági mentésére és visszaállítására.
@@ -34,6 +34,7 @@ Az Azure-fájlmegosztás biztonsági mentése előzetes verzióban érhető el. 
 - A Storage-fiókokban tárolt Azure-fájlmegosztás biztonsági mentésének támogatása a [zóna redundáns tárolási](../storage/common/storage-redundancy-zrs.md) (ZRS) replikálásával jelenleg [ezekre](backup-azure-files-faq.md#in-which-geos-can-i-back-up-azure-file-shares-)a régiókra korlátozódik.
 - Nem biztosítható az Azure-fájlmegosztások védelme olyan tárfiókokban, amelyeken engedélyezve vannak a virtuális hálózatok vagy a tűzfal.
 - Azure Backup használatával nem érhető el a CLI a Azure Files védelméhez.
+- A Azure Backup jelenleg az Azure-fájlmegosztás napi biztonsági mentésének ütemezését támogatja.
 - Az ütemezett biztonsági mentések maximális száma naponta egy.
 - Az igény szerinti biztonsági mentések maximális száma naponta négy.
 - Használjon [erőforrászárat](https://docs.microsoft.com/cli/azure/resource/lock?view=azure-cli-latest) a tárfiókon, hogy megelőzze a helyreállítási tárban lévő biztonsági másolatok véletlen törlését.
@@ -49,7 +50,7 @@ Ez az oktatóanyag feltételezi, hogy már létrehozott egy Azure-fájlmegosztá
 
     ![Azure-fájlmegosztás kiválasztása a biztonsági mentés céljaként](./media/backup-file-shares/overview-backup-page.png)
 
-2. A **biztonsági mentés célja** menüben a **mit szeretne biztonsági másolatot készíteni?** területen válassza az Azure fájlmegosztás lehetőséget.
+2. A **biztonsági mentés célja** menüben, a **Miről szeretne biztonsági másolatot készíteni?** területen válassza az Azure fájlmegosztás lehetőséget.
 
     ![Azure-fájlmegosztás kiválasztása a biztonsági mentés céljaként](./media/backup-file-shares/choose-azure-fileshare-from-backup-goal.png)
 
@@ -65,7 +66,7 @@ Ez az oktatóanyag feltételezi, hogy már létrehozott egy Azure-fájlmegosztá
 
    ![Kattintson a Biztonsági mentés elemre az Azure-fájlmegosztás tárolóval történő társításához](./media/backup-file-shares/discover-file-shares.png)
 
-5. A **Fájlmegosztások** listáról válasszon ki egy vagy több fájlmegosztást, amely(ek)ről biztonsági mentést szeretne készíteni, majd kattintson az **OK** gombra.
+5. A **fájlmegosztás** listából válasszon ki egy vagy több olyan fájlmegosztást, amelyről biztonsági másolatot szeretne készíteni, majd kattintson **az OK**gombra.
 
 6. A fájlmegosztások kiválasztását követően a Biztonsági mentés menü átvált a **Biztonsági mentési szabályzat** menüre. Ebben a menüben válasszon egy meglévő biztonsági mentési szabályzatot, vagy hozzon létre egy újat, és kattintson **Biztonsági mentés engedélyezése** lehetőségre.
 
@@ -192,6 +193,6 @@ Törölheti a fájlmegosztás biztonsági másolatát a Biztonsági mentés leá
 A következő eljárás azt feltételezi, hogy a virtuális gép biztonsági mentési feladata le lett állítva. Ha a biztonsági mentési feladatot leállítja, a Biztonsági mentés folytatása és a Biztonsági másolatok adatainak törlése lehetőségek érhetők el a Biztonsági mentési elem irányítópulton. Kattintson a Biztonsági másolatok adatainak törlése lehetőségre, és írja be a fájlmegosztás nevét a törlés megerősítéséhez. Igény szerint adjon meg egy törlési okot vagy megjegyzést.
 
 ## <a name="see-also"></a>Lásd még:
-Az Azure-fájlmegosztásokról a következő dokumentumokban talál további információt:
+További információ az Azure-fájlmegosztás szolgáltatásról:
 - [Azure-fájlmegosztás biztonsági mentése – GYIK](backup-azure-files-faq.md)
 - [Azure fájlmegosztás biztonsági mentése – hibaelhárítás](troubleshoot-azure-files.md)

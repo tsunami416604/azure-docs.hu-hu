@@ -3,8 +3,8 @@ title: Service Fabric parancssori felület példaszkriptje – Fürtön lévő a
 description: Service Fabric parancssori felület példaszkriptje – Alkalmazás frissítése egy új verzióval. Ez a példa egy üzembe helyezett alkalmazást is frissít az új elemekkel.
 services: service-fabric
 documentationcenter: ''
-author: rockboyfor
-manager: digimobile
+author: athinanthny
+manager: chackdan
 editor: ''
 tags: ''
 ms.assetid: ''
@@ -12,16 +12,15 @@ ms.service: service-fabric
 ms.workload: multiple
 ms.devlang: na
 ms.topic: sample
-origin.date: 12/06/2017
-ms.date: 03/04/2019
-ms.author: v-yeche
+ms.date: 12/06/2017
+ms.author: atsenthi
 ms.custom: ''
-ms.openlocfilehash: ffc60279ae414055c893c024d0ffd98267e6655f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 72195a3a127e33ffa6118f77c4fa58ba5f60ee17
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60621706"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68600094"
 ---
 # <a name="add-an-application-certificate-to-a-service-fabric-cluster"></a>Alkalmazástanúsítvány hozzáadása egy Service Fabric-fürthöz
 
@@ -31,27 +30,10 @@ Ez a példaszkript egy meglévő alkalmazás új verzióját tölti fel, majd fr
 
 ## <a name="sample-script"></a>Példaszkript
 
-```sh
-#!/bin/bash
-
-# Select cluster
-sfctl cluster select \
-    --endpoint http://svcfab1.chinanorth.cloudapp.chinacloudapi.cn:19080
-
-# Upload the latest bits of an application
-sfctl application upload --path ~/app_package_dir_2
-
-# Provision the new application
-sfctl application provision --application-type-build-path app_package_dir_2
-
-# Upgrade an existing up with the new version
-sfctl application upgrade --app-id TestApp --app-version 2.0.0 --parameters "{\"test\":\"value\"}" --mode Monitored
-```
+[!code-sh[main](../../../cli_scripts/service-fabric/upgrade-application/upgrade-application.sh "Upload and update an application on a Service Fabric cluster")]
 
 ## <a name="next-steps"></a>További lépések
 
 További információ: [A Service Fabric parancssori felületének dokumentációja](../service-fabric-cli.md).
 
 A [Service Fabric parancssori felület példái](../samples-cli.md) között további Service Fabric parancssori felületi példákat talál az Azure Service Fabrichez.
-
-<!--Update_Description: update meta properties -->

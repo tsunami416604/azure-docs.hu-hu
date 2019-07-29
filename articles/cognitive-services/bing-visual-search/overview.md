@@ -10,56 +10,56 @@ ms.subservice: bing-visual-search
 ms.topic: overview
 ms.date: 03/27/2019
 ms.author: scottwhi
-ms.openlocfilehash: 4da4340176259265fd36c55d2b81ecfc3f4ed5f8
-ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
+ms.openlocfilehash: 15abbfd8892464f3a2c21a85c07bc5b8e94e47ad
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67657704"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68594703"
 ---
 # <a name="what-is-the-bing-visual-search-api"></a>Mi az a Bing Visual Search API?
 
-A Bing Visual Search API a képhez insights adja vissza. Töltsön fel egy képet, vagy adjon meg egy URL-címet. Insights vizuálisan hasonló képek, a vásárlási forrás, a weblapok, például a lemezkép és a további. A Bing Visual Search API által visszaadott insights hasonlóak kiépítettektől Bing.com/images jelenik meg.
+A Bing Visual Search API egy rendszerkép elemzéseit adja vissza. Feltölthet egy képet, vagy megadhat egy URL-címet is. Az elemzések vizuálisan hasonló képek, vásárlási források, weblapok, amelyek tartalmazzák a képet, és így tovább. A Bing Visual Search API által visszaadott bepillantások hasonlóak a Bing.com/images-on láthatók számára.
 
-Ha használja a [a Bing Image Search API](../bing-image-search/overview.md), helyett kép feltöltése a Bing Visual Search, hogy API-k a keresési eredmények insight-jogkivonatokat is használhat.
+Ha a [Bing Image Search API](../bing-image-search/overview.md)használja, a rendszerkép feltöltése helyett az adott API keresési eredményeiből is betekintési jogkivonatokat használhat a Bing Visual Search.
 
 > [!IMPORTANT]
-> Ha a Bing Image Search API használatával képadatok, fontolja meg az áttérést a Bing Visual Search API, amely átfogóbb elemzéseket biztosít.
+> Ha a Bing Image Search API segítségével képelemzéseket kap, érdemes lehet átváltani a Bing Visual Search APIra, amely átfogóbb elemzéseket tesz lehetővé.
 
 ## <a name="insights"></a>Insights
 
-A Bing Visual Search használatával is felderítheti, a következő információkat:
+A következő bepillantást a Bing Visual Search használatával derítheti fel:
 
-| Elemzés                              | Leírás |
+| Megállapítások                              | Leírás |
 |--------------------------------------|-------------|
-| Vizuálisan hasonló képek              | A bemeneti kép vizuálisan hasonló képek egy listája. |
-| Vizuálisan hasonló termékek            | Olyan termékhez, melyek a vizuálisan hasonló látható termékre.            |
-| Vásárlási forrás                     | Helyek, ahol vásárolhat az elemet a bemeneti ábrán látható.            |
-| Kapcsolódó keresések                     | Kapcsolódó keresések mások vagy az, hogy a kép tartalma alapulnak.            |
-| Amelyek közé tartozik a lemezkép     | A bemeneti kép tartalmazó weblapjait.            |
-| Receptek                              | Például, hogy a bemeneti képen látható az étel receptek weblapokat.            |
+| Vizuálisan hasonló képek              | A bemeneti képhez hasonló rendszerképek listája. |
+| Vizuálisan hasonló termékek            | Termékek, amelyek vizuálisan hasonlóak a termékhez.            |
+| Vásárlási források                     | Helyek, ahol megvásárolhatja a bemeneti képen látható elemeket.            |
+| Kapcsolódó keresések                     | A mások által készített vagy a rendszerkép tartalmán alapuló kapcsolódó keresések.            |
+| A rendszerképet tartalmazó weblapok     | A bemeneti képet tartalmazó weblapok.            |
+| Receptet                              | Azokat a weblapokat, amelyekkel az edény a bemeneti képen látható.            |
 
-Információkhoz a Bing vizuális keresési feltételek (vagyis a címkék) származik a bemeneti kép különböző adja vissza. A címkék engedélyezze a felhasználóknak, hogy a lemezképben található fogalmak. Például ha a bemeneti kép híres sportoló, a címkék egyikét lehet a athlete nevét, egy másik címke lehet vagy sporttal kapcsolatosak. Vagy, ha a bemeneti kép egy apple torta, a címkék Apple torta tortadiagram és édességeket választottam.
+Az elemzések mellett Bing Visual Search a bemeneti képből származtatott különböző kifejezéseket (azaz címkéket) adja vissza. A címkék lehetővé teszik a felhasználók számára a rendszerképben található fogalmak megismerését. Ha például a bemeneti rendszerkép egy híres sportoló, akkor az egyik címke lehet a sportoló neve, egy másik címke is lehet sport. Vagy ha a bemeneti rendszerkép egy Apple Pie, a címkék Apple Pie, piték és desszertek lehetnek.
 
-A Bing vizuális keresési eredmények határoló hasznos helyhez az ábrán régiók mezők is. Például ha a lemezképet tartalmaz számos hírességek, az eredmények tartalmazhat határoló mezőkbe a felismert hírességek mindegyikéhez. Vagy, a Bing egy termék vagy a kép ruházati észleli, ha az eredmény tartalmazhat egy határolókeret a felismert elemhez.
+Bing Visual Search az eredmények közé tartoznak a rendszerképekben érdekes régiókhoz tartozó határoló mezők is. Ha például a rendszerkép több hírességet tartalmaz, az eredmények tartalmazhatják az összes felismert hírességhez tartozó határoló mezőket. Ha a Bing felismeri a terméket vagy a ruhát a képen, az eredmény tartalmazhatja a felismert elemhez tartozó határoló mezőt is.
 
 ## <a name="workflow"></a>Munkafolyamat
 
-A Bing Visual Search API egy olyan webes RESTful szolgáltatás, így könnyen hívása minden programozási nyelvet, amely HTTP-kérelmeket és JSON elemzése. A szolgáltatás a REST API vagy az SDK-t használhat.
+A Bing Visual Search API egy REST-alapú webszolgáltatás, így könnyen hívható bármely programozási nyelvről, amely HTTP-kéréseket tesz elérhetővé, és értelmezi a JSON-t. A szolgáltatáshoz használhatja a REST API vagy az SDK-t is.
 
-1. Hozzon létre egy [Cognitive Services-fiók](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) a Bing keresési API-k eléréséhez. Ha nem rendelkezik Azure-előfizetéssel, akkor [-fiók létrehozása ingyen](https://azure.microsoft.com/free/). Megtekintheti az előfizetési kulcs, a [az Azure portal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#get-the-keys-for-your-subscription) a fiók létrehozását követően vagy [Azure-webhelyen](https://azure.microsoft.com/try/cognitive-services/my-apis) ingyenes próbaverzió aktiválása után.
-2. Az API-t egy érvényes keresési lekérdezést egy kérés küldése.
+1. Hozzon létre egy [Cognitive Services fiókot](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) a Bing Search API-k eléréséhez. Ha nem rendelkezik Azure-előfizetéssel, [ingyenes fiókot is létrehozhat](https://azure.microsoft.com/free/). Az előfizetési kulcsot a fiók létrehozása után, vagy az ingyenes próbaverzió aktiválása után az [Azure](https://azure.microsoft.com/try/cognitive-services/my-apis) -webhelyről szerezheti be a [Azure Portal](../cognitive-services-apis-create-account.md#get-the-keys-for-your-resource) .
+2. Kérelem küldése az API-nak érvényes keresési lekérdezéssel.
 3. Az API válaszának feldolgozásához elemezze a visszaadott JSON-üzenetet.
 
 ## <a name="next-steps"></a>További lépések
 
-Először próbálja meg a Bing Visual Search API [interaktív bemutatót](https://azure.microsoft.com/services/cognitive-services/bing-visual-search/).
-A bemutató bemutatja, hogyan lehet gyorsan testre szabhatja a keresési lekérdezés és a webes képkeresésekben.
+Először próbálja ki a Bing Visual Search API [interaktív bemutatót](https://azure.microsoft.com/services/cognitive-services/bing-visual-search/).
+A bemutató azt mutatja be, hogyan lehet gyorsan testreszabni a keresési lekérdezéseket, és a weben képeket kutatni.
 
-Gyorsan megkezdheti az első kérelmét, tekintse meg a rövid útmutató: [C#](quickstarts/csharp.md) | [Java](quickstarts/java.md) | [node.js](quickstarts/nodejs.md) | [Python](quickstarts/python.md).
+Az első kérés gyors megkezdéséhez tekintse meg a rövid útmutatókat: [C#](quickstarts/csharp.md) | [Java](quickstarts/java.md) | [node.js](quickstarts/nodejs.md) | [Python](quickstarts/python.md).
 
 ## <a name="see-also"></a>Lásd még
 
-* A [rendszerképek – vizuális keresés](https://docs.microsoft.com/rest/api/cognitiveservices/bingvisualsearch/images/visualsearch) leírása ismertet a definíciók és a végpont, a kérelem fejlécei, válaszokat, és a keresési eredmények, amelyek segítségével a kérelem lemezkép-alapú lekérdezési paraméterek.
+* A [rendszerképek – Visual Search](https://docs.microsoft.com/rest/api/cognitiveservices/bingvisualsearch/images/visualsearch) hivatkozás leírja a végpontokon található definíciókat és információkat, a kérelmek fejléceit, válaszait és lekérdezési paramétereit, amelyek a képalapú keresési eredmények igénylésére használhatók.
 
-* A [Bing keresési API-t használja, és megjelenítési követelményeihez](../bing-web-search/use-display-requirements.md) adja meg a tartalom és a Bing search API-k által gyűjtött információk elfogadható használja.
+* A [BING Search API használata és a megjelenítési követelmények](../bing-web-search/use-display-requirements.md) határozzák meg a tartalom és a Bing Search API-kon keresztül szerzett információk elfogadható felhasználását.

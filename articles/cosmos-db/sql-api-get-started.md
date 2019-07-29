@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 07/23/2019
 ms.author: kirankk
-ms.openlocfilehash: 36d172daed487372401691c7046215fb6c4a63ee
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: 37b6a9947d3cabe1f566f842e321229efe9d03b6
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68384947"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68598520"
 ---
 # <a name="build-a-net-console-app-to-manage-data-in-azure-cosmos-db-sql-api-account"></a>.NET-konzolos alkalmazás létrehozása Azure Cosmos DB SQL API-fiókban tárolt adatkezeléshez
 
@@ -261,7 +261,7 @@ Gratulálunk! Sikeresen létrehozott egy Azure Cosmos DB-adatbázist.
 >
 >
 
-A tárolót a [**CreateContainerIfNotExistsAsync**](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.cosmosdatabase) vagy a [**CreateContainerAsync**](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.cosmosdatabase) függvény használatával lehet létrehozni a **CosmosDatabase** osztályban. A tároló elemekből áll (JSON-dokumentumok, ha az SQL API) és a kapcsolódó kiszolgálóoldali alkalmazás-logikát a JavaScriptben, például tárolt eljárásokat, felhasználó által definiált függvényeket és eseményindítókat.
+A tárolót a [**CreateContainerIfNotExistsAsync**](/dotnet/api/microsoft.azure.cosmos.database.createcontainerifnotexistsasync?view=azure-dotnet#Microsoft_Azure_Cosmos_Database_CreateContainerIfNotExistsAsync_Microsoft_Azure_Cosmos_ContainerProperties_System_Nullable_System_Int32__Microsoft_Azure_Cosmos_RequestOptions_System_Threading_CancellationToken_) vagy a [**CreateContainerAsync**](/dotnet/api/microsoft.azure.cosmos.database.createcontainerasync?view=azure-dotnet#Microsoft_Azure_Cosmos_Database_CreateContainerAsync_Microsoft_Azure_Cosmos_ContainerProperties_System_Nullable_System_Int32__Microsoft_Azure_Cosmos_RequestOptions_System_Threading_CancellationToken_) függvény használatával lehet létrehozni a **CosmosDatabase** osztályban. A tároló elemekből áll (JSON-dokumentumok, ha az SQL API) és a kapcsolódó kiszolgálóoldali alkalmazás-logikát a JavaScriptben, például tárolt eljárásokat, felhasználó által definiált függvényeket és eseményindítókat.
 
 1. Másolja és illessze be a **CreateContainerAsync** metódust a **ból** metódus alá. A **CreateContainerAsync** létrehoz egy új, azonosítóval ``FamilyContainer`` rendelkező tárolót, ha még nem létezik, és a tulajdonság által ``containerId`` ``LastName`` particionált mező alapján megadott azonosítóval rendelkezik.
 
@@ -286,7 +286,7 @@ A tárolót a [**CreateContainerIfNotExistsAsync**](https://docs.microsoft.com/d
 Gratulálunk! Sikeresen létrehozott egy Azure Cosmos DB-tárolót.  
 
 ## <a id="CreateDoc"></a>6. lépés: Elemek hozzáadása a tárolóhoz
-A **CosmosContainer** osztály [**CreateItemAsync**](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.cosmoscontainer) funkciójával hozhat létre egy elemeket. Az SQL API használatával az elemek dokumentumokként vannak kivetítve, amelyek felhasználói (tetszőleges) JSON-tartalmak. Most beszúrhat egy elemeket a Azure Cosmos DB tárolóba.
+A **CosmosContainer** osztály [**CreateItemAsync**](/dotnet/api/microsoft.azure.cosmos.container.createitemasync?view=azure-dotnet#Microsoft_Azure_Cosmos_Container_CreateItemAsync__1___0_System_Nullable_Microsoft_Azure_Cosmos_PartitionKey__Microsoft_Azure_Cosmos_ItemRequestOptions_System_Threading_CancellationToken_) funkciójával hozhat létre egy elemeket. Az SQL API használatával az elemek dokumentumokként vannak kivetítve, amelyek felhasználói (tetszőleges) JSON-tartalmak. Most beszúrhat egy elemeket a Azure Cosmos DB tárolóba.
 
 Először hozzon létre egy **család** osztályt, amely a minta Azure Cosmos db belül tárolt objektumokat jelképezi. Létrehozunk még egy **Szülő**, **Gyermek**, **Háziállat** és **Cím** alosztályt is a **Család** osztályban való használatra. Megjegyzés: az elemek azonosító **tulajdonságának** szerializálva kell  lennie a JSON-azonosítóban.
 
