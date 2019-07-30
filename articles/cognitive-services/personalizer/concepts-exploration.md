@@ -1,55 +1,55 @@
 ---
-title: Feltárás - Personalizer
+title: Feltárás – személyre szabás
 titleSuffix: Azure Cognitive Services
-description: Feltárás Personalizer továbbra is jó eredményesség, még akkor is, ahogy a felhasználók viselkedésének módosítása. Egy üzleti döntés kapcsolatos felhasználói interakció érdekében az időarány, amíg a megismeréséhez, annak érdekében, hogy a modell javításán-feltárás beállítás választása.
+description: A feltárással a személyre szabottan folytathatja a jó eredmények megvalósítását, még a felhasználói viselkedés változásaival is. A feltárási beállítások kiválasztása üzleti döntés a felhasználói interakciók arányos arányáról a modell tökéletesítése érdekében.
 services: cognitive-services
-author: edjez
+author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 05/13/2019
-ms.author: edjez
-ms.openlocfilehash: ebb59b6bb7c36f4558b2bd63d2d55fa95823c4c3
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.author: diberry
+ms.openlocfilehash: cfecea6a64301d86aa657420dc300c26d4ed6f1e
+ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67722479"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68663402"
 ---
-# <a name="exploration-and-exploitation"></a>Adatáttekintési és hasznosítása
+# <a name="exploration-and-exploitation"></a>Feltárás és kiaknázás
 
-Feltárás Personalizer továbbra is jó eredményesség, még akkor is, ahogy a felhasználók viselkedésének módosítása.
+A feltárással a személyre szabottan folytathatja a jó eredmények megvalósítását, még a felhasználói viselkedés változásaival is.
 
-Amikor Personalizer rangsorolják hívás kap, adja vissza egy RewardActionID, vagy:
-* Kiaknázása felel meg az a legvalószínűbb felhasználói viselkedés alapján a jelenlegi gépi tanulási modellt használ.
-* Feltárás, amely nem felel meg a műveletet, amely rendelkezik a legnagyobb valószínűség belüli rangjának használja.
+Ha a megszemélyesítő hívást kap, egy olyan RewardActionID ad vissza, amely a következők egyikét adja meg:
+* A az aktuális Machine learning-modell alapján a legvalószínűbb felhasználói viselkedésnek megfelelő kiaknázást használja.
+* A feltárást használ, amely nem felel meg a rangsorban a legnagyobb valószínűséggel rendelkező műveletnek.
 
 <!--
 Returning the most probable action is called *exploit* behavior. Returning a different action is called *exploration*.
 -->
-Personalizer jelenleg nevű algoritmust használ *mohó epszilon* megismeréséhez. 
+A személyre szabott funkció jelenleg egy *epszilon mohó* nevű algoritmust használ a megismeréshez. 
 
-## <a name="choosing-an-exploration-setting"></a>Egy feltárás beállítás kiválasztása
+## <a name="choosing-an-exploration-setting"></a>Feltárási beállítás kiválasztása
 
-Konfigurálja a használata az Azure Portalon feltárási forgalom százalékaránya **beállítások** Personalizer lapját. Ez a beállítás határozza meg a feltárás végző rangsorolják hívások százalékban. 
+A személyre szabáshoz a Azure Portal **Beállítások** lapján konfigurálhatja a felderítéshez használandó forgalom százalékos arányát. Ez a beállítás határozza meg a feltárást végző rangsorolt hívások százalékos arányát. 
 
-Personalizer határozza meg, hogy ismerje meg, vagy biztonsági rés kiaknázása elleni az egyes rangsorolják hívásakor a valószínűség. Ez eltér attól a viselkedést bizonyos a / B-keretrendszereket, amelyek zárolják a kezelést az adott felhasználói azonosítók.
+A személyre szabhatja, hogy a rangsorban megjelenő valószínűséggel megvizsgálja vagy kihasználja ezt a valószínűséget. Ez különbözik az egyes olyan/B keretrendszerek működésének, amelyek adott felhasználói azonosítók kezelését zárolják.
 
-## <a name="best-practices-for-choosing-an-exploration-setting"></a>Egy feltárás beállítás kiválasztására vonatkozó ajánlott eljárások
+## <a name="best-practices-for-choosing-an-exploration-setting"></a>Ajánlott eljárások a feltárási beállítások kiválasztásához
 
 <!--
 @edjez - you say what not to do, but make no recommendations of what **to** do. 
 -->
 
-Egy üzleti döntés kapcsolatos felhasználói interakció érdekében az időarány, amíg a megismeréséhez, annak érdekében, hogy a modell javításán-feltárás beállítás választása. 
+A feltárási beállítások kiválasztása üzleti döntés a felhasználói interakciók arányos arányáról a modell tökéletesítése érdekében. 
 
-A beállítás értéke nulla fog negálandó számos Personalizer előnye. Ezzel a beállítással a Personalizer nincs felhasználói interakció érdekében használja a jobb felhasználói interakció érdekében felderítéséhez. Ez a modell stagnálásához, eltéréseket, és végső soron kisebb teljesítményt vezet.
+A nulla beállítás a személyre szabás számos előnyét cáfolja. Ezzel a beállítással a személyre szabás nem használ felhasználói interakciókat a jobb felhasználói interakciók felderítése érdekében. Ez az érték a stagnálás, a drift és a végső teljesítmény modellezését eredményezi.
 
-Egy beállítás, amely túl nagy lesz negálandó a felhasználói viselkedés tanulás előnyeit. Állandó véletlenszerűsítést értékre állítaná a 100 %-os azt jelenti, és minden megismert viselkedés, a felhasználók lenne befolyásolja az eredményt.
+A túl magas beállítás nem fogja megtagadni a felhasználói viselkedésből való tanulás előnyeit. Ha 100%-ra állítja be az állandó véletlenszerű működést, és a felhasználók által megszerzett bármilyen viselkedés nem befolyásolja az eredményt.
 
-Fontos, hogy nem módosítható az alkalmazás viselkedése alapján e láthatja Ha Personalizer felfedezése vagy ártó szándékkal használja fel. Milyen előítéletek befolyásolják, amely végső soron a lehetséges teljesítményének csökkenne tanulási vezetne.
+Fontos, hogy ne módosítsa az alkalmazás viselkedését attól függően, hogy látható-e a személyre szabás vagy a kihasználás. Ez olyan torzulásokat eredményezne, amelyek végső soron csökkentik a lehetséges teljesítményt.
 
 ## <a name="next-steps"></a>További lépések
 
-[Megerősítő tanulást](concepts-reinforcement-learning.md) 
+[Megerősítő tanulás](concepts-reinforcement-learning.md) 

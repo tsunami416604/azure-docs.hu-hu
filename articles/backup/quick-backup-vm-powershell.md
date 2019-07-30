@@ -1,20 +1,20 @@
 ---
 title: Azure rövid útmutató – Virtuális gépek biztonsági mentése a PowerShell használatával
 description: Ismerje meg, hogyan készíthet biztonsági mentést virtuális gépeiről az Azure PowerShell használatával.
-author: rayne-wiselman
+author: dcurwin
 manager: carmonm
 ms.service: backup
 ms.devlang: azurecli
 ms.topic: quickstart
 ms.date: 04/16/2019
-ms.author: raynew
+ms.author: dacurwin
 ms.custom: mvc
-ms.openlocfilehash: 3766b3b7f9dbab23673498eefd3f335b8e7f6c16
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.openlocfilehash: e7a343e257a926f010b52f9833d7acb321c8aeb6
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68467158"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68639464"
 ---
 # <a name="back-up-a-virtual-machine-in-azure-with-powershell"></a>Virtuális gép biztonsági mentése az Azure-ban a PowerShell használatával
 

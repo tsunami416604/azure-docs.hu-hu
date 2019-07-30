@@ -8,14 +8,14 @@ ms.topic: tutorial
 author: VanMSFT
 ms.author: vanto
 ms.reviewer: carlrab
-ms.date: 02/08/2019
+ms.date: 07/29/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: ce9ba7c197bb604b9d71e2bf501ca67d32865f38
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 9850285482db4f5981c183b51152ba1a3ac4975c
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68566868"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68640123"
 ---
 # <a name="tutorial-secure-a-single-or-pooled-database"></a>Oktatóanyag: Egyetlen vagy készletezett adatbázis védelme
 
@@ -39,6 +39,9 @@ A Azure SQL Database a következőket teszi biztonságossá egy önálló vagy k
 
 További tudnivalókat a [Azure SQL Database biztonsági áttekintése](/azure/sql-database/sql-database-security-index) és [képességei](sql-database-security-overview.md) című cikkben talál.
 
+> [!TIP]
+> A következő Microsoft Learn modul segít megtanulni a [Azure SQL Database biztonságossá](https://docs.microsoft.com/learn/modules/secure-your-azure-sql-database/)tételének ingyenes módját.
+
 ## <a name="prerequisites"></a>Előfeltételek
 
 Az oktatóanyag elvégzéséhez győződjön meg arról, hogy rendelkezik a következő előfeltételekkel:
@@ -57,7 +60,7 @@ Az oktatóanyagban szereplő összes lépéshez jelentkezzen be [Azure Portal](h
 
 Az SQL-adatbázisokat tűzfalak védik az Azure-ban. Alapértelmezés szerint a rendszer visszautasítja a kiszolgáló és az adatbázis összes kapcsolatát, kivéve a többi Azure-szolgáltatástól érkező kapcsolatokat. További információ: [Azure SQL Database kiszolgálói szintű és adatbázis-szintű tűzfalszabályok](sql-database-firewall-configure.md).
 
-Állítsa be az Azure-szolgáltatásokhoz  **való hozzáférés engedélyezése** beállítást a legbiztonságosabb konfigurációhoz. Ezután hozzon létre egy [fenntartott IP-címet (klasszikus központi telepítést)](../virtual-network/virtual-networks-reserved-public-ip.md) ahhoz az erőforráshoz, amelyhez csatlakoznia kell, például egy Azure-beli virtuális gépet vagy egy felhőalapú szolgáltatást, és csak az IP-cím elérését engedélyezze a tűzfalon keresztül. Ha a [Resource Manager](/azure/virtual-network/virtual-network-ip-addresses-overview-arm) -alapú üzemi modellt használja, az egyes erőforrásokhoz dedikált nyilvános IP-címet kell megadni.
+Állítsa be az Azure-szolgáltatásokhoz **való hozzáférés engedélyezése** beállítást a legbiztonságosabb konfigurációhoz. Ezután hozzon létre egy [fenntartott IP-címet (klasszikus központi telepítést)](../virtual-network/virtual-networks-reserved-public-ip.md) ahhoz az erőforráshoz, amelyhez csatlakoznia kell, például egy Azure-beli virtuális gépet vagy egy felhőalapú szolgáltatást, és csak az IP-cím elérését engedélyezze a tűzfalon keresztül. Ha a [Resource Manager](/azure/virtual-network/virtual-network-ip-addresses-overview-arm) -alapú üzemi modellt használja, az egyes erőforrásokhoz dedikált nyilvános IP-címet kell megadni.
 
 > [!NOTE]
 > Az SQL Database az 1433-as porton kommunikál. Ha vállalati hálózaton belülről próbál csatlakozni, lehetséges, hogy a hálózati tűzfal nem engedélyezi a kimenő forgalmat az 1433-as porton keresztül. Ha igen, nem tud csatlakozni a Azure SQL Database-kiszolgálóhoz, ha a rendszergazda megnyitja a 1433-es portot.
@@ -329,7 +332,7 @@ A titkosítás engedélyezése vagy ellenőrzése:
 
 1. A **Biztonság** szakaszban válassza az **transzparens adattitkosítás**lehetőséget.
 
-1. Ha szükséges, állítsa  be az adattitkosítást **a**következőre:. Kattintson a **Mentés** gombra.
+1. Ha szükséges, állítsa be az adattitkosítást **a**következőre:. Kattintson a **Mentés** gombra.
 
     ![Transzparens adattitkosítás](./media/sql-database-security-tutorial/encryption-settings.png)
 

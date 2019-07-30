@@ -8,13 +8,13 @@ ms.topic: tutorial
 author: stevestein
 ms.author: sstein
 ms.reviewer: v-masebo
-ms.date: 02/08/2019
-ms.openlocfilehash: bbd009d127eecc4df357fc1073ba4055d13a8b2c
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.date: 07/29/2019
+ms.openlocfilehash: c6ad1cd7af02f281c53ece23a018f8b5ec0c7da9
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68569012"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68640936"
 ---
 # <a name="tutorial-design-a-relational-database-in-a-single-database-within-azure-sql-database-using-ssms"></a>Oktatóanyag: A SSMS használatával egyetlen adatbázisban tervezze meg a viszonyítási adatbázist Azure SQL Database
 
@@ -30,6 +30,8 @@ Az Azure SQL Database a Microsoft Cloud (Azure) egy szolgáltatásként szolgál
 
 \* Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) .
 
+> [!TIP]
+> A következő Microsoft Learn modul segít megtanulni az ingyenes ASP.NET- [alkalmazások fejlesztését és konfigurálását, amely](https://docs.microsoft.com/learn/modules/develop-app-that-queries-azure-sql/)lekérdezi a Azure SQL Database, beleértve egy egyszerű adatbázis létrehozását is.
 > [!NOTE]
 > Ebben az oktatóanyagban egyetlen adatbázist használunk. Egy készletezett adatbázist is használhat egy rugalmas készletben vagy egy példány-adatbázisban egy felügyelt példányban. Felügyelt példányhoz való kapcsolódáshoz tekintse meg a következő felügyelt példányok rövid útmutatóját: [Rövid útmutató: Az Azure virtuális gép konfigurálása Azure SQL Database felügyelt példányhoz](sql-database-managed-instance-configure-vm.md) és [gyors útmutatóhoz való kapcsolódáshoz: Pont – hely kapcsolat konfigurálása egy Azure SQL Database felügyelt példányhoz a helyszínen](sql-database-managed-instance-configure-p2s.md).
 
@@ -80,7 +82,7 @@ Az alábbi lépéseket követve hozzon létre egy üres önálló adatbázist.
 
     Miután kiválasztotta a szolgáltatási szintet, a DTU vagy a virtuális mag számát, valamint a tárterület méretét, kattintson az **alkalmaz**gombra.
 
-7. Adja meg  az üres adatbázis rendezését (ebben az oktatóanyagban használja az alapértelmezett értéket). A rendezésekkel kapcsolatos további információkért lásd: [Rendezések](/sql/t-sql/statements/collations)
+7. Adja meg az üres adatbázis rendezését (ebben az oktatóanyagban használja az alapértelmezett értéket). A rendezésekkel kapcsolatos további információkért lásd: [Rendezések](/sql/t-sql/statements/collations)
 
 8. Most, hogy végrehajtotta a **SQL Database** űrlapot, kattintson a **Létrehozás** gombra az önálló adatbázis kiépítéséhez. Ez a lépés néhány percet is igénybe vehet.
 
@@ -152,7 +154,7 @@ A [Transact-SQL](/sql/t-sql/language-reference) használatával hozzon létre eg
 - Tanuló
 - Kreditösszeg
 
-Az alábbi ábrán látható, hogyan kapcsolódnak ezek a táblázatok egymáshoz. Ezen táblázatok némelyike más táblák oszlopaira hivatkozik. A tanulói tábla  például a *személy* tábla *számú personid* oszlopára hivatkozik. Tanulmányozza a diagramot az ebben az oktatóanyagban szereplő táblák kapcsolatainak megértéséhez. A hatékony adatbázistáblák létrehozásának részleteiért lásd: [Hatékony adatbázistáblák létrehozása](https://msdn.microsoft.com/library/cc505842.aspx). Az adattípusok kiválasztására vonatkozó további információkért lásd: [Adattípusok](/sql/t-sql/data-types/data-types-transact-sql).
+Az alábbi ábrán látható, hogyan kapcsolódnak ezek a táblázatok egymáshoz. Ezen táblázatok némelyike más táblák oszlopaira hivatkozik. A tanulói tábla például a *személy* tábla *számú personid* oszlopára hivatkozik. Tanulmányozza a diagramot az ebben az oktatóanyagban szereplő táblák kapcsolatainak megértéséhez. A hatékony adatbázistáblák létrehozásának részleteiért lásd: [Hatékony adatbázistáblák létrehozása](https://msdn.microsoft.com/library/cc505842.aspx). Az adattípusok kiválasztására vonatkozó további információkért lásd: [Adattípusok](/sql/t-sql/data-types/data-types-transact-sql).
 
 > [!NOTE]
 > Használhatja az [SQL Server Management Studio táblatervezőjét](/sql/ssms/visual-db-tools/design-database-diagrams-visual-database-tools) is a táblák létrehozásához és tervezéséhez.

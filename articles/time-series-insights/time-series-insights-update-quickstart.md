@@ -1,6 +1,6 @@
 ---
-title: 'Gyors útmutató: Ismerkedés az Azure Time Series Insights – előzetes bemutató környezetben |} A Microsoft Docs'
-description: Ismerje meg az Azure Time Series Insights – előzetes bemutató környezetben.
+title: 'Gyors útmutató: Ismerkedés a Azure Time Series Insights Preview bemutató környezettel | Microsoft Docs'
+description: Ismerje meg a Azure Time Series Insights előzetes verziójának bemutató környezetét.
 ms.service: time-series-insights
 services: time-series-insights
 author: ashannon7
@@ -10,120 +10,126 @@ ms.reviewer: dpalled
 ms.topic: quickstart
 ms.workload: big-data
 ms.custom: mvc seodec18
-ms.date: 04/22/2019
-ms.openlocfilehash: 547edb194ffdf52a805f573d338f61edff80623a
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.date: 07/29/2019
+ms.openlocfilehash: 3e93fdc903b8e0d4ee4233e007014bb82ea22b6b
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67164880"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68638883"
 ---
-# <a name="quickstart-explore-the-azure-time-series-insights-preview-demo-environment"></a>Gyors útmutató: Ismerkedés az Azure Time Series Insights – előzetes bemutató környezetben
+# <a name="quickstart-explore-the-azure-time-series-insights-preview-demo-environment"></a>Gyors útmutató: Ismerkedés a Azure Time Series Insights előzetes kiadásának bemutató környezetével
 
-Ez a rövid útmutató megismerteti az Azure Time Series Insights – előzetes környezet. Az ingyenes bemutató, a, megismerkedhet a legfontosabb funkcióit, amelyek a Time Series Insights előzetes verziója lettek hozzáadva.
+Ez a rövid útmutató elsajátítja a Azure Time Series Insights előzetes verziójának környezetét. Az ingyenes bemutatóban megtekintheti az Time Series Insights előzetes verzióhoz hozzáadott főbb funkciókat.
 
-A Time Series Insights előzetes verziója bemutató környezetben tartalmaz egy forgatókönyv fiktív Contoso, hogy két szelet turbina farmok működik. A farm minden 10 turbina rendelkezik. Minden egyes turbina 20 percenként adatok csökkentik a az Azure IoT Hub érzékelők rendelkezik. Az érzékelők időjárási viszonyok panel lényegét, információkat gyűjthet, és a pozíció yaw. Generátor teljesítmény, sebességváltó viselkedését és biztonsági figyelők kapcsolatos információkat is rögzíti.
+A Time Series Insights Preview bemutató környezet a contoso vállalatot, amely két szélturbina-farmot üzemeltet. Minden Farm 10 turbinával rendelkezik. Minden turbina 20 érzékelővel rendelkezik, amely percenként jelentést készít az Azure IoT Hub. Az érzékelők információt gyűjtenek az időjárási feltételekről, a panel szurok és a kitérés pozícióról. A rendszer rögzíti a generátorok teljesítményéről, a sebességváltó működéséről és a biztonsági figyelőről szóló információkat is.
 
-Ez a rövid útmutatóban megismerheti, hogyan tárjon fel döntéstámogató információkat a Contoso-adatok a Time Series Insights használatával. Is végezhet egy rövid kiváltó okok elemzése segítségével jobban megkönnyíti a kritikus hibák és a karbantartás céljából.
+Ebből a rövid útmutatóból megtudhatja, hogyan használhatja a Time Series Insightst a contoso-információk gyakorlati elemzésének megkereséséhez. Emellett rövid kiváltó okokat is elvégezhet, hogy jobban megjósolja a kritikus hibákat, és hogy elvégezze a karbantartást.
 
-## <a name="explore-the-time-series-insights-explorer-in-a-demo-environment"></a>Ismerkedés a Time Series Insights explorer egy bemutató környezetben
+## <a name="explore-the-time-series-insights-explorer-in-a-demo-environment"></a>Ismerkedés a Time Series Insights Explorerrel bemutató környezetben
 
-A Time Series Insights előzetes verziója explorer korábbi adatok alapján mutatja be, és az alapvető okok elemzése. Első lépések:
+A Time Series Insights Preview Explorer a korábbi és a kiváltó okok elemzését mutatja be. Első lépések:
 
-1. Hozzon létre egy [ingyenes Azure-fiók](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) Ha nem rendelkezik ilyennel.
+1. Ha még nem rendelkezik ilyennel, hozzon létre egy [ingyenes Azure-fiókot](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) .
 
-1. Nyissa meg a [Contoso szél Farm bemutató](https://insights.timeseries.azure.com/preview/samples) környezetben.  
+1. Nyissa meg a [contoso szélerőműpark bemutató](https://insights.timeseries.azure.com/preview/samples) környezetét.  
 
-1. Ha az kéri, jelentkezzen be az Azure-fiók hitelesítő adataival a Time Series Insights explorer.
+1. Ha a rendszer kéri, jelentkezzen be a Time Series Insights Explorerbe az Azure-fiókja hitelesítő adataival.
 
-## <a name="work-with-historical-data"></a>A régebbi adatok használata
+## <a name="work-with-historical-data"></a>Korábbi adatmennyiségek használata
 
-1. A **Contoso üzem 1**, tekintse meg szélturbina sürgősségi **W7**.  
+1. A **contoso-üzem 1**. részében tekintse meg a Wind gázturbinás **W7**című részt.  
 
-   1. Módosítsa a tartomány a **1/1/17 20:00 – 3/10/17 20:00 (UTC)** .
-   1. Érzékelő kiválasztásához jelölje be **Contoso üzem 1** > **W7** > **generátor rendszer** > **GeneratorSpeed** . Ezután tekintse meg az értékeket, amelyeket jelennek meg.
+   1. Módosítsa a nézet tartományát **1/1/17 20:00 – 3/10/17 20:00 (UTC)** értékre.
+   1. Ha ki szeretne választani egy érzékelőt, válassza ki a **contoso Plant 1** > .**W7** > -**generátor rendszer** > **GeneratorSpeed**. Ezután tekintse át a megjelenített értékeket.
 
-      [![Contoso üzemben 1 W7](media/v2-update-quickstart/quickstart-one.png)](media/v2-update-quickstart/quickstart-one.png#lightbox)
+      [![W7 a contoso üzem 1](media/v2-update-quickstart/quickstart-one.png)](media/v2-update-quickstart/quickstart-one.png#lightbox)
 
-1. Nemrég Contoso található egy szélturbina sürgősségi **W7**. Vélemények arról, hogy mi okozta a fire eltérőek lehetnek. A Time Series Insightsban láthatjuk, hogy a riasztás aktiválásának-érzékelő a fire során lett aktiválva.
+1. Az utóbbi időben a contoso tüzet észlelt a Wind Turbine **W7**-ben. A vélemények eltérőek lehetnek a tüzet kiváltó okok miatt. Time Series Insights láthatjuk, hogy a Fire Alert-érzékelő aktiválva lett a tűz során.
 
-   1. Módosítsa a tartomány a **3/9/17 20:00 – 3/10/17 20:00 (UTC)** .
-   1. Válassza ki **biztonsági rendszer** > **FireAlert**.
+   1. Módosítsa a nézet tartományát **3/9/17 20:00 – 3/10/17 20:00 (UTC)** értékre.
+   1. Válassza a **biztonsági rendszerek** > **FireAlert**lehetőséget.
 
-      [![A Contoso egy szélturbina sürgősségi W7 található](media/v2-update-quickstart/quickstart-two.png)](media/v2-update-quickstart/quickstart-two.png#lightbox)
+      [![A contoso tüzet észlelt a Wind gázturbinás W7-ben](media/v2-update-quickstart/quickstart-two.png)](media/v2-update-quickstart/quickstart-two.png#lightbox)
 
-1. Tekintse át a tűz végbement időpontja környékén rögzített eseményeket. Olaj nyomás és aktív figyelmeztetés számolt a fire előtt.
+1. Tekintse át a további eseményeket a tűz idején, hogy megértse, mi történt. Az olajnyomás és az aktív figyelmeztetések közvetlenül a tűz előtt vannak megszegve.
 
-   1. Válassza ki **pályázati bemutató rendszer** > **HydraulicOilPressure**.
-   1. Válassza ki **pályázati bemutató rendszer** > **ActiveWarning**.
+   1. Válassza a **pitch System** > **HydraulicOilPressure**elemet.
+   1. Válassza a **pitch System** > **ActiveWarning**elemet.
 
-      [![Körülbelül egy időben egyéb események áttekintése](media/v2-update-quickstart/quickstart-three.png)](media/v2-update-quickstart/quickstart-three.png#lightbox)
+      [![Tekintse át a többi eseményt egy időben](media/v2-update-quickstart/quickstart-three.png)](media/v2-update-quickstart/quickstart-three.png#lightbox)
 
-1. Az olaj nyomás és aktív figyelmeztetés érzékelők számolt közvetlenül a fire előtt. Bontsa ki a megjelenített időn sorozat egyéb jeleket, amelyek korábban egyértelmű vezető a fire megtekintéséhez. Mindkét érzékelők ingadozott következetesen idővel. A ingadozások által megkövetelt azt jelzik, hogy egy állandó és aggasztó minta.
+1. Az olajnyomás és az aktív figyelmeztetési érzékelők közvetlenül a tűz előtt vannak megszegve. A megjelenített idősorozat kibontásával megtekintheti a tüzet eredményező egyéb jeleket. Mindkét érzékelő következetesen ingadozik az idő múlásával. Az ingadozások állandó és aggasztó mintát jeleznek.
 
-    * Módosítsa a tartomány a **2/24/17 20:00 – 3/10/17 20:00 (UTC)** .
+    * Módosítsa a nézet tartományát **2/24/17 20:00 – 3/10/17 20:00 (UTC)** értékre.
 
-      [![Olaj nyomás és aktív figyelmeztetés érzékelők is számolt](media/v2-update-quickstart/quickstart-four.png)](media/v2-update-quickstart/quickstart-four.png#lightbox)
+      [![Olajnyomás és aktív figyelmeztetési érzékelők is](media/v2-update-quickstart/quickstart-four.png)](media/v2-update-quickstart/quickstart-four.png#lightbox)
 
-1. Egy másik fire eseményt, amely ugyanazt az érzékelő ingadozások által megkövetelt rendelkezett vizsgálata két évre visszamenőleg korábbi tárja fel.
+1. A két éves korábbi adatmennyiség vizsgálatával egy másik, az érzékelővel megegyező állapotú esemény is kiderül.
 
-    * Módosítsa a tartomány a **1/1/16 – 12/31/17** (az összes adat).
+    * Módosítsa a nézet tartományát **1/1/16-12/31/17 értékre** (az összes adatértékre).
 
-      [![Korábbi mintákat keressen](media/v2-update-quickstart/quickstart-five.png)](media/v2-update-quickstart/quickstart-five.png#lightbox)
+      [![Korábbi minták megkeresése](media/v2-update-quickstart/quickstart-five.png)](media/v2-update-quickstart/quickstart-five.png#lightbox)
 
-A Time Series Insights és az érzékelő telemetriát használja, hogy megismert rejtve az előzményadatokat a hosszú távú és problémás a tendencia. Ezen új elemzési azt is:
+A Time Series Insights és az érzékelő telemetria használatával felderítjük a régi adatokat tartalmazó hosszú távú és problémás trendeket. Az új ismeretekkel a következőket teheti:
 
-> [!div class="checklist"]
-> * Azt ismerteti, mi történt.
-> * Javítsa a problémát.
-> * Kiváló riasztásértesítési rendszerek üzembe helyezéséhez.
+* Magyarázza el, mi történt valójában.
+* Javítsa ki a problémát.
+* Helyezzen üzembe kiváló riasztási értesítési rendszereket.
 
-## <a name="root-cause-analysis"></a>Kiváltó okok elemzése
+## <a name="root-cause-analysis"></a>Alapvető okok elemzése
 
-1. Bizonyos forgatókönyvek finom keresőmotorok adatok elemzése révén kifinomult elemzést igényelnek. Válassza ki a Szélmalom **W6** dátumon **6/25**.
+1. Egyes forgatókönyvek esetében kifinomult elemzésre van szükség az adatokra vonatkozó apró adatnyomok feltárásához. Válassza ki a szélmalom **W6** a **6/25**. időpontban.
 
-    1. Módosítsa a tartomány a **6/1/17 20:00-7/1/17 20:00 (UTC)** .
-    1. Válassza ki **Contoso üzem 1** > **W6** > **biztonsági rendszer** > **VoltageActuatorSwitchWarning**.
+    1. Módosítsa a nézet tartományát **6/1/17 20:00 – 7/1/17 20:00 (UTC)** értékre.
+    1. Válassza a **contoso növény 1** > **W6** > **biztonsági rendszerek** > **VoltageActuatorSwitchWarning**lehetőséget.
 
-       [![Módosítsa a tartomány, és válassza ki a W6](media/v2-update-quickstart/quickstart-six.png)](media/v2-update-quickstart/quickstart-six.png#lightbox)
+       [![A nézet tartományának módosítása és a W6 kiválasztása](media/v2-update-quickstart/quickstart-six.png)](media/v2-update-quickstart/quickstart-six.png#lightbox)
 
-1. A figyelmeztetés a kimenet a generátor által éppen feszültség-hibát jelez. Általános teljesítménye a generátor az aktuális intervallum normál paraméterek belül működik. Az időköz növelésével egy másik áttekintéséből. Egy meghatározott Gyűjtőtár összefüggés nyilvánvaló.
+1. A figyelmeztetés azt jelzi, hogy a generátor által kimeneti feszültséggel kapcsolatos hiba történt. A generátor teljes teljesítménye az aktuális intervallumban normál paramétereken belül működik. Az intervallum növelésével egy másik minta jön létre. Egyértelmű a kiesés.
 
-    1. Távolítsa el a **VoltageActuatorSwitchWarning** érzékelő.
-    1. Válassza ki **generátor rendszer** > **ActivePower**.
-    1. Az az időköz módosítása **3d**.
+    1. Távolítsa el a **VoltageActuatorSwitchWarning** -érzékelőt.
+    1. Válassza ki a **Generator System** > **ActivePower**elemet.
+    1. Módosítsa az intervallumot a **3D**értékre.
 
-       [![3D az időköz módosítása](media/v2-update-quickstart/quickstart-seven.png)](media/v2-update-quickstart/quickstart-seven.png#lightbox)
+       [![Az intervallum módosítása a 3D értékre](media/v2-update-quickstart/quickstart-seven.png)](media/v2-update-quickstart/quickstart-seven.png#lightbox)
 
-1. Az időtartomány kiterjesztése alapján határozható meg e a probléma leállt, vagy hogy továbbra is.
+1. Az időtartomány kibővítésével meghatározhatja, hogy a probléma leállt-e, vagy folytatja-e a problémát.
 
-    * Terjessze ki az időtartam 60 nap.
+    * Az időtartam meghosszabbítása 60 napra.
 
-      [![60 napig az időtartomány kiterjesztése](media/v2-update-quickstart/quickstart-eight.png)](media/v2-update-quickstart/quickstart-eight.png#lightbox)
+      [![Az időtartam meghosszabbítása 60 napra](media/v2-update-quickstart/quickstart-eight.png)](media/v2-update-quickstart/quickstart-eight.png#lightbox)
 
-1. Egyéb érzékelő adatpont nagyobb kontextusba lehet hozzáadni. A további érzékelők azt megtekinteni, minél teljesebb meg a probléma megértését. Nézzük, dobja el egy jelölő a tényleges értékek megtekintéséhez. 
+1. Más szenzor-adatpontok is hozzáadhatók a nagyobb kontextus érdekében. Minél több érzékelők is megtekinthetők, a probléma megismertetését. A tényleges értékek megjelenítéséhez dobjunk egy jelölőt. 
 
-    1. Válassza ki **generátor rendszer**, majd válassza a három érzékelők: **GridVoltagePhase1**, **GridVoltagePhase2**, és **GridVoltagePhase3**.
-    1. Az utolsó adatpont láthatóvá területén egy jelölő eldobása
+    1. Válassza a **létrehozó rendszer**lehetőséget, majd válassza a három érzékelőt: **GridVoltagePhase1**, **GridVoltagePhase2**és **GridVoltagePhase3**.
+    1. Dobjon egy jelölőt a látható terület utolsó adatpontjára.
 
-       [![Mutató közvetlen](media/v2-update-quickstart/quickstart-nine.png)](media/v2-update-quickstart/quickstart-nine.png#lightbox)
+       [![Jelölő eldobása](media/v2-update-quickstart/quickstart-nine.png)](media/v2-update-quickstart/quickstart-nine.png#lightbox)
 
-    A feszültség-érzékelő két működnek egyformán és normál paraméterek belül. Úgy tűnik, mint például a **GridVoltagePhase3** érzékelő nem sokkal.
+    A feszültség-érzékelők közül kettő egyformán működik, a normál paramétereken belül. Úgy tűnik, a **GridVoltagePhase3** -érzékelő a bűnös.
 
-1. Magas környezetfüggő adatokat hozzáadni a 3. fázis Gyűjtőtár még több, hogy a probléma jelenik meg. Most van egy jó érdeklődő, a figyelmeztetés oka a. Tekintse meg a probléma karbantartási csapatunk készen vagyunk.  
+1. A fokozottan környezetfüggő adatbevitelsel a 3. fázis kidobása még ennél a problémánál is megjelenik. Most már jó a figyelmeztetés oka. Készen áll arra, hogy a problémát a karbantartási csapatunk is felhasználja.  
 
-    * Az összes átfedő megjelenítésének módosítása **generátor rendszer** ugyanazon érzékelők diagram – méretezési csoport.
+    * Módosítsa a megjelenítést úgy, hogy az összes **generátor** rendszerérzékelője ugyanazon a diagramon legyen.
 
-      [![Minden szükséges megjelenítésének módosítása](media/v2-update-quickstart/quickstart-ten.png)](media/v2-update-quickstart/quickstart-ten.png#lightbox)
+      [![A Megjelenítés módosítása a következőre: mindent tartalmaz](media/v2-update-quickstart/quickstart-ten.png)](media/v2-update-quickstart/quickstart-ten.png#lightbox)
+
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+
+Most, hogy elvégezte az oktatóanyagot, törölje a létrehozott erőforrásokat:
+
+1. A [Azure Portal](https://portal.azure.com)bal oldali menüjében válassza a **minden erőforrás**lehetőséget, keresse meg a Azure Time Series Insights erőforráscsoportot.
+1. Törölje a teljes erőforráscsoportot (és az abban található összes erőforrást) úgy, hogy kiválasztja az egyes erőforrások törlését vagy eltávolítását.
 
 ## <a name="next-steps"></a>További lépések
 
-Készen áll a saját Time Series Insights előzetes verziója környezetet hozhat létre. Indítása:
+Készen áll saját Time Series Insights előnézeti környezet létrehozására. Kezdés:
 
 > [!div class="nextstepaction"]
-> [A Time Series Insights előzetes környezet megtervezése](time-series-insights-update-plan.md)
+> [A Time Series Insights előzetes verzió környezetének megtervezése](time-series-insights-update-plan.md)
 
-Ismerje meg, nyissa meg a bemutatót, és funkcióihoz:
+Ismerje meg, hogyan navigálhat a bemutatóban és annak szolgáltatásaiban:
 
 > [!div class="nextstepaction"]
-> [A Time Series Insights előzetes verziója explorer](time-series-insights-update-explorer.md)
+> [A Time Series Insights Preview Explorer](time-series-insights-update-explorer.md)

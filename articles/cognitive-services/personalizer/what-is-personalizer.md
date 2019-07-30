@@ -1,68 +1,68 @@
 ---
 title: Mi a Personalizer?
 titleSuffix: Azure Cognitive Services
-description: Personalizer egy olyan felhőalapú API szolgáltatás, amely lehetővé teszi, hogy válassza ki a legoptimálisabb megjeleníthető valós idejű viselkedésük képzés a felhasználók számára.
+description: A személyre szabás egy felhőalapú API-szolgáltatás, amely lehetővé teszi a felhasználók számára a legjobb felhasználói élmény kiválasztását, a valós idejű viselkedésük megismerését.
 services: cognitive-services
-author: edjez
+author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: overview
 ms.date: 05/07/2019
-ms.author: edjez
-ms.openlocfilehash: 286a19207236392367b924bea7e26e90fd0db8d5
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.author: diberry
+ms.openlocfilehash: 99750971e11171c0b315cac38089c216d42c7ba6
+ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68253458"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68663665"
 ---
 # <a name="what-is-personalizer"></a>Mi a Personalizer?
 
 Az Azure Personalizer egy felhőalapú API-szolgáltatás, amellyel a valós idejű viselkedésükből tanulva kiválaszthatja a felhasználók számára megjelenítendő legjobb élményt.
 
-* A felhasználók és a tartalom információt biztosítanak, és a felső műveletet a megjelenítéséhez a felhasználók számára. 
-* Nincs szükség, amelyek megtisztítják és adatok címke Personalizer használata előtt.
-* Ha Ön kényelmesen, küldjön visszajegyzést Personalizer. 
-* Valós idejű elemzés megtekintése. 
-* Egy nagyobb data science erőfeszítés részeként Personalizer használatával meglévő kísérletek ellenőrzése.
+* Adja meg a felhasználókkal és a tartalommal kapcsolatos információkat, és fogadja a legfontosabb műveletet a felhasználók megjelenítéséhez. 
+* A személyre szabás használata előtt nem kell megtisztítani és címkéznie az adatfeliratot.
+* Visszajelzés küldése a személyre szabáshoz, ha az kényelmes Önnek. 
+* Valós idejű elemzések megtekintése. 
+* A meglévő kísérletek ellenőrzéséhez használja a személyre szabást egy nagyobb adatelemzési tevékenység részeként.
 
-## <a name="how-does-personalizer-work"></a>Hogyan működik a Personalizer?
+## <a name="how-does-personalizer-work"></a>Hogyan működik a személyre szabás?
 
-Personalizer gépi tanulási modelleket használ környezetben legmagasabb rangú művelet felderítésére. Az ügyfélalkalmazás lehetséges olyan művelet, amely információkat tudhat meg róluk; listáját tartalmazza. és információt, amely előfordulhat, hogy a felhasználó, eszköz és egyéb információkat tartalmaznak. Personalizer elvégzendő műveletet határozza meg. Miután az ügyfélalkalmazásban használ a kiválasztott művelet, biztosít visszajelzés a Personalizer ellenszolgáltatás pontszámot formájában. A visszajelzés fogadását követően a Personalizer automatikusan frissíti a saját jövőbeli holtversenyben használt modell.
+A személyre szabott gépi tanulási modellekkel megismerheti, hogy milyen műveleteket lehet a legmagasabb szinten rangsorolni. Az ügyfélalkalmazás a lehetséges műveletek listáját, valamint a velük kapcsolatos információkat tartalmazza. és a kontextussal kapcsolatos információk, amelyek a felhasználóval, az eszközzel és egyéb információkkal is rendelkezhetnek. A személyre szabott művelet határozza meg a végrehajtandó műveletet. Miután az ügyfélalkalmazás a kiválasztott műveletet használja, visszajelzéseket küld a személynek a jutalom pontszám formájában. A visszajelzés beérkezése után a személyre szabás automatikusan frissíti a saját modelljét, amelyet a jövőbeli soraihoz használtak.
 
-## <a name="how-do-i-use-the-personalizer"></a>Hogyan használhatom a Personalizer?
+## <a name="how-do-i-use-the-personalizer"></a>Hogyan használja a személyre szabott szolgáltatást?
 
-![Melyik videó megjelenítése a felhasználónak választania Personalizer használatával](media/what-is-personalizer/personalizer-example-highlevel.png)
+![A felhasználó személyre szabásával kiválaszthatja, hogy melyik videó jelenjen meg a felhasználónak](media/what-is-personalizer/personalizer-example-highlevel.png)
 
-1. Válassza ki az alkalmazás személyre felületet nyújt.
-1. Hozzon létre, és a személyre szabás szolgáltatás egy példányának konfigurálása az Azure Portalon. Minden példány egy Personalizer hurok.
-1. SDK használata Personalizer hívja meg információkat (_funkciók_) a felhasználók számára, és a tartalom (_műveletek_). Nem kell tiszta, adjon meg adatokat feliratú Personalizer használata előtt. 
-1. Az ügyfélalkalmazásban megjelenítése a felhasználónak Personalizer által kiválasztott.
-1. SDK használatával visszajelzést Personalizer, amely azt jelzi, ha a felhasználó kiválasztott Personalizer a műveletet. Ez egy _pontszám díjazza_, általában 1 és 1 között.
-1. Elemzés megtekintése a rendszer működését, és hogyan az adatok lehetővé teszi, hogy személyre szabása kiértékelheti, hogy az Azure Portalon.
+1. A személyre szabáshoz válasszon egy felhasználói élményt az alkalmazásban.
+1. Hozza létre és konfigurálja a megszemélyesítési szolgáltatás egy példányát a Azure Portal. Minden példány egy személyre szabott hurok.
+1. Az SDK használatával meghívhatja a személyre szabott információkat (_szolgáltatásokat_) a felhasználókkal és a tartalommal (_műveletekkel_). A személyre szabás előtt nem kell megadnia tiszta, címkézett adattípust. 
+1. Az ügyfélalkalmazás megjeleníti a felhasználó által a személyre szabott művelet által kiválasztott műveletet.
+1. Az SDK használatával visszajelzést adhat a személyre szabott személynek, amely jelzi, hogy a felhasználó kiválasztotta-e a személyre szabási műveletet. Ez egy _jutalom pontszám_, jellemzően-1 és 1 között.
+1. Megtekintheti az elemzéseket a Azure Portalban annak kiértékeléséhez, hogy a rendszer hogyan működik, és hogyan segíti az adatai személyre szabását.
 
-## <a name="where-can-i-use-personalizer"></a>Hol használhatom Personalizer?
+## <a name="where-can-i-use-personalizer"></a>Hol használhatom a személyre szabott szolgáltatást?
 
-Például az ügyfélalkalmazás is adhat a Personalizer:
+Az ügyfélalkalmazás például a következőhöz adhat hozzá személyre szabott elemet:
 
-* Személyre szabhatja, milyen cikk kiemelt hírek-webhelyen.    
-* Egy webhelyen Active elhelyezési optimalizálása.
-* Vásárlási webhelyek egy személyre szabott "ajánlott elem" megjelenítése.
-* Javasoljuk, például egy adott fénykép alkalmazandó szűrők felhasználói felületi elemekre.
-* Válassza ki a felhasználói szándékot tisztázása, vagy a javasolt művelet egy csevegőrobot választ.
-* Mi a felhasználó kell tennie egy üzleti folyamat következő lépéseként vonatkozó javaslatok sorrendet.
+* Személyre szabhatja, hogy mely cikkek legyenek kiemelve a hírek webhelyén.    
+* Optimalizálja az ad-elhelyezést egy webhelyen.
+* Személyre szabott "ajánlott elem" megjelenítése egy bevásárlási webhelyen.
+* Javasoljon olyan felhasználói felületi elemeket, mint például a szűrők, amelyek egy adott fényképre vonatkoznak.
+* Válassza ki a csevegési bot válaszát a felhasználó szándékának tisztázására, vagy tegyen javaslatot egy műveletre.
+* A felhasználók által az üzleti folyamat következő lépéseként megjelenő javaslatok rangsorolása.
 
-## <a name="personalization-for-developers"></a>A fejlesztők személyre szabása
+## <a name="personalization-for-developers"></a>Személyre szabás a fejlesztők számára
 
-Personalizer szolgáltatás két API-kkal rendelkezik:
+A személyre szabott szolgáltatás két API-val rendelkezik:
 
-* Küldje el (_funkciók_) a felhasználók és a tartalom (_műveletek_) személyre szabásához. A top művelet personalizer válaszként.
-* Visszajelzés küldése Personalizer információ arról, hogy a rangsorolás működött egy általában a 0 és 1 közötti számot (az előző szakaszban említett 1 és 1). 
+* Információ (_szolgáltatások_) küldése a felhasználókról és a tartalom (_műveletek_) személyre szabásához. A személyre szabás a legfelső szintű művelettel válaszol.
+* Visszajelzés küldése a személyre, hogy a rangsor mennyire jól működik, mint egy 0 és 1 közötti szám (az előző szakasz azt mondta – 1 és 1). 
 
-![Alapszintű eseménysorozatát személyre szabása](media/what-is-personalizer/personalization-intro.png)
+![Személyre szabott események alapszintű eseménysorozat](media/what-is-personalizer/personalization-intro.png)
 
 ## <a name="next-steps"></a>További lépések
 
-* [Rövid útmutató: Hozzon létre egy visszacsatolási hurokba kerülnek aC#](csharp-quickstart-commandline-feedback-loop.md)
-* [Használja az interaktív bemutató](https://personalizationdemo.azurewebsites.net/)
+* [Rövid útmutató: Visszajelzési hurok létrehozása aC#](csharp-quickstart-commandline-feedback-loop.md)
+* [Az interaktív bemutató használata](https://personalizationdemo.azurewebsites.net/)

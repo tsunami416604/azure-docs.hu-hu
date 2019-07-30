@@ -1,6 +1,6 @@
 ---
-title: Egy Azure Storage-üzenetsor kötést ad hozzá a Python-függvény
-description: Ismerje meg, hogyan adhat hozzá egy Azure Storage üzenetsor kimeneti kötése a Python-függvényt az Azure CLI-vel és a Functions Core Tools használatával.
+title: Azure Storage-várólista kötésének hozzáadása a Python-függvényhez
+description: Ismerje meg, hogyan adhat hozzá egy Azure Storage-üzenetsor kimeneti kötést a Python-függvényhez az Azure CLI és a functions Core eszközök használatával.
 services: functions
 keywords: ''
 author: ggailey777
@@ -11,61 +11,61 @@ ms.service: azure-functions
 ms.custom: mvc
 ms.devlang: python
 manager: jeconnoc
-ms.openlocfilehash: c2565a5549cbca08b987883e5905f09070b5ab2c
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 34ec7c678410b2e0814f8dbb7a69257886cb891d
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67443203"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68639155"
 ---
-# <a name="add-an-azure-storage-queue-binding-to-your-python-function"></a>Egy Azure Storage-üzenetsor kötést ad hozzá a Python-függvény
+# <a name="add-an-azure-storage-queue-binding-to-your-python-function"></a>Azure Storage-várólista kötésének hozzáadása a Python-függvényhez
 
-Az Azure Functions lehetővé teszi a saját integrációs kód írása nélkül funkciók Azure-szolgáltatások és más erőforrásokhoz kapcsolódni. Ezek *kötések*, amelyek képviselik, bemeneti és kimeneti is deklarált belül a függvény definícióját. A függvény kötések származó adatok megadott paraméterekként. Egy trigger egy speciális típusú bemeneti kötést. Függvény csak egy eseményindító tartozik, míg képes rendelkezik több bemeneti és kimeneti kötéseit. További tudnivalókért lásd: [Azure Functions eseményindítók és kötések fogalmak](functions-triggers-bindings.md).
+Azure Functions lehetővé teszi az Azure-szolgáltatások és egyéb erőforrások összekapcsolását a funkciókhoz anélkül, hogy saját integrációs kódot kellene írnia. Ezeka kötések, amelyek a bemeneti és a kimeneti adatokat jelölik, a függvény definíciójában vannak deklarálva. A kötések adatait paraméterként a függvény kapja meg. Az *trigger* egy speciális típusú bemeneti kötés. Bár a függvénynek csak egy triggere van, több bemeneti és kimeneti kötés is lehet. További információ: [Azure functions triggerek és kötések fogalmai](functions-triggers-bindings.md).
 
-Ez a cikk bemutatja, hogyan integrálható a létrehozott függvény a [előző rövid útmutatóban a cikk](functions-create-first-function-python.md) az Azure Storage üzenetsorába. A kimeneti kötést, amely a függvény ad hozzá a HTTP-kérelemben szereplő adatokat ír az üzenetsorban lévő üzenetet. 
+Ez a cikk bemutatja, hogyan integrálhatja az előző rövid útmutató [cikkében](functions-create-first-function-python.md) létrehozott függvényt egy Azure Storage-üzenetsor használatával. Az ehhez a függvényhez hozzáadott kimeneti kötés egy HTTP-kérelemből adatokat ír a várólistában lévő üzenetbe.
 
-A legtöbb kötések egy tárolt kapcsolati karakterlánccal, amely függvények a kötött szolgáltatáshoz való hozzáféréshez szükséges. Könnyebben, használhatja a Storage-fiók, amely létrehozta a függvényalkalmazást. Ez a fiók a kapcsolat már tárolták a nevű beállításhoz alkalmazás `AzureWebJobsStorage`.  
+A legtöbb kötéshez olyan tárolt kapcsolati karakterlánc szükséges, amelyet a függvények a kötött szolgáltatás eléréséhez használnak. A kapcsolódás egyszerűbbé tételéhez használja a Function alkalmazással létrehozott Storage-fiókot. A fiókhoz való kapcsolódás már egy nevű `AzureWebJobsStorage`alkalmazás-beállításban van tárolva.  
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ez a cikk a Kezdés előtt hajtsa végre a [, a Python a rövid útmutató 1. rész](functions-create-first-function-python.md).
+A cikk elkezdése előtt végezze el a [Python](functions-create-first-function-python.md)rövid útmutató 1. részében ismertetett lépéseket.
 
-## <a name="download-the-function-app-settings"></a>Töltse le a függvényalkalmazás-beállításokat
+## <a name="download-the-function-app-settings"></a>A függvény alkalmazás beállításainak letöltése
 
-A korábbi rövid útmutatóban a cikkben létrehozott egy függvényalkalmazást a szükséges tárfiók együtt az Azure-ban. Ez a fiók kapcsolati karakterláncára lesz biztonságosan tárolva alkalmazás beállításai az Azure-ban. Ebben a cikkben írt üzenetek ugyanazzal a fiókkal az üzenetsor-tárolóba. Csatlakozhat a tárfiókhoz a függvény helyi futtatás során, a beállítások töltse le a local.settings.json fájlhoz. Futtassa a következő az Azure Functions Core Tools parancsot letöltési beállítások local.Settings.JSON fájlhoz, és cserélje le `<APP_NAME>` az előző cikkben a függvényalkalmazás nevére:
+Az előző rövid útmutatóban létrehozott egy Function alkalmazást az Azure-ban, a szükséges Storage-fiókkal együtt. A fiókhoz tartozó kapcsolatok karakterlánca biztonságosan tárolódik az Azure-beli alkalmazás beállításaiban. Ebben a cikkben egy fiókba írja az üzeneteket egy tárolási várólistába. Ha a funkciót helyileg futtatja, a Storage-fiókhoz való csatlakozáshoz le kell töltenie az Alkalmazásbeállítások a local. Settings. JSON fájlra. A következő Azure functions Core Tools parancs futtatásával töltse le a beállításokat a local. Settings. `<APP_NAME>` JSON fájlra, és cserélje le a függvény alkalmazásának nevét az előző cikkből:
 
 ```bash
 func azure functionapp fetch-app-settings <APP_NAME>
 ```
 
-Előfordulhat, hogy kell jelentkezzen be az Azure-fiókjával.
+Előfordulhat, hogy be kell jelentkeznie az Azure-fiókjába.
 
 > [!IMPORTANT]  
-> Titkos kódok tartalmaz, mert a local.settings.json fájllal soha nem lekérdezi közzétenni, és ki kell zárni a forráskezelőből.
+> Mivel titkokat tartalmaz, a local. Settings. JSON fájl soha nem kerül közzétételre, és ki kell zárni a forrás-vezérlőelemből.
 
-Az érték szükséges `AzureWebJobsStorage`, azaz a Tárfiók kapcsolati sztringje. Ez a kapcsolat segítségével győződjön meg arról, hogy a kimeneti kötés megfelelően működik-e.
+Szüksége lesz az értékre `AzureWebJobsStorage`, amely a Storage-fiókhoz tartozó kapcsolatok karakterlánca. Ezzel a kapcsolattal ellenőrizheti, hogy a kimeneti kötés a várt módon működik-e.
 
-## <a name="enable-extension-bundles"></a>Bővítmény csomagjaiból engedélyezése
+## <a name="enable-extension-bundles"></a>Bővítmény-csomagok engedélyezése
 
 [!INCLUDE [functions-extension-bundles](../../includes/functions-extension-bundles.md)]
 
-Most már hozzáadhat egy a tároló kimeneti kötése a projekthez.
+Most hozzáadhatja a tárolási kimeneti kötést a projekthez.
 
 ## <a name="add-an-output-binding"></a>Kimeneti kötés hozzáadása
 
-A függvények, minden típusú kötés van szükség, egy `direction`, `type`, és a egy egyedi `name` a function.json fájlban kell definiálni. A kötés típusától függően szükség lehet további tulajdonságok. A [üzenetsor kimeneti konfigurációs](functions-bindings-storage-queue.md#output---configuration) bemutatja egy Azure Storage-üzenetsor kötés szükséges mezőket.
+A functions szolgáltatásban a kötések mindegyike `direction`megköveteli, `type`hogy az a, `name` a, és egy egyedi legyen definiálva a function. JSON fájlban. A kötési típustól függően szükség lehet további tulajdonságokra. A [várólista kimeneti konfigurációja](functions-bindings-storage-queue.md#output---configuration) leírja az Azure Storage-várólista kötéséhez szükséges mezőket.
 
-Hozzon létre egy kötést, adjon hozzá egy kötelező konfigurációs objektumot a `function.json` fájlt. Szerkessze a function.json fájlt a HttpTrigger mappában való objektum hozzáadása a `bindings` tömb, amely a következő tulajdonságokkal rendelkezik:
+Kötés létrehozásához adjon hozzá egy kötési konfigurációs objektumot a function. JSON fájlhoz. Szerkessze az HttpTrigger mappában található Function. JSON fájlt, és adjon hozzá egy objektumot `bindings` a tömbhöz, amely a következő tulajdonságokkal rendelkezik:
 
 | Tulajdonság | Érték | Leírás |
 | -------- | ----- | ----------- |
-| **`name`** | `msg` | A kötési paraméter a kódban hivatkozott azonosító név. |
-| **`type`** | `queue` | A kötés egy Azure Storage-üzenetsor kötést. |
-| **`direction`** | `out` | A kötés egy kimeneti kötés. |
-| **`queueName`** | `outqueue` | Az üzenetsorba író a kötés neve. Ha a *queueName* nem létezik, a kötést hoz létre, azt először használ. |
-| **`connection`** | `AzureWebJobsStorage` | A tárfiók kapcsolati karakterláncát tartalmazó alkalmazásbeállítás neve. A `AzureWebJobsStorage` beállítás tartalmazza a tárfiók, függvényalkalmazás létrehozott kapcsolati karakterláncára. |
+| **`name`** | `msg` | A kódban hivatkozott kötési paramétert azonosító név. |
+| **`type`** | `queue` | A kötés egy Azure Storage-várólista kötése. |
+| **`direction`** | `out` | A kötés kimeneti kötés. |
+| **`queueName`** | `outqueue` | Annak a sornak a neve, amelyet a kötés ír. Ha a `queueName` nem létezik, a kötés létrehozza az első használatkor. |
+| **`connection`** | `AzureWebJobsStorage` | A Storage-fiókhoz tartozó kapcsolatok karakterláncát tartalmazó Alkalmazásbeállítás neve. A `AzureWebJobsStorage` beállítás tartalmazza a Function alkalmazással létrehozott Storage-fiókhoz tartozó kapcsolatok karakterláncát. |
 
-A function.json fájlban az alábbihoz hasonlóan kell kinéznie:
+A function. JSON fájlnak most az alábbi példához hasonlóan kell kinéznie:
 
 ```json
 {
@@ -99,7 +99,7 @@ A function.json fájlban az alábbihoz hasonlóan kell kinéznie:
 
 ## <a name="add-code-that-uses-the-output-binding"></a>Kimeneti kötést használó kód hozzáadása
 
-Miután konfigurálta, megkezdheti a `name` a kötés hozzá a függvényaláíráshoz a metódus attribútumaként. A következő példában `msg` példánya a [ `azure.functions.InputStream class` ](/python/api/azure-functions/azure.functions.httprequest).
+A `name` konfigurálása után elkezdheti használni a kötést metódus attribútumként a függvény aláírásában. A következő példában `msg` a a [`azure.functions.InputStream class`](/python/api/azure-functions/azure.functions.httprequest)egy példánya.
 
 ```python
 import logging
@@ -128,77 +128,77 @@ def main(req: func.HttpRequest, msg: func.Out[func.QueueMessage]) -> str:
         )
 ```
 
-Kimeneti kötés használatával nem kell az Azure Storage SDK kódot használja a hitelesítéshez, üzenetsor-hivatkozás beszerzése vagy írásáért. A Functions futtatókörnyezete és üzenetsorának kimeneti kötést, hajtsa végre ezeket a feladatokat.
+Ha kimeneti kötést használ, nem kell használnia az Azure Storage SDK kódját a hitelesítéshez, a várólista-hivatkozás beszerzéséhez vagy az adatíráshoz. A functions futtatókörnyezet és a várólista kimeneti kötése elvégzi ezeket a feladatokat.
 
 ## <a name="run-the-function-locally"></a>Függvény helyi futtatása
 
-Mint korábban az alábbi parancs segítségével indítsa el a Functions futtatókörnyezete helyileg:
+Ahogy korábban is, használja a következő parancsot a functions futtatókörnyezet helyi elindításához:
 
 ```bash
 func host start
 ```
 
 > [!NOTE]  
-> Mivel az előző cikkben korábban is engedélyezheti a host.json a bővítmény csomagok a [tárolási kötési bővítmény](functions-bindings-storage-blob.md#packages---functions-2x) letöltötte és telepítette a indításakor, valamint a más Microsoft-kötési bővítményeket.
+> Mivel az előző rövid útmutatóban engedélyezte a bővítmények használatát a Host. JSON fájlban, a rendszer letölti és telepítette a [Storage kötési bővítményt](functions-bindings-storage-blob.md#packages---functions-2x) az indítás során, valamint a többi Microsoft-kötési bővítményt is.
 
-Másolja ki a `HttpTrigger` függvény URL-címét a futtatókörnyezetének kimenetéből, majd illessze be a böngészője címsorába. Az URL-címhez fűzze hozzá a `?name=<yourname>` lekérdezési sztringet, és hajtsa végre a kérelmet. Ahogyan az előző cikkben kell megjelennie a böngészőben ugyanazt a választ.
+Másolja ki a `HttpTrigger` függvény URL-címét a futtatókörnyezetének kimenetéből, majd illessze be a böngészője címsorába. Fűzze hozzá a lekérdezési karakterláncot `?name=<yourname>` ehhez az URL-címhez, és futtassa a kérést. Ugyanezt a választ kell megjelennie a böngészőben, ahogy az előző cikkben is volt.
 
-Ezúttal a kimeneti kötés is létrehoz egy üzenetsort, nevű `outqueue` a Storage-fiók és a egy üzenetet küld az azonos karakterláncra.
+Ebben az esetben a kimeneti kötés is létrehoz egy nevű `outqueue` várólistát a Storage-fiókban, és hozzáadja az ugyanezt a karakterláncot tartalmazó üzenetet.
 
-Ezután használhatja az Azure parancssori felület az új várólista megtekintéséhez, és a egy üzenet hozzáadásának ellenőrzéséhez. Az üzenetsor segítségével is megtekintheti a [Microsoft Azure Storage Explorer][Azure Storage Explorer] vagy a a [az Azure portal](https://portal.azure.com).
+Ezután az Azure CLI használatával megtekintheti az új várólistát, és ellenőrizheti, hogy hozzá lett-e adva üzenet. Az üzenetsor a [Microsoft Azure Storage Explorer][Azure Storage Explorer] vagy a [Azure Portal](https://portal.azure.com)használatával is megtekinthető.
 
-### <a name="set-the-storage-account-connection"></a>Állítsa be a Tárfiók kapcsolata
+### <a name="set-the-storage-account-connection"></a>A Storage-fiók kapcsolatainak beállítása
 
-Nyissa meg a local.settings.json fájlban, és másolja az értéket a `AzureWebJobsStorage`, azaz a Tárfiók kapcsolati sztringje. Állítsa be a `AZURE_STORAGE_CONNECTION_STRING` környezeti változó a kapcsolati karakterlánc az alábbi Bash-parancs használatával:
+Nyissa meg a local. Settings. JSON fájlt, és `AzureWebJobsStorage`másolja ki a értékét, amely a Storage-fiókhoz tartozó kapcsolatok karakterlánca. Állítsa a `AZURE_STORAGE_CONNECTION_STRING` környezeti változót a kapcsolódási karakterláncra a bash parancs használatával:
 
 ```azurecli-interactive
 export AZURE_STORAGE_CONNECTION_STRING=<STORAGE_CONNECTION_STRING>
 ```
 
-A kapcsolati karakterlánc beállítása az a `AZURE_STORAGE_CONNECTION_STRING` környezeti változót, hozzáférhet a tárfiókhoz anélkül, hogy a hitelesítés minden alkalommal, amikor kellene.
+Ha a kapcsolati karakterláncot a `AZURE_STORAGE_CONNECTION_STRING` környezeti változóban állítja be, akkor anélkül férhet hozzá a Storage-fiókhoz, hogy minden alkalommal hitelesítést kellene biztosítania.
 
-### <a name="query-the-storage-queue"></a>Lekérdezés a tárolási üzenetsor
+### <a name="query-the-storage-queue"></a>A tárolási várólista lekérdezése
 
-Használhatja a [ `az storage queue list` ](/cli/azure/storage/queue#az-storage-queue-list) parancsot a tároló-üzenetsorok megtekintéséhez a fiókjában, az alábbi példában látható módon:
+A [`az storage queue list`](/cli/azure/storage/queue#az-storage-queue-list) paranccsal megtekintheti a fiókban lévő tárolási várólistákat, ahogy az alábbi példában is látható:
 
 ```azurecli-interactive
 az storage queue list --output tsv
 ```
 
-Ez a parancs kimenete tartalmazza a nevű üzenetsor `outqueue`, azaz a várólista létrehozásának, a függvény futtatásakor.
+A parancs kimenete tartalmaz egy nevű `outqueue`várólistát, amely a függvény futtatásakor létrehozott üzenetsor.
 
-Ezután a [ `az storage message peek` ](/cli/azure/storage/message#az-storage-message-peek) parancsot az alábbi példában látható módon, az üzenetsorban lévő üzenetek megjelenítése.
+Ezután a [`az storage message peek`](/cli/azure/storage/message#az-storage-message-peek) parancs használatával tekintse meg az ebben a várólistában lévő üzeneteket, az alábbi példában látható módon:
 
 ```azurecli-interactive
 echo `echo $(az storage message peek --queue-name outqueue -o tsv --query '[].{Message:content}') | base64 --decode`
 ```
 
-Visszaadott karakterlánc lehet ugyanaz, mint az üzenet, a függvény teszteléséhez.
+A visszaadott karakterláncnak meg kell egyeznie a függvény teszteléséhez küldött üzenettel.
 
 > [!NOTE]  
-> Az előző példa a visszaadott karakterláncban a Base64 kódolású anyag dekódol. Ennek az az oka, hogy a tárolási üzenetsor kötései írása, és olvassa el az Azure Storage-ot [Base64 kódolású karakterláncok](functions-bindings-storage-queue.md#encoding).
+> Az előző példa dekódolja a visszaadott karakterláncot a Base64-ből. Ennek az az oka, hogy a várólista-tárolási kötések az Azure Storage-ban [Base64](functions-bindings-storage-queue.md#encoding)-karakterláncként írnak és olvashatók.
 
-Most, a frissített függvény alkalmazás az Azure-ban való ismételt közzétételéhez ideje.
+Itt az ideje, hogy újra közzé lehessen tenni a frissített Function alkalmazást az Azure-ban.
 
 [!INCLUDE [functions-publish-project](../../includes/functions-publish-project.md)]
 
-Ismét használhatja a cURL vagy a böngésző az üzembe helyezett függvény teszteléséhez. Ahogy korábban is fűzze hozzá a lekérdezési karakterlánc `&name=<yourname>` az URL-címhez, akkor az alábbi példában látható módon:
+A cURL vagy a böngésző használatával tesztelheti az üzembe helyezett függvényt. Ahogy korábban is, fűzze hozzá a `&name=<yourname>` lekérdezési karakterláncot az URL-címhez, az alábbi példában látható módon:
 
 ```bash
 curl https://myfunctionapp.azurewebsites.net/api/httptrigger?code=cCr8sAxfBiow548FBDLS1....&name=<yourname>
 ```
 
-Is [vizsgálja meg a tárolási üzenetsorbeli üzenetet](#query-the-storage-queue) ellenőrizheti a kimeneti kötés újra az üzenetsor új üzenetet állít elő.
+Megvizsgálhatja [a tárolási üzenetsor üzenetét](#query-the-storage-queue) annak ellenőrzéséhez, hogy a kimeneti kötés ismét létrehoz egy új üzenetet a várólistában.
 
 [!INCLUDE [functions-cleanup-resources](../../includes/functions-cleanup-resources.md)]
 
 ## <a name="next-steps"></a>További lépések
 
-Hogy frissítette a HTTP által aktivált függvényt az adatok írása az üzenetsor-tárolóba. Az Azure Functions Python használatával való fejlesztésével kapcsolatos további tudnivalókért tekintse meg a [Azure Functions Python fejlesztői útmutató](functions-reference-python.md) és [Azure Functions eseményindítók és kötések](functions-triggers-bindings.md).
+Frissítette a HTTP-triggert a függvényt, hogy az adatait egy tárolási várólistába írja. Ha többet szeretne megtudni a Python Azure Functions fejlesztéséről, tekintse meg a [Python fejlesztői útmutató Azure functions](functions-reference-python.md) és [Azure functions triggerek és kötések](functions-triggers-bindings.md)című témakört.
 
-Ezután engedélyeznie kell Application Insights-figyelést a függvényalkalmazás számára:
+Ezután engedélyezze Application Insights figyelését a Function alkalmazáshoz:
 
 > [!div class="nextstepaction"]
-> [Az Application Insights-integráció engedélyezése](functions-monitoring.md#manually-connect-an-app-insights-resource)
+> [Application Insights integráció engedélyezése](functions-monitoring.md#manually-connect-an-app-insights-resource)
 
 [Azure Storage Explorer]: https://storageexplorer.com/

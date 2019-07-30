@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 04/01/2019
+ms.date: 07/29/2019
 ms.author: diberry
-ms.openlocfilehash: 1aed6f9a0ceec18ca800e5030ec09bbb8d98cb76
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: e85f9a90af778a7e68bf761d8d2159e808cf122d
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68560728"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68639212"
 ---
 # <a name="phrase-list-features-in-your-luis-app"></a>A LUIS-alkalmazás kifejezés-listájának funkciói
 
@@ -35,7 +35,7 @@ A kifejezések listája nem kapcsolódik egy adott szándékhoz vagy entitáshoz
 
 ## <a name="how-to-use-phrase-lists"></a>A kifejezés listák használata
 
-Hozzon létre egy kifejezést tartalmazó listát, ha az alkalmazás olyan szavakat vagy kifejezéseket tartalmaz, amelyek fontosak az alkalmazáshoz, például:
+[Hozzon létre egy kifejezést](luis-how-to-add-features.md) tartalmazó listát, ha az alkalmazás olyan szavakat vagy kifejezéseket tartalmaz, amelyek fontosak az alkalmazáshoz, például:
 
 * iparági feltételek
 * szleng
@@ -53,7 +53,7 @@ Ha néhány szót vagy kifejezést adott meg, a **javasolt** funkció használat
 
 ### <a name="interchangeable-lists"></a>Felcserélhető listája
 
-A  megváltoztathatatlan kifejezések listája olyan értékekre mutat, amelyek szinonimák. Ha például azt szeretné, hogy az összes víztest található, és van például hosszúságú kimondott szöveg, például: 
+A megváltoztathatatlan kifejezések listája olyan értékekre mutat, amelyek szinonimák. Ha például azt szeretné, hogy az összes víztest található, és van például hosszúságú kimondott szöveg, például: 
 
 * Milyen városokhoz közelítenek a Nagy tavak? 
 * Milyen úton fut a Lake Havasu?
@@ -79,7 +79,7 @@ Ahogy a kifejezések listája az idő múlásával növekszik, előfordulhat, ho
 
 <a name="phrase-lists-help-identify-simple-exchangeable-entities"></a>
 
-## <a name="phrase-lists-help-identify-simple-interchangeable-entities"></a>Kifejezés tartalmazza a Súgó egyszerű felcserélhetők entitások azonosítása
+## <a name="phrase-lists-help-identify-simple-interchangeable-entities"></a>A kifejezések listája segítséget nyújt az egyszerű, felcserélhető entitások azonosításához
 Cserélhető kifejezés listák helyes módon a LUIS-alkalmazás teljesítményének finomhangolása. Ha az alkalmazás hiba történt a megfelelő leképezés kimondott szöveg előrejelzésére vagy entitások FELISMERVE, gondolja át e a kimondott szöveg tartalmazza-e a szokatlan szavakat vagy szavak, amelyek lehet, hogy a jelentése nem egyértelmű. Ezeknek a szavaknak esetén használható jól az egy kifejezést listára.
 
 ## <a name="phrase-lists-help-identify-intents-by-better-understanding-context"></a>Kifejezés tartalmazza a Súgó azonosíthatja a leképezések jobb megértése környezet
@@ -88,7 +88,7 @@ Egy kifejezés lista tehát nem a LUIS szigorú az egyeztetés elvégzéséhez, 
 A kifejezéslista hozzáadása nem megjelölésű további példa beszédmódok hozzáadása helyett. 
 
 ## <a name="when-to-use-phrase-lists-versus-list-entities"></a>A kifejezés listák és a lista entitások használata
-Kifejezések listáját és a lista entitások hatással lehet a kimondott szöveg összes leképezések között, bár egyes azért teszi ezt más módon. Egy kifejezés listával szándék előrejelzési pontszám hatással. Egy lista entitás használatával hatással vannak a szöveg pontos egyezéssel entitások kinyeréséhez. 
+Noha a kifejezések listája és a [lista entitások](reference-entity-list.md) is befolyásolhatják az összes cél hosszúságú kimondott szöveg, mindkettő más módon működik. Egy kifejezés listával szándék előrejelzési pontszám hatással. Egy lista entitás használatával hatással vannak a szöveg pontos egyezéssel entitások kinyeréséhez. 
 
 ### <a name="use-a-phrase-list"></a>Egy kifejezés helyett szerepel a listában
 Kifejezés listáját a LUIS továbbra is figyelembe kell venni a környezet, és általánosítsa a géphez való azonosításához az elemek, amelyek hasonló, de nem pontos egyezést, egy listán szereplő elemeket. Ha a LUIS-alkalmazás lehessen generalize és az új elemeket egy kategória van szüksége, használja a kifejezés listáját. 

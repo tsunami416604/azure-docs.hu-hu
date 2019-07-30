@@ -1,154 +1,158 @@
 ---
-title: 'Oktatóanyag: Ismerkedés az Azure Time Series Insights JavaScript ügyféloldali kódtár |} A Microsoft Docs'
+title: 'Oktatóanyag: Ismerkedés a Azure Time Series Insights JavaScript-ügyfél függvénytárával | Microsoft Docs'
 description: Megismerheti az Azure Time Series Insights JavaScript ügyfélkódtárat és a kapcsolódó programozási modellt.
 author: ashannon7
 manager: cshankar
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: tutorial
-ms.date: 05/06/2019
+ms.date: 07/29/2019
 ms.author: dpalled
 ms.custom: seodec18
-ms.openlocfilehash: c6cfd2069851138d738b1533eaab74d9d7aedda6
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 1ae37636a2caf108221be2240a9517a547945096
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66243985"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68638829"
 ---
 # <a name="tutorial-explore-the-azure-time-series-insights-javascript-client-library"></a>Oktatóanyag: Az Azure Time Series Insights JavaScript ügyfélkódtár felderítése
 
-Az Azure Time Series Insights JavaScript D3-alapú ügyféloldali kódtár célja a webes fejlesztőknek lekérdezés és a Time Series Insights-ban tárolt adatok megjelenítése. Ez az oktatóanyag végigvezeti a Time Series Insights-klienskódtár és a programozási modell üzemeltetett mintaalkalmazás használatával.
+A JavaScript D3-alapú Azure Time Series Insights ügyféloldali kódtára a webfejlesztők számára a Time Series Insightsban tárolt adatlekérdezés és-megjelenítés segítése érdekében lett kifejlesztve. Ez az oktatóanyag végigvezeti a Time Series Insights ügyféloldali függvénytáron és programozási modellen az üzemeltetett minta alkalmazás használatával.
 
-Az oktatóanyag részletesen használata a könyvtárban, a Time Series Insights-adatok elérése és használata a diagram-vezérlőelemeket jelennek meg, és megjelenítheti az adatokat. Kísérletezzen a különböző típusú diagramok adatok vizualizációja, hogyan is megtudhatja. Az oktatóanyag végén meg fogja tudni használni az ügyféloldali kódtár a Time Series Insights funkciókat építhet be a saját webes alkalmazás.
+Az oktatóanyag részletesen ismerteti, hogyan használható a könyvtár, hogyan férhet hozzá Time Series Insights adatokhoz, és hogyan jelenítheti meg és jelenítheti meg a diagram vezérlőelemeket az adatok megjelenítéséhez és megjelenítéséhez. Azt is megtudhatja, hogyan lehet kísérletezni különböző típusú gráfokkal az adatmegjelenítéshez. Az oktatóanyag végén lehetősége lesz arra, hogy az ügyféloldali kódtár használatával beépítse Time Series Insights szolgáltatásokat a saját webalkalmazásba.
 
-Pontosabban a következőkről szerezhet ismereteket:
+Pontosabban a következőket fogja tudni:
 
 > [!div class="checklist"]
-> * A Time Series Insights-mintaalkalmazás
-> * A Time Series Insights JavaScript-klienskódtár
-> * Hogyan a mintaalkalmazás a kódtárat használja a Time Series Insights-adatok megjelenítése
+> * A Time Series Insights minta alkalmazás
+> * A Time Series Insights JavaScript ügyféloldali kódtár
+> * Hogyan használja a minta alkalmazás a könyvtárat a Time Series Insights-adatmegjelenítéshez
 
 > [!NOTE]
-> * Az oktatóanyagban egy ingyenes, üzemeltetett [Time Series Insights web bemutatót](https://insights.timeseries.azure.com/clientsample).
-> * A Time Series Insights minta app forrásfájlok szerepelnek a [GitHub-mintaadattárból](https://github.com/Microsoft/tsiclient/tree/tutorial/pages/tutorial).
-> * Olvassa el a [ügyfél Time Series Insights dokumentációja](https://github.com/microsoft/tsiclient/blob/master/docs/API.md).
+> * Az oktatóanyag egy ingyenes, üzemeltetett [Time Series Insights webes bemutatót](https://insights.timeseries.azure.com/clientsample)használ.
+> * A Time Series Insights minta alkalmazás forrásfájljait a [GitHub-minta adattárában](https://github.com/Microsoft/tsiclient/tree/tutorial/pages/tutorial)kell megadnia.
+> * Olvassa el a [Time Series Insights-ügyfél dokumentációját](https://github.com/microsoft/tsiclient/blob/master/docs/API.md).
+
+## <a name="prerequisites"></a>Előfeltételek
+
+* Ha még nem rendelkezik ilyennel, regisztráljon egy [ingyenes Azure](https://azure.microsoft.com/free/) -előfizetésre.
+
+* Ez az oktatóanyag a böngésző **fejlesztői eszközök** funkcióját használja. A modern webböngészők ([Microsoft Edge](/microsoft-edge/devtools-guide), [Chrome](https://developers.google.com/web/tools/chrome-devtools/), [Firefox](https://developer.mozilla.org/en-US/docs/Learn/Common_questions/What_are_browser_developer_tools), [Safari](https://developer.apple.com/safari/tools/)és mások) általában hozzáférést biztosítanak a webfelügyelői **nézethez** a billentyűzeten található F12 gyorsbillentyűn keresztül. A nézet elérésének másik módja, ha a jobb gombbal egy weblapra kattint, majd kiválasztja az **elem vizsgálata elemet**.
 
 ## <a name="video"></a>Videó
 
-Ebben a videóban hogy a nyílt forráskódú Time Series Insights JavaScript SDK vezetnek be:
+Ebben a videóban bemutatjuk a nyílt forráskódú Time Series Insights JavaScript SDK-t:
 <br /><br />
 
 > [!VIDEO https://www.youtube.com/embed/X8sSm7Pl9aA]
 
-## <a name="prerequisites"></a>Előfeltételek
 
-Ebben az oktatóanyagban a böngésző **fejlesztői eszközök** funkció. Modern böngészők ([Microsoft Edge](/microsoft-edge/devtools-guide), [Chrome](https://developers.google.com/web/tools/chrome-devtools/), [Firefox](https://developer.mozilla.org/en-US/docs/Learn/Common_questions/What_are_browser_developer_tools), [Safari](https://developer.apple.com/safari/tools/), és mások) általában biztosítanak hozzáférést az **Webes vizsgáló nézet** az F12 billentyűparancsot a billentyűzet használatával. A nézet hozzáféréséhez másik módja, kattintson a jobb gombbal valamelyik weblapon, és válassza a **vizsgálata elem**.
 
 ## <a name="time-series-insights-sample-application"></a>A Time Series Insights mintaalkalmazás
 
-Ez az oktatóanyag során használjuk egy ingyenes, üzemeltetett Time Series Insights mintaalkalmazást megismerheti az alkalmazás mögötti forráskódját, valamint a Time Series Insights JavaScript ügyféloldali kódtár megismerése. A mintaalkalmazás segítségével, megtudhatja, hogyan kommunikáljanak a Time Series Insights JavaScript és diagramokat és ábrákat keresztül adatok megjelenítése.
+Ebben az oktatóanyagban egy ingyenes, üzemeltetett Time Series Insights minta alkalmazást használunk az alkalmazás mögötti forráskód megismeréséhez és a Time Series Insights JavaScript-ügyféloldali kódtár megismeréséhez. A minta alkalmazás használatával megtudhatja, hogyan használhatja a Time Series Insightst a JavaScriptben, és hogyan jelenítheti meg az adatdiagramokat és diagramokat.
 
-1. Nyissa meg a [Time Series Insights mintaalkalmazás](https://insights.timeseries.azure.com/clientsample). A következő bejelentkezési üzenet jelenik meg:
+1. Nyissa meg a [Time Series Insights minta alkalmazást](https://insights.timeseries.azure.com/clientsample). A következő bejelentkezési üzenet jelenik meg:
 
-   [![Time Series Insights ügyfél minta bejelentkezési kérések jelenhetnek](media/tutorial-explore-js-client-lib/tcs-sign-in.png)](media/tutorial-explore-js-client-lib/tcs-sign-in.png#lightbox)
+   [![Time Series Insights ügyfél-minta bejelentkezési kérés](media/tutorial-explore-js-client-lib/tcs-sign-in.png)](media/tutorial-explore-js-client-lib/tcs-sign-in.png#lightbox)
 
-1. Válassza ki **bejelentkezés** adja meg vagy válassza ki a hitelesítő adatait. Használhatja egy vállalati szervezeti fiók (az Azure Active Directory), vagy egy személyes fiók (Microsoft-fiókkal).
+1. Válassza a **Bejelentkezés** lehetőséget a hitelesítő adatok megadásához vagy kiválasztásához. Használjon vállalati szervezeti fiókot (Azure Active Directory) vagy egy személyes fiókot (Microsoft-fiók).
 
-   [![Time Series Insights ügyfél minta hitelesítő adatok kérése](media/tutorial-explore-js-client-lib/tcs-sign-in-enter-account.png)](media/tutorial-explore-js-client-lib/tcs-sign-in-enter-account.png#lightbox)
+   [![Time Series Insights ügyfél-példa hitelesítő adatainak kérése](media/tutorial-explore-js-client-lib/tcs-sign-in-enter-account.png)](media/tutorial-explore-js-client-lib/tcs-sign-in-enter-account.png#lightbox)
 
-1. Miután bejelentkezett, a Time Series Insights adatokkal feltöltve diagramok megjelenítő lap jelenik meg. A felhasználói fiók és a **Kijelentkezés** hivatkozás a jobb felső sarokban láthatók:
+1. Miután bejelentkezett, megjelenik egy oldal, amelyen Time Series Insights adatokkal feltöltött diagramok jelennek meg. A felhasználói fiók és a **Kijelentkezés** hivatkozás a jobb felső sarokban láthatók:
 
-   [![Time Series Insights ügyfél minta főoldala a bejelentkezést követően](media/tutorial-explore-js-client-lib/tcs-main-after-signin.png)](media/tutorial-explore-js-client-lib/tcs-main-after-signin.png#lightbox)
+   [![Time Series Insights ügyfél-minta főoldala bejelentkezés után](media/tutorial-explore-js-client-lib/tcs-main-after-signin.png)](media/tutorial-explore-js-client-lib/tcs-main-after-signin.png#lightbox)
 
 ### <a name="page-source-and-structure"></a>Oldal forrása és struktúrája
 
-Először tekintse a [HTML és JavaScript forráskódját](https://github.com/Microsoft/tsiclient/blob/tutorial/pages/tutorial/index.html) a megjelenített weblap:
+Először tekintse meg a megjelenített weblap [HTML-és JavaScript-forráskódját](https://github.com/Microsoft/tsiclient/blob/tutorial/pages/tutorial/index.html) :
 
 1. Nyissa meg a böngészőben a **Fejlesztői eszközök** lapot. Vizsgálja meg az aktuális oldalt alkotó HTML-elemeket, más néven a HTML- vagy DOM-faszerkezetet.
 
-1. Bontsa ki a `<head>` és `<body>` elemeket, és vizsgálja meg a következő szakaszokban:
+1. Bontsa `<head>` ki `<body>` a és az elemeket, és figyelje meg a következő részeket:
 
-   * Alatt a `<head>` elem, megtalálhatja lap metaadatok és a függőségek, amelyek lehetővé teszik az alkalmazás futtatását:
-     * A `<script>` elem, amely az Azure Active Directory Authentication Library (ADAL) fájl hivatkozni *adal.min.js*. Az ADAL egy JavaScript-kódtár, amely OAuth 2.0 hitelesítést (bejelentkezést) és az API-k hozzáféréséhez jogkivonat beszerzését biztosítja.
-     * Több `<link>` stíluslapok elemei (más néven *CSS*) például *sampleStyles.css* és *tsiclient.css*. A stíluslapok visual lap stílusának részleteit, például a színeket, betűtípusokat és térköz szabályozza.
-     * A `<script>` elem, amely a Time Series Insights JavaScript ügyféloldali kódtár hivatkozni *tsiclient.js*. Az oldal kódtárat használja, a Time Series Insights szolgáltatás API-k hívásához és megjelenítése a lapon diagram-vezérlőelemeket.
+   * Az `<head>` elem alatt megtalálhatja az oldal metaadatait és függőségeit, amelyek lehetővé teszik az alkalmazás futtatását:
+     * Az Azure Active Directory Authentication Library (ADAL) *ADAL. min. js*fájlra való hivatkozásához használt elem.`<script>` Az ADAL egy JavaScript-kódtár, amely OAuth 2.0 hitelesítést (bejelentkezést) és az API-k hozzáféréséhez jogkivonat beszerzését biztosítja.
+     * A `<link>` stíluslapok (más néven *CSS*) több eleme, például a *sampleStyles. css* és a *tsiclient. css*. A stíluslapok a vizuális oldal stílusának részletes adatait, például a színeket, a betűkészleteket és a térközt vezérlik.
+     * Egy `<script>` elem, amely a Time Series Insights JavaScript-ügyfél könyvtárának *tsiclient. js*fájlra való hivatkozására szolgál. A lap a könyvtárat használja a Time Series Insights Service API-k meghívásához és a diagram vezérlőinek megjelenítéséhez a lapon.
 
      >[!NOTE]
-     > * Az az ADAL JavaScript-kódtár forráskódja elérhető a [azure-activedirectory-erőforrástár-az-js-tárház](https://github.com/AzureAD/azure-activedirectory-library-for-js).
-     > * A Time Series Insights JavaScript ügyféloldali kódtár forráskódját érhető el a [tsiclient tárház](https://github.com/Microsoft/tsiclient/tree/tutorial/pages/tutorial).
+     > * Az ADAL JavaScript-kódtár forráskódja az [Azure-ActiveDirectory-Library-for-js tárházban](https://github.com/AzureAD/azure-activedirectory-library-for-js)érhető el.
+     > * A Time Series Insights JavaScript-ügyféloldali kódtár forráskódja elérhető a [tsiclient](https://github.com/Microsoft/tsiclient/tree/tutorial/pages/tutorial)-tárházban.
 
-   * Alatt a `<body>` elemben találja `<div>` elemeket, amelyek segítséget nyújtanak a elemek elrendezésének a lapon, és a egy másik `<script>` elem:
-     * Az első `<div>` elem azt határozza meg a **bejelentkezés** párbeszédpanel (`id="loginModal"`).
+   * Az `<body>` elem alatt megtalálhatja `<div>` azokat az elemeket, amelyek segítenek meghatározni az elemek elrendezését az oldalon, és egy `<script>` másik elemet:
+     * Az első `<div>` elem a **Bejelentkezés** párbeszédpanelt (`id="loginModal"`) adja meg.
      * A második `<div>` elem a következő szülőjeként működik:
        * Egy `<div>` fejléc elem, amely állapotüzenetekre és bejelentkezési információkra szolgál az oldal tetején (`class="header"`).
-       * A `<div>` elem a szervezet elemei, beleértve a diagramokat további részében (`class="chartsWrapper"`).
-       * A `<script>` a JavaScript, amellyel szabályozhatja a lapot tartalmazó szakasz.
+       * A lap törzse elemeinek hátralévő részének egyik`class="chartsWrapper"` eleme,beleértveadiagramokat().`<div>`
+       * Az oldal vezérléséhez használt JavaScriptet tartalmazó szakasz.`<script>`
 
-   [![Time Series Insights ügyfél minta fejlesztői eszközökkel](media/tutorial-explore-js-client-lib/tcs-devtools-callouts-head-body.png)](media/tutorial-explore-js-client-lib/tcs-devtools-callouts-head-body.png#lightbox)
+   [![Time Series Insights ügyfél-minta Fejlesztői eszközök](media/tutorial-explore-js-client-lib/tcs-devtools-callouts-head-body.png)](media/tutorial-explore-js-client-lib/tcs-devtools-callouts-head-body.png#lightbox)
 
-1. Bontsa ki a `<div class="chartsWrapper">` elemhez az itt található több alárendelt `<div>` elemeket. Ezekkel helyezhetők el az egyes diagramvezérlő példák. Nincsenek számos `<div>` elemeket, és az egyik minden egyes diagram például:
+1. Bontsa `<div class="chartsWrapper">` ki az elemet, és több alárendelt `<div>` elemet is talál. Ezekkel helyezhetők el az egyes diagramvezérlő példák. Több `<div>` elem is létezik, egyet az egyes diagramokra:
 
    * Az első (`class="rowOfCardsTitle"`) elem egy leíró címet tartalmaz, amely összegzi a diagramok által bemutatott elemeket. Például:`Static Line Charts With Full-Size Legends.`
-   * A második (`class="rowOfCards"`) elem egy szülő további alárendelt tartalmazó `<div>` elemeket, amelyeket a tényleges diagram-vezérlőelemeket egy soron belüli pozíció.
+   * A második (`class="rowOfCards"`) elem egy olyan szülő, amely további alárendelt `<div>` elemeket tartalmaz, amelyek egy sorban lévő tényleges diagram vezérlőelemeket helyezik át.
 
-   [![Törzs div elemek](media/tutorial-explore-js-client-lib/tcs-devtools-callouts-body-divs.png)](media/tutorial-explore-js-client-lib/tcs-devtools-callouts-body-divs.png#lightbox)
+   [![Törzs div elemei](media/tutorial-explore-js-client-lib/tcs-devtools-callouts-body-divs.png)](media/tutorial-explore-js-client-lib/tcs-devtools-callouts-body-divs.png#lightbox)
 
-1. Bontsa ki a `<script type="text/javascript">` elem, amely közvetlenül az alábbi a `<div class="chartsWrapper">` elemet. A lapszintű JavaScript szakasz elején segítségével kezelhető az összes lap logikát (hitelesítés, a Time Series Insights szolgáltatás API-k, a diagram-vezérlőelemeket, és az egyéb renderelő hívása):
+1. Bontsa `<script type="text/javascript">` ki az elemet közvetlenül az `<div class="chartsWrapper">` elem alá. Az oldal szintű JavaScript szakasz elejétől az összes oldal logikája (hitelesítés, Time Series Insights szolgáltatás API-k meghívása, a diagram vezérlőelemek megjelenítése stb.) használható:
 
-   [![Parancsprogram törzse](media/tutorial-explore-js-client-lib/tcs-devtools-callouts-body-script.png)](media/tutorial-explore-js-client-lib/tcs-devtools-callouts-body-script.png#lightbox)
+   [![Szövegtörzs parancsfájlja](media/tutorial-explore-js-client-lib/tcs-devtools-callouts-body-script.png)](media/tutorial-explore-js-client-lib/tcs-devtools-callouts-body-script.png#lightbox)
 
-## <a name="time-series-insights-javascript-client-library-concepts"></a>Time Series Insights JavaScript ügyfél könyvtár fogalmak
+## <a name="time-series-insights-javascript-client-library-concepts"></a>A JavaScript-ügyfél függvénytárával kapcsolatos fogalmak Time Series Insights
 
-A Time Series Insights ügyféloldali kódtár (*tsclient.js*) absztrakt entitást két fontos JavaScript funkciókat biztosítja:
+Az Time Series Insights ügyféloldali kódtár (*tsclient. js*) a következő két fontos JavaScript-funkció absztrakcióját biztosítja:
 
-* **Az idő Series Insights lekérdezési API-k meghívására szolgáló burkoló módszerek**: REST API-k használatával adatokat kérdezhet le a Time Series Insights összesítő kifejezések használatával. A metódusok a könyvtár a TsiClient.Server névtérben vannak rendszerezve.
+* **A Time Series Insights lekérdezési API**-k meghívására szolgáló burkoló metódusok: REST API-k összesítő kifejezések használatával Time Series Insights adatok lekérdezésére használható. A metódusok a könyvtár TsiClient. Server névterében vannak rendszerezve.
 
-* **Módszerek a létrehozása és feltöltése számos különböző típusú vezérlők diagramkészítési**: Jelennek meg a Time Series Insights segítségével módszert származó adatokat egy weblap. A metódusok a könyvtár a TsiClient.UX névtérben vannak rendszerezve.
+* **Különféle típusú diagramok létrehozásának és feltöltésének módszerei**: A weblapon lévő Time Series Insights összesített adatainak megjelenítéséhez használható metódusok. A metódusok a könyvtár TsiClient. UX névterében vannak rendszerezve.
 
-Ezen egyszerűbb fejlesztők egyszerűbben fejleszthetnek felhasználói felületi graph és a diagram összetevőket, amelyek a Time Series Insights adatait működteti.
+Ezen egyszerűsítések révén a fejlesztők könnyebben hozhatnak létre felhasználói felületi gráfokat és diagram-összetevőket, amelyek Time Series Insights-adatszolgáltatással rendelkeznek.
 
-### <a name="authentication"></a>Hitelesítés
+### <a name="authentication"></a>Authentication
 
-A [Time Series Insights mintaalkalmazás](https://insights.timeseries.azure.com/clientsample) egy egyoldalas alkalmazás, amely rendelkezik az ADAL OAuth 2.0-s felhasználói hitelesítés támogatását:
+A [Time Series Insights minta alkalmazás](https://insights.timeseries.azure.com/clientsample) egy egyoldalas alkalmazás, amely ADAL OAuth 2,0 felhasználói hitelesítési támogatást nyújt:
 
-1. Adal-t használnak a hitelesítéshez, ha az ügyfél alkalmazást regisztrálni kell az Azure Active Directoryban (Azure AD). Sőt, az egyoldalas alkalmazás használatára regisztrálva van a [OAuth 2.0 implicit folyamat megadása](https://docs.microsoft.com/azure/active-directory/develop/v1-oauth2-implicit-grant-flow).
-1. Az alkalmazás egyes futásidőben regisztrációs tulajdonságokat kell megadnia. A tulajdonságok között az ügyfél GUID Azonosítóját (`clientId`) és az átirányítási URI-t (`postLogoutRedirectUri`).
-1. Később, kér az alkalmazás egy *hozzáférési jogkivonat* Azure AD-ből. A hozzáférési jogkivonat kiadott engedélyek egy adott szolgáltatás vagy az API-azonosító véges készletének (https:\//api.timeseries.azure.com). A jogkivonat engedélyei a bejelentkezett felhasználó nevében vannak kiadva. A szolgáltatás vagy -API esetében az azonosító egy másik tulajdonság, amely szerepel az alkalmazás Azure AD-regisztrációs.
-1. Adal-t a hozzáférési jogkivonatot az alkalmazás ad vissza, miután átadva egy *tulajdonosi jogkivonat* mikor fér hozzá a Time Series Insights szolgáltatás API-k.
+1. Ha ADAL használ a hitelesítéshez, az ügyfélalkalmazás regisztrálni kell Azure Active Directory (Azure AD) szolgáltatásban. Valójában az egyoldalas alkalmazás regisztrálva van a [OAuth 2,0 implicit engedélyezési folyamat](https://docs.microsoft.com/azure/active-directory/develop/v1-oauth2-implicit-grant-flow)használatára.
+1. Az alkalmazásnak bizonyos regisztrációs tulajdonságokat kell megadnia futásidőben. A tulajdonságok közé tartozik az ügyfél GUID`clientId`-ja () és az`postLogoutRedirectUri`átirányítási URI ().
+1. Az alkalmazás később *hozzáférési* jogkivonatot kér az Azure ad-től. A hozzáférési jogkivonat egy adott szolgáltatás vagy API-azonosító (https:\//API.timeseries.Azure.com) engedélyeinek egy véges készletére van kiállítva. A jogkivonat engedélyei a bejelentkezett felhasználó nevében vannak kiadva. A szolgáltatás vagy API azonosítója egy másik olyan tulajdonság, amely az alkalmazás Azure AD-regisztrációjában szerepel.
+1. Miután a ADAL visszaadja a hozzáférési jogkivonatot az alkalmazásnak, *tulajdonosi* jogkivonatnak minősül, amikor hozzáfér a Time Series Insights Service API-khoz.
 
    [!code-javascript[head-sample](~/samples-javascript/pages/tutorial/index.html?range=147-204&highlight=3-7,34-37)]
 
 > [!TIP]
-> A Microsoft által támogatott az Azure AD hitelesítési kódtárai kapcsolatos további információkért tekintse meg a [Azure Active Directory Authentication Library dokumentációjában](https://docs.microsoft.com/azure/active-directory/develop/active-directory-authentication-libraries#microsoft-supported-client-libraries).
+> A Microsoft által támogatott Azure AD-alapú hitelesítési könyvtárakkal kapcsolatos további tudnivalókért tekintse meg a [Azure Active Directory hitelesítési függvénytár dokumentációját](https://docs.microsoft.com/azure/active-directory/develop/active-directory-authentication-libraries#microsoft-supported-client-libraries).
 
 ### <a name="control-identification"></a>A vezérlők azonosítása
 
-A megadott példában `<div>` elemek rendezve jelennek meg a szülő `<body>` jelentenek észszerű elrendezés a diagram azt szabályozza, hogy az oldalon renderelési elemet.
+A megadott példában az elemek `<div>` a fölérendelt `<body>` elemben vannak elhelyezve, így ésszerű elrendezést biztosítanak az oldalon megjelenített diagram vezérlőelemekhez.
 
-Minden egyes `<div>` elem azt határozza meg, az elhelyezési és a diagram-vezérlőelemeket visual attribútumai tulajdonságait. HTML-elemmel `id` tulajdonságai jelennek meg, és frissítse az adott vezérlők kötése egyedi azonosítók ábrázolt adatok szolgálnak.
+Az `<div>` egyes elemek a diagram vezérlőelem elhelyezésére és vizuális attribútumaira vonatkozó tulajdonságokat határozzák meg. A HTML `id` -elemek tulajdonságai egyedi azonosítóként szolgálnak a vizualizációs adat megjelenítéséhez és frissítéséhez megadott vezérlőkhöz való kötéshez.
 
 ### <a name="aggregate-expressions"></a>Összesítő kifejezések
 
-A Time Series Insights-ügyfélkódtár API-k összesítő kifejezések használata:
+Az Time Series Insights ügyféloldali függvénytár API-k összesítő kifejezéseket használnak:
 
-* Egy összesítő kifejezés lehetővé teszi a hozhat létre egy vagy több *keresési feltételek*.
+* Az összesítő kifejezés lehetővé teszi egy vagy több *keresési kifejezés*összeállítását.
 
-* Az ügyfél API-kat úgy tervezték, hogy egy másik bemutató alkalmazás hasonló funkciókat nyújtanak (a [Time Series Insights explorer](https://insights.timeseries.azure.com/demo)), amely a keresendő az időtartományt, `where` predikátumok, intézkedéseket, és `splitBy` értékeket.
+* Az ügyféloldali API-k úgy lettek kialakítva, hogy hasonló funkciókat nyújtsanak egy másik bemutató alkalmazáshoz (a `where` [Time Series Insights Explorerhez](https://insights.timeseries.azure.com/demo)), amely `splitBy` keresési span, predikátumok, mértékek és értékek használatát teszi lehetővé.
 
-* A legtöbb ügyfélkódtár API-k a szolgáltatás által használt adatok a Time Series Insights-lekérdezés összeállításához összesítő kifejezések tömbjét igénybe vehet.
+* Az ügyféloldali függvénytár-API-k többsége olyan összesítő kifejezéseket használ, amelyeket a szolgáltatás Time Series Insights adatlekérdezés létrehozásához használ.
 
 ### <a name="call-pattern"></a>Hívásmintázat
 
-Diagram-vezérlőelemeket leképezése után rögtön hozzáláthat egy általános mintát követi. Figyelheti, az általános minta során a mintaalkalmazást, és segítséget nyújthatnak az ügyféloldali kódtár használatakor:
+A diagram-vezérlőelemek feltöltése és renderelése általános mintát követ. Megfigyelheti az általános mintát a minta alkalmazásban, és az ügyféloldali kódtár használatakor segítséget nyújthat:
 
-1. Deklaráljon egy `array` tárolásához legalább egy Time Series Insights összesítő kifejezések:
+1. `array` Állapítsa meg, hogy egy vagy több Time Series Insights összesített kifejezést tart:
 
    ```javascript
    var aes =  [];
    ```
 
-1. Build *1* való *n* összesített kifejezés objektumokat. Ezután adja hozzá őket az összesítő kifejezés tömbhöz:
+1. Hozzon létre *1* – *n* összesítő kifejezés objektumot. Ezután adja hozzá őket az összesítő kifejezés tömbhöz:
 
    ```javascript
    var ae = new tsiClient.ux.aggregateExpression(predicateObject, measureObject, measureTypes, searchSpan, splitByObject, color, alias, contextMenuActions);
@@ -159,16 +163,16 @@ Diagram-vezérlőelemeket leképezése után rögtön hozzáláthat egy általá
 
    | Paraméter | Leírás | Példa |
    | --------- | ----------- | ------- |
-   | `predicateObject` | Az adatok szűrési kifejezés |`{predicateString: "Factory = 'Factory3'"}` |
-   | `measureObject`   | A mérték használt tulajdonság neve | `{property: 'Temperature', type: "Double"}` |
-   | `measureTypes`    | A kívánt mértéket tulajdonság összesítések | `['avg', 'min']` |
-   | `searchSpan`      | Az összesítő kifejezést időtartama és időköze mérete | `{from: startDate, to: endDate, bucketSize: '2m'}` |
-   | `splitByObject`   | A felosztás kívánt karakterlánc-tulajdonságot (nem kötelező: null is lehet) | `{property: 'Station', type: 'String'}` |
-   | `color`         | A megjeleníteni kívánt objektumokra színe | `'pink'` |
-   | `alias`           | Egy rövid nevet a összesítő kifejezés | `'Factory3Temperature'` |
-   | `contextMenuActions` | Műveletek kell kötni egy vizualizációt (nem kötelező) az idő sorozat objektumok tömbje | További információkért lásd: [felugró helyi menük](#pop-up-context-menus). |
+   | `predicateObject` | Az adatszűrési kifejezés |`{predicateString: "Factory = 'Factory3'"}` |
+   | `measureObject`   | A használt mérték neve | `{property: 'Temperature', type: "Double"}` |
+   | `measureTypes`    | A kívánt mérték tulajdonság összesítései | `['avg', 'min']` |
+   | `searchSpan`      | Az összesítő kifejezés időtartamának és intervallumának mérete | `{from: startDate, to: endDate, bucketSize: '2m'}` |
+   | `splitByObject`   | A feldarabolni kívánt karakterlánc-tulajdonság (opcionális: NULL is lehet) | `{property: 'Station', type: 'String'}` |
+   | `color`         | A megjeleníteni kívánt objektumok színe | `'pink'` |
+   | `alias`           | Az összesítő kifejezés rövid neve | `'Factory3Temperature'` |
+   | `contextMenuActions` | Egy vizualizációban az idősorozat-objektumokhoz kötni kívánt műveletek tömbje (nem kötelező) | További információ: előugró [helyi menük](#pop-up-context-menus). |
 
-1. A Time Series Insights-lekérdezés hívja meg az összesített adatok kérése a TsiClient.Server API-k használatával:
+1. Hívja meg a Time Series Insights lekérdezést a TsiClient. Server API-k használatával az összesített adatokat az igényléshez:
 
    ```javascript
    tsiClient.server.getAggregates(token, envFQDN, aeTsxArray);
@@ -178,50 +182,50 @@ Diagram-vezérlőelemeket leképezése után rögtön hozzáláthat egy általá
 
    | Paraméter | Leírás | Példa |
    | --------- | ----------- | ------- |
-   | `token`     | A hozzáférési jogkivonatot a Time Series Insights API-hoz |  `authContext.getTsiToken()`<br />További információért lásd: [Hitelesítés](#authentication). |
-   | `envFQDN`   | A Time Series Insights-környezet teljesen minősített tartománynevét (FQDN) | Az Azure Portalról. Például: `10000000-0000-0000-0000-100000000108.env.timeseries.azure.com`. |
-   | `aeTsxArray` | A Time Series Insights lekérdezési kifejezések tömbje | Használja a `aes` változót a korábban leírtaknak megfelelően: `aes.map(function(ae){return ae.toTsx()}`. |
+   | `token`     | A Time Series Insights API hozzáférési jogkivonata |  `authContext.getTsiToken()`<br />További információért lásd: [Hitelesítés](#authentication). |
+   | `envFQDN`   | A Time Series Insights környezet teljes tartományneve (FQDN) | A Azure Portal. Például: `10000000-0000-0000-0000-100000000108.env.timeseries.azure.com`. |
+   | `aeTsxArray` | Time Series Insights lekérdezési kifejezések tömbje | Használja a `aes` változót a korábban leírtaknak megfelelően: `aes.map(function(ae){return ae.toTsx()}`. |
 
-1. A tömörített eredmény JSON-ba visszaadott a Time Series Insights-lekérdezés, a Vizualizáció átalakítása:
+1. Alakítsa át a Time Series Insights lekérdezésből a JSON formátumba visszaadott tömörített eredményt a következő vizualizációra:
 
    ```javascript
    var transformedResult = tsiClient.ux.transformAggregatesForVisualization(result, aes);
    ```
 
-1. Hozzon létre egy diagram vezérlőelem a TsiClient.UX API-k használatával. Az egyik kösse a `<div>` elemeket az oldalon:
+1. Hozzon létre egy diagram vezérlőelemet a TsiClient. UX API-k használatával. Kösse azt az oldal egyik `<div>` eleméhez:
 
    ```javascript
    var barChart = new tsiClient.ux.BarChart(document.getElementById('chart3'));
    ```
 
-1. Feltölti az átalakított JSON-adatok objektumok a diagram vezérlőelem, és a vezérlő az oldalon jelennek meg:
+1. Töltse fel a diagram vezérlőelemet az átalakított JSON-adatobjektumokkal, és jelenítse meg a vezérlőt az oldalon:
 
    ```javascript
    barChart.render(transformedResult, {grid: true, legend: 'compact', theme: 'light'}, aes);
    ```
 
-## <a name="render-controls"></a>Vezérlők megjelenítése
+## <a name="render-controls"></a>Renderelési vezérlők
 
-A Time Series Insights-klienskódtára biztosítja az egyedi, a-beépített elemzési nyolc vezérlők:
+Az Time Series Insights ügyféloldali kódtár nyolc egyedi, beépített analitikai vezérlőt biztosít:
 
-* **Vonaldiagram**
-* **Tortadiagram**
-* **Sávdiagram**
+* **vonalas diagram**
+* **tortadiagram**
+* **oszlopdiagram**
 * **heatmap**
-* **hierarchia vezérlők**
+* **hierarchia-vezérlők**
 * **elérhető rács**
-* **különálló esemény ütemtervek**
-* **állapot átmeneti ütemtervek**
+* **diszkrét események ütemezései**
+* **állapot-átmeneti ütemtervek**
 
-### <a name="line-chart-bar-chart-and-pie-chart-examples"></a>Tortadiagram példák, vonaldiagram és sávdiagram
+### <a name="line-chart-bar-chart-and-pie-chart-examples"></a>A diagram, a oszlopdiagram és a tortadiagram példái
 
-Tekintse meg a bemutatót kódot, amely néhány szokásos diagram vezérlőelem előállítására szolgál. Vegye figyelembe a programozási modell és a vezérlőn létrehozásához. Pontosabban, vizsgálja meg a HTML formátumú, területen a `// Example 3/4/5` megjegyzést, amely szabályozza a HTML-lel rendereli `id` értékek `chart3`, `chart4`, és `chart5`.
+Tekintse meg a standard diagram egyes vezérlőinek megjelenítéséhez használt bemutató kódját. Jegyezze fel a programozási modellt és a vezérlők létrehozási mintáit. `// Example 3/4/5` Pontosabban vizsgálja meg a megjegyzésben szereplő HTML-kódot, amely a HTML `id` -értékekkel `chart4` `chart3`, és `chart5`a vezérlőket jeleníti meg.
 
-A 3. lépés a visszahívás a [lapon a forrás- és struktúra szakasz](#page-source-and-structure) , hogy az oldalon sorok rendezve jelennek meg diagram-vezérlőelemeket. Minden egyes diagram vezérlőelem rendelkezik egy leíró nevet sort. Ebben a példában a három diagramok alatt a rendszer kitölti a `Multiple Chart Types From the Same Data` cím `<div>` elem alatt, és a három kötött `<div>` elemek, amelyek a cím alatt:
+Visszahívás az [oldal forrása és szerkezete szakasz](#page-source-and-structure) 3. lépésében, hogy a diagram vezérlőelemei sorokba vannak rendezve az oldalon. Mindegyik diagram vezérlőelemhez tartozik egy leíró title sor. Ebben a példában a három diagram a `Multiple Chart Types From the Same Data` title `<div>` elem alatt van feltöltve, és a következő három `<div>` elemhez van kötve:
 
 [!code-html[code-sample1-line-bar-pie](~/samples-javascript/pages/tutorial/index.html?range=59-73&highlight=1,5,9,13)]
 
-A JavaScript-kódot az alábbi szakasz használ a fentebb vázolt minták: a Time Series Insights összesítő kifejezések felépítéséhez létre, ezek segítségével a Time Series Insights-adatok lekérdezése és majd jelennek meg a három diagramok. A tsiClient.ux névtérből használt három diagram típusa: `LineChart`, `BarChart`, és `PieChart`. A diagram típusokat hozhat létre és jelennek meg a megfelelő diagramokat szolgálnak. Minden három diagram használhatja ugyanazokat az adatokat az összesítő kifejezés `transformedResult`:
+A JavaScript-kód következő szakasza a korábban ismertetett mintákat használja: Time Series Insights összesített kifejezések összevonása, a Time Series Insights-adatokat lekérdező lekérdezések, majd a három diagram renderelése. Három diagramtípust használ a tsiClient. UX névtérből: `LineChart`, `BarChart`és `PieChart`. A diagramok a megfelelő diagramok létrehozásához és megjelenítéséhez használatosak. Mindhárom diagram ugyanazt az összesítő kifejezési adatokat `transformedResult`használhatja:
 
 [!code-javascript[code-sample2-line-bar-pie](~/samples-javascript/pages/tutorial/index.html?range=241-262&highlight=13-14,16-17,19-20)]
 
@@ -231,103 +235,110 @@ A három diagram a következőképpen jelenik meg a rendereléskor:
 
 ## <a name="advanced-features"></a>Speciális funkciók
 
-A Time Series Insights ügyféloldali kódtár néhány további funkcióval rendelkezik, amelyeket adatvizualizációkat kreatívan végrehajtásához használhatja.
+Az Time Series Insights ügyféloldali kódtár számos további funkcióval rendelkezik, amelyekkel kreatív módon implementálhatja az adatvizualizációkat.
 
 ### <a name="states-and-events"></a>Állapotok és események
 
-Egy speciális funkciója lehetővé teszi, hogy állapotváltásra és diszkrét események diagramok. Ez a funkció hasznos kiemelését incidensek, a riasztások és az állapot kapcsolók létrehozása (be/ki, például kapcsolók).
+A speciális funkciók lehetővé teszi az állapot-és a diszkrét események hozzáadását a diagramokhoz. Ez a funkció hasznos lehet az incidensek, a riasztások és az állapot-kapcsolók (például a be-és kikapcsolási kapcsolók) kiemeléséhez.
 
-Tekintse meg a kódot a környező a `// Example 10` megjegyzést. A kód jelenik meg a cím alatt egy sor vezérlő `Line Charts with Multiple Series Types` és köti, hogy a `<div>` elem a HTML-lel `id` érték `chart10`.
+Tekintse meg a `// Example 10` megjegyzést körülvevő kódot. A kód egy vonal vezérlőelemet jelenít meg a cím `Line Charts with Multiple Series Types` alatt, és a HTML `id` - `<div>` értékkel `chart10`köti azt az elemhez.
 
-A folyamat a következő lépésekből áll:
+A következő lépések ismertetik a folyamatot:
 
-1. A struktúra nevű `events4` van definiálva, amely tárolja az állapotváltozás elemek nyomon követéséhez. A struktúra a következőket tartalmazza:
+1. Egy nevű `events4` struktúra van definiálva a nyomon követett állapot-változási elemek tárolására. A struktúra a következőket tartalmazza:
 
    * Egy `Component States` nevű sztringkulcs.
    * Az állapotokat jelző értékobjektumok tömbje. Mindegyik objektum a következőket tartalmazza:
      * Egy JavaScript ISO időbélyeget tartalmazó sztringkulcs.
      * Az állapot jellemzőit (szín, leírás) tartalmazó tömb.
 
-1. A `events5` struktúra van definiálva `Incidents`, ez az esemény elemeit nyomon követése egy tömbjét tartalmazza. A tömb struktúrája ugyanolyan alakú, mint az `events4` elemhez leírt struktúra.
+1. A `events5` struktúra`Incidents`definiálva van, amely a nyomon követett esemény-elemek tömbjét tartalmazza. A tömb struktúrája ugyanolyan alakú, mint az `events4` elemhez leírt struktúra.
 
-1. A vonaldiagram jelenik meg, és a rendszer átadja a diagram beállításai a két struktúrák paraméterek: `events:` és `states:`. Vegye figyelembe a többi beállítás paraméter megadására a `tooltip:`, `theme:`, vagy `grid:`.
+1. A diagramot a rendszer a két struktúrában jeleníti meg és adja át a diagram beállításai `events:` paraméterrel: és `states:`. Vegye figyelembe, hogy az a `tooltip:`, `theme:`a vagy `grid:`a paraméterek megadására szolgáló további paramétereket.
 
 [!code-javascript[code-sample-states-events](~/samples-javascript/pages/tutorial/index.html?range=337-389&highlight=5,26,51)]
 
-A gyémánt jelölők/pop-ra windows, amelyek jelzik az incidensek és a színes sávok/pop-ra windows az időskálán jelzi az állapotváltozásokat:
+Az incidenseket és a színes sávokat/előugró ablakokat jelölő rombuszok/előugró ablakok az állapot változásaira utalnak:
 
-[![Vonaldiagramok esetében, több adatsorozat-típus](media/tutorial-explore-js-client-lib/tcs-line-charts-with-multiple-series-types.png)](media/tutorial-explore-js-client-lib/tcs-line-charts-with-multiple-series-types.png#lightbox)
+[![Több adatsorozat-típussal rendelkező vonalas diagramok](media/tutorial-explore-js-client-lib/tcs-line-charts-with-multiple-series-types.png)](media/tutorial-explore-js-client-lib/tcs-line-charts-with-multiple-series-types.png#lightbox)
 
 ### <a name="pop-up-context-menus"></a>Előugró helyi menük
 
-Egy másik speciális funkciója lehetővé teszi egyéni helyi menük (kattintson a jobb gombbal a legördülő menük) létrehozását. Ezekkel engedélyezhetők különböző műveletek és a következő logikus lépések az alkalmazás hatókörén belül.
+Egy másik speciális funkció az egyéni helyi menük létrehozása (a jobb gombbal az előugró menüket). Ezekkel engedélyezhetők különböző műveletek és a következő logikus lépések az alkalmazás hatókörén belül.
 
-Tekintse meg a kódot körül a `// Example 13/14/15` megjegyzést. Ez a kód először egy vonaldiagramot a cím alatt jelenik meg `Line Chart with Context Menu to Create Pie/Bar Chart`. A diagram van kötve a `<div>` elem a HTML-lel `id` érték `chart13`.
+Tekintse meg a `// Example 13/14/15` Megjegyzés körüli kódot. Ez a kód eredetileg a cím `Line Chart with Context Menu to Create Pie/Bar Chart`alatt egy vonalas diagramot jelenít meg. A diagram a HTML `<div>` `id` -értékkel `chart13`rendelkező elemhez van kötve.
 
-A helyi menükkel a vonaldiagram lehetővé teszi torta- és sávdiagramok dinamikus létrehozását, a `chart14` és `chart15` azonosítókkal rendelkező `<div>` elemekhez kötve azokat. A tortadiagram mind az oszlopdiagramot is használhatja a helyi menük saját szolgáltatások engedélyezése: képes adatokat másol a tortadiagram a vonaldiagramon, és nyomtassa ki a sávdiagram adatai, a böngésző konzolablakra jelölik.
+A helyi menükkel a vonaldiagram lehetővé teszi torta- és sávdiagramok dinamikus létrehozását, a `chart14` és `chart15` azonosítókkal rendelkező `<div>` elemekhez kötve azokat. A tortadiagram és a sávdiagram is a helyi menüket használja a saját szolgáltatásainak engedélyezéséhez: lehetővé teszi az adatok másolását a tortadiagramról a oszlopdiagramon, valamint a sávdiagram adatainak a böngészőablakba való kinyomtatását.
 
-A folyamat a következő lépésekből áll:
+A következő lépések ismertetik a folyamatot:
 
-1. Az egyéni műveletek sorozata vannak meghatározva. Mindegyik művelet egy egy vagy több elemből álló tömböt tartalmaz. Mindegyik elem egyetlen helyimenü-elemet határoz meg:
+1. Egyéni műveletek sorozata van definiálva. Mindegyik művelet egy egy vagy több elemből álló tömböt tartalmaz. Mindegyik elem egyetlen helyimenü-elemet határoz meg:
 
-   * `barChartActions`: Ez a művelet a helyi menü meghatározásához egy elem egy elemet tartalmaz kördiagram határozza meg:
-     * `name`: A szöveg, amely a menüelem szolgál: "Nyomtassa ki a konzol paramétereit."
-     * `action`: A menüelem tartozó művelet. Ez a művelet mindig egy névtelen funkció, amely három argumentumot vesz fel a diagram létrehozásához használt összesítő kifejezés alapján. Ebben az esetben az argumentumok a böngésző konzolablakába vannak írva:
-       * `ae`: Az összesítő kifejezés tömb.
-       * `splitBy`: A `splitBy` értéket.
+   * `barChartActions`: Ez a művelet meghatározza a tortadiagram helyi menüjét, amely egyetlen elemet tartalmaz egyetlen elem definiálásához:
+     * `name`: A menüelemhez használt szöveg: "Paraméterek kinyomtatása a konzolon"
+     * `action`: A menüelemhez társított művelet. Ez a művelet mindig egy névtelen funkció, amely három argumentumot vesz fel a diagram létrehozásához használt összesítő kifejezés alapján. Ebben az esetben az argumentumok a böngésző konzolablakába vannak írva:
+       * `ae`: Az összesítő kifejezés tömbje.
+       * `splitBy`: Az `splitBy` érték.
        * `timestamp`: Az időbélyeg.
 
-   * `pieChartActions`: Ez a művelet az oszlopdiagramot, meghatározásához egy elem egy elemet tartalmazó helyi menüjére határozza meg. Az alakzat és a séma megegyezik a `barChartActions` elem a korábban ismertetett, de a `action` jelentősen eltér a függvény: azt példányosítja, és rendereli a sávdiagram. A `ae` argumentumként átadott futásidőben a menüelem megnyitásakor az összesítő kifejezés tömb meghatározására szolgál. A funkció az `ae.contextMenu` tulajdonságot is beállítja a `barChartActions` helyi menüvel.
-   * `contextMenuActions`: Ez a művelet határozza meg a helyi menüben a vonaldiagram, amelyek három-három menü elemeinek definiálásához elemeket tartalmazza. Az alakzat és a séma minden elemhez ugyanaz, mint a korábban leírt elemeket. Akárcsak a `barChartActions` elem, az első elem a böngésző konzolablakába írja a három funkcióargumentumot. Hasonló a `pieChartActions` elem, a második két elemet hozza létre és jelennek meg a kördiagram és a sávdiagramon jelölik. A második két elem az `ae.contextMenu` tulajdonságukat is beállítja a `pieChartActions` és `barChartActions` helyi menükkel.
+   * `pieChartActions`: Ez a művelet meghatározza a sávdiagram helyi menüjét, amely egyetlen elemet tartalmaz egyetlen elem definiálásához. Az alakzat és a séma megegyezik `barChartActions` a korábban ismertetett elemmel, de a `action` függvény drámai módon eltér: létrehozza és megjeleníti a sávdiagram diagramját. A `ae` argumentummal megadható az összesítő kifejezés, amelyet a rendszer futásidőben átadott a menüelem megnyitásakor. A funkció az `ae.contextMenu` tulajdonságot is beállítja a `barChartActions` helyi menüvel.
+   * `contextMenuActions`: Ez a művelet a vonalas diagram helyi menüjét határozza meg, amely három elemet tartalmaz három menüelem definiálásához. Az egyes elemekhez tartozó alakzat és séma ugyanaz, mint a korábban leírt elemek. Akárcsak a `barChartActions` elem, az első elem a böngésző konzolablakába írja a három funkcióargumentumot. Az `pieChartActions` elemhez hasonlóan a második két elem is a tortadiagram és a oszlopdiagram létrehozását és megjelenítését teszi lehetővé. A második két elem az `ae.contextMenu` tulajdonságukat is beállítja a `pieChartActions` és `barChartActions` helyi menükkel.
 
-1. Két összesítő kifejezések leküld az alakzatot a `aes` összesítő kifejezés tömb. Adja meg, hogy a `contextMenuActions` tömböt az egyes elemekhez. Ezeket a kifejezéseket a rendszer a vonaldiagram vezérlőjével használja.
+1. Két összesítő kifejezés van leküldve az `aes` összesítő kifejezés tömbbe. Mindegyik elemhez `contextMenuActions` megadja a tömböt. Ezeket a kifejezéseket a rendszer a vonaldiagram vezérlőjével használja.
 
-1. Csak a vonaldiagram kezdetben jelenik meg, amelyből diagram és az oszlopdiagramot is megjeleníthetők-e futásidőben.
+1. A rendszer csak a diagramot jeleníti meg először, amelyből a tortadiagram és a oszlopdiagram is megjeleníthető futásidőben.
 
 [!code-javascript[code-sample-context-menus](~/samples-javascript/pages/tutorial/index.html?range=461-540&highlight=7,16,29,61-64,78)]
 
-Az alábbi képernyőfelvételen a megfelelő felugró helyi menük a diagramokat. A tortadiagram és sávdiagram dinamikusan létrehozott sorban diagram környezeti menü beállítások használatával.
+Az alábbi képernyőfelvételen a megfelelő előugró helyi menüket tartalmazó diagramok láthatók. A tortadiagram és a oszlopdiagram dinamikusan lett létrehozva a diagram helyi menüjének használatával.
 
-[![Vonaldiagram, tortadiagram és sávdiagram létrehozása a helyi menü](media/tutorial-explore-js-client-lib/tcs-line-chart-with-context-menu-to-create-pie-bar-chart.png)](media/tutorial-explore-js-client-lib/tcs-line-chart-with-context-menu-to-create-pie-bar-chart.png#lightbox)
+[![Tortadiagram és sávdiagram létrehozása helyi menüvel](media/tutorial-explore-js-client-lib/tcs-line-chart-with-context-menu-to-create-pie-bar-chart.png)](media/tutorial-explore-js-client-lib/tcs-line-chart-with-context-menu-to-create-pie-bar-chart.png#lightbox)
 
 ### <a name="brushes"></a>Ecsetek
 
-Ecsetek hatókörének meghatározásához műveleteket hajthat végre, például nagyításra, és ismerje meg egy időtartományt használhatja.
+Használhat ecseteket az időtartomány hatókörének meghatározására olyan műveletek definiálásához, mint a nagyítás és a felfedezés.
 
-A kódot, amely mutatja be ecsetek látható a `Line Chart with Context Menu to Create Pie/Bar Chart` példa, amely a felugró helyi menük ismerteti.
+Az ecsetek szemléltetésére szolgáló kód az előugró helyi menüket `Line Chart with Context Menu to Create Pie/Bar Chart` ismertető példában látható.
 
-* Az ecsetműveletek abból a szempontból hasonlítanak a helyi menükhöz, hogy egy egyéni műveletsorozatot határoznak meg az ecsethez. Minden művelet egy tömb, amely rendelkezik egy vagy több elemet tartalmaz. Mindegyik elem egyetlen helyimenü-elemet határoz meg:
-   * `name`: A szöveg, amely a menüelem szolgál: "Nyomtassa ki a konzol paramétereit."
-   * `action`: A menüelem, így mindig egy névtelen-függvény, amely két argumentumot tartozó művelet. Ebben az esetben az argumentumok a böngésző konzolablakába vannak írva:
-     * `fromTime`: A `from` ecset kijelölés időbélyegző.
-     * `toTime`: A `to` ecset kijelölés időbélyegző.
+* Az ecsetműveletek abból a szempontból hasonlítanak a helyi menükhöz, hogy egy egyéni műveletsorozatot határoznak meg az ecsethez. Minden művelet egy tömböt tartalmaz, amelynek egy vagy több eleme van. Mindegyik elem egyetlen helyimenü-elemet határoz meg:
+   * `name`: A menüelemhez használt szöveg: "Paraméterek kinyomtatása a konzolon"
+   * `action`: A menüelemhez társított művelet, amely mindig egy névtelen függvény, amely két argumentumot vesz igénybe. Ebben az esetben az argumentumok a böngésző konzolablakába vannak írva:
+     * `fromTime`: Az ecset kijelölésének időbélyege `from`
+     * `toTime`: Az ecset kijelölésének időbélyege `to`
 
-* Az ecsetműveletek egy másik diagrambeállítási tulajdonságként vannak hozzáadva. A `brushContextMenuActions: brushActions` tulajdonság átadott a `linechart.Render` hívja.
+* Az ecsetműveletek egy másik diagrambeállítási tulajdonságként vannak hozzáadva. A `brushContextMenuActions: brushActions` tulajdonságot a rendszer átadja a `linechart.Render` hívásnak.
 
 [!code-javascript[code-sample-brushes](~/samples-javascript/pages/tutorial/index.html?range=526-540&highlight=1,13)]
 
-[![Vonaldiagram, tortadiagram és sávdiagram létrehozása ecsetek használatával a helyi menü](media/tutorial-explore-js-client-lib/tcs-line-chart-with-context-menu-to-create-pie-bar-chart-brushes.png)](media/tutorial-explore-js-client-lib/tcs-line-chart-with-context-menu-to-create-pie-bar-chart-brushes.png#lightbox)
+[![Diagram helyi menüvel kördiagram és sávdiagram ecsetek használatával történő létrehozásához](media/tutorial-explore-js-client-lib/tcs-line-chart-with-context-menu-to-create-pie-bar-chart-brushes.png)](media/tutorial-explore-js-client-lib/tcs-line-chart-with-context-menu-to-create-pie-bar-chart-brushes.png#lightbox)
+
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+
+Most, hogy elvégezte az oktatóanyagot, törölje a létrehozott erőforrásokat:
+
+1. A [Azure Portal](https://portal.azure.com)bal oldali menüjében válassza a **minden erőforrás**lehetőséget, keresse meg a Azure Time Series Insights erőforráscsoportot.
+1. Törölje a teljes erőforráscsoportot (és az abban található összes erőforrást) úgy, hogy kiválasztja az egyes erőforrások törlését vagy eltávolítását.
 
 ## <a name="next-steps"></a>További lépések
 
 Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 
 > [!div class="checklist"]
-> * Jelentkezzen be, és Fedezze fel a Time Series Insights-mintaalkalmazást, és a forrás
-> * A Time Series Insights JavaScript ügyféloldali kódtár API-k használata
-> * A JavaScript használatával létrehozása és feltöltése a diagram-vezérlőelemeket a Time Series Insights adatait
+> * Jelentkezzen be, és ismerkedjen meg a Time Series Insights minta alkalmazással és annak forrásával
+> * API-k használata a Time Series Insights JavaScript ügyféloldali kódtáraban
+> * A JavaScript használatával diagram vezérlőelemeket hozhat létre és tölthet fel Time Series Insights adatokkal
 
-A Time Series Insights mintaalkalmazás egy demó-adatkészletet használja. Ha szeretné megtudni, hogyan hozhat létre a saját Time Series Insights környezetet és az adatkészlet, olvassa el a következő cikket:
-
-> [!div class="nextstepaction"]
-> [Oktatóanyag: Az Azure Time Series Insights-környezet létrehozása](tutorial-create-populate-tsi-environment.md)
-
-Vagy a Time Series Insights minta alkalmazás forrásfájljait megtekintése:
+A Time Series Insights minta alkalmazás bemutató adatkészletet használ. Ha szeretné megismerni, hogyan hozhatja létre saját Time Series Insights környezetét és adatkészletét, olvassa el a következő cikket:
 
 > [!div class="nextstepaction"]
-> [Time Series Insights mintaalkalmazás-adattár](https://github.com/Microsoft/tsiclient/tree/tutorial/pages/tutorial)
+> [Oktatóanyag: Azure Time Series Insights környezet létrehozása](tutorial-create-populate-tsi-environment.md)
 
-Olvassa el a Time Series Insights-ügyfél API referenciadokumentációt tartalmaz:
+Vagy tekintse meg a Time Series Insights minta alkalmazás forrásfájljait:
 
 > [!div class="nextstepaction"]
-> [Time Series Insights-API dokumentációja](https://github.com/microsoft/tsiclient/blob/master/docs/API.md)
+> [Time Series Insights minta alkalmazás-adattár](https://github.com/Microsoft/tsiclient/tree/tutorial/pages/tutorial)
+
+Olvassa el a Time Series Insights Client API-dokumentációját:
+
+> [!div class="nextstepaction"]
+> [Time Series Insights API-referenciák dokumentációja](https://github.com/microsoft/tsiclient/blob/master/docs/API.md)

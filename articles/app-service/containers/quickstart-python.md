@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: quickstart
 ms.date: 04/29/2019
 ms.author: cephalin
-ms.openlocfilehash: 557b917f53064f0e6e9ecd61e2d230a6a4fd2ad6
-ms.sourcegitcommit: 470041c681719df2d4ee9b81c9be6104befffcea
+ms.openlocfilehash: 28e10389f65e0b64ed15c00eb2a8632229397383
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67853683"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68639170"
 ---
 # <a name="create-a-python-app-in-azure-app-service-on-linux"></a>Python-alkalmazás létrehozása Azure App Service Linuxon
 
@@ -105,7 +105,7 @@ Checking connectivity... done.
 
 Lépjen abba a könyvtárba, amelyben a mintakód található, és futtassa az `az webapp up` parancsot.
 
-A következő példában cserélje ki az `<app-name>` nevet egy globálisan egyedi névre (érvényes karakterek: `a-z`, `0-9` és `-`).
+A következő példában `<app-name>` cserélje le egy globálisan egyedi alkalmazás nevére ( *`a-z`érvényes `0-9`karakterek `-`* :, és).
 
 ```bash
 cd python-docs-hello-world

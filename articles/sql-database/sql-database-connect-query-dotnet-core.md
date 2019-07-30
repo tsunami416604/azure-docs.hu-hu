@@ -10,17 +10,20 @@ ms.topic: quickstart
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
-ms.date: 03/25/2019
-ms.openlocfilehash: 5da83681e11306bd43ab4c531754a5a334a9db52
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.date: 07/29/2019
+ms.openlocfilehash: 1c6fdc6f6d2e642db8b57745573260c819c6c307
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68569286"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68640926"
 ---
 # <a name="quickstart-use-net-core-c-to-query-an-azure-sql-database"></a>Gyors útmutató: A .NET Core (C#) használata Azure SQL-adatbázisok lekérdezéséhez
 
 Ebben a rövid útmutatóban a [.net Core](https://www.microsoft.com/net/) és C# a Code használatával csatlakozhat egy Azure SQL Database-adatbázishoz. Ezután futtasson egy Transact-SQL-utasítást az adatok lekérdezéséhez.
+
+> [!TIP]
+> A következő Microsoft Learn modul segít megtanulni az ingyenes [ASP.NET-alkalmazások fejlesztését és konfigurálását Azure SQL Database](https://docs.microsoft.com/learn/modules/develop-app-that-queries-azure-sql/)
 
 ## <a name="prerequisites"></a>Előfeltételek
 

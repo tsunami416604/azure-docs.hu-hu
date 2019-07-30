@@ -4,16 +4,16 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 05/27/2019
 ms.author: glenga
-ms.openlocfilehash: 8110d0a9d574c6691322df2162ca877b031cbc59
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: d697334fe56fb9133a06cee79067c60bc3a37281
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67442288"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68639135"
 ---
-A kötési bővítményeket telepítésének legegyszerűbb módja az, hogy engedélyezze [bővítmény csomagjaiból](../articles/azure-functions/functions-bindings-register.md#extension-bundles). Csomagok csomagok előre meghatározott bővítmény engedélyezve van, automatikusan települ.
+A kötési bővítmények telepítésének legegyszerűbb módja a [bővítmény-csomagok](../articles/azure-functions/functions-bindings-register.md#extension-bundles)engedélyezése. Ha engedélyezi a csomagokat, a rendszer automatikusan telepíti a bővítmények előre meghatározott készletét.
 
-Ahhoz, hogy a bővítmény csomagjaiból, nyissa meg a *host.json* fájlt, és frissítse a tartalmát a felel meg a következő kódot:
+A bővítmények engedélyezéséhez nyissa meg a Host. JSON fájlt, és frissítse annak tartalmát, hogy az megfeleljen a következő kódnak:
 
 ```json
 {

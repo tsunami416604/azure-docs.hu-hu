@@ -2,23 +2,23 @@
 title: A megszemélyesítő működése – személyre szabás
 titleSuffix: Azure Cognitive Services
 description: A személyre szabott gépi tanulás segítségével megismerheti, hogy milyen műveleteket kell használni a kontextusban. Minden tanulási hurokhoz olyan modell tartozik, amely kizárólag az Ön által a Range és a jutalmazási hívások útján eljuttatott adatgyűjtésre van kitanítva. Minden tanulási hurok teljesen független egymástól.
-author: edjez
+author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 06/07/2019
-ms.author: edjez
-ms.openlocfilehash: 7bdafafc0d542a98b80f2b6f5db2c14c8777bf5b
-ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
+ms.author: diberry
+ms.openlocfilehash: e55ccb508760c4473f71245c183948219f31985c
+ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68423259"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68663916"
 ---
 # <a name="how-personalizer-works"></a>A Personalizer működése
 
-A személyre szabott gépi tanulás segítségével megismerheti, hogy milyen műveleteket kell használni a kontextusban. Minden tanulási hurokhoz olyan modell tartozik, amely kizárólag az Ön által a **Range** és a jutalmazási hívások  útján eljuttatott adatgyűjtésre van kitanítva. Minden tanulási hurok teljesen független egymástól. Hozzon létre egy tanulási ciklust a személyre szabni kívánt alkalmazás egyes részeihez vagy működéséhez.
+A személyre szabott gépi tanulás segítségével megismerheti, hogy milyen műveleteket kell használni a kontextusban. Minden tanulási hurokhoz olyan modell tartozik, amely kizárólag az Ön által a **Range** és a jutalmazási hívások útján eljuttatott adatgyűjtésre van kitanítva. Minden tanulási hurok teljesen független egymástól. Hozzon létre egy tanulási ciklust a személyre szabni kívánt alkalmazás egyes részeihez vagy működéséhez.
 
 Minden hurok esetében **hívja meg a Rank API-t** az aktuális környezet alapján, a következővel:
 
@@ -57,7 +57,7 @@ A személyre szabott tudomány és kutatás területén a megerősítő [tanulá
 
 * **Tanulási hurok**: Létrehozhat egy tanulási hurkot az alkalmazás minden olyan részéhez, amely kihasználhatja a személyre szabást. Ha több felhasználói felülettel rendelkezik, hozzon létre egy hurkot mindegyikhez. 
 
-* **Műveletek**: A műveletek olyan tartalmi elemek, például termékek vagy promóciók, amelyek közül választhat. A személyre szabási művelettel kiválaszthatja, hogy a legjobb művelet jelenjen meg a felhasználók számára, a RANGSOROLÁSi API-n keresztül. Minden művelethez a Rank kéréssel elküldött funkciók tartozhatnak.
+* **Műveletek**: A műveletek olyan tartalmi elemek, például termékek vagy promóciók, amelyek közül választhat. A személyre szabási művelettel kiválaszthatja, hogy a legjobb művelet jelenjenmeg a felhasználók számára, a RANGSOROLÁSi API-n keresztül. Minden művelethez a Rank kéréssel elküldött funkciók tartozhatnak.
 
 * **Környezet**: A pontosabb rangsor megadásához adja meg a környezettel kapcsolatos információkat, például:
     * A felhasználó.

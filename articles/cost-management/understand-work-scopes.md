@@ -1,6 +1,6 @@
 ---
-title: Megismerheti, és az Azure Cost Management hatókörök kezelése |} A Microsoft Docs
-description: Ez a cikk segít megérteni a számlázás és a resource management hatókörök elérhető az Azure és a hatóköröket a Cost Management és az API-k használata.
+title: Azure Cost Management hatókörök megismerése és használata | Microsoft Docs
+description: Ez a cikk segít megérteni az Azure-ban elérhető számlázási és erőforrás-kezelési hatóköröket, valamint a hatókörök használatát Cost Management és API-kkal.
 services: cost-management
 keywords: ''
 author: bandersmsft
@@ -10,215 +10,227 @@ ms.topic: conceptual
 ms.service: cost-management
 manager: micflan
 ms.custom: ''
-ms.openlocfilehash: 699707953ae06afa9cbf3cc7286f94917ba0efca
-ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
+ms.openlocfilehash: 66bad9c9c647fe87fdcf6b99a8d17f319b1ef9fc
+ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67490109"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68479982"
 ---
 # <a name="understand-and-work-with-scopes"></a>A hatókörök ismertetése és használata
 
-Ez a cikk segít megérteni a számlázás és a resource management hatókörök elérhető az Azure és a hatóköröket a Cost Management és az API-k használata.
+Ez a cikk segít megérteni az Azure-ban elérhető számlázási és erőforrás-kezelési hatóköröket, valamint a hatókörök használatát Cost Management és API-kkal.
 
 ## <a name="scopes"></a>Hatókörök
 
-A _hatókör_ a csomópont, az Azure-erőforrás hierarchiában, ahol az Azure AD-felhasználók elérésére és a szolgáltatások kezeléséhez. A legtöbb Azure-erőforrások létrehozása és üzembe helyezve az erőforráscsoportok, előfizetések részét alkotják. Microsoft Azure-előfizetések számlázási adatok felügyelendő szerepköröket speciális rendelkezik felett két hierarchia által:
-- Számlázási adatok, például a kifizetések és számlák
-- Felhőszolgáltatások, például a költségek és a házirend irányítási
+A _hatókör_ az Azure-erőforrás-hierarchia azon csomópontja, ahol az Azure ad-felhasználók hozzáférnek és kezelhetnek szolgáltatásokat. A legtöbb Azure-erőforrást az előfizetések részét képező erőforráscsoportok hozzák létre és telepítik. A Microsoft az Azure-előfizetések feletti két hierarchiát is kínál, amelyek speciális szerepkörökkel rendelkeznek a számlázási adat kezeléséhez:
+- Számlázási információk, például kifizetések és számlák
+- Cloud Services, például a Cost és a Policy irányítás
 
-Hatókörök: ahol, számlázási adatok kezelésére, szerepkörök egyedi kifizetéseket, számlák megtekintése és viselkedési szabályzattal az általános felhasználóifiók-kezelés. Számlázási és fiókkezelési szerepkörök az erőforrás-kezelést, amelyek külön kezelt [Azure RBAC](../role-based-access-control/overview.md). Egyértelműen különbséget tenni a szándéka a különálló hatóköröket, access control különbségek, többek között ezeket nevezzük _hatókörök számlázási_ és _RBAC hatókörök_, illetve.
+A hatókörök a számlázási információk kezelése, a kifizetésekhez tartozó szerepkörök, a számlák megtekintése és az általános fiókok kezelése. A számlázási és a fiók szerepkörei külön kezelhetők az erőforrás-kezeléshez használt adatoktól, amelyek az [Azure RBAC](../role-based-access-control/overview.md)használják. Ahhoz, hogy egyértelműen megkülönböztesse a különálló hatókörök célját, beleértve a hozzáférés-vezérlési eltéréseket is, ezeket _Számlázási hatóköröknek_ és _RBAC_-hatóköröknek nevezzük.
 
-## <a name="how-cost-management-uses-scopes"></a>Hogyan használja a Cost Management a hatókörök
+## <a name="how-cost-management-uses-scopes"></a>A Cost Management hatókörök használata
 
-A Cost Management működik minden hatóköröket, hogy a szervezetek számára, hogy a szintjén, amelyen ők is hozzáférhetnek, költségek kezelésére, akár a teljes számlázási fiókra vagy egyetlen erőforrás felett. Számlázási hatókör mennyiségén alapulnak a Microsoft-szerződés (előfizetés-típus), az RBAC-hatókörök viszont nem.
+Cost Management az erőforrások feletti összes hatókörben működik, hogy a szervezetek a teljes számlázási fiók vagy egyetlen erőforráscsoport esetében is kezeljék a költségeket. Bár a számlázási hatókörök eltérnek a Microsoft-szerződés (előfizetés típusa) alapján, a RBAC hatókörök nem.
 
-## <a name="azure-rbac-scopes"></a>Az Azure RBAC-hatókörök
+## <a name="azure-rbac-scopes"></a>Azure RBAC-hatókörök
 
-Az Azure erőforrás-kezelés három hatókört támogatja. Minden hatókör kezelése hozzáférési és cégirányítási, beleértve a támogatja, de nem Költségkezelés.
+Az Azure három hatókört támogat az erőforrás-kezeléshez. Minden hatókör támogatja a hozzáférés és irányítás kezelését, beleértve a Cost managementet, de nem kizárólagosan.
 
-- [**Felügyeleti csoportok** ](../governance/management-groups/index.md) -hierarchikus tárolók, legfeljebb nyolc szint, az Azure-előfizetések rendezéséhez.
+- [**Felügyeleti csoportok**](../governance/management-groups/index.md) – az Azure-előfizetések rendszerezésére szolgáló hierarchikus tárolók, legfeljebb nyolc szint.
 
-    Erőforrás típusa: [Microsoft.Management/managementGroups](/rest/api/resources/managementgroups)
+    Erőforrás típusa: [Microsoft. Management/managementGroups](/rest/api/resources/managementgroups)
 
-- **Előfizetések** -elsődleges tárolók az Azure-erőforrásokhoz.
+- Előfizetések – elsődleges tárolók az Azure-erőforrásokhoz.
 
-    Erőforrás típusa: [Microsoft.Resources/subscriptions](/rest/api/resources/subscriptions)
+    Erőforrás típusa: [Microsoft. Resources/előfizetések](/rest/api/resources/subscriptions)
 
-- [**Erőforráscsoportok** ](../azure-resource-manager/resource-group-overview.md#resource-groups) – logikai csoportosításán, amelyek azonos életciklussal Azure-megoldásokhoz kapcsolódó erőforrásokat. Például erőforrások üzembe helyezett és törölt együtt.
+- [**Erőforráscsoportok**](../azure-resource-manager/resource-group-overview.md#resource-groups) – a kapcsolódó erőforrások logikai csoportosítása egy olyan Azure-megoldáshoz, amely ugyanazt az életciklust használja. Ilyenek például az üzembe helyezett és a együtt törölt erőforrások.
 
-    Erőforrás típusa: [Microsoft.Resources/subscriptions/resourceGroups](/rest/api/resources/resourcegroups)
+    Erőforrás típusa: [Microsoft. Resources/Subscriptions/resourceGroups](/rest/api/resources/resourcegroups)
 
-Felügyeleti csoportok lehetővé teszik előfizetéseinek hierarchiába. Például előfordulhat, hogy hozzon létre egy logikai szervezeti hierarchia felügyeleti csoportok használatával. Ezt követően adjon csapatok előfizetések az éles és a fejlesztési/tesztelési feladatokhoz. És erőforráscsoportok hozhatók létre az előfizetések kezeléséhez minden alrendszer vagy összetevő.
+A felügyeleti csoportok lehetővé teszik az előfizetések hierarchiába rendezését. Létrehozhat például egy logikai szervezeti hierarchiát a felügyeleti csoportok használatával. Ezután adja meg a csapatok előfizetéseit a termelési és fejlesztési/tesztelési feladatokhoz. Ezután hozzon létre erőforráscsoportokat az előfizetésekben az egyes alrendszerek vagy összetevők kezeléséhez.
 
-Létrehozásához, egy szervezeti hierarchia lehetővé teszi a költségek és a szabályzatoknak való megfelelés összesítő a szervezet által. Ezután minden egyes vezető megtekintheti és elemezheti az aktuális költségekkel. És ezután akadályozhatják hibás költségkeret mintákat, és optimalizálhatja a költségeket az Advisor-javaslatok a legalacsonyabb szintű költségvetése hozhatnak létre.
+A szervezeti hierarchia létrehozása lehetővé teszi a költséghatékony és a szabályzatoknak való megfelelőség felépítését. Ezután minden vezető megtekintheti és elemezheti a jelenlegi költségeit. Ezután létrehozhatnak költségvetéseket a rossz kiadási minták megfékezéséhez és a költségek optimalizálásához a legalacsonyabb szintű Advisor-javaslatokkal.
 
-Költségek megtekintése, és igény szerint kezelheti a költségek konfigurációját, például a költségvetés és a kivitel, hozzáférés biztosítása a cégirányítási hatókörök Azure RBAC használatával történik. Azure RBAC használatával adja meg az Azure AD-felhasználók és csoportok érhetik el előre meghatározott szerepkör alatt és a egy adott hatókörhöz definiált műveletek végrehajtásához. Például egy felügyeleticsoport-hatókör rendelt is szerepkörök ugyanazokkal az engedélyekkel beágyazott előfizetésekhez és erőforráscsoportokhoz.
+Hozzáférés biztosítása a költségek megtekintéséhez és opcionálisan kezelheti a költségek konfigurációját, például a költségvetést és az exportot, az Azure RBAC használatával végezhető irányítási hatókörökön. Az Azure RBAC használatával biztosíthatja, hogy az Azure AD-felhasználók és-csoportok hozzáférjenek az adott hatókörben és az alatta lévő szerepkörökben definiált előre meghatározott műveletek végrehajtásához. Egy felügyeleti csoport hatóköréhez hozzárendelt szerepkör például ugyanazokat az engedélyeket biztosítja a beágyazott előfizetések és erőforráscsoportok számára is.
 
-A Cost Management a következő beépített szerepkörök támogatja a következő hatókörök mindegyike esetében:
+Cost Management a következő beépített szerepköröket támogatja az egyes hatókörökhöz:
 
-- [**Tulajdonos** ](../role-based-access-control/built-in-roles.md#owner) – megtekintheti a költségek és mindent felügyelhetnek, beleértve költség.
-- [**Közreműködői** ](../role-based-access-control/built-in-roles.md#contributor) – megtekintheti a költségek és mindent felügyelhetnek, beleértve költség, de a hozzáférés-vezérlés kivételével.
-- [**Olvasó** ](../role-based-access-control/built-in-roles.md#reader) –, aki mindent megtekinthet, többek között a költségadatok és a konfigurációt, de nem módosíthatja.
-- [**Cost Management közreműködői** ](../role-based-access-control/built-in-roles.md#cost-management-contributor) – is költségeit, költség konfigurációjának kezelése és megtekintése javaslatok.
-- [**Cost Management olvasó** ](../role-based-access-control/built-in-roles.md#cost-management-reader) – költségadatok költség konfigurációs, megtekintheti és javaslatok megtekintése.
+- [**Tulajdonos**](../role-based-access-control/built-in-roles.md#owner) – megtekintheti a költségeket és kezelhet mindent, beleértve a költségek konfigurálását.
+- [**Közreműködő**](../role-based-access-control/built-in-roles.md#contributor) – megtekintheti a költségeket és kezelheti az összeset, beleértve a költségek konfigurálását, a hozzáférés-vezérlés kizárásával.
+- [**Olvasó**](../role-based-access-control/built-in-roles.md#reader) – mindent megtekinthet, beleértve a költségadatok és a konfigurációt, de nem végezheti el a módosításokat.
+- [**Cost Management közreműködő**](../role-based-access-control/built-in-roles.md#cost-management-contributor) – megtekintheti a költségeket, kezelheti a költségek konfigurációját, és megtekintheti a javaslatokat.
+- [**Cost Management olvasó**](../role-based-access-control/built-in-roles.md#cost-management-reader) – megtekintheti a költségadatok és a költséghatékonyság beállításait, és megtekintheti az ajánlásokat.
 
-A Cost Management közreműködői olyan ajánlott minimális jogosultságon alapuló szerepkör. Személyek hozhat létre és kezelhet költségvetése hozzáférést tesz lehetővé, és exportálja az további hatékony figyelése és jelentések, a költségek. Cost Management közreműködők is szükség lehet további szerepkörök teljes körű cost management helyzetek feltételeinek megteremtésére. Vegye figyelembe a következő esetekben:
+Cost Management közreműködő az ajánlott legkevesebb jogosultsággal rendelkező szerepkör. Lehetővé teszi a felhasználók számára, hogy a költségvetések és exportálások létrehozása és kezelése hatékonyabban figyelje és jelentse a költségeket. Cost Management közreműködők további szerepköröket is igényelhetnek a teljes körű Cost Management-forgatókönyvek támogatásához. Vegye figyelembe a következő forgatókönyveket:
 
-- **Intézkedjen költségvetése túllépése esetén** – felügyeleti közreműködőkkel is hozzáférhetnek a létrehozása és/vagy Műveletcsoportok túlhasználattal automatikusan reagálni kezelése. Fontolja meg a jegykiadó [közreműködő figyelése](../role-based-access-control/built-in-roles.md#monitoring-contributor) egy erőforráscsoportot, amely tartalmazza a műveletcsoport szeretne használni, amikor a költségvetés küszöbérték túllépése. Bizonyos műveletek automatizálásához szükséges további szerepkörök használja, mint például az Automation és az Azure Functions megadott konkrét szolgáltatások esetében.
-- **Adatok exportálása költség ütemezés** – felügyeleti közreműködőkkel is kell ütemezni másolhat adatokat egy tárfiókba történő exportálását a storage-fiókok kezelése a hozzáférést. Fontolja meg a jegykiadó [Tárfiók-közreműködő](../role-based-access-control/built-in-roles.md#storage-account-contributor) egy erőforráscsoportba, amely tartalmazza a tárolási fiók, ahol a költségadatok van exportálva.
-- **Megtekintés, költségtakarékos javaslatok** – Cost Management olvasók és a Cost Management közreműködők férhetnek hozzá *nézet* javaslatok alapértelmezés szerinti költségek. Hozzáférés a költségek ajánlásoknak azonban egyes erőforrásokhoz való hozzáférés szükséges. Fontolja meg a jegykiadó egy [szolgáltatásspecifikus szerepkör](../role-based-access-control/built-in-roles.md#built-in-role-descriptions) Ha el szeretné végezni a költség-alapú javaslatot.
+- **Ha túllépi a költségvetést** , Cost Management közreműködők számára is hozzáférést kell biztosítani a műveleti csoportok létrehozásához és/vagy kezeléséhez, hogy a rendszer automatikusan reagáljon a túllépésekre. Vegye fontolóra, hogy a [figyelő közreműködőt](../role-based-access-control/built-in-roles.md#monitoring-contributor) olyan erőforráscsoporthoz adja meg, amely tartalmazza a költségvetési küszöbértékek túllépése esetén használandó műveleti csoportot. Az egyes műveletek automatizálásához további szerepkörökre van szükség a használt szolgáltatások, például az Automation és a Azure Functions számára.
+- A **költségadatok exportálásának ütemezett időpontja** – Cost Management közreműködők is hozzáféréssel kell rendelkezniük a Storage-fiókok kezeléséhez, hogy a rendszer exportálja az Adatmásolást egy Storage-fiókba. Érdemes lehet a [Storage-fiók közreműködőjét](../role-based-access-control/built-in-roles.md#storage-account-contributor) olyan erőforráscsoporthoz adni, amely tartalmazza azt a Storage-fiókot, ahol a költségadatok exportálva vannak.
+- A költségmegtakarítással kapcsolatos **javaslatok megtekintése** – Cost Management olvasók és Cost Management közreműködők alapértelmezés szerint *tekinthetik* meg a Cost-ajánlásokat. A Cost-javaslatokhoz való hozzáféréshez azonban hozzáférésre van szükség az egyes erőforrásokhoz. Ha Cost-alapú javaslatot szeretne felvenni, vegye fontolóra egy [szolgáltatás-specifikus szerepkör](../role-based-access-control/built-in-roles.md#built-in-role-descriptions) megadását.
 
-## <a name="enterprise-agreement-scopes"></a>Nagyvállalati Szerződés hatókörök
+## <a name="enterprise-agreement-scopes"></a>Hatókörök Nagyvállalati Szerződés
 
-Nagyvállalati Szerződés (EA) számlázási fiókok regisztrációk, más néven a következő hatókörök rendelkezik:
+A Nagyvállalati Szerződés (EA) számlázási fiókjai (más néven regisztrációk) a következő hatókörökkel rendelkeznek:
 
-- [**Számlázási fiók** ](../billing/billing-view-all-accounts.md) – EA-regisztrációhoz jelöli. Ebben a hatókörben számlákat jönnek létre. Beszerzés, amelyek nem használatalapú, például a Marketplace-en és a fenntartás, csak érhetők el ebben a hatókörben. Azok a részlegek vagy regisztrációs fiókok nem jelöli.
+- [**Számlázási fiók**](../billing/billing-view-all-accounts.md) – EA-regisztrációt jelent. A számlák ezen a hatókörön jönnek létre. A nem használatos, például a piactéren és a foglalásokon alapuló vásárlások csak ezen a hatókörön érhetők el. Nem szerepelnek a részlegekben vagy a beléptetési fiókokban.
 
-    Erőforrás típusa: `Microsoft.Billing/billingAccounts (accountType = Enrollment)`
-- **Részleg** – nem kötelező regisztrációs fiókok csoportosítása.
+    Erőforrás típusa:`Microsoft.Billing/billingAccounts (accountType = Enrollment)`
+- **Részleg** – a beléptetési fiókok választható csoportosítása.
 
-    Erőforrás típusa: `Billing/billingAccounts/departments`
+    Erőforrás típusa:`Billing/billingAccounts/departments`
 
-- **Eszközregisztráció-fiók** – egyetlen fióktulajdonos jelöli. Nem támogatja a több személynek való hozzáférés biztosítása.
+- **Beléptetési fiók** – egyetlen fiók tulajdonosát jelöli. Nem támogatja több személy hozzáférésének megadását.
 
-    Erőforrás típusa: `Microsoft.Billing/billingAccounts/enrollmentAccounts`
+    Erőforrás típusa:`Microsoft.Billing/billingAccounts/enrollmentAccounts`
 
-Bár a cégirányítási hatókörök egyetlen címtárban vannak kötve, nagyvállalati szerződés számlázási hatókörök nem. Egy nagyvállalati szerződés számlázási fiók tetszőleges mennyiségű Azure AD-címtár előfizetéssel is rendelkezik.
+Bár az irányítási hatókörök egyetlen címtárhoz vannak kötve, az EA számlázási hatókörök nem. Az EA számlázási fiókok tetszőleges számú Azure AD-címtárban rendelkezhetnek előfizetéssel.
 
-Nagyvállalati szerződés számlázási hatókörök a következő szerepkörök támogatják:
+Az EA számlázási hatókörök a következő szerepköröket támogatják:
 
-- **Vállalati rendszergazda** – felügyelheti számlázási fiók beállításait, és hozzáférést, megtekintheti az összes költséget, és kezelheti a költségek konfigurálása. Ha például a környezetet, és exportálja. A függvényben, a nagyvállalati szerződés számlázási hatókör megegyezik a [Cost Management közreműködői Azure RBAC szerepkör](../role-based-access-control/built-in-roles.md#cost-management-contributor).
-- **Vállalati olvasási jogosultsággal rendelkező felhasználó** – számlázási fiók beállításait, a költségadatok és a költségek konfigurációs megtekintheti. Ha például a környezetet, és exportálja. A függvényben, a nagyvállalati szerződés számlázási hatókör pedig ugyanaz, mint a [Cost Management olvasó Azure RBAC szerepkör](../role-based-access-control/built-in-roles.md#cost-management-reader).
-- **Részleg rendszergazdai** – is részleg beállítások, például a költséghely, kezelése és eléréséhez, megtekintheti összes költséget, és költség konfigurációjának kezelése. Ha például a környezetet, és exportálja.  A **DA költségek megtekintése** számlázási fiók beállítását engedélyezni kell a részleg rendszergazdái és az írásvédett felhasználó megtekintheti a költségek. Ha **DA költségek megtekintése** van le van tiltva, szervezeti egység felhasználók nem látják költségek bármilyen szinten, akkor is, ha egy fiók vagy előfizetés tulajdonosa.
-- **Részleg olvasási jogosultsággal rendelkező felhasználó** – részleg beállításait, a költségadatok és a költségek konfigurációs megtekintheti. Ha például a környezetet, és exportálja. Ha **DA költségek megtekintése** van le van tiltva, szervezeti egység felhasználók nem látják költségek bármilyen szinten, akkor is, ha egy fiók vagy előfizetés tulajdonosa.
-- **Fióktulajdonos** – is regisztrációs fiók beállításait (például költségközpont), megtekintheti az összes költséget, valamint kezelheti és költség konfigurációjáról (például költségvetés és a kivitel) a regisztrációs fiókhoz. A **AO költségek megtekintése** számlázási fiók beállítását engedélyezni kell a fióktulajdonosok és RBAC felhasználók költségek megtekintéséhez.
+- **Vállalati rendszergazda** – kezelheti a számlázási fiókok beállításait és hozzáférését, megtekintheti az összes költséget, és kezelheti a költségek konfigurációját. Például: költségvetések és exportálások. A függvényben az EA számlázási hatókör megegyezik a [Cost Management közreműködő Azure RBAC szerepkörével](../role-based-access-control/built-in-roles.md#cost-management-contributor).
+- **Vállalati írásvédett felhasználó** – megtekintheti a számlázási fiókok beállításait, a költségadatok és a költségadatok beállításait. Például: költségvetések és exportálások. A függvényben az EA számlázási hatókör megegyezik a [Cost Management Reader Azure RBAC szerepkörével](../role-based-access-control/built-in-roles.md#cost-management-reader).
+- **Részleg rendszergazdája** – kezelheti a részleg beállításait, például a Cost centert, elérheti, megtekintheti az összes költséget, és kezelheti a költségek konfigurációját. Például: költségvetések és exportálások.  A **da View díjak** számlázási fiók beállítását engedélyezni kell a részleg rendszergazdái és a csak olvasási jogosultsággal rendelkező felhasználók számára a költségek megtekintéséhez. Ha a **da View díjak** le vannak tiltva, a részleg felhasználói semmilyen szinten nem láthatják a költségeket, még akkor sem, ha ezek a fiókok vagy az előfizetés tulajdonosai.
+- **Csak olvasási jogosultsággal rendelkező felhasználó** – megtekintheti az részleg beállításait, a költségadatok és a költségadatok beállításait. Például: költségvetések és exportálások. Ha a **da View díjak** le vannak tiltva, a részleg felhasználói semmilyen szinten nem láthatják a költségeket, még akkor sem, ha ezek a fiókok vagy az előfizetés tulajdonosai.
+- **Fiók tulajdonosa** – kezelheti a beléptetési fiók beállításait (például a Cost centert), megtekintheti az összes költséget, és kezelheti a beléptetési fiókhoz tartozó költségek konfigurációját (például a költségvetést és az exportálást). A fiók tulajdonosai és a RBAC felhasználók számára engedélyezni kell az **Ao View díjak** számlázási fiók beállítását.
 
-Nagyvállalati szerződés számlázási fiók felhasználók nincsenek számlák közvetlen hozzáférést. A rendszer egy külső mennyiségi számlákat érhetők el.
+Az EA számlázási fiók felhasználói nem rendelkeznek közvetlen hozzáféréssel a számlákhoz. A számlák külső mennyiségi licencelési rendszerből érhetők el.
 
-Az Azure-előfizetések a regisztrációs fiókok beágyazott. Számlázási felhasználók hozzáférhetnek a költségadatok az előfizetések és erőforráscsoportok, amely alatt a megfelelő hatókörök. Tekintse meg vagy kezelheti az erőforrásokat az Azure Portalon való hozzáférés nem rendelkeznek. A számlázás felhasználók megtekinthetik a költségek az **Költségkezelés + számlázás** szolgáltatások az Azure portal listájában. Ezt követően azok szűrheti a meghatározott előfizetések és -erőforráscsoportok kell jelentse a költségek.
+Az Azure-előfizetések beágyazva vannak a beléptetési fiókokba A számlázási felhasználók a megfelelő hatókörük alá tartozó előfizetések és erőforráscsoportok esetében férhetnek hozzá a költségadatokhoz. Nem rendelkeznek hozzáféréssel a Azure Portal erőforrásainak megtekintéséhez és kezeléséhez. A számlázási felhasználók megtekinthetik a költségeket, ha a szolgáltatások Azure Portal listájában a **Cost Management + számlázás** lehetőségre navigálnak. Ezután szűrhetik a költségeket azokra a konkrét előfizetésekre és erőforrás-csoportokra, amelyekre jelentést kell készíteniük.
 
-Számlázási felhasználóknak nem kell hozzáférést a felügyeleti csoportokhoz, mert ezek nem explicit módon tartoznak egy adott számlázási fiók. Hozzáférés rendelkeznie kell a felügyeleti csoportok explicit módon. Felügyeleti csoportok összesítő költségeket az összes beágyazott előfizetésből. Azonban használatalapú vásárlások csak tartalmaznak. Például a foglalásokat és a külső Piactéri ajánlatok elérhetőségének vásárlások azok nem tartalmaznak. Ezeket a díjakat megtekintéséhez használja a nagyvállalati szerződés számlázási fiók.
+A számlázási felhasználók nem férhetnek hozzá a felügyeleti csoportokhoz, mert nem tartoznak explicit módon egy adott számlázási fiókhoz. A hozzáférést explicit módon kell megadni a felügyeleti csoportoknak. A felügyeleti csoportok az összes beágyazott előfizetésből származó költségeket összesítik. Azonban csak a használaton alapuló vásárlásokat tartalmazzák. Nem tartoznak ide olyan vásárlások, mint a foglalások és a harmadik féltől származó piactér-ajánlatok. A költségek megtekintéséhez használja az EA számlázási fiókot.
 
-## <a name="individual-agreement-scopes"></a>Az egyes szerződés hatókörök
+## <a name="individual-agreement-scopes"></a>Egyes szerződések hatókörei
 
-Az egyes ajánlatok létrehozott Azure-előfizetésekre, mint használatalapú fizetéssel és kapcsolódó típusok, pl. ingyenes próbaverzió, és fejlesztési/tesztelési ajánlatok, nem kell explicit számlázási fiók hatókör. Ehelyett minden előfizetési csomaghoz tartozik egy fiók tulajdonosa vagy a fiókadminisztrátor, például a nagyvállalati szerződéssel rendelkező fiók tulajdonosától.
+Az egyéni ajánlatokból (például utólagos elszámolású és kapcsolódó típusok, például az ingyenes próbaverziós és fejlesztési/tesztelési ajánlatokhoz) létrehozott Azure-előfizetések nem rendelkeznek explicit számlázási fiók hatókörrel. Ehelyett minden előfizetéshez tartozik egy fiók tulajdonosa vagy fiókjának rendszergazdája, például az EA-fiók tulajdonosa.
 
-- [**Számlázási fiók** ](../billing/billing-view-all-accounts.md) – egy vagy több Azure-előfizetésekre vonatkozó egyetlen fióktulajdonos jelöli. Ez jelenleg nem támogatja a több személynek és összesített költsége nézetekhez való hozzáférés való hozzáférés biztosítása.
+- [**Számlázási fiók**](../billing/billing-view-all-accounts.md) – egy vagy több Azure-előfizetéshez tartozó egyetlen fiók tulajdonosát jelöli. Jelenleg nem támogatja több személy hozzáférésének biztosítását, vagy az összesített Cost-nézetekhez való hozzáférést.
 
     Erőforrás típusa: Nem alkalmazható
 
-Önálló Azure-előfizetést fiókrendszergazdák megtekintheti és kezelheti a számlázási adatokat, például a számlákat és kifizetéseket, az a [Azure Account Center](https://account.azure.com/subscriptions). Nem lehet azonban, költségadatok megtekintése, vagy kezelheti az erőforrásokat az Azure Portalon. A fiókadminisztrátor hozzáférést, a Cost Management szerepkörök azt korábban említettük, használhatók.
+Az egyes Azure-előfizetési fiókok rendszergazdái megtekinthetik és kezelhetik a számlázási adatait, például a számlákat és a kifizetéseket a [Azure Fiókközpont](https://account.azure.com/subscriptions). Azonban nem tekinthetik meg a költségeket, és nem kezelhetik az erőforrásokat a Azure Portalban. Ha hozzáférést szeretne adni a fiók rendszergazdájához, használja a korábban említett Cost Management-szerepköröket.
 
-Önálló Azure-előfizetést fiókrendszergazdák ellentétben a nagyvállalati szerződéssel rendelkező, a számláikat, az Azure Portalon látható. Ne feledje, hogy a Cost Management olvasó és a Cost Management közreműködői szerepkör nem ad meg a számlákat való hozzáférést. További információkért lásd: [számla hozzáférés biztosításának módja](../billing/billing-manage-access.md##give-read-only-access-to-billing).
+Az EA-vel ellentétben az egyes Azure-előfizetési fiókok rendszergazdái megtekinthetik a számlákat a Azure Portalban. Ne feledje, hogy Cost Management olvasó-és Cost Management közreműködői szerepkörök nem biztosítanak hozzáférést a számlákhoz. További információ: [hozzáférés engedélyezése a számlákhoz](../billing/billing-manage-access.md##give-read-only-access-to-billing).
 
-## <a name="microsoft-customer-agreement-scopes"></a>A Microsoft Ügyfélszerződéséhez hatókörök
+## <a name="microsoft-customer-agreement-scopes"></a>Microsoft Customer Agreement-hatókörök
 
-A Microsoft Ügyfélszerződéséhez számlázási fiókok rendelkeznek a következő hatókörök:
+A Microsoft Customer Agreement számlázási fiókjai a következő hatókörökkel rendelkeznek:
 
-- **Számlázási fiók** – több Microsoft-termékek és szolgáltatások egy ügyfélszerződéséhez jelöli. Ügyfél szerződés számlázási fiókok nem funkcionálisan ugyanaz, mint a nagyvállalati szerződéses regisztrációval. Nagyvállalati szerződéses regisztrációval számlázási profilok jobban igazodik.
+- **Számlázási fiók** – több Microsoft-termékhez és-szolgáltatáshoz tartozó ügyfél-szerződést jelent. Az ügyfél-szerződés számlázási fiókjai nem ugyanúgy működnek, mint az EA-regisztrációk. Az EA-regisztrációk szorosabban illeszkednek a számlázási profilokhoz.
 
-    Erőforrás típusa: `Microsoft.Billing/billingAccounts (accountType = Organization)`
+    Erőforrás típusa:`Microsoft.Billing/billingAccounts (accountType = Organization)`
 
-- **A számlázás profil** – határozza meg az előfizetést, egy számla szerepelnek. Számlázási profilok felelnek meg működési, egy regisztrált Nagyvállalati szerződéshez, mert ez a hatókör, amely a számlákat, jönnek. Ehhez hasonlóan, amelyek nem a használat alapú (például a Marketplace-en és foglalások) vásárlások csak érhetők el ebben a hatókörben. Számla szakaszok azokat nem tartalmazza.
+- **Számlázási profil** – a számlán szereplő előfizetéseket határozza meg. A számlázási profilok az EA-regisztráció funkcionális megfelelői, mivel ez a hatókör, amelyet a számlák generálnak. Hasonlóképpen, a nem használaton alapuló (például a piactér és a foglalások) vásárlások csak ezen a hatókörön érhetők el. Nem szerepelnek a számlázási szakaszban.
 
-    Erőforrás típusa: `Microsoft.Billing/billingAccounts/billingProfiles`
+    Erőforrás típusa:`Microsoft.Billing/billingAccounts/billingProfiles`
 
-- **A szakasz a számlához** -előfizetések, a számla vagy számlázási profilja csoportja. Számla szakaszok hasonlóak a részlegek – több ember férhet hozzá egy számla szakaszt.
+- **Számla szakasz** – előfizetések egy csoportját jelöli egy számlán vagy számlázási profilban. A számlázási szakaszok olyanok, mint a részlegek – több ember férhet hozzá egy számla szakaszhoz.
 
-    Erőforrás típusa: `Microsoft.Billing/billingAccounts/invoiceSections`
+    Erőforrás típusa:`Microsoft.Billing/billingAccounts/invoiceSections`
 
-Ellentétben a nagyvállalati szerződés számlázási hatókörök, számlázási fiókok Ügyfélszerződéséhez _vannak_ egyetlen címtárban kötve, és nem lehet előfizetések több Azure AD-címtár között.
+Az EA számlázási hatóköröktől eltérően az ügyfél-szerződés számlázási fiókjai egyetlen címtárhoz _vannak_ kötve, és több Azure ad-címtárban nem lehetnek előfizetések.
 
-Ügyfél szerződés számlázási hatókörök a következő szerepkörök támogatják:
+Az ügyfél-szerződés számlázási hatókörei a következő szerepköröket támogatják:
 
-- **Tulajdonos** – számlázási beállítások és hozzáférés kezelése, megtekintheti az összes költségeit, és költség konfigurációjának kezelése. Ha például a környezetet, és exportálja. A függvényben, a hatókör számlázási Ügyfélszerződéséhez pedig ugyanaz, mint a [Cost Management közreműködői Azure RBAC szerepkör](../role-based-access-control/built-in-roles.md#cost-management-contributor).
-- **Közreműködői** – hozzáférés kivételével számlázási beállítások kezelése, megtekintheti az összes költségek, és költség konfigurációjának kezelése. Ha például a környezetet, és exportálja. A függvényben, a hatókör számlázási Ügyfélszerződéséhez pedig ugyanaz, mint a [Cost Management közreműködői Azure RBAC szerepkör](../role-based-access-control/built-in-roles.md#cost-management-contributor).
-- **Olvasó** – számlázási beállításait, a költségadatok és a költségek konfigurációs megtekintheti. Ha például a környezetet, és exportálja. A függvényben, a hatókör számlázási Ügyfélszerződéséhez pedig ugyanaz, mint a [Cost Management olvasó Azure RBAC szerepkör](../role-based-access-control/built-in-roles.md#cost-management-reader).
-- **Számla manager** – megtekintheti és fizet a számlákat és is adatot és konfigurációs megjelenítéséhez. Ha például a környezetet, és exportálja. A függvényben, a hatókör számlázási Ügyfélszerződéséhez pedig ugyanaz, mint a [Cost Management olvasó Azure RBAC szerepkör](../role-based-access-control/built-in-roles.md#cost-management-reader).
-- **Azure-előfizetés létrehozója** – az Azure-előfizetések létrehozása, megtekintheti költségeit, és költség konfigurációjának kezelése. Ha például a környezetet, és exportálja. A függvényben a Ügyfélszerződéséhez számlázási hatóköre ugyanaz, mint az EA regisztrációs fiók tulajdonosi szerepkör.
+- **Tulajdonos** – kezelheti a számlázási beállításokat és a hozzáférést, megtekintheti az összes költséget, és kezelheti a költségek konfigurációját. Például: költségvetések és exportálások. A függvényben ez az ügyfél-szerződés számlázási hatóköre megegyezik a [Cost Management közreműködő Azure RBAC szerepkörével](../role-based-access-control/built-in-roles.md#cost-management-contributor).
+- **Közreműködő** – kezelheti a számlázási beállításokat, kivéve a hozzáférést, megtekintheti az összes költséget, és kezelheti a költségek konfigurációját. Például: költségvetések és exportálások. A függvényben ez az ügyfél-szerződés számlázási hatóköre megegyezik a [Cost Management közreműködő Azure RBAC szerepkörével](../role-based-access-control/built-in-roles.md#cost-management-contributor).
+- **Olvasó** – megtekintheti a számlázási beállításokat, a költségadatok és a költségadatok beállításait. Például: költségvetések és exportálások. A függvényben ez az ügyfél-szerződés számlázási hatóköre megegyezik a [Cost Management Reader Azure RBAC szerepkörével](../role-based-access-control/built-in-roles.md#cost-management-reader).
+- **Számla-kezelő** – megtekintheti és kifizetheti a számlákat, és megtekintheti a költségadatok és a konfigurációt. Például: költségvetések és exportálások. A függvényben ez az ügyfél-szerződés számlázási hatóköre megegyezik a [Cost Management Reader Azure RBAC szerepkörével](../role-based-access-control/built-in-roles.md#cost-management-reader).
+- **Azure-előfizetés létrehozója** – Azure-előfizetéseket hozhat létre, megtekintheti a költségeket, és kezelheti a költségek konfigurációját. Például: költségvetések és exportálások. A függvényben ez az ügyfél-szerződés számlázási hatóköre megegyezik az EA regisztrációs fiók tulajdonosi szerepkörével.
 
-Az Azure-előfizetések beágyazott alatt számla szakaszok, például hogyan EA regisztrációs fiókok alatt van. Számlázási felhasználók hozzáférhetnek a költségadatok az előfizetések és erőforráscsoportok, amelyek alapján a megfelelő hatókörök. Tekintse meg vagy kezelheti az erőforrásokat az Azure Portalon való hozzáférés nem rendelkeznek. A számlázás felhasználók megtekinthetik a költségek az **Költségkezelés + számlázás** szolgáltatások az Azure portal listájában. Szűrjön a meghatározott előfizetések és -erőforráscsoportok kell jelentse a költségek.
+Az Azure-előfizetések a számla szakaszban vannak beágyazva, például az EA regisztrációs fiókok alatt. A számlázási felhasználók a megfelelő hatókörök alá tartozó előfizetések és erőforráscsoportok esetében férhetnek hozzá a költségadatokhoz. Azonban nem rendelkeznek hozzáféréssel a Azure Portal erőforrásainak megtekintéséhez és kezeléséhez. A számlázási felhasználók megtekinthetik a költségeket, ha a szolgáltatások Azure Portal listájában a **Cost Management + számlázás** lehetőségre navigálnak. Ezután szűrheti a költségeket azokra az előfizetésekre és erőforrás-csoportokra, amelyekre jelentést kell készítenie.
 
-Számlázási felhasználóknak nem kell hozzáférést a felügyeleti csoportokhoz, mivel ezek az explicit módon nem tartoznak a számlázási fiók alatt. Azonban ha a szervezet számára engedélyezve vannak a felügyeleti csoportokhoz, minden előfizetési díjat vannak összegzett számlázási fiókjához, és a legfelső szintű felügyeleti csoporthoz, mivel azok is tanúsította, egyetlen címtárban. Felügyeleti csoportok csak a vásárlásokat, amelyek a használat alapú tartalmazzák. Például a foglalásokat és a külső Piactéri ajánlatok elérhetőségének vásárlások felügyeleti csoportok nem szerepelnek. Így a számlázási fiók és a legfelső szintű felügyeleti csoport különböző összegek feltétlenül jelentik. Ezeket a díjakat megtekintéséhez használja a számlázási fiókot vagy megfelelő számlázási profilja.
+A számlázási felhasználók nem férhetnek hozzá a felügyeleti csoportokhoz, mert nem tartoznak kifejezetten a számlázási fiókhoz. Ha azonban a felügyeleti csoportok engedélyezve vannak a szervezet számára, az összes előfizetés költsége a számlázási fiókra és a gyökérszintű felügyeleti csoportra is vonatkozik, mivel mindkettőt egyetlen címtárhoz korlátozzák. A felügyeleti csoportok csak a használaton alapuló vásárlásokat tartalmazzák. A felügyeleti csoportokban nem szerepelnek a vásárlások, például a foglalások és a harmadik féltől származó piactér-ajánlatok. Így a Számlázási fiók és a gyökérszintű felügyeleti csoport különböző összegeket jelenthet. A költségek megtekintéséhez használja a számlázási fiókot vagy a megfelelő számlázási profilt.
 
-## <a name="cloud-solution-provider-csp-scopes"></a>Cloud Solution Provider (CSP) hatókörök
+## <a name="aws-scopes"></a>AWS-hatókörök
 
-Cloud Solution Provider (CSP) partner nem támogatottak a Cost Management még ma. Ehelyett használhat [Partnerközpont](https://docs.microsoft.com/azure/cloud-solution-provider/overview/partner-center-overview).
+Az AWS-integráció befejezése után tekintse meg az [AWS-integráció beállítása és konfigurálása](aws-integration-set-up-configure.md)című témakört. A következő hatókörök érhetők el:
 
-## <a name="switch-between-scopes-in-cost-management"></a>Váltás a Cost Management hatókörök
+- **Külső számlázási fiók** – a harmadik féltől származó gyártótól származó vásárlói szerződést jelöl. Ez hasonló az EA számlázási fiókhoz.
 
-Az Azure Portalon a Cost Management minden nézetek az alábbiak egy **hatókör** felső – bal oldalán a nézet a kijelölés megszámlálásához. Segítségével gyorsan a hatókör módosítása. Kattintson a **hatókör** megszámlálásához a Hatókörválasztó megnyitásához. Azt jeleníti meg a számlázási fiókok, a legfelső szintű felügyeleti csoport és a gyökérszintű felügyeleti csoport nem beágyazva foglalt olyan előfizetéseket. A hatókör kiválasztásához kattintson a kiemelés, és kattintson a háttér **kiválasztása** alján. Részletezés a beágyazott hatókörökre, például az erőforráscsoportok található egy előfizetésben, kattintson a hatókör neve hivatkozásra. A szülő hatókörnek bármely beágyazott szinten kiválasztásához kattintson **válassza ezt &lt;hatókör&gt;**  a Hatókörválasztó tetején.
+    Erőforrás típusa:`Microsoft.CostManagement/externalBillingAccounts`
+    
+- **Külső előfizetés** – egy külső gyártótól származó ügyfél-működési fiókot képvisel. Ez hasonló az Azure-előfizetésekhez.
 
-## <a name="identify-the-resource-id-for-a-scope"></a>Az erőforrás-azonosítója egy hatókör azonosítása
+    Erőforrás típusa:`Microsoft.CostManagement/externalSubscriptions`
 
-A Cost Management API-k használatakor, hogy a hatókör fontos. Az alábbi információk segítségével hozhat létre a megfelelő hatókörben URI-t a Cost Management API-k.
+## <a name="cloud-solution-provider-csp-scopes"></a>A Cloud Solution Provider (CSP) hatókörök
 
-### <a name="billing-accounts"></a>Számlázási fiók
+A felhőalapú megoldások szolgáltatói (CSP) partnerei Cost Management jelenleg nem támogatottak. Ehelyett használhatja a [partner centert](https://docs.microsoft.com/azure/cloud-solution-provider/overview/partner-center-overview).
 
-1. Nyissa meg az Azure Portalt, és navigáljon arra **Költségkezelés + számlázás** a szolgáltatások listájában.
-2. Válassza ki **tulajdonságok** számlázási fiók menüjében.
-3. Másolja ki a számlázási fiók azonosítóját.
-4. A hatókör van: `"/providers/Microsoft.Billing/billingAccounts/{billingAccountId}"`
+## <a name="switch-between-scopes-in-cost-management"></a>Váltás hatókörök között Cost Management
 
-### <a name="billing-profiles"></a>A számlázás profilok
+A Azure Portal összes Cost Management nézete tartalmaz egy **hatókör** -kiválasztási pirulát a nézet bal felső részén. Ezzel gyorsan módosíthatja a hatókört. Kattintson a **hatókör** pirulára a hatókör-választó megnyitásához. Megjeleníti a számlázási fiókokat, a legfelső szintű felügyeleti csoportot, valamint azokat az előfizetéseket, amelyek nincsenek beágyazva a gyökérszintű felügyeleti csoportba. Hatókör kiválasztásához kattintson a háttérre, és válassza ki a kívánt elemet, majd kattintson az alul található **kijelölés** elemre. A beágyazott hatókörök, például az előfizetéshez tartozó erőforráscsoportok részletezéséhez kattintson a hatókör neve hivatkozásra. A szülő hatókör bármely beágyazott szinten való kiválasztásához kattintson a hatókör **&lt;kiválasztása&gt;** elemre a hatókör-választó tetején.
 
-1. Nyissa meg az Azure Portalt, és navigáljon arra **Költségkezelés + számlázás** a szolgáltatások listájában.
-2. Válassza ki **számlázási profilok** számlázási fiók menüjében.
-3. Kattintson a kívánt számlázási profil nevét.
-4. Válassza ki **tulajdonságok** a számlázási profil menüben.
-5. Másolja át a számlázási fiók és számlázás profil azonosítók.
-6. A hatókör van: `"/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}"`
+## <a name="identify-the-resource-id-for-a-scope"></a>Hatókör erőforrás-AZONOSÍTÓjának azonosítása
 
-### <a name="invoice-sections"></a>Számla szakaszok
+Cost Management API-k használatakor a hatókör ismerete kritikus fontosságú. A következő információk segítségével hozza létre a megfelelő hatókörű URI-t Cost Management API-khoz.
 
-1. Nyissa meg az Azure Portalt, és navigáljon arra **Költségkezelés + számlázás** a szolgáltatások listájában.
-2. Válassza ki **szakaszok számlázása** számlázási fiók menüjében.
-3. Kattintson a kívánt számlázási szakasz nevét.
-4. Válassza ki **tulajdonságok** a számla szakasz menüben.
-5. Készítsen másolatot a számlázási fiók, és a számla szakasz azonosítók.
-6. A hatókör van: `"/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/invoiceSections/{invoiceSectionId}"`
+### <a name="billing-accounts"></a>Számlázási fiókok
 
-### <a name="ea-departments"></a>Nagyvállalati szerződéssel rendelkező szervezeti egységek
+1. Nyissa meg a Azure Portal, majd a szolgáltatások listájában keresse meg **Cost Management + számlázás** lehetőséget.
+2. A Számlázási fiók menüben válassza a **Tulajdonságok** lehetőséget.
+3. Másolja a Számlázási fiók AZONOSÍTÓját.
+4. A hatóköre:`"/providers/Microsoft.Billing/billingAccounts/{billingAccountId}"`
 
-1. Nyissa meg az Azure Portalt, és navigáljon arra **Költségkezelés + számlázás** a szolgáltatások listájában.
-2. Válassza ki **részlegek** számlázási fiók menüjében.
-3. Kattintson a kívánt szervezeti egység nevére.
-4. Válassza ki **tulajdonságok** részleg menüjében.
-5. Másolja át a számlázási fiók és a részleg azonosítókat.
-6. A hatókör van: `"/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/departments/{departmentId}"`
+### <a name="billing-profiles"></a>Számlázási profilok
+
+1. Nyissa meg a Azure Portal, majd a szolgáltatások listájában keresse meg **Cost Management + számlázás** lehetőséget.
+2. Válassza a **Számlázási profilok** lehetőséget a Számlázási fiók menüben.
+3. Kattintson a kívánt számlázási profil nevére.
+4. A számlázási profil menüben válassza a **Tulajdonságok** lehetőséget.
+5. Másolja a számlázási fiókot és a számlázási profil azonosítóit.
+6. A hatóköre:`"/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}"`
+
+### <a name="invoice-sections"></a>Számlaszakaszok
+
+1. Nyissa meg a Azure Portal, majd a szolgáltatások listájában keresse meg **Cost Management + számlázás** lehetőséget.
+2. A Számlázási fiók menüben válassza a **számla csoportok** lehetőséget.
+3. Kattintson a kívánt számla szakasz nevére.
+4. A számla szakasz menüjében válassza a **Tulajdonságok** lehetőséget.
+5. Másolja a Számlázási fiók és a számla szakasz azonosítóit.
+6. A hatóköre:`"/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/invoiceSections/{invoiceSectionId}"`
+
+### <a name="ea-departments"></a>EA-részlegek
+
+1. Nyissa meg a Azure Portal, majd a szolgáltatások listájában keresse meg **Cost Management + számlázás** lehetőséget.
+2. A számlázási fiók menüben válassza a részlegek lehetőséget.
+3. Kattintson a kívánt részleg nevére.
+4. A részleg menüben válassza a **Tulajdonságok** lehetőséget.
+5. Másolja a számlázási fiókot és a részleg azonosítóit.
+6. A hatóköre:`"/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/departments/{departmentId}"`
 
 ### <a name="ea-enrollment-account"></a>EA regisztrációs fiók
 
-1. Nyissa meg az Azure Portalon, és navigáljon a **Költségkezelés + számlázás** a szolgáltatások listájában.
-2. Válassza ki **regisztrációs fiókok** számlázási fiók menüjében.
-3. Kattintson a kívánt eszközregisztráció-fiók nevére.
-4. Válassza ki **tulajdonságok** a regisztrációs fiók menüjében.
-5. Másolja a számlázási fiók és a regisztrációs fiók azonosítói.
-6. A hatókör van: `"/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/enrollmentAccounts/{enrollmentAccountId}"`
+1. Nyissa meg a Azure Portal, és a szolgáltatások listájában navigáljon a **Cost Management + számlázás** elemre.
+2. A Számlázási fiók menüben válassza a beléptetési **fiókok** elemet.
+3. Kattintson a kívánt beléptetési fiók nevére.
+4. A beléptetési fiók menüben válassza a **Tulajdonságok** lehetőséget.
+5. Másolja a számlázási fiókot és a beléptetési fiók azonosítóit.
+6. A hatóköre:`"/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/enrollmentAccounts/{enrollmentAccountId}"`
 
 ### <a name="management-group"></a>Felügyeleti csoport
 
-1. Nyissa meg az Azure Portalon, és navigáljon a **felügyeleti csoportok** a szolgáltatások listájában.
-2. Keresse meg a kívánt felügyeleti csoport.
-3. Másolja a felügyeleti csoport azonosítója a táblából.
-4. A hatókör van: `"/providers/Microsoft.Management/managementGroups/{id}"`
+1. Nyissa meg a Azure Portal, és a szolgáltatások listájában navigáljon a **felügyeleti csoportokhoz** .
+2. Navigáljon a kívánt felügyeleti csoporthoz.
+3. Másolja a felügyeleti csoport AZONOSÍTÓját a táblából.
+4. A hatóköre:`"/providers/Microsoft.Management/managementGroups/{id}"`
 
-### <a name="subscription"></a>Előfizetés
+### <a name="subscription"></a>Subscription
 
-1. Nyissa meg az Azure Portalon, és navigáljon a **előfizetések** a szolgáltatások listájában.
-2. Másolja az előfizetés-Azonosítót a táblából.
-3. A hatókör van: `"/subscriptions/{id}"`
+1. Nyissa meg a Azure Portal, és navigáljon a szolgáltatások listájában lévő előfizetésekhez.
+2. Másolja az előfizetés-azonosítót a táblából.
+3. A hatóköre:`"/subscriptions/{id}"`
 
 ### <a name="resource-groups"></a>Erőforráscsoportok
 
-1. Nyissa meg az Azure Portalon, és navigáljon a **erőforráscsoportok** a szolgáltatások listájában.
-2. Kattintson a kívánt erőforráscsoport nevét.
-3. Válassza ki **tulajdonságok** csoport erőforrás menüben.
-4. Másolja ki az erőforrást azonosító mező értékét.
-5. A hatókör van: `"/subscriptions/{id}/resourceGroups/{name}"`
+1. Nyissa meg a Azure Portal, és navigáljon a szolgáltatások listájában lévő **erőforráscsoportok** között.
+2. Kattintson a kívánt erőforráscsoport nevére.
+3. Az erőforráscsoport menüben válassza a **Tulajdonságok** lehetőséget.
+4. Másolja ki az erőforrás-azonosító mező értékét.
+5. A hatóköre:`"/subscriptions/{id}/resourceGroups/{name}"`
 
-A Cost Management jelenleg támogatott [Azure globális](https://management.azure.com) és [Azure Government](https://management.usgovcloudapi.net). Az Azure Government kapcsolatos további információkért lásd: [Azure globális és a kormányzati API végpontok](../azure-government/documentation-government-developer-guide.md#endpoint-mapping) _._
+A Cost Management jelenleg az [Azure globális](https://management.azure.com) és [Azure Government](https://management.usgovcloudapi.net)támogatja. További információ a Azure Governmentről: [Azure globális és kormányzati API-végpontok](../azure-government/documentation-government-developer-guide.md#endpoint-mapping) _._
 
 ## <a name="next-steps"></a>További lépések
 

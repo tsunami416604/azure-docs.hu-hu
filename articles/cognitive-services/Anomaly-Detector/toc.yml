@@ -16,7 +16,7 @@
           href: quickstarts/detect-data-anomalies-java.md
         - name: A Python használata
           href: quickstarts/detect-data-anomalies-python.md
-    - name: SDK
+    - name: Ügyfél
       items:
         - name: 'A C# használata'
           href: quickstarts/detect-data-anomalies-csharp-sdk.md

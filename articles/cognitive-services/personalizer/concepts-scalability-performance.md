@@ -1,37 +1,37 @@
 ---
-title: Méretezhetőség és teljesítmény - Personalizer
+title: Skálázhatóság és teljesítmény – személyre szabás
 titleSuffix: Azure Cognitive Services
-description: 'Nagy teljesítményű és nagy adatforgalmú webhelyekhez és alkalmazásokhoz rendelkezik Personalizer a méretezhetőség és teljesítmény érdekében érdemes figyelembe venni két tényezőt: képzési teljesítmény és a késés.'
+description: 'A nagy teljesítményű és a nagy forgalmú webhelyeknek és alkalmazásoknak két fő szempontja van, amely a méretezhetőség és a teljesítmény érdekében a rugalmasságot és a teljesítményt is figyelembe veszi: késés és betanítás.'
 services: cognitive-services
-author: edjez
+author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 06/07/2019
-ms.author: edjez
-ms.openlocfilehash: 06c2e65c723e18acc515dd7effc61aae0564f411
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.author: diberry
+ms.openlocfilehash: d116f6bd389b1404ea723c965111cd05880e6c30
+ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67722419"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68662819"
 ---
 # <a name="scalability-and-performance"></a>Méretezhetőség és teljesítmény
 
-Nagy teljesítményű és nagy adatforgalmú webhelyekhez és alkalmazásokhoz van Personalizer a méretezhetőség és teljesítmény érdekében érdemes figyelembe venni két tényezőt:
+A nagy teljesítményű és nagy forgalmú webhelyekhez és alkalmazásokhoz két fő tényezőt kell figyelembe venni a méretezhetőség és a teljesítmény személyre szabása érdekében:
 
-* Közel valós idejű tartása amikor rang API-hívások
-* Gondoskodik róla, hogy esemény bemeneti össztárhelyet képzési átviteli sebesség
+* Alacsony késés a rangsor API-hívások készítésekor
+* Győződjön meg arról, hogy a betanítási átviteli sebesség lépést tart az esemény bemenetével
 
-Személyre szabás nagyon gyorsan bővül, a legtöbb, a hívás időtartama a REST API-n keresztüli kommunikáció számára kijelölt adhat vissza egy rang. Az Azure lesz az automatikus méretezés képes gyorsan reagáljanak a kérésekre.
+A személyre szabás a REST APIon keresztüli kommunikációhoz dedikált hívási időtartam nagy részét is gyorsan visszaállíthatja. Az Azure automatikusan méretezi a kérések gyors reagálásának lehetőségét.
 
-##  <a name="low-latency-scenarios"></a>Közel valós idejű forgatókönyveket
+##  <a name="low-latency-scenarios"></a>Kis késleltetésű forgatókönyvek
 
-Egyes alkalmazások alacsony késés érdekében szükséges, egy rang visszaadásakor. Erre azért szükség:
+Egyes alkalmazások esetében alacsony késésre van szükség, amikor egy rangot ad vissza. Erre szükség van:
 
-* Ahhoz, hogy biztosítsa a felhasználói várakozási idő megjelenítése előtt lemeztevékenységet rangsorolva, amelyekről tartalmat.
-* Egy kiszolgáló, amelyen jelentkezik a szélsőséges forgalom segítségével elkerülése érdekében lekötné szűkös számítási idő és a hálózati kapcsolatokat.
+* Annak érdekében, hogy a felhasználó a rangsorolt tartalom megjelenítése előtt ne várjon észrevehető időtartamot.
+* Annak érdekében, hogy a szélsőséges forgalmat észlelő kiszolgálók elkerüljék a szűkös számítási idő és a hálózati kapcsolatok összekapcsolását.
 
 <!--
 
@@ -47,21 +47,21 @@ If you require latencies under a millisecond, and have already tested using Pers
 
 -->
 
-## <a name="scalability-and-training-throughput"></a>Méretezhetőség és képzési átviteli sebesség
+## <a name="scalability-and-training-throughput"></a>Skálázhatóság és betanítási teljesítmény
 
-Egy olyan modell, a rendszer retrained frissítésével personalizer works által küldött üzenetek aszinkron módon Personalizer után Rank és ellenszolgáltatás API-k alapján. Ezek az üzenetek küldése az Azure-Eseményközpont az alkalmazáshoz.
+A személyre szabás úgy működik, hogy frissít egy olyan modellt, amely a személyre szabott, a rangsor és a jutalmazási API-k után aszinkron módon küldött üzeneteken alapul. Ezeket az üzeneteket az alkalmazás Azure-EventHub küldik el.
 
- Nem valószínű, a legtöbb alkalmazás eléri a maximális csatlakoztatása és képzési átviteli sebességének Personalizer. Elérnék a maximális nem le fogják lassítani az alkalmazást, miközben lenne hasonló Event Hub-várólisták első kitöltött belsőleg gyorsabb ütemben is szabadíthatók fel.
+ Nem valószínű, hogy a legtöbb alkalmazás eléri a személyre szabáshoz való csatlakozás és a betanítás maximális átviteli sebességét. Ha eléri ezt a maximumot, nem lassítja le az alkalmazást, azt feltételezi, hogy az Event hub-várólistákat a rendszer a tisztításhoz leggyorsabban kitölti.
 
-## <a name="how-to-estimate-your-throughput-requirements"></a>Ha meg szeretné becsülni az átviteli sebességet megkövetelő hogyan
+## <a name="how-to-estimate-your-throughput-requirements"></a>Az átviteli sebességre vonatkozó követelmények becslése
 
-* Becsülje meg a felvétele a környezeti és a művelet JSON-dokumentumok hosszának rangsorolási eseményenként bájtok átlagos számát.
-* 20MB/s nullával való osztás a becsült bájtok átlagos száma.
+* A környezeti és a műveleti JSON-dokumentumok hosszának kiszámításával megbecsülheti az egyes rangsorolási események bájtjainak átlagos számát.
+* A becsült átlagos bájtok száma (MB/s)
 
-Például, ha az átlagos terhelés 500 funkciókkal rendelkezik, és minden egyes egy becsült 20 karakter, majd minden esemény körülbelül 10kb. Ezek a becslések 20,000,000- / 10 000 = 2000 esemény/másodperc, azaz készül 173 millió esemény naponta. 
+Ha például az átlagos adattartalom 500 funkcióval rendelkezik, és mindegyik 20 karakterből áll, akkor minden esemény körülbelül 10kb. A becslések szerint a 20 000 000/10 000 = 2 000 Events/sec, amely körülbelül 173 000 000 esemény/nap. 
 
-Ha az elérni próbált ezeket a korlátokat, forduljon az ügyfélszolgálati csapatunkhoz architektúra tanácsokat.
+Ha eléri ezeket a korlátokat, forduljon a támogatási csapathoz architektúra-tanácsadásért.
 
 ## <a name="next-steps"></a>További lépések
 
-[Létrehozhat és konfigurálhat Personalizer](how-to-settings.md).
+[Személyre szabás létrehozása és konfigurálása](how-to-settings.md).

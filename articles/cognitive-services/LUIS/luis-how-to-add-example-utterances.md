@@ -9,20 +9,20 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 04/01/2019
+ms.date: 07/29/2019
 ms.author: diberry
-ms.openlocfilehash: f02f50eef971e774236f534c0d664dfcf090dcae
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 04f0944173df59989745ee9167984b493f202b14
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68563728"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68638221"
 ---
 # <a name="add-an-entity-to-example-utterances"></a>Entitás hozzáadása a példa kimondott szöveg 
 
 Példa utterances Példák szöveges felhasználói kérdések vagy parancsok. Language Understanding (LUIS) elemre, hozzá kell [példa utterances](luis-concept-utterance.md) , egy [szándékot](luis-concept-intent.md).
 
-Általában egy megjelölést kell hozzáadnia egy elsődleges szándékhoz, majd létre kell hoznia az entitásokat és címkéket hosszúságú kimondott szöveg  a szándékok lapon. Ha az entitások nem vznikla először, tekintse meg [entitások hozzáadása](luis-how-to-add-entities.md).
+Általában egy megjelölést kell hozzáadnia egy elsődleges szándékhoz, majd létre kell hoznia az entitásokat és címkéket hosszúságú kimondott szöveg a szándékok lapon. Ha az entitások nem vznikla először, tekintse meg [entitások hozzáadása](luis-how-to-add-entities.md).
 
 ## <a name="marking-entities-in-example-utterances"></a>Jelölés entitások példa kimondott szöveg
 
@@ -57,7 +57,7 @@ Az entitások felsorolása a rendszeren kapcsolódó szavak pontos szövegének 
 
 A vállalat részleg listát, akkor is rendelkezik normalized értékek: `Accounting` és `Human Resources`. Minden egyes normalizált név szinonimák rendelkezik. A részleg számára ezeket a szinonimákat bármelyik részleg betűszavakat, számok és szleng tartalmazhatnak. Nem kell tudnia értékek az entitás létrehozásakor. Hozzáadhat további valós felhasználói utterances a szinonimák áttekintése után.
 
-1. A szándékok lapon válassza ki a  kívánt szót vagy kifejezést az új listában. Amikor az entitás legördülő menü jelenik meg, adja meg az új lista entitás nevét a felső szövegmezőben, majd válassza az **új entitás létrehozása**lehetőséget.   
+1. A szándékok lapon válassza ki a kívánt szót vagy kifejezést az új listában. Amikor az entitás legördülő menü jelenik meg, adja meg az új lista entitás nevét a felső szövegmezőben, majd válassza az **új entitás létrehozása**lehetőséget.   
 
 1. Az a **milyen típusú entitást szeretne létrehozni?** egy előugró, az entitás nevét, és válassza **lista** típusaként. Ez a listaelem szinonimák felvétele, majd válassza ki **kész**. 
 
@@ -67,7 +67,7 @@ A vállalat részleg listát, akkor is rendelkezik normalized értékek: `Accoun
 
 ## <a name="add-a-composite-entity"></a>Összetett entitás hozzáadása
 
-Az összetett entitásokat a rendszer  meglévő entitásokból hozza létre egy szülő entitás létrehozásához. 
+Az összetett entitásokat a rendszer meglévő entitásokból hozza létre egy szülő entitás létrehozásához. 
 
 A Kimondás `Does John Smith work in Seattle?`feltételezi, hogy az összetett Kimondás visszaadja az alkalmazott nevét `John Smith`, valamint egy összetett `Seattle` entitás helyét. Az alárendelt entitásoknak már léteznie kell az alkalmazásban, és az összetett entitás létrehozása előtt meg kell adni a példa kiértékelését.
 
@@ -159,4 +159,4 @@ Miután hozzáadása, szerkesztése vagy eltávolítása a kimondott szöveg, [b
 
 ## <a name="next-steps"></a>További lépések
 
-Miután megcímkézte a hosszúságú kimondott szöveg a szándékában, létrehozhat egy [összetett entitást](luis-how-to-add-entities.md).
+Miután megcímkézte a hosszúságú kimondott szövega szándékában, létrehozhat egy [összetett entitást](luis-how-to-add-entities.md).

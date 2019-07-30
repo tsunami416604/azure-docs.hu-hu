@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 04/01/2019
+ms.date: 07/29/2019
 ms.author: diberry
-ms.openlocfilehash: fdf60a454aeb19b83ce455a771b8399c90af3bce
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 1b42ab9155f5b9719ef6477934722021e3fbac99
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68563746"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68638256"
 ---
 # <a name="create-entities-without-utterances"></a>Beszédmódok nélkül entitások létrehozása
 
@@ -114,13 +114,13 @@ Az utterance (kifejezés) a `Where is Request relocation from employee new to th
 
 A szerepkörök névvel ellátott altípusok a kontextus alapján. Minden entitásban elérhető, beleértve az előre összeépített és a nem géppel megismert entitásokat is. 
 
-A szerepkör **`{Entityname:Rolename}`** szintaxisa, ahol az entitás nevét egy kettőspont követi, majd a szerepkör neve. Például: `Move {personName} from {LocationUsingRoles:Origin} to {LocationUsingRoles:Destination}`.
+A szerepkör **`{Entityname:Rolename}`** szintaxisa, ahol az entitás nevét egy kettőspont követi, majd a szerepkör neve. Például: `Move {personName} from {Location:Origin} to {Location:Destination}`.
 
 1. Az a **összeállítása** szakaszban jelölje be **entitások** a bal oldali panelen.
 
-1. Válassza a **Create new entity** (Új entitás létrehozása) lehetőséget. Adja meg a nevét `LocationUsingRoles`. Válassza ki a **egyszerű** válassza **kész**. 
+1. Válassza a **Create new entity** (Új entitás létrehozása) lehetőséget. Adja meg a nevét `Location`. Válassza ki a **egyszerű** válassza **kész**. 
 
-1. Válassza ki **entitások** a bal oldali panelen, majd válassza ki az új entitás **LocationUsingRoles** az előző lépésben létrehozott.
+1. Válassza ki az entitások lehetőséget a bal oldali panelen, majd válassza az előző lépésben létrehozott új entitás **helyet** .
 
 1. Az a **szerepkörnév** szövegmezőbe írja be a szerepkör nevét `Origin` , és adja meg. Adjon hozzá egy második szerepkör neve `Destination`. 
 

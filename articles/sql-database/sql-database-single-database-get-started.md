@@ -10,19 +10,19 @@ ms.topic: quickstart
 author: sachinpMSFT
 ms.author: ninarn
 ms.reviewer: carlrab, sstein
-ms.date: 04/23/2019
-ms.openlocfilehash: 39ea967de1ad06fdf942a8e3a21dbea9f9f8f61f
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.date: 07/29/2019
+ms.openlocfilehash: f9c2ed77075affdfdf464dbf8a468629fc2e610d
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68566586"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68640040"
 ---
 # <a name="quickstart-create-a-single-database-in-azure-sql-database-using-the-azure-portal-powershell-and-azure-cli"></a>Gyors útmutató: Önálló adatbázis létrehozása Azure SQL Database a Azure Portal, a PowerShell és az Azure CLI használatával
 
 [Egyetlen adatbázis](sql-database-single-database.md) létrehozása a leggyorsabb és legegyszerűbb üzembe helyezési lehetőség az adatbázisok Azure SQL Database-ben való létrehozásához. Ez a rövid útmutató bemutatja, hogyan hozhat létre és kérdez le egyetlen adatbázist a Azure Portal használatával.
 
-Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/).
+Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/). 
 
 Az ebben a rövid útmutatóban szereplő összes lépésnél jelentkezzen be a [Azure Portalba](https://portal.azure.com/).
 
@@ -36,7 +36,7 @@ Egyetlen adatbázis hozható létre a kiépített vagy kiszolgáló nélküli (e
 Egyetlen adatbázis létrehozásakor egy [SQL Database-kiszolgálót](sql-database-servers.md) is meg kell adnia a kezeléséhez, és egy adott régióban lévő [Azure-erőforráscsoporthoz](../azure-resource-manager/resource-group-overview.md) helyezheti azt.
 
 > [!NOTE]
-> Ez a rövid útmutató a [virtuális mag-alapú vásárlási modellt](sql-database-service-tiers-vcore.md) és a [kiszolgáló](sql-database-serverless.md) nélküli számítási szintet használja, de a [DTU-alapú vásárlási modell](sql-database-service-tiers-DTU.md) is elérhető.
+> Ez a rövid útmutató a [virtuális mag-alapú vásárlási modellt](sql-database-service-tiers-vcore.md)használja, de a [DTU-alapú vásárlási modell](sql-database-service-tiers-DTU.md) is elérhető.
 
 AdventureWorksLT-mintaadatok tartalmazó önálló adatbázis létrehozása:
 

@@ -8,13 +8,13 @@ ms.topic: tutorial
 author: MightyPen
 ms.author: genemi
 ms.reviewer: carlrab
-ms.date: 02/08/2019
-ms.openlocfilehash: f6f0160e06ac10a6f1e4e51c93bfa133818117c8
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.date: 07/29/2019
+ms.openlocfilehash: 3359c39b21edad72ce0b9d7feb35d442c842f002
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68568967"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68640109"
 ---
 # <a name="tutorial-design-a-relational-database-in-a-single-database-within-azure-sql-database-cx23-and-adonet"></a>Oktatóanyag: A Azure SQL Database C&#x23; és a ADO.net egyetlen adatbázisában tervezze meg a kapcsolódó adatbázist
 
@@ -29,6 +29,9 @@ A Azure SQL Database a Microsoft Cloud (Azure) szolgáltatásban a DBaaS (). Ez 
 > * Adatok lekérdezése – ADO.NET
 
 \* Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) .
+
+> [!TIP]
+> A következő Microsoft Learn modul segít megtanulni az ingyenes ASP.NET- [alkalmazások fejlesztését és konfigurálását, amely](https://docs.microsoft.com/learn/modules/develop-app-that-queries-azure-sql/)lekérdezi a Azure SQL Database, beleértve egy egyszerű adatbázis létrehozását is.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -70,7 +73,7 @@ Az alábbi lépéseket követve hozzon létre egy üres önálló adatbázist.
 
     Miután kiválasztotta a szolgáltatási szintet, a DTU vagy a virtuális mag számát, valamint a tárterület méretét, kattintson az **alkalmaz**gombra.
 
-7. Adja meg  az üres adatbázis rendezését (ebben az oktatóanyagban használja az alapértelmezett értéket). A rendezésekkel kapcsolatos további információkért lásd: [Rendezések](/sql/t-sql/statements/collations)
+7. Adja meg az üres adatbázis rendezését (ebben az oktatóanyagban használja az alapértelmezett értéket). A rendezésekkel kapcsolatos további információkért lásd: [Rendezések](/sql/t-sql/statements/collations)
 
 8. Most, hogy végrehajtotta a **SQL Database** űrlapot, kattintson a **Létrehozás** gombra az önálló adatbázis kiépítéséhez. Ez a lépés néhány percet is igénybe vehet.
 

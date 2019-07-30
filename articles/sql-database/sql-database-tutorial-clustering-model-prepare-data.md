@@ -1,7 +1,7 @@
 ---
-title: 'Oktatóanyag: Az R fürtszolgáltatás végrehajtásához adatok előkészítése'
+title: 'Oktatóanyag: Adatok előkészítése a fürtözés végrehajtásához az R-ben'
 titleSuffix: Azure SQL Database Machine Learning Services (preview)
-description: A háromrészes oktatóanyag-sorozat egyik részben fogja készítse elő az adatokat egy Azure SQL database, Azure SQL Database, Machine Learning Services (előzetes verzió) az R a fürtszolgáltatás végrehajtásához.
+description: A jelen háromrészes oktatóanyag-sorozat első részében előkészíti az Azure SQL Database-ből származó adatokból a fürtözést az R-ben Azure SQL Database Machine Learning Services (előzetes verzió) használatával.
 services: sql-database
 ms.service: sql-database
 ms.subservice: machine-learning
@@ -12,46 +12,48 @@ author: garyericson
 ms.author: garye
 ms.reviewer: davidph
 manager: cgronlun
-ms.date: 05/17/2019
-ms.openlocfilehash: 83ef25f04012933c2665e63e4617d480eb336f7b
-ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
+ms.date: 07/29/2019
+ms.openlocfilehash: 800dbfc05c47a949bf024e9a5c671979b49ad201
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66419460"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68639970"
 ---
-# <a name="tutorial-prepare-data-to-perform-clustering-in-r-with-azure-sql-database-machine-learning-services-preview"></a>Oktatóanyag: Az Azure SQL Database, Machine Learning Services (előzetes verzió) az R fürtszolgáltatás végrehajtásához adatok előkészítése
+# <a name="tutorial-prepare-data-to-perform-clustering-in-r-with-azure-sql-database-machine-learning-services-preview"></a>Oktatóanyag: Adatok előkészítése az R-ben történő fürtözés végrehajtásához Azure SQL Database Machine Learning Services (előzetes verzió)
 
-A háromrészes oktatóanyag-sorozat egyik részben fogja készítse elő az adatokat egy Azure SQL database, Azure SQL Database, Machine Learning Services (előzetes verzió) az R a fürtszolgáltatás végrehajtásához.
+A háromrészes oktatóanyag-sorozat első részében az R használatával importálhatja és készítheti elő az Azure SQL Database-adatbázisok adatait. A sorozat későbbi részében ezeket az adatfeldolgozási modelleket fogja használni az R-ben, Azure SQL Database Machine Learning Services (előzetes verzió).
 
-*Fürtszolgáltatás* bemutatható, ahol egy csoport tagjai hasonló módon csoportokba adatok rendezéséhez.
-Szeretné használni a **K-közép** algoritmus a fürtszolgáltatás egy adatkészlet termék ügyfelek végrehajtásához vásárol, és adja vissza. Ügyfelek fürtözésével összpontosíthat a marketingtevékenységek hatékonyabban által meghatározott csoportokat.
-K-közép-fürtözés egy *tanítást* feltárt Hasonlóságok alapján keres. mintázatok az adatok algoritmus.
+A fürtözéssel olyan csoportokba rendezheti az adatrendezést, ahol a csoport tagjai valamilyen módon hasonlóak.
+A **K-means** algoritmus használatával végezheti el az ügyfelek fürtözését a termékek beszerzése és visszaadása során. Az ügyfelek fürtözésével hatékonyabban összpontosíthat a marketingre, ha meghatározott csoportokat céloz meg.
+K – azt jelenti, hogy a fürtözés egy nem *felügyelt tanulási* algoritmus, amely hasonlóságok alapján keresi az adatmintákat.
 
-Ebből a cikkből megtudhatja, hogyan lehet:
+A sorozat első és két részén egy R-szkriptet fejleszt ki a RStudio-ben az adatai előkészítéséhez és a gépi tanulási modellek betanításához. Ezt követően a harmadik részen az R-szkripteket az SQL Database-ben tárolt eljárásokkal futtathatja.
+
+Ebből a cikkből megtudhatja, hogyan végezheti el a következőket:
 
 > [!div class="checklist"]
-> * Minta importálása egy Azure SQL database-be
-> * Másik dimenzió mentén külön ügyfelek
-> * Az adatok betöltése az Azure SQL database-ből az R használata adatok keretbe
+> * Mintaadatbázis importálása egy Azure SQL Database-adatbázisba
+> * Ügyfelek elkülönítése különböző dimenziókban az R használatával
+> * Az adatok betöltése az Azure SQL Database-ből egy R-adatkeretbe
 
-A [második](sql-database-tutorial-clustering-model-build.md), megtudhatja, hogyan hozhat létre, és a K-közép-fürtözési modell betanításához.
+A [második részből](sql-database-tutorial-clustering-model-build.md)megtudhatja, hogyan hozhat létre és taníthat egy k-alapú fürtözési modellt az R-ben.
 
-A [harmadik részt](sql-database-tutorial-clustering-model-deploy.md), megtudhatja, hogyan hozzon létre egy tárolt eljárást az Azure SQL-adatbázis, amely a fürtszolgáltatás új adatok alapján hajthat végre.
+A [harmadik részből](sql-database-tutorial-clustering-model-deploy.md)megtudhatja, hogyan hozhat létre egy tárolt eljárást egy olyan Azure SQL Database-adatbázisban, amely új adatok alapján képes a fürtözésre az R-ben.
 
 [!INCLUDE[ml-preview-note](../../includes/sql-database-ml-preview-note.md)]
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Az Azure-előfizetés – Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy fiókot](https://azure.microsoft.com/free/) megkezdése előtt.
+* Azure-előfizetés – ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy fiókot](https://azure.microsoft.com/free/) a Kezdés előtt.
 
-* Azure SQL Database-kiszolgáló a Machine Learning-szolgáltatások engedélyezve – felvétele a Microsoft lesz a nyilvános előzetes verzióban, és a meglévő vagy új adatbázisok engedélyezése gépi tanulás. Kövesse a [regisztrálni az előzetes verzióra](sql-database-machine-learning-services-overview.md#signup).
+* Azure SQL Database-kiszolgáló Machine Learning Services engedélyezve – a nyilvános előzetes verzióban a Microsoft bevezeti Önt, és lehetővé teszi a gépi tanulást a meglévő vagy új adatbázisokhoz. Kövesse a regisztráció az [előzetes](sql-database-machine-learning-services-overview.md#signup)verzióra című témakör lépéseit.
 
-* RevoScaleR package - lásd [RevoScaleR](https://docs.microsoft.com/sql/advanced-analytics/r/ref-r-revoscaler?view=sql-server-2017#versions-and-platforms) kell telepítenie a csomagot a helyi beállításokat.
+* RevoScaleR csomag – a csomag helyi telepítéséhez szükséges [RevoScaleR](https://docs.microsoft.com/sql/advanced-analytics/r/ref-r-revoscaler?view=sql-server-2017#versions-and-platforms) lásd:.
 
-* R IDE - ebben az oktatóanyagban [RStudio Desktop](https://www.rstudio.com/products/rstudio/download/).
+* R IDE – ez az oktatóanyag a [RStudio Desktopot](https://www.rstudio.com/products/rstudio/download/)használja.
 
-* SQL-lekérdezési eszköz – Ez az oktatóanyag feltételezi használ [Azure Data Studio](https://docs.microsoft.com/sql/azure-data-studio/what-is) vagy [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/sql-server-management-studio-ssms) (SSMS).
+* SQL-lekérdezési eszköz – ez az oktatóanyag feltételezi, hogy [Azure Data Studio](https://docs.microsoft.com/sql/azure-data-studio/what-is) vagy [SQL Server Management Studiot](https://docs.microsoft.com/sql/ssms/sql-server-management-studio-ssms) (SSMS) használ.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Jelentkezzen be az Azure Portalra
 
@@ -59,27 +61,27 @@ Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 
 ## <a name="import-the-sample-database"></a>A mintaadatbázis importálása
 
-Ebben az oktatóanyagban használt minta adatkészlet mentése megtörtént a **.bacpac** , töltse le és használja az adatbázis biztonsági másolatát. Ez az adatkészlet származik a [tpcx-bb](http://www.tpc.org/tpcx-bb/default.asp) által biztosított adatkészlet a [tranzakciós feldolgozási teljesítmény Tanács (TPC)](http://www.tpc.org/default.asp).
+Az oktatóanyagban használt minta adatkészletet egy **. bacpac** -adatbázis biztonsági másolati fájljába mentette a letöltéshez és a használatához. Ez az adatkészlet a [tranzakció-feldolgozási teljesítmény Tanácsa (TPC)](http://www.tpc.org/default.asp)által biztosított [tpcx-bb](http://www.tpc.org/tpcx-bb/default.asp) adatkészletből származik.
 
-1. Töltse le a fájlt [tpcxbb_1gb.bacpac](https://sqlchoice.blob.core.windows.net/sqlchoice/static/tpcxbb_1gb.bacpac).
+1. Töltse le a [tpcxbb_1gb. bacpac](https://sqlchoice.blob.core.windows.net/sqlchoice/static/tpcxbb_1gb.bacpac)fájlt.
 
-1. Kövesse az utasításokat [hozhat létre Azure SQL-adatbázis BACPAC-fájl importálása](https://docs.microsoft.com/azure/sql-database/sql-database-import), használja ezeket az adatokat:
+1. Kövesse az BACPAC- [fájl importálása egy Azure SQL Database-adatbázis létrehozásához](https://docs.microsoft.com/azure/sql-database/sql-database-import)című témakör utasításait a következő információk használatával:
 
-   * Importálhat a **tpcxbb_1gb.bacpac** letöltött fájl
-   * A nyilvános előzetes verzió ideje alatt válassza ki a **Gen5/virtuális mag** az új adatbázis konfigurálása
-   * Nevezze el az új adatbázis "tpcxbb_1gb"
+   * Importálás a letöltött **tpcxbb_1gb. bacpac** fájlból
+   * A nyilvános előzetes verzióban válassza ki az új adatbázis **Gen5/virtuális mag-** konfigurációját
+   * Nevezze el az új "tpcxbb_1gb" adatbázist
 
-## <a name="separate-customers"></a>Külön ügyfelek
+## <a name="separate-customers"></a>Különálló ügyfelek
 
-Az RStudio hozzon létre egy új RScript fájlt, és futtassa a következő szkriptet.
-Az SQL-lekérdezést használ megadhat, az alábbi dimenziók mentén ügyfelek:
+Hozzon létre egy új RScript-fájlt a RStudio-ben, és futtassa az alábbi szkriptet.
+Az SQL-lekérdezésben az ügyfeleket a következő dimenziók mentén választjuk el:
 
-* **orderRatio** visszatérési rendelés arány (megrendelések teljes számát és a visszaadott részlegesen vagy teljesen megrendelések teljes száma) =
-* **itemsRatio** visszatérési elem arány (és a megvásárolt elemek száma a visszaadott elemek teljes száma) =
-* **monetaryRatio** visszatérési összeg arány (díja vásárolt tárterülethez visszaadott elemek) =
-* **gyakoriság** = visszatérési gyakorisága
+* **orderRatio** = visszaadott sorrendi arány (a megrendelések teljes száma részben vagy teljes mértékben visszaadva a megrendelések teljes száma szerint)
+* **itemsRatio** = visszaadott elem aránya (a visszaadott elemek teljes száma és a megvásárolt elemek száma)
+* **monetaryRatio** = visszaadott összeg aránya (a visszaadott elemek teljes pénzügyi mennyisége és a megvásárolt mennyiség)
+* **gyakoriság** = visszatérési gyakoriság
 
-Az a **illessze be** működik, cserélje le **kiszolgáló**, **UID**, és **PWD** a saját kapcsolatadatokkal.
+A **beillesztési** függvényben cserélje le a **kiszolgálót**, az **UID**-t és a **pwd** -t a saját kapcsolatok adataira.
 
 ```r
 # Define the connection string to connect to the tpcxbb_1gb database
@@ -154,10 +156,10 @@ LEFT OUTER JOIN (
 "
 ```
 
-## <a name="load-the-data-into-a-data-frame"></a>Az adatok betöltése az adatkeretek
+## <a name="load-the-data-into-a-data-frame"></a>Az adatgyűjtés egy adatkeretbe
 
-Most már használja a következő szkriptet, térjen vissza az eredményeket a lekérdezésből származó használatával R adatok keret a **rxSqlServerData** függvény.
-A folyamat részeként típusának (colClasses használatával), győződjön meg arról, hogy a típusok r megfelelően átkerülnek a kijelölt oszlopokban fogja definiálni
+A következő szkripttel adja vissza az eredményeket a lekérdezésből egy R-adatkeretre a **rxSqlServerData** függvénnyel.
+A folyamat részeként meg kell határozni a kiválasztott oszlopok típusát (a colClasses használatával), hogy a rendszer helyesen továbbítsa a típusokat az R-nek.
 
 ```r
 # Query SQL Server using input_query and get the results back
@@ -180,7 +182,7 @@ customer_data <- rxDataStep(customer_returns);
 head(customer_data, n = 5);
 ```
 
-A következőhöz hasonló eredményt kell megjelennie.
+A következőhöz hasonló eredményeknek kell megjelennie.
 
 ```results
   customer orderRatio itemsRatio monetaryRatio frequency
@@ -193,24 +195,24 @@ A következőhöz hasonló eredményt kell megjelennie.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-***Ha nem fog ez az oktatóanyag folytatásához***, törölje a tpcxbb_1gb adatbázist az Azure SQL Database-kiszolgáló.
+***Ha nem folytatja ezt***az oktatóanyagot, törölje a tpcxbb_1gb-adatbázist a Azure SQL Database-kiszolgálóról.
 
-Az Azure Portalról kövesse az alábbi lépéseket:
+A Azure Portal hajtsa végre az alábbi lépéseket:
 
-1. A bal oldali menüben az Azure Portalon, válassza ki a **összes erőforrás** vagy **SQL-adatbázisok**.
-1. Az a **Szűrés név alapján...**  írja be a következőt **tpcxbb_1gb**, és válassza ki előfizetését.
-1. Válassza ki a **tpcxbb_1gb** adatbázis.
+1. A Azure Portal bal oldali menüjében válassza a **minden erőforrás** vagy **SQL-adatbázis**lehetőséget.
+1. A **szűrés név szerint...** mezőbe írja be a **tpcxbb_1gb**nevet, és válassza ki az előfizetését.
+1. Válassza ki a **tpcxbb_1gb** -adatbázist.
 1. Az **Áttekintés** oldalon válassza a **Törlés** elemet.
 
 ## <a name="next-steps"></a>További lépések
 
-Az első rész a jelen oktatóanyag-sorozatban elvégezte ezeket a lépéseket:
+Az oktatóanyag-sorozat első részében a következő lépéseket végezte el:
 
-* Minta importálása egy Azure SQL database-be
-* Másik dimenzió mentén külön ügyfelek
-* Az adatok betöltése az Azure SQL database-ből az R használata adatok keretbe
+* Mintaadatbázis importálása egy Azure SQL Database-adatbázisba
+* Ügyfelek elkülönítése különböző dimenziókban az R használatával
+* Az adatok betöltése az Azure SQL Database-ből egy R-adatkeretbe
 
-Hozzon létre egy gépi tanulási modellt, amely a vásárlói adatokat használ, kövesse az oktatóanyag-sorozat második részére:
+Az ügyféladatokat használó Machine learning-modell létrehozásához kövesse az oktatóanyag-sorozat második részét:
 
 > [!div class="nextstepaction"]
-> [Oktatóanyag: Egy prediktív modell létrehozásához az Azure SQL Database, Machine Learning Services (előzetes verzió) az R](sql-database-tutorial-clustering-model-build.md)
+> [Oktatóanyag: Prediktív modell létrehozása az R-ben Azure SQL Database Machine Learning Services (előzetes verzió)](sql-database-tutorial-clustering-model-build.md)

@@ -7,6 +7,7 @@
     - name: App Service Mobile Apps-integráció
       href: notification-hubs-app-service.md
 - name: Gyors útmutatók
+  expanded: true
   items:
     - name: Értesítési központ létrehozása – Azure Portal
       href: create-notification-hub-portal.md

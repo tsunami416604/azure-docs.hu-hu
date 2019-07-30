@@ -1,5 +1,5 @@
 ---
-title: 'Oktatóanyag: Az Azure Time Series Insights – előzetes környezet beállítása |} A Microsoft Docs'
+title: 'Oktatóanyag: Azure Time Series Insights előnézeti környezet beállítása | Microsoft Docs'
 description: Ismerje meg, hogyan állítsa be a környezetet az Azure Time Series Insights előzetes verziója.
 author: ashannon7
 ms.author: dpalled
@@ -8,335 +8,349 @@ manager: cshankar
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: tutorial
-ms.date: 06/18/2019
+ms.date: 07/29/2019
 ms.custom: seodec18
-ms.openlocfilehash: 824d24b97f192583a42192b3bb90eb1818e1aa18
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: c6fdb9a993bc81feea5566ee5c10c2c727df1390
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67272989"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68638940"
 ---
-# <a name="tutorial-set-up-an-azure-time-series-insights-preview-environment"></a>Oktatóanyag: Az Azure Time Series Insights – előzetes környezet beállítása
+# <a name="tutorial-set-up-an-azure-time-series-insights-preview-environment"></a>Oktatóanyag: Azure Time Series Insights előnézeti környezet beállítása
 
-Ez az oktatóanyag végigvezeti a használatalapú fizetés (Használatalapú) környezet Azure Time Series Insights – előzetes létrehozásának folyamatán. 
+Ez az oktatóanyag végigvezeti a Azure Time Series Insights előzetes utólagos elszámolású (TB) környezet létrehozásának folyamatán. 
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
-* Az Azure Time Series Insights – előzetes környezetet hozhat létre.
-* Csatlakozás az Azure Time Series Insights – előzetes környezet az Azure Event Hubs-eseményközpontba.
-* Egy megoldás gyorsító minta futtatása az adatok streamelése az Azure Time Series Insights – előzetes környezetbe.
-* Alapvető adatok elemzését, a.
-* Egy Idősorozat-modell típusa és a hierarchia definiálja, és társíthatja azt az üzemelő példányok.
+> [!div class="checklist"]
+> * Azure Time Series Insights előnézeti környezet létrehozása.
+> * Csatlakoztathatja a Azure Time Series Insights előnézet környezetet egy Azure-beli Event hub-Event Hubs.
+> * Egy megoldás-gyorsító minta futtatásával továbbíthatja az adatátvitelt a Azure Time Series Insights előzetes verziójának környezetében.
+> * Alapvető adatok elemzését, a.
+> * Definiáljon egy idősorozat-modell típusát és hierarchiáját, és társítsa azt a példányokhoz.
 
 >[!TIP]
-> [IoT-megoldásgyorsítók](https://www.azureiotsolutions.com/Accelerators) nagyvállalati szintű, előre konfigurált megoldások, amelyek használatával gyorsíthatja fel az egyéni IoT-megoldások fejlesztését.
+> A [IoT megoldás](https://www.azureiotsolutions.com/Accelerators) -gyorsítók olyan nagyvállalati szintű előre konfigurált megoldásokat biztosítanak, amelyek segítségével felgyorsíthatja az egyéni IoT-megoldások fejlesztését.
+
+## <a name="prerequisites"></a>Előfeltételek
+
+* Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/).
+* Az Azure bejelentkezési fiókjának az előfizetés **tulajdonosi** szerepkörének is tagja kell lennie. További információ: [hozzáférés kezelése szerepköralapú hozzáférés-vezérléssel és a Azure Portal használatával](../role-based-access-control/role-assignments-portal.md).
 
 ## <a name="create-a-device-simulation"></a>Eszközszimuláció létrehozása
 
-Ebben a szakaszban három szimulált eszközök, amelyek adatokat küldenek az Azure IoT Hub-példány létrehozása.
+Ebben a szakaszban három szimulált eszközt hoz létre, amelyek az Azure IoT Hub-példányra küldenek adatküldést.
 
-1. Nyissa meg a [Azure IoT-megoldás megoldásgyorsítók lapja](https://www.azureiotsolutions.com/Accelerators). Az oldal néhány előre létrehozott példa jeleníti meg. Jelentkezzen be az Azure-fiókjával. Ezután válassza ki **Eszközszimuláció**.
+1. Nyissa meg az [Azure IoT megoldás-gyorsítók lapot](https://www.azureiotsolutions.com/Accelerators). Az oldalon számos előre összeépített példa látható. Jelentkezzen be az Azure-fiókjával. Ezután válassza az **eszköz szimulálása**elemet.
 
-   [![Az Azure IoT-megoldás megoldásgyorsítók lapja](media/v2-update-provision/device-one-accelerator.png)](media/v2-update-provision/device-one-accelerator.png#lightbox)
+   [![Azure IoT-megoldás gyorsító lapja](media/v2-update-provision/device-one-accelerator.png)](media/v2-update-provision/device-one-accelerator.png#lightbox)
 
-   Válassza ki **kipróbálása**.
+   Válassza a **kipróbálás most**lehetőséget.
 
-1. Az a **Eszközszimuláció létrehozása megoldás** lapon, és állítsa a következő paraméterekkel:
+1. Az **eszköz-szimulációs megoldás létrehozása** lapon adja meg a következő paramétereket:
 
-    | Paraméter | Műveletek |
+    | Paraméter | Action |
     | --- | --- |
-    | **Üzemelő példány neve** | Adja meg egy egyedi értéket egy új erőforráscsoportot. A felsorolt Azure-erőforrások létrejönnek, és hozzá lesznek rendelve az erőforráscsoporthoz. |
-    | **Azure-előfizetés** | Válassza ki az előfizetést, amelyhez a Time Series Insights-környezet létrehozásához használt. |
-    | **Azure-beli helyre** | Válassza ki a régiót, amelyben a Time Series Insights-környezet létrehozásához használt. |
-    | **Központi telepítési beállítások** | Válassza ki **új IoT hubot kiépítése**. |
+    | **Központi telepítés neve** | Adjon meg egyedi értéket egy új erőforráscsoport számára. A felsorolt Azure-erőforrások létrejönnek, és hozzá lesznek rendelve az erőforráscsoporthoz. |
+    | **Azure-előfizetés** | Válassza ki azt az előfizetést, amelyet a Time Series Insights környezet létrehozásához használt. |
+    | **Azure-beli hely** | Válassza ki azt a régiót, amelyet a Time Series Insights környezet létrehozásához használt. |
+    | **Üzembe helyezési beállítások** | Válassza az **új IoT hub kiépítése**lehetőséget. |
  
-    Válassza ki **megoldás létrehozása**. A megoldás telepítésének befejezéséhez akár 20 percig is eltarthat.
+    Válassza a **megoldás létrehozása**lehetőséget. Akár 20 percet is igénybe vehet, amíg a megoldás befejezi a telepítést.
 
-    [![Eszközszimuláció megoldás lap létrehozása](media/v2-update-provision/device-two-create.png)](media/v2-update-provision/device-two-create.png#lightbox)
+    [![Eszköz-szimulációs megoldás létrehozása lap](media/v2-update-provision/device-two-create.png)](media/v2-update-provision/device-two-create.png#lightbox)
 
-## <a name="create-a-time-series-insights-preview-payg-environment"></a>Egy Time Series Insights előzetes PAYG környezet létrehozása
+## <a name="create-a-time-series-insights-preview-payg-environment"></a>Time Series Insights előnézet TB-környezet létrehozása
 
-Ez a szakasz ismerteti, hogyan hozhat létre Azure Time Series Insights – előzetes környezet, és csatlakoztassa az IoT hub, IoT-Megoldásgyorsítók használatával létrehozott a [az Azure portal](https://portal.azure.com/).
+Ez a szakasz azt ismerteti, hogyan hozhat létre Azure Time Series Insights előnézeti környezetet, és hogyan csatlakoztathatja a IoT-megoldás-gyorsító által létrehozott IoT hub-hoz a [Azure Portal](https://portal.azure.com/)használatával.
 
 1. Jelentkezzen be az Azure Portalra az előfizetéses fiókba.
 
-1. Válassza ki **erőforrás létrehozása** > **IOT-**  > **Time Series Insights**.
+1. Válassza **az erőforrás** > létrehozása**eszközök internetes hálózata** > **Time Series Insights**lehetőséget.
 
-   [![Válassza ki az eszközök internetes hálózatát, és válassza ki a Time Series Insights](media/v2-update-provision/payg-one-azure.png)](media/v2-update-provision/payg-one-azure.png#lightbox)
+   [![Válassza a eszközök internetes hálózata lehetőséget, majd válassza a Time Series Insights](media/v2-update-provision/payg-one-azure.png)](media/v2-update-provision/payg-one-azure.png#lightbox)
 
-1. Az a **létrehozásához a Time Series Insights-környezet** ablaktáblán, a a **alapjai** lapra, és állítsa a következő paraméterekkel:
+1. Az **Time Series Insights környezet létrehozása** ablaktábla **alapok** lapján adja meg a következő paramétereket:
 
-    | Paraméter | Műveletek |
+    | Paraméter | Action |
     | --- | ---|
-    | **Környezet neve** | Adja meg az Azure Time Series Insights – előzetes környezet egyedi nevét. |
-    | **Előfizetés** | Adja meg az előfizetést, ahol szeretné létrehozni az Azure Time Series Insights – előzetes környezet. Ajánlott eljárás, hogy ugyanahhoz az előfizetéshez, az IoT-erőforrásokat a készülékszimulátort által létrehozott többi részétől. |
-    | **Erőforráscsoport** | Válasszon ki egy meglévő erőforráscsoportot, vagy hozzon létre egy új erőforráscsoportot, az Azure Time Series Insights – előzetes környezet erőforrás. Az erőforráscsoport az Azure-erőforrások tárolója. Ajánlott eljárás, hogy ugyanazt az erőforráscsoportot, a többi IoT erőforrást a készülékszimulátort által létrehozott. |
-    | **Location** | Válassza ki az Azure Time Series Insights – előzetes környezet egy adatközpont-régiót. További késleltetés elkerülése érdekében érdemes az Azure Time Series Insights – előzetes környezet létrehozásához és az egyéb IoT-erőforrások ugyanabban a régióban található. |
-    | **Tier** |  Válassza ki **PAYG** (*utólagos elszámolású*). Ez a Termékváltozat az Azure Time Series Insights előzetes verziója a termékhez. |
-    | **Tulajdonságazonosító** | Adjon meg egy értéket, amely egyedileg azonosítja a time series példány. Az érték azt adja meg a **Tulajdonságazonosító** mező nem módosítható. Később nem módosítható. A jelen oktatóanyag esetében írja be a **iothub-kapcsolat-eszközazonosító**. A Time Series azonosító kapcsolatos további információkért lásd: [ajánlott eljárások a Time Series ID kiválasztására vonatkozó](./time-series-insights-update-how-to-id.md). |
-    | **Tárfiók neve** | Adjon meg egy új tárfiókot hozzon létre egy globálisan egyedi nevet. |
+    | **Környezet neve** | Adjon egyedi nevet a Azure Time Series Insights előnézeti környezetnek. |
+    | **Előfizetés** | Adja meg azt az előfizetést, amelyben létre szeretné hozni a Azure Time Series Insights előnézeti környezetet. Az ajánlott eljárás az, hogy ugyanazt az előfizetést használja, mint az eszköz-szimulátor által létrehozott többi IoT-erőforrást. |
+    | **Erőforráscsoport** | Válasszon ki egy meglévő erőforráscsoportot, vagy hozzon létre egy új erőforráscsoportot a Azure Time Series Insights előnézet környezeti erőforráshoz. Az erőforráscsoport az Azure-erőforrások tárolója. Az ajánlott eljárás az, hogy ugyanazt az erőforráscsoportot használja, mint az eszköz-szimulátor által létrehozott többi IoT-erőforrást. |
+    | **Location** | Válasszon ki egy adatközpont-régiót a Azure Time Series Insights előzetes verziójának környezetéhez. A további késés elkerülése érdekében érdemes létrehozni a Azure Time Series Insights előnézeti környezetet ugyanabban a régióban, mint a többi IoT-erőforrást. |
+    | **Tier** |  Válassza*a* **TB** (utólagos elszámolású) lehetőséget. Ez a Azure Time Series Insights előzetes termékhez tartozó SKU. |
+    | **Tulajdonság azonosítója** | Adjon meg egy értéket, amely egyedileg azonosítja a Time Series-példányt. A **tulajdonság azonosítója** mezőben megadott érték nem módosítható. Később nem módosítható. Ebben az oktatóanyagban adja meg a **iothub--kapcsolatok-Device-ID**értéket. Az idősorozat-AZONOSÍTÓval kapcsolatos további információkért lásd: [ajánlott eljárások idősorozat-azonosító](./time-series-insights-update-how-to-id.md)kiválasztásához. |
+    | **Storage-fiók neve** | Adjon meg egy globálisan egyedi nevet a létrehozandó új Storage-fiókhoz. |
    
-   Válassza ki **tovább: Eseményforrás**.
+   Válassza **a Next (tovább) lehetőséget:** Eseményforrás.
 
-   [![Egy Time Series Insights-környezet létrehozása panel](media/v2-update-provision/payg-two-create.png)](media/v2-update-provision/payg-two-create.png#lightbox)
+   [![Time Series Insights környezet létrehozására szolgáló ablaktábla](media/v2-update-provision/payg-two-create.png)](media/v2-update-provision/payg-two-create.png#lightbox)
 
-1. Az a **eseményforrás** lapra, és állítsa a következő paraméterekkel:
+1. Az **eseményforrás** lapon adja meg a következő paramétereket:
 
-   | Paraméter | Műveletek |
+   | Paraméter | Action |
    | --- | --- |
-   | **Eseményforrás létrehozása?** | Válassza ki **Igen**.|
-   | **Name (Név)** | Adja meg az eseményforrás nevének egy egyedi értéket. |
-   | **Adatforrás típusa** | Válassza ki **az IoT Hub**. |
-   | **Válassza ki a hub** | Válasszon **válasszon meglévő**. |
-   | **Előfizetés** | Válassza ki az előfizetést, amelyhez az eszköz szimulátort használ. |
-   | **Az IoT Hub nevét** | Válassza ki az IoT hub nevére, a készülékszimulátort létrehozott. |
-   | **Az IoT Hub-hozzáférési házirend** | Válassza ki **iothubowner**. |
-   | **Az IoT Hub fogyasztói csoport** | Válassza ki **új**, adjon meg egy egyedi nevet, és válassza **Hozzáadás**. A fogyasztói csoportot az Azure Time Series Insights – előzetes egyedi értéknek kell lennie. |
-   | **Időbélyeg-tulajdonság** | Ez az érték azonosítására szolgál a **időbélyeg** a bejövő telemetria-adatok a tulajdonság. Ebben az oktatóanyagban hagyja üresen ezt a jelölőnégyzetet. A szimulátor használja az IoT hubról, alapértelmezett beállítása a Time Series Insights bejövő időbélyeg. |
+   | **Létrehoz egy eseményforrás?** | Válassza az **Igen**lehetőséget.|
+   | **Name** | Adjon meg egyedi értéket az eseményforrás neveként. |
+   | **Forrás típusa** | Válassza a **IoT hub**lehetőséget. |
+   | **Válasszon hubot** | Válassza a **meglévő kiválasztása**lehetőséget. |
+   | **Előfizetés** | Válassza ki az eszköz-szimulátorhoz használt előfizetést. |
+   | **IoT Hub neve** | Válassza ki az eszköz-szimulátorhoz létrehozott IoT hub-nevet. |
+   | **Hozzáférési szabályzat IoT Hub** | Válassza a **iothubowner**lehetőséget. |
+   | **IoT Hub fogyasztói csoport** | Válassza az **új**lehetőséget, adjon meg egy egyedi nevet, majd kattintson a **Hozzáadás**gombra. A fogyasztói csoportnak egyedi értéknek kell lennie Azure Time Series Insights előzetes verzióban. |
+   | **Timestamp tulajdonság** | Ezzel az értékkel azonosítható a bejövő telemetria adataiban található **timestamp** tulajdonság. Ebben az oktatóanyagban hagyja üresen ezt a mezőt. Ez a szimulátor a IoT Hub bejövő időbélyegét használja, amely Time Series Insights alapértelmezett értéke. |
 
    Válassza az **Áttekintés + létrehozás** lehetőséget.
 
    [![Eseményforrás konfigurálása](media/v2-update-provision/payg-five-event-source.png)](media/v2-update-provision/payg-five-event-source.png#lightbox)
 
-1. Az a **felülvizsgálat + létrehozás** lapon tekintse át a beállításokat, és válassza ki **létrehozás**.
+1. A **felülvizsgálat + létrehozás** lapon tekintse át a beállításokat, majd válassza a **Létrehozás**lehetőséget.
 
-    [![Felülvizsgálat + létrehozás oldalon, a Létrehozás gombra](media/v2-update-provision/payg-six-review.png)](media/v2-update-provision/payg-six-review.png#lightbox)
+    [![Felülvizsgálat + létrehozás oldal, létrehozás gomb](media/v2-update-provision/payg-six-review.png)](media/v2-update-provision/payg-six-review.png#lightbox)
 
-    A központi telepítés állapotát tekintheti meg:
+    Az üzemelő példány állapotát a következő helyen tekintheti meg:
 
-    [![Értesítés, hogy a telepítés befejeződött](media/v2-update-provision/payg-seven-deploy.png)](media/v2-update-provision/payg-seven-deploy.png#lightbox)
+    [![Értesítés arról, hogy a telepítés befejeződött](media/v2-update-provision/payg-seven-deploy.png)](media/v2-update-provision/payg-seven-deploy.png#lightbox)
 
-1. Ha a bérlő saját érheti el az Azure Time Series Insights – előzetes környezet. Győződjön meg arról, hogy rendelkezik hozzáféréssel,:
+1. Ha Ön a bérlő tulajdonosa, hozzáférhet a Azure Time Series Insights előnézeti környezetéhez. Győződjön meg arról, hogy rendelkezik hozzáféréssel a következőhöz:
 
-   1. Keresse meg az erőforráscsoportot, és válassza ki az Azure Time Series Insights – előzetes környezet:
+   1. Keresse meg az erőforráscsoportot, majd válassza ki a Azure Time Series Insights előnézet környezetét:
 
       [![Kiválasztott környezet](media/v2-update-provision/payg-eight-environment.png)](media/v2-update-provision/payg-eight-environment.png#lightbox)
 
-   1. Az Azure Time Series Insights – előzetes oldalon válassza ki a **az adathozzáférési házirendek**:
+   1. A Azure Time Series Insights előnézet oldalon válassza az adatelérési **házirendek**lehetőséget:
 
-      [![Az adathozzáférési házirendek](media/v2-update-provision/payg-nine-data-access.png)](media/v2-update-provision/payg-nine-data-access.png#lightbox)
+      [![Adatelérési házirendek](media/v2-update-provision/payg-nine-data-access.png)](media/v2-update-provision/payg-nine-data-access.png#lightbox)
 
-   1. Győződjön meg arról, hogy szerepel-e a hitelesítő adatait:
+   1. Ellenőrizze, hogy a hitelesítő adatok szerepelnek-e a listáján:
 
-      [![Listán szereplő hitelesítő adatok](media/v2-update-provision/payg-ten-verify.png)](media/v2-update-provision/payg-ten-verify.png#lightbox)
+      [![Felsorolt hitelesítő adatok](media/v2-update-provision/payg-ten-verify.png)](media/v2-update-provision/payg-ten-verify.png#lightbox)
 
-   Ha nem jelenik meg a hitelesítő adatait, engedélyt kell saját kezűleg a környezet eléréséhez. További információt az engedélyek beállításáról, olvassa el [adathozzáférés](./time-series-insights-data-access.md).
+   Ha a hitelesítő adatai nem szerepelnek a felsorolásban, meg kell adnia magadnak a környezet eléréséhez szükséges engedélyt. Ha többet szeretne megtudni az engedélyek beállításáról, olvassa el az [adathozzáférés engedélyezése](./time-series-insights-data-access.md)című témakört.
 
-## <a name="stream-data-into-your-environment"></a>Stream data környezetébe
+## <a name="stream-data-into-your-environment"></a>Adatfolyamok továbbítása a környezetbe
 
-1. Lépjen vissza a [Azure IoT-megoldás megoldásgyorsítók lapja](https://www.azureiotsolutions.com/Accelerators). Keresse meg a megoldás a megoldás gyorsító irányítópultján. Ezután válassza ki **indítsa el a**:
+1. Váltson vissza az [Azure IoT megoldás](https://www.azureiotsolutions.com/Accelerators)-gyorsítók lapjára. Keresse meg a megoldást a megoldás-gyorsító irányítópultján. Ezután válassza az **Indítás**lehetőséget:
 
-    [![Az eszköz szimulálása megoldás indítása](media/v2-update-provision/device-three-launch.png)](media/v2-update-provision/device-three-launch.png#lightbox)
+    [![Az eszköz-szimulációs megoldás elindítása](media/v2-update-provision/device-three-launch.png)](media/v2-update-provision/device-three-launch.png#lightbox)
 
-1. A program átirányítja a **a Microsoft Azure IoT-eszköz szimulálása** lapot. Az oldal jobb felső sarkában válassza **új szimuláció**.
+1. A rendszer átirányítja a **Microsoft Azure IoT-eszköz szimulációs** lapjára. Az oldal jobb felső sarkában válassza az **új szimuláció**lehetőséget.
 
-    [![Az Azure IoT-szimuláció lap](media/v2-update-provision/device-four-iot-sim-page.png)](media/v2-update-provision/device-four-iot-sim-page.png#lightbox)
+    [![Azure IoT-szimulációs oldal](media/v2-update-provision/device-four-iot-sim-page.png)](media/v2-update-provision/device-four-iot-sim-page.png#lightbox)
 
-1. Az a **szimuláció telepítő** panelen adja meg a következő paraméterekkel:
+1. A **Szimuláció beállítása** ablaktáblán állítsa be a következő paramétereket:
 
-    | Paraméter | Műveletek |
+    | Paraméter | Action |
     | --- | --- |
-    | **Name (Név)** | Adjon meg egy egyedi nevet szimulátort. |
-    | **Leírás** | Adjon meg definíciót. |
-    | **Szimuláció időtartama** | Állítsa be **határozatlan idejű futásra**. |
-    | **Eszközmodell** | **Név**: Adja meg **hűtő**. <br />**Összeg**: Adja meg **3**. |
-    | **Cél IoT Hub** | Állítsa be **használja az előzetesen kiépített az IoT Hub**. |
+    | **Name** | Adjon egyedi nevet a szimulátornak. |
+    | **Leírás** | Adjon meg egy definíciót. |
+    | **Szimuláció időtartama** | **Határozatlan ideig**történő futtatásra van beállítva. |
+    | **Eszközmodell** | **Név**: Adjameg a Chiller értéket. <br />**Mennyiség**: Adja meg a **3**értéket. |
+    | **Cél IoT Hub** | Az **előre kiépített IoT hub használatára**van beállítva. |
 
-    [![Paraméterek beállítása](media/v2-update-provision/device-five-params.png)](media/v2-update-provision/device-five-params.png#lightbox)
+    [![Beállított paraméterek](media/v2-update-provision/device-five-params.png)](media/v2-update-provision/device-five-params.png#lightbox)
 
-    Válassza ki **szimuláció indítása**.
+    Válassza a **Szimuláció indítása**lehetőséget.
 
-    Az eszköz szimulálása irányítópultján, vegye figyelembe a látható információk **aktív eszközök** és **üzenetek / másodperc**.
+    Az eszköz szimulációjának irányítópultján jegyezze fel a másodpercenkénti **aktív eszközökhöz** és **üzenetekhez**megjelenített információkat.
 
-    [![Az Azure IoT-szimuláció irányítópult](media/v2-update-provision/device-seven-dashboard.png)](media/v2-update-provision/device-seven-dashboard.png#lightbox)
+    [![Az Azure IoT szimulációjának irányítópultja](media/v2-update-provision/device-seven-dashboard.png)](media/v2-update-provision/device-seven-dashboard.png#lightbox)
 
 ## <a name="analyze-data-in-your-environment"></a>A környezetben lévő adatok elemzése
 
-Ebben a szakaszban alapszintű elemzési hajt végre az idősorozat-adatok használatával a [Azure Time Series Insights – előzetes explorer](./time-series-insights-update-explorer.md).
+Ebben a szakaszban az idősorozat-adatokra vonatkozó alapszintű elemzéseket a [Azure Time Series Insights Preview Explorer](./time-series-insights-update-explorer.md)használatával hajtja végre.
 
-1. Az URL-címet az erőforrás-oldalon válassza ki az Azure Time Series Insights – előzetes Explorerben nyissa meg a [az Azure portal](https://portal.azure.com/).
+1. A [Azure Portal](https://portal.azure.com/)erőforrás oldaláról válassza ki az URL-címet a Azure Time Series Insights előnézeti Explorerben.
 
-    [![A Time Series Insights előzetes verziója explorer URL-címe](media/v2-update-provision/analyze-one-portal.png)](media/v2-update-provision/analyze-one-portal.png#lightbox)
+    [![A Time Series Insights Preview Explorer URL-címe](media/v2-update-provision/analyze-one-portal.png)](media/v2-update-provision/analyze-one-portal.png#lightbox)
 
-1. A Explorerben válassza ki a **idő sorozat példányai** csomópont a környezet az Azure Time Series Insights – előzetes példányok megtekintéséhez.
+1. Az Explorerben válassza ki az idősorozat- **példányok** csomópontot a környezetben található összes Azure Time Series Insights-előnézeti példány megtekintéséhez.
 
-    [![Fölérendelt objektum nélküli-példányok listájának](media/v2-update-provision/analyze-two-unparented.png)](media/v2-update-provision/analyze-two-unparented.png#lightbox)
+    [![Nem szülő példányok listája](media/v2-update-provision/analyze-two-unparented.png)](media/v2-update-provision/analyze-two-unparented.png#lightbox)
 
-1. Válassza ki az első alkalommal sorozat. Ezután válassza ki **nyomás megjelenítése**.
+1. Válassza ki az első idősorozat-példányt. Ezután válassza a **nyomás megjelenítése**lehetőséget.
 
-    [![Time series példány átlagos nyomás megjeleníthető menü paranccsal kiválasztva](media/v2-update-provision/analyze-three-show-pressure.png)](media/v2-update-provision/analyze-three-show-pressure.png#lightbox)
+    [![A kiválasztott Time Series-példány a Menu paranccsal az átlagos nyomás megjelenítéséhez](media/v2-update-provision/analyze-three-show-pressure.png)](media/v2-update-provision/analyze-three-show-pressure.png#lightbox)
 
-    Time series diagram jelenik meg. Módosítsa a **időköz** való **15 mp**.
+    Ekkor megjelenik egy idősorozat-diagram. Módosítsa az **intervallumot** a **15s**értékre.
 
-    [![Adatsorozat idődiagram](media/v2-update-provision/analyze-four-chart.png)](media/v2-update-provision/analyze-four-chart.png#lightbox)
+    [![Idősorozat-diagram](media/v2-update-provision/analyze-four-chart.png)](media/v2-update-provision/analyze-four-chart.png#lightbox)
 
-1. Ismételje meg a műveletet 3. lépés-a másik kettőt idő sorozat példányai. Minden alkalommal sorozat példányai, tekintheti meg ezen a diagramon látható módon:
+1. Ismételje meg a 3. lépést a másik két idősorozat-példánnyal. Az összes idősorozat-példányt megtekintheti, ahogy az a következő ábrán is látható:
 
-    [![Az összes idősorozat diagram](media/v2-update-provision/analyze-five-chart.png)](media/v2-update-provision/analyze-five-chart.png#lightbox)
+    [![Diagram az összes idősorozathoz](media/v2-update-provision/analyze-five-chart.png)](media/v2-update-provision/analyze-five-chart.png#lightbox)
 
-1. Az a **időkeretre** lehetőséget a box, a time series trendek megtekintéséhez az utolsó egy órára időtartomány módosítása:
+1. Az időintervallum **beállításnál** módosítsa az időtartományt, hogy megtekintse a Time Series trendeket az elmúlt órában:
 
-    [![Az időtartomány beállítása egy órára](media/v2-update-provision/analyze-six-time.png)](media/v2-update-provision/analyze-six-time.png#lightbox)
+    [![Időtartomány beállítása egy órára](media/v2-update-provision/analyze-six-time.png)](media/v2-update-provision/analyze-six-time.png#lightbox)
 
-## <a name="define-and-apply-a-model"></a>Definiálása és alkalmazása a modell
+## <a name="define-and-apply-a-model"></a>Modell meghatározása és alkalmazása
 
-Ebben a szakaszban egy modellt az adatok szerkezetének vonatkoznak. Fejezze be a modell, típusok, hierarchiákat és példányok megadása. Adatmodellezés kapcsolatos további információkért lásd: [Idősorozat-modell](./time-series-insights-update-tsm.md).
+Ebben a szakaszban egy modellt alkalmaz az adatai struktúrájára. A modell elvégzéséhez a típusokat, hierarchiákat és példányokat kell meghatároznia. Az adatmodellezéssel kapcsolatos további információkért lásd: idősorozat- [modell](./time-series-insights-update-tsm.md).
 
-1. A Explorerben válassza ki a **modell** lapon:
+1. A Explorerben válassza a **modell** fület:
 
-   [![Az Explorer modell lap](media/v2-update-provision/define-one-model.png)](media/v2-update-provision/define-one-model.png#lightbox)
+   [![Modell lap a Explorerben](media/v2-update-provision/define-one-model.png)](media/v2-update-provision/define-one-model.png#lightbox)
 
-1. Válassza ki **Hozzáadás** típus:
+1. Típus hozzáadásához válassza a **Hozzáadás** lehetőséget:
 
-   [![A Hozzáadás gombra típusok](media/v2-update-provision/define-two-add.png)](media/v2-update-provision/define-two-add.png#lightbox)
+   [![A Hozzáadás gomb a típusoknál](media/v2-update-provision/define-two-add.png)](media/v2-update-provision/define-two-add.png#lightbox)
 
-1. Ezt követően adja meg a típus mindhárom változóval: *nyomás*, *hőmérséklet*, és *páratartalom*. Az a **-típus hozzáadása** panelen adja meg a következő paraméterekkel:
+1. Ezután három változót határozhat meg a következő típushoz: *nyomás*, *hőmérséklet*és *páratartalom*. A **típus hozzáadása** panelen állítsa be a következő paramétereket:
 
-    | Paraméter | Műveletek |
+    | Paraméter | Action |
     | --- | ---|
-    | **Name (Név)** | Adja meg **hűtő**. |
-    | **Leírás** | Adja meg **Ez a típus definíciójának hűtő**. |
+    | **Name** | Adjameg a Chiller értéket. |
+    | **Leírás** | Adjameg a Chiller típusának definícióját. |
 
-   * Meghatározásához *nyomás*alatt **változók**, állítsa be a következő paraméterekkel:
+   * A *terhelés*meghatározásához a **változók**területen adja meg a következő paramétereket:
 
-     | Paraméter | Műveletek |
+     | Paraméter | Action |
      | --- | ---|
-     | **Name (Név)** | Adja meg **átlagos nyomás**. |
-     | **Érték** | Válassza ki **nyomás (kétirányú)** . Néhány percet igénybe vehet **érték** az Azure Time Series Insights előzetes verziója a fogadott események elindulása után automatikusan kitöltve. |
-     | **Összesítési műveletet** | Válassza ki **átlagos**. |
+     | **Name** | Adja meg az **AVG nyomást**. |
+     | **Érték** | Válassza a **nyomás (Double)** lehetőséget. Az **érték** automatikus kitöltése eltarthat néhány percig, miután Azure Time Series Insights előnézet megkezdi az események fogadását. |
+     | **Összesítési művelet** | Válassza az **AVG**elemet. |
 
-      [![Kijelölések nyomás definiálása](media/v2-update-provision/define-three-variable.png)](media/v2-update-provision/define-three-variable.png#lightbox)
+      [![A nyomás definiálásának kiválasztása](media/v2-update-provision/define-three-variable.png)](media/v2-update-provision/define-three-variable.png#lightbox)
 
-      Adja hozzá a következő változót, jelölje be **változó hozzáadása**.
+      A következő változó hozzáadásához válassza a **változó hozzáadása**elemet.
 
-   * Definiálása *hőmérséklet*:
+   * *Hőmérséklet*meghatározása:
 
-     | Paraméter | Műveletek |
+     | Paraméter | Action |
      | --- | ---|
-     | **Name (Név)** | Adja meg **átlagos hőmérsékletét**. |
-     | **Érték** | Válassza ki **hőmérséklet (kétirányú)** . Néhány percet igénybe vehet **érték** az Azure Time Series Insights előzetes verziója a fogadott események elindulása után automatikusan kitöltve. |
-     | **Összesítési műveletet** | Válassza ki **átlagos**.|
+     | **Name** | Adja meg az **AVG hőmérsékletet**. |
+     | **Érték** | Válassza a **hőmérséklet (Double)** lehetőséget. Az **érték** automatikus kitöltése eltarthat néhány percig, miután Azure Time Series Insights előnézet megkezdi az események fogadását. |
+     | **Összesítési művelet** | Válassza az **AVG**elemet.|
 
-      [![Kijelölések hőmérséklet definiálása](media/v2-update-provision/define-four-avg.png)](media/v2-update-provision/define-four-avg.png#lightbox)
+      [![A hőmérséklet meghatározásának kiválasztása](media/v2-update-provision/define-four-avg.png)](media/v2-update-provision/define-four-avg.png#lightbox)
 
-      Adja hozzá a következő változót, jelölje be **változó hozzáadása**.
+      A következő változó hozzáadásához válassza a **változó hozzáadása**elemet.
 
-   * Definiálása *páratartalom*:
+   * *Páratartalom*meghatározása:
 
       | | |
       | --- | ---|
-      | **Name (Név)** | Adja meg **maximális nedvességtartalma** |
-      | **Érték** | Válassza ki **páratartalom (kétirányú)** . Néhány percet igénybe vehet **érték** az Azure Time Series Insights előzetes verziója a fogadott események elindulása után automatikusan kitöltve. |
-      | **Összesítési műveletet** | Válassza ki **maximális**.|
+      | **Name** | **Maximális páratartalom** megadása |
+      | **Érték** | Válassza a **páratartalom (dupla)** lehetőséget. Az **érték** automatikus kitöltése eltarthat néhány percig, miután Azure Time Series Insights előnézet megkezdi az események fogadását. |
+      | **Összesítési művelet** | Válassza a **Max**lehetőséget.|
 
-      [![Kijelölések hőmérséklet definiálása](media/v2-update-provision/define-five-humidity.png)](media/v2-update-provision/define-five-humidity.png#lightbox)
+      [![A hőmérséklet meghatározásának kiválasztása](media/v2-update-provision/define-five-humidity.png)](media/v2-update-provision/define-five-humidity.png#lightbox)
 
     Kattintson a **Létrehozás** gombra.
 
-    Láthatja, hogy a hozzáadott típusa:
+    A hozzáadott típust láthatja:
 
-    [![A hozzáadott típusára vonatkozó adatok](media/v2-update-provision/define-six-type.png)](media/v2-update-provision/define-six-type.png#lightbox)
+    [![A hozzáadott típussal kapcsolatos információk](media/v2-update-provision/define-six-type.png)](media/v2-update-provision/define-six-type.png#lightbox)
 
-1. A következő lépés, hogy a hierarchia hozzáadása. A **hierarchiák**válassza **Hozzáadás**:
+1. A következő lépés egy hierarchia hozzáadása. A **hierarchiák**területen válassza a **Hozzáadás**lehetőséget:
 
     [![Hierarchiák lap Hozzáadás gomb](media/v2-update-provision/define-seven-hierarchy.png)](media/v2-update-provision/define-seven-hierarchy.png#lightbox)
 
-1. Az a **hierarchia szerkesztése** panelen adja meg a következő paraméterekkel:
+1. A **hierarchia szerkesztése** panelen állítsa be a következő paramétereket:
 
-   | Paraméter | Műveletek |
+   | Paraméter | Action |
    | --- | ---|
-   | **Name (Név)** | Adja meg **hely hierarchiában**. |
-   | **1. szint** | Adja meg **ország**. |
-   | **2. szint** | Adja meg **Város**. |
-   | **3. szint** | Adja meg **épület**. |
+   | **Name** | Adja meg a **hely hierarchiáját**. |
+   | **1. szint** | Adja meg az **országot**. |
+   | **2. szint** | Adja meg a **várost**. |
+   | **3. szint** | Adja meg az **építési**értéket. |
 
    Kattintson a **Mentés** gombra.
 
-    [![A Létrehozás gombra hierarchia mezők](media/v2-update-provision/define-eight-add-hierarchy.png)](media/v2-update-provision/define-eight-add-hierarchy.png#lightbox)
+    [![Hierarchia mezői a létrehozás gombbal](media/v2-update-provision/define-eight-add-hierarchy.png)](media/v2-update-provision/define-eight-add-hierarchy.png#lightbox)
 
-   A hierarchia létrehozott tekintheti meg:
+   A létrehozott hierarchiát a következő helyen tekintheti meg:
 
-    [![A hierarchiára vonatkozó információk](media/v2-update-provision/define-nine-created.png)](media/v2-update-provision/define-nine-created.png#lightbox)
+    [![A hierarchiával kapcsolatos információk](media/v2-update-provision/define-nine-created.png)](media/v2-update-provision/define-nine-created.png#lightbox)
 
-1. Válassza ki **példányok**. Az első példánynál, majd válassza ki és **szerkesztése**:
+1. Válasszaa példányok lehetőséget. Válassza ki az első példányt, majd válassza a **Szerkesztés**lehetőséget:
 
-    [![A Szerkesztés gombra egy példány kiválasztása](media/v2-update-provision/define-ten-edit.png)](media/v2-update-provision/define-ten-edit.png#lightbox)
+    [![Egy példány szerkesztés gombjának kiválasztása](media/v2-update-provision/define-ten-edit.png)](media/v2-update-provision/define-ten-edit.png#lightbox)
 
-1. Az a **példányok szerkesztése** panelen adja meg a következő paraméterekkel:
+1. A **példányok szerkesztése** panelen állítsa be a következő paramétereket:
 
-    | Paraméter | Műveletek |
+    | Paraméter | Action |
     | --- | --- |
-    | **Típus** | Válassza ki **hűtő**. |
-    | **Leírás** | Adja meg **hűtő-01.1-példány**. |
-    | **Hierarchiák** | Válassza ki **hely hierarchiában**. |
-    | **Ország** | Adja meg **USA**. |
-    | **Város** | Adja meg **Seattle**. |
-    | **Épület** | Adja meg **tű Címterét**. |
+    | **Típus** | Válasszaa Chiller lehetőséget. |
+    | **Leírás** | **A Chiller-01,1 példány**megadása. |
+    | **Hierarchiák** | Válassza ki a **hely hierarchiáját**. |
+    | **Ország** | Adja meg az **USA**-t. |
+    | **Város** | Adja meg a **Seattle**nevet. |
+    | **Létrehozása** | Adja meg a **Space tű**értéket. |
 
-    [![A Mentés gombra a szolgáltatáspéldány-mezők](media/v2-update-provision/define-eleven-chiller.png)](media/v2-update-provision/define-eleven-chiller.png#lightbox)
+    [![Példány mezői a Mentés gombbal](media/v2-update-provision/define-eleven-chiller.png)](media/v2-update-provision/define-eleven-chiller.png#lightbox)
 
    Kattintson a **Mentés** gombra.
 
-1. Ismételje meg az előző lépést a többi érzékelő számára. Frissítse a következő értékeket:
+1. Ismételje meg az előző lépést a többi érzékelőnél. Frissítse a következő értékeket:
 
-   * A hűtő 01.2:
+   * A Chiller 01,2 esetén:
 
-     | Paraméter | Műveletek |
+     | Paraméter | Action |
      | --- | --- |
-     | **Típus** | Válassza ki **hűtő**. |
-     | **Leírás** | Adja meg **hűtő-01.2-példány**. |
-     | **Hierarchiák** | Válassza ki **hely hierarchiában**. |
-     | **Ország** | Adja meg **USA**. |
-     | **Város** | Adja meg **Seattle**. |
-     | **Épület** | Adja meg **csendes-óceáni adatelemzési Center**. |
+     | **Típus** | Válasszaa Chiller lehetőséget. |
+     | **Leírás** | **A Chiller-01,2 példány**megadása. |
+     | **Hierarchiák** | Válassza ki a **hely hierarchiáját**. |
+     | **Ország** | Adja meg az **USA**-t. |
+     | **Város** | Adja meg a **Seattle**nevet. |
+     | **Létrehozása** | Adja meg a **Pacific Science centert**. |
 
-   * A hűtő 01.3:
+   * A Chiller 01,3 esetén:
 
-     | Paraméter | Műveletek |
+     | Paraméter | Action |
      | --- | --- |
-     | **Típus** | Válassza ki **hűtő**. |
-     | **Leírás** | Adja meg **hűtő-01.3-példány**. |
-     | **Hierarchiák** | Válassza ki **hely hierarchiában**. |
-     | **Ország** | Adja meg **USA**. |
-     | **Város** | Adja meg **New York-i**. |
-     | **Épület** | Adja meg **Empire állapot épület**. |
+     | **Típus** | Válasszaa Chiller lehetőséget. |
+     | **Leírás** | **A Chiller-01,3 példány**megadása. |
+     | **Hierarchiák** | Válassza ki a **hely hierarchiáját**. |
+     | **Ország** | Adja meg az **USA**-t. |
+     | **Város** | Adja meg a **New York**-i értéket. |
+     | **Létrehozása** | Adja meg a **Birodalom állapotának kiépítése**értéket. |
 
-1. Válassza ki a **elemzés** lapra, és ezután frissítse a lapot. A **hely hierarchiában**, bontsa ki a time series példányok megjeleníthető az összes hierarchiaszintek:
+1. Válassza az **elemzés** fület, majd frissítse az oldalt. Az idősorozat-példányok megjelenítéséhez a **hely hierarchiája**alatt bontsa ki az összes hierarchia szintet:
 
-   [![Az elemzés lapon](media/v2-update-provision/define-twelve.png)](media/v2-update-provision/define-twelve.png#lightbox)
+   [![Az elemzés lap](media/v2-update-provision/define-twelve.png)](media/v2-update-provision/define-twelve.png#lightbox)
 
-1. Ismerkedés a time series példányok az elmúlt órában, módosítsa **Gyorshivatkozások** való **utolsó óra**:
+1. Az idősorozat-példányok az elmúlt órában való megismeréséhez módosítsa a **gyors** időt az **elmúlt órában**:
 
-    [![Gyorshivatkozások mezőbe, a kiválasztott elmúlt óra](media/v2-update-provision/define-thirteen-explore.png)](media/v2-update-provision/define-thirteen-explore.png#lightbox)
+    [![A gyors időpontok mező, az utolsó órában kiválasztva](media/v2-update-provision/define-thirteen-explore.png)](media/v2-update-provision/define-thirteen-explore.png#lightbox)
 
-1. A **csendes-óceáni adatelemzési Center**, válassza ki a time series-példányt, és válassza **megjelenítése maximális páratartalom**.
+1. A **Pacific Science Center**területen válassza ki az idősorozat-példányt, majd válassza a **maximális páratartalom megjelenítése**lehetőséget.
 
-    [![Kiválasztott idő sorozatú példányok és a maximális páratartalom Megjelenítés menü kiválasztása](media/v2-update-provision/define-fourteen-show-max.png)](media/v2-update-provision/define-fourteen-show-max.png#lightbox)
+    [![A kiválasztott Time Series-példány és a maximális páratartalom megjelenítése menü kiválasztása](media/v2-update-provision/define-fourteen-show-max.png)](media/v2-update-provision/define-fourteen-show-max.png#lightbox)
 
-1. Az idősor a **maximális páratartalom** egy időköz mérettel **1 perces** nyílik meg. Számos szűrési, válasszon ki egy régiót. Események az időkereten belül elemzése, kattintson a jobb gombbal a diagramra, és válassza **nagyítás**:
+1. A **maximális páratartalom** idősorozata **1 perces** intervallummal megnyitva. Egy tartomány szűréséhez válasszon ki egy régiót. Az időkeretben lévő események elemzéséhez kattintson a jobb gombbal a diagramra, majd válassza a **Nagyítás**lehetőséget:
 
-   [![Kijelölt tartomány nagyítás paranccsal a helyi menü](media/v2-update-provision/define-fifteen-filter.png)](media/v2-update-provision/define-fifteen-filter.png#lightbox)
+   [![Kijelölt tartomány nagyítási paranccsal a helyi menüben](media/v2-update-provision/define-fifteen-filter.png)](media/v2-update-provision/define-fifteen-filter.png#lightbox)
 
-1. Esemény részleteinek megtekintéséhez válassza ki a régiót, és kattintson a jobb gombbal a diagram:
+1. Az esemény részleteinek megtekintéséhez válasszon ki egy régiót, majd kattintson a jobb gombbal a diagramra:
 
    [![Események részletes listája](media/v2-update-provision/define-eighteen.png)](media/v2-update-provision/define-eighteen.png#lightbox)
+
+
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+
+Most, hogy elvégezte az oktatóanyagot, törölje a létrehozott erőforrásokat:
+
+1. A [Azure Portal](https://portal.azure.com)bal oldali menüjében válassza a **minden erőforrás**lehetőséget, keresse meg a Azure Time Series Insights erőforráscsoportot.
+1. Törölje a teljes erőforráscsoportot (és az abban található összes erőforrást) úgy, hogy kiválasztja az egyes erőforrások törlését vagy eltávolítását.
 
 ## <a name="next-steps"></a>További lépések
 
 Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:  
 
 > [!div class="checklist"]
-> * Létrehozhat és használhat egy eszköz szimulálása gyorsító.
-> * Az Azure Time Series Insights előzetes PAYG környezetet hozhat létre.
-> * Csatlakozás az Azure Time Series Insights – előzetes környezet egy eseményközpontba.
-> * A megoldás gyorsító minta futtatása az adatok streamelése az Azure Time Series Insights – előzetes környezetbe.
+> * Eszköz-szimulációs gyorssegéd létrehozása és használata.
+> * Hozzon létre egy Azure Time Series Insights előzetes verziójú TB-környezetet.
+> * Az Azure Time Series Insights előnézeti környezetének összekötése egy Event hubhoz.
+> * Egy megoldás-gyorsító minta futtatásával továbbíthatja az adatátvitelt a Azure Time Series Insights előnézeti környezetbe.
 > * Az adatok egy alapszintű elemzéseket végezhet.
-> * Egy Idősorozat-modell típusa és a hierarchia definiálja, és rendelje azokat a példányokat.
+> * Definiáljon egy idősorozat-modell típusát és hierarchiáját, majd társítsa azokat a példányokhoz.
 
-Most, hogy tudja, hogyan hozhat létre a saját Azure Time Series Insights – előzetes környezet, tudjon meg többet az Azure Time Series Insightsban kapcsolatos főbb fogalmakat.
+Most, hogy már tudja, hogyan hozhat létre saját Azure Time Series Insights előnézeti környezetet, további információt olvashat a Azure Time Series Insights főbb fogalmakról.
 
-További információ az Azure Time Series Insights tárolási konfigurációt:
+További információ a Azure Time Series Insights Storage-konfigurációról:
 
 > [!div class="nextstepaction"]
 > [Az Azure Time Series Insights előzetes verziója storage és a bejövő forgalom](./time-series-insights-update-storage-ingress.md)

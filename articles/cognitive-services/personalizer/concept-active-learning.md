@@ -1,71 +1,71 @@
 ---
-title: Aktív tanulás – Personalizer
+title: Aktív tanulás – személyre szabás
 titleSuffix: Azure Cognitive Services
 description: ''
 services: cognitive-services
-author: edjez
+author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 05/30/2019
-ms.author: edjez
-ms.openlocfilehash: c44afc81a7ec9d05cdc04cc8bc46c77cd51ceaf8
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.author: diberry
+ms.openlocfilehash: 8c1579be3d11ae14ca45ee861de2d4f705e5d62c
+ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67722532"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68663711"
 ---
-# <a name="active-learning-and-learning-policies"></a>Aktív tanulás és a szabályzatok tanulási 
+# <a name="active-learning-and-learning-policies"></a>Aktív tanulási és képzési szabályzatok 
 
-Ha az alkalmazás meghívja a rang API-t, a tartalom egy rangsorát kap. Üzleti logika a sorrend meghatározására segítségével határozza meg, ha a tartalom lehet a felhasználó adatai jelennek meg. Amikor megjeleníti a rangsorolt tartalmat, amely egy _aktív_ rangsorolják esemény. Ha az alkalmazás nem jelenik meg, amely a tartalom, vagyis rangsorolva, amelyekről egy _inaktív_ rangsorolják esemény. 
+Ha az alkalmazás meghívja a Rank API-t, akkor a tartalom rangját kapja meg. Az üzleti logika ezt a rangsort használva állapíthatja meg, hogy a tartalom megjelenjen-e a felhasználó számára. Ha megjeleníti a rangsorolt tartalmat, az egy _aktív_ Range esemény. Ha az alkalmazás nem jeleníti meg a rangsorolt tartalmat, ez egy inaktív Range esemény. 
 
-Aktív rangsorolják eseményadatok Personalizer küld vissza. Ezt az információt segítségével továbbra is az aktuális learning szabályzat a modell betanításához.
+A rendszer az aktív Range eseményre vonatkozó információkat adja vissza a személyre. Ezek az információk a modell tanításának folytatására szolgálnak a jelenlegi tanulási szabályzaton keresztül.
 
 ## <a name="active-events"></a>Aktív események
 
-Aktív események mindig megjelennek a felhasználó számára, és a ellenszolgáltatás hívás gombra kattintva zárja be a learning hurok visszaküldését. 
+Az aktív eseményeket mindig a felhasználónak kell megjelennie, és a jutalmazási hívást vissza kell adni a tanulási hurok bezárásához. 
 
 ### <a name="inactive-events"></a>Inaktív események 
 
-Inaktív eseményeket nem szabad módosítani az alapul szolgáló modell, mert a felhasználó nem lett megadva egy alkalommal a rangsorolt tartalom közül választhat.
+Az inaktív események nem változtathatják meg az alapul szolgáló modellt, mert a felhasználó nem adott lehetőséget a rangsorolt tartalom kiválasztására.
 
-## <a name="dont-train-with-inactive-rank-events"></a>Az inaktív rangsorolják események nem betanítása 
+## <a name="dont-train-with-inactive-rank-events"></a>Ne legyen betanítva az inaktív Range eseményeivel 
 
-Egyes alkalmazások esetében szükség lehet a rang API meghívása anélkül, hogy még ha az alkalmazás megjeleníti az eredményeket a felhasználónak. 
+Egyes alkalmazások esetében előfordulhat, hogy a rangsor API-t kell meghívnia anélkül, hogy még tudnia kellene, hogy az alkalmazás az eredményeket a felhasználónak fogja megjeleníteni. 
 
-Ez akkor fordul elő, ha:
+Ez a következő esetekben fordul elő:
 
-* Előfordulhat, hogy lehet előre megjelenítése néhány felhasználói felület, amely a felhasználót, vagy esetleg nem kapják meg megtekintéséhez. 
-* Előfordulhat, hogy az alkalmazás foglalják prediktív személyre szabása, amelyben rangsorolják hívások kisebb valós idejű környezettel végzett, és előfordulhat, hogy a kimenetet, vagy nem lehetséges, hogy az alkalmazás által használt. 
+* Előfordulhat, hogy a felhasználó előre megjelenít néhány felhasználói felületet, amelyet a felhasználónak esetleg nem fog látni. 
+* Előfordulhat, hogy az alkalmazás prediktív megszemélyesítést végez, amelyben a rangsorolási hívások kevésbé valós idejű környezettel történnek, és az alkalmazás nem használja fel a kimenetet. 
 
-### <a name="disable-active-learning-for-inactive-rank-events-during-rank-call"></a>Aktív tanulás inaktív rangsorolják események rangsorolják hívás során letiltása
+### <a name="disable-active-learning-for-inactive-rank-events-during-rank-call"></a>Inaktív rangsorolási események aktív tanulásának letiltása a rangsor hívása során
 
-Letiltja az automatikus tanulás, hívja meg a rang `learningEnabled = False`.
+Az automatikus tanulás letiltásához hívja a `learningEnabled = False`rangsort a következővel:.
 
-Az inaktív esemény Learning implicit módon aktiválódik, ha elküldi egy díjazásban belüli Rangjának.
+Az inaktív események megismerése implicit módon aktiválódik, ha a Rangsorért jutalmat küld.
 
-## <a name="learning-policies"></a>Tanulási házirendek
+## <a name="learning-policies"></a>Képzési szabályzatok
 
-Tanulási házirend határozza meg, az adott *hiperparaméterek* , a modell betanítása. Két modellje közül ugyanazokat az adatokat, tanított különböző tanulási szabályzatokat, a rendszer eltérően viselkednek.
+A képzési szabályzat meghatározza a modell betanításának konkrét *hiperparaméterek beállítása* . A különböző tanulási szabályzatokra kitanított két modell eltérő módon viselkedik.
 
-### <a name="importing-and-exporting-learning-policies"></a>Tanulási házirendek importálása és exportálása
+### <a name="importing-and-exporting-learning-policies"></a>Tanulási szabályzatok importálása és exportálása
 
-Importálhatja és exportálhatja a tanulási házirend fájlokat az Azure Portalról. Ez lehetővé teszi, hogy mentse a meglévő szabályzatokat, tesztelje le azokat, cserélje le a és a későbbi felhasználás és naplózási összetevők, a kódot verziókövetési rendszerben archiválja őket.
+A Azure Portalból importálhat és exportálhat tanulási házirend-fájlokat. Ez lehetővé teszi a meglévő szabályzatok mentését, tesztelését, cseréjét és archiválását a forráskód vezérlőelemben a későbbi referenciák és auditálások összetevőiként.
 
-### <a name="learning-policy-settings"></a>Tanulási házirend-beállítások
+### <a name="learning-policy-settings"></a>Tanulási szabályzat beállításai
 
-A beállítások a **Learning házirend** nem tartozhat módosítható. Csak akkor módosítsa a beállításokat, ha megismeri, hogyan Personalizer kerültek. A felhasználó tudta nélkül beállításainak módosítása esetén hatásai, beleértve a Personalizer modellek érvénytelenítése.
+A **tanulási szabályzat** beállításai nem módosíthatók. Csak akkor módosítsa a beállításokat, ha megérti, hogyan befolyásolják a személyre szabást. Ha az ismeret nélkül módosítja a beállításokat, a rendszer mellékhatásokat okoz, beleértve a személyre szabott modellek érvénytelenítését is.
 
-### <a name="comparing-effectiveness-of-learning-policies"></a>Tanulási házirendek hatékonyságának összehasonlítása
+### <a name="comparing-effectiveness-of-learning-policies"></a>A tanulási szabályzatok hatékonyságának összehasonlítása
 
-Összehasonlíthatja a különböző tanulási házirendek lenne végrehajtása után Personalizer naplók az elmúlt adatokon foglalkozások [offline értékelések](concepts-offline-evaluation.md).
+Az [Offline értékelések](concepts-offline-evaluation.md)segítségével összehasonlíthatja, hogy a különböző képzési szabályzatok hogyan lettek elvégezve a személyre szabott naplók korábbi adatainak használatával.
 
-[Töltse fel a saját tanulási házirendek](how-to-offline-evaluation.md) való összehasonlításra az aktuális learning házirend.
+[Töltse fel a saját képzési szabályzatait](how-to-offline-evaluation.md) , és hasonlítsa össze az aktuális képzési szabályzatot.
 
-### <a name="discovery-of-optimized-learning-policies"></a>Felderítési optimalizált learning házirendek
+### <a name="discovery-of-optimized-learning-policies"></a>Optimalizált tanulási szabályzatok felderítése
 
-Personalizer több optimalizált learning házirendet hozhat létre, amikor egy [offline értékelési](how-to-offline-evaluation.md). Egy több optimalizált learning szabályzatot, amely jobb jutalmakat van egy kapcsolat nélküli értékelési jelenik meg, jobb eredményeket, ha a használt online Personalizer előállításához.
+Ha [Offline értékelést](how-to-offline-evaluation.md)végez, a személyre szabott képzési szabályzatot hozhat létre. Egy optimalizált tanulási szabályzat, amely azt mutatja, hogy jobb jutalmak vannak az offline értékelésekben, jobb eredményeket fog eredményezni, amikor online használatban van a személyre Szabásban.
 
-Az optimalizált learning házirend létrehozását követően alkalmazhat, közvetlenül a Personalizer így azonnal lecseréli a jelenlegi házirend, vagy további értékelés céljából mentse, és döntse el, a jövőben e elveti, menteni vagy alkalmazás később.
+Az optimalizált tanulási szabályzat létrehozása után közvetlenül a személyre szabható, így azonnal lecseréli az aktuális szabályzatot, vagy további értékelés céljából mentheti, és a jövőben dönthet arról, hogy később elkerülheti, mentheti vagy alkalmazhatja azt.

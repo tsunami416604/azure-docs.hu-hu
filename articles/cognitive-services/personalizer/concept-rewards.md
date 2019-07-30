@@ -1,123 +1,123 @@
 ---
-title: Ellenszolgáltatás pontszám - Personalizer
+title: Jutalom pontszáma – személyre szabás
 titleSuffix: Azure Cognitive Services
-description: A ellenszolgáltatás pontszám azt jelzi, hogy mennyire a személyre szabás tetszőleges RewardActionID, a felhasználó járt. A ellenszolgáltatás pontszám értéke határozza meg az üzleti logikát, és megfigyelik a felhasználói viselkedés alapján. Personalizer betanítja a gépi tanulási modellek által a felhőtechnológia kiértékelése.
+description: A jutalmazási pontszám azt jelzi, hogy a felhasználó személyre szabása milyen mértékben RewardActionID. A jutalom pontszám értékét az üzleti logikája határozza meg, a felhasználói viselkedés megfigyelése alapján. A személyre szabott gépi tanulási modelljeit a jutalmak kiértékelésével teheti meg.
 services: cognitive-services
-author: edjez
+author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 06/07/2019
-ms.author: edjez
-ms.openlocfilehash: 39db28cd7e11d77362a2aefcf4ad8d2748db59c2
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.author: diberry
+ms.openlocfilehash: 72c425a1ec9fb83cc2e9dd1bae2c4f521109f162
+ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67722507"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68663379"
 ---
-# <a name="reward-scores-indicate-success-of-personalization"></a>Ellenszolgáltatás-hoz közeliek sikeres személyre szabása
+# <a name="reward-scores-indicate-success-of-personalization"></a>A jutalom pontszámai a személyre szabás sikerességét jelzik
 
-A ellenszolgáltatás pontszám azt jelzi, hogy mennyire a személyre szabás választás [RewardActionID](https://docs.microsoft.com/rest/api/cognitiveservices/personalizer/rank/rank#response), a felhasználó eszköznévre. A ellenszolgáltatás pontszám értéke határozza meg az üzleti logikát, és megfigyelik a felhasználói viselkedés alapján.
+A jutalmazási pontszám azt jelzi, hogy a felhasználó személyre szabása milyen mértékben [RewardActionID](https://docs.microsoft.com/rest/api/cognitiveservices/personalizer/rank/rank#response). A jutalom pontszám értékét az üzleti logikája határozza meg, a felhasználói viselkedés megfigyelése alapján.
 
-Personalizer betanítja a gépi tanulási modellek által a felhőtechnológia kiértékelése. 
+A személyre szabott gépi tanulási modelljeit a jutalmak kiértékelésével teheti meg. 
 
-## <a name="use-reward-api-to-send-reward-score-to-personalizer"></a>Ellenszolgáltatás pontszám küldendő Personalizer ellenszolgáltatás API használata
+## <a name="use-reward-api-to-send-reward-score-to-personalizer"></a>Jutalmazási pontszám küldése a személyre szabáshoz a jutalmazási API használatával
 
-Jutalmakat Personalizer által küldött a [ellenszolgáltatás API](https://docs.microsoft.com/rest/api/cognitiveservices/personalizer/events/reward). Egy fejében egy 1 és 1 közötti számot. Personalizer betanítja a modell idővel elérése érdekében a felhőtechnológia lehetséges legmagasabb összege.
+A jutalmakat a [jutalmazási API](https://docs.microsoft.com/rest/api/cognitiveservices/personalizer/events/reward)-nak kell elküldeni a személyre. A jutalom egy-1 és 1 közötti szám. A személyre szabottan a modell a lehető legmagasabb összegű jutalmak eléréséhez biztosít időt.
 
-Jutalmakat érkeznek, miután a felhasználó viselkedését történt, amely nappal később lehet. A legfeljebb ennyi idő Personalizer várakozik, amíg az esemény nem ellenszolgáltatás szerkezetűnek tekinthető, vagy egy alapértelmezett fejében van konfigurálva a [ellenszolgáltatás várakozási idő](#reward-wait-time) az Azure Portalon.
+A rendszer a felhasználó viselkedésének megtörténte után elküldje a jutalmakat, ami lehet nappal később. A személyre szabott maximális idő megvárja, amíg az esemény nem minősül jutalomnak, vagy az alapértelmezett jutalom a Azure Portal a [jutalom várakozási idejére](#reward-wait-time) van konfigurálva.
 
-Ha az adott esemény ellenszolgáltatás pontszám még nem érkezett meg a **ellenszolgáltatás várakozási idő**, akkor a **alapértelmezett ellenszolgáltatás** lépnek érvénybe. Általában a **[alapértelmezett ellenszolgáltatás](how-to-settings.md#configure-reward-settings-for-the-feedback-loop-based-on-use-case)** nullának van konfigurálva.
+Ha az eseményre vonatkozó jutalom pontszáma nem érkezett meg a **jutalmazási várakozási időn**belül, akkor az **alapértelmezett jutalom** lesz alkalmazva. Az **[alapértelmezett jutalom](how-to-settings.md#configure-reward-settings-for-the-feedback-loop-based-on-use-case)** általában nullára van konfigurálva.
 
 
-## <a name="behaviors-and-data-to-consider-for-rewards"></a>Viselkedéseket és a felhőtechnológia fontolja meg az adatokat
+## <a name="behaviors-and-data-to-consider-for-rewards"></a>A jutalmak alapján megfontolandó viselkedések és adatkezelési szempontok
 
-Vegye figyelembe ezeket a jelek és viselkedések ellenszolgáltatás az eredmény a környezet:
+Ezeket a jeleket és viselkedéseket érdemes figyelembe venni a jutalom pontszámának kontextusában:
 
-* Ha a beállítás a felhasználói bevitel javaslatokért közvetlen ("erre gondolt X?").
-* Munkamenetek hossza.
-* Munkamenetek közötti ideje.
-* Vélemények elemzése a felhasználói tevékenységeket.
-* Kérdések és mini felmérések, ahol a robot megkérdezi a felhasználót, visszajelzést hasznosságát, pontosságának kapcsolatos közvetlen.
-* Válasz a riasztásokat, vagy riasztás késleltetést.
+* A javaslatok közvetlen felhasználói bevitele, ha a beállítások bekerülnek ("Ez az X?").
+* Munkamenet hossza
+* A munkamenetek közötti idő.
+* A felhasználó interakcióinak elemzése.
+* Közvetlen kérdések és kis-és nagyméretű felmérések, ahol a robot kéri a felhasználót, hogy visszajelzést kapjon a hasznosságról és a pontosságról.
+* Válasz a riasztásokra, vagy késleltetés a riasztásokra adott válaszként.
 
-## <a name="composing-reward-scores"></a>Ellenszolgáltatás pontszámok összeállítása
+## <a name="composing-reward-scores"></a>Jutalmazási pontszámok összeállítása
 
-Az üzleti logika egy ellenszolgáltatás pontszám értékelődnek ki. A pontszámot is jeleníthető meg:
+A jutalom pontszámát az üzleti logikában kell kiszámítani. A pontszám a következőképpen jeleníthető meg:
 
-* Miután elküldött egyetlen szám 
-* Azonnal (például 0,8) küldött pontszámot és a egy küldött később további pontszám (általában 0,2).
+* Egyszeri elküldéses szám 
+* Azonnal eljuttatott pontszám (például 0,8), és egy további, később eljuttatott pontszám (általában 0,2).
 
-## <a name="default-rewards"></a>Alapértelmezett jutalmakat
+## <a name="default-rewards"></a>Alapértelmezett jutalmak
 
-Ha nincs ellenszolgáltatás belül nem érkezik a [ellenszolgáltatás várakozási idő](#reward-wait-time), az időtartam óta a rang hívja, Personalizer implicit módon alkalmazza a **alapértelmezett ellenszolgáltatás** a kapcsolódó rangsorolják eseményre.
+Ha a [jutalmazási várakozási időn](#reward-wait-time)belül nem érkezik jutalom, az időtartam a rangsorolási hívás óta, a személyre szabott, implicit módon alkalmazza az **alapértelmezett jutalmat** erre a rangsorolási eseményre.
 
-## <a name="building-up-rewards-with-multiple-factors"></a>Több új tényezővel bővül jutalmakat kiépítése  
+## <a name="building-up-rewards-with-multiple-factors"></a>Előnyök kiépítése több tényezővel  
 
-Hatékony megvalósításához, építhet fel a ellenszolgáltatás pontszám (minden 1 és 1 közötti számot) számos tényező alapján. 
+A hatékony személyre szabás érdekében több tényező alapján felépítheti a jutalom pontszámát (1 és 1 közötti szám). 
 
-Ha például alkalmazhat ezek a szabályok személyre szabásához videótartalmak listáját:
+Ezeket a szabályokat például alkalmazhatja a videó tartalmának személyre szabásához:
 
-|Felhasználói viselkedés|Részleges érték pontszám|
+|Felhasználói viselkedés|Részleges pontszám értéke|
 |--|--|
-|A felhasználó az első elemre kattint.|+0.5 ellenszolgáltatás|
-|A felhasználó megnyitja az adott elem tényleges tartalmat.|+0.3 ellenszolgáltatás|
-|A felhasználó kiváltása a tartalmat vagy 30 %-os 5 perc, a végéig.|+0.2 ellenszolgáltatás|
+|A felhasználó a legfelső elemre kattintott.|\+ 0,5 jutalom|
+|A felhasználó megnyitotta az adott elemmel kapcsolatos tényleges tartalmat.|\+ 0,3 jutalom|
+|A felhasználó 5 percet figyelt a tartalomból, vagy 30%-ot, attól függően, hogy melyik a hosszú.|\+ 0,2 jutalom|
 |||
 
-Ezután elküldheti a teljes ellenszolgáltatás az API-hoz.
+Ezután elküldheti a teljes jutalmat az API-nak.
 
-## <a name="calling-the-reward-api-multiple-times"></a>A ellenszolgáltatás API meghívására többször
+## <a name="calling-the-reward-api-multiple-times"></a>A jutalmazási API többszöri meghívása
 
-Ön is meghívhatja a ellenszolgáltatás API-t küld különböző ellenszolgáltatás pontszámok azonos eseményazonosító. Personalizer ezeket jutalmakat kap, amikor meghatározza, hogy az esemény a végső ellenszolgáltatás Personalizer beállításaiban megadott összesítésével.
+A jutalmazási API-t ugyanazzal az AZONOSÍTÓJÚ eseménnyel is meghívhatja, különböző jutalmazási pontszámokat küldhet. Ha személyre szabja ezeket a jutalmakat, az adott eseményhez tartozó végső jutalmat a személyre szabott beállításokban megadott módon összesítve határozza meg.
 
 Összesítési beállítások:
 
-*  **Első**: Az első fogadott esemény ellenszolgáltatás pontszám vesz igénybe, és elveti a többi.
-* **Sum**: Az eseményazonosító gyűjtött összes ellenszolgáltatás pontszámok vesz igénybe, és hozzáadja őket együtt.
+*  **Első**: Az eseményre vonatkozó első jutalmazási pontszámot fogadja, és elveti a többit.
+* **Összeg**: Begyűjti a Napszállta összegyűjtött összes jutalom pontszámát, és együtt adja hozzá őket.
 
-Egy esemény, amely után kapott összes jutalmakat a **ellenszolgáltatás várakozási idő**, elvesznek, és nincsenek hatással a képzés modellek.
+A **jutalmazási várakozási idő**után kapott összes nyereményt elvetettük, és nincs hatással a modellek betanítására.
 
-Ellenszolgáltatás pontszámok mentése hozzáadásával a végső ellenszolgáltatás 1-nél magasabb vagy alacsonyabb, mint -1 lehet. Ez nem fog, hogy a szolgáltatás, sikertelen lesz.
+A jutalmazási pontszámok hozzáadásával az utolsó jutalom nagyobb lehet 1-nél vagy kevesebb, mint-1. Ez a szolgáltatás nem fog működni.
 
 <!--
 @edjez - is the number ignored if it is outside the acceptable range?
 -->
 
-## <a name="best-practices-for-calculating-reward-score"></a>Ajánlott eljárások a ellenszolgáltatás pontszám kiszámítása
+## <a name="best-practices-for-calculating-reward-score"></a>Ajánlott eljárások a jutalmazási pontszám kiszámításához
 
-* **Fontolja meg a sikeres személyre szabás valós kijelzőjét**: Egyszerű kattintással alkalmazásteljesítményre, de egy jó ellenszolgáltatás alapján mit szeretne a felhasználókat, hogy *elérése* ahelyett, hogy mit szeretne személyek *tegye*.  Például a kattintással követőink vezethet kiválasztása a tartalmat a clickbait rejt magában.
+* **Tekintse át a sikeres személyre szabás valódi mutatóit**: A kattintások szempontjából könnyű meggondolni, de a jó jutalom azon alapszik, hogy mit szeretne *elérni* a felhasználóktól ahelyett, hogy a kívánt teendőket kelleneelvégeznie.  Előfordulhat például, hogy a kattintásokra való jutalom a clickbait-tartalom kiválasztásához vezethet.
 
-* **Használja a ellenszolgáltatás pontszámának milyen jól működött személyre szabása**: Személyre szabás movie javaslat remélhetőleg eredményez a felhasználó a film figyelése és a egy nagy minősítési adná. A film minősítése valószínűleg sok-sok dolog (működő, a felhasználó hangulatának minőségét) függ, mivel már nem jó ellenszolgáltatás jel, hogy hogyan jól *a személyre szabás* működött. A felhasználó az első néhány perc alatt a film nézi Előfordulhat azonban, a személyre szabás hatékonyság és a egy ellenszolgáltatás 1 elküldése után 5 perc lesz nagyobb jel nagyobb jel.
+* A **személyre szabás helyes működéséhez használja a jutalom pontszámát**: A mozgóképes javaslatok személyre szabása remélhetőleg azt eredményezi, hogy a felhasználó megnézi a filmet, és magas minősítést biztosít. Mivel a film minősítése valószínűleg sok dologtól függ (az eljáró minőségtől, a felhasználó hangulatának minőségétől), ez nem jó jutalom a személyre szabáshoz. A film első néhány percét megtekintő felhasználó a személyre szabás hatékonyságának jobb jele lehet, ha pedig az 5 perc után 1 jutalmat küld, a jobb jel lesz.
 
-* **Csak vonatkoznak jutalmakat RewardActionID**: Personalizer megérteni a modellfelépítés hatékonyságának RewardActionID megadott művelet a felhőtechnológia vonatkozik. Ha más műveletek és a felhasználó kattint jelenítenek meg őket, a ellenszolgáltatás nullánál kell lennie.
+* **A jutalmak csak a RewardActionID vonatkoznak**: A személyre szabás a RewardActionID-ben megadott művelet hatékonyságának megismeréséhez alkalmazza a jutalmakat. Ha úgy dönt, hogy más műveleteket is megjelenít, és a felhasználó rákattint rájuk, a jutalomnak nulla értékűnek kell lennie.
 
-* **Fontolja meg a nem kívánt következményekkel**: Vezető felelős kilátásainak ellenszolgáltatás függvényeket hozhat létre [etikai és felelős használatát](ethics-responsible-use.md).
+* **Vegye figyelembe**a nem szándékolt következményeket: Hozzon létre jutalmazási funkciókat, amelyek az [etikai és a felelősségteljes használat](ethics-responsible-use.md)alapján felelős eredményekhez vezetnek.
 
-* **Használja a növekményes jutalmakat**: A kisebb felhasználói viselkedés részleges jutalmakat hozzáadása segít Personalizer jobb jutalmakat elérésére. A növekményes ellenszolgáltatás lehetővé teszi, hogy az algoritmust, hogy tudja, a felhasználó a végső kívánt viselkedés szabályzatra hivatkozó közelebb van kap.
-    * Ha meg van jelenítve, filmek listáját, ha a felhasználó rámutat egy ideig, további információkat az elsőt, meghatározhatja, hogy történt-e bizonyos felhasználói érdeklődést. A viselkedés 0,1 egy ellenszolgáltatás pontszámmal rendelkező is számítanak. 
-    * Ha a felhasználó megnyitni a lapot, majd kilépett, a ellenszolgáltatás pontszám 0.2-es is lehet. 
+* **Növekményes jutalmak használata**: A kisebb felhasználói viselkedéshez való részleges juttatások hozzáadásával a személyre szabott előnyökkel lehet elérni a jobb jutalmakat. Ez a növekményes jutalom lehetővé teszi az algoritmus számára, hogy megismerje, hogy minél közelebb kerüljön a felhasználóhoz a végső kívánt viselkedésben.
+    * Ha a filmek listáját jeleníti meg, ha a felhasználó az elsőre mutat a további információk megtekintéséhez, akkor megtudhatja, hogy az egyes felhasználók bevonása történt. A viselkedés a 0,1 értékű jutalmazási pontszámmal számítható fel. 
+    * Ha a felhasználó megnyitotta a lapot, és kilépett, a jutalom pontszáma 0,2 lehet. 
 
-## <a name="reward-wait-time"></a>Ellenszolgáltatás várakozási idő
+## <a name="reward-wait-time"></a>Jutalom várakozási ideje
 
-Personalizer fog korrelációját, ha az adatokat egy Rank, hívja meg a felhőtechnológia ellenszolgáltatás hívások a modell betanításához küldi el. Ezek a különböző időpontokban is származhatnak. Personalizer a korlátozott ideig vár, amikor a rangsorolt hívás történt, még akkor is, ha a rangsorolt hívás volt inaktív eseményként készült, és később aktiválva.
+A személyre szabás a rangsorolási hívások információit a modell betanítása érdekében a jutalmazási hívásokban elküldett jutalmakkal fogja összekapcsolni. Ezek különböző időpontokban is előfordulhatnak. A személyre szabás csak korlátozott ideig vár, a rangsor meghívásakor, még akkor is, ha a rangsor hívása inaktív eseményként történt, és később aktiválva lett.
 
-Ha a **ellenszolgáltatás várakozási idő** lejár, és nem ellenszolgáltatás információk még nem, a képzési esemény alkalmazott egy alapértelmezett fejében. A maximális várakozási időtartam 6 nap.
+Ha a **jutalmazási várakozási idő** lejár, és nincs jutalomra vonatkozó információ, a program az adott eseményre vonatkozó alapértelmezett jutalmat alkalmazza. A maximális várakozási időtartam 6 nap.
 
-## <a name="best-practices-for-setting-reward-wait-time"></a>Ajánlott eljárások a beállítás ellenszolgáltatás várakozási idő
+## <a name="best-practices-for-setting-reward-wait-time"></a>Ajánlott eljárások a jutalmazási várakozási idő beállításához
 
-Kövesse ezeket a javaslatokat, a jobb eredmények elérése érdekében.
+A jobb eredmények érdekében kövesse ezeket az ajánlásokat.
 
-* Győződjön meg a ellenszolgáltatás várakozási idő, amennyit csak lehet, elegendő időt a felhasználói visszajelzéseket kaphat az eszközeiről a legrövidebb. 
+* A megtérülési várakozási időt a lehető legrövidebb időn belül elhagyhatja a felhasználói visszajelzések elvégzéséhez. 
 
 <!--@Edjez - storage quota? -->
 
-* Ne adjon meg egy időtartamot, amely rövidebb, mint hogy visszajelzést szükséges időt. Például, ha a felhőtechnológia némelyike származnak után a felhasználó rendelkezik nézte 1 perces videó kísérlet hosszúságúnak kell lennie legalább két, amely.
+* Ne válasszon olyan időtartamot, amely rövidebb, mint a visszajelzés kéréséhez szükséges idő. Ha például egy adott jutalom egy felhasználónál 1 perces videó megtekintése után következik be, a kísérlet hosszának legalább kétszeresnak kell lennie.
 
 ## <a name="next-steps"></a>További lépések
 
-* [Megerősítő tanulást](concepts-reinforcement-learning.md) 
-* [A rang API kipróbálása](https://westus2.dev.cognitive.microsoft.com/docs/services/personalizer-api/operations/Rank/console)
-* [Próbálja ki a ellenszolgáltatás API](https://westus2.dev.cognitive.microsoft.com/docs/services/personalizer-api/operations/Reward)
+* [Megerősítő tanulás](concepts-reinforcement-learning.md) 
+* [A Rank API kipróbálása](https://westus2.dev.cognitive.microsoft.com/docs/services/personalizer-api/operations/Rank/console)
+* [A jutalmazási API kipróbálása](https://westus2.dev.cognitive.microsoft.com/docs/services/personalizer-api/operations/Reward)

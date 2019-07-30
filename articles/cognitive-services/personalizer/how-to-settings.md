@@ -1,95 +1,95 @@
 ---
-title: Beállítások - Personalizer konfigurálása
+title: Beállítások konfigurálása – személyre szabás
 titleSuffix: Azure Cognitive Services
-description: Szolgáltatás konfigurációja magában foglalja, hogyan kezeli az a szolgáltatás a felhőtechnológia, milyen gyakran a szolgáltatást ismerteti, milyen gyakran van retrained a modell és tárolt adatok mennyiségétől.
+description: A szolgáltatás konfigurációja magában foglalja, hogy a szolgáltatás hogyan kezeli a jutalmakat, milyen gyakran vizsgálja a szolgáltatás, milyen gyakran történik a modell újratanítása és mennyi az adattárolás.
 services: cognitive-services
-author: edjez
+author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 05/07/2019
-ms.author: edjez
-ms.openlocfilehash: 6f5028f093a9fd8c17928c2167039599d4db897c
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.author: diberry
+ms.openlocfilehash: f0ccf0e480fa57e0ffdfc94ca35cfaceded37a0b
+ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67722339"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68663904"
 ---
-# <a name="personalizer-settings"></a>Personalizer beállításai
+# <a name="personalizer-settings"></a>Személyre szabott beállítások
 
-Szolgáltatás konfigurációja magában foglalja, hogyan kezeli az a szolgáltatás a felhőtechnológia, milyen gyakran a szolgáltatást ismerteti, milyen gyakran van retrained a modell és tárolt adatok mennyiségétől.
+A szolgáltatás konfigurációja magában foglalja, hogy a szolgáltatás hogyan kezeli a jutalmakat, milyen gyakran vizsgálja a szolgáltatás, milyen gyakran történik a modell újratanítása és mennyi az adattárolás.
 
-## <a name="create-personalizer-resource"></a>Personalizer erőforrás létrehozása
+## <a name="create-personalizer-resource"></a>Személyre szabott erőforrás létrehozása
 
-For-each visszajelzési ciklus Personalizer erőforrás létrehozása. 
+Hozzon létre egy személyre szabott erőforrást minden visszajelzési hurokhoz. 
 
-1. Jelentkezzen be az [Azure portálra](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesPersonalizer). Az előző kapcsolat veszi, hogy a **létrehozás** Personalizer szolgáltatás lapján. 
-1. Adja meg a szolgáltatás nevét, és válasszon ki egy előfizetést, hely, tarifacsomag, és erőforráscsoport.
-1. Válassza ki a megerősítés, majd **létrehozás**.
+1. Jelentkezzen be az [Azure portálra](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesPersonalizer). Az előző hivatkozás a személyre szabási szolgáltatás **Létrehozás** lapjára lép. 
+1. Adja meg a szolgáltatás nevét, válassza ki az előfizetést, a helyet, az árképzési szintet és az erőforráscsoportot.
+1. Válassza ki a megerősítést, és válassza a **Létrehozás**lehetőséget.
 
-## <a name="configure-service-settings-in-the-azure-portal"></a>Szolgáltatás beállításainak konfigurálása az Azure Portalon
+## <a name="configure-service-settings-in-the-azure-portal"></a>A szolgáltatás beállításainak konfigurálása a Azure Portal
 
 1. Jelentkezzen be az [Azure Portalra](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesPersonalizer).
-1. A Personalizer erőforrás található. 
-1. Az a **erőforrás-kezelés** szakaszban jelölje be **beállítások**.
+1. A személyre szabott erőforrás megkeresése. 
+1. Az **Erőforrás-kezelés** szakaszban válassza a **Beállítások**lehetőséget.
 
-    Mielőtt elhagyja az Azure Portalon, másolja ki az egyik az erőforrás kulcsainak az a **kulcsok** lapot. Szüksége lesz használni a [Personalizer SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.personalizer).
+    A Azure Portal elhagyása előtt másolja át az egyik erőforrás-kulcsot a **kulcsok** lapról. Erre a [személyre szabott SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.personalizer)használatára lesz szükség.
 
-### <a name="configure-reward-settings-for-the-feedback-loop-based-on-use-case"></a>A visszajelzési ciklus használati eset alapján ellenszolgáltatás beállításainak konfigurálása
+### <a name="configure-reward-settings-for-the-feedback-loop-based-on-use-case"></a>A visszajelzési hurok jutalmazási beállításainak konfigurálása használati eset alapján
 
-A visszajelzési ciklus használata jutalmakat a szolgáltatás beállításainak konfigurálása. A következő beállítások módosításait alaphelyzetbe állítása az aktuális Personalizer modell, és a szoftveres átképezése, és az utolsó 2 nap adatait:
+Adja meg a szolgáltatás beállításait a visszajelzési hurokhoz a jutalmak használatára. A következő beállítások módosításai alaphelyzetbe állítja a jelenlegi személyre szabott modellt, és áttanítja az utolsó 2 nap után:
 
-![A visszajelzési ciklus ellenszolgáltatás beállításainak konfigurálása](media/settings/configure-model-reward-settings.png)
+![A visszajelzési hurok jutalmazási beállításainak konfigurálása](media/settings/configure-model-reward-settings.png)
 
 |Beállítás|Cél|
 |--|--|
-|Ellenszolgáltatás várakozási idő|Mennyi ideig során melyik Personalizer gyűjt ellenszolgáltatás értékek rangsorolják hívás csoportok, attól a pillanattól kezdve indítása a rangsorolt hívás történik. Ez az érték azzal, hogy van beállítva: "Hogy mennyi ideig Personalizer várjon a felhőtechnológia hívásokat?" Bármely után ezt az ablakot érkező ellenszolgáltatás lesz naplózva, de nem használt tanulási.|
-|Alapértelmezett ellenszolgáltatás|Ha nincs ellenszolgáltatás hívás nem érkezett hívás által Personalizer a társított egy rang ellenszolgáltatás várakozási idő időszak alatt, Personalizer fogja hozzárendelni az alapértelmezett fejében. Alapértelmezés szerint, és a legtöbb esetben az alapértelmezett ellenszolgáltatás értéke nulla.|
-|Ellenszolgáltatás összesítés|Ha több jutalmakat ugyanaz a rangsor API meghívása, használja az összesítési módszer: **sum** vagy **legkorábbi**. Legkorábbi választja ki a legkorábbi pontszám, és elveti a többi. Ez akkor hasznos, ha azt szeretné, hogy egyedi ellenszolgáltatás valószínűleg ismétlődő hívások között. |
+|Jutalom várakozási ideje|Meghatározza azt az időtartamot, ameddig a személynek a rangsorolási híváshoz tartozó jutalmazási értékeket kell gyűjtenie a rangsor meghívásának pillanatától kezdve. Ezt az értéket a következő kéréssel állíthatja be: "Mennyi ideig legyen a személyre szabott várakozás a jutalmak meghívására?" Az ablak beérkezését követően bekövetkező minden jutalom bekerül, de nem használható a tanuláshoz.|
+|Alapértelmezett jutalom|Ha nem fogadja el a személyre szabott jutalmat a rangsorolási várakozási idő időszaka alatt, a személyre szabási híváshoz rendelt jutalmazási időablakban az alapértelmezett jutalom lesz hozzárendelve. Alapértelmezés szerint a legtöbb esetben az alapértelmezett jutalom nulla.|
+|Jutalom összesítése|Ha ugyanahhoz a Range API-híváshoz több jutalom érkezik, a rendszer ezt az összesítési módszert használja: **Sum** vagy legkorábbi. A legkorábbi pontszámot kapott, és elveti a többit. Ez akkor hasznos, ha egyedi jutalmat szeretne használni a lehetséges duplikált hívások között. |
 
-Ezek a beállítások módosítása után győződjön meg arról, jelölje be **mentése**.
+A beállítások módosítása után válassza a **Mentés**lehetőséget.
 
-### <a name="exploration-setting"></a>Feltárás beállítás 
+### <a name="exploration-setting"></a>Feltárási beállítás 
 
-Személyre szabás is képes felderíteni új mintákat, és tudjon alkalmazkodni felhasználói viselkedés idővel alternatívák áttekintésével. A **feltárás** beállítás azt határozza meg, hány százaléka rangsorolják hívások feltárása a válaszok. 
+A személyre szabás lehetővé teszik az új minták észlelését és a felhasználói viselkedés változásainak időbeli változását az alternatívák feltárásával. A **feltárási** beállítás határozza meg, hogy a rangsorolási hívások hány százalékát kell megválaszolni a feltárással. 
 
-A beállítások módosítása az aktuális Personalizer modell alaphelyzetbe, és a újratanítása, az adatok az elmúlt 2 nap.
+A beállítás módosításai alaphelyzetbe állítja a jelenlegi személyre szabott modellt, és áttanítja azt az utolsó 2 nap során.
 
-![A feltárás beállítás azt határozza meg, hány százaléka rangsorolják hívások feltárása a válaszok](media/settings/configure-exploration-setting.png)
+![A feltárási beállítás határozza meg, hogy a rangsorolási hívások hány százalékát kell megválaszolni a feltárással](media/settings/configure-exploration-setting.png)
 
-A beállítás módosítása után győződjön meg arról, jelölje be **mentése**.
+A beállítás módosítása után válassza a **Mentés**lehetőséget.
 
-### <a name="model-update-frequency"></a>Modell frissítési gyakoriság
+### <a name="model-update-frequency"></a>Modell frissítési gyakorisága
 
-A legújabb modellre, minden aktív esemény ellenszolgáltatás API-hívások betanított automatikusan Personalizer rangsorolják hívás nem használják. A **modell frissítési gyakoriság** beállítja, hogy milyen gyakran a rangsorolt hívás által használt modell frissítése. 
+A minden aktív eseményből származó jutalmazási API-hívásokból betanított legújabb modellt nem használja automatikusan a személyre szabási sorrend hívása. A **modell frissítési gyakorisága** határozza meg, hogy a rangsor milyen gyakran használja a Range. 
 
-Olyan helyzetben, amikor szorosan követi a változásokat a felhasználói viselkedés magas modell frissítési gyakoriságot hasznosak. Ilyenek például a webhelyek, amelyek az élő hírek, vírusos tartalmat, vagy élő termék ajánlattételi folyamat során. Ezekben az esetekben használható 15 perces gyakorisággal. Használati esetek többségében egy alacsonyabb frissítési gyakoriság érvényben. Egyperces frissítési gyakoriságot hasznosak, ha egy alkalmazás kód használatával Personalizer, bemutatók végrehajtásakor.%n vagy interaktív módon tesztelése a machine learning szempontok hibakereséséhez.
+A magas modell-frissítési gyakoriságok olyan helyzetekben hasznosak, amikor szorosan nyomon szeretné követni a felhasználói viselkedések változásait. Ilyenek például az élő Hírek, a vírusos tartalmak vagy az élő termékek ajánlattételi helyei. Ezeket a forgatókönyveket 15 perces gyakorisággal használhatja. A legtöbb felhasználási eset esetében az alacsonyabb frissítési gyakoriság érvényes. Az egyperces frissítési gyakoriságok akkor hasznosak, ha az alkalmazás kódját a személyre szabás, a demók vagy a gépi tanulási szempontok interaktív tesztelése során végzi.
 
-![Modell frissítési gyakoriság beállítása, milyen gyakran egy új Personalizer modell retrained van.](media/settings/configure-model-update-frequency-settings.png)
+![A modell frissítési gyakorisága határozza meg, hogy milyen gyakran van új személyre szabott modell újratanítása.](media/settings/configure-model-update-frequency-settings.png)
 
-A beállítás módosítása után győződjön meg arról, jelölje be **mentése**.
+A beállítás módosítása után válassza a **Mentés**lehetőséget.
 
 ### <a name="data-retention"></a>Adatmegőrzés
 
-**Adatmegőrzés időtartama** beállítja, hogy hány nap Personalizer tartja adatait tartalmazó naplófájlok. Múltbeli adatok naplók végrehajtásához szükség [offline értékelések](concepts-offline-evaluation.md), Personalizer hatékonyságának mérése és optimalizálása Learning házirend használt.
+**Az adatmegőrzési időszak** azt állítja be, hogy hány nap személy tartja az adatnaplókat. Az [Offline értékelések](concepts-offline-evaluation.md)végrehajtásához múltbeli adatnaplókra van szükség, amelyek a személyre szabott és a tanulási szabályzatok optimalizálására szolgálnak.
 
-A beállítás módosítása után győződjön meg arról, jelölje be **mentése**.
+A beállítás módosítása után válassza a **Mentés**lehetőséget.
 
-## <a name="export-the-personalizer-model"></a>A Personalizer modell exportálása
+## <a name="export-the-personalizer-model"></a>A személyre szabott modell exportálása
 
-A szakaszban az erőforrás-kezelés **modell és a házirend**, tekintse át a modell létrehozásához és az utolsó frissítés dátuma, és exportálja a jelenlegi modell. Az Azure portal vagy a Personalizer API-k segítségével exportálja egy modellfájl archiválási célokból. 
+A **modell és a házirend**erőforrás-kezelés szakaszában tekintse át a modell létrehozásának és utolsó frissítésének dátumát, és exportálja az aktuális modellt. A Azure Portal vagy a személyre szabható API-k használatával archiválhatja a modelleket archiválás céljából. 
 
-![Aktuális Personalizer modell exportálása](media/settings/export-current-personalizer-model.png)
+![Aktuális személyre szabott modell exportálása](media/settings/export-current-personalizer-model.png)
 
-## <a name="import-and-export-learning-policy"></a>Importálás és exportálás learning házirend
+## <a name="import-and-export-learning-policy"></a>Képzési szabályzat importálása és exportálása
 
-A szakaszban az erőforrás-kezelés **modell és a házirend**, egy új tanulási házirend importálása vagy exportálása az aktuális learning házirend.
+A **modell és a házirend erőforrás-** kezelés szakaszában importáljon egy új képzési szabályzatot, vagy exportálja az aktuális képzési szabályzatot.
 
 ## <a name="next-steps"></a>További lépések
 
 <!--
 [How to use the Personalizer container](https://go.microsoft.com/fwlink/?linkid=2083923&clcid=0x409)
 -->
-[További információ a régiók rendelkezésre állása](https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services)
+[A régió elérhetőségének megismerése](https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services)

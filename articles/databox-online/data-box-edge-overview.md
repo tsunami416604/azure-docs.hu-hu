@@ -1,52 +1,41 @@
 ---
 title: A Microsoft Azure Data Box Edge áttekintése | Microsoft Docs
-description: Az Azure Data Box Edge nevű tárolási megoldást ismerteti, amely egy fizikai eszközt használ az Azure-ba való hálózatalapú átvitelhez.
+description: Leírja Azure Data Box Edge, egy fizikai eszközt használó tárolási megoldást az Azure-ba való hálózati átvitelhez.
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: overview
-ms.date: 07/09/2019
+ms.date: 07/17/2019
 ms.author: alkohli
-ms.openlocfilehash: bc6b9662a5d67f6ed315c33444bcb061115fe6d4
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 69580f956b603423ef302353953a45ad5d00391e
+ms.sourcegitcommit: 770b060438122f090ab90d81e3ff2f023455213b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67701479"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68305420"
 ---
 # <a name="what-is-azure-data-box-edge"></a>Mi az Azure Data Box Edge? 
 
-Az Azure Data Box Edge egy olyan tárolási megoldás, amelynek használatával adatokat dolgozhat fel, majd egy hálózaton keresztül elküldheti azokat az Azure-ba. Ez a cikk áttekintést nyújt a Data Box Edge megoldásról, annak előnyeiről, főbb képességeiről és azokról a forgatókönyvekről, amelyekben üzembe helyezheti ezt az eszközt. 
+Az Azure Data Box Edge egy mesterséges intelligenciára épülő peremhálózati számításokat végző eszköz, amely hálózati adatátviteli képességekkel rendelkezik. Ez a cikk áttekintést nyújt a Data Box Edge megoldásról, annak előnyeiről, főbb képességeiről és azokról a forgatókönyvekről, amelyekben üzembe helyezheti ezt az eszközt. 
 
-A Data Box Edge egy Microsoft által biztosított fizikai eszközt használ a biztonságos adatátvitel felgyorsításához. A fizikai eszköz a helyszínen üzemel, és Ön írja rá az adatokat az NFS és az SMB protokoll használatával. 
-
-A Data Box Edge a Data Box Gateway összes átjáró-képességével rendelkezik. A Data Box ezen kívül mesterséges intelligenciára épülő peremhálózati számítási képességekkel is rendelkezik, amelyek segítenek az adatok elemzésében, feldolgozásában és szűrésében az Azure blokkblobba, lapblobba vagy az Azure Filesba való átvitelük során.  
+A Data Box Edge egy szolgáltatásként nyújtott hardveres megoldás. A Microsoft a felhőben felügyelt eszközön egy beépített, programozható Gate array (FPGA) tömböt biztosít, amely lehetővé teszi a gyorsított AI-következtetést, és rendelkezik a Storage-átjáró összes képességével. 
 
 ## <a name="use-cases"></a>Használati esetek
 
-Az Azure Data Box Edge egy mesterséges intelligenciára épülő peremhálózati számításokat végző eszköz, amely hálózati adatátviteli képességekkel rendelkezik. Íme a különböző forgatókönyvek, amelyekben a Data Box Edge adatátvitelhez használható.
+Íme a különböző forgatókönyvek, ahol a Data Box Edge a gyors Machine Learning (ML), amely a peremhálózat szélén és az adatok előfeldolgozása előtt használható az Azure-ba való elküldés előtt.
 
-- **Adatok előfeldolgozása** – Adatokat elemezhet helyszíni vagy IoT-eszközökről, így gyorsan megkaphatja az eredményeket, miközben az adatok keletkezési helyének közelében maradhat. A Data Box Edge a teljes adatkészletet átviszi a felhőbe, így összetettebb feldolgozási műveleteket és mélyebb elemzést tud végrehajtani.  Az előfeldolgozás az alábbiakra használható: 
+- **Következtetés a Azure Machine learning** -with Data Box Edge használatával a ml-modellek futtatásával gyors eredményeket érhet el, amelyek a felhőbe való adatküldés előtt is elhelyezhetők. A teljes adatkészletet igény szerint átviheti, hogy továbbra is újratanítsa és javítsa a ML-modelleket. További információ a Data Box Edge eszközön az Azure ML hardveres gyorsított modellek használatáról: az [Azure ml hardveresen gyorsított modellek üzembe helyezése Data Box Edge](https://docs.microsoft.com/azure/machine-learning/service/how-to-deploy-fpga-web-service#deploy-to-a-local-edge-server).
+
+- Adatátalakítási adatok előfeldolgozása az Azure-ba való elküldés előtt, amely egy hatékonyabb adatkészlet létrehozásához szükséges. Az előfeldolgozás az alábbiakra használható: 
 
     - Adatok összesítése.
-    - Adatok módosítása, például a személyes azonosításra alkalmas adatok (PII) eltávolítása.
-    - A szükséges adatok csoportosítása és átvitele a felhőbe mélyebb elemzésre.
+    - Módosítsa például a személyes adattörlést.
+    - A tárterület és a sávszélesség optimalizálása, vagy további elemzés céljából.
     - Az IoT-események elemzése és reagálás rájuk 
-
-- **Azure Machine Learning-következtetés** – A Data Box Edge használatával Machine Learning- (ML-) modelleket futtathat a gyors eredmények elérése érdekében, amelyeket még azelőtt használhat fel, hogy az adatok a felhőbe kerülnének. A teljes adatkészlet is átkerül a újratanítás, és javíthatja a gépi Tanulási modelleket továbbra is. További információ az Azure ML hardver használatával a Data Box Edge-eszközön gyorsított modellek: [hardver üzembe helyezése az Azure gépi Tanulási modellek gyorsított Data Box Edge](https://docs.microsoft.com/azure/machine-learning/service/how-to-deploy-fpga-web-service#deploy-to-a-local-edge-server).
 
 - **Adatátvitel az Azure-ba hálózaton keresztül** – A Data Box Edge használatával könnyedén és gyorsan vihet át adatot az Azure-ba további számítási feladatok vagy elemzések elvégzéséhez, illetve archiválás céljából. 
 
-## <a name="benefits"></a>Előnyök
-
-A Data Box Edge az alábbi előnyökkel jár:
-
-- **Egyszerű adatátvitel** – Használatával olyan könnyedén helyezhet át adatokat az Azure Storage-ból vagy az Azure Storage-ba, mintha csak egy helyi hálózati megosztással dolgozna.  
-- **Nagy teljesítmény** – Lehetővé teszi az adatok nagy teljesítményű átvitelét az Azure-ba, vagy onnan máshová. 
-- **Gyors hozzáférés** – A legutóbbi fájlokat a gyorsítótárba menti a helyszíni fájlok gyorsabb elérése érdekében.  
-- **Korlátozott sávszélesség-használat** – Az Azure-ba akkor is lehet adatot írni, amikor a hálózat használata a csúcsidő során korlátozva van.  
-- **Adatok átalakítása** – Lehetővé teszi az adatok elemzését, feldolgozását és szűrését azok Azure-ba való átvitelekor.
 
 ## <a name="key-capabilities"></a>Főbb képességek
 
@@ -54,15 +43,16 @@ A Data Box Edge az alábbi képességekkel rendelkezik:
 
 |Képesség |Leírás  |
 |---------|---------|
-|Nagy teljesítmény     | Teljesen automatizált és nagymértékben optimalizált adatátvitel és sávszélesség.|
-|Támogatott protokollok     | A standard SMB és NFS protokollok támogatása az adatbetöltéshez. <br> A támogatott verziókkal kapcsolatos további információért tekintse meg [a Data Box Edge rendszerkövetelményeit](data-box-edge-system-requirements.md).|
+|Gyorsított AI-következtetés| A beépített FPGA engedélyezte.|
 |Számítás       |Lehetővé teszi az adatok elemzését, feldolgozását és szűrését.|
-|Az adatok elérése     | Az adatok közvetlen elérése az Azure Storage-blobokból és az Azure Filesból felhőalapú API-k használatával az adatok további feldolgozásához a felhőben.|
-|Gyors hozzáférés     | Az eszközön helyi gyorsítótár található, amellyel gyorsabban elérhetők a legutóbb használt fájlok.|
+|Nagy teljesítmény | Nagy teljesítményű számítási és adatforgalom.|
+|Az adatok elérése     | Az adatok közvetlen elérése az Azure Storage-blobokból és az Azure Filesból felhőalapú API-k használatával az adatok további feldolgozásához a felhőben. Az eszköz helyi gyorsítótára a legutóbb használt fájlok gyors elérésére szolgál.|
+|Felhő által felügyelt     |Az eszköz és a szolgáltatás kezelése a Azure Portal keresztül történik.  |
 |Offline feltöltés     | A kapcsolat nélküli mód támogatja az offline feltöltési forgatókönyveket.|
+|Támogatott protokollok     | A standard SMB és NFS protokollok támogatása az adatbetöltéshez. <br> A támogatott verziókkal kapcsolatos további információért tekintse meg [a Data Box Edge rendszerkövetelményeit](data-box-edge-system-requirements.md).|
 |Adatfrissítés     | Lehetőség van a helyi fájlok legújabb változatra való frissítésére a felhőből.|
-|Encryption    | A BitLocker támogatja az adatok helyi titkosítását és biztonságos átvitelét a felhőbe *https*-en keresztül.       |
-|Rugalmasság     | Beépített hálózati rugalmasság.        |
+|Encryption    | A BitLocker támogatja az adatok helyi titkosítását és biztonságos átvitelét a felhőbe *https*-en keresztül.|
+|Sávszélesség-szabályozás| Sávszélesség-használat korlátozása csúcsidőben.|
 
 
 ## <a name="components"></a>Összetevők
@@ -75,7 +65,7 @@ A Data Box Edge megoldás a Data Box Edge-erőforrásból, a Data Box Edge fizik
 
     <!--![The Data Box Edge service in Azure portal](media/data-box-overview/data-box-Edge-service1.png)-->
 
-    További információért ugorjon [létrehozása a Data Box peremhálózati eszköz egy megrendelés](data-box-edge-deploy-prep.md#create-a-new-resource).
+    További információért lépjen a [Data Box Edge eszköz rendelésének létrehozása](data-box-edge-deploy-prep.md#create-a-new-resource)című témakörre.
 
 * **Data Box helyi webes felhasználói felület** – A helyi webes felhasználói felülettel diagnosztikát futtathat, leállíthatja és újraindíthatja a Data Box Edge eszközt, megtekintheti a másolási naplókat, valamint szolgáltatáskérések elküldése érdekében kapcsolatba léphet a Microsoft ügyfélszolgálatával.
 
@@ -88,9 +78,9 @@ A Data Box Edge megoldás a Data Box Edge-erőforrásból, a Data Box Edge fizik
 
 A Data Box Edge fizikai eszköznek, az Azure-erőforrásnak és a céloldali tárfióknak, amelybe átviszi az adatokat, nem kell egyazon régióban lenniük.
 
-- **Erőforrás rendelkezésre állási** – minden a régióban, ahol a Data Box Edge erőforrás érhető el, és listáját [elérhető Azure-termékek régiók szerint](https://azure.microsoft.com/global-infrastructure/services/?products=databox&regions=all). Az Azure Government cloud Data Box Edge is telepíthető. További információkért lásd: [Mi az Azure Government?](https://docs.microsoft.com/azure/azure-government/documentation-government-welcome).
+- **Erőforrás rendelkezésre állása** – az összes olyan régió listájához, ahol a Data Box Edge erőforrás elérhető, keresse fel az [Azure-termékeket régiónként](https://azure.microsoft.com/global-infrastructure/services/?products=databox&regions=all). Data Box Edge a Azure Government felhőben is üzembe helyezhető. További információ: [Mi az Azure Government?](https://docs.microsoft.com/azure/azure-government/documentation-government-welcome)
     
-- **Céloldali tárfiókok** – Az adatokat tároló tárfiókok minden Azure-régióban elérhetők. A régiók, ahol a storage-fiókok Data Box Edge adatok tárolása közel, ahol az eszköz megtalálható az optimális teljesítmény érdekében érdemes telepíteni. Az eszköztől távol található tárfiók esetében hosszú késések és lassabb teljesítmény várható. 
+- **Céloldali tárfiókok** – Az adatokat tároló tárfiókok minden Azure-régióban elérhetők. Azokat a régiókat, amelyekben a Storage-fiókok tárolják Data Box Edge az adataikat a lehető legközelebb kell elhelyezni, ahol az eszköz az optimális teljesítmény érdekében található. Az eszköztől távol található tárfiók esetében hosszú késések és lassabb teljesítmény várható. 
 
 
 ## <a name="next-steps"></a>További lépések

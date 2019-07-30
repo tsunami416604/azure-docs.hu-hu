@@ -3,19 +3,19 @@ title: 'Funkciók: Művelet és környezet – személyre szabás'
 titleSuffix: Azure Cognitive Services
 description: A személyre szabott javaslatokat a testre szabható funkciók, a műveletek és a kontextus információi alapján végezheti el. A funkciók lehetnek általánosak vagy egy elemre jellemzőek.
 services: cognitive-services
-author: edjez
+author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 06/24/2019
-ms.author: edjez
-ms.openlocfilehash: 2dab7447e6051d4559f7f3985579cac9376ac7be
-ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
+ms.author: diberry
+ms.openlocfilehash: 1960856ce2f15945d1b1bfa093f349771d481ffc
+ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68423282"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68663846"
 ---
 # <a name="features-are-information-about-actions-and-context"></a>A funkciók a műveletekkel és környezettel kapcsolatos információk
 
@@ -106,7 +106,7 @@ Vegye fontolóra a funkciók küldését a személyre szabási rangsor API-ra, a
 
 * A személyre szabáshoz elegendő funkció áll rendelkezésre. Minél pontosabban célozza meg a tartalmat, annál több szolgáltatásra van szükség.
 
-* Számos különféle sűrűségű funkció létezik . A szolgáltatás *sűrű* , ha sok elem van csoportosítva néhány gyűjtőn. Több ezer videó például "Long" (5 percnél hosszabb) és "Short" (5 percnél hosszabb) besorolású lehet. Ez egy *nagyon sűrű* funkció. Másfelől ugyanezen ezer elemnek egy "title" nevű attribútummal is rendelkezhet, amely szinte soha nem lesz ugyanaz az érték az egyik elemből a másikba. Ez egy nagyon nem sűrű vagy *ritka* funkció.  
+* Számos különféle sűrűségű funkció létezik. A szolgáltatás *sűrű* , ha sok elem van csoportosítva néhány gyűjtőn. Több ezer videó például "Long" (5 percnél hosszabb) és "Short" (5 percnél hosszabb) besorolású lehet. Ez egy *nagyon sűrű* funkció. Másfelől ugyanezen ezer elemnek egy "title" nevű attribútummal is rendelkezhet, amely szinte soha nem lesz ugyanaz az érték az egyik elemből a másikba. Ez egy nagyon nem sűrű vagy *ritka* funkció.  
 
 A nagy sűrűségű funkciókkal a személyre szabott kikövetkeztethető az egyik elemről a másikra. Ha azonban csak néhány funkció van, és túl sűrű, a személyre szabott felhasználó megpróbál pontosan megcélozni a tartalmat, és csak néhány gyűjtő közül választhat.
 
@@ -267,7 +267,7 @@ A JSON-objektumok tartalmazhatnak beágyazott JSON-objektumokat és egyszerű tu
 
 ## <a name="examples-of-context-information"></a>Példák a környezeti információkra
 
-A kontextusra  vonatkozó információk az egyes alkalmazásokról és a használati esetekről függenek, de általában olyan információkat is tartalmazhatnak, mint például a következők:
+A kontextusra vonatkozó információk az egyes alkalmazásokról és a használati esetekről függenek, de általában olyan információkat is tartalmazhatnak, mint például a következők:
 
 * A felhasználóval kapcsolatos demográfiai és profilbeli információk.
 * HTTP-fejlécből kinyert információk, például felhasználói ügynök vagy HTTP-adatokból származtatott adatok, például az IP-címeken alapuló fordított földrajzi keresések.

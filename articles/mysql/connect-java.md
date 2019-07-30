@@ -1,21 +1,21 @@
 ---
-title: Csatlakozás az Azure Database for MySQL-hez a Java használatával
-description: Ez a rövid útmutató segítségével csatlakozhat és kérdezhet le adatokat egy Azure Database for MySQL-adatbázis a Java-kódmintát biztosít.
+title: A Java használata a Azure Database for MySQLhoz való kapcsolódáshoz
+description: Ez a rövid útmutató egy olyan Java-kódrészletet tartalmaz, amellyel csatlakozhat egy Azure Database for MySQL adatbázisból, és lekérdezheti azokat.
 author: ajlam
 ms.author: andrela
 ms.service: mysql
-ms.custom: mvc, devcenter
+ms.custom: mvc, devcenter, seo-java-july2019
 ms.topic: quickstart
 ms.devlang: java
 ms.date: 02/28/2018
-ms.openlocfilehash: 7ad24a691153161ff2283030a4a597544205de6d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 96f793031f39e051d3cbe21bfd192a4d914239a8
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61091873"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68640727"
 ---
-# <a name="azure-database-for-mysql-use-java-to-connect-and-query-data"></a>Azure Database for MySQL: Csatlakozás és adatlekérdezés a Java használatával
+# <a name="azure-database-for-mysql-use-java-to-connect-and-query-data"></a>Azure Database for MySQL: A Java használata a kapcsolódáshoz és az adatlekérdezéshez
 Ebben a gyors útmutatóban azt szemléltetjük, hogy miként lehet Java-alkalmazás és a [MySQL Connector/J](https://dev.mysql.com/downloads/connector/j/) JDBC-illesztő használatával csatlakozni egy Azure Database for MySQL-adatbázishoz. Azt is bemutatja, hogyan lehet SQL-utasítások használatával adatokat lekérdezni, beszúrni, frissíteni és törölni az adatbázisban. A cikk feltételezi, hogy Ön rendelkezik fejlesztési tapasztalatokkal a Java használatával kapcsolatban, az Azure Database for MySQL használatában pedig még járatlan.
 
 A [MySQL Connector példáit tartalmazó oldalon](https://dev.mysql.com/doc/connector-j/5.1/en/connector-j-examples.html) számos további példát és mintakódot talál.

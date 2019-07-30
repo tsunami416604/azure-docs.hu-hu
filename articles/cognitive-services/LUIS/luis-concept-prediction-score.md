@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 03/11/2019
+ms.date: 07/29/2019
 ms.author: diberry
-ms.openlocfilehash: ccbdb60687bd81de57ff675634f9d124f10784e1
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 34ec5588a510574f4ea9f01bd23c6f6487e288da
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68563955"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68638359"
 ---
 # <a name="prediction-scores-indicate-prediction-accuracy-for-intent-and-entities"></a>Az előrejelzési pontszámok előrejelzési pontosságot jeleznek a szándék és az entitások számára
 
@@ -69,7 +69,7 @@ Előrejelzési pontszámok használható kitevő jelöléssel *jelennek meg* fen
 
 ## <a name="punctuation"></a>Absztrakt
 
-Absztrakt egy külön jogkivonatot a LUIS. Egy teljes időszakot, amely a végén található pontot és egy teljes időszakot tartalmaz, és nem tartalmaz két különálló hosszúságú kimondott szöveg, és két különböző előrejelzést kaphat. Győződjön meg arról, hogy a modell absztrakt vagy kezeli a a [példa utterances](luis-concept-utterance.md) (kellene és írásjelek nélkül) vagy a a [minták](luis-concept-patterns.md) figyelmen kívül a speciális szintaxissal írásjelek könnyebben: `I am applying for the {Job} position[.]`
+[További](luis-concept-utterance.md#punctuation-marks) információ a központozás használatáról vagy kihagyásáról. 
 
 ## <a name="next-steps"></a>További lépések
 

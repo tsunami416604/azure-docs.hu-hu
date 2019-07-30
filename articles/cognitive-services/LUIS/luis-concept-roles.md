@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 04/01/2019
+ms.date: 07/29/2019
 ms.author: diberry
-ms.openlocfilehash: 9c437450ead6f05a36725588215ac03b83790373
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: b4bd61ea74055a04718d8a9d8d5ccd42671af2ac
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68563944"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68638348"
 ---
 # <a name="entity-roles-for-contextual-subtypes"></a>Környezetfüggő altípusok entitás-szerepkörei
 
@@ -55,7 +55,7 @@ Schedule the meeting from 8 to 9
 
 ## <a name="are-multiple-entities-in-an-utterance-the-same-thing-as-roles"></a>Több entitás szerepel a teljes műveletben, mint a szerepkörök? 
 
-A rendszer több entitást is használhat, és szerepkörök használata nélkül is kinyerhető. Ha a mondat kontextusa azt jelzi, hogy az entitás verziója értékkel rendelkezik, akkor egy szerepkört kell használni. 
+A rendszer több entitást is használhat, és szerepkörök használata nélkül is kinyerhető. Ha a mondat kontextusa azt jelzi, hogy az entitás melyik verzióját tartalmazza egy érték, akkor a szerepkört kell használni. 
 
 ### <a name="dont-use-roles-for-duplicates-without-meaning"></a>Ne használja a szerepköröket az ismétlődésekhez jelentés nélkül
 
@@ -67,7 +67,7 @@ Ha a Kimondás tartalmazza a jelentéssel `I want to travel from Seattle, with a
 
 ### <a name="roles-can-indicate-order"></a>A szerepkörök jelezhetik a sorrendet
 
-Ha a Kimondás úgy módosult, hogy a kinyerni `I want to first start with Seattle, second London, then third Cairo`kívánt sorrendet jelzi, több módon is kinyerheti azt. Megcímkézheti a jogkivonatokat, amelyek jelzik `first start with`a `second`szerepkört `third`,,,. Az előre elkészített entitások sorszámát  és az **GeographyV2** előre összeépített entitását is használhatja egy összetett entitásban a megrendelés és a hely gondolatának rögzítéséhez. 
+Ha a Kimondás úgy módosult, hogy a kinyerni `I want to first start with Seattle, second London, then third Cairo`kívánt sorrendet jelzi, több módon is kinyerheti azt. Megcímkézheti a jogkivonatokat, amelyek jelzik `first start with`a `second`szerepkört `third`,,,. Az előre elkészített entitások sorszámát és az **GeographyV2** előre összeépített entitását is használhatja egy összetett entitásban a megrendelés és a hely gondolatának rögzítéséhez. 
 
 ## <a name="how-are-roles-used-in-example-utterances"></a>Hogyan használják például a hosszúságú kimondott szöveg a szerepköröket?
 

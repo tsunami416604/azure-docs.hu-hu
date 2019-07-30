@@ -1,74 +1,74 @@
 ---
-title: 'Gyors útmutató: Hozzon létre egy visszacsatolási hurokba - Personalizer'
+title: 'Gyors útmutató: Visszajelzési hurok létrehozása – személyre szabás'
 titleSuffix: Azure Cognitive Services
-description: Ez a tartalom személyre szabásához C# rövid útmutató a Personalizer szolgáltatással.
+description: A rövid útmutató tartalmainak C# személyre szabása a személyre szabott szolgáltatással.
 services: cognitive-services
-author: edjez
+author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: quickstart
 ms.date: 06/11/2019
-ms.author: edjez
-ms.openlocfilehash: 0b856b8d134cc160b8bb759fce0408204cf0ba61
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.author: diberry
+ms.openlocfilehash: 54aa23071fef09058a1702218d6b7fc920363518
+ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67722437"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68662799"
 ---
-# <a name="quickstart-personalize-content-using-c"></a>Gyors útmutató: Személyre szabhatja a tartalom használatávalC# 
+# <a name="quickstart-personalize-content-using-c"></a>Gyors útmutató: Tartalom személyre szabása a használatávalC# 
 
-Ez a személyre szabott tartalom megjelenítése C# rövid útmutató a Personalizer szolgáltatással.
+Személyre szabott tartalom megjelenítése C# ebben a rövid útmutatóban a személyre szabási szolgáltatással.
 
-Ez a minta azt ismerteti, hogyan használható a Personalizer készült ügyféloldali kódtára C# a következő műveletek végrehajtásához: 
+Ez a minta azt mutatja be, hogyan használható a személyre szabott C# ügyféloldali kódtár a következő műveletek elvégzéséhez: 
 
- * Rangsorolja a testreszabási műveletek listáját.
- * Érdemes lefoglalni a művelet a felhasználó kiválasztott a megadott esemény alapján rangsorolt felső ellenszolgáltatás jelentést.
+ * A személyre szabási műveletek listájának rangsorolása.
+ * A megadott esemény felhasználó általi kiválasztása alapján a legjobb rangsorolt művelethez való kiosztásra vonatkozó jelentés.
 
-Ismerkedés a Personalizer az alábbi lépésekből áll:
+A személyre szabás első lépései a következő lépésekből állnak:
 
-1. Hivatkozás az SDK-ra 
-1. A felhasználók számára megjelenítendő műveletek rangsorolását kód írása
-1. Kód írása a hurok betanításához jutalmakat küldése.
+1. Az SDK-ra való hivatkozás 
+1. Kód írása a felhasználók számára megjeleníteni kívánt műveletek rangsorolása érdekében
+1. Kód írása a jutalmak küldéséhez a hurok betanításához.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Kell egy [Personalizer szolgáltatás](how-to-settings.md) lekérni az előfizetési kulcs és a végpont URL-címe. 
-* [A Visual Studio 2015 vagy 2017](https://visualstudio.microsoft.com/downloads/).
-* A [Microsoft.Azure.CognitiveServices.Personalizer](https://go.microsoft.com/fwlink/?linkid=2092272) SDK NuGet-csomagot. A telepítési utasításokat az alábbiakban találja.
+* Az előfizetési kulcs és a végponti szolgáltatás URL-címének beszerzéséhez [személyre szabott szolgáltatásra](how-to-settings.md) van szükség. 
+* [Visual Studio 2015 vagy 2017](https://visualstudio.microsoft.com/downloads/).
+* A [Microsoft. Azure. CognitiveServices. személyre szabott](https://go.microsoft.com/fwlink/?linkid=2092272) SDK NuGet csomagja. A telepítési utasításokat az alábbiakban találja.
 
-## <a name="change-the-model-update-frequency"></a>A modell frissítési gyakoriság módosítása
+## <a name="change-the-model-update-frequency"></a>A modell frissítési gyakoriságának módosítása
 
-Az Azure Portalon Personalizer erőforrások esetén módosítsa a **modell frissítési gyakoriság** 10 másodperc. Ez lesz betanítása a szolgáltatás gyors, így láthatja, hogyan változik a top művelet minden egyes ismétléskor.
+A Azure Portal személyre szabott erőforrásában módosítsa a **modell frissítési gyakoriságát** 10 másodpercre. Ez gyorsan betanítja a szolgáltatást, így láthatja, hogy az egyes iterációk legfelső szintű művelete hogyan változik.
 
-Először példányosítása Personalizer hurkot, amikor nincs nincs modell óta módosították a betanításához ellenszolgáltatás API-hívásokat. Az egyes elemekhez egyenlő valószínűségek rangsorolják hívások adja vissza. Az alkalmazás továbbra is minden esetben kell rangsor tartalom használatával RewardActionId kimenetét.
+Ha a rendszer először létrehoz egy személyre szabott hurkot, nem áll rendelkezésre modell, mert nem áll rendelkezésre jutalom API-hívás a betanításhoz. A rangsorban megjelenő hívások az egyes elemek esetében azonos valószínűségeket adnak vissza. Az alkalmazásnak mindig a RewardActionId kimenetével kell rangsorolnia a tartalmat.
 
-![Modell frissítési gyakoriság módosítása](./media/settings/configure-model-update-frequency-settings.png)
+![Modell frissítési gyakoriságának módosítása](./media/settings/configure-model-update-frequency-settings.png)
 
-## <a name="creating-a-new-console-app-and-referencing-the-personalizer-sdk"></a>Egy új Konzolalkalmazás létrehozása és a hivatkozás a Personalizer SDK-ra 
+## <a name="creating-a-new-console-app-and-referencing-the-personalizer-sdk"></a>Új Console-alkalmazás létrehozása és a személyre szabott SDK-ra való hivatkozás 
 
 <!--
 Get the latest code as a Visual Studio solution from [GitHub] (add link).
 -->
 
 1. A Visual Studióban hozzon létre egy új Visual C#-konzolalkalmazást.
-1. Personalizer library NuGet csomag telepítését. Válassza a menü **eszközök**válassza **Nuget package Manager**, majd **NuGet-csomagok kezelése megoldáshoz**.
-1. Ellenőrizze **előzetes verzió**.
-1. Válassza ki a **Tallózás** fülre, majd a a **keresési** mezőbe írja be `Microsoft.Azure.CognitiveServices.Personalizer`.
-1. Válassza ki **Microsoft.Azure.CognitiveServices.Personalizer** mikor jeleníti meg.
-1. Jelölje be a projekt neve melletti jelölőnégyzetet, és válassza ki **telepítése**.
+1. Telepítse a személyre szabott ügyféloldali függvénytár NuGet-csomagot. A menüben válassza az **eszközök**, majd a **Nuget csomagkezelő**, majd a **megoldás Nuget-csomagok kezelése**lehetőséget.
+1. Keresse meg az **előzetes kiadást**.
+1. Válassza a **Tallózás** lapot, majd a **keresőmezőbe** írja be `Microsoft.Azure.CognitiveServices.Personalizer`a kifejezést.
+1. A megjelenítéskor válassza a **Microsoft. Azure. CognitiveServices. personalization** elemet.
+1. Jelölje be a projekt neve melletti jelölőnégyzetet, majd válassza a **telepítés**lehetőséget.
 
-## <a name="add-the-code-and-put-in-your-personalizer-and-azure-keys"></a>Adja hozzá a kódot, és helyezze a Personalizer és az Azure-kulcsok
+## <a name="add-the-code-and-put-in-your-personalizer-and-azure-keys"></a>Adja hozzá a kódot, és tegye a személyre és az Azure-kulcsokra
 
 1. A Program.cs fájl tartalmát cserélje le a következő kódra. 
-1. Cserélje le `serviceKey` értéke az érvényes Personalizer előfizetési kulccsal végzett.
-1. Cserélje le `serviceEndpoint` a szolgáltatás-végponthoz. Például: `https://westus2.api.cognitive.microsoft.com/`.
+1. Cserélje `serviceKey` le az értéket az érvényes személyre szabott előfizetési kulcsra.
+1. Cserélje `serviceEndpoint` le a szolgáltatást a szolgáltatás-végpontra. Például: `https://westus2.api.cognitive.microsoft.com/`.
 1. Futtassa a programot.
 
-## <a name="add-code-to-rank-the-actions-you-want-to-show-to-your-users"></a>Adja hozzá a felhasználók számára megjelenítendő műveletek rangsorolását kódot
+## <a name="add-code-to-rank-the-actions-you-want-to-show-to-your-users"></a>Kód hozzáadása a felhasználók számára megjeleníteni kívánt műveletek rangsorolása érdekében
 
-A következő C# kódja át a felhasználói adatok _features és a tartalommal kapcsolatos információk teljes körét _műveletek_, az SDK-val Personalizer. Personalizer rangsorolt művelet a felhasználó megjelenítendő felső adja vissza.  
+A következő C# kód egy teljes lista, amellyel továbbíthatja a felhasználói adatokat, a _features, valamint a tartalommal, a _műveletekkel_és az SDK-val való személyre szabással kapcsolatos információkat. A személyre szabás a legjobban rangsorolt műveletet adja vissza a felhasználó megjelenítéséhez.  
 
 ```csharp
 using Microsoft.Azure.CognitiveServices.Personalizer;
@@ -256,15 +256,15 @@ namespace PersonalizerExample
 
 ## <a name="run-the-program"></a>A program futtatása
 
-Hozza létre és futtassa a programot. A rövid útmutató program rákérdez, hogy gyűjtse össze a felhasználói beállítások, szolgáltatások, más néven kérdések néhány majd biztosít a top művelet.
+Hozza létre és futtassa a programot. A gyors üzembe helyezési program néhány kérdést tesz fel a felhasználói preferenciák (más néven funkciók) összegyűjtésére, majd megadja a legfontosabb műveletet.
 
-![A rövid útmutató program rákérdez, hogy gyűjtse össze a felhasználói beállítások, szolgáltatások, más néven kérdések néhány majd biztosít a top művelet.](media/csharp-quickstart-commandline-feedback-loop/quickstart-program-feedback-loop-example.png)
+![A gyors üzembe helyezési program néhány kérdést tesz fel a felhasználói preferenciák (más néven funkciók) összegyűjtésére, majd megadja a legfontosabb műveletet.](media/csharp-quickstart-commandline-feedback-loop/quickstart-program-feedback-loop-example.png)
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 Miután végzett a rövid útmutatóval, távolítsa el a rövid útmutatóban létrehozott összes fájlt. 
 
 ## <a name="next-steps"></a>További lépések
 
-[Personalizer működése](how-personalizer-works.md)
+[A megszemélyesítő működése](how-personalizer-works.md)
 
 

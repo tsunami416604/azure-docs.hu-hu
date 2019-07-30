@@ -9,18 +9,20 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 01/23/2019
+ms.date: 07/29/2019
 ms.author: diberry
-ms.openlocfilehash: c1a0afc909aa7ef16fa54b931e1601c2ce7304cc
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 31d979b92bdf050f28ac5d7549218016dc5e473c
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68560420"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68638004"
 ---
-# <a name="test-your-luis-app-in-the-luis-portal"></a>A LUIS-alkalmazás tesztelése a LUIS-portálon
 <a name="train-your-app"></a>
-[Tesztelés](luis-concept-test.md) az alkalmazás az iteratív folyamat. A LUIS-alkalmazás képzésekről, után tesztelje azt az minta utterances annak ellenőrzéséhez, hogy a szándékok és entitások helyesen ismeri. Ha nem, a LUIS-alkalmazásokon, tanítási és tesztelési ellenőrizze újra frissítéseket. 
+
+# <a name="test-your-luis-app-in-the-luis-portal"></a>A LUIS-alkalmazás tesztelése a LUIS-portálon
+
+Az alkalmazások [tesztelése](luis-concept-test.md) egy iterációs folyamat. A LUIS-alkalmazás képzésekről, után tesztelje azt az minta utterances annak ellenőrzéséhez, hogy a szándékok és entitások helyesen ismeri. Ha nem, a LUIS-alkalmazásokon, tanítási és tesztelési ellenőrizze újra frissítéseket. 
 
 <!-- anchors for H2 name changes -->
 <a name="test-your-app"></a>
@@ -31,13 +33,13 @@ ms.locfileid: "68560420"
 
 1. Az alkalmazás eléréséhez annak nevét választva a **saját alkalmazások** lapot. 
 
-2. Hozzáférés a **teszt** dia kibővített panelen kattintson **teszt** az alkalmazás tetején található.
+1. Hozzáférés a **teszt** dia kibővített panelen kattintson **teszt** az alkalmazás tetején található.
 
     ![Tanítási és tesztelési lap](./media/luis-how-to-interactive-test/test.png)
 
-3. Írja be az utterance (kifejezés) a szövegmezőbe, és nyomja le az Enter. Számos teszt a kimondott szöveg, amelyet szeretne beírhatja a **tesztelése**, de egyszerre csak egy utterance (kifejezés).
+1. Írja be az utterance (kifejezés) a szövegmezőbe, és nyomja le az Enter. Számos teszt a kimondott szöveg, amelyet szeretne beírhatja a **tesztelése**, de egyszerre csak egy utterance (kifejezés).
 
-4. A szövegmező alatt utterances listáját az utterance (kifejezés), a felső szándékot és pontszám kerülnek.
+1. A szövegmező alatt utterances listáját az utterance (kifejezés), a felső szándékot és pontszám kerülnek.
 
     ![Interaktív vizsgálati azonosítja a nem megfelelő leképezés](./media/luis-how-to-interactive-test/test-weather-1.png)
 
@@ -49,7 +51,7 @@ A teszteredmények részletek nézze meg a **vizsgálat** panel.
 
     ![A vizsgálati eredmények további részleteinek megtekintéséhez kattintson a vizsgálat gombra.](./media/luis-how-to-interactive-test/inspect.png)
 
-2. A **ellenőrzési** panel jelenik meg. A panel felső pontozási szándékot, valamint a azonosított entitások tartalmazza. A panelen a kiválasztott utterance (kifejezés) eredménye látható.
+1. A **ellenőrzési** panel jelenik meg. A panel felső pontozási szándékot, valamint a azonosított entitások tartalmazza. A panelen a kiválasztott utterance (kifejezés) eredménye látható.
 
     ![A panel felső pontozási szándékot, valamint a azonosított entitások tartalmazza. A panelen a kiválasztott utterance (kifejezés) eredménye látható.](./media/luis-how-to-interactive-test/inspect-panel.png)
 
@@ -57,7 +59,7 @@ A teszteredmények részletek nézze meg a **vizsgálat** panel.
 
 1. Ha szándékot pontozási felső helytelen, válassza ki a **szerkesztése** gombra.
 
-2.  A legördülő listában válassza ki a megfelelő leképezésének az utterance (kifejezés).
+1.  A legördülő listában válassza ki a megfelelő leképezésének az utterance (kifejezés).
 
     ![Válassza ki a megfelelő leképezés](./media/luis-how-to-interactive-test/intent-select.png)
 
@@ -103,16 +105,14 @@ Tartalmazza az alábbi eljárással a [Bing helyesírás-ellenőrzés 7-es](http
 
 1. Az a **teszt** panelen írja be az utterance (kifejezés). Amikor az utterance (kifejezés) előrejelzésének megtekintéséhez válassza ki a **[vizsgálat](#inspect-score)** alá az utterance (kifejezés) adott meg. 
 
-2. Ha a **vizsgálat** panel megnyílik, válassza ki  **[közzétett összehasonlítandó](#compare-with-published-version)** . 
+1. Ha a **vizsgálat** panel megnyílik, válassza ki  **[közzétett összehasonlítandó](#compare-with-published-version)** . 
 
-3. Ha a **közzétett** panel megnyílik, válassza ki  **[további beállítás](#additional-settings-in-test-panel)** .
+1. Ha a **közzétett** panel megnyílik, válassza ki  **[további beállítás](#additional-settings-in-test-panel)** .
 
-4. Az előugró párbeszédpanelen adja meg a **a Bing Spell Check** Szolgáltatáskulcs. 
-    ![Adja meg a Bing Spell Check-kulcsot](./media/luis-how-to-interactive-test/interactive-with-spell-check-service-key.png)
+1. Az előugró ablakban jelölje be a **Bing Spell Check engedélyezése** jelölőnégyzetet, és adja meg a kulcsot, majd kattintson a **kész**gombra. 
+    ![Adja meg a Bing Spell Check-kulcsot](./media/luis-how-to-interactive-test/interactive-with-spell-check-service-key-text.png)
 
-5. Adjon meg egy lekérdezést, és a egy helytelen helyesírás-ellenőrzés például `book flite to seattle` , és válassza ki, adja meg. A szó helyesírási `flite` váltja fel a lekérdezésben, LUIS küldött és az eredményül kapott JSON állapota is az eredeti lekérdezés `query`, és a javított helyesírás-ellenőrzés a lekérdezésben, `alteredQuery`.
-
-    ![Kijavított helyesírás-ellenőrzés JSON](./media/luis-how-to-interactive-test/interactive-with-spell-check-results.png)
+1. Adjon meg egy lekérdezést, és a egy helytelen helyesírás-ellenőrzés például `book flite to seattle` , és válassza ki, adja meg. A szó helyesírási `flite` váltja fel a lekérdezésben, LUIS küldött és az eredményül kapott JSON állapota is az eredeti lekérdezés `query`, és a javított helyesírás-ellenőrzés a lekérdezésben, `alteredQuery`.
 
 <a name="json-file-with-no-duplicates"></a>
 <a name="import-a-dataset-file-for-batch-testing"></a>
