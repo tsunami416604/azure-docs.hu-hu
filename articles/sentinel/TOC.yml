@@ -72,6 +72,8 @@
               href: connect-cisco.md
         - name: Fenyegetésfelderítés csatlakoztatása
           href: connect-threat-intelligence.md
+        - name: Azure Stack rendszerű virtuális gépek csatlakoztatása
+          href: connect-azure-stack.md
     - name: Veszélyforrás-keresés
       href: hunting.md
       items:

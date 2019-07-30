@@ -738,6 +738,12 @@
           maintainContext: true
         - name: ODBC-illesztő
           href: odbc-driver.md
+    - name: Adatok migrálása a Cosmos DB-re
+      items:
+        - name: Migrálás az SQL API-ba a Striim használatával
+          href: cosmosdb-sql-api-migrate-data-striim.md
+        - name: Adatok migrálása a Cassandra API-ba a Striim használatával
+          href: cosmosdb-cassandra-api-migrate-data-striim.md
     - name: Tömeges végrehajtói könyvtár
       items:
         - name: A tömeges végrehajtói kódtár ismertetése

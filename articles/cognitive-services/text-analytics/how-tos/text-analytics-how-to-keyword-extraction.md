@@ -1,39 +1,40 @@
 ---
-title: Kulcskifejezések kinyerése a Text Analytics REST API használatával |} A Microsoft Docs
-description: Hogyan kinyerheti a kulcsfontosságú kifejezéseket, az Azure Cognitive services Text Analytics REST API használatával.
+title: Kulcs kifejezésének kinyerése a Text Analytics használatával REST API
+titleSuffix: Azure Cognitive Services
+description: A legfontosabb kifejezések kinyerése az Azure Cognitive Services Text Analytics REST API használatával.
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
-ms.topic: sample
-ms.date: 06/05/2019
+ms.topic: article
+ms.date: 07/29/2019
 ms.author: raymondl
-ms.openlocfilehash: c803c85a0900a09b18909e2c81d52915a12cff1a
-ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
+ms.openlocfilehash: dd3f0c5b82c1898d6e4bbe564556ee26e872dc94
+ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67304075"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68619684"
 ---
 # <a name="example-how-to-extract-key-phrases-using-text-analytics"></a>Példa: Kulcsszavak kinyerése a Text Analytics használatával
 
-A [Key Phrase Extraction API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c6) strukturálatlan szöveget értékel ki és minden JSON-dokumentumra visszaadja a kulcsszavak listáját. 
+A [Key Phrase Extraction API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c6) strukturálatlan szöveget értékel ki és minden JSON-dokumentumra visszaadja a kulcsszavak listáját.
 
 Ez a funkció akkor hasznos, ha szeretné gyorsan azonosítani a dokumentum gyűjtemény fő témáit. Például „Az étel finom, a személyzet nagyszerű volt” bemeneti szövegre a szolgáltatás visszaadja a fő kulcsszavakat: „étel” és „nagyszerű személyzet”.
 
-Tekintse meg a [támogatott nyelvek](../text-analytics-supported-languages.md) cikkben további információt. 
+További információk: [Támogatott nyelvek](../text-analytics-supported-languages.md).
 
 > [!TIP]
-> Szövegelemzés is biztosít a Linux-alapú Docker tároló rendszerképének kulcsszókeresés, így [telepítheti és futtathatja a Text Analytics tároló](text-analytics-how-to-install-containers.md) közel az adatokat.
+> A Text Analytics egy Linux-alapú Docker-tároló rendszerképet is biztosít a fő kifejezés kinyeréséhez, így az adatokhoz [az Text Analytics tárolót is telepítheti és futtathatja](text-analytics-how-to-install-containers.md) .
 
 ## <a name="preparation"></a>Előkészítés
 
-Kulcskifejezések kinyerése akkor működik a legjobban, amikor nagyobb mennyiségű dolgozhatnak szöveg engedélyezi azt. Ez a ellentétes a hangulatelemzés, melyik teljesít jobban a szöveg kisebb mennyiségű. A legjobb eredmény elérése érdekében célszerű a bemenetet ennek megfelelően átszervezni.
+A Key kifejezés kinyerése a legjobban akkor működik, ha nagyobb mennyiségű szöveget ad meg a munkához. Ez az érzelmek elemzésével ellentétes, ami jobb a kisebb mennyiségű szövegnél. A legjobb eredmény elérése érdekében célszerű a bemenetet ennek megfelelően átszervezni.
 
-A JSON-dokumentumnak ilyen formátumban kell lennie: azonosító, szöveg, nyelv
+A következő formátumú JSON-dokumentumok szükségesek: AZONOSÍTÓ, szöveg, nyelv
 
-Dokumentum mérete kell lennie a 5,120 karakter / dokumentum, és legfeljebb 1000 rendelkezhet gyűjteményenként (azonosítók) elemet. A kollekció elküldése a kérelem törzsében történik. A következő példa egy kulcsszókeresésre beküldhető szöveget mutat be.
+A dokumentum méretének 5 120 vagy kevesebb karakterből kell állnia, és egy gyűjteményben legfeljebb 1 000 elem (azonosító) adható meg. A kollekció elküldése a kérelem törzsében történik. A következő példa egy kulcsszókeresésre beküldhető szöveget mutat be.
 
 ```json
     {
@@ -57,7 +58,7 @@ Dokumentum mérete kell lennie a 5,120 karakter / dokumentum, és legfeljebb 100
                 "language": "en",
                 "id": "4",
                 "text": "It was foggy so we missed the spectacular views, but the trail was ok. Worth checking out if you are in the area."
-            },                
+            },
             {
                 "language": "en",
                 "id": "5",
@@ -65,26 +66,26 @@ Dokumentum mérete kell lennie a 5,120 karakter / dokumentum, és legfeljebb 100
             }
         ]
     }
-```    
-    
-## <a name="step-1-structure-the-request"></a>1\. lépés: A kérelem struktúra
+```
 
-A kérés definícióval kapcsolatos részletek megtalálhatók a [Text Analytics API hívásának módja](text-analytics-how-to-call-api.md) részben. A következő pontokat a kényelem kedvéért itt megismételjük:
+## <a name="step-1-structure-the-request"></a>1\. lépés: A kérelem szerkezete
 
-+ Hozzon létre egy **POST** kérést. Tekintse át a kérelem API-dokumentáció: [Kulcskifejezések API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c6)
+További információ a kérelem meghatározásáról: [a Text Analytics API](text-analytics-how-to-call-api.md)meghívása. A következő pontokat a kényelem kedvéért itt megismételjük:
 
-+ Állítsa be a HTTP-végpontot Text Analytics erőforrás használata az Azure- vagy egy példányosított kulcsszókeresés [Szövegelemzés tároló](text-analytics-how-to-install-containers.md). Tartalmaznia kell a `/keyPhrases` erőforrást: `https://westus.api.cognitive.microsoft.com/text/analytics/v2.1/keyPhrases`
++ Hozzon létre egy **POST** kérést. Tekintse át a kérelem API-dokumentációját: [Legfontosabb kifejezések API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c6).
+
++ Állítsa be a HTTP-végpontot a kulcsfontosságú kifejezés kinyeréséhez az Azure-ban vagy egy példányban [text Analytics tárolóban](text-analytics-how-to-install-containers.md)Text Analytics erőforrás használatával. Tartalmaznia kell az `/keyPhrases` erőforrást: `https://westus.api.cognitive.microsoft.com/text/analytics/v2.1/keyPhrases`.
 
 + A kérés fejlécet állítsa be úgy, hogy tartalmazza a Text Analytics műveletekhez a hozzáférési kulcsot. További információkért lásd: [Végpontok és hozzáférési kulcsok megkeresése](text-analytics-how-to-access-key.md).
 
-+ A kérelem törzsében adja meg az elemzéshez előkészített JSON-dokumentum kollekciót
++ A kérelem törzsében adja meg az elemzéshez előkészített JSON-dokumentum kollekciót.
 
 > [!Tip]
 > Használható a [Postman](text-analytics-how-to-call-api.md) vagy nyissa meg az **API teszt konzolt** a [dokumentációban](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c6) a kérés felépítéséhez és a szolgáltatásnak történő POST elküldéséhez.
 
-## <a name="step-2-post-the-request"></a>2\. lépés: A kérelem küldése
+## <a name="step-2-post-the-request"></a>2\. lépés: A kérelem közzététele
 
-Az elemzés a kérelem megkapásakor történik meg. Tekintse meg a [data korlátai](../overview.md#data-limits) szakasz az áttekintésben a méret és a kérelmek percenkénti küldhet és a második kapcsolatos információkat.
+Az elemzés a kérelem megkapásakor történik meg. A percenként vagy másodpercenként küldendő kérelmek méretével és számával kapcsolatos információkért tekintse meg az áttekintés című témakör [adatkorlátok](../overview.md#data-limits) című szakaszát.
 
 Ne felejtse, hogy a szolgáltatás állapot nélküli. A fiókban nem tárol semmilyen adatot. Az eredményeket azonnal visszaadja a válaszban.
 
@@ -94,69 +95,72 @@ Minden POST kérés egy JSON formátumú választ ad vissza az azonosítókkal �
 
 A kimenetet visszaadása azonnali. Az eredmények adatfolyamát JSON elfogadó alkalmazáshoz küldheti vagy a kimenetet elmentheti fájlba a helyi rendszeren, majd importálható az adatokat rendezni, keresni és kezelni képes alkalmazásba.
 
-Itt látható egy példa a kimenetre, a kulcsszókeresés:
+Itt látható egy példa a Key kifejezés kinyerésének kimenetére:
 
 ```json
-    "documents": [
-        {
-            "keyPhrases": [
-                "year",
-                "trail",
-                "trip",
-                "views"
-            ],
-            "id": "1"
-        },
-        {
-            "keyPhrases": [
-                "marked trails",
-                "Worst hike",
-                "goners"
-            ],
-            "id": "2"
-        },
-        {
-            "keyPhrases": [
-                "trail",
-                "small children",
-                "family"
-            ],
-            "id": "3"
-        },
-        {
-            "keyPhrases": [
-                "spectacular views",
-                "trail",
-                "area"
-            ],
-            "id": "4"
-        },
-        {
-            "keyPhrases": [
-                "places",
-                "beautiful views",
-                "favorite trail"
-            ],
-            "id": "5"
-        }
+    {
+        "documents": [
+            {
+                "keyPhrases": [
+                    "year",
+                    "trail",
+                    "trip",
+                    "views"
+                ],
+                "id": "1"
+            },
+            {
+                "keyPhrases": [
+                    "marked trails",
+                    "Worst hike",
+                    "goners"
+                ],
+                "id": "2"
+            },
+            {
+                "keyPhrases": [
+                    "trail",
+                    "small children",
+                    "family"
+                ],
+                "id": "3"
+            },
+            {
+                "keyPhrases": [
+                    "spectacular views",
+                    "trail",
+                    "area"
+                ],
+                "id": "4"
+            },
+            {
+                "keyPhrases": [
+                    "places",
+                    "beautiful views",
+                    "favorite trail"
+                ],
+                "id": "5"
+            }
+        ],
+        "errors": []
+    }
 ```
 
-Amint említettük, az elemző törli a lényegtelen szavakat és azokat a szavakat vagy kifejezéseket tartja meg, amelyek a mondat lényegéhez, tárgyához tartozónak tűnnek. 
+Ahogy azt a feljegyezte, az elemző megkeresi és elveti a nem alapvető szavakat, és megtartja a mondat tárgyát vagy tárgyát képező egyszeres kifejezéseket vagy kifejezéseket.
 
-## <a name="summary"></a>Összefoglalás
+## <a name="summary"></a>Összegzés
 
-Ebben a cikkben a kulcsszókeresés elveivel és folyamatával ismerkedett meg a Cognitive Services Text Analytics használatával. Összegezve:
+Ebben a cikkben megtanulta a kulcsfontosságú kifejezések kinyeréséhez szükséges fogalmakat és munkafolyamatokat a Cognitive Services Text Analytics használatával. Összegezve:
 
 + A [Kulcsszókeresés API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c6) csak egyes nyelvekre érhető el.
-+ A kérés törzsében szereplő JSON-dokumentumok azonosítót, szöveget és nyelvkódot tartalmaznak.
++ A kérelem törzsében található JSON-dokumentumok közé tartozik az azonosító, a szöveg és a nyelvi kód.
 + POST-kérés a `/keyphrases` végpontra, az előfizetésre érvényes személyre szabott [hozzáférési kulcs és végpont](text-analytics-how-to-access-key.md) használatával.
-+ A válasz kimenet, amely minden dokumentumazonosítóhoz tartalmazza a kulcsszavakat és kifejezéseket, továbbítható bármilyen JSON-t elfogadó alkalmazáshoz, beleértve az Excelt és a Power BI-t, hogy csak néhányat említsünk.
++ A válasz kimenete, amely az egyes dokumentumok AZONOSÍTÓinak legfontosabb szavaiból és kifejezésből áll, továbbítható bármely olyan alkalmazásnak, amely elfogadja a JSON-t, beleértve a Microsoft Office Excel és Power BI is, hogy csak néhányat említsünk.
 
-## <a name="see-also"></a>Lásd még 
+## <a name="see-also"></a>Lásd még
 
- [A Text Analytics áttekintése](../overview.md)  
- [Gyakori kérdések (GYIK)](../text-analytics-resource-faq.md)</br>
- [Text Analytics termékoldala](//go.microsoft.com/fwlink/?LinkID=759712) 
+ [Text Analytics áttekintése](../overview.md) [Gyakori kérdések (GYIK)](../text-analytics-resource-faq.md)</br>
+ [Text Analytics termékoldala](//go.microsoft.com/fwlink/?LinkID=759712)
 
 ## <a name="next-steps"></a>További lépések
 

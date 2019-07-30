@@ -1,9 +1,9 @@
 ### YamlMime:YamlDocument
 documentType: LandingData
-title: Az Azure Security Center for IoT előzetes verziójának dokumentációja
+title: Azure Security Center for IoT – Dokumentáció
 metadata:
-  title: 'Az Azure Security Center for IoT előzetes verziójának dokumentációja – Oktatóanyagok, rövid útmutatók | Microsoft Doc'
-  meta.description: Azure Security Center for IoT unifies your security management and enables advanced threat protection across your IoT solution.
+  title: 'Az Azure Security Center for IoT dokumentációja – Oktatóanyagok, rövid útmutatók | Microsoft Doc'
+  meta.description: Azure Security Center for IoT unifies your device security management and enables advanced threat detection and security posture management across your IoT solution.
   services: asc-for-iot
   author: mlottner
   manager: rkarlin
@@ -11,25 +11,25 @@ metadata:
   ms.tgt_pltfrm: na
   ms.devlang: na
   ms.topic: landing-page
-  ms.date: 03/26/19
+  ms.date: 07/23/19
   ms.author: rkarlin
 abstract:
-  description: "Az Azure Security Center (ASC) for IoT előzetes verziójával a teljes IoT-megoldásra kiterjesztheti a meglévő kiberbiztonsági megoldások biztosította rálátást. Teljes körű áttekintést nyerhet az Azure-hoz kapcsolódó erőforrások biztonsági állapotáról. A gyors üzembe helyezési lehetőségek és az IoT Hub-ikermodulokkal kialakított teljes körű integráció széleskörű testreszabhatóságot és könnyű integrációt biztosít meglévő eszközfelügyeleti rendszereihez.\_"
+  description: "Az Azure Security Center for IoT-vel a teljes IoT-megoldásra kiterjesztheti a meglévő kiberbiztonsági megoldások biztosította rálátást. Teljes körű áttekintést nyerhet az Azure-hoz kapcsolódó erőforrások biztonsági állapotáról. A gyors üzembe helyezési lehetőségek és az IoT Hub-ikermodulokkal kialakított teljes körű integráció széleskörű testreszabhatóságot és könnyű integrációt biztosít meglévő eszközfelügyeleti rendszereihez.\_"
 sections:
   - title: 5 perces gyors útmutatók
     items:
       - type: paragraph
-        text: 'Megtudhatja, hogyan engedélyezheti az IoT Hubot az AsC for IoT-hez, hogyan telepíthet ASC for IoT-ügynököket, és hogyan teheti könnyen átláthatóvá adatait és a potenciális fenyegetéseket.'
+        text: 'Megtudhatja, hogyan engedélyezheti az IoT Hubot az Azure Security Center for IoT-hez, hogyan telepíthet biztonsági ügynököket, és hogyan teheti könnyen átláthatóvá a potenciális fenyegetéseket.'
       - type: list
         style: icon48
         items:
           - image:
               src: media/index/deploy.svg
-            text: Az ASC for IoT engedélyezése
+            text: Az Azure Security Center for IoT engedélyezése
             href: /azure/asc-for-iot/quickstart-onboard-iot-hub
           - image:
               src: media/index/get-started.svg
-            text: Ismerkedés az ASC for IoT használatával
+            text: Az Azure Security for IoT használatának első lépései
             href: /azure/asc-for-iot/getting-started
   - title: Útmutatók
     items:
@@ -38,7 +38,7 @@ sections:
       - type: list
         style: unordered
         items:
-          - html: <a href="/azure/asc-for-iot/how-to-investigate-device">Fenyegetések észlelése az ASC for IoT segítségével</a>
+          - html: <a href="/azure/asc-for-iot/how-to-investigate-device">Fenyegetések észlelése az Azure Security Center for IoT-vel</a>
   - title: Fejlessze a készségeit a Microsoft Learnnel
     items:
       - type: list
@@ -50,8 +50,17 @@ sections:
             image:
               src: media/index/tutorial.svg
               href: 'https://docs.microsoft.com/learn/azure'
-      - type: paragraph
-        text: <a href="/learn/browse/?term=security">További interaktív oktatóanyagok...</a>
+  - title: Azure Security Center for IoT – videók
+    items:
+      - type: list
+        style: cards
+        className: cardsFTitle
+        items:
+          - title: Microsoft Azure Security Center for IoT – áttekintés
+            href: 'https://youtu.be/pq5uSp9u_x0'
+            image:
+              src: 'https://docs.microsoft.com/media/common/i_video.svg'
+              href: 'https://youtu.be/pq5uSp9u_x0'
   - title: Referencia
     items:
       - type: list

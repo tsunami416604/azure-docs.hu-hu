@@ -245,7 +245,7 @@ Az esemény-előfizetés jelzi, hogy melyik szolgáltató eseményeit kívánja 
     | **Előfizető végpontja** | automatikusan létrehozott | Használja a rendszer által létrehozott végpont URL-címét. | 
 4. Váltson a **szűrő** lapra, és hajtsa végre a következőket:     
     1. Válassza ki **szűrésének engedélyezése tulajdonos** lehetőséget.
-    2. A **tulajdonos kezdődik**, írja be a következő értéket: **/blobServices/alapértelmezett/tárolók/képek/BLOB/**.
+    2. A **tulajdonos kezdődik**, írja be a következő értéket: **/blobServices/alapértelmezett/tárolók/képek/BLOB/** .
 
         ![Adja meg az esemény-előfizetés szűrő](./media/resize-images-on-storage-blob-upload-event/event-subscription-filter.png) 
 2. Válassza ki **létrehozás** az esemény-előfizetés hozzáadásához. Ez létrehoz egy esemény-előfizetést, amely `Thumbnail` működni, amikor egy blob bekerül a `images` tároló. A függvény átméretezi a képeket, és hozzáadja őket a `thumbnails` tároló.

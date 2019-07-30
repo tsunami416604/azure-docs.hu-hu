@@ -7,22 +7,22 @@
 - name: Gyors útmutatók
   expaned: true
   items:
-    - name: Egyéni modell betanítása és adatok kinyerése
+    - name: A REST API használata
       items:
-        - name: A REST API használata
+        - name: Egyéni modell betanítása és adatok kinyerése
           items:
             - name: cURL
               href: quickstarts/curl-train-extract.md
             - name: Python
               href: quickstarts/python-train-extract.md
-    - name: Előre összeállított nyugtamodell használata
-      items:
-        - name: A REST API használata
+        - name: Előre összeállított nyugtamodell használata
           items:
             - name: cURL
               href: quickstarts/curl-receipts.md
             - name: Python
               href: quickstarts/python-receipts.md
+    - name: A .NET SDK használata
+      href: quickstarts/dotnet-sdk.md
 - name: Útmutatók
   items:
     - name: Betanítási adathalmaz létrehozása

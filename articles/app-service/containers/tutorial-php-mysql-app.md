@@ -161,7 +161,7 @@ Ebben a lépésben egy MySQL-adatbázist hoz létre az [Azure Database for MySQL
 
 Hozzon létre egy kiszolgálót az Azure Database for MySQL szolgáltatásban az [`az mysql server create`](/cli/azure/mysql/server?view=azure-cli-latest#az-mysql-server-create) paranccsal.
 
-A következő parancsban helyettesítse be egy egyedi kiszolgálónevet a  *\<mysql-kiszolgáló-neve >* helyőrző, egy felhasználónevet a  *\<rendszergazdai felhasználói >*, és a egy jelszót a  *\<rendszergazdai jelszó->* helyőrző. A kiszolgálónév a MySQL-végpont (`https://<mysql-server-name>.mysql.database.azure.com`) részét képezi majd, így egyedi kiszolgálónévnek kell lennie a teljes Azure-ban. További részleteket az MySQL DB Termékváltozat kiválasztásához, [hozzon létre egy Azure Database for MySQL-kiszolgáló](https://docs.microsoft.com/azure/mysql/quickstart-create-mysql-server-database-using-azure-cli#create-an-azure-database-for-mysql-server).
+A következő parancsban helyettesítse be egy egyedi kiszolgálónevet a  *\<mysql-kiszolgáló-neve >* helyőrző, egy felhasználónevet a  *\<rendszergazdai felhasználói >* , és a egy jelszót a  *\<rendszergazdai jelszó->* helyőrző. A kiszolgálónév a MySQL-végpont (`https://<mysql-server-name>.mysql.database.azure.com`) részét képezi majd, így egyedi kiszolgálónévnek kell lennie a teljes Azure-ban. További részleteket az MySQL DB Termékváltozat kiválasztásához, [hozzon létre egy Azure Database for MySQL-kiszolgáló](https://docs.microsoft.com/azure/mysql/quickstart-create-mysql-server-database-using-azure-cli#create-an-azure-database-for-mysql-server).
 
 ```azurecli-interactive
 az mysql server create --resource-group myResourceGroup --name <mysql-server-name> --location "West Europe" --admin-user <admin-user> --admin-password <admin-password> --sku-name B_Gen5_1
@@ -202,7 +202,7 @@ az mysql server firewall-rule create --name AllowLocalClient --server <mysql-ser
 
 ### <a name="connect-to-production-mysql-server-locally"></a>Helyi csatlakozás éles MySQL-kiszolgálóhoz
 
-A terminálablakban csatlakozzon az Azure-ban található MySQL-kiszolgálóhoz. Használja a korábban megadott értéket  _&lt;rendszergazda >_ és  _&lt;mysql-kiszolgáló-neve >_. Amikor a rendszer jelszót kér, használja azt a jelszót, amelyet az adatbázis létrehozásakor adott meg az Azure-ban.
+A terminálablakban csatlakozzon az Azure-ban található MySQL-kiszolgálóhoz. Használja a korábban megadott értéket  _&lt;rendszergazda >_ és  _&lt;mysql-kiszolgáló-neve >_ . Amikor a rendszer jelszót kér, használja azt a jelszót, amelyet az adatbázis létrehozásakor adott meg az Azure-ban.
 
 ```bash
 mysql -u <admin-user>@<mysql-server-name> -h <mysql-server-name>.mysql.database.azure.com -P 3306 -p
@@ -239,7 +239,7 @@ Ebben a lépésben csatlakoztatja a PHP-alkalmazást a MySQL-adatbázishoz, amel
 
 ### <a name="configure-the-database-connection"></a>Az adatbázis-kapcsolat konfigurálása
 
-Az adattár gyökérkönyvtárában, hozzon létre a _. env.production_ fájlt, és másolja bele a következő változókat. Cserélje le a helyőrző  _&lt;mysql-kiszolgáló-neve >_.
+Az adattár gyökérkönyvtárában, hozzon létre a _. env.production_ fájlt, és másolja bele a következő változókat. Cserélje le a helyőrző  _&lt;mysql-kiszolgáló-neve >_ .
 
 ```txt
 APP_ENV=production
@@ -262,7 +262,7 @@ Mentse a módosításokat.
 
 ### <a name="configure-ssl-certificate"></a>SSL-tanúsítvány konfigurálása
 
-Alapértelmezés szerint az Azure Database for MySQL kikényszeríti az SSL-kapcsolatokat az ügyfelektől. Az Azure-ban található MySQL-adatbázishoz való csatlakozáshoz használja a [_.pem_ tanúsítványt, amelyet az Azure Database for MySQL](../../mysql/howto-configure-ssl.md) biztosít.
+Alapértelmezés szerint az Azure Database for MySQL kikényszeríti az SSL-kapcsolatokat az ügyfelektől. Az Azure-ban található MySQL-adatbázishoz való csatlakozáshoz használja a [ _.pem_ tanúsítványt, amelyet az Azure Database for MySQL](../../mysql/howto-configure-ssl.md) biztosít.
 
 Nyissa meg a _config/database.php_ fájlt, majd adja hozzá az _sslmode_ és az _options_ paramétert a `connections.mysql` szakaszhoz az alábbi kódban látható módon.
 
@@ -341,7 +341,7 @@ További információkért lásd: [módosítása webhely gyökeréhez](configure
 
 Az App Service-ben a környezeti változókat _alkalmazásbeállításként_ adhatja meg az [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) paranccsal.
 
-Az alábbi parancs a `DB_HOST`, `DB_DATABASE`, `DB_USERNAME` és `DB_PASSWORD` alkalmazásbeállítást konfigurálja. Cserélje le a zárójelben  _&lt;alkalmazásnév >_ és  _&lt;mysql-kiszolgáló-neve >_.
+Az alábbi parancs a `DB_HOST`, `DB_DATABASE`, `DB_USERNAME` és `DB_PASSWORD` alkalmazásbeállítást konfigurálja. Cserélje le a zárójelben  _&lt;alkalmazásnév >_ és  _&lt;mysql-kiszolgáló-neve >_ .
 
 ```azurecli-interactive
 az webapp config appsettings set --name <app-name> --resource-group myResourceGroup --settings DB_HOST="<mysql-server-name>.mysql.database.azure.com" DB_DATABASE="sampledb" DB_USERNAME="phpappuser@<mysql-server-name>" DB_PASSWORD="MySQLAzure2017" MYSQL_SSL="true"

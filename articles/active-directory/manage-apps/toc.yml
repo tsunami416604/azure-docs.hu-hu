@@ -286,6 +286,8 @@
           href: application-proxy-security.md
         - name: Hálózati topológia
           href: application-proxy-network-topology.md
+        - name: Magas rendelkezésre állás és terheléselosztás
+          href: application-proxy-high-availability-load-balancing.md
         - name: Távelérési megoldások összehasonlítása
           href: application-proxy-migration.md
     - name: Útmutatók

@@ -253,6 +253,9 @@
         - name: Célállapot-konfigurálók fordítása
           href: automation-dsc-compile.md
           displayName: 'state configuration, composite resources, configurationData'
+        - name: Nem megfelelő DSC-kiszolgálók szervizelése
+          href: automation-dsc-remediate.md
+          displayName: 'state configuration, DSC, remediate'
         - name: DSC-konfigurációk létrehozása összetett erőforrások használatával
           href: compose-configurationwithcompositeresources.md
         - name: Folyamatos üzembe helyezés a Chocolatey használatával
