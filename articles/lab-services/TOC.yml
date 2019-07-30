@@ -249,6 +249,8 @@
               href: devtest-lab-integrate-ci-cd-vsts.md
             - name: Környezetek integrálása Azure DevOps CI/CD-folyamatba
               href: integrate-environments-devops-pipeline.md
+            - name: A DevTest Labs használata az Azure DevOps build- és kiadási folyamataiban
+              href: use-devtest-labs-build-release-pipelines.md
         - name: Vállalati DevTest Labs
           items:
             - name: DevTest Labs vállalati szinten

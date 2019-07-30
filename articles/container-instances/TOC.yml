@@ -61,7 +61,7 @@
           href: container-instances-restart-policy.md
         - name: Környezeti változók beállítása (env)
           href: container-instances-environment-variables.md
-        - name: Tároló belépési pontjának felülbírálása
+        - name: Tárolóindítási parancs beállítása (entrypoint)
           href: container-instances-start-command.md
         - name: Parancs végrehajtása (exec)
           href: container-instances-exec.md

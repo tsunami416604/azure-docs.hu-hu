@@ -77,6 +77,8 @@
       items:
         - name: Hozzáférés korlátozása virtuális hálózattal (előzetes verzió)
           href: container-registry-vnet.md
+        - name: Tűzfal mögötti hozzáférés
+          href: container-registry-firewall-access-rules.md
         - name: Hitelesítés
           items:
             - name: A hitelesítés áttekintése

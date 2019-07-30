@@ -10,6 +10,8 @@
       href: quickstart-create-traffic-manager-profile.md
     - name: Traffic Manager-profil létrehozása – PowerShell
       href: quickstart-create-traffic-manager-profile-powershell.md
+    - name: Traffic Manager-profil létrehozása – Azure CLI
+      href: quickstart-create-traffic-manager-profile-cli.md
 - name: Oktatóanyagok
   items:
     - name: Forgalom irányítása az alacsony késés érdekében

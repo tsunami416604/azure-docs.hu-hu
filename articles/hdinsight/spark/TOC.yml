@@ -50,6 +50,18 @@
       href: ../hdinsight-version-release.md
     - name: Fürtök rendelkezésre állásának monitorozása az Ambarival és az Azure Monitor-naplókkal
       href: ../hdinsight-cluster-availability.md
+    - name: Hibaelhárítás
+      items:
+        - name: OutOfMemoryError kivétel
+          items:
+            - name: Nincs elegendő halommemória
+              href: ./apache-spark-troubleshoot-outofmemory-heap.md
+        - name: IllegalArgumentException kivétel
+          href: ./apache-spark-troubleshoot-illegalargumentexception.md
+        - name: Az Apache Spark-streamelési alkalmazás leáll
+          href: ./apache-spark-troubleshoot-application-stops.md
+        - name: RpcTimeoutException kivétel
+          href: ./apache-spark-troubleshoot-rpctimeoutexception.md
 - name: Útmutató
   items:
     - name: Fürttároló használata
