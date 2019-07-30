@@ -11,12 +11,12 @@ ms.service: azure-functions
 ms.custom: mvc
 ms.devlang: azure-cli
 manager: jeconnoc
-ms.openlocfilehash: a8a216a7d2ce048ed5131997df762942998aaa88
-ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
+ms.openlocfilehash: 66effb095edf7927a38fca53b2ff317e9bad468e
+ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68444136"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68619614"
 ---
 # <a name="create-a-function-on-linux-using-a-custom-image"></a>Függvény létrehozása Linux rendszerben egyéni rendszerkép használatával
 
@@ -190,7 +190,7 @@ A rendszerképet most már használhatja üzembehelyezési forrásként egy új 
 
 ## <a name="create-a-premium-plan"></a>Prémium csomag létrehozása
 
-A [dedikált (App Service) csomagok](functions-scale.md#app-service-plan) és [prémium csomagok](functions-scale.md#premium-plan)által támogatott egyéni functions-tárolók Linux-üzemeltetése. Ez az oktatóanyag egy prémium szintű csomagot használ, amely igény szerint méretezhető. További információk az üzemeltetésről: [Azure Functions szolgáltatási csomagok összehasonlítása](functions-scale.md).
+A [dedikált (App Service) csomagok](functions-scale.md#app-service-plan) és [prémium csomagok](functions-premium-plan.md#features)által támogatott egyéni functions-tárolók Linux-üzemeltetése. Ez az oktatóanyag egy prémium szintű csomagot használ, amely igény szerint méretezhető. További információk az üzemeltetésről: [Azure Functions szolgáltatási csomagok összehasonlítása](functions-scale.md).
 
 Az alábbi példa egy prémium szintű csomagot `myPremiumPlan` hoz létre a **rugalmas prémium 1** díjszabási szinten`--sku EP1`(), az USA nyugati régiójában`-location WestUS`() és egy Linux-tárolóban`--is-linux`().
 

@@ -12,4 +12,4 @@ ms.lasthandoff: 06/18/2019
 ms.locfileid: "67179407"
 ---
 > [!IMPORTANT]
-> Bármely Azure Cognitive Services-összetevők ezen az oldalon a Speech SDK letöltésével elfogadja annak licencével. Tekintse meg a [a Speech SDK-t a Microsoft szoftverlicenc-szerződés](https://aka.ms/csspeech/license201809).
+> Ha letölti az Azure-hoz készült Speech SDK-t Cognitive Services-összetevőket ezen az oldalon, a rendszer elfogadja a licencét. Tekintse [meg a SPEECH SDK Microsoft szoftverlicenc](https://aka.ms/csspeech/license201809)-feltételeit.

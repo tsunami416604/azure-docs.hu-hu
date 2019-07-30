@@ -1,6 +1,6 @@
 ---
-title: Az Azure Red Hat OpenShift bemutatása |} A Microsoft Docs
-description: Ismerje meg a funkciók és előnyök, a Microsoft Azure Red Hat OpenShift üzembe és kezelhet tárolóalapú alkalmazásokat.
+title: Bevezetés az Azure Red Hat OpenShift | Microsoft Docs
+description: A Microsoft Azure Red Hat OpenShift funkcióinak és előnyeinek megismerése a tároló alapú alkalmazások üzembe helyezéséhez és kezeléséhez.
 services: container-service
 author: jimzim
 ms.author: jzim
@@ -9,46 +9,46 @@ manager: jeconnoc
 ms.topic: overview
 ms.date: 05/08/2019
 ms.custom: mvc
-ms.openlocfilehash: 7cabedaec1190437aa9f225397afa8871cb06e88
-ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
+ms.openlocfilehash: f76f5d4dc84d1f8827248ab8399c1ae450a643a0
+ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66306373"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68620159"
 ---
 # <a name="azure-red-hat-openshift"></a>Azure Red Hat OpenShift
 
-A Microsoft *Azure Red Hat OpenShift* szolgáltatás segítségével helyezhet üzembe teljes körűen felügyelt [OpenShift](https://www.openshift.com/) fürtök.
+A Microsoft *Azure Red Hat OpenShift* szolgáltatás lehetővé teszi a teljes körűen felügyelt [OpenShift](https://www.openshift.com/) -fürtök üzembe helyezését.
 
-Az Azure Red Hat OpenShift kibővíti [Kubernetes](https://kubernetes.io/). Futó tárolók éles környezetben az Kubernetes szükséges további eszközöket és erőforrásokat, például egy regisztrációs adatbázisba, tárolók kezelése, hálózatkezelési megoldások és naplózás, és monitorozási eszközökkel, amelyek mindegyike kell rendszerverzióval ellátott és tesztelt együtt. Még több integrációs együttműködnek a közbenső szoftverek, keretrendszerek, adatbázisok és CI/CD eszközökkel tárolóalapú alkalmazások létrehozásához szükséges. Az Azure Red Hat OpenShift egyesíti az összes Ez egyetlen platformban, miközben alkalmazás egyszerű műveleteket az IT-csoportoknak oszloptárat csapatok, mit kell végrehajtani.
+Az Azure Red Hat OpenShift kiterjeszti a [Kubernetes](https://kubernetes.io/)-t. A Kubernetes éles környezetben futó tárolók további eszközöket és erőforrásokat igényelnek, mint például a rendszerkép-nyilvántartó, a tárolási felügyelet, a hálózati megoldások és a naplózási és figyelési eszközök, amelyek mindegyikét együtt kell telepíteni és tesztelni. A Container-alapú alkalmazások létrehozásához még nagyobb integrációra van szükség a köztes, a keretrendszerek, az adatbázisok és a CI/CD-eszközök esetében. Az Azure Red Hat OpenShift egyetlen platformon ötvözi az egészet, így megkönnyíti az IT-csapatok számára a működést.
 
-Az Azure Red Hat OpenShift közösen fejthetők vissza, üzemeltetett, és adja meg az integrált támogatási megoldást a Red Hat és a Microsoft által támogatott. Nincsenek virtuális gépek megfelelően működjenek, és nem a javítás nem szükséges. Fő-, infrastruktúra- és az csomópontok javítani, frissítve, és Red Hat és a Microsoft felügyelje az Ön nevében. Az Azure Red Hat OpenShift-fürtök a rendszer üzembe helyezi az Azure-előfizetés és az Azure-elszámolások részét képezik.
+Az Azure Red Hat OpenShift a Red Hat és a Microsoft közösen tervezték, üzemeltetik és támogatják, és integrált támogatási élményt biztosítanak. Nincsenek működő virtuális gépek, és nincs szükség javításra. A fő-, infrastruktúra-és alkalmazás-csomópontokat a Red Hat és a Microsoft által az Ön nevében javítottuk, frissítették és figyelik. Az Azure Red Hat OpenShift-fürtök üzembe helyezése Azure-előfizetésében történik, és az Azure-számlán is megtalálható.
 
-Választhat saját beállításjegyzék, hálózati, tárolási, és a CI/CD-megoldások vagy buildek automatizált Forráskezelő kódot, a tároló és az alkalmazás a beépített megoldások használata, központi telepítések, méretezés, egészségügyi felügyeleti és több. Az Azure Red Hat OpenShift egy integrált bejelentkezési élményt nyújt az Azure Active Directoryn keresztül.
+Kiválaszthatja saját beállításjegyzék-, hálózatkezelési, tárolási és CI/CD-megoldásait, vagy használhatja a beépített megoldásait az automatizált forráskód-kezelés, a tárolók és az alkalmazások létrehozásához, üzembe helyezéséhez, méretezéséhez, az állapotadatok kezeléséhez és egyéb funkciókhoz. Az Azure Red Hat OpenShift integrált bejelentkezési élményt nyújt Azure Active Directoryon keresztül.
 
-Első lépésként hajtsa végre a [hozzon létre egy Azure Red Hat OpenShift fürtöt](tutorial-create-cluster.md) oktatóanyag.
+Az első lépésekhez fejezze be az [Azure Red Hat OpenShift-fürt létrehozása](tutorial-create-cluster.md) című oktatóanyagot.
 
 ## <a name="access-security-and-monitoring"></a>Hozzáférés, biztonság és monitoring
 
-A nagyobb biztonság és felügyelet Azure Red Hat OpenShift lehetővé teszi az Azure Active Directoryval (Azure AD) integrálása és Kubernetes szerepköralapú hozzáférés-vezérlés (RBAC). A fürtje és az erőforrásai állapotát is monitorozhatja.
+A jobb biztonság és felügyelet érdekében az Azure Red Hat OpenShift lehetővé teszi a Azure Active Directory (Azure AD) integrálását és a Kubernetes szerepköralapú hozzáférés-vezérlés (RBAC) használatát. A fürtje és az erőforrásai állapotát is monitorozhatja.
 
 ## <a name="cluster-and-node"></a>Fürt és csomópont
 
-Az Azure Red Hat OpenShift csomópontok futtassa az Azure-beli virtuális gépeken. Csatlakoztathat tárterületet csomópontokhoz és podokhoz, frissíthet fürtkomponenseket, és használhat GPU-kat.
+Az Azure Red Hat OpenShift-csomópontjai Azure-beli virtuális gépeken futnak. Csatlakoztathat tárterületet csomópontokhoz és podokhoz, frissíthet fürtkomponenseket, és használhat GPU-kat.
 
 ## <a name="virtual-networks-and-ingress"></a>Virtuális hálózatok és bejövő forgalom
 
-Meglévő virtuális hálózaton keresztül társviszony-létesítés csatlakozhat egy Azure Red Hat OpenShift-fürtön. Ebben a konfigurációban podok egy társított virtuális hálózaton található más szolgáltatásokkal, valamint a helyszíni hálózatok protokollon keresztül is kapcsolódhatnak [ExpressRoute](https://docs.microsoft.com/azure/expressroute/) vagy site-to-site (S2S) VPN-kapcsolatok.
+[Egy Azure Red Hat OpenShift-fürtöt összekapcsolhatók egy meglévő virtuális hálózattal](https://docs.microsoft.com/azure/openshift/tutorial-create-cluster#optional-connect-the-clusters-virtual-network-to-an-existing-virtual-network) a peering használatával. Ebben a konfigurációban a hüvelyek kapcsolódhatnak más szolgáltatásokhoz egy társ virtuális hálózaton.
 
-Lásd: [egy fürt virtuális hálózat csatlakoztatása egy meglévő virtuális hálózatot](tutorial-create-cluster.md#optional-connect-the-clusters-virtual-network-to-an-existing-virtual-network) részleteiről.
+A részletekért lásd: [fürt virtuális hálózatának összekötése meglévő virtuális hálózathoz](tutorial-create-cluster.md#optional-connect-the-clusters-virtual-network-to-an-existing-virtual-network) .
 
 ## <a name="kubernetes-certification"></a>Kubernetes-tanúsítvány
 
-Az Azure Red Hat OpenShift service Kubernetes megfelelő igazoló minősítéssel CNCF lett.
+Az Azure Red Hat OpenShift szolgáltatás CNCF minősítéssel rendelkezik, Kubernetes-megfelelőségként.
 
 ## <a name="next-steps"></a>További lépések
 
-További információ az Azure Red Hat OpenShift előfeltételei:
+Ismerje meg az Azure Red Hat OpenShift előfeltételeit:
 
 > [!div class="nextstepaction"]
 > [A fejlesztési környezet beállítása](howto-setup-environment.md)

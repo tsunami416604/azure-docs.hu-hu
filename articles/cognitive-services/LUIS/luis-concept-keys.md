@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 01/18/2019
+ms.date: 07/29/2019
 ms.author: diberry
-ms.openlocfilehash: 0d52445d82965973c2d1e0f4fca2ef463312ad5f
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 69b4a92470b33ab6615eead16be044a88436d64e
+ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68560741"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68619759"
 ---
 # <a name="authoring-and-query-prediction-endpoint-keys-in-luis"></a>Az előrejelzési végpont kulcsainak létrehozása és lekérdezése a LUIS-ben
 A LUIS használ két kulcsot: [szerzői](#programmatic-key) és [végpont](#endpoint-key). Az Authoring Tool kulcs az Ön számára automatikusan létrejön a LUIS-fiók létrehozásakor. Amikor készen áll a LUIS-alkalmazás közzététele, meg kell [a végpont kulcs létrehozása](luis-how-to-azure-subscription.md), [rendelje hozzá](luis-how-to-azure-subscription.md) , a LUIS-alkalmazás és [használhatja a végpont lekérdezés](#use-endpoint-key-in-query). 
@@ -29,6 +29,7 @@ A LUIS használ két kulcsot: [szerzői](#programmatic-key) és [végpont](#endp
 Fontos, hogy a LUIS-alkalmazások készítése [régiók](luis-reference-regions.md#publishing-regions) ahol is szeretné közzétenni, és lekérdezéseket.
 
 <a name="programmatic-key" ></a>
+
 ## <a name="authoring-key"></a>Kulcs létrehozási
 
 Egy szerzői kulcs, más néven egy alapszintű kulcs, automatikusan létrejön, amikor létrehoz egy LUIS-fiókot, és ingyenes. Az egyes szerzői valamennyi LUIS alkalmazás rendelkezik egy szerzői kulccsal [régió](luis-reference-regions.md). A LUIS-alkalmazás létrehozásához, vagy végpont tesztlekérdezések az Authoring Tool kulcsot biztosítunk. 

@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: quickstart
 ms.date: 07/16/2019
 ms.author: diberry
-ms.openlocfilehash: 58ec78f0c20d6a2d5d86a60c69cc934c8f3076c8
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 55251a553921e947e7c6522677e51e4eb1d3fa5b
+ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68560643"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68619950"
 ---
 # <a name="quickstart-change-model-using-c"></a>Gyors útmutató: Modell módosítása a következő használatávalC#
 
@@ -115,7 +115,7 @@ Adja hozzá a fő kódot a parancssori argumentumok kezeléséhez. Adja hozzá a
 
 ### <a name="copy-utterancesjson-to-output-directory"></a>Az utterances.json másolása a kimeneti könyvtárba
 
-A megoldáskezelő adja hozzá a `utterances.json` parancsot a jobb gombbal a megoldáskezelő projekt nevére, majd válassza a **Hozzáadás**, majd a **meglévő elem**lehetőséget. Válassza ki `utterances.json` a fájlt. Ezzel hozzáadja a fájlt a projekthez. Ezután fel kell venni a kimeneti irányba. Kattintson a jobb gombbal `utterances.json` a elemre, és válassza a **Tulajdonságok**lehetőséget. A tulajdonságok ablakban jelölje meg a `Content` **Build Action** (Létrehozási művelet) elemét és a `Copy Always` **Copy to Output Directory** (Másolás a kimeneti könyvtárba) elemét.  
+A megoldáskezelő adja hozzá a `utterances.json` parancsot a jobb gombbal a megoldáskezelő projekt nevére, majd válassza a **Hozzáadás**, majd a **meglévő elem**lehetőséget. Válassza ki `utterances.json` a fájlt. Ezzel hozzáadja a fájlt a projekthez. Ezután fel kell venni a kimeneti könyvtárba. Kattintson a jobb gombbal `utterances.json` a elemre, és válassza a **Tulajdonságok**lehetőséget. A tulajdonságok ablakban jelölje meg a `Content` **Build Action** (Létrehozási művelet) elemét és a `Copy Always` **Copy to Output Directory** (Másolás a kimeneti könyvtárba) elemét.  
 
 ![A JSON-fájl megjelölése tartalomként](./media/luis-quickstart-cs-add-utterance/content-properties.png)
 

@@ -5,6 +5,7 @@
     - name: Mi az Azure IoT Hub?
       href: about-iot-hub.md
 - name: Gyors útmutatók
+  expanded: true
   items:
     - name: Telemetria küldése
       items:

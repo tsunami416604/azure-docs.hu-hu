@@ -1,6 +1,6 @@
 ---
-title: Az Azure App Service-ben üzembe helyezési központ
-description: Az Azure DevOps Telepítőközpontot egyszerűbbé teszi a beállítása egy robusztus, az alkalmazás az Azure DevOps-folyamattal
+title: Az Azure Kubernetes üzembe helyezési központja
+description: Az Azure DevOps üzembe helyezési központja leegyszerűsíti a robusztus Azure DevOps-folyamat beállítását az alkalmazáshoz
 ms.author: puagarw
 ms.manager: douge
 ms.prod: devops
@@ -9,144 +9,138 @@ ms.topic: tutorial
 ms.date: 07/12/2019
 author: pulkitaggarwl
 monikerRange: vsts
-ms.openlocfilehash: 8d1e467906b74c97c8b4f4e5c14af0814dd098f7
-ms.sourcegitcommit: 470041c681719df2d4ee9b81c9be6104befffcea
+ms.openlocfilehash: 35484566890f3bfd964e3fda337bfb3666d1da6c
+ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67854637"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68618722"
 ---
-# <a name="deployment-center-launcher"></a>Üzembe helyezési központ indítója
+# <a name="deployment-center-for-azure-kubernetes"></a>Az Azure Kubernetes üzembe helyezési központja
 
-Deployment center az Azure DevOps egyszerűbbé teszi a hatékony fejlesztési és üzemeltetési folyamatot az alkalmazás, beállítás mentése. Alapértelmezés szerint úgy konfigurálja a kubernetes-fürt központi telepítése az alkalmazásfrissítések fejlesztési és üzemeltetési folyamatot. Az alapértelmezett konfigurált DevOps folyamat, és adja hozzá a fejlesztési és üzemeltetési gazdagabb képességekkel - a előtt üzembe helyezése, további Azure-erőforrások kiépítését, parancsfájlok futtatásához, az alkalmazás frissítéséhez vagy további érvényesítési teszteket futó jóváhagyások bővítheti.
+Az Azure DevOps üzembe helyezési központja leegyszerűsíti a robusztus Azure DevOps-folyamat beállítását az alkalmazáshoz. Alapértelmezés szerint a központi telepítési központ konfigurálja az Azure DevOps folyamatot az alkalmazás frissítéseinek a Kubernetes-fürtön való üzembe helyezéséhez. Kiterjesztheti az alapértelmezett konfigurált Azure DevOps folyamatot, és gazdagabb képességeket is hozzáadhat: a jóváhagyás megkezdése előtt, további Azure-erőforrások üzembe helyezéséhez, parancsfájlok futtatásához, az alkalmazás frissítéséhez, és még több ellenőrzési teszt futtatásához.
 
 Az oktatóanyag során az alábbi lépéseket fogja végrehajtani:
 
 > [!div class="checklist"]
-> * A DevOps-folyamattal való az alkalmazás frissítéseket telepítheti a k8s fürt konfigurálása
-> * A CI-folyamat vizsgálata
-> * A CD-folyamat vizsgálata
-> * Az erőforrások törlése
+> * Konfiguráljon egy Azure DevOps-folyamatot az alkalmazás frissítéseinek a Kubernetes-fürtre történő telepítéséhez.
+> * Vizsgálja meg a folyamatos integráció (CI) folyamatát.
+> * Vizsgálja meg a folyamatos teljesítés (CD) folyamatát.
+> * Törölje az erőforrásokat.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Azure-előfizetés. Kap egy ingyenes keresztül [Visual Studio Dev Essentials programhoz](https://visualstudio.microsoft.com/dev-essentials/)
+* Azure-előfizetés. Létrehozhat egy ingyenes fiókot a [Visual Studio Dev Essentials](https://visualstudio.microsoft.com/dev-essentials/) segítségével.
 
-* Az Azure Kubernetes Service (AKS)-fürt
+* Egy Azure Kubernetes-szolgáltatás (ak) fürtje.
 
-## <a name="create-aks-cluster"></a>AKS-fürt létrehozása
+## <a name="create-an-aks-cluster"></a>AKS-fürt létrehozása
 
-1. Jelentkezzen be a [Azure Portalon](https://portal.azure.com/)
+1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com/).
 
-1. Válassza ki a [Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) gombra a az Azure portal jobb felső sarkában található menüben.
+1. A Azure Portal menüsávjának jobb oldalán válassza a [Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) lehetőséget.
 
-1. Az AKS-fürt létrehozásához futtassa a következő parancsokat.
+1. Az AK-fürt létrehozásához futtassa a következő parancsokat:
 
     ```cmd
-    # The below command creates Resource Group in the south india location
+    # Create a resource group in the South India location:
 
     az group create --name azooaks --location southindia
 
-    # The below command creates a cluster named azookubectl with one node. 
+    # Create a cluster named azookubectl with one node.
 
     az aks create --resource-group azooaks --name azookubectl --node-count 1 --enable-addons monitoring --generate-ssh-keys
     ```
 
-## <a name="deploy-application-updates-to-k8s-cluster"></a>Alkalmazásfrissítések üzembe helyezése K8s fürtön
+## <a name="deploy-application-updates-to-a-kubernetes-cluster"></a>Alkalmazások frissítéseinek központi telepítése Kubernetes-fürtre
 
-1. Keresse meg a fent létrehozott erőforráscsoportot.
+1. Nyissa meg az előző szakaszban létrehozott erőforráscsoportot.
 
-1. Válassza ki az AKS-fürtöt, majd kattintson a bal oldali panelen beállítások a a **Deployment Center (előzetes verzió)** . Kattintson a **Ismerkedés**.
+1. Válassza ki az AK-fürtöt, majd a bal oldali panelen válassza a **Deployment Center (előzetes verzió)** lehetőséget. Válassza az első **lépések**lehetőséget.
 
    ![beállítások](media/deployment-center-launcher/settings.png)
 
-1. Válassza ki a kódot a helyét, és kattintson a **tovább**. A támogatott adattárak jelenleg meg, **[Azure Adattárakkal](https://docs.microsoft.com/azure/devops/repos/index?view=azure-devops)** és **GitHub**. Követheti az alábbi lépéseket a tárház kijelölés alapján.
+1. Válassza ki a kód helyét, és kattintson a **Tovább gombra**. Ezután válassza ki az egyik jelenleg támogatott tárházat: **[Azure](https://docs.microsoft.com/azure/devops/repos/index?view=azure-devops)** -repók vagy **GitHub**.
 
-    Az Azure-Adattárakkal verzió vezérlő eszközöket, amelyek segítségével kezelheti a kódot. E szoftver projektjéhez nagy és kis méretű, minél hamarabb használatával a verziókezeléshez, célszerű.
+    Az Azure Repos olyan verziókövetés-eszközök összessége, amelyek segítenek a kód kezelésében. Azt jelzi, hogy a szoftveres projekt mérete nagy vagy kicsi, jó ötlet a verziókövetés a lehető leghamarabb.
 
-    - **Az Azure-Adattárakkal**: Tárház kiválasztása a meglévő projekt és a szervezet.
+    - **Azure**-repók: Válasszon egy tárházat a meglévő projektből és szervezetből.
 
         ![Azure-beli adattárak](media/deployment-center-launcher/azure-repos.gif)
 
-    - **GitHub**: Engedélyezze, és válassza ki a tárház GitHub-fiókja.
+    - **GitHub**: Engedélyezze és válassza ki a GitHub-fiók adattárát.
 
         ![GitHub](media/deployment-center-launcher/github.gif)
 
 
-1. A docker-fájlban észlelni és elemezni a tárház fogunk. Ha szeretné azt frissíteni, szerkesztheti az azonosított portszámot.
+1. A központi telepítési központ elemzi a tárházat, és észleli a Docker. Ha frissíteni szeretné a Docker, módosíthatja az azonosított portszámot.
 
-    ![Nastavení aplikace](media/deployment-center-launcher/application-settings.png)
+    ![Alkalmazásbeállítások](media/deployment-center-launcher/application-settings.png)
 
-    Ha az adattár nem tartalmazza a docker-fájlban, a rendszer véglegesíti egy üzenetet jelenít meg. 
+    Ha a tárház nem tartalmazza a Docker, a rendszer megjelenít egy üzenetet, amelyet véglegesíteni kell.
 
-    ![A docker-fájl](media/deployment-center-launcher/dockerfile.png)
+    ![Dockerfile](media/deployment-center-launcher/dockerfile.png)
 
-1. Válassza ki, vagy egy meglévő tároló-beállításjegyzék létrehozása, és kattintson a **Befejezés**. A folyamat automatikusan létrejön, és a build várólistára [Azure folyamatok](https://docs.microsoft.com/azure/devops/pipelines/index?view=azure-devops).
+1. Válasszon ki egy meglévő tároló-beállításjegyzéket, vagy hozzon létre egyet, majd kattintson a **Befejezés gombra**. A folyamat automatikusan létrejön, és egy Build az [Azure](https://docs.microsoft.com/azure/devops/pipelines/index?view=azure-devops)-folyamatokban.
 
-    Az Azure folyamatok egy felhőszolgáltatás, amely segítségével automatikusan hozhat létre és tesztelje a kódot a projekthez, és más felhasználók számára elérhető legyen. Az Azure folyamatok folyamatos integrációs (CI) és a folyamatos továbbítás (CD) következetesen és folyamatosan teszteléséhez és a kód felépítéséhez és bármilyen célra elszállítja egyesíti.
+    Az Azure-folyamatok egy felhőalapú szolgáltatás, amellyel automatikusan felépítheti és tesztelheti a kód projektjét, és elérhetővé teheti azokat más felhasználók számára. Az Azure-folyamatok folyamatosan és következetesen tesztelik és felépítik a folyamatos integrációt és a folyamatos teljesítést, és minden célra elszállítják a kódot.
 
     ![Container Registry](media/deployment-center-launcher/container-registry.png)
 
-1. Kattintson a hivatkozásra kattintva megtekintheti a folyamatban lévő folyamat.
+1. Kattintson a hivatkozásra a folyamatban lévő folyamat megtekintéséhez.
 
-1. A sikeres naplók látni fogja, ahogy azt az üzembe helyezés befejezése után.
+1. Az üzembe helyezés befejezése után megjelenik a sikeres naplók.
 
     ![Logs](media/deployment-center-launcher/logs.png)
 
 ## <a name="examine-the-ci-pipeline"></a>A CI-folyamat vizsgálata
 
-Üzembe helyezési központ konfigurálása az Azure DevOps szervezet CI / CD folyamat automatikusan. A folyamat fel és egyéni. 
+A Deployment Center automatikusan konfigurálja az Azure DevOps-szervezet CI/CD-folyamatát. A folyamat megvizsgálható és testreszabható.
 
-1. Nyissa meg az irányítópultot az üzembe helyezési központ.  
+1. Nyissa meg a Deployment Center irányítópultját.  
 
-1. Kattintson a buildszám sikeres naplók megtekintéséhez a buildelési folyamat a projekt a listából. 
+1. Válassza ki a létrehozási számot a sikeres naplók listájáról a projekt összeállítási folyamatának megtekintéséhez.
 
-1. Kattintson a jobb felső sarokban ellipsis(...). Egy menü jeleníti meg, például egy új létrehozást queuing, build megőrzése és szerkesztését a buildelési folyamat számos lehetőséget. Válassza ki a **szerkesztési folyamat**. 
+1. Kattintson a jobb felső sarokban lévő három pontra (...). A menü számos lehetőséget mutat be, például az új buildek kiépítését, a buildek megőrzését és a build folyamat szerkesztését. Válassza a **folyamat szerkesztése**lehetőséget. 
 
-1. A különböző feladatok a buildelési folyamat ezen a panelen ellenőrizheti. A build hajt végre különböző feladatokat, például forrásokból gyűjt a Git-tárház, lemezkép létrehozása, egy rendszerkép leküldése a tároló-beállításjegyzék és a telepítéshez használt kimenetek közzététele.
+1. Ezen az ablaktáblán ellenőrizheti a felépítési folyamat különböző feladatait. A build különböző feladatokat hajt végre, például forrásokat gyűjt a git-tárházból, létrehoz egy rendszerképet, leküldi a rendszerképet a tároló-beállításjegyzékbe, és közzéteszi az üzembe helyezésekhez használt kimeneteket.
 
-1. Válassza ki a buildelési folyamat elején a buildelési folyamat nevét.
+1. Válassza ki az összeállítási folyamat nevét a folyamat tetején.
 
-1. Módosítsa a buildelési folyamat nevét egy leíró, jelölje be **várólistára & mentése**, majd válassza ki **mentése**.
+1. Módosítsa a felépítési folyamat nevét egy ennél részletesebb leírásra, válassza a **mentés & üzenetsor**lehetőséget, majd kattintson a **Mentés**gombra.
 
-1. Válassza ki **előzmények** a buildelési folyamat alatt. Ez a panel megjeleníti az auditnaplót friss build módosítást. Az Azure DevOps végzett módosítások a buildelési folyamat figyeli, és lehetővé teszi, hogy verziójának összehasonlítása.
+1. A létrehozási folyamat alatt válassza az **Előzmények**lehetőséget. Ez a panel a legutóbbi fordítási változások naplózási nyomvonalát mutatja be. Az Azure DevOps figyeli a felépítési folyamat során történt módosításokat, és lehetővé teszi a verziók összehasonlítását.
 
-1. Válasszon **eseményindítók**. Szükség esetén ágak tartalmaz is, vagy a CI folyamat zárva.
+1. Válassza az **Eseményindítókat**. A CI-folyamatból ágakat is hozzáadhat vagy kizárhat.
 
-1. Válasszon **megőrzési**. Megadhatja, hogy megtartja vagy eltávolítja a buildeket a forgatókönyvtől függően számos házirendeket.
+1. Válassza a **Megtartást**. Megadhat olyan házirendeket, amelyekkel a forgatókönyvtől függően megtarthatja vagy eltávolíthatja a buildek számát.
 
 ## <a name="examine-the-cd-pipeline"></a>A CD-folyamat vizsgálata
 
-Üzembe helyezési központ hoz létre, és automatikusan konfigurálja a szükséges lépéseket az Azure DevOps-szervezet az Azure-előfizetéshez. Ezeket a lépéseket többek között a egy Azure-szolgáltatás-kapcsolat hitelesítéséhez az Azure DevOps Azure-előfizetésbe. Az automation is létrehoz egy kiadási folyamatot, amely biztosítja a CD-ről az Azure-bA.
+A Deployment Center automatikusan létrehozza és konfigurálja az Azure DevOps-szervezet és az Azure-előfizetés közötti kapcsolatot. Az ehhez szükséges lépések közé tartozik az Azure-szolgáltatási kapcsolatok beállítása az Azure-előfizetés Azure DevOps való hitelesítéséhez. Az automatizált folyamat egy kiadási folyamatot is létrehoz, amely folyamatos kézbesítést biztosít az Azure-hoz.
 
-1. Válasszon **folyamatok**, és válassza a **kiadásokban**.
+1. Válassza a **folyamatok**lehetőséget, majd válassza a **kiadások**lehetőséget.
 
-1. A kiadási folyamathoz szerkesztéséhez kattintson **szerkesztése** .
+1. A kiadási folyamat szerkesztéséhez válassza a **Szerkesztés**lehetőséget.
 
-1. Válassza ki **Drop** a **összetevők**. Az előző lépésekben a konstrukció vizsgálni, hozza létre egyetlen folyamat a kimeneti összetevőre használt. 
+1. Válassza a **drop** elemet az **összetevők listából.** Az előző lépésekben a megvizsgált szerkezeti folyamat létrehozza az összetevőhöz használt kimenetet. 
 
-1. Válassza ki **folyamatos üzembe helyezés** eseményindító jobb oldalán a **Drop** ikonra. A kibocsátási folyamat, amely a központi telepítés fut, amikor egy új buildösszetevő érhető el engedélyezett CD eseményindító tartozik. Igény szerint letilthatja az eseményindító, az üzemelő példányok manuális végrehajtás szükséges.
+1. Válassza ki a **folyamatos üzembe helyezési** triggert a **drop** kapcsoló jobb oldalán. Ez a kiadási folyamat egy olyan engedélyezett CD-triggerrel rendelkezik, amely egy üzembe helyezést futtat, amikor új Build-összetevő érhető el. Letilthatja az indítást is, ha manuális végrehajtást kíván végrehajtani az üzemelő példányokhoz.
 
-1. A folyamatok a tevékenységek vizsgálata, kattintson a **feladatok**. A kiadás a tiller valóban környezeti, konfigurálja a imagePullSecrets, Helm-eszközök telepítése és üzembe helyezi a Helm-diagramok a K8s fürthöz.
+1. A folyamat összes feladatának vizsgálatához válassza a **feladatok**lehetőséget. A kiadás beállítja a kormányrúd környezetet, konfigurálja a `imagePullSecrets` (z) paramétert, telepíti a Helm-eszközöket, és üzembe helyezi a Helm-diagramokat a Kubernetes-fürtön.
 
-1. Kiadások előzményeinek megtekintése, kattintson a **verziók megtekintéséhez**. 
+1. A kiadási előzmények megtekintéséhez válassza a **kiadások megtekintése**lehetőséget.
 
-1. Az összegzés megtekintéséhez kattintson a a **kiadási**. Kattintson bármely, a fázis böngészhet több menük, például egy összesítő, kiadás társított munkaelemekhez és a tesztek. 
+1. Az összefoglalás megtekintéséhez válassza a **kiadás**lehetőséget. Válassza ki bármelyik szakaszt a több menü, például a kiadási összefoglalás, a társított munkaelemek és a tesztek megismeréséhez. 
 
-1. Válassza a **Véglegesítéseket**. Ez a nézet megjeleníti az üzemelő példányhoz kapcsolódó kód véglegesítéseket. Hasonlítsa össze a véglegesítés közötti eltérések számára.
+1. Válassza a **Véglegesítéseket**. Ez a nézet a telepítéssel kapcsolatos kód-véglegesítő kódokat jeleníti meg. A kiadások összehasonlításával tekintheti meg az üzemelő példányok közötti különbségeket.
 
-1. Válassza a **Naplókat**. A naplók hasznos információkat tartalmaznak. Során, és a központi telepítések után meg tudja őket tekinteni.
+1. Válassza a **Naplókat**. A naplók hasznos telepítési információkat tartalmaznak, amelyeket az üzembe helyezések közben és után tekinthet meg.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-A kapcsolódó erőforrásokat, ha többé már nincs szükség rájuk létrehozott törölheti. A törlési funkció használata a DevOps Projects-irányítópulton.
+A létrehozott kapcsolódó erőforrásokat törölheti, ha már nincs rájuk szükség. Használja a DELETE funkciót a DevOps Projects irányítópulton.
 
 ## <a name="next-steps"></a>További lépések
 
-A csapat igényeihez igazodva módosíthatja ezt a buildet és a kiadási folyamatokat. Ezt a CI-/CD-mintát egyéb folyamatok sablonjaként is használhatja. Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
-
-> [!div class="checklist"]
-> * A DevOps-folyamattal való az alkalmazás frissítéseket telepítheti a k8s fürt konfigurálása
-> * A CI-folyamat vizsgálata
-> * A CD-folyamat vizsgálata
-> * Az erőforrások törlése
+A csapat igényeihez igazodva módosíthatja ezt a buildet és a kiadási folyamatokat. Másik lehetőségként ezt a CI/CD modellt is használhatja sablonként a többi folyamathoz.

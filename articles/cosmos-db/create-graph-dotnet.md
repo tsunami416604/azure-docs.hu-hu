@@ -8,14 +8,14 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 05/21/2019
 ms.author: lbosq
-ms.openlocfilehash: 24d5c11eb32350b2c11584ca5fc75ed4b619b6cf
-ms.sourcegitcommit: 59fd8dc19fab17e846db5b9e262a25e1530e96f3
+ms.openlocfilehash: 7f42f693f485a6d3e49c8b29529fb72062b2157b
+ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65978751"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68619863"
 ---
-# <a name="quickstart-build-a-net-framework-or-core-application-using-the-azure-cosmos-db-gremlin-api-account"></a>Gyors útmutató: Az Azure Cosmos DB Gremlin API-fiók használata .NET-keretrendszer vagy Core-alkalmazás létrehozása
+# <a name="quickstart-build-a-net-framework-or-core-application-using-the-azure-cosmos-db-gremlin-api-account"></a>Gyors útmutató: .NET-keretrendszer vagy Core-alkalmazás létrehozása a Azure Cosmos DB Gremlin API-fiók használatával
 
 > [!div class="op_single_selector"]
 > * [Gremlin-konzol](create-graph-gremlin-console.md)
@@ -32,7 +32,7 @@ Ez a rövid útmutató bemutatja, hogyan hozhat létre az Azure Portal segítsé
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ha már nincs telepítve a Visual Studio 2019, letöltheti és használhatja a **ingyenes** [Visual Studio 2019 Community Edition](https://www.visualstudio.com/downloads/). Ügyeljen arra, hogy engedélyezze az **Azure Development** használatát a Visual Studio telepítése során.
+Ha még nincs telepítve a Visual Studio 2019, letöltheti és használhatja az **ingyenes** [Visual Studio 2019 Community Edition verziót](https://www.visualstudio.com/downloads/). Ügyeljen arra, hogy engedélyezze az **Azure Development** használatát a Visual Studio telepítése során.
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -132,7 +132,7 @@ Az alábbi kódrészletek mind a Program.cs fájlból származnak.
 * Hozzon létre egy új `GremlinClient` objektumot (56. sor):
 
     ```csharp
-    var gremlinClient = new GremlinClient(gremlinServer);
+    var gremlinClient = new GremlinClient(gremlinServer, new GraphSON2Reader(), new GraphSON2Writer(), GremlinClient.GraphSON2MimeType);
     ```
 
 * Hajtsa végre az egyes Gremlin-lekérdezéseket a `GremlinClient` objektummal egy aszinkron feladatban (63. sor). Ez a fent meghatározott szótárból (26. sor) olvassa be a Gremlin-lekérdezéseket:
@@ -158,7 +158,7 @@ Lépjen vissza az Azure Portalra a kapcsolati sztring adataiért, majd másolja 
 
 1. Az [Azure Portalon](https://portal.azure.com/) keresse meg a gráfadatbázis-fiókot. Az **Áttekintés** lapon két végpontot lát: 
  
-   **.NET SDK URI** – ezt az értéket használja, amikor Microsoft.Azure.Graphs kódtár használatával csatlakozik a gráfadatbázis-fiók. 
+   **.Net SDK URI** – ez az érték akkor használatos, amikor a Microsoft. Azure. graphs könyvtár használatával csatlakozik a Graph-fiókhoz. 
 
    **Gremlin-végpont** – Ezt az értéket akkor használja, ha Gremlin.Net-kódtárral kapcsolódik a gráffiókhoz.
 

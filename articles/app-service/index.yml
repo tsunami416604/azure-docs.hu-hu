@@ -6,14 +6,12 @@ metadata:
   title: Az Azure App Service dokumentációja – oktatóanyagok és API-referencia
   meta.description: 'Learn how to use App Service to build and host websites and web applications, including RESTful APIs and mobile back ends.'
   services: app-service
-  author: czeumault
-  manager: carolz
+  author: georgewallace
+  manager: gwallace
   ms.service: app-service
-  ms.tgt_pltfrm: na
-  ms.devlang: na
   ms.topic: landing-page
   ms.date: 01/23/2017
-  ms.author: carolz
+  ms.author: gwallace
 abstract:
   description: 'Az Azure App Service segítségével egy tetszőleges programozási nyelven hozhat létre és üzemeltethet webalkalmazásokat, mobilháttereket és RESTful API-kat az infrastruktúra kezelése nélkül. Automatikus méretezést és magas rendelkezésre állást kínál, támogatja a Windows és a Linux rendszert is, valamint lehetővé teszi az automatikus üzembe helyezéseket a GitHub, az Azure DevOps vagy bármely egyéb Git-adattár használatával. Gyors útmutatóink, oktatóanyagaink és a felhozott példák segítségével megismerkedhet az Azure App Service használatával.'
   aside:

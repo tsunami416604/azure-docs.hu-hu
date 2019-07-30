@@ -5,6 +5,7 @@
     - name: Tudnivalók a Time Series Insightsról
       href: time-series-insights-update-overview.md
 - name: Gyors útmutatók
+  expanded: true
   items:
     - name: Az Azure Time Series Insights általánosan elérhető verziója
       items:

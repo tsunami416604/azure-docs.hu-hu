@@ -5,14 +5,12 @@ metadata:
   title: Az Azure Container Instances dokumentációja – oktatóanyagok | Microsoft Docs
   description: 'Az Azure Container Instances a tárolók Azure-ban való futtatásának leggyorsabb és legegyszerűbb módját nyújtja anélkül, hogy virtuális gépeket kellene kiépítenie vagy magasabb szintű szolgáltatást kellene alkalmaznia.'
   services: container-instances
-  author: czeumault
-  manager: carolz
+  author: georgewallace
+  manager: gwallace
   ms.service: container-instances
-  ms.tgt_pltfrm: na
-  ms.devlang: na
   ms.topic: landing-page
   ms.date: 07/26/2017
-  ms.author: carolz
+  ms.author: gwallace
 abstract:
   description: 'Az Azure Container Instances a tárolók Azure-ban való futtatásának leggyorsabb és legegyszerűbb módját nyújtja anélkül, hogy virtuális gépeket kellene kiépítenie vagy magasabb szintű szolgáltatást kellene alkalmaznia. Rövid útmutatóink, oktatóanyagaink és példáink segítségével megtudhatja, hogyan hozhat létre és kezelhet tárolópéldányokat.<p>Ha teljes körű tárolóvezénylési megoldásra van szüksége, tekintse meg az <a href="/azure/aks/">Azure Kubernetes Service (AKS) dokumentációját</a>.</p>'
 sections:
