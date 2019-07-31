@@ -22,6 +22,12 @@
     - name: Kapacitástervezés
       href: ../hdinsight-capacity-planning.md
       maintainContext: true
+    - name: Hibaelhárítás
+      items:
+        - name: OutOfMemoryError kivétel
+          items:
+            - name: A szemétgyűjtés többletterhelési korlátja túllépve
+              href: ./interactive-query-troubleshoot-outofmemory-overhead-exceeded.md
 - name: Útmutató
   items:
     - name: Hive számítási feladatok migrálása HDInsight 4.0-be

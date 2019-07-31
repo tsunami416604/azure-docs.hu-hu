@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 07/22/2019
+ms.date: 07/30/2019
 ms.author: diberry
-ms.openlocfilehash: edaa36cf22e63d42eb347aea3da1816e2c93b45e
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.openlocfilehash: a61f196a509c3e84b518fffb4eb78f5f7430cb28
+ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68479224"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68667586"
 ---
 # <a name="preview-migrate-to-api-version-3x-for-luis-apps"></a>Előzetes verzió: Migrálás a 3. x verziójú API-ra a LUIS-alkalmazásokhoz
 
@@ -83,7 +83,7 @@ A V3 API különböző lekérdezési karakterlánc-paraméterekkel rendelkezik.
 |Params neve|Type|Version|Alapértelmezett|Cél|
 |--|--|--|--|--|
 |`log`|boolean|V2 & V3|false|A lekérdezés tárolása a naplófájlban.| 
-|`query`|sztring|Csak v3|Nincs alapértelmezett – a GET kérelemben szükséges|A **v2-ben**az előre jelzett `q` érték a paraméterben szerepel. <br><br>A **v3**-as verzióban a funkció a `query` paraméterben lesz átadva.|
+|`query`|Karakterlánc|Csak v3|Nincs alapértelmezett – a GET kérelemben szükséges|A **v2-ben**az előre jelzett `q` érték a paraméterben szerepel. <br><br>A **v3**-as verzióban a funkció a `query` paraméterben lesz átadva.|
 |`show-all-intents`|boolean|Csak v3|false|Az összes leképezés visszaküldése a megfelelő pontszámmal a **jóslat. szándékok** objektumban. A rendszer a fölérendelt `intents` objektumban lévő objektumokként adja vissza a leképezéseket. Ez lehetővé teszi a programozott hozzáférést anélkül, hogy meg kellene találni a szándékot egy `prediction.intents.give`tömbben:. A v2-ben ezek egy tömbben voltak visszaadva. |
 |`verbose`|boolean|V2 & V3|false|Ha **a v2**értéke TRUE (igaz) értékre van állítva, az összes előre jelzett leképezést visszaadja. Ha minden előre jelzett leképezésre van szüksége, használja a v3 paraméterét `show-all-intents`.<br><br>**A v3-** as verzióban ez a paraméter csak az entitások előrejelzését biztosító entitás-metaadatokat tartalmazza.  |
 
@@ -114,7 +114,7 @@ A V3 API különböző lekérdezési karakterlánc-paraméterekkel rendelkezik.
 |`externalEntities`|array|Csak v3|Nem kötelező.|A [külső entitások](#external-entities-passed-in-at-prediction-time) lehetővé teszi, hogy a Luis-alkalmazás képes legyen az entitások azonosítására és címkézésére a futtatókörnyezet során, amely funkciókként használható a meglévő entitásokhoz. |
 |`options.datetimeReference`|Karakterlánc|Csak v3|Nincs alapértelmezett érték|A [datetimeV2 eltolásának](luis-concept-data-alteration.md#change-time-zone-of-prebuilt-datetimev2-entity)meghatározására szolgál. A datetimeReference formátuma [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601).|
 |`options.overridePredictions`|boolean|Csak v3|false|Meghatározza, hogy a felhasználó [külső entitása (a meglévő entitás nevével megegyező névvel)](#override-existing-model-predictions) van-e használva, vagy a modellben lévő meglévő entitást használja-e a rendszer az előrejelzéshez. |
-|`query`|sztring|Csak v3|Kötelező.|A **v2-ben**az előre jelzett `q` érték a paraméterben szerepel. <br><br>A **v3**-as verzióban a funkció a `query` paraméterben lesz átadva.|
+|`query`|Karakterlánc|Csak v3|Kötelező.|A **v2-ben**az előre jelzett `q` érték a paraméterben szerepel. <br><br>A **v3**-as verzióban a funkció a `query` paraméterben lesz átadva.|
 
 
 
@@ -150,7 +150,9 @@ A v3 leggyakoribb JSON-tulajdonságai a következők:
 }
 ```
 
-A `normalizedQuery` helyesírás-helyesbítéseket tartalmaz. Ez a v2 API-tulajdonságnak `alteredQuery`felel meg.  
+<!--
+The `alteredQuery` contains spelling corrections. This corresponds to the V2 API property `alteredQuery`.  
+-->
 
 Az `intents` objektum egy Rendezetlen lista. Ne tegyük fel, hogy az első `intents` gyermek a megfelel `topIntent`a következőnek:. Ehelyett használja az `topIntent` értéket a pontszám megkereséséhez:
 
@@ -162,7 +164,7 @@ const score = intents[topIntentName];
 A válasz JSON-sémájának módosítása az alábbiakat teszi lehetővé:
 
 * Törölje az eredeti Kimondás `query`és a visszaadott `prediction`előrejelzés közötti különbséget.
-* Egyszerűbb programozott hozzáférés az előre jelzett adatértékekhez. A v2-ben a tömbön keresztüli számbavétel helyett a leképezések és  az entitások nevével érheti el az értékeket. Az előre jelzett entitási szerepkörök esetében a rendszer a szerepkör nevét adja vissza, mert az a teljes alkalmazásban egyedi.
+* Egyszerűbb programozott hozzáférés az előre jelzett adatértékekhez. A v2-ben a tömbön keresztüli számbavétel helyett a leképezések és az entitások nevével érheti el az értékeket. Az előre jelzett entitási szerepkörök esetében a rendszer a szerepkör nevét adja vissza, mert az a teljes alkalmazásban egyedi.
 * Az adattípusok, ha meg vannak határozva, figyelembe veszik azokat. A numerikus értékeket a rendszer már nem adja vissza karakterláncként.
 * Az első prioritású előrejelzési információk és az `$instance` objektumban visszaadott további metaadatok megkülönböztetése. 
 

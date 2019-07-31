@@ -52,7 +52,8 @@
     - name: Bing-elemzések használata
       href: bing-insights-usage.md
     - name: Bing Visual Search API elemzése
-      href: bing-visual-search-stats.md
+      maintainContext: true
+      href: ../bing-web-search/bing-web-stats.md
 - name: Útmutatók
   items:
     - name: Elemzések lekérése tokennel

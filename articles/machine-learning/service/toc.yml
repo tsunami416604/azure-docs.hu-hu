@@ -33,6 +33,12 @@
   items:
     - name: Python SDK
       items:
+        - name: Az első ML-kísérlet létrehozása
+          items:
+            - name: 1. A munkaterület és a fejlesztési környezet beállítása
+              href: tutorial-1st-experiment-sdk-setup.md
+            - name: 2. Az első modell betanítása
+              href: tutorial-1st-experiment-sdk-train.md
         - name: Képbesorolás (MNIST-adatok)
           items:
             - name: 1. Modell betanítása

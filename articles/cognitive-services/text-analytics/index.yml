@@ -13,7 +13,7 @@ metadata:
   ms.tgt_pltfrm: na
   ms.devlang: na
   ms.topic: landing-page
-  ms.date: 09/24/2018
+  ms.date: 07/29/2019
   ms.author: nitinme
 abstract:
   description: 'A Text Analytics API egy felhőalapú eszköz, amely nyers szövegek fejlett természetes nyelvfeldogozását biztosítja, és négy fő funkciója van: a hangulatelemzés, a kulcsszókeresés, a megnevezett entitások felismerése és a nyelvfelismerés. Rövid útmutatóink, oktatóanyagaink és példáink segítségével megismerkedhet a tartalomelemzés különböző módjaival.'
@@ -34,11 +34,11 @@ sections:
             image:
               src: ../media/index/i_get-started.svg
             title: Regisztráció a Text Analytics API-ra
-          - href: /azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-access-key
-            html: <p>Ismerje meg a Text Analytics API hozzáférési kulcsainak és végpontjainak beszerzési folyamatát.</p>
+          - href: /azure/cognitive-services/text-analytics/whats-new
+            html: <p>Naprakész maradhat a Text Analytics API legújabb fejlesztéseit illetően.</p>
             image:
               src: ../media/index/i_tasks.svg
-            title: Hozzáférési kulcsok a Text Analytics API-hoz
+            title: A Text Analytics API újdonságai.
   - title: 5 perces gyors útmutatók
     items:
       - type: paragraph

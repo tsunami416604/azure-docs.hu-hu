@@ -70,7 +70,8 @@
 - name: További források
   items:
     - name: A Bing Spell Check API elemzése
-      href: bing-spell-check-stats.md
+      maintainContext: true
+      href: ../bing-web-search/bing-web-stats.md
     - name: Nyelvi és régiós támogatás
       href: language-support.md
     - name: Díjszabás

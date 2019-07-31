@@ -289,6 +289,9 @@
           href: idp-pass-through-user-flow.md
         - name: Hozzáférési jogkivonat kérése
           href: active-directory-b2c-access-tokens.md
+        - name: Több jogkivonat-kiállító támogatása
+          href: multiple-token-endpoints.md
+          displayName: 'migrate, b2clogin, owin, jwt'
     - name: A b2clogin.com használata
       href: b2clogin.md
     - name: Az Azure AD Graph API használata

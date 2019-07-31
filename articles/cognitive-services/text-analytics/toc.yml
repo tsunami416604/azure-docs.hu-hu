@@ -7,6 +7,8 @@
       href: overview.md
     - name: Példa felhasználói forgatókönyvek
       href: text-analytics-user-scenarios.md
+    - name: Újdonságok
+      href: whats-new.md
 - name: Gyors útmutatók
   expanded: true
   items:

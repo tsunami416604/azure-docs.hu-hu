@@ -5,19 +5,19 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: tutorial
-ms.date: 5/20/2019
+ms.date: 07/31/2019
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: caf82fdab8a841e5c49616a40216a788d877a81b
-ms.sourcegitcommit: 837dfd2c84a810c75b009d5813ecb67237aaf6b8
+ms.openlocfilehash: 00be168f36ba8016167d2ea004c1093295c0b8e9
+ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67501965"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68667376"
 ---
-# <a name="create-an-application-gateway-that-hosts-multiple-web-sites-using-the-azure-cli"></a>Az Azure CLI használatával több webhely üzemeltető application gateway létrehozása
+# <a name="create-an-application-gateway-that-hosts-multiple-web-sites-using-the-azure-cli"></a>Több webhelyet üzemeltető Application Gateway létrehozása az Azure CLI használatával
 
-Az Azure CLI használatával [konfigurálhatja több webhely üzemeltetését](multiple-site-overview.md), amikor [alkalmazásátjárót](overview.md) hoz létre. Ez a cikk a háttércímkészletek virtuálisgép-méretezési csoportok segítségével határozhatók meg. Ezután az Ön tulajdonában lévő tartományok alapján konfigurálhat figyelőket és szabályokat a webes forgalom a készletekben lévő megfelelő kiszolgálókra irányításához. Ez a cikk feltételezi, hogy a saját több tartományok és felhasználási mintái *www\.contoso.com* és *www\.fabrikam.com*.
+Az Azure CLI használatával [konfigurálhatja több webhely üzemeltetését](multiple-site-overview.md), amikor [alkalmazásátjárót](overview.md) hoz létre. Ebben a cikkben a háttérbeli címkészletet a Virtual Machines Scale sets használatával határozhatja meg. Ezután az Ön tulajdonában lévő tartományok alapján konfigurálhat figyelőket és szabályokat a webes forgalom a készletekben lévő megfelelő kiszolgálókra irányításához. Ez a cikk azt feltételezi, hogy több tartománya van, és példákat használ a *www\.-contoso.com* és a *www\.-fabrikam.com*.
 
 Ebben a cikkben az alábbiakkal ismerkedhet meg:
 
@@ -31,13 +31,13 @@ Ebben a cikkben az alábbiakkal ismerkedhet meg:
 
 ![Többhelyes útválasztási példa](./media/tutorial-multiple-sites-cli/scenario.png)
 
-Ha szeretné, ez az eljárás használatával elvégezhető [Azure PowerShell-lel](tutorial-multiple-sites-powershell.md).
+Ha szeretné, az eljárást [Azure PowerShell](tutorial-multiple-sites-powershell.md)használatával végezheti el.
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Ha a CLI helyi telepítését és használatát választja, akkor ehhez a gyorsútmutatóhoz az Azure CLI 2.0.4-es vagy újabb verziójára lesz szükség. A verzió megkereséséhez futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése](/cli/azure/install-azure-cli).
+Ha a parancssori felület helyi telepítését és használatát választja, akkor ehhez a cikkhez az Azure CLI 2.0.4 vagy újabb verzióját kell futtatnia. A verzió megkereséséhez futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése](/cli/azure/install-azure-cli).
 
 ## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 
@@ -70,7 +70,9 @@ az network vnet subnet create \
 
 az network public-ip create \
   --resource-group myResourceGroupAG \
-  --name myAGPublicIPAddress
+  --name myAGPublicIPAddress \
+  --allocation-method Static \
+  --sku Standard
 ```
 
 ## <a name="create-the-application-gateway"></a>Application Gateway létrehozása
@@ -85,7 +87,7 @@ az network application-gateway create \
   --vnet-name myVNet \
   --subnet myAGsubnet \
   --capacity 2 \
-  --sku Standard_Medium \
+  --sku Standard_v2 \
   --http-settings-cookie-based-affinity Disabled \
   --frontend-port 80 \
   --http-settings-port 80 \
@@ -103,7 +105,7 @@ Az alkalmazásátjáró létrehozása néhány percig is eltarthat. Az alkalmaz�
 
 ### <a name="add-the-backend-pools"></a>A háttérkészletek hozzáadása
 
-Adja hozzá a háttérkészletek, melyek szükségesek ahhoz, hogy tartalmazzák a háttérkiszolgálók használatával [az network application-gateway-címkészlet létrehozása](/cli/azure/network/application-gateway/address-pool#az-network-application-gateway-address-pool-create)
+Adja hozzá azokat a háttér-készleteket, amelyek szükségesek a háttér-kiszolgálók tárolásához az [az Network Application-Gateway-címkészlet Create](/cli/azure/network/application-gateway/address-pool#az-network-application-gateway-address-pool-create) paranccsal.
 ```azurecli-interactive
 az network application-gateway address-pool create \
   --gateway-name myAppGateway \
@@ -140,9 +142,9 @@ az network application-gateway http-listener create \
 
 ### <a name="add-routing-rules"></a>Útválasztási szabályok hozzáadása
 
-A szabályok a felsorolásuk sorrendjében vannak feldolgozva, és a forgalom az első egyező szabály alapján lesz átirányítva, függetlenül annak sajátlagosságától. Ha például egy adott porton egy alapszintű figyelőt használó és egy többhelyes figyelőt használó szabály is aktív, a többhelyes figyelővel rendelkező szabályt az alapszintű figyelővel rendelkező elé kell venni, hogy a többhelyes szabály a várakozásnak megfelelően működjön. 
+A szabályok feldolgozása a felsorolt sorrendben történik. A forgalmat az első olyan szabály alapján irányítja a rendszer, amely a megadott sajátosságtól függetlenül megfelel. Ha például egy adott porton egy alapszintű figyelőt használó és egy többhelyes figyelőt használó szabály is aktív, a többhelyes figyelővel rendelkező szabályt az alapszintű figyelővel rendelkező elé kell venni, hogy a többhelyes szabály a várakozásnak megfelelően működjön. 
 
-Ebben a példában két új szabályt hoz létre, és törli az alkalmazásátjáró létrehozásakor létrehozott alapértelmezett szabályt. A szabályt az [az network application-gateway rule create](/cli/azure/network/application-gateway/rule#az-network-application-gateway-rule-create) paranccsal adhatja hozzá.
+Ebben a példában két új szabályt hoz létre, és törli az Application Gateway üzembe helyezése során létrehozott alapértelmezett szabályt. A szabályt az [az network application-gateway rule create](/cli/azure/network/application-gateway/rule#az-network-application-gateway-rule-create) paranccsal adhatja hozzá.
 
 ```azurecli-interactive
 az network application-gateway rule create \
@@ -229,11 +231,11 @@ az network public-ip show \
   --output tsv
 ```
 
-Az A rekordok használata nem javasolt, mivel a virtuális IP-cím változhat az alkalmazásátjáró újraindításakor.
+A-Records használata nem ajánlott, mert a VIP az Application Gateway újraindításakor változhat.
 
 ## <a name="test-the-application-gateway"></a>Az alkalmazásátjáró tesztelése
 
-Adja meg a tartománya nevét a böngésző címsorában. Például http:\//www.contoso.com.
+Adja meg a tartománya nevét a böngésző címsorában. Például:, http:\//www.contoso.com.
 
 ![Contoso webhely tesztelése az alkalmazásátjáróban](./media/tutorial-multiple-sites-cli/application-gateway-nginxtest1.png)
 
@@ -246,9 +248,9 @@ Változtassa meg a címet a másik tartományára. Ekkor az eredmény a követke
 Ha már nincs rá szükség, távolítsa el az erőforráscsoportot, az alkalmazásátjárót és az összes kapcsolódó erőforrást.
 
 ```azurecli-interactive
-az group delete --name myResourceGroupAG --location eastus
+az group delete --name myResourceGroupAG
 ```
 
 ## <a name="next-steps"></a>További lépések
 
-* [Alkalmazásátjáró létrehozása URL-alapú útválasztási szabályokkal](./tutorial-url-route-cli.md)
+[Alkalmazásátjáró létrehozása URL-alapú útválasztási szabályokkal](./tutorial-url-route-cli.md)
