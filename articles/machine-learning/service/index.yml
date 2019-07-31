@@ -36,7 +36,6 @@ sections:
         items:
           - html: <a href="quickstart-run-cloud-notebook">Kísérlet futtatása a felhőben</a> (nincs szükség telepítésre).
           - html: <a href="quickstart-run-local-notebook">Kísérlet futtatása helyi notebookkiszolgáló használatával</a> (helyi SDK telepítésével).
-          - html: <a href="ui-quickstart-run-experiment">Adatok előkészítése és vizualizálása kód írása nélkül</a> a vizuális felületen.
   - title: Részletes útmutatók
     items:
       - type: paragraph

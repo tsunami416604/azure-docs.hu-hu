@@ -11,26 +11,27 @@ ms.topic: quickstart
 ms.workload: big-data
 ms.custom: mvc seodec18
 ms.date: 07/29/2019
-ms.openlocfilehash: 94402953a7168b6518d0a50f81f75ee63da8c902
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 0a91db15fcf77a936905a68c6b69b507d4e32a78
+ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68638877"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68677697"
 ---
 # <a name="quickstart-explore-azure-time-series-insights"></a>Gyors útmutató: Ismerkedés az Azure Time Series Insightsszal
 
-Ez a Azure Time Series Insights Explorer rövid útmutató segítséget nyújt a Time Series Insights ingyenes bemutató környezetben való megkezdéséhez. Ezzel megtudhatja, hogyan használhatja a webböngészőt nagy mennyiségű IoT-információ és az általánosan elérhető főbb funkciók megjelenítésére.
+Ez a Azure Time Series Insights Explorer rövid útmutató segítséget nyújt a Time Series Insights ingyenes bemutató környezetben való megkezdéséhez. Ebből a rövid útmutatóból megtudhatja, hogyan használhatja a webböngészőt nagy mennyiségű IoT-információ és az általánosan elérhető főbb funkciók megjelenítésére.
 
 A Azure Time Series Insights egy teljes körűen felügyelt elemzési, tárolási és vizualizációs szolgáltatás, amely leegyszerűsíti a IoT-események milliárdjainak egyidejű feltárását és elemzését. Globális áttekintést nyújt az adatairól, így gyorsan ellenőrizheti IoT-megoldását, és elkerülheti az üzleti szempontból kritikus fontosságú eszközök költséges leállását. Azure Time Series Insights segít felderíteni a rejtett trendeket, a helyszíni rendellenességeket és a kiváltó okok elemzését közel valós időben.
 
 A további rugalmasság érdekében a hatékony [REST API](./time-series-insights-update-tsq.md) -kon és az [ügyfél-SDK](./tutorial-create-tsi-sample-spa.md)-n keresztül Azure Time Series Insights adhat hozzá egy meglévő alkalmazáshoz. Az API-k segítségével az idősorozat-adatai tárolhatók, lefoglalhatók és felhasználhatók az Ön által választott ügyfélalkalmazások számára. Az ügyfél-SDK használatával felhasználói felületi összetevőket is hozzáadhat a meglévő alkalmazáshoz.
 
-Ez a Time Series Insights Explorer rövid útmutatója olyan funkciókat kínál, amelyek már általánosan elérhetők.
+Ez a Time Series Insights Explorer rövid útmutató az általánosan elérhető funkciókkal kapcsolatos interaktív bemutatót kínál.
+
+> [!IMPORTANT]
+> Hozzon létre egy [ingyenes Azure-fiókot](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) , ha még nem hozott létre egyet.
 
 ## <a name="prepare-the-demo-environment"></a>A bemutató környezet előkészítése
-
-1. Hozzon létre egy [ingyenes Azure-fiókot](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) , ha még nem hozott létre egyet.
 
 1. A böngészőben nyissa meg az [általános elérhetőségi bemutatót](https://insights.timeseries.azure.com/demo).
 

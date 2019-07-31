@@ -16,14 +16,14 @@ ms.topic: tutorial
 ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 7a592a7d0d8c9d32de83c92b258c4678dc3f8166
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 2d743b53f5ca74299c865d381f0832729fc956f4
+ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60188284"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68677589"
 ---
-# <a name="tutorial-automatically-scale-a-virtual-machine-scale-set-with-azure-powershell"></a>Oktatóanyag: Az Azure PowerShell használatával egy virtuálisgép-méretezési csoport automatikus méretezése
+# <a name="tutorial-automatically-scale-a-virtual-machine-scale-set-with-azure-powershell"></a>Oktatóanyag: Virtuálisgép-méretezési csoport automatikus méretezése Azure PowerShell
 
 [!INCLUDE [requires-azurerm](../../includes/requires-azurerm.md)]
 
@@ -137,7 +137,7 @@ $myScaleProfile = New-AzureRmAutoscaleProfile `
 ```
 
 
-## <a name="apply-autoscale-rules-to-a-scale-set"></a>Automatikus skálázási szabályok alkalmazása méretezési csoportokra
+## <a name="apply-autoscale-profile-to-a-scale-set"></a>Az autoskálázási profil alkalmazása méretezési csoportra
 Az utolsó lépés az automatikus skálázási profil alkalmazása a méretezési csoportra. A méretezési csoport ezután képes lesz az automatikus le- és felskálázásra az alkalmazás igényei szerint. Az automatikus skálázási profil az [Add-AzureRmAutoscaleSetting](/powershell/module/AzureRM.Insights/Add-AzureRmAutoscaleSetting) paranccsal alkalmazható az alábbiak szerint:
 
 ```azurepowershell-interactive
@@ -188,7 +188,7 @@ IpAddress
 52.168.121.216
 ```
 
-Távoli kapcsolaton keresztül csatlakozzon az első virtuálisgép-példányhoz. Adja meg a kívánt VM-példány saját nyilvános IP-címét és portszámát, amint az az előző parancsokban látható. Amikor a rendszer kéri, adja meg a méretezési csoport létrehozása során használt hitelesítő adatokat (a mintaparancsokban alapértelmezés szerint azok *azureuser* és *P\@ssw0rd!*). Az Azure Cloud Shell használata esetén ezt a lépést egy helyi PowerShell-parancssorból vagy egy távoli asztali ügyfélről hajtsa végre. A következő példa a *0* nevű virtuálisgép-példányhoz csatlakozik:
+Távoli kapcsolaton keresztül csatlakozzon az első virtuálisgép-példányhoz. Adja meg a kívánt VM-példány saját nyilvános IP-címét és portszámát, amint az az előző parancsokban látható. Ha a rendszer kéri, adja meg a méretezési csoport létrehozásakor használt hitelesítő adatokat (a minta parancsaiban alapértelmezés szerint az azureuser és a *\@P ssw0rd!* ). Az Azure Cloud Shell használata esetén ezt a lépést egy helyi PowerShell-parancssorból vagy egy távoli asztali ügyfélről hajtsa végre. A következő példa a *0* nevű virtuálisgép-példányhoz csatlakozik:
 
 ```powershell
 mstsc /v 52.168.121.216:50001

@@ -5,13 +5,13 @@ metadata:
   title: Az Azure Backup dokumentációja – oktatóanyagok és API-referencia | Microsoft Docs
   description: 'Az Azure Backup segítségével biztonsági mentést készíthet helyszíni kiszolgálók, virtuális gépek, virtualizált számítási feladatok, SQL-kiszolgálók, SharePoint-kiszolgálók stb. adatairól. Rövid útmutatóink, oktatóanyagaink és példáink segítségével megismerheti, hogyan készíthető biztonsági mentés az adatokról, és azok hogyan állíthatók vissza.'
   services: backup
-  author: rayne-wiselman
+  author: dcurwin
   manager: carmonm
   ms.service: backup
   ms.tgt_pltfrm: na
   ms.topic: landing-page
   ms.date: 05/22/2018
-  ms.author: raynew
+  ms.author: dacurwin
 abstract:
   description: 'Az Azure Backup segítségével megvédheti többek között a helyszíni kiszolgálók, virtuális gépek, virtualizált számítási feladatok, SQL-kiszolgálók és SharePoint-kiszolgálók adatait. Rövid útmutatóink, oktatóanyagaink és példáink segítségével megismerheti, hogyan készíthető biztonsági mentés az adatokról, és azok hogyan állíthatók vissza.'
 sections:

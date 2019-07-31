@@ -34,7 +34,6 @@ sections:
       - items:
           - html: <a href="service/quickstart-run-cloud-notebook">Kísérlet futtatása a felhőben</a> (nincs szükség telepítésre)
           - html: <a href="service/quickstart-run-local-notebook">Kísérlet futtatása helyi notebookkiszolgálóval</a> (helyi SDK-telepítés)
-          - html: <a href="service/ui-quickstart-run-experiment">Kísérlet futtatása a vizuális felületen</a> (kódolás nélkül)
         style: unordered
         type: list
       - text: '<b>Oktatóanyag: MNIST-adatok képbesorolása SDK-val:</b>'

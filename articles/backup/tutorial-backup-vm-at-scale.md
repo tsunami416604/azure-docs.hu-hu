@@ -3,17 +3,18 @@ title: Azure-beli virtuális gépek nagy léptékű biztonsági mentése
 description: Egyszerre több virtuális gép biztonsági mentése az Azure-ba
 keywords: virtuális gép biztonsági mentése; vm biztonsági mentése; Azure-beli virtuális gép biztonsági mentése; biztonsági mentés és vészhelyreállítás
 author: dcurwin
+manager: carmonm
 ms.author: dacurwin
 ms.date: 01/31/2019
 ms.topic: tutorial
 ms.service: backup
 ms.custom: mvc
-ms.openlocfilehash: 1d57ca7e5a182877565c1add295cb504381dd3e5
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: fa9f13bf4f4e06973f7b9125897366ad53d06857
+ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68639524"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68688433"
 ---
 # <a name="use-azure-portal-to-back-up-multiple-virtual-machines"></a>Több virtuális gép biztonsági mentése az Azure Portalon
 

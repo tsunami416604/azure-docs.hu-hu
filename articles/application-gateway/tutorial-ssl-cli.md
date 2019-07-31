@@ -3,23 +3,21 @@ title: Alkalmazásátjáró létrehozása az SSL leállításával – Azure CLI
 description: Megismerheti, hogyan hozhat létre alkalmazásátjárót és adhat hozzá egy tanúsítványt az SSL leállításához az Azure CLI használatával.
 services: application-gateway
 author: vhorne
-manager: jpconnock
 ms.service: application-gateway
-ms.topic: tutorial
-ms.workload: infrastructure-services
-ms.date: 5/20/2019
+ms.topic: article
+ms.date: 08/01/2019
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: d9007b3f1d4eee436452a3fa75b2880b9e5be461
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.openlocfilehash: d6df504d46a829298d0fff8d69b05019c26baa75
+ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65955699"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68688135"
 ---
-# <a name="create-an-application-gateway-with-ssl-termination-using-the-azure-cli"></a>Hozzon létre egy application gateway SSL-lezárást az Azure CLI használatával
+# <a name="create-an-application-gateway-with-ssl-termination-using-the-azure-cli"></a>Application Gateway létrehozása SSL-megszakítással az Azure CLI használatával
 
-Az Azure CLI használatával létrehozhat egy [alkalmazásátjárót](overview.md) egy [SSL leállítási](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) tanúsítvánnyal, amely egy [virtuálisgép-méretezési csoportot](ssl-overview.md) használ háttérkiszolgálókként. Ebben a példában a méretezési csoport két virtuálisgép-példányt tartalmaz, amelyek hozzá lesznek adva az alkalmazásátjáró alapértelmezett háttérkészletéhez.
+Az Azure CLI-vel létrehozhat egy olyan [Application Gateway](overview.md) -t, amely az [SSL](ssl-overview.md)-lezáráshoz tanúsítványt használ. A háttér-kiszolgálók esetében használhat virtuálisgép- [méretezési készletet](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) . Ebben a példában a méretezési csoport két virtuálisgép-példányt tartalmaz, amelyek hozzá lesznek adva az alkalmazásátjáró alapértelmezett háttérkészletéhez.
 
 Ebben a cikkben az alábbiakkal ismerkedhet meg:
 
@@ -29,17 +27,17 @@ Ebben a cikkben az alábbiakkal ismerkedhet meg:
 > * Alkalmazásátjáró létrehozása a tanúsítvánnyal
 > * Virtuálisgép-méretezési csoport létrehozása az alapértelmezett háttérkészlettel
 
-Ha szeretné, ez az eljárás használatával elvégezhető [Azure PowerShell-lel](tutorial-ssl-powershell.md).
+Ha szeretné, az eljárást [Azure PowerShell](tutorial-ssl-powershell.md)használatával végezheti el.
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Ha helyi telepítése és használata a parancssori felület, ez a cikk futtatnia kell az Azure CLI 2.0.4-es vagy újabb. A verzió megkereséséhez futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése](/cli/azure/install-azure-cli).
+Ha a parancssori felület helyi telepítését és használatát választja, akkor ehhez a cikkhez az Azure CLI 2.0.4 vagy újabb verzióját kell futtatnia. A verzió megkereséséhez futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése](/cli/azure/install-azure-cli).
 
 ## <a name="create-a-self-signed-certificate"></a>Önaláírt tanúsítvány létrehozása
 
-Éles környezetben importálnia kell egy megbízható szolgáltató által aláírt érvényes tanúsítványt. Ebben a cikkben létrehozhat egy önaláírt tanúsítványt, és a pfx-fájlt az openssl paranccsal.
+Éles környezetben importálnia kell egy megbízható szolgáltató által aláírt érvényes tanúsítványt. Ebben a cikkben létrehoz egy önaláírt tanúsítványt és pfx-fájlt az OpenSSL parancs használatával.
 
 ```azurecli-interactive
 openssl req -x509 -sha256 -nodes -days 365 -newkey rsa:2048 -keyout privateKey.key -out appgwcert.crt
@@ -84,7 +82,9 @@ az network vnet subnet create \
 
 az network public-ip create \
   --resource-group myResourceGroupAG \
-  --name myAGPublicIPAddress
+  --name myAGPublicIPAddress \
+  --allocation-method Static \
+  --sku Standard
 ```
 
 ## <a name="create-the-application-gateway"></a>Application Gateway létrehozása
@@ -101,7 +101,7 @@ az network application-gateway create \
   --vnet-name myVNet \
   --subnet myAGsubnet \
   --capacity 2 \
-  --sku Standard_Medium \
+  --sku Standard_v2 \
   --http-settings-cookie-based-affinity Disabled \
   --frontend-port 443 \
   --http-settings-port 80 \
@@ -183,4 +183,4 @@ az group delete --name myResourceGroupAG --location eastus
 
 ## <a name="next-steps"></a>További lépések
 
-* [Több webhelyet üzemeltető alkalmazásátjáró létrehozása](./tutorial-multiple-sites-cli.md)
+[Több webhelyet üzemeltető alkalmazásátjáró létrehozása](./tutorial-multiple-sites-cli.md)

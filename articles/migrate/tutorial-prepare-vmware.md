@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 07/11/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 286223e091ab0fe8521c29de12e37f5a112240dc
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 993b0249bdcc8e0e54dbe0c222aa2335c3bf8d4a
+ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68640749"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68679141"
 ---
 # <a name="prepare-vmware-vms-for-assessment-and-migration-to-azure"></a>VMware virtuális gépek előkészítése az Azure-ba történő értékeléshez és áttelepítéshez
 
@@ -102,7 +102,7 @@ Rendeljen szerepkör-hozzárendelési engedélyeket azon az erőforráscsoportho
 
 ## <a name="prepare-for-vmware-vm-assessment"></a>Felkészülés a VMware virtuális gépek értékelésére
 
-A VMware virtuális gépek értékelésének előkészítéséhez ellenőriznie kell a Hyper-V-gazdagép és a virtuális gép beállításait, és ellenőriznie kell a berendezések telepítésének beállításait.
+A VMware virtuális gépek értékelésének előkészítéséhez ellenőriznie kell a VMware-gazdagép és a virtuális gép beállításait, és ellenőriznie kell a berendezések telepítésének beállításait.
 
 ### <a name="verify-vmware-settings"></a>VMware-beállítások ellenőrzése
 

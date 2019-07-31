@@ -24,11 +24,6 @@
         - name: Kísérlet futtatása helyben
           displayName: 'workspace, install, sdk'
           href: quickstart-run-local-notebook.md
-    - name: Vizuális felület
-      items:
-        - name: Adatok előkészítése és vizualizálása
-          displayName: experiment drag-and-drop
-          href: ui-quickstart-run-experiment.md
 - name: Oktatóanyagok
   items:
     - name: Python SDK

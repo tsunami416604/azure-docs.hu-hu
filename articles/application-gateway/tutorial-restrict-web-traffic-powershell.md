@@ -3,34 +3,23 @@ title: Webes forgalom korlátozása webalkalmazási tűzfallal – Azure PowerSh
 description: Ismerje meg, hogyan korlátozható a webes forgalom webalkalmazási tűzfallal egy alkalmazásátjárón az Azure PowerShell használatával.
 services: application-gateway
 author: vhorne
-manager: jpconnock
-tags: azure-resource-manager
 ms.service: application-gateway
-ms.topic: tutorial
-ms.workload: infrastructure-services
-ms.date: 03/25/2019
+ms.topic: article
+ms.date: 08/01/2019
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: e962d76bc82edabf750af52c50ec45ed9ed76e17
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 219c2a36d1a241db8361ae1f8f2f74b9a68780ca
+ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68596832"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68688268"
 ---
 # <a name="enable-web-application-firewall-using-azure-powershell"></a>Webalkalmazási tűzfal engedélyezése az Azure PowerShell használatával
 
-> [!div class="op_single_selector"]
->
-> - [Azure Portal](application-gateway-web-application-firewall-portal.md)
-> - [PowerShell](tutorial-restrict-web-traffic-powershell.md)
-> - [Azure CLI](tutorial-restrict-web-traffic-cli.md)
->
-> 
-
 Az [alkalmazásátjáró](overview.md) forgalmát korlátozhatja [webalkalmazási tűzfallal](waf-overview.md) (WAF). A WAF [OWASP](https://www.owasp.org/index.php/Category:OWASP_ModSecurity_Core_Rule_Set_Project)-szabályokkal védi az alkalmazást. Ezek a szabályok olyan támadások ellen nyújtanak védelmet, mint az SQL-injektálás, a Cross-Site Scripting támadások és a munkamenet-eltérítések. 
 
-Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Ebben a cikkben az alábbiakkal ismerkedhet meg:
 
 > [!div class="checklist"]
 > * A hálózat beállítása
@@ -40,7 +29,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 ![Példa webalkalmazási tűzfalra](./media/tutorial-restrict-web-traffic-powershell/scenario-waf.png)
 
-Igény szerint az oktatóanyag az [Azure CLI](tutorial-restrict-web-traffic-cli.md) használatával is elvégezhető.
+Ha szeretné, ezt a cikket a [Azure Portal](application-gateway-web-application-firewall-portal.md) vagy az [Azure CLI](tutorial-restrict-web-traffic-cli.md)használatával végezheti el.
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
@@ -48,7 +37,7 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Ha a PowerShell helyi telepítése és használata mellett dönt, az oktatóanyaghoz a Azure PowerShell modul 1.0.0-es vagy újabb verziójára lesz szükség. A verzió azonosításához futtassa a következőt: `Get-Module -ListAvailable Az`. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-az-ps) ismertető cikket. Ha helyileg futtatja a PowerShellt, akkor emellett a `Login-AzAccount` futtatásával kapcsolatot kell teremtenie az Azure-ral.
+Ha a PowerShell helyi telepítését és használatát választja, akkor ehhez a cikkhez az Azure PowerShell-modul 1.0.0-as vagy újabb verziójára lesz szükség. A verzió azonosításához futtassa a következőt: `Get-Module -ListAvailable Az`. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-az-ps) ismertető cikket. Ha helyileg futtatja PowerShell, is futtatni szeretné `Login-AzAccount` kapcsolat létrehozása az Azure-ral.
 
 ## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 
@@ -82,12 +71,13 @@ $pip = New-AzPublicIpAddress `
   -ResourceGroupName myResourceGroupAG `
   -Location eastus `
   -Name myAGPublicIPAddress `
-  -AllocationMethod Dynamic
+  -AllocationMethod Static `
+  -Sku Standard
 ```
 
 ## <a name="create-an-application-gateway"></a>Application Gateway létrehozása
 
-Ebben a szakaszban az alkalmazásátjárót támogató erőforrásokat, majd az átjárót és a WAF-et hozza létre. A következő erőforrásokat hozza létre:
+Ebben a szakaszban olyan erőforrásokat hoz létre, amelyek támogatják az Application Gatewayt, majd végül létrehozza és létrehoz egy WAF. A következő erőforrásokat hozza létre:
 
 - *IP-konfigurációk és az előtérbeli port* – A korábban létrehozott alhálózatot társítja az alkalmazásátjáróhoz, és hozzárendel egy portot, amelyen keresztül elérhető.
 - *Alapértelmezett készlet* – Minden alkalmazásátjárónak rendelkeznie kell legalább egy háttérkiszolgáló-készlettel.
@@ -160,8 +150,8 @@ Most, hogy létrehozta a szükséges támogatási erőforrásokat, a [New-AzAppl
 
 ```azurepowershell-interactive
 $sku = New-AzApplicationGatewaySku `
-  -Name WAF_Medium `
-  -Tier WAF `
+  -Name WAF_v2 `
+  -Tier WAF_v2 `
   -Capacity 2
 
 $wafConfig = New-AzApplicationGatewayWebApplicationFirewallConfiguration `
@@ -258,7 +248,7 @@ Update-AzVmss `
 
 ## <a name="create-a-storage-account-and-configure-diagnostics"></a>Tárfiók létrehozása és diagnosztika konfigurálása
 
-Ebben az oktatóanyagban az alkalmazásátjáró tárfiókban tárolja az adatokat észlelési és megelőzési célra. Az adatok rögzítéséhez Azure Monitor naplókat vagy Event hub-t is használhat.
+Ebben a cikkben az Application Gateway egy Storage-fiók használatával tárolja az adatgyűjtési és-megelőzési célokat. Az adatok rögzítéséhez Azure Monitor naplókat vagy Event hub-t is használhat.
 
 ### <a name="create-the-storage-account"></a>A tárfiók létrehozása
 
@@ -314,13 +304,4 @@ Remove-AzResourceGroup -Name myResourceGroupAG
 
 ## <a name="next-steps"></a>További lépések
 
-Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
-
-> [!div class="checklist"]
-> * A hálózat beállítása
-> * Alkalmazásátjáró létrehozása engedélyezett WAF-fel
-> * Virtuálisgép-méretezési csoport létrehozása
-> * Tárfiók létrehozása és diagnosztika konfigurálása
-
-> [!div class="nextstepaction"]
-> [Alkalmazásátjáró létrehozása az SSL leállításával](./tutorial-ssl-powershell.md)
+[Alkalmazásátjáró létrehozása az SSL leállításával](./tutorial-ssl-powershell.md)

@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: tutorial
 ms.date: 07/29/2019
 ms.custom: seodec18
-ms.openlocfilehash: c6fdb9a993bc81feea5566ee5c10c2c727df1390
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: b462f0c427020b1422b91fbd7ac34e3023e546b8
+ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68638940"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68677869"
 ---
 # <a name="tutorial-set-up-an-azure-time-series-insights-preview-environment"></a>Oktatóanyag: Azure Time Series Insights előnézeti környezet beállítása
 
@@ -33,9 +33,10 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 >[!TIP]
 > A [IoT megoldás](https://www.azureiotsolutions.com/Accelerators) -gyorsítók olyan nagyvállalati szintű előre konfigurált megoldásokat biztosítanak, amelyek segítségével felgyorsíthatja az egyéni IoT-megoldások fejlesztését.
 
+Ha még nem rendelkezik ilyennel, regisztráljon egy [ingyenes Azure](https://azure.microsoft.com/free/) -előfizetésre.
+
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/).
 * Az Azure bejelentkezési fiókjának az előfizetés **tulajdonosi** szerepkörének is tagja kell lennie. További információ: [hozzáférés kezelése szerepköralapú hozzáférés-vezérléssel és a Azure Portal használatával](../role-based-access-control/role-assignments-portal.md).
 
 ## <a name="create-a-device-simulation"></a>Eszközszimuláció létrehozása

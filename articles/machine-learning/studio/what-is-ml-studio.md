@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
 ms.date: 04/20/2019
-ms.openlocfilehash: ce1e5f349f55074b53cf447126c411a7a1cd3394
-ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
+ms.openlocfilehash: 4ec9cff652bf1badf526d490547ad78de31ac5da
+ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68516905"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68677997"
 ---
 # <a name="what-is-azure-machine-learning-studio"></a>Mi az Azure Machine Learning Studio?
 A Microsoft Azure Machine Learning Studio olyan, az együttműködést támogató, egérrel kezelhető eszköz, amellyel az adataihoz prediktív elemzési megoldások hozhatók létre, tesztelhetők és helyezhetők üzembe. A Machine Learning Studio a modelleket webszolgáltatásként teszi közzé, amelyeket az egyéni alkalmazások vagy az Excel és más üzletiintelligencia-eszközök egyszerűen felhasználhatnak.
@@ -44,7 +44,7 @@ Töltse le a **Microsoft Azure Machine Learning Studio képességeinek áttekint
 MicrosoftAzureMachinelearningStudioképességek![áttekintése](./media/what-is-ml-studio/ml_studio_overview_v1.1.png)
 
 ## <a name="get-started-with-machine-learning-studio"></a>A Machine Learning Studio használatának első lépései
-Amikor először írja be Machine learning Studio,] (https://studio.azureml.net) a kezdőlapot  látja. Innen kiindulva megtekintheti a dokumentációt, valamint videókat, webes előadások és más hasznos forrásokat érhet el.
+Amikor először írja be [Machine learning Studio](https://studio.azureml.net), a **Kezdőlap** jelenik meg. Itt megtekintheti a dokumentációt, a videókat és a webes előadásokat, és más értékes erőforrásokat is megtalálhat.
 
 Kattintson a bal felső menüre, ![Menü](./media/what-is-ml-studio/menu.png) amelyben számos lehetőséget fog látni.
 ### <a name="azure-machine-learning-studio"></a>Azure Machine Learning Studio
@@ -123,7 +123,7 @@ A [Azure Machine learning szolgáltatás](../service/overview-what-is-azure-ml.m
 |Üzembe helyezési számítási célok| Tulajdonosi webszolgáltatás formátuma, nem testreszabható | Vállalati biztonsági beállítások & Azure Kubernetes szolgáltatás. <br/>([Egyéb](../service/how-to-deploy-and-where.md) , az SDK-ban támogatott számítások) |
 |Automatizált modellek betanítása és hiperparaméter finomhangolása | Nem | Még nem a Visual Interface-ben. <br/> (Támogatott az SDK-ban és a Azure Portal.) | 
 
-Próbálja ki a vizualizációs felületet (előzetes verzió [) a gyors üzembe helyezéssel: Az adatelőkészítés és a kód írása nélküli megjelenítése](../service/ui-quickstart-run-experiment.md)
+Próbálja ki a vizualizációs felületet (előzetes verzió [) az Oktatóanyaggal: Az autó árának előrejelzése a vizuális felületen](../service/ui-tutorial-automobile-price-train-score.md)
 
 > [!NOTE]
 > A Studióban létrehozott modellek nem helyezhetők üzembe vagy nem kezelhetők Azure Machine Learning szolgáltatással. A szolgáltatás vizualizációs felületén létrehozott és üzembe helyezett modellek azonban a Azure Machine Learning szolgáltatás munkaterületén kezelhetők.

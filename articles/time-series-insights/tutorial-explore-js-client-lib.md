@@ -1,6 +1,6 @@
 ---
 title: 'Oktatóanyag: Ismerkedés a Azure Time Series Insights JavaScript-ügyfél függvénytárával | Microsoft Docs'
-description: Megismerheti az Azure Time Series Insights JavaScript ügyfélkódtárat és a kapcsolódó programozási modellt.
+description: Oktatóanyag a Azure Time Series Insights JavaScript ügyféloldali kódtár és a kapcsolódó programozási modell megismeréséhez.
 author: ashannon7
 manager: cshankar
 ms.service: time-series-insights
@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 07/29/2019
 ms.author: dpalled
 ms.custom: seodec18
-ms.openlocfilehash: 1ae37636a2caf108221be2240a9517a547945096
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 2c1013829a7e6e94712e22ae235a47490c8c5eaa
+ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68638829"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68677665"
 ---
 # <a name="tutorial-explore-the-azure-time-series-insights-javascript-client-library"></a>Oktatóanyag: Az Azure Time Series Insights JavaScript ügyfélkódtár felderítése
 
@@ -34,9 +34,9 @@ Pontosabban a következőket fogja tudni:
 > * A Time Series Insights minta alkalmazás forrásfájljait a [GitHub-minta adattárában](https://github.com/Microsoft/tsiclient/tree/tutorial/pages/tutorial)kell megadnia.
 > * Olvassa el a [Time Series Insights-ügyfél dokumentációját](https://github.com/microsoft/tsiclient/blob/master/docs/API.md).
 
-## <a name="prerequisites"></a>Előfeltételek
+Ha még nem rendelkezik ilyennel, regisztráljon egy [ingyenes Azure](https://azure.microsoft.com/free/) -előfizetésre.
 
-* Ha még nem rendelkezik ilyennel, regisztráljon egy [ingyenes Azure](https://azure.microsoft.com/free/) -előfizetésre.
+## <a name="prerequisites"></a>Előfeltételek
 
 * Ez az oktatóanyag a böngésző **fejlesztői eszközök** funkcióját használja. A modern webböngészők ([Microsoft Edge](/microsoft-edge/devtools-guide), [Chrome](https://developers.google.com/web/tools/chrome-devtools/), [Firefox](https://developer.mozilla.org/en-US/docs/Learn/Common_questions/What_are_browser_developer_tools), [Safari](https://developer.apple.com/safari/tools/)és mások) általában hozzáférést biztosítanak a webfelügyelői **nézethez** a billentyűzeten található F12 gyorsbillentyűn keresztül. A nézet elérésének másik módja, ha a jobb gombbal egy weblapra kattint, majd kiválasztja az **elem vizsgálata elemet**.
 
@@ -46,8 +46,6 @@ Ebben a videóban bemutatjuk a nyílt forráskódú Time Series Insights JavaScr
 <br /><br />
 
 > [!VIDEO https://www.youtube.com/embed/X8sSm7Pl9aA]
-
-
 
 ## <a name="time-series-insights-sample-application"></a>A Time Series Insights mintaalkalmazás
 
@@ -104,7 +102,7 @@ Először tekintse meg a megjelenített weblap [HTML-és JavaScript-forráskódj
 
 ## <a name="time-series-insights-javascript-client-library-concepts"></a>A JavaScript-ügyfél függvénytárával kapcsolatos fogalmak Time Series Insights
 
-Az Time Series Insights ügyféloldali kódtár (*tsclient. js*) a következő két fontos JavaScript-funkció absztrakcióját biztosítja:
+Az Time Series Insights ügyféloldali kódtár (*tsiclient. js*) a következő két fontos JavaScript-funkció absztrakcióját biztosítja:
 
 * **A Time Series Insights lekérdezési API**-k meghívására szolgáló burkoló metódusok: REST API-k összesítő kifejezések használatával Time Series Insights adatok lekérdezésére használható. A metódusok a könyvtár TsiClient. Server névterében vannak rendszerezve.
 

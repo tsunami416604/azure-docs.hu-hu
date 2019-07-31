@@ -1,6 +1,6 @@
 ---
 title: 'Gyors útmutató: Ismerkedés a Azure Time Series Insights Preview bemutató környezettel | Microsoft Docs'
-description: Ismerje meg a Azure Time Series Insights előzetes verziójának bemutató környezetét.
+description: Rövid útmutató a Azure Time Series Insights előzetes verziójának bemutató környezetének megismeréséhez.
 ms.service: time-series-insights
 services: time-series-insights
 author: ashannon7
@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.workload: big-data
 ms.custom: mvc seodec18
 ms.date: 07/29/2019
-ms.openlocfilehash: 3e93fdc903b8e0d4ee4233e007014bb82ea22b6b
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 3d098b1806e4fdf5b45030dfebf3dfe5959b7d5c
+ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68638883"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68677717"
 ---
 # <a name="quickstart-explore-the-azure-time-series-insights-preview-demo-environment"></a>Gyors útmutató: Ismerkedés a Azure Time Series Insights előzetes kiadásának bemutató környezetével
 
@@ -26,11 +26,12 @@ A Time Series Insights Preview bemutató környezet a contoso vállalatot, amely
 
 Ebből a rövid útmutatóból megtudhatja, hogyan használhatja a Time Series Insightst a contoso-információk gyakorlati elemzésének megkereséséhez. Emellett rövid kiváltó okokat is elvégezhet, hogy jobban megjósolja a kritikus hibákat, és hogy elvégezze a karbantartást.
 
+> [!IMPORTANT]
+> Ha még nem rendelkezik ilyennel, hozzon létre egy [ingyenes Azure-fiókot](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) .
+
 ## <a name="explore-the-time-series-insights-explorer-in-a-demo-environment"></a>Ismerkedés a Time Series Insights Explorerrel bemutató környezetben
 
 A Time Series Insights Preview Explorer a korábbi és a kiváltó okok elemzését mutatja be. Első lépések:
-
-1. Ha még nem rendelkezik ilyennel, hozzon létre egy [ingyenes Azure-fiókot](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) .
 
 1. Nyissa meg a [contoso szélerőműpark bemutató](https://insights.timeseries.azure.com/preview/samples) környezetét.  
 

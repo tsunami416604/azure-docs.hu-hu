@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.date: 01/31/2019
 ms.author: dacurwin
 ms.custom: mvc
-ms.openlocfilehash: ad04495b1b143781d35b8afe6ff6455a7cf664cb
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 21178c3b8555879f13686164a4eee922997933dd
+ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68639499"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68688495"
 ---
 # <a name="back-up-a-virtual-machine-in-azure-with-the-cli"></a>Virtuális gép biztonsági mentése az Azure-ban a parancssori felület (CLI) használatával
 Az Azure CLI az Azure-erőforrások parancssorból vagy szkriptekkel történő létrehozására és kezelésére használható. Adatai védelme érdekében érdemes rendszeres időközönként biztonság mentést végeznie. Az Azure Backup georedundáns helyreállítási tárolókban tárolható helyreállítási pontokat hoz létre. Ez a cikk az Azure virtuális gépek (VM-ek) az Azure CLI használatával való biztonsági mentését mutatja be részletesen. Az [Azure PowerShell](quick-backup-vm-powershell.md) vagy az [Azure Portal](quick-backup-vm-portal.md) használatával is elvégezheti ezeket a lépéseket.
@@ -73,6 +73,9 @@ az backup protection enable-for-vm \
     --vm $(az vm show -g VMResourceGroup -n MyVm --query id | tr -d '"') \
     --policy-name DefaultPolicy
 ```
+
+> [!IMPORTANT]
+> Míg a CLI-vel egyszerre több virtuális gép biztonsági mentését is lehetővé teszi, győződjön meg arról, hogy egyetlen szabályzathoz nem tartozik több, mint 100 virtuális gép társítva. Ez az [ajánlott eljárás](https://docs.microsoft.com/azure/backup/backup-azure-vm-backup-faq#is-there-a-limit-on-number-of-vms-that-can-beassociated-with-a-same-backup-policy). Jelenleg a PS-ügyfél nem blokkolja explicit módon, ha több mint 100 virtuális gép van, de az ellenőrzési terv a jövőben is felvehető.
 
 ## <a name="start-a-backup-job"></a>Biztonsági mentési feladat indítása
 Ha szeretné a biztonsági mentést most elindítani, ahelyett, hogy megvárná, amíg az alapértelmezett házirend az ütemezett időben futtatja a feladatot, használja az [az backup protection backup-now](https://docs.microsoft.com/cli/azure/backup/protection#az-backup-protection-backup-now) parancsot. Ez az első biztonsági mentési feladat létrehoz egy teljes helyreállítási pontot. Az ezt a kezdeti biztonsági mentést követő további biztonsági mentési feladatok növekményes helyreállítási pontokat hoznak létre. A növekményes helyreállítási pontok hatékonyan használják a tárhelyet és az időt, mivel csak az utolsó biztonsági mentés óta végzett módosításokat viszik át.

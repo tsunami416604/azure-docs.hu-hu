@@ -1,6 +1,6 @@
 ---
 title: 'Oktatóanyag: Azure Time Series Insights-környezet létrehozása | Microsoft Docs'
-description: Megtudhatja, hogyan hozhat létre olyan Time Series Insights-környezetet, amely szimulált eszközökről származó adatokkal van feltöltve.
+description: Oktatóanyag, amelyből megtudhatja, hogyan hozhat létre olyan Time Series Insights-környezetet, amely szimulált eszközökről származó adatokkal van feltöltve.
 services: time-series-insights
 author: ashannon7
 ms.service: time-series-insights
@@ -9,12 +9,12 @@ ms.date: 07/29/2019
 ms.author: dpalled
 manager: cshankar
 ms.custom: seodec18
-ms.openlocfilehash: 39226498316de9359394ca7953ab34012b595116
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 921528c50bae03b67800bf3ccab8b5cd9bb704f6
+ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68638900"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68677754"
 ---
 # <a name="tutorial-create-an-azure-time-series-insights-environment"></a>Oktatóanyag: Azure Time Series Insights-környezet létrehozása
 
@@ -27,16 +27,18 @@ Ez az oktatóanyag végigvezeti egy olyan Azure Time Series Insights-környezet 
 > * Futtasson egy eszköz-szimulációt az adatstreamek Time Series Insights-környezetbe való továbbításához.
 > * Ellenőrizze a szimulált telemetria-adatgyűjtést.
 
+> [!IMPORTANT]
+> Ha még nem rendelkezik ilyennel, regisztráljon egy [ingyenes Azure](https://azure.microsoft.com/free/) -előfizetésre.
+
+## <a name="prerequisites"></a>Előfeltételek
+
+* Az Azure bejelentkezési fiókjának az előfizetés **tulajdonosi** szerepkörének is tagja kell lennie. További információ: [hozzáférés kezelése szerepköralapú hozzáférés-vezérléssel és a Azure Portal használatával](../role-based-access-control/role-assignments-portal.md).
+
 ## <a name="video"></a>Videó
 
 ### <a name="learn-how-to-use-an-azure-iot-solution-accelerator-to-generate-data-and-get-started-with-time-series-insights-br"></a>Megtudhatja, hogyan hozhatja meg az Azure IoT-megoldási gyorssegédet az adatlétrehozáshoz és a Time Series Insights első lépéseihez. </br>
 
 > [!VIDEO https://www.youtube.com/embed/6ehNf6AJkFo]
-
-## <a name="prerequisites"></a>Előfeltételek
-
-* Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/).
-* Az Azure bejelentkezési fiókjának az előfizetés **tulajdonosi** szerepkörének is tagja kell lennie. További információ: [hozzáférés kezelése szerepköralapú hozzáférés-vezérléssel és a Azure Portal használatával](../role-based-access-control/role-assignments-portal.md).
 
 ## <a name="overview"></a>Áttekintés
 
