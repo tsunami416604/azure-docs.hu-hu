@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 07/18/2017
 ms.author: gwallace
 ms.openlocfilehash: 981b1cc4a7adb98ba68ebf3a7673b7116479e704
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/19/2019
+ms.lasthandoff: 07/31/2019
 ms.locfileid: "68359575"
 ---
 # <a name="python-web-and-worker-roles-with-python-tools-for-visual-studio"></a>Python webes és feldolgozói szerepkörök a Visual Studio eszközzel
@@ -23,15 +23,15 @@ Ez a cikk a Python webes és feldolgozói szerepkörök [Python Tools for Visual
 ## <a name="prerequisites"></a>Előfeltételek
 * [Visual Studio 2013, 2015 vagy 2017](https://www.visualstudio.com/)
 * [Python Tools for Visual Studio][Python Tools for Visual Studio] (PTVS)
-* [Azure SDK-eszközök a VS 2013][Azure SDK Tools for VS 2013] -hoz or  
+* [Azure SDK Tools for VS 2013][Azure SDK Tools for VS 2013] vagy  
 [Azure SDK Tools for VS 2015][Azure SDK Tools for VS 2015] vagy  
-[Azure SDK-eszközök a VS 2017] -hoz [Azure SDK-eszközök a VS 2017] -hoz
+[Azure SDK-eszközök a VS 2017-hoz][Azure SDK Tools for VS 2017]
 * [Python 2.7 32 bites][Python 2.7 32-bit] vagy [Python 3.5, 32 bites][Python 3.5 32-bit]
 
 [!INCLUDE [create-account-and-websites-note](../../includes/create-account-and-websites-note.md)]
 
 ## <a name="what-are-python-web-and-worker-roles"></a>Mik a Python webes és feldolgozói szerepkörök?
-Az Azure három számítási modellt kínál az alkalmazások futtatásához: [Web Apps funkció a Azure app Service][execution model-web sites], [Azure Virtual Machines][execution model-vms]és az [Azure Cloud Services][végrehajtási modellje – Cloud Services]. Mindhárom modell támogatja a Python eszközt. A webes és feldolgozói szerepköröket is tartalmazó Cloud Services *platformszolgáltatást (PaaS)* kínál. A felhőszolgáltatásban a webes szerepkör egy külön Internet Information Services (IIS) webkiszolgálót biztosít az előtéri webalkalmazásokhoz, míg a feldolgozói szerepkör aszinkron, hosszan futó vagy folyamatos feladatokat futtat függetlenül a felhasználói műveletektől vagy bemenettől.
+Az Azure három számítási modellt kínál az alkalmazások futtatásához: [Web Apps funkció a Azure app Service, az][execution model-web sites] [Azure Virtual Machines][execution model-vms]és az [Azure Cloud Servicesban][execution model-cloud services]. Mindhárom modell támogatja a Python eszközt. A webes és feldolgozói szerepköröket is tartalmazó Cloud Services *platformszolgáltatást (PaaS)* kínál. A felhőszolgáltatásban a webes szerepkör egy külön Internet Information Services (IIS) webkiszolgálót biztosít az előtéri webalkalmazásokhoz, míg a feldolgozói szerepkör aszinkron, hosszan futó vagy folyamatos feladatokat futtat függetlenül a felhasználói műveletektől vagy bemenettől.
 
 További információ: [Mi az a Cloud Service?].
 

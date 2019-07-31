@@ -1,8 +1,8 @@
 ---
-title: Az Azure PowerShell használatával engedélyezze a diagnosztikát a virtuális gép Windows |} A Microsoft Docs
+title: A diagnosztika engedélyezése a Windows rendszerű virtuális gépeken a Azure PowerShell használatával | Microsoft Docs
 services: virtual-machines-windows
 documentationcenter: ''
-description: Ismerje meg a Windows rendszerű virtuális gép Azure-diagnosztika engedélyezése a PowerShell használatával
+description: Megtudhatja, hogyan használhatja a PowerShellt a Azure Diagnostics Windows rendszerű virtuális gépeken való engedélyezéséhez
 author: sbtron
 manager: gwallace
 editor: ''
@@ -15,22 +15,22 @@ ms.topic: article
 ms.date: 12/15/2015
 ms.author: saurabh
 ms.openlocfilehash: 19d30d207e67e1dfd8cdec2fe9951c763a921a0e
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2019
+ms.lasthandoff: 07/31/2019
 ms.locfileid: "67706073"
 ---
 # <a name="use-powershell-to-enable-azure-diagnostics-in-a-virtual-machine-running-windows"></a>Az Azure Diagnostics használatának engedélyezése a PowerShell-lel virtual windowsos virtuális gépen
 
-Az Azure Diagnostics a funkció, amely lehetővé teszi az üzembe helyezett alkalmazás diagnosztikai adatgyűjtés Azure-on belül. A diagnosztikai bővítmény segítségével egy Azure virtuális gép (VM), amelyen fut a Windows mint alkalmazásnaplókat vagy a teljesítményszámlálók diagnosztikai adatainak összegyűjtése. 
+A Azure Diagnostics az Azure-on belüli képesség, amely lehetővé teszi a diagnosztikai adatgyűjtést egy telepített alkalmazáson. A diagnosztika bővítmény használatával diagnosztikai adatokat gyűjthet, például az alkalmazás naplóit vagy a teljesítményszámlálók egy Windows rendszert futtató Azure-beli virtuális gépről (VM). 
 
 [!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
 
-## <a name="enable-the-diagnostics-extension-if-you-use-the-resource-manager-deployment-model"></a>A diagnosztikai bővítmény engedélyezése, ha a Resource Manager üzemi modell
-Az Azure Resource Manager-alapú üzemi modellel Windows virtuális gép létrehozásakor a bővítmény konfigurációja a Resource Manager-sablon hozzáadásával engedélyezheti a diagnosztikai bővítményt. Lásd: [Windows virtuális gép létrehozása figyelési és diagnosztikai funkciókkal az Azure Resource Manager-sablon használatával](diagnostics-template.md).
+## <a name="enable-the-diagnostics-extension-if-you-use-the-resource-manager-deployment-model"></a>A diagnosztikai bővítmény engedélyezése, ha a Resource Manager-alapú üzemi modellt használja
+A diagnosztikai bővítményt engedélyezheti a Windows rendszerű virtuális gépek a Azure Resource Manager üzemi modellel való létrehozásakor, ha hozzáadja a bővítmény konfigurációját a Resource Manager-sablonhoz. Lásd: [Windows rendszerű virtuális gép létrehozása figyelési és diagnosztikai szolgáltatásokkal a Azure Resource Manager sablonnal](diagnostics-template.md).
 
-Ahhoz, hogy a diagnosztikai bővítmény egy meglévő virtuális Gépet, amely a Resource Manager-alapú üzemi modellel lett létrehozva, használhatja a [Set-AzVMDiagnosticsExtension](https://docs.microsoft.com/powershell/module/az.compute/set-azvmdiagnosticsextension) ahogy az alábbi PowerShell-parancsmagot.
+Ha engedélyezni szeretné a diagnosztikai bővítményt egy olyan meglévő virtuális gépen, amely a Resource Manager-alapú üzemi modellel lett létrehozva, használhatja a [set-AzVMDiagnosticsExtension PowerShell-](https://docs.microsoft.com/powershell/module/az.compute/set-azvmdiagnosticsextension) parancsmagot az alábbi ábrán látható módon.
 
     $vm_resourcegroup = "myvmresourcegroup"
     $vm_name = "myvm"
@@ -39,58 +39,58 @@ Ahhoz, hogy a diagnosztikai bővítmény egy meglévő virtuális Gépet, amely 
     Set-AzVMDiagnosticsExtension -ResourceGroupName $vm_resourcegroup -VMName $vm_name -DiagnosticsConfigurationPath $diagnosticsconfig_path
 
 
-*$diagnosticsconfig_path* XML diagnosztikai konfigurációja tartalmazó fájl elérési útját a leírtak szerint a [minta](#sample-diagnostics-configuration) alatt.  
+*$diagnosticsconfig _path* a diagnosztikai konfigurációt tartalmazó fájl elérési útja az XML-ben, az alábbi [példában](#sample-diagnostics-configuration) leírtak szerint.  
 
-Ha a diagnosztikai konfigurációs fájl határozza meg, egy **StorageAccount** elemet a tárfiók nevének, akkor a *Set-AzVMDiagnosticsExtension* parancsfájl automatikusan beállítja a diagnosztika diagnosztikai adatok küldése az adott storage-fiók bővítményt. Ennek működéséhez a storage-fiókot kell lennie a virtuális géppel azonos előfizetésben található.
+Ha a diagnosztikai konfigurációs fájl egy **StorageAccount** elemet ad meg a Storage-fiók nevével, akkor a *set-AzVMDiagnosticsExtension* parancsfájl automatikusan beállítja a diagnosztika bővítményt, hogy diagnosztikai adatait küldjön a tárolóba fiók. Ahhoz, hogy működjön, a Storage-fióknak ugyanabban az előfizetésben kell lennie, mint a virtuális gépnek.
 
-Ha nincs **StorageAccount** volt megadva a diagnosztikai konfiguráció, akkor kell megadni a *StorageAccountName* paramétert a parancsmaghoz. Ha a *StorageAccountName* paraméter meg van adva, akkor a parancsmag mindig a paramétert, és nem az egyik a diagnosztikai konfigurációs fájlban megadott megadott storage-fiókot fogja használni.
+Ha nincs megadva **StorageAccount** a diagnosztika konfigurációjában, akkor át kell adnia a *StorageAccountName* paramétert a parancsmagnak. Ha a *StorageAccountName* paraméter meg van adva, a parancsmag mindig a paraméterben megadott Storage-fiókot fogja használni, nem pedig a diagnosztikai konfigurációs fájlban megadott értéket.
 
-Ha a diagnosztikai tárfiók a virtuális gépről egy másik előfizetésben található, akkor az explicit módon továbbíthat kell a *StorageAccountName* és *StorageAccountKey* a parancsmag paramétereit. A *StorageAccountKey* paraméter nincs szükség esetén a diagnosztikai tárfiók ugyanahhoz az előfizetéshez tartozik, a parancsmag automatikusan lekérdezése és a kulcs értékét állítsa a diagnosztikai bővítmény engedélyezésekor. Azonban, ha a diagnosztikai tárfiók van egy másik előfizetésben található, akkor a parancsmag nem feltétlenül tudja automatikusan lekérni a kulcsot, és kell explicit módon adja meg a kulcsot keresztül a *StorageAccountKey* paraméter.  
+Ha a diagnosztikai Storage-fiók a virtuális gépről eltérő előfizetésben található, akkor explicit módon át kell adni a *StorageAccountName* és a *StorageAccountKey* paramétereket a parancsmagnak. A *StorageAccountKey* paraméter nem szükséges, ha a diagnosztika Storage-fiók ugyanabban az előfizetésben van, mivel a parancsmag automatikusan kérdezheti le és állíthatja be a kulcs értékét a diagnosztikai bővítmény engedélyezésekor. Ha azonban a diagnosztikai tároló fiók egy másik előfizetésben található, előfordulhat, hogy a parancsmag nem tudja automatikusan beolvasni a kulcsot, és explicit módon meg kell adnia a kulcsot a *StorageAccountKey* paraméterrel.  
 
     Set-AzVMDiagnosticsExtension -ResourceGroupName $vm_resourcegroup -VMName $vm_name -DiagnosticsConfigurationPath $diagnosticsconfig_path -StorageAccountName $diagnosticsstorage_name -StorageAccountKey $diagnosticsstorage_key
 
-Miután a diagnosztikai bővítményt a virtuális gépen engedélyezve van, az aktuális beállítások használatával megtekintheti a [Get-AzVmDiagnosticsExtension](https://docs.microsoft.com/powershell/module/az.compute/get-azvmdiagnosticsextension) parancsmagot.
+Ha a diagnosztikai bővítmény engedélyezve van egy virtuális gépen, az aktuális beállításokat a [Get-AzVmDiagnosticsExtension](https://docs.microsoft.com/powershell/module/az.compute/get-azvmdiagnosticsextension) parancsmag használatával érheti el.
 
     Get-AzVMDiagnosticsExtension -ResourceGroupName $vm_resourcegroup -VMName $vm_name
 
-A parancsmag visszaadja *PublicSettings*, amely tartalmazza a diagnosztikai konfigurációja. Két fajtája támogatott konfiguráció, WadCfg és xmlCfg. WadCfg JSON konfigurációs, és xmlCfg Base64-kódolású formátumú XML-konfiguráció. Olvassa el az XML-fájl, dekódolni kell.
+A parancsmag *PublicSettings*ad vissza, amely tartalmazza a diagnosztika konfigurációját. Kétféle konfiguráció támogatott, a WadCfg és a xmlCfg. A WadCfg a JSON-konfiguráció, a xmlCfg pedig Base64 kódolású formátumú XML-konfiguráció. Az XML-fájl olvasásához dekódolni kell.
 
     $publicsettings = (Get-AzVMDiagnosticsExtension -ResourceGroupName $vm_resourcegroup -VMName $vm_name).PublicSettings
     $encodedconfig = (ConvertFrom-Json -InputObject $publicsettings).xmlCfg
     $xmlconfig = [System.Text.Encoding]::UTF8.GetString([System.Convert]::FromBase64String($encodedconfig))
     Write-Host $xmlconfig
 
-A [Remove-AzVmDiagnosticsExtension](https://docs.microsoft.com/powershell/module/az.compute/remove-azvmdiagnosticsextension) parancsmag segítségével távolítsa el a diagnosztikai bővítményt a virtuális gépről.  
+A [Remove-AzVmDiagnosticsExtension](https://docs.microsoft.com/powershell/module/az.compute/remove-azvmdiagnosticsextension) parancsmag használatával eltávolíthatja a diagnosztikai bővítményt a virtuális gépről.  
 
-## <a name="enable-the-diagnostics-extension-if-you-use-the-classic-deployment-model"></a>A diagnosztikai bővítmény engedélyezése, ha a klasszikus üzemi modellben
-Használhatja a [Set-AzureVMDiagnosticsExtension](https://docs.microsoft.com/powershell/module/servicemanagement/azure/set-azurevmdiagnosticsextension) parancsmag használatával a klasszikus üzemi modellel létrehozott virtuális gép egy diagnosztikai bővítmény engedélyezése. Az alábbi példa bemutatja, hogyan hozhat létre egy új virtuális Gépet a klasszikus üzembehelyezési modellel a diagnosztikai bővítmény engedélyezve van.
+## <a name="enable-the-diagnostics-extension-if-you-use-the-classic-deployment-model"></a>A diagnosztikai bővítmény engedélyezése, ha a klasszikus telepítési modellt használja
+A [set-AzureVMDiagnosticsExtension](https://docs.microsoft.com/powershell/module/servicemanagement/azure/set-azurevmdiagnosticsextension) parancsmaggal engedélyezheti a diagnosztikai bővítményt egy olyan virtuális gépen, amelyet a klasszikus üzemi modell használatával hozott létre. Az alábbi példa bemutatja, hogyan hozhat létre új virtuális gépet a klasszikus üzembe helyezési modellel a diagnosztika bővítmény engedélyezésével.
 
     $VM = New-AzVMConfig -Name $VM -InstanceSize Small -ImageName $VMImage
     $VM = Add-AzureProvisioningConfig -VM $VM -AdminUsername $Username -Password $Password -Windows
     $VM = Set-AzVMDiagnosticsExtension -DiagnosticsConfigurationPath $Config_Path -VM $VM -StorageContext $Storage_Context
     New-AzVM -Location $Location -ServiceName $Service_Name -VM $VM
 
-A meglévő virtuális gép, amely a klasszikus üzemi modellel lett létrehozva a diagnosztikai bővítmény engedélyezéséhez először használja a [Get-AzureVM](https://docs.microsoft.com/powershell/module/servicemanagement/azure/get-azurevm) parancsmagot, hogy a virtuális gép konfigurációjának beolvasása. Frissítse a virtuális gép konfigurációjához, hogy tartalmazzák a diagnosztikai bővítményt a [Set-AzureVMDiagnosticsExtension](https://docs.microsoft.com/powershell/module/servicemanagement/azure/set-azurevmdiagnosticsextension) parancsmagot. Végül alkalmazása a frissített konfigurációt a virtuális gép használatával [Update-AzureVM](https://docs.microsoft.com/powershell/module/servicemanagement/azure/update-azurevm).
+Ha engedélyezni szeretné a diagnosztikai bővítményt egy olyan meglévő virtuális gépen, amely a klasszikus üzemi modellel lett létrehozva, először használja a [Get-AzureVM](https://docs.microsoft.com/powershell/module/servicemanagement/azure/get-azurevm) parancsmagot a virtuális gép konfigurációjának beszerzéséhez. Ezután frissítse a virtuális gép konfigurációját, hogy tartalmazza a diagnosztikai bővítményt a [set-AzureVMDiagnosticsExtension](https://docs.microsoft.com/powershell/module/servicemanagement/azure/set-azurevmdiagnosticsextension) parancsmag használatával. Végül alkalmazza a frissített konfigurációt a virtuális gépre az [Update-AzureVM](https://docs.microsoft.com/powershell/module/servicemanagement/azure/update-azurevm)használatával.
 
     $VM = Get-AzVM -ServiceName $Service_Name -Name $VM_Name
     $VM_Update = Set-AzVMDiagnosticsExtension -DiagnosticsConfigurationPath $Config_Path -VM $VM -StorageContext $Storage_Context
     Update-AzVM -ServiceName $Service_Name -Name $VM_Name -VM $VM_Update.VM
 
-## <a name="sample-diagnostics-configuration"></a>Minta diagnosztikai konfigurációja
-A fenti szkriptekkel diagnosztikai nyilvános konfigurációja a következő XML formátumú is használható. Konfigurációs különböző teljesítményszámlálókat átvitele a diagnosztikai tárfiók együtt az alkalmazás, biztonsági és rendszer-csatornák a Windows eseménynaplóiban hibák és a diagnosztikai infrastruktúra naplói hibáit.
+## <a name="sample-diagnostics-configuration"></a>Példa diagnosztikai konfigurációra
+A következő XML-kód használható a diagnosztikai nyilvános konfigurációhoz a fenti szkriptek használatával. Ez a minta-konfiguráció különböző teljesítményszámlálókat továbbít a diagnosztika Storage-fiókba, valamint az alkalmazásból, a biztonságból és a rendszercsatornákból származó hibákat a Windows eseménynaplókban, valamint a diagnosztikai infrastruktúra naplófájljaiban előforduló hibákat.
 
-A konfigurációs van szüksége, frissíteni kell a következők:
+A konfigurációt frissíteni kell, hogy tartalmazza a következőket:
 
-* A *resourceID* attribútuma a **metrikák** elemet hozzá kell a virtuális gép frissíthető az erőforrás-azonosító.
+* A **metrikák** elem *resourceID* attribútumát frissíteni kell a virtuális gép erőforrás-azonosítójával.
   
-  * Az erőforrás-azonosítója a következő minta használatával lehet létrehozni: "/ subscriptions / {*a virtuális géppel az előfizetéshez tartozó előfizetés-azonosító*} /resourceGroups/ {*az erőforráscsoport nevét a virtuális gép*} / providers/Microsoft.Compute/virtualMachines/ {*a virtuális gép neve*} ".
-  * Ha például az előfizetés AZONOSÍTÓJÁT az előfizetést, ahol a virtuális gép fut-e **11111111-1111-1111-1111-111111111111**, az erőforráscsoport az erőforráscsoport neve **MyResourceGroup**, és a Virtuális gép neve **MyWindowsVM**, majd az értékét *resourceID* lenne:
+  * Az erőforrás-azonosító a következő mintával állítható össze: "/Subscriptions/{*előfizetés azonosítója az előfizetéshez és a VM*}/resourceGroups/{*a virtuális gép resourcegroup-neve*"/Providers/Microsoft.Compute/virtualMachines/{ *A virtuális gép neve*} ".
+  * Ha például a virtuális gépet futtató előfizetés előfizetés-azonosítója **11111111-1111-1111-1111-111111111111**, akkor az erőforráscsoport neve **MyResourceGroup**, a virtuális gép neve pedig **MyWindowsVM**, majd a a *resourceID* értéke a következő:
     
       ```xml
       <Metrics resourceId="/subscriptions/11111111-1111-1111-1111-111111111111/resourceGroups/MyResourceGroup/providers/Microsoft.Compute/virtualMachines/MyWindowsVM" >
       ```
-  * További információt a metrikák jönnek létre teljesítmény számlálókat és metrikák konfigurációja alapján, lásd: [Azure Diagnostics metrikák table storage-ban](diagnostics-template.md#wadmetrics-tables-in-storage).
-* A **StorageAccount** elemet hozzá kell frissíteni a diagnosztikai tárfiók nevére.
+  * További információ a metrikák létrehozásáról a teljesítményszámlálók és a metrikák konfigurálása alapján: [Azure Diagnostics metrika táblázat a Storage-ban](diagnostics-template.md#wadmetrics-tables-in-storage).
+* A **StorageAccount** elemet frissíteni kell a Diagnostics Storage-fiók nevével.
   
     ```xml
     <?xml version="1.0" encoding="utf-8"?>
@@ -197,6 +197,6 @@ A konfigurációs van szüksége, frissíteni kell a következők:
     ```
 
 ## <a name="next-steps"></a>További lépések
-* További útmutató az Azure Diagnostics funkció és egyéb módszerek használatával kapcsolatos hibák elhárításához, lásd: [Diagnosztikának az Azure Cloud Services és Virtual Machines](../../cloud-services/cloud-services-dotnet-diagnostics.md).
-* [Diagnostics-séma konfigurációk](https://msdn.microsoft.com/library/azure/mt634524.aspx) a diagnosztikai bővítményt a különböző XML konfigurációk lehetőségeit ismerteti.
+* A Azure Diagnostics képesség és a problémák elhárítására szolgáló egyéb technikák használatával kapcsolatos további útmutatásért lásd: a [diagnosztika engedélyezése az Azure-ban Cloud Services és Virtual Machines](../../cloud-services/cloud-services-dotnet-diagnostics.md).
+* A [diagnosztikai konfigurációk sémája](https://msdn.microsoft.com/library/azure/mt634524.aspx) a diagnosztikai bővítmény különböző XML-konfigurációs beállításait ismerteti.
 

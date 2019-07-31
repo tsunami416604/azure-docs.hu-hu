@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 05/22/2017
 ms.author: gwallace
 ms.openlocfilehash: 5f2ec77452b90d4270de043955fc0b443f045d5b
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/19/2019
+ms.lasthandoff: 07/31/2019
 ms.locfileid: "68359682"
 ---
 # <a name="enabling-azure-diagnostics-in-azure-cloud-services"></a>Azure Diagnostics engedélyezése az Azure-ban Cloud Services
@@ -24,7 +24,7 @@ A Azure Diagnostics hátterének [Azure Diagnostics áttekintését](../azure-di
 Ez az útmutató azt ismerteti, hogyan valósítható meg egy olyan Azure feldolgozói szerepkör, amely telemetria-információkat bocsát ki a .NET EventSource osztály használatával. Azure Diagnostics a telemetria adatok gyűjtésére és egy Azure Storage-fiókba való tárolására szolgál. Feldolgozói szerepkör létrehozásakor a Visual Studio automatikusan engedélyezi a diagnosztika 1,0-es verzióját a .NET 2,4-es és korábbi verziójú Azure SDK-k megoldásának részeként. Az alábbi utasítások a feldolgozói szerepkör létrehozási folyamatát, a diagnosztika 1,0 a megoldásból való letiltását, valamint a diagnosztikai 1,2 vagy 1,3 üzembe helyezését ismertetik a feldolgozói szerepkörben.
 
 ### <a name="prerequisites"></a>Előfeltételek
-Ez a cikk feltételezi, hogy rendelkezik Azure-előfizetéssel, és a Visual studiót használja az Azure SDK-val. Ha nem rendelkezik Azure-előfizetéssel, regisztrálhat az [ingyenes próbaverzióra][Free Trial]. Make sure to [Install and configure Azure PowerShell version 0.8.7 or later][Install and configure Azure PowerShell version 0.8.7 or later].
+Ez a cikk feltételezi, hogy rendelkezik Azure-előfizetéssel, és a Visual studiót használja az Azure SDK-val. Ha nem rendelkezik Azure-előfizetéssel, regisztrálhat az [ingyenes próbaverzióra][Free Trial]. Győződjön meg arról, hogy a [Azure PowerShell 0.8.7 vagy újabb verziót telepíti és konfigurálja][Install and configure Azure PowerShell version 0.8.7 or later].
 
 ### <a name="step-1-create-a-worker-role"></a>1\. lépés: Feldolgozói szerepkör létrehozása
 1. Indítsa el a **Visual Studiót**.
@@ -126,7 +126,7 @@ namespace WorkerRole1
 2. Válassza ki az előfizetését.
 3. A **Microsoft Azure közzétételi beállítások** párbeszédpanelen válassza az **új létrehozása**... lehetőséget.
 4. A **felhőalapú szolgáltatás és a Storage-fiók létrehozása** párbeszédpanelen adjon meg egy **nevet** (például "WadExample"), és válasszon ki egy régiót vagy affinitási csoportot.
-5. Állítsa be  a környezetet **átmeneti**állapotba.
+5. Állítsa be a környezetet **átmeneti**állapotba.
 6. Módosítsa a megfelelő **beállításokat** , és kattintson a **Közzététel**gombra.
 7. Az üzembe helyezés befejezése után ellenőrizze a Azure Portal, hogy a felhőalapú szolgáltatás **fut** -e.
 

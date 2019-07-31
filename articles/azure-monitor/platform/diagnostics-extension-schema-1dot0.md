@@ -1,6 +1,6 @@
 ---
-title: Azure Diagnostics 1.0-konfigurációs séma
-description: CSAK akkor érvényes, ha használja az Azure SDK 2.4 és alatt az Azure Virtual Machines, Virtual Machine Scale Sets, Service Fabric és Cloud Services.
+title: Azure Diagnostics 1,0 konfigurációs séma
+description: CSAK akkor fontos, ha az Azure SDK 2,4-es és alacsonyabb verzióit használja az Azure Virtual Machines, Virtual Machine Scale Sets, Service Fabric vagy Cloud Services.
 services: azure-monitor
 author: rboucher
 ms.service: azure-monitor
@@ -10,28 +10,28 @@ ms.date: 05/15/2017
 ms.author: robb
 ms.subservice: diagnostic-extension
 ms.openlocfilehash: ac2b79d670b803573a359dfc9f8738f972f2d9b5
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 07/31/2019
 ms.locfileid: "60237860"
 ---
-# <a name="azure-diagnostics-10-configuration-schema"></a>Azure Diagnostics 1.0-konfigurációs séma
+# <a name="azure-diagnostics-10-configuration-schema"></a>Azure Diagnostics 1,0 konfigurációs séma
 > [!NOTE]
-> Az Azure Diagnostics az a komponens, teljesítményszámlálók és más statisztikák gyűjtését az Azure Virtual Machines, Virtual Machine Scale Sets, Service Fabric és Cloud Services segítségével.  Ez a lap csak akkor jelentősége, ha ezek a szolgáltatások valamelyikét használja.
+> Azure Diagnostics a teljesítményszámlálók és az Azure Virtual Machines, a Virtual Machine Scale Sets, a Service Fabric és a Cloud Services statisztikáinak összegyűjtésére szolgáló összetevő.  Ez a lap csak akkor fontos, ha az egyik szolgáltatást használja.
 >
 
-Egyéb Microsoft-diagnosztikai termékek, mint az Azure Monitor, amely magában foglalja az Application Insights és a Log Analytics az Azure Diagnostics használnak.
+A Azure Diagnostics más Microsoft diagnosztikai termékekhez, például a Azure Monitorekhez használható, beleértve a Application Insights és a Log Analytics.
 
-Az Azure Diagnostics-konfigurációs fájl határozza meg a diagnosztikai figyelő inicializálása használt értékeket. Ez a fájl inicializálása a diagnosztikai beállításokat a diagnosztikai figyelő indításakor szolgál.  
+A Azure Diagnostics konfigurációs fájl a diagnosztikai figyelő inicializálásához használt értékeket határozza meg. Ezzel a fájllal lehet inicializálni a diagnosztikai konfigurációs beállításokat a diagnosztika figyelője indításakor.  
 
- Alapértelmezés szerint a fájl az Azure Diagnostics konfigurációs van telepítve a `C:\Program Files\Microsoft SDKs\Azure\.NET SDK\<version>\schemas` könyvtár. Cserélje le `<version>` telepített verziójának a [Azure SDK](https://www.windowsazure.com/develop/downloads/).  
+ Alapértelmezés szerint a rendszer a Azure Diagnostics konfigurációs sémafájl fájlját telepíti a `C:\Program Files\Microsoft SDKs\Azure\.NET SDK\<version>\schemas` könyvtárba. Cserélje `<version>` le az helyére az [Azure SDK](https://www.windowsazure.com/develop/downloads/)telepített verzióját.  
 
 > [!NOTE]
->  A diagnosztika konfigurációs fájl jellemzően a diagnosztikai adatok gyűjtésére, a rendszerindítási folyamat korábbi szakaszában igénylő indítási feladatok. Azure Diagnostics használatával kapcsolatos további információkért lásd: [naplózási adatok gyűjtése az Azure Diagnostics használatával](assetId:///83a91c23-5ca2-4fc9-8df3-62036c37a3d7).  
+>  A diagnosztikai konfigurációs fájlt általában olyan indítási feladatokhoz használják, amelyek az indítási folyamat során korábban gyűjtött diagnosztikai adatokat igénylik. További információ a Azure Diagnostics használatáról: a [naplózási adatok összegyűjtése Azure Diagnostics használatával](assetId:///83a91c23-5ca2-4fc9-8df3-62036c37a3d7).  
 
-## <a name="example-of-the-diagnostics-configuration-file"></a>A diagnosztika konfigurációs fájl példa  
- Az alábbi példa bemutatja egy tipikus diagnosztikai konfigurációs fájlban:  
+## <a name="example-of-the-diagnostics-configuration-file"></a>Példa a diagnosztika konfigurációs fájljára  
+ Az alábbi példa egy tipikus diagnosztikai konfigurációs fájlt mutat be:  
 
 ```xml  
 <?xml version="1.0" encoding="utf-8"?>
@@ -85,189 +85,189 @@ Az Azure Diagnostics-konfigurációs fájl határozza meg a diagnosztikai figyel
 </DiagnosticMonitorConfiguration>  
 ```  
 
-## <a name="diagnosticsconfiguration-namespace"></a>DiagnosticsConfiguration Namespace  
- A diagnosztika konfigurációs fájl XML-névtér van:  
+## <a name="diagnosticsconfiguration-namespace"></a>DiagnosticsConfiguration-névtér  
+ A diagnosztika konfigurációs fájljának XML-névtere a következő:  
 
 ```  
 http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration  
 ```  
 
 ## <a name="schema-elements"></a>Séma elemei  
- A diagnosztika konfigurációs fájlt az alábbi elemeket tartalmazza.
+ A diagnosztikai konfigurációs fájl a következő elemeket tartalmazza.
 
 
-## <a name="diagnosticmonitorconfiguration-element"></a>DiagnosticMonitorConfiguration Element  
-A legfelső szintű elem a diagnosztikai konfigurációs fájl.  
+## <a name="diagnosticmonitorconfiguration-element"></a>DiagnosticMonitorConfiguration elem  
+A diagnosztikai konfigurációs fájl legfelső szintű eleme.  
 
 Attribútumok:
 
-|Attribútum  |Típus   |Kötelező| Alapértelmezett | Leírás|  
+|Attribútum  |Type   |Kötelező| Alapértelmezett | Leírás|  
 |-----------|-------|--------|---------|------------|  
-|**configurationChangePollInterval**|Időtartam|Optional | PT1M| Diagnosztikai konfigurációs módosítások, amelyen a diagnosztikai figyelő kérdezze le az időközt adja meg.|  
-|**overallQuotaInMB**|unsignedInt|Optional| 4000 MB. Ha megad egy értéket, nem haladhatja meg ezt a mennyiséget |Összes naplózási puffer számára lefoglalt fájlrendszer-tárhely teljes mennyisége.|  
+|**configurationChangePollInterval**|duration|Választható | PT1M| Meghatározza azt az időközt, amelyen a diagnosztikai figyelő lekérdezi a diagnosztikai konfiguráció változásait.|  
+|**overallQuotaInMB**|unsignedInt|Választható| 4000 MB. Ha értéket ad meg, az nem lépheti túl ezt az összeget |Az összes naplózási puffer számára lefoglalt fájlrendszer-tárterület teljes mennyisége.|  
 
 ## <a name="diagnosticinfrastructurelogs-element"></a>DiagnosticInfrastructureLogs elem  
-Az alapul szolgáló diagnosztikai infrastruktúra által előállított naplók puffer konfigurációját.
+Meghatározza az alapul szolgáló diagnosztikai infrastruktúra által létrehozott naplók pufferének konfigurációját.
 
-Elem: DiagnosticMonitorConfiguration eleme.  
+Szülő elem: DiagnosticMonitorConfiguration elem.  
 
 Attribútumok:
 
-|Attribútum|Típus|Leírás|  
+|Attribútum|Type|Leírás|  
 |---------|----|-----------------|  
-|**bufferQuotaInMB**|unsignedInt|Választható. Meghatározza a maximális fájlrendszer-tárhely, amelyet a megadott adatokat.<br /><br /> Az alapértelmezett érték a 0.|  
-|**scheduledTransferLogLevelFilter**|string|Választható. Meghatározza a naplóbejegyzéseket, amelyeket a minimális súlyossági szintet. Az alapértelmezett érték **Undefined**. Más lehetséges értékek a következők **részletes**, **információk**, **figyelmeztetés**, **hiba**, és **kritikus**.|  
-|**scheduledTransferPeriod**|Időtartam|Választható. Ütemezett átvitel az adatokat, a legközelebbi egész percre kerekítve közötti időköz.<br /><br /> Az alapértelmezett érték PT0S.|  
+|**bufferQuotaInMB**|unsignedInt|Választható. Meghatározza a fájlrendszer tárterületének maximális számát, amely elérhető a megadott adatmennyiség esetében.<br /><br /> Az alapértelmezett érték a 0.|  
+|**scheduledTransferLogLevelFilter**|Karakterlánc|Választható. Megadja az átvitt naplóbejegyzések minimális súlyossági szintjét. Az alapértelmezett érték nincs **definiálva**. A többi lehetséges érték a **részletes**, az **információ**, a **Figyelmeztetés**, a **hiba**és a **kritikus**.|  
+|**scheduledTransferPeriod**|duration|Választható. Meghatározza az ütemezett adatátvitelek közötti időközt, a legközelebbi percre kerekítve.<br /><br /> Az alapértelmezett érték a PT0S.|  
 
-## <a name="logs-element"></a>Naplók elem  
- Az alapszintű Azure-naplók puffer konfigurációját.
+## <a name="logs-element"></a>Elemek naplózása  
+ Meghatározza az alapszintű Azure-naplók pufferének konfigurációját.
 
- Elem: DiagnosticMonitorConfiguration eleme.  
-
-Attribútumok:  
-
-|Attribútum|Típus|Leírás|  
-|---------------|----------|-----------------|  
-|**bufferQuotaInMB**|unsignedInt|Választható. Meghatározza a maximális fájlrendszer-tárhely, amelyet a megadott adatokat.<br /><br /> Az alapértelmezett érték a 0.|  
-|**scheduledTransferLogLevelFilter**|string|Választható. Meghatározza a naplóbejegyzéseket, amelyeket a minimális súlyossági szintet. Az alapértelmezett érték **Undefined**. Más lehetséges értékek a következők **részletes**, **információk**, **figyelmeztetés**, **hiba**, és **kritikus**.|  
-|**scheduledTransferPeriod**|Időtartam|Választható. Ütemezett átvitel az adatokat, a legközelebbi egész percre kerekítve közötti időköz.<br /><br /> Az alapértelmezett érték PT0S.|  
-
-## <a name="directories-element"></a>Könyvtárak elem  
-A puffer konfigurációs fájl alapú naplókhoz definiálható határozza meg.
-
-Elem: DiagnosticMonitorConfiguration eleme.  
-
+ Szülő elem: DiagnosticMonitorConfiguration elem.  
 
 Attribútumok:  
 
-|Attribútum|Típus|Leírás|  
+|Attribútum|Type|Leírás|  
 |---------------|----------|-----------------|  
-|**bufferQuotaInMB**|unsignedInt|Választható. Meghatározza a maximális fájlrendszer-tárhely, amelyet a megadott adatokat.<br /><br /> Az alapértelmezett érték a 0.|  
-|**scheduledTransferPeriod**|Időtartam|Választható. Ütemezett átvitel az adatokat, a legközelebbi egész percre kerekítve közötti időköz.<br /><br /> Az alapértelmezett érték PT0S.|  
+|**bufferQuotaInMB**|unsignedInt|Választható. Meghatározza a fájlrendszer tárterületének maximális számát, amely elérhető a megadott adatmennyiség esetében.<br /><br /> Az alapértelmezett érték a 0.|  
+|**scheduledTransferLogLevelFilter**|sztring|Választható. Megadja az átvitt naplóbejegyzések minimális súlyossági szintjét. Az alapértelmezett érték nincs **definiálva**. A többi lehetséges érték a **részletes**, az **információ**, a **Figyelmeztetés**, a **hiba**és a **kritikus**.|  
+|**scheduledTransferPeriod**|duration|Választható. Meghatározza az ütemezett adatátvitelek közötti időközt, a legközelebbi percre kerekítve.<br /><br /> Az alapértelmezett érték a PT0S.|  
+
+## <a name="directories-element"></a>Címtárak elem  
+Meghatározza a megadható fájl alapú naplók pufferének konfigurációját.
+
+Szülő elem: DiagnosticMonitorConfiguration elem.  
+
+
+Attribútumok:  
+
+|Attribútum|Type|Leírás|  
+|---------------|----------|-----------------|  
+|**bufferQuotaInMB**|unsignedInt|Választható. Meghatározza a fájlrendszer tárterületének maximális számát, amely elérhető a megadott adatmennyiség esetében.<br /><br /> Az alapértelmezett érték a 0.|  
+|**scheduledTransferPeriod**|duration|Választható. Meghatározza az ütemezett adatátvitelek közötti időközt, a legközelebbi percre kerekítve.<br /><br /> Az alapértelmezett érték a PT0S.|  
 
 ## <a name="crashdumps-element"></a>CrashDumps Element  
- Az összeomlási memóriaképek könyvtár határozza meg.
+ Az összeomlási memóriaképek könyvtárát határozza meg.
 
- Elem: Könyvtárak eleme.  
+ Szülő elem: Címtárak elem.  
 
 Attribútumok:  
 
-|Attribútum|Típus|Leírás|  
+|Attribútum|Type|Leírás|  
 |---------------|----------|-----------------|  
-|**container**|string|A könyvtár tartalmának esetén át lehet adni a tároló neve.|  
-|**directoryQuotaInMB**|unsignedInt|Választható. Adja meg a könyvtár maximális mérete (MB).<br /><br /> Az alapértelmezett érték a 0.|  
+|**container**|Karakterlánc|Annak a tárolónak a neve, ahol a könyvtár tartalmát át kell vinni.|  
+|**directoryQuotaInMB**|unsignedInt|Választható. Megadja a könyvtár maximális méretét megabájtban.<br /><br /> Az alapértelmezett érték a 0.|  
 
 ## <a name="failedrequestlogs-element"></a>FailedRequestLogs elem  
- A sikertelen kérelmek naplókönyvtár határozza meg.
+ A sikertelen kérelmek naplójának könyvtárát határozza meg.
 
- Elem könyvtárak szülőelemet.  
+ Szülő elem könyvtárai elem.  
 
 Attribútumok:  
 
-|Attribútum|Típus|Leírás|  
+|Attribútum|Type|Leírás|  
 |---------------|----------|-----------------|  
-|**container**|string|A könyvtár tartalmának esetén át lehet adni a tároló neve.|  
-|**directoryQuotaInMB**|unsignedInt|Választható. Adja meg a könyvtár maximális mérete (MB).<br /><br /> Az alapértelmezett érték a 0.|  
+|**container**|Karakterlánc|Annak a tárolónak a neve, ahol a könyvtár tartalmát át kell vinni.|  
+|**directoryQuotaInMB**|unsignedInt|Választható. Megadja a könyvtár maximális méretét megabájtban.<br /><br /> Az alapértelmezett érték a 0.|  
 
 ##  <a name="iislogs-element"></a>IISLogs elem  
- Meghatározza az IIS-napló könyvtár.
+ Az IIS-napló címtárát határozza meg.
 
- Elem könyvtárak szülőelemet.  
+ Szülő elem könyvtárai elem.  
 
 Attribútumok:  
 
-|Attribútum|Típus|Leírás|  
+|Attribútum|Type|Leírás|  
 |---------------|----------|-----------------|  
-|**container**|string|A könyvtár tartalmának esetén át lehet adni a tároló neve.|  
-|**directoryQuotaInMB**|unsignedInt|Választható. Adja meg a könyvtár maximális mérete (MB).<br /><br /> Az alapértelmezett érték a 0.|  
+|**container**|Karakterlánc|Annak a tárolónak a neve, ahol a könyvtár tartalmát át kell vinni.|  
+|**directoryQuotaInMB**|unsignedInt|Választható. Megadja a könyvtár maximális méretét megabájtban.<br /><br /> Az alapértelmezett érték a 0.|  
 
-## <a name="datasources-element"></a>Adatforrások elem  
- Határozza meg a nulla vagy több további naplókönyvtárat.
+## <a name="datasources-element"></a>Adatforrások eleme  
+ Nulla vagy több további naplózási könyvtárat határoz meg.
 
- Elem: Könyvtárak eleme.
+ Szülő elem: Címtárak elem.
 
 ## <a name="directoryconfiguration-element"></a>DirectoryConfiguration elem  
- Határozza meg a könyvtárat a naplófájlok figyeléséhez.
+ Meghatározza a figyelni kívánt naplófájlok könyvtárát.
 
- Elem: Adatforrások eleme.
+ Szülő elem: Adatforrások eleme.
 
 Attribútumok:
 
-|Attribútum|Típus|Leírás|  
+|Attribútum|Type|Leírás|  
 |---------------|----------|-----------------|  
-|**container**|string|A könyvtár tartalmának esetén át lehet adni a tároló neve.|  
-|**directoryQuotaInMB**|unsignedInt|Választható. Adja meg a könyvtár maximális mérete (MB).<br /><br /> Az alapértelmezett érték a 0.|  
+|**container**|Karakterlánc|Annak a tárolónak a neve, ahol a könyvtár tartalmát át kell vinni.|  
+|**directoryQuotaInMB**|unsignedInt|Választható. Megadja a könyvtár maximális méretét megabájtban.<br /><br /> Az alapértelmezett érték a 0.|  
 
 ## <a name="absolute-element"></a>Abszolút elem  
- A könyvtár nem kötelező környezeti-bővítése figyelő abszolút elérési utat határozza meg.
+ Meghatározza a figyelésre szolgáló könyvtár abszolút elérési útját a választható környezetek kiterjesztésével.
 
- Elem: DirectoryConfiguration eleme.  
+ Szülő elem: DirectoryConfiguration elem.  
 
 Attribútumok:  
 
-|Attribútum|Típus|Leírás|  
+|Attribútum|Type|Leírás|  
 |---------------|----------|-----------------|  
-|**path**|string|Kötelező. Figyelni kívánt könyvtár abszolút elérési útja.|  
-|**expandEnvironment**|logikai|Kötelező. Ha beállítása **igaz**, az elérési út környezeti változók vannak bontva.|  
+|**path**|Karakterlánc|Kötelező. A figyelni kívánt könyvtár abszolút elérési útja.|  
+|**expandEnvironment**|boolean|Kötelező. Ha **igaz**értékre van állítva, a rendszer kibontja az elérési út környezeti változóit.|  
 
 ## <a name="localresource-element"></a>LocalResource elem  
- Meghatározza egy viszonyítva a szolgáltatás-definícióban meghatározott helyi erőforrás elérési útja.
+ A szolgáltatás definíciójában definiált helyi erőforráshoz viszonyított elérési utat határozza meg.
 
- Elem: DirectoryConfiguration eleme.  
+ Szülő elem: DirectoryConfiguration elem.  
 
 Attribútumok:  
 
-|Attribútum|Típus|Leírás|  
+|Attribútum|Type|Leírás|  
 |---------------|----------|-----------------|  
-|**name**|string|Kötelező. A helyi erőforrás, amely tartalmazza a figyelni kívánt könyvtár neve.|  
-|**relativePath**|string|Kötelező. Az elérési útját a helyi erőforrás monitorozásához viszonyítva.|  
+|**name**|sztring|Kötelező. A figyelni kívánt könyvtárat tartalmazó helyi erőforrás neve.|  
+|**relativePath**|sztring|Kötelező. A figyelni kívánt helyi erőforráshoz viszonyított elérési út.|  
 
-## <a name="performancecounters-element"></a>PerformanceCounters Element  
- Határozza meg az elérési út való gyűjtésére a teljesítményszámláló.
+## <a name="performancecounters-element"></a>PerformanceCounters elem  
+ Megadja a gyűjteni kívánt teljesítményszámláló elérési útját.
 
- Elem: DiagnosticMonitorConfiguration eleme.
+ Szülő elem: DiagnosticMonitorConfiguration elem.
 
 
  Attribútumok:  
 
-|Attribútum|Típus|Leírás|  
+|Attribútum|Type|Leírás|  
 |---------------|----------|-----------------|  
-|**bufferQuotaInMB**|unsignedInt|Választható. Meghatározza a maximális fájlrendszer-tárhely, amelyet a megadott adatokat.<br /><br /> Az alapértelmezett érték a 0.|  
-|**scheduledTransferPeriod**|Időtartam|Választható. Ütemezett átvitel az adatokat, a legközelebbi egész percre kerekítve közötti időköz.<br /><br /> Az alapértelmezett érték PT0S.|  
+|**bufferQuotaInMB**|unsignedInt|Választható. Meghatározza a fájlrendszer tárterületének maximális számát, amely elérhető a megadott adatmennyiség esetében.<br /><br /> Az alapértelmezett érték a 0.|  
+|**scheduledTransferPeriod**|duration|Választható. Meghatározza az ütemezett adatátvitelek közötti időközt, a legközelebbi percre kerekítve.<br /><br /> Az alapértelmezett érték a PT0S.|  
 
-## <a name="performancecounterconfiguration-element"></a>PerformanceCounterConfiguration Element  
- Határozza meg a teljesítményszámláló gyűjtéséhez.
+## <a name="performancecounterconfiguration-element"></a>PerformanceCounterConfiguration elem  
+ Meghatározza a gyűjteni kívánt teljesítményszámláló értékét.
 
- Elem: PerformanceCounters Element.  
+ Szülő elem: PerformanceCounters elem.  
 
  Attribútumok:  
 
-|Attribútum|Típus|Leírás|  
+|Attribútum|Type|Leírás|  
 |---------------|----------|-----------------|  
-|**counterSpecifier**|string|Kötelező. A teljesítményszámláló gyűjtése az elérési útja.|  
-|**sampleRate**|Időtartam|Kötelező. Az a sebesség, amellyel a teljesítményszámláló kell gyűjteni.|  
+|**counterSpecifier**|Karakterlánc|Kötelező. A gyűjteni kívánt teljesítményszámláló elérési útja.|  
+|**sampleRate**|duration|Kötelező. A teljesítményszámláló gyűjtési sebessége.|  
 
-## <a name="windowseventlog-element"></a>WindowsEventLog Element  
- Határozza meg az Eseménynapló bejegyzéseit, amelyek figyelése.
+## <a name="windowseventlog-element"></a>WindowsEventLog elem  
+ Meghatározza a figyelni kívánt eseménynaplókat.
 
- Elem: DiagnosticMonitorConfiguration eleme.
+ Szülő elem: DiagnosticMonitorConfiguration elem.
 
   Attribútumok:
 
-|Attribútum|Típus|Leírás|  
+|Attribútum|Type|Leírás|  
 |---------------|----------|-----------------|  
-|**bufferQuotaInMB**|unsignedInt|Választható. Meghatározza a maximális fájlrendszer-tárhely, amelyet a megadott adatokat.<br /><br /> Az alapértelmezett érték a 0.|  
-|**scheduledTransferLogLevelFilter**|string|Választható. Meghatározza a naplóbejegyzéseket, amelyeket a minimális súlyossági szintet. Az alapértelmezett érték **Undefined**. Más lehetséges értékek a következők **részletes**, **információk**, **figyelmeztetés**, **hiba**, és **kritikus**.|  
-|**scheduledTransferPeriod**|Időtartam|Választható. Ütemezett átvitel az adatokat, a legközelebbi egész percre kerekítve közötti időköz.<br /><br /> Az alapértelmezett érték PT0S.|  
+|**bufferQuotaInMB**|unsignedInt|Választható. Meghatározza a fájlrendszer tárterületének maximális számát, amely elérhető a megadott adatmennyiség esetében.<br /><br /> Az alapértelmezett érték a 0.|  
+|**scheduledTransferLogLevelFilter**|Karakterlánc|Választható. Megadja az átvitt naplóbejegyzések minimális súlyossági szintjét. Az alapértelmezett érték nincs **definiálva**. A többi lehetséges érték a **részletes**, az **információ**, a **Figyelmeztetés**, a **hiba**és a **kritikus**.|  
+|**scheduledTransferPeriod**|duration|Választható. Meghatározza az ütemezett adatátvitelek közötti időközt, a legközelebbi percre kerekítve.<br /><br /> Az alapértelmezett érték a PT0S.|  
 
 ## <a name="datasource-element"></a>DataSource elem  
- Határozza meg az Eseménynapló figyelése.
+ Meghatározza a figyelni kívánt eseménynaplót.
 
- Elem: WindowsEventLog Element.  
+ Szülő elem: WindowsEventLog elem.  
 
  Attribútumok:
 
-|Attribútum|Típus|Leírás|  
+|Attribútum|Type|Leírás|  
 |---------------|----------|-----------------|  
-|**name**|string|Kötelező. Adja meg a napló gyűjtése XPath kifejezés.|  
+|**name**|Karakterlánc|Kötelező. Egy XPath-kifejezés, amely a gyűjteni kívánt naplót adja meg.|  
 

@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 12/06/2016
 ms.author: matd
 ms.openlocfilehash: 3ebf464fed1480e7452f246f04f3906faf0dd219
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/15/2019
+ms.lasthandoff: 07/31/2019
 ms.locfileid: "67875303"
 ---
 # <a name="storsimple-as-a-backup-target-with-veeam"></a>StorSimple biztonsági mentési célként a Veeam
@@ -316,11 +316,11 @@ Az alábbi ábra egy tipikus kötet hozzárendelését mutatja be egy biztonság
 
 Íme egy példa egy GFS-rotációs ütemezésre négy hétig, havonta és évente:
 
-| Gyakoriság/biztonsági mentés típusa | Korlátlan | Növekményes (nap 1-5)  |   
+| Gyakoriság/biztonsági mentés típusa | Teljes | Növekményes (nap 1-5)  |   
 |---|---|---|
 | Hetente (1-4 hét) | Szombat | Hétfő – péntek |
 | Havi  | Szombat  |   |
-| Éves | Szombat  |   |
+| Évente | Szombat  |   |
 
 
 ### <a name="assign-storsimple-volumes-to-a-veeam-backup-job"></a>StorSimple-kötetek kiosztása Veeam biztonsági mentési feladatokhoz
@@ -393,14 +393,14 @@ A következő táblázat bemutatja, hogyan állíthatja be a biztonsági mentés
 
 GFS rotációs hetente, havonta és évenkénti ütemezés szerint
 
-| Hét | Korlátlan | 1\. növekményes nap | 2\. növekményes nap | 3\. növekményes nap | 4\. növekményes nap | 5\. növekményes nap |
+| Hét | Teljes | 1\. növekményes nap | 2\. növekményes nap | 3\. növekményes nap | 4\. növekményes nap | 5\. növekményes nap |
 |---|---|---|---|---|---|---|
 | 1\. hét | Helyi RAID-kötet  | Helyi RAID-kötet | Helyi RAID-kötet | Helyi RAID-kötet | Helyi RAID-kötet | Helyi RAID-kötet |
 | 2\. hét | StorSimple hét 2-4 |   |   |   |   |   |
 | 3\. hét | StorSimple hét 2-4 |   |   |   |   |   |
 | 4\. hét | StorSimple hét 2-4 |   |   |   |   |   |
 | Havi | StorSimple havonta |   |   |   |   |   |
-| Éves | StorSimple évente  |   |   |   |   |   |
+| Évente | StorSimple évente  |   |   |   |   |   |
 
 ### <a name="assign-storsimple-volumes-to-a-veeam-copy-job"></a>StorSimple-kötetek kiosztása Veeam másolási feladatokhoz
 
