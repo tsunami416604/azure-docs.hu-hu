@@ -115,6 +115,7 @@
     - name: Nyelvi és régiós támogatás
       href: language-support.md
     - name: Bing Image Search API – elemzés
-      href: bing-image-stats.md
+      maintainContext: true
+      href: ../bing-web-search/bing-web-stats.md
     - name: Megfelelőség
       href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'

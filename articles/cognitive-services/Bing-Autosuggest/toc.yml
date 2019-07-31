@@ -74,6 +74,7 @@
     - name: Nyelvi és régiós támogatás
       href: language-support.md
     - name: A Bing Autosuggest API elemzése
-      href: bing-autosuggest-stats.md
+      maintainContext: true
+      href: ../bing-web-search/bing-web-stats.md
     - name: Megfelelőség
       href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'

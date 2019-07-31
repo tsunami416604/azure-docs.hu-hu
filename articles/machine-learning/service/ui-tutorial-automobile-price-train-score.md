@@ -9,12 +9,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 ms.date: 07/21/2019
-ms.openlocfilehash: 09d81e281b92b662572cefc220f2227651b69838
-ms.sourcegitcommit: 83a89c45253b0d432ce8dcd70084c18e9930b1fd
+ms.openlocfilehash: b0d227b71677db1d6b4ce8386b02cf957ca259f7
+ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68371724"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68668403"
 ---
 # <a name="tutorial-predict-automobile-price-with-the-visual-interface"></a>Oktatóanyag: Az autó árának előrejelzése a vizuális felületen
 
@@ -95,8 +95,6 @@ A gépi tanulás az adatoktól függ. Szerencsére a kezelőfelületen több min
 
 Bármikor rákattinthat egy adatkészlet vagy modul kimeneti portjára, és megtekintheti, hogy az adat milyen módon néz ki az adatfolyamatban. Ha a **Megjelenítés** lehetőség le van tiltva, először futtatnia kell a kísérletet.
 
-Egy kísérlet egy számítási célra fut, amely a munkaterülethez csatolt számítási erőforrás. A számítási cél létrehozása után újból felhasználhatja azt későbbi futtatásokhoz.
-
 [!INCLUDE [aml-ui-create-training-compute](../../../includes/aml-ui-create-training-compute.md)]
 
 A számítási cél rendelkezésre állása után a kísérlet lefut. Ha a Futtatás befejeződött, egy zöld pipa jelenik meg minden modulon.
@@ -112,7 +110,7 @@ Most, hogy futtatta a kezdeti kísérletet, megjelenítheti az adatokat, hogy jo
 
     Ebben az adatkészletben minden sor egy automobilt jelöl, és az egyes autókhoz tartozó változók oszlopként jelennek meg. Ebben az adatkészletben 205 sor és 26 oszlop található.
 
-     Minden alkalommal, amikor egy adatoszlopra kattint, a bal oldalon megjelenik az oszlop **statisztikai** információi és **vizualizációs** képe. Ha például a több ajtóra kattint  , akkor azt láthatja, hogy két egyedi értéke van, és két hiányzó érték van. Görgessen lefelé a következő értékek megjelenítéséhez: két és négy ajtó.
+     Minden alkalommal, amikor egy adatoszlopra kattint, a bal oldalon megjelenik az oszlop **statisztikai** információi és **vizualizációs** képe. Ha például a több ajtóra kattint , akkor azt láthatja, hogy két egyedi értéke van, és két hiányzó érték van. Görgessen lefelé a következő értékek megjelenítéséhez: két és négy ajtó.
 
      ![Az adatelőnézet](./media/ui-tutorial-automobile-price-train-score/preview-data.gif)
 
@@ -127,7 +125,7 @@ Az adatkészlet általában némi előfeldolgozást igényel az elemzéshez. El�
 
 ### <a name="remove-column"></a>Oszlop eltávolítása
 
-Először távolítsa el  teljesen a normalizált veszteségek oszlopot.
+Először távolítsa el teljesen a normalizált veszteségek oszlopot.
 
 1. Válassza az **Oszlopok kiválasztása az adatkészlet** modulban lehetőséget.
 
@@ -141,9 +139,9 @@ Először távolítsa el  teljesen a normalizált veszteségek oszlopot.
 
     ![Oszlop kizárása](./media/ui-tutorial-automobile-price-train-score/exclude-column.png)
         
-    Az adatkészletben az oszlopok kijelölésekor a Tulajdonságok ablaktábla azt jelzi, hogy az adatkészlet összes oszlopán át fog haladni a normalizált veszteségek kivételével.
+    Az adatkészletben az oszlopok kijelölésekor a Tulajdonságok ablaktábla azt jelzi, hogy az adatkészlet összes oszlopán átfog haladni a normalizált veszteségek kivételével.
         
-    A Tulajdonságok panelen látható, hogy  a normalizált veszteségek oszlop ki van zárva.
+    A Tulajdonságok panelen látható, hogy a normalizált veszteségek oszlop ki van zárva.
         
     ![Tulajdonság ablaktábla](./media/ui-tutorial-automobile-price-train-score/property-pane.png)
         
@@ -189,9 +187,9 @@ A modell betanításához adjon meg egy olyan adathalmazt, amely tartalmazza az 
 
 Az adatokat a modell betanítására és tesztelésére is használhatja azáltal, hogy az adatokat külön betanítási és tesztelési adatkészletekre bontja.
 
-1. Az adatfelosztási modul megkereséséhez írja be  a feldarabolt adatelemet a keresőmezőbe, és kapcsolódjon a **tiszta hiányzó** adatmodul bal oldali portjához.
+1. Az adatfelosztási modul megkereséséhez írja be a feldarabolt adatelemet a keresőmezőbe, és kapcsolódjon a **tiszta hiányzó** adatmodul bal oldali portjához.
 
-1. Válassza ki  az adatfelosztási modult. A Tulajdonságok ablaktáblában állítsa az első kimeneti adatkészletben lévő sorok töredékét 0,7-re. Így a modell betanításához az adatmennyiség 70 százalékát fogjuk használni, a teszteléshez pedig 30 százalékot kell visszatartani.
+1. Válassza ki az adatfelosztási modult. A Tulajdonságok ablaktáblában állítsa az első kimeneti adatkészletben lévő sorok töredékét 0,7-re. Így a modell betanításához az adatmennyiség 70 százalékát fogjuk használni, a teszteléshez pedig 30 százalékot kell visszatartani.
 
     ![Képernyőfelvétel a Tulajdonságok ablaktábla helyes konfigurációjának megjelenítéséről. A "felosztott adatok" értékének a következőnek kell lennie: "felosztott sorok", 0,7, randomizált felosztás, 0, hamis.](./media/ui-tutorial-automobile-price-train-score/split-data.png)
 
@@ -205,7 +203,7 @@ Az adatokat a modell betanítására és tesztelésére is használhatja azálta
 
     ![Képernyőfelvétel a Tulajdonságok ablaktábla helyes konfigurációjának megjelenítéséről. A "felosztott adatok" értékének a következőnek kell lennie: "felosztott sorok", 0,7, randomizált felosztás, 0, hamis.](./media/ui-tutorial-automobile-price-train-score/linear-regression-module.png)
 
-1. Keresse meg és húzza a **Train Model** modult a kísérleti vászonra. Kapcsolja össze a lineáris regressziós modul kimenetét a Train Model modul bal oldali bemenetével, és kapcsolja össze az adategységek kiosztási moduljának  betanítási adat kimenetét (bal oldali port) a **Train Model** modul jobb oldali bemenetével.
+1. Keresse meg és húzza a **Train Model** modult a kísérleti vászonra. Kapcsolja össze a lineáris regressziós modul kimenetét a Train Model modul bal oldali bemenetével, és kapcsolja össze az adategységek kiosztási moduljának betanítási adat kimenetét (bal oldali port) a **Train Model** modul jobb oldali bemenetével.
 
     ![Képernyőfelvétel a Train Model modul helyes konfigurációjának megjelenítéséről. A lineáris regressziós modul a betanítási modell moduljának bal oldali portjához csatlakozik, és a felosztott adatmodul csatlakozik a betanítási modell jobb portjához.](./media/ui-tutorial-automobile-price-train-score/train-model.png)
 
@@ -221,7 +219,7 @@ Az adatokat a modell betanítására és tesztelésére is használhatja azálta
 
 Most, hogy az adatok 70 százalékával lett kitanítva a modellre, használhatja az adatok további 30 százalékát, hogy megtudja, milyen jól működik a modellje.
 
-1. Írja **be** a pontszám Model kifejezést a keresőmezőbe a **pontszám modell** modul megkereséséhez, majd húzza a modult a kísérleti vászonra. A **Train Model** modul kimenetének összekötése a **score Model**bal oldali bemeneti portjával. Az adatforráshoz tartozó adat kimenetének (jobb oldali  portjának) összekötése a **score Model**megfelelő bemeneti portjára.
+1. Írja **be** a pontszám Model kifejezést a keresőmezőbe a **pontszám modell** modul megkereséséhez, majd húzza a modult a kísérleti vászonra. A **Train Model** modul kimenetének összekötése a **score Model**bal oldali bemeneti portjával. Az adatforráshoz tartozó adat kimenetének (jobb oldali portjának) összekötése a **score Model**megfelelő bemeneti portjára.
 
 1. Írja **be** a kiértékelés kifejezést a keresőmezőbe a **kiértékelési modell** megkereséséhez, majd húzza a modult a kísérleti vászonra. A **pontszám modell** modul kimenetének összekötése a **modell**kiértékelésének bal oldali bemenetével. Az elkészült kísérletnek a következőképpen kell kinéznie:
 
