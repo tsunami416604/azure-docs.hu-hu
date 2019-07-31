@@ -75,8 +75,6 @@
       href: security-center-provide-security-contact-details.md
     - name: Tarifacsomag
       href: security-center-pricing.md
-    - name: Biztonsági konfigurációk
-      href: security-center-customize-os-security-config.md
     - name: Bérlőszintű láthatóság
       href: security-center-management-groups.md
     - name: Biztonsági javaslatok megvalósítása
@@ -183,6 +181,8 @@
           href: security-center-alerts-type.md
         - name: Azure-erőforrások és -felhasználók UEBA-elemzése
           href: security-center-ueba-mcas.md
+        - name: Biztonsági konfigurációk testreszabása
+          href: security-center-customize-os-security-config.md
 - name: Referencia
   items:
     - name: REST API-k

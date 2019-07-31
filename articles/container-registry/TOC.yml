@@ -105,8 +105,14 @@
           href: container-registry-tasks-multi-step.md
         - name: Rendszerkép összeállítása buildcsomagokkal (előzetes verzió)
           href: container-registry-tasks-pack-build.md
-        - name: Használat felügyelt identitással
-          href: container-registry-tasks-authentication-managed-identity.md
+        - name: Hozzáférés biztonságos erőforrásokhoz felügyelt identitások használatával
+          items:
+            - name: Felügyelt identitás engedélyezése feladathoz
+              href: container-registry-tasks-authentication-managed-identity.md
+            - name: Több regisztrációs adatbázisra kiterjedő hitelesítés feladatból
+              href: container-registry-tasks-cross-registry-authentication.md
+            - name: Külső hitelesítés kulcstartó használatával
+              href: container-registry-tasks-authentication-key-vault.md
     - name: Regisztrációs adatbázisok és más Azure-szolgáltatások
       items:
         - name: Azure Container Instances

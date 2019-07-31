@@ -231,7 +231,9 @@
           href: cognitive-search-resources-documentation.md
     - name: Tudástár (előzetes verzió)
       items:
-        - name: Első lépések
+        - name: Kapcsolódás a Power BI használatával
+          href: knowledge-store-connect-powerbi.md
+        - name: Létrehozás a REST és a Postman használatával
           href: knowledge-store-howto.md
     - name: Adatok lekérdezése
       items:

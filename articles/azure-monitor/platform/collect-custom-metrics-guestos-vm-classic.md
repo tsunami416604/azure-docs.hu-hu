@@ -1,6 +1,6 @@
 ---
-title: A vendég operációs rendszer mérőszámok küldése az Azure Monitor adattárba Windows virtuális gép (klasszikus)
-description: A vendég operációs rendszer mérőszámok küldése az Azure Monitor adattárba Windows virtuális gép (klasszikus)
+title: Vendég operációs rendszer metrikáinak küldése a Windows rendszerű virtuális gépek Azure Monitor adattárához (klasszikus)
+description: Vendég operációs rendszer metrikáinak küldése a Windows rendszerű virtuális gépek Azure Monitor adattárához (klasszikus)
 author: anirudhcavale
 services: azure-monitor
 ms.service: azure-monitor
@@ -9,56 +9,56 @@ ms.date: 09/24/2018
 ms.author: ancav
 ms.subservice: ''
 ms.openlocfilehash: 57212da1a8da7ee6c57faf2413b88a413df04817
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 07/31/2019
 ms.locfileid: "66129547"
 ---
-# <a name="send-guest-os-metrics-to-the-azure-monitor-data-store-for-a-windows-virtual-machine-classic"></a>A vendég operációs rendszer mérőszámok küldése az Azure Monitor adattárba Windows virtuális gép (klasszikus)
+# <a name="send-guest-os-metrics-to-the-azure-monitor-data-store-for-a-windows-virtual-machine-classic"></a>Vendég operációs rendszer metrikáinak küldése a Windows rendszerű virtuális gépek Azure Monitor adattárához (klasszikus)
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-Az Azure Monitor [diagnosztikai bővítmény](https://docs.microsoft.com/azure/monitoring-and-diagnostics/azure-diagnostics) (úgynevezett "WAD" vagy "Diagnosztika") lehetővé teszi, hogy a metrikák és a egy virtuális gép, a felhőalapú szolgáltatás vagy a Service Fabric részeként a vendég operációs rendszerek (Guest OS) naplóinak gyűjtése a fürt. A bővítmény küldhet telemetriát [számos különböző helyeken.](https://docs.microsoft.com/azure/monitoring/monitoring-data-collection?toc=/azure/azure-monitor/toc.json)
+A Azure Monitor [diagnosztikai bővítmény](https://docs.microsoft.com/azure/monitoring-and-diagnostics/azure-diagnostics) (más néven "wad" vagy "diagnosztika") lehetővé teszi mérőszámok és naplók összegyűjtését a virtuális gép, a Cloud Service vagy a Service Fabric-fürt részeként futó vendég operációs rendszerből (vendég operációs rendszerből). A bővítmény [több különböző helyen](https://docs.microsoft.com/azure/monitoring/monitoring-data-collection?toc=/azure/azure-monitor/toc.json) is elküldheti a telemetria.
 
-Ez a cikk azt ismerteti, hogyan vendég operációs rendszer Windows virtuális gép (klasszikus) teljesítmény-mérőszámok küldése az Azure Monitor metrika tárolón. 1\.11-es verzió diagnosztikai kezdve írhatja metrikák közvetlenül az Azure Monitor metrikák tárol, ahol már standard platform metrikákat gyűjt. 
+Ez a cikk a vendég operációs rendszer teljesítményének mérőszámait ismerteti a Windows rendszerű virtuális gépek (klasszikus) Azure Monitor metrika-tárolóba való küldésének folyamatán. A diagnosztika 1,11-es verziójától kezdődően a metrikák közvetlenül a Azure Monitor metrikák tárolójába írhatók, ahol a standard platform metrikái már begyűjtése megtörtént. 
 
-Ezen a helyen tárolja őket lehetővé teszi ugyanazokat a műveleteket is platform metrikákat. Műveletek közé tartoznak a közel valós idejű riasztás, a diagram, útválasztás, a REST API-t, és a további hozzáférés. A múltban a diagnosztikai bővítmény írt, az Azure Storage, de nem az Azure Monitor adattár. 
+Az ezen a helyen való tárolása lehetővé teszi, hogy ugyanazokat a műveleteket hajtsa végre, mint a platform metrikái esetében. A műveletek közé tartozik a közel valós idejű riasztás, a diagramok, az Útválasztás, a hozzáférés egy REST API és egyebek. Korábban a diagnosztikai bővítmény az Azure Storage-ba írt, de nem a Azure Monitor adattárba. 
 
-Az ebben a cikkben a folyamat csak a klasszikus virtuális gépeket, a Windows operációs rendszert futtató működik.
+A cikkben leírt folyamat csak a Windows operációs rendszert futtató klasszikus virtuális gépeken működik.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Kell egy [szolgáltatás-rendszergazdaként vagy társ-rendszergazdaként](../../billing/billing-add-change-azure-subscription-administrator.md) az Azure-előfizetésében. 
+- Az Azure-előfizetéséhez [szolgáltatás-rendszergazdának vagy társ-rendszergazdának](../../billing/billing-add-change-azure-subscription-administrator.md) kell lennie. 
 
-- Az előfizetés regisztrálva kell lenniük [Microsoft.Insights](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-supported-services). 
+- Az előfizetést regisztrálni kell a [Microsoft.](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-supported-services)ininsights szolgáltatásban. 
 
-- Rendelkeznie kell [Azure PowerShell-lel](/powershell/azure) vagy [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) telepítve.
+- [Azure PowerShell](/powershell/azure) vagy [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) telepítve kell lennie.
 
-## <a name="create-a-classic-virtual-machine-and-storage-account"></a>Egy klasszikus virtuális gép és tárfiók létrehozása
+## <a name="create-a-classic-virtual-machine-and-storage-account"></a>Klasszikus virtuális gép és Storage-fiók létrehozása
 
-1. Egy klasszikus virtuális gép létrehozása az Azure portal használatával.
+1. Hozzon létre egy klasszikus virtuális gépet a Azure Portal használatával.
    ![Klasszikus virtuális gép létrehozása](./media/collect-custom-metrics-guestos-vm-classic/create-classic-vm.png)
 
-1. Ez a virtuális gép létrehozásakor választania, hozzon létre egy új klasszikus tárfiókot. A későbbi lépésekben használjuk ezt a tárfiókot.
+1. A virtuális gép létrehozásakor válassza a klasszikus új Storage-fiók létrehozása lehetőséget. Ezt a Storage-fiókot a későbbi lépésekben használjuk.
 
-1. Az Azure Portalon nyissa meg a **tárfiókok** erőforrás panelen. Válassza ki **kulcsok**, és jegyezze fel a tárfiók nevének és a tárfiók kulcsára. Ezt az információt későbbi lépésekben szüksége.
-   ![Tárelérési kulcsok](./media/collect-custom-metrics-guestos-vm-classic/storage-access-keys.png)
+1. A Azure Portal nyissa meg a **Storage-fiókok** erőforrás panelt. Válassza a **kulcsok**lehetőséget, és jegyezze fel a Storage-fiók nevét és a Storage-fiók kulcsát. Ezt az információt a későbbi lépésekben kell megadnia.
+   ![Tároló-hozzáférési kulcsok](./media/collect-custom-metrics-guestos-vm-classic/storage-access-keys.png)
 
 ## <a name="create-a-service-principal"></a>Egyszerű szolgáltatás létrehozása
 
-Egy egyszerű szolgáltatásnév létrehozása az Azure Active Directory-bérlőben található utasítások segítségével [egyszerű szolgáltatás létrehozása](../../active-directory/develop/howto-create-service-principal-portal.md). Megjegyzés: a folyamat során a következő: 
-- Hozzon létre új titkos ügyfélkulcsot ehhez az alkalmazáshoz.
-- Mentse a kulcsot, és használja az ügyfél-Azonosítóját a későbbi lépésekben.
+Hozzon létre egy szolgáltatási elvet a Azure Active Directory-bérlőben az [egyszerű szolgáltatásnév létrehozása](../../active-directory/develop/howto-create-service-principal-portal.md)című részben ismertetett utasítások segítségével. A folyamat során a következő lépéseket kell figyelembe vennie: 
+- Hozzon létre új ügyfél-titkos kulcsot ehhez az alkalmazáshoz.
+- Mentse a kulcsot és az ügyfél-azonosítót a későbbi lépésekben való használatra.
 
-Az erőforrás, amelyet szeretne gridre bocsáthatja ki az metrikákat az "Figyelési metrikákat közzétevő" engedélyeket biztosíthat a ezt az alkalmazást. Egy erőforráscsoport vagy egy teljes előfizetés is használhatja.  
+Adja meg az alkalmazásnak a "figyelési metrika közzétevője" engedélyt ahhoz az erőforráshoz, amelynek a metrikáit el szeretné bocsátani. Egy erőforráscsoportot vagy egy teljes előfizetést is használhat.  
 
 > [!NOTE]
-> A diagnosztikai bővítményt az egyszerű szolgáltatás hitelesítése az Azure Monitor és a metrikák küldik a klasszikus virtuális gép használja.
+> A diagnosztikai bővítmény az egyszerű szolgáltatásnév használatával hitelesíti a Azure Monitor, és metrikákat bocsát ki a klasszikus virtuális géphez.
 
-## <a name="author-diagnostics-extension-configuration"></a>Szerző diagnosztikai bővítmény konfigurációja
+## <a name="author-diagnostics-extension-configuration"></a>Diagnosztikai bővítmény konfigurációjának létrehozása
 
-1. Készítse elő a diagnosztikai bővítmény konfigurációs fájlban. Ez a fájl szabja meg, melyik eseménynaplókat és teljesítményszámlálókat a diagnosztikai bővítményt a klasszikus virtuális gép kell gyűjteni. Következő példája:
+1. Készítse elő a diagnosztikai bővítmény konfigurációs fájlját. Ez a fájl határozza meg, hogy mely naplók és teljesítményszámlálók esetében kell gyűjteni a diagnosztikai bővítményt a klasszikus virtuális géphez. A következő példa egy példát mutat be:
 
     ```xml
     <?xml version="1.0" encoding="utf-8"?>
@@ -104,7 +104,7 @@ Az erőforrás, amelyet szeretne gridre bocsáthatja ki az metrikákat az "Figye
     <IsEnabled>true</IsEnabled>
     </DiagnosticsConfiguration>
     ```
-1. A diagnosztika fájl a "SinksConfig" területen adja meg egy új Azure Monitor-fogadó módon:
+1. A diagnosztikai fájl "SinksConfig" szakaszában Definiáljon egy új Azure Monitor fogadót, a következőképpen:
 
     ```xml
     <SinksConfig>
@@ -117,7 +117,7 @@ Az erőforrás, amelyet szeretne gridre bocsáthatja ki az metrikákat az "Figye
     </SinksConfig>
     ```
 
-1. A konfigurációs fájlban, ahol szerepel a gyűjtendő kérelemteljesítmény-számlálókat listája szakaszában a teljesítményszámlálók átirányítása az Azure Monitor-fogadó "AzMonSink".
+1. A konfigurációs fájl azon szakaszában, ahol a gyűjteni kívánt teljesítményszámlálók listája szerepel, a teljesítményszámlálók átirányítása a Azure Monitor fogadó "AzMonSink" értékre.
 
     ```xml
     <PerformanceCounters scheduledTransferPeriod="PT1M" sinks="AzMonSink">
@@ -126,7 +126,7 @@ Az erőforrás, amelyet szeretne gridre bocsáthatja ki az metrikákat az "Figye
     </PerformanceCounters>
     ```
 
-1. A privát bővítménykonfiguráció határoz meg az Azure Monitor-fiókhoz. Majd adja hozzá a szolgáltatásnév adatait gridre bocsáthatja ki az metrikák használatával.
+1. A privát konfigurációban adja meg a Azure Monitor fiókot. Ezután adja hozzá a metrikák kibocsátásához használni kívánt egyszerű szolgáltatásnév adatait.
 
     ```xml
     <PrivateConfig xmlns="http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration">
@@ -142,65 +142,65 @@ Az erőforrás, amelyet szeretne gridre bocsáthatja ki az metrikákat az "Figye
 
 1. Mentse helyileg a fájlt.
 
-## <a name="deploy-the-diagnostics-extension-to-your-cloud-service"></a>A felhőszolgáltatásban üzembe helyezni a diagnosztikai bővítmény
+## <a name="deploy-the-diagnostics-extension-to-your-cloud-service"></a>A diagnosztikai bővítmény üzembe helyezése a Cloud Service-ben
 
-1. Indítsa el a Powershellt, és jelentkezzen be.
+1. Indítsa el a PowerShellt, és jelentkezzen be.
 
     ```powershell
     Login-AzAccount
     ```
 
-1. Indítsa el a környezet beállítása a klasszikus virtuális gép.
+1. Először állítsa be a környezetet a klasszikus virtuális géphez.
 
     ```powershell
     $VM = Get-AzureVM -ServiceName <VM’s Service_Name> -Name <VM Name>
     ```
 
-1. A klasszikus tárfiók, amely a virtuális gép létrehozásakor a környezet beállítása.
+1. Állítsa be a virtuális géppel létrehozott klasszikus Storage-fiók környezetét.
 
     ```powershell
     $StorageContext = New-AzStorageContext -StorageAccountName <name of your storage account from earlier steps> -storageaccountkey "<storage account key from earlier steps>"
     ```
 
-1.  Állítsa be a diagnosztikai fájl elérési útját egy változóhoz a következő paranccsal:
+1.  Állítsa a diagnosztikai fájl elérési útját egy változóra a következő parancs használatával:
 
     ```powershell
     $diagconfig = “<path of the diagnostics configuration file with the Azure Monitor sink configured>”
     ```
 
-1.  Készítse elő a frissítést, a klasszikus virtuális gép, amely rendelkezik az Azure Monitor-fogadó konfigurált diagnostics-fájllal.
+1.  Készítse elő a klasszikus virtuális gép frissítését azon diagnosztikai fájllal, amelyen a Azure Monitor fogadó konfigurálva van.
 
     ```powershell
     $VM_Update = Set-AzureVMDiagnosticsExtension -DiagnosticsConfigurationPath $diagconfig -VM $VM -StorageContext $Storage_Context
     ```
 
-1.  A frissítés központi telepítését a virtuális gépre a következő parancs futtatásával:
+1.  Telepítse a frissítést a virtuális gépre a következő parancs futtatásával:
 
     ```powershell
     Update-AzureVM -ServiceName "ClassicVMWAD7216" -Name "ClassicVMWAD" -VM $VM_Update.VM
     ```
 
 > [!NOTE]
-> Továbbra is kötelező, biztosít egy tárfiókot a diagnosztikai bővítmény telepítésének részeként. A megadott tárfiók naplóit, vagy a diagnosztika pluginconfig.JSON fájlban megadott teljesítményszámlálók lesz írva.
+> Továbbra is kötelező megadni a Storage-fiókot a diagnosztikai bővítmény telepítésének részeként. A diagnosztikai konfigurációs fájlban megadott naplók vagy teljesítményszámlálók a megadott Storage-fiókba lesznek írva.
 
-## <a name="plot-the-metrics-in-the-azure-portal"></a>A metrikák az Azure Portalon ábrázolása
+## <a name="plot-the-metrics-in-the-azure-portal"></a>A metrikák ábrázolása a Azure Portal
 
 1.  Nyissa meg az Azure Portalt. 
 
-1.  A bal oldali menüben válassza ki a **figyelő.**
+1.  A bal oldali menüben válassza a **figyelő lehetőséget.**
 
-1.  Az a **figyelő** panelen válassza ki **metrikák**.
+1.  A **figyelő** panelen válassza a **metrikák**lehetőséget.
 
-    ![Keresse meg a metrikák](./media/collect-custom-metrics-guestos-vm-classic/navigate-metrics.png)
+    ![Metrikák navigálása](./media/collect-custom-metrics-guestos-vm-classic/navigate-metrics.png)
 
-1. A források legördülő menüben válassza ki a klasszikus virtuális gép.
+1. Az erőforrások legördülő menüben válassza ki a klasszikus virtuális gépet.
 
-1. A névterek legördülő menüben válassza ki a **azure.vm.windows.guest**.
+1. A névterek legördülő menüben válassza az **Azure. VM. Windows. Guest**lehetőséget.
 
-1. A metrikák legördülő menüben válassza ki a **használt lefoglalt bájtok**.
-   ![Diagram-metrikák](./media/collect-custom-metrics-guestos-vm-classic/plot-metrics.png)
+1. A metrikák legördülő menüben válassza a **Memory\Committed bájtok használatban**lehetőséget.
+   ![Kirajzolt metrikák](./media/collect-custom-metrics-guestos-vm-classic/plot-metrics.png)
 
 
 ## <a name="next-steps"></a>További lépések
-- Tudjon meg többet [egyéni metrikákat](metrics-custom-overview.md).
+- További információ az [Egyéni metrikákkal](metrics-custom-overview.md)kapcsolatban.
 

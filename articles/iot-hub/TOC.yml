@@ -91,6 +91,8 @@
       href: iot-hub-scaling.md
     - name: Magas rendelkezésre állás és vészhelyreállítás
       href: iot-hub-ha-dr.md
+    - name: Az IoT Hub IP-címének ismertetése
+      href: iot-hub-understand-ip-address.md
     - name: További protokollok támogatása
       href: iot-hub-protocol-gateway.md
     - name: Üzenetek és események útválasztásának összehasonlítása
