@@ -105,10 +105,14 @@
           href: sizes-previous-gen.md
         - name: 'Azure számítási egységek (Azure Compute Units, ACU-k)'
           href: acu.md
+        - name: vCPU-kvóták
+          href: quotas.md
         - name: Teljesítményteszt pontszámai
           href: compute-benchmark-scores.md
     - name: Támogatott disztribúciók
       href: endorsed-distros.md
+    - name: Dedikált gazdagépek
+      href: dedicated-hosts.md
     - name: Karbantartás és frissítések
       href: maintenance-and-updates.md
     - name: Lemezes tárolás
@@ -139,12 +143,8 @@
       href: monitor.md
     - name: Biztonsági másolat és helyreállítás
       href: backup-recovery.md
-    - name: Telepítési szempontok
-      items:
-        - name: Infrastruktúrával kapcsolatos irányelvek
-          href: infrastructure-example.md
-        - name: vCPU-kvóták
-          href: quotas.md
+    - name: Infrastruktúrával kapcsolatos irányelvek
+      href: infrastructure-example.md
     - name: Biztonsági attribútumok
       href: virtual-machines-linux-security-attributes.md
 - name: Útmutatók
@@ -160,6 +160,12 @@
           href: create-vm-rest-api.md
         - name: Virtuális gép másolása vagy klónozása
           href: copy-vm.md
+        - name: Dedikált gazdagépek használata
+          items:
+            - name: parancssori felület
+              href: dedicated-hosts-cli.md
+            - name: Portál
+              href: dedicated-hosts-portal.md
     - name: Virtuális gépek védelme
       items:
         - name: Igény szerinti hozzáférés

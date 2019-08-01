@@ -344,7 +344,7 @@
           href: cognitive-search-skill-textsplit.md
         - name: Hangulat
           href: cognitive-search-skill-sentiment.md
-        - name: Szöveg fordítása (előzetes verzió)
+        - name: Szövegfordítás
           href: cognitive-search-skill-text-translation.md
         - name: Képelemzés
           href: cognitive-search-skill-image-analysis.md

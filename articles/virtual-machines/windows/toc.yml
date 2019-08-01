@@ -108,6 +108,8 @@
           href: compute-benchmark-scores.md
         - name: vCPU-kvóták
           href: quotas.md
+    - name: Dedikált gazdagépek
+      href: dedicated-hosts.md
     - name: Karbantartás és frissítések
       href: maintenance-and-updates.md
     - name: Lemezes tárolás
@@ -146,6 +148,12 @@
   items:
     - name: Virtuális gépek létrehozása
       items:
+        - name: Dedikált gazdagépek használata
+          items:
+            - name: PowerShell
+              href: dedicated-hosts-powershell.md
+            - name: Portál
+              href: dedicated-hosts-portal.md
         - name: 'A C# használata'
           href: csharp.md
         - name: Speciális lemez használata

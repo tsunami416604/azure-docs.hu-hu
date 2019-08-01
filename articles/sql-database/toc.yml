@@ -175,7 +175,7 @@
           href: sql-database-service-tier-hyperscale-faq.md
     - name: Önálló adatbázisok
       items:
-        - name: Önálló adatbázis áttekintése
+        - name: Az önálló adatbázis dokumentációja
           href: sql-database-single-index.yml
         - name: Önálló adatbázis
           href: sql-database-single-database.md
@@ -215,7 +215,7 @@
           href: sql-database-elastic-pool-manage.md
     - name: Felügyelt példányok
       items:
-        - name: Felügyelt példányok áttekintése
+        - name: A felügyelt példány dokumentációja
           href: sql-database-managed-instance-index.yml
         - name: Felügyelt példány képességei
           href: sql-database-managed-instance.md
@@ -235,7 +235,7 @@
           href: sql-database-managed-instance-public-endpoint-securely.md
     - name: Szolgáltatásként nyújtott platform
       items:
-        - name: Szolgáltatásként nyújtott platform áttekintése
+        - name: A szolgáltatásként nyújtott platform dokumentációja
           href: sql-database-paas.yml
         - name: Az üzletmenet folytonossága
           href: sql-database-business-continuity.md
@@ -324,7 +324,7 @@
           href: sql-database-feature-restrictions.md
     - name: Méretezhetőség
       items:
-        - name: Méretezhetőség áttekintése
+        - name: Skálázhatósági dokumentáció
           href: sql-database-scalability-index.yml
         - name: Vertikális felskálázás/leskálázás
           href: sql-database-scale-resources.md
@@ -354,7 +354,7 @@
           href: sql-database-elastic-transactions-overview.md
     - name: Monitorozás és finomhangolás
       items:
-        - name: A monitorozás és finomhangolás áttekintése
+        - name: Monitorozási és finomhangolási dokumentáció
           href: sql-database-monitoring-tuning-index.yml
         - name: Monitorozás és teljesítmény-finomhangolás
           href: sql-database-monitor-tune-overview.md
@@ -378,7 +378,7 @@
               href: sql-database-advisor.md
     - name: Adatbázisfunkciók
       items:
-        - name: Áttekintés
+        - name: Az SQL Database funkció dokumentációja
           href: sql-database-features-index.yml
         - name: SQL-funkciók összehasonlítása
           href: sql-database-features.md

@@ -28,6 +28,8 @@
           items:
             - name: A szemétgyűjtés többletterhelési korlátja túllépve
               href: ./interactive-query-troubleshoot-outofmemory-overhead-exceeded.md
+        - name: Apache Hive LLAP-lekérdezések teljesítménye
+          href: ./interactive-query-troubleshoot-query-performance.md
 - name: Útmutató
   items:
     - name: Hive számítási feladatok migrálása HDInsight 4.0-be

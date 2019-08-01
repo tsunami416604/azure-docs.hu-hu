@@ -58,6 +58,8 @@
               href: ./apache-spark-troubleshoot-outofmemory-heap.md
             - name: Java-halomterület
               href: ./apache-spark-troubleshoot-outofmemory-heap-space.md
+            - name: A Livy-kiszolgáló nem indul el
+              href: ./apache-spark-troubleshoot-outofmemory-native-thread.md
         - name: Lassú Apache Spark-feladatok – tároló
           href: ./apache-spark-troubleshoot-job-slowness-container.md
         - name: IllegalArgumentException kivétel
@@ -68,6 +70,8 @@
           href: ./apache-spark-troubleshoot-rpctimeoutexception.md
         - name: A Cross Origin API blokkolása
           href: ./apache-spark-troubleshoot-blocking-cross-origin.md
+        - name: A Kryo általi szerializálás sikertelen
+          href: ./apache-spark-troubleshoot-sparkexception-kryo-serialization-failed.md
 - name: Útmutató
   items:
     - name: Fürttároló használata

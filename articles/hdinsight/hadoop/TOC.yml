@@ -54,6 +54,14 @@
     - name: Felhasználó által hozzárendelt felügyelt identitások kezelése
       href: ../hdinsight-managed-identities.md
       maintainContext: true
+    - name: Hibaelhárítás
+      items:
+        - name: A csomópontok HDInsight-fürthöz való hozzáadása nem sikerült
+          href: ./hdinsight-troubleshoot-unable-add-nodes.md
+        - name: InvalidNetworkSecurityGroupSecurityRules – a fürt létrehozása sikertelen
+          href: ./hdinsight-troubleshoot-invalidnetworksecuritygroupsecurityrules-cluster-creation-fails.md
+        - name: Szolgáltatásnév-tanúsítvány konvertálása
+          href: ./hdinsight-troubleshoot-converting-service-principal-certificate.md
 - name: Útmutató
   items:
     - name: Apache Hadoop-tesztkörnyezet használata
