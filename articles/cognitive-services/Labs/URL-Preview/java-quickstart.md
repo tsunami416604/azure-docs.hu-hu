@@ -1,5 +1,5 @@
 ---
-title: 'Gyors útmutató: Projekt URL-cím előnézete, a Java'
+title: 'Gyors útmutató: Projekt URL-címének előnézete, Java'
 titlesuffix: Azure Cognitive Services
 description: Az URL-cím előnézete projekt Java nyelvvel való használatába bevezető szkriptminta.
 services: cognitive-services
@@ -10,24 +10,24 @@ ms.subservice: url-preview
 ms.topic: quickstart
 ms.date: 04/24/2018
 ms.author: rosh
-ms.openlocfilehash: 5fa3b723b184e6c20ee678e7ef750d6a9d18f2c6
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: 29418ec8ce12033dc576c61a73301dec13d457cc
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67592854"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68698031"
 ---
-# <a name="quickstart-url-preview-with-java"></a>Gyors útmutató: Java-URL-cím előnézete
+# <a name="quickstart-url-preview-with-java"></a>Gyors útmutató: URL-előnézet Javával
 
 Az alábbi Java-példa létrehoz egy URL-előnézetet a SwiftKey webhelyhez: https://swiftkey.com/en.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Hozzáférési kulcs lekérése a [Cognitive Services Labs](https://aka.ms/answersearchsubscription) ingyenes próbaverziójához
+Hozzáférési kulcs lekérése a [Cognitive Services Labs](https://labs.cognitive.microsoft.com/en-us/project-answer-search) ingyenes próbaverziójához
 
 ## <a name="request"></a>Kérés 
 
-Az alábbi kód létrehoz egy `WebRequest`, beállítja a hozzáférési kulcs fejléc, és hozzáad egy lekérdezési karakterláncot a "https:\//swiftkey.com/en".  Ezután elküldi a kérést, és hozzárendeli a választ egy sztringhez, hogy az tartalmazza a JSON-szöveget.
+A következő kód létrehoz egy `WebRequest`, beállítja a hozzáférési kulcs fejlécét, és hozzáadja a "https:\//Swiftkey.com/en" lekérdezési karakterláncot.  Ezután elküldi a kérést, és hozzárendeli a választ egy sztringhez, hogy az tartalmazza a JSON-szöveget.
 
 ```
     // construct URL of search request (endpoint + query string)

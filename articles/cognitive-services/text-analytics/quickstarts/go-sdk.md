@@ -1,38 +1,36 @@
 ---
-title: 'Gyors útmutató: Meghívja a Text Analytics szolgáltatást, a Go SDK-val'
+title: 'Gyors útmutató: A Text Analytics szolgáltatás meghívása a go SDK használatával'
 titleSuffix: Azure Cognitive Services
-description: Get information és kód minták segítségével gyorsan első lépései a Microsoft Cognitive Services Text Analytics API használatával.
+description: Az Microsoft Cognitive Services Text Analytics API használatának gyors megkezdése érdekében olvassa el az információk és a kódok mintáit.
 services: cognitive-services
 author: laramume
 manager: assafi
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: quickstart
-ms.date: 05/23/2019
+ms.date: 07/30/2019
 ms.author: aahi
-ms.openlocfilehash: 44def29292bc882fdaa08ff76667742756f178b8
-ms.sourcegitcommit: 8c49df11910a8ed8259f377217a9ffcd892ae0ae
+ms.openlocfilehash: d3644022e1877369368953b9f147c64aaae2d459
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66299610"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68697649"
 ---
-# <a name="quickstart-call-the-text-analytics-service-using-the-go-sdk"></a>Gyors útmutató: Meghívja a Text Analytics szolgáltatást, a Go SDK-val 
+# <a name="quickstart-call-the-text-analytics-service-using-the-go-sdk"></a>Gyors útmutató: A Text Analytics szolgáltatás meghívása a go SDK használatával 
 <a name="HOLTop"></a>
 
-Ez a rövid útmutató segítségével megkezdheti a Text Analytics Góhoz készült SDK-val nyelvi elemzése. Ez a cikk bemutatja, hogyan nyelv, vélemények elemzése, kinyerheti a kulcsfontosságú kifejezéseket, és azonosítja a társított entitásokat. Bár a REST API kompatibilis szinte bármelyik programozási nyelvével, az SDK biztosít egy egyszerű módja annak, hogy a szolgáltatás integrálása az alkalmazásokba. Ez a minta forráskódja találhatók [GitHub](https://github.com/Azure-Samples/azure-sdk-for-go-samples/tree/master/cognitiveservices).
+Ezzel a rövid útmutatóval megkezdheti a nyelv elemzését az Text Analytics SDK for go használatával. Ebből a cikkből megtudhatja, hogyan derítheti fel a nyelveket, elemezheti a fontos kifejezéseket, és hogyan azonosíthatja a társított entitásokat. Míg a REST API a legtöbb programozási nyelvvel kompatibilis, az SDK egyszerű módszert kínál a szolgáltatás integrálására az alkalmazásokba. A minta forráskódja a [githubon](https://github.com/Azure-Samples/azure-sdk-for-go-samples/tree/master/cognitiveservices)található.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* A Text Analytics [Góhoz készült SDK](https://github.com/Azure/azure-sdk-for-go/tree/master/services/cognitiveservices/v2.1/textanalytics)
+* A Go-hoz készült Text Analytics [SDK](https://github.com/Azure/azure-sdk-for-go/tree/master/services/cognitiveservices/v2.1/textanalytics)
 
 [!INCLUDE [cognitive-services-text-analytics-signup-requirements](../../../../includes/cognitive-services-text-analytics-signup-requirements.md)]
 
-A regisztráció során létrejött [végponttal és hozzáférési kulccsal](../How-tos/text-analytics-how-to-access-key.md) is rendelkeznie kell.
-
 ## <a name="set-up-a-new-project"></a>Új projekt beállítása
 
-Új Go-projekt létrehozása a kedvenc Kódszerkesztő, vagy IDE. Ezután adja hozzá a következő importálási utasítást a Go fájlhoz.
+Hozzon létre egy új go-projektet a kedvenc Kódszerkesztő vagy IDE-ben. Ezután adja hozzá a következő importálási utasítást a go-fájlhoz.
 
 ```golang
 import (
@@ -44,7 +42,7 @@ import (
 )
 ```
 
-Az alábbi funkciókat a projekthez hozzáadni a paramétereknek és tulajdonságoknak a ebben a rövid útmutatóban a legtöbb várt karakterlánc és logikai mutatók.
+Adja hozzá a következő függvényeket a projekthez, mivel a rövid útmutatóban szereplő paraméterek és tulajdonságok többsége karakterláncot és logikai mutatókat vár.
 
 ```golang
 // returns a pointer to the string value passed in.
@@ -58,16 +56,16 @@ func BoolPointer(v bool) *bool {
 }
 ```
 
-## <a name="create-text-analytics-client-and-authenticate-credentials"></a>Hozzon létre Text Analytics ügyfél és a hitelesítő adatok hitelesítése
+## <a name="create-text-analytics-client-and-authenticate-credentials"></a>Text Analytics ügyfél létrehozása és hitelesítő adatok hitelesítése
 
-A projekt fő funkcióját, hozzon létre egy új `TextAnalytics` objektum. Használja a megfelelő Azure-régióban a Szövegelemzés előfizetéshez. Például: `https://eastus.api.cognitive.microsoft.com`. Ha egy próbaverziós kulcsot használ, nem kell a hely frissítése.
+A projekt fő függvényében hozzon létre egy új `TextAnalytics` objektumot. A Text Analytics-előfizetéséhez használja a megfelelő Azure-régiót. Például: `https://eastus.api.cognitive.microsoft.com`. Ha próbaverziós kulcsot használ, nem kell frissítenie a helyet.
 
 ```golang
 //Replace 'eastus' with the correct region for your Text Analytics subscription
 textAnalyticsClient := textanalytics.New("https://eastus.api.cognitive.microsoft.com")
 ```
 
-Hozzon létre egy változót a kulcsot, és adja át azt a függvény `autorest.NewCognitiveServicesAuthorizer` amely majd átkerülnek az ügyfél `authorizer` tulajdonság.
+Hozzon létre egy változót a kulcshoz, és adja `autorest.NewCognitiveServicesAuthorizer` át azt a függvénynek, amelyet a rendszer `authorizer` az ügyfél tulajdonságának továbbít.
 
 ```golang
 subscriptionKey := "<<subscriptionKey>>"
@@ -76,7 +74,7 @@ textAnalyticsClient.Authorizer = autorest.NewCognitiveServicesAuthorizer(subscri
 
 ## <a name="sentiment-analysis"></a>Hangulatelemzés
 
-Hozzon létre egy új függvényt nevű `SentimentAnalysis()` az ügyfél korábban létrehozott paraméterrel. Hozzon létre egy `MultiLanguageInput` objektumokat, az elemezni kívánt dokumentumokat tartalmazó. Minden objektumot tartalmazza egy `id`, `Language` és a egy `text` attribútum. A `text` attribútumtárak elemezni, a szöveg `language` nyelve az a dokumentumot, és a `id` bármilyen érték lehet. 
+Hozzon létre egy nevű `SentimentAnalysis()` új függvényt, amely a korábban létrehozott ügyfelet veszi fel. Hozzon létre egy `MultiLanguageInput` listát az objektumok listájáról, amely tartalmazza az elemezni kívánt dokumentumokat. Minden objektum tartalmaz egy `id` `Language` és egy `text` attribútumot. Az `text` attribútum tárolja az elemezni kívánt szöveget, `language` a dokumentum nyelvét, a `id` pedig bármely értéket. 
 
 ```golang
 func SentimentAnalysis(textAnalyticsclient textanalytics.BaseClient) {
@@ -109,7 +107,7 @@ func SentimentAnalysis(textAnalyticsclient textanalytics.BaseClient) {
 }
 ```
 
-Ugyanabban a függvényben hívja `textAnalyticsclient.Sentiment()` és az eredményt kapja. Ezután Iterál végig az eredményeket, és nyomtassa ki minden egyes dokumentum-Azonosítót és véleménypontszámot. 0 közelebb pontszámot azt jelzi, hogy egy negatív véleményt jelölnek, míg 1 közelebb pontszámot azt jelzi, hogy egy pozitív véleményt.
+Ugyanebben a függvényben hívja `textAnalyticsclient.Sentiment()` meg és szerezze be az eredményt. Ezután ismételje meg az eredményeket, és nyomtassa ki az egyes dokumentumok AZONOSÍTÓit, valamint a hangulat pontszámát. Ha a pontszám közelebb van a 0 értékhez, a negatív érzést jelez, míg az 1. számú pontszám pozitív hangulatot jelez.
 
 ```golang
 result, _ := textAnalyticsclient.Sentiment(ctx, BoolPointer(false), &batchInput)
@@ -130,9 +128,9 @@ for _,error := range *batchResult.Errors {
 }
 ```
 
-A projekt fő függvényben hívja `SentimentAnalysis()`.
+A projekt fő függvényében hívja `SentimentAnalysis()`meg a t.
 
-### <a name="output"></a>Kimenet
+### <a name="output"></a>Output
 
 ```console
 Document ID: 1 , Sentiment Score: 0.87
@@ -143,7 +141,7 @@ Document ID: 4 , Sentiment Score: 1.00
 
 ## <a name="language-detection"></a>Nyelvfelismerés
 
-Hozzon létre egy új függvényt nevű `LanguageDetection()` az ügyfél korábban létrehozott paraméterrel. Hozzon létre egy `LanguageInput` objektumokat, az elemezni kívánt dokumentumokat tartalmazó. Minden objektumot tartalmazza egy `id` és a egy `text` attribútum. A `text` attribútumtárak elemezni, a szöveg és a `id` bármilyen érték lehet. 
+Hozzon létre egy nevű `LanguageDetection()` új függvényt, amely a korábban létrehozott ügyfelet veszi fel. Hozzon létre egy `LanguageInput` listát az objektumok listájáról, amely tartalmazza az elemezni kívánt dokumentumokat. Minden objektum tartalmaz egy `id` és egy `text` attribútumot. Az `text` attribútum tárolja az elemezni kívánt szöveget, és a `id` értéke bármilyen lehet. 
 
 ```golang
 func LanguageDetection(textAnalyticsclient textanalytics.BaseClient) {
@@ -168,7 +166,7 @@ func LanguageDetection(textAnalyticsclient textanalytics.BaseClient) {
 }
 ```
 
-Ugyanabban a függvényben hívja `textAnalyticsclient.DetectLanguage()` és az eredményt kapja. Ezután Iterál végig az eredményeket, és kinyomtatja az egyes dokumentumok azonosítója és felismert nyelv.
+Ugyanebben a függvényben hívja `textAnalyticsclient.DetectLanguage()` meg és szerezze be az eredményt. Ezután ismételje meg az eredményeket, és nyomtassa ki az egyes dokumentumok AZONOSÍTÓit, valamint az észlelt nyelvet.
 
 ```golang
 result, _ := textAnalyticsclient.DetectLanguage(ctx, BoolPointer(false), &batchInput)
@@ -190,9 +188,9 @@ for _,error := range *result.Errors {
 }
 ```
 
-A projekt fő függvényben hívja `LanguageDetection()`.
+A projekt fő függvényében hívja `LanguageDetection()`meg a t.
 
-### <a name="output"></a>Kimenet
+### <a name="output"></a>Output
 
 ```console
 Document ID: 0 Detected Languages with Score: English 1.000000,
@@ -202,7 +200,7 @@ Document ID: 2 Detected Languages with Score: Chinese_Simplified 1.000000,
 
 ## <a name="entity-recognition"></a>Entitások felismerése
 
-Hozzon létre egy új függvényt nevű `ExtractEntities()` az ügyfél korábban létrehozott paraméterrel. Hozzon létre egy `MultiLanguageInput` objektumokat, az elemezni kívánt dokumentumokat tartalmazó. Minden objektumot tartalmazza egy `id`, `language`, és a egy `text` attribútum. A `text` attribútumtárak elemezni, a szöveg `language` nyelve az a dokumentumot, és a `id` bármilyen érték lehet. 
+Hozzon létre egy nevű `ExtractEntities()` új függvényt, amely a korábban létrehozott ügyfelet veszi fel. Hozzon létre egy `MultiLanguageInput` listát az objektumok listájáról, amely tartalmazza az elemezni kívánt dokumentumokat. Minden objektum tartalmaz egy `id`, `language`és egy `text` attribútumot. Az `text` attribútum tárolja az elemezni kívánt szöveget, `language` a dokumentum nyelvét, a `id` pedig bármely értéket. 
 
 ```golang
 func ExtractKeyPhrases(textAnalyticsclient textanalytics.BaseClient) {
@@ -225,7 +223,7 @@ func ExtractKeyPhrases(textAnalyticsclient textanalytics.BaseClient) {
 }
 ```
 
-Ugyanabban a függvényben `call textAnalyticsclient.Entities()` és az eredményt kapja. Majd újrafuttathatja – a eredményeket és nyomtatási, egyes dokumentumok azonosítója, és ki kell olvasni pontozása entitásokat.
+Ugyanebben a függvényben, `call textAnalyticsclient.Entities()` és az eredmény beolvasása. Ezután ismételje meg az eredményeket, és nyomtassa ki az egyes dokumentumok AZONOSÍTÓit és a kinyert entitások pontszámát.
 
 ```golang
     result, _ := textAnalyticsclient.Entities(ctx, BoolPointer(false), &batchInput)
@@ -254,9 +252,9 @@ Ugyanabban a függvényben `call textAnalyticsclient.Entities()` és az eredmén
     }
 ```
 
-A projekt fő függvényben hívja `ExtractEntities()`.
+A projekt fő függvényében hívja `ExtractEntities()`meg a t.
 
-### <a name="output"></a>Kimenet
+### <a name="output"></a>Output
 
 ```console
 Document ID: 0
@@ -292,7 +290,7 @@ Document ID: 1
 
 ## <a name="key-phrase-extraction"></a>A kulcsfontosságú kifejezések kinyerése
 
-Hozzon létre egy új függvényt nevű `ExtractKeyPhrases()` az ügyfél korábban létrehozott paraméterrel. Hozzon létre egy `MultiLanguageInput` objektumokat, az elemezni kívánt dokumentumokat tartalmazó. Minden objektumot tartalmazza egy `id`, `language`, és a egy `text` attribútum. A `text` attribútumtárak elemezni, a szöveg `language` nyelve az a dokumentumot, és a `id` bármilyen érték lehet.
+Hozzon létre egy nevű `ExtractKeyPhrases()` új függvényt, amely a korábban létrehozott ügyfelet veszi fel. Hozzon létre egy `MultiLanguageInput` listát az objektumok listájáról, amely tartalmazza az elemezni kívánt dokumentumokat. Minden objektum tartalmaz egy `id`, `language`és egy `text` attribútumot. Az `text` attribútum tárolja az elemezni kívánt szöveget, `language` a dokumentum nyelvét, a `id` pedig bármely értéket.
 
 ```golang
 func ExtractKeyPhrases(textAnalyticsclient textanalytics.BaseClient) {
@@ -325,7 +323,7 @@ func ExtractKeyPhrases(textAnalyticsclient textanalytics.BaseClient) {
 }
 ```
 
-Ugyanabban a függvényben textAnalyticsclient.KeyPhrases() hívja, és az eredményt kapja. Ezután Iterál végig az eredményeket, és nyomtassa ki minden egyes dokumentum azonosítója és kinyert kulcskifejezéseket.
+Ugyanebben a függvényben hívja meg a textAnalyticsclient. alkifejezéseket (), és szerezze be az eredményt. Ezután ismételje meg az eredményeket, és nyomtassa ki az egyes dokumentumok AZONOSÍTÓit és a kinyert fő kifejezéseket.
 
 ```golang
     result, _ := textAnalyticsclient.KeyPhrases(ctx, BoolPointer(false), &batchInput)
@@ -347,9 +345,9 @@ Ugyanabban a függvényben textAnalyticsclient.KeyPhrases() hívja, és az eredm
     }
 ```
 
-A projekt fő függvényben hívja `ExtractKeyPhrases()`.
+A projekt fő függvényében hívja `ExtractKeyPhrases()`meg a t.
 
-### <a name="output"></a>Kimenet
+### <a name="output"></a>Output
 
 ```console
 Document ID: 0
@@ -380,4 +378,4 @@ Document ID: 3
 
 ## <a name="see-also"></a>Lásd még
 
- [Text Analytics áttekintése](../overview.md) [– gyakori kérdések (GYIK)](../text-analytics-resource-faq.md)
+ [Text Analytics áttekintése](../overview.md) [Gyakori kérdések (GYIK)](../text-analytics-resource-faq.md)

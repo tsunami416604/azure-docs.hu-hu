@@ -1,19 +1,18 @@
 ---
 title: Bevezetés az Azure Files használatába | Microsoft Docs
 description: Az Azure Files szolgáltatás áttekintése, amely lehetővé teszi hálózati fájlmegosztások létrehozását és használatát a felhőben az iparági szabvány SMB protokoll használatával.
-services: storage
 author: roygara
 ms.service: storage
 ms.topic: overview
 ms.date: 07/19/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 075a3cea426fd5f54ef142648754fa9a9e2810b4
-ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
+ms.openlocfilehash: 7fe95a35a6b78bae66521a09d63d376ec8757479
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67508314"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68699681"
 ---
 # <a name="what-is-azure-files"></a>Mi az Azure Files?
 Az Azure Files teljes körűen felügyelt felhőbeli fájlmegosztást nyújt, amely az iparági szabványos [Server Message Block (SMB) protokollon](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx) keresztül érhető el. Az Azure-fájlmegosztások párhuzamosan több felhőalapú vagy helyszíni Windows, Linux vagy macOS rendszerű üzemelő példány által is csatlakoztathatóak. Emellett az Azure-fájlmegosztások gyorsítótárazhatók Windows Servereken az Azure File Sync használatával az adatok felhasználási helyéhez közeli gyors elérés érdekében.

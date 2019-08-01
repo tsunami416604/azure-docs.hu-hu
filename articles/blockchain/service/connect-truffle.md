@@ -1,6 +1,6 @@
 ---
 title: Csatlakozás Truffle használatával
-description: Az Azure Blockchain-szolgáltatás használatával Truffle hálózat csatlakoztatása
+description: Kapcsolódás Azure Blockchain Service networkhez a szarvasgomba használatával
 services: azure-blockchain
 keywords: ''
 author: PatAltimore
@@ -10,85 +10,100 @@ ms.topic: quickstart
 ms.service: azure-blockchain
 ms.reviewer: jackyhsu
 manager: femila
-ms.openlocfilehash: 8b1a701beac867c5f331ffa1ee1dee615961c6b3
-ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
+ms.openlocfilehash: 9154bc749f7db337de67f501d5e5049dfd466156
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66416300"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68698466"
 ---
-# <a name="quickstart-use-truffle-to-connect-to-an-azure-blockchain-service-network"></a>Gyors útmutató: Csatlakozás az Azure Blockchain-szolgáltatás hálózathoz Truffle használatával
+# <a name="quickstart-use-truffle-to-connect-to-an-azure-blockchain-service-network"></a>Gyors útmutató: A szarvasgomba használata az Azure Blockchain Service networkhez való kapcsolódáshoz
 
-Truffle egy segítségével az Azure Blockchain-szolgáltatás a csomóponthoz csatlakozás blokklánc-fejlesztési környezetre.
+A szarvasgomba egy blockchain fejlesztési környezet, amellyel csatlakozhat egy Azure Blockchain szolgáltatás-csomóponthoz.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* [Az Azure Blockchain tag létrehozása](create-member.md)
-* Telepítés [Truffle](https://github.com/trufflesuite/truffle). Truffle igényel a telepítendő eszközöket is beleértve [Node.js](https://nodejs.org), [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git).
-* Telepítés [Python 2.7.15](https://www.python.org/downloads/release/python-2715/). Python weben 3 van szükség.
+* [Azure Blockchain-tag létrehozása](create-member.md)
+* A [szarvasgomba](https://github.com/trufflesuite/truffle)telepítése. A szarvasgombához több eszközt kell telepíteni, beleértve a [Node. js](https://nodejs.org)-t, a [git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)-t.
+* Telepítse a [Python-2.7.15](https://www.python.org/downloads/release/python-2715/). A Python szükséges a Web3.
+* Telepítse a [Visual Studio Code](https://code.visualstudio.com/download)-ot.
+* Telepítse a [Visual Studio Code soliding bővítményt](https://marketplace.visualstudio.com/items?itemName=JuanBlanco.solidity).
 
-## <a name="create-truffle-project"></a>Truffle projekt létrehozása
+## <a name="create-truffle-project"></a>Szarvasgomba-projekt létrehozása
 
-1. Nyissa meg a Node.js parancssort vagy a rendszerhéjat.
-1. Módosítsa a könyvtárat, ahová a Truffle projektkönyvtárban hozzon létre.
-1. Hozzon létre egy könyvtárat a projekthez, és az elérési utat módosítsa arra az új címtárra. Például:
+1. Nyisson meg egy Node. js parancssort vagy rendszerhéjat.
+1. Váltson arra a könyvtárra, ahol létre szeretné hozni a szarvasgomba Project könyvtárat.
+1. Hozzon létre egy könyvtárat a projekthez, és módosítsa az elérési utat az új könyvtárba. Például:
 
     ``` bash
     mkdir truffledemo
     cd truffledemo
     ```
 
-1. A Truffle projekt inicializálása.
+1. A szarvasgomba projekt inicializálása.
 
     ``` bash
     truffle init
     ```
 
-1. Telepítse a weben Ethereum JavaScript API 3 a projektmappában. Verzió weben 3 verzió 1.0.0-beta.37 jelenleg szükséges.
+1. Telepítse a Ethereum JavaScript API-web3 a projekt mappájába. Jelenleg a web3 Version 1.0.0-Beta. 37 verziója szükséges.
 
     ``` bash
     npm install web3@1.0.0-beta.37
     ```
 
-    A telepítés során npm figyelmeztetés jelenhet meg.
+    A telepítés során NPM figyelmeztetéseket kaphat.
+    
+## <a name="configure-truffle-project"></a>Szarvasgomba-projekt konfigurálása
 
-1. Interaktív fejlesztői konzol indítása Truffle.
+A szarvasgomba projekt konfigurálásához szükség van néhány tranzakciós csomópontra a Azure Portal.
 
-    ``` bash
-    truffle develop
+### <a name="transaction-node-endpoint-addresses"></a>Tranzakciós csomópont végpontjának címei
+
+1. A Azure Portal navigáljon minden tranzakciós csomóponthoz, és válassza a **tranzakciós csomópontok >** a kapcsolódási karakterláncok lehetőséget.
+1. Másolja és mentse a végponti URL-címet a https-ről **(1. hozzáférési kulcs)** minden tranzakciós csomóponthoz. Az oktatóanyag későbbi részében szüksége lesz az intelligens szerződés konfigurációs fájljához tartozó végponti címekre.
+
+    ![Tranzakció végpontjának címe](./media/send-transaction/endpoint.png)
+
+### <a name="edit-configuration-file"></a>Konfigurációs fájl szerkesztése
+
+1. Indítsa el a Visual Studio Code-ot, és nyissa meg a szarvasgomba Project Directory mappát a **fájl > mappa megnyitása** menü használatával.
+1. Nyissa meg a szarvasgomba konfigurációs fájlt `truffle-config.js`.
+1. Cserélje le a fájl tartalmát a következő konfigurációs adatokra. Adjon hozzá egy változót, amely tartalmazza a végponti címeket. Cserélje le a szögletes zárójelet az előző fejezetekben összegyűjtött értékekre.
+
+    ``` javascript
+    var defaultnode = "<default transaction node connection string>";   
+    var Web3 = require("web3");
+    
+    module.exports = {
+      networks: {
+        defaultnode: {
+          provider: new Web3.providers.HttpProvider(defaultnode),
+          network_id: "*"
+        }
+      }
+    }
     ```
 
-    Truffle létrehoz egy helyi fejlesztési blockchain, és a egy interaktív konzolt kínál.
+1. Mentse a módosításokat a `truffle-config.js`következőre:.
 
 ## <a name="connect-to-transaction-node"></a>Csatlakozás tranzakciós csomóponthoz
 
-Használat *weben 3* a tranzakció-csomóponthoz szeretne csatlakozni. Beszerezheti a *weben 3* kapcsolati karakterláncot az Azure Portalról.
+A *Web3* használatával kapcsolódjon a tranzakciós csomóponthoz.
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-1. Keresse meg az Azure Blockchain-szolgáltatás tag. Válassza ki **tranzakció csomópontok** és az alapértelmezett tranzakció csomópont hivatkozására.
+1. Az alapértelmezett tranzakciós csomóponthoz való kapcsolódáshoz használja a szarvasgomba konzolt.
 
-    ![Válassza ki az alapértelmezett tranzakció csomópont](./media/connect-truffle/transaction-nodes.png)
-
-1. Válassza ki **mintakód > weben 3**.
-1. Másolja a JavaScript a **HTTPS (hozzáférési kulcs: 1)** . A kód a Truffle interaktív fejlesztői konzol van szükség.
-
-    ![Weben 3 kód](./media/connect-truffle/web3-code.png)
-
-1. Illessze be a JavaScript-kódot az előző lépésben a Truffle interaktív fejlesztői konzolon. A kód létrehoz egy weben 3-objektumot, amely az Azure Blockchain-szolgáltatás tranzakció csomópont csatlakozik.
-
-    Példa a kimenetre:
-
-    ```bash
-    truffle(develop)> var Web3 = require("Web3");
-    truffle(develop)> var provider = new Web3.providers.HttpProvider("https://myblockchainmember.blockchain.azure.com:3200/hy5FMu5TaPR0Zg8GxiPwned");
-    truffle(develop)> var web3 = new Web3(provider);
+    ``` bash
+    truffle console --network defaultnode
     ```
 
-    A módszerek segítségével meghívhatja a **weben 3** objektumot a tranzakció csomópont kommunikáljon.
+    A szarvasgomba csatlakozik az alapértelmezett tranzakciós csomóponthoz, és egy interaktív konzolt biztosít.
 
-1. Hívja a **getBlockNumber** metódus az aktuális blokk számának visszaadása.
+    A **web3** objektum metódusait hívhatja a tranzakciós csomóponttal való interakcióhoz.
+
+1. Hívja meg a **getBlockNumber** metódust az aktuális blokk számának visszaadásához.
 
     ```bash
     web3.eth.getBlockNumber();
@@ -97,10 +112,10 @@ Használat *weben 3* a tranzakció-csomóponthoz szeretne csatlakozni. Beszerezh
     Példa a kimenetre:
 
     ```bash
-    truffle(develop)> web3.eth.getBlockNumber();
+    truffle(defaultnode)> web3.eth.getBlockNumber();
     18567
     ```
-1. Lépjen ki a Truffle fejlesztői konzolon.
+1. Lépjen ki a szarvasgomba fejlesztői konzolból.
 
     ```bash
     .exit
@@ -108,9 +123,9 @@ Használat *weben 3* a tranzakció-csomóponthoz szeretne csatlakozni. Beszerezh
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben a rövid útmutatóban létrehozott egy Truffle projektet az Azure Blockchain-szolgáltatás alapértelmezett tranzakció csomóponthoz szeretne csatlakozni.
+Ebben a rövid útmutatóban létrehozott egy szarvasgomba-projektet az Azure Blockchain szolgáltatás alapértelmezett tranzakciós csomópontjához való kapcsolódáshoz.
 
-Próbálja ki a következő oktatóanyaggal, Truffle használható egy tranzakció küldéséhez a consortium blockchain-hálózat.
+Próbálja ki a következő oktatóanyagot, hogy a szarvasgomba használatával küldjön tranzakciót a konzorcium blockchain-hálózatára.
 
 > [!div class="nextstepaction"]
-> [Egy tranzakció küldése](send-transaction.md)
+> [Tranzakció küldése](send-transaction.md)

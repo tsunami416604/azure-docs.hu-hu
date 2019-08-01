@@ -1,6 +1,6 @@
 ---
-title: Az Azure Blockchain-szolgáltatás használatával tranzakciók küldése
-description: Arra vonatkozó útmutató, hogyan használhatja az Azure Blockchain-szolgáltatás üzembe helyezése egy intelligens szerződés és a egy privát tranzakció küldése.
+title: Tranzakciók küldése az Azure Blockchain szolgáltatással
+description: Útmutató arról, hogyan használható az Azure Blockchain Service egy intelligens szerződés üzembe helyezésére és egy privát tranzakció elküldésére.
 services: azure-blockchain
 keywords: ''
 author: PatAltimore
@@ -10,131 +10,118 @@ ms.topic: tutorial
 ms.service: azure-blockchain
 ms.reviewer: jackyhsu
 manager: femila
-ms.openlocfilehash: 9037c7b5498a5e0a37b05e5ee09891bf8066393d
-ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
+ms.openlocfilehash: 3cfbbdc5b95d1607738b132980320d2ff7c99788
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66417487"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68698386"
 ---
-# <a name="tutorial-send-transactions-using-azure-blockchain-service"></a>Oktatóanyag: Az Azure Blockchain-szolgáltatás használatával tranzakciók küldése
+# <a name="tutorial-send-transactions-using-azure-blockchain-service"></a>Oktatóanyag: Tranzakciók küldése az Azure Blockchain szolgáltatással
 
-Ebben az oktatóanyagban megismerkedhet létrehozása tranzakció-csomópontok szerződés és a tranzakciós adatvédelmi teszteléséhez.  Hozzon létre egy helyi fejlesztési környezetet, és üzembe helyezése egy intelligens szerződés és egy privát tranzakció küldése Truffle fogja használni.
+Ebben az oktatóanyagban tranzakciós csomópontokat kell létrehoznia a szerződés és a tranzakció-adatvédelem teszteléséhez.  A szarvasgomba helyi fejlesztési környezetet hoz létre, és egy intelligens szerződést helyez üzembe, és privát tranzakciót küld.
 
 A következőket fogja megtanulni:
 
 > [!div class="checklist"]
-> * Tranzakció csomópontok hozzáadása
-> * Truffle használatával olyan intelligens szerződés üzembe helyezése
-> * Egy tranzakció küldése
-> * Tranzakció adatvédelmi ellenőrzése
+> * Tranzakciós csomópontok hozzáadása
+> * A szarvasgomba használata intelligens szerződés üzembe helyezéséhez
+> * Tranzakció küldése
+> * Tranzakció-adatvédelem ellenőrzése
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Teljes [az Azure portal használatával a blockchain-tag létrehozása](create-member.md)
-* Teljes [a rövid útmutató: Csatlakozhat egy consortium network Truffle használatával](connect-truffle.md)
-* Telepítés [Truffle](https://github.com/trufflesuite/truffle). Truffle igényel a telepítendő eszközöket is beleértve [Node.js](https://nodejs.org), [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git).
-* Telepítés [Python 2.7.15](https://www.python.org/downloads/release/python-2715/). Python weben 3 van szükség.
-* Telepítés [Visual Studio Code-ot](https://code.visualstudio.com/Download)
-* Telepítés [Visual Studio Code Solidity bővítmény](https://marketplace.visualstudio.com/items?itemName=JuanBlanco.solidity)
+* [Blockchain-tag létrehozása a Azure Portal használatával](create-member.md)
+* Teljes [gyors útmutató: A szarvasgomba használata a konzorciumi hálózathoz való kapcsolódáshoz](connect-truffle.md)
+* A [szarvasgomba](https://github.com/trufflesuite/truffle)telepítése. A szarvasgombához több eszközt kell telepíteni, beleértve a [Node. js](https://nodejs.org)-t, a [git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)-t.
+* Telepítse a [Python-2.7.15](https://www.python.org/downloads/release/python-2715/). A Python szükséges a Web3.
+* A [Visual Studio Code](https://code.visualstudio.com/Download) telepítése
+* A [Visual Studio Code soliding bővítmény](https://marketplace.visualstudio.com/items?itemName=JuanBlanco.solidity) telepítése
 
-## <a name="create-transaction-nodes"></a>Hozzon létre tranzakciós csomópontok
+## <a name="create-transaction-nodes"></a>Tranzakciós csomópontok létrehozása
 
-Alapértelmezés szerint egy tranzakció csomópontja rendelkezik. Adjon hozzá két további fogunk. Az egyik csomópontot a privát tranzakcióban részt vesz. A másik nem szerepel a privát tranzakció.
+Alapértelmezés szerint egy tranzakciós csomóponttal rendelkezik. További kettőt fogunk hozzáadni. Az egyik csomópont részt vesz a privát tranzakcióban. A másik nem szerepel a privát tranzakcióban.
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-1. Az Azure Blockchain tag keresse meg és válassza **tranzakció csomópontok > Hozzáadás**.
-1. Végezze el a beállításokat egy új tranzakció csomópont nevű `alpha`.
+1. Navigáljon az Azure Blockchain-taghoz, és válassza a **tranzakciós csomópontok > Hozzáadás**elemet.
+1. Hajtsa végre a nevű `alpha`új tranzakciós csomópont beállításait.
 
-    ![Tranzakció csomópont létrehozása](./media/send-transaction/create-node.png)
+    ![Tranzakciós csomópont létrehozása](./media/send-transaction/create-node.png)
 
-    | Beállítás | Value (Díj) | Leírás |
+    | Beállítás | Érték | Leírás |
     |---------|-------|-------------|
-    | Name (Név) | `alpha` | Tranzakció csomópont neve. A név szolgál a DNS-címe, a tranzakciós csomópont-végpont létrehozása. Például: `alpha-mymanagedledger.blockchain.azure.com`. |
-    | Jelszó | erős jelszó | A jelszót a tranzakció-csomópont végpontot az egyszerű hitelesítéssel használatos.
+    | Name (Név) | `alpha` | Tranzakciós csomópont neve. A név a tranzakciós csomópont végpontjának DNS-címeinek létrehozására szolgál. Például: `alpha-mymanagedledger.blockchain.azure.com`. |
+    | Windows 10 | Erős jelszó | A jelszó a tranzakciós csomópont végpontjának egyszerű hitelesítéssel való elérésére szolgál.
 
 1. Kattintson a **Létrehozás** gombra.
 
-    Új tranzakció csomópont kiépítése körülbelül 10 percet vesz igénybe.
+    Az új tranzakciós csomópont kiépítés körülbelül 10 percet vesz igénybe.
 
-1. Ismételje meg a 2 – 4 nevű tranzakció csomópont hozzáadása `beta`.
+1. Ismételje meg a 2 – 4. lépést egy nevű `beta`tranzakciós csomópont hozzáadásához.
 
-Folytathatja az oktatóanyag során a csomópontok lettek létrehozva. Amikor a kiépítés befejeződött, akkor három tranzakció-csomópont.
+A csomópontok kiépítés közben folytathatja az oktatóanyagot. Ha elkészült a kiépítés, három tranzakciós csomóponttal fog rendelkezni.
 
-## <a name="open-truffle-console"></a>Truffle konzol megnyitása
+## <a name="open-truffle-console"></a>A szarvasgomba konzol megnyitása
 
-1. Nyissa meg a Node.js parancssort vagy a rendszerhéjat.
-1. Az elérési utat módosítsa Truffle projektkönyvtárára az előfeltételként felsorolt [a rövid útmutató: Truffle segítségével csatlakoztathatók a consortium](connect-truffle.md). Például:
+1. Nyisson meg egy Node. js parancssort vagy rendszerhéjat.
+1. Módosítsa a szarvasgomba projekt könyvtárának elérési útját [az előfeltételként szükséges rövid útmutatóból: A szarvasgomba segítségével csatlakozhat egy konzorciumi](connect-truffle.md)hálózathoz. Például:
 
     ```bash
     cd truffledemo
     ```
 
-1. Interaktív fejlesztői konzol indítása Truffle.
+1. Az alapértelmezett tranzakciós csomóponthoz való kapcsolódáshoz használja a szarvasgomba konzolt.
 
     ``` bash
-    truffle develop
+    truffle console --network defaultnode
     ```
 
-    Truffle létrehoz egy helyi fejlesztési blockchain, és a egy interaktív konzolt kínál.
+    A szarvasgomba csatlakozik az alapértelmezett tranzakciós csomóponthoz, és egy interaktív konzolt biztosít.
 
 ## <a name="create-ethereum-account"></a>Ethereum-fiók létrehozása
 
-Weben 3 segítségével az alapértelmezett tranzakció a csomóponthoz csatlakozás és a egy Ethereum-fiók létrehozása. Megtekintheti a weben 3 kapcsolati karakterláncot az Azure Portalról.
+A Web3 használatával kapcsolódjon az alapértelmezett tranzakciós csomóponthoz, és hozzon létre egy Ethereum-fiókot. A Web3 objektum metódusait hívhatja a tranzakciós csomóponttal való interakcióhoz.
 
-1. Az Azure Portalon keresse meg az alapértelmezett tranzakció csomópont, és válassza ki **tranzakció csomópontok > mintakód > weben 3**.
-1. Másolja a JavaScript a **HTTPS (hozzáférési kulcs: 1)** ![weben 3 mintakód](./media/send-transaction/web3-code.png)
-
-1. Az alapértelmezett tranzakció csomópont a weben 3 JavaScript-kódokat illessze be a Truffle interaktív fejlesztői konzolt. A kód létrehoz egy weben 3-objektumot, amely az Azure Blockchain-szolgáltatás tranzakció csomópont csatlakozik.
-
-    ```bash
-    truffle(develop)> var Web3 = require("Web3");
-    truffle(develop)> var provider = new Web3.providers.HttpProvider("https://myblockchainmember.blockchain.azure.com:3200/hy5FMu5TaPR0Zg8GxiPwned");
-    truffle(develop)> var web3 = new Web3(provider);
-    ```
-
-    Módszerek segítségével meghívhatja a tranzakció csomópont kommunikáljon a weben 3 objektumon.
-
-1. Hozzon létre egy új fiókot az alapértelmezett tranzakció csomóponton. Cserélje le a saját erős jelszót a password paramétert.
+1. Hozzon létre egy új fiókot az alapértelmezett tranzakciós csomóponton. Cserélje le a Password paramétert a saját erős jelszavára.
 
     ```bash
     web3.eth.personal.newAccount("1@myStrongPassword");
     ```
 
-    Győződjön meg arról, jegyezze fel, hogy a visszaadott fiók címét és jelszavát. Az Ethereum-fiók címét és jelszavát a következő szakaszban van szüksége.
+    Jegyezze fel a visszaadott fiók címet és a jelszót. A következő szakaszban a Ethereum fiókjának címe és jelszava szükséges.
 
-1. Lépjen ki a Truffle fejlesztési környezethez.
+1. Lépjen ki a szarvasgomba fejlesztői környezetből.
 
     ```bash
     .exit
     ```
 
-## <a name="configure-truffle-project"></a>Truffle projekt konfigurálása
+## <a name="configure-truffle-project"></a>Szarvasgomba-projekt konfigurálása
 
-Konfigurálja a Truffle, információra van szüksége bizonyos tranzakció csomópont az Azure Portalról.
+A szarvasgomba projekt konfigurálásához szükség van néhány tranzakciós csomópontra a Azure Portal.
 
-### <a name="transaction-node-public-key"></a>Tranzakció csomópont nyilvános kulcs
+### <a name="transaction-node-public-key"></a>Tranzakciós csomópont nyilvános kulcsa
 
-Minden tranzakció csomópont nyilvános kulccsal rendelkezik. A nyilvános kulcs lehetővé teszi, hogy a csomópont egy privát tranzakció küldhet. Egy tranzakció az alapértelmezett tranzakció csomópontból történő küldéséhez a *alpha* tranzakció csomópont, szüksége a *alpha* tranzakció csomópont nyilvános kulcsot.
+Minden tranzakciós csomóponthoz tartozik egy nyilvános kulcs. A nyilvános kulcs lehetővé teszi, hogy privát tranzakciót küldjön a csomópontnak. Ahhoz, hogy tranzakciót küldjön az alapértelmezett tranzakciós csomópontról az *Alpha* Transaction csomópontra, szüksége lesz az *Alpha* tranzakciós csomópont nyilvános kulcsára.
 
-A nyilvános kulcsot beszerezheti a tranzakció csomópont listából. Másolja a nyilvános kulcsot az alfa csomóponthoz, és mentse az értéket az oktatóanyag későbbi részében.
+A nyilvános kulcsot a tranzakciós csomópontok listájából kérheti le. Másolja az Alpha csomópont nyilvános kulcsát, és mentse az értéket később az oktatóanyagban.
 
-![Tranzakció node list](./media/send-transaction/node-list.png)
+![Tranzakciós csomópontok listája](./media/send-transaction/node-list.png)
 
-### <a name="transaction-node-endpoint-addresses"></a>Tranzakció csomópont végpontcímeket
+### <a name="transaction-node-endpoint-addresses"></a>Tranzakciós csomópont végpontjának címei
 
-1. Az Azure Portalon minden egyes tranzakció csomópontjának, és válassza ki **tranzakció csomópontok > kapcsolati karakterláncok**.
-1. Másolja ki és mentse a végponti URL-cím a **HTTPS (hozzáférési kulcs: 1)** minden tranzakció csomópont esetében. Az oktatóanyag későbbi részében szüksége az intelligens szerződés konfigurációs fájlt a végponti címeket.
+1. A Azure Portal navigáljon minden tranzakciós csomóponthoz, és válassza a **tranzakciós csomópontok >** a kapcsolódási karakterláncok lehetőséget.
+1. Másolja és mentse a végponti URL-címet a https-ről **(1. hozzáférési kulcs)** minden tranzakciós csomóponthoz. Az oktatóanyag későbbi részében szüksége lesz az intelligens szerződés konfigurációs fájljához tartozó végponti címekre.
 
-    ![Tranzakció-végpont címe](./media/send-transaction/endpoint.png)
+    ![Tranzakció végpontjának címe](./media/send-transaction/endpoint.png)
 
 ### <a name="edit-configuration-file"></a>Konfigurációs fájl szerkesztése
 
-1. Indítsa el a Visual Studio Code-ot, és nyissa meg a Truffle projektet könyvtár mappa a a **fájl > mappa megnyitása** menü.
-1. Nyissa meg a Truffle konfigurációs fájlt `truffle-config.js`.
-1. Cserélje le a fájl tartalmát a következő konfigurációs adatokat. Adja hozzá a végpontok címek és a fiók adatait tartalmazó változókat. A korábbi szakaszokban összegyűjtött értékeket cserélje le a csúcsos zárójel szakaszok.
+1. Indítsa el a Visual Studio Code-ot, és nyissa meg a szarvasgomba Project Directory mappát a **fájl > mappa megnyitása** menü használatával.
+1. Nyissa meg a szarvasgomba konfigurációs fájlt `truffle-config.js`.
+1. Cserélje le a fájl tartalmát a következő konfigurációs adatokra. Adja hozzá a végpontok címét és a fiókadatok adatait tartalmazó változókat. Cserélje le a szögletes zárójelet tartalmazó szakaszt az előző fejezetekben összegyűjtött értékekre.
 
     ``` javascript
     var defaultnode = "<default transaction node connection string>";
@@ -159,31 +146,31 @@ A nyilvános kulcsot beszerezheti a tranzakció csomópont listából. Másolja 
           })(),
     
           network_id: "*",
-          gas: 0,
           gasPrice: 0,
           from: myAccount
         },
         alpha: {
           provider: new Web3.providers.HttpProvider(alpha),
           network_id: "*",
-          gas: 0,
-          gasPrice: 0
         },
         beta: {
           provider: new Web3.providers.HttpProvider(beta),
           network_id: "*",
-          gas: 0,
-          gasPrice: 0
+        }
+      },
+      compilers: {
+        solc: {
+          evmVersion: "byzantium"
         }
       }
     }
     ```
 
-1. A módosítások mentése `truffle-config.js`.
+1. Mentse a módosításokat a `truffle-config.js`következőre:.
 
-## <a name="create-smart-contract"></a>Az intelligens szerződés létrehozása
+## <a name="create-smart-contract"></a>Intelligens szerződés létrehozása
 
-1. Az a **szerződések** mappában hozzon létre egy új fájlt `SimpleStorage.sol`. Adja hozzá a következő kódot.
+1. A **szerződések** mappában hozzon létre egy nevű `SimpleStorage.sol`új fájlt. Adja hozzá a következő kódot.
 
     ```solidity
     pragma solidity >=0.4.21 <0.6.0;
@@ -205,7 +192,7 @@ A nyilvános kulcsot beszerezheti a tranzakció csomópont listából. Másolja 
     }
     ```
     
-1. Az a **áttelepítések** mappában hozzon létre egy új fájlt `2_deploy_simplestorage.js`. Adja hozzá a következő kódot.
+1. Az **áttelepítés** mappában hozzon létre egy nevű `2_deploy_simplestorage.js`új fájlt. Adja hozzá a következő kódot.
 
     ```solidity
     var SimpleStorage = artifacts.require("SimpleStorage.sol");
@@ -217,28 +204,28 @@ A nyilvános kulcsot beszerezheti a tranzakció csomópont listából. Másolja 
     };
     ```
 
-1. Cserélje le a csúcsos zárójeleket értékeit.
+1. Cserélje le az értékeket a szögletes zárójelek között.
 
-    | Érték | Leírás
+    | Value | Leírás
     |-------|-------------
-    | \<alpha node public key\> | Az alfa csomópont nyilvános kulcs
-    | \<Ethereum account address\> | Az alapértelmezett tranzakció csomópontjában létrehozott Ethereum fiók címe
+    | \<Alfa-csomópont nyilvános kulcsa\> | Az Alpha csomópont nyilvános kulcsa
+    | \<Ethereum-fiók címe\> | Az alapértelmezett tranzakciós csomópontban létrehozott Ethereum-fiók címe
 
-    Ebben a példában a kezdeti értéke, a **storeData** 42 értékre van állítva.
+    Ebben a példában a **storeData** érték kezdeti értéke 42-re van állítva.
 
-    **privateFor** határozza meg a csomópontok, amelyhez a szerződést érhető el. Ebben a példában a fiók az alapértelmezett tranzakció csomópont leadott is privát tranzakciók a **alpha** csomópont. Nyilvános kulcsok a résztvevők saját tranzakció adja hozzá. Ha nem adja meg **privateFor:** és **származó:** , az intelligens szerződés tranzakciók nyilvános, és minden consortium tag számára láthatók.
+    a **privateFor** meghatározza azokat a csomópontokat, amelyekre a szerződés elérhető. Ebben a példában az alapértelmezett tranzakciós csomópont fiókja létrehozhat privát tranzakciókat az **Alpha** -csomópontba. Nyilvános kulcsokat adhat hozzá az összes privát tranzakció résztvevője számára. Ha nem tartalmazza a **privateFor:** és a **következőt:** , az intelligens szerződési tranzakciók nyilvánosak, és minden konzorcium tagjai láthatják.
 
-1. Mentse a fájlokat kiválasztásával **fájl > Mentés összes**.
+1. Mentse az összes fájlt a **fájl > az összes mentése**lehetőség kiválasztásával.
 
-## <a name="deploy-smart-contract"></a>Az intelligens szerződés üzembe helyezése
+## <a name="deploy-smart-contract"></a>Intelligens szerződés üzembe helyezése
 
-Truffle segítségével üzembe `SimpleStorage.sol` alapértelmezett tranzakció csomópont hálózathoz.
+A szarvasgomba használatával `SimpleStorage.sol` telepítse az alapértelmezett tranzakciós csomópont-hálózatot.
 
 ```bash
 truffle migrate --network defaultnode
 ```
 
-Truffle először összeállítja és majd üzembe helyezi a **SimpleStorage** intelligens szerződés.
+A szarvasgomba Először lefordítja, majd üzembe helyezi a **SimpleStorage** intelligens szerződést.
 
 Példa a kimenetre:
 
@@ -273,23 +260,23 @@ Summary
 > Final cost:          0 ETH
 ```
 
-## <a name="validate-contract-privacy"></a>Szerződéses adatvédelmi ellenőrzése
+## <a name="validate-contract-privacy"></a>A szerződés adatainak ellenőrzése
 
-Szerződéses adatvédelmi, mert szerződés értéke csak kérdezhetők le azt a deklarált csomópontjáról **privateFor**. Ebben a példában azt is lekérdezni az alapértelmezett tranzakció csomópont, mert a fiók létezik csomópontban. 
+A szerződéses adatok védelme miatt a **privateFor**csak az általunk deklarált csomópontokból lehet lekérdezni. Ebben a példában lekérdezjük az alapértelmezett tranzakciós csomópontot, mert a fiók létezik ebben a csomópontban. 
 
-1. Az alapértelmezett tranzakció a csomóponthoz csatlakozás az Truffle konzol használatával.
+1. A szarvasgomba konzol használatával kapcsolódjon az alapértelmezett tranzakciós csomóponthoz.
 
     ```bash
     truffle console --network defaultnode
     ```
 
-1. A Truffle konzolon végrehajtható egy programkód, amely a szerződés példány értékét adja vissza.
+1. A szarvasgomba konzolon hajtsa végre a szerződés példányának értékét visszaadó kódot.
 
     ```bash
     SimpleStorage.deployed().then(function(instance){return instance.get();})
     ```
 
-    Ha az alapértelmezett tranzakció csomópont lekérdezése sikeres volt, a 42 értéket adja vissza. Példa:
+    Ha az alapértelmezett tranzakciós csomópont lekérdezése sikeres, a 42 értéket adja vissza. Példa:
 
     ```
     admin@desktop:/mnt/c/truffledemo$ truffle console --network defaultnode
@@ -297,27 +284,27 @@ Szerződéses adatvédelmi, mert szerződés értéke csak kérdezhetők le azt 
     '42'
     ```
 
-1. Lépjen ki a Truffle konzol.
+1. Lépjen ki a szarvasgomba konzolból.
 
     ```bash
     .exit
     ```
 
-Mivel hogy **alpha** csomópont található nyilvános kulcs **privateFor**, lekérdezheti, hogy a **alpha** csomópont.
+Mivel a **privateFor**-ben deklaráljuk az **Alpha** Node nyilvános kulcsát, lekérhetjük az **Alpha** csomópontot.
 
-1. A Truffle konzol használatával csatlakozni a **alpha** csomópont.
+1. A szarvasgomba konzol használatával kapcsolódjon az **Alpha** -csomóponthoz.
 
     ```bash
     truffle console --network alpha
     ```
 
-1. A Truffle konzolon végrehajtható egy programkód, amely a szerződés példány értékét adja vissza.
+1. A szarvasgomba konzolon hajtsa végre a szerződés példányának értékét visszaadó kódot.
 
     ```bash
     SimpleStorage.deployed().then(function(instance){return instance.get();})
     ```
 
-    Ha a lekérdezés a **alpha** csomópont művelet sikeres, a 42 értéket adja vissza. Példa:
+    Ha az **Alpha** -csomópont lekérdezése sikeres, a 42 értéket adja vissza. Példa:
 
     ```
     admin@desktop:/mnt/c/truffledemo$ truffle console --network alpha
@@ -325,27 +312,27 @@ Mivel hogy **alpha** csomópont található nyilvános kulcs **privateFor**, lek
     '42'
     ```
 
-1. Lépjen ki a Truffle konzol.
+1. Lépjen ki a szarvasgomba konzolból.
 
     ```bash
     .exit
     ```
 
-Mivel mi nem deklarálható **béta** csomópont található nyilvános kulcs **privateFor**, nem fogjuk tudni lekérdezni a **béta** csomópont szerződéses adatvédelmi miatt.
+Mivel nem deklaráljuk a **béta** -csomópont nyilvános kulcsát a **privateFor**-ben, nem tudjuk lekérdezni a **béta** -csomópontot a szerződés adatainak védelme miatt.
 
-1. A Truffle konzol használatával csatlakozni a **béta** csomópont.
+1. A szarvasgomba konzol használatával kapcsolódjon a **bétaverziós** csomóponthoz.
 
     ```bash
     truffle console --network beta
     ```
 
-1. Hajtsa végre a kódot, amely a szerződés példány értékét adja vissza.
+1. Hajtson végre egy olyan kódot, amely visszaadja a szerződés példányának értékét.
 
     ```bash
     SimpleStorage.deployed().then(function(instance){return instance.get();})
     ```
 
-1. Lekérdezés a **béta** csomópont meghibásodik, mivel a szerződés nem nyilvános. Példa:
+1. A **béta** -csomópont lekérdezése sikertelen, mert a szerződés privát. Példa:
 
     ```
     admin@desktop:/mnt/c/truffledemo$ truffle console --network beta
@@ -358,16 +345,16 @@ Mivel mi nem deklarálható **béta** csomópont található nyilvános kulcs **
         at XMLHttpRequest.request.onreadystatechange (/mnt/c/truffledemo/node_modules/web3-providers-http/src/index.js:96:13)
     ```
 
-1. Lépjen ki a Truffle konzol.
+1. Lépjen ki a szarvasgomba konzolból.
 
     ```bash
     .exit
     ```
     
-## <a name="send-a-transaction"></a>Egy tranzakció küldése
+## <a name="send-a-transaction"></a>Tranzakció küldése
 
-1. Hozzon létre egy fájlt nevű `sampletx.js`. Mentse a projekt gyökérkönyvtárában található.
-1. A következő szkript állítja be a szerződés **storedData** 65 változó értékét. Adja hozzá a kódot az új fájlt.
+1. Hozzon létre egy `sampletx.js`nevű fájlt. Mentse a projekt gyökerébe.
+1. A következő parancsfájl a szerződés **storedData** változó értékét 65-re állítja. Adja hozzá a kódot az új fájlhoz.
 
     ```javascript
     var SimpleStorage = artifacts.require("SimpleStorage");
@@ -388,28 +375,28 @@ Mivel mi nem deklarálható **béta** csomópont található nyilvános kulcs **
     };
     ```
 
-    Cserélje le a csúcsos zárójeleket értékeit, majd mentse a fájlt.
+    Cserélje le a szögletes zárójelek értékeit, majd mentse a fájlt.
 
-    | Érték | Leírás
+    | Value | Leírás
     |-------|-------------
-    | \<alpha node public key\> | Az alfa csomópont nyilvános kulcs
-    | \<Ethereum account address\> | Ethereum-fiók cím alapértelmezett tranzakció csomópontjában létrehozott.
+    | \<Alfa-csomópont nyilvános kulcsa\> | Az Alpha csomópont nyilvános kulcsa
+    | \<Ethereum-fiók címe\> | Az alapértelmezett tranzakciós csomópontban létrehozott Ethereum-fiók címe.
 
-    **privateFor** határozza meg a csomópontok, amelyhez a tranzakció áll rendelkezésre. Ebben a példában a fiók az alapértelmezett tranzakció csomópont leadott is privát tranzakciók a **alpha** csomópont. Az összes titkos tranzakció résztvevők nyilvános kulcsok hozzá kell.
+    a **privateFor** azokat a csomópontokat határozza meg, amelyekhez a tranzakció elérhető. Ebben a példában az alapértelmezett tranzakciós csomópont fiókja létrehozhat privát tranzakciókat az **Alpha** -csomópontba. Nyilvános kulcsokat kell hozzáadnia az összes privát tranzakció résztvevője számára.
 
-1. A szkript az alapértelmezett tranzakció csomóponthoz Truffle használja.
+1. A szarvasgomba használatával hajtsa végre az alapértelmezett tranzakciós csomópont parancsfájlját.
 
     ```bash
     truffle exec sampletx.js --network defaultnode
     ```
 
-1. A Truffle konzolon végrehajtható egy programkód, amely a szerződés példány értékét adja vissza.
+1. A szarvasgomba konzolon hajtsa végre a szerződés példányának értékét visszaadó kódot.
 
     ```bash
     SimpleStorage.deployed().then(function(instance){return instance.get();})
     ```
 
-    Ha a tranzakció sikeres volt, a 65 értéket adja vissza. Példa:
+    Ha a tranzakció sikeres volt, a rendszer a 65 értéket adja vissza. Példa:
     
     ```
     Getting deployed version of SimpleStorage...
@@ -418,29 +405,29 @@ Mivel mi nem deklarálható **béta** csomópont található nyilvános kulcs **
     Finished!
     ```
 
-1. Lépjen ki a Truffle konzol.
+1. Lépjen ki a szarvasgomba konzolból.
 
     ```bash
     .exit
     ```
     
-## <a name="validate-transaction-privacy"></a>Tranzakció adatvédelmi ellenőrzése
+## <a name="validate-transaction-privacy"></a>Tranzakció-adatvédelem ellenőrzése
 
-Miatt adatvédelmi tranzakció, tranzakciók csak végezhető azt deklarálva a csomópontokon **privateFor**. Ebben a példában is végrehajthatjuk tranzakciók óta hogy **alpha** csomópont található nyilvános kulcs **privateFor**. 
+A tranzakciós adatvédelem miatt a tranzakciókat csak a **privateFor**-ben deklarált csomópontokon lehet végrehajtani. Ebben a példában tranzakciókat lehet elvégezni, mivel az **Alpha** csomópont nyilvános kulcsát a **privateFor**-ben deklaráljuk. 
 
-1. Hajtsa végre a tranzakció Truffle használatával a **alpha** csomópont.
+1. A szarvasgomba használatával hajtsa végre a tranzakciót az **Alpha** -csomóponton.
 
     ```bash
     truffle exec sampletx.js --network alpha
     ```
     
-1. Hajtsa végre a kódot, amely a szerződés példány értékét adja vissza.
+1. A szerződési példány értékét visszaadó kód végrehajtása.
 
     ```bash
     SimpleStorage.deployed().then(function(instance){return instance.get();})
     ```
     
-    Ha a tranzakció sikeres volt, a 65 értéket adja vissza. Példa:
+    Ha a tranzakció sikeres volt, a rendszer a 65 értéket adja vissza. Példa:
 
     ```
     Getting deployed version of SimpleStorage...
@@ -449,7 +436,7 @@ Miatt adatvédelmi tranzakció, tranzakciók csak végezhető azt deklarálva a 
     Finished!
     ```
     
-1. Lépjen ki a Truffle konzol.
+1. Lépjen ki a szarvasgomba konzolból.
 
     ```bash
     .exit
@@ -457,16 +444,16 @@ Miatt adatvédelmi tranzakció, tranzakciók csak végezhető azt deklarálva a 
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha már nincs rá szükség, törölheti az erőforrások törlése a `myResourceGroup` létrehozott erőforráscsoportot az Azure Blockchain-szolgáltatás.
+Ha már nincs rá szükség, törölheti az erőforrásokat az Azure Blockchain `myResourceGroup` szolgáltatás által létrehozott erőforráscsoport törlésével.
 
-Az erőforráscsoport törléséhez:
+Az erőforráscsoport törlése:
 
-1. Az Azure Portalon lépjen **erőforráscsoport** a bal oldali navigációs panelen, és válassza ki a törölni kívánt erőforráscsoportot.
-1. Válassza az **Erőforráscsoport törlése** elemet. Az erőforráscsoport nevének megadásával erősítse meg a törlést, és válassza ki **törlése**.
+1. A Azure Portalban navigáljon az **erőforráscsoporthoz** a bal oldali navigációs ablaktáblán, és válassza ki a törölni kívánt erőforráscsoportot.
+1. Válassza az **Erőforráscsoport törlése** elemet. A törlés ellenőrzéséhez írja be az erőforráscsoport nevét, és válassza a **Törlés**lehetőséget.
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben az oktatóanyagban a szerződés és a tranzakciós adatvédelmi bemutatása kettőre tranzakciók hozzá. Az alapértelmezett csomópont egy privát intelligens szerződés üzembe helyezéséhez használt. Adatvédelmi lekérdezését szerződés értékek és a blockchain teljesítő tranzakciók által tesztelt.
+Ebben az oktatóanyagban két tranzakciós csomópontot adott hozzá a szerződés és a tranzakciós adatvédelem bemutatásához. Az alapértelmezett csomópontot használta egy privát intelligens szerződés üzembe helyezéséhez. Az adatvédelmet a szerződések értékeinek lekérdezésével és a blockchain tranzakcióinak elküldésével tesztelte.
 
 > [!div class="nextstepaction"]
-> [Blockchain-alkalmazások fejlesztéséhez az Azure Blockchain-szolgáltatás használatával](develop.md)
+> [Blockchain-alkalmazások fejlesztése az Azure Blockchain Service használatával](develop.md)

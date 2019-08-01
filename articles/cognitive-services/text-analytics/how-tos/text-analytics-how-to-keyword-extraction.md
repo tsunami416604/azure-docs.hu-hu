@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: article
 ms.date: 07/29/2019
 ms.author: raymondl
-ms.openlocfilehash: dd3f0c5b82c1898d6e4bbe564556ee26e872dc94
-ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
+ms.openlocfilehash: 1d94cff3eb3299692fc4172f5bb5211532ef1002
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68619684"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68697821"
 ---
 # <a name="example-how-to-extract-key-phrases-using-text-analytics"></a>Példa: Kulcsszavak kinyerése a Text Analytics használatával
 
@@ -76,7 +76,7 @@ További információ a kérelem meghatározásáról: [a Text Analytics API](te
 
 + Állítsa be a HTTP-végpontot a kulcsfontosságú kifejezés kinyeréséhez az Azure-ban vagy egy példányban [text Analytics tárolóban](text-analytics-how-to-install-containers.md)Text Analytics erőforrás használatával. Tartalmaznia kell az `/keyPhrases` erőforrást: `https://westus.api.cognitive.microsoft.com/text/analytics/v2.1/keyPhrases`.
 
-+ A kérés fejlécet állítsa be úgy, hogy tartalmazza a Text Analytics műveletekhez a hozzáférési kulcsot. További információkért lásd: [Végpontok és hozzáférési kulcsok megkeresése](text-analytics-how-to-access-key.md).
++ Állítsa be a kérelem fejlécét, hogy tartalmazza a Text Analytics műveletekhez tartozó [hozzáférési kulcsot](../../cognitive-services-apis-create-account.md#get-the-keys-for-your-resource) .
 
 + A kérelem törzsében adja meg az elemzéshez előkészített JSON-dokumentum kollekciót.
 
@@ -154,7 +154,7 @@ Ebben a cikkben megtanulta a kulcsfontosságú kifejezések kinyeréséhez szük
 
 + A [Kulcsszókeresés API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c6) csak egyes nyelvekre érhető el.
 + A kérelem törzsében található JSON-dokumentumok közé tartozik az azonosító, a szöveg és a nyelvi kód.
-+ POST-kérés a `/keyphrases` végpontra, az előfizetésre érvényes személyre szabott [hozzáférési kulcs és végpont](text-analytics-how-to-access-key.md) használatával.
++ POST-kérés a `/keyphrases` végpontra, az előfizetésre érvényes személyre szabott [hozzáférési kulcs és végpont](../../cognitive-services-apis-create-account.md#get-the-keys-for-your-resource) használatával.
 + A válasz kimenete, amely az egyes dokumentumok AZONOSÍTÓinak legfontosabb szavaiból és kifejezésből áll, továbbítható bármely olyan alkalmazásnak, amely elfogadja a JSON-t, beleértve a Microsoft Office Excel és Power BI is, hogy csak néhányat említsünk.
 
 ## <a name="see-also"></a>Lásd még

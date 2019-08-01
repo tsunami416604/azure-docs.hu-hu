@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: quickstart
-ms.date: 06/28/2019
+ms.date: 07/28/2019
 ms.author: aahi
-ms.openlocfilehash: 69f22d92cc586942d3e368a164d6e95f52aa3eea
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: 3987441ea7c28136750149d3fa66afe061b7d783
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68356897"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68697256"
 ---
 # <a name="quickstart-using-the-python-rest-api-to-call-the-text-analytics-cognitive-service"></a>Gyors útmutató: A Python-REST API használata a Text Analytics kognitív szolgáltatás meghívásához 
 <a name="HOLTop"></a>
@@ -27,8 +27,6 @@ Az API-k műszaki dokumentációjáért lásd az [API-definíciókat](//go.micro
 ## <a name="prerequisites"></a>Előfeltételek
 
 * [Python 3.x](https://python.org)
-
-* A regisztráció során a rendszer létrehozta a [végpontot és a hozzáférési kulcsot](../How-tos/text-analytics-how-to-access-key.md) .
 
 * A Python-kérelmek könyvtára
     

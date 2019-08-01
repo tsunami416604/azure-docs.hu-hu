@@ -1,26 +1,26 @@
 ---
-title: 'Gyors útmutató: A szövegelemzési API meghívására a PHP használatával'
+title: 'Gyors útmutató: A PHP használata a Text Analytics API meghívásához'
 titleSuffix: Azure Cognitive Services
-description: Get information és kód minták segítségével gyorsan Ismerkedés a szövegelemzési API-val az Azure Cognitive Servicesben.
+description: Az Azure Cognitive Services Text Analytics API használatának gyors megkezdéséhez olvassa el az információk és a kódok mintáit.
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: quickstart
-ms.date: 04/15/2019
+ms.date: 07/30/2019
 ms.author: aahi
-ms.openlocfilehash: 2d3c5873c03023ceaf5b2cafa266ea627ea7df13
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 62dd04b6df465b82bb1b39e23afce410325c4248
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60828139"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68697323"
 ---
-# <a name="quickstart-using-php-to-call-the-text-analytics-cognitive-service"></a>Gyors útmutató: A Text Analytics kognitív szolgáltatás hívásához PHP használatával
+# <a name="quickstart-using-php-to-call-the-text-analytics-cognitive-service"></a>Gyors útmutató: A PHP használata a Text Analytics kognitív szolgáltatás meghívásához
 <a name="HOLTop"></a>
 
-Ez a cikk bemutatja, hogyan való [nyelvfelismerés](#Detect), [vélemények elemzése](#SentimentAnalysis), [kinyerheti a kulcskifejezéseket](#KeyPhraseExtraction), és [kapcsolt entitások azonosítása](#Entities) használatával a [Text Analytics API-k](//go.microsoft.com/fwlink/?LinkID=759711) a PHP.
+Ebből a cikkből megtudhatja, hogyan derítheti fel a [nyelvet](#Detect), elemezheti a [véleményét](#SentimentAnalysis), kinyerheti a [legfontosabb kifejezéseket](#KeyPhraseExtraction), és hogyan azonosíthatja a [társított entitásokat](#Entities) a [text Analytics API](//go.microsoft.com/fwlink/?LinkID=759711) 
 
 Az API-k műszaki dokumentációjáért lásd az [API-definíciókat](//go.microsoft.com/fwlink/?LinkID=759346).
 
@@ -28,11 +28,9 @@ Az API-k műszaki dokumentációjáért lásd az [API-definíciókat](//go.micro
 
 [!INCLUDE [cognitive-services-text-analytics-signup-requirements](../../../../includes/cognitive-services-text-analytics-signup-requirements.md)]
 
-A regisztráció során létrejött [végponttal és hozzáférési kulccsal](../How-tos/text-analytics-how-to-access-key.md) is rendelkeznie kell. 
-
 <a name="Detect"></a>
 
-## <a name="detect-language"></a>Nyelv felismerése
+## <a name="detect-language"></a>Nyelvfelismerés
 
 A Language Detection API a [Detect Language metódus](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c7) használatával felismeri a szöveges dokumentumok nyelvét.
 
@@ -243,7 +241,7 @@ A rendszer JSON formátumban ad vissza egy sikeres választ a következő péld�
 
 <a name="KeyPhraseExtraction"></a>
 
-## <a name="extract-key-phrases"></a>Kulcsszavak kinyerése
+## <a name="extract-key-phrases"></a>Kulcsszavak keresése
 
 A Key Phrase Extraction API kulcskifejezéseket nyer ki a szöveges dokumentumokból a [Key Phrases metódus](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c6) használatával. A következő példa kulcskifejezéseket nyer ki angol és spanyol nyelvű dokumentumokhoz.
 
