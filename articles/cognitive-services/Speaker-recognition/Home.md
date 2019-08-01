@@ -10,12 +10,13 @@ ms.subservice: speaker-recognition
 ms.topic: overview
 ms.date: 10/01/2018
 ms.author: nitinme
-ms.openlocfilehash: 15fc320a5b76a50def634d937a02fa639dce3739
-ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
+ROBOTS: NOINDEX
+ms.openlocfilehash: 9cdfd5d09451968487bafbcad643e179ffe82aa7
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67845876"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68707167"
 ---
 # <a name="speaker-recognition-api"></a>Beszélőfelismerés API
 
@@ -38,9 +39,9 @@ A regisztráció során a rendszer rögzíti a beszélő hangját, miközben kim
 
 Az ellenőrzés során a rendszer egy bemeneti hangot és kifejezést hasonlít össze a regisztrált hangaláírással és kifejezéssel, majd ellenőrzi, hogy ugyanattól a személytől származnak-e, és hogy a megfelelő kifejezés hangzott-e el.
 
-Hangalapú azonosítás kapcsolatos további részletekért tekintse meg az API-t [beszélő - ellenőrzés](https://westus.dev.cognitive.microsoft.com/docs/services/563309b6778daf02acc0a508/operations/563309b7778daf06340c9652).
+A hangszórók ellenőrzésével kapcsolatos további információkért tekintse meg az API [Speaker-ellenőrzés](https://westus.dev.cognitive.microsoft.com/docs/services/563309b6778daf02acc0a508/operations/563309b7778daf06340c9652)című témakört.
 
-## <a name="speaker-identification"></a>Beszélőazonosítás
+## <a name="speaker-identification"></a>Beszélőfelismerés
 
 A beszélőazonosítási API-k automatikusan azonosítják a hangfájlban beszélő személyt, ha rendelkezésre áll a leendő beszélők egy csoportja. A rendszer a bemeneti hangot veti össze a megadott beszélők csoportjával, és egyezés esetén visszaadja a beszélő személyazonosságát.
 
@@ -56,4 +57,4 @@ A beszélőazonosításba történő regisztráció szövegfüggetlen, ami azt j
 
 Az ismeretlen beszélő hangjának biztosítása a leendő beszélők csoportjával együtt történik a felismerés során. A rendszer összehasonlítja a bemeneti hangot minden beszélőével, hogy meghatározza, kinek a hangjáról van szó, és ha van egyezés, visszaadja a beszélő személyazonosságát.
 
-Beszélőfelismerés kapcsolatos további részletekért tekintse meg az API-t [beszélő - azonosító](https://westus.dev.cognitive.microsoft.com/docs/services/563309b6778daf02acc0a508/operations/5645c068e597ed22ec38f42e).
+A hangszórók azonosításával kapcsolatos további információkért tekintse meg az API [-hangszóró – azonosítás](https://westus.dev.cognitive.microsoft.com/docs/services/563309b6778daf02acc0a508/operations/5645c068e597ed22ec38f42e)című témakört.

@@ -16,16 +16,16 @@ ms.workload: infrastructure
 ms.date: 11/30/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: fe19ea2d8946d645704139bbf2faa80f21e84039
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 4c55d3d92faf854952b609287bb16a30ed1e30ec
+ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67708062"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68717475"
 ---
-# <a name="tutorial-create-a-custom-image-of-an-azure-vm-with-azure-powershell"></a>Oktatóanyag: Hozzon létre egy egyéni rendszerképet egy Azure virtuális gépek az Azure PowerShell használatával
+# <a name="tutorial-create-a-custom-image-of-an-azure-vm-with-azure-powershell"></a>Oktatóanyag: Azure-beli virtuális gép egyéni rendszerképének létrehozása Azure PowerShell
 
-Az egyéni rendszerképek olyanok, mint a piactérről beszerzett rendszerképek, de Ön hozza azokat létre. Egyéni rendszerképek segítségével központi telepítések elindíthat és a konzisztencia érdekében több virtuális gép között. Ebben az oktatóanyagban létrehozhat egy egyéni rendszerképet egy Azure virtuális gép PowerShell-lel. Az alábbiak végrehajtásának módját ismerheti meg:
+Az egyéni rendszerképek olyanok, mint a piactérről beszerzett rendszerképek, de Ön hozza azokat létre. Az egyéni lemezképek a központi telepítések indítására és a több virtuális gép közötti konzisztencia biztosítására használhatók. Ebben az oktatóanyagban egy Azure-beli virtuális gép saját egyéni rendszerképét hozza létre a PowerShell használatával. Az alábbiak végrehajtásának módját ismerheti meg:
 
 > [!div class="checklist"]
 > * Virtuális gépek rendszer-előkészítése (Sysprep) és általánosítása
@@ -33,6 +33,8 @@ Az egyéni rendszerképek olyanok, mint a piactérről beszerzett rendszerképek
 > * Virtuális gép létrehozása egyéni rendszerképből
 > * Az előfizetésben lévő összes rendszerkép listázása
 > * Rendszerkép törlése
+
+A nyilvános előzetes verzióban elérhető az [Azure VM rendszerkép-készítő](https://docs.microsoft.com/azure/virtual-machines/windows/image-builder-overview) szolgáltatás. Egyszerűen írja le a testreszabásokat egy sablonban, és kezelje a cikk rendszerkép-létrehozási lépéseit. [Próbálja ki az Azure rendszerkép-készítőt (előzetes verzió)](https://docs.microsoft.com/azure/virtual-machines/windows/image-builder).
 
 ## <a name="before-you-begin"></a>Előkészületek
 
@@ -48,7 +50,7 @@ A Cloud Shell megnyitásához válassza a **Kipróbálás** lehetőséget egy k�
 
 ## <a name="prepare-vm"></a>Virtuális gép előkészítése
 
-Hozzon létre egy rendszerképet a virtuális gépek, készítse elő a forrásoldali virtuális gép általánosítása azt, felszabadítása és megőrzöttként való megjelölését, az Azure-ral általánosítottként kell.
+Egy virtuális gép rendszerképének létrehozásához az általánosításával, a felszabadításával, majd az Azure-nal való általánosított megjelöléssel elő kell készítenie a forrás virtuális gépet.
 
 ### <a name="generalize-the-windows-vm-using-sysprep"></a>Windows rendszerű virtuális gép általánosítása a Sysprep használatával
 
@@ -56,7 +58,7 @@ A Sysprep többek között minden személyes fiókadatot eltávolít, a gépet p
 
 
 1. Csatlakozzon a virtuális géphez.
-2. Nyissa meg a parancsablakot rendszergazdaként. Módosítsa a könyvtárat a *%windir%\system32\sysprep*, majd futtassa a `sysprep.exe`.
+2. Nyissa meg a parancsablakot rendszergazdaként. Módosítsa a könyvtárat a *%WINDIR%\system32\sysprep*értékre, majd `sysprep.exe`futtassa a parancsot.
 3. A **Rendszer-előkészítő eszköz** párbeszédpanelen válassza **A kezdőélmény indítása** lehetőséget, és győződjön meg róla, hogy be van-e jelölve az **Általánosítás** jelölőnégyzet.
 4. A **Leállítási beállítások** területen válassza a **Leállítás** lehetőséget, és kattintson az **OK** gombra.
 5. A Sysprep a feladat befejezése után leállítja a virtuális gépet. **Ne indítsa újra a virtuális gépet**.
@@ -65,7 +67,7 @@ A Sysprep többek között minden személyes fiókadatot eltávolít, a gépet p
 
 A rendszerkép létrehozásához a virtuális gépet fel kell szabadítani, és az Azure-ban általánosként kell megjelölni.
 
-Szabadítsa fel a virtuális Gépet az [Stop-azvm parancsmag](https://docs.microsoft.com/powershell/module/az.compute/stop-azvm).
+Szabadítsa fel a virtuális gépet a [stop-AzVM](https://docs.microsoft.com/powershell/module/az.compute/stop-azvm)használatával.
 
 ```azurepowershell-interactive
 Stop-AzVM `
@@ -73,7 +75,7 @@ Stop-AzVM `
    -Name myVM -Force
 ```
 
-A virtuális gép állapotának beállítása `-Generalized` használatával [Set-azvm parancsmag](https://docs.microsoft.com/powershell/module/az.compute/set-azvm). 
+Állítsa be a virtuális gép `-Generalized` állapotát a [set-AzVm](https://docs.microsoft.com/powershell/module/az.compute/set-azvm)használatával. 
    
 ```azurepowershell-interactive
 Set-AzVM `
@@ -84,7 +86,7 @@ Set-AzVM `
 
 ## <a name="create-the-image"></a>A rendszerkép létrehozása
 
-Most már létrehozhatja a virtuális gép lemezképének használatával [New-AzImageConfig](https://docs.microsoft.com/powershell/module/az.compute/new-azimageconfig) és [New-AzImage](https://docs.microsoft.com/powershell/module/az.compute/new-azimage). Az alábbi példa létrehoz egy *myImage* nevű rendszerképet a *myVM* nevű virtuális gépből.
+Most létrehozhat egy rendszerképet a virtuális gépről a [New-AzImageConfig](https://docs.microsoft.com/powershell/module/az.compute/new-azimageconfig) és a [New-AzImage](https://docs.microsoft.com/powershell/module/az.compute/new-azimage)használatával. Az alábbi példa létrehoz egy *myImage* nevű rendszerképet a *myVM* nevű virtuális gépből.
 
 Töltse be a virtuális gépet. 
 
@@ -114,9 +116,9 @@ New-AzImage `
  
 ## <a name="create-vms-from-the-image"></a>Virtuális gépek létrehozása a rendszerképből
 
-Most, hogy már van egy rendszerképe, létrehozhat belőle egy vagy több új virtuális gépet. A virtuális gép egyéni rendszerképből való létrehozása hasonlít a virtuális gép Microsoft Azure Marketplace-rendszerképből való létrehozásához. Ha Marketplace-rendszerképet használ, akkor meg kell adnia a rendszerképre, a rendszerkép szolgáltatójára, az ajánlatra, a termékváltozatra és a verzióra vonatkozó adatokat. Az egyszerűsített paraméter beállítása a [New-azvm parancsmag](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) parancsmagot, egyszerűen adja meg az egyéni rendszerkép nevét, mindaddig, amíg van ugyanabban az erőforráscsoportban. 
+Most, hogy már van egy rendszerképe, létrehozhat belőle egy vagy több új virtuális gépet. A virtuális gép egyéni rendszerképből való létrehozása hasonlít a virtuális gép Microsoft Azure Marketplace-rendszerképből való létrehozásához. Ha Marketplace-rendszerképet használ, akkor meg kell adnia a rendszerképre, a rendszerkép szolgáltatójára, az ajánlatra, a termékváltozatra és a verzióra vonatkozó adatokat. A [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) parancsmag egyszerűsített paraméterének használatával csak akkor kell megadnia az egyéni rendszerkép nevét, ha ugyanabban az erőforráscsoporthoz van. 
 
-Ez a példa létrehoz egy virtuális gép nevű *myVMfromImage* származó a *myImage* kép a *myResourceGroup*.
+Ez a példa egy *myVMfromImage* nevű virtuális gépet hoz létre a *myImage* -rendszerképből a *myResourceGroup*-ben.
 
 
 ```azurepowershell-interactive
@@ -143,7 +145,7 @@ $images = Get-AzResource -ResourceType Microsoft.Compute/images
 $images.name
 ```
 
-Rendszerkép törlése. Ebben a példában a nevű lemezkép törlése *myImage* származó a *myResourceGroup*.
+Rendszerkép törlése. Ez a példa törli a *myImage* nevű rendszerképet a *myResourceGroup*.
 
 ```azurepowershell-interactive
 Remove-AzImage `
@@ -162,7 +164,7 @@ Ebben az oktatóanyagban létrehozott egy egyéni virtuálisgép-rendszerképet.
 > * Az előfizetésben lévő összes rendszerkép listázása
 > * Rendszerkép törlése
 
-Folytassa a következő oktatóanyaggal, megtudhatja, hogyan hozhat létre magas rendelkezésre állású virtuális gépeket.
+Folytassa a következő oktatóanyaggal, amelyből megtudhatja, hogyan hozhat létre magasan elérhető virtuális gépeket.
 
 > [!div class="nextstepaction"]
 > [Magas rendelkezésre állású virtuális gépek létrehozása](tutorial-availability-sets.md)

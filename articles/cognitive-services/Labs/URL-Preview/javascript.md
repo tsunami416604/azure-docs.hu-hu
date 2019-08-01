@@ -1,5 +1,5 @@
 ---
-title: 'Gyors útmutató: Projekt URL-cím előnézete, JavaScript'
+title: 'Gyors útmutató: Projekt URL-címének előnézete, JavaScript'
 titlesuffix: Azure Cognitive Services
 description: A Bing URL Preview API JavaScript nyelvvel való azonnali használatába bevezető szkriptminta.
 services: cognitive-services
@@ -10,14 +10,15 @@ ms.subservice: url-preview
 ms.topic: quickstart
 ms.date: 03/16/2018
 ms.author: rosh
-ms.openlocfilehash: 1f3c37e770c2edd76bd299771648b2de29d42dd9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ROBOTS: NOINDEX
+ms.openlocfilehash: ec8a7ceef8cd938984b8eedc8397f6f67294c990
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60712662"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68706929"
 ---
-# <a name="quickstart-url-preview-in-javascript"></a>Gyors útmutató: A JavaScript URL-cím előnézete 
+# <a name="quickstart-url-preview-in-javascript"></a>Gyors útmutató: URL-előnézet a JavaScriptben 
 
 Az alábbi egyoldalas alkalmazás a JavaScript segítségével hoz létre egy URL-előnézetet a SwiftKey webhelyhez: https://swiftkey.com/en. 
 
