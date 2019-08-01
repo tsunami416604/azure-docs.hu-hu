@@ -1,5 +1,5 @@
 ---
-title: 'Oktatóanyag: A cikk személyre szabása – Custom Decision Service'
+title: 'Oktatóanyag: Cikk személyre szabása – Custom Decision Service'
 titlesuffix: Azure Cognitive Services
 description: Oktatóanyag a cikk személyre szabásról környezetalapú döntéshozatalhoz.
 services: cognitive-services
@@ -10,14 +10,15 @@ ms.subservice: custom-decision-service
 ms.topic: tutorial
 ms.date: 05/08/2018
 ms.author: slivkins
-ms.openlocfilehash: d8ddafe20ff93e7ae4d51e2180bbd40447729234
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ROBOTS: NOINDEX
+ms.openlocfilehash: f7eafed9db25fba904d98ddea652671dc45aa01d
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60863350"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68707224"
 ---
-# <a name="tutorial-article-personalization-for-contextual-decision-making"></a>Oktatóanyag: A cikk személyre szabása, a környezeti döntéshozatalhoz
+# <a name="tutorial-article-personalization-for-contextual-decision-making"></a>Oktatóanyag: Cikk személyre szabása a kontextus döntéshozatalához
 
 Ez az oktatóanyag a webhely kezdőlapján megjelenő cikkek személyre szabásával foglalkozik. A Custom Decision Service például *több* cikk listát is befolyásol a kezdőlapon. Lehet szó például híroldalról, ami csak politikával és sporttal foglalkozik. A megjelenített cikkek rangsorolt listája ebben az esetben lehet: politika, sport és legújabb.
 
@@ -44,7 +45,7 @@ Mindegyik hírcsatorna cikkek listáját adja. Az RSS esetén mindegyiket egy `<
 </channel></rss>
 ```
 
-A cikkek sorrendje számít. Megadja az alapértelmezett rangsort, ami a legjobb tipp arra, hogyan kellene a cikkeket rendezni. Alapértelmezés szerint a rangsorolás szolgál majd teljesítmény összehasonlítása az irányítópulton.
+A cikkek sorrendje számít. Megadja az alapértelmezett rangsort, ami a legjobb tipp arra, hogyan kellene a cikkeket rendezni. Ezután a rendszer az irányítópulton a teljesítmény összehasonlításához használja az alapértelmezett rangsort.
 
 A hírcsatorna formátummal kapcsolatban bővebben lásd: [API-referencia](custom-decision-service-api-reference.md#action-set-api-customer-provided).
 
