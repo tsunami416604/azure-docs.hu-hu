@@ -1,7 +1,7 @@
 ---
-title: Projekt Akusztika Unity tervezési oktatóanyag
+title: Projekt akusztikai egységének tervezési oktatóanyaga
 titlesuffix: Azure Cognitive Services
-description: Ez az oktatóanyag ismerteti a tervezési munkafolyamat a Unity Project Akusztika.
+description: Ez az oktatóanyag a Project Acoustics in Unity tervezési munkafolyamatát ismerteti.
 services: cognitive-services
 author: kegodin
 manager: nitinme
@@ -10,86 +10,87 @@ ms.subservice: acoustics
 ms.topic: tutorial
 ms.date: 03/20/2019
 ms.author: kegodin
-ms.openlocfilehash: 01783aa12f586f61583b1503c796f9b523770104
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ROBOTS: NOINDEX
+ms.openlocfilehash: f9ff4225e7e855ed666d3554631015b8ce51df37
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61433028"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68706588"
 ---
-# <a name="project-acoustics-unity-design-tutorial"></a>Projekt Akusztika Unity tervezési oktatóanyag
-Ez az oktatóanyag leírja a tervezői eszközök és a Unity Project Akusztika számára.
+# <a name="project-acoustics-unity-design-tutorial"></a>Projekt akusztikai egységének tervezési oktatóanyaga
+Ez az oktatóanyag ismerteti a projekt akusztikai eszközeinek tervezési eszközeit és munkafolyamatát az Unity-ben.
 
 Előfeltételek:
-* Unity 2018.2 + Windows esetében
-* A létrehozott Akusztika eszköz a Unity jelenet
+* Unity 2018.2 + Windowshoz
+* Egy kisült akusztikai eszközzel rendelkező Unity-jelenet
 
-Ebben az oktatóanyagban Unity jelenet egy létrehozott Akusztika eszközt kétféleképpen kaphat:
-* [Unity-projektjét, adja hozzá a projekt Akusztika](unity-integration.md), majd [lekérése az Azure Batch-fiók](create-azure-account.md), majd [a Unity-jelenet os](unity-baking.md)
-* Másik lehetőségként használhatja a [Akusztika Unity Project mintatartalmakat próbálhat](unity-quickstart.md).
+Ebben az oktatóanyagban kétféle módon szerezhet be egy egységbeli jelenetet egy kisült akusztikai eszközzel:
+* [Adja hozzá a Project Acoustics-t az Unity](unity-integration.md)-projekthez, majd szerezzen be [egy Azure batch fiókot](create-azure-account.md), majd [süssük meg az egység jelenetét](unity-baking.md)
+* Vagy használja a [Project akusztikai Unity Sample-tartalmat](unity-quickstart.md).
 
-## <a name="review-design-process-concepts"></a>Tekintse át a tervezési folyamat alapelvei
-Projekt Akusztika közös hang digitális jel feldolgozás (DSP) módszerek használatával feldolgozni a forrásból, és az ismerős Akusztika tulajdonságok hangelnyelés, Nyugat-európai/száraz vegyesen és reverberation tail hossza (RT60) szabályozható. De az alapvető [projekt Akusztika tervezési folyamat fogalom](design-process.md) van, hanem közvetlenül állítani ezeket a tulajdonságokat, meghatározhatja, hogyan történik a szimuláció eredményeit, ezeket a tulajdonságokat a meghajtó használata. Az alapértelmezett beállításokat az egyes vezérlőelemek fizikailag pontos Akusztika képviseli.
+## <a name="review-design-process-concepts"></a>Tervezési folyamattal kapcsolatos fogalmak áttekintése
+A Project Acoustics közös hangalapú digitális jelfeldolgozási (DSP) módszereket használ a források feldolgozásához, és lehetővé teszi az ismerős akusztikai tulajdonságok, például az elzáródás, a nedves/száraz kombináció és a visszaverődési farok hosszának (RT60) a szabályozását. Az alapszintű [projekt akusztikai tervezési folyamatának koncepciója](design-process.md) azonban az, hogy ezek a tulajdonságok ne legyenek közvetlenül beállítva, így szabályozhatja, hogyan használja a rendszer a szimuláció eredményeit a tulajdonságok elvégzésére. Az egyes vezérlők alapértelmezett beállításai fizikailag pontos akusztikai értékeket jelentenek.
 
-## <a name="design-acoustics-for-each-source"></a>Az egyes források tervezési Akusztika
-Projekt Akusztika biztosít egy adatforrás-specifikus Akusztika kialakítási ellenőrzések száma. Ez lehetővé teszi a szabályozására, a mix álló jelenet renderelése; az egyes források tárgyalta és a másokkal való emphasizing.
+## <a name="design-acoustics-for-each-source"></a>Az egyes források kialakításához szükséges akusztika
+A Project akusztika számos forrás-specifikus akusztikai tervezési vezérlőt biztosít. Ez lehetővé teszi az egyes jelenetekben lévő kombinációk szabályozását, néhány forrás kiemelésével és mások kiemelésével.
 
-### <a name="adjust-distance-based-attenuation"></a>Távolság-alapú gyengülés beállítása
-A hanganyag DSP által biztosított a **projekt Akusztika** Unity spatializer beépülő modul tiszteletben tartja a forrás távolság-alapú gyengülés beépített a Unity-szerkesztőbe. Távolság-alapú gyengülés vezérlők vannak a **hang forrás** összetevő található a **vizsgáló** hang panel alatt adatforrásokat **3D eredményes beállításai**:
+### <a name="adjust-distance-based-attenuation"></a>Távolságon alapuló csillapítás módosítása
+A **Project akusztikai** Unity spatializer beépülő modul által biztosított HANGalapú DSP az egység-szerkesztőbe beépített, a forrás távolságon alapuló csillapítást veszi figyelembe. A távolságon alapuló csillapításhoz tartozó vezérlők a hangforrások **felügyelő** paneljén találhatók, a **3D hangbeállítások**alatt:
 
-![Képernyőkép a Unity távolság gyengülés beállítások panel](media/distance-attenuation.png)
+![Képernyőfelvétel az Unity Distance csillapítási beállításai panelről](media/distance-attenuation.png)
 
-Akusztika számítási lehetőségek eltérése a lejátszó helyre "szimuláció régió" mezőben hajt végre. Ha egy megbízható forrásból a szimuláció régión kívül található, a lejátszó távolságban belül a mezőbe csak geometriai hatással lesz a hang propagálás (például hangelnyelés okozó), amely viszonylag jól működik, ha occluders vannak-e a Windows Media player közelében. Azonban azokban az esetekben, amikor a Windows Media player nyissa meg a helyet, de a occluders buildjénél a távoli eredményes forrás a hangot is válnak irreálisan disoccluded. A javasolt megoldás, hogy ebben az esetben ellenőrizze, hogy a hangfájl gyengülés kapcsol körülbelül 45 m, a lejátszó az Edge-ben a mező alapértelmezett vízszintes távolság 0.
+Az akusztikai számítások egy "szimulációs régió" mezőben jelennek meg, amely a lejátszó helyét középpontba kerül. Ha egy hangforrás távol van a lejátszótól, amely ezen a szimulációs régión kívül található, csak a mezőben lévő geometria befolyásolja a hangpropagálást (például elzáródást okoz), amely ésszerűen jól működik, ha a occluders a lejátszó közelében van. Azonban abban az esetben, ha a lejátszó nyitott térben van, de a occluders közel vannak a távoli hangforráshoz, a hang reálisan disoccluded válik. A javasolt megkerülő megoldás az, hogy az ilyen esetekben, ha a Hangcsillapítás a 0 értékre csökken körülbelül 45 m-re, a lejátszó alapértelmezett vízszintes távolsága a mező széléig.
 
-![Képernyőkép a Unity SpeakerMode beállítás panel](media/speaker-mode.png)
+![Képernyőfelvétel az Unity SpeakerMode beállítás panelről](media/speaker-mode.png)
 
-### <a name="adjust-occlusion-and-transmission"></a>Hangelnyelés és átviteli beállítása
-Csatolja a **AcousticsAdjust** forráshoz parancsfájl lehetővé teszi, hogy a hangolási paraméterek ahhoz az adatforráshoz. Csatlakoztassa a parancsfájlt, kattintson a **összetevő felvétele** alján a **vizsgáló** panelen, és keresse meg a **parancsfájlok > Akusztika beállítása**. A szkript hat vezérlők rendelkezik:
+### <a name="adjust-occlusion-and-transmission"></a>Elzáródás és átvitel módosítása
+Ha a **AcousticsAdjust** -szkriptet egy forráshoz csatolja, az adott forráshoz tartozó paraméterek hangolását is lehetővé teszi. A parancsfájl csatolásához kattintson a **felügyelő** panel alján található **összetevő hozzáadása** elemre, és navigáljon a **Parancsfájlok > akusztikai beállítások módosításával**. A parancsfájl hat vezérlőelemmel rendelkezik:
 
-![Képernyőkép a Unity AcousticsAdjust parancsfájl](media/acoustics-adjust.png)
+![Képernyőfelvétel az Unity AcousticsAdjust parancsfájlról](media/acoustics-adjust.png)
 
-* **Engedélyezze a Akusztika** – azt szabályozza, hogy Akusztika alkalmazott ebből a forrásból. Ha nincs bejelölve, a forrás lesz spatialized, HRTFs vagy pásztázásához, de nem lesznek nincs Akusztika. Ez azt jelenti, hogy nincs akadály, hangelnyelés vagy dinamikus reverberation paraméterek – például szintjét és decay. Egy rögzített szint és a késleltetési idő reverberation továbbra is érvényesül.
-* **Hangelnyelés** -alkalmazása egy szorzóval a Akusztika rendszer által számított hangelnyelés dB szintre. Ha ez szorzó 1-nél nagyobb, hangelnyelés fog kell exaggerated közben értékek 1-nél kisebb ne hangelnyelés hatása több változás is, és a 0 érték letiltja a hangelnyelés.
-* **Átviteli (adatbázis)** – állítsa be a gyengülés (az adatbázis) keresztül geometriai átvitel okozta. Állítsa a csúszkát a legalacsonyabb átviteli letiltása. Akusztika körül jelenet geometriai (portaling) érkező, a kezdeti száraz hang spatializes. Átviteli biztosít egy további száraz gyűjtőbe, amely a sor-az-üzemel irányba spatialized van. Vegye figyelembe, hogy a forrás gyengülés távolság görbe is érvényesek.
+* **Akusztika engedélyezése** – meghatározza, hogy az akusztikai beállítások alkalmazhatók-e a forrásra. Ha nincs bejelölve, a forrás HRTFs vagy pásztázással lesz felhasználva, de nem lesz akusztika. Ez nem jelent akadályt, elzáródást vagy dinamikus visszaverődési paramétereket, például a szintet és a romlási időt. A visszaverődést továbbra is rögzített szinttel és bomlási idővel alkalmazza a rendszer.
+* **Elzáródás** – szorzót alkalmazhat az akusztikai rendszer által kiszámított, az elzáródási adatbázis szintjére. Ha ez a szorzó nagyobb, mint 1, a elzáródás túlzott lesz, míg az 1. értéknél kisebb értékek finomabbak, és a 0 érték letiltja a elzáródást.
+* **Átvitel (db)** – a geometrián keresztüli átvitel által okozott gyengítés (dB-ben) beállítása. Állítsa be a csúszkát a legalacsonyabb szintre az átvitel letiltásához. Akusztikai spatializes a kezdeti száraz hangot a jelenet geometriájának (portaling) megérkezése előtt. A továbbítás egy további száraz beérkezést biztosít, amely térbeli irányban van. Vegye figyelembe, hogy a forráshoz tartozó távolsági gyengítő görbét is alkalmazza a rendszer.
 
-### <a name="adjust-reverberation"></a>Reverberation beállítása
-* **Wetness (adatbázis)** – beállítja a visszhang energiagazdálkodási, dB, a forrás közötti távolságot megfelelően. Pozitív értékek győződjön meg arról, hang több reverberant, amíg a negatív értékek hangjelzést több száraz. Kattintson a görbe szerkesztő megjelenítéséhez a görbe vezérlő (zöld sor). A görbe pontok hozzáadása kattint, és húzza a kívánt kialakításához, a függvény ezen pontok módosítása Az x tengely forrás közötti távolságot, és az y tengely visszhang korrekciós dB-ben. Szerkesztési görbék további információkért lásd: Ez [Unity manuális](https://docs.unity3d.com/Manual/EditingCurves.html). Alaphelyzetbe állítja a görbe vissza az alapértelmezett, kattintson a jobb gombbal **Wetness** válassza **alaphelyzetbe**.
-* **Decay időskálára** – Itt adható meg egy szorzóval vonatkozó a késleltetési idő. Például ha az bake eredményt adja meg egy késleltetési idő ezredmásodpercben 750, de ez az érték 1.5 van beállítva, a késleltetési idő a alkalmazni a forrás-, a 1,125 ezredmásodperc.
-* **Outdoorness** -additív módosításának a becslés az Akusztika rendszer hogyan "szabadban" hang kell-e a reverberation egy forrás. Az érték 1 fogja elérhetővé tenni egy adatforrás mindig eredményes teljesen szabadban, -1 értékre állítaná készítsen egy forrás eredményes teljesen szobában közben.
+### <a name="adjust-reverberation"></a>A visszaverődés módosítása
+* **Nedvesség (db)** – úgy állítja be a reverb-teljesítményt, hogy az dB-ben a forrástól mért távolság szerint legyen elérhető. A pozitív értékek nagyobb Zengő, míg a negatív értékek szárazak. Kattintson a görbe vezérlőelemre (zöld vonal) a görbe szerkesztőjének megjelenítéséhez. Módosítsa a görbét úgy, hogy a bal gombbal kattint a pontok hozzáadására, és a kívánt függvényt a pontokra húzza. Az x tengely távolság a forrástól, az y tengely pedig az adatbázison belüli reverb-beállítás. A görbék szerkesztésével kapcsolatos további információkért tekintse meg ezt az [egységet ismertető útmutatót](https://docs.unity3d.com/Manual/EditingCurves.html). Ha vissza szeretné állítani a görbét az alapértelmezett értékre , kattintson a jobb gombbal a nedvességre, és válassza az **Alaphelyzet**
+* **Bomlási idő skálázása** – egy szorzót állít be a romlási időre. Ha például a sütni eredmény 750 ezredmásodperces csökkenést határoz meg, de ez az érték 1,5, a forrásra alkalmazott bomlási idő 1 125 ezredmásodperc.
+* **Kültéri** környezet – az akusztikai rendszer azon becslése, hogy a "szabadban" hogyan lehet a forráson alapuló visszhangot megszólalni. Ha ezt az értéket 1-re állítja, akkor a forrás mindig teljesen megszólaljon, míg a-1 értékre állításával a forrás teljesen bekapcsolja a hangot.
 
-Csatolja a **AcousticsAdjustExperimental** forráshoz parancsfájl lehetővé teszi, hogy további kísérleti hangolási paraméterek ahhoz az adatforráshoz. Csatlakoztassa a parancsfájlt, kattintson a **összetevő felvétele** alján a **vizsgáló** panelen, és keresse meg a **parancsfájlok > Akusztika beállítása kísérleti**. Jelenleg egy kísérleti vezérlő:
+Ha a **AcousticsAdjustExperimental** parancsfájlt a forráshoz csatolja, a további kísérleti hangolási paramétereket is megadhat a forráshoz. A parancsfájl csatolásához kattintson a **felügyelő** panel alján található **összetevő hozzáadása** elemre, és navigáljon a **parancsfájlok > akusztikai beállítások beállítása kísérleti**értékre. Jelenleg egy kísérleti vezérlő van:
 
-![Képernyőkép a Unity AcousticsAdjustExperimental parancsfájl](media/acoustics-adjust-experimental.png)
+![Képernyőfelvétel az Unity AcousticsAdjustExperimental parancsfájlról](media/acoustics-adjust-experimental.png)
 
-* **Technológiáira távolság Warp** – exponenciális hajlítása száraz – Nyugat-európai arányának kiszámításához használt távolság a alkalmazni. A Akusztika rendszer kiszámítja a terület teljes nedves szinteket, amelyek zökkenőmentesen távolság számától függ, és adja meg a technológiáira távolság jelek. Hajlítási 1-nél nagyobb értékek a hatás exaggerate távolság kapcsolatos reverberation szintek, így a "távoli" hang növelésével. Hajlítása értékek 1-nél kisebb ügyeljen a távolság-alapú reverberation módosítása több változás is, és, hogy az eredményes további "e".
+* **Észlelési távolsági hajlítás** – a száraz nedves arány kiszámításához használt távolságra exponenciális hajlítást alkalmazhat. Az akusztikai rendszerek az egész térben kiszámítják a nedves szinteket, és a távolságot és a megfigyelt távolsági célzást is biztosítják. Az 1. értéknél nagyobb értékek eltúlozása ez a hatás a távolsághoz kapcsolódó visszaverődési szintek növekedésével történik, ami a "távoli" hangot eredményezi. Az 1 értéknél kisebb értékek hajlításával a távolságon alapuló visszaverődés sokkal finomabbra változik, így a hang több "jelen" lehet.
 
-## <a name="design-acoustics-for-all-sources"></a>Az összes tervezési Akusztika
-Minden forrás paramétereinek beállításához kattintson a csatorna sáv a Unity a **hang Mixer**, és módosítsa úgy a paramétereket a a **projekt Akusztika Mixer** érvénybe.
+## <a name="design-acoustics-for-all-sources"></a>Az összes forrás akusztikus kialakítása
+Az összes forrás paramétereinek módosításához kattintson a Channel (csatorna) szalagra az egységhangkeverőben, és módosítsa a **Project akusztikai keverő** hatása paramétereit.
 
-![A projekt Akusztika Unity Mixer képernyőkép testreszabási panel](media/mixer-parameters.png)
+![Képernyőfelvétel a Project akusztika Unity keverő testreszabási paneljéről](media/mixer-parameters.png)
 
-* **Wetness igazítás** – beállítja a visszhang energiagazdálkodási, DB, a forrás-figyelő távolság alapján jelenet minden forrás. Pozitív értékek győződjön meg arról, hang több reverberant, amíg a negatív értékek hangjelzést több száraz.
-* **RT60 méretezési** – tényezőt skaláris visszhang alkalommal.
-* **Használja a Pásztázó** -vezérlők audio-e kimeneti binaural (0) vagy a többcsatornás pásztázásához (1). Bármilyen érték 1 mellett azt jelzi, hogy binaural. Binaural kimeneti a HRTFs spatialized fejhallgatót való használatra, és a többcsatornás kimeneti a VBAP spatialized többcsatornás legyen speaker rendszerekkel lehet használni. Használja a többcsatornás panner, ügyeljen arra, hogy a hangszóró –, amely megfelel az eszköz beállításainál válassza, ha található **Projektbeállítások** > **hang**.
+* A **nedvesség szabályozása** – a jelenetben a forrás-figyelő távolságon alapuló összes forrás esetében a reverb-erőt (db) állítja be. A pozitív értékek nagyobb Zengő, míg a negatív értékek szárazak.
+* **RT60 Scale** -multiplikatív skaláris a reverb-időre.
+* **Pásztázás** – meghatározza, hogy a hang a binaurális (0) vagy a többcsatornás pásztázás (1) kimenetként van-e kiválasztva. Az 1 érték melletti értékek a binaurális értéket jelzik. A binaurális kimenet a HRTFs használatával van összhangban a fejhallgatóval és többcsatornás kimenettel a többcsatornás surround VBAP való használatra. Ha a többcsatornás Panner használja, ügyeljen arra, hogy a **Project Settings** > **hang**alatt válassza ki az eszközbeállítások megegyező hangszórós módot.
 
-## <a name="check-proper-sound-source-placement"></a>Ellenőrizze a megfelelő megbízható forrás elhelyezése
-Betöltött voxels belül elhelyezett megbízható forrásból nem kap akusztikai kezelésére. Mivel voxels túlmutatnak az eddig a látható jelenet geometry, lehetséges, egy adatforrás egy voxel belül helyezi el, amíg unoccluded visual geometriai szerint jelenik meg. Projekt Akusztika voxels megtekintheti a voxel rács jelölőnégyzetet átállításával a **Gizmos** menüben, a jobb felső sarkában a **jelenet** megtekintése.
+## <a name="check-proper-sound-source-placement"></a>Megfelelő hangforrások elhelyezésének megkeresése
+A foglalt voxels belül elhelyezett hangforrások nem fognak akusztikai kezelést kapni. Mivel a voxels kiterjesztik a látható jelenet geometriáját, lehetséges, hogy a forrást egy Voxel belül helyezi el, miközben a vizuális geometria unoccluded jelenik meg. A Project akusztika voxels megtekintheti a Voxel rács jelölőnégyzetet a minialkalmazások menüben, a **jelenet** nézet jobb felső sarkában.
 
-![Képernyőkép a Unity Gizmos menü](media/gizmos-menu.png)  
+![Az Unity Gadgets menü képernyőképe](media/gizmos-menu.png)  
 
-Voxel megjelenítését is segít meghatározni a vizuális összetevőket a játék egy-egy átalakítási vonatkozik-e. Ha igen, az azonos átalakítás alkalmazása a GameObject üzemeltetéséhez a **Akusztika Manager**.
+A Voxel megjeleníthető annak a megállapítása is, hogy a játék vizuális összetevői rendelkeznek-e átalakítóval. Ha igen, alkalmazza ugyanezt a transzformációt az Acoustics **Managert**üzemeltető GameObject.
 
-### <a name="bake-time-vs-run-time-voxels"></a>Futási idő voxels és bake idő
-A játék tervezéskor-szerkesztő ablakban és a futásidőben a játék ablakban voxels lehetőség. Ezek a nézetek az eltérő a voxels mérete. Ennek az oka a Akusztika futásidejű interpolációs használ egy kifinomultabb voxel rács finomabb interpolációs eredmény. Hang forrás elhelyezési ellenőrizni kell a futtatókörnyezet voxels használatával.
+### <a name="bake-time-vs-run-time-voxels"></a>Sütni idő és futási idő voxels
+A voxels megtekinthetők a szerkesztő ablakban a játék tervezési ideje és a játék ablakban futásidőben. A voxels mérete különbözik ezekben a nézetekben. Ennek az az oka, hogy a akusztikai futtatókörnyezet interpolációja finomabb Voxel rácsot használ a zökkenőmentes interpolációs eredményekhez. A hangforrások elhelyezését a futásidejű voxels kell ellenőrizni.
 
 Tervezési idő voxels:
 
-![Képernyőfelvétel a projekt Akusztika voxels tervezési idő alatt](media/voxels-design-time.png)
+![Képernyőfelvétel a Project Acoustics voxels a tervezési idő alatt](media/voxels-design-time.png)
 
 Futásidejű voxels:
 
-![Képernyőfelvétel a projekt Akusztika voxels futtatási idő alatt](media/voxels-runtime.png)
+![Képernyőfelvétel a Project Acoustics voxels futási ideje alatt](media/voxels-runtime.png)
 
 ## <a name="next-steps"></a>További lépések
-* Böngésszen az esettanulmányok, kiemelve a fogalmakat a [folyamat tervezése](design-process.md)
+* A [tervezési folyamat](design-process.md) hátterében rejlő fogalmakat kiemelő esettanulmányok megismerése
 

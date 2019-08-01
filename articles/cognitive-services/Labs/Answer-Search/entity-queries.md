@@ -1,5 +1,5 @@
 ---
-title: 'Gyors útmutató: Projekt válasz keresési Entity query'
+title: 'Gyors útmutató: Project answer keresési entitás lekérdezése'
 titlesuffix: Azure Cognitive Services
 description: Entitások lekérdezése a Válaszkeresés projekt használatával
 services: cognitive-services
@@ -10,12 +10,13 @@ ms.subservice: answer-search
 ms.topic: quickstart
 ms.date: 04/16/2018
 ms.author: rosh
-ms.openlocfilehash: c9f2a476353b1807bbb1c8c13dc8b8e2cdbb4ae4
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ROBOTS: NOINDEX
+ms.openlocfilehash: b1dbfcfe85a7847b593553bd06cbc22cc62d2e2e
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60688622"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68705468"
 ---
 # <a name="quickstart-query-for-entities"></a>Gyors útmutató: Entitások lekérdezése
 
@@ -112,14 +113,14 @@ A válasz tartalmazza az `entities` választ. Figyelje meg az `entityScenario` �
 
 A lekérdezés adott esetben egy listát is visszaadhat.
 
-**Lekérdezés:** A következő lekérdezés talál veszélyeztetett listáját:
+**Lekérdezés:** A következő lekérdezés a veszélyeztetett fajok listáját keresi:
 
 ```
 https://api.labs.cognitive.microsoft.com/answerSearch/v7.0/search?q=list+of+endangered+species
 
 ```
 
-**Válasz:** A válasz formázott megjelenítéshez táblázatos értékek listáját tartalmazza:
+**Válasz** A válasz táblázatos értékekként formázott listát tartalmaz:
 ```
   "facts": {
     "id": "https://www.bingapis.com/api/v7/#Facts",

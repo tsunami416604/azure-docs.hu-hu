@@ -1,372 +1,136 @@
 ---
-title: Tranzakciók küldése az Azure Blockchain szolgáltatással
-description: Útmutató arról, hogyan használható az Azure Blockchain Service egy intelligens szerződés üzembe helyezésére és egy privát tranzakció elküldésére.
+title: Intelligens szerződések használata az Azure Blockchain Service-ben
+description: Útmutató arról, hogyan használható az Azure Blockchain Service egy intelligens szerződés üzembe helyezéséhez és a függvények egy tranzakción keresztüli végrehajtásához.
 services: azure-blockchain
-keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 05/29/2019
+ms.date: 07/31/2019
 ms.topic: tutorial
 ms.service: azure-blockchain
-ms.reviewer: jackyhsu
-manager: femila
-ms.openlocfilehash: 3cfbbdc5b95d1607738b132980320d2ff7c99788
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.reviewer: chrisseg
+ms.openlocfilehash: 1843bd66e11a6686c9ae81fb8e30c7b030e889b7
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68698386"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68705131"
 ---
-# <a name="tutorial-send-transactions-using-azure-blockchain-service"></a>Oktatóanyag: Tranzakciók küldése az Azure Blockchain szolgáltatással
+# <a name="tutorial-use-smart-contracts-on-azure-blockchain-service"></a>Oktatóanyag: Intelligens szerződések használata az Azure Blockchain Service-ben
 
-Ebben az oktatóanyagban tranzakciós csomópontokat kell létrehoznia a szerződés és a tranzakció-adatvédelem teszteléséhez.  A szarvasgomba helyi fejlesztési környezetet hoz létre, és egy intelligens szerződést helyez üzembe, és privát tranzakciót küld.
+Ebben az oktatóanyagban a Ethereum készült Azure Blockchain Development Kit használatával hozzon létre és helyezzen üzembe egy intelligens szerződést, majd hajtson végre egy intelligens szerződési funkciót egy konzorciumi Blockchain-hálózat tranzakcióján keresztül.
 
-A következőket fogja megtanulni:
+A Ethereum készült Azure Blockchain Development Kit a következő célokra használható:
 
 > [!div class="checklist"]
-> * Tranzakciós csomópontok hozzáadása
-> * A szarvasgomba használata intelligens szerződés üzembe helyezéséhez
-> * Tranzakció küldése
-> * Tranzakció-adatvédelem ellenőrzése
+> * Kapcsolódás az Azure Blockchain Service Consortium Blockchain-taghoz
+> * Intelligens szerződés létrehozása
+> * Intelligens szerződés üzembe helyezése
+> * Intelligens szerződési funkció végrehajtása tranzakción keresztül
+> * Szerződés állapotának lekérdezése
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* [Blockchain-tag létrehozása a Azure Portal használatával](create-member.md)
-* Teljes [gyors útmutató: A szarvasgomba használata a konzorciumi hálózathoz való kapcsolódáshoz](connect-truffle.md)
-* A [szarvasgomba](https://github.com/trufflesuite/truffle)telepítése. A szarvasgombához több eszközt kell telepíteni, beleértve a [Node. js](https://nodejs.org)-t, a [git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)-t.
-* Telepítse a [Python-2.7.15](https://www.python.org/downloads/release/python-2715/). A Python szükséges a Web3.
-* A [Visual Studio Code](https://code.visualstudio.com/Download) telepítése
-* A [Visual Studio Code soliding bővítmény](https://marketplace.visualstudio.com/items?itemName=JuanBlanco.solidity) telepítése
+* Teljes [gyors útmutató: Blockchain-tag létrehozása a Azure Portal](create-member.md) vagy [a gyors útmutató használatával: Azure Blockchain Service Blockchain-tag létrehozása az Azure CLI-vel](create-member-cli.md)
+* [Visual Studio Code](https://code.visualstudio.com/Download)
+* [Az Azure Blockchain Development Kit for Ethereum bővítmény](https://marketplace.visualstudio.com/items?itemName=AzBlockchain.azure-blockchain)
+* [Node.js](https://nodejs.org)
+* [Git](https://git-scm.com)
+* [Python](https://www.python.org/downloads/release/python-2715/). Adja hozzá a Python. exe fájlt az elérési úthoz. Az Azure Blockchain Development Kit esetében a Python elérési útja szükséges.
+* [Szarvasgomba](https://www.trufflesuite.com/docs/truffle/getting-started/installation)
+* [Ganache CLI](https://github.com/trufflesuite/ganache-cli)
 
-## <a name="create-transaction-nodes"></a>Tranzakciós csomópontok létrehozása
+### <a name="verify-azure-blockchain-development-kit-environment"></a>Az Azure Blockchain Development Kit-környezet ellenőrzése
 
-Alapértelmezés szerint egy tranzakciós csomóponttal rendelkezik. További kettőt fogunk hozzáadni. Az egyik csomópont részt vesz a privát tranzakcióban. A másik nem szerepel a privát tranzakcióban.
+Az Azure Blockchain Development Kit ellenőrzi, hogy teljesülnek-e a fejlesztési környezet előfeltételei. A fejlesztési környezet ellenőrzése:
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-1. Navigáljon az Azure Blockchain-taghoz, és válassza a **tranzakciós csomópontok > Hozzáadás**elemet.
-1. Hajtsa végre a nevű `alpha`új tranzakciós csomópont beállításait.
+A vs Code parancs palettáján válassza **az Azure Blockchain: Kezdőlap**megjelenítése.
 
-    ![Tranzakciós csomópont létrehozása](./media/send-transaction/create-node.png)
+Az Azure Blockchain Development Kit olyan érvényesítési parancsfájlt futtat, amely körülbelül egy percet vesz igénybe. Megtekintheti a kimenetet a **terminal > új terminál**lehetőség kiválasztásával. A terminál menüsorában válassza a **kimenet** fület és az **Azure Blockchain** a legördülő menüben. A sikeres érvényesítés az alábbi képhez hasonlóan néz ki:
 
-    | Beállítás | Érték | Leírás |
-    |---------|-------|-------------|
-    | Name (Név) | `alpha` | Tranzakciós csomópont neve. A név a tranzakciós csomópont végpontjának DNS-címeinek létrehozására szolgál. Például: `alpha-mymanagedledger.blockchain.azure.com`. |
-    | Windows 10 | Erős jelszó | A jelszó a tranzakciós csomópont végpontjának egyszerű hitelesítéssel való elérésére szolgál.
+![Érvényes fejlesztői környezet](./media/send-transaction/valid-environment.png)
 
-1. Kattintson a **Létrehozás** gombra.
+ Ha hiányzik egy szükséges eszköz, az **Azure Blockchain Development Kit – Preview** nevű új lap felsorolja a telepíteni kívánt alkalmazásokat és az eszközök letöltésére vonatkozó hivatkozásokat.
 
-    Az új tranzakciós csomópont kiépítés körülbelül 10 percet vesz igénybe.
+![Fejlesztői csomaghoz szükséges alkalmazások](./media/send-transaction/required-apps.png)
 
-1. Ismételje meg a 2 – 4. lépést egy nevű `beta`tranzakciós csomópont hozzáadásához.
+## <a name="connect-to-consortium-member"></a>Kapcsolódás a konzorcium tagjához
 
-A csomópontok kiépítés közben folytathatja az oktatóanyagot. Ha elkészült a kiépítés, három tranzakciós csomóponttal fog rendelkezni.
+A konzorcium tagjaihoz az Azure Blockchain Development Kit VS Code bővítmény használatával csatlakozhat. A konzorciumhoz való csatlakozás után intelligens szerződéseket állíthat össze, építhet ki és helyezhet üzembe egy Azure Blockchain Service Consortium-tag számára.
 
-## <a name="open-truffle-console"></a>A szarvasgomba konzol megnyitása
+Ha nincs hozzáférése az Azure Blockchain Service Consortium egyik tagjához, hajtsa végre [az előfeltételként szükséges rövid útmutatót: Blockchain-tag létrehozása a Azure Portal](create-member.md) vagy [a gyors útmutató használatával: Azure Blockchain Service Blockchain-tag létrehozása az Azure CLI](create-member-cli.md)használatával.
 
-1. Nyisson meg egy Node. js parancssort vagy rendszerhéjat.
-1. Módosítsa a szarvasgomba projekt könyvtárának elérési útját [az előfeltételként szükséges rövid útmutatóból: A szarvasgomba segítségével csatlakozhat egy konzorciumi](connect-truffle.md)hálózathoz. Például:
+1. A Visual Studio Code (VS Code) Explorer ablaktáblán bontsa ki az **Azure Blockchain** bővítményt.
+1. Válassza **a kapcsolódás konzorciumhoz**lehetőséget.
 
-    ```bash
-    cd truffledemo
-    ```
+   ![Kapcsolódás a konzorciumhoz](./media/send-transaction/connect-consortium.png)
 
-1. Az alapértelmezett tranzakciós csomóponthoz való kapcsolódáshoz használja a szarvasgomba konzolt.
+    Ha az Azure-hitelesítésre kéri, kövesse az utasításokat a böngészőben való hitelesítéshez.
+1. Válassza a **Kapcsolódás az Azure Blockchain Service consortiumhoz** lehetőséget a parancssor legördülő menüben.
+1. Válassza ki az Azure Blockchain Service Consortium-taghoz társított előfizetést és erőforráscsoportot.
+1. Válassza ki a konzorciumot a listából.
 
-    ``` bash
-    truffle console --network defaultnode
-    ```
+A konzorcium és a blockchain tagjai a Visual Studio Explorer oldalsó sávján jelennek meg.
 
-    A szarvasgomba csatlakozik az alapértelmezett tranzakciós csomóponthoz, és egy interaktív konzolt biztosít.
+![A konzorcium megjelenik az Explorerben](./media/send-transaction/consortium-node.png)
 
-## <a name="create-ethereum-account"></a>Ethereum-fiók létrehozása
+## <a name="create-a-smart-contract"></a>Intelligens szerződés létrehozása
 
-A Web3 használatával kapcsolódjon az alapértelmezett tranzakciós csomóponthoz, és hozzon létre egy Ethereum-fiókot. A Web3 objektum metódusait hívhatja a tranzakciós csomóponttal való interakcióhoz.
+A Ethereum készült Azure Blockchain Development Kit a Project templates és a szarvasgomba eszközt használja a szerződések készítéséhez, elkészítéséhez és üzembe helyezéséhez.
 
-1. Hozzon létre egy új fiókot az alapértelmezett tranzakciós csomóponton. Cserélje le a Password paramétert a saját erős jelszavára.
+1. A vs Code parancs palettáján válassza **az Azure Blockchain: Új szilárdtest-projekt**.
+1. Válassza az alapszintű **projekt létrehozása**lehetőséget.
+1. Hozzon létre egy nevű `HelloBlockchain` új mappát, és **válassza az új projekt elérési útja lehetőséget**.
 
-    ```bash
-    web3.eth.personal.newAccount("1@myStrongPassword");
-    ```
-
-    Jegyezze fel a visszaadott fiók címet és a jelszót. A következő szakaszban a Ethereum fiókjának címe és jelszava szükséges.
-
-1. Lépjen ki a szarvasgomba fejlesztői környezetből.
-
-    ```bash
-    .exit
-    ```
-
-## <a name="configure-truffle-project"></a>Szarvasgomba-projekt konfigurálása
-
-A szarvasgomba projekt konfigurálásához szükség van néhány tranzakciós csomópontra a Azure Portal.
-
-### <a name="transaction-node-public-key"></a>Tranzakciós csomópont nyilvános kulcsa
-
-Minden tranzakciós csomóponthoz tartozik egy nyilvános kulcs. A nyilvános kulcs lehetővé teszi, hogy privát tranzakciót küldjön a csomópontnak. Ahhoz, hogy tranzakciót küldjön az alapértelmezett tranzakciós csomópontról az *Alpha* Transaction csomópontra, szüksége lesz az *Alpha* tranzakciós csomópont nyilvános kulcsára.
-
-A nyilvános kulcsot a tranzakciós csomópontok listájából kérheti le. Másolja az Alpha csomópont nyilvános kulcsát, és mentse az értéket később az oktatóanyagban.
-
-![Tranzakciós csomópontok listája](./media/send-transaction/node-list.png)
-
-### <a name="transaction-node-endpoint-addresses"></a>Tranzakciós csomópont végpontjának címei
-
-1. A Azure Portal navigáljon minden tranzakciós csomóponthoz, és válassza a **tranzakciós csomópontok >** a kapcsolódási karakterláncok lehetőséget.
-1. Másolja és mentse a végponti URL-címet a https-ről **(1. hozzáférési kulcs)** minden tranzakciós csomóponthoz. Az oktatóanyag későbbi részében szüksége lesz az intelligens szerződés konfigurációs fájljához tartozó végponti címekre.
-
-    ![Tranzakció végpontjának címe](./media/send-transaction/endpoint.png)
-
-### <a name="edit-configuration-file"></a>Konfigurációs fájl szerkesztése
-
-1. Indítsa el a Visual Studio Code-ot, és nyissa meg a szarvasgomba Project Directory mappát a **fájl > mappa megnyitása** menü használatával.
-1. Nyissa meg a szarvasgomba konfigurációs fájlt `truffle-config.js`.
-1. Cserélje le a fájl tartalmát a következő konfigurációs adatokra. Adja hozzá a végpontok címét és a fiókadatok adatait tartalmazó változókat. Cserélje le a szögletes zárójelet tartalmazó szakaszt az előző fejezetekben összegyűjtött értékekre.
-
-    ``` javascript
-    var defaultnode = "<default transaction node connection string>";
-    var alpha = "<alpha transaction node connection string>";
-    var beta = "<beta transaction node connection string>";
-    
-    var myAccount = "<Ethereum account address>";
-    var myPassword = "<Ethereum account password>";
-    
-    var Web3 = require("web3");
-    
-    module.exports = {
-      networks: {
-        defaultnode: {
-          provider:(() =>  {
-          const AzureBlockchainProvider = new Web3.providers.HttpProvider(defaultnode);
-    
-          const web3 = new Web3(AzureBlockchainProvider);
-          web3.eth.personal.unlockAccount(myAccount, myPassword);
-    
-          return AzureBlockchainProvider;
-          })(),
-    
-          network_id: "*",
-          gasPrice: 0,
-          from: myAccount
-        },
-        alpha: {
-          provider: new Web3.providers.HttpProvider(alpha),
-          network_id: "*",
-        },
-        beta: {
-          provider: new Web3.providers.HttpProvider(beta),
-          network_id: "*",
-        }
-      },
-      compilers: {
-        solc: {
-          evmVersion: "byzantium"
-        }
-      }
-    }
-    ```
-
-1. Mentse a módosításokat a `truffle-config.js`következőre:.
-
-## <a name="create-smart-contract"></a>Intelligens szerződés létrehozása
-
-1. A **szerződések** mappában hozzon létre egy nevű `SimpleStorage.sol`új fájlt. Adja hozzá a következő kódot.
-
-    ```solidity
-    pragma solidity >=0.4.21 <0.6.0;
-    
-    contract SimpleStorage {
-        string public storedData;
-    
-        constructor(string memory initVal) public {
-            storedData = initVal;
-        }
-    
-        function set(string memory x) public {
-            storedData = x;
-        }
-    
-        function get() view public returns (string memory retVal) {
-            return storedData;
-        }
-    }
-    ```
-    
-1. Az **áttelepítés** mappában hozzon létre egy nevű `2_deploy_simplestorage.js`új fájlt. Adja hozzá a következő kódot.
-
-    ```solidity
-    var SimpleStorage = artifacts.require("SimpleStorage.sol");
-    
-    module.exports = function(deployer) {
-    
-      // Pass 42 to the contract as the first constructor parameter
-      deployer.deploy(SimpleStorage, "42", {privateFor: ["<alpha node public key>"], from:"<Ethereum account address>"})  
-    };
-    ```
-
-1. Cserélje le az értékeket a szögletes zárójelek között.
-
-    | Value | Leírás
-    |-------|-------------
-    | \<Alfa-csomópont nyilvános kulcsa\> | Az Alpha csomópont nyilvános kulcsa
-    | \<Ethereum-fiók címe\> | Az alapértelmezett tranzakciós csomópontban létrehozott Ethereum-fiók címe
-
-    Ebben a példában a **storeData** érték kezdeti értéke 42-re van állítva.
-
-    a **privateFor** meghatározza azokat a csomópontokat, amelyekre a szerződés elérhető. Ebben a példában az alapértelmezett tranzakciós csomópont fiókja létrehozhat privát tranzakciókat az **Alpha** -csomópontba. Nyilvános kulcsokat adhat hozzá az összes privát tranzakció résztvevője számára. Ha nem tartalmazza a **privateFor:** és a **következőt:** , az intelligens szerződési tranzakciók nyilvánosak, és minden konzorcium tagjai láthatják.
-
-1. Mentse az összes fájlt a **fájl > az összes mentése**lehetőség kiválasztásával.
-
-## <a name="deploy-smart-contract"></a>Intelligens szerződés üzembe helyezése
-
-A szarvasgomba használatával `SimpleStorage.sol` telepítse az alapértelmezett tranzakciós csomópont-hálózatot.
-
-```bash
-truffle migrate --network defaultnode
-```
-
-A szarvasgomba Először lefordítja, majd üzembe helyezi a **SimpleStorage** intelligens szerződést.
-
-Példa a kimenetre:
-
-```
-admin@desktop:/mnt/c/truffledemo$ truffle migrate --network defaultnode
-
-2_deploy_simplestorage.js
-=========================
-
-   Deploying 'SimpleStorage'
-   -------------------------
-   > transaction hash:    0x3f695ff225e7d11a0239ffcaaab0d5f72adb545912693a77fbfc11c0dbe7ba72
-   > Blocks: 2            Seconds: 12
-   > contract address:    0x0b15c15C739c1F3C1e041ef70E0011e641C9D763
-   > account:             0x1a0B9683B449A8FcAd294A01E881c90c734735C3
-   > balance:             0
-   > gas used:            0
-   > gas price:           0 gwei
-   > value sent:          0 ETH
-   > total cost:          0 ETH
-
-
-   > Saving migration to chain.
-   > Saving artifacts
-   -------------------------------------
-   > Total cost:                   0 ETH
-
-
-Summary
-=======
-> Total deployments:   2
-> Final cost:          0 ETH
-```
-
-## <a name="validate-contract-privacy"></a>A szerződés adatainak ellenőrzése
-
-A szerződéses adatok védelme miatt a **privateFor**csak az általunk deklarált csomópontokból lehet lekérdezni. Ebben a példában lekérdezjük az alapértelmezett tranzakciós csomópontot, mert a fiók létezik ebben a csomópontban. 
-
-1. A szarvasgomba konzol használatával kapcsolódjon az alapértelmezett tranzakciós csomóponthoz.
-
-    ```bash
-    truffle console --network defaultnode
-    ```
-
-1. A szarvasgomba konzolon hajtsa végre a szerződés példányának értékét visszaadó kódot.
-
-    ```bash
-    SimpleStorage.deployed().then(function(instance){return instance.get();})
-    ```
-
-    Ha az alapértelmezett tranzakciós csomópont lekérdezése sikeres, a 42 értéket adja vissza. Példa:
-
-    ```
-    admin@desktop:/mnt/c/truffledemo$ truffle console --network defaultnode
-    truffle(defaultnode)> SimpleStorage.deployed().then(function(instance){return instance.get();})
-    '42'
-    ```
-
-1. Lépjen ki a szarvasgomba konzolból.
-
-    ```bash
-    .exit
-    ```
-
-Mivel a **privateFor**-ben deklaráljuk az **Alpha** Node nyilvános kulcsát, lekérhetjük az **Alpha** csomópontot.
-
-1. A szarvasgomba konzol használatával kapcsolódjon az **Alpha** -csomóponthoz.
-
-    ```bash
-    truffle console --network alpha
-    ```
-
-1. A szarvasgomba konzolon hajtsa végre a szerződés példányának értékét visszaadó kódot.
-
-    ```bash
-    SimpleStorage.deployed().then(function(instance){return instance.get();})
-    ```
-
-    Ha az **Alpha** -csomópont lekérdezése sikeres, a 42 értéket adja vissza. Példa:
-
-    ```
-    admin@desktop:/mnt/c/truffledemo$ truffle console --network alpha
-    truffle(alpha)> SimpleStorage.deployed().then(function(instance){return instance.get();})
-    '42'
-    ```
-
-1. Lépjen ki a szarvasgomba konzolból.
-
-    ```bash
-    .exit
-    ```
-
-Mivel nem deklaráljuk a **béta** -csomópont nyilvános kulcsát a **privateFor**-ben, nem tudjuk lekérdezni a **béta** -csomópontot a szerződés adatainak védelme miatt.
-
-1. A szarvasgomba konzol használatával kapcsolódjon a **bétaverziós** csomóponthoz.
-
-    ```bash
-    truffle console --network beta
-    ```
-
-1. Hajtson végre egy olyan kódot, amely visszaadja a szerződés példányának értékét.
-
-    ```bash
-    SimpleStorage.deployed().then(function(instance){return instance.get();})
-    ```
-
-1. A **béta** -csomópont lekérdezése sikertelen, mert a szerződés privát. Példa:
-
-    ```
-    admin@desktop:/mnt/c/truffledemo$ truffle console --network beta
-    truffle(beta)> SimpleStorage.deployed().then(function(instance){return instance.get();})
-    Thrown:
-    Error: Returned values aren't valid, did it run Out of Gas?
-        at XMLHttpRequest._onHttpResponseEnd (/mnt/c/truffledemo/node_modules/xhr2-cookies/xml-http-request.ts:345:8)
-        at XMLHttpRequest._setReadyState (/mnt/c/truffledemo/node_modules/xhr2-cookies/xml-http-request.ts:219:8)
-        at XMLHttpRequestEventTarget.dispatchEvent (/mnt/c/truffledemo/node_modules/xhr2-cookies/xml-http-request-event-target.ts:44:13)
-        at XMLHttpRequest.request.onreadystatechange (/mnt/c/truffledemo/node_modules/web3-providers-http/src/index.js:96:13)
-    ```
-
-1. Lépjen ki a szarvasgomba konzolból.
-
-    ```bash
-    .exit
-    ```
-    
-## <a name="send-a-transaction"></a>Tranzakció küldése
-
-1. Hozzon létre egy `sampletx.js`nevű fájlt. Mentse a projekt gyökerébe.
-1. A következő parancsfájl a szerződés **storedData** változó értékét 65-re állítja. Adja hozzá a kódot az új fájlhoz.
+Az Azure Blockchain Development Kit létrehoz és inicializál egy új szilárdtest-projektet. Az alapszintű projekt tartalmaz egy minta **HelloBlockchain** intelligens szerződést, valamint az összes szükséges fájlt, amely az Azure Blockchain szolgáltatásban a konzorciumi tag felépítésére és üzembe helyezésére szolgál. A projekt létrehozása több percet is igénybe vehet. Az Azure Blockchain kimenetének kiválasztásával nyomon követheti a VS Code termináljának előrehaladását.
+
+A projekt szerkezete a következő példához hasonlóan néz ki:
+
+   ![Szilárdtest-projekt](./media/send-transaction/solidity-project.png)
+
+## <a name="build-a-smart-contract"></a>Intelligens szerződés készítése
+
+Az intelligens szerződések a projekt **szerződések** könyvtárában találhatók. Az intelligens szerződések fordítása előtt üzembe helyezheti azokat egy blockchain. A **szerződések összeállítása** paranccsal lefordíthatja a projektben lévő összes intelligens szerződést.
+
+1. A VS Code Explorer oldalsávján bontsa ki a projekt **szerződések** mappáját.
+1. Kattintson a jobb gombbal a **HelloBlockchain. Sol** elemre, és válassza a menü **szerződések létrehozása** elemét.
+
+    ![Szerződések készítése](./media/send-transaction/build-contracts.png)
+
+Az Azure Blockchain Development Kit a szarvasgomba használatával fordítja le az intelligens szerződéseket.
+
+![Kimenet fordítása](./media/send-transaction/compile-output.png)
+
+## <a name="deploy-a-smart-contract"></a>Intelligens szerződés üzembe helyezése
+
+A szarvasgomba áttelepítési parancsfájlok használatával helyezi üzembe a szerződéseit egy Ethereum-hálózaton. A Migrálás a projekt áttelepítési könyvtárában található JavaScript-fájlok.
+
+1. Az intelligens szerződés üzembe helyezéséhez kattintson a jobb gombbal a **HelloBlockchain. Sol** elemre, és válassza a menü **szerződések telepítése** menüpontját.
+1. Válassza ki az Azure Blockchain Consortium **-hálózatot a truffle-config. js fájlból**. A projekt létrehozásakor a konzorcium blockchain-hálózata hozzá lett adva a projekt szarvasgomba konfigurációs fájljához.
+1. Válassza a **hívóbetűje**előállítása lehetőséget. Válasszon egy fájlnevet, és mentse a hívóbetűje fájlt a projekt mappájába. Például: `myblockchainmember.env`. A hívóbetűje-fájl egy Ethereum titkos kulcs létrehozásához használható a blockchain-tag számára.
+
+Az Azure Blockchain Development Kit a szarvasgomba használatával hajtja végre az áttelepítési parancsfájlt a szerződések a Blockchain való üzembe helyezéséhez.
+
+![A szerződés sikeresen telepítve](./media/send-transaction/deploy-contract.png)
+
+## <a name="call-a-contract-function"></a>Szerződési függvény meghívása
+
+A **HelloBlockchain** -szerződés **SendRequest hívás** funkciója módosítja a **RequestMessage** állapot változót. Egy blockchain-hálózat állapotának módosítása tranzakción keresztül történik. Létrehozhat egy parancsfájlt, amely a **SendRequest hívás** függvényt tranzakción keresztül hajtja végre.
+
+1. Hozzon létre egy új fájlt a szarvasgomba-projekt gyökerében, `sendrequest.js`és nevezze el. Adja hozzá a következő Web3 JavaScript-kódot a fájlhoz.
 
     ```javascript
-    var SimpleStorage = artifacts.require("SimpleStorage");
-    
+    var HelloBlockchain = artifacts.require("HelloBlockchain");
+        
     module.exports = function(done) {
-      console.log("Getting deployed version of SimpleStorage...")
-      SimpleStorage.deployed().then(function(instance) {
-        console.log("Setting value to 65...");
-        return instance.set("65", {privateFor: ["<alpha node public key>"], from:"<Ethereum account address>"});
+      console.log("Getting the deployed version of the HelloBlockchain smart contract")
+      HelloBlockchain.deployed().then(function(instance) {
+        console.log("Calling SendRequest function for contract ", instance.address);
+        return instance.SendRequest("Hello, blockchain!");
       }).then(function(result) {
-        console.log("Transaction:", result.tx);
-        console.log("Finished!");
+        console.log("Transaction hash: ", result.tx);
+        console.log("Request complete");
         done();
       }).catch(function(e) {
         console.log(e);
@@ -375,76 +139,85 @@ Mivel nem deklaráljuk a **béta** -csomópont nyilvános kulcsát a **privateFo
     };
     ```
 
-    Cserélje le a szögletes zárójelek értékeit, majd mentse a fájlt.
+1. Ha az Azure Blockchain Development Kit létrehoz egy projektet, a rendszer létrehozza a szarvasgomba konfigurációs fájlt a konzorcium Blockchain hálózati végpontjának részleteivel. Nyissa meg a **truffle-config. js fájlt** a projektben. A konfigurációs fájl két hálózatot listáz: egy névvel ellátott fejlesztést és egyet a konzorcium nevével.
+1. A VS Code terminál ablaktábláján a szarvasgomba használatával hajtsa végre a szkriptet a konzorcium blockchain-hálózatán. A terminál ablaktáblájának menüsorában válassza a **terminál** fület és a PowerShellt a legördülő menüben.
 
-    | Value | Leírás
-    |-------|-------------
-    | \<Alfa-csomópont nyilvános kulcsa\> | Az Alpha csomópont nyilvános kulcsa
-    | \<Ethereum-fiók címe\> | Az alapértelmezett tranzakciós csomópontban létrehozott Ethereum-fiók címe.
-
-    a **privateFor** azokat a csomópontokat határozza meg, amelyekhez a tranzakció elérhető. Ebben a példában az alapértelmezett tranzakciós csomópont fiókja létrehozhat privát tranzakciókat az **Alpha** -csomópontba. Nyilvános kulcsokat kell hozzáadnia az összes privát tranzakció résztvevője számára.
-
-1. A szarvasgomba használatával hajtsa végre az alapértelmezett tranzakciós csomópont parancsfájlját.
-
-    ```bash
-    truffle exec sampletx.js --network defaultnode
+    ```PowerShell
+    truffle exec sendrequest.js --network <blockchain network>
     ```
 
-1. A szarvasgomba konzolon hajtsa végre a szerződés példányának értékét visszaadó kódot.
+    Cserélje \<le a\> blockchain hálózatot a **truffle-config. js**fájlban definiált blockchain-hálózat nevére.
 
-    ```bash
-    SimpleStorage.deployed().then(function(instance){return instance.get();})
+A szarvasgomba végrehajtja a szkriptet a blockchain-hálózaton.
+
+![Parancsprogram kimenete](./media/send-transaction/execute-transaction.png)
+
+Ha egy tranzakción keresztül hajtja végre a szerződés függvényét, a tranzakció addig nem lesz feldolgozva, amíg létre nem jön egy blokk. Az olyan függvények, amelyeket egy tranzakción keresztül kell végrehajtani, visszatérési érték helyett tranzakció-azonosítót adnak vissza.
+
+## <a name="query-contract-state"></a>Szerződés állapotának lekérdezése
+
+Az intelligens szerződési függvények az állapot változóinak aktuális értékét adhatják vissza. Adjon hozzá egy függvényt egy állapotjelző változó értékének visszaadásához.
+
+1. A **HelloBlockchain. Sol**-ben adjon hozzá egy **getMessage** függvényt a **HelloBlockchain** intelligens szerződéshez.
+
+    ``` solidity
+    function getMessage() public view returns (string memory)
+    {
+        if (State == StateType.Request)
+            return RequestMessage;
+        else
+            return ResponseMessage;
+    }
     ```
 
-    Ha a tranzakció sikeres volt, a rendszer a 65 értéket adja vissza. Példa:
+    A függvény az állapot változójában tárolt üzenetet adja vissza a szerződés aktuális állapota alapján.
+
+1. Kattintson a jobb gombbal a **HelloBlockchain. Sol** elemre, majd válassza a **szerződések létrehozása** lehetőséget a menüből az intelligens szerződés módosításainak fordításához.
+1. A telepítéshez kattintson a jobb gombbal a **HelloBlockchain. Sol** elemre, és válassza a menü **szerződések telepítése** menüpontját.
+1. Ezután hozzon létre egy szkriptet a paranccsal a **getMessage** függvény meghívásához. Hozzon létre egy új fájlt a szarvasgomba-projekt gyökerében, `getmessage.js`és nevezze el. Adja hozzá a következő Web3 JavaScript-kódot a fájlhoz.
+
+    ```javascript
+    var HelloBlockchain = artifacts.require("HelloBlockchain");
     
+    module.exports = function(done) {
+      console.log("Getting the deployed version of the HelloBlockchain smart contract")
+      HelloBlockchain.deployed().then(function(instance) {
+        console.log("Calling getMessage function for contract ", instance.address);
+        return instance.getMessage();
+      }).then(function(result) {
+        console.log("Request message value: ", result);
+        console.log("Request complete");
+        done();
+      }).catch(function(e) {
+        console.log(e);
+        done();
+      });
+    };
     ```
-    Getting deployed version of SimpleStorage...
-    Setting value to 65...
-    Transaction: 0x864e67744c2502ce75ef6e5e09d1bfeb5cdfb7b880428fceca84bc8fd44e6ce0
-    Finished!
-    ```
 
-1. Lépjen ki a szarvasgomba konzolból.
-
-    ```bash
-    .exit
-    ```
-    
-## <a name="validate-transaction-privacy"></a>Tranzakció-adatvédelem ellenőrzése
-
-A tranzakciós adatvédelem miatt a tranzakciókat csak a **privateFor**-ben deklarált csomópontokon lehet végrehajtani. Ebben a példában tranzakciókat lehet elvégezni, mivel az **Alpha** csomópont nyilvános kulcsát a **privateFor**-ben deklaráljuk. 
-
-1. A szarvasgomba használatával hajtsa végre a tranzakciót az **Alpha** -csomóponton.
-
-    ```bash
-    truffle exec sampletx.js --network alpha
-    ```
-    
-1. A szerződési példány értékét visszaadó kód végrehajtása.
+1. A VS Code terminál ablaktábláján a szarvasgomba használatával hajtsa végre a szkriptet a blockchain-hálózaton. A terminál ablaktáblájának menüsorában válassza a **terminál** fület és a PowerShellt a legördülő menüben.
 
     ```bash
-    SimpleStorage.deployed().then(function(instance){return instance.get();})
+    truffle exec getmessage.js --network <blockchain network>
     ```
-    
-    Ha a tranzakció sikeres volt, a rendszer a 65 értéket adja vissza. Példa:
 
-    ```
-    Getting deployed version of SimpleStorage...
-    Setting value to 65...
-    Transaction: 0x864e67744c2502ce75ef6e5e09d1bfeb5cdfb7b880428fceca84bc8fd44e6ce0
-    Finished!
-    ```
-    
-1. Lépjen ki a szarvasgomba konzolból.
+    Cserélje \<le a\> blockchain hálózatot a **truffle-config. js**fájlban definiált blockchain-hálózat nevére.
 
-    ```bash
-    .exit
-    ```
+A szkript lekérdezi az intelligens szerződést a getMessage függvény meghívásával. A rendszer visszaadja a **RequestMessage** állapot változó aktuális értékét.
+
+![Parancsprogram kimenete](./media/send-transaction/execute-get.png)
+
+Figyelje meg, hogy az érték nem **Hello, blockchain!** . Ehelyett a visszaadott érték helyőrző. A szerződés módosításakor és központi telepítésekor a Szerződés új szerződési címen kap, és az állapot változói az intelligens szerződés konstruktorában vannak hozzárendelve. A szarvasgomba minta **2_deploy_contracts. js** áttelepítési parancsfájl üzembe helyezi az intelligens szerződést, és argumentumként átadja a helyőrző értékét. A konstruktor a **RequestMessage** állapot változót a helyőrző értékre állítja, és a függvény a visszaadott értéket adja vissza.
+
+1. A **RequestMessage** állapot változó beállításához és az érték lekérdezéséhez futtassa újra a **SendRequest hívás. js** és a **GetMessage. js** parancsfájlokat.
+
+    ![Parancsprogram kimenete](./media/send-transaction/execute-set-get.png)
+
+    a **SendRequest hívás. js** beállítja a **RequestMessage** állapot változót a Hello értékre **, blockchain!** a és a **GetMessage. js** lekérdezi a **RequestMessage** State változó értékére vonatkozó szerződést, és a következőt adja vissza: **Hello, blockchain!** .
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha már nincs rá szükség, törölheti az erőforrásokat az Azure Blockchain `myResourceGroup` szolgáltatás által létrehozott erőforráscsoport törlésével.
+Ha már nincs rá szükség, törölheti az erőforrásokat úgy `myResourceGroup` , hogy törli a blockchain-tag előfeltételeinek *létrehozása* előfeltételként létrehozott erőforráscsoportot.
 
 Az erőforráscsoport törlése:
 
@@ -453,7 +226,7 @@ Az erőforráscsoport törlése:
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben az oktatóanyagban két tranzakciós csomópontot adott hozzá a szerződés és a tranzakciós adatvédelem bemutatásához. Az alapértelmezett csomópontot használta egy privát intelligens szerződés üzembe helyezéséhez. Az adatvédelmet a szerződések értékeinek lekérdezésével és a blockchain tranzakcióinak elküldésével tesztelte.
+Ebben az oktatóanyagban létrehozott egy minta-szilárdtest projektet az Azure Blockchain Development Kit használatával. Az Azure Blockchain Service-ben üzemeltetett blockchain Consortium-hálózat tranzakcióján keresztül létrehozott és telepített egy intelligens szerződést.
 
 > [!div class="nextstepaction"]
 > [Blockchain-alkalmazások fejlesztése az Azure Blockchain Service használatával](develop.md)

@@ -15,6 +15,8 @@
               href: QuickStarts/csharp-detect-sdk.md
             - name: Python
               href: Tutorials/FaceAPIinPythonTutorial.md
+        - name: Python SDK
+          href: QuickStarts/python-sdk.md
     - name: A REST API használata
       items:
         - name: Arcok felismerése a képeken
