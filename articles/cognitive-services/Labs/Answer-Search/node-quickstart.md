@@ -1,5 +1,5 @@
 ---
-title: 'Gyors útmutató: Projekt válaszkeresés, csomópont'
+title: 'Gyors útmutató: Projekt válaszának keresése, csomópont'
 description: A Válaszkeresés projekt használatának első lépései a Node-dal.
 services: cognitive-services
 author: mikedodaro
@@ -9,20 +9,20 @@ ms.subservice: answer-search
 ms.topic: quickstart
 ms.date: 04/13/2018
 ms.author: rosh
-ms.openlocfilehash: c44be9779cf2b856ac2f5e9e017fd9d1040a018b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 21dda323cf465f56fb3f43160dd04c27a81d5590
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60861769"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68698078"
 ---
-# <a name="quickstart-project-answer-search-with-node"></a>Gyors útmutató: Válaszkeresés projekt csomópont
+# <a name="quickstart-project-answer-search-with-node"></a>Gyors útmutató: Project answer keresés a csomóponttal
 
 Az alábbi Node-példa létrehoz egy lekérdezést a Yosemite Nemzeti Parkkal kapcsolatos információk vonatkozásában.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Hozzáférési kulcs lekérése a [Cognitive Services Labs](https://aka.ms/answersearchsubscription) ingyenes próbaverziójához
+Hozzáférési kulcs lekérése a [Cognitive Services Labs](https://labs.cognitive.microsoft.com/en-us/project-answer-search) ingyenes próbaverziójához
 
 Ez a példa a Node 8.9.4-es verzióját használja.
 

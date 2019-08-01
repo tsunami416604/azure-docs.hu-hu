@@ -1,7 +1,7 @@
 ---
-title: 'Gyors útmutató: A Text Analytics kognitív szolgáltatás hívásához Ruby SDK-val'
+title: 'Gyors útmutató: A Text Analytics kognitív szolgáltatás meghívása a Ruby SDK használatával'
 titleSuffix: Azure Cognitive Services
-description: Get information és kód minták segítségével gyorsan Ismerkedés a szövegelemzési API-val az Azure Cognitive Servicesben.
+description: Az Azure Cognitive Services Text Analytics API használatának gyors megkezdéséhez olvassa el az információk és a kódok mintáit.
 services: cognitive-services
 author: raymondl
 manager: nitinme
@@ -10,50 +10,48 @@ ms.subservice: text-analytics
 ms.topic: quickstart
 ms.date: 05/08/2019
 ms.author: tasharm
-ms.openlocfilehash: 688887826fa803b616ca737bc8558aa17ed80e37
-ms.sourcegitcommit: 8c49df11910a8ed8259f377217a9ffcd892ae0ae
+ms.openlocfilehash: 3f18b77fe436328e79df351b9c5edcf6dc289ad7
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66297771"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68697268"
 ---
-# <a name="quickstart-call-the-text-analytics-service-using-the-ruby-sdk"></a>Gyors útmutató: Meghívja a Text Analytics szolgáltatást, a Ruby SDK-val
+# <a name="quickstart-call-the-text-analytics-service-using-the-ruby-sdk"></a>Gyors útmutató: A Text Analytics szolgáltatás meghívása a Ruby SDK használatával
 
 <a name="HOLTop"></a>
 
 
-Ez a rövid útmutató segítségével megkezdheti a Text Analytics SDK a Rubyhoz nyelvi elemzése. Bár a [Szövegelemzés](//go.microsoft.com/fwlink/?LinkID=759711) REST API-val kompatibilis szinte bármelyik programozási nyelvével, az SDK biztosít egy egyszerű módja annak, hogy a szolgáltatás integrálása az alkalmazásokba. Ez a minta forráskódja találhatók [GitHub](https://github.com/Azure-Samples/cognitive-services-ruby-sdk-samples/blob/master/samples/text_analytics.rb).
+Ezzel a rövid útmutatóval megkezdheti a nyelv elemzését a Ruby Text Analytics SDK-val. Míg a [Text Analytics](//go.microsoft.com/fwlink/?LinkID=759711) REST API a legtöbb programozási nyelvvel kompatibilis, az SDK egyszerű módszert kínál a szolgáltatás alkalmazásba való integrálására. A minta forráskódja a [githubon](https://github.com/Azure-Samples/cognitive-services-ruby-sdk-samples/blob/master/samples/text_analytics.rb)található.
 
 Az API-k műszaki dokumentációjáért lásd az [API-definíciókat](//go.microsoft.com/fwlink/?LinkID=759346).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 * [Ruby 2.5.5 vagy újabb](https://www.ruby-lang.org/)
-* A Text analytics [SDK a Rubyhoz](https://rubygems.org/gems/azure_cognitiveservices_textanalytics)
+* A Rubyhoz készült Text Analytics [SDK](https://rubygems.org/gems/azure_cognitiveservices_textanalytics)
  
 [!INCLUDE [cognitive-services-text-analytics-signup-requirements](../../../../includes/cognitive-services-text-analytics-signup-requirements.md)]
 
-A regisztráció során létrejött [végponttal és hozzáférési kulccsal](../How-tos/text-analytics-how-to-access-key.md) is rendelkeznie kell. 
-
 <a name="RubyProject"></a>
 
-## <a name="create-a-ruby-project-and-install-the-sdk"></a>Hozzon létre egy Ruby-projektet, és az SDK telepítése
+## <a name="create-a-ruby-project-and-install-the-sdk"></a>Ruby-projekt létrehozása és az SDK telepítése
 
-1. Hozzon létre egy új ruby-projektet, és adjon hozzá egy új fájlt `Gemfile`.
-2. A Text Analytics SDK hozzáadása a projekthez adja hozzá az alábbi kód használatával `Gemfile`.
+1. Hozzon létre egy új Ruby-projektet, és adjon `Gemfile`hozzá egy nevű új fájlt.
+2. Adja hozzá a Text Analytics SDK-t a projekthez, ehhez `Gemfile`adja hozzá az alábbi kódot a következőhöz:.
 
     ```ruby
     source 'https://rubygems.org'
     gem 'azure_cognitiveservices_textanalytics', '~>0.17.3'
     ```
 
-## <a name="create-a-text-analytics-client"></a>A Text analytics-ügyfél létrehozása
+## <a name="create-a-text-analytics-client"></a>Szöveges elemzési ügyfél létrehozása
 
-1. Hozzon létre egy új fájlt `TextAnalyticsExamples.rb` a kedvenc szerkesztőjében, vagy IDE. Importálja a Text Analytics SDK-t.
+1. Hozzon létre egy nevű `TextAnalyticsExamples.rb` új fájlt a kedvenc szerkesztőjében vagy az ide-ben. Importálja a Text Analytics SDK-t.
 
-2. Egy hitelesítő objektumot a Text Analytics-ügyfél által használható. Hozza létre a `CognitiveServicesCredentials.new()` és az előfizetési kulcs átadásával.
+2. A Text Analytics-ügyfél a hitelesítő adatok objektumát fogja használni. Hozza létre és adja át az előfizetési kulcsot. `CognitiveServicesCredentials.new()`
 
-3. Az ügyfél létrehozása a megfelelő Szövegelemzés-végponthoz.
+3. Hozza létre az ügyfelet a megfelelő Text Analytics-végponttal.
 
     ```ruby
     require 'azure_cognitiveservices_textanalytics'
@@ -76,11 +74,11 @@ A regisztráció során létrejött [végponttal és hozzáférési kulccsal](..
 
 ## <a name="sentiment-analysis"></a>Hangulatelemzés
 
-A Text Analytics SDK vagy API-t használ, végezhet hangulatelemzést egy csoportján megadott szöveges. Az alábbi példa a több dokumentum véleménypontszámának jeleníti meg.
+A Text Analytics SDK vagy API használatával a hangelemzést egy szöveges rekordon is elvégezheti. A következő példa több dokumentumhoz tartozó érzelmeket mutatja be.
 
-1. Hozzon létre egy új függvényt nevű `SentimentAnalysisExample()` paraméterként a fent létrehozott text analytics-ügyfél, amely veszi.
+1. Hozzon létre egy nevű `SentimentAnalysisExample()` új függvényt, amely a fentiekben paraméterként létrehozott Text Analytics-ügyfelet veszi fel.
 
-2. Meghatároz egy olyan `MultiLanguageInput` vizsgálandó objektumokat. Adja hozzá a nyelvet és a szöveg minden objektum esetén. Az azonosító bármilyen érték lehet.
+2. Az elemezni kívánt `MultiLanguageInput` objektumok halmazának meghatározása. Adja meg az egyes objektumok nyelvét és szövegét. Az azonosító bármelyik értéke lehet.
 
     ```ruby
     def SentimentAnalysisExample(client)
@@ -106,9 +104,9 @@ A Text Analytics SDK vagy API-t használ, végezhet hangulatelemzést egy csopor
       input_4.text = "L'hotel veneziano era meraviglioso. È un bellissimo pezzo di architettura."
     ```
 
-3. Belül ugyanezt a funkciót a dokumentumok egyesítése listáját. Adja hozzá a az `documents` mezőjét, egy `MultiLanguageBatchInput` objektum. 
+3. Ugyanazon a függvényen belül egyesítse a dokumentumokat egy listához. Adja hozzá egy `MultiLanguageBatchInput` objektum mezőjéhez.`documents` 
 
-4. Az ügyfél hívja `sentiment()` függvény és a `MultiLanguageBatchInput` a dokumentumok paraméterként objektum. Ha minden olyan eredményeket ad vissza, kinyomtathatja őket.
+4. Hívja meg `sentiment()` az ügyfél függvényét az `MultiLanguageBatchInput` objektummal a dokumentumok elküldésére szolgáló paraméterként. Ha bármilyen eredményt ad vissza, nyomtassa ki őket.
     ```ruby
       input_documents =  MultiLanguageBatchInput.new
       input_documents.documents = [input_1, input_2, input_3, input_4]
@@ -126,13 +124,13 @@ A Text Analytics SDK vagy API-t használ, végezhet hangulatelemzést egy csopor
     end
     ```
 
-5. Hívja a `SentimentAnalysisExample()` függvény.
+5. Hívja meg `SentimentAnalysisExample()` a függvényt.
 
     ```ruby
     SentimentAnalysisExample(textAnalyticsClient)
     ```
 
-### <a name="output"></a>Kimenet
+### <a name="output"></a>Output
 
 ```console
 ===== SENTIMENT ANALYSIS =====
@@ -146,11 +144,11 @@ Document ID: 4 , Sentiment Score: 1.00
 
 ## <a name="language-detection"></a>Nyelvfelismerés
 
-A Text Analytics szolgáltatás is észlelje a nyelvet, a szöveges dokumentum, nyelv és területi beállítás nagy számú. Az alábbi példa a nyelvet, több dokumentumot is írt jeleníti meg.
+A Text Analytics szolgáltatás számos nyelven és területi beállításon keresztül képes a szöveges dokumentumok nyelvének észlelésére. Az alábbi példa azt a nyelvet jeleníti meg, amelyben számos dokumentum íródott.
 
-1. Hozzon létre egy új függvényt nevű `DetectLanguageExample()` átkerül a text analytics ügyfél paraméterként a fent létrehozott. 
+1. Hozzon létre egy nevű `DetectLanguageExample()` új függvényt, amely a fentiekben paraméterként létrehozott Text Analytics-ügyfelet veszi fel. 
 
-2. Meghatároz egy olyan `LanguageInput` vizsgálandó objektumokat. Adja hozzá a nyelvet és a szöveg minden objektum esetén. Az azonosító bármilyen érték lehet.
+2. Az elemezni kívánt `LanguageInput` objektumok halmazának meghatározása. Adja meg az egyes objektumok nyelvét és szövegét. Az azonosító bármelyik értéke lehet.
 
     ```ruby
     def DetectLanguageExample(client)
@@ -168,9 +166,9 @@ A Text Analytics szolgáltatás is észlelje a nyelvet, a szöveges dokumentum, 
        language_input_3.text = '这是一个用中文写的文件'
     ```
 
-3. Belül ugyanezt a funkciót a dokumentumok egyesítése listáját. Adja hozzá a az `documents` mezőjét, egy `LanguageBatchInput` objektum. 
+3. Ugyanazon a függvényen belül egyesítse a dokumentumokat egy listához. Adja hozzá egy `LanguageBatchInput` objektum mezőjéhez.`documents` 
 
-4. Az ügyfél hívja `detect_language()` függvény és a `LanguageBatchInput` a dokumentumok paraméterként objektum. Ha minden olyan eredményeket ad vissza, kinyomtathatja őket.
+4. Hívja meg `detect_language()` az ügyfél függvényét az `LanguageBatchInput` objektummal a dokumentumok elküldésére szolgáló paraméterként. Ha bármilyen eredményt ad vissza, nyomtassa ki őket.
     ```ruby
        input_documents = LanguageBatchInput.new
        input_documents.documents = [language_input_1, language_input_2, language_input_3]
@@ -191,13 +189,13 @@ A Text Analytics szolgáltatás is észlelje a nyelvet, a szöveges dokumentum, 
      end
     ```
 
-5. A függvény meghívása `DetectLanguageExample`
+5. A függvény meghívása`DetectLanguageExample`
 
     ```ruby
     DetectLanguageExample(textAnalyticsClient)
     ```
 
-### <a name="output"></a>Kimenet
+### <a name="output"></a>Output
 
 ```console
 ===== LANGUAGE EXTRACTION ======
@@ -210,11 +208,11 @@ Document ID: 3 , Language: Chinese_Simplified
 
 ## <a name="entity-recognition"></a>Entitások felismerése
 
-A Text Analytics szolgáltatás is különbséget, és bontsa ki a különböző entitások (személyek, helyek és dolgot) szereplő szöveges dokumentumok. Az alábbi példában található példa több dokumentumot az entitásokat jeleníti meg.
+A Text Analytics szolgáltatás szöveges dokumentumokban megkülönböztetheti és kinyerheti a különböző entitásokat (személyek, helyek és dolgok). A következő példa a több példás dokumentumokban található entitásokat jeleníti meg.
 
-1. Hozzon létre egy új függvényt nevű `Recognize_Entities()` paraméterként a fent létrehozott text analytics-ügyfél, amely veszi.
+1. Hozzon létre egy nevű `Recognize_Entities()` új függvényt, amely a fentiekben paraméterként létrehozott Text Analytics-ügyfelet veszi fel.
 
-2. Meghatároz egy olyan `MultiLanguageInput` vizsgálandó objektumokat. Adja hozzá a nyelvet és a szöveg minden objektum esetén. Az azonosító bármilyen érték lehet.
+2. Az elemezni kívánt `MultiLanguageInput` objektumok halmazának meghatározása. Adja meg az egyes objektumok nyelvét és szövegét. Az azonosító bármelyik értéke lehet.
 
     ```ruby
       def RecognizeEntitiesExample(client)
@@ -230,9 +228,9 @@ A Text Analytics szolgáltatás is különbséget, és bontsa ki a különböző
         input_2.text = 'La sede principal de Microsoft se encuentra en la ciudad de Redmond, a 21 kilómetros de Seattle.'
     ```
 
-3. Belül ugyanezt a funkciót a dokumentumok egyesítése listáját. Adja hozzá a az `documents` mezőjét, egy `MultiLanguageBatchInput` objektum. 
+3. Ugyanazon a függvényen belül egyesítse a dokumentumokat egy listához. Adja hozzá egy `MultiLanguageBatchInput` objektum mezőjéhez.`documents` 
 
-4. Az ügyfél hívja `entities()` függvény és a `MultiLanguageBatchInput` a dokumentumok paraméterként objektum. Ha minden olyan eredményeket ad vissza, kinyomtathatja őket.
+4. Hívja meg `entities()` az ügyfél függvényét az `MultiLanguageBatchInput` objektummal a dokumentumok elküldésére szolgáló paraméterként. Ha bármilyen eredményt ad vissza, nyomtassa ki őket.
 
     ```ruby
         input_documents =  MultiLanguageBatchInput.new
@@ -260,12 +258,12 @@ A Text Analytics szolgáltatás is különbséget, és bontsa ki a különböző
       end
     ```
 
-5. A függvény meghívása `RecognizeEntitiesExample`
+5. A függvény meghívása`RecognizeEntitiesExample`
     ```ruby
     RecognizeEntitiesExample(textAnalyticsClient)
     ```
 
-### <a name="output"></a>Kimenet
+### <a name="output"></a>Output
 
 ```console
 ===== ENTITY RECOGNITION =====
@@ -309,11 +307,11 @@ Document ID: 2
 
 ## <a name="key-phrase-extraction"></a>A kulcsfontosságú kifejezések kinyerése
 
-A Text Analytics szolgáltatás is bontsa ki a kulcskifejezések a mondatokban. Az alábbi példában található néhány példa dokumentumok több nyelven is az entitásokat jeleníti meg.
+A Text Analytics szolgáltatás kinyerheti a mondatokban szereplő kulcs-kifejezéseket. A következő példa több nyelven jeleníti meg a különböző példákban található dokumentumokban szereplő entitásokat.
 
-1. Hozzon létre egy új függvényt nevű `KeyPhraseExtractionExample()` paraméterként a fent létrehozott text analytics-ügyfél, amely veszi.
+1. Hozzon létre egy nevű `KeyPhraseExtractionExample()` új függvényt, amely a fentiekben paraméterként létrehozott Text Analytics-ügyfelet veszi fel.
 
-2. Meghatároz egy olyan `MultiLanguageInput` vizsgálandó objektumokat. Adja hozzá a nyelvet és a szöveg minden objektum esetén. Az azonosító bármilyen érték lehet.
+2. Az elemezni kívánt `MultiLanguageInput` objektumok halmazának meghatározása. Adja meg az egyes objektumok nyelvét és szövegét. Az azonosító bármelyik értéke lehet.
 
     ```ruby
     def KeyPhraseExtractionExample(client)
@@ -339,9 +337,9 @@ A Text Analytics szolgáltatás is bontsa ki a kulcskifejezések a mondatokban. 
       input_4.text = 'A mi me encanta el fútbol!'
       ```
 
-3. Belül ugyanezt a funkciót a dokumentumok egyesítése listáját. Adja hozzá a az `documents` mezőjét, egy `MultiLanguageBatchInput` objektum. 
+3. Ugyanazon a függvényen belül egyesítse a dokumentumokat egy listához. Adja hozzá egy `MultiLanguageBatchInput` objektum mezőjéhez.`documents` 
 
-4. Az ügyfél hívja `key_phrases()` függvény és a `MultiLanguageBatchInput` a dokumentumok paraméterként objektum. Ha minden olyan eredményeket ad vissza, kinyomtathatja őket.
+4. Hívja meg `key_phrases()` az ügyfél függvényét az `MultiLanguageBatchInput` objektummal a dokumentumok elküldésére szolgáló paraméterként. Ha bármilyen eredményt ad vissza, nyomtassa ki őket.
 
     ```ruby
       input_documents =  MultiLanguageBatchInput.new
@@ -365,13 +363,13 @@ A Text Analytics szolgáltatás is bontsa ki a kulcskifejezések a mondatokban. 
     end
     ```
 
-5. A függvény meghívása `KeyPhraseExtractionExample`
+5. A függvény meghívása`KeyPhraseExtractionExample`
 
     ```ruby
     KeyPhraseExtractionExample(textAnalyticsClient)
     ```
 
-### <a name="output"></a>Kimenet
+### <a name="output"></a>Output
 
 ```console
 Document ID: 1
