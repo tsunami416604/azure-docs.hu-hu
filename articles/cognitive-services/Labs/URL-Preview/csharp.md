@@ -1,5 +1,5 @@
 ---
-title: 'Gyors útmutató: Projekt URL-cím előnézete,C#'
+title: 'Gyors útmutató: Projekt URL-címének előzetes verziójaC#'
 titlesuffix: Azure Cognitive Services
 description: Az URL-cím előnézete projekt használatának első lépései a C#-pal.
 services: cognitive-services
@@ -10,22 +10,22 @@ ms.subservice: url-preview
 ms.topic: quickstart
 ms.date: 03/16/2018
 ms.author: rosh
-ms.openlocfilehash: 2cb3f1de803b8549a88866da1042f4f32609a601
-ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
+ms.openlocfilehash: ec0c8ad06480cd596365f43f13ca57fb242d364c
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65827152"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68698049"
 ---
-# <a name="quickstart-url-preview-query-in-c"></a>Gyors útmutató: Lekérdezés URL-cím előnézeteC#
+# <a name="quickstart-url-preview-query-in-c"></a>Gyors útmutató: URL-előnézet lekérdezése itt:C#
 
 Az alábbi C#-példa létrehoz egy URL-előnézetet a SwiftKey webhelyhez: https://swiftkey.com/en.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Szüksége lesz [Visual Studio 2017-es vagy újabb](https://www.visualstudio.com/downloads/) ezt a kódot futtathatnak Windows. (Az ingyenes Community Edition is elegendő.)
+A kód Windows rendszeren való futtatásához a [Visual Studio 2017-es vagy újabb verziójára](https://www.visualstudio.com/downloads/) lesz szüksége. (Az ingyenes Community Edition is elegendő.)
 
-Hozzáférési kulcs lekérése a [Cognitive Services Labs](https://aka.ms/answersearchsubscription) ingyenes próbaverziójához
+Hozzáférési kulcs lekérése a [Cognitive Services Labs](https://labs.cognitive.microsoft.com/en-us/project-answer-search) ingyenes próbaverziójához
 
 ## <a name="code-scenario"></a>Kódforgatókönyv
 

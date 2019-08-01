@@ -1,21 +1,18 @@
 ---
 title: Nagy mennyiségű véletlenszerű adat letöltése az Azure Storage-ból | Microsoft Docs
 description: Megismerkedhet nagy mennyiségű véletlenszerű adat letöltésével egy Azure Storage-fiókból az Azure SDK használatával
-services: storage
 author: roygara
 ms.service: storage
-ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 02/20/2018
 ms.author: rogarana
-ms.custom: mvc
 ms.subservice: blobs
-ms.openlocfilehash: 541d406d7416ff5f50fdcca7e85b8f87f6f377df
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 8d270485cef9fb6859de056bc364a36c054c0121
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65794585"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68699015"
 ---
 # <a name="download-large-amounts-of-random-data-from-azure-storage"></a>Nagy mennyiségű véletlenszerű adat letöltése az Azure Storage-ból
 
@@ -30,7 +27,7 @@ A sorozat harmadik részében az alábbiakkal fog megismerkedni:
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az oktatóanyag teljesítéséhez el kell végeznie az előző tárolási oktatóanyagot: [Töltse fel nagy mennyiségű véletlenszerű adat párhuzamos az Azure storage-][previous-tutorial].
+Az oktatóanyag elvégzéséhez el kell végeznie az előző tárolási oktatóanyagot: [Nagy mennyiségű véletlenszerű adatok feltöltése párhuzamosan az Azure Storage-ban][previous-tutorial].
 
 ## <a name="remote-into-your-virtual-machine"></a>A virtuális gép távoli vezérlése
 

@@ -1,7 +1,7 @@
 ---
-title: 'Gyors útmutató: A szövegelemzési API meghívására Ruby használatával'
+title: 'Gyors útmutató: A Text Analytics API hívása a Ruby használatával'
 titleSuffix: Azure Cognitive Services
-description: Get information és kód minták segítségével gyorsan Ismerkedés a szövegelemzési API-val az Azure Cognitive Servicesben.
+description: Az Azure Cognitive Services Text Analytics API használatának gyors megkezdéséhez olvassa el az információk és a kódok mintáit.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,25 +10,23 @@ ms.subservice: text-analytics
 ms.topic: quickstart
 ms.date: 04/16/2019
 ms.author: aahi
-ms.openlocfilehash: 56a482ae4eab4cde3cf39fcc187b703f253e0cbb
-ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
+ms.openlocfilehash: cc6f0a4c3fda2c5e474295704f3edddb678e9ed2
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65990260"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68697217"
 ---
-# <a name="quickstart-using-ruby-to-call-the-text-analytics-cognitive-service"></a>Gyors útmutató: A Text Analytics kognitív szolgáltatás hívásához Ruby használatával
+# <a name="quickstart-using-ruby-to-call-the-text-analytics-cognitive-service"></a>Gyors útmutató: A Ruby használata a Text Analytics kognitív szolgáltatás meghívásához
 <a name="HOLTop"></a>
 
-Ez a cikk bemutatja, hogyan való [nyelvfelismerés](#Detect), [vélemények elemzése](#SentimentAnalysis), [kinyerheti a kulcskifejezéseket](#KeyPhraseExtraction), és [kapcsolt entitások azonosítása](#Entities) használatával a [Text Analytics API-k](//go.microsoft.com/fwlink/?LinkID=759711) Ruby használatával.
+Ebből a cikkből megtudhatja, hogyan derítheti fel [text Analytics](//go.microsoft.com/fwlink/?LinkID=759711) a [nyelvet](#Detect), elemezheti a [véleményét](#SentimentAnalysis), kinyerheti a [legfontosabb kifejezéseket](#KeyPhraseExtraction), és hogyan azonosíthatja a [társított entitásokat](#Entities) a Ruby használatával
 
 Az API-k műszaki dokumentációjáért lásd az [API-definíciókat](//go.microsoft.com/fwlink/?LinkID=759346).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 [!INCLUDE [cognitive-services-text-analytics-signup-requirements](../../../../includes/cognitive-services-text-analytics-signup-requirements.md)]
-
-A regisztráció során létrejött [végponttal és hozzáférési kulccsal](../How-tos/text-analytics-how-to-access-key.md) is rendelkeznie kell. 
 
 <a name="Detect"></a>
 

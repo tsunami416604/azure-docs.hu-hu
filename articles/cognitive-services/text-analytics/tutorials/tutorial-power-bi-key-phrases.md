@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: tutorial
-ms.date: 07/24/2019
+ms.date: 07/30/2019
 ms.author: aahi
-ms.openlocfilehash: e56926b9a23e0dd649fb85347e521a6dda7863a3
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.openlocfilehash: dba65e68e7c2204a4d4d7f80a603de607bba7609
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68479877"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68697343"
 ---
 # <a name="tutorial-integrate-power-bi-with-the-text-analytics-cognitive-service"></a>Oktatóanyag: Power BI integrálása a Text Analytics kognitív szolgáltatással
 
@@ -36,7 +36,7 @@ Az oktatóanyag segítségével megtanulhatja a következőket:
 - Microsoft Power BI Desktop. [Töltse le ingyenesen](https://powerbi.microsoft.com/get-started/).
 - Egy Microsoft Azure-fiók. [Kezdjen egy ingyenes próbaidőszakot](https://azure.microsoft.com/free/), vagy [jelentkezzen be](https://portal.azure.com/).
 - Cognitive Services API fiók a Text Analytics API felülettel. Ha még nincs fiókja, [regisztráljon](../../cognitive-services-apis-create-account.md) és használhatja a havi 5000 tranzakciót tartalmazó ingyenes csomagot (lásd [díjszabás](https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics/)) az oktatóanyag befejezéséhez.
-- Kell még a regisztráció során létrejött [Text Analytics hozzáférési kulcs](../how-tos/text-analytics-how-to-access-key.md).
+- Kell még a regisztráció során létrejött [Text Analytics hozzáférési kulcs](../../cognitive-services-apis-create-account.md#get-the-keys-for-your-resource).
 - Ügyfelek megjegyzései. Használhatja [a példaadatokat](https://aka.ms/cogsvc/ta), de a saját adatait is. Az oktatóanyagban azt feltételezzük, hogy a példaadatainkat használja.
 
 ## <a name="load-customer-data"></a>Ügyféladatok betöltése

@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 07/23/2019
 ms.author: diberry
-ms.openlocfilehash: bae772e9fcc9f275fcf593cfd5bf9d0506a89f7c
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: d7049c729140591717782b191f970f4295140cb8
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68594689"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68697926"
 ---
 # <a name="cognitive-services-and-machine-learning"></a>Cognitive Services és gépi tanulás
 
@@ -105,11 +105,11 @@ A következő adattípusok kategorizálják az egyes szolgáltatásokat, amelyek
 |[QnA Maker](./QnAMaker/Overview/overview.md)||x||
 |[Beszélő felismerő](./speaker-recognition/home.md)||x||
 |[Beszédfelismerési szöveg – beszéd (TTS)](speech-service/text-to-speech.md)|x|x||
-|[Beszéd-beszéd – szöveg (STT)](/speech-service/speech-to-text.md)|x|x||
+|[Beszéd-beszéd – szöveg (STT)](speech-service/speech-to-text.md)|x|x||
 |[Beszédfordítás](speech-service/speech-translation.md)|x|||
 |[Szövegelemzés](./text-analytics/overview.md)|x|||
 |[Translator Text](./translator/translator-info-overview.md)|x|||
-|[Translator Text – egyéni fordító]()||x||
+|[Translator Text – egyéni fordító](./translator/custom-translator/overview.md)||x||
 
 \* A megszemélyesítő csak a szolgáltatás által gyűjtött betanítási adatokat igényli (valós időben működik) a szabályzat és az adatok kiértékeléséhez. A személyre szabott beállításhoz nincs szükség nagyméretű korábbi adatkészletekre a kezdeti vagy a kötegelt képzéshez. 
 

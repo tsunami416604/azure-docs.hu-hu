@@ -1,5 +1,5 @@
 ---
-title: Mi az Text Analytics API? Képességek
+title: Mi a Text Analytics API? Képességek
 titleSuffix: Azure Cognitive Services
 description: Használja az Azure Cognitive Services Text Analytics API az érzelmek elemzéséhez, a kulcsfontosságú kifejezés kinyeréséhez, a nyelvfelismerés és az entitások felismeréséhez.
 services: cognitive-services
@@ -10,14 +10,14 @@ ms.subservice: text-analytics
 ms.topic: overview
 ms.date: 07/30/2019
 ms.author: aahi
-ms.openlocfilehash: f84d980dd01d1e9f3ffcc00d73f712211524cb42
-ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
+ms.openlocfilehash: ee4551f6a31436ef2322fcea3a0c479b45036993
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68667644"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68697613"
 ---
-# <a name="what-is-text-analytics-api"></a>Mi az Text Analytics API?
+# <a name="what-is-the-text-analytics-api"></a>Mi a Text Analytics API?
 
 A Text Analytics API egy felhőalapú szolgáltatás, amely fejlett természetes nyelvi feldolgozást tesz lehetővé nyers szövegként, és négy fő funkciót tartalmaz: az érzelmek elemzését, a kulcsfontosságú kifejezés kinyerését, a nyelvfelismerés és az entitások felismerését.
 
@@ -25,19 +25,19 @@ Az API az [Azure Cognitive Services](https://docs.microsoft.com/azure/cognitive-
 
 > [!VIDEO https://channel9.msdn.com/Shows/AI-Show/Understanding-Text-using-Cognitive-Services/player]
 
-A szöveg elemzése különböző dolgokat jelenthet, de a Cognitive Servicesban a Text Analytics API négyféle elemzési típust biztosít az alább leírtak szerint.
+A szöveg elemzése különböző dolgokat jelenthet, de a Cognitive Servicesban a Text Analytics API négyféle elemzési típust biztosít az alább leírtak szerint. Ezeket a szolgáltatásokat használhatja a [REST API](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1/), vagy a [.net](quickstarts/csharp.md), a [Python](quickstarts/python-sdk.md), a [Node. js](quickstarts/nodejs-sdk.md), a [Go](quickstarts/go-sdk.md)vagy a [Ruby](quickstarts/ruby-sdk.md)ügyféloldali kódtár használatával.
 
 ## <a name="sentiment-analysis"></a>Véleményelemzés
-Az [érzelmek elemzésével](how-tos/text-analytics-how-to-sentiment-analysis.md) megtudhatja, hogy az ügyfelek mit gondolnak a márka vagy a téma alapján, ha a nyers szöveget a pozitív vagy negatív hangulatú nyomokra elemzi. Az API minden dokumentumhoz visszaad egy 0 és 1 közötti hangulati pontszámot, ahol az 1 a legpozitívabb pontszám.<br /> Az elemzési modellek előzetes betanítása a Microsoft széles körű szövegtörzs-technológiái és természetes nyelvi technológiái segítségével történik. [Bizonyos nyelvek](text-analytics-supported-languages.md) esetében az API képes a megadott szöveg elemzéséből kiszámított pontszámot közvetlenül visszaadni a hívó alkalmazásnak. Használhatja a [Rest](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1/operations/56f30ceeeda5650db055a3c9) API-t vagy a [.net](https://docs.microsoft.com/azure/cognitive-services/text-analytics/quickstarts/csharp#create-the-visual-studio-solution-and-install-the-sdk) SDK-t.
+Az [érzelmek elemzésével](how-tos/text-analytics-how-to-sentiment-analysis.md) megtudhatja, hogy az ügyfelek mit gondolnak a márka vagy a téma alapján, ha a nyers szöveget a pozitív vagy negatív hangulatú nyomokra elemzi. Az API minden dokumentumhoz visszaad egy 0 és 1 közötti hangulati pontszámot, ahol az 1 a legpozitívabb pontszám.<br /> Az elemzési modellek előzetes betanítása a Microsoft széles körű szövegtörzs-technológiái és természetes nyelvi technológiái segítségével történik. [Bizonyos nyelvek](text-analytics-supported-languages.md) esetében az API képes a megadott szöveg elemzéséből kiszámított pontszámot közvetlenül visszaadni a hívó alkalmazásnak.
 
 ## <a name="key-phrase-extraction"></a>Kulcskifejezések kinyerése
-A fő pontok gyors azonosításához automatikusan Kinyeri a [legfontosabb kifejezéseket](how-tos/text-analytics-how-to-keyword-extraction.md) . Például „Az étel finom volt, és a személyzet kedves volt” bemeneti szövegből az API a következő fő pontokat adja vissza: „étel” és „személyzet kedves”. Használhatja a [Rest](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1/operations/56f30ceeeda5650db055a3c6) API-t vagy a [.net](https://docs.microsoft.com/azure/cognitive-services/text-analytics/quickstarts/csharp#create-the-visual-studio-solution-and-install-the-sdk) SDK-t.
+A fő pontok gyors azonosításához automatikusan Kinyeri a [legfontosabb kifejezéseket](how-tos/text-analytics-how-to-keyword-extraction.md) . Például „Az étel finom volt, és a személyzet kedves volt” bemeneti szövegből az API a következő fő pontokat adja vissza: „étel” és „személyzet kedves”.
 
 ## <a name="language-detection"></a>Nyelvfelismerés
-Meghatározhatja, hogy [a bemeneti szöveg milyen nyelven legyen beírva](how-tos/text-analytics-how-to-language-detection.md) , és egyetlen nyelvi kódot jelentsen a kérelemben elküldött összes dokumentumhoz számos nyelven, változatban, dialektusban és egyes regionális/kulturális nyelveken. A nyelvkód egy pontszámmal párba állítva jelzi a pontszám erősségét. Használhatja a [Rest](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1/operations/56f30ceeeda5650db055a3c7) API-t vagy a [.net](https://docs.microsoft.com/azure/cognitive-services/text-analytics/quickstarts/csharp#create-the-visual-studio-solution-and-install-the-sdk) SDK-t.
+Meghatározhatja, hogy [a bemeneti szöveg milyen nyelven legyen beírva](how-tos/text-analytics-how-to-language-detection.md) , és egyetlen nyelvi kódot jelentsen a kérelemben elküldött összes dokumentumhoz számos nyelven, változatban, dialektusban és egyes regionális/kulturális nyelveken. A nyelvkód egy pontszámmal párba állítva jelzi a pontszám erősségét.
 
 ## <a name="named-entity-recognition"></a>Megnevezett entitások felismerése
-[Azonosíthatja és kategorizálhatja](how-tos/text-analytics-how-to-entity-linking.md) a szövegben lévő entitásokat személyként, helyként, szervezetként, dátum/idő, mennyiség, százalék, pénznem stb. A rendszer felismeri a közismert entitásokat, amelyeket összekapcsol az interneten található további információkkal. Használhatja a [Rest](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1/operations/5ac4251d5b4ccd1554da7634) API-t.
+[Azonosíthatja és kategorizálhatja](how-tos/text-analytics-how-to-entity-linking.md) a szövegben lévő entitásokat személyként, helyként, szervezetként, dátum/idő, mennyiség, százalék, pénznem stb. A rendszer felismeri a közismert entitásokat, amelyeket összekapcsol az interneten található további információkkal.
 
 ## <a name="use-containers"></a>Tárolók használata
 
@@ -47,7 +47,7 @@ Meghatározhatja, hogy [a bemeneti szöveg milyen nyelven legyen beírva](how-to
 
 A munkafolyamat egyszerű: benyújtjuk az adatokat elemzésre és a kódban kezeljük a kimeneteket. Az elemzők használatra készek, esetükben nincs szükség további konfigurációs beállításokra vagy testreszabásra.
 
-1. [Regisztráljon](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) egy [hozzáférési kulcs](how-tos/text-analytics-how-to-access-key.md) beszerzéséhez. A kulcsot minden egyes kérés alkalmával meg kell adni.
+1. [Hozzon létre egy Azure](../cognitive-services-apis-create-account.md) -erőforrást a Text Analyticshoz. Ezt követően [szerezze be a](../cognitive-services-apis-create-account.md#get-the-keys-for-your-resource) kérések hitelesítéséhez létrehozott kulcsot.
 
 2. [Állítson össze egy kérést](how-tos/text-analytics-how-to-call-api.md#json-schema), amely az adatokat nyers, strukturálatlan szövegként tartalmazza, JSON formátumban.
 
@@ -75,7 +75,7 @@ Elkezdheti használni a Text Analytics API a folyamatokban, még akkor is, ha ne
 
 ## <a name="supported-languages"></a>Támogatott nyelvek
 
-Ez a szakasz egy külön cikkbe lett áthelyezve a jobb átláthatóság érdekében. Lásd a [Text Analytics API-ban támogatott nyelveket ismertető](text-analytics-supported-languages.md) cikket.
+Ez a szakasz egy külön cikkbe lett áthelyezve a jobb átláthatóság érdekében. A tartalomhoz [a Text Analytics API támogatott nyelveket](text-analytics-supported-languages.md) tekintheti meg.
 
 <a name="data-limits"></a>
 
@@ -116,4 +116,4 @@ A Text Analytics API Unicode-kódolást használ a szövegek megjelenítéséhez
 
 + A Azure Databricks használatával mélyebben kihasználhatja ezt az [érzelmi elemzést ismertető oktatóanyagot](https://docs.microsoft.com/azure/azure-databricks/databricks-sentiment-analysis-cognitive-services) .
 
-+ Tekintse meg a blogbejegyzések listáját, valamint további videókat arról, hogyan használhatók a Text Analytics API más eszközökkel és technológiákkal a [külső & közösségi tartalom oldalán](text-analytics-resource-external-community.md).
++ Tekintse meg a blogbejegyzések listáját, valamint további videókat arról, hogyan használhatja a Text Analytics APIt a [külső & közösségi tartalom oldalán](text-analytics-resource-external-community.md)található egyéb eszközökkel és technológiákkal.

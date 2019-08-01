@@ -1,29 +1,28 @@
 ---
-title: Oktatóanyag – kiterjesztése az Azure File Sync Windows-fájlkiszolgálók |} A Microsoft Docs
-description: Ismerje meg, hogyan bővítheti az Azure File Sync Windows-fájlkiszolgálók elejétől a végéig.
-services: storage
+title: Oktatóanyag – Windows-fájlkiszolgálók kiterjesztése a Azure File Syncsal | Microsoft Docs
+description: Megtudhatja, hogyan terjesztheti ki a Windows-fájlkiszolgálók Azure File Syncokkal való bővítését az elejétől a végéig.
 author: roygara
 ms.service: storage
 ms.topic: tutorial
 ms.date: 10/23/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: df3850a839ac789957a9adffb7122a0b58987781
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: f71a27ea4da6bce5832287e948e0731672280196
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64705063"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68699490"
 ---
 # <a name="tutorial-extend-windows-file-servers-with-azure-file-sync"></a>Oktatóanyag: Windows-fájlkiszolgálók kiterjesztése az Azure File Sync használatával
 
-A cikk egy Windows server tárolási kapacitását kiterjesztése az Azure File Sync használatával alapvető lépéseit mutatja be. Az oktatóanyag egy Azure virtuális gépként (VM) a Windows Server szolgáltatásokat, bár a helyszíni kiszolgálók általában teheti ezt a folyamatot. A saját környezetben az Azure File Sync építve annak a [Azure File Sync üzembe helyezése](storage-sync-files-deployment-guide.md) cikk.
+A cikk bemutatja a Windows Server tárolási kapacitásának a Azure File Sync használatával történő kiterjesztésének alapvető lépéseit. Bár az oktatóanyag a Windows Servert Azure-beli virtuális gépekként (VM) is tartalmazza, ezt a folyamatot általában a helyszíni kiszolgálókon végezze el. A Azure File Sync üzembe helyezésére vonatkozó utasításokat az [üzembe helyezési Azure file Sync](storage-sync-files-deployment-guide.md) cikkben találja.
 
 > [!div class="checklist"]
 > * A Társzinkronizálási szolgáltatás üzembe helyezése
 > * A Windows Server előkészítése az Azure File Sync használatára
 > * Az Azure File Sync-ügynök telepítése
-> * A Storage Sync Service regisztrálja a Windows Server
+> * A Windows Server regisztrálása a Storage Sync szolgáltatással
 > * Szinkronizálási csoport és felhő végpont létrehozása
 > * Kiszolgálói végpont létrehozása
 
@@ -37,15 +36,15 @@ Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 
 ## <a name="prepare-your-environment"></a>A környezet előkészítése
 
-Ebben az oktatóanyagban az Azure File Sync telepítése előtt, hajtsa végre a következőket kell:
+Ebben az oktatóanyagban a következőket kell elvégeznie, mielőtt üzembe helyezi Azure File Sync:
 
-- Hozzon létre egy Azure storage-fiók és -fájlmegosztást
-- A Windows Server 2016 Datacenter virtuális gép beállítása
-- A Windows Server virtuális gép előkészítése az Azure File Sync
+- Azure Storage-fiók és-fájlmegosztás létrehozása
+- Windows Server 2016 Datacenter rendszerű virtuális gép beállítása
+- A Windows Server rendszerű virtuális gép előkészítése Azure File Sync
 
 ### <a name="create-a-folder-and-txt-file"></a>Mappa és .txt fájl létrehozása
 
-A helyi számítógépen hozzon létre egy új, _FilesToSync_ nevű mappát, és adjon hozzá egy _mytestdoc.txt_ nevű szöveges fájlt. később a fájlmegosztáshoz ezt a fájlt fogja feltölteni ebben az oktatóanyagban.
+A helyi számítógépen hozzon létre egy új, _FilesToSync_ nevű mappát, és adjon hozzá egy _mytestdoc.txt_ nevű szöveges fájlt. Az oktatóanyag későbbi részében fel kell töltenie a fájlt a fájlmegosztásba.
 
 ### <a name="create-a-storage-account"></a>Tárfiók létrehozása
 
@@ -53,54 +52,54 @@ A helyi számítógépen hozzon létre egy új, _FilesToSync_ nevű mappát, és
 
 ### <a name="create-a-file-share"></a>Fájlmegosztás létrehozása
 
-Miután telepített egy Azure storage-fiókot, hozzon létre fájlmegosztást.
+Egy Azure Storage-fiók üzembe helyezése után létre kell hoznia egy fájlmegosztást.
 
-1. Az Azure Portalon válassza ki a **erőforrás megnyitása**.
-1. Válassza ki **fájlok** a storage-fiók panelen.
+1. A Azure Portal válassza az **Ugrás erőforráshoz**lehetőséget.
+1. Válassza a **fájlok** elemet a Storage-fiók ablaktáblán.
 
     ![Fájlok kiválasztása](./media/storage-sync-files-extend-servers/click-files.png)
 
-1. Válassza ki **+ fájlmegosztás**.
+1. Válassza a **+ fájlmegosztás**lehetőséget.
 
-    ![Válassza ki a fájlmegosztás hozzáadása gombra](./media/storage-sync-files-extend-servers/create-file-share-portal2.png)
+    ![Válassza a fájlmegosztás hozzáadása gombot](./media/storage-sync-files-extend-servers/create-file-share-portal2.png)
 
-1. Nevezze el az Új fájlmegosztás _afsfileshare_. Adja meg az "1" számára a **kvóta**, majd válassza ki **létrehozás**. A kvóta legfeljebb 5 TiB lehet, de ebben az oktatóanyagban csak 1 GB-ra van szükségünk.
+1. Nevezze el az új fájlmegosztás _afsfileshare_. Adja meg az "1"értéket a kvótához, majd válassza a **Létrehozás**lehetőséget. A kvóta legfeljebb 5 TiB lehet, de ebben az oktatóanyagban csak 1 GB-ra van szükségünk.
 
     ![Adjon meg nevet és kvótát az új fájlmegosztás számára](./media/storage-sync-files-extend-servers/create-file-share-portal3.png)
 
-1. Válassza ki az Új fájlmegosztás. Válassza ki a fájlmegosztás helyét, **feltöltése**.
+1. Válassza ki az új fájlmegosztást. A fájlmegosztás helyén válassza a **feltöltés**lehetőséget.
 
     ![Fájl feltöltése](./media/storage-sync-files-extend-servers/create-file-share-portal5.png)
 
-1. Keresse meg a _FilesToSync_ mappát, ahol létrehozta a .txt fájlt, jelölje be _mytestdoc.txt_ válassza **feltöltése**.
+1. Keresse meg azt a _FilesToSync_ mappát, ahová a. txt fájlt létrehozta, válassza a _mytestdoc. txt_ elemet, és válassza a **feltöltés**lehetőséget.
 
     ![Fájlmegosztás tallózása](./media/storage-sync-files-extend-servers/create-file-share-portal6.png)
 
-Ezen a ponton Ezzel létrehozott egy tárfiókot és a egy fájlmegosztást, egy fájlt. Ezután üzembe helyezi a Windows Server 2016 Datacenter, amelyek a helyszíni kiszolgáló ebben az oktatóanyagban egy Azure virtuális Gépen.
+Ezen a ponton létrehozta a Storage-fiókot és egy fájlmegosztást egy fájllal. Ezután telepítsen egy Azure-beli virtuális gépet a Windows Server 2016 Datacenter használatával, amely a helyszíni kiszolgálót képviseli ebben az oktatóanyagban.
 
 ### <a name="deploy-a-vm-and-attach-a-data-disk"></a>Virtuális gép üzembe helyezése és adatlemez csatolása
 
-1. Nyissa meg az Azure Portalon, és bontsa ki a bal oldali menüben. Válasszon **erőforrás létrehozása** a bal felső sarkában.
-1. A keresőmezőbe az eszközlista feletti **Azure Marketplace-en** erőforrásokat, keressen **Windows Server 2016 Datacenter** , és jelölje ki az eredményeket. Válassza a **Létrehozás** elemet.
-1. Nyissa meg a **alapjai** fülre. A **projektadatok**, válassza ki az ehhez az oktatóanyaghoz létrehozott erőforráscsoportot.
+1. Lépjen a Azure Portalra, és bontsa ki a bal oldali menüt. Válassza az **erőforrás létrehozása** lehetőséget a bal felső sarokban.
+1. Az **Azure Marketplace** -erőforrások listája fölötti keresőmezőbe keresse meg a **Windows Server 2016 Datacenter** kifejezést, és válassza ki a kívánt eredményt. Válassza a **Létrehozás** lehetőséget.
+1. Nyissa meg az **alapok** lapot. A **Project Details (projekt részletei**) területen válassza ki az oktatóanyaghoz létrehozott erőforráscsoportot.
 
-   ![Írja be a virtuális gép alapvető adatait a portálpanelen](./media/storage-sync-files-extend-servers/vm-resource-group-and-subscription.png)
+   ![Adja meg a virtuális gép alapszintű adatait a portál paneljén](./media/storage-sync-files-extend-servers/vm-resource-group-and-subscription.png)
 
-1. A **példány részletei**, adja meg a virtuális gép nevét. Például _myVM_.
-1. Ne módosítsa az alapértelmezett beállításokat az **régió**, **rendelkezésre állási beállítások**, **kép**, és **mérete**.
+1. A **példány részletei**területen adja meg a virtuális gép nevét. Használja például a _myVM_.
+1. Ne módosítsa a **régió**, a **rendelkezésre állási beállítások**, a **képek**és a **méret**alapértelmezett beállításait.
 1. A **Rendszergazdai fiók** területen adjon meg egy **Felhasználónevet** és egy **Jelszót** a virtuális géphez.
-1. Alatt **bejövőport-szabályok**, válassza a **lehetővé teszi a kiválasztott portok** , majd **RDP (3389-es)** és **HTTP** a legördülő menüből.
+1. A **bejövő portszabályok**területen válassza a **kijelölt portok engedélyezése** lehetőséget, majd az **RDP (3389)** és a **http** elemet a legördülő menüből.
 
 1. A virtuális gép létrehozása előtt el kell készíteni az adatlemezt.
 
-   1. Válassza ki **tovább: lemezek**.
+   1. Válassza a **Tovább: lemezek**lehetőséget.
 
       ![Adatlemezek hozzáadása](./media/storage-sync-files-extend-servers/vm-add-data-disk.png)
 
-   1. Az a **lemezek** lap **beállítások lemez**, meghagyhatja az alapértelmezett beállításokat.
-   1. A **ADATLEMEZEK**válassza **létrehozása és a egy új lemez csatolása**.
+   1. A **lemezek** lap **lemez beállításai**területén hagyja meg az alapértelmezett értékeket.
+   1. Azadatlemezek területen válassza az **új lemez létrehozása és csatolása**lehetőséget.
 
-   1. Használhatja az alapértelmezett beállításokat az alábbiakat kivéve **mérete (GiB)**, amely módosíthatja **1 GB-os** ehhez az oktatóanyaghoz.
+   1. Használja az alapértelmezett beállításokat a **méret (GIB)** kivételével, amelyet az OKTATÓANYAG **1 GB** -ra válthat.
 
       ![Adatlemez adatai](./media/storage-sync-files-extend-servers/vm-create-new-disk-details.png)
 
@@ -108,42 +107,42 @@ Ezen a ponton Ezzel létrehozott egy tárfiókot és a egy fájlmegosztást, egy
 1. Válassza az **Áttekintés + létrehozás** lehetőséget.
 1. Kattintson a **Létrehozás** gombra.
 
-   Kiválaszthatja a **értesítések** ikonra kattintva tekintse meg a **üzembe helyezés folyamatban**. Új virtuális gép létrehozása néhány percet is igénybe vehet.
+   Az **értesítések** ikont kiválasztva megtekintheti a **telepítési folyamatot**. Egy új virtuális gép létrehozása eltarthat néhány percig.
 
-1. A virtuális gép üzembe helyezésének befejezése után jelölje ki a **erőforrás megnyitása**.
+1. A virtuális gép üzembe helyezésének befejezése után válassza **az Ugrás erőforráshoz**lehetőséget.
 
    ![Erőforrás megnyitása](./media/storage-sync-files-extend-servers/vm-gotoresource.png)
 
-Ezen a ponton már létrehozta az új virtuális gépet és csatolt egy adatlemezt. Ezután csatlakozzon a virtuális géphez.
+Ezen a ponton már létrehozta az új virtuális gépet és csatolt egy adatlemezt. Ezután kapcsolódjon a virtuális géphez.
 
 ### <a name="connect-to-your-vm"></a>Csatlakozás a virtuális géphez
 
-1. Az Azure Portalon válassza ki a **Connect** a virtuális gép tulajdonságai lapon.
+1. A Azure Portal a virtuális gép tulajdonságai lapon válassza a **kapcsolat** lehetőséget.
 
    ![Csatlakozás az Azure-beli virtuális gépekhez a portálról](./media/storage-sync-files-extend-servers/connect-vm.png)
 
-1. Az a **csatlakozhat a virtuális gép** lapon, a csatlakozás az alapértelmezett beállításokat tartsa **IP-cím** 3389-es porton keresztül. Válassza az **RDP-fájl letöltése** parancsot.
+1. A **Csatlakozás virtuális géphez** lapon tartsa meg az alapértelmezett beállításokat, hogy az 3389-as porton keresztül kapcsolódjon az **IP-címek** között. Válassza az **RDP-fájl letöltése** parancsot.
 
    ![Az RDP-fájl letöltése](./media/storage-sync-files-extend-servers/download-rdp.png)
 
-1. Nyissa meg a letöltött RDP-fájlt, és válassza ki **Connect** amikor a rendszer kéri.
-1. A **Windows rendszerbiztonság** ablakban válassza a **További lehetőségek**, majd a **Másik fiók használata** elemet. Írja be a felhasználónevet, *localhost\username*, adja meg a jelszót, amelyet a virtuális gép, és válassza **OK**.
+1. Nyissa meg a letöltött RDP-fájlt, és válassza a **Kapcsolódás** lehetőséget, amikor a rendszer kéri.
+1. A **Windows rendszerbiztonság** ablakban válassza a **További lehetőségek**, majd a **Másik fiók használata** elemet. Írja be a felhasználónevet a *localhost\username*mezőbe, adja meg a virtuális gép számára létrehozott jelszót, majd kattintson **az OK gombra**.
 
    ![További lehetőségek](./media/storage-sync-files-extend-servers/local-host2.png)
 
-1. A bejelentkezés során egy figyelmeztetés jelenhet meg a tanúsítvánnyal kapcsolatban. Válassza ki **Igen** vagy **Folytatás** a kapcsolat létrehozásához.
+1. A bejelentkezés során egy figyelmeztetés jelenhet meg a tanúsítvánnyal kapcsolatban. Válassza az **Igen** vagy a **Folytatás** lehetőséget a kapcsolódás létrehozásához.
 
-### <a name="prepare-the-windows-server"></a>A Windows-kiszolgáló előkészítése
+### <a name="prepare-the-windows-server"></a>A Windows Server előkészítése
 
-A Windows Server 2016 Datacenter-kiszolgáló tiltsa le az Internet Explorer fokozott biztonsági beállításai. Ez a lépés csak a kiszolgáló kezdeti regisztrációjakor szükséges. A kiszolgáló regisztrációja után újra engedélyezheti.
+A Windows Server 2016 Datacenter Server esetében tiltsa le az Internet Explorer fokozott biztonsági beállításait. Ez a lépés csak a kiszolgáló kezdeti regisztrációjakor szükséges. A kiszolgáló regisztrációja után újra engedélyezheti.
 
-A Windows Server 2016 Datacenter VM, a Kiszolgálókezelő automatikusan megnyílik.  Ha alapértelmezés szerint a Kiszolgálókezelő nem nyílik meg, keresse meg azt a Fájlkezelőben.
+A Windows Server 2016 Datacenter rendszerű virtuális gépen a Kiszolgálókezelő automatikusan megnyílik.  Ha a Kiszolgálókezelő alapértelmezés szerint nem nyílik meg, keresse meg a fájlkezelőben.
 
-1. A **Kiszolgálókezelő**válassza **helyi kiszolgáló**.
+1. A **Kiszolgálókezelőben**válassza a **helyi kiszolgáló**lehetőséget.
 
    ![A "Helyi kiszolgáló" a Kiszolgálókezelő felhasználói felület bal oldalán](media/storage-sync-files-extend-servers/prepare-server-disable-ieesc-1.png)
 
-1. Az a **tulajdonságok** ablaktáblán jelölje ki a hivatkozást **Internet Explorer fokozott biztonsági beállításai**.  
+1. A **Tulajdonságok** ablaktáblán válassza ki az **Internet Explorer fokozott biztonsági beállításainak**hivatkozását.  
 
     ![Az "Internet Explorer – fokozott biztonsági beállítások" panel a Kiszolgálókezelőben](media/storage-sync-files-extend-servers/prepare-server-disable-ieesc-2.png)
 
@@ -155,41 +154,41 @@ Most már az adatlemezt is hozzáadhatja a virtuális géphez.
 
 ### <a name="add-the-data-disk"></a>Az adatlemez hozzáadása
 
-1. Mialatt továbbra is a **Windows Server 2016 Datacenter** virtuális gép, jelölje ki **fájl- és tárolási szolgáltatások** > **kötetek** > **lemezek** .
+1. Miközben továbbra is a **Windows Server 2016 Datacenter** VM-ben van, válassza a **fájlok és tárolási szolgáltatások** > **kötetek** > **lemez**lehetőséget.
 
     ![Adatlemez](media/storage-sync-files-extend-servers/your-disk.png)
 
-1. Kattintson a jobb gombbal az 1 GB-os lemezt nevű **Msft virtuális lemez** válassza **új kötet**.
-1. A varázsló befejezése. Az alapértelmezett beállításokat használja, és jegyezze fel a hozzárendelt meghajtóbetűjelet.
+1. Kattintson a jobb gombbal a **MSFT virtuális lemez** nevű 1 GB-os lemezre, és válassza az **új kötet**lehetőséget.
+1. A varázsló befejezése. Használja az alapértelmezett beállításokat, és jegyezze fel a hozzárendelt meghajtóbetűjelet.
 1. Kattintson a **Létrehozás** gombra.
-1. Válassza ki **Bezárás**.
+1. Válassza a **Bezárás**lehetőséget.
 
-   Ezen a ponton a lemez online állapotba került és létrehozott rajta egy kötetet. Nyissa meg a Fájlkezelőt a Windows Server virtuális gépen a nemrégiben hozzáadott adatlemez jelenlétét.
+   Ezen a ponton a lemez online állapotba került és létrehozott rajta egy kötetet. A Windows Server rendszerű virtuális gépen nyissa meg a fájlkezelőt, és erősítse meg a közelmúltban hozzáadott adatlemez jelenlétét.
 
-1. A Fájlkezelőben a virtuális gép, bontsa ki a **Ez a gép** , és nyissa meg az új meghajtó. Ebben a példában az F: meghajtóról van szó.
+1. A virtuális gép fájlkezelőben bontsa ki **ezt a számítógépet** , és nyissa meg az új meghajtót. Ebben a példában az F: meghajtóról van szó.
 1. Kattintson a jobb gombbal, és válassza ki az **Új** > **mappa** lehetőséget. A mappa neve legyen _FilesToSync_.
 1. Nyissa meg a **FilesToSync** mappát.
 1. Kattintson a jobb gombbal, és válassza ki az **Új** > **Szöveges dokumentum** lehetőséget. A szövegfájl neve legyen _MyTestFile_.
 
     ![Új szöveges fájl hozzáadása](media/storage-sync-files-extend-servers/new-file.png)
 
-1. Bezárás **fájlkezelő** és **Kiszolgálókezelő**.
+1. A **fájlkezelő** és a **Kiszolgálókezelő**bezárásához.
 
-### <a name="download-the-azure-powershell-module"></a>Az Azure PowerShell-modul letöltése
+### <a name="download-the-azure-powershell-module"></a>A Azure PowerShell modul letöltése
 
-Ezután a Windows Server 2016 Datacenter VM, telepítse az Azure PowerShell-modul a kiszolgálón.
+Ezután a Windows Server 2016 Datacenter VM-ben telepítse a Azure PowerShell modult a kiszolgálóra.
 
-1. A virtuális gépen nyissa meg egy rendszergazda jogú PowerShell-ablakban.
-1. Futtassa az alábbi parancsot:
+1. Nyisson meg egy rendszergazda jogú PowerShell-ablakot a virtuális gépen.
+1. Futtassa a következő parancsot:
 
    ```powershell
    Install-Module -Name Az
    ```
 
    > [!NOTE]
-   > Ha a NuGet 2.8.5.201-esnél régebbi verziót, töltse le és telepítse a legújabb verzió kéri.
+   > Ha a 2.8.5.201-nál régebbi NuGet-verzióval rendelkezik, a rendszer felkéri a NuGet legújabb verziójának letöltésére és telepítésére.
 
-   Alapértelmezés szerint a PowerShell-galéria nincs konfigurálva a PowerShellGet megbízható adattáraként. A PSGallery első használatakor, a következő üzenet jelenik meg:
+   Alapértelmezés szerint a PowerShell-galéria nincs konfigurálva a PowerShellGet megbízható adattáraként. Amikor először használja a PSGallery, a következő üzenet jelenik meg:
 
    ```output
    Untrusted repository
@@ -200,17 +199,17 @@ Ezután a Windows Server 2016 Datacenter VM, telepítse az Azure PowerShell-modu
    [Y] Yes  [A] Yes to All  [N] No  [L] No to All  [S] Suspend  [?] Help (default is "N"):
    ```
 
-1. Válasz **Igen** vagy **Igen, az összeset** a telepítés folytatásához.
+1. A telepítés folytatásához válaszoljon az **Igen** vagy **az Igen értékre** .
 
 Az `Az` modul az Azure PowerShell-parancsmagok összesített modulja. A modul telepítésével letölti az összes elérhető Azure Resource Manager-modult, és használatra elérhetővé teszi a parancsmagjaikat.
 
-Ezen a ponton beállította a környezet-t az oktatóanyaghoz. Készen áll a Storage Sync Service telepítése.
+Ezen a ponton beállította a környezetét az oktatóanyaghoz. Készen áll a Storage Sync szolgáltatás üzembe helyezésére.
 
 ## <a name="deploy-the-service"></a>A szolgáltatás üzembe helyezése
 
-Az Azure File Sync üzembe helyezéséhez először helyez egy **Társzinkronizálási szolgáltatás** helyezzen egy erőforráscsoportban a kiválasztott előfizetéshez tartozó erőforrás. A Storage Sync Service a hozzáférési engedélyek örökli az előfizetésben és erőforráscsoportban.
+Azure File Sync telepítéséhez először helyezzen el egy **Storage Sync Service** -erőforrást egy erőforráscsoporthoz a kiválasztott előfizetéshez. A Storage Sync szolgáltatás örökli a hozzáférési engedélyeket az előfizetéséhez és az erőforráscsoporthoz.
 
-1. Az Azure Portalon válassza ki a **erőforrás létrehozása** és keressen **Azure File Sync**.
+1. A Azure Portal válassza az **erőforrás létrehozása** lehetőséget, majd keresse meg a **Azure file Sync**.
 1. Válassza ki az **Azure File Sync** elemet a keresési eredmények közül.
 1. Válassza ki **Létrehozás** elemet a **Társzinkronizálás üzembe helyezése** lap megnyitásához.
 
@@ -218,46 +217,46 @@ Az Azure File Sync üzembe helyezéséhez először helyez egy **Társzinkroniz�
 
    A megnyíló panelen adja meg a következőket:
 
-   | Érték | Leírás |
+   | Value | Leírás |
    | ----- | ----- |
-   | **Name (Név)** | A Társzinkronizálási szolgáltatás egyedi neve (előfizetésenként).<br><br>Használat _afssyncservice02_ ehhez az oktatóanyaghoz. |
-   | **Előfizetés** | Az Azure-előfizetés ehhez az oktatóanyaghoz használja. |
-   | **Erőforráscsoport** | A Storage Sync Service tartalmazó erőforráscsoportot.<br><br>Használat _afsresgroup101918_ ehhez az oktatóanyaghoz. |
-   | **Hely** | USA keleti régiója |
+   | **Name** | A Társzinkronizálási szolgáltatás egyedi neve (előfizetésenként).<br><br>A _afssyncservice02_ használata ehhez az oktatóanyaghoz. |
+   | **Előfizetés** | Az oktatóanyaghoz használt Azure-előfizetés. |
+   | **Erőforráscsoport** | A Storage Sync szolgáltatást tartalmazó erőforráscsoport.<br><br>A _afsresgroup101918_ használata ehhez az oktatóanyaghoz. |
+   | **Location** | East US |
 
 1. Ha elkészült, válassza ki a **Létrehozás** elemet a **Társzinkronizálási szolgáltatás** üzembe helyezéséhez.
-1. Válassza ki a **értesítések** lap > **erőforrás megnyitása**.
+1. Válassza az **értesítések** lapot > **Ugrás az erőforráshoz**lehetőségre.
 
 ## <a name="install-the-agent"></a>Az ügynök telepítése
 
 Az Azure File Sync ügynök egy letölthető csomag, amely lehetővé teszi a Windows Server szinkronizálását Azure-fájlmegosztással.
 
-1. Az a **Windows Server 2016 Datacenter** VM, nyílt **az Internet Explorer**.
-1. Nyissa meg a [Microsoft Download Centert](https://go.microsoft.com/fwlink/?linkid=858257). Görgessen le a **Azure File Sync ügynök** szakaszt, és válassza **letöltése**.
+1. A **Windows Server 2016 Datacenter rendszerű** virtuális gépen nyissa meg az **Internet Explorert**.
+1. Nyissa meg a [Microsoft Download Centert](https://go.microsoft.com/fwlink/?linkid=858257). Görgessen le a **Azure file Sync ügynök** szakaszhoz, és válassza a **Letöltés**lehetőséget.
 
    ![A szinkronizálási ügynök letöltése](media/storage-sync-files-extend-servers/sync-agent-download.png)
 
-1. Jelölje be a jelölőnégyzetet a **StorageSyncAgent_V3_WS2016. EXE** válassza **tovább**.
+1. Jelölje be a StorageSyncAgent_V3_WS2016 jelölőnégyzetét **. EXE** és kattintson a **tovább**gombra.
 
    ![Ügynök kiválasztása](media/storage-sync-files-extend-servers/select-agent.png)
 
-1. Válassza ki **egyszeri engedélyezés** > **futtatása** > **nyílt**.
+1. Válassza az **Engedélyezés egyszeri** > **Futtatás** > **Megnyitás**lehetőséget.
 1. Ha még nem tette meg, zárja be a PowerShell-ablakot.
 1. Fogadja el az alapértelmezett beállításokat a **Társzinkronizálási ügynök telepítő varázslóban**.
 1. Válassza az **Install** (Telepítés) lehetőséget.
 1. Válassza a **Finish** (Befejezés) elemet.
 
-Sikeresen üzembe helyezve az Azure-szinkronizálási szolgáltatás és a Windows Server 2016 Datacenter virtuális gép az ügynök telepítve. Most, regisztrálnia kell a virtuális gép a Storage Sync Service.
+Üzembe helyezte a Azure Sync szolgáltatás, és telepítette az ügynököt a Windows Server 2016 Datacenter virtuális gépen. Most regisztrálnia kell a virtuális gépet a Storage Sync szolgáltatással.
 
 ## <a name="register-windows-server"></a>A Windows Server regisztrálása
 
-A Windows-kiszolgáló regisztrálása a Társzinkronizálási szolgáltatás között a kiszolgáló (vagy fürt) megbízhatósági kapcsolatot hoz létre, és a Storage Sync Service. A kiszolgáló csak egy Társzinkronizálási szolgáltatást kell regisztrálni. Más kiszolgálók és az Azure-fájlmegosztások a Storage Sync Service társított szinkronizálhatja.
+A Windows Server Storage Sync szolgáltatással való regisztrálása megbízhatósági kapcsolatot létesít a kiszolgáló (vagy fürt) és a Storage Sync szolgáltatás között. A kiszolgálók csak egy Storage Sync szolgáltatásban regisztrálhatók. Szinkronizálható más kiszolgálókkal és az adott Storage Sync szolgáltatáshoz társított Azure-fájlmegosztás használatával.
 
-A kiszolgáló regisztrációs felhasználói felület automatikusan meg kell az Azure File Sync-ügynök telepítése után. Ha nem, manuálisan is megnyithatja, a fájlok helyéről: `C:\Program Files\Azure\StorageSyncAgent\ServerRegistration.exe.`
+A kiszolgáló regisztrációjának felhasználói felületének automatikusan meg kell nyílnia a Azure File Sync ügynök telepítése után. Ha nem, akkor manuálisan is megnyithatja a fájl helye:`C:\Program Files\Azure\StorageSyncAgent\ServerRegistration.exe.`
 
-1. A kiszolgáló regisztrációs felhasználói felülete megnyitásakor a virtuális gépen válassza **OK**.
-1. Válassza ki **bejelentkezési** megkezdéséhez.
-1. Jelentkezzen be Azure-fiók hitelesítő adataival, és válassza ki **bejelentkezési**.
+1. Amikor megnyílik a kiszolgáló regisztrálása KEZELŐFELÜLET a virtuális gépen, kattintson az **OK gombra**.
+1. A kezdéshez válassza **a bejelentkezés** lehetőséget.
+1. Jelentkezzen be az Azure-fiókja hitelesítő adataival, és válassza a **Bejelentkezés**lehetőséget.
 1. Adja meg az alábbi információkat:
 
    ![A kiszolgáló regisztrációs felhasználói felület képernyőképe](media/storage-sync-files-extend-servers/signin.png)
@@ -266,29 +265,29 @@ A kiszolgáló regisztrációs felhasználói felület automatikusan meg kell az
    | ----- | ----- |
    | Érték | Leírás |
    | **Azure előfizetés** | Az előfizetés, amely tartalmazza a Társzinkronizálási szolgáltatást ehhez az oktatóanyaghoz. |
-   | **Erőforráscsoport** | A Storage Sync Service tartalmazó erőforráscsoportot. Használat _afsresgroup101918_ ehhez az oktatóanyaghoz. |
-   | **Társzinkronizálási szolgáltatás** | A Társzinkronizálási szolgáltatás neve. Használat _afssyncservice02_ ehhez az oktatóanyaghoz. |
+   | **Erőforráscsoport** | A Storage Sync szolgáltatást tartalmazó erőforráscsoport. A _afsresgroup101918_ használata ehhez az oktatóanyaghoz. |
+   | **Társzinkronizálási szolgáltatás** | A Storage Sync szolgáltatás neve. A _afssyncservice02_ használata ehhez az oktatóanyaghoz. |
 
-1. Válassza ki **regisztrálása** a kiszolgáló regisztráció befejezéséhez.
-1. A regisztrációs folyamat részeként a kér egy további bejelentkezésre. Jelentkezzen be, és válassza ki **tovább**.
+1. A kiszolgáló regisztrációjának befejezéséhez válassza a **regisztráció** lehetőséget.
+1. A regisztrációs folyamat részeként meg kell adnia egy további bejelentkezést. Jelentkezzen be, és kattintson a **Tovább gombra**.
 1. Kattintson az **OK** gombra.
 
 ## <a name="create-a-sync-group"></a>Szinkronizálási csoport létrehozása
 
-A szinkronizálási csoport határozza meg fájlok egy halmazára a szinkronizálási topológiát. Szinkronizálási csoport tartalmaznia kell egy felhőbeli végpont, amely Azure-fájlmegosztások. Szinkronizálási csoport is tartalmaznia kell legalább egy kiszolgálói végpontot. A kiszolgálói végpont egy elérési utat jelöl egy regisztrált kiszolgálón. Szinkronizálási csoport létrehozása:
+A szinkronizálási csoport határozza meg fájlok egy halmazára a szinkronizálási topológiát. A szinkronizálási csoportoknak egyetlen felhőalapú végpontot kell tartalmazniuk, amely egy Azure-fájlmegosztást jelöl. Egy szinkronizálási csoportnak egy vagy több kiszolgálói végpontot is tartalmaznia kell. A kiszolgálói végpont egy elérési utat jelöl egy regisztrált kiszolgálón. Szinkronizálási csoport létrehozása:
 
-1. Az a [az Azure portal](https://portal.azure.com/)válassza **+ szinkronizálási csoport** , a Storage Sync Service. Használat *afssyncservice02* ehhez az oktatóanyaghoz.
+1. A [Azure Portal](https://portal.azure.com/)válassza a **+ szinkronizálás csoport** lehetőséget a Storage Sync szolgáltatásból. A *afssyncservice02* használata ehhez az oktatóanyaghoz.
 
    ![Új szinkronizálási csoport létrehozása az Azure portálon](media/storage-sync-files-extend-servers/add-sync-group.png)
 
-1. Adja meg a szinkronizálási csoport létrehozása a felhőbeli végpont a következő információkat:
+1. A következő információk megadásával hozzon létre egy szinkronizálási csoportot egy felhőalapú végponttal:
 
-   | Érték | Leírás |
+   | Value | Leírás |
    | ----- | ----- |
-   | **Szinkronizálási csoport neve** | A Társzinkronizálási szolgáltatáson belül egyedinek kell lennie a névnek, de lehet bármilyen Ön számára logikus név. Használat *afssyncgroup* ehhez az oktatóanyaghoz.|
+   | **Szinkronizálási csoport neve** | A Társzinkronizálási szolgáltatáson belül egyedinek kell lennie a névnek, de lehet bármilyen Ön számára logikus név. A *afssyncgroup* használata ehhez az oktatóanyaghoz.|
    | **Előfizetés** | Az előfizetés, ahova a Társzinkronizálási szolgáltatást telepítette ehhez az oktatóanyaghoz. |
-   | **Storage-fiók** | Válasszon **válassza ki a tárfiókot**. A megjelenő panelen válassza ki a tárfiókot, amely rendelkezik a létrehozott Azure-fájlmegosztást. Használat *afsstoracct101918* ehhez az oktatóanyaghoz. |
-   | **Azure-fájlmegosztás** | A létrehozott Azure-fájlmegosztás neve. Használat *afsfileshare* ehhez az oktatóanyaghoz. |
+   | **Storage-fiók** | Válassza a **Storage-fiók kiválasztása**lehetőséget. A megjelenő panelen válassza ki azt a Storage-fiókot, amelyhez a létrehozott Azure-fájlmegosztás tartozik. A *afsstoracct101918* használata ehhez az oktatóanyaghoz. |
+   | **Azure-fájlmegosztás** | A létrehozott Azure-fájlmegosztás neve. A *afsfileshare* használata ehhez az oktatóanyaghoz. |
 
 1. Kattintson a **Létrehozás** gombra.
 
@@ -296,19 +295,19 @@ Ha kiválasztja a szinkronizálási csoportot, akkor láthatja, hogy most már r
 
 ## <a name="add-a-server-endpoint"></a>Kiszolgálói végpont felvétele
 
-Kiszolgálói végpont egy adott helyen, egy regisztrált kiszolgálón jelöli. Ha például egy kötetet az egyik mappájába. Kiszolgálói végpont hozzáadása:
+A kiszolgálói végpont a regisztrált kiszolgáló egy adott helyét jelöli. Például egy mappa egy kiszolgáló kötetén. Kiszolgálói végpont hozzáadása:
 
-1. Válassza ki az újonnan létrehozott szinkronizálási csoport majd **kiszolgálói végpont felvétele**.
+1. Válassza ki az újonnan létrehozott szinkronizálási csoportot, majd válassza a **kiszolgáló-végpont hozzáadása**elemet.
 
    ![Új kiszolgálói végpontok hozzáadása a szinkronizálási csoport panelen](media/storage-sync-files-extend-servers/add-server-endpoint.png)
 
-1. Az a **kiszolgálói végpont felvétele** panelen adja meg a kiszolgálói végpont létrehozása a következő információkat:
+1. A kiszolgálói végpont **hozzáadása** panelen adja meg a következő információkat a kiszolgálói végpont létrehozásához:
 
    | | |
    | ----- | ----- |
    | Érték | Leírás |
-   | **Regisztrált kiszolgáló** | A létrehozott kiszolgáló nevét. Használat *afsvm101918* ehhez az oktatóanyaghoz. |
-   | **Elérési út** | A Windows Server meghajtó elérési útját a létrehozott. Használat *f:\filestosync* ebben az oktatóanyagban. |
+   | **Regisztrált kiszolgáló** | A létrehozott kiszolgáló neve. A *afsvm101918* használata ehhez az oktatóanyaghoz. |
+   | **Path** | A létrehozott meghajtó Windows Server-elérési útja. A *f:\filestosync* használata ebben az oktatóanyagban. |
    | **Felhőbeli rétegzés** | Hagyja letiltott állapotban az oktatóanyaghoz. |
    | **Szabad terület a köteten** | Ebben az oktatóanyagban üresen hagyjuk. |
 
@@ -324,7 +323,7 @@ A fájlok az Azure-fájlmegosztások és a Windows Server között most már szi
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben az oktatóanyagban megtudhatta, az alapvető lépéseken, a tárolási kapacitás, a Windows Server kiterjesztése az Azure File Sync használatával. Alaposan tekintse meg az Azure File Sync üzembe helyezésének megtervezése lásd:
+Ebben az oktatóanyagban megismerte az alapvető lépéseket, amelyekkel kiterjesztheti a Windows Server tárolási kapacitását Azure File Sync használatával. A Azure File Sync központi telepítésének megtervezése alaposabban megtekinthető:
 
 > [!div class="nextstepaction"]
 > [Azure File Sync üzembe helyezésének megtervezése](./storage-sync-files-planning.md)

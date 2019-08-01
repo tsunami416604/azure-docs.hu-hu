@@ -11,16 +11,16 @@
       href: quick-start.md
     - name: Az ügyfél-SDK használata
       items:
-        - name: 'C#'
+        - name: A .NET SDK használata
           items:
             - name: Képtartalmak elemzése
               href: image-moderation-quickstart-dotnet.md
             - name: Szöveges tartalmak elemzése
               href: text-moderation-quickstart-dotnet.md
-        - name: Python
-          items:
-            - name: Szöveges tartalmak elemzése
-              href: text-moderation-quickstart-python.md
+        - name: A Python SDK használata
+          href: python-sdk-quickstart.md
+        - name: A Java SDK használata
+          href: java-sdk-quickstart.md
 - name: Oktatóanyagok
   items:
     - name: E-kereskedelmi képek moderálása

@@ -1,5 +1,5 @@
 ---
-title: 'Gyors útmutató: Válaszkeresés projekt,C#'
+title: 'Gyors útmutató: Projekt válaszának keresése,C#'
 titlesuffix: Azure Cognitive Services
 description: A Válaszkeresés projekt C# nyelvvel való használatába bevezető kódminta.
 services: cognitive-services
@@ -10,22 +10,22 @@ ms.subservice: answer-search
 ms.topic: quickstart
 ms.date: 04/13/2018
 ms.author: rosh
-ms.openlocfilehash: dce13636cce299098c988ccea3a059f0f0e12acd
-ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
+ms.openlocfilehash: fe6758cb6b8d120862cbbe593574360c1bc7b17b
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65823260"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68698108"
 ---
-# <a name="quickstart-project-answer-search-query-in-c"></a>Gyors útmutató: Projekt válasz keresési lekérdezés C#-ban
+# <a name="quickstart-project-answer-search-query-in-c"></a>Gyors útmutató: A Project answer keresési lekérdezés aC#
 
 Az alábbi C#-példa létrehoz és elküld egy lekérdezést a kalkulus harmadik törvényével kapcsolatos információk vonatkozásában.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Szüksége lesz [Visual Studio 2017-es vagy újabb](https://www.visualstudio.com/downloads/) ezt a kódot futtathatnak Windows. (Az ingyenes Community Edition is elegendő.)
+A kód Windows rendszeren való futtatásához a [Visual Studio 2017-es vagy újabb verziójára](https://www.visualstudio.com/downloads/) lesz szüksége. (Az ingyenes Community Edition is elegendő.)
 
-Hozzáférési kulcs lekérése a [Cognitive Services Labs](https://aka.ms/answersearchsubscription) ingyenes próbaverziójához
+Hozzáférési kulcs lekérése a [Cognitive Services Labs](https://labs.cognitive.microsoft.com/en-us/project-answer-search) ingyenes próbaverziójához
 
 ## <a name="code-scenario"></a>Kódforgatókönyv
 
