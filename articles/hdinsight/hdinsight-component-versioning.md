@@ -10,10 +10,10 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 06/07/2019
 ms.openlocfilehash: a9de7c75ef2bd29b2e401ba387ca16a5dfda34fb
-ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2019
+ms.lasthandoff: 07/26/2019
 ms.locfileid: "68442051"
 ---
 # <a name="what-are-the-apache-hadoop-components-and-versions-available-with-hdinsight"></a>Milyen Apache Hadoop-összetevők és-verziók érhetők el a HDInsight-ben?
@@ -170,7 +170,7 @@ A szakasz hivatkozásokat tartalmaz a Hortonworks adatplatform-disztribúciók �
 * A HDInsight-fürt 3,2-es verziója olyan Hadoop-eloszlást használ, amely a 2,2-es [Hortonworks][hdp-2-2]-adatplatformon alapul.
 
   * A megadott Apache-összetevők kibocsátási megjegyzései a következőképpen érhetők el: [Kaptár 0,14](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12310843&version=12326450), [Pig 0,14](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12310730&version=12326954), [HBase 0.98.4](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12310753&version=12326810), [Phoenix 4.2.0](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12315120&version=12327581), [M/R 2,6](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12310941&version=12327180), [HDFS 2,6](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12310942&version=12327181), [fonal 2,6](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12313722&version=12327197), [Common](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12310240&version=12327179), [TEZ 0.5.2](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12314426&version=12328742), [Ambari 2,0](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12312020&version=12327486), [Storm 0.9.3](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12314820&version=12327112)és [Oozie 4.1.0 ](https://issues.apache.org/jira/secure/ReleaseNote.jspa?version=12324960&projectId=12311620).
-* A HDInsight-fürt 3,1-es verziója a [Hortonworks adatplatform-2.1.7][hdp-2-1-7]. HDInsight 3.1 clusters created before November, 7, 2014, are based on [Hortonworks Data Platform 2.1.1][hdp-2-1-1]alapuló Hadoop-eloszlást használ.
+* A HDInsight-fürt 3,1-es verziója a [Hortonworks adatplatform-2.1.7][hdp-2-1-7]alapuló Hadoop-eloszlást használ. A HDInsight 3,1-es, 2014-ig létrehozott fürtök a [Hortonworks adatplatform 2.1.1][hdp-2-1-1]-es változata alapján lettek létrehozva.
 * A HDInsight-fürt 3,0-es verziója olyan Hadoop-eloszlást használ, amely a 2,0-es [Hortonworks][hdp-2-0-8]-adatplatformon alapul.
 * A HDInsight-fürt 2,1-es verziója olyan Hadoop-eloszlást használ, amely a 1,3-es [Hortonworks][hdp-1-3-0]-adatplatformon alapul.
 * A HDInsight-fürt 1,6-es verziója olyan Hadoop-eloszlást használ, amely a 1,1-es [Hortonworks][hdp-1-1-0]-adatplatformon alapul.
@@ -229,8 +229,8 @@ A következő táblázatok felsorolják a HDInsight-fürtök alapértelmezett vi
 
 > [!NOTE]
 > - A *Nimbus* a Storm-fürt típusának nevezzük.
-> - A Worker neve  a Storm-fürt típusának felügyelője.
-> - A feldolgozó neve a  HBase-fürt típusának régiója.
+> - A Worker neve a Storm-fürt típusának felügyelője.
+> - A feldolgozó neve a HBase-fürt típusának régiója.
 
 ## <a name="next-steps"></a>További lépések
 - [Fürt beállítása Apache Hadoop, Spark és más HDInsight](hdinsight-hadoop-provision-linux-clusters.md)

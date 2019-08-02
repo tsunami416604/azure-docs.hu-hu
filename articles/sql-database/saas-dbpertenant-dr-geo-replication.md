@@ -10,14 +10,13 @@ ms.topic: conceptual
 author: AyoOlubeko
 ms.author: craigg
 ms.reviewer: sstein
-manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: ee10f3d1b9db79eff199581a67c40196315b73f6
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: bebbb3d053db37a9716230dfbb14372696dd4936
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67872052"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68570532"
 ---
 # <a name="disaster-recovery-for-a-multi-tenant-saas-application-using-database-geo-replication"></a>Vész-helyreállítás egy több-bérlős SaaS-alkalmazáshoz az adatbázis-geo-replikáció használatával
 
@@ -85,7 +84,7 @@ Ebben az oktatóanyagban először a Geo-replikáció használatával hozza lét
 Később, egy külön visszaléptetési lépésben a helyreállítási régióban lévő katalógus és bérlői adatbázisok feladatátvételét az eredeti régióba hajtja végre. Az alkalmazás és az adatbázisok elérhetők maradnak a teljes visszaigénylés során. Ha elkészült, az alkalmazás teljesen működőképes az eredeti régióban.
 
 > [!Note]
-> Az alkalmazást annak a régiónak  a párosított régiójában kell helyreállítani, amelyben az alkalmazás telepítve van. További információ: [Azure párosított régiók](https://docs.microsoft.com/azure/best-practices-availability-paired-regions).
+> Az alkalmazást annak a régiónak a párosított régiójában kell helyreállítani, amelyben az alkalmazás telepítve van. További információ: [Azure párosított régiók](https://docs.microsoft.com/azure/best-practices-availability-paired-regions).
 
 ## <a name="review-the-healthy-state-of-the-application"></a>Az alkalmazás kifogástalan állapotának áttekintése
 

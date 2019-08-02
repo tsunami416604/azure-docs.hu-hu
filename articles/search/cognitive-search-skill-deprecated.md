@@ -1,6 +1,6 @@
 ---
-title: Kognitív képességeket – Azure Search elavult
-description: Ezen a lapon a kognitív keresés képességek, amelyek tekinthetők elavult listáját tartalmazza, és nem támogatja a közeljövőben.
+title: Elavult kognitív képességek – Azure Search
+description: Ez az oldal az elavultnak tekintett kognitív keresési képességek listáját tartalmazza, és a közeljövőben nem lesz támogatott.
 services: search
 manager: pablocas
 author: luiscabrer
@@ -11,52 +11,52 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: luisca
 ms.custom: seodec2018
-ms.openlocfilehash: a73c7e381cb6001b773251a1812466b3c82373f2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: fd49cdf1bd6a49e8f89f8b805cbaa50276527de3
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65541736"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68698873"
 ---
-# <a name="deprecated-cognitive-search-skills"></a>Elavult cognitive search-képességek
+# <a name="deprecated-cognitive-search-skills"></a>Elavult kognitív keresési képességek
 
-Ez a dokumentum ismerteti a kognitív képességeket, amelyek tekinthetők elavult. Használja az útmutató tartalma:
+Ez a dokumentum az elavultnak tekintett kognitív képességeket ismerteti. Használja a következő útmutatót a tartalomhoz:
 
-* Ismeretek neve: A szakértelem el fognak évülni nevére, vannak leképezve a @odata.type attribútum.
-* Utolsó elérhető api-verzió: Az Azure legfrissebb verziója keressen rá a nyilvános API-t, mely szakértelmével keresztül a megfelelő elavult szakértelem tartalmazó lehet létrehozása vagy frissítése.
-* Támogatás vége: Az utolsó nap elteltével a megfelelő szakértelmet számít nem támogatott. Korábban létrehozott ismereteket kell továbbra is működik, de felhasználók ajánlott elavult szakértelem migrálni.
-* Javaslatok: Migrálási útvonalat előre támogatott műveleteket. Felhasználók szeretne támogatást kapni a folytatáshoz kövesse az alábbi intézkedéseket javasoljuk.
+* Szakértelem neve: Az elavult képesség neve, amely le lesz képezve @odata.type az attribútumhoz.
+* Utolsó elérhető API-verzió: Az Azure Search nyilvános API utolsó verziója, amely a megfelelő elavult képességet tartalmazó szakértelmével hozható létre/frissíthető.
+* Támogatás vége: Az utolsó nap, amely után a megfelelő képesség nem támogatottnak minősül. A korábban létrehozott szakértelmével továbbra is működőképesnek kell lennie, de a felhasználókat ajánlott áttelepíteni egy elavult képességből.
+* Javaslatok: A Migrálás útvonala egy támogatott képesség használatára van továbbítva. A felhasználóknak javasoljuk, hogy kövessék az ajánlásokat, hogy továbbra is megkapják a támogatást.
 
 ## <a name="microsoftskillstextnamedentityrecognitionskill"></a>Microsoft.Skills.Text.NamedEntityRecognitionSkill
 
-### <a name="last-available-api-version"></a>Utolsó elérhető api-verzió
+### <a name="last-available-api-version"></a>Utolsó elérhető API-verzió
 
-A 2019-05-06-előzetes verzió
+2017. 11. 11. dátumú előzetes verzió
 
 ### <a name="end-of-support"></a>Támogatás vége
 
-2019\. február 15.
+Február 15., 2019
 
 ### <a name="recommendations"></a>Javaslatok 
 
-Használat [Microsoft.Skills.Text.EntityRecognitionSkill](cognitive-search-skill-entity-recognition.md) helyette. A legtöbb funkciója a NamedEntityRecognitionSkill, jobb minőségben biztosít. Azt is az összetett táblakimeneti mezők részletesebb információkat tartalmaz.
+Használja helyette a [Microsoft. Skills. Text. EntityRecognitionSkill](cognitive-search-skill-entity-recognition.md) . A NamedEntityRecognitionSkill legtöbb funkciója magasabb színvonalú. Emellett a komplex kimeneti mezőiben is gazdagabb információk szerepelnek.
 
-Áttelepítése a [entitások felismerése szakértelem](cognitive-search-skill-entity-recognition.md), akkor végre kell hajtania egy vagy több, a következő módosításokat a képzettségi definíciós. A képzettségi definíció használatával frissítheti a [indexmezők API frissítése](https://docs.microsoft.com/rest/api/searchservice/update-skillset).
+Az [entitás](cognitive-search-skill-entity-recognition.md)-felismerési szakértelemre való áttelepítéshez az alábbi módosítások közül egyet vagy többet kell végrehajtania a szaktudás definíciójában. A skill definition [Update KÉSZSÉGKÉSZLET API](https://docs.microsoft.com/rest/api/searchservice/update-skillset)használatával frissítheti.
 
 > [!NOTE]
-> Magabiztossági pontszámot a fogalom, jelenleg nem támogatott. A `minimumPrecision` paraméter megtalálható a `EntityRecognitionSkill` későbbi használatra, és a visszamenőleges kompatibilitás.
+> A megbízhatósági pontszám jelenleg nem támogatott. A `minimumPrecision` paraméter a későbbi használatra `EntityRecognitionSkill` és a visszamenőleges kompatibilitás érdekében létezik.
 
-1. *(Kötelező)*  Módosítása a `@odata.type` a `"#Microsoft.Skills.Text.NamedEntityRecognitionSkill"` való `"#Microsoft.Skills.Text.EntityRecognitionSkill"`.
+1. *(Kötelező)* Módosítsa a `@odata.type` elemeta`"#Microsoft.Skills.Text.NamedEntityRecognitionSkill"` következőre:. `"#Microsoft.Skills.Text.EntityRecognitionSkill"`
 
-2. *(Nem kötelező)*  Ha használja a `entities` kimeneti, használja a `namedEntities` összetett gyűjtemény kimenete a `EntityRecognitionSkill` helyette. Használhatja a `targetName` szakértelem definíció való leképezéséhez jegyzet neve `entities`.
+2. *(Nem kötelező)* Ha a `entities` kimenetet használja, használja `EntityRecognitionSkill` inkább az `namedEntities` összetett gyűjtemény kimenetét. A skill definition `targetName` (a) használatával leképezheti a nevű `entities`jegyzetet.
 
-3. *(Nem kötelező)*  Ha Ön kifejezetten nem ad meg a `categories`, a `EntityRecognitionSkill` kategóriák mellett, amelyek a rendszer által támogatott különböző típusú visszatérhessen a `NamedEntityRecognitionSkill`. Ha ez a viselkedés nem kívánatos, ügyeljen arra, hogy explicit módon beállíthat egy a `categories` paramétert `["Person", "Location", "Organization"]`.
+3. *(Nem kötelező)* Ha nem adja meg explicit módon a `categories`-t, a `EntityRecognitionSkill` képes különböző típusú kategóriákat visszaadni a által `NamedEntityRecognitionSkill`támogatottak mellett. Ha ez a viselkedés nem kívánatos, ügyeljen arra, hogy explicit módon állítsa `categories` be a `["Person", "Location", "Organization"]`paramétert a következőre:.
 
-    _Mintául szolgáló Migrálási definíciók_
+    _Példa áttelepítési definíciók_
 
     * Egyszerű áttelepítés
 
-        _(Előtte) NamedEntityRecognition ismeretek meghatározása_
+        _Előtt NamedEntityRecognition-definíció_
         ```json
         {
             "@odata.type": "#Microsoft.Skills.Text.NamedEntityRecognitionSkill",
@@ -76,7 +76,7 @@ Használat [Microsoft.Skills.Text.EntityRecognitionSkill](cognitive-search-skill
             ]
         }
         ```
-        _(Után) EntityRecognition ismeretek meghatározása_
+        _Után EntityRecognition-definíció_
         ```json
         {
             "@odata.type": "#Microsoft.Skills.Text.EntityRecognitionSkill",
@@ -97,9 +97,9 @@ Használat [Microsoft.Skills.Text.EntityRecognitionSkill](cognitive-search-skill
         }
         ```
     
-    * Némileg összetettebb áttelepítése
+    * Kis mértékben bonyolult áttelepítés
 
-        _(Előtte) NamedEntityRecognition ismeretek meghatározása_
+        _Előtt NamedEntityRecognition-definíció_
         ```json
         {
             "@odata.type": "#Microsoft.Skills.Text.NamedEntityRecognitionSkill",
@@ -122,7 +122,7 @@ Használat [Microsoft.Skills.Text.EntityRecognitionSkill](cognitive-search-skill
             ]
         }
         ```
-        _(Után) EntityRecognition ismeretek meghatározása_
+        _Után EntityRecognition-definíció_
         ```json
         {
             "@odata.type": "#Microsoft.Skills.Text.EntityRecognitionSkill",
@@ -150,6 +150,6 @@ Használat [Microsoft.Skills.Text.EntityRecognitionSkill](cognitive-search-skill
 
 ## <a name="see-also"></a>Lásd még
 
-+ [Előre megadott képesség](cognitive-search-predefined-skills.md)
-+ [Hogyan képességcsoport megadása](cognitive-search-defining-skillset.md)
-+ [Entitások felismerése szakértelem](cognitive-search-skill-entity-recognition.md)
++ [Előre definiált képességek](cognitive-search-predefined-skills.md)
++ [Készségkészlet definiálása](cognitive-search-defining-skillset.md)
++ [Entitás-felismerési szakértelem](cognitive-search-skill-entity-recognition.md)

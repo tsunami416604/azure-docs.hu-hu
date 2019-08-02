@@ -1,27 +1,25 @@
 ---
-title: Válassza ki a lemez típusát az Azure IaaS Windows virtuális gépek – felügyelt lemezek
-description: További információ az elérhető Azure-lemeztípusokkal Windows virtuális gépekhez, beleértve a ultranagy SSD-k, prémium szintű SSD-k, standard SSD-k és HDD-k szabványos.
-services: virtual-machines-windows,storage
+title: Lemez típusának kiválasztása az Azure IaaS Windows rendszerű virtuális gépek által felügyelt lemezekhez
+description: Ismerje meg a Windows rendszerű virtuális gépekhez elérhető Azure-lemezeket, beleértve az ultra SSD-ket, a prémium SSD-ket, a standard SSD-ket és a standard merevlemezeket
 author: roygara
 ms.author: rogarana
 ms.date: 05/10/2019
-ms.topic: article
+ms.topic: conceptual
 ms.service: virtual-machines-windows
-ms.tgt_pltfrm: windows
 ms.subservice: disks
-ms.openlocfilehash: 74dbe12a2df07218fbb369097b566a9dad4921c0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 99337c633f2bce9ed7b41b36cb54037d4c201a78
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65539511"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68698722"
 ---
 [!INCLUDE [virtual-machines-disk-types](../../../includes/virtual-machines-managed-disks-types-overview.md)]
 
-Ha szeretné ultranagy SSD-k használatának megkezdése, ismertető a cikk a tulajdonos: [Az Azure ultranagy SSD-k engedélyezése](disks-enable-ultra-ssd.md).
+Ha az ultra SSD-ket szeretné használni, tekintse meg a tárgyat ismertető cikket: Az [Azure Ultra SSD](disks-enable-ultra-ssd.md)-k engedélyezése.
 
 [!INCLUDE [virtual-machines-managed-disks-types-ga](../../../includes/virtual-machines-managed-disks-types-ga.md)]
 
-A pillanatképek további információkért lásd a pillanatképek a [felügyelt lemez – áttekintés](managed-disks-overview.md).
+A pillanatképekkel kapcsolatos további információkért tekintse meg a [felügyelt lemez – áttekintés](managed-disks-overview.md)című témakör a pillanatképek című szakaszát.
 
 [!INCLUDE [virtual-machines-disk-types](../../../includes/virtual-machines-managed-disks-types-billing-and-fees.md)]

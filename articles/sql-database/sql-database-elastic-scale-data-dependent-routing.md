@@ -1,6 +1,6 @@
 ---
-title: Adatfüggő útválasztás az Azure SQL Database |} A Microsoft Docs
-description: Adatfüggő útválasztás, szilánkokra osztott adatbázisok az Azure SQL Database szolgáltatás használata a ShardMapManager osztály a .NET-alkalmazások
+title: Adatfüggő útválasztás Azure SQL Databasesal | Microsoft Docs
+description: A ShardMapManager osztály használata a .NET-alkalmazásokban az Adatfüggő útválasztáshoz, a többrétegű adatbázisok szolgáltatásához Azure SQL Database
 services: sql-database
 ms.service: sql-database
 ms.subservice: scale-out
@@ -10,33 +10,32 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
-manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: fe9098592fcfde2d5e23b78a3e33f2b4ebb9e2dc
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 3f0ce4f3bdf3159e991bfd72590882dfa7412ee3
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60584964"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68568484"
 ---
-# <a name="use-data-dependent-routing-to-route-a-query-to-appropriate-database"></a>Adatfüggő útválasztás irányíthatja a megfelelő adatbázis-lekérdezés használata
+# <a name="use-data-dependent-routing-to-route-a-query-to-appropriate-database"></a>Lekérdezés továbbítása a megfelelő adatbázishoz az Adatfüggő útválasztás használatával
 
-**Adatfüggő útválasztás** képessége, hogy az adatok segítségével egy lekérdezésben irányítsa át a kérést a megfelelő adatbázishoz. Egy alapvető mintája adatok függő útválasztás akkor, ha horizontálisan skálázott adatbázisok használata. A kérelem környezetéből is használható, irányítsa át a kérést, különösen akkor, ha a horizontális skálázási kulcs nem szerepel a lekérdezésben. Minden egyes lekérdezés vagy a tranzakció egy alkalmazásban Adatfüggő útválasztás használatával korlátozódik kérelmenként egy adatbázis elérése közben. Az Azure SQL Database rugalmas eszközök, az Útválasztás segítségével lehet megvalósítani a **ShardMapManager** ([Java](/java/api/com.microsoft.azure.elasticdb.shard.mapmanager.shardmapmanager), [.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager)) osztály.
+Az Adatfüggő **Útválasztás** lehetővé teszi, hogy egy lekérdezésben lévő, a kérést a megfelelő adatbázishoz irányítsa. Az adatokon alapuló útválasztás alapvető minta a többrétegű adatbázisok használatakor. A kérelem környezete a kérelem továbbítására is használható, különösen akkor, ha a horizontális Felskálázási kulcs nem része a lekérdezésnek. Egy alkalmazásban az Adatfüggő útválasztást használó minden egyes lekérdezés vagy tranzakció esetében csak egy adatbázis férhet hozzá egy kérelemhez. Az Azure SQL Database rugalmas eszközök esetében ez az Útválasztás a **ShardMapManager** ([Java](/java/api/com.microsoft.azure.elasticdb.shard.mapmanager.shardmapmanager), [.net](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager)) osztály használatával érhető el.
 
-Az alkalmazás nem kell nyomon követni a különböző kapcsolati karakterláncok vagy a horizontálisan skálázott környezetben adatok eltérő szeletek társított DB helyeket. Ehelyett a [Szilánkleképezés-kezelővel](sql-database-elastic-scale-shard-map-management.md) megnyílik kapcsolatok a megfelelő adatbázisokhoz, amikor szükséges, hogy a szegmenstérkép és az alkalmazásigénylés célja a horizontális skálázási kulcs értékét az adatok alapján. A kulcs: általában az *customer_id*, *tenant_id*, *date_key*, vagy valamilyen más specifikus azonosító, amely az adatbázis-kérelem alapvető paraméter.
+Az alkalmazásnak nem kell nyomon követnie a különböző típusú adatszeletekhez társított különböző kapcsolódási karakterláncokat vagy adatbázis-tárolóhelyeket. Ehelyett a szegmenses [Térkép kezelője](sql-database-elastic-scale-shard-map-management.md) szükség esetén nyitja meg a megfelelő adatbázisokhoz való kapcsolódást, és az alkalmazás kérelmének céljaként szolgáló horizontális Felskálázási kulcs értékét. A kulcs általában a *ügyfél*, a *tenant_id*, a *date_key*vagy valamilyen más, az adatbázis-kérelem alapvető paraméterét képező azonosító.
 
-További információkért lásd: [méretezés ki SQL Server Adatfüggő útválasztásnak](https://technet.microsoft.com/library/cc966448.aspx).
+További információ: SQL Server horizontális [Felskálázása az adatoktól függő útválasztással](https://technet.microsoft.com/library/cc966448.aspx).
 
 ## <a name="download-the-client-library"></a>Az ügyféloldali kódtár letöltése
 
-Letöltése:
+Letöltés:
 
-* A Java-verzió a könyvtár, lásd: [Maven központi tárházból](https://search.maven.org/#search%7Cga%7C1%7Celastic-db-tools).
-* A könyvtár a .NET verzióját, lásd: [NuGet](https://www.nuget.org/packages/Microsoft.Azure.SqlDatabase.ElasticScale.Client/).
+* A könyvtár Java-verziója: [Maven Central adattár](https://search.maven.org/#search%7Cga%7C1%7Celastic-db-tools).
+* A könyvtár .NET-verziója: [NuGet](https://www.nuget.org/packages/Microsoft.Azure.SqlDatabase.ElasticScale.Client/).
 
-## <a name="using-a-shardmapmanager-in-a-data-dependent-routing-application"></a>Adatfüggő útválasztás alkalmazásban egy ShardMapManager használatával
+## <a name="using-a-shardmapmanager-in-a-data-dependent-routing-application"></a>ShardMapManager használata Adatfüggő útválasztási alkalmazásokban
 
-Alkalmazások példányosítania kell a **ShardMapManager** az inicializálás során az előállító hívás használatával **GetSQLShardMapManager** ([Java](/java/api/com.microsoft.azure.elasticdb.shard.mapmanager.shardmapmanagerfactory.getsqlshardmapmanager), [.NET ](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory.getsqlshardmapmanager)). Ebben a példában is egy **ShardMapManager** és a egy adott **ShardMap** benne van inicializálva. Ez a példa bemutatja a GetSqlShardMapManager és GetRangeShardMap ([Java](/java/api/com.microsoft.azure.elasticdb.shard.mapmanager.shardmapmanager.getrangeshardmap), [.NET](https://docs.microsoft.com/previous-versions/azure/dn824173(v=azure.100))) módszereket.
+Az alkalmazásoknak az inicializálás során kell létrehozniuk a **ShardMapManager** a Factory Call **GetSQLShardMapManager** ([Java](/java/api/com.microsoft.azure.elasticdb.shard.mapmanager.shardmapmanagerfactory.getsqlshardmapmanager), [.net](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory.getsqlshardmapmanager)) használatával. Ebben a példában a **ShardMapManager** és a benne található adott **ShardMap** is inicializálva van. Ez a példa a GetSqlShardMapManager és a GetRangeShardMap ([Java](/java/api/com.microsoft.azure.elasticdb.shard.mapmanager.shardmapmanager.getrangeshardmap), [.net](https://docs.microsoft.com/previous-versions/azure/dn824173(v=azure.100))) metódusokat mutatja be.
 
 ```Java
 ShardMapManager smm = ShardMapManagerFactory.getSqlShardMapManager(connectionString, ShardMapManagerLoadPolicy.Lazy);
@@ -48,13 +47,13 @@ ShardMapManager smm = ShardMapManagerFactory.GetSqlShardMapManager(smmConnection
 RangeShardMap<int> customerShardMap = smm.GetRangeShardMap<int>("customerMap"); 
 ```
 
-### <a name="use-lowest-privilege-credentials-possible-for-getting-the-shard-map"></a>Legkisebb lehetséges szintű hitelesítő adatokat használni a horizontális skálázási térképet beolvasása
+### <a name="use-lowest-privilege-credentials-possible-for-getting-the-shard-map"></a>A szegmens Térkép beszerzéséhez a legalacsonyabb jogosultsági szintű hitelesítő adatok használata lehetséges
 
-Ha egy alkalmazás nem van módosítása a szegmenstérkép magát, a gyári metódusban használt hitelesítő adatokat csak olvasható engedélyek kell rendelkeznie a **globális Szegmenstérkép** adatbázis. Ezeket a hitelesítő adatokat általában eltérnek a szilánkleképezés-kezelővel való kapcsolat megnyitásához használt hitelesítő adatokat. Lásd még: [az Elastic Database ügyfélkódtár eléréséhez használt hitelesítő adatok](sql-database-elastic-scale-manage-credentials.md).
+Ha egy alkalmazás nem kezeli magát a szegmenst, a gyári metódusban használt hitelesítő adatoknak írásvédett engedélyekkel kell rendelkezniük a globális szegmens- **hozzárendelési** adatbázison. Ezek a hitelesítő adatok általában eltérnek a szegmenses Térkép kezelőjével létesített kapcsolatok megnyitásához használt hitelesítő adatoktól. Lásd még: [az Elastic Database ügyféloldali kódtár eléréséhez használt hitelesítő adatok](sql-database-elastic-scale-manage-credentials.md).
 
 ## <a name="call-the-openconnectionforkey-method"></a>A OpenConnectionForKey metódus hívása
 
-A **ShardMap.OpenConnectionForKey metódus** ([Java](/java/api/com.microsoft.azure.elasticdb.shard.mapper.listshardmapper.openconnectionforkey), [.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmap.openconnectionforkey)) adja vissza a kapcsolat készen áll a parancsok kiadása értéke alapján a megfelelő adatbázishoz a **kulcs** paraméter. Szilánkleképezés-adatbázisban tárolja az alkalmazás által a **ShardMapManager**, így ezek a kérelmek jellemzően nem járnak irányuló adatbázis keresés a **globális Szegmenstérkép** adatbázis.
+A **ShardMap. OpenConnectionForKey metódus** ([Java](/java/api/com.microsoft.azure.elasticdb.shard.mapper.listshardmapper.openconnectionforkey), [.net](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmap.openconnectionforkey)) egy olyan kapcsolódási lehetőséget ad vissza, amely készen áll a megfelelő adatbázisra vonatkozó parancsok kiadására a **kulcs** paraméter értéke alapján. A szegmens adatait a **ShardMapManager**gyorsítótárazza az alkalmazásban, ezért ezek a kérelmek általában nem tartalmaznak adatbázis-keresést a **globális** szegmens-hozzárendelési adatbázison.
 
 ```Java
 // Syntax:
@@ -66,15 +65,15 @@ public Connection openConnectionForKey(Object key, String connectionString, Conn
 public SqlConnection OpenConnectionForKey<TKey>(TKey key, string connectionString, ConnectionOptions options)
 ```
 
-* A **kulcs** paraméter keresési kulcsként a szegmenstérkép be meghatározására szolgál a kéréshez a megfelelő adatbázishoz.
-* A **connectionString** be csak a felhasználó hitelesítő adatait a kívánt kapcsolatot. Nincs adatbázis vagy a kiszolgáló neve tartalmazza a jelen *connectionString* óta a módszer az adatbázis és a kiszolgáló használatával határozza meg a **ShardMap**.
-* A **connectionOptions** ([Java](/java/api/com.microsoft.azure.elasticdb.shard.mapper.connectionoptions), [.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.connectionoptions)) értékre kell állítani **ConnectionOptions.Validate** Ha olyan környezetben, ahol szilánkleképezések május változás- és sorok más adatbázisok felosztása és egyesítése műveletek miatt előfordulhat, hogy át. Ellenőrzés magában foglalja a cél helyi horizontális skálázási térképet rövid lekérdezés adatbázis (nem a globális szegmenstérkép), mielőtt megkapná a kapcsolatot az alkalmazás.
+* A **Key** paramétert keresési kulcsként használja a rendszer a szegmensben lévő térképre, hogy meghatározza a kérelemhez szükséges adatbázist.
+* A **ConnectionString** a kívánt kapcsolathoz tartozó felhasználói hitelesítő adatok továbbítására szolgál. Ez a *ConnectionString* nem tartalmazza az adatbázis nevét vagy a kiszolgáló nevét, mivel a metódus meghatározza az adatbázist és a kiszolgálót a **ShardMap**használatával.
+* A **connectionOptions** ([Java](/java/api/com.microsoft.azure.elasticdb.shard.mapper.connectionoptions), [.net](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.connectionoptions)) értékének connectionOptions kell lennie **. Ellenőrizze** , hogy van-e olyan környezet, amelyben a szegmens térképek változhatnak, és a sorok más adatbázisokba is áthelyezhetők a felosztott vagy egyesítési műveletek eredményeképpen. Ez az ellenőrzés egy rövid lekérdezést is magában foglal a céladatbázis helyi szegmensének térképén (nem a globális szegmenses térképre), mielőtt a rendszer megküldi a kapcsolódást az alkalmazáshoz.
 
-Ha a helyi szegmenstérkép sémaellenőrzésen sikertelen (azt jelzi, hogy a gyorsítótár nem megfelelő), a Szilánkleképezés-kezelővel lekérdezi a globális szegmenstérkép szerezze be az új megfelelő érték a kereséshez, frissítse a gyorsítótárat, és szerezze be és adja vissza a megfelelő adatbázis-kapcsolat .
+Ha a helyi szegmens leképezésének érvényesítése meghiúsul (jelezve, hogy a gyorsítótár helytelen), a szegmenses Térkép kezelője lekérdezi a globális szegmenses térképet, hogy beszerezze a kereséshez szükséges új helyes értéket, frissíti a gyorsítótárat, és beolvassa és visszaadja a megfelelő adatbázis-kapcsolat értékét. .
 
-Használat **ConnectionOptions.None** csak amikor szegmens leképezési módosításokat nem várt közben egy alkalmazás online állapotban. Ebben az esetben a gyorsítótárban lévő értékeket is feltételezhető, hogy mindig a megfelelő lehet, és a céladatbázis extra oda-vissza érvényesítési hívása biztonságosan kimarad. Amely csökkenti az adatbázis-forgalom. A **connectionOptions** is beállítható, keresztül értéket jelzi-e a horizontális skálázási módosítások várhatóan egy konfigurációs fájlban vagy egy bizonyos idő alatt nem.  
+A **connectionOptions. None** értéket csak akkor használja, ha egy alkalmazás online állapotban van, és a szegmens-hozzárendelések módosítása nem várható. Ebben az esetben előfordulhat, hogy a gyorsítótárazott értékek mindig helyesek, és a célként megadott adatbázisra irányuló extra oda-és visszaút-ellenőrzési hívás is biztonságosan kihagyható. Ez csökkenti az adatbázis-forgalmat. A **connectionOptions** egy konfigurációs fájlban lévő értékkel is beállítható annak jelzésére, hogy az adott időszakra vonatkozó változások várhatóak-e vagy sem.  
 
-Ebben a példában egy egész kulcsnak az értéke **CustomerID**révén egy **ShardMap** nevű objektum **customerShardMap**.  
+Ez a példa egy Integer Key **Vevőkód**értékét használja, amely egy **customerShardMap**nevű **ShardMap** objektumot használ.  
 
 ```Java
 int customerId = 12345;
@@ -110,17 +109,17 @@ using (SqlConnection conn = customerShardMap.OpenConnectionForKey(customerId, Co
 }  
 ```
 
-A **OpenConnectionForKey** metódus az új már nyitott kapcsolat a megfelelő adatbázishoz adja vissza. Kapcsolatok használt fel, így továbbra is teljes mértékben kihasználhatja a kapcsolatkészletezést.
+A **OpenConnectionForKey** metódus egy új, már nyitott kapcsolódást ad vissza a megfelelő adatbázishoz. Az ily módon használt kapcsolatok teljes mértékben kihasználják a kapcsolatok készletezését.
 
-A **OpenConnectionForKeyAsync metódus** ([Java](/java/api/com.microsoft.azure.elasticdb.shard.mapper.listshardmapper.openconnectionforkeyasync), [.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmap.openconnectionforkeyasync)) egyben érhető el, ha az alkalmazás aszinkron programozás használja.
+Az **OpenConnectionForKeyAsync metódus** ([Java](/java/api/com.microsoft.azure.elasticdb.shard.mapper.listshardmapper.openconnectionforkeyasync), [.net](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmap.openconnectionforkeyasync)) akkor is elérhető, ha az alkalmazás aszinkron programozást használ.
 
-## <a name="integrating-with-transient-fault-handling"></a>Integrálás az átmeneti hibák kezelése
+## <a name="integrating-with-transient-fault-handling"></a>Integrálás az átmeneti hibák kezelésére
 
-A data access alkalmazások felhőbeli fejlesztéséhez ajánlott eljárás, hogy győződjön meg arról, hogy az átmeneti hibák az alkalmazás által észlelt, és a műveletek előtt értesítő hiba megismétlődnek több alkalommal. Átmeneti hibák a felhőalapú alkalmazások a következő cikkben: átmeneti hibák kezelésével ([Java](/java/api/com.microsoft.azure.elasticdb.core.commons.transientfaulthandling), [.NET](https://docs.microsoft.com/previous-versions/msp-n-p/dn440719(v=pandp.60))).
+Az adatelérési alkalmazások felhőben történő fejlesztésének bevált gyakorlata, hogy az alkalmazás átmeneti hibákat észlel, és a műveletek többször is többször is próbálkoznak a hiba eldobása előtt. A felhőalapú alkalmazások átmeneti hibáinak kezelését az átmeneti hibák kezelésére ([Java](/java/api/com.microsoft.azure.elasticdb.core.commons.transientfaulthandling), [.net](https://docs.microsoft.com/previous-versions/msp-n-p/dn440719(v=pandp.60))) tárgyaljuk.
 
-Adatfüggő útválasztás mintával rendelkező természetes módon párhuzamosan átmeneti hibák kezelése. A fő követelmény, hogy ismételje meg a teljes hozzáférési kérelem többek között a **használatával** szerezni a Adatfüggő útválasztás kapcsolat blokkolása. Az előző példában a következő sikerült kell írni.
+Az átmeneti hibák kezeléséhez természetesen az Adatfüggő útválasztási minta is használható. A legfontosabb követelmény, hogy próbálja megismételni a teljes adatelérési kérelmet, beleértve az Adatfüggő útválasztási kapcsolatot bekérő blokk **használatával** . Az előző példa a következőképpen írható át.
 
-### <a name="example---data-dependent-routing-with-transient-fault-handling"></a>Példa – Adatfüggő útválasztás az átmeneti hibák kezelése
+### <a name="example---data-dependent-routing-with-transient-fault-handling"></a>Példa – az Adatfüggő útválasztás átmeneti hibák kezelésével
 
 ```Java
 int customerId = 12345;
@@ -169,14 +168,14 @@ Configuration.SqlRetryPolicy.ExecuteAction(() =&gt;
 });
 ```
 
-Végre kell hajtani az átmeneti hibák kezelése a csomagok automatikusan letöltődnek a rugalmas adatbázis-mintaalkalmazás készítése során.
+Az átmeneti hibakezelés megvalósításához szükséges csomagokat a rendszer automatikusan letölti a rugalmas adatbázis-minta alkalmazás létrehozásakor.
 
-## <a name="transactional-consistency"></a>Tranzakció-konzisztencia
+## <a name="transactional-consistency"></a>Tranzakciós konzisztencia
 
-Tranzakciós tulajdonságok garantáltan minden művelet helyi szegmenshez való hozzáadásukkor. Adatfüggő útválasztás keresztül elküldött tranzakciók például hajtható végre, a kapcsolat a célként megadott szegmens hatókörén belül. Jelenleg nincsenek a felvétel be egy tranzakció több kapcsolat biztosított képességek találhatók, és ezért garanciát nem jelentenek tranzakciós a szegmensek között végrehajtott műveletek.
+A tranzakciós tulajdonságok minden, a szegmensen belüli művelet esetében garantáltak. Az Adatfüggő útválasztáson keresztül küldött tranzakciók például a kapcsolatok cél szegmensének hatókörén belül lesznek végrehajtva. Jelenleg nincs lehetőség arra, hogy több kapcsolat kerüljön be egy tranzakcióba, ezért a szegmenseken végrehajtott műveletekhez nem biztosítunk tranzakciós garanciát.
 
 ## <a name="next-steps"></a>További lépések
 
-Válassza le a szegmensek, vagy csatlakoztassa újból szegmensek, lásd: [szilánkleképezési problémák javítása a RecoveryManager osztállyal](sql-database-elastic-database-recovery-manager.md)
+A szegmensek leválasztásához vagy a szegmensek újbóli csatolásához lásd: [a recoverymanager osztállyal osztály használata](sql-database-elastic-database-recovery-manager.md) a szegmenses Térkép problémák megoldásához
 
 [!INCLUDE [elastic-scale-include](../../includes/elastic-scale-include.md)]

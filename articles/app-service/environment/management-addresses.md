@@ -1,6 +1,6 @@
 ---
-title: App Service Environment-környezet kezelési címeit – Azure
-description: Felsorolja a a parancs és egy App Service Environment-környezet kezelési címeit
+title: Felügyeleti címek App Service Environmente – Azure
+description: Felsorolja az App Service Environment parancshoz használt felügyeleti címeket.
 services: app-service
 documentationcenter: na
 author: ccompy
@@ -11,97 +11,62 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/03/2019
+ms.date: 07/25/2019
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: f76dd423cb3f7fbae6cc88d064e49dc2d56f1a1c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: afc43005765e3ae91c829cfc6b25a3f372241e0b
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60766049"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68561529"
 ---
-# <a name="app-service-environment-management-addresses"></a>App Service Environment-környezet kezelési címeit
+# <a name="app-service-environment-management-addresses"></a>Felügyeleti címek App Service Environment
 
-Az App Service Environment (ASE) az egyetlen új bérlő üzemelő példánya az Azure App Service, amely az Azure virtuális hálózaton (VNet).  Az ASE-t futtatja, a virtuális hálózatban található, miközben ez továbbra is elérhetőknek kell lenniük egy dedikált a szolgáltatás kezelése az Azure App Service által használt IP-címek száma.  Az ASE esetén a felügyeleti adatforgalomra a felhasználó általi hálózaton. Ha ez a forgalom blokkolva van, vagy misrouted, az ASE fel lesz függesztve. Az ASE hálózati függőségekkel kapcsolatos további tudnivalókért olvassa el [megfontolandó szempontok és az App Service Environment hálózati][networking]. Általános információk az ASE: Kezdésként használhatja az [az App Service Environment bemutatása][intro].
+A App Service Environment (bevezetési) az Azure Virtual Network-ben (VNet) futó Azure App Service egyetlen bérlős telepítése.  Amíg a bevezetési szolgáltatás a VNet fut, továbbra is elérhetőnek kell lennie számos dedikált IP-címről, amelyeket a Azure App Service a szolgáltatás felügyeletéhez használ.  A bevezetés esetén a felügyeleti forgalom áthalad a felhasználó által vezérelt hálózaton. Ha a forgalom blokkolva van, vagy a rendszer nem irányítja át, a rendszer felfüggeszti a bevezetőt. A betekintő hálózati függőségekkel kapcsolatos részletekért olvassa el a [hálózatkezelési megfontolásokat és a app Service Environment][networking]. A kiegészítő szolgáltatással kapcsolatos általános információkért Kezdje a [app Service Environment][intro]bevezetésével.
 
-Minden ASE rendelkezik egy nyilvános virtuális IP-CÍMEK melyik felügyeleti forgalom kerül. Ezek a címek bejövő felügyeleti forgalmat származik 454 és a 455 portra a nyilvános VIP-Címéhez, az ASE-t. Ez a dokumentum a felügyeleti forgalmat az ASE App Service-ben forrás címeinek listája. Ezek a címek az IP-Szolgáltatáscímke AppServiceManagement nevű is megtalálhatók.
+Minden ASE van egy nyilvános virtuális IP-címe, amelybe a felügyeleti forgalom bekerül. Az ezekről a címekről érkező bejövő felügyeleti forgalom a-től a 454-es és a 455-as portra kerül a központjának nyilvános VIP-címén Ez a dokumentum felsorolja a közApp Servicei felügyeleti forgalom felé irányuló felügyeleti forgalmat. Ezek a címek a AppServiceManagement nevű IP-szolgáltatás címkéjén is szerepelnek.
 
-Az alábbi esetekben címek konfigurálható egy útválasztási táblázatot, aszimmetrikus a a felügyeleti forgalom-útválasztási problémák elkerülése érdekében. Útvonalak reagálhat rájuk az IP-szintű forgalom, és nem rendelkezik a forgalom irányát kontrollálhassa vagy a forgalom egy részét képező egy TCP-válaszüzenet. A válaszcím TCP kérelmek eltér a cím küldték, lesz egy az aszimmetrikus útválasztás probléma. Az ASE felügyeleti forgalom aszimmetrikus útválasztási problémák elkerülése érdekében győződjön meg arról, hogy adott válaszokat vissza ugyanarról a címről lettek küldve kell. Megtudhatja, hogyan konfigurálhatja az ASE számára, ahol kimenő adatforgalom a helyszíni környezetben működnek, olvassa el a [az ASE konfigurálása kényszerített bújtatással][forcedtunnel]
+Az alábbi címek egy útválasztási táblában konfigurálhatók, így elkerülhetők a felügyeleti forgalom aszimmetrikus útválasztási problémái. Az útvonalak az IP-szinten lévő forgalomra hatnak, és nem ismerik a forgalom irányát, vagy a forgalom a TCP-válaszüzenet része. Ha a TCP-kérelem válaszának címe eltér a kapott címtől, akkor aszimmetrikus útválasztási probléma van. Ha nem szeretné, hogy az aszimmetrikus útválasztási problémák elkerülhetők legyenek a beadási felügyeleti forgalommal, győződjön meg arról, hogy a válaszokat a rendszer elküldi az adott címről. Ha szeretné megtudni, hogyan konfigurálhatja a bevezetőt úgy, hogy olyan környezetben működjön, amelyben a kimenő forgalmat a helyszínen küldik, olvassa el a bevezető [beállítása kényszerített bújtatással][forcedtunnel] című témakört.
 
 ## <a name="list-of-management-addresses"></a>Felügyeleti címek listája ##
 
 | Régió | Címek |
 |--------|-----------|
-| Az összes nyilvános régióban | 13.64.115.203, 13.75.127.117, 13.94.141.115, 13.94.143.126, 13.94.149.179, 23.102.135.246, 23.102.188.65, 40.83.120.64, 40.83.121.56, 40.83.125.161, 40.124.47.188, 52.151.25.45, 52.165.152.214, 52.165.153.122, 52.165.154.193, 52.165.158.140, 52.174.22.21, 52.178.177.147, 52.178.184.149, 52.178.190.65, 52.178.195.197, 52.187.56.50, 52.187.59.251, 52.187.63.19, 52.187.63.37, 52.224.105.172, 52.225.177.153, 65.52.14.230, 65.52.172.237, 65.52.193.203, 70.37.57.58, 70.37.89.222, 104.44.129.141, 104.44.129.243, 104.44.129.255, 104.44.134.255, 104.208.54.11, 157.55.176.93, 157.55.208.185, 191.236.154.88 |
+| Összes nyilvános régió | 13.64.115.203, 13.66.140.0, 13.67.8.128, 13.69.64.128, 13.69.227.128, 13.70.73.128, 13.71.170.64, 13.71.194.129, 13.75.127.117, 13.77.50.128, 13.89.171.0, 13.94.141.115, 13.94.143.126, 13.94.149.179, 20.36.106.128, 20.36.114.64, 23.100.226.236, 23.102.135.246, 23.102.188.65, 40.69.106.128, 40.70.146.128, 40.71.13.64, 40.74.100.64, 40.78.194.128, 40.79.130.64, 40.83.120.64, 40.83.121.56, 40.83.125.161, 40.90.240.166, 40.91.126.196, 40.112.242.192, 40.119.4.111, 40.124.47.188, 51.140.146.64, 51.140.210.128, 52.151.25.45, 52.162.80.89, 52.162.106.192, 52.165.152.214, 52.165.153.122, 52.165.154.193, 52.165.158.140, 52.174.22.21, 52.178.177.147, 52.178.184.149, 52.178.190.65, 52.178.195.197, 52.187.56.50, 52.187.59.251, 52.187.63.19, 52.187.63.37, 52.224.105.172, 52.225.177.153, 52.231.18.64, 52.231.146.128, 65.52.14.230, 65.52.172.237, 65.52.193.203, 70.37.57.58, 70.37.89.222, 104.43.242.137, 104.44.129.141, 104.44.129.243, 104.44.129.255, 104.44.134.255, 104.208.54.11, 104.211.81.64, 104.211.146.128, 104.214.49.0, 157.55.176.93, 157.55.208.185, 191.233.203.64, 191.236.154.88 |
 | Microsoft Azure Government | 23.97.29.209, 13.72.53.37, 13.72.180.105, 23.97.0.17, 23.97.16.184 |
 
-## <a name="configuring-a-network-security-group"></a>A hálózati biztonsági csoportok konfigurálása
+## <a name="configuring-a-network-security-group"></a>Hálózati biztonsági csoport konfigurálása
 
-Hálózati biztonsági csoportokkal nem kell aggódnia az egyes címeket vagy a saját konfigurációs karbantartása. Egy IP-szolgáltatás, amely az összes cím naprakész AppServiceManagement nevű címke van. Az IP-szolgáltatáscímke az NSG-t használ, lépjen a portálra, nyissa meg a hálózati biztonsági csoportok felhasználói felület és bejövő biztonsági szabályok kiválasztása. Ha egy már meglévő szabály a bejövő felügyeleti forgalmak, szerkesztheti. Ha ez az NSG nem jött létre az ASE-t, vagy ha minden új, majd válassza ki **Hozzáadás**. A forrás legördülő menüben válassza a **Szolgáltatáscímke**.  Válassza a forrás-szolgáltatáscímke **AppServiceManagement**. Alkalmazásport-tartományok beállítása a forrás \*, célt a **bármely**, Célport-tartományokkal való **454-455**, protokoll használatával **TCP**, és művelet **engedélyezése** . Ha a szabályt, majd be kell a prioritás. 
+A hálózati biztonsági csoportokkal nem kell aggódnia az egyes címekkel vagy a saját konfiguráció fenntartásával. Létezik egy AppServiceManagement nevű IP-szolgáltatás címkéje, amely az összes címmel naprakész állapotban van. Ha ezt az IP-szolgáltatási címkét szeretné használni a NSG, lépjen a portálra, nyissa meg a hálózati biztonsági csoportok felhasználói felületét, és válassza a bejövő biztonsági szabályok lehetőséget. Ha már létezik meglévő szabály a bejövő felügyeleti forgalomhoz, szerkessze. Ha ez a NSG nem a saját beadásával lett létrehozva, vagy ha az összes új, válassza a **Hozzáadás**lehetőséget. A forrás legördülő menüben válassza ki a **szolgáltatás címkéje**elemet.  A forrás szolgáltatás címkéje területen válassza a **AppServiceManagement**lehetőséget. A forrásport tartományának \*beállítása, cél: **bármely**, célport tartománya **454-455**, protokoll – **TCP**, és művelet, amely **lehetővé teszi**. Ha a szabályt állítja be, akkor meg kell adnia a prioritást. 
 
-![az NSG-KET a szolgáltatáscímke létrehozása][1]
+![NSG létrehozása a szolgáltatás címkéjével][1]
 
 ## <a name="configuring-a-route-table"></a>Útválasztási táblázat konfigurálása
 
-A kezelési címek helyezhető egy útválasztási táblázatot egy következő ugrási típusú internettel annak biztosításához, hogy az összes bejövő felügyeleti forgalmak tudni lépjen vissza, ha ugyanazt az utat az. Ezeket az útvonalakat van szükség, amikor konfigurálása kényszerített bújtatás. Az útválasztási táblázat létrehozása, használhatja a portal, PowerShell vagy az Azure CLI használatával.  Az alábbiakban a parancsok hozzon létre egy útválasztási táblázatot, egy PowerShell-parancssort az Azure CLI használatával. 
+A felügyeleti címek az Internet következő ugrását tartalmazó útválasztási táblázatba helyezhetők, így biztosítva, hogy az összes bejövő felügyeleti forgalom vissza tudjon térni ugyanazon az elérési úton. Ezek az útvonalak a kényszerített bújtatás konfigurálásakor szükségesek. Az útválasztási táblázat létrehozásához használhatja a portált, a PowerShellt vagy az Azure CLI-t.  Az útválasztási tábla Azure CLI használatával PowerShell-parancssorból történő létrehozásához szükséges parancsok alább láthatók. 
 
     $rg = "resource group name"
     $rt = "route table name"
     $location = "azure location"
+    $managementAddresses = "13.64.115.203", "13.66.140.0", "13.67.8.128", "13.69.64.128", "13.69.227.128", "13.70.73.128", "13.71.170.64", "13.71.194.129", "13.75.127.117", "13.77.50.128", "13.89.171.0", "13.94.141.115", "13.94.143.126", "13.94.149.179", "20.36.106.128", "20.36.114.64", "23.100.226.236", "23.102.135.246", "23.102.188.65", "40.69.106.128", "40.70.146.128", "40.71.13.64", "40.74.100.64", "40.78.194.128", "40.79.130.64", "40.83.120.64", "40.83.121.56", "40.83.125.161", "40.90.240.166", "40.91.126.196", "40.112.242.192", "40.119.4.111", "40.124.47.188", "51.140.146.64", "51.140.210.128", "52.151.25.45", "52.162.80.89", "52.162.106.192", "52.165.152.214", "52.165.153.122", "52.165.154.193", "52.165.158.140", "52.174.22.21", "52.178.177.147", "52.178.184.149", "52.178.190.65", "52.178.195.197", "52.187.56.50", "52.187.59.251", "52.187.63.19", "52.187.63.37", "52.224.105.172", "52.225.177.153", "52.231.18.64", "52.231.146.128", "65.52.14.230", "65.52.172.237", "65.52.193.203", "70.37.57.58", "70.37.89.222", "104.43.242.137", "104.44.129.141", "104.44.129.243", "104.44.129.255", "104.44.134.255", "104.208.54.11", "104.211.81.64", "104.211.146.128", "104.214.49.0", "157.55.176.93", "157.55.208.185", "191.233.203.64", "191.236.154.88"
+
     az network route-table create --name $rt --resource-group $rg --location $location
-    az network route-table route create -g $rg --route-table-name $rt -n 13.64.115.203 --next-hop-type Internet --address-prefix 13.64.115.203/32
-    az network route-table route create -g $rg --route-table-name $rt -n 13.75.127.117 --next-hop-type Internet --address-prefix 13.75.127.117/32
-    az network route-table route create -g $rg --route-table-name $rt -n 13.94.141.115 --next-hop-type Internet --address-prefix 13.94.141.115/32
-    az network route-table route create -g $rg --route-table-name $rt -n 13.94.143.126 --next-hop-type Internet --address-prefix 13.94.143.126/32
-    az network route-table route create -g $rg --route-table-name $rt -n 13.94.149.179 --next-hop-type Internet --address-prefix 13.94.149.179/32
-    az network route-table route create -g $rg --route-table-name $rt -n 23.102.135.246 --next-hop-type Internet --address-prefix 23.102.135.246/32
-    az network route-table route create -g $rg --route-table-name $rt -n 23.102.188.65 --next-hop-type Internet --address-prefix 23.102.188.65/32
-    az network route-table route create -g $rg --route-table-name $rt -n 40.83.120.64 --next-hop-type Internet --address-prefix 40.83.120.64/32
-    az network route-table route create -g $rg --route-table-name $rt -n 40.83.121.56 --next-hop-type Internet --address-prefix 40.83.121.56/32
-    az network route-table route create -g $rg --route-table-name $rt -n 40.83.125.161 --next-hop-type Internet --address-prefix 40.83.125.161/32
-    az network route-table route create -g $rg --route-table-name $rt -n 40.124.47.188 --next-hop-type Internet --address-prefix 40.124.47.188/32
-    az network route-table route create -g $rg --route-table-name $rt -n 52.151.25.45 --next-hop-type Internet --address-prefix 52.151.25.45/32
-    az network route-table route create -g $rg --route-table-name $rt -n 52.165.152.214 --next-hop-type Internet --address-prefix 52.165.152.214/32
-    az network route-table route create -g $rg --route-table-name $rt -n 52.165.153.122 --next-hop-type Internet --address-prefix 52.165.153.122/32
-    az network route-table route create -g $rg --route-table-name $rt -n 52.165.154.193 --next-hop-type Internet --address-prefix 52.165.154.193/32
-    az network route-table route create -g $rg --route-table-name $rt -n 52.165.158.140 --next-hop-type Internet --address-prefix 52.165.158.140/32
-    az network route-table route create -g $rg --route-table-name $rt -n 52.174.22.21 --next-hop-type Internet --address-prefix 52.174.22.21/32
-    az network route-table route create -g $rg --route-table-name $rt -n 52.178.177.147 --next-hop-type Internet --address-prefix 52.178.177.147/32
-    az network route-table route create -g $rg --route-table-name $rt -n 52.178.184.149 --next-hop-type Internet --address-prefix 52.178.184.149/32
-    az network route-table route create -g $rg --route-table-name $rt -n 52.178.190.65 --next-hop-type Internet --address-prefix 52.178.190.65/32
-    az network route-table route create -g $rg --route-table-name $rt -n 52.178.195.197 --next-hop-type Internet --address-prefix 52.178.195.197/32
-    az network route-table route create -g $rg --route-table-name $rt -n 52.187.56.50 --next-hop-type Internet --address-prefix 52.187.56.50/32
-    az network route-table route create -g $rg --route-table-name $rt -n 52.187.59.251 --next-hop-type Internet --address-prefix 52.187.59.251/32
-    az network route-table route create -g $rg --route-table-name $rt -n 52.187.63.19 --next-hop-type Internet --address-prefix 52.187.63.19/32
-    az network route-table route create -g $rg --route-table-name $rt -n 52.187.63.37 --next-hop-type Internet --address-prefix 52.187.63.37/32
-    az network route-table route create -g $rg --route-table-name $rt -n 52.224.105.172 --next-hop-type Internet --address-prefix 52.224.105.172/32
-    az network route-table route create -g $rg --route-table-name $rt -n 52.225.177.153 --next-hop-type Internet --address-prefix 52.225.177.153/32
-    az network route-table route create -g $rg --route-table-name $rt -n 65.52.14.230 --next-hop-type Internet --address-prefix 65.52.14.230/32
-    az network route-table route create -g $rg --route-table-name $rt -n 65.52.172.237 --next-hop-type Internet --address-prefix 65.52.172.237/32
-    az network route-table route create -g $rg --route-table-name $rt -n 65.52.193.203 --next-hop-type Internet --address-prefix 65.52.193.203/32
-    az network route-table route create -g $rg --route-table-name $rt -n 70.37.57.58 --next-hop-type Internet --address-prefix 70.37.57.58/32
-    az network route-table route create -g $rg --route-table-name $rt -n 70.37.89.222 --next-hop-type Internet --address-prefix 70.37.89.222/32
-    az network route-table route create -g $rg --route-table-name $rt -n 104.44.129.141 --next-hop-type Internet --address-prefix 104.44.129.141/32
-    az network route-table route create -g $rg --route-table-name $rt -n 104.44.129.243 --next-hop-type Internet --address-prefix 104.44.129.243/32
-    az network route-table route create -g $rg --route-table-name $rt -n 104.44.129.255 --next-hop-type Internet --address-prefix 104.44.129.255/32
-    az network route-table route create -g $rg --route-table-name $rt -n 104.44.134.255 --next-hop-type Internet --address-prefix 104.44.134.255/32
-    az network route-table route create -g $rg --route-table-name $rt -n 104.208.54.11 --next-hop-type Internet --address-prefix 104.208.54.11/32
-    az network route-table route create -g $rg --route-table-name $rt -n 157.55.176.93 --next-hop-type Internet --address-prefix 157.55.176.93/32
-    az network route-table route create -g $rg --route-table-name $rt -n 157.55.208.185 --next-hop-type Internet --address-prefix 157.55.208.185/32
-    az network route-table route create -g $rg --route-table-name $rt -n 191.236.154.88 --next-hop-type Internet --address-prefix 191.236.154.88/32
+    foreach ($ip in $managementAddresses) {
+        az network route-table route create -g $rg --route-table-name $rt -n $ip --next-hop-type Internet --address-prefix ($ip + "/32")
+    }
 
-Az útvonaltábla létrehozása után meg kell azt a az ASE-alhálózattal.  
+Az útválasztási táblázat létrehozása után be kell állítania azt a bevezető alhálózaton.  
 
-## <a name="get-your-management-addresses-from-api"></a>API-ból a kezelési címek beolvasása ##
+## <a name="get-your-management-addresses-from-api"></a>Felügyeleti címek beszerzése az API-ból ##
 
-A kezelési címek, amelyek megfelelnek az ASE-t a következő API-hívással történő listázhatja.
+A következő API-hívással listázhatja a szolgáltatásnak megfelelő felügyeleti címeket.
 
     get /subscriptions/<subscription ID>/resourceGroups/<resource group>/providers/Microsoft.Web/hostingEnvironments/<ASE Name>/inboundnetworkdependenciesendpoints?api-version=2016-09-01
 
-Az API-t adja vissza, amely tartalmazza az összes bejövő címet az ASE JSON-dokumentumok. A címek listáját tartalmazza a kezelési címek az ASE-t és az ASE alhálózat címtartománya maga által használt VIP-címet.  
+Az API egy JSON-dokumentumot ad vissza, amely tartalmazza az összes bejövő címet a bemenő adatszolgáltatáshoz. A címek listája tartalmazza a felügyeleti címeket, a beadási szolgáltató által használt virtuális IP-címet és az alhálózati cím tartományát.  
 
-Az API-t hívja a [armclient](https://github.com/projectkudu/ARMClient) használja a következő parancsokat, de helyettesítsen be, az az előfizetés-azonosító, az erőforráscsoportot és az ASE neve.  
+Az API-nak a [armclient](https://github.com/projectkudu/ARMClient) való meghívásához használja az alábbi parancsokat, de az előfizetés-azonosító, az erőforráscsoport és a központjának neve helyett helyettesítse be.  
 
     armclient login
     armclient get /subscriptions/<subscription ID>/resourceGroups/<resource group>/providers/Microsoft.Web/hostingEnvironments/<ASE Name>/inboundnetworkdependenciesendpoints?api-version=2016-09-01

@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 04/30/2019
 ms.custom: seodec18
-ms.openlocfilehash: 206a8d9ba45dcb948dfffff86bab17b58a33e464
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: 7d1bce7575272b7df185c4e261685d989f49436c
+ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68358614"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68716537"
 ---
 # <a name="known-issues-and-troubleshooting-azure-machine-learning-service"></a>Ismert problémák és hibaelhárítás az Azure Machine Learning szolgáltatás
 
@@ -151,3 +151,9 @@ Ha egy távoli feladatból származó számítási célra hajt végre felügyele
 ```
 
 Ha például megpróbál létrehozni vagy csatolni egy számítási célt egy olyan ML-folyamatból, amely távoli végrehajtásra van elküldve, a rendszer hibaüzenetet küld.
+
+## <a name="overloaded-azurefile-storage"></a>Túlterhelt AzureFile-tároló
+
+Ha a "nem sikerült feltölteni a Project-fájlokat a AzureFile munkakönyvtárba, mert a tárterület túl van terhelve" hibaüzenet jelenik meg, alkalmazza a következő megkerülő megoldásokat.
+
+Ha más számítási feladatokhoz (például adatátvitelhez) használ fájlmegosztást, a javasolt a Blobok használata, hogy a fájlmegosztás díjmentesen használható legyen a futtatások elküldéséhez. A számítási feladatok felosztása két különböző munkaterület között is lehetséges.

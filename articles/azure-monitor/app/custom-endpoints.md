@@ -9,14 +9,14 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 07/24/2019
+ms.date: 07/26/2019
 ms.author: mbullwin
-ms.openlocfilehash: c086f94a161853cba3a9ed2b98f13ea17b90dd20
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.openlocfilehash: 662594f3ef0e4d5598b52cb07006b513e7f3c35a
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68478800"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68564971"
 ---
  # <a name="application-insights-overriding-default-endpoints"></a>Application Insights felülbírálja az alapértelmezett végpontokat
 
@@ -158,6 +158,14 @@ Jelenleg csak a végpontok módosítását igénylő régiók [Azure Government]
 | Azure Government | Telemetria-csatorna |`https://dc.applicationinsights.us/v2/track` |
 | Azure Government | QuickPulse (élő metrikák) |`https://quickpulse.applicationinsights.us/QuickPulseService.svc` |
 | Azure Government | Profil lekérdezése |`https://dc.applicationinsights.us/api/profiles/{0}/appId` |
+
+Ha jelenleg a ["API.applicationinsights.IO"-](https://dev.applicationinsights.io/
+) n keresztül hozzáférő Application Insights Rest APIt használja, akkor a régió helyi végpontját kell használnia:
+
+|Régió |  Végpont neve | Érték |
+|-----------------|:------------|:-------------|
+| Azure China | REST API | `api.applicationinsights.azure.cn` |
+| Azure Government | REST API | `api.applicationinsights.us`|
 
 > [!NOTE]
 > Ezekben a régiókban **jelenleg nem támogatottak** a kód nélküli ügynök/bővítmény alapú figyelés az Azure app Services-ban. Amint ez a funkció elérhetővé válik, a cikk frissülni fog.

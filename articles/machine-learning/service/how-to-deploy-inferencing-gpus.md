@@ -10,12 +10,12 @@ ms.author: vaidyas
 author: csteegz
 ms.reviewer: larryfr
 ms.date: 07/24/2019
-ms.openlocfilehash: 520e7fe953256e4c489e4c540493d9f74dda3aef
-ms.sourcegitcommit: 5604661655840c428045eb837fb8704dca811da0
+ms.openlocfilehash: 06194537a0c0cce3a52510e6f426a9c2904387b2
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68494358"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68694341"
 ---
 # <a name="deploy-a-deep-learning-model-for-inference-with-gpu"></a>Mély tanulási modell üzembe helyezése a GPU-val való következtetéshez
 
@@ -25,6 +25,9 @@ A következtetés vagy a modell pontozása az a fázis, amelyben az üzembe hely
 
 > [!TIP]
 > Bár ebben a cikkben a kódrészletek usee egy TensorFlow modellt, a GPU-t támogató Machine learning-keretrendszerre is alkalmazhatja az adatokat.
+
+> [!NOTE]
+> A cikkben található információk az [Azure Kubernetes-szolgáltatás üzembe helyezése című](how-to-deploy-azure-kubernetes-service.md) cikkben található információkon alapulnak. Ha ez a cikk általában az AK-ra történő telepítést fedi le, ez a cikk a GPU-specifikus üzembe helyezést ismerteti.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -87,7 +90,7 @@ except ComputeTargetException:
 > [!IMPORTANT]
 > Az Azure számlázni fogja, amíg az AK-fürt létezik. Ha végzett, mindenképp törölje az AK-fürtöt.
 
-További információ az Azure Kubernetes szolgáltatás Azure Machine Learning szolgáltatással való használatáról: a [telepítés és a hol](how-to-deploy-and-where.md#deploy-aks).
+További információ az AK Azure Machine Learning szolgáltatással való használatáról: [üzembe helyezés az Azure Kubernetes szolgáltatásban](how-to-deploy-azure-kubernetes-service.md).
 
 ## <a name="write-the-entry-script"></a>A bejegyzés parancsfájljának írása
 
@@ -162,7 +165,7 @@ gpu_aks_config = AksWebservice.deploy_configuration(autoscale_enabled=False,
                                                     memory_gb=4)
 ```
 
-További információt a [AksService. deploy_configuration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.aks.akswebservice?view=azure-ml-py#deploy-configuration-autoscale-enabled-none--autoscale-min-replicas-none--autoscale-max-replicas-none--autoscale-refresh-seconds-none--autoscale-target-utilization-none--collect-model-data-none--auth-enabled-none--cpu-cores-none--memory-gb-none--enable-app-insights-none--scoring-timeout-ms-none--replica-max-concurrent-requests-none--max-request-wait-time-none--num-replicas-none--primary-key-none--secondary-key-none--tags-none--properties-none--description-none--gpu-cores-none--period-seconds-none--initial-delay-seconds-none--timeout-seconds-none--success-threshold-none--failure-threshold-none--namespace-none-)dokumentációjában talál.
+További információt a [AksService. deploy_configuration](/python/api/azureml-core/azureml.core.webservice.akswebservice?view=azure-ml-py#deploy-configuration-autoscale-enabled-none--autoscale-min-replicas-none--autoscale-max-replicas-none--autoscale-refresh-seconds-none--autoscale-target-utilization-none--collect-model-data-none--auth-enabled-none--cpu-cores-none--memory-gb-none--enable-app-insights-none--scoring-timeout-ms-none--replica-max-concurrent-requests-none--max-request-wait-time-none--num-replicas-none--primary-key-none--secondary-key-none--tags-none--properties-none--description-none--gpu-cores-none--period-seconds-none--initial-delay-seconds-none--timeout-seconds-none--success-threshold-none--failure-threshold-none--namespace-none--token-auth-enabled-none-)dokumentációjában talál.
 
 ## <a name="define-the-inference-configuration"></a>A következtetési konfiguráció megadása
 

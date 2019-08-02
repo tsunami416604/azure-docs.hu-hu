@@ -4,7 +4,7 @@ titleSuffix: Azure
 description: Hogyan végezheti el számos gyakori adatelemzési feladatok a Linux rendszerű adatelemző virtuális gép.
 services: machine-learning
 documentationcenter: ''
-author: gopitk
+author: vijetajo
 manager: cgronlun
 editor: cgronlun
 ms.custom: seodec18
@@ -16,13 +16,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/16/2018
-ms.author: gokuma
-ms.openlocfilehash: 6e8883870cc0f035df5122e91449f04203836218
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: vijetaj
+ms.openlocfilehash: df05b2605f3553ce26447a4f8e2440002b75ec3a
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60516847"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68557347"
 ---
 # <a name="data-science-with-a-linux-data-science-virtual-machine-on-azure"></a>Adatelemzés a egy Linux rendszerű adatelemző virtuális gép az Azure-ban
 Ez az útmutató bemutatja, hogyan hajthat végre számos gyakori adatelemzési feladatok a Linux rendszerű adatelemző virtuális gép. A Linux rendszerű adatelemzési virtuális gép (DSVM), amely előre telepített gyakran használt adatok elemzési és gépi tanulási eszközök gyűjteményét az Azure-ban elérhető virtuálisgép-lemezkép. A kulcs szoftverösszetevőket esethez vannak a [a Linux rendszerű adatelemző virtuális gép kiépítése](linux-dsvm-intro.md) témakör. A Virtuálisgép-lemezkép megkönnyíti az első lépések adatelemzésre percben, anélkül, hogy telepítse és konfigurálja az egyes eszközökről külön-külön kellene. Egyszerűen vertikális felskálázás a virtuális Gépet, ha szükséges, és állítsa le, amikor nincs használatban. Ehhez az erőforráshoz így rugalmas és költséghatékony is.
@@ -37,7 +37,7 @@ Mielőtt használhatná egy Linux rendszerű adatelemzési virtuális gépet, az
 * Egy **Azure-előfizetés**. Ha Ön még nem rendelkezik egy, [már ma létrehozhatja ingyenes Azure-fiók](https://azure.microsoft.com/free/).
 * A [ **Linux rendszerű adatelemző virtuális gép**](https://azure.microsoft.com/marketplace/partners/microsoft-ads/linux-data-science-vm). Ez a virtuális gép kiépítése a további információkért lásd: [a Linux rendszerű adatelemző virtuális gép kiépítése](linux-dsvm-intro.md).
 * [X2Go](https://wiki.x2go.org/doku.php) telepítve a számítógépre, és a egy XFCE munkamenet megnyitva. Információ telepítésével és konfigurálásával egy **X2Go ügyfél**, lásd: [telepítése és konfigurálása X2Go ügyfél](linux-dsvm-intro.md#installing-and-configuring-x2go-client).
-* Az egyenletesebb görgethető élményt, váltsa át a gfx.xrender.enabled jelzőt a kapcsolatos: konfiguráció a virtuális gépek FireFox böngésző. [További részletek megtekintéséhez. ](https://www.reddit.com/r/firefox/comments/4nfmvp/ff_47_unbearable_slow_over_remote_x11/). Megfontolnia a lekérdezésbetöltés *mousewheel.enable_pixel_scrolling* hamis értékre. [Itt leírt utasításokat.](https://support.mozilla.org/en-US/questions/981140)
+* Az egyenletesebb görgethető élményt, váltsa át a gfx.xrender.enabled jelzőt a kapcsolatos: konfiguráció a virtuális gépek FireFox böngésző. [További részletek megtekintéséhez. ](https://www.reddit.com/r/firefox/comments/4nfmvp/ff_47_unbearable_slow_over_remote_x11/). Megfontolnia a lekérdezésbetöltés *mousewheel.enable_pixel_scrolling* hamis értékre. [Itt leírt utasításokat.](https://support.mozilla.org/questions/981140)
 * Egy **AzureML fiók**. Ha még nem rendelkezik egy újat, Regisztráljon a [AzureML kezdőlap](https://studio.azureml.net/). Nincs segít megismerkedni egy ingyenes használat szintjét.
 
 ## <a name="download-the-spambase-dataset"></a>Töltse le a spambase adatkészlet
@@ -180,10 +180,10 @@ Próbáljuk meg még egy véletlenszerű erdőmodell. Véletlenszerű erdők sz�
     accuracy
 
 
-## <a name="deploy-a-model-to-azure-machine-learning-studio"></a>Modell üzembe helyezése az Azure Machine Learning studióban
-[Az Azure Machine Learning Studio](https://studio.azureml.net/) egy felhőalapú szolgáltatás, amellyel egyszerűen készíthet és helyezhet üzembe prediktív elemzési modellek. Az Azure Machine Learning studio nagyszerű funkcióit egyik, hogy webszolgáltatásként, amely minden olyan R-függvény közzététele. Az Azure Machine Learning studio R csomag közvetlenül az R-munkamenetet a dsvm-hez a könnyű teszi az üzembe helyezést.
+## <a name="deploy-a-model-to-azure-machine-learning-studio"></a>Modell üzembe helyezése Azure Machine Learning Studióban
+A [Azure Machine learning Studio](https://studio.azureml.net/) egy felhőalapú szolgáltatás, amely megkönnyíti a prediktív elemzési modellek elkészítését és üzembe helyezését. Azure Machine Learning Studio egyik szép funkciója, hogy bármely R-funkciót webszolgáltatásként tehet közzé. A Azure Machine Learning Studio R csomag megkönnyíti az üzembe helyezést az R-munkamenetből a DSVM.
 
-A döntési fa kód az előző szakaszban üzembe helyezéséhez szeretne bejelentkezni az Azure Machine Learning Studióban. A munkaterület-Azonosítót és a egy engedélyezési jogkivonatot jelentkezzen be van szüksége. Keresse meg ezeket az értékeket, és a velük az Azure Machine Learning-változók inicializálása:
+A döntési fa kód az előző szakaszban üzembe helyezéséhez szeretne bejelentkezni az Azure Machine Learning Studióban. A munkaterület-Azonosítót és a egy engedélyezési jogkivonatot jelentkezzen be van szüksége. Ezeknek az értékeknek a megkereséséhez és a Azure Machine Learning változók inicializálásához:
 
 Válassza ki **beállítások** a bal oldali menüben. Megjegyzés: a **MUNKATERÜLET-Azonosítót**. ![2](./media/linux-dsvm-walkthrough/workspace-id.png)
 
@@ -344,7 +344,7 @@ Több mintafüzetek már telepítve vannak a virtuális gépen:
 >
 
 ## <a name="rattle"></a>Rattle
-[Rattle](https://cran.r-project.org/web/packages/rattle/index.html) (az R analitikai eszközt, ismerje meg, egyszerűen) az adatbányászat R egy grafikus eszközt. Rendelkezik egy intuitív felületen, amely megkönnyíti a betöltése, ismerje meg, és alakíthat át adatokat, és hozhat létre és modellek értékeléséhez.  A cikk [Rattle: Az R Data Mining grafikus](https://journal.r-project.org/archive/2009-2/RJournal_2009-2_Williams.pdf) biztosít a forgatókönyv azt mutatja be, annak szolgáltatásait.
+[Rattle](https://cran.r-project.org/web/packages/rattle/index.html) (az R analitikai eszközt, ismerje meg, egyszerűen) az adatbányászat R egy grafikus eszközt. Rendelkezik egy intuitív felületen, amely megkönnyíti a betöltése, ismerje meg, és alakíthat át adatokat, és hozhat létre és modellek értékeléséhez.  A cikk [csörgő: Az R](https://journal.r-project.org/archive/2009-2/RJournal_2009-2_Williams.pdf) adatbányászati grafikus felhasználói felülete egy olyan bemutatót biztosít, amely bemutatja a funkcióit.
 
 Telepítse, és indítsa el a Rattle az alábbi parancsokkal:
 
@@ -423,7 +423,7 @@ Nagyszerű funkcióját Rattle egyik történő futtatása több machine learnin
 Miután végzett a modellek létrehozásához, válassza ki a **Log** fülre kattintva megtekintheti az R-kód futtatásához Rattle a munkamenet során. Kiválaszthatja a **exportálása** gombra kattintva mentse azt.
 
 > [!NOTE]
-> Programhiba van Rattle jelenlegi kiadásában. Módosítsa a parancsfájlt, vagy ismételje meg a későbbi használatával, egy # karaktert elé kell beilleszteni *Ez a napló exportálása...*  a napló a szövegben.
+> Programhiba van Rattle jelenlegi kiadásában. Ha módosítani szeretné a parancsfájlt, vagy a használatával szeretné később megismételni a lépéseket, be kell szúrnia egy # karaktert a napló exportálása előtt.. *.* a napló szövegébe.
 >
 >
 

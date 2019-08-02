@@ -1,9 +1,9 @@
 ---
-title: Az Azure Service Fabric DNS-szolgáltatás |} A Microsoft Docs
-description: Felderítéséhez a fürtön belül a mikroszolgáltatások Service Fabric dns szolgáltatást használni.
+title: Azure Service Fabric DNS-szolgáltatás | Microsoft Docs
+description: Használja a Service Fabric DNS-szolgáltatását, hogy a rendszer a fürtön belül felfedezzék a szolgáltatásait.
 services: service-fabric
 documentationcenter: .net
-author: aljo-microsoft
+author: athinanthny
 manager: chackdan
 editor: vturecek
 ms.assetid: 47f5c1c1-8fc8-4b80-a081-bc308f3655d3
@@ -13,51 +13,51 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 7/20/2018
-ms.author: aljo
-ms.openlocfilehash: 3b3262eadc732c23000a66f24aaeeed4d9794db0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: atsenthi
+ms.openlocfilehash: 94b2b807eb68d628165ca8fa4011b8f3e41d3c6d
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60947656"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68599645"
 ---
-# <a name="dns-service-in-azure-service-fabric"></a>Az Azure Service Fabric DNS-szolgáltatás
-A DNS szolgáltatás nem egy választható rendszerszolgáltatás, amely a fürt engedélyezheti a DNS protokollt használó egyéb szolgáltatások észlelését. 
+# <a name="dns-service-in-azure-service-fabric"></a>DNS szolgáltatás az Azure-ban Service Fabric
+A DNS-szolgáltatás egy opcionális rendszerszolgáltatás, amelyet engedélyezheti a fürtben más szolgáltatások felderítéséhez a DNS protokoll használatával. 
 
-Számos szolgáltatás, különösen a tárolóalapú szolgáltatásokat is címezhető egy már meglévő URL-címet. Oldja meg ezeket a szolgáltatásokat a Service Fabric Naming Service protokoll helyett a standard DNS protokoll használatával történő kívánatos. A DNS-szolgáltatás lehetővé teszi, hogy a DNS-név leképezése a szolgáltatás nevét, és ezért a végpont IP-címek feloldása. Funkció tartja karban a tárolóalapú szolgáltatásokat hordozhatóságát több különböző platformon, és végezhet "lift and shift" forgatókönyvek könnyebben, azáltal, hogy meglévő szolgáltatás URL-címek-ekkel nem kell újraírnia kihasználhatja az elnevezési szolgáltatásban. 
+A már meglévő URL-címeken keresztül számos szolgáltatás, különösen a tároló szolgáltatások is elérhetők. Az Service Fabric elnevezési szolgáltatás protokoll helyett a szabványos DNS protokoll használatával tudja megoldani ezeket a szolgáltatásokat. A DNS szolgáltatás lehetővé teszi a DNS-nevek hozzárendelését a szolgáltatás neveként, így a végponti IP-címek feloldását. Az ilyen funkciók megőrzik a tároló szolgáltatások hordozhatóságát a különböző platformokon, és megkönnyítik a "lift és SHIFT" forgatókönyvek használatát azáltal, hogy a meglévő szolgáltatási URL-címeket nem kell a kód átírása helyett használni a elnevezési szolgáltatás kihasználása érdekében. 
 
-A DNS-szolgáltatás DNS-nevek viszont az elnevezési szolgáltatásban való visszatéréshez a szolgáltatásvégpont által megoldott szolgáltatásnevek rendeli hozzá. A szolgáltatás DNS-nevét a létrehozás időpontjában van megadva. Az alábbi ábrán látható, a DNS-szolgáltatás működése az állapotmentes szolgáltatások esetében.
+A DNS-szolgáltatás leképezi a DNS-neveket a szolgáltatás neveként, amelyet a elnevezési szolgáltatás a szolgáltatás végpontjának visszaküldéséhez feloldott. A szolgáltatás DNS-neve a létrehozás időpontjában van megadva. Az alábbi ábra bemutatja, hogyan működik a DNS-szolgáltatás az állapot nélküli szolgáltatások esetében.
 
-![Szolgáltatásvégpontok](./media/service-fabric-dnsservice/stateless-dns.png)
+![szolgáltatási végpontok](./media/service-fabric-dnsservice/stateless-dns.png)
 
-A Service Fabric verziója 6.3 a kiadástól kezdve a Service Fabric DNS protokoll ki van terjesztve címzéshez particionált állapotalapú szolgáltatások egy sémát tartalmazza. Ezek a bővítmények koncepcióját oldja meg az adott partíció IP-címek használatával a partíció neve és az állapotalapú szolgáltatás DNS-név kombinációját. A három particionálási sémákat támogatottak:
+A Service Fabric 6,3-es verziójától kezdve a Service Fabric DNS protokoll ki lett bővítve, hogy tartalmazza a particionált állapot-nyilvántartó szolgáltatások kezelésére szolgáló sémát. Ezek a bővítmények feloldják az adott partíciós IP-címeket az állapot-nyilvántartó DNS-név és a partíció neve együttes használatával. Mindhárom particionálási séma támogatott:
 
-- A particionálás nevű
-- A particionálás előre
-- Egyszeres particionálása
+- Nevesített particionálás
+- Tartományon kívüli particionálás
+- Egyedi particionálás
 
-Az alábbi ábrán látható, a DNS-szolgáltatás működése particionált állapotalapú szolgáltatásokhoz.
+Az alábbi ábra bemutatja, hogyan működik a DNS-szolgáltatás particionált állapot-nyilvántartó szolgáltatásokhoz.
 
-![állapot-nyilvántartó Szolgáltatásvégpontok](./media/service-fabric-dnsservice/stateful-dns.png)
+![állapot-nyilvántartó szolgáltatási végpontok](./media/service-fabric-dnsservice/stateful-dns.png)
 
-Dinamikus portok nem támogatottak a DNS-szolgáltatás. A dinamikus portokat elérhetővé tett szolgáltatások megoldásához használja a [fordított proxy szolgáltatás](./service-fabric-reverseproxy.md).
+A DNS-szolgáltatás nem támogatja a dinamikus portokat. A dinamikus portokon elérhetővé tett szolgáltatások megoldásához használja a [fordított proxy szolgáltatást](./service-fabric-reverseproxy.md).
 
-## <a name="enabling-the-dns-service"></a>A DNS szolgáltatás engedélyezése
+## <a name="enabling-the-dns-service"></a>A DNS-szolgáltatás engedélyezése
 > [!NOTE]
-> DNS szolgáltatás a Service Fabric-szolgáltatások még nem támogatott Linux rendszeren.
+> A Service Fabric szolgáltatások DNS szolgáltatása még nem támogatott Linux rendszeren.
 
-A portállal egy fürtöt hoz létre, amikor a DNS-szolgáltatás alapértelmezés szerint engedélyezve van-e a **közé tartozik a DNS-szolgáltatás** jelölőnégyzet be van jelölve a **fürtkonfiguráció** menüben:
+Amikor a portál használatával hoz létre fürtöt, a DNS szolgáltatás alapértelmezés szerint engedélyezve van a **fürt konfigurációs** MENÜJÉNEK **DNS-szolgáltatás** belefoglalása jelölőnégyzetében:
 
-![A portálon keresztül DNS szolgáltatás engedélyezése](./media/service-fabric-dnsservice/enable-dns-service.png)
+![DNS-szolgáltatás engedélyezése a portálon keresztül](./media/service-fabric-dnsservice/enable-dns-service.png)
 
-Ha nem használ a portálon a fürt létrehozásához, vagy amikor frissít egy meglévő fürthöz, akkor engedélyeznie kell a DNS szolgáltatás a sablonban:
+Ha nem a portál használatával hozza létre a fürtöt, vagy ha meglévő fürtöt frissít, engedélyeznie kell a DNS-szolgáltatást egy sablonban:
 
-- Új fürt üzembe helyezéséhez használhatja a [mintasablon](https://github.com/Azure/azure-quickstart-templates/tree/master/service-fabric-secure-cluster-5-node-1-nodetype) vagy a saját Resource Manager-sablon létrehozása. 
-- Meglévő fürt frissítéséhez navigálhat a portálon, majd kattintson a fürt erőforráscsoportot **Automation-szkript** dolgozhat a fürt és egyéb erőforrások a csoport aktuális állapotát tükröző sablont. További tudnivalókért lásd: [az erőforráscsoport sablonjának exportálása](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-export-template).
+- Új fürt üzembe helyezéséhez használhatja a [minta sablonokat](https://github.com/Azure/azure-quickstart-templates/tree/master/service-fabric-secure-cluster-5-node-1-nodetype) , vagy létrehozhat egy saját Resource Manager-sablont. 
+- Egy meglévő fürt frissítéséhez navigáljon a fürt erőforráscsoporthoz a portálon, és kattintson az **Automation-parancsfájl** lehetőségre a fürt aktuális állapotát és a csoport többi erőforrását tükröző sablonnal való munkához. További információ: [a sablon exportálása az erőforráscsoporthoz](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-export-template).
 
-Miután egy sablont, a DNS szolgáltatás a következő lépésekkel engedélyezhető:
+A sablon használata után engedélyezheti a DNS-szolgáltatást a következő lépésekkel:
 
-1. Ellenőrizze, hogy a `apiversion` értékre van állítva `2017-07-01-preview` vagy újabb a `Microsoft.ServiceFabric/clusters` erőforrás, és ha nem, frissítse azt a következő példában látható módon:
+1. Ellenőrizze, hogy `apiversion` a be van `2017-07-01-preview` - `Microsoft.ServiceFabric/clusters` e állítva az erőforráshoz, és ha nem, akkor frissítse a következő példában látható módon:
 
     ```json
     {
@@ -69,9 +69,9 @@ Miután egy sablont, a DNS szolgáltatás a következő lépésekkel engedélyez
     }
     ```
 
-2. Most lehetővé teszi a DNS szolgáltatás a következő módszerek valamelyikével:
+2. Most engedélyezze a DNS szolgáltatást a következő módszerek egyikével:
 
-   - Ahhoz, hogy a DNS-szolgáltatás az alapértelmezett beállításokkal, adja hozzá a `addonFeatures` szakaszon belül a `properties` szakasz az alábbi példában látható módon:
+   - Ha engedélyezni szeretné a DNS-szolgáltatást az alapértelmezett beállításokkal, adja `addonFeatures` hozzá azt a `properties` szakaszon belüli szakaszhoz az alábbi példában látható módon:
 
        ```json
            "properties": {
@@ -83,7 +83,7 @@ Miután egy sablont, a DNS szolgáltatás a következő lépésekkel engedélyez
               ...
            }
        ```
-   - A szolgáltatás az alapértelmezett beállítások eltérő engedélyezéséhez adjon hozzá egy `DnsService` részt a `fabricSettings` szakaszon belül a `properties` szakaszban. Ebben az esetben nem kell hozzáadnia a nincs, `addonFeatures`. A DNS-szolgáltatás megadható tulajdonságaival kapcsolatos további tudnivalókért lásd: [DNS-szolgáltatás beállítások](./service-fabric-cluster-fabric-settings.md#dnsservice).
+   - Ha a szolgáltatást nem az alapértelmezett beállításokkal szeretné engedélyezni, vegyen fel `DnsService` egy `fabricSettings` szakaszt a szakaszon belüli `properties` szakaszba. Ebben az esetben nem kell hozzáadnia a DnsService `addonFeatures`a következőhöz:. A DNS szolgáltatáshoz beállítható tulajdonságokkal kapcsolatos további tudnivalókért lásd: [DNS-szolgáltatás beállításai](./service-fabric-cluster-fabric-settings.md#dnsservice).
 
        ```json
            "properties": {
@@ -111,18 +111,18 @@ Miután egy sablont, a DNS szolgáltatás a következő lépésekkel engedélyez
               ]
             }
        ```
-1. A módosítások a fürt sablon frissítése után alkalmazza őket, és lehetővé teszik a frissítés befejeződött. A frissítés befejeződése után a rendszer DNS-szolgáltatás a fürtön belül elindul. A szolgáltatás neve `fabric:/System/DnsService`, és annak alapján, a **rendszer** szakaszában a Service Fabric Explorerben. 
+1. Miután frissítette a fürt sablonját a módosításokkal, alkalmazza őket, és hagyja, hogy a frissítés befejeződjön. Ha a frissítés befejeződött, a DNS-rendszerszolgáltatás elindul a fürtben. A szolgáltatás neve `fabric:/System/DnsService`, és a Service Fabric Explorer **rendszerszolgáltatás** szakasza alatt található. 
 
 
-## <a name="setting-the-dns-name-for-your-service"></a>A DNS-név, a szolgáltatás beállítása
-Beállíthat egy DNS-nevet, a szolgáltatások deklaratív az alapértelmezett szolgáltatások az ApplicationManifest.xml fájl- vagy PowerShell-parancsok használatával.
+## <a name="setting-the-dns-name-for-your-service"></a>A szolgáltatás DNS-nevének beállítása
+A szolgáltatások DNS-nevét akár deklaratív módon is beállíthatja az alapértelmezett szolgáltatások ApplicationManifest. xml fájlban vagy PowerShell-parancsokkal.
 
-A szolgáltatás DNS-neve feloldható terjesszen a fürtön, ezért fontos a DNS-név az egyediség biztosítása céljából a fürtön. 
+A szolgáltatás DNS-neve feloldható a fürtben, ezért fontos, hogy biztosítsa a DNS-név egyediségét a fürtön belül. 
 
-Azt javasoljuk, hogy használhatja-e egy elnevezési sémája `<ServiceDnsName>.<AppInstanceName>`; például `service1.application1`. Ha egy alkalmazást helyezünk üzembe a Docker compose, a szolgáltatások automatikusan hozzárendeli ezt a fájlelnevezési rendszert használó DNS-neveket.
+Erősen ajánlott a elnevezési séma `<ServiceDnsName>.<AppInstanceName>`használata, `service1.application1`például:. Ha egy alkalmazás a Docker-összeállítás használatával lett telepítve, a rendszer automatikusan hozzárendeli a szolgáltatásokat a DNS-nevekhez ezen elnevezési séma használatával.
 
-### <a name="setting-the-dns-name-for-a-default-service-in-the-applicationmanifestxml"></a>A DNS-név, egy alapértelmezett szolgáltatás beállítása az ApplicationManifest.xml
-Nyissa meg a projektjét a Visual Studióban, vagy a kedvenc szerkesztőjében, és nyissa meg az ApplicationManifest.xml fájlt. Nyissa meg az alapértelmezett szolgáltatások szakaszt, és minden egyes szolgáltatás hozzáadása a `ServiceDnsName` attribútum. Az alábbi példa bemutatja, hogyan állíthatja be a szolgáltatást, hogy a DNS-neve `service1.application1`
+### <a name="setting-the-dns-name-for-a-default-service-in-the-applicationmanifestxml"></a>Az alapértelmezett szolgáltatás DNS-nevének beállítása a ApplicationManifest. xml fájlban
+Nyissa meg a projektet a Visual Studióban vagy a kedvenc szerkesztőjében, és nyissa meg a ApplicationManifest. xml fájlt. Lépjen az alapértelmezett szolgáltatások szakaszhoz, és minden szolgáltatáshoz adja hozzá `ServiceDnsName` az attribútumot. Az alábbi példa bemutatja, hogyan állíthatja be a szolgáltatás DNS-nevét a következőre`service1.application1`
 
 ```xml
     <Service Name="Stateless1" ServiceDnsName="service1.application1">
@@ -131,11 +131,11 @@ Nyissa meg a projektjét a Visual Studióban, vagy a kedvenc szerkesztőjében, 
       </StatelessService>
     </Service>
 ```
-Az alkalmazás üzembe helyezése után, a szolgáltatás-példánya a Service Fabric Explorerben ebben az esetben a DNS-nevét jeleníti meg az alábbi ábrán látható módon: 
+Az alkalmazás üzembe helyezését követően a Service Fabric Explorerben látható szolgáltatási példány megjeleníti a példány DNS-nevét, ahogy az a következő ábrán látható: 
 
-![Szolgáltatásvégpontok](./media/service-fabric-dnsservice/service-fabric-explorer-dns.png)
+![szolgáltatási végpontok](./media/service-fabric-dnsservice/service-fabric-explorer-dns.png)
 
-A következő példa egy állapotalapú szolgáltatás DNS-nevét állítja `statefulsvc.app`. A szolgáltatás egy elnevezett particionálási sémát használ. Figyelje meg, hogy a partíció neve kisbetűket. Ez azért szükséges, hogy a DNS-lekérdezések; célzott partíciók További információkért lásd: [így DNS-lekérdezéseket egy állapotalapú szolgáltatás partíció](https://docs.microsoft.com/azure/service-fabric/service-fabric-dnsservice#preview-making-dns-queries-on-a-stateful-service-partition).
+Az alábbi példa egy állapot-nyilvántartó szolgáltatás `statefulsvc.app`DNS-nevét állítja be a következőre:. A szolgáltatás nevesített particionálási sémát használ. Figyelje meg, hogy a partíciók nevei kisbetűvel vannak elválasztva. Ez a követelmény a DNS-lekérdezésekben célként megadott partíciók esetében. További információ: [DNS-lekérdezések készítése állapot-nyilvántartó szolgáltatás partícióján](https://docs.microsoft.com/azure/service-fabric/service-fabric-dnsservice#preview-making-dns-queries-on-a-stateful-service-partition).
 
 ```xml
     <Service Name="Stateful1" ServiceDnsName="statefulsvc.app" />
@@ -148,8 +148,8 @@ A következő példa egy állapotalapú szolgáltatás DNS-nevét állítja `sta
     </Service>
 ```
 
-### <a name="setting-the-dns-name-for-a-service-using-powershell"></a>A DNS-név, egy Powershell-lel szolgáltatás beállítása
-A szolgáltatás DNS-név használatával létrehozásakor beállíthatja a `New-ServiceFabricService` Powershell-parancsot. A következő példában létrehozunk egy új állapotmentes szolgáltatás DNS-névvel `service1.application1`
+### <a name="setting-the-dns-name-for-a-service-using-powershell"></a>Egy szolgáltatás DNS-nevének beállítása a PowerShell használatával
+Megadhatja a szolgáltatás DNS-nevét a `New-ServiceFabricService` PowerShell-parancs használatával történő létrehozásakor. A következő példa egy új állapot nélküli szolgáltatást hoz létre a DNS-névvel`service1.application1`
 
 ```powershell
     New-ServiceFabricService `
@@ -162,41 +162,41 @@ A szolgáltatás DNS-név használatával létrehozásakor beállíthatja a `New
     -ServiceDnsName service1.application1
 ```
 
-## <a name="preview-making-dns-queries-on-a-stateful-service-partition"></a>[Előzetes verzió] DNS-lekérdezések tétele az állapotalapú szolgáltatás partíción
-A Service Fabric DNS-szolgáltatás a Service Fabric verziója 6.3 a kiadástól kezdve a szolgáltatás partícióinak támogatja lekérdezéseket.
+## <a name="preview-making-dns-queries-on-a-stateful-service-partition"></a>Előnézet DNS-lekérdezések elkészítése állapot-nyilvántartó szolgáltatás partícióján
+A Service Fabric 6,3-es verziójától kezdve a Service Fabric DNS-szolgáltatás támogatja a szolgáltatási partíciók lekérdezéseit.
 
-A DNS-lekérdezésekben használt partíciók az alábbi elnevezési korlátozások vonatkoznak:
+A DNS-lekérdezésekben használt partíciókhoz a következő elnevezési korlátozások érvényesek:
 
-   - Partíciónevek DNS megfelelőnek kell lennie.
-   - Több címke partíciónevek (, amelyek tartalmaznak, ponttal, ".", a név) nem használható.
-   - Partíciónevek kisbetűs kell lennie.
+   - A partíciók nevének DNS-kompatibilisnek kell lennie.
+   - A többcímkés partíciók neve (például a dot, a ".", a név) nem használható.
+   - A partíciók nevének kisbetűnek kell lennie.
 
-DNS-lekérdezések egy partíció célzó a következőképpen vannak formázva:
+A partíciót tároló DNS-lekérdezések a következőképpen vannak formázva:
 
 ```
     <First-Label-Of-Partitioned-Service-DNSName><PartitionPrefix><Target-Partition-Name>< PartitionSuffix>.<Remaining- Partitioned-Service-DNSName>
 ```
 Az elemek magyarázata:
 
-- *First-Label-Of-Partitioned-Service-DNSName* a szolgáltatás DNS-nevének első része.
-- *PartitionPrefix* érték, amely akkor állítható be a fürtjegyzék vagy a fürt Resource Manager-sablon segítségével nincs szakaszában. Az alapértelmezett érték "-". További tudnivalókért lásd: [DNS-szolgáltatás beállítások](./service-fabric-cluster-fabric-settings.md#dnsservice).
-- *Partíció-célnév* a partíció neve. 
-- *PartitionSuffix* érték, amely akkor állítható be a fürtjegyzék vagy a fürt Resource Manager-sablon segítségével nincs szakaszában. Az alapértelmezett érték: üres karakterlánc. További tudnivalókért lásd: [DNS-szolgáltatás beállítások](./service-fabric-cluster-fabric-settings.md#dnsservice).
-- *Fennmaradó-particionált-Service-DNSName* hátralévő része a szolgáltatás DNS-nevét.
+- *Első – a particionált-Service-DNSName* az első része a szolgáltatás DNS-nevének.
+- A *PartitionPrefix* olyan érték, amely a fürt jegyzékfájljának DnsService szakaszában vagy a fürt Resource Manager-sablonján keresztül adható meg. Az alapértelmezett érték a "-". További információ: [DNS-szolgáltatás beállításai](./service-fabric-cluster-fabric-settings.md#dnsservice).
+- *Cél – a partíció* neve a partíció neve. 
+- A *PartitionSuffix* olyan érték, amely a fürt jegyzékfájljának DnsService szakaszában vagy a fürt Resource Manager-sablonján keresztül adható meg. Az alapértelmezett érték üres karakterlánc. További információ: [DNS-szolgáltatás beállításai](./service-fabric-cluster-fabric-settings.md#dnsservice).
+- A *tovább particionált-Service-DNSName* a szolgáltatás DNS-neve hátralévő része.
 
-Az alábbi példák bemutatják, amely az alapértelmezett beállításokkal rendelkezik a fürtön futó particionált szolgáltatások DNS-lekérdezései `PartitionPrefix` és `PartitionSuffix`: 
+Az alábbi példák a fürtön futó particionált szolgáltatások DNS-lekérdezéseit mutatják be, amelyek alapértelmezett `PartitionPrefix` beállításai `PartitionSuffix`a következők: 
 
-- Partíció "0" a szolgáltatás DNS-névvel megoldásához `backendrangedschemesvc.application` , amely egy ranged particionálási sémát használ, használja `backendrangedschemesvc-0.application`.
-- Partíció megoldásához "first" a szolgáltatás DNS-névvel `backendnamedschemesvc.application` , amely egy elnevezett particionálási sémát használ, használja `backendnamedschemesvc-first.application`.
+- Ha egy olyan szolgáltatás "0" partícióját szeretné feloldani `backendrangedschemesvc.application` , amelynek a DNS-neve tartományos particionálási `backendrangedschemesvc-0.application`sémát használ, használja a következőt:.
+- Egy nevesített particionálási sémát használó szolgáltatás `backendnamedschemesvc.application` "első" partíciójának feloldásához használja `backendnamedschemesvc-first.application`a következőt:.
 
-A DNS szolgáltatás a partíció az elsődleges replika IP-címét adja vissza. Ha nincs partíció van megadva, a szolgáltatás egy véletlenszerűen kiválasztott partíció az elsődleges replika IP-címét adja vissza.
+A DNS szolgáltatás visszaadja a partíció elsődleges replikájának IP-címét. Ha nincs megadva partíció, a szolgáltatás egy véletlenszerűen kiválasztott partíció elsődleges replikájának IP-címét adja vissza.
 
-## <a name="using-dns-in-your-services"></a>A szolgáltatások a DNS-sel
-Ha egynél több szolgáltatást telepít, a végpontok egy DNS-név használatával kommunikálni más szolgáltatások is megtalálhatja. A DNS-szolgáltatás működik az állapotmentes szolgáltatások esetében, és a Service Fabric 6.3-es és újabb verziók, az állapotalapú szolgáltatások esetében. A Service Fabric előtt 6.3 verzióin futó állapotalapú szolgáltatások esetében is használhatja a beépített [fordított proxy szolgáltatás](./service-fabric-reverseproxy.md) meghívni egy adott szolgáltatás partíció http-hívásokhoz. 
+## <a name="using-dns-in-your-services"></a>A DNS használata a szolgáltatásokban
+Ha több szolgáltatást helyez üzembe, a DNS-név használatával megkeresheti más szolgáltatások végpontját, amelyekkel kommunikálni tud. A DNS-szolgáltatás állapot-nyilvántartó szolgáltatások esetében működik, és a Service Fabric 6,3-es és újabb verzióiban. A 6,3-nál korábbi Service Fabric-verziókban futó állapot-nyilvántartó szolgáltatások esetében az adott szolgáltatás-partíció meghívásához használhatja a beépített [fordított proxy szolgáltatást](./service-fabric-reverseproxy.md) a http-hívásokhoz. 
 
-Dinamikus portok nem támogatottak a DNS-szolgáltatás. A fordított proxy szolgáltatás használatával oldja meg a dinamikus portokat használó szolgáltatások.
+A DNS-szolgáltatás nem támogatja a dinamikus portokat. A fordított proxy szolgáltatást a dinamikus portokat használó szolgáltatások feloldására használhatja.
 
-A következő kód bemutatja, hogyan hívhat meg egy állapotmentes szolgáltatás DNS-en keresztül. Egyszerűen egy normál http-hívás legyen, ahol meg kell a DNS-név, a port és bármilyen választható útvonalat az URL-cím részeként.
+A következő kód bemutatja, hogyan hívhat meg állapot nélküli szolgáltatást a DNS-en keresztül. Ez egyszerűen egy normál http-hívás, amelyben a DNS-nevet, a portot és a nem kötelező elérési utat adja meg az URL-cím részeként.
 
 ```csharp
 public class ValuesController : Controller
@@ -224,7 +224,7 @@ public class ValuesController : Controller
 }
 ```
 
-A következő kód mutatja egy, az állapotalapú szolgáltatások egy adott partícióra. Ebben az esetben a DNS-neve tartalmazza a partíció neve (partition1). A hívás feltételezi, hogy a fürt alapértelmezett értékekkel `PartitionPrefix` és `PartitionSuffix`.
+A következő kód egy állapot-nyilvántartó szolgáltatás egy adott partíciójának hívását mutatja be. Ebben az esetben a DNS-név tartalmazza a partíció nevét (partition1). A hívás olyan fürtöt feltételez, amely a `PartitionPrefix` és `PartitionSuffix`a alapértelmezett értékével rendelkezik.
 
 ```csharp
 public class ValuesController : Controller
@@ -253,10 +253,10 @@ public class ValuesController : Controller
 ```
 
 ## <a name="known-issues"></a>Ismert problémák
-* A Service Fabric 6.3 és újabb verziók szolgáltatás-nevek DNS-nevet a kötőjelet tartalmazó DNS-keresések probléma van. Ennél a hibánál további információkért kérjük nyomon követése a következő [GitHub-problémát](https://github.com/Azure/service-fabric-issues/issues/1197). Ez javítja a következő 6.3 frissítés hamarosan elérhető. 
+* A 6,3-es és újabb verziók esetében a DNS-név kötőjelét tartalmazó szolgáltatásnév DNS-keresési szolgáltatásával kapcsolatos probléma a Service Fabric. A hibával kapcsolatos további információkért kövesse a következő GitHub- [problémát](https://github.com/Azure/service-fabric-issues/issues/1197). A javítás ehhez a következő 6,3 frissítéssel érkezik. 
 
-* DNS szolgáltatás a Service Fabric-szolgáltatások még nem támogatott Linux rendszeren. DNS-szolgáltatás támogatott Linux-tárolókhoz. Fabric ügyfél/ServicePartitionResolver használatával manuális feloldási jelent a érhető el.
+* A Service Fabric szolgáltatások DNS szolgáltatása még nem támogatott Linux rendszeren. A DNS-szolgáltatás a Linux rendszerű tárolók esetében támogatott. A Fabric Client/ServicePartitionResolver manuális feloldása a rendelkezésre álló alternatíva.
 
 ## <a name="next-steps"></a>További lépések
-További információ a fürtben a szolgáltatások közötti kommunikáció [csatlakozhat, és a kommunikáció a szolgáltatásokkal](service-fabric-connect-and-communicate-with-services.md)
+További információ a fürtön belüli, a [kapcsolattal és](service-fabric-connect-and-communicate-with-services.md) a szolgáltatásokkal való kommunikációval
 

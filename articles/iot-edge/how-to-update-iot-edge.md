@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: b6b4cd38ce5f591d43f27f735a48993cc1a1ab63
-ms.sourcegitcommit: c556477e031f8f82022a8638ca2aec32e79f6fd9
+ms.openlocfilehash: 27f0ebab1fd87eb1870c5a8be21c4f80be4132f1
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68414449"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68698588"
 ---
 # <a name="update-the-iot-edge-security-daemon-and-runtime"></a>Az IoT Edge biztonsági démon és a futtatókörnyezet frissítése
 
@@ -24,14 +24,6 @@ Mivel a IoT Edge szolgáltatás új verziókat szabadít fel, frissítenie kell 
 IoT Edge-eszköz két összetevőből, ha újabb verzióra szeretne frissíteni kell. Az első a biztonsági démon, amely az eszközön fut, és elindítja a futásidejű modulokat az eszköz indításakor. Jelenleg a biztonsági démon csak frissíthetők magáról az eszközről. A második összetevő a futtatókörnyezet, amely az IoT Edge hub és a IoT Edge Agent moduljaiból tevődik fel. Az üzembe helyezés felépítésében függően a futtatókörnyezet frissíthetők az eszközről, vagy távolról. 
 
 Az Azure IoT Edge legújabb verzióját, lásd: [Azure IoT Edge-kiadások](https://github.com/Azure/azure-iotedge/releases).
-
->[!IMPORTANT]
->Ha Windows rendszerű eszközön futtat Azure IoT Edge, ne frissítsen a verzió 1.0.5, ha a következők egyike az eszközre vonatkozik: 
->* Nem frissítette az eszközt a Windows Build 17763-re. IoT Edge 1.0.5-verzió nem támogatja a 17763-nál régebbi Windows-buildek használatát.
->* Java-vagy Node. js-modulokat futtat a Windows-eszközön. A verzió 1.0.5 akkor is kihagyhatja, ha frissítette a Windows-eszközt a legújabb buildre. 
->
->További információ a IoT Edge 1.0.5: [1.0.5 kibocsátási megjegyzések](https://github.com/Azure/azure-iotedge/releases/tag/1.0.5). A fejlesztői eszközök legújabb verzióra történő frissítésével kapcsolatos további információkért tekintse meg [a IoT fejlesztői blogját](https://devblogs.microsoft.com/iotdev/).
-
 
 ## <a name="update-the-security-daemon"></a>A biztonsági démon frissítése
 

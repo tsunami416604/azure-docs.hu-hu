@@ -1,18 +1,19 @@
 ---
 title: Titkosított Azure-beli virtuális gépek biztonsági mentése és visszaállítása Azure Backup
 description: A titkosított Azure-beli virtuális gépek biztonsági mentését és visszaállítását ismerteti a Azure Backup szolgáltatással.
-author: geetha
-manager: vijayts
+ms.reviewer: geg
+author: dcurwin
+manager: carmonm
 ms.service: backup
 ms.topic: conceptual
 ms.date: 4/3/2019
-ms.author: geg
-ms.openlocfilehash: 9da3e4d6f8043e8df0a448e1fb7b957849076868
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.author: dacurwin
+ms.openlocfilehash: 71a33b7263cd7a3b2f5e39ce9d24df11a7d6283c
+ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68465307"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68688606"
 ---
 # <a name="back-up-and-restore-encrypted-azure-vm"></a>Titkosított Azure-beli virtuális gép biztonsági mentése és visszaállítása
 
@@ -125,7 +126,7 @@ Az Azure-beli virtuális gépnek csak olvasási hozzáférésre van szüksége a
 
 Engedélyek beállítása:
 
-1. A Azure Portal válassza a **minden szolgáltatás**lehetőséget, és keresse meg a kulcstárolókat.
+1. A Azure Portal válassza a **minden szolgáltatás**lehetőséget, és keresse mega kulcstárolókat.
 2. Válassza ki a titkosított virtuális géphez társított kulcstartót.
 3. Válassza a **hozzáférési szabályzatok** > **új hozzáadása**elemet.
 4. Válassza a **résztvevő kiválasztása**lehetőséget, majd írja be a **biztonsági mentés kezelése**elemet.

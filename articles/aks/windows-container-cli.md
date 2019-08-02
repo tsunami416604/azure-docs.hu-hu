@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 06/17/2019
 ms.author: mlearned
 ms.openlocfilehash: 305901007180cfb197cf5c0dfb338800449560a1
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/22/2019
+ms.lasthandoff: 07/26/2019
 ms.locfileid: "68382035"
 ---
 # <a name="preview---create-a-windows-server-container-on-an-azure-kubernetes-service-aks-cluster-using-the-azure-cli"></a>Előzetes verzió – Windows Server-tároló létrehozása Azure Kubernetes szolgáltatásbeli (ak) fürtön az Azure CLI használatával
@@ -42,7 +42,7 @@ A Windows Server-tárolókat futtató fürt létrehozása után hozzá kell adni
 
 ### <a name="install-aks-preview-cli-extension"></a>Az Kabai szolgáltatás telepítése – előnézeti CLI-bővítmény
 
-A Windows Server-tárolók használatához a CLI *-* előnézeti CLI-bővítmény 0.4.1 vagy újabb verziójára van szükség. Telepítse a (z) Azure CLI *-* bővítményt az az [Extension Add][az-extension-add] command, then check for any available updates using the [az extension update][az-extension-update] paranccsal:
+A Windows Server-tárolók használatához a CLI *-* előnézeti CLI-bővítmény 0.4.1 vagy újabb verziójára van szükség. Telepítse az *AK – előzetes* verzió Azure CLI bővítményét az az [Extension Add][az-extension-add] paranccsal, majd az az [Extension Update][az-extension-update] paranccsal keresse meg az elérhető frissítéseket:
 
 ```azurecli-interactive
 # Install the aks-preview extension
@@ -120,7 +120,7 @@ A következő példa kimenete azt mutatja, hogy az erőforráscsoport sikeresen 
 
 ## <a name="create-an-aks-cluster"></a>AKS-fürt létrehozása
 
-Ha olyan AK-fürtöt szeretne futtatni, amely támogatja a Windows Server-tárolók csomópont-készleteit, a fürtnek az [Azure CNI][azure-cni-about] (advanced) network plugin. For more detailed information to help plan out the required subnet ranges and network considerations, see [configure Azure CNI networking][use-advanced-networking]-t használó hálózati házirendet kell használnia. A *myAKSCluster*nevű AK-fürt létrehozásához használja az az [AK Create][az-AK-Create] parancsot. Ez a parancs létrehozza a szükséges hálózati erőforrásokat, ha nem léteznek.
+Ha olyan AK-fürtöt szeretne futtatni, amely támogatja a Windows Server-tárolók csomópont-készleteit, a fürtnek olyan hálózati házirendet kell használnia, amely az [Azure CNI][azure-cni-about] (Advanced) hálózati beépülő modult használja. További információ a szükséges alhálózati tartományok és hálózati megfontolások megtervezéséhez: az [Azure CNI hálózatkezelésének konfigurálása][use-advanced-networking]. Az az [AK Create][az-aks-create] paranccsal hozzon létre egy *myAKSCluster*nevű AK-fürtöt. Ez a parancs létrehozza a szükséges hálózati erőforrásokat, ha nem léteznek.
   * A fürt egy csomóponttal van konfigurálva.
   * A *Windows-admin-password* és a *Windows-admin-username* paraméterek a fürtön létrehozott Windows Server-tárolók rendszergazdai hitelesítő adatait adja meg.
 
@@ -194,7 +194,7 @@ aksnpwin987654                      Ready    agent   108s   v1.14.1
 
 ## <a name="run-the-application"></a>Az alkalmazás futtatása
 
-A Kubernetes jegyzékfájl a fürt kívánt állapotát határozza meg, például a tároló lemezképeit. Ebben a cikkben egy jegyzékfájlt használunk a ASP.NET-minta alkalmazás Windows Server-tárolóban való futtatásához szükséges összes objektum létrehozásához. Ez a jegyzékfájl egy [Kubernetes-telepítést][kubernetes-deployment] for the ASP.NET sample application and an external [Kubernetes service][kubernetes-service] tartalmaz, amely az alkalmazás internetről való elérését biztosítja.
+A Kubernetes jegyzékfájl a fürt kívánt állapotát határozza meg, például a tároló lemezképeit. Ebben a cikkben egy jegyzékfájlt használunk a ASP.NET-minta alkalmazás Windows Server-tárolóban való futtatásához szükséges összes objektum létrehozásához. Ez a jegyzékfájl egy [Kubernetes-telepítést][kubernetes-deployment] tartalmaz a ASP.net-minta alkalmazáshoz és egy külső [Kubernetes szolgáltatáshoz][kubernetes-service] az alkalmazás internetről való eléréséhez.
 
 A ASP.NET minta alkalmazás a [.NET-keretrendszer mintáinak][dotnet-samples] részeként van megadva, és Windows Server-tárolóban fut. Az AK megköveteli, hogy a Windows Server-tárolók a *Windows server 2019* -es vagy újabb rendszerképein alapulnak. A Kubernetes jegyzékfájljának meg kell határoznia egy [csomópont][node-selector] -választót is, hogy a ASP.net-minta alkalmazás Pod-t futtasson a Windows Server-tárolókat futtató csomóponton.
 
@@ -269,14 +269,14 @@ A folyamat állapotának monitorozásához használja [kubectl get service][kube
 kubectl get service sample --watch
 ```
 
-Kezdetben a *minta* szolgáltatás *külső IP-címe* függőben jelenik meg .
+Kezdetben a *minta* szolgáltatás *külső IP-címe* függőben jelenik meg.
 
 ```
 NAME               TYPE           CLUSTER-IP   EXTERNAL-IP   PORT(S)        AGE
 sample             LoadBalancer   10.0.37.27   <pending>     80:30572/TCP   6s
 ```
 
-Ha a *külső IP-* cím függőben  állapotról tényleges nyilvános IP-címről változik, `CTRL-C` akkor a `kubectl` figyelési folyamat leállításához használja a következőt:. A következő példa kimenete a szolgáltatáshoz hozzárendelt érvényes nyilvános IP-címet jeleníti meg:
+Ha a *külső IP-* cím függőben állapotról tényleges nyilvános IP-címről változik, `CTRL-C` akkor a `kubectl` figyelési folyamat leállításához használja a következőt:. A következő példa kimenete a szolgáltatáshoz hozzárendelt érvényes nyilvános IP-címet jeleníti meg:
 
 ```
 sample  LoadBalancer   10.0.37.27   52.179.23.131   80:30572/TCP   2m

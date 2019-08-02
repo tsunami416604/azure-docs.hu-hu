@@ -4,7 +4,7 @@ description: Ismerje meg, hogyan használhatja a földrajzi mesterséges Intelli
 keywords: deep learning, AI, beépített adatelemzési eszközzel, az adatelemzési virtuális gépet, a térinformatikai elemzés
 services: machine-learning
 documentationcenter: ''
-author: gopitk
+author: vijetajo
 manager: cgronlun
 ms.custom: seodec18
 ms.assetid: ''
@@ -15,13 +15,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/05/2018
-ms.author: gokuma
-ms.openlocfilehash: 6e6737e928ece820ea9119d8dfe1d7cf22477646
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: vijetaj
+ms.openlocfilehash: 9bca7089e6137b3780e3d22f50887e880be29d8e
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60406570"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68565070"
 ---
 # <a name="using-the-geo-artificial-intelligence-data-science-virtual-machine"></a>A földrajzi mesterséges intelligenciát használó adatelemző virtuális gép használata
 
@@ -43,11 +43,11 @@ Az R-híd ArcGIS telepítve van, az R-tár nevű [arcgisbinding](https://github.
 A gépi Tanulási és deep learning-keretrendszer-alapú-mintákat az az alapvető adatelemző virtuális gép mellett a földrajzi mintákat is tartalmaz a földrajzi mesterséges Intelligencia adatelemző virtuális gép részeként. Ezek a minták segítségével gyorsan elindíthatja a térinformatikai adatok és az ArcGIS-szoftverek használatával AI-alkalmazások fejlesztését. 
 
 
-1. [Első Python-térinformatikai elemzés paraméterkészlettel lesz kiadva](https://github.com/Azure/DataScienceVM/blob/master/Notebooks/ArcGIS/Python%20walkthrough%20ArcGIS%20Data%20analysis%20and%20ML.ipynb): A Python felületén által biztosított ArcGIS térinformatikai adatok használatát bemutató egy bevezető minta a [arcpy](https://pro.arcgis.com/en/pro-app/arcpy/main/arcgis-pro-arcpy-reference.htm) könyvtár. Azt is bemutatja, hogyan kombinálhatja a hagyományos gépi tanulás a térinformatikai adatok és ArcGIS egy térképen az eredmény megjelenítése. 
+1. [A térinformatikai elemzések és a Python használatával való Ismerkedés](https://github.com/Azure/DataScienceVM/blob/master/Notebooks/ArcGIS/Python%20walkthrough%20ArcGIS%20Data%20analysis%20and%20ML.ipynb): Bevezető minta, amely bemutatja, hogyan dolgozhat térinformatikai adataival a Python felületen keresztül a [arcpy](https://pro.arcgis.com/en/pro-app/arcpy/main/arcgis-pro-arcpy-reference.htm) -könyvtár által biztosított ArcGIS. Azt is bemutatja, hogyan kombinálhatja a hagyományos gépi tanulás a térinformatikai adatok és ArcGIS egy térképen az eredmény megjelenítése. 
 
-2. [Első térinformatikai elemzés az r nyelv paraméterkészlettel lesz kiadva](https://github.com/Azure/DataScienceVM/blob/master/Notebooks/ArcGIS/R%20walkthrough%20ArcGIS%20Data%20analysis%20and%20ML.ipynb): Egy bevezető minta bemutatja, hogyan dolgozhat a térinformatikai adatok által biztosított ArcGIS az R-felület használatával a [arcgisbinding](https://github.com/R-ArcGIS/r-bridge) könyvtár. 
+2. A [térinformatikai elemzések az R-vel való](https://github.com/Azure/DataScienceVM/blob/master/Notebooks/ArcGIS/R%20walkthrough%20ArcGIS%20Data%20analysis%20and%20ML.ipynb)beszerzése: Bevezető minta, amely bemutatja, hogyan dolgozhat a térinformatikai adataival az R felületen a [arcgisbinding](https://github.com/R-ArcGIS/r-bridge) -könyvtár által biztosított ArcGIS. 
 
-3. [Képpontos szintű föld besorolás használata](https://github.com/Azure/pixel_level_land_classification): Ez az oktatóanyag bemutatja, hogyan hozhat létre egy olyan Neurális hálózat-modell, légi felvételeken fogad bemenetként, és adja vissza a föld-cover címke. Példák a föld-cover címkék "erdős" vagy "víz." A modell minden képpont ilyen egy címkét a rendszerkép adja vissza. A modell a Microsoft nyílt forráskódú használatával lett összeállítva [Cognitive Toolkit (CNTK)](https://www.microsoft.com/en-us/cognitive-toolkit/) deep learning keretrendszer. 
+3. [Képpont szintű földhasználat besorolása](https://github.com/Azure/pixel_level_land_classification): Egy oktatóanyag, amely bemutatja, hogyan hozhat létre egy olyan mély neurális hálózati modellt, amely egy adott antenna-rendszerképet fogad el bemenetként, és visszaadja a földre kiterjedő címkét. Példák a föld-cover címkék "erdős" vagy "víz." A modell minden képpont ilyen egy címkét a rendszerkép adja vissza. A modell a Microsoft nyílt forráskódú használatával lett összeállítva [Cognitive Toolkit (CNTK)](https://www.microsoft.com/en-us/cognitive-toolkit/) deep learning keretrendszer. 
 
 
 ## <a name="next-steps"></a>További lépések

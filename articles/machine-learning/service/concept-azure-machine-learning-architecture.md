@@ -10,12 +10,12 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 07/12/2019
 ms.custom: seodec18
-ms.openlocfilehash: 887c27c765855424dbfb9a77f0b452da0f5de647
-ms.sourcegitcommit: 10251d2a134c37c00f0ec10e0da4a3dffa436fb3
+ms.openlocfilehash: 82d3656e0adc03157de57b700f8f0be6bde1f2ee
+ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/13/2019
-ms.locfileid: "67868862"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68663473"
 ---
 # <a name="how-azure-machine-learning-service-works-architecture-and-concepts"></a>Azure Machine Learning szolgáltatás működése: Architektúra és fogalmak
 
@@ -28,9 +28,9 @@ Ismerje meg Azure Machine Learning szolgáltatás architektúráját, fogalmait 
 A Machine learning-modell munkafolyamata általában az alábbi sorozatot követi:
 
 1. **Vonat**
-    + A gépi tanulási képzés parancsfájljainak  fejlesztése Pythonban vagy a vizualizáció felületén.
+    + A gépi tanulási képzés parancsfájljainak fejlesztése Pythonban vagy a vizualizáció felületén.
     + Létrehozhat és konfigurálhat egy **számítási célt**.
-    + **Küldje el a parancsfájlok** a konfigurált számítási célnak az adott környezetben való futtatásához. A betanítás során a parancsfájlok beolvashatók vagy írhatók az **adattárba**. A végrehajtási rekordok a munkaterületen **futnak** , és a  **kísérletek**alatt csoportosítva lesznek.
+    + **Küldje el a parancsfájlok** a konfigurált számítási célnak az adott környezetben való futtatásához. A betanítás során a parancsfájlok beolvashatók vagy írhatók az **adattárba**. A végrehajtási rekordok a munkaterületen **futnak** , és a **kísérletek**alatt csoportosítva lesznek.
 
 1. **Csomag** – a megfelelő Futtatás után regisztrálja a megőrzött modellt a **modell beállításjegyzékében**.
 
@@ -38,7 +38,7 @@ A Machine learning-modell munkafolyamata általában az alábbi sorozatot követ
 
 1. **Üzembe helyezés** – a modellt használó pontozási szkript fejlesztése és **a modell üzembe helyezése** webszolgáltatásként az Azure-ban vagy egy **IoT Edge eszközön**.
 
-1. **Figyelő** – figyelő a  betanítási adatkészlet és a központilag telepített modellbe tartozó adat adateltolódása között. Ha szükséges, lépjen vissza az 1. lépésre a modell új betanítási adattal való újratanításához.
+1. **Figyelő** – figyelő a betanítási adatkészlet és a központilag telepített modellbe tartozó adat adateltolódása között. Ha szükséges, lépjen vissza az 1. lépésre a modell új betanítási adattal való újratanításához.
 
 ## <a name="tools-for-azure-machine-learning"></a>Azure Machine Learning eszközök 
 
@@ -126,7 +126,7 @@ A futtatási konfigurációkat például a [modell kitanítására szolgáló sz
 
 Az adatkészletek olyan módszereket biztosítanak, amelyekkel a népszerű formátumokban `from_delimited_files()` dolgozhat `to_pandas_dataframe()`, például a vagy a használatával.
 
-További információ: [Azure Machine learning adatkészletek létrehozása és regisztrálása](how-to-create-register-datasets.md).  Az adatkészletek használatával kapcsolatos további példákért tekintse meg a [minta jegyzetfüzeteket](https://aka.ms/dataset-tutorial).
+További információ: [Azure Machine learning adatkészletek létrehozása és regisztrálása](how-to-create-register-datasets.md).  Az adatkészletek használatával kapcsolatos további példákért tekintse meg a [minta jegyzetfüzeteket](https://github.com/Azure/MachineLearningNotebooks/tree/master/work-with-data/datasets).
 
 Az **adattár** egy Azure Storage-fiókon keresztüli adattárolási absztrakt. Az adattár egy Azure BLOB-tárolót vagy egy Azure-fájlmegosztást használhat háttérbeli tárolóként. Minden munkaterülethez tartozik egy alapértelmezett adattár, amely további adattárolókat is regisztrálhat. A Python SDK API-val vagy a Azure Machine Learning CLI-vel fájlokat tárolhat és kérhet le az adattárból.
 

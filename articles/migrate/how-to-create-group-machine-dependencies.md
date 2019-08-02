@@ -6,16 +6,16 @@ ms.service: azure-migrate
 ms.topic: article
 ms.date: 07/17/2019
 ms.author: hamusa
-ms.openlocfilehash: 7cde18f2da764a055443900e7daf160f72e2eeb5
-ms.sourcegitcommit: af58483a9c574a10edc546f2737939a93af87b73
+ms.openlocfilehash: 4130bb746a4faa4907353654d16f7c20c0cc7817
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68301658"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68598947"
 ---
 # <a name="set-up-dependency-visualization-for-assessment"></a>Függőségi vizualizáció beállítása az értékeléshez
 
-Ez a cikk azt ismerteti, hogyan állítható be a függőségi leképezés a Azure Migrateban: Kiszolgáló értékelése.
+Ez a cikk azt ismerteti, hogyan állítható be a függőségi leképezés a Azure Migrateban: Server Assessment.
 
 A függőségi leképezés segítségével megjelenítheti a függőségeket a felmérni és áttelepíteni kívánt gépek között.
 
@@ -31,15 +31,15 @@ A függőségi leképezés segítségével megjelenítheti a függőségeket a f
 
 - Győződjön meg arról, hogy [létrehozott](how-to-add-tool-first-time.md) egy Azure Migrate projektet.
 - Ha már létrehozott egy projektet, győződjön meg arról, hogy [felvette](how-to-assess.md) a Azure Migrate: Kiszolgáló-értékelési eszköz.
-- Győződjön meg arról, hogy felderítette a gépeket a Azure Migrate; Ezt úgy teheti meg, hogy a [VMware](how-to-set-up-appliance-vmware.md) vagy a [Hyper-V](how-to-set-up-appliance-hyper-v.md)Azure Migrate berendezését állítja be. A készülék felfedi a helyszíni gépeket, és metaadatokat és teljesítményadatokat küld a Azure Migratenak: Kiszolgáló értékelése. [További információk](migrate-appliance.md).
+- Győződjön meg arról, hogy felderítette a gépeket a Azure Migrate; Ezt úgy teheti meg, hogy a [VMware](how-to-set-up-appliance-vmware.md) vagy a [Hyper-V](how-to-set-up-appliance-hyper-v.md)Azure Migrate berendezését állítja be. A készülék felfedi a helyszíni gépeket, és metaadatokat és teljesítményadatokat küld a Azure Migratenak: Server Assessment. [További információk](migrate-appliance.md).
 
 
 **Szolgáltatások** | **Megjegyzés**
 --- | ---
 Rendelkezésre állás | A függőségi vizualizáció nem érhető el Azure Governmentban.
-Szolgáltatástérkép | A függőségi vizualizáció Service Map megoldást használ Azure Monitor naplókban. [Service Map](../azure-monitor/insights/service-map-configure.md) automatikusan felfedi és megjeleníti a kiszolgálók közötti kapcsolatokat.
+Service Map | A függőségi vizualizáció Service Map megoldást használ Azure Monitor naplókban. [Service Map](../azure-monitor/insights/service-map-configure.md) automatikusan felfedi és megjeleníti a kiszolgálók közötti kapcsolatokat.
 Ügynökök | A függőségi vizualizáció használatához telepítsen néhány ügynököt a leképezni kívánt gépekre:<br/> - [Azure log Analytics](../azure-monitor/platform/log-analytics-agent.md) -ügynök (korábbi nevén Microsoft monitoring Agent (MMA).<br/> – Service Map függőségi ügynököt.<br/><br/> Az ügynök telepítésének automatizálásához használhat olyan központi telepítési eszközt, mint például a System Center Configuration Manager vagy egy partneri eszköz, például a [Intigua](https://www.intigua.com/getting-started-intigua-for-azure-migration), amely rendelkezik ügynök-telepítési megoldással Azure Migratehoz.
-Függőségi ügynök | Tekintse át a [Windows](/azure-monitor/insights/service-map-configure.md#supported-windows-operating-systems) és a [Linux](../azure-monitor/insights/service-map-configure.md#supported-linux-operating-systems)függőségi ügynökének támogatását.<br/><br/> [További](https://docs.microsoft.com/azure/monitoring/monitoring-service-map-configure#installation-script-examples) információ a függőségi ügynök telepítéséhez szükséges parancsfájlok használatával.
+Dependency Agent | Tekintse át a [Windows](../azure-monitor/insights/service-map-configure.md#supported-windows-operating-systems) és a [Linux](../azure-monitor/insights/service-map-configure.md#supported-linux-operating-systems)függőségi ügynökének támogatását.<br/><br/> [További](https://docs.microsoft.com/azure/monitoring/monitoring-service-map-configure#installation-script-examples) információ a függőségi ügynök telepítéséhez szükséges parancsfájlok használatával.
 Log Analytics ügynök (MMA) | [További](../azure-monitor/platform/log-analytics-agent.md#install-and-configure-agent) információ az MMA telepítési módszereiről.<br/><br/> System Center Operations Manager 2012 R2 vagy újabb rendszer által figyelt gépek esetében nem kell telepítenie az MMA-ügynököt. A Service Map a Operations Managersal integrálódik. Az integrációt az [itt](https://docs.microsoft.com/azure/azure-monitor/insights/service-map-scom#prerequisites)található útmutatás használatával engedélyezheti. Vegye figyelembe azonban, hogy a függőségi ügynöknek telepítve kell lennie ezekre a gépekre.<br/><br/> [Tekintse át](../azure-monitor/platform/log-analytics-agent.md#supported-linux-operating-systems) a log Analytics ügynök által támogatott Linux operációs rendszereket.
 Értékelési csoportok | Azok a csoportok, amelyeknek a függőségeit szeretné megjeleníteni, nem tartalmazhatnak 10 rendszernél több gépet. Ha több mint 10 géppel rendelkezik, a függőségek megjelenítéséhez ossza fel őket kisebb csoportokba.
 
@@ -50,7 +50,7 @@ A függőségi vizualizáció használatához hozzá kell rendelnie egy [log Ana
 - Csak a Azure Migrate projekt-előfizetésben csatolhat munkaterületet.
 - Egy meglévő munkaterületet is csatolhat, vagy létrehozhat egy újat.
 - A munkaterületet a gép függőségi vizualizációjának első beállításakor csatolja.
-- A munkaterületet csak a Azure Migrate projektben lévő gépek felfedése után lehet csatlakoztatni. Ezt úgy teheti meg, hogy a [VMware](how-to-set-up-appliance-vmware.md) vagy a [Hyper-V](how-to-set-up-appliance-hyper-v.md)Azure Migrate berendezését állítja be. A készülék felfedi a helyszíni gépeket, és metaadatokat és teljesítményadatokat küld a Azure Migratenak: Kiszolgáló értékelése. [További információk](migrate-appliance.md).
+- A munkaterületet csak a Azure Migrate projektben lévő gépek felfedése után lehet csatlakoztatni. Ezt úgy teheti meg, hogy a [VMware](how-to-set-up-appliance-vmware.md) vagy a [Hyper-V](how-to-set-up-appliance-hyper-v.md)Azure Migrate berendezését állítja be. A készülék felfedi a helyszíni gépeket, és metaadatokat és teljesítményadatokat küld a Azure Migratenak: Server Assessment. [További információk](migrate-appliance.md).
 
 Csatoljon egy munkaterületet az alábbiak szerint:
 

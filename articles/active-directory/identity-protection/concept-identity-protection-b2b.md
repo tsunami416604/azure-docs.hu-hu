@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9128a747dcd42ada2feefd72ad8bfebdf7bfb25a
-ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
+ms.openlocfilehash: c5d374f4ddac2e4d013bab1c5e88a87af1da2c1f
+ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68334044"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68667140"
 ---
 # <a name="identity-protection-and-b2b-users"></a>Identity Protection- és B2B-felhasználók
 
@@ -47,7 +47,7 @@ Ha a saját címtárában lévő kockázatos B2B-felhasználót a kockázatkezel
 
 ### <a name="how-do-i-prevent-b2b-collaboration-users-from-being-impacted-by-risk-based-policies"></a>Hogyan meggátolja a VÁLLALATKÖZI együttműködés felhasználói számára a kockázatkezelési szabályzatok hatását?
 
-A szervezet kockázatalapú feltételes hozzáférési házirendjeinek B2B-felhasználóinak kizárásával megakadályozható, hogy a VÁLLALATKÖZI felhasználók kiértékeljék vagy letiltsák a kockázatértékelést. A B2B-felhasználók kizárásához hozzon létre egy csoportot az Azure AD-ben, amely az összes szervezet vendég felhasználóját tartalmazza. Ezt követően adja hozzá ezt a csoportot a beépített Identity Protection-felhasználói kockázat és a bejelentkezési kockázati szabályzatok kizárásához, valamint minden olyan feltételes hozzáférési szabályzatot, amely feltételként a felhasználó bejelentkezési kockázatának minősül.
+A szervezet kockázatalapú feltételes hozzáférési házirendjeinek B2B-felhasználóinak kizárásával megakadályozható, hogy a VÁLLALATKÖZI felhasználók kiértékeljék vagy letiltsák a kockázatértékelést. A B2B-felhasználók kizárásához hozzon létre egy csoportot az Azure AD-ben, amely az összes szervezet vendég felhasználóját tartalmazza. Ezt követően adja hozzá ezt a csoportot a beépített Identity Protection-felhasználói kockázat és a bejelentkezési kockázati szabályzatok kizárásához, valamint minden olyan feltételes hozzáférési szabályzatot, amely feltételként a bejelentkezési kockázatokat használja.
 
 ## <a name="next-steps"></a>További lépések
 

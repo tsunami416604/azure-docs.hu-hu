@@ -1,19 +1,20 @@
 ---
 title: 'Azure Backup hiba hibaelhárítása: A vendég ügynök állapota nem érhető el'
 description: Az ügynökkel, bővítménnyel és lemezekkel kapcsolatos Azure Backup hibák tünetei, okai és megoldása.
-author: saurabhsensharma
-manager: saurabhsensharma
+ms.reviewer: saurse
+author: dcurwin
+manager: carmonm
 keywords: Azure Backup; VM-ügynök; Hálózati kapcsolat;
 ms.service: backup
 ms.topic: troubleshooting
 ms.date: 07/05/2019
-ms.author: saurse
-ms.openlocfilehash: e4337c9c89ca239bb664cbb7fb953ab9eedd3ac5
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.author: dacurwin
+ms.openlocfilehash: 7fc288ad9e33088b1b5248c1b61ed439ac95a9c4
+ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68465319"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68688986"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Azure Backup hiba hibaelhárítása: Az ügynökkel vagy bővítménnyel kapcsolatos problémák
 
@@ -77,9 +78,9 @@ Miután regisztrálta és beütemezte a virtuális gépet a Azure Backup szolgá
 **2. ok: [A biztonsági mentési bővítmény nem tud frissíteni vagy betölteni](#the-backup-extension-fails-to-update-or-load)**  
 **3. ok: [A virtuális gépnek nincs internet-hozzáférése](#the-vm-has-no-internet-access)**
 
-## <a name="ExtentionOperationFailed-vmsnapshot-extension-operation-failed"></a>ExtentionOperationFailedForManagedDisks – a VMSnapshot-bővítmény művelete sikertelen volt
+## <a name="ExtensionOperationFailed-vmsnapshot-extension-operation-failed"></a>ExtensionOperationFailedForManagedDisks – a VMSnapshot-bővítmény művelete sikertelen volt
 
-**Hibakód**: ExtentionOperationFailedForManagedDisks <br>
+**Hibakód**: ExtensionOperationFailedForManagedDisks <br>
 **Hibaüzenet**: A VMSnapshot bővítmény művelete sikertelen volt<br>
 
 Miután regisztrálta és beütemezte a virtuális gépet a Azure Backup szolgáltatáshoz, a biztonsági mentés a virtuális gép biztonsági mentési bővítménnyel való kommunikációval kezdeményezi az adott időponthoz tartozó pillanatképet. A következő feltételek bármelyike megakadályozhatja a pillanatkép aktiválását. Ha a pillanatkép nincs aktiválva, a biztonsági mentési hiba merülhet fel. Hajtsa végre a következő hibaelhárítási lépéseket a felsorolt sorrendben, majd próbálja megismételni a műveletet:  
@@ -106,7 +107,7 @@ Miután regisztrálta és beütemezte a virtuális gépet a Azure Backup szolgá
 **Hibakód**: UserErrorUnsupportedDiskSize <br>
 **Hibaüzenet**: Jelenleg Azure Backup nem támogatja a 4095 GB nál-nál nagyobb méretű lemezeket <br>
 
-A biztonsági mentési művelet sikertelen lehet, ha a virtuális gépet a 4095 GB nál-nál nagyobb méretű lemezről készíti. A nagyméretű lemezek támogatása hamarosan elérhető lesz.  
+A biztonsági mentési művelet sikertelen lehet, ha a virtuális gépet a 4095 GB nál-nál nagyobb méretű lemezről készíti. Ha regisztrálni szeretne a Azure Backup nagyméretű lemezes támogatásának privát előzetes verziójára, amely a 4TB-nál nagyobb méretű lemezeket támogat, AskAzureBackupTeam@microsoft.comírjon vissza nekünk a 30TB.
 
 ## <a name="usererrorbackupoperationinprogress---unable-to-initiate-backup-as-another-backup-operation-is-currently-in-progress"></a>UserErrorBackupOperationInProgress – nem sikerült elindítani a biztonsági mentést, mert folyamatban van egy másik biztonsági mentési művelet végrehajtása.
 

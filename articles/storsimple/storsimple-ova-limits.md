@@ -1,6 +1,6 @@
 ---
-title: A StorSimple virtuális tömb – korlátozások |} A Microsoft Docs
-description: Ismerteti a rendszer korlátozások és a Microsoft Azure StorSimple Virtual Array összetevők és a kapcsolatok számára az ajánlott méreteket.
+title: StorSimple virtuális tömbök korlátai | Microsoft Docs
+description: Leírja a rendszerkorlátokat és az ajánlott méreteket a Microsoft Azure StorSimple virtuális tömb összetevőihez és kapcsolataihoz.
 services: storsimple
 documentationcenter: NA
 author: alkohli
@@ -12,21 +12,24 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 03/15/2017
+ms.date: 07/25/2019
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 43e8134ede0735c40b18be739f58b7b69e88fce1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1fe6b614aa05ab3e774aa2f946b78cabbc9f1a3b
+ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62127862"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68516731"
 ---
-# <a name="what-are-storsimple-virtual-array-limits"></a>Mik a StorSimple Virtual Array korlátai?
+# <a name="what-are-storsimple-virtual-array-limits"></a>Mik a StorSimple virtuális tömbök korlátai?
 
 ## <a name="overview"></a>Áttekintés
-Ezek a korlátok megfontolnia tervezése, telepítése és üzemeltetése a Microsoft Azure StorSimple Virtual Array. A következő táblázat ismerteti ezeket a korlátokat, a virtuális eszközhöz.
 
-## <a name="storsimple-virtual-array-limits"></a>A StorSimple virtuális tömb – korlátozások
+[!INCLUDE [storsimple-virtual-array-eol-banner](../../includes/storsimple-virtual-array-eol-banner.md)]
+
+Ezeket a korlátokat a Microsoft Azure StorSimple virtuális tömb tervezése, üzembe helyezése és üzemeltetése során érdemes figyelembe venni. A következő táblázat ezeket a korlátozásokat ismerteti a virtuális eszközön.
+
+## <a name="storsimple-virtual-array-limits"></a>StorSimple virtuális tömbök korlátai
 [!INCLUDE [storsimple-virtual-array-limits](../../includes/storsimple-virtual-array-limits.md)]
 

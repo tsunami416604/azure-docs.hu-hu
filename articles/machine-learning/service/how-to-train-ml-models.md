@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.reviewer: sgilley
 ms.date: 04/19/2019
 ms.custom: seodec18
-ms.openlocfilehash: 0080c8ac5e957912c5fd59a7051619ee60bd914c
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: 93b26b2861c5603770a954943174d6436296ad07
+ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68260063"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68668380"
 ---
 # <a name="train-models-with-azure-machine-learning-using-estimator"></a>Modellek betanítása Azure Machine Learning a kalkulátor használatával
 
@@ -102,14 +102,14 @@ estimator = Estimator(source_directory='./my-keras-proj',
                       process_count_per_node=1,
                       distributed_backend='mpi',     
                       conda_packages=['tensorflow', 'keras'],
-                      custom_docker_base_image='continuumio/miniconda')
+                      custom_docker_image='continuumio/miniconda')
 ```
 
 A fenti kód mutatja meg a következő új paramétereket a `Estimator` konstruktort:
 
 Paraméter | Leírás | Alapértelmezett
 --|--|--
-`custom_docker_base_image`| A használni kívánt kép neve. Csak adja meg a lemezkép érhető el a nyilvános docker adattárait (megkülönbözteti a kis Docker Hub). Ha privát Docker-tárházból szeretne képet használni, használja helyette a konstruktor `environment_definition` paraméterét. [Lásd: példa](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training-with-deep-learning/how-to-use-estimator/how-to-use-estimator.ipynb). | `None`
+`custom_docker_image`| A használni kívánt kép neve. Csak adja meg a lemezkép érhető el a nyilvános docker adattárait (megkülönbözteti a kis Docker Hub). Ha privát Docker-tárházból szeretne képet használni, használja helyette a konstruktor `environment_definition` paraméterét. [Lásd: példa](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training-with-deep-learning/how-to-use-estimator/how-to-use-estimator.ipynb). | `None`
 `node_count`| A betanítási feladathoz használandó csomópontok száma. | `1`
 `process_count_per_node`| Minden egyes csomóponton futtatandó folyamatok (vagy "dolgozó szakemberek") száma. Ebben az esetben használhatja a `2` gpu-n elérhető minden egyes csomóponton.| `1`
 `distributed_backend`| Háttérbeli indításakor elosztott képzés, így az a Estimator MPI-n keresztül.  Párhuzamos és elosztott képzési elvégzésére (pl. `node_count`> 1 vagy `process_count_per_node`> 1 vagy mindkettő) állítsa be `distributed_backend='mpi'`. Az AML által használt MPI végrehajtása [nyílt MPI](https://www.open-mpi.org/).| `None`

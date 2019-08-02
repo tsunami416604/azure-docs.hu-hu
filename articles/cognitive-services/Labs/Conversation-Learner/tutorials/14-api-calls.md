@@ -1,7 +1,7 @@
 ---
-title: API használatával meghívja a Beszélgetéstanuló modellel – a Microsoft Cognitive Services |} A Microsoft Docs
+title: API-hívások használata Conversation Learner MODELREL – Microsoft Cognitive Services | Microsoft Docs
 titleSuffix: Azure
-description: Ismerje meg, hogyan használható az API-hívások Beszélgetéstanuló modell.
+description: Ismerje meg, hogyan használhatók az API-hívások Conversation Learner modellel.
 services: cognitive-services
 author: nitinme
 manager: nolachar
@@ -10,94 +10,95 @@ ms.subservice: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: nitinme
-ms.openlocfilehash: 1f7c7c72703d7c3134dd2acdcc466fc0182fa38a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ROBOTS: NOINDEX
+ms.openlocfilehash: 261536932cc82a28ad4ee3ffc3575ea41fe9ec5b
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66389944"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68703922"
 ---
-# <a name="how-to-add-api-calls-to-a-conversation-learner-model"></a>API-hívások Beszélgetéstanuló modell hozzáadása
+# <a name="how-to-add-api-calls-to-a-conversation-learner-model"></a>API-hívások hozzáadása Conversation Learner modellhez
 
-Ez az oktatóanyag bemutatja, hogyan adhat hozzá a modell API-hívások. API-hívások olyan funkció, amely határozza meg, és írja be a robot, és amely Beszélgetéstanuló hívhatja.
+Ez az oktatóanyag bemutatja, hogyan adhat hozzá API-hívásokat a modellhez. Az API-hívások a robotban definiált és írt függvények, amelyek Conversation Learner hívhatók.
 
 ## <a name="video"></a>Videó
 
-[![API-hívások oktatóanyag előzetes](https://aka.ms/cl_Tutorial_v3_APICalls_Preview)](https://aka.ms/cl_Tutorial_v3_APICalls)
+[![API-hívások – oktatóanyag – előzetes verzió](https://aka.ms/cl_Tutorial_v3_APICalls_Preview)](https://aka.ms/cl_Tutorial_v3_APICalls)
 
 ## <a name="requirements"></a>Követelmények
-Ehhez az oktatóanyaghoz, hogy fut-e a "tutorialAPICalls.ts" robot.
+Ez az oktatóanyag megköveteli, hogy a "tutorialAPICalls. TS" robot fusson.
 
     npm run tutorial-api-calls
 
 ## <a name="details"></a>Részletek
 
-- API-hívások megtekintheti és módosíthatja az entitásokat.
-- API-hívások hozzáférése a memória-kezelő objektumot.
-- API-hívások argumentumokat is igénybe vehet.
+- Az API-hívások elolvashatják és módosíthatják az entitásokat.
+- Az API-hívások hozzáférnek a Memory Manager-objektumhoz.
+- Az API-hívások argumentumokat is igénybe vehetnek.
 
-### <a name="open-the-demo"></a>Nyissa meg a bemutatót
+### <a name="open-the-demo"></a>A bemutató megnyitása
 
-A webes felhasználói felületen kattintson a "Oktatóanyagokban importálása", és válassza a "Az oktatóanyag-14 – APICalls" nevű modell.
+A webes felhasználói felületen kattintson az "oktatóanyagok importálása" elemre, és válassza ki a "tutorial-14-APICalls" nevű modellt.
 
 ### <a name="entities"></a>Entitások
 
-Hogy meghatároztuk a modellben nevű több entitást `number`.
+A modellben `number`egy entitást definiáltak.
 
 ![](../media/tutorial12_entities.PNG)
 
 ### <a name="api-calls"></a>API-hívások
-A kódot az API-hívásokhoz van definiálva a következő fájlt: `C:\<installedpath>\src\demos\tutorialAPICalls.ts`.
+Az API-hívások kódja a következő fájlban van definiálva: `C:\<installedpath>\src\demos\tutorialAPICalls.ts`.
 
 ![](../media/tutorial12_apicalls.PNG)
 
-- A `RandomGreeting` visszahívási adja vissza a meghatározott véletlenszerű üdvözlőszöveget a `greeting` tömb.
-- A `Multiply` visszahívási fog szorozza meg a műveletet, amely meghívja az és renderelhető eredményt adja vissza a felhasználói felület által átadott két számot.
-    - Figyelje meg, hogy memóriakezelő az első argumentum. 
-    - Figyelje meg, hogy API-visszahívások ebben az esetben eltarthat több bemenet `num1string` és `num2string`.
-- A `ClearEntities` visszahívási törli a számú entitást, hogy a felhasználó megadhat egy másik számot. 
-    - Azt mutatja be, hogyan API-hívások entitásokat is módosíthatja.
+- A `RandomGreeting` visszahívás a `greeting` tömbben definiált véletlenszerű üdvözlést adja vissza.
+- A `Multiply` visszahívás két, a meghívó művelet által átadott számot fog szorozni, és visszaadja a felhasználói felületen megjeleníthető eredményt.
+    - Figyelje meg, hogy a Memory Manager az első argumentum. 
+    - Figyelje meg, hogy az API-visszahívás több bemenetet is igénybe `num2string`vehet, ebben az esetben `num1string` és.
+- A `ClearEntities` visszahívás törli a szám entitást, így a felhasználó megadhat egy másik számot. 
+    - Szemlélteti, hogy az API-hívások hogyan kezelhetik az entitásokat.
 
 ### <a name="actions"></a>Műveletek
-Négy művelet hoztunk létre. Három a "Nem-Wait" API-műveletek, a negyedik van egy "Szöveg" műveletet, amely a felhasználó mit úgy találtuk, a többi hasonló kérdést tesz fel. Minden egyes létrehozásának módja megtekintéséhez tegye a következőket:
-1. A bal oldali panelen kattintson a "Műveletek", majd kattintson az egyik a rácsban szereplő négy műveleteket.
-2. Figyelje meg, hogy az űrlap felugró mezők értékeit.
-3. Figyelje meg a `Refresh` gombra az API-t a mező mellett.
-    - Ha azt is, állítsa le a robot, és módosítsa az API-k, a felhasználói felület lapon pedig ezt követően kattinthat a `Refresh` gombra a legújabb módosításainak életbe léptetéséhez.
+Négy műveletet hoztunk létre. Hárman a "nem várt" API-műveletek, a negyedik pedig egy "text" művelet, amely a felhasználót a többi oktatóanyagban megjelenő kérdéshez hasonló módon kéri le. Az egyes létrehozási módjának megtekintéséhez tegye a következőket:
+1. A bal oldali panelen kattintson a "műveletek" elemre, majd a rácsban felsorolt négy művelet egyikére.
+2. Figyelje meg az űrlap egyes mezőinek értékeit.
+3. Figyelje meg `Refresh` az API mező melletti gombot.
+    - Ha leállítottuk a robotot, és az API-kat a felhasználói felület oldalának bekapcsolása közben módosítjuk, `Refresh` akkor a gombra kattintva megtekintheti a legújabb módosításokat.
 
 ![](../media/tutorial12_actions.PNG)
 
-#### <a name="clearentities-multiply-and-randomgreeting"></a>Szorzás ClearEntities, és RandomGreeting
-Ezek a műveletek három olyan API-típus. Ezek mindegyike támaszkodik a munkához, és valószínűleg vissza az értéket a felhasználó számára megjelenő API visszahívási függvényekben.
+#### <a name="clearentities-multiply-and-randomgreeting"></a>ClearEntities, szorzás és RandomGreeting
+Mindhárom művelet API-típusú. Ezek mindegyike az API callback függvényeit használja a feladatok végrehajtásához, és lehetséges, hogy egy értéket ad vissza a felhasználónak.
 
-#### <a name="what-number-do-you-want-to-multiply-by-12"></a>"Milyen számon szeretné szorzása a következővel 12"
-Ez a "Text" művelet, és egyszerűen a felhasználó egy kérdést tesz fel. Ez a művelet ténylegesen nem működik együtt az API-visszahívások egyikét, míg azt kéri a felhasználót, egy szám, amely lép a memória olyan entitás, amely ezután felhasználhatók a "Szorzása" művelet, amely használja az API-visszahívások egyikét, válaszoljon.
+#### <a name="what-number-do-you-want-to-multiply-by-12"></a>"Mit szeretne szorozni a 12 értékkel"
+Ez a "text" művelet, és egyszerűen csak a felhasználó kérdését kérdezi le. Habár ez a művelet valójában nem működik együtt az egyik API-visszahívással sem, az arra kéri a felhasználót, hogy válaszoljon egy olyan számra, amely egy olyan entitás memóriájában fog működni, amelyet aztán a "szorzás" művelet használ, amely az egyik API-visszahívást használja.
 
 
-### <a name="train-dialog"></a>Train párbeszédpanel
+### <a name="train-dialog"></a>Betanítás párbeszédpanel
 
-Vegyük végig egy "képzési párbeszédpanel".
+Lássunk egy "betanítási párbeszédablakot".
 
-1. A bal oldali panelen, kattintson a `Train Dialogs`, akkor a `New Train Dialog` gombra.
-2. Írja be a "hello".
+1. A bal oldali panelen kattintson `Train Dialogs`a elemre, majd a `New Train Dialog` gombra.
+2. Írja be a "Hello" kifejezést.
 3. Kattintson a `Score Actions` gombra.
 4. Válassza a(z) `RandomGreeting` lehetőséget. 
-    - Ez hajtja végre a véletlenszerű üdvözlőszöveget API-hívás.
-    - Ez nem a felhasználói válaszra vár.
+    - Ez végrehajtja a véletlenszerű üdvözlés API-hívást.
+    - Ez nem fog várni a felhasználói válaszra.
 5. A következők szerint válasszon: `What number to do you want to multiply by 12?`
-6. Írjon be egy számot, tetszőleges számú és csak egy számot.
-    - Figyelje meg, hogy a szám automatikusan kiosztott címkéje a `number` entitás.
+6. Írjon be egy számot, egy számot és egy számot.
+    - Figyelje meg, hogy a szám automatikusan `number` entitásként van megjelölve.
 7. Kattintson a `Score Actions` gombra.
-8. Válassza ki a `Multiply` művelet.
-    - Figyelje meg, hogy a szorzás az eredmény szerint 12.
-    - Figyelje meg, hogy a memória továbbra is tartalmaz a megadott érték `number`
-9. Válassza ki a `ClearEntities` művelet.
-    - Figyelje meg, hogy az entitás értékét `number` törölve lett a memóriából.
+8. Válassza ki `Multiply` a műveletet.
+    - Figyelje meg a szorzás eredményét 12 alapján.
+    - Figyelje meg, hogy a memória továbbra is tartalmazza a megadott értéket`number`
+9. Válassza ki `ClearEntities` a műveletet.
+    - Figyelje meg `number` , hogy az entitás értéke törölve lett a memóriából.
 10. Kattintson a `Save` gombra.
 
-Most láthatta, API-visszahívások regisztrálása gyakori mintáit, és hogyan argumentumok megadása, és rendelje hozzá az értékeket, és azokat az entitásokat.
+Megismerte, hogyan regisztrálhat API-visszahívásokat, az általános mintákat, és hogyan határozhat meg argumentumokat, és hogyan rendelhet hozzájuk értékeket és entitásokat.
 
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Kártyák: 1. rész](./15-cards.md)
+> [Kártyák 1. rész](./15-cards.md)
